@@ -23,9 +23,7 @@ include $(top_builddir)/src/Makefile.global
 
 OBJS=dynloader.o pg_sema.o pg_shmem.o
 
-OBJS+=$(DLLINIT) $(GETHOSTNAME) $(GETRUSAGE) $(INET_ATON) $(ISINF) $(MEMCMP) \
-        $(MISSING_RANDOM) $(SNPRINTF) $(SRANDOM) $(STRCASECMP) $(STRDUP) \
-	$(STRERROR) $(STRTOL) $(STRTOUL)
+OBJS+=$(DLLINIT)
 
 OBJS+=$(TAS)
 
