@@ -51,6 +51,16 @@ TRUNCATE [ TABLE ] <replaceable class="PARAMETER">name</replaceable>
  </refsect1>
 
  <refsect1>
+  <title>Notes</title>
+
+  <para>
+   <command>TRUNCATE</> cannot be used if there are foreign-key references
+   to the table from other tables.  Checking validity in such cases would
+   require table scans, and the whole point is not to do one.
+  </para>
+ </refsect1>
+
+ <refsect1>
   <title>Examples</title>
 
   <para>

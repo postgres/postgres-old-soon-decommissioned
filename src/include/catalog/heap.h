@@ -48,6 +48,8 @@ extern void heap_drop_with_catalog(Oid rid);
 
 extern void heap_truncate(Oid rid);
 
+extern void heap_truncate_check_FKs(Relation rel);
+
 extern void AddRelationRawConstraints(Relation rel,
 						  List *rawColDefaults,
 						  List *rawConstraints);
