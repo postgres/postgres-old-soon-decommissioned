@@ -55,7 +55,6 @@ raw_parser(const char *str)
 	yyresult = yyparse();
 
 	scanner_finish();
-	clearerr(stdin);
 
 	if (yyresult)				/* error */
 		return NIL;
