@@ -1934,8 +1934,7 @@ genericcostestimate(PG_FUNCTION_ARGS)
 	*indexTotalCost = numIndexPages +
 		(cpu_index_tuple_cost + cost_qual_eval(indexQuals)) * numIndexTuples;
 
-	/* No real return value ... */
-	PG_RETURN_POINTER(NULL);
+	PG_RETURN_VOID();
 }
 
 /*

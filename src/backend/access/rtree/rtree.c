@@ -281,7 +281,7 @@ rtbuild(PG_FUNCTION_ARGS)
 	pfree(nulls);
 	pfree(d);
 
-	PG_RETURN_POINTER(NULL);	/* no real return value */
+	PG_RETURN_VOID();
 }
 
 /*
@@ -1025,7 +1025,7 @@ rtdelete(PG_FUNCTION_ARGS)
 
 	WriteBuffer(buf);
 
-	PG_RETURN_POINTER(NULL);	/* no real return value */
+	PG_RETURN_VOID();
 }
 
 static void

@@ -336,7 +336,7 @@ btbuild(PG_FUNCTION_ARGS)
 	/* all done */
 	BuildingBtree = false;
 
-	PG_RETURN_POINTER(NULL);	/* no real return value */
+	PG_RETURN_VOID();
 }
 
 /*
@@ -502,7 +502,7 @@ btrescan(PG_FUNCTION_ARGS)
 				so->numberOfKeys * sizeof(ScanKeyData));
 	}
 
-	PG_RETURN_POINTER(NULL);	/* no real return value */
+	PG_RETURN_VOID();
 }
 
 void
@@ -560,7 +560,7 @@ btendscan(PG_FUNCTION_ARGS)
 
 	_bt_dropscan(scan);
 
-	PG_RETURN_POINTER(NULL);	/* no real return value */
+	PG_RETURN_VOID();
 }
 
 /*
@@ -592,7 +592,7 @@ btmarkpos(PG_FUNCTION_ARGS)
 		so->mrkHeapIptr = so->curHeapIptr;
 	}
 
-	PG_RETURN_POINTER(NULL);	/* no real return value */
+	PG_RETURN_VOID();
 }
 
 /*
@@ -625,7 +625,7 @@ btrestrpos(PG_FUNCTION_ARGS)
 		so->curHeapIptr = so->mrkHeapIptr;
 	}
 
-	PG_RETURN_POINTER(NULL);	/* no real return value */
+	PG_RETURN_VOID();
 }
 
 /* stubs */
@@ -641,7 +641,7 @@ btdelete(PG_FUNCTION_ARGS)
 	/* delete the data from the page */
 	_bt_pagedel(rel, tid);
 
-	PG_RETURN_POINTER(NULL);	/* no real return value */
+	PG_RETURN_VOID();
 }
 
 static void

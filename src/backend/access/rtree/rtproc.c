@@ -18,8 +18,7 @@
 #include "utils/builtins.h"
 
 
-BOX
-		   *
+BOX *
 rt_box_union(BOX *a, BOX *b)
 {
 	BOX		   *n;
@@ -123,7 +122,7 @@ rt_poly_size(PG_FUNCTION_ARGS)
 		*size = (float) (xdim * ydim);
 	}
 
-	PG_RETURN_POINTER(NULL);	/* no real return value */
+	PG_RETURN_VOID();
 }
 
 POLYGON    *

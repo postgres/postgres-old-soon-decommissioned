@@ -147,6 +147,9 @@ extern void fmgr_info(Oid functionId, FmgrInfo *finfo);
 #define PG_RETURN_NULL()  \
 	do { fcinfo->isnull = true; return (Datum) 0; } while (0)
 
+/* A few internal functions return void (which is not the same as NULL!) */
+#define PG_RETURN_VOID()     return (Datum) 0
+
 /* Macros for returning results of standard types */
 
 #define PG_RETURN_INT32(x)   return Int32GetDatum(x)
