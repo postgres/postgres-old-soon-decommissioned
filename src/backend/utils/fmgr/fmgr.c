@@ -277,7 +277,7 @@ fmgr_info(Oid procedureId, FmgrInfo *finfo)
 													0, 0, 0);
 				if (!HeapTupleIsValid(languageTuple))
 				{
-					elog(ERROR, "fmgr_info: %u",
+					elog(ERROR, "fmgr_info: %s %u",
 						 "Cache lookup for language failed",
 						 DatumGetObjectId(procedureStruct->prolang));
 				}

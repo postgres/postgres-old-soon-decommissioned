@@ -761,10 +761,10 @@ AddNewRelationType(char *typeName, Oid new_rel_oid)
 							  typeLen(typeidType(OIDOID)),		/* external size */
 							  'c',		/* type-type (catalog) */
 							  ',',		/* default array delimiter */
-							  "oidin", /* input procedure */
-							  "oidout",		/* output procedure */
-							  "oidin", /* receive procedure */
-							  "oidout",		/* send procedure */
+							  "int4in", /* input procedure */
+							  "int4out",		/* output procedure */
+							  "int4in", /* receive procedure */
+							  "int4out",		/* send procedure */
 							  NULL,		/* array element type - irrelevent */
 							  "-",		/* default type value */
 							  (bool) 1, /* passed by value */

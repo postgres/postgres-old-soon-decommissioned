@@ -198,7 +198,7 @@ DATA(insert OID = 25 (	text	   PGUID -1  -1 f b t \054 0  18 textin textout text
 DESCR("native variable-length string");
 #define TEXTOID			25
 
-DATA(insert OID = 26 (	oid		   PGUID  4  10 t b t \054 0   0 oidin oidout oidin oidout i _null_ ));
+DATA(insert OID = 26 (	oid		   PGUID  4  10 t b t \054 0   0 int4in int4out int4in int4out i _null_ ));
 DESCR("object identifier type");
 #define OIDOID			26
 
