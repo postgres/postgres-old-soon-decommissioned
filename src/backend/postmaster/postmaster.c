@@ -686,7 +686,7 @@ usage(const char *progname)
 	fprintf(stderr, "\t-S \t\tsilent mode (disassociate from tty)\n");
 	fprintf(stderr, "\t-a system\tuse this authentication system\n");
 	fprintf(stderr, "\t-b backend\tuse a specific backend server executable\n");
-	fprintf(stderr, "\t-d [1|2|3]\tset debugging level\n");
+	fprintf(stderr, "\t-d [1-5]\tset debugging level\n");
 	fprintf(stderr, "\t-i \t\tlisten on TCP/IP sockets as well as Unix domain socket\n");
 #ifdef USE_SSL
 	fprintf(stderr," \t-l \t\tfor TCP/IP sockets, listen only on SSL connections\n");
