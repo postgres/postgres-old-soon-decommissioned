@@ -174,7 +174,8 @@ extern bool rmtree(char *path, bool rmtopdir);
 
 #if defined(WIN32) && !defined(__CYGWIN__)
 
-/* open() replacement to allow delete of held files */
+/* open() replacement to allow delete of held files and passing
+ * of special options. */
 #ifndef WIN32_CLIENT_ONLY
 extern int	win32_open(const char *, int,...);
 

@@ -184,6 +184,14 @@ typedef int pid_t;
 #define lstat(path, sb)	stat((path), (sb))
 
 /*
+ * Supplement to <fcntl.h>.
+ * This is the same value as _O_NOINHERIT in the MS header file. This is
+ * to ensure that we don't collide with a future definition. It means
+ * we cannot use _O_NOINHERIT ourselves.
+ */
+#define O_SYNC 0x0080
+
+/*
  * Supplement to <errno.h>.
  */
 #undef EAGAIN
