@@ -59,6 +59,7 @@
 #include "postgres.h"
 #include "access/htup.h"
 #include "catalog/pg_type.h"
+#include "catalog/pg_language.h"
 #include "catalog/pg_index.h"
 #include "libpq-fe.h"
 #ifndef HAVE_STRDUP
@@ -1718,7 +1719,9 @@ dumpOneFunc(FILE *fout, FuncInfo *finfo, int i,
 			(finfo[i].retset) ? " SETOF " : "",
 			findTypeByOid(tinfo, numTypes, finfo[i].prorettype),
 			(finfo[i].lang) ? finfo[i].probin : finfo[i].prosrc,
-			(finfo[i].lang) ? "C" : "SQL");
+			(finfo[i].lang == INTERNALlanguageId) ? "INTERNAL" :
+				(finfo[i].lang == ClanguageId) ? "C" :
+					(finfo[i].lang == SQLlanguageId) ? "SQL" : "unknown");
 
 	fputs(q, fout);
 
