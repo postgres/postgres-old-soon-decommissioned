@@ -70,7 +70,7 @@ $(distdir).tar: distdir
 	$(TAR) chf $@ $(distdir)
 
 opt_files := \
-	src/tools src/corba src/data src/tutorial \
+	src/tools src/corba src/tutorial \
 	src/bin/pgtclsh \
 	$(addprefix src/interfaces/, libpgtcl jdbc) \
 	$(addprefix src/pl/, plperl plpython tcl)
