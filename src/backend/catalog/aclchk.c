@@ -616,7 +616,7 @@ pg_func_ownercheck(char *usename,
 							  PointerGetDatum(arglist),
 							  0);
 	if (!HeapTupleIsValid(htp))
-		func_error("pg_func_ownercheck", funcname, nargs, arglist);
+		func_error("pg_func_ownercheck", funcname, nargs, arglist, NULL);
 
 	owner_id = ((Form_pg_proc) GETSTRUCT(htp))->proowner;
 
