@@ -28,6 +28,12 @@
  * library as the file to be dynamically loaded.
  *
  */
+
+/* RTLD_GLOBAL is not available in <5.x */
+#ifndef RTLD_GLOBAL
+#define RTLD_GLOBAL 0
+#endif
+
 #define  pg_dlopen(f)	dlopen((f), RTLD_LAZY | RTLD_GLOBAL)
 #define  pg_dlsym(h, f) ((PGFunction) dlsym(h, f))
 #define  pg_dlclose(h)	dlclose(h)
