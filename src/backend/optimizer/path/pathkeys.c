@@ -240,10 +240,8 @@ get_cheapest_path_for_joinkeys(List *joinkeys,
 			pathorder_match(ordering, path->pathorder, &better_sort) &&
 			better_sort == 0)
 		{
-			if (matched_path)
-				if (path->path_cost < matched_path->path_cost)
-					matched_path = path;
-			else
+			if (matched_path == NULL ||
+				path->path_cost < matched_path->path_cost)
 				matched_path = path;
 		}
 	}
