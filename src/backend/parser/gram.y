@@ -1501,8 +1501,7 @@ CreateTrigStmt:  CREATE TRIGGER name TriggerActionTime TriggerEvents ON
 					n->args = $18;
 					n->before = false;
 					n->row = true;
-					n->actions[0] = $6;
-					n->actions[1] = '\0';
+					memcpy (n->actions, $6, 4);
 					n->lang = NULL;		/* unused */
 					n->text = NULL;		/* unused */
 					n->attr = NULL;		/* unused */
