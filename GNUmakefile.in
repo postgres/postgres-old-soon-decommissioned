@@ -16,7 +16,7 @@ all:
 install:
 	$(MAKE) -C doc install
 	$(MAKE) -C src install
-	@cat $(srcdir)/register.txt
+	@echo "PostgreSQL installation complete."
 
 installdirs uninstall distprep:
 	$(MAKE) -C doc $@
