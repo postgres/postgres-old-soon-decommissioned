@@ -87,16 +87,25 @@ format_type(PG_FUNCTION_ARGS)
 	PG_RETURN_DATUM(_textin(result));
 }
 
-
-
 /*
  * This version is for use within the backend in error messages, etc.
  * One difference is that it will fail for an invalid type.
+ *
+ * The result is always a palloc'd string.
  */
 char *
 format_type_be(Oid type_oid)
 {
 	return format_type_internal(type_oid, -1, false);
+}
+
+/*
+ * This version allows a nondefault typemod to be specified.
+ */
+char *
+format_type_with_typemod(Oid type_oid, int32 typemod)
+{
+	return format_type_internal(type_oid, typemod, false);
 }
 
 
