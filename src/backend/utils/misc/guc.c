@@ -42,6 +42,8 @@ extern int XLOGfiles;
 extern int XLOG_DEBUG;
 extern int CommitDelay;
 
+extern bool FixBTree;
+
 #ifdef ENABLE_SYSLOG
 extern char *Syslog_facility;
 extern char *Syslog_ident;
@@ -217,6 +219,8 @@ ConfigureNamesBool[] =
 	{"show_source_port",        PGC_SIGHUP,     &ShowPortNumber,        false},
 
 	{"sql_inheritance",         PGC_USERSET,    &SQL_inheritance,       true},
+
+	{"fixbtree",                PGC_POSTMASTER, &FixBTree,              true},
 
 	{NULL, 0, NULL, false}
 };
