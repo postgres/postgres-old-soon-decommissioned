@@ -31,7 +31,7 @@ filename_in(char *file)
 	 * (shexpand)
 	 */
 
-	str = (char *) palloc(MAXPATHLEN * sizeof(*str));
+	str = (char *) palloc(MAXPGPATH);
 	str[0] = '\0';
 	if (file[0] == '~')
 	{

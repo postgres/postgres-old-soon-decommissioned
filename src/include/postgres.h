@@ -28,7 +28,7 @@
  *		2)		varlena and array types
  *		3)		TransactionId and CommandId
  *		4)		genbki macros used by catalog/pg_xxx.h files
- *		5)		random CSIGNBIT, MAXPGPATH, STATUS macros
+ *		5)		random stuff
  *
  * ----------------------------------------------------------------
  */
@@ -157,9 +157,6 @@ typedef uint32 CommandId;
 
 /* msb for char */
 #define CSIGNBIT (0x80)
-
-/* this should probably be somewhere else */
-#define MAXPGPATH		128
 
 #define STATUS_OK				(0)
 #define STATUS_ERROR			(-1)

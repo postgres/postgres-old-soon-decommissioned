@@ -127,7 +127,7 @@ pg_krb4_init()
 	 */
 	if (realm = getenv("PGREALM"))
 	{
-		char		tktbuf[MAXPATHLEN];
+		char		tktbuf[MAXPGPATH];
 
 		(void) sprintf(tktbuf, "%s@%s", tkt_string(), realm);
 		krb_set_tkt_string(tktbuf);
@@ -272,7 +272,7 @@ pg_krb5_init(void)
 	krb5_error_code code;
 	char	   *realm,
 			   *defname;
-	char		tktbuf[MAXPATHLEN];
+	char		tktbuf[MAXPGPATH];
 	static krb5_ccache ccache = (krb5_ccache) NULL;
 
 	if (ccache)

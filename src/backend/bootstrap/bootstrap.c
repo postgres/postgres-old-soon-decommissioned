@@ -333,8 +333,10 @@ BootstrapMain(int argc, char *argv[])
 	 */
 	if (IsUnderPostmaster || xloginit)
 	{
-		sprintf(XLogDir, "%s%cpg_xlog", DataDir, SEP_CHAR);
-		sprintf(ControlFilePath, "%s%cpg_control", DataDir, SEP_CHAR);
+		snprintf(XLogDir, MAXPGPATH, "%s%cpg_xlog",
+				 DataDir, SEP_CHAR);
+		snprintf(ControlFilePath, MAXPGPATH, "%s%cpg_control",
+				 DataDir, SEP_CHAR);
 	}
 
 	if (IsUnderPostmaster && xloginit)

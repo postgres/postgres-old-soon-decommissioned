@@ -591,7 +591,7 @@ mdblindwrt(char *dbstr,
 	else
 /* this is work arround only !!! */
 	{
-		char		dbpath[MAXPGPATH + 1];
+		char		dbpath[MAXPGPATH];
 		Oid			id;
 		char	   *tmpPath;
 
@@ -628,7 +628,7 @@ mdblindwrt(char *dbstr,
 	else
 /* this is work arround only !!! */
 	{
-		char		dbpath[MAXPGPATH + 1];
+		char		dbpath[MAXPGPATH];
 		Oid			id;
 		char	   *tmpPath;
 

@@ -155,7 +155,8 @@ pq_close(void)
  *		Stream functions are used for vanilla TCP connection protocol.
  */
 
-static char sock_path[MAXPGPATH + 1] = "";
+static char sock_path[MAXPGPATH];
+
 
 /* StreamDoUnlink()
  * Shutdown routine for backend connection
