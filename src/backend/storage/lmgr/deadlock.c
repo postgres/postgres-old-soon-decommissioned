@@ -172,6 +172,10 @@ InitDeadLockChecking(void)
  * only look at regular locks.
  *
  * We must have already locked the master lock before being called.
+ * NOTE: although the lockmethod structure appears to allow each lock
+ * table to have a different masterLock, all locks that can block had
+ * better use the same LWLock, else this code will not be adequately
+ * interlocked!
  */
 bool
 DeadLockCheck(PGPROC *proc)

@@ -255,7 +255,7 @@ LockMethodTableInit(char *tabName,
 	/* This is just temp space in this routine, so palloc is OK. */
 	shmemName = (char *) palloc(strlen(tabName) + 32);
 
-	/* each lock table has a non-shared, permanent header */
+	/* each lock table has a header in shared memory */
 	sprintf(shmemName, "%s (lock method table)", tabName);
 	lockMethodTable = (LOCKMETHODTABLE *)
 		ShmemInitStruct(shmemName, sizeof(LOCKMETHODTABLE), &found);
