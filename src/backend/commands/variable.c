@@ -30,6 +30,17 @@
 #include "mb/pg_wchar.h"
 
 /*
+ * Some systems have tzname[] but don't declare it in <time.h>.  Use this
+ * to duplicate the test in AC_STRUCT_TIMEZONE.
+ */
+#ifdef HAVE_TZNAME
+#ifndef tzname /* For SGI.  */
+extern char *tzname[];
+#endif
+#endif
+
+
+/*
  * DATESTYLE
  */
 
@@ -325,8 +336,10 @@ tzset_succeeded(const char *tz)
 	/*
 	 * Check first set of heuristics to say that tzset definitely worked.
 	 */
+#ifdef HAVE_TZNAME
 	if (tzname[1] && tzname[1][0] != '\0')
 		return true;
+#endif
 	if (TIMEZONE_GLOBAL != 0)
 		return true;
 
