@@ -64,6 +64,7 @@ plpgsql_dstring_init(PLpgSQL_dstring * ds)
 {
 	ds->value = palloc(ds->alloc = 512);
 	ds->used = 0;
+	ds->value[0] = '\0';
 }
 
 
@@ -86,10 +87,14 @@ void
 plpgsql_dstring_append(PLpgSQL_dstring * ds, char *str)
 {
 	int			len = strlen(str);
+	int			needed = ds->used + len + 1;
 
-	if (ds->used + len + 1 > ds->alloc)
+	if (needed > ds->alloc)
 	{
-		ds->alloc *= 2;
+		/* might have to double more than once, if len is large */
+		do {
+			ds->alloc *= 2;
+		} while (needed > ds->alloc);
 		ds->value = repalloc(ds->value, ds->alloc);
 	}
 
