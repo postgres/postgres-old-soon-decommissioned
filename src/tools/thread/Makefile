@@ -8,7 +8,7 @@
 #
 #-------------------------------------------------------------------------
 
-subdir = tools/thread
+subdir = src/tools/thread
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
