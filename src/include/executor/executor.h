@@ -92,8 +92,7 @@ extern Datum ExecEvalExpr(ExprState *expression, ExprContext *econtext,
 extern Datum ExecEvalExprSwitchContext(ExprState *expression, ExprContext *econtext,
 						  bool *isNull, ExprDoneCond *isDone);
 extern ExprState *ExecInitExpr(Expr *node, PlanState *parent);
-extern SubPlanExprState *ExecInitExprInitPlan(SubPlanExpr *node,
-											  PlanState *parent);
+extern SubPlanState *ExecInitExprInitPlan(SubPlan *node, PlanState *parent);
 extern bool ExecQual(List *qual, ExprContext *econtext, bool resultForNull);
 extern int	ExecTargetListLength(List *targetlist);
 extern int	ExecCleanTargetListLength(List *targetlist);

@@ -65,7 +65,7 @@ static Node *flatten_join_alias_vars_mutator(Node *node,
  * NOTE: this is used on not-yet-planned expressions.  It may therefore find
  * bare SubLinks, and if so it needs to recurse into them to look for uplevel
  * references to the desired rtable level!	But when we find a completed
- * SubPlanExpr, we only need to look at the parameters passed to the subplan.
+ * SubPlan, we only need to look at the parameters passed to the subplan.
  */
 List *
 pull_varnos(Node *node)
@@ -111,9 +111,9 @@ pull_varnos_walker(Node *node, pull_varnos_context *context)
 		 * executed by the outer query.  But short-circuit recursion into
 		 * the subquery itself, which would be a waste of effort.
 		 */
-		SubPlanExpr *subplan = (SubPlanExpr *) node;
+		SubPlan *subplan = (SubPlan *) node;
 
-		if (pull_varnos_walker((Node *) subplan->sublink->oper,
+		if (pull_varnos_walker((Node *) subplan->oper,
 							   context))
 			return true;
 		if (pull_varnos_walker((Node *) subplan->args,
@@ -146,7 +146,7 @@ pull_varnos_walker(Node *node, pull_varnos_context *context)
  * NOTE: this is used on not-yet-planned expressions.  It may therefore find
  * bare SubLinks, and if so it needs to recurse into them to look for uplevel
  * references to the desired rtable entry!	But when we find a completed
- * SubPlanExpr, we only need to look at the parameters passed to the subplan.
+ * SubPlan, we only need to look at the parameters passed to the subplan.
  */
 bool
 contain_var_reference(Node *node, int varno, int varattno, int levelsup)
@@ -194,9 +194,9 @@ contain_var_reference_walker(Node *node,
 		 * executed by the outer query.  But short-circuit recursion into
 		 * the subquery itself, which would be a waste of effort.
 		 */
-		SubPlanExpr *subplan = (SubPlanExpr *) node;
+		SubPlan *subplan = (SubPlan *) node;
 
-		if (contain_var_reference_walker((Node *) subplan->sublink->oper,
+		if (contain_var_reference_walker((Node *) subplan->oper,
 										 context))
 			return true;
 		if (contain_var_reference_walker((Node *) subplan->args,

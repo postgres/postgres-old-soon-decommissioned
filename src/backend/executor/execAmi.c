@@ -61,7 +61,7 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 
 		foreach(lst, node->initPlan)
 		{
-			SubPlanExprState  *sstate = (SubPlanExprState *) lfirst(lst);
+			SubPlanState  *sstate = (SubPlanState *) lfirst(lst);
 			PlanState  *splan = sstate->planstate;
 
 			if (splan->plan->extParam != NIL)	/* don't care about child
@@ -72,7 +72,7 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 		}
 		foreach(lst, node->subPlan)
 		{
-			SubPlanExprState  *sstate = (SubPlanExprState *) lfirst(lst);
+			SubPlanState  *sstate = (SubPlanState *) lfirst(lst);
 			PlanState  *splan = sstate->planstate;
 
 			if (splan->plan->extParam != NIL)

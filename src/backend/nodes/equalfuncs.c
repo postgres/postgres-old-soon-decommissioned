@@ -296,16 +296,17 @@ _equalSubLink(SubLink *a, SubLink *b)
 }
 
 static bool
-_equalSubPlanExpr(SubPlanExpr *a, SubPlanExpr *b)
+_equalSubPlan(SubPlan *a, SubPlan *b)
 {
-	COMPARE_SCALAR_FIELD(typeOid);
+	COMPARE_SCALAR_FIELD(subLinkType);
+	COMPARE_SCALAR_FIELD(useor);
+	COMPARE_NODE_FIELD(oper);
 	/* should compare plans, but have to settle for comparing plan IDs */
 	COMPARE_SCALAR_FIELD(plan_id);
 	COMPARE_NODE_FIELD(rtable);
 	COMPARE_INTLIST_FIELD(setParam);
 	COMPARE_INTLIST_FIELD(parParam);
 	COMPARE_NODE_FIELD(args);
-	COMPARE_NODE_FIELD(sublink);
 
 	return true;
 }
@@ -1561,8 +1562,8 @@ equal(void *a, void *b)
 		case T_SubLink:
 			retval = _equalSubLink(a, b);
 			break;
-		case T_SubPlanExpr:
-			retval = _equalSubPlanExpr(a, b);
+		case T_SubPlan:
+			retval = _equalSubPlan(a, b);
 			break;
 		case T_FieldSelect:
 			retval = _equalFieldSelect(a, b);

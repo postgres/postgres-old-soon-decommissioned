@@ -20,7 +20,7 @@
 
 #define is_opclause(clause)		((clause) != NULL && IsA(clause, OpExpr))
 #define is_funcclause(clause)	((clause) != NULL && IsA(clause, FuncExpr))
-#define is_subplan(clause)		((clause) != NULL && IsA(clause, SubPlanExpr))
+#define is_subplan(clause)		((clause) != NULL && IsA(clause, SubPlan))
 
 
 extern Expr *make_opclause(Oid opno, Oid opresulttype, bool opretset,

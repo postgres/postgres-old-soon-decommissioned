@@ -2099,7 +2099,7 @@ get_rule_expr(Node *node, deparse_context *context,
 			get_sublink_expr((SubLink *) node, context);
 			break;
 
-		case T_SubPlanExpr:
+		case T_SubPlan:
 			{
 				/*
 				 * We cannot see an already-planned subplan in

@@ -540,7 +540,7 @@ _readSubLink(void)
 }
 
 /*
- * _readSubPlanExpr is not needed since it doesn't appear in stored rules.
+ * _readSubPlan is not needed since it doesn't appear in stored rules.
  */
 
 /*
