@@ -1476,7 +1476,7 @@ seq_search(char *name, char **array, int type, int max, int *len)
 		return -1;
 
 	/* set first char */
-	if (type == ONE_UPPER || ALL_UPPER)
+	if (type == ONE_UPPER || type == ALL_UPPER)
 		*name = toupper((unsigned char) *name);
 	else if (type == ALL_LOWER)
 		*name = tolower((unsigned char) *name);
@@ -2521,7 +2521,7 @@ dch_date(int arg, char *inout, int suf, int flag, FormatNode *node, void *data)
 			}
 			else if (flag == FROM_CHAR)
 			{
-				tmfc->mm = 12 - seq_search(inout, rm_months_lower, ALL_UPPER, FULL_SIZ, &len);
+				tmfc->mm = 12 - seq_search(inout, rm_months_lower, ALL_LOWER, FULL_SIZ, &len);
 				CHECK_SEQ_SEARCH(len, "rm");
 				if (S_FM(suf))
 					return len - 1;
