@@ -934,7 +934,7 @@ WaitOnLock(LOCKMETHOD lockmethod, LOCKMODE lockmode,
 	old_status = pstrdup(get_ps_display());
 	new_status = (char *) palloc(strlen(old_status) + 10);
 	strcpy(new_status, old_status);
-	strcat(new_status, " waiting");
+	strcat(new_status, "waiting");
 	set_ps_display(new_status);
 
 	/*
