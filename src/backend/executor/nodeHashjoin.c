@@ -400,7 +400,8 @@ ExecInitHashJoin(HashJoin *node, EState *estate, Plan *parent)
 	ExecAssignProjectionInfo((Plan *) node, &hjstate->jstate);
 
 	ExecSetSlotDescriptor(hjstate->hj_OuterTupleSlot,
-						  ExecGetTupType(outerNode));
+						  ExecGetTupType(outerNode),
+						  false);
 
 	/* ----------------
 	 *	initialize hash-specific info

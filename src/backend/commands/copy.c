@@ -638,7 +638,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp,
 	/* Set up a dummy tuple table too */
 	tupleTable = ExecCreateTupleTable(1);
 	slot = ExecAllocTableSlot(tupleTable);
-	ExecSetSlotDescriptor(slot, tupDesc);
+	ExecSetSlotDescriptor(slot, tupDesc, false);
 
 	if (!binary)
 	{

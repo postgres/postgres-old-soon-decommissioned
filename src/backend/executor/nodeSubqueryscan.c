@@ -77,9 +77,8 @@ SubqueryNext(SubqueryScan *node)
 		if (estate->es_evTupleNull[node->scan.scanrelid - 1])
 			return slot;		/* return empty slot */
 
-		/* probably ought to use ExecStoreTuple here... */
-		slot->val = estate->es_evTuple[node->scan.scanrelid - 1];
-		slot->ttc_shouldFree = false;
+		ExecStoreTuple(estate->es_evTuple[node->scan.scanrelid - 1],
+					   slot, InvalidBuffer, false);
 
 		/* Flag for the next call that no more tuples */
 		estate->es_evTupleNull[node->scan.scanrelid - 1] = true;

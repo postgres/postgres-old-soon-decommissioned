@@ -1817,7 +1817,7 @@ DefaultBuild(Relation heapRelation,
 	{
 		tupleTable = ExecCreateTupleTable(1);
 		slot = ExecAllocTableSlot(tupleTable);
-		ExecSetSlotDescriptor(slot, heapDescriptor);
+		ExecSetSlotDescriptor(slot, heapDescriptor, false);
 	}
 	else
 	{

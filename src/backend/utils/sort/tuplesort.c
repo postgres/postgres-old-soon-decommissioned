@@ -546,6 +546,7 @@ tuplesort_end(Tuplesortstate *state)
 	}
 	if (state->memtupindex)
 		pfree(state->memtupindex);
+	pfree(state);
 }
 
 /*

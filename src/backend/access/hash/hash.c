@@ -92,7 +92,7 @@ hashbuild(PG_FUNCTION_ARGS)
 	{
 		tupleTable = ExecCreateTupleTable(1);
 		slot = ExecAllocTableSlot(tupleTable);
-		ExecSetSlotDescriptor(slot, htupdesc);
+		ExecSetSlotDescriptor(slot, htupdesc, false);
 	}
 	else
 	{

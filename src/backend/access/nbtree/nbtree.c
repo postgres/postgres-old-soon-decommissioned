@@ -128,7 +128,7 @@ btbuild(PG_FUNCTION_ARGS)
 	{
 		tupleTable = ExecCreateTupleTable(1);
 		slot = ExecAllocTableSlot(tupleTable);
-		ExecSetSlotDescriptor(slot, htupdesc);
+		ExecSetSlotDescriptor(slot, htupdesc, false);
 
 		/*
 		 * we never want to use sort/build if we are extending an existing
