@@ -80,6 +80,7 @@ char		FloatFormat[20] = "%f";
 
 int			fsyncOff = 0;
 int			SortMem = 512;
+int			SortTuplesInTree = 2560;
 
 char	   *IndexedCatalogNames[] = {
 	AttributeRelationName,
