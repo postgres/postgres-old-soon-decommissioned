@@ -240,22 +240,13 @@ textlen(PG_FUNCTION_ARGS)
 	text	   *t = PG_GETARG_TEXT_P(0);
 
 #ifdef MULTIBYTE
-	unsigned char *s;
-	int			len,
-				l,
-				wl;
+	/* optimization for single byte encoding */
+	if (pg_database_encoding_max_length() <= 1)
+		PG_RETURN_INT32(VARSIZE(t) - VARHDRSZ);
 
-	len = 0;
-	s = VARDATA(t);
-	l = VARSIZE(t) - VARHDRSZ;
-	while (l > 0)
-	{
-		wl = pg_mblen(s);
-		l -= wl;
-		s += wl;
-		len++;
-	}
-	PG_RETURN_INT32(len);
+	PG_RETURN_INT32(
+		pg_mbstrlen_with_len(VARDATA(t), VARSIZE(t) - VARHDRSZ)
+		);
 #else
 	PG_RETURN_INT32(VARSIZE(t) - VARHDRSZ);
 #endif

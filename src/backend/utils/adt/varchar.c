@@ -598,6 +598,10 @@ bpcharlen(PG_FUNCTION_ARGS)
 	BpChar	   *arg = PG_GETARG_BPCHAR_P(0);
 
 #ifdef MULTIBYTE
+	/* optimization for single byte encoding */
+	if (pg_database_encoding_max_length() <= 1)
+		PG_RETURN_INT32(VARSIZE(arg) - VARHDRSZ);
+
 	PG_RETURN_INT32(
 			  pg_mbstrlen_with_len(VARDATA(arg), VARSIZE(arg) - VARHDRSZ)
 		);
@@ -806,6 +810,10 @@ varcharlen(PG_FUNCTION_ARGS)
 	VarChar    *arg = PG_GETARG_VARCHAR_P(0);
 
 #ifdef MULTIBYTE
+	/* optimization for single byte encoding */
+	if (pg_database_encoding_max_length() <= 1)
+		PG_RETURN_INT32(VARSIZE(arg) - VARHDRSZ);
+
 	PG_RETURN_INT32(
 			  pg_mbstrlen_with_len(VARDATA(arg), VARSIZE(arg) - VARHDRSZ)
 		);
