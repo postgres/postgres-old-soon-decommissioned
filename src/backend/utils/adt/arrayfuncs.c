@@ -224,6 +224,14 @@ _ArrayCount(char *str, int dim[], int typdelim)
         bool done = false;
         while (!done) {
             switch (*q) {
+#ifdef ESCAPE_PATCH
+            case '\\':
+                /* skip escaped characters (\ and ") inside strings */
+                if (scanning_string && *(q+1)) {
+                    q++;
+                }
+                break;
+#endif
 	    case '\"':
 		scanning_string = ! scanning_string;
 		break;

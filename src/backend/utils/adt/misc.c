@@ -17,8 +17,12 @@
 #include "catalog/pg_type.h"
 #include "utils/builtins.h"
 
-#if !defined(PORTNAME_linux) && !defined(PORTNAME_BSD44_derived) && \
-    !defined(PORTNAME_irix5) && !defined(PORTNAME_bsdi) && !defined(PORTNAME_bsdi_2_1) && !defined(PORTNAME_aix)
+#if !defined(PORTNAME_aix) && \
+    !defined(PORTNAME_BSD44_derived) && \
+    !defined(PORTNAME_bsdi) && \
+    !defined(PORTNAME_bsdi_2_1) && \
+    !defined(PORTNAME_irix5) && \
+    !defined(PORTNAME_linux)
 extern int random();
 extern int srandom(unsigned);
 #endif

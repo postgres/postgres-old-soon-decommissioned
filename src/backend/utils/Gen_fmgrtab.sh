@@ -195,12 +195,14 @@ cat > $TABCFILE <<FuNkYfMgRtAbStUfF
 #ifdef WIN32
 #include <limits.h>
 #else
-# if defined(PORTNAME_BSD44_derived) || defined(PORTNAME_bsdi) || defined(PORTNAME_bsdi_2_1)
+# if defined(PORTNAME_BSD44_derived) || \
+     defined(PORTNAME_bsdi) || \
+     defined(PORTNAME_bsdi_2_1)
 # include <machine/limits.h>
 # define MAXINT	INT_MAX
 # else
 # include <values.h>           /* for MAXINT */
-# endif /* PORTNAME_BSD44_derived || PORTNAME_bsdi || PORTNAME_bsdi_2_1 */
+# endif /* bsd descendents */
 #endif /* WIN32 */
 
 #include "utils/fmgrtab.h"

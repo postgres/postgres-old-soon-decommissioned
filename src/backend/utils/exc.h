@@ -23,10 +23,10 @@ extern Index ExcLineNumber;
  * ExcMessage and Exception are now defined in c.h
  */
 
-#if defined(PORTNAME_linux) \
-|| defined(PORTNAME_hpux) \
-|| defined(PORTNAME_next)\
-|| defined(WIN32)
+#if defined(PORTNAME_hpux) || \
+    defined(PORTNAME_linux) || \
+    defined(PORTNAME_next) || \
+    defined(WIN32)
 typedef jmp_buf		ExcContext;
 #else
 typedef sigjmp_buf	ExcContext;
