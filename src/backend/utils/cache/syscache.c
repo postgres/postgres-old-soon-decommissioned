@@ -19,6 +19,7 @@
  */
 #include "postgres.h"
 
+#include "utils/builtins.h"
 #include "access/heapam.h"
 #include "catalog/catname.h"
 #include "catalog/pg_aggregate.h"

@@ -37,8 +37,8 @@ CATALOG(pg_rewrite)
 	Oid			ev_class;
 	int2		ev_attr;
 	bool		is_instead;
-	text		ev_qual;		/* VARLENA */
-	text		ev_action;		/* VARLENA */
+	lztext		ev_qual;		/* Compressed text */
+	lztext		ev_action;		/* Compressed text */
 } FormData_pg_rewrite;
 
 /* ----------------

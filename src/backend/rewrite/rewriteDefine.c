@@ -15,13 +15,13 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
+#include "utils/builtins.h"
 #include "catalog/pg_rewrite.h"
 #include "lib/stringinfo.h"
 #include "parser/parse_relation.h"
 #include "rewrite/rewriteDefine.h"
 #include "rewrite/rewriteSupport.h"
 #include "tcop/tcopprot.h"
-#include "utils/builtins.h"
 
 Oid			LastOidProcessed = InvalidOid;
 
