@@ -602,12 +602,14 @@ ExecHashJoinNewBatch(HashJoinState *hjstate)
 	}
 
 	/*
-	 * We can skip over any batches that are empty on either side. Release
-	 * associated temp files right away.
+	 * Normally we can skip over any batches that are empty on either side
+	 * --- but for JOIN_LEFT, can only skip when left side is empty.
+	 * Release associated temp files right away.
 	 */
 	while (newbatch <= nbatch &&
-		   (innerBatchSize[newbatch - 1] == 0L ||
-			outerBatchSize[newbatch - 1] == 0L))
+		   (outerBatchSize[newbatch - 1] == 0L ||
+			(innerBatchSize[newbatch - 1] == 0L &&
+			 hjstate->js.jointype != JOIN_LEFT)))
 	{
 		BufFileClose(hashtable->innerBatchFile[newbatch - 1]);
 		hashtable->innerBatchFile[newbatch - 1] = NULL;
