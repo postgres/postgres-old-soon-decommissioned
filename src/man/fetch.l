@@ -43,20 +43,20 @@ because the data that they store spans multiple user queries.
 --
 begin 
    declare mycursor cursor for 
-   select * from pg-user
-end 
-.fi
-.nf
+   select * from pg-user;
 --
 --Fetch all the instances available in the cursor FOO
 --
-fetch all in FOO
-.fi
-.nf
+  fetch all in FOO;
 --
 --Fetch 5 instances backward in the cursor FOO
 --
-fetch backward 5 in FOO
+  fetch backward 5 in FOO;
+--
+--close
+--
+  close foo;
+end;
 .fi
 .SH "SEE ALSO"
 begin(l),
