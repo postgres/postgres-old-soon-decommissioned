@@ -19,7 +19,7 @@ include ../../Makefile.global
 #
 include Makefile.tcldefs
 ifeq ($(USE_TK), true)
-	include Makefile.tkdefs
+include Makefile.tkdefs
 endif
 
 CFLAGS+= $(X_CFLAGS) -I$(SRCDIR)/interfaces/libpgtcl 
@@ -29,7 +29,6 @@ LDFLAGS+= $(KRBLIBS)
 CFLAGS+= $(KRBFLAGS)
 endif
 
-# try to find libpgtcl.a in either directory
 LIBPGTCL= -L$(SRCDIR)/interfaces/libpgtcl -lpgtcl
 LIBPQ= -L$(LIBPQDIR) -lpq
 
@@ -39,17 +38,11 @@ INSTPGMS = install_tcl
 
 # Add TK targets if TK is available
 ifeq ($(USE_TK), true)
-	PGMS += pgtksh
-	INSTPGMS += install_tk
+PGMS += pgtksh
+INSTPGMS += install_tk
 endif
 
 all: $(PGMS)
-
-Makefile.tcldefs:
-	/bin/sh mkMakefile.tcldefs.sh
-
-Makefile.tkdefs:
-	/bin/sh mkMakefile.tkdefs.sh
 
 pgtclsh: pgtclAppInit.o
 	$(CC) $(CFLAGS) $(TCL_DEFS) -o $@ pgtclAppInit.o \
@@ -67,6 +60,12 @@ install_tcl: pgtclsh
 
 install_tk: pgtksh
 	$(INSTALL) $(INSTL_EXE_OPTS) pgtksh $(BINDIR)/pgtksh
+
+Makefile.tcldefs: mkMakefile.tcldefs.sh
+	/bin/sh mkMakefile.tcldefs.sh
+
+Makefile.tkdefs: mkMakefile.tkdefs.sh
+	/bin/sh mkMakefile.tkdefs.sh
 
 clean:
 	rm -f *.o Makefile.t*defs pgtclsh pgtksh
