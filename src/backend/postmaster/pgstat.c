@@ -1754,6 +1754,7 @@ pgstat_add_backend(PgStat_MsgHdr *msg)
 	beentry->databaseid = msg->m_databaseid;
 	beentry->procpid    = msg->m_procpid;
 	beentry->userid		= msg->m_userid;
+	MemSet(beentry->activity, 0, PGSTAT_ACTIVITY_SIZE);
 
 	/*
 	 * Lookup or create the database entry for this backends DB.
