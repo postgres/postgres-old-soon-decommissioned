@@ -433,6 +433,18 @@ fi
 
 
 # ----------
+# Remove regressuser* and regressgroup* user accounts.
+# ----------
+
+message "dropping regression test user accounts"
+"$bindir/psql" $psql_options -c 'drop group regressgroup1; drop group regressgroup2; drop user regressuser1, regressuser2, regressuser3, regressuser4;' $dbname 2>/dev/null
+if [ $? -eq 2 ]; then
+    echo "$me: could not drop user accounts"
+    (exit 2); exit
+fi
+
+
+# ----------
 # Install the PL/pgSQL language in it
 # ----------
 

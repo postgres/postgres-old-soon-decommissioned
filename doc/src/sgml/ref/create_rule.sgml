@@ -5,9 +5,7 @@ Postgres documentation
 
 <refentry id="SQL-CREATERULE">
  <refmeta>
-  <refentrytitle id="sql-createrule-title">
-   CREATE RULE
-  </refentrytitle>
+  <refentrytitle id="sql-createrule-title">CREATE RULE</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

@@ -5,9 +5,7 @@ Postgres documentation
 
 <refentry id="SQL-COPY">
  <refmeta>
-  <refentrytitle id="sql-copy-title">
-   COPY
-  </refentrytitle>
+  <refentrytitle id="sql-copy-title">COPY</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

@@ -5,9 +5,7 @@ Postgres documentation
 
 <refentry id="SQL-INSERT">
  <refmeta>
-  <refentrytitle id="SQL-INSERT-TITLE">
-   INSERT
-  </refentrytitle>
+  <refentrytitle id="SQL-INSERT-TITLE">INSERT</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

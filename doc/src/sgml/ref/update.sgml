@@ -5,9 +5,7 @@ Postgres documentation
 
 <refentry id="SQL-UPDATE">
  <refmeta>
-  <refentrytitle id="SQL-UPDATE-TITLE">
-   UPDATE
-  </refentrytitle>
+  <refentrytitle id="SQL-UPDATE-TITLE">UPDATE</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

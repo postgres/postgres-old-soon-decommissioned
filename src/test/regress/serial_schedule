@@ -68,6 +68,7 @@ test: portals
 test: arrays
 test: btree_index
 test: hash_index
+test: privileges
 test: misc
 test: select_views
 test: alter_table

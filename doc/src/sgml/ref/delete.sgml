@@ -5,9 +5,7 @@ Postgres documentation
 
 <refentry id="SQL-DELETE">
  <refmeta>
-  <refentrytitle id="SQL-DELETE-TITLE">
-   DELETE
-  </refentrytitle>
+  <refentrytitle id="SQL-DELETE-TITLE">DELETE</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

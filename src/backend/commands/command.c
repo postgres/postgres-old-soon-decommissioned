@@ -1939,9 +1939,10 @@ LockTableCommand(LockStmt *lockstmt)
 		elog(ERROR, "LOCK TABLE: %s is not a table", lockstmt->relname);
 
 	if (lockstmt->mode == AccessShareLock)
-		aclresult = pg_aclcheck(lockstmt->relname, GetUserId(), ACL_RD);
+		aclresult = pg_aclcheck(lockstmt->relname, GetUserId(), ACL_SELECT);
 	else
-		aclresult = pg_aclcheck(lockstmt->relname, GetUserId(), ACL_WR);
+		aclresult = pg_aclcheck(lockstmt->relname, GetUserId(),
+								ACL_UPDATE | ACL_DELETE);
 
 	if (aclresult != ACLCHECK_OK)
 		elog(ERROR, "LOCK TABLE: permission denied");

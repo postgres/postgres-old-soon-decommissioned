@@ -1187,8 +1187,8 @@ Access permissions for database "test"
 	</para>
 
 	<para>
-	The commands <xref linkend="SQL-GRANT" endterm="SQL-GRANT-title"> and
-	<xref linkend="SQL-REVOKE" endterm="SQL-REVOKE-title">
+	The commands <xref linkend="SQL-GRANT"> and
+	<xref linkend="SQL-REVOKE">
 	are used to set access permissions.
 	</para>
 

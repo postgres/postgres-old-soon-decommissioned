@@ -267,7 +267,7 @@ ProcessUtility(Node *parsetree,
 								int			aclcheck_result;
 
 								relationName = RewriteGetRuleEventRel(rulename);
-								aclcheck_result = pg_aclcheck(relationName, GetUserId(), ACL_RU);
+								aclcheck_result = pg_aclcheck(relationName, GetUserId(), ACL_RULE);
 								if (aclcheck_result != ACLCHECK_OK)
 									elog(ERROR, "%s: %s", relationName,
 										 aclcheck_error_strings[aclcheck_result]);
@@ -550,7 +550,7 @@ ProcessUtility(Node *parsetree,
 				int			aclcheck_result;
 
 				relname = stmt->object->relname;
-				aclcheck_result = pg_aclcheck(relname, GetUserId(), ACL_RU);
+				aclcheck_result = pg_aclcheck(relname, GetUserId(), ACL_RULE);
 				if (aclcheck_result != ACLCHECK_OK)
 					elog(ERROR, "%s: %s", relname, aclcheck_error_strings[aclcheck_result]);
 				set_ps_display(commandTag = "CREATE");

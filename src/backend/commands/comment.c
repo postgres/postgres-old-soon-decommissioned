@@ -468,7 +468,7 @@ CommentRewrite(char *rule, char *comment)
 
 #ifndef NO_SECURITY
 	relation = RewriteGetRuleEventRel(rule);
-	aclcheck = pg_aclcheck(relation, GetUserId(), ACL_RU);
+	aclcheck = pg_aclcheck(relation, GetUserId(), ACL_RULE);
 	if (aclcheck != ACLCHECK_OK)
 	{
 		elog(ERROR, "you are not permitted to comment on rule '%s'",

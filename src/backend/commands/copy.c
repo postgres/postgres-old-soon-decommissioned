@@ -271,7 +271,7 @@ DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
 
 	FILE	   *fp;
 	Relation	rel;
-	const AclMode required_access = from ? ACL_WR : ACL_RD;
+	const AclMode required_access = from ? ACL_INSERT : ACL_SELECT;
 	int			result;
 
 	/*

@@ -5,9 +5,7 @@ Postgres documentation
 
 <refentry id="SQL-SELECT">
  <refmeta>
-  <refentrytitle id="sql-select-title">
-   SELECT
-  </refentrytitle>
+  <refentrytitle id="sql-select-title">SELECT</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>
