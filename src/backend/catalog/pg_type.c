@@ -318,6 +318,7 @@ TypeCreate(char *typeName,
 	TupleDesc	tupDesc;
 
 	Oid			argList[8];
+	NameData	 	name;
 
 
 	static ScanKeyData typeKey[1] = {
@@ -387,7 +388,8 @@ TypeCreate(char *typeName,
 	 * ----------------
 	 */
 	i = 0;
-	values[i++] = PointerGetDatum(typeName);	/* 1 */
+	namestrcpy(&name,typeName);
+	values[i++] = NameGetDatum(&name);	/* 1 */
 	values[i++] = (Datum) GetUserId();	/* 2 */
 	values[i++] = (Datum) internalSize; /* 3 */
 	values[i++] = (Datum) externalSize; /* 4 */
