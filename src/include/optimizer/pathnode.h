@@ -33,9 +33,9 @@ extern MergePath *create_mergejoin_path(RelOptInfo *joinrel, int outersize,
 		   List *mergeclauses, List *outersortkeys, List *innersortkeys);
 
 extern HashPath *create_hashjoin_path(RelOptInfo *joinrel, int outersize,
-		 int innersize, int outerwidth, int innerwidth, Path *outer_path,
-	   Path *inner_path, List *pathkeys, Oid operator, List *hashclauses,
-					 List *outerkeys, List *innerkeys);
+		int innersize, int outerwidth, int innerwidth, Path *outer_path,
+		Path *inner_path, List *pathkeys, Oid operator, List *hashclauses,
+		List *outerkeys, List *innerkeys, Cost innerdisbursion);
 
 /*
  * prototypes for rel.c
