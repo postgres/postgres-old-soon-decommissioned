@@ -22,7 +22,6 @@
 #include <errno.h>
 #include <pwd.h>
 #include <unistd.h>
-#include <locale.h>
 
 #if defined(__alpha) && defined(__osf__)
 #include <sys/sysinfo.h>

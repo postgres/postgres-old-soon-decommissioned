@@ -72,7 +72,6 @@
 #include <ctype.h>
 #include <sys/time.h>
 #include <unistd.h>
-#include <locale.h>
 #include <math.h>
 #include <float.h>
 

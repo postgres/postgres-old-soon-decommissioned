@@ -22,7 +22,6 @@
 #include <unistd.h>
 #include <grp.h>
 #include <pwd.h>
-#include <stdlib.h>
 #include <errno.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>

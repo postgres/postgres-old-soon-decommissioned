@@ -16,7 +16,6 @@
 
 #include <errno.h>
 #include <semaphore.h>
-#include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/mman.h>

@@ -70,7 +70,6 @@
 
 #include <ctype.h>
 #include <math.h>
-#include <locale.h>
 
 #include "access/heapam.h"
 #include "access/tuptoaster.h"

@@ -14,12 +14,13 @@
  *-------------------------------------------------------------------------
  */
 /* System includes */
+
+#include "postgres.h"
+
 /*
-#include <stdio.h>
 #include <a.out.h>
 #include <dl.h>
 */
-#include "postgres.h"
 
 #include "utils/dynamic_loader.h"
 #include "dynloader.h"

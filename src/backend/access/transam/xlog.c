@@ -21,7 +21,6 @@
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <dirent.h>
-#include <locale.h>
 
 #include "access/clog.h"
 #include "access/transam.h"

@@ -11,8 +11,6 @@
 
 #include "postgres.h"
 
-#include <string.h>
-#include <stdarg.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <errno.h>
