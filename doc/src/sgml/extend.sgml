@@ -107,7 +107,7 @@ $Header$
    </para>
   </sect1>
 
-  <sect1 id="system-catalogs">
+  <sect1 id="pg-system-catalogs">
    <title>About the <productname>Postgres</productname> System Catalogs</title>
 
    <para>

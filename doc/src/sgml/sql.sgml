@@ -1574,7 +1574,7 @@ CREATE INDEX I ON SUPPLIER (SNAME);
       view (i.e. the rules about how to access physically stored base
       tables in order to materialize the view) somewhere in the system
       catalogs (see
-      <xref linkend="catalogs-title" endterm="catalogs-title">). For a
+      <xref linkend="tutorial-catalogs-title" endterm="tutorial-catalogs-title">). For a
       discussion on different techniques to implement views refer to
 <!--
       section
@@ -1783,8 +1783,8 @@ DELETE FROM SUPPLIER
     </sect3>
    </sect2>
 
-   <sect2 id="catalogs">
-    <title id="catalogs-title">System Catalogs</title>
+   <sect2 id="tutorial-catalogs">
+    <title id="tutorial-catalogs-title">System Catalogs</title>
 
     <para>
      In every <acronym>SQL</acronym> database system
