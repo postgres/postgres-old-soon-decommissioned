@@ -28,10 +28,6 @@ VPATH:= $(VPATH):../backend/lib
  
 OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-lobj.o \
          ../backend/lib/dllist.o pqsignal.o 
-ifeq ($(PORTNAME), next)
-VPATH:=$(VPATH):../backend/port/$(PORTNAME)
-OBJS+= getcwd.o putenv.o
-endif
 
 shlib := 
 ifdef LINUX_ELF
