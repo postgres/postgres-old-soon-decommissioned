@@ -71,8 +71,8 @@ main(int argc, char *argv[])
 	char		ControlFilePath[MAXPGPATH];
 	char	   *DataDir;
 	crc64		crc;
-	char		pgctime_str[32];
-	char		ckpttime_str[32];
+	char		pgctime_str[128];
+	char		ckpttime_str[128];
 	char		sysident_str[32];
 	char	   *strftime_fmt = "%c";
 	char	   *progname;

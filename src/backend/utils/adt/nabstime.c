@@ -1724,8 +1724,8 @@ timeofday(PG_FUNCTION_ARGS)
 {
 	struct timeval tp;
 	struct timezone tpz;
-	char		templ[100];
-	char		buf[100];
+	char		templ[128];
+	char		buf[128];
 	text	   *result;
 	int			len;
 

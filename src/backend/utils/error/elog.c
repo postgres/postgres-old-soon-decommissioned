@@ -1187,9 +1187,9 @@ log_line_prefix(StringInfo buf)
 			case 't':
 				{
 					time_t stamp_time = time(NULL);
-					char strfbuf[32];
+					char strfbuf[128];
 
-					strftime(strfbuf, sizeof(strfbuf), "%Y-%m-%d %H:%M:%S",
+					strftime(strfbuf, sizeof(strfbuf), "%Y-%m-%d %H:%M:%S %Z",
 							 localtime(&stamp_time));
 					appendStringInfoString(buf, strfbuf);
 				}
@@ -1198,9 +1198,9 @@ log_line_prefix(StringInfo buf)
 				if (MyProcPort)
 				{
 					time_t stamp_time = MyProcPort->session_start.tv_sec;
-					char strfbuf[32];
+					char strfbuf[128];
 
-					strftime(strfbuf, sizeof(strfbuf), "%Y-%m-%d %H:%M:%S",
+					strftime(strfbuf, sizeof(strfbuf), "%Y-%m-%d %H:%M:%S %Z",
 							 localtime(&stamp_time));
 					appendStringInfoString(buf, strfbuf);
 				}
