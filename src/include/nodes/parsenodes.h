@@ -708,6 +708,7 @@ typedef struct ColumnDef
 	char	   *colname;		/* name of column */
 	TypeName   *typename;		/* type of column */
 	bool		is_not_null;	/* flag to NOT NULL constraint */
+	bool		is_sequence;	/* is a sequence? */
 	char	   *defval;			/* default value of column */
 	List	   *constraints;	/* constraints on column */
 } ColumnDef;
