@@ -261,7 +261,7 @@ AC_MSG_NOTICE([using CFLAGS=$CFLAGS])
 
 # We already have this in Makefile.win32, but configure needs it too
 if test "$PORTNAME" = "win32"; then
-  CPPFLAGS="$CPPFLAGS -I$srcdir/src/include/port/win32"
+  CPPFLAGS="$CPPFLAGS -I$srcdir/src/include/port/win32 -DEXEC_BACKEND"
 fi
 
 # Check if the compiler still works with the template settings
@@ -905,10 +905,11 @@ esac
 
 # Win32 can't to rename or unlink on an open file
 case $host_os in mingw*)
-AC_LIBOBJ(dirmod)
 AC_LIBOBJ(copydir)
+AC_LIBOBJ(dirmod)
 AC_LIBOBJ(gettimeofday)
-AC_LIBOBJ(pipe) ;;
+AC_LIBOBJ(pipe)
+AC_LIBOBJ(rand) ;;
 esac
 
 if test "$with_readline" = yes; then
