@@ -58,6 +58,11 @@ TRUNCATE [ TABLE ] <replaceable class="PARAMETER">name</replaceable>
    to the table from other tables.  Checking validity in such cases would
    require table scans, and the whole point is not to do one.
   </para>
+
+  <para>
+   <command>TRUNCATE</> will not run any user-defined ON DELETE triggers
+   that might exist for the table.
+  </para>
  </refsect1>
 
  <refsect1>
