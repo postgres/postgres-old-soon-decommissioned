@@ -4598,10 +4598,11 @@ AexprConst:  Iconst
 				}
 		;
 
-ParamNo:  PARAM
+ParamNo:  PARAM opt_indirection
 				{
 					$$ = makeNode(ParamNo);
 					$$->number = $1;
+					$$->indirection = $2;
 				}
 		;
 

@@ -667,6 +667,7 @@ typedef struct ParamNo
 	NodeTag		type;
 	int			number;			/* the number of the parameter */
 	TypeName   *typename;		/* the typecast */
+	List	   *indirection;	/* array references */
 } ParamNo;
 
 /*
