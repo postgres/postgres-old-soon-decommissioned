@@ -7777,3 +7777,5 @@ doNegateFloat(Value *v)
 		v->val.str = newval;
 	}
 }
+
+#include "scan.c"

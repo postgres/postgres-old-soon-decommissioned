@@ -14,9 +14,9 @@ override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 
 # qnx4's wlink currently crashes with bootstrap.o
 ifneq ($(PORTNAME), qnx4)
-OBJS= bootparse.o bootscanner.o bootstrap.o 
+OBJS= bootparse.o bootstrap.o 
 else
-OBJS= bootparse.o bootscanner.o
+OBJS= bootparse.o
 endif
 
 
@@ -27,8 +27,10 @@ SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) $@ $^
 
 
-bootstrap.o bootscanner.o: $(srcdir)/bootstrap_tokens.h
+bootstrap.o bootparse.o: $(srcdir)/bootstrap_tokens.h
 
+# bootscanner is compiled as part of bootparse
+bootparse.o: $(srcdir)/bootscanner.c
 
 # `sed' rules to remove conflicts between bootstrap scanner and parser
 # and the SQL scanner and parser. For correctness' sake the rules that

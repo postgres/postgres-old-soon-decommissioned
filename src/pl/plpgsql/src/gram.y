@@ -1997,3 +1997,5 @@ check_assignable(PLpgSQL_datum *datum)
 			break;
 	}
 }
+
+#include "pl_scan.c"

@@ -5,12 +5,15 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
 MODULE_big = cube
-OBJS= cube.o cubeparse.o cubescan.o buffer.o
+OBJS= cube.o cubeparse.o buffer.o
 
 DATA_built = cube.sql
 DOCS = README.cube
 REGRESS = cube
 
+
+# cubescan is compiled as part of cubeparse
+cubeparse.o: cubescan.c
 
 cubeparse.c: cubeparse.h ;
 

@@ -23,7 +23,7 @@ override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 SHLIB_LINK = $(BE_DLLLIBS)
 rpath :=
 
-OBJS = pl_gram.o pl_scan.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
+OBJS = pl_gram.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
 
 ifneq ($(PORTNAME), qnx4)
 all: all-lib
@@ -59,7 +59,10 @@ installdirs:
 uninstall:
 	rm -f $(DESTDIR)$(pkglibdir)/plpgsql$(DLSUFFIX)
 
-pl_gram.o pl_scan.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o: plpgsql.h $(srcdir)/pl.tab.h
+pl_gram.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o: plpgsql.h $(srcdir)/pl.tab.h
+
+# pl_scan is compiled as part of pl_gram
+pl_gram.o: $(srcdir)/pl_scan.c
 
 # Note: Since the yacc and lex files are shipped in the distribution,
 # they must be generated in the srcdir (as opposed to builddir).

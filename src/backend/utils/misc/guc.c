@@ -3014,3 +3014,5 @@ assign_msglvl(int *var, const char *newval, bool doit, bool interactive)
 		return NULL;			/* fail */
 	return newval;				/* OK */
 }
+
+#include "guc-file.c"

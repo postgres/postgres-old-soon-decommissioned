@@ -335,3 +335,5 @@ boot_ident :
 		  ID	{ $$=yylval.ival; }
 		;
 %%
+
+#include "bootscanner.c"

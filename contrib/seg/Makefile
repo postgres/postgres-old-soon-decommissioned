@@ -5,11 +5,14 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
 MODULE_big = seg
-OBJS = seg.o segparse.o segscan.o buffer.o
+OBJS = seg.o segparse.o buffer.o
 DATA_built = seg.sql
 DOCS = README.seg
 REGRESS = seg
 
+
+# segscan is compiled as part of segparse
+segparse.o: segscan.c
 
 segparse.c: segparse.h ;
 

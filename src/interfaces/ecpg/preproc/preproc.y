@@ -5567,3 +5567,5 @@ void yyerror( char * error)
 	buf[sizeof(buf)-1]=0;
 	mmerror(PARSE_ERROR, ET_ERROR, buf);
 }
+
+#include "pgc.c"
