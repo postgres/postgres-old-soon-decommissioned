@@ -22,6 +22,7 @@
 #include <netdb.h>
 #include <errno.h>
 #include <signal.h>
+#include <ctype.h>      /* for isspace() */
 
 #include "postgres.h"
 #include "libpq/pqcomm.h" /* for decls of MsgType, PacketBuf, StartupInfo */
