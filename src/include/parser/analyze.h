@@ -19,4 +19,7 @@ extern List *parse_analyze(Node *parseTree, ParseState *parentParseState);
 
 extern void CheckSelectForUpdate(Query *qry);
 
+/* This was exported to allow ADD CONSTRAINT to make use of it */
+extern char *makeObjectName(char *name1, char *name2, char *typename);
+
 #endif	 /* ANALYZE_H */

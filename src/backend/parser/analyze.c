@@ -562,7 +562,7 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
  *	from the truncated characters.	Currently it seems best to keep it simple,
  *	so that the generated names are easily predictable by a person.
  */
-static char *
+char *
 makeObjectName(char *name1, char *name2, char *typename)
 {
 	char	   *name;
