@@ -9,8 +9,6 @@
 #include "common.h"
 
 #include <ctype.h>
-#include <errno.h>
-#include <stdarg.h>
 #ifndef HAVE_STRDUP
 #include <strdup.h>
 #endif
