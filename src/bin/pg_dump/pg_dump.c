@@ -2290,7 +2290,7 @@ getIndices(int *numIndices)
  *------------------------------------------------------------------
 */
 
-void
+static void
 dumpComment(FILE *fout, const char *target, const char *oid)
 {
 
