@@ -815,6 +815,9 @@ OptSchemaEltList:
  */
 schema_stmt:
 			CreateStmt
+			| IndexStmt
+			| CreateSeqStmt
+			| CreateTrigStmt
 			| GrantStmt
 			| ViewStmt
 		;
