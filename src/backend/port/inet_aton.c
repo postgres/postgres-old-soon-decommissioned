@@ -42,11 +42,11 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.  */
 
-#include "config.h"
-
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <ctype.h>
+
+#include "config.h"
 
 /*
  * Check whether "cp" is a valid ascii representation
