@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sat Jun 28 14:05:02 EDT 2003
+Last updated:		Sat Jul 19 23:12:45 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -83,7 +83,8 @@ Data Types
   from making invalid dates valid
 * Prevent month/day swapping of ISO dates to make invalid dates valid
 * Have initdb set DateStyle based on locale?
-
+* Delay resolution of array expression type so assignment coercion 
+  can be performed on empty array expressions (Joe)
 
 * ARRAYS
 	o Allow nulls in arrays
