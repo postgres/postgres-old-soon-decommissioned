@@ -130,7 +130,7 @@ DefineIndex(char *heapRelationName,
 		CheckPredicate(cnfPred, rangetable, relationId);
 	}
 
-	if (!IsBootstrapProcessingMode() && !IndexesAreActive(relationId, false))
+	if (!IsBootstrapProcessingMode() && IsSystemRelationName(heapRelationName) && !IndexesAreActive(relationId, false))
 		elog(ERROR, "Existing indexes are inactive. REINDEX first");
 
 	/*
