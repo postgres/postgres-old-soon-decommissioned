@@ -29,6 +29,7 @@
 
 #include "postgres.h"
 
+#include "storage/buf_internals.h"
 #include "storage/bufmgr.h"
 
 static HTAB *SharedBufHash;

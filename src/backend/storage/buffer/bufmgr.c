@@ -56,6 +56,8 @@
 
 #include "executor/execdebug.h"
 #include "miscadmin.h"
+#include "storage/buf_internals.h"
+#include "storage/bufmgr.h"
 #include "storage/s_lock.h"
 #include "storage/smgr.h"
 #include "utils/relcache.h"

@@ -18,6 +18,7 @@
 #include "access/transam.h"
 #include "catalog/catalog.h"
 #include "miscadmin.h"
+#include "storage/lmgr.h"
 #include "utils/inval.h"
 
 

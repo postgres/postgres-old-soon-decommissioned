@@ -20,12 +20,14 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <time.h>
-
 #include "postgres.h"
+
+#include <time.h>
 
 #include "access/nbtree.h"
 #include "miscadmin.h"
+#include "storage/lmgr.h"
+
 
 /*
  *	We use high-concurrency locking on btrees.	There are two cases in

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * bufmgr.c
+ * xlog_bufmgr.c
  *	  buffer manager interface routines
  *
  * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
@@ -39,14 +39,17 @@
  *		freelist.c -- chooses victim for buffer replacement
  *		buf_table.c -- manages the buffer lookup table
  */
+#include "postgres.h"
+
 #include <sys/types.h>
 #include <sys/file.h>
 #include <math.h>
 #include <signal.h>
 
-#include "postgres.h"
 #include "executor/execdebug.h"
 #include "miscadmin.h"
+#include "storage/buf_internals.h"
+#include "storage/bufmgr.h"
 #include "storage/s_lock.h"
 #include "storage/smgr.h"
 #include "utils/relcache.h"

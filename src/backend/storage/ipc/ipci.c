@@ -19,6 +19,7 @@
 #include "miscadmin.h"
 #include "access/xlog.h"
 #include "storage/bufmgr.h"
+#include "storage/lmgr.h"
 #include "storage/proc.h"
 #include "storage/sinval.h"
 #include "storage/spin.h"

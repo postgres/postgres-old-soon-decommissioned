@@ -29,6 +29,7 @@
 #include "access/genam.h"
 #include "access/hash.h"
 #include "miscadmin.h"
+#include "storage/lmgr.h"
 
 
 static void _hash_setpagelock(Relation rel, BlockNumber blkno, int access);
