@@ -54,12 +54,6 @@ LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool *foundPtr)
 	int			i;
 	BufferDesc *bufHdr = (BufferDesc *) NULL;
 
-	if (blockNum == P_NEW)
-	{
-		blockNum = reln->rd_nblocks;
-		reln->rd_nblocks++;
-	}
-
 	/* a low tech search for now -- not optimized for scans */
 	for (i = 0; i < NLocBuffer; i++)
 	{

@@ -164,7 +164,7 @@ extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
 extern int	WriteBuffer(Buffer buffer);
 extern int	WriteNoReleaseBuffer(Buffer buffer);
 extern Buffer ReleaseAndReadBuffer(Buffer buffer, Relation relation,
-					 BlockNumber blockNum);
+								   BlockNumber blockNum, bool isExtend);
 extern int	FlushBuffer(Buffer buffer, bool sync, bool release);
 
 extern void InitBufferPool(void);

@@ -487,7 +487,7 @@ heapgettup(Relation relation,
 			return;
 		}
 
-		*buffer = ReleaseAndReadBuffer(*buffer, relation, page);
+		*buffer = ReleaseAndReadBuffer(*buffer, relation, page, false);
 
 		if (!BufferIsValid(*buffer))
 			elog(ERROR, "heapgettup: failed ReadBuffer");
