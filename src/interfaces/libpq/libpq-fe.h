@@ -447,6 +447,9 @@ extern int	lo_export(PGconn *conn, Oid lobjId, const char *filename);
 /* Determine length of multibyte encoded char at *s */
 extern int	PQmblen(const unsigned char *s, int encoding);
 
+/* Determine display length of multibyte encoded char at *s */
+extern int	PQdsplen(const unsigned char *s, int encoding);
+
 /* Get encoding id from environment variable PGCLIENTENCODING */
 extern int	PQenv2encoding(void);
 

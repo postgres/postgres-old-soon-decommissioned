@@ -463,6 +463,13 @@ pg_mblen(const unsigned char *mbstr)
 	return ((*pg_wchar_table[DatabaseEncoding->encoding].mblen) (mbstr));
 }
 
+/* returns the display length of a multibyte word */
+int
+pg_dsplen(const unsigned char *mbstr)
+{
+	return ((*pg_wchar_table[DatabaseEncoding->encoding].dsplen) (mbstr));
+}
+
 /* returns the length (counted as a wchar) of a multibyte string */
 int
 pg_mbstrlen(const unsigned char *mbstr)

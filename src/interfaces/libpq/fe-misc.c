@@ -1096,6 +1096,16 @@ PQmblen(const unsigned char *s, int encoding)
 }
 
 /*
+ * returns the display length of the word beginning s, using the
+ * specified encoding.
+ */
+int
+PQdsplen(const unsigned char *s, int encoding)
+{
+	return (pg_encoding_dsplen(encoding, s));
+}
+
+/*
  * Get encoding id from environment variable PGCLIENTENCODING.
  */
 int

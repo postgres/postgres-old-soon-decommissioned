@@ -410,7 +410,7 @@ ReportSyntaxErrorPosition(const PGresult *result, const char *query)
 	{
 		qidx[i] = qoffset;
 		scridx[i] = scroffset;
-		scroffset += 1;		/* XXX fix me when we have screen width info */
+		scroffset += PQdsplen(&query[qoffset], pset.encoding);
 		qoffset += PQmblen(&query[qoffset], pset.encoding);
 	}
 	qidx[i] = qoffset;
@@ -526,7 +526,7 @@ ReportSyntaxErrorPosition(const PGresult *result, const char *query)
 		scroffset = 0;
 		for (i = 0; i < msg.len; i += PQmblen(&msg.data[i], pset.encoding))
 		{
-			scroffset += 1;		/* XXX fix me when we have screen width info */
+			scroffset += PQdsplen(&msg.data[i], pset.encoding);
 		}
 
 		/* Finish and emit the message. */
