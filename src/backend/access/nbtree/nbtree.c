@@ -693,7 +693,7 @@ btvacuumcleanup(PG_FUNCTION_ARGS)
 	/* No point in remembering more than MaxFSMPages pages */
 	maxFreePages = MaxFSMPages;
 	if ((BlockNumber) maxFreePages > num_pages)
-		maxFreePages = (int) num_pages + 1;		/* +1 to avoid palloc(0) */
+		maxFreePages = (int) num_pages;
 	freePages = (BlockNumber *) palloc(maxFreePages * sizeof(BlockNumber));
 	nFreePages = 0;
 

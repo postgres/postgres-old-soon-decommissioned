@@ -1361,9 +1361,6 @@ GetLockStatusData(void)
 
 	data->nelements = i = proclockTable->hctl->nentries;
 
-	if (i == 0)
-		i = 1;					/* avoid palloc(0) if empty table */
-
 	data->proclockaddrs = (SHMEM_OFFSET *) palloc(sizeof(SHMEM_OFFSET) * i);
 	data->proclocks = (PROCLOCK *) palloc(sizeof(PROCLOCK) * i);
 	data->procs = (PGPROC *) palloc(sizeof(PGPROC) * i);

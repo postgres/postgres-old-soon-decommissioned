@@ -347,10 +347,9 @@ PortalSetResultFormat(Portal portal, int nFormats, int16 *formats)
 	if (portal->tupDesc == NULL)
 		return;
 	natts = portal->tupDesc->natts;
-	/* +1 avoids palloc(0) if no columns */
 	portal->formats = (int16 *)
 		MemoryContextAlloc(PortalGetHeapMemory(portal),
-						   (natts + 1) * sizeof(int16));
+						   natts * sizeof(int16));
 	if (nFormats > 1)
 	{
 		/* format specified for each column */

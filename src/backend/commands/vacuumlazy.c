@@ -918,9 +918,6 @@ lazy_space_alloc(LVRelStats *vacrelstats, BlockNumber relblocks)
 	/* No need to allocate more pages than the relation has blocks */
 	if (relblocks < (BlockNumber) maxpages)
 		maxpages = (int) relblocks;
-	/* avoid palloc(0) */
-	if (maxpages < 1)
-		maxpages = 1;
 
 	vacrelstats->fs_is_heap = false;
 	vacrelstats->num_free_pages = 0;

@@ -2016,7 +2016,7 @@ inline_function(Oid funcid, Oid result_type, List *args,
 	 * actual substitution of the inputs.  So start building expression
 	 * with inputs substituted.
 	 */
-	usecounts = (int *) palloc0((funcform->pronargs + 1) * sizeof(int));
+	usecounts = (int *) palloc0(funcform->pronargs * sizeof(int));
 	newexpr = substitute_actual_parameters(newexpr, funcform->pronargs,
 										   args, usecounts);
 

@@ -2883,9 +2883,8 @@ vac_update_fsm(Relation onerel, VacPageList fraged_pages,
 	 */
 	threshold = GetAvgFSMRequestSize(&onerel->rd_node);
 
-	/* +1 to avoid palloc(0) */
 	pageSpaces = (PageFreeSpaceInfo *)
-		palloc((nPages + 1) * sizeof(PageFreeSpaceInfo));
+		palloc(nPages * sizeof(PageFreeSpaceInfo));
 	outPages = 0;
 
 	for (i = 0; i < nPages; i++)

@@ -147,11 +147,10 @@ InitDeadLockChecking(void)
 	 * We need to consider rearranging at most MaxBackends/2 wait queues
 	 * (since it takes at least two waiters in a queue to create a soft
 	 * edge), and the expanded form of the wait queues can't involve more
-	 * than MaxBackends total waiters.	(But avoid palloc(0) if
-	 * MaxBackends = 1.)
+	 * than MaxBackends total waiters.
 	 */
 	waitOrders = (WAIT_ORDER *)
-		palloc(((MaxBackends + 1) / 2) * sizeof(WAIT_ORDER));
+		palloc((MaxBackends / 2) * sizeof(WAIT_ORDER));
 	waitOrderProcs = (PGPROC **) palloc(MaxBackends * sizeof(PGPROC *));
 
 	/*

@@ -565,7 +565,7 @@ pfree(void *pointer)
 
 /*
  * repalloc
- *
+ *		Adjust the size of a previously allocated chunk.
  */
 void *
 repalloc(void *pointer, Size size)

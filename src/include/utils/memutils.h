@@ -31,10 +31,13 @@
  *
  * XXX This is deliberately chosen to correspond to the limiting size
  * of varlena objects under TOAST.	See VARATT_MASK_SIZE in postgres.h.
+ *
+ * XXX Also, various places in aset.c assume they can compute twice an
+ * allocation's size without overflow, so beware of raising this.
  */
 #define MaxAllocSize	((Size) 0x3fffffff)		/* 1 gigabyte - 1 */
 
-#define AllocSizeIsValid(size)	(0 < (size) && (size) <= MaxAllocSize)
+#define AllocSizeIsValid(size)	((Size) (size) <= MaxAllocSize)
 
 /*
  * All chunks allocated by any memory context manager are required to be

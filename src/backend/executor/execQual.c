@@ -2129,8 +2129,6 @@ ExecEvalRow(RowExprState *rstate,
 
 	/* Allocate workspace */
 	nargs = list_length(rstate->args);
-	if (nargs == 0)				/* avoid palloc(0) if no fields */
-		nargs = 1;
 	values = (Datum *) palloc(nargs * sizeof(Datum));
 	nulls = (char *) palloc(nargs * sizeof(char));
 
