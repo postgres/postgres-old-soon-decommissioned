@@ -46,9 +46,14 @@ replace_variables(char *text)
 
 		if (!string && *ptr == ':')
 		{
-			*ptr = '?';
-			for (++ptr; *ptr && isvarchar(*ptr); ptr++)
-				*ptr = ' ';
+			if (ptr[1]==':')
+				ptr+=2; /* skip  '::' */
+		        else
+			{
+				*ptr = '?';
+				for (++ptr; *ptr && isvarchar(*ptr); ptr++)
+					*ptr = ' ';
+			}
 		}
 	}
 }
