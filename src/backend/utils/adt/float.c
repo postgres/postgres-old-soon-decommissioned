@@ -69,16 +69,18 @@ extern double	atof(const char *p);
 #endif
 
 #ifdef NEED_CBRT
-#define cbrt my_cbrt
-static double   cbrt(double x);
+# define cbrt my_cbrt
+  static double   cbrt(double x);
 #else /* NEED_CBRT */
-extern double   cbrt(double x);
+# if !defined(next)
+   extern double   cbrt(double x);
+# endif
 #endif /* NEED_CBRT */
 
 #ifdef NEED_RINT
 #define rint my_rint
 static double   rint(double x);
-#else /* NEED_RINT */
+else /* NEED_RINT */
 extern double   rint(double x);
 #endif /* NEED_RINT */
 

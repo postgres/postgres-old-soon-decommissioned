@@ -18,7 +18,6 @@
 #include <sys/timeb.h>
 #include "postgres.h"
 #include "access/xact.h"
-#include "utils/palloc.h"
 
 #define MAXDATEFIELDS 25
 
