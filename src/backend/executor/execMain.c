@@ -593,14 +593,7 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 	if (operation == CMD_SELECT && parseTree->into != NULL)
 	{
 		do_select_into = true;
-
-		/*
-		 * The presence of OIDs in the result set of SELECT INTO is
-		 * controlled by the default_with_oids GUC parameter. The
-		 * behavior in versions of PostgreSQL prior to 7.5 is to
-		 * always include OIDs.
-		 */
-		estate->es_force_oids = default_with_oids;
+		estate->es_force_oids = parseTree->intoHasOids;
 	}
 
 	/*

@@ -1549,6 +1549,7 @@ _copyQuery(Query *from)
 	COPY_NODE_FIELD(utilityStmt);
 	COPY_SCALAR_FIELD(resultRelation);
 	COPY_NODE_FIELD(into);
+	COPY_SCALAR_FIELD(intoHasOids);
 	COPY_SCALAR_FIELD(hasAggs);
 	COPY_SCALAR_FIELD(hasSubLinks);
 	COPY_NODE_FIELD(rtable);
@@ -1623,6 +1624,7 @@ _copySelectStmt(SelectStmt *from)
 	COPY_NODE_FIELD(distinctClause);
 	COPY_NODE_FIELD(into);
 	COPY_NODE_FIELD(intoColNames);
+	COPY_SCALAR_FIELD(intoHasOids);
 	COPY_NODE_FIELD(targetList);
 	COPY_NODE_FIELD(fromClause);
 	COPY_NODE_FIELD(whereClause);

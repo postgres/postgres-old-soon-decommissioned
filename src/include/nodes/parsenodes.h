@@ -55,6 +55,7 @@ typedef struct Query
 	int			resultRelation; /* target relation (index into rtable) */
 
 	RangeVar   *into;			/* target relation for SELECT INTO */
+	bool		intoHasOids;	/* should target relation contain OIDs? */
 
 	bool		hasAggs;		/* has aggregates in tlist or havingQual */
 	bool		hasSubLinks;	/* has subquery SubLink */
@@ -595,6 +596,16 @@ typedef enum SetOperation
 	SETOP_EXCEPT
 } SetOperation;
 
+typedef enum ContainsOids
+{
+	MUST_HAVE_OIDS,				/* WITH OIDS explicitely specified */
+	MUST_NOT_HAVE_OIDS,			/* WITHOUT OIDS explicitely specified */
+	DEFAULT_OIDS				/* neither specified; use the default,
+								 * which is the value of the
+								 * default_with_oids GUC var
+								 */
+} ContainsOids;
+
 typedef struct SelectStmt
 {
 	NodeTag		type;
@@ -602,13 +613,15 @@ typedef struct SelectStmt
 	/*
 	 * These fields are used only in "leaf" SelectStmts.
 	 *
-	 * into and intoColNames are a kluge; they belong somewhere else...
+	 * into, intoColNames and intoHasOids are a kluge; they belong
+	 * somewhere else...
 	 */
 	List	   *distinctClause; /* NULL, list of DISTINCT ON exprs, or
 								 * lcons(NIL,NIL) for all (SELECT
 								 * DISTINCT) */
 	RangeVar   *into;			/* target table (for select into table) */
 	List	   *intoColNames;	/* column names for into table */
+	ContainsOids intoHasOids;	/* should target table have OIDs? */
 	List	   *targetList;		/* the target list (of ResTarget) */
 	List	   *fromClause;		/* the FROM clause */
 	Node	   *whereClause;	/* WHERE qualification */
@@ -895,7 +908,7 @@ typedef struct CreateStmt
 	List	   *inhRelations;	/* relations to inherit from (list of
 								 * inhRelation) */
 	List	   *constraints;	/* constraints (list of Constraint nodes) */
-	bool		hasoids;		/* should it have OIDs? */
+	ContainsOids   hasoids;		/* should it have OIDs? */
 	OnCommitAction oncommit;	/* what do we do at COMMIT? */
 } CreateStmt;
 
