@@ -199,7 +199,7 @@ CreateTrigger(CreateTrigStmt *stmt, bool forConstraint)
 	if (stmt->row)
 		TRIGGER_SETT_ROW(tgtype);
 
-	for (i = 0; i < 2 && stmt->actions[i]; i++)
+	for (i = 0; stmt->actions[i]; i++)
 	{
 		switch (stmt->actions[i])
 		{

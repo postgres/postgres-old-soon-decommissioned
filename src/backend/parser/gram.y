@@ -2027,7 +2027,7 @@ CreateTrigStmt:
 					n->args = $13;
 					n->before = $4;
 					n->row = $8;
-					memcpy (n->actions, $5, 4);
+					memcpy(n->actions, $5, 4);
 					n->isconstraint  = FALSE;
 					n->deferrable	 = FALSE;
 					n->initdeferred  = FALSE;
@@ -2047,7 +2047,7 @@ CreateTrigStmt:
 					n->args = $18;
 					n->before = FALSE;
 					n->row = TRUE;
-					memcpy (n->actions, $6, 4);
+					memcpy(n->actions, $6, 4);
 					n->isconstraint  = TRUE;
 					n->deferrable = ($10 & 1) != 0;
 					n->initdeferred = ($10 & 2) != 0;
@@ -2066,17 +2066,19 @@ TriggerEvents:
 			TriggerOneEvent
 				{
 					char *e = palloc(4);
-					e[0] = $1; e[1] = 0; $$ = e;
+					e[0] = $1; e[1] = '\0';
+					$$ = e;
 				}
 			| TriggerOneEvent OR TriggerOneEvent
 				{
 					char *e = palloc(4);
-					e[0] = $1; e[1] = $3; e[2] = 0; $$ = e;
+					e[0] = $1; e[1] = $3; e[2] = '\0';
+					$$ = e;
 				}
 			| TriggerOneEvent OR TriggerOneEvent OR TriggerOneEvent
 				{
 					char *e = palloc(4);
-					e[0] = $1; e[1] = $3; e[2] = $5; e[3] = 0;
+					e[0] = $1; e[1] = $3; e[2] = $5; e[3] = '\0';
 					$$ = e;
 				}
 		;
