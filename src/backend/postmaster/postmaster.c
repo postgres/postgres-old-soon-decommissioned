@@ -211,6 +211,9 @@ static unsigned int random_seed = 0;
 extern char *optarg;
 extern int	optind,
 			opterr;
+#ifdef HAVE_INT_OPTRESET
+extern int	optreset;
+#endif
 
 /*
  * postmaster.c - function prototypes
