@@ -141,7 +141,7 @@ pgsql_thing_t words_after_create[] = {
 								 * a good idea. */
 	{"RULE", "SELECT rulename FROM pg_rules WHERE substr(rulename,1,%d)='%s'"},
 	{"SEQUENCE", "SELECT relname FROM pg_class WHERE relkind='S' and substr(relname,1,%d)='%s'"},
-	{"TABLE", "SELECT relname FROM pg_class WHERE relkind='r' and substr(relname,1,%d)='%s'"},
+	{"TABLE", "SELECT relname FROM pg_class WHERE (relkind='r' or relkind='v') and substr(relname,1,%d)='%s'"},
 	{"TEMP", NULL},				/* for CREATE TEMP TABLE ... */
 	{"TRIGGER", "SELECT tgname FROM pg_trigger WHERE substr(tgname,1,%d)='%s'"},
 	{"TYPE", "SELECT typname FROM pg_type WHERE substr(typname,1,%d)='%s'"},
