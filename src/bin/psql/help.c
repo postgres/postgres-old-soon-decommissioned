@@ -310,9 +310,9 @@ helpSQL(const char *topic, unsigned short int pager)
 		int			nl_count = 0;
 		char		*ch;
 
-		/* don't care about trailing spaces */
+		/* don't care about trailing spaces or semicolons */
 		len = strlen(topic);
-		while (topic[len - 1] == ' ')
+		while (topic[len - 1] == ' ' || topic[len - 1] == ';')
 			len--;
 
 		/* Count newlines for pager */
