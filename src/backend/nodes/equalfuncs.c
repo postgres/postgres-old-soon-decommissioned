@@ -224,6 +224,22 @@ _equalAggref(Aggref *a, Aggref *b)
 }
 
 static bool
+_equalSubLink(SubLink *a, SubLink *b)
+{
+	if (a->subLinkType != b->subLinkType)
+		return false;
+	if (a->useor != b->useor)
+		return false;
+	if (!equal(a->lefthand, b->lefthand))
+		return false;
+	if (!equal(a->oper, b->oper))
+		return false;
+	if (!equal(a->subselect, b->subselect))
+		return false;
+	return true;
+}
+
+static bool
 _equalArray(Array *a, Array *b)
 {
 	if (a->arrayelemtype != b->arrayelemtype)
@@ -393,7 +409,7 @@ _equalSubPlan(SubPlan *a, SubPlan *b)
 	if (a->plan_id != b->plan_id)
 		return false;
 
-	if (!equal(a->sublink->oper, b->sublink->oper))
+	if (!equal(a->sublink, b->sublink))
 		return false;
 
 	return true;
@@ -712,6 +728,9 @@ equal(void *a, void *b)
 			break;
 		case T_Aggref:
 			retval = _equalAggref(a, b);
+			break;
+		case T_SubLink:
+			retval = _equalSubLink(a, b);
 			break;
 		case T_Func:
 			retval = _equalFunc(a, b);

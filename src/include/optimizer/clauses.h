@@ -52,6 +52,8 @@ extern void get_rels_atts(Node *clause, int *relid1,
 			  AttrNumber *attno1, int *relid2, AttrNumber *attno2);
 extern void CommuteClause(Expr *clause);
 
+extern Node *eval_const_expressions(Node *node);
+
 extern bool expression_tree_walker(Node *node, bool (*walker) (),
 								   void *context);
 extern Node *expression_tree_mutator(Node *node, Node * (*mutator) (),
