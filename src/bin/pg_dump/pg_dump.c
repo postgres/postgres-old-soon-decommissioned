@@ -3202,10 +3202,9 @@ dumpTables(Archive *fout, TableInfo *tblinfo, int numTables,
 		{
 
 			/* Skip VIEW relations */
-
-			/*
-			 * if (isViewRule(tblinfo[i].relname)) continue;
-			 */
+			
+			/* if (isViewRule(tblinfo[i].relname)) continue; */
+			
 
 			parentRels = tblinfo[i].parentRels;
 			numParents = tblinfo[i].numParents;
