@@ -15,7 +15,7 @@
 /*
  * calls:
  *
- *	File {Close, Read, Write, Seek, Tell, MarkDirty, Sync}
+ *	File {Close, Read, Write, Seek, Tell, Sync}
  *	{File Name Open, Allocate, Free} File
  *
  * These are NOT JUST RENAMINGS OF THE UNIX ROUTINES.
@@ -66,6 +66,7 @@ extern void FileClose(File file);
 extern void FileUnlink(File file);
 extern int	FileRead(File file, char *buffer, int amount);
 extern int	FileWrite(File file, char *buffer, int amount);
+extern int	FileSync(File file);
 extern long FileSeek(File file, long offset, int whence);
 extern int	FileTruncate(File file, long offset);
 

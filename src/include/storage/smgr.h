@@ -83,9 +83,9 @@ extern bool mdread(SMgrRelation reln, BlockNumber blocknum, char *buffer);
 extern bool mdwrite(SMgrRelation reln, BlockNumber blocknum, char *buffer);
 extern BlockNumber mdnblocks(SMgrRelation reln);
 extern BlockNumber mdtruncate(SMgrRelation reln, BlockNumber nblocks);
-extern bool mdcommit(void);
-extern bool mdabort(void);
 extern bool mdsync(void);
+
+extern void RememberFsyncRequest(RelFileNode rnode, BlockNumber segno);
 
 /* smgrtype.c */
 extern Datum smgrout(PG_FUNCTION_ARGS);
