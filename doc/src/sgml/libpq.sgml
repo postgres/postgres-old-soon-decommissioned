@@ -240,6 +240,15 @@ PGconn *PQconnectdb(const char *conninfo);
        connection.<indexterm><primary>SSL</><secondary
        sortas="libpq">with libpq</></indexterm>
       </para>
+
+      <para>
+       Please note that <acronym>SSL</> support in libpq covers
+       encryption only.  It will not verify the validity of the
+       certificate presented by the server that you are connecting to,
+       nor verify that the hostname matches that of the server's
+       certificate.  Additionally, there is no support for client
+       certificates.
+      </para>
      </listitem>
     </varlistentry>
 
