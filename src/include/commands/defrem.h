@@ -54,12 +54,13 @@ extern void DefineDomain(CreateDomainStmt *stmt);
 extern void RemoveDomain(List *names, int behavior);
 
 
-/* support routines in define.c */
+/* support routines in commands/define.c */
 
 extern void case_translate_language_name(const char *input, char *output);
 
 extern char *defGetString(DefElem *def);
 extern double defGetNumeric(DefElem *def);
+extern int64 defGetInt64(DefElem *def);
 extern List *defGetQualifiedName(DefElem *def);
 extern TypeName *defGetTypeName(DefElem *def);
 extern int	defGetTypeLength(DefElem *def);

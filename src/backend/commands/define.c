@@ -37,6 +37,7 @@
 
 #include "commands/defrem.h"
 #include "parser/parse_type.h"
+#include "utils/int8.h"
 
 
 /*
@@ -107,6 +108,34 @@ defGetNumeric(DefElem *def)
 			return (double) intVal(def->arg);
 		case T_Float:
 			return floatVal(def->arg);
+		default:
+			elog(ERROR, "Define: \"%s\" requires a numeric value",
+				 def->defname);
+	}
+	return 0;					/* keep compiler quiet */
+}
+
+/*
+ * Extract an int64 value from a DefElem.
+ */
+int64
+defGetInt64(DefElem *def)
+{
+	if (def->arg == NULL)
+		elog(ERROR, "Define: \"%s\" requires a numeric value",
+			 def->defname);
+	switch (nodeTag(def->arg))
+	{
+		case T_Integer:
+			return (int64) intVal(def->arg);
+		case T_Float:
+			/*
+			 * Values too large for int4 will be represented as Float
+			 * constants by the lexer.  Accept these if they are valid int8
+			 * strings.
+			 */
+			return DatumGetInt64(DirectFunctionCall1(int8in,
+									 CStringGetDatum(strVal(def->arg))));
 		default:
 			elog(ERROR, "Define: \"%s\" requires a numeric value",
 				 def->defname);
