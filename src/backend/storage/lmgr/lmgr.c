@@ -34,7 +34,6 @@
 #include "storage/multilev.h"
 #include "storage/lmgr.h"
 
-#include "utils/elog.h"
 #include "utils/palloc.h"
 #include "utils/rel.h"
 

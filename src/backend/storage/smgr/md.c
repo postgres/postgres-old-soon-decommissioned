@@ -17,12 +17,11 @@
 #include "postgres.h"
 #include "miscadmin.h"  /* for DataDir */
 
-#include "storage/smgr.h"	/* where the declarations go */
 #include "storage/block.h"
+#include "storage/smgr.h"	/* where the declarations go */
 #include "storage/fd.h"
 #include "utils/mcxt.h"
 #include "utils/rel.h"
-#include "utils/elog.h"
 #include "utils/palloc.h"
 #include "catalog/catalog.h"
 

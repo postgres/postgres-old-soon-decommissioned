@@ -22,11 +22,11 @@
  */
 #include <stdio.h>
 #include <string.h>
+#include "postgres.h"
 #include "storage/lmgr.h"
 #include "storage/multilev.h"
 
 #include "utils/rel.h"
-#include "utils/elog.h"
 #include "miscadmin.h"		/* MyDatabaseId */
 
 

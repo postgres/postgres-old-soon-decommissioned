@@ -11,7 +11,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "c.h"
+#include "postgres.h"
 
 #include "storage/block.h"
 #include "storage/off.h"

@@ -27,7 +27,6 @@
 
 #include "utils/hsearch.h"
 #include "utils/rel.h"
-#include "utils/elog.h"
 #include "utils/memutils.h"
 
 /*

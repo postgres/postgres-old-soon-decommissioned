@@ -54,11 +54,12 @@
 #endif /* WIN32 */
 #include <string.h>
 #include <sys/types.h>
+
+#include "postgres.h"
 #include "libpq/pqsignal.h"	/* substitute for <signal.h> */
 
 #include "access/xact.h"
 #include "utils/hsearch.h"
-#include "utils/elog.h"
 
 #include "storage/buf.h"	
 #include "storage/lock.h"

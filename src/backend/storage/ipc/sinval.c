@@ -13,6 +13,7 @@
  */
 /* #define INVALIDDEBUG	1 */
 
+#include <sys/types.h>
 #include <sys/ipc.h>
 
 #include "postgres.h"
@@ -20,7 +21,6 @@
 #include "storage/sinval.h"
 #include "storage/sinvaladt.h"
 #include "storage/spin.h"
-#include "utils/elog.h"
 
 extern SISeg		*shmInvalBuffer;/* the shared buffer segment, set by*/
     	    	    	    	    	/*   SISegmentAttach()	    	    */

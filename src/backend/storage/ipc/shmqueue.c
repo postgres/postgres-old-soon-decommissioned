@@ -25,7 +25,6 @@
 #include <stdio.h>		/* for sprintf() */
 #include "postgres.h"
 #include "storage/shmem.h"	/* where the declarations go */
-#include "utils/elog.h"
 
 /*#define SHMQUEUE_DEBUG*/
 #ifdef SHMQUEUE_DEBUG

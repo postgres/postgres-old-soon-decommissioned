@@ -65,7 +65,6 @@
 #include "storage/shmem.h"
 #include "storage/spin.h"
 #include "utils/hsearch.h"
-#include "utils/elog.h"
 
 /* shared memory global variables */
 

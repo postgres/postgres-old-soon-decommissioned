@@ -18,10 +18,9 @@
 #include "postgres.h"
 
 #include "storage/ipc.h"
-#include "storage/smgr.h"
 #include "storage/block.h"
+#include "storage/smgr.h"
 #include "utils/rel.h"
-#include "utils/elog.h"
 #include "utils/palloc.h"
 
 typedef struct f_smgr {

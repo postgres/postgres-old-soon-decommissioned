@@ -30,7 +30,6 @@
 #include "storage/shmem.h"
 #include "storage/spin.h"
 #include "storage/proc.h"
-#include "utils/elog.h"
 
 /* globals used in this file */
 IpcSemaphoreId	SpinLockId;

@@ -14,7 +14,7 @@
  */
 #include <stdio.h>		/* for sprintf() */
 #include <sys/file.h>
-#include "c.h"
+#include "postgres.h"
 #include "libpq/libpq-fs.h"
 #include "access/genam.h"
 #include "access/heapam.h"
@@ -34,7 +34,6 @@
 #include "utils/rel.h"
 #include "utils/palloc.h"
 #include "storage/large_object.h"
-#include "utils/elog.h"
 #include "utils/syscache.h"
 #include "utils/builtins.h"	/* for namestrcpy() */
 #include "catalog/heap.h"

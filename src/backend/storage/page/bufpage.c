@@ -14,12 +14,11 @@
 #include <sys/types.h>
 #include <sys/file.h>
 
-#include "c.h"
+#include "postgres.h"
 
 #include "storage/item.h"
 #include "storage/buf.h"
 #include "storage/bufmgr.h"
-#include "utils/elog.h"
 #include "utils/palloc.h"
 #include "utils/memutils.h"
 #include "storage/bufpage.h"

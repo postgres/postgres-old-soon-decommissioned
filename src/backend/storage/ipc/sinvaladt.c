@@ -11,10 +11,12 @@
  *
  *-------------------------------------------------------------------------
  */
+
+#include "postgres.h"
+
 #include "storage/ipc.h"
 #include "storage/sinvaladt.h"
 #include "storage/lmgr.h"
-#include "utils/elog.h"
 #include "utils/palloc.h"
 
 /* ----------------

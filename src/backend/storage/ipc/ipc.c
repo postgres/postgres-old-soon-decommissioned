@@ -37,9 +37,9 @@
 #include <sys/shm.h>
 #endif
 
+#include "postgres.h"
 #include "storage/ipc.h"
 #include "utils/memutils.h"
-#include "utils/elog.h"
 
 #if defined(bsd44)
 int UsePrivateMemory = 1;

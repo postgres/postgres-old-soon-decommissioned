@@ -11,11 +11,10 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "c.h"
+#include "postgres.h"
 
 #include "storage/ipc.h"
 #include "storage/multilev.h"
-#include "utils/elog.h"
 #include "storage/sinval.h"
 #include "storage/bufmgr.h"
 #include "storage/proc.h"
