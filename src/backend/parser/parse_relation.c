@@ -807,7 +807,7 @@ addRangeTableEntryForFunction(ParseState *pstate,
 			elog(ERROR, "Too many column aliases specified for function %s",
 				 funcname);
 		if (numaliases == 0)
-			eref->colnames = makeList1(makeString(funcname));
+			eref->colnames = makeList1(makeString(eref->aliasname));
 	}
 	else if (functyptype == 'p' && funcrettype == RECORDOID)
 	{
