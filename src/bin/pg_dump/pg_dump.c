@@ -1976,7 +1976,7 @@ dumpOprs(FILE *fout, OprInfo *oprinfo, int numOperators,
 	char		rightarg[MAXQUERYLEN];
 	char		commutator[MAXQUERYLEN];
 	char		negator[MAXQUERYLEN];
-	char		restrict[MAXQUERYLEN];
+	char		restrictor[MAXQUERYLEN];
 	char		join[MAXQUERYLEN];
 	char		sortop[MAXQUERYLEN];
 
@@ -2026,9 +2026,9 @@ dumpOprs(FILE *fout, OprInfo *oprinfo, int numOperators,
 			  findOprByOid(oprinfo, numOperators, oprinfo[i].oprnegate));
 
 		if (strcmp(oprinfo[i].oprrest, "-") == 0)
-			restrict[0] = '\0';
+			restrictor[0] = '\0';
 		else
-			sprintf(restrict, ", RESTRICT = %s ", oprinfo[i].oprrest);
+			sprintf(restrictor, ", RESTRICT = %s ", oprinfo[i].oprrest);
 
 		if (strcmp(oprinfo[i].oprjoin, "-") == 0)
 			join[0] = '\0';
@@ -2059,7 +2059,7 @@ dumpOprs(FILE *fout, OprInfo *oprinfo, int numOperators,
 				rightarg,
 				commutator,
 				negator,
-				restrict,
+				restrictor,
 				(strcmp(oprinfo[i].oprcanhash, "t")) ? ", HASHES" : "",
 				join,
 				sortop);
