@@ -986,7 +986,7 @@ path_close(PATH *path)
 {
     PATH *result;
 
-    if (PointerIsValid((char *)result = path_copy(path)))
+    if (PointerIsValid((char *)(result = path_copy(path))))
 	result->closed = TRUE;
 
     return(result);
@@ -997,7 +997,7 @@ path_open(PATH *path)
 {
     PATH *result;
 
-    if (PointerIsValid((char *)result = path_copy(path)))
+    if (PointerIsValid((char *)(result = path_copy(path))))
 	result->closed = FALSE;
 
     return(result);
@@ -2070,7 +2070,7 @@ POLYGON *poly_in(char *str)
 
 #if OLD_FORMAT_IN
     };
-#endif;
+#endif
 
     make_bound_box(poly);
 
