@@ -66,6 +66,10 @@ CATALOG(pg_class) BOOTSTRAP {
      char 	relkind;
      char 	relarch; /* 'h' = heavy, 'l' = light, 'n' = no archival*/
      int2 	relnatts;
+       /* relnatts is the number of user attributes this class has.  There 
+          must be exactly this many instances in Class pg_attribute for this 
+          class which have attnum > 0 (= user attribute).
+          */
      int2	relsmgr;
      int28 	relkey;			/* not used */
      oid8	relkeyop;		/* not used */
