@@ -15,6 +15,9 @@
 #include "commands/variable.h"
 #include "utils/builtins.h"
 #include "optimizer/internal.h"
+#ifdef MB
+#include "regex/pg_wchar.h"
+#endif
 
 extern Cost _cpu_page_wight_;
 extern Cost _cpu_index_page_wight_;
@@ -519,6 +522,54 @@ reset_timezone()
 	return TRUE;
 }	/* reset_timezone() */
 
+#ifdef MB
+/*-----------------------------------------------------------------------*/
+bool
+parse_client_encoding(const char *value)
+{
+  int encoding;
+
+  encoding = pg_valid_client_encoding(value);
+  if (encoding < 0) {
+    elog(ERROR, "Client encoding %s is not supported", value);
+  } else {    
+    if (pg_set_client_encoding(encoding)) {
+      elog(ERROR, "Conversion between %s and %s is not supported",
+	   value, pg_encoding_to_char(MB));
+    }
+  }
+  return TRUE;
+}
+
+bool
+show_client_encoding()
+{
+  elog(NOTICE, "Current client encoding is %s",
+       pg_encoding_to_char(pg_get_client_encoding()));
+  return TRUE;
+}
+
+bool
+reset_client_encoding()
+{
+  int encoding;
+  char *env = getenv("PGCLIENTENCODING");
+
+  if (env) {
+    encoding = pg_char_to_encoding(env);
+    if (encoding < 0) {
+      encoding = MB;
+    }
+  } else {
+    encoding = MB;
+  }
+  pg_set_client_encoding(encoding);
+  return TRUE;
+}
+
+/*-----------------------------------------------------------------------*/
+#endif
+
 /*-----------------------------------------------------------------------*/
 struct VariableParsers
 {
@@ -547,6 +598,11 @@ struct VariableParsers
 	{
 		"r_plans", parse_r_plans, show_r_plans, reset_r_plans
 	},
+#ifdef MB
+	{
+		"client_encoding", parse_client_encoding, show_client_encoding, reset_client_encoding
+	},
+#endif
 	{
 		NULL, NULL, NULL, NULL
 	}

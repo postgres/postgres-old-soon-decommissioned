@@ -364,6 +364,10 @@ extern		"C"
 											 * 0, use variable width */
 		);
 
+#ifdef MB
+	extern int PQmblen(unsigned char *s);
+#endif
+
 /* === in fe-auth.c === */
 	extern MsgType fe_getauthsvc(char *PQerrormsg);
 	extern void fe_setauthsvc(const char *name, char *PQerrormsg);

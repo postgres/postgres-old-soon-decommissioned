@@ -24,6 +24,10 @@ LDFLAGS+= $(KRBLIBS)
 CFLAGS+= $(KRBFLAGS)
 endif
 
+ifdef MB
+CFLAGS+= -DMB=$(MB)
+endif
+
 OBJS= psql.o stringutils.o @STRDUP@ 
 
 all: submake psql

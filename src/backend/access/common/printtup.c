@@ -23,6 +23,10 @@
 #include <libpq/libpq.h>
 #include <utils/syscache.h>
 
+#ifdef MB
+#include <commands/variable.h>
+#endif
+
 /* ----------------------------------------------------------------
  *		printtup / debugtup support
  * ----------------------------------------------------------------
@@ -80,6 +84,9 @@ printtup(HeapTuple tuple, TupleDesc typeinfo)
 	Datum		attr;
 	bool		isnull;
 	Oid			typoutput;
+#ifdef MB
+	unsigned char *p;
+#endif
 
 	/* ----------------
 	 *	tell the frontend to expect new tuple data
@@ -125,8 +132,14 @@ printtup(HeapTuple tuple, TupleDesc typeinfo)
 			outputstr = fmgr(typoutput, attr,
 							 gettypelem(typeinfo->attrs[i]->atttypid),
 							 typeinfo->attrs[i]->atttypmod);
+#ifdef MB
+			p = pg_server_to_client(outputstr, strlen(outputstr));
+			pq_putint(strlen(p) + VARHDRSZ, VARHDRSZ);
+			pq_putnchar(p, strlen(p));
+#else
 			pq_putint(strlen(outputstr) + VARHDRSZ, VARHDRSZ);
 			pq_putnchar(outputstr, strlen(outputstr));
+#endif
 			pfree(outputstr);
 		}
 	}
@@ -268,8 +281,12 @@ printtup_internal(HeapTuple tuple, TupleDesc typeinfo)
 				/* variable length, assume a varlena structure */
 				len = VARSIZE(attr) - VARHDRSZ;
 
+#ifdef MB
+				pq_putncharlen(VARDATA(attr), len);
+#else
 				pq_putint(len, VARHDRSZ);
 				pq_putnchar(VARDATA(attr), len);
+#endif
 #ifdef IPORTAL_DEBUG
 				{
 					char	   *d = VARDATA(attr);

@@ -19,6 +19,10 @@ CFLAGS+= $(KRBFLAGS)
 LDFLAGS+= $(KRBLIBS)
 endif
 
+ifdef MB
+CFLAGS+= -DMB=$(MB)
+endif
+
 OBJS = be-dumpdata.o be-fsstubs.o be-pqexec.o pqcomprim.o\
        auth.o hba.o crypt.o pqcomm.o portal.o util.o portalbuf.o pqpacket.o pqsignal.o \
        password.o

@@ -320,7 +320,8 @@ other			.
 
 					BEGIN(xm);
 					for(i = 0; yytext[i]; i++)
-						if (isupper(yytext[i]))
+						if (isascii((unsigned char)yytext[i]) &&
+							isupper(yytext[i]))
 							yytext[i] = tolower(yytext[i]);
 
 					keyword = ScanKeywordLookup((char*)yytext);
@@ -396,7 +397,8 @@ other			.
 					ScanKeyword		*keyword;
 
 					for(i = 0; yytext[i]; i++)
-						if (isupper(yytext[i]))
+						if (isascii((unsigned char)yytext[i]) &&
+							isupper(yytext[i]))
 							yytext[i] = tolower(yytext[i]);
 
 					keyword = ScanKeywordLookup((char*)yytext);

@@ -597,7 +597,8 @@ main(int argc, char **argv)
 
 					tablename = strdup(optarg);
 					for (i = 0; tablename[i]; i++)
-						if (isupper(tablename[i]))
+						if (isascii((unsigned char)tablename[i]) &&
+						    isupper(tablename[i]))
 							tablename[i] = tolower(tablename[i]);
 				}
 				break;

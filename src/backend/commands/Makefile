@@ -13,10 +13,18 @@ include ../../Makefile.global
 
 CFLAGS += -I..
 
+ifdef MB
+CFLAGS += -DMB=$(MB)
+endif
+
 OBJS = async.o creatinh.o command.o copy.o defind.o define.o \
        remove.o rename.o vacuum.o version.o view.o cluster.o \
        recipe.o explain.o sequence.o trigger.o user.o proclang.o \
        dbcommands.o variable.o
+
+ifdef MB
+OBJS += mbutils.o
+endif
 
 all: SUBSYS.o
 

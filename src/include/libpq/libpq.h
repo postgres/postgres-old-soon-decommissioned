@@ -272,6 +272,11 @@ extern int	pq_sendoob(char *msg, int len);
 extern int	pq_recvoob(char *msgPtr, int len);
 extern int	pq_getinaddr(struct sockaddr_in * sin, char *host, int port);
 extern int	pq_getinserv(struct sockaddr_in * sin, char *host, char *serv);
+
+#ifdef MB
+extern void	pq_putncharlen(char *s, int n);
+#endif
+
 extern int
 pq_connect(char *dbname, char *user, char *args, char *hostName,
 		   char *debugTty, char *execFile, short portName);

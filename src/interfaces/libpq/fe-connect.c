@@ -120,7 +120,11 @@ struct EnvironmentOptions
 	{
 		"PGTZ", "timezone"
 	},
-
+#ifdef MB
+	{
+		"PGCLIENTENCODING", "client_encoding"
+	},
+#endif
 	/* internal performance-related settings */
 	{
 		"PGCOSTHEAP", "cost_heap"
@@ -371,7 +375,8 @@ PQsetdbLogin(const char *pghost, const char *pgport, const char *pgoptions, cons
 		}
 		else
 			for (i = 0; conn->dbName[i]; i++)
-				if (isupper(conn->dbName[i]))
+				if (isascii((unsigned char)conn->dbName[i]) &&
+				    isupper(conn->dbName[i]))
 					conn->dbName[i] = tolower(conn->dbName[i]);
 	}
 
