@@ -259,6 +259,10 @@ extern int	day_tab[2][13];
  || (((y) == UTIME_MAXYEAR) && (((m) < UTIME_MAXMONTH) \
   || (((m) == UTIME_MAXMONTH) && ((d) <= UTIME_MAXDAY))))))
 
+/* Julian-date equivalents of Day 0 in Unix and Postgres reckoning */
+#define UNIX_EPOCH_JDATE		2440588		/* == date2j(1970, 1, 1) */
+#define POSTGRES_EPOCH_JDATE	2451545		/* == date2j(2000, 1, 1) */
+
 
 extern void GetCurrentDateTime(struct tm * tm);
 extern void GetCurrentTimeUsec(struct tm * tm, fsec_t *fsec, int *tzp);
@@ -289,7 +293,7 @@ extern int	EncodeInterval(struct tm * tm, fsec_t fsec, int style, char *str);
 
 extern int	DecodeSpecial(int field, char *lowtoken, int *val);
 extern int	DecodeUnits(int field, char *lowtoken, int *val);
-extern bool ClearDateCache(bool, bool, bool);
+extern bool ClearDateCache(bool newval, bool doit, bool interactive);
 
 extern int	j2day(int jd);
 
