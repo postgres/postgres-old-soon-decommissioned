@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * funcindex.h--
- *    
+ *
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -13,14 +13,15 @@
 #ifndef _FUNC_INDEX_INCLUDED_
 #define _FUNC_INDEX_INCLUDED_
 
-typedef struct {
-	int	nargs;
-	Oid	arglist[8];
-	Oid	procOid;
-	NameData funcName;
-} FuncIndexInfo;
+typedef struct
+{
+	int				nargs;
+	Oid				arglist[8];
+	Oid				procOid;
+	NameData		funcName;
+}				FuncIndexInfo;
 
-typedef FuncIndexInfo	*FuncIndexInfoPtr;
+typedef FuncIndexInfo *FuncIndexInfoPtr;
 
 /*
  * some marginally useful macro definitions
@@ -38,4 +39,4 @@ typedef FuncIndexInfo	*FuncIndexInfoPtr;
 
 #define FIisFunctionalIndex(FINFO) (FINFO->procOid != InvalidOid)
 
-#endif /* FUNCINDEX_H */
+#endif							/* FUNCINDEX_H */

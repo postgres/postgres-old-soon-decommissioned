@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * catname.h--
- *    POSTGRES system catalog relation name definitions.
+ *	  POSTGRES system catalog relation name definitions.
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -10,7 +10,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#ifndef	CATNAME_H
+#ifndef CATNAME_H
 #define CATNAME_H
 
 
@@ -49,6 +49,6 @@
 #define  RelCheckRelationName "pg_relcheck"
 #define  TriggerRelationName "pg_trigger"
 
-extern char *SharedSystemRelationNames[];
+extern char    *SharedSystemRelationNames[];
 
-#endif	/* CATNAME_H */
+#endif							/* CATNAME_H */

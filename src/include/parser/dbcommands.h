@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * dbcommands.h--
- *    
+ *
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -10,18 +10,17 @@
  *
  *-------------------------------------------------------------------------
  */
-#ifndef	DBCOMMANDS_H
-#define	DBCOMMANDS_H
+#ifndef DBCOMMANDS_H
+#define DBCOMMANDS_H
 
 /*
  * Originally from tmp/daemon.h. The functions declared in daemon.h does not
- * exist; hence removed.	-- AY 7/29/94
+ * exist; hence removed.		-- AY 7/29/94
  */
-#define	SIGKILLDAEMON1	SIGINT
-#define	SIGKILLDAEMON2	SIGTERM
+#define SIGKILLDAEMON1	SIGINT
+#define SIGKILLDAEMON2	SIGTERM
 
-extern void createdb(char *dbname);
-extern void destroydb(char *dbname);
+extern void		createdb(char *dbname);
+extern void		destroydb(char *dbname);
 
-#endif	/* DBCOMMANDS_H */
-
+#endif							/* DBCOMMANDS_H */

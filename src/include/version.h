@@ -1,8 +1,8 @@
 /*-------------------------------------------------------------------------
  *
  * version.h--
- *    this file contains the interface to version.c.
- *    Also some parameters.
+ *	  this file contains the interface to version.c.
+ *	  Also some parameters.
  *
  * $Id$
  *
@@ -12,13 +12,13 @@
 #define VERSION_H
 
 void
-ValidatePgVersion(const char *path, char **reason_p);
+				ValidatePgVersion(const char *path, char **reason_p);
 
 void
-SetPgVersion(const char *path, char **reason_p);
+				SetPgVersion(const char *path, char **reason_p);
 
-#define	PG_RELEASE	6
-#define PG_VERSION	1
-#define	PG_VERFILE	"PG_VERSION"
+#define PG_RELEASE		6
+#define PG_VERSION		1
+#define PG_VERFILE		"PG_VERSION"
 
 #endif

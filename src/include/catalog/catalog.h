@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * catalog.h--
- *    prototypes for functions in lib/catalog/catalog.c
+ *	  prototypes for functions in lib/catalog/catalog.c
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -15,10 +15,10 @@
 
 #include <access/tupdesc.h>
 
-extern char *relpath(char relname[]);
-extern bool IsSystemRelationName(char *relname);
-extern bool IsSharedSystemRelationName(char *relname);
-extern Oid newoid(void);
-extern void fillatt(TupleDesc att);
+extern char    *relpath(char relname[]);
+extern bool		IsSystemRelationName(char *relname);
+extern bool		IsSharedSystemRelationName(char *relname);
+extern Oid		newoid(void);
+extern void		fillatt(TupleDesc att);
 
-#endif	/* CATALOG_H */
+#endif							/* CATALOG_H */

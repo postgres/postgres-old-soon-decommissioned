@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * dynahash--
- *    POSTGRES dynahash.h file definitions
+ *	  POSTGRES dynahash.h file definitions
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -10,10 +10,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#ifndef	DYNAHASH_H
+#ifndef DYNAHASH_H
 #define DYNAHASH_H
 
-extern int my_log2(long num);
+extern int		my_log2(long num);
 
-#endif /* DYNAHASH_H */
-
+#endif							/* DYNAHASH_H */

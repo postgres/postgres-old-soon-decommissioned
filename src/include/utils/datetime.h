@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * datetime.h--
- *    Definitions for the datetime
+ *	  Definitions for the datetime
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -19,4 +19,4 @@ typedef int32	DateADT;
 
 typedef float8	TimeADT;
 
-#endif /* DATETIME_H */
+#endif							/* DATETIME_H */

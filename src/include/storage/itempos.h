@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * itempos.h--
- *    Standard POSTGRES buffer page long item subposition definitions.
+ *	  Standard POSTGRES buffer page long item subposition definitions.
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -10,34 +10,35 @@
  *
  *-------------------------------------------------------------------------
  */
-#ifndef	ITEMPOS_H
+#ifndef ITEMPOS_H
 #define ITEMPOS_H
 
 #include <storage/itemid.h>
 #include <storage/buf.h>
 
-typedef struct ItemSubpositionData {
-	Buffer		op_db;
-	ItemId		op_lpp;
-	char		*op_cp;		/* XXX */
-	uint32		op_len;
-} ItemSubpositionData;
+typedef struct ItemSubpositionData
+{
+	Buffer			op_db;
+	ItemId			op_lpp;
+	char		   *op_cp;		/* XXX */
+	uint32			op_len;
+}				ItemSubpositionData;
 
-typedef ItemSubpositionData	*ItemSubposition;
+typedef ItemSubpositionData *ItemSubposition;
 
 /*
- *	PNOBREAK(OBJP, LEN)
- *	struct	objpos	*OBJP;
- *	unsigned	LEN;
+ *		PNOBREAK(OBJP, LEN)
+ *		struct	objpos	*OBJP;
+ *		unsigned		LEN;
  */
-#define PNOBREAK(OBJP, LEN)	((OBJP)->op_len >= LEN)
+#define PNOBREAK(OBJP, LEN)		((OBJP)->op_len >= LEN)
 
 /*
- *	PSKIP(OBJP, LEN)
- *	struct	objpos	*OBJP;
- *	unsigned	LEN;
+ *		PSKIP(OBJP, LEN)
+ *		struct	objpos	*OBJP;
+ *		unsigned		LEN;
  */
 #define PSKIP(OBJP, LEN)\
-	{ (OBJP)->op_cp += (LEN); (OBJP)->op_len -= (LEN); }
+		{ (OBJP)->op_cp += (LEN); (OBJP)->op_len -= (LEN); }
 
-#endif	/* ITEMPOS_H */
+#endif							/* ITEMPOS_H */

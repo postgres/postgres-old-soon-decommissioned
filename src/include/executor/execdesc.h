@@ -1,8 +1,8 @@
 /*-------------------------------------------------------------------------
  *
  * execdesc.h--
- *    plan and query descriptor accessor macros used by the executor
- *    and related modules.
+ *	  plan and query descriptor accessor macros used by the executor
+ *	  and related modules.
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -19,20 +19,22 @@
 #include <nodes/parsenodes.h>
 
 /* ----------------
- *	query descriptor:
- *  a QueryDesc encapsulates everything that the executor
- *  needs to execute the query
+ *		query descriptor:
+ *	a QueryDesc encapsulates everything that the executor
+ *	needs to execute the query
  * ---------------------
  */
-typedef struct QueryDesc {
-    CmdType		operation; /* CMD_SELECT, CMD_UPDATE, etc. */
-    Query		*parsetree; 
-    Plan		*plantree;
-    CommandDest		dest;  /* the destination output of the execution */
-} QueryDesc;
+typedef struct QueryDesc
+{
+	CmdType			operation;	/* CMD_SELECT, CMD_UPDATE, etc. */
+	Query		   *parsetree;
+	Plan		   *plantree;
+	CommandDest		dest;		/* the destination output of the execution */
+}				QueryDesc;
 
 /* in pquery.c */
-extern QueryDesc *CreateQueryDesc(Query *parsetree, Plan *plantree,
-				  CommandDest dest);
+extern QueryDesc *
+CreateQueryDesc(Query * parsetree, Plan * plantree,
+				CommandDest dest);
 
-#endif /*  EXECDESC_H  */
+#endif							/* EXECDESC_H  */

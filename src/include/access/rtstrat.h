@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * rtstrat.h--
- *    routines defined in access/rtree/rtstrat.c
+ *	  routines defined in access/rtree/rtstrat.c
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -12,7 +12,8 @@
  */
 #ifndef RTSTRAT_H
 
-extern RegProcedure RTMapOperator(Relation r,  AttrNumber attnum,
-				  RegProcedure proc);
+extern RegProcedure
+RTMapOperator(Relation r, AttrNumber attnum,
+			  RegProcedure proc);
 
-#endif /* RTSTRAT_H */
+#endif							/* RTSTRAT_H */

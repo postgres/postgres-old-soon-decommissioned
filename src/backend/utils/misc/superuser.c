@@ -2,16 +2,16 @@
  *
  * superuser.c--
  *
- *    The superuser() function.  Determines if user has superuser privilege.
+ *	  The superuser() function.  Determines if user has superuser privilege.
  *
  * Copyright (c) 1994, Regents of the University of California
  *
  *
  * IDENTIFICATION
- *    $Header$
+ *	  $Header$
  *
  * DESCRIPTION
- *    See superuser().
+ *	  See superuser().
  *-------------------------------------------------------------------------
  */
 
@@ -20,20 +20,18 @@
 #include <catalog/pg_user.h>
 
 bool
-superuser(void) {
+superuser(void)
+{
 /*--------------------------------------------------------------------------
-    The Postgres user running this command has Postgres superuser 
-    privileges.
+	The Postgres user running this command has Postgres superuser
+	privileges.
 --------------------------------------------------------------------------*/
-    extern char *UserName;  /* defined in global.c */
+	extern char    *UserName;	/* defined in global.c */
 
-    HeapTuple utup;
+	HeapTuple		utup;
 
-    utup = SearchSysCacheTuple(USENAME, PointerGetDatum(UserName),
-			       0,0,0);
-    Assert(utup != NULL);
-    return ((Form_pg_user)GETSTRUCT(utup))->usesuper;
+	utup = SearchSysCacheTuple(USENAME, PointerGetDatum(UserName),
+							   0, 0, 0);
+	Assert(utup != NULL);
+	return ((Form_pg_user) GETSTRUCT(utup))->usesuper;
 }
-
-
-

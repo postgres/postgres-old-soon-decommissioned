@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * command.h--
- *    prototypes for command.c.
+ *	  prototypes for command.c.
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -19,29 +19,31 @@ extern MemoryContext PortalExecutorHeapMemory;
 
 /*
  * PerformPortalFetch --
- *	Performs the POSTQUEL function FETCH.  Fetches count (or all if 0)
+ *		Performs the POSTQUEL function FETCH.  Fetches count (or all if 0)
  * tuples in portal with name in the forward direction iff goForward.
  *
  * Exceptions:
- *	BadArg if forward invalid.
- *	"WARN" if portal not found.
+ *		BadArg if forward invalid.
+ *		"WARN" if portal not found.
  */
-extern void PerformPortalFetch(char *name, bool forward, int count,
-			       char *tag, CommandDest dest);
+extern void
+PerformPortalFetch(char *name, bool forward, int count,
+				   char *tag, CommandDest dest);
 
 /*
  * PerformPortalClose --
- *	Performs the POSTQUEL function CLOSE.
+ *		Performs the POSTQUEL function CLOSE.
  */
-extern void PerformPortalClose(char *name, CommandDest dest);
+extern void		PerformPortalClose(char *name, CommandDest dest);
 
-extern void PortalCleanup(Portal portal);
+extern void		PortalCleanup(Portal portal);
 
 /*
  * PerformAddAttribute --
- *	Performs the POSTQUEL function ADD.
+ *		Performs the POSTQUEL function ADD.
  */
-extern void PerformAddAttribute(char *relationName, char *userName,
-				bool inh, ColumnDef *colDef);
+extern void
+PerformAddAttribute(char *relationName, char *userName,
+					bool inh, ColumnDef * colDef);
 
-#endif /* COMMAND_H */
+#endif							/* COMMAND_H */

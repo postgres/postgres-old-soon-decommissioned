@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * lispsort.h--
- *    
+ *
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -10,7 +10,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#ifndef	LISPSORT_H
-#define	LISPSORT_H
+#ifndef LISPSORT_H
+#define LISPSORT_H
 
-#endif	/* LISPSORT_H */
+#endif							/* LISPSORT_H */

@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * purge.h--
- *    
+ *
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -10,11 +10,12 @@
  *
  *-------------------------------------------------------------------------
  */
-#ifndef	PURGE_H
-#define	PURGE_H
+#ifndef PURGE_H
+#define PURGE_H
 
-extern int32 RelationPurge(char *relationName,
-			   char *absoluteTimeString,
-			   char *relativeTimeString);
+extern int32
+RelationPurge(char *relationName,
+			  char *absoluteTimeString,
+			  char *relativeTimeString);
 
-#endif	/* PURGE_H */
+#endif							/* PURGE_H */

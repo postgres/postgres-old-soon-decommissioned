@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * item.h--
- *    POSTGRES disk item definitions.
+ *	  POSTGRES disk item definitions.
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -10,9 +10,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#ifndef	ITEM_H
+#ifndef ITEM_H
 #define ITEM_H
 
-typedef Pointer	Item;
+typedef Pointer Item;
 
-#endif	/* ITEM_H */
+#endif							/* ITEM_H */

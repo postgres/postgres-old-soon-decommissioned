@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * fcache2.h--
- *    
+ *
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -16,6 +16,6 @@
 #include <nodes/execnodes.h>
 
 extern void
-setFcache(Node *node, Oid foid, List *argList, ExprContext *econtext);
+				setFcache(Node * node, Oid foid, List * argList, ExprContext * econtext);
 
-#endif	/* FCACHE2_H */
+#endif							/* FCACHE2_H */

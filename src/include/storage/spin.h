@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * spin.h--
- *    synchronization routines
+ *	  synchronization routines
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -10,12 +10,12 @@
  *
  *-------------------------------------------------------------------------
  */
-#ifndef	SPIN_H
+#ifndef SPIN_H
 #define SPIN_H
 
 #include <storage/ipc.h>
 
-/* 
+/*
  * two implementations of spin locks
  *
  * sequent, sparc, sun3: real spin locks. uses a TAS instruction; see
@@ -25,11 +25,11 @@
  *
  */
 
-typedef int SPINLOCK;
+typedef int		SPINLOCK;
 
-extern bool CreateSpinlocks(IPCKey key);
-extern bool InitSpinLocks(int init, IPCKey key);
-extern void SpinAcquire(SPINLOCK lock);
-extern void SpinRelease(SPINLOCK lock);
+extern bool		CreateSpinlocks(IPCKey key);
+extern bool		InitSpinLocks(int init, IPCKey key);
+extern void		SpinAcquire(SPINLOCK lock);
+extern void		SpinRelease(SPINLOCK lock);
 
-#endif	/* SPIN_H */
+#endif							/* SPIN_H */

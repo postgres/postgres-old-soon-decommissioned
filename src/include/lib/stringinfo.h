@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * stringinfo.h--
- *    Declarations/definitons for "string" functions.
+ *	  Declarations/definitons for "string" functions.
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -16,18 +16,19 @@
 
 /*-------------------------
  * StringInfoData holds information about a string.
- * 	'data' is the string.
- *	'len' is the current string length (as returned by 'strlen')
- *	'maxlen' is the size in bytes of 'data', i.e. the maximum string
- *		size (includeing the terminating '\0' char) that we can
- *		currently store in 'data' without having to reallocate
- *		more space.
+ *		'data' is the string.
+ *		'len' is the current string length (as returned by 'strlen')
+ *		'maxlen' is the size in bytes of 'data', i.e. the maximum string
+ *				size (includeing the terminating '\0' char) that we can
+ *				currently store in 'data' without having to reallocate
+ *				more space.
  */
-typedef struct StringInfoData {
-    char *data;
-    int maxlen;
-    int len;
-} StringInfoData;
+typedef struct StringInfoData
+{
+	char		   *data;
+	int				maxlen;
+	int				len;
+}				StringInfoData;
 
 typedef StringInfoData *StringInfo;
 
@@ -41,6 +42,6 @@ extern StringInfo makeStringInfo(void);
  * appendStringInfo
  * similar to 'strcat' but reallocates more space if necessary...
  */
-extern void appendStringInfo(StringInfo str, char *buffer);
+extern void		appendStringInfo(StringInfo str, char *buffer);
 
-#endif /* STRINGINFO_H */
+#endif							/* STRINGINFO_H */
