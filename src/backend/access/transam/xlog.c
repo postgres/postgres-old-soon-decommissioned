@@ -1293,6 +1293,7 @@ BootStrapXLOG()
 	checkPoint.nextXid = FirstTransactionId;
 	checkPoint.nextOid = BootstrapObjectIdData;
 	checkPoint.ThisStartUpID = 0;
+	checkPoint.Shutdown = true;
 
 	ShmemVariableCache->nextXid = checkPoint.nextXid;
 	ShmemVariableCache->nextOid = checkPoint.nextOid;
@@ -1425,7 +1426,7 @@ StartupXLOG()
 			 ControlFile->catalog_version_no, CATALOG_VERSION_NO);
 
 	if (ControlFile->state == DB_SHUTDOWNED)
-		elog(LOG, "Data Base System was shut down at %s",
+		elog(LOG, "Data Base System was shutted down at %s",
 			 str_time(ControlFile->time));
 	else if (ControlFile->state == DB_SHUTDOWNING)
 		elog(LOG, "Data Base System was interrupted when shutting down at %s",
