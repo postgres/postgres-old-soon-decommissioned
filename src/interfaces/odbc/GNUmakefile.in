@@ -71,7 +71,7 @@ endif
 
 
 GNUmakefile: GNUmakefile.in $(top_builddir)/config.status
-	CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= ./config.status
+	cd $(top_builddir) && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= ./config.status
 
 $(top_builddir)/config.status: $(top_srcdir)/configure
 	cd $(top_builddir) && ./config.status --recheck

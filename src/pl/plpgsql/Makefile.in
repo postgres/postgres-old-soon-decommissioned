@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------
 #
-# Makefile for src/pl (procedural languages)
+# Makefile for src/pl/plpgsql (PostgreSQL's SQL procedural language)
 #
 # Copyright (c) 1994, Regents of the University of California
 #
@@ -12,32 +12,15 @@ srcdir = @srcdir@
 VPATH = @srcdir@
 
 top_srcdir = @top_srcdir@
-top_builddir = ../..
-subdir = src/pl
+top_builddir = ../../..
+subdir = src/pl/plpgsql
 
 
-with_perl = @with_perl@
-USE_TCL = @USE_TCL@
-
-
-all install clean:
-	$(MAKE) -C plpgsql $@
-ifeq ($(USE_TCL), true)
-	$(MAKE) -C tcl $@
-endif
-# Disabled because it doesn't work
-#ifeq ($(with_perl), yes)
-#	$(MAKE) -C plperl $@
-#endif
-
+.DEFAULT all install clean:
+	$(MAKE) -C src $@
 
 distclean maintainer-clean:
-	-$(MAKE) -C plpgsql $@
-ifeq ($(USE_TCL), true)
-	$(MAKE) -C tcl clean
-endif
-	rm -f tcl/mkMakefile.tcldefs.sh
-	-$(MAKE) -C plperl $@
+	-$(MAKE) -C src $@
 	rm -f Makefile
 
 

@@ -5,10 +5,9 @@
 --
 
 create function plpgsql_call_handler() returns opaque
-	as '@expanded_libdir@/plpgsql@DLSUFFIX@'
+	as '__libdir__/plpgsql__DLSUFFIX__'
 	language 'C';
 
 create trusted procedural language 'plpgsql'
 	handler plpgsql_call_handler
 	lancompiler 'PL/pgSQL';
-

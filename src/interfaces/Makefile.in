@@ -57,8 +57,8 @@ distclean maintainer-clean: clean
 .PHONY: all install dep depend clean distclean maintainer-clean
 
 
-GNUmakefile: GNUmakefile.in $(top_builddir)/config.status
-	CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= ./config.status
+Makefile: Makefile.in $(top_builddir)/config.status
+	cd $(top_builddir) && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= ./config.status
 
 $(top_builddir)/config.status: $(top_srcdir)/configure
 	cd $(top_builddir) && ./config.status --recheck

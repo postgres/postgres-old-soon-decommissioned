@@ -162,7 +162,7 @@ mkdir -p $LOGDIR
 # Install this build into ./tmp/check
 # ----------
 echo "=============== Installing new build into ./tmp_check  ================"
-${MAKE:-gmake} -C ../.. POSTGRESDIR=$CHKDIR install >$LOGDIR/install.log 2>&1
+${MAKE:-gmake} -C ../../.. POSTGRESDIR=$CHKDIR prefix=$CHKDIR install >$LOGDIR/install.log 2>&1
 
 if [ $? -ne 0 ]
 then
