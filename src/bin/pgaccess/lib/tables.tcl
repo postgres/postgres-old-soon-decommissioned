@@ -815,7 +815,7 @@ if {$PgAcVar(mw,$wn,updatable)} then {
 	$wn.c bind q <Key> "Tables::editText $wn %A %K"
 	if {[info commands kanjiInput] == "kanjiInput"} then {
 		$wn.c bind q <Control-backslash> "pgaccess_kinput_start %W";
-		$wn.c bind q <Control-Kanji> "pg_access_kinput_start %W";
+		$wn.c bind q <Control-Kanji> "pgaccess_kinput_start %W";
 	}
 } else {
 	$wn.c bind q <Key> {}
