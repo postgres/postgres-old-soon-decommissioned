@@ -60,7 +60,6 @@ typedef struct Query
 								 * BY */
 	Node	   *havingQual;		/* qualification of each group */
 
-	/***S*I***/
 	List	   *intersectClause;
 
 	List	   *unionClause;	/* unions are linked under the previous
@@ -613,7 +612,6 @@ typedef struct InsertStmt
 	Node	   *havingClause;	/* having conditional-expression */
 	List	   *unionClause;	/* union subselect parameters */
 	bool		unionall;		/* union without unique sort */
-	/***S*I***/
 	List	   *intersectClause;
 	List	   *forUpdate;		/* FOR UPDATE clause */
 } InsertStmt;
@@ -656,7 +654,6 @@ typedef struct SelectStmt
 	Node	   *whereClause;	/* qualifications */
 	List	   *groupClause;	/* group by clause */
 	Node	   *havingClause;	/* having conditional-expression */
-	/***S*I***/
 	List	   *intersectClause;
 	List	   *exceptClause;
 

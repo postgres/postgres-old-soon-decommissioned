@@ -92,7 +92,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"else", ELSE},
 	{"encoding", ENCODING},
 	{"end", END_TRANS},
-	/***S*I***/
 	{"except", EXCEPT},
 	{"exclusive", EXCLUSIVE},
 	{"execute", EXECUTE},
@@ -123,7 +122,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"insensitive", INSENSITIVE},
 	{"insert", INSERT},
 	{"instead", INSTEAD},
-	/***S*I***/
 	{"intersect", INTERSECT},
 	{"interval", INTERVAL},
 	{"into", INTO},

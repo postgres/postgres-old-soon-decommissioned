@@ -163,8 +163,6 @@ OffsetVarNodes(Node *node, int offset, int sublevels_up)
 							   offset,
 							   sublevels_up + 1);
 
-				/***S*I***/
-
 				/*
 				 * Make sure the first argument of sub->oper points to the
 				 * same var as sub->lefthand does otherwise we will run
@@ -383,8 +381,6 @@ ChangeVarNodes(Node *node, int rt_index, int new_index, int sublevels_up)
 							   new_index,
 							   sublevels_up + 1);
 
-				/***S*I***/
-
 				/*
 				 * Make sure the first argument of sub->oper points to the
 				 * same var as sub->lefthand does otherwise we will run
@@ -481,7 +477,6 @@ AddQual(Query *parsetree, Node *qual)
 	if (qual == NULL)
 		return;
 
-	/***S*I***/
 	/* INTERSECT want's the original, but we need to copy - Jan */
 	/* copy = qual; */
 	copy = copyObject(qual);
@@ -504,7 +499,6 @@ AddHavingQual(Query *parsetree, Node *havingQual)
 	if (havingQual == NULL)
 		return;
 
-	/***S*I***/
 	/* INTERSECT want's the original, but we need to copy - Jan */
 	/* copy = havingQual; */
 	copy = copyObject(havingQual);
@@ -525,7 +519,6 @@ AddNotHavingQual(Query *parsetree, Node *havingQual)
 	if (havingQual == NULL)
 		return;
 
-	/***S*I***/
 	/* INTERSECT want's the original, but we need to copy - Jan */
 	/* copy = (Node *) make_notclause((Expr *)havingQual); */
 	copy = (Node *) make_notclause((Expr *) copyObject(havingQual));
@@ -542,7 +535,6 @@ AddNotQual(Query *parsetree, Node *qual)
 	if (qual == NULL)
 		return;
 
-	/***S*I***/
 	/* INTERSECT want's the original, but we need to copy - Jan */
 	/* copy = (Node *) make_notclause((Expr *)qual); */
 	copy = (Node *) make_notclause((Expr *) copyObject(qual));
@@ -1098,7 +1090,6 @@ nodeHandleViewRule(Node **nodePtr,
 					lfirst(sublink->lefthand);
 
 
-				/***S*I***/
 				/* INTERSECT want's this - Jan */
 
 				/*

@@ -38,7 +38,6 @@
 #include "executor/nodeNestloop.h"
 #include "executor/nodeHashjoin.h"
 #include "executor/nodeHash.h"
-/***S*I***/
 #include "executor/nodeGroup.h"
 
 #include "executor/nodeAgg.h"
