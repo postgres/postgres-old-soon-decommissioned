@@ -1272,7 +1272,7 @@ pltcl_elog(ClientData cdata, Tcl_Interp *interp,
 	}
 
 	if (strcmp(argv[1], "DEBUG") == 0)
-		level = DEBUG1;
+		level = DEBUG2;
 	else if (strcmp(argv[1], "LOG") == 0)
 		level = LOG;
 	else if (strcmp(argv[1], "INFO") == 0)

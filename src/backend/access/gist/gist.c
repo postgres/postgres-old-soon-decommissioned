@@ -1925,7 +1925,7 @@ gist_dumptree(Relation r, int level, BlockNumber blk, OffsetNumber coff)
 
 	maxoff = PageGetMaxOffsetNumber(page);
 
-	elog(DEBUG3, "%sPage: %d %s blk: %d maxoff: %d free: %d", pred,
+	elog(DEBUG4, "%sPage: %d %s blk: %d maxoff: %d free: %d", pred,
 		 coff, (opaque->flags & F_LEAF) ? "LEAF" : "INTE", (int) blk,
 		 (int) maxoff, PageGetFreeSpace(page));
 
@@ -1935,7 +1935,7 @@ gist_dumptree(Relation r, int level, BlockNumber blk, OffsetNumber coff)
 		which = (IndexTuple) PageGetItem(page, iid);
 		cblk = ItemPointerGetBlockNumber(&(which->t_tid));
 #ifdef PRINTTUPLE
-		elog(DEBUG3, "%s  Tuple. blk: %d size: %d", pred, (int) cblk,
+		elog(DEBUG4, "%s  Tuple. blk: %d size: %d", pred, (int) cblk,
 			 IndexTupleSize(which));
 #endif
 

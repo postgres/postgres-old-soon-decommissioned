@@ -70,7 +70,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 	/* might as well round it off to a multiple of a typical page size */
 	size += 8192 - (size % 8192);
 
-	elog(DEBUG2, "invoking IpcMemoryCreate(size=%d)", size);
+	elog(DEBUG3, "invoking IpcMemoryCreate(size=%d)", size);
 
 	/*
 	 * Create the shmem segment

@@ -1279,7 +1279,7 @@ pred_test_simple_clause(Expr *predicate, Node *clause)
 	if (isNull)
 	{
 		/* Treat a null result as false ... but it's a tad fishy ... */
-		elog(DEBUG1, "pred_test_simple_clause: null test result");
+		elog(DEBUG2, "pred_test_simple_clause: null test result");
 		return false;
 	}
 	return DatumGetBool(test_result);

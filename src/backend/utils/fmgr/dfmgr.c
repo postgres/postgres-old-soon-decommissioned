@@ -402,7 +402,7 @@ find_in_dynamic_libpath(const char *basename)
 		sprintf(full, "%s/%s", mangled, basename);
 		pfree(mangled);
 
-		elog(DEBUG2, "find_in_dynamic_libpath: trying %s", full);
+		elog(DEBUG3, "find_in_dynamic_libpath: trying %s", full);
 
 		if (file_exists(full))
 			return full;

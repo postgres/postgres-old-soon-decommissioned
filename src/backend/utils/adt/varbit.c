@@ -1321,7 +1321,7 @@ bitposition(PG_FUNCTION_ARGS)
 					mask2 = end_mask << (BITS_PER_BYTE - is);
 					is_match = mask2 == 0;
 #if 0
-					elog(DEBUG3, "S. %d %d em=%2x sm=%2x r=%d",
+					elog(DEBUG4, "S. %d %d em=%2x sm=%2x r=%d",
 						 i, is, end_mask, mask2, is_match);
 #endif
 					break;

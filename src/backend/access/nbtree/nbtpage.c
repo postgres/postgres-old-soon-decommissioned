@@ -416,7 +416,7 @@ _bt_getbuf(Relation rel, BlockNumber blkno, int access)
 				_bt_pageinit(page, BufferGetPageSize(buf));
 				return buf;
 			}
-			elog(DEBUG1, "_bt_getbuf: FSM returned nonrecyclable page");
+			elog(DEBUG2, "_bt_getbuf: FSM returned nonrecyclable page");
 			_bt_relbuf(rel, buf);
 		}
 

@@ -550,7 +550,7 @@ clause_selectivity(Query *root,
 	}
 
 #ifdef SELECTIVITY_DEBUG
-	elog(DEBUG3, "clause_selectivity: s1 %f", s1);
+	elog(DEBUG4, "clause_selectivity: s1 %f", s1);
 #endif   /* SELECTIVITY_DEBUG */
 
 	return s1;

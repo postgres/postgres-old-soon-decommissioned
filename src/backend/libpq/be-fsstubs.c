@@ -81,7 +81,7 @@ lo_open(PG_FUNCTION_ARGS)
 	MemoryContext currentContext;
 
 #if FSDB
-	elog(DEBUG3, "lo_open(%u,%d)", lobjId, mode);
+	elog(DEBUG4, "lo_open(%u,%d)", lobjId, mode);
 #endif
 
 	if (fscxt == NULL)
@@ -99,7 +99,7 @@ lo_open(PG_FUNCTION_ARGS)
 	{							/* lookup failed */
 		MemoryContextSwitchTo(currentContext);
 #if FSDB
-		elog(DEBUG3, "cannot open large object %u", lobjId);
+		elog(DEBUG4, "cannot open large object %u", lobjId);
 #endif
 		PG_RETURN_INT32(-1);
 	}
@@ -123,7 +123,7 @@ lo_close(PG_FUNCTION_ARGS)
 		PG_RETURN_INT32(-1);
 	}
 #if FSDB
-	elog(DEBUG3, "lo_close(%d)", fd);
+	elog(DEBUG4, "lo_close(%d)", fd);
 #endif
 
 	Assert(fscxt != NULL);

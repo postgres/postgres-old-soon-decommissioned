@@ -1193,7 +1193,7 @@ _bt_insert_parent(Relation rel,
 			BTPageOpaque lpageop;
 
 			if (!InRecovery)
-				elog(DEBUG1, "_bt_insert_parent: concurrent ROOT page split");
+				elog(DEBUG2, "_bt_insert_parent: concurrent ROOT page split");
 			lpageop = (BTPageOpaque) PageGetSpecialPointer(page);
 			/* Find the leftmost page at the next level up */
 			pbuf = _bt_get_endpoint(rel, lpageop->btpo.level + 1, false);

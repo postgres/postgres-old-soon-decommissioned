@@ -136,7 +136,7 @@ ProcessConfigFile(GucContext context)
 	Assert(context == PGC_POSTMASTER || context == PGC_BACKEND 
 		|| context == PGC_SIGHUP);
 	Assert(DataDir);
-	elevel = (context == PGC_SIGHUP) ? DEBUG3 : ERROR;
+	elevel = (context == PGC_SIGHUP) ? DEBUG4 : ERROR;
 
 	/*
 	 * Open file

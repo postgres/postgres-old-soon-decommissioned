@@ -435,7 +435,7 @@ funny_dup17(PG_FUNCTION_ARGS)
 																	))));
 	}
 
-	elog(DEBUG3, "funny_dup17 (fired %s) on level %3d: %d/%d tuples inserted/selected",
+	elog(DEBUG4, "funny_dup17 (fired %s) on level %3d: %d/%d tuples inserted/selected",
 		 when, *level, inserted, selected);
 
 	SPI_finish();

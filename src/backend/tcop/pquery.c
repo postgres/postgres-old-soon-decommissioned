@@ -702,7 +702,7 @@ PortalRunUtility(Portal portal, Query *query,
 {
 	Node   *utilityStmt = query->utilityStmt;
 
-	elog(DEBUG2, "ProcessUtility");
+	elog(DEBUG3, "ProcessUtility");
 
 	/*
 	 * Set snapshot if utility stmt needs one.  Most reliable
@@ -806,7 +806,7 @@ PortalRunMulti(Portal portal,
 			/*
 			 * process a plannable query.
 			 */
-			elog(DEBUG2, "ProcessQuery");
+			elog(DEBUG3, "ProcessQuery");
 
 			/* Must always set snapshot for plannable queries */
 			SetQuerySnapshot();

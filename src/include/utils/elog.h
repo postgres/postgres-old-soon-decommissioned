@@ -20,7 +20,7 @@
 #define DEBUG4		11
 #define DEBUG3		12
 #define DEBUG2		13
-#define DEBUG1		14
+#define DEBUG1		14			/* used by GUC debug_* variables */
 #define LOG			15			/* Server operational messages; sent only
 								 * to server log by default. */
 #define COMMERROR	16			/* Client communication problems; same as

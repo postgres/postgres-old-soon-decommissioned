@@ -2661,7 +2661,7 @@ static PyObject *PLy_output(int, PyObject *, PyObject *);
 PyObject *
 PLy_debug(PyObject * self, PyObject * args)
 {
-	return PLy_output(DEBUG1, self, args);
+	return PLy_output(DEBUG2, self, args);
 }
 
 PyObject *

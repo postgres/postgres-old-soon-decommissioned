@@ -133,7 +133,7 @@ lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt)
 	if (vacstmt->verbose)
 		elevel = INFO;
 	else
-		elevel = DEBUG1;
+		elevel = DEBUG2;
 
 	vacuum_set_xid_limits(vacstmt, onerel->rd_rel->relisshared,
 						  &OldestXmin, &FreezeLimit);

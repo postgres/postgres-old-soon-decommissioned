@@ -161,7 +161,7 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt)
 	if (vacstmt->verbose)
 		elevel = INFO;
 	else
-		elevel = DEBUG1;
+		elevel = DEBUG2;
 
 	/*
 	 * Use the current context for storing analysis info.  vacuum.c
