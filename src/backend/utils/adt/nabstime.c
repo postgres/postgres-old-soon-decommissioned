@@ -77,7 +77,12 @@ GetCurrentAbsoluteTime(void)
 		tm = localtime(&now);
 
 		CDayLight = tm->tm_isdst;
-		CTimeZone = (tm->tm_isdst ? (timezone - 3600) : timezone);
+		CTimeZone =
+#ifdef __CYGWIN32__
+		(tm->tm_isdst ? (_timezone - 3600) : _timezone);
+#else
+		(tm->tm_isdst ? (timezone - 3600) : timezone);
+#endif 
 		strcpy(CTZName, tzname[tm->tm_isdst]);
 #else
 #error USE_POSIX_TIME defined but no time zone available
@@ -167,7 +172,11 @@ abstime2tm(AbsoluteTime time, int *tzp, struct tm * tm, char *tzn)
 		strcpy(tzn, tm->tm_zone);
 #elif defined(HAVE_INT_TIMEZONE)
 	if (tzp != NULL)
+#ifdef __CYGWIN__
+		*tzp = (tm->tm_isdst ? (_timezone - 3600) : _timezone);
+#else
 		*tzp = (tm->tm_isdst ? (timezone - 3600) : timezone);
+#endif
 	if (tzn != NULL)
 		strcpy(tzn, tzname[tm->tm_isdst]);
 #else
