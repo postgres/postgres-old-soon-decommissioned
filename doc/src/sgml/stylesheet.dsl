@@ -121,6 +121,32 @@
   (cond (tex-backend "eps")
         (rtf-backend "ai"))) ;; ApplixWare?
 
+;; The rules in the default stylesheet for productname format it as
+;; a paragraph.  This may be suitable for productname directly
+;; within *info, but it's nonsense when productname is used
+;; inline, as we do.
+(mode set-titlepage-recto-mode
+  (element (para productname) ($charseq$)))
+(mode set-titlepage-verso-mode
+  (element (para productname) ($charseq$)))
+(mode book-titlepage-recto-mode
+  (element (para productname) ($charseq$)))
+(mode book-titlepage-verso-mode
+  (element (para productname) ($charseq$)))
+;; Add more here if needed...
+
+;; Format legalnotice justified and with space between paragraphs.
+(mode book-titlepage-verso-mode
+  (element (legalnotice para)
+    (make paragraph
+      use: book-titlepage-verso-style	;; alter this if ever it needs to appear elsewhere
+      quadding: %default-quadding%
+      line-spacing: (* 0.8 (inherited-line-spacing))
+      font-size: (* 0.8 (inherited-font-size))
+      space-before: (* 0.8 %para-sep%)
+      space-after: (* 0.8 %para-sep%)
+      (process-children))))
+
 ]]> <!-- %output-print -->
 
 <![ %output-text; [
@@ -130,6 +156,27 @@
 (define %section-autolabel% #f)
 (define %chapter-autolabel% #f)
 (define $generate-chapter-toc$ (lambda () #f))
+
+;; For text output, produce "ASCII markup" for emphasis and such.
+
+(define ($asterix-seq$ #!optional (sosofo (process-children)))
+  (make sequence
+    (literal "*")
+    sosofo
+    (literal "*")))
+ 
+(define ($dquote-seq$ #!optional (sosofo (process-children)))
+  (make sequence
+    (literal (gentext-start-quote))
+    sosofo
+    (literal (gentext-end-quote))))
+ 
+(element (para command) ($dquote-seq$))
+(element (para emphasis) ($asterix-seq$))
+(element (para filename) ($dquote-seq$))
+(element (para option) ($dquote-seq$))
+(element (para replaceable) ($dquote-seq$))
+(element (para userinput) ($dquote-seq$))
 
 ]]> <!-- %output-text -->
 
