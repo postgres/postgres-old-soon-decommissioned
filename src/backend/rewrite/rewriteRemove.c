@@ -103,6 +103,11 @@ RemoveRewriteRule(char *ruleName)
 	 */
 	event_relation = heap_open(eventRelationOid, AccessExclusiveLock);
 
+	/* do not allow the removal of a view's SELECT rule */
+	if (event_relation->rd_rel->relkind == RELKIND_VIEW &&
+			((Form_pg_rewrite) GETSTRUCT(tuple))->ev_type == '1' )
+		elog(ERROR, "Cannot remove a view's SELECT rule");
+
 	hasMoreRules = event_relation->rd_rules != NULL &&
 		event_relation->rd_rules->numLocks > 1;
 

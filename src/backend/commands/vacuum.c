@@ -306,7 +306,7 @@ getrels(NameData *VacRelP)
 
 		if (rkind != RELKIND_RELATION)
 		{
-			elog(NOTICE, "Vacuum: can not process index and certain system tables");
+			elog(NOTICE, "Vacuum: can not process indecies, views and certain system tables");
 			continue;
 		}
 

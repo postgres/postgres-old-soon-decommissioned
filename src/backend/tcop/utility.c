@@ -228,6 +228,9 @@ ProcessUtility(Node *parsetree,
 				if (rel->rd_rel->relkind == RELKIND_SEQUENCE)
 					elog(ERROR, "TRUNCATE cannot be used on sequences. '%s' is a sequence",
 						 relname);
+				if (rel->rd_rel->relkind == RELKIND_VIEW)
+					elog(ERROR, "TRUNCATE cannot be used on views. '%s' is a sequence",
+						 relname);
 				heap_close(rel, NoLock);
 
 #ifndef NO_SECURITY
