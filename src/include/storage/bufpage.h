@@ -303,7 +303,7 @@ typedef enum
 #define PageGetLSN(page) \
 	(((PageHeader) (page))->pd_lsn)
 #define PageSetLSN(page, lsn) \
-	(((PageHeader) (page))->pd_lsn = (XLogRecPtr) (lsn))
+	(((PageHeader) (page))->pd_lsn = (lsn))
 
 #define PageGetSUI(page) \
 	(((PageHeader) (page))->pd_sui)
