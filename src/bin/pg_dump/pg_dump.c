@@ -558,7 +558,7 @@ main(int argc, char **argv)
 	if (g_fout->remoteVersion < 70300)
 	{
 		if (g_fout->remoteVersion >= 70100)
-			g_last_builtin_oid = findLastBuiltinOid_V71(PQdb(((ArchiveHandle *)g_conn)->connection));
+			g_last_builtin_oid = findLastBuiltinOid_V71(PQdb(g_conn));
 		else
 			g_last_builtin_oid = findLastBuiltinOid_V70();
 		if (g_verbose)
