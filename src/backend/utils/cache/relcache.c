@@ -2012,7 +2012,7 @@ init_irels(void)
 static void
 write_irels(void)
 {
-	int			len;
+	Size		len;
 	int			nwritten;
 	File		fd;
 	Relation	irel[Num_indices_bootstrap];
