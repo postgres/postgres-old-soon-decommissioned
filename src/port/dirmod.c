@@ -68,7 +68,7 @@ pgrename(const char *from, const char *to)
 {
 	int			loops = 0;
 
-	/* Is this loop even necessary?  */
+	/* Is this loop even necessary now that we have win32_open()?  */
 #if defined(WIN32) && !defined(__CYGWIN__)
 	while (!MoveFileEx(from, to, MOVEFILE_REPLACE_EXISTING))
 #endif
@@ -114,7 +114,7 @@ pgunlink(const char *path)
 {
 	int			loops = 0;
 
-	/* Is this loop even necessary?  */
+	/* Is this loop even necessary now that we have win32_open()?  */
 	while (unlink(path))
 	{
 		if (errno != EACCES)

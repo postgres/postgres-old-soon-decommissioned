@@ -71,6 +71,7 @@ win32_open(const char *fileName, int fileFlags,...)
 	/* cannot use O_RDONLY, as it == 0 */
 				  (fileFlags & O_RDWR) ? (GENERIC_WRITE | GENERIC_READ) :
 				 ((fileFlags & O_WRONLY) ? GENERIC_WRITE : GENERIC_READ),
+				/* These flags allow concurrent rename/unlink */
 				(FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE),
 						&sa,
 						openFlagsToCreateFileFlags(fileFlags),
