@@ -551,6 +551,9 @@ retry:
 	{
 		UnlockBufHdr_NoHoldoff(buf);
 		LWLockRelease(BufMappingLock);
+		/* safety check: should definitely not be our *own* pin */
+		if (PrivateRefCount[buf->buf_id] != 0)
+			elog(ERROR, "buffer is pinned in InvalidateBuffer");
 		WaitIO(buf);
 		goto retry;
 	}
