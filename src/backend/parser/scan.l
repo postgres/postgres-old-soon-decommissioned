@@ -42,6 +42,7 @@ static char *parseCh;
 /* set up my input handler --- need one flavor for flex, one for lex */
 #if defined(FLEX_SCANNER)
 
+#define YY_NEVER_INTERACTIVE 1
 #define YY_NO_UNPUT
 static int myinput(char* buf, int max);
 #undef YY_INPUT
