@@ -978,7 +978,7 @@ describeUsers (const char *name)
 	printTable(title, headers,
 			   (const char **) cells,
 			   NULL,
-			   "lll", &myopt, pset.queryFout);
+			   "lrl", &myopt, pset.queryFout);
 
 	/* clean up */
 	for (i = 0; i < PQntuples(res); i++)
