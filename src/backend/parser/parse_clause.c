@@ -161,10 +161,6 @@ transformUsingClause(ParseState *pstate, List *onList, char *lname, char *rname)
 			Attr	   *rattr = makeAttr(rname, i->name);
 			A_Expr *e = makeNode(A_Expr);
 
-#ifdef PARSEDEBUG
-printf("transformUsingClause- transform %s", nodeToString(i));
-#endif
-
 			e->oper = OP;
 			e->opname = "=";
 			e->lexpr = (Node *)lattr;
@@ -199,16 +195,7 @@ printf("transformUsingClause- transform %s", nodeToString(i));
 			{
 				expr = (A_Expr *)qual;
 			}
-
-#ifdef PARSEDEBUG
-printf("transformUsingClause- transform %s", nodeToString(qual));
-#endif
-
 		}
-
-#ifdef PARSEDEBUG
-printf(" to %s\n", nodeToString(expr));
-#endif
 	}
 	return ((Node *)transformExpr(pstate, (Node *)expr, EXPR_COLUMN_FIRST));
 }
