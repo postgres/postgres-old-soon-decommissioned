@@ -1155,11 +1155,11 @@ setVarAttrLenForCreateTable(TupleDesc tupType, List *targetList,
 		Relation	rd;
 
 		var = (Var *)expr;
-		rtentry = rt_fetch(var->varno, rangeTable);
+		rtentry = rt_fetch(var->varnoold, rangeTable);
 		rd = heap_open(rtentry->relid);
 			/* set length to that defined in relation */
 		tupType->attrs[varno]->attlen =
-				(*rd->rd_att->attrs[var->varattno-1]).attlen;
+				(*rd->rd_att->attrs[var->varoattno-1]).attlen;
 		heap_close(rd);
 	    }
 	    else
