@@ -3204,8 +3204,8 @@ analyzeCreateSchemaStmt(CreateSchemaStmt *stmt)
 
 					if (elp->relation->schemaname == NULL)
 						elp->relation->schemaname = cxt.schemaname;
-					else if (strcmp(cxt.schemaname, elp->relation->schemaname))
-						elog(ERROR, "New table refers to a schema (%s)"
+					else if (strcmp(cxt.schemaname, elp->relation->schemaname) != 0)
+						elog(ERROR, "New table specifies a schema (%s)"
 							" different from the one being created (%s)",
 							elp->relation->schemaname, cxt.schemaname);
 
@@ -3223,8 +3223,8 @@ analyzeCreateSchemaStmt(CreateSchemaStmt *stmt)
 
 					if (elp->view->schemaname == NULL)
 						elp->view->schemaname = cxt.schemaname;
-					else if (strcmp(cxt.schemaname, elp->view->schemaname))
-						elog(ERROR, "New view refers to a schema (%s)"
+					else if (strcmp(cxt.schemaname, elp->view->schemaname) != 0)
+						elog(ERROR, "New view specifies a schema (%s)"
 							" different from the one being created (%s)",
 							elp->view->schemaname, cxt.schemaname);
 
