@@ -115,7 +115,9 @@ ERROR:  namespace "<replaceable class="parameter">schemaname</replaceable>" alre
    whose names may duplicate those of other objects existing in other
    schemas.  Named objects are accessed either by <quote>qualifying</>
    their names with the schema name as a prefix, or by setting a search
-   path that includes the desired schema(s).
+   path that includes the desired schema(s).  Unqualified objects are
+   created in the current schema (the one at the front of the search path; 
+   see <literal>CURRENT_SCHEMA()</>).
   </para>
 
   <para>
