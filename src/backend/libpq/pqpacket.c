@@ -33,7 +33,8 @@
  * Set up a packet read for the postmaster event loop.
  */
 
-void		PacketReceiveSetup(Packet *pkt, PacketDoneProc iodone, void *arg)
+void
+PacketReceiveSetup(Packet *pkt, PacketDoneProc iodone, void *arg)
 {
 	pkt->nrtodo = sizeof(pkt->len);
 	pkt->ptr = (char *) &pkt->len;
