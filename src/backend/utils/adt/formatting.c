@@ -67,21 +67,23 @@
 #define DEBUG_elog_output	NOTICE
 ***/
 
-#include <stdio.h>
-#include <string.h>
+#include "postgres.h"
+
 #include <ctype.h>
 #include <sys/time.h>
 #include <unistd.h>
+#ifdef USE_LOCALE
 #include <locale.h>
+#endif
 #include <math.h>
 #include <float.h>
 
-#include "postgres.h"
 #include "utils/builtins.h"
 #include "utils/date.h"
 #include "utils/datetime.h"
 #include "utils/formatting.h"
 #include "utils/int8.h"
+#include "utils/numeric.h"
 #include "utils/pg_locale.h"
 
 /* ----------

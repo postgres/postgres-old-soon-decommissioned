@@ -33,6 +33,7 @@
 #include "rewrite/rewriteManip.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"
+#include "utils/numeric.h"
 #include "utils/relcache.h"
 #include "utils/syscache.h"
 
