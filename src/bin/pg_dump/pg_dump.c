@@ -176,8 +176,7 @@ static void
 version(void)
 {
     puts("pg_dump (PostgreSQL) " PG_RELEASE "." PG_VERSION "." PG_SUBVERSION);
-    puts("Copyright (C) 2000 PostgreSQL Global Development Team");
- * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+    puts("Portions Copyright (c) 1996-2000, PostgreSQL, Inc");
     puts("Portions Copyright (C) 1996 Regents of the University of California");
     puts("Read the file COPYING to see the usage and distribution terms.");
 }

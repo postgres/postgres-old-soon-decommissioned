@@ -571,8 +571,7 @@ showVersion(void)
     puts(" support");
 #endif
 
-    puts("Copyright (C) 2000 PostgreSQL Global Development Team");
- * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+    puts("Portions Copyright (c) 1996-2000, PostgreSQL, Inc");
     puts("Portions Copyright (C) 1996 Regents of the University of California");
     puts("Read the file COPYING or use the command \\copyright to see the");
     puts("usage and distribution terms.");
