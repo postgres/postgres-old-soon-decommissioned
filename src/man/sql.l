@@ -311,8 +311,8 @@ A
 .IR "time expression"
 is in one of two forms:
 .nf
- ['date']
- ['date-1', 'date-2']
+ ["date"]
+ ["date-1", "date-2"]
 .fi
 The first case requires instances that are valid at the indicated
 time.  The second case requires instances that are valid at some time
@@ -321,7 +321,7 @@ the default is \*(lqnow\*(rq.
 .PP
 In each case, the date is a character string of the form
 .nf
-[MON-FRI] 'MMM DD [HH:MM:SS] YYYY' [Timezone]
+"[MON-FRI] MMM DD [HH:MM:SS] YYYY [Timezone]"
 .fi
 where MMM is the month (Jan \- Dec), DD is a legal day number in the
 specified month, HH:MM:SS is an optional time in that day (24-hour
@@ -333,8 +333,8 @@ local time zone.
 .PP
 For example,
 .nf
-['Jan 1 1990']
-['Mar 3 00:00:00 1980', 'Mar 3 23:59:59 1981r']
+["Jan 1 1990"]
+["Mar 3 00:00:00 1980", "Mar 3 23:59:59 1981"]
 .fi
 are valid time specifications.
 .PP
