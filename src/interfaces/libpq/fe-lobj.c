@@ -17,7 +17,7 @@
 #include <sys/types.h>
 #include "postgres.h"
 #include "libpq-fe.h"
-#include "obj/fmgr.h" 
+#include "fmgr.h" 
 #include "libpq/libpq-fs.h"
 
 #ifndef MAXPATHLEN
