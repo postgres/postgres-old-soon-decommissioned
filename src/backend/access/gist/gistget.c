@@ -254,7 +254,7 @@ gistindex_keytest(IndexTuple tuple,
 		gistdentryinit(giststate, key[0].sk_attno-1, &de,
 					   datum, r, p, offset,
 					   IndexTupleSize(tuple) - sizeof(IndexTupleData),
-					   FALSE);
+					   FALSE, isNull);
 
 		if (key[0].sk_flags & SK_COMMUTE)
 		{
