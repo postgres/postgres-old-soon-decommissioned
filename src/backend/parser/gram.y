@@ -3244,7 +3244,8 @@ oper_argtypes:
 				{
 				   ereport(ERROR,
 						   (errcode(ERRCODE_SYNTAX_ERROR),
-							errmsg("argument type missing (use NONE for unary operators)")));
+							errmsg("missing argument"),
+							errhint("Use NONE to denote the missing argument of a unary operator.")));
 				}
 			| Typename ',' Typename
 					{ $$ = makeList2($1, $3); }

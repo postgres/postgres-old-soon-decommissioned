@@ -1540,7 +1540,7 @@ static struct config_string ConfigureNamesString[] =
 
 	{
 		{"unix_socket_group", PGC_POSTMASTER, CONN_AUTH_SETTINGS,
-			gettext_noop("The group owner of the Unix domain socket"),
+			gettext_noop("The owning group of the Unix-domain socket"),
 			gettext_noop("(The owning user of the socket is always the user "
 						 "that starts the server.)")
 		},
@@ -1550,7 +1550,7 @@ static struct config_string ConfigureNamesString[] =
 
 	{
 		{"unix_socket_directory", PGC_POSTMASTER, CONN_AUTH_SETTINGS,
-			gettext_noop("The Unix-domain socket directory to listen to"),
+			gettext_noop("Directory where the Unix-domain socket will be created"),
 			NULL
 		},
 		&UnixSocketDir,
