@@ -1283,7 +1283,7 @@ _equalDropUserStmt(DropUserStmt *a, DropUserStmt *b)
 static bool
 _equalLockStmt(LockStmt *a, LockStmt *b)
 {
-	if (!equalstr(a->relname, b->relname))
+	if (!equal(a->rellist, b->rellist))
 		return false;
 	if (a->mode != b->mode)
 		return false;
