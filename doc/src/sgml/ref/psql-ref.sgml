@@ -416,6 +416,29 @@ testdb=>
 
 
       <varlistentry>
+        <term><literal>\dD</literal> [ <replaceable class="parameter">pattern</replaceable> ]</term>
+        <listitem>
+        <para>
+        Lists all database domains.
+        </para>
+
+        <para>
+        Descriptions for objects can be generated with the <command>COMMENT ON</command>
+        <acronym>SQL</acronym> command.
+	</para>
+
+        <note>
+        <para>
+        <productname>PostgreSQL</productname> stores the object descriptions in the
+        pg_description system table.
+        </para>
+        </note>
+
+        </listitem>
+      </varlistentry>
+
+
+      <varlistentry>
         <term><literal>\df [ <replaceable class="parameter">pattern</replaceable> ]</literal></term>
 
         <listitem>

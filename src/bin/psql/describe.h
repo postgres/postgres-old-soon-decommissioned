@@ -40,4 +40,7 @@ bool		listAllDbs(bool desc);
 /* \dt, \di, \ds, \dS, etc. */
 bool		listTables(const char *infotype, const char *name, bool desc);
 
+/* \dD */
+bool		listDomains(const char *name);
+
 #endif   /* DESCRIBE_H */
