@@ -16,8 +16,6 @@
  * Internal TODO:
  *
  *		Finish functions for MATCH FULL:
- *			setnull_del
- *			setnull_upd
  *			setdefault_del
  *			setdefault_upd
  *
