@@ -21,7 +21,7 @@ override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS) $(TCL_INCLUDE_SPEC)
 OBJS= pgtcl.o pgtclCmds.o pgtclId.o
 
 SHLIB_LINK = $(libpq) $(TCL_LIB_SPEC) $(TCL_LIBS) \
-	$(filter -lssl -lcrypto -lcrypt, $(LIBS)) $(THREAD_LIBS)
+	$(filter -lssl -lcrypto -lkrb5 -lcrypt, $(LIBS)) $(THREAD_LIBS)
 
 all: submake-libpq all-lib
 
