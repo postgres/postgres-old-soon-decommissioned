@@ -149,6 +149,7 @@
 #include <utils/relcache.h>
 #include <miscadmin.h>
 #include <commands/async.h>
+#include <commands/sequence.h>
 
 /* ----------------
  *	global variables holding the current transaction state.
@@ -813,7 +814,8 @@ CommitTransaction()
      *	do commit processing
      * ----------------
      */
-     DestroyTempRels();
+    CloseSequences ();
+    DestroyTempRels();
     AtEOXact_portals();
     RecordTransactionCommit();
     RelationPurgeLocalRelation(true);
@@ -878,6 +880,7 @@ AbortTransaction()
      *	do abort processing
      * ----------------
      */
+    CloseSequences ();
     AtEOXact_portals();
     RecordTransactionAbort();
     RelationPurgeLocalRelation(false);
