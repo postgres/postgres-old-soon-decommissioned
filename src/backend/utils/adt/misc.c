@@ -17,15 +17,7 @@
 #include "catalog/pg_type.h"
 #include "utils/builtins.h"
 
-#if !defined(aix) && \
-    !defined(BSD44_derived) && \
-    !defined(bsdi) && \
-    !defined(bsdi_2_1) && \
-    !defined(irix5) && \
-    !defined(linux)
-extern int random();
-extern int srandom(unsigned);
-#endif
+#include "port-protos.h"  /* For random(), sometimes */
 
 
 /*-------------------------------------------------------------------------
