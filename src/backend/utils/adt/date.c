@@ -350,7 +350,7 @@ timestamp_date(PG_FUNCTION_ARGS)
 	DateADT		result;
 	struct tm	tt,
 			   *tm = &tt;
-	double		fsec;
+	fsec_t		fsec;
 
 	if (TIMESTAMP_NOT_FINITE(timestamp))
 		PG_RETURN_NULL();
