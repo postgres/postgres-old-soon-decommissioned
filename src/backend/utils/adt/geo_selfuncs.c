@@ -47,13 +47,13 @@
 Datum
 areasel(PG_FUNCTION_ARGS)
 {
-	PG_RETURN_FLOAT8(0.02);
+	PG_RETURN_FLOAT8(0.005);
 }
 
 Datum
 areajoinsel(PG_FUNCTION_ARGS)
 {
-	PG_RETURN_FLOAT8(0.02);
+	PG_RETURN_FLOAT8(0.005);
 }
 
 /*
@@ -85,11 +85,11 @@ positionjoinsel(PG_FUNCTION_ARGS)
 Datum
 contsel(PG_FUNCTION_ARGS)
 {
-	PG_RETURN_FLOAT8(0.01);
+	PG_RETURN_FLOAT8(0.001);
 }
 
 Datum
 contjoinsel(PG_FUNCTION_ARGS)
 {
-	PG_RETURN_FLOAT8(0.01);
+	PG_RETURN_FLOAT8(0.001);
 }
