@@ -317,8 +317,8 @@ $PostgreSQL$
        Syntax checking of array input processing has been tighened up
        considerably. Junk that was previously allowed in odd places with
        odd results now causes an ERROR. Also changed behavior with respect
-       to whitespace; trailing whitespace is now ignored as well as leading
-       whitespace (which has always been ignored).
+       to whitespace surrounding array elements; trailing whitespace is now
+       ignored as well as leading whitespace (which has always been ignored).
       </para>
      </listitem>
     </itemizedlist>
