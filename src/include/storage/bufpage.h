@@ -272,9 +272,7 @@ typedef enum
  */
 /* XXX dig out of buffer descriptor */
 #define BufferGetPageSize(buffer) \
-	(AssertMacro(BufferIsValid(buffer)) ? \
-	 AssertMacro(PageSizeIsValid(pageSize)) ? \
-	 ((Size)BLCKSZ) : false : false)
+	(AssertMacro(BufferIsValid(buffer)) ? (Size)BLCKSZ : false)
 
 /*
  * BufferGetPage --
