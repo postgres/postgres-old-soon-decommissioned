@@ -192,7 +192,7 @@ test "$globals_only" = yes && exit 0
 # connect to them anyway (and besides, we don't want to dump template0).
 
 $PSQL -d template1 -At -F ' ' \
-  -c "SELECT datname, usename, pg_encoding_to_char(d.encoding), datistemplate, datpath FROM pg_database d LEFT JOIN pg_shadow u ON (datdba = usesysid) WHERE datallowconn;" | \
+  -c "SELECT datname, coalesce(usename, (select usename from pg_shadow where usesysid=(select datdba from pg_database where datname='template0'))), pg_encoding_to_char(d.encoding), datistemplate, datpath FROM pg_database d LEFT JOIN pg_shadow u ON (datdba = usesysid) WHERE datallowconn;" | \
 while read DATABASE DBOWNER ENCODING ISTEMPLATE DBPATH; do
     echo
     echo "--"
