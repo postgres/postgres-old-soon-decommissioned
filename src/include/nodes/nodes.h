@@ -190,6 +190,7 @@ typedef enum NodeTag
 	T_CreateUserStmt,
 	T_AlterUserStmt,
 	T_DropUserStmt,
+	T_LockStmt,
 
 	T_A_Expr = 700,
 	T_Attr,

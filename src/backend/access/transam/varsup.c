@@ -311,6 +311,42 @@ GetNewTransactionId(TransactionId *xid)
 	SpinRelease(OidGenLockId);
 }
 
+/*
+ * Like GetNewTransactionId reads nextXid but don't fetch it.
+ */
+void
+ReadNewTransactionId(TransactionId *xid)
+{
+
+	/* ----------------
+	 *	during bootstrap initialization, we return the special
+	 *	bootstrap transaction id.
+	 * ----------------
+	 */
+	if (AMI_OVERRIDE)
+	{
+		TransactionIdStore(AmiTransactionId, xid);
+		return;
+	}
+
+	SpinAcquire(OidGenLockId);	/* not good for concurrency... */
+
+	if (ShmemVariableCache->xid_count == 0)
+	{
+		TransactionId nextid;
+
+		VariableRelationGetNextXid(&nextid);
+		TransactionIdStore(nextid, &(ShmemVariableCache->nextXid));
+		ShmemVariableCache->xid_count = VAR_XID_PREFETCH;
+		TransactionIdAdd(&nextid, VAR_XID_PREFETCH);
+		VariableRelationPutNextXid(nextid);
+	}
+
+	TransactionIdStore(ShmemVariableCache->nextXid, xid);
+
+	SpinRelease(OidGenLockId);
+}
+
 /* ----------------------------------------------------------------
  *					object id generation support
  * ----------------------------------------------------------------

@@ -636,7 +636,7 @@ TransactionIdIsInProgress(TransactionId xid)
  * Yet another strange func for this place...	- vadim 07/21/98
  */
 Snapshot
-GetSnapshotData(void)
+GetSnapshotData(bool serializable)
 {
 	Snapshot	snapshot = (Snapshot) malloc(sizeof(SnapshotData));
 	ShmemIndexEnt *result;
@@ -648,8 +648,11 @@ GetSnapshotData(void)
 	Assert(ShmemIndex);
 
 	snapshot->xip = (TransactionId *) malloc(have * sizeof(TransactionId));
-	snapshot->xmax = cid;
 	snapshot->xmin = cid;
+	if (serializable)
+		snapshot->xmax = cid;
+	else
+		ReadNewTransactionId(&(snapshot->xmax));
 
 	SpinAcquire(ShmemIndexLock);
 

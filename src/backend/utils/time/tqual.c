@@ -30,7 +30,7 @@ SnapshotData	SnapshotDirtyData;
 Snapshot		SnapshotDirty = &SnapshotDirtyData;
 
 Snapshot		QuerySnapshot = NULL;
-static Snapshot	SerializedSnapshot = NULL;
+Snapshot		SerializableSnapshot = NULL;
 
 /*
  * XXX Transaction system override hacks start here
@@ -551,24 +551,24 @@ SetQuerySnapshot(void)
 {
 
 	/* 1st call in xaction */
-	if (SerializedSnapshot == NULL)
+	if (SerializableSnapshot == NULL)
 	{
-		SerializedSnapshot = GetSnapshotData();
-		QuerySnapshot = SerializedSnapshot;
+		SerializableSnapshot = GetSnapshotData(true);
+		QuerySnapshot = SerializableSnapshot;
 		Assert(QuerySnapshot != NULL);
 		return;
 	}
 
-	if (QuerySnapshot != SerializedSnapshot)
+	if (QuerySnapshot != SerializableSnapshot)
 	{
 		free(QuerySnapshot->xip);
 		free(QuerySnapshot);
 	}
 
-	if (XactIsoLevel == XACT_SERIALIZED)
-		QuerySnapshot = SerializedSnapshot;
+	if (XactIsoLevel == XACT_SERIALIZABLE)
+		QuerySnapshot = SerializableSnapshot;
 	else
-		QuerySnapshot = GetSnapshotData();
+		QuerySnapshot = GetSnapshotData(false);
 
 	Assert(QuerySnapshot != NULL);
 
@@ -578,7 +578,7 @@ void
 FreeXactSnapshot(void)
 {
 
-	if (QuerySnapshot != NULL && QuerySnapshot != SerializedSnapshot)
+	if (QuerySnapshot != NULL && QuerySnapshot != SerializableSnapshot)
 	{
 		free(QuerySnapshot->xip);
 		free(QuerySnapshot);
@@ -586,12 +586,12 @@ FreeXactSnapshot(void)
 
 	QuerySnapshot = NULL;
 
-	if (SerializedSnapshot != NULL)
+	if (SerializableSnapshot != NULL)
 	{
-		free(SerializedSnapshot->xip);
-		free(SerializedSnapshot);
+		free(SerializableSnapshot->xip);
+		free(SerializableSnapshot);
 	}
 
-	SerializedSnapshot = NULL;
+	SerializableSnapshot = NULL;
 
 }

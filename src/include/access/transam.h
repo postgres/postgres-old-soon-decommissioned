@@ -160,6 +160,7 @@ extern void TransBlockNumberSetXidStatus(Relation relation,
 /* in transam/varsup.c */
 extern void VariableRelationPutNextXid(TransactionId xid);
 extern void GetNewTransactionId(TransactionId *xid);
+extern void ReadNewTransactionId(TransactionId *xid);
 extern void GetNewObjectId(Oid *oid_return);
 extern void CheckMaxObjectId(Oid assigned_oid);
 

@@ -194,7 +194,8 @@ TransactionStateData CurrentTransactionStateData = {
 TransactionState CurrentTransactionState =
 &CurrentTransactionStateData;
 
-int	XactIsoLevel = XACT_SERIALIZED;
+int	DefaultXactIsoLevel = XACT_SERIALIZABLE;
+int	XactIsoLevel;
 
 /* ----------------
  *		info returned when the system is disabled
@@ -798,6 +799,7 @@ StartTransaction()
 
 	TransactionIdFlushCache();
 	FreeXactSnapshot();
+	XactIsoLevel = DefaultXactIsoLevel;
 
 	/* ----------------
 	 *	Check the current transaction state.  If the transaction system

@@ -574,6 +574,16 @@ typedef struct VariableResetStmt
 	char	   *name;
 } VariableResetStmt;
 
+/* ----------------------
+ *		LOCK Statement
+ * ----------------------
+ */
+typedef struct LockStmt
+{
+	NodeTag		type;
+	char	   *relname;		/* relation to lock */
+	int			mode;			/* lock mode */
+} LockStmt;
 
 /*****************************************************************************
  *		Optimizable Statements

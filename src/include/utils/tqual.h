@@ -31,6 +31,7 @@ typedef SnapshotData *Snapshot;
 
 extern	Snapshot					SnapshotDirty;
 extern	Snapshot					QuerySnapshot;
+extern	Snapshot					SerializableSnapshot;
 
 #define IsSnapshotNow(snapshot)		((Snapshot) snapshot == SnapshotNow)
 #define IsSnapshotSelf(snapshot)	((Snapshot) snapshot == SnapshotSelf)
@@ -99,7 +100,7 @@ extern int		HeapTupleSatisfiesUpdate(HeapTuple tuple);
 
 extern void setheapoverride(bool on);
 
-extern Snapshot GetSnapshotData(void);
+extern Snapshot GetSnapshotData(bool serializable);
 extern void		SetQuerySnapshot(void);
 extern void		FreeXactSnapshot(void);
 

@@ -760,6 +760,13 @@ ProcessUtility(Node *parsetree,
 			RemoveUser(((DropUserStmt *) parsetree)->user);
 			break;
 
+		case T_LockStmt:
+			PS_SET_STATUS(commandTag = "LOCK TABLE");
+			CHECK_IF_ABORTED();
+
+			LockTableCommand((LockStmt *) parsetree);
+			break;
+
 
 			/*
 			 * ******************************** default ********************************
