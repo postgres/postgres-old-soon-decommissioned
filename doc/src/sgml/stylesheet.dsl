@@ -48,6 +48,7 @@
 (define %link-mailto-url%       (string-append "mailto:" pgsql-docs-list))
 (define %use-id-as-filename%    #t)
 (define %stylesheet%            "stylesheet.css")
+(define %graphic-default-extension% "gif")
 
 ;; Returns the depth of auto TOC that should be made at the nd-level
 (define (toc-depth nd)
@@ -115,6 +116,10 @@
 (define bop-footnotes           #t)
 (define %hyphenation%
   (if tex-backend #t #f))
+
+(define %graphic-default-extension%
+  (cond (tex-backend "eps")
+        (rtf-backend "ai"))) ;; ApplixWare?
 
 ]]> <!-- %output-print -->
 

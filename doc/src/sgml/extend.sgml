@@ -191,7 +191,11 @@ $Header$
    <para>
     <figure float="1" id="EXTEND-CATALOGS">
      <title>The major <productname>Postgres</productname> system catalogs</title>
-     <graphic fileref="catalogs.gif" format="GIF" align="center"></graphic>
+     <mediaobject>
+      <imageobject>
+       <imagedata fileref="catalogs" align="center">
+      </imageobject>
+     </mediaobject>
     </figure>
 
     The Reference Manual gives a more detailed  explanation
