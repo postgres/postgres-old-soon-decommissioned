@@ -27,7 +27,7 @@
 #include "utils/palloc.h"
 #include "utils/relcache.h"
 #include "utils/mcxt.h"
-#include "storage/bufmgr.h"		/* for IncrBufferRefCount */
+#include "storage/bufmgr.h"
 #include "storage/smgr.h"
 #include "optimizer/internal.h"
 #include "executor/executor.h"

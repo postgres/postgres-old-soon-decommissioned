@@ -60,6 +60,17 @@ typedef TransactionStateData *TransactionState;
 #define StoreInvalidTransactionId(dest) \
 	(*((TransactionId*)dest) = NullTransactionId)
 
+
+/* ----------------------------------------------------------------
+ *		TransactionIdEquals
+ * ----------------------------------------------------------------
+ */
+#define TransactionIdEquals(id1, id2) \
+( \
+	((bool) ((id1) == (id2))) \
+)
+
+
 /* ----------------
  *		extern definitions
  * ----------------
@@ -95,7 +106,6 @@ extern TransactionId DisabledTransactionId;
 extern TransactionId xidin(char *representation);
 extern char *xidout(TransactionId transactionId);
 extern bool xideq(TransactionId xid1, TransactionId xid2);
-extern bool TransactionIdEquals(TransactionId id1, TransactionId id2);
 extern bool TransactionIdIsLessThan(TransactionId id1, TransactionId id2);
 extern void TransactionIdAdd(TransactionId *xid, int value);
 

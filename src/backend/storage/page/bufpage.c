@@ -225,27 +225,6 @@ PageRestoreTempPage(Page tempPage, Page oldPage)
 	pfree(tempPage);
 }
 
-/*
- * PageGetMaxOffsetNumber --
- *		Returns the maximum offset number used by the given page.
- *
- *		NOTE: The offset is invalid if the page is non-empty.
- *		Test whether PageIsEmpty before calling this routine
- *		and/or using its return value.
- */
-OffsetNumber
-PageGetMaxOffsetNumber(Page page)
-{
-	LocationIndex low;
-	OffsetNumber i;
-
-	low = ((PageHeader) page)->pd_lower;
-	i = (low - (sizeof(PageHeaderData) - sizeof(ItemIdData)))
-		/ sizeof(ItemIdData);
-
-	return (i);
-}
-
 /* ----------------
  *		itemid stuff for PageRepairFragmentation
  * ----------------
