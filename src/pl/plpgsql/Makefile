@@ -12,7 +12,7 @@ subdir = src/pl/plpgsql
 top_builddir = ../../..
 include ../../Makefile.global
 
-all install installdirs uninstall:
+all install installdirs uninstall distprep:
 	$(MAKE) -C src $@
 
 clean distclean maintainer-clean:

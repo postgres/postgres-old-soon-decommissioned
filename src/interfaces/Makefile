@@ -37,8 +37,8 @@ DIRS += python
 endif
 
 
-all install installdirs uninstall dep depend:
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit 1; done
+all install installdirs uninstall dep depend distprep:
+	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
 
 clean:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@; done

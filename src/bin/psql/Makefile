@@ -65,6 +65,8 @@ endif
 submake:
 	$(MAKE) -C $(LIBPQDIR) all
 
+distprep: $(srcdir)/sql_help.h
+
 install: all installdirs
 	$(INSTALL_PROGRAM) psql$(X) $(bindir)/psql$(X)
 

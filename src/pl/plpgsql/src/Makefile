@@ -66,6 +66,9 @@ $(srcdir)/pl_scan.c: scan.l
 	sed -e 's/yy/plpgsql_yy/g' -e 's/YY/PLPGSQL_YY/g' < lex.yy.c > $@
 	rm -f lex.yy.c
 
+
+distprep: $(srcdir)/pl_scan.c $(srcdir)/pl.tab.h $(srcdir)/pl_gram.c
+
 mklang.sql: mklang.sql.in
 	sed -e 's%__libdir__%$(libdir)%g' -e 's%__DLSUFFIX__%$(DLSUFFIX)%g' < $< > $@
 

@@ -13,7 +13,7 @@ top_builddir = ..
 include Makefile.global
 
 
-all install installdirs uninstall dep depend:
+all install installdirs uninstall dep depend distprep:
 	$(MAKE) -C backend $@
 	$(MAKE) -C include $@
 	$(MAKE) -C interfaces $@

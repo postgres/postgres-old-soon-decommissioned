@@ -52,4 +52,4 @@ clean:
 	rm -f utils/fmgroids.h parser/parse.h
 
 distclean maintainer-clean: clean
-	rm -f config.h dynloader.h os.h
+	rm -f config.h dynloader.h os.h stamp-h

@@ -23,8 +23,8 @@ endif
 #DIRS += plperl
 #endif
 
-all install installdirs uninstall depend:
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit 1; done
+all install installdirs uninstall depend distprep:
+	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
 
 clean distclean maintainer-clean:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@; done
