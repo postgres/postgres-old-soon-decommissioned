@@ -83,6 +83,7 @@ case $1 in
         echo -n "Reload PostgreSQL: "
         su - $PGUSER -c "$DAEMON reload -D '$PGDATA' -s"
         echo "ok"
+        ;;
   status)
 	su - $PGUSER -c "$DAEMON status -D '$PGDATA'"
 	;;
