@@ -446,6 +446,8 @@ extern void _bt_metapinit(Relation rel, bool markvalid);
 extern Buffer _bt_getroot(Relation rel, int access);
 extern Buffer _bt_gettrueroot(Relation rel);
 extern Buffer _bt_getbuf(Relation rel, BlockNumber blkno, int access);
+extern Buffer _bt_relandgetbuf(Relation rel, Buffer obuf,
+							   BlockNumber blkno, int access);
 extern void _bt_relbuf(Relation rel, Buffer buf);
 extern void _bt_wrtbuf(Relation rel, Buffer buf);
 extern void _bt_wrtnorelbuf(Relation rel, Buffer buf);

@@ -919,9 +919,7 @@ _bt_restscan(IndexScanDesc scan)
 		for (;;)
 		{
 			blkno = opaque->btpo_next;
-			if (nextbuf != InvalidBuffer)
-				_bt_relbuf(rel, nextbuf);
-			nextbuf = _bt_getbuf(rel, blkno, BT_READ);
+			nextbuf = _bt_relandgetbuf(rel, nextbuf, blkno, BT_READ);
 			page = BufferGetPage(nextbuf);
 			opaque = (BTPageOpaque) PageGetSpecialPointer(page);
 			if (!P_IGNORE(opaque))
