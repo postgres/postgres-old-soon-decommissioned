@@ -368,6 +368,7 @@ abstime2tm(AbsoluteTime _time, int *tzp, struct tm * tm, char **tzn)
 	}
 #elif defined(HAVE_INT_TIMEZONE)
 	if (tzp != NULL)
+	{
 		/* We have a brute force time zone per SQL99?
 		 * Then use it without change
 		 * since we have already rotated to the time zone.
