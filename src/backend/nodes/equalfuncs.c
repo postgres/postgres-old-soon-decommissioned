@@ -258,6 +258,27 @@ _equalParam(Param *a, Param *b)
 }
 
 /*
+ *	Aggref is a subclass of Expr.
+ */
+static bool
+_equalAggref(Aggref *a, Aggref *b)
+{
+	if (strcmp(a->aggname, b->aggname) != 0)
+		return false;
+	if (a->basetype != b->basetype)
+		return false;
+	if (a->aggtype != b->aggtype)
+		return false;
+	if (!equal(a->target, b->target))
+		return false;
+	if (a->aggno != b->aggno)
+		return false;
+	if (a->usenulls != b->usenulls)
+		return false;
+	return true;
+}
+
+/*
  *	Func is a subclass of Expr.
  */
 static bool
@@ -768,6 +789,9 @@ equal(void *a, void *b)
 			break;
 		case T_Param:
 			retval = _equalParam(a, b);
+			break;
+		case T_Aggref:
+			retval = _equalAggref(a, b);
 			break;
 		case T_Func:
 			retval = _equalFunc(a, b);
