@@ -215,6 +215,9 @@ TAR	= @TAR@
 WISH	= @WISH@
 XGETTEXT = @XGETTEXT@
 
+GZIP	= gzip
+BZIP2	= bzip2
+
 # Installation.
 
 INSTALL	= $(SHELL) $(top_srcdir)/config/install-sh -c
@@ -329,7 +332,13 @@ STRTOUL = @STRTOUL@
 
 ##########################################################################
 #
-# Global targets
+# Global targets and rules
+
+%.gz: %
+	$(GZIP) -f --best $<
+
+%.bz2: %
+	$(BZIP2) -f $<
 
 # Remake Makefile.global from Makefile.global.in if the latter
 # changed. In order to trigger this rule, the including file must

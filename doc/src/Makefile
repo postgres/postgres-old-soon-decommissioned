@@ -5,8 +5,6 @@ subdir = doc/src
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
-TAR= tar
-ZIP= gzip
 ZIPSUFFIX= gz
 TAREXCLUDE= --exclude=Makefile --exclude='*.sgml' --exclude=ref
 
@@ -65,10 +63,3 @@ postgres.tar:
 man.tar:
 	$(MAKE) -C sgml man
 	$(TAR) -cf $@ -C sgml man1 man$(sqlmansect_dummy)
-
-# Generic production rules
-
-# Compressed file
-
-%.$(ZIPSUFFIX):	%
-	$(ZIP) -f $<
