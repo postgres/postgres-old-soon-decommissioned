@@ -16,9 +16,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"
+#include <postgres.h>
 
-#include "libpq/pqsignal.h"
+#include <libpq/pqsignal.h>
 
 pqsigfunc
 pqsignal(int signo, pqsigfunc func)

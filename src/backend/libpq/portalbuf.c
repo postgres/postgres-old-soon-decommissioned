@@ -47,12 +47,13 @@
  *	see utils/mmgr/portalmem.c for why. -cim 2/22/91
  *
  */
+#include <string.h>
 #include <sys/types.h>
-#include "postgres.h"
 
-#include "libpq/libpq.h"		/* where the declarations go */
-#include "utils/exc.h"
-#include "utils/palloc.h"
+#include <postgres.h>
+
+#include <libpq/libpq.h>		/* where the declarations go */
+#include <utils/exc.h>
 
 PortalEntry** portals = (PortalEntry**) NULL;
 size_t portals_array_size = 0;

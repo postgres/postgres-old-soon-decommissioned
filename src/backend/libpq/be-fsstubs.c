@@ -21,21 +21,23 @@
  *    closed.
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"
-#include "lib/dllist.h"
-#include "libpq/libpq.h"
-#include "libpq/libpq-fs.h"
-#include "nodes/nodes.h"
-#include "utils/memutils.h"
-#include "lib/fstack.h"
-#include "utils/mcxt.h"
-#include "utils/palloc.h"
 
-#include "storage/fd.h"		/* for O_ */
-#include "storage/large_object.h"
+#include <fcntl.h>
+#include <sys/types.h>
+#include <unistd.h>
 
-#include "utils/elog.h"
-#include "libpq/be-fsstubs.h"
+#include <postgres.h>
+
+#include <lib/dllist.h>
+#include <libpq/libpq.h>
+#include <libpq/libpq-fs.h>
+#include <nodes/nodes.h>
+#include <utils/memutils.h>
+#include <lib/fstack.h>
+#include <utils/mcxt.h>
+#include <storage/fd.h>		/* for O_ */
+#include <storage/large_object.h>
+#include <libpq/be-fsstubs.h>
 
 /*#define FSDB 1*/
 #define MAX_LOBJ_FDS 256

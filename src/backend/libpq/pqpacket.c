@@ -48,12 +48,10 @@
 #include <fcntl.h>
 #include <errno.h>
 
-#include "postgres.h"
-#include "miscadmin.h" 
-#include "utils/elog.h"
-#include "storage/ipc.h"
-#include "libpq/pqcomm.h"	/* where the declarations go */
-#include "libpq/libpq.h"
+#include <postgres.h>
+#include <miscadmin.h>
+#include <storage/ipc.h>
+#include <libpq/libpq.h>
 
 /*
  * PacketReceive -- receive a packet on a port.

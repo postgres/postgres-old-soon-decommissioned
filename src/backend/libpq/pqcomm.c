@@ -34,23 +34,22 @@
  *	the postgres backend.
  *
  */
-
-#include "postgres.h"
-
-#include "libpq/pqsignal.h"	/* substitute for <signal.h> */
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <signal.h>
 #ifndef WIN32
 #include <unistd.h>		/* for ttyname() */
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
 #else
 #include <winsock.h>
 #endif /* WIN32 */
-#include <errno.h>
-#include <fcntl.h>
 
 #if defined(linux)
 #ifndef SOMAXCONN
@@ -58,9 +57,11 @@
 #endif /* SOMAXCONN */
 #endif /* linux */
 
-#include "libpq/auth.h"
-#include "libpq/libpq.h"	/* where the declarations go */
-#include "libpq/pqcomm.h"
+#include <postgres.h>
+
+#include <libpq/pqsignal.h>	/* substitute for <signal.h> */
+#include <libpq/auth.h>
+#include <libpq/libpq.h>	/* where the declarations go */
 
 /* ----------------
  *	declarations
