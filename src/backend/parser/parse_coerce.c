@@ -271,6 +271,7 @@ TypeCategory(Oid inType)
 			result = STRING_TYPE;
 			break;
 
+		case (OIDOID):
 		case (INT2OID):
 		case (INT4OID):
 		case (INT8OID):
@@ -338,7 +339,10 @@ PreferredType(CATEGORY category, Oid type)
 			break;
 
 		case (NUMERIC_TYPE):
-			result = FLOAT8OID;
+			if (type == OIDOID)
+				result = OIDOID;
+			else
+				result = FLOAT8OID;
 			break;
 
 		case (DATETIME_TYPE):
