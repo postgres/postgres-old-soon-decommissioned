@@ -1636,6 +1636,7 @@ options "SYSPTSIZE=16"
         </para>
        </formalpara>
 
+        <para>
         Set the values you want in your kernel config file, e.g.:
 <programlisting>
 options "SEMMNI=40"
