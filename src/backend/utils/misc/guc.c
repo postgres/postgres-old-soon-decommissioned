@@ -38,7 +38,7 @@ extern bool Log_connections;
  * Debugging options
  */
 #ifdef USE_ASSERT_CHECKING
-bool assert_enabled;
+bool assert_enabled         = true;
 #endif
 bool Debug_print_query      = false;
 bool Debug_print_plan       = false;
@@ -52,7 +52,7 @@ bool Show_executor_stats    = false;
 bool Show_query_stats       = false; /* this is sort of all three above together */
 bool Show_btree_build_stats = false;
 
-bool SQL_inheritance;
+bool SQL_inheritance        = true;
 
 
 enum config_type
@@ -161,7 +161,7 @@ ConfigureNamesBool[] =
 	{"log_pid",                 PGC_SIGHUP,     &Log_pid,               false},
 
 #ifdef USE_ASSERT_CHECKING
-	{"debug_assertions",        PGC_USERSET,    &assert_enabled,        false},
+	{"debug_assertions",        PGC_USERSET,    &assert_enabled,        true},
 #endif
 
 	{"debug_print_query",       PGC_USERSET,    &Debug_print_query,     false},
