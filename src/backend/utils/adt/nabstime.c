@@ -223,6 +223,7 @@ printf( "nabstimein- %d fields are type %d (DTK_DATE=%d)\n", nf, dtype, DTK_DATE
     default:
 	elog(WARN,"Bad abstime (internal coding error) '%s'",str);
 	result = INVALID_ABSTIME;
+	break;
     };
 
     return result;
@@ -550,6 +551,7 @@ abstime_datetime(AbsoluteTime abstime)
 
     default:
         *result = abstime + ((date2j( 1970, 1, 1) - date2j( 2000, 1, 1))*86400);
+	break;
     };
 
     return(result);
