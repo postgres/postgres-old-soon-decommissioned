@@ -2930,7 +2930,8 @@ PasswordFromFile(char *hostname, char *port, char *dbname, char *username)
 		pgpassfile = malloc(strlen(home) + strlen(PGPASSFILE) + 1);
 		if (!pgpassfile)
 		{
-			fprintf(stderr, gettext("%s: out of memory\n"), pset.progname);
+						  
+			fprintf(stderr, libpq_gettext("out of memory\n"));
 			exit(EXIT_FAILURE);
 		}
 	}
