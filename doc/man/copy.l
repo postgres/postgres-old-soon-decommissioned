@@ -6,7 +6,7 @@
 copy \(em copy data to or from a class from or to a Unix file.
 .SH SYNOPSIS
 .nf
-\fBcopy\fP [\fBbinary\fP] [\fBnonulls\fP] classname 
+\fBcopy\fP [\fBbinary\fP] classname 
 	\fBto\fP|\fBfrom\fP "filename"|\fBstdin\fR|\fBstdout\fR
 	[\fBUSING DELIMITERS\fP delim]
 .fi
