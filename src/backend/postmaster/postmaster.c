@@ -450,8 +450,9 @@ PostmasterMain(int argc, char *argv[])
 				/*
 				 * Other options to pass to the backend on the command line
 				 */
-				strcat(ExtraOptions, " ");
-				strcat(ExtraOptions, optarg);
+				snprintf(ExtraOptions + strlen(ExtraOptions),
+						 sizeof(ExtraOptions) - strlen(ExtraOptions),
+						 " %s", optarg);
 				break;
 			case 'p':
 				SetConfigOption("port", optarg, PGC_POSTMASTER, PGC_S_ARGV);
