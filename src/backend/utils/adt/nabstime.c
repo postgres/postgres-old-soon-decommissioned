@@ -215,8 +215,9 @@ GetCurrentTime(struct tm * tm)
 
 
 void
-abstime2tm(AbsoluteTime time, int *tzp, struct tm * tm, char *tzn)
+abstime2tm(AbsoluteTime _time, int *tzp, struct tm * tm, char *tzn)
 {
+	time_t time = (time_t) _time;
 #ifdef USE_POSIX_TIME
 	struct tm  *tx;
 
