@@ -760,7 +760,8 @@ ExecuteGrantStmt_Language(GrantStmt *stmt)
 		if (!pg_language_tuple->lanpltrusted)
 			ereport(ERROR,
 					(errcode(ERRCODE_WRONG_OBJECT_TYPE),
-					 errmsg("language \"%s\" is not trusted", langname)));
+					 errmsg("language \"%s\" is not trusted", langname),
+					 errhint("Only superusers may use untrusted languages.")));
 
 		/*
 		 * Note: for now, languages are treated as owned by the bootstrap
