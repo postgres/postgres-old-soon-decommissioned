@@ -221,6 +221,7 @@ parse_slash_copy(const char *args)
 		result->file = NULL;
 	else
 		result->file = xstrdup(token);
+	expand_tilde(&result->file);
 
 	token = strtokx(NULL, whitespace, NULL, NULL,
 					0, false, pset.encoding);

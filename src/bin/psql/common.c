@@ -814,3 +814,65 @@ session_username(void)
 	else
 		return PQuser(pset.db);
 }
+
+
+/* expand_tilde
+ *
+ * substitute '~' with HOME or '~username' with username's home dir
+ *
+ */
+char *
+expand_tilde(char **filename)
+{
+	if (!filename || !(*filename))
+		return NULL;
+
+	/* MSDOS uses tilde for short versions of long file names, so skip it. */
+#ifndef WIN32
+
+	/* try tilde expansion */
+	if (**filename == '~')
+	{
+		char	   *fn;
+		char	   *home;
+		char		oldp,
+				   *p;
+		struct passwd *pw;
+
+		fn = *filename;
+		home = NULL;
+
+		p = fn + 1;
+		while (*p != '/' && *p != '\0')
+			p++;
+
+		oldp = *p;
+		*p = '\0';
+
+		if (*(fn + 1) == '\0')
+			home = getenv("HOME");
+		else if ((pw = getpwnam(fn + 1)) != NULL)
+			home = pw->pw_dir;
+
+		*p = oldp;
+		if (home)
+		{
+			char	   *newfn;
+
+			newfn = malloc(strlen(home) + strlen(p) + 1);
+			if (!newfn)
+			{
+				psql_error("out of memory\n");
+				exit(EXIT_FAILURE);
+			}
+			strcpy(newfn, home);
+			strcat(newfn, p);
+
+			free(fn);
+			*filename = newfn;
+		}
+	}
+#endif
+
+	return *filename;
+}

@@ -58,4 +58,6 @@ extern char parse_char(char **buf);
 #define pclose(x) _pclose(x)
 #endif
 
+extern char *expand_tilde(char **filename);
+
 #endif   /* COMMON_H */
