@@ -118,6 +118,7 @@ functions supported by <productname>Postgres</productname>.
    &ecpgRef;
    &pgAccess;
    &pgAdmin;
+   &pgCtl;
    &pgDump;
    &pgDumpall;
    &psqlRef;
