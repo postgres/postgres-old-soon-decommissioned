@@ -375,7 +375,7 @@ other			.
 					return IDENT;
 				}
 <xd>{xddouble} {
-					addlit(yytext, yyleng-1);
+					addlit(yytext+1, yyleng-1);
 				}
 <xd>{xdinside}	{
 					addlit(yytext, yyleng);
