@@ -34,6 +34,7 @@ private:
   int pgFd;
   Oid pgObject;
   string loStatus;
+  void Init(Oid lobjId = 0);
 
 public:
   PgLargeObject(const char* conninfo = 0);   // use reasonable defaults and create large object
@@ -52,9 +53,6 @@ public:
   Oid Import(const char* filename);
   int Export(const char* filename); 
   string Status();
-  
-private:
-   void Init(Oid lobjId = 0);
 };
 
 #endif	// PGLOBJ_H

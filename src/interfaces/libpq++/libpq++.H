@@ -123,7 +123,7 @@ public:
   void Close();
   int Read(char* buf, int len);
   int Write(const char* buf, int len);
-  int Lseek(int offset, int whence);
+  int LSeek(int offset, int whence);
   int Tell();
   int Unlink();
   Oid LOid();
