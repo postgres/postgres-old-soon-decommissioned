@@ -135,6 +135,13 @@ extern int	log_min_messages;
 extern int	client_min_messages;
 extern int	log_min_duration_statement;
 
+extern char *guc_pgdata;
+extern char *guc_hbafile;
+extern char *guc_identfile;
+extern char *external_pidfile;
+
+extern char *user_pgconfig;
+extern bool user_pgconfig_is_dir;
 
 extern void SetConfigOption(const char *name, const char *value,
 				GucContext context, GucSource source);
