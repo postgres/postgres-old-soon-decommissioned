@@ -57,7 +57,7 @@
 #include <string.h>
 #include <stddef.h>
 #include <stdarg.h>
-#ifdef STRING_H_WITH_STRINGS_H
+#ifdef HAVE_STRINGS_H
 #include <strings.h>
 #endif
 
@@ -626,14 +626,14 @@ typedef NameData *Name;
  * in pg_config.h we haven't yet included anything that defines size_t...
  */
 
-#ifndef HAVE_SNPRINTF_DECL
+#if !HAVE_DECL_SNPRINTF
 extern int
 snprintf(char *str, size_t count, const char *fmt,...)
 /* This extension allows gcc to check the format string */
 __attribute__((format(printf, 3, 4)));
 #endif
 
-#ifndef HAVE_VSNPRINTF_DECL
+#if !HAVE_DECL_VSNPRINTF
 extern int	vsnprintf(char *str, size_t count, const char *fmt, va_list args);
 #endif
 

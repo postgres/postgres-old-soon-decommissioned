@@ -33,7 +33,7 @@ fi
 
 if test -z "$TCL_CONFIG_SH"; then
     AC_MSG_RESULT(no)
-    AC_MSG_ERROR([file \`tclConfig.sh' is required for Tcl])
+    AC_MSG_ERROR([file 'tclConfig.sh' is required for Tcl])
 else
     AC_MSG_RESULT([$TCL_CONFIG_SH])
 fi
@@ -67,7 +67,7 @@ fi
 
 if test -z "$TK_CONFIG_SH"; then
     AC_MSG_RESULT(no)
-    AC_MSG_ERROR([file \`tkConfig.sh' is required for Tk])
+    AC_MSG_ERROR([file 'tkConfig.sh' is required for Tk])
 else
     AC_MSG_RESULT([$TK_CONFIG_SH])
 fi

@@ -106,7 +106,7 @@ LIBS=$pgac_save_LIBS
 ])[]dnl AC_CACHE_VAL
 
 if test "$pgac_cv_check_readline" != no ; then
-  AC_DEFINE(HAVE_LIBREADLINE)
+  AC_DEFINE(HAVE_LIBREADLINE, 1, [Define if you have a function readline library])
   LIBS="$pgac_cv_check_readline $LIBS"
   AC_MSG_RESULT([yes ($pgac_cv_check_readline)])
 else

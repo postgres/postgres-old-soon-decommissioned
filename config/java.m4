@@ -34,10 +34,10 @@ EOF
     if test $? = 0 && test -f ./conftest.class ; then
       pgac_cv_prog_ant_works=yes
     else
-      echo "configure: failed java program was:" >&AC_FD_CC
-      cat conftest.java >&AC_FD_CC
-      echo "configure: failed build file was:" >&AC_FD_CC
-      cat conftest.xml >&AC_FD_CC
+      echo "configure: failed java program was:" >&AS_MESSAGE_LOG_FD
+      cat conftest.java >&AS_MESSAGE_LOG_FD
+      echo "configure: failed build file was:" >&AS_MESSAGE_LOG_FD
+      cat conftest.xml >&AS_MESSAGE_LOG_FD
       pgac_cv_prog_ant_works=no
     fi
 
