@@ -640,6 +640,28 @@ set_differencei(List *l1, List *l2)
 }
 
 /*
+ *	set_ptrDifference
+ *
+ *	Same as set_difference, when pointer-equality comparison is sufficient
+ */
+List *
+set_ptrDifference(List *l1, List *l2)
+{
+	List	   *result = NIL;
+	List	   *i;
+
+	if (l2 == NIL)
+		return listCopy(l1);	/* slightly faster path for empty l2 */
+
+	foreach(i, l1)
+	{
+		if (!ptrMember(lfirst(i), l2))
+			result = lappend(result, lfirst(i));
+	}
+	return result;
+}
+
+/*
  * Reverse a list, non-destructively
  */
 List *

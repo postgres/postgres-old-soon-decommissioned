@@ -138,6 +138,7 @@ extern void set_nth(List *l, int n, void *elem);
 
 extern List *set_difference(List *list1, List *list2);
 extern List *set_differencei(List *list1, List *list2);
+extern List *set_ptrDifference(List *list1, List *list2);
 extern List *lreverse(List *l);
 extern List *set_union(List *list1, List *list2);
 extern List *set_unioni(List *list1, List *list2);

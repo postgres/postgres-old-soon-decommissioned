@@ -2043,6 +2043,8 @@ estimate_num_groups(Query *root, List *groupExprs, double input_rows)
 		varinfos = newvarinfos;
 	} while (varinfos != NIL);
 
+	numdistinct = ceil(numdistinct);
+
 	/* Guard against out-of-range answers */
 	if (numdistinct > input_rows)
 		numdistinct = input_rows;

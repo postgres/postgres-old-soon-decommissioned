@@ -253,6 +253,13 @@ ExecHashJoin(HashJoinState *node)
 						return result;
 					}
 				}
+
+				/* If we didn't return a tuple, may need to set NeedNewOuter */
+				if (node->js.jointype == JOIN_IN)
+				{
+					node->hj_NeedNewOuter = true;
+					break;		/* out of loop over hash bucket */
+				}
 			}
 		}
 

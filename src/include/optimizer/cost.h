@@ -71,18 +71,9 @@ extern void cost_group(Path *path, Query *root,
 					   int numGroupCols, double numGroups,
 					   Cost input_startup_cost, Cost input_total_cost,
 					   double input_tuples);
-extern void cost_nestloop(Path *path, Query *root,
-			  Path *outer_path, Path *inner_path,
-			  List *restrictlist);
-extern void cost_mergejoin(Path *path, Query *root,
-			   Path *outer_path, Path *inner_path,
-			   List *restrictlist,
-			   List *mergeclauses,
-			   List *outersortkeys, List *innersortkeys);
-extern void cost_hashjoin(Path *path, Query *root,
-			  Path *outer_path, Path *inner_path,
-			  List *restrictlist,
-			  List *hashclauses);
+extern void cost_nestloop(NestPath *path, Query *root);
+extern void cost_mergejoin(MergePath *path, Query *root);
+extern void cost_hashjoin(HashPath *path, Query *root);
 extern void cost_qual_eval(QualCost *cost, List *quals);
 extern void set_baserel_size_estimates(Query *root, RelOptInfo *rel);
 extern void set_joinrel_size_estimates(Query *root, RelOptInfo *rel,

@@ -254,6 +254,10 @@ ExecNestLoop(NestLoopState *node)
 					return result;
 				}
 			}
+
+			/* If we didn't return a tuple, may need to set NeedNewOuter */
+			if (node->js.jointype == JOIN_IN)
+				node->nl_NeedNewOuter = true;
 		}
 
 		/*
