@@ -207,8 +207,8 @@ ConfigureNamesBool[] =
 	{"debug_deadlocks",         PGC_SUSET,      &Debug_deadlocks,       false},
 #endif
 
-	{"hostlookup",              PGC_SIGHUP,     &HostnameLookup,        false},
-	{"showportnumber",          PGC_SIGHUP,     &ShowPortNumber,        false},
+	{"hostname_lookup",         PGC_SIGHUP,     &HostnameLookup,        false},
+	{"show_source_port",        PGC_SIGHUP,     &ShowPortNumber,        false},
 
 	{"sql_inheritance",         PGC_USERSET,    &SQL_inheritance,       true},
 
@@ -219,7 +219,7 @@ ConfigureNamesBool[] =
 static struct config_int
 ConfigureNamesInt[] =
 {
-	{"geqo_rels",               PGC_USERSET,            &geqo_rels,
+	{"geqo_threshold",          PGC_USERSET,            &geqo_rels,
 	 DEFAULT_GEQO_RELS, 2, INT_MAX},
 	{"geqo_pool_size",          PGC_USERSET,            &Geqo_pool_size,
 	 DEFAULT_GEQO_POOL_SIZE, 0, MAX_GEQO_POOL_SIZE},
