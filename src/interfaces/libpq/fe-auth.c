@@ -386,10 +386,10 @@ pg_krb5_sendauth(char *PQerrormsg, int sock,
 	/*
 	 * libpq uses a non-blocking socket. But kerberos needs a blocking
 	 * socket, and we have to block somehow to do mutual authentication
-	 * anyway. So we temporarily make it blocking.  Win32 doesn't support this.
+	 * anyway. So we temporarily make it blocking.
 	 */
 	flags = fcntl(sock, F_GETFL);
-	if (flags < 0 || fcntl(sock, F_SETFL, flags & ~O_NONBLOCK)))
+	if (flags < 0 || fcntl(sock, F_SETFL, (long) (flags & ~O_NONBLOCK)))
 	{
 		snprintf(PQerrormsg, PQERRORMSG_LENGTH,
 				 libpq_gettext("could not set socket to blocking mode: %s\n"), strerror(errno));
