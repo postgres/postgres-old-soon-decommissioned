@@ -156,11 +156,11 @@ done
 
 
 # ----------
-# When on Windows, QNX or BeOS, don't use Unix sockets.
+# When on QNX or BeOS, don't use Unix sockets.
 # ----------
 
 case $host_platform in
-    *-*-cygwin* | *-*-qnx* | *beos*)
+    *-*-qnx* | *beos*)
         unix_sockets=no;;
     *)
         unix_sockets=yes;;
