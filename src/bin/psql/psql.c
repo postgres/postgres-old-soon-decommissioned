@@ -1575,7 +1575,7 @@ do_help(PsqlSettings *pset, const char *topic)
 		help_found = false;		/* Haven't found it yet */
 		for (i = 0; QL_HELP[i].cmd; i++)
 		{
-			if (strcmp(QL_HELP[i].cmd, topic) == 0 ||
+			if (strcasecmp(QL_HELP[i].cmd, topic) == 0 ||
 				strcmp(topic, "*") == 0)
 			{
 				help_found = true;
