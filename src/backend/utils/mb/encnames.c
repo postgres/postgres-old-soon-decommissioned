@@ -407,7 +407,12 @@ clean_encoding_name(char *key, char *newkey)
 	for (p = key, np = newkey; *p != '\0'; p++)
 	{
 		if (isalnum((unsigned char) *p))
-			*np++ = tolower((unsigned char) *p);
+		{
+			if (*p >= 'A' && *p <= 'Z')
+				*np++ = *p + 'a' - 'A';
+			else
+				*np++ = *p;
+		}
 	}
 	*np = '\0';
 	return newkey;
