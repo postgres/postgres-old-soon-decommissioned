@@ -86,7 +86,7 @@ typedef struct _tableInfo
 								 * needed because the SQL tables will not
 								 * have the same order of attributes as
 								 * the POSTQUEL tables */
-	int		   *attlen;			/* attribute lengths */
+	int		   *atttypmod;		/* type-specific type modifier */
 	char	   *usename;
 	int			ncheck;			/* # of CHECK expressions */
 	char	  **check_expr;		/* [CONSTRAINT name] CHECK expressions */

@@ -137,11 +137,11 @@ _outTypeName(StringInfo str, TypeName *node)
 	appendStringInfo(str, (node->timezone ? "true" : "false"));
 	appendStringInfo(str, " :setof ");
 	appendStringInfo(str, (node->setof ? "true" : "false"));
+	appendStringInfo(str, " :typmod ");
+	sprintf(buf," %d ", node->typmod);
+	appendStringInfo(str, buf);
 	appendStringInfo(str, " :arrayBounds ");
 	_outNode(str, node->arrayBounds);
-	appendStringInfo(str, " :typlen ");
-	sprintf(buf," %d ", node->typlen);
-	appendStringInfo(str, buf);
 }
 
 static void

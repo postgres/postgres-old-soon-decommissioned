@@ -30,7 +30,7 @@
 #include "parser/parse_target.h"
 #include "utils/builtins.h"
 
-static Node *parser_typecast(Value *expr, TypeName *typename, int typlen);
+static Node *parser_typecast(Value *expr, TypeName *typename, int atttypmod);
 
 /*
  * transformExpr -
@@ -403,7 +403,7 @@ handleNestedDots(ParseState *pstate, Attr *attr, int *curr_resno, int precedence
 }
 
 static Node	   *
-parser_typecast(Value *expr, TypeName *typename, int typlen)
+parser_typecast(Value *expr, TypeName *typename, int atttypmod)
 {
 	/* check for passing non-ints */
 	Const	   *adt;
@@ -492,7 +492,7 @@ parser_typecast(Value *expr, TypeName *typename, int typlen)
 	}
 #endif
 
-	cp = stringTypeString(tp, const_string, typlen);
+	cp = stringTypeString(tp, const_string, atttypmod);
 
 	if (!typeByVal(tp))
 	{
@@ -540,7 +540,7 @@ parser_typecast(Value *expr, TypeName *typename, int typlen)
 }
 
 Node	   *
-parser_typecast2(Node *expr, Oid exprType, Type tp, int typlen)
+parser_typecast2(Node *expr, Oid exprType, Type tp, int atttypmod)
 {
 	/* check for passing non-ints */
 	Const	   *adt;
@@ -627,8 +627,7 @@ parser_typecast2(Node *expr, Oid exprType, Type tp, int typlen)
 		return ((Node *) adt);
 	}
 
-	cp = stringTypeString(tp, const_string, typlen);
-
+	cp = stringTypeString(tp, const_string, atttypmod);
 
 	if (!typeByVal(tp))
 	{

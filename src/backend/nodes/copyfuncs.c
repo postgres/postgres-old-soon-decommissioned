@@ -1480,8 +1480,8 @@ _copyTypeName(TypeName *from)
 		newnode->name = pstrdup(from->name);
 	newnode->timezone = from->timezone;
 	newnode->setof = from->setof;
+	newnode->typmod = from->typmod;
 	Node_Copy(from, newnode, arrayBounds);
-	newnode->typlen = from->typlen;
 
 	return newnode;
 }

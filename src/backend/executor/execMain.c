@@ -563,13 +563,8 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 				 */
 				tupdesc = CreateTupleDescCopy(tupType);
 
-				/* fixup to prevent zero-length columns in create */
-				setVarAttrLenForCreateTable(tupdesc, targetList, rangeTable);
-
 				intoRelationId = heap_create_with_catalog(intoName, tupdesc);
-#ifdef NOT_USED					/* it's copy ... */
-				resetVarAttrLenForCreateTable(tupdesc);
-#endif
+
 				FreeTupleDesc(tupdesc);
 
 				/* ----------------

@@ -190,16 +190,9 @@ fillatt(TupleDesc tupleDesc)
 			 * and byval, since those were already set in
 			 * TupleDescInitEntry.	In fact, this seems redundant here,
 			 * but who knows what I'll break if I take it out...
-			 *
-			 * same for char() and varchar() stuff. I share the same
-			 * sentiments. This function is poorly written anyway. -ay
-			 * 6/95
 			 */
-			if (!(*attributeP)->attisset &&
-				(*attributeP)->atttypid != BPCHAROID &&
-				(*attributeP)->atttypid != VARCHAROID)
+			if (!(*attributeP)->attisset)
 			{
-
 				typp = (TypeTupleForm) GETSTRUCT(tuple);		/* XXX */
 				(*attributeP)->attlen = typp->typlen;
 				(*attributeP)->attbyval = typp->typbyval;

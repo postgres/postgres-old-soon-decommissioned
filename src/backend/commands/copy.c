@@ -574,7 +574,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
 					values[i] =
 						(Datum) (*fmgr_faddr(&in_functions[i])) (string,
 												   elements[i],
-												   attr[i]->attlen);
+												   attr[i]->atttypmod);
 
 					/*
 					 * Sanity check - by reference attributes cannot

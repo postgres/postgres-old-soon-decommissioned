@@ -278,13 +278,9 @@ new_relation_targetlist(Oid relid, Index rt_index, NodeTag node_type)
 		 */
 		attisset = get_attisset( /* type_id, */ relid, attname);
 		if (attisset)
-		{
 			typlen = typeLen(typeidType(OIDOID));
-		}
 		else
-		{
 			typlen = get_typlen(atttype);
-		}
 
 		switch (node_type)
 		{

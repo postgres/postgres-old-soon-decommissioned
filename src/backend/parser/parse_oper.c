@@ -401,9 +401,9 @@ unary_oper_get_candidates(char *op,
 
 	*candidates = NULL;
 
-	fmgr_info(NameEqualRegProcedure, (func_ptr *) &opKey[0].sk_func);
+	fmgr_info(NameEqualRegProcedure, (FmgrInfo *) &opKey[0].sk_func);
 	opKey[0].sk_argument = NameGetDatum(op);
-	fmgr_info(CharacterEqualRegProcedure, (func_ptr *) &opKey[1].sk_func);
+	fmgr_info(CharacterEqualRegProcedure, (FmgrInfo *) &opKey[1].sk_func);
 	opKey[1].sk_argument = CharGetDatum(rightleft);
 
 	/* currently, only "unknown" can be coerced */

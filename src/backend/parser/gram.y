@@ -2754,7 +2754,7 @@ Character:  character '(' Iconst ')'
 					 * between this and "text" is that we blank-pad and
 					 * truncate where necessary
 					 */
-					$$->typlen = VARHDRSZ + $3;
+					$$->typmod = VARHDRSZ + $3;
 				}
 		| character
 				{
