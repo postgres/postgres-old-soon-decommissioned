@@ -220,7 +220,10 @@ get_opname(Oid opno)
 		return pstrdup(optup.oprname.data);
 	else
 	{
+		/* don't throw an error anymore; we want to continue... */
+#if FALSE
 		elog(ERROR, "can't look up operator %d\n", opno);
+#endif
 		return NULL;
 	}
 }
