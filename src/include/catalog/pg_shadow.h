@@ -35,7 +35,7 @@ CATALOG(pg_shadow) BOOTSTRAP BKI_WITHOUT_OIDS
 	int4		usesysid;
 	bool		usecreatedb;
 	bool		usetrace;
-	bool		usesuper;
+	bool		usesuper;		/* read this field via superuser() only */
 	bool		usecatupd;
 	text		passwd;
 	int4		valuntil;

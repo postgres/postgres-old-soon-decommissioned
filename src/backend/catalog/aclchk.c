@@ -734,9 +734,6 @@ pg_class_aclcheck(Oid table_oid, Oid userid, AclMode mode)
 
 	/*
 	 * Validate userid, find out if he is superuser
-	 *
-	 * We do not use superuser_arg() here because we also need to check
-	 * usecatupd.
 	 */
 	tuple = SearchSysCache(SHADOWSYSID,
 						   ObjectIdGetDatum(userid),
@@ -744,10 +741,11 @@ pg_class_aclcheck(Oid table_oid, Oid userid, AclMode mode)
 	if (!HeapTupleIsValid(tuple))
 		elog(ERROR, "pg_class_aclcheck: invalid user id %u", userid);
 
-	usesuper = ((Form_pg_shadow) GETSTRUCT(tuple))->usesuper;
 	usecatupd = ((Form_pg_shadow) GETSTRUCT(tuple))->usecatupd;
 
 	ReleaseSysCache(tuple);
+
+	usesuper = superuser_arg(userid);
 
 	/*
 	 * Now get the relation's tuple from pg_class

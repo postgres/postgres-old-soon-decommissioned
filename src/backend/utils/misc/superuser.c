@@ -27,6 +27,11 @@
 
 /*
  * The Postgres user running this command has Postgres superuser privileges
+ *
+ * All code should use either of these two functions to find out
+ * whether a given user is a superuser, rather than evaluating
+ * pg_shadow.usesuper directly, so that the escape hatch built in for
+ * the single-user case works.
  */
 bool
 superuser(void)
