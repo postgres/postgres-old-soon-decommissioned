@@ -622,6 +622,8 @@ _PrintData(ArchiveHandle *AH)
 			out[zlibOutSize - zp->avail_out] = '\0';
 			ahwrite(out, 1, zlibOutSize - zp->avail_out, AH);
 		}
+		if (inflateEnd(zp) != Z_OK)
+			die_horribly(AH, modulename, "could not close compression library: %s\n", zp->msg);
 	}
 #endif
 
