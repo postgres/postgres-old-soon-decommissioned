@@ -4858,6 +4858,7 @@ on_off: ON				{ $$ = make_str("on"); }
  */
 ECPGSetConnection:	SET SQL_CONNECTION TO connection_object { $$ = $4; }
 		| SET SQL_CONNECTION '=' connection_object { $$ = $4; }
+		| SET SQL_CONNECTION  connection_object { $$ = $3; }
 		;
 
 /*
@@ -5104,6 +5105,12 @@ action : SQL_CONTINUE
 		{
 			$<action>$.code = W_DO;
 			$<action>$.command = cat_str(4, $2, make_str("("), $4, make_str(")"));
+			$<action>$.str = cat2_str(make_str("call"), mm_strdup($<action>$.command));
+		}
+		| SQL_CALL name 
+		{
+			$<action>$.code = W_DO;
+			$<action>$.command = cat_str(3, $2, make_str("("), make_str(")"));
 			$<action>$.str = cat2_str(make_str("call"), mm_strdup($<action>$.command));
 		}
 		;
