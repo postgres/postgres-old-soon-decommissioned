@@ -144,7 +144,7 @@ MainLoop(FILE *source)
 			 * just returned from editing the line? then just copy to the
 			 * input buffer
 			 */
-			line = xstrdup(query_buf->data);
+			line = pg_strdup(query_buf->data);
 			resetPQExpBuffer(query_buf);
 			/* reset parsing state since we are rescanning whole line */
 			in_xcomment = 0;
@@ -332,7 +332,7 @@ MainLoop(FILE *source)
 					/* It is a variable, perform substitution */
 					out_length = strlen(value);
 
-					new = xmalloc(len + out_length - in_length + 1);
+					new = pg_malloc(len + out_length - in_length + 1);
 					sprintf(new, "%.*s%s%s", i, line, value,
 							&line[i + thislen + in_length]);
 

@@ -77,7 +77,7 @@ strtokx(const char *s,
 		 * tokens.	2X the space is a gross overestimate, but it's
 		 * unlikely that this code will be used on huge strings anyway.
 		 */
-		storage = xmalloc(2 * strlen(s) + 1);
+		storage = pg_malloc(2 * strlen(s) + 1);
 		strcpy(storage, s);
 		string = storage;
 	}
