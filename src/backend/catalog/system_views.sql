@@ -41,8 +41,8 @@ CREATE VIEW pg_tables AS
     SELECT 
         N.nspname AS schemaname, 
         C.relname AS tablename, 
-	     T.spcname AS tablespace,
         pg_get_userbyid(C.relowner) AS tableowner, 
+        T.spcname AS tablespace,
         C.relhasindex AS hasindexes, 
         C.relhasrules AS hasrules, 
         (C.reltriggers > 0) AS hastriggers 
@@ -54,13 +54,13 @@ CREATE VIEW pg_indexes AS
     SELECT 
         N.nspname AS schemaname, 
         C.relname AS tablename, 
-        T.spcname AS tablespace,
         I.relname AS indexname, 
+        T.spcname AS tablespace,
         pg_get_indexdef(I.oid) AS indexdef 
     FROM pg_index X JOIN pg_class C ON (C.oid = X.indrelid) 
          JOIN pg_class I ON (I.oid = X.indexrelid) 
          LEFT JOIN pg_namespace N ON (N.oid = C.relnamespace) 
-		   LEFT JOIN pg_tablespace T ON (T.oid = C.reltablespace)
+         LEFT JOIN pg_tablespace T ON (T.oid = I.reltablespace)
     WHERE C.relkind = 'r' AND I.relkind = 'i';
 
 CREATE VIEW pg_stats AS 
@@ -259,7 +259,7 @@ CREATE VIEW pg_stat_database AS
 CREATE VIEW pg_locks AS 
     SELECT * 
     FROM pg_lock_status() AS L(relation oid, database oid, 
-	transaction xid, pid int4, mode text, granted boolean);
+        transaction xid, pid int4, mode text, granted boolean);
 
 CREATE VIEW pg_settings AS 
     SELECT * 
