@@ -613,8 +613,15 @@ SS_finalize_plan(Plan *plan)
 			break;
 
 		case T_SubqueryScan:
+			/*
+			 * In a SubqueryScan, SS_finalize_plan has already been run
+			 * on the subplan by the inner invocation of subquery_planner,
+			 * so there's no need to do it again.  Instead, just pull out
+			 * the subplan's extParams list, which represents the params
+			 * it needs from my level and higher levels.
+			 */
 			results.paramids = set_unioni(results.paramids,
-						SS_finalize_plan(((SubqueryScan *) plan)->subplan));
+								((SubqueryScan *) plan)->subplan->extParam);
 			break;
 
 		case T_IndexScan:
