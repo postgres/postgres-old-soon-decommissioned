@@ -22,7 +22,7 @@ PostgreSQL documentation
    <command>psql</command>
    <arg><replaceable class="parameter">options</replaceable></arg>
    <arg><replaceable class="parameter">dbname</replaceable>
-     <arg><replaceable class="parameter">user</replaceable></arg></arg>
+   <arg><replaceable class="parameter">user</replaceable></arg></arg>
   </cmdsynopsis>
  </refsynopsisdiv>
 
