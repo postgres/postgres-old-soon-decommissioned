@@ -59,7 +59,7 @@ static const char BinarySignature[12] = "PGBCOPY\n\377\r\n\0";
  * Static communication variables ... pretty grotty, but COPY has
  * never been reentrant...
  */
-int			lineno = 0;			/* exported for use by elog() -- dz */
+int			copy_lineno = 0;	/* exported for use by elog() -- dz */
 static bool fe_eof;
 
 /*
@@ -705,14 +705,14 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp,
 	values = (Datum *) palloc(attr_count * sizeof(Datum));
 	nulls = (char *) palloc(attr_count * sizeof(char));
 
-	lineno = 0;
+	copy_lineno = 0;
 	fe_eof = false;
 
 	while (!done)
 	{
 		CHECK_FOR_INTERRUPTS();
 
-		lineno++;
+		copy_lineno++;
 
 		/* Reset the per-output-tuple exprcontext */
 		ResetPerTupleExprContext(estate);
@@ -920,7 +920,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp,
 	/*
 	 * Done, clean up
 	 */
-	lineno = 0;
+	copy_lineno = 0;
 
 	pfree(values);
 	pfree(nulls);

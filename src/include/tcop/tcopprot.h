@@ -21,10 +21,12 @@
 
 #include <setjmp.h>
 #include "executor/execdesc.h"
+#include "tcop/dest.h"
 
 extern DLLIMPORT sigjmp_buf Warn_restart;
 extern bool Warn_restart_ready;
 extern bool InError;
+extern CommandDest whereToSendOutput;
 
 extern bool HostnameLookup;
 extern bool ShowPortNumber;
