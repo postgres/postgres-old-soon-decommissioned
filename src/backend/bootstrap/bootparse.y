@@ -170,7 +170,7 @@ CreateStmt:
 						if (DebugMode)
 							puts("creating bootstrap relation");
 						tupdesc = CreateTupleDesc(numattr,attrtypes);
-						reldesc = heap_creatr(LexIDStr($3), tupdesc);
+						reldesc = heap_create(LexIDStr($3), tupdesc);
 						if (DebugMode)
 							puts("bootstrap relation created ok");
 					}
@@ -178,10 +178,10 @@ CreateStmt:
 					{
 						Oid id;
 						TupleDesc tupdesc;
-						/* extern Oid heap_create();*/
+						/* extern Oid heap_create_and_catalog();*/
 
 						tupdesc = CreateTupleDesc(numattr,attrtypes);
-						id = heap_create(LexIDStr($3), tupdesc);
+						id = heap_create_and_catalog(LexIDStr($3), tupdesc);
 						if (!Quiet)
 							printf("CREATED relation %s with OID %d\n",
 								   LexIDStr($3), id);

@@ -139,7 +139,7 @@ inv_create(int flags)
 	 * be located on whatever storage manager the user requested.
 	 */
 
-	heap_create(objname, tupdesc);
+	heap_create_and_catalog(objname, tupdesc);
 
 	/* make the relation visible in this transaction */
 	CommandCounterIncrement();

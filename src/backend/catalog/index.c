@@ -1120,7 +1120,7 @@ index_create(char *heapRelationName,
 	 *	create the index relation
 	 * ----------------
 	 */
-	indexRelation = heap_creatr(indexRelationName,
+	indexRelation = heap_create(indexRelationName,
 								indexTupDesc);
 
 	/* ----------------

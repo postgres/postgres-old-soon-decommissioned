@@ -15,10 +15,10 @@
 
 #include <utils/rel.h>
 
-extern Relation heap_creatr(char *relname, TupleDesc att);
+extern Relation heap_create(char *relname, TupleDesc att);
 
 extern Oid
-heap_create(char relname[],	TupleDesc tupdesc);
+heap_create_and_catalog(char relname[],	TupleDesc tupdesc);
 
 extern void heap_destroy(char relname[]);
 extern void heap_destroyr(Relation r);

@@ -137,7 +137,7 @@ DefineRelation(CreateStmt *stmt)
 		}
 	}
 
-	relationId = heap_create(relname, descriptor);
+	relationId = heap_create_and_catalog(relname, descriptor);
 
 	StoreCatalogInheritance(relationId, inheritList);
 }

@@ -572,7 +572,7 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 				/* fixup to prevent zero-length columns in create */
 				setVarAttrLenForCreateTable(tupdesc, targetList, rangeTable);
 
-				intoRelationId = heap_create(intoName, tupdesc);
+				intoRelationId = heap_create_and_catalog(intoName, tupdesc);
 #ifdef NOT_USED					/* it's copy ... */
 				resetVarAttrLenForCreateTable(tupdesc);
 #endif

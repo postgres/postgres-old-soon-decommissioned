@@ -443,10 +443,10 @@ ExecCreatR(TupleDesc tupType,
 */
 
 		/*
-		 * heap_creatr creates a name if the argument to heap_creatr is
+		 * heap_create creates a name if the argument to heap_create is
 		 * '\0 '
 		 */
-		relDesc = heap_creatr("", tupType);
+		relDesc = heap_create("", tupType);
   	}
 	else
 	{

@@ -209,13 +209,13 @@ copy_heap(Oid OIDOldHeap)
 	OldHeapDesc = RelationGetTupleDescriptor(OldHeap);
 
 	/*
-	 * Need to make a copy of the tuple descriptor, heap_create modifies
-	 * it.
+	 * Need to make a copy of the tuple descriptor, heap_create_and_catalog
+	 * modifies it.
 	 */
 
 	tupdesc = CreateTupleDescCopy(OldHeapDesc);
 
-	OIDNewHeap = heap_create(NewName, tupdesc);
+	OIDNewHeap = heap_create_and_catalog(NewName, tupdesc);
 
 	if (!OidIsValid(OIDNewHeap))
 		elog(WARN, "clusterheap: cannot create temporary heap relation\n");
