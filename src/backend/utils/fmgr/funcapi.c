@@ -83,8 +83,16 @@ per_MultiFuncCall(PG_FUNCTION_ARGS)
 {
 	FuncCallContext *retval = (FuncCallContext *) fcinfo->flinfo->fn_extra;
 
-	/* make sure we start with a fresh slot */
-	if(retval->slot != NULL)
+	/*
+	 * Clear the TupleTableSlot, if present.  This is for safety's sake:
+	 * the Slot will be in a long-lived context (it better be, if the
+	 * FuncCallContext is pointing to it), but in most usage patterns the
+	 * tuples stored in it will be in the function's per-tuple context.
+	 * So at the beginning of each call, the Slot will hold a dangling
+	 * pointer to an already-recycled tuple.  We clear it out here.  (See
+	 * also the definition of TupleGetDatum() in funcapi.h!)
+	 */
+	if (retval->slot != NULL)
 		ExecClearTuple(retval->slot);
 
 	return retval;

@@ -147,8 +147,12 @@ extern TupleTableSlot *TupleDescGetSlot(TupleDesc tupdesc);
 extern AttInMetadata *TupleDescGetAttInMetadata(TupleDesc tupdesc);
 extern HeapTuple BuildTupleFromCStrings(AttInMetadata *attinmeta, char **values);
 
+/*
+ * Note we pass shouldFree = false; this is needed because the tuple will
+ * typically be in a shorter-lived memory context than the TupleTableSlot.
+ */
 #define TupleGetDatum(_slot, _tuple) \
-	PointerGetDatum(ExecStoreTuple(_tuple, _slot, InvalidBuffer, true))
+	PointerGetDatum(ExecStoreTuple(_tuple, _slot, InvalidBuffer, false))
 
 
 /*----------
