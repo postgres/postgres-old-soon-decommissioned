@@ -332,7 +332,7 @@ AggNameGetInitVal(char *aggName, Oid basetype, int xfuncno, bool *isNull)
 	if (!HeapTupleIsValid(tup))
 	{
 		pfree(strInitVal);
-		elog(ERROR, "AggNameGetInitVal: cache lookup failed on aggregate transition function return type");
+		elog(ERROR, "AggNameGetInitVal: cache lookup failed on aggregate transition function return type %u", transtype);
 	}
 	typinput = ((Form_pg_type) GETSTRUCT(tup))->typinput;
 	typelem = ((Form_pg_type) GETSTRUCT(tup))->typelem;

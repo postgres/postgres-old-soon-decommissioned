@@ -135,7 +135,7 @@ plpgsql_compile(Oid fn_oid, int functype)
 								  ObjectIdGetDatum(fn_oid),
 								  0, 0, 0);
 	if (!HeapTupleIsValid(procTup))
-		elog(ERROR, "plpgsql: cache lookup from pg_proc failed");
+		elog(ERROR, "plpgsql: cache lookup for proc %u failed", fn_oid);
 
 	/* ----------
 	 * Setup the scanner input and error info
