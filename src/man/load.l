@@ -6,7 +6,7 @@
 load - dynamically load an object file
 .SH SYNOPSIS
 .nf
-\fBload\fR "filename"
+\fBload\fR 'filename'
 .fi
 .SH DESCRIPTION
 .BR Load
@@ -27,7 +27,7 @@ at this time.
 --
 --Load the file /usr/postgres/demo/circle.o
 --
-load "/usr/postgres/demo/circle.o"
+load '/usr/postgres/demo/circle.o'
 .fi
 .SH CAVEATS
 Functions in loaded object files should not call functions in other

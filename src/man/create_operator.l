@@ -30,7 +30,7 @@ The user who defines an operator becomes its owner.
 .PP
 The
 .IR "operator_name"
-is a sequence of up to sixteen punctuation characters.  The following
+is a sequence of punctuation characters.  The following
 characters are valid for single-character operator names:
 .nf
 
