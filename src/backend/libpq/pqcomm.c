@@ -150,7 +150,7 @@ pq_close(void)
 	if (MyProcPort != NULL)
 	{
 		secure_close(MyProcPort);
-		close(MyProcPort->sock);
+		closesocket(MyProcPort->sock);
 		/* make sure any subsequent attempts to do I/O fail cleanly */
 		MyProcPort->sock = -1;
 	}
@@ -228,7 +228,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 		snprintf(portNumberStr, sizeof(portNumberStr), "%d", portNumber);
 		service = portNumberStr;
 	}
-	
+
 	ret = getaddrinfo2(hostName, service, &hint, &addrs);
 	if (ret || addrs == NULL)
 	{
@@ -470,7 +470,7 @@ StreamConnection(int server_fd, Port *port)
 void
 StreamClose(int sock)
 {
-	close(sock);
+	closesocket(sock);
 }
 
 /*

@@ -721,6 +721,13 @@ int pgunlink(const char *path);
 #define unlink(from, to)	pgunlink(from, to)
 #endif
 
+/*
+ *	Win32 requires a special close for sockets and pipes, while on Unix
+ *	close() does them all.
+ */
+#ifndef WIN32
+#define	closesocket close
+#endif
   
 /* These are for things that are one way on Unix and another on NT */
 #define NULL_DEV		"/dev/null"

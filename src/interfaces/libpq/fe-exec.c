@@ -1161,11 +1161,7 @@ handleSyncLoss(PGconn *conn, char id, int msgLength)
 					  id, msgLength);
 	conn->status = CONNECTION_BAD;		/* No more connection to backend */
 	pqsecure_close(conn);
-#ifdef WIN32
 	closesocket(conn->sock);
-#else
-	close(conn->sock);
-#endif
 	conn->sock = -1;
 }
 

@@ -1212,7 +1212,7 @@ ident_inet(const struct in_addr remote_ip_addr,
 															ident_user);
 				}
 			}
-			close(sock_fd);
+			closesocket(sock_fd);
 		}
 	}
 	return ident_return;

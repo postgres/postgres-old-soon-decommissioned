@@ -681,11 +681,7 @@ definitelyFailed:
 						 "\tbefore or while processing the request.\n"));
 	conn->status = CONNECTION_BAD;		/* No more connection to backend */
 	pqsecure_close(conn);
-#ifdef WIN32
 	closesocket(conn->sock);
-#else
-	close(conn->sock);
-#endif
 	conn->sock = -1;
 
 	return -1;
