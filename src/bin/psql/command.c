@@ -1510,10 +1510,10 @@ editFile(const char *fname)
 	if (!editorName)
 		editorName = DEFAULT_EDITOR;
 
-	sys = malloc(strlen(editorName) + strlen(fname) + 32 + 1);
+	sys = malloc(strlen(editorName) + strlen(fname) + 10 + 1);
 	if (!sys)
 		return false;
-	sprintf(sys, "exec %s %s", editorName, fname);
+	sprintf(sys, "exec  '%s' '%s'", editorName, fname);
 	result = system(sys);
 	if (result == -1)
 		psql_error("could not start editor %s\n", editorName);
