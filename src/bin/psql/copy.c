@@ -85,7 +85,7 @@ free_copy_options(struct copy_options * ptr)
 }
 
 
-/* catenate "more" onto "var", freeing the original value of *var */
+/* concatenate "more" onto "var", freeing the original value of *var */
 static void
 xstrcat(char **var, const char *more)
 {
