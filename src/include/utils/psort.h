@@ -57,8 +57,6 @@ typedef struct Psortstate
 	int			tupcount;
 
 	struct leftist *Tuples;
-	int			lt_tupcount;
-	HeapTuple	lasttuple;
 
 	FILE	   *psort_grab_file;
 	long		psort_current;	/* could be file offset, or array index */

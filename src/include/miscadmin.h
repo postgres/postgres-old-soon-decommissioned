@@ -91,7 +91,6 @@ extern char DateFormat[];
 
 extern int	fsyncOff;
 extern int	SortMem;
-extern int	SortTuplesInTree;
 
 extern Oid	LastOidProcessed;	/* for query rewrite */
 
