@@ -135,15 +135,6 @@ PGconn *PQconnectdb(const char *conninfo)
     </varlistentry>
 
     <varlistentry>
-     <term><literal>unixsocket</literal></term>
-     <listitem>
-     <para>
-      Directory for Unix-domain socket file.
-     </para>
-     </listitem>
-    </varlistentry>
-
-    <varlistentry>
      <term><literal>dbname</literal></term>
      <listitem>
      <para>
@@ -1835,16 +1826,8 @@ socket.
 </listitem>
 <listitem>
 <para>
-<envar>PGPORT</envar> and <envar>PGUNIXSOCKET</envar> set the default
-port or local Unix domain socket file extension for communicating with
+<envar>PGPORT</envar> sets the default port for communicating with
 the <productname>Postgres</productname> backend.
-</para>
-</listitem>
-<listitem>
-<para>
-<envar>PGPORT</envar>  sets the default port or local Unix domain socket
-file extension for communicating with the <productname>Postgres</productname>
-backend.
 </para>
 </listitem>
 <listitem>
