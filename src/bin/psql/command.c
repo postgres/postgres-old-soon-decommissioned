@@ -1647,7 +1647,7 @@ do_pset(const char *param, const char *value, printQueryOpt *popt, bool quiet)
 			popt->nullPrint = xstrdup(value);
 		}
 		if (!quiet)
-			printf("Null display is \"%s\".\n", popt->nullPrint ? popt->nullPrint : "");
+			printf("Null display is '%s'.\n", popt->nullPrint ? popt->nullPrint : "");
 	}
 
 	/* field separator for unaligned text */
