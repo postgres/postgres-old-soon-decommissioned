@@ -634,7 +634,7 @@ fe_sendauth(AuthRequest areq, PGconn *conn, const char *hostname,
 			if (password == NULL || *password == '\0')
 			{
 				(void) snprintf(PQerrormsg, PQERRORMSG_LENGTH,
-								"fe_sendauth: no password supplied\n");
+								PQnoPasswordSupplied);
 				return STATUS_ERROR;
 			}
 			if (pg_password_sendauth(conn, password, areq) != STATUS_OK)

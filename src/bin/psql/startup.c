@@ -195,7 +195,7 @@ main(int argc, char *argv[])
 							   username, password);
 
 		if (PQstatus(pset.db) == CONNECTION_BAD &&
-			strcmp(PQerrorMessage(pset.db), "fe_sendauth: no password supplied\n") == 0 &&
+			strcmp(PQerrorMessage(pset.db), PQnoPasswordSupplied) == 0 &&
 			!feof(stdin))
 		{
 			PQfinish(pset.db);

@@ -12,6 +12,7 @@
 
 #include "postgres_fe.h"
 #include "common.h"
+#include "libpq-fe.h"
 
 #include <pwd.h>
 #include <unistd.h>
@@ -102,7 +103,7 @@ connectDatabase(const char *dbname, const char *pghost, const char *pgport,
 		}
 
 		if (PQstatus(conn) == CONNECTION_BAD &&
-			strcmp(PQerrorMessage(conn), "fe_sendauth: no password supplied\n") == 0 &&
+			strcmp(PQerrorMessage(conn), PQnoPasswordSupplied) == 0 &&
 			!feof(stdin))
 		{
 			PQfinish(conn);

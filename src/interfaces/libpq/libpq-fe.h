@@ -398,6 +398,9 @@ extern void PQfreemem(void *ptr);
 /* Exists for backward compatibility.  bjm 2003-03-24 */
 #define PQfreeNotify(ptr) PQfreemem(ptr)
 
+/* Define the string so all uses are consistent. */
+#define PQnoPasswordSupplied	"fe_sendauth: no password supplied\n"
+
 /*
  * Make an empty PGresult with given status (some apps find this
  * useful). If conn is not NULL and status indicates an error, the

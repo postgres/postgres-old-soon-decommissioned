@@ -168,7 +168,7 @@ _connectDB(ArchiveHandle *AH, const char *reqdb, const char *requser)
 		if (PQstatus(newConn) == CONNECTION_BAD)
 		{
 			noPwd = (strcmp(PQerrorMessage(newConn),
-							"fe_sendauth: no password supplied\n") == 0);
+							PQnoPasswordSupplied) == 0);
 			badPwd = (strncmp(PQerrorMessage(newConn),
 					"Password authentication failed for user", 39) == 0);
 
@@ -249,7 +249,7 @@ ConnectDatabase(Archive *AHX,
 			die_horribly(AH, modulename, "failed to connect to database\n");
 
 		if (PQstatus(AH->connection) == CONNECTION_BAD &&
-			strcmp(PQerrorMessage(AH->connection), "fe_sendauth: no password supplied\n") == 0 &&
+			strcmp(PQerrorMessage(AH->connection), PQnoPasswordSupplied) == 0 &&
 			!feof(stdin))
 		{
 			PQfinish(AH->connection);
