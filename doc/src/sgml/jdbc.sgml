@@ -197,7 +197,7 @@ Class.forName("org.postgresql.Driver");
     using the -D argument. Example:
 
     <programlisting>
-% java -Djdbc.drivers=postgresql.Driver example.ImageViewer
+% java -Djdbc.drivers=org.postgresql.Driver example.ImageViewer
     </programlisting>
 
     In this example, the JVM will attempt to load the driver as part of it's
