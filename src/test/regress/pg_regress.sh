@@ -173,7 +173,7 @@ esac
 # ----------
 
 case $host_platform in
-    *-*-qnx*)
+    *-*-qnx* | *-*-sco3.2v5*)
         DIFFFLAGS=-b;;
     *)
         DIFFFLAGS=-w;;
