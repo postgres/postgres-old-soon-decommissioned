@@ -1114,7 +1114,7 @@ make_agg(List *tlist, int nagg, Aggreg **aggs, Plan *lefttree)
 	node->plan.state = (EState *) NULL;
 	node->plan.qual = NULL;
 	node->plan.targetlist = tlist;
-	node->plan.lefttree = (Plan *) NULL;
+	node->plan.lefttree = lefttree;
 	node->plan.righttree = (Plan *) NULL;
 	node->numAgg = nagg;
 	node->aggs = aggs;

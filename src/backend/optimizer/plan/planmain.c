@@ -200,8 +200,7 @@ query_planner(Query *root,
 	 */
 	if (root->qry_aggs)
 	{
-		aggplan = make_agg(tlist, root->qry_numAgg, root->qry_aggs);
-		aggplan->plan.lefttree = subplan;
+		aggplan = make_agg(tlist, root->qry_numAgg, root->qry_aggs, subplan);
 
 		/*
 		 * set the varno/attno entries to the appropriate references to
