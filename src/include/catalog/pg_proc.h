@@ -885,6 +885,11 @@ DESCR("convert int8 to float8");
 DATA(insert OID = 483 (  int8			   PGUID 12 f t t t 1 f  20 "701" 100 0 0 100  dtoi8 - ));
 DESCR("convert float8 to int8");
 
+DATA(insert OID = 714 (  int2			   PGUID 12 f t t t 1 f  21 "20" 100 0 0 100  int82 - ));
+DESCR("convert int8 to int2");
+DATA(insert OID = 754 (  int8			   PGUID 12 f t t t 1 f  20 "21" 100 0 0 100  int28 - ));
+DESCR("convert int2 to int8");
+
 /* OIDS 500 - 599 */
 
 /* OIDS 600 - 699 */

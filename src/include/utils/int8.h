@@ -98,6 +98,9 @@ extern Datum int48div(PG_FUNCTION_ARGS);
 extern Datum int48(PG_FUNCTION_ARGS);
 extern Datum int84(PG_FUNCTION_ARGS);
 
+extern Datum int28(PG_FUNCTION_ARGS);
+extern Datum int82(PG_FUNCTION_ARGS);
+
 extern Datum i8tod(PG_FUNCTION_ARGS);
 extern Datum dtoi8(PG_FUNCTION_ARGS);
 

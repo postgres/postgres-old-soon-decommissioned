@@ -698,6 +698,29 @@ int84(PG_FUNCTION_ARGS)
 }
 
 Datum
+int28(PG_FUNCTION_ARGS)
+{
+	int16		val = PG_GETARG_INT16(0);
+
+	PG_RETURN_INT64((int64) val);
+}
+
+Datum
+int82(PG_FUNCTION_ARGS)
+{
+	int64		val = PG_GETARG_INT64(0);
+	int16		result;
+
+	result = (int16) val;
+
+	/* Test for overflow by reverse-conversion. */
+	if ((int64) result != val)
+		elog(ERROR, "int8 conversion to int2 is out of range");
+
+	PG_RETURN_INT16(result);
+}
+
+Datum
 i8tod(PG_FUNCTION_ARGS)
 {
 	int64		val = PG_GETARG_INT64(0);
