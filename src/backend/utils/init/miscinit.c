@@ -207,10 +207,6 @@ SetDataDir(const char *dir)
 					 errmsg("out of memory")));
 	}
 
-	/*
-	 * Strip any trailing slash.  Not strictly necessary, but avoids
-	 * generating funny-looking paths to individual files.
-	 */
 	canonicalize_path(new);
 
 	if (DataDir)

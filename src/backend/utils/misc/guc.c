@@ -5441,7 +5441,7 @@ assign_canonical_path(const char *newval, bool doit, GucSource source)
 	if (doit)
 	{
 		/* We have to create a new pointer to force the change */
-		char *canon_val = guc_strdup(FATAL, newval);
+		char *canon_val = guc_strdup(ERROR, newval);
 		canonicalize_path(canon_val);
 		return canon_val;
 	}

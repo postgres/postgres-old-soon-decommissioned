@@ -372,7 +372,6 @@ PostmasterMain(int argc, char *argv[])
 	InitializeGUCOptions();
 
 	userPGDATA = getenv("PGDATA");		/* default value */
-	canonicalize_path(userPGDATA);
 	
 	opterr = 1;
 
@@ -524,6 +523,12 @@ PostmasterMain(int argc, char *argv[])
 		write_stderr("Try \"%s --help\" for more information.\n",
 					 progname);
 		ExitPostmaster(1);
+	}
+
+	if (userPGDATA)
+	{
+		userPGDATA = strdup(userPGDATA);
+		canonicalize_path(userPGDATA);
 	}
 
 	if (onlyConfigSpecified(userPGDATA))
