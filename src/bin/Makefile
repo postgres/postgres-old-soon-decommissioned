@@ -21,7 +21,7 @@
 	$(MAKE) -C pg_version $@
 	$(MAKE) -C psql $@
 	$(MAKE) -C pg_dump $@
-      $(MAKE) -C pg_passwd $@
+	$(MAKE) -C pg_passwd $@
 #
 # Shell scripts
 # 
