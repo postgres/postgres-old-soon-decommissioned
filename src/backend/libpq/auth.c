@@ -430,6 +430,13 @@ ClientAuthentication(Port *port)
 			}
 
 		case uaKrb4:
+			/* Kerberos 4 only seems to work with AF_INET. */
+			if (port->raddr.addr.ss_family != AF_INET
+				|| port->laddr.addr.ss_family != AF_INET)
+			{
+				elog(FATAL,
+					"Unsupported protocol for Kerberos 4");
+			}
 			sendAuthRequest(port, AUTH_REQ_KRB4);
 			status = pg_krb4_recvauth(port);
 			break;
