@@ -1,6 +1,11 @@
+<!--
+$Header$
+Postgres documentation
+-->
+
 <refentry id="SQL-NOTIFY">
  <refmeta>
-  <refentrytitle id="sql-notify-ref">
+  <refentrytitle id="sql-notify-title">
    NOTIFY
   </refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
@@ -15,7 +20,7 @@
  </refnamediv>
  <refsynopsisdiv>
   <refsynopsisdivinfo>
-   <date>1998-10-07</date>
+   <date>1999-07-20</date>
   </refsynopsisdivinfo>
   <synopsis>
 NOTIFY <replaceable class="PARAMETER">name</replaceable>        
@@ -215,8 +220,6 @@ ASYNC NOTIFY of 'virtual' from backend pid '11239' received
   <title>
    Compatibility
   </title>
-  <para>
-  </para>
 
   <refsect2 id="R2-SQL-NOTIFY-4">
    <refsect2info>

@@ -1,3 +1,8 @@
+<!--
+$Header$
+Postgres documentation
+-->
+
 <refentry id="SQL-COMMIT">
  <refmeta>
   <refentrytitle id="SQL-COMMIT-TITLE">
@@ -16,7 +21,7 @@
   
  <refsynopsisdiv>
   <refsynopsisdivinfo>
-   <date>1998-09-08</date>
+   <date>1999-07-20</date>
   </refsynopsisdivinfo>
   <synopsis>
 COMMIT [ WORK | TRANSACTION ]
@@ -30,7 +35,18 @@ COMMIT [ WORK | TRANSACTION ]
     Inputs
    </title>
    <para>
-    None.
+
+    <variablelist>
+     <varlistentry>
+      <term>WORK</term>
+      <term>TRANSACTION</term>
+      <listitem>
+       <para>
+	Optional keywords. They have no effect.
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
    </para>
   </refsect2>
    
@@ -116,8 +132,6 @@ COMMIT WORK;
   <title>
    Compatibility
   </title>
-  <para>
-  </para>
   
   <refsect2 id="R2-SQL-COMMIT-4">
    <refsect2info>

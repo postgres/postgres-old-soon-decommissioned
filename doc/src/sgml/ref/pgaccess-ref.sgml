@@ -1,3 +1,8 @@
+<!--
+$Header$
+Postgres documentation
+-->
+
 <refentry id="APP-PGACCESS">
  <refmeta>
   <refentrytitle id="pgaccess-ref">

@@ -1,6 +1,11 @@
+<!--
+$Header$
+Postgres documentation
+-->
+
 <refentry id="SQL-ABORT">
  <refmeta>
-  <refentrytitle>
+  <refentrytitle id="sql-abort-title">
    ABORT
   </refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
@@ -15,10 +20,10 @@
  </refnamediv>
  <refsynopsisdiv>
   <refsynopsisdivinfo>
-   <date>1998-09-27</date>
+   <date>1999-07-20</date>
   </refsynopsisdivinfo>
   <synopsis>
-ABORT [ TRANSACTION | WORK ]
+ABORT [ WORK | TRANSACTION ]
   </synopsis>
 
   <refsect2 id="R2-SQL-ABORT-1">
