@@ -161,6 +161,8 @@ ProcessQuery(Query *parsetree,
 			/* If binary portal, switch to alternate output format */
 			if (dest == Remote && parsetree->isBinary)
 				dest = RemoteInternal;
+			/* Check for invalid context (must be in transaction block) */
+			RequireTransactionChain((void *) parsetree, "DECLARE CURSOR");
 		}
 		else if (parsetree->into != NULL)
 		{
