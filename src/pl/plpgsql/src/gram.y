@@ -39,6 +39,9 @@
 #include "stdio.h"
 #include "string.h"
 #include "plpgsql.h"
+#include "pl_scan.c"  /* BSD Yacc doesn't like it here.
+						 It wants it after the %% */
+
 
 
 static	PLpgSQL_expr	*read_sqlstmt(int until, char *s, char *sqlstart);
@@ -1078,8 +1081,6 @@ lno		:
 		;
 
 %%
-
-#include "pl_scan.c"
 
 PLpgSQL_expr *
 plpgsql_read_expression (int until, char *s)
