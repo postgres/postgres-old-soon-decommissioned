@@ -818,7 +818,7 @@ static struct config_bool ConfigureNamesBool[] =
 	},
 	{
 		{"add_missing_from", PGC_USERSET, COMPAT_OPTIONS_PREVIOUS,
-			gettext_noop("Add missing table references to from clauses"),
+			gettext_noop("Add missing table references to FROM clauses"),
 			NULL
 		},
 		&add_missing_from,
