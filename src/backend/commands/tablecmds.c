@@ -1505,7 +1505,7 @@ AlterTableCreateToastTable(Oid relOid, bool silent)
 	 * Create the toast table and its index
 	 */
 	sprintf(toast_relname, "pg_toast_%u", relOid);
-	sprintf(toast_idxname, "pg_toast_%u_idx", relOid);
+	sprintf(toast_idxname, "pg_toast_%u_index", relOid);
 
 	/* this is pretty painful...  need a tuple descriptor */
 	tupdesc = CreateTemplateTupleDesc(3);
