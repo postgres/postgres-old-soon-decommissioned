@@ -32,7 +32,10 @@
 #define NOTICE		18			/* Helpful messages to users about query
 								 * operation;  sent to client and server
 								 * log by default. */
-#define WARNING		19			/* Warnings */
+#define WARNING		19			/* Warnings.  NOTICE is for expected messages
+								 * like implicit sequence creation by SERIAL.
+								 * WARNING is for unexpected messages.
+								 */
 #define ERROR		20			/* user error - abort transaction; return
 								 * to known state */
 /* Save ERROR value in PGERROR so it can be restored when Win32 includes
