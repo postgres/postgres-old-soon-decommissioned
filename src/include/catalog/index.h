@@ -18,6 +18,7 @@
 #include "catalog/pg_index.h"
 #include "nodes/execnodes.h"
 
+#define DEFAULT_INDEX_TYPE	"btree"
 
 /* Typedef for callback function for IndexBuildHeapScan */
 typedef void (*IndexBuildCallback) (Relation index,

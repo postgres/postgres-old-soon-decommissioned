@@ -51,6 +51,7 @@
 #include <ctype.h>
 
 #include "access/htup.h"
+#include "catalog/index.h"
 #include "catalog/pg_type.h"
 #include "nodes/params.h"
 #include "nodes/parsenodes.h"
@@ -2516,7 +2517,8 @@ index_opt_unique:  UNIQUE						{ $$ = TRUE; }
 		;
 
 access_method_clause:  USING access_method		{ $$ = $2; }
-		| /*EMPTY*/								{ $$ = "btree"; }
+		/* If btree changes as our default, update pg_get_indexdef() */
+		| /*EMPTY*/								{ $$ = DEFAULT_INDEX_TYPE; }
 		;
 
 index_params:  index_list						{ $$ = $1; }

@@ -16,6 +16,7 @@
 #include "access/heapam.h"
 #include "catalog/catname.h"
 #include "catalog/heap.h"
+#include "catalog/index.h"
 #include "catalog/pg_index.h"
 #include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
@@ -1048,7 +1049,7 @@ transformIndexConstraints(ParseState *pstate, CreateStmtContext *cxt)
 			index->idxname = NULL;		/* will set it later */
 
 		index->relname = cxt->relname;
-		index->accessMethod = "btree";
+		index->accessMethod = DEFAULT_INDEX_TYPE;
 		index->indexParams = NIL;
 		index->whereClause = NULL;
 
