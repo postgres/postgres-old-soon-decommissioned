@@ -1385,7 +1385,8 @@ ExecDelete(TupleTableSlot *slot,
 	{
 		bool		dodelete;
 
-		dodelete = ExecBRDeleteTriggers(estate, resultRelInfo, tupleid);
+		dodelete = ExecBRDeleteTriggers(estate, resultRelInfo, tupleid,
+										estate->es_snapshot->curcid);
 
 		if (!dodelete)			/* "do nothing" */
 			return;
@@ -1495,7 +1496,8 @@ ExecUpdate(TupleTableSlot *slot,
 		HeapTuple	newtuple;
 
 		newtuple = ExecBRUpdateTriggers(estate, resultRelInfo,
-										tupleid, tuple);
+										tupleid, tuple,
+										estate->es_snapshot->curcid);
 
 		if (newtuple == NULL)	/* "do nothing" */
 			return;
