@@ -47,6 +47,9 @@ typedef union SockAddr
 {
 	struct sockaddr sa;
 	struct sockaddr_in in;
+#ifdef HAVE_IPV6
+	struct sockaddr_in6 in6;
+#endif
 	struct sockaddr_un un;
 } SockAddr;
 

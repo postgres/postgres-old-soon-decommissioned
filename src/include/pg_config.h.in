@@ -368,6 +368,9 @@
 /* Set to 1 if you have <sys/shm.h> */
 #undef HAVE_SYS_SHM_H
 
+/* Set to 1 if you have <netinet/ip6.h> for IPv6 */
+#undef HAVE_IPV6
+
 /* Set to 1 if you have <kernel/OS.h> */
 #undef HAVE_KERNEL_OS_H
 

@@ -190,7 +190,11 @@ hostssl  <replaceable>database</replaceable>  <replaceable>user</replaceable>  <
        </blockquote>
        must be zero for the record to match.  (Of course IP addresses
        can be spoofed but this consideration is beyond the scope of
-       <productname>PostgreSQL</productname>.)
+       <productname>PostgreSQL</productname>.) If you machine supports
+       IPv6, the default <filename>pg_hba.conf</> will have an IPv6
+       entry for <literal>localhost</>. You can add your own IPv6
+       entries to the file. IPv6 entries are used only for IPv6
+       connections.
       </para>
 
       <para>
