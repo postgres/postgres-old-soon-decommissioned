@@ -949,9 +949,9 @@ $ECHO_N "setting privileges on built-in objects... "$ECHO_C
   cat <<EOF
     UPDATE pg_class SET relacl = '{"=r"}' \
         WHERE relkind IN ('r', 'v', 'S') AND relacl IS NULL;
-    UPDATE pg_proc SET proacl = '{"=r"}' \
+    UPDATE pg_proc SET proacl = '{"=X"}' \
         WHERE proacl IS NULL;
-    UPDATE pg_language SET lanacl = '{"=r"}' \
+    UPDATE pg_language SET lanacl = '{"=U"}' \
         WHERE lanpltrusted;
 EOF
 ) \

@@ -356,36 +356,3 @@ ScanKeywordLookup(char *text)
 
 	return NULL;
 }
-
-
-/*
- * This does the reverse mapping from token number to string.
- */
-const char *
-TokenString(int token)
-{
-    int i = 0;
-    static char buf[NAMEDATALEN];
-
-    while (i < sizeof(ScanKeywords))
-    {
-	if (ScanKeywords[i].value == token)
-	{
-	    int k;
-
-	    /* uppercase */
-	    for (k = 0; k < NAMEDATALEN; k++)
-		if (ScanKeywords[i].name[k] >= 'a'
-		    && ScanKeywords[i].name[k] <= 'z')
-		    buf[k] = ScanKeywords[i].name[k] + ('A' - 'a');
-		else
-		    buf[k] = ScanKeywords[i].name[k];
-
-	    return buf;
-	}
-
-	i++;
-    }
-
-    return NULL;
-}

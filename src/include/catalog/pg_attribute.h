@@ -281,6 +281,7 @@ DATA(insert ( 1262 datfrozenxid		28 0  4   8 0 -1 -1 t p f i f f));
 /* do not mark datpath as toastable; GetRawDatabaseInfo won't cope */
 DATA(insert ( 1262 datpath			25 0 -1   9 0 -1 -1 f p f i f f));
 DATA(insert ( 1262 datconfig	  1009 0 -1  10 0 -1 -1 f x f i f f));
+DATA(insert ( 1262 datacl		  1034 0 -1  11 0 -1 -1 f x f i f f));
 DATA(insert ( 1262 ctid				27 0  6  -1 0 -1 -1 f p f i f f));
 DATA(insert ( 1262 oid				26 0  4  -2 0 -1 -1 t p f i f f));
 DATA(insert ( 1262 xmin				28 0  4  -3 0 -1 -1 t p f i f f));

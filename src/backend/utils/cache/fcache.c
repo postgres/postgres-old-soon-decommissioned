@@ -42,7 +42,7 @@ init_fcache(Oid foid, int nargs, MemoryContext fcacheCxt)
 	/* Initialize additional info */
 	retval->setArgsValid = false;
 
-	retval->permission_ok = pg_proc_aclcheck(foid, GetUserId()) == ACLCHECK_OK;
+	retval->permission_ok = pg_proc_aclcheck(foid, GetUserId(), ACL_EXECUTE) == ACLCHECK_OK;
 
 	return retval;
 }

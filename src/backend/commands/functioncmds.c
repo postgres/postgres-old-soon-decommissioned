@@ -325,7 +325,7 @@ CreateFunction(ProcedureStmt *stmt)
 	languageStruct = (Form_pg_language) GETSTRUCT(languageTuple);
 
 	if (!((languageStruct->lanpltrusted
-		   && pg_language_aclcheck(languageOid, GetUserId()) == ACLCHECK_OK)
+		   && pg_language_aclcheck(languageOid, GetUserId(), ACL_USAGE) == ACLCHECK_OK)
 		  || superuser()))
 		elog(ERROR, "permission denied");
 
