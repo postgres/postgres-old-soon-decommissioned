@@ -40,7 +40,9 @@
 Your platform must have a thread-safe snprintf() to compile with threads.
 #endif
 
+#ifndef WIN32
 #include <sys/ioctl.h>
+#endif
 #include <sys/param.h>
 
 
