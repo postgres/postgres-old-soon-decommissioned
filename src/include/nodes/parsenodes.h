@@ -130,6 +130,7 @@ typedef struct CopyStmt
 	int			direction;		/* TO or FROM */
 	char	   *filename;		/* if NULL, use stdin/stdout */
 	char	   *delimiter;		/* delimiter character, \t by default */
+    char       *null_print;     /* how to print NULLs, `\N' by default */
 } CopyStmt;
 
 /* ----------------------

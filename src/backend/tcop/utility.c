@@ -269,6 +269,7 @@ ProcessUtility(Node *parsetree,
 				 */
 					   stmt->filename,
 					   stmt->delimiter,
+                       stmt->null_print,
 				/*
 				 * specify 022 umask while writing files with COPY.
 				 */

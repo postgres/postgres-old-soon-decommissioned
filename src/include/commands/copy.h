@@ -15,6 +15,6 @@
 
 
 void DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
-			char *filename, char *delim, int fileumask);
+			char *filename, char *delim, char *null_print, int fileumask);
 
 #endif	 /* COPY_H */

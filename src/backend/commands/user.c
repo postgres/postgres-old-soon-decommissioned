@@ -77,6 +77,7 @@ update_pg_pwd()
 		   false,				/* pipe */
 		   tempname,			/* filename */
 		   CRYPT_PWD_FILE_SEPSTR, /* delim */
+           "",                  /* nulls */
 		   0077);				/* fileumask */
 	/*
 	 * And rename the temp file to its final name, deleting the old pg_pwd.
