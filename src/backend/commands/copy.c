@@ -1138,7 +1138,7 @@ CopyReadNewline(FILE *fp, int *newline)
 static char *
 CopyReadAttribute(FILE *fp, bool *isnull, char *delim, int *newline, char *null_print)
 {
-	char		c;
+	int			c;
 #ifdef MULTIBYTE
 	int			mblen;
 	unsigned char s[2];
