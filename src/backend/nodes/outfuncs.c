@@ -42,6 +42,10 @@
 static void _outDatum(StringInfo str, Datum value, Oid type);
 static void _outNode(StringInfo str, void *obj);
 
+/* Convert a null string pointer into "<>" */
+#define stringStringInfo(s) (((s) == NULL) ? "<>" : (s))
+
+
 /*
  * _outIntList -
  *	   converts a List of integers

@@ -31,6 +31,9 @@ static char *Explain_PlanToString(Plan *plan, ExplainState *es);
 static void printLongNotice(const char *header, const char *message);
 static void ExplainOneQuery(Query *query, bool verbose, CommandDest dest);
 
+/* Convert a null string pointer into "<>" */
+#define stringStringInfo(s) (((s) == NULL) ? "<>" : (s))
+
 
 /*
  * ExplainQuery -
