@@ -13,17 +13,11 @@
 #ifndef	REL_H
 #define REL_H
 
-#include "postgres.h"
-
 #include "storage/fd.h"
-#include "access/strat.h"	
-#include "access/tupdesc.h"
-
 #include "catalog/pg_am.h"
-#include "catalog/pg_operator.h"
 #include "catalog/pg_class.h"
-
 #include "rewrite/prs2lock.h"
+#include "access/strat.h"
 
 typedef struct RelationData {
     File		rd_fd; 		/* open file descriptor */
