@@ -48,6 +48,7 @@
 /* IRIX doesn't do 'long long' in va_arg(), so use a typedef */
 #ifdef HAVE_LONG_LONG_INT_64
 typedef long long long_long;
+typedef unsigned long long ulong_long;
 #endif
 
 /*
@@ -350,7 +351,7 @@ int			base,
 {
 	int			signvalue = 0;
 #ifdef HAVE_LONG_LONG_INT_64
-	unsigned long_long uvalue;
+	ulong_long uvalue;
 #else
 	unsigned long uvalue;
 #endif
