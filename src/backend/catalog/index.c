@@ -975,15 +975,6 @@ index_create(char *heapRelationName,
 												numatts,
 												attNums);
 
-	/* invalidate cache so possible non-temp index is masked by temp */
-	if (istemp)
-	{
-		Oid			relid = RelnameFindRelid(indexRelationName);
-
-		if (relid != InvalidOid)
-			RelationForgetRelation(relid);
-	}
-
 	/* save user relation name because heap_create changes it */
 	if (istemp)
 	{

@@ -35,6 +35,7 @@
 #include "catalog/pg_shadow.h"
 #include "catalog/pg_type.h"
 #include "utils/catcache.h"
+#include "utils/temprel.h"
 
 extern bool AMI_OVERRIDE;		/* XXX style */
 
@@ -487,6 +488,16 @@ SearchSysCacheTuple(int cacheId,/* cache selection code */
 				 cacheId);
 	}
 
+	/* temp table name remapping */
+	if (cacheId == RELNAME)
+	{
+		char *nontemp_relname;
+
+		if ((nontemp_relname =
+			 get_temp_rel_by_name(DatumGetPointer(key1))) != NULL)
+			key1 = PointerGetDatum(nontemp_relname);
+	}
+	
 	tp = SearchSysCache(SysCache[cacheId], key1, key2, key3, key4);
 	if (!HeapTupleIsValid(tp))
 	{
