@@ -61,12 +61,11 @@
 #include <sys/sem.h>
 #endif
 
+#include "miscadmin.h"
+
 #if defined(__darwin__)
 #include "port/darwin/sem.h"
 #endif
-
-#include "miscadmin.h"
-
 
 /* In Ultrix and QNX, sem.h must be included after ipc.h */
 #ifdef HAVE_SYS_SEM_H
@@ -74,6 +73,7 @@
 #endif
 
 #include "storage/proc.h"
+
 
 
 void		HandleDeadLock(SIGNAL_ARGS);
