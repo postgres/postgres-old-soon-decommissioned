@@ -1193,7 +1193,7 @@ update_attstats(Oid relid, int natts, VacAttrStats **vacattrstats)
 		{
 			/* Yes, replace it */
 			stup = heap_modifytuple(oldtup,
-									sd,
+									RelationGetDescr(sd),
 									values,
 									nulls,
 									replaces);

@@ -816,7 +816,7 @@ AlterDatabaseSet(AlterDatabaseSetStmt *stmt)
 			repl_null[Anum_pg_database_datconfig - 1] = 'n';
 	}
 
-	newtuple = heap_modifytuple(tuple, rel, repl_val, repl_null, repl_repl);
+	newtuple = heap_modifytuple(tuple, RelationGetDescr(rel), repl_val, repl_null, repl_repl);
 	simple_heap_update(rel, &tuple->t_self, newtuple);
 
 	/* Update indexes */
@@ -911,7 +911,7 @@ AlterDatabaseOwner(const char *dbname, AclId newOwnerSysId)
 			repl_val[Anum_pg_database_datacl - 1] = PointerGetDatum(newAcl);
 		}
 
-		newtuple = heap_modifytuple(tuple, rel, repl_val, repl_null, repl_repl);
+		newtuple = heap_modifytuple(tuple, RelationGetDescr(rel), repl_val, repl_null, repl_repl);
 		simple_heap_update(rel, &newtuple->t_self, newtuple);
 		CatalogUpdateIndexes(rel, newtuple);
 

@@ -860,7 +860,7 @@ AlterTableSpaceOwner(const char *name, AclId newOwnerSysId)
 			repl_val[Anum_pg_tablespace_spcacl - 1] = PointerGetDatum(newAcl);
 		}
 
-		newtuple = heap_modifytuple(tup, rel, repl_val, repl_null, repl_repl);
+		newtuple = heap_modifytuple(tup, RelationGetDescr(rel), repl_val, repl_null, repl_repl);
 
 		simple_heap_update(rel, &newtuple->t_self, newtuple);
 		CatalogUpdateIndexes(rel, newtuple);

@@ -523,7 +523,7 @@ AtCommit_Notify(void)
 				ItemPointerData ctid;
 				int			result;
 
-				rTuple = heap_modifytuple(lTuple, lRel,
+				rTuple = heap_modifytuple(lTuple, tdesc,
 										  value, nulls, repl);
 
 				/*
@@ -942,7 +942,7 @@ ProcessIncomingNotify(void)
 			 * tried to UNLISTEN us, so there can be no uncommitted
 			 * changes.
 			 */
-			rTuple = heap_modifytuple(lTuple, lRel, value, nulls, repl);
+			rTuple = heap_modifytuple(lTuple, tdesc, value, nulls, repl);
 			simple_heap_update(lRel, &lTuple->t_self, rTuple);
 
 #ifdef NOT_USED					/* currently there are no indexes */

@@ -637,7 +637,7 @@ OperatorCreate(const char *operatorName,
 				 operatorObjectId);
 
 		tup = heap_modifytuple(tup,
-							   pg_operator_desc,
+							   RelationGetDescr(pg_operator_desc),
 							   values,
 							   nulls,
 							   replaces);
@@ -807,7 +807,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 				}
 
 				tup = heap_modifytuple(tup,
-									   pg_operator_desc,
+									   RelationGetDescr(pg_operator_desc),
 									   values,
 									   nulls,
 									   replaces);
@@ -832,7 +832,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 		replaces[Anum_pg_operator_oprcom - 1] = 'r';
 
 		tup = heap_modifytuple(tup,
-							   pg_operator_desc,
+							   RelationGetDescr(pg_operator_desc),
 							   values,
 							   nulls,
 							   replaces);
@@ -858,7 +858,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 		replaces[Anum_pg_operator_oprnegate - 1] = 'r';
 
 		tup = heap_modifytuple(tup,
-							   pg_operator_desc,
+							   RelationGetDescr(pg_operator_desc),
 							   values,
 							   nulls,
 							   replaces);

@@ -1760,7 +1760,7 @@ update_ri_trigger_args(Oid relid,
 		values[Anum_pg_trigger_tgargs - 1] = PointerGetDatum(newtgargs);
 		replaces[Anum_pg_trigger_tgargs - 1] = 'r';
 
-		tuple = heap_modifytuple(tuple, tgrel, values, nulls, replaces);
+		tuple = heap_modifytuple(tuple, RelationGetDescr(tgrel), values, nulls, replaces);
 
 		/*
 		 * Update pg_trigger and its indexes
@@ -5302,7 +5302,7 @@ ATExecChangeOwner(Oid relationOid, int32 newOwnerSysId)
 			repl_val[Anum_pg_class_relacl - 1] = PointerGetDatum(newAcl);
 		}
 
-		newtuple = heap_modifytuple(tuple, class_rel, repl_val, repl_null, repl_repl);
+		newtuple = heap_modifytuple(tuple, RelationGetDescr(class_rel), repl_val, repl_null, repl_repl);
 
 		simple_heap_update(class_rel, &newtuple->t_self, newtuple);
 		CatalogUpdateIndexes(class_rel, newtuple);

@@ -203,7 +203,7 @@ CreateComments(Oid oid, Oid classoid, int32 subid, char *comment)
 			simple_heap_delete(description, &oldtuple->t_self);
 		else
 		{
-			newtuple = heap_modifytuple(oldtuple, description, values,
+			newtuple = heap_modifytuple(oldtuple, RelationGetDescr(description), values,
 										nulls, replaces);
 			simple_heap_update(description, &oldtuple->t_self, newtuple);
 		}

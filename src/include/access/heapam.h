@@ -196,7 +196,7 @@ extern void heap_copytuple_with_tuple(HeapTuple src, HeapTuple dest);
 extern HeapTuple heap_formtuple(TupleDesc tupleDescriptor,
 			   Datum *values, char *nulls);
 extern HeapTuple heap_modifytuple(HeapTuple tuple,
-				 Relation relation,
+				 TupleDesc tupleDesc,
 				 Datum *replValues,
 				 char *replNulls,
 				 char *replActions);
