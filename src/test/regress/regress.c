@@ -412,8 +412,6 @@ funny_dup17()
 	return (tuple);
 }
 
-#include <ctype.h>				/* tolower () */
-
 HeapTuple		ttdummy(void);
 int32			set_ttdummy(int32 on);
 
