@@ -129,6 +129,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"listen", LISTEN},
 	{"load", LOAD},
 	{"local", LOCAL},
+	{"location", LOCATION},
 	{"match", MATCH},
 	{"merge", MERGE},
 	{"minute", MINUTE_P},
