@@ -160,7 +160,7 @@ get_prompt(promptStatus_t status)
 					/* DB server user name */
 				case 'n':
 					if (pset.db)
-						strncpy(buf, PQuser(pset.db), MAX_PROMPT_SIZE);
+						strncpy(buf, session_username(), MAX_PROMPT_SIZE);
 					break;
 
 				case '0':

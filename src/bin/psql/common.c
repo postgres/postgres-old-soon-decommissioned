@@ -724,3 +724,26 @@ is_superuser(void)
 
 	return false;
 }
+
+
+/*
+ * Return the session user of the current connection.
+ *
+ * Note: this will correctly detect the session user only with a
+ * protocol-3.0 or newer backend; otherwise it will return the
+ * connection user.
+ */
+const char *
+session_username(void)
+{
+	const char *val;
+
+	if (!pset.db)
+		return NULL;
+
+	val = PQparameterStatus(pset.db, "session_authorization");
+	if (val)
+		return val;
+	else
+		return PQuser(pset.db);
+}

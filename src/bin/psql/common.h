@@ -37,6 +37,7 @@ extern PGresult *PSQLexec(const char *query, bool start_xact);
 extern bool SendQuery(const char *query);
 
 extern bool is_superuser(void);
+extern const char *session_username(void);
 
 /* Parse a numeric character code from the string pointed at by *buf, e.g.
  * one written as 0x0c (hexadecimal) or 015 (octal); advance *buf to the last

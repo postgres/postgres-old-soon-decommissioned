@@ -857,7 +857,8 @@ is not known.
 Parameters reported as of the current release include
 <literal>server_version</> (cannot change after startup);
 <literal>client_encoding</>,
-<literal>is_superuser</>, and
+<literal>is_superuser</>,
+<literal>session_authorization</literal>, and
 <literal>DateStyle</>.
 </para>
 

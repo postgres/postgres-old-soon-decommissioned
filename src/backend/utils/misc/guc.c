@@ -1501,7 +1501,7 @@ static struct config_string ConfigureNamesString[] =
 		{"session_authorization", PGC_USERSET, UNGROUPED,
 			gettext_noop("Current session userid"),
 			NULL,
-			GUC_NO_SHOW_ALL | GUC_NO_RESET_ALL | GUC_NOT_IN_SAMPLE | GUC_DISALLOW_IN_FILE
+			GUC_REPORT | GUC_NO_SHOW_ALL | GUC_NO_RESET_ALL | GUC_NOT_IN_SAMPLE | GUC_DISALLOW_IN_FILE
 		},
 		&session_authorization_string,
 		NULL, assign_session_authorization, show_session_authorization
