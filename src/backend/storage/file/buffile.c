@@ -532,14 +532,12 @@ BufFileSeek(BufFile *file, int fileno, long offset, int whence)
 	return 0;
 }
 
-#ifdef NOT_USED
 void
 BufFileTell(BufFile *file, int *fileno, long *offset)
 {
 	*fileno = file->curFile;
 	*offset = file->curOffset + file->pos;
 }
-#endif
 
 /*
  * BufFileSeekBlock --- block-oriented seek
