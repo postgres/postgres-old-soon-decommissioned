@@ -1019,6 +1019,9 @@ _outIndexPath(StringInfo str, IndexPath *node)
 	appendStringInfo(str, " :indexscandir %d :joinrelids ",
 					 (int) node->indexscandir);
 	_outIntList(str, node->joinrelids);
+
+	appendStringInfo(str, " :rows %.2f ",
+					 node->rows);
 }
 
 /*

@@ -1135,6 +1135,7 @@ _copyIndexPath(IndexPath *from)
 	Node_Copy(from, newnode, indexqual);
 	newnode->indexscandir = from->indexscandir;
 	newnode->joinrelids = listCopy(from->joinrelids);
+	newnode->rows = from->rows;
 
 	return newnode;
 }

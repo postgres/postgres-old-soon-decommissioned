@@ -337,8 +337,16 @@ create_index_path(Query *root,
 	 */
 	pathnode->indexid = lconsi(index->indexoid, NIL);
 	pathnode->indexqual = lcons(indexquals, NIL);
+
 	pathnode->indexscandir = indexscandir;
+
+	/*
+	 * This routine is only used to generate "standalone" indexpaths,
+	 * not nestloop inner indexpaths.  So joinrelids is always NIL
+	 * and the number of rows is the same as the parent rel's estimate.
+	 */
 	pathnode->joinrelids = NIL;	/* no join clauses here */
+	pathnode->rows = rel->rows;
 
 	cost_index(&pathnode->path, root, rel, index, indexquals, false);
 
@@ -400,8 +408,7 @@ create_nestloop_path(RelOptInfo *joinrel,
 	pathnode->joinrestrictinfo = restrict_clauses;
 	pathnode->path.pathkeys = pathkeys;
 
-	cost_nestloop(&pathnode->path, outer_path, inner_path,
-				  restrict_clauses, IsA(inner_path, IndexPath));
+	cost_nestloop(&pathnode->path, outer_path, inner_path, restrict_clauses);
 
 	return pathnode;
 }

@@ -375,6 +375,9 @@ _equalIndexPath(IndexPath *a, IndexPath *b)
 		return false;
 	if (!equali(a->joinrelids, b->joinrelids))
 		return false;
+	/* Skip 'rows' because of possibility of floating-point roundoff error.
+	 * It should be derivable from the other fields anyway.
+	 */
 	return true;
 }
 

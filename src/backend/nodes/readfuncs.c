@@ -1510,6 +1510,10 @@ _readIndexPath()
 	token = lsptok(NULL, &length);		/* get :joinrelids */
 	local_node->joinrelids = toIntList(nodeRead(true));
 
+	token = lsptok(NULL, &length);		/* get :rows */
+	token = lsptok(NULL, &length);		/* now read it */
+	local_node->rows = atof(token);
+
 	return local_node;
 }
 

@@ -58,7 +58,7 @@ extern void cost_index(Path *path, Query *root,
 extern void cost_tidscan(Path *path, RelOptInfo *baserel, List *tideval);
 extern void cost_sort(Path *path, List *pathkeys, double tuples, int width);
 extern void cost_nestloop(Path *path, Path *outer_path, Path *inner_path,
-						  List *restrictlist, bool is_indexjoin);
+						  List *restrictlist);
 extern void cost_mergejoin(Path *path, Path *outer_path, Path *inner_path,
 						   List *restrictlist,
 						   List *outersortkeys, List *innersortkeys);

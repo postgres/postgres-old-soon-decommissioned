@@ -1454,6 +1454,26 @@ index_innerjoin(Query *root, RelOptInfo *rel, IndexOptInfo *index,
 		/* joinrelids saves the rels needed on the outer side of the join */
 		pathnode->joinrelids = lfirst(outerrelids_list);
 
+		/*
+		 * We must compute the estimated number of output rows for the
+		 * indexscan.  This is less than rel->rows because of the additional
+		 * selectivity of the join clauses.  Since clausegroup may contain
+		 * both restriction and join clauses, we have to do a set union to
+		 * get the full set of clauses that must be considered to compute
+		 * the correct selectivity.  (We can't just nconc the two lists;
+		 * then we might have some restriction clauses appearing twice,
+		 * which'd mislead restrictlist_selectivity into double-counting
+		 * their selectivity.)
+		 */
+		pathnode->rows = rel->tuples *
+			restrictlist_selectivity(root,
+									 LispUnion(rel->baserestrictinfo,
+											   clausegroup),
+									 lfirsti(rel->relids));
+		/* Like costsize.c, force estimate to be at least one row */
+		if (pathnode->rows < 1.0)
+			pathnode->rows = 1.0;
+
 		cost_index(&pathnode->path, root, rel, index, indexquals, true);
 
 		path_list = lappend(path_list, pathnode);
