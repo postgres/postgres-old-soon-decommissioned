@@ -10,10 +10,6 @@ subdir = src/backend/bootstrap
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-ifeq ($(GCC), yes)
-override CFLAGS+= -Wno-error
-endif
-
 # qnx4's wlink currently crashes with bootstrap.o
 ifneq ($(PORTNAME), qnx4)
 OBJS= bootparse.o bootscanner.o bootstrap.o 
