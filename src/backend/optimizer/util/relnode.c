@@ -345,11 +345,8 @@ subbuild_joinrel_restrictlist(RelOptInfo *joinrel,
 	foreach(xjoininfo, joininfo_list)
 	{
 		JoinInfo   *joininfo = (JoinInfo *) lfirst(xjoininfo);
-		Relids		new_unjoined_relids;
 
-		new_unjoined_relids = set_differencei(joininfo->unjoined_relids,
-											  joinrel->relids);
-		if (new_unjoined_relids == NIL)
+		if (is_subseti(joininfo->unjoined_relids, joinrel->relids))
 		{
 			/*
 			 * Clauses in this JoinInfo list become restriction clauses
