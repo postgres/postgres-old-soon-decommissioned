@@ -470,7 +470,14 @@ else # not temp-install
     if [ -n "$PGHOST" ]; then
         echo "(using postmaster on $PGHOST, $port_info)"
     else
-        echo "(using postmaster on Unix socket, $port_info)"
+		case $host_platform in
+			*-*-mingw32*)
+				echo "(using postmaster on localhost socket, $port_info)"
+				;;
+			*)
+				echo "(using postmaster on Unix socket, $port_info)"
+				;;
+		esac
     fi
     message "dropping database \"$dbname\""
     "$bindir/dropdb" $psql_options "$dbname"
