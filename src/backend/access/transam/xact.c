@@ -736,7 +736,7 @@ RecordTransactionAbort()
 	 * this transaction id in the pg_log relation. We skip it
 	 * if no one shared buffer was changed by this transaction.
 	 */
-	if (SharedBufferChanged)
+	if (SharedBufferChanged && !TransactionIdDidCommit(xid))
 		TransactionIdAbort(xid);
 
 	ResetBufferPool();
