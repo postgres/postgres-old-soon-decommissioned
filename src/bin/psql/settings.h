@@ -15,7 +15,12 @@
 
 #define DEFAULT_FIELD_SEP "|"
 #define DEFAULT_RECORD_SEP "\n"
+
+#if defined(WIN32) || defined(__CYGWIN__)
+#define DEFAULT_EDITOR	"notepad.exe"
+#else
 #define DEFAULT_EDITOR	"vi"
+#endif
 
 #define DEFAULT_PROMPT1 "%/%R%# "
 #define DEFAULT_PROMPT2 "%/%R%# "
