@@ -673,12 +673,12 @@ cashsmaller(Cash *c1, Cash *c2)
 }	/* cashsmaller() */
 
 
-/* cash_words_out()
+/* cash_words()
  * This converts a int4 as well but to a representation using words
  * Obviously way North American centric - sorry
  */
 Datum
-cash_words_out(PG_FUNCTION_ARGS)
+cash_words(PG_FUNCTION_ARGS)
 {
 	Cash		value = PG_GETARG_CASH(0);
 	char		buf[128];

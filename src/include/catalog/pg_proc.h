@@ -1124,7 +1124,7 @@ DATA(insert OID =  886 (  cash_in		   PGUID 11 f t t t 1 f 790 "0" 100 0 0 100  
 DESCR("(internal)");
 DATA(insert OID =  887 (  cash_out		   PGUID 11 f t t t 1 f  23 "0" 100 0 0 100  cash_out - ));
 DESCR("(internal)");
-DATA(insert OID =  1273 (  cash_words_out  PGUID 12 f t t t 1 f  25 "790" 100 0 0 100  cash_words_out - ));
+DATA(insert OID =  1273 (  cash_words  PGUID 12 f t t t 1 f  25 "790" 100 0 0 100  cash_words - ));
 DESCR("output amount as words");
 DATA(insert OID =  888 (  cash_eq		   PGUID 11 f t t t 2 f  16 "790 790" 100 0 0 100  cash_eq - ));
 DESCR("equal");
