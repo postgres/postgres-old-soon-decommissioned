@@ -27,6 +27,7 @@ WANTED_DIRS = \
 		pgbench		\
 		pgcrypto	\
 		rserv		\
+		rtree_gist	\
 		seg		\
 		soundex		\
 		spi		\
