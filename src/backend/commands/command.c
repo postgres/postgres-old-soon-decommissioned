@@ -279,7 +279,11 @@ PerformAddAttribute(char *relationName,
 	elog(WARN, "PerformAddAttribute: you do not own class \"%s\"",
 	     relationName);
 #endif
-    
+    /*   
+     * we can't add a not null attribute
+     */
+    if (colDef->is_not_null)
+        elog(WARN,"Can't add a not null attribute to a existent relation");
     /*
      * if the first element in the 'schema' list is a "*" then we are
      * supposed to add this attribute to all classes that inherit from
@@ -454,6 +458,7 @@ PerformAddAttribute(char *relationName,
 	attribute->attcacheoff = -1;
 	attribute->attisset = (bool) (form->typtype == 'c');
 	attribute->attalign = form->typalign;
+        attribute->attnotnull = false;
 	
 	heap_insert(attrdesc, attributeTuple);
 	if (hasindex)

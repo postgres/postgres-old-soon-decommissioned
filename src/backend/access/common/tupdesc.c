@@ -60,6 +60,7 @@ CreateTemplateTupleDesc(int natts)
     size = natts * sizeof (AttributeTupleForm);
     desc = (TupleDesc) palloc(sizeof(struct tupleDesc));
     desc->attrs = (AttributeTupleForm*) palloc(size);
+    desc->constr = NULL;
     memset(desc->attrs, 0, size);
 
     desc->natts = natts;
@@ -87,7 +88,7 @@ CreateTupleDesc(int natts, AttributeTupleForm* attrs)
     desc = (TupleDesc) palloc(sizeof(struct tupleDesc));
     desc->attrs = attrs;
     desc->natts = natts;    
-
+    desc->constr = NULL;
 
     return (desc);
 }
@@ -117,6 +118,11 @@ CreateTupleDescCopy(TupleDesc tupdesc)
 		tupdesc->attrs[i],
 		ATTRIBUTE_TUPLE_SIZE);
     }
+    if (tupdesc->constr) {
+      desc->constr = (AttrConstr *) palloc(sizeof(struct attrConstr));
+      memmove(desc->constr, tupdesc->constr, sizeof(struct attrConstr));
+    } else
+      desc->constr = NULL;
     return desc;
 }
 
@@ -379,6 +385,15 @@ BuildDescForRelation(List *schema, char *relname)
 	if (entry->typename->typlen > 0) {
 	    desc->attrs[attnum - 1]->attlen = entry->typename->typlen;
 	}
+
+	/* This is for constraints */
+	if (entry->is_not_null) {
+           if (!desc->constr)
+               desc->constr = (AttrConstr *) palloc(sizeof(struct attrConstr));
+           desc->constr->has_not_null = true;
+        } 
+        desc->attrs[attnum-1]->attnotnull = entry->is_not_null;
+
     }
     return desc;
 }

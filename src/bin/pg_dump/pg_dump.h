@@ -70,6 +70,7 @@ typedef struct _tableInfo {
 			      an inherited attribute */
     char **attnames;        /* the attribute names */
     char **typnames;        /* fill out attributes */
+    bool *notnull;          /* Not null constraints of an attribute */
     int numParents;         /* number of (immediate) parent supertables */
     char **parentRels;      /* names of parent relations, NULL
 			       if numParents == 0 */

@@ -401,6 +401,7 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
     if (resultRelation != 0 && operation != CMD_SELECT) {
 	/* ----------------
 	 *    if we have a result relation, open it and
+
 	 *    initialize the result relation info stuff.
 	 * ----------------
 	 */
@@ -911,6 +912,21 @@ ExecAppend(TupleTableSlot *slot,
      */
 
     /* ----------------
+     * Check the constraints of a tuple
+     * ----------------
+     */
+
+    if (resultRelationDesc->rd_att->constr && resultRelationDesc->rd_att->constr->has_not_null)
+      {
+	int attrChk;
+	for (attrChk = 1; attrChk <= resultRelationDesc->rd_att->natts; attrChk++) {
+	  if (resultRelationDesc->rd_att->attrs[attrChk-1]->attnotnull && heap_attisnull(tuple,attrChk))
+	    elog(WARN,"ExecAppend:  Fail to add null value in not null attribute %s",
+		 resultRelationDesc->rd_att->attrs[attrChk-1]->attname.data);
+	}
+      }
+
+    /* ----------------
      *	insert the tuple
      * ----------------
      */
@@ -1029,6 +1045,21 @@ ExecReplace(TupleTableSlot *slot,
      *  cim -12/1/89
      * ----------------
      */
+
+    /* ----------------
+     * Check the constraints of a tuple
+     * ----------------
+     */
+
+    if (resultRelationDesc->rd_att->constr && resultRelationDesc->rd_att->constr->has_not_null)
+      {
+	int attrChk;
+	for (attrChk = 1; attrChk <= resultRelationDesc->rd_att->natts; attrChk++) {
+	  if (resultRelationDesc->rd_att->attrs[attrChk-1]->attnotnull && heap_attisnull(tuple,attrChk))
+	    elog(WARN,"ExecReplace:  Fail to update null value in not null attribute %s",
+		 resultRelationDesc->rd_att->attrs[attrChk-1]->attname.data);
+	}
+      }
 
     /* ----------------
      *	replace the heap tuple

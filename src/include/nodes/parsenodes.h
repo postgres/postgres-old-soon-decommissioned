@@ -607,6 +607,7 @@ typedef struct ColumnDef {
     NodeTag		type;
     char		*colname;	/* name of column */
     TypeName		*typename;	/* type of column */
+    bool                is_not_null;    /* flag to NOT NULL constraint */
 } ColumnDef;
 
 /*
