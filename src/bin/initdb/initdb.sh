@@ -786,7 +786,7 @@ CREATE VIEW pg_tables AS \
         C.relhasrules AS hasrules, \
         (C.reltriggers > 0) AS hastriggers \
     FROM pg_class C LEFT JOIN pg_namespace N ON (N.oid = C.relnamespace) \
-    WHERE C.relkind IN ('r', 'S');
+    WHERE C.relkind = 'r';
 
 CREATE VIEW pg_indexes AS \
     SELECT \
