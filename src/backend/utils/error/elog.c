@@ -35,6 +35,7 @@
 #include "storage/proc.h"
 #include "tcop/tcopprot.h"
 #include "utils/trace.h"
+#include "commands/copy.h"
 
 extern int	errno;
 extern int	sys_nerr;
@@ -164,7 +165,7 @@ elog(int lev, const char *fmt, ...)
 	 * (since vsnprintf won't know what to do with %m).  To keep
 	 * space calculation simple, we only allow one %m.
 	 */
-	space_needed = TIMESTAMP_SIZE + strlen(prefix) + indent 
+	space_needed = TIMESTAMP_SIZE + strlen(prefix) + indent + (lineno ? 24 : 0)
 		+ strlen(fmt) + strlen(errorstr) + 1;
 	if (space_needed > (int) sizeof(fmt_fixedbuf))
 	{
@@ -186,6 +187,14 @@ elog(int lev, const char *fmt, ...)
 	bp = fmt_buf + strlen(fmt_buf);
 	while (indent-- > 0)
 		*bp++ = ' ';
+
+	/* If error was in CopyFrom() print the offending line number -- dz */
+	if (lineno) {
+	    sprintf(bp, "copy: line %d, ", lineno);
+	    bp = fmt_buf + strlen(fmt_buf);
+	    lineno = 0;
+	}
+
 	for (cp = fmt; *cp; cp++)
 	{
 		if (cp[0] == '%' && cp[1] != '\0')

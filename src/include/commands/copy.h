@@ -14,6 +14,7 @@
 #ifndef COPY_H
 #define COPY_H
 
+extern int lineno;
 
 void DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
 			char *filename, char *delim, char *null_print);
