@@ -31,6 +31,7 @@
  *-------------------------------------------------------------------------
  */
 #include "executor/executor.h"
+#include "executor/nodeIndexscan.h"
 #include "utils/builtins.h"
 #include "utils/palloc.h"
 #include "utils/acl.h"
@@ -221,6 +222,7 @@ ExecutorRun(QueryDesc *queryDesc, EState *estate, int feature, int count)
 			     destination);
 	break;
     default:
+	result = NULL;
 	elog(DEBUG, "ExecutorRun: Unknown feature %d", feature);
 	break;
     }

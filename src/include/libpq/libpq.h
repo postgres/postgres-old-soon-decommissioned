@@ -19,6 +19,10 @@
 #ifndef LIBPQ_H
 #define LIBPQ_H
 
+#include <netinet/in.h>
+
+#include "libpq/pqcomm.h"
+
 /* ----------------
  * PQArgBlock --
  *	Information (pointer to array of this structure) required

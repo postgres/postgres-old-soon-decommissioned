@@ -129,8 +129,6 @@ DefineIndex(char *heapRelationName,
      *  -- JMH, 7/22/96
      */
     foreach(pl, parameterList) {
-        int count;
-	char *ptr;
 	ParamString *param = (ParamString*)lfirst(pl);
 	
 	if (!strcasecmp(param->name, "islossy"))
@@ -138,7 +136,6 @@ DefineIndex(char *heapRelationName,
     }
   
 
-    
     /*
      * Convert the partial-index predicate from parsetree form to plan
      * form, so it can be readily evaluated during index creation.

@@ -20,8 +20,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <string.h>
 #include <time.h>
+
+#include "postgres.h"
 #include "utils/nabstime.h"
 
 int32

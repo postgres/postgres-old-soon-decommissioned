@@ -132,12 +132,12 @@ static OverflowPageAddress
 _hash_getovfladdr(Relation rel, Buffer *metabufp)
 {
     HashMetaPage metap;
-    Buffer mapbuf;
+    Buffer mapbuf = 0;
     BlockNumber blkno;
     PageOffset offset;
     OverflowPageAddress oaddr;
     SplitNumber splitnum;
-    uint32 *freep;
+    uint32 *freep = NULL;
     uint32 max_free; 
     uint32 bit;
     uint32 first_page; 
@@ -356,7 +356,7 @@ _hash_freeovflpage(Relation rel, Buffer ovflbuf)
      * XXX this should look like:
      * - lock prev/next
      * - modify/write prev/next (how to do write ordering with a
-     * doubly-linked list???)
+     * doubly-linked list?)
      * - unlock prev/next
      */
     if (BlockNumberIsValid(prevblkno)) {
@@ -503,7 +503,7 @@ _hash_squeezebucket(Relation rel,
 		    Bucket bucket)
 {
     Buffer wbuf;
-    Buffer rbuf;
+    Buffer rbuf = 0;
     BlockNumber wblkno;		
     BlockNumber rblkno;		
     Page wpage;

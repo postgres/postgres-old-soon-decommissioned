@@ -29,4 +29,5 @@ extern bool ExecInitIndexScan(IndexScan *node, EState *estate, Plan *parent);
 
 extern int ExecCountSlotsIndexScan(IndexScan *node);
 
+extern void ExecIndexReScan(IndexScan *node, ExprContext *exprCtxt, Plan* parent);
 #endif	/* NODEINDEXSCAN_H */

@@ -11,6 +11,8 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <stdio.h>
+
 #include "postgres.h"
 #include "parser/catalog_utils.h"
 #include "parser/parse_query.h"	    /* for MakeTimeRange() */
@@ -157,6 +159,7 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 	pname = "Tee";
 	break;
     default:
+	pname = NULL;
 	break;
     }
 

@@ -16,6 +16,7 @@
 #include "storage/itemid.h"
 #include "storage/item.h"
 #include "storage/buf.h"
+#include "storage/page.h"
 #include "storage/off.h"
 
 /*
@@ -72,7 +73,6 @@
  * initialize its pages with PageInit and then set its own opaque
  * fields.
  */
-typedef Pointer	Page;
 
 /*
  * PageIsValid --

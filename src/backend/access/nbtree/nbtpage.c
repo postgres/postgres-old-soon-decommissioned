@@ -19,6 +19,8 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <stdio.h>
+#include <time.h>
 
 #include "postgres.h"
 
@@ -36,7 +38,6 @@
 #include "utils/rel.h"
 
 #include "storage/buf.h"
-
 #include "storage/block.h"
 #include "storage/off.h"
 #include "storage/itemptr.h"
@@ -45,7 +46,6 @@
 #include "storage/itemid.h"
 #include "storage/item.h"
 #include "storage/bufpage.h"
-#include <time.h>
 #include "utils/nabstime.h"
 #include "access/htup.h"
 #include "utils/tqual.h"
@@ -53,9 +53,9 @@
 #include "access/sdir.h"
 #include "access/nbtree.h"
 
-#include <stdio.h>
 #include "storage/ipc.h"
 #include "storage/bufmgr.h"
+#include "storage/lmgr.h"
 
 #define BTREE_METAPAGE	0
 #define BTREE_MAGIC	0x053162

@@ -12,6 +12,8 @@
  *-------------------------------------------------------------------------
  */
 
+#include <time.h>
+
 #include "postgres.h"
 
 #include "catalog/pg_attribute.h"
@@ -36,15 +38,18 @@
 #include "storage/item.h"
 #include "storage/buf.h"
 #include "storage/bufpage.h"
-#include <time.h>
 #include "utils/nabstime.h"
 #include "access/htup.h"
 #include "utils/tqual.h"
+#include "utils/palloc.h"
 #include "access/relscan.h"
 #include "access/sdir.h"
 #include "access/nbtree.h"
-
 #include "access/istrat.h"
+#include "access/genam.h"
+#include "access/iqual.h"
+
+#include "fmgr.h"
 
 ScanKey 
 _bt_mkscankey(Relation rel, IndexTuple itup)

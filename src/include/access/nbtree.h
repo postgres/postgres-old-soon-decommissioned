@@ -23,6 +23,10 @@
 #include "access/relscan.h"
 #include "access/sdir.h"
 #include "nodes/pg_list.h"
+#include "storage/page.h"
+#include "storage/bufpage.h"
+#include "storage/item.h"
+#include "utils/memutils.h"
 
 /*
  *  BTPageOpaqueData -- At the end of every page, we store a pointer

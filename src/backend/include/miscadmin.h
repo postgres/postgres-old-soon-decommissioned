@@ -23,16 +23,6 @@
 #ifndef MISCADMIN_H
 #define MISCADMIN_H
 
-/* ----------------
- *	note: <sys/types.h> was in unix.h  This should be moved
- *	to the .c files.
- * ----------------
- */
-#include <sys/types.h>
-
-#include "postgres.h"
-#include "storage/backendid.h"
-
 /*****************************************************************************
  *    globals.h --                                                           *
  *****************************************************************************/

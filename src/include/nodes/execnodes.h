@@ -15,6 +15,7 @@
 
 #include "nodes/params.h"
 #include "access/sdir.h"
+#include "access/funcindex.h"
 #include "executor/hashjoin.h"
 #include "nodes/primnodes.h"
 #include "nodes/memnodes.h"

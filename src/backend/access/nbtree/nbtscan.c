@@ -55,6 +55,7 @@
 #include "utils/nabstime.h"
 #include "access/htup.h"
 #include "utils/tqual.h"
+#include "utils/palloc.h"
 #include "access/relscan.h"
 #include "access/sdir.h"
 #include "access/nbtree.h"

@@ -321,7 +321,7 @@ RemoveFunction(char *functionName, /* function name to be removed */
     Buffer           buffer = InvalidBuffer;
     bool		 bufferUsed = FALSE;
     Oid	 argList[8];
-    Form_pg_proc	 the_proc;
+    Form_pg_proc	 the_proc = NULL;
     ItemPointerData  itemPointerData;
     static ScanKeyData key[3] = {
 	{ 0, Anum_pg_proc_proname, NameEqualRegProcedure }

@@ -12,6 +12,9 @@
  *-------------------------------------------------------------------------
  */
 
+#include <string.h>
+#include <time.h>
+
 #include "postgres.h"
  
 #include "catalog/pg_attribute.h"
@@ -30,14 +33,17 @@
 #include "storage/block.h" 
 #include "storage/off.h"
 #include "storage/itemptr.h"
-#include <time.h>
 #include "utils/nabstime.h"
+#include "utils/palloc.h"
 #include "access/htup.h"
 #include "utils/tqual.h"
 #include "storage/buf.h"
+#include "storage/lmgr.h"
+#include "storage/bufmgr.h"
 #include "access/relscan.h"
 
 #include "access/rtree.h"
+#include "access/rtstrat.h"
  
 #include "access/itup.h"
 #include "access/funcindex.h"

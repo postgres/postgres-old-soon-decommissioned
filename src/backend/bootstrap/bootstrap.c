@@ -11,6 +11,11 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <time.h>
+#include <stdio.h>
+#include <signal.h>
+#include <setjmp.h>
+
 #define BOOTSTRAP_INCLUDE	/* mask out stuff in tcop/tcopprot.h */
 
 #include "postgres.h"
@@ -28,7 +33,6 @@
 #include "access/strat.h"
 #include "utils/rel.h"
 
-#include <time.h>
 #include "storage/block.h"
 #include "storage/off.h"
 #include "storage/itemptr.h"
@@ -44,10 +48,6 @@
 #include "access/funcindex.h"
 
 #include "nodes/memnodes.h"
-
-#include <stdio.h>
-#include <signal.h>
-#include <setjmp.h>
 
 #include "miscadmin.h"
 
@@ -100,6 +100,8 @@
 
 #define ALLOC(t, c)	(t *)calloc((unsigned)(c), sizeof(t))
 #define FIRST_TYPE_OID 16	/* OID of the first type */
+
+ extern int Int_yyparse (void);
 
 /* ----------------
  *	global variables
@@ -235,7 +237,8 @@ typedef void (*sig_func)();
  *	error handling / abort routines
  * ----------------
  */
-void err_out()
+void
+err_out(void)
 {
     Warnings++;
     cleanup();
@@ -245,7 +248,7 @@ void err_out()
    usage help for the bootstrap backen
 */
 static void
-usage()
+usage(void)
 {
     fprintf(stderr,"Usage: postgres -boot [-d] [-C] [-F] [-O] [-Q] ");
     fprintf(stderr,"[-P portno] [dbName]\n");

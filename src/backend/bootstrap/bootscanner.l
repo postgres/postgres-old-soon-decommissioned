@@ -12,6 +12,8 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <time.h>
+
 #include "postgres.h"
 
 #include "storage/block.h"
@@ -34,7 +36,6 @@
 #include "bootstrap/bootstrap.h"
 
 #include "nodes/primnodes.h"
-#include <time.h>
 #include "utils/nabstime.h"
 #include "access/htup.h"  
 #include "utils/tqual.h"
@@ -43,6 +44,8 @@
 #include "parser/scansup.h"
 
 #include "bootstrap_tokens.h"
+
+#define		YY_NO_UNPUT
 
 /* some versions of lex define this as a macro */
 #if defined(yywrap)
@@ -121,13 +124,14 @@ insert		{ return(INSERT_TUPLE); }
 
 %%
 
-yywrap()
+int
+yywrap(void)
 {
     return 1;
 }
 
-yyerror(str)
-    char *str;
+void
+yyerror(const char *str)
 {
     fprintf(stderr,"\tsyntax error %d : %s",yyline, str);
 }

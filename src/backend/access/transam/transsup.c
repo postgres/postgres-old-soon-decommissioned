@@ -78,7 +78,7 @@ TransComputeBlockNumber(Relation relation, /* relation to test */
 			TransactionId transactionId, /* transaction id to test */
 			BlockNumber *blockNumberOutP)
 {
-    long	itemsPerBlock;
+    long	itemsPerBlock = 0;
     
     /* ----------------
      *  we calculate the block number of our transaction

@@ -113,9 +113,11 @@ hashbuild(Relation heap,
     int nhtups, nitups;
     int i;
     HashItem hitem;
+#ifndef OMIT_PARTIAL_INDEX
     ExprContext *econtext;
     TupleTable tupleTable;
     TupleTableSlot *slot;
+#endif
     Oid hrelid, irelid;
     Node *pred, *oldPred;
     
@@ -151,6 +153,12 @@ hashbuild(Relation heap,
 	econtext = makeNode(ExprContext);
 	FillDummyExprContext(econtext, slot, htupdesc, buffer);
     }
+	else	/* quiet the compiler */
+	{
+		econtext = NULL;
+		tupleTable = 0;
+		slot = 0;
+	}
 #endif /* OMIT_PARTIAL_INDEX */
     
     /* start a heap scan */

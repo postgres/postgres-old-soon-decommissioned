@@ -233,8 +233,8 @@ StrategyTermEvaluate(StrategyTerm term,
 		     Datum right)
 {
     Index		index;
-    long		tmpres;
-    bool		result;
+    long		tmpres = 0;
+    bool		result = 0;
     StrategyOperator	operator;
     ScanKey		entry;
     

@@ -17,6 +17,9 @@
 #ifndef TUPTABLE_H
 #define TUPTABLE_H
 
+#include "access/htup.h"
+#include "access/relscan.h"
+
 /* ----------------
  *	Note:  the executor tuple table is managed and manipulated by special
  *	code and macros in executor/execTuples.c and tupTable.h
