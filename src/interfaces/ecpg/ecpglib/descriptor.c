@@ -431,6 +431,27 @@ ECPGget_desc(int lineno, char *desc_name, int index,...)
 }
 
 bool
+ECPGset_desc_header(int lineno, char *desc_name, int count)
+{
+	struct descriptor *desc;
+	
+	for (desc = all_descriptors; desc; desc = desc->next)
+	{
+		if (strcmp(desc_name, desc->name)==0)
+			break;
+	}
+
+	if (desc == NULL)
+	{
+		ECPGraise(lineno, ECPG_UNKNOWN_DESCRIPTOR, ECPG_SQLSTATE_INVALID_SQL_DESCRIPTOR_NAME, desc_name);
+		return false;
+	}
+
+	desc->count = count;
+	return true;
+}
+
+bool
 ECPGset_desc(int lineno, char *desc_name, int index,...)
 {
 	va_list		args;
@@ -581,6 +602,7 @@ ECPGallocate_desc(int line, const char *name)
 		ECPGfree(new);
 		return false;
 	}
+	new->count = -1;
 	new->items = NULL;
 	new->result = PQmakeEmptyPGresult(NULL, 0);
 	if (!new->result)
