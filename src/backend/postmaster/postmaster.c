@@ -85,6 +85,10 @@
 #include <getopt.h>
 #endif
 
+#ifdef USE_RENDEZVOUS
+#include <DNSServiceDiscovery/DNSServiceDiscovery.h>
+#endif
+
 #include "catalog/pg_database.h"
 #include "commands/async.h"
 #include "lib/dllist.h"
@@ -365,6 +369,17 @@ checkDataDir(const char *checkdir)
 	FreeFile(fp);
 }
 
+
+#ifdef USE_RENDEZVOUS
+
+/* reg_reply -- empty callback function for DNSServiceRegistrationCreate() */
+static void
+reg_reply(DNSServiceRegistrationReplyErrorType errorCode, void *context)
+{
+
+}
+
+#endif
 
 int
 PostmasterMain(int argc, char *argv[])
@@ -723,6 +738,18 @@ PostmasterMain(int argc, char *argv[])
 			else
 				elog(LOG, "IPv4 socket created");
 		}
+#endif
+#ifdef USE_RENDEZVOUS                    
+                if (service_name != NULL)
+                {
+                        DNSServiceRegistrationCreate(NULL,	/* default to hostname */
+                                                     "_postgresql._tcp.",
+                                                     "",
+                                                     htonl(PostPortNumber),
+                                                     "",
+                                                     (DNSServiceRegistrationReply)reg_reply,
+                                                     NULL);
+                }
 #endif
 	}
 
