@@ -475,16 +475,23 @@ show_timezone(void)
 const char *
 assign_XactIsoLevel(const char *value, bool doit, GucSource source)
 {
-	if (doit && source >= PGC_S_INTERACTIVE)
+	if (SerializableSnapshot != NULL)
 	{
-		if (SerializableSnapshot != NULL)
+		if (source >= PGC_S_INTERACTIVE)
 			ereport(ERROR,
 					(errcode(ERRCODE_ACTIVE_SQL_TRANSACTION),
 					 errmsg("SET TRANSACTION ISOLATION LEVEL must be called before any query")));
-		if (IsSubTransaction())
+		else
+			return NULL;
+	}
+	if (IsSubTransaction())
+	{
+		if (source >= PGC_S_INTERACTIVE)
 			ereport(ERROR,
 					(errcode(ERRCODE_ACTIVE_SQL_TRANSACTION),
 					 errmsg("SET TRANSACTION ISOLATION LEVEL must not be called in a subtransaction")));
+		else
+			return NULL;
 	}
 
 	if (strcmp(value, "serializable") == 0)
