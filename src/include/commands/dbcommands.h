@@ -16,7 +16,7 @@
 
 #include <nodes/parsenodes.h>
 
-extern void createdb(CreatedbStmt *stmt);
+extern void createdb(const CreatedbStmt *stmt);
 extern void dropdb(const char *dbname);
 extern void AlterDatabaseSet(AlterDatabaseSetStmt *stmt);
 

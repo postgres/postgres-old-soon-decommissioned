@@ -58,7 +58,7 @@ static bool remove_dbdirs(const char *real_loc, const char *altloc);
  */
 
 void
-createdb(CreatedbStmt *stmt)
+createdb(const CreatedbStmt *stmt)
 {
 	char	   *nominal_loc;
 	char	   *alt_loc;

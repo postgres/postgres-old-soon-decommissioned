@@ -1992,16 +1992,11 @@ _copyCopyStmt(CopyStmt *from)
 {
 	CopyStmt   *newnode = makeNode(CopyStmt);
 
-	newnode->binary = from->binary;
 	Node_Copy(from, newnode, relation);
-	newnode->oids = from->oids;
-	newnode->direction = from->direction;
+	newnode->is_from = from->is_from;
 	if (from->filename)
 		newnode->filename = pstrdup(from->filename);
-	if (from->delimiter)
-		newnode->delimiter = pstrdup(from->delimiter);
-	if (from->null_print)
-		newnode->null_print = pstrdup(from->null_print);
+	Node_Copy(from, newnode, options);
 
 	return newnode;
 }

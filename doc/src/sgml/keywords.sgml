@@ -891,6 +891,12 @@
     <entry>reserved</entry>
    </row>
    <row>
+    <entry><token>DELIMITER</token></entry>
+    <entry>non-reserved</entry>
+    <entry></entry>
+    <entry></entry>
+   </row>
+   <row>
     <entry><token>DELIMITERS</token></entry>
     <entry>non-reserved</entry>
     <entry></entry>

@@ -98,6 +98,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"deferred", DEFERRED},
 	{"definer", DEFINER},
 	{"delete", DELETE_P},
+	{"delimiter", DELIMITER},
 	{"delimiters", DELIMITERS},
 	{"desc", DESC},
 	{"distinct", DISTINCT},

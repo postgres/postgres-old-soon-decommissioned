@@ -14,12 +14,11 @@
 #ifndef COPY_H
 #define COPY_H
 
+#include "nodes/parsenodes.h"
 #include "nodes/primnodes.h"
 
 extern int	copy_lineno;
 
-void DoCopy(const RangeVar *relation, bool binary, bool oids,
-			bool from, bool pipe,
-			char *filename, char *delim, char *null_print);
+void DoCopy(const CopyStmt *stmt);
 
 #endif   /* COPY_H */

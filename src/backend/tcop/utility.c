@@ -347,22 +347,10 @@ ProcessUtility(Node *parsetree,
 			{
 				CopyStmt   *stmt = (CopyStmt *) parsetree;
 
-				if (stmt->direction != FROM)
+				if (!stmt->is_from)
 					SetQuerySnapshot();
 
-				DoCopy(stmt->relation,
-					   stmt->binary,
-					   stmt->oids,
-					   (bool) (stmt->direction == FROM),
-					   (bool) (stmt->filename == NULL),
-
-				/*
-				 * null filename means copy to/from stdout/stdin, rather
-				 * than to/from a file.
-				 */
-					   stmt->filename,
-					   stmt->delimiter,
-					   stmt->null_print);
+				DoCopy(stmt);
 			}
 			break;
 

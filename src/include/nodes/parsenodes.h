@@ -851,13 +851,10 @@ typedef struct ClosePortalStmt
 typedef struct CopyStmt
 {
 	NodeTag		type;
-	bool		binary;			/* is a binary copy? */
 	RangeVar   *relation;		/* the relation to copy */
-	bool		oids;			/* copy oid's? */
-	int			direction;		/* TO or FROM */
+	bool		is_from;		/* TO or FROM */
 	char	   *filename;		/* if NULL, use stdin/stdout */
-	char	   *delimiter;		/* delimiter character, \t by default */
-	char	   *null_print;		/* how to print NULLs, `\N' by default */
+	List	   *options;		/* List of DefElem nodes */
 } CopyStmt;
 
 /* ----------------------
