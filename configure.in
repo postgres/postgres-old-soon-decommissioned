@@ -924,7 +924,8 @@ esac
 case $host_os in mingw*)
 AC_LIBOBJ(dirmod)
 AC_LIBOBJ(copydir)
-AC_LIBOBJ(gettimeofday) ;;
+AC_LIBOBJ(gettimeofday)
+AC_LIBOBJ(pipe) ;;
 esac
 
 if test "$with_readline" = yes; then
