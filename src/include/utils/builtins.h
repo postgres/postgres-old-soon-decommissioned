@@ -472,9 +472,10 @@ extern Datum pg_get_triggerdef(PG_FUNCTION_ARGS);
 extern Datum pg_get_constraintdef(PG_FUNCTION_ARGS);
 extern Datum pg_get_constraintdef_ext(PG_FUNCTION_ARGS);
 extern char *pg_get_constraintdef_string(Oid constraintId);
-extern Datum pg_get_userbyid(PG_FUNCTION_ARGS);
 extern Datum pg_get_expr(PG_FUNCTION_ARGS);
 extern Datum pg_get_expr_ext(PG_FUNCTION_ARGS);
+extern Datum pg_get_userbyid(PG_FUNCTION_ARGS);
+extern Datum pg_get_serial_sequence(PG_FUNCTION_ARGS);
 extern char *deparse_expression(Node *expr, List *dpcontext,
 				   bool forceprefix, bool showimplicit);
 extern List *deparse_context_for(const char *aliasname, Oid relid);
