@@ -385,32 +385,20 @@ ProcessUtility(Node *parsetree,
 
 				CheckOwnership(stmt->relation, true);
 
-				/* ----------------
-				 *	XXX using len == 3 to tell the difference
-				 *		between "rename rel to newrel" and
-				 *		"rename att in rel to newatt" will not
-				 *		work soon because "rename type/operator/rule"
-				 *		stuff is being added. - cim 10/24/90
-				 * ----------------
-				 * [another piece of amuzing but useless anecdote -- ay]
-				 */
 				if (stmt->column == NULL)
 				{
 					/*
 					 * rename relation
-					 *
-					 * Note: we also rename the "type" tuple corresponding to
-					 * the relation.
 					 */
-					renamerel(stmt->relation,	/* old relation */
-							  stmt->newname);	/* new name */
+					renamerel(RangeVarGetRelid(stmt->relation, false),
+							  stmt->newname);
 				}
 				else
 				{
 					/*
 					 * rename attribute
 					 */
-					renameatt(RangeVarGetRelid(stmt->relation, false),	/* relation */
+					renameatt(RangeVarGetRelid(stmt->relation, false),
 							  stmt->column,		/* old att name */
 							  stmt->newname,	/* new att name */
 							  interpretInhOption(stmt->relation->inhOpt));		/* recursive? */

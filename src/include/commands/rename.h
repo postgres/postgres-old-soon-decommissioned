@@ -15,11 +15,11 @@
 #define RENAME_H
 
 extern void renameatt(Oid relid,
-		  char *oldattname,
-		  char *newattname,
+		  const char *oldattname,
+		  const char *newattname,
 		  bool recurse);
 
-extern void renamerel(const RangeVar *relation,
+extern void renamerel(Oid relid,
 		  const char *newrelname);
 
 #endif   /* RENAME_H */
