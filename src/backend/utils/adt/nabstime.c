@@ -93,7 +93,7 @@ GetCurrentTime(struct tm *tm)
     time_t now;
     struct tm *tt;
 
-    now = GetCurrentTransactionStartTime();
+    now = GetCurrentTransactionStartTime()-CTimeZone;
     tt = gmtime( &now);
 
     tm->tm_year = tt->tm_year+1900;
