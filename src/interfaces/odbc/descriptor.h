@@ -20,6 +20,7 @@ typedef struct
 	char		schema[MAX_SCHEMA_LEN + 1];
 	char		name[MAX_TABLE_LEN + 1];
 	char		alias[MAX_TABLE_LEN + 1];
+	char		updatable;
 } TABLE_INFO;
 
 typedef struct
@@ -41,6 +42,8 @@ typedef struct
 	char		name[MAX_COLUMN_LEN + 1];
 	char		alias[MAX_COLUMN_LEN + 1];
 } FIELD_INFO;
+Int4 FI_precision(const FIELD_INFO *);
+Int4 FI_scale(const FIELD_INFO *);
 
 struct ARDFields_
 {

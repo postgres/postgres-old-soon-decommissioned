@@ -20,6 +20,8 @@
 
 #include <stdio.h>				/* for FILE* pointers: see GLOBAL_VALUES */
 
+#include "version.h"
+
 /* Must come before sql.h */
 #ifndef ODBCVER
 #define ODBCVER						0x0250
@@ -86,8 +88,6 @@ typedef UInt4 Oid;
 #define DRIVER_ODBC_VER				"02.50"
 #define DBMS_NAME					"PostgreSQL"
 #endif   /* ODBCVER */
-
-#define POSTGRESDRIVERVERSION		"07.02.0001"
 
 #ifdef WIN32
 #if (ODBCVER >= 0x0300)
