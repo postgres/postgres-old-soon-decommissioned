@@ -457,6 +457,7 @@ NewRestoreOptions(void)
 
 	opts->format = archUnknown;
 	opts->suppressDumpWarnings = false;
+	opts->exit_on_error = false;
 
 	return opts;
 }
@@ -1227,7 +1228,7 @@ warn_or_die_horribly(ArchiveHandle *AH,
 {
 	va_list ap;
 	va_start(ap, fmt);
-	if (AH->public.die_on_errors)
+	if (AH->public.exit_on_error)
 	{
 		_die_horribly(AH, modulename, fmt, ap);
 	}
@@ -1693,7 +1694,7 @@ _allocAH(const char *FileSpec, const ArchiveFormat fmt,
 	}
 
 	/* sql error handling */
-	AH->public.die_on_errors = true;
+	AH->public.exit_on_error = true;
 	AH->public.n_errors = 0;
 
 	return AH;

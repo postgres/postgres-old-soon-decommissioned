@@ -130,6 +130,18 @@
      </varlistentry>
 
      <varlistentry>
+      <term><option>-e</option></term>
+      <term><option>--exit-on-error</option></term>
+      <listitem>
+       <para>
+        Exit if an error is encountered while sending SQL commands to
+        the database. The default is to continue and to display a count of 
+        errors at the end of the restoration.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term><option>-f <replaceable>filename</replaceable></option></term>
       <term><option>--file=<replaceable>filename</replaceable></option></term>
       <listitem>
