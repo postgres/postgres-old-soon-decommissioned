@@ -1164,6 +1164,16 @@ estimate_hash_bucketsize(Query *root, Var *var)
 	if (avgfreq > 0.0 && mcvfreq > avgfreq)
 		estfract *= mcvfreq / avgfreq;
 
+	/*
+	 * Clamp bucketsize to sane range (the above adjustment could easily
+	 * produce an out-of-range result).  We set the lower bound a little
+	 * above zero, since zero isn't a very sane result.
+	 */
+	if (estfract < 1.0e-6)
+		estfract = 1.0e-6;
+	else if (estfract > 1.0)
+		estfract = 1.0;
+
 	ReleaseSysCache(tuple);
 
 	return (Selectivity) estfract;
