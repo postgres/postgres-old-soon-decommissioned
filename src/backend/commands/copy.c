@@ -828,11 +828,9 @@ CopyTo(Relation rel, List *attnumlist, bool binary, bool oids,
 		int			attnum = lfirsti(cur);
 		Oid			out_func_oid;
 
-		if (!getTypeOutputInfo(attr[attnum - 1]->atttypid,
-							   &out_func_oid, &elements[attnum - 1],
-							   &isvarlena[attnum - 1]))
-			elog(ERROR, "COPY: couldn't lookup info for type %u",
-				 attr[attnum - 1]->atttypid);
+		getTypeOutputInfo(attr[attnum - 1]->atttypid,
+						  &out_func_oid, &elements[attnum - 1],
+						  &isvarlena[attnum - 1]);
 		fmgr_info(out_func_oid, &out_functions[attnum - 1]);
 		if (binary && attr[attnum - 1]->attlen == -2)
 			elog(ERROR, "COPY BINARY: cstring not supported");

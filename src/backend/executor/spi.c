@@ -546,11 +546,7 @@ SPI_getvalue(HeapTuple tuple, TupleDesc tupdesc, int fnumber)
 		typmod = -1;
 	}
 
-	if (!getTypeOutputInfo(typoid, &foutoid, &typelem, &typisvarlena))
-	{
-		SPI_result = SPI_ERROR_NOOUTFUNC;
-		return NULL;
-	}
+	getTypeOutputInfo(typoid, &foutoid, &typelem, &typisvarlena);
 
 	/*
 	 * If we have a toasted datum, forcibly detoast it here to avoid
