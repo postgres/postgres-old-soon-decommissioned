@@ -430,6 +430,7 @@ InitializeTransactionLog(void)
 		Assert(!IsUnderPostmaster && 
 				ShmemVariableCache->nextXid <= FirstTransactionId);
 		ShmemVariableCache->nextXid = FirstTransactionId;
+		ShmemVariableCache->xidCount = 0; /* force an XLOG rec right away */
 	}
 	else if (RecoveryCheckingEnabled())
 	{

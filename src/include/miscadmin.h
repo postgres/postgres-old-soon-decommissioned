@@ -283,6 +283,8 @@ extern ProcessingMode Mode;
 extern bool CreateDataDirLockFile(const char *datadir, bool amPostmaster);
 extern bool CreateSocketLockFile(const char *socketfile, bool amPostmaster);
 extern void TouchSocketLockFile(void);
+extern void RecordSharedMemoryInLockFile(IpcMemoryKey shmKey,
+										 IpcMemoryId shmId);
 
 extern void ValidatePgVersion(const char *path);
 

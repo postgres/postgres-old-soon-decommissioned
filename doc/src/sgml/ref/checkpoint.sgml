@@ -26,11 +26,12 @@ CHECKPOINT
 
   <para>
    Write-Ahead Logging (WAL) puts a checkpoint in the transaction log
-   every 300 seconds by default.  (This may be changed by the run-time
-   configuration option <parameter>CHECKPOINT_TIMEOUT</parameter>.)
-   The <command>CHECKPOINT</command> command forces a checkpoint at
-   the point at which the command is issued.  The next automatic
-   checkpoint will still happen after the original cycle expires.
+   every so often. (To adjust the automatic checkpoint interval, see
+   the run-time
+   configuration options <parameter>CHECKPOINT_SEGMENTS</parameter>
+   and <parameter>CHECKPOINT_TIMEOUT</parameter>.)
+   The <command>CHECKPOINT</command> command forces an immediate checkpoint
+   when the command is issued, without waiting for a scheduled checkpoint.
   </para>
 
   <para>

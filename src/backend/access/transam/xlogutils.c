@@ -6,10 +6,12 @@
  * Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
+ * $Header$
+ *
  *-------------------------------------------------------------------------
  */
-
 #include "postgres.h"
+
 #include "access/xlog.h"
 #include "access/transam.h"
 #include "access/xact.h"

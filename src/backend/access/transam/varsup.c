@@ -14,12 +14,17 @@
 #include "postgres.h"
 
 #include "access/transam.h"
+#include "access/xlog.h"
 #include "storage/proc.h"
 
-SPINLOCK OidGenLockId;
 
-extern SPINLOCK XidGenLockId;
-extern void XLogPutNextOid(Oid nextOid);
+/* Number of XIDs and OIDs to prefetch (preallocate) per XLOG write */
+#define VAR_XID_PREFETCH		1024
+#define VAR_OID_PREFETCH		8192
+
+/* Spinlocks for serializing generation of XIDs and OIDs, respectively */
+SPINLOCK XidGenLockId;
+SPINLOCK OidGenLockId;
 
 /* pointer to "variable cache" in shared memory (set up by shmem.c) */
 VariableCache ShmemVariableCache = NULL;
@@ -38,23 +43,31 @@ GetNewTransactionId(TransactionId *xid)
 	}
 
 	SpinAcquire(XidGenLockId);
-	*xid = ShmemVariableCache->nextXid;
-	(ShmemVariableCache->nextXid)++;
 
-	if (MyProc != (PROC *) NULL)
-		MyProc->xid = *xid;
+	/* If we run out of logged for use xids then we must log more */
+	if (ShmemVariableCache->xidCount == 0)
+	{
+		XLogPutNextXid(ShmemVariableCache->nextXid + VAR_XID_PREFETCH);
+		ShmemVariableCache->xidCount = VAR_XID_PREFETCH;
+	}
+
+	*xid = ShmemVariableCache->nextXid;
+
+	(ShmemVariableCache->nextXid)++;
+	(ShmemVariableCache->xidCount)--;
 
 	SpinRelease(XidGenLockId);
 
+	if (MyProc != (PROC *) NULL)
+		MyProc->xid = *xid;
 }
 
 /*
- * Like GetNewTransactionId reads nextXid but don't fetch it.
+ * Read nextXid but don't allocate it.
  */
 void
 ReadNewTransactionId(TransactionId *xid)
 {
-
 	/*
 	 * During bootstrap initialization, we return the special
 	 * bootstrap transaction id.
@@ -68,7 +81,6 @@ ReadNewTransactionId(TransactionId *xid)
 	SpinAcquire(XidGenLockId);
 	*xid = ShmemVariableCache->nextXid;
 	SpinRelease(XidGenLockId);
-
 }
 
 /* ----------------------------------------------------------------
@@ -76,7 +88,6 @@ ReadNewTransactionId(TransactionId *xid)
  * ----------------------------------------------------------------
  */
 
-#define VAR_OID_PREFETCH		8192
 static Oid lastSeenOid = InvalidOid;
 
 void
@@ -84,7 +95,7 @@ GetNewObjectId(Oid *oid_return)
 {
 	SpinAcquire(OidGenLockId);
 
-	/* If we run out of logged for use oids then we log more */
+	/* If we run out of logged for use oids then we must log more */
 	if (ShmemVariableCache->oidCount == 0)
 	{
 		XLogPutNextOid(ShmemVariableCache->nextOid + VAR_OID_PREFETCH);
@@ -103,11 +114,11 @@ GetNewObjectId(Oid *oid_return)
 void
 CheckMaxObjectId(Oid assigned_oid)
 {
-
 	if (lastSeenOid != InvalidOid && assigned_oid < lastSeenOid)
 		return;
 
 	SpinAcquire(OidGenLockId);
+
 	if (assigned_oid < ShmemVariableCache->nextOid)
 	{
 		lastSeenOid = ShmemVariableCache->nextOid - 1;
@@ -138,5 +149,4 @@ CheckMaxObjectId(Oid assigned_oid)
 	ShmemVariableCache->nextOid = assigned_oid + 1;
 
 	SpinRelease(OidGenLockId);
-
 }

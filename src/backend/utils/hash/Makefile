@@ -12,7 +12,7 @@ subdir = src/backend/utils/hash
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = dynahash.o hashfn.o
+OBJS = dynahash.o hashfn.o pg_crc.o
 
 all: SUBSYS.o
 

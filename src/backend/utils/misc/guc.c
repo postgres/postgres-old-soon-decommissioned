@@ -36,6 +36,7 @@
 /* XXX should be in a header file */
 extern bool Log_connections;
 
+extern int CheckPointSegments;
 extern int CheckPointTimeout;
 extern int XLOGbuffers;
 extern int XLOGfiles;
@@ -279,13 +280,16 @@ ConfigureNamesInt[] =
 	{"unix_socket_permissions", PGC_POSTMASTER,         &Unix_socket_permissions,
 	 0777, 0000, 0777},
 
-	{"checkpoint_timeout",	PGC_POSTMASTER,			&CheckPointTimeout,
+	{"checkpoint_segments",	PGC_SIGHUP,				&CheckPointSegments,
+	 3, 1, INT_MAX},
+
+	{"checkpoint_timeout",	PGC_SIGHUP,				&CheckPointTimeout,
 	 300, 30, 3600},
 
 	{"wal_buffers",			PGC_POSTMASTER,			&XLOGbuffers,
 	 8, 4, INT_MAX},
 
-	{"wal_files",			PGC_POSTMASTER,			&XLOGfiles,
+	{"wal_files",			PGC_SIGHUP,				&XLOGfiles,
 	 0, 0, 64},
 
 	{"wal_debug",			PGC_SUSET,				&XLOG_DEBUG,

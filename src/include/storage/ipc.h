@@ -105,6 +105,8 @@ extern int	IpcSemaphoreGetValue(IpcSemaphoreId semId, int sem);
 extern PGShmemHeader *IpcMemoryCreate(uint32 size, bool makePrivate,
 									  int permission);
 
+extern bool SharedMemoryIsInUse(IpcMemoryKey shmKey, IpcMemoryId shmId);
+
 /* ipci.c */
 extern void CreateSharedMemoryAndSemaphores(bool makePrivate,
 											int maxBackends);
