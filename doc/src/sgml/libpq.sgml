@@ -942,8 +942,8 @@ strings overlap.
    characters in this binary string (a terminating zero byte is
    neither necessary nor counted).  The <parameter>to_length</parameter>
    parameter shall point to a buffer suitable to hold the resultant
-   escaped string length. The result string length does not
-   include the terminating zero byte of the result.
+   escaped string length. The result string length includes the terminating
+   zero byte of the result.
   </para>
 
   <para>
