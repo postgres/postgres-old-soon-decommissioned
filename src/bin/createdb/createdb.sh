@@ -23,7 +23,7 @@
 #	PGDATA, PGHOST, and PGPORT
 #
 # ----------------
-[ -z "$PGPORT" ] && PGPORT=5432
+[ -z "$PGPORT" ] && PGPORT=_fUnKy_POSTPORT_sTuFf_
 [ -z "$PGHOST" ] && PGHOST=localhost
 BINDIR=_fUnKy_BINDIR_sTuFf_
 PATH=$BINDIR:$PATH

@@ -25,7 +25,7 @@
 #
 # ----------------
 [ -z "$PGDATA" ] && { PGDATA=_fUnKy_DATADIR_sTuFf_; export PGDATA; }
-[ -z "$PGPORT" ] && { PGPORT=5432; export PGPORT; }
+[ -z "$PGPORT" ] && { PGPORT=_fUnKy_POSTPORT_sTuFf_; export PGPORT; }
 [ -z "$PGHOST" ] && { PGHOST=localhost; export PGHOST; }
 POSTGRESDIR=_fUnKy_POSTGRESDIR_sTuFf_
 BINDIR=_fUnKy_BINDIR_sTuFf_
