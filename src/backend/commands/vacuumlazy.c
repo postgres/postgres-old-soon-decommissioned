@@ -813,7 +813,7 @@ count_nondeletable_pages(Relation onerel, LVRelStats *vacrelstats)
 
 		if (PageIsNew(page) || PageIsEmpty(page))
 		{
-			/* PageIsNew robably shouldn't happen... */
+			/* PageIsNew probably shouldn't happen... */
 			LockBuffer(buf, BUFFER_LOCK_UNLOCK);
 			ReleaseBuffer(buf);
 			continue;

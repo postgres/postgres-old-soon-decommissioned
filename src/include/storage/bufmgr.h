@@ -42,7 +42,7 @@ extern DLLIMPORT int NLocBuffer;
 extern DLLIMPORT Block *LocalBufferBlockPointers;
 extern int32 *LocalRefCount;
 
-/* special pageno for bget */
+/* special block number for ReadBuffer() */
 #define P_NEW	InvalidBlockNumber		/* grow the file to get a new page */
 
 /*

@@ -35,8 +35,6 @@
  */
 #include "postgres.h"
 
-#include <math.h>
-#include <signal.h>
 #include <sys/file.h>
 #include <unistd.h>
 

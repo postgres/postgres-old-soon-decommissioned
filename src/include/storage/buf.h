@@ -32,7 +32,7 @@ typedef int Buffer;
 
 /*
  * BufferIsLocal
- *		True iff the buffer is local (not visible to other servers).
+ *		True iff the buffer is local (not visible to other backends).
  */
 #define BufferIsLocal(buffer)	((buffer) < 0)
 
