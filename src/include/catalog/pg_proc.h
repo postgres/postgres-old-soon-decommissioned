@@ -434,7 +434,7 @@ DATA(insert OID = 205 (  float4mi		   PGUID 11 f t t 2 f 700 "700 700" 100 0 0 1
 DESCR("subtract");
 DATA(insert OID = 206 (  float4um		   PGUID 11 f t t 1 f 700 "700" 100 0 0 100  float4um - ));
 DESCR("subtract");
-DATA(insert OID = 207 (  float4abs		   PGUID 11 f t t 1 f 700 "700 700" 100 0 0 100  float4abs - ));
+DATA(insert OID = 207 (  float4abs		   PGUID 11 f t t 1 f 700 "700" 100 0 0 100  float4abs - ));
 DESCR("absolute value");
 DATA(insert OID = 208 (  float4inc		   PGUID 11 f t t 1 f 700 "700" 100 0 0 100  float4inc - ));
 DESCR("increment");
