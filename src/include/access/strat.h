@@ -17,6 +17,7 @@
 
 #include "access/skey.h"
 
+
 typedef uint16 StrategyNumber;
 
 #define InvalidStrategy 0
@@ -24,29 +25,14 @@ typedef uint16 StrategyNumber;
 typedef struct StrategyTransformMapData
 {
 	StrategyNumber strategy[1]; /* VARIABLE LENGTH ARRAY */
-} StrategyTransformMapData;		/* VARIABLE LENGTH
-
-								 *
-								 *
-								 *
-								 *
-								 *
-								 *
-								 *
-								 *
-								 *
-								 *
-								 *
-								 *
-								 *
-								 * STRUCTURE */
+} StrategyTransformMapData;		/* VARIABLE LENGTH STRUCTURE */
 
 typedef StrategyTransformMapData *StrategyTransformMap;
 
 typedef struct StrategyOperatorData
 {
 	StrategyNumber strategy;
-	bits16		flags;			/* scan qualification flags h/skey.h */
+	bits16		flags;			/* scan qualification flags, see skey.h */
 } StrategyOperatorData;
 
 typedef StrategyOperatorData *StrategyOperator;
@@ -54,7 +40,7 @@ typedef StrategyOperatorData *StrategyOperator;
 typedef struct StrategyTermData
 {								/* conjunctive term */
 	uint16		degree;
-	StrategyOperatorData operatorData[1];		/* VARIABLE LENGTH */
+	StrategyOperatorData operatorData[1];	/* VARIABLE LENGTH ARRAY */
 } StrategyTermData;				/* VARIABLE LENGTH STRUCTURE */
 
 typedef StrategyTermData *StrategyTerm;
@@ -69,11 +55,12 @@ typedef StrategyExpressionData *StrategyExpression;
 typedef struct StrategyEvaluationData
 {
 	StrategyNumber maxStrategy;
+	/* each of these must point to an array of maxStrategy elements: */
 	StrategyTransformMap negateTransform;
 	StrategyTransformMap commuteTransform;
 	StrategyTransformMap negateCommuteTransform;
-	StrategyExpression expression[12];	/* XXX VARIABLE LENGTH */
-} StrategyEvaluationData;		/* VARIABLE LENGTH STRUCTURE */
+	StrategyExpression *expression;
+} StrategyEvaluationData;
 
 typedef StrategyEvaluationData *StrategyEvaluation;
 

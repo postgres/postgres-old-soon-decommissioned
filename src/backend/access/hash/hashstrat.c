@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
- * btstrat.c
- *	  Srategy map entries for the btree indexed access method
+ * hashstrat.c
+ *	  Srategy map entries for the hash indexed access method
  *
  * Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
@@ -12,8 +12,9 @@
  *
  *-------------------------------------------------------------------------
  */
-
 #include "postgres.h"
+
+#include "access/hash.h"
 
 
 /*
@@ -21,26 +22,29 @@
  */
 
 #ifdef NOT_USED
-static StrategyNumber HTNegate[1] = {
+
+static StrategyNumber HTNegate[HTMaxStrategyNumber] = {
 	InvalidStrategy
 };
 
-static StrategyNumber HTCommute[1] = {
+static StrategyNumber HTCommute[HTMaxStrategyNumber] = {
 	HTEqualStrategyNumber
 };
 
-static StrategyNumber HTNegateCommute[1] = {
+static StrategyNumber HTNegateCommute[HTMaxStrategyNumber] = {
 	InvalidStrategy
 };
 
-static StrategyEvaluationData HTEvaluationData = {
-	/* XXX static for simplicity */
+static StrategyExpression HTEvaluationExpressions[HTMaxStrategyNumber] = {
+	NULL
+};
 
+static StrategyEvaluationData HTEvaluationData = {
 	HTMaxStrategyNumber,
 	(StrategyTransformMap) HTNegate,
 	(StrategyTransformMap) HTCommute,
 	(StrategyTransformMap) HTNegateCommute,
-	{NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL}
+	HTEvaluationExpressions
 };
 
 #endif

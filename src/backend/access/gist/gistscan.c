@@ -1,15 +1,17 @@
 /*-------------------------------------------------------------------------
  *
  * gistscan.c
- *	  routines to manage scans on index relations
+ *	  routines to manage scans on GiST index relations
  *
+ *
+ * Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1994, Regents of the University of California
  *
  * IDENTIFICATION
- *	  /usr/local/devel/pglite/cvs/src/backend/access/gist/gistscan.c,v 1.7 1995/06/14 00:10:05 jolly Exp
+ *	  $Header$
  *
  *-------------------------------------------------------------------------
  */
-
 #include "postgres.h"
 
 #include "access/genam.h"
