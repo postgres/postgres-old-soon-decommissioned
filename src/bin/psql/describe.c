@@ -201,7 +201,8 @@ describeFunctions(const char *pattern, bool verbose)
 	 */
 	appendPQExpBuffer(&buf,
 	   "WHERE p.prorettype <> 'pg_catalog.cstring'::pg_catalog.regtype\n"
-					  "      AND p.proargtypes[0] <> 'pg_catalog.cstring'::pg_catalog.regtype\n"
+					  "      AND (p.proargtypes[0] IS NULL\n"
+					  "      OR   p.proargtypes[0] <> 'pg_catalog.cstring'::pg_catalog.regtype)\n"
 					  "      AND NOT p.proisagg\n");
 
 	processNamePattern(&buf, pattern, true, false,
@@ -491,7 +492,8 @@ objectDescription(const char *pattern)
 					  "       LEFT JOIN pg_catalog.pg_namespace n ON n.oid = p.pronamespace\n"
 
 	 "  WHERE p.prorettype <> 'pg_catalog.cstring'::pg_catalog.regtype\n"
-					  "      AND p.proargtypes[0] <> 'pg_catalog.cstring'::pg_catalog.regtype\n"
+					  "      AND (p.proargtypes[0] IS NULL\n"
+					  "      OR   p.proargtypes[0] <> 'pg_catalog.cstring'::pg_catalog.regtype)\n"
 					  "      AND NOT p.proisagg\n",
 					  _("function"));
 	processNamePattern(&buf, pattern, true, false,
