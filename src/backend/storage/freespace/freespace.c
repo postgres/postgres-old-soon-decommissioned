@@ -490,16 +490,12 @@ static FSMRelation *
 lookup_fsm_rel(RelFileNode *rel)
 {
 	FSMRelation *fsmrel;
-	bool		found;
 
 	fsmrel = (FSMRelation *) hash_search(FreeSpaceMap->relHash,
 										 (void *) rel,
 										 HASH_FIND,
-										 &found);
+										 NULL);
 	if (!fsmrel)
-		elog(ERROR, "FreeSpaceMap hashtable corrupted");
-
-	if (!found)
 		return NULL;
 
 	return fsmrel;
@@ -523,7 +519,7 @@ create_fsm_rel(RelFileNode *rel)
 										 HASH_ENTER,
 										 &found);
 	if (!fsmrel)
-		elog(ERROR, "FreeSpaceMap hashtable corrupted");
+		elog(ERROR, "FreeSpaceMap hashtable out of memory");
 
 	if (!found)
 	{
@@ -584,7 +580,6 @@ static void
 delete_fsm_rel(FSMRelation *fsmrel)
 {
 	FSMRelation *result;
-	bool		found;
 
 	free_chunk_chain(fsmrel->relChunks);
 	unlink_fsm_rel(fsmrel);
@@ -592,8 +587,8 @@ delete_fsm_rel(FSMRelation *fsmrel)
 	result = (FSMRelation *) hash_search(FreeSpaceMap->relHash,
 										 (void *) &(fsmrel->key),
 										 HASH_REMOVE,
-										 &found);
-	if (!result || !found)
+										 NULL);
+	if (!result)
 		elog(ERROR, "FreeSpaceMap hashtable corrupted");
 }
 

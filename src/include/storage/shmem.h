@@ -66,9 +66,9 @@ extern void InitShmemAllocation(void *seghdr);
 extern void *ShmemAlloc(Size size);
 extern bool ShmemIsValid(unsigned long addr);
 extern void InitShmemIndex(void);
-extern HTAB *ShmemInitHash(char *name, long init_size, long max_size,
+extern HTAB *ShmemInitHash(const char *name, long init_size, long max_size,
 			  HASHCTL *infoP, int hash_flags);
-extern void *ShmemInitStruct(char *name, Size size, bool *foundPtr);
+extern void *ShmemInitStruct(const char *name, Size size, bool *foundPtr);
 
 
 /* size constants for the shmem index table */

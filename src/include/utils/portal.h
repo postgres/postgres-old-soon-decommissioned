@@ -61,7 +61,7 @@ typedef struct PortalData
 extern void EnablePortalManager(void);
 extern void AtEOXact_portals(void);
 extern Portal CreatePortal(char *name);
-extern void PortalDrop(Portal *portalP);
+extern void PortalDrop(Portal portal);
 extern Portal GetPortalByName(char *name);
 extern void PortalSetQuery(Portal portal, QueryDesc *queryDesc,
 			   TupleDesc attinfo, EState *state,

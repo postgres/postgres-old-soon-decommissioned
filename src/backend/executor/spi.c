@@ -783,12 +783,10 @@ SPI_cursor_move(Portal portal, bool forward, int count)
 void
 SPI_cursor_close(Portal portal)
 {
-	Portal	my_portal = portal;
-
-	if (!PortalIsValid(my_portal))
+	if (!PortalIsValid(portal))
 		elog(ERROR, "invalid portal in SPI cursor operation");
 
-	PortalDrop(&my_portal);
+	PortalDrop(portal);
 }
 
 /* =================== private functions =================== */

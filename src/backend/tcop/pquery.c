@@ -147,7 +147,7 @@ PreparePortal(char *portalName)
 		 */
 		elog(NOTICE, "Closing pre-existing portal \"%s\"",
 			 portalName);
-		PortalDrop(&portal);
+		PortalDrop(portal);
 	}
 
 	/*
