@@ -1067,7 +1067,8 @@ AC_MSG_ERROR([[
 
 
 # Force use of our snprintf if system's doesn't do arg control
-if test $pgac_need_repl_snprintf = no; then
+# This feature is used by NLS
+if test "$enable_nls" = yes -a $pgac_need_repl_snprintf = no; then
   PGAC_FUNC_PRINTF_ARG_CONTROL
   if test $pgac_cv_printf_arg_control != yes ; then
     pgac_need_repl_snprintf=yes

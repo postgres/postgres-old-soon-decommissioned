@@ -259,6 +259,23 @@ dopr(char *buffer, const char *format, va_list args, char *end)
 						else
 							longflag = 1;
 						goto nextch;
+					/*
+					 *	We might export this to client apps so we should
+					 *	support 'qd' and 'I64d'(MinGW) also in case the
+					 *	native version does.
+					 */
+					case 'q':
+						longlongflag = 1;
+						longflag = 1;
+						goto nextch;
+					case 'I':
+						if (*(format+1) == '6' && *(format+2) == '4')
+						{
+							format += 2;
+							longlongflag = 1;
+							longflag = 1;
+							goto nextch;
+						}					
 					case 'u':
 					case 'U':
 						/* fmtnum(value,base,dosign,ljust,len,zpad,&output) */
