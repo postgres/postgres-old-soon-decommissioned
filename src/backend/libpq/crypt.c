@@ -294,13 +294,6 @@ md5_crypt_verify(const Port *port, const char *user, const char *pgpass)
 	 */
 	switch (port->auth_method)
 	{
-		case uaCrypt:
-		{
-			char salt[3];
-			StrNCpy(salt, port->cryptSalt,3);
-			crypt_pwd = crypt(passwd, salt);
-			break;
-		}
 		case uaMD5:
 			crypt_pwd = palloc(MD5_PASSWD_LEN+1);
 			if (isMD5(passwd))
@@ -334,6 +327,13 @@ md5_crypt_verify(const Port *port, const char *user, const char *pgpass)
 				pfree(crypt_pwd2);
 			}
 			break;
+		case uaCrypt:
+		{
+			char salt[3];
+			StrNCpy(salt, port->cryptSalt,3);
+			crypt_pwd = crypt(passwd, salt);
+			break;
+		}
 		default:
 			crypt_pwd = passwd;
 			break;
