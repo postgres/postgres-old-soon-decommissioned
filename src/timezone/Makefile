@@ -40,4 +40,4 @@ installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(datadir)
 
 clean distclean maintainer-clean:
-	rm -f SUBSYS.o zic $(OBJS) $(ZICOBJS)
+	rm -f SUBSYS.o zic$(X) $(OBJS) $(ZICOBJS)
