@@ -195,8 +195,8 @@ extern int32 pqtest(struct varlena * vlena);
 /* arrayfuncs.c */
 
 /* date.c */
-extern int32 reltimein(char *timestring);
-extern char *reltimeout(int32 timevalue);
+extern RelativeTime reltimein(char *timestring);
+extern char *reltimeout(RelativeTime timevalue);
 extern TimeInterval tintervalin(char *intervalstr);
 extern char *tintervalout(TimeInterval interval);
 extern RelativeTime timespan_reltime(TimeSpan *timespan);
