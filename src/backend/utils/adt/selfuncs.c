@@ -390,18 +390,16 @@ btreesel(Oid operatorObjectId,
 		 Oid indexrelid)
 {
 	float64		result;
-	float64data resultData;
 
 	if (FunctionalSelectivity(nIndexKeys, attributeNumber))
 	{
-
 		/*
 		 * Need to call the functions selectivity function here.  For now
 		 * simply assume it's 1/3 since functions don't currently have
 		 * selectivity functions
 		 */
-		resultData = 1.0 / 3.0;
-		result = &resultData;
+		result = (float64) palloc(sizeof(float64data));
+		*result = 1.0 / 3.0;
 	}
 	else
 	{
