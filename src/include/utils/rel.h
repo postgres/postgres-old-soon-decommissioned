@@ -221,9 +221,10 @@ extern void RelationSetIndexSupport(Relation relation,
  * Handle temp relations
  */
 #define PG_TEMP_REL_PREFIX "pg_temp"
+#define PG_TEMP_REL_PREFIX_LEN 7
 
 #define is_temp_relname(relname) \
-		(strncmp(relname, PG_TEMP_REL_PREFIX, strlen(PG_TEMP_REL_PREFIX)) == 0)
+		(strncmp(relname, PG_TEMP_REL_PREFIX, PG_TEMP_REL_PREFIX_LEN) == 0)
 
 /*
  * RelationGetPhysicalRelationName
@@ -252,12 +253,12 @@ extern void RelationSetIndexSupport(Relation relation,
  */
 #define RelationGetRelationName(relation) \
 (\
-	!is_temp_relname(relation) \
+	is_temp_relname(RelationGetPhysicalRelationName(relation)) \
 	? \
-		RelationGetPhysicalRelationName(relation) \
-	: \
 		get_temp_rel_by_physicalname( \
 			RelationGetPhysicalRelationName(relation)) \
+	: \
+		RelationGetPhysicalRelationName(relation) \
 )
 
 
