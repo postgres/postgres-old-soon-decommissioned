@@ -268,6 +268,7 @@ pqsecure_read(PGconn *conn, void *ptr, size_t len)
 			case SSL_ERROR_NONE:
 				break;
 			case SSL_ERROR_WANT_READ:
+			        n = pqsecure_read(conn, ptr, len);
 				break;
 			case SSL_ERROR_SYSCALL:
 				if (n == -1)
@@ -314,6 +315,7 @@ pqsecure_write(PGconn *conn, const void *ptr, size_t len)
 			case SSL_ERROR_NONE:
 				break;
 			case SSL_ERROR_WANT_WRITE:
+			        n = pqsecure_write(conn, ptr, len);
 				break;
 			case SSL_ERROR_SYSCALL:
 				if (n == -1)
