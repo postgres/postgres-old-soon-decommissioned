@@ -219,7 +219,8 @@ _bt_moveright(Relation rel,
 						if (_bt_skeycmp(rel, keysz, scankey, page,
 										PageGetItemId(page, P_FIRSTKEY),
 										BTEqualStrategyNumber))
-							elog(FATAL, "btree: BTP_CHAIN flag was expected");
+							elog(FATAL, "btree: BTP_CHAIN flag was expected (access = %d)", 
+										access);
 						if (_bt_skeycmp(rel, keysz, scankey, page,
 										PageGetItemId(page, offmax),
 										BTEqualStrategyNumber))
