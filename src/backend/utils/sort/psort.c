@@ -1115,11 +1115,11 @@ _psort_cmp (HeapTuple *ltup, HeapTuple *rtup)
 		
 		if (PsortKeys[nkey].sk_flags & SK_COMMUTE)
 		{
-	    	if (!(result = -(long) (*PsortKeys[nkey].sk_func) (rattr, lattr)))
-			result = (long) (*PsortKeys[nkey].sk_func) (lattr, rattr);
+	    	if (!(result = -(long) (*fmgr_faddr(&PsortKeys[nkey].sk_func)) (rattr, lattr)))
+			result = (long) (*fmgr_faddr(&PsortKeys[nkey].sk_func)) (lattr, rattr);
 		}
-		else if (!(result = -(long) (*PsortKeys[nkey].sk_func) (lattr, rattr)))
-		    result = (long) (*PsortKeys[nkey].sk_func) (rattr, lattr);
+		else if (!(result = -(long) (*fmgr_faddr(&PsortKeys[nkey].sk_func)) (lattr, rattr)))
+		    result = (long) (*fmgr_faddr(&PsortKeys[nkey].sk_func)) (rattr, lattr);
 		nkey++;
     }
     return (result);

@@ -61,7 +61,8 @@ ScanKeyEntryInitialize(ScanKey entry,
 	entry->sk_attno = attributeNumber;
 	entry->sk_procedure = procedure;
 	entry->sk_argument = argument;
-	fmgr_info(procedure, &entry->sk_func, &entry->sk_nargs);
+	fmgr_info(procedure, &entry->sk_func);
+	entry->sk_nargs = entry->sk_func.fn_nargs;
 
 	Assert(ScanKeyEntryIsLegal(entry));
 }

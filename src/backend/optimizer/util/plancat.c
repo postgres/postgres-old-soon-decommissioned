@@ -416,7 +416,8 @@ find_inheritance_children(Oid inhparent)
 	List	   *list = NIL;
 	Oid			inhrelid;
 
-	fmgr_info(F_OIDEQ, &key[0].sk_func, &key[0].sk_nargs);
+	fmgr_info(F_OIDEQ, &key[0].sk_func);
+	key[0].sk_nargs = key[0].sk_func.fn_nargs;
 
 	key[0].sk_argument = ObjectIdGetDatum((Oid) inhparent);
 	relation = heap_openr(InheritsRelationName);
@@ -452,7 +453,8 @@ VersionGetParents(Oid verrelid)
 	Oid			verbaseid;
 	List	   *list = NIL;
 
-	fmgr_info(F_OIDEQ, &key[0].sk_func, &key[0].sk_nargs);
+	fmgr_info(F_OIDEQ, &key[0].sk_func);
+	key[0].sk_nargs = key[0].sk_func.fn_nargs;
 	relation = heap_openr(VersionRelationName);
 	key[0].sk_argument = ObjectIdGetDatum(verrelid);
 	scan = heap_beginscan(relation, 0, false, 1, key);

@@ -677,8 +677,7 @@ _bt_compare(Relation rel,
 		}
 		else
 		{
-			tmpres = (long) FMGR_PTR2(entry->sk_func, entry->sk_procedure,
-									  entry->sk_argument, datum);
+			tmpres = (long) FMGR_PTR2(&entry->sk_func, entry->sk_argument, datum);
 		}
 		result = tmpres;
 

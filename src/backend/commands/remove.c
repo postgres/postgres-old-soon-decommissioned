@@ -277,8 +277,8 @@ RemoveType(char *typeName)		/* type name to be removed */
 #endif
 
 	relation = heap_openr(TypeRelationName);
-	fmgr_info(typeKey[0].sk_procedure, &typeKey[0].sk_func,
-			  &typeKey[0].sk_nargs);
+	fmgr_info(typeKey[0].sk_procedure, &typeKey[0].sk_func);
+	typeKey[0].sk_nargs = typeKey[0].sk_func.fn_nargs;
 
 	/* Delete the primary type */
 
@@ -387,7 +387,8 @@ RemoveFunction(char *functionName,		/* function name to be removed */
 
 	key[0].sk_argument = PointerGetDatum(functionName);
 
-	fmgr_info(key[0].sk_procedure, &key[0].sk_func, &key[0].sk_nargs);
+	fmgr_info(key[0].sk_procedure, &key[0].sk_func);
+	key[0].sk_nargs = key[0].sk_func.fn_nargs;
 
 	relation = heap_openr(ProcedureRelationName);
 	scan = heap_beginscan(relation, 0, false, 1, key);

@@ -1487,8 +1487,7 @@ _bt_isequal(TupleDesc itupdesc, Page page, OffsetNumber offnum,
 		if (entry->sk_flags & SK_ISNULL || null)
 			return (false);
 
-		result = (long) FMGR_PTR2(entry->sk_func, entry->sk_procedure,
-								  entry->sk_argument, datum);
+		result = (long) FMGR_PTR2(&entry->sk_func, entry->sk_argument, datum);
 		if (result != 0)
 			return (false);
 	}

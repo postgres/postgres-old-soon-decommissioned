@@ -826,8 +826,7 @@ ExecMakeFunctionResult(Node *node,
 			if (fcache->nullVect[i] == true)
 				*isNull = true;
 
-		return ((Datum) fmgr_c(fcache->func, fcache->foid, fcache->nargs,
-							   (FmgrValues *) argv, isNull));
+		return ((Datum) fmgr_c(&fcache->func, (FmgrValues *) argv, isNull));
 	}
 }
 

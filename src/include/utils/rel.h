@@ -24,8 +24,7 @@ typedef struct Trigger
 {
 	char	   *tgname;
 	Oid			tgfoid;
-	func_ptr	tgfunc;
-	func_ptr	tgplfunc;
+	FmgrInfo	tgfunc;
 	int16		tgtype;
 	int16		tgnargs;
 	int16		tgattr[8];

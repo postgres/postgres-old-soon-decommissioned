@@ -213,8 +213,8 @@ CatalogCacheInitializeCache(struct catcache * cache,
 				EQPROC(tupdesc->attrs[cache->cc_key[i] - 1]->atttypid);
 
 			fmgr_info(cache->cc_skey[i].sk_procedure,
-					  (func_ptr *) &cache->cc_skey[i].sk_func,
-					  (int *) &cache->cc_skey[i].sk_nargs);
+					  &cache->cc_skey[i].sk_func);
+			cache->cc_skey[i].sk_nargs = cache->cc_skey[i].sk_func.fn_nargs;
 
 			CACHE5_elog(DEBUG, "CatalogCacheInit %16s %d %d %x",
 						&relation->rd_rel->relname,

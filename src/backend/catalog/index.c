@@ -1373,8 +1373,8 @@ UpdateStats(Oid relid, long reltuples, bool hasindex)
 	char		nulls[Natts_pg_class];
 	char		replace[Natts_pg_class];
 
-	fmgr_info(ObjectIdEqualRegProcedure, (func_ptr *) &key[0].sk_func,
-			  &key[0].sk_nargs);
+	fmgr_info(ObjectIdEqualRegProcedure, &key[0].sk_func);
+	key[0].sk_nargs = key[0].sk_func.fn_nargs;
 
 	/* ----------------
 	 * This routine handles updates for both the heap and index relation

@@ -23,7 +23,7 @@ all: SUBSYS.o
 SUBSYS.o: $(OBJS)
 	$(LD) -r -o SUBSYS.o $(OBJS)
 
-heapvalid.o tupdesc.o: ../../fmgr.h
+heaptuple.o heapvalid.o tupdesc.o: ../../fmgr.h
 
 ../../fmgr.h:
 	$(MAKE) -C ../.. fmgr.h

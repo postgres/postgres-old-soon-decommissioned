@@ -17,13 +17,14 @@
 #define SKEY_H
 
 #include <access/attnum.h>
+#include <fmgr.h>
 
 typedef struct ScanKeyData
 {
 	bits16		sk_flags;		/* flags */
 	AttrNumber	sk_attno;		/* domain number */
 	RegProcedure sk_procedure;	/* procedure OID */
-	func_ptr	sk_func;
+	FmgrInfo	sk_func;
 	int32		sk_nargs;
 	Datum		sk_argument;	/* data to compare */
 } ScanKeyData;

@@ -122,7 +122,8 @@ ChangeAcl(char *relname,
 	if (!RelationIsValid(relation))
 		elog(ERROR, "ChangeAcl: could not open '%s'??",
 			 RelationRelationName);
-	fmgr_info(NameEqualRegProcedure, &relkey[0].sk_func, &relkey[0].sk_nargs);
+	fmgr_info(NameEqualRegProcedure, &relkey[0].sk_func);
+	relkey[0].sk_nargs = relkey[0].sk_func.fn_nargs;
 	relkey[0].sk_argument = NameGetDatum(relname);
 	hsdp = heap_beginscan(relation,
 						  0,

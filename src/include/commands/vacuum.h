@@ -78,7 +78,7 @@ typedef struct
 				nonnull_cnt;
 	int32		max_cnt,
 				min_cnt;
-	func_ptr	f_cmpeq,
+	FmgrInfo	f_cmpeq,
 				f_cmplt,
 				f_cmpgt;
 	regproc		outfunc;

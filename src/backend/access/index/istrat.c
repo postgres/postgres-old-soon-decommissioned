@@ -242,22 +242,22 @@ StrategyTermEvaluate(StrategyTerm term,
 		switch (operator->flags ^ entry->sk_flags)
 		{
 			case 0x0:
-				tmpres = (long) FMGR_PTR2(entry->sk_func, entry->sk_procedure,
+				tmpres = (long) FMGR_PTR2(&entry->sk_func, 
 										  left, right);
 				break;
 
 			case SK_NEGATE:
-				tmpres = (long) !FMGR_PTR2(entry->sk_func, entry->sk_procedure,
+				tmpres = (long) !FMGR_PTR2(&entry->sk_func, 
 										   left, right);
 				break;
 
 			case SK_COMMUTE:
-				tmpres = (long) FMGR_PTR2(entry->sk_func, entry->sk_procedure,
+				tmpres = (long) FMGR_PTR2(&entry->sk_func, 
 										  right, left);
 				break;
 
 			case SK_NEGATE | SK_COMMUTE:
-				tmpres = (long) !FMGR_PTR2(entry->sk_func, entry->sk_procedure,
+				tmpres = (long) !FMGR_PTR2(&entry->sk_func,
 										   right, left);
 				break;
 
@@ -521,7 +521,8 @@ OperatorRelationFillScanKeyEntry(Relation operatorRelation,
 	entry->sk_flags = 0;
 	entry->sk_procedure =
 		((OperatorTupleForm) GETSTRUCT(tuple))->oprcode;
-	fmgr_info(entry->sk_procedure, &entry->sk_func, &entry->sk_nargs);
+	fmgr_info(entry->sk_procedure, &entry->sk_func);
+	entry->sk_nargs = entry->sk_func.fn_nargs;
 
 	if (!RegProcedureIsValid(entry->sk_procedure))
 	{
