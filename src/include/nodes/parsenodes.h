@@ -268,6 +268,7 @@ typedef struct FetchStmt
 	int			direction;		/* FORWARD or BACKWARD */
 	int			howMany;		/* amount to fetch ("ALL" --> 0) */
 	char	   *portalname;		/* name of portal (cursor) */
+	bool		ismove;			/* TRUE if MOVE */
 } FetchStmt;
 
 /* ----------------------
@@ -288,19 +289,6 @@ typedef struct IndexStmt
 	bool	   *lossy;			/* is index lossy? */
 	bool		unique;			/* is index unique? */
 } IndexStmt;
-
-/* ----------------------
- *		Move Statement (Not implemented)
- * ----------------------
- */
-typedef struct MoveStmt
-{
-	NodeTag		type;
-	int			direction;		/* FORWARD or BACKWARD */
-	bool		to;
-	int			where;
-	char	   *portalname;
-} MoveStmt;
 
 /* ----------------------
  *		Create Function Statement
