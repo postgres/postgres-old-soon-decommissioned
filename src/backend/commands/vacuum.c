@@ -526,9 +526,7 @@ vc_vacone (Oid relid)
     vc_updstats(vacrelstats->relid, vacrelstats->npages, vacrelstats->ntups,
 			 vacrelstats->hasindex, vacrelstats->vacattrstats);
 
-    /* next command frees everything anyway */
-    if (vacrelstats->vacattrstats != NULL)
-	pfree(vacrelstats);
+    /* next command frees attribute stats */
 
     CommitTransactionCommand();
 }
