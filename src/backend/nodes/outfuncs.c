@@ -1007,8 +1007,7 @@ _outRangeTblEntry(StringInfo str, RangeTblEntry *node)
 	appendStringInfo(str, " :relname ");
 	appendStringInfo(str, node->relname);
 
-	sprintf(buf, " :inh %d ", node->inh);
-	appendStringInfo(str, buf);
+	appendStringInfo(str, " :inh ");
 	appendStringInfo(str, node->inh ? "true" : "false");
 
 	appendStringInfo(str, " :refname ");
