@@ -197,10 +197,12 @@ toast_delete(Relation rel, HeapTuple oldtup)
 	 */
 	for (i = 0; i < numAttrs; i++)
 	{
-		value = heap_getattr(oldtup, i + 1, tupleDesc, &isnull);
-		if (!isnull && att[i]->attlen == -1)
-			if (VARATT_IS_EXTERNAL(value))
+		if (att[i]->attlen == -1)
+		{
+			value = heap_getattr(oldtup, i + 1, tupleDesc, &isnull);
+			if (!isnull && VARATT_IS_EXTERNAL(value))
 				toast_delete_datum(rel, value);
+		}
 	}
 }
 
