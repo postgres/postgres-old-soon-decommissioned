@@ -1771,8 +1771,8 @@ DoBackend(Port *port)
 #endif
 
 	/*
-	 * Pass the requested debugging level along to the backend.  We
-	 * decrement by one; level one debugging in the postmaster traces
+	 * Pass the requested debugging level along to the backend.
+	 * Level one debugging in the postmaster traces
 	 * postmaster connection activity, and levels two and higher are
 	 * passed along to the backend.  This allows us to watch only the
 	 * postmaster or the postmaster and the backend.
