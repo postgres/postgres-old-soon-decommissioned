@@ -3,7 +3,7 @@ $Header$
 -->
 
  <sect1 id="xoper">
-  <title>User-defined Operators</title>
+  <title>User-Defined Operators</title>
 
   <indexterm zone="xoper">
    <primary>operator</primary>
