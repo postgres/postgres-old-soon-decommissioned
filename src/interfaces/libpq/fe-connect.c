@@ -536,7 +536,7 @@ connectDB(PGconn *conn)
 			{
 			const char *val;
 			
-			if(val = getenv(eo->envName))
+			if((val = getenv(eo->envName)))
 				{
 				PGresult *res;
 				
