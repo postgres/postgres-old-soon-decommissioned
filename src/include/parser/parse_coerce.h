@@ -95,6 +95,7 @@ typedef enum CATEGORY
 		|| ((a) == INT4OID && (b) == REGPROCOID) \
 		|| ((a) == REGPROCOID && (b) == OIDOID) \
 		|| ((a) == REGPROCOID && (b) == INT4OID) \
+		|| ((a) == XIDOID && (b) == INT4OID) \
 		|| ((a) == ABSTIMEOID && (b) == INT4OID) \
 		|| ((a) == INT4OID && (b) == ABSTIMEOID) \
 		|| ((a) == RELTIMEOID && (b) == INT4OID) \
