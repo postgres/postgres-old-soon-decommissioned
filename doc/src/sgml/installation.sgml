@@ -900,6 +900,18 @@ JAVACMD=$JAVA_HOME/bin/java
       </varlistentry>
 
       <varlistentry>
+       <term><option>--without-spinlocks</option></term>
+       <listitem>
+        <para>
+         Allows source builds to succeed without CPU spinlock support.
+         Lack of spinlock support will produce poor performance.
+         This option is to be used only by platforms without
+         spinlock support.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term><option>--enable-thread-safety</option></term>
        <listitem>
         <para>
