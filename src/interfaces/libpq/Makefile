@@ -21,7 +21,7 @@ SO_MINOR_VERSION= 1
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -DFRONTEND -DSYSCONFDIR='"$(sysconfdir)"'
 
 OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
-      pqexpbuffer.o pqsignal.o fe-secure.o \
+      fe-protocol2.o fe-protocol3.o pqexpbuffer.o pqsignal.o fe-secure.o \
       dllist.o md5.o ip.o wchar.o encnames.o \
       $(filter crypt.o getaddrinfo.o inet_aton.o snprintf.o strerror.o path.o, $(LIBOBJS))
 

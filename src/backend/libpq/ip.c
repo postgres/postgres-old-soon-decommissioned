@@ -72,27 +72,29 @@ getaddrinfo2(const char *hostname, const char *servname,
 
 
 /*
- *	freeaddrinfo2 - free IPv6 addrinfo structures
+ *	freeaddrinfo2 - free addrinfo structures for IPv4, IPv6, or Unix
  */
 void
-freeaddrinfo2(int hint_ai_family, struct addrinfo *ai)
+freeaddrinfo2(struct addrinfo *ai)
 {
-#ifdef HAVE_UNIX_SOCKETS
-	if (hint_ai_family == AF_UNIX)
+	if (ai != NULL)
 	{
-		struct addrinfo *p;
-
-		while (ai != NULL)
+#ifdef HAVE_UNIX_SOCKETS
+		if (ai->ai_family == AF_UNIX)
 		{
-			p = ai;
-			ai = ai->ai_next;
-			free(p->ai_addr);
-			free(p);
+			while (ai != NULL)
+			{
+				struct addrinfo *p = ai;
+
+				ai = ai->ai_next;
+				free(p->ai_addr);
+				free(p);
+			}
 		}
-	}
-	else
+		else
 #endif   /* HAVE_UNIX_SOCKETS */
-		freeaddrinfo(ai);
+			freeaddrinfo(ai);
+	}
 }
 
 

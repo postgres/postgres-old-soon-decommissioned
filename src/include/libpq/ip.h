@@ -19,7 +19,7 @@
 extern int   getaddrinfo2(const char *hostname, const char *servname,
 						  const struct addrinfo *hintp,
 						  struct addrinfo **result);
-extern void  freeaddrinfo2(int hint_ai_family, struct addrinfo *ai);
+extern void  freeaddrinfo2(struct addrinfo *ai);
 
 extern char *SockAddr_ntop(const SockAddr *sa, char *dst, size_t cnt,
 						   int v4conv);
