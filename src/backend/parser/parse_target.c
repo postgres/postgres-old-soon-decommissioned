@@ -236,11 +236,18 @@ markTargetListOrigins(ParseState *pstate, List *targetlist)
 static void
 markTargetListOrigin(ParseState *pstate, Resdom *res, Var *var)
 {
+	Index		levelsup;
 	RangeTblEntry *rte;
 	AttrNumber	attnum;
 
 	if (var == NULL || !IsA(var, Var))
 		return;
+	levelsup = var->varlevelsup;
+	while (levelsup-- > 0)
+	{
+		pstate = pstate->parentParseState;
+		Assert(pstate != NULL);
+	}
 	Assert(var->varno > 0 &&
 		   (int) var->varno <= length(pstate->p_rtable));
 	rte = rt_fetch(var->varno, pstate->p_rtable);
