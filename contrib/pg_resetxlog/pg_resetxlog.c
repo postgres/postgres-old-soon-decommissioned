@@ -585,8 +585,12 @@ main(int argc, char **argv)
 	{
 		PrintControlValues(guessed);
 		if (!noupdate)
+		{
 			printf("\nIf these values seem acceptable, use -f to force reset.\n");
-		exit(1);
+			exit(1);
+		}
+		else
+			exit(0);
 	}
 
 	/*
