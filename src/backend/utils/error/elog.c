@@ -162,6 +162,12 @@ elog(int lev, const char *fmt,...)
 		pq_putstr(line);
 		pq_flush();
 	}
+	if (Pfout == NULL) {
+	/* There is no socket.  One explanation for this is we are running
+	   as the Postmaster.  So we'll write the message to stderr.
+	 */
+		fputs(line, stderr);
+	}
 #endif							/* !PG_STANDALONE */
 
 	if (lev == WARN)
