@@ -700,19 +700,6 @@ JAVACMD=$JAVA_HOME/bin/java
       </varlistentry>
 
       <varlistentry>
-       <term><option>--enable-recode</option></term>
-       <listitem>
-        <para>
-         Enables single-byte character set recode support. See
-         <![%standalone-include[the documentation]]> <![%standalone-ignore[<xref
-         linkend="recode">]]> about this feature.  Note that a more
-         general form of character set conversion is supported in the
-         default configuration; this feature is obsolete.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry>
        <term><option>--enable-nls<optional>=<replaceable>LANGUAGES</replaceable></optional></option></term>
        <listitem>
         <para>

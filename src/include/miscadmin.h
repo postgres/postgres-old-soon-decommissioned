@@ -238,11 +238,6 @@ extern int FindExec(char *full_path, const char *argv0,
 		 const char *binary_name);
 extern int	CheckPathAccess(char *path, char *name, int open_mode);
 
-#ifdef CYR_RECODE
-extern void SetCharSet(void);
-extern char *convertstr(unsigned char *buff, int len, int dest);
-#endif
-
 /* in utils/misc/superuser.c */
 extern bool superuser(void);	/* current user is superuser */
 extern bool superuser_arg(AclId userid);		/* given user is superuser */

@@ -268,10 +268,6 @@ textin(PG_FUNCTION_ARGS)
 
 	memcpy(VARDATA(result), inputText, len);
 
-#ifdef CYR_RECODE
-	convertstr(VARDATA(result), len, 0);
-#endif
-
 	PG_RETURN_TEXT_P(result);
 }
 
@@ -289,10 +285,6 @@ textout(PG_FUNCTION_ARGS)
 	result = (char *) palloc(len + 1);
 	memcpy(result, VARDATA(t), len);
 	result[len] = '\0';
-
-#ifdef CYR_RECODE
-	convertstr(result, len, 1);
-#endif
 
 	PG_RETURN_CSTRING(result);
 }
