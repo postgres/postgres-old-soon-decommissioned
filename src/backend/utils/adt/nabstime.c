@@ -295,7 +295,7 @@ tryabsdate(char *fields[], int nf, struct tm *tm, int *tzp)
     defined(PORTNAME_aix) || \
     defined(PORTNAME_irix5) || \
     defined(WIN32) || \
-	defined(PORTNAME_sparc_solaris)
+	defined(PORTNAME_sparc_solaris) || defined(PORTNAME_i386_solaris)
 	    tzset();
 #ifndef WIN32
     *tzp = timezone / 60;		/* this is an X/Open-ism */

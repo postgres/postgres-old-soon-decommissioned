@@ -30,14 +30,15 @@
  * atomic test-and-set instruction).  However, we have only written
  * spinlock code for the architectures listed.
  */
-#if defined(PORTNAME_aix) || \
+#if (defined(PORTNAME_aix) || \
     defined(PORTNAME_alpha) || \
     defined(PORTNAME_hpux) || \
     defined(PORTNAME_irix5) || \
     defined(PORTNAME_next) || \
     defined(PORTNAME_sparc) || \
     defined(PORTNAME_sparc_solaris) || \
-    (defined(__i386__) && defined(__GNUC__))
+    (defined(__i386__) && defined(__GNUC__))) && \
+    !defined(PORTNAME_i386_solaris)
 #define HAS_TEST_AND_SET
 #endif
 

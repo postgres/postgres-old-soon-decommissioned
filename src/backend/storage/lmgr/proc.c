@@ -56,7 +56,7 @@
 #include <sys/types.h>
 #include "libpq/pqsignal.h"	/* substitute for <signal.h> */
 
-#if defined(PORTNAME_bsdi)
+#if defined(PORTNAME_bsdi)||defined(PORTNAME_i386_solaris)
 /* hacka, hacka, hacka (XXX) */
 union semun {
 	int val; /* value for SETVAL */
