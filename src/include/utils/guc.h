@@ -51,7 +51,7 @@ void         SetConfigOption(const char * name, const char * value, GucContext c
 const char * GetConfigOption(const char * name);
 void         ProcessConfigFile(GucContext context);
 void         ResetAllOptions(void);
-
+void         ParseLongOption(const char * string, char ** name, char ** value);
 bool         set_config_option(const char * name, const char * value, GucContext context, bool DoIt);
 
 

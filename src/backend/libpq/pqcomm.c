@@ -41,7 +41,6 @@
  *		StreamServerPort	- Open postmaster's server port
  *		StreamConnection	- Create new connection with client
  *		StreamClose			- Close a client/backend connection
- *		pq_getport		- return the PGPORT setting
  *		pq_init			- initialize libpq at backend startup
  *		pq_close		- shutdown libpq at backend exit
  *
