@@ -435,10 +435,10 @@ pg_krb5_sendauth(char *PQerrormsg, int sock,
 
 #endif	 /* KRB5 */
 
-#if defined(HAVE_STRUCT_CMSGCRED) || defined(HAVE_STRUCT_FCRED) || defined(HAVE_STRUCT_SOCKCRED)
 static int
 pg_local_sendauth(char *PQerrormsg, PGconn *conn)
 {
+#if defined(HAVE_STRUCT_CMSGCRED) || defined(HAVE_STRUCT_FCRED) || (defined(HAVE_STRUCT_SOCKCRED) && defined(LOCAL_CREDS))
 	char buf;
 	struct iovec iov;
 	struct msghdr msg;
@@ -485,8 +485,12 @@ pg_local_sendauth(char *PQerrormsg, PGconn *conn)
 		return STATUS_ERROR;
 	}
 	return STATUS_OK;
-}
+#else
+	snprintf(PQerrormsg, PQERRORMSG_LENGTH,
+			 libpq_gettext("SCM_CRED authentication method not supported\n"));
+	return STATUS_ERROR;
 #endif
+}
 
 static int
 pg_password_sendauth(PGconn *conn, const char *password, AuthRequest areq)
@@ -614,14 +618,8 @@ fe_sendauth(AuthRequest areq, PGconn *conn, const char *hostname,
 			break;
 
 		case AUTH_REQ_SCM_CREDS:
-#if defined(HAVE_STRUCT_CMSGCRED) || defined(HAVE_STRUCT_FCRED) || defined(HAVE_STRUCT_SOCKCRED)
 			if (pg_local_sendauth(PQerrormsg, conn) != STATUS_OK)
 				return STATUS_ERROR;
-#else
-			snprintf(PQerrormsg, PQERRORMSG_LENGTH,
-					 libpq_gettext("SCM_CRED authentication method not supported\n"));
-			return STATUS_ERROR;
-#endif
 			break;
 
 		default:

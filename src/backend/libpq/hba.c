@@ -904,7 +904,7 @@ ident_unix(int sock, char *ident_user)
 
 	return true;
 
-#elif defined(HAVE_STRUCT_CMSGCRED) || defined(HAVE_STRUCT_FCRED) || defined(HAVE_STRUCT_SOCKCRED)
+#elif defined(HAVE_STRUCT_CMSGCRED) || defined(HAVE_STRUCT_FCRED) || (defined(HAVE_STRUCT_SOCKCRED) && defined(LOCAL_CREDS))
 	struct msghdr msg;
 
 /* Credentials structure */
