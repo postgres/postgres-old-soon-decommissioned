@@ -1286,12 +1286,11 @@ do_connect(const char *new_dbname, const char *new_user)
 
 	/* need to prompt for password? */
 	if (pset.getPassword)
-		pwparam = prompted_password = simple_prompt("Password: ", 100, false);	/* need to save for
-																				 * free() */
+		pwparam = prompted_password = simple_prompt("Password: ", 100, false);
 
 	/*
-	 * Use old password if no new one given (if you didn't have an old
-	 * one, fine)
+	 * Use old password (if any) if no new one given and we are
+	 * reconnecting as same user
 	 */
 	if (!pwparam && oldconn && PQuser(oldconn) && userparam &&
 		strcmp(PQuser(oldconn), userparam) == 0)
