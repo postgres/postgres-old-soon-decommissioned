@@ -349,7 +349,7 @@ hex_dec_len(uint srclen)
 uint
 b64_enc_len(uint srclen)
 {
-	return srclen + (srclen / 3) + (srclen / (76 / 2));
+	return srclen + (srclen + 2 / 3) + (srclen / (76 / 2)) + 2;
 }
 
 uint
