@@ -28,8 +28,8 @@
 #define	DEFAULT_CLIENT_AUTHSVC	"kerberos"
 #endif /* KRB4 || KRB5 */
 
-extern int fe_sendauth(MsgType msgtype, Port *port, char *hostname, char* PQerromsg);
-extern void fe_setauthsvc(char *name, char* PQerrormsg);
+extern int fe_sendauth(MsgType msgtype, Port *port, const char *hostname, const char* PQerromsg);
+extern void fe_setauthsvc(const char *name, char* PQerrormsg);
 
 #define	PG_KRB4_VERSION	"PGVER4.1"	/* at most KRB_SENDAUTH_VLEN chars */
 #define	PG_KRB5_VERSION	"PGVER5.1"

@@ -31,7 +31,7 @@
 standard function? (My, my. Touchy today, are we?) */
 static
 char *
-strdup(char *string)
+strdup(const char *string)
 {
     char *nstr;
 
@@ -64,10 +64,10 @@ static void closePGconn(PGconn *conn);
  * ----------------
  */
 PGconn* 
-PQsetdb(char *pghost, char* pgport, char* pgoptions, char* pgtty, char* dbName)
+PQsetdb(const char *pghost, const char* pgport, const char* pgoptions, const char* pgtty, const char* dbName)
 {
     PGconn *conn;
-    char *tmp;
+    const char *tmp;
 
     conn = (PGconn*)malloc(sizeof(PGconn));
 
