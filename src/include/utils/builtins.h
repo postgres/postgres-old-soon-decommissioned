@@ -511,20 +511,16 @@ extern text *translate(text *string, char from, char to);
 
 /* inet_net_ntop.c */
 char *inet_net_ntop(int af, const void *src, int bits, char *dst, size_t size);
+char *inet_cidr_ntop(int af, const void *src, int bits, char *dst, size_t size);
 
 /* inet_net_pton.c */
 int inet_net_pton(int af, const char *src, void *dst, size_t size);
 
-char *inet_cidr_ntop(int af, const void *src, size_t len, int bits, char *dst, size_t size);
-int inet_cidr_pton(int af, const void *src, void *dst, size_t size, int *used);
-
-/* cidr.c */
-inet	   *cidr_in(char *str);
-char	   *cidr_out(inet *addr);
-
 /* inet.c */
 inet	   *inet_in(char *str);
 char	   *inet_out(inet * addr);
+inet	   *cidr_in(char *str);
+char	   *cidr_out(inet *addr);
 bool		inet_lt(inet * a1, inet * a2);
 bool		inet_le(inet * a1, inet * a2);
 bool		inet_eq(inet * a1, inet * a2);
