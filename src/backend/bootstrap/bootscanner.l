@@ -44,7 +44,11 @@
 /* #include "bootstrap_tokens.h" */
 
 
-int		yyline;  /* keep track of the line number for error reporting */
+/* Avoid exit() on fatal scanner errors (a bit ugly -- see yy_fatal_error) */
+#define fprintf(file, fmt, msg)  ereport(ERROR, (errmsg_internal("%s", msg)))
+
+
+static int	yyline;  /* keep track of the line number for error reporting */
 
 %}
 

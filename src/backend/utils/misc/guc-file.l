@@ -21,6 +21,9 @@
 #include "utils/elog.h"
 #include "utils/guc.h"
 
+/* Avoid exit() on fatal scanner errors (a bit ugly -- see yy_fatal_error) */
+#define fprintf(file, fmt, msg)  ereport(ERROR, (errmsg_internal("%s", msg)))
+
 #define CONFIG_FILENAME "postgresql.conf"
 
 static unsigned ConfigFileLineno;
