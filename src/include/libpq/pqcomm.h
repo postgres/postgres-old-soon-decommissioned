@@ -110,6 +110,7 @@ typedef uint32 PacketLen;
  * there is room.
  */
 
+/* These should all be of near-unlimited length, perhap 10k */
 #define SM_DATABASE		64
 /* SM_USER should be the same size as the others.  bjm 2002-06-02 */
 #define SM_USER			32
