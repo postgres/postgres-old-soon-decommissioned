@@ -74,7 +74,7 @@
 
    <para>
     <command>pg_restore</command> accepts the following command
-    line arguments.  (Long option forms are only available on some platforms.)
+    line arguments.
 
     <variablelist>
      <varlistentry>

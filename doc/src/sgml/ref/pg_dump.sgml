@@ -537,10 +537,6 @@ PostgreSQL documentation
      </varlistentry>
     </variablelist>
    </para>
-
-  <para>
-   Long option forms are only available on some platforms.
-  </para>
  </refsect1>
 
  <refsect1>

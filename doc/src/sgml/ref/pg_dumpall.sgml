@@ -223,10 +223,6 @@ PostgreSQL documentation
      </varlistentry>
    </variablelist>
   </para>
-
-  <para>
-   Long options are only available on some platforms.
-  </para>
  </refsect1>
 
 

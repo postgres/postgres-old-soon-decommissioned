@@ -446,10 +446,6 @@ PostgreSQL documentation
       </listitem>
     </varlistentry>
   </variablelist>
-
-  <para>
-   Long options are not available on all platforms.
-  </para>
  </refsect1>
 
 

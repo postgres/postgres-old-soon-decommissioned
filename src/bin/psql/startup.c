@@ -21,6 +21,11 @@
 #include <getopt.h>
 #endif
 
+#ifndef HAVE_GETOPT_LONG
+#include "getopt_long.h"
+int optreset;
+#endif
+
 #include <locale.h>
 
 #include "libpq-fe.h"
@@ -312,18 +317,9 @@ main(int argc, char *argv[])
  * Parse command line options
  */
 
-#ifdef WIN32
-/* getopt is not in the standard includes on Win32 */
-int			getopt(int, char *const[], const char *);
-
-/* And it requires progname to be set */
-char	   *__progname = "psql";
-#endif
-
 static void
 parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 {
-#ifdef HAVE_GETOPT_LONG
 	static struct option long_options[] =
 	{
 		{"echo-all", no_argument, NULL, 'a'},
@@ -359,8 +355,6 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 	};
 
 	int			optindex;
-#endif   /* HAVE_GETOPT_LONG */
-
 	extern char *optarg;
 	extern int	optind;
 	int			c;
@@ -368,16 +362,8 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 
 	memset(options, 0, sizeof *options);
 
-#ifdef HAVE_GETOPT_LONG
-	while ((c = getopt_long(argc, argv, "aAc:d:eEf:F:h:Hlno:p:P:qR:sStT:uU:v:VWxX?", long_options, &optindex)) != -1)
-#else							/* not HAVE_GETOPT_LONG */
-
-	/*
-	 * Be sure to leave the '-' in here, so we can catch accidental long
-	 * options.
-	 */
-	while ((c = getopt(argc, argv, "aAc:d:eEf:F:h:Hlno:p:P:qR:sStT:uU:v:VWxX?-")) != -1)
-#endif   /* not HAVE_GETOPT_LONG */
+	while ((c = getopt_long(argc, argv, "aAc:d:eEf:F:h:Hlno:p:P:qR:sStT:uU:v:VWxX?",
+							long_options, &optindex)) != -1)
 	{
 		switch (c)
 		{
@@ -541,20 +527,6 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 					exit(EXIT_FAILURE);
 				}
 				break;
-#ifndef HAVE_GETOPT_LONG
-
-				/*
-				 * FreeBSD has a broken getopt that causes this test to
-				 * fail.
-				 */
-			case '-':
-				fprintf(stderr,
-						gettext("%s was compiled without support for long options.\n"
-						 "Use --help for help on invocation options.\n"),
-						pset.progname);
-				exit(EXIT_FAILURE);
-				break;
-#endif
 			default:
 				fprintf(stderr, gettext("Try '%s --help' for more information.\n"),
 						pset.progname);
