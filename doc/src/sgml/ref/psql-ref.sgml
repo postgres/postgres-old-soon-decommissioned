@@ -899,6 +899,15 @@ lo_import 152801
 	  </varlistentry>
 
 	  <varlistentry>
+	  <term><literal>footer</literal></term>
+	  <listitem>
+	  <para>
+	  Toggles the display of the default footer <literal>(x rows)</literal>.
+	  </para>
+	  </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
 	  <term><literal>recordsep</literal></term>
 	  <listitem>
 	  <para>

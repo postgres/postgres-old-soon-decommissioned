@@ -1796,6 +1796,18 @@ do_pset(const char *param, const char *value, printQueryOpt *popt, bool quiet)
 		}
 	}
 
+	/* disable "(x rows)" footer */
+	else if (strcmp(param, "footer") == 0)
+	{
+		popt->default_footer = !popt->default_footer;
+		if (!quiet)
+		{
+			if (popt->default_footer)
+				puts("Default footer is on.");
+			else
+				puts("Default footer is off.");
+		}
+	}
 
 	else
 	{

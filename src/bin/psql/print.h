@@ -64,6 +64,7 @@ typedef struct _printQueryOpt
 	char	   *title;			/* override title */
 	char	  **footers;		/* override footer (default is "(xx
 								 * rows)") */
+	bool		default_footer;	/* print default footer if footers==NULL */
 } printQueryOpt;
 
 /*
@@ -72,7 +73,7 @@ typedef struct _printQueryOpt
  * It calls the printTable above with all the things set straight.
  */
 void
-			printQuery(const PGresult *result, const printQueryOpt *opt, FILE *fout);
+printQuery(const PGresult *result, const printQueryOpt *opt, FILE *fout);
 
 
 #endif	 /* PRINT_H */

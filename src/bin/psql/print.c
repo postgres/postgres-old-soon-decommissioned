@@ -1058,7 +1058,7 @@ printQuery(const PGresult *result, const printQueryOpt *opt, FILE *fout)
 
 	if (opt->footers)
 		footers = opt->footers;
-	else if (!opt->topt.expanded)
+	else if (!opt->topt.expanded && opt->default_footer)
 	{
 		footers = calloc(2, sizeof(*footers));
 		if (!footers)
