@@ -84,16 +84,20 @@ typedef struct Query
  *****************************************************************************/
 
 /* ----------------------
- *		Add Column Statement
+ *	Alter Table
  * ----------------------
  */
-typedef struct AddAttrStmt
+/* The fields are used in different ways by the different variants of this command */
+typedef struct AlterTableStmt
 {
 	NodeTag		type;
-	char	   *relname;		/* the relation to add attr */
-	bool		inh;			/* add recursively to children? */
-	Node	   *colDef;			/* the attribute definition */
-} AddAttrStmt;
+    char        subtype;        /* A = add, T = alter, D = drop, C = add constr, X = drop constr */
+	char	   *relname;        /* table to work on */
+	bool		inh;			/* recursively on children? */
+    char       *name;           /* column or constraint name to act on */
+    Node       *def;            /* definition of new column or constraint */
+    int         behavior;       /* CASCADE or RESTRICT drop behavior */
+} AlterTableStmt;
 
 /* ----------------------
  *		Change ACL Statement

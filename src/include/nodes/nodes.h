@@ -145,7 +145,7 @@ typedef enum NodeTag
 	T_DeleteStmt,
 	T_UpdateStmt,
 	T_SelectStmt,
-	T_AddAttrStmt,
+    T_AlterTableStmt,
 	T_AggregateStmt,
 	T_ChangeACLStmt,
 	T_ClosePortalStmt,

@@ -68,7 +68,7 @@ bootscanner.c: bootscanner.l
 	rm -f lex.yy.c sedfile
 
 clean:
-	rm -f SUBSYS.o $(OBJS) bootparse.c bootstrap_tokens.h bootscanner.c
+	rm -f SUBSYS.o $(OBJS)
 # And the garbage that might have been left behind by partial build:
 	rm -f y.tab.h y.tab.c y.output lex.yy.c
 

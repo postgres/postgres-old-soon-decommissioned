@@ -444,8 +444,8 @@ pg_aclcheck(char *relname, char *usename, AclMode mode)
 }
 
 int32
-pg_ownercheck(char *usename,
-			  char *value,
+pg_ownercheck(const char *usename,
+			  const char *value,
 			  int cacheid)
 {
 	HeapTuple	tuple;
