@@ -15,7 +15,7 @@ MKDIR=	../../mk
 include $(MKDIR)/postgres.mk
 include ../Makefile.global
 
-CFLAGS+=  -I$(TCL_INCDIR) -I$(TK_INCDIR)
+CFLAGS+=  -I$(TCL_INCDIR) -I$(TK_INCDIR) -I$(X11_INCDIR) -I$(srcdir)/libpgtcl
 
 # try to find libpgtcl.a in either directory
 LIBPGTCL= -L$(srcdir)/libpgtcl/$(objdir) -L$(LIBDIR) -lpgtcl
@@ -26,7 +26,7 @@ pgtclsh: $(objdir)/pgtclAppInit.o
 
 pgtksh: $(objdir)/pgtkAppInit.o
 	$(CC) $(CDEBUG) -o $(objdir)/$(@F) $(objdir)/pgtkAppInit.o \
-	$(LIBPGTCL) $(LIBPQ) -L$(TCL_LIBDIR) -L$(TK_LIBDIR) \
+	$(LIBPGTCL) $(LIBPQ) -L$(TCL_LIBDIR) -L$(TK_LIBDIR) -L$(X11_LIBDIR) \
 	$(TK_LIB) $(TCL_LIB) -lX11 -lm $(LD_ADD)
 
 install::	localobj pgtclsh pgtksh

@@ -20,7 +20,7 @@
 #ifndef WIN32
 #include <unistd.h>
 #endif
-#ifdef PORTNAME_sparc_solaris
+#if defined(PORTNAME_sparc_solaris) || defined(PORTNAME_i386_solaris)
 #include <netdb.h>	/* for MAXHOSTNAMELEN on some */
 #endif
 #include <sys/types.h>

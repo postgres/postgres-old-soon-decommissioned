@@ -11,20 +11,25 @@
 #
 #-------------------------------------------------------------------------
 
+MKDIR=../mk
+-include $(MKDIR)/../Makefile.global
+
 #
 # C programs
 #
 SUBDIR=  monitor pg_id pg_version psql pg_dump
 
+#
+# Shell scripts
+# 
+SUBDIR+= cleardbdir createdb createuser destroydb destroyuser initdb 
+
+#
+# TCL/TK programs
+#
 ifeq ($(USE_TCL), true)
 SUBDIR += pgtclsh
 endif
 
-#
-# Shell scripts
-#
-SUBDIR+= cleardbdir createdb createuser destroydb destroyuser initdb 
-
-
-include ../mk/postgres.subdir.mk
+include $(MKDIR)/postgres.subdir.mk
 
