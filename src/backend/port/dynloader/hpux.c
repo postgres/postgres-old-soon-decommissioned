@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <a.out.h>
 #include <dl.h>
-#include "c.h"
+#include "postgres.h"
 #include "fmgr.h"
 #include "utils/dynamic_loader.h"
 #include "dynloader.h"

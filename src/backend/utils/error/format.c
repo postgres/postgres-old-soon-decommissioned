@@ -13,7 +13,7 @@
  */
 #include <stdio.h>
 #include <stdarg.h>
-#include "c.h"
+#include "postgres.h"
 
 #define FormMaxSize		1024
 #define FormMinSize		(FormMaxSize / 8)

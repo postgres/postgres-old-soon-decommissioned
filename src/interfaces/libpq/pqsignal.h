@@ -17,7 +17,7 @@
 #ifndef PQSIGNAL_H
 #define PQSIGNAL_H
 
-#include "c.h"
+#include "postgres.h"
 
 typedef void (*pqsigfunc) (int);
 

@@ -17,7 +17,7 @@
 #include <postgres.h>
 #include "dl.h"
 #include <utils/dynamic_loader.h>
-#include "c.h"
+#include "postgres.h"
 #include "fmgr.h"
 #include "port-protos.h"
 #include "utils/elog.h"

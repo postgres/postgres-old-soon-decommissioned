@@ -15,7 +15,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "c.h"
+#include "postgres.h"
 
 #include "utils/memutils.h"		/* where declarations of this file goes */
 

@@ -23,7 +23,7 @@
 #include <netinet/in.h>
 #endif
 
-#include "c.h"
+#include "postgres.h"
 
 /* Define a generic socket address type. */
 
