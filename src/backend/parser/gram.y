@@ -4116,17 +4116,29 @@ PreparableStmt:
 
 /*****************************************************************************
  *
- *		QUERY:
- *				EXECUTE <plan_name> [(params, ...)] [INTO ...]
+ * EXECUTE <plan_name> [(params, ...)]
+ * CREATE TABLE <name> AS EXECUTE <plan_name> [(params, ...)]
  *
  *****************************************************************************/
 
-ExecuteStmt: EXECUTE name execute_param_clause into_clause
+ExecuteStmt: EXECUTE name execute_param_clause
 				{
 					ExecuteStmt *n = makeNode(ExecuteStmt);
 					n->name = $2;
 					n->params = $3;
+					n->into = NULL;
+					$$ = (Node *) n;
+				}
+			| CREATE OptTemp TABLE qualified_name OptCreateAs AS EXECUTE name execute_param_clause
+				{
+					ExecuteStmt *n = makeNode(ExecuteStmt);
+					n->name = $8;
+					n->params = $9;
+					$4->istemp = $2;
 					n->into = $4;
+					if ($5)
+						elog(ERROR, "column name list not allowed in CREATE TABLE / AS EXECUTE");
+					/* ... because it's not implemented, but it could be */
 					$$ = (Node *) n;
 				}
 		;
