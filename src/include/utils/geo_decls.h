@@ -20,7 +20,6 @@
 #define GEO_DECLS_H
 
 #include "access/attnum.h"
-#include "postgres.h"   /* float8 */
 
 /*#ifndef FmgrIncluded -- seems like always included. (it's FMgrIncluded) AY */
 
