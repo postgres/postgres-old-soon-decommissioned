@@ -6,9 +6,12 @@
 explain \(em explains statement execution details
 .SH SYNOPSIS
 .nf
-\fBexplain [with\fP \fB{cost|full}]\fR query
+\fBexplain [with\fP \fB{cost|plan|full}]\fR query
 .fi
 .SH DESCRIPTION
 This command outputs details about the supplied query.  The default
-output is the computed query cost.  \f2full\f1 displays a full query plan
-and cost.
+output is the computed query cost.  \f2plan\f1 displays the full query
+plan. \f2full\f1 display both query plan and query cost.
+.PP
+The query cost and plan can be affected by running vacuum.
+
