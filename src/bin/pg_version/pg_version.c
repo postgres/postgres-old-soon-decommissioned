@@ -16,6 +16,8 @@
 int Noversion = 0;
 char *DataDir = (char *) NULL;
 
+extern void SetPgVersion(const char *);
+
 int
 main(int argc, char **argv)
 {
@@ -24,12 +26,14 @@ main(int argc, char **argv)
 	exit(1);
     }
     SetPgVersion(argv[1]);
-    exit(0);
+    return(0);
 }
 
-elog() {}
+void
+elog(void) {}
 
-GetDataHome()
+int
+GetDataHome(void)
 {
 	return(0);
 }
