@@ -47,8 +47,7 @@ extern List *expand_indexqual_conditions(List *indexquals);
  * orindxpath.c
  *	  additional routines for indexable OR clauses
  */
-extern void create_or_index_paths(Query *root, RelOptInfo *rel,
-					  List *clauses);
+extern void create_or_index_paths(Query *root, RelOptInfo *rel);
 
 /*
  * tidpath.h
