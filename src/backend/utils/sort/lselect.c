@@ -26,15 +26,6 @@
 #include "utils/psort.h"
 #include "utils/lselect.h"
 
-#define PUTTUP(TUP, FP) fwrite((char *)TUP, (TUP)->t_len, 1, FP)
-
-/*
- *		USEMEM			- record use of memory
- *		FREEMEM			- record freeing of memory
- */
-#define USEMEM(context,AMT)		context->sortMem -= (AMT)
-#define FREEMEM(context,AMT)	context->sortMem += (AMT)
-
 /*
  *		lmerge			- merges two leftist trees into one
  *
@@ -149,8 +140,7 @@ gettuple(struct leftist ** treep,
 	else
 		*treep = lmerge(tp->lt_left, tp->lt_right, context);
 
-	FREEMEM(context, sizeof(struct leftist));
-	FREE(tp);
+	pfree (tp);
 	return (tup);
 }
 
@@ -173,7 +163,6 @@ puttuple(struct leftist ** treep,
 	register struct leftist *tp;
 
 	new1 = (struct leftist *) palloc((unsigned) sizeof(struct leftist));
-	USEMEM(context, sizeof(struct leftist));
 	new1->lt_dist = 1;
 	new1->lt_devnum = devnum;
 	new1->lt_tuple = newtuple;
