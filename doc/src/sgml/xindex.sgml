@@ -1,3 +1,8 @@
+<!--
+$Header$
+Postgres documentation
+-->
+
  <chapter id="xindex">
   <title>Interfacing Extensions To Indices</title>
 
