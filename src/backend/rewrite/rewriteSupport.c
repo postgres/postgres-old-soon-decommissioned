@@ -20,13 +20,50 @@
 #include "rewrite/rewriteSupport.h"
 #include "utils/syscache.h"
 
+#ifdef MULTIBYTE
+#include "mb/pg_wchar.h"
+#endif
 
+
+/*
+ * Is there a rule by the given name?
+ */
 bool
-IsDefinedRewriteRule(char *ruleName)
+IsDefinedRewriteRule(const char *ruleName)
 {
 	return SearchSysCacheExists(RULENAME,
 								PointerGetDatum(ruleName),
 								0, 0, 0);
+}
+
+/*
+ * makeViewRetrieveRuleName
+ *
+ * Given a view name, returns the name for the associated ON SELECT rule.
+ *
+ * XXX this is not the only place in the backend that knows about the _RET
+ * name-forming convention.
+ */
+char *
+MakeRetrieveViewRuleName(const char *viewName)
+{
+	char	   *buf;
+	int			buflen,
+				maxlen;
+
+	buflen = strlen(viewName) + 5;
+	buf = palloc(buflen);
+	snprintf(buf, buflen, "_RET%s", viewName);
+	/* clip to less than NAMEDATALEN bytes, if necessary */
+#ifdef MULTIBYTE
+	maxlen = pg_mbcliplen(buf, strlen(buf), NAMEDATALEN - 1);
+#else
+	maxlen = NAMEDATALEN - 1;
+#endif
+	if (maxlen < buflen)
+		buf[maxlen] = '\0';
+
+	return buf;
 }
 
 /*
