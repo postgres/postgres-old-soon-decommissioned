@@ -686,7 +686,14 @@ MsgType
 fe_getauthsvc(char *PQerrormsg)
 {
 	if (pg_authsvc < 0 || pg_authsvc >= n_authsvcs)
+	{
 		fe_setauthsvc(DEFAULT_CLIENT_AUTHSVC, PQerrormsg);
+		if (pg_authsvc < 0 || pg_authsvc >= n_authsvcs)
+		{
+			/* Can only get here if DEFAULT_CLIENT_AUTHSVC is misdefined */
+			return 0;
+		}
+	}
 	return authsvcs[pg_authsvc].msgtype;
 }
 
@@ -703,6 +710,10 @@ fe_getauthname(char *PQerrormsg)
 	MsgType		authsvc;
 
 	authsvc = fe_getauthsvc(PQerrormsg);
+
+	/* this just guards against broken DEFAULT_CLIENT_AUTHSVC, see above */
+	if (authsvc == 0)
+		return NULL;			/* leave original error message in place */
 
 #ifdef KRB4
 	if (authsvc == STARTUP_KRB4_MSG)
