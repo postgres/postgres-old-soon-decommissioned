@@ -102,9 +102,12 @@ $(SQLSCRIPT): Makefile
 		echo "CREATE DEFAULT CONVERSION pg_catalog.$$name FOR '$$se' TO '$$de' FROM $$func;"; \
 	done > $@
 
-install:
-	$(INSTALL_DATA) $(SQLSCRIPT) $(datadir)
+install: all installdirs
+	$(INSTALL_DATA) $(SQLSCRIPT) $(DESTDIR)$(datadir)
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
+
+installdirs:
+	$(mkinstalldirs) $(DESTDIR)$(pkglibdir)
 
 all: $(SQLSCRIPT)
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
