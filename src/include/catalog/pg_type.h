@@ -397,9 +397,9 @@ DESCR("hh:mm:ss, ANSI SQL time");
 DATA(insert OID = 1270 ( _timetz	 PGUID	-1 -1 f b t \054 0	1266 array_in array_out array_in array_out d x _null_ ));
 
 /* OIDS 1500 - 1599 */
-DATA(insert OID = 1560 ( bit		 PGUID -1  -1 f b t \054 0	0 zpbit_in zpbit_out zpbit_in zpbit_out i x _null_ ));
+DATA(insert OID = 1560 ( bit		 PGUID -1  -1 f b t \054 0	0 bit_in bit_out bit_in bit_out i x _null_ ));
 DESCR("fixed-length bit string");
-#define ZPBITOID	 1560
+#define BITOID	 1560
 DATA(insert OID = 1561 ( _bit		 PGUID	-1 -1 f b t \054 0	1560 array_in array_out array_in array_out i x _null_ ));
 DATA(insert OID = 1562 ( varbit		 PGUID -1  -1 f b t \054 0	0 varbit_in varbit_out varbit_in varbit_out i x _null_ ));
 DESCR("variable-length bit string");

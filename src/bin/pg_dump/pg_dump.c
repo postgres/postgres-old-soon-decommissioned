@@ -556,7 +556,7 @@ dumpClasses_dumpData(Archive *fout, char *oid, void *dctxv)
 					archprintf(fout, "%s",
 							   PQgetvalue(res, tuple, field));
 					break;
-				case ZPBITOID:
+				case BITOID:
 				case VARBITOID:
 					archprintf(fout, "B'%s'",
 							   PQgetvalue(res, tuple, field));

@@ -69,7 +69,7 @@ typedef enum CATEGORY
 		|| ((t) == CIRCLEOID) \
 		|| ((t) == INETOID) \
 		|| ((t) == CIDROID) \
-		|| ((t) == ZPBITOID) \
+		|| ((t) == BITOID) \
 		|| ((t) == VARBITOID) )
 
 
@@ -101,8 +101,8 @@ typedef enum CATEGORY
 		|| ((a) == INT4OID && (b) == RELTIMEOID) \
 		|| ((a) == INETOID && (b) == CIDROID) \
 		|| ((a) == CIDROID && (b) == INETOID) \
-		|| ((a) == ZPBITOID && (b) == VARBITOID) \
-		|| ((a) == VARBITOID && (b) == ZPBITOID))
+		|| ((a) == BITOID && (b) == VARBITOID) \
+		|| ((a) == VARBITOID && (b) == BITOID))
 
 /* IS_HIGHER_TYPE()
  * These types are the most general in each of the type categories.

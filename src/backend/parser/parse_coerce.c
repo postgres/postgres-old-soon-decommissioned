@@ -452,7 +452,7 @@ TypeCategory(Oid inType)
 			result = STRING_TYPE;
 			break;
 
-		case (ZPBITOID):
+		case (BITOID):
 		case (VARBITOID):
 			result = BITSTRING_TYPE;
 			break;

@@ -473,11 +473,11 @@ make_const(Value *value)
 			break;
 
 		case T_BitString:
-			val = DirectFunctionCall3(zpbit_in,
+			val = DirectFunctionCall3(bit_in,
 									  CStringGetDatum(strVal(value)),
 									  ObjectIdGetDatum(InvalidOid),
 									  Int32GetDatum(-1));
-			typeid = ZPBITOID;
+			typeid = BITOID;
 			typelen = -1;
 			typebyval = false;
 			break;
