@@ -1542,11 +1542,16 @@ _copyQuery(Query *from)
 	Node_Copy(from, newnode, havingQual); /* currently ignored */
 
 	newnode->qry_numAgg = from->qry_numAgg;
-	newnode->qry_aggs =
-		(Aggreg **) palloc(sizeof(Aggreg *) * from->qry_numAgg);
-	for (i=0; i < from->qry_numAgg; i++)
-		newnode->qry_aggs[i] = _copyAggreg(from->qry_aggs[i]);
-
+	if (from->qry_numAgg != NULL)
+	{
+		newnode->qry_aggs =
+			(Aggreg **) palloc(sizeof(Aggreg *) * from->qry_numAgg);
+		for (i=0; i < from->qry_numAgg; i++)
+			newnode->qry_aggs[i] = _copyAggreg(from->qry_aggs[i]);
+	}
+	else
+		newnode->query_aggs = NULL;
+		
 	return newnode;
 }
 
