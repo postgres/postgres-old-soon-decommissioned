@@ -124,14 +124,14 @@ next_token(FILE *fp, char *buf, const int bufsz)
 
 			if (buf >= end_buf)
 			{
+				*buf = '\0';
 				ereport(LOG,
 						(errcode(ERRCODE_CONFIG_FILE_ERROR),
 						 errmsg("authentication file token too long, skipping: \"%s\"",
-								buf)));
+								start_buf)));
 				/* Discard remainder of line */
 				while ((c = getc(fp)) != EOF && c != '\n')
 					;
-				buf[0] = '\0';
 				break;
 			}
 
