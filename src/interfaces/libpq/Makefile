@@ -46,7 +46,7 @@ backend_src = $(top_srcdir)/src/backend
 # For port modules, this only happens if configure decides the module
 # is needed (see filter hack in OBJS, above).
 
-crypt.c getaddrinfo.c inet_aton.c snprintf.c strerror.c path.c thread.c: %.c : $(top_srcdir)/src/port/%.c
+crypt.c getaddrinfo.c inet_aton.c snprintf.c strerror.c path.c thread.c: % : $(top_srcdir)/src/port/%
 	rm -f $@ && $(LN_S) $< .
 
 dllist.c: $(backend_src)/lib/dllist.c
