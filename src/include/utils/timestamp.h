@@ -218,15 +218,15 @@ extern Datum interval_accum(PG_FUNCTION_ARGS);
 extern Datum interval_avg(PG_FUNCTION_ARGS);
 
 extern Datum timestamp_mi(PG_FUNCTION_ARGS);
-extern Datum timestamp_pl_span(PG_FUNCTION_ARGS);
-extern Datum timestamp_mi_span(PG_FUNCTION_ARGS);
+extern Datum timestamp_pl_interval(PG_FUNCTION_ARGS);
+extern Datum timestamp_mi_interval(PG_FUNCTION_ARGS);
 extern Datum timestamp_age(PG_FUNCTION_ARGS);
 extern Datum overlaps_timestamp(PG_FUNCTION_ARGS);
 
 extern Datum timestamptz_text(PG_FUNCTION_ARGS);
 extern Datum text_timestamptz(PG_FUNCTION_ARGS);
-extern Datum timestamptz_pl_span(PG_FUNCTION_ARGS);
-extern Datum timestamptz_mi_span(PG_FUNCTION_ARGS);
+extern Datum timestamptz_pl_interval(PG_FUNCTION_ARGS);
+extern Datum timestamptz_mi_interval(PG_FUNCTION_ARGS);
 extern Datum timestamptz_age(PG_FUNCTION_ARGS);
 extern Datum timestamptz_trunc(PG_FUNCTION_ARGS);
 extern Datum timestamptz_part(PG_FUNCTION_ARGS);
@@ -245,6 +245,10 @@ extern int	tm2interval(struct tm * tm, fsec_t fsec, Interval *span);
 
 extern Timestamp SetEpochTimestamp(void);
 extern void GetEpochTime(struct tm * tm);
+
+extern int	timestamp_cmp_internal(Timestamp dt1, Timestamp dt2);
+/* timestamp comparison works for timestamptz also */
+#define timestamptz_cmp_internal(dt1,dt2)	timestamp_cmp_internal(dt1, dt2)
 
 extern void isoweek2date(int woy, int *year, int *mon, int *mday);
 extern int	date2isoweek(int year, int mon, int mday);
