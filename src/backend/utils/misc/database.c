@@ -267,9 +267,7 @@ GetRawDatabaseInfo(char *name, Oid *owner, Oid *db_id, char *path)
 			 */
 			tup_db = (Form_pg_database) GETSTRUCT(tup);
 
-			if (strncmp(name,
-						&(tup_db->datname.data[0]),
-						16) == 0)
+			if (strcmp(name, tup_db->datname.data) == 0)
 			{
 				*db_id = tup->t_oid;
 				strncpy(path, VARDATA(&(tup_db->datpath)),

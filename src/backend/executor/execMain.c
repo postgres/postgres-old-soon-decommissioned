@@ -606,16 +606,6 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 
 	estate->es_into_relation_descriptor = intoRelationDesc;
 
-	/* ----------------
-	 *	return the type information..
-	 * ----------------
-	 */
-/*
-	attinfo = (AttrInfo *)palloc(sizeof(AttrInfo));
-	attinfo->numAttr = len;
-	attinfo->attrs = tupType->attrs;
-*/
-
 	return tupType;
 }
 

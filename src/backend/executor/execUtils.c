@@ -309,8 +309,7 @@ ExecFreeResultType(CommonState *commonstate)
 	slot = commonstate->cs_ResultTupleSlot;
 	tupType = slot->ttc_tupleDescriptor;
 
-/*	  ExecFreeTypeInfo(tupType); */
-	pfree(tupType);
+	ExecFreeTypeInfo(tupType);
 }
 
 #endif
@@ -407,8 +406,7 @@ ExecFreeScanType(CommonScanState *csstate)
 	slot = csstate->css_ScanTupleSlot;
 	tupType = slot->ttc_tupleDescriptor;
 
-/*	  ExecFreeTypeInfo(tupType); */
-	pfree(tupType);
+	ExecFreeTypeInfo(tupType);
 }
 
 #endif

@@ -139,7 +139,7 @@ mdcreate(Relation reln)
 				vfd;
 	char	   *path;
 
-	path = relpath(&(reln->rd_rel->relname.data[0]));
+	path = relpath(reln->rd_rel->relname.data);
 	fd = FileNameOpenFile(path, O_RDWR | O_CREAT | O_EXCL, 0600);
 
 	/*
@@ -288,7 +288,7 @@ mdopen(Relation reln)
 	int			fd;
 	int			vfd;
 
-	path = relpath(&(reln->rd_rel->relname.data[0]));
+	path = relpath(reln->rd_rel->relname.data);
 
 	fd = FileNameOpenFile(path, O_RDWR, 0600);
 
@@ -718,7 +718,7 @@ mdtruncate(Relation reln, int nblocks)
 	if (curnblk / RELSEG_SIZE > 0)
 	{
 		elog(NOTICE, "Can't truncate multi-segments relation %s",
-			 &(reln->rd_rel->relname.data[0]));
+			 reln->rd_rel->relname.data);
 		return (curnblk);
 	}
 #endif
