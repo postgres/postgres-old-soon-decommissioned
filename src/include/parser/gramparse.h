@@ -27,5 +27,7 @@ extern void yyerror(const char *message);
 extern void parser_init(Oid *typev, int nargs);
 extern Oid	param_type(int t);
 extern int	yyparse(void);
+extern char *xlateSqlFunc(char *name);
+extern char *xlateSqlType(char *name);
 
 #endif	 /* GRAMPARSE_H */
