@@ -272,21 +272,24 @@ MainLoop(FILE *source)
 
 			/* start of extended comment? */
 			else if (line[i] == '/' && line[i + thislen] == '*')
-					{
+			{
 				in_xcomment++;
 				if (in_xcomment == 1) 
+					ADVANCE_1;
+			}
+
+			/* in or end of extended comment? */
+			else if (in_xcomment)
+			{
+				if (line[i] == '*' && line[i + thislen] == '/')
+				{
+					in_xcomment--;
+					if (in_xcomment <= 0)
+					{
+						in_xcomment = 0;
 						ADVANCE_1;
 					}
-
-			/* end of extended comment? */
-			else if (line[i] == '*' && line[i + thislen] == '/')
-			{
-				in_xcomment--;
-				if (in_xcomment <= 0)
-				{
-					in_xcomment = 0;
-				ADVANCE_1;
-			}
+				}
 			}
 
 			/* start of quote? */
