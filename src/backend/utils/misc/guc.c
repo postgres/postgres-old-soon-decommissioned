@@ -151,9 +151,10 @@ static char *locale_ctype;
 static char *regex_flavor_string;
 static char *server_encoding_string;
 static char *server_version_string;
-static char *session_authorization_string;
 static char *timezone_string;
 static char *XactIsoLevel_string;
+/* should be static, but commands/variable.c needs to get at it */
+char *session_authorization_string;
 
 
 /* Macros for freeing malloc'd pointers only if appropriate to do so */
