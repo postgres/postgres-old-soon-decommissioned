@@ -249,9 +249,9 @@ extern PQnoticeProcessor PQsetNoticeProcessor(PGconn *conn,
 
 /* Quoting strings before inclusion in queries. */
 extern size_t PQescapeString(char *to, const char *from, size_t length);
-extern unsigned char *PQescapeBytea(unsigned char *bintext, size_t binlen,
+extern unsigned char *PQescapeBytea(const unsigned char *bintext, size_t binlen,
 			  size_t *bytealen);
-extern unsigned char *PQunescapeBytea(unsigned char *strtext,
+extern unsigned char *PQunescapeBytea(const unsigned char *strtext,
 				size_t *retbuflen);
 
 
