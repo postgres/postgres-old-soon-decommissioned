@@ -49,9 +49,7 @@ extern void add_missing_vars_to_tlist(Query *root, List *tlist);
  */
 extern void set_tlist_references(Plan *plan);
 extern List *join_references(List *clauses, List *outer_tlist,
-				List *inner_tlist);
-extern List *index_outerjoin_references(List *inner_indxqual,
-						   List *outer_tlist, Index inner_relid);
+							 List *inner_tlist);
 extern void replace_tlist_with_subplan_refs(List *tlist,
 								Index subvarno,
 								List *subplanTargetList);
