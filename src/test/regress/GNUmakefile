@@ -137,7 +137,8 @@ clean distclean maintainer-clean:
 	$(MAKE) -C $(contribdir)/spi clean
 	rm -f $(output_files) $(input_files) $(DLOBJS) regress.o pg_regress
 # things created by various check targets
-	rm -rf results tmp_check log
+	rm -rf tmp_check log
+	rm -f results/*.out
 	rm -f regression.diffs regression.out regress.out run_check.out
 ifeq ($(PORTNAME), win)
 	rm -f regress.def
