@@ -2618,6 +2618,19 @@ SELECT COALESCE(description, short_description, '(none)') ...
 SELECT NULLIF(value, '(none)') ...
 </programlisting>
   </para>
+
+  <tip>
+   <para>
+    <function>COALESCE</function> and <function>NULLIF</function> are
+    just shorthand for <token>CASE</token> expressions.  They are actually
+    converted into <token>CASE</token> expressions at a very early stage
+    of processing, and subsequent processing thinks it is dealing with
+    <token>CASE</token>.  Thus an incorrect <function>COALESCE</function> or
+    <function>NULLIF</function> usage may draw an error message that
+    refers to <token>CASE</token>.
+   </para>
+  </tip>
+
  </sect1>
 
 
