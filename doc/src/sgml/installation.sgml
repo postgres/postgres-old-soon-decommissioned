@@ -1156,6 +1156,26 @@ All of PostgreSQL is successfully made. Ready to install.
   <title>Post-Installation Setup</title>
 
   <sect2>
+   <title>Tuning</title>
+
+   <indexterm>
+    <primary>tuning</primary>
+   </indexterm>
+
+   <para>
+    By default, <productname>PostgreSQL</> is configured to run on minimal
+    hardware.  This allows it to start up with almost any hardware
+    configuration. However, the default configuration is not designed for
+    optimum performance. To achieve optimum performance, several server
+    variables must be adjusted,  the two most common being
+    <varname>shared_buffers</varname> and <varname> sort_mem</varname>
+    mentioned in <xref linkend="runtime-config-resource-memory">. Other
+    paramters in <xref linkend="runtime-config-resource"> also affect 
+    performance.
+   </para>
+  </sect2>
+
+  <sect2>
    <title>Shared Libraries</title>
 
    <indexterm>
