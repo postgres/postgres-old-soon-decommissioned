@@ -290,8 +290,13 @@ pg_nofile(void)
 		no_files = sysconf(_SC_OPEN_MAX);
 		if (no_files == -1)
 		{
+/* tweak for Hurd, which does not support NOFILE */
+#ifdef NOFILE
 			elog(DEBUG, "pg_nofile: Unable to get _SC_OPEN_MAX using sysconf(); using %d", NOFILE);
 			no_files = (long) NOFILE;
+#else
+			elog(FATAL, "pg_nofile: Unable to get _SC_OPEN_MAX using sysconf() and NOFILE is undefined");
+#endif
 		}
 #endif
 
