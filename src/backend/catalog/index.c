@@ -32,6 +32,7 @@
 #include "catalog/pg_index.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
+#include "commands/comment.h"
 #include "executor/executor.h"
 #include "miscadmin.h"
 #include "optimizer/clauses.h"
@@ -1127,6 +1128,13 @@ index_destroy(Oid indexId)
 	if (IsTransactionBlock() && ! userindexRelation->rd_myxactonly)
 		elog(NOTICE, "Caution: DROP INDEX cannot be rolled back, so don't abort now");
 
+	/* ----------------
+	 * fix DESCRIPTION relation
+	 * ----------------
+	 */
+
+	DeleteComments(indexId);
+	
 	/* ----------------
 	 * fix RELATION relation
 	 * ----------------

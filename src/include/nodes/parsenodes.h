@@ -316,10 +316,12 @@ typedef struct TruncateStmt
  */
 typedef struct CommentStmt
 {
-  NodeTag         type;
-  char *relname;                       /* relation to create/drop comment */
-  char *attrname;                      /* attribute to comment on */
-  char *comment;                       /* the actual comment */
+  NodeTag type;
+  int objtype;                         /* Object's type */
+  char *objname;                       /* Name of the object */
+  char *objproperty;                   /* Property Id (such as column) */
+  List *objlist;                       /* Arguments for VAL objects */
+  char *comment;                       /* The comment to insert */
 } CommentStmt;
       
 /* ----------------------

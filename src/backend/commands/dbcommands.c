@@ -20,6 +20,7 @@
 #include "catalog/catname.h"
 #include "catalog/pg_database.h"
 #include "catalog/pg_shadow.h"
+#include "commands/comment.h"
 #include "commands/dbcommands.h"
 #include "miscadmin.h"
 #include "storage/sinval.h"
@@ -148,6 +149,10 @@ destroydb(char *dbname, CommandDest dest)
 		elog(ERROR, "Database '%s', OID %u, not found in pg_database",
 			 dbname, db_id);
 	}
+
+	/*** Delete any comments associated with the database ***/
+	
+	DeleteComments(db_id);
 
 	/*
 	 * Houston, we have launch commit...

@@ -21,6 +21,7 @@
 #include "commands/async.h"
 #include "commands/cluster.h"
 #include "commands/command.h"
+#include "commands/comment.h"
 #include "commands/copy.h"
 #include "commands/creatinh.h"
 #include "commands/dbcommands.h"
@@ -37,7 +38,6 @@
 #include "rewrite/rewriteDefine.h"
 #include "rewrite/rewriteRemove.h"
 #include "tcop/utility.h"
-#include "utils/acl.h"
 #include "utils/acl.h"
 #include "utils/ps_status.h"
 #include "utils/syscache.h"
@@ -242,14 +242,9 @@ ProcessUtility(Node *parsetree,
 	    
 	    PS_SET_STATUS(commandTag = "COMMENT");
 	    CHECK_IF_ABORTED();
-
-#ifndef NO_SECURITY
-	    if (!pg_ownercheck(userName, statement->relname, RELNAME))
-	      elog(ERROR, "you do not own class \"%s\"", statement->relname);
-#endif
-
-	    CommentRelation(statement->relname, statement->attrname, 
-			    statement->comment);
+	    CommentObject(statement->objtype, statement->objname,
+			  statement->objproperty, statement->objlist,
+			  statement->comment);
 	  }
 	  break;
 	    
