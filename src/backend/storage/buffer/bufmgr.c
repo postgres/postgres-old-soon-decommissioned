@@ -1987,7 +1987,7 @@ LockBuffer(Buffer buffer, int mode)
 		while (buf->ri_lock || buf->w_lock)
 		{
 			S_UNLOCK(&(buf->cntx_lock));
-			s_lock_sleep(i++);
+			S_LOCK_SLEEP(&(buf->cntx_lock), i++);
 			S_LOCK(&(buf->cntx_lock));
 		}
 		(buf->r_locks)++;
@@ -2013,7 +2013,7 @@ LockBuffer(Buffer buffer, int mode)
 				buf->ri_lock = true;
 			}
 			S_UNLOCK(&(buf->cntx_lock));
-			s_lock_sleep(i++);
+			S_LOCK_SLEEP(&(buf->cntx_lock), i++);
 			S_LOCK(&(buf->cntx_lock));
 		}
 		buf->w_lock = true;
