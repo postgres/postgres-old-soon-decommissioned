@@ -664,6 +664,22 @@ DATA(insert OID = 827  (  "<<="	   PGUID 0 b t f 650 650     16 1004 828  0 0 ne
 DATA(insert OID = 828  (  ">>"	   PGUID 0 b t f 650 650     16 826  827  0 0 network_sup intltsel intltjoinsel ));
 DATA(insert OID = 1004  (  ">>="   PGUID 0 b t f 650 650     16 827  826  0 0 network_supeq intltsel intltjoinsel ));
 
+/* NUMERIC type - OID's 1700-1799 */
+DATA(insert OID = 1752 (  "="	   PGUID 0 b t t 1700 1700	 16 1752 1753 0 0 numeric_eq eqsel eqjoinsel ));
+DATA(insert OID = 1753 (  "<>"	   PGUID 0 b t f 1700 1700   16 1753 1752 0 0 numeric_ne neqsel neqjoinsel ));
+DATA(insert OID = 1754 (  "<"	   PGUID 0 b t f 1700 1700   16 1756 1757 0 0 numeric_lt intltsel intltjoinsel ));
+DATA(insert OID = 1755 (  "<="	   PGUID 0 b t f 1700 1700   16 1757 1756 0 0 numeric_le intltsel intltjoinsel ));
+DATA(insert OID = 1756 (  ">"	   PGUID 0 b t f 1700 1700   16 1754 1755 0 0 numeric_gt intltsel intltjoinsel ));
+DATA(insert OID = 1757 (  ">="	   PGUID 0 b t f 1700 1700   16 1755 1754 0 0 numeric_ge intltsel intltjoinsel ));
+DATA(insert OID = 1758 (  "+"	   PGUID 0 b t f 1700 1700 1700 1758    0 0 0 numeric_add - - ));
+DATA(insert OID = 1759 (  "-"	   PGUID 0 b t f 1700 1700 1700    0    0 0 0 numeric_sub - - ));
+DATA(insert OID = 1760 (  "*"	   PGUID 0 b t f 1700 1700 1700 1760    0 0 0 numeric_mul - - ));
+DATA(insert OID = 1761 (  "/"	   PGUID 0 b t f 1700 1700 1700    0    0 0 0 numeric_div - - ));
+DATA(insert OID = 1762 (  "%"	   PGUID 0 b t f 1700 1700 1700    0    0 0 0 numeric_mod - - ));
+DATA(insert OID = 1763 (  "@"	   PGUID 0 l t f    0 1700 1700    0    0 0 0 numeric_abs - - ));
+
+
+
 /*
  * function prototypes
  */

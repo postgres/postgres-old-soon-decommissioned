@@ -376,6 +376,11 @@ DATA(insert OID = 1296 ( timestamp	 PGUID	4  19 t b t \054 0	0 timestamp_in time
 DESCR("limited-range ISO-format date and time");
 #define TIMESTAMPOID	1296
 
+/* OIDS 1700 - 1799 */
+DATA(insert OID = 1700 ( numeric	   PGUID -1  -1 f b t \054 0  0 numeric_in numeric_out numeric_in numeric_out i _null_ ));
+DESCR("arbitrary precision exact numeric data type");
+#define NUMERICOID		1700
+
 
 #define VARLENA_FIXED_SIZE(attr)	((attr)->atttypid == BPCHAROID && (attr)->atttypmod > 0)
 
