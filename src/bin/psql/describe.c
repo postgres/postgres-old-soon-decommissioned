@@ -631,9 +631,7 @@ describeTableDetails(const char *name, bool desc)
             attype++;
         }
         /* (convert some internal type names to SQL'ish) */
-        if (strcmp(attype, "bpchar")==0)
-            typename = "char";
-        else if (strcmp(attype, "int2")==0)
+		if (strcmp(attype, "int2")==0)
             typename = "smallint";
         else if (strcmp(attype, "int4")==0)
             typename = "integer";
@@ -646,13 +644,26 @@ describeTableDetails(const char *name, bool desc)
         /* more might need to be added when date/time types are sorted out */
 
 		cells[i * cols + 1] = xmalloc(NAMEDATALEN + 16);
-		if (strcmp(typename, "char") == 0)
-			sprintf(cells[i * cols + 1], "char(%d)", attypmod != -1 ? attypmod - VARHDRSZ : 1);
+		if (strcmp(typename, "bpchar") == 0)
+		{
+			if (attypmod != -1)
+				sprintf(cells[i * cols + 1], "char(%d)", attypmod - VARHDRSZ);
+			else
+				sprintf(cells[i * cols + 1], "char()");
+		}
 		else if (strcmp(typename, "varchar") == 0)
-			sprintf(cells[i * cols + 1], "varchar(%d)", attypmod != -1 ? attypmod - VARHDRSZ : 1);
+		{
+			if (attypmod != -1)
+				sprintf(cells[i * cols + 1], "varchar(%d)", attypmod - VARHDRSZ);
+			else
+				sprintf(cells[i * cols + 1], "varchar()");
+		}
 		else if (strcmp(typename, "numeric") == 0)
-			sprintf(cells[i * cols + 1], "numeric(%d,%d)", ((attypmod - VARHDRSZ) >> 16) & 0xffff,
+		{
+			sprintf(cells[i * cols + 1], "numeric(%d,%d)",
+					((attypmod - VARHDRSZ) >> 16) & 0xffff,
 					(attypmod - VARHDRSZ) & 0xffff);
+		}
 		else
 			strcpy(cells[i * cols + 1], typename);
 
