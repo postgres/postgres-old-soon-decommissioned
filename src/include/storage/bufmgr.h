@@ -15,7 +15,7 @@
 #define BUFMGR_H
 
 #include "storage/buf_internals.h"
-
+#include "access/xlogdefs.h"
 
 typedef void *Block;
 
@@ -176,5 +176,10 @@ extern void AbortBufferIO(void);
 
 extern bool BufferIsUpdatable(Buffer buffer);
 extern void MarkBufferForCleanup(Buffer buffer, void (*CleanupFunc)(Buffer));
+
+#ifdef XLOG
+extern void BufmgrCommit(void);
+extern void BufferSync(void);
+#endif
 
 #endif

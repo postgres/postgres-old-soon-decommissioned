@@ -135,6 +135,8 @@ extern bool IsTransactionBlock(void);
 extern void UserAbortTransactionBlock(void);
 extern void AbortOutOfAnyTransaction(void);
 
+extern void RecordTransactionCommit(void);
+
 extern TransactionId DisabledTransactionId;
 
 extern void XactPushRollback(void (*func) (void *), void* data);

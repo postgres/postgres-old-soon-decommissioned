@@ -67,7 +67,11 @@ typedef unsigned char XidStatus;/* (2 bits) */
  *		transaction page definitions
  * ----------------
  */
+#ifdef XLOG
+#define TP_DataSize				(BLCKSZ - sizeof(XLogRecPtr))
+#else
 #define TP_DataSize				BLCKSZ
+#endif
 #define TP_NumXidStatusPerBlock (TP_DataSize * 4)
 
 /* ----------------
@@ -84,6 +88,10 @@ typedef unsigned char XidStatus;/* (2 bits) */
  */
 typedef struct LogRelationContentsData
 {
+#ifdef XLOG
+	XLogRecPtr	LSN;		/* temp hack: LSN is member of any block */
+							/* so should be described in bufmgr */
+#endif
 	int			TransSystemVersion;
 } LogRelationContentsData;
 
@@ -107,6 +115,9 @@ typedef LogRelationContentsData *LogRelationContents;
  */
 typedef struct VariableRelationContentsData
 {
+#ifdef XLOG
+	XLogRecPtr	LSN;
+#endif
 	int			TransSystemVersion;
 	TransactionId nextXidData;
 	TransactionId lastXidData;	/* unused */

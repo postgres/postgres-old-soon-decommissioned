@@ -193,6 +193,9 @@ createdb(const char *dbname, const char *dbpath, int encoding)
 			elog(ERROR, "CREATE DATABASE: Could not initialize database directory. Delete failed as well");
 	}
 
+#ifdef XLOG
+	BufferSync();
+#endif
 }
 
 

@@ -125,7 +125,11 @@ VariableRelationPutNextXid(TransactionId xid)
 
 	TransactionIdStore(xid, &(var->nextXidData));
 
+#ifdef XLOG
+	WriteBuffer(buf);	/* temp */
+#else
 	FlushBuffer(buf, TRUE);
+#endif
 }
 
 /* --------------------------------

@@ -231,9 +231,6 @@ InitPostgres(const char *dbname, const char *username)
 {
 	bool		bootstrap = IsBootstrapProcessingMode();
 
-	/* initialize the local buffer manager */
-	InitLocalBuffer();
-
 #ifndef XLOG
 	if (!TransactionFlushEnabled())
 		on_shmem_exit(FlushBufferPool, 0);
@@ -414,4 +411,8 @@ BaseInit(void)
 	smgrinit();
 
 	EnablePortalManager();		/* memory for portal/transaction stuff */
+
+	/* initialize the local buffer manager */
+	InitLocalBuffer();
+
 }

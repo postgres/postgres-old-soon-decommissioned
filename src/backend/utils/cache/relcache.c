@@ -2064,7 +2064,62 @@ RelationCacheInitializePhase2(void)
 	}
 }
 
+#ifdef XLOG		/* used by XLogInitCache */
 
+void CreateDummyCaches(void);
+void DestroyDummyCaches(void);
+
+void
+CreateDummyCaches(void)
+{
+	MemoryContext	oldcxt;
+	HASHCTL			ctl;
+
+	if (!CacheMemoryContext)
+		CreateCacheMemoryContext();
+
+	oldcxt = MemoryContextSwitchTo(CacheMemoryContext);
+
+	MemSet(&ctl, 0, (int) sizeof(ctl));
+	ctl.keysize = sizeof(NameData);
+	ctl.datasize = sizeof(Relation);
+	RelationNameCache = hash_create(INITRELCACHESIZE, &ctl, HASH_ELEM);
+
+	ctl.keysize = sizeof(Oid);
+	ctl.hash = tag_hash;
+	RelationIdCache = hash_create(INITRELCACHESIZE, &ctl,
+								  HASH_ELEM | HASH_FUNCTION);
+
+	ctl.keysize = sizeof(RelFileNode);
+	ctl.hash = tag_hash;
+	RelationNodeCache = hash_create(INITRELCACHESIZE, &ctl,
+								  HASH_ELEM | HASH_FUNCTION);
+	MemoryContextSwitchTo(oldcxt);
+}
+
+void
+DestroyDummyCaches(void)
+{
+	MemoryContext	oldcxt;
+
+	if (!CacheMemoryContext)
+		return;
+
+	oldcxt = MemoryContextSwitchTo(CacheMemoryContext);
+
+	if (RelationNameCache)
+		hash_destroy(RelationNameCache);
+	if (RelationIdCache)
+		hash_destroy(RelationIdCache);
+	if (RelationNodeCache)
+		hash_destroy(RelationNodeCache);
+
+	RelationNameCache = RelationIdCache = RelationNodeCache = NULL;
+
+	MemoryContextSwitchTo(oldcxt);
+}
+
+#endif	/* XLOG */
 
 static void
 AttrDefaultFetch(Relation relation)

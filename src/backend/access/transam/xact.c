@@ -176,6 +176,8 @@
 
 extern bool SharedBufferChanged;
 
+void RecordTransactionCommit(void);
+
 static void AbortTransaction(void);
 static void AtAbort_Cache(void);
 static void AtAbort_Locks(void);
@@ -191,7 +193,6 @@ static void AtStart_Memory(void);
 static void CleanupTransaction(void);
 static void CommitTransaction(void);
 static void RecordTransactionAbort(void);
-static void RecordTransactionCommit(void);
 static void StartTransaction(void);
 
 /* ----------------
@@ -220,7 +221,7 @@ int			XactIsoLevel;
 #ifdef XLOG
 #include "access/xlogutils.h"
 
-int			CommitDelay = 100;
+int			CommitDelay = 5;	/* 1/200 sec */
 
 void		xact_redo(XLogRecPtr lsn, XLogRecord *record);
 void		xact_undo(XLogRecPtr lsn, XLogRecord *record);
@@ -658,8 +659,8 @@ AtStart_Memory(void)
  *			  -cim 3/18/90
  * --------------------------------
  */
-static void
-RecordTransactionCommit(void)
+void
+RecordTransactionCommit()
 {
 	TransactionId xid;
 	int			leak;
@@ -682,6 +683,8 @@ RecordTransactionCommit(void)
 		xl_xact_commit	xlrec;
 		struct timeval	delay;
 		XLogRecPtr		recptr;
+
+		BufmgrCommit();
 
 		xlrec.xtime = time(NULL);
 		/*

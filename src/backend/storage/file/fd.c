@@ -823,8 +823,10 @@ FileWrite(File file, char *buffer, int amount)
 	if (returnCode > 0)
 	{
 		VfdCache[file].seekPos += returnCode;
+#ifndef XLOG
 		/* mark the file as needing fsync */
 		VfdCache[file].fdstate |= FD_DIRTY;
+#endif
 	}
 	else
 		VfdCache[file].seekPos = FileUnknownPos;

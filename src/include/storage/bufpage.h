@@ -118,7 +118,8 @@ typedef OpaqueData *Opaque;
  */
 typedef struct PageHeaderData
 {
-#ifdef XLOG
+#ifdef XLOG						/* XXX LSN is member of *any* block, not */
+								/* only page-organized - 'll change later */
 	XLogRecPtr	pd_lsn;			/* LSN: next byte after last byte of xlog */
 								/* record for last change of this page */
 	StartUpID	pd_sui;			/* SUI of last changes (currently it's */

@@ -109,6 +109,10 @@ typedef struct sbufdesc
 	bool		ri_lock;		/* read-intent lock */
 	bool		w_lock;			/* context exclusively locked */
 
+#ifdef XLOG
+	bool		cntxDirty;		/* new way to mark block as dirty */
+#endif
+
 	BufferBlindId blind;		/* was used to support blind write */
 
 	/*

@@ -186,6 +186,10 @@ TransBlockGetXidStatus(Block tblock,
 	bits8		bit2;
 	BitIndex	offset;
 
+#ifdef XLOG
+	tblock = (Block) ((char*) tblock + sizeof(XLogRecPtr));
+#endif
+
 	/* ----------------
 	 *	calculate the index into the transaction data where
 	 *	our transaction status is located
@@ -226,6 +230,10 @@ TransBlockSetXidStatus(Block tblock,
 {
 	Index		index;
 	BitIndex	offset;
+
+#ifdef XLOG
+	tblock = (Block) ((char*) tblock + sizeof(XLogRecPtr));
+#endif
 
 	/* ----------------
 	 *	calculate the index into the transaction data where
