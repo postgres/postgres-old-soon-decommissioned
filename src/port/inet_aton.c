@@ -44,8 +44,10 @@
 
 #include "c.h"
 
+#if !defined(_MSC_VER) && !defined(__BORLANDC__)
 #include <netinet/in.h>
 #include <ctype.h>
+#endif
 
 /*
  * Check whether "cp" is a valid ascii representation

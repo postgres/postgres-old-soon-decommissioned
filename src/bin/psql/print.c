@@ -11,7 +11,10 @@
 
 #include <math.h>
 #include <signal.h>
+
+#if !defined(_MSC_VER) && !defined(__BORLANDC__)
 #include <unistd.h>
+#endif
 
 #ifndef WIN32
 #include <sys/ioctl.h>			/* for ioctl() */

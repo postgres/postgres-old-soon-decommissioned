@@ -48,7 +48,7 @@ typedef struct timeval TimevalStruct;
 #else
 
 typedef struct _timeb TimevalStruct;
-#define GETTIMEOFDAY(T) _ftime(&T)
+#define GETTIMEOFDAY(T) _ftime(T)
 #define DIFF_MSEC(T, U) ((((T)->time - (U)->time) * 1000.0 + (T)->millitm - (U)->millitm))
 
 #endif

@@ -50,8 +50,12 @@ __RCSID("$NetBSD$");
 #include <sys/types.h>
 #include <limits.h>
 #include <stdlib.h>
-#include <unistd.h>
+
+#ifdef WIN32
 #include <windows.h>
+#else
+#include <unistd.h>
+#endif
 
 static int des_setkey(const char *key);
 static int des_cipher(const char *in, char *out, long salt, int num_iter);

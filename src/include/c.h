@@ -73,7 +73,7 @@
 #include <SupportDefs.h>
 #endif
 
-#ifdef WIN32
+#if defined(WIN32) && !defined(_MSC_VER) && !defined(__BORLANDC__)
 /* We have to redefine some system functions after they are included above */
 #include "pg_config_os.h"
 #endif
