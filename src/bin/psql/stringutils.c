@@ -16,6 +16,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 
+#include "postgres.h"
 #ifndef HAVE_STRDUP
 #include "strdup.h"
 #endif
