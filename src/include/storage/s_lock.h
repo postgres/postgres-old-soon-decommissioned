@@ -658,7 +658,7 @@ typedef unsigned char slock_t;
 #endif
 
 
-/* out-of-line assembler from src/backend/port/tas/*.s */
+/* out-of-line assembler from src/backend/port/tas/foo.s */
 
 #if defined(__sun) && defined(__i386)
 /*
