@@ -77,8 +77,8 @@ pg_krb4_recvauth(Port *port)
 {
 	long					krbopts = 0;	/* one-way authentication */
 	KTEXT_ST			clttkt;
-	char					instance[INST_SZ],
-								version[KRB_SENDAUTH_VLEN];
+	char					instance[INST_SZ+1],
+								version[KRB_SENDAUTH_VLEN+1];
 	AUTH_DAT			auth_data;
 	Key_schedule	key_sched;
 	int						status;

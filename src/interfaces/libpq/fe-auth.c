@@ -144,8 +144,8 @@ pg_krb4_init()
 static char *
 pg_krb4_authname(char *PQerrormsg)
 {
-	char		instance[INST_SZ];
-	char		realm[REALM_SZ];
+	char		instance[INST_SZ+1];
+	char		realm[REALM_SZ+1];
 	int			status;
 	static char name[SNAME_SZ + 1] = "";
 
