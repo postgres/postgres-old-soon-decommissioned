@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Thu Feb 12 21:30:57 EST 2004
+Last updated:		Thu Feb 12 23:36:00 EST 2004
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -163,6 +163,7 @@ Commands
 * Add ROLLUP, CUBE, GROUPING SETS options to GROUP BY
 * Add schema option to createlang
 * Allow savepoints / nested transactions [transactions] (Bruce)
+* Use nested transactions to prevent syntax errors from aborting a transaction
 * Allow UPDATE tab SET ROW (col, ...) = (...) for updating multiple columns
 * Allow SET CONSTRAINTS to be qualified by schema/table
 * Prevent COMMENT ON DATABASE from using a database name
