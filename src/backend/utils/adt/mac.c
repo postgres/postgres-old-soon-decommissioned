@@ -5,6 +5,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 
 #include <postgres.h>
 #include <utils/palloc.h>
