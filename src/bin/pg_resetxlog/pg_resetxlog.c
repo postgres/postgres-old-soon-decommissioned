@@ -176,6 +176,25 @@ main(int argc, char *argv[])
 		exit(1);
 	}
 
+ 	/*
+	 * Don't allow pg_resetxlog to be run as root, to avoid
+	 * overwriting the ownership of files in the data directory. We
+	 * need only check for root -- any other user won't have
+	 * sufficient permissions to modify files in the data directory.
+	 */
+#ifndef WIN32
+#ifndef __BEOS__				/* no root check on BeOS */
+	if (geteuid() == 0)
+	{
+		fprintf(stderr, _("%s: cannot be executed by \"root\"\n"),
+				progname);
+		fprintf(stderr, _("You must run %s as the PostgreSQL superuser.\n"),
+				progname);
+		exit(1);
+	}
+#endif
+#endif
+
 	DataDir = argv[optind];
 	snprintf(XLogDir, MAXPGPATH, "%s/pg_xlog", DataDir);
 	snprintf(ControlFilePath, MAXPGPATH, "%s/global/pg_control", DataDir);
