@@ -32,6 +32,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 #include <time.h>
 #if !defined(NO_UNISTD_H)
 #include <unistd.h>

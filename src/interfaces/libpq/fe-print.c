@@ -18,6 +18,7 @@
 #include <signal.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/ioctl.h>
 #include "libpq/pqsignal.h"
 #include "libpq-fe.h"
 #ifndef HAVE_TERMIOS_H
