@@ -3387,3 +3387,33 @@ makeMdArrayResult(ArrayBuildState *astate,
 
 	return PointerGetDatum(result);
 }
+
+Datum
+array_larger(PG_FUNCTION_ARGS)
+{
+	ArrayType	*v1,
+				*v2,
+				*result;
+
+	v1 = PG_GETARG_ARRAYTYPE_P(0);
+	v2 = PG_GETARG_ARRAYTYPE_P(1);
+
+	result = ((array_cmp(fcinfo) > 0) ? v1 : v2);
+
+	PG_RETURN_ARRAYTYPE_P(result);
+}
+
+Datum
+array_smaller(PG_FUNCTION_ARGS)
+{
+	ArrayType	*v1,
+				*v2,
+				*result;
+
+	v1 = PG_GETARG_ARRAYTYPE_P(0);
+	v2 = PG_GETARG_ARRAYTYPE_P(1);
+
+	result = ((array_cmp(fcinfo) < 0) ? v1 : v2);
+
+	PG_RETURN_ARRAYTYPE_P(result);
+}

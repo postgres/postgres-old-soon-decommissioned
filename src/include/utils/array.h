@@ -129,6 +129,8 @@ extern Datum array_upper(PG_FUNCTION_ARGS);
 extern Datum array_type_coerce(PG_FUNCTION_ARGS);
 extern Datum array_type_length_coerce(PG_FUNCTION_ARGS);
 extern Datum array_length_coerce(PG_FUNCTION_ARGS);
+extern Datum array_larger(PG_FUNCTION_ARGS);
+extern Datum array_smaller(PG_FUNCTION_ARGS);
 
 extern Datum array_ref(ArrayType *array, int nSubscripts, int *indx,
 		  int arraylen, int elmlen, bool elmbyval, char elmalign,
