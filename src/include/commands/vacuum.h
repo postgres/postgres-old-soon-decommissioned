@@ -132,7 +132,7 @@ typedef struct VRelStats
 extern bool VacuumRunning;
 
 extern void vc_abort(void);
-extern void vacuum(char *vacrel, bool verbose, bool analyze, List *va_spec);
+extern void vacuum(char *vacrel, bool verbose, bool analyze, List *anal_cols);
 
 #define ATTNVALS_SCALE	1000000000		/* XXX so it can act as a float4 */
 
