@@ -405,10 +405,10 @@ group_clauses_by_indexkey(RelOptInfo *rel,
 	int			curIndxKey;
 	Oid			curClass;
 
-	if (clauseinfo_list == NIL)
+	if (clauseinfo_list == NIL || indexkeys[0] == 0)
 		return NIL;
 
-	while (!DoneMatchingIndexKeys(indexkeys, index))
+	do
 	{
 		List	   *tempgroup = NIL;
 
@@ -438,7 +438,7 @@ group_clauses_by_indexkey(RelOptInfo *rel,
 		indexkeys++;
 		classes++;
 
-	}
+	} while (!DoneMatchingIndexKeys(indexkeys, index));
 
 	/* clausegroup holds all matched clauses ordered by indexkeys */
 
@@ -469,10 +469,10 @@ group_clauses_by_ikey_for_joins(RelOptInfo *rel,
 	Oid			curClass;
 	bool		jfound = false;
 
-	if (join_cinfo_list == NIL)
+	if (join_cinfo_list == NIL || indexkeys[0] == 0)
 		return NIL;
 
-	while (!DoneMatchingIndexKeys(indexkeys, index))
+	do
 	{
 		List	   *tempgroup = NIL;
 
@@ -518,7 +518,7 @@ group_clauses_by_ikey_for_joins(RelOptInfo *rel,
 		indexkeys++;
 		classes++;
 
-	}
+	} while (!DoneMatchingIndexKeys(indexkeys, index));
 
 	/* clausegroup holds all matched clauses ordered by indexkeys */
 
