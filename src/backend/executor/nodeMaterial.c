@@ -79,7 +79,7 @@ ExecMaterial(Material *node)
 	 *  while creating the temporary relation.
 	 * ----------------
 	 */
-	estate->es_direction = EXEC_FRWD;
+	estate->es_direction = ForwardScanDirection;
 	
 	/* ----------------
 	 *   if we couldn't create the temp or current relations then

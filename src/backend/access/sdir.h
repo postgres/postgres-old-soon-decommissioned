@@ -27,7 +27,7 @@ typedef enum ScanDirection {
 
 /*
  * ScanDirectionIsValid --
- *	True iff scan direciton is valid.
+ *	True iff scan direction is valid.
  */
 #define ScanDirectionIsValid(direction) \
     ((bool) (BackwardScanDirection <= direction && \
@@ -35,21 +35,21 @@ typedef enum ScanDirection {
 
 /*
  * ScanDirectionIsBackward --
- *	True iff scan direciton is backward.
+ *	True iff scan direction is backward.
  */
 #define ScanDirectionIsBackward(direction) \
     ((bool) (direction == BackwardScanDirection))
 
 /*
  * ScanDirectionIsNoMovement --
- *	True iff scan direciton indicates no movement.
+ *	True iff scan direction indicates no movement.
  */
 #define ScanDirectionIsNoMovement(direction) \
     ((bool) (direction == NoMovementScanDirection))
 
 /*
  * ScanDirectionIsForward --
- *	True iff scan direciton is forward.
+ *	True iff scan direction is forward.
  */
 #define ScanDirectionIsForward(direction) \
     ((bool) (direction == ForwardScanDirection))

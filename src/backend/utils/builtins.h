@@ -228,7 +228,7 @@ extern POLYGON	*rt_poly_inter();
  in executor/executor.h*/
 
 
-extern int32 pqtest();
+extern int32 pqtest(struct varlena *vlena);
 
 /* arrayfuncs.c */
 #include "utils/array.h"

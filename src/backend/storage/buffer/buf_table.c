@@ -34,8 +34,6 @@
 
 static HTAB *SharedBufHash;
 
-extern HTAB *ShmemInitHash();
-
 typedef struct lookup { 
     BufferTag	key; 
     Buffer	id; 

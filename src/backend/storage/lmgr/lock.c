@@ -102,12 +102,6 @@ static MASK	BITS_ON[MAX_LOCKTYPES];
  */
 static bool LockingIsDisabled;
 
-/* ------------------
- * from storage/ipc/shmem.c
- * ------------------
- */
-extern HTAB *ShmemInitHash();
-
 /* -------------------
  * map from tableId to the lock table structure
  * -------------------

@@ -18,7 +18,7 @@ readline(char *prompt)
 {
     static char buf[500];
 
-    printf("%s");
+    printf("%s", prompt);
     return fgets(buf, 500, stdin);
 }
 

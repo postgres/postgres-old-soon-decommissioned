@@ -14,13 +14,6 @@
 #define EXECDEFS_H
 
 /* ----------------
- *	executor scan direction definitions
- * ----------------
- */
-#define EXEC_FRWD		1		/* Scan forward */
-#define EXEC_BKWD		-1		/* Scan backward */
-
-/* ----------------
  *	ExecutePlan() tuplecount definitions
  * ----------------
  */
