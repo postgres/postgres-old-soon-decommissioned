@@ -814,16 +814,15 @@ ExpandAllTables(ParseState *pstate)
 	rtable = pstate->p_rtable;
 	if (pstate->p_is_rule)
 	{
-
 		/*
 		 * skip first two entries, "*new*" and "*current*"
 		 */
 		rtable = lnext(lnext(pstate->p_rtable));
 	}
 
-	/* this should not happen */
+	/* SELECT *; */
 	if (rtable == NULL)
-		elog(ERROR, "Cannot expand tables; null p_rtable (internal error)");
+		elog(ERROR, "Wildcard with no tables specified.");
 
 	/*
 	 * go through the range table and make a list of range table entries
