@@ -52,7 +52,7 @@ bool		_enable_mergejoin_ = true;
 bool		_enable_hashjoin_ = true;
 
 Cost		 _cpu_page_weight_ = _CPU_PAGE_WEIGHT_;
-Cost		_cpu_index_page_wight_ = _CPU_INDEX_PAGE_WEIGHT_;
+Cost		_cpu_index_page_weight_ = _CPU_INDEX_PAGE_WEIGHT_;
 
 /*
  * cost_seqscan
@@ -156,7 +156,7 @@ cost_index(Oid indexid,
 	temp += ceil(((double) selec) * ((double) relpages));
 
 	/* per index tuples */
-	temp += _cpu_index_page_wight_ * selec * indextuples;
+	temp += _cpu_index_page_weight_ * selec * indextuples;
 
 	/* per heap tuples */
 	temp += _cpu_page_weight_ * selec * reltuples;
