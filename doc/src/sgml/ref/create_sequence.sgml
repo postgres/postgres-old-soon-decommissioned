@@ -101,7 +101,7 @@ SELECT * FROM <replaceable>name</replaceable>;
     <listitem>
      <para>
       The optional clause <literal>INCREMENT BY <replaceable
-      class="parameter">increment</replaceable></literal> specified,
+      class="parameter">increment</replaceable></literal> specifies
       which value is added to the current sequence value to create a
       new value.  A positive value will make an ascending sequence, a
       negative one a descending sequence.  The default value is 1.
