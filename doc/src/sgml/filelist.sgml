@@ -63,6 +63,7 @@
 <!entity func-ref   SYSTEM "func-ref.sgml">
 <!entity gist       SYSTEM "gist.sgml">
 <!entity indexcost  SYSTEM "indexcost.sgml">
+<!entity infoschema SYSTEM "information_schema.sgml">
 <!entity jdbc       SYSTEM "jdbc.sgml">
 <!entity libpgeasy  SYSTEM "libpgeasy.sgml">
 <!entity libpq      SYSTEM "libpq.sgml">

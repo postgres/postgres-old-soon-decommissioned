@@ -189,6 +189,7 @@ $Header$
   &ecpg;
   &jdbc;
   &pygresql;
+  &infoschema;
 
  </part>
 
