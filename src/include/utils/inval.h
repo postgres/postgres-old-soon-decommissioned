@@ -28,6 +28,4 @@ extern void RelationMark4RollbackHeapTuple(Relation relation, HeapTuple tuple);
 
 extern void ImmediateInvalidateSharedHeapTuple(Relation relation, HeapTuple tuple);
 
-extern void ImmediateSharedRelationCacheInvalidate(Relation relation);
-
 #endif	 /* INVAL_H */

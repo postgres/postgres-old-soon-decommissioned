@@ -905,6 +905,7 @@ ImmediateInvalidateSharedHeapTuple(Relation relation, HeapTuple tuple)
 								"ImmediateInvalidateSharedHeapTuple");
 }
 
+#ifdef NOT_USED
 /*
  * ImmediateSharedRelationCacheInvalidate
  *	Register shared relation cache invalidation immediately
@@ -940,3 +941,4 @@ ImmediateSharedRelationCacheInvalidate(Relation relation)
 	RelationIdImmediateRegisterSharedInvalid(
 							RelOid_pg_class, RelationGetRelid(relation));
 }
+#endif
