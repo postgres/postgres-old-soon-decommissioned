@@ -18,7 +18,7 @@
  *
  *		ExecOpenIndices			\
  *		ExecCloseIndices		 | referenced by InitPlan, EndPlan,
- *		ExecInsertIndexTuples	/  ExecAppend, ExecReplace
+ *		ExecInsertIndexTuples	/  ExecInsert, ExecUpdate
  *
  *		RegisterExprContextCallback    Register function shutdown callback
  *		UnregisterExprContextCallback  Deregister function shutdown callback
