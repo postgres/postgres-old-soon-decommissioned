@@ -12,6 +12,7 @@
 #include "postgres_fe.h"
 #include "libpq-fe.h"
 
+#include <locale.h>
 #include <signal.h>
 #include <errno.h>
 #include <sys/types.h>
@@ -402,7 +403,8 @@ do_start(void)
 			if (ret == -1)
 				fprintf(stderr,
 						_("The program \"postmaster\" is needed by %s "
-				   "but was not found in the same directory as \"%s\".\n"
+						  "but was not found in the same directory as "
+						  "\"%s\".\n"
 						  "Check your installation.\n"),
 						progname, progname);
 			else
