@@ -79,7 +79,8 @@ typedef int LOCKMETHOD;
 
 /*
  * This is the control structure for a lock table.	It
- * lives in shared memory:
+ * lives in shared memory.  This information is the same
+ * for all backends.
  *
  * lockmethod -- the handle used by the lock table's clients to
  *		refer to the type of lock table being used.
@@ -107,7 +108,7 @@ typedef struct LOCKMETHODCTL
 } LOCKMETHODCTL;
 
 /*
- * Non-shared header for a lock table.
+ * Eack backend has a non-shared lock table header.
  *
  * lockHash -- hash table holding per-locked-object lock information
  * holderHash -- hash table holding per-lock-holder lock information

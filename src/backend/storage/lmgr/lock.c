@@ -1411,8 +1411,7 @@ LockShmemSize(int maxBackends)
 
 	size += MAXALIGN(sizeof(PROC_HDR)); /* ProcGlobal */
 	size += MAXALIGN(maxBackends * sizeof(PROC));		/* each MyProc */
-	size += MAXALIGN(maxBackends * sizeof(LOCKMETHODCTL));		/* each
-																 * lockMethodTable->ctl */
+	size += MAXALIGN(MAX_LOCK_METHODS * sizeof(LOCKMETHODCTL));	/* each lockMethodTable->ctl */
 
 	/* lockHash table */
 	size += hash_estimate_size(NLOCKENTS(maxBackends),
