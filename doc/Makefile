@@ -23,10 +23,10 @@ install-man:
 	-mkdir $(POSTMANDIR)/man3
 	-mkdir $(POSTMANDIR)/man5
 	-mkdir $(POSTMANDIR)/manl
-	cp man/*.1* $(POSTMANDIR)/man1
-	cp man/*.3* $(POSTMANDIR)/man3
-	cp man/*.5* $(POSTMANDIR)/man5
-	cp man/*.l* $(POSTMANDIR)/manl
+	cp ../src/man/*.1* $(POSTMANDIR)/man1
+	cp ../src/man/*.3* $(POSTMANDIR)/man3
+	cp ../src/man/*.5* $(POSTMANDIR)/man5
+	cp ../src/man/*.l* $(POSTMANDIR)/manl
 
 install:: install-man
 
