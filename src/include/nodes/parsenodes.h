@@ -95,11 +95,13 @@ typedef struct Query
 typedef struct AlterTableStmt
 {
 	NodeTag		type;
-	char		subtype;		/* A = add, T = alter, D = drop, C = add
-								 * constr, X = drop constr */
+	char		subtype;		/* A = add column, T = alter column, D = drop column,
+								 * C = add constraint, X = drop constraint,
+								 * E = add toast table,
+								 * U = change owner */
 	char	   *relname;		/* table to work on */
 	bool		inh;			/* recursively on children? */
-	char	   *name;			/* column or constraint name to act on */
+	char	   *name;			/* column or constraint name to act on, or new owner */
 	Node	   *def;			/* definition of new column or constraint */
 	int			behavior;		/* CASCADE or RESTRICT drop behavior */
 } AlterTableStmt;

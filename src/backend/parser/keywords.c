@@ -196,6 +196,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"out", OUT},
 	{"outer", OUTER_P},
 	{"overlaps", OVERLAPS},
+	{"owner", OWNER},
 	{"partial", PARTIAL},
 	{"password", PASSWORD},
 	{"path", PATH_P},

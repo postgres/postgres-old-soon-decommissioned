@@ -371,6 +371,9 @@ ProcessUtility(Node *parsetree,
 					case 'E':	/* CREATE TOAST TABLE */
 						AlterTableCreateToastTable(stmt->relname, false);
 						break;
+					case 'U':	/* ALTER OWNER */
+						AlterTableOwner(stmt->relname, stmt->name);
+						break;
 					default:	/* oops */
 						elog(ERROR, "T_AlterTableStmt: unknown subtype");
 						break;
