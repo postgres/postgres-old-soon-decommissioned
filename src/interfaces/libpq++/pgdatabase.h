@@ -34,7 +34,7 @@
 // This is the basic database access class.  Its interface should 
 // be used only after a query has been sent to the backend and
 // results are being received.
-class PgDatabase : public PgConnection {
+class DLLIMPORT PgDatabase : public PgConnection {
 public:
   // connect to the database with conninfo
   explicit PgDatabase(const char* conninfo) : PgConnection(conninfo) {}

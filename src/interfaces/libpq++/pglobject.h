@@ -35,7 +35,7 @@
 // PgLargeObject - a class for accessing Large Object in a database
 //
 // ****************************************************************
-class PgLargeObject : public PgConnection {
+class DLLIMPORT PgLargeObject : public PgConnection {
 private:
   int pgFd;
   Oid pgObject;

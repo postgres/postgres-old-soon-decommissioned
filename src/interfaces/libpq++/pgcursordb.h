@@ -42,7 +42,7 @@
 // manipulates data through it.  The interface will introduce some
 // ease of use through the methods that will allow cursor specific
 // operations, like fetch, forward, etc.
-class PgCursor : public PgTransaction {
+class DLLIMPORT PgCursor : public PgTransaction {
 public:
   PgCursor(const char* conninfo, const char* cursor);	// use reasonable & environment defaults
   // connect to the database with given environment and database name

@@ -57,7 +57,7 @@ extern "C" {
 // This class contains all the information about the connection
 // to the backend process.  All the database classes should be
 // derived from this class to obtain the connection interface.
-class PgConnection {
+class DLLIMPORT PgConnection {
 protected:
   PGconn* pgConn;			// Connection Structure
   PGresult* pgResult;			// Current Query Result

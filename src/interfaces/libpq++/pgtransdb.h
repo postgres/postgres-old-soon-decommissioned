@@ -34,7 +34,7 @@
 // This is the database access class that keeps an open
 // transaction block during its lifetime.  The block is ENDed when
 // the object is destroyed.
-class PgTransaction : public PgDatabase {
+class DLLIMPORT PgTransaction : public PgDatabase {
 public:
   explicit PgTransaction(const char* conninfo);	// use reasonable & environment defaults
   // connect to the database with given environment and database name
