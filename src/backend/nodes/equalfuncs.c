@@ -710,10 +710,19 @@ _equalSetOperationStmt(SetOperationStmt *a, SetOperationStmt *b)
 static bool
 _equalAlterTableStmt(AlterTableStmt *a, AlterTableStmt *b)
 {
-	COMPARE_SCALAR_FIELD(subtype);
 	COMPARE_NODE_FIELD(relation);
+	COMPARE_NODE_FIELD(cmds);
+
+	return true;
+}
+
+static bool
+_equalAlterTableCmd(AlterTableCmd *a, AlterTableCmd *b)
+{
+	COMPARE_SCALAR_FIELD(subtype);
 	COMPARE_STRING_FIELD(name);
 	COMPARE_NODE_FIELD(def);
+	COMPARE_NODE_FIELD(transform);
 	COMPARE_SCALAR_FIELD(behavior);
 
 	return true;
@@ -1845,6 +1854,9 @@ equal(void *a, void *b)
 			break;
 		case T_AlterTableStmt:
 			retval = _equalAlterTableStmt(a, b);
+			break;
+		case T_AlterTableCmd:
+			retval = _equalAlterTableCmd(a, b);
 			break;
 		case T_AlterDomainStmt:
 			retval = _equalAlterDomainStmt(a, b);

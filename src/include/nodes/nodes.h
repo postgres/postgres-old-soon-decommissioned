@@ -200,6 +200,7 @@ typedef enum NodeTag
 	T_UpdateStmt,
 	T_SelectStmt,
 	T_AlterTableStmt,
+	T_AlterTableCmd,
 	T_AlterDomainStmt,
 	T_SetOperationStmt,
 	T_GrantStmt,

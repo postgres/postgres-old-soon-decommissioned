@@ -22,11 +22,15 @@ extern void DefineIndex(RangeVar *heapRelation,
 			char *indexRelationName,
 			char *accessMethodName,
 			List *attributeList,
+			Expr *predicate,
+			List *rangetable,
 			bool unique,
 			bool primary,
 			bool isconstraint,
-			Expr *predicate,
-			List *rangetable);
+			bool is_alter_table,
+			bool check_rights,
+			bool skip_build,
+			bool quiet);
 extern void RemoveIndex(RangeVar *relation, DropBehavior behavior);
 extern void ReindexIndex(RangeVar *indexRelation, bool force);
 extern void ReindexTable(RangeVar *relation, bool force);

@@ -27,6 +27,14 @@ typedef struct RawColumnDefault
 								 * tree) */
 } RawColumnDefault;
 
+typedef struct CookedConstraint
+{
+	ConstrType	contype;		/* CONSTR_DEFAULT or CONSTR_CHECK */
+	char	   *name;			/* name, or NULL if none */
+	AttrNumber	attnum;			/* which attr (only for DEFAULT) */
+	Node	   *expr;			/* transformed default or check expr */
+} CookedConstraint;
+
 extern Relation heap_create(const char *relname,
 			Oid relnamespace,
 			TupleDesc tupDesc,
@@ -52,9 +60,11 @@ extern void heap_truncate(Oid rid);
 
 extern void heap_truncate_check_FKs(Relation rel);
 
-extern void AddRelationRawConstraints(Relation rel,
+extern List *AddRelationRawConstraints(Relation rel,
 						  List *rawColDefaults,
 						  List *rawConstraints);
+
+extern void StoreAttrDefault(Relation rel, AttrNumber attnum, char *adbin);
 
 extern Node *cookDefault(ParseState *pstate,
 			Node *raw_default,

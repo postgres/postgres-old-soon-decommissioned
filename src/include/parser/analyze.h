@@ -22,6 +22,9 @@ extern List *parse_analyze_varparams(Node *parseTree, Oid **paramTypes,
 extern List *parse_sub_analyze(Node *parseTree, ParseState *parentParseState);
 extern List *analyzeCreateSchemaStmt(CreateSchemaStmt *stmt);
 
+extern char *makeObjectName(const char *name1, const char *name2,
+							const char *typename);
+
 extern void CheckSelectForUpdate(Query *qry);
 
 #endif   /* ANALYZE_H */
