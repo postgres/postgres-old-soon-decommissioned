@@ -91,8 +91,8 @@ s_lock_sleep(unsigned spins, int timeout, int microsec,
 
 	if (microsec > 0)
 	{
-		delay.tv_sec = 0;
-		delay.tv_usec = microsec;
+		delay.tv_sec = microsec / 1000000;
+		delay.tv_usec = microsec % 1000000;
 	}
 	else
 	{
