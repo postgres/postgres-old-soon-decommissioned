@@ -72,7 +72,7 @@ s_lock(volatile slock_t *lock, const char *file, int line)
 	 * (and thus the probability of unintended failure) than to fix the
 	 * total time spent.
 	 *
-	 * The select() delays are measured in centiseconds (0.01 sec) because 10
+	 * The pg_usleep() delays are measured in centiseconds (0.01 sec) because 10
 	 * msec is a common resolution limit at the OS level.
 	 */
 #define SPINS_PER_DELAY		100
