@@ -145,10 +145,6 @@ typedef struct GlobalValues_
 	char		extra_systable_prefixes[MEDIUM_REGISTRY_LEN];
 	char		conn_settings[LARGE_REGISTRY_LEN];
 	char		protocol[SMALL_REGISTRY_LEN];
-
-
-	FILE	   *mylogFP;
-	FILE	   *qlogFP;
 } GLOBAL_VALUES;
 
 typedef struct StatementOptions_
@@ -176,6 +172,7 @@ typedef struct QueryInfo_
 	char	   *cursor;
 } QueryInfo;
 
+void logs_on_off(int cnopen, int, int);
 
 #define PG_TYPE_LO					(-999)		/* hack until permanent
 												 * type available */
