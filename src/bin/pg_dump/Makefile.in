@@ -41,6 +41,7 @@ submake:
 install: pg_dump
 	$(INSTALL) $(INSTL_EXE_OPTS) pg_dump $(BINDIR)/pg_dump
 	$(INSTALL) $(INSTL_EXE_OPTS) pg_dumpall $(BINDIR)/pg_dumpall
+	$(INSTALL) $(INSTL_EXE_OPTS) pg_upgrade $(BINDIR)/pg_upgrade
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
