@@ -11,24 +11,25 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <postgres.h>
+#include "postgres.h"
 
-#include <fmgr.h>
-#include <miscadmin.h>
-#include <utils/syscache.h>
-#include <catalog/pg_proc.h>
-#include <access/heapam.h>
-#include <access/relscan.h>
-#include <catalog/catname.h>
-#include <catalog/indexing.h>
-#include <catalog/pg_type.h>
-#include <parser/parse_node.h>
-#include <tcop/tcopprot.h>
-#include <utils/builtins.h>
-#include <utils/sets.h>
-#include <utils/lsyscache.h>
-#include <optimizer/internal.h>
-#include <optimizer/planner.h>
+#include "access/heapam.h"
+#include "access/relscan.h"
+#include "catalog/catname.h"
+#include "catalog/indexing.h"
+#include "catalog/pg_proc.h"
+#include "catalog/pg_type.h"
+#include "fmgr.h"
+#include "miscadmin.h"
+#include "optimizer/internal.h"
+#include "optimizer/planner.h"
+#include "parser/parse_node.h"
+#include "tcop/tcopprot.h"
+#include "utils/builtins.h"
+#include "utils/lsyscache.h"
+#include "utils/sets.h"
+#include "utils/syscache.h"
+
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>
 #else
@@ -258,8 +259,8 @@ ProcedureCreate(char *procedureName,
 	values[i++] = Int32GetDatum(percall_cpu);	/* propercall_cpu */
 	values[i++] = Int32GetDatum(outin_ratio);	/* prooutin_ratio */
 
-	values[i++] = (Datum) fmgr(TextInRegProcedure, prosrc);		/* prosrc */
-	values[i++] = (Datum) fmgr(TextInRegProcedure, probin);		/* probin */
+	values[i++] = (Datum) fmgr(F_TEXTIN, prosrc);		/* prosrc */
+	values[i++] = (Datum) fmgr(F_TEXTIN, probin);		/* probin */
 
 	rdesc = heap_openr(ProcedureRelationName);
 

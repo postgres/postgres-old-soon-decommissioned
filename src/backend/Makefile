@@ -62,7 +62,7 @@ endif
 all: postgres $(POSTGRES_IMP) global1.bki.source local1_template1.bki.source \
 				global1.description local1_template1.description
 
-postgres: $(OBJS) ../utils/version.o
+postgres: fmgr.h $(OBJS) ../utils/version.o
 	$(CC) -o postgres $(OBJS) ../utils/version.o $(LDFLAGS)
 
 $(OBJS): $(DIRS:%=%.dir)
