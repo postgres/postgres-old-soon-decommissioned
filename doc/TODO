@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Mon Jun 23 22:53:32 EDT 2003
+Last updated:		Mon Jun 23 22:54:23 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -462,6 +462,7 @@ Source Code
 * Add checks for fclose() failure
 * Change CVS $Id$ to $PostgreSQL$
 * Exit postmaster if postgresql.conf can not be opened
+* Rename /scripts directory because they are all C programs now
 
 * Wire Protocol Changes
 	o Show transaction status in psql
