@@ -30,9 +30,7 @@
 #include "strdup.h"
 #endif
 
-#ifndef HAVE_LIBREADLINE
-# include "rlstubs.h"
-#else
+#ifdef HAVE_LIBREADLINE
 # ifdef HAVE_READLINE_H
 #  include <readline.h>
 #  if defined(HAVE_HISTORY) || defined(HAVE_LIBHISTORY)
