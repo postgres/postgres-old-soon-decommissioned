@@ -25,7 +25,7 @@ typedef struct
 {
 	double		time;			/* all time units other than months and
 								 * years */
-	int			zone;			/* numeric time zone, in seconds */
+	int32		zone;			/* numeric time zone, in seconds */
 } TimeTzADT;
 
 /*

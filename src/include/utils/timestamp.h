@@ -36,7 +36,7 @@ typedef double Timestamp;
 typedef struct
 {
 	double		time;	/* all time units other than months and years */
-	int		month;	/* months and years, after time for alignment */
+	int32		month;	/* months and years, after time for alignment */
 } Interval;
 
 
