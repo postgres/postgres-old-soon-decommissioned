@@ -365,8 +365,7 @@ ShmemInitStruct(const char *name, Size size, bool *foundPtr)
 			hash_search(ShmemIndex, (void *) &item, HASH_REMOVE, NULL);
 			LWLockRelease(ShmemIndexLock);
 
-			elog(WARNING, "ShmemInitStruct: cannot allocate '%s'",
-				 name);
+			elog(WARNING, "ShmemInitStruct: cannot allocate '%s'", name);
 			*foundPtr = FALSE;
 			return NULL;
 		}
