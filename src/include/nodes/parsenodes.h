@@ -143,11 +143,11 @@ typedef enum ConstrType {
     CONSTR_NONE, CONSTR_CHECK		/* type of constaints */
 } ConstrType;
 
-typedef struct ConstaintDef {
+typedef struct ConstraintDef {
     ConstrType		type;
     char		*name;		/* name */
-    char		*expr;		/*  */
-} ConstaintDef;
+    void		*def;		/* definition */
+} ConstraintDef;
 
 /* ----------------------
  *	Create SEQUENCE Statement
