@@ -800,7 +800,9 @@ int2fac(PG_FUNCTION_ARGS)
 	int16		arg1 = PG_GETARG_INT16(0);
 	int32		result;
 
-	if (arg1 < 1)
+	if (arg1 == 0)
+		result = 1;
+	else if (arg1 < 1)
 		result = 0;
 	else
 		for (result = 1; arg1 > 0; --arg1)
