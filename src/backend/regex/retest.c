@@ -22,7 +22,7 @@ main()
 	if (p)
 		*p = '\0';
 
-	sts = pg95_regcomp(&re, buf, 1);
+	sts = pg_regcomp(&re, buf, 1);
 	printf("regcomp: parses \"%s\" and returns %d\n", buf, sts);
 	for (;;)
 	{
@@ -33,7 +33,7 @@ main()
 		if (p)
 			*p = '\0';
 
-		sts = pg95_regexec(&re, buf, 0, 0, 0);
+		sts = pg_regexec(&re, buf, 0, 0, 0);
 		printf("regexec: returns %d\n", sts);
 	}
 }
