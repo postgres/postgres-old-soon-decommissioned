@@ -881,6 +881,11 @@ pgac_need_repl_snprintf=no
 AC_CHECK_FUNCS(snprintf, [], pgac_need_repl_snprintf=yes)
 AC_CHECK_FUNCS(vsnprintf, [], pgac_need_repl_snprintf=yes)
 
+PGAC_FUNC_PRINTF_ARG_CONTROL
+# cross compiler should use our snprintf too
+if test $pgac_cv_printf_arg_control != yes ; then
+  pgac_need_repl_snprintf=yes
+fi
 
 # Check whether <stdio.h> declares snprintf() and vsnprintf(); if not,
 # include/c.h will provide declarations.  Note this is a separate test
@@ -1069,6 +1074,8 @@ AC_MSG_ERROR([[
 [AC_MSG_RESULT([cross-compiling])])
 
 
+dnl  64-bit section
+dnl
 dnl Check to see if we have a working 64-bit integer type.
 dnl This breaks down into two steps:
 dnl (1) figure out if the compiler has a 64-bit int type with working
