@@ -18,6 +18,8 @@
 
 #include "postgres.h"
 
+#include "utils/dynamic_loader.h"
+
 #include "access/heapam.h"
 #include "catalog/catname.h"
 #include "catalog/pg_proc.h"
