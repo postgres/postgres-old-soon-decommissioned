@@ -17,6 +17,7 @@ SCRIPTS := createdb dropdb createuser dropuser createlang droplang vacuumdb
 
 all: $(SCRIPTS)
 
+# we don't need this now, but we may need it some day, bjm  2002-01-03
 createlang: createlang.sh
 	cp $< $@
 	chmod a+x $@
