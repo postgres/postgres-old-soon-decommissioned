@@ -985,7 +985,7 @@ dumpTableData_insert(Archive *fout, void *dcontext)
 					appendPQExpBuffer(q, fmtId(PQfname(res, field)));
 				}
 				appendPQExpBuffer(q, ") ");
-				archprintf(fout, "%s", q->data);
+				archputs(q->data, fout);
 			}
 			archprintf(fout, "VALUES (");
 			for (field = 0; field < nfields; field++)
@@ -1047,7 +1047,7 @@ dumpTableData_insert(Archive *fout, void *dcontext)
 						/* All other types are printed as string literals. */
 						resetPQExpBuffer(q);
 						appendStringLiteral(q, PQgetvalue(res, tuple, field), false);
-						archprintf(fout, "%s", q->data);
+						archputs(q->data, fout);
 						break;
 				}
 			}
