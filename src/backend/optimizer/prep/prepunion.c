@@ -448,9 +448,7 @@ generate_setop_tlist(List *colTypes, int flag,
 								  sizeof(int4),
 								  Int32GetDatum(flag),
 								  false,
-								  true,
-								  false,
-								  false);
+								  true);
 		tlist = lappend(tlist, makeTargetEntry(resdom, expr));
 	}
 

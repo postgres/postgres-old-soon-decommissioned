@@ -390,7 +390,6 @@ _readConst(void)
 	READ_INT_FIELD(constlen);
 	READ_BOOL_FIELD(constbyval);
 	READ_BOOL_FIELD(constisnull);
-	/* XXX what about constisset, constiscast? */
 
 	token = pg_strtok(&length); /* skip :constvalue */
 	if (local_node->constisnull)

@@ -860,9 +860,7 @@ CopyFrom(Relation rel, List *attnumlist, bool binary, bool oids,
 							attr[i]->attlen,
 							(Datum) 0,
 							true,		 /* is null */
-							attr[i]->attbyval,
-							false,		/* not a set */
-							false);		/* not coerced */
+							attr[i]->attbyval);
 
 			node = coerce_type_constraints((Node *) con, attr[i]->atttypid,
 										   COERCE_IMPLICIT_CAST);

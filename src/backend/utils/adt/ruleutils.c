@@ -2243,8 +2243,6 @@ get_rule_expr(Node *node, deparse_context *context,
 				switch (param->paramkind)
 				{
 					case PARAM_NAMED:
-					case PARAM_NEW:
-					case PARAM_OLD:
 						appendStringInfo(buf, "$%s", param->paramname);
 						break;
 					case PARAM_NUM:

@@ -4437,8 +4437,6 @@ select_limit_value:
 					n->constvalue	= Int32GetDatum($1);
 					n->constisnull	= FALSE;
 					n->constbyval	= TRUE;
-					n->constisset	= FALSE;
-					n->constiscast	= FALSE;
 					$$ = (Node *)n;
 				}
 			| ALL
@@ -4451,8 +4449,6 @@ select_limit_value:
 					n->constvalue	= (Datum) 0;
 					n->constisnull	= TRUE;
 					n->constbyval	= TRUE;
-					n->constisset	= FALSE;
-					n->constiscast	= FALSE;
 					$$ = (Node *)n;
 				}
 			| PARAM
@@ -4479,8 +4475,6 @@ select_offset_value:
 					n->constvalue	= Int32GetDatum($1);
 					n->constisnull	= FALSE;
 					n->constbyval	= TRUE;
-					n->constisset	= FALSE;
-					n->constiscast	= FALSE;
 					$$ = (Node *)n;
 				}
 			| PARAM

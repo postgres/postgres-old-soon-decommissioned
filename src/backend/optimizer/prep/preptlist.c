@@ -183,9 +183,7 @@ expand_targetlist(List *tlist, int command_type,
 												  att_tup->attlen,
 												  (Datum) 0,
 												  true, /* isnull */
-												  att_tup->attbyval,
-												  false,		/* not a set */
-												  false);
+												  att_tup->attbyval);
 					if (!att_tup->attisdropped)
 						new_expr = coerce_type_constraints(new_expr,
 														   atttype,
@@ -198,9 +196,7 @@ expand_targetlist(List *tlist, int command_type,
 													  att_tup->attlen,
 													  (Datum) 0,
 													  true,		/* isnull */
-													  att_tup->attbyval,
-													  false,	/* not a set */
-													  false);
+													  att_tup->attbyval);
 					else
 						new_expr = (Node *) makeVar(result_relation,
 													attrno,

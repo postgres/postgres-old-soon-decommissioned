@@ -45,9 +45,7 @@ extern Const *makeConst(Oid consttype,
 		  int constlen,
 		  Datum constvalue,
 		  bool constisnull,
-		  bool constbyval,
-		  bool constisset,
-		  bool constiscast);
+		  bool constbyval);
 
 extern Const *makeNullConst(Oid consttype);
 

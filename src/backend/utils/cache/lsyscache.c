@@ -1047,9 +1047,7 @@ get_typdefault(Oid typid)
 									  type->typlen,
 									  datum,
 									  false,
-									  type->typbyval,
-									  false,	/* not a set */
-									  false);
+									  type->typbyval);
 			pfree(strDefaultVal);
 		}
 		else

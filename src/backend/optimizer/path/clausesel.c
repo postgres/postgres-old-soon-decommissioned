@@ -29,8 +29,7 @@
 
 /* note that pg_type.h hardwires size of bool as 1 ... duplicate it */
 #define MAKEBOOLCONST(val,isnull) \
-	((Node *) makeConst(BOOLOID, 1, (Datum) (val), \
-						(isnull), true, false, false))
+	((Node *) makeConst(BOOLOID, 1, (Datum) (val), (isnull), true))
 
 
 /*

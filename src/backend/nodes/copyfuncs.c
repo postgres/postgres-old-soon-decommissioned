@@ -769,8 +769,6 @@ _copyConst(Const *from)
 
 	COPY_SCALAR_FIELD(constisnull);
 	COPY_SCALAR_FIELD(constbyval);
-	COPY_SCALAR_FIELD(constisset);
-	COPY_SCALAR_FIELD(constiscast);
 
 	return newnode;
 }

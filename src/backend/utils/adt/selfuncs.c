@@ -3730,7 +3730,7 @@ string_to_const(const char *str, Oid datatype)
 	Datum		conval = string_to_datum(str, datatype);
 
 	return makeConst(datatype, ((datatype == NAMEOID) ? NAMEDATALEN : -1),
-					 conval, false, false, false, false);
+					 conval, false, false);
 }
 
 /*-------------------------------------------------------------------------

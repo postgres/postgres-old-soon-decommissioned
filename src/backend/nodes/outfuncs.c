@@ -735,7 +735,6 @@ _outConst(StringInfo str, Const *node)
 	WRITE_INT_FIELD(constlen);
 	WRITE_BOOL_FIELD(constbyval);
 	WRITE_BOOL_FIELD(constisnull);
-	/* XXX what about constisset, constiscast? */
 
 	appendStringInfo(str, " :constvalue ");
 	if (node->constisnull)
