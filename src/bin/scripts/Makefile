@@ -20,7 +20,7 @@ createlang: createlang.sh
 	sed -e 's/__DLSUFFIX__/$(DLSUFFIX)/' $< > $@
 
 install: all installdirs
-	$(INSTALL_SCRIPT) $(SCRIPTS) $(bindir)
+	for i in $(SCRIPTS); do $(INSTALL_SCRIPT) $$i $(bindir); done
 
 installdirs:
 	$(mkinstalldirs) $(bindir)
