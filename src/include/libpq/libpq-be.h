@@ -70,6 +70,9 @@ typedef struct Port
 	 */
 #ifdef USE_SSL
 	SSL		   *ssl;
+	X509	   *peer;
+	char		peer_dn[128 + 1];
+	char		peer_cn[SM_USER + 1];
 	unsigned long count;
 #endif
 } Port;
