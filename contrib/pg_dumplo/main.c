@@ -7,19 +7,13 @@
  * -------------------------------------------------------------------------
  */
 
-/* We import postgres_fe.h mostly to get the HAVE_GETOPT_LONG configure result. */
-#ifndef OUT_OF_PG
 #include "postgres_fe.h"
-#endif
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
 #include <errno.h>
+#include <unistd.h>
 
-#include <libpq-fe.h>
-#include <libpq/libpq-fs.h>
+#include "libpq-fe.h"
+#include "libpq/libpq-fs.h"
 
 #include "pg_dumplo.h"
 

@@ -7,18 +7,16 @@
  * -------------------------------------------------------------------------
  */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <sys/types.h>
+#include "postgres_fe.h"
+
 #include <fcntl.h>
 #include <errno.h>
 #include <time.h>
+#include <unistd.h>
+#include <sys/stat.h>
 
-#include <libpq-fe.h>
-#include <libpq/libpq-fs.h>
+#include "libpq-fe.h"
+#include "libpq/libpq-fs.h"
 
 #include "pg_dumplo.h"
 
