@@ -373,7 +373,7 @@ main(int argc, char **argv)
 
 	CloseArchive(AH);
 
-	return 1;
+	return 0;
 }
 
 static void
