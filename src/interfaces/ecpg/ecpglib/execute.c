@@ -1239,7 +1239,7 @@ ECPGexecute(struct statement * stmt)
 	{
 		ECPGlog("ECPGexecute line %d: ASYNC NOTIFY of '%s' from backend pid '%d' received\n",
 				stmt->lineno, notify->relname, notify->be_pid);
-		PQfreemem(notify);
+		PQfreemem(notify); 
 	}
 
 	return status;

@@ -259,21 +259,6 @@ ECPGnoticeProcessor(void *arg, const char *message)
 
 /* this contains some quick hacks, needs to be cleaned up, but it works */
 bool
-ECPGconnect_informix(int lineno, const char *name, const char *user, const char *passwd, const char *connection_name, int autocommit)
-{
-	char *informix_name = (char *)name, *envname;
-	
-	/* Informix uses an environment variable DBPATH that overrides
-	 * the connection parameters given here.
-	 * We do the same with PG_DBPATH as the syntax is different. */
-	envname = getenv("PG_DBPATH");
-	if (envname)
-		informix_name = envname;
-	return (ECPGconnect(lineno, informix_name, user, passwd, connection_name, autocommit));
-}
-	
-/* this contains some quick hacks, needs to be cleaned up, but it works */
-bool
 ECPGconnect(int lineno, const char *name, const char *user, const char *passwd, const char *connection_name, int autocommit)
 {
 	struct connection *this;
@@ -341,7 +326,7 @@ ECPGconnect(int lineno, const char *name, const char *user, const char *passwd, 
 				*tmp = '\0';
 			}
 
-			tmp = last_path_separator(dbname + offset);
+			tmp = last_path_separator(dbname + offset); 
 			if (tmp != NULL)	/* database name given */
 			{
 				realname = strdup(tmp + 1);
