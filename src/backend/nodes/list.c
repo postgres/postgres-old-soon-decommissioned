@@ -381,7 +381,7 @@ list_truncate(List *list, int new_size)
 
 /*
  * Locate the n'th cell (counting from 0) of the list.  It is an assertion
- * error if there isn't one.
+ * failure if there is no such cell.
  */
 static ListCell *
 list_nth_cell(List *list, int n)
