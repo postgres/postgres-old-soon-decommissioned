@@ -83,14 +83,7 @@ SET <replaceable class="parameter">parameter</replaceable> TO DEFAULT
   <title>Examples</title>
 
   <para>
-   Set <varname>DATESTYLE</> to its default value:
-<screen>
-RESET datestyle;
-</screen>
-  </para>
-
-  <para>
-   Set <varname>GEQO</> to its default value:
+   Set the <varname>geqo</> configuration variable to its default value:
 <screen>
 RESET geqo;
 </screen>

@@ -1022,7 +1022,7 @@ SELECT distributors.* FROM distributors d, distributors distributors;
     <command>SELECT</command> statement that also contains an explicit
     <literal>FROM</literal> clause.  Also, it is possible to disable
     the implicit-<literal>FROM</literal> feature by setting the
-    <varname>ADD_MISSING_FROM</> parameter to false.
+    <varname>add_missing_from</> parameter to false.
    </para>
   </refsect2>
 
