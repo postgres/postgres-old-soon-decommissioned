@@ -165,8 +165,11 @@ typedef struct
 #define DTK_MILLENIUM	28
 #define DTK_MILLISEC	29
 #define DTK_MICROSEC	30
-#define DTK_DOW			31
-#define DTK_DOY			32
+
+#define DTK_DOW			32
+#define DTK_DOY			33
+#define DTK_TZ_HOUR		34
+#define DTK_TZ_MINUTE	35
 
 /*
  * Bit mask definitions for time parsing.
