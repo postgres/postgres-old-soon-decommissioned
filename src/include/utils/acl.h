@@ -70,6 +70,9 @@ typedef struct AclItem
   ((item).ai_privs = (ACLITEM_GET_IDTYPE(item)<<30) | (ACLITEM_GET_GOPTIONS(item)<<15) | ((privs) & 0x7FFF))
 #define ACLITEM_SET_GOPTIONS(item,goptions) \
   ((item).ai_privs = (ACLITEM_GET_IDTYPE(item)<<30) | (((goptions) & 0x7FFF) << 15) | ACLITEM_GET_PRIVS(item))
+#define ACLITEM_SET_IDTYPE(item,idtype) \
+  ((item).ai_privs = ((idtype)<<30) | (ACLITEM_GET_GOPTIONS(item)<<15) | ACLITEM_GET_PRIVS(item))
+
 #define ACLITEM_SET_PRIVS_IDTYPE(item,privs,goption,idtype) \
   ((item).ai_privs = ((privs) & 0x7FFF) |(((goption) & 0x7FFF) << 15) | ((idtype) << 30))
 
@@ -188,6 +191,7 @@ extern Datum aclitemout(PG_FUNCTION_ARGS);
 extern Datum aclinsert(PG_FUNCTION_ARGS);
 extern Datum aclremove(PG_FUNCTION_ARGS);
 extern Datum aclcontains(PG_FUNCTION_ARGS);
+extern Datum makeaclitem(PG_FUNCTION_ARGS);
 
 /*
  * prototypes for functions in aclchk.c
