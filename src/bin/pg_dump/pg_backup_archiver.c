@@ -699,9 +699,10 @@ PrintTOCSummary(Archive *AHX, RestoreOptions *ropt)
 	while (te != AH->toc)
 	{
 		if (_tocEntryRequired(te, ropt, false) != 0)
-			ahprintf(AH, "%d; %u %u %s %s %s\n", te->dumpId,
+			ahprintf(AH, "%d; %u %u %s %s %s %s\n", te->dumpId,
 					 te->catalogId.tableoid, te->catalogId.oid,
-					 te->desc, te->tag, te->owner);
+					 te->desc, te->namespace ? te->namespace : "-",
+					 te->tag, te->owner);
 		te = te->next;
 	}
 

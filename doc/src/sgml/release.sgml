@@ -1723,7 +1723,13 @@ $PostgreSQL$
 
     <listitem>
      <para>
-      New start/stop of dump markers in pg_dump (Bruce)
+      pg_restore -l display now includes objects' schema names
+     </para>
+    </listitem>
+
+    <listitem>
+     <para>
+      New begin/end markers in pg_dump text output (Bruce)
      </para>
     </listitem>
 
