@@ -439,7 +439,8 @@ extern slock_t wc_tas(volatile slock_t *lock);
  *
  * Note that slock_t on POWER/POWER2/PowerPC is int instead of char
  */
-#define TAS(lock)	cs((int *) (lock), 0, 1)
+#define TAS(lock)			_check_lock(lock, 0, 1)
+#define S_UNLOCK(lock)		_clear_lock(lock, 0)
 #endif	 /* _AIX */
 
 
