@@ -42,6 +42,12 @@
 #include "catalog/catversion.h"
 #include "catalog/pg_control.h"
 
+extern int	optind;
+extern char *optarg;
+
+#define _(x) gettext((x))
+
+
 /******************** stuff copied from xlog.c ********************/
 
 /* Increment an xlogid/segment pair */
@@ -62,8 +68,6 @@
 
 /******************** end of stuff copied from xlog.c ********************/
 
-#define _(x) gettext((x))
-
 static char XLogDir[MAXPGPATH];
 static char ControlFilePath[MAXPGPATH];
 
@@ -80,9 +84,6 @@ static void RewriteControlFile(void);
 static void KillExistingXLOG(void);
 static void WriteEmptyXLOG(void);
 static void usage(void);
-
-extern char *optarg;
-
 
 
 int
