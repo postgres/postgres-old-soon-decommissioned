@@ -11,7 +11,7 @@
 #
 #-------------------------------------------------------------------------
 
-CMDNAME=`basename $0`
+CMDNAME=`basename "$0"`
 PATHNAME=`echo $0 | sed "s,$CMDNAME\$,,"`
 
 PSQLOPT=
