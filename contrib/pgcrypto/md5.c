@@ -31,6 +31,7 @@
  */
 
 #include "postgres.h"
+#include "px.h"
 
 #include "md5.h"
 

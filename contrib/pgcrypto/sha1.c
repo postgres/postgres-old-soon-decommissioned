@@ -36,6 +36,7 @@
  */
 
 #include "postgres.h"
+#include "px.h"
 
 #include "sha1.h"
 

@@ -32,6 +32,15 @@
 #ifndef __PX_H
 #define __PX_H
 
+#ifdef HAVE_ENDIAN_H
+#include <endian.h>
+#endif
+
+#ifndef BYTE_ORDER
+#error BYTE_ORDER must be defined as LITTLE_ENDIAN or BIG_ENDIAN
+#endif
+
+
 #if 1
 
 #define px_alloc(s) palloc(s)
