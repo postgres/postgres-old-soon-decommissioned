@@ -384,7 +384,7 @@ make && make install
     <listitem>
      <para>
       <classname>pglargeobject</classname>, which handles all the accesses
-      to <productname>Postgres</productname> large objects, and
+      to <productname>PostgreSQL</productname> large objects, and
      </para>
     </listitem>
 

@@ -68,7 +68,7 @@
    <listitem>
     <para>
      <citetitle>Developer's Guide</citetitle>: assorted information
-     for developers of PostgreSQL proper
+     for developers of <productname>PostgreSQL</> proper
     </para>
    </listitem>
   </itemizedlist>

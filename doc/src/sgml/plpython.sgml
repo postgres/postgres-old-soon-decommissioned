@@ -72,7 +72,7 @@ def __plpython_procedure_myfunc_23456():
   </para>
 
   <para>
-   PostgreSQL function variables are available in the global
+   <productname>PostgreSQL</> function variables are available in the global
    <varname>args</varname> list.  In the <function>myfunc</function>
    example, <varname>args[0]</> contains whatever was passed in as the text
    argument.  For <literal>myfunc2(text, integer)</literal>, <varname>args[0]</>

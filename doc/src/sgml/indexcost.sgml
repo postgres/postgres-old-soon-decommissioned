@@ -28,7 +28,8 @@ $Header$
 
    <note>
     <para>
-     Prior to Postgres 7.0, a different scheme was used for registering
+     Prior to <productname>PostgreSQL</productname> 7.0, a different
+     scheme was used for registering 
      index-specific cost estimation functions.
     </para>
    </note>
