@@ -2503,6 +2503,7 @@ transformAlterTableStmt(ParseState *pstate, AlterTableStmt *stmt)
 	return qry;
 }
 
+/* exported so planner can check again after rewriting, query pullup, etc */
 void
 CheckSelectForUpdate(Query *qry)
 {
@@ -2519,7 +2520,7 @@ CheckSelectForUpdate(Query *qry)
 static void
 transformForUpdate(Query *qry, List *forUpdate)
 {
-	List	   *rowMarks = NIL;
+	List	   *rowMarks = qry->rowMarks;
 	List	   *l;
 	List	   *rt;
 	Index		i;
@@ -2542,7 +2543,8 @@ transformForUpdate(Query *qry, List *forUpdate)
 			}
 			else
 			{
-				rowMarks = lappendi(rowMarks, i);
+				if (!intMember(i, rowMarks)) /* avoid duplicates */
+					rowMarks = lappendi(rowMarks, i);
 				rte->checkForWrite = true;
 			}
 		}
