@@ -298,13 +298,29 @@ mark_baserels_for_outer_join(Query *root, Relids rels, Relids outerrels)
 
 	foreach(relid, rels)
 	{
-		RelOptInfo *rel = get_base_rel(root, lfirsti(relid));
+		int			relno = lfirsti(relid);
+		RelOptInfo *rel = get_base_rel(root, relno);
 
 		/*
 		 * Since we do this bottom-up, any outer-rels previously marked
 		 * should be within the new outer join set.
 		 */
 		Assert(is_subseti(rel->outerjoinset, outerrels));
+
+		/*
+		 * Presently the executor cannot support FOR UPDATE marking of
+		 * rels appearing on the nullable side of an outer join.
+		 * (It's somewhat unclear what that would mean, anyway: what should
+		 * we mark when a result row is generated from no element of the
+		 * nullable relation?)  So, complain if target rel is FOR UPDATE.
+		 * It's sufficient to make this check once per rel, so do it only
+		 * if rel wasn't already known nullable.
+		 */
+		if (rel->outerjoinset == NIL)
+		{
+			if (intMember(relno, root->rowMarks))
+				elog(ERROR, "SELECT FOR UPDATE cannot be applied to the nullable side of an OUTER JOIN");
+		}
 
 		rel->outerjoinset = outerrels;
 	}
