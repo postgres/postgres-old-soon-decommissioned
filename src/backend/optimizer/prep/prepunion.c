@@ -22,7 +22,6 @@
 #include "nodes/plannodes.h"
 #include "nodes/relation.h"
 
-#include "parser/parse_query.h"
 #include "parser/parsetree.h"
 
 #include "utils/elog.h"

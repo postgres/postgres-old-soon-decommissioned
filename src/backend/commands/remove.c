@@ -24,7 +24,8 @@
 #include <catalog/pg_language.h>
 #include <catalog/pg_operator.h>
 #include <catalog/pg_proc.h>
-#include <parser/catalog_utils.h>
+#include <catalog/pg_type.h>
+#include <parser/parse_func.h>
 #include <storage/bufmgr.h>
 #include <fmgr.h>
 #ifndef HAVE_MEMMOVE

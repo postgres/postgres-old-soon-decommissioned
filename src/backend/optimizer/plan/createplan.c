@@ -31,7 +31,6 @@
 #include "utils/palloc.h"
 #include "utils/builtins.h"
 
-#include "parser/parse_query.h"
 #include "optimizer/clauseinfo.h"
 #include "optimizer/clauses.h"
 #include "optimizer/planmain.h"

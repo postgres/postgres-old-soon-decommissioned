@@ -36,6 +36,7 @@
 #include <catalog/pg_statistic.h>
 #include <catalog/pg_type.h>
 #include <catalog/pg_operator.h>
+#include <parser/parse_oper.h>
 #include <storage/smgr.h>
 #include <storage/lmgr.h>
 #include <utils/inval.h>
@@ -44,7 +45,6 @@
 #include <utils/syscache.h>
 #include <utils/builtins.h>
 #include <commands/vacuum.h>
-#include <parser/catalog_utils.h>
 #include <storage/bufpage.h>
 #include "storage/shmem.h"
 #ifndef HAVE_GETRUSAGE

@@ -30,6 +30,7 @@
 #include <utils/builtins.h>
 #include <commands/version.h>
 #include <access/xact.h>		/* for GetCurrentXactStartTime */
+#include <parser/parse_node.h>
 #include <tcop/tcopprot.h>
 
 #define MAX_QUERY_LEN 1024

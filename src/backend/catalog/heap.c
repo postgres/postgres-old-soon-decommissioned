@@ -42,11 +42,12 @@
 #include <catalog/pg_attrdef.h>
 #include <catalog/pg_relcheck.h>
 #include <commands/trigger.h>
+#include <parser/parse_expr.h>
+#include <parser/parse_node.h>
+#include <parser/parse_type.h>
 #include <storage/bufmgr.h>
 #include <storage/lmgr.h>
 #include <storage/smgr.h>
-#include <parser/catalog_utils.h>
-#include <parser/parse_query.h>
 #include <rewrite/rewriteRemove.h>
 #include <utils/builtins.h>
 #include <utils/mcxt.h>
@@ -722,8 +723,8 @@ addNewRelationType(char *typeName, Oid new_rel_oid)
 	 */
 	new_type_oid = TypeCreate(typeName, /* type name */
 							  new_rel_oid,		/* relation oid */
-							  tlen(type("oid")),		/* internal size */
-							  tlen(type("oid")),		/* external size */
+							  typeLen(typeidType(OIDOID)),	/* internal size */
+							  typeLen(typeidType(OIDOID)),	/* external size */
 							  'c',		/* type-type (catalog) */
 							  ',',		/* default array delimiter */
 							  "int4in", /* input procedure */

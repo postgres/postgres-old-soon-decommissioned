@@ -22,8 +22,9 @@ CFLAGS+= -Wno-error
 endif
 
 
-OBJS= analyze.o catalog_utils.o gram.o \
-      keywords.o parser.o parse_query.o scan.o scansup.o
+OBJS= analyze.o gram.o keywords.o parser.o parse_agg.o parse_clause.o \
+      parse_expr.o parse_func.o parse_node.o parse_oper.o parse_relation.o \
+      parse_type.o parse_target.o scan.o scansup.o
 
 all: SUBSYS.o
 

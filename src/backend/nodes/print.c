@@ -26,11 +26,11 @@
 #include "nodes/parsenodes.h"
 #include "nodes/print.h"
 #include "parser/parsetree.h"
-#include "parser/catalog_utils.h"
 #include "access/heapam.h"
 #include "utils/lsyscache.h"
 #include "nodes/nodes.h"
 #include "nodes/plannodes.h"
+#include "parser/parse_relation.h"
 #include "optimizer/clauses.h"
 
 static char *plannode_type(Plan *p);
@@ -194,7 +194,7 @@ print_expr(Node *expr, List *rtable)
 					r = heap_openr(relname);
 					if (rt->refname)
 						relname = rt->refname;	/* table renamed */
-					attname = getAttrName(r, var->varattno);
+					attname = attnumAttName(r, var->varattno);
 					heap_close(r);
 				}
 				break;

@@ -26,7 +26,6 @@
 #include "optimizer/clauses.h"
 
 #include "nodes/makefuncs.h"
-#include "parser/catalog_utils.h"
 
 static Node *flatten_tlistentry(Node *tlistentry, List *flat_tlist);
 

@@ -22,7 +22,6 @@
 #include "nodes/parsenodes.h"
 #include "nodes/primnodes.h"
 #include "nodes/relation.h"
-#include "parser/parse_query.h"
 
 #include "utils/syscache.h"
 #include "utils/builtins.h"		/* for namecpy */

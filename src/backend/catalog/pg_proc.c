@@ -13,22 +13,22 @@
  */
 #include <postgres.h>
 
+#include <fmgr.h>
+#include <miscadmin.h>
 #include <utils/syscache.h>
 #include <catalog/pg_proc.h>
 #include <access/heapam.h>
 #include <access/relscan.h>
-#include <fmgr.h>
-#include <utils/builtins.h>
-#include <utils/sets.h>
 #include <catalog/catname.h>
 #include <catalog/indexing.h>
-#include <parser/parse_query.h>
+#include <catalog/pg_type.h>
+#include <parser/parse_node.h>
 #include <tcop/tcopprot.h>
-#include <parser/catalog_utils.h>
+#include <utils/builtins.h>
+#include <utils/sets.h>
+#include <utils/lsyscache.h>
 #include <optimizer/internal.h>
 #include <optimizer/planner.h>
-#include <utils/lsyscache.h>
-#include <miscadmin.h>
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>
 #else
@@ -200,7 +200,7 @@ ProcedureCreate(char *procedureName,
 	if (parameterCount == 1 &&
 		(toid = TypeGet(strVal(lfirst(argList)), &defined)) &&
 		defined &&
-		(relid = typeid_get_relid(toid)) != 0 &&
+		(relid = typeidTypeRelid(toid)) != 0 &&
 		get_attnum(relid, procedureName) != InvalidAttrNumber)
 		elog(WARN, "method %s already an attribute of type %s",
 			 procedureName, strVal(lfirst(argList)));

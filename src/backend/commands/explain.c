@@ -16,12 +16,11 @@
 
 #include <postgres.h>
 
-#include <parser/catalog_utils.h>
-#include <parser/parse_query.h> /* for MakeTimeRange() */
 #include <nodes/plannodes.h>
 #include <tcop/tcopprot.h>
 #include <lib/stringinfo.h>
 #include <commands/explain.h>
+#include <parser/parse_node.h>
 #include <optimizer/planner.h>
 #include <access/xact.h>
 

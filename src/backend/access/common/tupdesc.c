@@ -20,8 +20,9 @@
 
 #include <postgres.h>
 
-#include <parser/catalog_utils.h>
+#include <catalog/pg_type.h>
 #include <nodes/parsenodes.h>
+#include <parser/parse_type.h>
 #include <utils/builtins.h>
 #include <utils/fcache.h>
 #include <utils/syscache.h>
@@ -377,10 +378,10 @@ TupleDescInitEntry(TupleDesc desc,
 	   */
 	if (attisset)
 	{
-		Type		t = type("oid");
+		Type		t = typeidType(OIDOID);
 
-		att->attlen = tlen(t);
-		att->attbyval = tbyval(t);
+		att->attlen = typeLen(t);
+		att->attbyval = typeByVal(t);
 	}
 	else
 	{
@@ -410,12 +411,12 @@ TupleDescMakeSelfReference(TupleDesc desc,
 						   char *relname)
 {
 	AttributeTupleForm att;
-	Type		t = type("oid");
+	Type		t = typeidType(OIDOID);
 
 	att = desc->attrs[attnum - 1];
 	att->atttypid = TypeShellMake(relname);
-	att->attlen = tlen(t);
-	att->attbyval = tbyval(t);
+	att->attlen = typeLen(t);
+	att->attbyval = typeByVal(t);
 	att->attnelems = 0;
 }
 

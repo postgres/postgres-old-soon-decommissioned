@@ -20,9 +20,10 @@
 #include <utils/builtins.h>
 #include <utils/tqual.h>
 #include <fmgr.h>
-#include <parser/catalog_utils.h>
 #include <catalog/catname.h>
 #include <catalog/indexing.h>
+#include <catalog/pg_type.h>
+#include <parser/parse_func.h>
 #include <storage/lmgr.h>
 #include <miscadmin.h>
 #ifndef HAVE_MEMMOVE

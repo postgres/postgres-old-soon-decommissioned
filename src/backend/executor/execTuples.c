@@ -125,11 +125,11 @@
 #undef ExecStoreTuple
 
 #include "access/tupdesc.h"
+#include "catalog/pg_type.h"
+#include "parser/parse_type.h"
+#include "storage/bufmgr.h"
 #include "utils/palloc.h"
 #include "utils/lsyscache.h"
-#include "storage/bufmgr.h"
-#include "parser/catalog_utils.h"
-#include "catalog/pg_type.h"
 
 static TupleTableSlot *NodeGetResultTupleSlot(Plan *node);
 
