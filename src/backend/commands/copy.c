@@ -449,8 +449,7 @@ CopyTo(Relation rel, bool binary, bool oids, FILE *fp,
 	{
 		bool		need_delim = false;
 
-		if (QueryCancel)
-			CancelQuery();
+		CHECK_FOR_INTERRUPTS();
 
 		if (binary)
 		{
@@ -702,11 +701,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp,
 
 	while (!done)
 	{
-		if (QueryCancel)
-		{
-			lineno = 0;
-			CancelQuery();
-		}
+		CHECK_FOR_INTERRUPTS();
 
 		lineno++;
 

@@ -17,6 +17,7 @@
 
 #include "access/heapam.h"
 #include "access/nbtree.h"
+#include "miscadmin.h"
 
 
 typedef struct

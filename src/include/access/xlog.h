@@ -101,7 +101,6 @@ typedef XLogPageHeaderData *XLogPageHeader;
 extern	StartUpID	ThisStartUpID;	/* current SUI */
 extern	bool		InRecovery;
 extern	XLogRecPtr	MyLastRecPtr;
-extern volatile uint32		CritSectionCount;
 
 typedef struct RmgrData
 {

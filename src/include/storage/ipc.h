@@ -99,7 +99,7 @@ extern IpcSemaphoreId IpcSemaphoreCreate(int numSems, int permission,
 										 int semStartValue,
 										 bool removeOnExit);
 extern void IpcSemaphoreKill(IpcSemaphoreId semId);
-extern void IpcSemaphoreLock(IpcSemaphoreId semId, int sem);
+extern void IpcSemaphoreLock(IpcSemaphoreId semId, int sem, bool interruptOK);
 extern void IpcSemaphoreUnlock(IpcSemaphoreId semId, int sem);
 extern bool IpcSemaphoreTryLock(IpcSemaphoreId semId, int sem);
 extern int	IpcSemaphoreGetValue(IpcSemaphoreId semId, int sem);

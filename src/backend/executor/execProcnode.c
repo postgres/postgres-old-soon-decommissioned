@@ -248,14 +248,12 @@ ExecProcNode(Plan *node, Plan *parent)
 {
 	TupleTableSlot *result;
 
+	CHECK_FOR_INTERRUPTS();
+
 	/* ----------------
 	 *	deal with NULL nodes..
 	 * ----------------
 	 */
-
-	if (QueryCancel)
-		CancelQuery();
-
 	if (node == NULL)
 		return NULL;
 

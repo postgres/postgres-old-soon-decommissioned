@@ -42,7 +42,6 @@
 int			XLOGbuffers = 8;
 int			XLOGfiles = 0;	/* how many files to pre-allocate */
 XLogRecPtr	MyLastRecPtr = {0, 0};
-volatile uint32 CritSectionCount = 0;
 bool		InRecovery = false;
 StartUpID	ThisStartUpID = 0;
 XLogRecPtr	RedoRecPtr;

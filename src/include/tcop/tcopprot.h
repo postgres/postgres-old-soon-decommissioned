@@ -40,9 +40,7 @@ extern void pg_exec_query_string(char *query_string,
 
 #endif	 /* BOOTSTRAP_INCLUDE */
 
-extern void handle_warn(SIGNAL_ARGS);
 extern void die(SIGNAL_ARGS);
-extern void CancelQuery(void);
 extern int PostgresMain(int argc, char *argv[],
 			 int real_argc, char *real_argv[], const char *username);
 extern void ResetUsage(void);

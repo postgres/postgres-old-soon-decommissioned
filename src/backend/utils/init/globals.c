@@ -34,7 +34,12 @@ ProtocolVersion FrontendProtocol = PG_PROTOCOL_LATEST;
 
 bool		Noversion = false;
 bool		Quiet = false;
-volatile bool QueryCancel = false;
+
+volatile bool InterruptPending = false;
+volatile bool QueryCancelPending = false;
+volatile bool ProcDiePending = false;
+volatile bool ImmediateInterruptOK = false;
+volatile uint32 CritSectionCount = 0;
 
 int			MyProcPid;
 struct Port *MyProcPort;
@@ -56,9 +61,7 @@ BackendId	MyBackendId;
 char	   *DatabaseName = NULL;
 char	   *DatabasePath = NULL;
 
-bool		MyDatabaseIdIsInitialized = false;
 Oid			MyDatabaseId = InvalidOid;
-bool		TransactionInitWasProcessed = false;
 
 bool		IsUnderPostmaster = false;
 

@@ -329,9 +329,10 @@ BootstrapMain(int argc, char *argv[])
 
 	if (!IsUnderPostmaster)
 	{
-		pqsignal(SIGINT, (pqsigfunc) die);
-		pqsignal(SIGHUP, (pqsigfunc) die);
-		pqsignal(SIGTERM, (pqsigfunc) die);
+		pqsignal(SIGHUP, die);
+		pqsignal(SIGINT, die);
+		pqsignal(SIGTERM, die);
+		pqsignal(SIGQUIT, die);
 	}
 
 	/*
@@ -383,8 +384,6 @@ BootstrapMain(int argc, char *argv[])
 	 *	abort processing resumes here
 	 * ----------------
 	 */
-	pqsignal(SIGHUP, handle_warn);
-
 	if (sigsetjmp(Warn_restart, 1) != 0)
 	{
 		Warnings++;
