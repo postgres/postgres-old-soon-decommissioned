@@ -327,7 +327,7 @@ dumpGroups(PGconn *conn)
 
 		val = strdup(PQgetvalue(res, i, 2));
 		tok = strtok(val, ",{}");
-		do
+		while (tok)
 		{
 			PGresult   *res2;
 			PQExpBuffer buf2 = createPQExpBuffer();
@@ -347,7 +347,7 @@ dumpGroups(PGconn *conn)
 
 			tok = strtok(NULL, "{},");
 		}
-		while (tok);
+		free(val);
 
 		printf("%s", buf->data);
 		destroyPQExpBuffer(buf);
