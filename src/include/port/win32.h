@@ -196,7 +196,7 @@ int			setitimer(int which, const struct itimerval * value, struct itimerval * ov
  */
 typedef int uid_t;
 typedef int gid_t;
-typdef long key_t;
+typedef long key_t;
 
 /*
  * Supplement to <sys/stat.h>.
