@@ -166,7 +166,7 @@ depend dep:
 
 .PHONY: clean
 clean:
-	rm -f libpq.a $(shlib) $(OBJS) c.h
+	rm -f libpq.a $(shlib) $(OBJS) c.h dllist.c pqcomprim.c libpq.so
 
 ifeq (depend,$(wildcard depend))
 include depend

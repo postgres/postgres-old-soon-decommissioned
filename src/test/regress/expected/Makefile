@@ -11,7 +11,7 @@
 #
 #-------------------------------------------------------------------------
 
-CLFILES=	create_function_1.out create_function_2.out copy.out constraints.out
+CLFILES=	create_function_1.out create_function_2.out copy.out constraints.out misc.out
 
 clean:
 	rm -f $(CLFILES)

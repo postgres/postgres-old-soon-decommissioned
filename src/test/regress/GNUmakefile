@@ -54,7 +54,7 @@ runtest: $(INFILES)
 	@echo "ACTUAL RESULTS OF REGRESSION TEST ARE NOW IN FILE regress.out"
 
 clean:
-	rm -f $(INFILES)
+	rm -f $(INFILES) regress.out
 	$(MAKE) -C sql clean
 	$(MAKE) -C expected clean
 	$(MAKE) -C results clean
