@@ -34,6 +34,7 @@
 #include "executor/executor.h"
 #include "libpq/pqsignal.h"
 #include "miscadmin.h"
+#include "storage/freespace.h"
 #include "storage/ipc.h"
 #include "storage/proc.h"
 #include "tcop/tcopprot.h"
@@ -398,10 +399,12 @@ BootstrapMain(int argc, char *argv[])
 
 		case BS_XLOG_STARTUP:
 			StartupXLOG();
+			LoadFreeSpaceMap();
 			proc_exit(0);		/* done */
 
 		case BS_XLOG_SHUTDOWN:
 			ShutdownXLOG();
+			DumpFreeSpaceMap();
 			proc_exit(0);		/* done */
 
 		default:

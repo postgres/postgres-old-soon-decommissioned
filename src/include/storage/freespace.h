@@ -60,6 +60,9 @@ extern void FreeSpaceMapForgetDatabase(Oid dbid);
 
 extern void PrintFreeSpaceMapStatistics(int elevel);
 
+extern void DumpFreeSpaceMap(void);
+extern void LoadFreeSpaceMap(void);
+
 #ifdef FREESPACE_DEBUG
 extern void DumpFreeSpace(void);
 #endif
