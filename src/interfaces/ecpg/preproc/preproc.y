@@ -4632,7 +4632,6 @@ type_declaration: S_TYPEDEF
 		char * dimension = $6.index1;
 		char * length = $6.index2;
 
-printf("MM: %s\n", $5);
 		if (($3.type_enum == ECPGt_struct ||
 		     $3.type_enum == ECPGt_union) &&
 		    initializer == 1)
