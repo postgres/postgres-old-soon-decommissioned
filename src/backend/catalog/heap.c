@@ -1057,7 +1057,7 @@ RelationTruncateIndexes(Oid heapId)
  */
 
 void
-heap_truncate(char *relname)
+heap_truncate(const char *relname)
 {
 	Relation	rel;
 	Oid			rid;
