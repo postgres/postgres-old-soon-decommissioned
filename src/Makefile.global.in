@@ -105,9 +105,12 @@ mandir := @mandir@
 sqlmansect_dummy = l
 
 docdir := @docdir@
+# docdir can be an empty string to signify --without-docdir
+ifneq (,$(docdir))
 ifeq "$(findstring pgsql, $(docdir))" ""
 ifeq "$(findstring postgres, $(docdir))" ""
 override docdir := $(docdir)/postgresql
+endif
 endif
 endif
 
