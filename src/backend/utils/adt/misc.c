@@ -18,11 +18,6 @@
 #include "catalog/pg_type.h"
 #include "utils/builtins.h"
 
-#ifndef HAVE_RANDOM
-#  include "port-protos.h"		/* For random(), sometimes */
-#endif
-
-
 /*-------------------------------------------------------------------------
  * Check if data is Null
  */
