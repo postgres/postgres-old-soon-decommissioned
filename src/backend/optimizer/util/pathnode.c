@@ -195,14 +195,19 @@ better_path(Path *new_path, List *unique_paths, bool *is_new)
 				 * more expensive and replace unordered path with ordered
 				 * path if it is not more expensive.
 				 */
+				 
+					/* same keys, and new is cheaper, use it */
 			    if ((longer_key == 0 && new_path->path_cost <  path->path_cost) ||
-					(longer_key == 1 && new_path->path_cost <= path->path_cost) ||
-					(longer_key == 2 && new_path->path_cost >= path->path_cost))
+					/* new is longer, and cheaper, use it */
+					(longer_key == 1 && new_path->path_cost <= path->path_cost))
 				{
 					*is_new = false;
 					return new_path;
 				}
-				else
+						/* same keys, new is more expensive, stop */
+			    else if ((longer_key == 0 && new_path->path_cost >= path->path_cost) ||
+						/* old is longer, and less expensive, stop */
+						 (longer_key == 2 && new_path->path_cost >= path->path_cost))
 				{
 					*is_new = false;
 					return NULL;

@@ -373,8 +373,7 @@ new_join_pathkey(List *subkeys,
 		if (tlist_key)
 		{
 			if (!member(tlist_key, matched_subkeys))
-				newly_considered_subkeys = lcons(tlist_key,
-												 matched_subkeys);
+				newly_considered_subkeys = lcons(tlist_key, matched_subkeys);
 		}
 		else
 			newly_considered_subkeys = matched_subkeys;
