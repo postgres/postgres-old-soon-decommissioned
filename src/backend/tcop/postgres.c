@@ -1328,7 +1328,7 @@ PostgresMain(int argc, char *argv[])
 	if (IsUnderPostmaster == false)
 	{
 		puts("\nPOSTGRES backend interactive interface");
-		puts("$Revision: 1.69 $ $Date: 1998/05/19 18:05:48 $");
+		puts("$Revision: 1.70 $ $Date: 1998/05/26 03:20:00 $");
 	}
 
 	/* ----------------
@@ -1346,7 +1346,7 @@ PostgresMain(int argc, char *argv[])
 		 *	 (0) tell the frontend we're ready for a new query.
 		 * ----------------
 		 */
-		ReadyForQuery(Remote);
+		ReadyForQuery(whereToSendOutput);
 
 		/* ----------------
 		 *	 (1) read a command.
