@@ -359,7 +359,7 @@ extern void pgstat_beterm(int pid);
 extern void pgstat_bestart(void);
 
 extern void pgstat_ping(void);
-extern void pgstat_report_activity(char *what);
+extern void pgstat_report_activity(const char *what);
 extern void pgstat_report_tabstat(void);
 extern int	pgstat_vacuum_tabstat(void);
 

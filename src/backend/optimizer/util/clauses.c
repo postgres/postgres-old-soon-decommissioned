@@ -1692,7 +1692,6 @@ inline_function(Oid funcid, Oid result_type, List *args,
 	bool		isNull;
 	MemoryContext oldcxt;
 	MemoryContext mycxt;
-	StringInfoData stri;
 	List	   *raw_parsetree_list;
 	List	   *querytree_list;
 	Query	   *querytree;
@@ -1752,10 +1751,7 @@ inline_function(Oid funcid, Oid result_type, List *args,
 	 * we care about.  Also, we can punt as soon as we detect more than
 	 * one command in the function body.
 	 */
-	initStringInfo(&stri);
-	appendStringInfo(&stri, "%s", src);
-
-	raw_parsetree_list = pg_parse_query(&stri,
+	raw_parsetree_list = pg_parse_query(src,
 										funcform->proargtypes,
 										funcform->pronargs);
 	if (length(raw_parsetree_list) != 1)

@@ -15,7 +15,6 @@
 #ifndef GRAMPARSE_H
 #define GRAMPARSE_H
 
-#include "lib/stringinfo.h"
 #include "nodes/parsenodes.h"
 
 /* from parser.c */
@@ -24,7 +23,7 @@ extern Oid	param_type(int t);
 extern int	yylex(void);
 
 /* from scan.l */
-extern void scanner_init(StringInfo str);
+extern void scanner_init(const char *str);
 extern void scanner_finish(void);
 extern int	base_yylex(void);
 extern void yyerror(const char *message);

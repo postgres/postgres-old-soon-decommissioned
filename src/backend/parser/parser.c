@@ -45,7 +45,7 @@ static bool have_lookahead;		/* lookahead_token set? */
  * Returns a list of raw (un-analyzed) parse trees.
  */
 List *
-parser(StringInfo str, Oid *typev, int nargs)
+parser(const char *str, Oid *typev, int nargs)
 {
 	int			yyresult;
 

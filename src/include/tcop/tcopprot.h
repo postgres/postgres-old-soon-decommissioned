@@ -22,7 +22,6 @@
 #include <setjmp.h>
 
 #include "executor/execdesc.h"
-#include "lib/stringinfo.h"
 #include "tcop/dest.h"
 
 
@@ -32,16 +31,16 @@ extern bool InError;
 extern CommandDest whereToSendOutput;
 extern bool log_hostname;
 extern bool LogSourcePort;
-extern DLLIMPORT char* debug_query_string;
+extern DLLIMPORT const char *debug_query_string;
 
 #ifndef BOOTSTRAP_INCLUDE
 
-extern List *pg_parse_query(StringInfo query_string, Oid *typev, int nargs);
+extern List *pg_parse_query(const char *query_string, Oid *typev, int nargs);
 extern List *pg_analyze_and_rewrite(Node *parsetree);
-extern List *pg_parse_and_rewrite(char *query_string,
+extern List *pg_parse_and_rewrite(const char *query_string,
 					 Oid *typev, int nargs);
 extern Plan *pg_plan_query(Query *querytree);
-extern void pg_exec_query_string(StringInfo query_string,
+extern void pg_exec_query_string(const char *query_string,
 					 CommandDest dest,
 					 MemoryContext parse_context);
 

@@ -14,9 +14,8 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include "lib/stringinfo.h"
 #include "parser/parse_node.h"
 
-extern List *parser(StringInfo str, Oid *typev, int nargs);
+extern List *parser(const char *str, Oid *typev, int nargs);
 
 #endif   /* PARSER_H */

@@ -437,7 +437,7 @@ parseTypeString(const char *str, Oid *type_id, int32 *typmod)
 	initStringInfo(&buf);
 	appendStringInfo(&buf, "SELECT (NULL::%s)", str);
 
-	raw_parsetree_list = parser(&buf, NULL, 0);
+	raw_parsetree_list = parser(buf.data, NULL, 0);
 
 	/*
 	 * Make sure we got back exactly what we expected and no more;
