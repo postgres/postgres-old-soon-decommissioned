@@ -812,6 +812,20 @@ is_pseudo_constant_clause(Node *clause)
 }
 
 /*
+ * is_pseudo_constant_clause_relids
+ *	  Same as above, except caller already has available the var membership
+ *	  of the clause; this lets us avoid the contain_var_clause() scan.
+ */
+bool
+is_pseudo_constant_clause_relids(Node *clause, Relids relids)
+{
+	if (bms_is_empty(relids) &&
+		!contain_volatile_functions(clause))
+		return true;
+	return false;
+}
+
+/*
  * pull_constant_clauses
  *		Scan through a list of qualifications and separate "constant" quals
  *		from those that are not.

@@ -1074,9 +1074,10 @@ _outRestrictInfo(StringInfo str, RestrictInfo *node)
 	/* NB: this isn't a complete set of fields */
 	WRITE_NODE_FIELD(clause);
 	WRITE_BOOL_FIELD(ispusheddown);
-	WRITE_NODE_FIELD(subclauseindices);
+	WRITE_BOOL_FIELD(canjoin);
 	WRITE_BITMAPSET_FIELD(left_relids);
 	WRITE_BITMAPSET_FIELD(right_relids);
+	WRITE_NODE_FIELD(subclauseindices);
 	WRITE_OID_FIELD(mergejoinoperator);
 	WRITE_OID_FIELD(left_sortop);
 	WRITE_OID_FIELD(right_sortop);

@@ -54,6 +54,7 @@ extern bool contain_volatile_functions(Node *clause);
 extern bool contain_nonstrict_functions(Node *clause);
 
 extern bool is_pseudo_constant_clause(Node *clause);
+extern bool is_pseudo_constant_clause_relids(Node *clause, Relids relids);
 extern List *pull_constant_clauses(List *quals, List **constantQual);
 
 extern bool has_distinct_on_clause(Query *query);
