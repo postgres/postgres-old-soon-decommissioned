@@ -227,7 +227,8 @@ where <replaceable class="PARAMETER">action</replaceable> is one of:
      <para>
       This form removes the most recently used
       <xref linkend="SQL-CLUSTER" endterm="sql-cluster-title">
-      index specification from the table.
+      index specification from the table.  This affects
+      future cluster operations that don't specify an index.
      </para>
     </listitem>
    </varlistentry>
