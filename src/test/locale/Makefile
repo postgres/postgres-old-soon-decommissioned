@@ -6,15 +6,15 @@ include $(top_builddir)/src/Makefile.global
 
 
 PROGS = test-pgsql-locale test-ctype
-DIRS = koi8-r ISO8859-7 koi8-to-win1251
+DIRS = de_DE.ISO8859-1 gr_GR.ISO8859-7 koi8-r koi8-to-win1251
 
 all: $(PROGS)
 
 clean: 
-	rm -f $(PROGS) *.out
+	rm -f $(PROGS)
 	for d in $(DIRS); do \
-		$(MAKE) -C $$d clean
+		$(MAKE) -C $$d clean; \
 	done
 
-test-%: all
-	@cd `echo $@ | sed 's/^test-//'` && $(MAKE) test
+check-%: all
+	@$(MAKE) -C `echo $@ | sed 's/^check-//'` test
