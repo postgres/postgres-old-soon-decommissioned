@@ -1161,7 +1161,12 @@ GetTempTableNamespace(void)
 	{
 		/*
 		 * First use of this temp namespace in this database; create it.
-		 * The temp namespaces are always owned by the superuser.
+		 * The temp namespaces are always owned by the superuser.  We
+		 * leave their permissions at default --- i.e., no access except to
+		 * superuser --- to ensure that unprivileged users can't peek
+		 * at other backends' temp tables.  This works because the places
+		 * that access the temp namespace for my own backend skip permissions
+		 * checks on it.
 		 */
 		namespaceId = NamespaceCreate(namespaceName, BOOTSTRAP_USESYSID);
 		/* Advance command counter to make namespace visible */

@@ -709,6 +709,32 @@ get_rel_name(Oid relid)
 }
 
 /*
+ * get_rel_namespace
+ *
+ *		Returns the pg_namespace OID associated with a given relation.
+ */
+Oid
+get_rel_namespace(Oid relid)
+{
+	HeapTuple	tp;
+
+	tp = SearchSysCache(RELOID,
+						ObjectIdGetDatum(relid),
+						0, 0, 0);
+	if (HeapTupleIsValid(tp))
+	{
+		Form_pg_class reltup = (Form_pg_class) GETSTRUCT(tp);
+		Oid		result;
+
+		result = reltup->relnamespace;
+		ReleaseSysCache(tp);
+		return result;
+	}
+	else
+		return InvalidOid;
+}
+
+/*
  * get_rel_type_id
  *
  *		Returns the pg_type OID associated with a given relation.

@@ -161,6 +161,8 @@ GRANT { { CREATE | USAGE } [,...] | ALL [ PRIVILEGES ] }
       </para>
       <para>
        For schemas, allows new objects to be created within the schema.
+       To rename an existing object, you must own the object <emphasis>and</>
+       have this privilege for the containing schema.
       </para>
      </listitem>
     </varlistentry>
