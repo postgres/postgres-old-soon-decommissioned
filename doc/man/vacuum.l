@@ -6,7 +6,7 @@
 vacuum \(em vacuum a database
 .SH SYNOPSIS
 .nf
-\fBvacuum\fP
+\fBvacuum [table]\fP
 .fi
 .SH DESCRIPTION
 .BR Vacuum
