@@ -7,6 +7,7 @@ include $(top_builddir)/src/Makefile.global
 WANTED_DIRS = \
 		array		\
 		btree_gist	\
+		chkpass		\
 		cube		\
 		dbase		\
 		dblink		\
