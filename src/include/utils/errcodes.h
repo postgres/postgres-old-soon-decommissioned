@@ -294,6 +294,8 @@
 /* Class 58 - System Error (class borrowed from DB2) */
 /* (we define this as errors external to PostgreSQL itself) */
 #define ERRCODE_IO_ERROR					MAKE_SQLSTATE('5','8', '0','3','0')
+#define ERRCODE_UNDEFINED_FILE				MAKE_SQLSTATE('5','8', 'P','0','1')
+#define ERRCODE_DUPLICATE_FILE				MAKE_SQLSTATE('5','8', 'P','0','2')
 
 /* Class F0 - Configuration File Error (PostgreSQL-specific error class) */
 #define ERRCODE_CONFIG_FILE_ERROR			MAKE_SQLSTATE('F','0', '0','0','0')

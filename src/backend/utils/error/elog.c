@@ -530,20 +530,20 @@ errcode_for_file_access(void)
 			edata->sqlerrcode = ERRCODE_INSUFFICIENT_PRIVILEGE;
 			break;
 
-			/* Object not found */
+			/* File not found */
 		case ENOENT:			/* No such file or directory */
-			edata->sqlerrcode = ERRCODE_UNDEFINED_OBJECT;
+			edata->sqlerrcode = ERRCODE_UNDEFINED_FILE;
 			break;
 
-			/* Duplicate object */
+			/* Duplicate file */
 		case EEXIST:			/* File exists */
-			edata->sqlerrcode = ERRCODE_DUPLICATE_OBJECT;
+			edata->sqlerrcode = ERRCODE_DUPLICATE_FILE;
 			break;
 
 			/* Wrong object type or state */
 		case ENOTDIR:			/* Not a directory */
 		case EISDIR:			/* Is a directory */
-		case ENOTEMPTY: /* Directory not empty */
+		case ENOTEMPTY:			/* Directory not empty */
 			edata->sqlerrcode = ERRCODE_WRONG_OBJECT_TYPE;
 			break;
 
