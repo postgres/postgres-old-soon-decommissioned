@@ -95,6 +95,7 @@ extern Datum timetz_le(PG_FUNCTION_ARGS);
 extern Datum timetz_gt(PG_FUNCTION_ARGS);
 extern Datum timetz_ge(PG_FUNCTION_ARGS);
 extern Datum timetz_cmp(PG_FUNCTION_ARGS);
+extern Datum timetz_hash(PG_FUNCTION_ARGS);
 extern Datum overlaps_timetz(PG_FUNCTION_ARGS);
 extern Datum timetz_larger(PG_FUNCTION_ARGS);
 extern Datum timetz_smaller(PG_FUNCTION_ARGS);

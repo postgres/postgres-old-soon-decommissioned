@@ -29,6 +29,7 @@
 #include <sys/timeb.h>
 #endif
 
+#include "access/hash.h"
 #include "access/xact.h"
 #include "miscadmin.h"
 #include "utils/builtins.h"
@@ -814,6 +815,22 @@ interval_cmp(PG_FUNCTION_ARGS)
 		span2 += (interval2->month * (30.0 * 86400));
 
 	PG_RETURN_INT32((span1 < span2) ? -1 : (span1 > span2) ? 1 : 0);
+}
+
+/*
+ * interval, being an unusual size, needs a specialized hash function.
+ */
+Datum
+interval_hash(PG_FUNCTION_ARGS)
+{
+	Interval   *key = PG_GETARG_INTERVAL_P(0);
+
+	/*
+	 * Specify hash length as sizeof(double) + sizeof(int4), not as
+	 * sizeof(Interval), so that any garbage pad bytes in the structure
+	 * won't be included in the hash!
+	 */
+	return hash_any((char *) key, sizeof(double) + sizeof(int4));
 }
 
 /* overlaps_timestamp()

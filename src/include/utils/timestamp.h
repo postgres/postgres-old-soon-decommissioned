@@ -151,6 +151,7 @@ extern Datum interval_ge(PG_FUNCTION_ARGS);
 extern Datum interval_gt(PG_FUNCTION_ARGS);
 extern Datum interval_finite(PG_FUNCTION_ARGS);
 extern Datum interval_cmp(PG_FUNCTION_ARGS);
+extern Datum interval_hash(PG_FUNCTION_ARGS);
 extern Datum interval_smaller(PG_FUNCTION_ARGS);
 extern Datum interval_larger(PG_FUNCTION_ARGS);
 

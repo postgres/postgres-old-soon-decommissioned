@@ -104,7 +104,7 @@ GetCCHashFunc(Oid keytype)
 		case INT4OID:
 			return hashint4;
 		case TEXTOID:
-			return hashtext;
+			return hashvarlena;
 		case REGPROCOID:
 		case OIDOID:
 			return hashoid;

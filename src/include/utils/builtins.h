@@ -160,14 +160,12 @@ extern void ltoa(int32 l, char *a);
 
 /*
  *		Per-opclass comparison functions for new btrees.  These are
- *		stored in pg_amproc and defined in nbtree/
+ *		stored in pg_amproc and defined in access/nbtree/nbtcompare.c
  */
 extern Datum btboolcmp(PG_FUNCTION_ARGS);
 extern Datum btint2cmp(PG_FUNCTION_ARGS);
 extern Datum btint4cmp(PG_FUNCTION_ARGS);
 extern Datum btint8cmp(PG_FUNCTION_ARGS);
-extern Datum btint24cmp(PG_FUNCTION_ARGS);
-extern Datum btint42cmp(PG_FUNCTION_ARGS);
 extern Datum btfloat4cmp(PG_FUNCTION_ARGS);
 extern Datum btfloat8cmp(PG_FUNCTION_ARGS);
 extern Datum btoidcmp(PG_FUNCTION_ARGS);
@@ -421,7 +419,7 @@ extern bool bpcharge(char *arg1, char *arg2);
 extern int32 bpcharcmp(char *arg1, char *arg2);
 extern int32 bpcharlen(char *arg);
 extern int32 bpcharoctetlen(char *arg);
-extern uint32 hashbpchar(struct varlena * key);
+extern Datum hashbpchar(PG_FUNCTION_ARGS);
 
 extern Datum varcharin(PG_FUNCTION_ARGS);
 extern Datum varcharout(PG_FUNCTION_ARGS);
@@ -436,7 +434,6 @@ extern bool varcharge(char *arg1, char *arg2);
 extern int32 varcharcmp(char *arg1, char *arg2);
 extern int32 varcharlen(char *arg);
 extern int32 varcharoctetlen(char *arg);
-extern uint32 hashvarchar(struct varlena * key);
 
 /* varlena.c */
 extern text *textin(char *inputText);

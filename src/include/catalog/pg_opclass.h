@@ -34,8 +34,8 @@
 
 CATALOG(pg_opclass)
 {
-	NameData	opcname;
-	Oid			opcdeftype;
+	NameData	opcname;		/* name of opclass defined by this row */
+	Oid			opcdeftype;		/* type that opclass is default for, or 0 */
 } FormData_pg_opclass;
 
 /* ----------------
@@ -69,10 +69,6 @@ DATA(insert OID =  422 (	box_ops			603   ));
 DESCR("");
 DATA(insert OID =  423 (	float8_ops		701   ));
 DESCR("");
-DATA(insert OID =  424 (	int24_ops		  0   ));
-DESCR("");
-DATA(insert OID =  425 (	int42_ops		  0   ));
-DESCR("");
 DATA(insert OID =  426 (	int4_ops		 23   ));
 DESCR("");
 #define INT4_OPS_OID 426
@@ -86,7 +82,7 @@ DATA(insert OID =  431 (	text_ops		 25   ));
 DESCR("");
 DATA(insert OID =  432 (	abstime_ops		702   ));
 DESCR("");
-DATA(insert OID =  433 (	bigbox_ops		603   ));
+DATA(insert OID =  433 (	bigbox_ops		  0   ));
 DESCR("");
 DATA(insert OID =  434 (	poly_ops		604   ));
 DESCR("");

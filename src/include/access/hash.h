@@ -264,17 +264,18 @@ extern Datum hashdelete(PG_FUNCTION_ARGS);
  * NOTE: some of these are also used by catcache operations, without
  * any direct connection to hash indexes.
  */
+extern Datum hashchar(PG_FUNCTION_ARGS);
 extern Datum hashint2(PG_FUNCTION_ARGS);
 extern Datum hashint4(PG_FUNCTION_ARGS);
 extern Datum hashint8(PG_FUNCTION_ARGS);
+extern Datum hashoid(PG_FUNCTION_ARGS);
 extern Datum hashfloat4(PG_FUNCTION_ARGS);
 extern Datum hashfloat8(PG_FUNCTION_ARGS);
-extern Datum hashoid(PG_FUNCTION_ARGS);
 extern Datum hashoidvector(PG_FUNCTION_ARGS);
 extern Datum hashint2vector(PG_FUNCTION_ARGS);
-extern Datum hashchar(PG_FUNCTION_ARGS);
-extern Datum hashtext(PG_FUNCTION_ARGS);
 extern Datum hashname(PG_FUNCTION_ARGS);
+extern Datum hashvarlena(PG_FUNCTION_ARGS);
+extern Datum hash_any(char *keydata, int keylen);
 
 
 /* private routines */
