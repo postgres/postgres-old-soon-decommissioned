@@ -171,17 +171,18 @@ InitShmem(unsigned int key, unsigned int size)
 	/* get pointers to the dimensions of shared memory */
 	ShmemBase = (unsigned long) sharedRegion;
 	ShmemEnd = (unsigned long) sharedRegion + ShmemSize;
-	currFreeSpace = 0;
 
-	/* First long in shared memory is the count of available space */
+	/* First long in shared memory is the available-space pointer */
 	ShmemFreeStart = (unsigned long *) ShmemBase;
 	/* next is a shmem pointer to the shmem index */
 	ShmemIndexOffset = ShmemFreeStart + 1;
 	/* next is ShmemVariableCache */
 	ShmemVariableCache = (VariableCache) (ShmemIndexOffset + 1);
 
-	currFreeSpace += sizeof(ShmemFreeStart) + sizeof(ShmemIndexOffset) +
-		LONGALIGN(sizeof(VariableCacheData));
+	/* here is where to start dynamic allocation */
+	currFreeSpace = MAXALIGN(sizeof(*ShmemFreeStart) +
+							 sizeof(*ShmemIndexOffset) +
+							 sizeof(*ShmemVariableCache));
 
 	/*
 	 * bootstrap initialize spin locks so we can start to use the
@@ -510,7 +511,7 @@ ShmemInitStruct(char *name, Size size, bool *foundPtr)
 		}
 		else
 		{
-			Assert(ShmemIndexOffset);
+			Assert(*ShmemIndexOffset);
 
 			*foundPtr = TRUE;
 			return (void *) MAKE_PTR(*ShmemIndexOffset);
