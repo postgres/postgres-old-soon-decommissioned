@@ -2558,6 +2558,29 @@ get_names_for_var(Var *var, deparse_context *context,
 		}
 		else if (rte->rtekind == RTE_JOIN)
 		{
+			/*
+			 * If it's an unnamed join, look at the expansion of the alias
+			 * variable.  If it's a simple reference to one of the input
+			 * vars then recursively find the name of that var, instead.
+			 * (This allows correct decompiling of cases where there are
+			 * identically named columns on both sides of the join.)
+			 * When it's not a simple reference, we have to just return
+			 * the unqualified variable name (this can only happen with
+			 * columns that were merged by USING or NATURAL clauses).
+			 */
+			if (var->varattno > 0)
+			{
+				Var		*aliasvar;
+
+				aliasvar = (Var *) list_nth(rte->joinaliasvars,
+											var->varattno-1);
+				if (IsA(aliasvar, Var))
+				{
+					get_names_for_var(aliasvar, context,
+									  schemaname, refname, attname);
+					return;
+				}
+			}
 			/* Unnamed join has neither schemaname nor refname */
 			*refname = NULL;
 		}
