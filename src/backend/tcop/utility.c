@@ -42,6 +42,7 @@
 #include "rewrite/rewriteDefine.h"
 #include "tcop/tcopdebug.h"
 #include "tcop/dest.h"
+#include "fmgr.h"       /* For load_file() */
 
 #ifndef NO_SECURITY
 #include "miscadmin.h"

@@ -184,7 +184,7 @@ handle_load(char *filename, char *funcname)
 	
 	file_scanner->handle = pg_dlopen(filename);
         if (file_scanner->handle == (void *)NULL) {
-	    load_error = pg_dlerror();
+	    load_error = (char *) pg_dlerror();
             if (file_scanner == file_list) {
                 file_list = (DynamicFileList *) NULL;
             } else {

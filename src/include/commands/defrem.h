@@ -33,7 +33,7 @@ extern void RemoveIndex(char *name);
 /*
  * prototypes in define.c
  */
-extern void DefineFunction(ProcedureStmt *nameargsexe, CommandDest dest);
+extern void CreateFunction(ProcedureStmt *stmt, CommandDest dest);
 extern void DefineOperator(char *name, List *parameters);
 extern void DefineAggregate(char *name, List *parameters);
 extern void DefineType(char *name, List *parameters);

@@ -1170,8 +1170,8 @@ dumpstatus(SIGNAL_ARGS)
 	fprintf(stderr, "%s: dumpstatus:\n", progname);
 	fprintf(stderr, "\tsock %d: nBytes=%d, laddr=0x%lx, raddr=0x%lx\n",
 		port->sock, port->nBytes, 
-		port->laddr.sin_addr.s_addr, 
-		port->raddr.sin_addr.s_addr);
+		(long int) port->laddr.sin_addr.s_addr, 
+		(long int) port->raddr.sin_addr.s_addr);
 	curr = DLGetSucc(curr);
     }
 }
