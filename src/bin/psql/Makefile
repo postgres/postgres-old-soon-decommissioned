@@ -46,6 +46,13 @@ $(top_builddir)/src/backend/port/snprintf.o:
 	$(MAKE) -C $(top_builddir)/src/backend/port snprintf.o
 endif
 
+ifdef STRTOUL
+OBJS+=$(top_builddir)/src/backend/port/strtoul.o
+
+$(top_builddir)/src/backend/port/strtoul.o:
+	$(MAKE) -C $(top_builddir)/src/backend/port strtoul.o
+endif
+
 # End of hacks for picking up backend 'port' modules
 
 psql: $(OBJS) $(libpq_builddir)/libpq.a

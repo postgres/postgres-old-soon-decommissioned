@@ -151,7 +151,11 @@ initializeInput(int flags)
 	}
 #endif
 
+#ifdef HAVE_ATEXIT
 	atexit(finishInput);
+#else
+	on_exit(finishInput);
+#endif
 }
 
 

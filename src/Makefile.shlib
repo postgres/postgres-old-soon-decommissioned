@@ -184,6 +184,11 @@ ifeq ($(PORTNAME), solaris)
   SHLIB_LINK		+= -lm -lc
 endif
 
+ifeq ($(PORTNAME), sunos4)
+  shlib			:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
+  LINK.shared		= $(LD) -assert pure-text -Bdynamic
+endif
+ 
 ifeq ($(PORTNAME), osf)
   shlib			:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
   LINK.shared		= $(LD) -shared -expect_unresolved '*'

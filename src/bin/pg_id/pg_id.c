@@ -12,7 +12,15 @@
 
 #ifdef HAVE_GETOPT_H
 #include <getopt.h>
-#endif
+#else
+#ifdef HAVE_OPTARG_DECL
+#include <unistd.h>
+#else
+extern char *optarg;
+extern int optind, opterr, optopt;
+#endif	/* HAVE_OPTARG_DECL */
+#endif	/* HAVE_GETOPT_H */
+
 #include <pwd.h>
 #include <stdio.h>
 #include <stdlib.h>

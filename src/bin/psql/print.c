@@ -21,6 +21,8 @@
 #include "pqsignal.h"
 #include "libpq-fe.h"
 
+#include "settings.h"
+
 #ifndef __CYGWIN__
 #define DEFAULT_PAGER "more"
 #else

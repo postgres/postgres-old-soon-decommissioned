@@ -579,6 +579,9 @@ extern int fdatasync(int fildes);
 /* Set to 1 if you have getopt_long() (GNU long options) */
 #undef HAVE_GETOPT_LONG
 
+/* Set to 1 if optarg is declared in unistd.h */
+#undef HAVE_OPTARG_DECL
+
 /* Set to 1 if you have union semun */
 #undef HAVE_UNION_SEMUN
 
@@ -651,6 +654,11 @@ extern int fdatasync(int fildes);
 # define HAVE_STRTOULL 1
 #endif
 
+/* Define if you have atexit() */
+#undef HAVE_ATEXIT
+
+/* Define if you have on_exit() */
+#undef HAVE_ON_EXIT
 
 /*
  *------------------------------------------------------------------------

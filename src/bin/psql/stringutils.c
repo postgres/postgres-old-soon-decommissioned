@@ -7,6 +7,7 @@
  */
 #include "postgres_fe.h"
 #include "stringutils.h"
+#include "settings.h"
 
 #include <ctype.h>
 #include <assert.h>

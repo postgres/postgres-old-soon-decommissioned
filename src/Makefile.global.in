@@ -288,6 +288,7 @@ INET_ATON = @INET_ATON@
 STRERROR = @STRERROR@
 SNPRINTF = @SNPRINTF@
 STRDUP = @STRDUP@
+STRTOUL = @STRTOUL@
 
 
 ##########################################################################
