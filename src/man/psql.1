@@ -104,6 +104,17 @@ defaults to the value of the
 environment variable or, if that's not set, to the Unix account name of the
 current user.
 .PP
+When
+.IR "psql"
+starts, it reads SQL commands from
+.IR "/etc/psqlrc"
+and then from
+.IR "$(HOME)/.psqlrc"
+This allows SQL commands like
+.IR SET
+which can be used to set the date style to be run at the start of
+evry session.
+.PP
 .IR "psql"
 understands the following command-line options:
 .TP
