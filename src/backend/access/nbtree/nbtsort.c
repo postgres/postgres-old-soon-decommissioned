@@ -63,6 +63,11 @@
 # include <string.h>
 #endif
 
+#ifdef BTREE_BUILD_STATS
+#include <tcop/tcopprot.h>
+extern int ShowExecutorStats;
+#endif
+
 /*
  * turn on debugging output.
  *
@@ -427,7 +432,7 @@ _bt_tapewrite(BTTapeBlock *tape, int eor)
 {
     tape->bttb_eor = eor;
     FileWrite(tape->bttb_fd, (char *) tape, TAPEBLCKSZ);
-    NDirectFileWrite += TAPEBLCKSZ;
+    NDirectFileWrite += TAPEBLCKSZ/MAXBLCKSZ;
     _bt_tapereset(tape);
 }
 
@@ -463,7 +468,7 @@ _bt_taperead(BTTapeBlock *tape)
 	return(0);
     }
     Assert(tape->bttb_magic == BTTAPEMAGIC);
-    NDirectFileRead += TAPEBLCKSZ;
+    NDirectFileRead += TAPEBLCKSZ/MAXBLCKSZ;
     return(1);
 }
 
@@ -1366,5 +1371,16 @@ void
 _bt_leafbuild(Relation index, void *spool)
 {
     _bt_isortcmpinit (index, (BTSpool *) spool);
+
+#ifdef BTREE_BUILD_STATS
+    if ( ShowExecutorStats )
+    {
+    	fprintf(stderr, "! BtreeBuild (Spool) Stats:\n");
+    	ShowUsage ();
+    	ResetUsage ();
+    }
+#endif
+
     _bt_merge(index, (BTSpool *) spool);
+
 }

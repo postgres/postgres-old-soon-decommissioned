@@ -33,6 +33,12 @@
 # include <string.h>
 #endif
 
+#ifdef BTREE_BUILD_STATS
+#include <tcop/tcopprot.h>
+extern int ShowExecutorStats; 
+#endif
+
+
 bool	BuildingBtree = false;	/* see comment in btbuild() */
 bool	FastBuild = true;	/* use sort/build instead of insertion build */
 
@@ -77,10 +83,6 @@ btbuild(Relation heap,
     bool isunique;
     bool usefast;
 
-#if 0
-    ResetBufferUsage();
-#endif
-
     /* note that this is a new btree */
     BuildingBtree = true;
     
@@ -94,6 +96,11 @@ btbuild(Relation heap,
      * processing going on there.) -- pma 08/29/95
      */
     usefast = (FastBuild && IsNormalProcessingMode());
+
+#ifdef BTREE_BUILD_STATS
+    if ( ShowExecutorStats )
+    	ResetUsage ();
+#endif
 
     /* see if index is unique */
     isunique = IndexIsUniqueNoCache(RelationGetRelationId(index));
@@ -278,18 +285,15 @@ btbuild(Relation heap,
 	_bt_spooldestroy(spool);
     }
 
-#if 0
+#ifdef BTREE_BUILD_STATS
+    if ( ShowExecutorStats )
     {
-	extern int ReadBufferCount, BufferHitCount, BufferFlushCount;
-	extern long NDirectFileRead, NDirectFileWrite;
-
-	printf("buffer(%d): r=%d w=%d\n", heap->rd_rel->relblocksz,
-	       ReadBufferCount - BufferHitCount, BufferFlushCount);
-	printf("direct(%d): r=%d w=%d\n", LocalBlockSize,
-	       NDirectFileRead, NDirectFileWrite);
+    	fprintf(stderr, "! BtreeBuild Stats:\n");
+    	ShowUsage ();
+    	ResetUsage ();
     }
 #endif
-
+    	
     /*
      *  Since we just counted the tuples in the heap, we update its
      *  stats in pg_class to guarantee that the planner takes advantage
