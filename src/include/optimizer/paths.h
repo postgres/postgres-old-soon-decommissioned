@@ -55,12 +55,12 @@ extern List *group_clauses_by_hashop(List *restrictinfo_list,
  *	  generic join method key/clause routines
  */
 extern List *match_pathkeys_joinkeys(List *pathkeys,
-					 List *joinkeys, List *joinclauses, int which_subkey,
+					 List *joinkeys, List *joinclauses, int outer_or_inner,
 						List **matchedJoinClausesPtr);
 extern List *extract_path_keys(List *joinkeys, List *tlist,
-				  int which_subkey);
+				  int outer_or_inner);
 extern Path *match_paths_joinkeys(List *joinkeys, PathOrder *ordering,
-					 List *paths, int which_subkey);
+					 List *paths, int outer_or_inner);
 extern List *new_join_pathkeys(List *outer_pathkeys,
 				  List *join_rel_tlist, List *joinclauses);
 
