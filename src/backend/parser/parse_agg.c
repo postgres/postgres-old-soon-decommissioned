@@ -113,10 +113,7 @@ check_ungrouped_columns_walker(Node *node,
 		Assert(var->varno > 0 &&
 			   (int) var->varno <= length(context->pstate->p_rtable));
 		rte = rt_fetch(var->varno, context->pstate->p_rtable);
-		attname = get_attname(rte->relid, var->varattno);
-		if (!attname)
-			elog(ERROR, "cache lookup of attribute %d in relation %u failed",
-				 var->varattno, rte->relid);
+		attname = get_rte_attribute_name(rte, var->varattno);
 		elog(ERROR, "Attribute %s.%s must be GROUPed or used in an aggregate function",
 			 rte->eref->relname, attname);
 	}
