@@ -5266,6 +5266,14 @@ pg_start_backup(PG_FUNCTION_ARGS)
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
 				 (errmsg("must be superuser to run a backup"))));
+
+	if (!XLogArchivingActive())
+		ereport(ERROR,
+				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
+				 (errmsg("WAL archiving is not configured"),
+				 (errhint("archive_command must be defined before "
+						  "online backups can be safely made.")))));
+
 	backupidstr = DatumGetCString(DirectFunctionCall1(textout,
 											 PointerGetDatum(backupid)));
 
