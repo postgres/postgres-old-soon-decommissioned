@@ -154,8 +154,10 @@ pg_dump -h <replaceable>host1</> <replaceable>dbname</> | psql -h <replaceable>h
    </important>
 
    <tip>
+    <para>
     Restore performance can be improved by increasing <literal>SORT_MEM</>
     (see <xref linkend="runtime-config-resource-memory">).
+    </para>
    </tip>
   </sect2>
 
