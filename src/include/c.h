@@ -205,11 +205,11 @@ typedef char *Pointer;
  *		used for numerical computations and the
  *		frontend/backend protocol.
  */
-#ifndef __BEOS__				/* this shouldn't be required, but is is! */
+#if SIZEOF_INT8 == 0
 typedef signed char int8;		/* == 8 bits */
 typedef signed short int16;		/* == 16 bits */
 typedef signed int int32;		/* == 32 bits */
-#endif   /* __BEOS__ */
+#endif   /* SIZEOF_INT8 == 0 */
 
 /*
  * uintN
@@ -218,11 +218,11 @@ typedef signed int int32;		/* == 32 bits */
  *		frontend/backend protocol.
  */
 /* Also defined in interfaces/odbc/md5.h */
-#ifndef __BEOS__				/* this shouldn't be required, but is is! */
+#if SIZEOF_UINT8 == 0
 typedef unsigned char uint8;	/* == 8 bits */
 typedef unsigned short uint16;	/* == 16 bits */
 typedef unsigned int uint32;	/* == 32 bits */
-#endif   /* __BEOS__ */
+#endif   /* SIZEOF_UINT8 == 0 */
 
 /*
  * boolN
@@ -268,27 +268,37 @@ typedef double *float64;
 /*
  * 64-bit integers
  */
-#ifndef __BEOS__				/* this is already defined on BeOS */
 #ifdef HAVE_LONG_INT_64
 /* Plain "long int" fits, use it */
+#if SIZEOF_INT8 == 0
 typedef long int int64;
+#endif
+#if SIZEOF_UINT8 == 0
 typedef unsigned long int uint64;
+#endif
 
 #else
 #ifdef HAVE_LONG_LONG_INT_64
 /* We have working support for "long long int", use that */
+#if SIZEOF_INT8 == 0
 typedef long long int int64;
+#endif
+#if SIZEOF_UINT8 == 0
 typedef unsigned long long int uint64;
+#endif
 
 #else
 /* Won't actually work, but fall back to long int so that code compiles */
+#if SIZEOF_INT8 == 0
 typedef long int int64;
+#endif
+#if SIZEOF_UINT8 == 0
 typedef unsigned long int uint64;
+#endif
 
 #define INT64_IS_BUSTED
 #endif
 #endif
-#endif   /* __BEOS__ */
 
 /*
  * Size
