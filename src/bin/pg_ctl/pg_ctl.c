@@ -832,6 +832,9 @@ static char* pgwin32_CommandLine(bool registration)
 		strcat(cmdLine,"\"");
 	}
 
+	if (do_wait)
+		strcat(cmdLine, " -w");
+	
 	if (post_opts)
 	{
 		strcat(cmdLine," ");
@@ -1038,7 +1041,7 @@ do_help(void)
 	printf(_("  %s status  [-D DATADIR]\n"), progname);
 	printf(_("  %s kill    SIGNALNAME PROCESSID\n"), progname);
 #ifdef WIN32
-	printf(_("  %s register   [-N servicename] [-U username] [-P password] [-D DATADIR] [-o \"OPTIONS\"]\n"), progname);
+	printf(_("  %s register   [-N servicename] [-U username] [-P password] [-D DATADIR] [-w] [-o \"OPTIONS\"]\n"), progname);
 	printf(_("  %s unregister [-N servicename]\n"), progname);
 #endif
 	printf(_("Common options:\n"));
