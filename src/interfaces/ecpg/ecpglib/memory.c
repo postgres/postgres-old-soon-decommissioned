@@ -46,8 +46,12 @@ ECPGrealloc(void *ptr, long size, int lineno)
 char *
 ECPGstrdup(const char *string, int lineno)
 {
-	char	   *new = strdup(string);
+	char	   *new;
 
+	if (string == NULL)
+		return NULL;
+	
+	new = strdup(string);
 	if (!new)
 	{
 		ECPGraise(lineno, ECPG_OUT_OF_MEMORY, ECPG_SQLSTATE_ECPG_OUT_OF_MEMORY, NULL);
