@@ -64,7 +64,3 @@ end(l),
 close(l),
 move(l),
 select(l).
-.SH BUGS
-Currently, the smallest transaction in Postgres is a single SQL
-command.  It should be possible for a single fetch to be a
-transaction.
