@@ -235,6 +235,10 @@ _ArrayCount(char *str, int dim[], int typdelim)
                 }
                 break;
 #endif
+	    case '\0':
+		/* Signal a premature end of the string.  DZ - 2-9-1996 */
+		elog(WARN, "malformed array constant: %s", str);
+		break;
 	    case '\"':
 		scanning_string = ! scanning_string;
 		break;
