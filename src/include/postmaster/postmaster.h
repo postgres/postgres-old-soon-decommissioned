@@ -30,6 +30,10 @@ extern bool Log_connections;
 extern bool log_hostname;
 extern char *rendezvous_name;
 
+#ifdef WIN32
+extern HANDLE PostmasterHandle;
+#endif
+
 
 extern int	PostmasterMain(int argc, char *argv[]);
 extern void ClosePostmasterPorts(void);

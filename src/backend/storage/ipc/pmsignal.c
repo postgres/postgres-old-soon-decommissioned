@@ -18,6 +18,7 @@
 #include <unistd.h>
 
 #include "miscadmin.h"
+#include "postmaster/postmaster.h"
 #include "storage/pmsignal.h"
 #include "storage/shmem.h"
 
@@ -115,9 +116,6 @@ PostmasterIsAlive(bool amDirectChild)
 		return (kill(PostmasterPid, 0) == 0);
 	}
 #else /* WIN32 */
-	/*
-	 * XXX needs to be implemented by somebody
-	 */
-	return true;
+	return (WaitForSingleObject(PostmasterHandle, 0) == WAIT_TIMEOUT);
 #endif /* WIN32 */
 }
