@@ -222,7 +222,7 @@ btbuild(Relation heap,
 	if (FastBuild) {
 	    _bt_spool(index, btitem, spool);
 	} else {
-	    res = _bt_doinsert(index, btitem, isunique, false);
+	    res = _bt_doinsert(index, btitem, isunique, heap);
 	}
 
 	pfree(btitem);
@@ -292,7 +292,7 @@ btbuild(Relation heap,
  *	return an InsertIndexResult to the caller.
  */
 InsertIndexResult
-btinsert(Relation rel, Datum *datum, char *nulls, ItemPointer ht_ctid, bool is_update)
+btinsert(Relation rel, Datum *datum, char *nulls, ItemPointer ht_ctid, Relation heapRel)
 {
     BTItem btitem;
     IndexTuple itup;
@@ -308,7 +308,7 @@ btinsert(Relation rel, Datum *datum, char *nulls, ItemPointer ht_ctid, bool is_u
     btitem = _bt_formitem(itup);
     
     res = _bt_doinsert(rel, btitem, 
-		       IndexIsUnique(RelationGetRelationId(rel)), is_update);
+		       IndexIsUnique(RelationGetRelationId(rel)), heapRel);
 
     pfree(btitem);
     pfree(itup);

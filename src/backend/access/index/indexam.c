@@ -165,7 +165,7 @@ index_insert(Relation relation,
 	     Datum *datum,
 	     char *nulls,
 	     ItemPointer heap_t_ctid,
-	     bool is_update)
+	     Relation heapRel)
 {
     RegProcedure		procedure;
     InsertIndexResult		specificResult;
@@ -178,7 +178,7 @@ index_insert(Relation relation,
      * ----------------
      */
     specificResult = (InsertIndexResult)
-	fmgr(procedure, relation, datum, nulls, heap_t_ctid, is_update, NULL);
+	fmgr(procedure, relation, datum, nulls, heap_t_ctid, heapRel, NULL);
     
     /* ----------------
      *	the insert proc is supposed to return a "specific result" and
