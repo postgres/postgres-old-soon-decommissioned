@@ -161,7 +161,7 @@ if [ "$haveenv" = "t" ]; then
     echo "You can now create a database using"
     echo "  CREATE DATABASE <name> WITH LOCATION = '$Location'"
     echo "in SQL, or"
-    echo "  createdb <name> -D '$Location'"
+    echo "  createdb -D '$Location' <name>"
     echo "from the shell."
 fi
 echo
