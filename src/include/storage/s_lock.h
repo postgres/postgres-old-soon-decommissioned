@@ -315,7 +315,7 @@ again:
 							slock_t		_res; \
 							do \
 							{ \
-				__asm__("lock xchgb %0,%1": "=q"(_res), "=m"(*lock):"0"(0x1)); \
+				__asm__("xchgb %0,%1": "=q"(_res), "=m"(*lock):"0"(0x1)); \
 							} while (_res != 0); \
 						} while (0)
 #endif
