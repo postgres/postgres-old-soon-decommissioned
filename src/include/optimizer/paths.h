@@ -38,11 +38,9 @@ extern void debug_print_rel(Query *root, RelOptInfo *rel);
 extern void create_index_paths(Query *root, RelOptInfo *rel);
 extern Path *best_inner_indexscan(Query *root, RelOptInfo *rel,
 					 Relids outer_relids, JoinType jointype);
-extern List *group_clauses_by_indexkey_for_or(RelOptInfo *rel,
-								 IndexOptInfo *index,
+extern List *group_clauses_by_indexkey_for_or(IndexOptInfo *index,
 								 Expr *orsubclause);
-extern List *expand_indexqual_conditions(RelOptInfo *rel,
-										 IndexOptInfo *index,
+extern List *expand_indexqual_conditions(IndexOptInfo *index,
 										 List *clausegroups);
 extern void check_partial_indexes(Query *root, RelOptInfo *rel);
 extern bool pred_test(List *predicate_list, List *restrictinfo_list);
@@ -108,8 +106,7 @@ extern Path *get_cheapest_path_for_pathkeys(List *paths, List *pathkeys,
 extern Path *get_cheapest_fractional_path_for_pathkeys(List *paths,
 										  List *pathkeys,
 										  double fraction);
-extern List *build_index_pathkeys(Query *root, RelOptInfo *rel,
-					 IndexOptInfo *index,
+extern List *build_index_pathkeys(Query *root, IndexOptInfo *index,
 					 ScanDirection scandir);
 extern List *build_subquery_pathkeys(Query *root, RelOptInfo *rel,
 						Query *subquery);

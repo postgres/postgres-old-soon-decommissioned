@@ -648,7 +648,6 @@ get_cheapest_fractional_path_for_pathkeys(List *paths,
  */
 List *
 build_index_pathkeys(Query *root,
-					 RelOptInfo *rel,
 					 IndexOptInfo *index,
 					 ScanDirection scandir)
 {
@@ -675,7 +674,8 @@ build_index_pathkeys(Query *root,
 		if (*indexkeys != 0)
 		{
 			/* simple index column */
-			indexkey = (Node *) find_indexkey_var(root, rel, *indexkeys);
+			indexkey = (Node *) find_indexkey_var(root, index->rel,
+												  *indexkeys);
 		}
 		else
 		{

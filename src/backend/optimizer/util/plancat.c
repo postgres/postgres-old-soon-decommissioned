@@ -124,6 +124,7 @@ get_relation_info(Oid relationObjectId, RelOptInfo *rel)
 			info = makeNode(IndexOptInfo);
 
 			info->indexoid = index->indexrelid;
+			info->rel = rel;
 			info->ncolumns = ncolumns = index->indnatts;
 
 			/*

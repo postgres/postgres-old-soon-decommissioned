@@ -253,6 +253,7 @@ typedef struct IndexOptInfo
 	NodeTag		type;
 
 	Oid			indexoid;		/* OID of the index relation */
+	RelOptInfo *rel;			/* back-link to index's table */
 
 	/* statistics from pg_class */
 	BlockNumber	pages;			/* number of disk pages in index */

@@ -28,7 +28,7 @@ extern void set_cheapest(RelOptInfo *parent_rel);
 extern void add_path(RelOptInfo *parent_rel, Path *new_path);
 
 extern Path *create_seqscan_path(Query *root, RelOptInfo *rel);
-extern IndexPath *create_index_path(Query *root, RelOptInfo *rel,
+extern IndexPath *create_index_path(Query *root,
 				  IndexOptInfo *index,
 				  List *restriction_clauses,
 				  List *pathkeys,

@@ -227,7 +227,6 @@ cost_nonsequential_access(double relpages)
  *	  but here we consider the cost of just one pass.
  *
  * 'root' is the query root
- * 'baserel' is the base relation the index is for
  * 'index' is the index to be used
  * 'indexQuals' is the list of applicable qual clauses (implicit AND semantics)
  * 'is_injoin' is T if we are considering using the index scan as the inside
@@ -243,11 +242,11 @@ cost_nonsequential_access(double relpages)
  */
 void
 cost_index(Path *path, Query *root,
-		   RelOptInfo *baserel,
 		   IndexOptInfo *index,
 		   List *indexQuals,
 		   bool is_injoin)
 {
+	RelOptInfo *baserel = index->rel;
 	Cost		startup_cost = 0;
 	Cost		run_cost = 0;
 	Cost		indexStartupCost;
