@@ -6,10 +6,8 @@
  * $PostgreSQL$
  */
 #include "postgres_fe.h"
+#include "common.h"
 #include "variables.h"
-
-#include <assert.h>
-
 
 VariableSpace
 CreateVariableSpace(void)
@@ -46,10 +44,8 @@ GetVariable(VariableSpace space, const char *name)
 
 	for (current = space; current; current = current->next)
 	{
-#ifdef USE_ASSERT_CHECKING
-		assert(current->name);
-		assert(current->value);
-#endif
+		psql_assert(current->name);
+		psql_assert(current->value);
 		if (strcmp(current->name, name) == 0)
 			return current->value;
 	}
@@ -161,10 +157,8 @@ SetVariable(VariableSpace space, const char *name, const char *value)
 
 	for (current = space, previous = NULL; current; previous = current, current = current->next)
 	{
-#ifdef USE_ASSERT_CHECKING
-		assert(current->name);
-		assert(current->value);
-#endif
+		psql_assert(current->name);
+		psql_assert(current->value);
 		if (strcmp(current->name, name) == 0)
 		{
 			free(current->value);
@@ -203,10 +197,8 @@ DeleteVariable(VariableSpace space, const char *name)
 
 	for (current = space, previous = NULL; current; previous = current, current = current->next)
 	{
-#ifdef USE_ASSERT_CHECKING
-		assert(current->name);
-		assert(current->value);
-#endif
+		psql_assert(current->name);
+		psql_assert(current->value);
 		if (strcmp(current->name, name) == 0)
 		{
 			free(current->name);

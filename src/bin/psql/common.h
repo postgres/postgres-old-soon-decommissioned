@@ -13,6 +13,13 @@
 #include "pqsignal.h"
 #include "libpq-fe.h"
 
+#ifdef USE_ASSERT_CHECKING
+#include <assert.h>
+#define psql_assert(p) assert(p)
+#else
+#define psql_assert(p)
+#endif
+
 extern char *xstrdup(const char *string);
 
 extern bool setQFout(const char *fname);

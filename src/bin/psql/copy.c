@@ -9,7 +9,6 @@
 #include "copy.h"
 
 #include <errno.h>
-#include <assert.h>
 #include <signal.h>
 #include <sys/stat.h>
 #ifndef WIN32

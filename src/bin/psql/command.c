@@ -9,7 +9,6 @@
 #include "command.h"
 
 #include <errno.h>
-#include <assert.h>
 #include <ctype.h>
 #ifdef HAVE_PWD_H
 #include <pwd.h>
@@ -97,10 +96,7 @@ HandleSlashCmds(const char *line,
 	const char *continue_parse = NULL;	/* tell the mainloop where the
 										 * backslash command ended */
 
-#ifdef USE_ASSERT_CHECKING
-	assert(line);
-#endif
-
+	psql_assert(line);
 	my_line = xstrdup(line);
 
 	/*
@@ -1234,9 +1230,7 @@ unescape(const unsigned char *source, size_t len)
 			   *tmp;
 	size_t		length;
 
-#ifdef USE_ASSERT_CHECKING
-	assert(source);
-#endif
+	psql_assert(source);
 
 	length = Min(len, strlen(source)) + 1;
 
@@ -1515,12 +1509,7 @@ editFile(const char *fname)
 	char	   *sys;
 	int			result;
 
-#ifdef USE_ASSERT_CHECKING
-	assert(fname);
-#else
-	if (!fname)
-		return false;
-#endif
+	psql_assert(fname);
 
 	/* Find an editor to use */
 	editorName = getenv("PSQL_EDITOR");
@@ -1755,12 +1744,7 @@ do_pset(const char *param, const char *value, printQueryOpt *popt, bool quiet)
 {
 	size_t		vallen = 0;
 
-#ifdef USE_ASSERT_CHECKING
-	assert(param);
-#else
-	if (!param)
-		return false;
-#endif
+	psql_assert(param);
 
 	if (value)
 		vallen = strlen(value);

@@ -7,10 +7,10 @@
  */
 #include "postgres_fe.h"
 
-#include <assert.h>
 #include <ctype.h>
 
 #include "libpq-fe.h"
+#include "common.h"
 #include "settings.h"
 #include "stringutils.h"
 
@@ -234,10 +234,8 @@ strip_quotes(char *source, char quote, char escape, int encoding)
 	char	   *src;
 	char	   *dst;
 
-#ifdef USE_ASSERT_CHECKING
-	assert(source);
-	assert(quote);
-#endif
+	psql_assert(source);
+	psql_assert(quote);
 
 	src = dst = source;
 
