@@ -214,7 +214,10 @@ X11_INCDIR = /usr/include
 X11_LIBDIR = /usr/lib
 X11_LIB = -lX11 -lsocket -lnsl
 
-#
+#  These must match include/config.h 
+NAMEDATALEN=	32
+OIDNAMELEN=	36
+
 # include port specific rules and variables. For instance:
 #
 # signal(2) handling - this is here because it affects some of 
