@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH "CREATE DATABASE" SQL 11/05/95 Postgres95 Postgres95
+.TH "CREATE DATABASE" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
 create database \(em create a new database
 .SH SYNOPSIS

@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH "DROP FUNCTION" SQL 11/05/95 Postgres95 Postgres95
+.TH "DROP FUNCTION" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
 drop function \(em remove a user-defined C function 
 .SH SYNOPSIS

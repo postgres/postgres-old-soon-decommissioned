@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH BEGIN SQL 11/05/95 Postgres95 Postgres95
+.TH BEGIN SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
 begin \(em begins a transaction
 .SH SYNOPSIS

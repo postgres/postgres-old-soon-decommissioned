@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH "DROP OPERATOR" SQL 11/05/95 Postgres95 Postgres95
+.TH "DROP OPERATOR" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
 drop operator \(em remove an operator from the system
 .SH SYNOPSIS

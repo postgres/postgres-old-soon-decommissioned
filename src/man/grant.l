@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH GRANT SQL 11/05/95 Postgres95 Postgres95
+.TH GRANT SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
 grant \(em grant access control to a user or group
 .SH SYNOPSIS

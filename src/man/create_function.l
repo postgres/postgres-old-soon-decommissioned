@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH "CREATE FUNCTION" SQL 11/05/95 Postgres95 Postgres95
+.TH "CREATE FUNCTION" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH "NAME"
 create function \(em define a new function
 .SH "SYNOPSIS"

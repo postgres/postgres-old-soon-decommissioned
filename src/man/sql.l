@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH INTRODUCTION SQL 11/5/95 Postgres95 Postgres95
+.TH INTRODUCTION SQL 11/5/95 PostgreSQL PostgreSQL
 .SH "Section 4 \(em SQL Commands (COMMANDS)"
 .SH "General Information"
 .SH DESCRIPTION

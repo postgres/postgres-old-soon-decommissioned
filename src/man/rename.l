@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH RENAME SQL 02/08/94 Postgres95 Postgres95
+.TH RENAME SQL 02/08/94 PostgreSQL PostgreSQL
 .SH NAME
 rename \(em rename a class or an attribute in a class
 .SH SYNOPSIS

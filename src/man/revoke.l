@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH REVOKE SQL 11/05/95 Postgres95 Postgres95
+.TH REVOKE SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
 revoke \(em revoke access privileges
 .SH SYNOPSIS

@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH "CREATE TYPE" SQL 11/05/95 Postgres95 Postgres95
+.TH "CREATE TYPE" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
 create type \(em define a new base data type 
 .SH SYNOPSIS

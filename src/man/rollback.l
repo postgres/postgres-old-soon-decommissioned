@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH ROLLBACK SQL 01/20/96 Postgres95 Postgres95
+.TH ROLLBACK SQL 01/20/96 PostgreSQL PostgreSQL
 .\" XXX This .XA has to go after the .TH so that the index page number goes
 .\"	in the right place...
 .SH NAME

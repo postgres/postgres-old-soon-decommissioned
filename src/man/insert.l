@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH INSERT SQL 11/05/95 Postgres95 Postgres95
+.TH INSERT SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
 insert \(em insert tuples to a relation
 .SH SYNOPSIS

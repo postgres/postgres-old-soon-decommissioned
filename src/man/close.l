@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH CLOSE SQL 11/05/95 Postgres95 Postgres95
+.TH CLOSE SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
 close \(em close a cursor
 .SH SYNOPSIS

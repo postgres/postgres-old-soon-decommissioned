@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH "DROP VIEW" SQL 04/25/94 Postgres95 Postgres95
+.TH "DROP VIEW" SQL 04/25/94 PostgreSQL PostgreSQL
 .SH NAME
 drop view \(em removes a view from Postgres
 .SH SYNOPSIS

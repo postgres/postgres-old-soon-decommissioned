@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH "CREATE AGGREGATE" SQL 11/05/95 Postgres95 Postgres95
+.TH "CREATE AGGREGATE" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
 create aggregate \(em define a new aggregate
 .SH SYNOPSIS

@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH "DROP TYPE" SQL 11/05/95 Postgres95 Postgres95
+.TH "DROP TYPE" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
 drop type \(em remove a user-defined type from the system catalogs
 .SH SYNOPSIS

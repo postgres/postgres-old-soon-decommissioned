@@ -939,6 +939,7 @@ ExecTypeFromTL(List *targetList)
 	    TupleDescInitEntry(typeInfo,
 			       resdom->resno,
 			       resdom->resname,
+			       /* fix for SELECT NULL ... */
 			       get_id_typname(restype?restype:UNKNOWNOID),
 			       0,
 			       false);

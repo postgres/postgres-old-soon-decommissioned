@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH "CREATE OPERATOR" SQL 11/05/95 Postgres95 Postgres95
+.TH "CREATE OPERATOR" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
 create operator \(em define a new user operator
 .SH SYNOPSIS

@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH "CREATE VERSION" SQL 01/23/93 Postgres95 Postgres95
+.TH "CREATE VERSION" SQL 01/23/93 PostgreSQL PostgreSQL
 .SH NAME
 create version \(em construct a version class 
 .SH SYNOPSIS

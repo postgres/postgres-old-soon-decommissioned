@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH CLUSTER SQL 01/23/93 Postgres95 Postgres95
+.TH CLUSTER SQL 01/23/93 PostgreSQL PostgreSQL
 .SH NAME
 cluster \(em give storage clustering advice to Postgres
 .SH SYNOPSIS

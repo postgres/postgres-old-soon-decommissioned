@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH DELETE SQL 11/05/95 Postgres95 Postgres95
+.TH DELETE SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
 delete \(em delete instances from a class
 .SH SYNOPSIS

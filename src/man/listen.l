@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH "LISTEN" SQL 03/12/94 Postgres95 Postgres95
+.TH "LISTEN" SQL 03/12/94 PostgreSQL PostgreSQL
 .SH NAME
 listen \(em listen for notification on a relation
 .SH SYNOPSIS
