@@ -286,4 +286,6 @@ ifdef PROFILE
 endif
 
 # Globally pass PORTNAME
-CFLAGS+= -D$(PORTNAME)
+ifdef PORTNAME
+  CFLAGS+= -D$(PORTNAME)
+endif
