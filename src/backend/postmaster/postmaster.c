@@ -372,7 +372,8 @@ PostmasterMain(int argc, char *argv[])
 	InitializeGUCOptions();
 
 	userPGDATA = getenv("PGDATA");		/* default value */
-
+	canonicalize_path(userPGDATA);
+	
 	opterr = 1;
 
 	while ((opt = getopt(argc, argv, "A:a:B:b:c:D:d:Fh:ik:lm:MN:no:p:Ss-:")) != -1)
