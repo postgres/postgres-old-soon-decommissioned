@@ -560,7 +560,6 @@ psql_completion(char *text, int start, int end)
 		"syslog",
 		"syslog_facility",
 		"syslog_ident",
-		"tcpip_socket",
 		"TimeZone",
 		"trace_notify",
 		"transform_null_equals",

@@ -444,14 +444,6 @@ static struct config_bool ConfigureNamesBool[] =
 		false, NULL, NULL
 	},
 	{
-		{"tcpip_socket", PGC_POSTMASTER, CONN_AUTH_SETTINGS,
-			gettext_noop("Makes the server accept TCP/IP connections."),
-			NULL
-		},
-		&NetServer,
-		false, NULL, NULL
-	},
-	{
 		{"ssl", PGC_POSTMASTER, CONN_AUTH_SECURITY,
 			gettext_noop("Enables SSL connections."),
 			NULL
@@ -1711,12 +1703,12 @@ static struct config_string ConfigureNamesString[] =
 	},
 
 	{
-		{"virtual_host", PGC_POSTMASTER, CONN_AUTH_SETTINGS,
-			gettext_noop("Sets the host name or IP address to listen to."),
+		{"listen_addresses", PGC_POSTMASTER, CONN_AUTH_SETTINGS,
+			gettext_noop("Sets the host name or IP addresses to listen to."),
 			NULL
 		},
-		&VirtualHost,
-		"", NULL, NULL
+		&ListenAddresses,
+		"localhost", NULL, NULL
 	},
 
 	{

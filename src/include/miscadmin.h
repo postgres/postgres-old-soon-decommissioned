@@ -212,7 +212,6 @@ extern bool	VacuumCostActive;
  *	A few postmaster startup options are exported here so the
  *	configuration file processor can access them.
  */
-extern bool NetServer;
 extern bool EnableSSL;
 extern bool SilentMode;
 extern int	MaxBackends;
@@ -222,7 +221,7 @@ extern int	PostPortNumber;
 extern int	Unix_socket_permissions;
 extern char *Unix_socket_group;
 extern char *UnixSocketDir;
-extern char *VirtualHost;
+extern char *ListenAddresses;
 
 
 /*****************************************************************************
