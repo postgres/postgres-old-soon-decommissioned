@@ -31,6 +31,10 @@
 #include "parser/scansup.h"
 #include "utils/builtins.h"
 
+#ifdef MULTIBYTE
+#include "mb/pg_wchar.h"
+#endif
+
 extern char *parseString;
 static char *parseCh;
 
@@ -345,9 +349,17 @@ other			.
 					BEGIN(INITIAL);
 					if (strlen(literalbuf) >= NAMEDATALEN)
 					{
+#ifdef MULTIBYTE
+						int len;
+						len = pg_mbcliplen(literalbuf,strlen(literalbuf),NAMEDATALEN-1);
+						elog(NOTICE, "identifier \"%s\" will be truncated to \"%.*s\"",
+							 literalbuf, len, literalbuf);
+						literalbuf[len] = '\0';
+#else
 						elog(NOTICE, "identifier \"%s\" will be truncated to \"%.*s\"",
 							 literalbuf, NAMEDATALEN-1, literalbuf);
 						literalbuf[NAMEDATALEN-1] = '\0';
+#endif
 					}
 					yylval.str = pstrdup(literalbuf);
 					return IDENT;
@@ -471,9 +483,17 @@ other			.
 							yytext[i] = tolower(yytext[i]);
 					if (i >= NAMEDATALEN)
                     {
+#ifdef MULTIBYTE
+						int len;
+						len = pg_mbcliplen(yytext,i,NAMEDATALEN-1);
+                        elog(NOTICE, "identifier \"%s\" will be truncated to \"%.*s\"",
+                             yytext, len, yytext);
+						yytext[len] = '\0';
+#else
                         elog(NOTICE, "identifier \"%s\" will be truncated to \"%.*s\"",
                              yytext, NAMEDATALEN-1, yytext);
 						yytext[NAMEDATALEN-1] = '\0';
+#endif
                     }
 					keyword = ScanKeywordLookup((char*)yytext);
 					if (keyword != NULL) {
