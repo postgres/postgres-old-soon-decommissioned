@@ -233,7 +233,7 @@ P''(t)  generation of descendants at a time t
 
   <sect1>
    <title>Future Implementation Tasks for
-    <productname>ame>Post</productname>ame> <acronym>GEQO</acronym></title>
+    <productname>PostgreSQL</> <acronym>GEQO</acronym></title>
 
    <sect2>
     <title>Basic Improvements</title>
