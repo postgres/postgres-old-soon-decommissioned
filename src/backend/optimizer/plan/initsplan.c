@@ -264,7 +264,7 @@ add_join_clause_info_to_rels(Query *root, CInfo *clauseinfo, List *join_relids)
 	    find_joininfo_node(get_base_rel(root, lfirsti(join_relid)),
 				other_rels);
 	joininfo->jinfoclauseinfo =
-	    lcons(clauseinfo, joininfo->jinfoclauseinfo);	
+	    lcons(copyObject((void*)clauseinfo), joininfo->jinfoclauseinfo);	
 
     }
 }
