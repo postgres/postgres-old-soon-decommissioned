@@ -242,18 +242,18 @@ CREATE
   <para>
    To create a simple SQL function:
 
-  <programlisting>
+<programlisting>
 CREATE FUNCTION one() RETURNS int4
     AS 'SELECT 1 AS RESULT'
     LANGUAGE 'sql';
 SELECT one() AS answer;
 
-   <computeroutput>
-    answer 
-    ------
-    1
-   </computeroutput>
-  </programlisting>
+<computeroutput>
+ answer 
+--------
+      1
+</computeroutput>
+</programlisting>
   </para>
 
   <para>
