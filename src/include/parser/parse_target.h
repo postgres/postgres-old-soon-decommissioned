@@ -24,5 +24,7 @@
 
 extern List *transformTargetList(ParseState *pstate, List *targetlist);
 extern List *makeTargetNames(ParseState *pstate, List *cols);
+extern void transformTargetId(ParseState *pstate, Ident *ident,
+	TargetEntry *tent, char *resname, int16 resjunk);
 
 #endif							/* PARSE_TARGET_H */
