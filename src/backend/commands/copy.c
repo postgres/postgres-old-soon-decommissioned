@@ -307,7 +307,7 @@ DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
 	if (from)
 	{							/* copy from file to database */
 		if (rel->rd_rel->relkind == RELKIND_SEQUENCE)
-			elog(ERROR, "You can't change sequence relation %s", relname);
+			elog(ERROR, "You cannot change sequence relation %s", relname);
 		if (pipe)
 		{
 			if (IsUnderPostmaster)
