@@ -38,6 +38,9 @@ static HeapTuple GetTupleForTrigger(EState *estate, ItemPointer tid,
 static HeapTuple ExecCallTriggerFunc(Trigger *trigger,
 									 TriggerData *trigdata);
 
+static void DeferredTriggerSaveEvent(Relation rel, int event,
+						 HeapTuple oldtup, HeapTuple newtup);
+
 
 void
 CreateTrigger(CreateTrigStmt *stmt)
@@ -1776,7 +1779,7 @@ DeferredTriggerSetState(ConstraintsSetStmt *stmt)
  *	Called by ExecAR...Triggers() to add the event to the queue.
  * ----------
  */
-void
+static void
 DeferredTriggerSaveEvent(Relation rel, int event,
 						 HeapTuple oldtup, HeapTuple newtup)
 {

@@ -17,6 +17,7 @@
 
 #include "optimizer/joininfo.h"
 
+static JoinInfo *joininfo_member(List *join_relids, List *joininfo_list);
 
 /*
  * joininfo_member
@@ -32,7 +33,7 @@
  * exists.
  *
  */
-JoinInfo   *
+static JoinInfo   *
 joininfo_member(List *join_relids, List *joininfo_list)
 {
 	List	   *i;

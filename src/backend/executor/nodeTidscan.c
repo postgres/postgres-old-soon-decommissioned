@@ -20,7 +20,6 @@
  *		ExecTidReScan		rescans the tid relation.
  *		ExecEndTidScan		releases all storage.
  *		ExecTidMarkPos		marks scan position.
- *		ExecTidRestrPos		restores scan position.
  *
  */
 #include "postgres.h"
@@ -353,6 +352,7 @@ ExecTidMarkPos(TidScan *node)
 	tidstate->tss_MarkTidPtr = tidstate->tss_TidPtr;
 }
 
+#ifdef NOT_USED
 /* ----------------------------------------------------------------
  *		ExecTidRestrPos
  *
@@ -370,6 +370,7 @@ ExecTidRestrPos(TidScan *node)
 	tidstate = node->tidstate;
 	tidstate->tss_TidPtr = tidstate->tss_MarkTidPtr;
 }
+#endif
 
 /* ----------------------------------------------------------------
  *		ExecInitTidScan

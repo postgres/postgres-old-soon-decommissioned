@@ -30,6 +30,8 @@ static OffsetNumber _bt_pgaddtup(Relation rel, Buffer buf, int keysz, ScanKey it
 static bool _bt_goesonpg(Relation rel, Buffer buf, Size keysz, ScanKey scankey, BTItem afteritem);
 static void _bt_updateitem(Relation rel, Size keysz, Buffer buf, BTItem oldItem, BTItem newItem);
 static bool _bt_isequal(TupleDesc itupdesc, Page page, OffsetNumber offnum, int keysz, ScanKey scankey);
+static int32 _bt_tuplecompare(Relation rel, Size keysz, ScanKey scankey,
+				 IndexTuple tuple1, IndexTuple tuple2);
 
 /*
  *	_bt_doinsert() -- Handle insertion of a single btitem in the tree.
@@ -1360,7 +1362,7 @@ _bt_goesonpg(Relation rel,
  *							  return -1, 0, or +1
  *
  */
-int32
+static int32
 _bt_tuplecompare(Relation rel,
 				 Size keysz,
 				 ScanKey scankey,

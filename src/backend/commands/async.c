@@ -193,14 +193,11 @@ Async_Listen(char *relname, int pid)
 {
 	Relation	lRel;
 	TupleDesc	tdesc;
-	HeapScanDesc scan;
 	HeapTuple	tuple,
 				newtup;
 	Datum		values[Natts_pg_listener];
 	char		nulls[Natts_pg_listener];
-	Datum		d;
 	int			i;
-	bool		isnull;
 	TupleDesc	tupDesc;
 
 	if (Trace_notify)

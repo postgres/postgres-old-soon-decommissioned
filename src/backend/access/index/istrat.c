@@ -207,6 +207,7 @@ StrategyEvaluationIsValid(StrategyEvaluation evaluation)
 
 #endif
 
+#ifdef NOT_USED
 /* ----------------
  *		StrategyTermEvaluate
  * ----------------
@@ -262,7 +263,7 @@ StrategyTermEvaluate(StrategyTerm term,
 
 	return result;
 }
-
+#endif
 
 /* ----------------
  *		RelationGetStrategy
@@ -340,6 +341,7 @@ RelationGetStrategy(Relation relation,
 	return strategy;
 }
 
+#ifdef NOT_USED
 /* ----------------
  *		RelationInvokeStrategy
  * ----------------
@@ -463,6 +465,7 @@ RelationInvokeStrategy(Relation relation,
 
 
 }
+#endif
 
 /* ----------------
  *		OperatorRelationFillScanKeyEntry

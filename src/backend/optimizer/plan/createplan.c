@@ -74,6 +74,7 @@ static Material *make_material(List *tlist, Oid nonameid, Plan *lefttree,
 			  int keycount);
 static void copy_path_costsize(Plan *dest, Path *src);
 static void copy_plan_costsize(Plan *dest, Plan *src);
+static SeqScan *make_seqscan(List *qptlist, List *qpqual, Index scanrelid);
 
 /*
  * create_plan
@@ -1119,7 +1120,7 @@ make_noname(List *tlist,
 }
 
 
-SeqScan    *
+static SeqScan    *
 make_seqscan(List *qptlist,
 			 List *qpqual,
 			 Index scanrelid)

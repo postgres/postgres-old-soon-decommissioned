@@ -55,9 +55,6 @@ extern Size AttributeNumberGetIndexStrategySize(AttrNumber maxAttributeNumber,
 extern StrategyNumber RelationGetStrategy(Relation relation,
 			   AttrNumber attributeNumber, StrategyEvaluation evaluation,
 					RegProcedure procedure);
-extern bool RelationInvokeStrategy(Relation relation,
-			   StrategyEvaluation evaluation, AttrNumber attributeNumber,
-					   StrategyNumber strategy, Datum left, Datum right);
 extern void IndexSupportInitialize(IndexStrategy indexStrategy,
 					   RegProcedure *indexSupport, Oid indexObjectId,
 			  Oid accessMethodObjectId, StrategyNumber maxStrategyNumber,

@@ -227,6 +227,7 @@ XactLockTableInsert(TransactionId xid)
 		elog(ERROR, "XactLockTableInsert: LockAcquire failed");
 }
 
+#ifdef NOT_USED
 void
 XactLockTableDelete(TransactionId xid)
 {
@@ -242,6 +243,7 @@ XactLockTableDelete(TransactionId xid)
 
 	LockRelease(LockTableId, &tag, ExclusiveLock);
 }
+#endif
 
 void
 XactLockTableWait(TransactionId xid)

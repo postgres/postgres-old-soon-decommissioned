@@ -205,8 +205,6 @@ typedef struct BTPageState
  */
 extern InsertIndexResult _bt_doinsert(Relation rel, BTItem btitem,
 			 bool index_is_unique, Relation heapRel);
-extern int32 _bt_tuplecompare(Relation rel, Size keysz, ScanKey scankey,
-				 IndexTuple tuple1, IndexTuple tuple2);
 extern bool _bt_itemcmp(Relation rel, Size keysz, ScanKey scankey,
 			BTItem item1, BTItem item2, StrategyNumber strat);
 

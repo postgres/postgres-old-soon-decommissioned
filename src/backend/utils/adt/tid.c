@@ -114,6 +114,7 @@ tideq(ItemPointer arg1, ItemPointer arg2)
 			arg1->ip_posid == arg2->ip_posid);
 }
 
+#ifdef NOT_USED
 bool
 tidne(ItemPointer arg1, ItemPointer arg2)
 {
@@ -123,7 +124,9 @@ tidne(ItemPointer arg1, ItemPointer arg2)
 			BlockIdGetBlockNumber(&(arg2->ip_blkid)) ||
 			arg1->ip_posid != arg2->ip_posid);
 }
+#endif
 
+#ifdef NOT_USED
 text *
 tid_text(ItemPointer tid)
 {
@@ -135,7 +138,9 @@ tid_text(ItemPointer tid)
 
 	return textin(str);
 }	/* tid_text() */
+#endif
 
+#ifdef NOT_USED
 ItemPointer
 text_tid(const text *string)
 {
@@ -151,7 +156,7 @@ text_tid(const text *string)
 
 	return result;
 }	/* text_tid() */
-
+#endif
 
 /*
  *	Functions to get latest tid of a specified tuple.

@@ -32,6 +32,8 @@
 #define S_IXOTH		 ((S_IXUSR)>>6)
 #endif
 
+static int	ValidateBinary(char *path);
+
 /*
  * ValidateBinary -- validate "path" as a POSTMASTER/POSTGRES executable file
  *
@@ -39,7 +41,7 @@
  *		  -1 if the regular file "path" does not exist or cannot be executed.
  *		  -2 if the file is otherwise valid but cannot be read.
  */
-int
+static int
 ValidateBinary(char *path)
 {
 	struct stat buf;

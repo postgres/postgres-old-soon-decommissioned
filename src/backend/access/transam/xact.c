@@ -901,6 +901,7 @@ StartTransaction()
 
 }
 
+#ifdef NOT_USED
 /* ---------------
  * Tell me if we are currently in progress
  * ---------------
@@ -910,6 +911,7 @@ CurrentXactInProgress()
 {
 	return CurrentTransactionState->state == TRANS_INPROGRESS;
 }
+#endif
 
 /* --------------------------------
  *		CommitTransaction

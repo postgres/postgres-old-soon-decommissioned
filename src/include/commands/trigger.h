@@ -137,9 +137,6 @@ extern void DeferredTriggerAbortXact(void);
 
 extern void DeferredTriggerSetState(ConstraintsSetStmt *stmt);
 
-extern void DeferredTriggerSaveEvent(Relation rel, int event,
-						 HeapTuple oldtup, HeapTuple newtup);
-
 
 /*
  * in utils/adt/ri_triggers.c

@@ -30,6 +30,8 @@
 #include "miscadmin.h"
 #include "utils/syscache.h"
 
+static char *GetPidFname(void);
+
 
 #ifdef CYR_RECODE
 unsigned char RecodeForwTable[128];
@@ -406,7 +408,7 @@ SetPidFname(char *datadir)
 /*
  * Get path to the pid file
  */
-char *
+static char *
 GetPidFname(void)
 {
 	return (PidFile);

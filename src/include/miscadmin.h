@@ -142,7 +142,6 @@ extern char *getpgusername(void);
 extern void SetPgUserName(void);
 extern int	GetUserId(void);
 extern void SetUserId(void);
-extern int	ValidateBinary(char *path);
 extern int	FindExec(char *backend, char *argv0, char *binary_name);
 extern int	CheckPathAccess(char *path, char *name, int open_mode);
 
@@ -233,7 +232,6 @@ extern void SetWaitingForLock(bool);
 #define PIDFNAME	"postmaster.pid"
 
 extern void SetPidFname(char *datadir);
-extern char *GetPidFname(void);
 extern void UnlinkPidFile(void);
 extern int	SetPidFile(pid_t pid);
 

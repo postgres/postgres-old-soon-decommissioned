@@ -45,7 +45,6 @@ extern void UnlockPage(Relation relation, BlockNumber blkno, LOCKMODE lockmode);
 
 /* and this is for transactions */
 extern void XactLockTableInsert(TransactionId xid);
-extern void XactLockTableDelete(TransactionId xid);
 extern void XactLockTableWait(TransactionId xid);
 
 /* proc.c */

@@ -751,8 +751,6 @@ extern int	assert_enabled;
 #define LogAssertState(condition, printArgs) \
 		LogTrap(!(condition), BadState, printArgs)
 
-extern int	assertEnable(int val);
-
 #ifdef ASSERT_CHECKING_TEST
 extern int	assertTest(int val);
 

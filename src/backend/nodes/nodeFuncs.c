@@ -98,6 +98,7 @@ replace_opid(Oper *oper)
  *		constant (CONST, PARAM) nodes
  *****************************************************************************/
 
+#ifdef NOT_USED
 /*
  * non_null -
  *		Returns t if the node is a non-null constant, e.g., if the node has a
@@ -113,3 +114,5 @@ non_null(Expr *c)
 	else
 		return false;
 }
+#endif
+

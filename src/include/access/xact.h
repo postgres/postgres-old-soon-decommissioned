@@ -102,7 +102,6 @@ extern bool CommandIdIsCurrentCommandId(CommandId cid);
 extern bool CommandIdGEScanCommandId(CommandId cid);
 extern void CommandCounterIncrement(void);
 extern void InitializeTransactionSystem(void);
-extern bool CurrentXactInProgress(void);
 extern void StartTransactionCommand(void);
 extern void CommitTransactionCommand(void);
 extern void AbortCurrentTransaction(void);

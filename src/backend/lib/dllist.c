@@ -109,11 +109,13 @@ DLGetTailVal(Dllist *l)
 
 #endif
 
+#ifdef NOT_USED
 Dlelem *
 DLGetPred(Dlelem *e)			/* get predecessor */
 {
 	return e ? e->dle_prev : 0;
 }
+#endif
 
 Dlelem *
 DLGetSucc(Dlelem *e)			/* get successor */

@@ -27,7 +27,6 @@ extern Plan *query_planner(Query *root, List *tlist, List *qual,
  * prototypes for plan/createplan.c
  */
 extern Plan *create_plan(Query *root, Path *best_path);
-extern SeqScan *make_seqscan(List *qptlist, List *qpqual, Index scanrelid);
 extern Sort *make_sort(List *tlist, Oid nonameid, Plan *lefttree,
 		  int keycount);
 extern Agg *make_agg(List *tlist, List *qual, Plan *lefttree);

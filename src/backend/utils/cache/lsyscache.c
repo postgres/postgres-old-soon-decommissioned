@@ -513,6 +513,7 @@ get_func_rettype(Oid funcid)
 
 /*				---------- RELATION CACHE ----------					 */
 
+#ifdef NOT_USED
 /*
  * get_relnatts -
  *
@@ -536,6 +537,7 @@ get_relnatts(Oid relid)
 	else
 		return InvalidAttrNumber;
 }
+#endif
 
 /*
  * get_rel_name -

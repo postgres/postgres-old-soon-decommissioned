@@ -32,8 +32,6 @@ extern List *expandAll(ParseState *pstate, char *relname, Attr *ref,
 		  int *this_resno);
 extern int	attnameAttNum(Relation rd, char *a);
 extern int	specialAttNum(char *a);
-extern bool attnameIsSet(Relation rd, char *name);
-extern int	attnumAttNelems(Relation rd, int attid);
 extern Oid	attnumTypeId(Relation rd, int attid);
 extern void warnAutoRange(ParseState *pstate, char *refname);
 

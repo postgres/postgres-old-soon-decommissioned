@@ -75,6 +75,7 @@ static void DefaultBuild(Relation heapRelation, Relation indexRelation,
 			 IndexStrategy indexStrategy, uint16 parameterCount,
 		Datum *parameter, FuncIndexInfoPtr funcInfo, PredInfo *predInfo);
 static Oid	IndexGetRelation(Oid indexId);
+static bool activate_index(Oid indexId, bool activate);
 
 static bool reindexing = false;
 extern bool
@@ -2044,7 +2045,7 @@ IndexIsUniqueNoCache(Oid indexId)
  *		status per index
  * ---------------------------------
  */
-bool
+static bool
 activate_index(Oid indexId, bool activate)
 {
 	if (!activate)				/* Currently does nothing */

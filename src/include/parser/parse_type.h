@@ -30,10 +30,6 @@ extern char typeTypeFlag(Type t);
 extern Datum stringTypeDatum(Type tp, char *string, int32 atttypmod);
 extern Oid	typeidTypeRelid(Oid type_id);
 extern Oid	typeTypeRelid(Type typ);
-extern Oid	typeTypElem(Type typ);
-extern Oid	GetArrayElementType(Oid typearray);
-extern Oid	typeInfunc(Type typ);
-extern Oid	typeOutfunc(Type typ);
 
 #define ISCOMPLEX(typeid) (typeidTypeRelid(typeid) != InvalidOid)
 

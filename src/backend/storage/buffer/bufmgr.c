@@ -75,7 +75,6 @@ static void WaitIO(BufferDesc *buf, SPINLOCK spinlock);
 static void StartBufferIO(BufferDesc *buf, bool forInput);
 static void TerminateBufferIO(BufferDesc *buf);
 static void ContinueBufferIO(BufferDesc *buf, bool forInput);
-extern void InitBufferIO(void);
 extern void AbortBufferIO(void);
 
 /*
@@ -2488,11 +2487,13 @@ ContinueBufferIO(BufferDesc *buf, bool forInput)
 	IsForInput = forInput;
 }
 
+#ifdef NOT_USED
 void
 InitBufferIO(void)
 {
 	InProgressBuf = (BufferDesc *) 0;
 }
+#endif
 
 /*
  *	This function is called from ProcReleaseSpins().

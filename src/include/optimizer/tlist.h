@@ -16,8 +16,6 @@
 
 #include "nodes/relation.h"
 
-extern TargetEntry *tlistentry_member(Node *node, List *targetlist);
-extern Node *matching_tlist_expr(Node *node, List *targetlist);
 extern Resdom *tlist_member(Node *node, List *targetlist);
 
 extern void add_var_to_tlist(RelOptInfo *rel, Var *var);

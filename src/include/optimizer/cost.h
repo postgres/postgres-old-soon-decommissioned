@@ -81,8 +81,5 @@ extern Selectivity restrictlist_selectivity(Query *root,
 extern Selectivity clauselist_selectivity(Query *root,
 					   List *clauses,
 					   int varRelid);
-extern Selectivity clause_selectivity(Query *root,
-				   Node *clause,
-				   int varRelid);
 
 #endif	 /* COST_H */
