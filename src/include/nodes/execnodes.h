@@ -380,6 +380,7 @@ typedef struct CommonScanState
  *		NumScanKeys		   array of no of keys in each Skey struct
  *		RuntimeKeyInfo	   array of array of flags for Skeys evaled at runtime
  *		RuntimeContext	   expr context for evaling runtime Skeys
+ *		RuntimeKeysReady   true if runtime Skeys have been computed
  *		RelationDescs	   ptr to array of relation descriptors
  *		ScanDescs		   ptr to array of scan descriptors
  * ----------------
@@ -394,6 +395,7 @@ typedef struct IndexScanState
 	int		   *iss_NumScanKeys;
 	int		  **iss_RuntimeKeyInfo;
 	ExprContext *iss_RuntimeContext;
+	bool		iss_RuntimeKeysReady;
 	RelationPtr iss_RelationDescs;
 	IndexScanDescPtr iss_ScanDescs;
 	HeapTupleData iss_htup;

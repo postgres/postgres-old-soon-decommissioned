@@ -16,7 +16,7 @@
 
 #include "nodes/plannodes.h"
 
-extern TupleTableSlot *ExecNestLoop(NestLoop *node, Plan *parent);
+extern TupleTableSlot *ExecNestLoop(NestLoop *node);
 extern bool ExecInitNestLoop(NestLoop *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsNestLoop(NestLoop *node);
 extern void ExecEndNestLoop(NestLoop *node);

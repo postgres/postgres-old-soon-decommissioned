@@ -53,7 +53,13 @@ extern bool contain_subplans(Node *clause);
 extern List *pull_subplans(Node *clause);
 extern void check_subplans_for_ungrouped_vars(Node *clause, Query *query);
 
-extern List *pull_constant_clauses(List *quals, List **constantQual);
+extern bool contain_noncachable_functions(Node *clause);
+
+extern bool is_pseudo_constant_clause(Node *clause);
+
+extern List *pull_constant_clauses(List *quals,
+								   List **noncachableQual,
+								   List **constantQual);
 
 extern void clause_get_relids_vars(Node *clause, Relids *relids, List **vars);
 extern int	NumRelids(Node *clause);

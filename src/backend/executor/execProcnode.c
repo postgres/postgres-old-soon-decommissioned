@@ -277,7 +277,7 @@ ExecProcNode(Plan *node, Plan *parent)
 			 * ----------------
 			 */
 		case T_NestLoop:
-			result = ExecNestLoop((NestLoop *) node, parent);
+			result = ExecNestLoop((NestLoop *) node);
 			break;
 
 		case T_MergeJoin:
