@@ -104,7 +104,7 @@ GRANT { { SELECT | INSERT | UPDATE | DELETE | RULE | REFERENCES | TRIGGER } [,..
      <term>REFERENCES</term>
      <listitem>
       <para>
-       To create of a table with a foreign key constraint, it is
+       To create a table with a foreign key constraint, it is
        necessary to have this privilege on the table with the primary
        key.
       </para>
