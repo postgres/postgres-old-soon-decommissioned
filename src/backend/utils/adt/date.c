@@ -28,8 +28,7 @@
 #include "utils/timestamp.h"
 
 
-static void
-AdjustTimeForTypmod(TimeADT *time, int32 typmod);
+static void AdjustTimeForTypmod(TimeADT *time, int32 typmod);
 
 /*****************************************************************************
  *	 Date ADT
@@ -502,7 +501,10 @@ AdjustTimeForTypmod(TimeADT *time, int32 typmod)
 		static int32 TimeTypmod = 0;
 
 		if (typmod != TimeTypmod)
-			TimeScale = pow(10, typmod);
+		{
+			TimeScale = pow(10.0, typmod);
+			TimeTypmod = typmod;
+		}
 
 		*time = (rint(((double) *time)*TimeScale)/TimeScale);
 
