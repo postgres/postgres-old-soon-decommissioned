@@ -1709,7 +1709,7 @@ gunzip -c user.ps.gz \
 	<entry>7.2</entry>
 	<entry>2002-10-28,
 	 Andrew Sullivan (<email>andrew@libertyrms.info</email>)</entry>
-	<entry>Solaris 7; see also <filename>doc/FAQ_Solaris</filename></entry>
+	<entry>Solaris 7 & 8; see also <filename>doc/FAQ_Solaris</filename></entry>
        </row>
        <row>
 	<entry><systemitem class="osname">Solaris</></entry>
