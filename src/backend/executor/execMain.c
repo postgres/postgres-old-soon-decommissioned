@@ -1724,7 +1724,8 @@ EvalPlanQual(EState *estate, Index rti, ItemPointer tid)
 		}
 		/* push current PQ to the stack */
 		epqstate->es_evalPlanQual = (Pointer) epq;
-		estate->es_evalPlanQual = (Pointer) epq = newepq;
+		epq = newepq;
+		estate->es_evalPlanQual = (Pointer) epq;
 		epq->rti = rti;
 		endNode = false;
 	}

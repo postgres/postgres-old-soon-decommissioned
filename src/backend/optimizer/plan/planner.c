@@ -283,20 +283,20 @@ union_planner(Query *parse)
 		    
 
 		    /* convert the havingQual to conjunctive normal form (cnf) */
-		    (List *) parse->havingQual=cnfify((Expr *)(Node *) parse->havingQual,true);
+		    parse->havingQual = (Node *) cnfify((Expr *)(Node *) parse->havingQual,true);
 
 		    /* There is a subselect in the havingQual, so we have to process it
                      * using the same function as for a subselect in 'where' */
 		    if (parse->hasSubLinks)
 		      {
-			(List *) parse->havingQual = 
-			  (List *) SS_process_sublinks((Node *) parse->havingQual);
+			parse->havingQual = 
+			  (Node *) SS_process_sublinks((Node *) parse->havingQual);
 		      }
 		    		    
 		    
 		    /* Calculate the opfids from the opnos (=select the correct functions for
 		     * the used VAR datatypes) */
-		    (List *) parse->havingQual=fix_opids((List *) parse->havingQual);
+		    parse->havingQual = (Node *) fix_opids((List *) parse->havingQual);
 		    
 		    ((Agg *) result_plan)->plan.qual=(List *) parse->havingQual;
 
