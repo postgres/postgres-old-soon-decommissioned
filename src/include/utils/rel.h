@@ -85,6 +85,19 @@ typedef struct TriggerDesc
 	int			numtriggers;
 } TriggerDesc;
 
+
+/* ----------
+ * Same for the statistics collector data in Relation and scan data.
+ * ----------
+ */
+typedef struct	PgStat_Info
+{
+	void			   *tabentry;
+	bool				no_stats;
+	bool				heap_scan_counted;
+	bool				index_scan_counted;
+} PgStat_Info;
+
 /*
  * Here are the contents of a relation cache entry.
  */
@@ -110,6 +123,8 @@ typedef struct RelationData
 	IndexStrategy rd_istrat;	/* info needed if rel is an index */
 	RegProcedure *rd_support;
 	TriggerDesc *trigdesc;		/* Trigger info, or NULL if rel has none */
+
+	PgStat_Info	pgstat_info;
 } RelationData;
 
 typedef RelationData *Relation;

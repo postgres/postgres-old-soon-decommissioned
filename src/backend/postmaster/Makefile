@@ -12,7 +12,7 @@ subdir = src/backend/postmaster
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = postmaster.o
+OBJS = postmaster.o pgstat.o
 
 all: SUBSYS.o
 

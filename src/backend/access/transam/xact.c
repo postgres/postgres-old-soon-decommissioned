@@ -176,6 +176,8 @@
 #include "utils/relcache.h"
 #include "utils/temprel.h"
 
+#include "pgstat.h"
+
 extern bool SharedBufferChanged;
 
 static void AbortTransaction(void);
@@ -1083,6 +1085,9 @@ CommitTransaction(void)
 
 	SharedBufferChanged = false;/* safest place to do it */
 
+	/* Count transaction commit in statistics collector */
+	pgstat_count_xact_commit();
+
 	/*
 	 * done with commit processing, set current transaction state back to
 	 * default
@@ -1162,6 +1167,9 @@ AbortTransaction(void)
 	CloseSequences();
 	AtEOXact_portals();
 	RecordTransactionAbort();
+
+	/* Count transaction abort in statistics collector */
+	pgstat_count_xact_rollback();
 
 	RelationPurgeLocalRelation(false);
 	AtEOXact_temp_relations(false);

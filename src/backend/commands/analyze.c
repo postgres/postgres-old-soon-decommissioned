@@ -609,7 +609,7 @@ acquire_sample_rows(Relation onerel, HeapTuple *rows, int targrows,
 				goto pageloop;
 			}
 			ItemPointerSet(&targtuple.t_self, targblock, targoffset);
-			heap_fetch(onerel, SnapshotNow, &targtuple, &targbuffer);
+			heap_fetch(onerel, SnapshotNow, &targtuple, &targbuffer, NULL);
 			if (targtuple.t_data != NULL)
 			{
 				/*

@@ -980,7 +980,7 @@ SearchCatCache(CatCache *cache,
 		while ((indexRes = index_getnext(isd, ForwardScanDirection)))
 		{
 			tuple.t_self = indexRes->heap_iptr;
-			heap_fetch(relation, SnapshotNow, &tuple, &buffer);
+			heap_fetch(relation, SnapshotNow, &tuple, &buffer, isd);
 			pfree(indexRes);
 			if (tuple.t_data != NULL)
 			{

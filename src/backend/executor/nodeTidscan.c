@@ -152,7 +152,7 @@ TidNext(TidScan *node)
 		if (itemptr)
 		{
 			tuple->t_self = *(itemptr);
-			heap_fetch(heapRelation, snapshot, tuple, &buffer);
+			heap_fetch(heapRelation, snapshot, tuple, &buffer, NULL);
 		}
 		if (tuple->t_data != NULL)
 		{

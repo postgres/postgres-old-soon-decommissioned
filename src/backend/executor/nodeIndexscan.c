@@ -173,7 +173,7 @@ IndexNext(IndexScan *node)
 		while ((result = index_getnext(scandesc, direction)) != NULL)
 		{
 			tuple->t_self = result->heap_iptr;
-			heap_fetch(heapRelation, snapshot, tuple, &buffer);
+			heap_fetch(heapRelation, snapshot, tuple, &buffer, scandesc);
 			pfree(result);
 
 			if (tuple->t_data != NULL)

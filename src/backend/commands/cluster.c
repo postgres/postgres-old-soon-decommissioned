@@ -264,7 +264,8 @@ rebuildheap(Oid OIDNewHeap, Oid OIDOldHeap, Oid OIDOldIndex)
 		LocalHeapTuple.t_self = ScanResult->heap_iptr;
 		LocalHeapTuple.t_datamcxt = NULL;
 		LocalHeapTuple.t_data = NULL;
-		heap_fetch(LocalOldHeap, SnapshotNow, &LocalHeapTuple, &LocalBuffer);
+		heap_fetch(LocalOldHeap, SnapshotNow, &LocalHeapTuple, &LocalBuffer,
+						ScanDesc);
 		if (LocalHeapTuple.t_data != NULL)
 		{
 

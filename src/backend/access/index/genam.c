@@ -48,6 +48,7 @@
 #include "postgres.h"
 #include "access/genam.h"
 
+#include "pgstat.h"
 
 /* ----------------------------------------------------------------
  *		general access method routines
@@ -109,6 +110,8 @@ RelationGetIndexScan(Relation relation,
 
 	ItemPointerSetInvalid(&scan->currentItemData);
 	ItemPointerSetInvalid(&scan->currentMarkData);
+
+	pgstat_initstats(&scan->xs_pgstat_info, relation);
 
 	/*
 	 * mark cached function lookup data invalid; it will be set on first

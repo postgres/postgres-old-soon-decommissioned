@@ -90,7 +90,8 @@ regprocin(PG_FUNCTION_ARGS)
 				tuple.t_self = indexRes->heap_iptr;
 				heap_fetch(hdesc, SnapshotNow,
 						   &tuple,
-						   &buffer);
+						   &buffer,
+						   sd);
 				pfree(indexRes);
 				if (tuple.t_data != NULL)
 				{

@@ -1671,7 +1671,7 @@ EvalPlanQual(EState *estate, Index rti, ItemPointer tid)
 	{
 		Buffer		buffer;
 
-		heap_fetch(relation, SnapshotDirty, &tuple, &buffer);
+		heap_fetch(relation, SnapshotDirty, &tuple, &buffer, NULL);
 		if (tuple.t_data != NULL)
 		{
 			TransactionId xwait = SnapshotDirty->xmax;

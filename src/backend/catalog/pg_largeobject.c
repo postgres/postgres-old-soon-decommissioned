@@ -114,7 +114,7 @@ LargeObjectDrop(Oid loid)
 	while ((indexRes = index_getnext(sd, ForwardScanDirection)))
 	{
 		tuple.t_self = indexRes->heap_iptr;
-		heap_fetch(pg_largeobject, SnapshotNow, &tuple, &buffer);
+		heap_fetch(pg_largeobject, SnapshotNow, &tuple, &buffer, sd);
 		pfree(indexRes);
 		if (tuple.t_data != NULL)
 		{
@@ -165,7 +165,7 @@ LargeObjectExists(Oid loid)
 	while ((indexRes = index_getnext(sd, ForwardScanDirection)))
 	{
 		tuple.t_self = indexRes->heap_iptr;
-		heap_fetch(pg_largeobject, SnapshotNow, &tuple, &buffer);
+		heap_fetch(pg_largeobject, SnapshotNow, &tuple, &buffer, sd);
 		pfree(indexRes);
 		if (tuple.t_data != NULL)
 		{

@@ -55,6 +55,8 @@
 #include "utils/relcache.h"
 #include "catalog/pg_database.h"
 
+#include "pgstat.h"
+
 #define BufferGetLSN(bufHdr)	\
 	(*((XLogRecPtr*)MAKE_PTR((bufHdr)->data)))
 
@@ -147,6 +149,7 @@ ReadBufferInternal(Relation reln, BlockNumber blockNum,
 	if (isLocalBuf)
 	{
 		ReadLocalBufferCount++;
+		pgstat_count_buffer_read(&reln->pgstat_info, reln);
 		/* Substitute proper block number if caller asked for P_NEW */
 		if (blockNum == P_NEW)
 		{
@@ -156,11 +159,15 @@ ReadBufferInternal(Relation reln, BlockNumber blockNum,
 		}
 		bufHdr = LocalBufferAlloc(reln, blockNum, &found);
 		if (found)
+		{
 			LocalBufferHitCount++;
+			pgstat_count_buffer_hit(&reln->pgstat_info, reln);
+		}
 	}
 	else
 	{
 		ReadBufferCount++;
+		pgstat_count_buffer_read(&reln->pgstat_info, reln);
 		/* Substitute proper block number if caller asked for P_NEW */
 		if (blockNum == P_NEW)
 		{
@@ -175,7 +182,10 @@ ReadBufferInternal(Relation reln, BlockNumber blockNum,
 			SpinAcquire(BufMgrLock);
 		bufHdr = BufferAlloc(reln, blockNum, &found);
 		if (found)
+		{
 			BufferHitCount++;
+			pgstat_count_buffer_hit(&reln->pgstat_info, reln);
+		}
 	}
 
 	/* At this point we do NOT hold the bufmgr spinlock. */

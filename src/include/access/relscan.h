@@ -27,6 +27,8 @@ typedef struct HeapScanDescData
 	Snapshot	rs_snapshot;	/* snapshot to see */
 	uint16		rs_nkeys;		/* number of scan keys to select tuples */
 	ScanKey		rs_key;			/* key descriptors */
+
+	PgStat_Info rs_pgstat_info;	/* statistics collector hook */
 } HeapScanDescData;
 
 typedef HeapScanDescData *HeapScanDesc;
@@ -42,6 +44,8 @@ typedef struct IndexScanDescData
 	uint16		numberOfKeys;	/* number of scan keys to select tuples */
 	ScanKey		keyData;		/* key descriptors */
 	FmgrInfo	fn_getnext;		/* cached lookup info for am's getnext fn */
+
+	PgStat_Info xs_pgstat_info;	/* statistics collector hook */
 } IndexScanDescData;
 
 typedef IndexScanDescData *IndexScanDesc;

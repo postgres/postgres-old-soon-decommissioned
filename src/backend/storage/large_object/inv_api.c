@@ -227,7 +227,7 @@ inv_getsize(LargeObjectDesc *obj_desc)
 	while ((indexRes = index_getnext(sd, BackwardScanDirection)))
 	{
 		tuple.t_self = indexRes->heap_iptr;
-		heap_fetch(obj_desc->heap_r, SnapshotNow, &tuple, &buffer);
+		heap_fetch(obj_desc->heap_r, SnapshotNow, &tuple, &buffer, sd);
 		pfree(indexRes);
 		if (tuple.t_data == NULL)
 			continue;
@@ -339,7 +339,7 @@ inv_read(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 	while ((indexRes = index_getnext(sd, ForwardScanDirection)))
 	{
 		tuple.t_self = indexRes->heap_iptr;
-		heap_fetch(obj_desc->heap_r, SnapshotNow, &tuple, &buffer);
+		heap_fetch(obj_desc->heap_r, SnapshotNow, &tuple, &buffer, sd);
 		pfree(indexRes);
 
 		if (tuple.t_data == NULL)
@@ -473,7 +473,7 @@ inv_write(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 			while ((indexRes = index_getnext(sd, ForwardScanDirection)))
 			{
 				oldtuple.t_self = indexRes->heap_iptr;
-				heap_fetch(obj_desc->heap_r, SnapshotNow, &oldtuple, &buffer);
+				heap_fetch(obj_desc->heap_r, SnapshotNow, &oldtuple, &buffer, sd);
 				pfree(indexRes);
 				if (oldtuple.t_data != NULL)
 				{
