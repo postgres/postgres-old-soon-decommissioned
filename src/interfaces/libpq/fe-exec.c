@@ -21,10 +21,7 @@
 #include "libpq-fe.h"
 #include <signal.h>
 #include <sys/ioctl.h>
-#if defined(PORTNAME_sparc_solaris) || \
-    defined(PORTNAME_i386_solaris)
 #include <sys/termios.h>
-#endif
 
 #ifdef TIOCGWINSZ
 struct winsize screen_size;
