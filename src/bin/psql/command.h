@@ -28,7 +28,8 @@ typedef enum _backslashResult
 
 backslashResult HandleSlashCmds(const char *line,
 				PQExpBuffer query_buf,
-				const char **end_of_cmd);
+				const char **end_of_cmd,
+				volatile int *paren_level);
 
 int
 			process_file(char *filename);

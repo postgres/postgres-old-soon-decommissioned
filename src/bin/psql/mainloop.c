@@ -465,7 +465,8 @@ MainLoop(FILE *source)
 				/* handle backslash command */
 				slashCmdStatus = HandleSlashCmds(&line[i],
 						   query_buf->len > 0 ? query_buf : previous_buf,
-												 &end_of_cmd);
+												 &end_of_cmd,
+												 &paren_level);
 
 				success = slashCmdStatus != CMD_ERROR;
 

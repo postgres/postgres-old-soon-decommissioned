@@ -256,7 +256,7 @@ main(int argc, char *argv[])
 
 		if ((value = GetVariable(pset.vars, "ECHO")) && strcmp(value, "all") == 0)
 			puts(options.action_string);
-		successResult = HandleSlashCmds(options.action_string, NULL, NULL) != CMD_ERROR
+		successResult = HandleSlashCmds(options.action_string, NULL, NULL, NULL) != CMD_ERROR
 			? EXIT_SUCCESS : EXIT_FAILURE;
 	}
 
