@@ -50,6 +50,7 @@
 #ifndef MAXHOSTNAMELEN
 #include <netdb.h>		/* for MAXHOSTNAMELEN on some */
 #endif
+#include <sys/socket.h>
 #if defined(USE_LIMITS_H)
 # include <machine/limits.h>
 # define MAXINT		INT_MAX
