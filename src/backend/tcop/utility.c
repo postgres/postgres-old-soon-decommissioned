@@ -532,6 +532,13 @@ ProcessUtility(Node *parsetree,
 
 				set_ps_display(commandTag = "CREATE");
 
+				relname = stmt->relname;
+				if (!allowSystemTableMods && IsSystemRelationName(relname))
+					elog(ERROR, "CREATE INDEX: relation \"%s\" is a system catalog",
+						 relname);
+				if (!pg_ownercheck(GetUserId(), relname, RELNAME))
+					elog(ERROR, "permission denied");
+
 				DefineIndex(stmt->relname,		/* relation name */
 							stmt->idxname,		/* index name */
 							stmt->accessMethod, /* am name */

@@ -105,6 +105,10 @@ CreateTrigger(CreateTrigStmt *stmt)
 
 	rel = heap_openr(stmt->relname, AccessExclusiveLock);
 
+	if (rel->rd_rel->relkind != RELKIND_RELATION)
+		elog(ERROR, "CreateTrigger: relation \"%s\" is not a table",
+			 stmt->relname);
+
 	TRIGGER_CLEAR_TYPE(tgtype);
 	if (stmt->before)
 		TRIGGER_SETT_BEFORE(tgtype);
@@ -315,10 +319,19 @@ DropTrigger(DropTrigStmt *stmt)
 	int			found = 0;
 	int			tgfound = 0;
 
+	if (!allowSystemTableMods && IsSystemRelationName(stmt->relname))
+		elog(ERROR, "DropTrigger: can't drop trigger for system relation %s",
+			 stmt->relname);
+
 	if (!pg_ownercheck(GetUserId(), stmt->relname, RELNAME))
-		elog(ERROR, "%s: %s", stmt->relname, aclcheck_error_strings[ACLCHECK_NOT_OWNER]);
+		elog(ERROR, "%s: %s", stmt->relname,
+			 aclcheck_error_strings[ACLCHECK_NOT_OWNER]);
 
 	rel = heap_openr(stmt->relname, AccessExclusiveLock);
+
+	if (rel->rd_rel->relkind != RELKIND_RELATION)
+		elog(ERROR, "DropTrigger: relation \"%s\" is not a table",
+			 stmt->relname);
 
 	/*
 	 * Search pg_trigger, delete target trigger, count remaining triggers

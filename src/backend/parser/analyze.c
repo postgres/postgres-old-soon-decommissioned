@@ -2792,6 +2792,10 @@ transformFkeyCheckAttrs(FkConstraint *fkconstraint, Oid *pktypoid)
 	 */
 	pkrel = heap_openr(fkconstraint->pktable_name, AccessShareLock);
 
+	if (pkrel->rd_rel->relkind != RELKIND_RELATION)
+		elog(ERROR, "Referenced relation \"%s\" is not a table",
+			 fkconstraint->pktable_name);
+
 	/*
 	 * Get the list of index OIDs for the table from the relcache, and
 	 * look up each one in the pg_index syscache for each unique one, and
@@ -2880,6 +2884,10 @@ transformFkeyGetPrimaryKey(FkConstraint *fkconstraint, Oid *pktypoid)
 	 * Open the referenced table
 	 */
 	pkrel = heap_openr(fkconstraint->pktable_name, AccessShareLock);
+
+	if (pkrel->rd_rel->relkind != RELKIND_RELATION)
+		elog(ERROR, "Referenced relation \"%s\" is not a table",
+			 fkconstraint->pktable_name);
 
 	/*
 	 * Get the list of index OIDs for the table from the relcache, and
