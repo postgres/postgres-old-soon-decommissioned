@@ -20,17 +20,20 @@ typedef struct VAttListData {
 
 typedef VAttListData	*VAttList;
 
-typedef struct VTidListData {
-    ItemPointerData	vtl_tid;
-    struct VTidListData	*vtl_next;
-} VTidListData;
+typedef struct VPageDescrData {
+    BlockNumber			vpd_blkno;	/* BlockNumber of this Page */
+    Size			vpd_free;	/* FreeSpace on this Page */
+    uint16			vpd_noff;	/* Number of dead tids */
+    OffsetNumber		vpd_voff[1];	/* Array of its OffNums */
+} VPageDescrData;
 
-typedef VTidListData	*VTidList;
+typedef VPageDescrData	*VPageDescr;
 
 typedef struct VRelListData {
     Oid			vrl_relid;
     VAttList		vrl_attlist;
-    VTidList		vrl_tidlist;
+    VPageDescr		*vrl_pgdsc;
+    int			vrl_nrepg;
     int			vrl_ntups;
     int			vrl_npages;
     bool		vrl_hasindex;
