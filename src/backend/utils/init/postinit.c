@@ -29,6 +29,7 @@
 #include "catalog/catname.h"
 #include "catalog/pg_database.h"
 #include "commands/trigger.h"
+#include "commands/variable.h"	/* for set_default_client_encoding() */
 #include "miscadmin.h"
 #include "storage/backendid.h"
 #include "storage/proc.h"
