@@ -1350,7 +1350,7 @@ SELECT * FROM some_func();
        allow users to allow users to define set-returning functions
        that do not have this limitation.  Currently, the point at
        which data begins being written to disk is controlled by the
-       <varname>SORT_MEM</> configuration variable.  Administrators
+       <varname>sort_mem</> configuration variable.  Administrators
        who have sufficient memory to store larger result sets in
        memory should consider increasing this parameter.
       </para>

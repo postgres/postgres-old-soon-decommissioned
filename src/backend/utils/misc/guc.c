@@ -1311,7 +1311,7 @@ static struct config_string ConfigureNamesString[] =
 	{
 		{"log_error_verbosity", PGC_SUSET, LOGGING_WHEN,
 			gettext_noop("Controls verbosity of logged messages"),
-			gettext_noop("Valid values are TERSE, DEFAULT, and VERBOSE")
+			gettext_noop("Valid values are 'terse', 'default', and 'verbose'")
 		},
 		&log_error_verbosity_str,
 		"default", assign_log_error_verbosity, NULL

@@ -769,7 +769,7 @@ char *pg_encoding_to_char(int <replaceable>encoding_id</replaceable>);
 
       <listitem>
        <para>
-	Using <command>SET CLIENT_ENCODING TO</command>.
+	Using <command>SET client_encoding TO</command>.
 
 	Setting the client encoding can be done with this SQL command:
 
@@ -786,13 +786,13 @@ SET NAMES '<replaceable>value</>';
 	To query the current client encoding:
 
 <programlisting>
-SHOW CLIENT_ENCODING;
+SHOW client_encoding;
 </programlisting>
 
 	To return to the default encoding:
 
 <programlisting>
-RESET CLIENT_ENCODING;
+RESET client_encoding;
 </programlisting>
        </para>
       </listitem>
