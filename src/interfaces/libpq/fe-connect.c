@@ -14,15 +14,20 @@
 
 #include <stdlib.h>
 #include <sys/types.h>
+#ifdef WIN32
+#include "win32.h"
+#else
 #include <sys/socket.h>
-#include <fcntl.h>
 #include <unistd.h>
+#include <netdb.h>
+#include <sys/un.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#endif
+#include <fcntl.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
-#include <netdb.h>
-#include <netinet/in.h>
-#include <netinet/tcp.h>
 #include <errno.h>
 #include <signal.h>
 #include <ctype.h>				/* for isspace() */
