@@ -43,11 +43,11 @@ static void
 s_lock_stuck(volatile slock_t *lock, const char *file, const int line)
 {
 	fprintf(stderr,
-			"\nFATAL: s_lock(%08x) at %s:%d, stuck spinlock. Aborting.\n",
-			(unsigned int) lock, file, line);
+			"\nFATAL: s_lock(%p) at %s:%d, stuck spinlock. Aborting.\n",
+			lock, file, line);
 	fprintf(stdout,
-			"\nFATAL: s_lock(%08x) at %s:%d, stuck spinlock. Aborting.\n",
-			(unsigned int) lock, file, line);
+			"\nFATAL: s_lock(%p) at %s:%d, stuck spinlock. Aborting.\n",
+			lock, file, line);
 	abort();
 }
 

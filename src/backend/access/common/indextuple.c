@@ -139,7 +139,8 @@ index_formtuple(TupleDesc tupleDescriptor,
 	 */
 
 	if ((size & INDEX_SIZE_MASK) != size)
-		elog(ERROR, "index_formtuple: data takes %d bytes: too big", size);
+		elog(ERROR, "index_formtuple: data takes %lu bytes: too big",
+			(unsigned long)size);
 
 	infomask |= size;
 

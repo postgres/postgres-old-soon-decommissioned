@@ -1274,7 +1274,6 @@ BootStrapXLOG()
 	int			fd;
 	char		buffer[BLCKSZ];
 	CheckPoint	checkPoint;
-	bool		usexistent = false;
 
 #ifdef XLOG
 	XLogPageHeader page = (XLogPageHeader) buffer;

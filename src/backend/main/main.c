@@ -17,7 +17,7 @@
 #include <pwd.h>
 #include <unistd.h>
 
-#if defined(__alpha) && !defined(linux)
+#if defined(__alpha) && !defined(linux) && !defined(__FreeBSD__)
 #include <sys/sysinfo.h>
 #include "machine/hal_sysinfo.h"
 #define ASSEMBLER
