@@ -4703,7 +4703,8 @@ ECPGRelease: TransactionStmt SQL_RELEASE
 			fprintf(yyout, "ECPGtrans(__LINE__, %s, \"%s\");",
 					connection ? connection : "NULL", $1);
 			whenever_action(0);
-			fprintf(yyout, "ECPGdisconnect(__LINE__, \"\");");
+			fprintf(yyout, "ECPGdisconnect(__LINE__, %s);",
+					connection ? connection : "\"CURRENT\"");
 			whenever_action(0);
 			free($1);
 		}
