@@ -29,7 +29,11 @@ LDADD+= -L/usr/local/lib -lfl
 #
 CFLAGS_SL = -fpic -DPIC
 
+ifeq ($(HOSTTYPE), mips)
+#SLSUFF=		.so
+else
 SLSUFF=		.so
+endif
 
 %.so: %.o
 	$(LD) -x -r -o $(objdir)/$(<F).obj $(objdir)/$(<F)
