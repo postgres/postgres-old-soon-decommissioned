@@ -35,7 +35,7 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #
-# $My2pg: my2pg.pl,v 1.22 2001/12/06 19:32:20 fonin Exp $
+# $My2pg: my2pg.pl,v 1.23 2001/12/06 19:32:20 fonin Exp $
 # $Id$
 
 # TODO:
@@ -47,6 +47,10 @@
 
 #
 # $Log: my2pg.pl,v $
+# Revision 1.23  2002/02/07 22:13:52  fonin
+# Bugfix by Hans-Juergen Schoenig <hs@cybertec.at>: additional space after
+# FLOAT8 is required.
+#
 # Revision 1.22  2001/12/06 19:32:20  fonin
 # Patch: On line 594 where you check for UNIQUE, I believe the regex should try
 # and match 'UNIQUE KEY'. Otherwise it outputs no unique indexes for the
@@ -144,7 +148,7 @@ if($opts{d} ne '') {
 $|=1;
 
 print("------------------------------------------------------------------");
-print("\n-- My2Pg \$Revision: 1.6 $ \translated dump");
+print("\n-- My2Pg 1.23 translated dump");
 print("\n--");
 print("\n------------------------------------------------------------------");
 
@@ -166,7 +170,7 @@ $libtypename.='/libtypes.so';
 # push header to libtypes.c
 open(LIBTYPES,">$libtypesource");
 print LIBTYPES "/******************************************************";
-print LIBTYPES "\n * My2Pg \$Revision: 1.6 $ \translated dump";
+print LIBTYPES "\n * My2Pg \$Revision: 1.7 $ \translated dump";
 print LIBTYPES "\n * User types definitions";
 print LIBTYPES "\n ******************************************************/";
 print LIBTYPES "\n\n#include <postgres.h>\n";
@@ -195,10 +199,10 @@ while (<>) {
     s/bigint\(\d+\)/INT8/i;
     s/int\(\d+\)/INT4/i;
     s/float(\(\d+,\d*\))/DECIMAL$1/i;
-    s/double precision/FLOAT8/i;
+    s/double precision/FLOAT8 /i;
     s/([\W])double(\(\d+,\d*\))/$1DECIMAL$2/i;
-    s/([\W])double[\W]/$1FLOAT8/i;
-    s/([\W])real[\W]/$1FLOAT8/i;
+    s/([\W])double[\W]/$1FLOAT8 /i;
+    s/([\W])real[\W]/$1FLOAT8 /i;
     s/([\W])real(\(\d+,\d*\))/$1DECIMAL$2/i;
     
 # Convert string types
@@ -697,7 +701,7 @@ close(LIBTYPES);
 
 open(MAKE,">Makefile");
 print MAKE "#
-# My2Pg \$Revision: 1.6 $ \translated dump
+# My2Pg \$Revision: 1.7 $ \translated dump
 # Makefile
 #
 
