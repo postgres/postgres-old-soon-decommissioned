@@ -131,6 +131,8 @@ if [ $op = "stop" -o $op = "restart" ];then
 	    echo "done."
 	fi
 
+	echo "postmaster successfully shut down."
+
     else
 	echo "$CMDNAME: Can't find $PIDFILE."
 	echo "Is postmaster running?"
@@ -148,12 +150,19 @@ if [ $op = "start" -o $op = "restart" ];then
 	pid=`cat $PIDFILE`
     fi
 
+    # no -o given
     if [ -z "$POSTOPTS" ];then
-	if [ -f $DEFPOSTOPTS ];then
-	    eval `cat $DEFPOSTOPTS` &
+	if [ $op = "start" ];then
+	    # if we are in start mode, then look postmaster.opts.default
+	    if [ -f $DEFPOSTOPTS ];then
+		eval `cat $DEFPOSTOPTS` &
+	    else
+		echo "$CMDNAME: Can't find $DEFPOSTOPTS"
+		exit 1
+	    fi
 	else
-	    echo "$CMDNAME: Can't find $DEFPOSTOPTS"
-	    exit 1
+	    # if we are in restart mode, then look postmaster.opts
+	    eval `cat $POSTOPTSFILE` &
 	fi
     else
 	$po_path $POSTOPTS &
@@ -186,6 +195,8 @@ if [ $op = "start" -o $op = "restart" ];then
 	done
 	echo "done."
     fi
+
+    echo "postmaster successfully started up."
 fi
 
 exit 0
