@@ -1253,9 +1253,7 @@ DecodeDateTime(char **field, int *ftype, int nf,
 							case DTK_NOW:
 								tmask = (DTK_DATE_M | DTK_TIME_M | DTK_M(TZ));
 								*dtype = DTK_DATE;
-								GetCurrentTimeUsec(tm, fsec);
-								if (tzp != NULL)
-									*tzp = CTimeZone;
+								GetCurrentTimeUsec(tm, fsec, tzp);
 								break;
 
 							case DTK_YESTERDAY:
@@ -1969,7 +1967,7 @@ DecodeTimeOnly(char **field, int *ftype, int nf,
 							case DTK_NOW:
 								tmask = DTK_TIME_M;
 								*dtype = DTK_TIME;
-								GetCurrentTimeUsec(tm, fsec);
+								GetCurrentTimeUsec(tm, fsec, NULL);
 								break;
 
 							case DTK_ZULU:

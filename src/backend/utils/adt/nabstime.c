@@ -243,25 +243,24 @@ GetCurrentDateTime(struct tm * tm)
 	int			tz;
 
 	abstime2tm(GetCurrentTransactionStartTime(), &tz, tm, NULL);
-
-	return;
 }	/* GetCurrentDateTime() */
 
 
 void
-GetCurrentTimeUsec(struct tm * tm, fsec_t *fsec)
+GetCurrentTimeUsec(struct tm * tm, fsec_t *fsec, int *tzp)
 {
 	int			tz;
 	int			usec;
 
 	abstime2tm(GetCurrentTransactionStartTimeUsec(&usec), &tz, tm, NULL);
+	/* Note: don't pass NULL tzp directly to abstime2tm */
+	if (tzp != NULL)
+		*tzp = tz;
 #ifdef HAVE_INT64_TIMESTAMP
 	*fsec = usec;
 #else
 	*fsec = usec * 1.0e-6;
 #endif
-
-	return;
 }	/* GetCurrentTimeUsec() */
 
 

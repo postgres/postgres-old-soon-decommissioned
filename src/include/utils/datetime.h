@@ -261,7 +261,7 @@ extern int	day_tab[2][13];
 
 
 extern void GetCurrentDateTime(struct tm * tm);
-extern void GetCurrentTimeUsec(struct tm * tm, fsec_t *fsec);
+extern void GetCurrentTimeUsec(struct tm * tm, fsec_t *fsec, int *tzp);
 extern void j2date(int jd, int *year, int *month, int *day);
 extern int	date2j(int year, int month, int day);
 
