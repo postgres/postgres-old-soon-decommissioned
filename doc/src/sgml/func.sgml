@@ -5998,7 +5998,7 @@ SELECT TIMESTAMP 'now';
        <row>
 	<entry> <literal>&gt;&gt;</literal> </entry>
 	<entry>contains</entry>
-	<entry><literal>inet'192.168.1/24' &gt;&gt; inet '192.168.1.5'</literal></entry>
+	<entry><literal>inet '192.168.1/24' &gt;&gt; inet '192.168.1.5'</literal></entry>
        </row>
        <row>
 	<entry> <literal>&gt;&gt;=</literal> </entry>
@@ -6096,6 +6096,13 @@ SELECT TIMESTAMP 'now';
 	<entry><literal>abbrev(cidr '10.1.0.0/16')</literal></entry>
 	<entry><literal>10.1/16</literal></entry>
        </row>
+       <row>
+    <entry><literal><function>family</function>(<type>inet</type>)</literal></entry>
+    <entry><type>integer</type></entry>
+    <entry>extract family of address; <literal>4</literal> for IPv4,
+    <literal>6</literal> for IPv6</entry>
+    <entry><literal>family('::1')</literal></entry>
+    <entry><literal>6</literal></entry>
       </tbody>
      </tgroup>
     </table>
