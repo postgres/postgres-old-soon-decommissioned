@@ -92,9 +92,14 @@ typedef struct varlena text;
 typedef int2 int28[8];
 typedef Oid oid8[8];
 
-typedef struct nameData
+/* We want NameData to have length NAMEDATALEN and int alignment,
+ * because that's how the data type 'name' is defined in pg_type.
+ * Use a union to make sure the compiler agrees.
+ */
+typedef union nameData
 {
 	char		data[NAMEDATALEN];
+	int			alignmentDummy;
 } NameData;
 typedef NameData *Name;
 
