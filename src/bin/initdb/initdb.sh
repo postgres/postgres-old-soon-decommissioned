@@ -597,6 +597,11 @@ cat $TEMPFILE \
 	| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
 rm -f "$TEMPFILE" || exit_nicely
 
+echo "Setting lastsysoid."
+echo "Update pg_database Set datlastsysoid = (Select max(oid) From pg_description) \
+        Where datname = 'template1'" \
+		| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
+
 echo "Vacuuming database."
 echo "VACUUM ANALYZE" \
 	| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
