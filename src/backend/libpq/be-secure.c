@@ -105,7 +105,6 @@
 
 #ifdef USE_SSL
 #include <openssl/ssl.h>
-#include <openssl/e_os.h>
 #include <openssl/dh.h>
 #endif
 
@@ -289,7 +288,6 @@ secure_read(Port *port, void *ptr, size_t len)
 			case SSL_ERROR_WANT_READ:
 				break;
 			case SSL_ERROR_SYSCALL:
-				errno = get_last_socket_error();
 				elog(ERROR, "SSL SYSCALL error: %s", strerror(errno));
 				break;
 			case SSL_ERROR_SSL:
@@ -339,7 +337,6 @@ secure_write(Port *port, const void *ptr, size_t len)
 			case SSL_ERROR_WANT_WRITE:
 				break;
 			case SSL_ERROR_SYSCALL:
-				errno = get_last_socket_error();
 				elog(ERROR, "SSL SYSCALL error: %s", strerror(errno));
 				break;
 			case SSL_ERROR_SSL:
