@@ -14,7 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 OBJS = dfmgr.o fmgr.o funcapi.o
 
-override CPPFLAGS += -DPKGLIBDIR=\"$(pkglibdir)\" -DDLSUFFIX=\"$(DLSUFFIX)\"
+override CPPFLAGS += -DDLSUFFIX=\"$(DLSUFFIX)\"
 
 
 all: SUBSYS.o

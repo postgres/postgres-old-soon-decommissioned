@@ -12,8 +12,6 @@ subdir = src/timezone
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
-override CPPFLAGS += -DPGDATADIR=\"$(datadir)\"
-
 OBJS= asctime.o difftime.o localtime.o pgtz.o
 ZICOBJS= zic.o ialloc.o scheck.o localtime.o asctime.o pgtz.o
 

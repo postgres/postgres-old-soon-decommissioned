@@ -25,6 +25,13 @@
 
 #include "miscadmin.h"
 
+/* $PATH (or %PATH%) path separator */
+#ifdef WIN32
+#define PATHSEP ';'
+#else
+#define PATHSEP ':'
+#endif
+
 #ifndef S_IRUSR					/* XXX [TRH] should be in a header */
 #define S_IRUSR		 S_IREAD
 #define S_IWUSR		 S_IWRITE
@@ -265,6 +272,16 @@ find_my_exec(const char *argv0, char *full_path)
 
 	log_debug("could not find a \"%s\" to execute", argv0);
 	return -1;
+
+#if 0
+	/*
+	 *	Win32 has a native way to find the executable name, but the above
+	 *	method works too.
+	 */
+	if (GetModuleFileName(NULL,basename,MAXPGPATH) == 0)
+		ereport(FATAL,
+				(errmsg("GetModuleFileName failed (%i)",(int)GetLastError())));
+#endif
 }
 
 

@@ -15,6 +15,13 @@ subdir = src/port
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
+override CPPFLAGS += -DPGBINDIR=\"$(bindir)\" \
+		     -DPGDATADIR=\"$(datadir)\" \
+		     -DSYSCONFDIR='"$(sysconfdir)"' \
+		     -DINCLUDEDIR=\"$(includedir)\" \
+		     -DPKGINCLUDEDIR=\"$(pkgincludedir)\" \
+		     -DPKGLIBDIR=\"$(pkglibdir)\"
+
 ifdef LIBOBJS
 all: libpgport.a
 endif

@@ -2652,6 +2652,9 @@ PostgresMain(int argc, char *argv[], const char *username)
 			ereport(FATAL,
 					(errmsg("%s: could not locate postgres executable",
 							argv[0])));
+		if (strlen(pkglib_path) == 0)
+			get_pkglib_path(my_exec_path, pkglib_path);
+			
 		/*
 		 * Validate we have been given a reasonable-looking DataDir (if
 		 * under postmaster, assume postmaster did this already).

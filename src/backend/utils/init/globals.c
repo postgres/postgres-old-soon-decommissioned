@@ -46,6 +46,7 @@ char	   *DataDir = NULL;
 char		OutputFileName[MAXPGPATH];
 
 char		my_exec_path[MAXPGPATH];	/* full path to postgres executable */
+char		pkglib_path[MAXPGPATH];	/* full path to lib directory */
 
 BackendId	MyBackendId;
 
