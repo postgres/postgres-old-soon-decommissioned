@@ -145,7 +145,7 @@ INSTALL.html HISTORY.html: %.html : tempfile_%.html
 	sed 's/Chapter 1. *//g' $< >$@
 
 tempfile_INSTALL.html tempfile_HISTORY.html: tempfile_%.html : tempfile_%.sgml
-	$(JADE) $(JADEFLAGS) -d $(HDSL) -V nochunks -t sgml $< >$@
+	$(JADE.html) -V nochunks $< >$@
 
 
 tempfile_INSTALL.sgml: standalone-install.sgml installation.sgml
