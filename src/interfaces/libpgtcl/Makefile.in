@@ -34,6 +34,7 @@ shlib             :=
 LIBPQ			= -L $(SRCDIR)/interfaces/libpq -lpq
 
 ifeq ($(PORTNAME), linux)
+  LINUX_ELF=@LINUX_ELF@
   ifdef LINUX_ELF
     install-shlib-dep	:= install-shlib
     shlib		:= libpgtcl.so.1
