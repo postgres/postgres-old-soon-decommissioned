@@ -1051,7 +1051,7 @@ msgstr "Tabelle"
 
 #: describe.c:384
 msgid "Access privileges"
-msgstr "Zugangsrechte"
+msgstr "Zugriffsrechte"
 
 #: describe.c:406
 #, c-format
