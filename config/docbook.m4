@@ -59,6 +59,7 @@ else
         sgml/stylesheets/nwalsh-modular \
         sgml/stylesheets/docbook \
         sgml/docbook/dsssl/modular \
+        sgml/docbook/stylesheet/dsssl/modular \
         sgml/docbook/dsssl-stylesheets
       do
         pgac_candidate=$pgac_prefix/$pgac_infix/$pgac_postfix
