@@ -3599,7 +3599,7 @@ setMaxOid(Archive *fout)
 	char		sql[1024];
 	int		pos;
 
-	res = PQexec(g_conn, "CREATE TEMP TABLE pg_dump_oid (dummy int4)");
+	res = PQexec(g_conn, "CREATE TEMPORARY TABLE pg_dump_oid (dummy int4)");
 	if (!res ||
 		PQresultStatus(res) != PGRES_COMMAND_OK)
 	{
@@ -3635,7 +3635,7 @@ setMaxOid(Archive *fout)
 	if (g_verbose)
 		fprintf(stderr, "%s maximum system oid is %u %s\n",
 				g_comment_start, max_oid, g_comment_end);
-	pos = snprintf(sql, 1024, "CREATE TEMP TABLE pg_dump_oid (dummy int4);\n");
+	pos = snprintf(sql, 1024, "CREATE TEMPORARY TABLE pg_dump_oid (dummy int4);\n");
 	pos = pos + snprintf(sql+pos, 1024-pos, "COPY pg_dump_oid WITH OIDS FROM stdin;\n");
 	pos = pos + snprintf(sql+pos, 1024-pos, "%-d\t0\n", max_oid);
 	pos = pos + snprintf(sql+pos, 1024-pos, "\\.\n");
