@@ -291,7 +291,7 @@ text_substr(text *string, int32 m, int32 n)
 	len = VARSIZE(string) - VARHDRSZ;
 
 	/* m will now become a zero-based starting position */
-	if (m >= len)
+	if (m > len)
 	{
 		m = 0;
 		n = 0;
