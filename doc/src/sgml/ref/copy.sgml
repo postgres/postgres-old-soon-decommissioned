@@ -584,8 +584,8 @@ ZW      ZIMBABWE
   </para>
 
   <para>
-   The following syntax was used before PostgreSQL version 7.3 and is
-   still supported:
+   The following syntax was used before <productname>PostgreSQL</>
+   version 7.3 and is still supported:
 
 <synopsis>
 COPY [ BINARY ] <replaceable class="parameter">tablename</replaceable> [ WITH OIDS ]

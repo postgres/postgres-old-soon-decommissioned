@@ -215,11 +215,11 @@ $PostgreSQL$
     isolation level may be stricter than what you select.  This is
     permitted by the SQL standard: the four isolation levels only
     define which phenomena must not happen, they do not define which
-    phenomena must happen.  The reason that PostgreSQL only provides
-    two isolation levels is that this is the only sensible way to map
-    the isolation levels to the multiversion concurrency control
-    architecture.  The behavior of the available isolation levels is
-    detailed in the following subsections.
+    phenomena must happen.  The reason that <productname>PostgreSQL</>
+    only provides two isolation levels is that this is the only
+    sensible way to map the isolation levels to the multiversion
+    concurrency control architecture.  The behavior of the available
+    isolation levels is detailed in the following subsections.
    </para>
 
    <para>

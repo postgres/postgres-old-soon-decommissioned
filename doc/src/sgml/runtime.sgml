@@ -3551,7 +3551,7 @@ $ <userinput>kill -INT `head -1 /usr/local/pgsql/data/postmaster.pid`</userinput
    The server will listen for both standard and <acronym>SSL</>
    connections on the same TCP port, and will negotiate with any
    connecting client on whether to use <acronym>SSL</>. See <xref
-   linkend="client-authentication"> about how to force the server to
+   linkend="auth-pg-hba-conf"> about how to force the server to
    require use of <acronym>SSL</> for certain connections.
   </para>
 

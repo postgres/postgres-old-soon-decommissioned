@@ -6117,7 +6117,7 @@ SELECT TIMESTAMP 'now';
 
 
  <sect1 id="functions-sequence">
-  <title>Sequence-Manipulation Functions</title>
+  <title>Sequence Manipulation Functions</title>
 
   <indexterm>
    <primary>sequence</primary>
