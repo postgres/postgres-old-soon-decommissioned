@@ -205,7 +205,7 @@ amcostestimate (Query *root,
 
      <programlisting>
 *indexSelectivity = clauselist_selectivity(root, indexQuals,
-                                           rel->relid, JOIN_INNER);
+                                           rel-&gt;relid, JOIN_INNER);
      </programlisting>
     </para>
    </step>
