@@ -103,11 +103,11 @@ TopLevel:
 		;
 
 Queries:
-		  Query
-		| Queries Query
+		  A_Query
+		| Queries A_Query
 		;
 
-Query :
+A_Query :
 		  OpenStmt
 		| CloseStmt
 		| CreateStmt
