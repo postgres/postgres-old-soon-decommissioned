@@ -137,8 +137,8 @@ main(int argc, char *argv[])
 		   ControlFile.relseg_size,
 		   ControlFile.nameDataLen,
 		   ControlFile.funcMaxArgs,
-		   (ControlFile.enableIntTimes?
-			"64-bit integers": "Floating point"),
+		   (ControlFile.enableIntTimes ?
+			"64-bit integers" : "Floating point"),
 		   ControlFile.localeBuflen,
 		   ControlFile.lc_collate,
 		   ControlFile.lc_ctype);
