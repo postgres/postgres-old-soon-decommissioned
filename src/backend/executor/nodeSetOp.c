@@ -170,7 +170,7 @@ ExecSetOp(SetOpState *node)
 						0 : (node->numLeft - node->numRight);
 					break;
 				default:
-					elog(ERROR, "ExecSetOp: bogus command code %d",
+					elog(ERROR, "unrecognized setop code: %d",
 						 (int) plannode->cmd);
 					break;
 			}

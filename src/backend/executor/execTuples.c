@@ -256,8 +256,7 @@ ExecAllocTableSlot(TupleTable table)
 	 * -mer 4 Aug 1992
 	 */
 	if (table->next >= table->size)
-		elog(ERROR, "Plan requires more slots than are available"
-			 "\n\tsend mail to your local executor guru to fix this");
+		elog(ERROR, "plan requires more slots than are available");
 
 	/*
 	 * at this point, space in the table is guaranteed so we reserve the

@@ -333,7 +333,7 @@ ExecInitNestLoop(NestLoop *node, EState *estate)
 							   ExecGetResultType(innerPlanState(nlstate)));
 			break;
 		default:
-			elog(ERROR, "ExecInitNestLoop: unsupported join type %d",
+			elog(ERROR, "unrecognized join type: %d",
 				 (int) node->join.jointype);
 	}
 

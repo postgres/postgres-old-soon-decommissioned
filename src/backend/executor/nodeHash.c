@@ -248,7 +248,7 @@ ExecHashTableCreate(Hash *node, List *hashOperators)
 
 		hashfn = get_op_hash_function(lfirsto(ho));
 		if (!OidIsValid(hashfn))
-			elog(ERROR, "Could not find hash function for hash operator %u",
+			elog(ERROR, "could not find hash function for hash operator %u",
 				 lfirsto(ho));
 		fmgr_info(hashfn, &hashtable->hashfunctions[i]);
 		i++;

@@ -214,8 +214,7 @@ ExecInitNode(Plan *node, EState *estate)
 			break;
 
 		default:
-			elog(ERROR, "ExecInitNode: node type %d unsupported",
-				 (int) nodeTag(node));
+			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(node));
 			result = NULL;		/* keep compiler quiet */
 			break;
 	}
@@ -374,8 +373,7 @@ ExecProcNode(PlanState *node)
 			break;
 
 		default:
-			elog(ERROR, "ExecProcNode: node type %d unsupported",
-				 (int) nodeTag(node));
+			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(node));
 			result = NULL;
 			break;
 	}
@@ -467,8 +465,7 @@ ExecCountSlotsNode(Plan *node)
 			return ExecCountSlotsLimit((Limit *) node);
 
 		default:
-			elog(ERROR, "ExecCountSlotsNode: node type %d unsupported",
-				 (int) nodeTag(node));
+			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(node));
 			break;
 	}
 
@@ -596,8 +593,7 @@ ExecEndNode(PlanState *node)
 			break;
 
 		default:
-			elog(ERROR, "ExecEndNode: node type %d unsupported",
-				 (int) nodeTag(node));
+			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(node));
 			break;
 	}
 }

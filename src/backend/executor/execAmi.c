@@ -160,9 +160,8 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 			break;
 
 		default:
-			elog(ERROR, "ExecReScan: node type %d not supported",
-				 nodeTag(node));
-			return;
+			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(node));
+			break;
 	}
 
 	if (node->chgParam != NULL)
@@ -208,8 +207,7 @@ ExecMarkPos(PlanState *node)
 
 		default:
 			/* don't make hard error unless caller asks to restore... */
-			elog(DEBUG2, "ExecMarkPos: node type %d not supported",
-				 nodeTag(node));
+			elog(DEBUG2, "unrecognized node type: %d", (int) nodeTag(node));
 			break;
 	}
 }
@@ -249,8 +247,7 @@ ExecRestrPos(PlanState *node)
 			break;
 
 		default:
-			elog(ERROR, "ExecRestrPos: node type %d not supported",
-				 nodeTag(node));
+			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(node));
 			break;
 	}
 }

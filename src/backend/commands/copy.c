@@ -1581,7 +1581,7 @@ CopyFrom(Relation rel, List *attnumlist, bool binary, bool oids,
 			 * Check the constraints of the tuple
 			 */
 			if (rel->rd_att->constr)
-				ExecConstraints("CopyFrom", resultRelInfo, slot, estate);
+				ExecConstraints(resultRelInfo, slot, estate);
 
 			/*
 			 * OK, store the tuple and create index entries for it
