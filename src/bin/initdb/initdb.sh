@@ -240,6 +240,14 @@ fi
 
 POSTGRES_SUPERUID=`pg_id $POSTGRES_SUPERUSERNAME`
 
+if [ ${POSTGRES_SUPERUID:=-1} -eq -1 ]; then
+    echo "Unable to determine a valid username.  If you are running"
+    echo "initdb without an explicit username specified, then there"
+    echo "may be a problem with finding the Postgres shared library"
+    echo "and/or the pg_id utility."
+    exit 10
+fi
+
 if [ $POSTGRES_SUPERUID = NOUSER ]; then
     echo "Valid username not given.  You must specify the username for "
     echo "the Postgres superuser for the database system you are "
@@ -274,7 +282,7 @@ if [ -f "$PGDATA/PG_VERSION" ]; then
         echo "database system already exists."
         echo 
         echo "If you want to create a new database system, either remove "
-        echo "the $PGDATA directory or run initdb with a --pgdata option "
+        echo "the directory $PGDATA or run initdb with a --pgdata option "
         echo "other than $PGDATA."
         exit 1
     fi
