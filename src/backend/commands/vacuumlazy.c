@@ -497,8 +497,7 @@ static int
 lazy_vacuum_page(Relation onerel, BlockNumber blkno, Buffer buffer,
 				 int tupindex, LVRelStats *vacrelstats)
 {
-	OffsetNumber unbuf[BLCKSZ / sizeof(OffsetNumber)];
-	OffsetNumber *unused = unbuf;
+	OffsetNumber unused[BLCKSZ / sizeof(OffsetNumber)];
 	int			uncnt;
 	Page		page = BufferGetPage(buffer);
 	ItemId		itemid;
@@ -524,8 +523,7 @@ lazy_vacuum_page(Relation onerel, BlockNumber blkno, Buffer buffer,
 	{
 		XLogRecPtr	recptr;
 
-		recptr = log_heap_clean(onerel, buffer, (char *) unused,
-						  (char *) (&(unused[uncnt])) - (char *) unused);
+		recptr = log_heap_clean(onerel, buffer, unused, uncnt);
 		PageSetLSN(page, recptr);
 		PageSetSUI(page, ThisStartUpID);
 	}
