@@ -645,7 +645,7 @@ Pg_result(ClientData cData, Tcl_Interp * interp, int argc, char *argv[])
 #ifdef TCL_ARRAYS
 		for (i = 0; i < PQnfields(result); i++)
 		{
-			Tcl_AppendElement(interp, tcl_value(PQgetvalue(result, tupno, i)));
+			Tcl_AppendElement(interp, PQgetvalue(result,tupno,i));
 		}
 #else
 /*		Tcl_AppendResult(interp, PQgetvalue(result,tupno,0),NULL); */
