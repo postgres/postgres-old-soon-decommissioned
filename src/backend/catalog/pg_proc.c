@@ -339,6 +339,15 @@ checkretval(Oid rettype, List *queryTreeList)
 	int			relnatts;
 	int			i;
 
+	/* guard against empty function body; OK only if no return type */
+	if (queryTreeList == NIL)
+	{
+		if (rettype != InvalidOid)
+			elog(ERROR, "function declared to return %s, but no SELECT provided",
+				 typeidTypeName(rettype));
+		return;
+	}
+
 	/* find the final query */
 	parse = (Query *) nth(length(queryTreeList) - 1, queryTreeList);
 
