@@ -313,7 +313,7 @@ compare1(const void *p1, const void *p2)
 
 	v1 = *(unsigned int *) p1;
 	v2 = ((pg_utf_to_local *) p2)->utf;
-	return (v1 - v2);
+	return (v1 > v2)?1:((v1 == v2)?0:-1);
 }
 
 /*
@@ -328,7 +328,7 @@ compare2(const void *p1, const void *p2)
 
 	v1 = *(unsigned int *) p1;
 	v2 = ((pg_local_to_utf *) p2)->code;
-	return (v1 - v2);
+	return (v1 > v2)?1:((v1 == v2)?0:-1);
 }
 
 /*
