@@ -548,7 +548,7 @@ MergeAttributes(List *schema, List *supers, bool istemp,
 					elog(ERROR, "CREATE TABLE: inherited attribute \"%s\" type conflict (%s and %s)",
 						 attributeName,
 						 TypeNameToString(def->typename),
-						 typeidTypeName(attribute->atttypid));
+						 format_type_be(attribute->atttypid));
 				/* Merge of NOT NULL constraints = OR 'em together */
 				def->is_not_null |= attribute->attnotnull;
 				/* Default and other constraints are handled below */

@@ -366,7 +366,7 @@ transformExpr(ParseState *pstate, Node *expr)
 					/* Combining operators other than =/<> is dubious... */
 					if (length(left_list) != 1 &&
 						strcmp(opname, "=") != 0 && strcmp(opname, "<>") != 0)
-						elog(ERROR, "Row comparison cannot use '%s'",
+						elog(ERROR, "Row comparison cannot use operator %s",
 							 opname);
 
 					/*
@@ -405,13 +405,13 @@ transformExpr(ParseState *pstate, Node *expr)
 						opform = (Form_pg_operator) GETSTRUCT(optup);
 
 						if (opform->oprresult != BOOLOID)
-							elog(ERROR, "'%s' result type of '%s' must return '%s'"
+							elog(ERROR, "%s has result type of %s, but must return %s"
 								 " to be used with quantified predicate subquery",
-								 opname, typeidTypeName(opform->oprresult),
-								 typeidTypeName(BOOLOID));
+								 opname, format_type_be(opform->oprresult),
+								 format_type_be(BOOLOID));
 
 						if (get_func_retset(opform->oprcode))
-							elog(ERROR, "'%s' must not return a set"
+							elog(ERROR, "%s must not return a set"
 								 " to be used with quantified predicate subquery",
 								 opname);
 

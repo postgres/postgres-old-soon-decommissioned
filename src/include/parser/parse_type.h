@@ -36,7 +36,6 @@ extern char typeTypeFlag(Type t);
 extern Oid	typeTypeRelid(Type typ);
 extern Datum stringTypeDatum(Type tp, char *string, int32 atttypmod);
 
-extern char *typeidTypeName(Oid id);
 extern Oid	typeidTypeRelid(Oid type_id);
 
 extern void parseTypeString(const char *str, Oid *type_id, int32 *typmod);

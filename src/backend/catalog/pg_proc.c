@@ -140,7 +140,7 @@ ProcedureCreate(const char *procedureName,
 		(relid = typeidTypeRelid(typev[0])) != 0 &&
 		get_attnum(relid, (char *) procedureName) != InvalidAttrNumber)
 		elog(ERROR, "method %s already an attribute of type %s",
-			 procedureName, typeidTypeName(typev[0]));
+			 procedureName, format_type_be(typev[0]));
 
 	/*
 	 * If this is a postquel procedure, we parse it here in order to be
