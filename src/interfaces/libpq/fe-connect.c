@@ -21,6 +21,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <netdb.h>
+#include <netinet/tcp.h>
 #include <errno.h>
 #include <signal.h>
 #include <ctype.h>      /* for isspace() */
@@ -476,7 +477,25 @@ connectDB(PGconn *conn)
 		       conn->pghost,conn->pgport);
 	goto connect_errReturn;	
     }
-    
+    {
+    	struct protoent *pe;
+    	int on=1;
+    	
+    	pe = getprotobyname ("TCP");
+    	if ( pe == NULL )
+    	{
+	    (void) sprintf(conn->errorMessage,
+	    		"connectDB(): getprotobyname failed\n");
+	    goto connect_errReturn;
+	}
+    	if ( setsockopt (port->sock, pe->p_proto, TCP_NODELAY, 
+    						&on, sizeof (on)) < 0 )
+    	{
+	    (void) sprintf(conn->errorMessage,
+	    		"connectDB(): setsockopt failed\n");
+	    goto connect_errReturn;
+	}
+    }
 
     /* fill in the client address */
     if (getsockname(port->sock, (struct sockaddr *) &port->laddr,
