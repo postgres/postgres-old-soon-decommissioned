@@ -561,7 +561,7 @@ index_create(Oid heapRelationId,
 		elog(ERROR, "Shared indexes cannot be created after initdb");
 
 	if (get_relname_relid(indexRelationName, namespaceId))
-		elog(ERROR, "index named \"%s\" already exists",
+		elog(ERROR, "relation named \"%s\" already exists",
 			 indexRelationName);
 
 	/*
