@@ -1353,6 +1353,8 @@ _bt_endpoint(IndexScanDesc scan, ScanDirection dir)
     }
     else
     {
+	ItemPointerSetInvalid(current);
+	so->btso_curbuf = InvalidBuffer;
 	_bt_relbuf(rel, buf, BT_READ);
 	res = (RetrieveIndexResult) NULL;
     }
