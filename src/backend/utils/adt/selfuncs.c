@@ -1744,6 +1744,7 @@ convert_to_scalar(Datum value, Oid valuetypid, double *scaledvalue,
 		 * Built-in time types
 		 */
 		case TIMESTAMPOID:
+		case TIMESTAMPTZOID:
 		case ABSTIMEOID:
 		case DATEOID:
 		case INTERVALOID:
@@ -2121,6 +2122,8 @@ convert_timevalue_to_scalar(Datum value, Oid typid)
 	{
 		case TIMESTAMPOID:
 			return DatumGetTimestamp(value);
+		case TIMESTAMPTZOID:
+			return DatumGetTimestampTz(value);
 		case ABSTIMEOID:
 			return DatumGetTimestamp(DirectFunctionCall1(abstime_timestamp,
 														 value));
