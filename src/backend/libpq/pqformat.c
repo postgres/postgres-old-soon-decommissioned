@@ -213,13 +213,8 @@ pq_sendint(StringInfo buf, int i, int b)
 void
 pq_endmessage(StringInfo buf)
 {
-	if (pq_putmessage('\0', buf->data, buf->len))
-	{
-		snprintf(PQerrormsg, PQERRORMSG_LENGTH,
-				 "FATAL: pq_endmessage failed: errno=%d\n", errno);
-		fputs(PQerrormsg, stderr);
-		pqdebug("%s", PQerrormsg);
-	}
+	(void) pq_putmessage('\0', buf->data, buf->len);
+	/* no need to complain about any failure, since pqcomm.c already did */
 	pfree(buf->data);
 	buf->data = NULL;
 }
