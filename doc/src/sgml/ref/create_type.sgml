@@ -5,7 +5,7 @@ Postgres documentation
 
 <refentry id="SQL-CREATETYPE">
  <refmeta>
-  <refentrytitle>
+  <refentrytitle id="sql-createtype-title">
    CREATE TYPE
   </refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
