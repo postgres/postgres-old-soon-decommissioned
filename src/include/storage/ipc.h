@@ -30,10 +30,6 @@ extern void on_exit_reset(void);
 
 /* ipci.c */
 extern void CreateSharedMemoryAndSemaphores(bool makePrivate,
-								int maxBackends,
-								int port);
-#ifdef EXEC_BACKEND
-extern void AttachSharedMemoryAndSemaphores(void);
-#endif
-
+											int maxBackends,
+											int port);
 #endif   /* IPC_H */

@@ -17,13 +17,18 @@
 
 #ifndef TEST_VERSION
 
-#if defined(WIN32) || defined(CYGWIN)
+#if defined(WIN32) || defined(__CYGWIN__)
+
+#ifdef __CYGWIN__
+#include <sys/time.h> /* timeval definition for PG_USLEEP */
+#endif
 
 #ifndef FRONTEND
 #include "postgres.h"
 #else
 #include "postgres_fe.h"
 #endif
+#include "miscadmin.h"
 
 #undef rename
 #undef unlink
@@ -36,19 +41,19 @@ pgrename(const char *from, const char *to)
 #ifdef WIN32
 	while (!MoveFileEx(from, to, MOVEFILE_REPLACE_EXISTING))
 #endif
-#ifdef CYGWIN
+#ifdef __CYGWIN__
 	while (rename(from, to) < 0)
 #endif
 	{
 #ifdef WIN32
 		if (GetLastError() != ERROR_ACCESS_DENIED)
 #endif
-#ifdef CYGWIN
+#ifdef __CYGWIN__
 		if (errno != EACCES)
 #endif
 			/* set errno? */
 			return -1;
-		Sleep(100);				/* ms */
+		PG_USLEEP(100000);				/* us */
 		if (loops == 30)
 #ifndef FRONTEND
 			elog(LOG, "could not rename \"%s\" to \"%s\", continuing to try",
@@ -80,7 +85,7 @@ pgunlink(const char *path)
 		if (errno != EACCES)
 			/* set errno? */
 			return -1;
-		Sleep(100);				/* ms */
+		PG_USLEEP(100000);				/* us */
 		if (loops == 30)
 #ifndef FRONTEND
 			elog(LOG, "could not unlink \"%s\", continuing to try",

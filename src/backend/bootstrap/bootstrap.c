@@ -428,7 +428,7 @@ BootstrapMain(int argc, char *argv[])
 
 #ifdef EXEC_BACKEND
 	if (IsUnderPostmaster)
-		AttachSharedMemoryAndSemaphores();
+		CreateSharedMemoryAndSemaphores(false, MaxBackends, 0);
 #endif
 	XLOGPathInit();
 

@@ -2727,7 +2727,7 @@ SubPostmasterMain(int argc, char* argv[])
 	load_group();
 
 	/* Attach process to shared segments */
-	AttachSharedMemoryAndSemaphores();
+	CreateSharedMemoryAndSemaphores(false, MaxBackends, 0);
 
 	/* Run backend */
 	proc_exit(BackendRun(&port));

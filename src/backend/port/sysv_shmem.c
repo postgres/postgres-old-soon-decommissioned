@@ -254,7 +254,7 @@ PGSharedMemoryCreate(uint32 size, bool makePrivate, int port)
 	{
 		void* origUsedShmemSegAddr = UsedShmemSegAddr;
 
-#ifdef CYGWIN
+#ifdef __CYGWIN__
 		/* cygipc (currently) appears to not detach on exec. */
 		PGSharedMemoryDetach();
 		UsedShmemSegAddr = origUsedShmemSegAddr;
@@ -373,7 +373,7 @@ PGSharedMemoryDetach(void)
 	if (UsedShmemSegAddr != NULL)
 	{
 		if ((shmdt(UsedShmemSegAddr) < 0)
-#if (defined(EXEC_BACKEND) && defined(CYGWIN))
+#if (defined(EXEC_BACKEND) && defined(__CYGWIN__))
 			/* Work-around for cygipc exec bug */
 			&& shmdt(NULL) < 0
 #endif
