@@ -193,7 +193,7 @@ DefineIndex(char *heapRelationName,
 		       classObjectId, relationId);
 	
 	index_create(heapRelationName, indexRelationName, NULL,
-		     ((IndexElem*)lfirst(attributeList))->tname,
+		     attributeList,
 		     accessMethodId, numberOfAttributes, attributeNumberA,
 		     classObjectId, parameterCount, parameterA, (Node*)cnfPred,
 		     lossy, unique);
