@@ -6,7 +6,7 @@ PostgreSQL documentation
 <refentry id="SQL-ALTERSCHEMA">
  <refmeta>
   <refentrytitle id="SQL-ALTERSCHEMA-title">ALTER SCHEMA</refentrytitle>
-  <refmiscinfo>SQL - Schema Statements</refmiscinfo>
+  <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 
  <refnamediv>
