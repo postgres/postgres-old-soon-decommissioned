@@ -160,7 +160,7 @@ usage(const char *progname)
 	fprintf(stderr,
 			"\t -v          \t\t verbose\n");
 	fprintf(stderr,
-			"\t -z          \t\t dump ACLs (grant/revoke)\n");
+			"\t -x          \t\t do not dump ACL's (grant/revoke)\n");
 	fprintf(stderr,
 			"\nIf dbname is not supplied, then the DATABASE environment "
 			"variable value is used.\n");
