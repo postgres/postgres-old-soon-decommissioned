@@ -21,7 +21,10 @@ extern int setTargetTable(ParseState *pstate, RangeVar *relation,
 			   bool inh, bool alsoSource);
 extern bool interpretInhOption(InhOption inhOpt);
 
-extern Node *transformWhereClause(ParseState *pstate, Node *where);
+extern Node *transformWhereClause(ParseState *pstate, Node *clause,
+								  const char *constructName);
+extern Node *transformLimitClause(ParseState *pstate, Node *clause,
+								  const char *constructName);
 extern List *transformGroupClause(ParseState *pstate, List *grouplist,
 					 List *targetlist, List *sortClause);
 extern List *transformSortClause(ParseState *pstate, List *orderlist,

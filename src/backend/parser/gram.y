@@ -4585,11 +4585,12 @@ select_limit:
 			| OFFSET select_offset_value
 				{ $$ = makeList2($2, NULL); }
 			| LIMIT select_limit_value ',' select_offset_value
-				/* Disabled because it was too confusing, bjm 2002-02-18 */
-				{ elog(ERROR,
-					"LIMIT #,# syntax not supported.\n\tUse separate LIMIT and OFFSET clauses."); }
+				{
+					/* Disabled because it was too confusing, bjm 2002-02-18 */
+					elog(ERROR,
+						 "LIMIT #,# syntax not supported.\n\tUse separate LIMIT and OFFSET clauses.");
+				}
 		;
-
 
 opt_select_limit:
 			select_limit							{ $$ = $1; }
@@ -4598,67 +4599,18 @@ opt_select_limit:
 		;
 
 select_limit_value:
-			Iconst
-				{
-					Const	*n = makeNode(Const);
-
-					if ($1 < 0)
-						elog(ERROR, "LIMIT must not be negative");
-
-					n->consttype	= INT4OID;
-					n->constlen		= sizeof(int4);
-					n->constvalue	= Int32GetDatum($1);
-					n->constisnull	= FALSE;
-					n->constbyval	= TRUE;
-					$$ = (Node *)n;
-				}
+			a_expr									{ $$ = $1; }
 			| ALL
 				{
 					/* LIMIT ALL is represented as a NULL constant */
-					Const	*n = makeNode(Const);
-
-					n->consttype	= INT4OID;
-					n->constlen		= sizeof(int4);
-					n->constvalue	= (Datum) 0;
-					n->constisnull	= TRUE;
-					n->constbyval	= TRUE;
-					$$ = (Node *)n;
-				}
-			| PARAM
-				{
-					Param	*n = makeNode(Param);
-
-					n->paramkind	= PARAM_NUM;
-					n->paramid		= $1;
-					n->paramtype	= INT4OID;
+					A_Const *n = makeNode(A_Const);
+					n->val.type = T_Null;
 					$$ = (Node *)n;
 				}
 		;
 
 select_offset_value:
-			Iconst
-				{
-					Const	*n = makeNode(Const);
-
-					if ($1 < 0)
-						elog(ERROR, "OFFSET must not be negative");
-
-					n->consttype	= INT4OID;
-					n->constlen		= sizeof(int4);
-					n->constvalue	= Int32GetDatum($1);
-					n->constisnull	= FALSE;
-					n->constbyval	= TRUE;
-					$$ = (Node *)n;
-				}
-			| PARAM
-				{
-					Param	*n = makeNode(Param);
-
-					n->paramkind	= PARAM_NUM;
-					n->paramid		= $1;
-					n->paramtype	= INT4OID;
-					$$ = (Node *)n;
-				}
+			a_expr									{ $$ = $1; }
 		;
 
 /*
