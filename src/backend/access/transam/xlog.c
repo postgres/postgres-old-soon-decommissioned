@@ -455,8 +455,10 @@ static XLogRecord *ReadCheckpointRecord(XLogRecPtr RecPtr,
 static void WriteControlFile(void);
 static void ReadControlFile(void);
 static char *str_time(time_t tnow);
-static void xlog_outrec(char *buf, XLogRecord *record);
 static void issue_xlog_fsync(void);
+#ifdef WAL_DEBUG
+static void xlog_outrec(char *buf, XLogRecord *record);
+#endif
 
 
 /*
@@ -3489,6 +3491,7 @@ xlog_desc(char *buf, uint8 xl_info, char *rec)
 		strcat(buf, "UNKNOWN");
 }
 
+#ifdef WAL_DEBUG
 static void
 xlog_outrec(char *buf, XLogRecord *record)
 {
@@ -3513,6 +3516,7 @@ xlog_outrec(char *buf, XLogRecord *record)
 	sprintf(buf + strlen(buf), ": %s",
 			RmgrTable[record->xl_rmid].rm_name);
 }
+#endif /* WAL_DEBUG */
 
 
 /*
