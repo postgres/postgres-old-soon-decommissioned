@@ -161,6 +161,7 @@ extern void AtEOXact_Buffers(bool isCommit);
 extern void FlushBufferPool(void);
 extern BlockNumber BufferGetBlockNumber(Buffer buffer);
 extern BlockNumber RelationGetNumberOfBlocks(Relation relation);
+extern void RelationUpdateNumberOfBlocks(Relation relation);
 extern int	FlushRelationBuffers(Relation rel, BlockNumber firstDelBlock);
 extern void DropRelationBuffers(Relation rel);
 extern void DropRelFileNodeBuffers(RelFileNode rnode, bool istemp);

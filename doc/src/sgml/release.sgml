@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+CLUSTER is no longer hazardous to your schema
 COPY accepts a list of columns to copy
 ALTER TABLE DROP COLUMN
 CREATE OPERATOR CLASS/DROP OPERATOR CLASS
