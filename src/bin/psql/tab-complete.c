@@ -195,6 +195,7 @@ char ** psql_completion(char *text, int start, int end)
 		"client_encoding",
 		"server_encoding",
 		"KSQO",
+		"max_expr_depth",
 		"XactIsoLevel",
 		"PG_Options",
         NULL

@@ -770,6 +770,30 @@ SET TRANSACTION ISOLATION LEVEL { READ COMMITTED | SERIALIZABLE }
       </listitem>
      </varlistentry>
 
+     <varlistentry>
+      <term>MAX_EXPR_DEPTH</term>
+      <listitem>
+       <para>
+        Sets the maximum expression nesting depth that the parser will
+	accept.  The default value is high enough for any normal query,
+	but you can raise it if you need to.  (But if you raise it too high,
+	you run the risk of backend crashes due to stack overflow.)
+
+	<variablelist>
+	 <varlistentry>
+	  <term><replaceable class="parameter">integer</replaceable></term>
+	  <term>ON</term>
+	  <listitem>
+	   <para>
+	    Maximum depth.
+	   </para>
+	  </listitem>
+	 </varlistentry>
+	</variablelist>
+       </para>
+      </listitem>
+     </varlistentry>
+
     </variablelist>
    </para>
   </refsect2>

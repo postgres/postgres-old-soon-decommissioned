@@ -20,9 +20,12 @@
 #define EXPR_COLUMN_FIRST	1
 #define EXPR_RELATION_FIRST 2
 
+extern int	max_expr_depth;
+
 extern Node *transformExpr(ParseState *pstate, Node *expr, int precedence);
 extern Oid	exprType(Node *expr);
 extern int32 exprTypmod(Node *expr);
 extern bool exprIsLengthCoercion(Node *expr, int32 *coercedTypmod);
+extern void parse_expr_init(void);
 
 #endif	 /* PARSE_EXPR_H */

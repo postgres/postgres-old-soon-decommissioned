@@ -16,6 +16,7 @@
 #include "parser/analyze.h"
 #include "parser/gramparse.h"
 #include "parser/parser.h"
+#include "parser/parse_expr.h"
 
 #if defined(FLEX_SCANNER)
 extern void DeleteBuffer(void);
@@ -46,6 +47,8 @@ parser(char *str, Oid *typev, int nargs)
 	parsetree = NIL;			/* in case parser forgets to set it */
 
 	parser_init(typev, nargs);
+	parse_expr_init();
+
 	yyresult = yyparse();
 
 #if defined(FLEX_SCANNER)
