@@ -569,14 +569,6 @@ PostmasterMain(int argc, char *argv[])
 		ExitPostmaster(1);
 	}
 
-	/*
-	 * Initialize and startup the statistics collector process
-	 */
-	if (pgstat_init() < 0)
-		ExitPostmaster(1);
-	if (pgstat_start() < 0)
-		ExitPostmaster(1);
-
 	if (DebugLvl > 2)
 	{
 		extern char **environ;
@@ -698,6 +690,14 @@ PostmasterMain(int argc, char *argv[])
 	pqsignal(SIGCHLD, reaper);	/* handle child termination */
 	pqsignal(SIGTTIN, SIG_IGN); /* ignored */
 	pqsignal(SIGTTOU, SIG_IGN); /* ignored */
+
+	/*
+	 * Initialize and startup the statistics collector process
+	 */
+	if (pgstat_init() < 0)
+		ExitPostmaster(1);
+	if (pgstat_start() < 0)
+		ExitPostmaster(1);
 
 	/*
 	 * We're ready to rock and roll...
