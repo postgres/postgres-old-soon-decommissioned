@@ -2740,7 +2740,7 @@ res_target_list2: res_target_list2 ',' res_target_el2
 		;
 
 /* AS is not optional because shift/red conflict with unary ops */
-res_target_el2: a_expr AS ColId
+res_target_el2: a_expr_or_null AS ColId
 				{
 					$$ = makeNode(ResTarget);
 					$$->name = $3;
