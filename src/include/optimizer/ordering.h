@@ -13,6 +13,8 @@
 #ifndef ORDERING_H
 #define ORDERING_H
 
+#include <nodes/relation.h>
+
 extern bool equal_path_path_ordering(PathOrder *path_ordering1,
 				     PathOrder *path_ordering2);
 extern bool equal_path_merge_ordering(Oid *path_ordering,
