@@ -26,7 +26,6 @@
 #include "catalog/index.h"
 #include "catalog/indexing.h"
 #include "catalog/namespace.h"
-#include "catalog/pg_constraint.h"
 #include "commands/cluster.h"
 #include "commands/tablecmds.h"
 #include "miscadmin.h"
@@ -111,9 +110,9 @@ cluster(ClusterStmt *stmt)
 		RelToCluster	rvtc;
 
 		/* Find and lock the table */
-		tableOid = RangeVarGetRelid(stmt->relation, false);
+		rel = heap_openrv(stmt->relation, AccessExclusiveLock);
 
-		rel = heap_open(tableOid, AccessExclusiveLock);
+		tableOid = RelationGetRelid(rel);
 
 		/* Check permissions */
 		if (!check_cluster_permitted(tableOid))
@@ -324,6 +323,13 @@ cluster_rel(RelToCluster *rvtc, bool recheck)
 	if (IsSystemRelation(OldHeap))
 		elog(ERROR, "CLUSTER: cannot cluster system relation \"%s\"",
 			 RelationGetRelationName(OldHeap));
+
+	/*
+	 * Don't allow cluster on temp tables of other backends ... their
+	 * local buffer manager is not going to cope.
+	 */
+	if (isOtherTempNamespace(RelationGetNamespace(OldHeap)))
+		elog(ERROR, "CLUSTER cannot be used on temp tables of other processes");
 
 	/* Drop relcache refcnt on OldIndex, but keep lock */
 	index_close(OldIndex);
