@@ -160,8 +160,7 @@ _bt_leafbuild(BTSpool *btspool, BTSpool *btspool2)
 #ifdef BTREE_BUILD_STATS
 	if (Show_btree_build_stats)
 	{
-		fprintf(StatFp, "BTREE BUILD (Spool) STATISTICS\n");
-		ShowUsage();
+		ShowUsage("BTREE BUILD (Spool) STATISTICS");
 		ResetUsage();
 	}
 #endif   /* BTREE_BUILD_STATS */

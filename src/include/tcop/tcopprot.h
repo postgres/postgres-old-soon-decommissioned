@@ -20,14 +20,15 @@
 #define TCOPPROT_H
 
 #include <setjmp.h>
+
 #include "executor/execdesc.h"
 #include "tcop/dest.h"
+
 
 extern DLLIMPORT sigjmp_buf Warn_restart;
 extern bool Warn_restart_ready;
 extern bool InError;
 extern CommandDest whereToSendOutput;
-
 extern bool HostnameLookup;
 extern bool ShowPortNumber;
 
@@ -46,7 +47,6 @@ extern void quickdie(SIGNAL_ARGS);
 extern void authdie(SIGNAL_ARGS);
 extern int	PostgresMain(int argc, char *argv[], const char *username);
 extern void ResetUsage(void);
-extern void ShowUsage(void);
-extern FILE *StatFp;
+extern void ShowUsage(const char *title);
 
 #endif   /* TCOPPROT_H */

@@ -171,8 +171,7 @@ btbuild(PG_FUNCTION_ARGS)
 #ifdef BTREE_BUILD_STATS
 	if (Show_btree_build_stats)
 	{
-		fprintf(stderr, "BTREE BUILD STATS\n");
-		ShowUsage();
+		ShowUsage("BTREE BUILD STATS");
 		ResetUsage();
 	}
 #endif   /* BTREE_BUILD_STATS */
