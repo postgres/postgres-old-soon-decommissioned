@@ -46,9 +46,7 @@
 #include "plpgsql.h"
 #include "pl.tab.h"
 
-#ifdef MULTIBYTE
 #include "mb/pg_wchar.h"
-#endif
 
 
 /* ----------
@@ -404,11 +402,7 @@ plpgsql_convert_ident(const char *s, char **output, int numidents)
 		{
 			int len;
 
-#ifdef MULTIBYTE
 			len = pg_mbcliplen(curident, i, NAMEDATALEN-1);
-#else
-			len = NAMEDATALEN-1;
-#endif
 			curident[len] = '\0';
 		}
 

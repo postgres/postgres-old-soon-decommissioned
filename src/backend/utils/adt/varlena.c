@@ -217,16 +217,12 @@ textin(PG_FUNCTION_ARGS)
 	text	   *result;
 	int			len;
 
-#ifdef MULTIBYTE
 	char	   *ermsg;
-#endif
 
 	len = strlen(inputText) + VARHDRSZ;
 
-#ifdef MULTIBYTE
 	if ((ermsg = pg_verifymbstr(inputText, len - VARHDRSZ)))
 		elog(ERROR, "%s", ermsg);
-#endif
 
 	result = (text *) palloc(len);
 	VARATT_SIZEP(result) = len;
@@ -1476,12 +1472,8 @@ SplitIdentifierString(char *rawstring, char separator,
 		curlen = strlen(curname);
 		if (curlen >= NAMEDATALEN)
 		{
-#ifdef MULTIBYTE
 			curlen = pg_mbcliplen(curname, curlen, NAMEDATALEN - 1);
 			curname[curlen] = '\0';
-#else
-			curname[NAMEDATALEN - 1] = '\0';
-#endif
 		}
 
 		/*

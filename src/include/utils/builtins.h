@@ -661,9 +661,7 @@ extern Datum RI_FKey_setnull_upd(PG_FUNCTION_ARGS);
 extern Datum RI_FKey_setdefault_del(PG_FUNCTION_ARGS);
 extern Datum RI_FKey_setdefault_upd(PG_FUNCTION_ARGS);
 
-/* even if MULTIBYTE is not enabled, these functions are necessary
- * since pg_proc.h has references to them.
- */
+/* multibyte support functions */
 extern Datum getdatabaseencoding(PG_FUNCTION_ARGS);
 extern Datum database_character_set(PG_FUNCTION_ARGS);
 extern Datum pg_client_encoding(PG_FUNCTION_ARGS);

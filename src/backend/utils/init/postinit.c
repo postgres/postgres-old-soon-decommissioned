@@ -130,17 +130,10 @@ ReverifyMyDatabase(const char *name)
 	 * encoding info out of the pg_database tuple --- or complain, if we
 	 * can't support it.
 	 */
-#ifdef MULTIBYTE
 	SetDatabaseEncoding(dbform->encoding);
 	/* If we have no other source of client_encoding, use server encoding */
 	SetConfigOption("client_encoding", GetDatabaseEncodingName(),
 					PGC_BACKEND, PGC_S_DEFAULT);
-#else
-	if (dbform->encoding != PG_SQL_ASCII)
-		elog(FATAL, "database was initialized with MULTIBYTE encoding %d,\n\tbut the backend was compiled without multibyte support.\n\tlooks like you need to initdb or recompile.",
-			 dbform->encoding);
-#endif
-
 	/*
 	 * Set up database-specific configuration variables.
 	 */

@@ -18,46 +18,6 @@
 #include "mb/pg_wchar.h"
 #include "utils/ascii.h"
 
-/* ----------
- * even if MULTIBYTE is not enabled, these functions must exist
- * since pg_proc.h has references to them.
- * ----------
- */
-#ifndef MULTIBYTE
-
-static void multibyte_error(void);
-
-static void
-multibyte_error(void)
-{
-	elog(ERROR, "Multi-byte support is not enabled");
-}
-
-Datum
-to_ascii_encname(PG_FUNCTION_ARGS)
-{
-	multibyte_error();
-	return 0;					/* keep compiler quiet */
-}
-
-Datum
-to_ascii_enc(PG_FUNCTION_ARGS)
-{
-	multibyte_error();
-	return 0;					/* keep compiler quiet */
-}
-
-Datum
-to_ascii_default(PG_FUNCTION_ARGS)
-{
-	multibyte_error();
-	return 0;					/* keep compiler quiet */
-}
-
-
-#else							/* with MULTIBYTE */
-
-
 static text *encode_to_ascii(text *data, int enc);
 
 /* ----------
@@ -190,5 +150,3 @@ to_ascii_default(PG_FUNCTION_ARGS)
 		  )
 		);
 }
-
-#endif   /* MULTIBYTE */
