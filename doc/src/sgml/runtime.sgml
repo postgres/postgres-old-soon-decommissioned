@@ -1595,8 +1595,8 @@ SET ENABLE_SEQSCAN TO OFF;
          than 250ms will be logged.  Enabling this
          option can be useful in tracking down unoptimized queries in
          your applications.
-         Only superusers can increase this option if it is set to
-         non-zero by the administrator.
+         Only superusers can increase this or set it to zero if this option
+         is set to non-zero by the administrator.
         </para>
        </listitem>
       </varlistentry>
