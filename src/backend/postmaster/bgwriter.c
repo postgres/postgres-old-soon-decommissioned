@@ -553,7 +553,7 @@ RequestCheckpoint(bool waitforit)
 		if (bgs->ckpt_failed != old_failed)
 			ereport(ERROR,
 					(errmsg("checkpoint request failed"),
-					 errhint("Consult the postmaster log for details.")));
+					 errhint("Consult the server log for details.")));
 	}
 }
 

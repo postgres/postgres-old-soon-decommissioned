@@ -454,7 +454,7 @@ smgr_internal_unlink(RelFileNode rnode, int which, bool isTemp, bool isRedo)
 	if (!(*(smgrsw[which].smgr_unlink)) (rnode, isRedo))
 		ereport(WARNING,
 				(errcode_for_file_access(),
-				 errmsg("could not unlink relation %u/%u/%u: %m",
+				 errmsg("could not remove relation %u/%u/%u: %m",
 						rnode.spcNode,
 						rnode.dbNode,
 						rnode.relNode)));

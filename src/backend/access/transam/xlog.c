@@ -1660,7 +1660,7 @@ XLogFileCopy(uint32 log, uint32 seg,
 						 errmsg("could not read file \"%s\": %m", path)));
 			else
 				ereport(PANIC,
-					 (errmsg("insufficient data in file \"%s\"", path)));
+					 (errmsg("not enough data in file \"%s\"", path)));
 		}
 		errno = 0;
 		if ((int) write(fd, buffer, sizeof(buffer)) != (int) sizeof(buffer))
@@ -2049,7 +2049,7 @@ RestoreArchivedFile(char *path, const char *xlogfname,
 	 * program incorrectly.  We have to assume the former.
 	 */
 	ereport(DEBUG1,
-		 (errmsg("could not restore \"%s\" from archive: return code %d",
+		 (errmsg("could not restore file \"%s\" from archive: return code %d",
 				 xlogfname, rc)));
 
 	/*
