@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
 	}
 
 	printf("\
-Make sure you have added any needed 'THREAD_CPPFLAGS' and 'THREAD_LIBS'\n\
+Make sure you have added any needed 'PTHREAD_CFLAGS' and 'PTHREAD_LIBS'\n\
 defines to your template/$port file before compiling this program.\n\n"
 );
 
