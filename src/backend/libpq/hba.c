@@ -1391,7 +1391,7 @@ ident_unix(int sock, char *ident_user)
 	{
 		ereport(LOG,
 				(errmsg("local user with uid %d is not known to getpwuid",
-						(int) peercred.uid);
+						(int) peercred.uid)));
 		return false;
 	}
 
@@ -1461,7 +1461,7 @@ ident_unix(int sock, char *ident_user)
 	{
 		ereport(LOG,
 				(errmsg("local user with uid %d is not known to getpwuid",
-						(int) cred->cruid);
+						(int) cred->cruid)));
 		return false;
 	}
 
