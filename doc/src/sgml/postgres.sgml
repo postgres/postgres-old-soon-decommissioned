@@ -203,16 +203,16 @@ $Header$
   </partintro>
 
   &extend;
-  &indexcost;
   &rules;
   &trigger;
-  &spi;
 
   &xplang;
   &plsql;
   &pltcl;
   &plperl;
   &plpython;
+
+  &spi;
 
  </part>
 
@@ -231,13 +231,15 @@ $Header$
   &arch-dev;
   &catalogs;
   &protocol;
-  &page;
-  &geqo;
-  &gist;
-  &bki;
   &sources;
-  &compiler;
   &nls;
+  &plhandler;
+  &geqo;
+  &indexcost;
+  &gist;
+  &page;
+  &bki;
+  &compiler;
 
  </part>
 

@@ -28,7 +28,7 @@ $Header$
 
   <para>
    Writing a handler for a new procedural language is described in
-   <xref linkend="xfunc-plhandler">.  Several procedural languages are
+   <xref linkend="plhandler">.  Several procedural languages are
    available in the standard <productname>PostgreSQL</productname>
    distribution, which can serve as examples.
   </para>
