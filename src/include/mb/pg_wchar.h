@@ -7,9 +7,9 @@
 #include <sys/types.h>
 
 #ifdef FRONTEND
-#define elog(X...)
 #undef palloc
 #define palloc malloc
+# undef pfree
 #define pfree free
 #endif
 
