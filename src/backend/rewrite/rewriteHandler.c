@@ -1777,6 +1777,8 @@ apply_RIR_view(Node **nodePtr, int rt_index, RangeTblEntry *rte, List *tlist, in
 						var->varno == rt_index) {
 					Node		*exp;
 
+					if (var->varattno < 0)
+						elog(ERROR, "system column %s not available - %s is a view", get_attname(rte->relid, var->varattno), rte->relname);
 					exp = FindMatchingTLEntry(
 							tlist,
 							get_attname(rte->relid,
