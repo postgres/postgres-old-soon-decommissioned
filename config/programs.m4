@@ -120,13 +120,14 @@ dnl FIXME: We should probably check for version >=0.10.36.
   AC_CHECK_PROGS(XGETTEXT, xgettext)
 
   # Note: share/locale is always the default, independent of $datadir
+  localedir='${prefix}/share/locale'
   if test x"$prefix" = x"NONE"; then
-    localedir="$ac_default_prefix/share/locale"
+    exp_localedir="$ac_default_prefix/share/locale"
   else
-    localedir="$prefix/share/locale"
+    exp_localedir="$prefix/share/locale"
   fi
 
   AC_SUBST(localedir)
-  AC_DEFINE_UNQUOTED(LOCALEDIR, ["$localedir"],
+  AC_DEFINE_UNQUOTED(LOCALEDIR, ["$exp_localedir"],
                      [location of locale files])
 ])# PGAC_CHECK_GETTEXT
