@@ -197,7 +197,7 @@ PacketSendError(Packet *pkt, char *errormsg)
 	fprintf(stderr, "%s\n", errormsg);
 
 	pkt->pkt.em.data[0] = 'E';
-	StrNCpy(&pkt->pkt.em.data[1], errormsg, sizeof(pkt->pkt.em.data) - 2);
+	StrNCpy(&pkt->pkt.em.data[1], errormsg, sizeof(pkt->pkt.em.data) - 1);
 
 	/*
 	 * The NULL i/o callback will cause the connection to be broken when
