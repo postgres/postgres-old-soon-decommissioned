@@ -60,7 +60,7 @@ static struct _helpStruct QL_HELP[] = {
   FUNCTION <func_name> (arg1, arg2, ...)|\n\
   OPERATOR <op> (leftoperand_type rightoperand_type) |\n\
   TRIGGER <trigger_name> ON <table_name>\n\
-] IS 'text'},
+] IS 'text'"},
 	{"commit work",
 		"commit a transaction",
 	"\
