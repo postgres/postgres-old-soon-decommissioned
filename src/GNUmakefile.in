@@ -37,5 +37,4 @@ distclean maintainer-clean:
 	-$(MAKE) -C bin $@
 	-$(MAKE) -C pl $@
 	-$(MAKE) -C test clean
-	rm -f test/regress/GNUmakefile
 	rm -f Makefile.port Makefile.global GNUmakefile

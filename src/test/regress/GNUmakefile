@@ -11,12 +11,13 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR= ../..
-include $(SRCDIR)/Makefile.global
+subdir = src/test/regress
+top_builddir = ../../..
+include $(top_builddir)/src/Makefile.global
 
-CONTRIB= $(SRCDIR)/../contrib
+CONTRIB= $(top_builddir)/contrib
 
-HOST= @host@
+HOST := $(shell $(top_srcdir)/config/config.guess)
 
 CFLAGS+= -I$(LIBPQDIR) $(CFLAGS_SL)
 

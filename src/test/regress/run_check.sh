@@ -50,6 +50,12 @@ fi
 export LD_LIBRARY_PATH
 
 # ----------
+# Unset locale settings
+# ----------
+
+unset LC_COLLATE LC_CTYPE LC_MONETARY LC_MESSAGES LC_NUMERIC LC_TIME LC_ALL LANG LANGUAGE
+
+# ----------
 # Get the commandline parameters
 # ----------
 hostname=$1
