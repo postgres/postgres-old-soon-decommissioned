@@ -13,9 +13,11 @@
  */
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 #include <pwd.h>
 #include <ctype.h>		        /* isspace() declaration */
 #include <sys/stat.h>
+#include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
