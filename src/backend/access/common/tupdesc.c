@@ -179,7 +179,7 @@ TupleDescInitEntry(TupleDesc desc,
 	memset(att->attname.data,0,NAMEDATALEN);
 
     
-    att->attnvals  = 	0;			/* dummy value */
+    att->attdisbursion  = 0;			/* dummy value */
     att->attcacheoff = 	-1;
     
     att->attnum = attributeNumber;

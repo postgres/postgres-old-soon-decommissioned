@@ -507,7 +507,7 @@ ExecSetTypeInfo(int index,
     
     att->atttypid = 	typeID;
     att->attdefrel = 	0;			/* dummy value */
-    att->attnvals  = 	0;			/* dummy value */
+    att->attdisbursion  = 0;			/* dummy value */
     att->atttyparg = 	0;			/* dummy value */
     att->attlen =   	attLen;
     att->attnum =   	attNum;

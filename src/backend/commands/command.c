@@ -382,7 +382,7 @@ PerformAddAttribute(char *relationName,
 			   (Datum) NULL);
     
     attributeD.attrelid = reltup->t_oid;
-    attributeD.attnvals = 0;		/* XXX temporary */
+    attributeD.attdisbursion = 0;		/* XXX temporary */
     attributeD.attcacheoff = -1;
     
     attributeTuple = heap_addheader(Natts_pg_attribute,
