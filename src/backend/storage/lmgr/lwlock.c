@@ -302,7 +302,7 @@ LWLockAcquire(LWLockId lockid, LWLockMode mode)
 		for (;;)
 		{
 			/* "false" means cannot accept cancel/die interrupt here. */
-			IpcSemaphoreLock(proc->sem.semId, proc->sem.semNum, false);
+			PGSemaphoreLock(&proc->sem, false);
 			if (!proc->lwWaiting)
 				break;
 			extraWaits++;
@@ -325,7 +325,7 @@ LWLockAcquire(LWLockId lockid, LWLockMode mode)
 	 * Fix the process wait semaphore's count for any absorbed wakeups.
 	 */
 	while (extraWaits-- > 0)
-		IpcSemaphoreUnlock(proc->sem.semId, proc->sem.semNum);
+		PGSemaphoreUnlock(&proc->sem);
 }
 
 /*
@@ -485,7 +485,7 @@ LWLockRelease(LWLockId lockid)
 		head = proc->lwWaitLink;
 		proc->lwWaitLink = NULL;
 		proc->lwWaiting = false;
-		IpcSemaphoreUnlock(proc->sem.semId, proc->sem.semNum);
+		PGSemaphoreUnlock(&proc->sem);
 	}
 
 	/*

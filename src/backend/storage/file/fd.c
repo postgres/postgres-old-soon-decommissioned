@@ -51,6 +51,7 @@
 
 #include "miscadmin.h"
 #include "storage/fd.h"
+#include "storage/ipc.h"
 
 
 /* Filename components for OpenTemporaryFile */

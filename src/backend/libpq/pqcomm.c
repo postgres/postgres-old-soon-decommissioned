@@ -79,6 +79,7 @@
 
 #include "libpq/libpq.h"
 #include "miscadmin.h"
+#include "storage/ipc.h"
 
 
 static void pq_close(void);

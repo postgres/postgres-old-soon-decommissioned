@@ -23,7 +23,8 @@
 #ifndef MISCADMIN_H
 #define MISCADMIN_H
 
-#include "storage/ipc.h"
+#include <sys/types.h>
+
 
 /*****************************************************************************
  *	  System interrupt and critical section handling
@@ -291,8 +292,8 @@ extern void BaseInit(void);
 extern bool CreateDataDirLockFile(const char *datadir, bool amPostmaster);
 extern bool CreateSocketLockFile(const char *socketfile, bool amPostmaster);
 extern void TouchSocketLockFile(void);
-extern void RecordSharedMemoryInLockFile(IpcMemoryKey shmKey,
-							 IpcMemoryId shmId);
+extern void RecordSharedMemoryInLockFile(unsigned long id1,
+										 unsigned long id2);
 
 extern void ValidatePgVersion(const char *path);
 

@@ -16,6 +16,7 @@
 
 #include "miscadmin.h"
 #include "storage/backendid.h"
+#include "storage/ipc.h"
 #include "storage/pmsignal.h"
 #include "storage/proc.h"
 #include "storage/sinvaladt.h"

@@ -33,6 +33,7 @@
 #include "catalog/pg_type.h"
 #include "libpq/pqsignal.h"
 #include "miscadmin.h"
+#include "storage/ipc.h"
 #include "storage/proc.h"
 #include "tcop/tcopprot.h"
 #include "utils/builtins.h"

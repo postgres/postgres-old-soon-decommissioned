@@ -72,6 +72,6 @@
 #define SpinLockFree(lock)	S_LOCK_FREE(lock)
 
 
-extern void CreateSpinlocks(void);
+extern int	SpinlockSemas(void);
 
 #endif   /* SPIN_H */

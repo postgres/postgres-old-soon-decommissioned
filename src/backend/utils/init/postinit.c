@@ -32,6 +32,7 @@
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
 #include "storage/backendid.h"
+#include "storage/ipc.h"
 #include "storage/proc.h"
 #include "storage/sinval.h"
 #include "storage/smgr.h"
@@ -181,7 +182,7 @@ InitCommunication(void)
 		 * postmaster.	Create private "shmem" and semaphores.	Setting
 		 * MaxBackends = 16 is arbitrary.
 		 */
-		CreateSharedMemoryAndSemaphores(true, 16);
+		CreateSharedMemoryAndSemaphores(true, 16, 0);
 	}
 }
 

@@ -36,6 +36,7 @@
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
 #include "storage/backendid.h"
+#include "storage/ipc.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/catcache.h"

@@ -25,6 +25,7 @@
 #endif
 #include <netinet/in.h>
 #include <arpa/inet.h>
+
 #include "libpq/auth.h"
 #include "libpq/crypt.h"
 #include "libpq/hba.h"
@@ -32,6 +33,8 @@
 #include "libpq/password.h"
 #include "libpq/pqformat.h"
 #include "miscadmin.h"
+#include "storage/ipc.h"
+
 
 static void sendAuthRequest(Port *port, AuthRequest areq);
 static int	old_be_recvauth(Port *port);
