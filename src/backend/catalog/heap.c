@@ -1543,14 +1543,16 @@ start:
 		 *	length on the disk, requiring non-bpchar types to be padded
 		 *	before storage in the default table.  bjm 1999/05/18
 		 */
-		if (atp->atttypid == BPCHAROID &&
+		if (1==0 && atp->atttypid == BPCHAROID &&
 			(type == TEXTOID || type == BPCHAROID || type == UNKNOWNOID))
 		{
+
 			FuncCall   *n = makeNode(FuncCall);
 
 			n->funcname = typeidTypeName(atp->atttypid);
 			n->args = lcons((Node *)expr, NIL);
 			expr = transformExpr(NULL, (Node *) n, EXPR_COLUMN_FIRST);
+
 		}
 		else if (IS_BINARY_COMPATIBLE(type, atp->atttypid))
 			; /* use without change */
