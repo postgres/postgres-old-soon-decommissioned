@@ -5,7 +5,7 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
 MODULE_big = seg
-OBJS = seg.o segparse.o buffer.o
+OBJS = seg.o segparse.o
 DATA_built = seg.sql
 DOCS = README.seg
 REGRESS = seg
@@ -27,7 +27,7 @@ endif
 
 segscan.c: segscan.l
 ifdef FLEX
-	$(FLEX) $(FLEXFLAGS) -Pseg_yy -o'$@' $<
+	$(FLEX) $(FLEXFLAGS) -o'$@' $<
 else
 	@$(missing) flex $< $@
 endif
