@@ -14,9 +14,7 @@
 #ifndef STRAT_H
 #define STRAT_H
 
-#include "postgres.h"
-#include "access/attnum.h"
-#include "access/skey.h"
+#include "access/skey.h" 
 
 typedef uint16	StrategyNumber;
 
