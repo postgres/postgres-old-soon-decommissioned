@@ -44,25 +44,17 @@
  * ----------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "access/relscan.h"
-#include "access/itup.h"
-#include "access/sdir.h"
-
-#include "utils/catcache.h"
-
-#include "access/genam.h"
-
-#include "utils/palloc.h"
+#include <utils/catcache.h>
+#include <access/genam.h>
+#include <storage/bufmgr.h>
 
 #ifndef HAVE_MEMMOVE
-# include "regex/utils.h"
+# include <regex/utils.h>
 #else
 # include <string.h>
 #endif
-
-#include "storage/bufmgr.h"
 
 /* ----------------------------------------------------------------
  *	general access method routines

@@ -13,29 +13,18 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
  
-#include "access/relscan.h"
-
-#include "catalog/pg_proc.h"
-
-#include "catalog/pg_operator.h"
-
-#include "catalog/catname.h"
-
-#include "catalog/pg_index.h"
-
-#include "catalog/pg_amop.h"
-
-#include "catalog/pg_amproc.h"
-
-#include "utils/memutils.h" /* could have been access/itup.h */
-
-#include "access/heapam.h"
-
-#include "access/istrat.h"
-
-#include "fmgr.h"
+#include <catalog/pg_proc.h>
+#include <catalog/pg_operator.h>
+#include <catalog/catname.h>
+#include <catalog/pg_index.h>
+#include <catalog/pg_amop.h>
+#include <catalog/pg_amproc.h>
+#include <utils/memutils.h> /* could have been access/itup.h */
+#include <access/heapam.h>
+#include <access/istrat.h>
+#include <fmgr.h>
 
 /* ----------------------------------------------------------------
  *	           misc strategy support routines
