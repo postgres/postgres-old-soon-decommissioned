@@ -75,6 +75,8 @@ extern bool isTempNamespace(Oid namespaceId);
 extern void PushSpecialNamespace(Oid namespaceId);
 extern void PopSpecialNamespace(Oid namespaceId);
 
+extern Oid FindDefaultConversionProc(int4 for_encoding, int4 to_encoding);
+
 /* initialization & transaction cleanup code */
 extern void InitializeSearchPath(void);
 extern void AtEOXact_Namespace(bool isCommit);

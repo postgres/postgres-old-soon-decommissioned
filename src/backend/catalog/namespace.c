@@ -26,6 +26,7 @@
 #include "catalog/dependency.h"
 #include "catalog/heap.h"
 #include "catalog/namespace.h"
+#include "catalog/pg_conversion.h"
 #include "catalog/pg_inherits.h"
 #include "catalog/pg_namespace.h"
 #include "catalog/pg_opclass.h"
@@ -1268,6 +1269,28 @@ PopSpecialNamespace(Oid namespaceId)
 	namespaceSearchPathValid = false;
 }
 
+/*
+ * FindDefaultConversionProc - find default encoding cnnversion proc
+ */
+Oid FindDefaultConversionProc(int4 for_encoding, int4 to_encoding)
+{
+	Oid			proc;
+	List	   *lptr;
+
+	recomputeNamespacePath();
+
+	foreach(lptr, namespaceSearchPath)
+	{
+		Oid			namespaceId = (Oid) lfirsti(lptr);
+
+		proc = FindDefaultConversion(namespaceId, for_encoding, to_encoding);
+		if (OidIsValid(proc))
+			return proc;
+	}
+
+	/* Not found in path */
+	return InvalidOid;
+}
 
 /*
  * recomputeNamespacePath - recompute path derived variables if needed.
