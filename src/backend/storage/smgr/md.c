@@ -569,12 +569,14 @@ mdblindwrt(RelFileNode rnode,
 		elog(DEBUG, "mdblindwrt: write() failed: %m");
 		status = SM_FAIL;
 	}
+#ifndef XLOG
 	else if (dofsync &&
 			 pg_fsync(fd) < 0)
 	{
 		elog(DEBUG, "mdblindwrt: fsync() failed: %m");
 		status = SM_FAIL;
 	}
+#endif
 
 	if (close(fd) < 0)
 	{

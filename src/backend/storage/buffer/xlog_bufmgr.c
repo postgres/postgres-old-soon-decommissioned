@@ -1065,6 +1065,9 @@ void
 BufmgrCommit(void)
 {
 	LocalBufferSync();
+	/*
+	 * All files created in current transaction will be fsync-ed
+	 */
 	smgrcommit();
 }
 

@@ -70,6 +70,11 @@ extern int	BasicOpenFile(FileName fileName, int fileFlags, int fileMode);
 /* Miscellaneous support routines */
 extern void closeAllVfds(void);
 extern void AtEOXact_Files(void);
+
+#ifdef XLOG
+#define pg_fsync(fd)	fsync(fd)
+#else
 extern int	pg_fsync(int fd);
+#endif
 
 #endif	 /* FD_H */
