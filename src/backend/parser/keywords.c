@@ -39,6 +39,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"alter", ALTER},
 	{"analyze", ANALYZE},
 	{"and", AND},
+	{"any", ANY},
 	{"append", APPEND},
 	{"archive", ARCHIVE},
 	{"as", AS},

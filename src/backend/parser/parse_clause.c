@@ -387,7 +387,7 @@ transformUnionClause(List *unionClause, List *targetlist)
 
 	if (unionClause)
 	{
-		qlist = parse_analyze(unionClause);
+		qlist = parse_analyze(unionClause, NULL);
 
 		for (i=0; i < qlist->len; i++)
 			union_list = lappend(union_list, qlist->qtrees[i]);

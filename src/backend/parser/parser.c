@@ -61,7 +61,7 @@ parser(char *str, Oid *typev, int nargs)
 	if (yyresult)		/* error */
 		return ((QueryTreeList *) NULL);
 
-	queryList = parse_analyze(parsetree);
+	queryList = parse_analyze(parsetree, NULL);
 
 #ifdef SETS_FIXED
 

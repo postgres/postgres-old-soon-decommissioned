@@ -53,7 +53,7 @@ List   *extras = NIL;
  *
  */
 QueryTreeList *
-parse_analyze(List *pl)
+parse_analyze(List *pl, ParseState *parentParseState)
 {
 	QueryTreeList *result;
 	ParseState *pstate;
@@ -65,7 +65,7 @@ parse_analyze(List *pl)
 
 	while (pl != NIL)
 	{
-		pstate = make_parsestate();
+		pstate = make_parsestate(parentParseState);
 		result->qtrees[i++] = transformStmt(pstate, lfirst(pl));
 		if (extras != NIL)
 		{
