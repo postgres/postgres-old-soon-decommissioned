@@ -1191,6 +1191,26 @@ env PGOPTIONS='-c geqo=off' psql
      </varlistentry>
 
      <varlistentry>
+      <term><varname>DB_USER_NAMESPACE</varname> (<type>boolean</type>)</term>
+      <listitem>
+       <para>
+        This allows per-database user names.  You can create users as <literal>
+        username@dbname</>.  When <literal>username</> is passed by the client,
+        <literal>@</> and the database name is appended to the user name and
+        that database-specific user name is looked up by the server. 
+        When creating user names containing <literal>@</>, you will need
+        to quote the user name.
+       </para>
+       <para>
+        With this option enabled, you can still create ordinary global 
+        users.  Simply append <literal>@</> when specifying the user name
+        in the client.  The <literal>@</> will be stripped off and looked up
+        by the server. 
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <indexterm>
        <primary>deadlock</primary>
        <secondary>timeout</secondary>

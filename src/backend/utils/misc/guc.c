@@ -483,6 +483,10 @@ static struct config_bool
 		{ "transform_null_equals", PGC_USERSET }, &Transform_null_equals,
 		false, NULL, NULL
 	},
+	{
+		{ "db_user_namespace", PGC_SIGHUP }, &Db_user_namespace,
+		false, NULL, NULL
+	},
 
 	{
 		{ NULL, 0 }, NULL, false, NULL, NULL

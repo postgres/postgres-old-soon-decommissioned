@@ -59,7 +59,7 @@ typedef struct Port
 
 	ProtocolVersion proto;
 	char		database[SM_DATABASE + 1];
-	char		user[SM_USER + 1];
+	char		user[SM_DATABASE_USER + 1];
 	char		options[SM_OPTIONS + 1];
 	char		tty[SM_TTY + 1];
 	char		auth_arg[MAX_AUTH_ARG];

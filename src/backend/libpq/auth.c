@@ -117,7 +117,7 @@ pg_krb4_recvauth(Port *port)
 			 version, PG_KRB4_VERSION);
 		return STATUS_ERROR;
 	}
-	if (strncmp(port->user, auth_data.pname, SM_USER) != 0)
+	if (strncmp(port->user, auth_data.pname, SM_DATABASE_USER) != 0)
 	{
 		elog(LOG, "pg_krb4_recvauth: name \"%s\" != \"%s\"",
 			 port->user, auth_data.pname);
@@ -290,7 +290,7 @@ pg_krb5_recvauth(Port *port)
 	}
 
 	kusername = pg_an_to_ln(kusername);
-	if (strncmp(port->user, kusername, SM_USER))
+	if (strncmp(port->user, kusername, SM_DATABASE_USER))
 	{
 		elog(LOG, "pg_krb5_recvauth: user name \"%s\" != krb5 name \"%s\"",
 			 port->user, kusername);
