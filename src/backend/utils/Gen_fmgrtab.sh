@@ -108,7 +108,7 @@ if [ $? -ne 0 ]; then
 fi
 
 $CPP $BKIOPTS $CPPTMPFILE | \
-egrep '^[0-9]' | \
+egrep '^[ ]*[0-9]' | \
 sort -n > $RAWFILE
 
 if [ $? -ne 0 ]; then
