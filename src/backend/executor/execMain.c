@@ -634,7 +634,7 @@ InitPlan(QueryDesc *queryDesc)
 	 * (this is especially important if we are creating a relation with
 	 * "SELECT INTO")
 	 */
-	tupType = ExecGetTupType(planstate);
+	tupType = ExecGetResultType(planstate);
 
 	/*
 	 * Initialize the junk filter if needed.  SELECT and INSERT queries need a
@@ -713,7 +713,7 @@ InitPlan(QueryDesc *queryDesc)
 					JunkFilter *j;
 
 					j = ExecInitJunkFilter(subplan->plan->targetlist,
-										   ExecGetTupType(subplan),
+										   ExecGetResultType(subplan),
 							  ExecAllocTableSlot(estate->es_tupleTable));
 					resultRelInfo->ri_junkFilter = j;
 					resultRelInfo++;

@@ -374,7 +374,7 @@ ExecInitHashJoin(HashJoin *node, EState *estate)
 		case JOIN_LEFT:
 			hjstate->hj_NullInnerTupleSlot =
 				ExecInitNullTupleSlot(estate,
-									  ExecGetTupType(innerPlanState(hjstate)));
+									  ExecGetResultType(innerPlanState(hjstate)));
 			break;
 		default:
 			elog(ERROR, "ExecInitHashJoin: unsupported join type %d",
@@ -402,7 +402,7 @@ ExecInitHashJoin(HashJoin *node, EState *estate)
 	ExecAssignProjectionInfo(&hjstate->js.ps);
 
 	ExecSetSlotDescriptor(hjstate->hj_OuterTupleSlot,
-						  ExecGetTupType(outerPlanState(hjstate)),
+						  ExecGetResultType(outerPlanState(hjstate)),
 						  false);
 
 	/*

@@ -330,7 +330,7 @@ ExecInitNestLoop(NestLoop *node, EState *estate)
 		case JOIN_LEFT:
 			nlstate->nl_NullInnerTupleSlot =
 				ExecInitNullTupleSlot(estate,
-							   ExecGetTupType(innerPlanState(nlstate)));
+							   ExecGetResultType(innerPlanState(nlstate)));
 			break;
 		default:
 			elog(ERROR, "ExecInitNestLoop: unsupported join type %d",

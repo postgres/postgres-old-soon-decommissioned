@@ -413,7 +413,7 @@ ExecAssignResultTypeFromOuterPlan(PlanState *planstate)
 	TupleDesc	tupDesc;
 
 	outerPlan = outerPlanState(planstate);
-	tupDesc = ExecGetTupType(outerPlan);
+	tupDesc = ExecGetResultType(outerPlan);
 
 	ExecAssignResultType(planstate, tupDesc, false);
 }
@@ -606,7 +606,7 @@ ExecAssignScanTypeFromOuterPlan(ScanState *scanstate)
 	TupleDesc	tupDesc;
 
 	outerPlan = outerPlanState(scanstate);
-	tupDesc = ExecGetTupType(outerPlan);
+	tupDesc = ExecGetResultType(outerPlan);
 
 	ExecAssignScanType(scanstate, tupDesc, false);
 }

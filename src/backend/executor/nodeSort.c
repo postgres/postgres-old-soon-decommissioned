@@ -137,7 +137,7 @@ ExecSort(SortState *node)
 				   "calling tuplesort_begin");
 
 		outerNode = outerPlanState(node);
-		tupDesc = ExecGetTupType(outerNode);
+		tupDesc = ExecGetResultType(outerNode);
 
 		ExtractSortKeys(plannode, &sortOperators, &attNums);
 
@@ -172,11 +172,6 @@ ExecSort(SortState *node)
 		 * restore to user specified direction
 		 */
 		estate->es_direction = dir;
-
-		/*
-		 * make sure the tuple descriptor is up to date (is this needed?)
-		 */
-		ExecAssignResultType(&node->ss.ps, tupDesc, false);
 
 		/*
 		 * finally set the sorted flag to true

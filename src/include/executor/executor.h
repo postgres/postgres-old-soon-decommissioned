@@ -101,7 +101,6 @@ extern PlanState *ExecInitNode(Plan *node, EState *estate);
 extern TupleTableSlot *ExecProcNode(PlanState *node);
 extern int	ExecCountSlotsNode(Plan *node);
 extern void ExecEndNode(PlanState *node);
-extern TupleDesc ExecGetTupType(PlanState *node);
 
 /*
  * prototypes from functions in execQual.c
