@@ -11,11 +11,14 @@
 #
 #-------------------------------------------------------------------------
 
-SHPROG=	cleardbdir
+all: cleardbdir
 
-MKDIR=	../../mk
-include $(MKDIR)/postgres.mk
-include ../Makefile.global
+cleardbdir:
+	cp cleardbdir.sh cleardbdir
 
-include $(MKDIR)/postgres.shell.mk
+install: cleardbdir
+	$(INSTALL) $(INSTL_EXE_OPTS) $< $(DESTDIR)$(BINDIR)/$<
+
+clean: 
+	rm -f cleardbdir
 

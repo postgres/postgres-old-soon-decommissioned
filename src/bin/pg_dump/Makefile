@@ -11,15 +11,30 @@
 #
 #-------------------------------------------------------------------------
 
-PROG=	pg_dump
-
-MKDIR=	../../mk
-include $(MKDIR)/postgres.mk
+SRCDIR= ../..
 include ../Makefile.global
+include ../../Makefile.global
 
-CFLAGS+= -I../../backend/port/$(PORTNAME)
+OBJS= pg_dump.o common.o
 
-SRCS=	pg_dump.c common.c
+all: submake pg_dump
 
-include $(MKDIR)/postgres.prog.mk
+pg_dump: $(OBJS) $(LIBPQDIR)/libpq.a
+	$(CC) $(LDFLAGS) -o pg_dump -L$(LIBPQDIR) $(OBJS) -lpq $(LD_ADD)
 
+.PHONY: submake
+submake:
+	$(MAKE) -C $(LIBPQDIR) libpq.a
+
+install:
+	$(INSTALL) $(INSTL_EXE_OPTS) pg_dump $(DESTDIR)$(BINDIR)/pg_dump
+
+depend dep:
+	$(CC) -MM $(INCLUDE_OPT) *.c >depend
+
+clean: 
+	rm -f pg_dump $(OBJS) 
+
+ifeq (depend,$(wildcard depend))
+include depend
+endif

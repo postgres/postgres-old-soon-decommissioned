@@ -11,8 +11,8 @@
 #
 #-------------------------------------------------------------------------
 
-MKDIR=../mk
--include $(MKDIR)/../Makefile.global
+SRCDIR=..
+include $(SRCDIR)/Makefile.global
 
 .DEFAULT all:
 #

@@ -11,11 +11,19 @@
 #
 #-------------------------------------------------------------------------
 
-SHPROG=	ipcclean
+SRCDIR= ../..
+include ../../Makefile.global
 
-MKDIR=	../../mk
-include $(MKDIR)/postgres.mk
-include ../Makefile.global
+SEDSCRIPT= \
+    -e "s^_fUnKy_IPCCLEANPATH_sTuFf_^$(IPCSDIR)^g" 
 
-include $(MKDIR)/postgres.shell.mk
+all: ipcclean
 
+ipcclean:
+	sed $(SEDSCRIPT) <ipcclean.sh >ipcclean
+
+install: ipcclean
+	$(INSTALL) $(INSTL_EXE_OPTS) $< $(DESTDIR)$(BINDIR)/$<
+
+clean:
+	rm -f ipcclean

@@ -63,12 +63,13 @@ ifneq ($(USE_READLINE), true)
 OBJS+= rlstubs.o
 endif
 
-all: psql
+all: submake psql
 
 psql: $(OBJS) $(LIBPQDIR)/libpq.a
 	$(CC) $(LDFLAGS) -o psql -L$(LIBPQDIR) $(OBJS) -lpq $(LD_ADD)
 
-$(srcdir)/libpq/libpq.a:
+.PHONY: submake
+submake:
 	$(MAKE) -C $(LIBPQDIR) libpq.a
 
 install:

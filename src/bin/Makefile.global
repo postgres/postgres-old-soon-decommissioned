@@ -11,19 +11,12 @@
 #
 #-------------------------------------------------------------------------
 
-CFLAGS+= -I$(srcdir)/backend \
-	-I$(srcdir)/include \
-	-I$(srcdir)/libpq
+LIBPQDIR:= $(SRCDIR)/libpq
 
-#
-# link with libpq, so we put it here.
-#
-LIBPQ:=   -L$(srcdir)/libpq -lpq
-
-LD_ADD+= $(LIBPQ)
-DPADD+= $(LIBPQ)
+LD_ADD+= -L$(srcdir)/libpq -lpq
+DPADD+= -L$(srcdir)/libpq -lpq
 # LIB_DEP is the list of dependencies on libraries for the link.
-LIB_DEP+= $(srcdir)/libpq/libpq.a
+LIB_DEP+= $(LIBPQDIR)/libpq.a
 
 #
 # And where libpq goes, so goes the authentication stuff...
@@ -32,4 +25,12 @@ ifdef KRBVERS
 LD_ADD+= $(KRBLIBS)
 CFLAGS+= $(KRBFLAGS)
 endif
+
+
+INCLUDE_OPT := \
+               -I$(LIBPQDIR) \
+               -I$(SRCDIR)/include \
+               -I$(SRCDIR)/src/backend/port/$(PORTNAME)
+
+CFLAGS += $(INCLUDE_OPT) 
 

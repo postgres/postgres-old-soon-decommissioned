@@ -11,13 +11,29 @@
 #
 #-------------------------------------------------------------------------
 
-PROG=	pg_id
-
-MKDIR=	../../mk
-include $(MKDIR)/postgres.mk
+SRCDIR= ../..
 include ../Makefile.global
+include ../../Makefile.global
 
-SRCS=	pg_id.c
+OBJS= pg_id.o
 
-include $(MKDIR)/postgres.prog.mk
+all: pg_id
 
+pg_id: $(OBJS) $(LIBPQDIR)/libpq.a
+	$(CC) $(LDFLAGS) -o pg_id -L$(LIBPQDIR) $(OBJS) -lpq $(LD_ADD)
+
+$(LIBPQDIR)/libpq.a:
+	$(MAKE) -C $(LIBPQDIR) libpq.a
+
+install:
+	$(INSTALL) $(INSTL_EXE_OPTS) pg_id $(DESTDIR)$(BINDIR)/pg_id
+
+depend dep:
+	$(CC) -MM $(INCLUDE_OPT) *.c >depend
+
+clean: 
+	rm -f pg_id $(OBJS) 
+
+ifeq (depend,$(wildcard depend))
+include depend
+endif
