@@ -80,7 +80,7 @@ plpgsql_dstring_free(PLpgSQL_dstring *ds)
  * ----------
  */
 void
-plpgsql_dstring_append(PLpgSQL_dstring *ds, char *str)
+plpgsql_dstring_append(PLpgSQL_dstring *ds, const char *str)
 {
 	int			len = strlen(str);
 	int			needed = ds->used + len + 1;

@@ -716,7 +716,7 @@ extern void plpgsql_xact_cb(XactEvent event, TransactionId parentXid, void *arg)
  */
 extern void plpgsql_dstring_init(PLpgSQL_dstring *ds);
 extern void plpgsql_dstring_free(PLpgSQL_dstring *ds);
-extern void plpgsql_dstring_append(PLpgSQL_dstring *ds, char *str);
+extern void plpgsql_dstring_append(PLpgSQL_dstring *ds, const char *str);
 extern char *plpgsql_dstring_get(PLpgSQL_dstring *ds);
 
 /* ----------

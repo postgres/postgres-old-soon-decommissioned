@@ -1709,7 +1709,7 @@ read_sql_construct(int until,
 
 	lno = plpgsql_scanner_lineno();
 	plpgsql_dstring_init(&ds);
-	plpgsql_dstring_append(&ds, (char *) sqlstart);
+	plpgsql_dstring_append(&ds, sqlstart);
 
 	for (;;)
 	{
