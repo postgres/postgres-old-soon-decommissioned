@@ -85,6 +85,7 @@ get_prompt(promptStatus_t status)
 		case PROMPT_CONTINUE:
 		case PROMPT_SINGLEQUOTE:
 		case PROMPT_DOUBLEQUOTE:
+		case PROMPT_DOLLARQUOTE:
 		case PROMPT_COMMENT:
 		case PROMPT_PAREN:
 			prompt_name = "PROMPT2";
@@ -198,6 +199,9 @@ get_prompt(promptStatus_t status)
 							break;
 						case PROMPT_DOUBLEQUOTE:
 							buf[0] = '"';
+							break;
+						case PROMPT_DOLLARQUOTE:
+							buf[0] = '$';
 							break;
 						case PROMPT_COMMENT:
 							buf[0] = '*';
