@@ -43,6 +43,7 @@
  */
 
 #include <stdlib.h>
+#include <unistd.h>     /* for getopt() */
 #include <stdio.h>
 #include <string.h>
 #include <sys/param.h>	/* for MAXHOSTNAMELEN on most */
