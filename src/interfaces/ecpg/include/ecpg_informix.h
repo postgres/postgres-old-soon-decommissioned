@@ -29,6 +29,11 @@
 #define ECPG_INFORMIX_BAD_DATE		-1218
 #define ECPG_INFORMIX_EXTRA_CHARS	-1264
 
+#ifdef __cplusplus
+extern          "C"
+{
+#endif
+
 extern int	rdatestr(date, char *);
 extern void 	rtoday(date *);
 extern int	rjulmdy(date, short *);
@@ -77,5 +82,9 @@ extern int	dttoasc(timestamp *, char *);
 extern int	dttofmtasc(timestamp *, char *, int, char *);
 extern int	intoasc(interval *, char *);
 extern int	dtcvfmtasc(char *, char *, timestamp *);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* ndef _ECPG_INFORMIX_H */
