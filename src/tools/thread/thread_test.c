@@ -21,7 +21,9 @@
  */
 
 
+#ifdef USE_THREADS
 #include <pthread.h>
+#endif
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>

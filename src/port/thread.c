@@ -14,7 +14,9 @@
 
 #include "postgres.h"
 
+#if defined(USE_THREADS)
 #include <pthread.h>
+#endif
 #include <sys/types.h>
 #include <pwd.h>
 #include <errno.h>
