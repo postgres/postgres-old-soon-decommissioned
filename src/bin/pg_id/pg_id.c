@@ -38,6 +38,7 @@ main(int argc, char *argv[])
 		char pw_name[128];
 	} pass_win32;
 	struct passwd_win32 *pw = &pass_win32;
+	unsigned long pwname_size = sizeof(pass_win32.pw_name) - 1;
 
 	pw->pw_uid = 1;
 #endif
@@ -113,7 +114,7 @@ main(int argc, char *argv[])
 		exit(1);
 	}
 
-	GetUserName(pw->pw_name, sizeof(pw->pw_name)-1);
+	GetUserName(pw->pw_name, &pwname_size);
 #endif
 
 	if (!limit_user_info)
