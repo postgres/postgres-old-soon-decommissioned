@@ -156,13 +156,8 @@ shmem_exit(int code)
 	 *	and so we return immediately to avoid recursion.
 	 * ----------------
 	 */
-	if (shmem_exit_inprogress > 9)
-		exit(-1);
-	else
-	{
-		shmem_exit_inprogress++;
+	if (shmem_exit_inprogress)
 		return;
-	}
 
 	shmem_exit_inprogress = 1;
 
