@@ -5,6 +5,8 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
+ * NOTE: the error message strings returned by this module must not
+ * exceed INITIAL_EXPBUFFER_SIZE (currently 256 bytes).
  *
  * IDENTIFICATION
  *	  $Header$
