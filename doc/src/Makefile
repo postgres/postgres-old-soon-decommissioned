@@ -32,9 +32,9 @@ sources:
 sources.tar:
 	$(TAR) -cf $@ sgml graphics
 
+# Build twice to resolve index entries
 $(addsuffix .tar, $(BOOKS)):
 	$(MAKE) -C sgml clean
-	# build index entries first
 	$(MAKE) -C sgml $(basename $@).html
 	$(MAKE) -C sgml $(basename $@).html JADEFLAGS='-V html-manifest'
 	cd sgml && $(TAR) -cf ../$@ `cat HTML.manifest` `echo *.gif | grep -v '\*'` *.css
