@@ -17,6 +17,7 @@
 /* can be used in frontend or backend */
 #ifdef FRONTEND
 #include "postgres_fe.h"
+#include <sysexits.h>
 /* No assert checks in frontend ... */
 #define Assert(condition)
 #else
@@ -33,7 +34,14 @@ DLNewList(void)
 
 	l = (Dllist *) malloc(sizeof(Dllist));
 	if (l == NULL)
+#ifdef FRONTEND
+	{
+		fprintf(stderr, "Memory exhausted in DLNewList");
+		exit(EX_UNAVAILABLE);
+	}
+#else
 		elog(ERROR, "Memory exhausted in DLNewList");
+#endif
 	l->dll_head = 0;
 	l->dll_tail = 0;
 
@@ -69,7 +77,14 @@ DLNewElem(void *val)
 
 	e = (Dlelem *) malloc(sizeof(Dlelem));
 	if (e == NULL)
+#ifdef FRONTEND
+	{
+		fprintf(stderr, "Memory exhausted in DLNewList");
+		exit(EX_UNAVAILABLE);
+	}
+#else
 		elog(ERROR, "Memory exhausted in DLNewElem");
+#endif
 	e->dle_next = 0;
 	e->dle_prev = 0;
 	e->dle_val = val;
