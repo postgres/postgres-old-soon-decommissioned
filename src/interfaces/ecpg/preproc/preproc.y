@@ -674,7 +674,10 @@ stmt:  AlterDatabaseSetStmt		{ output_statement($1, 0, connection); }
 		}
 		| ECPGFree
 		{
-			fprintf(yyout, "{ ECPGdeallocate(__LINE__, \"%s\");", $1);
+			if (compat == ECPG_COMPAT_INFORMIX)
+				fprintf(yyout, "{ ECPGdeallocate_informix(__LINE__, \"%s\");", $1);
+			else
+				fprintf(yyout, "{ ECPGdeallocate(__LINE__, \"%s\");", $1);
 
 			whenever_action(2);
 			free($1);

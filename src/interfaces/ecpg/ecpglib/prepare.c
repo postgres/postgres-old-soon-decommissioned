@@ -107,6 +107,18 @@ ECPGprepare(int lineno, char *name, char *variable)
 bool
 ECPGdeallocate(int lineno, char *name)
 {
+	bool ret = ECPGdeallocate_one(lineno, name);
+
+	if (!ret) 
+		ECPGraise(lineno, ECPG_INVALID_STMT, name);
+
+	return ret;
+		
+}
+
+bool
+ECPGdeallocate_one(int lineno, char *name)
+{
 	struct prepared_statement *this,
 			   *prev;
 
@@ -126,7 +138,6 @@ ECPGdeallocate(int lineno, char *name)
 		ECPGfree(this);
 		return true;
 	}
-	ECPGraise(lineno, ECPG_INVALID_STMT, name);
 	return false;
 }
 
