@@ -158,7 +158,6 @@ extern Datum timeofday(PG_FUNCTION_ARGS);
 
 /* non-fmgr-callable support routines */
 extern AbsoluteTime GetCurrentAbsoluteTime(void);
-extern bool AbsoluteTimeIsBefore(AbsoluteTime time1, AbsoluteTime time2);
 extern void abstime2tm(AbsoluteTime time, int *tzp, struct tm * tm, char *tzn);
 
 #endif	 /* NABSTIME_H */

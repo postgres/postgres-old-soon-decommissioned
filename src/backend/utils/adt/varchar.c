@@ -12,7 +12,6 @@
  *
  *-------------------------------------------------------------------------
  */
-
 #include "postgres.h"
 
 #include "access/hash.h"
@@ -526,10 +525,11 @@ bpchareq(PG_FUNCTION_ARGS)
 	len1 = bcTruelen(arg1);
 	len2 = bcTruelen(arg2);
 
+	/* fast path for different-length inputs */
 	if (len1 != len2)
 		result = false;
 	else
-		result = (strncmp(VARDATA(arg1), VARDATA(arg2), len1) == 0);
+		result = (varstr_cmp(VARDATA(arg1), len1, VARDATA(arg2), len2) == 0);
 
 	PG_FREE_IF_COPY(arg1, 0);
 	PG_FREE_IF_COPY(arg2, 1);
@@ -549,10 +549,11 @@ bpcharne(PG_FUNCTION_ARGS)
 	len1 = bcTruelen(arg1);
 	len2 = bcTruelen(arg2);
 
+	/* fast path for different-length inputs */
 	if (len1 != len2)
 		result = true;
 	else
-		result = (strncmp(VARDATA(arg1), VARDATA(arg2), len1) != 0);
+		result = (varstr_cmp(VARDATA(arg1), len1, VARDATA(arg2), len2) != 0);
 
 	PG_FREE_IF_COPY(arg1, 0);
 	PG_FREE_IF_COPY(arg2, 1);
@@ -745,10 +746,11 @@ varchareq(PG_FUNCTION_ARGS)
 	len1 = VARSIZE(arg1) - VARHDRSZ;
 	len2 = VARSIZE(arg2) - VARHDRSZ;
 
+	/* fast path for different-length inputs */
 	if (len1 != len2)
 		result = false;
 	else
-		result = (strncmp(VARDATA(arg1), VARDATA(arg2), len1) == 0);
+		result = (varstr_cmp(VARDATA(arg1), len1, VARDATA(arg2), len2) == 0);
 
 	PG_FREE_IF_COPY(arg1, 0);
 	PG_FREE_IF_COPY(arg2, 1);
@@ -768,10 +770,11 @@ varcharne(PG_FUNCTION_ARGS)
 	len1 = VARSIZE(arg1) - VARHDRSZ;
 	len2 = VARSIZE(arg2) - VARHDRSZ;
 
+	/* fast path for different-length inputs */
 	if (len1 != len2)
 		result = true;
 	else
-		result = (strncmp(VARDATA(arg1), VARDATA(arg2), len1) != 0);
+		result = (varstr_cmp(VARDATA(arg1), len1, VARDATA(arg2), len2) != 0);
 
 	PG_FREE_IF_COPY(arg1, 0);
 	PG_FREE_IF_COPY(arg2, 1);
