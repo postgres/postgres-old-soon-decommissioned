@@ -707,3 +707,31 @@ v4addressOK(unsigned long a1, int bits)
 		return true;
 	return false;
 }
+
+
+/*
+ * These functions are used by planner to generate indexscan limits
+ * for clauses a << b and a <<= b
+ */
+
+/* return the minimal value for an IP on a given network */
+Datum
+network_scan_first(Datum in)
+{
+	return DirectFunctionCall1(network_network, in);
+}
+
+/*
+ * return "last" IP on a given network. It's the broadcast address, 
+ * however, masklen has to be set to 32, since
+ * 192.168.0.255/24 is considered less than 192.168.0.255/32
+ *
+ * NB: this is not IPv6 ready ...
+ */
+Datum
+network_scan_last(Datum in)
+{
+	return DirectFunctionCall2(inet_set_masklen,
+							   DirectFunctionCall1(network_broadcast, in),
+							   Int32GetDatum(32));
+}

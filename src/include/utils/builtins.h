@@ -527,6 +527,8 @@ extern double convert_network_to_scalar(Datum value, Oid typid);
 extern Datum text_cidr(PG_FUNCTION_ARGS);
 extern Datum text_inet(PG_FUNCTION_ARGS);
 extern Datum inet_set_masklen(PG_FUNCTION_ARGS);
+extern Datum network_scan_first(Datum in);
+extern Datum network_scan_last(Datum in);
 
 /* mac.c */
 extern Datum macaddr_in(PG_FUNCTION_ARGS);
