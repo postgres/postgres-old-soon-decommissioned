@@ -1841,6 +1841,12 @@ array_set_slice(ArrayType *array,
 			lb[i] = lowerIndx[i];
 		}
 
+		/* complain if too few source items; we ignore extras, however */
+		if (nelems < ArrayGetNItems(nSubscripts, dim))
+			ereport(ERROR,
+					(errcode(ERRCODE_ARRAY_SUBSCRIPT_ERROR),
+					 errmsg("source array too small")));
+
 		return construct_md_array(dvalues, nSubscripts, dim, lb, elmtype,
 								  elmlen, elmbyval, elmalign);
 	}
