@@ -20,7 +20,22 @@
  *-------------------------------------------------------------------------
  */
 
+#ifndef IN_CONFIGURE
 #include "postgres.h"
+#else
+/* From src/include/c.h" */
+#ifndef bool
+typedef char bool;
+#endif
+
+#ifndef true
+#define true	((bool) 1)
+#endif
+
+#ifndef false
+#define false	((bool) 0)
+#endif
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,7 +47,7 @@
 #include <fcntl.h>
 #include <errno.h>
 
-#ifndef ENABLE_THREAD_SAFETY
+#if !defined(ENABLE_THREAD_SAFETY) && !defined(IN_CONFIGURE)
 int
 main(int argc, char *argv[])
 {
@@ -96,6 +111,12 @@ main(int argc, char *argv[])
 		return 1;
 	}
 
+#ifdef IN_CONFIGURE
+	/* Send stdout to 'config.log' */
+	close(1);
+	dup(5);
+#endif
+	
 	/* Make temp filenames, might not have strdup() */
 	temp_filename_1 = malloc(strlen(TEMP_FILENAME_1) + 1);
 	strcpy(temp_filename_1, TEMP_FILENAME_1);
@@ -339,5 +360,4 @@ func_call_2(void)
 	pthread_mutex_lock(&init_mutex);	/* wait for parent to test */
 	pthread_mutex_unlock(&init_mutex);
 }
-#endif /* !ENABLE_THREAD_SAFETY */
-
+#endif /* !ENABLE_THREAD_SAFETY && !IN_CONFIGURE */
