@@ -51,7 +51,7 @@ main(int argc, char *argv[])
 	PGresult   *result;
 
 	progname = get_progname(argv[0]);
-	init_nls();
+	init_nls(argv[0]);
 	handle_help_version_opts(argc, argv, "dropuser", help);
 
 	while ((c = getopt_long(argc, argv, "h:p:U:Weqi", long_options, &optindex)) != -1)

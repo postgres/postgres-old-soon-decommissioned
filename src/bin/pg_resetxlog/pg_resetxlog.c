@@ -102,11 +102,7 @@ main(int argc, char *argv[])
 	int			fd;
 	char		path[MAXPGPATH];
 
-	setlocale(LC_ALL, "");
-#ifdef ENABLE_NLS
-	bindtextdomain("pg_resetxlog", LOCALEDIR);
-	textdomain("pg_resetxlog");
-#endif
+	set_pglocale(argv[0], "pg_resetxlog");
 
 	progname = get_progname(argv[0]);
 

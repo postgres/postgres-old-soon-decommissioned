@@ -102,11 +102,7 @@ main(int argc, char *argv[])
 	char	   *password = NULL;
 	bool		need_pass;
 
-	setlocale(LC_ALL, "");
-#ifdef ENABLE_NLS
-	bindtextdomain("psql", LOCALEDIR);
-	textdomain("psql");
-#endif
+	set_pglocale(argv[0], "psql");
 
 	pset.progname = get_progname(argv[0]);
 

@@ -51,13 +51,9 @@ get_user_name(const char *progname)
  * Initialized NLS if enabled.
  */
 void
-init_nls(void)
+init_nls(const char *argv0)
 {
-#ifdef ENABLE_NLS
-	setlocale(LC_ALL, "");
-	bindtextdomain("pgscripts", LOCALEDIR);
-	textdomain("pgscripts");
-#endif
+	set_pglocale(argv0, "pgscripts");
 }
 
 

@@ -66,7 +66,7 @@ main(int argc, char *argv[])
 	bool		verbose = false;
 
 	progname = get_progname(argv[0]);
-	init_nls();
+	init_nls(argv[0]);
 	handle_help_version_opts(argc, argv, "vacuumdb", help);
 
 	while ((c = getopt_long(argc, argv, "h:p:U:Weqd:zat:fv", long_options, &optindex)) != -1)

@@ -58,7 +58,7 @@ main(int argc, char *argv[])
 	char	   *table = NULL;
 
 	progname = get_progname(argv[0]);
-	init_nls();
+	init_nls(argv[0]);
 	handle_help_version_opts(argc, argv, "clusterdb", help);
 
 	while ((c = getopt_long(argc, argv, "h:p:U:Weqd:at:", long_options, &optindex)) != -1)

@@ -60,7 +60,7 @@ main(int argc, char *argv[])
 	PGresult   *result;
 
 	progname = get_progname(argv[0]);
-	init_nls();
+	init_nls(argv[0]);
 	handle_help_version_opts(argc, argv, "createdb", help);
 
 	while ((c = getopt_long(argc, argv, "h:p:U:WeqO:D:T:E:", long_options, &optindex)) != -1)

@@ -242,11 +242,7 @@ main(int argc, char **argv)
 	};
 	int			optindex;
 
-#ifdef ENABLE_NLS
-	setlocale(LC_ALL, "");
-	bindtextdomain("pg_dump", LOCALEDIR);
-	textdomain("pg_dump");
-#endif
+	set_pglocale(argv[0], "pg_dump");
 
 	g_verbose = false;
 

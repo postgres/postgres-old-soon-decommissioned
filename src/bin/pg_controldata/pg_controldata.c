@@ -77,11 +77,7 @@ main(int argc, char *argv[])
 	char	   *strftime_fmt = "%c";
 	const char *progname;
 
-	setlocale(LC_ALL, "");
-#ifdef ENABLE_NLS
-	bindtextdomain("pg_controldata", LOCALEDIR);
-	textdomain("pg_controldata");
-#endif
+	set_pglocale(argv[0], "pg_controldata");
 
 	progname = get_progname(argv[0]);
 

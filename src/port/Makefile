@@ -37,6 +37,7 @@ pg_config_paths.h: $(top_builddir)/src/Makefile.global
 	echo "#define INCLUDEDIR \"$(includedir)\"" >>$@
 	echo "#define PKGINCLUDEDIR \"$(pkgincludedir)\"" >>$@
 	echo "#define PKGLIBDIR \"$(pkglibdir)\"" >>$@
+	echo "#define LOCALEDIR \"$(localedir)\"" >>$@
 
 clean distclean maintainer-clean:
 	rm -f libpgport.a $(LIBOBJS) pg_config_paths.h

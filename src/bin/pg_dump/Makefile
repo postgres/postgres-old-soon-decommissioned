@@ -17,8 +17,7 @@ override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS) -DFRONTEND
 
 OBJS=	pg_backup_archiver.o pg_backup_db.o pg_backup_custom.o \
 	pg_backup_files.o pg_backup_null.o pg_backup_tar.o \
-	dumputils.o
-PG_DUMPALL_OBJS = exec.o
+	dumputils.o exec.o
 
 EXTRA_OBJS = $(top_builddir)/src/backend/parser/keywords.o
 
@@ -31,8 +30,8 @@ pg_dump: pg_dump.o common.o pg_dump_sort.o $(OBJS) $(libpq_builddir)/libpq.a
 pg_restore: pg_restore.o $(OBJS) $(libpq_builddir)/libpq.a
 	$(CC) $(CFLAGS) pg_restore.o $(OBJS) $(EXTRA_OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@$(X)
 
-pg_dumpall: pg_dumpall.o dumputils.o $(PG_DUMPALL_OBJS) $(libpq_builddir)/libpq.a
-	$(CC) $(CFLAGS) pg_dumpall.o dumputils.o $(PG_DUMPALL_OBJS) $(EXTRA_OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@$(X)
+pg_dumpall: pg_dumpall.o dumputils.o exec.o $(libpq_builddir)/libpq.a
+	$(CC) $(CFLAGS) pg_dumpall.o dumputils.o exec.o $(EXTRA_OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@$(X)
 
 # We need our own build of exec.c so it gets made with -DFRONTEND
 exec.c: % : $(top_srcdir)/src/port/%
@@ -55,4 +54,4 @@ uninstall:
 	rm -f $(addprefix $(DESTDIR)$(bindir)/, pg_dump$(X) pg_restore$(X) pg_dumpall$(X))
 
 clean distclean maintainer-clean:
-	rm -f pg_dump$(X) pg_restore$(X) pg_dumpall$(X) $(OBJS) $(PG_DUMPALL_OBJS) pg_dump.o common.o pg_dump_sort.o pg_restore.o pg_dumpall.o exec.c
+	rm -f pg_dump$(X) pg_restore$(X) pg_dumpall$(X) $(OBJS) pg_dump.o common.o pg_dump_sort.o pg_restore.o pg_dumpall.o exec.c

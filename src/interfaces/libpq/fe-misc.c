@@ -1131,6 +1131,7 @@ libpq_gettext(const char *msgid)
 	if (!already_bound)
 	{
 		already_bound = 1;
+		/* No relocatable lookup here because the binary could be anywhere */
 		bindtextdomain("libpq", LOCALEDIR);
 	}
 
