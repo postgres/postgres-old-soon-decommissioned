@@ -366,6 +366,7 @@ DESCR("limited-range ISO-format date and time");
 
 
 #define USE_ATTTYPMOD(typeid)	((typeid) == BPCHAROID || (typeid) == VARCHAROID)
+#define VARLENA_FIXED_SIZE(typeid)	((typeid) == BPCHAROID)
 
 /*
  * prototypes for functions in pg_type.c

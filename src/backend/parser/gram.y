@@ -3330,6 +3330,16 @@ a_expr:  attr opt_indirection
 					n->subselect = $5;
 					$$ = (Node *)n;
 				}
+		| a_expr Op '(' SubSelect ')'
+				{
+					SubLink *n = makeNode(SubLink);
+					n->lefthand = lcons($1, NULL);
+					n->oper = lcons($2,NIL);
+					n->useor = false;
+					n->subLinkType = ALL_SUBLINK;
+					n->subselect = $4;
+					$$ = (Node *)n;
+				}
 		| a_expr AND a_expr
 				{	$$ = makeA_Expr(AND, NULL, $1, $3); }
 		| a_expr OR a_expr
