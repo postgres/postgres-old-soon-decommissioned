@@ -122,6 +122,5 @@ extern int ProcLockWakeup(PROC_QUEUE *queue, LOCKMETHOD lockmethod,
 			   LOCK *lock);
 extern void ProcAddLock(SHM_QUEUE *elem);
 extern void ProcReleaseSpins(PROC *proc);
-extern void ProcFreeAllSemaphores(void);
 
 #endif	 /* PROC_H */

@@ -101,7 +101,6 @@ CreateSharedMemoryAndSemaphores(IPCKey key, int maxBackends)
 	 * ----------------
 	 */
 	InitProcGlobal(key, maxBackends);
-	on_shmem_exit(ProcFreeAllSemaphores, NULL);
 
 	CreateSharedInvalidationState(key);
 }
