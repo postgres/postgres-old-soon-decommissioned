@@ -662,7 +662,7 @@ hash_search(HTAB *hashp,
 			/* caller is expected to fill the data field on return */
 
 			/* Check if it is time to split the segment */
-			if (++hctl->nentries / (long) (hctl->max_bucket + 1) > hctl->ffactor)
+			if (++hctl->nentries / (long) (hctl->max_bucket + 1) >= hctl->ffactor)
 			{
 				/*
 				 * NOTE: failure to expand table is not a fatal error, it
