@@ -581,13 +581,19 @@ yyerror(const char *message)
 	cursorpos = pg_mbstrlen_with_len(scanbuf, loc - scanbuf) + 1;
 
 	if (*loc == YY_END_OF_BUFFER_CHAR)
+	{
+		/* translator: %s is typically "syntax error" */
 		ereport(ERROR,
-				(errmsg("parser: %s at end of input", message),
+				(errmsg("%s at end of input", message),
 				 errposition(cursorpos)));
+	}
 	else
+	{
+		/* translator: first %s is typically "syntax error" */
 		ereport(ERROR,
-				(errmsg("parser: %s at or near \"%s\"", message, loc),
+				(errmsg("%s at or near \"%s\"", message, loc),
 				 errposition(cursorpos)));
+	}
 }
 
 

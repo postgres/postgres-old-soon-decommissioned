@@ -330,7 +330,7 @@ SELECT (new_emp()).name;
 
 <screen>
 SELECT new_emp().name;
-ERROR:  parser: parse error at or near "."
+ERROR:  syntax error at or near "."
 </screen>
     </para>
 

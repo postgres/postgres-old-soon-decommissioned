@@ -4680,7 +4680,7 @@ table_ref:	relation_expr
 					 * popular demand, but for now let's just implement
 					 * the spec and see if anyone complains.
 					 * However, it does seem like a good idea to emit
-					 * an error message that's better than "parse error".
+					 * an error message that's better than "syntax error".
 					 */
 					elog(ERROR, "sub-SELECT in FROM must have an alias"
 						 "\n\tFor example, FROM (SELECT ...) [AS] foo");

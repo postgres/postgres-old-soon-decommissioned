@@ -38,17 +38,11 @@ gram.o: $(srcdir)/scan.c
 
 $(srcdir)/gram.c: $(srcdir)/parse.h ;
 
-# The sed hack is so that we can get the same error messages with
-# bison 1.875 and later as we did with earlier bisons.  Eventually,
-# I suppose, we should re-standardize on "syntax error" --- in which
-# case flip the sed translation, but don't remove it.
-
 $(srcdir)/parse.h: gram.y
 ifdef YACC
 	$(YACC) -d $(YFLAGS) $<
-	sed -e 's/"syntax error/"parse error/' < y.tab.c > $(srcdir)/gram.c
+	mv -f y.tab.c $(srcdir)/gram.c
 	mv -f y.tab.h $(srcdir)/parse.h
-	rm -f y.tab.c
 else
 	@$(missing) bison $< $@
 endif
