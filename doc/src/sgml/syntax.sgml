@@ -304,7 +304,7 @@ REAL '1.23'  -- string style
     </para>
    </sect3>
 
-   <sect3>
+   <sect3 id="sql-syntax-constants-generic">
     <title>Constants of Other Types</title>
 
     <para>
