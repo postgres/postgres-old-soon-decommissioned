@@ -363,8 +363,9 @@ COPY <replaceable class="parameter">table</replaceable> [ ( <replaceable class="
    <para>
     <command>COPY TO</command> will terminate each row with a Unix-style 
     newline (<quote><literal>\n</></>),  or carriage return/newline 
-    ("\r\n") on  MS Windows.  <command>COPY FROM</command> can handle lines 
-    ending with newlines, carriage returns, or carriage return/newlines.
+    ("\r\n") for servers running MS Windows.
+    <command>COPY FROM</command> can handle lines ending with newlines,
+    carriage returns, or carriage return/newlines.
    </para>
   </refsect2>
 
