@@ -33,9 +33,8 @@ VERSION = @VERSION@
 
 # Support for VPATH builds
 abs_top_srcdir = @abs_top_srcdir@
-abs_top_builddir = @abs_top_builddir@
 
-ifeq ($(abs_top_builddir), $(abs_top_srcdir))
+ifndef abs_top_srcdir
 top_srcdir = $(top_builddir)
 srcdir = .
 else
