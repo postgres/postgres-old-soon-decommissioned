@@ -241,7 +241,8 @@ lo_import(text *filename)
      */
     fd = open(VARDATA(filename), O_RDONLY, 0666);
     if (fd < 0)  {   /* error */
-	elog(WARN, "lo_import: can't open unix file\"%s\"\n", filename);
+	elog(WARN, "lo_import: can't open unix file\"%s\"\n", 
+             VARDATA(filename));
     }
 
     /*
