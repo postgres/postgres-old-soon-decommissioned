@@ -70,7 +70,7 @@ endif # found_man
 
 install: all installdirs
 ifdef found_html
-	gzip -d -c postgres.tar.gz | ( cd $(DESTDIR)$(docdir)/html && $(TAR) xf - )
+	gzip -d -c $(srcdir)/postgres.tar.gz | ( cd $(DESTDIR)$(docdir)/html && $(TAR) xf - )
 endif
 ifdef found_man
 	for file in man1/*.1 man$(sqlmansectnum)/*.$(sqlmansect) ; do \
