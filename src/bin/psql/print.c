@@ -577,7 +577,7 @@ print_aligned_vertical(const char *title, const char *const * headers,
 /**********************/
 
 
-static void
+void
 html_escaped_print(const char *in, FILE *fout)
 {
 	const char *p;
@@ -595,7 +595,13 @@ html_escaped_print(const char *in, FILE *fout)
 				fputs("&gt;", fout);
 				break;
 			case '\n':
-				fputs("<br>", fout);
+				fputs("<br />\n", fout);
+				break;
+			case '"':
+				fputs("&quot;", fout);
+				break;
+			case '\'':
+				fputs("&apos;", fout);
 				break;
 			default:
 				fputc(*p, fout);
@@ -615,7 +621,7 @@ const char *opt_align, bool opt_barebones, unsigned short int opt_border,
 	unsigned int i;
 	const char *const * ptr;
 
-	fprintf(fout, "<table border=%d", opt_border);
+	fprintf(fout, "<table border=\"%d\"", opt_border);
 	if (opt_table_attr)
 		fprintf(fout, " %s", opt_table_attr);
 	fputs(">\n", fout);
@@ -636,7 +642,7 @@ const char *opt_align, bool opt_barebones, unsigned short int opt_border,
 		col_count++;
 		if (!opt_barebones)
 		{
-			fputs("    <th align=center>", fout);
+			fputs("    <th align=\"center\">", fout);
 			html_escaped_print(*ptr, fout);
 			fputs("</th>\n", fout);
 		}
@@ -648,12 +654,11 @@ const char *opt_align, bool opt_barebones, unsigned short int opt_border,
 	for (i = 0, ptr = cells; *ptr; i++, ptr++)
 	{
 		if (i % col_count == 0)
-			fputs("  <tr valign=top>\n", fout);
+			fputs("  <tr valign=\"top\">\n", fout);
 
-		fprintf(fout, "    <td align=%s>", opt_align[(i) % col_count] == 'r' ? "right" : "left");
-		if ((*ptr)[strspn(*ptr, " \t")] == '\0')		/* is string only
-														 * whitespace? */
-			fputs("&nbsp;", fout);
+		fprintf(fout, "    <td align=\"%s\">", opt_align[(i) % col_count] == 'r' ? "right" : "left");
+		if ((*ptr)[strspn(*ptr, " \t")] == '\0')  /* is string only whitespace? */
+			fputs("&nbsp; ", fout);
 		else
 			html_escaped_print(*ptr, fout);
 		fputs("</td>\n", fout);
@@ -666,13 +671,16 @@ const char *opt_align, bool opt_barebones, unsigned short int opt_border,
 
 	/* print footers */
 
-	if (footers && !opt_barebones)
+	if (!opt_barebones && footers && *footers)
+	{
+		fputs("<p>", fout);
 		for (ptr = footers; *ptr; ptr++)
 		{
 			html_escaped_print(*ptr, fout);
-			fputs("<br>\n", fout);
+			fputs("<br />\n", fout);
 		}
-
+		fputs("</p>", fout);
+	}
 	fputc('\n', fout);
 }
 
@@ -690,7 +698,7 @@ const char *opt_align, bool opt_barebones, unsigned short int opt_border,
 	unsigned int record = 1;
 	const char *const * ptr;
 
-	fprintf(fout, "<table border=%d", opt_border);
+	fprintf(fout, "<table border=\"%d\"", opt_border);
 	if (opt_table_attr)
 		fprintf(fout, " %s", opt_table_attr);
 	fputs(">\n", fout);
@@ -713,19 +721,18 @@ const char *opt_align, bool opt_barebones, unsigned short int opt_border,
 		if (i % col_count == 0)
 		{
 			if (!opt_barebones)
-				fprintf(fout, "\n  <tr><td colspan=2 align=center>Record %d</td></tr>\n", record++);
+				fprintf(fout, "\n  <tr><td colspan=\"2\" align=\"center\">Record %d</td></tr>\n", record++);
 			else
-				fputs("\n  <tr><td colspan=2>&nbsp;</td></tr>\n", fout);
+				fputs("\n  <tr><td colspan=\"2\">&nbsp;</td></tr>\n", fout);
 		}
-		fputs("  <tr valign=top>\n"
+		fputs("  <tr valign=\"top\">\n"
 			  "    <th>", fout);
 		html_escaped_print(headers[i % col_count], fout);
 		fputs("</th>\n", fout);
 
-		fprintf(fout, "    <td align=%s>", opt_align[i % col_count] == 'r' ? "right" : "left");
-		if ((*ptr)[strspn(*ptr, " \t")] == '\0')		/* is string only
-														 * whitespace? */
-			fputs("&nbsp;", fout);
+		fprintf(fout, "    <td align=\"%s\">", opt_align[i % col_count] == 'r' ? "right" : "left");
+		if ((*ptr)[strspn(*ptr, " \t")] == '\0') /* is string only whitespace? */
+			fputs("&nbsp; ", fout);
 		else
 			html_escaped_print(*ptr, fout);
 		fputs("</td>\n  </tr>\n", fout);
@@ -734,13 +741,16 @@ const char *opt_align, bool opt_barebones, unsigned short int opt_border,
 	fputs("</table>\n", fout);
 
 	/* print footers */
-	if (footers && !opt_barebones)
+	if (!opt_barebones && footers && *footers)
+	{
+		fputs("<p>", fout);
 		for (ptr = footers; *ptr; ptr++)
 		{
 			html_escaped_print(*ptr, fout);
-			fputs("<br>\n", fout);
+			fputs("<br />\n", fout);
 		}
-
+		fputs("</p>", fout);
+	}
 	fputc('\n', fout);
 }
 
@@ -1114,6 +1124,7 @@ printQuery(const PGresult *result, const printQueryOpt *opt, FILE *fout)
 	char	  **footers;
 	char	   *align;
 	int			i;
+
 
 	/* extract headers */
 

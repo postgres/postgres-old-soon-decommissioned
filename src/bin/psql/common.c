@@ -525,7 +525,18 @@ PrintQueryResults(PGresult *results,
 					success = true;
 					sprintf(buf, "%u", (unsigned int) PQoidValue(results));
 					if (!QUIET())
-						fprintf(pset.queryFout, "%s\n", PQcmdStatus(results));
+						{
+							if (pset.popt.topt.format == PRINT_HTML)
+							{
+								fputs("<p>", pset.queryFout);
+								html_escaped_print(PQcmdStatus(results), pset.queryFout);
+								fputs("</p>\n", pset.queryFout);
+							}
+							else
+							{
+								fprintf(pset.queryFout, "%s\n", PQcmdStatus(results));
+							}
+						}
 					SetVariable(pset.vars, "LASTOID", buf);
 					break;
 				}

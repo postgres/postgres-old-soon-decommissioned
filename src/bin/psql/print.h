@@ -13,6 +13,7 @@
 
 extern FILE *PageOutput(int lines, unsigned short int pager);
 
+extern void html_escaped_print(const char *in, FILE *fout);
 
 enum printFormat
 {
