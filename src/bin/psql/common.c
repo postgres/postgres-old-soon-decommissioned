@@ -515,3 +515,46 @@ SendQuery(const char *query)
 
 	return success;
 }
+
+
+/*
+ * PageOutput
+ *
+ * Tests if pager is needed and returns appropriate FILE pointer.
+ */
+FILE *
+PageOutput(int lines, bool pager)
+{
+	/* check whether we need / can / are supposed to use pager */
+	if (pager
+#ifndef WIN32
+		&&
+		isatty(fileno(stdin)) &&
+		isatty(fileno(stdout))
+#endif
+		)
+	{
+		const char *pagerprog;
+
+#ifdef TIOCGWINSZ
+		int			result;
+		struct winsize screen_size;
+
+		result = ioctl(fileno(stdout), TIOCGWINSZ, &screen_size);
+		if (result == -1 || lines > screen_size.ws_row)
+		{
+#endif
+			pagerprog = getenv("PAGER");
+			if (!pagerprog)
+				pagerprog = DEFAULT_PAGER;
+#ifndef WIN32
+			pqsignal(SIGPIPE, SIG_IGN);
+#endif
+			return popen(pagerprog, "w");
+#ifdef TIOCGWINSZ
+		}
+#endif
+	}
+
+	return stdout;
+}

@@ -12,7 +12,7 @@ void		usage(void);
 
 void		slashUsage(bool pager);
 
-void		helpSQL(const char *topic);
+void		helpSQL(const char *topic, bool pager);
 
 void		print_copyright(void);
 

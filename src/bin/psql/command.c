@@ -493,7 +493,8 @@ exec_command(const char *cmd,
 	/* help */
 	else if (strcmp(cmd, "h") == 0 || strcmp(cmd, "help") == 0)
 	{
-		helpSQL(options_string ? &options_string[strspn(options_string, " \t\n\r")] : NULL);
+		helpSQL(options_string ? &options_string[strspn(options_string, " \t\n\r")] : NULL,
+				pset.popt.topt.pager);
 		/* set pointer to end of line */
 		if (string)
 			string += strlen(string);
