@@ -725,7 +725,8 @@ genericcostestimate(Query *root, RelOptInfo *rel,
 	double numIndexPages;
 
 	/* Estimate the fraction of main-table tuples that will be visited */
-    *indexSelectivity = clauselist_selec(root, indexQuals);
+    *indexSelectivity = clauselist_selectivity(root, indexQuals,
+											   lfirsti(rel->relids));
 
 	/* Estimate the number of index tuples that will be visited */
 	numIndexTuples = *indexSelectivity * index->tuples;

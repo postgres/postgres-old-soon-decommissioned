@@ -459,7 +459,10 @@ set_rel_rows_width(Query *root, RelOptInfo *rel)
 	/* Should only be applied to base relations */
 	Assert(length(rel->relids) == 1);
 
-	rel->rows = rel->tuples * restrictlist_selec(root, rel->restrictinfo);
+	rel->rows = rel->tuples *
+		restrictlist_selectivity(root,
+								 rel->restrictinfo,
+								 lfirsti(rel->relids));
 	Assert(rel->rows >= 0);
 
 	set_rel_width(root, rel);
@@ -479,8 +482,10 @@ set_joinrel_rows_width(Query *root, RelOptInfo *rel,
 	temp = joinpath->outerjoinpath->parent->rows *
 		joinpath->innerjoinpath->parent->rows;
 
-	/* apply restrictivity */
-	temp *= restrictlist_selec(root, joinpath->path.parent->restrictinfo);
+	/* apply join restrictivity */
+	temp *= restrictlist_selectivity(root,
+									 joinpath->path.parent->restrictinfo,
+									 0);
 
 	Assert(temp >= 0);
 	rel->rows = temp;
