@@ -477,8 +477,8 @@ btmarkpos(PG_FUNCTION_ARGS)
 	/* bump pin on current buffer for assignment to mark buffer */
 	if (ItemPointerIsValid(&(scan->currentItemData)))
 	{
-		so->btso_mrkbuf = ReadBuffer(scan->indexRelation,
-								  BufferGetBlockNumber(so->btso_curbuf));
+		IncrBufferRefCount(so->btso_curbuf);
+		so->btso_mrkbuf = so->btso_curbuf;
 		scan->currentMarkData = scan->currentItemData;
 		so->mrkHeapIptr = so->curHeapIptr;
 	}
@@ -509,8 +509,8 @@ btrestrpos(PG_FUNCTION_ARGS)
 	/* bump pin on marked buffer */
 	if (ItemPointerIsValid(&(scan->currentMarkData)))
 	{
-		so->btso_curbuf = ReadBuffer(scan->indexRelation,
-								  BufferGetBlockNumber(so->btso_mrkbuf));
+		IncrBufferRefCount(so->btso_mrkbuf);
+		so->btso_curbuf = so->btso_mrkbuf;
 		scan->currentItemData = scan->currentMarkData;
 		so->curHeapIptr = so->mrkHeapIptr;
 	}

@@ -397,9 +397,8 @@ hashmarkpos(PG_FUNCTION_ARGS)
 	/* bump pin count on currentItemData and copy to currentMarkData */
 	if (ItemPointerIsValid(&(scan->currentItemData)))
 	{
-		so->hashso_mrkbuf = _hash_getbuf(rel,
-								 BufferGetBlockNumber(so->hashso_curbuf),
-										 HASH_NOLOCK);
+		IncrBufferRefCount(so->hashso_curbuf);
+		so->hashso_mrkbuf = so->hashso_curbuf;
 		scan->currentMarkData = scan->currentItemData;
 	}
 
@@ -425,9 +424,8 @@ hashrestrpos(PG_FUNCTION_ARGS)
 	/* bump pin count on currentMarkData and copy to currentItemData */
 	if (ItemPointerIsValid(&(scan->currentMarkData)))
 	{
-		so->hashso_curbuf = _hash_getbuf(rel,
-								 BufferGetBlockNumber(so->hashso_mrkbuf),
-										 HASH_NOLOCK);
+		IncrBufferRefCount(so->hashso_mrkbuf);
+		so->hashso_curbuf = so->hashso_mrkbuf;
 		scan->currentItemData = scan->currentMarkData;
 	}
 
