@@ -27,9 +27,9 @@ static text *encode_to_ascii(text *data, int enc);
 char *
 pg_to_ascii(unsigned char *src, unsigned char *src_end, unsigned char *desc, int enc)
 {
-	unsigned char *x = NULL;
-	unsigned char *ascii = NULL;
-	int			range = 0;
+	unsigned char *x;
+	unsigned char *ascii;
+	int			range;
 
 	/*
 	 * relevant start for an encoding
@@ -66,12 +66,13 @@ pg_to_ascii(unsigned char *src, unsigned char *src_end, unsigned char *desc, int
 	{
 		elog(ERROR, "pg_to_ascii(): unsupported encoding from %s",
 			 pg_encoding_to_char(enc));
+		return NULL;			/* keep compiler quiet */
 	}
 
 	/*
 	 * Encode
 	 */
-	for (x = src; x <= src_end; x++)
+	for (x = src; x < src_end; x++)
 	{
 		if (*x < 128)
 			*desc++ = *x;
