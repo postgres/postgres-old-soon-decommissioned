@@ -148,21 +148,21 @@ elog(int lev, const char *fmt,...)
 	/* Complicated because LOG is sorted out-of-order for this purpose */
 	if (lev == LOG || lev == COMMERROR)
 	{
-		if (server_min_messages == LOG)
+		if (log_min_messages == LOG)
 			output_to_server = true;
-		else if (server_min_messages < FATAL)
+		else if (log_min_messages < FATAL)
 			output_to_server = true;
 	}
 	else
 	{
 		/* lev != LOG */
-		if (server_min_messages == LOG)
+		if (log_min_messages == LOG)
 		{
 			if (lev >= FATAL)
 				output_to_server = true;
 		}
 		/* Neither is LOG */
-		else if (lev >= server_min_messages)
+		else if (lev >= log_min_messages)
 			output_to_server = true;
 	}
 

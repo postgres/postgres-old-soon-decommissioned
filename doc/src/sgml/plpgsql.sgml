@@ -1900,7 +1900,7 @@ RAISE <replaceable class="parameter">level</replaceable> '<replaceable class="pa
     (raise an error and abort the current transaction). Whether error
     messages of a particular priority are reported to the client,
     written to the server log, or both is controlled by the
-    <option>SERVER_MIN_MESSAGES</option> and
+    <option>LOG_MIN_MESSAGES</option> and
     <option>CLIENT_MIN_MESSAGES</option> configuration variables. See
     the <citetitle>PostgreSQL Administrator's Guide</citetitle> for more
     information.

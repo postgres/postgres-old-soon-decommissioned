@@ -263,7 +263,7 @@ BootstrapMain(int argc, char *argv[])
 					char	   *debugstr = palloc(strlen("debug") + strlen(optarg) + 1);
 
 					sprintf(debugstr, "debug%s", optarg);
-					SetConfigOption("server_min_messages", debugstr,
+					SetConfigOption("log_min_messages", debugstr,
 									PGC_POSTMASTER, PGC_S_ARGV);
 					SetConfigOption("client_min_messages", debugstr,
 									PGC_POSTMASTER, PGC_S_ARGV);

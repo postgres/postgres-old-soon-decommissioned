@@ -229,7 +229,7 @@ psql_completion(char *text, int start, int end)
 		"enable_hashjoin",
 		"geqo",
 		"fsync",
-		"server_min_messages",
+		"log_min_messages",
 		"client_min_messages",
 		"debug_assertions",
 		"log_statement",
