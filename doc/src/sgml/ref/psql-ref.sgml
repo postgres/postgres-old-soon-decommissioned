@@ -1322,8 +1322,8 @@ Access permissions for database "test"
       <para>
       Specifies the host name of the machine on which the
       <application>postmaster</application> is running.
-      Without this option, communication is performed using
-      local Unix domain sockets.
+      If host begins with a slash, it is used 
+      as the path to a unix domain socket.
       </para>
       </listitem>
     </varlistentry>
