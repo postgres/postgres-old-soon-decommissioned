@@ -154,6 +154,8 @@ abstime2tm(AbsoluteTime time, int *tzp, struct tm * tm, char *tzn)
 #else
 #endif
 
+#ifdef USE_POSIX_TIME
+
 	tm->tm_year = tx->tm_year + 1900;
 	tm->tm_mon = tx->tm_mon + 1;
 	tm->tm_mday = tx->tm_mday;
@@ -162,7 +164,6 @@ abstime2tm(AbsoluteTime time, int *tzp, struct tm * tm, char *tzn)
 	tm->tm_sec = tx->tm_sec;
 	tm->tm_isdst = tx->tm_isdst;
 
-#ifdef USE_POSIX_TIME
 #ifdef HAVE_INT_TIMEZONE
 	if (tzp != NULL)
 		*tzp = (tm->tm_isdst ? (timezone - 3600) : timezone);
