@@ -307,6 +307,8 @@ DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
 	{							/* copy from file to database */
 		if (rel->rd_rel->relkind == RELKIND_SEQUENCE)
 			elog(ERROR, "You cannot change sequence relation %s", relname);
+		if (rel->rd_rel->relkind == RELKIND_VIEW)
+			elog(ERROR, "You cannot copy view %s", relname);
 		if (pipe)
 		{
 			if (IsUnderPostmaster)
@@ -330,6 +332,8 @@ DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
 	}
 	else
 	{							/* copy from database to file */
+		if (rel->rd_rel->relkind == RELKIND_VIEW)
+			elog(ERROR, "You cannot copy view %s", relname);
 		if (pipe)
 		{
 			if (IsUnderPostmaster)
