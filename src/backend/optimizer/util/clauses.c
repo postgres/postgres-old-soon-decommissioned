@@ -350,8 +350,6 @@ pull_constant_clauses(List *quals, List **constantQual)
  *
  * Returns the list of relids and vars.
  *
- * XXX take the nreverse's out later
- *
  */
 void
 clause_relids_vars(Node *clause, List **relids, List **vars)
