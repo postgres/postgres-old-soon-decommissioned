@@ -1094,7 +1094,7 @@ _psort_cmp (HeapTuple *ltup, HeapTuple *rtup)
     int		result = 0;
     bool	isnull1, isnull2;
     
-    while ( nkey < PsortNkeys && !result )
+    for (nkey = 0; nkey < PsortNkeys && !result; nkey++ )
     {
 		lattr = heap_getattr(*ltup, InvalidBuffer,
 				     PsortKeys[nkey].sk_attno, 
@@ -1106,14 +1106,13 @@ _psort_cmp (HeapTuple *ltup, HeapTuple *rtup)
 				     &isnull2);
 		if ( isnull1 )
 		{
-	    	if ( isnull2 )
-	    		return (0);
-		    return(1);
+			if ( !isnull2 )
+				result = 1;
 		}
 		else if ( isnull2 )
-		    return (-1);
+		    result = -1;
 		
-		if (PsortKeys[nkey].sk_flags & SK_COMMUTE)
+		else if (PsortKeys[nkey].sk_flags & SK_COMMUTE)
 		{
 	    	if (!(result = -(long) (*fmgr_faddr(&PsortKeys[nkey].sk_func)) (rattr, lattr)))
 			result = (long) (*fmgr_faddr(&PsortKeys[nkey].sk_func)) (lattr, rattr);
