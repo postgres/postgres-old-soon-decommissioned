@@ -257,7 +257,7 @@ ProcessUtility(Node *parsetree,
 				FetchStmt  *stmt = (FetchStmt *) parsetree;
 				char	   *portalName = stmt->portalname;
 				bool		forward;
-				int			count;
+				long		count;
 
 				forward = (bool) (stmt->direction == FORWARD);
 

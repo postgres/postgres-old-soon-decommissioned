@@ -25,7 +25,7 @@
  *		BadArg if forward invalid.
  *		"ERROR" if portal not found.
  */
-extern void PerformPortalFetch(char *name, bool forward, int count,
+extern void PerformPortalFetch(char *name, bool forward, long count,
 				   CommandDest dest, char *completionTag);
 
 /*
