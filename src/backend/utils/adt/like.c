@@ -264,7 +264,7 @@ Datum
 bytealike(PG_FUNCTION_ARGS)
 {
 	bytea	   *str = PG_GETARG_BYTEA_P(0);
-	bytea	   *pat = PG_GETARG_BYTEA_P(1);
+	text	   *pat = PG_GETARG_TEXT_P(1);
 	bool		result;
 	unsigned char *s,
 			   *p;
@@ -285,7 +285,7 @@ Datum
 byteanlike(PG_FUNCTION_ARGS)
 {
 	bytea	   *str = PG_GETARG_BYTEA_P(0);
-	bytea	   *pat = PG_GETARG_BYTEA_P(1);
+	text	   *pat = PG_GETARG_TEXT_P(1);
 	bool		result;
 	unsigned char *s,
 			   *p;
