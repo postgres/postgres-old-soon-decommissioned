@@ -159,11 +159,6 @@ main(int argc, char *argv[])
 	pset.getPassword = false;
 #endif
 
-#ifndef HAVE_UNIX_SOCKETS
-	/* default to localhost on platforms without unix sockets */
-	options.host = "localhost";
-#endif
-
 	parse_psql_options(argc, argv, &options);
 
 	if (!pset.popt.topt.fieldSep)
