@@ -510,6 +510,23 @@ RequestCheckpoint(bool waitforit)
 	sig_atomic_t old_started = bgs->ckpt_started;
 
 	/*
+	 * If in a standalone backend, just do it ourselves.
+	 */
+	if (!IsPostmasterEnvironment)
+	{
+		CreateCheckPoint(false, true);
+
+		/*
+		 * After any checkpoint, close all smgr files.	This is so we
+		 * won't hang onto smgr references to deleted files
+		 * indefinitely.
+		 */
+		smgrcloseall();
+
+		return;
+	}
+
+	/*
 	 * Send signal to request checkpoint.  When waitforit is false, we
 	 * consider failure to send the signal to be nonfatal.
 	 */
