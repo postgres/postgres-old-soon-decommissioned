@@ -344,6 +344,9 @@
 /* Set to 1 if you have <netinet/tcp.h> */
 #undef HAVE_NETINET_TCP_H
 
+/* Set to 1 if you have <pam/pam_appl.h> */
+#undef HAVE_PAM_PAM_APPL_H
+
 /* Set to 1 if you have <readline.h> */
 #undef HAVE_READLINE_H
 
@@ -352,6 +355,9 @@
 
 /* Set to 1 if you have <readline/readline.h> */
 #undef HAVE_READLINE_READLINE_H
+
+/* Set to 1 if you have <security/pam_appl.h> */
+#undef HAVE_SECURITY_PAM_APPL_H
 
 /* Set to 1 if you have <sys/ipc.h> */
 #undef HAVE_SYS_IPC_H

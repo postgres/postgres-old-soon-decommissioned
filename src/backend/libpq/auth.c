@@ -43,7 +43,12 @@ static int	recv_and_check_password_packet(Port *port);
 char	   *pg_krb_server_keyfile;
 
 #ifdef USE_PAM
+#ifdef HAVE_PAM_PAM_APPL_H
+#include <pam/pam_appl.h>
+#endif
+#ifdef HAVE_SECURITY_PAM_APPL_H
 #include <security/pam_appl.h>
+#endif
 
 #define PGSQL_PAM_SERVICE "postgresql"	/* Service name passed to PAM */
 

@@ -724,7 +724,9 @@ if test "$with_openssl" = yes ; then
 fi
 
 if test "$with_pam" = yes ; then
-  AC_CHECK_HEADER(security/pam_appl.h, [], [AC_MSG_ERROR([header file <security/pam_appl.h> is required for PAM])])
+  AC_CHECK_HEADERS(security/pam_appl.h, [],
+                   [AC_CHECK_HEADERS(pam/pam_appl.h, [],
+                                     [AC_MSG_ERROR([header file <security/pam_appl.h> or <pam/pam_appl.h> is required for PAM.])])])
 fi
 
 
