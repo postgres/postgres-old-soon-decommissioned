@@ -28,7 +28,7 @@ CREATE TABLE cities (
 );
 
 CREATE TABLE capitals (
-	state		char2
+	state		char(2)
 ) INHERITS (cities);
 
 -- now, let's populate the tables
@@ -90,7 +90,7 @@ WHERE c.altitude > 500;
 CREATE TABLE sal_emp (
 	name	text,
 	pay_by_quarter	int4[],
-	schedule	char16[][]
+	schedule	text[][]
 );
 
 -- insert instances with array attributes.  Note the use of braces
