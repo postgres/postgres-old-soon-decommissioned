@@ -837,14 +837,14 @@ cppline			{space}*#(.*\\{space})*.*
 					}
 
 <<EOF>>				{
+				  		if (yy_buffer == NULL) {
 				  		if ( preproc_tos > 0 ) 
 						{
 					  		preproc_tos = 0;
 							mmerror(PARSE_ERROR, ET_FATAL, "Missing 'EXEC SQL ENDIF;'");
 				  		}
-
-				  		if (yy_buffer == NULL)
 							yyterminate();
+							}
 				  		else
 				  		{
 							struct _yy_buffer *yb = yy_buffer;
