@@ -58,9 +58,10 @@ typedef FormData_pg_description *Form_pg_description;
  * ----------------
  */
 
-/* Because the contents of this table are taken from the other *.h files,
-   there is no initialization.	It is loaded from initdb using a COPY
-   statement.
-*/
+/*
+ *	Because the contents of this table are taken from the other *.h files,
+ *	there is no initialization.	It is loaded from initdb using a COPY
+ *	statement.
+ */
 
 #endif							/* PG_DESCRIPTION_H */
