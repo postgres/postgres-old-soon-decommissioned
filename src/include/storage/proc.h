@@ -129,7 +129,6 @@ typedef struct procglobal
 extern void InitProcGlobal(int maxBackends);
 extern void InitProcess(void);
 extern void ProcReleaseLocks(bool isCommit);
-extern bool ProcRemove(int pid);
 
 extern void ProcQueueInit(PROC_QUEUE *queue);
 extern int ProcSleep(LOCKMETHODTABLE *lockMethodTable, LOCKMODE lockmode,

@@ -43,13 +43,15 @@ CreateSharedInvalidationState(int maxBackends)
 void
 InitBackendSharedInvalidationState(void)
 {
+	int		flag;
+
 	SpinAcquire(SInvalLock);
-	if (!SIBackendInit(shmInvalBuffer))
-	{
-		SpinRelease(SInvalLock);
-		elog(FATAL, "Backend cache invalidation initialization failed");
-	}
+	flag = SIBackendInit(shmInvalBuffer);
 	SpinRelease(SInvalLock);
+	if (flag < 0)				/* unexpected problem */
+		elog(FATAL, "Backend cache invalidation initialization failed");
+	if (flag == 0)				/* expected problem: MaxBackends exceeded */
+		elog(FATAL, "Sorry, too many clients already");
 }
 
 /*
