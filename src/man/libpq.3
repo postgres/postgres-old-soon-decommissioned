@@ -146,22 +146,6 @@ new connection to the same backend.
 void PQreset(PGconn *conn)
 .fi
 .PP
-.B PQtrace
-.IP
-Enables tracing of messages passed between the frontend and the backend.
-The messages are echoed to the debug_port file stream.
-.nf
-void PQtrace(PGconn *conn, 
-             FILE* debug_port);
-.fi
-.PP
-.B PQuntrace
-.IP
-Disables tracing of messages passed between the frontend and the backend.
-.nf
-void PQuntrace(PGconn *conn);
-.fi
-.PP
 .SH "Query Execution Functions"
 .PP
 .B PQexec

@@ -269,8 +269,17 @@ aclitemout(AclItem *aip)
 			{
 				char	   *tmp = int2out(aip->ai_id);
 
+#ifdef NOT_USED
+
+	When this elog(NOTICE) goes to the libpq client, it crashes the
+	client because the NOTICE protocol is coming right in the middle
+	of a request for a field value.  We skip the NOTICE for now.
+
 				elog(NOTICE, "aclitemout: usesysid %d not found",
 					 aip->ai_id);
+
+#endif
+
 				strcat(p, tmp);
 				pfree(tmp);
 			}
