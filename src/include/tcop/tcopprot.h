@@ -23,11 +23,11 @@
 
 #ifndef BOOTSTRAP_INCLUDE
 extern List *
-pg_plan(char *query_string, Oid *typev, int nargs,
+pg_parse_and_plan(char *query_string, Oid *typev, int nargs,
 		QueryTreeList **queryListP, CommandDest dest);
-extern void pg_eval(char *query_string, char **argv, Oid *typev, int nargs);
+extern void pg_exec_query(char *query_string, char **argv, Oid *typev, int nargs);
 extern void
-pg_eval_dest(char *query_string, char **argv, Oid *typev,
+pg_exec_query_dest(char *query_string, char **argv, Oid *typev,
 			 int nargs, CommandDest dest);
 
 #endif							/* BOOTSTRAP_HEADER */

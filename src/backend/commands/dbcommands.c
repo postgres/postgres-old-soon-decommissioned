@@ -95,7 +95,7 @@ createdb(char *dbname, char *dbpath)
 	sprintf(buf, "insert into pg_database (datname, datdba, datpath)"
 		" values (\'%s\', \'%d\', \'%s\');", dbname, user_id, loc);
 
-	pg_eval(buf, (char **) NULL, (Oid *) NULL, 0);
+	pg_exec_query(buf, (char **) NULL, (Oid *) NULL, 0);
 }
 
 void
@@ -133,7 +133,7 @@ destroydb(char *dbname)
 	 */
 	sprintf(buf, "delete from pg_database where pg_database.oid = \'%d\'::oid",
 			db_id);
-	pg_eval(buf, (char **) NULL, (Oid *) NULL, 0);
+	pg_exec_query(buf, (char **) NULL, (Oid *) NULL, 0);
 
 	/*
 	 * remove the data directory. If the DELETE above failed, this will

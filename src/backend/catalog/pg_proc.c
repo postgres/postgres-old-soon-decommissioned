@@ -215,7 +215,7 @@ ProcedureCreate(char *procedureName,
 
 	if (strcmp(languageName, "sql") == 0)
 	{
-		plan_list = pg_plan(prosrc, typev, parameterCount,
+		plan_list = pg_parse_and_plan(prosrc, typev, parameterCount,
 							&querytree_list, dest);
 
 		/* typecheck return value */
