@@ -3852,6 +3852,18 @@ exec_simple_check_node(Node *node)
 		case T_FieldSelect:
 			return exec_simple_check_node((Node *) ((FieldSelect *) node)->arg);
 
+		case T_FieldStore:
+			{
+				FieldStore   *expr = (FieldStore *) node;
+
+				if (!exec_simple_check_node((Node *) expr->arg))
+					return FALSE;
+				if (!exec_simple_check_node((Node *) expr->newvals))
+					return FALSE;
+
+				return TRUE;
+			}
+
 		case T_RelabelType:
 			return exec_simple_check_node((Node *) ((RelabelType *) node)->arg);
 

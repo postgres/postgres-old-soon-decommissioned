@@ -1122,8 +1122,7 @@ findTargetlistEntry(ParseState *pstate, Node *node, List **tlist, int clause)
 	 *----------
 	 */
 	if (IsA(node, ColumnRef) &&
-		list_length(((ColumnRef *) node)->fields) == 1 &&
-		((ColumnRef *) node)->indirection == NIL)
+		list_length(((ColumnRef *) node)->fields) == 1)
 	{
 		char	   *name = strVal(linitial(((ColumnRef *) node)->fields));
 

@@ -2461,6 +2461,7 @@ transformUpdateStmt(ParseState *pstate, UpdateStmt *stmt)
 		if (origTargetList == NULL)
 			elog(ERROR, "UPDATE target count mismatch --- internal error");
 		origTarget = (ResTarget *) lfirst(origTargetList);
+		Assert(IsA(origTarget, ResTarget));
 
 		updateTargetListEntry(pstate, tle, origTarget->name,
 							  attnameAttNum(pstate->p_target_relation,

@@ -67,12 +67,13 @@ typedef struct ParseState
 
 extern ParseState *make_parsestate(ParseState *parentParseState);
 extern Var *make_var(ParseState *pstate, RangeTblEntry *rte, int attrno);
+extern Oid transformArrayType(Oid arrayType);
 extern ArrayRef *transformArraySubscripts(ParseState *pstate,
 						 Node *arrayBase,
 						 Oid arrayType,
-						 int32 arrayTypMod,
+						 Oid elementType,
+						 int32 elementTypMod,
 						 List *indirection,
-						 bool forceSlice,
 						 Node *assignFrom);
 extern Const *make_const(Value *value);
 

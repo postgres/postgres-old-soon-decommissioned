@@ -575,6 +575,18 @@ typedef struct FieldSelectState
 } FieldSelectState;
 
 /* ----------------
+ *		FieldStoreState node
+ * ----------------
+ */
+typedef struct FieldStoreState
+{
+	ExprState	xprstate;
+	ExprState  *arg;			/* input tuple value */
+	List	   *newvals;		/* new value(s) for field(s) */
+	TupleDesc	argdesc;		/* tupdesc for most recent input */
+} FieldStoreState;
+
+/* ----------------
  *		CaseExprState node
  * ----------------
  */
