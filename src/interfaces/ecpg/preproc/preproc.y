@@ -5248,6 +5248,7 @@ execstring: char_variable
 
 prepared_name: name	 	{ $$ = make3_str(make_str("\""), $1, make_str("\"")); }
 		| char_variable	{ $$ = $1; }
+		;
 
 /*
  * the exec sql free command to deallocate a previously
