@@ -50,21 +50,17 @@ char	   *Name_pg_type_indices[Num_pg_type_indices] = {TypeNameIndex,
 char	   *Name_pg_class_indices[Num_pg_class_indices] = {ClassNameIndex,
 			ClassOidIndex};
 char	   *Name_pg_attrdef_indices[Num_pg_attrdef_indices] = {AttrDefaultIndex};
-
 char	   *Name_pg_relcheck_indices[Num_pg_relcheck_indices] = {RelCheckIndex};
-
 char	   *Name_pg_trigger_indices[Num_pg_trigger_indices] = {TriggerRelidIndex,
-	TriggerConstrNameIndex,
-	TriggerConstrRelidIndex};
-
+			TriggerConstrNameIndex, TriggerConstrRelidIndex};
 char       *Name_pg_description_indices[Num_pg_description_indices] = {DescriptionObjIndex};
 
 
 
 static HeapTuple CatalogIndexFetchTuple(Relation heapRelation,
-					   Relation idesc,
-					   ScanKey skey,
-					   int16 num_keys);
+										   Relation idesc,
+										   ScanKey skey,
+										   int16 num_keys);
 
 
 /*
