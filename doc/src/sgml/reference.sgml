@@ -176,7 +176,6 @@ Disable this chapter until we have more functions documented.
    &droplang;
    &dropuser;
    &ecpgRef;
-   &pgAccess;
    &pgConfig;
    &pgDump;
    &pgDumpall;
