@@ -333,6 +333,33 @@ SPI_copytuple(HeapTuple tuple)
 	return ctuple;
 }
 
+TupleDesc
+SPI_copytupledesc(TupleDesc tupdesc)
+{
+	MemoryContext oldcxt = NULL;
+	TupleDesc	ctupdesc;
+
+	if (tupdesc == NULL)
+	{
+		SPI_result = SPI_ERROR_ARGUMENT;
+		return NULL;
+	}
+
+	if (_SPI_curid + 1 == _SPI_connected)		/* connected */
+	{
+		if (_SPI_current != &(_SPI_stack[_SPI_curid + 1]))
+			elog(FATAL, "SPI: stack corrupted");
+		oldcxt = MemoryContextSwitchTo(_SPI_current->savedcxt);
+	}
+
+	ctupdesc = CreateTupleDescCopy(tupdesc);
+
+	if (oldcxt)
+		MemoryContextSwitchTo(oldcxt);
+
+	return ctupdesc;
+}
+
 HeapTuple
 SPI_modifytuple(Relation rel, HeapTuple tuple, int natts, int *attnum,
 				Datum *Values, char *Nulls)
@@ -1232,7 +1259,7 @@ _SPI_end_call(bool procmem)
 }
 
 static bool
-_SPI_checktuples()
+_SPI_checktuples(void)
 {
 	uint32		processed = _SPI_current->processed;
 	SPITupleTable *tuptable = _SPI_current->tuptable;
@@ -1244,8 +1271,8 @@ _SPI_checktuples()
 			failed = true;
 	}
 	else
-/* some tuples were processed */
 	{
+		/* some tuples were processed */
 		if (tuptable == NULL)	/* spi_printtup was not called */
 			failed = true;
 		else if (processed != (tuptable->alloced - tuptable->free))
