@@ -658,6 +658,18 @@ typedef unsigned char slock_t;
 #endif
 
 
+/* out-of-line assembler from src/backend/port/tas/*.s */
+
+#if defined(__sun) && defined(__i386)
+/*
+ * Solaris/386 (we only get here for non-gcc case)
+ */
+#define HAS_TEST_AND_SET
+
+typedef unsigned char slock_t;
+#endif
+
+
 #endif	/* !defined(HAS_TEST_AND_SET) */
 
 
