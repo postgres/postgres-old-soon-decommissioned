@@ -26,8 +26,6 @@
 #include <unistd.h>
 #endif
 
-#include "miscadmin.h"
-
 #define _(x) gettext(x)
 
 #ifndef S_IRUSR					/* XXX [TRH] should be in a header */

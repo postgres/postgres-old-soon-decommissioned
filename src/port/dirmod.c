@@ -37,8 +37,6 @@
 
 #if defined(WIN32) || defined(__CYGWIN__)
 
-#include "miscadmin.h"
-
 #ifndef __CYGWIN__
 #include <winioctl.h>
 #else
