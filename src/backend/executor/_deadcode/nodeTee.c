@@ -350,7 +350,7 @@ ExecTee(Tee * node, Plan *parent)
 			heap_insert(bufferRel, heapTuple);
 
 			if (slot->ttc_buffer != InvalidBuffer)
-				pfree(heapTuple);
+				heap_freetuple(heapTuple);
 
 			/*
 			 * once there is data in the temporary relation, ensure that

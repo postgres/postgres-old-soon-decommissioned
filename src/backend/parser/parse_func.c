@@ -697,6 +697,8 @@ func_get_candidates(char *funcname, int nargs)
 		{
 			Buffer		buffer;
 
+			tuple.t_datamcxt = NULL;
+			tuple.t_data = NULL;
 			tuple.t_self = indexRes->heap_iptr;
 			heap_fetch(heapRelation, SnapshotNow, &tuple, &buffer);
 			pfree(indexRes);

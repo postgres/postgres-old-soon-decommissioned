@@ -108,7 +108,7 @@ RemoveRewriteRule(char *ruleName)
 	if (isNull)
 	{
 		/* XXX strange!!! */
-		pfree(tuple);
+		heap_freetuple(tuple);
 		elog(ERROR, "RemoveRewriteRule: internal error; null event target relation!");
 	}
 	eventRelationOid = DatumGetObjectId(eventRelationOidDatum);
@@ -133,7 +133,7 @@ RemoveRewriteRule(char *ruleName)
 	 */
 	heap_delete(RewriteRelation, &tuple->t_self, NULL);
 
-	pfree(tuple);
+	heap_freetuple(tuple);
 	heap_close(RewriteRelation, RowExclusiveLock);
 }
 

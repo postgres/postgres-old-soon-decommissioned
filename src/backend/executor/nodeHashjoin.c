@@ -485,6 +485,7 @@ ExecHashJoinGetSavedTuple(HashJoinState *hjstate,
 		elog(ERROR, "Read from hashjoin temp file failed");
 	heapTuple = palloc(HEAPTUPLESIZE + htup.t_len);
 	memcpy((char *) heapTuple, (char *) &htup, sizeof(HeapTupleData));
+	heapTuple->t_datamcxt = CurrentMemoryContext;
 	heapTuple->t_data = (HeapTupleHeader)
 		((char *) heapTuple + HEAPTUPLESIZE);
 	nread = BufFileRead(file, (void *) heapTuple->t_data, htup.t_len);

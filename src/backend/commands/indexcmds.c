@@ -518,7 +518,7 @@ NormIndexAttrs(List *attList,	/* list of IndexElem's */
 				 attribute->class);
 		}
 		*classOidP++ = tuple->t_data->t_oid;
-		pfree(atttuple);
+		heap_freetuple(atttuple);
 	}
 }
 

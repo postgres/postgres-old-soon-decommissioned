@@ -178,7 +178,7 @@ CatalogIndexInsert(Relation *idescs,
 		if (indexRes)
 			pfree(indexRes);
 
-		pfree(index_tup);
+		heap_freetuple(index_tup);
 	}
 }
 
@@ -248,6 +248,7 @@ CatalogIndexFetchTuple(Relation heapRelation,
 	Buffer		buffer;
 
 	sd = index_beginscan(idesc, false, num_keys, skey);
+	tuple.t_datamcxt = CurrentMemoryContext;
 	tuple.t_data = NULL;
 	while ((indexRes = index_getnext(sd, ForwardScanDirection)))
 	{

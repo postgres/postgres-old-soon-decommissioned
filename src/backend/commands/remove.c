@@ -125,7 +125,7 @@ RemoveOperator(char *operatorName,		/* operator name */
 				 typeName2);
 		}
 	}
-	pfree(tup);
+	heap_freetuple(tup);
 	heap_close(relation, RowExclusiveLock);
 }
 

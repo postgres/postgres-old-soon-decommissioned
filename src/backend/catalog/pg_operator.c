@@ -306,7 +306,7 @@ OperatorShellMakeWithOpenRelation(Relation pg_operator_desc,
 	 *	free the tuple and return the operator oid
 	 * ----------------
 	 */
-	pfree(tup);
+	heap_freetuple(tup);
 
 	return operatorObjectId;
 }

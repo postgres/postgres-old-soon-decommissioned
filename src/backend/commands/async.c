@@ -247,7 +247,7 @@ Async_Listen(char *relname, int pid)
 	tupDesc = lRel->rd_att;
 	newtup = heap_formtuple(tupDesc, values, nulls);
 	heap_insert(lRel, newtup);
-	pfree(newtup);
+	heap_freetuple(newtup);
 
 	heap_close(lRel, AccessExclusiveLock);
 

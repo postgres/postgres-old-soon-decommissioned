@@ -113,7 +113,7 @@ setRelhasrulesInRelation(Oid relationId, bool relhasrules)
 	CatalogIndexInsert(idescs, Num_pg_class_indices, relationRelation, tuple);
 	CatalogCloseIndices(Num_pg_class_indices, idescs);
 
-	pfree(tuple);
+	heap_freetuple(tuple);
 	heap_close(relationRelation, RowExclusiveLock);
 }
 

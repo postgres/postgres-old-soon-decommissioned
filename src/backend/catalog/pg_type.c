@@ -218,7 +218,7 @@ TypeShellMakeWithOpenRelation(Relation pg_type_desc, char *typeName)
 	 *	free the tuple and return the type-oid
 	 * ----------------
 	 */
-	pfree(tup);
+	heap_freetuple(tup);
 
 	return typoid;
 }
@@ -551,7 +551,7 @@ TypeRename(char *oldTypeName, char *newTypeName)
 								 0, 0, 0);
 	if (HeapTupleIsValid(newtup))
 	{
-		pfree(oldtup);
+		heap_freetuple(oldtup);
 		heap_close(pg_type_desc, RowExclusiveLock);
 		elog(ERROR, "TypeRename: type %s already defined", newTypeName);
 	}
@@ -567,7 +567,7 @@ TypeRename(char *oldTypeName, char *newTypeName)
 	CatalogIndexInsert(idescs, Num_pg_type_indices, pg_type_desc, oldtup);
 	CatalogCloseIndices(Num_pg_type_indices, idescs);
 
-	pfree(oldtup);
+	heap_freetuple(oldtup);
 	heap_close(pg_type_desc, RowExclusiveLock);
 }
 

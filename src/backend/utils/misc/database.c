@@ -222,6 +222,7 @@ GetRawDatabaseInfo(char *name, Oid *db_id, char *path)
 
 			/* get a pointer to the tuple itself */
 			offset = (int) ph->pd_linp[i].lp_off;
+			tup.t_datamcxt = NULL;
 			tup.t_data = (HeapTupleHeader) (((char *) pg) + offset);
 
 			/*

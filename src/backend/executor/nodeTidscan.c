@@ -148,6 +148,7 @@ TidNext(TidScan *node)
 		bool		slot_is_valid = false;
 
 		itemptr = tidList[tidstate->tss_TidPtr];
+		tuple->t_datamcxt = NULL;
 		tuple->t_data = NULL;
 		if (itemptr)
 		{

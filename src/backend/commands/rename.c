@@ -147,7 +147,7 @@ renameatt(char *relname,
 	/* should not already exist */
 	if (HeapTupleIsValid(newatttup))
 	{
-		pfree(oldatttup);
+		heap_freetuple(oldatttup);
 		elog(ERROR, "renameatt: attribute \"%s\" exists", newattname);
 	}
 
@@ -164,7 +164,7 @@ renameatt(char *relname,
 		CatalogCloseIndices(Num_pg_attr_indices, irelations);
 	}
 	
-	pfree(oldatttup);
+	heap_freetuple(oldatttup);
 	heap_close(attrelation, RowExclusiveLock);
 }
 

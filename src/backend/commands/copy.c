@@ -837,7 +837,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim, char *null
 				skip_tuple = true;
 			else if (newtuple != tuple) /* modified by Trigger(s) */
 			{
-				pfree(tuple);
+				heap_freetuple(tuple);
 				tuple = newtuple;
 			}
 		}
@@ -905,7 +905,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim, char *null
 				nulls[i] = ' ';
 		}
 
-		pfree(tuple);
+		heap_freetuple(tuple);
 		tuples_read++;
 
 		if (!reading_to_eof && ntuples == tuples_read)

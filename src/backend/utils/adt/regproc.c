@@ -84,6 +84,8 @@ regprocin(char *pro_name_or_oid)
 			sd = index_beginscan(idesc, false, 1, skey);
 			while ((indexRes = index_getnext(sd, ForwardScanDirection)))
 			{
+				tuple.t_datamcxt = NULL;
+				tuple.t_data = NULL;
 				tuple.t_self = indexRes->heap_iptr;
 				heap_fetch(hdesc, SnapshotNow,
 						   &tuple,

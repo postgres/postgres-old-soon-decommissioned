@@ -481,7 +481,7 @@ PerformAddAttribute(char *relationName,
 	CatalogIndexInsert(ridescs, Num_pg_class_indices, rel, reltup);
 	CatalogCloseIndices(Num_pg_class_indices, ridescs);
 
-	pfree(reltup);
+	heap_freetuple(reltup);
 	heap_close(rel, RowExclusiveLock);
 }
 

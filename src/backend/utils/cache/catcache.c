@@ -839,7 +839,7 @@ SearchSelfReferences(struct catcache * cache)
 				elog(ERROR, "SearchSelfReferences: %s not found in %s",
 					IndexRelidIndex, RelationRelationName);
 			indexSelfOid = ntp->t_data->t_oid;
-			pfree(ntp);
+			heap_freetuple(ntp);
 			heap_close(rel, AccessShareLock);
 		}
 		/* Looking for something other than pg_index_indexrelid_index? */

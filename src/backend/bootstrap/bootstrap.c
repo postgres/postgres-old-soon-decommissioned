@@ -628,7 +628,7 @@ InsertOneTuple(Oid objectid)
 	if (objectid != (Oid) 0)
 		tuple->t_data->t_oid = objectid;
 	heap_insert(reldesc, tuple);
-	pfree(tuple);
+	heap_freetuple(tuple);
 	if (DebugMode)
 	{
 		printf("End InsertOneTuple, objectid=%u\n", objectid);

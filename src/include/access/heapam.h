@@ -281,6 +281,7 @@ extern HeapTuple heap_formtuple(TupleDesc tupleDescriptor,
 			   Datum *value, char *nulls);
 extern HeapTuple heap_modifytuple(HeapTuple tuple,
 		Relation relation, Datum *replValue, char *replNull, char *repl);
+extern void heap_freetuple(HeapTuple tuple);
 HeapTuple	heap_addheader(uint32 natts, int structlen, char *structure);
 
 /* in common/heap/stats.c */

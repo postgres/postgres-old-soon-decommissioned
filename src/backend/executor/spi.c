@@ -543,6 +543,26 @@ SPI_pfree(void *pointer)
 	return;
 }
 
+void
+SPI_freetuple(HeapTuple tuple)
+{
+	MemoryContext oldcxt = NULL;
+
+	if (_SPI_curid + 1 == _SPI_connected)		/* connected */
+	{
+		if (_SPI_current != &(_SPI_stack[_SPI_curid + 1]))
+			elog(FATAL, "SPI: stack corrupted");
+		oldcxt = MemoryContextSwitchTo(_SPI_current->savedcxt);
+	}
+
+	heap_freetuple(tuple);
+
+	if (oldcxt)
+		MemoryContextSwitchTo(oldcxt);
+
+	return;
+}
+
 /* =================== private functions =================== */
 
 /*

@@ -505,7 +505,7 @@ StoreCatalogInheritance(Oid relationId, List *supers)
 			CatalogCloseIndices(Num_pg_inherits_indices, idescs);
 		}
 
-		pfree(tuple);
+		heap_freetuple(tuple);
 
 		seqNumber += 1;
 	}
@@ -620,7 +620,7 @@ again:
 		tuple = heap_formtuple(desc, datum, nullarr);
 
 		heap_insert(relation, tuple);
-		pfree(tuple);
+		heap_freetuple(tuple);
 
 		seqNumber += 1;
 	}

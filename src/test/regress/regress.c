@@ -608,7 +608,7 @@ ttdummy()
 
 		tmptuple = SPI_copytuple(trigtuple);
 		rettuple = SPI_modifytuple(rel, tmptuple, 1, &(attnum[1]), &newoff, NULL);
-		SPI_pfree(tmptuple);
+		SPI_freetuple(tmptuple);
 	}
 	else
 /* DELETE */

@@ -14,8 +14,8 @@
 
 #include "postgres.h"
 
-
 #include "optimizer/planmain.h"
+#include "access/heapam.h"
 
 /* ****************************************************************
  *					 plannodes.h free functions
@@ -465,7 +465,7 @@ _freeSubPlan(SubPlan *node)
 	freeObject(node->sublink);
 
 	if (node->curTuple)
-		pfree(node->curTuple);
+		heap_freetuple(node->curTuple);
 
 	pfree(node);
 }

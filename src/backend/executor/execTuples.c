@@ -120,6 +120,7 @@
 #undef ExecStoreTuple
 
 #include "catalog/pg_type.h"
+#include "access/heapam.h"
 
 static TupleTableSlot *NodeGetResultTupleSlot(Plan *node);
 
@@ -420,7 +421,7 @@ ExecClearTuple(TupleTableSlot *slot)	/* slot in which to store tuple */
 	 * ----------------
 	 */
 	if (slot->ttc_shouldFree && oldtuple != NULL)
-		pfree(oldtuple);
+		heap_freetuple(oldtuple);
 
 	slot->val = (HeapTuple) NULL;
 
