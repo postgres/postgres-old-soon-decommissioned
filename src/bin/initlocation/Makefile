@@ -14,10 +14,6 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-SEDSCRIPT= \
-    -e "s^PG_OPT_NAMEDATALEN_PARAM^$(NAMEDATALEN)^g" \
-    -e "s^PG_OPT_OIDNAMELEN_PARAM^$(OIDNAMELEN)^g" 
-
 all: initlocation
 
 initlocation: initlocation.sh

@@ -33,7 +33,4 @@ typedef unsigned int Oid;
  */
 #define NAMEDATALEN 32
 
-/* OIDNAMELEN should be set to NAMEDATALEN + sizeof(Oid) */
-#define OIDNAMELEN	36
-
 #endif

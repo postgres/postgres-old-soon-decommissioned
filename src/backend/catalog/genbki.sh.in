@@ -52,9 +52,8 @@ while test $x -le $numargs ; do
     shift
 done
 
-# Get NAMEDATALEN and OIDNAMELEN from postgres_ext.h
+# Get NAMEDATALEN from postgres_ext.h
 NAMEDATALEN=`grep '#define.*NAMEDATALEN' ../../include/postgres_ext.h | awk '{ print $3 }'`
-OIDNAMELEN=`grep '#define.*OIDNAMELEN' ../../include/postgres_ext.h | awk '{ print $3 }'`
 
 # ----------------
 # 	strip comments and trash from .h before we generate
@@ -80,9 +79,8 @@ sed -e "s/;[ 	]*$//g" \
     -e "s/^NameData/\name/g" \
     -e "s/(NameData/(name/g" \
     -e "s/(Oid/(oid/g" \
-	-e "s/NAMEDATALEN/$NAMEDATALEN/g" \
-	-e "s/OIDNAMELEN/$OIDNAMELEN/g" | \
-awk '
+    -e "s/NAMEDATALEN/$NAMEDATALEN/g" \
+| awk '
 # ----------------
 #	now use awk to process remaining .h file..
 #
