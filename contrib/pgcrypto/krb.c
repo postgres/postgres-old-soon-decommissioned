@@ -38,8 +38,8 @@
 
 #include "pgcrypto.h"
 
-#include "md5.h"
-#include "sha.h"
+#include <md5.h>
+#include <sha.h>
 
 #ifndef MD5_DIGEST_LENGTH
 #define MD5_DIGEST_LENGTH 16
