@@ -432,7 +432,7 @@ CopyGetData(void *databuf, int datasize)
 					avail = datasize;
 				pq_copymsgbytes(copy_msgbuf, databuf, avail);
 				databuf = (void *) ((char *) databuf + avail);
-				datasize = -avail;
+				datasize -= avail;
 			}
 			break;
 	}
