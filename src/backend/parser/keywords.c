@@ -243,6 +243,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"statistics", STATISTICS},
 	{"stdin", STDIN},
 	{"stdout", STDOUT},
+	{"storage", STORAGE},
 	{"substring", SUBSTRING},
 	{"sysid", SYSID},
 	{"table", TABLE},

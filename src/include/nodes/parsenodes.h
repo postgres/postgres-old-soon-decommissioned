@@ -123,6 +123,7 @@ typedef struct AlterTableStmt
 								 *	A = add column
 								 *	T = alter column default
 								 *	S = alter column statistics
+								 *  M = alter column storage
 								 *	D = drop column
 								 *	C = add constraint
 								 *	X = drop constraint

@@ -47,9 +47,9 @@ extern void AlterTableAlterColumnDefault(const char *relationName,
 							 bool inh, const char *colName,
 							 Node *newDefault);
 
-extern void AlterTableAlterColumnStatistics(const char *relationName,
+extern void AlterTableAlterColumnFlags(const char *relationName,
 								bool inh, const char *colName,
-								Node *statsTarget);
+								Node *flagValue, const char *flagType);
 
 extern void AlterTableDropColumn(const char *relationName,
 					 bool inh, const char *colName,

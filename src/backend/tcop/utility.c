@@ -425,10 +425,12 @@ ProcessUtility(Node *parsetree,
 													 stmt->def);
 						break;
 					case 'S':	/* ALTER COLUMN STATISTICS */
-						AlterTableAlterColumnStatistics(stmt->relname,
+					case 'M':   /* ALTER COLUMN STORAGE */
+						AlterTableAlterColumnFlags(stmt->relname,
 										interpretInhOption(stmt->inhOpt),
 														stmt->name,
-														stmt->def);
+														stmt->def,
+												        &(stmt->subtype));
 						break;
 					case 'D':	/* DROP COLUMN */
 						AlterTableDropColumn(stmt->relname,

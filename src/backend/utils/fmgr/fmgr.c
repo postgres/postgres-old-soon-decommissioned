@@ -1520,3 +1520,10 @@ pg_detoast_datum_copy(struct varlena * datum)
 		return result;
 	}
 }
+
+struct varlena *
+pg_detoast_datum_slice(struct varlena * datum, int32 first, int32 count)
+{
+	/* Only get the specified portion from the toast rel */
+	return (struct varlena *) heap_tuple_untoast_attr_slice((varattrib *) datum, first, count);
+}
