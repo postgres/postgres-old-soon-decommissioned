@@ -106,6 +106,7 @@ PQprint(FILE *fout,
 		int			fs_len = strlen(po->fieldSep);
 		int			total_line_length = 0;
 		int			usePipe = 0;
+		pqsigfunc	oldsigpipehandler = NULL;
 		char	   *pagerenv;
 		char		buf[8192 * 2 + 1];
 
@@ -193,7 +194,7 @@ PQprint(FILE *fout,
 				{
 					usePipe = 1;
 #ifndef WIN32
-					pqsignal(SIGPIPE, SIG_IGN);
+					oldsigpipehandler = pqsignal(SIGPIPE, SIG_IGN);
 #endif
 				}
 				else
@@ -309,7 +310,7 @@ PQprint(FILE *fout,
 			_pclose(fout);
 #else
 			pclose(fout);
-			pqsignal(SIGPIPE, SIG_DFL);
+			pqsignal(SIGPIPE, oldsigpipehandler);
 #endif
 		}
 		if (po->html3 && !po->expanded)

@@ -445,8 +445,6 @@ pg_krb5_sendauth(const char *PQerrormsg, int sock,
 			(void) sprintf(PQerrormsg,
 				  "pg_krb5_sendauth: authentication rejected: \"%*s\"\n",
 						   error->text.length, error->text.data);
-			fputs(PQerrormsg, stderr);
-			pqdebug("%s", PQerrormsg);
 		}
 		else
 		{

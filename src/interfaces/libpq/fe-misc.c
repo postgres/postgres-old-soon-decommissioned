@@ -50,6 +50,10 @@
 #include "postgres.h"
 #include "libpq-fe.h"
 
+#define DONOTICE(conn,message) \
+	((*(conn)->noticeHook) ((conn)->noticeArg, (message)))
+
+
 /* --------------------------------------------------------------------- */
 /* pqGetc:
    get a character from the connection
@@ -218,7 +222,9 @@ pqGetInt(int *result, int bytes, PGconn *conn)
 			*result = (int) ntohl(tmp4);
 			break;
 		default:
-			fprintf(stderr, "** int size %d not supported\n", bytes);
+			sprintf(conn->errorMessage,
+					"pqGetInt: int size %d not supported\n", bytes);
+			DONOTICE(conn, conn->errorMessage);
 			return EOF;
 	}
 
@@ -252,7 +258,9 @@ pqPutInt(int value, int bytes, PGconn *conn)
 				return EOF;
 			break;
 		default:
-			fprintf(stderr, "** int size %d not supported\n", bytes);
+			sprintf(conn->errorMessage,
+					"pqPutInt: int size %d not supported\n", bytes);
+			DONOTICE(conn, conn->errorMessage);
 			return EOF;
 	}
 
@@ -265,7 +273,7 @@ pqPutInt(int value, int bytes, PGconn *conn)
 /* --------------------------------------------------------------------- */
 /* pqReadReady: is select() saying the file is ready to read?
  */
-static int
+int
 pqReadReady(PGconn *conn)
 {
 	fd_set			input_mask;
