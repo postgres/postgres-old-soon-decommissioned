@@ -5,7 +5,7 @@ Postgres documentation
 
 <refentry id="APP-CREATELANG">
  <docinfo>
-  <date>2000-11-11</date>
+  <date>2001-05-09</date>
  </docinfo>
 
  <refmeta>
@@ -62,11 +62,30 @@ Postgres documentation
      </varlistentry>
 
      <varlistentry>
+      <term>-e, --echo</term>
+      <listitem>
+       <para>
+        Displays SQL commands as they are executed.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term>-l, --list</term>
       <listitem>
        <para>
         Shows a list of already installed languages in the target database
         (which must be specified).
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>--L <replaceable class="parameter">directory</replaceable></term>
+      <listitem>
+       <para>
+	Specifies the directory in which the language interpreter is
+        to be found.  This is normally found automatically.
        </para>
       </listitem>
      </varlistentry>
