@@ -39,6 +39,12 @@ $PostgreSQL$
         http://pgfoundry.org/projects/pginstaller</ulink>.
        </para>
        <para>
+        Because Win32 is significantly different from the Unix platforms
+        supported in previous releases, this port might have more bugs
+        than other supported platforms in this release. Please test it
+        thoroughly before using it in production.
+       </para>
+       <para>
         Previous releases required the Unix emulation toolkit Cygwin for
         Win32 server support. <productname>PostgreSQL</productname>
         has always supported clients on Win32.
