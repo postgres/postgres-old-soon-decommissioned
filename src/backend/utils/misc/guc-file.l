@@ -65,7 +65,7 @@ LETTER_OR_DIGIT [A-Za-z_0-9\200-\377]
 ID              {LETTER}{LETTER_OR_DIGIT}*
 
 UNQUOTED_STRING {LETTER}({LETTER_OR_DIGIT}|[-._:/])*
-STRING          \'([^'"\n]|\\.)*\'
+STRING          \'([^'\n]|\\.)*\'
 
 %%
 
