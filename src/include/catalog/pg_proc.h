@@ -1000,6 +1000,10 @@ DATA(insert OID = 750 (  array_in		   PGNSP PGUID 12 f f t f s 3 2277 "2275 26 2
 DESCR("array");
 DATA(insert OID = 751 (  array_out		   PGNSP PGUID 12 f f t f s 1 2275 "2277"  array_out - _null_ ));
 DESCR("array");
+DATA(insert OID = 2091 (  array_lower	   PGNSP PGUID 12 f f t f i 2 23 "2277 23" array_lower - _null_ ));
+DESCR("array lower dimension");
+DATA(insert OID = 2092 (  array_upper	   PGNSP PGUID 12 f f t f i 2 23 "2277 23" array_upper - _null_ ));
+DESCR("array upper dimension");
 
 DATA(insert OID = 760 (  smgrin			   PGNSP PGUID 12 f f t f s 1 210 "2275"  smgrin - _null_ ));
 DESCR("storage manager(internal)");
