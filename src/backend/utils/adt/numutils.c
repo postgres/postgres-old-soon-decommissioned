@@ -28,10 +28,6 @@
 #include <string.h>
 #endif
 
-#ifndef HAVE_FCVT
-#  include <port-protos.h>		/* ecvt(), fcvt() */
-#endif
-
 #ifndef INT_MAX
 #define INT_MAX (0x7FFFFFFFL)
 #endif

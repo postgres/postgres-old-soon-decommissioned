@@ -26,26 +26,25 @@
 SRCDIR=../..
 include ../../Makefile.global
 
-OBJS = @PORTNAME@/SUBSYS.o @INET_ATON@ @STRERROR@ @RANDOM@ @SRANDOM@
+INCLUDE_OPT = -I..
+
+CFLAGS+= INCLUDE_OPT
+
+OBJS = dynloader.o @INET_ATON@ @STRERROR@ @RANDOM@ @SRANDOM@
 OBJS+= @GETHOSTNAME@ @GETRUSAGE@ @STRCASECMP@ @STRDUP@
 
-all: submake SUBSYS.o
+all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
 	$(LD) -r -o SUBSYS.o $(OBJS)
 
-.PHONY: submake clean dep
-
-submake:
-	$(MAKE) -C @PORTNAME@ SUBSYS.o
+.PHONY: clean dep
 
 clean:
 	rm -f SUBSYS.o $(OBJS)
-	$(MAKE) -C @PORTNAME@ clean
 
 depend dep:
 	$(CC) -MM $(INCLUDE_OPT) *.c >depend
-	$(MAKE) -C @PORTNAME@ $@
 
 ifeq (depend,$(wildcard depend))
 include depend

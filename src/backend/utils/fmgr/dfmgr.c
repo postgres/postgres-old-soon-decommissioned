@@ -26,7 +26,8 @@
 #include "access/heapam.h"
 #include "nodes/pg_list.h"
 
-#include "port-protos.h"		/* system specific function prototypes */
+#include "dynloader.h"
+
 #ifdef __ultrix
 #include <dl.h>
 #endif
