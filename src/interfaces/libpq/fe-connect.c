@@ -1944,7 +1944,7 @@ makeEmptyPGconn(void)
 	PGconn	   *conn;
 
 #ifdef WIN32
-	/* needed to use the static libpq under windows as well */
+	/* make sure socket support is up and running */
 	WSADATA		wsaData;
 
 	if (WSAStartup(MAKEWORD(1, 1), &wsaData))
@@ -2324,12 +2324,7 @@ retry5:
 
 	/* All done */
 	closesocket(tmpsock);
-#ifdef WIN32
-	WSASetLastError(save_errno);
-#else
-	errno = save_errno;
-#endif
-
+	SOCK_ERRNO_SET(save_errno);
 	return TRUE;
 
 cancel_errReturn:
@@ -2346,12 +2341,7 @@ cancel_errReturn:
 	}
 	if (tmpsock >= 0)
 		closesocket(tmpsock);
-#ifdef WIN32
-	WSASetLastError(save_errno);
-#else
-	errno = save_errno;
-#endif
-
+	SOCK_ERRNO_SET(save_errno);
 	return FALSE;
 }
 
