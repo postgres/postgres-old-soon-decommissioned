@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Thu Sep  4 21:10:07 EDT 2003
+Last updated:		Thu Sep  4 22:20:40 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -168,7 +168,7 @@ Indexes
   float4, numeric/decimal too [optimizer]
 * Add FILLFACTOR to btree index creation
 * Add concurrency to GIST
-* Improve concurrency of hash indexes (Neil)
+* -Improve concurrency of hash indexes (Tom)
 * Allow a single index to index multiple tables (for inheritance and subtables)
 
 
