@@ -857,6 +857,10 @@ WriteEmptyXLOG(void)
 	page->xlp_magic = XLOG_PAGE_MAGIC;
 	page->xlp_info = 0;
 	page->xlp_sui = ControlFile.checkPointCopy.ThisStartUpID;
+	page->xlp_pageaddr.xlogid =
+		ControlFile.checkPointCopy.redo.xlogid;
+	page->xlp_pageaddr.xrecoff =
+		ControlFile.checkPointCopy.redo.xrecoff - SizeOfXLogPHD;
 	record = (XLogRecord *) ((char *) page + SizeOfXLogPHD);
 	record->xl_prev.xlogid = 0;
 	record->xl_prev.xrecoff = 0;
