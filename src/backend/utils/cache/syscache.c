@@ -626,3 +626,18 @@ SysCacheGetAttr(int cacheId, HeapTuple tup,
 						SysCache[cacheId]->cc_tupdesc,
 						isNull);
 }
+
+/*
+ * List-search interface
+ */
+struct catclist *
+SearchSysCacheList(int cacheId, int nkeys,
+				   Datum key1, Datum key2, Datum key3, Datum key4)
+{
+	if (cacheId < 0 || cacheId >= SysCacheSize ||
+		! PointerIsValid(SysCache[cacheId]))
+		elog(ERROR, "SearchSysCacheList: Bad cache id %d", cacheId);
+
+	return SearchCatCacheList(SysCache[cacheId], nkeys,
+							  key1, key2, key3, key4);
+}
