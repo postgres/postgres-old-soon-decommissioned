@@ -35,12 +35,12 @@
 #else
 # ifdef HAVE_READLINE_H
 #  include <readline.h>
-#  ifdef HAVE_HISTORY_H
+#  ifndef NO_HISTORY
 #   include <history.h>
 #  endif
 # else
 #  include <readline/readline.h>
-#  ifdef HAVE_READLINE_HISTORY_H
+#  ifndef NO_HISTORY
 #   include <readline/history.h>
 #  endif
 # endif
