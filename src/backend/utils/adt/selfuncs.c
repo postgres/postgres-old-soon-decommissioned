@@ -3189,6 +3189,8 @@ pattern_selectivity(char *patt, Pattern_Type ptype)
  * could be different from lc_collate_is_c(), but in a different
  * theory, non-C locales are completely unpredicable so it's unlikely
  * to happen.)
+ *
+ * Be sure to maintain the correspondence with the code in initdb.
  */
 bool
 locale_is_like_safe(void)

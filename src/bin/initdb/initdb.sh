@@ -464,6 +464,30 @@ echo "The files belonging to this database system will be owned by user \"$Effec
 echo "This user must also own the server process."
 echo
 
+TAB='	'
+
+if test `pg_getlocale CTYPE` = `pg_getlocale COLLATE` \
+   && test `pg_getlocale CTYPE` = `pg_getlocale TIME` \
+   && test `pg_getlocale CTYPE` = `pg_getlocale NUMERIC` \
+   && test `pg_getlocale CTYPE` = `pg_getlocale MONETARY` \
+   && test `pg_getlocale CTYPE` = `pg_getlocale MESSAGES`
+then
+    echo "The database cluster will be initialized with locale `pg_getlocale CTYPE`."
+else
+    echo "The database cluster will be initialized with locales:"
+    echo "    COLLATE:  `pg_getlocale COLLATE`${TAB}CTYPE:   `pg_getlocale CTYPE`${TAB}MESSAGES: `pg_getlocale MESSAGES`"
+    echo "    MONETARY: `pg_getlocale MONETARY`${TAB}NUMERIC: `pg_getlocale NUMERIC`${TAB}TIME:     `pg_getlocale TIME`"
+fi
+
+# (Be sure to maintain the correspondence with locale_is_like_safe() in selfuncs.c.)
+if test `pg_getlocale COLLATE` != C && test `pg_getlocale COLLATE` != POSIX; then
+    echo "This locale setting will prevent the use of indexes for pattern matching"
+    echo "operations.  If that is a concern, rerun $CMDNAME with the collation order"
+    echo "set to \"C\".  For more information see the Administrator's Guide."
+fi
+echo
+
+
 ##########################################################################
 #
 # CREATE DATABASE DIRECTORY
