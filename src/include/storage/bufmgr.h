@@ -167,7 +167,9 @@ extern int	FlushRelationBuffers(Relation rel, BlockNumber firstDelBlock);
 extern void DropRelationBuffers(Relation rel);
 extern void DropRelFileNodeBuffers(RelFileNode rnode);
 extern void DropBuffers(Oid dbid);
+#ifdef NOT_USED
 extern void PrintPinnedBufs(void);
+#endif
 extern int	BufferShmemSize(void);
 extern RelFileNode BufferGetFileNode(Buffer buffer);
 
