@@ -475,7 +475,6 @@ ProcessUtility(Node *parsetree,
 						 */
 						AlterTableAddColumn(relid,
 							  interpretInhOption(stmt->relation->inhOpt),
-											false,
 											(ColumnDef *) stmt->def);
 						break;
 					case 'T':	/* ALTER COLUMN DEFAULT */

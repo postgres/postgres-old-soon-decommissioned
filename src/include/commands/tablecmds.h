@@ -16,8 +16,7 @@
 
 #include "nodes/parsenodes.h"
 
-extern void AlterTableAddColumn(Oid myrelid, bool recurse, bool recursing,
-					ColumnDef *colDef);
+extern void AlterTableAddColumn(Oid myrelid, bool recurse, ColumnDef *colDef);
 
 extern void AlterTableAlterColumnDropNotNull(Oid myrelid, bool recurse,
 								 const char *colName);
