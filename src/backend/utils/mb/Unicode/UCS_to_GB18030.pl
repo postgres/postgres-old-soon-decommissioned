@@ -78,7 +78,7 @@ while( <FILE> ){
 	if( /^#/ ){
 		next;
 	}
-	( $c, $u, $rest ) = split;
+	( $u, $c, $rest ) = split;
 	$ucs = hex($u);
 	$code = hex($c);
 	if( $code >= 0x80 && $ucs >= 0x0080 ){
