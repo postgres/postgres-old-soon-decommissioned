@@ -231,7 +231,7 @@ ifeq ($(PORTNAME), cygwin)
 	rm -f postgres.dll postgres.def libpostgres.a
 endif
 ifeq ($(PORTNAME), win32)
-	rm -f postgres.dll postgres.def libpostgres.a
+	rm -f postgres.dll postgres.def libpostgres.a $(WIN32RES)
 endif
 	for i in $(DIRS); do $(MAKE) -C $$i clean || exit; done
 
