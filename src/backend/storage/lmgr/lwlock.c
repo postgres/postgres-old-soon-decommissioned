@@ -185,7 +185,7 @@ LWLockAssign(void)
 void
 LWLockAcquire(LWLockId lockid, LWLockMode mode)
 {
-	LWLock	   *lock = LWLockArray + lockid;
+	volatile LWLock *lock = LWLockArray + lockid;
 	bool		mustwait;
 
 	PRINT_LWDEBUG("LWLockAcquire", lockid, lock);
@@ -303,7 +303,7 @@ LWLockAcquire(LWLockId lockid, LWLockMode mode)
 bool
 LWLockConditionalAcquire(LWLockId lockid, LWLockMode mode)
 {
-	LWLock	   *lock = LWLockArray + lockid;
+	volatile LWLock *lock = LWLockArray + lockid;
 	bool		mustwait;
 
 	PRINT_LWDEBUG("LWLockConditionalAcquire", lockid, lock);
@@ -369,7 +369,7 @@ LWLockConditionalAcquire(LWLockId lockid, LWLockMode mode)
 void
 LWLockRelease(LWLockId lockid)
 {
-	LWLock	   *lock = LWLockArray + lockid;
+	volatile LWLock *lock = LWLockArray + lockid;
 	PROC	   *head;
 	PROC	   *proc;
 	int			i;
