@@ -1497,6 +1497,28 @@ eval_const_expressions_mutator(Node *node, List *active_fns)
 		newcoalesce->args = newargs;
 		return (Node *) newcoalesce;
 	}
+	if (IsA(node, FieldSelect))
+	{
+		/*
+		 * We can optimize field selection from a whole-row Var into a
+		 * simple Var.  (This case won't be generated directly by the
+		 * parser, because ParseComplexProjection short-circuits it.
+		 * But it can arise while simplifying functions.)  If the argument
+		 * isn't a whole-row Var, just fall through to do generic processing.
+		 */
+		FieldSelect *fselect = (FieldSelect *) node;
+		Var		   *argvar = (Var *) fselect->arg;
+
+		if (argvar && IsA(argvar, Var) &&
+			argvar->varattno == InvalidAttrNumber)
+		{
+			return (Node *) makeVar(argvar->varno,
+									fselect->fieldnum,
+									fselect->resulttype,
+									fselect->resulttypmod,
+									argvar->varlevelsup);
+		}
+	}
 
 	/*
 	 * For any node type not handled above, we recurse using
