@@ -17,9 +17,10 @@
 #include "utils/rel.h"
 
 /* State information used during parse analysis
- * p_join_quals is a list of qualification expressions
- * found in the FROM clause. Needs to be available later
- * to merge with other qualifiers from the WHERE clause.
+ * p_join_quals is a list of untransformed qualification expressions
+ * (implicitly ANDed together) found in the FROM clause.
+ * Needs to be available later to merge with other qualifiers from the
+ * WHERE clause.
  */
 typedef struct ParseState
 {
@@ -36,7 +37,7 @@ typedef struct ParseState
 	RangeTblEntry *p_target_rangetblentry;
 	List	   *p_shape;
 	List	   *p_alias;
-	Node	   *p_join_quals;
+	List	   *p_join_quals;
 } ParseState;
 
 extern ParseState *make_parsestate(ParseState *parentParseState);
