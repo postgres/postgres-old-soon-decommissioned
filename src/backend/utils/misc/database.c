@@ -34,7 +34,7 @@
 #include "mb/pg_wchar.h"
 #endif
 
-#ifdef 0
+#ifdef NOT_USED
 /* GetDatabaseInfo()
  * Pull database information from pg_database.
  */
