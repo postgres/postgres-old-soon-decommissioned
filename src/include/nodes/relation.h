@@ -13,10 +13,8 @@
 #ifndef RELATION_H
 #define RELATION_H
 
-#include "nodes/pg_list.h"
-#include "nodes/primnodes.h"
-#include "nodes/parsenodes.h"
-#include "nodes/nodes.h"
+#include <nodes/parsenodes.h>
+#include <nodes/primnodes.h>
 
 /*
  * Relid
