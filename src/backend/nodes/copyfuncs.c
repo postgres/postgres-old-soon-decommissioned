@@ -2245,6 +2245,20 @@ _copyCreatedbStmt(CreatedbStmt *from)
 	return newnode;
 }
 
+static AlterDatabaseSetStmt *
+_copyAlterDatabaseSetStmt(AlterDatabaseSetStmt *from)
+{
+	AlterDatabaseSetStmt *newnode = makeNode(AlterDatabaseSetStmt);
+
+	if (from->dbname)
+		newnode->dbname = pstrdup(from->dbname);
+	if (from->variable)
+		newnode->variable = pstrdup(from->variable);
+	Node_Copy(from, newnode, value);
+
+	return newnode;
+}
+
 static DropdbStmt *
 _copyDropdbStmt(DropdbStmt *from)
 {
@@ -2423,6 +2437,20 @@ _copyAlterUserStmt(AlterUserStmt *from)
 	if (from->user)
 		newnode->user = pstrdup(from->user);
 	Node_Copy(from, newnode, options);
+
+	return newnode;
+}
+
+static AlterUserSetStmt *
+_copyAlterUserSetStmt(AlterUserSetStmt *from)
+{
+	AlterUserSetStmt *newnode = makeNode(AlterUserSetStmt);
+
+	if (from->user)
+		newnode->user = pstrdup(from->user);
+	if (from->variable)
+		newnode->user = pstrdup(from->variable);
+	Node_Copy(from, newnode, value);
 
 	return newnode;
 }
@@ -2845,6 +2873,9 @@ copyObject(void *from)
 		case T_CreatedbStmt:
 			retval = _copyCreatedbStmt(from);
 			break;
+		case T_AlterDatabaseSetStmt:
+			retval = _copyAlterDatabaseSetStmt(from);
+			break;
 		case T_DropdbStmt:
 			retval = _copyDropdbStmt(from);
 			break;
@@ -2883,6 +2914,9 @@ copyObject(void *from)
 			break;
 		case T_AlterUserStmt:
 			retval = _copyAlterUserStmt(from);
+			break;
+		case T_AlterUserSetStmt:
+			retval = _copyAlterUserSetStmt(from);
 			break;
 		case T_DropUserStmt:
 			retval = _copyDropUserStmt(from);

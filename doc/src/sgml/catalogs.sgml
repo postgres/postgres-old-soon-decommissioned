@@ -889,6 +889,13 @@
        or an absolute path, depending how it was entered.
       </entry>
      </row>
+
+     <row>
+      <entry>datconfig</entry>
+      <entry><type>text[]</type></entry>
+      <entry></entry>
+      <entry>Session defaults for run-time configuration variables</entry>
+     </row>
     </tbody>
    </tgroup>
   </table>
@@ -1979,6 +1986,13 @@
       <entry><type>abstime</type></entry>
       <entry></entry>
       <entry>Account expiry time (only used for password authentication)</entry>
+     </row>
+
+     <row>
+      <entry>useconfig</entry>
+      <entry><type>text[]</type></entry>
+      <entry></entry>
+      <entry>Session defaults for run-time configuration variables</entry>
      </row>
     </tbody>
    </tgroup>

@@ -600,6 +600,10 @@ ProcessUtility(Node *parsetree,
 			}
 			break;
 
+		case T_AlterDatabaseSetStmt:
+			AlterDatabaseSet((AlterDatabaseSetStmt *)parsetree);
+			break;
+
 		case T_DropdbStmt:
 			{
 				DropdbStmt *stmt = (DropdbStmt *) parsetree;
@@ -746,6 +750,10 @@ ProcessUtility(Node *parsetree,
 
 		case T_AlterUserStmt:
 			AlterUser((AlterUserStmt *) parsetree);
+			break;
+
+		case T_AlterUserSetStmt:
+			AlterUserSet((AlterUserSetStmt *) parsetree);
 			break;
 
 		case T_DropUserStmt:

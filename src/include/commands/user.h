@@ -14,6 +14,7 @@
 
 extern void CreateUser(CreateUserStmt *stmt);
 extern void AlterUser(AlterUserStmt *stmt);
+extern void AlterUserSet(AlterUserSetStmt *stmt);
 extern void DropUser(DropUserStmt *stmt);
 
 extern void CreateGroup(CreateGroupStmt *stmt);

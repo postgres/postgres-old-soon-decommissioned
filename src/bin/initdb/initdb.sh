@@ -579,7 +579,8 @@ CREATE VIEW pg_user AS \
         usesuper, \
         usecatupd, \
         '********'::text as passwd, \
-        valuntil \
+        valuntil, \
+        useconfig \
     FROM pg_shadow;
 
 CREATE VIEW pg_rules AS \

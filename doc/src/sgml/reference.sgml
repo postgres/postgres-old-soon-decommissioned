@@ -46,6 +46,7 @@ PostgreSQL Reference Manual
   </partintro>
 
    &abort;
+   &alterDatabase;
    &alterGroup;
    &alterTable;
    &alterUser;

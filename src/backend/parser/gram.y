@@ -130,8 +130,8 @@ static void doNegateFloat(Value *v);
 }
 
 %type <node>	stmt,
-		AlterGroupStmt, AlterSchemaStmt, AlterTableStmt, AlterUserStmt,
-		AnalyzeStmt,
+		AlterDatabaseSetStmt, AlterGroupStmt, AlterSchemaStmt, AlterTableStmt,
+		AlterUserStmt, AlterUserSetStmt, AnalyzeStmt,
 		ClosePortalStmt, ClusterStmt, CommentStmt, ConstraintsSetStmt,
 		CopyStmt, CreateAsStmt, CreateGroupStmt, CreatePLangStmt,
 		CreateSchemaStmt, CreateSeqStmt, CreateStmt, CreateTrigStmt,
@@ -436,10 +436,12 @@ stmtmulti:  stmtmulti ';' stmt
 				}
 		;
 
-stmt :	AlterSchemaStmt
-		| AlterTableStmt
+stmt : AlterDatabaseSetStmt
 		| AlterGroupStmt
+		| AlterSchemaStmt
+		| AlterTableStmt
 		| AlterUserStmt
+		| AlterUserSetStmt
 		| ClosePortalStmt
 		| CopyStmt
 		| CreateStmt
@@ -538,6 +540,26 @@ AlterUserStmt:  ALTER USER UserId OptUserList
 					$$ = (Node *)n;
 				 }
 		;
+
+
+AlterUserSetStmt: ALTER USER UserId VariableSetStmt
+				{
+					AlterUserSetStmt *n = makeNode(AlterUserSetStmt);
+					n->user = $3;
+					n->variable = ((VariableSetStmt *)$4)->name;
+					n->value = ((VariableSetStmt *)$4)->args;
+					$$ = (Node *)n;
+				}
+				| ALTER USER UserId VariableResetStmt
+				{
+					AlterUserSetStmt *n = makeNode(AlterUserSetStmt);
+					n->user = $3;
+					n->variable = ((VariableResetStmt *)$4)->name;
+					n->value = NULL;
+					$$ = (Node *)n;
+				}
+		;
+
 
 /*****************************************************************************
  *
@@ -3162,6 +3184,33 @@ createdb_opt_item:  LOCATION opt_equal Sconst
 opt_equal: '='								{ $$ = TRUE; }
 		| /*EMPTY*/							{ $$ = FALSE; }
 		;
+
+
+/*****************************************************************************
+ *
+ *		ALTER DATABASE
+ *
+ *
+ *****************************************************************************/
+
+AlterDatabaseSetStmt: ALTER DATABASE database_name VariableSetStmt
+				{
+					AlterDatabaseSetStmt *n = makeNode(AlterDatabaseSetStmt);
+					n->dbname = $3;
+					n->variable = ((VariableSetStmt *)$4)->name;
+					n->value = ((VariableSetStmt *)$4)->args;
+					$$ = (Node *)n;
+				}
+				| ALTER DATABASE database_name VariableResetStmt
+				{
+					AlterDatabaseSetStmt *n = makeNode(AlterDatabaseSetStmt);
+					n->dbname = $3;
+					n->variable = ((VariableResetStmt *)$4)->name;
+					n->value = NULL;
+					$$ = (Node *)n;
+				}
+		;
+
 
 /*****************************************************************************
  *

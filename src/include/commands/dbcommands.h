@@ -14,9 +14,12 @@
 #ifndef DBCOMMANDS_H
 #define DBCOMMANDS_H
 
+#include <nodes/parsenodes.h>
+
 extern void createdb(const char *dbname, const char *dbowner,
 					 const char *dbpath, const char *dbtemplate,
 					 int encoding);
 extern void dropdb(const char *dbname);
+extern void AlterDatabaseSet(AlterDatabaseSetStmt *stmt);
 
 #endif   /* DBCOMMANDS_H */
