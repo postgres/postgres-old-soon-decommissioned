@@ -6,7 +6,7 @@ dnl
 dnl 0. Initialization and options processing
 dnl 1. Programs
 dnl 2. Libraries
-dnl 3. Header files
+dnl 3. Header files 
 dnl 4. Types
 dnl 5. Structures
 dnl 6. Compiler characteristics
