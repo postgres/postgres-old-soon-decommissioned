@@ -94,6 +94,7 @@ distclean: clean
 		interfaces/odbc/Makefile.global \
 		interfaces/odbc/GNUmakefile \
 		pl/plpgsql/src/Makefile \
+		pl/plpgsql/src/mklang.sql \
 		pl/tcl/mkMakefile.tcldefs.sh \
 		Makefile.port
 
