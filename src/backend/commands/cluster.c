@@ -316,7 +316,7 @@ copy_index(Oid OIDOldIndex, Oid OIDNewHeap)
     index_create((NewHeap->rd_rel->relname).data,
 		 NewIndexName, 
 		 finfo,
-- 		 NULL, /* type info is in the old index */
+  		 NULL, /* type info is in the old index */
 		 Old_pg_index_relation_Form->relam,
 		 natts, 
 		 Old_pg_index_Form->indkey,
