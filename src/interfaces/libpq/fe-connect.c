@@ -2252,6 +2252,7 @@ PQrequestCancel(PGconn *conn)
 	{
 		strcpy(conn->errorMessage.data,
 			   "PQrequestCancel() -- socket() failed: ");
+		conn->errorMessage.len = strlen(conn->errorMessage.data);
 		goto cancel_errReturn;
 	}
 retry3:
@@ -2263,6 +2264,7 @@ retry3:
 			goto retry3;
 		strcpy(conn->errorMessage.data,
 			   "PQrequestCancel() -- connect() failed: ");
+		conn->errorMessage.len = strlen(conn->errorMessage.data);
 		goto cancel_errReturn;
 	}
 
@@ -2285,6 +2287,7 @@ retry4:
 			goto retry4;
 		strcpy(conn->errorMessage.data,
 			   "PQrequestCancel() -- send() failed: ");
+		conn->errorMessage.len = strlen(conn->errorMessage.data);
 		goto cancel_errReturn;
 	}
 
