@@ -248,7 +248,7 @@ BootstrapMain(int argc, char *argv[])
 												 * variable */
 	}
 
-	while ((flag = getopt(argc, argv, "B:dD:Fo:px:")) != -1)
+	while ((flag = getopt(argc, argv, "B:d:D:Fo:px:")) != -1)
 	{
 		switch (flag)
 		{
