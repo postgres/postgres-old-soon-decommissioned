@@ -94,12 +94,12 @@ ORDER BY city;
 --	another class.
 -----------------------------
 
-SELECT * INTO TABLE temp 
+SELECT * INTO TABLE mytemp 
 FROM weather
 WHERE city = 'San Francisco' 
    and prcp > 0.0;
 
-SELECT * from temp;
+SELECT * from mytemp;
 
 -----------------------------
 -- Aggregates
@@ -185,4 +185,4 @@ SELECT * from weather;
 --      can no longer use those tables.
 -----------------------------
 
-DROP TABLE weather, cities, temp;
+DROP TABLE weather, cities, mytemp;
