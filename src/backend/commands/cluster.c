@@ -175,7 +175,7 @@ cluster(char oldrelname[], char oldindexname[])
 
 
 	/* Destroy old heap (along with its index) and rename new. */
-	heap_destroy(oldrelname);
+	heap_destroy_with_catalog(oldrelname);
 
 	renamerel(NewHeapName, saveoldrelname);
 	TypeRename(NewHeapName, saveoldrelname);
@@ -209,13 +209,13 @@ copy_heap(Oid OIDOldHeap)
 	OldHeapDesc = RelationGetTupleDescriptor(OldHeap);
 
 	/*
-	 * Need to make a copy of the tuple descriptor, heap_create_and_catalog
+	 * Need to make a copy of the tuple descriptor, heap_create_with_catalog
 	 * modifies it.
 	 */
 
 	tupdesc = CreateTupleDescCopy(OldHeapDesc);
 
-	OIDNewHeap = heap_create_and_catalog(NewName, tupdesc);
+	OIDNewHeap = heap_create_with_catalog(NewName, tupdesc);
 
 	if (!OidIsValid(OIDNewHeap))
 		elog(WARN, "clusterheap: cannot create temporary heap relation\n");

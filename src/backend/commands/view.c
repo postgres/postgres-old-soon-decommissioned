@@ -314,6 +314,6 @@ RemoveView(char *viewName)
 	/*
 	 * now remove the relation.
 	 */
-	heap_destroy(viewName);
+	heap_destroy_with_catalog(viewName);
 	pfree(rname);
 }

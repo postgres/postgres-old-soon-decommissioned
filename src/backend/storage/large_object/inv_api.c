@@ -139,7 +139,7 @@ inv_create(int flags)
 	 * be located on whatever storage manager the user requested.
 	 */
 
-	heap_create_and_catalog(objname, tupdesc);
+	heap_create_with_catalog(objname, tupdesc);
 
 	/* make the relation visible in this transaction */
 	CommandCounterIncrement();
@@ -283,7 +283,7 @@ inv_destroy(Oid lobjId)
 	if (!RelationIsValid(r) || r->rd_rel->relkind == RELKIND_INDEX)
 		return -1;
 
-	heap_destroy(r->rd_rel->relname.data);
+	heap_destroy_with_catalog(r->rd_rel->relname.data);
 	return 1;
 }
 

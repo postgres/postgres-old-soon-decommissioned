@@ -319,7 +319,7 @@ ExecEndMaterial(Material *node)
 	matstate = node->matstate;
 	tempRelation = matstate->mat_TempRelation;
 
-	heap_destroyr(tempRelation);
+	heap_destroy(tempRelation);
 
 	/* ----------------
 	 *	close the temp relation and shut down the scan.

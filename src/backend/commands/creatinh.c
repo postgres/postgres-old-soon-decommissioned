@@ -137,7 +137,7 @@ DefineRelation(CreateStmt *stmt)
 		}
 	}
 
-	relationId = heap_create_and_catalog(relname, descriptor);
+	relationId = heap_create_with_catalog(relname, descriptor);
 
 	StoreCatalogInheritance(relationId, inheritList);
 }
@@ -157,7 +157,7 @@ void
 RemoveRelation(char *name)
 {
 	AssertArg(name);
-	heap_destroy(name);
+	heap_destroy_with_catalog(name);
 }
 
 
