@@ -17,6 +17,7 @@
 
 
 #define fsync(a)	_commit(a)
+#define FSYNC_IS_WRITE_THROUGH
 #define ftruncate(a,b)	chsize(a,b)
 
 #define USES_WINSOCK
@@ -189,7 +190,7 @@ typedef int pid_t;
  * to ensure that we don't collide with a future definition. It means
  * we cannot use _O_NOINHERIT ourselves.
  */
-#define O_SYNC 0x0080
+#define O_DSYNC 0x0080
 
 /*
  * Supplement to <errno.h>.
