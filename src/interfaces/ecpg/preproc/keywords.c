@@ -78,8 +78,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"createdb", CREATEDB},
 	{"createuser", CREATEUSER},
 	{"cross", CROSS},
-	/* for portability with old rules bjm 2000-06-12 */
-	{"current", OLD},
 	{"current_date", CURRENT_DATE},
 	{"current_time", CURRENT_TIME},
 	{"current_timestamp", CURRENT_TIMESTAMP},
