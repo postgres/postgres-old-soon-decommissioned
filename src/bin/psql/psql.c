@@ -1263,6 +1263,7 @@ MainLoop(PsqlSettings * settings, FILE * source)
     /* main loop for getting queries and executing them */
     while (!eof) {
 	if (slashCmdStatus == 3) {
+	    paren_level = 0;
 	    line = strdup(query);
 	    query[0] = '\0';
 	} else {
@@ -1376,8 +1377,12 @@ MainLoop(PsqlSettings * settings, FILE * source)
 						 query_start,
 						 query);
 		if (slashCmdStatus == 1) {
-		    free(line);
-		    continue;
+		    if (query[0] == '\0')
+		    {
+			paren_level = 0;
+		    	free(line);
+			continue;
+		    }
 		}
 		if (slashCmdStatus == 2) {
 		    free(line);
