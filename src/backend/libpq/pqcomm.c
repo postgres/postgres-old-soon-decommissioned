@@ -81,7 +81,9 @@
 #endif
 
 #include "libpq/libpq.h"
+#include "utils/trace.h"
 #include "miscadmin.h"
+
 
 #ifndef SOMAXCONN
 #define SOMAXCONN 5				/* from Linux listen(2) man page */
