@@ -16,7 +16,7 @@ PROG=	pg_dump
 MKDIR=	../../mk
 include $(MKDIR)/postgres.mk
 include ../Makefile.global
-
+CFLAGS += -I ../../backend/port/$(PORTNAME)
 SRCS=	pg_dump.c common.c
 
 include $(MKDIR)/postgres.prog.mk
