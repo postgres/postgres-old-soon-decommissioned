@@ -11,15 +11,27 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "c.h"
 
+#include "postgres.h"
+ 
+#include "catalog/pg_attribute.h"
+#include "access/attnum.h"
+#include "nodes/pg_list.h" 
+#include "access/tupdesc.h"
+#include "storage/fd.h"
+#include "catalog/pg_am.h"
+#include "catalog/pg_class.h"
+#include "nodes/nodes.h"
+#include "rewrite/prs2lock.h"
+#include "access/skey.h"
+#include "access/strat.h"  
 #include "utils/rel.h"
 
-#include "storage/bufmgr.h"
-#include "storage/bufpage.h"
+#include "storage/off.h"
+#include "storage/block.h"
+#include "access/rtree.h"
 
 #include "access/istrat.h"
-#include "access/rtree.h"
 
 /*
  *  Note:  negate, commute, and negatecommute all assume that operators are

@@ -11,14 +11,11 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <math.h>
-#include <string.h>
 
 #include "postgres.h"
 
-#include "utils/elog.h"
 #include "utils/geo-decls.h"
-#include "utils/palloc.h"
+
 
 BOX
 *rt_box_union(BOX *a, BOX *b)
