@@ -308,7 +308,7 @@
    WAL.  Ordinarily, when old log segment files are no longer needed, 
    they are recycled (renamed to become the next sequential future 
    segments). If, due to a short-term peak of log output rate, there 
-   are more than <varname>CHECKPOINT_SEGMENTS</varname>) + 1 segment files, 
+   are more than <varname>CHECKPOINT_SEGMENTS</varname> + 1 segment files, 
    the unneeded segment files will be deleted instead of recycled until the
    system gets back under this limit.
   </para>
