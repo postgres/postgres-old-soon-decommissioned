@@ -238,18 +238,20 @@ PGDATESTYLE='ISO, MDY'; export PGDATESTYLE
 # with the result of the last shell command before the `exit'.  Hence
 # we have to write `(exit x); exit' below this point.
 
-trap '
-    savestatus=$?
+exit_trap(){ 
+    savestatus=$1
     if [ -n "$postmaster_pid" ]; then
         kill -2 "$postmaster_pid"
         wait "$postmaster_pid"
         unset postmaster_pid
     fi
     rm -f "$TMPFILE" && exit $savestatus
-' 0
+}
 
-trap '
-    savestatus=$?
+trap 'exit_trap $?' 0
+
+sig_trap() {
+    savestatus=$1
     echo; echo "caught signal"
     if [ -n "$postmaster_pid" ]; then
         echo "signalling fast shutdown to postmaster with pid $postmaster_pid"
@@ -258,7 +260,9 @@ trap '
         unset postmaster_pid
     fi
     (exit $savestatus); exit
-' 1 2 13 15
+}
+
+trap 'sig_trap $?' 1 2 13 15
 
 
 
