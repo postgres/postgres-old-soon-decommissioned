@@ -1402,7 +1402,7 @@ StartupXLOG()
 				record = ReadRecord(&RecPtr, buffer);
 				if (TransactionIdIsValid(record->xl_xid) &&
 					!TransactionIdDidCommit(record->xl_xid))
-					RmgrTable[record->xl_rmid].rm_undo(record);
+					RmgrTable[record->xl_rmid].rm_undo(EndRecPtr, record);
 				RecPtr = record->xl_prev;
 			} while (XLByteLE(checkPoint.undo, RecPtr));
 			elog(LOG, "Undo done at (%u, %u)",
