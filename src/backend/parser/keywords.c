@@ -211,7 +211,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"privileges", PRIVILEGES},
 	{"procedural", PROCEDURAL},
 	{"procedure", PROCEDURE},
-	{"public", PUBLIC},
 	{"read", READ},
 	{"references", REFERENCES},
 	{"reindex", REINDEX},
