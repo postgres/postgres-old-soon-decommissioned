@@ -2003,8 +2003,11 @@ makeEmptyPGconn(void)
 static void
 freePGconn(PGconn *conn)
 {
+	pgParameterStatus *pstatus;
+
 	if (!conn)
 		return;
+
 	pqClearAsyncResult(conn);	/* deallocate result and curTuple */
 	if (conn->sock >= 0)
 	{
@@ -2037,6 +2040,14 @@ freePGconn(PGconn *conn)
 	if (conn->notifyList)
 		DLFreeList(conn->notifyList);
 	freeaddrinfo_all(conn->addrlist_family, conn->addrlist);
+	pstatus = conn->pstatus;
+	while (pstatus != NULL)
+	{
+		pgParameterStatus *prev = pstatus;
+
+		pstatus = pstatus->next;
+		free(prev);
+	}
 	if (conn->lobjfuncs)
 		free(conn->lobjfuncs);
 	if (conn->inBuffer)
