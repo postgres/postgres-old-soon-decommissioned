@@ -563,7 +563,7 @@ int
 ProcSleep(LOCKMETHODTABLE *lockMethodTable,
 		  LOCKMODE lockmode,
 		  LOCK *lock,
-		  HOLDER *holder)
+		  PROCLOCK *holder)
 {
 	LOCKMETHODCTL *lockctl = lockMethodTable->ctl;
 	LWLockId	masterLock = lockctl->masterLock;

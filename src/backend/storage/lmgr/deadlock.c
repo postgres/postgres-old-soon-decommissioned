@@ -382,7 +382,7 @@ FindLockCycleRecurse(PROC *checkProc,
 {
 	PROC	   *proc;
 	LOCK	   *lock;
-	HOLDER	   *holder;
+	PROCLOCK	   *holder;
 	SHM_QUEUE  *lockHolders;
 	LOCKMETHODTABLE *lockMethodTable;
 	LOCKMETHODCTL *lockctl;
@@ -434,8 +434,8 @@ FindLockCycleRecurse(PROC *checkProc,
 	 */
 	lockHolders = &(lock->lockHolders);
 
-	holder = (HOLDER *) SHMQueueNext(lockHolders, lockHolders,
-									 offsetof(HOLDER, lockLink));
+	holder = (PROCLOCK *) SHMQueueNext(lockHolders, lockHolders,
+									 offsetof(PROCLOCK, lockLink));
 
 	while (holder)
 	{
@@ -458,8 +458,8 @@ FindLockCycleRecurse(PROC *checkProc,
 			}
 		}
 
-		holder = (HOLDER *) SHMQueueNext(lockHolders, &holder->lockLink,
-										 offsetof(HOLDER, lockLink));
+		holder = (PROCLOCK *) SHMQueueNext(lockHolders, &holder->lockLink,
+										 offsetof(PROCLOCK, lockLink));
 	}
 
 	/*
