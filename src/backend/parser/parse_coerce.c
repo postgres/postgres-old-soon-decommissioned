@@ -364,6 +364,7 @@ select_common_type(List *typeids, const char *context)
 					 context, typeidTypeName(ptype), typeidTypeName(ntype));
 			}
 			else if (IsPreferredType(pcategory, ntype)
+					 && !IsPreferredType(pcategory, ptype)
 					 && can_coerce_type(1, &ptype, &ntype))
 			{
 				/*
