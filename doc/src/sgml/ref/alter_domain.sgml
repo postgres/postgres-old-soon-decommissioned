@@ -13,7 +13,7 @@ PostgreSQL documentation
    ALTER DOMAIN
   </refname>
   <refpurpose>
-   change the definition of a table
+   change the definition of a domain
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

@@ -1194,6 +1194,12 @@ $Header$
         <entry></entry>
        </row>
        <row>
+        <entry>F711</entry>
+        <entry></entry>
+        <entry>ALTER domain</entry>
+        <entry></entry>
+       </row>
+       <row>
         <entry>F791</entry>
         <entry></entry>
         <entry>Insensitive cursors</entry>
@@ -1821,12 +1827,6 @@ $Header$
         <entry>F691</entry>
         <entry></entry>
         <entry>Collation and translation</entry>
-        <entry></entry>
-       </row>
-       <row>
-        <entry>F711</entry>
-        <entry></entry>
-        <entry>ALTER domain</entry>
         <entry></entry>
        </row>
        <row>
