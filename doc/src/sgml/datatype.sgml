@@ -16,7 +16,7 @@ $Header$
    <productname>Postgres</productname> has a rich set of native data 
    types available to users.
    Users may add new types to <productname>Postgres</productname> using the
-   <command>DEFINE TYPE</command> command.
+   <command>CREATE TYPE</command> command.
   </para>
 
   <para>
