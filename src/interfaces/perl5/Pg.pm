@@ -99,7 +99,7 @@ require 5.002;
 	PGRES_InvalidOid
 );
 
-$Pg::VERSION = '1.8.0';
+$Pg::VERSION = '1.9.0';
 
 sub AUTOLOAD {
     # This AUTOLOAD is used to 'autoload' constants from the constant()

@@ -14,7 +14,7 @@ include ../../Makefile.global
 
 NAME= pgtcl
 SO_MAJOR_VERSION= 2
-SO_MINOR_VERSION= 1
+SO_MINOR_VERSION= 2
 
 override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 

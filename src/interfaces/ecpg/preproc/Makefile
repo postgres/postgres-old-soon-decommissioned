@@ -5,7 +5,7 @@ top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
 MAJOR_VERSION=2
-MINOR_VERSION=8
+MINOR_VERSION=9
 PATCHLEVEL=0
 
 override CPPFLAGS := -I$(srcdir)/../include $(CPPFLAGS) \

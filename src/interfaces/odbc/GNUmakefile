@@ -13,7 +13,7 @@ include $(top_builddir)/src/Makefile.global
 # Shared library parameters
 NAME = psqlodbc
 SO_MAJOR_VERSION = 0
-SO_MINOR_VERSION = 26
+SO_MINOR_VERSION = 27
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -DHAVE_CONFIG_H -DODBCINSTDIR='"$(odbcinst_ini_dir)"'
 
