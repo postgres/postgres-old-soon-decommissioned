@@ -23,7 +23,7 @@ extern Index ExcLineNumber;
 /*
  * ExcMessage and Exception are now defined in c.h
  */
-#if !defined(SIGJMP_BUF)
+#if defined(JMP_BUF)
 typedef jmp_buf		ExcContext;
 #else
 typedef sigjmp_buf	ExcContext;
