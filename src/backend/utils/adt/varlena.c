@@ -550,7 +550,7 @@ varstr_cmp(char *arg1, int len1, char *arg2, int len2)
 	/*
 	 * Unfortunately, there is no strncoll(), so in the non-C locale
 	 * case we have to do some memory copying.  This turns out to be
-	 * significantly slower, so we optimize the case were LC_COLLATE
+	 * significantly slower, so we optimize the case where LC_COLLATE
 	 * is C.
 	 */
 	if (!lc_collate_is_c())
