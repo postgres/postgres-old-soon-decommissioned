@@ -48,8 +48,9 @@ typedef struct proc
 								 * were starting our xact: vacuum must not
 								 * remove tuples deleted by xid >= xmin ! */
 
-	LOCK	   *waitLock;		/* Lock we're sleeping on */
-	int			token;			/* info for proc wakeup routines */
+	LOCK	   *waitLock;		/* Lock we're sleeping on ... */
+	int			token;			/* type of lock we sleeping for */
+	int			holdLock;		/* while holding these locks */
 	int			pid;			/* This procs process id */
 	short		sLocks[MAX_SPINS];		/* Spin lock stats */
 	SHM_QUEUE	lockQueue;		/* locks associated with current
@@ -116,8 +117,8 @@ extern bool ProcRemove(int pid);
 /* make static in storage/lmgr/proc.c -- jolly */
 
 extern void ProcQueueInit(PROC_QUEUE *queue);
-extern int ProcSleep(PROC_QUEUE *queue, SPINLOCK spinlock, int token,
-		  int prio, LOCK *lock, TransactionId xid);
+extern int ProcSleep(PROC_QUEUE *queue, LOCKMETHODCTL *lockctl, int token, 
+					LOCK *lock);
 extern int ProcLockWakeup(PROC_QUEUE *queue, LOCKMETHOD lockmethod,
 			   LOCK *lock);
 extern void ProcAddLock(SHM_QUEUE *elem);

@@ -41,7 +41,7 @@ typedef int LOCKMODE;
 typedef int LOCKMETHOD;
 
 /* MAX_LOCKMODES cannot be larger than the bits in MASK */
-#define MAX_LOCKMODES	9
+#define MAX_LOCKMODES	8
 
 /*
  * MAX_LOCK_METHODS corresponds to the number of spin locks allocated in
@@ -204,6 +204,7 @@ typedef struct LOCK
 
 	/* data */
 	int			mask;
+	int			waitMask;
 	PROC_QUEUE	waitProcs;
 	int			holders[MAX_LOCKMODES];
 	int			nHolding;

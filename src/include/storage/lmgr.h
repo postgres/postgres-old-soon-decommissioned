@@ -25,8 +25,6 @@
 #define ExclusiveLock			6
 #define AccessExclusiveLock		7
 
-#define ExtendLock				8
-
 extern LOCKMETHOD LockTableId;
 
 

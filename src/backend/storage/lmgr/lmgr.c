@@ -79,9 +79,6 @@ static MASK LockConflicts[] = {
 	(1 << RowExclusiveLock) | (1 << RowShareLock) | (1 << AccessExclusiveLock) | 
 	(1 << AccessShareLock),
 
-/* ExtendLock */
-	(1 << ExtendLock)
-
 };
 
 static int	LockPrios[] = {
@@ -92,8 +89,7 @@ static int	LockPrios[] = {
 	4,
 	5,
 	6,
-	7,
-	1
+	7
 };
 
 LOCKMETHOD	LockTableId = (LOCKMETHOD) NULL;
