@@ -48,6 +48,15 @@ else
 SHLIB_LINK= -L../libpq -lpq
 endif
 
+# For CC on IRIX, must use CC as linker/archiver of C++ libraries
+ifeq ($(PORTNAME), irix5)
+  ifeq ($(CXX), CC)
+    AR = CC
+    AROPT = -ar -o
+    LD = CC
+  endif
+endif
+
 # Shared library stuff, also default 'all' target
 include $(SRCDIR)/Makefile.shlib
 
