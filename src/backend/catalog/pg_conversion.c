@@ -194,8 +194,9 @@ Oid FindDefaultConversion(Oid name_space, int4 for_encoding, int4 to_encoding)
 	{
 		body = (Form_pg_conversion)GETSTRUCT(tuple);
 		if (body->conforencoding == for_encoding &&
-			body->conforencoding == to_encoding &&
-			body->condefault == TRUE) {
+			body->contoencoding == to_encoding &&
+			body->condefault == TRUE)
+		{
 			proc = body->conproc;
 			break;
 		}
