@@ -44,8 +44,8 @@ typedef PortalD *Portal;
 struct PortalD
 {
 	char	   *name;			/* XXX PortalName */
-	struct PortalVariableMemory variable;
-	struct PortalHeapMemory heap;
+	struct PortalVariableMemoryData variable;
+	struct PortalHeapMemoryData heap;
 	QueryDesc  *queryDesc;
 	TupleDesc	attinfo;
 	EState	   *state;

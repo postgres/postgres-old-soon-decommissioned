@@ -53,6 +53,7 @@ TypeGetWithOpenRelation(Relation pg_type_desc,
 {
 	HeapScanDesc scan;
 	HeapTuple	tup;
+	Oid			typoid;
 
 	static ScanKeyData typeKey[1] = {
 		{0, Anum_pg_type_typname, F_NAMEEQ}
@@ -96,10 +97,12 @@ TypeGetWithOpenRelation(Relation pg_type_desc,
 	 *	oid, which is the oid of the type.
 	 * ----------------
 	 */
-	heap_endscan(scan);
 	*defined = (bool) ((Form_pg_type) GETSTRUCT(tup))->typisdefined;
+	typoid = tup->t_data->t_oid;
 
-	return tup->t_data->t_oid;
+	heap_endscan(scan);
+
+	return typoid;
 }
 
 /* ----------------------------------------------------------------

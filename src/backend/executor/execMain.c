@@ -1492,7 +1492,7 @@ ExecRelCheck(Relation rel, HeapTuple tuple)
 
 		res = ExecQual(qual, econtext);
 
-		pfree(qual);
+		freeObject(qual);
 
 		if (!res)
 			return check[i].ccname;

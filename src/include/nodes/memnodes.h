@@ -56,7 +56,7 @@ typedef struct MemoryContextMethodsData
 	void		(*dump) ();
 }		   *MemoryContextMethods;
 
-typedef struct MemoryContext
+typedef struct MemoryContextData
 {
 	NodeTag		type;
 	MemoryContextMethods method;
@@ -64,7 +64,7 @@ typedef struct MemoryContext
 
 /* think about doing this right some time but we'll have explicit fields
    for now -ay 10/94 */
-typedef struct GlobalMemory
+typedef struct GlobalMemoryData
 {
 	NodeTag		type;
 	MemoryContextMethods method;
@@ -75,14 +75,14 @@ typedef struct GlobalMemory
 
 typedef MemoryContext *PortalMemoryContext;
 
-typedef struct PortalVariableMemory
+typedef struct PortalVariableMemoryData
 {
 	NodeTag		type;
 	MemoryContextMethods method;
 	AllocSetData setData;
 }		   *PortalVariableMemory;
 
-typedef struct PortalHeapMemory
+typedef struct PortalHeapMemoryData
 {
 	NodeTag		type;
 	MemoryContextMethods method;

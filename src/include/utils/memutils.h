@@ -209,12 +209,40 @@ typedef enum AllocMode
 #define DefaultAllocMode		DynamicAllocMode
 
 /*
+ * AllocBlock --
+ *		Small pieces of memory are taken from bigger blocks of
+ *		memory with a size aligned to a power of two. These
+ *		pieces are not free's separately, instead they are reused
+ *		for the next allocation of a fitting size.
+ */
+typedef struct AllocBlockData {
+	struct AllocSetData			*aset;
+	struct AllocBlockData		*next;
+	char						*freeptr;
+	char						*endptr;
+} AllocBlockData;
+
+typedef AllocBlockData *AllocBlock;
+
+/*
+ * AllocChunk --
+ *		The prefix of each piece of memory in an AllocBlock
+ */
+typedef struct AllocChunkData {
+	void						*aset;
+	Size						size;
+} AllocChunkData;
+
+typedef AllocChunkData *AllocChunk;
+
+/*
  * AllocSet --
  *		Allocation set.
  */
 typedef struct AllocSetData
 {
-	OrderedSetData setData;
+	struct AllocBlockData		*blocks;
+	struct AllocChunkData		*freelist[8];
 	/* Note: this will change in the future to support other modes */
 } AllocSetData;
 
