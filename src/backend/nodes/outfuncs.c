@@ -634,7 +634,7 @@ static void
 _outVar(StringInfo str, Var *node)
 {
 	appendStringInfo(str, 
-			" VAR :varno %d :varattno %d :vartype %u %vartypmod %d ",
+			" VAR :varno %d :varattno %d :vartype %u :vartypmod %d ",
 			node->varno,
 			node->varattno,
 			node->vartype,
