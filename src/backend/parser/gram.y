@@ -2101,6 +2101,12 @@ UnlistenStmt:  UNLISTEN relation_name
 					n->relname = $2;
 					$$ = (Node *)n;
 				}
+		| UNLISTEN '*'
+				{
+					UnlistenStmt *n = makeNode(UnlistenStmt);
+					n->relname = "*";
+					$$ = (Node *)n;
+				}
 ;
 
 
