@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * array.h
- *	  Utilities for the new array code. Contain prototypes from the
+ *	  Utilities for the new array code. Contains prototypes from the
  *	  following files:
  *				utils/adt/arrayfuncs.c
  *				utils/adt/arrayutils.c
@@ -14,15 +14,16 @@
  * $Id$
  *
  * NOTES
- *	  XXX the data array should be LONGALIGN'd -- notice that the array
+ *	  XXX the data array should be MAXALIGN'd -- notice that the array
  *	  allocation code does not allocate the extra space required for this,
- *	  even though the array-packing code does the LONGALIGNs.
+ *	  even though the array-packing code does the MAXALIGNs.
  *
  *-------------------------------------------------------------------------
  */
 #ifndef ARRAY_H
 #define ARRAY_H
 
+#include "fmgr.h"
 #include "utils/memutils.h"
 
 typedef struct
@@ -123,9 +124,7 @@ extern char *array_set(ArrayType *array, int n, int *indx, char *dataPtr,
 extern char *array_assgn(ArrayType *array, int n, int *upperIndx,
 			int *lowerIndx, ArrayType *newArr, int reftype,
 			int len, bool *isNull);
-extern ArrayType *array_map(ArrayType *v, Oid type,
-		  char *(*fn) (),
-		  Oid retType, int nargs,...);
+extern Datum array_map(FunctionCallInfo fcinfo, Oid inpType, Oid retType);
 extern int	array_eq(ArrayType *array1, ArrayType *array2);
 extern int _LOtransfer(char **destfd, int size, int nitems, char **srcfd,
 			int isSrcLO, int isDestLO);
