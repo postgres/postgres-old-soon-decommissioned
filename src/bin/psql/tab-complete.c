@@ -207,7 +207,7 @@ psql_completion(char *text, int start, int end)
 		"TimeZone",
 		"client_encoding",
 		"server_encoding",
-		"random_seed",
+		"seed",
 
 		/*
 		 * the rest should match USERSET entries in
