@@ -803,7 +803,8 @@ find_expr_references_walker(Node *node,
 	{
 		Expr	   *expr = (Expr *) node;
 
-		if (expr->opType == OP_EXPR)
+		if (expr->opType == OP_EXPR ||
+			expr->opType == DISTINCT_EXPR)
 		{
 			Oper	   *oper = (Oper *) expr->oper;
 

@@ -3509,6 +3509,7 @@ exec_simple_check_node(Node *node)
 				switch (expr->opType)
 				{
 					case OP_EXPR:
+					case DISTINCT_EXPR:
 					case FUNC_EXPR:
 					case OR_EXPR:
 					case AND_EXPR:

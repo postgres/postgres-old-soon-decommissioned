@@ -575,7 +575,13 @@ fix_opids_walker(Node *node, void *context)
 {
 	if (node == NULL)
 		return false;
-	if (is_opclause(node))
-		replace_opid((Oper *) ((Expr *) node)->oper);
+	if (IsA(node, Expr))
+	{
+		Expr   *expr = (Expr *) node;
+
+		if (expr->opType == OP_EXPR ||
+			expr->opType == DISTINCT_EXPR)
+			replace_opid((Oper *) expr->oper);
+	}
 	return expression_tree_walker(node, fix_opids_walker, context);
 }

@@ -277,6 +277,8 @@ transformExpr(ParseState *pstate, Node *expr, ConstraintTestValue *domVal)
 							result = (Node *) make_op(a->name,
 													  lexpr,
 													  rexpr);
+							if (((Expr *) result)->typeOid != BOOLOID)
+								elog(ERROR, "IS DISTINCT FROM requires = operator to yield boolean");
 							((Expr *) result)->opType = DISTINCT_EXPR;
 						}
 						break;
