@@ -11,4 +11,4 @@ explain \(em explains statement execution details
 .SH DESCRIPTION
 This command outputs details about the supplied query.  The default
 output is the computed query cost.  \f2full\f1 displays a full query plan
-and costs.
+and cost.
