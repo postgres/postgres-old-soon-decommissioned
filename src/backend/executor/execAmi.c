@@ -518,10 +518,6 @@ ExecCreatR(TupleDesc tupType,
 		 *	 from the range table.. -cim 10/12/89)
 		 * ----------------
 		 */
-/*
-		sprintf(tempname, "temp_%d.%d", getpid(), tmpcnt++);
-		EU1_printf("ExecCreatR: attempting to create %s\n", tempname);
-*/
 
 		/*
 		 * heap_create creates a name if the argument to heap_create is

@@ -488,7 +488,8 @@ BuildDescForRelation(List *schema, char *relname)
 		if (arry != NIL)
 		{
 			/* array of XXX is _XXX */
-			sprintf(typename, "_%.*s", NAMEDATALEN - 2, entry->typename->name);
+			snprintf(typename, NAMEDATALEN,
+							 "_%.*s", NAMEDATALEN - 2, entry->typename->name);
 			attdim = length(arry);
 		}
 		else

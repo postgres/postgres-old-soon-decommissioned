@@ -37,11 +37,6 @@
 
 char		rule_buf[MAX_QUERY_LEN];
 
-#ifdef NOT_USED
-static char attr_list[MAX_QUERY_LEN];
-
-#endif
-
 /*
  * problem: the version system assumes that the rules it declares will
  *			be fired in the order of declaration, it also assumes

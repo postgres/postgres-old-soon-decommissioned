@@ -694,15 +694,15 @@ typedef struct HashState
 */
 typedef struct TeeState
 {
-	CommonState cstate;			/* its first field is NodeTag */
-	int			tee_leftPlace;
-	int			tee_rightPlace;
-	int			tee_lastPlace;
-	char	   *tee_bufferRelname;
-	Relation	tee_bufferRel;
+	CommonState	 cstate;			/* its first field is NodeTag */
+	int						tee_leftPlace,
+								tee_rightPlace,
+								tee_lastPlace;
+	char					*tee_bufferRelname;
+	Relation			tee_bufferRel;
 	MemoryContext tee_mcxt;
-	HeapScanDesc tee_leftScanDesc;
-	HeapScanDesc tee_rightScanDesc;
+	HeapScanDesc	tee_leftScanDesc,
+								tee_rightScanDesc;
 } TeeState;
 
 #endif	 /* EXECNODES_H */

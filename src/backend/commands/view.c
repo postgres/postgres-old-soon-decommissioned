@@ -122,7 +122,7 @@ MakeRetrieveViewRuleName(char *viewName)
 	char	   *buf;
 
 	buf = palloc(strlen(viewName) + 5);
-	sprintf(buf, "_RET%s", viewName);
+	snprintf(buf, strlen(viewName) + 5, "_RET%s", viewName);
 
 	return buf;
 }

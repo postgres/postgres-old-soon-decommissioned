@@ -146,11 +146,11 @@ ExplainOneQuery(Query *query, bool verbose, CommandDest dest)
 static void
 explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 {
-	List	   *l;
+	List			*l;
 	Relation	relation;
-	char	   *pname;
-	char		buf[1000];
-	int			i;
+	char			*pname,
+						buf[1000];
+	int				i;
 
 	if (plan == NULL)
 	{
@@ -207,11 +207,6 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 			break;
 	}
 
-#if 0
-	for (i = 0; i < indent; i++)
-		appendStringInfo(str, "  ");
-#endif
-
 	appendStringInfo(str, pname);
 	switch (nodeTag(plan))
 	{
@@ -233,7 +228,7 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 				appendStringInfo(str, " on ");
 				if (strcmp(rte->refname, rte->relname) != 0)
 				{
-					sprintf(buf, "%s ", rte->relname);
+					snprintf(buf, 1000, "%s ", rte->relname);
 					appendStringInfo(str, buf);
 				}
 				appendStringInfo(str, rte->refname);
@@ -244,7 +239,7 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 	}
 	if (es->printCost)
 	{
-		sprintf(buf, "  (cost=%.2f size=%d width=%d)",
+		snprintf(buf, 1000, "  (cost=%.2f size=%d width=%d)",
 				plan->cost, plan->plan_size, plan->plan_width);
 		appendStringInfo(str, buf);
 	}

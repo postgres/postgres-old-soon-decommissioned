@@ -350,7 +350,9 @@ initialrun(Sort *node)
 				continue;
 			}
 			else
+			{
 				break;
+			}
 
 		if ((bool) createrun(node, tp->tp_file) == false)
 			extrapasses = 1 + (PS(node)->Tuples != NULL);

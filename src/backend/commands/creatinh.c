@@ -90,11 +90,11 @@ DefineRelation(CreateStmt *stmt, char relkind)
 
 	if (constraints != NIL)
 	{
-		List	   *entry;
-		int			nconstr = length(constraints);
+		List				*entry;
+		int					nconstr = length(constraints),
+								ncheck = 0,
+								i;
 		ConstrCheck *check = (ConstrCheck *) palloc(nconstr * sizeof(ConstrCheck));
-		int			ncheck = 0;
-		int			i;
 
 		foreach(entry, constraints)
 		{
@@ -107,14 +107,16 @@ DefineRelation(CreateStmt *stmt, char relkind)
 					for (i = 0; i < ncheck; i++)
 					{
 						if (strcmp(check[i].ccname, cdef->name) == 0)
-							elog(ERROR, "DefineRelation: name (%s) of CHECK constraint duplicated", cdef->name);
+							elog(ERROR, 
+								"DefineRelation: name (%s) of CHECK constraint duplicated", 
+								cdef->name);
 					}
 					check[ncheck].ccname = cdef->name;
 				}
 				else
 				{
 					check[ncheck].ccname = (char *) palloc(NAMEDATALEN);
-					sprintf(check[ncheck].ccname, "$%d", ncheck + 1);
+					snprintf(check[ncheck].ccname, NAMEDATALEN, "$%d", ncheck + 1);
 				}
 				check[ncheck].ccbin = NULL;
 				check[ncheck].ccsrc = (char *) cdef->def;
