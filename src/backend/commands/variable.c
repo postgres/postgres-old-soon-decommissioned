@@ -259,7 +259,7 @@ parse_datestyle_internal(char *value)
 static bool
 parse_datestyle(List *args)
 {
-	int			rstat;
+	int			rstat = FALSE;
 	List	   *arg;
 	char	   *value;
 
@@ -295,6 +295,7 @@ parse_datestyle(List *args)
 		else
 		{
 			elog(ERROR, "SET DATESTYLE argument is not valid");
+			value = NULL;
 		}
 
 		rstat = parse_datestyle_internal(value);
