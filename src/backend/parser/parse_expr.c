@@ -324,22 +324,24 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 				else
 				{
 					/* ALL, ANY, or MULTIEXPR: generate operator list */
-					char	   *op = lfirst(sublink->oper);
 					List	   *left_list = sublink->lefthand;
 					List	   *right_list = qtree->targetList;
+					char	   *op;
 					List	   *elist;
 
 					foreach(elist, left_list)
 						lfirst(elist) = transformExpr(pstate, lfirst(elist),
 													  precedence);
 
+					Assert(IsA(sublink->oper, A_Expr));
+					op = ((A_Expr *) sublink->oper)->opname;
+					sublink->oper = NIL;
+
 					/* Combining operators other than =/<> is dubious... */
 					if (length(left_list) != 1 &&
 						strcmp(op, "=") != 0 && strcmp(op, "<>") != 0)
 						elog(ERROR, "Row comparison cannot use '%s'",
 							 op);
-
-					sublink->oper = NIL;
 
 					/*
 					 * Scan subquery's targetlist to find values that will
