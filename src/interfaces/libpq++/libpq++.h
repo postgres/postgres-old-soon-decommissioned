@@ -113,6 +113,11 @@ public:
 //
 // ****************************************************************
 class PgLargeObject : public PgConnection {
+private:
+  int pgFd;
+  Oid pgObject;
+  string loStatus;
+
 public:
   PgLargeObject(const char* conninfo = 0);   // use reasonable defaults and create large object
   PgLargeObject(Oid lobjId, const char* conninfo = 0); // use reasonable defaults and open large object
