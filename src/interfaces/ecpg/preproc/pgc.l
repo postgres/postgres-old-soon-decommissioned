@@ -288,8 +288,8 @@ ip			{ipdigit}\.{ipdigit}\.{ipdigit}\.{ipdigit}
 /* we might want to parse all cpp include files */
 cppinclude 		{space}*#{include}{space}*
 
-/* Take care of cpp continuation lines */
-cppline			{space}*#(.*\\{space})+.*
+/* Take care of cpp lines, they may also be continuated */
+cppline			{space}*#(.*\\{space})*.*{newline}
 
 /*
  * Dollar quoted strings are totally opaque, and no escaping is done on them.
@@ -685,7 +685,7 @@ cppline			{space}*#(.*\\{space})+.*
 						return(CPP_LINE);
 					  }
 			}
-<C>{cppline}		{
+<C,SQL>{cppline}		{
 						yylval.str = mm_strdup(yytext);
 						return(CPP_LINE);
 					}

@@ -4635,12 +4635,14 @@ sql_enddeclare: ecpgstart END_P DECLARE SQL_SECTION ';' {};
 
 var_type_declarations:	/*EMPTY*/			{ $$ = EMPTY; }
 		| vt_declarations			{ $$ = $1; }
+		| CPP_LINE				{ $$ = $1; }
 		;
 
 vt_declarations:  var_declaration			{ $$ = $1; }
 		| type_declaration			{ $$ = $1; }
 		| vt_declarations var_declaration	{ $$ = cat2_str($1, $2); }
 		| vt_declarations type_declaration	{ $$ = cat2_str($1, $2); }
+		| vt_declarations CPP_LINE		{ $$ = cat2_str($1, $2); }
 		;
 
 variable_declarations:	var_declaration                         { $$ = $1; }
