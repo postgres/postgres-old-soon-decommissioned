@@ -1525,7 +1525,11 @@ do_pset(const char *param, const char *value, printQueryOpt *popt, bool quiet)
 
 
 
+#ifndef WIN32
 #define DEFAULT_SHELL "/bin/sh"
+#else
+#define DEFAULT_SHELL "c:/windows/system32/cmd.exe"
+#endif
 
 static bool
 do_shell(const char *command)
@@ -1537,11 +1541,11 @@ do_shell(const char *command)
 		char	   *sys;
 		const char *shellName = NULL;
 
+		shellName = getenv("SHELL");
 #ifdef WIN32
-		shellName = getenv("COMSPEC");
-#endif
 		if (shellName == NULL)
-			shellName = getenv("SHELL");
+			shellName = getenv("COMSPEC");
+#endif
 		if (shellName == NULL)
 			shellName = DEFAULT_SHELL;
 
