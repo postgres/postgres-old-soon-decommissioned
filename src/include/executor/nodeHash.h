@@ -35,5 +35,6 @@ extern HeapTuple ExecScanHashBucket(HashJoinState *hjstate, HashBucket bucket,
 				   HeapTuple curtuple, List *hjclauses,
 				   ExprContext *econtext);
 extern void ExecHashTableReset(HashJoinTable hashtable, int ntuples);
+extern void ExecReScanHash(Hash *node, ExprContext *exprCtxt, Plan *parent);
 
 #endif							/* NODEHASH_H */

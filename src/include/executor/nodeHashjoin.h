@@ -23,6 +23,7 @@ extern int	ExecCountSlotsHashJoin(HashJoin *node);
 extern void ExecEndHashJoin(HashJoin *node);
 extern char * ExecHashJoinSaveTuple(HeapTuple heapTuple, char *buffer,
 					  File file, char *position);
+extern void ExecReScanHashJoin(HashJoin *node, ExprContext *exprCtxt, Plan *parent);
 
 
 #endif							/* NODEHASHJOIN_H */

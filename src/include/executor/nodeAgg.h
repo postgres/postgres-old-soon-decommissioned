@@ -21,5 +21,6 @@ extern TupleTableSlot *ExecAgg(Agg *node);
 extern bool ExecInitAgg(Agg *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsAgg(Agg *node);
 extern void ExecEndAgg(Agg *node);
+extern void ExecReScanAgg(Agg *node, ExprContext *exprCtxt, Plan *parent);
 
 #endif							/* NODEAGG_H */

@@ -108,6 +108,7 @@ extern void ExecInitOuterTupleSlot(EState *estate, HashJoinState *hashstate);
 
 extern TupleDesc ExecGetTupType(Plan *node);
 extern TupleDesc ExecTypeFromTL(List *targetList);
+extern void SetChangedParamList (Plan *node, List *newchg);
 
 /*
  * prototypes from functions in execTuples.c
