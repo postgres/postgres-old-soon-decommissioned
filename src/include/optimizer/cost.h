@@ -83,7 +83,7 @@ extern void cost_hashjoin(Path *path, Query *root,
 			  Path *outer_path, Path *inner_path,
 			  List *restrictlist,
 			  List *hashclauses);
-extern Cost cost_qual_eval(List *quals);
+extern void cost_qual_eval(QualCost *cost, List *quals);
 extern void set_baserel_size_estimates(Query *root, RelOptInfo *rel);
 extern void set_joinrel_size_estimates(Query *root, RelOptInfo *rel,
 						   RelOptInfo *outer_rel,

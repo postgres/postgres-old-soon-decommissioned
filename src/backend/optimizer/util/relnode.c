@@ -149,7 +149,8 @@ make_base_rel(Query *root, int relid)
 	rel->joinrti = 0;
 	rel->joinrteids = NIL;
 	rel->baserestrictinfo = NIL;
-	rel->baserestrictcost = 0;
+	rel->baserestrictcost.startup = 0;
+	rel->baserestrictcost.per_tuple = 0;
 	rel->outerjoinset = NIL;
 	rel->joininfo = NIL;
 	rel->index_outer_relids = NIL;
@@ -363,7 +364,8 @@ build_join_rel(Query *root,
 	joinrel->joinrteids = nconc(listCopy(outer_rel->joinrteids),
 								inner_rel->joinrteids);
 	joinrel->baserestrictinfo = NIL;
-	joinrel->baserestrictcost = 0;
+	joinrel->baserestrictcost.startup = 0;
+	joinrel->baserestrictcost.per_tuple = 0;
 	joinrel->outerjoinset = NIL;
 	joinrel->joininfo = NIL;
 	joinrel->index_outer_relids = NIL;

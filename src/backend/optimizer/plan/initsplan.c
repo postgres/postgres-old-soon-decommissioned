@@ -396,7 +396,7 @@ distribute_qual_to_rels(Query *root, Node *clause,
 
 	restrictinfo->clause = (Expr *) clause;
 	restrictinfo->subclauseindices = NIL;
-	restrictinfo->eval_cost = -1;		/* not computed until needed */
+	restrictinfo->eval_cost.startup = -1; /* not computed until needed */
 	restrictinfo->this_selec = -1;		/* not computed until needed */
 	restrictinfo->mergejoinoperator = InvalidOid;
 	restrictinfo->left_sortop = InvalidOid;
