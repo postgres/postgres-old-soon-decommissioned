@@ -28,8 +28,8 @@ top_builddir = ../../..
 #PSTYLE=/usr/lib/sgml/stylesheets/nwalsh-modular/print
 # This is where the production stylesheets appear on postgresql.org
 
-HSTYLE= /home/users/t/thomas/db118.d/docbook/html
-PSTYLE= /home/users/t/thomas/db118.d/docbook/print
+HSTYLE= /home/projects/pgsql/developers/thomas/db143.d/docbook/html
+PSTYLE= /home/projects/pgsql/developers/thomas/db143.d/docbook/print
 
 HDSL=$(HSTYLE)/docbook.dsl
 PDSL=$(PSTYLE)/docbook.dsl
