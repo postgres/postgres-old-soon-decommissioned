@@ -202,6 +202,44 @@ SET TRANSACTION ISOLATION LEVEL { READ COMMITTED | SERIALIZABLE }
      </varlistentry>
 
      <varlistentry>
+      <term>Seed</term>
+      <listitem>
+       <para>
+	Sets the internal seed for the random number generator.
+	
+	<variablelist>
+	 <varlistentry>
+	  <term><replaceable class="parameter">value</replaceable></term>
+	  <listitem>
+	   <para>
+	    The value for the seed to be used by the
+	    <function>random</function> catalog function. Significant
+	    values are floating point numbers between 0 and 1, which
+	    are then multiplied by RAND_MAX. This product will
+	    silently overflow if a number outside the range is used.
+	   </para>
+
+	   <para>
+	    The seed can also be set by invoking the
+	    <function>setseed</function> SQL function:
+
+	    <programlisting>
+SELECT setseed(<replaceable>value</replaceable>);
+	    </programlisting>
+	   </para>
+	  </listitem>
+	 </varlistentry>
+	</variablelist>
+       </para>
+
+       <para>
+	This option is only available if MULTIBYTE support was enabled
+	during the configure step of building Postgres.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term>SERVER_ENCODING</term>
       <listitem>
        <para>
