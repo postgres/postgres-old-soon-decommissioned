@@ -4037,7 +4037,7 @@ win32_waitpid(int *exitstatus)
 					 */
 					ereport(FATAL,
 							(errmsg_internal("failed to get exit code for child %lu",
-											 (DWORD)win32_childPIDArray[index])));
+											 (unsigned long) win32_childPIDArray[index])));
 				}
 				*exitstatus = (int) exitCode;
 				return win32_childPIDArray[index];

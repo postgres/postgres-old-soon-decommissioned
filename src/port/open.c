@@ -18,6 +18,8 @@
 #include <errno.h>
 #include <assert.h>
 
+int win32_open(const char *fileName, int fileFlags, ...);
+
 static int
 openFlagsToCreateFileFlags(int openFlags)
 {
