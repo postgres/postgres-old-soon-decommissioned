@@ -240,7 +240,7 @@ renamerel(const char *oldrelname, const char *newrelname)
 	 * Since we hold the exclusive lock on the relation, we don't have to
 	 * worry about more blocks being read in while we finish the rename.
 	 */
-	if (FlushRelationBuffers(targetrelation, (BlockNumber) 0, true) < 0)
+	if (FlushRelationBuffers(targetrelation, (BlockNumber) 0) < 0)
 		elog(ERROR, "renamerel: unable to flush relation from buffer pool");
 
 	/*

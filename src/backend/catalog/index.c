@@ -2159,8 +2159,6 @@ reindex_index(Oid indexId, bool force)
 	 * they're just dropped without bothering to flush to disk.
 	 */
 	ReleaseRelationBuffers(iRel);
-	if (FlushRelationBuffers(iRel, (BlockNumber) 0, false) < 0)
-		elog(ERROR, "reindex_index: unable to flush index from buffer pool");
 
 	/* Now truncate the actual data and set blocks to zero */
 	smgrtruncate(DEFAULT_SMGR, iRel, 0);

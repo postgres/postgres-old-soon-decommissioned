@@ -1197,8 +1197,6 @@ RelationTruncateIndexes(Relation heapRelation)
 		 * dirty, they're just dropped without bothering to flush to disk.
 		 */
 		ReleaseRelationBuffers(currentIndex);
-		if (FlushRelationBuffers(currentIndex, (BlockNumber) 0, false) < 0)
-			elog(ERROR, "RelationTruncateIndexes: unable to flush index from buffer pool");
 
 		/* Now truncate the actual data and set blocks to zero */
 		smgrtruncate(DEFAULT_SMGR, currentIndex, 0);
@@ -1266,8 +1264,6 @@ heap_truncate(char *relname)
 	 */
 
 	ReleaseRelationBuffers(rel);
-	if (FlushRelationBuffers(rel, (BlockNumber) 0, false) < 0)
-		elog(ERROR, "heap_truncate: unable to flush relation from buffer pool");
 
 	/* Now truncate the actual data and set blocks to zero */
 
@@ -1544,7 +1540,7 @@ heap_drop_with_catalog(const char *relname)
 	DeleteRelationTuple(rel);
 
 	/*
-	 * release dirty buffers of this relation
+	 * release dirty buffers of this relation; don't bother to write them
 	 */
 	ReleaseRelationBuffers(rel);
 

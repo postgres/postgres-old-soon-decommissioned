@@ -119,6 +119,15 @@ BufTableDelete(BufferDesc *buf)
 		return FALSE;
 	}
 
+	/*
+	 * Clear the buffer's tag.  This doesn't matter for the hash table,
+	 * since the buffer is already removed from it, but it ensures that
+	 * sequential searches through the buffer table won't think the
+	 * buffer is still valid for its old page.
+	 */
+	buf->tag.relId.relId = InvalidOid;
+	buf->tag.relId.dbId = InvalidOid;
+
 	return TRUE;
 }
 
