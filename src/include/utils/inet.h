@@ -26,9 +26,9 @@ typedef struct
 		unsigned int	ipv4_addr;	/* network byte order */
 		/* add IPV6 address type here */
 	}			addr;
-}			ipaddr_struct;
+}			inet_struct;
 
-typedef struct varlena ipaddr;
+typedef struct varlena inet;
 
 /*
  *	This is the internal storage format for MAC addresses:

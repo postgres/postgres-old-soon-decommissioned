@@ -10,7 +10,7 @@
 #include <postgres.h>
 #include <utils/palloc.h>
 #include <utils/builtins.h>
-#include <utils/mac.h>
+#include <utils/network.h>
 
 manufacturer manufacturers[] = {
   {0x00, 0x00, 0x0C, "Cisco"},
