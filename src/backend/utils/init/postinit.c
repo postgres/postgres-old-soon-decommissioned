@@ -329,11 +329,6 @@ InitPostgres(const char *dbname, const char *username)
 		elog(FATAL, "bad backend id: %d", MyBackendId);
 
 	/*
-	 * Initialize the transaction system override state.
-	 */
-	AmiTransactionOverride(bootstrap);
-
-	/*
 	 * Initialize local process's access to XLOG.  In bootstrap case we
 	 * may skip this since StartupXLOG() was run instead.
 	 */

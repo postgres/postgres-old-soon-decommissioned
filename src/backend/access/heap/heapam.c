@@ -715,10 +715,6 @@ heap_beginscan(Relation relation, Snapshot snapshot,
 	 */
 	RelationIncrementReferenceCount(relation);
 
-	/* XXX someday assert SelfTimeQual if relkind == RELKIND_UNCATALOGED */
-	if (relation->rd_rel->relkind == RELKIND_UNCATALOGED)
-		snapshot = SnapshotSelf;
-
 	/*
 	 * allocate and initialize scan descriptor
 	 */

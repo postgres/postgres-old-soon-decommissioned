@@ -100,9 +100,6 @@ typedef VariableCacheData *VariableCache;
  * ----------------
  */
 
-/* in transam/transam.c */
-extern bool AMI_OVERRIDE;
-
 /* in transam/varsup.c */
 extern VariableCache ShmemVariableCache;
 
@@ -110,7 +107,6 @@ extern VariableCache ShmemVariableCache;
 /*
  * prototypes for functions in transam/transam.c
  */
-extern void AmiTransactionOverride(bool flag);
 extern bool TransactionIdDidCommit(TransactionId transactionId);
 extern bool TransactionIdDidAbort(TransactionId transactionId);
 extern void TransactionIdCommit(TransactionId transactionId);

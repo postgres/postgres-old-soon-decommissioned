@@ -41,7 +41,7 @@ GetNewTransactionId(bool isSubXact)
 	 * During bootstrap initialization, we return the special bootstrap
 	 * transaction id.
 	 */
-	if (AMI_OVERRIDE)
+	if (IsBootstrapProcessingMode())
 		return BootstrapTransactionId;
 
 	LWLockAcquire(XidGenLock, LW_EXCLUSIVE);
