@@ -410,13 +410,13 @@ index_getprocid(Relation irel,
 				uint16 procnum)
 {
 	RegProcedure *loc;
-	int			natts;
+	int			nproc;
 
-	natts = irel->rd_rel->relnatts;
+	nproc = irel->rd_am->amsupport;
 
 	loc = irel->rd_support;
 
 	Assert(loc != NULL);
 
-	return loc[(natts * (procnum - 1)) + (attnum - 1)];
+	return loc[(nproc * (attnum - 1)) + (procnum - 1)];
 }
