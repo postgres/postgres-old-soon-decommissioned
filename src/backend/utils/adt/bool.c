@@ -23,20 +23,23 @@
 
 /*
  *		boolin			- converts "t" or "f" to 1 or 0
+ *
+ * Check explicitly for "true/TRUE" and allow any odd ASCII value to be "true".
+ * This handles "true/false", "yes/no", "1/0". - thomas 1997-10-05
  */
 bool
 boolin(char *b)
 {
 	if (b == NULL)
 		elog(WARN, "Bad input string for type bool");
-	return ((bool) (*b == 't') || (*b == 'T'));
+	return ((bool) (((*b) == 't') || ((*b) == 'T') || ((*b) & 1)));
 }
 
 /*
  *		boolout			- converts 1 or 0 to "t" or "f"
  */
-char	   *
-boolout(long b)
+char *
+boolout(bool b)
 {
 	char	   *result = (char *) palloc(2);
 
@@ -50,25 +53,25 @@ boolout(long b)
  *****************************************************************************/
 
 bool
-booleq(int8 arg1, int8 arg2)
+booleq(bool arg1, bool arg2)
 {
 	return (arg1 == arg2);
 }
 
 bool
-boolne(int8 arg1, int8 arg2)
+boolne(bool arg1, bool arg2)
 {
 	return (arg1 != arg2);
 }
 
 bool
-boollt(int8 arg1, int8 arg2)
+boollt(bool arg1, bool arg2)
 {
 	return (arg1 < arg2);
 }
 
 bool
-boolgt(int8 arg1, int8 arg2)
+boolgt(bool arg1, bool arg2)
 {
 	return (arg1 > arg2);
 }
