@@ -142,7 +142,7 @@ extern int	FindExec(char *full_path, const char *argv0, const char *binary_name)
 extern int	CheckPathAccess(char *path, char *name, int open_mode);
 
 #ifdef CYR_RECODE
-extern char *convertstr(char *, int, int);
+extern char *convertstr(unsigned char *buff, int len, int dest);
 #endif
 
 /*****************************************************************************
