@@ -138,7 +138,7 @@ OIDNAMELEN= 36
 # Use -Werror to stop the compile when any warnings occur
 COPT= -O #-Werror
 
-# Commenting out CASSERT will make things go a LOT faster, but you will
+# Commenting out CASSERT will make things go about 10% faster, but you will
 # also loose a lot of useful error-checking.
 CASSERT= true
 
