@@ -378,7 +378,7 @@ AssertLruRoom()
         /* We supposedly are using more vfds than we want to be.  First
            assert that there is at least one used vfd in the ring. 
            */
-        Assert(VfdCache[0].lruMoreRecently ! 0);
+        Assert(VfdCache[0].lruMoreRecently != 0);
         LruDelete(VfdCache[0].lruMoreRecently);
     }
 }
