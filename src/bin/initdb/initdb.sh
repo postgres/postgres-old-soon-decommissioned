@@ -607,8 +607,10 @@ echo "VACUUM ANALYZE" \
 
 echo
 echo "Success. You can now start the database server using"
-echo "$PGPATH/postmaster -D $PGDATA or"
-echo "$PGPATH/pg_ctl -D $PGDATA start"
+echo ""
+echo "	$PGPATH/postmaster -D $PGDATA"
+echo "or"
+echo "	$PGPATH/pg_ctl -D $PGDATA start"
 echo
 
 exit 0
