@@ -70,6 +70,7 @@ extern int	BasicOpenFile(FileName fileName, int fileFlags, int fileMode);
 /* Miscellaneous support routines */
 extern void closeAllVfds(void);
 extern void AtEOXact_Files(void);
+extern void RemovePgTempFiles(void);
 extern int	pg_fsync(int fd);
 extern int	pg_fdatasync(int fd);
 
