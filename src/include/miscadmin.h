@@ -23,6 +23,8 @@
 #ifndef MISCADMIN_H
 #define MISCADMIN_H
 
+#include <sys/types.h>				/* For pid_t */
+
 #include "postgres.h"
 
 #include "utils/trace.h"
