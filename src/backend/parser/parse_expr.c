@@ -163,8 +163,10 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 							 * compatibility with standards-broken products
 							 * (like Microsoft's).  Turn these into IS NULL exprs.
 							 */
-							if (Transform_null_equals && strcmp(a->opname, "=")==0
-								&& (exprIsNullConstant(a->lexpr) || exprIsNullConstant(a->rexpr)))
+							if (Transform_null_equals &&
+								strcmp(a->opname, "=") == 0 &&
+								(exprIsNullConstant(a->lexpr) ||
+								 exprIsNullConstant(a->rexpr)))
 							{
 								NullTest *n = makeNode(NullTest);
 								n->nulltesttype = IS_NULL;
@@ -174,7 +176,9 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 								else
 									n->arg = a->lexpr;
 
-								result = transformExpr(pstate, n, precedence);
+								result = transformExpr(pstate,
+													   (Node *) n,
+													   precedence);
 							}
 							else
 							{
@@ -185,7 +189,9 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 																  a->rexpr,
 																  precedence);
 
-								result = (Node *) make_op(a->opname, lexpr, rexpr);
+								result = (Node *) make_op(a->opname,
+														  lexpr,
+														  rexpr);
 							}
 						}
 						break;
