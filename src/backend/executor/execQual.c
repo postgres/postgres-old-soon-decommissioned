@@ -1474,10 +1474,15 @@ ExecTargetList(List *targetlist,
 		 *		is this a new phenomenon? it might cause bogus behavior
 		 *		if we try to free this tuple later!! I put a hook in
 		 *		ExecProject to watch out for this case -mer 24 Aug 1992
+		 *
+		 *		We must return dummy tuple!!! Try 
+		 *		select t1.x from t1, t2 where t1.y = 1 and t2.y = 1
+		 *		- t2 scan target list will be empty and so no one tuple
+		 *		will be returned! But Mer was right - dummy tuple
+		 *		must be palloced...	- vadim 03/01/1999
 		 */
-		CXT1_printf("ExecTargetList: context is %d\n", CurrentMemoryContext);
 		*isDone = true;
-		return (HeapTuple) true;
+		return (HeapTuple) palloc(1);
 	}
 
 	/*
@@ -1639,12 +1644,6 @@ ExecProject(ProjectionInfo *projInfo, bool *isDone)
 
 	tupValue = projInfo->pi_tupValue;
 	econtext = projInfo->pi_exprContext;
-
-	if (targetlist == NIL)
-	{
-		*isDone = true;
-		return (TupleTableSlot *) NULL;
-	}
 
 	/*
 	 *	form a new (result) tuple
