@@ -37,7 +37,7 @@ all: postgres $(POSTGRES_IMP)
 ifneq ($(PORTNAME), win)
 
 postgres: $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(export_dynamic)
 
 else # win
 
@@ -192,7 +192,7 @@ maintainer-clean: distclean
 # are up to date.  It saves the time of doing all the submakes.
 .PHONY: quick
 quick: $(OBJS)
-	$(CC) -o postgres $(OBJS) $(LDFLAGS)
+	$(CC) -o postgres $(OBJS) $(LDFLAGS) $(export_dynamic)
 
 depend dep: $(top_srcdir)/src/include/parser/parse.h $(top_builddir)/src/include/utils/fmgroids.h
 	for i in $(DIRS); do $(MAKE) -C $$i $@; done
