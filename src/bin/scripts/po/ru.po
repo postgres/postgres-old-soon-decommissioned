@@ -416,7 +416,7 @@ msgid "  -E, --encrypted           encrypt stored password\n"
 msgstr "  -E, --encrypted           зашифровать сохранённый пароль\n"
 
 #: createuser.c:249
-msgid "  -N, --unencrypted         do no encrypt stored password\n"
+msgid "  -N, --unencrypted         do not encrypt stored password\n"
 msgstr "  -N, --unencrypted         не щифровать сохранённый пароль\n"
 
 #: createuser.c:250
