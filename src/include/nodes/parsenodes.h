@@ -196,7 +196,7 @@ typedef struct Constraint
 	char	   *name;			/* name, or NULL if unnamed */
 	Node	   *raw_expr;		/* expr, as untransformed parse tree */
 	char	   *cooked_expr;	/* expr, as nodeToString representation */
-	List	   *keys;			/* list of primary keys (or unique columns) */
+	List	   *keys;			/* Ident nodes naming referenced column(s) */
 } Constraint;
 
 
