@@ -3808,6 +3808,7 @@ dumpACL(Archive *fout, TableInfo tbinfo)
 			   *tok,
 			   *eqpos,
 			   *priv;
+	char	   *objoid;
 	char	   *sql;
 	char		tmp[1024];
 	int			sSize = 4096;
@@ -3888,7 +3889,12 @@ dumpACL(Archive *fout, TableInfo tbinfo)
 
 	free(aclbuf);
 
-	ArchiveEntry(fout, tbinfo.oid, tbinfo.relname, "ACL", NULL, sql, "", "", "", NULL, NULL);
+	if (tbinfo.viewdef != NULL)
+		objoid = tbinfo.viewoid;
+	else
+		objoid = tbinfo.oid;
+
+	ArchiveEntry(fout, objoid, tbinfo.relname, "ACL", NULL, sql, "", "", "", NULL, NULL);
 
 }
 
