@@ -391,7 +391,7 @@ numeric(Numeric num, int32 typmod)
 	/* ----------
 	 * If the number is in bounds and due to the present result scale
 	 * no rounding could be necessary, make a copy of the input and
-	 * modify it's header fields.
+	 * modify its header fields.
 	 * ----------
 	 */
 	if (num->n_weight < maxweight && scale >= num->n_rscale)

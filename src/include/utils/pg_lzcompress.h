@@ -81,7 +81,7 @@ typedef struct PGLZ_Header {
  *
  *		min_comp_rate		Minimum compression rate (0-99%), the output
  *							must be smaller than the input. If that isn't
- *							the case, the compressor will throw away it's
+ *							the case, the compressor will throw away its
  *							output and copy the original, uncompressed data
  *							to the output buffer.
  *

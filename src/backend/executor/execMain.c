@@ -1007,7 +1007,7 @@ lnext:	;
 		/*
 		 * now that we have a tuple, do the appropriate thing with it..
 		 * either return it to the user, add it to a relation someplace,
-		 * delete it from a relation, or modify some of it's attributes.
+		 * delete it from a relation, or modify some of its attributes.
 		 */
 
 		switch (operation)

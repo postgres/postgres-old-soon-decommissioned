@@ -36,7 +36,7 @@
  *		they always have been, and user aborts are now handled by
  *		UserAbortTransactionBlock().  Both of them rely on AbortTransaction()
  *		to do all the real work.  The only difference is what state we
- *		enter after AbortTransaction() does it's work:
+ *		enter after AbortTransaction() does its work:
  *
  *		* AbortTransactionBlock() leaves us in TBLOCK_ABORT and
  *		* UserAbortTransactionBlock() leaves us in TBLOCK_ENDABORT

@@ -31,7 +31,7 @@
 
 #define NOROOTEXEC "\
 \n\"root\" execution of the PostgreSQL backend is not permitted.\n\n\
-The backend must be started under it's own userid to prevent\n\
+The backend must be started under its own userid to prevent\n\
 a possible system security compromise. See the INSTALL file for\n\
 more information on how to properly start the postmaster.\n\n"
 

@@ -252,7 +252,7 @@ ExecInitMaterial(Material *node, EState *estate, Plan *parent)
 	tupType = ExecGetScanType(&matstate->csstate);
 
 	/* ----------------
-	 *	ExecCreatR wants it's second argument to be an object id of
+	 *	ExecCreatR wants its second argument to be an object id of
 	 *	a relation in the range table or a _NONAME_RELATION_ID
 	 *	indicating that the relation is not in the range table.
 	 *

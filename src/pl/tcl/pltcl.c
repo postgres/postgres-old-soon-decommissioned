@@ -695,7 +695,7 @@ pltcl_func_handler(FmgrInfo *proinfo,
 
 	/************************************************************
 	 * Convert the result value from the safe interpreter
-	 * into it's PostgreSQL data format and return it.
+	 * into its PostgreSQL data format and return it.
 	 * Again, the call to fmgr() could fire an elog and we
 	 * have to count for the current interpreter level we are
 	 * on. The save_restart from above is still good.
@@ -1792,7 +1792,7 @@ pltcl_SPI_execp(ClientData cdata, Tcl_Interp *interp,
 	}
 
 	/************************************************************
-	 * Get the prepared plan descriptor by it's key
+	 * Get the prepared plan descriptor by its key
 	 ************************************************************/
 	hashent = Tcl_FindHashEntry(pltcl_query_hash, argv[i++]);
 	if (hashent == NULL)

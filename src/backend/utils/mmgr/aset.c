@@ -232,7 +232,7 @@ AllocSetAlloc(AllocSet set, Size size)
 
 	/*
 	 * If one is found, remove it from the free list, make it again a
-	 * member of the alloc set and return it's data address.
+	 * member of the alloc set and return its data address.
 	 *
 	 */
 	if (chunk != NULL)

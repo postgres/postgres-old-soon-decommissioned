@@ -406,7 +406,7 @@ OperatorShellMake(char *operatorName,
  *	 resultType -- defer this, since it must be determined from
  *				   the pg_procedure catalog
  *	 commutatorObjectId -- if this is NULL, enter ObjectId=0
- *					  else if this already exists, enter it's ObjectId
+ *					  else if this already exists, enter its ObjectId
  *					  else if this does not yet exist, and is not
  *						the same as the main operatorName, then create
  *						a shell and enter the new ObjectId

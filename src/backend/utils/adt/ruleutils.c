@@ -1,6 +1,6 @@
 /**********************************************************************
  * get_ruledef.c	- Function to get a rules definition text
- *			  out of it's tuple
+ *			  out of its tuple
  *
  * IDENTIFICATION
  *	  $Header$
@@ -1847,8 +1847,8 @@ get_relation_name(Oid relid)
 
 
 /* ----------
- * get_attribute_name			- Get an attribute name by it's
- *					  relations Oid and it's attnum
+ * get_attribute_name			- Get an attribute name by its
+ *					  relations Oid and its attnum
  * ----------
  */
 static char *

@@ -242,7 +242,7 @@ ReadBufferWithBufferLock(Relation reln,
 	if (!bufHdr)
 		return InvalidBuffer;
 
-	/* if its already in the buffer pool, we're done */
+	/* if it's already in the buffer pool, we're done */
 	if (found)
 	{
 

@@ -1271,7 +1271,7 @@ fireRules(Query *parsetree,
 			 * If there are instead rules with qualifications,
 			 * the original query is still performed. But all
 			 * the negated rule qualifications of the instead
-			 * rules are added so it does it's actions only
+			 * rules are added so it does its actions only
 			 * in cases where the rule quals of all instead
 			 * rules are false. Think of it as the default
 			 * action in a case. We save this in *qual_products
