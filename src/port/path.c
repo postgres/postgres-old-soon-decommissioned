@@ -88,6 +88,23 @@ last_dir_separator(const char *filename)
 
 
 /*
+ *	make_native_path
+ *	On WIN32, change / to \ in the path.
+ */
+void
+make_native_path(char *filename)
+{
+#ifdef WIN32
+	char *p;
+	
+	for (p = filename; *p; p++)
+		if (*p == '/')
+			*p = '\\';
+#endif
+}
+
+
+/*
  * Make all paths look like Unix
  */
 void
