@@ -92,7 +92,7 @@ extern int find_other_exec(const char *argv0, const char *target,
  *	Win32 needs double quotes at the beginning and end of system()
  *	strings.  If not, it gets confused with multiple quoted strings.
  *	It also must use double-quotes around the executable name
- *	and any files use for redirection.  Other args can use single-quotes.
+ *	and any files used for redirection.  Other args can use single-quotes.
  *
  *	See the "Notes" section about quotes at:
  *		http://home.earthlink.net/~rlively/MANUALS/COMMANDS/C/CMD.HTM
