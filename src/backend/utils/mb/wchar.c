@@ -473,9 +473,18 @@ pg_wchar_tbl pg_wchar_table[] = {
 	{pg_latin12wchar_with_len, pg_latin1_mblen, 1},	/* 12; PG_KOI8 */
 	{pg_latin12wchar_with_len, pg_latin1_mblen, 1},	/* 13; PG_WIN1251 */
 	{pg_latin12wchar_with_len, pg_latin1_mblen, 1},	/* 14; PG_ALT */
-	{0, pg_sjis_mblen, 2},				/* 15; PG_SJIS */
-	{0, pg_big5_mblen, 2},				/* 17; PG_BIG5 */
-	{pg_latin12wchar_with_len, pg_latin1_mblen, 1} 	/* 18; PG_WIN1250 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen, 1},	/* 15; ISO-8859-5 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen, 1},	/* 16; ISO-8859-6 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen, 1},	/* 17; ISO-8859-7 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen, 1},	/* 18; ISO-8859-8 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen, 1},	/* 19; ISO-8859-10 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen, 1},	/* 20; ISO-8859-13 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen, 1},	/* 21; ISO-8859-14 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen, 1},	/* 22; ISO-8859-15 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen, 1},	/* 23; ISO-8859-16 */
+	{0, pg_sjis_mblen, 2},				/* 24; PG_SJIS */
+	{0, pg_big5_mblen, 2},				/* 25; PG_BIG5 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen, 1} 	/* 26; PG_WIN1250 */
 };
 
 /* returns the byte length of a word for mule internal code */
