@@ -352,7 +352,7 @@ make_op(char *opname, Node *ltree, Node *rtree)
 
 	/* right operator */
 	ltypeId = (ltree==NULL) ? UNKNOWNOID : exprType(ltree);
- 	temp = oper(opname, ltypeId, rtypeId, false);
+ 	temp = right_oper(opname, ltypeId);
 	opform = (OperatorTupleForm) GETSTRUCT(temp);
 	left = make_operand(opname, ltree, ltypeId, opform->oprleft);
 	right = NULL;
