@@ -415,6 +415,7 @@ new_joininfo_list(List *joininfo_list, List *join_relids)
     return(current_joininfo_list);
 }
 
+#ifdef	NOTUSED
 /*
  * add-new-joininfos--
  *    For each new join relation, create new joininfos that
@@ -636,6 +637,7 @@ nonoverlap_sets(List *s1, List *s2)
     }
     return(true);
 }
+#endif	/* NOTUSED */
 
 /*
  * geqo_joinrel_size--
@@ -682,4 +684,6 @@ geqo_nth(int stop, List *rels)
 		if (i == stop) return lfirst(r);
 		i++;
 		}
+	elog(WARN,"geqo_nth: Internal error - ran off end of list");
+	return NULL;	/* to keep compiler happy */
 }
