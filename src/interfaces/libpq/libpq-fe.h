@@ -193,9 +193,7 @@ extern		"C"
 	extern void PQuntrace(PGconn *conn);
 
 	/* Override default notice processor */
-	extern void PQsetNoticeProcessor(PGconn *conn,
-												 PQnoticeProcessor proc,
-												 void *arg);
+	extern PQnoticeProcessor PQsetNoticeProcessor(PGconn *conn, PQnoticeProcessor proc, void *arg);
 
 /* === in fe-exec.c === */
 

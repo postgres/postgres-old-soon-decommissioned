@@ -1575,13 +1575,19 @@ PQuntrace(PGconn *conn)
 	}
 }
 
-void
+PQnoticeProcessor
 PQsetNoticeProcessor(PGconn *conn, PQnoticeProcessor proc, void *arg)
 {
+	PQnoticeProcessor old;
 	if (conn == NULL)
-		return;
+		return NULL;
+
+	old = conn->noticeHook;
+	if (proc) {
 	conn->noticeHook = proc;
 	conn->noticeArg = arg;
+	}
+	return old;
 }
 
 /*
