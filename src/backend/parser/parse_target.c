@@ -430,7 +430,7 @@ ExpandAllTables(ParseState *pstate)
 			continue;
 
 		target = nconc(target,
-					   expandAll(pstate, rte->ref->relname, rte->ref,
+					   expandAll(pstate, rte->eref->relname, rte->eref,
 								 &pstate->p_last_resno));
 	}
 	return target;

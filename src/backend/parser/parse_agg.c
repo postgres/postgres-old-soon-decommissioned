@@ -111,7 +111,7 @@ check_ungrouped_columns_walker(Node *node,
 			elog(ERROR, "cache lookup of attribute %d in relation %u failed",
 				 var->varattno, rte->relid);
 		elog(ERROR, "Attribute %s.%s must be GROUPed or used in an aggregate function",
-			 rte->ref->relname, attname);
+			 rte->eref->relname, attname);
 	}
 	/* Otherwise, recurse. */
 	return expression_tree_walker(node, check_ungrouped_columns_walker,

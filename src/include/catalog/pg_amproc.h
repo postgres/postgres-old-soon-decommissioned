@@ -95,12 +95,13 @@ DATA(insert OID = 0 (403 1115 1107 1));
 DATA(insert OID = 0 (403 1181  359 1));
 DATA(insert OID = 0 (403 1312 1314 1));
 DATA(insert OID = 0 (403 1313 1315 1));
-DATA(insert OID = 0 (403 810 836 1));
-DATA(insert OID = 0 (403 935 926 1));
-DATA(insert OID = 0 (403 652 926 1));
+DATA(insert OID = 0 (403  810  836 1));
+DATA(insert OID = 0 (403  935  926 1));
+DATA(insert OID = 0 (403  652  926 1));
 DATA(insert OID = 0 (403 1768 1769 1));
 DATA(insert OID = 0 (403 1690 1693 1));
 DATA(insert OID = 0 (403 1663 1636 1));
+DATA(insert OID = 0 (403 1399 1358 1));
 
 
 
@@ -120,5 +121,6 @@ DATA(insert OID = 0 (405 1115  452 1));
 DATA(insert OID = 0 (405 1181  455 1));
 DATA(insert OID = 0 (405 1312  452 1));
 DATA(insert OID = 0 (405 1313  452 1));
+DATA(insert OID = 0 (405 1399  452 1));
 
 #endif	 /* PG_AMPROC_H */

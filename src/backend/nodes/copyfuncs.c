@@ -1366,6 +1366,7 @@ _copyRangeTblEntry(RangeTblEntry *from)
 	if (from->relname)
 		newnode->relname = pstrdup(from->relname);
 	Node_Copy(from, newnode, ref);
+	Node_Copy(from, newnode, eref);
 	newnode->relid = from->relid;
 	newnode->inh = from->inh;
 	newnode->inFromCl = from->inFromCl;

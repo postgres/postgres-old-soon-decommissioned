@@ -53,6 +53,9 @@ typedef enum CATEGORY
 		|| ((t) == INTERVALOID) \
 		|| ((t) == ABSTIMEOID) \
 		|| ((t) == RELTIMEOID) \
+		|| ((t) == DATEOID) \
+		|| ((t) == TIMEOID) \
+		|| ((t) == TIMETZOID) \
 		|| ((t) == CHAROID) \
 		|| ((t) == NAMEOID) \
 		|| ((t) == CASHOID) \

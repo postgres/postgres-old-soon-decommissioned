@@ -76,6 +76,9 @@ extern int64 *int8pl(int64 *val1, int64 *val2);
 extern int64 *int8mi(int64 *val1, int64 *val2);
 extern int64 *int8mul(int64 *val1, int64 *val2);
 extern int64 *int8div(int64 *val1, int64 *val2);
+extern int64 *int8abs(int64 *val1);
+extern int64 *int8fac(int64 *val1);
+extern int64 *int8mod(int64 *val1, int64 *val2);
 extern int64 *int8larger(int64 *val1, int64 *val2);
 extern int64 *int8smaller(int64 *val1, int64 *val2);
 

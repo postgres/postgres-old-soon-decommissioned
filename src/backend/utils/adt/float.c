@@ -1236,6 +1236,31 @@ dlog1(float64 arg1)
 	return result;
 }
 
+/*
+ *		dlog10			- returns a pointer to the base 10 logarithm of arg1
+ */
+float64
+dlog10(float64 arg1)
+{
+	float64		result;
+	double		tmp;
+
+	if (!PointerIsValid(arg1))
+		return (float64) NULL;
+
+	result = (float64) palloc(sizeof(float64data));
+
+	tmp = *arg1;
+	if (tmp == 0.0)
+		elog(ERROR, "can't take log of zero");
+	if (tmp < 0)
+		elog(ERROR, "can't take log of a negative number");
+	*result = (float64data) log10(tmp);
+
+	CheckFloat8Val(*result);
+	return result;
+} /* dlog10() */
+
 
 /*
  *		====================

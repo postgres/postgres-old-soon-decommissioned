@@ -377,6 +377,10 @@ DATA(insert OID = 1187 ( _interval	 PGUID	-1 -1 f b t \054 0	1186 array_in array
 
 /* OIDS 1200 - 1299 */
 DATA(insert OID = 1231 (  _numeric   PGUID -1  -1 f b t \054 0  1700 array_in array_out array_in array_out i _null_ ));
+DATA(insert OID = 1266 ( timetz		 PGUID 12  22 f b t \054 0	0 timetz_in timetz_out timetz_in timetz_out d _null_ ));
+DESCR("hh:mm:ss, ANSI SQL time");
+#define TIMETZOID		1266
+DATA(insert OID = 1270 ( _timetz	 PGUID	-1 -1 f b t \054 0	1266 array_in array_out array_in array_out d _null_ ));
 
 /* OIDS 1700 - 1799 */
 DATA(insert OID = 1700 ( numeric	   PGUID -1  -1 f b t \054 0  0 numeric_in numeric_out numeric_in numeric_out i _null_ ));

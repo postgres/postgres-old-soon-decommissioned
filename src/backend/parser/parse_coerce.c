@@ -319,6 +319,7 @@ TypeCategory(Oid inType)
 
 		case (DATEOID):
 		case (TIMEOID):
+		case (TIMETZOID):
 		case (ABSTIMEOID):
 		case (TIMESTAMPOID):
 			result = DATETIME_TYPE;

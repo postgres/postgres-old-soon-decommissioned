@@ -614,6 +614,7 @@ typedef struct ViewStmt
 {
 	NodeTag		type;
 	char	   *viewname;		/* name of the view */
+	List	   *aliases;		/* target column names */
 	Query	   *query;			/* the SQL statement */
 } ViewStmt;
 
@@ -1131,6 +1132,12 @@ typedef struct TargetEntry
  *	  Some of the following are only used in one of
  *	  the parsing, optimizing, execution stages.
  *
+ *	  eref is the expanded table name and columns for the underlying
+ *	  relation. Note that for outer join syntax, allowed reference names
+ *	  could be modified as one evaluates the nested clauses (e.g.
+ *	  "SELECT ... FROM t1 NATURAL JOIN t2 WHERE ..." forbids explicit mention
+ *	  of a table name in any reference to the join column.
+ *
  *	  inFromCl marks those range variables that are listed in the FROM clause.
  *	  In SQL, the query can only refer to range variables listed in the
  *	  FROM clause, but POSTQUEL allows you to refer to tables not listed,
@@ -1157,9 +1164,8 @@ typedef struct RangeTblEntry
 {
 	NodeTag		type;
 	char	   *relname;		/* real name of the relation */
-#ifndef DISABLE_JOIN_SYNTAX
 	Attr	   *ref;			/* reference names (given in FROM clause) */
-#endif
+	Attr	   *eref;			/* expanded reference names */
 	Oid			relid;			/* OID of the relation */
 	bool		inh;			/* inheritance requested? */
 	bool		inFromCl;		/* present in FROM clause */

@@ -116,12 +116,14 @@ extern int32 int4pl(int32 arg1, int32 arg2);
 extern int32 int4mi(int32 arg1, int32 arg2);
 extern int32 int4mul(int32 arg1, int32 arg2);
 extern int32 int4div(int32 arg1, int32 arg2);
+extern int32 int4abs(int32 arg);
 extern int32 int4inc(int32 arg);
 extern int16 int2um(int16 arg);
 extern int16 int2pl(int16 arg1, int16 arg2);
 extern int16 int2mi(int16 arg1, int16 arg2);
 extern int16 int2mul(int16 arg1, int16 arg2);
 extern int16 int2div(int16 arg1, int16 arg2);
+extern int16 int2abs(int16 arg);
 extern int16 int2inc(int16 arg);
 extern int32 int24pl(int32 arg1, int32 arg2);
 extern int32 int24mi(int32 arg1, int32 arg2);
@@ -268,6 +270,7 @@ extern float64 dcbrt(float64 arg1);
 extern float64 dpow(float64 arg1, float64 arg2);
 extern float64 dexp(float64 arg1);
 extern float64 dlog1(float64 arg1);
+extern float64 dlog10(float64 arg1);
 extern float64 float48pl(float32 arg1, float64 arg2);
 extern float64 float48mi(float32 arg1, float64 arg2);
 extern float64 float48mul(float32 arg1, float64 arg2);
@@ -468,9 +471,11 @@ extern text *upper(text *string);
 extern text *initcap(text *string);
 extern text *lpad(text *string1, int4 len, text *string2);
 extern text *rpad(text *string1, int4 len, text *string2);
+extern text *btrim(text *string, text *set);
 extern text *ltrim(text *string, text *set);
 extern text *rtrim(text *string, text *set);
-extern text *translate(text *string, char from, char to);
+extern text	*substr(text *string, int4 m, int4 n);
+extern text *translate(text *string, text *from, text *to);
 
 /* acl.c */
 

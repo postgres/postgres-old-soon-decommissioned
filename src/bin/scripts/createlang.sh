@@ -241,11 +241,11 @@ if [ $? -ne 0 ]; then
 	echo "$CMDNAME: language installation failed"
 	exit 1
 fi
+
 $PSQL "CREATE ${trusted}PROCEDURAL LANGUAGE '$langname' HANDLER $handler LANCOMPILER '$lancomp'"
 if [ $? -ne 0 ]; then
 	echo "$CMDNAME: language installation failed"
 	exit 1
 fi
 
-echo "Ok"
 exit 0

@@ -1031,6 +1031,7 @@ _freeRangeTblEntry(RangeTblEntry *node)
 	if (node->relname)
 		pfree(node->relname);
 	freeObject(node->ref);
+	freeObject(node->eref);
 
 	pfree(node);
 }

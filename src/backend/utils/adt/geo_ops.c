@@ -3510,29 +3510,6 @@ path_div_pt(PATH *path, Point *point)
 }	/* path_div_pt() */
 
 
-bool
-path_contain_pt(PATH *path, Point *p)
-{
-	if (!PointerIsValid(path) || !PointerIsValid(p))
-		return FALSE;
-
-	return (on_ppath(p, path));
-}	/* path_contain_pt() */
-
-/* pt_contained_path
- * Point in or on path? This is the same as on_ppath.
- * - thomas 1998-10-29
- */
-bool
-pt_contained_path(Point *p, PATH *path)
-{
-	if (!PointerIsValid(p) || !PointerIsValid(path))
-		return FALSE;
-
-	return path_contain_pt(path, p);
-}	/* pt_contained_path() */
-
-
 Point *
 path_center(PATH *path)
 {

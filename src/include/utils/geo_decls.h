@@ -284,8 +284,6 @@ extern PATH *path_add_pt(PATH *path, Point *point);
 extern PATH *path_sub_pt(PATH *path, Point *point);
 extern PATH *path_mul_pt(PATH *path, Point *point);
 extern PATH *path_div_pt(PATH *path, Point *point);
-extern bool path_contain_pt(PATH *path, Point *p);
-extern bool pt_contained_path(Point *p, PATH *path);
 
 extern Point *path_center(PATH *path);
 extern POLYGON *path_poly(PATH *path);

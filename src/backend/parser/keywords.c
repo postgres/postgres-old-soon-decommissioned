@@ -184,6 +184,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"or", OR},
 	{"order", ORDER},
 	{"outer", OUTER_P},
+	{"overlaps", OVERLAPS},
 	{"partial", PARTIAL},
 	{"password", PASSWORD},
 	{"pendant", PENDANT},

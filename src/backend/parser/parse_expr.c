@@ -574,15 +574,7 @@ transformIdent(ParseState *pstate, Ident *ident, int precedence)
 		if ((rte = colnameRangeTableEntry(pstate, ident->name)) != NULL)
 		{
 			/* Convert it to a fully qualified Attr, and transform that */
-#ifndef DISABLE_JOIN_SYNTAX
-			Attr	   *att = makeAttr(rte->ref->relname, ident->name);
-#else
-			Attr	   *att = makeNode(Attr);
-
-			att->relname = rte->refname;
-			att->paramNo = NULL;
-			att->attrs = lcons(makeString(ident->name), NIL);
-#endif
+			Attr	   *att = makeAttr(rte->eref->relname, ident->name);
 			att->indirection = ident->indirection;
 			return transformAttr(pstate, att, precedence);
 		}

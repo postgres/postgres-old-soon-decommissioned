@@ -232,9 +232,33 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 
 				appendStringInfo(str, " on %s",
 								 stringStringInfo(rte->relname));
-				if (rte->ref && strcmp(rte->ref->relname, rte->relname) != 0)
-					appendStringInfo(str, " %s",
-									 stringStringInfo(rte->ref->relname));
+				if (rte->ref != NULL)
+				{
+					if ((strcmp(rte->ref->relname, rte->relname) != 0)
+						|| (length(rte->ref->attrs) > 0))
+					{
+						appendStringInfo(str, " %s",
+										 stringStringInfo(rte->ref->relname));
+
+						if (length(rte->ref->attrs) > 0)
+						{
+							List *c;
+							int firstEntry = true;
+
+							appendStringInfo(str, " (");
+							foreach (c, rte->ref->attrs)
+							{
+								if (! firstEntry)
+								{
+									appendStringInfo(str, ", ");
+									firstEntry = false;
+								}
+								appendStringInfo(str, "%s", strVal(lfirst(c)));
+							}
+							appendStringInfo(str, ")");
+						}
+					}
+				}
 			}
 			break;
 		default:
