@@ -145,8 +145,8 @@ identifier		{letter}{letter_or_digit}*
 
 typecast		"::"
 
-self			[,()\[\].;$\:\+\-\*\/\<\>\=\|]
-op_and_self		[\~\!\@\#\%\^\&\|\`\?\$\:\+\-\*\/\<\>\=]
+self			[,()\[\].;$\:\+\-\*\/\%\<\>\=\|]
+op_and_self		[\~\!\@\#\^\&\|\`\?\$\:\+\-\*\/\%\<\>\=]
 operator		{op_and_self}+
 
 xmstop			-
