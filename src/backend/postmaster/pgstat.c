@@ -45,6 +45,7 @@
 #include "storage/backendid.h"
 #include "storage/ipc.h"
 #include "storage/pg_shmem.h"
+#include "tcop/tcopprot.h"
 #include "utils/rel.h"
 #include "utils/hsearch.h"
 #include "utils/ps_status.h"

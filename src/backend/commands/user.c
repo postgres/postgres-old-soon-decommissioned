@@ -140,7 +140,7 @@ write_group_file(Relation grel)
 	tempname = (char *) palloc(bufsize);
 	snprintf(tempname, bufsize, "%s.%d", filename, MyProcPid);
 #if defined(WIN32) || defined(CYGWIN)
-	filename = repalloc(filename, strlen(filename) + 1 + strlen(".new");
+	filename = repalloc(filename, strlen(filename) + 1 + strlen(".new"));
 	strcat(filename, ".new");
 #endif
 	
@@ -291,7 +291,7 @@ write_user_file(Relation urel)
 	tempname = (char *) palloc(bufsize);
 	snprintf(tempname, bufsize, "%s.%d", filename, MyProcPid);
 #if defined(WIN32) || defined(CYGWIN)
-	filename = repalloc(filename, strlen(filename) + 1 + strlen(".new");
+	filename = repalloc(filename, strlen(filename) + 1 + strlen(".new"));
 	strcat(filename, ".new");
 #endif
 
