@@ -1111,7 +1111,7 @@ heap_fetch(Relation relation,
 	IncrHeapAccessStat(global_fetch);
 
 	/*
-	 * get the buffer from the relation descriptor Note that this does a
+	 * get the buffer from the relation descriptor. Note that this does a
 	 * buffer pin.
 	 */
 

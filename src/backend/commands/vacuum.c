@@ -762,7 +762,6 @@ scan_heap(VRelStats *vacrelstats, Relation onerel,
 					}
 					else if (!TransactionIdIsInProgress(tuple.t_data->t_xmin))
 					{
-
 						/*
 						 * Not Aborted, Not Committed, Not in Progress -
 						 * so it's from crashed process. - vadim 11/26/96
@@ -817,7 +816,6 @@ scan_heap(VRelStats *vacrelstats, Relation onerel,
 				}
 				else if (!TransactionIdIsInProgress(tuple.t_data->t_xmax))
 				{
-
 					/*
 					 * Not Aborted, Not Committed, Not in Progress - so it
 					 * from crashed process. - vadim 06/02/97
