@@ -385,7 +385,6 @@ ProcessUtility(Node *parsetree,
 			{
 				RenameStmt *stmt = (RenameStmt *) parsetree;
 
-				relname = stmt->relation->relname;
 				CheckOwnership(stmt->relation, true);
 
 				/* ----------------
@@ -723,7 +722,12 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_DropTrigStmt:
-			DropTrigger((DropTrigStmt *) parsetree);
+			{
+				DropTrigStmt *stmt = (DropTrigStmt *) parsetree;
+
+				DropTrigger(RangeVarGetRelid(stmt->relation, false),
+							stmt->trigname);
+			}
 			break;
 
 		case T_CreatePLangStmt:

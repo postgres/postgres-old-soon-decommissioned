@@ -1227,12 +1227,7 @@ find_inheritors(Oid relid, Oid **supervec)
 		foreach(elt, visited)
 		{
 			/* return the type id, rather than the relation id */
-			Relation	rd;
-
-			relid = lfirsti(elt);
-			rd = heap_open(relid, NoLock);
-			*relidvec++ = rd->rd_rel->reltype;
-			heap_close(rd, NoLock);
+			*relidvec++ = get_rel_type_id((Oid) lfirsti(elt));
 		}
 	}
 	else

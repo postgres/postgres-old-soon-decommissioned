@@ -96,7 +96,7 @@ typedef struct TriggerData
 
 
 extern void CreateTrigger(CreateTrigStmt *stmt);
-extern void DropTrigger(DropTrigStmt *stmt);
+extern void DropTrigger(Oid relid, const char *trigname);
 extern void RelationRemoveTriggers(Relation rel);
 
 extern void RelationBuildTriggers(Relation relation);

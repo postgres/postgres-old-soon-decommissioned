@@ -308,6 +308,7 @@ systable_beginscan(Relation rel,
 		Relation	irel;
 		unsigned	i;
 
+		/* We assume it's a system index, so index_openr is OK */
 		sysscan->irel = irel = index_openr(indexRelname);
 		/*
 		 * Change attribute numbers to be index column numbers.
