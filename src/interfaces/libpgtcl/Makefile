@@ -20,7 +20,8 @@ CFLAGS+= -I$(HEADERDIR) \
 	 -I$(srcdir)/backend/include \
 	 -I$(srcdir)/backend \
 	 -I$(CURDIR) \
-	 -I$(TCL_INCDIR)
+	 -I$(TCL_INCDIR) \
+	 -I$(srcdir)/libpq
 
 ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)
