@@ -735,7 +735,7 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 		 */
 		if (resultRelationDesc->rd_rel->relhasindex &&
 			operation != CMD_DELETE)
-			ExecOpenIndices(resultRelationOid, resultRelationInfo);
+			ExecOpenIndices(resultRelationInfo);
 
 		estate->es_result_relation_info = resultRelationInfo;
 	}

@@ -19,12 +19,19 @@
 /*
  * relation lookup routines
  */
-extern Relation RelationIdCacheGetRelation(Oid relationId);
 extern Relation RelationIdGetRelation(Oid relationId);
 extern Relation RelationNameGetRelation(const char *relationName);
 
+/* finds an existing cache entry, but won't make a new one */
+extern Relation RelationIdCacheGetRelation(Oid relationId);
+
 extern void RelationClose(Relation relation);
 extern void RelationForgetRelation(Oid rid);
+
+/*
+ * Routines to compute/retrieve additional cached information
+ */
+extern List *RelationGetIndexList(Relation relation);
 
 /*
  * Routines for flushing/rebuilding relcache entries in various scenarios

@@ -285,7 +285,7 @@ ExecInitAppend(Append *node, EState *estate, Plan *parent)
 				 * indices, but how to tell that here?
 				 */
 				if (rri->ri_RelationDesc->rd_rel->relhasindex)
-					ExecOpenIndices(reloid, rri);
+					ExecOpenIndices(rri);
 			}
 
 			/*

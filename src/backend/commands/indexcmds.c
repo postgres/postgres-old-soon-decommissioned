@@ -221,6 +221,13 @@ DefineIndex(char *heapRelationName,
 					 lossy, unique, primary);
 	}
 
+	/*
+	 * We update the relation's pg_class tuple even if it already has
+	 * relhasindex = true.  This is needed to cause a shared-cache-inval
+	 * message to be sent for the pg_class tuple, which will cause other
+	 * backends to flush their relcache entries and in particular their
+	 * cached lists of the indexes for this relation.
+	 */
 	setRelhasindexInplace(relationId, true, false);
 }
 

@@ -142,8 +142,7 @@ extern void ExecAssignScanTypeFromOuterPlan(Plan *node,
 								CommonScanState *csstate);
 extern Form_pg_attribute ExecGetTypeInfo(Relation relDesc);
 
-extern void ExecOpenIndices(Oid resultRelationOid,
-				RelationInfo *resultRelationInfo);
+extern void ExecOpenIndices(RelationInfo *resultRelationInfo);
 extern void ExecCloseIndices(RelationInfo *resultRelationInfo);
 extern void ExecInsertIndexTuples(TupleTableSlot *slot, ItemPointer tupleid,
 					  EState *estate, bool is_update);
