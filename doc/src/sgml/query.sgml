@@ -61,8 +61,8 @@ $Header$
     <indexterm><primary>relation</primary></indexterm>
     <indexterm><primary>table</primary></indexterm>
 
-    <productname>PostgreSQL</productname> is a <firstterm>object relational
-    database management system</firstterm> (<acronym>ORDBMS</acronym>).
+    <productname>PostgreSQL</productname> is a <firstterm>relational
+    database management system</firstterm> (<acronym>RDBMS</acronym>).
     That means it is a system for managing data stored in
     <firstterm>relations</firstterm>.  Relation is essentially a
     mathematical term for <firstterm>table</firstterm>.  The notion of
