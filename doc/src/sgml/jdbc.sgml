@@ -172,7 +172,7 @@ import java.sql.*;
     For <application>Postgres</application>, you would use:
 
     <programlisting>
-Class.forName("postgresql.Driver");
+Class.forName("org.postgresql.Driver");
     </programlisting>
 
     This will load the driver, and while loading, the driver will automatically
