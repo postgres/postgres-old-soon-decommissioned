@@ -107,6 +107,7 @@ extern void BeginTransactionBlock(void);
 extern void EndTransactionBlock(void);
 extern bool IsTransactionBlock(void);
 extern void UserAbortTransactionBlock(void);
+extern void AbortOutOfAnyTransaction(void);
 
 extern TransactionId DisabledTransactionId;
 
