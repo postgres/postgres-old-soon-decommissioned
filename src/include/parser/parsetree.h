@@ -30,16 +30,7 @@
  *								  ^^^^^^^^^^
  *	range table:
  *		(rtentry ...)
- *
  *	rtentry:
- *		note: this might be wrong, I don't understand how
- *		rt_time / rt_archive_time work together.  anyways it
- *		looks something like:
- *
- *		   (relname ?		relid timestuff flags rulelocks)
- *		or (new/cur relname relid timestuff flags rulelocks)
- *
- *		someone who knows more should correct this -cim 6/9/91
  * ----------------
  */
 

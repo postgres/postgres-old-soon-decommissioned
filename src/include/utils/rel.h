@@ -77,8 +77,6 @@ typedef Relation *RelationPtr;
 
 #define InvalidRelation ((Relation)NULL)
 
-typedef char ArchiveMode;
-
 /*
  * RelationIsValid --
  *		True iff relation descriptor is valid.
