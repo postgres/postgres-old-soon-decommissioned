@@ -650,32 +650,29 @@ AllocSetAlloc(MemoryContext context, Size size)
 		}
 		else
 		{
-			/* Get size of prior block */
-			blksize = set->blocks->endptr - ((char *) set->blocks);
-
 			/*
-			 * Special case: if very first allocation was for a large
-			 * chunk (or we have a small "keeper" block), could have an
-			 * undersized top block.  Do something reasonable.
+			 * Use first power of 2 that is larger than previous block,
+			 * but not more than the allowed limit.  (We don't simply double
+			 * the prior block size, because in some cases this could be a
+			 * funny size, eg if very first allocation was for an odd-sized
+			 * large chunk.)
 			 */
-			if (blksize < set->initBlockSize)
-				blksize = set->initBlockSize;
-			else
-			{
-				/* Crank it up, but not past max */
+			Size	pblksize = set->blocks->endptr - ((char *) set->blocks);
+
+			blksize = set->initBlockSize;
+			while (blksize <= pblksize)
 				blksize <<= 1;
-				if (blksize > set->maxBlockSize)
-					blksize = set->maxBlockSize;
-			}
+			if (blksize > set->maxBlockSize)
+				blksize = set->maxBlockSize;
 		}
 
 		/*
 		 * If initBlockSize is less than ALLOC_CHUNK_LIMIT, we could need
-		 * more space...
+		 * more space... but try to keep it a power of 2.
 		 */
 		required_size = chunk_size + ALLOC_BLOCKHDRSZ + ALLOC_CHUNKHDRSZ;
-		if (blksize < required_size)
-			blksize = required_size;
+		while (blksize < required_size)
+			blksize <<= 1;
 
 		/* Try to allocate it */
 		block = (AllocBlock) malloc(blksize);
