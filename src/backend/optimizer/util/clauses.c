@@ -521,6 +521,9 @@ fix_opid(Node *clause)
 	fix_opid((Node*)get_leftop((Expr*)clause));
 	fix_opid((Node*)get_rightop((Expr*)clause));
     }
+    else if (agg_clause (clause)) {
+    	fix_opid (((Aggreg*)clause)->target);
+    }
 
 }
 

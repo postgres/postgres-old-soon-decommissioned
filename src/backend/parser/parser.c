@@ -434,13 +434,16 @@ ParseAgg(char *aggname, Oid basetype, Node *target)
     fintype = aggform->aggfinaltype;
     xfn1 = aggform->aggtransfn1;
     
-    if (nodeTag(target) != T_Var)
-	elog(WARN, "parser: aggregate can only be applied on an attribute");
+    if (nodeTag(target) != T_Var && nodeTag(target) != T_Expr)
+	elog(WARN, "parser: aggregate can only be applied on an attribute or expression");
 
     /* only aggregates with transfn1 need a base type */
     if (OidIsValid(xfn1)) {	
 	basetype = aggform->aggbasetype;
-	vartype = ((Var*)target)->vartype;
+	if (nodeTag(target) == T_Var)
+	    vartype = ((Var*)target)->vartype;
+	else
+	    vartype = ((Expr*)target)->typeOid;
 
 	if (basetype != vartype) {
 	    Type tp1, tp2, get_id_type();
