@@ -172,8 +172,14 @@ TransactionLogTest(TransactionId transactionId, /* transaction id to test */
 
 	if (!fail)
 	{
-		TransactionIdStore(transactionId, &cachedTestXid);
-		cachedTestXidStatus = xidstatus;
+		/*
+		 * DO NOT cache status for transactions in unknown state !!!
+		 */
+		if (xidstatus == XID_COMMIT || xidstatus == XID_ABORT)
+		{
+			TransactionIdStore(transactionId, &cachedTestXid);
+			cachedTestXidStatus = xidstatus;
+		}
 		return (bool) (status == xidstatus);
 	}
 
@@ -575,13 +581,4 @@ TransactionIdAbort(TransactionId transactionId)
 		return;
 
 	TransactionLogUpdate(transactionId, XID_ABORT);
-}
-
-void
-TransactionIdFlushCache()
-{
-
-	TransactionIdStore(AmiTransactionId, &cachedTestXid);
-	cachedTestXidStatus = XID_COMMIT;
-
 }

@@ -324,8 +324,6 @@ XactLockTableWait(TransactionId xid)
 	LockAcquire(LockTableId, &tag, ShareLock);
 	LockRelease(LockTableId, &tag, ShareLock);
 
-	TransactionIdFlushCache();
-
 	/*
 	 * Transaction was committed/aborted/crashed - we have to update
 	 * pg_log if transaction is still marked as running.

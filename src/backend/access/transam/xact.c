@@ -514,8 +514,6 @@ CommandCounterIncrement()
 	AtCommit_Cache();
 	AtStart_Cache();
 
-	TransactionIdFlushCache();
-
 }
 
 void
@@ -822,7 +820,6 @@ StartTransaction()
 {
 	TransactionState s = CurrentTransactionState;
 
-	TransactionIdFlushCache();
 	FreeXactSnapshot();
 	XactIsoLevel = DefaultXactIsoLevel;
 

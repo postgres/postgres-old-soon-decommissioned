@@ -1152,8 +1152,13 @@ l1:
 		LockBuffer(buffer, BUFFER_LOCK_EXCLUSIVE);
 		if (TransactionIdDidAbort(xwait))
 			goto l1;
-		/* concurrent xact committed */
-		Assert(tp.t_data->t_xmax == xwait);
+		/* 
+		 * xwait is committed but if xwait had just marked
+		 * the tuple for update then some other xaction could 
+		 * update this tuple before we got to this point.
+		 */
+		if (tp.t_data->t_xmax != xwait)
+			goto l1;
 		if (!(tp.t_data->t_infomask & HEAP_XMAX_COMMITTED))
 		{
 			tp.t_data->t_infomask |= HEAP_XMAX_COMMITTED;
@@ -1242,8 +1247,13 @@ l2:
 		LockBuffer(buffer, BUFFER_LOCK_EXCLUSIVE);
 		if (TransactionIdDidAbort(xwait))
 			goto l2;
-		/* concurrent xact committed */
-		Assert(oldtup.t_data->t_xmax == xwait);
+		/* 
+		 * xwait is committed but if xwait had just marked
+		 * the tuple for update then some other xaction could 
+		 * update this tuple before we got to this point.
+		 */
+		if (oldtup.t_data->t_xmax != xwait)
+			goto l2;
 		if (!(oldtup.t_data->t_infomask & HEAP_XMAX_COMMITTED))
 		{
 			oldtup.t_data->t_infomask |= HEAP_XMAX_COMMITTED;
@@ -1359,8 +1369,13 @@ l3:
 		LockBuffer(*buffer, BUFFER_LOCK_EXCLUSIVE);
 		if (TransactionIdDidAbort(xwait))
 			goto l3;
-		/* concurrent xact committed */
-		Assert(tuple->t_data->t_xmax == xwait);
+		/* 
+		 * xwait is committed but if xwait had just marked
+		 * the tuple for update then some other xaction could 
+		 * update this tuple before we got to this point.
+		 */
+		if (tuple->t_data->t_xmax != xwait)
+			goto l3;
 		if (!(tuple->t_data->t_infomask & HEAP_XMAX_COMMITTED))
 		{
 			tuple->t_data->t_infomask |= HEAP_XMAX_COMMITTED;
