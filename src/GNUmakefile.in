@@ -69,7 +69,7 @@ ifneq ($(wildcard man), )
 endif
 	rm -f Makefile.global include/config.h GNUmakefile
 
-.DEFAULT all:
+.DEFAULT:
 	@if test $(PORTNAME) = UNDEFINED; then \
 	  echo You must set the PORTNAME value in Makefile.global before \
 	       you can build Postgres. ;\
