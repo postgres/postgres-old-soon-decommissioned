@@ -896,7 +896,7 @@ AC_LIBOBJ(pipe)
 AC_LIBOBJ(rand)
 AC_DEFINE(USE_PGTZ, 1,
 	[Define to 1 to use our own timezone library])
-PGTZ=yes
+USE_PGTZ=yes
 AC_SUBST(USE_PGTZ) ;;
 esac
 

@@ -20,7 +20,7 @@ ZICOBJS= zic.o ialloc.o scheck.o localtime.o asctime.o pgtz.o
 TZDATA := africa antarctica asia australasia europe northamerica southamerica pacificnew etcetera factory backward systemv solar87 solar88 solar89
 TZDATAFILES := $(TZDATA:%=data/%)
 
-ifeq ($(PGTZ), yes)
+ifeq ($(USE_PGTZ), yes)
 all: SUBSYS.o zic
 
 SUBSYS.o: $(OBJS)
