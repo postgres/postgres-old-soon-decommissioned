@@ -14,9 +14,13 @@
  *-------------------------------------------------------------------------
  */
 
+#include <stdlib.h>
+
+#include "postgres.h"
 #include "tcl.h"
 #include "libpgtcl.h"
 #include "pgtclCmds.h"
+#include "pgtclId.h"
 
 /*
  * Pgtcl_Init 
@@ -27,7 +31,7 @@
 /*
  * Tidy up forgotten postgres connection at Tcl_Exit
  */
-void
+static void
 Pgtcl_AtExit (ClientData cData)
 {
   Pg_clientData *cd = (Pg_clientData *)cData;
@@ -52,7 +56,7 @@ Pgtcl_AtExit (ClientData cData)
 /*
  * Tidy up forgotten postgres connections on Interpreter deletion
  */
-void
+static void
 Pgtcl_Shutdown (ClientData cData, Tcl_Interp *interp)
 {
   Pgtcl_AtExit(cData);

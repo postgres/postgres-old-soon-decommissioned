@@ -56,8 +56,6 @@ extern List *parsetree;
  */
 /*#define __YYSCLASS*/
 
-extern void yyerror(char message[]);
-
 static char *xlateSqlType(char *);
 static Node *makeA_Expr(int op, char *opname, Node *lexpr, Node *rexpr);
 

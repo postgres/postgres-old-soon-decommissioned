@@ -15,8 +15,13 @@
 
 #include "rlstubs.h"
 
+extern char *readline(const char *);
+extern int write_history(const char *);
+extern int using_history(void);
+extern int add_history(const char *);
+
 char *
-readline(char *prompt)
+readline(const char *prompt)
 {
     static char buf[500];
 

@@ -19,8 +19,9 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include "tcl.h"
+#include <tcl.h>
 
+#include "postgres.h"
 #include "pgtclCmds.h"
 #include "pgtclId.h"
 
