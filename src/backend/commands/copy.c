@@ -48,9 +48,9 @@
 static void CopyTo(Relation rel, bool binary, bool oids, FILE *fp, char *delim, char *null_print);
 static void CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim, char *null_print);
 static Oid	GetOutputFunction(Oid type);
-static Oid	GetTypeElement(Oid type);
 static Oid	GetInputFunction(Oid type);
-static Oid	IsTypeByVal(Oid type);
+static Oid	GetTypeElement(Oid type);
+static bool IsTypeByVal(Oid type);
 static void CopyReadNewline(FILE *fp, int *newline);
 static char *CopyReadAttribute(FILE *fp, bool *isnull, char *delim, int *newline, char *null_print);
 
@@ -669,7 +669,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp,
 			continue;
 		}
 #endif	 /* _DROP_COLUMN_HACK__ */
-		byval[i] = (bool) IsTypeByVal(attr[i]->atttypid);
+		byval[i] = IsTypeByVal(attr[i]->atttypid);
 	}
 
 	lineno = 0;
@@ -893,65 +893,64 @@ static Oid
 GetOutputFunction(Oid type)
 {
 	HeapTuple	typeTuple;
+	Oid			result;
 
-	typeTuple = SearchSysCacheTuple(TYPEOID,
-									ObjectIdGetDatum(type),
-									0, 0, 0);
-
-	if (HeapTupleIsValid(typeTuple))
-		return (int) ((Form_pg_type) GETSTRUCT(typeTuple))->typoutput;
-
-	elog(ERROR, "GetOutputFunction: Cache lookup of type %u failed", type);
-	return InvalidOid;
-}
-
-static Oid
-GetTypeElement(Oid type)
-{
-	HeapTuple	typeTuple;
-
-	typeTuple = SearchSysCacheTuple(TYPEOID,
-									ObjectIdGetDatum(type),
-									0, 0, 0);
-
-	if (HeapTupleIsValid(typeTuple))
-		return (int) ((Form_pg_type) GETSTRUCT(typeTuple))->typelem;
-
-	elog(ERROR, "GetOutputFunction: Cache lookup of type %u failed", type);
-	return InvalidOid;
+	typeTuple = SearchSysCache(TYPEOID,
+							   ObjectIdGetDatum(type),
+							   0, 0, 0);
+	if (!HeapTupleIsValid(typeTuple))
+		elog(ERROR, "GetOutputFunction: Cache lookup of type %u failed", type);
+	result = ((Form_pg_type) GETSTRUCT(typeTuple))->typoutput;
+	ReleaseSysCache(typeTuple);
+	return result;
 }
 
 static Oid
 GetInputFunction(Oid type)
 {
 	HeapTuple	typeTuple;
+	Oid			result;
 
-	typeTuple = SearchSysCacheTuple(TYPEOID,
-									ObjectIdGetDatum(type),
-									0, 0, 0);
-
-	if (HeapTupleIsValid(typeTuple))
-		return (int) ((Form_pg_type) GETSTRUCT(typeTuple))->typinput;
-
-	elog(ERROR, "GetInputFunction: Cache lookup of type %u failed", type);
-	return InvalidOid;
+	typeTuple = SearchSysCache(TYPEOID,
+							   ObjectIdGetDatum(type),
+							   0, 0, 0);
+	if (!HeapTupleIsValid(typeTuple))
+		elog(ERROR, "GetInputFunction: Cache lookup of type %u failed", type);
+	result = ((Form_pg_type) GETSTRUCT(typeTuple))->typinput;
+	ReleaseSysCache(typeTuple);
+	return result;
 }
 
 static Oid
+GetTypeElement(Oid type)
+{
+	HeapTuple	typeTuple;
+	Oid			result;
+
+	typeTuple = SearchSysCache(TYPEOID,
+							   ObjectIdGetDatum(type),
+							   0, 0, 0);
+	if (!HeapTupleIsValid(typeTuple))
+		elog(ERROR, "GetTypeElement: Cache lookup of type %u failed", type);
+	result = ((Form_pg_type) GETSTRUCT(typeTuple))->typelem;
+	ReleaseSysCache(typeTuple);
+	return result;
+}
+
+static bool
 IsTypeByVal(Oid type)
 {
 	HeapTuple	typeTuple;
+	bool		result;
 
-	typeTuple = SearchSysCacheTuple(TYPEOID,
-									ObjectIdGetDatum(type),
-									0, 0, 0);
-
-	if (HeapTupleIsValid(typeTuple))
-		return (int) ((Form_pg_type) GETSTRUCT(typeTuple))->typbyval;
-
-	elog(ERROR, "GetInputFunction: Cache lookup of type %u failed", type);
-
-	return InvalidOid;
+	typeTuple = SearchSysCache(TYPEOID,
+							   ObjectIdGetDatum(type),
+							   0, 0, 0);
+	if (!HeapTupleIsValid(typeTuple))
+		elog(ERROR, "IsTypeByVal: Cache lookup of type %u failed", type);
+	result = ((Form_pg_type) GETSTRUCT(typeTuple))->typbyval;
+	ReleaseSysCache(typeTuple);
+	return result;
 }
 
 

@@ -102,9 +102,9 @@ CheckDropPermissions(char *name, char rightkind)
 			break;
 	Assert(rentry->kind != '\0');
 
-	tuple = SearchSysCacheTuple(RELNAME,
-								PointerGetDatum(name),
-								0, 0, 0);
+	tuple = SearchSysCache(RELNAME,
+						   PointerGetDatum(name),
+						   0, 0, 0);
 	if (!HeapTupleIsValid(tuple))
 		elog(ERROR, "%s \"%s\" does not exist", rentry->name, name);
 
@@ -120,6 +120,8 @@ CheckDropPermissions(char *name, char rightkind)
 	if (!allowSystemTableMods && IsSystemRelationName(name))
 		elog(ERROR, "%s \"%s\" is a system %s",
 			 rentry->name, name, rentry->name);
+
+	ReleaseSysCache(tuple);
 }
 
 

@@ -953,9 +953,7 @@ transformGroupClause(ParseState *pstate, List *grouplist, List *targetlist)
 
 			grpcl->tleSortGroupRef = assignSortGroupRef(tle, targetlist);
 
-			grpcl->sortop = oprid(oper("<",
-									   tle->resdom->restype,
-									   tle->resdom->restype, false));
+			grpcl->sortop = any_ordering_op(tle->resdom->restype);
 
 			glist = lappend(glist, grpcl);
 		}
@@ -1151,9 +1149,10 @@ addTargetToSortList(TargetEntry *tle, List *sortlist, List *targetlist,
 		sortcl->tleSortGroupRef = assignSortGroupRef(tle, targetlist);
 
 		if (opname)
-			sortcl->sortop = oprid(oper(opname,
-										tle->resdom->restype,
-										tle->resdom->restype, false));
+			sortcl->sortop = oper_oid(opname,
+									  tle->resdom->restype,
+									  tle->resdom->restype,
+									  false);
 		else
 			sortcl->sortop = any_ordering_op(tle->resdom->restype);
 

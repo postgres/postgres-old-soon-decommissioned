@@ -29,10 +29,16 @@ superuser(void)
 	privileges.
 --------------------------------------------------------------------------*/
 	HeapTuple	utup;
+	bool		result;
 
-	utup = SearchSysCacheTuple(SHADOWSYSID,
-							   ObjectIdGetDatum(GetUserId()),
-							   0, 0, 0);
-	Assert(utup != NULL);
-	return ((Form_pg_shadow) GETSTRUCT(utup))->usesuper;
+	utup = SearchSysCache(SHADOWSYSID,
+						  ObjectIdGetDatum(GetUserId()),
+						  0, 0, 0);
+	if (HeapTupleIsValid(utup))
+	{
+		result = ((Form_pg_shadow) GETSTRUCT(utup))->usesuper;
+		ReleaseSysCache(utup);
+		return result;
+	}
+	return false;
 }

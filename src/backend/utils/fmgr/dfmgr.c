@@ -59,9 +59,9 @@ fmgr_dynamic(Oid functionId)
 	PGFunction	user_fn;
 	bool		isnull;
 
-	procedureTuple = SearchSysCacheTuple(PROCOID,
-										 ObjectIdGetDatum(functionId),
-										 0, 0, 0);
+	procedureTuple = SearchSysCache(PROCOID,
+									ObjectIdGetDatum(functionId),
+									0, 0, 0);
 	if (!HeapTupleIsValid(procedureTuple))
 		elog(ERROR, "fmgr_dynamic: function %u: cache lookup failed",
 			 functionId);
@@ -87,6 +87,8 @@ fmgr_dynamic(Oid functionId)
 
 	pfree(prosrcstring);
 	pfree(probinstring);
+
+	ReleaseSysCache(procedureTuple);
 
 	return user_fn;
 }

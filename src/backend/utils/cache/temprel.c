@@ -34,7 +34,6 @@
 #include "catalog/heap.h"
 #include "catalog/index.h"
 #include "miscadmin.h"
-#include "utils/catcache.h"
 #include "utils/temprel.h"
 
 

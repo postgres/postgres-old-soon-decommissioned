@@ -740,9 +740,9 @@ ExecOpenIndices(ResultRelInfo *resultRelInfo)
 		 *	Get the pg_index tuple for the index
 		 * ----------------
 		 */
-		indexTuple = SearchSysCacheTuple(INDEXRELID,
-										 ObjectIdGetDatum(indexOid),
-										 0, 0, 0);
+		indexTuple = SearchSysCache(INDEXRELID,
+									ObjectIdGetDatum(indexOid),
+									0, 0, 0);
 		if (!HeapTupleIsValid(indexTuple))
 			elog(ERROR, "ExecOpenIndices: index %u not found", indexOid);
 
@@ -751,6 +751,8 @@ ExecOpenIndices(ResultRelInfo *resultRelInfo)
 		 * ----------------
 		 */
 		ii = BuildIndexInfo(indexTuple);
+
+		ReleaseSysCache(indexTuple);
 
 		relationDescs[i] = indexDesc;
 		indexInfoArray[i] = ii;

@@ -445,9 +445,9 @@ get_user_info(Oid use_sysid, bool *use_super, bool *use_createdb)
 {
 	HeapTuple	utup;
 
-	utup = SearchSysCacheTuple(SHADOWSYSID,
-							   ObjectIdGetDatum(use_sysid),
-							   0, 0, 0);
+	utup = SearchSysCache(SHADOWSYSID,
+						  ObjectIdGetDatum(use_sysid),
+						  0, 0, 0);
 
 	if (!HeapTupleIsValid(utup))
 		return false;
@@ -456,6 +456,8 @@ get_user_info(Oid use_sysid, bool *use_super, bool *use_createdb)
 		*use_super = ((Form_pg_shadow) GETSTRUCT(utup))->usesuper;
 	if (use_createdb)
 		*use_createdb = ((Form_pg_shadow) GETSTRUCT(utup))->usecreatedb;
+
+	ReleaseSysCache(utup);
 
 	return true;
 }

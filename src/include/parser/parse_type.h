@@ -21,15 +21,18 @@ typedef HeapTuple Type;
 extern bool typeidIsValid(Oid id);
 extern Type typeidType(Oid id);
 extern Type typenameType(char *s);
-extern char *typeidTypeName(Oid id);
+
 extern Oid	typeTypeId(Type tp);
 extern int16 typeLen(Type t);
 extern bool typeByVal(Type t);
 extern char *typeTypeName(Type t);
 extern char typeTypeFlag(Type t);
-extern Datum stringTypeDatum(Type tp, char *string, int32 atttypmod);
-extern Oid	typeidTypeRelid(Oid type_id);
 extern Oid	typeTypeRelid(Type typ);
+extern Datum stringTypeDatum(Type tp, char *string, int32 atttypmod);
+
+extern char *typeidTypeName(Oid id);
+extern Oid	typeidTypeRelid(Oid type_id);
+extern Oid	typenameTypeId(char *s);
 
 #define ISCOMPLEX(typeid) (typeidTypeRelid(typeid) != InvalidOid)
 

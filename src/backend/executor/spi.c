@@ -447,6 +447,7 @@ char *
 SPI_gettype(TupleDesc tupdesc, int fnumber)
 {
 	HeapTuple	typeTuple;
+	char	   *result;
 
 	SPI_result = 0;
 	if (tupdesc->natts < fnumber || fnumber <= 0)
@@ -455,9 +456,9 @@ SPI_gettype(TupleDesc tupdesc, int fnumber)
 		return NULL;
 	}
 
-	typeTuple = SearchSysCacheTuple(TYPEOID,
+	typeTuple = SearchSysCache(TYPEOID,
 				 ObjectIdGetDatum(tupdesc->attrs[fnumber - 1]->atttypid),
-									0, 0, 0);
+							   0, 0, 0);
 
 	if (!HeapTupleIsValid(typeTuple))
 	{
@@ -465,7 +466,9 @@ SPI_gettype(TupleDesc tupdesc, int fnumber)
 		return NULL;
 	}
 
-	return pstrdup(NameStr(((Form_pg_type) GETSTRUCT(typeTuple))->typname));
+	result = pstrdup(NameStr(((Form_pg_type) GETSTRUCT(typeTuple))->typname));
+	ReleaseSysCache(typeTuple);
+	return result;
 }
 
 Oid

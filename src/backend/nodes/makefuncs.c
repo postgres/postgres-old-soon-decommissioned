@@ -20,7 +20,10 @@
  *	  Andrew Yu			Oct 20, 1994	file creation
  */
 #include "postgres.h"
+
 #include "nodes/makefuncs.h"
+#include "utils/lsyscache.h"
+
 
 /*
  * makeOper -
@@ -141,6 +144,26 @@ makeConst(Oid consttype,
 	cnst->constisset = constisset;
 	cnst->constiscast = constiscast;
 	return cnst;
+}
+
+/*
+ * makeNullConst -
+ *	  creates a Const node representing a NULL of the specified type
+ */
+Const *
+makeNullConst(Oid consttype)
+{
+	int16		typLen;
+	bool		typByVal;
+
+	get_typlenbyval(consttype, &typLen, &typByVal);
+	return makeConst(consttype,
+					 (int) typLen,
+					 (Datum) 0,
+					 true,
+					 typByVal,
+					 false,
+					 false);
 }
 
 /*

@@ -238,14 +238,7 @@ expand_targetlist(List *tlist, int command_type,
 
 #ifdef	_DROP_COLUMN_HACK__
 						if (COLUMN_IS_DROPPED(att_tup))
-						{
-							temp_var = (Var *) makeConst(atttype, 0,
-												   PointerGetDatum(NULL),
-														   true,
-														   false,
-														   false,		/* not a set */
-														   false);
-						}
+							temp_var = (Var *) makeNullConst(atttype);
 						else
 #endif	 /* _DROP_COLUMN_HACK__ */
 							temp_var = makeVar(result_relation,

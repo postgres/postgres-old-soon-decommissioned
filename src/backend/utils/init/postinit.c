@@ -320,10 +320,7 @@ InitPostgres(const char *dbname, const char *username)
 
 	/*
 	 * Initialize all the system catalog caches.
-	 */
-	zerocaches();
-
-	/*
+	 *
 	 * Does not touch files since all routines are builtins (?) - thomas
 	 * 1997-11-01
 	 */

@@ -1236,8 +1236,8 @@ _outJoinInfo(StringInfo str, JoinInfo *node)
 static void
 _outDatum(StringInfo str, Datum value, Oid type)
 {
+	int16		typeLength;
 	bool		byValue;
-	int			typeLength;
 	Size		length;
 	char	   *s;
 	int			i;
@@ -1246,8 +1246,7 @@ _outDatum(StringInfo str, Datum value, Oid type)
 	 * find some information about the type and the "real" length of the
 	 * datum.
 	 */
-	byValue = get_typbyval(type);
-	typeLength = get_typlen(type);
+	get_typlenbyval(type, &typeLength, &byValue);
 	length = datumGetSize(value, byValue, typeLength);
 
 	if (byValue)

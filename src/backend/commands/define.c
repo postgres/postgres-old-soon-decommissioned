@@ -277,10 +277,9 @@ CreateFunction(ProcedureStmt *stmt, CommandDest dest)
 		Form_pg_language languageStruct;
 
 		/* Lookup the language in the system cache */
-		languageTuple = SearchSysCacheTuple(LANGNAME,
-											PointerGetDatum(languageName),
-											0, 0, 0);
-
+		languageTuple = SearchSysCache(LANGNAME,
+									   PointerGetDatum(languageName),
+									   0, 0, 0);
 		if (!HeapTupleIsValid(languageTuple))
 			elog(ERROR,
 				 "Unrecognized language specified in a CREATE FUNCTION: "
@@ -299,12 +298,12 @@ CreateFunction(ProcedureStmt *stmt, CommandDest dest)
 		 * be defined by postgres superusers only
 		 */
 		if (!languageStruct->lanpltrusted && !superuser())
-		{
 			elog(ERROR, "Only users with Postgres superuser privilege "
 				 "are permitted to create a function in the '%s' "
 				 "language.",
 				 languageName);
-		}
+
+		ReleaseSysCache(languageTuple);
 	}
 
 	/*

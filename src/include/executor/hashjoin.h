@@ -73,8 +73,8 @@ typedef struct HashTableData
 	 * and outer sides of the hash are the same type, or at least
 	 * binary-compatible types.
 	 */
+	int16		typLen;
 	bool		typByVal;
-	int			typLen;
 
 	/*
 	 * During 1st scan of inner relation, we get tuples from executor. If

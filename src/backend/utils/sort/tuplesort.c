@@ -88,7 +88,6 @@
 #include "access/heapam.h"
 #include "access/nbtree.h"
 #include "miscadmin.h"
-#include "parser/parse_type.h"
 #include "utils/logtape.h"
 #include "utils/lsyscache.h"
 #include "utils/tuplesort.h"
@@ -506,7 +505,8 @@ tuplesort_begin_datum(Oid datumType,
 					  bool randomAccess)
 {
 	Tuplesortstate *state = tuplesort_begin_common(randomAccess);
-	Type		typeInfo;
+	int16		typlen;
+	bool		typbyval;
 
 	state->comparetup = comparetup_datum;
 	state->copytup = copytup_datum;
@@ -519,9 +519,9 @@ tuplesort_begin_datum(Oid datumType,
 	/* lookup the function that implements the sort operator */
 	fmgr_info(get_opcode(sortOperator), &state->sortOpFn);
 	/* lookup necessary attributes of the datum type */
-	typeInfo = typeidType(datumType);
-	state->datumTypeLen = typeLen(typeInfo);
-	state->datumTypeByVal = typeByVal(typeInfo);
+	get_typlenbyval(datumType, &typlen, &typbyval);
+	state->datumTypeLen = typlen;
+	state->datumTypeByVal = typbyval;
 
 	return state;
 }

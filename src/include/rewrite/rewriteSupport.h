@@ -14,7 +14,7 @@
 #ifndef REWRITESUPPORT_H
 #define REWRITESUPPORT_H
 
-extern int	IsDefinedRewriteRule(char *ruleName);
+extern bool IsDefinedRewriteRule(char *ruleName);
 
 extern void SetRelationRuleStatus(Oid relationId, bool relHasRules,
 								  bool relIsBecomingView);
