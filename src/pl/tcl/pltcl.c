@@ -594,15 +594,17 @@ pltcl_func_handler(PG_FUNCTION_ARGS)
 	if (SPI_finish() != SPI_OK_FINISH)
 		elog(ERROR, "pltcl: SPI_finish() failed");
 
-	UTF_BEGIN;
 	if (fcinfo->isnull)
 		retval = (Datum) 0;
 	else
+	{
+		UTF_BEGIN;
 		retval = FunctionCall3(&prodesc->result_in_func,
 							   PointerGetDatum(UTF_U2E(interp->result)),
 							   ObjectIdGetDatum(prodesc->result_in_elem),
 							   Int32GetDatum(-1));
-	UTF_END;
+		UTF_END;
+	}
 
 	/************************************************************
 	 * Finally we may restore normal error handling.
