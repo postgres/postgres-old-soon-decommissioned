@@ -49,6 +49,10 @@ extern Node *
 ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 				  int *curr_resno, int precedence);
 
-extern void func_error(char *caller, char *funcname, int nargs, Oid *argtypes, char *msg);
+extern Oid *
+func_select_candidate(int nargs, Oid *input_typeids, CandidateList candidates);
+
+extern void
+func_error(char *caller, char *funcname, int nargs, Oid *argtypes, char *msg);
 
 #endif							/* PARSE_FUNC_H */
