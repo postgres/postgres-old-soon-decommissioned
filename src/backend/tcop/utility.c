@@ -430,7 +430,8 @@ ProcessUtility(Node *parsetree,
 						renameatt(relid,
 								  stmt->oldname,	/* old att name */
 								  stmt->newname,	/* new att name */
-								  interpretInhOption(stmt->relation->inhOpt));	/* recursive? */
+								  interpretInhOption(stmt->relation->inhOpt),	/* recursive? */
+								  false);			/* recursing already? */
 						break;
 					case RENAME_TRIGGER:
 						renametrig(relid,
@@ -470,6 +471,7 @@ ProcessUtility(Node *parsetree,
 						 */
 						AlterTableAddColumn(relid,
 											interpretInhOption(stmt->relation->inhOpt),
+											false,
 											(ColumnDef *) stmt->def);
 						break;
 					case 'T':	/* ALTER COLUMN DEFAULT */
@@ -505,13 +507,13 @@ ProcessUtility(Node *parsetree,
 												   &(stmt->subtype));
 						break;
 					case 'D':	/* DROP COLUMN */
-						/*
-						 * XXX We don't actually recurse yet, but what we should do would be:
+						 /*
 						 * Recursively drop column from table and,
 						 * if requested, from descendants
 						 */
 						AlterTableDropColumn(relid,
 											 interpretInhOption(stmt->relation->inhOpt),
+											 false,
 											 stmt->name,
 											 stmt->behavior);
 						break;

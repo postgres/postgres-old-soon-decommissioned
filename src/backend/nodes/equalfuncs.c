@@ -1748,6 +1748,8 @@ _equalColumnDef(ColumnDef *a, ColumnDef *b)
 		return false;
 	if (!equal(a->typename, b->typename))
 		return false;
+	if (a->is_inherited != b->is_inherited)
+		return false;
 	if (a->is_not_null != b->is_not_null)
 		return false;
 	if (!equal(a->raw_default, b->raw_default))

@@ -1729,6 +1729,7 @@ _copyColumnDef(ColumnDef *from)
 	if (from->colname)
 		newnode->colname = pstrdup(from->colname);
 	Node_Copy(from, newnode, typename);
+	newnode->is_inherited = from->is_inherited;
 	newnode->is_not_null = from->is_not_null;
 	Node_Copy(from, newnode, raw_default);
 	if (from->cooked_default)

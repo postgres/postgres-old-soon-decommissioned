@@ -259,6 +259,7 @@ ConstructTupleDescriptor(Relation heapRelation,
 		to->attcacheoff = -1;
 		to->attnotnull = false;
 		to->atthasdef = false;
+		to->attisinherited = false;
 
 		/*
 		 * We do not yet have the correct relation OID for the index, so

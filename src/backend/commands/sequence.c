@@ -127,6 +127,7 @@ DefineSequence(CreateSeqStmt *seq)
 
 		coldef = makeNode(ColumnDef);
 		coldef->typename = typnam;
+		coldef->is_inherited = false;
 		coldef->is_not_null = true;
 		coldef->raw_default = NULL;
 		coldef->cooked_default = NULL;

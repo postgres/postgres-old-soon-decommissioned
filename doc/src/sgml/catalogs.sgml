@@ -821,6 +821,16 @@
       </entry>
      </row>
 
+     <row>
+      <entry>attisinherited</entry>
+      <entry><type>bool</type></entry>
+      <entry></entry>
+      <entry>
+       This column is inherited from some other relation.  An inherited
+       column cannot be dropped nor renamed.
+      </entry>
+     </row>
+
     </tbody>
    </tgroup>
   </table>
