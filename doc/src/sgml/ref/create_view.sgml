@@ -118,6 +118,12 @@ CREATE VIEW vista AS SELECT 'Hello World';
 CREATE VIEW vista AS SELECT text 'Hello World' AS hello;
 </programlisting>
    </para>
+
+   <para>
+    While access to tables in the view is controlled entirely by permissions
+    on the view, functions called by the view are checked independently.
+   </para>
+
  </refsect1>
 
  <refsect1>
