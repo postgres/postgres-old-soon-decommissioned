@@ -135,8 +135,8 @@ chkpass_rout(chkpass *password)
 
 	if ((result = (text *) palloc(VARHDRSZ + 16)) != NULL)
 	{
-		VARSIZE(result) = VARHDRSZ + strlen(password->password);
-		memcpy(VARDATA(result), password->password, strlen(password->password));
+		result->vl_len = VARHDRSZ + strlen(password->password);
+		memcpy(result->vl_dat, password->password, strlen(password->pass
 	}
 
 	return (result);
