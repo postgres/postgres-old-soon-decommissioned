@@ -443,8 +443,13 @@ pg_password_sendauth(PGconn *conn, const char *password, AuthRequest areq)
 	switch (areq)
 	{
 		case AUTH_REQ_CRYPT:
-			crypt_pwd = crypt(password, conn->cryptSalt);
+		{
+			char salt[3];
+
+			StrNCpy(salt, conn->cryptSalt,3);
+			crypt_pwd = crypt(password, salt);
 			break;
+		}
 		case AUTH_REQ_MD5:
 			{
 				char *crypt_pwd2;
