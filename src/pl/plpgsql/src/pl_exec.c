@@ -1243,9 +1243,9 @@ exec_stmt_fori(PLpgSQL_execstate * estate, PLpgSQL_stmt_fori * stmt)
 		 * ----------
 		 */
 		if (stmt->reverse)
-			((int4) (var->value))--;
+			(int4)var->value--;
 		else
-			((int4) (var->value))++;
+			(int4)var->value++;
 	}
 
 	return PLPGSQL_RC_OK;

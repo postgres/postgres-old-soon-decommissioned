@@ -61,8 +61,9 @@
 #define false	((char) 0)
 #define true	((char) 1)
 #ifndef __cplusplus
+#ifndef bool
 typedef char bool;
-
+#endif   /* ndef bool */
 #endif	 /* not C++ */
 typedef bool *BoolPtr;
 
