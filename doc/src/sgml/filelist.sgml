@@ -26,7 +26,6 @@
 <!entity inherit    SYSTEM "inherit.sgml">
 <!entity manage     SYSTEM "manage.sgml">
 <!entity mvcc       SYSTEM "mvcc.sgml">
-<!entity oper       SYSTEM "oper.sgml">
 <!entity plan       SYSTEM "plan.sgml">
 <!entity plperl     SYSTEM "plperl.sgml">
 <!entity plsql      SYSTEM "plsql.sgml">

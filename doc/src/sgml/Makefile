@@ -16,6 +16,7 @@ subdir = doc/src/sgml
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
+.SECONDARY:
 
 ifndef DOCBOOKSTYLE
 DOCBOOKSTYLE = /home/projects/pgsql/developers/thomas/db143.d/docbook

@@ -45,11 +45,10 @@ $Header$
  &intro;
  &syntax;
  &datatype;
- &oper;
  &func;
  &typeconv;
- &indices;
  &array;
+ &indices;
  &inherit;
  &plsql;
  &pltcl;
