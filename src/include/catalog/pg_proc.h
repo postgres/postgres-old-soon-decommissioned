@@ -3424,6 +3424,17 @@ DESCR("constraint description with pretty-print option");
 DATA(insert OID = 2509 (  pg_get_expr		   PGNSP PGUID 12 f f t f s 3 25 "25 26 16" _null_ pg_get_expr_ext - _null_ ));
 DESCR("deparse an encoded expression with pretty-print option");
 
+/* non-persistent series generator */
+DATA(insert OID = 1066 (  generate_series PGNSP PGUID 12 f f t t v 3 23 "23 23 23" _null_ generate_series_step_int4 - _null_ ));
+DESCR("non-persistent series generator");
+DATA(insert OID = 1067 (  generate_series PGNSP PGUID 12 f f t t v 2 23 "23 23" _null_ generate_series_int4 - _null_ ));
+DESCR("non-persistent series generator");
+
+DATA(insert OID = 1068 (  generate_series PGNSP PGUID 12 f f t t v 3 20 "20 20 20" _null_ generate_series_step_int8 - _null_ ));
+DESCR("non-persistent series generator");
+DATA(insert OID = 1069 (  generate_series PGNSP PGUID 12 f f t t v 2 20 "20 20" _null_ generate_series_int8 - _null_ ));
+DESCR("non-persistent series generator");
+
 
 /*
  * Symbolic values for provolatile column: these indicate whether the result

@@ -175,6 +175,8 @@ extern Datum int2xor(PG_FUNCTION_ARGS);
 extern Datum int2not(PG_FUNCTION_ARGS);
 extern Datum int2shl(PG_FUNCTION_ARGS);
 extern Datum int2shr(PG_FUNCTION_ARGS);
+extern Datum generate_series_int4(PG_FUNCTION_ARGS);
+extern Datum generate_series_step_int4(PG_FUNCTION_ARGS);
 
 /* name.c */
 extern Datum namein(PG_FUNCTION_ARGS);
