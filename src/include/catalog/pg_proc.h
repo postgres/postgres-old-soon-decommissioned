@@ -3668,9 +3668,10 @@ extern Oid ProcedureCreate(const char *procedureName,
 				bool security_definer,
 				bool isStrict,
 				char volatility,
-				int parameterCount,
-				const Oid *parameterTypes,
-				const char *parameterNames[]);
+				oidvector *parameterTypes,
+				Datum allParameterTypes,
+				Datum parameterModes,
+				Datum parameterNames);
 
 extern bool function_parse_error_transpose(const char *prosrc);
 

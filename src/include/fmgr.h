@@ -18,6 +18,9 @@
 #ifndef FMGR_H
 #define FMGR_H
 
+/* We don't want to include primnodes.h here, so make a stub reference */
+struct Node;
+
 
 /*
  * All functions that can be called directly by fmgr must have this signature.
@@ -402,6 +405,7 @@ extern void clear_external_function_hash(void *filehandle);
 extern Oid	fmgr_internal_function(const char *proname);
 extern Oid	get_fn_expr_rettype(FmgrInfo *flinfo);
 extern Oid	get_fn_expr_argtype(FmgrInfo *flinfo, int argnum);
+extern Oid	get_call_expr_argtype(struct Node *expr, int argnum);
 
 /*
  * Routines in dfmgr.c

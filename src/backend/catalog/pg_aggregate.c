@@ -180,7 +180,7 @@ AggregateCreate(const char *aggName,
 							  false,	/* doesn't return a set */
 							  finaltype,		/* returnType */
 							  INTERNALlanguageId,		/* languageObjectId */
-							  0,
+							  InvalidOid,		/* no validator */
 							  "aggregate_dummy",		/* placeholder proc */
 							  "-",		/* probin */
 							  true,		/* isAgg */
@@ -189,9 +189,10 @@ AggregateCreate(const char *aggName,
 							  false,	/* isStrict (not needed for agg) */
 							  PROVOLATILE_IMMUTABLE,	/* volatility (not
 														 * needed for agg) */
-							  1,	/* parameterCount */
-							  fnArgs,	/* parameterTypes */
-							  NULL);	/* parameterNames */
+							  buildoidvector(fnArgs, 1),	/* paramTypes */
+							  PointerGetDatum(NULL),	/* allParamTypes */
+							  PointerGetDatum(NULL),	/* parameterModes */
+							  PointerGetDatum(NULL));	/* parameterNames */
 
 	/*
 	 * Okay to create the pg_aggregate entry.

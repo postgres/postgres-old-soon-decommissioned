@@ -20,7 +20,7 @@
 
 extern Datum fmgr_sql(PG_FUNCTION_ARGS);
 
-extern bool check_sql_fn_retval(Oid rettype, char fn_typtype,
+extern bool check_sql_fn_retval(Oid func_id, Oid rettype,
 								List *queryTreeList,
 								JunkFilter **junkFilter);
 

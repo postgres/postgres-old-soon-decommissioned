@@ -2319,8 +2319,7 @@ inline_function(Oid funcid, Oid result_type, List *args,
 	 * probably not important, but let's be careful.)
 	 */
 	if (polymorphic)
-		(void) check_sql_fn_retval(result_type, get_typtype(result_type),
-								   querytree_list, NULL);
+		(void) check_sql_fn_retval(funcid, result_type, querytree_list, NULL);
 
 	/*
 	 * Additional validity checks on the expression.  It mustn't return a
