@@ -205,9 +205,11 @@ adjustJoinTreeList(Query *parsetree, bool removert, int rt_index)
 		{
 			RangeTblRef *rtr = lfirst(jjt);
 
-			if (IsA(rtr, RangeTblRef) &&rtr->rtindex == rt_index)
+			if (IsA(rtr, RangeTblRef) &&
+				rtr->rtindex == rt_index)
 			{
 				newjointree = lremove(rtr, newjointree);
+				/* foreach is safe because we exit loop after lremove... */
 				break;
 			}
 		}

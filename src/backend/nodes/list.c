@@ -269,7 +269,6 @@ llasti(List *l)
  *	Free the List nodes of a list
  *	The pointed-to nodes, if any, are NOT freed.
  *	This works for integer lists too.
- *
  */
 void
 freeList(List *list)
@@ -487,6 +486,7 @@ lremove(void *elem, List *list)
 			result = lnext(l);
 		else
 			lnext(prev) = lnext(l);
+		pfree(l);
 	}
 	return result;
 }
@@ -518,6 +518,7 @@ LispRemove(void *elem, List *list)
 			result = lnext(l);
 		else
 			lnext(prev) = lnext(l);
+		pfree(l);
 	}
 	return result;
 }
@@ -545,6 +546,7 @@ lremovei(int elem, List *list)
 			result = lnext(l);
 		else
 			lnext(prev) = lnext(l);
+		pfree(l);
 	}
 	return result;
 }

@@ -101,11 +101,16 @@ add_equijoined_keys(Query *root, RestrictInfo *restrictinfo)
 	 */
 	newset = NIL;
 
-	foreach(cursetlink, root->equi_key_list)
+	/* cannot use foreach here because of possible lremove */
+	cursetlink = root->equi_key_list;
+	while (cursetlink)
 	{
 		List	   *curset = lfirst(cursetlink);
 		bool		item1here = member(item1, curset);
 		bool		item2here = member(item2, curset);
+
+		/* must advance cursetlink before lremove possibly pfree's it */
+		cursetlink = lnext(cursetlink);
 
 		if (item1here || item2here)
 		{
@@ -128,9 +133,7 @@ add_equijoined_keys(Query *root, RestrictInfo *restrictinfo)
 			newset = set_union(newset, curset);
 
 			/*
-			 * Remove old set from equi_key_list.  NOTE this does not
-			 * change lnext(cursetlink), so the foreach loop doesn't
-			 * break.
+			 * Remove old set from equi_key_list.
 			 */
 			root->equi_key_list = lremove(curset, root->equi_key_list);
 			freeList(curset);	/* might as well recycle old cons cells */

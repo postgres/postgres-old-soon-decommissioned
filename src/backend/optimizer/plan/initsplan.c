@@ -910,12 +910,17 @@ qual_is_redundant(Query *root,
 	do
 	{
 		someadded = false;
-		foreach(olditem, oldquals)
+		/* cannot use foreach here because of possible lremove */
+		olditem = oldquals;
+		while (olditem)
 		{
 			RestrictInfo *oldrinfo = (RestrictInfo *) lfirst(olditem);
 			Node	   *oldleft = (Node *) get_leftop(oldrinfo->clause);
 			Node	   *oldright = (Node *) get_rightop(oldrinfo->clause);
 			Node	   *newguy = NULL;
+
+			/* must advance olditem before lremove possibly pfree's it */
+			olditem = lnext(olditem);
 
 			if (member(oldleft, equalvars))
 				newguy = oldright;
@@ -930,8 +935,6 @@ qual_is_redundant(Query *root,
 
 			/*
 			 * Remove this qual from list, since we don't need it anymore.
-			 * Note this doesn't break the foreach() loop, since lremove
-			 * doesn't touch the next-link of the removed cons cell.
 			 */
 			oldquals = lremove(oldrinfo, oldquals);
 		}
