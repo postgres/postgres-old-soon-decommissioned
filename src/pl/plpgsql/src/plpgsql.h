@@ -142,14 +142,15 @@ typedef struct
 
 
 typedef struct
-{								/* Postgres base data type		*/
+{								/* Postgres data type		*/
 	char	   *typname;
-	Oid			typoid;
-	FmgrInfo	typinput;
-	Oid			typelem;
-	int16		typlen;
+	Oid			typoid;			/* OID of the data type */
+	int16		typlen;			/* stuff copied from its pg_type entry */
 	bool		typbyval;
-	int32		atttypmod;
+	Oid			typrelid;
+	Oid			typelem;
+	FmgrInfo	typinput;		/* lookup info for typinput function */
+	int32		atttypmod;		/* typmod (taken from someplace else) */
 }	PLpgSQL_type;
 
 
@@ -600,6 +601,7 @@ extern int	plpgsql_parse_tripwordtype(char *word);
 extern int	plpgsql_parse_wordrowtype(char *word);
 extern int	plpgsql_parse_dblwordrowtype(char *word);
 extern PLpgSQL_type *plpgsql_parse_datatype(char *string);
+extern PLpgSQL_row *build_rowtype(Oid classOid);
 extern void plpgsql_adddatum(PLpgSQL_datum * new);
 extern int	plpgsql_add_initdatums(int **varnos);
 extern void plpgsql_yyerror(const char *s);
