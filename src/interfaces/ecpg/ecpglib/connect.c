@@ -164,6 +164,9 @@ ECPGnoticeReceiver(void *arg, const PGresult *result)
 
 	int			sqlcode;
 
+	if (sqlstate == NULL)
+		sqlstate = ECPG_SQLSTATE_ECPG_INTERNAL_ERROR;
+
 	/* these are not warnings */
 	if (strncmp(sqlstate, "00", 2) == 0)
 		return;
