@@ -793,6 +793,7 @@ typedef enum AlterTableType
 	AT_ToastTable,				/* create toast table */
 	AT_ChangeOwner,				/* change owner */
 	AT_ClusterOn,				/* CLUSTER ON */
+	AT_DropCluster,				/* SET WITHOUT CLUSTER */
 	AT_DropOids					/* SET WITHOUT OIDS */
 } AlterTableType;
 
