@@ -261,6 +261,7 @@ DATA(insert (  701	 25  840 i ));
 DATA(insert (	25	701  838 e ));
 DATA(insert (  829	 25  752 e ));
 DATA(insert (	25	829  767 e ));
+DATA(insert (  650	 25  730 e ));
 DATA(insert (  869	 25  730 e ));
 DATA(insert (	25	869 1713 e ));
 DATA(insert ( 1082	 25  749 i ));
