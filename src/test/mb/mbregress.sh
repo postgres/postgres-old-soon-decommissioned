@@ -33,7 +33,7 @@ do
 		unset PGCLIENTENCODING
 	else
 		destroydb $i >/dev/null 2>&1
-		createdb -E `echo $i|tr "[a-z]" "[A-Z]"` $i >/dev/null
+		createdb -E `echo $i | tr 'abcdefghijklmnopqrstuvwxyz' 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'` $i >/dev/null
 		$PSQL $i < sql/${i}.sql > results/${i}.out 2>&1
 	fi
 

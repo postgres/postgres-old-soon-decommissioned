@@ -219,7 +219,7 @@ PGDATESTYLE="Postgres,US"; export PGDATESTYLE
 # ----------
 echo "=============== Creating regression database...        ================"
 if [ -n "$MULTIBYTE" ];then
-    mbtests=`echo $MULTIBYTE | tr "[A-Z]" "[a-z]"`
+    mbtests=`echo $MULTIBYTE | tr 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 'abcdefghijklmnopqrstuvwxyz'`
     PGCLIENTENCODING="$MULTIBYTE"
     export PGCLIENTENCODING
     ENCODINGOPT="-E $MULTIBYTE"
