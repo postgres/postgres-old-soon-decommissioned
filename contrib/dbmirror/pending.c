@@ -225,6 +225,11 @@ storeKeyInfo(char *cpTableName, HeapTuple tTupleData,
 
 	/* pplan = SPI_saveplan(pplan); */
 	cpKeyData = packageData(tTupleData, tTupleDesc, tpTrigData, PRIMARY);
+	if (cpKeyData == NULL)
+	{
+		elog(ERROR,"Could not determine primary key data");
+		return -1;
+	}
 #if defined DEBUG_OUTPUT
 	elog(NOTICE, cpKeyData);
 #endif
