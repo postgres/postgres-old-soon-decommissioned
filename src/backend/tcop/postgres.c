@@ -2656,11 +2656,9 @@ PostgresMain(int argc, char *argv[], const char *username)
 		/* Need not flush since ReadyForQuery will do it. */
 	}
 
+	/* Welcome banner for non-frontend case */
 	if (!IsUnderPostmaster)
-	{
-		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.377 $ $Date: 2003/11/29 19:51:57 $\n");
-	}
+		printf("\nPostgreSQL stand-alone backend %s\n", PG_VERSION);
 
 	/*
 	 * Create the memory context we will use in the main loop.
