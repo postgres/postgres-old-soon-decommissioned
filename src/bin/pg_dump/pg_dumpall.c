@@ -279,13 +279,13 @@ dumpUsers(PGconn *conn)
 	if (server_version >= 70100)
 		res = executeQuery(conn,
 						   "SELECT usename, usesysid, passwd, usecreatedb, "
-						   "usesuper, CAST(valuntil AS timestamp) "
+						   "usesuper, valuntil "
 						   "FROM pg_shadow "
 						   "WHERE usesysid <> (SELECT datdba FROM pg_database WHERE datname = 'template0')");
 	else
 		res = executeQuery(conn,
 						   "SELECT usename, usesysid, passwd, usecreatedb, "
-						   "usesuper, CAST(valuntil AS timestamp) "
+						   "usesuper, valuntil "
 						   "FROM pg_shadow "
 						   "WHERE usesysid <> (SELECT datdba FROM pg_database WHERE datname = 'template1')");
 
