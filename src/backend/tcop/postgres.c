@@ -2190,7 +2190,8 @@ PostgresMain(int argc, char *argv[], const char *username)
 				gettext("%s: could not locate my own executable path"),
 						argv[0]);
 	
-	get_pkglib_path(my_exec_path, pkglib_path);
+	if (pkglib_path[0] == '\0')
+		get_pkglib_path(my_exec_path, pkglib_path);
 
 	/*
 	 * Set default values for command-line options.
