@@ -15,6 +15,7 @@
 #include <sys/sysmips.h>
 
 #include "c.h"
+#include "port-protos.h"
 
 void
 init_address_fixup()

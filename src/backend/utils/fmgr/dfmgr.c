@@ -27,6 +27,9 @@
 #include "nodes/pg_list.h"
 
 #include "port-protos.h"     	/* system specific function prototypes */
+#ifdef __ultrix
+#include <dl.h>
+#endif
 
 #include "catalog/catname.h"
 #include "utils/syscache.h"
