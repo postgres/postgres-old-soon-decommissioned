@@ -72,7 +72,7 @@ fi
 libdir='@libdir@'
 bindir='@bindir@'
 datadir='@datadir@'
-host_platform='@host_triple@'
+host_platform='@host_tuple@'
 
 unset mode
 unset schedule
