@@ -13,7 +13,11 @@
  *-------------------------------------------------------------------------
  */
 
-#if defined(bsdi) || defined(netbsd)
+/*
+ * We have to use the native defines here because configure hasn't
+ * completed yet.
+ */
+#if defined(__bsdi__) || defined(__NetBSD__)
 
 #include "c.h"
 
