@@ -117,11 +117,14 @@ $Header$
       </listitem>
       <listitem>
        <para>
-	<envar>PGPASSWORD</envar>
-	sets the password used if the backend demands password
-	authentication. This is not recommended because the password can
-	be read by others using the <command>ps</command> command with special options
-	on some platforms.
+        <envar>PGPASSWORD</envar>
+        sets the password used if the backend demands password
+        authentication.  This is deprecated; use <envar>PGPASSWORDFILE</envar> instead.
+      <listitem>
+       <para>
+	<envar>PGPASSWORDFILE</envar>
+	sets the password file used if the backend demands password
+	authentication. Refer to the libpq documentation for more details.
        </para>
       </listitem>
       <listitem>

@@ -260,15 +260,16 @@ When opening a connection a given database name is always converted to
 lower-case, unless it is surrounded by double quotes. All unspecified 
 parameters are replaced by environment variables or by hard coded defaults: 
 
-    parameter  environment variable  hard coded default
-    --------------------------------------------------
-    host       PGHOST                localhost
-    port       PGPORT                5432
-    options    PGOPTIONS             ""
-    tty        PGTTY                 ""
-    dbname     PGDATABASE            current userid
-    user       PGUSER                current userid
-    password   PGPASSWORD            ""
+    parameter     environment variable  hard coded default
+    ------------------------------------------------------
+    host           PGHOST                localhost
+    port           PGPORT                5432
+    options        PGOPTIONS             ""
+    tty            PGTTY                 ""
+    dbname         PGDATABASE            current userid
+    user           PGUSER                current userid
+    password       PGPASSWORD            ""
+    passwordfile   PGPASSWORDFILE        ""
 
 Using appropriate methods you can access almost all fields of the 
 returned PGconn structure. 
