@@ -21,8 +21,8 @@
 #include <getopt.h>
 #endif
 
-#include <libpq-fe.h>
-#include <version.h>
+#include "libpq-fe.h"
+#include "version.h"
 
 #include "command.h"
 #include "common.h"
