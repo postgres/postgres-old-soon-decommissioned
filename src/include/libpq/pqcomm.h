@@ -26,11 +26,6 @@
 #include <netinet/in.h>
 #endif
 
-/*
- * Internal send/receive buffers in libpq.
- */
-#define PQ_BUFFER_SIZE 8192
-
 /* Define a generic socket address type. */
 
 typedef union SockAddr
