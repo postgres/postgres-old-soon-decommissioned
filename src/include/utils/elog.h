@@ -34,16 +34,15 @@ extern int Use_syslog;
  * ProcDiePending will be honored at critical section exit,
  * but QueryCancel is only checked at specified points.
  */
-extern uint32 CritSectionCount;	/* duplicates access/xlog.h */
+extern volatile uint32 CritSectionCount;	/* duplicates access/xlog.h */
 extern volatile bool ProcDiePending;
 extern void ForceProcDie(void);	/* in postgres.c */
 
-#define	START_CRIT_CODE		(CritSectionCount++)
+#define	START_CRIT_SECTION()  (CritSectionCount++)
 
-#define END_CRIT_CODE	\
+#define END_CRIT_SECTION() \
 	do { \
-		if (CritSectionCount == 0) \
-			elog(STOP, "Not in critical section"); \
+		Assert(CritSectionCount > 0); \
 		CritSectionCount--; \
 		if (CritSectionCount == 0 && ProcDiePending) \
 			ForceProcDie(); \

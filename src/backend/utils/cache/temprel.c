@@ -263,8 +263,6 @@ AtEOXact_temp_relations(bool isCommit)
 			temp_rel->created_in_cur_xact)
 		{
 			/* This entry must be removed */
-			pfree(temp_rel);
-			/* remove from linked list */
 			if (prev != NIL)
 			{
 				lnext(prev) = lnext(l);
@@ -277,6 +275,7 @@ AtEOXact_temp_relations(bool isCommit)
 				pfree(l);
 				l = temp_rels;
 			}
+			pfree(temp_rel);
 		}
 		else
 		{
