@@ -250,8 +250,8 @@ tableList(PsqlSettings * ps, bool deep_tablelist, char table_index_both)
  		default:	strcat(listbuf, "WHERE ( relkind = 'r' OR relkind = 'i') ");
  		 		break;
  	}
-    strcat(listbuf, "  and relname !~ '^pg_'");
-    strcat(listbuf, "  and relname !~ '^Inv[0-9]+'");
+	strcat(listbuf, "  and relname !~ '^pg_'");
+	strcat(listbuf, "  and relname !~ '^xin[vx][0-9]+'");
     /*
      * the usesysid = relowner won't work on stock 1.0 dbs, need to add in
      * the int4oideq function
@@ -341,7 +341,7 @@ rightsList(PsqlSettings * ps)
     strcat(listbuf, "  FROM pg_class, pg_user ");
     strcat(listbuf, "WHERE ( relkind = 'r' OR relkind = 'i') "); 
     strcat(listbuf, "  and relname !~ '^pg_'");
-    strcat(listbuf, "  and relname !~ '^Inv[0-9]+'");
+    strcat(listbuf, "  and relname !~ '^xin[vx][0-9]+'");
     strcat(listbuf, "  and usesysid = relowner");
     strcat(listbuf, "  ORDER BY relname ");
     if (!(res = PSQLexec(ps, listbuf)))
@@ -1174,9 +1174,9 @@ HandleSlashCmds(PsqlSettings * settings,
     case 'd':			/* \d describe tables or columns in a table */
  	if (strncmp(cmd, "dt", 2) == 0) {		/* only tables */
  		tableList(settings, 0, 't');
- 	} else if (strncmp(cmd, "di", 2) == 0) {	/* only tables */
+ 	} else if (strncmp(cmd, "di", 2) == 0) {	/* only indicies */
  		tableList(settings, 0, 'i');
- 	} else if (!optarg) {				/* show'em both */
+ 	} else if (!optarg) {				/* show tables and indicies */
  	    tableList(settings, 0, 'b');
  	} else if (strcmp(optarg, "*") == 0) {		/* show everything */
  	    tableList(settings, 0, 'b');
