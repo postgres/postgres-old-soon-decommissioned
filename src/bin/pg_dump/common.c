@@ -16,6 +16,14 @@
  *	 - Added single. quote to twin single quote expansion for 'insert' string
  *	   mode.
  *
+ * Modifications 14-Sep-2000 - pjw@rhyme.com.au 
+ *	-	Added enum for findTypeByOid to specify how to handle OID and which 
+ *		string to return - formatted type, or base type. If the base type
+ *		is returned then fmtId is called on the string.
+ *
+ *		BEWARE: Since fmtId uses a static buffer, using 'useBaseTypeName' on more
+ *				than one call in a line will cause problems.
+ *
  *-------------------------------------------------------------------------
  */
 
@@ -50,17 +58,32 @@ static int	strInArray(const char *pattern, char **arr, int arr_size);
  */
 
 char *
-findTypeByOid(TypeInfo *tinfo, int numTypes, const char *oid)
+findTypeByOid(TypeInfo *tinfo, int numTypes, const char *oid, OidOptions opts)
 {
 	int			i;
 
-	if (strcmp(oid, "0") == 0)
-		return g_opaque_type;
+	if (strcmp(oid, "0") == 0) {
+
+		if ( (opts & zeroAsOpaque) != 0 ) {
+
+			return g_opaque_type;
+
+		} else if ( (opts & zeroAsAny) != 0 ) {
+
+			return "'any'";
+
+		}
+	}
 
 	for (i = 0; i < numTypes; i++)
 	{
-		if (strcmp(tinfo[i].oid, oid) == 0)
-			return tinfo[i].typname;
+		if (strcmp(tinfo[i].oid, oid) == 0) {
+			if ( (opts & useBaseTypeName) != 0 ) {
+				return fmtId(tinfo[i].typname, false);
+			} else {
+				return tinfo[i].typedefn;
+			}
+		}
 	}
 
 	/* should never get here */
