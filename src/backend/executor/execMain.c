@@ -530,6 +530,9 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 		 */
 		intoName = parseTree->into;
 		archiveMode = 'n';
+
+		/* fixup to prevent zero-length columns in create */
+		setVarAttrLenForCreateTable(tupType, targetList, rangeTable);
 		
 		intoRelationId = heap_create(intoName,
 					     intoName, /* not used */
@@ -537,6 +540,8 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 					     DEFAULT_SMGR,
 					     tupType);
 		
+		resetVarAttrLenForCreateTable(tupType);
+
 		/* ----------------
 		 *  XXX rather than having to call setheapoverride(true)
 		 *	and then back to false, we should change the

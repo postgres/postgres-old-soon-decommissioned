@@ -174,6 +174,9 @@ extern IndexTuple ExecFormIndexTuple(HeapTuple heapTuple,
 	Relation heapRelation, Relation indexRelation, IndexInfo *indexInfo);
 extern void ExecInsertIndexTuples(TupleTableSlot *slot, ItemPointer tupleid,
 				      EState *estate, bool is_update);
+extern void resetVarAttrLenForCreateTable(TupleDesc tupType);
+extern void setVarAttrLenForCreateTable(TupleDesc tupType,
+			List *targetList, List *rangeTable);
 
 
 /* ----------------------------------------------------------------
