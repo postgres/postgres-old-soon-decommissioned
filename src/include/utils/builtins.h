@@ -17,7 +17,6 @@
 #include "nodes/relation.h"		/* for amcostestimate parameters */
 #include "storage/itemptr.h"
 #include "utils/inet.h"
-#include "utils/geo_decls.h"
 #include "utils/numeric.h"
 #include "utils/lztext.h"
 
@@ -173,17 +172,6 @@ extern Datum btabstimecmp(PG_FUNCTION_ARGS);
 extern Datum btcharcmp(PG_FUNCTION_ARGS);
 extern Datum btnamecmp(PG_FUNCTION_ARGS);
 extern Datum bttextcmp(PG_FUNCTION_ARGS);
-
-/* support routines for the rtree access method, by opclass */
-extern BOX *rt_box_union(BOX *a, BOX *b);
-extern BOX *rt_box_inter(BOX *a, BOX *b);
-extern void rt_box_size(BOX *a, float *size);
-extern void rt_bigbox_size(BOX *a, float *size);
-extern Datum rt_poly_size(PG_FUNCTION_ARGS);
-extern POLYGON *rt_poly_union(POLYGON *a, POLYGON *b);
-extern POLYGON *rt_poly_inter(POLYGON *a, POLYGON *b);
-
-/* arrayfuncs.c */
 
 /* filename.c */
 extern char *filename_in(char *file);
@@ -393,7 +381,6 @@ extern Datum currtid_byreloid(PG_FUNCTION_ARGS);
 extern Datum currtid_byrelname(PG_FUNCTION_ARGS);
 
 /* varchar.c */
-
 extern Datum bpcharin(PG_FUNCTION_ARGS);
 extern Datum bpcharout(PG_FUNCTION_ARGS);
 extern Datum bpchar(PG_FUNCTION_ARGS);

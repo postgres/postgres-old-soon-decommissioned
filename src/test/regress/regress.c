@@ -120,7 +120,8 @@ POLYGON    *poly;
 
 	sprintf(buf, "%c", RDELIM);
 	strcat(output, buf);
-	return path_in(output);
+	return DatumGetPathP(DirectFunctionCall1(path_in,
+											 CStringGetDatum(output)));
 }
 
 /* return the point where two paths intersect.	Assumes that they do. */

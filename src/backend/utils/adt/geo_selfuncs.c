@@ -18,7 +18,7 @@
  */
 #include "postgres.h"
 
-#include "utils/builtins.h"
+#include "utils/geo_decls.h"
 
 
 /*
