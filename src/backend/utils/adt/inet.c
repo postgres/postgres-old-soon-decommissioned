@@ -19,7 +19,7 @@
 #include <postgres.h>
 #include <utils/palloc.h>
 #include <utils/builtins.h>
-#include <utils/network.h>
+#include <utils/inet.h>
 
 static int v4bitncmp(unsigned int a1, unsigned int a2, int bits);
 

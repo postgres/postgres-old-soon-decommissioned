@@ -28,7 +28,7 @@
 #include <utils/nabstime.h>
 #include <utils/int8.h>
 #include <utils/cash.h>
-#include <utils/network.h>
+#include <utils/inet.h>
 #include <utils/rel.h>
 
 /*
