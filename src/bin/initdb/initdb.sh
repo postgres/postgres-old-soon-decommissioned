@@ -385,7 +385,7 @@ then
 else
     if [ ! -d "$PGDATA" ]; then
         echo "Creating directory $PGDATA"
-        mkdir "$PGDATA" || exit_nicely
+        mkdir -p "$PGDATA" >/dev/null 2>&1 || mkdir "$PGDATA" || exit_nicely
         made_new_pgdata=yes
     else
         echo "Fixing permissions on existing directory $PGDATA"
