@@ -86,6 +86,10 @@ extern TupleDesc ExecutorStart(QueryDesc *queryDesc, EState *estate);
 extern TupleTableSlot *ExecutorRun(QueryDesc *queryDesc, EState *estate, int feature, int count);
 extern void ExecutorEnd(QueryDesc *queryDesc, EState *estate);
 extern HeapTuple ExecConstraints(char *caller, Relation rel, HeapTuple tuple);
+#ifdef QUERY_LIMIT
+extern int ExecutorLimit(int limit);
+extern int ExecutorGetLimit(void);
+#endif
 
 /*
  * prototypes from functions in execProcnode.c

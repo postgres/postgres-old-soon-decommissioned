@@ -76,6 +76,12 @@ by default. It's not used by GEQO anyway.
 	off	- do not use right-hand plan evaluation
 .fi
 
+.PP
+.IR QUERY_LIMIT
+restricts the number of rows returned by a query.
+The default is unlimited.
+
+
 .SH EXAMPLES
 .nf
 --
