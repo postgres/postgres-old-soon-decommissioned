@@ -62,8 +62,8 @@ static void _skipData(ArchiveHandle *AH);
 static void _skipBlobs(ArchiveHandle *AH);
 
 static void _StartBlobs(ArchiveHandle *AH, TocEntry *te);
-static void _StartBlob(ArchiveHandle *AH, TocEntry *te, int oid);
-static void _EndBlob(ArchiveHandle *AH, TocEntry *te, int oid);
+static void _StartBlob(ArchiveHandle *AH, TocEntry *te, Oid oid);
+static void _EndBlob(ArchiveHandle *AH, TocEntry *te, Oid oid);
 static void _EndBlobs(ArchiveHandle *AH, TocEntry *te);
 static void _LoadBlobs(ArchiveHandle *AH);
 
@@ -384,7 +384,7 @@ _StartBlobs(ArchiveHandle *AH, TocEntry *te)
  * Must save the passed OID for retrieval at restore-time.
  */
 static void
-_StartBlob(ArchiveHandle *AH, TocEntry *te, int oid)
+_StartBlob(ArchiveHandle *AH, TocEntry *te, Oid oid)
 {
 	if (oid == 0)
 		die_horribly(AH, "%s: illegal OID for BLOB (%d)\n", progname, oid);
@@ -400,7 +400,7 @@ _StartBlob(ArchiveHandle *AH, TocEntry *te, int oid)
  *
  */
 static void
-_EndBlob(ArchiveHandle *AH, TocEntry *te, int oid)
+_EndBlob(ArchiveHandle *AH, TocEntry *te, Oid oid)
 {
 	_EndDataCompressor(AH, te);
 }

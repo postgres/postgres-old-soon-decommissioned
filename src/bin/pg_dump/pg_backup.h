@@ -47,6 +47,10 @@
 
 #include "libpq-fe.h"
 
+#define atooid(x)  ((Oid) strtoul((x), NULL, 10))
+#define oidcmp(x,y) ( ((x) < (y) ? -1 : ((x) > (y)) ?  1 : 0) )
+#define oideq(x,y) ( (x) == (y) )
+
 typedef enum _archiveFormat
 {
 	archUnknown = 0,
@@ -131,7 +135,7 @@ PGconn *ConnectDatabase(Archive *AH,
 
 /* Called to add a TOC entry */
 extern void ArchiveEntry(Archive *AH, const char *oid, const char *name,
-			 const char *desc, const char *(deps[]), const char *defn,
+			 const char *desc, const char *((*deps)[]), const char *defn,
 		   const char *dropStmt, const char *copyStmt, const char *owner,
 			 DataDumperPtr dumpFn, void *dumpArg);
 
@@ -142,8 +146,8 @@ extern int	WriteData(Archive *AH, const void *data, int dLen);
 extern int	StartBlobs(Archive* AH);
 extern int	EndBlobs(Archive* AH);
 */
-extern int	StartBlob(Archive *AH, int oid);
-extern int	EndBlob(Archive *AH, int oid);
+extern int	StartBlob(Archive *AH, Oid oid);
+extern int	EndBlob(Archive *AH, Oid oid);
 
 extern void CloseArchive(Archive *AH);
 
