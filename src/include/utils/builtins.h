@@ -662,6 +662,7 @@ extern Datum quote_literal(PG_FUNCTION_ARGS);
 /* guc.c */
 extern Datum show_config_by_name(PG_FUNCTION_ARGS);
 extern Datum set_config_by_name(PG_FUNCTION_ARGS);
+extern Datum show_all_settings(PG_FUNCTION_ARGS);
 
 /* catalog/pg_conversion.c */
 extern Datum pg_convert3(PG_FUNCTION_ARGS);

@@ -2885,6 +2885,8 @@ DATA(insert OID = 2077 (  current_setting	PGNSP PGUID 12 f f t f s 1 25 "25" sho
 DESCR("SHOW X as a function");
 DATA(insert OID = 2078 (  set_config		PGNSP PGUID 12 f f f f v 3 25 "25 25 16" set_config_by_name - _null_ ));
 DESCR("SET X as a function");
+DATA(insert OID = 2084 (  pg_show_all_settings	PGNSP PGUID 12 f f t t s 0 2249 "" show_all_settings - _null_ ));
+DESCR("SHOW ALL as a function");
 
 DATA(insert OID = 2079 (  pg_table_is_visible		PGNSP PGUID 12 f f t f s 1 16 "26"  pg_table_is_visible - _null_ ));
 DESCR("is table visible in search path?");

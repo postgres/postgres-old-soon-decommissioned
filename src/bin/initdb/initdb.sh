@@ -1015,6 +1015,21 @@ CREATE VIEW pg_stat_database AS \
             pg_stat_get_db_blocks_hit(D.oid) AS blks_hit \
     FROM pg_database D;
 
+CREATE VIEW pg_settings AS \
+    SELECT \
+            A.name, \
+            A.setting \
+    FROM pg_show_all_settings() AS A(name text, setting text);
+
+CREATE RULE pg_settings_u AS \
+    ON UPDATE TO pg_settings \
+    WHERE new.name = old.name DO \
+    SELECT set_config(old.name, new.setting, 'f');
+
+CREATE RULE pg_settings_n AS \
+    ON UPDATE TO pg_settings \
+    DO INSTEAD NOTHING;
+
 EOF
 if [ "$?" -ne 0 ]; then
     exit_nicely
