@@ -35,16 +35,16 @@
   </target>
 
   <!-- Builds the XML Tools -->
-  <target name="xml" depends="checks,prepare" if="xml">
+  <target name="compile" depends="checks,prepare">
     <javac srcdir="${src}" destdir="${dest}">
-      <include name="${package}/xml/**" />
+      <include name="${package}/**" />
     </javac>
   </target>
 
   <!-- Builds the various jar files -->
-  <target name="jar" depends="xml">
+  <target name="jar" depends="compile">
     <jar jarfile="${jars}/retepTools.jar" basedir="${dest}">
-      <include name="${package}/xml/**" if="xml" />
+      <include name="${package}/**" />
     </jar>
   </target>
 
