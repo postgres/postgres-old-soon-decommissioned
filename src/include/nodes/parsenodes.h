@@ -774,7 +774,7 @@ typedef struct SortClause {
  */
 typedef struct GroupClause {
     NodeTag		type;
-    Resdom		*resdom;	/* attributes to group on */
+    TargetEntry		*entry;		/* attributes to group on */
     Oid			grpOpoid;	/* the sort operator to use */
 } GroupClause;
 
