@@ -143,11 +143,11 @@ PQexec(char *query)
 	be_portalpush(entry);
 
 	/* ----------------
-	 *	pg_eval_dest will put the query results in a portal which will
+	 *	pg_exec_query_dest will put the query results in a portal which will
 	 *	end up on the top of the portal stack.
 	 * ----------------
 	 */
-	pg_eval_dest(query, (char **) NULL, (Oid *) NULL, 0, Local);
+	pg_exec_query_dest(query, (char **) NULL, (Oid *) NULL, 0, Local);
 
 	/* ----------------
 	 *	pop the portal off the portal stack and return the
