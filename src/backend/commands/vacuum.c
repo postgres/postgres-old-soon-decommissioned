@@ -704,11 +704,12 @@ vac_update_relstats(Oid relid, BlockNumber num_pages, double num_tuples,
  *		We violate no-overwrite semantics here by storing new values for the
  *		statistics columns directly into the tuple that's already on the page.
  *		As with vac_update_relstats, this avoids leaving dead tuples behind
- *		after a VACUUM; which is good since GetRawDatabaseInfo
- *		can get confused by finding dead tuples in pg_database.
+ *		after a VACUUM.
  *
  *		This routine is shared by full and lazy VACUUM.  Note that it is only
  *		applied after a database-wide VACUUM operation.
+ *
+ *		Note that we don't bother to update the flat-file copy of pg_database.
  */
 static void
 vac_update_dbstats(Oid dbid,

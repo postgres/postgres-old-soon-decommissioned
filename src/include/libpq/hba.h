@@ -11,11 +11,8 @@
 #ifndef HBA_H
 #define HBA_H
 
-#ifndef WIN32
-#include <netinet/in.h>
-#endif
-
 #include "nodes/pg_list.h"
+
 
 typedef enum UserAuth
 {
@@ -41,5 +38,7 @@ extern void load_user(void);
 extern void load_group(void);
 extern int	hba_getauthmethod(hbaPort *port);
 extern int	authident(hbaPort *port);
+extern bool	read_pg_database_line(FILE *fp, char *dbname,
+								  Oid *dboid, Oid *dbtablespace);
 
-#endif
+#endif /* HBA_H */

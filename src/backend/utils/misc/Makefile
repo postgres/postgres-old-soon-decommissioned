@@ -1,4 +1,12 @@
-# $PostgreSQL$
+#-------------------------------------------------------------------------
+#
+# Makefile--
+#    Makefile for utils/misc
+#
+# IDENTIFICATION
+#    $PostgreSQL$
+#
+#-------------------------------------------------------------------------
 
 subdir = src/backend/utils/misc
 top_builddir = ../../../..
@@ -6,10 +14,10 @@ include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 
-OBJS = database.o superuser.o guc.o help_config.o ps_status.o
+OBJS = guc.o help_config.o ps_status.o superuser.o
 
 # This location might depend on the installation directories. Therefore
-# we can't subsitute it into config.h.
+# we can't subsitute it into pg_config.h.
 ifdef krb_srvtab
 override CPPFLAGS += -DPG_KRB_SRVTAB='"$(krb_srvtab)"'
 endif

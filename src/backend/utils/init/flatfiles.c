@@ -243,10 +243,12 @@ write_database_file(Relation drel)
 		Form_pg_database dbform = (Form_pg_database) GETSTRUCT(tuple);
 		char	   *datname;
 		Oid			datoid;
+		Oid			dattablespace;
 		TransactionId datfrozenxid;
 
 		datname = NameStr(dbform->datname);
 		datoid = HeapTupleGetOid(tuple);
+		dattablespace = dbform->dattablespace;
 		datfrozenxid = dbform->datfrozenxid;
 
 		/*
@@ -276,13 +278,13 @@ write_database_file(Relation drel)
 		}
 
 		/*
-		 * The file format is: "dbname" oid frozenxid
+		 * The file format is: "dbname" oid tablespace frozenxid
 		 *
 		 * The xid is not needed for backend startup, but may be of use
 		 * for forensic purposes.
 		 */
 		fputs_quote(datname, fp);
-		fprintf(fp, " %u %u\n", datoid, datfrozenxid);
+		fprintf(fp, " %u %u %u\n", datoid, dattablespace, datfrozenxid);
 	}
 	heap_endscan(scan);
 
@@ -829,16 +831,4 @@ flatfile_update_trigger(PG_FUNCTION_ARGS)
 	}
 
 	return PointerGetDatum(NULL);
-}
-
-
-/*
- * Old version of trigger --- remove after we can force an initdb
- */
-extern Datum update_pg_pwd_and_pg_group(PG_FUNCTION_ARGS);
-
-Datum
-update_pg_pwd_and_pg_group(PG_FUNCTION_ARGS)
-{
-	return flatfile_update_trigger(fcinfo);
 }
