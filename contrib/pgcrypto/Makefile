@@ -2,7 +2,7 @@
 # $PostgreSQL$
 #
 
-# either 'builtin', 'mhash', 'openssl'
+# either 'builtin', 'openssl'
 cryptolib = builtin
 
 # either 'builtin', 'system'
@@ -32,12 +32,6 @@ ifeq ($(cryptolib), openssl)
 CRYPTO_CFLAGS = -I/usr/include/openssl
 CRYPTO_LDFLAGS = -lcrypto
 SRCS = openssl.c
-endif
-
-ifeq ($(cryptolib), mhash)
-CRYPTO_CFLAGS = -I/usr/local/include
-CRYPTO_LDFLAGS = -L/usr/local/lib -lmcrypt -lmhash -lltdl
-SRCS = mhash.c
 endif
 
 ifeq ($(cryptsrc), builtin)
