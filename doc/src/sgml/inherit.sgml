@@ -28,7 +28,7 @@ CREATE TABLE capitals (
    <type>text</type>,  a  native  <productname>PostgreSQL</productname>  type  for variable length
    ASCII strings.  The type of the attribute population is
    <type>float</type>,  a  native <productname>PostgreSQL</productname> type for double precision
-   floating point numbers.  State capitals have  an  extra
+   floating-point numbers.  State capitals have  an  extra
    attribute, state, that shows their state.  In <productname>PostgreSQL</productname>,
    a  table  can inherit from zero or more other tables,
    and a query can reference either  all  rows  of  a

@@ -137,7 +137,7 @@ CREATE TABLE weather (
     <type>varchar(80)</type> specifies a data type that can store
     arbitrary character strings up to 80 characters in length.
     <type>int</type> is the normal integer type.  <type>real</type> is
-    a type for storing single precision floating point numbers.
+    a type for storing single precision floating-point numbers.
     <type>date</type> should be self-explanatory.  (Yes, the column of
     type <type>date</type> is also named <literal>date</literal>.
     This may be convenient or confusing -- you choose.)

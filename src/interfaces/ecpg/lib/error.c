@@ -54,7 +54,7 @@ ECPGraise(int line, int code, const char *str)
 
 		case ECPG_FLOAT_FORMAT:
 			snprintf(sqlca.sqlerrm.sqlerrmc, sizeof(sqlca.sqlerrm.sqlerrmc),
-					 "Not correctly formatted floating point type: %s in line %d.", str, line);
+					 "Not correctly formatted floating-point type: %s in line %d.", str, line);
 			break;
 
 		case ECPG_CONVERT_BOOL:

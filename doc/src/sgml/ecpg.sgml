@@ -300,7 +300,7 @@ struct sqlca
       </varlistentry>
 
       <varlistentry>
-       <term><computeroutput>-206 (ECPG_FLOAT_FORMAT): Not correctly formatted floating point type: %s line %d.</computeroutput></term>
+       <term><computeroutput>-206 (ECPG_FLOAT_FORMAT): Not correctly formatted floating-point type: %s line %d.</computeroutput></term>
        <listitem>
         <para>
          This means the host variable is of type <type>float</type> and

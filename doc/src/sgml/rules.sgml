@@ -14,6 +14,9 @@
     </para>
    </note>
 
+   <sect1 id="rules-intro">
+    <title>Introduction</title>
+
 <Para>
      Production rule systems are conceptually simple, but
      there are many subtle points involved in actually using
@@ -42,6 +45,9 @@
  as well as
 <XRef LinkEnd="STON90b">.
 </para>
+
+  </sect1>
+
 <Sect1 id="querytree">
 <Title>What is a Query Tree?</Title>
 
