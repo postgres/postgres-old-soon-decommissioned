@@ -654,7 +654,7 @@ psql_completion(char *text, int start, int end)
 			 pg_strcasecmp(prev3_wd, "TABLE") != 0)
 	{
 		static const char *const list_ALTER[] =
-		{"AGGREGATE", "CONVERSATION", "DATABASE", "DOMAIN", "FUNCTION",
+		{"AGGREGATE", "CONVERSION", "DATABASE", "DOMAIN", "FUNCTION",
 			"GROUP", "INDEX", "LANGUAGE", "OPERATOR", "SCHEMA", "SEQUENCE", "TABLE",
 		"TABLESPACE", "TRIGGER", "TYPE", "USER", NULL};
 
