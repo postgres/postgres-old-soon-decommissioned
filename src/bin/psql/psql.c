@@ -37,12 +37,12 @@
 #ifdef HAVE_LIBREADLINE
 # ifdef HAVE_READLINE_H
 #  include <readline.h>
-#  if defined(HAVE_HISTORY) || defined(HAVE_LIBHISTORY)
+#  if defined(HAVE_HISTORY)
 #   include <history.h>
 #  endif
 # else
 #  include <readline/readline.h>
-#  if defined(HAVE_HISTORY) || defined(HAVE_LIBHISTORY)
+#  if defined(HAVE_READLINE_HISTORY_H)
 #   include <readline/history.h>
 #  endif
 # endif
