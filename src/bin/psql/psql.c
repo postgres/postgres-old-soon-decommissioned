@@ -837,6 +837,7 @@ do_connect(const char *new_dbname,
     else {
 	PGconn          *olddb = settings->db;
 	static char	*userenv = NULL;
+	char		*old_userenv = NULL;
 
 	printf("closing connection to database: %s\n", dbname);
 	if (new_user != NULL) {
@@ -845,10 +846,14 @@ do_connect(const char *new_dbname,
 		   so we have to do it via PGUSER
 		*/
 	    if (userenv != NULL)
-	    	free(userenv);
+	    	old_userenv = userenv;
 	    userenv = malloc(strlen("PGUSER=") + strlen(new_user) + 1);
 	    sprintf(userenv,"PGUSER=%s",new_user);
-	    putenv(userenv); /*Solaris putenv() continues to use memory in env*/
+	    /* putenv() may continue to use memory as part of environment */
+	    putenv(userenv);
+	    /* can delete old memory if we malloc'ed it */
+	    if (old_userenv != NULL)
+	    	free(old_userenv);
 	}
 	settings->db = PQsetdb(PQhost(olddb), PQport(olddb),
 			       NULL, NULL, new_dbname);
