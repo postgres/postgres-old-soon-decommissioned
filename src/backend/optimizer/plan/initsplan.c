@@ -172,7 +172,7 @@ add_clause_to_rels(Query *root, List *clause)
 	/*
 	 * Retrieve all relids and vars contained within the clause.
 	 */
-	clause_relids_vars((Node *) clause, &relids, &vars);
+	clause_get_relids_vars((Node *) clause, &relids, &vars);
 
 
 	clauseinfo->clause = (Expr *) clause;

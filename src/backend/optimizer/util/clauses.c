@@ -352,7 +352,7 @@ pull_constant_clauses(List *quals, List **constantQual)
  *
  */
 void
-clause_relids_vars(Node *clause, List **relids, List **vars)
+clause_get_relids_vars(Node *clause, List **relids, List **vars)
 {
 	List	   *clvars = pull_var_clause(clause);
 	List	   *var_list = NIL;
