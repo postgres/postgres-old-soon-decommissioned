@@ -271,22 +271,6 @@ pg_dump -Fc <replaceable class="parameter">dbname</replaceable> > <replaceable c
    <title>Caveats</title>
 
    <para>
-    <application>pg_dump</> (and by implication
-    <application>pg_dumpall</>) has a few limitations which stem from
-    the difficulty of reconstructing certain information from the system
-    catalogs.
-   </para>
-
-   <para>
-    Specifically, the order in which <application>pg_dump</> writes
-    the objects is not very sophisticated. This can lead to problems
-    for example when functions are used as column default values. The
-    only answer is to manually reorder the dump. If you created
-    circular dependencies in your schema then you will have more work
-    to do.
-   </para>
-
-   <para>
     For reasons of backward compatibility, <application>pg_dump</>
     does not dump large objects by default.<indexterm><primary>large
     object</primary><secondary>backup</secondary></indexterm> To dump
