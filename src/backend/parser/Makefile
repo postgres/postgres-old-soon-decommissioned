@@ -28,7 +28,7 @@ OBJS= analyze.o gram.o keywords.o parser.o parse_agg.o parse_clause.o \
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
-	$(LD) -r -o SUBSYS.o $(OBJS)
+	$(LD) $(LDREL) -o SUBSYS.o $(OBJS)
 
 gram.c parse.h: gram.y
 	$(YACC) $(YFLAGS) $<

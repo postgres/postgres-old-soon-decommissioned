@@ -20,7 +20,7 @@ all: SUBSYS.o global1.bki.source local1_template1.bki.source \
 		global1.description local1_template1.description
 
 SUBSYS.o: $(OBJS)
-	$(LD) -r -o SUBSYS.o $(OBJS)
+	$(LD) $(LDREL) -o SUBSYS.o $(OBJS)
 
 GENBKI= ./genbki.sh
 
