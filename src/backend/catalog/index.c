@@ -57,8 +57,10 @@
 /*
  * macros used in guessing how many tuples are on a page.
  */
-#define AVG_TUPLE_SIZE MinTupleSize
-#define NTUPLES_PER_PAGE(natts) (BLCKSZ/((natts)*AVG_TUPLE_SIZE))
+#define AVG_ATTR_SIZE 8
+#define NTUPLES_PER_PAGE(natts) \
+	((BLCKSZ - MAXALIGN(sizeof (PageHeaderData))) / \
+	((natts) * AVG_ATTR_SIZE + MAXALIGN(sizeof(HeapTupleHeaderData))))
 
 /* non-export function prototypes */
 static Oid GetHeapRelationOid(char *heapRelationName, char *indexRelationName,

@@ -51,7 +51,7 @@ bool		_enable_nestloop_ = true;
 bool		_enable_mergejoin_ = true;
 bool		_enable_hashjoin_ = true;
 
-Cost		_cpu_page_weight_ = _CPU_PAGE_WEIGHT_;
+Cost		 _cpu_page_weight_ = _CPU_PAGE_WEIGHT_;
 Cost		_cpu_index_page_wight_ = _CPU_INDEX_PAGE_WEIGHT_;
 
 /*
