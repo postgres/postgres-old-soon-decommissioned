@@ -1268,6 +1268,7 @@ ExecAppend(TupleTableSlot *slot,
 	 * insert the tuple
 	 */
 	newId = heap_insert(resultRelationDesc, tuple);
+	setLastTid(&(tuple->t_self));
 
 	IncrAppended();
 	(estate->es_processed)++;

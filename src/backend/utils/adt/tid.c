@@ -124,6 +124,11 @@ tidne(PG_FUNCTION_ARGS)
  *
  *	Maybe these implementations should be moved to another place
  */
+static	ItemPointerData	Current_last_tid = { {0, 0}, 0}; 
+void	setLastTid(const ItemPointer tid) 
+{ 
+	Current_last_tid = *tid; 
+} 
 Datum
 currtid_byreloid(PG_FUNCTION_ARGS)
 {
@@ -133,6 +138,11 @@ currtid_byreloid(PG_FUNCTION_ARGS)
 	Relation	rel;
 
 	result = (ItemPointer) palloc(sizeof(ItemPointerData));
+	if (!reloid) 
+	{ 
+		*result = Current_last_tid; 
+		PG_RETURN_ITEMPOINTER(result); 
+	} 
 	ItemPointerCopy(tid, result);
 	if ((rel = heap_open(reloid, AccessShareLock)) != NULL)
 	{
