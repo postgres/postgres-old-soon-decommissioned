@@ -401,10 +401,9 @@ StreamConnection(int server_fd, Port *port)
 	}
 
 #ifdef SCO_ACCEPT_BUG
-
 	/*
 	 * UnixWare 7+ and OpenServer 5.0.4 are known to have this bug, but it
-	 * shouldn't hurt it catch if for all of them.
+	 * shouldn't hurt to catch it for all versions of those platforms.
 	 */
 	if (port->raddr.sa.sa_family == 0)
 		port->raddr.sa.sa_family = AF_UNIX;
@@ -437,9 +436,6 @@ StreamConnection(int server_fd, Port *port)
 			return STATUS_ERROR;
 		}
 	}
-
-	/* reset to non-blocking */
-	fcntl(port->sock, F_SETFL, 1);
 
 	return STATUS_OK;
 }
