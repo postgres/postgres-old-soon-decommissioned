@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Thu Aug  7 22:00:19 EDT 2003
+Last updated:		Fri Aug  8 12:33:31 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -249,7 +249,6 @@ Commands
 	  get_employee_salary(emp_id => 12345, tax_year => 2001)
 	o Add PL/PgSQL packages
 	o Allow array declarations and other data types in PL/PgSQL DECLARE
-	o Add PL/PgSQL PROCEDURES that can return multiple values
 	o Add table function support to pltcl, plperl, plpython
 	o -Make PL/PgSQL %TYPE schema-aware
 	o Allow PL/PgSQL to support array element assignment
