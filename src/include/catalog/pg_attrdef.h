@@ -1,10 +1,14 @@
 /*-------------------------------------------------------------------------
  *
  * pg_attrdef.h
+ *	  definition of the system "attribute defaults" relation (pg_attrdef)
+ *	  along with the relation's initial contents.
  *
  *
  * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
+ *
+ * $Id$
  *
  * NOTES
  *	  the genbki.sh script reads this file and generates .bki
@@ -27,7 +31,7 @@
  *		typedef struct FormData_pg_attrdef
  * ----------------
  */
-CATALOG(pg_attrdef) BKI_WITHOUT_OIDS
+CATALOG(pg_attrdef)
 {
 	Oid			adrelid;
 	int2		adnum;

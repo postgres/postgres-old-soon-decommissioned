@@ -63,6 +63,9 @@ extern int	RemoveRelConstraints(Relation rel, const char *constrName,
 
 extern void DeleteRelationTuple(Oid relid);
 extern void DeleteAttributeTuples(Oid relid);
+extern void RemoveAttrDefault(Oid relid, AttrNumber attnum,
+							  DropBehavior behavior, bool complain);
+extern void RemoveAttrDefaultById(Oid attrdefId);
 
 extern Form_pg_attribute SystemAttributeDefinition(AttrNumber attno,
 						  bool relhasoids);
