@@ -557,7 +557,7 @@ toggle(PsqlSettings *settings, bool *sw, char *msg)
 	return *sw;
 }
 
-char *
+void
 decode(char *s)
 {
 	char *p, *d;
