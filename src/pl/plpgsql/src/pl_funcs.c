@@ -848,15 +848,14 @@ dump_return(PLpgSQL_stmt_return * stmt)
 {
 	dump_ind();
 	printf("RETURN ");
-	if (stmt->retrecno > 0)
+	if (stmt->retrecno >= 0)
 		printf("record %d", stmt->retrecno);
+	else if (stmt->retrowno >= 0)
+		printf("row %d", stmt->retrowno);
+	else if (stmt->expr == NULL)
+		printf("NULL");
 	else
-	{
-		if (stmt->expr == NULL)
-			printf("NULL");
-		else
-			dump_expr(stmt->expr);
-	}
+		dump_expr(stmt->expr);
 	printf("\n");
 }
 
@@ -1031,8 +1030,9 @@ plpgsql_dumptree(PLpgSQL_function * func)
 					printf("ROW %-16s fields", row->refname);
 					for (i = 0; i < row->nfields; i++)
 					{
-						printf(" %s=var %d", row->fieldnames[i],
-							   row->varnos[i]);
+						if (row->fieldnames[i])
+							printf(" %s=var %d", row->fieldnames[i],
+								   row->varnos[i]);
 					}
 					printf("\n");
 				}
