@@ -74,6 +74,8 @@ findTypeByOid(TypeInfo *tinfo, int numTypes, const char *oid, OidOptions opts)
 			return "'any'";
 		else if ((opts & zeroAsStar) != 0)
 			return "*";
+		else if ((opts & zeroAsNone) != 0)
+			return "NONE";
 	}
 
 	for (i = 0; i < numTypes; i++)

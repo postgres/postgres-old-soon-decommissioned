@@ -224,6 +224,7 @@ typedef enum _OidOptions
 	zeroAsOpaque = 1,
 	zeroAsAny = 2,
 	zeroAsStar = 4,
+	zeroAsNone = 8,
 	useBaseTypeName = 1024
 } OidOptions;
 
