@@ -853,9 +853,9 @@ PostmasterMain(int argc, char *argv[])
 
 	/*
 	 * Reset whereToSendOutput from Debug (its starting state) to None.
-	 * This prevents ereport from sending log messages to stderr unless
-	 * the syslog/stderr switch permits.  We don't do this until the
-	 * postmaster is fully launched, since startup failures may as well be
+	 * This stops ereport from sending log messages to stderr unless
+	 * Log_destination permits.  We don't do this until the postmaster
+	 * is fully launched, since startup failures may as well be
 	 * reported to stderr.
 	 */
 	whereToSendOutput = None;
