@@ -1429,7 +1429,7 @@ datetime_trunc(text *units, DateTime *datetime)
 					break;
 
 				case DTK_MICROSEC:
-					fsec = rint(fsec * 1000) / 1000;
+					fsec = rint(fsec * 1000000) / 1000000;
 					break;
 
 				default:
@@ -1573,7 +1573,7 @@ timespan_trunc(text *units, TimeSpan *timespan)
 					break;
 
 				case DTK_MICROSEC:
-					fsec = rint(fsec * 1000) / 1000;
+					fsec = rint(fsec * 1000000) / 1000000;
 					break;
 
 				default:
