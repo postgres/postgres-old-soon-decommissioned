@@ -62,6 +62,13 @@ CREATE USER <replaceable class="PARAMETER">username</replaceable>
         choose to keep the numbers the same.
        </para>
        <para>
+	If you still want the
+	OS user id and the <filename>usesysid</filename> to match
+	for any given user,
+	use the <application>createuser</application> script provided with
+	the <productname>Postgres</productname> distribution.
+       </para>
+       <para>
         If this is not specified, the highest assigned user id plus one
         will be used as default.
        </para>
