@@ -156,7 +156,9 @@ if [ "$alldb" ]; then
 	dbname=`${PATHNAME}psql $PSQLOPT -q -t -A -d template1 -c 'SELECT datname FROM pg_database WHERE datallowconn'`
 
 elif [ -z "$dbname" ]; then
-        if [ "$PGUSER" ]; then
+        if [ "$PGDATABASE" ]; then
+                dbname="$PGDATABASE"
+        elif [ "$PGUSER" ]; then
                 dbname="$PGUSER"
         else
                 dbname=`${PATHNAME}pg_id -u -n`

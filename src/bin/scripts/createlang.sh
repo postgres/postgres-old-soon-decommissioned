@@ -147,7 +147,9 @@ fi
 
 
 if [ -z "$dbname" ]; then
-        if [ "$PGUSER" ]; then
+        if [ "$PGDATABASE" ]; then
+                dbname="$PGDATABASE"
+        elif [ "$PGUSER" ]; then
                 dbname="$PGUSER"
         else
                 dbname=`${PATHNAME}pg_id -u -n`

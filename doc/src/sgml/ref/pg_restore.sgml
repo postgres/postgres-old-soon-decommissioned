@@ -475,7 +475,7 @@
       <term><option>-U <replaceable>username</replaceable></option></term>
       <listitem>
        <para>
-        Connect as the given user.
+        Connect as the given user
        </para>
       </listitem>
      </varlistentry>

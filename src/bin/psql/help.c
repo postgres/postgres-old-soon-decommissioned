@@ -58,7 +58,7 @@ usage(void)
 #endif
 
 	/* Find default user, in case we need it. */
-	user = getenv("USER");
+	user = getenv("PGUSER");
 	if (!user)
 	{
 #ifndef WIN32
@@ -70,9 +70,13 @@ usage(void)
 			psql_error("could not get current user name: %s\n", strerror(errno));
 			exit(EXIT_FAILURE);
 		}
-#else
-		user = "?";
-#endif
+#else /* WIN32 */
+		char		buf[128];
+		DWORD		bufsize = sizeof(buf) - 1;
+
+		if (GetUserName(buf, &bufsize))
+			user = buf;
+#endif /* WIN32 */
 	}
 
 /* If this " is the start of the string then it ought to end there to fit in 80 columns >> " */

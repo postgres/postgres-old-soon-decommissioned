@@ -181,7 +181,6 @@ PostgreSQL documentation
  <refsect1>
   <title>Examples</title>
 
-  <informalexample>
    <para>
     To remove user <literal>joe</literal> from the default database
     server:
@@ -190,9 +189,7 @@ PostgreSQL documentation
 <computeroutput>DROP USER</computeroutput>
 </screen>
    </para>
-  </informalexample>
 
-  <informalexample>
    <para>
     To remove user <literal>joe</literal> using the postmaster on host
     <literal>eden</literal>, port 5000, with verification and a peek at the underlying
@@ -205,7 +202,6 @@ Are you sure? (y/n) </computeroutput><userinput>y</userinput>
 DROP USER</computeroutput>
 </screen>
    </para>
-  </informalexample>
  </refsect1>
 
 

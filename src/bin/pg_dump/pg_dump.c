@@ -480,16 +480,9 @@ main(int argc, char **argv)
 		exit(1);
 	}
 
-	/* Get the target database name */
+	/* Get database name from command line */
 	if (optind < argc)
 		dbname = argv[optind];
-	else
-		dbname = getenv("PGDATABASE");
-	if (!dbname)
-	{
-		write_msg(NULL, "no database name specified\n");
-		exit(1);
-	}
 
 	if (dataOnly && schemaOnly)
 	{
@@ -588,7 +581,7 @@ main(int argc, char **argv)
 	if (g_fout->remoteVersion < 70300)
 	{
 		if (g_fout->remoteVersion >= 70100)
-			g_last_builtin_oid = findLastBuiltinOid_V71(dbname);
+			g_last_builtin_oid = findLastBuiltinOid_V71(PQdb(((ArchiveHandle *)g_conn)->connection));
 		else
 			g_last_builtin_oid = findLastBuiltinOid_V70();
 		if (g_verbose)
