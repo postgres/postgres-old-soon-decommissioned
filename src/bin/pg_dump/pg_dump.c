@@ -548,6 +548,13 @@ main(int argc, char **argv)
 					  PQerrorMessage(g_conn));
 	PQclear(res);
 
+    /* Set the datestyle to ISO to ensure the dump's portability */
+    res = PQexec(g_conn, "SET DATESTYLE = ISO");
+    if (!res || PQresultStatus(res) != PGRES_COMMAND_OK)
+            exit_horribly(g_fout, NULL, "could not set datestyle to ISO: %s",
+                                      PQerrorMessage(g_conn));
+    PQclear(res);
+
 	/*
 	 * If supported, set extra_float_digits so that we can dump float data
 	 * exactly (given correctly implemented float I/O code, anyway)
