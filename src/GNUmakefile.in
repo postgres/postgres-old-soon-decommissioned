@@ -30,6 +30,7 @@ all:
 	  false ;\
         else true;\
 	fi
+	$(MAKE) -C lextest all
 	$(MAKE) -C utils all
 	$(MAKE) -C backend all
 	$(MAKE) -C libpq all
