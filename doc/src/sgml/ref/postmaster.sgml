@@ -471,7 +471,7 @@ $ psql -p 1234
    or set the environment variable <envar>PGPORT</envar>:
 
    <programlisting>
-$ setenv PGPORT 1234
+$ export PGPORT 1234
 $ psql
    </programlisting>
   </para>
