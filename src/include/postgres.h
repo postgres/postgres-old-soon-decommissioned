@@ -39,6 +39,7 @@
 #include "config.h"
 #include "c.h"
 #include "utils/elog.h"
+#include "utils/palloc.h"
 
 /* ----------------------------------------------------------------
  *		Section 1:  simple type definitions
