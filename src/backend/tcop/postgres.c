@@ -1156,7 +1156,7 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[], const cha
 
 	if (!IsUnderPostmaster)
 	{
-		ResetAllOptions();
+		ResetAllOptions(true);
 		potential_DataDir = getenv("PGDATA");
 	}
 	StatFp = stderr;
@@ -1709,7 +1709,7 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[], const cha
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.219 $ $Date: 2001/06/07 04:50:57 $\n");
+		puts("$Revision: 1.220 $ $Date: 2001/06/12 22:54:06 $\n");
 	}
 
 	/*

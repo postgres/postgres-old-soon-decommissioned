@@ -792,7 +792,9 @@ ResetPGVariable(const char *name)
 		reset_datestyle();
 		reset_timezone();
 
-		ResetAllOptions();
+		ResetAllOptions(false);
 	} else
-		SetConfigOption(name, NULL, superuser() ? PGC_SUSET : PGC_USERSET, false);
+		SetConfigOption(name, NULL,
+						superuser() ? PGC_SUSET : PGC_USERSET,
+						false);
 }

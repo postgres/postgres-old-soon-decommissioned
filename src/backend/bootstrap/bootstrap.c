@@ -243,7 +243,7 @@ BootstrapMain(int argc, char *argv[])
 	dbName = NULL;
 	if (!IsUnderPostmaster)
 	{
-		ResetAllOptions();
+		ResetAllOptions(true);
 		potential_DataDir = getenv("PGDATA");	/* Null if no PGDATA
 												 * variable */
 	}

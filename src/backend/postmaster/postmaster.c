@@ -362,9 +362,13 @@ PostmasterMain(int argc, char *argv[])
 	/*
 	 * Options setup
 	 */
-	potential_DataDir = getenv("PGDATA");		/* default value */
+	ResetAllOptions(true);
 
-	ResetAllOptions();
+	/* PGPORT environment variable, if set, overrides GUC setting */
+	if (getenv("PGPORT"))
+		PostPortNumber = atoi(getenv("PGPORT"));
+
+	potential_DataDir = getenv("PGDATA");		/* default value */
 
 	/*
 	 * First we must scan for a -D argument to get the data dir. Then read
