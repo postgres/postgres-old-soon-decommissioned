@@ -1138,7 +1138,7 @@ HandleSlashCmds(PsqlSettings * settings,
 		do_copy(optarg2, settings);
 	    else if (strncmp(cmd, "connect ", strlen("connect ")) == 0 ||
 		     strcmp(cmd, "connect") == 0 /* issue error message */) {
-		char           *optarg3;
+		char           *optarg3 = NULL;
 		int            blank_loc2;
 
 		if (optarg2) {
@@ -1154,7 +1154,7 @@ HandleSlashCmds(PsqlSettings * settings,
 		do_connect(optarg2, optarg3, settings);
 	    }
 	    else {
-		char           *optarg3;
+		char           *optarg3 = NULL;
 		int            blank_loc2;
 
 		if (optarg) {
