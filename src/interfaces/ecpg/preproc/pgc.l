@@ -399,14 +399,6 @@ cppline			{space}*#(.*\\{space})+.*
 						BEGIN(state_before);
 						if (literallen == 0)
 							mmerror(PARSE_ERROR, ET_ERROR, "zero-length delimited identifier");
-						if (literallen >= NAMEDATALEN)
-						{
-							snprintf(errortext, sizeof(errortext), "identifier \"%s\" will be truncated to \"%.*s\"",
-									literalbuf, NAMEDATALEN-1, literalbuf);
-							literalbuf[NAMEDATALEN-1] = '\0';
-							mmerror(PARSE_ERROR, ET_WARNING, errortext);
-						}
-					
 						yylval.str = mm_strdup(literalbuf);
 						return CSTRING;
 					}
