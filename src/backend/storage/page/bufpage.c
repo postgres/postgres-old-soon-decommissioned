@@ -349,7 +349,7 @@ PageRepairFragmentation(Page page, OffsetNumber *unused)
 
 		if (totallen > (Size) (pd_special - pd_lower))
 			elog(ERROR, "PageRepairFragmentation: corrupted item lengths, total %u, avail %u",
-				 totallen, pd_special - pd_lower);
+				 (unsigned int) totallen, pd_special - pd_lower);
 
 		/* sort itemIdSortData array into decreasing itemoff order */
 		qsort((char *) itemidbase, nused, sizeof(struct itemIdSortData),

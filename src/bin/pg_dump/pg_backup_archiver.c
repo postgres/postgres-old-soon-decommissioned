@@ -1226,10 +1226,11 @@ ahwrite(const void *ptr, size_t size, size_t nmemb, ArchiveHandle *AH)
 	if (AH->writingBlob)
 	{
 		res = lo_write(AH->connection, AH->loFd, (void *) ptr, size * nmemb);
-		ahlog(AH, 5, "wrote %d bytes of large object data (result = %d)\n", size * nmemb, res);
-		if (res < size * nmemb)
+		ahlog(AH, 5, "wrote %d bytes of large object data (result = %d)\n",
+			  (int) (size * nmemb), res);
+		if (res != size * nmemb)
 			die_horribly(AH, modulename, "could not write to large object (result: %d, expected: %d)\n",
-						 res, size * nmemb);
+						 res, (int) (size * nmemb));
 
 		return res;
 	}
@@ -1260,7 +1261,8 @@ ahwrite(const void *ptr, size_t size, size_t nmemb, ArchiveHandle *AH)
 		{
 			res = fwrite((void *) ptr, size, nmemb, AH->OF);
 			if (res != nmemb)
-				die_horribly(AH, modulename, "could not write to output file (%d != %d)\n", res, nmemb);
+				die_horribly(AH, modulename, "could not write to output file (%d != %d)\n",
+							 res, (int) nmemb);
 			return res;
 		}
 	}
