@@ -35,6 +35,9 @@
 #
 #-------------------------------------------------------------------------
 
+# PostgreSQL version number
+VERSION = @VERSION@
+
 ifndef SRCDIR
 # This should be changed once we have separate build dirs.
 top_srcdir = $(top_builddir)

@@ -28,6 +28,11 @@
  *------------------------------------------------------------------------
  */
 
+/* The version number is actually hard-coded into configure.in */
+#undef PG_VERSION
+/* A canonical string containing the version number, platform, and C compiler */
+#undef PG_VERSION_STR
+
 /* Set to 1 if you want LOCALE support (--enable-locale) */
 #undef USE_LOCALE
 

@@ -12,7 +12,6 @@
 
 
 #include "postgres.h"
-#include "version.h"
 
 
 text	   *version(void);

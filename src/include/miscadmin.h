@@ -227,4 +227,7 @@ extern void SetPidFname(char *datadir);
 extern void UnlinkPidFile(void);
 extern int	SetPidFile(pid_t pid);
 
+
+extern void ValidatePgVersion(const char *path);
+
 #endif	 /* MISCADMIN_H */

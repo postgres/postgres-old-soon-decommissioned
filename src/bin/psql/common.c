@@ -28,7 +28,6 @@
 #include "libpq-fe.h"
 #include "postgres_ext.h"
 #include "pqsignal.h"
-#include "version.h"
 
 #include "settings.h"
 #include "variables.h"
