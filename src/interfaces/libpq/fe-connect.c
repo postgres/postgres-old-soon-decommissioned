@@ -438,7 +438,7 @@ PQsetdbLogin(const char *pghost, const char *pgport, const char *pgoptions,
 	else if ((tmp = getenv("PGHOST")) != NULL)
 		conn->pghost = strdup(tmp);
 
-	if (pgport == NULL)
+	if (pgport == NULL || pgport[0] == '\0')
 	{
 		if ((tmp = getenv("PGPORT")) == NULL)
 			tmp = DEF_PGPORT_STR;
