@@ -672,8 +672,8 @@ PrintTOCSummary(Archive *AHX, RestoreOptions *ropt)
 
 	ahprintf(AH, ";     Dump Version: %d.%d-%d\n", AH->vmaj, AH->vmin, AH->vrev);
 	ahprintf(AH, ";     Format: %s\n", fmtName);
-	ahprintf(AH, ";     Integer: %d bytes\n", AH->intSize);
-	ahprintf(AH, ";     Offset: %d bytes\n", AH->offSize);
+	ahprintf(AH, ";     Integer: %d bytes\n", (int) AH->intSize);
+	ahprintf(AH, ";     Offset: %d bytes\n", (int) AH->offSize);
 
 	ahprintf(AH, ";\n;\n; Selected TOC Entries:\n;\n");
 
