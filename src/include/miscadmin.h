@@ -113,7 +113,6 @@ extern int	PostmasterMain(int argc, char *argv[]);
  * from utils/init/globals.c
  */
 extern bool Noversion;
-extern bool Quiet;
 extern char *DataDir;
 
 extern int	MyProcPid;

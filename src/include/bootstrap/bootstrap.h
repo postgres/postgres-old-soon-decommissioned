@@ -18,8 +18,9 @@
 #include "nodes/execnodes.h"
 #include "utils/rel.h"
 
-/* MAXATTR is the maximum number of attributes in a relation supported
- * at bootstrap time (ie, the max possible in a system table).
+/*
+ * MAXATTR is the maximum number of attributes in a relation supported
+ * at bootstrap time (i.e., the max possible in a system table).
  */
 #define MAXATTR 40
 
@@ -29,7 +30,6 @@ typedef struct hashnode
 	struct hashnode *next;
 } hashnode;
 
-#define EMITPROMPT printf("> ")
 
 extern Relation reldesc;
 extern Form_pg_attribute attrtypes[MAXATTR];

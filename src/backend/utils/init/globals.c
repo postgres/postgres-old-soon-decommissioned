@@ -33,7 +33,6 @@
 ProtocolVersion FrontendProtocol = PG_PROTOCOL_LATEST;
 
 bool		Noversion = false;
-bool		Quiet = false;
 
 volatile bool InterruptPending = false;
 volatile bool QueryCancelPending = false;
