@@ -72,42 +72,15 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <sys/file.h>
-#include <string.h>
 
 #include "postgres.h"
-
-#include "access/attnum.h"
-#include "access/heapam.h"
-#include "access/hio.h"
+#include "utils/rel.h"
 #include "access/htup.h"
 #include "access/relscan.h"
-#include "access/skey.h"
-
-#include "utils/tqual.h"
-#include "access/valid.h"
-#include "access/xact.h"
-
-#include "catalog/catalog.h"
-#include "catalog/catname.h"
-#include "storage/buf.h"
-#include "storage/bufmgr.h"
-#include "storage/bufpage.h"
 #include "storage/itemid.h"
-#include "storage/itemptr.h"
-#include "storage/lmgr.h"
-
-#include "tcop/tcopdebug.h"
+#include "storage/bufpage.h"
+#include "access/heapam.h"
 #include "miscadmin.h"
-
-#include "utils/memutils.h"
-#include "utils/palloc.h"
-#include "fmgr.h"
-#include "utils/inval.h"
-#include "utils/elog.h"
-#include "utils/mcxt.h"
-#include "utils/rel.h"
-#include "utils/relcache.h"
 
 static bool	ImmediateInvalidation;
 

@@ -14,13 +14,14 @@
  *
  *-------------------------------------------------------------------------
  */
+
 #include "postgres.h"
-
+#include "utils/rel.h"
+#include "access/htup.h"
+#include "access/relscan.h"
 #include "access/heapam.h"
+#include "nodes/memnodes.h"
 
-#include "utils/memutils.h"
-#include "utils/palloc.h"
-#include "utils/elog.h"
 #include "utils/mcxt.h"
 
 /* ----------------
