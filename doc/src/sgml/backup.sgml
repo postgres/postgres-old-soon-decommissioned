@@ -374,6 +374,15 @@ tar -cf backup.tar /usr/local/pgsql/data
   </para>
 
   <para>
+   Another option is to use <application>rsync</> to perform a file
+   system backup.  First, while the database server is running, 
+   run <application>rsync</>, then shut down the database
+   server and perform a second <application>rsync</>, then
+   restart the database server.  This allows a file system backup to be
+   performed with minimal downtime.
+  </para>
+
+  <para>
    Note that a file system backup will not necessarily be
    smaller than an SQL dump. On the contrary, it will most likely be
    larger. (<application>pg_dump</application> does not need to dump
