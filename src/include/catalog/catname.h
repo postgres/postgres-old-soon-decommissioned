@@ -47,6 +47,7 @@
 #define  VersionRelationName "pg_version"
 #define  AttrDefaultRelationName "pg_attrdef"
 #define  RelCheckRelationName "pg_relcheck"
+#define  TriggerRelationName "pg_trigger"
 
 extern char *SharedSystemRelationNames[];
 
