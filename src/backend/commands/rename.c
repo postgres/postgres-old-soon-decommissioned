@@ -248,6 +248,12 @@ renameatt(Oid relid,
 
 /*
  *		renamerel		- change the name of a relation
+ *
+ *		XXX - When renaming sequences, we don't bother to modify the
+ *			  sequence name that is stored within the sequence itself
+ *			  (this would cause problems with MVCC). In the future,
+ *			  the sequence name should probably be removed from the
+ *			  sequence, AFAIK there's no need for it to be there.
  */
 void
 renamerel(Oid relid, const char *newrelname)
@@ -312,6 +318,7 @@ renamerel(Oid relid, const char *newrelname)
 	CatalogCloseIndices(Num_pg_class_indices, irelations);
 
 	heap_close(relrelation, NoLock);
+	heap_freetuple(reltup);
 
 	/*
 	 * Also rename the associated type, if any.
