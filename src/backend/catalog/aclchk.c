@@ -1208,28 +1208,6 @@ privilege_to_string(AclMode privilege)
 	return NULL;				/* appease compiler */
 }
 
-
-AclId
-get_grosysid(char *groname)
-{
-	HeapTuple	tuple;
-	AclId		id = 0;
-
-	tuple = SearchSysCache(GRONAME,
-						   PointerGetDatum(groname),
-						   0, 0, 0);
-	if (HeapTupleIsValid(tuple))
-	{
-		id = ((Form_pg_group) GETSTRUCT(tuple))->grosysid;
-		ReleaseSysCache(tuple);
-	}
-	else
-		ereport(ERROR,
-				(errcode(ERRCODE_UNDEFINED_OBJECT),
-				 errmsg("group \"%s\" does not exist", groname)));
-	return id;
-}
-
 /*
  * Convert group ID to name, or return NULL if group can't be found
  */

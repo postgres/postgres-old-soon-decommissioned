@@ -25,6 +25,7 @@
 #include "catalog/pg_operator.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_shadow.h"
+#include "catalog/pg_group.h"
 #include "catalog/pg_statistic.h"
 #include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
@@ -2032,7 +2033,7 @@ get_namespace_name(Oid nspid)
 AclId
 get_usesysid(const char *username)
 {
-	int32		result;
+	AclId		userId;
 	HeapTuple	userTup;
 
 	userTup = SearchSysCache(SHADOWNAME,
@@ -2043,9 +2044,39 @@ get_usesysid(const char *username)
 				(errcode(ERRCODE_UNDEFINED_OBJECT),
 				 errmsg("user \"%s\" does not exist", username)));
 
-	result = ((Form_pg_shadow) GETSTRUCT(userTup))->usesysid;
+	userId = ((Form_pg_shadow) GETSTRUCT(userTup))->usesysid;
 
 	ReleaseSysCache(userTup);
 
-	return result;
+	return userId;
 }
+
+/*
+ * get_grosysid
+ *
+ *	  Given a group name, look up the group's sysid.
+ *	  Raises an error if no such group (rather than returning zero,
+ *	  which might possibly be a valid grosysid).
+ *
+ */
+AclId
+get_grosysid(char *groname)
+{
+	AclId		groupId;
+	HeapTuple	groupTup;
+
+	groupTup = SearchSysCache(GRONAME,
+						   PointerGetDatum(groname),
+						   0, 0, 0);
+	if (!HeapTupleIsValid(groupTup))
+		ereport(ERROR,
+				(errcode(ERRCODE_UNDEFINED_OBJECT),
+				 errmsg("group \"%s\" does not exist", groname)));
+
+	groupId = ((Form_pg_group) GETSTRUCT(groupTup))->grosysid;
+
+	ReleaseSysCache(groupTup);
+
+	return groupId;
+}
+

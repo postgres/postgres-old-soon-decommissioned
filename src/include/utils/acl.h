@@ -245,7 +245,6 @@ extern Datum hash_aclitem(PG_FUNCTION_ARGS);
  * prototypes for functions in aclchk.c
  */
 extern void ExecuteGrantStmt(GrantStmt *stmt);
-extern AclId get_grosysid(char *groname);
 extern char *get_groname(AclId grosysid);
 
 extern AclMode pg_class_aclmask(Oid table_oid, AclId userid,

@@ -115,7 +115,8 @@ extern void free_attstatsslot(Oid atttype,
 				  Datum *values, int nvalues,
 				  float4 *numbers, int nnumbers);
 extern char *get_namespace_name(Oid nspid);
-extern int32 get_usesysid(const char *username);
+extern AclId get_usesysid(const char *username);
+extern AclId get_grosysid(char *groname);
 
 #define is_array_type(typid)  (get_element_type(typid) != InvalidOid)
 
