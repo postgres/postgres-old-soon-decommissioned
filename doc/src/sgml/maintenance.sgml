@@ -33,9 +33,12 @@ $Header$
    <xref linkend="routine-vacuuming">.
   </para>
 
-<!-- probably ought to have something about log rotation here;
-     any other important maintenance tasks?
--->
+  <para>
+  It is also necessary to rotate the database server log file that is specified 
+  when the <application>postmaster</application> is started.  If you are using
+  <application>syslog</application>, you can send a <literal>SIGHUP</literal>
+  signal to the syslog daemon to force it to start writing a new log file.
+  </para>
 
   <para>
    <productname>PostgreSQL</productname> is low-maintenance compared to
