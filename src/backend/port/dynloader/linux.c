@@ -21,7 +21,7 @@
 #endif
 
 #ifdef NOT_USED
-extern char *pg_pathname;
+extern char pg_pathname[];
 
 void *
 pg_dlopen(char *filename)
