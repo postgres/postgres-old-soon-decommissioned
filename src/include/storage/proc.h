@@ -103,7 +103,8 @@ extern int	ProcGlobalSemas(int maxBackends);
 extern void InitProcGlobal(int maxBackends);
 extern void InitProcess(void);
 extern void InitDummyProcess(int proctype);
-extern void ProcReleaseLocks(bool isCommit);
+extern void ProcReleaseLocks(LockReleaseWhich which,
+							 int nxids, TransactionId *xids);
 
 extern void ProcQueueInit(PROC_QUEUE *queue);
 extern int ProcSleep(LockMethod lockMethodTable, LOCKMODE lockmode,

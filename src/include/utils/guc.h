@@ -175,14 +175,14 @@ extern void DefineCustomStringVariable(
 	GucStringAssignHook assign_hook,
 	GucShowHook show_hook);
 
-extern void EmittWarningsOnPlaceholders(const char* className);
+extern void EmitWarningsOnPlaceholders(const char* className);
 
 extern const char *GetConfigOption(const char *name);
 extern const char *GetConfigOptionResetString(const char *name);
 extern void ProcessConfigFile(GucContext context);
 extern void InitializeGUCOptions(void);
 extern void ResetAllOptions(void);
-extern void AtEOXact_GUC(bool isCommit);
+extern void AtEOXact_GUC(bool isCommit, bool isSubXact);
 extern void BeginReportingGUCOptions(void);
 extern void ParseLongOption(const char *string, char **name, char **value);
 extern bool set_config_option(const char *name, const char *value,

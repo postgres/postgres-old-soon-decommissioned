@@ -27,7 +27,6 @@
 #include "catalog/pg_database.h"
 #include "catalog/pg_shadow.h"
 #include "catalog/pg_tablespace.h"
-#include "commands/trigger.h"
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
 #include "postmaster/postmaster.h"
@@ -349,12 +348,6 @@ InitPostgres(const char *dbname, const char *username)
 
 	/* Initialize portal manager */
 	EnablePortalManager();
-
-	/*
-	 * Initialize the deferred trigger manager --- must happen before
-	 * first transaction start.
-	 */
-	DeferredTriggerInit();
 
 	/* start a new transaction here before access to db */
 	if (!bootstrap)

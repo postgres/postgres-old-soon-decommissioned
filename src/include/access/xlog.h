@@ -111,7 +111,7 @@ typedef struct XLogContRecord
 /*
  * Each page of XLOG file has a header like this:
  */
-#define XLOG_PAGE_MAGIC 0xD05A	/* can be used as WAL version indicator */
+#define XLOG_PAGE_MAGIC 0xD05B	/* can be used as WAL version indicator */
 
 typedef struct XLogPageHeaderData
 {

@@ -1828,7 +1828,7 @@ main(int argc, char *argv[])
 	char	   *pgdenv;			/* PGDATA value got from sent to
 								 * environment */
 	char	   *subdirs[] =
-	{"global", "pg_xlog", "pg_clog", "base", "base/1", "pg_tblspc"};
+	{"global", "pg_xlog", "pg_clog", "pg_subtrans", "base", "base/1", "pg_tblspc"};
 
 	progname = get_progname(argv[0]);
 	set_pglocale_pgservice(argv[0], "initdb");

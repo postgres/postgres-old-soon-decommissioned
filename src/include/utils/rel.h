@@ -110,6 +110,9 @@ typedef struct RelationData
 	BlockNumber rd_targblock;	/* current insertion target block, or
 								 * InvalidBlockNumber */
 	int			rd_refcnt;		/* reference count */
+	int		   *rd_prevrefcnt;	/* reference count stack */
+	int			rd_numalloc;	/* stack allocated size */
+	int			rd_numpushed;	/* stack used size */
 	bool		rd_isnew;		/* rel was created in current xact */
 
 	/*

@@ -45,6 +45,7 @@ MemoryContext PostmasterContext = NULL;
 MemoryContext CacheMemoryContext = NULL;
 MemoryContext MessageContext = NULL;
 MemoryContext TopTransactionContext = NULL;
+MemoryContext CurTransactionContext = NULL;
 
 /* These two are transient links to contexts owned by other objects: */
 MemoryContext QueryContext = NULL;

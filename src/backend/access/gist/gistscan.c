@@ -41,6 +41,7 @@ static void adjustiptr(IndexScanDesc s, ItemPointer iptr,
 typedef struct GISTScanListData
 {
 	IndexScanDesc gsl_scan;
+	TransactionId gsl_creatingXid;
 	struct GISTScanListData *gsl_next;
 } GISTScanListData;
 
@@ -223,6 +224,7 @@ gistregscan(IndexScanDesc s)
 
 	l = (GISTScanList) palloc(sizeof(GISTScanListData));
 	l->gsl_scan = s;
+	l->gsl_creatingXid = GetCurrentTransactionId();
 	l->gsl_next = GISTScans;
 	GISTScans = l;
 }
@@ -269,6 +271,46 @@ AtEOXact_gist(void)
 	 * at end of transaction anyway.
 	 */
 	GISTScans = NULL;
+}
+
+/*
+ * AtEOSubXact_gist() --- clean up gist subsystem at subxact abort or commit.
+ *
+ * This is here because it needs to touch this module's static var GISTScans.
+ */
+void
+AtEOSubXact_gist(TransactionId childXid)
+{
+	GISTScanList l;
+	GISTScanList prev;
+	GISTScanList next;
+
+	/*
+	 * Note: these actions should only be necessary during xact abort; but
+	 * they can't hurt during a commit.
+	 */
+
+	/*
+	 * Forget active scans that were started in this subtransaction.
+	 */
+	prev = NULL;
+
+	for (l = GISTScans; l != NULL; l = next)
+	{
+		next = l->gsl_next;
+		if (l->gsl_creatingXid == childXid)
+		{
+			if (prev == NULL)
+				GISTScans = next;
+			else
+				prev->gsl_next = next;
+
+			pfree(l);
+			/* prev does not change */
+		}
+		else
+			prev = l;
+	}
 }
 
 void

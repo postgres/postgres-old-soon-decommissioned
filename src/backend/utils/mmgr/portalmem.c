@@ -511,3 +511,94 @@ AtCleanup_Portals(void)
 		PortalDrop(portal, true);
 	}
 }
+
+/*
+ * Pre-subcommit processing for portals.
+ *
+ * Reassign the portals created in the current subtransaction to the parent
+ * transaction.  (XXX perhaps we should reassign only holdable cursors,
+ * and drop the rest?)
+ */
+void
+AtSubCommit_Portals(TransactionId parentXid)
+{
+	HASH_SEQ_STATUS status;
+	PortalHashEnt *hentry;
+	TransactionId curXid = GetCurrentTransactionId();
+
+	hash_seq_init(&status, PortalHashTable);
+
+	while ((hentry = (PortalHashEnt *) hash_seq_search(&status)) != NULL)
+	{
+		Portal	portal = hentry->portal;
+
+		if (portal->createXact == curXid)
+			portal->createXact = parentXid;
+	}
+}
+
+/*
+ * Subtransaction abort handling for portals.
+ *
+ * Deactivate all portals created during the failed subtransaction.
+ * Note that per AtSubCommit_Portals, this will catch portals created
+ * in descendants of the subtransaction too.
+ */
+void
+AtSubAbort_Portals(void)
+{
+	HASH_SEQ_STATUS status;
+	PortalHashEnt *hentry;
+	TransactionId curXid = GetCurrentTransactionId();
+
+	hash_seq_init(&status, PortalHashTable);
+
+	while ((hentry = (PortalHashEnt *) hash_seq_search(&status)) != NULL)
+	{
+		Portal	portal = hentry->portal;
+
+		if (portal->createXact != curXid)
+			continue;
+
+		portal->portalActive = false;
+
+		/* let portalcmds.c clean up the state it knows about */
+		if (PointerIsValid(portal->cleanup))
+		{
+			(*portal->cleanup) (portal, true);
+			portal->cleanup = NULL;
+		}
+	}
+}
+
+/*
+ * Post-subabort cleanup for portals.
+ *
+ * Drop all portals created in the finishing subtransaction and all
+ * its descendants.
+ */
+void
+AtSubCleanup_Portals(void)
+{
+	HASH_SEQ_STATUS status;
+	PortalHashEnt *hentry;
+	TransactionId curXid = GetCurrentTransactionId();
+
+	hash_seq_init(&status, PortalHashTable);
+
+	while ((hentry = (PortalHashEnt *) hash_seq_search(&status)) != NULL)
+	{
+		Portal		portal = hentry->portal;
+
+		if (portal->createXact != curXid)
+			continue;
+
+		/*
+		 * Let's just make sure no one's active...
+		 */
+		portal->portalActive = false;
+
+		/* Zap it with prejudice. */
+		PortalDrop(portal, true);
+	}
+}

@@ -130,6 +130,7 @@ extern void rtree_desc(char *buf, uint8 xl_info, char *rec);
 extern void rtadjscans(Relation r, int op, BlockNumber blkno,
 		   OffsetNumber offnum);
 extern void AtEOXact_rtree(void);
+extern void AtEOSubXact_rtree(TransactionId childXid);
 
 /* rtstrat.c */
 extern StrategyNumber RTMapToInternalOperator(StrategyNumber strat);

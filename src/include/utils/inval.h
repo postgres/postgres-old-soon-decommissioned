@@ -22,9 +22,15 @@ typedef void (*CacheCallbackFunction) (Datum arg, Oid relid);
 
 extern void AcceptInvalidationMessages(void);
 
-extern void AtEOXactInvalidationMessages(bool isCommit);
+extern void AtStart_Inval(void);
 
-extern void CommandEndInvalidationMessages(bool isCommit);
+extern void AtSubStart_Inval(void);
+
+extern void AtEOXact_Inval(bool isCommit);
+
+extern void AtSubEOXact_Inval(bool isCommit);
+
+extern void CommandEndInvalidationMessages(void);
 
 extern void CacheInvalidateHeapTuple(Relation relation, HeapTuple tuple);
 

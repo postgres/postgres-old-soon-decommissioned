@@ -16,7 +16,7 @@ typedef uint8 RmgrId;
 #define RM_XLOG_ID				0
 #define RM_XACT_ID				1
 #define RM_SMGR_ID				2
-#define RM_CLOG_ID				3
+#define RM_SLRU_ID				3
 #define RM_HEAP_ID				10
 #define RM_BTREE_ID				11
 #define RM_HASH_ID				12

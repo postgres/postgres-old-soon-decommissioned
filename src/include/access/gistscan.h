@@ -23,5 +23,6 @@ extern Datum gistrestrpos(PG_FUNCTION_ARGS);
 extern Datum gistendscan(PG_FUNCTION_ARGS);
 extern void gistadjscans(Relation r, int op, BlockNumber blkno, OffsetNumber offnum);
 extern void AtEOXact_gist(void);
+extern void AtEOSubXact_gist(TransactionId childXid);
 
 #endif   /* GISTSCAN_H */

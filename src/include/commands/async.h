@@ -23,6 +23,9 @@ extern void Async_Unlisten(char *relname, int pid);
 /* perform (or cancel) outbound notify processing at transaction commit */
 extern void AtCommit_Notify(void);
 extern void AtAbort_Notify(void);
+extern void AtSubStart_Notify(void);
+extern void AtSubCommit_Notify(void);
+extern void AtSubAbort_Notify(void);
 
 /* signal handler for inbound notifies (SIGUSR2) */
 extern void NotifyInterruptHandler(SIGNAL_ARGS);

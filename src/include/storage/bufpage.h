@@ -126,10 +126,11 @@ typedef struct PageHeaderData
 typedef PageHeaderData *PageHeader;
 
 /*
- * Page layout version number 0 is for pre-7.3 Postgres releases.  The
- * current version number is 1, denoting a new HeapTupleHeader layout.
+ * Page layout version number 0 is for pre-7.3 Postgres releases.
+ * Releases 7.3 and 7.4 use 1, denoting a new HeapTupleHeader layout.
+ * Release 7.5 changed the HeapTupleHeader layout again.
  */
-#define PG_PAGE_LAYOUT_VERSION		1
+#define PG_PAGE_LAYOUT_VERSION		2
 
 
 /* ----------------------------------------------------------------

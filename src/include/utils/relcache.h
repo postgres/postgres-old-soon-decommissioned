@@ -65,7 +65,9 @@ extern void RelationCacheInvalidateEntry(Oid relationId, RelFileNode *rnode);
 
 extern void RelationCacheInvalidate(void);
 
-extern void AtEOXact_RelationCache(bool commit);
+extern void AtEOXact_RelationCache(bool isCommit);
+extern void AtSubStart_RelationCache(void);
+extern void AtEOSubXact_RelationCache(bool isCommit);
 
 /*
  * Routines to help manage rebuilding of relcache init file

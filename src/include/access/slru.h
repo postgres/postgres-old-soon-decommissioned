@@ -11,6 +11,7 @@
 #ifndef SLRU_H
 #define SLRU_H
 
+#include "access/xlog.h"
 #include "storage/lwlock.h"
 
 
@@ -55,5 +56,13 @@ extern void SimpleLruWritePage(SlruCtl ctl, int slotno, SlruFlush fdata);
 extern void SimpleLruSetLatestPage(SlruCtl ctl, int pageno);
 extern void SimpleLruFlush(SlruCtl ctl, bool checkpoint);
 extern void SimpleLruTruncate(SlruCtl ctl, int cutoffPage);
+
+/* XLOG stuff */
+#define CLOG_ZEROPAGE		0x00
+#define SUBTRANS_ZEROPAGE	0x10
+
+extern void slru_redo(XLogRecPtr lsn, XLogRecord *record);
+extern void slru_undo(XLogRecPtr lsn, XLogRecord *record);
+extern void slru_desc(char *buf, uint8 xl_info, char *rec);
 
 #endif   /* SLRU_H */

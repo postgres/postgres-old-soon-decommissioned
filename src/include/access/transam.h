@@ -107,13 +107,16 @@ extern bool TransactionIdDidCommit(TransactionId transactionId);
 extern bool TransactionIdDidAbort(TransactionId transactionId);
 extern void TransactionIdCommit(TransactionId transactionId);
 extern void TransactionIdAbort(TransactionId transactionId);
+extern void TransactionIdSubCommit(TransactionId transactionId);
+extern void TransactionIdCommitTree(int nxids, TransactionId *xids);
+extern void TransactionIdAbortTree(int nxids, TransactionId *xids);
 extern bool TransactionIdPrecedes(TransactionId id1, TransactionId id2);
 extern bool TransactionIdPrecedesOrEquals(TransactionId id1, TransactionId id2);
 extern bool TransactionIdFollows(TransactionId id1, TransactionId id2);
 extern bool TransactionIdFollowsOrEquals(TransactionId id1, TransactionId id2);
 
 /* in transam/varsup.c */
-extern TransactionId GetNewTransactionId(void);
+extern TransactionId GetNewTransactionId(bool isSubXact);
 extern TransactionId ReadNewTransactionId(void);
 extern Oid	GetNewObjectId(void);
 extern void CheckMaxObjectId(Oid assigned_oid);

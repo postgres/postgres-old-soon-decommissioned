@@ -15,6 +15,7 @@
 
 #include "postgres.h"
 
+#include "access/subtrans.h"
 #include "access/transam.h"
 #include "access/xact.h"
 #include "catalog/catalog.h"
@@ -333,19 +334,21 @@ XactLockTableInsert(TransactionId xid)
  *		XactLockTableWait
  *
  * Wait for the specified transaction to commit or abort.
+ * We actually wait on the topmost transaction of the transaction tree.
  */
 void
 XactLockTableWait(TransactionId xid)
 {
 	LOCKTAG		tag;
 	TransactionId myxid = GetCurrentTransactionId();
+	TransactionId waitXid = SubTransGetTopmostTransaction(xid);
 
-	Assert(!TransactionIdEquals(xid, myxid));
+	Assert(!SubTransXidsHaveCommonAncestor(waitXid, myxid));
 
 	MemSet(&tag, 0, sizeof(tag));
 	tag.relId = XactLockTableId;
 	tag.dbId = InvalidOid;
-	tag.objId.xid = xid;
+	tag.objId.xid = waitXid;
 
 	if (!LockAcquire(LockTableId, &tag, myxid,
 					 ShareLock, false))
@@ -355,8 +358,13 @@ XactLockTableWait(TransactionId xid)
 
 	/*
 	 * Transaction was committed/aborted/crashed - we have to update
-	 * pg_clog if transaction is still marked as running.
+	 * pg_clog if transaction is still marked as running.  If it's a
+	 * subtransaction, we can update the parent status too.
 	 */
-	if (!TransactionIdDidCommit(xid) && !TransactionIdDidAbort(xid))
-		TransactionIdAbort(xid);
+	if (!TransactionIdDidCommit(waitXid) && !TransactionIdDidAbort(waitXid))
+	{
+		TransactionIdAbort(waitXid);
+		if (waitXid != xid)
+			TransactionIdAbort(xid);
+	}
 }

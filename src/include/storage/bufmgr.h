@@ -148,6 +148,8 @@ extern void InitBufferPoolAccess(void);
 extern char *ShowBufferUsage(void);
 extern void ResetBufferUsage(void);
 extern void AtEOXact_Buffers(bool isCommit);
+extern void AtSubStart_Buffers(void);
+extern void AtEOSubXact_Buffers(bool isCommit);
 extern void FlushBufferPool(void);
 extern BlockNumber BufferGetBlockNumber(Buffer buffer);
 extern BlockNumber RelationGetNumberOfBlocks(Relation relation);

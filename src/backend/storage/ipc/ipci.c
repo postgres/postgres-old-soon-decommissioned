@@ -14,10 +14,10 @@
  */
 #include "postgres.h"
 
-
-#include "miscadmin.h"
 #include "access/clog.h"
+#include "access/subtrans.h"
 #include "access/xlog.h"
+#include "miscadmin.h"
 #include "postmaster/bgwriter.h"
 #include "storage/bufmgr.h"
 #include "storage/freespace.h"
@@ -70,6 +70,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 		size += LockShmemSize(maxBackends);
 		size += XLOGShmemSize();
 		size += CLOGShmemSize();
+		size += SUBTRANSShmemSize();
 		size += LWLockShmemSize();
 		size += SInvalShmemSize(maxBackends);
 		size += FreeSpaceShmemSize();
@@ -133,6 +134,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 	 */
 	XLOGShmemInit();
 	CLOGShmemInit();
+	SUBTRANSShmemInit();
 	InitBufferPool();
 
 	/*

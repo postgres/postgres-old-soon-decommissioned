@@ -119,5 +119,6 @@ extern void SPI_cursor_move(Portal portal, bool forward, int count);
 extern void SPI_cursor_close(Portal portal);
 
 extern void AtEOXact_SPI(bool isCommit);
+extern void AtEOSubXact_SPI(bool isCommit, TransactionId childXid);
 
 #endif   /* SPI_H */

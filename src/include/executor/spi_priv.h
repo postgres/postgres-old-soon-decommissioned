@@ -23,6 +23,7 @@ typedef struct
 	MemoryContext procCxt;		/* procedure context */
 	MemoryContext execCxt;		/* executor context */
 	MemoryContext savedcxt;
+	TransactionId connectXid;	/* Xid of connecting transaction */
 } _SPI_connection;
 
 typedef struct
