@@ -288,7 +288,8 @@ crypt_verify(Port *port, const char *user, const char *pgpass)
 		if (!valuntil || strcmp(valuntil, "\\N") == 0)
 			vuntil = INVALID_ABSTIME;
 		else
-			vuntil = nabstimein(valuntil);
+			vuntil = DatumGetAbsoluteTime(DirectFunctionCall1(nabstimein,
+										  CStringGetDatum(valuntil)));
 		current = GetCurrentAbsoluteTime();
 		if (vuntil != INVALID_ABSTIME && vuntil < current)
 			retval = STATUS_ERROR;

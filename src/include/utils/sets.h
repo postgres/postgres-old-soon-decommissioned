@@ -14,10 +14,13 @@
 #ifndef SETS_H
 #define SETS_H
 
+#include "fmgr.h"
+
+
 /* Temporary name of set, before SetDefine changes it. */
 #define GENERICSETNAME "zyxset"
 
 extern Oid	SetDefine(char *querystr, char *typename);
-extern int	seteval(Oid funcoid);
+extern Datum seteval(PG_FUNCTION_ARGS);
 
 #endif	 /* SETS_H */

@@ -140,8 +140,12 @@ SetDefine(char *querystr, char *typename)
  * never executed.	At runtime, the OID of the actual set is substituted
  * into the :funcid.
  */
-int
-seteval(Oid funcoid)
+Datum
+seteval(PG_FUNCTION_ARGS)
 {
-	return 17;
+	Oid			funcoid = PG_GETARG_OID(0);
+
+	elog(ERROR, "seteval called for OID %u", funcoid);
+
+	PG_RETURN_INT32(0);			/* keep compiler happy */
 }

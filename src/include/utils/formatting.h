@@ -18,9 +18,12 @@
 #ifndef _FORMATTING_H_
 #define _FORMATTING_H_
 
-extern text *timestamp_to_char(Timestamp *dt, text *fmt);
-extern Timestamp *to_timestamp(text *date_str, text *fmt);
-extern DateADT to_date(text *date_str, text *fmt);
+#include "fmgr.h"
+
+
+extern Datum timestamp_to_char(PG_FUNCTION_ARGS);
+extern Datum to_timestamp(PG_FUNCTION_ARGS);
+extern Datum to_date(PG_FUNCTION_ARGS);
 extern Numeric numeric_to_number(text *value, text *fmt);
 extern text *numeric_to_char(Numeric value, text *fmt);
 extern text *int4_to_char(int32 value, text *fmt);

@@ -160,19 +160,21 @@ text_tid(const text *string)
 
 /*
  *	Functions to get latest tid of a specified tuple.
- *	Maybe these implementations is moved
- *	to another place
-*/
-ItemPointer
-currtid_byreloid(Oid reloid, ItemPointer tid)
+ *
+ *	Maybe these implementations should be moved to another place
+ */
+Datum
+currtid_byreloid(PG_FUNCTION_ARGS)
 {
-	ItemPointer result = NULL,
-				ret;
-	Relation	rel;
+	Oid				reloid = PG_GETARG_OID(0);
+	ItemPointer		tid = (ItemPointer) PG_GETARG_POINTER(1);
+	ItemPointer		result,
+					ret;
+	Relation		rel;
 
 	result = (ItemPointer) palloc(sizeof(ItemPointerData));
 	ItemPointerSetInvalid(result);
-	if (rel = heap_open(reloid, AccessShareLock), rel)
+	if ((rel = heap_open(reloid, AccessShareLock)) != NULL)
 	{
 		ret = heap_get_latest_tid(rel, SnapshotNow, tid);
 		if (ret)
@@ -182,25 +184,24 @@ currtid_byreloid(Oid reloid, ItemPointer tid)
 	else
 		elog(ERROR, "Relation %u not found", reloid);
 
-	return result;
-}	/* currtid_byreloid() */
+	PG_RETURN_POINTER(result);
+}
 
-ItemPointer
-currtid_byrelname(const text *relname, ItemPointer tid)
+Datum
+currtid_byrelname(PG_FUNCTION_ARGS)
 {
-	ItemPointer result = NULL,
-				ret;
-	char	   *str;
-	Relation	rel;
+	text		   *relname = PG_GETARG_TEXT_P(0);
+	ItemPointer		tid = (ItemPointer) PG_GETARG_POINTER(1);
+	ItemPointer		result,
+					ret;
+	char		   *str;
+	Relation		rel;
 
-	if (!relname)
-		return result;
-
-	str = textout((text *) relname);
+	str = textout(relname);
 
 	result = (ItemPointer) palloc(sizeof(ItemPointerData));
 	ItemPointerSetInvalid(result);
-	if (rel = heap_openr(str, AccessShareLock), rel)
+	if ((rel = heap_openr(str, AccessShareLock)) != NULL)
 	{
 		ret = heap_get_latest_tid(rel, SnapshotNow, tid);
 		if (ret)
@@ -208,8 +209,9 @@ currtid_byrelname(const text *relname, ItemPointer tid)
 		heap_close(rel, AccessShareLock);
 	}
 	else
-		elog(ERROR, "Relation %s not found", textout((text *) relname));
+		elog(ERROR, "Relation %s not found", str);
+
 	pfree(str);
 
-	return result;
-}	/* currtid_byrelname() */
+	PG_RETURN_POINTER(result);
+}

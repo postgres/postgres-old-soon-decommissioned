@@ -122,8 +122,8 @@ write_password_file(Relation rel)
 				"%s\n",
 				nameout(DatumGetName(datum_n)),
 				null_p ? "" : textout((text *) datum_p),
-				null_v ? "\\N" : nabstimeout((AbsoluteTime) datum_v)	/* this is how the
-																		 * parser wants it */
+				null_v ? "\\N" :
+				DatumGetCString(DirectFunctionCall1(nabstimeout, datum_v))
 			);
 	}
 	heap_endscan(scan);
@@ -268,7 +268,8 @@ CreateUser(CreateUserStmt *stmt)
 	if (stmt->password)
 		new_record[Anum_pg_shadow_passwd - 1] = PointerGetDatum(textin(stmt->password));
 	if (stmt->validUntil)
-		new_record[Anum_pg_shadow_valuntil - 1] = PointerGetDatum(nabstimein(stmt->validUntil));
+		new_record[Anum_pg_shadow_valuntil - 1] =
+			DirectFunctionCall1(nabstimein, CStringGetDatum(stmt->validUntil));
 
 	new_record_nulls[Anum_pg_shadow_usename - 1] = ' ';
 	new_record_nulls[Anum_pg_shadow_usesysid - 1] = ' ';
@@ -445,7 +446,8 @@ AlterUser(AlterUserStmt *stmt)
 	/* valid until */
 	if (stmt->validUntil)
 	{
-		new_record[Anum_pg_shadow_valuntil - 1] = PointerGetDatum(nabstimein(stmt->validUntil));
+		new_record[Anum_pg_shadow_valuntil - 1] =
+			DirectFunctionCall1(nabstimein, CStringGetDatum(stmt->validUntil));
 		new_record_nulls[Anum_pg_shadow_valuntil - 1] = ' ';
 	}
 	else
