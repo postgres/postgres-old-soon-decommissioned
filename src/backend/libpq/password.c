@@ -82,8 +82,8 @@ verify_password(const Port *port, const char *user, const char *password)
 			 * the current code needs non-encrypted passwords to
 			 * encrypt with a random salt.
 			 */
-			if (port->auth_method == uaCrypt ||
-				port->auth_method == uaMD5 ||
+			if (port->auth_method == uaMD5 ||
+				port->auth_method == uaCrypt ||
 				test_pw == NULL ||
 				test_pw[0] == '\0' ||
 				strcmp(test_pw, "+") == 0)
