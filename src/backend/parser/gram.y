@@ -3764,6 +3764,15 @@ AlterDomainStmt:
 					n->behavior = $7;
 					$$ = (Node *)n;
 				}
+			/* ALTER DOMAIN <domain> OWNER TO UserId */
+			| ALTER DOMAIN_P any_name OWNER TO UserId
+				{
+					AlterDomainStmt *n = makeNode(AlterDomainStmt);
+					n->subtype = 'U';
+					n->typename = $3;
+					n->name = $6;
+					$$ = (Node *)n;
+				}
 			;
 
 opt_as:		AS										{}

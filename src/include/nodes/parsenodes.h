@@ -711,7 +711,7 @@ typedef struct AlterTableStmt
  *	Alter Domain
  *
  * The fields are used in different ways by the different variants of
- * this command. Subtypes should match AlterTable subtypes
+ * this command. Subtypes should match AlterTable subtypes where possible.
  * ----------------------
  */
 typedef struct AlterDomainStmt

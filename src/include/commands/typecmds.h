@@ -14,7 +14,9 @@
 #ifndef TYPECMDS_H
 #define TYPECMDS_H
 
+#include "miscadmin.h"
 #include "nodes/parsenodes.h"
+
 
 #define DEFAULT_TYPDELIM		','
 
@@ -30,5 +32,7 @@ extern void AlterDomainNotNull(List *names, bool notNull);
 extern void AlterDomainAddConstraint(List *names, Node *constr);
 extern void AlterDomainDropConstraint(List *names, const char *constrName,
 									  DropBehavior behavior);
+
+extern void AlterTypeOwner(List *names, AclId newOwnerSysId);
 
 #endif   /* TYPECMDS_H */
