@@ -317,6 +317,18 @@ float4in(PG_FUNCTION_ARGS)
 					 errmsg("invalid input syntax for type real: \"%s\"",
 							orig_num)));
 	}
+#ifdef HAVE_BUGGY_SOLARIS_STRTOD
+	else
+	{
+		/*
+		 * Many versions of Solaris have a bug wherein strtod sets endptr
+		 * to point one byte beyond the end of the string when given
+		 * "inf" or "infinity".
+		 */
+		if (endptr != num && endptr[-1] == '\0')
+			endptr--;
+	}
+#endif /* HAVE_BUGGY_SOLARIS_STRTOD */
 
 	/* skip trailing whitespace */
 	while (*endptr != '\0' && isspace((unsigned char) *endptr))
@@ -482,6 +494,18 @@ float8in(PG_FUNCTION_ARGS)
 					 errmsg("invalid input syntax for type double precision: \"%s\"",
 							orig_num)));
 	}
+#ifdef HAVE_BUGGY_SOLARIS_STRTOD
+	else
+	{
+		/*
+		 * Many versions of Solaris have a bug wherein strtod sets endptr
+		 * to point one byte beyond the end of the string when given
+		 * "inf" or "infinity".
+		 */
+		if (endptr != num && endptr[-1] == '\0')
+			endptr--;
+	}
+#endif /* HAVE_BUGGY_SOLARIS_STRTOD */
 
 	/* skip trailing whitespace */
 	while (*endptr != '\0' && isspace((unsigned char) *endptr))

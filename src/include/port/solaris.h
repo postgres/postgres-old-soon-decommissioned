@@ -35,3 +35,10 @@
 #define		 BYTE_ORDER		 LITTLE_ENDIAN
 #endif
 #endif
+
+/*
+ * Many versions of Solaris have broken strtod() --- see bug #4751182.
+ * For the moment we just assume they all do; it's probably not worth
+ * the trouble to add a configure test for this.
+ */
+#define HAVE_BUGGY_SOLARIS_STRTOD
