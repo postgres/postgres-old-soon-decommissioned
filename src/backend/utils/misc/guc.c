@@ -358,6 +358,10 @@ static struct config_bool
 		true, NULL, NULL
 	},
 	{
+		{"zero_damaged_pages", PGC_SUSET}, &zero_damaged_pages,
+		false, NULL, NULL
+	},
+	{
 		{"silent_mode", PGC_POSTMASTER}, &SilentMode,
 		false, NULL, NULL
 	},
