@@ -74,7 +74,7 @@ fmgr_dynamic(Oid procedureId, int *pronargs)
 										 0, 0, 0);
 	if (!HeapTupleIsValid(procedureTuple))
 	{
-		elog(ERROR, "fmgr: Cache lookup failed for procedure %d\n",
+		elog(ERROR, "fmgr: Cache lookup failed for procedure %u\n",
 			 procedureId);
 		return (func_ptr) NULL;
 	}
@@ -104,7 +104,7 @@ fmgr_dynamic(Oid procedureId, int *pronargs)
 	if (!PointerIsValid(probinattr) /* || isnull */ )
 	{
 		heap_close(rel);
-		elog(ERROR, "fmgr: Could not extract probin for %d from %s",
+		elog(ERROR, "fmgr: Could not extract probin for %u from %s",
 			 procedureId, ProcedureRelationName);
 		return (func_ptr) NULL;
 	}

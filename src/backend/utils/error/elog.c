@@ -302,8 +302,7 @@ DebugFileOpen(void)
 	fd = fileno(stderr);
 	if (fcntl(fd, F_GETFD, 0) < 0)
 	{
-		sprintf(OutputFileName, "%s/pg.errors.%d",
-				DataDir, (int) MyProcPid);
+		sprintf(OutputFileName, "%s/pg.errors.%d", DataDir, (int) MyProcPid);
 		fd = open(OutputFileName, O_CREAT | O_APPEND | O_WRONLY, 0666);
 	}
 	if (fd < 0)

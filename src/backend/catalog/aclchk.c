@@ -549,8 +549,7 @@ pg_ownercheck(char *usename,
 			owner_id = ((Form_pg_type) GETSTRUCT(tuple))->typowner;
 			break;
 		default:
-			elog(ERROR, "pg_ownercheck: invalid cache id: %d",
-				 cacheid);
+			elog(ERROR, "pg_ownercheck: invalid cache id: %d", cacheid);
 			break;
 	}
 

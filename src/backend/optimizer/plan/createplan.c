@@ -367,8 +367,7 @@ create_indexscan_node(IndexPath *best_path,
 										 ObjectIdGetDatum(lfirsti(ixid)),
 										 0, 0, 0);
 		if (!HeapTupleIsValid(indexTuple))
-			elog(ERROR, "create_plan: index %d not found",
-				 lfirsti(ixid));
+			elog(ERROR, "create_plan: index %u not found", lfirsti(ixid));
 		index = (Form_pg_index) GETSTRUCT(indexTuple);
 		if (index->indislossy)
 			lossy = TRUE;

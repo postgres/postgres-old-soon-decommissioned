@@ -486,7 +486,7 @@ connectTee(TgRecipe * r, TgNodePtr fromNode, TgNodePtr toNode,
 	tn = malloc(sizeof(TgNode));
 	/* generate a name for the tee node table */
 	tn->nodeName = malloc(50);
-	sprintf(tn->nodeName, "tee_%d", newoid());
+	sprintf(tn->nodeName, "tee_%u", newoid());
 /*	  tn->nodeName = NULL; */
 
 	tn->nodeType = TG_TEE_NODE;

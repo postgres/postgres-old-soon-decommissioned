@@ -459,8 +459,7 @@ ExecCheckPerms(CmdType operation,
 								   ObjectIdGetDatum(relid),
 								   0, 0, 0);
 		if (!HeapTupleIsValid(htup))
-			elog(ERROR, "ExecCheckPerms: bogus RT relid: %d",
-				 relid);
+			elog(ERROR, "ExecCheckPerms: bogus RT relid: %u", relid);
 		StrNCpy(rname.data,
 				((Form_pg_class) GETSTRUCT(htup))->relname.data,
 				NAMEDATALEN);
@@ -520,8 +519,7 @@ ExecCheckPerms(CmdType operation,
 								   ObjectIdGetDatum(relid),
 								   0, 0, 0);
 			if (!HeapTupleIsValid(htup))
-				elog(ERROR, "ExecCheckPerms: bogus RT relid: %d",
-					 relid);
+				elog(ERROR, "ExecCheckPerms: bogus RT relid: %u", relid);
 			StrNCpy(rname.data,
 					((Form_pg_class) GETSTRUCT(htup))->relname.data,
 					NAMEDATALEN);

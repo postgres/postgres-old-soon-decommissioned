@@ -109,7 +109,7 @@ init_fcache(Oid foid,
 
 	if (!HeapTupleIsValid(procedureTuple))
 		elog(ERROR,
-			 "init_fcache: %s %d",
+			 "init_fcache: %s %u",
 			 "Cache lookup failed for procedure", foid);
 
 	/* ----------------
@@ -130,7 +130,7 @@ init_fcache(Oid foid,
 
 	if (!HeapTupleIsValid(typeTuple))
 		elog(ERROR,
-			 "init_fcache: %s %d",
+			 "init_fcache: %s %u",
 			 "Cache lookup failed for type",
 			 (procedureStruct)->prorettype);
 

@@ -231,7 +231,7 @@ GetArrayElementType(Oid typearray)
 									 0, 0, 0);
 
 	if (!HeapTupleIsValid(type_tuple))
-		elog(ERROR, "GetArrayElementType: Cache lookup failed for type %d",
+		elog(ERROR, "GetArrayElementType: Cache lookup failed for type %u",
 			 typearray);
 
 	/* get the array type struct from the type tuple */

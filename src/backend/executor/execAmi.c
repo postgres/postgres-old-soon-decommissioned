@@ -496,7 +496,7 @@ ExecCreatR(TupleDesc tupType,
 {
 	Relation	relDesc;
 
-	EU3_printf("ExecCreatR: %s type=%d oid=%d\n",
+	EU3_printf("ExecCreatR: %s type=%d oid=%u\n",
 			   "entering: ", tupType, relationOid);
 	CXT1_printf("ExecCreatR: context is %d\n", CurrentMemoryContext);
 

@@ -81,7 +81,7 @@ LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool *foundPtr)
 		{
 
 #ifdef LBDEBUG
-			fprintf(stderr, "LB ALLOC (%d,%d) %d\n",
+			fprintf(stderr, "LB ALLOC (%u,%d) %d\n",
 					RelationGetRelid(reln), blockNum, -i - 1);
 #endif
 			LocalRefCount[i]++;
@@ -91,7 +91,7 @@ LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool *foundPtr)
 	}
 
 #ifdef LBDEBUG
-	fprintf(stderr, "LB ALLOC (%d,%d) %d\n",
+	fprintf(stderr, "LB ALLOC (%u,%d) %d\n",
 			RelationGetRelid(reln), blockNum, -nextFreeLocalBuf - 1);
 #endif
 

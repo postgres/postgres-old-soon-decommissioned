@@ -286,7 +286,7 @@ getattdisbursion(Oid relid, AttrNumber attnum)
 							  0, 0);
 	if (!HeapTupleIsValid(atp))
 	{
-		elog(ERROR, "getattdisbursion: no attribute tuple %d %d",
+		elog(ERROR, "getattdisbursion: no attribute tuple %u %d",
 			 relid, attnum);
 		return 0;
 	}
@@ -304,7 +304,7 @@ getattdisbursion(Oid relid, AttrNumber attnum)
 	 */
 	if (!HeapTupleIsValid(atp))
 	{
-		elog(ERROR, "getattdisbursion: no relation tuple %d", relid);
+		elog(ERROR, "getattdisbursion: no relation tuple %u", relid);
 		return 0;
 	}
 	ntuples = ((Form_pg_class) GETSTRUCT(atp))->reltuples;
@@ -460,7 +460,7 @@ btreenpage(Oid operatorObjectId,
 							  0, 0, 0);
 	if (!HeapTupleIsValid(atp))
 	{
-		elog(ERROR, "btreenpage: no index tuple %d", indexrelid);
+		elog(ERROR, "btreenpage: no index tuple %u", indexrelid);
 		return 0;
 	}
 
@@ -499,7 +499,7 @@ hashsel(Oid operatorObjectId,
 								  0, 0, 0);
 		if (!HeapTupleIsValid(atp))
 		{
-			elog(ERROR, "hashsel: no index tuple %d", indexrelid);
+			elog(ERROR, "hashsel: no index tuple %u", indexrelid);
 			return 0;
 		}
 		ntuples = ((Form_pg_class) GETSTRUCT(atp))->reltuples;
@@ -552,7 +552,7 @@ hashnpage(Oid operatorObjectId,
 							  0, 0, 0);
 	if (!HeapTupleIsValid(atp))
 	{
-		elog(ERROR, "hashsel: no index tuple %d", indexrelid);
+		elog(ERROR, "hashsel: no index tuple %u", indexrelid);
 		return 0;
 	}
 

@@ -140,7 +140,7 @@ be_newportal(void)
 	if (be_portalcnt == 0)
 		be_portaloid = newoid();
 	be_portalcnt++;
-	snprintf(buf, PortalNameLength, "be_%d_%d", be_portaloid, be_portalcnt);
+	snprintf(buf, PortalNameLength, "be_%u_%d", be_portaloid, be_portalcnt);
 
 	/* ----------------
 	 *	initialize the new portal entry and keep track

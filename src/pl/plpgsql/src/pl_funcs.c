@@ -703,7 +703,7 @@ plpgsql_dumptree(PLpgSQL_function * func)
 				{
 					PLpgSQL_var *var = (PLpgSQL_var *) d;
 
-					printf("VAR %-16s type %s (typoid %d) atttypmod %d\n",
+					printf("VAR %-16s type %s (typoid %u) atttypmod %d\n",
 						   var->refname, var->datatype->typname,
 						   var->datatype->typoid,
 						   var->datatype->atttypmod);

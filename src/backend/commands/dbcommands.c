@@ -123,7 +123,7 @@ destroydb(char *dbname, CommandDest dest)
 	 * permissions problems
 	 */
 	snprintf(buf, 512, 
-			"delete from pg_database where pg_database.oid = \'%d\'::oid", db_id);
+			"delete from pg_database where pg_database.oid = \'%u\'::oid", db_id);
 	pg_exec_query_dest(buf ,dest, false);
 
 	/* drop pages for this database that are in the shared buffer cache */

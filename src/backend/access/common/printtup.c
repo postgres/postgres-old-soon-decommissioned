@@ -59,7 +59,7 @@ getTypeOutAndElem(Oid type, Oid* typOutput, Oid* typElem)
 		return OidIsValid(*typOutput);
 	}
 
-	elog(ERROR, "getTypeOutAndElem: Cache lookup of type %d failed", type);
+	elog(ERROR, "getTypeOutAndElem: Cache lookup of type %u failed", type);
 
 	*typOutput = InvalidOid;
 	*typElem = InvalidOid;

@@ -119,8 +119,8 @@ inv_create(int flags)
 	file_oid = newoid() + 1;
 
 	/* come up with some table names */
-	sprintf(objname, "xinv%d", file_oid);
-	sprintf(indname, "xinx%d", file_oid);
+	sprintf(objname, "xinv%u", file_oid);
+	sprintf(indname, "xinx%u", file_oid);
 
 	if (RelnameFindRelid(objname) != InvalidOid)
 	{

@@ -786,7 +786,7 @@ CommuteClause(Node *clause)
 		get_operator_tuple(get_commutator(((Oper *) ((Expr *) clause)->oper)->opno));
 
 	if (heapTup == (HeapTuple) NULL)
-		elog(ERROR, "CommuteClause: no commutator for operator %d",
+		elog(ERROR, "CommuteClause: no commutator for operator %u",
 			 ((Oper *) ((Expr *) clause)->oper)->opno);
 
 	commuTup = (Form_pg_operator) GETSTRUCT(heapTup);

@@ -787,7 +787,7 @@ OperatorDef(char *operatorName,
 			setheapoverride(false);
 		}
 		else
-			elog(ERROR, "OperatorDef: no operator %d", operatorObjectId);
+			elog(ERROR, "OperatorDef: no operator %u", operatorObjectId);
 
 		heap_endscan(pg_operator_scan);
 	}

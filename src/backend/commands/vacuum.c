@@ -2140,7 +2140,7 @@ vc_updstats(Oid relid, int num_pages, int num_tuples, bool hasindex, VRelStats *
 							   ObjectIdGetDatum(relid),
 							   0, 0, 0);
 	if (!HeapTupleIsValid(ctup))
-		elog(ERROR, "pg_class entry for relid %d vanished during vacuuming",
+		elog(ERROR, "pg_class entry for relid %u vanished during vacuuming",
 			 relid);
 
 	rd = heap_openr(RelationRelationName);

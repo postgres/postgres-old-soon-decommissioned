@@ -149,7 +149,7 @@ MJFormSkipQual(List *qualList, char * replaceopname)
 		 */
 		optup = get_operator_tuple(op->opno);
 		if (!HeapTupleIsValid(optup))		/* shouldn't happen */
-			elog(ERROR, "MJFormSkipQual: operator %d not found", op->opno);
+			elog(ERROR, "MJFormSkipQual: operator %u not found", op->opno);
 		opform = (Form_pg_operator) GETSTRUCT(optup);
 		oprleft = opform->oprleft;
 		oprright = opform->oprright;
@@ -166,7 +166,7 @@ MJFormSkipQual(List *qualList, char * replaceopname)
 									CharGetDatum('b'));
 		if (!HeapTupleIsValid(optup))
 			elog(ERROR,
-				 "MJFormSkipQual: mergejoin operator %d has no matching %s op",
+				 "MJFormSkipQual: mergejoin operator %u has no matching %s op",
 				 op->opno, replaceopname);
 		opform = (Form_pg_operator) GETSTRUCT(optup);
 

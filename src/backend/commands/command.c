@@ -368,7 +368,7 @@ PerformAddAttribute(char *relationName,
 				rel = heap_open(childrelid);
 				if (!RelationIsValid(rel))
 				{
-					elog(ERROR, "PerformAddAttribute: can't find catalog entry for inheriting class with oid %d",
+					elog(ERROR, "PerformAddAttribute: can't find catalog entry for inheriting class with oid %u",
 						 childrelid);
 				}
 				PerformAddAttribute((rel->rd_rel->relname).data,

@@ -83,7 +83,7 @@ static int WaitOnLock(LOCKMETHOD lockmethod, LOCK *lock, LOCKMODE lockmode);
 
 #define LOCK_PRINT_AUX(where,lock,type) \
 	TPRINTF(TRACE_ALL, \
-		 "%s: lock(%x) tbl(%d) rel(%d) db(%d) obj(%u) mask(%x) " \
+		 "%s: lock(%x) tbl(%d) rel(%u) db(%d) obj(%u) mask(%x) " \
 		 "hold(%d,%d,%d,%d,%d)=%d " \
 		 "act(%d,%d,%d,%d,%d)=%d wait(%d) type(%s)", \
 		 where, \

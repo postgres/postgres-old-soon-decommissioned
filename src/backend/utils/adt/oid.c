@@ -38,7 +38,7 @@ oid8in(char *oidString)
 		return NULL;
 
 	result = (Oid *) palloc(sizeof(Oid[8]));
-	if ((nums = sscanf(oidString, "%d%d%d%d%d%d%d%d",
+	if ((nums = sscanf(oidString, "%u%u%u%u%u%u%u%u",
 					   &result[0],
 					   &result[1],
 					   &result[2],

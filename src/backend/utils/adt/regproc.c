@@ -229,7 +229,7 @@ regprocout(RegProcedure proid)
 			if (!isnull)
 				StrNCpy(result, s, NAMEDATALEN);
 			else
-				elog(FATAL, "regprocout: null procedure %d", proid);
+				elog(FATAL, "regprocout: null procedure %u", proid);
 		}
 		else
 		{

@@ -703,8 +703,7 @@ ExecInitIndexScan(IndexScan *node, EState *estate, Plan *parent)
 		run_keys = (n_keys <= 0) ? NULL :
 			(int *) palloc(n_keys * sizeof(int));
 
-		CXT1_printf("ExecInitIndexScan: context is %d\n",
-					CurrentMemoryContext);
+		CXT1_printf("ExecInitIndexScan: context is %d\n",CurrentMemoryContext);
 
 		/* ----------------
 		 *	for each opclause in the given qual,
