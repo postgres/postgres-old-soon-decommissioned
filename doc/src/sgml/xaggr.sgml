@@ -162,6 +162,21 @@ SELECT attrelid::regclass, array_accum(atttypid)
   </para>
 
   <para>
+   A function written in C can detect that it is being called as an
+   aggregate transition or final function by seeing if it was passed
+   an <structname>AggState</> node as the function call <quote>context</>,
+   for example by
+<programlisting>
+        if (fcinfo->context &amp;&amp; IsA(fcinfo->context, AggState))
+</programlisting>
+   One reason for checking this is that when it is true, the left input
+   must be a temporary transition value and can therefore safely be modified
+   in-place rather than allocating a new copy.  (This is the <emphasis>only</>
+   case where it is safe for a function to modify a pass-by-reference input.)
+   See <literal>int8inc()></> for an example.
+  </para>
+
+  <para>
    For further details see the
    <xref linkend="sql-createaggregate" endterm="sql-createaggregate-title">
    command.
