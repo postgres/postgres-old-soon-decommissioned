@@ -143,8 +143,8 @@ endif
 USE_TCL= @USE_TCL@
 # customize these to your site's needs
 #
-TCL_LIB= @TCL_LIB@
-TK_LIB= @TK_LIB@
+#TCL_LIB= @TCL_LIB@
+#TK_LIB= @TK_LIB@
 
 USE_PERL= @USE_PERL@
 
