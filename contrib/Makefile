@@ -22,6 +22,7 @@ WANTED_DIRS = \
 		lo		\
 		ltree		\
 		miscutil	\
+		mysql		\
 		noupdate	\
 		oid2name	\
 		pg_autovacuum	\
@@ -47,7 +48,6 @@ WANTED_DIRS = \
 #		ipc_check	\ (does not have a makefile)
 #		mSQL-interface	\ (requires msql installed)
 #		mac		\ (does not have a makefile)
-#		mysql		\ (does not have a makefile)
 #		oracle		\ (does not have a makefile)
 #		pg_upgrade	\ (does not have a makefile)
 #		reindexdb	\ (does not have a makefile)
