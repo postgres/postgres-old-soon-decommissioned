@@ -69,8 +69,6 @@ Oid			MyDatabaseId = InvalidOid;
 
 bool		IsUnderPostmaster = false;
 
-int			DebugLvl = 0;
-
 int			DateStyle = USE_ISO_DATES;
 bool		EuroDates = false;
 bool		HasCTZSet = false;

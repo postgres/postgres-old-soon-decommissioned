@@ -1041,7 +1041,7 @@ warnAutoRange(ParseState *pstate, char *refname)
 		}
 	}
 	if (foundInFromCl)
-		elog(NOTICE, "Adding missing FROM-clause entry%s for table \"%s\"",
+		elog(INFO, "Adding missing FROM-clause entry%s for table \"%s\"",
 			 pstate->parentParseState != NULL ? " in subquery" : "",
 			 refname);
 }

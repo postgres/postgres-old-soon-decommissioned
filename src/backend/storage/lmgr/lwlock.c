@@ -68,7 +68,7 @@ inline static void
 PRINT_LWDEBUG(const char *where, LWLockId lockid, const volatile LWLock *lock)
 {
 	if (Trace_lwlocks)
-		elog(DEBUG, "%s(%d): excl %d shared %d head %p rOK %d",
+		elog(LOG, "%s(%d): excl %d shared %d head %p rOK %d",
 			 where, (int) lockid,
 			 (int) lock->exclusive, lock->shared, lock->head,
 			 (int) lock->releaseOK);
@@ -78,8 +78,7 @@ inline static void
 LOG_LWDEBUG(const char *where, LWLockId lockid, const char *msg)
 {
 	if (Trace_lwlocks)
-		elog(DEBUG, "%s(%d): %s",
-			 where, (int) lockid, msg);
+		elog(LOG, "%s(%d): %s", where, (int) lockid, msg);
 }
 
 #else							/* not LOCK_DEBUG */

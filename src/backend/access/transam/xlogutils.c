@@ -249,7 +249,7 @@ _xl_remove_hash_entry(XLogRelDesc *rdesc)
 	hentry = (XLogRelCacheEntry *) hash_search(_xlrelcache,
 				  (void *) &(rdesc->reldata.rd_node), HASH_REMOVE, NULL);
 	if (hentry == NULL)
-		elog(STOP, "_xl_remove_hash_entry: file was not found in cache");
+		elog(PANIC, "_xl_remove_hash_entry: file was not found in cache");
 
 	if (rdesc->reldata.rd_fd >= 0)
 		smgrclose(DEFAULT_SMGR, &(rdesc->reldata));
@@ -346,10 +346,10 @@ XLogOpenRelation(bool redo, RmgrId rmid, RelFileNode rnode)
 			hash_search(_xlrelcache, (void *) &rnode, HASH_ENTER, &found);
 
 		if (hentry == NULL)
-			elog(STOP, "XLogOpenRelation: out of memory for cache");
+			elog(PANIC, "XLogOpenRelation: out of memory for cache");
 
 		if (found)
-			elog(STOP, "XLogOpenRelation: file found on insert into cache");
+			elog(PANIC, "XLogOpenRelation: file found on insert into cache");
 
 		hentry->rdesc = res;
 

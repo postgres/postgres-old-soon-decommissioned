@@ -348,12 +348,12 @@ DefineOperator(char *oprName,
 		else if (strcasecmp(defel->defname, "precedence") == 0)
 		{
 			/* NOT IMPLEMENTED (never worked in v4.2) */
-			elog(NOTICE, "CREATE OPERATOR: precedence not implemented");
+			elog(INFO, "CREATE OPERATOR: precedence not implemented");
 		}
 		else if (strcasecmp(defel->defname, "associativity") == 0)
 		{
 			/* NOT IMPLEMENTED (never worked in v4.2) */
-			elog(NOTICE, "CREATE OPERATOR: associativity not implemented");
+			elog(INFO, "CREATE OPERATOR: associativity not implemented");
 		}
 		else if (strcasecmp(defel->defname, "commutator") == 0)
 			commutatorName = defGetString(defel);

@@ -1345,13 +1345,13 @@ _rtdump(Relation r)
 void
 rtree_redo(XLogRecPtr lsn, XLogRecord *record)
 {
-	elog(STOP, "rtree_redo: unimplemented");
+	elog(PANIC, "rtree_redo: unimplemented");
 }
 
 void
 rtree_undo(XLogRecPtr lsn, XLogRecord *record)
 {
-	elog(STOP, "rtree_undo: unimplemented");
+	elog(PANIC, "rtree_undo: unimplemented");
 }
 
 void

@@ -65,8 +65,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int maxBackends)
 	/* might as well round it off to a multiple of a typical page size */
 	size += 8192 - (size % 8192);
 
-	if (DebugLvl > 1)
-		fprintf(stderr, "invoking IpcMemoryCreate(size=%d)\n", size);
+	elog(DEBUG2, "invoking IpcMemoryCreate(size=%d)", size);
 
 	/*
 	 * Create the shmem segment

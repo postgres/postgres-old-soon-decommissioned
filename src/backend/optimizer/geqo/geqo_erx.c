@@ -419,7 +419,7 @@ edge_failure(Gene *gene, int index, Edge *edge_table, int num_gene)
 			}
 		}
 
-		elog(DEBUG, "edge_failure(1): no edge found via random decision and total_edges == 4");
+		elog(LOG, "edge_failure(1): no edge found via random decision and total_edges == 4");
 	}
 
 	else
@@ -444,7 +444,7 @@ edge_failure(Gene *gene, int index, Edge *edge_table, int num_gene)
 			}
 		}
 
-		elog(DEBUG, "edge_failure(2): no edge found via random decision and remainig edges");
+		elog(LOG, "edge_failure(2): no edge found via random decision and remainig edges");
 	}
 
 	/*
@@ -462,7 +462,7 @@ edge_failure(Gene *gene, int index, Edge *edge_table, int num_gene)
 			if (edge_table[i].unused_edges >= 0)
 				return (Gene) i;
 
-		elog(DEBUG, "edge_failure(3): no edge found via looking for the last ununsed point");
+		elog(LOG, "edge_failure(3): no edge found via looking for the last ununsed point");
 	}
 
 

@@ -1953,13 +1953,13 @@ gist_dumptree(Relation r, int level, BlockNumber blk, OffsetNumber coff)
 void
 gist_redo(XLogRecPtr lsn, XLogRecord *record)
 {
-	elog(STOP, "gist_redo: unimplemented");
+	elog(PANIC, "gist_redo: unimplemented");
 }
 
 void
 gist_undo(XLogRecPtr lsn, XLogRecord *record)
 {
-	elog(STOP, "gist_undo: unimplemented");
+	elog(PANIC, "gist_undo: unimplemented");
 }
 
 void

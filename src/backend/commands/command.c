@@ -1501,8 +1501,7 @@ AlterTableDropConstraint(const char *relationName,
 			 constrName);
 	/* Otherwise if more than one constraint deleted, notify */
 	else if (deleted > 1)
-		elog(NOTICE, "Multiple constraints dropped");
-
+		elog(INFO, "Multiple constraints dropped");
 }
 
 

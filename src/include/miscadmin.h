@@ -129,8 +129,6 @@ extern DLLIMPORT Oid MyDatabaseId;
 
 extern bool IsUnderPostmaster;
 
-extern int	DebugLvl;
-
 /* Date/Time Configuration
  *
  * Constants to pass info from runtime environment:

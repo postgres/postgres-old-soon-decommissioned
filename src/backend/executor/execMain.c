@@ -1095,7 +1095,7 @@ lnext:	;
 				break;
 
 			default:
-				elog(DEBUG, "ExecutePlan: unknown operation in queryDesc");
+				elog(LOG, "ExecutePlan: unknown operation in queryDesc");
 				result = NULL;
 				break;
 		}

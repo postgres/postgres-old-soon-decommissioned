@@ -3169,7 +3169,7 @@ locale_is_like_safe(void)
 		return (bool) result;
 	localeptr = setlocale(LC_COLLATE, NULL);
 	if (!localeptr)
-		elog(STOP, "Invalid LC_COLLATE setting");
+		elog(PANIC, "Invalid LC_COLLATE setting");
 
 	/*
 	 * Currently we accept only "C" and "POSIX" (do any systems still

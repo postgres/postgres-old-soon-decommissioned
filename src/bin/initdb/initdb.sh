@@ -452,7 +452,7 @@ PGSQL_OPT="-F -D$PGDATA"
 
 if [ "$debug" = yes ]
 then
-    BACKEND_TALK_ARG="-d"
+    BACKEND_TALK_ARG="-d 5"
 else
     PGSQL_OPT="$PGSQL_OPT -o /dev/null"
 fi

@@ -65,7 +65,7 @@ crypt_openpwdfile(void)
 	pwdfile = AllocateFile(filename, "r");
 
 	if (pwdfile == NULL && errno != ENOENT)
-		elog(DEBUG, "could not open %s: %m", filename);
+		elog(LOG, "could not open %s: %m", filename);
 
 	pfree(filename);
 

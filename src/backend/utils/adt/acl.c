@@ -122,7 +122,7 @@ aclparse(const char *s, AclItem *aip, unsigned *modechg)
 	Assert(s && aip && modechg);
 
 #ifdef ACLDEBUG
-	elog(DEBUG, "aclparse: input = '%s'", s);
+	elog(LOG, "aclparse: input = '%s'", s);
 #endif
 	aip->ai_idtype = ACL_IDTYPE_UID;
 	s = getid(s, name);
@@ -204,7 +204,7 @@ aclparse(const char *s, AclItem *aip, unsigned *modechg)
 	}
 
 #ifdef ACLDEBUG
-	elog(DEBUG, "aclparse: correctly read [%x %d %x], modechg=%x",
+	elog(LOG, "aclparse: correctly read [%x %d %x], modechg=%x",
 		 aip->ai_idtype, aip->ai_id, aip->ai_mode, *modechg);
 #endif
 	return s;

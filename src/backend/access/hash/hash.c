@@ -468,13 +468,13 @@ hashbulkdelete(PG_FUNCTION_ARGS)
 void
 hash_redo(XLogRecPtr lsn, XLogRecord *record)
 {
-	elog(STOP, "hash_redo: unimplemented");
+	elog(PANIC, "hash_redo: unimplemented");
 }
 
 void
 hash_undo(XLogRecPtr lsn, XLogRecord *record)
 {
-	elog(STOP, "hash_undo: unimplemented");
+	elog(PANIC, "hash_undo: unimplemented");
 }
 
 void

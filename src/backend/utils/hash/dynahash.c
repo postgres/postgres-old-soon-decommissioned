@@ -933,7 +933,7 @@ hash_corrupted(HTAB *hashp)
 	 * systemwide restart.	Otherwise, just shut down this one backend.
 	 */
 	if (hashp->isshared)
-		elog(STOP, "Hash table '%s' corrupted", hashp->tabname);
+		elog(PANIC, "Hash table '%s' corrupted", hashp->tabname);
 	else
 		elog(FATAL, "Hash table '%s' corrupted", hashp->tabname);
 }

@@ -582,7 +582,7 @@ smgrsync()
 		if (smgrsw[i].smgr_sync)
 		{
 			if ((*(smgrsw[i].smgr_sync)) () == SM_FAIL)
-				elog(STOP, "storage sync failed on %s: %m",
+				elog(PANIC, "storage sync failed on %s: %m",
 					 DatumGetCString(DirectFunctionCall1(smgrout,
 													 Int16GetDatum(i))));
 		}

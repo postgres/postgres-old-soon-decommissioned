@@ -294,7 +294,7 @@ format_type_internal(Oid type_oid, int32 typemod,
 						fieldstr = "";
 						break;
 					default:
-						elog(DEBUG, "Invalid INTERVAL typmod 0x%x", typemod);
+						elog(LOG, "Invalid INTERVAL typmod 0x%x", typemod);
 						fieldstr = "";
 						break;
 				}

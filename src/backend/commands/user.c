@@ -547,7 +547,7 @@ AlterUser(AlterUserStmt *stmt)
 
 	/* changes to the flat password file cannot be rolled back */
 	if (IsTransactionBlock() && password)
-		elog(NOTICE, "ALTER USER: password changes cannot be rolled back");
+		elog(INFO, "ALTER USER: password changes cannot be rolled back");
 
 	/*
 	 * Scan the pg_shadow relation to be certain the user exists. Note we
@@ -785,7 +785,7 @@ DropUser(DropUserStmt *stmt)
 		elog(ERROR, "DROP USER: permission denied");
 
 	if (IsTransactionBlock())
-		elog(NOTICE, "DROP USER cannot be rolled back completely");
+		elog(INFO, "DROP USER cannot be rolled back completely");
 
 	/*
 	 * Scan the pg_shadow relation to find the usesysid of the user to be

@@ -201,7 +201,7 @@ ExecMarkPos(Plan *node)
 
 		default:
 			/* don't make hard error unless caller asks to restore... */
-			elog(DEBUG, "ExecMarkPos: node type %d not supported",
+			elog(LOG, "ExecMarkPos: node type %d not supported",
 				 nodeTag(node));
 			break;
 	}

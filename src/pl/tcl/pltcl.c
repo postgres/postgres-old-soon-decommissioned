@@ -1268,7 +1268,7 @@ pltcl_elog(ClientData cdata, Tcl_Interp *interp,
 	else if (strcmp(argv[1], "FATAL") == 0)
 		level = FATAL;
 	else if (strcmp(argv[1], "DEBUG") == 0)
-		level = DEBUG;
+		level = DEBUG1;
 	else
 	{
 		Tcl_AppendResult(interp, "Unknown elog level '", argv[1],

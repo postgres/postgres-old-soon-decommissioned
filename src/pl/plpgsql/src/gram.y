@@ -1207,7 +1207,7 @@ raise_level		: K_EXCEPTION
 					}
 				| K_DEBUG
 					{
-						$$ = DEBUG;
+						$$ = DEBUG5;
 					}
 				;
 

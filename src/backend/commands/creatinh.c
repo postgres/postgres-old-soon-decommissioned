@@ -425,7 +425,7 @@ MergeAttributes(List *schema, List *supers, bool istemp,
 				 * Yes, try to merge the two column definitions. They must
 				 * have the same type and typmod.
 				 */
-				elog(NOTICE, "CREATE TABLE: merging multiple inherited definitions of attribute \"%s\"",
+				elog(INFO, "CREATE TABLE: merging multiple inherited definitions of attribute \"%s\"",
 					 attributeName);
 				def = (ColumnDef *) nth(exist_attno - 1, inhSchema);
 				if (strcmp(def->typename->name, attributeType) != 0 ||
@@ -564,7 +564,7 @@ MergeAttributes(List *schema, List *supers, bool istemp,
 				 * Yes, try to merge the two column definitions. They must
 				 * have the same type and typmod.
 				 */
-				elog(NOTICE, "CREATE TABLE: merging attribute \"%s\" with inherited definition",
+				elog(INFO, "CREATE TABLE: merging attribute \"%s\" with inherited definition",
 					 attributeName);
 				def = (ColumnDef *) nth(exist_attno - 1, inhSchema);
 				if (strcmp(def->typename->name, attributeType) != 0 ||

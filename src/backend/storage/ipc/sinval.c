@@ -66,7 +66,7 @@ SendSharedInvalidMessage(SharedInvalidationMessage *msg)
 	insertOK = SIInsertDataEntry(shmInvalBuffer, msg);
 	LWLockRelease(SInvalLock);
 	if (!insertOK)
-		elog(DEBUG, "SendSharedInvalidMessage: SI buffer overflow");
+		elog(LOG, "SendSharedInvalidMessage: SI buffer overflow");
 }
 
 /*
@@ -108,7 +108,7 @@ ReceiveSharedInvalidMessages(
 		if (getResult < 0)
 		{
 			/* got a reset message */
-			elog(DEBUG, "ReceiveSharedInvalidMessages: cache state reset");
+			elog(LOG, "ReceiveSharedInvalidMessages: cache state reset");
 			resetFunction();
 		}
 		else

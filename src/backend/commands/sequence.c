@@ -879,7 +879,7 @@ seq_redo(XLogRecPtr lsn, XLogRecord *record)
 	sequence_magic *sm;
 
 	if (info != XLOG_SEQ_LOG)
-		elog(STOP, "seq_redo: unknown op code %u", info);
+		elog(PANIC, "seq_redo: unknown op code %u", info);
 
 	reln = XLogOpenRelation(true, RM_SEQ_ID, xlrec->node);
 	if (!RelationIsValid(reln))
@@ -887,7 +887,7 @@ seq_redo(XLogRecPtr lsn, XLogRecord *record)
 
 	buffer = XLogReadBuffer(true, reln, 0);
 	if (!BufferIsValid(buffer))
-		elog(STOP, "seq_redo: can't read block of %u/%u",
+		elog(PANIC, "seq_redo: can't read block of %u/%u",
 			 xlrec->node.tblNode, xlrec->node.relNode);
 
 	page = (Page) BufferGetPage(buffer);
@@ -903,7 +903,7 @@ seq_redo(XLogRecPtr lsn, XLogRecord *record)
 	itemsz = MAXALIGN(itemsz);
 	if (PageAddItem(page, (Item) item, itemsz,
 					FirstOffsetNumber, LP_USED) == InvalidOffsetNumber)
-		elog(STOP, "seq_redo: failed to add item to page");
+		elog(PANIC, "seq_redo: failed to add item to page");
 
 	PageSetLSN(page, lsn);
 	PageSetSUI(page, ThisStartUpID);

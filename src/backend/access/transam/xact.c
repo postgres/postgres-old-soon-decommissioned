@@ -1606,7 +1606,7 @@ xact_redo(XLogRecPtr lsn, XLogRecord *record)
 		/* SHOULD REMOVE FILES OF ALL FAILED-TO-BE-CREATED RELATIONS */
 	}
 	else
-		elog(STOP, "xact_redo: unknown op code %u", info);
+		elog(PANIC, "xact_redo: unknown op code %u", info);
 }
 
 void
@@ -1615,9 +1615,9 @@ xact_undo(XLogRecPtr lsn, XLogRecord *record)
 	uint8		info = record->xl_info & ~XLR_INFO_MASK;
 
 	if (info == XLOG_XACT_COMMIT)		/* shouldn't be called by XLOG */
-		elog(STOP, "xact_undo: can't undo committed xaction");
+		elog(PANIC, "xact_undo: can't undo committed xaction");
 	else if (info != XLOG_XACT_ABORT)
-		elog(STOP, "xact_redo: unknown op code %u", info);
+		elog(PANIC, "xact_redo: unknown op code %u", info);
 }
 
 void
@@ -1652,7 +1652,7 @@ void
 {
 #ifdef XLOG_II
 	if (_RollbackFunc != NULL)
-		elog(STOP, "XactPushRollback: already installed");
+		elog(PANIC, "XactPushRollback: already installed");
 #endif
 
 	_RollbackFunc = func;

@@ -691,9 +691,7 @@ pam_passwd_conv_proc(int num_msg, const struct pam_message ** msg, struct pam_re
 
 		initStringInfo(&buf);
 		pq_getstr(&buf);
-		if (DebugLvl > 5)
-			fprintf(stderr, "received PAM packet with len=%d, pw=%s\n",
-					len, buf.data);
+		elog(DEBUG5, "received PAM packet with len=%d, pw=%s\n", len, buf.data);
 
 		if (strlen(buf.data) == 0)
 		{
@@ -856,9 +854,8 @@ recv_and_check_password_packet(Port *port)
 		return STATUS_EOF;
 	}
 
-	if (DebugLvl > 5)			/* this is probably a BAD idea... */
-		fprintf(stderr, "received password packet with len=%d, pw=%s\n",
-				len, buf.data);
+	elog(DEBUG5, "received password packet with len=%d, pw=%s\n",
+		len, buf.data);
 
 	result = checkPassword(port, port->user, buf.data);
 	pfree(buf.data);
