@@ -156,7 +156,7 @@ void
 _bt_leafbuild(BTSpool *btspool, BTSpool *btspool2)
 {
 #ifdef BTREE_BUILD_STATS
-	if (Show_btree_build_stats)
+	if (log_btree_build_stats)
 	{
 		ShowUsage("BTREE BUILD (Spool) STATISTICS");
 		ResetUsage();

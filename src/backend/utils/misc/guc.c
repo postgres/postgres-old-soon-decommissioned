@@ -91,7 +91,7 @@ bool		log_planner_stats = false;
 bool		log_executor_stats = false;
 bool		log_statement_stats = false;		/* this is sort of all
 												 * three above together */
-bool		Show_btree_build_stats = false;
+bool		log_btree_build_stats = false;
 
 bool		Explain_pretty_print = true;
 
@@ -420,7 +420,7 @@ static struct config_bool
 	},
 #ifdef BTREE_BUILD_STATS
 	{
-		{"show_btree_build_stats", PGC_SUSET}, &Show_btree_build_stats,
+		{"log_btree_build_stats", PGC_SUSET}, &log_btree_build_stats,
 		false, NULL, NULL
 	},
 #endif

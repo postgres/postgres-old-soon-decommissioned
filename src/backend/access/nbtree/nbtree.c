@@ -117,7 +117,7 @@ btbuild(PG_FUNCTION_ARGS)
 	buildstate.indtuples = 0;
 
 #ifdef BTREE_BUILD_STATS
-	if (Show_btree_build_stats)
+	if (log_btree_build_stats)
 		ResetUsage();
 #endif   /* BTREE_BUILD_STATS */
 
@@ -169,7 +169,7 @@ btbuild(PG_FUNCTION_ARGS)
 	}
 
 #ifdef BTREE_BUILD_STATS
-	if (Show_btree_build_stats)
+	if (log_btree_build_stats)
 	{
 		ShowUsage("BTREE BUILD STATS");
 		ResetUsage();
