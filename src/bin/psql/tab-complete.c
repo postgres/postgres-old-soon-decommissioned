@@ -543,6 +543,7 @@ psql_completion(char *text, int start, int end)
 		"lc_numeric",
 		"lc_time",
 		"log_duration",
+		"log_error_verbosity",
 		"log_executor_stats",
 		"log_min_duration_statement",
 		"log_min_error_statement",

@@ -268,6 +268,15 @@ extern DLLIMPORT ErrorContextCallback *error_context_stack;
 
 
 /* GUC-configurable parameters */
+
+typedef enum
+{
+	PGERROR_TERSE,				/* single-line error messages */
+	PGERROR_DEFAULT,			/* recommended style */
+	PGERROR_VERBOSE				/* all the facts, ma'am */
+} PGErrorVerbosity;
+
+extern PGErrorVerbosity Log_error_verbosity;
 extern bool Log_timestamp;
 extern bool Log_pid;
 #ifdef HAVE_SYSLOG
