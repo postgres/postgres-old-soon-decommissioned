@@ -197,7 +197,6 @@ typedef BTItemData *BTItem;
 												 * metapage */
 #define XLOG_BTREE_NEWROOT		0xA0	/* new root page */
 #define XLOG_BTREE_NEWMETA		0xB0	/* update metadata page */
-#define XLOG_BTREE_NEWPAGE		0xC0	/* new index page during build */
 
 /*
  * All that we need to find changed index tuple
@@ -323,18 +322,6 @@ typedef struct xl_btree_newmeta
 } xl_btree_newmeta;
 
 #define SizeOfBtreeNewmeta	(sizeof(xl_btree_newmeta))
-
-/*
- * New index page log record.  This is only used while building a new index.
- */
-typedef struct xl_btree_newpage
-{
-	RelFileNode node;
-	BlockNumber blkno;			/* location of new page */
-	/* entire page contents follow at end of record */
-} xl_btree_newpage;
-
-#define SizeOfBtreeNewpage	(offsetof(xl_btree_newpage, blkno) + sizeof(BlockNumber))
 
 
 /*
