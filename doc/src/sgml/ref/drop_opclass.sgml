@@ -116,6 +116,7 @@ DROP OPERATOR CLASS widget_ops USING btree;
   <title>See Also</title>
 
   <simplelist type="inline">
+   <member><xref linkend="sql-alteropclass" endterm="sql-alteropclass-title"></member>
    <member><xref linkend="sql-createopclass" endterm="sql-createopclass-title"></member>
   </simplelist>
  </refsect1>

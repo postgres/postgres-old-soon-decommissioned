@@ -238,16 +238,15 @@ CREATE LANGUAGE plsample
  <refsect1>
   <title>See Also</title>
 
-  <para>
-   <simplelist type="inline">
-    <member><xref linkend="app-createlang"></member>
-    <member><xref linkend="sql-createfunction" endterm="sql-createfunction-title"></member>
-    <member><xref linkend="app-droplang"></member>
-    <member><xref linkend="sql-droplanguage" endterm="sql-droplanguage-title"></member>
-    <member><xref linkend="sql-grant" endterm="sql-grant-title"></member>
-    <member><xref linkend="sql-revoke" endterm="sql-revoke-title"></member>
-   </simplelist>
-  </para>
+  <simplelist type="inline">
+   <member><xref linkend="sql-alterlanguage" endterm="sql-alterlanguage-title"></member>
+   <member><xref linkend="sql-createfunction" endterm="sql-createfunction-title"></member>
+   <member><xref linkend="sql-droplanguage" endterm="sql-droplanguage-title"></member>
+   <member><xref linkend="sql-grant" endterm="sql-grant-title"></member>
+   <member><xref linkend="sql-revoke" endterm="sql-revoke-title"></member>
+   <member><xref linkend="app-createlang"></member>
+   <member><xref linkend="app-droplang"></member>
+  </simplelist>
  </refsect1>
 </refentry>
 

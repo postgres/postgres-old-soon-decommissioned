@@ -228,13 +228,11 @@ InitPostgres(const char *dbname, const char *username)
 	bool		bootstrap = IsBootstrapProcessingMode();
 
 	/*
-	 * Set up the global variables holding database name, id, and path.
+	 * Set up the global variables holding database id and path.
 	 *
 	 * We take a shortcut in the bootstrap case, otherwise we have to look up
 	 * the db name in pg_database.
 	 */
-	SetDatabaseName(dbname);
-
 	if (bootstrap)
 	{
 		MyDatabaseId = TemplateDbOid;

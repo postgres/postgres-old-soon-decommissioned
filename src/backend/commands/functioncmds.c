@@ -592,6 +592,72 @@ RemoveFunctionById(Oid funcOid)
 
 
 /*
+ * Rename function
+ */
+void
+RenameFunction(List *name, List *argtypes, const char *newname)
+{
+	Oid			procOid;
+	Oid			namespaceOid;
+	Oid			oid_array[FUNC_MAX_ARGS];
+	HeapTuple	tup;
+	Relation	rel;
+	AclResult	aclresult;
+	int16		nargs;
+
+	rel = heap_openr(ProcedureRelationName, RowExclusiveLock);
+
+	procOid = LookupFuncNameTypeNames(name, argtypes, "RenameFunction");
+
+	tup = SearchSysCacheCopy(PROCOID,
+							 ObjectIdGetDatum(procOid),
+							 0, 0, 0);
+	if (!HeapTupleIsValid(tup)) /* should not happen */
+		elog(ERROR, "RenameFunction: couldn't find pg_proc tuple for %s",
+			 NameListToString(name));
+
+	if (((Form_pg_proc) GETSTRUCT(tup))->proisagg)
+		ereport(ERROR,
+				(errcode(ERRCODE_SYNTAX_ERROR_OR_ACCESS_RULE_VIOLATION),
+				 errmsg("%s is an aggregate function", NameListToString(name)),
+				 errhint("Use ALTER AGGREGATE to rename aggregate functions.")));
+
+	namespaceOid = ((Form_pg_proc) GETSTRUCT(tup))->pronamespace;
+
+	/* make sure the new name doesn't exist */
+	nargs = compute_parameter_types(argtypes, ((Form_pg_proc) GETSTRUCT(tup))->prolang, oid_array);
+	if (SearchSysCacheExists(PROCNAMENSP,
+							 CStringGetDatum(newname),
+							 Int16GetDatum(nargs),
+							 PointerGetDatum(oid_array),
+							 ObjectIdGetDatum(namespaceOid)))
+	{
+		ereport(ERROR,
+				(errcode(ERRCODE_SYNTAX_ERROR_OR_ACCESS_RULE_VIOLATION),
+				 errmsg("function %s with the same argument types already exists in schema %s",
+						newname, get_namespace_name(namespaceOid))));
+	}
+
+	/* must be owner */
+	if (!pg_proc_ownercheck(procOid, GetUserId()))
+		aclcheck_error(ACLCHECK_NOT_OWNER, NameListToString(name));
+
+	/* must have CREATE privilege on namespace */
+	aclresult = pg_namespace_aclcheck(namespaceOid, GetUserId(), ACL_CREATE);
+	if (aclresult != ACLCHECK_OK)
+		aclcheck_error(aclresult, get_namespace_name(namespaceOid));
+
+	/* rename */
+	namestrcpy(&(((Form_pg_proc) GETSTRUCT(tup))->proname), newname);
+	simple_heap_update(rel, &tup->t_self, tup);
+	CatalogUpdateIndexes(rel, tup);
+
+	heap_close(rel, NoLock);
+	heap_freetuple(tup);
+}
+
+
+/*
  * SetFunctionReturnType - change declared return type of a function
  *
  * This is presently only used for adjusting legacy functions that return

@@ -58,18 +58,3 @@ superuser_arg(AclId userid)
 	}
 	return result;
 }
-
-
-/*
- * The Postgres user running this command is the owner of the specified
- * database.
- */
-bool
-is_dbadmin(Oid dbid)
-{
-	AclId		dba;
-
-	dba = get_database_owner(dbid);
-
-	return (GetUserId() == dba);
-}

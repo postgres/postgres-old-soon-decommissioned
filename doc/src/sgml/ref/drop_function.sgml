@@ -126,6 +126,7 @@ DROP FUNCTION sqrt(integer);
 
   <simplelist type="inline">
    <member><xref linkend="sql-createfunction" endterm="sql-createfunction-title"></member>
+   <member><xref linkend="sql-alterfunction" endterm="sql-alterfunction-title"></member>
   </simplelist>
  </refsect1>
 

@@ -192,7 +192,6 @@ extern char *VirtualHost;
  *			POSTGRES directory path definitions.							 *
  *****************************************************************************/
 
-extern char *DatabaseName;
 extern char *DatabasePath;
 
 /* in utils/misc/database.c */
@@ -200,7 +199,6 @@ extern void GetRawDatabaseInfo(const char *name, Oid *db_id, char *path);
 extern char *ExpandDatabasePath(const char *path);
 
 /* now in utils/init/miscinit.c */
-extern void SetDatabaseName(const char *name);
 extern void SetDatabasePath(const char *path);
 
 extern char *GetUserNameFromId(AclId userid);
@@ -226,8 +224,6 @@ extern char *convertstr(unsigned char *buff, int len, int dest);
 /* in utils/misc/superuser.c */
 extern bool superuser(void);	/* current user is superuser */
 extern bool superuser_arg(AclId userid);	/* given user is superuser */
-extern bool is_dbadmin(Oid dbid);		/* current user is owner of
-										 * database */
 
 
 /*****************************************************************************

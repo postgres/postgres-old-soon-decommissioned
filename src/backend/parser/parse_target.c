@@ -144,7 +144,7 @@ transformTargetList(ParseState *pstate, List *targetlist)
 							 * We check the catalog name and then ignore
 							 * it.
 							 */
-							if (strcmp(name1, DatabaseName) != 0)
+							if (strcmp(name1, get_database_name(MyDatabaseId)) != 0)
 								elog(ERROR, "Cross-database references are not implemented");
 							schemaname = strVal(lsecond(fields));
 							relname = strVal(lthird(fields));

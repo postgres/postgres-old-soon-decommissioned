@@ -12,7 +12,7 @@ subdir = src/backend/commands
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = aggregatecmds.o analyze.o async.o cluster.o comment.o  \
+OBJS = aggregatecmds.o alter.o analyze.o async.o cluster.o comment.o  \
 	conversioncmds.o copy.o \
 	dbcommands.o define.o explain.o functioncmds.o \
 	indexcmds.o lockcmds.o operatorcmds.o opclasscmds.o \

@@ -118,7 +118,9 @@ DROP LANGUAGE plsample;
   <title>See Also</title>
 
   <simplelist type="inline">
+   <member><xref linkend="sql-alterlanguage" endterm="sql-alterlanguage-title"></member>
    <member><xref linkend="sql-createlanguage" endterm="sql-createlanguage-title"></member>
+   <member><xref linkend="app-droplang"></member>
   </simplelist>
  </refsect1>
 

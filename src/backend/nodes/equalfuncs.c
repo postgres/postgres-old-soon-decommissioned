@@ -909,7 +909,9 @@ static bool
 _equalRenameStmt(RenameStmt *a, RenameStmt *b)
 {
 	COMPARE_NODE_FIELD(relation);
-	COMPARE_STRING_FIELD(oldname);
+	COMPARE_NODE_FIELD(object);
+	COMPARE_NODE_FIELD(objarg);
+	COMPARE_STRING_FIELD(subname);
 	COMPARE_STRING_FIELD(newname);
 	COMPARE_SCALAR_FIELD(renameType);
 

@@ -19,5 +19,6 @@
 
 extern void CreateConversionCommand(CreateConversionStmt *parsetree);
 extern void DropConversionCommand(List *conversion_name, DropBehavior behavior);
+extern void RenameConversion(List *name, const char *newname);
 
 #endif   /* CONVERSIONCMDS_H */

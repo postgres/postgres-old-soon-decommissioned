@@ -771,7 +771,7 @@ vacuum_rel(Oid relid, VacuumStmt *vacstmt, char expected_relkind)
 	onerel = relation_open(relid, lmode);
 
 	if (!(pg_class_ownercheck(RelationGetRelid(onerel), GetUserId()) ||
-		  (is_dbadmin(MyDatabaseId) && !onerel->rd_rel->relisshared)))
+		  (pg_database_ownercheck(MyDatabaseId, GetUserId()) && !onerel->rd_rel->relisshared)))
 	{
 		elog(WARNING, "Skipping \"%s\" --- only table or database owner can VACUUM it",
 			 RelationGetRelationName(onerel));

@@ -22,4 +22,6 @@ extern void CreateSchemaCommand(CreateSchemaStmt *parsetree);
 extern void RemoveSchema(List *names, DropBehavior behavior);
 extern void RemoveSchemaById(Oid schemaOid);
 
+extern void RenameSchema(const char *oldname, const char *newname);
+
 #endif   /* SCHEMACMDS_H */

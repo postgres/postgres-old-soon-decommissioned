@@ -38,9 +38,15 @@ PostgreSQL Reference Manual
   </partintro>
 
    &abort;
+   &alterAggregate;
+   &alterConversion;
    &alterDatabase;
    &alterDomain;
+   &alterFunction;
    &alterGroup;
+   &alterLanguage;
+   &alterOperatorClass;
+   &alterSchema;
    &alterSequence;
    &alterTable;
    &alterTrigger;

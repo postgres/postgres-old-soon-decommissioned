@@ -160,7 +160,7 @@ RangeVarGetRelid(const RangeVar *relation, bool failOK)
 	 */
 	if (relation->catalogname)
 	{
-		if (strcmp(relation->catalogname, DatabaseName) != 0)
+		if (strcmp(relation->catalogname, get_database_name(MyDatabaseId)) != 0)
 			elog(ERROR, "Cross-database references are not implemented");
 	}
 
@@ -207,7 +207,7 @@ RangeVarGetCreationNamespace(const RangeVar *newRelation)
 	 */
 	if (newRelation->catalogname)
 	{
-		if (strcmp(newRelation->catalogname, DatabaseName) != 0)
+		if (strcmp(newRelation->catalogname, get_database_name(MyDatabaseId)) != 0)
 			elog(ERROR, "Cross-database references are not implemented");
 	}
 
@@ -1146,7 +1146,7 @@ DeconstructQualifiedName(List *names,
 			/*
 			 * We check the catalog name and then ignore it.
 			 */
-			if (strcmp(catalogname, DatabaseName) != 0)
+			if (strcmp(catalogname, get_database_name(MyDatabaseId)) != 0)
 				elog(ERROR, "Cross-database references are not implemented");
 			break;
 		default:
@@ -1596,7 +1596,7 @@ InitTempTableNamespace(void)
 	if (pg_database_aclcheck(MyDatabaseId, GetSessionUserId(),
 							 ACL_CREATE_TEMP) != ACLCHECK_OK)
 		elog(ERROR, "%s: not authorized to create temp tables",
-			 DatabaseName);
+			 get_database_name(MyDatabaseId));
 
 	snprintf(namespaceName, sizeof(namespaceName), "pg_temp_%d", MyBackendId);
 

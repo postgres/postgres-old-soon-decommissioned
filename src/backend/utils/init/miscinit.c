@@ -105,22 +105,6 @@ SetDatabasePath(const char *path)
 	}
 }
 
-void
-SetDatabaseName(const char *name)
-{
-	if (DatabaseName)
-	{
-		free(DatabaseName);
-		DatabaseName = NULL;
-	}
-	/* use strdup since this is done before memory contexts are set up */
-	if (name)
-	{
-		DatabaseName = strdup(name);
-		AssertState(DatabaseName);
-	}
-}
-
 /*
  * Set data directory, but make sure it's an absolute path.  Use this,
  * never set DataDir directly.

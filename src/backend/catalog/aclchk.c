@@ -1327,3 +1327,40 @@ pg_opclass_ownercheck(Oid opc_oid, AclId userid)
 
 	return userid == owner_id;
 }
+
+
+/*
+ * Ownership check for database (specified as OID)
+ */
+bool
+pg_database_ownercheck(Oid db_oid, AclId userid)
+{
+	Relation	pg_database;
+	ScanKeyData entry[1];
+	HeapScanDesc scan;
+	HeapTuple	dbtuple;
+	int32		dba;
+
+	/* Superusers bypass all permission checking. */
+	if (superuser_arg(userid))
+		return true;
+
+	/* There's no syscache for pg_database, so must look the hard way */
+	pg_database = heap_openr(DatabaseRelationName, AccessShareLock);
+	ScanKeyEntryInitialize(&entry[0], 0x0,
+						   ObjectIdAttributeNumber, F_OIDEQ,
+						   ObjectIdGetDatum(db_oid));
+	scan = heap_beginscan(pg_database, SnapshotNow, 1, entry);
+
+	dbtuple = heap_getnext(scan, ForwardScanDirection);
+
+	if (!HeapTupleIsValid(dbtuple))
+		elog(ERROR, "database %u does not exist", db_oid);
+
+	dba = ((Form_pg_database) GETSTRUCT(dbtuple))->datdba;
+
+	heap_endscan(scan);
+	heap_close(pg_database, AccessShareLock);
+
+	return userid == dba;
+}

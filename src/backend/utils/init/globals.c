@@ -52,9 +52,7 @@ char		pg_pathname[MAXPGPATH];		/* full path to postgres
 
 BackendId	MyBackendId;
 
-char	   *DatabaseName = NULL;
 char	   *DatabasePath = NULL;
-
 Oid			MyDatabaseId = InvalidOid;
 
 /* these are initialized for the bootstrap/standalone case: */

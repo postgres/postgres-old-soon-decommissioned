@@ -404,6 +404,7 @@ CREATE FUNCTION add(integer, integer) RETURNS integer
   <title>See Also</title>
 
   <para>
+   <xref linkend="sql-alterfunction" endterm="sql-alterfunction-title">,
    <xref linkend="sql-dropfunction" endterm="sql-dropfunction-title">,
    <xref linkend="sql-grant" endterm="sql-grant-title">,
    <xref linkend="sql-load" endterm="sql-load-title">,
