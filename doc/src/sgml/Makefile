@@ -120,6 +120,9 @@ $(addsuffix .rtf, $(ALLBOOKS)): %.rtf: %.sgml $(ALLSGML) stylesheet.dsl
 # TeX and DVI
 $(addsuffix .tex, $(ALLBOOKS)): %.tex: %.sgml $(ALLSGML) stylesheet.dsl
 	$(JADE) $(JADEFLAGS) $(SGMLINCLUDE) -c $(CATALOG) -d stylesheet.dsl -t tex -V tex-backend -i output-print book-decl.sgml $<
+# TeX transforms '--' into en-dashes.  This hack should go away when
+# OpenJade is fixed (ver. 1.4?)
+	$(PERL) -pi -e 's/\-\-/\\mbox{}-\\mbox{}-\\mbox{}/g' $@
 
 %.dvi: %.tex
 	jadetex $<
@@ -195,6 +198,6 @@ clean distclean maintainer-clean:
 # man
 	rm -rf *.1 *.$(DEFAULTSECTION) man1 man$(DEFAULTSECTION) manpage.refs manpage.links manpage.log
 # print
-	rm -f *.rtf *.tex *.dvi *.aux *.log *.ps *.pdf
+	rm -f *.rtf *.tex *.dvi *.aux *.log *.ps *.pdf *.out
 # index
 	rm -f HTML.index bookindex.sgml setindex.sgml
