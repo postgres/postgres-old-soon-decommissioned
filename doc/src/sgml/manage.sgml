@@ -256,22 +256,6 @@ mydb=> \q
      are denoted by "<literal>/* ... */</literal>".
 </Para>
 
-<Sect2>
-<Title>Database Privileges</Title>
-
-<Para>
-</para>
-</Sect2>
-
-<Sect2>
-<Title>Table Privileges</Title>
-
-<Para>
-TBD
-</Para>
-
-</Sect2>
-
 </Sect1>
      
 <Sect1 id="db-destroy">

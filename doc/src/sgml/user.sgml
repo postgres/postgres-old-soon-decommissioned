@@ -23,13 +23,8 @@ $Header$
  &array;
  &indices;
  &inherit;
- &plsql;
- &pltcl;
- &plperl;
  &mvcc;
- &environ;
  &manage;
- &storage;
  &perform;
 
  <!-- appendices -->
