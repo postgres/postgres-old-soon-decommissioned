@@ -116,7 +116,7 @@ ECPGsetcommit(int lineno, const char *mode, const char *connection_name)
 		{
 			if ((results = PQexec(con->connection, "begin transaction")) == NULL)
 			{
-				ECPGraise(lineno, ECPG_TRANS, NULL);
+				ECPGraise(lineno, ECPG_TRANS, NULL, ECPG_COMPAT_PGSQL);
 				return false;
 			}
 			PQclear(results);
@@ -130,7 +130,7 @@ ECPGsetcommit(int lineno, const char *mode, const char *connection_name)
 		{
 			if ((results = PQexec(con->connection, "commit")) == NULL)
 			{
-				ECPGraise(lineno, ECPG_TRANS, NULL);
+				ECPGraise(lineno, ECPG_TRANS, NULL, ECPG_COMPAT_PGSQL);
 				return false;
 			}
 			PQclear(results);
@@ -406,7 +406,7 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 					if (strncmp(dbname, "unix:", 5) != 0)
 					{
 						ECPGlog("connect: socketname %s given for TCP connection in line %d\n", host, lineno);
-						ECPGraise(lineno, ECPG_CONNECT, realname ? realname : "<DEFAULT>");
+						ECPGraise(lineno, ECPG_CONNECT, realname ? realname : "<DEFAULT>", ECPG_COMPAT_PGSQL);
 						if (host)
 							ECPGfree(host);
 						if (port)
@@ -429,7 +429,7 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 				if (strcmp(dbname + offset, "localhost") != 0 && strcmp(dbname + offset, "127.0.0.1") != 0)
 				{
 					ECPGlog("connect: non-localhost access via sockets in line %d\n", lineno);
-					ECPGraise(lineno, ECPG_CONNECT, realname ? realname : "<DEFAULT>");
+					ECPGraise(lineno, ECPG_CONNECT, realname ? realname : "<DEFAULT>", ECPG_COMPAT_PGSQL);
 					if (host)
 						ECPGfree(host);
 					if (port)
@@ -497,7 +497,7 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 				user ? "for user " : "", user ? user : "",
 				lineno, errmsg);
         
-		ECPGraise(lineno, ECPG_CONNECT, db);
+		ECPGraise(lineno, ECPG_CONNECT, db, ECPG_COMPAT_PGSQL);
 		if (host)
 			ECPGfree(host);
 		if (port)

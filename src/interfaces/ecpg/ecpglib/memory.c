@@ -21,7 +21,7 @@ ECPGalloc(long size, int lineno)
 
 	if (!new)
 	{
-		ECPGraise(lineno, ECPG_OUT_OF_MEMORY, NULL);
+		ECPGraise(lineno, ECPG_OUT_OF_MEMORY, NULL, ECPG_COMPAT_PGSQL);
 		return NULL;
 	}
 
@@ -36,7 +36,7 @@ ECPGrealloc(void *ptr, long size, int lineno)
 
 	if (!new)
 	{
-		ECPGraise(lineno, ECPG_OUT_OF_MEMORY, NULL);
+		ECPGraise(lineno, ECPG_OUT_OF_MEMORY, NULL, ECPG_COMPAT_PGSQL);
 		return NULL;
 	}
 
@@ -50,7 +50,7 @@ ECPGstrdup(const char *string, int lineno)
 
 	if (!new)
 	{
-		ECPGraise(lineno, ECPG_OUT_OF_MEMORY, NULL);
+		ECPGraise(lineno, ECPG_OUT_OF_MEMORY, NULL, ECPG_COMPAT_PGSQL);
 		return NULL;
 	}
 

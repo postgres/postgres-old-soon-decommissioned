@@ -382,11 +382,13 @@ main(int argc, char *const argv[])
 				lex_init();
 
 				/* we need several includes */
-				fprintf(yyout, "/* Processed by ecpg (%d.%d.%d) */\n/* These four include files are added by the preprocessor */\n#include <ecpgtype.h>\n#include <ecpglib.h>\n#include <ecpgerrno.h>\n#include <sqlca.h>\n#line 1 \"%s\"\n", MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL, input_filename);
+				fprintf(yyout, "/* Processed by ecpg (%d.%d.%d) */\n/* These include files are added by the preprocessor */\n#include <ecpgtype.h>\n#include <ecpglib.h>\n#include <ecpgerrno.h>\n#include <sqlca.h>\n#line 1 \"%s\"\n", MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL, input_filename);
 
 				/* add some compatibility headers */
 				if (INFORMIX_MODE)
 					fprintf(yyout, "/* Needed for informix compatibility */\n#include <ecpg_informix.h>\n");
+				
+				fprintf(yyout, "/* End of automatic include section */\n");
 
 				/* and parse the source */
 				yyparse();
