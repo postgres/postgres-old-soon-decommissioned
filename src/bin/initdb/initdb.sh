@@ -217,9 +217,9 @@ echo
 # umask must disallow access to group, other for files and dirs
 umask 077
 
-if [ -d "$PGDATA" ]; then
+if [ -f "$PGDATA/PG_VERSION" ]; then
     if [ $template_only -eq 0 ]; then
-        echo "$CMDNAME: error: Directory $PGDATA already exists."
+        echo "$CMDNAME: error: File $PGDATA/PG_VERSION already exists."
         echo "This probably means initdb has already been run and the "
         echo "database system already exists."
         echo 
