@@ -608,7 +608,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
     	skip_tuple = false;
     	/* BEFORE ROW INSERT Triggers */
     	if ( rel->trigdesc && 
-    		rel->trigdesc->n_before_row[TRIGGER_ACTION_INSERT] > 0 )
+    		rel->trigdesc->n_before_row[TRIGGER_EVENT_INSERT] > 0 )
     	{
     	    HeapTuple newtuple;
     	
@@ -677,7 +677,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
             }
     	    /* AFTER ROW INSERT Triggers */
     	    if ( rel->trigdesc && 
-    	    	    rel->trigdesc->n_after_row[TRIGGER_ACTION_INSERT] > 0 )
+    	    	    rel->trigdesc->n_after_row[TRIGGER_EVENT_INSERT] > 0 )
     	    	ExecARInsertTriggers (rel, tuple);
         }
         
