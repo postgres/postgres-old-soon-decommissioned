@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Thu Oct  9 00:29:39 EDT 2003
+Last updated:		Thu Oct  9 15:36:14 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -406,6 +406,7 @@ Vacuum
 * Allow free space map to be auto-sized or warn when it is too small
 * Maintain a map of recently-expired of pages so vacuum can reclaim
   free space without a sequential scan
+* Have VACUUM FULL use REINDEX rather than index vacuum
 
 
 Locking
