@@ -303,9 +303,7 @@ DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
 		}
 		else if (!from && !binary)
 		{
-		        CopySendData("\\.\n",3,fp);
-			if (IsUnderPostmaster)
-			        pq_flush();
+			CopySendData("\\.\n",3,fp);
 		}
 	}
 }

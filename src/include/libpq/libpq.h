@@ -254,12 +254,13 @@ extern void pq_init(int fd);
 extern void pq_gettty(char *tp);
 extern int	pq_getport(void);
 extern void pq_close(void);
-extern void pq_flush(void);
+extern int	pq_flush(void);
+extern int	pq_recvbuf(void);
 extern int	pq_getstr(char *s, int maxlen);
 extern int	PQgetline(char *s, int maxlen);
 extern int	PQputline(char *s);
-extern int      pq_getchar(void);
-extern int      pq_peekchar(void);
+extern int	pq_getchar(void);
+extern int	pq_peekchar(void);
 extern int	pq_getnchar(char *s, int off, int maxlen);
 extern int	pq_getint(int b);
 extern int  pq_putchar(char c);
@@ -281,5 +282,19 @@ extern void StreamDoUnlink(void);
 extern int	StreamServerPort(char *hostName, short portName, int *fdP);
 extern int	StreamConnection(int server_fd, Port *port);
 extern void StreamClose(int sock);
+
+/*
+ * Internal send/receive buffers in libpq.
+ * These probably shouldn't be global at all, but unless we merge
+ * pqcomm.c and pqcomprim.c they have to be...
+ */
+
+#define PQ_BUFFER_SIZE 8192
+
+extern char PqSendBuffer[PQ_BUFFER_SIZE];
+extern int PqSendPointer;	/* Next index to store a byte in PqSendBuffer */
+extern char PqRecvBuffer[PQ_BUFFER_SIZE];
+extern int PqRecvPointer;	/* Next index to read a byte from PqRecvBuffer */
+extern int PqRecvLength;	/* End of data available in PqRecvBuffer */
 
 #endif	 /* LIBPQ_H */
