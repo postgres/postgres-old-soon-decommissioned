@@ -121,7 +121,12 @@ appendStringInfo(StringInfo str, const char *fmt,...)
 			nprinted = vsnprintf(str->data + str->len, avail,
 								 fmt, args);
 			va_end(args);
-			if (nprinted < avail-1)
+			/*
+			 * Note: some versions of vsnprintf return the number of chars
+			 * actually stored, but at least one returns -1 on failure.
+			 * Be conservative about believing whether the print worked.
+			 */
+			if (nprinted >= 0 && nprinted < avail-1)
 			{
 				/* Success.  Note nprinted does not include trailing null. */
 				str->len += nprinted;
