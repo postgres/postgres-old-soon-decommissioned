@@ -15,7 +15,13 @@
 #define FUNCTIONS_H
 
 #include "fmgr.h"
+#include "nodes/execnodes.h"
+
 
 extern Datum fmgr_sql(PG_FUNCTION_ARGS);
+
+extern bool check_sql_fn_retval(Oid rettype, char fn_typtype,
+								List *queryTreeList,
+								JunkFilter **junkFilter);
 
 #endif   /* FUNCTIONS_H */

@@ -23,6 +23,7 @@
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
 #include "executor/executor.h"
+#include "executor/functions.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
 #include "optimizer/clauses.h"
@@ -2116,7 +2117,7 @@ inline_function(Oid funcid, Oid result_type, List *args,
 	 */
 	if (polymorphic)
 		(void) check_sql_fn_retval(result_type, get_typtype(result_type),
-								   querytree_list);
+								   querytree_list, NULL);
 
 	/*
 	 * Additional validity checks on the expression.  It mustn't return a

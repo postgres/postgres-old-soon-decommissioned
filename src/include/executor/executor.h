@@ -85,8 +85,11 @@ extern TupleHashEntry LookupTupleHashEntry(TupleHashTable hashtable,
 /*
  * prototypes from functions in execJunk.c
  */
-extern JunkFilter *ExecInitJunkFilter(List *targetList, TupleDesc tupType,
+extern JunkFilter *ExecInitJunkFilter(List *targetList, bool hasoid,
 				   TupleTableSlot *slot);
+extern JunkFilter *ExecInitJunkFilterConversion(List *targetList,
+												TupleDesc cleanTupType,
+												TupleTableSlot *slot);
 extern bool ExecGetJunkAttribute(JunkFilter *junkfilter, TupleTableSlot *slot,
 					 char *attrName, Datum *value, bool *isNull);
 extern HeapTuple ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot);

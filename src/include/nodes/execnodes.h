@@ -209,7 +209,7 @@ typedef struct ProjectionInfo
  *	  This class is used to store information regarding junk attributes.
  *	  A junk attribute is an attribute in a tuple that is needed only for
  *	  storing intermediate information in the executor, and does not belong
- *	  in emitted tuples.	For example, when we do an UPDATE query,
+ *	  in emitted tuples.  For example, when we do an UPDATE query,
  *	  the planner adds a "junk" entry to the targetlist so that the tuples
  *	  returned to ExecutePlan() contain an extra attribute: the ctid of
  *	  the tuple to be updated.	This is needed to do the update, but we
@@ -218,12 +218,7 @@ typedef struct ProjectionInfo
  *	  real output tuple.
  *
  *	  targetList:		the original target list (including junk attributes).
- *	  length:			the length of 'targetList'.
- *	  tupType:			the tuple descriptor for the "original" tuple
- *						(including the junk attributes).
- *	  cleanTargetList:	the "clean" target list (junk attributes removed).
- *	  cleanLength:		the length of 'cleanTargetList'
- *	  cleanTupType:		the tuple descriptor of the "clean" tuple (with
+ *	  cleanTupType:		the tuple descriptor for the "clean" tuple (with
  *						junk attributes removed).
  *	  cleanMap:			A map with the correspondence between the non-junk
  *						attribute numbers of the "original" tuple and the
@@ -235,10 +230,6 @@ typedef struct JunkFilter
 {
 	NodeTag		type;
 	List	   *jf_targetList;
-	int			jf_length;
-	TupleDesc	jf_tupType;
-	List	   *jf_cleanTargetList;
-	int			jf_cleanLength;
 	TupleDesc	jf_cleanTupType;
 	AttrNumber *jf_cleanMap;
 	TupleTableSlot *jf_resultSlot;

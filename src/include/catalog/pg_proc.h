@@ -23,8 +23,6 @@
 #ifndef PG_PROC_H
 #define PG_PROC_H
 
-#include "nodes/pg_list.h"
-
 /* ----------------
  *		postgres.h contains the system type definitions and the
  *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
@@ -3639,9 +3637,6 @@ extern Oid ProcedureCreate(const char *procedureName,
 				int parameterCount,
 				const Oid *parameterTypes,
 				const char *parameterNames[]);
-
-extern bool check_sql_fn_retval(Oid rettype, char fn_typtype,
-					List *queryTreeList);
 
 extern bool function_parse_error_transpose(const char *prosrc);
 
