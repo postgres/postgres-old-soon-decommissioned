@@ -143,9 +143,9 @@ UNLISTEN { <replaceable class="PARAMETER">notifyname</replaceable> | * }
    To subscribe to an existing registration:
 
 <programlisting>
-postgres=> LISTEN virtual;
+LISTEN virtual;
 LISTEN
-postgres=> NOTIFY virtual;
+NOTIFY virtual;
 NOTIFY
 Asynchronous NOTIFY 'virtual' from backend with pid '8448' received
 </programlisting>
