@@ -776,11 +776,6 @@ bool
 HeapTupleSatisfiesSnapshot(HeapTupleHeader tuple, Snapshot snapshot,
 						   Buffer buffer)
 {
-/* This is to be used only for disaster recovery and requires serious analysis. */
-#ifdef MAKE_ALL_TUPLES_VISIBLE
-	return true;
-#endif
-
 	if (!(tuple->t_infomask & HEAP_XMIN_COMMITTED))
 	{
 		if (tuple->t_infomask & HEAP_XMIN_INVALID)
@@ -965,7 +960,12 @@ HeapTupleSatisfiesSnapshot(HeapTupleHeader tuple, Snapshot snapshot,
 		}
 	}
 
+/* This is to be used only for disaster recovery and requires serious analysis. */
+#ifdef MAKE_ALL_TUPLES_VISIBLE
 	return false;
+#else
+	return true;
+#endif
 }
 
 
