@@ -2904,7 +2904,6 @@ opt_select_limit:	select_limit	{ $$ = $1; }
 
 select_limit_value: a_expr 	{ $$ = $1; }
 		| ALL		{ $$ = make_str("all"); }
-		| PARAM 	{ $$ = make_name(); }
 		;
 
 select_offset_value: a_expr { $$ = $1; }	
