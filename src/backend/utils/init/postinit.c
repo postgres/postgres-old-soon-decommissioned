@@ -168,6 +168,8 @@ VerifySystemDatabase()
 	int			fd;
 	char		errormsg[1000];
 
+	errormsg[0] = '\0';
+
 	if ((fd = open(DataDir, O_RDONLY, 0)) == -1)
 		sprintf(errormsg, "Database system does not exist.  "
 				"PGDATA directory '%s' not found.\n\tNormally, you "
