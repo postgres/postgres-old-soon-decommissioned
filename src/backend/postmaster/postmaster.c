@@ -590,7 +590,7 @@ ConnStartup(Port *port)		/* receiving port */
     tmp += sizeof(sp.execFile);
     strncpy(sp.tty,tmp, sizeof(sp.tty));
 
-    msgType = ntohl(port->buf.msgtype);
+    msgType = (MsgType) ntohl(port->buf.msgtype);
 
     (void) strncpy(namebuf, sp.user, NAMEDATALEN);
     namebuf[NAMEDATALEN] = '\0';
@@ -1011,7 +1011,7 @@ DoExec(StartupInfo *packet, int portFd)
     (void) strncpy(argbuf, packet->options, ARGV_SIZE);
     argbuf[ARGV_SIZE] = '\0';
     (void) strncat(argbuf, ExtraOptions, ARGV_SIZE);
-    argbuf[(2 * ARGV_SIZE) + 1] = '\0';
+    argbuf[(2 * ARGV_SIZE)] = '\0';
     split_opts(av, &ac, argbuf);
     
     if (packet->database[0])
