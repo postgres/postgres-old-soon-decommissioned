@@ -55,7 +55,7 @@ fseeko(FILE *stream, off_t offset, int whence)
 			if (fsetpos(stream, &floc) != 0)
 				goto failure;
 #ifdef bsdi
-			flockfile(stream);
+			funlockfile(stream);
 #endif
 			return 0;
 			break;
