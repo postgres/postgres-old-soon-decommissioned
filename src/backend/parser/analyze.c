@@ -1929,17 +1929,17 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 	 */
 	qry->sortClause = transformSortClause(pstate,
 										  stmt->sortClause,
-										  qry->targetList,
+										  &qry->targetList,
 										  true /* fix unknowns */ );
 
 	qry->groupClause = transformGroupClause(pstate,
 											stmt->groupClause,
-											qry->targetList,
+											&qry->targetList,
 											qry->sortClause);
 
 	qry->distinctClause = transformDistinctClause(pstate,
 												  stmt->distinctClause,
-												  qry->targetList,
+												  &qry->targetList,
 												  &qry->sortClause);
 
 	qry->limitOffset = transformLimitClause(pstate, stmt->limitOffset,
@@ -2145,7 +2145,7 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 
 	qry->sortClause = transformSortClause(pstate,
 										  sortClause,
-										  qry->targetList,
+										  &qry->targetList,
 									  false /* no unknowns expected */ );
 
 	pstate->p_namespace = sv_namespace;

@@ -27,11 +27,11 @@ extern Node *transformWhereClause(ParseState *pstate, Node *clause,
 extern Node *transformLimitClause(ParseState *pstate, Node *clause,
 					 const char *constructName);
 extern List *transformGroupClause(ParseState *pstate, List *grouplist,
-					 List *targetlist, List *sortClause);
+					 List **targetlist, List *sortClause);
 extern List *transformSortClause(ParseState *pstate, List *orderlist,
-					List *targetlist, bool resolveUnknown);
+					List **targetlist, bool resolveUnknown);
 extern List *transformDistinctClause(ParseState *pstate, List *distinctlist,
-						List *targetlist, List **sortClause);
+						List **targetlist, List **sortClause);
 
 extern List *addAllTargetsToSortList(ParseState *pstate,
 						List *sortlist, List *targetlist,
