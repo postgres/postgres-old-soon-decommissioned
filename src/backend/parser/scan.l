@@ -55,6 +55,9 @@ static int myinput(char* buf, int max);
 /* No reason to constrain amount of data slurped per myinput() call. */
 #define YY_READ_BUF_SIZE 16777216
 
+/* Avoid exit() on fatal scanner errors (a bit ugly -- see yy_fatal_error) */
+#define fprintf(file, fmt, msg)  elog(FATAL, "%s", (msg))
+
 #else /* !FLEX_SCANNER */
 
 #undef input
