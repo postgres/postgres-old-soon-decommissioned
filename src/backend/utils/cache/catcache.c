@@ -839,16 +839,20 @@ SearchSysCache(struct catcache * cache,
 		 elt;
 		 elt = DLGetSucc(elt))
 	{
+		bool res;
+		
 		ct = (CatCTup *) DLE_VAL(elt);
 		/* ----------------
 		 *	see if the cached tuple matches our key.
 		 *	(should we be worried about time ranges? -cim 10/2/90)
 		 * ----------------
 		 */
-		if (heap_keytest(ct->ct_tup,
+		HeapKeyTest(ct->ct_tup,
 						 cache->cc_tupdesc,
 						 cache->cc_nkeys,
-						 cache->cc_skey))
+						 cache->cc_skey,
+						 res);
+		if (res)
 			break;
 	}
 

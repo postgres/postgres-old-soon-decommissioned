@@ -29,7 +29,7 @@ typedef int SPINLOCK;
 
 extern bool CreateSpinlocks(IPCKey key);
 extern bool InitSpinLocks(int init, IPCKey key);
-extern void SpinAcquire(SPINLOCK lock);
-extern void SpinRelease(SPINLOCK lock);
+extern void SpinAcquire(SPINLOCK lockid);
+extern void SpinRelease(SPINLOCK lockid);
 
 #endif							/* SPIN_H */

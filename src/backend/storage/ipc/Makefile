@@ -17,7 +17,7 @@ INCLUDE_OPT = -I../.. \
 
 CFLAGS+=$(INCLUDE_OPT)
 
-OBJS = ipc.o ipci.o s_lock.o shmem.o shmqueue.o sinval.o \
+OBJS = ipc.o ipci.o shmem.o shmqueue.o sinval.o \
        sinvaladt.o spin.o
 
 all: SUBSYS.o

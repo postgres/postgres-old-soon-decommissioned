@@ -26,6 +26,7 @@
 
 #include "storage/fd.h"
 #include "storage/ipc.h"
+#include "storage/s_lock.h"
 #include "storage/shmem.h"
 #include "storage/spin.h"
 #include "storage/smgr.h"

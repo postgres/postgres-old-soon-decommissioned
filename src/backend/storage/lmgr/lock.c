@@ -51,7 +51,7 @@
 static int
 WaitOnLock(LOCKTAB *ltable, LockTableId tableId, LOCK *lock,
 		   LOCKT lockt);
-
+		   
 /*#define LOCK_MGR_DEBUG*/
 
 #ifndef LOCK_MGR_DEBUG
@@ -451,6 +451,7 @@ LockTabRename(LockTableId tableId)
  *														DZ - 4 Oct 1996
 #endif
  */
+
 bool
 LockAcquire(LockTableId tableId, LOCKTAG *lockName, LOCKT lockt)
 {
@@ -540,7 +541,7 @@ LockAcquire(LockTableId tableId, LOCKTAG *lockName, LOCKT lockt)
 	 * word alignment and ensures hashing consistency).
 	 * ------------------
 	 */
-	memset(&item, 0, XID_TAGSIZE);
+	memset(&item, 0, XID_TAGSIZE); /* must clear padding, needed */
 	TransactionIdStore(myXid, &item.tag.xid);
 	item.tag.lock = MAKE_OFFSET(lock);
 #if 0

@@ -28,10 +28,6 @@
 
 #if defined(HAS_TEST_AND_SET)
 
-extern void S_LOCK(slock_t *lock);
-extern void S_UNLOCK(slock_t *lock);
-extern void S_INIT_LOCK(slock_t *lock);
-
 #if (defined(alpha) && !defined(linuxalpha)) || \
 	defined(hpux) || \
 	defined(irix5) || \
@@ -149,10 +145,6 @@ typedef struct slock
 	slock_t		comlock;
 	struct slock *next;
 } SLock;
-
-extern void ExclusiveLock(int lockid);
-extern void ExclusiveUnlock(int lockid);
-extern bool LockIsFree(int lockid);
 
 #else							/* HAS_TEST_AND_SET */
 

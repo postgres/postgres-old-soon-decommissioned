@@ -692,6 +692,27 @@ typedef struct Exception
 /* we do this so if the macro is used in an if action, it will work */
 #define strNcpy(dst,src,len)	(strncpy((dst),(src),(len)),*((dst)+(len))='\0')
 
+/* Get a bit mask of the bits set in non-int32 aligned addresses */
+#define INT_ALIGN_MASK (sizeof(int32) - 1)
+
+/* This function gets call too often, so we inline it if we can */
+#define MemSet(start, val, len)	do \
+								{   /* are we aligned for int32? */ \
+									if (((start) & INT_ALIGN_MASK) == 0 && \
+										((len) & INT_ALIGN_MASK) == 0 && \
+										(val) == 0 && \
+										(len) <= 256) \
+									{ \
+										int32 *i = (int32 *)(start); \
+										int32 *stop = (int32 *)((char *)(start) + (len)); \
+										\
+										while (i < stop) \
+											*i++ = 0; \
+									} \
+									else \
+										memset((start), (val), (len)); \
+								}
+
 /* ----------------------------------------------------------------
  *				Section 9: externs
  * ----------------------------------------------------------------
