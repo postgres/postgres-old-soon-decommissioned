@@ -118,7 +118,7 @@ ERROR: RemoveAggregate: aggregate '<replaceable class="parameter">agg</replaceab
 
    <para>
     Use
-    <xref linkend="sql-createaggregate-title" endterm="sql-createaggregate-title">
+    <xref linkend="sql-createaggregate" endterm="sql-createaggregate-title">
     to create aggregate functions.
    </para>
   </refsect2>

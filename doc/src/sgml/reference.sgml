@@ -119,7 +119,7 @@ Disable this chapter until we have more functions documented.
 -->
 
  <reference id="reference-client">
-  <title>Client Applications</title>
+  <title>PostgreSQL Client Applications</title>
 
   <partintro>
    <para>
@@ -148,7 +148,7 @@ Disable this chapter until we have more functions documented.
  </reference>
 
  <reference id="reference-server">
-  <title>Server Applications and Utilities</title>
+  <title>PostgreSQL Server Applications</title>
 
   <partintro>
    <para>

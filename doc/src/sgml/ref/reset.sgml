@@ -26,7 +26,7 @@ RESET <replaceable class="PARAMETER">variable</replaceable>
       <listitem>
        <para>
 	The name of a run-time parameter. See <xref
-	linkend="sql-set-title" endterm="sql-set-title"> for a list.
+	linkend="sql-set" endterm="sql-set-title"> for a list.
        </para>
       </listitem>
      </varlistentry>
@@ -41,7 +41,7 @@ RESET <replaceable class="PARAMETER">variable</replaceable>
   <para>
    <command>RESET</command> restores run-time parameters to their
    default values. Refer to
-   <xref linkend="sql-set-title" endterm="sql-set-title">
+   <xref linkend="sql-set" endterm="sql-set-title">
    for details. <command>RESET</command> is an alternate form for
 
    <synopsis>
@@ -53,7 +53,7 @@ SET <replaceable class="parameter">variable</replaceable> TO DEFAULT
  <refsect1>
   <title>Diagnostics</title>
   <para>
-   See under the <xref linkend="sql-set-title"
+   See under the <xref linkend="sql-set"
    endterm="sql-set-title"> command.
   </para>
  </refsect1>

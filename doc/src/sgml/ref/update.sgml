@@ -129,7 +129,7 @@ UPDATE <replaceable class="parameter">#</replaceable>
 
   <para>
    Array references use the same syntax found in
-   <xref linkend="sql-select-title" endterm="sql-select-title">.
+   <xref linkend="sql-select" endterm="sql-select-title">.
    That is, either single array elements, a range of array
    elements or the entire array may be replaced with a single
    query.

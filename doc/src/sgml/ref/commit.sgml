@@ -110,7 +110,7 @@ NOTICE:  COMMIT: no transaction in progress
    </para>
 
    <para>
-    Use <xref linkend="SQL-ROLLBACK-TITLE" endterm="SQL-ROLLBACK-TITLE">
+    Use <xref linkend="SQL-ROLLBACK" endterm="SQL-ROLLBACK-TITLE">
     to abort a transaction.
    </para>
   </refsect2>

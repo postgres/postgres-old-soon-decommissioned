@@ -154,7 +154,7 @@ ERROR:  RemoveOperator: right unary operator '<replaceable class="PARAMETER">ope
    </para>
    <para>
     Refer to
-    <xref linkend="sql-createoperator-title" endterm="sql-createoperator-title">
+    <xref linkend="sql-createoperator" endterm="sql-createoperator-title">
     for information on how to create operators.
    </para>
    <para>

@@ -8,6 +8,7 @@ Postgres documentation
   <refentrytitle id="app-pgadmin-title">
    <application>pgadmin</application>
   </refentrytitle>
+  <manvolnum>1</manvolnum>
   <refmiscinfo>Application</refmiscinfo>
  </refmeta>
  <refnamediv>

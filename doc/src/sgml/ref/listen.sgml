@@ -128,7 +128,7 @@ NOTICE Async_Listen: We are already listening on <replaceable class="PARAMETER">
   </para>
 
   <para>
-   <xref linkend="sql-notify-title" endterm="sql-notify-title">
+   <xref linkend="sql-notify" endterm="sql-notify-title">
    contains a more extensive
    discussion of the use of <command>LISTEN</command> and
    <command>NOTIFY</command>.

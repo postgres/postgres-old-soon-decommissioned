@@ -194,7 +194,7 @@ ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
     new column will be ignored. You can use the <literal>SET DEFAULT</literal>
     form of <command>ALTER TABLE</command> to set the default later.
     (You will also have to update the already existing rows to the
-    new default value, using <xref linkend="sql-update-title"
+    new default value, using <xref linkend="sql-update"
     endterm="sql-update-title">.)
    </para>
 

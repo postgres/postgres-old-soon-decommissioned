@@ -228,7 +228,7 @@ ERROR: Cannot create index: 'index_name' already exists.
   </para>
 
   <para>
-   Use <xref linkend="sql-dropindex-title" endterm="sql-dropindex-title">
+   Use <xref linkend="sql-dropindex" endterm="sql-dropindex-title">
    to remove an index.
   </para>
 

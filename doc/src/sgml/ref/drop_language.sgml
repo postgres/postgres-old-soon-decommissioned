@@ -110,7 +110,7 @@ ERROR: Language "<replaceable class="parameter">name</replaceable>" doesn't exis
    </para>
    <para>
     Refer to
-    <xref linkend="sql-createlanguage-title" endterm="sql-createlanguage-title">
+    <xref linkend="sql-createlanguage" endterm="sql-createlanguage-title">
     for information on how to create procedural languages.
    </para>
 

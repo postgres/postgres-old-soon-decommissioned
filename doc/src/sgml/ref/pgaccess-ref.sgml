@@ -8,6 +8,7 @@ Postgres documentation
   <refentrytitle id="app-pgaccess-title">
    <application>pgaccess</application>
   </refentrytitle>
+  <manvolnum>1</manvolnum>
   <refmiscinfo>Application</refmiscinfo>
  </refmeta>
  <refnamediv>
@@ -69,9 +70,9 @@ pgaccess [ <replaceable class="parameter">dbname</replaceable> ]
   <para>
    Another way of accessing <productname>Postgres</productname>
    through tcl is to use
-   <xref linkend="app-pgtclsh" endterm="app-pgtclsh-title">
+   <xref linkend="app-pgtclsh">
    or
-   <xref linkend="app-pgtksh" endterm="app-pgtksh-title">.
+   <xref linkend="app-pgtksh">.
   </para>
 
   <para>

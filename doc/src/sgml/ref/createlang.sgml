@@ -132,7 +132,7 @@ Postgres documentation
     Most error messages are self-explanatory. If not, run
     <application>createlang</application> with the <option>--echo</option>
     option and see under the respective <acronym>SQL</acronym> command
-    for details. Check also under <xref linkend="APP-PSQL" endterm="APP-PSQL-title">
+    for details. Check also under <xref linkend="APP-PSQL">
     for more possibilities.
    </para>
   </refsect2>
@@ -165,8 +165,7 @@ Postgres documentation
    Notes
   </title>
   <para>
-   Use <xref linkend="app-droplang" endterm="app-droplang-title">
-   to remove a language.
+   Use <xref linkend="app-droplang"> to remove a language.
   </para>
  </refsect1>
  

@@ -242,7 +242,7 @@ ERROR:  DEFAULT: type mismatched
    Each new table or class <replaceable class="PARAMETER">table</replaceable>
    is automatically created as a type.  Therefore, one or more instances
    from the class are automatically a type and can be used in 
-   <xref linkend="sql-altertable-title" endterm="sql-altertable-title">
+   <xref linkend="sql-altertable" endterm="sql-altertable-title">
    or other <command>CREATE TABLE</command> statements.
   </para>
 

@@ -4,17 +4,18 @@ Postgres documentation
 -->
 
 <refentry id="APP-PSQL">
+ <docinfo>
+  <date>2000-12-25</date>
+ </docinfo>
+
   <refmeta>
-    <refentrytitle id="app-psql-title">
-        <application>psql</application>
-    </refentrytitle>
+    <refentrytitle id="app-psql-title"><application>psql</application></refentrytitle>
+    <manvolnum>1</manvolnum>
     <refmiscinfo>Application</refmiscinfo>
   </refmeta>
 
   <refnamediv>
-    <refname>
-      <application>psql</application>
-    </refname>
+    <refname><application>psql</application></refname>
     <refpurpose>
       <productname>Postgres</productname> interactive terminal
     </refpurpose>

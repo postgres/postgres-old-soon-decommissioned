@@ -8,6 +8,7 @@ Postgres documentation
   <refentrytitle id="APP-PG-UPGRADE-TITLE">
    <application>pg_upgrade</application>
   </refentrytitle>
+  <manvolnum>1</manvolnum>
   <refmiscinfo>Application</refmiscinfo>
  </refmeta>
  <refnamediv>

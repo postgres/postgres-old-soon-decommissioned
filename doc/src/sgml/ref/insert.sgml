@@ -227,7 +227,7 @@ INSERT INTO tictactoe (game, board)
     Possible limitations in features of the 
     <replaceable class="PARAMETER">query</replaceable>
     clause are documented for
-    <xref linkend="sql-select-title" endterm="sql-select-title">.
+    <xref linkend="sql-select" endterm="sql-select-title">.
    </para>
   </refsect2>
  </refsect1>

@@ -95,9 +95,9 @@ NOTICE:  ROLLBACK: no transaction in progress
     Notes
    </title>
    <para>
-    Use <xref linkend="SQL-COMMIT-TITLE" endterm="SQL-COMMIT-TITLE">
+    Use <xref linkend="SQL-COMMIT" endterm="SQL-COMMIT-TITLE">
     to successfully terminate a transaction.
-    <xref linkend="SQL-ABORT-TITLE" endterm="SQL-ABORT-TITLE"> is a
+    <xref linkend="SQL-ABORT" endterm="SQL-ABORT-TITLE"> is a
     synonym for <command>ROLLBACK</command>.
    </para>
   </refsect2>

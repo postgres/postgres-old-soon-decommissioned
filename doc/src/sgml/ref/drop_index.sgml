@@ -108,7 +108,7 @@ ERROR: index "<replaceable class="PARAMETER">index_name</replaceable>" does not 
    </para>
    <para>
     Refer to 
-    <xref linkend="sql-createindex-title" endterm="sql-createindex-title">
+    <xref linkend="sql-createindex" endterm="sql-createindex-title">
     for information on how to create indexes.
    </para>
   </refsect2>

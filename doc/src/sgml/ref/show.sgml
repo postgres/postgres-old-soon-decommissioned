@@ -27,7 +27,7 @@ SHOW <replaceable class="PARAMETER">name</replaceable>
       <listitem>
        <para>
         The name of a run-time parameter. See
-	<xref linkend="sql-set-title" endterm="sql-set-title">
+	<xref linkend="sql-set" endterm="sql-set-title">
         for a list.
        </para>
       </listitem>

@@ -100,7 +100,7 @@ UNLISTEN { <replaceable class="PARAMETER">notifyname</replaceable> | * }
   </para>
 
   <para>
-   <xref endterm="sql-notify-title" linkend="sql-notify-title">
+   <xref endterm="sql-notify-title" linkend="sql-notify">
    contains a more extensive
    discussion of the use of <command>LISTEN</command> and
    <command>NOTIFY</command>.

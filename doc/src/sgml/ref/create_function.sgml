@@ -123,7 +123,7 @@ CREATE FUNCTION <replaceable class="parameter">name</replaceable> ( [ <replaceab
 	or '<replaceable class="parameter">plname</replaceable>',
 	where '<replaceable class="parameter">plname</replaceable>'
 	is the name of a created procedural language. See
-	<xref linkend="sql-createlanguage-title" endterm="sql-createlanguage-title">
+	<xref linkend="sql-createlanguage" endterm="sql-createlanguage-title">
 	for details.
        </para>
       </listitem>
