@@ -1047,7 +1047,7 @@ columnDef:  ColId Typename ColQualifier opt_collate
 
 					$$ = (Node *)n;
 				}
-			| ColId SERIAL PrimaryKey
+			| ColId SERIAL ColQualifier opt_collate
 				{
 					ColumnDef *n = makeNode(ColumnDef);
 					n->colname = $1;
@@ -1060,7 +1060,11 @@ columnDef:  ColId Typename ColQualifier opt_collate
 #endif
 					n->is_not_null = TRUE;
 					n->is_sequence = TRUE;
-					n->constraints = lcons($3, NIL);
+					n->constraints = $3;
+
+					if ($4 != NULL)
+						elog(NOTICE,"CREATE TABLE/COLLATE %s not yet implemented"
+							 "; clause ignored", $4);
 
 					$$ = (Node *)n;
 				}
