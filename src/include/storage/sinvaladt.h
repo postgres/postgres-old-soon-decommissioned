@@ -77,7 +77,6 @@ typedef struct ProcState
 	/* nextMsgNum is -1 in an inactive ProcState array entry. */
 	int			nextMsgNum;		/* next message number to read, or -1 */
 	bool		resetState;		/* true, if backend has to reset its state */
-	int			tag;			/* backend tag received from postmaster */
 	SHMEM_OFFSET procStruct;	/* location of backend's PROC struct */
 } ProcState;
 
@@ -90,6 +89,7 @@ typedef struct SISeg
 	 */
 	int			minMsgNum;		/* oldest message still needed */
 	int			maxMsgNum;		/* next message number to be assigned */
+	int			lastBackend;	/* index of last active procState entry, +1 */
 	int			maxBackends;	/* size of procState array */
 
 	/*

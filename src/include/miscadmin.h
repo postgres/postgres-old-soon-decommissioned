@@ -55,7 +55,6 @@ extern char OutputFileName[];
  * done in storage/backendid.h for now.
  *
  * extern BackendId    MyBackendId;
- * extern BackendTag   MyBackendTag;
  */
 extern bool MyDatabaseIdIsInitialized;
 extern Oid	MyDatabaseId;

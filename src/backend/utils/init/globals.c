@@ -52,7 +52,6 @@ Relation	reldesc;			/* current relation descriptor */
 char		OutputFileName[MAXPGPATH] = "";
 
 BackendId	MyBackendId;
-BackendTag	MyBackendTag;
 
 char	   *DatabaseName = NULL;
 char	   *DatabasePath = NULL;

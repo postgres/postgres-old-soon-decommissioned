@@ -27,7 +27,7 @@ extern void RegisterSharedInvalid(int cacheId, Index hashIndex,
 extern void InvalidateSharedInvalid(void (*invalFunction) (),
 												void (*resetFunction) ());
 
-extern bool DatabaseHasActiveBackends(Oid databaseId);
+extern bool DatabaseHasActiveBackends(Oid databaseId, bool ignoreMyself);
 extern bool TransactionIdIsInProgress(TransactionId xid);
 extern void GetXmaxRecent(TransactionId *XmaxRecent);
 
