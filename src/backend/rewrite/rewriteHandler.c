@@ -374,6 +374,7 @@ rewriteTargetList(Query *parsetree, Relation target_relation)
 												InvalidOid,
 												att_tup->atttypid,
 												COERCE_IMPLICIT_CAST,
+												false,
 												false);
 				}
 			}

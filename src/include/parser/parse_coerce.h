@@ -50,7 +50,8 @@ extern Node *coerce_type(ParseState *pstate, Node *node,
 			Oid inputTypeId, Oid targetTypeId, int32 targetTypeMod,
 			CoercionContext ccontext, CoercionForm cformat);
 extern Node *coerce_to_domain(Node *arg, Oid baseTypeId, Oid typeId,
-				 CoercionForm cformat, bool hideInputCoercion);
+				 CoercionForm cformat, bool hideInputCoercion,
+				 bool lengthCoercionDone);
 
 extern Node *coerce_to_boolean(ParseState *pstate, Node *node,
 				  const char *constructName);

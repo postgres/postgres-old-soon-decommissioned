@@ -200,6 +200,7 @@ expand_targetlist(List *tlist, int command_type,
 													InvalidOid,
 													atttype,
 													COERCE_IMPLICIT_CAST,
+													false,
 													false);
 					}
 					else
