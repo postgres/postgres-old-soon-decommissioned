@@ -25,10 +25,10 @@ $Header$
   &installation;
   &installw;
   &runtime;
+  &user-manag;
+  &manage-ag;
   &client-auth;
   &charset;
-  &manage-ag;
-  &user-manag;
   &maintenance;
   &backup;
   &monitoring;

@@ -29,7 +29,6 @@
 <!entity func       SYSTEM "func.sgml">
 <!entity indices    SYSTEM "indices.sgml">
 <!entity keywords   SYSTEM "keywords.sgml">
-<!entity manage     SYSTEM "manage.sgml">
 <!entity mvcc       SYSTEM "mvcc.sgml">
 <!entity perform    SYSTEM "perform.sgml">
 <!entity queries    SYSTEM "queries.sgml">

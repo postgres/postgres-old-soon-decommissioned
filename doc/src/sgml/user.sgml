@@ -24,7 +24,6 @@ $Header$
  &typeconv;
  &indices;
  &mvcc;
- &manage;
  &perform;
 
  <!-- appendices -->
