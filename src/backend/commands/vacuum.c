@@ -1769,7 +1769,7 @@ vc_updstats(Oid relid, int npages, int ntups, bool hasindex, VRelStats *vacrelst
 	while (HeapTupleIsValid(atup = heap_getnext(asdesc, 0, &abuf)))
 	{
 	    int i;
-	    double selratio;  /* average ratio of rows selected for a random constant */
+	    float32data selratio;  /* average ratio of rows selected for a random constant */
 	    VacAttrStats *stats;
 	    Datum values[ Natts_pg_statistic ];
     	    char nulls[ Natts_pg_statistic ];
