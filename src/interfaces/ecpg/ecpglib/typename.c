@@ -49,13 +49,13 @@ ECPGtype_name(enum ECPGttype typ)
 		case ECPGt_char_variable:
 			return "char";
 		case ECPGt_numeric:
-			return "numeric";
+			return "Numeric";
 		case ECPGt_date:
-			return "date";
+			return "Date";
 		case ECPGt_timestamp:
-			return "timestamp";
+			return "Timestamp";
 		case ECPGt_interval:
-			return "interval";
+			return "Interval";
 		default:
 			abort();
 	}

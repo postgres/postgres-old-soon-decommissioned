@@ -231,7 +231,7 @@ ccomment		"//".*\n
 
 space			[ \t\n\r\f]
 horiz_space		[ \t\f]
-newline					[\n\r]
+newline			[\n\r]
 non_newline		[^\n\r]
 
 comment			("--"{non_newline}*)
@@ -613,7 +613,7 @@ cppline			{space}*#(.*\\{space})+.*
 			  else
 			  	return S_ANYTHING;
 			 }
-<C>{ccomment}		 { /* ignore */ }
+<C>{ccomment}		 { ECHO; }
 <C>{xch}			{
 						char* endptr;
 
