@@ -199,6 +199,7 @@ fmgr_info(Oid procedureId, FmgrInfo *finfo)
 				if (!finfo->fn_addr)
 					elog(ERROR, "fmgr_info: function %s: not in internal table",
 						 procedureStruct->proname.data);
+				finfo->fn_nargs = procedureStruct->pronargs;
 				break;
 			case ClanguageId:
 				finfo->fn_addr = fmgr_dynamic(procedureId, &(finfo->fn_nargs));
