@@ -567,9 +567,6 @@ extern void srandom(unsigned int seed);
 /* Set to 1 if you have struct sockaddr_un */
 #undef HAVE_STRUCT_SOCKADDR_UN
 
-/* Set to 1 if you have F_SETLK option for fcntl() */
-#undef HAVE_FCNTL_SETLK
-
 /* Set to 1 if type "long int" works and is 64 bits */
 #undef HAVE_LONG_INT_64
 
