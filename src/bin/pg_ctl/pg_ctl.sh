@@ -299,7 +299,11 @@ if [ "$op" = "stop" -o "$op" = "restart" -o "$op" = "reload" ];then
 	if [ "$op" = "reload" ];then
 	    $silence_echo echo "postmaster successfully signaled"
 	else
-	    $silence_echo echo "postmaster successfully shut down"
+	    if [ "$wait" = yes ];then
+		$silence_echo echo "postmaster successfully shut down"
+	    else
+		$silence_echo echo "postmaster shutting down"
+	    fi
 	fi
 
     else # ! -f $PIDFILE
@@ -399,8 +403,10 @@ if [ "$op" = "start" -o "$op" = "restart" ];then
 	    fi
 	done
 	$silence_echo echo "done"
+	$silence_echo echo "postmaster successfully started"
+    else
+	$silence_echo echo "postmaster starting"
     fi
-    $silence_echo echo "postmaster successfully started"
 fi # start or restart
 
 exit 0
