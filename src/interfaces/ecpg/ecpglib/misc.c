@@ -5,7 +5,7 @@
 
 #include <limits.h>
 #include <unistd.h>
-#ifdef USE_THREADS
+#ifdef ENABLE_THREAD_SAFETY
 #include <pthread.h>
 #endif
 #include "ecpgtype.h"
@@ -55,7 +55,7 @@ static struct sqlca_t sqlca_init =
 	}
 };
 
-#ifdef USE_THREADS
+#ifdef ENABLE_THREAD_SAFETY
 static pthread_key_t sqlca_key;
 static pthread_once_t sqlca_key_once = PTHREAD_ONCE_INIT;
 
@@ -88,7 +88,7 @@ static struct sqlca_t sqlca =
 };
 #endif
 
-#ifdef USE_THREADS
+#ifdef ENABLE_THREAD_SAFETY
 static pthread_mutex_t debug_mutex = PTHREAD_MUTEX_INITIALIZER;
 static pthread_mutex_t debug_init_mutex = PTHREAD_MUTEX_INITIALIZER;
 #endif
@@ -117,7 +117,7 @@ ECPGinit(const struct connection * con, const char *connection_name, const int l
 	return (true);
 }
 
-#ifdef USE_THREADS
+#ifdef ENABLE_THREAD_SAFETY
 static void
 ecpg_sqlca_key_init(void)
 {
@@ -128,7 +128,7 @@ ecpg_sqlca_key_init(void)
 struct sqlca_t *
 ECPGget_sqlca(void)
 {
-#ifdef USE_THREADS
+#ifdef ENABLE_THREAD_SAFETY
 	struct sqlca_t *sqlca;
 
 	pthread_once(&sqlca_key_once, ecpg_sqlca_key_init);
@@ -211,7 +211,7 @@ ECPGtrans(int lineno, const char *connection_name, const char *transaction)
 void
 ECPGdebug(int n, FILE *dbgs)
 {
-#ifdef USE_THREADS
+#ifdef ENABLE_THREAD_SAFETY
 	pthread_mutex_lock(&debug_init_mutex);
 #endif
 
@@ -219,7 +219,7 @@ ECPGdebug(int n, FILE *dbgs)
 	debugstream = dbgs;
 	ECPGlog("ECPGdebug: set to %d\n", simple_debug);
 
-#ifdef USE_THREADS
+#ifdef ENABLE_THREAD_SAFETY
 	pthread_mutex_unlock(&debug_init_mutex);
 #endif
 }
@@ -229,7 +229,7 @@ ECPGlog(const char *format,...)
 {
 	va_list		ap;
 
-#ifdef USE_THREADS
+#ifdef ENABLE_THREAD_SAFETY
 	pthread_mutex_lock(&debug_mutex);
 #endif
 
@@ -239,7 +239,7 @@ ECPGlog(const char *format,...)
 
 		if (f == NULL)
 		{
-#ifdef USE_THREADS
+#ifdef ENABLE_THREAD_SAFETY
 			pthread_mutex_unlock(&debug_mutex);
 #endif
 			return;
@@ -255,7 +255,7 @@ ECPGlog(const char *format,...)
 		ECPGfree(f);
 	}
 
-#ifdef USE_THREADS
+#ifdef ENABLE_THREAD_SAFETY
 	pthread_mutex_unlock(&debug_mutex);
 #endif
 }
