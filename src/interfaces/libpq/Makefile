@@ -88,7 +88,7 @@ install: install-headers install-libpq $(install-shlib-dep)
 install-headers: beforeinstall-headers postgres.h c.h \
                  ../include/config.h ../include/libpq/pqcomm.h \
                  ../include/libpq/libpq-fs.h ../include/lib/dllist.h \
-                 ../include/utils/geo-decls.h libpq.fe.h
+                 ../include/utils/geo-decls.h libpq-fe.h
 	$(INSTALL) $(INSTLOPTS) ../include/config.h \
           $(HEADERDIR)/config.h
 	$(INSTALL) $(INSTLOPTS) ../include/libpq/pqcomm.h \
