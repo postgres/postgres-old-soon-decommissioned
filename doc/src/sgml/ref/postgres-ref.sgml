@@ -350,6 +350,28 @@ PostgreSQL documentation
  </refsect1>
 
  <refsect1>
+  <title>Environment</title>
+
+  <variablelist>
+   <varlistentry>
+    <term><envar>PGDATA</envar></term>
+
+    <listitem>
+     <para>
+      Default data direction location
+     </para>
+    </listitem>
+   </varlistentry>
+
+  </variablelist>
+
+  <para>
+   For others, which have little influence during single-user mode,
+   see <xref linkend="app-postmaster">.
+  </para>
+ </refsect1>
+
+ <refsect1>
   <title>Usage</title>
 
    <para>
