@@ -197,8 +197,9 @@ elog(int lev, const char *fmt,...)
 	if (lineno)
 	{
 		sprintf(bp, "copy: line %d, ", lineno);
-		bp = fmt_buf + strlen(fmt_buf);
-		lineno = 0;
+		bp += strlen(bp);
+		if (lev == ERROR || lev >= FATAL)
+			lineno = 0;
 	}
 
 	for (cp = fmt; *cp; cp++)
