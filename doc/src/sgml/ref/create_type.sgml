@@ -336,7 +336,7 @@ CREATE
   <title>Examples</title>
   <para>
    This command creates the box data type and then uses the
-   type in a class definition:
+   type in a table definition:
    <programlisting>
 CREATE TYPE box (INTERNALLENGTH = 8,
     INPUT = my_procedure_1, OUTPUT = my_procedure_2);
@@ -357,7 +357,7 @@ CREATE TABLE myarrays (id int4, numbers int4array);
 
   <para>
    This command creates a large object type and uses it in
-   a class definition:
+   a table definition:
 
    <programlisting>
 CREATE TYPE bigobj (INPUT = lo_filein, OUTPUT = lo_fileout,

@@ -148,7 +148,7 @@ Postgres documentation
    <productname>Postgres</productname> user
    <emphasis>and</emphasis> the databases which that user owned.
    Only users with <literal>usesuper</literal> set in
-   the <literal>pg_shadow</literal> class can destroy 
+   the <literal>pg_shadow</literal> table can destroy 
    <productname>Postgres</productname> users.
   </para>
 

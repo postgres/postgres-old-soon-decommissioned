@@ -113,7 +113,7 @@ ERROR:  RemoveType: type '<replaceable class="parameter">typename</replaceable>'
    </para>
    <para>
     It is the user's responsibility to remove any operators,
-    functions, aggregates, access methods, subtypes, and classes
+    functions, aggregates, access methods, subtypes, and tables
     that use a deleted type.
    </para>
 

@@ -44,7 +44,7 @@ $Header$
     extend the system:
 
     <simplelist>
-     <member>classes</member>
+     <member>tables</member>
      <member>inheritance</member>
      <member>types</member>
      <member>functions</member>

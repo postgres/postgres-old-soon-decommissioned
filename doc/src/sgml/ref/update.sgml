@@ -143,7 +143,7 @@ UPDATE <replaceable class="parameter">#</replaceable>
 
   <para>
   By default UPDATE will update tuples in the table specified 
-  and all its sub-classes. If you wish to only update the
+  and all its sub-tables. If you wish to only update the
   specific table mentioned, you should use the ONLY clause.
   </para>
  </refsect1>

@@ -213,7 +213,7 @@ CREATE
    </para>
 
    <para>
-    You must have rule definition access to a class in order
+    You must have rule definition access to a table in order
     to define a rule on it. Use <command>GRANT</command>
     and <command>REVOKE</command> to change permissions.
    </para>

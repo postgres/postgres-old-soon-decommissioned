@@ -353,7 +353,7 @@ $Header$
      <listitem>
       <para>
        <function>Tuples</function>
-       Returns the number of tuples (instances) in the query result. 
+       Returns the number of tuples (rows) in the query result. 
        <synopsis>
 	int PgDatabase::Tuples()
        </synopsis>

@@ -123,8 +123,8 @@ CREATE VIEW vista AS SELECT text 'Hello World'
    Description
   </title>
   <para>
-   <command>CREATE VIEW</command> will define a view of a table or
-   class. This view is not physically materialized. Specifically, a query
+   <command>CREATE VIEW</command> will define a view of a table.
+   This view is not physically materialized. Specifically, a query
    rewrite retrieve rule is automatically generated to support
    retrieve operations on views.
   </para>

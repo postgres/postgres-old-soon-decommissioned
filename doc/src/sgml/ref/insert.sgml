@@ -129,7 +129,7 @@ INSERT 0 <replaceable>#</replaceable>
 
   <para>
    <command>INSERT</command> allows one to insert new rows into a
-   class or table. One can insert
+   table. One can insert
    a single row at a time or several rows as a result of a query.
    The columns in the target list may be listed in any order.
   </para>

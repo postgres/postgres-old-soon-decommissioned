@@ -120,7 +120,7 @@ DELETE <replaceable class="parameter">count</replaceable>
 
   <para>
   By default DELETE will delete tuples in the table specified 
-  and all its sub-classes. If you wish to only update the
+  and all its sub-tables. If you wish to only update the
   specific table mentioned, you should use the ONLY clause.
   </para>
 

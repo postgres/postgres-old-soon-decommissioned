@@ -196,7 +196,7 @@ Postgres documentation
    <application>createuser</application> creates a 
    new <productname>Postgres</productname> user.  
    Only users with <literal>usesuper</literal> set in
-   the <literal>pg_shadow</literal> class can create 
+   the <literal>pg_shadow</literal> table can create 
    new <productname>Postgres</productname> users.
   </para>
 
