@@ -11,6 +11,9 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <sys/types.h>
+
+#include "postgres.h"
 
 #include "optimizer/internal.h"
 #include "optimizer/ordering.h"

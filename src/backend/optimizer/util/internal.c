@@ -20,14 +20,15 @@
  *    	Shared with the executor.
  *    
  */
+#include <sys/types.h>
 
+#include "postgres.h"
 
 #include "optimizer/internal.h"
 
 #include "nodes/relation.h"
 #include "nodes/plannodes.h"
 #include "nodes/primnodes.h"
-#include "utils/elog.h"
 #include "utils/palloc.h"
 
 #if 0 

@@ -11,6 +11,8 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <sys/types.h>
+
 #include "postgres.h"
 
 #include "nodes/nodes.h"

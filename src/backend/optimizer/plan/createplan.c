@@ -11,7 +11,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "c.h"
+#include <sys/types.h>
+
+#include "postgres.h"
 
 #include "nodes/execnodes.h"
 #include "nodes/plannodes.h"
@@ -21,7 +23,6 @@
 
 #include "nodes/makefuncs.h"
 
-#include "utils/elog.h"
 #include "utils/lsyscache.h"
 #include "utils/palloc.h"
 #include "utils/builtins.h"

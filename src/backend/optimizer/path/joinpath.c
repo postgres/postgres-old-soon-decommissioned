@@ -11,7 +11,10 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <sys/types.h>
 #include <math.h>
+
+#include "postgres.h"
 
 #include "storage/buf_internals.h"
 
