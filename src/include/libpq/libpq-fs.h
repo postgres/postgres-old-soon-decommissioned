@@ -13,12 +13,6 @@
 #ifndef LIBPQ_FS_H
 #define LIBPQ_FS_H
 
-
-#ifndef WIN32
-#endif /* WIN32 */
-#ifndef SEEK_SET
-#endif /* SEEK_SET */
-
 /* UNIX compatibility junk.  This should be in all systems' include files,
    but this is not always the case. */
 

@@ -29,13 +29,8 @@
 
 typedef struct df_files {
     char filename[MAXPATHLEN];		/* Full pathname of file */
-#ifdef WIN32
-    _dev_t device;			/* Device file is on */
-    _ino_t inode;			/* Inode number of file */
-#else
     dev_t device;			/* Device file is on */
     ino_t inode;			/* Inode number of file */
-#endif /* WIN32 */
     void *handle;			/* a handle for pg_dl* functions */
     struct df_files *next;
 } DynamicFileList;

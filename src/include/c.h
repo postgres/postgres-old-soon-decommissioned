@@ -742,19 +742,9 @@ extern char *form(char *fmt, ...);
 #endif
 
 /* These are for things that are one way on Unix and another on NT */
-#ifndef WIN32
 #define	NULL_DEV	"/dev/null"
 #define COPY_CMD	"cp"
 #define SEP_CHAR	'/'
-#else
-#define NULL_DEV	"NUL"
-#define COPY_CMD	"copy"
-#define SEP_CHAR 	'\\'
-#endif /* WIN32 */
-
-#if defined(WIN32)
-#include "port/win32/nt.h"
-#endif /* WIN32 */
 
 /* ----------------
  *	end of c.h

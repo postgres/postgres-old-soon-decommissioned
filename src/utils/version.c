@@ -63,11 +63,8 @@ ValidatePgVersion(const char *path, char **reason_p) {
     int	 fd;
     char version[4];
     char full_path[MAXPGPATH+1];
-#ifndef WIN32
     struct stat	statbuf;
-#else    
-    struct _stat statbuf;
-#endif    
+
     PathSetVersionFilePath(path, full_path);
     
     if (stat(full_path, &statbuf) < 0) {

@@ -12,9 +12,7 @@
  */
 #include <string.h>
 #include <stdio.h>
-#ifndef WIN32
 #include <pwd.h>
-#endif /*WIN32 */
 #include <sys/param.h>		/* for MAXPATHLEN */
 
 #include "postgres.h"

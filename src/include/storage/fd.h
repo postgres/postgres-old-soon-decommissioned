@@ -43,11 +43,6 @@
 /*
  * FileSeek uses the standard UNIX lseek(2) flags.
  */
-#ifndef WIN32
-#else
-#ifndef SEEK_SET
-#endif /* SEEK_SET */
-#endif /* WIN32 */
 
 typedef char   *FileName;
 

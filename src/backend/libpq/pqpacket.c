@@ -38,13 +38,9 @@
  */
 #include <stdio.h>
 #include <sys/types.h>
-#ifndef WIN32
 #include <sys/socket.h>
 #include <netdb.h>
 #include <netinet/in.h>
-#else
-#include <winsock.h>
-#endif /*WIN32 */
 #include <fcntl.h>
 #include <errno.h>
 

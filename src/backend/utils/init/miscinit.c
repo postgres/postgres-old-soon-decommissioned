@@ -18,10 +18,8 @@
 #include <sys/file.h>
 #include <stdio.h>
 #include <unistd.h>
-#ifndef WIN32
 #include <grp.h>		/* for getgrgid */
 #include <pwd.h>		/* for getpwuid */
-#endif /* WIN32 */
 
 #include "postgres.h"
 
@@ -58,9 +56,7 @@ extern char *DatabasePath;
  * Define USE_ENVIRONMENT to get PGDATA, etc. from environment variables.
  * This is the default on UNIX platforms.
  */
-#ifndef WIN32
 #define USE_ENVIRONMENT
-#endif
 
 /* ----------------------------------------------------------------
  *		some of the 19 ways to leave postgres
@@ -294,15 +290,6 @@ SetPgUserName()
     UserName = malloc(strlen(p)+1);
     strcpy(UserName, p);
 #endif /* NO_SECURITY */
-    
-#ifdef WIN32
-    /* XXX We'll figure out how to get the user name later */
-    if (UserName)
-	free(UserName);
-    UserName = malloc(strlen(p)+1);
-    strcpy(UserName, "postgres");
-#endif /* WIN32 */   
-
 }
 
 /* ----------------------------------------------------------------

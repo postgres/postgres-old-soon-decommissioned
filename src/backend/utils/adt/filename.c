@@ -14,9 +14,7 @@
 
 #include <string.h>
 #include <stdio.h>
-#ifndef WIN32
 #include <pwd.h>
-#endif /* WIN32 */
 
 #include <sys/param.h>
 
@@ -35,7 +33,6 @@ filename_in(char *file)
      *   should let the shell do expansions (shexpand)
      */
 
-#ifndef WIN32    
     str = (char *) palloc(MAXPATHLEN * sizeof(*str));
     str[0] = '\0';
     if (file[0] == '~') {
@@ -103,9 +100,6 @@ filename_in(char *file)
     }
     strcat(str, file+ind);
     return(str);
-#else
-    return(NULL);
-#endif /* WIN32 */
 }
 
 char *

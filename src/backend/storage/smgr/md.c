@@ -154,10 +154,6 @@ mdunlink(Relation reln)
  /* On Windows NT you can't unlink a file if it is open so we have
  ** to do this.
  */
-#ifdef WIN32
-    (void) mdclose(reln);
-#endif /* WIN32 */
- 
 
     memset(fname,0, NAMEDATALEN);
     strncpy(fname, RelationGetRelationName(reln)->data, NAMEDATALEN);
@@ -167,9 +163,6 @@ mdunlink(Relation reln)
 
     /* unlink all the overflow files for large relations */
     for (i = 1; ; i++) {
-#ifdef WIN32
-       (void) mdclose(reln);
-#endif /* WIN32 */
 	sprintf(tname, "%s.%d", fname, i);
 	if (FileNameUnlink(tname) < 0)
 	    break;

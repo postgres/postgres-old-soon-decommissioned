@@ -13,9 +13,7 @@
  *-------------------------------------------------------------------------
  */
 #include <ctype.h>
-#ifndef WIN32
 #include <unistd.h>
-#endif /* WIN32 */
 #ifndef __linux__
 #include <math.h>
 #else

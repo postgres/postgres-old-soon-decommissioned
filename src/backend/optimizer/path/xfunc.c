@@ -13,12 +13,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#ifndef WIN32
 #include <math.h>	/* for MAXFLOAT on most systems */
-#else
-#include <float.h>
-#define MAXFLOAT DBL_MAX
-#endif /* WIN32 */
 
 #include <values.h>	/* for MAXFLOAT on SunOS */
 #include <string.h>

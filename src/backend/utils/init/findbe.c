@@ -11,11 +11,7 @@
  *-------------------------------------------------------------------------
  */
 #include <stdio.h>
-#ifndef WIN32
 #include <grp.h>
-#else
-#include <windows.h>
-#endif /* WIN32 */
 #include <pwd.h>
 #include <string.h>
 #include <sys/stat.h>
@@ -47,7 +43,6 @@
 int
 ValidateBackend(char *path)
 {
-#ifndef WIN32
     struct stat		buf;
     uid_t		euid;
     struct group	*gp;
@@ -56,9 +51,6 @@ ValidateBackend(char *path)
     int			is_r = 0;
     int			is_x = 0;
     int			in_grp = 0;
-#else
-    DWORD file_attributes;
-#endif /* WIN32 */
     
     /*
      * Ensure that the file exists and is a regular file.
@@ -73,7 +65,6 @@ ValidateBackend(char *path)
 	return(-1);
     }
 
-#ifndef WIN32
     if (stat(path, &buf) < 0) {
 	if (DebugLvl > 1)
 	    fprintf(stderr, "ValidateBackend: can't stat \"%s\"\n",
@@ -139,13 +130,6 @@ ValidateBackend(char *path)
 	fprintf(stderr, "ValidateBackend: \"%s\" is not other read/execute\n",
 		path);
     return(is_x ? (is_r ? 0 : -2) : -1);
-#else
-    file_attributes = GetFileAttributes(path);
-    if(file_attributes != 0xFFFFFFFF)
-      return(0);
-    else
-      return(-1);
-#endif /* WIN32 */
 }
 
 /*
@@ -162,11 +146,6 @@ FindBackend(char *backend, char *argv0)
     char	*p;
     char	*path, *startp, *endp;
     int		pathlen;
-    
-#ifdef WIN32
-    strcpy(backend, argv0);
-    return(0);
-#endif /* WIN32 */
     
     /*
      * for the postmaster:

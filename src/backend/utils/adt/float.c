@@ -220,17 +220,10 @@ char *float8out(float64	num)
     if (!num)
 	return strcpy(ascii, "(null)");
 
-#ifndef WIN32
     if (isnan(*num))
 	return strcpy(ascii, "NaN");
     if (isinf(*num))
 	return strcpy(ascii, "Infinity");
-#else
-    if (_isnan(*num))
-	return strcpy(ascii, "NaN");
-    if (!_finite(*num))
-	return strcpy(ascii, "Infinity");
-#endif    
 
     sprintf(ascii, "%.*g", DBL_DIG, *num);
     return(ascii);

@@ -15,13 +15,6 @@
 
 #include <storage/lock.h>
 
-#ifndef WIN32
-#else
-/* This is because WIN32 already defines PROC */
-#define PROC	PGL_PROC
-#endif /* WIN32 */
-
-
 typedef struct {
   int	 		sleeplock;
   int			semNum;

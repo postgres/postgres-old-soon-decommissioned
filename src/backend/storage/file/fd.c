@@ -134,13 +134,8 @@ static  int     nfile = 0;
  * that we can open it and find out if we really have any descriptors
  * available or not.
  */
-#ifndef WIN32
 static char *Nulldev = "/dev/null";
 static char Sep_char = '/';
-#else
-static char *Nulldev = "NUL";
-static char Sep_char = '\\';
-#endif /* WIN32 */
 
 /*
  * Private Routines
@@ -471,12 +466,7 @@ filepath(char *filename)
     char basename[16];
     int len;
 
-#ifndef WIN32    
     if (*filename != Sep_char) {
-#else
-    if (!(filename[1] == ':' && filename[2] == Sep_char)) {
-#endif /* WIN32 */      
-
         /* Either /base/ or \base\ */
         sprintf(basename, "%cbase%c", Sep_char, Sep_char);
 
@@ -576,9 +566,6 @@ fileNameOpenFile(FileName fileName,
         close(tmpfd);
     }
     
-#ifdef WIN32
-      fileFlags |= _O_BINARY;
-#endif /* WIN32 */
     vfdP->fd = open(fileName,fileFlags,fileMode);
     vfdP->fdstate = 0x0;
     
