@@ -172,7 +172,10 @@ define_sets(Node *clause)
 }
 #endif
 
+/* not used
 #define    PSIZE(PTR)      (*((int32 *)(PTR) - 1))
+*/
+
 Node *
 parser_typecast(Value *expr, TypeName *typename, int typlen)
 {
@@ -254,12 +257,14 @@ parser_typecast(Value *expr, TypeName *typename, int typlen)
     cp = instr2 (tp, const_string, typlen);
     
     if (!tbyvalue(tp)) {
+/*
 	if (len >= 0 && len != PSIZE(cp)) {
 	    char *pp;
 	    pp = (char *) palloc(len);
 	    memmove(pp, cp, len);
 	    cp = pp;
 	}
+*/
 	lcp = PointerGetDatum(cp);
     } else {
 	switch(len) {
@@ -374,12 +379,14 @@ parser_typecast2(Node *expr, Oid exprType, Type tp, int typlen)
     
     
     if (!tbyvalue(tp)) {
+/*
 	if (len >= 0 && len != PSIZE(cp)) {
 	    char *pp;
 	    pp = (char *) palloc(len);
 	    memmove(pp, cp, len);
 	    cp = pp;
 	}
+*/
 	lcp = PointerGetDatum(cp);
     } else {
 	switch(len) {
