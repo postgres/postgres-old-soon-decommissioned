@@ -121,7 +121,7 @@ COPY [ BINARY ] <replaceable class="parameter">table</replaceable> [ WITH OIDS ]
          a NULL value, so you should make sure that you use the same string
          as you used on copy out.
         </para>
-       </hote>
+       </note>
       </listitem>
      </varlistentry>
 
