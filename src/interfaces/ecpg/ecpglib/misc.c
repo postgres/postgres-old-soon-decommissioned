@@ -296,6 +296,7 @@ ECPGset_informix_null(enum ECPGttype type, void *ptr)
 			break;
 		case ECPGt_varchar:
 			*(((struct ECPGgeneric_varchar *) ptr)->arr) = 0x00;
+			((struct ECPGgeneric_varchar *) ptr)->len = 0;
 			break;
 		case ECPGt_decimal:
 			memset((char *) ptr, 0, sizeof(decimal));
