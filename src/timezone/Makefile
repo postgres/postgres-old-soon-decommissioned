@@ -15,10 +15,10 @@ include $(top_builddir)/src/Makefile.global
 override CPPFLAGS := -DFRONTEND $(CPPFLAGS)
 
 # files to build into backend
-OBJS= localtime.o strftime.o pgtz.o dirmod.o
+OBJS= localtime.o strftime.o pgtz.o
 
 # files needed to build zic utility program
-ZICOBJS= zic.o ialloc.o scheck.o localtime.o
+ZICOBJS= zic.o ialloc.o scheck.o localtime.o dirmod.o
 
 # timezone data files
 TZDATA := africa antarctica asia australasia europe northamerica southamerica \

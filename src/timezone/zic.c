@@ -19,7 +19,6 @@
 #include "tzfile.h"
 
 #ifdef WIN32
-#undef unlink
 #include <windows.h>
 #endif
 
