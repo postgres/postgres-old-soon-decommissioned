@@ -41,7 +41,7 @@ struct proc
 	SHM_QUEUE	links;			/* list link if process is in a list */
 
 	SEMA		sem;			/* ONE semaphore to sleep on */
-	int			errType;		/* error code tells why we woke up */
+	int			errType;		/* STATUS_OK or STATUS_ERROR after wakeup */
 
 	TransactionId xid;			/* transaction currently being executed by
 								 * this proc */
@@ -86,13 +86,6 @@ do { \
 	if (MyProc) (MyProc->sLocks[(lock)])--; \
 } while (0)
 
-/*
- * flags explaining why process woke up
- */
-#define NO_ERROR		0
-#define ERR_TIMEOUT		1
-#define ERR_BUFFER_IO	2
-
 
 /*
  * There is one ProcGlobal struct for the whole installation.
@@ -134,10 +127,10 @@ extern void ProcReleaseLocks(bool isCommit);
 extern bool ProcRemove(int pid);
 
 extern void ProcQueueInit(PROC_QUEUE *queue);
-extern int ProcSleep(LOCKMETHODCTL *lockctl, LOCKMODE lockmode,
+extern int ProcSleep(LOCKMETHODTABLE *lockMethodTable, LOCKMODE lockmode,
 					 LOCK *lock, HOLDER *holder);
 extern PROC *ProcWakeup(PROC *proc, int errType);
-extern int ProcLockWakeup(LOCKMETHOD lockmethod, LOCK *lock);
+extern void ProcLockWakeup(LOCKMETHODTABLE *lockMethodTable, LOCK *lock);
 extern void ProcReleaseSpins(PROC *proc);
 extern bool LockWaitCancel(void);
 extern void HandleDeadLock(SIGNAL_ARGS);

@@ -12,7 +12,7 @@ subdir = src/backend/storage/lmgr
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = lmgr.o lock.o proc.o
+OBJS = lmgr.o lock.o proc.o deadlock.o
 
 all: SUBSYS.o
 
