@@ -1532,18 +1532,70 @@ char* PQcmdStatus(PGresult *res) {
     if the last command was an INSERT, return the oid string 
     if not, return ""
 */
-const char* PQoidStatus(PGresult *res) {
-  if (!res) {
-    fprintf(stderr, "PQoidStatus() -- pointer to PQresult is null");
-    return NULL;
-  }
+static char oidStatus[32] = {0};
+const char* PQoidStatus (PGresult *res)
+{
+    if (!res)
+    {
+    	fprintf (stderr, "PQoidStatus () -- pointer to PQresult is null");
+    	return NULL;
+    }
 
-  if (!res->cmdStatus)
-    return "";
+    oidStatus[0] = 0;
+    if ( !res->cmdStatus )
+    	return oidStatus;
+    
+    if ( strncmp (res->cmdStatus, "INSERT", 6) == 0 )
+    {
+    	char *p = res->cmdStatus + 7;
+    	char *e;
+    	
+    	for (e = p; *e != ' ' && *e; ) e++;
+    	sprintf (oidStatus, "%.*s", e - p, p);
+    }
+    return oidStatus;
+}
 
-  if (strncmp(res->cmdStatus, "INSERT",6) == 0) {
-    return res->cmdStatus+7;
-  } else
+/*
+   PQcmdTuples -
+    if the last command was an INSERT/UPDATE/DELETE, return number
+    of inserted/affected tuples, if not, return ""
+*/
+const char* PQcmdTuples (PGresult *res)
+{
+    if (!res)
+    {
+    	fprintf (stderr, "PQcmdTuples () -- pointer to PQresult is null");
+    	return NULL;
+    }
+
+    if ( !res->cmdStatus )
+    	return "";
+    
+    if ( strncmp (res->cmdStatus, "INSERT", 6) == 0 || 
+    		strncmp (res->cmdStatus, "DELETE", 6) == 0 || 
+    			strncmp (res->cmdStatus, "UPDATE", 6) == 0 )
+    {
+    	char *p = res->cmdStatus + 6;
+    	
+    	if ( *p == 0 )
+    	{
+    	    fprintf (stderr, "PQcmdTuples (%s) -- short input from server",
+    	    		res->cmdStatus);
+    	    return NULL;
+    	}
+    	p++;
+    	if ( *(res->cmdStatus) != 'I' )		/* UPDATE/DELETE */
+    	    return (p);
+    	while ( *p != ' ' && *p ) p++;		/* INSERT: skip oid */
+    	if ( *p == 0 )
+    	{
+    	    fprintf (stderr, "PQcmdTuples (INSERT) -- there's no # of tuples");
+    	    return NULL;
+    	}
+    	p++;
+    	return (p);
+    }
     return "";
 }
 

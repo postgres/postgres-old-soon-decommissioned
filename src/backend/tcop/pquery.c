@@ -322,6 +322,9 @@ ProcessQueryDesc(QueryDesc *queryDesc)
      */
     ExecutorRun(queryDesc, state, EXEC_RUN, 0);
     
+    /* save infos for EndCommand */
+    UpdateCommandInfo (operation, state->es_lastoid, state->es_processed);
+    
     /* ----------------
      *   now, we close down all the scans and free allocated resources...
      * with ExecutorEnd()

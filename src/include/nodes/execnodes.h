@@ -197,6 +197,8 @@ typedef struct EState {
     TupleTable          es_tupleTable;
     JunkFilter		*es_junkFilter;
     int			*es_refcount;
+    uint32		es_processed;		/* # of tuples processed */
+    Oid			es_lastoid;		/* last oid processed (by INSERT) */
 } EState;
 
 /* ----------------
