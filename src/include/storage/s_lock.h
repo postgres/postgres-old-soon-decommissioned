@@ -168,6 +168,22 @@ tas(volatile slock_t *lock)
 
 
 
+#if defined(NEED_NS32K_TAS_ASM)
+#define TAS(lock) tas(lock)
+
+static __inline__ int
+tas(volatile slock_t *lock)
+{
+  register _res;
+  __asm__("sbitb 0, %0
+	sfsd %1"
+	: "=m"(*lock), "=r"(_res));
+  return (int) _res; 
+}
+
+#endif  /* NEED_NS32K_TAS_ASM */
+
+
 
 #else							/* __GNUC__ */
 /***************************************************************************
@@ -211,24 +227,6 @@ tas(slock_t *s_lock)
 #endif	 /* USE_UNIVEL_CC */
 
 #endif	 /* NEED_I386_TAS_ASM */
-
-
-
-#if defined(NEED_NS32K_TAS_ASM)
-
-#define S_LOCK(lock)				\
-{						\
-	slock_t res = 1;				\
-	while (res) {				\
-	  __asm__("movqd 0, r0");			\
-	  __asm__("sbitd r0, %0" : "=m"(*lock));	\
-	  __asm__("sprb us, %0" : "=r" (res));	\
-	  res = ((res >> 5) & 1);			\
-	}						\
-}
-
-#endif	 /* NEED_NS32K_TAS_ASM */
-
 
 #endif	 /* defined(__GNUC__) */
 
