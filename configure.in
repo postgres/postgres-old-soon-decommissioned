@@ -314,7 +314,8 @@ IFS=$ac_save_IFS
 # Enable libpq to be thread-safety
 #
 AC_MSG_CHECKING([allow thread-safe libpq and ecpg])
-PGAC_ARG_BOOL(enable, thread-safety, no, [  --enable-thread-safety allow libpq and ecpg to be thread-safe])
+PGAC_ARG_BOOL(enable, thread-safety, no, [  --enable-thread-safety allow libpq and ecpg to be thread-safe],
+              [AC_DEFINE([USE_THREADS], 1, [Define to 1 to build libpq and ecpg to be thread-safe. (--enable-thread-safety)])])
 AC_MSG_RESULT([$enable_thread_safety])
 AC_SUBST(enable_thread_safety)
 
