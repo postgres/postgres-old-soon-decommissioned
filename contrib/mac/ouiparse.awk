@@ -10,10 +10,9 @@
 #        manufacturer text);
 # the table name is set by setting the AWK variable TABLE
 # 
-# we translate the character apostrophe (') to space inside the company name
-# to avoid SQL errors.
+# we translate the character apostrophe (') to double apostrophe ('') inside 
+# the company name to avoid SQL errors.
 #
-# match ONLY lines that begin with 2 hex numbers, -, and another hex number
 
 BEGIN {
 	TABLE="macoui";
@@ -27,6 +26,7 @@ END {
 	printf "COMMIT TRANSACTION;";
 }
 
+# match ONLY lines that begin with 2 hex numbers, -, and another hex number
 /^[0-9a-fA-F][0-9a-fA-F]-[0-9a-fA-F]/ { 
 #	if (nrec >= 100) {
 #		printf "COMMIT TRANSACTION;";
@@ -47,7 +47,7 @@ END {
 		Company=Company " " $i;
 	# Modify any apostrophes (') to avoid grief below.
 	gsub("'","''",Company);
-	# Print out for the 'C' structure in mac.c
+	# Print out for the SQL table insert
 	printf "INSERT INTO %s (addr, name) VALUES (trunc(macaddr \'%s\'),\'%s\');\n",
 		TABLE,OUI,Company;
 }
