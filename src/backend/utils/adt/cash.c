@@ -219,25 +219,25 @@ cash_out(Cash *in_value)
 	}
 
 	/* we work with positive amounts and add the minus sign at the end */
-	if (*value < 0)
+	if (value < 0)
 	{
 		minus = 1;
-		*value *= -1;
+		value *= -1;
 	}
 
 	/* allow for trailing negative strings */
 	memset(buf, ' ', CASH_BUFSZ);
 	buf[TERMINATOR] = buf[LAST_PAREN] = '\0';
 
-	while (*value || count > (point_pos - 2))
+	while (value || count > (point_pos - 2))
 	{
 		if (points && count == point_pos)
 			buf[count--] = dsymbol;
 		else if (comma && count % (mon_group + 1) == comma_position)
 			buf[count--] = comma;
 
-		buf[count--] = (*value % 10) + '0';
-		*value /= 10;
+		buf[count--] = (value % 10) + '0';
+		value /= 10;
 	}
 
 	buf[count] = csymbol;
