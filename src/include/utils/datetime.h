@@ -19,6 +19,7 @@
 #include <time.h>
 #include <math.h>
 #include <limits.h>
+
 #include "utils/timestamp.h"
 
 
@@ -218,9 +219,9 @@ extern int	day_tab[2][13];
 #define JULIAN_MINMONTH (11)
 #define JULIAN_MINDAY (23)
 
-#define IS_VALID_JULIAN(y,m,d) ((y > JULIAN_MINYEAR) \
- || ((y == JULIAN_MINYEAR) && ((m > JULIAN_MINMONTH) \
-  || ((m == JULIAN_MINMONTH) && (d >= JULIAN_MINDAY)))))
+#define IS_VALID_JULIAN(y,m,d) (((y) > JULIAN_MINYEAR) \
+ || (((y) == JULIAN_MINYEAR) && (((m) > JULIAN_MINMONTH) \
+  || (((m) == JULIAN_MINMONTH) && ((d) >= JULIAN_MINDAY)))))
 
 #define UTIME_MINYEAR (1901)
 #define UTIME_MINMONTH (12)
@@ -229,12 +230,12 @@ extern int	day_tab[2][13];
 #define UTIME_MAXMONTH (01)
 #define UTIME_MAXDAY (18)
 
-#define IS_VALID_UTIME(y,m,d) (((y > UTIME_MINYEAR) \
- || ((y == UTIME_MINYEAR) && ((m > UTIME_MINMONTH) \
-  || ((m == UTIME_MINMONTH) && (d >= UTIME_MINDAY))))) \
- && ((y < UTIME_MAXYEAR) \
- || ((y == UTIME_MAXYEAR) && ((m < UTIME_MAXMONTH) \
-  || ((m == UTIME_MAXMONTH) && (d <= UTIME_MAXDAY))))))
+#define IS_VALID_UTIME(y,m,d) ((((y) > UTIME_MINYEAR) \
+ || (((y) == UTIME_MINYEAR) && (((m) > UTIME_MINMONTH) \
+  || (((m) == UTIME_MINMONTH) && ((d) >= UTIME_MINDAY))))) \
+ && (((y) < UTIME_MAXYEAR) \
+ || (((y) == UTIME_MAXYEAR) && (((m) < UTIME_MAXMONTH) \
+  || (((m) == UTIME_MAXMONTH) && ((d) <= UTIME_MAXDAY))))))
 
 
 extern void GetCurrentTime(struct tm * tm);
