@@ -1530,8 +1530,9 @@ kill `cat /usr/local/pgsql/data/postmaster.pid`
         <entry><systemitem class="osname">HP-UX</></entry>
         <entry><systemitem>PA-RISC</></entry>
         <entry>7.4</entry>
-        <entry>2003-10-31,
-         10.20 Tom Lane (<email>tgl@sss.pgh.pa.us</email>)
+        <entry>
+         2003-10-31, 10.20 Tom Lane (<email>tgl@sss.pgh.pa.us</email>);
+         2003-11-04, 11.00 Peter Eisentraut (<email>peter_e@gmx.net</email>)
         </entry>
         <entry><command>gcc</> and <command>cc</>; see also <filename>doc/FAQ_HPUX</filename></entry>
        </row>
