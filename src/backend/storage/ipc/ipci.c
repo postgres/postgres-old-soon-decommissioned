@@ -83,6 +83,8 @@ CreateSharedMemoryAndSemaphores(IPCKey key, int maxBackends)
 	size += MMShmemSize();
 #endif
 	size += 100000;
+	/* might as well round it off to a multiple of a K or so... */
+	size += 1024 - (size % 1024);
 
 	if (DebugLvl > 1)
 	{
