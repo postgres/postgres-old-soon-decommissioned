@@ -1,6 +1,6 @@
 # $Header$
 CATALOG_NAME    := pgscripts
-AVAIL_LANGUAGES := cs de ru sv zh_CN
+AVAIL_LANGUAGES := cs de es ru sv zh_CN
 GETTEXT_FILES   := createdb.c createlang.c createuser.c \
                    dropdb.c droplang.c dropuser.c \
                    clusterdb.c vacuumdb.c \
