@@ -18,7 +18,7 @@ include $(top_builddir)/src/Makefile.global
 CREATEFILES= create.sql bench.sql
 OUTFILES= bench.out bench.out.perquery
 
-override CPPFLAGS += -I$(libpq_srcdir)
+override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 override CFLAGS += $(CFLAGS_SL)
 
 

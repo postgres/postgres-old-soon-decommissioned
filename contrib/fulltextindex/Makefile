@@ -9,7 +9,7 @@ include ../../src/Makefile.global
 NAME	:= fti
 SONAME	:= $(NAME)$(DLSUFFIX)
 
-override CPPFLAGS += -I$(srcdir)
+override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 override CFLAGS += $(CFLAGS_SL)
 
 all: $(SONAME) $(NAME).sql

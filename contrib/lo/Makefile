@@ -12,7 +12,7 @@ SONAME	:= $(NAME)$(DLSUFFIX)
 SQLS	= $(NAME).sql lo_drop.sql lo_test.sql
 MODS	= $(NAME)$(DLSUFFIX)
 
-override CPPFLAGS += -I$(srcdir)
+override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 override CFLAGS += $(CFLAGS_SL)
 
 ifdef REFINT_VERBOSE

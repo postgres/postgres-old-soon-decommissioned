@@ -17,7 +17,7 @@ OBJS= pg_encoding.o
 all: submake pg_encoding
 
 pg_encoding: $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(libpq) $(LIBS) -o $@
+	$(CC) $(CFLAGS) $^ $(libpq) $(LDFLAGS) $(LIBS) -o $@
 
 .PHONY: submake
 

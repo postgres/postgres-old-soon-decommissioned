@@ -6,14 +6,14 @@ subdir = contrib/vacuumlo
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
-override CPPFLAGS += -I$(libpq_srcdir)
+override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 
 OBJS	= vacuumlo.o
 
 all: vacuumlo
 
 vacuumlo: $(OBJS) $(libpq_builddir)/libpq.a
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(libpq) $(LIBS) -o $@
+	$(CC) $(CFLAGS) $(OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@
 
 install: all installdirs
 	$(INSTALL_PROGRAM) vacuumlo$(X) $(bindir)

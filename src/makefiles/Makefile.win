@@ -2,11 +2,10 @@
 LDFLAGS+= -g
 DLLTOOL= dlltool
 DLLWRAP= dllwrap
-DLLLIBS=-L/usr/local/lib -L$(top_builddir)/src/backend -lpostgres -lcygipc -lcygwin -lcrypt -lkernel32
+DLLLIBS=-L$(top_builddir)/src/backend -lpostgres -lcygipc -lcygwin -lcrypt -lkernel32
 MK_NO_LORDER=true
 MAKE_DLL=true
 #MAKE_DLL=false
-SHLIB_LINK=$(DLLLIBS)
 # linking with -lm or -lc causes program to crash
 # (see http://sources.redhat.com/cygwin/faq/faq.html#SEC110)
 LIBS:=$(filter-out -lm -lc, $(LIBS))

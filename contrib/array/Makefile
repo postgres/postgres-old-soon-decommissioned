@@ -9,7 +9,7 @@ include $(top_builddir)/src/Makefile.global
 NAME	:= array_iterator
 SONAME	:= $(NAME)$(DLSUFFIX)
 
-override CPPFLAGS += -I$(srcdir)
+override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 override CFLAGS += $(CFLAGS_SL)
 
 all: $(SONAME) $(NAME).sql

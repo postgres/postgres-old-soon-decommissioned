@@ -12,7 +12,7 @@ SQLS	= $(OBJS:.o=.sql)
 EXAMPLES= $(OBJS:.o=.example)
 MODS	= $(OBJS:.o=$(DLSUFFIX))
 
-override CPPFLAGS += -I$(srcdir)
+override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 override CFLAGS += $(CFLAGS_SL)
 
 ifdef REFINT_VERBOSE

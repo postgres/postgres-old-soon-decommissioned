@@ -16,15 +16,15 @@ include $(top_builddir)/src/Makefile.global
 OBJS= pg_backup_archiver.o pg_backup_db.o pg_backup_custom.o pg_backup_files.o \
        pg_backup_null.o pg_backup_tar.o $(STRDUP)
 
-override CPPFLAGS+= -I$(libpq_srcdir)
+override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 
 all: submake pg_dump pg_restore pg_dumpall
 
 pg_dump: pg_dump.o common.o $(OBJS) $(libpq_builddir)/libpq.a 
-	$(CC) $(CFLAGS) $(LDFLAGS) pg_dump.o common.o $(OBJS) $(libpq) $(LIBS) -o $@
+	$(CC) $(CFLAGS) pg_dump.o common.o $(OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@
 
 pg_restore: pg_restore.o $(OBJS) $(libpq_builddir)/libpq.a
-	$(CC) $(CFLAGS) $(LDFLAGS) pg_restore.o $(OBJS) $(libpq) $(LIBS) -o $@
+	$(CC) $(CFLAGS) pg_restore.o $(OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@
 
 ../../utils/strdup.o:
 	$(MAKE) -C ../../utils strdup.o

@@ -12,7 +12,7 @@ NAME= _int
 SO_MAJOR_VERSION= 1
 SO_MINOR_VERSION= 0
 
-override CPPFLAGS += -I$(srcdir) -DPGSQL71
+override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -DPGSQL71
 
 OBJS= _int.o
 

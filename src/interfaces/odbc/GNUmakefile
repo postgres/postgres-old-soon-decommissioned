@@ -15,7 +15,7 @@ NAME = psqlodbc
 SO_MAJOR_VERSION = 0
 SO_MINOR_VERSION = 26
 
-override CPPFLAGS += -I$(srcdir) -DHAVE_CONFIG_H -DODBCINSTDIR='"$(odbcinst_ini_dir)"'
+override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -DHAVE_CONFIG_H -DODBCINSTDIR='"$(odbcinst_ini_dir)"'
 
 
 OBJS = info.o bind.o columninfo.o connection.o convert.o drvconn.o \
