@@ -1720,7 +1720,7 @@ dumpOneFunc(FILE *fout, FuncInfo *finfo, int i,
 			findTypeByOid(tinfo, numTypes, finfo[i].prorettype),
 			(finfo[i].lang == INTERNALlanguageId) ? finfo[i].prosrc :
 				(finfo[i].lang == ClanguageId) ? finfo[i].probin :
-					(finfo[i].lang == SQLlanguageId) ? finfo[i].prosrc : "unknown");
+					(finfo[i].lang == SQLlanguageId) ? finfo[i].prosrc : "unknown",
 			(finfo[i].lang == INTERNALlanguageId) ? "INTERNAL" :
 				(finfo[i].lang == ClanguageId) ? "C" :
 					(finfo[i].lang == SQLlanguageId) ? "SQL" : "unknown");
