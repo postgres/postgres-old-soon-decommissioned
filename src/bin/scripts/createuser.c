@@ -189,12 +189,12 @@ main(int argc, char *argv[])
 	printfPQExpBuffer(&sql, "CREATE USER %s", fmtId(newuser));
 	if (sysid)
 		appendPQExpBuffer(&sql, " SYSID %s", sysid);
-	if (encrypted == +1)
-		appendPQExpBuffer(&sql, " ENCRYPTED");
-	if (encrypted == -1)
-		appendPQExpBuffer(&sql, " UNENCRYPTED");
 	if (newpassword)
 	{
+		if (encrypted == +1)
+			appendPQExpBuffer(&sql, " ENCRYPTED");
+		if (encrypted == -1)
+			appendPQExpBuffer(&sql, " UNENCRYPTED");
 		appendPQExpBuffer(&sql, " PASSWORD ");
 		appendStringLiteral(&sql, newpassword, false);
 	}
