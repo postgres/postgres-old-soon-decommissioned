@@ -392,8 +392,8 @@ static char *pipe_read_line(char *cmd, char *line, int maxsize)
 				line[strlen(line)-2] == '\r' &&
 				line[strlen(line)-1] == '\n')
 			{
-				line[strlen(line)-2] == '\n';
-				line[strlen(line)-1] == '\0';
+				line[strlen(line)-2] = '\n';
+				line[strlen(line)-1] = '\0';
 			}
 
 			/*
