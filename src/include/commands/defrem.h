@@ -13,10 +13,8 @@
 #ifndef	DEFREM_H
 #define DEFREM_H
 
-#include "nodes/pg_list.h"
-#include "nodes/primnodes.h"
-#include "nodes/parsenodes.h"
-#include "tcop/dest.h"
+#include <tcop/dest.h>
+#include <nodes/parsenodes.h>
 
 /*
  * prototypes in defind.c
