@@ -293,9 +293,10 @@ if [ $op = "stop" -o $op = "restart" ];then
 fi # stop or restart
 
 if [ $op = "start" -o $op = "restart" ];then
+    oldpid=""
     if [ -f $PIDFILE ];then
-	echo "$CMDNAME: It seems another postmaster is running.  Trying to start postmaster anyway." 1>&2
-	pid=`sed -n 1p $PIDFILE`
+	echo "$CMDNAME: Another postmaster may be running.  Trying to start postmaster anyway." 1>&2
+	oldpid=`sed -n 1p $PIDFILE`
     fi
 
     unset logopt
@@ -330,11 +331,15 @@ if [ $op = "start" -o $op = "restart" ];then
 
     eval '$po_path' '$POSTOPTS' $logopt '&'
 
-    if [ -f $PIDFILE ];then
-	if [ "`sed -n 1p $PIDFILE`" = "$pid" ];then
-	    echo "$CMDNAME: cannot start postmaster" 1>&2
-	    echo "Examine the log output." 1>&2
-	    exit 1
+    # if had an old lockfile, check to see if we were able to start
+    if [ -n "$oldpid" ];then
+	sleep 1
+	if [ -f $PIDFILE ];then
+	    if [ "`sed -n 1p $PIDFILE`" = "$oldpid" ];then
+		echo "$CMDNAME: cannot start postmaster" 1>&2
+		echo "Examine the log output." 1>&2
+		exit 1
+	    fi
         fi
     fi
 
