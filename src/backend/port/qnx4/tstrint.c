@@ -18,14 +18,16 @@
 #include "os.h"
 
 
-int main( int argc, char **argv )
+int
+main(int argc, char **argv)
 {
-  double x;
+	double		x;
 
-  if( argc != 2 ) exit( 1 );
+	if (argc != 2)
+		exit(1);
 
-  x = strtod( argv[1], NULL );
-  printf( "rint( %f ) = %f\n", x, rint( x ) );
+	x = strtod(argv[1], NULL);
+	printf("rint( %f ) = %f\n", x, rint(x));
 
-  return 0;
+	return 0;
 }

@@ -31,7 +31,7 @@
  * ----------------
  */
 
-#define TYPEALIGN(ALIGNVAL,LEN)	(((long)(LEN) + (ALIGNVAL-1)) & ~(ALIGNVAL-1))
+#define TYPEALIGN(ALIGNVAL,LEN) (((long)(LEN) + (ALIGNVAL-1)) & ~(ALIGNVAL-1))
 
 #define SHORTALIGN(LEN)			TYPEALIGN(ALIGNOF_SHORT, (LEN))
 #define INTALIGN(LEN)			TYPEALIGN(ALIGNOF_INT, (LEN))
@@ -165,14 +165,14 @@ typedef struct AllocSetData
 {
 	AllocBlock	blocks;			/* head of list of blocks in this set */
 #define ALLOCSET_NUM_FREELISTS	8
-	AllocChunk	freelist[ALLOCSET_NUM_FREELISTS]; /* free chunk lists */
+	AllocChunk	freelist[ALLOCSET_NUM_FREELISTS];		/* free chunk lists */
 	/* Note: this will change in the future to support other modes */
 } AllocSetData;
 
 /*
  * AllocBlock
  *		An AllocBlock is the unit of memory that is obtained by aset.c
- *		from malloc().  It contains one or more AllocChunks, which are
+ *		from malloc().	It contains one or more AllocChunks, which are
  *		the units requested by palloc() and freed by pfree().  AllocChunks
  *		cannot be returned to malloc() individually, instead they are put
  *		on freelists by pfree() and re-used by the next palloc() that has

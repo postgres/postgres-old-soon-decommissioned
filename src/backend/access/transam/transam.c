@@ -162,6 +162,7 @@ TransactionLogTest(TransactionId transactionId, /* transaction id to test */
 
 	if (!fail)
 	{
+
 		/*
 		 * DO NOT cache status for transactions in unknown state !!!
 		 */

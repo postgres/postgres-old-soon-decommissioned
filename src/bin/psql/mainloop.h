@@ -14,8 +14,9 @@
 #include <setjmp.h>
 
 extern sigjmp_buf main_loop_jmp;
+
 #endif
 
-int MainLoop(FILE *source);
+int			MainLoop(FILE *source);
 
 #endif	 /* MAINLOOP_H */

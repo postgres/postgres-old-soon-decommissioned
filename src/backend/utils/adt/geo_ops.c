@@ -877,7 +877,7 @@ line_construct_pm(Point *pt, double m)
 	/* use "mx - y + yinter = 0" */
 	result->A = m;
 	result->B = -1.0;
-	if (m==DBL_MAX) 
+	if (m == DBL_MAX)
 		result->C = pt->y;
 	else
 		result->C = pt->y - m * pt->x;

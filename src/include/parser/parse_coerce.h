@@ -126,8 +126,8 @@ extern CATEGORY TypeCategory(Oid type);
 
 extern bool can_coerce_type(int nargs, Oid *input_typeids, Oid *func_typeids);
 extern Node *coerce_type(ParseState *pstate, Node *node, Oid inputTypeId,
-						 Oid targetTypeId, int32 atttypmod);
+			Oid targetTypeId, int32 atttypmod);
 extern Node *coerce_type_typmod(ParseState *pstate, Node *node,
-								Oid targetTypeId, int32 atttypmod);
+				   Oid targetTypeId, int32 atttypmod);
 
 #endif	 /* PARSE_COERCE_H */

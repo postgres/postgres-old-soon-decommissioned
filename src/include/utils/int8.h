@@ -97,6 +97,7 @@ extern int32 int84(int64 *val);
 
 #ifdef NOT_USED
 extern int16 int82(int64 *val);
+
 #endif
 
 extern float64 i8tod(int64 *val);

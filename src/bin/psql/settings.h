@@ -25,7 +25,7 @@
 typedef struct _psqlSettings
 {
 	PGconn	   *db;				/* connection to backend */
-    int         encoding;
+	int			encoding;
 	FILE	   *queryFout;		/* where to send the query results */
 	bool		queryFoutPipe;	/* queryFout is from a popen() */
 
@@ -44,12 +44,12 @@ typedef struct _psqlSettings
 								 * loop */
 	bool		cur_cmd_interactive;
 
-    char       *progname;       /* in case you renamed psql */
-    char       *inputfile;      /* for error reporting */
-    unsigned    lineno;         /* also for error reporting */
+	char	   *progname;		/* in case you renamed psql */
+	char	   *inputfile;		/* for error reporting */
+	unsigned	lineno;			/* also for error reporting */
 
-    bool        issuper;        /* is the current user a superuser?
-                                   (used to form the prompt) */
+	bool		issuper;		/* is the current user a superuser? (used
+								 * to form the prompt) */
 } PsqlSettings;
 
 extern PsqlSettings pset;

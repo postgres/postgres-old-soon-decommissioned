@@ -411,8 +411,8 @@ PortalNameIsSpecial(char *pname)
 {
 	if (strcmp(pname, VACPNAME) == 0)
 		return true;
-	if (strcmp(pname, TRUNCPNAME) == 0) 
-	        return true;
+	if (strcmp(pname, TRUNCPNAME) == 0)
+		return true;
 	return false;
 }
 

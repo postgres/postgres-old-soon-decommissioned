@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------------- 
+/*-------------------------------------------------------------------------
  *
  * catversion.h
  *	  "Catalog version number" for Postgres.
@@ -52,7 +52,7 @@
  * catalog changes on the same day...)
  */
 
-/*                          yyyymmddN */
-#define CATALOG_VERSION_NO  200004051
+/*							yyyymmddN */
+#define CATALOG_VERSION_NO	200004051
 
 #endif

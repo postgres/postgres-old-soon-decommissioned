@@ -50,8 +50,8 @@ extern List *pull_constant_clauses(List *quals, List **constantQual);
 extern void clause_get_relids_vars(Node *clause, Relids *relids, List **vars);
 extern int	NumRelids(Node *clause);
 extern void get_relattval(Node *clause, int targetrelid,
-						  int *relid, AttrNumber *attno,
-						  Datum *constval, int *flag);
+			  int *relid, AttrNumber *attno,
+			  Datum *constval, int *flag);
 extern void get_rels_atts(Node *clause, int *relid1,
 			  AttrNumber *attno1, int *relid2, AttrNumber *attno2);
 extern void CommuteClause(Expr *clause);
@@ -59,9 +59,9 @@ extern void CommuteClause(Expr *clause);
 extern Node *eval_const_expressions(Node *node);
 
 extern bool expression_tree_walker(Node *node, bool (*walker) (),
-								   void *context);
-extern Node *expression_tree_mutator(Node *node, Node * (*mutator) (),
-									 void *context);
+											   void *context);
+extern Node *expression_tree_mutator(Node *node, Node *(*mutator) (),
+												 void *context);
 
 #define is_subplan(clause)	((clause) != NULL && \
 							 IsA(clause, Expr) && \

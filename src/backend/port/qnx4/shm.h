@@ -12,29 +12,32 @@
  *-------------------------------------------------------------------------
  */
 
-#ifndef	_SYS_SHM_H
-#define	_SYS_SHM_H
+#ifndef _SYS_SHM_H
+#define _SYS_SHM_H
 
 #include <sys/ipc.h>
 
 #ifdef	__cplusplus
-extern "C" {
+extern		"C"
+{
 #endif
 
-#define SHM_R	0400	/* read permission */
-#define SHM_W	0200	/* write permission */
+#define SHM_R	0400			/* read permission */
+#define SHM_W	0200			/* write permission */
 
-struct shmid_ds {
-  int dummy;
-};
+	struct shmid_ds
+	{
+		int			dummy;
+	};
 
-extern void *shmat( int shmid, const void *shmaddr, int shmflg );
-extern int shmdt( const void *addr );
-extern int shmctl( int shmid, int cmd, struct shmid_ds *buf );
-extern int shmget( key_t key, size_t size, int flags );
+	extern void *shmat(int shmid, const void *shmaddr, int shmflg);
+	extern int	shmdt(const void *addr);
+	extern int	shmctl(int shmid, int cmd, struct shmid_ds * buf);
+	extern int	shmget(key_t key, size_t size, int flags);
 
 #ifdef	__cplusplus
 }
+
 #endif
 
-#endif /* _SYS_SHM_H */
+#endif	 /* _SYS_SHM_H */

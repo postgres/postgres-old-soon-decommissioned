@@ -5,12 +5,12 @@
  * $Id$
  *
  *
- *   Portions Copyright (c) 1999-2000, PostgreSQL, Inc
+ *	 Portions Copyright (c) 1999-2000, PostgreSQL, Inc
  *
- *   The PostgreSQL routines for a DateTime/int/float/numeric formatting, 
- *   inspire with Oracle TO_CHAR() / TO_DATE() / TO_NUMBER() routines.  
+ *	 The PostgreSQL routines for a DateTime/int/float/numeric formatting,
+ *	 inspire with Oracle TO_CHAR() / TO_DATE() / TO_NUMBER() routines.
  *
- *   Karel Zak - Zakkr
+ *	 Karel Zak - Zakkr
  *
  * -----------------------------------------------------------------------
  */

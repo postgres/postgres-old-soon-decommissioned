@@ -17,6 +17,6 @@
  * The internal storage format of an LZ compressed text field
  * ----------
  */
-typedef PGLZ_Header		lztext;
+typedef PGLZ_Header lztext;
 
-#endif /* _LZTEXT_H_ */
+#endif	 /* _LZTEXT_H_ */

@@ -18,7 +18,7 @@
 /* from scan.l */
 extern void init_io(void);
 extern int	yylex(void);
-extern void yyerror(const char * message);
+extern void yyerror(const char *message);
 
 /* from gram.y */
 extern Oid	param_type(int t);

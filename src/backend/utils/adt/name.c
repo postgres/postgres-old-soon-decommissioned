@@ -149,7 +149,8 @@ namecpy(Name n1, Name n2)
 int
 namecat(Name n1, Name n2)
 {
-	return namestrcat(n1, NameStr(*n2));	/* n2 can't be any longer than n1 */
+	return namestrcat(n1, NameStr(*n2));		/* n2 can't be any longer
+												 * than n1 */
 }
 
 #endif

@@ -24,6 +24,7 @@
 
 #ifdef CYR_RECODE
 char	   *convertstr(char *, int, int);
+
 #endif
 
 

@@ -8,7 +8,7 @@
  * version or anything like that.  It is for defining individual relations
  * that have multiple concurrently-existing versions.  Yes, there used to
  * be such a feature in Postgres, but it's been broken for a long time
- * (see src/backend/commands/_deadcode/version.c).  The pg_version table
+ * (see src/backend/commands/_deadcode/version.c).	The pg_version table
  * isn't even created at present.
  *
  *

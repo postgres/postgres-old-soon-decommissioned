@@ -154,7 +154,7 @@ ProcedureCreate(char *procedureName,
 				return tup->t_data->t_oid;
 #else
 			elog(ERROR, "lookup for procedure by source needs fix (Jan)");
-#endif /* SETS_FIXED */
+#endif	 /* SETS_FIXED */
 		}
 	}
 
@@ -245,7 +245,7 @@ ProcedureCreate(char *procedureName,
 			prosrc = procedureName;
 		if (fmgr_lookupByName(prosrc) == (func_ptr) NULL)
 			elog(ERROR,
-				 "ProcedureCreate: there is no builtin function named \"%s\"",
+			"ProcedureCreate: there is no builtin function named \"%s\"",
 				 prosrc);
 	}
 

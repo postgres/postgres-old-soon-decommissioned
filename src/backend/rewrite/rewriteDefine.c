@@ -40,7 +40,8 @@ quoteString(StringInfo buf, char *source)
 	appendStringInfoChar(buf, '\'');
 	for (current = source; *current; current++)
 	{
-		char	ch = *current;
+		char		ch = *current;
+
 		if (ch == '\'' || ch == '\\')
 		{
 			appendStringInfoChar(buf, '\\');
@@ -297,7 +298,7 @@ DefineQueryRewrite(RuleStmt *stmt)
 				rule = event_relation->rd_rules->rules[i];
 				if (rule->event == CMD_SELECT)
 					elog(ERROR, "%s is already a view",
-						RelationGetRelationName(event_relation));
+						 RelationGetRelationName(event_relation));
 			}
 		}
 

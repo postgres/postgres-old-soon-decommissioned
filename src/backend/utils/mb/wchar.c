@@ -454,7 +454,7 @@ pg_wchar_tbl pg_wchar_table[] = {
 	{pg_latin12wchar_with_len, pg_latin1_mblen},		/* 31 */
 	{0, pg_sjis_mblen},			/* 32 */
 	{0, pg_big5_mblen},			/* 33 */
-	{pg_latin12wchar_with_len, pg_latin1_mblen}		/* 34 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen} /* 34 */
 };
 
 /* returns the byte length of a word for mule internal code */

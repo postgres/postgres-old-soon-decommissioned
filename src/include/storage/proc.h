@@ -82,9 +82,9 @@ typedef struct procglobal
 	int32		freeSemMap[MAX_PROC_SEMS / PROC_NSEMS_PER_SET];
 
 	/*
-	 * In each freeSemMap entry, the PROC_NSEMS_PER_SET least-significant bits
-	 * flag whether individual semaphores are in use, and the next higher bit
-	 * is set to show that the entire set is allocated.
+	 * In each freeSemMap entry, the PROC_NSEMS_PER_SET least-significant
+	 * bits flag whether individual semaphores are in use, and the next
+	 * higher bit is set to show that the entire set is allocated.
 	 */
 } PROC_HDR;
 

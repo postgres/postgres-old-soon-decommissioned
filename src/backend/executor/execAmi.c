@@ -235,9 +235,10 @@ ExecCloseR(Plan *node)
 		heap_endscan(scanDesc);
 
 	/*
-	 * endscan released AccessShareLock acquired by beginscan.  If we are
-	 * holding any stronger locks on the rel, they should be held till end of
-	 * xact.  Therefore, we need only close the rel and not release locks.
+	 * endscan released AccessShareLock acquired by beginscan.	If we are
+	 * holding any stronger locks on the rel, they should be held till end
+	 * of xact.  Therefore, we need only close the rel and not release
+	 * locks.
 	 */
 	if (relation != NULL)
 		heap_close(relation, NoLock);
@@ -423,7 +424,7 @@ ExecMarkPos(Plan *node)
 {
 	switch (nodeTag(node))
 	{
-		case T_SeqScan:
+			case T_SeqScan:
 			ExecSeqMarkPos((SeqScan *) node);
 			break;
 

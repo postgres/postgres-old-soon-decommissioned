@@ -16,7 +16,7 @@
 #define VARIABLES_H
 
 #define VALID_VARIABLE_CHARS "abcdefghijklmnopqrstuvwxyz"\
-                             "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "0123456789_"
+							 "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "0123456789_"
 
 struct _variable
 {
@@ -32,7 +32,7 @@ VariableSpace CreateVariableSpace(void);
 const char *GetVariable(VariableSpace space, const char *name);
 bool		GetVariableBool(VariableSpace space, const char *name);
 bool		SetVariable(VariableSpace space, const char *name, const char *value);
-bool        SetVariableBool(VariableSpace space, const char *name);
+bool		SetVariableBool(VariableSpace space, const char *name);
 bool		DeleteVariable(VariableSpace space, const char *name);
 void		DestroyVariableSpace(VariableSpace space);
 

@@ -95,7 +95,8 @@ typedef struct RelationData
 	Form_pg_am	rd_am;			/* AM tuple */
 	Form_pg_class rd_rel;		/* RELATION tuple */
 	Oid			rd_id;			/* relation's object id */
-	LockInfoData rd_lockInfo;	/* lock manager's info for locking relation */
+	LockInfoData rd_lockInfo;	/* lock manager's info for locking
+								 * relation */
 	TupleDesc	rd_att;			/* tuple descriptor */
 	RuleLock   *rd_rules;		/* rewrite rules */
 	IndexStrategy rd_istrat;
@@ -225,7 +226,7 @@ typedef Relation *RelationPtr;
 
 
 extern void RelationSetIndexSupport(Relation relation,
-									IndexStrategy strategy,
-									RegProcedure *support);
+						IndexStrategy strategy,
+						RegProcedure *support);
 
 #endif	 /* REL_H */

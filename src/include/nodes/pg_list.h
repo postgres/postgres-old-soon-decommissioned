@@ -27,12 +27,12 @@
  * The same Value struct is used for three node types: T_Integer,
  * T_Float, and T_String.  Integral values are actually represented
  * by a machine integer, but both floats and strings are represented
- * as strings.  Using T_Float as the node type simply indicates that
+ * as strings.	Using T_Float as the node type simply indicates that
  * the contents of the string look like a valid numeric literal.
  *
  * (Before Postgres 7.0, we used a double to represent T_Float,
  * but that creates loss-of-precision problems when the value is
- * ultimately destined to be converted to NUMERIC.  Since Value nodes
+ * ultimately destined to be converted to NUMERIC.	Since Value nodes
  * are only used in the parsing process, not for runtime data, it's
  * better to use the more general representation.)
  *
@@ -105,7 +105,7 @@ extern bool intMember(int datum, List *list);
 extern Value *makeInteger(long i);
 extern Value *makeFloat(char *numericStr);
 extern Value *makeString(char *str);
-extern List *makeList(void *elem, ...);
+extern List *makeList(void *elem,...);
 extern List *lappend(List *list, void *datum);
 extern List *lappendi(List *list, int datum);
 extern List *lremove(void *elem, List *list);

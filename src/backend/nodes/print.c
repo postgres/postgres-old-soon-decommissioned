@@ -176,7 +176,7 @@ print_expr(Node *expr, List *rtable)
 					rt = rt_fetch(var->varno, rtable);
 					relname = rt->relname;
 					if (rt->ref && rt->ref->relname)
-						relname = rt->ref->relname;	/* table renamed */
+						relname = rt->ref->relname;		/* table renamed */
 					attname = get_attname(rt->relid, var->varattno);
 				}
 				break;
@@ -221,7 +221,7 @@ print_pathkeys(List *pathkeys, List *rtable)
 		printf("(");
 		foreach(k, pathkey)
 		{
-			PathKeyItem	*item = lfirst(k);
+			PathKeyItem *item = lfirst(k);
 
 			print_expr(item->key, rtable);
 			if (lnext(k))

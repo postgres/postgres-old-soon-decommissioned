@@ -41,7 +41,7 @@
 #define NUMERIC_POS			0x0000
 #define NUMERIC_NEG			0x4000
 #define NUMERIC_NAN			0xC000
-#define NUMERIC_DSCALE_MASK	0x3FFF
+#define NUMERIC_DSCALE_MASK 0x3FFF
 #define NUMERIC_SIGN(n)		((n)->n_sign_dscale & NUMERIC_SIGN_MASK)
 #define NUMERIC_DSCALE(n)	((n)->n_sign_dscale & NUMERIC_DSCALE_MASK)
 #define NUMERIC_IS_NAN(n)	(NUMERIC_SIGN(n) != NUMERIC_POS &&			\

@@ -374,7 +374,7 @@ TypeCreate(char *typeName,
 	values[i++] = (Datum) GetUserId();	/* 2 */
 	values[i++] = (Datum) internalSize; /* 3 */
 	values[i++] = (Datum) externalSize; /* 4 */
-	values[i++] = (Datum) passedByValue;/* 5 */
+	values[i++] = (Datum) passedByValue;		/* 5 */
 	values[i++] = (Datum) typeType;		/* 6 */
 	values[i++] = (Datum) (bool) 1;		/* 7 */
 	values[i++] = (Datum) typDelim;		/* 8 */

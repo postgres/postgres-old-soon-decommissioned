@@ -52,8 +52,8 @@ typedef FormData_pg_inheritproc *Form_pg_inheritproc;
  */
 #define Natts_pg_inheritproc			4
 #define Anum_pg_inheritproc_inhproname	1
-#define Anum_pg_inheritproc_inhargrelid	2
-#define Anum_pg_inheritproc_inhdefrelid	3
+#define Anum_pg_inheritproc_inhargrelid 2
+#define Anum_pg_inheritproc_inhdefrelid 3
 #define Anum_pg_inheritproc_inhproc		4
 
 

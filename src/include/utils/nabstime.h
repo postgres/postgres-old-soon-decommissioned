@@ -25,7 +25,7 @@
  *
  * ----------------------------------------------------------------
  */
-/* 
+/*
  * Although time_t generally is a long int on 64 bit systems, these two
  * types must be 4 bytes, because that's what the system assumes. They
  * should be yanked (long) before 2038 and be replaced by timestamp and
@@ -52,10 +52,10 @@ typedef TimeIntervalData *TimeInterval;
  *	so redefine them explicitly using these bit patterns. - tgl 97/02/24
  */
 #define EPOCH_ABSTIME	((AbsoluteTime) 0)
-#define INVALID_ABSTIME ((AbsoluteTime) 0x7FFFFFFE)	 /* 2147483647 (2^31 - 1) */
-#define CURRENT_ABSTIME ((AbsoluteTime) 0x7FFFFFFD)	 /* 2147483646 (2^31 - 2) */
-#define NOEND_ABSTIME	((AbsoluteTime) 0x7FFFFFFC)	 /* 2147483645 (2^31 - 3) */
-#define BIG_ABSTIME		((AbsoluteTime) 0x7FFFFFFB)	 /* 2147483644 (2^31 - 4) */
+#define INVALID_ABSTIME ((AbsoluteTime) 0x7FFFFFFE)		/* 2147483647 (2^31 - 1) */
+#define CURRENT_ABSTIME ((AbsoluteTime) 0x7FFFFFFD)		/* 2147483646 (2^31 - 2) */
+#define NOEND_ABSTIME	((AbsoluteTime) 0x7FFFFFFC)		/* 2147483645 (2^31 - 3) */
+#define BIG_ABSTIME		((AbsoluteTime) 0x7FFFFFFB)		/* 2147483644 (2^31 - 4) */
 
 #if defined(_AIX)
 /*
@@ -66,10 +66,10 @@ typedef TimeIntervalData *TimeInterval;
  */
 #define NOSTART_ABSTIME		 ((AbsoluteTime) INT_MIN)
 #else
-#define NOSTART_ABSTIME ((AbsoluteTime) 0x80000001)	 /* -2147483647 (- 2^31) */
+#define NOSTART_ABSTIME ((AbsoluteTime) 0x80000001)		/* -2147483647 (- 2^31) */
 #endif	 /* _AIX */
 
-#define INVALID_RELTIME ((RelativeTime) 0x7FFFFFFE)	 /* 2147483647 (2^31 - 1) */
+#define INVALID_RELTIME ((RelativeTime) 0x7FFFFFFE)		/* 2147483647 (2^31 - 1) */
 
 #define AbsoluteTimeIsValid(time) \
 	((bool) ((time) != INVALID_ABSTIME))

@@ -67,9 +67,9 @@ typedef struct buftag
  */
 typedef struct bufblindid
 {
-	char		dbname[NAMEDATALEN]; /* name of db in which buf belongs */
-	char		relname[NAMEDATALEN]; /* name of reln */
-} BufferBlindId;
+	char		dbname[NAMEDATALEN];	/* name of db in which buf belongs */
+	char		relname[NAMEDATALEN];	/* name of reln */
+}			BufferBlindId;
 
 #define BAD_BUFFER_ID(bid) ((bid) < 1 || (bid) > NBuffers)
 #define INVALID_DESCRIPTOR (-3)
@@ -184,7 +184,7 @@ extern BufferDesc *LocalBufferDescriptors;
 extern int	NLocBuffer;
 
 extern BufferDesc *LocalBufferAlloc(Relation reln, BlockNumber blockNum,
-									bool *foundPtr);
+				 bool *foundPtr);
 extern int	WriteLocalBuffer(Buffer buffer, bool release);
 extern int	FlushLocalBuffer(Buffer buffer, bool release);
 extern void InitLocalBuffer(void);

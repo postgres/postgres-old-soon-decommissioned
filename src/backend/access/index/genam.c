@@ -62,7 +62,7 @@
  *
  *		At the end of a scan, the AM's endscan routine undoes the locking,
  *		but does *not* call IndexScanEnd --- the higher-level index_endscan
- *		routine does that.  (We can't do it in the AM because index_endscan
+ *		routine does that.	(We can't do it in the AM because index_endscan
  *		still needs to touch the IndexScanDesc after calling the AM.)
  *
  *		Because of this, the AM does not have a choice whether to call
@@ -114,7 +114,10 @@ RelationGetIndexScan(Relation relation,
 	ItemPointerSetInvalid(&scan->currentMarkData);
 	ItemPointerSetInvalid(&scan->nextMarkData);
 
-	/* mark cached function lookup data invalid; it will be set on first use */
+	/*
+	 * mark cached function lookup data invalid; it will be set on first
+	 * use
+	 */
 	scan->fn_getnext.fn_oid = InvalidOid;
 
 	if (numberOfKeys > 0)

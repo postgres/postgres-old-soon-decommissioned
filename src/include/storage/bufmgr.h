@@ -169,8 +169,8 @@ extern int	BufferPoolCheckLeak(void);
 extern void FlushBufferPool(void);
 extern BlockNumber BufferGetBlockNumber(Buffer buffer);
 extern BlockNumber RelationGetNumberOfBlocks(Relation relation);
-extern int	FlushRelationBuffers(Relation rel, BlockNumber block,
-								 bool doFlush);
+extern int FlushRelationBuffers(Relation rel, BlockNumber block,
+					 bool doFlush);
 extern void ReleaseRelationBuffers(Relation rel);
 extern void DropBuffers(Oid dbid);
 extern void PrintPinnedBufs(void);

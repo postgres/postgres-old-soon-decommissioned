@@ -39,7 +39,7 @@ oidvectorin(char *oidString)
 
 	result = (Oid *) palloc(sizeof(Oid[INDEX_MAX_KEYS]));
 
-	for (slot=0; *oidString && slot < INDEX_MAX_KEYS; slot++)
+	for (slot = 0; *oidString && slot < INDEX_MAX_KEYS; slot++)
 	{
 		if (sscanf(oidString, "%u", &result[slot]) != 1)
 			break;
@@ -51,7 +51,7 @@ oidvectorin(char *oidString)
 	while (*oidString && isspace(*oidString))
 		oidString++;
 	if (*oidString)
-		elog(ERROR,"oidvector value has too many values");
+		elog(ERROR, "oidvector value has too many values");
 	while (slot < INDEX_MAX_KEYS)
 		result[slot++] = 0;
 
@@ -64,7 +64,8 @@ oidvectorin(char *oidString)
 char *
 oidvectorout(Oid *oidArray)
 {
-	int			num, maxnum;
+	int			num,
+				maxnum;
 	char	   *rp;
 	char	   *result;
 
@@ -77,12 +78,12 @@ oidvectorout(Oid *oidArray)
 	}
 
 	/* find last non-zero value in vector */
-	for (maxnum = INDEX_MAX_KEYS-1; maxnum >= 0; maxnum--)
+	for (maxnum = INDEX_MAX_KEYS - 1; maxnum >= 0; maxnum--)
 		if (oidArray[maxnum] != 0)
 			break;
 
 	/* assumes sign, 10 digits, ' ' */
-	rp = result = (char *) palloc((maxnum+1) * 12 + 1);
+	rp = result = (char *) palloc((maxnum + 1) * 12 + 1);
 	for (num = 0; num <= maxnum; num++)
 	{
 		if (num != 0)

@@ -67,7 +67,7 @@ extern void DLRemove(Dlelem *); /* removes node from list */
 extern void DLAddHead(Dllist *list, Dlelem *node);
 extern void DLAddTail(Dllist *list, Dlelem *node);
 extern Dlelem *DLRemHead(Dllist *list); /* remove and return the head */
-extern void DLMoveToFront(Dlelem *); /* move node to front of its list */
+extern void DLMoveToFront(Dlelem *);	/* move node to front of its list */
 
 #define DLE_VAL(x)	(x->dle_val)
 

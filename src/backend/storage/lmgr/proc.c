@@ -72,7 +72,7 @@
 #include "storage/proc.h"
 #include "utils/trace.h"
 
-void HandleDeadLock(SIGNAL_ARGS);
+void		HandleDeadLock(SIGNAL_ARGS);
 static void ProcFreeAllSemaphores(void);
 static bool GetOffWaitqueue(PROC *);
 
@@ -320,11 +320,13 @@ InitProcess(IPCKey key)
 static bool
 GetOffWaitqueue(PROC *proc)
 {
-	bool	getoffed = false;
+	bool		getoffed = false;
+
 	LockLockTable();
 	if (proc->links.next != INVALID_OFFSET)
 	{
-		int	lockmode = proc->token;
+		int			lockmode = proc->token;
+
 		Assert(proc->waitLock->waitProcs.size > 0);
 		SHMQueueDelete(&(proc->links));
 		--proc->waitLock->waitProcs.size;
@@ -343,6 +345,7 @@ GetOffWaitqueue(PROC *proc)
 
 	return getoffed;
 }
+
 /*
  * ProcReleaseLocks() -- release all locks associated with this process
  *
@@ -485,8 +488,9 @@ ProcQueueInit(PROC_QUEUE *queue)
  *	Handling cancel request while waiting for lock
  *
  */
-static bool	lockWaiting = false;
-void	SetWaitingForLock(bool waiting)
+static bool lockWaiting = false;
+void
+SetWaitingForLock(bool waiting)
 {
 	if (waiting == lockWaiting)
 		return;
@@ -499,7 +503,7 @@ void	SetWaitingForLock(bool waiting)
 			lockWaiting = false;
 			return;
 		}
-		if (QueryCancel) /* cancel request pending */
+		if (QueryCancel)		/* cancel request pending */
 		{
 			if (GetOffWaitqueue(MyProc))
 			{
@@ -509,11 +513,14 @@ void	SetWaitingForLock(bool waiting)
 		}
 	}
 }
-void	LockWaitCancel(void)
+void
+LockWaitCancel(void)
 {
-	struct itimerval timeval, dummy;
+	struct itimerval timeval,
+				dummy;
 
-	if (!lockWaiting)	return;
+	if (!lockWaiting)
+		return;
 	lockWaiting = false;
 	/* Deadlock timer off */
 	MemSet(&timeval, 0, sizeof(struct itimerval));

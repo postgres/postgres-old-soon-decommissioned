@@ -682,9 +682,9 @@ byteaGetBit(bytea *v, int32 n)
 
 	len = VARSIZE(v) - VARHDRSZ;
 
-	if (n < 0 || n >= len*8)
+	if (n < 0 || n >= len * 8)
 		elog(ERROR, "byteaGetBit: index %d out of range [0..%d]",
-			 n, len*8 - 1);
+			 n, len * 8 - 1);
 
 	byteNo = n / 8;
 	bitNo = n % 8;
@@ -757,9 +757,9 @@ byteaSetBit(bytea *v, int32 n, int32 newBit)
 
 	len = VARSIZE(v) - VARHDRSZ;
 
-	if (n < 0 || n >= len*8)
+	if (n < 0 || n >= len * 8)
 		elog(ERROR, "byteaSetBit: index %d out of range [0..%d]",
-			 n, len*8 - 1);
+			 n, len * 8 - 1);
 
 	byteNo = n / 8;
 	bitNo = n % 8;

@@ -141,7 +141,8 @@ _bt_orderkeys(Relation relation, BTScanOpaque so)
 	uint16		numberOfKeys = so->numberOfKeys;
 	uint16		new_numberOfKeys = 0;
 	AttrNumber	attno = 1;
-	bool		equalStrategyEnd, underEqualStrategy;
+	bool		equalStrategyEnd,
+				underEqualStrategy;
 
 	if (numberOfKeys < 1)
 		return;
@@ -194,6 +195,7 @@ _bt_orderkeys(Relation relation, BTScanOpaque so)
 				elog(ERROR, "_bt_orderkeys: key(s) for attribute %d missed", attno + 1);
 
 			underEqualStrategy = (!equalStrategyEnd);
+
 			/*
 			 * If = has been specified, no other key will be used. In case
 			 * of key < 2 && key == 1 and so on we have to set qual_ok to

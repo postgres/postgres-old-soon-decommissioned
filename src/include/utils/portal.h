@@ -61,7 +61,7 @@ struct PortalD
  * Special portals (well, their names anyway)
  */
 #define VACPNAME		"<vacuum>"
-#define TRUNCPNAME              "<truncate>"
+#define TRUNCPNAME				"<truncate>"
 
 extern bool PortalNameIsSpecial(char *pname);
 extern void AtEOXact_portals(void);

@@ -23,7 +23,7 @@
 #ifndef MISCADMIN_H
 #define MISCADMIN_H
 
-#include <sys/types.h>				/* For pid_t */
+#include <sys/types.h>			/* For pid_t */
 
 #include "postgres.h"
 
@@ -66,7 +66,7 @@ extern bool TransactionInitWasProcessed;
 
 extern bool IsUnderPostmaster;
 
-extern int DebugLvl;
+extern int	DebugLvl;
 
 /* Date/Time Configuration
  *
@@ -148,7 +148,7 @@ extern int	CheckPathAccess(char *path, char *name, int open_mode);
  *****************************************************************************/
 /*
  * Description:
- *		There are three processing modes in POSTGRES.  They are 
+ *		There are three processing modes in POSTGRES.  They are
  * "BootstrapProcessing or "bootstrap," InitProcessing or
  * "initialization," and NormalProcessing or "normal."
  *
@@ -157,12 +157,12 @@ extern int	CheckPathAccess(char *path, char *name, int open_mode);
  * transaction id "one" and are consequently guarenteed to commit. This mode
  * is used during the initial generation of template databases.
  *
- * Initialization mode until all normal initialization is complete.	
- * Some code behaves differently when executed in this mode to enable 
+ * Initialization mode until all normal initialization is complete.
+ * Some code behaves differently when executed in this mode to enable
  * system bootstrapping.
  *
  * If a POSTGRES binary is in normal mode, then all code may be executed
- * normally. 
+ * normally.
  */
 
 typedef enum ProcessingMode
@@ -205,11 +205,11 @@ extern ProcessingMode Mode;
 #define IsNormalProcessingMode() ((bool)(Mode == NormalProcessing))
 
 #define SetProcessingMode(mode) \
-    do { \
-        AssertArg(mode == BootstrapProcessing || mode == InitProcessing || \
-		 		  mode == NormalProcessing); \
-        Mode = mode; \
-    } while(0)
+	do { \
+		AssertArg(mode == BootstrapProcessing || mode == InitProcessing || \
+				  mode == NormalProcessing); \
+		Mode = mode; \
+	} while(0)
 
 #define GetProcessingMode() Mode
 
@@ -218,7 +218,7 @@ extern bool IsIgnoringSystemIndexes(void);
 extern bool IsCacheInitialized(void);
 extern void SetWaitingForLock(bool);
 
-/* 
+/*
  * "postmaster.pid" is a file containing postmaster's pid, being
  * created uder $PGDATA upon postmaster's starting up. When postmaster
  * shuts down, it will be unlinked.
@@ -228,6 +228,6 @@ extern void SetWaitingForLock(bool);
 extern void SetPidFname(char *datadir);
 extern char *GetPidFname(void);
 extern void UnlinkPidFile(void);
-extern int SetPidFile(pid_t pid);
+extern int	SetPidFile(pid_t pid);
 
 #endif	 /* MISCADMIN_H */

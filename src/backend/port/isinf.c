@@ -4,7 +4,8 @@
 
 #include "config.h"
 
-#if HAVE_FPCLASS /* this is _not_ HAVE_FP_CLASS, and not typo */
+#if HAVE_FPCLASS				/* this is _not_ HAVE_FP_CLASS, and not
+								 * typo */
 
 #if HAVE_IEEEFP_H
 #include <ieeefp.h>
@@ -73,11 +74,11 @@ isinf(double x)
 int
 isinf(double x)
 {
-        if (x == HUGE_VAL)
-                return 1;
-        if (x == -HUGE_VAL)
-                return -1;
-        return 0;
+	if (x == HUGE_VAL)
+		return 1;
+	if (x == -HUGE_VAL)
+		return -1;
+	return 0;
 }
 
 #endif

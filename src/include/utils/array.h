@@ -98,7 +98,7 @@ typedef struct
  *------------------------------------------------------------------------
  */
 
-#define RETURN_NULL {*isNull = true; return(0); }
+#define RETURN_NULL do {*isNull = true; return(0); } while (0)
 #define NAME_LEN	30
 #define MAX_BUFF_SIZE BLCKSZ
 

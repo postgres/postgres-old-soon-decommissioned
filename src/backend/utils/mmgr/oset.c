@@ -59,6 +59,7 @@ OrderedSetContains(OrderedSet set, OrderedElem elem)
 {
 	return (bool) (elem->set == set && (elem->next || elem->prev));
 }
+
 #endif
 
 /*

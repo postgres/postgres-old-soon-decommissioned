@@ -56,14 +56,16 @@ CreateSharedMemoryAndSemaphores(IPCKey key, int maxBackends)
 {
 	int			size;
 	extern int	XLOGShmemSize(void);
-	extern void	XLOGShmemInit(void);
+	extern void XLOGShmemInit(void);
 
 #ifdef HAS_TEST_AND_SET
+
 	/*
 	 * Create shared memory for slocks
 	 */
 	CreateAndInitSLockMemory(IPCKeyGetSLockSharedMemoryKey(key));
 #endif
+
 	/*
 	 * Kill and create the buffer manager buffer pool (and semaphore)
 	 */

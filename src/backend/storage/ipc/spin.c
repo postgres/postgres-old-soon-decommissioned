@@ -59,7 +59,8 @@ InitSpinLocks(void)
 	extern SPINLOCK SInvalLock;
 	extern SPINLOCK OidGenLockId;
 	extern SPINLOCK XidGenLockId;
-	extern SPINLOCK	ControlFileLockId;
+	extern SPINLOCK ControlFileLockId;
+
 #ifdef STABLE_MEMORY_STORAGE
 	extern SPINLOCK MMCacheLock;
 
@@ -233,7 +234,7 @@ CreateSpinlocks(IPCKey key)
 {
 
 	SpinLockId = IpcSemaphoreCreate(key, MAX_SPINS, IPCProtection,
-							   IpcSemaphoreDefaultStartValue, 1);
+									IpcSemaphoreDefaultStartValue, 1);
 
 	if (SpinLockId <= 0)
 		elog(STOP, "CreateSpinlocks: cannot create spin locks");
@@ -264,7 +265,7 @@ InitSpinLocks(void)
 	extern SPINLOCK SInvalLock;
 	extern SPINLOCK OidGenLockId;
 	extern SPINLOCK XidGenLockId;
-	extern SPINLOCK	ControlFileLockId;
+	extern SPINLOCK ControlFileLockId;
 
 #ifdef STABLE_MEMORY_STORAGE
 	extern SPINLOCK MMCacheLock;

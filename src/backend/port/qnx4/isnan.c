@@ -16,7 +16,8 @@
 
 unsigned char __nan[8] = __nan_bytes;
 
-int isnan(double dsrc)
+int
+isnan(double dsrc)
 {
-  return !memcmp( &dsrc, &NAN, sizeof( double ) );
+	return !memcmp(&dsrc, &NAN, sizeof(double));
 }

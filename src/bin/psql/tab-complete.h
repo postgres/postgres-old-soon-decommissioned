@@ -10,6 +10,6 @@
 
 #include "postgres.h"
 
-void initialize_readline(void);
+void		initialize_readline(void);
 
 #endif

@@ -365,7 +365,7 @@ DATA(insert OID = 0 (  403 1690 1695 4 ));
 DATA(insert OID = 0 (  403 1690   59 5 ));
 
 /*
- *    nbtree lztext
+ *	  nbtree lztext
  */
 
 DATA(insert OID = 0 (  403 1663 1659 1 ));

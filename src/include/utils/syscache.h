@@ -83,7 +83,7 @@ extern HeapTuple SearchSysCacheTupleCopy(int cacheId,
 extern HeapTuple SearchSysCacheTuple(int cacheId,
 					Datum key1, Datum key2, Datum key3, Datum key4);
 extern Datum SysCacheGetAttr(int cacheId, HeapTuple tup,
-							 AttrNumber attributeNumber,
-							 bool *isnull);
+				AttrNumber attributeNumber,
+				bool *isnull);
 
 #endif	 /* SYSCACHE_H */

@@ -485,7 +485,7 @@ xfunc_form_groups(Query *queryInfo, Stream root, Stream bottom)
 }
 
 
-/* -------------------					 UTILITY FUNCTIONS	   ------------------------- */
+/* -------------------						 UTILITY FUNCTIONS	   ------------------------- */
 
 /*
  ** xfunc_free_stream

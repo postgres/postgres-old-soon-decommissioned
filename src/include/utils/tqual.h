@@ -21,11 +21,11 @@
 
 typedef struct SnapshotData
 {
-	TransactionId	xmin;		/* XID < xmin are visible to me */
-	TransactionId	xmax;		/* XID >= xmax are invisible to me */
-	uint32			xcnt;		/* # of xact below */
-	TransactionId  *xip;		/* array of xacts in progress */
-	ItemPointerData	tid;		/* required for Dirty snapshot -:( */
+	TransactionId xmin;			/* XID < xmin are visible to me */
+	TransactionId xmax;			/* XID >= xmax are invisible to me */
+	uint32		xcnt;			/* # of xact below */
+	TransactionId *xip;			/* array of xacts in progress */
+	ItemPointerData tid;		/* required for Dirty snapshot -:( */
 } SnapshotData;
 
 typedef SnapshotData *Snapshot;
@@ -89,7 +89,7 @@ extern bool HeapTupleSatisfiesItself(HeapTupleHeader tuple);
 extern bool HeapTupleSatisfiesNow(HeapTupleHeader tuple);
 extern bool HeapTupleSatisfiesDirty(HeapTupleHeader tuple);
 extern bool HeapTupleSatisfiesSnapshot(HeapTupleHeader tuple,
-									   Snapshot snapshot);
+						   Snapshot snapshot);
 extern int	HeapTupleSatisfiesUpdate(HeapTuple tuple);
 
 extern Snapshot GetSnapshotData(bool serializable);

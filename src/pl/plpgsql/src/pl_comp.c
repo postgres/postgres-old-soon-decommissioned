@@ -67,8 +67,8 @@
  * ----------
  */
 extern PLPGSQL_YYSTYPE plpgsql_yylval;
-extern char 		plpgsql_yytext[];
-extern int			plpgsql_yylineno;
+extern char plpgsql_yytext[];
+extern int	plpgsql_yylineno;
 
 /* ----------
  * Our own local and global variables

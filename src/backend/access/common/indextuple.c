@@ -60,7 +60,7 @@ index_formtuple(TupleDesc tupleDescriptor,
 
 	hoff = IndexInfoFindDataOffset(infomask);
 	size = hoff + ComputeDataSize(tupleDescriptor, value, null);
-	size = MAXALIGN(size);	/* be conservative */
+	size = MAXALIGN(size);		/* be conservative */
 
 	tp = (char *) palloc(size);
 	tuple = (IndexTuple) tp;
@@ -134,7 +134,7 @@ nocache_index_getattr(IndexTuple tup,
 	int			data_off;		/* tuple data offset */
 	Form_pg_attribute *att = tupleDesc->attrs;
 
-    (void)isnull;
+	(void) isnull;
 	/* ----------------
 	 *	sanity checks
 	 * ----------------

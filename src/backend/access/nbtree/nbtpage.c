@@ -257,7 +257,7 @@ _bt_getroot(Relation rel, int access)
 	else
 	{
 		rootblkno = metad->btm_root;
-		_bt_relbuf(rel, metabuf, BT_READ);	/* done with the meta page */
+		_bt_relbuf(rel, metabuf, BT_READ);		/* done with the meta page */
 
 		rootbuf = _bt_getbuf(rel, rootblkno, access);
 	}

@@ -289,7 +289,8 @@ inv_drop(Oid lobjId)
 		return -1;
 	}
 
-	/* Since heap_drop_with_catalog will destroy the relcache entry,
+	/*
+	 * Since heap_drop_with_catalog will destroy the relcache entry,
 	 * there's no need to drop the refcount in this path.
 	 */
 	heap_drop_with_catalog(RelationGetRelationName(r));

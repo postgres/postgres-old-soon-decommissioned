@@ -111,7 +111,10 @@ LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool *foundPtr)
 				  (char *) MAKE_PTR(bufHdr->data));
 		LocalBufferFlushCount++;
 
-		/* drop relcache refcount incremented by RelationIdCacheGetRelation */
+		/*
+		 * drop relcache refcount incremented by
+		 * RelationIdCacheGetRelation
+		 */
 		RelationDecrementReferenceCount(bufrel);
 	}
 

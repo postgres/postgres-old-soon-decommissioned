@@ -27,7 +27,9 @@
 typedef struct catctup
 {
 	HeapTuple	ct_tup;			/* A pointer to a tuple			*/
-	/* Each tuple in the cache has two catctup items, one in the LRU list
+
+	/*
+	 * Each tuple in the cache has two catctup items, one in the LRU list
 	 * and one in the hashbucket list for its hash value.  ct_node in each
 	 * one points to the other one.
 	 */
@@ -38,7 +40,7 @@ typedef struct catctup
 #define NCCBUCK 500				/* CatCache buckets */
 #define MAXTUP 300				/* Maximum # of tuples cached per cache */
 
-typedef uint32 (* CCHashFunc) (Datum);
+typedef uint32 (*CCHashFunc) (Datum);
 
 typedef struct catcache
 {
@@ -55,11 +57,11 @@ typedef struct catcache
 	short		cc_nkeys;
 	short		cc_size;
 	short		cc_key[4];		/* AttrNumber of each key */
-	CCHashFunc	cc_hashfunc[4];	/* hash function to use for each key */
+	CCHashFunc	cc_hashfunc[4]; /* hash function to use for each key */
 	ScanKeyData cc_skey[4];
 	struct catcache *cc_next;
 	Dllist	   *cc_lrulist;		/* LRU list, most recent first */
-	Dllist	   *cc_cache[NCCBUCK + 1]; /* hash buckets */
+	Dllist	   *cc_cache[NCCBUCK + 1];	/* hash buckets */
 } CatCache;
 
 #define InvalidCatalogCacheId	(-1)

@@ -156,14 +156,15 @@ SingleOpOperatorRemove(Oid typeOid)
 	{
 		key[0].sk_attno = attnums[i];
 		scan = heap_beginscan(rel, 0, SnapshotNow, 1, key);
-		while (HeapTupleIsValid(tup = heap_getnext(scan, 0))) {
+		while (HeapTupleIsValid(tup = heap_getnext(scan, 0)))
+		{
 
-		  /*** This is apparently a routine not in use, but remove ***/
-		  /*** any comments anyways ***/
+			/*** This is apparently a routine not in use, but remove ***/
+			/*** any comments anyways ***/
 
-		  DeleteComments(tup->t_data->t_oid);
+			DeleteComments(tup->t_data->t_oid);
 
-		  heap_delete(rel, &tup->t_self, NULL);
+			heap_delete(rel, &tup->t_self, NULL);
 
 		}
 

@@ -33,7 +33,7 @@ newNode(Size size, NodeTag tag)
 {
 	Node	   *newNode;
 
-	Assert(size >= sizeof(Node)); /* need the tag, at least */
+	Assert(size >= sizeof(Node));		/* need the tag, at least */
 
 	newNode = (Node *) palloc(size);
 	MemSet((char *) newNode, 0, size);

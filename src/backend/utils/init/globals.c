@@ -93,7 +93,8 @@ char	   *IndexedCatalogNames[] = {
  * ps status buffer
  */
 #ifndef linux
-char	Ps_status_buffer[1024];
+char		Ps_status_buffer[1024];
+
 #endif
 
 /* ----------------

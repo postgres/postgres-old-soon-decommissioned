@@ -52,7 +52,7 @@ strtokx(const char *s,
 	char	   *cp = NULL;
 
 #ifndef MULTIBYTE
-    (void)encoding; /*not used*/
+	(void) encoding;			/* not used */
 #endif
 
 	if (s)

@@ -2510,7 +2510,7 @@ exec_simple_check_plan(PLpgSQL_expr * expr)
 	if (plan == NULL)			/* utility statement produces this */
 		return;
 
-	if (! IsA(plan, Result))
+	if (!IsA(plan, Result))
 		return;
 
 	/* ----------

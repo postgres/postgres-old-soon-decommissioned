@@ -104,8 +104,8 @@ cluster(char *oldrelname, char *oldindexname)
 	 * Like vacuum, cluster spans transactions, so I'm going to handle it
 	 * in the same way: commit and restart transactions where needed.
 	 *
-	 * We grab exclusive access to the target rel and index for the
-	 * duration of the initial transaction.
+	 * We grab exclusive access to the target rel and index for the duration
+	 * of the initial transaction.
 	 */
 
 	OldHeap = heap_openr(oldrelname, AccessExclusiveLock);
@@ -115,7 +115,7 @@ cluster(char *oldrelname, char *oldindexname)
 	LockRelation(OldIndex, AccessExclusiveLock);
 	OIDOldIndex = RelationGetRelid(OldIndex);
 
-	heap_close(OldHeap, NoLock); /* do NOT give up the locks */
+	heap_close(OldHeap, NoLock);/* do NOT give up the locks */
 	index_close(OldIndex);
 
 	/*

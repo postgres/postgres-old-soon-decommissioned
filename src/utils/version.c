@@ -78,10 +78,10 @@ ValidatePgVersion(const char *path, char **reason_p)
 	}
 	else
 	{
-		nread = read(fd, version, sizeof(version)-1);
+		nread = read(fd, version, sizeof(version) - 1);
 		if (nread < 4 ||
 			!isdigit(version[0]) ||
-			version[nread-1] != '\n')
+			version[nread - 1] != '\n')
 		{
 			*reason_p = malloc(100 + strlen(full_path));
 			sprintf(*reason_p, "File '%s' does not have a valid format "

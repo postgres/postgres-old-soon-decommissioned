@@ -42,14 +42,14 @@ typedef struct ParseState
 extern ParseState *make_parsestate(ParseState *parentParseState);
 extern Expr *make_op(char *opname, Node *ltree, Node *rtree);
 extern Node *make_operand(char *opname, Node *tree,
-						  Oid orig_typeId, Oid target_typeId);
+			 Oid orig_typeId, Oid target_typeId);
 extern Var *make_var(ParseState *pstate, Oid relid, char *refname,
 		 char *attrname);
 extern ArrayRef *transformArraySubscripts(ParseState *pstate,
-										  Node *arrayBase,
-										  List *indirection,
-										  bool forceSlice,
-										  Node *assignFrom);
+						 Node *arrayBase,
+						 List *indirection,
+						 bool forceSlice,
+						 Node *assignFrom);
 extern Const *make_const(Value *value);
 
 #endif	 /* PARSE_NODE_H */

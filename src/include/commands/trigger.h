@@ -93,31 +93,34 @@ extern void ExecARUpdateTriggers(EState *estate, ItemPointer tupleid, HeapTuple 
  * Deferred trigger stuff
  * ----------
  */
-typedef struct DeferredTriggerStatusData {
-	Oid				dts_tgoid;
-	bool			dts_tgisdeferred;
+typedef struct DeferredTriggerStatusData
+{
+	Oid			dts_tgoid;
+	bool		dts_tgisdeferred;
 } DeferredTriggerStatusData;
 typedef struct DeferredTriggerStatusData *DeferredTriggerStatus;
 
 
-typedef struct DeferredTriggerEventItem {
-	Oid				dti_tgoid;
-	int32			dti_state;
+typedef struct DeferredTriggerEventItem
+{
+	Oid			dti_tgoid;
+	int32		dti_state;
 } DeferredTriggerEventItem;
 
 
-typedef struct DeferredTriggerEventData {
-	int32			dte_event;
-	Oid				dte_relid;
-	ItemPointerData	dte_oldctid;
-	ItemPointerData	dte_newctid;
-	int32			dte_n_items;
-	DeferredTriggerEventItem	dte_item[1];
+typedef struct DeferredTriggerEventData
+{
+	int32		dte_event;
+	Oid			dte_relid;
+	ItemPointerData dte_oldctid;
+	ItemPointerData dte_newctid;
+	int32		dte_n_items;
+	DeferredTriggerEventItem dte_item[1];
 } DeferredTriggerEventData;
 typedef struct DeferredTriggerEventData *DeferredTriggerEvent;
 
 
-extern int  DeferredTriggerInit(void);
+extern int	DeferredTriggerInit(void);
 extern void DeferredTriggerBeginXact(void);
 extern void DeferredTriggerEndQuery(void);
 extern void DeferredTriggerEndXact(void);
@@ -126,7 +129,7 @@ extern void DeferredTriggerAbortXact(void);
 extern void DeferredTriggerSetState(ConstraintsSetStmt *stmt);
 
 extern void DeferredTriggerSaveEvent(Relation rel, int event,
-					HeapTuple oldtup, HeapTuple newtup);
+						 HeapTuple oldtup, HeapTuple newtup);
 
 
 /*

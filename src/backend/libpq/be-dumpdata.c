@@ -184,7 +184,7 @@ be_typeinit(PortalEntry *entry,
 		for (i = 0; i < natts; ++i)
 		{
 			strncpy(group->types[i].name,
-				NameStr(attrs[i]->attname), NAMEDATALEN);
+					NameStr(attrs[i]->attname), NAMEDATALEN);
 			group->types[i].typid = attrs[i]->atttypid;
 			group->types[i].typlen = attrs[i]->attlen;
 		}

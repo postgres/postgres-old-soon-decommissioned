@@ -681,8 +681,8 @@ ChangeACLStmt *
 makeAclStmt(char *privileges, List *rel_list, char *grantee,
 			char grant_or_revoke)
 {
-	ChangeACLStmt  *n = makeNode(ChangeACLStmt);
-	StringInfoData	str;
+	ChangeACLStmt *n = makeNode(ChangeACLStmt);
+	StringInfoData str;
 
 	initStringInfo(&str);
 

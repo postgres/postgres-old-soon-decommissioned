@@ -1381,7 +1381,7 @@ Pg_select(ClientData cData, Tcl_Interp *interp, int argc, char **argv)
  */
 
 static int
-Pg_have_listener(Pg_ConnectionId *connid, const char *relname)
+Pg_have_listener(Pg_ConnectionId * connid, const char *relname)
 {
 	Pg_TclNotifies *notifies;
 	Tcl_HashEntry *entry;

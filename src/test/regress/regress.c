@@ -368,7 +368,7 @@ funny_dup17()
 	fieldval = SPI_getvalue(tuple, tupdesc, 1);
 	fieldtype = SPI_gettype(tupdesc, 1);
 
-	query = (char *) palloc(100 + NAMEDATALEN*3 +
+	query = (char *) palloc(100 + NAMEDATALEN * 3 +
 							strlen(fieldval) + strlen(fieldtype));
 
 	sprintf(query, "insert into %s select * from %s where %s = '%s'::%s",

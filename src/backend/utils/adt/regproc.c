@@ -264,7 +264,7 @@ oidvectortypes(Oid *oidArray)
 	for (num = 0; num < FUNC_MAX_ARGS; num++)
 	{
 		if (oidArray[num] != InvalidOid)
-			numargs = num+1;
+			numargs = num + 1;
 	}
 
 	result = (text *) palloc((NAMEDATALEN + 1) * numargs + VARHDRSZ + 1);

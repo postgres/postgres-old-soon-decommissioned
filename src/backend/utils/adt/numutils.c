@@ -84,7 +84,7 @@ pg_atoi(char *s, int size, int c)
 				errno = ERANGE;
 				elog(ERROR, "pg_atoi: error reading \"%s\": %m", s);
 			}
-#endif         /* HAVE_LONG_INT_64 */
+#endif	 /* HAVE_LONG_INT_64 */
 			break;
 		case sizeof(int16):
 			if (l < SHRT_MIN)

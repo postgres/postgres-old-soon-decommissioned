@@ -18,7 +18,7 @@
 
 extern char *relpath(const char *relname);
 extern char *relpath_blind(const char *dbname, const char *relname,
-						   Oid dbid, Oid relid);
+			  Oid dbid, Oid relid);
 extern bool IsSystemRelationName(const char *relname);
 extern bool IsSharedSystemRelationName(const char *relname);
 extern Oid	newoid(void);

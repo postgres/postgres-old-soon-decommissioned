@@ -331,8 +331,8 @@ ReadNewTransactionId(TransactionId *xid)
 	SpinAcquire(OidGenLockId);	/* not good for concurrency... */
 
 	/*
-	 * Note that we don't check is ShmemVariableCache->xid_count equal
-	 * to 0 or not. This will work as long as we don't call 
+	 * Note that we don't check is ShmemVariableCache->xid_count equal to
+	 * 0 or not. This will work as long as we don't call
 	 * ReadNewTransactionId() before GetNewTransactionId().
 	 */
 	if (ShmemVariableCache->nextXid == 0)

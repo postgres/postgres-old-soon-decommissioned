@@ -302,10 +302,10 @@ HandleFunctionRequest()
 		update_fp_info(fid, fip);
 
 	/*
-	 * XXX FIXME: elog() here means we lose sync with the frontend,
-	 * since we have not swallowed all of its input message.  What
-	 * should happen is we absorb all of the input message per protocol
-	 * syntax, and *then* do error checking and elog if appropriate.
+	 * XXX FIXME: elog() here means we lose sync with the frontend, since
+	 * we have not swallowed all of its input message.	What should happen
+	 * is we absorb all of the input message per protocol syntax, and
+	 * *then* do error checking and elog if appropriate.
 	 */
 
 	if (fip->nargs != nargs)

@@ -68,4 +68,5 @@ extern bool activate_index(Oid indexId, bool activate);
 extern bool reindex_index(Oid indexId, bool force);
 extern bool activate_indexes_of_a_table(Oid relid, bool activate);
 extern bool reindex_relation(Oid relid, bool force);
+
 #endif	 /* INDEX_H */

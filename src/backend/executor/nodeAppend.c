@@ -251,9 +251,9 @@ ExecInitAppend(Append *node, EState *estate, Plan *parent)
 
 		foreach(rtentryP, rtable)
 		{
-			RangeTblEntry  *rtentry = lfirst(rtentryP);
-			Oid				reloid;
-			RelationInfo   *rri;
+			RangeTblEntry *rtentry = lfirst(rtentryP);
+			Oid			reloid;
+			RelationInfo *rri;
 
 			reloid = rtentry->relid;
 			rri = makeNode(RelationInfo);
@@ -304,6 +304,7 @@ ExecInitAppend(Append *node, EState *estate, Plan *parent)
 		{
 			JunkFilter *j = ExecInitJunkFilter(initNode->targetlist,
 											   ExecGetTupType(initNode));
+
 			junkList = lappend(junkList, j);
 		}
 

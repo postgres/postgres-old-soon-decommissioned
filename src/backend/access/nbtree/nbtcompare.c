@@ -35,12 +35,12 @@ btint2cmp(int16 a, int16 b)
 int32
 btint4cmp(int32 a, int32 b)
 {
-      if (a > b)
-              return 1;
-      else if (a == b)
-              return 0;
-      else
-              return -1;
+	if (a > b)
+		return 1;
+	else if (a == b)
+		return 0;
+	else
+		return -1;
 }
 
 int32

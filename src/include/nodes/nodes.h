@@ -301,7 +301,8 @@ extern bool equal(void *a, void *b);
  * These could have gone into plannodes.h or some such, but many files
  * depend on them...
  */
-typedef double Selectivity;		/* fraction of tuples a qualifier will pass */
+typedef double Selectivity;		/* fraction of tuples a qualifier will
+								 * pass */
 typedef double Cost;			/* execution cost (in page-access units) */
 
 

@@ -65,7 +65,7 @@ extern FILE *AllocateFile(char *name, char *mode);
 extern void FreeFile(FILE *);
 
 /* Miscellaneous support routines */
-extern bool	ReleaseDataFile(void);
+extern bool ReleaseDataFile(void);
 extern void closeAllVfds(void);
 extern void AtEOXact_Files(void);
 extern int	pg_fsync(int fd);

@@ -76,11 +76,13 @@ typedef struct AclItem
 	AclId		ai_id;
 	AclIdType	ai_idtype;
 	AclMode		ai_mode;
+
 	/*
-	 *	This is actually type 'aclitem', and we want a fixed size for
-	 *	for all platforms, so we pad this with dummies.
+	 * This is actually type 'aclitem', and we want a fixed size for for
+	 * all platforms, so we pad this with dummies.
 	 */
-	char		dummy1, dummy2;
+	char		dummy1,
+				dummy2;
 } AclItem;
 
 /* Note: if the size of AclItem changes,

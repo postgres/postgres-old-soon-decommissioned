@@ -94,7 +94,7 @@ static const struct authsvc authsvcs[] = {
 	{"password", STARTUP_PASSWORD_MSG, 0}
 };
 
-static const int	n_authsvcs = sizeof(authsvcs) / sizeof(struct authsvc);
+static const int n_authsvcs = sizeof(authsvcs) / sizeof(struct authsvc);
 
 #ifdef KRB4
 /*----------------------------------------------------------------
@@ -475,12 +475,12 @@ fe_sendauth(AuthRequest areq, PGconn *conn, const char *hostname,
 			const char *password, char *PQerrormsg)
 {
 #if !defined(KRB4) && !defined(KRB5)
-    (void)hostname; /*not used*/
+	(void) hostname;			/* not used */
 #endif
 
 	switch (areq)
 	{
-			case AUTH_REQ_OK:
+		case AUTH_REQ_OK:
 			break;
 
 		case AUTH_REQ_KRB4:

@@ -133,11 +133,11 @@ typedef struct Port
 	char		auth_arg[MAX_AUTH_ARG];
 	UserAuth	auth_method;
 
-        /*
-	 * SSL structures 
+	/*
+	 * SSL structures
 	 */
 #ifdef USE_SSL
-        SSL             *ssl;
+	SSL		   *ssl;
 #endif
 } Port;
 

@@ -113,7 +113,7 @@ SetVariable(VariableSpace space, const char *name, const char *value)
 bool
 SetVariableBool(VariableSpace space, const char *name)
 {
-    return SetVariable(space, name, "");
+	return SetVariable(space, name, "");
 }
 
 

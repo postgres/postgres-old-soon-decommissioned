@@ -125,8 +125,8 @@ RemoveRewriteRule(char *ruleName)
 	/*
 	 * Delete any comments associated with this rule
 	 *
-	 */	 
-	 
+	 */
+
 	DeleteComments(ruleId);
 
 	/*
@@ -168,13 +168,14 @@ RelationRemoveRules(Oid relid)
 	scanDesc = heap_beginscan(RewriteRelation,
 							  0, SnapshotNow, 1, &scanKeyData);
 
-	while (HeapTupleIsValid(tuple = heap_getnext(scanDesc, 0))) {
+	while (HeapTupleIsValid(tuple = heap_getnext(scanDesc, 0)))
+	{
 
-	  /*** Delete any comments associated with this relation ***/
+		/*** Delete any comments associated with this relation ***/
 
-	  DeleteComments(tuple->t_data->t_oid);
-	   
-	  heap_delete(RewriteRelation, &tuple->t_self, NULL);
+		DeleteComments(tuple->t_data->t_oid);
+
+		heap_delete(RewriteRelation, &tuple->t_self, NULL);
 
 	}
 

@@ -23,13 +23,13 @@ extern void ExecEndGroup(Group *node);
 extern void ExecReScanGroup(Group *node, ExprContext *exprCtxt, Plan *parent);
 
 extern bool execTuplesMatch(HeapTuple tuple1,
-							HeapTuple tuple2,
-							TupleDesc tupdesc,
-							int numCols,
-							AttrNumber *matchColIdx,
-							FmgrInfo *eqfunctions);
+				HeapTuple tuple2,
+				TupleDesc tupdesc,
+				int numCols,
+				AttrNumber *matchColIdx,
+				FmgrInfo *eqfunctions);
 extern FmgrInfo *execTuplesMatchPrepare(TupleDesc tupdesc,
-										int numCols,
-										AttrNumber *matchColIdx);
+					   int numCols,
+					   AttrNumber *matchColIdx);
 
 #endif	 /* NODEGROUP_H */

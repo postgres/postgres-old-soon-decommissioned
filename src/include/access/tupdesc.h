@@ -51,7 +51,7 @@ typedef struct tupleDesc
 	Form_pg_attribute *attrs;
 	/* attrs[N] is a pointer to the description of Attribute Number N+1.  */
 	TupleConstr *constr;
-} *TupleDesc;
+}		   *TupleDesc;
 
 extern TupleDesc CreateTemplateTupleDesc(int natts);
 

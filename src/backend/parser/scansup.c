@@ -44,7 +44,7 @@ scanstr(char *s)
 
 	len = strlen(s);
 
-	newStr = palloc(len+1);		/* string cannot get longer */
+	newStr = palloc(len + 1);	/* string cannot get longer */
 
 	for (i = 0, j = 0; i < len; i++)
 	{
