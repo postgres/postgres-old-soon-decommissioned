@@ -9562,7 +9562,7 @@ msgstr ""
 #: ../utils/adt/numutils.c:75
 #, c-format
 msgid "pg_atoi: error in \"%s\": can't parse \"%s\""
-msgstr "pg_atoi: hiba a(z) \"%s\"-ben: szintaktikai hiba a(z) \"%s%-ben"
+msgstr "pg_atoi: hiba a(z) \"%s\"-ben: szintaktikai hiba a(z) \"%s-ben"
 
 #: ../utils/adt/numutils.c:119
 #, c-format
