@@ -948,15 +948,15 @@ DESCR("equal");
 DATA(insert OID = 717 (  int4eqoid		   PGUID 11 f t t 2 f 16 "23 26" 100 0 0 100  int4eqoid - ));
 DESCR("equal");
 
-DATA(insert OID = 720 (  byteaGetSize	   PGUID 11 f t t 1 f 23 "17" 100 0 0 100  byteaGetSize - ));
+DATA(insert OID = 720 (  octet_length	   PGUID 11 f t t 1 f 23 "17" 100 0 0 100  byteaoctetlen - ));
 DESCR("");
-DATA(insert OID = 721 (  byteaGetByte	   PGUID 11 f t t 2 f 23 "17 23" 100 0 0 100  byteaGetByte - ));
+DATA(insert OID = 721 (  get_byte		   PGUID 11 f t t 2 f 23 "17 23" 100 0 0 100  byteaGetByte - ));
 DESCR("");
-DATA(insert OID = 722 (  byteaSetByte	   PGUID 11 f t t 3 f 17 "17 23 23" 100 0 0 100  byteaSetByte - ));
+DATA(insert OID = 722 (  set_byte		   PGUID 11 f t t 3 f 17 "17 23 23" 100 0 0 100  byteaSetByte - ));
 DESCR("");
-DATA(insert OID = 723 (  byteaGetBit	   PGUID 11 f t t 2 f 23 "17 23" 100 0 0 100  byteaGetBit - ));
+DATA(insert OID = 723 (  get_bit		   PGUID 11 f t t 2 f 23 "17 23" 100 0 0 100  byteaGetBit - ));
 DESCR("");
-DATA(insert OID = 724 (  byteaSetBit	   PGUID 11 f t t 3 f 17 "17 23 23" 100 0 0 100  byteaSetBit - ));
+DATA(insert OID = 724 (  set_bit		   PGUID 11 f t t 3 f 17 "17 23 23" 100 0 0 100  byteaSetBit - ));
 DESCR("");
 
 DATA(insert OID = 725 (  dist_pl		   PGUID 11 f t t 2 f 701 "600 628" 100 0 0 100  dist_pl - ));

@@ -450,13 +450,13 @@ extern text *text_substr(text *string, int32 m, int32 n);
 extern text *name_text(NameData *s);
 extern NameData *text_name(text *s);
 
-extern struct varlena *byteain(char *inputText);
-extern char *byteaout(struct varlena * vlena);
-extern int32 byteaGetSize(struct varlena * v);
-extern int32 byteaGetByte(struct varlena * v, int32 n);
-extern int32 byteaGetBit(struct varlena * v, int32 n);
-extern struct varlena *byteaSetByte(struct varlena * v, int32 n, int32 newByte);
-extern struct varlena *byteaSetBit(struct varlena * v, int32 n, int32 newBit);
+extern bytea *byteain(char *inputText);
+extern char *byteaout(bytea *vlena);
+extern int32 byteaoctetlen(bytea *v);
+extern int32 byteaGetByte(bytea *v, int32 n);
+extern int32 byteaGetBit(bytea *v, int32 n);
+extern bytea *byteaSetByte(bytea *v, int32 n, int32 newByte);
+extern bytea *byteaSetBit(bytea *v, int32 n, int32 newBit);
 
 /* like.c */
 extern bool namelike(NameData *n, struct varlena * p);
