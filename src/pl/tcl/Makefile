@@ -39,8 +39,14 @@ ifneq ($(TCL_SHLIB_LD_LIBS),)
 # link command for a shared lib must mention shared libs it uses
 SHLIB_EXTRA_LIBS=$(TCL_LIBS) -lc
 else
+ifeq ($(PORTNAME), hpux)
+# link command for a shared lib must mention shared libs it uses,
+# even though Tcl doesn't think so...
+SHLIB_EXTRA_LIBS=$(TCL_LIBS) -lc
+else
 # link command for a shared lib must NOT mention shared libs it uses
 SHLIB_EXTRA_LIBS=
+endif
 endif
 
 %$(TCL_SHLIB_SUFFIX): %.o
