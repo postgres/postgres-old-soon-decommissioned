@@ -992,11 +992,9 @@ ProcessUtility(Node *parsetree,
 				switch (stmt->kind)
 				{
 					case OBJECT_INDEX:
-						CheckRelationOwnership(stmt->relation, false);
 						ReindexIndex(stmt->relation, stmt->force);
 						break;
 					case OBJECT_TABLE:
-						CheckRelationOwnership(stmt->relation, false);
 						ReindexTable(stmt->relation, stmt->force);
 						break;
 					case OBJECT_DATABASE:

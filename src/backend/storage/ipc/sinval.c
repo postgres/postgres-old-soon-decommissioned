@@ -73,6 +73,12 @@ SendSharedInvalidMessage(SharedInvalidationMessage *msg)
 /*
  * ReceiveSharedInvalidMessages
  *		Process shared-cache-invalidation messages waiting for this backend
+ *
+ * NOTE: it is entirely possible for this routine to be invoked recursively
+ * as a consequence of processing inside the invalFunction or resetFunction.
+ * Hence, we must be holding no SI resources when we call them.  The only
+ * bad side-effect is that SIDelExpiredDataEntries might be called extra
+ * times on the way out of a nested call.
  */
 void
 ReceiveSharedInvalidMessages(

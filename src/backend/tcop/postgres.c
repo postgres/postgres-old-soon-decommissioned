@@ -2252,9 +2252,12 @@ PostgresMain(int argc, char *argv[], const char *username)
 
 				/*
 				 * ignore system indexes
+				 *
+				 * As of PG 7.4 this is safe to allow from the client,
+				 * since it only disables reading the system indexes,
+				 * not writing them.  Worst case consequence is slowness.
 				 */
-				if (secure)		/* XXX safe to allow from client??? */
-					IgnoreSystemIndexes(true);
+				IgnoreSystemIndexes(true);
 				break;
 
 			case 'o':
@@ -2658,7 +2661,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.363 $ $Date: 2003/09/14 00:03:32 $\n");
+		puts("$Revision: 1.364 $ $Date: 2003/09/24 18:54:01 $\n");
 	}
 
 	/*

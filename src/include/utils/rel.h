@@ -119,8 +119,10 @@ typedef struct RelationData
 	 * it is possible for new-ness to be "forgotten" (eg, after CLUSTER).
 	 */
 	bool		rd_istemp;		/* rel uses the local buffer mgr */
-	bool		rd_isnailed;	/* rel is nailed in cache */
-	bool		rd_indexfound;	/* true if rd_indexlist is valid */
+	char		rd_isnailed;	/* rel is nailed in cache: 0 = no, 1 = yes,
+								 * 2 = yes but possibly invalid */
+	char		rd_indexvalid;	/* state of rd_indexlist: 0 = not valid,
+								 * 1 = valid, 2 = temporarily forced */
 	Form_pg_class rd_rel;		/* RELATION tuple */
 	TupleDesc	rd_att;			/* tuple descriptor */
 	Oid			rd_id;			/* relation's object id */

@@ -647,11 +647,8 @@ ExecOpenIndices(ResultRelInfo *resultRelInfo)
 
 	resultRelInfo->ri_NumIndices = 0;
 
-	/* checks for disabled indexes */
+	/* fast path if no indexes */
 	if (!RelationGetForm(resultRelation)->relhasindex)
-		return;
-	if (IsIgnoringSystemIndexes() &&
-		IsSystemRelation(resultRelation))
 		return;
 
 	/*

@@ -281,7 +281,6 @@
 /* Class 55 - Object Not In Prerequisite State (class borrowed from DB2) */
 #define ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE	MAKE_SQLSTATE('5','5', '0','0','0')
 #define ERRCODE_OBJECT_IN_USE				MAKE_SQLSTATE('5','5', '0','0','6')
-#define ERRCODE_INDEXES_DEACTIVATED			MAKE_SQLSTATE('5','5', 'P','0','1')
 #define ERRCODE_CANT_CHANGE_RUNTIME_PARAM	MAKE_SQLSTATE('5','5', 'P','0','2')
 
 /* Class 57 - Operator Intervention (class borrowed from DB2) */

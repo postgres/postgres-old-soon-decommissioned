@@ -296,18 +296,17 @@ extern void InitPostgres(const char *dbname, const char *username);
 extern void BaseInit(void);
 
 /* in utils/init/miscinit.c */
+extern void IgnoreSystemIndexes(bool mode);
+extern bool IsIgnoringSystemIndexes(void);
+extern void SetReindexProcessing(Oid heapOid, Oid indexOid);
+extern bool ReindexIsProcessingHeap(Oid heapOid);
+extern bool ReindexIsProcessingIndex(Oid indexOid);
 extern void CreateDataDirLockFile(const char *datadir, bool amPostmaster);
 extern void CreateSocketLockFile(const char *socketfile, bool amPostmaster);
 extern void TouchSocketLockFile(void);
 extern void RecordSharedMemoryInLockFile(unsigned long id1,
 							 unsigned long id2);
-
 extern void ValidatePgVersion(const char *path);
 extern void process_preload_libraries(char *preload_libraries_string);
-
-/* these externs do not belong here... */
-extern void IgnoreSystemIndexes(bool mode);
-extern bool IsIgnoringSystemIndexes(void);
-extern bool IsCacheInitialized(void);
 
 #endif   /* MISCADMIN_H */

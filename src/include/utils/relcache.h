@@ -35,6 +35,8 @@ extern List *RelationGetIndexList(Relation relation);
 extern List *RelationGetIndexExpressions(Relation relation);
 extern List *RelationGetIndexPredicate(Relation relation);
 
+extern void RelationSetIndexList(Relation relation, List *indexIds);
+
 extern void RelationInitIndexAccessInfo(Relation relation);
 
 /*

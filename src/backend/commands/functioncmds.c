@@ -1095,24 +1095,25 @@ DropCast(DropCastStmt *stmt)
 void
 DropCastById(Oid castOid)
 {
-	Relation	relation,
-				index;
+	Relation	relation;
 	ScanKeyData scankey;
-	IndexScanDesc scan;
+	SysScanDesc scan;
 	HeapTuple	tuple;
 
 	relation = heap_openr(CastRelationName, RowExclusiveLock);
-	index = index_openr(CastOidIndex);
 
 	ScanKeyEntryInitialize(&scankey, 0x0,
-						   1, F_OIDEQ, ObjectIdGetDatum(castOid));
-	scan = index_beginscan(relation, index, SnapshotNow, 1, &scankey);
-	tuple = index_getnext(scan, ForwardScanDirection);
+						   ObjectIdAttributeNumber,
+						   F_OIDEQ,
+						   ObjectIdGetDatum(castOid));
+	scan = systable_beginscan(relation, CastOidIndex, true,
+							  SnapshotNow, 1, &scankey);
+
+	tuple = systable_getnext(scan);
 	if (!HeapTupleIsValid(tuple))
 		elog(ERROR, "could not find tuple for cast %u", castOid);
 	simple_heap_delete(relation, &tuple->t_self);
-	index_endscan(scan);
 
-	index_close(index);
+	systable_endscan(scan);
 	heap_close(relation, RowExclusiveLock);
 }

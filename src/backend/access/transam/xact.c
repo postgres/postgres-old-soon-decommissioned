@@ -834,8 +834,6 @@ StartTransaction(void)
 	 */
 	s->state = TRANS_START;
 
-	SetReindexProcessing(false);
-
 	/*
 	 * generate a new transaction id
 	 */
@@ -1085,6 +1083,7 @@ AbortTransaction(void)
 	AtEOXact_Namespace(false);
 	AtEOXact_CatCache(false);
 	AtEOXact_Files();
+	SetReindexProcessing(InvalidOid, InvalidOid);
 	pgstat_count_xact_rollback();
 
 	/*

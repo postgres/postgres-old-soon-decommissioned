@@ -184,20 +184,31 @@ systable_beginscan(Relation heapRelation,
 				   int nkeys, ScanKey key)
 {
 	SysScanDesc sysscan;
+	Relation	irel;
+
+	if (indexOK && !IsIgnoringSystemIndexes())
+	{
+		/* We assume it's a system index, so index_openr is OK */
+		irel = index_openr(indexRelname);
+
+		if (ReindexIsProcessingIndex(RelationGetRelid(irel)))
+		{
+			/* oops, can't use index that's being rebuilt */
+			index_close(irel);
+			irel = NULL;
+		}
+	}
+	else
+		irel = NULL;
 
 	sysscan = (SysScanDesc) palloc(sizeof(SysScanDescData));
 
 	sysscan->heap_rel = heapRelation;
+	sysscan->irel = irel;
 
-	if (indexOK &&
-		heapRelation->rd_rel->relhasindex &&
-		!IsIgnoringSystemIndexes())
+	if (irel)
 	{
-		Relation	irel;
 		int			i;
-
-		/* We assume it's a system index, so index_openr is OK */
-		sysscan->irel = irel = index_openr(indexRelname);
 
 		/*
 		 * Change attribute numbers to be index column numbers.
@@ -210,13 +221,13 @@ systable_beginscan(Relation heapRelation,
 			Assert(key[i].sk_attno == irel->rd_index->indkey[i]);
 			key[i].sk_attno = i + 1;
 		}
+
 		sysscan->iscan = index_beginscan(heapRelation, irel, snapshot,
 										 nkeys, key);
 		sysscan->scan = NULL;
 	}
 	else
 	{
-		sysscan->irel = NULL;
 		sysscan->scan = heap_beginscan(heapRelation, snapshot, nkeys, key);
 		sysscan->iscan = NULL;
 	}

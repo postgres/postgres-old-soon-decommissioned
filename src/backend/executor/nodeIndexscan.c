@@ -964,12 +964,6 @@ ExecInitIndexScan(IndexScan *node, EState *estate)
 
 	currentRelation = heap_open(reloid, AccessShareLock);
 
-	if (!RelationGetForm(currentRelation)->relhasindex)
-		ereport(ERROR,
-				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
-				 errmsg("indexes of relation %u were deactivated",
-						reloid)));
-
 	indexstate->ss.ss_currentRelation = currentRelation;
 	indexstate->ss.ss_currentScanDesc = NULL;	/* no heap scan here */
 
