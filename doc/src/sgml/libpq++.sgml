@@ -217,6 +217,9 @@ $Header$
        <synopsis>
 	PgConnection::PgConnection(const char *conninfo)
        </synopsis>
+       The <quote>conninfo</> string is the same as for the underlying
+       libpq <function>PQconnectdb</> function.
+
        Although typically called from one of the access classes, a connection to
        a backend server is possible by creating a <classname>PgConnection</> object.
       </para>

@@ -463,7 +463,7 @@ spi_exec -array C "SELECT * FROM pg_class" {
      </varlistentry>
 
      <varlistentry>
-      <term><function>spi_exec</> <literal>?-count <replaceable>n</replaceable>? ?-array<replaceable>name</replaceable>? ?-nulls<replaceable>string</replaceable>? <replaceable>queryid</replaceable> ?<replaceable>value-list</replaceable>? ?<replaceable>loop-body</replaceable>?</literal></term>
+      <term><function>spi_execp</> <literal>?-count <replaceable>n</replaceable>? ?-array<replaceable>name</replaceable>? ?-nulls<replaceable>string</replaceable>? <replaceable>queryid</replaceable> ?<replaceable>value-list</replaceable>? ?<replaceable>loop-body</replaceable>?</literal></term>
       <listitem>
        <para>
 	Execute a prepared plan from <function>spi_prepare</> with variable substitution.

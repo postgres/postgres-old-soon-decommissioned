@@ -44,7 +44,7 @@ CREATE TRIGGER <replaceable class="PARAMETER">name</replaceable> { BEFORE | AFTE
       <term><replaceable class="parameter">name</replaceable></term>
       <listitem>
        <para>
-	The name of an existing trigger.
+	The name to give the new trigger.
        </para>
       </listitem>
      </varlistentry>
@@ -52,7 +52,7 @@ CREATE TRIGGER <replaceable class="PARAMETER">name</replaceable> { BEFORE | AFTE
       <term><replaceable class="parameter">table</replaceable></term>
       <listitem>
        <para>
-	The name of a table.
+	The name of an existing table.
        </para>
       </listitem>
      </varlistentry>
