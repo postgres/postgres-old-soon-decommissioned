@@ -125,7 +125,6 @@ extern bool IsUnderPostmaster;
 
 extern bool ExitOnAnyError;
 
-extern bool Noversion;
 extern char *DataDir;
 
 extern DLLIMPORT int MyProcPid;
