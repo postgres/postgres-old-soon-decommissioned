@@ -60,7 +60,6 @@ PostgreSQL Programmer's Guide.
   &rules;
   &xindex;
   &indexcost;
-  &gist;
   &trigger;
   &spi;
  </part>

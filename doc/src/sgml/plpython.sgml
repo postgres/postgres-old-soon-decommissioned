@@ -221,9 +221,12 @@ plan = plpy.prepare("SOME OTHER QUERY")
    execution environment, further restricts it to prevent the use of
    the file <function>open</> call, and allows only modules from a
    specific list to be imported.  Presently, that list includes:
-   array, bisect, binascii, calendar, cmath, codecs, errno, marshal,
-   math, md5, mpz, operator, pcre, pickle, random, re, regex, sre,
-   sha, string, StringIO, struct, time, whrandom, and zlib.
+   <literal>array</>, <>bisect</>, <>binascii</>, <>calendar</>,
+   <>cmath</>, <>codecs</>, <>errno</>, <>marshal</>, <>math</>,
+   <>md5</>, <>mpz</>, <>operator</>, <>pcre</>, <>pickle</>,
+   <>random</>, <>re</>, <>regex</>, <>sre</>, <>sha</>, <>string</>,
+   <>StringIO</>, <>struct</>, <>time</>, <>whrandom</>, and
+   <>zlib</>.
   </para>
  </sect1>
 

@@ -16,7 +16,7 @@ $Header$
    Each table has a primary heap disk file where most of the data is
    stored. To store long column values, there is also a
    <acronym>TOAST</> file associated with the table, named based on the
-   table's oid (actually pg_class.relfilenode), and an index on the
+   table's OID (actually <literal>pg_class.relfilenode</>), and an index on the
    <acronym>TOAST</> table. There also may be indexes associated with
    the base table.
   </para>

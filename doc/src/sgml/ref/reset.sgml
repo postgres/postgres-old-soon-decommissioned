@@ -79,7 +79,7 @@ SET <replaceable class="parameter">variable</replaceable> TO DEFAULT
  <refsect1>
   <title>Examples</title>
   <para>
-   Set DateStyle to its default value:
+   Set <varname>DateStyle</> to its default value:
 
 <screen>
 RESET DateStyle;
@@ -87,7 +87,7 @@ RESET DateStyle;
   </para>
 
   <para>
-   Set Geqo to its default value:
+   Set <varname>geqo</> to its default value:
 
 <screen>   
 RESET GEQO;

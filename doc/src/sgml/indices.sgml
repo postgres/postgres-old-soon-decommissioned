@@ -182,7 +182,7 @@ CREATE INDEX <replaceable>name</replaceable> ON <replaceable>table</replaceable>
    <note>
     <para>
      Testing has shown PostgreSQL's hash indexes to be similar or slower
-     than btree indexes, and the index size and build time for hash
+     than B-tree indexes, and the index size and build time for hash
      indexes is much worse. Hash indexes also suffer poor performance
      under high concurrency. For these reasons, hash index use is
      discouraged.
@@ -517,7 +517,7 @@ Subject: Re: [QUESTIONS] PRIMARY KEY | UNIQUE
 	</listitem>
 	<listitem>
 	 <para>
-	  Should not allow NULLs.
+	  Should not allow null values.
 	 </para>
 	</listitem>
        </itemizedlist>
@@ -540,7 +540,7 @@ Subject: Re: [QUESTIONS] PRIMARY KEY | UNIQUE
 	</listitem>
 	<listitem>
 	 <para>
-	  NULLs are acceptable.
+	  Null values are acceptable.
 	 </para>
 	</listitem>
        </itemizedlist>

@@ -193,14 +193,15 @@ REINDEX
       as there is in <application>psql</>.  To continue a command
       across multiple lines, you must type backslash just before each
       newline except the last one.
-      Also, you won't have any of the conveniences of readline processing
+      Also, you won't have any of the conveniences of command-line editing
       (no command history, for example).
      </para>
     </listitem>
 
     <listitem>
      <para>
-      To quit the backend, type EOF (control-D, usually).
+      To quit the backend, type <acronym>EOF</> (<keycombo
+      action="simul"><keycap>Control</><keycap>D</></>, usually).
      </para>
     </listitem>
 

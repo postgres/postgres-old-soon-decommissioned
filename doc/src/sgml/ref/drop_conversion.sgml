@@ -76,7 +76,7 @@ DROP CONVERSION <replaceable>conversion_name</replaceable>
   <title>Examples</title>
 
   <para>
-   To drop the conversion named myname:
+   To drop the conversion named <literal>myname</>:
 <programlisting>
 DROP CONVERSION myname;
 </programlisting>

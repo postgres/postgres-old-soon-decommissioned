@@ -125,7 +125,7 @@ WARNING:  BEGIN: already a transaction in progress
    Guide</citetitle> for details.)
    In SERIALIZABLE mode queries will see only changes committed before
    the entire
-   transaction began (actually, before execution of the first DML statement
+   transaction began (actually, before execution of the first <acronym>DML</> statement
    in the transaction).
   </para>
 

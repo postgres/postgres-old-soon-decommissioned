@@ -134,7 +134,7 @@ DROP OPERATOR CLASS
    Usage
   </title>
   <para>
-   Remove btree operator class <literal>widget_ops</literal>:
+   Remove B-tree operator class <literal>widget_ops</literal>:
 
    <programlisting>
 DROP OPERATOR CLASS widget_ops USING btree;

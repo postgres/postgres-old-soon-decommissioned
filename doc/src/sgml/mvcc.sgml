@@ -498,7 +498,7 @@ ERROR:  Can't serialize access due to concurrent update
 	 EXCLUSIVE</literal>, <literal>EXCLUSIVE</literal>, and
 	 <literal>ACCESS EXCLUSIVE</literal> lock modes.
 	 This mode protects a table against
-	 concurrent schema changes and VACUUMs.
+	 concurrent schema changes and <command>VACUUM</> runs.
 	</para>
 
 	<para>

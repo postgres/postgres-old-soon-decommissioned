@@ -17,13 +17,14 @@
  </bookinfo>
  
  &sources;
- &arch-dev; 
+ &arch-dev;
  &catalogs;
  &protocol;
  &compiler;
  &bki;
  &page;
  &geqo;
+ &gist;
  &nls;
 <!-- appendices -->
  &cvs;

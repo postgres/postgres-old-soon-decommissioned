@@ -48,7 +48,7 @@ RESET SESSION AUTHORIZATION
    The session user identifier may be changed only if the initial session
    user (the <firstterm>authenticated user</firstterm>) had the
    superuser privilege.  Otherwise, the command is accepted only if it
-   specifies the authenticated username.
+   specifies the authenticated user name.
   </para>
 
   <para>
