@@ -537,6 +537,24 @@ typedef struct CaseWhen
 	Expr	   *result;			/* substitution result */
 } CaseWhen;
 
+/*
+ * CoalesceExpr - a COALESCE expression
+ */
+typedef struct CoalesceExpr
+{
+	Expr	xpr;
+	Oid		coalescetype;		/* type of expression result */
+	List   *args;				/* the arguments */
+} CoalesceExpr;
+
+/*
+ * NullIfExpr - a NULLIF expression
+ *
+ * Like DistinctExpr, this is represented the same as an OpExpr referencing
+ * the "=" operator for x and y.
+ */
+typedef OpExpr NullIfExpr;
+
 /* ----------------
  * NullTest
  *

@@ -3628,6 +3628,28 @@ exec_simple_check_node(Node *node)
 				return TRUE;
 			}
 
+		case T_CoalesceExpr:
+			{
+				CoalesceExpr   *expr = (CoalesceExpr *) node;
+
+				if (!exec_simple_check_node((Node *) expr->args))
+					return FALSE;
+
+				return TRUE;
+			}
+
+		case T_NullIfExpr:
+			{
+				NullIfExpr *expr = (NullIfExpr *) node;
+
+				if (expr->opretset)
+					return FALSE;
+				if (!exec_simple_check_node((Node *) expr->args))
+					return FALSE;
+
+				return TRUE;
+			}
+
 		case T_NullTest:
 			return exec_simple_check_node((Node *) ((NullTest *) node)->arg);
 

@@ -284,6 +284,8 @@ fix_expr_references_walker(Node *node, void *context)
 		set_opfuncid((OpExpr *) node);
 	else if (IsA(node, DistinctExpr))
 		set_opfuncid((OpExpr *) node); /* rely on struct equivalence */
+	else if (IsA(node, NullIfExpr))
+		set_opfuncid((OpExpr *) node); /* rely on struct equivalence */
 	else if (IsA(node, SubPlan))
 	{
 		SubPlan *sp = (SubPlan *) node;
@@ -735,6 +737,8 @@ fix_opfuncids_walker(Node *node, void *context)
 	if (IsA(node, OpExpr))
 		set_opfuncid((OpExpr *) node);
 	else if (IsA(node, DistinctExpr))
+		set_opfuncid((OpExpr *) node); /* rely on struct equivalence */
+	else if (IsA(node, NullIfExpr))
 		set_opfuncid((OpExpr *) node); /* rely on struct equivalence */
 	return expression_tree_walker(node, fix_opfuncids_walker, context);
 }

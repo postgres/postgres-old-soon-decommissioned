@@ -441,8 +441,9 @@ typedef struct ArrayRefExprState
 /* ----------------
  *		FuncExprState node
  *
- * Although named for FuncExpr, this is also used for OpExpr and DistinctExpr
- * nodes; be careful to check what xprstate.expr is actually pointing at!
+ * Although named for FuncExpr, this is also used for OpExpr, DistinctExpr,
+ * and NullIf nodes; be careful to check what xprstate.expr is actually
+ * pointing at!
  * ----------------
  */
 typedef struct FuncExprState
@@ -538,6 +539,16 @@ typedef struct CaseWhenState
 	ExprState  *expr;			/* condition expression */
 	ExprState  *result;			/* substitution result */
 } CaseWhenState;
+
+/* ----------------
+ *		CoalesceExprState node
+ * ----------------
+ */
+typedef struct CoalesceExprState
+{
+	ExprState	xprstate;
+	List	*args;				/* the arguments */
+} CoalesceExprState;
 
 /* ----------------
  *		CoerceToDomainState node

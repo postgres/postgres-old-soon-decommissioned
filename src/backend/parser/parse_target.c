@@ -482,6 +482,14 @@ FigureColnameInternal(Node *node, char **name)
 		case T_FuncCall:
 			*name = strVal(llast(((FuncCall *) node)->funcname));
 			return 2;
+		case T_A_Expr:
+			/* make nullif() act like a regular function */
+			if (((A_Expr *) node)->kind == AEXPR_NULLIF)
+			{
+				*name = "nullif";
+				return 2;
+			}
+			break;
 		case T_A_Const:
 			if (((A_Const *) node)->typename != NULL)
 			{
@@ -510,6 +518,10 @@ FigureColnameInternal(Node *node, char **name)
 				return 1;
 			}
 			break;
+		case T_CoalesceExpr:
+			/* make coalesce() act like a regular function */
+			*name = "coalesce";
+			return 2;
 		default:
 			break;
 	}

@@ -2238,6 +2238,46 @@ get_rule_expr(Node *node, deparse_context *context,
 			}
 			break;
 
+		case T_CoalesceExpr:
+			{
+				CoalesceExpr *coalesceexpr = (CoalesceExpr *) node;
+				List *arg;
+				char *sep;
+
+				appendStringInfo(buf, "COALESCE(");
+				sep = "";
+				foreach(arg, coalesceexpr->args)
+				{
+					Node *e = (Node *) lfirst(arg);
+
+					appendStringInfo(buf, sep);
+					get_rule_expr(e, context, true);
+					sep = ", ";
+				}
+				appendStringInfo(buf, ")");
+			}
+			break;
+			
+		case T_NullIfExpr:
+			{
+				NullIfExpr *nullifexpr = (NullIfExpr *) node;
+				List *arg;
+				char *sep;
+
+				appendStringInfo(buf, "NULLIF(");
+				sep = "";
+				foreach(arg, nullifexpr->args)
+				{
+					Node *e = (Node *) lfirst(arg);
+
+					appendStringInfo(buf, sep);
+					get_rule_expr(e, context, true);
+					sep = ", ";
+				}
+				appendStringInfo(buf, ")");
+			}
+			break;
+
 		case T_NullTest:
 			{
 				NullTest   *ntest = (NullTest *) node;

@@ -1468,7 +1468,8 @@ cost_qual_eval_walker(Node *node, QualCost *total)
 	 */
 	if (IsA(node, FuncExpr) ||
 		IsA(node, OpExpr) ||
-		IsA(node, DistinctExpr))
+		IsA(node, DistinctExpr) ||
+		IsA(node, NullIfExpr))
 	{
 		total->per_tuple += cpu_operator_cost;
 	}

@@ -174,6 +174,7 @@ typedef enum A_Expr_Kind
 	AEXPR_OR,
 	AEXPR_NOT,
 	AEXPR_DISTINCT,				/* IS DISTINCT FROM - name must be "=" */
+	AEXPR_NULLIF,				/* NULLIF - name must be "=" */
 	AEXPR_OF					/* IS (not) OF - name must be "=" or "!=" */
 } A_Expr_Kind;
 

@@ -933,6 +933,14 @@ find_expr_references_walker(Node *node,
 						   &context->addrs);
 		/* fall through to examine arguments */
 	}
+	if (IsA(node, NullIfExpr))
+	{
+		NullIfExpr *nullifexpr = (NullIfExpr *) node;
+
+		add_object_address(OCLASS_OPERATOR, nullifexpr->opno, 0,
+						   &context->addrs);
+		/* fall through to examine arguments */
+	}
 	if (IsA(node, Aggref))
 	{
 		Aggref	   *aggref = (Aggref *) node;
