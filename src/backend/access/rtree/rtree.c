@@ -261,12 +261,13 @@ rtbuild(Relation heap,
 	{
 		Oid		hrelid = RelationGetRelid(heap);
 		Oid		irelid = RelationGetRelid(index);
+		bool		inplace = IsReindexProcessing();
 
 		heap_close(heap, NoLock);
 		index_close(index);
-		UpdateStats(hrelid, nh, true);
-		UpdateStats(irelid, ni, false);
-		if (oldPred != NULL)
+		UpdateStats(hrelid, nh, inplace);
+		UpdateStats(irelid, ni, inplace);
+		if (oldPred != NULL && !inplace)
 		{
 			if (ni == nh)
 				pred = NULL;

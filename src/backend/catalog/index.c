@@ -2057,7 +2057,6 @@ reindex_index(Oid indexId, bool force)
 	Oid		heapId, procId, accessMethodId;
 	Node		*oldPred = NULL;
 	PredInfo	*predInfo;
-	List		*cnfPred = NULL;
 	AttrNumber	*attributeNumberA;
 	FuncIndexInfo	fInfo, *funcInfo = NULL;
 	int		i, numberOfAttributes;
@@ -2096,8 +2095,8 @@ reindex_index(Oid indexId, bool force)
 		pfree(predString);
 	}
 	predInfo = (PredInfo *) palloc(sizeof(PredInfo));
-	predInfo->pred = (Node *) cnfPred;
-	predInfo->oldPred = oldPred;
+	predInfo->pred = (Node *) oldPred;
+	predInfo->oldPred = NULL;
 
 	/* Assign Index keys to attributes array */
 	attributeNumberA = (AttrNumber *) palloc(numberOfAttributes * sizeof(AttrNumber));
@@ -2247,5 +2246,5 @@ reindex_relation(Oid relid, bool force)
 		setRelhasindexInplace(relid, true, false);
 	}
 	SetReindexProcessing(old);
-	return true;
+	return reindexed;
 }

@@ -242,12 +242,13 @@ hashbuild(Relation heap,
 	{
 		Oid		hrelid = RelationGetRelid(heap);
 		Oid		irelid = RelationGetRelid(index);
+		bool		inplace = IsReindexProcessing();
 
 		heap_close(heap, NoLock);
 		index_close(index);
-		UpdateStats(hrelid, nhtups, true);
-		UpdateStats(irelid, nitups, false);
-		if (oldPred != NULL)
+		UpdateStats(hrelid, nhtups, inplace);
+		UpdateStats(irelid, nitups, inplace);
+		if (oldPred != NULL && !inplace)
 		{
 			if (nitups == nhtups)
 				pred = NULL;
