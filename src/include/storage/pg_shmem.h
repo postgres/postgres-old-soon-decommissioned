@@ -24,9 +24,6 @@
 #ifndef PG_SHMEM_H
 #define PG_SHMEM_H
 
-#include <sys/types.h>
-
-
 typedef struct PGShmemHeader	/* standard header for all Postgres shmem */
 {
 	int32		magic;			/* magic # to identify Postgres segments */

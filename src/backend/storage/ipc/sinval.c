@@ -14,7 +14,6 @@
  */
 #include "postgres.h"
 
-#include <sys/types.h>
 
 #include "storage/proc.h"
 #include "storage/sinval.h"

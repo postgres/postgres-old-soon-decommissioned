@@ -2,7 +2,6 @@
 
 #include "c.h"
 
-#include <sys/types.h>
 #include <string.h>
 
 #include <sys/utsname.h>

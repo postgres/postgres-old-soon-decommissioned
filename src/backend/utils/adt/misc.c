@@ -12,13 +12,12 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <sys/types.h>
+#include "postgres.h"
+
 #include <sys/file.h>
 #include <time.h>
 
-#include "postgres.h"
 #include "miscadmin.h"
-
 #include "utils/builtins.h"
 
 

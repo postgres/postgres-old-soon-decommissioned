@@ -44,7 +44,6 @@
 
 #include "c.h"
 
-#include <sys/types.h>
 #include <netinet/in.h>
 #include <ctype.h>
 

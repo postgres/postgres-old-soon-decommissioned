@@ -19,7 +19,8 @@
 static const char rcsid[] = "$Id$";
 #endif
 
-#include <sys/types.h>
+#include "postgres.h"
+
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -28,7 +29,6 @@ static const char rcsid[] = "$Id$";
 #include <ctype.h>
 #include <errno.h>
 
-#include "postgres.h"
 #include "utils/builtins.h"
 
 #ifdef SPRINTF_CHAR

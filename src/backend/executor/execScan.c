@@ -18,7 +18,6 @@
  */
 #include "postgres.h"
 
-#include <sys/types.h>
 #include <sys/file.h>
 
 #include "executor/executor.h"

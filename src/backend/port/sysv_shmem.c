@@ -20,7 +20,6 @@
 #include <signal.h>
 #include <unistd.h>
 #include <sys/file.h>
-#include <sys/types.h>
 #ifdef HAVE_SYS_IPC_H
 #include <sys/ipc.h>
 #endif

@@ -19,7 +19,6 @@
  */
 #include "postgres.h"
 
-#include <sys/types.h>
 #include <math.h>
 
 #include "access/hash.h"

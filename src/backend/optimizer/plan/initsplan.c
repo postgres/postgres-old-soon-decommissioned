@@ -14,7 +14,6 @@
  */
 #include "postgres.h"
 
-#include <sys/types.h>
 
 #include "catalog/pg_operator.h"
 #include "catalog/pg_type.h"

@@ -44,7 +44,6 @@
 
 #include "postgres.h"
 
-#include <sys/types.h>
 
 #include "utils/dynahash.h"
 #include "utils/hsearch.h"

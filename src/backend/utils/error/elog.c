@@ -16,7 +16,6 @@
 
 #include <time.h>
 #include <fcntl.h>
-#include <sys/types.h>
 #include <errno.h>
 #include <unistd.h>
 #include <signal.h>

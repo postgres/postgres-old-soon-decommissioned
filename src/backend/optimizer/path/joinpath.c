@@ -14,7 +14,6 @@
  */
 #include "postgres.h"
 
-#include <sys/types.h>
 #include <math.h>
 
 #include "optimizer/clauses.h"

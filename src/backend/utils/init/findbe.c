@@ -13,7 +13,6 @@
  */
 #include "postgres.h"
 
-#include <sys/types.h>
 #include <grp.h>
 #include <pwd.h>
 #include <sys/stat.h>

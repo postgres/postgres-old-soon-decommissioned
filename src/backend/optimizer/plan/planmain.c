@@ -20,7 +20,6 @@
  */
 #include "postgres.h"
 
-#include <sys/types.h>
 
 #include "optimizer/clauses.h"
 #include "optimizer/cost.h"

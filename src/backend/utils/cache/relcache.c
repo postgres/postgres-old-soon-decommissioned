@@ -27,7 +27,6 @@
  */
 #include "postgres.h"
 
-#include <sys/types.h>
 #include <errno.h>
 #include <sys/file.h>
 #include <fcntl.h>

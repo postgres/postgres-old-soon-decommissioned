@@ -15,7 +15,6 @@
 #include "postgres.h"
 
 #include <sys/param.h>
-#include <sys/types.h>
 #include <signal.h>
 #include <sys/stat.h>
 #include <sys/file.h>

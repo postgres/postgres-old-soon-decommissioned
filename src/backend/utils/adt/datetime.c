@@ -16,7 +16,6 @@
 
 #include <ctype.h>
 #include <math.h>
-#include <sys/types.h>
 #include <errno.h>
 #include <float.h>
 #include <limits.h>

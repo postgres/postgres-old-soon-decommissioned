@@ -16,7 +16,6 @@
 #include <float.h>
 #include <math.h>
 #include <errno.h>
-#include <sys/types.h>
 
 #include "catalog/pg_type.h"
 #include "utils/array.h"

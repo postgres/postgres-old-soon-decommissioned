@@ -18,7 +18,6 @@
 #include <ctype.h>
 #include <math.h>
 #include <errno.h>
-#include <sys/types.h>
 #include <float.h>
 #include <limits.h>
 
