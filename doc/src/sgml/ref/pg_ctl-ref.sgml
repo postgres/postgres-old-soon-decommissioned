@@ -125,10 +125,12 @@ PostgreSQL documentation
    and if so displays the <acronym>PID</acronym> and the command line
    options that were used to invoke it.
   </para>
+ </refsect1>
 
-  <refsect2 id="app-pg-ctl-options">
-   <title>Options</title>
-   <para>
+ <refsect1 id="app-pg-ctl-options">
+  <title>Options</title>
+
+  <para>
 
     <variablelist>
      <varlistentry>
@@ -224,7 +226,6 @@ PostgreSQL documentation
      </varlistentry>
     </variablelist>
    </para>
-  </refsect2>
  </refsect1>
 
 

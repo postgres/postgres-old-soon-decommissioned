@@ -60,7 +60,7 @@
      <term><option>--includedir</option></>
      <listitem>
       <para>
-       Print the location of C and C++ header files of the client interfaces.
+       Print the location of C header files of the client interfaces.
       </para>
      </listitem>
     </varlistentry>
@@ -69,7 +69,7 @@
      <term><option>--includedir-server</option></>
      <listitem>
       <para>
-       Print the location of C and C++ header files for server
+       Print the location of C header files for server
        programming.
       </para>
      </listitem>
