@@ -741,7 +741,7 @@ extern char *form(char *fmt, ...);
 #include "port/hpux/fixade.h"		/* for 8.07 unaligned access fixup */
 #endif /* hpux */
 
-#if defined(sparc)
+#if defined(sparc) && !defined(sparc_solaris)
 #define	memmove(d, s, l)	bcopy(s, d, l)
 #endif
 
