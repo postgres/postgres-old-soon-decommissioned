@@ -423,10 +423,9 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 	foreach(tl, qry->targetList)
 	{
 		TargetEntry *tle = (TargetEntry *) lfirst(tl);
-		Resdom	   *resnode = tle->resdom;
 		Ident	   *id;
 
-		Assert(!resnode->resjunk);
+		Assert(!tle->resdom->resjunk);
 		if (icolumns == NIL || attnos == NIL)
 			elog(ERROR, "INSERT has more expressions than target columns");
 		id = (Ident *) lfirst(icolumns);
