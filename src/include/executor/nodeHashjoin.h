@@ -21,13 +21,8 @@ extern int ExecCountSlotsHashJoin(HashJoin *node);
 
 extern void ExecEndHashJoin(HashJoin *node);
 
-extern int ExecHashJoinNewBatch(HashJoinState *hjstate);
-
 extern char *ExecHashJoinSaveTuple(HeapTuple heapTuple, char *buffer,
 				   File file, char *position);
-
-extern int ExecHashJoinGetBatch(int bucketno, HashJoinTable hashtable,
-				int nbatch);
 
 
 #endif	/* NODEHASHJOIN_H */

@@ -38,6 +38,9 @@
 #include "nodes/parsenodes.h"
 #include "nodes/makefuncs.h"
 
+static void checkTargetTypes(ParseState *pstate, char *target_colname,
+					char *refname, char *colname);
+
 Oid *param_type_info;
 int pfunc_num_args;
 
@@ -755,7 +758,7 @@ handleTargetColname(ParseState *pstate, char **resname,
  * checkTargetTypes -
  *    checks value and target column types
  */
-void
+static void
 checkTargetTypes(ParseState *pstate, char *target_colname,
 					char *refname, char *colname)
 {

@@ -75,14 +75,6 @@ typedef	void ExcProc(Exception*, ExcDetail, ExcData, ExcMessage);
  * prototypes for functions in exc.c
  */
 extern void EnableExceptionHandling(bool on);
-extern void ExcPrint(Exception *excP, ExcDetail detail, ExcData data,
-		     ExcMessage message);
-extern ExcProc *ExcGetUnCaught(void);
-extern ExcProc *ExcSetUnCaught(ExcProc *newP);
-extern void ExcUnCaught(Exception *excP, ExcDetail detail, ExcData data,
-			ExcMessage message);
-extern void ExcUnCaught(Exception *excP, ExcDetail detail, ExcData data,
-			ExcMessage message);
 extern void ExcRaise(Exception *excP,
 		     ExcDetail detail,
 		     ExcData    data,

@@ -34,16 +34,6 @@ extern TimeQual	SelfTimeQual;
 extern void setheapoverride(bool on);
 extern bool heapisoverride(void);
 
-extern bool TimeQualIsValid(TimeQual qual);
-extern bool TimeQualIsLegal(TimeQual qual);
-extern bool TimeQualIncludesNow(TimeQual qual);
-extern bool TimeQualIncludesPast(TimeQual qual);
-extern bool TimeQualIsSnapshot(TimeQual qual);
-extern bool TimeQualIsRanged(TimeQual qual);
-extern bool TimeQualIndicatesDisableValidityChecking(TimeQual qual);
-extern AbsoluteTime TimeQualGetSnapshotTime(TimeQual qual);
-extern AbsoluteTime TimeQualGetStartTime(TimeQual qual);
-extern AbsoluteTime TimeQualGetEndTime(TimeQual qual);
 extern TimeQual TimeFormSnapshotTimeQual(AbsoluteTime time);
 extern TimeQual TimeFormRangedTimeQual(AbsoluteTime startTime,
 				       AbsoluteTime endTime);

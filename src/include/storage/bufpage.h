@@ -253,8 +253,6 @@ extern void PageRepairFragmentation(Page page);
 extern Size PageGetFreeSpace(Page page);
 extern void PageManagerModeSet(PageManagerMode mode);
 extern void PageIndexTupleDelete(Page page, OffsetNumber offset);
-extern void PageIndexTupleDeleteAdjustLinePointers(PageHeader phdr,
-				       char *location, Size size);
 
 
 #endif	/* BUFPAGE_H */

@@ -15,7 +15,6 @@
 
 extern bool single_node(Node *node);
 extern bool var_is_outer(Var *var);
-extern bool var_is_inner(Var *var);
 extern bool var_is_rel(Var *var);
 extern Oper *replace_opid(Oper *oper);
 extern bool non_null(Expr *c);

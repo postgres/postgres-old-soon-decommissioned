@@ -43,6 +43,9 @@
 
 #include "commands/async.h"
 
+static Oid GetAppendOid(void);
+static void ResetAppendOid(void);
+
 /* ----------------
  *	output functions
  * ----------------
@@ -317,7 +320,7 @@ BeginCommand(char *pname,
 
 static Oid AppendOid;
 
-void
+static void
 ResetAppendOid(void)
 {
     AppendOid = InvalidOid;
@@ -346,7 +349,7 @@ UpdateAppendOid(Oid newoid)
 	AppendOid = MULTI_TUPLE_APPEND;
 }
 
-Oid
+static Oid
 GetAppendOid(void)
 {
     if (AppendOid == MULTI_TUPLE_APPEND)

@@ -74,12 +74,7 @@ extern int ShowPinTrace;
 extern Buffer RelationGetBufferWithBuffer(Relation relation,
 		  BlockNumber blockNumber, Buffer buffer);
 extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
-extern Buffer ReadBuffer_Debug(char *file, int line, Relation reln,
-			       BlockNumber blockNum);
 extern int WriteBuffer(Buffer buffer);
-extern void WriteBuffer_Debug(char *file, int line, Buffer buffer);
-extern void DirtyBufferCopy(Oid dbid, Oid relid, BlockNumber blkno,
-			    char *dest);
 extern int WriteNoReleaseBuffer(Buffer buffer);
 extern Buffer ReleaseAndReadBuffer(Buffer buffer, Relation relation,
 				   BlockNumber blockNum);
@@ -100,17 +95,9 @@ extern void DropBuffers(Oid dbid);
 extern void PrintBufferDescs(void);
 extern void PrintPinnedBufs(void);
 extern int BufferShmemSize(void);
-extern void BufferPoolBlowaway(void);
 extern void IncrBufferRefCount(Buffer buffer);
 extern int ReleaseBuffer(Buffer buffer);
 
-extern void IncrBufferRefCount_Debug(char *file, int line, Buffer buffer);
-extern void ReleaseBuffer_Debug(char *file, int line, Buffer buffer);
-extern int ReleaseAndReadBuffer_Debug(char *file,
-				int line,
-				Buffer buffer,
-				Relation relation,
-				BlockNumber blockNum);
 extern void BufferRefCountReset(int *refcountsave);
 extern void BufferRefCountRestore(int *refcountsave);
 extern int SetBufferWriteMode (int mode);

@@ -199,12 +199,9 @@ extern void InitLocks(void);
 extern void LockDisable(int status);
 extern LockTableId LockTabInit(char *tabName, MASK *conflictsP, int *prioP,
 			       int ntypes);
-extern LockTableId LockTabRename(LockTableId tableId);
 extern bool LockAcquire(LockTableId tableId, LOCKTAG *lockName, LOCKT lockt);
 extern int LockResolveConflicts(LOCKTAB *ltable, LOCK *lock, LOCKT lockt,
 			    TransactionId xid);
-extern int WaitOnLock(LOCKTAB *ltable, LockTableId tableId, LOCK *lock,
-		      LOCKT lockt);
 extern bool LockRelease(LockTableId tableId, LOCKTAG *lockName, LOCKT lockt);
 extern void GrantLock(LOCK *lock, LOCKT lockt);
 extern bool LockReleaseAll(LockTableId tableId, SHM_QUEUE *lockQueue);

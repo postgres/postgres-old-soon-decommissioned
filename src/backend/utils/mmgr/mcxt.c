@@ -281,6 +281,7 @@ MemoryContextRealloc(MemoryContext context,
  *	???
  *	BadArgumentsErr if firstTime is true for subsequent calls.
  */
+#ifdef NOT_USED
 char*
 MemoryContextGetName(MemoryContext context)
 {
@@ -289,6 +290,7 @@ MemoryContextGetName(MemoryContext context)
     
     return (context->method->getName(context));
 }
+#endif
 
 /*
  * PointerGetAllocSize --
@@ -301,6 +303,7 @@ MemoryContextGetName(MemoryContext context)
  *	???
  *	BadArgumentsErr if firstTime is true for subsequent calls.
  */
+#ifdef NOT_USED
 Size
 PointerGetAllocSize(Pointer pointer)
 {
@@ -309,6 +312,7 @@ PointerGetAllocSize(Pointer pointer)
     
     return (PSIZE(pointer));
 }
+#endif
 
 /*
  * MemoryContextSwitchTo --

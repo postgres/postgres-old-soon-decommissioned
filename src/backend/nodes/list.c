@@ -408,6 +408,7 @@ LispRemove(void *elem, List *list)
     return(list);
 }
 
+#ifdef NOT_USED
 List *
 intLispRemove(int elem, List *list)
 {
@@ -429,6 +430,7 @@ intLispRemove(int elem, List *list)
     }
     return(list);
 }
+#endif
 
 List *
 set_difference(List *list1, List *list2)

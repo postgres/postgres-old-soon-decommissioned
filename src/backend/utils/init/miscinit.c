@@ -101,6 +101,7 @@ ExitPostgres(ExitStatus status)
  * Exceptions:
  *	none
  */
+#ifdef NOT_USED
 void
 AbortPostgres()
 {
@@ -115,6 +116,7 @@ AbortPostgres()
     else
 	exitpg(FatalExitStatus);
 }
+#endif
 
 /* ----------------
  *	StatusBackendExit

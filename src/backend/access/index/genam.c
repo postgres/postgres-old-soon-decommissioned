@@ -127,6 +127,7 @@ RelationGetIndexScan(Relation relation,
     return (scan);
 }
 
+#ifdef NOT_USED
 /* ----------------
  *  IndexScanRestart -- Restart an index scan.
  *
@@ -166,7 +167,9 @@ IndexScanRestart(IndexScanDesc scan,
 		key,
 		scan->numberOfKeys * sizeof(ScanKeyData));
 }
+#endif
 
+#ifdef NOT_USED
 /* ----------------
  *  IndexScanEnd -- End and index scan.
  *
@@ -188,6 +191,7 @@ IndexScanEnd(IndexScanDesc scan)
     
     pfree(scan);
 }
+#endif
 
 /* ----------------
  *  IndexScanMarkPosition -- Mark current position in a scan.

@@ -153,6 +153,7 @@ BufTableInsert(BufferDesc *buf)
 }
 
 /* prints out collision stats for the buf table */
+#ifdef NOT_USED
 void
 DBG_LookupListCheck(int nlookup)
 {
@@ -160,3 +161,4 @@ DBG_LookupListCheck(int nlookup)
     
     hash_stats("Shared",SharedBufHash);
 }
+#endif

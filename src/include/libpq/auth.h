@@ -36,7 +36,6 @@ extern MsgType fe_getauthsvc();
 extern char *fe_getauthname(void);
 extern int be_recvauth(MsgType msgtype, Port *port, char *username, StartupInfo* sp);
 extern void be_setauthsvc(char *name);
-extern int be_getauthsvc(MsgType msgtype);
 
 /* the value that matches any dbName value when doing
    host based authentication*/

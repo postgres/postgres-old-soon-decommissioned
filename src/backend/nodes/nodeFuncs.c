@@ -23,6 +23,8 @@
 #include "nodes/nodeFuncs.h"
 #include "utils/lsyscache.h"
 
+static bool var_is_inner(Var *var);
+
 /*    
  * single_node -
  *    Returns t if node corresponds to a single-noded expression
@@ -61,7 +63,7 @@ var_is_outer (Var *var)
     return((bool)(var->varno == OUTER));
 }
 
-bool
+static bool
 var_is_inner (Var *var)
 {
     return ( (bool) (var->varno == INNER));

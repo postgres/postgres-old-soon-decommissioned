@@ -461,6 +461,7 @@ doinsert(Relation relation, HeapTuple tup)
  *	HeapScanIsValid is now a macro in relscan.h -cim 4/27/91
  */
 
+#ifdef NOT_USED
 /* ----------------
  *	SetHeapAccessMethodImmediateInvalidation
  * ----------------
@@ -470,6 +471,7 @@ SetHeapAccessMethodImmediateInvalidation(bool on)
 {
     ImmediateInvalidation = on;
 }
+#endif
 
 /* ----------------------------------------------------------------
  *                   heap access method interface

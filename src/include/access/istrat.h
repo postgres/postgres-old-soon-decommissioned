@@ -47,21 +47,12 @@
  */
 #define	IndexStrategyIsValid(s)	PointerIsValid(s)
 
-extern ScanKey StrategyMapGetScanKeyEntry(StrategyMap map,
-					  StrategyNumber strategyNumber);
 extern StrategyMap IndexStrategyGetStrategyMap(IndexStrategy indexStrategy,
 	StrategyNumber maxStrategyNum, AttrNumber attrNum);
 
 extern Size
 AttributeNumberGetIndexStrategySize(AttrNumber maxAttributeNumber,
 				    StrategyNumber maxStrategyNumber);
-extern bool StrategyOperatorIsValid(StrategyOperator operator,
-				    StrategyNumber maxStrategy);
-extern bool StrategyTermIsValid(StrategyTerm term,
-				StrategyNumber maxStrategy);
-extern bool StrategyExpressionIsValid(StrategyExpression expression,
-				      StrategyNumber maxStrategy);
-extern bool StrategyEvaluationIsValid(StrategyEvaluation evaluation);
 extern StrategyNumber RelationGetStrategy(Relation relation,
 	AttrNumber attributeNumber, StrategyEvaluation evaluation,
 	RegProcedure procedure);

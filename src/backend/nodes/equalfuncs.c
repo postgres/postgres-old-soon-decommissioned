@@ -26,6 +26,8 @@
 #include "utils/elog.h"
 #include "storage/itemptr.h"
 
+static bool equali(List *a, List *b);
+
 /*
  *  Stuff from primnodes.h
  */
@@ -703,7 +705,8 @@ equal(void *a, void *b)
  *
  * XXX temp hack. needs something like T_IntList
  */
-bool equali(List *a, List *b)
+static bool
+equali(List *a, List *b)
 {     
     List *la = (List*)a;
     List *lb = (List*)b;

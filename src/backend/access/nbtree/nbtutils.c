@@ -303,6 +303,7 @@ _bt_formitem(IndexTuple itup)
     return (btitem);
 }
 
+#ifdef NOT_USED
 bool
 _bt_checkqual(IndexScanDesc scan, IndexTuple itup)
 {
@@ -315,7 +316,9 @@ _bt_checkqual(IndexScanDesc scan, IndexTuple itup)
     else
 	return (true);
 }
+#endif
 
+#ifdef NOT_USED
 bool
 _bt_checkforkeys(IndexScanDesc scan, IndexTuple itup, Size keysz)
 {
@@ -328,6 +331,7 @@ _bt_checkforkeys(IndexScanDesc scan, IndexTuple itup, Size keysz)
     else
 	return (true);
 }
+#endif
 
 bool
 _bt_checkkeys (IndexScanDesc scan, IndexTuple tuple, Size *keysok)

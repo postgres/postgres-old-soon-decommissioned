@@ -47,6 +47,11 @@ static int HashTBSize;
 
 static void mk_hj_temp(char *tempname);
 static int hashFunc(char *key, int len);
+static int ExecHashPartition(Hash *node);
+static RelativeAddr hashTableAlloc(int size, HashJoinTable hashtable);
+static void ExecHashOverflowInsert(HashJoinTable hashtable,
+		       HashBucket bucket,
+		       HeapTuple heapTuple);
 
 /* ----------------------------------------------------------------
  *   	ExecHash
@@ -258,7 +263,7 @@ ExecEndHash(Hash *node)
     ExecEndNode(outerPlan, (Plan*)node);
 } 
 
-RelativeAddr
+static RelativeAddr
 hashTableAlloc(int size, HashJoinTable hashtable)
 {
     RelativeAddr p;
@@ -577,7 +582,7 @@ ExecHashGetBucket(HashJoinTable hashtable,
  *	insert into the overflow area of a hash bucket
  * ----------------------------------------------------------------
  */
-void
+static void
 ExecHashOverflowInsert(HashJoinTable hashtable,
 		       HashBucket bucket,
 		       HeapTuple heapTuple)
@@ -790,7 +795,7 @@ hashFunc(char *key, int len)
  *	determine the number of batches needed for a hashjoin
  * ----------------------------------------------------------------
  */
-int
+static int
 ExecHashPartition(Hash *node)
 {
     Plan	*outerNode;

@@ -26,6 +26,16 @@
 
 #include "utils/tqual.h"
 
+static AbsoluteTime TimeQualGetEndTime(TimeQual qual);
+static AbsoluteTime TimeQualGetSnapshotTime(TimeQual qual);
+static AbsoluteTime TimeQualGetStartTime(TimeQual qual);
+static bool TimeQualIncludesNow(TimeQual qual);
+static bool TimeQualIndicatesDisableValidityChecking(TimeQual qual);
+static bool TimeQualIsLegal(TimeQual qual);
+static bool TimeQualIsRanged(TimeQual qual);
+static bool TimeQualIsSnapshot(TimeQual qual);
+static bool TimeQualIsValid(TimeQual qual);
+
 /*
  * TimeQualMode --
  *	Mode indicator for treatment of time qualifications.
@@ -114,7 +124,7 @@ static bool HeapTupleSatisfiesUpperUnboundedInternalTimeQual(HeapTuple tuple,
  * TimeQualIsValid --
  *	True iff time qualification is valid.
  */
-bool
+static bool
 TimeQualIsValid(TimeQual qual)
 {
     bool	hasStartTime;
@@ -162,7 +172,7 @@ TimeQualIsValid(TimeQual qual)
  * Note:
  *	Assumes time qualification is valid.
  */
-bool
+static bool
 TimeQualIsLegal(TimeQual qual)
 {
     Assert(TimeQualIsValid(qual));
@@ -221,7 +231,7 @@ TimeQualIsLegal(TimeQual qual)
  * Note:
  *	Assumes time qualification is valid.
  */
-bool
+static bool
 TimeQualIncludesNow(TimeQual qual)
 {
     Assert(TimeQualIsValid(qual));
@@ -251,6 +261,7 @@ TimeQualIncludesNow(TimeQual qual)
  *	Assumes time qualification is valid.
  *	XXX may not be needed?
  */
+#ifdef NOT_USED
 bool
 TimeQualIncludesPast(TimeQual qual)
 {
@@ -263,6 +274,7 @@ TimeQualIncludesPast(TimeQual qual)
     /* otherwise, must check archive (setting locks as appropriate) */
     return (true);
 }
+#endif
 
 /*
  * TimeQualIsSnapshot --
@@ -271,7 +283,7 @@ TimeQualIncludesPast(TimeQual qual)
  * Note:
  *	Assumes time qualification is valid.
  */
-bool
+static bool
 TimeQualIsSnapshot(TimeQual qual)
 {
     Assert(TimeQualIsValid(qual));
@@ -290,7 +302,7 @@ TimeQualIsSnapshot(TimeQual qual)
  * Note:
  *	Assumes time qualification is valid.
  */
-bool
+static bool
 TimeQualIsRanged(TimeQual qual)
 {
     Assert(TimeQualIsValid(qual));
@@ -310,7 +322,7 @@ TimeQualIsRanged(TimeQual qual)
  * Note:
  *	XXX This should not be implemented since this does not make sense.
  */
-bool
+static bool
 TimeQualIndicatesDisableValidityChecking(TimeQual qual)
 {
     Assert (TimeQualIsValid(qual));
@@ -332,7 +344,7 @@ TimeQualIndicatesDisableValidityChecking(TimeQual qual)
  * Note:
  *	Assumes time qual is valid snapshot time qual.
  */
-AbsoluteTime
+static AbsoluteTime
 TimeQualGetSnapshotTime(TimeQual qual)
 {
     Assert(TimeQualIsSnapshot(qual));
@@ -347,7 +359,7 @@ TimeQualGetSnapshotTime(TimeQual qual)
  * Note:
  *	Assumes time qual is valid ranged time qual.
  */
-AbsoluteTime
+static AbsoluteTime
 TimeQualGetStartTime(TimeQual qual)
 {
     Assert(TimeQualIsRanged(qual));
@@ -362,7 +374,7 @@ TimeQualGetStartTime(TimeQual qual)
  * Note:
  *	Assumes time qual is valid ranged time qual.
  */
-AbsoluteTime
+static AbsoluteTime
 TimeQualGetEndTime(TimeQual qual)
 {
     Assert(TimeQualIsRanged(qual));

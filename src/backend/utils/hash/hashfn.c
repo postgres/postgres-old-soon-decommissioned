@@ -125,6 +125,7 @@ tag_hash(int *key, int keysize)
  * instructions.  If this routine is heavily used enough, it's
  * worth the ugly coding
  */
+#ifdef NOT_USED
 long
 disk_hash(char *key)
 {
@@ -154,5 +155,5 @@ disk_hash(char *key)
     }
     return(n);
 }
-
+#endif
 

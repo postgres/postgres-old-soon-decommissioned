@@ -296,6 +296,7 @@ inv_destroy(Oid lobjId)
  *	updated so frequently, and postgres only appends tuples at the
  *	end of relations.  Once clustering works, we should fix this.
  */
+#ifdef NOT_USED
 int
 inv_stat(LargeObjectDesc *obj_desc, struct pgstat *stbuf)
 {
@@ -325,6 +326,7 @@ inv_stat(LargeObjectDesc *obj_desc, struct pgstat *stbuf)
 
     return (0);
 }
+#endif
 
 int
 inv_seek(LargeObjectDesc *obj_desc, int offset, int whence)

@@ -39,6 +39,8 @@
 #include "commands/command.h"
 
 static char* CreateOperationTag(int operationType);
+static void ProcessQueryDesc(QueryDesc *queryDesc);
+
 
 /* ----------------------------------------------------------------
  *	CreateQueryDesc
@@ -199,7 +201,7 @@ ProcessPortal(char* portalName,
  *	Read the comments for ProcessQuery() below...
  * ----------------------------------------------------------------
  */
-void
+static void
 ProcessQueryDesc(QueryDesc *queryDesc)
 {
     Query 	*parseTree;

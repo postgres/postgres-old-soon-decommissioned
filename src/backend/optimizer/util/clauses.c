@@ -34,6 +34,8 @@
 #include "optimizer/internal.h"
 #include "optimizer/var.h"
 
+static bool agg_clause(Node *clause);
+
 
 Expr *
 make_clause(int type, Node *oper, List *args)
@@ -134,7 +136,7 @@ get_rightop(Expr *clause)
  *    	AGG clause functions
  *****************************************************************************/
 
-bool
+static bool
 agg_clause(Node *clause)
 {
     return

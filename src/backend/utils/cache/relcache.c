@@ -85,6 +85,12 @@
 #include "catalog/index.h"
 #include "fmgr.h"
 
+static void RelationFlushRelation(Relation *relationPtr,
+				  bool	onlyFlushReferenceCountZero);
+static Relation RelationNameCacheGetRelation(char *relationName);
+static void init_irels(void);
+static void write_irels(void);
+
 /* ----------------
  *	defines
  * ----------------
@@ -1075,7 +1081,7 @@ RelationIdCacheGetRelation(Oid relationId)
  *	RelationNameCacheGetRelation
  * --------------------------------
  */
-Relation
+static Relation
 RelationNameCacheGetRelation(char *relationName)
 {
     Relation	rd;
@@ -1185,6 +1191,7 @@ RelationNameGetRelation(char *relationName)
  *	old "getreldesc" interface.
  * ----------------
  */
+#ifdef NOT_USED
 Relation
 getreldesc(char *relationName)
 {
@@ -1197,6 +1204,7 @@ getreldesc(char *relationName)
     
     return RelationNameGetRelation(relationName);
 }
+#endif
 
 /* ----------------------------------------------------------------
  *		cache invalidation support routines
@@ -1221,7 +1229,7 @@ RelationClose(Relation relation)
  *   anything anymore.
  * --------------------------------
  */
-void
+static void
 RelationFlushRelation(Relation *relationPtr,
 		      bool onlyFlushReferenceCountZero)
 {
@@ -1606,7 +1614,7 @@ RelationInitialize(void)
 /* pg_attnumind, pg_classnameind, pg_classoidind */
 #define Num_indices_bootstrap	3
 
-void
+static void
 init_irels(void)
 {
     Size len;
@@ -1746,7 +1754,7 @@ init_irels(void)
     }
 }
 
-void
+static void
 write_irels(void)
 {
     int len;

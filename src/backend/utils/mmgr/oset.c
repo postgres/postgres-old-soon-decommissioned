@@ -89,6 +89,7 @@ OrderedSetGetHead(OrderedSet set)
 /*
  * OrderedSetGetTail --
  */
+#ifdef NOT_USED
 Pointer
 OrderedSetGetTail(OrderedSet set)
 {
@@ -100,6 +101,7 @@ OrderedSetGetTail(OrderedSet set)
     }
     return (NULL);
 }
+#endif
 
 /*
  * OrderedElemGetPredecessor --

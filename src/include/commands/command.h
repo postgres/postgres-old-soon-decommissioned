@@ -18,16 +18,6 @@
 extern MemoryContext PortalExecutorHeapMemory;
 
 /*
- * PortalCleanup --
- *	Cleans up the query state of the portal.
- *
- * Exceptions:
- *	BadArg if portal invalid.
- */
-extern void PortalCleanup(Portal portal);
-
-
-/*
  * PerformPortalFetch --
  *	Performs the POSTQUEL function FETCH.  Fetches count (or all if 0)
  * tuples in portal with name in the forward direction iff goForward.
@@ -44,6 +34,8 @@ extern void PerformPortalFetch(char *name, bool forward, int count,
  *	Performs the POSTQUEL function CLOSE.
  */
 extern void PerformPortalClose(char *name, CommandDest dest);
+
+extern void PortalCleanup(Portal portal);
 
 /*
  * PerformAddAttribute --

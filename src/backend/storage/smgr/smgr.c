@@ -23,6 +23,8 @@
 #include "utils/rel.h"
 #include "utils/palloc.h"
 
+static void smgrshutdown(int dummy);
+
 typedef struct f_smgr {
     int		(*smgr_init)();		/* may be NULL */
     int		(*smgr_shutdown)();	/* may be NULL */
@@ -100,7 +102,7 @@ smgrinit()
     return (SM_SUCCESS);
 }
 
-void
+static void
 smgrshutdown(int dummy)
 {
     int i;
@@ -373,6 +375,7 @@ smgrcommit()
     return (SM_SUCCESS);
 }
 
+#ifdef NOT_USED
 int
 smgrabort()
 {
@@ -387,6 +390,7 @@ smgrabort()
 
     return (SM_SUCCESS);
 }
+#endif
 
 bool
 smgriswo(int16 smgrno)

@@ -45,7 +45,6 @@ extern char *PQfn(int fnid, int *result_buf, int result_len, int result_is_int,
 		  PQArgBlock *args, int nargs);
 extern char *PQexec(char *query);
 extern int pqtest_PQexec(char *q);
-extern char *strmake(char *str, int len);
 extern int pqtest_PQfn(char *q);
 extern int32 pqtest(struct varlena *vlena);
 

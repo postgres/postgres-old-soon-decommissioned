@@ -67,6 +67,7 @@ DLGetHead(Dllist* l)
 }
 
 /* get the value stored in the first element */
+#ifdef NOT_USED
 void*
 DLGetHeadVal(Dllist* l)
 {
@@ -74,6 +75,7 @@ DLGetHeadVal(Dllist* l)
   
   return (e ? e->dle_val : 0);
 }
+#endif
 
 Dlelem* 
 DLGetTail(Dllist* l)
@@ -82,6 +84,7 @@ DLGetTail(Dllist* l)
 }
 
 /* get the value stored in the first element */
+#ifdef NOT_USED
 void*
 DLGetTailVal(Dllist* l)
 {
@@ -89,7 +92,7 @@ DLGetTailVal(Dllist* l)
   
   return (e ? e->dle_val : 0);
 }
-
+#endif
 
 Dlelem* 
 DLGetPred(Dlelem* e) /* get predecessor */

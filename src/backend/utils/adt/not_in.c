@@ -29,6 +29,8 @@
 #include "access/relscan.h"
 #include "utils/builtins.h"	/* where function decls go */
 
+static int my_varattno(Relation rd, char *a);
+
 /* ----------------------------------------------------------------
  *	
  * ----------------------------------------------------------------
@@ -107,7 +109,7 @@ bool oidnotin(Oid the_oid, char *compare)
  * If varattno (in parser/catalog_utils.h) ever is added to
  * cinterface.a, this routine should go away
  */
-int my_varattno(Relation rd, char *a)
+static int my_varattno(Relation rd, char *a)
 {
     int i;
     

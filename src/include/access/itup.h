@@ -88,8 +88,6 @@ typedef struct PredInfo {
 /* indextuple.h */
 extern IndexTuple index_formtuple(TupleDesc tupleDescriptor,
 				  Datum value[], char null[]);
-extern char *fastgetiattr(IndexTuple tup, int attnum,
-	TupleDesc att, bool *isnull);
 extern Datum index_getattr(IndexTuple tuple, AttrNumber attNum,
 	TupleDesc tupDesc, bool *isNullOutP);
 extern RetrieveIndexResult

@@ -31,6 +31,4 @@ extern List *copy_vars(List *target, List *source);
 extern List *flatten_tlist(List *tlist);
 extern List *flatten_tlist_vars(List *full_tlist,
 				List *flat_tlist);
-extern void AddGroupAttrToTlist(List *tlist, List *grpCl);
-
 #endif	/* TLIST_H */

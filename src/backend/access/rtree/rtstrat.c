@@ -18,6 +18,9 @@
 #include <access/rtree.h>
 #include <access/istrat.h>
 
+static StrategyNumber RelationGetRTStrategy(Relation r,
+			AttrNumber attnum, RegProcedure proc);
+
 /*
  *  Note:  negate, commute, and negatecommute all assume that operators are
  *	   ordered as follows in the strategy map:
@@ -200,7 +203,7 @@ static StrategyNumber RTOperMap[RTNStrategies] = {
     RTOverlapStrategyNumber
     };
 
-StrategyNumber
+static StrategyNumber
 RelationGetRTStrategy(Relation r,
 		      AttrNumber attnum,
 		      RegProcedure proc)
@@ -208,6 +211,7 @@ RelationGetRTStrategy(Relation r,
     return (RelationGetStrategy(r, attnum, &RTEvaluationData, proc));
 }
 
+#ifdef NOT_USED
 bool
 RelationInvokeRTStrategy(Relation r,
 			 AttrNumber attnum,
@@ -218,6 +222,7 @@ RelationInvokeRTStrategy(Relation r,
     return (RelationInvokeStrategy(r, &RTEvaluationData, attnum, s,
 				   left, right));
 }
+#endif
 
 RegProcedure
 RTMapOperator(Relation r,

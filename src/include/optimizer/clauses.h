@@ -21,8 +21,6 @@ extern Expr *make_opclause(Oper *op, Var *leftop, Var *rightop);
 extern Var *get_leftop(Expr *clause);
 extern Var *get_rightop(Expr *clause);
 
-extern bool agg_clause(Node *clause);
-
 extern bool is_funcclause(Node *clause);
 extern Expr *make_funcclause(Func *func, List *funcargs);
 

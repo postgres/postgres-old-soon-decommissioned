@@ -23,6 +23,7 @@
 
 
 static Expr *matching2_tlvar(int var, List *tlist, bool (*test)());
+static bool equal_indexkey_var(int index_key, Var *var);
 
 /*    
  * 1. index key
@@ -69,7 +70,7 @@ match_indexkey_operand(int indexkey, Var *operand, Rel *rel)
  *    fields of var node 'var'.
  *    
  */
-bool
+static bool
 equal_indexkey_var(int index_key, Var *var)
 {
     if (index_key == var->varattno)

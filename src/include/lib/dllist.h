@@ -56,15 +56,13 @@ extern Dlelem* DLNewElem(void* val);
 extern void    DLFreeElem(Dlelem*); 
 extern Dlelem* DLGetHead(Dllist*);
 extern Dlelem* DLGetTail(Dllist*);
-extern void*   DLGetHeadVal(Dllist*);
-extern void*   DLGetTailVal(Dllist*);
+extern Dlelem* DLRemTail(Dllist* l);
 extern Dlelem* DLGetPred(Dlelem*); /* get predecessor */
 extern Dlelem* DLGetSucc(Dlelem*); /* get successor */
 extern void    DLRemove(Dlelem*); /* removes node from list*/
 extern void    DLAddHead(Dllist* list, Dlelem* node);
 extern void    DLAddTail(Dllist* list, Dlelem* node);
 extern Dlelem* DLRemHead(Dllist* list); /* remove and return the head */
-extern Dlelem* DLRemTail(Dllist* list); /* remove and return the tail */
 
 #define DLE_VAL(x)  (x->dle_val)
 

@@ -30,6 +30,9 @@
 # include <string.h>
 #endif
 
+static Oid TypeShellMakeWithOpenRelation(Relation pg_type_desc,
+					 char *typeName);
+
 /* ----------------------------------------------------------------
  * 	TypeGetWithOpenRelation
  *
@@ -145,7 +148,7 @@ TypeGet(char* typeName,		/* name of type to be fetched */
  *
  * ----------------------------------------------------------------
  */
-Oid
+static Oid
 TypeShellMakeWithOpenRelation(Relation pg_type_desc, char *typeName)
 {
     register int 	i;

@@ -72,6 +72,8 @@
 #include <libpq/hba.h>
 #include <libpq/password.h>
 
+static int be_getauthsvc(MsgType msgtype);
+
 /*----------------------------------------------------------------
  * common definitions for generic fe/be routines
  *----------------------------------------------------------------
@@ -586,7 +588,7 @@ be_setauthsvc(char *name)
     return;
 }
 
-int
+static int
 be_getauthsvc(MsgType msgtype)
 {
     int i;

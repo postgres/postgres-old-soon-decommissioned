@@ -172,10 +172,6 @@ typedef	int16	ExitStatus;
 /* XXX are there any other meaningful exit codes? */
 
 /* in utils/init/postinit.c */
-extern void InitMyDatabaseId(void);
-extern void InitUserid(void);
-extern void InitCommunication(void);
-extern void InitStdio(void);
 
 extern bool PostgresIsInitialized;
 
@@ -183,7 +179,6 @@ extern void InitPostgres(char *name);
 
 /* in miscinit.c */
 extern void ExitPostgres(ExitStatus status);
-extern void AbortPostgres(void);
 extern void StatusBackendExit(int status);
 extern void StatusPostmasterExit(int status);
 

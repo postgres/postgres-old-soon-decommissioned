@@ -30,7 +30,6 @@ extern void pg_eval_dest(char *query_string, char **argv, Oid *typev,
 #endif /* BOOTSTRAP_HEADER */
 
 extern void handle_warn(SIGNAL_ARGS);
-extern void quickdie(SIGNAL_ARGS);
 extern void die(SIGNAL_ARGS);
 extern int PostgresMain(int argc, char *argv[]);
 extern void ResetUsage(void);

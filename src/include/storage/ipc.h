@@ -92,7 +92,6 @@ extern int on_exitpg(void (*function)(), caddr_t arg);
 extern IpcSemaphoreId IpcSemaphoreCreate(IpcSemaphoreKey semKey,
 		int semNum, int permission, int semStartValue,
 		int removeOnExit, int *status);
-extern void IpcSemaphoreSet(int semId, int semno, int value);
 extern void IpcSemaphoreKill(IpcSemaphoreKey key);
 extern void IpcSemaphoreLock(IpcSemaphoreId semId, int sem, int lock);
 extern void IpcSemaphoreUnlock(IpcSemaphoreId semId, int sem, int lock);
@@ -101,7 +100,6 @@ extern int IpcSemaphoreGetValue(IpcSemaphoreId semId, int sem);
 extern IpcMemoryId IpcMemoryCreate(IpcMemoryKey memKey, uint32 size,
 				   int permission);
 extern IpcMemoryId IpcMemoryIdGet(IpcMemoryKey memKey, uint32 size);
-extern void IpcMemoryDetach(int status, char *shmaddr);
 extern char *IpcMemoryAttach(IpcMemoryId memId);
 extern void IpcMemoryKill(IpcMemoryKey memKey);
 extern void CreateAndInitSLockMemory(IPCKey key);

@@ -28,11 +28,8 @@
 typedef int SPINLOCK;
 
 extern bool CreateSpinlocks(IPCKey key);
-extern bool AttachSpinLocks(IPCKey key);
 extern bool InitSpinLocks(int init, IPCKey key);
-
 extern void SpinAcquire(SPINLOCK lock);
 extern void SpinRelease(SPINLOCK lock);
-extern bool SpinIsLocked(SPINLOCK lock);
 
 #endif	/* SPIN_H */

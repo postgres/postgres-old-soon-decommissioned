@@ -81,6 +81,7 @@ byteain(char *inputText)
  * BUGS:  Extremely unportable as things shoved can be string
  * representations of structs, etc.
  */
+#ifdef NOT_USED
 struct varlena *
 shove_bytes(unsigned char *stuff, int len)
 {
@@ -93,7 +94,7 @@ shove_bytes(unsigned char *stuff, int len)
 	    len - sizeof(int32)); 
     return(result);
 }
-
+#endif
 
 
 /*
@@ -202,7 +203,7 @@ textout(struct varlena *vlena)
  *    returns the actual length of a text* (which may be less than
  *    the VARSIZE of the text*)
  */
-
+#ifdef NOT_USED
 int textlen (text* t)
 {
     int i = 0;
@@ -212,6 +213,7 @@ int textlen (text* t)
         i++;
     return i;
 }
+#endif
 
 /*
  * textcat -

@@ -48,6 +48,9 @@
 #include "access/xact.h"
 #include "access/transam.h"
 
+static int WaitOnLock(LOCKTAB *ltable, LockTableId tableId, LOCK *lock,
+		      LOCKT lockt);
+
 /*#define LOCK_MGR_DEBUG*/
 
 #ifndef LOCK_MGR_DEBUG
@@ -369,6 +372,7 @@ LockTabInit(char *tabName,
  *	client to use different tableIds when acquiring/releasing
  *	short term and long term locks.
  */
+#ifdef NOT_USED
 LockTableId
 LockTabRename(LockTableId tableId)
 {
@@ -390,6 +394,7 @@ LockTabRename(LockTableId tableId)
     AllTables[newTableId] = AllTables[tableId];
     return(newTableId);
 }
+#endif
 
 /*
  * LockAcquire -- Check for lock conflicts, sleep if conflict found,
@@ -753,7 +758,7 @@ LockResolveConflicts(LOCKTAB *ltable,
     return(STATUS_FOUND);
 }
 
-int
+static int
 WaitOnLock(LOCKTAB *ltable, LockTableId tableId, LOCK *lock, LOCKT lockt)
 {
     PROC_QUEUE *waitQueue = &(lock->waitProcs);

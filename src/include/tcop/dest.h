@@ -69,8 +69,6 @@ extern void NullCommand(CommandDest dest);
 extern void BeginCommand(char *pname, int operation, TupleDesc attinfo,
 			 bool isIntoRel, bool isIntoPortal, char *tag,
 			 CommandDest dest);
-extern void ResetAppendOid(void);
 extern void UpdateAppendOid(Oid newoid);
-extern Oid GetAppendOid(void);
 
 #endif  /* DEST_H */

@@ -26,6 +26,16 @@
 #include <access/istrat.h>
 #include <fmgr.h>
 
+static bool StrategyEvaluationIsValid(StrategyEvaluation evaluation);
+static bool StrategyExpressionIsValid(StrategyExpression expression,
+				      StrategyNumber maxStrategy);
+static ScanKey StrategyMapGetScanKeyEntry(StrategyMap map,
+					  StrategyNumber strategyNumber);
+static bool StrategyOperatorIsValid(StrategyOperator operator,
+				    StrategyNumber maxStrategy);
+static bool StrategyTermIsValid(StrategyTerm term,
+				StrategyNumber maxStrategy);
+
 /* ----------------------------------------------------------------
  *	           misc strategy support routines
  * ----------------------------------------------------------------
@@ -50,7 +60,7 @@
  *	Assumes that the index strategy number is valid.
  *	Bounds checking should be done outside this routine.
  */
-ScanKey
+static ScanKey
 StrategyMapGetScanKeyEntry(StrategyMap map,
 			   StrategyNumber strategyNumber)
 {
@@ -103,7 +113,7 @@ AttributeNumberGetIndexStrategySize(AttrNumber maxAttributeNumber,
  *	StrategyOperatorIsValid
  * ----------------
  */
-bool
+static bool
 StrategyOperatorIsValid(StrategyOperator operator,
 			StrategyNumber maxStrategy)
 {
@@ -117,7 +127,7 @@ StrategyOperatorIsValid(StrategyOperator operator,
  *	StrategyTermIsValid
  * ----------------
  */
-bool
+static bool
 StrategyTermIsValid(StrategyTerm term,
 		    StrategyNumber maxStrategy)
 {
@@ -141,7 +151,7 @@ StrategyTermIsValid(StrategyTerm term,
  *	StrategyExpressionIsValid
  * ----------------
  */
-bool
+static bool
 StrategyExpressionIsValid(StrategyExpression expression,
 			  StrategyNumber maxStrategy)
 {
@@ -165,7 +175,7 @@ StrategyExpressionIsValid(StrategyExpression expression,
  *	StrategyEvaluationIsValid
  * ----------------
  */
-bool
+static bool
 StrategyEvaluationIsValid(StrategyEvaluation evaluation)
 {
     Index	index;

@@ -61,14 +61,6 @@ typedef struct catcache {
 extern struct catcache	*Caches;
 extern GlobalMemory	CacheCxt;
 
-extern void CatalogCacheInitializeCache(struct catcache *cache, 
-					Relation relation);
-extern void CatalogCacheSetId(CatCache *cacheInOutP, int id);
-extern long comphash(long l, char *v);
-extern Index CatalogCacheComputeHashIndex(struct catcache *cacheInP);
-extern Index CatalogCacheComputeTupleHashIndex(struct catcache *cacheInOutP,
-				       Relation relation, HeapTuple tuple);
-extern void CatCacheRemoveCTup(CatCache *cache, Dlelem *e);  
 extern void CatalogCacheIdInvalidate(int cacheId, Index hashIndex, 
 				     ItemPointer pointer);
 extern void ResetSystemCache(void);

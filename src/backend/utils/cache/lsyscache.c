@@ -434,6 +434,7 @@ get_typbyval(Oid typid)
  *    	not.  Returns 1 if by value, 0 if by reference.
  *    
  */
+#ifdef NOT_USED
 char
 get_typalign(Oid typid)
 {
@@ -446,6 +447,7 @@ get_typalign(Oid typid)
     else
 	return ('i');
 }
+#endif
 
 /*    
  * get_typdefault - 
@@ -469,6 +471,7 @@ get_typdefault(Oid typid)
  *	It returns the null char if the cache lookup fails...
  *    
  */
+#ifdef NOT_USED
 char
 get_typtype(Oid typid)
 {
@@ -482,4 +485,4 @@ get_typtype(Oid typid)
 	return('\0');
     }
 }
-
+#endif

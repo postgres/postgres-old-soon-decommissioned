@@ -92,7 +92,7 @@ static	int	sec_tab[] = {
  * Function prototypes -- internal to this file only
  */
 
-void reltime2tm(int32 time, struct tm *tm);
+static void reltime2tm(int32 time, struct tm *tm);
 
 #if FALSE
 static int correct_unit(char unit[], int *unptr);
@@ -178,7 +178,7 @@ char *reltimeout(int32 time)
 #define TMODULO(t,q,u) {q = (t / u); \
 			if (q != 0) t -= (q * u);}
 
-void
+static void
 reltime2tm(int32 time, struct tm *tm)
 {
     TMODULO(time, tm->tm_year, 31536000);

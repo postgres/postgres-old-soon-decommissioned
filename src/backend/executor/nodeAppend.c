@@ -64,6 +64,8 @@
 #include "utils/mcxt.h"
 #include "parser/parsetree.h"		/* for rt_store() macro */
 
+static bool exec_append_initialize_next(Append *node);
+
 /* ----------------------------------------------------------------
  *      exec-append-initialize-next
  *    
@@ -73,7 +75,7 @@
  *      Returns t iff there is a "next" scan to process.
  * ----------------------------------------------------------------
  */
-bool
+static bool
 exec_append_initialize_next(Append *node)
 {
     EState         *estate;

@@ -22,6 +22,7 @@
 #include <lib/lispsort.h>
 #include <lib/qsort.h>
 
+#ifdef NOT_USED
 /*
 ** lisp_qsort: Takes a lisp list as input, copies it into an array of lisp 
 **             nodes which it sorts via qsort() with the comparison function
@@ -57,3 +58,4 @@ List *lisp_qsort(List *the_list,    /* the list to be sorted */
     
     return(output);
 }
+#endif

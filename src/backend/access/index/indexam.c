@@ -271,6 +271,7 @@ index_endscan(IndexScanDesc scan)
     RelationUnsetRIntentLock(scan->relation);
 }
 
+#ifdef NOT_USED
 /* ----------------
  *	index_markpos  - mark a scan position
  * ----------------
@@ -285,7 +286,9 @@ index_markpos(IndexScanDesc scan)
     
     fmgr(procedure, scan);
 }
+#endif
 
+#ifdef NOT_USED
 /* ----------------
  *	index_restrpos  - restore a scan position
  * ----------------
@@ -300,6 +303,7 @@ index_restrpos(IndexScanDesc scan)
     
     fmgr(procedure, scan);
 }
+#endif
 
 /* ----------------
  *	index_getnext - get the next tuple from a scan

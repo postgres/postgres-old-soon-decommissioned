@@ -49,13 +49,6 @@ CreateSpinlocks(IPCKey key)
 }
 
 bool
-AttachSpinLocks(IPCKey key)
-{
-    /* the spin lock shared memory must have been attached by now */
-    return(TRUE);
-}
-
-bool
 InitSpinLocks(int init, IPCKey key)
 {
     extern SPINLOCK ShmemLock;
@@ -100,15 +93,25 @@ SpinRelease(SPINLOCK lock)
     ExclusiveUnlock(lock);
 }
 
-bool
+#else /* HAS_TEST_AND_SET */
+/* Spinlocks are implemented using SysV semaphores */
+
+static bool AttachSpinLocks(IPCKey key);
+static bool SpinIsLocked(SPINLOCK lock);
+
+
+static bool
+AttachSpinLocks(IPCKey key)
+{
+    /* the spin lock shared memory must have been attached by now */
+    return(TRUE);
+}
+
+static bool
 SpinIsLocked(SPINLOCK lock)
 {
     return(!LockIsFree(lock));
 }
-
-#else /* HAS_TEST_AND_SET */
-/* Spinlocks are implemented using SysV semaphores */
-
 
 /*
  * SpinAcquire -- try to grab a spinlock
@@ -135,7 +138,7 @@ SpinRelease(SPINLOCK lock)
     IpcSemaphoreUnlock(SpinLockId, lock, IpcExclusiveLock);
 }
 
-bool
+static bool
 SpinIsLocked(SPINLOCK lock)
 {
     int semval;
@@ -176,7 +179,7 @@ CreateSpinlocks(IPCKey key)
 /*
  * Attach to existing spinlock set
  */
-bool
+static bool
 AttachSpinLocks(IPCKey key)
 {
     IpcSemaphoreId id;

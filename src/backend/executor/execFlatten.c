@@ -32,6 +32,11 @@
 #include "executor/executor.h"
 #include "executor/execFlatten.h"
 
+#ifdef SETS_FIXED
+static bool FjoinBumpOuterNodes(TargetEntry *tlist, ExprContext *econtext,
+	DatumPtr results, char *nulls);
+#endif
+
 Datum
 ExecEvalIter(Iter *iterNode,
 	     ExprContext *econtext,
@@ -168,13 +173,13 @@ ExecEvalFjoin(TargetEntry *tlist,
     return;
 }
 
-bool
+#ifdef SETS_FIXED
+static bool
 FjoinBumpOuterNodes(TargetEntry *tlist,
 		    ExprContext *econtext,
 		    DatumPtr results,
 		    char *nulls)
 {
-#ifdef SETS_FIXED
     bool   funcIsDone = true;
     Fjoin  *fjNode    = tlist->fjoin;
     char *alwaysDone = fjNode->fj_alwaysDone;
@@ -231,6 +236,5 @@ FjoinBumpOuterNodes(TargetEntry *tlist,
 	    trailers = lnext(trailers);
 	}
     return false;
-#endif
-    return false;
 }
+#endif

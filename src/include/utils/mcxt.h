@@ -43,8 +43,6 @@ extern Pointer MemoryContextRealloc(MemoryContext context,
 				    Pointer pointer,
 				    Size size);
 extern void MemoryContextFree(MemoryContext context, Pointer pointer);
-extern char *MemoryContextGetName(MemoryContext context);
-extern Size PointerGetAllocSize(Pointer pointer);
 extern MemoryContext MemoryContextSwitchTo(MemoryContext context);
 extern GlobalMemory CreateGlobalMemory(char *name);
 extern void GlobalMemoryDestroy(GlobalMemory context);

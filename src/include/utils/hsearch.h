@@ -135,6 +135,5 @@ extern long *hash_seq(HTAB *hashp);
  */
 extern long string_hash(char *key, int keysize);
 extern long tag_hash(int *key, int keysize);
-extern long disk_hash(char *key);
 
 #endif /* HSEARCH_H */

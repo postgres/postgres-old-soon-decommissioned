@@ -65,6 +65,7 @@ areajoinsel(Oid opid,
  *		below) a given box?
  */
 
+#ifdef NOT_USED
 float64
 leftsel(Oid opid,
 	Oid relid,
@@ -78,7 +79,9 @@ leftsel(Oid opid,
     *result = 1.0 / 6.0;
     return(result);
 }
+#endif
 
+#ifdef NOT_USED
 float64
 leftjoinsel(Oid opid,
 	    Oid relid,
@@ -92,10 +95,12 @@ leftjoinsel(Oid opid,
     *result = 1.0 / 6.0;
     return(result);
 }
+#endif
 
 /*
  *  contsel -- How likely is a box to contain (be contained by) a given box?
  */
+#ifdef NOT_USED
 float64
 contsel(Oid opid,
 	Oid relid,
@@ -109,7 +114,9 @@ contsel(Oid opid,
     *result = 1.0 / 10.0;
     return(result);
 }
+#endif
 
+#ifdef NOT_USED
 float64
 contjoinsel(Oid opid,
 	    Oid relid,
@@ -123,3 +130,4 @@ contjoinsel(Oid opid,
     *result = 1.0 / 10.0;
     return(result);
 }
+#endif

@@ -112,7 +112,6 @@ extern DateTime *abstime_datetime(AbsoluteTime abstime);
 extern bool AbsoluteTimeIsBefore(AbsoluteTime time1, AbsoluteTime time2);
 extern bool AbsoluteTimeIsAfter(AbsoluteTime time1, AbsoluteTime time2);
 
-extern AbsoluteTime tm2abstime(struct tm *tm, int tz);
 extern void abstime2tm(AbsoluteTime time, int *tzp, struct tm *tm, char *tzn);
 
 #endif /* NABSTIME_H */

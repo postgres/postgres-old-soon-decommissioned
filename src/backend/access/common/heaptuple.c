@@ -39,6 +39,8 @@
 #define register
 #endif /* !NO_ASSERT_CHECKING && sparc && sunos4 */
 
+static char *heap_getsysattr(HeapTuple tup, Buffer b, int attnum);
+
 /* ----------------------------------------------------------------
  *			misc support routines
  * ----------------------------------------------------------------
@@ -335,7 +337,7 @@ heap_sysattrbyval(AttrNumber attno)
  *	heap_getsysattr
  * ----------------
  */
-char *
+static char *
 heap_getsysattr(HeapTuple tup, Buffer b, int attnum)
 {
     switch (attnum) {
@@ -740,6 +742,7 @@ heap_copytuple(HeapTuple tuple)
     return(newTuple);
 }
 
+#ifdef NOT_USED
 /* ----------------
  *	heap_deformtuple
  *
@@ -772,6 +775,7 @@ heap_deformtuple(HeapTuple tuple,
 	    nulls[i] = ' ';
     }
 }
+#endif
 
 /* ----------------
  *	heap_formtuple 

@@ -132,6 +132,7 @@ xideq(TransactionId xid1, TransactionId xid2)
  *	TransactionIdIncrement
  * ----------------------------------------------------------------
  */
+#ifdef NOT_USED
 void
 TransactionIdIncrement(TransactionId *transactionId)
 {
@@ -141,6 +142,7 @@ TransactionIdIncrement(TransactionId *transactionId)
 	elog(FATAL, "TransactionIdIncrement: exhausted XID's");
     return;
 }
+#endif
 
 /* ----------------------------------------------------------------
  *	TransactionIdAdd

@@ -37,6 +37,8 @@
 # include <string.h>
 #endif
 
+static char *strmake(char *str, int len);
+
 /* ----------------------------------------------------------------
  *			PQ interface routines
  * ----------------------------------------------------------------
@@ -215,7 +217,7 @@ pqtest_PQexec(char *q)
  *	utilities for pqtest_PQfn()
  * ----------------
  */
-char *
+static char *
 strmake(char *str, int len)
 {
     char *newstr;

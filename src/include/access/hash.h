@@ -322,13 +322,6 @@ extern bool _hash_step(IndexScanDesc scan, Buffer *bufP, ScanDirection dir,
 		       Buffer metabuf);
 
 
-/* hashstrat.c */
-extern StrategyNumber _hash_getstrat(Relation rel, AttrNumber attno,
-				     RegProcedure proc);
-extern bool _hash_invokestrat(Relation rel, AttrNumber attno,
-			      StrategyNumber strat, Datum left, Datum right);
-
-
 /* hashutil.c */
 extern ScanKey _hash_mkscankey(Relation rel, IndexTuple itup,
 			       HashMetaPage metap);

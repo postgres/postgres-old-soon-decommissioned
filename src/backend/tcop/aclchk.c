@@ -36,6 +36,8 @@
 #include "parser/catalog_utils.h"
 #include "fmgr.h"
 
+static int32 aclcheck(Acl *acl, AclId id, AclIdType idtype, AclMode mode);
+
 /*
  * Enable use of user relations in place of real system catalogs.
  */
@@ -257,7 +259,7 @@ in_group(AclId uid, AclId gid)
  * Returns 1 if the 'id' of type 'idtype' has ACL entries in 'acl' to satisfy
  * any one of the requirements of 'mode'.  Returns 0 otherwise.
  */
-int32
+static int32
 aclcheck(Acl *acl, AclId id, AclIdType idtype, AclMode mode)
 {
     register unsigned i;

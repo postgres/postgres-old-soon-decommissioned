@@ -163,8 +163,8 @@ static void CleanupProc(int pid, int exitstatus);
 static int DoExec(StartupInfo *packet, int portFd);
 static void ExitPostmaster(int status);
 static void usage(const char *);
-int ServerLoop(void);
-int BackendStartup(StartupInfo *packet, Port *port, int *pidPtr);
+static int ServerLoop(void);
+static int BackendStartup(StartupInfo *packet, Port *port, int *pidPtr);
 static void send_error_reply(Port *port, const char *errormsg);
 
 extern char *optarg;
@@ -432,7 +432,7 @@ usage(const char *progname)
     exit(1);
 }
 
-int
+static int
 ServerLoop(void)
 {
     int         serverFd = ServerSock;
@@ -943,7 +943,7 @@ CleanupProc(int pid,
  *      otherwise.
  *
  */
-int
+static int
 BackendStartup(StartupInfo *packet, /* client's startup packet */
                Port *port,
                int *pidPtr)

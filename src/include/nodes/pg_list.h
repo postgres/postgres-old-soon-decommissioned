@@ -89,6 +89,7 @@ extern List *makeList(void *elem, ...);
 extern List *lappend(List *list, void *obj);
 extern List *lremove(void *elem, List *list);
 extern void freeList(List *list);
+extern List *LispRemove(void *elem, List *list);
      
 extern void *nth(int n, List *l);
 extern void set_nth(List *l, int n, void *elem);
@@ -103,14 +104,11 @@ extern int nthi(int n, List *l);
 extern List *nreverse(List *);
 extern List *set_difference(List *, List *);
 extern List *set_differencei(List *, List *);
-extern List *LispRemove(void *, List *);
-extern List *intLispRemove(int, List *);
 extern List *LispUnion(List *foo, List *bar);
 extern List *LispUnioni(List *foo, List *bar);
 extern bool same(List *foo, List *bar);
 
 /* should be in nodes.h but needs List */
-extern bool equali(List *a, List *b);
 
 /* in copyfuncs.c */
 extern List *listCopy(List *);

@@ -24,6 +24,11 @@
 #include "utils/exc.h"
 #include "storage/ipc.h"
 
+static void ExcUnCaught(Exception *excP, ExcDetail detail, ExcData data,
+			ExcMessage message);
+static void ExcPrint(Exception *excP, ExcDetail detail, ExcData data,
+		     ExcMessage message);
+
 /*
  * Global Variables
  */
@@ -86,7 +91,7 @@ EnableExceptionHandling(bool on)
     ExceptionHandlingEnabled = on;
 }
 
-void
+static void
 ExcPrint(Exception *excP,
 	 ExcDetail detail,
 	 ExcData data,
@@ -129,12 +134,15 @@ ExcPrint(Exception *excP,
     fflush(stderr);
 }
 
+#ifdef NOT_USED
 ExcProc *
 ExcGetUnCaught(void)
 {
     return (ExcUnCaughtP);
 }
+#endif
 
+#ifdef NOT_USED
 ExcProc *
 ExcSetUnCaught(ExcProc *newP)
 {
@@ -144,8 +152,9 @@ ExcSetUnCaught(ExcProc *newP)
     
     return (oldP);
 }
+#endif
 
-void
+static void
 ExcUnCaught(Exception *excP,
 	    ExcDetail detail,
 	    ExcData data,

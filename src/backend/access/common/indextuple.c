@@ -27,6 +27,8 @@
 #endif
 
 static Size IndexInfoFindDataOffset(unsigned short t_info);
+static char *fastgetiattr(IndexTuple tup, int attnum,
+	TupleDesc att, bool *isnull);
 
 /* ----------------------------------------------------------------
  *		  index_ tuple interface routines
@@ -125,7 +127,7 @@ index_formtuple(TupleDesc tupleDescriptor,
  *	the same attribute descriptor will go much quicker. -cim 5/4/91
  * ----------------
  */
-char *
+static char *
 fastgetiattr(IndexTuple tup,
 	     int attnum,
 	     TupleDesc tupleDesc,

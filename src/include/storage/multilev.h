@@ -53,11 +53,6 @@ extern LockTableId InitMultiLevelLockm(void);
 extern bool MultiLockReln(LockInfo linfo, LOCKT lockt);
 extern bool MultiLockTuple(LockInfo linfo, ItemPointer tidPtr, LOCKT lockt);
 extern bool MultiLockPage(LockInfo linfo, ItemPointer tidPtr, LOCKT lockt);
-extern bool MultiAcquire(LockTableId tableId, LOCKTAG *tag, LOCKT lockt,
-			 LOCK_LEVEL level);
-extern bool MultiReleasePage(LockInfo linfo, ItemPointer tidPtr, LOCKT lockt);
 extern bool MultiReleaseReln(LockInfo linfo, LOCKT lockt);
-extern bool MultiRelease(LockTableId tableId, LOCKTAG *tag, LOCKT lockt,
-			 LOCK_LEVEL level);
 
 #endif /* MULTILEV_H */

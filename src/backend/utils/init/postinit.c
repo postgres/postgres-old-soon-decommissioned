@@ -71,6 +71,11 @@
 #include "port-protos.h"
 #include "libpq/libpq-be.h"
 
+static void InitCommunication(void);
+static void InitMyDatabaseId(void);
+static void InitStdio(void);
+static void InitUserid(void);
+
 
 static IPCKey           PostgresIpcKey;
 
@@ -108,7 +113,7 @@ static IPCKey           PostgresIpcKey;
  *      database directory but before we open any relations.
  * --------------------------------
  */
-void
+static void
 InitMyDatabaseId()
 {
     int         dbfd;
@@ -334,7 +339,7 @@ DoChdirAndInitDatabaseNameAndPath(char *name) {
  *      initializes crap associated with the user id.
  * --------------------------------
  */
-void
+static void
 InitUserid()
 {
     setuid(geteuid());
@@ -351,7 +356,7 @@ InitUserid()
  *      This does not set MyBackendId.  MyBackendTag is set, however.
  * --------------------------------
  */
-void
+static void
 InitCommunication()
 {
     char *postid;
@@ -460,7 +465,7 @@ InitCommunication()
  *      they all seem to do stuff associated with io.
  * --------------------------------
  */
-void
+static void
 InitStdio()
 {
     DebugFileOpen();

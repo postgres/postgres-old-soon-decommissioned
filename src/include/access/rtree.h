@@ -132,10 +132,6 @@ extern void _rtdump(Relation r);
 extern void rtadjscans(Relation r, int op, BlockNumber blkno,
 				OffsetNumber offnum);
 /* rtstrat.h */
-extern StrategyNumber RelationGetRTStrategy(Relation r,
-			AttrNumber attnum, RegProcedure proc);
-extern bool RelationInvokeRTStrategy(Relation r, AttrNumber attnum,
-			StrategyNumber s, Datum left, Datum right);
 extern RegProcedure RTMapOperator(Relation r, AttrNumber attnum,
 			RegProcedure proc);
 

@@ -28,8 +28,8 @@
    and both sides of a string */
 /* MODIFIES the string passed in and returns the head of it */
 
-
-char *leftTrim(char *s)  
+#ifdef NOT_USED
+static char *leftTrim(char *s)  
 {
   char *s2 = s;
   int shift=0;
@@ -45,6 +45,7 @@ char *leftTrim(char *s)
 
   return s2;
 }
+#endif
 
 char *rightTrim(char *s)
 {
@@ -59,11 +60,13 @@ char *rightTrim(char *s)
   return s;
 }
 
-char *doubleTrim(char *s)
+#ifdef NOT_USED
+static char *doubleTrim(char *s)
 {
   strcpy(s,leftTrim(rightTrim(s)));
   return s;
 }
+#endif
 
 #ifdef STRINGUTILS_TEST
 void testStringUtils()

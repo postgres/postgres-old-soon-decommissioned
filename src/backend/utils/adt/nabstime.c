@@ -30,6 +30,7 @@
 #include "utils/builtins.h"
 #include "access/xact.h"
 
+static AbsoluteTime tm2abstime(struct tm *tm, int tz);
 
 #define MIN_DAYNUM -24856			/* December 13, 1901 */
 #define MAX_DAYNUM 24854			/* January 18, 2038 */
@@ -170,7 +171,7 @@ printf( "datetime2tm- (localtime) %d.%02d.%02d %02d:%02d:%02d %s dst=%d\n",
  * Convert a tm structure to abstime.
  * Note that tm has full year (not 1900-based) and 1-based month.
  */
-AbsoluteTime
+static AbsoluteTime
 tm2abstime( struct tm *tm, int tz)
 {
     int day, sec;

@@ -32,6 +32,9 @@
 #include "nodes/nodes.h"
 #include "nodes/plannodes.h"
 #include "optimizer/clauses.h"
+
+static char *plannode_type (Plan* p);
+
 /*
  * print--
  *    print contents of Node to stdout
@@ -258,7 +261,7 @@ print_slot(TupleTableSlot *slot)
     debugtup(slot->val, slot->ttc_tupleDescriptor);
 }
 
-char* 
+static char * 
 plannode_type (Plan* p)
 {
     switch(nodeTag(p)) {

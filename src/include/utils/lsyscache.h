@@ -37,10 +37,8 @@ extern struct varlena * get_relstub(Oid relid, int no, bool *islast);
 extern Oid get_ruleid(char *rulename);
 extern Oid get_eventrelid(Oid ruleid);
 extern int16 get_typlen(Oid typid);
-extern char get_typalign(Oid typid);
 extern bool get_typbyval(Oid typid);
 extern struct varlena *get_typdefault(Oid typid);
-extern char get_typtype(Oid typid);
 
 #endif	/* LSYSCACHE_H */
 

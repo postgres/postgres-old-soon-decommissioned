@@ -49,12 +49,14 @@ SHMQueueInit(SHM_QUEUE *queue)
  * SHMQueueIsDetached -- TRUE if element is not currently
  *	in a queue.
  */
+#ifdef NOT_USED
 bool
 SHMQueueIsDetached(SHM_QUEUE *queue)
 {
     Assert(SHM_PTR_VALID(queue));
     return ((queue)->prev == INVALID_OFFSET);
 }
+#endif
 
 /*
  * SHMQueueElemInit -- clear an element's links
@@ -146,6 +148,7 @@ dumpQ(SHM_QUEUE *q, char *s)
  * SHMQueueInsertHD -- put elem in queue between the queue head
  *	and its "prev" element.
  */
+#ifdef NOT_USED
 void
 SHMQueueInsertHD(SHM_QUEUE *queue, SHM_QUEUE *elem)
 {
@@ -168,6 +171,7 @@ SHMQueueInsertHD(SHM_QUEUE *queue, SHM_QUEUE *elem)
     dumpQ(queue, "in SHMQueueInsertHD: end");
 #endif /* SHMQUEUE_DEBUG_HD */
 }
+#endif
 
 void
 SHMQueueInsertTL(SHM_QUEUE *queue, SHM_QUEUE *elem)

@@ -23,8 +23,5 @@
  * functions
  */
 extern void cluster(char oldrelname[], char oldindexname[]);
-extern Relation copy_heap(Oid OIDOldHeap);
-extern void copy_index(Oid OIDOldIndex, Oid OIDNewHeap);
-extern void rebuildheap(Oid OIDNewHeap, Oid OIDOldHeap, Oid OIDOldIndex);
 
 #endif	/* CLUSTER_H */

@@ -25,6 +25,10 @@
 # include <string.h>
 #endif
 
+static void AllocPointerDump(AllocPointer pointer);
+static int AllocSetIterate(AllocSet set,
+			 void (*function)(AllocPointer pointer));
+
 #undef AllocSetReset
 #undef malloc
 #undef free
@@ -273,7 +277,7 @@ AllocSetRealloc(AllocSet set, AllocPointer pointer, Size size)
  * Exceptions:
  *	BadArg if set is invalid.
  */
-int
+static int
 AllocSetIterate(AllocSet set,
 		void (*function)(AllocPointer pointer))
 {
@@ -295,6 +299,7 @@ AllocSetIterate(AllocSet set,
     return (count);
 }
 
+#ifdef NOT_USED
 int
 AllocSetCount(AllocSet set)
 {
@@ -310,6 +315,7 @@ AllocSetCount(AllocSet set)
     }
     return count;
 }
+#endif
 
 /*
  * Private routines
@@ -367,7 +373,7 @@ AllocPointerGetNext(AllocPointer pointer)
  * XXX AllocPointerDump --
  *	Displays allocated pointer.
  */
-void
+static void
 AllocPointerDump(AllocPointer pointer)
 {
     printf("\t%-10ld@ %0#lx\n", ((long*)pointer)[-1], (long)pointer); /* XXX */

@@ -120,7 +120,6 @@ struct OrderedSetData {
 extern void OrderedSetInit(OrderedSet set, Offset offset);
 extern bool OrderedSetContains(OrderedSet set, OrderedElem elem);
 extern Pointer OrderedSetGetHead(OrderedSet set);
-extern Pointer OrderedSetGetTail(OrderedSet set);
 extern Pointer OrderedElemGetPredecessor(OrderedElem elem);
 extern Pointer OrderedElemGetSuccessor(OrderedElem elem);
 extern void  OrderedElemPop(OrderedElem elem);
@@ -226,12 +225,6 @@ extern void AllocSetFree(AllocSet set, AllocPointer pointer);
 extern AllocPointer AllocSetRealloc(AllocSet set, AllocPointer pointer, 
 				    Size size);
 
-extern int AllocSetIterate(AllocSet set,
-			     void (*function)(AllocPointer pointer));
-
-extern int AllocSetCount(AllocSet set);
-
-extern void AllocPointerDump(AllocPointer pointer);
 extern void AllocSetDump(AllocSet set);
 
 /*****************************************************************************

@@ -26,6 +26,9 @@
 
 #include "lib/qsort.h"
 
+static void PageIndexTupleDeleteAdjustLinePointers(PageHeader phdr,
+				       char *location, Size size);
+
 static bool PageManagerShuffle = true;	/* default is shuffle mode */
 
 /* ----------------------------------------------------------------
@@ -506,7 +509,7 @@ PageIndexTupleDelete(Page page, OffsetNumber offnum)
  *
  *	This routine should never be called on an empty page.
  */
-void
+static void
 PageIndexTupleDeleteAdjustLinePointers(PageHeader phdr,
 				       char *location,
 				       Size size)

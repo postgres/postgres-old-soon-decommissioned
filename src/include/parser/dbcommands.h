@@ -22,7 +22,6 @@
 
 extern void createdb(char *dbname);
 extern void destroydb(char *dbname);
-void stop_vacuum(char *dbname);
 
 #endif	/* DBCOMMANDS_H */
 

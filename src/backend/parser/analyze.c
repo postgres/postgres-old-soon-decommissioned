@@ -87,6 +87,7 @@ static void make_arguments(int nargs, List *fargs, Oid *input_typeids,
 static void AddAggToParseState(ParseState *pstate, Aggreg *aggreg);
 static void finalizeAggregates(ParseState *pstate, Query *qry);
 static void parseCheckAggregates(ParseState *pstate, Query *qry);
+static ParseState* makeParseState(void);
 
 /*****************************************************************************
  *
@@ -99,7 +100,7 @@ static void parseCheckAggregates(ParseState *pstate, Query *qry);
  *
  */
 
-ParseState* 
+static ParseState* 
 makeParseState(void)
 {
     ParseState *pstate;

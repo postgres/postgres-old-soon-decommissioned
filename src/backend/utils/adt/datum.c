@@ -131,6 +131,7 @@ datumCopy(Datum value, Oid type, bool byVal, Size len)
  * ONLY datums created by "datumCopy" can be freed!
  *-------------------------------------------------------------------------
  */
+#ifdef NOT_USED
 void
 datumFree(Datum value, Oid type, bool byVal, Size len)
 {
@@ -148,6 +149,7 @@ datumFree(Datum value, Oid type, bool byVal, Size len)
 	pfree(s);
     }
 }
+#endif
 
 /*-------------------------------------------------------------------------
  * datumIsEqual

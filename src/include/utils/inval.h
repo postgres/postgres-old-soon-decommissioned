@@ -42,14 +42,5 @@ typedef InvalidationEntry	LocalInvalid;
 
 #define EmptyLocalInvalid	NULL
 
-extern InvalidationEntry InvalidationEntryAllocate(uint16 size);
-
-extern LocalInvalid LocalInvalidRegister(LocalInvalid invalid,
-					 InvalidationEntry entry);
-
-extern void LocalInvalidInvalidate(LocalInvalid invalid, void (*function)());
-
-extern void getmyrelids(void);
-
 #endif	/* INVAL_H */
 

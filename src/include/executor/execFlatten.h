@@ -17,8 +17,6 @@ extern Datum ExecEvalIter(Iter *iterNode, ExprContext *econtext, bool *resultIsN
 
 extern void ExecEvalFjoin(TargetEntry *tlist, ExprContext *econtext, bool *isNullVect, bool *fj_isDone);
 
-extern bool FjoinBumpOuterNodes(TargetEntry *tlist, ExprContext *econtext, DatumPtr results, char *nulls);
-
 
 #endif /* EXECFLATTEN_H */
 
