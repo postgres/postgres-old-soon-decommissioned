@@ -7,15 +7,16 @@ then
 	exit 1
 fi
 
-if [ $1 = "win" ]
+portname=$1
+shift
+extratests="$*"
+
+if [ x$portname = "xwin" ]
 then
 	HOST="-h localhost"
 else
 	HOST=""
 fi
-portname=$1
-export portname
-shift
 
 if echo '\c' | grep -s c >/dev/null 2>&1
 then
@@ -36,7 +37,7 @@ PGDATESTYLE="Postgres,US"; export PGDATESTYLE
 #FRONTEND=monitor
 FRONTEND="psql $HOST -n -e -q"
 
-SYSTEM=`../../config.guess | awk -F\- '{ split($3,a,/[0-9]/); printf"%s-%s", $portname, a[1] }'`
+SYSTEM=`../../config.guess | awk -F\- '{ split($3,a,/[0-9]/); printf"%s-%s", $1, a[1] }'`
 
 echo "=============== Notes...                              ================="
 echo "postmaster must already be running for the regression tests to succeed."
@@ -75,7 +76,7 @@ fi
 
 echo "=============== running regression queries...         ================="
 echo "" > regression.diffs
-for i in `cat sql/tests` $mbtests $*
+for i in `cat sql/tests` $mbtests $extratests
 do
 	$ECHO_N "${i} .. " $ECHO_C
 	$FRONTEND regression < sql/${i}.sql > results/${i}.out 2>&1
@@ -97,7 +98,8 @@ do
 		echo ok
 	fi
 done
-exit
+
+exit 0
 
 echo "=============== running error queries ...             ================="
 $FRONTEND regression < errors.sql
