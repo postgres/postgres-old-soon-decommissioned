@@ -15,7 +15,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#if defined(__alpha) && !defined(linux)
+#if defined(__alpha__) && !defined(linux)
 #include <sys/sysinfo.h>
 #include <machine/hal_sysinfo.h>
 #define ASSEMBLER
@@ -41,7 +41,7 @@ main(int argc, char *argv[])
 {
 	int			len;
 
-#if defined(__alpha)
+#if defined(__alpha__)
 #ifdef NOFIXADE
 	int			buffer[] = {SSIN_UACPROC, UAC_SIGBUS};
 
@@ -69,7 +69,7 @@ main(int argc, char *argv[])
 	syscall(SYS_sysmips, MIPS_FIXADE, 0, NULL, NULL, NULL);
 #endif
 
-#if defined(__alpha)
+#if defined(__alpha__)
 	if (setsysinfo(SSI_NVPAIRS, buffer, 1, (caddr_t) NULL,
 				   (unsigned long) NULL) < 0)
 		elog(NOTICE, "setsysinfo failed: %d\n", errno);

@@ -143,7 +143,7 @@ success:			\n\
 
 #endif	 /* __powerpc__ */
 
-#if defined(__mips)
+#if defined(__mips__)
 static void
 tas_dummy()
 {
@@ -165,7 +165,7 @@ fail:				\n\
 	");
 }
 
-#endif	 /* __mips */
+#endif	 /* __mips__ */
 
 #else							/* defined(__GNUC__) */
 /***************************************************************************

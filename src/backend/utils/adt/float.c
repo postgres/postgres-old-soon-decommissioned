@@ -134,7 +134,7 @@ extern double rint(double x);
  * until the distributions are updated.
  *								--djm 12/16/96
  */
-#if ( defined(linux) && defined(__alpha) ) && !defined(UNSAFE_FLOATS)
+#if ( defined(linux) && defined(__alpha__) ) && !defined(UNSAFE_FLOATS)
 #define UNSAFE_FLOATS
 #endif
 
