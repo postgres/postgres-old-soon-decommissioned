@@ -536,10 +536,17 @@ sendAuthRequest(Port *port, AuthRequest areq)
 	pq_sendint(&buf, (int32) areq, sizeof(int32));
 
 	/* Add the salt for encrypted passwords. */
-	if (areq == AUTH_REQ_CRYPT || areq == AUTH_REQ_MD5)
+	if (areq == AUTH_REQ_MD5)
 	{
-		pq_sendint(&buf, port->salt[0], 1);
-		pq_sendint(&buf, port->salt[1], 1);
+		pq_sendint(&buf, port->md5Salt[0], 1);
+		pq_sendint(&buf, port->md5Salt[1], 1);
+		pq_sendint(&buf, port->md5Salt[2], 1);
+		pq_sendint(&buf, port->md5Salt[3], 1);
+	}
+	if (areq == AUTH_REQ_CRYPT)
+	{
+		pq_sendint(&buf, port->cryptSalt[0], 1);
+		pq_sendint(&buf, port->cryptSalt[1], 1);
 	}
 
 	pq_endmessage(&buf);

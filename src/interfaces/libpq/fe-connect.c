@@ -1341,9 +1341,19 @@ keep_going:						/* We will come back to here until there
 				}
 
 				/* Get the password salt if there is one. */
-				if (areq == AUTH_REQ_CRYPT || areq == AUTH_REQ_MD5)
+				if (areq == AUTH_REQ_MD5)
 				{
-					if (pqGetnchar(conn->salt, sizeof(conn->salt), conn))
+					if (pqGetnchar(conn->md5Salt,
+								   sizeof(conn->md5Salt), conn))
+					{
+						/* We'll come back when there are more data */
+						return PGRES_POLLING_READING;
+					}
+				}
+				if (areq == AUTH_REQ_CRYPT)
+				{
+					if (pqGetnchar(conn->cryptSalt,
+								   sizeof(conn->cryptSalt), conn))
 					{
 						/* We'll come back when there are more data */
 						return PGRES_POLLING_READING;

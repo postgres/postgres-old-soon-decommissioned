@@ -236,7 +236,8 @@ struct pg_conn
 	/* Miscellaneous stuff */
 	int			be_pid;			/* PID of backend --- needed for cancels */
 	int			be_key;			/* key of backend --- needed for cancels */
-	char		salt[2];		/* password salt received from backend */
+ 	char		md5Salt[4];		/* password salt received from backend */
+ 	char		cryptSalt[2];		/* password salt received from backend */
 	PGlobjfuncs *lobjfuncs;		/* private state for large-object access
 								 * fns */
 

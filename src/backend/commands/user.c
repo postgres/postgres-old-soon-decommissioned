@@ -351,7 +351,8 @@ CreateUser(CreateUserStmt *stmt)
 				DirectFunctionCall1(textin, CStringGetDatum(password));
 		else
 		{
-			if (!EncryptMD5(password, stmt->user, encrypted_password))
+			if (!EncryptMD5(password, stmt->user, strlen(stmt->user),
+				encrypted_password))
 				elog(ERROR, "CREATE USER: password encryption failed");
 			new_record[Anum_pg_shadow_passwd - 1] =
 				DirectFunctionCall1(textin, CStringGetDatum(encrypted_password));
@@ -583,7 +584,8 @@ AlterUser(AlterUserStmt *stmt)
 				DirectFunctionCall1(textin, CStringGetDatum(password));
 		else
 		{
-			if (!EncryptMD5(password, stmt->user, encrypted_password))
+			if (!EncryptMD5(password, stmt->user, strlen(stmt->user),
+				encrypted_password))
 				elog(ERROR, "CREATE USER: password encryption failed");
 			new_record[Anum_pg_shadow_passwd - 1] =
 				DirectFunctionCall1(textin, CStringGetDatum(encrypted_password));

@@ -443,7 +443,7 @@ pg_password_sendauth(PGconn *conn, const char *password, AuthRequest areq)
 	switch (areq)
 	{
 		case AUTH_REQ_CRYPT:
-			crypt_pwd = crypt(password, conn->salt);
+			crypt_pwd = crypt(password, conn->cryptSalt);
 			break;
 		case AUTH_REQ_MD5:
 			{
@@ -455,14 +455,15 @@ pg_password_sendauth(PGconn *conn, const char *password, AuthRequest areq)
 					perror("malloc");
 					return STATUS_ERROR;
 				}
-				if (!EncryptMD5(password, conn->pguser, crypt_pwd2))
+				if (!EncryptMD5(password, conn->pguser,
+								strlen(conn->pguser), crypt_pwd2))
 				{
 					free(crypt_pwd);
 					free(crypt_pwd2);
 					return STATUS_ERROR;
 				}
-				if (!EncryptMD5(crypt_pwd2 + strlen("md5"), conn->salt,
-								crypt_pwd))
+				if (!EncryptMD5(crypt_pwd2 + strlen("md5"), conn->md5Salt,
+								sizeof(conn->md5Salt), crypt_pwd))
 				{
 					free(crypt_pwd);
 					free(crypt_pwd2);

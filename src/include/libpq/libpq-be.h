@@ -58,7 +58,7 @@ typedef struct ErrorMessagePacket
 
 typedef struct AuthRequestPacket
 {
-	char		data[1 + sizeof(AuthRequest) + 2];		/* 'R' + the request +
+	char		data[1 + sizeof(AuthRequest) + 4];		/* 'R' + the request +
 														 * optional salt. */
 } AuthRequestPacket;
 
@@ -119,7 +119,8 @@ typedef struct Port
 	Packet		pktInfo;		/* For the packet handlers */
 	SockAddr	laddr;			/* local addr (us) */
 	SockAddr	raddr;			/* remote addr (them) */
-	char		salt[2];		/* Password salt */
+	char		md5Salt[4];		/* Password salt */
+ 	char		cryptSalt[2];	/* Password salt */
 
 	/*
 	 * Information that needs to be held during the fe/be authentication
