@@ -13,7 +13,7 @@
 #ifndef HTUP_H
 #define HTUP_H
 
-#include <utils/nabstime.h>
+#include <storage/bufpage.h>
 #include <storage/itemptr.h>
 
 #define MinHeapTupleBitmapSize	32		/* 8 * 4 */
@@ -51,6 +51,11 @@ typedef struct HeapTupleHeaderData
 } HeapTupleHeaderData;
 
 typedef HeapTupleHeaderData *HeapTupleHeader;
+
+#define MinTupleSize	(sizeof (PageHeaderData) + \
+						 sizeof(HeapTupleHeaderData) + sizeof(int4))
+
+#define MaxTupleSize	(BLCKSZ/2 - MinTupleSize)
 
 #define SelfItemPointerAttributeNumber			(-1)
 #define ObjectIdAttributeNumber					(-2)

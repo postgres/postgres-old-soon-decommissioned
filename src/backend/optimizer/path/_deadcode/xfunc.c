@@ -20,6 +20,7 @@
 
 #include "postgres.h"
 
+#include "access/htup.h"
 #include "access/heapam.h"
 #include "catalog/pg_language.h"
 #include "catalog/pg_proc.h"
@@ -1094,7 +1095,7 @@ xfunc_expense_per_tuple(JoinPath joinnode, int whichchild)
 	RelOptInfo	outerrel = get_parent((Path) get_outerjoinpath(joinnode));
 	RelOptInfo	innerrel = get_parent((Path) get_innerjoinpath(joinnode));
 	Count		outerwidth = get_width(outerrel);
-	Count		outers_per_page = ceil(BLCKSZ / (outerwidth + sizeof(HeapTupleData)));
+	Count		outers_per_page = ceil(BLCKSZ / (outerwidth + MinTupleSize));
 
 	if (IsA(joinnode, HashPath))
 	{

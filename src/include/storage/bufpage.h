@@ -133,18 +133,6 @@ typedef enum
 	OverwritePageManagerMode
 } PageManagerMode;
 
-/* ----------------
- *		misc support macros
- * ----------------
- */
-
-/*
- * XXX this is wrong -- ignores padding/alignment, variable page size,
- * AM-specific opaque space at the end of the page (as in btrees), ...
- * however, it at least serves as an upper bound for heap pages.
- */
-#define MAXTUPLEN		(BLCKSZ - sizeof (PageHeaderData))
-
 /* ----------------------------------------------------------------
  *						page support macros
  * ----------------------------------------------------------------

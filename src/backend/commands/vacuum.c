@@ -624,7 +624,7 @@ vc_scanheap(VRelStats *vacrelstats, Relation onerel,
 				empty_end_pages;
 	Size		free_size,
 				usable_free_size;
-	Size		min_tlen = MAXTUPLEN;
+	Size		min_tlen = MaxTupleSize;
 	Size		max_tlen = 0;
 	int32		i;
 	struct rusage ru0,

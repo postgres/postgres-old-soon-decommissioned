@@ -45,7 +45,7 @@ PageInit(Page page, Size pageSize, Size specialSize)
 
 	Assert(pageSize == BLCKSZ);
 	Assert(pageSize >
-		   specialSize + sizeof(PageHeaderData) - sizeof(ItemIdData));
+			 specialSize + sizeof(PageHeaderData) - sizeof(ItemIdData));
 
 	specialSize = DOUBLEALIGN(specialSize);
 
