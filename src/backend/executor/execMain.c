@@ -1519,7 +1519,7 @@ lreplace:;
 		ExecARUpdateTriggers(estate, tupleid, tuple);
 }
 
-#if 0
+#ifdef NOT_USED
 static HeapTuple
 ExecAttrDefault(Relation rel, HeapTuple tuple)
 {

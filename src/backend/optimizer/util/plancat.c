@@ -598,7 +598,7 @@ IndexSelectivity(Oid indexrelid,
 										(char *) constFlags[n],
 										(char *) nIndexKeys,
 										(char *) indexrelid);
-#if 0
+#ifdef NOT_USED
 /*
  * So cool guys! Npages for x > 10 and x < 20 is twice as
  * npages for x > 10!	- vadim 04/09/97

@@ -25,7 +25,7 @@
 #include "utils/elog.h"
 #include "fmgr.h"
 
-#if FALSE
+#ifdef NOT_USED
 extern char *pg_pathname;
 
 void *

@@ -1474,7 +1474,7 @@ PrintBufferDescs()
 	if (IsUnderPostmaster)
 	{
 		SpinAcquire(BufMgrLock);
-#if 0
+#ifdef NOT_USED
 		for (i = 0; i < NBuffers; ++i, ++buf)
 		{
 			elog(NOTICE, "[%02d] (freeNext=%d, freePrev=%d, relname=%s, \

@@ -404,7 +404,7 @@ PreferredType(CATEGORY category, Oid type)
 }	/* PreferredType() */
 
 
-#if FALSE
+#ifdef NOT_USED
 Oid
 PromoteTypeToNext(Oid inType)
 {

@@ -235,7 +235,7 @@ do { \
 static void formrdesc(char *relationName, u_int natts,
 		  FormData_pg_attribute *att);
 
-#if 0							/* See comments at line 1304 */
+#ifdef NOT_USED					/* See comments at line 1304 */
 static void RelationFlushIndexes(Relation *r, Oid accessMethodId);
 
 #endif
@@ -1298,7 +1298,7 @@ RelationFlushRelation(Relation *relationPtr,
 
 		FreeTriggerDesc(relation);
 
-#if 0
+#ifdef NOT_USED
 		if (relation->rd_rules)
 		{
 			int			j;
@@ -1427,7 +1427,7 @@ RelationFlushIndexes(Relation *r,
 void
 RelationIdInvalidateRelationCacheByAccessMethodId(Oid accessMethodId)
 {
-#if 0
+#ifdef NOT_USED
 
 	/*
 	 * 25 aug 1992:  mao commented out the ht walk below.  it should be

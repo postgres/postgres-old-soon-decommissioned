@@ -217,7 +217,7 @@ get_opname(Oid opno)
 	else
 	{
 		/* don't throw an error anymore; we want to continue... */
-#if FALSE
+#ifdef NOT_USED
 		elog(ERROR, "can't look up operator %d\n", opno);
 #endif
 		return NULL;

@@ -332,7 +332,7 @@ ExecInitAppend(Append *node, EState *estate, Plan *parent)
 	 */
 	appendstate->as_whichplan = 0;
 	exec_append_initialize_next(node);
-#if 0
+#ifdef NOT_USED
 	result = (List *) initialized[0];
 #endif
 	return TRUE;

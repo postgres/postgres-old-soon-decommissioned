@@ -2697,7 +2697,7 @@ void check_targetlists_are_compatible(List *prev_target, List *current_target)
 	  /* propagate a known type forward, if available */
 	  if (itype != InvalidOid)
 	    ((TargetEntry *) lfirst(prev_target))->resdom->restype = itype;
-#if FALSE
+#ifdef NOT_USED
 	  else
 	    {
 	      ((TargetEntry *) lfirst(prev_target))->resdom->restype = UNKNOWNOID;

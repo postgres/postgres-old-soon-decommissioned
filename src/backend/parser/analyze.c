@@ -658,7 +658,7 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 						break;
 
 					case CONSTR_UNIQUE:
-#if FALSE
+#ifdef NOT_USED
 						if (constraint->name == NULL)
 							constraint->name = makeTableName(stmt->relname, "key", NULL);
 #endif

@@ -542,7 +542,7 @@ pg_checkretval(Oid rettype, QueryTreeList *queryTreeList)
 		tlist = lnext(tlist);
 		tletype = exprType(thenode);
 
-#if 0							/* fix me */
+#ifdef NOT_USED						/* fix me */
 		/* this is tedious */
 		if (IsA(thenode, Var))
 			tletype = (Oid) ((Var *) thenode)->vartype;

@@ -23,7 +23,7 @@ extern int	ExecCountSlotsMaterial(Material *node);
 extern void ExecEndMaterial(Material *node);
 extern void ExecMaterialReScan(Material *node, ExprContext *exprCtxt, Plan *parent);
 
-#if 0
+#ifdef NOT_USED
 extern List ExecMaterialMarkPos(Material *node);
 extern void ExecMaterialRestrPos(Material *node);
 

@@ -155,7 +155,7 @@ ValidateRule(int event_type,
 		"rules not allowed for insert or delete events to an attribute");
 	}
 
-#if 0
+#ifdef NOT_USED
 
 	/*
 	 * on retrieve to class.attribute do instead nothing is converted to

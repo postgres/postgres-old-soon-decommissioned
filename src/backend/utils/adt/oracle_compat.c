@@ -444,7 +444,7 @@ rtrim(text *string, text *set)
 
 	ret = (text *) palloc(VARHDRSZ + m);
 	VARSIZE(ret) = VARHDRSZ + m;
-#if FALSE
+#ifdef NOT_USED
 	memcpy(VARDATA(ret), ptr - VARSIZE(ret) + m, m);
 #endif
 

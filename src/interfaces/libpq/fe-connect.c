@@ -755,7 +755,7 @@ connectDB(PGconn *conn)
 	 * send an empty query to test for startup.
 	 */
 
-#if 0
+#ifdef NOT_USED
 
 	/*
 	 * Send a blank query to make sure everything works; in particular,

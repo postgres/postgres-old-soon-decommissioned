@@ -438,7 +438,7 @@ checkTargetTypes(ParseState *pstate, char *target_colname,
 	resdomno_target = attnameAttNum(pstate->p_target_relation, target_colname);
 	attrtype_target = attnumTypeId(pstate->p_target_relation, resdomno_target);
 
-#if FALSE
+#ifdef NOT_USED
 	if ((attrtype_id != attrtype_target)
 		|| (get_atttypmod(rte->relid, resdomno_id) !=
 	   get_atttypmod(pstate->p_target_relation->rd_id, resdomno_target)))

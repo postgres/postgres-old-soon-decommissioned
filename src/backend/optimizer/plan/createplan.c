@@ -130,7 +130,7 @@ create_plan(Path *best_path)
 		pages = 1;
 	plan_node->plan_tupperpage = tuples / pages;
 
-#if 0							/* fix xfunc */
+#ifdef NOT_USED						/* fix xfunc */
 	/* sort clauses by cost/(1-selectivity) -- JMH 2/26/92 */
 	if (XfuncMode != XFUNC_OFF)
 	{

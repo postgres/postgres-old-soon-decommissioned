@@ -1317,7 +1317,7 @@ index_innerjoin(Query *root, RelOptInfo *rel, List *clausegroup_list,
 		pathnode->path.loc_restrictinfo = set_difference(copyObject((Node *) rel->restrictinfo),
 						   clausegroup);
 
-#if 0							/* fix xfunc */
+#ifdef NOT_USED						/* fix xfunc */
 		/* add in cost for expensive functions!  -- JMH, 7/7/92 */
 		if (XfuncMode != XFUNC_OFF)
 		{

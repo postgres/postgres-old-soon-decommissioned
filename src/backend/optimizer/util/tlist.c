@@ -155,7 +155,7 @@ get_actual_tlist(List *tlist)
 	/*
 	 * this function is not making sense. - ay 10/94
 	 */
-#if 0
+#ifdef NOT_USED
 	List	   *element = NIL;
 	List	   *result = NIL;
 

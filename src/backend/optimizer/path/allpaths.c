@@ -192,7 +192,7 @@ make_one_rel_by_joins(Query *root, List *rels, int levels_needed)
 
 		root->join_rel_list = rels = joined_rels;
 
-#if 0
+#ifdef NOT_USED
 		/*
 		 * * for each expensive predicate in each path in each distinct
 		 * rel, * consider doing pullup  -- JMH

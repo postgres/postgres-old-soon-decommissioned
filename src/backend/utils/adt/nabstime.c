@@ -63,7 +63,7 @@ GetCurrentAbsoluteTime(void)
 		CTimeZone = -tm->tm_gmtoff;		/* tm_gmtoff is Sun/DEC-ism */
 		CDayLight = (tm->tm_isdst > 0);
 
-#if 0
+#ifdef NOT_USED
 		/*
 		 * XXX is there a better way to get local timezone string w/o
 		 * tzname? - tgl 97/03/18

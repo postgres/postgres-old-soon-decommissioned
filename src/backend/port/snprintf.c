@@ -31,7 +31,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-#if 0
+#ifdef NOT_USED
 #include "sendmail.h"
 #include "pathnames.h"
 #endif
@@ -464,7 +464,7 @@ dostr(char *str, int cut)
 static void
 dopr_outch(int c)
 {
-#if 0
+#ifdef NOT_USED
 	if (iscntrl(c) && c != '\n' && c != '\t')
 	{
 		c = '@' + (c & 0x1F);

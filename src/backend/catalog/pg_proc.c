@@ -172,7 +172,7 @@ ProcedureCreate(char *procedureName,
 		{
 			elog(NOTICE, "ProcedureCreate: type '%s' is not yet defined",
 				 returnTypeName);
-#if 0
+#ifdef NOT_USED
 			elog(NOTICE, "ProcedureCreate: creating a shell for type '%s'",
 				 returnTypeName);
 #endif

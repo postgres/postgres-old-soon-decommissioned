@@ -2829,7 +2829,7 @@ main(int argc, char **argv)
 				settings.opt.align = 0;
 				break;
 			case 'a':
-#if 0							/* this no longer does anything */
+#ifdef NOT_USED					/* this no longer does anything */
 				fe_setauthsvc(optarg, errbuf);
 #endif
 				break;

@@ -1463,7 +1463,7 @@ vc_vaconeind(VPageList vpl, Relation indrel, int num_tuples)
 
 		if ((vp = vc_tidreapped(heapptr, vpl)) != (VPageDescr) NULL)
 		{
-#if 0
+#ifdef NOT_USED
 			elog(DEBUG, "<%x,%x> -> <%x,%x>",
 				 ItemPointerGetBlockNumber(&(res->index_iptr)),
 				 ItemPointerGetOffsetNumber(&(res->index_iptr)),

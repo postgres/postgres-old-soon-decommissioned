@@ -1609,7 +1609,7 @@ ExecTargetList(List *targetlist,
 				 curNode < nNodes;
 				 curNode++, fjTlist = lnext(fjTlist))
 			{
-#if 0							/* what is this?? */
+#ifdef NOT_USED						/* what is this?? */
 				Node	   *outernode = lfirst(fjTlist);
 
 				fjRes = (Resdom *) outernode->iterexpr;

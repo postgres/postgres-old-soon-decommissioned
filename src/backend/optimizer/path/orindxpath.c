@@ -125,7 +125,7 @@ create_or_index_paths(Query *root,
 				pathnode->path.loc_restrictinfo = set_difference(copyObject((Node *) rel->restrictinfo),
 								   lcons(clausenode, NIL));
 
-#if 0							/* fix xfunc */
+#ifdef NOT_USED						/* fix xfunc */
 				/* add in cost for expensive functions!  -- JMH, 7/7/92 */
 				if (XfuncMode != XFUNC_OFF)
 				{

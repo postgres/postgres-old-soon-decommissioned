@@ -372,7 +372,7 @@ btinsert(Relation rel, Datum *datum, char *nulls, ItemPointer ht_ctid, Relation 
 	pfree(btitem);
 	pfree(itup);
 
-#if 0
+#ifdef NOT_USED
 	/* adjust any active scans that will be affected by this insertion */
 	_bt_adjscans(rel, &(res->pointerData), BT_INSERT);
 #endif

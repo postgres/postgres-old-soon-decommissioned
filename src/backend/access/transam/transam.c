@@ -300,7 +300,7 @@ TransactionLogUpdate(TransactionId transactionId,		/* trans id to update */
 static void
 TransRecover(Relation logRelation)
 {
-#if 0
+#ifdef NOT_USED
 	/* ----------------
 	 *	  first get the last recorded transaction in the log.
 	 * ----------------

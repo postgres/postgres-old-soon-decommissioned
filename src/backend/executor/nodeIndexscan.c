@@ -469,7 +469,7 @@ ExecIndexMarkPos(IndexScan *node)
 	indexScanDescs = indexstate->iss_ScanDescs;
 	scanDesc = indexScanDescs[indexPtr];
 
-#if 0
+#ifdef NOT_USED
 	IndexScanMarkPosition(scanDesc);
 #endif
 	index_markpos(scanDesc);
@@ -498,7 +498,7 @@ ExecIndexRestrPos(IndexScan *node)
 	indexScanDescs = indexstate->iss_ScanDescs;
 	scanDesc = indexScanDescs[indexPtr];
 
-#if 0
+#ifdef NOT_USED
 	IndexScanRestorePosition(scanDesc);
 #endif
 	index_restrpos(scanDesc);

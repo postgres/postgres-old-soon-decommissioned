@@ -137,7 +137,7 @@ PATH	   *p2;
 	LSEG		seg1,
 				seg2;
 
-#if FALSE
+#ifdef NOT_USED
 	LINE	   *ln;
 
 #endif
@@ -154,7 +154,7 @@ PATH	   *p2;
 				found = true;
 		}
 
-#if FALSE
+#ifdef NOT_USED
 	ln = line_construct_pp(&seg2.p[0], &seg2.p[1]);
 	retval = interpt_sl(&seg1, ln);
 #endif
