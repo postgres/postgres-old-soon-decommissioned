@@ -8,8 +8,11 @@
 
 #include "postgres.h"
 
-#include <locale.h>
+#ifdef HAVE_GETOPT_H
+#include <getopt.h>
+#endif
 #include <limits.h>
+#include <locale.h>
 
 #include "pgtz.h"
 #include "private.h"
