@@ -41,6 +41,7 @@
  *	pg_class
  *	pg_attrdef
  *	pg_relcheck
+ *	pg_trigger
  */
 
 char *Name_pg_attr_indices[Num_pg_attr_indices] = {AttributeNameIndex,
@@ -56,6 +57,8 @@ char *Name_pg_class_indices[Num_pg_class_indices]= { ClassNameIndex,
 char *Name_pg_attrdef_indices[Num_pg_attrdef_indices]= { AttrDefaultIndex };
 
 char *Name_pg_relcheck_indices[Num_pg_relcheck_indices]= { RelCheckIndex };
+
+char *Name_pg_trigger_indices[Num_pg_trigger_indices]= { TriggerRelidIndex };
 
 
 static HeapTuple CatalogIndexFetchTuple(Relation heapRelation,
