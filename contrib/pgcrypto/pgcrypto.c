@@ -556,7 +556,7 @@ find_provider(text *name,
 
 	p = VARDATA(name);
 	for (i = 0; i < len; i++)
-		buf[i] = tolower(p[i]);
+		buf[i] = tolower((unsigned char) p[i]);
 	buf[len] = 0;
 
 	err = provider_lookup(buf, &res);
