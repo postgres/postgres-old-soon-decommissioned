@@ -26,6 +26,7 @@
 #include "catalog/catalog.h"
 #include "catalog/catname.h"
 #include "catalog/pg_group.h"
+#include "catalog/pg_operator.h"
 #include "catalog/pg_user.h"
 #include "utils/syscache.h"
 #include "parser/catalog_utils.h"
