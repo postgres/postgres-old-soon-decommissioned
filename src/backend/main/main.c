@@ -15,7 +15,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#ifdef alpha
+#if defined(alpha) && !defined(linux)
 #include <sys/sysinfo.h>
 #include <machine/hal_sysinfo.h>
 #define ASSEMBLER
