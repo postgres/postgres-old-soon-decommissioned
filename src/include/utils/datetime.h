@@ -290,6 +290,8 @@ extern bool ClearDateCache(bool newval, bool doit, bool interactive);
 
 extern int	j2day(int jd);
 
+extern int	DecodePosixTimezone(char *str, int *tzp);
+
 extern bool CheckDateTokenTables(void);
 
 #endif   /* DATETIME_H */
