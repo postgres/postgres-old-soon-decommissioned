@@ -124,11 +124,15 @@ tidne(PG_FUNCTION_ARGS)
  *
  *	Maybe these implementations should be moved to another place
  */
-static	ItemPointerData	Current_last_tid = { {0, 0}, 0}; 
-void	setLastTid(const ItemPointer tid) 
-{ 
-	Current_last_tid = *tid; 
-} 
+
+static	ItemPointerData	Current_last_tid = { {0, 0}, 0};
+
+void
+setLastTid(const ItemPointer tid)
+{
+	Current_last_tid = *tid;
+}
+
 Datum
 currtid_byreloid(PG_FUNCTION_ARGS)
 {
