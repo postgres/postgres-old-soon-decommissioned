@@ -26,7 +26,7 @@ static	char	FormBuf[FormMaxSize];
  * ----------------
  */
 char *
-form(char *fmt, ... )
+form(const char *fmt, ... )
 {
     va_list	args;
 
