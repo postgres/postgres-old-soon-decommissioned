@@ -584,6 +584,7 @@ connectDB(PGconn *conn)
 	 * authentication request.
 	 */
 
+	do
 	{
 		int beresp;
 
@@ -644,6 +645,7 @@ connectDB(PGconn *conn)
 					conn->errorMessage) != STATUS_OK)
 			goto connect_errReturn;
 	}
+	while (areq != AUTH_REQ_OK);
 
 	/* free the password so it's not hanging out in memory forever */
 	if (conn->pgpass != NULL)
