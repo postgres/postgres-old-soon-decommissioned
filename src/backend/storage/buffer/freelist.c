@@ -694,7 +694,9 @@ void
 StrategyInvalidateBuffer(BufferDesc *buf)
 {
 	int					cdb_id;
+#ifdef USE_ASSERT_CHECKING
 	int					buf_id;
+#endif
 	BufferStrategyCDB  *cdb;
 
 	/* The buffer cannot be dirty or pinned */
@@ -705,7 +707,7 @@ StrategyInvalidateBuffer(BufferDesc *buf)
 	 * If we have the buffer somewhere in the directory, remove it,
 	 * add the CDB to the list of unused CDB's. and the buffer to
 	 * the list of free buffers
- */
+	 */
 	cdb_id = BufTableLookup(&(buf->tag));
 	if (cdb_id >= 0)
 	{
