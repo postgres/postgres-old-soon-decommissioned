@@ -488,7 +488,7 @@ attributes are taken from. We often write a relation scheme as
 
       <listitem>
        <para>
-	EXCEPT (&minus; or &setmn;): builds the set difference of
+	DIFFERENCE (&minus; or &setmn;): builds the set difference of
 	two tables. Let <classname>R</classname> and <classname>S</classname>
 	again be two tables with the same
 	arity. <classname>R</classname> - <classname>S</classname>
