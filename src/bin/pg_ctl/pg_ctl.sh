@@ -238,6 +238,11 @@ if [ "$op" = "reload" ];then
 	wait=no
 fi
 
+# Prevent duplicate of -D flags on each restart
+if [ "$op" = "restart" ];then
+	PGDATAOPTS=""
+fi
+
 DEFPOSTOPTS=$PGDATA/postmaster.opts.default
 POSTOPTSFILE=$PGDATA/postmaster.opts
 PIDFILE=$PGDATA/postmaster.pid
