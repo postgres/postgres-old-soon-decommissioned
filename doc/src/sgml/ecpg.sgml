@@ -362,7 +362,7 @@ EXEC SQL AT <replaceable>connection-name</replaceable> SELECT ...;
 EXEC SQL SET CONNECTION <replaceable>connection-name</replaceable>;
 </programlisting>
    This option is particularly convenient if many statements are to be
-   executed on the same connection.
+   executed on the same connection.  It is not thread-aware.
   </para>
  </sect1>
 
