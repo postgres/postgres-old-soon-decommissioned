@@ -218,7 +218,8 @@ extern		"C"
 	extern const char *PQerrorMessage(const PGconn *conn);
 	extern int	PQsocket(const PGconn *conn);
 	extern int	PQbackendPID(const PGconn *conn);
-	extern int	PQclientencoding(const PGconn *conn);
+	extern int	PQclientEncoding(const PGconn *conn);
+	extern int	PQsetClientEncoding(PGconn *conn, const char *encoding);
 
 	/* Enable/disable tracing */
 	extern void PQtrace(PGconn *conn, FILE *debug_port);

@@ -41,6 +41,7 @@
 #endif
 
 #ifdef MULTIBYTE
+#include "miscadmin.h"
 #include "mb/pg_wchar.h"
 #endif
 
@@ -2381,12 +2382,53 @@ PQbackendPID(const PGconn *conn)
 }
 
 int
-PQclientencoding(const PGconn *conn)
+PQclientEncoding(const PGconn *conn)
 {
 	if (!conn || conn->status != CONNECTION_OK)
 		return -1;
 	return conn->client_encoding;
 }
+
+#ifdef MULTIBYTE
+int
+PQsetClientEncoding(PGconn *conn, const char *encoding)
+{
+	char qbuf[128];
+	static char query[] = "set client_encoding to '%s'";
+	PGresult *res;
+	int status;
+
+	if (!conn || conn->status != CONNECTION_OK)
+		return -1;
+
+	/* check query buffer overflow */
+	if (sizeof(qbuf) < (sizeof(query) + strlen(encoding)))
+		return -1;
+
+	/* ok, now send a query */
+	sprintf(qbuf, query, encoding);
+	res = PQexec(conn, qbuf);
+
+	if (res == (PGresult *)NULL)
+		return -1;
+	if (res->resultStatus != PGRES_COMMAND_OK)
+		status = -1;
+	else
+	{
+		/* change libpq internal encoding */
+		conn->client_encoding = pg_char_to_encoding(encoding);
+		status = 0;	/* everything is ok */
+	}
+	PQclear(res);
+	return(status);
+}
+#else
+int
+PQsetClientEncoding(PGconn *conn, const char *encoding)
+{
+	return -1;
+}
+#endif
 
 void
 PQtrace(PGconn *conn, FILE *debug_port)
