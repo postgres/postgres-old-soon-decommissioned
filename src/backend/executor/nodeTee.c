@@ -80,6 +80,7 @@ ExecInitTee(Tee *node, EState *currentEstate, Plan *parent)
 	estate->es_tupleTable = currentEstate->es_tupleTable;
 	estate->es_refcount = currentEstate->es_refcount;
 	estate->es_junkFilter = currentEstate->es_junkFilter;
+	estate->es_snapshot = currentEstate->es_snapshot;
 
 	/*
 	 * use the range table for Tee subplan since the range tables for the
