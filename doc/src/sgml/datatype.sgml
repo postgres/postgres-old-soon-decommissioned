@@ -1967,6 +1967,13 @@ January 8 04:05:06 1999 PST
      <literal>a</> through <literal>f</>.  Output is always in the
      latter of the given forms.
     </para>
+
+    <para>
+     The directory <filename class="directory">contrib/mac</filename>
+     in the <productname>Postgres</productname> source distribution
+     contains tools that can be used to map MAC addresses to hardware
+     manufacturer names.
+    </para>
    </sect2>
 
   </sect1>
