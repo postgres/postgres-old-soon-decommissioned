@@ -215,6 +215,8 @@ update_fp_info(Oid func_id, struct fp_info * fip)
 	rettype = pp->prorettype;
 	argtypes = pp->proargtypes;
 
+	fmgr_info(func_id, &fip->flinfo);
+
 	for (i = 0; i < fip->flinfo.fn_nargs; ++i)
 	{
 		if (OidIsValid(argtypes[i]))
@@ -250,8 +252,6 @@ update_fp_info(Oid func_id, struct fp_info * fip)
 
 	fip->xid = GetCurrentTransactionId();
 	fip->cid = GetCurrentCommandId();
-
-	fmgr_info(func_id, &fip->flinfo);
 
 	/*
 	 * This must be last!
