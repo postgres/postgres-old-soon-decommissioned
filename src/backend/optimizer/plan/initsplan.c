@@ -370,6 +370,8 @@ distribute_qual_to_rels(Query *root, Node *clause,
 	restrictinfo->right_sortop = InvalidOid;
 	restrictinfo->left_pathkey = NIL;	/* not computable yet */
 	restrictinfo->right_pathkey = NIL;
+	restrictinfo->left_mergescansel = -1; /* not computed until needed */
+	restrictinfo->right_mergescansel = -1;
 	restrictinfo->hashjoinoperator = InvalidOid;
 	restrictinfo->left_bucketsize = -1; /* not computed until needed */
 	restrictinfo->right_bucketsize = -1;

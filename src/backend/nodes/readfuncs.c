@@ -1846,9 +1846,11 @@ _readRestrictInfo(void)
 	local_node->eval_cost = -1;
 	/* ditto for this_selec */
 	local_node->this_selec = -1;
-	/* ditto for cached pathkeys and bucketsize */
+	/* ditto for cached pathkeys, selectivity, bucketsize */
 	local_node->left_pathkey = NIL;
 	local_node->right_pathkey = NIL;
+	local_node->left_mergescansel = -1;
+	local_node->right_mergescansel = -1;
 	local_node->left_bucketsize = -1;
 	local_node->right_bucketsize = -1;
 

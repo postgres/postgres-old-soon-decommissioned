@@ -521,6 +521,10 @@ typedef struct RestrictInfo
 	List	   *left_pathkey;	/* canonical pathkey for left side */
 	List	   *right_pathkey;	/* canonical pathkey for right side */
 
+	/* cache space for mergeclause processing; -1 if not yet set */
+	Selectivity left_mergescansel;	/* fraction of left side to scan */
+	Selectivity right_mergescansel;	/* fraction of right side to scan */
+
 	/* valid if clause is hashjoinable, else InvalidOid: */
 	Oid			hashjoinoperator;		/* copy of clause operator */
 

@@ -1406,6 +1406,8 @@ _copyRestrictInfo(RestrictInfo *from)
 	 */
 	newnode->left_pathkey = NIL;
 	newnode->right_pathkey = NIL;
+	newnode->left_mergescansel = from->left_mergescansel;
+	newnode->right_mergescansel = from->right_mergescansel;
 	newnode->hashjoinoperator = from->hashjoinoperator;
 	newnode->left_bucketsize = from->left_bucketsize;
 	newnode->right_bucketsize = from->right_bucketsize;

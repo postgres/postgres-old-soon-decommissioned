@@ -777,6 +777,8 @@ adjust_inherited_attrs_mutator(Node *node,
 		newinfo->this_selec = -1;
 		newinfo->left_pathkey = NIL;	/* and these */
 		newinfo->right_pathkey = NIL;
+		newinfo->left_mergescansel = -1;
+		newinfo->right_mergescansel = -1;
 		newinfo->left_bucketsize = -1;
 		newinfo->right_bucketsize = -1;
 
