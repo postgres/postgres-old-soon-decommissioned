@@ -218,14 +218,6 @@ slashUsage(unsigned short int pager)
 	fprintf(output, _(" \\z [PATTERN]   list table access privileges (same as \\dp)\n"));
 	fprintf(output, _("\n"));
 
-	fprintf(output, _("Large Object, Copy\n"));
-	fprintf(output, _(" \\lo_export\n"));
-	fprintf(output, _(" \\lo_import\n"));
-	fprintf(output, _(" \\lo_list\n"));
-	fprintf(output, _(" \\lo_unlink     large object operations\n"));
-	fprintf(output, _(" \\copy ...      perform SQL COPY with data stream to the client host\n"));
-	fprintf(output, _("\n"));
-
 	fprintf(output, _("Formatting\n"));
 	fprintf(output, _(" \\x             toggle expanded output (currently %s)\n"),
 			ON(pset.popt.topt.expanded));
@@ -242,6 +234,14 @@ slashUsage(unsigned short int pager)
 	fprintf(output, _(" \\H             toggle HTML output mode (currently %s)\n"),
 			ON(pset.popt.topt.format == PRINT_HTML));
 	fprintf(output, _(" \\T [STRING]    set HTML <table> tag attributes, or unset if none\n"));
+	fprintf(output, _("\n"));
+
+	fprintf(output, _("Large Object, Copy\n"));
+	fprintf(output, _(" \\lo_export\n"));
+	fprintf(output, _(" \\lo_import\n"));
+	fprintf(output, _(" \\lo_list\n"));
+	fprintf(output, _(" \\lo_unlink     large object operations\n"));
+	fprintf(output, _(" \\copy ...      perform SQL COPY with data stream to the client host\n"));
 	fprintf(output, _("\n"));
 
 	if (output != stdout)
