@@ -1339,6 +1339,12 @@ pgstat_mainInit(void)
 {
 	IsUnderPostmaster = true;	/* we are a postmaster subprocess now */
 
+#ifdef EXEC_BACKEND
+	/* In EXEC case we will not have inherited these settings */
+	IsPostmasterEnvironment = true;
+	whereToSendOutput = None;
+#endif
+
 	MyProcPid = getpid();		/* reset MyProcPid */
 
 	/* Lose the postmaster's on-exit routines */
