@@ -11,10 +11,7 @@
  *
  *-------------------------------------------------------------------------
  */
-extern char *readline(char *prompt);
-
-extern int write_history(char *dum);
-
+extern char *readline(const char *prompt);
+extern int write_history(const char *dum);
 extern int using_history(void);
-
-extern int add_history(char *dum);
+extern int add_history(const char *dum);

@@ -30,7 +30,7 @@ readline(const char *prompt)
 }
 
 int
-write_history(char *dum)
+write_history(const char *dum)
 {
     return 0;
 }
@@ -42,7 +42,7 @@ using_history(void)
 }
 
 int
-add_history(char *dum)
+add_history(const char *dum)
 {
     return 0;
 }
