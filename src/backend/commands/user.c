@@ -646,7 +646,7 @@ CreateUser(CreateUserStmt *stmt)
 /*
  * ALTER USER
  */
-extern void
+void
 AlterUser(AlterUserStmt *stmt)
 {
 	Datum		new_record[Natts_pg_shadow];

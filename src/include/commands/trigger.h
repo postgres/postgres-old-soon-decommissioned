@@ -105,6 +105,8 @@ extern void CreateTrigger(CreateTrigStmt *stmt);
 extern void DropTrigger(Oid relid, const char *trigname);
 extern void RelationRemoveTriggers(Relation rel);
 
+extern void renametrig(Oid relid, const char *oldname, const char *newname);
+
 extern void RelationBuildTriggers(Relation relation);
 
 extern void FreeTriggerDesc(TriggerDesc *trigdesc);

@@ -61,8 +61,4 @@ extern void renameatt(Oid relid,
 extern void renamerel(Oid relid,
 		  const char *newrelname);
 
-extern void renametrig(Oid relid,
-		  const char *oldname,
-		  const char *newname);
-
 #endif   /* TABLECMDS_H */
