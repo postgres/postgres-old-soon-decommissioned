@@ -197,6 +197,33 @@ lc_collate_is_c(void)
 
 
 /*
+ * We'd like to cache whether LC_CTYPE is C (or POSIX), so we can
+ * optimize a few code paths in various places.
+ */
+bool
+lc_ctype_is_c(void)
+{
+	/* Cache result so we only have to compute it once */
+	static int	result = -1;
+	char	   *localeptr;
+
+	if (result >= 0)
+		return (bool) result;
+	localeptr = setlocale(LC_CTYPE, NULL);
+	if (!localeptr)
+		elog(ERROR, "invalid LC_CTYPE setting");
+
+	if (strcmp(localeptr, "C") == 0)
+		result = true;
+	else if (strcmp(localeptr, "POSIX") == 0)
+		result = true;
+	else
+		result = false;
+	return (bool) result;
+}
+
+
+/*
  * Frees the malloced content of a struct lconv.  (But not the struct
  * itself.)
  */

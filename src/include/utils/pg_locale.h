@@ -32,6 +32,7 @@ extern const char *locale_time_assign(const char *value,
 				   bool doit, GucSource source);
 
 extern bool lc_collate_is_c(void);
+extern bool lc_ctype_is_c(void);
 
 /*
  * Return the POSIX lconv struct (contains number/money formatting
