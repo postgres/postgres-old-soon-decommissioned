@@ -36,11 +36,10 @@ extern int	ShowPinTrace;
 #define BM_DIRTY				(1 << 0)
 #define BM_VALID				(1 << 1)
 #define BM_DELETED				(1 << 2)
-#define BM_FREE					(1 << 3)
-#define BM_IO_IN_PROGRESS		(1 << 4)
-#define BM_IO_ERROR				(1 << 5)
-#define BM_JUST_DIRTIED			(1 << 6)
-#define BM_PIN_COUNT_WAITER		(1 << 7)
+#define BM_IO_IN_PROGRESS		(1 << 3)
+#define BM_IO_ERROR				(1 << 4)
+#define BM_JUST_DIRTIED			(1 << 5)
+#define BM_PIN_COUNT_WAITER		(1 << 6)
 
 typedef bits16 BufFlags;
 

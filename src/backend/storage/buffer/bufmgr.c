@@ -1190,7 +1190,7 @@ recheck:
 			 * Release any refcount we may have.  If someone else has a
 			 * pin on the buffer, we got trouble.
 			 */
-			if (!(bufHdr->flags & BM_FREE))
+			if (bufHdr->refcount != 0)
 			{
 				/* the sole pin should be ours */
 				if (bufHdr->refcount != 1 || PrivateRefCount[i - 1] == 0)
@@ -1268,7 +1268,7 @@ recheck:
 			 * The thing should be free, if caller has checked that no
 			 * backends are running in that database.
 			 */
-			Assert(bufHdr->flags & BM_FREE);
+			Assert(bufHdr->refcount == 0);
 
 			/*
 			 * And mark the buffer as no longer occupied by this page.
@@ -1501,7 +1501,7 @@ FlushRelationBuffers(Relation rel, BlockNumber firstDelBlock)
 				}
 				UnpinBuffer(bufHdr);
 			}
-			if (!(bufHdr->flags & BM_FREE))
+			if (bufHdr->refcount != 0)
 			{
 				LWLockRelease(BufMgrLock);
 				error_context_stack = errcontext.previous;

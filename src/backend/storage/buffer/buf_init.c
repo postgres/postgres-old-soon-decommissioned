@@ -164,7 +164,7 @@ InitBufferPool(void)
 			buf->buf_id = i;
 
 			buf->data = MAKE_OFFSET(block);
-			buf->flags = (BM_DELETED | BM_FREE | BM_VALID);
+			buf->flags = (BM_DELETED | BM_VALID);
 			buf->refcount = 0;
 			buf->io_in_progress_lock = LWLockAssign();
 			buf->cntx_lock = LWLockAssign();
