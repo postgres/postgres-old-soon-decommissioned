@@ -21,7 +21,8 @@
 #include "libpq-fe.h"
 #include <signal.h>
 #include <sys/ioctl.h>
-#ifdef PORTNAME_sparc_solaris
+#if defined(PORTNAME_sparc_solaris) || \
+    defined(PORTNAME_i386_solaris)
 #include <sys/termios.h>
 #endif
 
