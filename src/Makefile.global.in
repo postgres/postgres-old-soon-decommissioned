@@ -147,6 +147,7 @@ USE_TCL= @USE_TCL@
 USE_TK= @USE_TK@
 
 USE_PERL= @USE_PERL@
+PERL=perl
 
 #
 # enable native odbc driver support
