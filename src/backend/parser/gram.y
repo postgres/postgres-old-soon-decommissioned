@@ -96,7 +96,6 @@ static void insertSelectOptions(SelectStmt *stmt,
 static Node *makeSetOp(SetOperation op, bool all, Node *larg, Node *rarg);
 static Node *doNegate(Node *n);
 static void doNegateFloat(Value *v);
-static bool set_name_needs_quotes(const char *name);
 
 #define MASK(b) (1 << (b))
 
