@@ -17,14 +17,14 @@
 #include <limits.h>
 #define MAXINT        INT_MAX
 #else
-# if defined(PORTNAME_BSD44_derived) || \
-     defined(PORTNAME_bsdi) || \
-     defined(PORTNAME_bsdi_2_1)
+# if defined(BSD44_derived) || \
+     defined(bsdi) || \
+     defined(bsdi_2_1)
 # include <machine/limits.h>
 # define MAXINT	INT_MAX
 # else
 # include <values.h>
-# endif /* !PORTNAME_BSD44_derived */
+# endif /* !BSD44_derived */
 #endif /* WIN32 */
 
 #include "postgres.h"

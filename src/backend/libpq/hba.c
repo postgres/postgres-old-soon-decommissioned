@@ -19,7 +19,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#if PORTNAME == sparc_solaris
+#if defined(sparc_solaris)
 #include <port/inet_aton.h>
 #endif
 
