@@ -85,8 +85,8 @@ extern Oid	    LastOidProcessed;	/* for query rewrite */
  *	magic.h		- definitions of the indexes of the magic numbers    *
  *****************************************************************************/
 
-#define	PG_RELEASE	5
-#define PG_VERSION	1
+#define	PG_RELEASE	6
+#define PG_VERSION	0
 #define	PG_VERFILE	"PG_VERSION"
 
 /*****************************************************************************
