@@ -43,6 +43,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"any", ANY},
 	{"as", AS},
 	{"asc", ASC},
+	{"at", AT},
 	{"backward", BACKWARD},
 	{"before", BEFORE},
 	{"begin", BEGIN_TRANS},

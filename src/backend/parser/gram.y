@@ -289,7 +289,7 @@ static void doNegateFloat(Value *v);
  */
 
 /* Keywords (in SQL92 reserved words) */
-%token	ABSOLUTE, ACTION, ADD, ALL, ALTER, AND, ANY, AS, ASC,
+%token	ABSOLUTE, ACTION, ADD, ALL, ALTER, AND, ANY, AS, ASC, AT,
 		BEGIN_TRANS, BETWEEN, BOTH, BY,
 		CASCADE, CASE, CAST, CHAR, CHARACTER, CHECK, CLOSE, 
 		COALESCE, COLLATE, COLUMN, COMMIT,
@@ -386,6 +386,7 @@ static void doNegateFloat(Value *v);
 %left		'*' '/' '%'
 %left		'^'
 /* Unary Operators */
+%left		AT
 %right		UMINUS
 %left		'.'
 %left		'[' ']'
@@ -4298,6 +4299,15 @@ a_expr:  c_expr
 				{	$$ = $1;  }
 		| a_expr TYPECAST Typename
 				{	$$ = makeTypeCast($1, $3); }
+		| a_expr AT TIME ZONE c_expr
+				{
+					FuncCall *n = makeNode(FuncCall);
+					n->funcname = "timezone";
+					n->args = makeList2($5, $1);
+					n->agg_star = FALSE;
+					n->agg_distinct = FALSE;
+					$$ = (Node *) n;
+				}
 		/*
 		 * These operators must be called out explicitly in order to make use
 		 * of yacc/bison's automatic operator-precedence handling.  All other
@@ -5393,6 +5403,7 @@ TokenId:  ABSOLUTE						{ $$ = "absolute"; }
 		| AFTER							{ $$ = "after"; }
 		| AGGREGATE						{ $$ = "aggregate"; }
 		| ALTER							{ $$ = "alter"; }
+		| AT							{ $$ = "at"; }
 		| BACKWARD						{ $$ = "backward"; }
 		| BEFORE						{ $$ = "before"; }
 		| BEGIN_TRANS					{ $$ = "begin"; }
