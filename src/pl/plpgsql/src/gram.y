@@ -1235,7 +1235,7 @@ stmt_raise		: K_RAISE lno raise_level raise_msg raise_params ';'
 
 raise_msg		: T_STRING
 					{
-						$$ = strdup(yytext);
+						$$ = plpgsql_get_string_value();
 					}
 				;
 

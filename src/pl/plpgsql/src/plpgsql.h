@@ -694,5 +694,6 @@ extern void plpgsql_push_back_token(int token);
 extern int	plpgsql_scanner_lineno(void);
 extern void plpgsql_scanner_init(const char *str, int functype);
 extern void plpgsql_scanner_finish(void);
+extern char *plpgsql_get_string_value(void);
 
 #endif   /* PLPGSQL_H */

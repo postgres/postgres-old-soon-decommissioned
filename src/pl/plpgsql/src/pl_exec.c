@@ -1805,7 +1805,7 @@ exec_stmt_raise(PLpgSQL_execstate * estate, PLpgSQL_stmt_raise * stmt)
 	for (cp = stmt->message; *cp; cp++)
 	{
 		/*
-		 * Occurences of a single % are replaced by the next argument's
+		 * Occurrences of a single % are replaced by the next argument's
 		 * external representation. Double %'s are converted to one %.
 		 */
 		if ((c[0] = *cp) == '%')
@@ -1834,21 +1834,6 @@ exec_stmt_raise(PLpgSQL_execstate * estate, PLpgSQL_stmt_raise * stmt)
 			continue;
 		}
 
-		/*
-		 * Occurrences of single ' are removed. double ' are reduced to
-		 * single ones.  We must do this because the parameter stored by
-		 * the grammar is the raw T_STRING input literal, rather than the
-		 * de-lexed string as you might expect ...
-		 */
-		if (*cp == '\'')
-		{
-			cp++;
-			if (*cp == '\'')
-				plpgsql_dstring_append(&ds, c);
-			else
-				cp--;
-			continue;
-		}
 		plpgsql_dstring_append(&ds, c);
 	}
 
