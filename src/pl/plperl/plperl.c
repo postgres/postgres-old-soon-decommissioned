@@ -488,9 +488,9 @@ plperl_func_handler(PG_FUNCTION_ARGS)
 	if (SPI_finish() != SPI_OK_FINISH)
 		elog(ERROR, "plperl: SPI_finish() failed");
 
-	/* XXX is this the approved way to check for an undef result? */
-	if (perlret == &PL_sv_undef)
+	if (!(perlret && SvOK(perlret)))
 	{
+		/* return NULL if Perl code returned undef */
 		retval = (Datum) 0;
 		fcinfo->isnull = true;
 	}
