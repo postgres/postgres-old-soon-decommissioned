@@ -95,11 +95,11 @@ recordchange(PG_FUNCTION_ARGS)
 #ifndef NOSCHEMAS
 		schemaname = get_namespace_name(RelationGetNamespace(trigdata->tg_relation));
 		fullyqualtblname = SPI_palloc(strlen(tblname) + 
-					      strlen(schemaname) + 4);
+					      strlen(schemaname) + 6);
  		sprintf(fullyqualtblname,"\"%s\".\"%s\"",
 			schemaname,tblname);
 #else
-		fullyqualtblname = SPI_palloc(strlen(tblname+3));
+		fullyqualtblname = SPI_palloc(strlen(tblname + 3));
 		sprintf(fullyqualtblname,"\"%s\"",tblname);
 #endif
 		tupdesc = trigdata->tg_relation->rd_att;
