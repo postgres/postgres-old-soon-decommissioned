@@ -1949,8 +1949,8 @@ _copyDropStmt(DropStmt *from)
 {
 	DropStmt *newnode = makeNode(DropStmt);
 	
-	Node_Copy(from, newnode, relNames);
-	newnode->sequence = from->sequence;
+	Node_Copy(from, newnode, names);
+	newnode->removeType = from->removeType;
 
 	return newnode;
 }
@@ -2067,17 +2067,6 @@ _copyRemoveOperStmt(RemoveOperStmt *from)
 	
 	newnode->opname = pstrdup(from->opname);
 	Node_Copy(from, newnode, args);
-
-	return newnode;
-}
-
-static RemoveStmt *
-_copyRemoveStmt(RemoveStmt *from)
-{
-	RemoveStmt *newnode = makeNode(RemoveStmt);
-	
-	newnode->removeType = from->removeType;
-	newnode->name = pstrdup(from->name);
 
 	return newnode;
 }
@@ -2781,9 +2770,6 @@ copyObject(void *from)
 			break;
 		case T_RemoveOperStmt:
 			retval = _copyRemoveOperStmt(from);
-			break;
-		case T_RemoveStmt:
-			retval = _copyRemoveStmt(from);
 			break;
 		case T_RenameStmt:
 			retval = _copyRenameStmt(from);

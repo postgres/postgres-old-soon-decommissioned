@@ -1942,15 +1942,22 @@ def_arg:  func_return  					{  $$ = (Node *)$1; }
 DropStmt:  DROP TABLE relation_name_list
 				{
 					DropStmt *n = makeNode(DropStmt);
-					n->relNames = $3;
-					n->sequence = FALSE;
+					n->names = $3;
+					n->removeType = DROP_TABLE;
 					$$ = (Node *)n;
 				}
 		| DROP SEQUENCE relation_name_list
 				{
 					DropStmt *n = makeNode(DropStmt);
-					n->relNames = $3;
-					n->sequence = TRUE;
+					n->names = $3;
+					n->removeType = DROP_SEQUENCE;
+					$$ = (Node *)n;
+				}
+		| DROP VIEW relation_name_list
+				{
+					DropStmt *n = makeNode(DropStmt);
+					n->names = $3;
+					n->removeType = DROP_VIEW;
 					$$ = (Node *)n;
 				}
 		;
@@ -2558,17 +2565,16 @@ func_return:  Typename
 
 RemoveStmt:  DROP remove_type name
 				{
-					RemoveStmt *n = makeNode(RemoveStmt);
+					DropStmt *n = makeNode(DropStmt);
 					n->removeType = $2;
-					n->name = $3;
+					n->names =  makeList1(makeString($3));
 					$$ = (Node *)n;
 				}
 		;
 
-remove_type:  TYPE_P							{  $$ = TYPE_P; }
-		| INDEX									{  $$ = INDEX; }
-		| RULE									{  $$ = RULE; }
-		| VIEW									{  $$ = VIEW; }
+remove_type:  TYPE_P							{  $$ = DROP_TYPE_P; }
+		| INDEX									{  $$ = DROP_INDEX; }
+		| RULE									{  $$ = DROP_RULE; }
 		;
 
 

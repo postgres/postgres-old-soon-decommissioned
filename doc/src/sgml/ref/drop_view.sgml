@@ -23,7 +23,7 @@ Postgres documentation
    <date>1999-07-20</date>
   </refsynopsisdivinfo>
   <synopsis>
-DROP VIEW <replaceable class="PARAMETER">name</replaceable>
+DROP VIEW <replaceable class="PARAMETER">name</replaceable> [, ...]
   </synopsis>
   
   <refsect2 id="R2-SQL-DROPVIEW-1">
@@ -70,7 +70,7 @@ DROP
      </varlistentry>
      <varlistentry>
       <term><computeroutput>
-ERROR: RewriteGetRuleEventRel: rule "_RET<replaceable class="PARAMETER">name</replaceable>" not found
+ERROR: view <replaceable class="parameter">name</replaceable> is nonexistent
        </computeroutput></term>
       <listitem>
        <para>

@@ -130,9 +130,11 @@ endif
 runcheck: all
 ifneq ($(PORTNAME), win)
 	MULTIBYTE=$(MULTIBYTE);export MULTIBYTE; \
+	MAKE=$(MAKE);export MAKE; \
 	$(SHELL) ./run_check.sh $(host_tuple)
 else
 	MULTIBYTE=$(MULTIBYTE);export MULTIBYTE; \
+	MAKE=$(MAKE);export MAKE; \
 	./run_check.sh $(host_tuple)
 endif
 	@echo "ACTUAL RESULTS OF REGRESSION TEST ARE NOW IN FILES run_check.out"
@@ -148,9 +150,11 @@ endif
 bigcheck: all
 ifneq ($(PORTNAME), win)
 	MULTIBYTE=$(MULTIBYTE);export MULTIBYTE; \
+	MAKE=$(MAKE);export MAKE; \
 	$(SHELL) ./run_check.sh $(host_tuple) $(EXTRA_TESTS)
 else
 	MULTIBYTE=$(MULTIBYTE);export MULTIBYTE; \
+	MAKE=$(MAKE);export MAKE; \
 	./run_check.sh $(host_tuple) $(EXTRA_TESTS)
 endif
 	@echo "ACTUAL RESULTS OF REGRESSION TEST ARE NOW IN FILES run_check.out"
