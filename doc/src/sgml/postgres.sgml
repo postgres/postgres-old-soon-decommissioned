@@ -6,6 +6,9 @@ Other subset docs should be copied and shrunk from here.
 thomas 1998-02-23
 
 $Log: postgres.sgml,v $
+Revision 1.10  1998/10/21 05:31:52  thomas
+Include new information from Massimo. Rearrange ODBC docs.
+
 Revision 1.9  1998/09/30 05:41:49  thomas
 Clean up pages. Add information for operator precedence.
 Split introduction sections into separate files to allow the legal notice
@@ -29,6 +32,7 @@ Include new chapters.
 <!entity info     SYSTEM "info.sgml">
 <!entity legal    SYSTEM "legal.sgml">
 <!entity notation SYSTEM "notation.sgml">
+<!entity y2k      SYSTEM "y2k.sgml">
 
 <!-- tutorial -->
 <!entity intro    SYSTEM "intro.sgml">
@@ -218,6 +222,7 @@ Installation and maintenance information.
 &intro-ag;
 &ports;
 &install;
+&runtime;
 &options;
 &start-ag;
 &recovery;
