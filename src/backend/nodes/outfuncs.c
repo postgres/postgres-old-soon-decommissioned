@@ -771,6 +771,19 @@ _outSubLink(StringInfo str, SubLink *node)
 }
 
 /*
+ *	RelabelType
+ */
+static void
+_outRelabelType(StringInfo str, RelabelType *node)
+{
+	appendStringInfo(str, " RELABELTYPE :arg ");
+	_outNode(str, node->arg);
+
+	appendStringInfo(str, " :resulttype %u :resulttypmod %d ",
+					 node->resulttype, node->resulttypmod);
+}
+
+/*
  *	Array is a subclass of Expr
  */
 static void
@@ -1495,6 +1508,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_SubLink:
 				_outSubLink(str, obj);
+				break;
+			case T_RelabelType:
+				_outRelabelType(str, obj);
 				break;
 			case T_Array:
 				_outArray(str, obj);

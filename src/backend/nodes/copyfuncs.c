@@ -874,6 +874,26 @@ _copySubLink(SubLink *from)
 }
 
 /* ----------------
+ *		_copyRelabelType
+ * ----------------
+ */
+static RelabelType *
+_copyRelabelType(RelabelType *from)
+{
+	RelabelType    *newnode = makeNode(RelabelType);
+
+	/* ----------------
+	 *	copy remainder of node
+	 * ----------------
+	 */
+	Node_Copy(from, newnode, arg);
+	newnode->resulttype = from->resulttype;
+	newnode->resulttypmod = from->resulttypmod;
+
+	return newnode;
+}
+
+/* ----------------
  *		_copyCaseExpr
  * ----------------
  */
@@ -1616,6 +1636,9 @@ copyObject(void *from)
 			break;
 		case T_SubLink:
 			retval = _copySubLink(from);
+			break;
+		case T_RelabelType:
+			retval = _copyRelabelType(from);
 			break;
 		case T_CaseExpr:
 			retval = _copyCaseExpr(from);

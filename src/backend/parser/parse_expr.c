@@ -516,6 +516,7 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 		case T_Param:
 		case T_Aggref:
 		case T_ArrayRef:
+		case T_RelabelType:
 			{
 				result = (Node *) expr;
 				break;
@@ -627,6 +628,9 @@ exprType(Node *expr)
 		case T_Param:
 			type = ((Param *) expr)->paramtype;
 			break;
+		case T_RelabelType:
+			type = ((RelabelType *) expr)->resulttype;
+			break;
 		case T_SubLink:
 			{
 				SubLink    *sublink = (SubLink *) expr;
@@ -696,6 +700,9 @@ exprTypmod(Node *expr)
 						break;
 				}
 			}
+			break;
+		case T_RelabelType:
+			return ((RelabelType *) expr)->resulttypmod;
 			break;
 		default:
 			break;

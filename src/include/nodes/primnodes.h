@@ -467,4 +467,28 @@ typedef struct ArrayRef
 	Node	   *refassgnexpr;
 } ArrayRef;
 
+/* ----------------
+ * RelabelType
+ *		arg				- input expression
+ *		resulttype		- output type of coercion expression
+ *		resulttypmod	- output typmod (usually -1)
+ *
+ * RelabelType represents a "dummy" type coercion between two binary-
+ * compatible datatypes, such as reinterpreting the result of an OID
+ * expression as an int4.  It is a no-op at runtime; we only need it
+ * to provide a place to store the correct type to be attributed to
+ * the expression result during type resolution.  (We can't get away
+ * with just overwriting the type field of the input expression node,
+ * so we need a separate node to show the coercion's result type.)
+ * ----------------
+ */
+
+typedef struct RelabelType
+{
+	NodeTag		type;
+	Node	   *arg;
+	Oid			resulttype;
+	int32		resulttypmod;
+} RelabelType;
+
 #endif	 /* PRIMNODES_H */

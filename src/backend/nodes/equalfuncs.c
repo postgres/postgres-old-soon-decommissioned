@@ -263,6 +263,18 @@ _equalSubLink(SubLink *a, SubLink *b)
 }
 
 static bool
+_equalRelabelType(RelabelType *a, RelabelType *b)
+{
+	if (!equal(a->arg, b->arg))
+		return false;
+	if (a->resulttype != b->resulttype)
+		return false;
+	if (a->resulttypmod != b->resulttypmod)
+		return false;
+	return true;
+}
+
+static bool
 _equalArray(Array *a, Array *b)
 {
 	if (a->arrayelemtype != b->arrayelemtype)
@@ -805,6 +817,9 @@ equal(void *a, void *b)
 			break;
 		case T_SubLink:
 			retval = _equalSubLink(a, b);
+			break;
+		case T_RelabelType:
+			retval = _equalRelabelType(a, b);
 			break;
 		case T_Func:
 			retval = _equalFunc(a, b);

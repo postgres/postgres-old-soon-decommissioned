@@ -67,6 +67,7 @@ typedef enum NodeTag
 	T_Array,
 	T_ArrayRef,
 	T_Iter,
+	T_RelabelType,
 
 	/*---------------------
 	 * TAGS FOR PLANNER NODES (relation.h)
