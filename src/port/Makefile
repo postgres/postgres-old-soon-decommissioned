@@ -23,7 +23,7 @@ libpgport.a: $(LIBOBJS)
 	$(AR) crs $@ $^
 
 thread.o: thread.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(THREAD_CFLAGS) -c thread.c
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(THREAD_CFLAGS) -c $<
 
 clean distclean maintainer-clean:
 	rm -f libpgport.a $(LIBOBJS)
