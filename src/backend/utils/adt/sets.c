@@ -203,7 +203,7 @@ seteval(PG_FUNCTION_ARGS)
 			rsi->isDone = isDone;
 		else
 			ereport(ERROR,
-					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+					(errcode(ERRCODE_SYNTAX_ERROR),
 					 errmsg("set-valued function called in context that "
 							"cannot accept a set")));
 	}

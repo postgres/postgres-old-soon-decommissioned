@@ -574,7 +574,7 @@ fmgr_sql(PG_FUNCTION_ARGS)
 				rsi->isDone = ExprEndResult;
 			else
 				ereport(ERROR,
-						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+						(errcode(ERRCODE_SYNTAX_ERROR),
 						 errmsg("set-valued function called in context that cannot accept a set")));
 			fcinfo->isnull = true;
 			result = (Datum) 0;
@@ -613,7 +613,7 @@ fmgr_sql(PG_FUNCTION_ARGS)
 			rsi->isDone = ExprMultipleResult;
 		else
 			ereport(ERROR,
-					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+					(errcode(ERRCODE_SYNTAX_ERROR),
 					 errmsg("set-valued function called in context that cannot accept a set")));
 
 		/*

@@ -1098,8 +1098,8 @@ pg_get_constraintdef_worker(Oid constraintId, int prettyFlags)
 			}
 		default:
 			ereport(ERROR,
-					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("unsupported constraint type \"%c\"",
+					(errcode(ERRCODE_INTERNAL_ERROR),
+					 errmsg("invalid constraint type \"%c\"",
 							conForm->contype)));
 			break;
 	}

@@ -95,8 +95,8 @@ array_push(PG_FUNCTION_ARGS)
 		indx = 1;
 	else
 		ereport(ERROR,
-				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("input must be empty or one-dimensional array")));
+				(errcode(ERRCODE_SYNTAX_ERROR),
+				 errmsg("argument must be empty or one-dimensional array")));
 
 	/*
 	 * We arrange to look up info about element type only once per series

@@ -4610,7 +4610,7 @@ select_limit:
 				{
 					/* Disabled because it was too confusing, bjm 2002-02-18 */
 					ereport(ERROR,
-							(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+							(errcode(ERRCODE_SYNTAX_ERROR),
 							 errmsg("LIMIT #,# syntax is not supported"),
 							 errhint("Use separate LIMIT and OFFSET clauses.")));
 				}

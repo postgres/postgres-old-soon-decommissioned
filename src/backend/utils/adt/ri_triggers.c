@@ -3009,7 +3009,7 @@ ri_ReportViolation(RI_QueryKey *qkey, const char *constrname,
 
 	if (spi_err)
 		ereport(ERROR,
-				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+				(errcode(ERRCODE_INTERNAL_ERROR),
 				 errmsg("referential integrity query on \"%s\" from constraint \"%s\" on \"%s\" gave unexpected result",
 						RelationGetRelationName(pk_rel),
 						constrname,

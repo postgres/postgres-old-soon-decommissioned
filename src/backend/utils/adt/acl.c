@@ -846,7 +846,7 @@ makeaclitem(PG_FUNCTION_ARGS)
 	else if (u_grantee != 0 && g_grantee != 0)
 	{
 		ereport(ERROR,
-				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+				(errcode(ERRCODE_SYNTAX_ERROR),
 				 errmsg("cannot specify both user and group")));
 	}
 	else if (u_grantee != 0)
