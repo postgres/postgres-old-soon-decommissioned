@@ -571,7 +571,7 @@ AddNewAttributeTuples(Oid new_rel_oid,
     dpp = tupdesc->attrs;
     for (i = 0; i < natts; i++) {
 	(*dpp)->attrelid = new_rel_oid;
-	(*dpp)->attnvals = 0l;
+	(*dpp)->attnvals = 0;
 	
 	tup = heap_addheader(Natts_pg_attribute,
 			     ATTRIBUTE_TUPLE_SIZE,
@@ -592,7 +592,7 @@ AddNewAttributeTuples(Oid new_rel_oid,
     dpp = HeapAtt;
     for (i = 0; i < -1 - FirstLowInvalidHeapAttributeNumber; i++) {
 	(*dpp)->attrelid = new_rel_oid;
-	/*	(*dpp)->attnvals = 0l;	unneeded */
+	/*	(*dpp)->attnvals = 0;	unneeded */
 	
 	tup = heap_addheader(Natts_pg_attribute,
 			     ATTRIBUTE_TUPLE_SIZE,

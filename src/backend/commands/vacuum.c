@@ -1814,7 +1814,7 @@ vc_updstats(Oid relid, int npages, int ntups, bool hasindex, VRelStats *vacrelst
 		}
 		if (selratio > 1.0)
 		    selratio = 1.0;
-	    	attp->attnvals = (selratio ? (selratio * ATTNVALS_SCALE) : 0);
+	    	attp->attnvals = selratio;
 		WriteNoReleaseBuffer(abuf);
 
 		/* DO PG_STATISTIC INSERTS */

@@ -170,7 +170,7 @@ ExecSort(Sort *node)
 	/* *** get_cs_ResultTupleSlot((CommonState) sortstate); */
 
 	slot->ttc_tupleDescriptor = ExecGetTupType(outerNode);
-#ifdef 0
+#if 0
 	slot->ttc_execTupDescriptor = ExecGetExecTupDesc(outerNode);
 #endif
 	/* ----------------
