@@ -1187,10 +1187,10 @@ static void
 _write_msg(const char *modulename, const char *fmt, va_list ap)
 {
 	if (modulename)
-		fprintf(stderr, "%s: [%s] ", progname, gettext(modulename));
+		fprintf(stderr, "%s: [%s] ", progname, _(modulename));
 	else
 		fprintf(stderr, "%s: ", progname);
-	vfprintf(stderr, gettext(fmt), ap);
+	vfprintf(stderr, _(fmt), ap);
 }
 
 void

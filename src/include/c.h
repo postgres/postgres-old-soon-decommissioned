@@ -91,6 +91,8 @@
 /* Must be before gettext() games below */
 #include <locale.h>
 
+#define _(x) gettext((x))
+
 #ifdef ENABLE_NLS
 #include <libintl.h>
 #else

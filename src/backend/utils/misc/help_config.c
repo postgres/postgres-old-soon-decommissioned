@@ -91,7 +91,7 @@ printMixedStruct(mixedStruct *structToPrint)
 	printf("%s\t%s\t%s\t",
 		   structToPrint->generic.name,
 		   GucContext_Names[structToPrint->generic.context],
-		   gettext(config_group_names[structToPrint->generic.group]));
+		   _(config_group_names[structToPrint->generic.group]));
 
 	switch (structToPrint->generic.vartype)
 	{
@@ -127,6 +127,6 @@ printMixedStruct(mixedStruct *structToPrint)
 	}
 
 	printf("%s\t%s\n",
-		   (structToPrint->generic.short_desc == NULL) ? "" : gettext(structToPrint->generic.short_desc),
-		   (structToPrint->generic.long_desc == NULL) ? "" : gettext(structToPrint->generic.long_desc));
+		   (structToPrint->generic.short_desc == NULL) ? "" : _(structToPrint->generic.short_desc),
+		   (structToPrint->generic.long_desc == NULL) ? "" : _(structToPrint->generic.long_desc));
 }

@@ -31,8 +31,6 @@
 #include "common.h"
 #include "sql_help.h"
 
-#define _(x) gettext((x))
-
 /*
  * PLEASE:
  * If you change something in this file, also make the same changes
@@ -346,8 +344,8 @@ helpSQL(const char *topic, unsigned short int pager)
 								  "Description: %s\n"
 								  "Syntax:\n%s\n\n"),
 						QL_HELP[i].cmd,
-						gettext(QL_HELP[i].help),
-						gettext(QL_HELP[i].syntax));
+						_(QL_HELP[i].help),
+						_(QL_HELP[i].syntax));
 				/* If we have an exact match, exit.  Fixes \h SELECT */
 				if (pg_strcasecmp(topic, QL_HELP[i].cmd) == 0)
 					break;

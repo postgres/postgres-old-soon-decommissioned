@@ -26,8 +26,6 @@
 #include "port.h"
 #include <stdio.h>
 
-#define _(x) gettext((x))
-
 static const char *progname;
 
 static void

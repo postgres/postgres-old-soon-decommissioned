@@ -65,8 +65,6 @@ int			optreset;
 #endif
 
 
-#define _(x) gettext((x))
-
 /* version string we expect back from postgres */
 #define PG_VERSIONSTR "postgres (PostgreSQL) " PG_VERSION "\n"
 

@@ -103,7 +103,7 @@ simple_prompt(const char *prompt, int maxlen, bool echo)
 
 	if (prompt)
 	{
-		fputs(gettext(prompt), termout);
+		fputs(_(prompt), termout);
 		fflush(termout);
 	}
 

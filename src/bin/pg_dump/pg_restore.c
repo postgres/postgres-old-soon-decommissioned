@@ -65,7 +65,6 @@ int			optreset;
 #include <locale.h>
 #endif
 
-#define _(x) gettext((x))
 
 /* Forward decls */
 static void usage(const char *progname);

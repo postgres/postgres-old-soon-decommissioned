@@ -28,8 +28,6 @@
 #endif
 
 
-#define _(x) gettext((x))
-
 static bool describeOneTableDetails(const char *schemaname,
 						const char *relationname,
 						const char *oid,

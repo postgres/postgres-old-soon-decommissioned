@@ -61,8 +61,6 @@ int			optreset;
 #include "pg_backup_archiver.h"
 #include "dumputils.h"
 
-#define _(x) gettext((x))
-
 extern char *optarg;
 extern int	optind,
 			opterr;

@@ -38,6 +38,8 @@
  **********************************************************************/
 
 #include "postgres.h"
+/* Defined by Perl */
+#undef _(x)
 
 /* system stuff */
 #include <ctype.h>

@@ -449,7 +449,7 @@ ClientAuthentication(Port *port)
 				   (errcode(ERRCODE_INVALID_AUTHORIZATION_SPECIFICATION),
 					errmsg("no pg_hba.conf entry for host \"%s\", user \"%s\", database \"%s\", %s",
 						   hostinfo, port->user_name, port->database_name,
-				   port->ssl ? gettext("SSL on") : gettext("SSL off"))));
+				   port->ssl ? _("SSL on") : _("SSL off"))));
 #else
 				ereport(FATAL,
 				   (errcode(ERRCODE_INVALID_AUTHORIZATION_SPECIFICATION),

@@ -172,7 +172,7 @@ MainLoop(FILE *source)
 				if (count_eof < GetVariableNum(pset.vars, "IGNOREEOF", 0, 10, false))
 				{
 					if (!QUIET())
-						printf(gettext("Use \"\\q\" to leave %s.\n"), pset.progname);
+						printf(_("Use \"\\q\" to leave %s.\n"), pset.progname);
 					continue;
 				}
 

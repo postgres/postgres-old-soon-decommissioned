@@ -17,8 +17,6 @@
 
 #include "catalog/pg_control.h"
 
-#define _(x) gettext((x))
-
 
 static void
 usage(const char *progname)

@@ -34,7 +34,6 @@ int			optreset;
 #include "pg_backup.h"
 #include "pqexpbuffer.h"
 
-#define _(x) gettext((x))
 
 /* version string we expect back from postgres */
 #define PG_VERSIONSTR "pg_dump (PostgreSQL) " PG_VERSION "\n"

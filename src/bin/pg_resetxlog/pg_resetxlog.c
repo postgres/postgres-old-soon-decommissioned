@@ -48,8 +48,6 @@
 extern int	optind;
 extern char *optarg;
 
-#define _(x) gettext((x))
-
 
 char		XLogDir[MAXPGPATH]; /* not static, see xlog_internal.h */
 static char ControlFilePath[MAXPGPATH];
