@@ -4353,6 +4353,11 @@ SELECT NULLIF(value, '(none)') ...
        <entry><type>name[]</type></entry>
        <entry>names of schemas in search path optionally including implicit schemas</entry>
       </row>
+     <row>
+      <entry><function>backend_pid</function>()</entry>
+      <entry><type>integer</type></entry>
+      <entry>process ID of the session backend</entry>
+     </row>
      </tbody>
     </tgroup>
    </table>

@@ -481,14 +481,6 @@ postgres: <replaceable>user</> <replaceable>database</> <replaceable>host</> <re
      </row>
 
      <row>
-      <entry><function>backend_pid</function>()</entry>
-      <entry><type>integer</type></entry>
-      <entry>
-       Process ID of current backend
-      </entry>
-     </row>
-
-     <row>
       <entry><function>pg_stat_get_backend_pid</function>(<type>integer</type>)</entry>
       <entry><type>integer</type></entry>
       <entry>
