@@ -109,7 +109,7 @@ $Header$
 
  <note>
   <para>
-   At the time of writing (<Productname>Postgres</Productname> v7.0)
+   At the time of writing (<Productname>Postgres</Productname> 7.0)
    the notation for
    flagging commands is not universally consistant throughout the
    documentation set.

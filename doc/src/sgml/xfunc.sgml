@@ -1226,7 +1226,7 @@ LANGUAGE 'c';
     <title>Name Space Conflicts</title>
 
     <para>
-     As of <productname>Postgres</productname> v7.0, the alternative
+     As of <productname>Postgres</productname> 7.0, the alternative
      form of the AS clause for the SQL
      <command>CREATE FUNCTION</command> command
      decouples the SQL function name from the function name in the C
@@ -1235,7 +1235,7 @@ LANGUAGE 'c';
     </para>
 
     <sect3>
-     <title>Pre-v7.0</title>
+     <title>Pre-7.0</title>
 
      <para>
       For functions written in C, the SQL name declared in

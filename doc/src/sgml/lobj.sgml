@@ -70,7 +70,7 @@ $Header$
      <para>
       All large object manipulation <emphasis>must</emphasis> take
       place within an SQL transaction. This requirement is strictly
-      enforced as of Postgres v6.5, though it has been an
+      enforced as of Postgres 6.5, though it has been an
       implicit requirement in previous versions, resulting in
       misbehavior if ignored.
      </para>

@@ -99,7 +99,7 @@ $ cvs checkout -r REL6_4 tc
   </para>
 
   <para>
-   So, to create the v6.4 release
+   So, to create the 6.4 release
    I did the following:
 
    <programlisting>
