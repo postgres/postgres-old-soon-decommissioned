@@ -27,6 +27,8 @@ extern void pq_endmessage(StringInfo buf);
 extern int	pq_puttextmessage(char msgtype, const char *str);
 
 extern int	pq_getint(int *result, int b);
-extern int	pq_getstr(StringInfo s);
+extern int	pq_getstr_bounded(StringInfo s, int maxlen);
+
+#define pq_getstr(s)	pq_getstr_bounded(s, 0)
 
 #endif   /* PQFORMAT_H */

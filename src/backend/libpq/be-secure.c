@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * be-connect.c
+ * be-secure.c
  *	  functions related to setting up a secure connection to the frontend.
  *	  Secure connections are expected to provide confidentiality,
  *	  message integrity and endpoint authentication.
