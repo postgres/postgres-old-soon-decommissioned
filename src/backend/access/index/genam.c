@@ -81,6 +81,18 @@
 #include "access/funcindex.h"
 #include "access/genam.h"
 
+#include "utils/palloc.h"
+
+#ifndef HAVE_MEMMOVE
+# include "regex/utils.h"
+#else
+# include <string.h>
+#endif
+
+#include <stdio.h>
+#include "storage/ipc.h"
+#include "storage/bufmgr.h"
+
 /* ----------------------------------------------------------------
  *	general access method routines
  *

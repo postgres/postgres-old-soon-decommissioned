@@ -54,6 +54,11 @@
 #include "utils/memutils.h" /* could have been access/itup.h */
 
 #include "access/heapam.h"
+
+#include "access/istrat.h"
+
+#include "fmgr.h"
+
 /* ----------------------------------------------------------------
  *	           misc strategy support routines
  * ----------------------------------------------------------------
