@@ -329,7 +329,7 @@ win32_make_absolute(char *path)
 
 	if (_fullpath(abspath, path, MAXPGPATH) == NULL)
 	{
-		log_debug("Win32 path expansion failed:  %s", strerror());
+		log_debug("Win32 path expansion failed:  %s", strerror(errno));
 		return path;
 	}
 	canonicalize_path(abspath);
