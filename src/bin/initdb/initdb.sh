@@ -49,8 +49,10 @@ CMDNAME=`basename $0`
 # our invocation of it silently fails.
 
 # The x=x below is to satisfy export if postconfig returns nothing.
+# The 2>/dev/null is to swallow the "postconfig: not found" message if there
+# is not postconfig, but it is ineffective in some shells.  Better ideas?
 
-export x=x $(exec postconfig 2>/dev/null)
+export x=x $(postconfig 2>/dev/null)
 
 # Set defaults:
 debug=0
