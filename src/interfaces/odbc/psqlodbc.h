@@ -41,7 +41,7 @@ typedef UInt4 Oid;
 #define DRIVERNAME             "PostgreSQL ODBC"
 #define DBMS_NAME              "PostgreSQL"
 
-#define POSTGRESDRIVERVERSION  "07.01.0003"
+#define POSTGRESDRIVERVERSION  "07.01.0004"
 
 #ifdef WIN32
 #define DRIVER_FILE_NAME		"PSQLODBC.DLL"
@@ -133,6 +133,7 @@ typedef struct GlobalValues_
 	char				extra_systable_prefixes[MEDIUM_REGISTRY_LEN];
 	char				conn_settings[LARGE_REGISTRY_LEN];
 	char				protocol[SMALL_REGISTRY_LEN];
+
 
 	FILE*				mylogFP;
 	FILE*				qlogFP;	
