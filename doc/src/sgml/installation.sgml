@@ -1511,6 +1511,14 @@ gunzip -c user.ps.gz \
         <entry>4.2</entry>
        </row>
        <row>
+	<entry><systemitem class="osname">Digital Unix</></entry>
+	<entry><systemitem>Alpha</></entry>
+	<entry>7.3</entry>
+	<entry>2002-11-04,
+	 Alessio Bragadini (<email>alessio@albourne.com</email>)</entry>
+        <entry></entry>
+       </row>
+       <row>
 	<entry><systemitem class="osname">FreeBSD</></entry>
 	<entry><systemitem>Alpha</></entry>
 	<entry>7.2</entry>
