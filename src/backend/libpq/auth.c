@@ -709,6 +709,20 @@ recv_and_check_password_packet(Port *port)
 	if (pq_eof() == EOF || pq_getint(&len, 4) == EOF)
 		return STATUS_EOF;		/* client didn't want to send password */
 
+	/*
+	 * Since the remote client has not yet been authenticated, we need
+	 * to be careful when using the data they send us. The 8K limit is
+	 * arbitrary, and somewhat bogus: the intent is to ensure we don't
+	 * allocate an enormous chunk of memory.
+	 */
+
+	if (len < 1 || len > 8192)
+	{
+		elog(LOG, "Invalid password packet length: %d; "
+			 "must satisfy 1 <= length <= 8192", len);
+		return STATUS_EOF;
+	}
+
 	initStringInfo(&buf);
 	if (pq_getstr(&buf) == EOF) /* receive password */
 	{
