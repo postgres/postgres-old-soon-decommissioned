@@ -350,7 +350,7 @@ typedef struct Unique
 typedef struct Hash
 {
 	Plan		plan;
-	List	   *hashkeys;
+	/* all other info is in the parent HashJoin node */
 } Hash;
 
 /* ----------------

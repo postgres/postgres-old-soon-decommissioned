@@ -167,24 +167,6 @@ set_plan_references(Plan *plan, List *rtable)
 							  (Node *) ((HashJoin *) plan)->hashclauses);
 			break;
 		case T_Hash:
-
-			/*
-			 * Hash does not evaluate its targetlist or quals, so don't
-			 * touch those (see comments below).  But we do need to fix
-			 * its hashkeys.  The hashkeys are a little bizarre because
-			 * they need to match the hashclauses of the parent HashJoin
-			 * node, so we use join_references to fix them.
-			 */
-			((Hash *) plan)->hashkeys =
-				join_references(((Hash *) plan)->hashkeys,
-								rtable,
-								NIL,
-								plan->lefttree->targetlist,
-								(Index) 0,
-					targetlist_has_non_vars(plan->lefttree->targetlist));
-			fix_expr_references(plan,
-								(Node *) ((Hash *) plan)->hashkeys);
-			break;
 		case T_Material:
 		case T_Sort:
 		case T_Unique:

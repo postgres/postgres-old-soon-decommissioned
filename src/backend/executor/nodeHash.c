@@ -113,6 +113,7 @@ ExecInitHash(Hash *node, EState *estate)
 	hashstate->ps.plan = (Plan *) node;
 	hashstate->ps.state = estate;
 	hashstate->hashtable = NULL;
+	hashstate->hashkeys = NIL;	/* will be set by parent HashJoin */
 
 	/*
 	 * Miscellaneous initialization

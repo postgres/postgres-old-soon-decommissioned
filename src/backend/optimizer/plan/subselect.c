@@ -1013,10 +1013,6 @@ finalize_plan(Plan *plan, List *rtable,
 			break;
 
 		case T_Hash:
-			finalize_primnode((Node *) ((Hash *) plan)->hashkeys,
-							  &context);
-			break;
-
 		case T_Agg:
 		case T_SeqScan:
 		case T_Material:

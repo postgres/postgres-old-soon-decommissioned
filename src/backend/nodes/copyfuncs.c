@@ -551,7 +551,6 @@ _copyHash(Hash *from)
 	/*
 	 * copy remainder of node
 	 */
-	COPY_NODE_FIELD(hashkeys);
 
 	return newnode;
 }
