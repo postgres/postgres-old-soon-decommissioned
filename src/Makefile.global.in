@@ -209,13 +209,20 @@ CFLAGS_SL= @SHARED_LIB@
 LDFLAGS= @LDFLAGS@ @LIBS@
 DLSUFFIX= @DLSUFFIX@
 LN_S= @LN_S@
+TAR= @tar@
+GZCAT= @GZCAT@
 
 ##############################################################################
 #
 # Additional platform-specific settings
 #
 
+# Name of the target platform.
 PORTNAME= @PORTNAME@
+
+# Various grungy items needed to configure some platforms.
+HAVE_POSIX_SIGNALS= @HAVE_POSIX_SIGNALS@
+HPUXMATHLIB= @HPUXMATHLIB@
 
 include $(SRCDIR)/Makefile.port
 
