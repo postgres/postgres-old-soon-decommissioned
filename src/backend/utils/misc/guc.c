@@ -22,6 +22,7 @@
 
 #include "access/xlog.h"
 #include "commands/async.h"
+#include "fmgr.h"
 #include "libpq/auth.h"
 #include "libpq/pqcomm.h"
 #include "miscadmin.h"
@@ -328,6 +329,9 @@ static struct config_real
 static struct config_string
 			ConfigureNamesString[] =
 {
+	{"dynamic_library_path", PGC_SUSET, &Dynamic_library_path,
+	 "$libdir", NULL, NULL},
+
 	{"krb_server_keyfile", PGC_POSTMASTER, &pg_krb_server_keyfile,
 	PG_KRB_SRVTAB, NULL, NULL},
 

@@ -14,6 +14,9 @@ include $(top_builddir)/src/Makefile.global
 
 OBJS = dfmgr.o fmgr.o
 
+override CPPFLAGS += -DLIBDIR=\"$(libdir)\" -DDLSUFFIX=\"$(DLSUFFIX)\"
+
+
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)

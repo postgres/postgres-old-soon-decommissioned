@@ -350,6 +350,7 @@ extern Oid	fmgr_internal_function(const char *proname);
 extern PGFunction load_external_function(char *filename, char *funcname,
 					   bool signalNotFound);
 extern void load_file(char *filename);
+extern char * Dynamic_library_path;
 
 
 /*
