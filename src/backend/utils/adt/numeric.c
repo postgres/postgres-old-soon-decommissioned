@@ -2399,6 +2399,19 @@ apply_typmod(NumericVar *var, int32 typmod)
 		var->ndigits = MAX(0, MIN(i, var->ndigits));
 	}
 
+	/* ----------
+	 * Check for overflow again - rounding could have raised the
+	 * weight.
+	 * ----------
+	 */
+	if (var->weight >= maxweight)
+	{
+		free_allvars();
+		elog(ERROR, "overflow on numeric "
+        "ABS(value) >= 10^%d for field with precision %d scale %d",
+							var->weight, precision, scale);
+	}
+
 	var->rscale = scale;
 	var->dscale = scale;
 }
