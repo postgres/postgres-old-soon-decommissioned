@@ -829,7 +829,7 @@ LockResolveConflicts(LOCKMETHOD lockmethod,
 		PROC_QUEUE *waitQueue = &(lock->waitProcs);
 		PROC	   *topproc = (PROC *) MAKE_PTR(waitQueue->links.prev);
 
-		if (SHMQueueEmpty(lockQueue) && waitQueue->size &&
+		if (SHMQueueEmpty(&MyProc->lockQueue) && waitQueue->size &&
 			topproc->prio > myprio)
 		{
 			XID_PRINT("LockResolveConflicts: higher priority proc waiting",
