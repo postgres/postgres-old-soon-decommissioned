@@ -426,11 +426,14 @@ dumpClasses(const TableInfo *tblinfo, const int numTables, FILE *fout,
 	if (onlytable == NULL)
 		all_only = "all";
 	else
-		all_only = "one";
+		all_only = "only";
 
 	if (g_verbose)
-		fprintf(stderr, "%s dumping out the contents of %s of %d tables %s\n",
-				g_comment_start, all_only, numTables, g_comment_end);
+		fprintf(stderr, "%s dumping out the contents of %s %d table%s/sequence%s %s\n",
+				g_comment_start, all_only,
+				(onlytable == NULL) ? numTables : 1,
+				(onlytable == NULL) ? "s" : "", (onlytable == NULL) ? "s" : "",
+				g_comment_end);
 
 	/* Dump SEQUENCEs first (if dataOnly) */
 	if (dataOnly)
