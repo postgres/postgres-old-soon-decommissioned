@@ -215,6 +215,9 @@ postgres.xml: postgres.sgml $(GENERATED_SGML)
 testxml: stylesheet.xsl postgres.xml
 	$(XSLTPROC) $(XSLTPROCFLAGS) --stringparam pg.version '$(VERSION)' $^
 
+htmlhelp: stylesheet-hh.xsl postgres.xml
+	$(XSLTPROC) $(XSLTPROCFLAGS) --stringparam pg.version '$(VERSION)' $^
+
 
 ##
 ## Check
