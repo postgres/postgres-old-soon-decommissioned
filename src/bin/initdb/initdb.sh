@@ -799,8 +799,6 @@ CREATE VIEW pg_views AS \
     FROM pg_class C LEFT JOIN pg_namespace N ON (N.oid = C.relnamespace) \
     WHERE C.relkind = 'v';
 
--- XXX why does pg_tables include sequences?
-
 CREATE VIEW pg_tables AS \
     SELECT \
         N.nspname AS schemaname, \
@@ -1014,6 +1012,21 @@ CREATE VIEW pg_stat_database AS \
                     pg_stat_get_db_blocks_hit(D.oid) AS blks_read, \
             pg_stat_get_db_blocks_hit(D.oid) AS blks_hit \
     FROM pg_database D;
+
+CREATE VIEW pg_locks_result AS \
+	SELECT \
+			''::oid AS relation, \
+			''::oid AS database, \
+			''::int4 AS backendpid, \
+			''::text AS mode, \
+			NULL::bool AS isgranted;
+
+UPDATE pg_proc SET \
+	prorettype = (SELECT oid FROM pg_type \
+		WHERE typname = 'pg_locks_result') \
+	WHERE proname = 'pg_lock_status';
+
+CREATE VIEW pg_locks AS SELECT * FROM pg_lock_status();
 
 CREATE VIEW pg_settings AS \
     SELECT \

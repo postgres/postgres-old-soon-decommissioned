@@ -239,8 +239,7 @@ ProcessUtility(Node *parsetree,
 			break;
 
 			/*
-			 * ******************************** portal manipulation ********************************
-			 *
+			 * ************************* portal manipulation ***************************
 			 */
 		case T_ClosePortalStmt:
 			{

@@ -53,8 +53,7 @@ extern DLLIMPORT SHMEM_OFFSET ShmemBase;
 #define SHM_OFFSET_VALID(xx_offs)\
   (((xx_offs) != 0) && ((xx_offs) != INVALID_OFFSET))
 
-
-/* shmemqueue.c */
+/* shmqueue.c */
 typedef struct SHM_QUEUE
 {
 	SHMEM_OFFSET prev;
