@@ -165,7 +165,6 @@ typedef struct HashMetaPageData
 typedef HashMetaPageData *HashMetaPage;
 
 /* Short hands for accessing structure */
-#define BSHIFT			hashm_bshift
 #define OVFL_POINT		hashm_ovflpoint
 #define LAST_FREED		hashm_lastfreed
 #define MAX_BUCKET		hashm_maxbucket
