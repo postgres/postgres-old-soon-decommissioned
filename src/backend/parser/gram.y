@@ -1426,12 +1426,20 @@ sortby_list:  sortby
 sortby:  Id OptUseOp
 		{ 
 		    $$ = makeNode(SortBy);
+		    $$->range = NULL;
 		    $$->name = $1;
 		    $$->useOp = $2;
 		}
-	| attr OptUseOp
+	| Id '.' Id OptUseOp
+		{
+		    $$ = makeNode(SortBy);
+		    $$->range = $1;
+		    $$->name = $3;
+		    $$->useOp = $4;
+		}
+        | /*EMPTY*/
                 { 
-                  yyerror("parse error: use 'sort by attribute_name'");
+                  yyerror("parse error: use 'order by attribute_name'");
                 }
 	;
 

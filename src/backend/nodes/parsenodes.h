@@ -631,6 +631,7 @@ typedef struct RelExpr {
  */
 typedef struct SortBy {
     NodeTag		type;
+    char                *range;
     char		*name;		/* name of column to sort on */
     char		*useOp;		/* operator to use */
 } SortBy;
