@@ -12,13 +12,14 @@
  *-------------------------------------------------------------------------
  */
 #include <string.h>
+#include <stdlib.h>
 #include "strdup.h"
 
 char *
-strdup(char *string)
+strdup(char const *string)
 {
     char *nstr;
 
-    nstr = strcpy((char *)palloc(strlen(string)+1), string);
+    nstr = strcpy((char *)malloc(strlen(string)+1), string);
     return nstr;
 }
