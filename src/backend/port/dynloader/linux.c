@@ -23,6 +23,7 @@
 #include "utils/elog.h"
 #include "fmgr.h"
 
+#if FALSE
 extern char pg_pathname[];
 
 void	   *
@@ -112,3 +113,4 @@ pg_dlerror()
 	return dld_strerror(dld_errno);
 #endif
 }
+#endif
