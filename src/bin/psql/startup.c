@@ -18,7 +18,7 @@
 
 #include "getopt_long.h"
 
-#ifndef HAVE_OPTRESET
+#ifndef HAVE_INT_OPTRESET
 int			optreset;
 #endif
 
