@@ -411,10 +411,10 @@ StreamConnection(int server_fd, Port *port)
 		return STATUS_ERROR;
 	}
 
-#ifdef PG_ON_UNIXWARE
+#ifdef SCO_ACCEPT_BUG
 	/*
-	 * Only UnixWare 7+ are known to have this bug, but it shouldn't
-	 * hurt it catch if for all of them.
+	 * UnixWare 7+ and OpenServer 5.0.4 are known to have this bug,
+	 * but it shouldn't hurt it catch if for all of them.
 	 */
 	if (port->raddr.sa.sa_family == 0)
 		port->raddr.sa.sa_family = AF_UNIX;
