@@ -20,10 +20,7 @@
  *-------------------------------------------------------------------------
  */
 
-
-#ifdef ENABLE_THREAD_SAFETY
 #include <pthread.h>
-#endif
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
