@@ -6,7 +6,7 @@ GETTEXT_FILES	:= + gettext-files
 # include internal messages in the translation list.
 GETTEXT_TRIGGERS:= errmsg errdetail errhint errcontext postmaster_error yyerror
 
-gettext-files:
+gettext-files: distprep
 	find $(srcdir)/ -name '*.c' -print >$@
 
 my-maintainer-clean:
