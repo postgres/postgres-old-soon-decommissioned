@@ -458,6 +458,11 @@ vacuum_rel(Oid relid)
 		vacrelstats->hasindex = true;
 	else
 		vacrelstats->hasindex = false;
+#ifdef NOT_USED	
+	/*
+	 *	reindex in VACUUM is dangerous under WAL.
+	 *	ifdef out until it becomes safe.		
+	 */
 	if (reindex)
 	{
 		for (i = 0; i < nindices; i++)
@@ -465,6 +470,7 @@ vacuum_rel(Oid relid)
 		Irel = (Relation *) NULL;
 		activate_indexes_of_a_table(relid, false);
 	}
+#endif /* NOT_USED */
 
 	/* Clean/scan index relation(s) */
 	if (Irel != (Relation *) NULL)
@@ -512,8 +518,10 @@ vacuum_rel(Oid relid)
 					 i);
 		}
 	}
+#ifdef NOT_USED	
 	if (reindex)
 		activate_indexes_of_a_table(relid, true);
+#endif /* NOT_USED */	
 
 	/* all done with this class, but hold lock until commit */
 	heap_close(onerel, NoLock);
