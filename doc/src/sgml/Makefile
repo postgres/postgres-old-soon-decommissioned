@@ -189,12 +189,10 @@ $(addsuffix .fot, $(ALLBOOKS)): %.fot: %.sgml $(ALLSGML) stylesheet.dsl
 ##
 
 JADE.text = $(JADE) $(JADEFLAGS) $(SGMLINCLUDE) $(CATALOG) -d stylesheet.dsl -i output-text -t sgml
+LYNX = lynx
 
 INSTALL HISTORY regress_README: % : %.html
-	@echo "|";\
-	 echo "| You should now take '$<', save it as a text file in Netscape,";\
-	 echo "| and put it in place of the existing '$@' file.";\
-	 echo "|"
+	$(PERL) -p -e 's/<H(1|2)$$/<H\1 align=center/g' $< | $(LYNX) -dump -nolist -stdin >$@
 
 INSTALL.html: standalone-install.sgml installation.sgml version.sgml
 	$(JADE.text) -V nochunks standalone-install.sgml installation.sgml >$@
