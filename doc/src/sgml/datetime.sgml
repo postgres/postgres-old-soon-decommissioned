@@ -3,7 +3,7 @@ $Header$
 Date/time details
 -->
 
-<appendix label="UG1" id="datetime-appendix">
+<appendix id="datetime-appendix">
  <title id="datetime-appendix-title">Date/Time Support</title>
 
  <sect1 id="timezones">

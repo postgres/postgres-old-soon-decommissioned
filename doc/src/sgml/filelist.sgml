@@ -35,6 +35,7 @@
 <!entity storage    SYSTEM "storage.sgml">
 <!entity syntax     SYSTEM "syntax.sgml">
 <!entity typeconv   SYSTEM "typeconv.sgml">
+<!entity keywords   SYSTEM "keywords.sgml">
 
 <!-- reference pages -->
 <!entity % allfiles   SYSTEM "ref/allfiles.sgml">
