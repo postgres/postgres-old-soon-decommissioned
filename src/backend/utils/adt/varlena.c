@@ -1050,6 +1050,149 @@ text_smaller(PG_FUNCTION_ARGS)
 	PG_RETURN_TEXT_P(result);
 }
 
+
+/*
+ * The following operators support character-by-character comparison
+ * of text data types, to allow building indexes suitable for LIKE
+ * clauses.
+ */
+
+static int
+internal_text_pattern_compare(text *arg1, text *arg2)
+{
+	int result;
+
+	result = memcmp(VARDATA(arg1), VARDATA(arg2),
+					Min(VARSIZE(arg1), VARSIZE(arg2)) - VARHDRSZ);
+	if (result != 0)
+		return result;
+	else if (VARSIZE(arg1) < VARSIZE(arg2))
+		return -1;
+	else if (VARSIZE(arg1) > VARSIZE(arg2))
+		return 1;
+	else
+		return 0;
+}
+
+
+Datum
+text_pattern_lt(PG_FUNCTION_ARGS)
+{
+	text	   *arg1 = PG_GETARG_TEXT_P(0);
+	text	   *arg2 = PG_GETARG_TEXT_P(1);
+	int			result;
+
+	result = internal_text_pattern_compare(arg1, arg2);
+
+	PG_FREE_IF_COPY(arg1, 0);
+	PG_FREE_IF_COPY(arg2, 1);
+
+	PG_RETURN_BOOL(result < 0);
+}
+
+
+Datum
+text_pattern_le(PG_FUNCTION_ARGS)
+{
+	text	   *arg1 = PG_GETARG_TEXT_P(0);
+	text	   *arg2 = PG_GETARG_TEXT_P(1);
+	int			result;
+
+	result = internal_text_pattern_compare(arg1, arg2);
+
+	PG_FREE_IF_COPY(arg1, 0);
+	PG_FREE_IF_COPY(arg2, 1);
+
+	PG_RETURN_BOOL(result <= 0);
+}
+
+
+Datum
+text_pattern_eq(PG_FUNCTION_ARGS)
+{
+	text	   *arg1 = PG_GETARG_TEXT_P(0);
+	text	   *arg2 = PG_GETARG_TEXT_P(1);
+	int			result;
+
+	if (VARSIZE(arg1) != VARSIZE(arg2))
+		result = 1;
+	else
+		result = internal_text_pattern_compare(arg1, arg2);
+
+	PG_FREE_IF_COPY(arg1, 0);
+	PG_FREE_IF_COPY(arg2, 1);
+
+	PG_RETURN_BOOL(result == 0);
+}
+
+
+Datum
+text_pattern_ge(PG_FUNCTION_ARGS)
+{
+	text	   *arg1 = PG_GETARG_TEXT_P(0);
+	text	   *arg2 = PG_GETARG_TEXT_P(1);
+	int			result;
+
+	result = internal_text_pattern_compare(arg1, arg2);
+
+	PG_FREE_IF_COPY(arg1, 0);
+	PG_FREE_IF_COPY(arg2, 1);
+
+	PG_RETURN_BOOL(result >= 0);
+}
+
+
+Datum
+text_pattern_gt(PG_FUNCTION_ARGS)
+{
+	text	   *arg1 = PG_GETARG_TEXT_P(0);
+	text	   *arg2 = PG_GETARG_TEXT_P(1);
+	int			result;
+
+	result = internal_text_pattern_compare(arg1, arg2);
+
+	PG_FREE_IF_COPY(arg1, 0);
+	PG_FREE_IF_COPY(arg2, 1);
+
+	PG_RETURN_BOOL(result > 0);
+}
+
+
+Datum
+text_pattern_ne(PG_FUNCTION_ARGS)
+{
+	text	   *arg1 = PG_GETARG_TEXT_P(0);
+	text	   *arg2 = PG_GETARG_TEXT_P(1);
+	int			result;
+
+	if (VARSIZE(arg1) != VARSIZE(arg2))
+		result = 1;
+	else
+		result = internal_text_pattern_compare(arg1, arg2);
+
+	PG_FREE_IF_COPY(arg1, 0);
+	PG_FREE_IF_COPY(arg2, 1);
+
+	PG_RETURN_BOOL(result != 0);
+}
+
+
+Datum
+bttext_pattern_cmp(PG_FUNCTION_ARGS)
+{
+	text	   *arg1 = PG_GETARG_TEXT_P(0);
+	text	   *arg2 = PG_GETARG_TEXT_P(1);
+	int			result;
+
+	result = internal_text_pattern_compare(arg1, arg2);
+
+	PG_FREE_IF_COPY(arg1, 0);
+	PG_FREE_IF_COPY(arg2, 1);
+
+	PG_RETURN_INT32(result);
+}
+
+
 /*-------------------------------------------------------------
  * byteaoctetlen
  *

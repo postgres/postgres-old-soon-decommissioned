@@ -37,7 +37,6 @@ extern Pattern_Prefix_Status pattern_fixed_prefix(Const *patt,
 					 Pattern_Type ptype,
 					 Const **prefix,
 					 Const **rest);
-extern bool locale_is_like_safe(void);
 extern Const *make_greater_string(const Const *str_const);
 
 extern Datum eqsel(PG_FUNCTION_ARGS);

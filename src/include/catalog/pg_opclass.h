@@ -140,5 +140,9 @@ DATA(insert OID = 2003 (	403		varchar_ops		PGNSP PGUID 1043 t 0 ));
 DATA(insert OID = 2004 (	405		varchar_ops		PGNSP PGUID 1043 t 0 ));
 DATA(insert OID = 2039 (	403		timestamp_ops	PGNSP PGUID 1114 t 0 ));
 DATA(insert OID = 2040 (	405		timestamp_ops	PGNSP PGUID 1114 t 0 ));
+DATA(insert OID = 2095 (	403		text_pattern_ops	PGNSP PGUID   25 f 0 ));
+DATA(insert OID = 2096 (	403		varchar_pattern_ops	PGNSP PGUID 1043 f 0 ));
+DATA(insert OID = 2097 (	403		bpchar_pattern_ops	PGNSP PGUID 1042 f 0 ));
+DATA(insert OID = 2098 (	403		name_pattern_ops	PGNSP PGUID   19 f 0 ));
 
 #endif   /* PG_OPCLASS_H */

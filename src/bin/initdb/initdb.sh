@@ -478,13 +478,6 @@ else
     echo "    COLLATE:  `pg_getlocale COLLATE`${TAB}CTYPE:   `pg_getlocale CTYPE`${TAB}MESSAGES: `pg_getlocale MESSAGES`"
     echo "    MONETARY: `pg_getlocale MONETARY`${TAB}NUMERIC: `pg_getlocale NUMERIC`${TAB}TIME:     `pg_getlocale TIME`"
 fi
-
-# (Be sure to maintain the correspondence with locale_is_like_safe() in selfuncs.c.)
-if test x`pg_getlocale COLLATE` != xC && test x`pg_getlocale COLLATE` != xPOSIX; then
-    echo "This locale setting will prevent the use of indexes for pattern matching"
-    echo "operations.  If that is a concern, rerun $CMDNAME with the collation order"
-    echo "set to \"C\".  For more information see the documentation."
-fi
 echo
 
 

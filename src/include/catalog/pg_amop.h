@@ -378,6 +378,46 @@ DATA(insert (	2002 3 f 1804 ));
 DATA(insert (	2002 4 f 1809 ));
 DATA(insert (	2002 5 f 1807 ));
 
+/*
+ *	btree text pattern
+ */
+
+DATA(insert (	2095 1 f 2314 ));
+DATA(insert (	2095 2 f 2315 ));
+DATA(insert (	2095 3 f 2316 ));
+DATA(insert (	2095 4 f 2317 ));
+DATA(insert (	2095 5 f 2318 ));
+
+/*
+ *	btree varchar pattern
+ */
+
+DATA(insert (	2096 1 f 2320 ));
+DATA(insert (	2096 2 f 2321 ));
+DATA(insert (	2096 3 f 2322 ));
+DATA(insert (	2096 4 f 2323 ));
+DATA(insert (	2096 5 f 2324 ));
+
+/*
+ *	btree bpchar pattern
+ */
+
+DATA(insert (	2097 1 f 2326 ));
+DATA(insert (	2097 2 f 2327 ));
+DATA(insert (	2097 3 f 2328 ));
+DATA(insert (	2097 4 f 2329 ));
+DATA(insert (	2097 5 f 2330 ));
+
+/*
+ *	btree name pattern
+ */
+
+DATA(insert (	2098 1 f 2332 ));
+DATA(insert (	2098 2 f 2333 ));
+DATA(insert (	2098 3 f 2334 ));
+DATA(insert (	2098 4 f 2335 ));
+DATA(insert (	2098 5 f 2336 ));
+
 
 /*
  *	hash index _ops
