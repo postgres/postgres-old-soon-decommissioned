@@ -3,9 +3,9 @@ $Header$
 Postgres documentation
 -->
 
-<refentry id="app-pg_ctl">
+<refentry id="app-pg-ctl">
  <refmeta>
-  <refentrytitle id="app-pg_ctl-title">
+  <refentrytitle id="app-pg-ctl-title">
    <application>pg_ctl</application>
   </refentrytitle>
   <refmiscinfo>Application</refmiscinfo>
