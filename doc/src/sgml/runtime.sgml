@@ -2974,7 +2974,7 @@ $ <userinput>postmaster -o '-S 1024 -s'</userinput>
     number</quote>, to detect collision with semaphore sets used by
     other applications. The maximum number of semaphores in the system
     is set by <varname>SEMMNS</>, which consequently must be at least
-    as high as <literal>max_connections</> plus one extra for each 16
+    as high as <varname>max_connections</> plus one extra for each 16
     allowed connections (see the formula in <xref
     linkend="sysvipc-parameters">).  The parameter <varname>SEMMNI</>
     determines the limit on the number of semaphore sets that can
