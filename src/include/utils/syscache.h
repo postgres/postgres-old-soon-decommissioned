@@ -40,7 +40,7 @@
 #define CLAAMNAMENSP	9
 #define CLAOID			10
 #define CONDEFAULT		11
-#define CONNAMESP		12
+#define CONNAMENSP		12
 #define CONOID			13
 #define GRONAME			14
 #define GROSYSID		15
