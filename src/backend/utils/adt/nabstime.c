@@ -19,6 +19,7 @@
 #include <ctype.h>
 #include <float.h>
 #include <limits.h>
+#include <sys/time.h>
 
 #include "access/xact.h"
 #include "libpq/pqformat.h"

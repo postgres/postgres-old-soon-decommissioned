@@ -18,6 +18,7 @@
 #include <signal.h>
 #include <unistd.h>
 #include <sys/stat.h>
+#include <sys/time.h>
 
 #include "access/clog.h"
 #include "access/transam.h"

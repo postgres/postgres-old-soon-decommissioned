@@ -19,6 +19,7 @@
  */
 #include "postgres.h"
 
+#include <sys/time.h>
 #include <unistd.h>
 
 #include "access/clog.h"
