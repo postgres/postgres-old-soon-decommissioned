@@ -191,6 +191,8 @@ cat > $TABCFILE <<FuNkYfMgRtAbStUfF
  *-------------------------------------------------------------------------
  */
 
+#include <string.h>
+
 #include <postgres.h>
 
 #ifdef WIN32

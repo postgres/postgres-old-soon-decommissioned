@@ -18,6 +18,8 @@
 #define LOCKDEBUG	1
 #endif /*  LOCKDEBUGALL */
 
+#include <string.h>
+
 #include "postgres.h"
 
 #include "access/heapam.h"

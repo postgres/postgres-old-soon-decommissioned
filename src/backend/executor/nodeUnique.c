@@ -22,6 +22,8 @@
  *	sorted order.
  *
  */
+#include <string.h>
+
 #include "postgres.h"
 #include "fmgr.h"
 

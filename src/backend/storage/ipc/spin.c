@@ -26,6 +26,9 @@
  */
 #include <errno.h>
 #include "postgres.h"
+#ifndef HAS_TEST_AND_SET
+#include <sys/sem.h>
+#endif
 #include "storage/ipc.h"
 #include "storage/shmem.h"
 #include "storage/spin.h"

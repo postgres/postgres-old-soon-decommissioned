@@ -14,6 +14,8 @@
  *-------------------------------------------------------------------------
  */
 #include <stdio.h>		/* for sprintf() */
+#include <string.h>
+
 #include "postgres.h"
 #include "access/heapam.h"
 #include "access/relscan.h"

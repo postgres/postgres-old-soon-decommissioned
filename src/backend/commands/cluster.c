@@ -18,6 +18,8 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <string.h>
+
 #include <postgres.h>
 
 #include <catalog/pg_index.h>

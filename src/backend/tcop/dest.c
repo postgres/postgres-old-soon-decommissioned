@@ -24,6 +24,8 @@
  *
  */
 #include <stdio.h>		/* for sprintf() */
+#include <string.h>
+
 #include "postgres.h"
 
 #include "access/htup.h"

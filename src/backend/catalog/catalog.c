@@ -11,6 +11,8 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <string.h>
+
 #include <postgres.h>
 
 #include <miscadmin.h>  /* for DataDir */
