@@ -127,7 +127,7 @@ dropuser [ <replaceable class="parameter">options</replaceable> ] [ <replaceable
      </varlistentry>
 
      <varlistentry>
-      <term><computeroutput>dropuser: Deletion of user "<replaceable class="parameter">username</replaceable>" failed.</computeroutput></term>
+      <term><computeroutput>dropuser: deletion of user "<replaceable class="parameter">username</replaceable>" failed</computeroutput></term>
       <listitem>
        <para>
         Something went wrong. The user was not removed.

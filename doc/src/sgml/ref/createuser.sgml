@@ -177,7 +177,7 @@ createuser [ <replaceable class="parameter">options</replaceable> ] [ <replaceab
      </varlistentry>
 
      <varlistentry>
-      <term><computeroutput>createuser: Creation of user "<replaceable class="parameter">username</replaceable>" failed.</computeroutput></term>
+      <term><computeroutput>createuser: creation of user "<replaceable class="parameter">username</replaceable>" failed</computeroutput></term>
       <listitem>
        <para>
         Something went wrong. The user was not created.
