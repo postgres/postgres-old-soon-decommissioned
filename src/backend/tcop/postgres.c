@@ -46,7 +46,6 @@
 #include "optimizer/planner.h"
 #include "parser/analyze.h"
 #include "parser/parser.h"
-#include "pgtime.h"
 #include "rewrite/rewriteHandler.h"
 #include "storage/freespace.h"
 #include "storage/ipc.h"

@@ -29,6 +29,7 @@
 #include <arpa/inet.h>
 #include <errno.h>
 #include <signal.h>
+#include <time.h>
 
 #include "pgstat.h"
 

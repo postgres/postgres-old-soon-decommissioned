@@ -29,7 +29,6 @@
 #include "nodes/pg_list.h"
 #include "nodes/primnodes.h"
 #include "parser/scansup.h"
-#include "pgtime.h"
 #include "rewrite/prs2lock.h"
 #include "storage/block.h"
 #include "storage/fd.h"

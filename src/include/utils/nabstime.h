@@ -17,7 +17,6 @@
 #include <limits.h>
 
 #include "fmgr.h"
-#include "pgtime.h"
 #include "utils/timestamp.h"
 #include "utils/datetime.h"
 
@@ -28,9 +27,10 @@
  *
  * ----------------------------------------------------------------
  */
+
 /*
  * Although time_t generally is a long int on 64 bit systems, these two
- * types must be 4 bytes, because that's what the system assumes. They
+ * types must be 4 bytes, because that's what pg_type.h assumes. They
  * should be yanked (long) before 2038 and be replaced by timestamp and
  * interval.
  */

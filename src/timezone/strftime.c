@@ -265,21 +265,6 @@ _fmt(const char *format, const struct pg_tm * t, char *pt, const char *ptlim,
 				case 'S':
 					pt = _conv(t->tm_sec, "%02d", pt, ptlim);
 					continue;
-				case 's':
-					{
-						struct pg_tm tm;
-						char		buf[INT_STRLEN_MAXIMUM(time_t) +1];
-						time_t		mkt;
-
-						tm = *t;
-						mkt = pg_mktime(&tm);
-						if (TYPE_SIGNED(time_t))
-							(void) sprintf(buf, "%ld", (long) mkt);
-						else
-							(void) sprintf(buf, "%lu", (unsigned long) mkt);
-						pt = _add(buf, pt, ptlim);
-					}
-					continue;
 				case 'T':
 					pt = _fmt("%H:%M:%S", t, pt, ptlim, warnp);
 					continue;

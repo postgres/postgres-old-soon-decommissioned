@@ -18,6 +18,8 @@
  */
 #include "postgres.h"
 
+#include <time.h>
+
 #include "access/xact.h"
 #include "storage/buf_internals.h"
 #include "storage/bufmgr.h"

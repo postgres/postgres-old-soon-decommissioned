@@ -27,7 +27,6 @@
 #include "catalog/pg_statistic.h"
 #include "catalog/pg_type.h"
 #include "nodes/parsenodes.h"
-#include "pgtime.h"
 #include "utils/rel.h"
 
 

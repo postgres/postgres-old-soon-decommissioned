@@ -16,6 +16,7 @@
 
 #include <fcntl.h>
 #include <signal.h>
+#include <time.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #include <sys/time.h>
@@ -2761,9 +2762,9 @@ str_time(time_t tnow)
 {
 	static char buf[128];
 
-	pg_strftime(buf, sizeof(buf),
+	strftime(buf, sizeof(buf),
 			 "%Y-%m-%d %H:%M:%S %Z",
-			 pg_localtime(&tnow));
+			 localtime(&tnow));
 
 	return buf;
 }

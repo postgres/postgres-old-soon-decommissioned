@@ -44,6 +44,7 @@
 #include "postgres.h"
 
 #include <signal.h>
+#include <time.h>
 
 #include "access/xlog.h"
 #include "libpq/pqsignal.h"
