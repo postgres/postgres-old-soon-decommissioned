@@ -1043,11 +1043,7 @@ $ECHO_N "loading pg_description... "$ECHO_C
 	classname name, \
 	objsubid int4, \
 	description text) WITHOUT OIDS;
-    COPY tmp_pg_description FROM STDIN;
-EOF
-  cat "$POSTGRES_DESCR"
-  cat <<EOF
-\.
+    COPY tmp_pg_description FROM '$POSTGRES_DESCR';
     INSERT INTO pg_description SELECT \
 	t.objoid, c.oid, t.objsubid, t.description \
     FROM tmp_pg_description t, pg_class c WHERE c.relname = t.classname;
