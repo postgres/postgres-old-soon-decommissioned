@@ -1595,7 +1595,10 @@ RelationClearRelation(Relation relation, bool rebuildIt)
 		 * this is kind of expensive, but I think we must do it in case
 		 * relation has been truncated...
 		 */
-		relation->rd_nblocks = RelationGetNumberOfBlocks(relation);
+		if (relation->rd_unlinked)
+			relation->rd_nblocks = 0;
+		else
+			relation->rd_nblocks = RelationGetNumberOfBlocks(relation);
 
 		if (relDescChanged && !RelationHasReferenceCountZero(relation))
 			elog(ERROR, "RelationClearRelation: relation %u modified while in use",
