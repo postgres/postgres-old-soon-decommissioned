@@ -173,8 +173,6 @@ CREATE DATABASE lusiadas;
   </para>
 
   <para>
-
-  <para>
    To create a database <literal>sales</> owned by user <literal>salesapp</>>
    with a default tablespace of <literal>salesspace</>:
 
