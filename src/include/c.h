@@ -594,7 +594,6 @@ typedef NameData *Name;
 
 /* These are for things that are one way on Unix and another on NT */
 #define NULL_DEV		"/dev/null"
-#define SEP_CHAR		'/'
 
 /* defines for dynamic linking on Win32 platform */
 #ifdef __CYGWIN__

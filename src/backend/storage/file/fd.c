@@ -580,11 +580,11 @@ filepath(char *filename)
 	int			len;
 
 	/* Not an absolute path name? Then fill in with database path... */
-	if (*filename != SEP_CHAR)
+	if (*filename != '/')
 	{
 		len = strlen(DatabasePath) + strlen(filename) + 2;
 		buf = (char *) palloc(len);
-		sprintf(buf, "%s%c%s", DatabasePath, SEP_CHAR, filename);
+		sprintf(buf, "%s/%s", DatabasePath, filename);
 	}
 	else
 	{

@@ -80,7 +80,7 @@ relpath_blind(const char *dbname, const char *relname,
 	{
 		/* XXX why is this inconsistent with relpath() ? */
 		path = (char *) palloc(strlen(DatabasePath) + sizeof(NameData) + 2);
-		sprintf(path, "%s%c%s", DatabasePath, SEP_CHAR, relname);
+		sprintf(path, "%s/%s", DatabasePath, relname);
 	}
 	else
 	{
@@ -99,7 +99,7 @@ relpath_blind(const char *dbname, const char *relname,
 			elog(FATAL, "relpath_blind: can't expand path for db %s",
 				 dbname);
 		path = (char *) palloc(strlen(dbpath) + sizeof(NameData) + 2);
-		sprintf(path, "%s%c%s", dbpath, SEP_CHAR, relname);
+		sprintf(path, "%s/%s", dbpath, relname);
 		pfree(dbpath);
 	}
 	return path;
@@ -122,13 +122,12 @@ relpath(RelFileNode rnode)
 	{
 		/* Shared system relations live in {datadir}/global */
 		path = (char *) palloc(strlen(DataDir) + 8 + sizeof(NameData) + 1);
-		sprintf(path, "%s%cglobal%c%u", DataDir, SEP_CHAR, SEP_CHAR, rnode.relNode);
+		sprintf(path, "%s/global/%u", DataDir, rnode.relNode);
 	}
 	else
 	{
 		path = (char *) palloc(strlen(DataDir) + 6 + 2 * sizeof(NameData) + 3);
-		sprintf(path, "%s%cbase%c%u%c%u", DataDir, SEP_CHAR, SEP_CHAR,
-				rnode.tblNode, SEP_CHAR, rnode.relNode);
+		sprintf(path, "%s/base/%u/%u", DataDir, rnode.tblNode, rnode.relNode);
 	}
 	return path;
 }
@@ -148,12 +147,12 @@ GetDatabasePath(Oid tblNode)
 	{
 		/* Shared system relations live in {datadir}/global */
 		path = (char *) palloc(strlen(DataDir) + 8);
-		sprintf(path, "%s%cglobal", DataDir, SEP_CHAR);
+		sprintf(path, "%s/global", DataDir);
 	}
 	else
 	{
 		path = (char *) palloc(strlen(DataDir) + 6 + sizeof(NameData) + 1);
-		sprintf(path, "%s%cbase%c%u", DataDir, SEP_CHAR, SEP_CHAR, tblNode);
+		sprintf(path, "%s/base/%u", DataDir, tblNode);
 	}
 	return path;
 }

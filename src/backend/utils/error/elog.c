@@ -562,8 +562,8 @@ DebugFileOpen(void)
 	fd = fileno(stderr);
 	if (fcntl(fd, F_GETFD, 0) < 0)
 	{
-		snprintf(OutputFileName, MAXPGPATH, "%s%cpg.errors.%d",
-				 DataDir, SEP_CHAR, (int) MyProcPid);
+		snprintf(OutputFileName, MAXPGPATH, "%s/pg.errors.%d",
+				 DataDir, (int) MyProcPid);
 		fd = open(OutputFileName, O_CREAT | O_APPEND | O_WRONLY, 0666);
 	}
 	if (fd < 0)

@@ -272,8 +272,7 @@ checkDataDir(const char *checkdir)
 		ExitPostmaster(2);
 	}
 
-	snprintf(path, sizeof(path), "%s%cglobal%cpg_control",
-			 checkdir, SEP_CHAR, SEP_CHAR);
+	snprintf(path, sizeof(path), "%s/global/pg_control", checkdir);
 
 	fp = AllocateFile(path, PG_BINARY_R);
 	if (fp == NULL)

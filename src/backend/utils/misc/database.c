@@ -52,20 +52,19 @@ ExpandDatabasePath(const char *dbpath)
 		return NULL;			/* ain't gonna fit nohow */
 
 	/* leading path delimiter? then already absolute path */
-	if (*dbpath == SEP_CHAR)
+	if (*dbpath == '/')
 	{
 #ifdef ALLOW_ABSOLUTE_DBPATHS
-		cp = strrchr(dbpath, SEP_CHAR);
+		cp = strrchr(dbpath, '/');
 		len = cp - dbpath;
 		strncpy(buf, dbpath, len);
-		snprintf(&buf[len], MAXPGPATH - len, "%cbase%c%s",
-				 SEP_CHAR, SEP_CHAR, (cp + 1));
+		snprintf(&buf[len], MAXPGPATH - len, "/base/%s", (cp + 1));
 #else
 		return NULL;
 #endif
 	}
 	/* path delimiter somewhere? then has leading environment variable */
-	else if ((cp = strchr(dbpath, SEP_CHAR)) != NULL)
+	else if ((cp = strchr(dbpath, '/')) != NULL)
 	{
 		const char *envvar;
 
@@ -76,14 +75,12 @@ ExpandDatabasePath(const char *dbpath)
 		if (envvar == NULL)
 			return NULL;
 
-		snprintf(buf, sizeof(buf), "%s%cbase%c%s",
-				 envvar, SEP_CHAR, SEP_CHAR, (cp + 1));
+		snprintf(buf, sizeof(buf), "%s/base/%s", envvar, (cp + 1));
 	}
 	else
 	{
 		/* no path delimiter? then add the default path prefix */
-		snprintf(buf, sizeof(buf), "%s%cbase%c%s",
-				 DataDir, SEP_CHAR, SEP_CHAR, dbpath);
+		snprintf(buf, sizeof(buf), "%s/base/%s", DataDir, dbpath);
 	}
 
 	/*

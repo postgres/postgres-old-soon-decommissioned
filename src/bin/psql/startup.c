@@ -102,10 +102,10 @@ main(int argc, char *argv[])
 	char	   *password = NULL;
 	bool		need_pass;
 
-	if (!strrchr(argv[0], SEP_CHAR))
+	if (!strrchr(argv[0], '/'))
 		pset.progname = argv[0];
 	else
-		pset.progname = strrchr(argv[0], SEP_CHAR) + 1;
+		pset.progname = strrchr(argv[0], '/') + 1;
 
 	if (argc > 1)
 	{

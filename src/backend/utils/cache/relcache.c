@@ -2810,10 +2810,10 @@ write_irels(void)
 	 * another backend starting at about the same time might crash trying
 	 * to read the partially-complete file.
 	 */
-	snprintf(tempfilename, sizeof(tempfilename), "%s%c%s.%d",
-			 DatabasePath, SEP_CHAR, RELCACHE_INIT_FILENAME, MyProcPid);
-	snprintf(finalfilename, sizeof(finalfilename), "%s%c%s",
-			 DatabasePath, SEP_CHAR, RELCACHE_INIT_FILENAME);
+	snprintf(tempfilename, sizeof(tempfilename), "%s/%s.%d",
+			 DatabasePath, RELCACHE_INIT_FILENAME, MyProcPid);
+	snprintf(finalfilename, sizeof(finalfilename), "%s/%s",
+			 DatabasePath, RELCACHE_INIT_FILENAME);
 
 	fd = PathNameOpenFile(tempfilename, O_WRONLY | O_CREAT | O_TRUNC | PG_BINARY, 0600);
 	if (fd < 0)
