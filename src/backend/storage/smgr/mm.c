@@ -267,7 +267,7 @@ mmunlink(RelFileNode rnode)
  *		appropriate.
  */
 int
-mmextend(Relation reln, char *buffer)
+mmextend(Relation reln, BlockNumber blocknum, char *buffer)
 {
 	MMRelHashEntry *rentry;
 	MMHashEntry *entry;
