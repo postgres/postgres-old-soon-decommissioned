@@ -90,8 +90,9 @@ int28in(char *intString)
 	{
 		if (sscanf(intString, "%hd", &result[slot]) != 1)
 			break;
-		while (*intString && *intString != ' ')
+		do
 			intString++;
+		while (*intString && *intString != ' ')
 	}
 	while (slot < INDEX_MAX_KEYS)
 		result[slot++] = 0;

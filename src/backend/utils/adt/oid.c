@@ -41,8 +41,9 @@ oid8in(char *oidString)
 	{
 		if (sscanf(oidString, "%u", &result[slot]) != 1)
 			break;
-		while (*oidString && *oidString != ' ')
+		do
 			oidString++;
+		while (*oidString && *oidString != ' ')
 	}
 	while (slot < INDEX_MAX_KEYS)
 		result[slot++] = 0;
