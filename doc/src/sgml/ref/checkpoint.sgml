@@ -12,7 +12,7 @@
 
  <refnamediv>
   <refname>CHECKPOINT</refname>
-  <refpurpose>Force transaction log checkpoint</refpurpose>
+  <refpurpose>force a transaction log checkpoint</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

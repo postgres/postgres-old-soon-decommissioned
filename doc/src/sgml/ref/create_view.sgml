@@ -15,7 +15,7 @@ Postgres documentation
    CREATE VIEW
   </refname>
   <refpurpose>
-   Constructs a virtual table
+   define a new view
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

@@ -17,7 +17,7 @@ Postgres documentation
   <refnamediv>
     <refname><application>psql</application></refname>
     <refpurpose>
-      <productname>Postgres</productname> interactive terminal
+      <productname>PostgreSQL</productname> interactive terminal
     </refpurpose>
   </refnamediv>
 

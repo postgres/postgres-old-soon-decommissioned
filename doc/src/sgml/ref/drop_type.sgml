@@ -15,7 +15,7 @@ Postgres documentation
    DROP TYPE
   </refname>
   <refpurpose>
-   Removes user-defined types from the system catalogs
+   remove a user-defined data type
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

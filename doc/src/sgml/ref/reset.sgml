@@ -10,7 +10,7 @@ Postgres documentation
  </refmeta>
  <refnamediv>
   <refname>RESET</refname>
-  <refpurpose>Restores run-time parameters to default values</refpurpose>
+  <refpurpose>restore the value of a run-time parameter to a default value</refpurpose>
  </refnamediv>
  <refsynopsisdiv>
   <synopsis>

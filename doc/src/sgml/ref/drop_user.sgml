@@ -15,7 +15,7 @@ Postgres documentation
    DROP USER
   </refname>
   <refpurpose>
-   Removes a user
+   remove a database user account
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

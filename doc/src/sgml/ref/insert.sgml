@@ -13,7 +13,7 @@ Postgres documentation
    INSERT
   </refname>
   <refpurpose>
-   Inserts new rows into a table
+   create new rows in a table
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

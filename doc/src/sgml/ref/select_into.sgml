@@ -15,7 +15,7 @@ Postgres documentation
    SELECT INTO
   </refname>
   <refpurpose>
-   Creates a new table from the results of a SELECT
+   create a new table from the results of a query
   </refpurpose></refnamediv>
  <refsynopsisdiv>
   <refsynopsisdivinfo>

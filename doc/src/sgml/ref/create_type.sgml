@@ -15,7 +15,7 @@ Postgres documentation
    CREATE TYPE
   </refname>
   <refpurpose>
-   Defines a new base data type
+   define a new data type
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

@@ -15,7 +15,7 @@ Postgres documentation
    DROP AGGREGATE
   </refname>
   <refpurpose>
-   Removes the definition of an aggregate function
+   remove a user-defined aggregate function
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

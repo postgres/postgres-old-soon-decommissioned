@@ -15,7 +15,7 @@ Postgres documentation
    DROP TRIGGER
   </refname>
   <refpurpose>
-   Removes the definition of a trigger
+   remove a trigger
   </refpurpose> 
  </refnamediv>            
  <refsynopsisdiv>

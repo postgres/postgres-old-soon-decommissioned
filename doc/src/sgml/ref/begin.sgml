@@ -15,7 +15,7 @@ Postgres documentation
    BEGIN
   </refname>
   <refpurpose>
-   Begins a transaction in chained mode
+   start a transaction block
   </refpurpose>
   
   </refnamediv>

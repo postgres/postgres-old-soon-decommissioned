@@ -13,7 +13,7 @@ Postgres documentation
    DELETE
   </refname>
   <refpurpose>
-   Removes rows from a table
+   delete rows of a table
   </refpurpose>
 
  </refnamediv>

@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>initdb</refname>
-  <refpurpose>Create a new <productname>Postgres</productname> database cluster</refpurpose>
+  <refpurpose>create a new <productname>PostgreSQL</productname> database cluster</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

@@ -16,7 +16,7 @@ Postgres documentation
    <application>ecpg</application>
   </refname>
   <refpurpose>
-   Embedded SQL C preprocessor
+   embedded SQL C preprocessor
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

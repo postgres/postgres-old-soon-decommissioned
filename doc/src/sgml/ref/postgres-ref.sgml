@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>postgres</refname>
-  <refpurpose>Run a <productname>PostgreSQL</productname> single-user backend</refpurpose>
+  <refpurpose>run a <productname>PostgreSQL</productname> server in single-user mode</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

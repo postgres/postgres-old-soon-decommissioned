@@ -15,7 +15,7 @@ Postgres documentation
    CREATE GROUP
   </refname>
   <refpurpose>
-   Creates a new group
+   define a new user group
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

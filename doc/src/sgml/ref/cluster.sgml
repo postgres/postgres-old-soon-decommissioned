@@ -15,7 +15,7 @@ Postgres documentation
    CLUSTER
   </refname>
   <refpurpose>
-   Gives storage clustering advice to the server
+   cluster a table according to an index
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

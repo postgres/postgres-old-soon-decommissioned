@@ -15,7 +15,7 @@ Postgres documentation
    VACUUM
   </refname>
   <refpurpose>
-   Clean and optionally analyze a <productname>Postgres</productname> database
+   garbage-collect and optionally analyze a database
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

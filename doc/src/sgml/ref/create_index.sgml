@@ -15,7 +15,7 @@ Postgres documentation
    CREATE INDEX
   </refname>
   <refpurpose>
-   Constructs a secondary index
+   define a new index
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

@@ -15,7 +15,7 @@ Postgres documentation
    ALTER GROUP
   </refname>
   <refpurpose>
-   Add users to a group;  remove users from a group
+   add users to a group or remove users from a group
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

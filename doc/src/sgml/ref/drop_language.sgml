@@ -15,7 +15,7 @@ Postgres documentation
    DROP LANGUAGE
   </refname>
   <refpurpose>
-   Removes a user-defined procedural language
+   remove a user-defined procedural language
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

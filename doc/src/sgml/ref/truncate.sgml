@@ -15,7 +15,7 @@ Postgres documentation
    TRUNCATE
   </refname>
   <refpurpose>
-   Empty a table
+   empty a table
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

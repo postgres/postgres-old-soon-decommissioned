@@ -15,7 +15,7 @@ Postgres documentation
    DROP INDEX
   </refname>
   <refpurpose>
-   Removes an index from the database
+   remove an index
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

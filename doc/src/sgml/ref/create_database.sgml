@@ -15,7 +15,7 @@ Postgres documentation
    CREATE DATABASE
   </refname>
   <refpurpose>
-   Creates a new database
+   create a new database
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

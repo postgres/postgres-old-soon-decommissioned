@@ -10,7 +10,7 @@ Postgres documentation
  </refmeta>
  <refnamediv>
   <refname>SET</refname>
-  <refpurpose>Set run-time parameters</refpurpose>
+  <refpurpose>change a run-time parameter</refpurpose>
  </refnamediv>
  <refsynopsisdiv>
   <synopsis>

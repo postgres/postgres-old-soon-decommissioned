@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>pgaccess</refname>
-  <refpurpose><productname>PostgreSQL</productname> graphical client</refpurpose>
+  <refpurpose>a graphical <productname>PostgreSQL</productname> client application</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

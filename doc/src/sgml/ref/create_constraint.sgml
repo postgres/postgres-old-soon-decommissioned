@@ -15,7 +15,7 @@ Postgres documentation
    CREATE CONSTRAINT TRIGGER
   </refname>
   <refpurpose>
-   Create a trigger to support a constraint
+   define a new constraint trigger
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

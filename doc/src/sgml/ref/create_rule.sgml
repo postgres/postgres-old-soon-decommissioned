@@ -13,7 +13,7 @@ Postgres documentation
    CREATE RULE
   </refname>
   <refpurpose>
-   Defines a new rule
+   define a new rewrite rule
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

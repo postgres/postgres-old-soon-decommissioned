@@ -15,7 +15,7 @@ Postgres documentation
    CREATE SEQUENCE
   </refname>
   <refpurpose>
-   Creates a new sequence number generator
+   define a new sequence
   </refpurpose>
  </refnamediv> 
  <refsynopsisdiv>

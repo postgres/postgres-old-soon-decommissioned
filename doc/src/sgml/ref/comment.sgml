@@ -15,7 +15,7 @@ Postgres documentation
    COMMENT
   </refname>
   <refpurpose>
-   Add comment to an object
+   define or change the comment of an object
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

@@ -15,7 +15,7 @@ Postgres documentation
    CLOSE
   </refname>
   <refpurpose>
-   Close a cursor
+   close a cursor
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

@@ -15,7 +15,7 @@ Postgres documentation
    CREATE USER
   </refname>
   <refpurpose>
-   Creates a new database user
+   define a new database user account
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

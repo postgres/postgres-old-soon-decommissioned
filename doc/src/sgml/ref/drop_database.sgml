@@ -15,7 +15,7 @@ Postgres documentation
    DROP DATABASE
   </refname>
   <refpurpose>
-   Removes an existing database
+   remove a database
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

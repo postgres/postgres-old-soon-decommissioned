@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>createuser</refname>
-  <refpurpose>Create a new <productname>Postgres</productname> user</refpurpose>
+  <refpurpose>define a new <productname>PostgreSQL</productname> user account</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

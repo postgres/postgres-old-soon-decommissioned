@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname id="vacuumdb">vacuumdb</refname>
-  <refpurpose>Clean and analyze a <productname>Postgres</productname> database</refpurpose>
+  <refpurpose>garbage-collect and analyze a <productname>PostgreSQL</productname> database</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

@@ -15,7 +15,7 @@ Postgres documentation
    EXPLAIN
   </refname>
   <refpurpose>
-   Shows statement execution plan
+   show the execution plan of a statement
   </refpurpose>
  </refnamediv>
 

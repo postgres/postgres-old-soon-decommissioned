@@ -11,7 +11,7 @@
 
  <refnamediv>
   <refname>SET TRANSACTION</refname>
-  <refpurpose>Set the characteristics of the current SQL-transaction</refpurpose>
+  <refpurpose>set the characteristics of the current transaction</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

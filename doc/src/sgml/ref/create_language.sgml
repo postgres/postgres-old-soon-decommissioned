@@ -15,7 +15,7 @@ Postgres documentation
    CREATE LANGUAGE
   </refname>
   <refpurpose>
-   Defines a new language for functions
+   define a new procedural language
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

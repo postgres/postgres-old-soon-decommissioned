@@ -13,7 +13,7 @@ Postgres documentation
    UPDATE
   </refname>
   <refpurpose>
-   Replaces values of columns in a table
+   update rows of a table
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>pg_ctl</refname>
-  <refpurpose>Starts, stops, or restarts postmaster</refpurpose>
+  <refpurpose>start, stop, or restart a <productname>PostgreSQL</productname> server</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

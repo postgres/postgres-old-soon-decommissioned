@@ -20,7 +20,7 @@ Postgres documentation
   <refname>pg_dump</refname>
 
   <refpurpose>
-   Extract a <productname>Postgres</productname> database into a script file or other archive file 
+   extract a <productname>PostgreSQL</productname> database into a script file or other archive file 
   </refpurpose>
  </refnamediv>
 

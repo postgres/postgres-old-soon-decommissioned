@@ -15,7 +15,7 @@ Postgres documentation
    CREATE TABLE
   </refname>
   <refpurpose>
-   Creates a new table
+   define a new table
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

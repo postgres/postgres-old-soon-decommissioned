@@ -15,7 +15,7 @@ Postgres documentation
    ROLLBACK
   </refname>
   <refpurpose>
-   Aborts the current transaction
+   abort the current transaction
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

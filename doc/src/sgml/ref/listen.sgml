@@ -15,7 +15,7 @@ Postgres documentation
    LISTEN
   </refname>
   <refpurpose>
-   Listen for a response on a notify condition
+   listen for a notification
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

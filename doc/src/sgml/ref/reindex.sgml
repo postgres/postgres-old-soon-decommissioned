@@ -15,7 +15,7 @@ Postgres documentation
    REINDEX
   </refname>
   <refpurpose>
-   Recover corrupted system indexes under stand-alone Postgres
+   recover a corrupted system index
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

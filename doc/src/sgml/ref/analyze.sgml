@@ -15,7 +15,7 @@ Postgres documentation
    ANALYZE
   </refname>
   <refpurpose>
-   Collect statistics about a <productname>Postgres</productname> database
+   collect statistics about a database
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

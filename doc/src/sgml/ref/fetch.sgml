@@ -15,7 +15,7 @@ Postgres documentation
    FETCH
   </refname>
   <refpurpose>
-   Gets rows using a cursor
+   retrieve rows from a table using a cursor
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

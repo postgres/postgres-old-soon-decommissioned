@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>createdb</refname>
-  <refpurpose>Create a new <productname>Postgres</productname> database</refpurpose>
+  <refpurpose>create a new <productname>PostgreSQL</productname> database</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

@@ -11,8 +11,8 @@
 
  <refnamediv>
   <refname>SET SESSION AUTHORIZATION</refname>
-  <refpurpose>Set the session user identifier and the current user identifier
-         of the current SQL-session context</refpurpose>
+  <refpurpose>set the session user identifier and the current user identifier
+         of the current session</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

@@ -15,7 +15,7 @@ Postgres documentation
    DROP OPERATOR
   </refname>
   <refpurpose>
-   Removes an operator from the database
+   remove a user-defined operator
   </refpurpose>
  </refnamediv>
   

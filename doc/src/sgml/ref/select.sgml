@@ -13,7 +13,7 @@ Postgres documentation
    SELECT
   </refname>
   <refpurpose>
-   Retrieves rows from a table or view
+   retrieve rows from a table or view
   </refpurpose></refnamediv>
  <refsynopsisdiv>
   <refsynopsisdivinfo>

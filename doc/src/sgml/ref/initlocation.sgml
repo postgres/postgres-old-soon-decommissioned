@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>initlocation</refname>
-  <refpurpose>Create a secondary <productname>Postgres</productname> database storage area</refpurpose>
+  <refpurpose>create a secondary <productname>PostgreSQL</productname> database storage area</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

@@ -11,7 +11,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>GRANT</refname>
-  <refpurpose>Grants access privileges to a user, a group, or all users</refpurpose>
+  <refpurpose>define access privileges</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>ipcclean</refname>
-  <refpurpose>Clean up shared memory and semaphores from aborted backends</refpurpose>
+  <refpurpose>remove shared memory and semaphores from an aborted <productname>PostgreSQL</productname> server</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

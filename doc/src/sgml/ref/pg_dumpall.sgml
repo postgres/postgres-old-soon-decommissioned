@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>pg_dumpall</refname>
-  <refpurpose>Extract all databases into a script file</refpurpose>
+  <refpurpose>extract all <productname>PostgreSQL</productname> databases into a script file</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

@@ -10,7 +10,7 @@ $Header$
 
  <refnamediv>
   <refname>LOAD</refname>
-  <refpurpose>Loads a shared object file</refpurpose>
+  <refpurpose>load or reload a shared object file</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

@@ -13,7 +13,7 @@
 
  <refnamediv>
   <refname>pg_config</refname>
-  <refpurpose>Provides information about the installed version of <productname>PostgreSQL</></refpurpose>
+  <refpurpose>retrieve information about the installed version of <productname>PostgreSQL</></refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

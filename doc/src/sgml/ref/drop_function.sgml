@@ -15,7 +15,7 @@ Postgres documentation
    DROP FUNCTION
   </refname>
   <refpurpose>
-   Removes a user-defined C function
+   remove a user-defined function
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

@@ -6,7 +6,7 @@
  </refmeta>
  <refnamediv>
   <refname>SET CONSTRAINTS</refname>
-  <refpurpose>Set the constraint mode of the current SQL-transaction</refpurpose>
+  <refpurpose>set the constraint mode of the current transaction</refpurpose>
  </refnamediv>
  <refsynopsisdiv>
   <refsynopsisdivinfo>

@@ -15,7 +15,7 @@ Postgres documentation
    MOVE
   </refname>
   <refpurpose>
-   Moves cursor position
+   position a cursor on a specified row of a table
   </refpurpose>
  </refnamediv>                
  <refsynopsisdiv>

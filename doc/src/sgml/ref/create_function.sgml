@@ -10,7 +10,7 @@ $Header$
 
  <refnamediv>
   <refname>CREATE FUNCTION</refname>
-  <refpurpose>Defines a new function</refpurpose>
+  <refpurpose>define a new function</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

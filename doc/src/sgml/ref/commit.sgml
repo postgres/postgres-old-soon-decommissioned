@@ -15,7 +15,7 @@ Postgres documentation
    COMMIT
   </refname>
   <refpurpose>
-   Commits the current transaction
+   commit the current transaction
   </refpurpose>
  </refnamediv>  
   

@@ -11,7 +11,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>REVOKE</refname>
-  <refpurpose>Revokes access privilege from a user, a group, or all users.</refpurpose>
+  <refpurpose>remove access privileges</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

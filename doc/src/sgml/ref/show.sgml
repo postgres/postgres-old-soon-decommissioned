@@ -10,7 +10,7 @@ Postgres documentation
  </refmeta>
  <refnamediv>
   <refname>SHOW</refname>
-  <refpurpose>Shows run-time parameters</refpurpose>
+  <refpurpose>show the value of a run-time parameter</refpurpose>
  </refnamediv>
  <refsynopsisdiv>
   <synopsis>

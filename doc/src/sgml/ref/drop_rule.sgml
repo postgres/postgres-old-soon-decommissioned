@@ -15,7 +15,7 @@ Postgres documentation
    DROP RULE
   </refname>
   <refpurpose>
-   Removes rules from the database
+   remove a rewrite rule
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

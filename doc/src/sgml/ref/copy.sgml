@@ -13,7 +13,7 @@ Postgres documentation
    COPY
   </refname>
   <refpurpose>
-   Copies data between files and tables
+   copy data between files and tables
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

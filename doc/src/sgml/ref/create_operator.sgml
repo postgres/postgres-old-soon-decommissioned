@@ -15,7 +15,7 @@ Postgres documentation
    CREATE OPERATOR
   </refname>
   <refpurpose>
-   Defines a new user operator
+   define a new operator
   </refpurpose>
   </refnamediv>
  <refsynopsisdiv>

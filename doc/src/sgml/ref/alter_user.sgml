@@ -15,7 +15,7 @@ Postgres documentation
    ALTER USER
   </refname>
   <refpurpose>
-   Modifies user account information
+   change a database user account
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

@@ -15,7 +15,7 @@ Postgres documentation
    UNLISTEN
   </refname>
   <refpurpose>
-   Stop listening for notification
+   stop listening for a notification
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

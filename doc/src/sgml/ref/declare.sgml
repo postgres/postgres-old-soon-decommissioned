@@ -15,7 +15,7 @@ Postgres documentation
    DECLARE
   </refname>
   <refpurpose>
-   Defines a cursor for table access
+   define a cursor
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>
