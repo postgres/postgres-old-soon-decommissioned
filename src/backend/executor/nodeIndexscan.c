@@ -905,7 +905,7 @@ ExecInitIndexScan(IndexScan *node, EState *estate, Plan *parent)
     for (i=0; i < numIndices; i++) {
 	Oid 	indexOid;
 	
-	indexOid =  (Oid)nth(i, indxid);
+	indexOid =  (Oid)nthi(i, indxid);
 	
 	if (indexOid != 0) {
 	    ExecOpenScanR(indexOid, 		  /* relation */

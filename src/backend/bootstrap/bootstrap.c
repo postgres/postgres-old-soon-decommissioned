@@ -485,7 +485,7 @@ boot_openrel(char *relname)
     
     if (!Quiet)
         printf("Amopen: relation %s. attrsize %d\n", relname,
-               ATTRIBUTE_TUPLE_SIZE);
+               (int)ATTRIBUTE_TUPLE_SIZE);
     
     reldesc = heap_openr(relname);
     Assert(reldesc);

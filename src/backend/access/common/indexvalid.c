@@ -62,13 +62,13 @@ index_keytest(IndexTuple tuple,
 	}
 
 	if (key[0].sk_flags & SK_COMMUTE) {
-	    test = (int) (*(key[0].sk_func))
+	    test = (*(key[0].sk_func))
 		(DatumGetPointer(key[0].sk_argument),
-		 datum);
+		 datum) ? 1 : 0;
 	} else {
-	    test = (int) (*(key[0].sk_func))
+	    test = (*(key[0].sk_func))
 		(datum,
-		 DatumGetPointer(key[0].sk_argument));
+		 DatumGetPointer(key[0].sk_argument)) ? 1 : 0;
 	}
 	
 	if (!test == !(key[0].sk_flags & SK_NEGATE)) {
