@@ -1708,6 +1708,7 @@ _allocAH(const char *FileSpec, const ArchiveFormat fmt,
 	AH->currUser = strdup("");	/* So it's valid, but we can free() it
 								 * later if necessary */
 	AH->currSchema = strdup("");	/* ditto */
+	AH->chk_fn_bodies = true;	/* assumed default state */
 
 	AH->toc = (TocEntry *) calloc(1, sizeof(TocEntry));
 	if (!AH->toc)
@@ -2103,6 +2104,8 @@ _reconnectToDB(ArchiveHandle *AH, const char *dbname, const char *user)
 	if (AH->currSchema)
 		free(AH->currSchema);
 	AH->currSchema = strdup("");
+
+	AH->chk_fn_bodies = true;	/* assumed default state */
 }
 
 /*
@@ -2197,6 +2200,13 @@ _printTocEntry(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt, bool isDat
 	/* Select owner and schema as necessary */
 	_becomeOwner(AH, te);
 	_selectOutputSchema(AH, te->namespace);
+
+	/* If it's a function, make sure function checking is disabled */
+	if (AH->chk_fn_bodies && strcmp(te->desc, "FUNCTION") == 0)
+	{
+		ahprintf(AH, "SET check_function_bodies = false;\n\n");
+		AH->chk_fn_bodies = false;
+	}
 
 	if (isData)
 		pfx = "Data for ";

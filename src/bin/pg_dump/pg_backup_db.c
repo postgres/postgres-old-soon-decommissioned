@@ -116,11 +116,6 @@ ReconnectToServer(ArchiveHandle *AH, const char *dbname, const char *username)
 	PQfinish(AH->connection);
 	AH->connection = newConn;
 
-	/* don't assume we still know the output schema */
-	if (AH->currSchema)
-		free(AH->currSchema);
-	AH->currSchema = strdup("");
-
 	return 1;
 }
 
