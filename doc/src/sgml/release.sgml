@@ -31,7 +31,7 @@ $Header$
     <variablelist>
      <varlistentry>
       <term>
-	Write-ahead Log(WAL)
+	Write-ahead Log (WAL)
       </term>
       <listitem>
        <para>
