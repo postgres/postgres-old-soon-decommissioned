@@ -7,9 +7,13 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS += -I$(libpq_srcdir)
-override LIBS += $(libpq)
+
+OBJS	= pgbench.o
 
 all: pgbench
+
+pgbench: $(OBJS) $(libpq_builddir)/libpq.a
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(libpq) $(LIBS) -o $@
 
 install: all installdirs
 	$(INSTALL_PROGRAM) pgbench$(X)	$(bindir)
@@ -23,4 +27,11 @@ uninstall:
 	rm -f $(bindir)/pgbench$(X) $(docdir)/contrib/README.pgbench $(docdir)/contrib/README.pgbench_jis
 
 clean distclean maintainer-clean:
-	rm -f pgbench$(X)
+	rm -f pgbench$(X) $(OBJS)
+
+depend dep:
+	$(CC) -MM -MG $(CFLAGS) *.c > depend
+
+ifeq (depend,$(wildcard depend))
+include depend
+endif

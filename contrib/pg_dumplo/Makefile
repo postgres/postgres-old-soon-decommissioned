@@ -6,8 +6,9 @@ subdir = contrib/pg_dumplo
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS	= main.o lo_export.o lo_import.o utils.o
 override CPPFLAGS += -I$(libpq_srcdir)
+
+OBJS	= main.o lo_export.o lo_import.o utils.o
 
 all: pg_dumplo
 
@@ -25,7 +26,7 @@ uninstall:
 	rm -f $(bindir)/pg_dumplo$(X) $(docdir)/contrib/README.pg_dumplo
 
 clean distclean maintainer-clean:
-	rm -f pg_dumplo $(OBJS)
+	rm -f pg_dumplo$(X) $(OBJS)
 
 depend dep:
 	$(CC) -MM -MG $(CFLAGS) *.c > depend

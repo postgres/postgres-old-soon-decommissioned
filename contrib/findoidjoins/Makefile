@@ -7,9 +7,13 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS += -I$(libpgeasy_srcdir) -I$(libpq_srcdir)
-override LIBS += $(libpgeasy)
+
+OBJS	= findoidjoins.o
 
 all: findoidjoins
+
+findoidjoins: $(OBJS) $(libpgeasy_builddir)/libpgeasy.a $(libpq_builddir)/libpq.a
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(libpgeasy) $(libpq) $(LIBS) -o $@
 
 install: all installdirs
 	$(INSTALL_PROGRAM) findoidjoins$(X)	$(bindir)
@@ -23,4 +27,11 @@ uninstall:
 	rm -f $(bindir)/findoidjoins$(X) $(bindir)/make_oidjoins_check $(docdir)/contrib/README.findoidjoins
 
 clean distclean maintainer-clean:
-	rm -f findoidjoins$(X)
+	rm -f findoidjoins$(X) $(OBJS)
+
+depend dep:
+	$(CC) -MM -MG $(CFLAGS) *.c > depend
+
+ifeq (depend,$(wildcard depend))
+include depend
+endif

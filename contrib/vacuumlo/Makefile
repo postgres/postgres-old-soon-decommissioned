@@ -7,9 +7,13 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS += -I$(libpq_srcdir)
-override LIBS += $(libpq)
+
+OBJS	= vacuumlo.o
 
 all: vacuumlo
+
+vacuumlo: $(OBJS) $(libpq_builddir)/libpq.a
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(libpq) $(LIBS) -o $@
 
 install: all installdirs
 	$(INSTALL_PROGRAM) vacuumlo$(X) $(bindir)
@@ -22,7 +26,7 @@ uninstall:
 	rm -f $(bindir)/vacuumlo$(X) $(docdir)/contrib/README.vacuumlo
 
 clean distclean maintainer-clean:
-	rm -f vacuumlo$(X)
+	rm -f vacuumlo$(X) $(OBJS)
 
 depend dep:
 	$(CC) -MM -MG $(CFLAGS) *.c > depend
