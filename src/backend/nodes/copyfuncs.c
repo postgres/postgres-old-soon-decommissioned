@@ -549,7 +549,10 @@ _copyUnique(Unique *from)
 	 *	copy remainder of node
 	 * ----------------
 	 */
-	newnode->uniqueAttr = pstrdup(from->uniqueAttr);
+	if (newnode->uniqueAttr)
+		newnode->uniqueAttr = pstrdup(from->uniqueAttr);
+	else
+		newnode->uniqueAttr = NULL;
 	newnode->uniqueAttrNum = from->uniqueAttrNum;
 	Node_Copy(from, newnode, uniquestate);
 
