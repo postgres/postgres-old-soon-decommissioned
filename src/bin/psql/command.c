@@ -1648,6 +1648,9 @@ do_edit(const char *filename_arg, PQExpBuffer query_buf)
 				error = true;
 			}
 
+#ifdef USE_READLINE
+			replace_history_entry(where_history(),query_buf->data,NULL);
+#endif
 			fclose(stream);
 		}
 
