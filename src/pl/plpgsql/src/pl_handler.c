@@ -46,7 +46,6 @@
 
 static int	plpgsql_firstcall = 1;
 
-void		plpgsql_init(void);
 static void plpgsql_init_all(void);
 
 
@@ -63,6 +62,8 @@ plpgsql_init(void)
 		return;
 
 	plpgsql_HashTableInit();
+
+	RegisterEOXactCallback(plpgsql_eoxact, NULL);
 
 	plpgsql_firstcall = 0;
 }
