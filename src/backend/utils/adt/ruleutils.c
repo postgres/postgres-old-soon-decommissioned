@@ -1298,7 +1298,7 @@ deparse_expression(Node *expr, List *dpcontext,
  * The result is a palloc'd string.
  * ----------
  */
-char *
+static char *
 deparse_expression_pretty(Node *expr, List *dpcontext,
 						  bool forceprefix, bool showimplicit,
 						  int prettyFlags, int startIndent)

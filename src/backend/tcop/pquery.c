@@ -507,7 +507,7 @@ PortalRun(Portal portal, long count,
  *
  * Returns number of rows processed (suitable for use in result tag)
  */
-long
+static long
 PortalRunSelect(Portal portal,
 				bool forward,
 				long count,
