@@ -1847,7 +1847,7 @@ pltcl_SPI_prepare(ClientData cdata, Tcl_Interp *interp,
 	{
 		char		   *argcopy;
 		List		   *names = NIL;
-		List		   *lp;
+		ListCell	   *l;
 		TypeName	   *typename;
 
 		/************************************************************
@@ -1858,8 +1858,8 @@ pltcl_SPI_prepare(ClientData cdata, Tcl_Interp *interp,
 		argcopy  = pstrdup(args[i]);
 		SplitIdentifierString(argcopy, '.', &names);
 		typename = makeNode(TypeName);
-		foreach (lp, names)
-			typename->names = lappend(typename->names, makeString(lfirst(lp)));
+		foreach (l, names)
+			typename->names = lappend(typename->names, makeString(lfirst(l)));
 
 		typeTup = typenameType(typename);
 		qdesc->argtypes[i] = HeapTupleGetOid(typeTup);

@@ -16,7 +16,7 @@
 #define PARSETREE_H
 
 #include "nodes/parsenodes.h"
-#include "nodes/pg_list.h"		/* for nth(), etc */
+#include "nodes/pg_list.h"		/* for list_nth(), etc */
 
 
 /* ----------------
@@ -30,7 +30,7 @@
  * NB: this will crash and burn if handed an out-of-range RT index
  */
 #define rt_fetch(rangetable_index, rangetable) \
-	((RangeTblEntry *) nth((rangetable_index)-1, rangetable))
+	((RangeTblEntry *) list_nth(rangetable, (rangetable_index)-1))
 
 /*
  *		getrelid

@@ -1033,7 +1033,7 @@ ExecInitAgg(Agg *node, EState *estate)
 	ExprContext *econtext;
 	int			numaggs,
 				aggno;
-	List	   *alist;
+	ListCell   *l;
 
 	/*
 	 * create state structure
@@ -1187,9 +1187,9 @@ ExecInitAgg(Agg *node, EState *estate)
 	 * result entry by giving them duplicate aggno values.
 	 */
 	aggno = -1;
-	foreach(alist, aggstate->aggs)
+	foreach(l, aggstate->aggs)
 	{
-		AggrefExprState *aggrefstate = (AggrefExprState *) lfirst(alist);
+		AggrefExprState *aggrefstate = (AggrefExprState *) lfirst(l);
 		Aggref	   *aggref = (Aggref *) aggrefstate->xprstate.expr;
 		AggStatePerAgg peraggstate;
 		Oid			inputType;

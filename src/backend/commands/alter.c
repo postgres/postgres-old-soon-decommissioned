@@ -41,7 +41,9 @@ ExecRenameStmt(RenameStmt *stmt)
 	switch (stmt->renameType)
 	{
 		case OBJECT_AGGREGATE:
-			RenameAggregate(stmt->object, (TypeName *) lfirst(stmt->objarg), stmt->newname);
+			RenameAggregate(stmt->object,
+							(TypeName *) linitial(stmt->objarg),
+							stmt->newname);
 			break;
 
 		case OBJECT_CONVERSION:

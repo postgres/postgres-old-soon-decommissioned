@@ -384,7 +384,6 @@ nodeRead(char *token, int tok_len)
 			}
 			break;
 		case T_Integer:
-
 			/*
 			 * we know that the token terminates on a char atol will stop
 			 * at

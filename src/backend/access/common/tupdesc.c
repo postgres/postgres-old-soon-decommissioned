@@ -472,7 +472,7 @@ BuildDescForRelation(List *schema)
 {
 	int			natts;
 	AttrNumber	attnum;
-	List	   *p;
+	ListCell   *l;
 	TupleDesc	desc;
 	AttrDefault *attrdef = NULL;
 	TupleConstr *constr = (TupleConstr *) palloc0(sizeof(TupleConstr));
@@ -490,9 +490,9 @@ BuildDescForRelation(List *schema)
 
 	attnum = 0;
 
-	foreach(p, schema)
+	foreach(l, schema)
 	{
-		ColumnDef  *entry = lfirst(p);
+		ColumnDef  *entry = lfirst(l);
 
 		/*
 		 * for each entry in the list, get the name and type information
@@ -661,7 +661,7 @@ TypeGetTupleDesc(Oid typeoid, List *colaliases)
 					 errmsg("number of aliases does not match number of columns")));
 
 		/* OK, get the column alias */
-		attname = strVal(lfirst(colaliases));
+		attname = strVal(linitial(colaliases));
 
 		tupdesc = CreateTemplateTupleDesc(1, false);
 		TupleDescInitEntry(tupdesc,

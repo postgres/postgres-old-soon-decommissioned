@@ -238,14 +238,14 @@ static bool
 desirable_join(Query *root,
 			   RelOptInfo *outer_rel, RelOptInfo *inner_rel)
 {
-	List	   *i;
+	ListCell   *l;
 
 	/*
 	 * Join if there is an applicable join clause.
 	 */
-	foreach(i, outer_rel->joininfo)
+	foreach(l, outer_rel->joininfo)
 	{
-		JoinInfo   *joininfo = (JoinInfo *) lfirst(i);
+		JoinInfo   *joininfo = (JoinInfo *) lfirst(l);
 
 		if (bms_is_subset(joininfo->unjoined_relids, inner_rel->relids))
 			return true;
@@ -256,9 +256,9 @@ desirable_join(Query *root,
 	 * needed to improve the odds that we will find a valid solution in
 	 * a case where an IN sub-select has a clauseless join.
 	 */
-	foreach(i, root->in_info_list)
+	foreach(l, root->in_info_list)
 	{
-		InClauseInfo *ininfo = (InClauseInfo *) lfirst(i);
+		InClauseInfo *ininfo = (InClauseInfo *) lfirst(l);
 
 		if (bms_is_subset(outer_rel->relids, ininfo->righthand) &&
 			bms_is_subset(inner_rel->relids, ininfo->righthand))

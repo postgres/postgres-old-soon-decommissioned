@@ -29,11 +29,11 @@
 JoinInfo *
 find_joininfo_node(RelOptInfo *this_rel, Relids join_relids)
 {
-	List	   *i;
+	ListCell   *l;
 
-	foreach(i, this_rel->joininfo)
+	foreach(l, this_rel->joininfo)
 	{
-		JoinInfo   *joininfo = (JoinInfo *) lfirst(i);
+		JoinInfo   *joininfo = (JoinInfo *) lfirst(l);
 
 		if (bms_equal(join_relids, joininfo->unjoined_relids))
 			return joininfo;

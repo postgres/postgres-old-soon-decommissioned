@@ -68,7 +68,7 @@ ExecInitJunkFilter(List *targetList, TupleDesc tupType,
 	int			len,
 				cleanLength;
 	TupleDesc	cleanTupType;
-	List	   *t;
+	ListCell   *t;
 	TargetEntry *tle;
 	Resdom	   *resdom,
 			   *cleanResdom;
@@ -184,7 +184,7 @@ ExecGetJunkAttribute(JunkFilter *junkfilter,
 					 bool *isNull)
 {
 	List	   *targetList;
-	List	   *t;
+	ListCell   *t;
 	AttrNumber	resno;
 	TupleDesc	tupType;
 	HeapTuple	tuple;

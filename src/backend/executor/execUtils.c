@@ -248,7 +248,10 @@ FreeExecutorState(EState *estate)
 	 */
 	while (estate->es_exprcontexts)
 	{
-		FreeExprContext((ExprContext *) lfirst(estate->es_exprcontexts));
+		/* XXX: seems there ought to be a faster way to implement this
+		 * than repeated lremove(), no?
+		 */
+		FreeExprContext((ExprContext *) linitial(estate->es_exprcontexts));
 		/* FreeExprContext removed the list link for us */
 	}
 
@@ -636,8 +639,8 @@ void
 ExecOpenIndices(ResultRelInfo *resultRelInfo)
 {
 	Relation	resultRelation = resultRelInfo->ri_RelationDesc;
-	List	   *indexoidlist,
-			   *indexoidscan;
+	List	   *indexoidlist;
+	ListCell   *l;
 	int			len,
 				i;
 	RelationPtr relationDescs;
@@ -671,9 +674,9 @@ ExecOpenIndices(ResultRelInfo *resultRelInfo)
 	 * For each index, open the index relation and save pg_index info.
 	 */
 	i = 0;
-	foreach(indexoidscan, indexoidlist)
+	foreach(l, indexoidlist)
 	{
-		Oid			indexOid = lfirsto(indexoidscan);
+		Oid			indexOid = lfirsto(l);
 		Relation	indexDesc;
 		IndexInfo  *ii;
 

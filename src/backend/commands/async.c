@@ -932,7 +932,7 @@ NotifyMyFrontEnd(char *relname, int32 listenerPID)
 static bool
 AsyncExistsPendingNotify(const char *relname)
 {
-	List	   *p;
+	ListCell   *p;
 
 	foreach(p, pendingNotifies)
 	{

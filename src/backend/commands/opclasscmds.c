@@ -77,7 +77,7 @@ DefineOpClass(CreateOpClassStmt *stmt)
 				numProcs;		/* amsupport value */
 	List	   *operators;		/* OpClassMember list for operators */
 	List	   *procedures;		/* OpClassMember list for support procs */
-	List	   *l;
+	ListCell   *l;
 	Relation	rel;
 	HeapTuple	tup;
 	Datum		values[Natts_pg_opclass];
@@ -168,7 +168,7 @@ DefineOpClass(CreateOpClassStmt *stmt)
 									item->number, numOperators)));
 				if (item->args != NIL)
 				{
-					TypeName   *typeName1 = (TypeName *) lfirst(item->args);
+					TypeName   *typeName1 = (TypeName *) linitial(item->args);
 					TypeName   *typeName2 = (TypeName *) lsecond(item->args);
 
 					operOid = LookupOperNameTypeNames(item->name,
@@ -506,7 +506,7 @@ assignProcSubtype(Oid amoid, Oid typeoid, Oid procOid)
 static void
 addClassMember(List **list, OpClassMember *member, bool isProc)
 {
-	List	   *l;
+	ListCell   *l;
 
 	foreach(l, *list)
 	{
@@ -540,7 +540,7 @@ storeOperators(Oid opclassoid, List *operators)
 	Datum		values[Natts_pg_amop];
 	char		nulls[Natts_pg_amop];
 	HeapTuple	tup;
-	List	   *l;
+	ListCell   *l;
 	int			i;
 
 	rel = heap_openr(AccessMethodOperatorRelationName, RowExclusiveLock);
@@ -584,7 +584,7 @@ storeProcedures(Oid opclassoid, List *procedures)
 	Datum		values[Natts_pg_amproc];
 	char		nulls[Natts_pg_amproc];
 	HeapTuple	tup;
-	List	   *l;
+	ListCell   *l;
 	int			i;
 
 	rel = heap_openr(AccessMethodProcedureRelationName, RowExclusiveLock);

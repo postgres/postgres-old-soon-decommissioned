@@ -1099,7 +1099,7 @@ stringToQualifiedNameList(const char *string, const char *caller)
 	char	   *rawname;
 	List	   *result = NIL;
 	List	   *namelist;
-	List	   *l;
+	ListCell   *l;
 
 	/* We need a modifiable copy of the input string. */
 	rawname = pstrdup(string);

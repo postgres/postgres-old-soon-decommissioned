@@ -202,7 +202,7 @@ ExecHashTableCreate(Hash *node, List *hashOperators)
 	int			nbatch;
 	int			nkeys;
 	int			i;
-	List	   *ho;
+	ListCell   *ho;
 	MemoryContext oldcxt;
 
 	/*
@@ -518,7 +518,7 @@ ExecHashGetBucket(HashJoinTable hashtable,
 {
 	uint32		hashkey = 0;
 	int			bucketno;
-	List	   *hk;
+	ListCell   *hk;
 	int			i = 0;
 	MemoryContext oldContext;
 

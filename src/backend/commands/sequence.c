@@ -862,7 +862,7 @@ init_params(List *options, Form_pg_sequence new, bool isInit)
 	DefElem    *min_value = NULL;
 	DefElem    *cache_value = NULL;
 	DefElem    *is_cycled = NULL;
-	List	   *option;
+	ListCell   *option;
 
 	foreach(option, options)
 	{

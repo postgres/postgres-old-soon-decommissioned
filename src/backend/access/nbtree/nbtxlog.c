@@ -59,7 +59,7 @@ forget_matching_split(Relation reln, RelFileNode node,
 	Page		page;
 	BTItem		btitem;
 	BlockNumber rightblk;
-	List	   *l;
+	ListCell   *l;
 
 	/* Get downlink TID from page */
 	buffer = XLogReadBuffer(false, reln, insertblk);
@@ -964,7 +964,7 @@ btree_xlog_startup(void)
 void
 btree_xlog_cleanup(void)
 {
-	List	   *l;
+	ListCell   *l;
 
 	foreach(l, incomplete_splits)
 	{

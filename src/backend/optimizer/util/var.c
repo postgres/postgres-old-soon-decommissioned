@@ -513,9 +513,9 @@ flatten_join_alias_vars_mutator(Node *node,
 		if (var->varattno == InvalidAttrNumber)
 		{
 			/* Must expand whole-row reference */
-			RowExpr *rowexpr;
-			List	*fields = NIL;
-			List    *l;
+			RowExpr		*rowexpr;
+			List		*fields = NIL;
+			ListCell	*l;
 
 			foreach(l, rte->joinaliasvars)
 			{

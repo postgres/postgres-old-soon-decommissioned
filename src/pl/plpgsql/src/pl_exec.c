@@ -3799,7 +3799,7 @@ exec_simple_check_node(Node *node)
 		case T_List:
 			{
 				List	   *expr = (List *) node;
-				List	   *l;
+				ListCell   *l;
 
 				foreach(l, expr)
 				{
@@ -3838,7 +3838,7 @@ exec_simple_check_plan(PLpgSQL_expr * expr)
 	if (length(spi_plan->ptlist) != 1)
 		return;
 
-	plan = (Plan *) lfirst(spi_plan->ptlist);
+	plan = (Plan *) linitial(spi_plan->ptlist);
 
 	/*
 	 * 2. It must be a RESULT plan --> no scan's required
@@ -3865,7 +3865,7 @@ exec_simple_check_plan(PLpgSQL_expr * expr)
 	if (length(plan->targetlist) != 1)
 		return;
 
-	tle = (TargetEntry *) lfirst(plan->targetlist);
+	tle = (TargetEntry *) linitial(plan->targetlist);
 
 	/*
 	 * 5. Check that all the nodes in the expression are non-scary.

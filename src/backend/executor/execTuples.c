@@ -569,7 +569,7 @@ static TupleDesc
 ExecTypeFromTLInternal(List *targetList, bool hasoid, bool skipjunk)
 {
 	TupleDesc	 typeInfo;
-	List		*l;
+	ListCell	*l;
 	int			 len;
 	int			 cur_resno = 1;
 
@@ -606,7 +606,7 @@ TupleDesc
 ExecTypeFromExprList(List *exprList)
 {
 	TupleDesc	 typeInfo;
-	List		*l;
+	ListCell	*l;
 	int			 cur_resno = 1;
 	char		fldname[NAMEDATALEN];
 

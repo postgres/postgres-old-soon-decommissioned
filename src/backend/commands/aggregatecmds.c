@@ -56,7 +56,7 @@ DefineAggregate(List *names, List *parameters)
 	char	   *initval = NULL;
 	Oid			baseTypeId;
 	Oid			transTypeId;
-	List	   *pl;
+	ListCell   *pl;
 
 	/* Convert list of names to a name and namespace */
 	aggNamespace = QualifiedNameGetCreationNamespace(names, &aggName);

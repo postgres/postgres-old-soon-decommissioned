@@ -47,8 +47,8 @@ DefineVirtualRelation(const RangeVar *relation, List *tlist, bool replace)
 	Oid			viewOid,
 				namespaceId;
 	CreateStmt *createStmt = makeNode(CreateStmt);
-	List	   *attrList,
-			   *t;
+	List	   *attrList;
+	ListCell   *t;
 
 	/*
 	 * create a list of ColumnDef nodes based on the names and types of
@@ -217,7 +217,7 @@ FormViewRetrieveRule(const RangeVar *view, Query *viewParse, bool replace)
 	rule->whereClause = NULL;
 	rule->event = CMD_SELECT;
 	rule->instead = true;
-	rule->actions = makeList1(viewParse);
+	rule->actions = list_make1(viewParse);
 	rule->replace = replace;
 
 	return rule;

@@ -106,7 +106,7 @@ transformArraySubscripts(ParseState *pstate,
 	bool		isSlice = forceSlice;
 	List	   *upperIndexpr = NIL;
 	List	   *lowerIndexpr = NIL;
-	List	   *idx;
+	ListCell   *idx;
 	ArrayRef   *aref;
 
 	/* Get the type tuple for the array */

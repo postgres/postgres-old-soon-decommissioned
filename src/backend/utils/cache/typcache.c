@@ -432,7 +432,7 @@ assign_record_type_typmod(TupleDesc tupDesc)
 	Oid			hashkey[REC_HASH_KEYS];
 	bool		found;
 	int			i;
-	List	   *l;
+	ListCell   *l;
 	int32		newtypmod;
 	MemoryContext oldcxt;
 

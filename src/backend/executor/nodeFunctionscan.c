@@ -201,7 +201,7 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate)
 	else if (functyptype == 'b' || functyptype == 'd')
 	{
 		/* Must be a base data type, i.e. scalar */
-		char	   *attname = strVal(lfirst(rte->eref->colnames));
+		char	   *attname = strVal(linitial(rte->eref->colnames));
 
 		tupdesc = CreateTemplateTupleDesc(1, false);
 		TupleDescInitEntry(tupdesc,

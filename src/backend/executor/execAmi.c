@@ -64,11 +64,11 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 	/* If we have changed parameters, propagate that info */
 	if (node->chgParam != NULL)
 	{
-		List	   *lst;
+		ListCell	*l;
 
-		foreach(lst, node->initPlan)
+		foreach(l, node->initPlan)
 		{
-			SubPlanState *sstate = (SubPlanState *) lfirst(lst);
+			SubPlanState *sstate = (SubPlanState *) lfirst(l);
 			PlanState  *splan = sstate->planstate;
 
 			if (splan->plan->extParam != NULL)	/* don't care about child
@@ -77,9 +77,9 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 			if (splan->chgParam != NULL)
 				ExecReScanSetParamPlan(sstate, node);
 		}
-		foreach(lst, node->subPlan)
+		foreach(l, node->subPlan)
 		{
-			SubPlanState *sstate = (SubPlanState *) lfirst(lst);
+			SubPlanState *sstate = (SubPlanState *) lfirst(l);
 			PlanState  *splan = sstate->planstate;
 
 			if (splan->plan->extParam != NULL)
@@ -315,7 +315,7 @@ ExecSupportsBackwardScan(Plan *node)
 
 		case T_Append:
 			{
-				List	   *l;
+				ListCell   *l;
 
 				foreach(l, ((Append *) node)->appendplans)
 				{

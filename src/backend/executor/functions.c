@@ -92,7 +92,7 @@ init_execution_state(List *queryTree_list)
 {
 	execution_state *firstes = NULL;
 	execution_state *preves = NULL;
-	List	   *qtl_item;
+	ListCell	    *qtl_item;
 
 	foreach(qtl_item, queryTree_list)
 	{

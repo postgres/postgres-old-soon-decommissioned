@@ -82,7 +82,7 @@ createdb(const CreatedbStmt *stmt)
 	char		new_record_nulls[Natts_pg_database];
 	Oid			dboid;
 	AclId		datdba;
-	List	   *option;
+	ListCell   *option;
 	DefElem    *downer = NULL;
 	DefElem    *dpath = NULL;
 	DefElem    *dtemplate = NULL;

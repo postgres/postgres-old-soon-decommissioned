@@ -28,7 +28,7 @@
 void
 LockTableCommand(LockStmt *lockstmt)
 {
-	List	   *p;
+	ListCell   *p;
 
 	/*
 	 * Iterate over the list and open, lock, and close the relations one

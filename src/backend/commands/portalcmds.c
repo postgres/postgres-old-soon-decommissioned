@@ -68,9 +68,9 @@ PerformCursorOpen(DeclareCursorStmt *stmt)
 	 * strange.
 	 */
 	rewritten = QueryRewrite((Query *) stmt->query);
-	if (length(rewritten) != 1 || !IsA(lfirst(rewritten), Query))
+	if (list_length(rewritten) != 1 || !IsA(linitial(rewritten), Query))
 		elog(ERROR, "unexpected rewrite result");
-	query = (Query *) lfirst(rewritten);
+	query = (Query *) linitial(rewritten);
 	if (query->commandType != CMD_SELECT)
 		elog(ERROR, "unexpected rewrite result");
 
@@ -100,8 +100,8 @@ PerformCursorOpen(DeclareCursorStmt *stmt)
 	PortalDefineQuery(portal,
 					  NULL,		/* unfortunately don't have sourceText */
 					  "SELECT", /* cursor's query is always a SELECT */
-					  makeList1(query),
-					  makeList1(plan),
+					  list_make1(query),
+					  list_make1(plan),
 					  PortalGetHeapMemory(portal));
 
 	MemoryContextSwitchTo(oldContext);

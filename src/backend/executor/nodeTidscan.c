@@ -45,18 +45,18 @@ TidListCreate(TidScanState *tidstate)
 	ExprContext *econtext = tidstate->ss.ps.ps_ExprContext;
 	ItemPointerData *tidList;
 	int			numTids = 0;
-	List	   *lst;
+	ListCell   *l;
 
 	tidList = (ItemPointerData *)
 		palloc(length(tidstate->tss_tideval) * sizeof(ItemPointerData));
 
-	foreach(lst, evalList)
+	foreach(l, evalList)
 	{
 		ItemPointer itemptr;
 		bool		isNull;
 
 		itemptr = (ItemPointer)
-			DatumGetPointer(ExecEvalExprSwitchContext(lfirst(lst),
+			DatumGetPointer(ExecEvalExprSwitchContext(lfirst(l),
 													  econtext,
 													  &isNull,
 													  NULL));

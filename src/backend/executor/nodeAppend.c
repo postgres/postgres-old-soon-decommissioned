@@ -237,7 +237,7 @@ ExecInitAppend(Append *node, EState *estate)
 int
 ExecCountSlotsAppend(Append *node)
 {
-	List	   *plan;
+	ListCell   *plan;
 	int			nSlots = 0;
 
 	foreach(plan, node->appendplans)

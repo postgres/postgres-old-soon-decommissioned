@@ -192,6 +192,8 @@ typedef enum NodeTag
 	 * TAGS FOR LIST NODES (pg_list.h)
 	 */
 	T_List,
+	T_IntList,
+	T_OidList,
 
 	/*
 	 * TAGS FOR PARSE TREE NODES (parsenodes.h)

@@ -883,7 +883,7 @@ process_preload_libraries(char *preload_libraries_string)
 {
 	char	   *rawstring;
 	List	   *elemlist;
-	List	   *l;
+	ListCell   *l;
 
 	if (preload_libraries_string == NULL)
 		return;
