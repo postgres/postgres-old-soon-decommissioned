@@ -591,9 +591,10 @@ MergeAttributes(List *schema, List *supers, bool istemp,
 		 * newattno[] will contain the child-table attribute numbers for
 		 * the attributes of this parent table.  (They are not the same
 		 * for parents after the first one, nor if we have dropped
-		 * columns.)
+		 * columns.)  +1 is to prevent error if parent has zero columns.
 		 */
-		newattno = (AttrNumber *) palloc(tupleDesc->natts * sizeof(AttrNumber));
+		newattno = (AttrNumber *)
+			palloc((tupleDesc->natts + 1) * sizeof(AttrNumber));
 
 		for (parent_attno = 1; parent_attno <= tupleDesc->natts;
 			 parent_attno++)
