@@ -269,8 +269,6 @@ CatalogIndexFetchTuple(Relation heapRelation,
     }
     
     index_endscan(sd);
-    if (sd->opaque)
-	pfree(sd->opaque);
     pfree(sd);
     return (tuple);
 }
