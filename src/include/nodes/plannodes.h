@@ -420,7 +420,7 @@ typedef struct Tee
 	List	   *rtentries;		/* the range table for the plan below the
 								 * Tee may be different than the parent
 								 * plans */
-}			Tee;
+} Tee;
 
 #endif
 
