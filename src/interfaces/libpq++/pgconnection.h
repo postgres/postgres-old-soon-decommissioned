@@ -81,6 +81,7 @@ public:
     
 protected:
    ConnStatusType Connect(const char* conninfo);
+   void CloseConnection();
    string IntToString(int);
    // Default constructor is only available to subclasses
    PgConnection();

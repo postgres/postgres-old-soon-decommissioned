@@ -46,16 +46,32 @@ PgConnection::~PgConnection()
   // Close the connection only if needed
   // This feature will most probably be used by the derived classes that
   // need not close the connection after they are destructed.
-  if ( pgCloseConnection ) {
+  CloseConnection();
+}
+
+
+// PgConnection::CloseConnection()
+// close down the connection if there is one
+void PgConnection::CloseConnection() 
+{
+  // if the connection is open, close it first
+  if ( pgCloseConnection ) {    
        if(pgResult) PQclear(pgResult);
+       pgResult=NULL;
        if(pgConn) PQfinish(pgConn);
+       pgConn=NULL;
+       pgCloseConnection=0;
   }
 }
+
 
 // PgConnection::connect
 // establish a connection to a backend
 ConnStatusType PgConnection::Connect(const char* conninfo)
 {
+  // if the connection is open, close it first
+  CloseConnection();
+
   // Connect to the database
   pgConn = PQconnectdb(conninfo);
 
