@@ -336,7 +336,7 @@ Oid	param_type(int t); /* used in parse_expr.c */
 %nonassoc	LIKE
 %nonassoc	BETWEEN
 %nonassoc	IN
-%nonassoc	Op				/* multi-character ops and user-defined operators */
+%left		Op				/* multi-character ops and user-defined operators */
 %nonassoc	NOTNULL
 %nonassoc	ISNULL
 %nonassoc	IS
