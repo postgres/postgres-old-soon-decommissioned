@@ -61,11 +61,11 @@
 #include "utils/lselect.h"
 #include "utils/psort.h"
 
+#include "miscadmin.h"
 #include "storage/fd.h"
 
 #define	TEMPDIR	"./"
 
-extern 		int	SortMem;	/* defined as postgres option */
 static  	long	shortzero = 0;	/* used to delimit runs */
 
 /*

@@ -75,6 +75,9 @@ char		CTZName[MAXTZLEN+1] = "";
 char DateFormat[20] 	= "%d-%m-%Y";	/* mjl: sizes! or better malloc? XXX */
 char FloatFormat[20] = "%f";
 
+int     	fsyncOff = 0;
+int		SortMem = 512;
+
 char *IndexedCatalogNames[] = {
     AttributeRelationName,
     ProcedureRelationName,
