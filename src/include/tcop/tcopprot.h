@@ -33,7 +33,6 @@ extern bool InError;
 extern CommandDest whereToSendOutput;
 extern DLLIMPORT const char *debug_query_string;
 extern int	max_stack_depth;
-extern bool in_fatal_exit;
 
 /* GUC-configurable parameters */
 

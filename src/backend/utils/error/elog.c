@@ -72,8 +72,6 @@ PGErrorVerbosity Log_error_verbosity = PGERROR_VERBOSE;
 char       *Log_line_prefix = NULL; /* format for extra log line info */
 unsigned int Log_destination = LOG_DESTINATION_STDERR;
 
-bool in_fatal_exit = false;
-
 #ifdef HAVE_SYSLOG
 char	   *Syslog_facility;	/* openlog() parameters */
 char	   *Syslog_ident;
@@ -444,16 +442,7 @@ errfinish(int dummy,...)
 			 */
 			fflush(stdout);
 			fflush(stderr);
-
-			if (in_fatal_exit)
-				ereport(PANIC, (errmsg("fatal error during fatal exit, giving up")));
-
-			/* not safe to longjump */
-			if (!Warn_restart_ready || proc_exit_inprogress)
-				proc_exit(proc_exit_inprogress || !IsUnderPostmaster);
-
-			/* We will exit the backend by simulating a client EOF */
-			in_fatal_exit = true;
+			proc_exit(proc_exit_inprogress || !IsUnderPostmaster);
 		}
 
 		/*

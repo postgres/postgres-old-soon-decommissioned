@@ -2932,10 +2932,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 		/*
 		 * (3) read a command (loop blocks here)
 		 */
-		 if (!in_fatal_exit)
-			firstchar = ReadCommand(&input_message);
-		else
-			firstchar = EOF;
+		firstchar = ReadCommand(&input_message);
 
 		/*
 		 * (4) disable async signal conditions again.
@@ -3164,8 +3161,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 				 * Otherwise it will fail to be called during other
 				 * backend-shutdown scenarios.
 				 */
-				proc_exit(!in_fatal_exit ? 0 : proc_exit_inprogress ||
-												!IsUnderPostmaster);
+				proc_exit(0);
 
 			case 'd':			/* copy data */
 			case 'c':			/* copy done */
