@@ -771,7 +771,7 @@ _outSubLink(StringInfo str, SubLink *node)
 	appendStringInfo(str, " :lefthand ");
 	_outNode(str, node->lefthand);
 	appendStringInfo(str, " :oper ");
-	_outIntList(str, node->oper);
+	_outNode(str, node->oper);
 	appendStringInfo(str, " :subselect ");
 	_outNode(str, node->subselect);
 }

@@ -32,7 +32,6 @@ extern List *expandAll(ParseState *pstate, char *relname, char *refname,
 						int *this_resno);
 extern int attnameAttNum(Relation rd, char *a);
 extern bool attnameIsSet(Relation rd, char *name);
-extern char *attnumAttName(Relation rd, int attrno);
 extern int attnumAttNelems(Relation rd, int attid);
 extern Oid attnumTypeId(Relation rd, int attid);
 extern void handleTargetColname(ParseState *pstate, char **resname,

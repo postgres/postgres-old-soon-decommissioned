@@ -167,7 +167,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"rename", RENAME},
 	{"replace", REPLACE},
 	{"reset", RESET},
-	{"retrieve", RETRIEVE},
 	{"returns", RETURNS},
 	{"revoke", REVOKE},
 	{"right", RIGHT},
@@ -235,22 +234,3 @@ ScanKeywordLookup(char *text)
 
 	return (NULL);
 }
-
-#ifdef NOT_USED
-char	   *
-AtomValueGetString(int atomval)
-{
-	ScanKeyword *low = &ScanKeywords[0];
-	ScanKeyword *high = endof(ScanKeywords) - 1;
-	int			keyword_list_length = (high - low);
-	int			i;
-
-	for (i = 0; i < keyword_list_length; i++)
-		if (ScanKeywords[i].value == atomval)
-			return (ScanKeywords[i].name);
-
-	elog(ERROR, "AtomGetString called with bogus atom # : %d", atomval);
-	return (NULL);
-}
-
-#endif

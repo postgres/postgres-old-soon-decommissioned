@@ -908,7 +908,7 @@ _copySubLink(SubLink *from)
 	newnode->subLinkType = from->subLinkType;
 	newnode->useor = from->useor;
 	Node_Copy(from, newnode, lefthand);
-	newnode->oper = listCopy(from->oper);
+	Node_Copy(from, newnode, oper);
 	Node_Copy(from, newnode, subselect);
 
 	return newnode;

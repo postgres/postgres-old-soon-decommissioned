@@ -187,15 +187,11 @@ print_expr(Node *expr, List *rtable)
 				break;
 			default:
 				{
-					Relation	r;
-
 					rt = rt_fetch(var->varno, rtable);
 					relname = rt->relname;
-					r = heap_openr(relname);
 					if (rt->refname)
 						relname = rt->refname;	/* table renamed */
-					attname = attnumAttName(r, var->varattno);
-					heap_close(r);
+					attname = get_attname(rt->relid, var->varattno);
 				}
 				break;
 		}

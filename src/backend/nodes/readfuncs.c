@@ -1182,7 +1182,7 @@ _readSubLink()
 	local_node->lefthand = nodeRead(true);		/* now read it */
 
 	token = lsptok(NULL, &length);		/* eat :oper */
-	local_node->oper = toIntList(nodeRead(true));		/* now read it */
+	local_node->oper = nodeRead(true);		/* now read it */
 
 	token = lsptok(NULL, &length);		/* eat :subselect */
 	local_node->subselect = nodeRead(true);		/* now read it */

@@ -19,7 +19,6 @@
 #include <parser/parse_node.h>
 
 extern void AddAggToParseState(ParseState *pstate, Aggreg *aggreg);
-extern void finalizeAggregates(ParseState *pstate, Query *qry);
 extern void parseCheckAggregates(ParseState *pstate, Query *qry);
 extern Aggreg *ParseAgg(ParseState *pstate, char *aggname, Oid basetype,
 			List *target, int precedence);
