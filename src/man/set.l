@@ -47,7 +47,7 @@ for more information on available styles.
 .IR GEQO
 enables or disables the genetic optimizer algorithm. This algorithm is
 .IR on
-by default, which used GEQO for statements of six or more tables.
+by default, which used GEQO for statements of eight or more tables.
 See the GEQO README for more information.
 
 .ce 1

@@ -13,9 +13,17 @@ constituent parts of SQL statements are drawn.
 A
 .IR comment
 is an arbitrary sequence of characters following double dashes up to the end
-of the line e.g:
+of the line.  We also support double-slashes as comments, e.g.:
 .nf
--- This is a comment
+-- This is a standard SQL comment
+// And this is another supported comment style, like C++
+.fi
+
+We also support C-style comments, e.g.:
+.nf
+/* multi
+   line
+   comment */
 .fi
 .SH "Names"
 .IR Names
