@@ -297,6 +297,7 @@ TypeCategory(Oid inType)
 			break;
 
 		case (CHAROID):
+		case (NAMEOID):
 		case (BPCHAROID):
 		case (VARCHAROID):
 		case (TEXTOID):
@@ -331,17 +332,22 @@ TypeCategory(Oid inType)
 
 		case (POINTOID):
 		case (LSEGOID):
-		case (LINEOID):
-		case (BOXOID):
 		case (PATHOID):
-		case (CIRCLEOID):
+		case (BOXOID):
 		case (POLYGONOID):
+		case (LINEOID):
+		case (CIRCLEOID):
 			result = GEOMETRIC_TYPE;
 			break;
 
 		case (INETOID):
 		case (CIDROID):
 			result = NETWORK_TYPE;
+			break;
+
+		case (UNKNOWNOID):
+		case (InvalidOid):
+			result = UNKNOWN_TYPE;
 			break;
 
 		default:
