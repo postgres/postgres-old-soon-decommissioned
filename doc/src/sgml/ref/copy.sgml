@@ -112,8 +112,8 @@ COPY [ BINARY ] <replaceable class="parameter">table</replaceable> [ WITH OIDS ]
       <listitem>
        <para>
         A string to represent NULL values. The default is
-        <quote><literal>\N</literal></quote> (backslash-N), for historical
-        reasons. You might prefer an empty string, for example.
+        <quote><literal>\N</literal></quote> (backslash-N).
+	You might prefer an empty string, for example.
        </para>
        <note>
         <para>
