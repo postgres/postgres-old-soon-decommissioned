@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Fri Aug  1 17:44:04 EDT 2003
+Last updated:		Fri Aug  1 18:18:06 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -517,8 +517,9 @@ Developers who have claimed items are:
 * D'Arcy is D'Arcy J.M. Cain <darcy@druid.net> of The Cain Gang Ltd.
 * Dave is Dave Cramer <dave@fastcrypt.com>
 * Edmund is Edmund Mergl <E.Mergl@bawue.de>
-* Fernando Nasser <fnasser@redhat.com> of Red Hat
-* Gavin Sherry <swm@linuxworld.com.au> of Alcove Systems Engineering
+* Fernando is Fernando Nasser <fnasser@redhat.com> of Red Hat
+* Gavin is Gavin Sherry <swm@linuxworld.com.au> of Alcove Systems Engineering
+* Greg is Greg Sabino Mullane <greg@turnstep.com>
 * Hiroshi is Hiroshi Inoue <Inoue@tpf.co.jp>
 * Karel is Karel Zak <zakkr@zf.jcu.cz>
 * Jan is Jan Wieck <JanWieck@Yahoo.com> of PeerDirect Corp.
