@@ -720,7 +720,7 @@ startup2PacketBuf(StartupInfo* s, PacketBuf* res)
   tmp += sizeof(s->options);
   strncpy(tmp, s->execFile, sizeof(s->execFile));
   tmp += sizeof(s->execFile);
-  strncpy(tmp, s->tty, sizeof(s->execFile));
+  strncpy(tmp, s->tty, sizeof(s->tty));
 }
 
 /* ----------------
