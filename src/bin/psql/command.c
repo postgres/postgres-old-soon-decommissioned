@@ -882,6 +882,8 @@ exec_command(const char *cmd,
 	{
 		if (status != CMD_UNKNOWN)
 			psql_error("\\%s: extra argument '%s' ignored\n", cmd, val);
+		if (val)
+			free(val);
 	}
 
 	if (options_string && continue_parse)
