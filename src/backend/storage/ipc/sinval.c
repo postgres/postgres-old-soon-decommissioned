@@ -91,7 +91,7 @@ RegisterSharedInvalid(int cacheId,		/* XXX */
 	insertOK = SIInsertDataEntry(shmInvalBuffer, &newInvalid);
 	SpinRelease(SInvalLock);
 	if (!insertOK)
-		elog(NOTICE, "RegisterSharedInvalid: SI buffer overflow");
+		elog(DEBUG, "RegisterSharedInvalid: SI buffer overflow");
 }
 
 /*
@@ -116,7 +116,7 @@ void
 		if (getResult < 0)
 		{
 			/* got a reset message */
-			elog(NOTICE, "InvalidateSharedInvalid: cache state reset");
+			elog(DEBUG, "InvalidateSharedInvalid: cache state reset");
 			resetFunction();
 		}
 		else
