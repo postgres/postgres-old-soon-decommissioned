@@ -34,7 +34,7 @@ endif
 
 $(shlib):	$(addprefix $(objdir)/,$(LIBOBJS))
 	@rm -f $(objdir)/$(shlib)
-	cd $(objdir); $(CC) -shared $(LIBOBJS) -o $(shlib) 
+	cd $(objdir); $(CC) $(LDFLAGS) -shared $(LIBOBJS) -o $(shlib) 
 
 CLEANFILES+= $(LIBOBJS) $(lib) $(shlib)
 

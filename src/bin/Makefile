@@ -14,22 +14,26 @@
 MKDIR=../mk
 -include $(MKDIR)/../Makefile.global
 
+.DEFAULT all:
 #
 # C programs
 #
-SUBDIR=  pg_id pg_version psql pg_dump
-
+	$(MAKE) -C pg_id $@
+	$(MAKE) -C pg_version $@
+	$(MAKE) -C psql $@
+	$(MAKE) -C pg_dump $@
 #
 # Shell scripts
 # 
-SUBDIR+= cleardbdir createdb createuser destroydb destroyuser initdb 
-
+	$(MAKE) -C cleardbdir $@
+	$(MAKE) -C createdb $@
+	$(MAKE) -C createuser $@
+	$(MAKE) -C destroydb $@
+	$(MAKE) -C destroyuser $@
+	$(MAKE) -C initdb $@
 #
 # TCL/TK programs
 #
 ifeq ($(USE_TCL), true)
-SUBDIR += pgtclsh
+	$(MAKE) -C pgtclsh $@
 endif
-
-include $(MKDIR)/postgres.subdir.mk
-

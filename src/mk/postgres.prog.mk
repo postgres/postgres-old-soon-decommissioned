@@ -17,7 +17,7 @@
 PROGOBJS:= $(SRCS:%.c=%.o)
 
 $(PROG):  $(addprefix $(objdir)/,$(PROGOBJS))
-	$(CC) $(CDEBUG) -o $(objdir)/$(@F) $(addprefix $(objdir)/,$(PROGOBJS)) $(LD_ADD)
+	$(CC) $(LDFLAGS) -o $(objdir)/$(@F) $(addprefix $(objdir)/,$(PROGOBJS)) $(LD_ADD)
 
 CLEANFILES+= $(PROGOBJS) $(PROG)
 
