@@ -19,20 +19,12 @@
  */
 
 #include <math.h>
-#ifdef WIN32
-#include <float.h>
-#include <limits.h>
-#define MAXINT        INT_MAX
-#else
-# if defined(PORTNAME_BSD44_derived) || \
-     defined(PORTNAME_bsdi) || \
-     defined(PORTNAME_bsdi_2_1)
+#if HAVE_LIMITS_H
 # include <machine/limits.h>
 # define MAXINT	INT_MAX
-# else
+#else
 # include <values.h>
-# endif /* !PORTNAME_BSD44_derived */
-#endif /* WIN32 */
+#endif 
 
 #include "postgres.h"
 
