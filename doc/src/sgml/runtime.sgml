@@ -1481,7 +1481,7 @@ env PGOPTIONS='-c geqo=off' psql
       <row>
        <entry><varname>SHMMAX</></>
        <entry>Maximum size of shared memory segment (bytes)</>
-       <entry>250 kB + 8192 * buffers or infinity</entry>
+       <entry>250 kB + 8.2kB * buffers + 14.2kB * max_connections or infinity</entry>
       </row>
 
       <row>
