@@ -253,7 +253,6 @@ init_sql_fcache(FmgrInfo *finfo)
 		slot->ttc_descIsNew = true;
 		slot->ttc_tupleDescriptor = (TupleDesc) NULL;
 		slot->ttc_buffer = InvalidBuffer;
-		slot->ttc_whichplan = -1;
 
 		fcache->funcSlot = slot;
 	}

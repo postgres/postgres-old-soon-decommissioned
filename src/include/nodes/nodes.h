@@ -83,11 +83,12 @@ typedef enum NodeTag
 	T_NestPath,
 	T_MergePath,
 	T_HashPath,
+	T_TidPath,
+	T_AppendPath,
 	T_PathKeyItem,
 	T_RestrictInfo,
 	T_JoinInfo,
 	T_Stream,
-	T_TidPath,
 	T_IndexOptInfo,
 
 	/*---------------------
@@ -95,7 +96,7 @@ typedef enum NodeTag
 	 *---------------------
 	 */
 	T_IndexInfo = 300,
-	T_RelationInfo,
+	T_ResultRelInfo,
 	T_TupleCount,
 	T_TupleTableSlot,
 	T_ExprContext,

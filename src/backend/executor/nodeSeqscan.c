@@ -156,7 +156,6 @@ InitScanRelation(SeqScan *node, EState *estate,
 	ScanDirection direction;
 	Relation	currentRelation;
 	HeapScanDesc currentScanDesc;
-	RelationInfo *resultRelationInfo;
 
 	/* ----------------
 	 * get the relation object id from the relid'th entry
@@ -169,7 +168,6 @@ InitScanRelation(SeqScan *node, EState *estate,
 	rtentry = rt_fetch(relid, rangeTable);
 	reloid = rtentry->relid;
 	direction = estate->es_direction;
-	resultRelationInfo = estate->es_result_relation_info;
 
 	ExecOpenScanR(reloid,		/* relation */
 				  0,			/* nkeys */

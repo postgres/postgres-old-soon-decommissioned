@@ -68,15 +68,18 @@ CreateExecutorState(void)
 	state->es_direction = ForwardScanDirection;
 	state->es_range_table = NIL;
 
+	state->es_result_relations = NULL;
+	state->es_num_result_relations = 0;
 	state->es_result_relation_info = NULL;
+
+	state->es_junkFilter = NULL;
+
 	state->es_into_relation_descriptor = NULL;
 
 	state->es_param_list_info = NULL;
 	state->es_param_exec_vals = NULL;
 
 	state->es_tupleTable = NULL;
-
-	state->es_junkFilter = NULL;
 
 	state->es_query_cxt = CurrentMemoryContext;
 

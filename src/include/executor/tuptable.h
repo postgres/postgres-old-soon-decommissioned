@@ -56,7 +56,6 @@ typedef struct TupleTableSlot
 	bool		ttc_descIsNew;
 	TupleDesc	ttc_tupleDescriptor;
 	Buffer		ttc_buffer;
-	int			ttc_whichplan;
 } TupleTableSlot;
 
 /* ----------------

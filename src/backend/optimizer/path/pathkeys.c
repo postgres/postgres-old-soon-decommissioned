@@ -566,8 +566,8 @@ build_join_pathkeys(List *outer_pathkeys,
  * NB: the result is NOT in canonical form, but must be passed through
  * canonicalize_pathkeys() before it can be used for comparisons or
  * labeling relation sort orders.  (We do things this way because
- * union_planner needs to be able to construct requested pathkeys before
- * the pathkey equivalence sets have been created for the query.)
+ * grouping_planner needs to be able to construct requested pathkeys
+ * before the pathkey equivalence sets have been created for the query.)
  *
  * 'sortclauses' is a list of SortClause or GroupClause nodes
  * 'tlist' is the targetlist to find the referenced tlist entries in

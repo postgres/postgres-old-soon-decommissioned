@@ -32,6 +32,7 @@ extern IndexPath *create_index_path(Query *root, RelOptInfo *rel,
 				  List *restriction_clauses,
 				  ScanDirection indexscandir);
 extern TidPath *create_tidscan_path(RelOptInfo *rel, List *tideval);
+extern AppendPath *create_append_path(RelOptInfo *rel, List *subpaths);
 extern Path *create_subqueryscan_path(RelOptInfo *rel);
 
 extern NestPath *create_nestloop_path(RelOptInfo *joinrel,
@@ -63,6 +64,7 @@ extern HashPath *create_hashjoin_path(RelOptInfo *joinrel,
  * prototypes for relnode.c
  */
 extern RelOptInfo *get_base_rel(Query *root, int relid);
+extern RelOptInfo *make_base_rel(Query *root, int relid);
 extern RelOptInfo *get_join_rel(Query *root, RelOptInfo *outer_rel,
 			 RelOptInfo *inner_rel,
 			 List **restrictlist_ptr);

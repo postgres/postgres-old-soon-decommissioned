@@ -28,6 +28,7 @@ extern Plan *query_planner(Query *root, List *tlist, double tuple_fraction);
 extern Plan *create_plan(Query *root, Path *best_path);
 extern SubqueryScan *make_subqueryscan(List *qptlist, List *qpqual,
 									   Index scanrelid, Plan *subplan);
+extern Append *make_append(List *appendplans, bool isTarget, List *tlist);
 extern Sort *make_sort(List *tlist, Plan *lefttree, int keycount);
 extern Sort *make_sort_from_pathkeys(List *tlist, Plan *lefttree,
 									 List *pathkeys);
@@ -41,7 +42,6 @@ extern Limit *make_limit(List *tlist, Plan *lefttree,
 extern SetOp *make_setop(SetOpCmd cmd, List *tlist, Plan *lefttree,
 						 List *distinctList, AttrNumber flagColIdx);
 extern Result *make_result(List *tlist, Node *resconstantqual, Plan *subplan);
-extern void copy_plan_costsize(Plan *dest, Plan *src);
 
 /*
  * prototypes for plan/initsplan.c

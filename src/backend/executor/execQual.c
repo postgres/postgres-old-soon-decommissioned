@@ -341,7 +341,6 @@ ExecEvalVar(Var *variable, ExprContext *econtext, bool *isNull)
 		tempSlot->ttc_descIsNew = true;
 		tempSlot->ttc_tupleDescriptor = (TupleDesc) NULL;
 		tempSlot->ttc_buffer = InvalidBuffer;
-		tempSlot->ttc_whichplan = -1;
 
 		tup = heap_copytuple(heapTuple);
 		td = CreateTupleDescCopy(tuple_type);

@@ -327,32 +327,18 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 	if (IsA(plan, Append))
 	{
 		Append	   *appendplan = (Append *) plan;
-		List	   *saved_rtable = es->rtable;
-		int			whichplan = 0;
 		List	   *lst;
 
 		foreach(lst, appendplan->appendplans)
 		{
 			Plan	   *subnode = (Plan *) lfirst(lst);
 
-			if (appendplan->inheritrelid > 0)
-			{
-				RangeTblEntry *rtentry;
-
-				rtentry = nth(whichplan, appendplan->inheritrtable);
-				Assert(rtentry != NULL);
-				rt_store(appendplan->inheritrelid, es->rtable, rtentry);
-			}
-
 			for (i = 0; i < indent; i++)
 				appendStringInfo(str, "  ");
 			appendStringInfo(str, "  ->  ");
 
 			explain_outNode(str, subnode, indent + 3, es);
-
-			whichplan++;
 		}
-		es->rtable = saved_rtable;
 	}
 
 	if (IsA(plan, SubqueryScan))

@@ -20,7 +20,6 @@
 
 extern Plan *planner(Query *parse);
 extern Plan *subquery_planner(Query *parse, double tuple_fraction);
-extern Plan *union_planner(Query *parse, double tuple_fraction);
 
 extern Plan *make_sortplan(List *tlist, Plan *plannode, List *sortcls);
 

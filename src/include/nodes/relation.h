@@ -82,6 +82,14 @@ typedef enum CostSelector
  *		upon creation of the RelOptInfo object; they are filled in when
  *		set_base_rel_pathlist processes the object.
  *
+ *		Note: if a base relation is the root of an inheritance tree
+ *		(SELECT FROM foo*) it is still considered a base rel.  We will
+ *		generate a list of candidate Paths for accessing that table itself,
+ *		and also generate baserel RelOptInfo nodes for each child table,
+ *		with their own candidate Path lists.  Then, an AppendPath is built
+ *		from the cheapest Path for each of these tables, and set to be the
+ *		only available Path for the inheritance baserel.
+ *
  *	 * The presence of the remaining fields depends on the restrictions
  *		and joins that the relation participates in:
  *
@@ -313,12 +321,26 @@ typedef struct IndexPath
 	double		rows;			/* estimated number of result tuples */
 } IndexPath;
 
+/*
+ * TidPath represents a scan by TID
+ */
 typedef struct TidPath
 {
 	Path		path;
 	List	   *tideval;
 	Relids		unjoined_relids;/* some rels not yet part of my Path */
 } TidPath;
+
+/*
+ * AppendPath represents an Append plan, ie, successive execution of
+ * several member plans.  Currently it is only used to handle expansion
+ * of inheritance trees.
+ */
+typedef struct AppendPath
+{
+	Path		path;
+	List	   *subpaths;		/* list of component Paths */
+} AppendPath;
 
 /*
  * All join-type paths share these fields.

@@ -1098,13 +1098,12 @@ AlterTableAddConstraint(char *relationName,
 				case CONSTR_CHECK:
 				{
 					ParseState *pstate;
-					bool successful = TRUE;
+					bool successful = true;
 					HeapScanDesc scan;
 					ExprContext *econtext;
 					TupleTableSlot *slot = makeNode(TupleTableSlot);
 					HeapTuple tuple;
 					RangeTblEntry *rte;
-					List       *rtlist;
 					List       *qual;
 					List       *constlist;
 					Relation	rel;
@@ -1112,9 +1111,9 @@ AlterTableAddConstraint(char *relationName,
 					char *name;
 
 					if (constr->name)
-						name=constr->name;
+						name = constr->name;
 					else
-						name="<unnamed>";
+						name = "<unnamed>";
 
 					constlist = makeList1(constr);
 
@@ -1169,13 +1168,6 @@ AlterTableAddConstraint(char *relationName,
 
 					qual = makeList1(expr);
 
-					rte = makeNode(RangeTblEntry);
-					rte->relname = relationName;
-					rte->relid = RelationGetRelid(rel);
-					rte->eref = makeNode(Attr);
-					rte->eref->relname = relationName;
-					rtlist = makeList1(rte);
-
 					/*
 					 * Scan through the rows now, making the necessary things
 					 * for ExecQual, and then call it to evaluate the
@@ -1188,10 +1180,8 @@ AlterTableAddConstraint(char *relationName,
 						slot->ttc_descIsNew = true;
 						slot->ttc_tupleDescriptor = rel->rd_att;
 						slot->ttc_buffer = InvalidBuffer;
-						slot->ttc_whichplan = -1;
 
 						econtext = MakeExprContext(slot, CurrentMemoryContext);
-						econtext->ecxt_range_table = rtlist; /* range table */
 						if (!ExecQual(qual, econtext, true))
 						{
 							successful=false;
@@ -1201,8 +1191,6 @@ AlterTableAddConstraint(char *relationName,
 					}
 
 					pfree(slot);
-					pfree(rtlist);
-					pfree(rte);
 
 					heap_endscan(scan);
 					heap_close(rel, NoLock);

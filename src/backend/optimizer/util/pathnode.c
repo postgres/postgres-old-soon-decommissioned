@@ -391,6 +391,37 @@ create_tidscan_path(RelOptInfo *rel, List *tideval)
 }
 
 /*
+ * create_append_path
+ *	  Creates a path corresponding to an Append plan, returning the
+ *	  pathnode.
+ *
+ */
+AppendPath *
+create_append_path(RelOptInfo *rel, List *subpaths)
+{
+	AppendPath *pathnode = makeNode(AppendPath);
+	List	   *l;
+
+	pathnode->path.pathtype = T_Append;
+	pathnode->path.parent = rel;
+	pathnode->path.pathkeys = NIL; /* result is always considered unsorted */
+	pathnode->subpaths = subpaths;
+
+	pathnode->path.startup_cost = 0;
+	pathnode->path.total_cost = 0;
+	foreach(l, subpaths)
+	{
+		Path   *subpath = (Path *) lfirst(l);
+
+		if (l == subpaths)		/* first node? */
+			pathnode->path.startup_cost = subpath->startup_cost;
+		pathnode->path.total_cost += subpath->total_cost;
+	}
+
+	return pathnode;
+}
+
+/*
  * create_subqueryscan_path
  *	  Creates a path corresponding to a sequential scan of a subquery,
  *	  returning the pathnode.
