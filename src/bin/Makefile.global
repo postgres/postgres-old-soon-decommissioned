@@ -13,10 +13,8 @@
 
 LIBPQDIR:= $(SRCDIR)/libpq
 
-LD_ADD+= -L$(srcdir)/libpq -lpq
-DPADD+= -L$(srcdir)/libpq -lpq
-# LIB_DEP is the list of dependencies on libraries for the link.
-LIB_DEP+= $(LIBPQDIR)/libpq.a
+LD_ADD+= -L$(SRCDIR)/libpq -lpq
+DPADD+= -L$(SRCDIR)/libpq -lpq
 
 #
 # And where libpq goes, so goes the authentication stuff...
