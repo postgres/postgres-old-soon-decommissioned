@@ -35,6 +35,7 @@ WANTED_DIRS = \
 		seg		\
 		spi		\
 		string		\
+		tablefunc	\
 		tips		\
 		tsearch		\
 		userlock	\
