@@ -763,7 +763,7 @@ RelationBuildRuleLock(Relation relation)
 
 		ruleaction =
 			heap_getattr(pg_rewrite_tuple, InvalidBuffer,
-						 Anum_pg_rewrite_action, pg_rewrite_tupdesc,
+						 Anum_pg_rewrite_ev_action, pg_rewrite_tupdesc,
 						 &isnull);
 		rule_evqual_string =
 			heap_getattr(pg_rewrite_tuple, InvalidBuffer,
