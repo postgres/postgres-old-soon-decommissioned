@@ -225,6 +225,14 @@ BootstrapMain(int argc, char *argv[])
 	if (!IsUnderPostmaster)
 		MemoryContextInit();
 
+	/* Compute paths, if we didn't inherit them from postmaster */
+	if (my_exec_path[0] == '\0')
+	{
+		if (find_my_exec(argv[0], my_exec_path) < 0)
+			elog(FATAL, "%s: could not locate my own executable path",
+				 argv[0]);
+	}
+
 	/*
 	 * process command arguments
 	 */
@@ -262,7 +270,6 @@ BootstrapMain(int argc, char *argv[])
 					SetConfigOption("client_min_messages", debugstr,
 									PGC_POSTMASTER, PGC_S_ARGV);
 					pfree(debugstr);
-					break;
 				}
 				break;
 			case 'F':
