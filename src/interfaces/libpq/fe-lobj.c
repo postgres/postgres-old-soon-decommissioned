@@ -76,7 +76,10 @@ lo_open(PGconn *conn, Oid lobjId, int mode)
 		return fd;
 	}
 	else
+	{
+		PQclear(res);
 		return -1;
+	}
 }
 
 /*
@@ -111,7 +114,10 @@ lo_close(PGconn *conn, int fd)
 		return retval;
 	}
 	else
+	{
+		PQclear(res);
 		return -1;
+	}
 }
 
 /*
@@ -151,7 +157,10 @@ lo_read(PGconn *conn, int fd, char *buf, int len)
 		return result_len;
 	}
 	else
+	{
+		PQclear(res);
 		return -1;
+	}
 }
 
 /*
@@ -192,7 +201,10 @@ lo_write(PGconn *conn, int fd, char *buf, int len)
 		return retval;
 	}
 	else
+	{
+		PQclear(res);
 		return -1;
+	}
 }
 
 /*
@@ -236,7 +248,10 @@ lo_lseek(PGconn *conn, int fd, int offset, int whence)
 		return retval;
 	}
 	else
+	{
+		PQclear(res);
 		return -1;
+	}
 }
 
 /*
@@ -273,7 +288,10 @@ lo_creat(PGconn *conn, int mode)
 		return (Oid) retval;
 	}
 	else
+	{
+		PQclear(res);
 		return InvalidOid;
+	}
 }
 
 
@@ -309,7 +327,10 @@ lo_tell(PGconn *conn, int fd)
 		return retval;
 	}
 	else
+	{
+		PQclear(res);
 		return -1;
+	}
 }
 
 /*
@@ -344,7 +365,10 @@ lo_unlink(PGconn *conn, Oid lobjId)
 		return retval;
 	}
 	else
+	{
+		PQclear(res);
 		return -1;
+	}
 }
 
 /*

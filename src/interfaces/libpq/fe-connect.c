@@ -822,8 +822,8 @@ PQsetenv(PGconn *conn)
 				sprintf(envbuf, "%s=%s", envname, encoding);
 				putenv(envbuf);
 			}
-			PQclear(rtn);
 		}
+		PQclear(rtn);
 		if (!encoding)
 		{						/* this should not happen */
 			sprintf(envbuf, "%s=%s", envname, pg_encoding_to_char(MULTIBYTE));
