@@ -56,18 +56,18 @@ pg_upgrade -s <replaceable class="parameter">filename</replaceable> <replaceable
 
    <step performance="required">
     <para>
-     <command>VACUUM</command> your entire database using
-     <command>vacuumdb -a</command.>
-    </para>
-   </step>
-
-   <step performance="required">
-    <para>
      Then do:
      <programlisting>
 $ pg_dumpall -s > schema.out
      </programlisting>
      to dump out your old database's table definitions without any data.
+    </para>
+   </step>
+
+   <step performance="required">
+    <para>
+     <command>VACUUM</command> your entire database using
+     <command>vacuumdb -a</command.>
     </para>
    </step>
 
