@@ -37,10 +37,10 @@ areasel(Oid opid,
 
 float64
 areajoinsel(Oid opid,
-			Oid relid,
-			AttrNumber attno,
-			char *value,
-			int32 flag)
+			Oid relid1,
+			AttrNumber attno1,
+			Oid relid2,
+			AttrNumber attno2)
 {
 	float64		result;
 
@@ -85,10 +85,10 @@ leftsel(Oid opid,
 #ifdef NOT_USED
 float64
 leftjoinsel(Oid opid,
-			Oid relid,
-			AttrNumber attno,
-			char *value,
-			int32 flag)
+			Oid relid1,
+			AttrNumber attno1,
+			Oid relid2,
+			AttrNumber attno2)
 {
 	float64		result;
 
@@ -122,10 +122,10 @@ contsel(Oid opid,
 #ifdef NOT_USED
 float64
 contjoinsel(Oid opid,
-			Oid relid,
-			AttrNumber attno,
-			char *value,
-			int32 flag)
+			Oid relid1,
+			AttrNumber attno1,
+			Oid relid2,
+			AttrNumber attno2)
 {
 	float64		result;
 
