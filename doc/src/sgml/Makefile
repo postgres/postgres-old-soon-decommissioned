@@ -82,7 +82,7 @@ html: postgres.sgml $(ALLSGML) stylesheet.dsl
 	$(JADE) $(JADEFLAGS) $(SGMLINCLUDE) $(CATALOG) -d stylesheet.dsl -i output-html -t sgml $<
 
 
-COLLATEINDEX := $(PERL) $(COLLATEINDEX) -f -g
+COLLATEINDEX := LC_ALL=C $(PERL) $(COLLATEINDEX) -f -g
 
 ifeq (,$(wildcard HTML.index))
 bookindex.sgml:
