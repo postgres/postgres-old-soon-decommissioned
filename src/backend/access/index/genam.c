@@ -48,6 +48,7 @@
 
 #include "catalog/pg_attribute.h"
 #include "access/attnum.h"
+#include "nodes/nodes.h"
 #include "nodes/pg_list.h"   
 #include "access/tupdesc.h"
 #include "storage/fd.h"
@@ -75,6 +76,8 @@
 #include "access/sdir.h"
 
 #include "lib/dllist.h"
+#include "lib/fstack.h"
+#include "utils/memutils.h"
 #include "nodes/memnodes.h"
 #include "utils/catcache.h"
 
