@@ -1289,11 +1289,11 @@ MainLoop(PsqlSettings * settings, FILE * source)
 	    printf("EOF\n");	/* Goes on prompt line */
 	    eof = true;
 	} else {
-	    if (!interactive && !settings->singleStep && !settings->quiet)
-		fprintf(stderr, "%s\n", line);
-
 	    /* remove whitespaces on the right, incl. \n's */
 	    line = rightTrim(line);
+
+	    if (!interactive && !settings->singleStep && !settings->quiet)
+		fprintf(stderr, "%s\n", line);
 
 	    if (line[0] == '\0') {
 		free(line);
