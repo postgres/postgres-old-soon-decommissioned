@@ -1076,7 +1076,7 @@ connectDBComplete(PGconn *conn)
 		finish_time = time(NULL) + timeout;
 	}
 
-	while (finish_time == -1 || time(NULL) >= finish_time)
+	while (finish_time == -1 || time(NULL) < finish_time)
 	{
 		/*
 		 * Wait, if necessary.	Note that the initial state (just after
