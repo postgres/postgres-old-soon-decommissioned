@@ -28,24 +28,24 @@ extern int Use_syslog;
 #endif
 
 /*
- * If StopIfError > 0 signal handlers mustn't do
+ * If CritSectionCount > 0, signal handlers mustn't do
  * elog(ERROR|FATAL), instead remember what action is
- * required with QueryCancel & ExitAfterAbort.
+ * required with QueryCancel & ProcDiePending.
  */
-extern uint32 StopIfError;		/* duplicates access/xlog.h */
+extern uint32 CritSectionCount;	/* duplicates access/xlog.h */
 extern bool QueryCancel;		/* duplicates miscadmin.h */
-extern bool	ExitAfterAbort;
+extern bool	ProcDiePending;
 
-#define	START_CRIT_CODE		(StopIfError++)
+#define	START_CRIT_CODE		(CritSectionCount++)
 
 #define END_CRIT_CODE	\
 	do { \
-		if (!StopIfError) \
+		if (CritSectionCount == 0) \
 			elog(STOP, "Not in critical section"); \
-		StopIfError--; \
-		if (!StopIfError && QueryCancel) \
+		CritSectionCount--; \
+		if (CritSectionCount == 0 && QueryCancel) \
 		{ \
-			if (ExitAfterAbort) \
+			if (ProcDiePending) \
 				elog(FATAL, "The system is shutting down"); \
 			else \
 				elog(ERROR, "Query was cancelled."); \

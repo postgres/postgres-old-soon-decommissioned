@@ -1095,6 +1095,15 @@ AbortTransaction(void)
 		MyProc->xmin = InvalidTransactionId;
 	}
 
+	/*
+	 * Release any spinlocks or buffer context locks we might be holding
+	 * as quickly as possible.  (Real locks, however, must be held till
+	 * we finish aborting.)  Releasing spinlocks is critical since we
+	 * might try to grab them again while cleaning up!
+	 */
+	ProcReleaseSpins(NULL);
+	UnlockBuffers();
+
 	/* ----------------
 	 *	check the current transaction state
 	 * ----------------
@@ -1105,18 +1114,6 @@ AbortTransaction(void)
 	if (s->state != TRANS_INPROGRESS)
 		elog(NOTICE, "AbortTransaction and not in in-progress state");
 
-	/*
-	 * Reset user id which might have been changed transiently
-	 */
-	SetUserId(GetSessionUserId());
-
-	/* ----------------
-	 *	Tell the trigger manager that this transaction is about to be
-	 *	aborted.
-	 * ----------------
-	 */
-	DeferredTriggerAbortXact();
-
 	/* ----------------
 	 *	set the current transaction state information
 	 *	appropriately during the abort processing
@@ -1124,12 +1121,17 @@ AbortTransaction(void)
 	 */
 	s->state = TRANS_ABORT;
 
+	/*
+	 * Reset user id which might have been changed transiently
+	 */
+	SetUserId(GetSessionUserId());
+
 	/* ----------------
 	 *	do abort processing
 	 * ----------------
 	 */
+	DeferredTriggerAbortXact();
 	lo_commit(false);			/* 'false' means it's abort */
-	UnlockBuffers();
 	AtAbort_Notify();
 	CloseSequences();
 	AtEOXact_portals();

@@ -40,7 +40,7 @@
 
 int			XLOGbuffers = 8;
 XLogRecPtr	MyLastRecPtr = {0, 0};
-uint32		StopIfError = 0;
+uint32		CritSectionCount = 0;
 bool		InRecovery = false;
 StartUpID	ThisStartUpID = 0;
 
@@ -1531,7 +1531,7 @@ StartupXLOG()
 	char		buffer[MAXLOGRECSZ + SizeOfXLogRecord];
 
 	elog(LOG, "starting up");
-	StopIfError++;
+	CritSectionCount++;
 
 	XLogCtl->xlblocks = (XLogRecPtr *) (((char *) XLogCtl) + sizeof(XLogCtlData));
 	XLogCtl->pages = ((char *) XLogCtl->xlblocks + sizeof(XLogRecPtr) * XLOGbuffers);
@@ -1748,7 +1748,7 @@ StartupXLOG()
 	XLogCtl->ThisStartUpID = ThisStartUpID;
 
 	elog(LOG, "database system is in production state");
-	StopIfError--;
+	CritSectionCount--;
 
 	return;
 }
@@ -1771,10 +1771,10 @@ ShutdownXLOG()
 {
 	elog(LOG, "shutting down");
 
-	StopIfError++;
+	CritSectionCount++;
 	CreateDummyCaches();
 	CreateCheckPoint(true);
-	StopIfError--;
+	CritSectionCount--;
 
 	elog(LOG, "database system is shut down");
 }

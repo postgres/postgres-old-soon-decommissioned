@@ -129,7 +129,7 @@ typedef struct DeferredTriggerEventData
 typedef struct DeferredTriggerEventData *DeferredTriggerEvent;
 
 
-extern int	DeferredTriggerInit(void);
+extern void DeferredTriggerInit(void);
 extern void DeferredTriggerBeginXact(void);
 extern void DeferredTriggerEndQuery(void);
 extern void DeferredTriggerEndXact(void);

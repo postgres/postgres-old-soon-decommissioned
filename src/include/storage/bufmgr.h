@@ -168,6 +168,7 @@ extern Buffer ReleaseAndReadBuffer(Buffer buffer, Relation relation,
 extern int	FlushBuffer(Buffer buffer, bool sync, bool release);
 
 extern void InitBufferPool(void);
+extern void InitBufferPoolAccess(void);
 extern void PrintBufferUsage(FILE *statfp);
 extern void ResetBufferUsage(void);
 extern void ResetBufferPool(bool isCommit);

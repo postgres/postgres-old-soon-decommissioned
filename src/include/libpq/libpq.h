@@ -60,7 +60,6 @@ extern int	StreamServerPort(int family, char *hostName,
 extern int	StreamConnection(int server_fd, Port *port);
 extern void StreamClose(int sock);
 extern void pq_init(void);
-extern void pq_close(void);
 extern int	pq_getbytes(char *s, size_t len);
 extern int	pq_getstring(StringInfo s);
 extern int	pq_peekbyte(void);
