@@ -57,7 +57,7 @@ See the GEQO README for more information.
 .if t .ta 0.5i +1.5i +3.0i
 .in 0
 .nf
-	on	- use for statements with 6 or more tables
+	on	- use for statements with 8 or more tables
 	on=10	- use for statements with 10 or more tables
 	off	- do not use the genetic optimizer
 .fi
