@@ -2762,7 +2762,7 @@ BootStrapXLOG(void)
 static char *
 str_time(time_t tnow)
 {
-	static char buf[32];
+	static char buf[128];
 
 	strftime(buf, sizeof(buf),
 			 "%Y-%m-%d %H:%M:%S %Z",
