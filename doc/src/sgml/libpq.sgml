@@ -136,7 +136,8 @@ PGconn *PQconnectdb(const char *conninfo);
       likely to fail if <application>libpq</application> is passed a host name
       that is not the name of the machine at <literal>hostaddr</>.)  Also,
       <literal>host</> rather than <literal>hostaddr</> is used to identify
-      the connection in <filename>$HOME/.pgpass</>.
+      the connection in <filename>$HOME/.pgpass</> (or 
+      <filename>%USERPROFILE%/.pgpass</> on Win32).
      </para>
      <para>
       Without either a host name or host address,
