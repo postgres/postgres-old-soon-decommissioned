@@ -17,7 +17,7 @@ CFLAGS_SL =
 
 %.dll: %.o
 	$(DLLTOOL) --export-all --output-def $*.def $<
-	$(DLLWRAP) -o $@ --def $*.def $< $(top_builddir)/src/utils/dllinit.o $(DLLLIBS)
+	$(DLLWRAP) -o $@ --def $*.def $< $(DLLINIT) $(DLLLIBS)
 	rm -f $*.def
 
 ifeq ($(findstring backend,$(subdir)), backend)

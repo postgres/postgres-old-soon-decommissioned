@@ -359,6 +359,7 @@ STRDUP      = @STRDUP@
 STRERROR    = @STRERROR@
 STRTOL      = @STRTOL@
 STRTOUL     = @STRTOUL@
+DLLINIT     = @DLLINIT@
 
 TAS         = @TAS@
 
