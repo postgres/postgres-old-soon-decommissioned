@@ -121,7 +121,7 @@ main(int argc, char **argv)
 		{NULL, 0, NULL, 0}
 	};
 
-	set_pglocale(argv[0], "pg_dump");
+	set_pglocale_pgservice(argv[0], "pg_dump");
 
 	opts = NewRestoreOptions();
 

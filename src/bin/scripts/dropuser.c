@@ -51,7 +51,7 @@ main(int argc, char *argv[])
 	PGresult   *result;
 
 	progname = get_progname(argv[0]);
-	set_pglocale(argv[0], "pgscripts");
+	set_pglocale_pgservice(argv[0], "pgscripts");
 
 	handle_help_version_opts(argc, argv, "dropuser", help);
 

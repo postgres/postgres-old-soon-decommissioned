@@ -102,7 +102,7 @@ main(int argc, char *argv[])
 	int			fd;
 	char		path[MAXPGPATH];
 
-	set_pglocale(argv[0], "pg_resetxlog");
+	set_pglocale_pgservice(argv[0], "pg_resetxlog");
 
 	progname = get_progname(argv[0]);
 

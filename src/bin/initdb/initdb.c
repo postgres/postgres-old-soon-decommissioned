@@ -1788,7 +1788,7 @@ main(int argc, char *argv[])
 	{"global", "pg_xlog", "pg_clog", "base", "base/1"};
 
 	progname = get_progname(argv[0]);
-	set_pglocale(argv[0], "initdb");
+	set_pglocale_pgservice(argv[0], "initdb");
 
     if (argc > 1)
     {

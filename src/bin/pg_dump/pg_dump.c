@@ -242,7 +242,7 @@ main(int argc, char **argv)
 	};
 	int			optindex;
 
-	set_pglocale(argv[0], "pg_dump");
+	set_pglocale_pgservice(argv[0], "pg_dump");
 
 	g_verbose = false;
 

@@ -3582,6 +3582,24 @@ sets the default mode for the genetic query optimizer.
 (Equivalent to <literal>SET geqo TO ...</literal>.)
 </para>
 </listitem>
+<listitem>
+<para>
+<indexterm>
+ <primary><envar>PGETC</envar></primary>
+</indexterm>
+<envar>PGETC</envar>
+sets the directory containing the <filename>pg_service.conf</> file.
+</para>
+</listitem>
+<listitem>
+<para>
+<indexterm>
+ <primary><envar>PGLOCALE</envar></primary>
+</indexterm>
+<envar>PGLOCALE</envar>
+sets the directory containing the <literal>locale</> files.
+</para>
+</listitem>
 </itemizedlist>
 
 Refer to the <acronym>SQL</acronym> command <command>SET</command>

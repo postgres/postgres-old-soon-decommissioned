@@ -152,7 +152,7 @@ main(int argc, char *argv[])
 	 * allow startup error messages to be localized.
 	 */
 
-	set_pglocale(argv[0], "postgres");
+	set_pglocale_pgservice(argv[0], "postgres");
 
 #ifdef WIN32
 

@@ -102,7 +102,7 @@ main(int argc, char *argv[])
 	char	   *password = NULL;
 	bool		need_pass;
 
-	set_pglocale(argv[0], "psql");
+	set_pglocale_pgservice(argv[0], "psql");
 
 	pset.progname = get_progname(argv[0]);
 

@@ -1132,7 +1132,7 @@ libpq_gettext(const char *msgid)
 	{
 		already_bound = 1;
 		/* No relocatable lookup here because the binary could be anywhere */
-		bindtextdomain("libpq", LOCALEDIR);
+		bindtextdomain("libpq", getenv("PGLOCALE") ? getenv("PGLOCALE") : LOCALEDIR);
 	}
 
 	return dgettext("libpq", msgid);
