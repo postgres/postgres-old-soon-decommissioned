@@ -80,6 +80,7 @@ remove_all_temp_relations(void)
 	List	   *l,
 			   *next;
 
+	AbortOutOfAnyTransaction();
 	StartTransactionCommand();
 
 	l = temp_rels;
