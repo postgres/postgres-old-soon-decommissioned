@@ -327,10 +327,6 @@ SELECT lo_export(image.raster, '/tmp/motd') from image
  *
  * Copyright (c) 1994, Regents of the University of California
  *
- *
- * IDENTIFICATION
- *    /usr/local/devel/pglite/cvs/src/doc/manual.me,v 1.16 1995/09/01 23:55:00 jolly Exp
- *
  *--------------------------------------------------------------
  */
 #include &lt;stdio.h&gt;

@@ -9,10 +9,10 @@
   &legal;
 
   <abstract>
-   <simpara>
+   <para>
     This document contains assorted information that can be of use to
     <productname>PostgreSQL</> developers.
-   </simpara>
+   </para>
   </abstract>
  </bookinfo>
  
@@ -25,10 +25,10 @@
  &page;
  &geqo;
  &nls;
-<![%single-book;[
- &biblio;
-]]>
 <!-- appendices -->
  &cvs;
  &docguide;
+<![%single-book;[
+ &biblio;
+]]>
 </book>

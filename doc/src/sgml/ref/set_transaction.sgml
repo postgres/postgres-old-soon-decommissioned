@@ -17,7 +17,8 @@
  <refsynopsisdiv>
   <synopsis>
 SET TRANSACTION ISOLATION LEVEL { READ COMMITTED | SERIALIZABLE }
-SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL { READ COMMITTED | SERIALIZABLE }
+SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL
+    { READ COMMITTED | SERIALIZABLE }
   </synopsis>
  </refsynopsisdiv>
 
@@ -79,8 +80,11 @@ SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL { READ COMMITTED | SE
 
   <para>
    The session default transaction isolation level can also be set
-   with the command <literal>SET default_transaction_isolation =
-   '<replaceable>value</replaceable>'</literal> and in the
+   with the command
+<programlisting>
+SET default_transaction_isolation = '<replaceable>value</replaceable>'
+</programlisting>
+   and in the
    configuration file.  Consult the <citetitle>Administrator's
    Guide</citetitle> for more information.
   </para>

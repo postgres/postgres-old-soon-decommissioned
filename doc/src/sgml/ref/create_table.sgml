@@ -2078,20 +2078,22 @@ affect a column or a table.
 -->
     <para>
      table constraint definition:
-     <synopsis>
-[ CONSTRAINT <replaceable>constraint_name</replaceable> ] CHECK ( VALUE <replaceable>condition</replaceable> ) 
+<synopsis>
+[ CONSTRAINT <replaceable>constraint_name</replaceable> ]
+      CHECK ( VALUE <replaceable>condition</replaceable> ) 
       [ {INITIALLY DEFERRED | INITIALLY IMMEDIATE} ]
       [ [ NOT ] DEFERRABLE ]
-     </synopsis>
+</synopsis>
     </para>
 
     <para>
      column constraint definition:
-    <synopsis>
-[ CONSTRAINT <replaceable>constraint_name</replaceable> ] CHECK ( VALUE <replaceable>condition</replaceable> ) 
+<synopsis>
+[ CONSTRAINT <replaceable>constraint_name</replaceable> ]
+      CHECK ( VALUE <replaceable>condition</replaceable> ) 
       [ {INITIALLY DEFERRED | INITIALLY IMMEDIATE} ]
       [ [ NOT ] DEFERRABLE ]
-    </synopsis>
+</synopsis>
     </para>
 <!--
    <para>
