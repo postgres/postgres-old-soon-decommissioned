@@ -297,8 +297,7 @@ StorePreparedStatement(const char *stmt_name,
 
 	/* Check for pre-existing entry of same name */
 	/* See notes in FetchPreparedStatement */
-	MemSet(key, 0, sizeof(key));
-	strncpy(key, stmt_name, sizeof(key));
+	StrNCpy(key, stmt_name, sizeof(key));
 
 	hash_search(prepared_queries, key, HASH_FIND, &found);
 
@@ -371,8 +370,7 @@ FetchPreparedStatement(const char *stmt_name, bool throwError)
 		 * the hash package is picky enough that it needs to be
 		 * NULL-padded out to the appropriate length to work correctly.
 		 */
-		MemSet(key, 0, sizeof(key));
-		strncpy(key, stmt_name, sizeof(key));
+		StrNCpy(key, stmt_name, sizeof(key));
 
 		entry = (PreparedStatement *) hash_search(prepared_queries,
 												  key,
