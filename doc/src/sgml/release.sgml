@@ -68,6 +68,73 @@ Regular expression function SUBSTRING() implemented per SQL99
 
  </sect1>
 
+ <sect1 id="release-7-3">
+  <title>Release 7.3</title>
+
+  <note>
+   <title>Release date</title>
+   <simpara>2002-??-??</simpara>
+  </note>
+
+  <sect2>
+   <title>Overview</title>
+
+   <para>
+    TO BE FILLED IN.  SEE /HISTORY.
+   </para>
+
+   <para>
+    Major changes in this release:
+
+    <variablelist>
+     <varlistentry>
+      <term>XXX</term>
+      <listitem>
+       <para>
+    TO BE FILLED IN.  SEE /HISTORY.
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+   </para>
+  </sect2>
+
+  <sect2>
+   <title>Migration to version 7.3</title>
+
+   <para>
+    A dump/restore using <command>pg_dump</command> is required for
+    those wishing to migrate data from any previous release.
+   </para>
+
+   <para>
+    Observe the following incompatibilities:
+
+    <itemizedlist>
+     <listitem>
+      <para>
+    TO BE FILLED IN.  SEE /HISTORY.
+      </para>
+     </listitem>
+
+    </itemizedlist>
+   </para>
+
+  </sect2>
+
+  <sect2>
+   <title>Changes</title>
+
+   <sect3>
+    <title>XXX</title>
+<literallayout>
+    TO BE FILLED IN.  SEE /HISTORY.
+</literallayout>
+   </sect3>
+  </sect2>
+ </sect1>
+
+
   <sect1 id="release-7-2-2">
    <title>Release 7.2.2</title>
 
