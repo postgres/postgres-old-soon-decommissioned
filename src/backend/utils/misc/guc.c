@@ -2262,7 +2262,7 @@ ShowGUCConfigOption(const char *name)
 	char		   *value;
 
 	/* need a tuple descriptor representing a single TEXT column */
-	tupdesc = CreateTemplateTupleDesc(1);
+	tupdesc = CreateTemplateTupleDesc(1, WITHOUTOID);
 	TupleDescInitEntry(tupdesc, (AttrNumber) 1, (char *) name,
 					   TEXTOID, -1, 0, false);
 
@@ -2293,7 +2293,7 @@ ShowAllGUCConfig(void)
 	char		  *values[2];
 
 	/* need a tuple descriptor representing two TEXT columns */
-	tupdesc = CreateTemplateTupleDesc(2);
+	tupdesc = CreateTemplateTupleDesc(2, WITHOUTOID);
 	TupleDescInitEntry(tupdesc, (AttrNumber) 1, "name",
 					   TEXTOID, -1, 0, false);
 	TupleDescInitEntry(tupdesc, (AttrNumber) 2, "setting",
