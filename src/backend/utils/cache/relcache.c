@@ -1599,9 +1599,6 @@ RelationReloadClassinfo(Relation relation)
 	relation->rd_node.relNode = relp->relfilenode;
 	RelationCacheInsert(relation);
 	heap_freetuple(pg_class_tuple);
-fprintf(stderr, "RelationClearRelation nailed %s hasindex=%d relfilenode=%d,%d\n",
-RelationGetRelationName(relation), relation->rd_rel->relhasindex,
-relation->rd_rel->relfilenode, relation->rd_node.relNode);
 
 	return;
 }
