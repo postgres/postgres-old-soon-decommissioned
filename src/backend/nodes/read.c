@@ -17,10 +17,10 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
+
 #include <ctype.h>
 #include <errno.h>
-
-#include "postgres.h"
 
 #include "nodes/pg_list.h"
 #include "nodes/readfuncs.h"
@@ -184,7 +184,7 @@ debackslash(char *token, int length)
  * nodeTokenType -
  *	  returns the type of the node token contained in token.
  *	  It returns one of the following valid NodeTags:
- *		T_Integer, T_Float, T_String
+ *		T_Integer, T_Float, T_String, T_BitString
  *	  and some of its own:
  *		RIGHT_PAREN, LEFT_PAREN, PLAN_SYM, AT_SYMBOL, ATOM_TOKEN
  *
@@ -236,6 +236,8 @@ nodeTokenType(char *token, int length)
 		retval = AT_SYMBOL;
 	else if (*token == '\"' && length > 1 && token[length - 1] == '\"')
 		retval = T_String;
+	else if (*token == 'B')
+		retval = T_BitString;
 	else
 		retval = ATOM_TOKEN;
 	return retval;
@@ -346,6 +348,15 @@ nodeRead(bool read_car_only)
 			this_value = (Node *) makeString(debackslash(token + 1, tok_len - 2));
 			make_dotted_pair_cell = true;
 			break;
+		case T_BitString:
+		{
+			char * val = palloc(tok_len);
+			/* skip leading 'B'*/
+			strncpy(val, token + 1, tok_len - 1);
+			val[tok_len - 1] = '\0';
+			this_value = (Node *) makeBitString(val);
+			break;
+		}
 		default:
 			elog(ERROR, "nodeRead: Bad type %d", type);
 			this_value = NULL;	/* keep compiler happy */

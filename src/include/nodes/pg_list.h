@@ -118,6 +118,7 @@ extern bool intMember(int datum, List *list);
 extern Value *makeInteger(long i);
 extern Value *makeFloat(char *numericStr);
 extern Value *makeString(char *str);
+extern Value *makeBitString(char *str);
 extern List *lappend(List *list, void *datum);
 extern List *lappendi(List *list, int datum);
 extern List *lremove(void *elem, List *list);

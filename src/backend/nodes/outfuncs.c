@@ -20,9 +20,9 @@
  *	  representation plus some other information (string length, etc.)
  *
  */
-#include <ctype.h>
-
 #include "postgres.h"
+
+#include <ctype.h>
 
 #include "access/heapam.h"
 #include "access/htup.h"
@@ -1351,6 +1351,9 @@ _outValue(StringInfo str, Value *value)
 			appendStringInfo(str, " \"");
 			_outToken(str, value->val.str);
 			appendStringInfo(str, "\" ");
+			break;
+		case T_BitString:
+			appendStringInfo(str, " B%s ", value->val.str);
 			break;
 		default:
 			elog(NOTICE, "_outValue: don't know how to print type %d ",

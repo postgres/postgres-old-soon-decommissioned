@@ -140,6 +140,7 @@ typedef enum NodeTag
 	T_Integer,
 	T_Float,
 	T_String,
+	T_BitString,
 	T_Null,
 
 	/*---------------------

@@ -2511,6 +2511,7 @@ _copyValue(Value *from)
 			break;
 		case T_Float:
 		case T_String:
+		case T_BitString:
 			newnode->val.str = pstrdup(from->val.str);
 			break;
 		default:
@@ -2703,6 +2704,7 @@ copyObject(void *from)
 		case T_Integer:
 		case T_Float:
 		case T_String:
+		case T_BitString:
 			retval = _copyValue(from);
 			break;
 		case T_List:

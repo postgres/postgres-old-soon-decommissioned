@@ -31,6 +31,7 @@
 #include "parser/parse_target.h"
 #include "parser/parse_type.h"
 #include "utils/builtins.h"
+#include "utils/varbit.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
 
@@ -470,6 +471,16 @@ make_const(Value *value)
 
 			typeid = UNKNOWNOID;/* will be coerced later */
 			typelen = -1;		/* variable len */
+			typebyval = false;
+			break;
+
+		case T_BitString:
+			val = DirectFunctionCall3(zpbit_in,
+									  CStringGetDatum(strVal(value)),
+									  ObjectIdGetDatum(InvalidOid),
+									  Int32GetDatum(-1));
+			typeid = ZPBITOID;
+			typelen = -1;
 			typebyval = false;
 			break;
 

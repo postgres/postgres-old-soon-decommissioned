@@ -1719,6 +1719,7 @@ _equalValue(Value *a, Value *b)
 			return a->val.ival == b->val.ival;
 		case T_Float:
 		case T_String:
+		case T_BitString:
 			return strcmp(a->val.str, b->val.str) == 0;
 		default:
 			break;
@@ -1874,6 +1875,7 @@ equal(void *a, void *b)
 		case T_Integer:
 		case T_Float:
 		case T_String:
+		case T_BitString:
 			retval = _equalValue(a, b);
 			break;
 
