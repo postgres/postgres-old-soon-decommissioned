@@ -44,7 +44,6 @@
 #ifndef POSTGRES_H
 #define POSTGRES_H
 
-#include "postgres_ext.h"
 #include "c.h"
 #include "utils/elog.h"
 #include "utils/palloc.h"

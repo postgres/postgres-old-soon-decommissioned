@@ -50,6 +50,7 @@
 */
 
 #include "pg_config.h"
+#include "postgres_ext.h"
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -18,7 +18,6 @@
 #ifndef POSTGRES_FE_H
 #define POSTGRES_FE_H
 
-#include "postgres_ext.h"
 #include "c.h"
 
 #endif	 /* POSTGRES_FE_H */
