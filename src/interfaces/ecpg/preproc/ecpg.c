@@ -162,7 +162,7 @@ main(int argc, char *const argv[])
 				if (strcmp(optarg, "INFORMIX") == 0)
 				{
 					compat = ECPG_COMPAT_INFORMIX;
-					system_includes = true;
+					/* system_includes = true; */
 					add_preprocessor_define("dec_t=Numeric");
 					add_preprocessor_define("intrvl_t=Interval");
 				}
