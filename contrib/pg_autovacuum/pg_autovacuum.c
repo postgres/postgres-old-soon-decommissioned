@@ -1098,7 +1098,7 @@ get_cmd_args(int argc, char *argv[])
 	 * values etc
 	 */
 #ifndef WIN32
-	while ((c = getopt(argc, argv, "s:S:v:V:a:A:d:U:P:H:L:p:hD:c:C:m:n:l:")) != -1)
+	while ((c = getopt(argc, argv, "s:S:v:V:a:A:d:U:P:H:L:p:hDc:C:m:n:l:")) != -1)
 #else
 	while ((c = getopt(argc, argv, "s:S:v:V:a:A:d:U:P:H:L:p:hIRN:W:c:C:m:n:l:")) != -1)
 #endif
