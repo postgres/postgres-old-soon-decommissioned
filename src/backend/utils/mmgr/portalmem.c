@@ -234,7 +234,7 @@ PortalVariableMemoryRealloc(PortalVariableMemory this,
 static char *
 PortalVariableMemoryGetName(PortalVariableMemory this)
 {
-	return varargform("%s-var", PortalVariableMemoryGetPortal(this)->name);
+	return vararg_format("%s-var", PortalVariableMemoryGetPortal(this)->name);
 }
 
 /* ----------------
@@ -312,7 +312,7 @@ PortalHeapMemoryRealloc(PortalHeapMemory this,
 static char *
 PortalHeapMemoryGetName(PortalHeapMemory this)
 {
-	return varargform("%s-heap", PortalHeapMemoryGetPortal(this)->name);
+	return vararg_format("%s-heap", PortalHeapMemoryGetPortal(this)->name);
 }
 
 /* ----------------
