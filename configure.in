@@ -21,13 +21,13 @@ dnl The GNU folks apparently haven't heard that some people don't use
 dnl Texinfo. Use this sorcery to use "docdir" instead of "infodir".
 m4_define([info], [doc])
 m4_define([infodir], [docdir])
-AC_INIT([PostgreSQL], [7.4.2], [pgsql-bugs@postgresql.org])
+AC_INIT([PostgreSQL], [7.4.3], [pgsql-bugs@postgresql.org])
 m4_undefine([infodir])
 m4_undefine([info])
 AC_SUBST(docdir)
 
 AC_PREREQ(2.53)
-AC_COPYRIGHT([Copyright 2003 PostgreSQL Global Development Group])
+AC_COPYRIGHT([Copyright 2004 PostgreSQL Global Development Group])
 AC_CONFIG_SRCDIR([src/backend/access/common/heaptuple.c])
 AC_CONFIG_AUX_DIR(config)
 AC_PREFIX_DEFAULT(/usr/local/pgsql)
