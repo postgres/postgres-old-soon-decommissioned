@@ -52,13 +52,7 @@ md5_crypt_verify(const Port *port, const char *user, const char *pgpass)
 	}
 	
 	if (passwd == NULL || *passwd == '\0')
-	{
-		if (passwd)
-			pfree(passwd);
-		if (valuntil)
-			pfree(valuntil);
 		return STATUS_ERROR;
-	}
 
 	/* If they encrypt their password, force MD5 */
 	if (isMD5(passwd) && port->auth_method != uaMD5)
@@ -140,9 +134,6 @@ md5_crypt_verify(const Port *port, const char *user, const char *pgpass)
 			retval = STATUS_OK;
 	}
 
-	pfree(passwd);
-	if (valuntil)
-		pfree(valuntil);
 	if (port->auth_method == uaMD5)
 		pfree(crypt_pwd);
 
