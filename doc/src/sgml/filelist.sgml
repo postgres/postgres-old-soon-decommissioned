@@ -68,7 +68,6 @@
 <!entity libpgeasy  SYSTEM "libpgeasy.sgml">
 <!entity libpq      SYSTEM "libpq.sgml">
 <!entity libpgtcl   SYSTEM "libpgtcl.sgml">
-<!entity pygresql   SYSTEM "pygresql.sgml">
 <!entity lobj       SYSTEM "lobj.sgml">
 <!entity odbc       SYSTEM "odbc.sgml">
 <!entity rules      SYSTEM "rules.sgml">

@@ -188,7 +188,6 @@ $Header$
   &libpgtcl;
   &ecpg;
   &jdbc;
-  &pygresql;
   &infoschema;
 
  </part>

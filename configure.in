@@ -362,10 +362,10 @@ AC_MSG_RESULT([$with_perl])
 AC_SUBST(with_perl)
 
 #
-# Optionally build Python interface module
+# Optionally build Python modules (PL/Python)
 #
 AC_MSG_CHECKING([whether to build Python modules])
-PGAC_ARG_BOOL(with, python, no, [  --with-python           build Python interface module])
+PGAC_ARG_BOOL(with, python, no, [  --with-python           build Python modules (PL/Python)])
 AC_MSG_RESULT([$with_python])
 AC_SUBST(with_python)
 
@@ -608,7 +608,6 @@ fi
 
 if test "$with_python" = yes; then
   PGAC_PATH_PYTHON
-  PGAC_CHECK_PYTHON_MODULE_SETUP
   PGAC_CHECK_PYTHON_EMBED_SETUP
 fi
 
