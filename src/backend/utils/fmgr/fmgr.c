@@ -33,9 +33,6 @@
 #include "commands/trigger.h"
 
 
-/* We don't make this static so fmgr_faddr() macros can access it */
-FmgrInfo        *fmgr_pl_finfo;
-
 static char      * 
 fmgr_pl(char *arg0, ...)
 {
