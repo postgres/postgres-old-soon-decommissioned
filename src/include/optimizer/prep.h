@@ -59,6 +59,4 @@ extern Node *adjust_inherited_attrs(Node *node,
 					   Index old_rt_index, Oid old_relid,
 					   Index new_rt_index, Oid new_relid);
 
-extern bool tlist_same_datatypes(List *tlist, List *colTypes, bool junkOK);
-
 #endif   /* PREP_H */
