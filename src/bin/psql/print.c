@@ -29,6 +29,9 @@
 #define DEFAULT_PAGER "less"
 #endif
 
+#ifdef HAVE_TERMIOS_H
+#include <termios.h>
+#endif
 
 
 /*************************/
