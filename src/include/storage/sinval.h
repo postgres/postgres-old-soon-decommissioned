@@ -20,22 +20,16 @@
 
 
 /*
- * We currently support two types of shared-invalidation messages: one that
- * invalidates an entry in a catcache, and one that invalidates a relcache
- * entry.  More types could be added if needed.  The message type is
- * identified by the first "int16" field of the message struct.  Zero or
- * positive means a catcache inval message (and also serves as the catcache
- * ID field).  -1 means a relcache inval message.  Other negative values
- * are available to identify other inval message types.
+ * We currently support three types of shared-invalidation messages: one that
+ * invalidates an entry in a catcache, one that invalidates a relcache entry,
+ * and one that invalidates an smgr cache entry.  More types could be added
+ * if needed.  The message type is identified by the first "int16" field of
+ * the message struct.  Zero or positive means a catcache inval message (and
+ * also serves as the catcache ID field).  -1 means a relcache inval message.
+ * -2 means an smgr inval message.  Other negative values are available to
+ * identify other inval message types.
  *
- * Relcache invalidation messages usually also cause invalidation of entries
- * in the smgr's relation cache.  This means they must carry both logical
- * and physical relation ID info (ie, both dbOID/relOID and RelFileNode).
- * In some cases RelFileNode information is not available so the sender fills
- * those fields with zeroes --- this is okay so long as no smgr cache flush
- * is required.
- *
- * Shared-inval events are initially driven by detecting tuple inserts,
+ * Catcache inval events are initially driven by detecting tuple inserts,
  * updates and deletions in system catalogs (see CacheInvalidateHeapTuple).
  * An update generates two inval events, one for the old tuple and one for
  * the new --- this is needed to get rid of both positive entries for the
@@ -71,20 +65,22 @@ typedef struct
 	int16		id;				/* type field --- must be first */
 	Oid			dbId;			/* database ID, or 0 if a shared relation */
 	Oid			relId;			/* relation ID */
-	RelFileNode physId;			/* physical file ID */
-
-	/*
-	 * Note: it is likely that RelFileNode will someday be changed to
-	 * include database ID.  In that case the dbId field will be redundant
-	 * and should be removed to save space.
-	 */
 } SharedInvalRelcacheMsg;
+
+#define SHAREDINVALSMGR_ID		(-2)
+
+typedef struct
+{
+	int16		id;				/* type field --- must be first */
+	RelFileNode rnode;			/* physical file ID */
+} SharedInvalSmgrMsg;
 
 typedef union
 {
 	int16		id;				/* type field --- must be first */
 	SharedInvalCatcacheMsg cc;
 	SharedInvalRelcacheMsg rc;
+	SharedInvalSmgrMsg sm;
 } SharedInvalidationMessage;
 
 
