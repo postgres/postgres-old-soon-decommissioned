@@ -249,8 +249,7 @@ extern void GrantLock(LOCK *lock, LOCKMODE lockmode);
 extern bool LockReleaseAll(LOCKMETHOD lockmethod, SHM_QUEUE *lockQueue);
 extern int	LockShmemSize(int maxBackends);
 extern bool LockingDisabled(void);
-extern bool DeadLockCheck(SHM_QUEUE *lockQueue, LOCK *findlock,
-			  bool skip_check);
+extern bool DeadLockCheck(void *proc, LOCK *findlock);
 
 #ifdef DEADLOCK_DEBUG
 extern void DumpLocks(void);

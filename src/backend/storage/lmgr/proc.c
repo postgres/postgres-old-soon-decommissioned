@@ -78,7 +78,6 @@
 #include "utils/trace.h"
 
 static void HandleDeadLock(int sig);
-static PROC *ProcWakeup(PROC *proc, int errType);
 static void ProcFreeAllSemaphores(void);
 
 #define DeadlockCheckTimer pg_options[OPT_DEADLOCKTIMEOUT]
@@ -640,7 +639,7 @@ rt:;
  *	 remove the process from the wait queue and set its links invalid.
  *	 RETURN: the next process in the wait queue.
  */
-static PROC *
+PROC *
 ProcWakeup(PROC *proc, int errType)
 {
 	PROC	   *retProc;
@@ -806,10 +805,10 @@ HandleDeadLock(int sig)
 	DumpAllLocks();
 #endif
 
-	if (!DeadLockCheck(&(MyProc->lockQueue), MyProc->waitLock, true))
+	MyProc->errType = STATUS_NOT_FOUND;
+	if (!DeadLockCheck(MyProc, MyProc->waitLock))
 	{
 		UnlockLockTable();
-		MyProc->errType = STATUS_NOT_FOUND;
 		return;
 	}
 

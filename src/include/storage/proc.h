@@ -119,6 +119,7 @@ extern bool ProcRemove(int pid);
 extern void ProcQueueInit(PROC_QUEUE *queue);
 extern int ProcSleep(PROC_QUEUE *queue, LOCKMETHODCTL *lockctl, int token, 
 					LOCK *lock);
+extern PROC *ProcWakeup(PROC *proc, int errType);
 extern int ProcLockWakeup(PROC_QUEUE *queue, LOCKMETHOD lockmethod,
 			   LOCK *lock);
 extern void ProcAddLock(SHM_QUEUE *elem);
