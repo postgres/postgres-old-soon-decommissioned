@@ -1367,7 +1367,7 @@ get_rule_expr(QryHier *qh, int rt_index, Node *node, bool varprefix)
 				else
 				{
 					if (!strcmp(rte->refname, "*CURRENT*"))
-						strcat(buf, "current.");
+						strcat(buf, "old.");
 					else
 					{
 						if (strcmp(rte->relname, rte->refname) != 0)
