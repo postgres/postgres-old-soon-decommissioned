@@ -11,6 +11,9 @@
 
 #include <errno.h>
 #include <unistd.h>
+#ifdef HAVE_GETOPT_H
+#include <getopt.h>
+#endif
 
 #include "libpq-fe.h"
 #include "libpq/libpq-fs.h"
