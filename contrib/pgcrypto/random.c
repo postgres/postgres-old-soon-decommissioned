@@ -78,16 +78,28 @@ px_get_random_bytes(uint8 *dst, unsigned count)
 	return res;
 }
 
+int
+px_get_pseudo_random_bytes(uint8 *dst, unsigned count)
+{
+	return px_get_random_bytes(dst, count);
+}
+
 #elif defined(RAND_SILLY)
 
 int
-px_get_random_bytes(uint8 *dst, unsigned count)
+px_get_pseudo_random_bytes(uint8 *dst, unsigned count)
 {
 	int			i;
 
 	for (i = 0; i < count; i++)
 		*dst++ = random();
 	return i;
+}
+
+int
+px_get_random_bytes(uint8 *dst, unsigned count)
+{
+	return PXE_NO_RANDOM;
 }
 
 #elif defined(RAND_OPENSSL)
@@ -99,25 +111,42 @@ px_get_random_bytes(uint8 *dst, unsigned count)
 
 static int	openssl_random_init = 0;
 
+/*
+ * OpenSSL random should re-feeded occasionally. From /dev/urandom
+ * preferably.
+ */
+static void init_openssl()
+{
+	if (RAND_get_rand_method() == NULL)
+		RAND_set_rand_method(RAND_SSLeay());
+	openssl_random_init = 1;
+}
+
 int
 px_get_random_bytes(uint8 *dst, unsigned count)
 {
 	int			res;
 
 	if (!openssl_random_init)
-	{
-		if (RAND_get_rand_method() == NULL)
-			RAND_set_rand_method(RAND_SSLeay());
-		openssl_random_init = 1;
-	}
-
-	/*
-	 * OpenSSL random should re-feeded occasionally. From /dev/urandom
-	 * preferably.
-	 */
+		init_openssl();
 
 	res = RAND_bytes(dst, count);
 	if (res == 1)
+		return count;
+
+	return PXE_OSSL_RAND_ERROR;
+}
+
+int
+px_get_pseudo_random_bytes(uint8 *dst, unsigned count)
+{
+	int			res;
+
+	if (!openssl_random_init)
+		init_openssl();
+
+	res = RAND_pseudo_bytes(dst, count);
+	if (res == 0 || res == 1)
 		return count;
 
 	return PXE_OSSL_RAND_ERROR;

@@ -56,6 +56,7 @@ static const struct error_desc px_err_list[] = {
 	{PXE_UNKNOWN_SALT_ALGO, "Unknown salt algorithm"},
 	{PXE_BAD_SALT_ROUNDS, "Incorrect number of rounds"},
 	{PXE_MCRYPT_INTERNAL, "mcrypt internal error"},
+	{PXE_NO_RANDOM, "No strong random source"},
 	{0, NULL},
 };
 
