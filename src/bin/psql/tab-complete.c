@@ -594,6 +594,7 @@ psql_completion(char *text, int start, int end)
 		"superuser_reserved_connections",
 		"syslog_facility",
 		"syslog_ident",
+		"temp_buffers",
 		"TimeZone",
 		"trace_notify",
 		"transform_null_equals",

@@ -126,6 +126,8 @@ extern int	log_min_messages;
 extern int	client_min_messages;
 extern int	log_min_duration_statement;
 
+extern int	num_temp_buffers;
+
 extern char *ConfigFileName;
 extern char *HbaFileName;
 extern char *IdentFileName;

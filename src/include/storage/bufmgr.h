@@ -157,7 +157,6 @@ extern void BufmgrCommit(void);
 extern void	BufferSync(void);
 extern void BgBufferSync(void);
 
-extern void InitLocalBuffer(void);
 extern void AtProcExit_LocalBuffers(void);
 
 /* in freelist.c */

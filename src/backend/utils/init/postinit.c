@@ -257,7 +257,6 @@ BaseInit(void)
 	/* Do local initialization of storage and buffer managers */
 	smgrinit();
 	InitBufferPoolAccess();
-	InitLocalBuffer();
 }
 
 
