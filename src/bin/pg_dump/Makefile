@@ -26,7 +26,7 @@ pg_dump: $(OBJS) $(LIBPQDIR)/libpq.a
 submake:
 	$(MAKE) -C $(LIBPQDIR) libpq.a
 
-install:
+install: pg_dump
 	$(INSTALL) $(INSTL_EXE_OPTS) pg_dump $(DESTDIR)$(BINDIR)/pg_dump
 
 depend dep:

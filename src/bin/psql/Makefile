@@ -72,7 +72,7 @@ psql: $(OBJS) $(LIBPQDIR)/libpq.a
 submake:
 	$(MAKE) -C $(LIBPQDIR) libpq.a
 
-install:
+install: psql
 	$(INSTALL) $(INSTL_EXE_OPTS) psql $(DESTDIR)$(BINDIR)/psql
 
 depend dep:
