@@ -689,7 +689,7 @@ tableDesc(PsqlSettings *pset, char *table, FILE *fout)
 				fprintf(fout,"%6s |", "var");
 			else if (strcmp(rtype, "bpchar") == 0 ||
 					 strcmp(rtype, "varchar") == 0)
-				fprintf(fout,"%6i |", atttypmod > 0 ? atttypmod - VARHDRSZ : 0);
+				fprintf(fout,"%6i |", atttypmod != -1 ? atttypmod - VARHDRSZ : 0);
 			else
 			{
 				if (attlen > 0)

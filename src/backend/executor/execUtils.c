@@ -531,6 +531,7 @@ ExecSetTypeInfo(int index,
 	att->attproc = 0;			/* dummy value */
 	att->attnelems = 0;			/* dummy value */
 	att->attcacheoff = -1;
+	att->atttypmod = -1;
 	att->attisset = false;
 	att->attalign = attalign;
 }

@@ -627,6 +627,7 @@ DefineAttr(char *name, char *type, int attnum)
 		attrtypes[attnum]->attbyval = (attlen == 1) || (attlen == 2) || (attlen == 4);
 	}
 	attrtypes[attnum]->attcacheoff = -1;
+	attrtypes[attnum]->atttypmod = -1;
 }
 
 

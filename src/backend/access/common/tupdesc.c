@@ -301,7 +301,7 @@ TupleDescInitEntry(TupleDesc desc,
 
 	att->attdisbursion = 0;		/* dummy value */
 	att->attcacheoff = -1;
-	att->atttypmod = 0;
+	att->atttypmod = -1;
 
 	att->attnum = attributeNumber;
 	att->attnelems = attdim;
