@@ -31,12 +31,23 @@ all: SUBSYS.o
 SUBSYS.o: $(OBJS)
 	$(LD) -r -o SUBSYS.o $(OBJS)
 
-utility.o: ../parse.h
+# The following dependencies are picked up by the make dep, but since 
+# not everyone can do make dep, and these are particularly important
+# dependencies (because they don't even exist until you make them),
+# they are hardcoded here.
+
+utility.o: ../parse.h ../fmgr.h
+aclchk.o: ../fmgr.h
+fastpath.o: ../fmgr.h
+postgres.o: ../fmgr.h
 
 ../parse.h: 
 	$(MAKE) -C .. parse.h
 
-dep: ../parse.h
+../fmgr.h: 
+	$(MAKE) -C .. fmgr.h
+
+dep: ../parse.h ../fmgr.h
 	$(CC) -MM $(INCLUDE_OPT) *.c >depend
 
 clean: 
