@@ -68,6 +68,8 @@ extern Datum istrue(PG_FUNCTION_ARGS);
 extern Datum isfalse(PG_FUNCTION_ARGS);
 extern Datum isnottrue(PG_FUNCTION_ARGS);
 extern Datum isnotfalse(PG_FUNCTION_ARGS);
+extern Datum booland_statefunc(PG_FUNCTION_ARGS);
+extern Datum boolor_statefunc(PG_FUNCTION_ARGS);
 
 /* char.c */
 extern Datum charin(PG_FUNCTION_ARGS);

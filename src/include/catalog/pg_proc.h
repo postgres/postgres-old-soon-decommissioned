@@ -3537,6 +3537,41 @@ DATA(insert OID = 1069 (  generate_series PGNSP PGUID 12 f f t t v 2 20 "20 20" 
 DESCR("non-persistent series generator");
 
 
+/* boolean aggregates */
+DATA(insert OID = 2515 ( booland_statefunc             PGNSP PGUID 12 f f t f i 2 16 "16 16" _null_ booland_statefunc - _null_ ));
+DESCR("boolean-and aggregate transition function");
+DATA(insert OID = 2516 ( boolor_statefunc              PGNSP PGUID 12 f f t f i 2 16 "16 16" _null_ boolor_statefunc - _null_ ));
+DESCR("boolean-or aggregate transition function");
+
+DATA(insert OID = 2517 ( bool_and 					   PGNSP PGUID 12 t f f f i 1 16 "16" _null_ aggregate_dummy - _null_ ));
+DESCR("boolean-and aggregate");
+/* ANY, SOME? These names conflict with subquery operators. See doc. */
+DATA(insert OID = 2518 ( bool_or 					   PGNSP PGUID 12 t f f f i 1 16 "16" _null_ aggregate_dummy - _null_ ));
+DESCR("boolean-or aggregate");
+DATA(insert OID = 2519 ( every 					   	   PGNSP PGUID 12 t f f f i 1 16 "16" _null_ aggregate_dummy - _null_ ));
+DESCR("boolean-and aggregate");
+
+/* bitwise integer aggregates */
+DATA(insert OID = 2535 ( bit_and 					   PGNSP PGUID 12 t f f f i 1 21 "21" _null_ aggregate_dummy - _null_));
+DESCR("bitwise-and smallint aggregate");
+DATA(insert OID = 2536 ( bit_or						   PGNSP PGUID 12 t f f f i 1 21 "21" _null_ aggregate_dummy - _null_));
+DESCR("bitwise-or smallint aggregate");
+
+DATA(insert OID = 2537 ( bit_and 					   PGNSP PGUID 12 t f f f i 1 23 "23" _null_ aggregate_dummy - _null_));
+DESCR("bitwise-and integer aggregate");
+DATA(insert OID = 2538 ( bit_or						   PGNSP PGUID 12 t f f f i 1 23 "23" _null_ aggregate_dummy - _null_));
+DESCR("bitwise-or integer aggregate");
+
+DATA(insert OID = 2539 ( bit_and 					   PGNSP PGUID 12 t f f f i 1 20 "20" _null_ aggregate_dummy - _null_));
+DESCR("bitwise-and bigint aggregate");
+DATA(insert OID = 2540 ( bit_or						   PGNSP PGUID 12 t f f f i 1 20 "20" _null_ aggregate_dummy - _null_));
+DESCR("bitwise-or bigint aggregate");
+
+DATA(insert OID = 2541 ( bit_and 					   PGNSP PGUID 12 t f f f i 1 1560 "1560" _null_ aggregate_dummy - _null_));
+DESCR("bitwise-and bit aggregate");
+DATA(insert OID = 2542 ( bit_or						   PGNSP PGUID 12 t f f f i 1 1560 "1560" _null_ aggregate_dummy - _null_));
+DESCR("bitwise-or bit aggregate");
+
 /*
  * Symbolic values for provolatile column: these indicate whether the result
  * of a function is dependent *only* on the values of its explicit arguments,
