@@ -142,7 +142,7 @@ OIDNAMELEN = 36
 # To disable a feature, comment out the entire definition
 # (that is, prepend '#', don't set it to "0" or "no").
 
-HAVE_Cplusplus= false
+#HAVE_Cplusplus= true
 
 # Comment out CDEBUG to turn off debugging and sanity-checking.
 #
@@ -166,7 +166,7 @@ ENFORCE_ALIGNMENT= true
 #    and READLINE_LIBDIR to reflect the location of the readline and history
 #    headers and libraries.
 #
-USE_READLINE= false
+#USE_READLINE= true
 
 # directories for the readline and history libraries.
 READLINE_INC=  -I/home/tools/include
