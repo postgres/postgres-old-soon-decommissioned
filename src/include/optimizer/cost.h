@@ -88,10 +88,6 @@ extern void set_function_size_estimates(Query *root, RelOptInfo *rel);
  * prototypes for clausesel.c
  *	  routines to compute clause selectivities
  */
-extern Selectivity restrictlist_selectivity(Query *root,
-						 List *restrictinfo_list,
-						 int varRelid,
-						 JoinType jointype);
 extern Selectivity clauselist_selectivity(Query *root,
 					   List *clauses,
 					   int varRelid,

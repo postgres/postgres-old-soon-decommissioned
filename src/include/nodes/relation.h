@@ -613,6 +613,9 @@ typedef struct RestrictInfo
 	 */
 	bool		canjoin;
 
+	/* The set of relids (varnos) referenced in the clause: */
+	Relids		clause_relids;
+
 	/* These fields are set for any binary opclause: */
 	Relids		left_relids;	/* relids in left side of clause */
 	Relids		right_relids;	/* relids in right side of clause */
@@ -620,7 +623,7 @@ typedef struct RestrictInfo
 	/* This field is NULL unless clause is an OR clause: */
 	Expr	   *orclause;		/* modified clause with RestrictInfos */
 
-	/* cache space for costs (currently only used for join clauses) */
+	/* cache space for cost and selectivity */
 	QualCost	eval_cost;		/* eval cost of clause; -1 if not yet set */
 	Selectivity this_selec;		/* selectivity; -1 if not yet set */
 

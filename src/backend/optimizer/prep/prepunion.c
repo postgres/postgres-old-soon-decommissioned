@@ -885,9 +885,10 @@ adjust_inherited_attrs_mutator(Node *node,
 		newinfo->orclause = (Expr *)
 			adjust_inherited_attrs_mutator((Node *) oldinfo->orclause, context);
 
-		/*
-		 * Adjust left/right relid sets too.
-		 */
+		/* adjust relid sets too */
+		newinfo->clause_relids = adjust_relid_set(oldinfo->clause_relids,
+												  context->old_rt_index,
+												  context->new_rt_index);
 		newinfo->left_relids = adjust_relid_set(oldinfo->left_relids,
 												context->old_rt_index,
 												context->new_rt_index);

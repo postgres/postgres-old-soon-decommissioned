@@ -1170,6 +1170,7 @@ _copyRestrictInfo(RestrictInfo *from)
 	COPY_NODE_FIELD(clause);
 	COPY_SCALAR_FIELD(ispusheddown);
 	COPY_SCALAR_FIELD(canjoin);
+	COPY_BITMAPSET_FIELD(clause_relids);
 	COPY_BITMAPSET_FIELD(left_relids);
 	COPY_BITMAPSET_FIELD(right_relids);
 	COPY_NODE_FIELD(orclause);

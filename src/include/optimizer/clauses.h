@@ -59,7 +59,6 @@ extern List *pull_constant_clauses(List *quals, List **constantQual);
 
 extern bool has_distinct_on_clause(Query *query);
 
-extern void clause_get_relids_vars(Node *clause, Relids *relids, List **vars);
 extern int	NumRelids(Node *clause);
 extern void CommuteClause(OpExpr *clause);
 
