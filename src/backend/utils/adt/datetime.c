@@ -294,8 +294,8 @@ static datetkn deltatktbl[] = {
 	{"secs", UNITS, DTK_SECOND},
 	{DTIMEZONE, UNITS, DTK_TZ}, /* "timezone" time offset */
 	{"timezone", UNITS, DTK_TZ},		/* "timezone" time offset */
-	{"timezone_hour", UNITS, DTK_TZ_HOUR},	/* timezone hour units */
-	{"timezone_minute", UNITS, DTK_TZ_MINUTE},		/* timezone minutes units */
+	{"timezone_h", UNITS, DTK_TZ_HOUR},		/* timezone hour units */
+	{"timezone_m", UNITS, DTK_TZ_MINUTE},	/* timezone minutes units */
 	{"undefined", RESERV, DTK_INVALID}, /* pre-v6.1 invalid time */
 	{"us", UNITS, DTK_MICROSEC},/* "microsecond" relative time units */
 	{"usec", UNITS, DTK_MICROSEC},		/* "microsecond" relative time
