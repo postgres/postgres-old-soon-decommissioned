@@ -326,6 +326,12 @@ other			.
 				}
 <xd>{xdstop}	{
 					BEGIN(INITIAL);
+					if (strlen(literalbuf) >= NAMEDATALEN)
+					{
+						elog(NOTICE, "identifier \"%s\" will be truncated to \"%.*s\"",
+							 literalbuf, NAMEDATALEN-1, literalbuf);
+						literalbuf[NAMEDATALEN-1] = '\0';
+					}
 					yylval.str = pstrdup(literalbuf);
 					return IDENT;
 				}
