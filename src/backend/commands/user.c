@@ -44,12 +44,20 @@ static void CheckPgUserAclNotNull(void);
  *---------------------------------------------------------------------
  */
 
-/* This is the old name. Now uses a lower case name to be able to call this
-   from SQL. */
-#define UpdatePgPwdFile() update_pg_pwd()
+static void UpdatePgPwdFile(void);
 
-void
-update_pg_pwd()
+/* This is a wrapper, so the below function can be called from a trigger
+   (used to update pg_pwd from pg_shadow) */
+HeapTuple update_pg_pwd()
+{
+    UpdatePgPwdFile();
+    return NULL;
+}
+
+
+
+static void
+UpdatePgPwdFile(void)
 {
 	char	   *filename,
 			   *tempname;
