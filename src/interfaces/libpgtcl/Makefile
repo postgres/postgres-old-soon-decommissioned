@@ -25,6 +25,11 @@ ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)
 endif
 
+ifeq ($(CC), gcc)
+  CFLAGS+= -Wno-error
+endif
+
+
 ifeq ($(PORTNAME), linux)
   ifdef LINUX_ELF
     ifeq ($(CC), gcc)
