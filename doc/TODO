@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Mon Sep 29 17:15:14 EDT 2003
+Last updated:		Mon Sep 29 17:41:25 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -273,8 +273,6 @@ Commands
 	o Allow PL/pgSQL to name columns by ordinal position, e.g. rec.(3)
 	o Allow PL/pgSQL EXECUTE query_var INTO record_var;
 	o Add capability to create and call PROCEDURES
-	o Fixed PL/Tcl's spi_prepare to accept full qualified type names in
-	  the parameter type list
 
 
 Clients
