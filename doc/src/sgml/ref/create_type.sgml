@@ -153,7 +153,8 @@ CREATE TYPE <replaceable class="parameter">typename</replaceable> ( INPUT = <rep
       <listitem>
        <para>
         Storage alignment requirement of the data type.  If specified, must
-	be '<literal>int4</literal>' or '<literal>double</literal>';
+	be '<literal>char</literal>', '<literal>int2</literal>',
+	'<literal>int4</literal>', or '<literal>double</literal>';
 	the default is '<literal>int4</literal>'.
        </para>
       </listitem>

@@ -547,7 +547,7 @@ DefineType(char *typeName, List *parameters)
 	char		delimiter = DEFAULT_TYPDELIM;
 	char	   *shadow_type;
 	List	   *pl;
-	char		alignment = 'i';/* default alignment */
+	char		alignment = 'i'; /* default alignment */
 	char		storage = 'p';	/* default storage in TOAST */
 
 	/*
@@ -593,15 +593,26 @@ DefineType(char *typeName, List *parameters)
 		{
 			char	   *a = defGetString(defel);
 
+			/*
+			 * Note: if argument was an unquoted identifier, parser will have
+			 * applied xlateSqlType() to it, so be prepared to recognize
+			 * translated type names as well as the nominal form.
+			 */
 			if (strcasecmp(a, "double") == 0)
+				alignment = 'd';
+			else if (strcasecmp(a, "float8") == 0)
 				alignment = 'd';
 			else if (strcasecmp(a, "int4") == 0)
 				alignment = 'i';
+			else if (strcasecmp(a, "int2") == 0)
+				alignment = 's';
+			else if (strcasecmp(a, "char") == 0)
+				alignment = 'c';
+			else if (strcasecmp(a, "bpchar") == 0)
+				alignment = 'c';
 			else
-			{
 				elog(ERROR, "DefineType: \"%s\" alignment not recognized",
 					 a);
-			}
 		}
 		else if (strcasecmp(defel->defname, "storage") == 0)
 		{
@@ -616,10 +627,8 @@ DefineType(char *typeName, List *parameters)
 			else if (strcasecmp(a, "main") == 0)
 				storage = 'm';
 			else
-			{
 				elog(ERROR, "DefineType: \"%s\" storage not recognized",
 					 a);
-			}
 		}
 		else
 		{

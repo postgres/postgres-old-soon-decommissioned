@@ -3190,19 +3190,22 @@ dumpTypes(Archive *fout, FuncInfo *finfo, int numFuncs,
 			(*deps)[depIdx++] = strdup(tinfo[i].typelem);
 		}
 
-		/* XXX these are all the aligns currently handled by DefineType */
-		if (strcmp(tinfo[i].typalign, "i") == 0)
+		if (strcmp(tinfo[i].typalign, "c") == 0)
+			appendPQExpBuffer(q, ", alignment = char");
+		else if (strcmp(tinfo[i].typalign, "s") == 0)
+			appendPQExpBuffer(q, ", alignment = int2");
+		else if (strcmp(tinfo[i].typalign, "i") == 0)
 			appendPQExpBuffer(q, ", alignment = int4");
 		else if (strcmp(tinfo[i].typalign, "d") == 0)
 			appendPQExpBuffer(q, ", alignment = double");
 
 		if (strcmp(tinfo[i].typstorage, "p") == 0)
 			appendPQExpBuffer(q, ", storage = plain");
-		if (strcmp(tinfo[i].typstorage, "e") == 0)
+		else if (strcmp(tinfo[i].typstorage, "e") == 0)
 			appendPQExpBuffer(q, ", storage = external");
-		if (strcmp(tinfo[i].typstorage, "x") == 0)
+		else if (strcmp(tinfo[i].typstorage, "x") == 0)
 			appendPQExpBuffer(q, ", storage = extended");
-		if (strcmp(tinfo[i].typstorage, "m") == 0)
+		else if (strcmp(tinfo[i].typstorage, "m") == 0)
 			appendPQExpBuffer(q, ", storage = main");
 
 		if (tinfo[i].passedbyvalue)
