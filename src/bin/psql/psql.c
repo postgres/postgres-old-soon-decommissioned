@@ -2841,7 +2841,7 @@ main(int argc, char **argv)
 	settings.getPassword = 0;
 #endif
 
-#ifdef MUTIBYTE
+#ifdef MULTIBYTE
 	has_client_encoding = getenv("PGCLIENTENCODING");
 #endif
 
