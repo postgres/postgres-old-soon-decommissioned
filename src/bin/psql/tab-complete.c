@@ -62,6 +62,9 @@
 
 #ifdef HAVE_RL_FILENAME_COMPLETION_FUNCTION
 #define filename_completion_function rl_filename_completion_function
+#else
+/* missing in some header files */
+extern char *filename_completion_function();
 #endif
 
 #ifdef HAVE_RL_COMPLETION_MATCHES
