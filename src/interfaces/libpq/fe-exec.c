@@ -2429,3 +2429,11 @@ PQflush(PGconn *conn)
 
 	return (pqFlush(conn));
 }
+
+/* try to force data out, really only useful for non-blocking users.
+ * This implementation actually works for non-blocking connections */
+int
+PQsendSome(PGconn *conn)
+{
+	return pqSendSome(conn);
+}
