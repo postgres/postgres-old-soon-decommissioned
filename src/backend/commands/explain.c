@@ -193,6 +193,14 @@ ExplainOnePlan(QueryDesc *queryDesc, ExplainStmt *stmt,
 	ExplainState *es;
 	StringInfo	str;
 
+	/*
+	 * If we are not going to execute, suppress any SELECT INTO marker.
+	 * Without this, ExecutorStart will create the INTO target table,
+	 * which we don't want.
+	 */
+	if (!stmt->analyze)
+		queryDesc->parsetree->into = NULL;
+
 	gettimeofday(&starttime, NULL);
 
 	/* call ExecutorStart to prepare the plan for execution */
