@@ -83,7 +83,8 @@ do { \
 #else
 #define CHECK_FOR_INTERRUPTS() \
 do { \
-	WaitForSingleObjectEx(GetCurrentThread(),0,TRUE); \
+	if (WaitForSingleObject(pgwin32_signal_event,0) == WAIT_OBJECT_0) \
+		pgwin32_dispatch_queued_signals(); \
 	if (InterruptPending) \
 		ProcessInterrupts(); \
 } while(0)

@@ -18,9 +18,7 @@
 #ifndef PQSIGNAL_H
 #define PQSIGNAL_H
 
-#ifndef WIN32
 #include <signal.h>
-#endif
 
 #ifdef HAVE_SIGPROCMASK
 extern sigset_t UnBlockSig,
@@ -46,23 +44,5 @@ typedef void (*pqsigfunc) (int);
 extern void pqinitmask(void);
 
 extern pqsigfunc pqsignal(int signo, pqsigfunc func);
-extern void pg_queue_signal(int signum);
-
-#ifdef WIN32
-#define sigmask(sig) ( 1 << (sig-1) )
-
-void pgwin32_signal_initialize(void);
-extern HANDLE pgwin32_main_thread_handle;
-#define PG_POLL_SIGNALS() WaitForSingleObjectEx(pgwin32_main_thread_handle,0,TRUE);
-
-/* Signal function return values */
-#undef SIG_DFL
-#undef SIG_ERR
-#undef SIG_IGN
-#define SIG_DFL ((pqsigfunc)0)
-#define SIG_ERR ((pqsigfunc)-1)
-#define SIG_IGN ((pqsigfunc)1)
-
-#endif
 
 #endif   /* PQSIGNAL_H */
