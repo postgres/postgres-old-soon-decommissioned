@@ -1073,6 +1073,19 @@ _copyIndexPath(IndexPath *from)
      */
     newnode->indexid = listCopy(from->indexid);
     Node_Copy(from, newnode, indexqual);
+
+    if (from->indexkeys)
+    {
+    	int i, len;
+    	
+	for(len=0; from->indexkeys[len]!=0; len++)
+	    ;
+	newnode->indexkeys = (int *)palloc(sizeof(int) * (len+1));
+	for(i=0; i < len; i++) {
+	    newnode->indexkeys[i] = from->indexkeys[i];
+	}
+	newnode->indexkeys[len] = 0;
+    }
     
     return newnode;
 }
