@@ -53,8 +53,10 @@ dep: gram.c scan.c
 # Remove scan.c from the clean since we want to avoid rebuilding when using
 # the original source distribution. This should help Solaris machines whose
 # lex has trouble with exclusive states.
+# Remove gram.c, parse.h from the clean since we have now started to exceed
+# internal limits for some non-bison yaccs. - thomas 1998-02-17
 clean: 
-	rm -f SUBSYS.o $(OBJS) gram.c parse.h # scan.c
+	rm -f SUBSYS.o $(OBJS) # gram.c parse.h # scan.c
 # And the garbage that might have been left behind by partial build:
 	rm -f y.tab.c y.tab.h lex.yy.c
 
