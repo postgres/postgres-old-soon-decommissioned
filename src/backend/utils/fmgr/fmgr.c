@@ -261,7 +261,7 @@ char	   *
 fmgr(Oid procedureId,...)
 {
 	va_list		pvar;
-	register	i;
+	int			i;
 	int			pronargs;
 	FmgrValues	values;
 	FmgrInfo	finfo;
@@ -299,7 +299,7 @@ char	   *
 fmgr_ptr(FmgrInfo *finfo, ...)
 {
 	va_list		pvar;
-	register	i;
+	int			i;
 	int			n_arguments;
 	FmgrInfo	local_finfo;
 	FmgrValues	values;

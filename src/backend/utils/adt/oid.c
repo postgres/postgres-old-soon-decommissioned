@@ -31,7 +31,7 @@
 Oid	*
 oid8in(char *oidString)
 {
-	register Oid (*result)[];
+	Oid (*result)[];
 	int			nums;
 
 	if (oidString == NULL)
@@ -60,9 +60,9 @@ oid8in(char *oidString)
 char *
 oid8out(Oid (*oidArray)[])
 {
-	register int num;
-	register Oid *sp;
-	register char *rp;
+	int num;
+	Oid *sp;
+	char *rp;
 	char	   *result;
 
 	if (oidArray == NULL)

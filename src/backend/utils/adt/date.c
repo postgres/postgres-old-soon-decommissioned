@@ -206,7 +206,7 @@ reltime2tm(int32 time, struct tm * tm)
 #if FALSE
 char	   *timestring;
 long		quantity;
-register int i;
+int i;
 int			unitnr;
 
 timestring = (char *) palloc(Max(strlen(INVALID_RELTIME_STR),
@@ -966,8 +966,8 @@ isreltime(char *str)
 }								/* isreltime() */
 
 #if FALSE
-register char *p;
-register char c;
+char *p;
+char c;
 int			i;
 char		unit[UNITMAXLEN];
 char		direction[DIRMAXLEN];
@@ -1156,9 +1156,9 @@ istinterval(char *i_string,
 			AbsoluteTime *i_start,
 			AbsoluteTime *i_end)
 {
-	register char *p,
+	char *p,
 			   *p1;
-	register char c;
+	char c;
 
 	p = i_string;
 	/* skip leading blanks up to '[' */

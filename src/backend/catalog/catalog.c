@@ -155,7 +155,7 @@ void
 fillatt(TupleDesc tupleDesc)
 {
 	AttributeTupleForm *attributeP;
-	register TypeTupleForm typp;
+	TypeTupleForm typp;
 	HeapTuple	tuple;
 	int			i;
 	int			natts = tupleDesc->natts;

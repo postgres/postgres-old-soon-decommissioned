@@ -279,7 +279,7 @@ char	   *
 reverse_c16(string)
 char	   *string;
 {
-	register	i;
+	int			i;
 	int			len;
 	char	   *new_string;
 

@@ -224,7 +224,7 @@ OperatorShellMakeWithOpenRelation(Relation pg_operator_desc,
 								  Oid leftObjectId,
 								  Oid rightObjectId)
 {
-	register int i;
+	int i;
 	HeapTuple	tup;
 	Datum		values[Natts_pg_operator];
 	char		nulls[Natts_pg_operator];
@@ -452,7 +452,7 @@ OperatorDef(char *operatorName,
 			char *leftSortName,
 			char *rightSortName)
 {
-	register	i,
+	int			i,
 				j;
 	Relation	pg_operator_desc;
 
@@ -767,7 +767,7 @@ OperatorDef(char *operatorName,
 static void
 OperatorUpd(Oid baseId, Oid commId, Oid negId)
 {
-	register	i;
+	int			i;
 	Relation	pg_operator_desc;
 	HeapScanDesc pg_operator_scan;
 	HeapTuple	tup;

@@ -171,7 +171,7 @@ Relation
 heap_create(char *name,
 			TupleDesc tupDesc)
 {
-	register unsigned i;
+	unsigned i;
 	Oid			relid;
 	Relation	rdesc;
 	int			len;

@@ -64,7 +64,7 @@ AggregateCreate(char *aggName,
 				char *agginitval1,
 				char *agginitval2)
 {
-	register	i;
+	int			i;
 	Relation	aggdesc;
 	HeapTuple	tup;
 	char		nulls[Natts_pg_aggregate];

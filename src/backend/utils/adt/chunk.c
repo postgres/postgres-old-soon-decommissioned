@@ -191,7 +191,7 @@ _FindBestChunk(int size,
 		 * compute the number of page fetches for a given chunk size (d[])
 		 * and access pattern (A[][])
 		 */
-		register int i,
+		int i,
 					j,
 					nc;
 
@@ -224,7 +224,7 @@ _FindBestChunk(int size,
 static int
 get_next(int d[], int k, int C, int dmax[])
 {
-	register int i,
+	int i,
 				j,
 				temp;
 

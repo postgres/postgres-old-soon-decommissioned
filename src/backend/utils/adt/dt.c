@@ -4015,9 +4015,9 @@ DecodeUnits(int field, char *lowtoken, int *val)
 static datetkn *
 datebsearch(char *key, datetkn *base, unsigned int nel)
 {
-	register datetkn *last = base + nel - 1,
+	datetkn *last = base + nel - 1,
 			   *position;
-	register int result;
+	int result;
 
 	while (last >= base)
 	{

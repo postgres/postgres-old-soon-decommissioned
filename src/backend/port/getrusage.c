@@ -15,7 +15,7 @@ int
 getrusage(int who, struct rusage * rusage)
 {
 	struct tms	tms;
-	register int tick_rate = CLK_TCK;	/* ticks per second */
+	int tick_rate = CLK_TCK;	/* ticks per second */
 	clock_t		u,
 				s;
 

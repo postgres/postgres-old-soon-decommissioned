@@ -780,9 +780,9 @@ ExecScanHashBucket(HashJoinState *hjstate,
 static int
 hashFunc(char *key, int len)
 {
-	register unsigned int h;
-	register int l;
-	register unsigned char *k;
+	unsigned int h;
+	int l;
+	unsigned char *k;
 
 	/*
 	 * If this is a variable length type, then 'k' points to a "struct

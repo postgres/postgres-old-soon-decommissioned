@@ -179,7 +179,7 @@ ExcRaise(Exception *excP,
 		 ExcData data,
 		 ExcMessage message)
 {
-	register ExcFrame *efp;
+	ExcFrame *efp;
 
 	efp = ExcCurFrameP;
 	if (efp == NULL)

@@ -334,8 +334,8 @@ gethilokey(Oid relid,
 		   char **high,
 		   char **low)
 {
-	register Relation rdesc;
-	register HeapScanDesc sdesc;
+	Relation rdesc;
+	HeapScanDesc sdesc;
 	static ScanKeyData key[3] = {
 		{0, Anum_pg_statistic_starelid, F_OIDEQ, {0, 0, F_OIDEQ}},
 		{0, Anum_pg_statistic_staattnum, F_INT2EQ, {0, 0, F_INT2EQ}},

@@ -56,12 +56,12 @@
 int
 inet_aton(const char *cp, struct in_addr * addr)
 {
-	register unsigned int val;
-	register int base,
+	unsigned int val;
+	int base,
 				n;
-	register char c;
+	char c;
 	u_int		parts[4];
-	register u_int *pp = parts;
+	u_int *pp = parts;
 
 	for (;;)
 	{

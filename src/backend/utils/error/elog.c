@@ -45,8 +45,8 @@ elog(int lev, const char *fmt,...)
 	va_list		ap;
 	char		buf[ELOG_MAXLEN],
 				line[ELOG_MAXLEN];
-	register char *bp;
-	register const char *cp;
+	char *bp;
+	const char *cp;
 	extern int	errno,
 				sys_nerr;
 

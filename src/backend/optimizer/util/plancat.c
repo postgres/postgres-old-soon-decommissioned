@@ -103,7 +103,7 @@ relation_info(Query *root, Index relid,
 bool
 index_info(Query *root, bool first, int relid, IdxInfoRetval *info)
 {
-	register	i;
+	int			i;
 	HeapTuple	indexTuple,
 				amopTuple;
 	IndexTupleForm index;
@@ -514,7 +514,7 @@ IndexSelectivity(Oid indexrelid,
 				 float *idxPages,
 				 float *idxSelec)
 {
-	register	i,
+	int			i,
 				n;
 	HeapTuple	indexTuple,
 				amopTuple,

@@ -398,7 +398,7 @@ SearchSysCacheTuple(int cacheId,		/* cache selection code */
 					Datum key3,
 					Datum key4)
 {
-	register HeapTuple tp;
+	HeapTuple tp;
 
 	if (cacheId < 0 || cacheId >= SysCacheSize)
 	{

@@ -64,7 +64,7 @@ OrderedSetContains(OrderedSet set, OrderedElem elem)
 Pointer
 OrderedSetGetHead(OrderedSet set)
 {
-	register OrderedElem elem;
+	OrderedElem elem;
 
 	elem = set->head;
 	if (elem->next)
@@ -81,7 +81,7 @@ OrderedSetGetHead(OrderedSet set)
 Pointer
 OrderedSetGetTail(OrderedSet set)
 {
-	register OrderedElem elem;
+	OrderedElem elem;
 
 	elem = set->tail;
 	if (elem->prev)

@@ -176,7 +176,7 @@ showatts(char *name, TupleDesc tupleDesc)
 void
 debugtup(HeapTuple tuple, TupleDesc typeinfo)
 {
-	register int i;
+	int i;
 	Datum	    attr;
 	char	   *value;
 	bool		isnull;

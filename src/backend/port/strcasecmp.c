@@ -63,7 +63,7 @@ static unsigned char charmap[] = {
 int
 strcasecmp(char *s1, char *s2)
 {
-	register unsigned char u1,
+	unsigned char u1,
 				u2;
 
 	for (;;)

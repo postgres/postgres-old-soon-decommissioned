@@ -979,7 +979,7 @@ LexIDStr(int ident_num)
 static int
 CompHash(char *str, int len)
 {
-	register int result;
+	int result;
 
 	result = (NUM * str[0] + NUMSQR * str[len - 1] + NUMCUBE * str[(len - 1) / 2]);
 

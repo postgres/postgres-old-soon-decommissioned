@@ -156,7 +156,7 @@ SingleOpOperatorRemove(Oid typeOid)
 	ItemPointerData itemPointerData;
 	Buffer		buffer;
 	static		attnums[3] = {7, 8, 9}; /* left, right, return */
-	register	i;
+	int			i;
 
 	ScanKeyEntryInitialize(&key[0],
 					   0, 0, ObjectIdEqualRegProcedure, (Datum) typeOid);

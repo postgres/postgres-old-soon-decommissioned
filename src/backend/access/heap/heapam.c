@@ -791,7 +791,7 @@ heap_getnext(HeapScanDesc scandesc,
 			 int backw,
 			 Buffer *b)
 {
-	register HeapScanDesc sdesc = scandesc;
+	HeapScanDesc sdesc = scandesc;
 	Buffer		localb;
 
 	/* ----------------

@@ -41,7 +41,7 @@
 static inline char *
 translate_escape(char *p, int isArray)
 {
-	register char c,
+	char c,
 			   *q,
 			   *s;
 
@@ -155,7 +155,7 @@ tcl_value(char *value)
 {
 	int			literal,
 				last;
-	register char *p;
+	char *p;
 
 	if (!value)
 	{

@@ -55,7 +55,7 @@ ProcedureCreate(char *procedureName,
 				List *argList,
 				CommandDest dest)
 {
-	register	i;
+	int			i;
 	Relation	rdesc;
 	HeapTuple	tup;
 	bool		defined;

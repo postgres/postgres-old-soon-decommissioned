@@ -287,7 +287,7 @@ CatalogCacheSetId(CatCache *cacheInOutP, int id)
  * ----------------
  */
 static long
-comphash(long l, register char *v)
+comphash(long l, char *v)
 {
 	long		i;
 	NameData	n;
@@ -654,7 +654,7 @@ InitSysCache(char *relname,
 			 HeapTuple (*iScanfuncP) ())
 {
 	CatCache   *cp;
-	register int i;
+	int i;
 	MemoryContext oldcxt;
 
 	char	   *indname;

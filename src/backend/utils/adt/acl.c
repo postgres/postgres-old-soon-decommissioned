@@ -242,7 +242,7 @@ aclitemin(char *s)
 char	   *
 aclitemout(AclItem *aip)
 {
-	register char *p;
+	char *p;
 	char	   *out;
 	HeapTuple	htp;
 	unsigned	i;

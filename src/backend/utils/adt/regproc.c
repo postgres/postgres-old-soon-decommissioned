@@ -160,8 +160,8 @@ oid8types(Oid (*oidArray)[])
 	HeapTuple	typetup;
 	text	   *result;
 	ScanKeyData key;
-	register int num;
-	register Oid *sp;
+	int num;
+	Oid *sp;
 
 	if (oidArray == NULL)
 	{

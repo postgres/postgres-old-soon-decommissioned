@@ -155,7 +155,7 @@ TypeGet(char *typeName,			/* name of type to be fetched */
 static Oid
 TypeShellMakeWithOpenRelation(Relation pg_type_desc, char *typeName)
 {
-	register int i;
+	int i;
 	HeapTuple	tup;
 	Datum		values[Natts_pg_type];
 	char		nulls[Natts_pg_type];
@@ -297,7 +297,7 @@ TypeCreate(char *typeName,
 		   bool passedByValue,
 		   char alignment)
 {
-	register	i,
+	int			i,
 				j;
 	Relation	pg_type_desc;
 	HeapScanDesc pg_type_scan;

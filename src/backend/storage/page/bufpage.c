@@ -98,7 +98,7 @@ PageAddItem(Page page,
 			OffsetNumber offsetNumber,
 			ItemIdFlags flags)
 {
-	register	i;
+	int			i;
 	Size		alignedSize;
 	Offset		lower;
 	Offset		upper;
