@@ -651,7 +651,6 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
 	lineno = 0;
 	while (!done)
 	{
-	  values = (Datum *) palloc(sizeof(Datum) * attr_count);
 		if (!binary)
 		{
 #ifdef COPY_PATCH
