@@ -7,6 +7,7 @@ include $(top_builddir)/src/Makefile.global
 WANTED_DIRS = \
 		array		\
 		cube		\
+		dbase		\
 		earthdistance	\
 		findoidjoins	\
 		fulltextindex	\
