@@ -182,6 +182,8 @@ typedef struct
 	int		(*mb2wchar_with_len) ();	/* convert a multi-byte	
 							 * string to a wchar */
 	int		(*mblen) ();			/* returns the length of a multi-byte word */
+	int		maxmblen;			/* max bytes for a letter in this charset */
+
 } pg_wchar_tbl;
 
 extern pg_wchar_tbl pg_wchar_table[];
@@ -239,6 +241,8 @@ extern unsigned char *pg_server_to_client(unsigned char *, int);
 
 extern unsigned short BIG5toCNS(unsigned short, unsigned char *);
 extern unsigned short CNStoBIG5(unsigned short, unsigned char);
+
+char *pg_verifymbstr(const unsigned char *, int);
 
 #endif	 /* MULTIBYTE */
 
