@@ -1222,7 +1222,7 @@ AlterDomainDefault(List *names, Node *defaultRaw)
 		new_record_repl[Anum_pg_type_typdefault - 1] = 'r';
 	}
 	else
-/* Default is NULL, drop it */
+	/* Default is NULL, drop it */
 	{
 		new_record_nulls[Anum_pg_type_typdefaultbin - 1] = 'n';
 		new_record_repl[Anum_pg_type_typdefaultbin - 1] = 'r';

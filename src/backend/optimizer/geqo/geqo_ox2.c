@@ -102,7 +102,7 @@ ox2(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene, City *city_table)
 			select++;			/* next city in  the select list   */
 		}
 		else
-/* city isn't used yet, so inherit from tour2 */
+			/* city isn't used yet, so inherit from tour2 */
 			offspring[k] = tour2[k];
 	}
 

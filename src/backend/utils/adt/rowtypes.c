@@ -146,7 +146,7 @@ record_in(PG_FUNCTION_ARGS)
 			if (*ptr == ',')
 				ptr++;
 			else
-/* *ptr must be ')' */
+				/* *ptr must be ')' */
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
 					  errmsg("malformed record literal: \"%s\"", string),

@@ -1150,8 +1150,7 @@ plperl_func_handler(PG_FUNCTION_ARGS)
 
 		}
 		else
-/* perl string to Datum */
-
+			/* perl string to Datum */
 			retval = FunctionCall3(&prodesc->result_in_func,
 								   PointerGetDatum(SvPV(perlret, PL_na)),
 							ObjectIdGetDatum(prodesc->result_typioparam),

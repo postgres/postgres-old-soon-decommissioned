@@ -48,7 +48,7 @@
 
 
 /*
- * $Revision: 1.3 $
+ * $Revision: 1.4 $
  * $Id$
  */
 
@@ -950,7 +950,7 @@ DoubleMetaphone(char *str, char **codes)
 					current += 2;
 				}
 				else
-/* also takes care of 'HH' */
+					/* also takes care of 'HH' */
 					current += 1;
 				break;
 

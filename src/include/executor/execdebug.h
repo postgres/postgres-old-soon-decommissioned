@@ -128,7 +128,7 @@ extern int	NIndexTupleInserted;
 #define IncrIndexProcessed()	NIndexTupleProcessed++
 #define IncrIndexInserted()		NIndexTupleInserted++
 #else
-/*								stop compiler warnings */
+/* stop compiler warnings */
 #define IncrRetrieved()			(void)(0)
 #define IncrAppended()			(void)(0)
 #define IncrDeleted()			(void)(0)

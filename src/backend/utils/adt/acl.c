@@ -1205,7 +1205,7 @@ makeaclitem(PG_FUNCTION_ARGS)
 		ACLITEM_SET_IDTYPE(*aclitem, ACL_IDTYPE_UID);
 	}
 	else
-/* (g_grantee != 0) */
+	/* (g_grantee != 0) */
 	{
 		aclitem   ->ai_grantee = g_grantee;
 

@@ -1972,7 +1972,7 @@ write_stderr(const char *fmt,...)
 		write_eventlog(EVENTLOG_ERROR_TYPE, errbuf);
 	}
 	else
-/* Not running as service, write to stderr */
+		/* Not running as service, write to stderr */
 		vfprintf(stderr, fmt, ap);
 #endif
 	va_end(ap);

@@ -982,7 +982,7 @@ do_connect(const char *new_dbname, const char *new_user)
 			else if (dbparam != new_dbname)		/* no new db */
 				printf(gettext("You are now connected as new user \"%s\".\n"), new_user);
 			else
-/* both new */
+				/* both new */
 				printf(gettext("You are now connected to database \"%s\" as user \"%s\".\n"),
 					   PQdb(pset.db), PQuser(pset.db));
 		}

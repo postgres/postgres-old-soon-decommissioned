@@ -4306,7 +4306,7 @@ StartupXLOG(void)
 			ereport(FATAL,
 					(errmsg("requested recovery stop point is before end time of backup dump")));
 		else
-/* ran off end of WAL */
+			/* ran off end of WAL */
 			ereport(FATAL,
 					(errmsg("WAL ends before end time of backup dump")));
 	}
