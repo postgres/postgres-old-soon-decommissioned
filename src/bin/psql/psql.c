@@ -1746,8 +1746,14 @@ HandleSlashCmds(PsqlSettings *pset,
 			break;
 		case 'c':
 			{
-				if (strncmp(cmd, "copy ", strlen("copy ")) == 0)
+				if (strncmp(cmd, "copy ", strlen("copy ")) == 0 ||
+				    strncmp(cmd, "copy	", strlen("copy	")) == 0)
 					do_copy(optarg2, pset);
+				else if (strcmp(cmd, "copy") == 0)
+				{
+					fprintf(stderr, "See \\? for help\n");
+					break;
+				}
 				else if (strncmp(cmd, "connect ", strlen("connect ")) == 0 ||
 				  strcmp(cmd, "connect") == 0 /* issue error message */ )
 				{
