@@ -897,11 +897,11 @@ extern char *vararg_format(const char *fmt,...);
  */
 
 #ifdef __CYGWIN32__
-#define	PG_BINARY	0
+#define PG_BINARY	O_BINARY
 #define	PG_BINARY_R	"rb"
 #define	PG_BINARY_W	"wb"
 #else
-#define PG_BINARY	O_BINARY
+#define	PG_BINARY	0
 #define	PG_BINARY_R	"r"
 #define	PG_BINARY_W	"w"
 #endif
