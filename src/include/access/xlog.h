@@ -88,6 +88,7 @@ typedef XLogPageHeaderData *XLogPageHeader;
 extern	StartUpID	ThisStartUpID;	/* current SUI */
 extern	bool		InRecovery;
 extern	XLogRecPtr	MyLastRecPtr;
+extern	uint32		StopIfError;
 
 typedef struct RmgrData
 {

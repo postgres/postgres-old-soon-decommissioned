@@ -165,6 +165,7 @@ _bt_getroot(Relation rel, int access)
 			rootpage = BufferGetPage(rootbuf);
 
 			/* NO ELOG(ERROR) till meta is updated */
+			START_CRIT_CODE;
 
 			_bt_pageinit(rootpage, BufferGetPageSize(rootbuf));
 			rootopaque = (BTPageOpaque) PageGetSpecialPointer(rootpage);
@@ -186,6 +187,7 @@ _bt_getroot(Relation rel, int access)
 				PageSetLSN(metapg, recptr);
 				PageSetSUI(metapg, ThisStartUpID);
 			}
+			END_CRIT_CODE;
 
 			metad->btm_root = rootblkno;
 			metad->btm_level = 1;
@@ -402,6 +404,7 @@ _bt_pagedel(Relation rel, ItemPointer tid)
 	page = BufferGetPage(buf);
 
 	/* XLOG stuff */
+	START_CRIT_CODE;
 	{
 		xl_btree_delete	xlrec;
 		XLogRecPtr		recptr;
@@ -416,6 +419,7 @@ _bt_pagedel(Relation rel, ItemPointer tid)
 	}
 
 	PageIndexTupleDelete(page, offno);
+	END_CRIT_CODE;
 
 	/* write the buffer and release the lock */
 	_bt_wrtbuf(rel, buf);

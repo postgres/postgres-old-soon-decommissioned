@@ -14,6 +14,8 @@
 #ifndef ELOG_H
 #define ELOG_H
 
+#include "miscadmin.h"
+
 #define NOTICE	0				/* random info - no special action */
 #define ERROR	(-1)			/* user error - return to known state */
 #define FATAL	1				/* fatal error - abort process */
@@ -26,6 +28,25 @@
 #ifdef ENABLE_SYSLOG
 extern int Use_syslog;
 #endif
+
+/*
+ * If StopIfError > 0 signal handlers don't do
+ * elog(ERROR|FATAL) but remember what action was
+ * required with QueryCancel & ExitAfterAbort
+ */
+extern bool	ExitAfterAbort;
+#define	START_CRIT_CODE		StopIfError++
+#define END_CRIT_CODE		\
+	if (!StopIfError)\
+		elog(STOP, "Not in critical section");\
+	StopIfError--;\
+	if (!StopIfError && QueryCancel)\
+	{\
+		if (ExitAfterAbort)\
+			elog(FATAL, "The system is shutting down");\
+		else\
+			elog(ERROR, "Query was cancelled.");\
+	}
 
 extern bool Log_timestamp;
 extern bool Log_pid;

@@ -25,7 +25,6 @@
 extern DLLIMPORT sigjmp_buf Warn_restart;
 extern bool Warn_restart_ready;
 extern bool InError;
-extern bool ExitAfterAbort;
 
 extern bool HostnameLookup;
 extern bool ShowPortNumber;

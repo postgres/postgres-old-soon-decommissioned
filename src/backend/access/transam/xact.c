@@ -672,6 +672,7 @@ RecordTransactionCommit()
 		BufmgrCommit();
 
 		xlrec.xtime = time(NULL);
+		START_CRIT_CODE;
 		/*
 		 * SHOULD SAVE ARRAY OF RELFILENODE-s TO DROP
 		 */
@@ -691,6 +692,7 @@ RecordTransactionCommit()
 		TransactionIdCommit(xid);
 
 		MyProc->logRec.xrecoff = 0;
+		END_CRIT_CODE;
 	}
 
 	if (leak)
@@ -787,11 +789,13 @@ RecordTransactionAbort(void)
 		XLogRecPtr		recptr;
 
 		xlrec.xtime = time(NULL);
+		START_CRIT_CODE;
 		recptr = XLogInsert(RM_XACT_ID, XLOG_XACT_ABORT,
 			(char*) &xlrec, SizeOfXactAbort, NULL, 0);
 
 		TransactionIdAbort(xid);
 		MyProc->logRec.xrecoff = 0;
+		END_CRIT_CODE;
 	}
 
 	/*

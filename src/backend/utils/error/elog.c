@@ -33,7 +33,6 @@
 #include "commands/copy.h"
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
-#include "miscadmin.h"
 #include "storage/proc.h"
 #include "tcop/tcopprot.h"
 #include "utils/memutils.h"
@@ -159,6 +158,8 @@ elog(int lev, const char *fmt, ...)
 		/* this is probably redundant... */
 		if (IsInitProcessingMode())
 			lev = FATAL;
+		if (StopIfError)
+			lev = STOP;
 	}
 
 	/* choose message prefix and indent level */
