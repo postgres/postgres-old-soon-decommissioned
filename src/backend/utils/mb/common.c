@@ -91,8 +91,9 @@ Datum
 PG_encoding_to_char(PG_FUNCTION_ARGS)
 {
 	int32		encoding = PG_GETARG_INT32(0);
+	const char *encoding_name = pg_encoding_to_char(encoding);
 
-	PG_RETURN_NAME(pg_encoding_to_char(encoding));
+	return DirectFunctionCall1(namein, CStringGetDatum(encoding_name));
 }
 
 #endif

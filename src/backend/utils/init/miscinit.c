@@ -168,13 +168,13 @@ SetDataDir(const char *dir)
 Datum
 getdatabaseencoding(PG_FUNCTION_ARGS)
 {
-	PG_RETURN_NAME("SQL_ASCII");
+	return DirectFunctionCall1(namein, CStringGetDatum("SQL_ASCII"));
 }
 
 Datum
 PG_encoding_to_char(PG_FUNCTION_ARGS)
 {
-	PG_RETURN_NAME("SQL_ASCII");
+	return DirectFunctionCall1(namein, CStringGetDatum("SQL_ASCII"));
 }
 
 Datum

@@ -287,5 +287,7 @@ GetDatabaseEncoding()
 Datum
 getdatabaseencoding(PG_FUNCTION_ARGS)
 {
-	PG_RETURN_NAME(pg_encoding_to_char(DatabaseEncoding));
+	const char *encoding_name = pg_encoding_to_char(DatabaseEncoding);
+
+	return DirectFunctionCall1(namein, CStringGetDatum(encoding_name));
 }
