@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Thu Feb 12 23:47:05 EST 2004
+Last updated:		Tue Feb 17 10:37:48 EST 2004
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -201,6 +201,7 @@ Commands
 	o Allow ALTER TABLE ... ALTER CONSTRAINT ... RENAME
 	o Allow ALTER TABLE to change constraint deferrability and actions
 	o Disallow dropping of an inherited constraint
+	o Allow the schema of objects to be changed
 
 * CLUSTER
 	o Automatically maintain clustering on a table
