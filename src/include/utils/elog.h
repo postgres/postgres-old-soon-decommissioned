@@ -17,7 +17,9 @@
 #define ERROR	(-1)			/* user error - return to known state */
 #define FATAL	1				/* fatal error - abort process */
 #define REALLYFATAL	2			/* take down the other backends with me */
+#define	STOP	REALLYFATAL
 #define DEBUG	(-2)			/* debug message */
+#define	LOG		DEBUG
 #define NOIND	(-3)			/* debug message, don't indent as far */
 
 extern void elog(int lev, const char *fmt, ...);

@@ -13,6 +13,7 @@
 #ifndef _PROC_H_
 #define _PROC_H_
 
+#include "access/xlog.h"
 #include "storage/lock.h"
 
 typedef struct
@@ -47,7 +48,7 @@ typedef struct proc
 	TransactionId xmin;			/* minimal running XID as it was when we
 								 * were starting our xact: vacuum must not
 								 * remove tuples deleted by xid >= xmin ! */
-
+	XLogRecPtr	logRec;
 	LOCK	   *waitLock;		/* Lock we're sleeping on ... */
 	int			token;			/* type of lock we sleeping for */
 	int			holdLock;		/* while holding these locks */
