@@ -813,7 +813,7 @@ time_mi_time(PG_FUNCTION_ARGS)
 
 	result = (Interval *) palloc(sizeof(Interval));
 
-	result->time = time2 - time1;
+	result->time = time1 - time2;
 	result->month = 0;
 
 	PG_RETURN_INTERVAL_P(result);
