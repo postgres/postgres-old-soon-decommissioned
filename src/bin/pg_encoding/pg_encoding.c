@@ -11,7 +11,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "c.h"
+#include "postgres.h"
 #include "mb/pg_wchar.h"
 
 static void usage(void);
