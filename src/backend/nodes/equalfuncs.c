@@ -1320,9 +1320,7 @@ _equalCreateGroupStmt(CreateGroupStmt *a, CreateGroupStmt *b)
 {
 	if (!equalstr(a->name, b->name))
 		return false;
-	if (a->sysid != b->sysid)
-		return false;
-	if (!equal(a->initUsers, b->initUsers))
+	if (!equal(a->options, b->options))
 		return false;
 
 	return true;
@@ -1334,8 +1332,6 @@ _equalAlterGroupStmt(AlterGroupStmt *a, AlterGroupStmt *b)
 	if (!equalstr(a->name, b->name))
 		return false;
 	if (a->action != b->action)
-		return false;
-	if (a->sysid != b->sysid)
 		return false;
 	if (!equal(a->listUsers, b->listUsers))
 		return false;

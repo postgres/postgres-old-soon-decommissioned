@@ -23,10 +23,12 @@ Postgres documentation
    <date>2000-01-14</date>
   </refsynopsisdivinfo>
   <synopsis>
-CREATE GROUP <replaceable class="PARAMETER">name</replaceable>
-    [ WITH 
-     [ SYSID <replaceable class="PARAMETER">gid</replaceable> ]
-     [ USER  <replaceable class="PARAMETER">username</replaceable> [, ...] ] ]
+CREATE GROUP <replaceable class="PARAMETER">name</replaceable> [ [ WITH ] <replaceable class="PARAMETER">option</replaceable> [ ... ] ]
+
+where <replaceable class="PARAMETER">option</replaceable> can be:
+
+     SYSID <replaceable class="PARAMETER">gid</replaceable>
+   | USER  <replaceable class="PARAMETER">username</replaceable> [, ...]
   </synopsis>
   
   <refsect2 id="R2-SQL-CREATEGROUP-1">

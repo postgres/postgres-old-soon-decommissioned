@@ -2462,8 +2462,7 @@ _copyCreateGroupStmt(CreateGroupStmt *from)
 
 	if (from->name)
 		newnode->name = pstrdup(from->name);
-	newnode->sysid = from->sysid;
-	Node_Copy(from, newnode, initUsers);
+	Node_Copy(from, newnode, options);
 
 	return newnode;
 }
@@ -2476,7 +2475,6 @@ _copyAlterGroupStmt(AlterGroupStmt *from)
 	if (from->name)
 		newnode->name = pstrdup(from->name);
 	newnode->action = from->action;
-	newnode->sysid = from->sysid;
 	Node_Copy(from, newnode, listUsers);
 
 	return newnode;

@@ -365,8 +365,7 @@ typedef struct CreateGroupStmt
 {
 	NodeTag		type;
 	char	   *name;			/* name of the new group */
-	int			sysid;			/* group id (-1 if pick default) */
-	List	   *initUsers;		/* list of initial users */
+	List	   *options;		/* List of DefElem nodes */
 } CreateGroupStmt;
 
 typedef struct AlterGroupStmt
@@ -374,7 +373,6 @@ typedef struct AlterGroupStmt
 	NodeTag		type;
 	char	   *name;			/* name of group to alter */
 	int			action;			/* +1 = add, -1 = drop user */
-	int			sysid;			/* sysid change */
 	List	   *listUsers;		/* list of users to add/drop */
 } AlterGroupStmt;
 
