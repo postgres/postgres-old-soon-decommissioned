@@ -5,14 +5,10 @@
  *
  * $Header$
  */
-#include <c.h>
+#include "postgres.h"
 #include "describe.h"
 
-#include <string.h>
-
-#include <postgres.h>			/* for VARHDRSZ, int4 type */
-#include <postgres_ext.h>
-#include <libpq-fe.h>
+#include "libpq-fe.h"
 
 #include "common.h"
 #include "settings.h"

@@ -8,13 +8,7 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
-#include <c.h>
-
-#include <stdio.h>
-#include <stdlib.h>
-
-#include <libpq-fe.h>
-#include <postgres_ext.h>
+#include "libpq-fe.h"
 
 #include "variables.h"
 #include "print.h"

@@ -5,13 +5,10 @@
  *
  * $Header$
  */
-#include <c.h>
+#include "postgres.h"
 #include "common.h"
 
 #include <errno.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include <stdarg.h>
 #ifdef HAVE_TERMIOS_H
 #include <termios.h>
@@ -27,10 +24,10 @@
 #include <win32.h>
 #endif
 
-#include <libpq-fe.h>
-#include <postgres_ext.h>
-#include <pqsignal.h>
-#include <version.h>
+#include "libpq-fe.h"
+#include "postgres_ext.h"
+#include "pqsignal.h"
+#include "version.h"
 
 #include "settings.h"
 #include "variables.h"

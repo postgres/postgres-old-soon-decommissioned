@@ -5,11 +5,9 @@
  *
  * $Header$
  */
-#include <c.h>
+#include "postgres.h"
 #include "help.h"
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <signal.h>
 #include <errno.h>
 
@@ -24,8 +22,8 @@
 #include <win32.h>
 #endif
 
-#include <pqsignal.h>
-#include <libpq-fe.h>
+#include "pqsignal.h"
+#include "libpq-fe.h"
 
 #include "settings.h"
 #include "common.h"

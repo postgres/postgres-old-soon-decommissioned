@@ -5,14 +5,11 @@
  *
  * $Header$
  */
-#include <c.h>
+#include "postgres.h"
 #include "command.h"
 
 #include <errno.h>
 #include <assert.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <ctype.h>
 #ifndef WIN32
 #include <sys/types.h>			/* for umask() */
@@ -22,8 +19,8 @@
 #include <win32.h>
 #endif
 
-#include <libpq-fe.h>
-#include <pqexpbuffer.h>
+#include "libpq-fe.h"
+#include "pqexpbuffer.h"
 
 #include "common.h"
 #include "copy.h"

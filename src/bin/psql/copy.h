@@ -8,9 +8,7 @@
 #ifndef COPY_H
 #define COPY_H
 
-#include <c.h>
-#include <stdio.h>
-#include <libpq-fe.h>
+#include "libpq-fe.h"
 
 /* handler for \copy */
 bool		do_copy(const char *args);

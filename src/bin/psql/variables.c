@@ -5,10 +5,9 @@
  *
  * $Header$
  */
-#include <c.h>
+#include "postgres.h"
 #include "variables.h"
 
-#include <stdlib.h>
 #include <assert.h>
 
 

@@ -8,9 +8,7 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#include <c.h>
-
-#include <pqexpbuffer.h>
+#include "pqexpbuffer.h"
 
 #include "settings.h"
 #include "print.h"

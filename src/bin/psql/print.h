@@ -8,11 +8,7 @@
 #ifndef PRINT_H
 #define PRINT_H
 
-#include <config.h>
-#include <c.h>
-
-#include <stdio.h>
-#include <libpq-fe.h>
+#include "libpq-fe.h"
 
 enum printFormat
 {

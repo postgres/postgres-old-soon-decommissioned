@@ -8,8 +8,6 @@
 #ifndef PROMPT_H
 #define PROMPT_H
 
-#include <c.h>
-
 typedef enum _promptStatus
 {
 	PROMPT_READY,

@@ -5,12 +5,9 @@
  *
  * $Header$
  */
-#include <c.h>
+#include "postgres.h"
 #include "copy.h"
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include <errno.h>
 #include <assert.h>
 #ifndef WIN32
@@ -19,7 +16,7 @@
 #include <io.h>					/* I think */
 #endif
 
-#include <libpq-fe.h>
+#include "libpq-fe.h"
 
 #include "settings.h"
 #include "common.h"

@@ -5,12 +5,9 @@
  *
  * $Header$
  */
-#include <c.h>
+#include "postgres.h"
 
 #include <sys/types.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 
 #ifndef WIN32
 #include <unistd.h>

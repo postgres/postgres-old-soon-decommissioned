@@ -8,9 +8,6 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include <c.h>
-#include <stdio.h>
-
 /*
  * If some other file needs to have access to readline/history, include this
  * file and save yourself all this work.

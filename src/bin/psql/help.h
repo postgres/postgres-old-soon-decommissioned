@@ -8,8 +8,6 @@
 #ifndef HELP_H
 #define HELP_H
 
-#include <c.h>
-
 void		usage(void);
 
 void		slashUsage(void);

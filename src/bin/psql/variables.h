@@ -14,7 +14,6 @@
 
 #ifndef VARIABLES_H
 #define VARIABLES_H
-#include <c.h>
 
 #define VALID_VARIABLE_CHARS "abcdefghijklmnopqrstuvwxyz"\
                              "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "0123456789_"

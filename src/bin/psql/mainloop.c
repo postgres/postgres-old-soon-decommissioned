@@ -5,14 +5,10 @@
  *
  * $Header$
  */
-#include <c.h>
+#include "postgres.h"
 #include "mainloop.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#include <pqexpbuffer.h>
+#include "pqexpbuffer.h"
 
 #include "settings.h"
 #include "prompt.h"

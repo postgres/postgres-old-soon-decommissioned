@@ -8,7 +8,6 @@
 #ifndef DESCRIBE_H
 #define DESCRIBE_H
 
-#include <c.h>
 #include "settings.h"
 
 /* \da */

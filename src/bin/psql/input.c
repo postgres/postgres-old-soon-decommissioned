@@ -5,13 +5,12 @@
  *
  * $Header$
  */
-#include <c.h>
+#include "postgres.h"
 #include "input.h"
 
 #include <errno.h>
 
-#include <pqexpbuffer.h>
-
+#include "pqexpbuffer.h"
 #include "settings.h"
 #include "tab-complete.h"
 #include "common.h"

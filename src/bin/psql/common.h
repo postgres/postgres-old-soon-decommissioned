@@ -8,8 +8,7 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-#include <c.h>
-#include <libpq-fe.h>
+#include "libpq-fe.h"
 
 char *		xstrdup(const char *string);
 
