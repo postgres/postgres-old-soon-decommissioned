@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------
 #
-# Makefile.inc--
+# Makefile
 #    Makefile for src/bin (utility programs)
 #
 # Copyright (c) 1994, Regents of the University of California
@@ -15,7 +15,7 @@ SRCDIR= ..
 include ../Makefile.global
 
 DIRS = pg_id pg_version psql pg_dump pg_passwd cleardbdir \
-	createlang destroylang initdb initlocation ipcclean
+ 	scripts initdb initlocation ipcclean
 
 ifdef MULTIBYTE
 DIRS += pg_encoding

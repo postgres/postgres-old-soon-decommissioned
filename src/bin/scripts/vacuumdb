@@ -48,9 +48,15 @@ do
 	--quiet|-q)
 		PSQLOPT="$PSQLOPT -o /dev/null"
 		;;
-	--dbname|--database|-d)
-		dbname="$2"
-		shift;;
+        -d*)
+                dbname=`echo $1 | sed 's/^-d//'`
+                ;;
+        --dbname=*)
+                dbname=`echo $1 | sed 's/^--dbname=//'`
+                ;;
+        --database=*)
+                dbname=`echo $1 | sed 's/^--database=//'`
+                ;;
 # options converted into SQL command
 	--analyze|-z)
 		analyze="analyze"

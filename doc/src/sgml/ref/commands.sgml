@@ -107,8 +107,10 @@ functions supported by <productname>Postgres</productname>.
   </abstract>
 
    &createdb;
+   &createlang;
    &createuser;
    &dropdb;
+   &droplang;
    &dropuser;
    &ecpgRef;
    &pgAccess;
