@@ -163,6 +163,12 @@ _readQuery()
 	token = lsptok(NULL, &length);		/* skip :unionClause */
 	local_node->unionClause = nodeRead(true);
 
+	token = lsptok(NULL, &length);		/* skip :limitOffset */
+	local_node->limitOffset = nodeRead(true);
+
+	token = lsptok(NULL, &length);		/* skip :limitCount */
+	local_node->limitCount = nodeRead(true);
+
 	return local_node;
 }
 

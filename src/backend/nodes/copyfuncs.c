@@ -1578,6 +1578,9 @@ _copyQuery(Query *from)
 		newnode->unionClause = temp_list;
 	}
 
+	Node_Copy(from, newnode, limitOffset);
+	Node_Copy(from, newnode, limitCount);
+
 	return newnode;
 }
 

@@ -259,6 +259,10 @@ _outQuery(StringInfo str, Query *node)
 	appendStringInfo(str, (node->hasSubLinks ? "true" : "false"));
 	appendStringInfo(str, " :unionClause ");
 	_outNode(str, node->unionClause);
+	appendStringInfo(str, " :limitOffset ");
+	_outNode(str, node->limitOffset);
+	appendStringInfo(str, " :limitCount ");
+	_outNode(str, node->limitCount);
 }
 
 static void
