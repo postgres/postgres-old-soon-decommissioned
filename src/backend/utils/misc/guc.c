@@ -1471,7 +1471,7 @@ static struct config_string ConfigureNamesString[] =
 						 "the specified file.")
 		},
 		&Dynamic_library_path,
-		"$libdir", assign_canonical_path, NULL
+		"$libdir", NULL, NULL
 	},
 
 	{
