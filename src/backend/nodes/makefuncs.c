@@ -53,7 +53,7 @@ Var		   *
 makeVar(Index varno,
 		AttrNumber varattno,
 		Oid vartype,
-		int vartypmod,
+		int16 vartypmod,
 		Index varlevelsup,
 		Index varnoold,
 		AttrNumber varoattno)
@@ -78,7 +78,7 @@ makeVar(Index varno,
 Resdom	   *
 makeResdom(AttrNumber resno,
 		   Oid restype,
-		   int restypmod,
+		   int16 restypmod,
 		   char *resname,
 		   Index reskey,
 		   Oid reskeyop,

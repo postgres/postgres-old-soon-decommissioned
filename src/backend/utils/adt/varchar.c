@@ -50,7 +50,7 @@
  *	  because we pass typelem as the second argument for array_in.)
  */
 char *
-bpcharin(char *s, int dummy, int atttypmod)
+bpcharin(char *s, int dummy, int16 atttypmod)
 {
 	char	   *result,
 			   *r;
@@ -124,7 +124,7 @@ bpcharout(char *s)
  *	  because we pass typelem as the second argument for array_in.)
  */
 char *
-varcharin(char *s, int dummy, int atttypmod)
+varcharin(char *s, int dummy, int16 atttypmod)
 {
 	char	   *result;
 	int			len;

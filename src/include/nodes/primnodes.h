@@ -41,7 +41,7 @@ typedef struct Resdom
 	NodeTag		type;
 	AttrNumber	resno;
 	Oid			restype;
-	int			restypmod;
+	int16		restypmod;
 	char	   *resname;
 	Index		reskey;
 	Oid			reskeyop;
@@ -124,7 +124,7 @@ typedef struct Var
 	Index		varno;
 	AttrNumber	varattno;
 	Oid			vartype;
-	int			vartypmod;
+	int16		vartypmod;
 	Index		varlevelsup;	/* erased by upper optimizer */
 	Index		varnoold;		/* only used by optimizer */
 	AttrNumber	varoattno;		/* only used by optimizer */

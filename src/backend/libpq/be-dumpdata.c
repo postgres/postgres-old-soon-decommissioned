@@ -314,7 +314,7 @@ be_printtup(HeapTuple tuple, TupleDesc typeinfo)
 		{
 			values[i] = fmgr(typoutput, attr,
 					gettypelem(typeinfo->attrs[i]->atttypid),
-						  (int)typeinfo->attrs[i]->atttypmod);
+							   typeinfo->attrs[i]->atttypmod);
 		}
 		else
 			values[i] = NULL;

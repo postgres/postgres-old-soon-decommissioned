@@ -367,7 +367,6 @@ DESCR("limited-range ISO-format date and time");
 #define TIMESTAMPOID	1296
 
 
-#define USE_ATTTYPMOD(typeid)	((typeid) == BPCHAROID || (typeid) == VARCHAROID)
 #define VARLENA_FIXED_SIZE(attr)	((attr)->atttypid == BPCHAROID && (attr)->atttypmod > 0)
 
 /*

@@ -69,7 +69,7 @@ extern bool TupleDescInitEntry(TupleDesc desc,
 				   AttrNumber attributeNumber,
 				   char *attributeName,
 				   Oid typeid,
-				   int typmod,
+				   int16 typmod,
 				   int attdim,
 				   bool attisset);
 

@@ -246,7 +246,7 @@ make_var(ParseState *pstate, Oid relid, char *refname,
 	int			vnum,
 				attid;
 	Oid			vartypeid;
-	int			type_mod;
+	int16		type_mod;
 	int			sublevels_up;
 
 	vnum = refnameRangeTablePosn(pstate, refname, &sublevels_up);

@@ -1056,7 +1056,7 @@ setup_tlist(char *attname, Oid relid)
 	Resdom	   *resnode;
 	Var		   *varnode;
 	Oid			typeid;
-	int			type_mod;
+	int16		type_mod;
 	int			attno;
 
 	attno = get_attnum(relid, attname);

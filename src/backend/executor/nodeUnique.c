@@ -198,10 +198,10 @@ ExecUnique(Unique *node)
 					continue;
 				val1 = fmgr(typoutput, attr1,
 					gettypelem(tupDesc->attrs[uniqueAttrNum - 1]->atttypid),
-						  (int)tupDesc->attrs[uniqueAttrNum - 1]->atttypmod);
+							   tupDesc->attrs[uniqueAttrNum - 1]->atttypmod);
 				val2 = fmgr(typoutput, attr2,
 					gettypelem(tupDesc->attrs[uniqueAttrNum - 1]->atttypid),
-						  (int)tupDesc->attrs[uniqueAttrNum - 1]->atttypmod);
+							   tupDesc->attrs[uniqueAttrNum - 1]->atttypmod);
 
 				/*
 				 * now, val1 and val2 are ascii representations so we can

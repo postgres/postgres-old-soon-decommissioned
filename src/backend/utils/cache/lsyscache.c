@@ -161,7 +161,7 @@ get_attisset(Oid relid, char *attname)
  *		return the "atttypmod" field from the attribute relation.
  *
  */
-int
+int16 
 get_atttypmod(Oid relid, AttrNumber attnum)
 {
 	FormData_pg_attribute att_tup;
