@@ -69,8 +69,7 @@
 
 
 /* ----------
- * The initial size hints for the hash tables used in the
- * collector.
+ * The initial size hints for the hash tables used in the collector.
  * ----------
  */
 #define PGSTAT_DB_HASH_SIZE		16
