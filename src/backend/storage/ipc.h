@@ -125,6 +125,7 @@ extern int S_LOCK_FREE(slock_t *lock);
     defined(PORTNAME_i386_solaris) || \
     defined(PORTNAME_sparc_solaris) || \
     defined(PORTNAME_ultrix4) || \
+    defined(PORTNAME_svr4) || \
     defined(WIN32)
 union semun {
     int val;

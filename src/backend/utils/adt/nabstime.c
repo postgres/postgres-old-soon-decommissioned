@@ -296,6 +296,7 @@ tryabsdate(char *fields[], int nf, struct tm *tm, int *tzp)
     defined(PORTNAME_i386_solaris) || \
     defined(PORTNAME_irix5) || \
     defined(PORTNAME_sparc_solaris) || \
+    defined(PORTNAME_svr4) || \
     defined(WIN32)
 	    tzset();
 #ifndef WIN32

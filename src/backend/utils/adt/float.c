@@ -1275,7 +1275,7 @@ static int isinf(x)
 }
 #endif /* PORTNAME_alpha */
 
-#if defined(PORTNAME_sparc_solaris)||defined(PORTNAME_i386_solaris)
+#if defined(PORTNAME_sparc_solaris)||defined(PORTNAME_i386_solaris) || defined(PORTNAME_svr4)
 #include <ieeefp.h>
 static int
     isinf(d)

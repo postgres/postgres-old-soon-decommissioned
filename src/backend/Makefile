@@ -118,6 +118,11 @@ ifeq ($(PORTNAME), linux)
 LDADD+= -lc
 endif
 
+# the following is special for Reliant UNIX SVR4 (formerly SINIX)
+ifeq ($(PORTNAME), svr4)
+LDFLAGS+= -LD-Blargedynsym
+endif
+
 postgres: $(POSTGRES_DEPEND) $(OBJS) $(EXPORTS)
 	$(CC) $(LDFLAGS) -o $(objdir)/$(@F) $(addprefix $(objdir)/,$(notdir $(OBJS))) $(LDADD)
 
