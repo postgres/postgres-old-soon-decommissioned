@@ -39,7 +39,7 @@ qnx4.dir:
 	$(MAKE) -C qnx4 all
 
 tas.o: tas.s
-	$(CC) $(CFLAGS) -c tas.o tas.s $(LDFLAGS)
+	$(CC) $(CFLAGS) -c tas.s
 
 .PHONY: clean dep
 
