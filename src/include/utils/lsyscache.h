@@ -29,6 +29,8 @@ extern RegProcedure get_opcode(Oid opno);
 extern char *get_opname(Oid opno);
 extern bool op_mergejoinable(Oid opno, Oid ltype, Oid rtype,
 				 Oid *leftOp, Oid *rightOp);
+extern void op_mergejoin_crossops(Oid opno, Oid *ltop, Oid *gtop,
+				 RegProcedure *ltproc, RegProcedure *gtproc);
 extern Oid	op_hashjoinable(Oid opno, Oid ltype, Oid rtype);
 extern bool op_iscachable(Oid opno);
 extern Oid	get_commutator(Oid opno);
