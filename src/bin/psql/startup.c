@@ -638,7 +638,7 @@ showVersion(void)
 	puts("psql (PostgreSQL) " PG_VERSION);
 
 #if defined(USE_READLINE)
-	puts(gettext("contains support for readline"));
+	puts(gettext("contains support for command-line editing"));
 #endif
 
 	puts(gettext("Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group\n"

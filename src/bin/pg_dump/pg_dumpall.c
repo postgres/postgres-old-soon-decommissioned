@@ -690,7 +690,7 @@ executeQuery(PGconn *conn, const char *query)
 		PQresultStatus(res) != PGRES_TUPLES_OK)
 	{
 		fprintf(stderr, _("%s: query failed: %s"), progname, PQerrorMessage(conn));
-		fprintf(stderr, _("%s: query was: %s"), progname, query);
+		fprintf(stderr, _("%s: query was: %s\n"), progname, query);
 		PQfinish(conn);
 		exit(1);
 	}

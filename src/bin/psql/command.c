@@ -455,7 +455,7 @@ exec_command(const char *cmd,
 		{
 			/* set encoding */
 			if (PQsetClientEncoding(pset.db, encoding) == -1)
-				psql_error("%s: invalid encoding name or conversion proc not found\n", encoding);
+				psql_error("%s: invalid encoding name or conversion procedure not found\n", encoding);
 
 			else
 			{

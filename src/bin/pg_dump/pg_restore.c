@@ -396,7 +396,8 @@ usage(const char *progname)
 	printf(_("  -O, --no-owner           do not reconnect to database to match\n"
 			 "                           object owner\n"));
 	printf(_("  -p, --port=PORT          database server port number\n"));
-	printf(_("  -P, --function=NAME(args)restore named function\n"));
+	printf(_("  -P, --function=NAME(args)\n"
+			 "                           restore named function\n"));
 	printf(_("  -r, --rearrange          rearrange output to put indexes etc. at end\n"));
 	printf(_("  -R, --no-reconnect       disallow ALL reconnections to the database\n"));
 	printf(_("  -s, --schema-only        restore only the schema, no data\n"));

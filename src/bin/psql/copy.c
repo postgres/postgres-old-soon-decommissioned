@@ -316,7 +316,7 @@ do_copy(const char *args)
 	if (S_ISDIR(st.st_mode))
 	{
 		fclose(copystream);
-		psql_error("%s: cannot COPY TO/FROM a directory\n",
+		psql_error("%s: cannot copy from/to a directory\n",
 				   options->file);
 		free_copy_options(options);
 		return false;
