@@ -298,7 +298,7 @@ unput(char c)
 int
 CurScanPosition(void)
 {
-    return (parseCh - parseString - yyleng - 1);
+    return (parseCh - parseString - yyleng);
 }
 #endif /* !defined(FLEX_SCANNER) */
 
@@ -330,10 +330,7 @@ CurScanPosition(void)
 {
 printf( "current position is %d\n", yy_c_buf_p - yy_current_buffer->yy_ch_buf - yyleng);
 
-    return (parseCh - parseString - yyleng - 1);
-#if FALSE
     return (yy_c_buf_p - yy_current_buffer->yy_ch_buf - yyleng);
-#endif
 }
 
 #endif /* FLEX_SCANNER */
