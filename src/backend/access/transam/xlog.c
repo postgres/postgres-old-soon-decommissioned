@@ -2462,7 +2462,6 @@ StartupXLOG(void)
 	ReadControlFile();
 
 	if (ControlFile->logSeg == 0 ||
-		ControlFile->time <= 0 ||
 		ControlFile->state < DB_SHUTDOWNED ||
 		ControlFile->state > DB_IN_PRODUCTION ||
 		!XRecOffIsValid(ControlFile->checkPoint.xrecoff))
