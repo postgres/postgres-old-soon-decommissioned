@@ -1779,8 +1779,8 @@ void dumpTables(FILE* fout, TableInfo *tblinfo, int numTables,
                                 tblinfo[i].typnames[j]);
                         actual_atts++;
                     }
-		    sprintf(q, "%s%s NULL", q,
-					(tblinfo[i].notnull[j])	? " NOT" : "");
+		    if (tblinfo[i].notnull[j])
+			sprintf(q, "%s NOT NULL", q);
                 }
             }
 
