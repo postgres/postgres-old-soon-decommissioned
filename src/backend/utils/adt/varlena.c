@@ -577,6 +577,38 @@ text_ge(text *arg1, text *arg2)
 	return (bool) !text_lt(arg1, arg2);
 }
 
+text *
+text_larger(text *arg1, text *arg2)
+{
+	text *result;
+	text *temp;
+
+	temp = ((text_cmp(arg1, arg2) <= 0)? arg2: arg1);
+
+	/* Make a copy */
+
+	result = (text *) palloc(VARSIZE(temp));
+	memmove((char *) result, (char *) temp, VARSIZE(temp));
+
+	return (result);
+}
+
+text *
+text_smaller(text *arg1, text *arg2)
+{
+	text *result;
+	text *temp;
+
+	temp = ((text_cmp(arg1, arg2) > 0)? arg2: arg1);
+
+	/* Make a copy */
+
+	result = (text *) palloc(VARSIZE(temp));
+	memmove((char *) result, (char *) temp, VARSIZE(temp));
+
+	return (result);
+}
+
 /*-------------------------------------------------------------
  * byteaGetSize
  *

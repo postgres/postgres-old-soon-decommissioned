@@ -210,6 +210,7 @@ oper_select_candidate(int nargs,
 				nmatch++;
 		}
 
+		/* take this one as the best choice so far? */
 		if ((nmatch > nbestMatch) || (last_candidate == NULL))
 		{
 			nbestMatch = nmatch;
@@ -217,12 +218,14 @@ oper_select_candidate(int nargs,
 			last_candidate = current_candidate;
 			ncandidates = 1;
 		}
+		/* no worse than the last choice, so keep this one too? */
 		else if (nmatch == nbestMatch)
 		{
 			last_candidate->next = current_candidate;
 			last_candidate = current_candidate;
 			ncandidates++;
 		}
+		/* otherwise, don't bother keeping this one... */
 		else
 		{
 			last_candidate->next = NULL;
