@@ -2261,7 +2261,8 @@ PQescapeString(char *to, const char *from, size_t length)
  *		'\0' == ASCII  0 == \\000
  *		'\'' == ASCII 39 == \'
  *		'\\' == ASCII 92 == \\\\
- *		anything >= 0x80 ---> \\ooo (where ooo is an octal expression)
+ *		anything < 0x20, or > 0x7e ---> \\ooo
+ *                                      (where ooo is an octal expression)
  */
 unsigned char *
 PQescapeBytea(const unsigned char *bintext, size_t binlen, size_t *bytealen)
@@ -2280,7 +2281,7 @@ PQescapeBytea(const unsigned char *bintext, size_t binlen, size_t *bytealen)
 	vp = bintext;
 	for (i = binlen; i > 0; i--, vp++)
 	{
-		if (*vp == 0 || *vp >= 0x80)
+		if (*vp < 0x20 || *vp > 0x7e)
 			len += 5;			/* '5' is for '\\ooo' */
 		else if (*vp == '\'')
 			len += 2;
@@ -2299,7 +2300,7 @@ PQescapeBytea(const unsigned char *bintext, size_t binlen, size_t *bytealen)
 
 	for (i = binlen; i > 0; i--, vp++)
 	{
-		if (*vp == 0 || *vp >= 0x80)
+		if (*vp < 0x20 || *vp > 0x7e)
 		{
 			(void) sprintf(rp, "\\\\%03o", *vp);
 			rp += 5;
