@@ -66,6 +66,7 @@ PostgreSQL documentation
    <arg>-S <replaceable>sort-mem</replaceable></arg>
    <arg>-v <replaceable>protocol</replaceable></arg>
    <arg>-W <replaceable>seconds</replaceable></arg>
+   <arg>--describe-config</arg>
    <arg>--<replaceable>name</replaceable>=<replaceable>value</replaceable></arg>
   </cmdsynopsis>
  </refsynopsisdiv>
