@@ -2592,17 +2592,17 @@ DeleteStmt:  DELETE FROM relation_name
 				}
 		;
 
-LockStmt:	LOCK_P opt_table relation_name IN opt_lock
+LockStmt:	LOCK_P opt_table relation_name opt_lock
 				{
 					LockStmt *n = makeNode(LockStmt);
 
 					n->relname = $3;
-					n->mode = $5;
+					n->mode = $4;
 					$$ = (Node *)n;
 				}
 		;
 
-opt_lock:  lock_type MODE		{ $$ = $1; }
+opt_lock:  IN lock_type MODE		{ $$ = $2; }
 		| /*EMPTY*/				{ $$ = AccessExclusiveLock; }
 		;
 
