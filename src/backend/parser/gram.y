@@ -3274,7 +3274,8 @@ void parser_init(Oid *typev, int nargs)
 static char *
 FlattenStringList(List *list)
 {
-	List *l, *lp;
+	List *l;
+	Value *v;
 	char *s;
 	char *sp;
 	int nlist, len = 0;
@@ -3285,8 +3286,8 @@ printf( "list has %d elements\n", nlist);
 #endif
 	l = list;
 	while(l != NIL) {
-		lp = lfirst(l);
-		sp = (char *)(lp->elem.ptr_value);
+		v = (Value *)lfirst(l);
+		sp = v->val.str;
 		l = lnext(l);
 #ifdef PARSEDEBUG
 printf( "sp is x%8p; length of %s is %d\n", sp, sp, strlen(sp));
@@ -3300,8 +3301,8 @@ printf( "sp is x%8p; length of %s is %d\n", sp, sp, strlen(sp));
 
 	l = list;
 	while(l != NIL) {
-		lp = lfirst(l);
-		sp = (char *)(lp->elem.ptr_value);
+		v = (Value *)lfirst(l);
+		sp = v->val.str;
 		l = lnext(l);
 #ifdef PARSEDEBUG
 printf( "length of %s is %d\n", sp, strlen(sp));
