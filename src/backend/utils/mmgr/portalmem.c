@@ -83,7 +83,6 @@
 static void CollectNamedPortals(Portal *portalP, int destroy);
 static Portal PortalHeapMemoryGetPortal(PortalHeapMemory context);
 static PortalVariableMemory PortalHeapMemoryGetVariableMemory(PortalHeapMemory context);
-static void PortalResetHeapMemory(Portal portal);
 static Portal PortalVariableMemoryGetPortal(PortalVariableMemory context);
 
 /* ----------------
@@ -838,7 +837,7 @@ PortalDestroy(Portal *portalP)
  *		BadArg if mode is invalid.
  * ----------------
  */
-static void
+void
 PortalResetHeapMemory(Portal portal)
 {
 	PortalHeapMemory context;
