@@ -580,6 +580,10 @@ endif
 MK_NO_LORDER= true
 
 CC= gcc
+# gcc mainly just calls LD, but it also uses some default options that are
+# part of the gcc configuration, like search paths, and the user probably 
+# wants those.
+LD= gcc
 
 # use the regex library
 USE_REGEX= 1
