@@ -105,7 +105,7 @@ all: all-spi
 
 .PHONY: all-spi
 all-spi:
-	$(MAKE) -C $(contribdir)/spi REFINT_VERBOSE=1 refint$(DLSUFFIX) autoinc$(DLSUFFIX)
+	$(MAKE) -C $(contribdir)/spi refint$(DLSUFFIX) autoinc$(DLSUFFIX)
 
 
 ##
