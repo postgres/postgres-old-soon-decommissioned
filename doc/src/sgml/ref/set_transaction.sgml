@@ -74,6 +74,18 @@ SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL { READ COMMITTED | SE
   </para>
  </refsect1>
 
+ <refsect1>
+  <title>Notes</title>
+
+  <para>
+   The session default transaction isolation level can also be set
+   with the command <literal>SET default_transaction_isolation =
+   '<replaceable>value</replaceable>'</literal> and in the
+   configuration file.  Consult the <citetitle>Administrator's
+   Guide</citetitle> for more information.
+  </para>
+ </refsect1>
+
  <refsect1 id="R1-SQL-SET-TRANSACTION-3">
   <title>Compatibility</title>
 

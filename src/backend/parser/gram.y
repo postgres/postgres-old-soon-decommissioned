@@ -752,7 +752,7 @@ VariableSetStmt:  SET ColId TO var_value
         | SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL opt_level
 				{
 					VariableSetStmt *n = makeNode(VariableSetStmt);
-					n->name  = "DefaultXactIsoLevel";
+					n->name  = "default_transaction_isolation";
 					n->value = $8;
 					$$ = (Node *) n;
 				}
@@ -772,7 +772,7 @@ VariableSetStmt:  SET ColId TO var_value
 				}
 		;
 
-opt_level:  READ COMMITTED					{ $$ = "committed"; }
+opt_level:  READ COMMITTED					{ $$ = "read committed"; }
 		| SERIALIZABLE						{ $$ = "serializable"; }
 		;
 

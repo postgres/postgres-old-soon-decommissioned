@@ -51,6 +51,11 @@ extern char *Syslog_ident;
 static bool check_facility(const char *facility);
 #endif
 
+static char *default_iso_level_string;
+
+static bool check_defaultxactisolevel(const char *value);
+static void assign_defaultxactisolevel(const char *value);
+
 /*
  * Debugging options
  */
@@ -355,6 +360,9 @@ static struct config_real
 static struct config_string
 			ConfigureNamesString[] =
 {
+	{"default_transaction_isolation", PGC_USERSET, &default_iso_level_string,
+	 "read committed", check_defaultxactisolevel, assign_defaultxactisolevel},
+
 	{"dynamic_library_path", PGC_SUSET, &Dynamic_library_path,
 	 "$libdir", NULL, NULL},
 
@@ -1092,3 +1100,25 @@ check_facility(const char *facility)
 }
 
 #endif
+
+
+
+static bool
+check_defaultxactisolevel(const char *value)
+{
+	return (strcasecmp(value, "read committed") == 0
+			|| strcasecmp(value, "serializable") == 0)
+		? true : false;
+}
+
+
+static void
+assign_defaultxactisolevel(const char *value)
+{
+	if (strcasecmp(value, "serializable") == 0)
+		DefaultXactIsoLevel = XACT_SERIALIZABLE;
+	else if (strcasecmp(value, "read committed") == 0)
+		DefaultXactIsoLevel = XACT_READ_COMMITTED;
+	else
+		elog(ERROR, "bogus transaction isolation level");
+}
