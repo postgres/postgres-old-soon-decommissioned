@@ -711,6 +711,10 @@ testdb=>
             [ <literal>oids</literal> ] 
             [ <literal>delimiter [as] </literal> '<replaceable class="parameter">character</replaceable>' ]
             [ <literal>null [as] </literal> '<replaceable class="parameter">string</replaceable>' ]</literal>
+            [ <literal>csv [ quote [as] </literal> '<replaceable class="parameter">character</replaceable>' ]
+                           [ <literal>escape [as] </literal> '<replaceable class="parameter">character</replaceable>' ]
+                           [ <literal>force</> <replaceable class="parameter">column_list</replaceable> ]
+                           [ <literal>literal</> <replaceable class="parameter">column_list</replaceable> ] ]
         </term>
 
         <listitem>

@@ -154,8 +154,7 @@ SendFunctionResult(Datum retval, bool isnull, Oid rettype, int16 format)
 			bool		typisvarlena;
 			char	   *outputstr;
 
-			getTypeOutputInfo(rettype,
-							  &typoutput, &typelem, &typisvarlena);
+			getTypeOutputInfo(rettype, &typoutput, &typelem, &typisvarlena);
 			outputstr = DatumGetCString(OidFunctionCall3(typoutput,
 														 retval,
 											   ObjectIdGetDatum(typelem),
