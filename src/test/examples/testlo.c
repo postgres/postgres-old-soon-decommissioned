@@ -99,6 +99,7 @@ pickout(PGconn *conn, Oid lobjId, int start, int len)
 		if (nbytes <= 0)
 			break;				/* no more data? */
 	}
+	free(buf);
 	fprintf(stderr, "\n");
 	lo_close(conn, lobj_fd);
 }
@@ -134,6 +135,7 @@ overwrite(PGconn *conn, Oid lobjId, int start, int len)
 			break;
 		}
 	}
+	free(buf);
 	fprintf(stderr, "\n");
 	lo_close(conn, lobj_fd);
 }
