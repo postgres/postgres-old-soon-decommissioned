@@ -3,7 +3,7 @@
 .\" $Header$
 .TH FETCH SQL 01/23/93 PostgreSQL PostgreSQL
 .SH NAME
-declere - declare a cursor
+declare - declare a cursor
 .SH SYNOPSIS
 .nf
 \fBdeclare\fR [ \fBbinary\fR ] \fBcursor for\fR select statement
