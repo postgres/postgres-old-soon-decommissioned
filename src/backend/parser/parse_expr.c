@@ -301,6 +301,21 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 				result = (Node *) expr;
 				break;
 			}
+/* These nodes do _not_ come from the original parse tree.
+ * They result from parser transformation in this phase.
+ * At least one construct (BETWEEN/AND) puts the same nodes
+ *  into two branches of the parse tree. Hence, some nodes
+ *  are transformed twice. These nodes come from transforming
+ *  a function call. Let's try just passing them through...
+ * - thomas 1998-03-14
+ */
+		case T_Expr:
+		case T_Var:
+		case T_Const:
+			{
+				result = (Node *) expr;
+				break;
+			}
 		default:
 			/* should not reach here */
 			elog(ERROR, "transformExpr: does not know how to transform node %d",
