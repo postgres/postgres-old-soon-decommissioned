@@ -1099,7 +1099,11 @@ check_sigpipe_handler(void)
 void
 sigpipe_handler_ignore_send(int signo)
 {
-	/* If we have gotten a SIGPIPE outside send(), exit */
+	/*
+	 *	If we have gotten a SIGPIPE outside send(), exit.
+	 *	Synchronous signals are delivered to the thread
+	 *	that caused the signal.
+	 */
 	if (!PQinSend())
 		exit(128 + SIGPIPE);	/* typical return value for SIG_DFL */
 }
