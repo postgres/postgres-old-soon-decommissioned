@@ -13,7 +13,6 @@
 
 
 #define USES_WINSOCK
-#define NOFILE		  100
 
 /* defines for dynamic linking on Win32 platform */
 #if defined(__CYGWIN__) || defined(__MINGW32__)
