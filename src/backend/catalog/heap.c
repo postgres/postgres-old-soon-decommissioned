@@ -1697,7 +1697,7 @@ cookDefault(ParseState *pstate,
 	 *
 	 * CREATE TABLE tbl (fld timestamp DEFAULT 'now'::text);
 	 *
-	 * NB: this should match the code in optimizer/prep/preptlist.c that will
+	 * NB: this should match the code in rewrite/rewriteHandler.c that will
 	 * actually do the coercion, to ensure we don't accept an unusable
 	 * default expression.
 	 */
