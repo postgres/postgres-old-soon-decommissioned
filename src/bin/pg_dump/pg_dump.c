@@ -606,10 +606,21 @@ main(int argc, char **argv)
 					int			i;
 
 					tablename = strdup(optarg);
-					for (i = 0; tablename[i]; i++)
-						if (isascii((unsigned char) tablename[i]) &&
-							isupper(tablename[i]))
-							tablename[i] = tolower(tablename[i]);
+					/* quoted string? Then strip quotes and preserve case... */
+					if (tablename[0] == '"')
+					{
+						strcpy(tablename, &tablename[1]);
+						if (*(tablename+strlen(tablename)-1) == '"')
+							*(tablename+strlen(tablename)-1) = '\0';
+					}
+					/* otherwise, convert table name to lowercase... */
+					else
+					{
+						for (i = 0; tablename[i]; i++)
+							if (isascii((unsigned char) tablename[i]) &&
+								isupper(tablename[i]))
+								tablename[i] = tolower(tablename[i]);
+					}
 				}
 				break;
 			case 'v':			/* verbose */
