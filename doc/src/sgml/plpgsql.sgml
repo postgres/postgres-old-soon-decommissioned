@@ -437,7 +437,8 @@ END;
 
     <para>
      Each declaration and each statement within a block is terminated
-     by a semicolon.
+     by a semicolon, although the final <literal>END</literal> that
+     concludes a function body does not require one.
     </para>
 
     <para>
