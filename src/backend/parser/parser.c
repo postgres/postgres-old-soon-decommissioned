@@ -196,7 +196,7 @@ parser_typecast(Value *expr, TypeName *typename, int typlen)
     case T_Integer:
 	const_string = (char *) palloc(256);
 	string_palloced = true;
-	sprintf(const_string, "%ld", expr->val.ival);
+	sprintf(const_string, "%d", expr->val.ival);
 	break;
     default:
 	elog(WARN,
@@ -242,7 +242,7 @@ parser_typecast(Value *expr, TypeName *typename, int typlen)
     case CASHOID: /* money */
 	const_string = (char *) palloc(256);
 	string_palloced = true;
-	sprintf(const_string,"%ld",
+	sprintf(const_string,"%d",
 		(int) ((Const*)expr)->constvalue);
 	break;
 	
@@ -360,7 +360,7 @@ parser_typecast2(Node *expr, Oid exprType, Type tp, int typlen)
     case CASHOID: /* money */
 	const_string = (char *) palloc(256);
 	string_palloced = true;
-	sprintf(const_string,"%ld",
+	sprintf(const_string,"%d",
 		(long) ((Const*)expr)->constvalue);
 	break;
     case TEXTOID: /* text */
