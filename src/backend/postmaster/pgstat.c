@@ -71,7 +71,7 @@ bool		pgstat_is_running = false;
  * Local data
  * ----------
  */
-static int	pgStatSock = -1;
+NON_EXEC_STATIC int	pgStatSock = -1;
 static int	pgStatPipe[2];
 static struct sockaddr_storage pgStatAddr;
 static int	pgStatPmPipe[2] = {-1, -1};

@@ -43,7 +43,7 @@ typedef struct LWLock
  * the pointer by fork from the postmaster.  LWLockIds are indexes into
  * the array.
  */
-static LWLock *LWLockArray = NULL;
+NON_EXEC_STATIC LWLock *LWLockArray = NULL;
 
 /* shared counter for dynamic allocation of LWLockIds */
 static int *LWLockCounter;

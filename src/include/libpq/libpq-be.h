@@ -27,6 +27,11 @@
 #endif
 
 
+typedef enum CAC_state
+{
+	CAC_OK, CAC_STARTUP, CAC_SHUTDOWN, CAC_RECOVERY, CAC_TOOMANY
+} CAC_state;
+
 /*
  * This is used by the postmaster in its communication with frontends.	It
  * contains all state information needed during this communication before the
@@ -42,6 +47,7 @@ typedef struct Port
 	ProtocolVersion proto;		/* FE/BE protocol version */
 	SockAddr	laddr;			/* local addr (postmaster) */
 	SockAddr	raddr;			/* remote addr (client) */
+	CAC_state	canAcceptConnections;	/* postmaster connection status */
 
 	/*
 	 * Information that needs to be saved from the startup packet and

@@ -347,9 +347,10 @@ BootstrapMain(int argc, char *argv[])
 	if (!dbname || argc != optind)
 		usage();
 
-
-	if (IsUnderPostmaster && ExecBackend && MyProc /* ordinary backend */ )
+#ifdef EXEC_BACKEND
+	if (IsUnderPostmaster && MyProc /* ordinary backend */ )
 		AttachSharedMemoryAndSemaphores();
+#endif
 
 	if (!IsUnderPostmaster /* when exec || ExecBackend */ )
 	{

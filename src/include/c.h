@@ -793,6 +793,13 @@ extern int	fdatasync(int fildes);
 #define HAVE_STRTOULL 1
 #endif
 
+/* EXEC_BACKEND defines */
+#ifdef EXEC_BACKEND
+#define NON_EXEC_STATIC
+#else
+#define NON_EXEC_STATIC static
+#endif
+
 /* /port compatibility functions */
 #include "port.h"
 

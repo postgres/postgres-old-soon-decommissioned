@@ -125,7 +125,9 @@ InitBufferPool(void)
 	 * anyone else attached to the shmem at this point, we've got
 	 * problems.
 	 */
+#ifndef EXEC_BACKEND
 	LWLockAcquire(BufMgrLock, LW_EXCLUSIVE);
+#endif
 
 	BufferDescriptors = (BufferDesc *)
 		ShmemInitStruct("Buffer Descriptors",
@@ -177,7 +179,9 @@ InitBufferPool(void)
 	/* Init other shared buffer-management stuff */
 	StrategyInitialize(!foundDescs);
 
+#ifndef EXEC_BACKEND
 	LWLockRelease(BufMgrLock);
+#endif
 }
 
 /*

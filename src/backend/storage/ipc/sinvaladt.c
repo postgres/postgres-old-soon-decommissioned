@@ -50,10 +50,13 @@ SIBufferInit(int maxBackends)
 	int			segSize;
 	SISeg	   *segP;
 	int			i;
+	bool found;
 
 	/* Allocate space in shared memory */
 	segSize = SInvalShmemSize(maxBackends);
-	shmInvalBuffer = segP = (SISeg *) ShmemAlloc(segSize);
+	shmInvalBuffer = segP = (SISeg *) ShmemInitStruct("shmInvalBuffer",segSize,&found);
+	if (found)
+		return;
 
 	/* Clear message counters, save size of procState array */
 	segP->minMsgNum = 0;

@@ -77,4 +77,8 @@ extern void RemovePgTempFiles(void);
 extern int	pg_fsync(int fd);
 extern int	pg_fdatasync(int fd);
 
+/* Filename components for OpenTemporaryFile */
+#define PG_TEMP_FILES_DIR "pgsql_tmp"
+#define PG_TEMP_FILE_PREFIX "pgsql_tmp"
+
 #endif   /* FD_H */

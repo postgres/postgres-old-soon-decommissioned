@@ -29,7 +29,6 @@ typedef enum LWLockId
 	LockMgrLock,
 	OidGenLock,
 	XidGenLock,
-	ShmemIndexLock,
 	SInvalLock,
 	FreeSpaceLock,
 	MMCacheLock,

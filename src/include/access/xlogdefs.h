@@ -33,6 +33,13 @@ typedef struct XLogRecPtr
 	uint32		xrecoff;		/* byte offset of location in log file */
 } XLogRecPtr;
 
+typedef struct XLogwrtResult
+{
+	XLogRecPtr	Write;			/* last byte + 1 written out */
+	XLogRecPtr	Flush;			/* last byte + 1 flushed */
+} XLogwrtResult;
+
+
 /*
  * Macros for comparing XLogRecPtrs
  *

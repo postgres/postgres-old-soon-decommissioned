@@ -66,7 +66,7 @@ PGPROC	   *MyProc = NULL;
  * relatively infrequently (only at backend startup or shutdown) and not for
  * very long, so a spinlock is okay.
  */
-static slock_t *ProcStructLock = NULL;
+NON_EXEC_STATIC slock_t *ProcStructLock = NULL;
 
 static PROC_HDR *ProcGlobal = NULL;
 
@@ -247,6 +247,7 @@ InitProcess(void)
 	MyProc->waitLock = NULL;
 	MyProc->waitHolder = NULL;
 	SHMQueueInit(&(MyProc->procHolders));
+
 
 	/*
 	 * Arrange to clean up at backend exit.

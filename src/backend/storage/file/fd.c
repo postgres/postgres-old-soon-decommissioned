@@ -53,11 +53,6 @@
 #include "storage/ipc.h"
 
 
-/* Filename components for OpenTemporaryFile */
-#define PG_TEMP_FILES_DIR "pgsql_tmp"
-#define PG_TEMP_FILE_PREFIX "pgsql_tmp"
-
-
 /*
  * Problem: Postgres does a system(ld...) to do dynamic loading.
  * This will open several extra files in addition to those used by
@@ -1217,8 +1212,12 @@ RemovePgTempFiles(void)
 	{
 		while ((db_de = readdir(db_dir)) != NULL)
 		{
-			if (strcmp(db_de->d_name, ".") == 0 ||
-				strcmp(db_de->d_name, "..") == 0)
+			if (strcmp(db_de->d_name, ".") == 0
+#ifndef EXEC_BACKEND
+			/* no PG_TEMP_FILES_DIR in DataDir in non EXEC_BACKEND case */
+				|| strcmp(db_de->d_name, "..") == 0
+#endif
+			)
 				continue;
 
 			snprintf(temp_path, sizeof(temp_path),

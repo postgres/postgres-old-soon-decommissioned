@@ -86,8 +86,6 @@ typedef uint16 LOCKMETHODID;
  */
 typedef struct LockMethodData
 {
-	HTAB		   *lockHash;
-	HTAB		   *proclockHash;
 	LOCKMETHODID	lockmethodid;
 	int				numLockModes;
 	LOCKMASK		conflictTab[MAX_LOCKMODES];
