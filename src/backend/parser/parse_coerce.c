@@ -290,7 +290,7 @@ coerce_type_typmod(ParseState *pstate, Node *node,
 {
 	Oid			baseTypeId;
 	Oid			funcId;
-	int32		domainTypMod = NULL;
+	int32		domainTypMod = 0;
 
 	/* If given type is a domain, use base type instead */
 	baseTypeId = getBaseTypeTypeMod(targetTypeId, &domainTypMod);
