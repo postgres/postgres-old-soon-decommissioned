@@ -191,22 +191,6 @@ extern Datum aclcontains(PG_FUNCTION_ARGS);
 extern const char *aclparse(const char *s, AclItem *aip, unsigned *modechg);
 extern char *makeAclString(const char *privileges, const char *grantee, char grant_or_revoke);
 
-extern Datum has_table_privilege_tname_tname(PG_FUNCTION_ARGS);
-extern Datum has_table_privilege_tname_name(PG_FUNCTION_ARGS);
-extern Datum has_table_privilege_name_tname(PG_FUNCTION_ARGS);
-extern Datum has_table_privilege_name_name(PG_FUNCTION_ARGS);
-extern Datum has_table_privilege_tname(PG_FUNCTION_ARGS);
-extern Datum has_table_privilege_name(PG_FUNCTION_ARGS);
-
-extern Datum has_table_privilege_tname_id(PG_FUNCTION_ARGS);
-extern Datum has_table_privilege_name_id(PG_FUNCTION_ARGS);
-extern Datum has_table_privilege_id(PG_FUNCTION_ARGS);
-
-extern Datum has_table_privilege_id_tname(PG_FUNCTION_ARGS);
-extern Datum has_table_privilege_id_name(PG_FUNCTION_ARGS);
-
-extern Datum has_table_privilege_id_id(PG_FUNCTION_ARGS);
-
 /*
  * prototypes for functions in aclchk.c
  */
