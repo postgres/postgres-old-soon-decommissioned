@@ -2081,7 +2081,6 @@ dynamic_library_path = '/usr/local/lib/postgresql:/home/my_project/lib:$libdir'
       </listitem>
      </varlistentry>
 
-    <variablelist>
      <varlistentry>
       <term><varname>CHECKPOINT_WARNING</varname> (<type>integer</type>)</term>
       <listitem>

@@ -1217,7 +1217,7 @@ RETURN NEXT <replaceable>expression</replaceable>;
      returned).  Execution then continues with the next statement in
      the <application>PL/pgSQL</> function.  As successive
      <command>RETURN NEXT</command> commands are executed, the result
-     set is built up.  A final <command>RETURN</commmand>, which need
+     set is built up.  A final <command>RETURN</command>, which need
      have no argument, causes control to exit the function.
     </para>
 
