@@ -1119,7 +1119,7 @@ AbortTransaction()
 	AtEOXact_portals();
 	RecordTransactionAbort();
 	RelationPurgeLocalRelation(false);
-	invalidate_temp_relations();
+	remove_temp_rel_in_myxid();
 	AtEOXact_SPI();
 	AtEOXact_nbtree();
 	AtAbort_Cache();

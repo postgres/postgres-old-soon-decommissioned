@@ -18,12 +18,12 @@
 
 extern void create_temp_relation(const char *relname,
 								 HeapTuple pg_class_tuple);
-extern void remove_temp_relation(Oid relid);
+extern void remove_temp_rel_by_relid(Oid relid);
 extern bool rename_temp_relation(const char *oldname,
 								 const char *newname);
 
 extern void remove_all_temp_relations(void);
-extern void invalidate_temp_relations(void);
+extern void remove_temp_rel_in_myxid(void);
 
 extern char *get_temp_rel_by_username(const char *user_relname);
 extern char *get_temp_rel_by_physicalname(const char *relname);

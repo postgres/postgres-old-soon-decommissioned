@@ -1145,7 +1145,7 @@ index_drop(Oid indexId)
 	RelationForgetRelation(indexId);
 
 	/* does something only if it is a temp index */
-	remove_temp_relation(indexId);
+	remove_temp_rel_by_relid(indexId);
 }
 
 /* ----------------------------------------------------------------
@@ -1374,7 +1374,7 @@ IndexesAreActive(Oid relid, bool confirmCommitted)
 	if (!LockClassinfoForUpdate(relid, &tuple, &buffer, confirmCommitted))
 		elog(ERROR, "IndexesAreActive couldn't lock %u", relid);
 	if (((Form_pg_class) GETSTRUCT(&tuple))->relkind != RELKIND_RELATION &&
-	    ((Form_pg_class) GETSTRUCT(&tuple))->relkind != RELKIND_TOASTVALUE)
+		((Form_pg_class) GETSTRUCT(&tuple))->relkind != RELKIND_TOASTVALUE)
 		elog(ERROR, "relation %u isn't an indexable relation", relid);
 	isactive = ((Form_pg_class) GETSTRUCT(&tuple))->relhasindex;
 	ReleaseBuffer(buffer);
