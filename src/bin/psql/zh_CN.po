@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PostgreSQL 7.2\n"
-"POT-Creation-Date: 2001-11-18 00:22+0800\n"
+"POT-Creation-Date: 2001-11-25 18:39+0800\n"
 "PO-Revision-Date: 2001-10-08 23:48:19+0800\n"
 "Last-Translator: Weiping He <laser@zhengmai.com.cn>\n"
 "Language-Team: Weiping He <laser@zhengmai.com.cn>\n"
