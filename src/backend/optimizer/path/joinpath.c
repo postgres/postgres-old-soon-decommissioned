@@ -579,7 +579,7 @@ hash_inner_and_outer(RelOptInfo * joinrel,
 					 RelOptInfo * innerrel,
 					 List *hashinfo_list)
 {
-	HInfo	   *xhashinfo = (HInfo *) NULL;
+	HashInfo	   *xhashinfo = (HashInfo *) NULL;
 	List	   *hjoin_list = NIL;
 	HashPath   *temp_node = (HashPath *) NULL;
 	List	   *i = NIL;
@@ -589,7 +589,7 @@ hash_inner_and_outer(RelOptInfo * joinrel,
 
 	foreach(i, hashinfo_list)
 	{
-		xhashinfo = (HInfo *) lfirst(i);
+		xhashinfo = (HashInfo *) lfirst(i);
 		outerkeys = extract_path_keys(((JoinMethod *) xhashinfo)->jmkeys,
 							  outerrel->targetlist,
 							  OUTER);

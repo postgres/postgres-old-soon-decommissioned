@@ -62,7 +62,7 @@ path_is_cheaper(Path *path1, Path *path2)
  *
  */
 Path *
-set_cheapest(RelOptInfo * parent_rel, List *pathlist)
+set_cheapest(RelOptInfo *parent_rel, List *pathlist)
 {
 	List	   *p;
 	Path	   *cheapest_so_far;
@@ -99,7 +99,7 @@ set_cheapest(RelOptInfo * parent_rel, List *pathlist)
  *
  */
 List *
-add_pathlist(RelOptInfo * parent_rel, List *unique_paths, List *new_paths)
+add_pathlist(RelOptInfo *parent_rel, List *unique_paths, List *new_paths)
 {
 	List	   *x;
 	Path	   *new_path;

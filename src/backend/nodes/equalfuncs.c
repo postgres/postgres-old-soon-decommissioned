@@ -476,10 +476,10 @@ _equalMergeOrder(MergeOrder *a, MergeOrder *b)
 }
 
 static bool
-_equalHInfo(HInfo *a, HInfo *b)
+_equalHashInfo(HashInfo *a, HashInfo *b)
 {
-	Assert(IsA(a, HInfo));
-	Assert(IsA(b, HInfo));
+	Assert(IsA(a, HashInfo));
+	Assert(IsA(b, HashInfo));
 
 	if (a->hashop != b->hashop)
 		return false;
@@ -696,8 +696,8 @@ equal(void *a, void *b)
 		case T_MergeOrder:
 			retval = _equalMergeOrder(a, b);
 			break;
-		case T_HInfo:
-			retval = _equalHInfo(a, b);
+		case T_HashInfo:
+			retval = _equalHashInfo(a, b);
 			break;
 		case T_IndexScan:
 			retval = _equalIndexScan(a, b);

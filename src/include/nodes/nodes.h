@@ -81,7 +81,7 @@ typedef enum NodeTag
 	T_MergeOrder,
 	T_RestrictInfo,
 	T_JoinMethod,
-	T_HInfo,
+	T_HashInfo,
 	T_MInfo,
 	T_JoinInfo,
 	T_Iter,
