@@ -23,6 +23,8 @@
 #include "utils/builtins.h"
 #include "utils/cash.h"
 
+static const char *num_word(Cash value);
+
 /* when we go to 64 bit values we will have to modify this */
 #define CASH_BUFSZ	24
 
