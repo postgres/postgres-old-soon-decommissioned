@@ -36,6 +36,7 @@
 #ifndef POSTGRES_H
 #define POSTGRES_H
 
+#include "config.h"
 #include "c.h"
 
 /* ----------------------------------------------------------------
