@@ -384,15 +384,15 @@ DefineOperator(char *oprName,
 		if (strcasecmp(defel->defname, "leftarg") == 0)
 		{
 			typeName1 = defGetString(defel);
-			if (IsA(defel->arg, TypeName)
-				&&((TypeName *) defel->arg)->setof)
+			if (IsA(defel->arg, TypeName) &&
+				((TypeName *) defel->arg)->setof)
 				elog(ERROR, "setof type not implemented for leftarg");
 		}
 		else if (strcasecmp(defel->defname, "rightarg") == 0)
 		{
 			typeName2 = defGetString(defel);
-			if (IsA(defel->arg, TypeName)
-				&&((TypeName *) defel->arg)->setof)
+			if (IsA(defel->arg, TypeName) &&
+				((TypeName *) defel->arg)->setof)
 				elog(ERROR, "setof type not implemented for rightarg");
 		}
 		else if (strcasecmp(defel->defname, "procedure") == 0)

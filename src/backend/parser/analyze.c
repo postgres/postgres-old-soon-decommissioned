@@ -232,6 +232,7 @@ transformStmt(ParseState *pstate, Node *parseTree)
 											   (SelectStmt *) parseTree);
 			break;
 
+
 		default:
 
 			/*
@@ -1224,7 +1225,7 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 								break;
 						}
 					}
-					if (!found) 
+					if (!found)
 						break;
 				}
 				if (!found)
@@ -1261,16 +1262,16 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 						pkattr->isRel = false;
 						fkconstraint->pk_attrs = lappend(fkconstraint->pk_attrs, pkattr);
 						foreach (findattr, stmt->tableElts) {
-	                                                col=lfirst(findattr);
-        	                                        if (strcmp(col->colname, ielem->name)==0) {
+													col=lfirst(findattr);
+													if (strcmp(col->colname, ielem->name)==0) {
 								char *buff=TypeNameToInternalName(col->typename);
 								Oid type=typenameTypeId(buff);
-                                                        	if (!OidIsValid(type)) {
-                                                                	elog(ERROR, "Unable to lookup type %s", col->typename->name);
-	                                                        }
-        	                                                pktypoid[attnum++]=type; /* need to convert typename */
-                        	                                break;
-                                	                }
+															if (!OidIsValid(type)) {
+																	elog(ERROR, "Unable to lookup type %s", col->typename->name);
+															}
+															pktypoid[attnum++]=type; /* need to convert typename */
+															break;
+													}
 						}
 					}
 				}
@@ -1959,8 +1960,7 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
  * The tree of set operations is converted into the setOperations field of
  * the top-level Query.
  */
-static Query *
-transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
+static Query *transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 {
 	Query	   *qry = makeNode(Query);
 	SelectStmt *leftmostSelect;

@@ -235,7 +235,7 @@ TransactionIdIsInProgress(TransactionId xid)
 
 /*
  * GetXmaxRecent -- returns oldest transaction that was running
- *					when all current transaction was started.
+ *					when all current transaction were started.
  *					It's used by vacuum to decide what deleted
  *					tuples must be preserved in a table.
  */

@@ -57,10 +57,8 @@ btbuild(PG_FUNCTION_ARGS)
 	Relation	index = (Relation) PG_GETARG_POINTER(1);
 	IndexInfo  *indexInfo = (IndexInfo *) PG_GETARG_POINTER(2);
 	Node	   *oldPred = (Node *) PG_GETARG_POINTER(3);
-
 #ifdef NOT_USED
 	IndexStrategy istrat = (IndexStrategy) PG_GETARG_POINTER(4);
-
 #endif
 	HeapScanDesc hscan;
 	HeapTuple	htup;
@@ -72,11 +70,9 @@ btbuild(PG_FUNCTION_ARGS)
 	double		nhtups,
 				nitups;
 	Node	   *pred = indexInfo->ii_Predicate;
-
 #ifndef OMIT_PARTIAL_INDEX
 	TupleTable	tupleTable;
 	TupleTableSlot *slot;
-
 #endif
 	ExprContext *econtext;
 	InsertIndexResult res = NULL;

@@ -843,7 +843,7 @@ findTargetlistEntry(ParseState *pstate, Node *node, List *tlist, int clause)
 	 * an expression.
 	 *----------
 	 */
-	if (IsA(node, Ident) &&((Ident *) node)->indirection == NIL)
+	if (IsA(node, Ident) && ((Ident *) node)->indirection == NIL)
 	{
 		char	   *name = ((Ident *) node)->name;
 

@@ -287,7 +287,7 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 	if (nargs == 1 && !must_be_agg)
 	{
 		/* Is it a plain Relation name from the parser? */
-		if (IsA(first_arg, Ident) &&((Ident *) first_arg)->isRel)
+		if (IsA(first_arg, Ident) && ((Ident *) first_arg)->isRel)
 		{
 			Ident	   *ident = (Ident *) first_arg;
 
@@ -347,7 +347,7 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 		if (nargs != 1)
 			elog(ERROR, "Aggregate functions may only have one parameter");
 		/* Agg's argument can't be a relation name, either */
-		if (IsA(first_arg, Ident) &&((Ident *) first_arg)->isRel)
+		if (IsA(first_arg, Ident) && ((Ident *) first_arg)->isRel)
 			elog(ERROR, "Aggregate functions cannot be applied to relation names");
 		could_be_agg = true;
 	}
@@ -355,7 +355,7 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 	{
 		/* Try to parse as an aggregate if above-mentioned checks are OK */
 		could_be_agg = (nargs == 1) &&
-			!(IsA(first_arg, Ident) &&((Ident *) first_arg)->isRel);
+			!(IsA(first_arg, Ident) && ((Ident *) first_arg)->isRel);
 	}
 
 	if (could_be_agg)
@@ -434,7 +434,7 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 	{
 		Node	   *arg = lfirst(i);
 
-		if (IsA(arg, Ident) &&((Ident *) arg)->isRel)
+		if (IsA(arg, Ident) && ((Ident *) arg)->isRel)
 		{
 			RangeTblEntry *rte;
 			int			vnum;
