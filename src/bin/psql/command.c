@@ -1528,7 +1528,11 @@ do_pset(const char *param, const char *value, printQueryOpt *popt, bool quiet)
 #ifndef WIN32
 #define DEFAULT_SHELL "/bin/sh"
 #else
-#define DEFAULT_SHELL "c:/windows/system32/cmd.exe"
+/*
+ *	CMD.EXE is in different places in different Win32 releases so we
+ *	have to rely on the path to find it.
+ */
+#define DEFAULT_SHELL "cmd.exe"
 #endif
 
 static bool
