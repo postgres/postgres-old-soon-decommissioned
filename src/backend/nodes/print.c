@@ -194,12 +194,20 @@ pretty_format_node_dump(const char *dump)
 					}
 					j = indentDist - 1;
 					/* j will equal indentDist on next loop iteration */
+					/* suppress whitespace just after } */
+					while (dump[i+1] == ' ')
+						i++;
 					break;
 				case ')':
-					/* force line break after ')' */
-					line[j + 1] = '\0';
-					appendStringInfo(&str, "%s\n", line);
-					j = indentDist - 1;
+					/* force line break after ), unless another ) follows */
+					if (dump[i+1] != ')')
+					{
+						line[j + 1] = '\0';
+						appendStringInfo(&str, "%s\n", line);
+						j = indentDist - 1;
+						while (dump[i+1] == ' ')
+							i++;
+					}
 					break;
 				case '{':
 					/* force line break before { */
