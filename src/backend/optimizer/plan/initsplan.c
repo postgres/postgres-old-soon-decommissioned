@@ -343,7 +343,11 @@ distribute_qual_to_rels(Query *root, Node *clause,
 	restrictinfo->mergejoinoperator = InvalidOid;
 	restrictinfo->left_sortop = InvalidOid;
 	restrictinfo->right_sortop = InvalidOid;
+	restrictinfo->left_pathkey = NIL; /* not computable yet */
+	restrictinfo->right_pathkey = NIL;
 	restrictinfo->hashjoinoperator = InvalidOid;
+	restrictinfo->left_dispersion = -1; /* not computed until needed */
+	restrictinfo->right_dispersion = -1;
 
 	/*
 	 * Retrieve all relids and vars contained within the clause.

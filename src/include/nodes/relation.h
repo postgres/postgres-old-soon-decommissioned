@@ -504,8 +504,16 @@ typedef struct RestrictInfo
 	Oid			left_sortop;	/* leftside sortop needed for mergejoin */
 	Oid			right_sortop;	/* rightside sortop needed for mergejoin */
 
+	/* cache space for mergeclause processing; NIL if not yet set */
+	List	   *left_pathkey;	/* canonical pathkey for left side */
+	List	   *right_pathkey;	/* canonical pathkey for right side */
+
 	/* valid if clause is hashjoinable, else InvalidOid: */
 	Oid			hashjoinoperator;		/* copy of clause operator */
+
+	/* cache space for hashclause processing; -1 if not yet set */
+	Selectivity	left_dispersion;	/* dispersion of left side */
+	Selectivity	right_dispersion;	/* dispersion of right side */
 } RestrictInfo;
 
 /*

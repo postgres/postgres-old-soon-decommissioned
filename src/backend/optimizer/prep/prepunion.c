@@ -667,6 +667,10 @@ adjust_inherited_attrs_mutator(Node *node,
 
 		newinfo->subclauseindices = NIL;
 		newinfo->eval_cost = -1; /* reset this too */
+		newinfo->left_pathkey = NIL; /* and these */
+		newinfo->right_pathkey = NIL;
+		newinfo->left_dispersion = -1;
+		newinfo->right_dispersion = -1;
 
 		return (Node *) newinfo;
 	}

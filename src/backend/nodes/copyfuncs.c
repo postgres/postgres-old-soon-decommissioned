@@ -1424,7 +1424,12 @@ _copyRestrictInfo(RestrictInfo *from)
 	newnode->mergejoinoperator = from->mergejoinoperator;
 	newnode->left_sortop = from->left_sortop;
 	newnode->right_sortop = from->right_sortop;
+	/* Do not copy pathkeys, since they'd not be canonical in a copied query */
+	newnode->left_pathkey = NIL;
+	newnode->right_pathkey = NIL;
 	newnode->hashjoinoperator = from->hashjoinoperator;
+	newnode->left_dispersion = from->left_dispersion;
+	newnode->right_dispersion = from->right_dispersion;
 
 	return newnode;
 }

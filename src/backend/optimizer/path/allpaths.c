@@ -162,9 +162,7 @@ set_plain_rel_pathlist(Query *root, RelOptInfo *rel, RangeTblEntry *rte)
 	create_tidscan_paths(root, rel);
 
 	/* Consider index paths for both simple and OR index clauses */
-	create_index_paths(root, rel, indices,
-					   rel->baserestrictinfo,
-					   rel->joininfo);
+	create_index_paths(root, rel, indices);
 
 	/*
 	 * Note: create_or_index_paths depends on create_index_paths to

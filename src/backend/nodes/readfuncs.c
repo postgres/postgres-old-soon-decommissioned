@@ -1848,6 +1848,11 @@ _readRestrictInfo(void)
 
 	/* eval_cost is not part of saved representation; compute on first use */
 	local_node->eval_cost = -1;
+	/* ditto for cached pathkeys and dispersion */
+	local_node->left_pathkey = NIL;
+	local_node->right_pathkey = NIL;
+	local_node->left_dispersion = -1;
+	local_node->right_dispersion = -1;
 
 	return local_node;
 }

@@ -30,6 +30,7 @@ extern Path *create_seqscan_path(RelOptInfo *rel);
 extern IndexPath *create_index_path(Query *root, RelOptInfo *rel,
 				  IndexOptInfo *index,
 				  List *restriction_clauses,
+				  List *pathkeys,
 				  ScanDirection indexscandir);
 extern TidPath *create_tidscan_path(RelOptInfo *rel, List *tideval);
 extern AppendPath *create_append_path(RelOptInfo *rel, List *subpaths);
