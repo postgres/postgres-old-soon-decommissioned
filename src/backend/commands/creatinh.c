@@ -218,7 +218,7 @@ RemoveRelation(char *name)
 }
 
 /*
- * TruncateRelation --
+ * TruncateRelation
  *				  Removes all the rows from a relation
  *
  * Exceptions:
