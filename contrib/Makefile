@@ -27,6 +27,7 @@ WANTED_DIRS = \
 		pg_autovacuum	\
 		pg_dumplo	\
 		pg_logger	\
+		pg_trgm		\
 		pgbench		\
 		pgcrypto	\
 		pgstattuple	\
@@ -43,8 +44,8 @@ WANTED_DIRS = \
 		vacuumlo
 
 # Missing:
-#		array		\ (removed all but the README)
 #		adddepend	\ (does not have a makefile)
+#		array		\ (removed all but the README)
 #		ipc_check	\ (does not have a makefile)
 #		mSQL-interface	\ (requires msql installed)
 #		mac		\ (does not have a makefile)
