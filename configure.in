@@ -959,6 +959,11 @@ AC_FUNC_FSEEKO
 if test "$enable_thread_safety" = yes; then
 ACX_PTHREAD	# set thread flags
 
+# Some platforms use these, so just defineed them.  They can't hurt if they
+# are not supported.
+PTHREAD_CFLAGS="$PTHREAD_CFLAGS -D_REENTRANT -D_THREAD_SAFE -D_POSIX_PTHREAD_SEMANTICS"
+
+
 # At this point, we don't want to muck with the compiler name for threading.
 # Let's see who fails, perhaps AIX.  2004-04-23
 if test "$PTHREAD_CC" != "$CC"; then
