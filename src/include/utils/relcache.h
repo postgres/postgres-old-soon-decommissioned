@@ -27,6 +27,7 @@ extern Relation getreldesc(char *relationName);
 extern void RelationClose(Relation relation);
 extern void RelationFlushRelation(Relation *relationPtr,
 				  bool	onlyFlushReferenceCountZero);
+extern void RelationForgetRelation(Oid rid);
 extern void RelationIdInvalidateRelationCacheByRelationId(Oid relationId);
 
 extern void 
