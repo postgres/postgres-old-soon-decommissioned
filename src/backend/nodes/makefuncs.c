@@ -102,7 +102,7 @@ makeResdom(AttrNumber resno,
  */
 Const	   *
 makeConst(Oid consttype,
-		  Size constlen,
+		  int constlen,
 		  Datum constvalue,
 		  bool constisnull,
 		  bool constbyval,

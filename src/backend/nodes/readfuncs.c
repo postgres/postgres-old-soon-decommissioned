@@ -947,7 +947,7 @@ _readConst()
 
 	token = lsptok(NULL, &length);		/* get :constlen */
 	token = lsptok(NULL, &length);		/* now read it */
-	local_node->constlen = strtoul(token,NULL,10);
+	local_node->constlen = strtol(token,NULL,10);
 
 	token = lsptok(NULL, &length);		/* get :constisnull */
 	token = lsptok(NULL, &length);		/* now read it */

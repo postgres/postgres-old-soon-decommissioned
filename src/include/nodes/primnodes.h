@@ -181,7 +181,7 @@ typedef struct Const
 {
 	NodeTag		type;
 	Oid			consttype;
-	Size		constlen;
+	int			constlen;
 	Datum		constvalue;
 	bool		constisnull;
 	bool		constbyval;
