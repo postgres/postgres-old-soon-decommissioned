@@ -68,6 +68,6 @@ extern double IndexBuildHeapScan(Relation heapRelation,
 				   void *callback_state);
 
 extern void reindex_index(Oid indexId);
-extern bool reindex_relation(Oid relid);
+extern bool reindex_relation(Oid relid, bool toast_too);
 
 #endif   /* INDEX_H */
