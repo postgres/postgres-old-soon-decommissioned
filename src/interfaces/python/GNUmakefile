@@ -29,7 +29,7 @@ Setup.in: Setup.in.raw
 	sed -e 's,@libpq_srcdir@,$(libpq_srcdir),g' \
 	    -e 's,@libpq_builddir@,$(libpq_builddir),g' \
 	    -e 's%@EXTRA_LIBS@%$(filter -L%, $(LDFLAGS)) $(LIBS)%g' \
-	    -e 's,@pg_includedir@,$(top_srcdir)/src/include,g' \
+	    -e 's%@INCLUDES@%$(filter -I%, $(CPPFLAGS))%g' \
 	    $< > $@
 
 install: all
