@@ -288,6 +288,9 @@ text_int2(text *string)
 	int			len;
 	char	   *str;
 
+	if (!string)
+		return 0;
+
 	len = (VARSIZE(string) - VARHDRSZ);
 
 	str = palloc(len + 1);
@@ -328,6 +331,9 @@ text_int4(text *string)
 
 	int			len;
 	char	   *str;
+
+	if (!string)
+		return 0;
 
 	len = (VARSIZE(string) - VARHDRSZ);
 
