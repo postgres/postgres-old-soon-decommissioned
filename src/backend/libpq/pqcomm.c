@@ -81,7 +81,7 @@
 #endif
 
 #include "libpq/libpq.h"
-#include "utils/trace.h"
+#include "utils/trace.h" /* needed on some OS's */
 #include "miscadmin.h"
 
 
