@@ -425,7 +425,13 @@ numeric_uplus(PG_FUNCTION_ARGS)
 	PG_RETURN_NUMERIC(res);
 }
 
-
+/* ----------
+ * numeric_sign() -
+ *
+ * returns -1 if the argument is less than 0, 0 if the argument is equal
+ * to 0, and 1 if the argument is greater than zero.
+ * ----------
+ */
 Datum
 numeric_sign(PG_FUNCTION_ARGS)
 {
