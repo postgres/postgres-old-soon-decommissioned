@@ -30,6 +30,7 @@
 #include "storage/bufmgr.h"
 #include "utils/builtins.h"
 #include "utils/syscache.h"
+#include "utils/temprel.h"
 
 /*
  * Names of indices on the following system catalogs:
@@ -455,6 +456,13 @@ ClassNameIndexScan(Relation heapRelation, char *relName)
 	ScanKeyData skey[1];
 	HeapTuple	tuple;
 
+	/*
+	 * we have to do this before looking in system tables because temp
+	 * table namespace takes precedence
+	 */
+	if ((tuple = get_temp_rel_by_name(relName)) != NULL)
+		return heap_copytuple(tuple);
+		
 	ScanKeyEntryInitialize(&skey[0],
 						   (bits16) 0x0,
 						   (AttrNumber) 1,

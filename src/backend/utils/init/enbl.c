@@ -38,7 +38,7 @@ BypassEnable(int *enableCountInOutP, bool on)
 		return (bool) (*enableCountInOutP >= 2);
 	}
 
-	AssertState(*enableCountInOutP >= 1);
+	Assert(*enableCountInOutP >= 1);
 
 	*enableCountInOutP -= 1;
 

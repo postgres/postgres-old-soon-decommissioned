@@ -98,15 +98,11 @@ DefineIndex(char *heapRelationName,
 	/*
 	 * compute heap relation id
 	 */
-	tuple = SearchSysCacheTuple(RELNAME,
-								PointerGetDatum(heapRelationName),
-								0, 0, 0);
-	if (!HeapTupleIsValid(tuple))
+	if ((relationId = RelnameFindRelid(heapRelationName)) == InvalidOid)
 	{
 		elog(ERROR, "DefineIndex: %s relation not found",
 			 heapRelationName);
 	}
-	relationId = tuple->t_data->t_oid;
 
 	if (unique && strcmp(accessMethodName, "btree") != 0)
 		elog(ERROR, "DefineIndex: unique indices are only available with the btree access method");

@@ -95,6 +95,7 @@ DefineVirtualRelation(char *relname, List *tlist)
 	 * nil...
 	 */
 	createStmt.relname = relname;
+	createStmt.istemp = false;
 	createStmt.tableElts = attrList;
 /*	  createStmt.tableType = NULL;*/
 	createStmt.inhRelnames = NIL;

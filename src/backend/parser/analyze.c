@@ -924,6 +924,7 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 	qry->uniqueFlag = stmt->unique;
 
 	qry->into = stmt->into;
+	qry->isTemp = stmt->istemp;
 	qry->isPortal = FALSE;
 
 	qry->targetList = transformTargetList(pstate, stmt->targetList);
@@ -1032,6 +1033,7 @@ transformCursorStmt(ParseState *pstate, SelectStmt *stmt)
 	qry = transformSelectStmt(pstate, stmt);
 
 	qry->into = stmt->portalname;
+	qry->isTemp = stmt->istemp;
 	qry->isPortal = TRUE;
 	qry->isBinary = stmt->binary;		/* internal portal */
 
@@ -1074,7 +1076,7 @@ create_select_list(Node *ptr, List **select_list, bool *unionall_present)
  * hands back 'true' */ 
 Node *A_Expr_to_Expr(Node *ptr, bool *intersect_present)
 {
-  Node *result;
+  Node *result = NULL;
   
   switch(nodeTag(ptr))
     {

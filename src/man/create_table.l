@@ -6,7 +6,7 @@
 create table - create a new class
 .SH SYNOPSIS
 .nf
-\fBcreate table\fR classname
+\fBcreate\fR [\fBtemp\fR] \fBtable\fR classname
   \fB(\fP
 	attname type
 		[\fBdefault\fP value]

@@ -44,8 +44,10 @@ determines the output format for the date and time data types.
 .IR GEQO
 enables or disables the genetic optimizer algorithm. This algorithm is
 .IR on
-by default, which used GEQO for statements of eight or more tables.
-See the GEQO README for more information.
+by default, which used GEQO for statements of six or more tables.
+Set the
+.IR Programmer's Guide
+for more information.
 
 .ce 1
 \fBGEQO Values\fR

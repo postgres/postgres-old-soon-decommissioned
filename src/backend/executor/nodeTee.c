@@ -167,7 +167,7 @@ ExecInitTee(Tee *node, EState *currentEstate, Plan *parent)
 		else
 			bufferRel = heap_open(
 					heap_create_with_catalog(teeState->tee_bufferRelname,
-											 tupType, RELKIND_RELATION));
+										 tupType, RELKIND_RELATION, false));
 	}
 	else
 	{
@@ -176,7 +176,7 @@ ExecInitTee(Tee *node, EState *currentEstate, Plan *parent)
 				newoid());
 		bufferRel = heap_open(
 					heap_create_with_catalog(teeState->tee_bufferRelname,
-											 tupType, RELKIND_RELATION));
+										 tupType, RELKIND_RELATION, false));
 	}
 
 	teeState->tee_bufferRel = bufferRel;

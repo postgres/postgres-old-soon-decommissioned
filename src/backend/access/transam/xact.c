@@ -850,7 +850,7 @@ StartTransaction()
 	   are created in the course of the transactions
 	   they need to be destroyed properly at the end of the transactions
 	 */
-	InitTempRelList();
+	InitNoNameRelList();
 
 	/* ----------------
 	 *	done with start processing, set current transaction
@@ -917,7 +917,7 @@ CommitTransaction()
 	AtCommit_Notify();
 
 	CloseSequences();
-	DestroyTempRels();
+	DestroyNoNameRels();
 	AtEOXact_portals();
 	RecordTransactionCommit();
 	RelationPurgeLocalRelation(true);
@@ -984,7 +984,7 @@ AbortTransaction()
 	AtEOXact_portals();
 	RecordTransactionAbort();
 	RelationPurgeLocalRelation(false);
-	DestroyTempRels();
+	DestroyNoNameRels();
 	AtAbort_Cache();
 	AtAbort_Locks();
 	AtAbort_Memory();

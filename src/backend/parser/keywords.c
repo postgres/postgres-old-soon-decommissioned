@@ -213,6 +213,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"stdout", STDOUT},
 	{"substring", SUBSTRING},
 	{"table", TABLE},
+	{"temp", TEMP},
 	{"then", THEN},
 	{"time", TIME},
 	{"timestamp", TIMESTAMP},

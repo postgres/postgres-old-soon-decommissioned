@@ -69,8 +69,13 @@ _outIntList(StringInfo str, List *list)
 static void
 _outCreateStmt(StringInfo str, CreateStmt *node)
 {
-	appendStringInfo(str, " CREATE :relname %s :columns ", 
+	appendStringInfo(str, " CREATE :relname %s ", 
 		stringStringInfo(node->relname));
+
+	appendStringInfo(str, " :istemp %s ",
+			node->istemp ? "true" : "false");
+
+	appendStringInfo(str, "	:columns ");
 	_outNode(str, node->tableElts);
 
 	appendStringInfo(str, " :inhRelnames ");
@@ -197,11 +202,12 @@ _outQuery(StringInfo str, Query *node)
 	}
 
 	appendStringInfo(str, 
-			" :resultRelation %d :into %s :isPortal %s :isBinary %s :unionall %s ",
+	" :resultRelation %d :into %s :isPortal %s :isBinary %s :isTemp %s :unionall %s ",
 			node->resultRelation,
 			stringStringInfo(node->into),
 			node->isPortal ? "true" : "false",
 			node->isBinary ? "true" : "false",
+			node->isTemp ? "true" : "false",
 			node->unionall ? "true" : "false");
 
 	appendStringInfo(str, " :unique %s :sortClause ", 

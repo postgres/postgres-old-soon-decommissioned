@@ -15,15 +15,17 @@
 
 #include <utils/rel.h>
 
-extern Relation heap_create(char *relname, TupleDesc att);
+extern Oid	RelnameFindRelid(char *relname);
+extern Relation heap_create(char *relname, TupleDesc att,
+							bool isnoname, bool istemp);
 
 extern Oid heap_create_with_catalog(char *relname,
-						 TupleDesc tupdesc, char relkind);
+						 TupleDesc tupdesc, char relkind, bool istemp);
 
 extern void heap_destroy_with_catalog(char *relname);
 extern void heap_destroy(Relation rel);
 
-extern void InitTempRelList(void);
-extern void DestroyTempRels(void);
+extern void InitNoNameRelList(void);
+extern void DestroyNoNameRels(void);
 
 #endif	 /* HEAP_H */

@@ -110,7 +110,7 @@ RelationPutHeapTupleAtEnd(Relation relation, HeapTuple tuple)
 	ItemId		itemId;
 	Item		item;
 
-	if (!relation->rd_islocal)
+	if (!relation->rd_myxactonly)
 		LockRelation(relation, ExtendLock);
 
 	/*
@@ -158,7 +158,7 @@ RelationPutHeapTupleAtEnd(Relation relation, HeapTuple tuple)
 			elog(ERROR, "Tuple is too big: size %d", len);
 	}
 
-	if (!relation->rd_islocal)
+	if (!relation->rd_myxactonly)
 		UnlockRelation(relation, ExtendLock);
 
 	offnum = PageAddItem((Page) pageHeader, (Item) tuple->t_data,

@@ -1019,9 +1019,8 @@ gettape()
 
 	tp = (struct tapelst *) palloc((unsigned) sizeof(struct tapelst));
 
-	snprintf(uniqueName, MAXPGPATH - 1, "%spg_psort.%d.%d", 
-		 TEMPDIR, (int) MyProcPid, uniqueFileId);
-	uniqueFileId++;
+	snprintf(uniqueName, MAXPGPATH - 1, "%spg_psort.%d.%u", 
+		 TEMPDIR, (int) MyProcPid, uniqueFileId++);
 
 	tapeinit = 1;
 

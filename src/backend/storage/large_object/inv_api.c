@@ -47,7 +47,6 @@
 #include "utils/builtins.h"		/* for namestrcpy() */
 #include "utils/rel.h"
 #include "utils/relcache.h"
-#include "utils/syscache.h"
 
 /*
  *	Warning, Will Robinson...  In order to pack data into an inversion
@@ -120,20 +119,16 @@ inv_create(int flags)
 	sprintf(objname, "xinv%d", file_oid);
 	sprintf(indname, "xinx%d", file_oid);
 
-	if (SearchSysCacheTuple(RELNAME,
-							PointerGetDatum(objname),
-							0, 0, 0) != NULL)
+	if (RelnameFindRelid(objname) != InvalidOid)
 	{
 		elog(ERROR,
 		  "internal error: %s already exists -- cannot create large obj",
 			 objname);
 	}
-	if (SearchSysCacheTuple(RELNAME,
-							PointerGetDatum(indname),
-							0, 0, 0) != NULL)
+	if (RelnameFindRelid(indname) != InvalidOid)
 	{
 		elog(ERROR,
-		  "internal error: %s already exists -- cannot create large obj",
+			 "internal error: %s already exists -- cannot create large obj",
 			 indname);
 	}
 
@@ -153,7 +148,7 @@ inv_create(int flags)
 	 * be located on whatever storage manager the user requested.
 	 */
 
-	heap_create_with_catalog(objname, tupdesc, RELKIND_LOBJECT);
+	heap_create_with_catalog(objname, tupdesc, RELKIND_LOBJECT, false);
 
 	/* make the relation visible in this transaction */
 	CommandCounterIncrement();

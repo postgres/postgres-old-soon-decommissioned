@@ -1025,7 +1025,7 @@ tg_parseSubQuery(TgRecipe * r, TgNode * n, TeeInfo * teeInfo)
 
 				relid = heap_create_with_catalog(
 									   child->nodeElem->outTypes->val[0],
-											  tupdesc, RELKIND_RELATION);
+									   tupdesc, RELKIND_RELATION, false);
 			}
 			else
 			{
@@ -1049,7 +1049,7 @@ tg_parseSubQuery(TgRecipe * r, TgNode * n, TeeInfo * teeInfo)
 				{
 					relid = heap_create_with_catalog(
 									   child->nodeElem->outTypes->val[0],
-											  tupdesc, RELKIND_RELATION);
+									   tupdesc, RELKIND_RELATION, false);
 				}
 			}
 		}

@@ -120,6 +120,10 @@ _readQuery()
 	token = lsptok(NULL, &length);		/* get isBinary */
 	local_node->isBinary = (token[0] == 't') ? true : false;
 
+	token = lsptok(NULL, &length);		/* skip :isTemp */
+	token = lsptok(NULL, &length);		/* get isTemp */
+	local_node->isTemp = (token[0] == 't') ? true : false;
+
 	token = lsptok(NULL, &length);		/* skip :unionall */
 	token = lsptok(NULL, &length);		/* get unionall */
 	local_node->unionall = (token[0] == 't') ? true : false;

@@ -29,6 +29,7 @@
 #include "utils/palloc.h"
 #include "catalog/pg_type.h"
 #include "storage/lmgr.h"
+#include "optimizer/planmain.h"
 
 /*
  * listCopy--
@@ -1572,6 +1573,7 @@ _copyQuery(Query *from)
 		newnode->into = pstrdup(from->into);
 	newnode->isPortal = from->isPortal;
 	newnode->isBinary = from->isBinary;
+	newnode->isTemp = from->isTemp;
 	newnode->unionall = from->unionall;
 	if (from->uniqueFlag)
 		newnode->uniqueFlag = pstrdup(from->uniqueFlag);

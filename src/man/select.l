@@ -9,7 +9,7 @@ select - retrieve instances from a class
 \fBselect\fR [distinct [on attr_name]]
     expression1 [\fBas\fR attr_name-1]
     {, expression-1 [\fBas\fR attr_name-i]}
-    [\fBinto\fR [\fBtable\fR] classname]
+    [\fBinto\fR [\fBtemp\fR] [\fBtable\fR] classname]
     [\fBfrom\fR from-list]
     [\fBwhere\fR where-clause]    
     [\fBgroup by\fR attr_name1 {, attr_name-i....}]

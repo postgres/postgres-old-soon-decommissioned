@@ -138,8 +138,8 @@ DefineRelation(CreateStmt *stmt, char relkind)
 		}
 	}
 
-	relationId = heap_create_with_catalog(relname,
-										  descriptor, relkind);
+	relationId = heap_create_with_catalog(relname, descriptor,
+										  relkind, stmt->istemp);
 
 	StoreCatalogInheritance(relationId, inheritList);
 }
@@ -279,7 +279,7 @@ MergeAttributes(List *schema, List *supers, List **supconstr)
 				SearchSysCacheTuple(TYPOID,
 									ObjectIdGetDatum(attribute->atttypid),
 									0, 0, 0);
-			AssertState(HeapTupleIsValid(tuple));
+			Assert(HeapTupleIsValid(tuple));
 			attributeType =
 				(((Form_pg_type) GETSTRUCT(tuple))->typname).data;
 
