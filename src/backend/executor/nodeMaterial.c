@@ -114,13 +114,22 @@ ExecMaterial(Material *node)
 		{
 			slot = ExecProcNode(outerNode, (Plan *) node);
 
-			heapTuple = slot->val;
-			if (heapTuple == NULL)
+			if (TupIsNull(slot))
 				break;
+			
+			/*
+			 * heap_insert changes something...
+			 */
+			if (slot->ttc_buffer != InvalidBuffer)
+				heapTuple = heap_copytuple(slot->val);
+			else
+				heapTuple = slot->val;
+			
+			heap_insert(tempRelation, heapTuple);
 
-			heap_insert(tempRelation,	/* relation desc */
-						heapTuple);		/* heap tuple to insert */
-
+			if (slot->ttc_buffer != InvalidBuffer)
+				pfree(heapTuple);
+			
 			ExecClearTuple(slot);
 		}
 		currentRelation = tempRelation;

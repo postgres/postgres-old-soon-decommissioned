@@ -250,25 +250,25 @@ getmyrelids()
 								PointerGetDatum(RelationRelationName),
 								0, 0, 0);
 	Assert(HeapTupleIsValid(tuple));
-	MyRelationRelationId = tuple->t_oid;
+	MyRelationRelationId = tuple->t_data->t_oid;
 
 	tuple = SearchSysCacheTuple(RELNAME,
 								PointerGetDatum(AttributeRelationName),
 								0, 0, 0);
 	Assert(HeapTupleIsValid(tuple));
-	MyAttributeRelationId = tuple->t_oid;
+	MyAttributeRelationId = tuple->t_data->t_oid;
 
 	tuple = SearchSysCacheTuple(RELNAME,
 								PointerGetDatum(AccessMethodRelationName),
 								0, 0, 0);
 	Assert(HeapTupleIsValid(tuple));
-	MyAMRelationId = tuple->t_oid;
+	MyAMRelationId = tuple->t_data->t_oid;
 
 	tuple = SearchSysCacheTuple(RELNAME,
 					   PointerGetDatum(AccessMethodOperatorRelationName),
 								0, 0, 0);
 	Assert(HeapTupleIsValid(tuple));
-	MyAMOPRelationId = tuple->t_oid;
+	MyAMOPRelationId = tuple->t_data->t_oid;
 }
 
 /* --------------------------------
@@ -481,11 +481,11 @@ RelationInvalidateRelationCache(Relation relation,
 	 * ----------------
 	 */
 	if (relationId == MyRelationRelationId)
-		objectId = tuple->t_oid;
+		objectId = tuple->t_data->t_oid;
 	else if (relationId == MyAttributeRelationId)
 		objectId = ((Form_pg_attribute) GETSTRUCT(tuple))->attrelid;
 	else if (relationId == MyAMRelationId)
-		objectId = tuple->t_oid;
+		objectId = tuple->t_data->t_oid;
 	else if (relationId == MyAMOPRelationId)
 	{
 		;						/* objectId is unused */

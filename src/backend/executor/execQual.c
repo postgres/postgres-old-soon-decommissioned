@@ -274,7 +274,7 @@ ExecEvalVar(Var *variable, ExprContext *econtext, bool *isNull)
 	 * the entire tuple, we give back a whole slot so that callers know
 	 * what the tuple looks like.
 	 */
-		if (attnum == InvalidAttrNumber)
+	if (attnum == InvalidAttrNumber)
 	{
 		TupleTableSlot *tempSlot;
 		TupleDesc	td;
@@ -287,7 +287,7 @@ ExecEvalVar(Var *variable, ExprContext *econtext, bool *isNull)
 			tempSlot->ttc_buffer = InvalidBuffer;
 		tempSlot->ttc_whichplan = -1;
 
-		tup = heap_copytuple(slot->val);
+		tup = heap_copytuple(heapTuple);
 		td = CreateTupleDescCopy(slot->ttc_tupleDescriptor);
 
 		ExecSetSlotDescriptor(tempSlot, td);
@@ -549,7 +549,6 @@ GetAttributeByName(TupleTableSlot *slot, char *attname, bool *isNull)
 {
 	AttrNumber	attrno;
 	TupleDesc	tupdesc;
-	HeapTuple	tuple;
 	Datum		retval;
 	int			natts;
 	int			i;
@@ -567,9 +566,7 @@ GetAttributeByName(TupleTableSlot *slot, char *attname, bool *isNull)
 	}
 
 	tupdesc = slot->ttc_tupleDescriptor;
-	tuple = slot->val;
-
-	natts = tuple->t_natts;
+	natts = slot->val->t_data->t_natts;
 
 	attrno = InvalidAttrNumber;
 	for (i = 0; i < tupdesc->natts; i++)

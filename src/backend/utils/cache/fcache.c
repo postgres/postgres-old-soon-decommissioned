@@ -74,7 +74,7 @@ GetDynamicFuncArgType(Var *arg, ExprContext *econtext)
 		elog(ERROR, "Lookup failed on type tuple for class %s",
 			 relname);
 
-	return tup->t_oid;
+	return tup->t_data->t_oid;
 }
 
 static FunctionCachePtr

@@ -351,7 +351,7 @@ TupleDescInitEntry(TupleDesc desc,
 	 */
 	typeForm = (Form_pg_type) GETSTRUCT(tuple);
 
-	att->atttypid = tuple->t_oid;
+	att->atttypid = tuple->t_data->t_oid;
 	att->attalign = typeForm->typalign;
 
 	/* ------------------------

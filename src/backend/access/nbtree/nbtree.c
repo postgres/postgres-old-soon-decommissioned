@@ -256,7 +256,7 @@ btbuild(Relation heap,
 		 * if (itup->t_info & INDEX_NULL_MASK) { pfree(itup); continue; }
 		 */
 
-		itup->t_tid = htup->t_ctid;
+		itup->t_tid = htup->t_self;
 		btitem = _bt_formitem(itup);
 
 		/*

@@ -96,7 +96,7 @@ typeTypeId(Type tp)
 {
 	if (tp == NULL)
 		elog(ERROR, "typeTypeId() called with NULL type struct");
-	return tp->t_oid;
+	return tp->t_data->t_oid;
 }
 
 /* given type (as type struct), return the length of type */

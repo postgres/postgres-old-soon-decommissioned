@@ -75,7 +75,7 @@ setheapoverride(bool on)
  *			 Xmax is not committed)))			that has not been committed
  */
 bool
-HeapTupleSatisfiesItself(HeapTuple tuple)
+HeapTupleSatisfiesItself(HeapTupleHeader tuple)
 {
 
 	if (!(tuple->t_infomask & HEAP_XMIN_COMMITTED))
@@ -171,7 +171,7 @@ HeapTupleSatisfiesItself(HeapTuple tuple)
  *		that do catalog accesses.  this is unfortunate, but not critical.
  */
 bool
-HeapTupleSatisfiesNow(HeapTuple tuple)
+HeapTupleSatisfiesNow(HeapTupleHeader tuple)
 {
 	if (AMI_OVERRIDE)
 		return true;

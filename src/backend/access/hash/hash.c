@@ -216,7 +216,7 @@ hashbuild(Relation heap,
 			continue;
 		}
 
-		itup->t_tid = htup->t_ctid;
+		itup->t_tid = htup->t_self;
 		hitem = _hash_formitem(itup);
 		res = _hash_doinsert(index, hitem);
 		pfree(hitem);

@@ -330,15 +330,14 @@ copy_index(Oid OIDOldIndex, Oid OIDNewHeap)
 static void
 rebuildheap(Oid OIDNewHeap, Oid OIDOldHeap, Oid OIDOldIndex)
 {
-	Relation	LocalNewHeap,
-				LocalOldHeap,
-				LocalOldIndex;
-	IndexScanDesc ScanDesc;
-	RetrieveIndexResult ScanResult;
-	ItemPointer HeapTid;
-	HeapTuple	LocalHeapTuple;
-	Buffer		LocalBuffer;
-	Oid			OIDNewHeapInsert;
+	Relation			LocalNewHeap,
+						LocalOldHeap,
+						LocalOldIndex;
+	IndexScanDesc		ScanDesc;
+	RetrieveIndexResult	ScanResult;
+	HeapTupleData		LocalHeapTuple;
+	Buffer				LocalBuffer;
+	Oid					OIDNewHeapInsert;
 
 	/*
 	 * Open the relations I need. Scan through the OldHeap on the OldIndex
@@ -353,10 +352,10 @@ rebuildheap(Oid OIDNewHeap, Oid OIDOldHeap, Oid OIDOldIndex)
 	while ((ScanResult = index_getnext(ScanDesc, ForwardScanDirection)) != NULL)
 	{
 
-		HeapTid = &ScanResult->heap_iptr;
-		LocalHeapTuple = heap_fetch(LocalOldHeap, SnapshotNow, HeapTid, &LocalBuffer);
+		LocalHeapTuple.t_self = ScanResult->heap_iptr;
+		heap_fetch(LocalOldHeap, SnapshotNow, &LocalHeapTuple, &LocalBuffer);
 		OIDNewHeapInsert =
-			heap_insert(LocalNewHeap, LocalHeapTuple);
+			heap_insert(LocalNewHeap, &LocalHeapTuple);
 		pfree(ScanResult);
 		ReleaseBuffer(LocalBuffer);
 	}

@@ -405,7 +405,7 @@ PerformAddAttribute(char *relationName,
 	if (hasindex)
 		CatalogOpenIndices(Num_pg_attr_indices, Name_pg_attr_indices, idescs);
 
-	attributeD.attrelid = reltup->t_oid;
+	attributeD.attrelid = reltup->t_data->t_oid;
 
 	attributeTuple = heap_addheader(Natts_pg_attribute,
 									sizeof attributeD,
@@ -422,7 +422,7 @@ PerformAddAttribute(char *relationName,
 		int			attnelems;
 
 		tup = SearchSysCacheTuple(ATTNAME,
-								  ObjectIdGetDatum(reltup->t_oid),
+								  ObjectIdGetDatum(reltup->t_data->t_oid),
 								  PointerGetDatum(colDef->colname),
 								  0, 0);
 
@@ -456,7 +456,7 @@ PerformAddAttribute(char *relationName,
 		if (!HeapTupleIsValid(typeTuple))
 			elog(ERROR, "Add: type \"%s\" nonexistent", typename);
 		namestrcpy(&(attribute->attname), colDef->colname);
-		attribute->atttypid = typeTuple->t_oid;
+		attribute->atttypid = typeTuple->t_data->t_oid;
 		attribute->attlen = form->typlen;
 		attributeD.attdisbursion = 0;
 		attribute->attcacheoff = -1;
@@ -482,7 +482,7 @@ PerformAddAttribute(char *relationName,
 	heap_close(attrdesc);
 
 	((Form_pg_class) GETSTRUCT(reltup))->relnatts = maxatts;
-	heap_replace(rel, &reltup->t_ctid, reltup);
+	heap_replace(rel, &reltup->t_self, reltup);
 
 	/* keep catalog indices current */
 	CatalogOpenIndices(Num_pg_class_indices, Name_pg_class_indices, ridescs);

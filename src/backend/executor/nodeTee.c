@@ -342,10 +342,19 @@ ExecTee(Tee *node, Plan *parent)
 		slot = ExecProcNode(childNode, (Plan *) node);
 		if (!TupIsNull(slot))
 		{
-			heapTuple = slot->val;
+			/*
+			 * heap_insert changes something...
+			 */
+			if (slot->ttc_buffer != InvalidBuffer)
+				heapTuple = heap_copytuple(slot->val);
+			else
+				heapTuple = slot->val;
 
 			/* insert into temporary relation */
 			heap_insert(bufferRel, heapTuple);
+
+			if (slot->ttc_buffer != InvalidBuffer)
+				pfree(heapTuple);
 
 			/*
 			 * once there is data in the temporary relation, ensure that

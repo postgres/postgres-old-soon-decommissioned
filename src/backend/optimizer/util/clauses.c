@@ -773,7 +773,7 @@ CommuteClause(Node *clause)
 
 	commuTup = (Form_pg_operator) GETSTRUCT(heapTup);
 
-	commu = makeOper(heapTup->t_oid,
+	commu = makeOper(heapTup->t_data->t_oid,
 					 InvalidOid,
 					 commuTup->oprresult,
 					 ((Oper *) ((Expr *) clause)->oper)->opsize,

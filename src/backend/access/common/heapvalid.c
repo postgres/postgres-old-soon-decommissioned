@@ -25,9 +25,9 @@
 bool
 TupleUpdatedByCurXactAndCmd(HeapTuple t)
 {
-	if (TransactionIdEquals(t->t_xmax,
+	if (TransactionIdEquals(t->t_data->t_xmax,
 							GetCurrentTransactionId()) &&
-		CommandIdGEScanCommandId(t->t_cmax))
+		CommandIdGEScanCommandId(t->t_data->t_cmax))
 		return true;
 
 	return false;

@@ -76,7 +76,7 @@ ExecIdenticalTuples(TupleTableSlot *t1, TupleTableSlot *t2)
 	 *	THE t_len FIELDS CAN BE THE SAME IN THIS CASE!!
 	 * ----------------
 	 */
-	if (h1->t_hoff != h2->t_hoff)
+	if (h1->t_data->t_hoff != h2->t_data->t_hoff)
 		return false;
 
 	/* ----------------
@@ -86,7 +86,7 @@ ExecIdenticalTuples(TupleTableSlot *t1, TupleTableSlot *t2)
 	 */
 	d1 = (char *) GETSTRUCT(h1);
 	d2 = (char *) GETSTRUCT(h2);
-	len = (int) h1->t_len - (int) h1->t_hoff;
+	len = (int) h1->t_len - (int) h1->t_data->t_hoff;
 
 	/* ----------------
 	 *	byte compare the data areas and return the result.

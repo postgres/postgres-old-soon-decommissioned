@@ -123,10 +123,10 @@ SetDefine(char *querystr, char *typename)
 									  repl);
 
 			setheapoverride(true);
-			heap_replace(procrel, &tup->t_ctid, newtup);
+			heap_replace(procrel, &tup->t_self, newtup);
 			setheapoverride(false);
 
-			setoid = newtup->t_oid;
+			setoid = newtup->t_data->t_oid;
 		}
 		else
 			elog(ERROR, "setin: could not find new set oid tuple");

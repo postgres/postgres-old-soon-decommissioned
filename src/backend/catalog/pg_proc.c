@@ -144,7 +144,7 @@ ProcedureCreate(char *procedureName,
 									  0, 0, 0);
 			pfree(prosrctext);
 			if (HeapTupleIsValid(tup))
-				return tup->t_oid;
+				return tup->t_data->t_oid;
 		}
 	}
 
@@ -155,7 +155,7 @@ ProcedureCreate(char *procedureName,
 	if (!HeapTupleIsValid(tup))
 		elog(ERROR, "ProcedureCreate: no such language %s", languageName);
 
-	languageObjectId = tup->t_oid;
+	languageObjectId = tup->t_data->t_oid;
 
 	if (strcmp(returnTypeName, "opaque") == 0)
 	{
@@ -276,5 +276,5 @@ ProcedureCreate(char *procedureName,
 		CatalogCloseIndices(Num_pg_proc_indices, idescs);
 	}
 	heap_close(rel);
-	return tup->t_oid;
+	return tup->t_data->t_oid;
 }

@@ -61,7 +61,7 @@ any_ordering_op(int restype)
 Oid
 oprid(Operator op)
 {
-	return op->t_oid;
+	return op->t_data->t_oid;
 }
 
 
@@ -426,7 +426,7 @@ oper_exact(char *op, Oid arg1, Oid arg2, Node **ltree, Node **rtree, bool noWarn
 			Form_pg_operator opform;
 
 			opform = (Form_pg_operator) GETSTRUCT(tup);
-			if (opform->oprcom == tup->t_oid)
+			if (opform->oprcom == tup->t_data->t_oid)
 			{
 				if ((ltree != NULL) && (rtree != NULL))
 				{

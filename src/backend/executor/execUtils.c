@@ -1138,7 +1138,7 @@ ExecInsertIndexTuples(TupleTableSlot *slot,
 		result = index_insert(relationDescs[i], /* index relation */
 							  datum,	/* array of heaptuple Datums */
 							  nulls,	/* info on nulls */
-							  &(heapTuple->t_ctid),		/* oid of heap tuple */
+							  &(heapTuple->t_self),	/* tid of heap tuple */
 							  heapRelation);
 
 		/* ----------------

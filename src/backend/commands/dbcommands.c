@@ -251,7 +251,7 @@ check_permissions(char *command,
 									  Anum_pg_database_datdba,
 									  RelationGetDescr(dbrel),
 									  (char *) NULL);
-		*dbIdP = dbtup->t_oid;
+		*dbIdP = dbtup->t_data->t_oid;
 		dbtext = (text *) heap_getattr(dbtup,
 									   Anum_pg_database_datpath,
 									   RelationGetDescr(dbrel),

@@ -276,8 +276,8 @@ be_printtup(HeapTuple tuple, TupleDesc typeinfo)
 	 *	Allocate space for a tuple.
 	 * ----------------
 	 */
-	tuples->values[tuples->tuple_index] = pbuf_addTuple(tuple->t_natts);
-	tuples->lengths[tuples->tuple_index] = pbuf_addTupleValueLengths(tuple->t_natts);
+	tuples->values[tuples->tuple_index] = pbuf_addTuple(tuple->t_data->t_natts);
+	tuples->lengths[tuples->tuple_index] = pbuf_addTupleValueLengths(tuple->t_data->t_natts);
 	/* ----------------
 	 *	copy printable representations of the tuple's attributes
 	 *	to the portal.
@@ -297,7 +297,7 @@ be_printtup(HeapTuple tuple, TupleDesc typeinfo)
 	values = tuples->values[tuples->tuple_index];
 	lengths = tuples->lengths[tuples->tuple_index];
 
-	for (i = 0; i < tuple->t_natts; i++)
+	for (i = 0; i < tuple->t_data->t_natts; i++)
 	{
 		attr = heap_getattr(tuple, i + 1, typeinfo, &isnull);
 		typoutput = typtoout((Oid) typeinfo->attrs[i]->atttypid);
