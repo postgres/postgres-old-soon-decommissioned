@@ -1417,15 +1417,9 @@ UpdateStats(Oid relid, double reltuples)
 	 */
 
 	/*
-	 * Can't use heap_open here since we don't know if it's an index...
+	 * Grabbing lock here is probably redundant ...
 	 */
-	whichRel = RelationIdGetRelation(relid);
-
-	if (!RelationIsValid(whichRel))
-		elog(ERROR, "UpdateStats: cannot open relation id %u", relid);
-
-	/* Grab lock to be held till end of xact (probably redundant...) */
-	LockRelation(whichRel, ShareLock);
+	whichRel = relation_open(relid, ShareLock);
 
 	/*
 	 * Find the RELATION relation tuple for the given relation.
@@ -1553,8 +1547,7 @@ UpdateStats(Oid relid, double reltuples)
 		heap_endscan(pg_class_scan);
 
 	heap_close(pg_class, RowExclusiveLock);
-	/* Cheating a little bit since we didn't open it with heap_open... */
-	heap_close(whichRel, NoLock);
+	relation_close(whichRel, NoLock);
 }
 
 

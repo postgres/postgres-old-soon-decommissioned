@@ -293,12 +293,6 @@ InitPostgres(const char *dbname, const char *username)
 	RelationCacheInitialize();
 
 	/*
-	 * Initialize the access methods. Does not touch files (?) - thomas
-	 * 1997-11-01
-	 */
-	initam();
-
-	/*
 	 * Initialize all the system catalog caches.
 	 *
 	 * Does not touch files since all routines are builtins (?) - thomas

@@ -36,7 +36,7 @@ typedef bool (*IndexBulkDeleteCallback) (ItemPointer itemptr, void *state);
  * ----------------
  */
 extern Relation index_open(Oid relationId);
-extern Relation index_openr(char *relationName);
+extern Relation index_openr(const char *relationName);
 extern void index_close(Relation relation);
 extern InsertIndexResult index_insert(Relation relation,
 			 Datum *datum, char *nulls,
