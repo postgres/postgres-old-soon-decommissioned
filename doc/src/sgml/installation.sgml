@@ -915,7 +915,7 @@ JAVACMD=$JAVA_HOME/bin/java
       </varlistentry>
 
       <varlistentry>
-       <term><option>--with-threads</option></term>
+       <term><option>--enable-thread-safeness</option></term>
        <listitem>
         <para>
 	 Allow separate libpq and ecpg threads to safely control their
