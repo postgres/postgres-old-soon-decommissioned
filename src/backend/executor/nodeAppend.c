@@ -181,7 +181,6 @@ ExecInitAppend(Append *node, EState *estate, Plan *parent)
 {
 	AppendState *appendstate;
 	int			nplans;
-	List	   *resultList = NULL;
 	List	   *rtable;
 	List	   *appendplans;
 	bool	   *initialized;
@@ -246,13 +245,14 @@ ExecInitAppend(Append *node, EState *estate, Plan *parent)
 	if ((es_rri != (RelationInfo *) NULL) &&
 		(node->inheritrelid == es_rri->ri_RangeTableIndex))
 	{
-		RelationInfo *rri;
+		List	   *resultList = NIL;
 		List	   *rtentryP;
 
 		foreach(rtentryP, rtable)
 		{
-			Oid			reloid;
-			RangeTblEntry *rtentry = lfirst(rtentryP);
+			RangeTblEntry  *rtentry = lfirst(rtentryP);
+			Oid				reloid;
+			RelationInfo   *rri;
 
 			reloid = rtentry->relid;
 			rri = makeNode(RelationInfo);
@@ -262,8 +262,10 @@ ExecInitAppend(Append *node, EState *estate, Plan *parent)
 			rri->ri_IndexRelationDescs = NULL;	/* index descs */
 			rri->ri_IndexRelationInfo = NULL;	/* index key info */
 
+			if (rri->ri_RelationDesc->rd_rel->relhasindex)
+				ExecOpenIndices(reloid, rri);
+
 			resultList = lcons(rri, resultList);
-			ExecOpenIndices(reloid, rri);
 		}
 		appendstate->as_result_relation_info_list = resultList;
 	}
