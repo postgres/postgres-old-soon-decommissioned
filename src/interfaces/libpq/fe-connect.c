@@ -467,25 +467,6 @@ PQsetdbLogin(const char *pghost, const char *pgport, const char *pgoptions,
 	else
 		conn->dbName = strdup(dbName);
 
-	if (conn->dbName)
-	{
-
-		/*
-		 * if the database name is surrounded by double-quotes, then don't
-		 * convert case
-		 */
-		if (*conn->dbName == '"')
-		{
-			strcpy(conn->dbName, conn->dbName + 1);
-			conn->dbName[strlen(conn->dbName) - 1] = '\0';
-		}
-		else
-			for (i = 0; conn->dbName[i]; i++)
-				if (isascii((unsigned char) conn->dbName[i]) &&
-					isupper(conn->dbName[i]))
-					conn->dbName[i] = tolower(conn->dbName[i]);
-	}
-
 	if (error)
 	{
 		conn->status = CONNECTION_BAD;

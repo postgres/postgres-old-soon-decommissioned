@@ -1198,6 +1198,7 @@ process_file(char *filename)
 {
 	FILE	   *fd;
 	int			result;
+    char       *oldfilename;
 
 	if (!filename)
 		return false;
@@ -1214,10 +1215,11 @@ process_file(char *filename)
 		return false;
 	}
 
+    oldfilename = pset.inputfile;
     pset.inputfile = filename;
 	result = MainLoop(fd);
 	fclose(fd);
-	pset.inputfile = NULL;
+	pset.inputfile = oldfilename;
 	return (result == EXIT_SUCCESS);
 }
 

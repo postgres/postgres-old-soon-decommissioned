@@ -338,8 +338,11 @@ other			.
 							isupper(yytext[i]))
 							yytext[i] = tolower(yytext[i]);
 					if (i >= NAMEDATALEN)
+                    {
+                        elog(NOTICE, "identifier \"%s\" will be truncated to \"%.*s\"",
+                             yytext, NAMEDATALEN-1, yytext);
 						yytext[NAMEDATALEN-1] = '\0';
-
+                    }
 					keyword = ScanKeywordLookup((char*)yytext);
 					if (keyword != NULL) {
 						return keyword->value;
