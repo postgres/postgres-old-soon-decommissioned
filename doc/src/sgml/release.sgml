@@ -26,6 +26,7 @@ worries about funny characters.
 <literallayout><![CDATA[
 Access privileges on functions
 Access privileges on procedural languages
+Kerberos 5 support now works with Heimdal
 ]]></literallayout>
 
  </sect1>
