@@ -13,9 +13,9 @@
 #ifndef	HEAPTUPLE_H
 #define HEAPTUPLE_H
 
-#include "access/htup.h"
-#include "storage/buf.h"
-#include "access/tupdesc.h"
+#include <access/tupdesc.h>
+#include <storage/buf.h>
+#include <access/htup.h>
 
 extern char *heap_getattr(HeapTuple tup,
                           Buffer b,
