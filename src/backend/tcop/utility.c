@@ -159,6 +159,15 @@ ProcessUtility(Node *parsetree,
 			CHECK_IF_ABORTED();
 
 			DefineRelation((CreateStmt *) parsetree, RELKIND_RELATION);
+
+			/*
+			 * Let AlterTableCreateToastTable decide if this
+			 * one needs a secondary relation too.
+			 *
+			 */
+			CommandCounterIncrement();
+			AlterTableCreateToastTable(((CreateStmt *)parsetree)->relname,
+										true);
 			break;
 
 		case T_DropStmt:
@@ -361,7 +370,7 @@ ProcessUtility(Node *parsetree,
 						AlterTableDropConstraint(stmt->relname, stmt->inh, stmt->name, stmt->behavior);
 						break;
 					case 'E':	/* CREATE TOAST TABLE */
-						AlterTableCreateToastTable(stmt->relname);
+						AlterTableCreateToastTable(stmt->relname, false);
 						break;
 					default:	/* oops */
 						elog(ERROR, "T_AlterTableStmt: unknown subtype");
