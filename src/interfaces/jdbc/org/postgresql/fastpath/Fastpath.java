@@ -118,8 +118,10 @@ public class Fastpath
 				switch (c)
 				{
 					case 'A':	// Asynchronous Notify
-						int pid = stream.ReceiveInteger(4);
+						int msglen = stream.ReceiveIntegerR(4);
+						int pid = stream.ReceiveIntegerR(4);
 						String msg = stream.ReceiveString(conn.getEncoding());
+						String param = stream.ReceiveString(conn.getEncoding());
 						conn.addNotification(new org.postgresql.core.Notification(msg, pid));
 						break;
 						//------------------------------
@@ -233,8 +235,9 @@ public class Fastpath
 				{
 					case 'A':	// Asynchronous Notify
 						//TODO: do something with this
-						int pid = stream.ReceiveInteger(4);
+						int pid = stream.ReceiveIntegerR(4);
 						String msg = stream.ReceiveString(conn.getEncoding());
+						conn.addNotification(new org.postgresql.core.Notification(msg, pid));
 						break;
 
 						//------------------------------
