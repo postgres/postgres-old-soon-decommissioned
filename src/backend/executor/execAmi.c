@@ -55,7 +55,7 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 		InstrEndLoop(node->instrument);
 
 	/* If we have changed parameters, propagate that info */
-	if (node->chgParam != NIL)
+	if (node->chgParam != NULL)
 	{
 		List	   *lst;
 
@@ -64,10 +64,10 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 			SubPlanState  *sstate = (SubPlanState *) lfirst(lst);
 			PlanState  *splan = sstate->planstate;
 
-			if (splan->plan->extParam != NIL)	/* don't care about child
-												 * locParam */
-				SetChangedParamList(splan, node->chgParam);
-			if (splan->chgParam != NIL)
+			if (splan->plan->extParam != NULL)	/* don't care about child
+												 * local Params */
+				UpdateChangedParamSet(splan, node->chgParam);
+			if (splan->chgParam != NULL)
 				ExecReScanSetParamPlan(sstate, node);
 		}
 		foreach(lst, node->subPlan)
@@ -75,14 +75,14 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 			SubPlanState  *sstate = (SubPlanState *) lfirst(lst);
 			PlanState  *splan = sstate->planstate;
 
-			if (splan->plan->extParam != NIL)
-				SetChangedParamList(splan, node->chgParam);
+			if (splan->plan->extParam != NULL)
+				UpdateChangedParamSet(splan, node->chgParam);
 		}
 		/* Well. Now set chgParam for left/right trees. */
 		if (node->lefttree != NULL)
-			SetChangedParamList(node->lefttree, node->chgParam);
+			UpdateChangedParamSet(node->lefttree, node->chgParam);
 		if (node->righttree != NULL)
-			SetChangedParamList(node->righttree, node->chgParam);
+			UpdateChangedParamSet(node->righttree, node->chgParam);
 	}
 
 	switch (nodeTag(node))
@@ -165,10 +165,10 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 			return;
 	}
 
-	if (node->chgParam != NIL)
+	if (node->chgParam != NULL)
 	{
-		freeList(node->chgParam);
-		node->chgParam = NIL;
+		bms_free(node->chgParam);
+		node->chgParam = NULL;
 	}
 }
 

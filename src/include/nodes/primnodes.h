@@ -435,9 +435,11 @@ typedef struct SubLink
  * expressions to be evaluated in the outer-query context (currently these
  * args are always just Vars, but in principle they could be any expression).
  * The values are assigned to the global PARAM_EXEC params indexed by parParam
- * (the parParam and args lists must have the same length).  setParam is a
+ * (the parParam and args lists must have the same ordering).  setParam is a
  * list of the PARAM_EXEC params that are computed by the sub-select, if it
- * is an initplan.
+ * is an initplan; they are listed in order by sub-select output column
+ * position.  (parParam and setParam are integer Lists, not Bitmapsets,
+ * because their ordering is significant.)
  */
 typedef struct SubPlan
 {
@@ -449,6 +451,7 @@ typedef struct SubPlan
 	/* The combining operators, transformed to executable expressions: */
 	List	   *exprs;			/* list of OpExpr expression trees */
 	List	   *paramIds;		/* IDs of Params embedded in the above */
+	/* Note: paramIds has a one-to-one correspondence to the exprs list */
 	/* The subselect, transformed to a Plan: */
 	struct Plan *plan;			/* subselect plan itself */
 	int			plan_id;		/* dummy thing because of we haven't equal

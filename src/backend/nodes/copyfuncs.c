@@ -120,8 +120,8 @@ CopyPlanFields(Plan *from, Plan *newnode)
 	COPY_NODE_FIELD(lefttree);
 	COPY_NODE_FIELD(righttree);
 	COPY_NODE_FIELD(initPlan);
-	COPY_INTLIST_FIELD(extParam);
-	COPY_INTLIST_FIELD(locParam);
+	COPY_BITMAPSET_FIELD(extParam);
+	COPY_BITMAPSET_FIELD(allParam);
 	COPY_SCALAR_FIELD(nParamExec);
 }
 

@@ -22,6 +22,6 @@ extern int	PlannerPlanId;		/* to assign unique ID to subquery plans */
 extern Node *convert_IN_to_join(Query *parse, SubLink *sublink);
 extern Node *SS_replace_correlation_vars(Node *expr);
 extern Node *SS_process_sublinks(Node *expr, bool isQual);
-extern List *SS_finalize_plan(Plan *plan, List *rtable);
+extern void SS_finalize_plan(Plan *plan, List *rtable);
 
 #endif   /* SUBSELECT_H */

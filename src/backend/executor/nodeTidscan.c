@@ -349,7 +349,7 @@ ExecInitTidScan(TidScan *node, EState *estate)
 	Oid			relid;
 	Oid			reloid;
 	Relation	currentRelation;
-	List	   *execParam = NIL;
+	Bitmapset  *execParam = NULL;
 
 	/*
 	 * create state structure

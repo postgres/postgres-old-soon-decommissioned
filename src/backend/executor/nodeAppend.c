@@ -361,14 +361,14 @@ ExecReScanAppend(AppendState *node, ExprContext *exprCtxt)
 		 * ExecReScan doesn't know about my subplans, so I have to do
 		 * changed-parameter signaling myself.
 		 */
-		if (node->ps.chgParam != NIL)
-			SetChangedParamList(subnode, node->ps.chgParam);
+		if (node->ps.chgParam != NULL)
+			UpdateChangedParamSet(subnode, node->ps.chgParam);
 
 		/*
 		 * if chgParam of subnode is not null then plan will be re-scanned
 		 * by first ExecProcNode.
 		 */
-		if (subnode->chgParam == NIL)
+		if (subnode->chgParam == NULL)
 		{
 			/* make sure estate is correct for this subnode (needed??) */
 			node->as_whichplan = i;

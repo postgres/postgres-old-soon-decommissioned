@@ -255,8 +255,8 @@ _outPlanInfo(StringInfo str, Plan *node)
 	WRITE_NODE_FIELD(lefttree);
 	WRITE_NODE_FIELD(righttree);
 	WRITE_NODE_FIELD(initPlan);
-	WRITE_INTLIST_FIELD(extParam);
-	WRITE_INTLIST_FIELD(locParam);
+	WRITE_BITMAPSET_FIELD(extParam);
+	WRITE_BITMAPSET_FIELD(allParam);
 	WRITE_INT_FIELD(nParamExec);
 }
 

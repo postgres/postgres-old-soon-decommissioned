@@ -18,6 +18,7 @@
 #include "executor/hashjoin.h"
 #include "executor/tuptable.h"
 #include "fmgr.h"
+#include "nodes/bitmapset.h"
 #include "nodes/params.h"
 #include "nodes/plannodes.h"
 #include "utils/tuplestore.h"
@@ -616,7 +617,7 @@ typedef struct PlanState
 	/*
 	 * State for management of parameter-change-driven rescanning
 	 */
-	List	   *chgParam;		/* integer list of IDs of changed Params */
+	Bitmapset  *chgParam;		/* set of IDs of changed Params */
 
 	/*
 	 * Other run-time state needed by most if not all node types.
