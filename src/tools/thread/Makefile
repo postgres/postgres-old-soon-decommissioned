@@ -2,7 +2,7 @@
 #
 # Makefile for tools/thread
 #
-# Copyright (C) 2003 by PostgreSQL Global Development Team
+# Copyright (c) 2003-2005, PostgreSQL Global Development Group
 #
 # $PostgreSQL$
 #

@@ -1,7 +1,7 @@
 /*
  * PostgreSQL System Views
  *
- * Copyright 1996-2003, PostgreSQL Global Development Group
+ * Copyright (c) 1996-2005, PostgreSQL Global Development Group
  *
  * $PostgreSQL$
  */
