@@ -1252,28 +1252,33 @@ XLogFlush(XLogRecPtr record)
 	/* done already? */
 	if (!XLByteLE(record, LogwrtResult.Flush))
 	{
-		/* if something was added to log cache then try to flush this too */
-		if (LWLockConditionalAcquire(WALInsertLock, LW_EXCLUSIVE))
-		{
-			XLogCtlInsert *Insert = &XLogCtl->Insert;
-			uint32		freespace = INSERT_FREESPACE(Insert);
-
-			if (freespace < SizeOfXLogRecord)	/* buffer is full */
-				WriteRqstPtr = XLogCtl->xlblocks[Insert->curridx];
-			else
-			{
-				WriteRqstPtr = XLogCtl->xlblocks[Insert->curridx];
-				WriteRqstPtr.xrecoff -= freespace;
-			}
-			LWLockRelease(WALInsertLock);
-		}
 		/* now wait for the write lock */
 		LWLockAcquire(WALWriteLock, LW_EXCLUSIVE);
 		LogwrtResult = XLogCtl->Write.LogwrtResult;
 		if (!XLByteLE(record, LogwrtResult.Flush))
 		{
-			WriteRqst.Write = WriteRqstPtr;
-			WriteRqst.Flush = record;
+			/* try to write/flush later additions to XLOG as well */
+			if (LWLockConditionalAcquire(WALInsertLock, LW_EXCLUSIVE))
+			{
+				XLogCtlInsert *Insert = &XLogCtl->Insert;
+				uint32		freespace = INSERT_FREESPACE(Insert);
+
+				if (freespace < SizeOfXLogRecord)	/* buffer is full */
+					WriteRqstPtr = XLogCtl->xlblocks[Insert->curridx];
+				else
+				{
+					WriteRqstPtr = XLogCtl->xlblocks[Insert->curridx];
+					WriteRqstPtr.xrecoff -= freespace;
+				}
+				LWLockRelease(WALInsertLock);
+				WriteRqst.Write = WriteRqstPtr;
+				WriteRqst.Flush = WriteRqstPtr;
+			}
+			else
+			{
+				WriteRqst.Write = WriteRqstPtr;
+				WriteRqst.Flush = record;
+			}
 			XLogWrite(WriteRqst);
 		}
 		LWLockRelease(WALWriteLock);
