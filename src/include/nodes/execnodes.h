@@ -399,6 +399,7 @@ typedef struct IndexScanState
 	CommonState cstate;			/* its first field is NodeTag */
 	int			iss_NumIndices;
 	int			iss_IndexPtr;
+	int			iss_MarkIndexPtr;
 	ScanKey    *iss_ScanKeys;
 	int		   *iss_NumScanKeys;
 	Pointer		iss_RuntimeKeyInfo;
