@@ -878,8 +878,8 @@ tg_parseSubQuery(TgRecipe * r, TgNode * n, TeeInfo * teeInfo)
 
 						snprintf(newquery, 1000, "select %s($1", funcName);
 						for (i = 1; i < parameterCount; i++)
-							snprintf(newquery, 1000, "%s,$%d", newquery, i);
-						snprintf(newquery, 1000, "%s)", newquery);
+							snprintf(newquery, 1000, "%s,$%d", pstrdup(newquery), i);
+						snprintf(newquery, 1000, "%s)", pstrdup(newquery));
 					}
 					else
 						snprintf(newquery, 1000, "select %s()", funcName);

@@ -85,7 +85,8 @@ createdb(char *dbname, char *dbpath, int encoding, CommandDest dest)
 
 	snprintf(buf, 512, 
 			"insert into pg_database (datname, datdba, encoding, datpath)"
-			" values ('%s', '%d', '%d', '%s');", dbname, user_id, encoding, loc);
+			" values ('%s', '%d', '%d', '%s');", dbname, user_id, encoding,
+			loc);
 
 	pg_exec_query_dest(buf, dest, false);
 }
