@@ -306,9 +306,6 @@ exec_command(const char *cmd,
 			case 'i':
 			case 's':
 			case 'S':
-				if (cmd[1] == 'S' && cmd[2] == '\0')
-					success = listTables("Stvs", NULL, show_verbose);
-				else
 					success = listTables(&cmd[1], name, show_verbose);
 				break;
 			default:

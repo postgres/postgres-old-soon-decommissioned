@@ -973,6 +973,10 @@ listTables(const char *infotype, const char *name, bool desc)
 	PGresult   *res;
 	printQueryOpt myopt = pset.popt;
 
+	if (showSystem && !(showSeq || showIndices || showViews || showTables))
+		showTables = showViews = showSeq = true;
+
+
 	buf[0] = '\0';
 
 	/* tables */
