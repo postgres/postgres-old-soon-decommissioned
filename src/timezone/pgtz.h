@@ -18,6 +18,6 @@
 
 #define TZ_STRLEN_MAX 255
 
-extern char	   *pg_TZDIR(void);
+extern char *pg_TZDIR(void);
 
-#endif /* _PGTZ_H */
+#endif   /* _PGTZ_H */
