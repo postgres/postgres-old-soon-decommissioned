@@ -5944,7 +5944,7 @@ SELECT TIMESTAMP 'now';
 	<entry><literal><function>pclose</function>(<type>path</>)</literal></entry>
 	<entry><type>path</type></entry>
 	<entry>convert path to closed</entry>
-	<entry><literal>popen(path '[(0,0),(1,1),(2,0)]')</literal></entry>
+	<entry><literal>pclose(path '[(0,0),(1,1),(2,0)]')</literal></entry>
        </row>
 <![IGNORE[
 <!-- Not defined by this name. Implements the intersection operator '#' -->
