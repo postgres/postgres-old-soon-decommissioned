@@ -88,7 +88,6 @@ PostgreSQL Reference Manual
    &selectInto;
    &set;
    &setConstraints;
-   &setSession;
    &setTransaction;
    &show;
    &truncate;
