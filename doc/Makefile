@@ -53,7 +53,7 @@ man$(sqlmansect_dummy)/.timestamp: man.tar.gz
 	for file in man1/*.1; do \
 	  mv $$file $$file.bak && \
 	  sed -e 's/\\fR($(sqlmansect_dummy))/\\fR($(sqlmansectnum))/' $$file.bak >$$file && \
-	  rm $$file.bak || exit; \
+	  rm -f $$file.bak || exit; \
 	done
 	@echo timestamp >$@
 
