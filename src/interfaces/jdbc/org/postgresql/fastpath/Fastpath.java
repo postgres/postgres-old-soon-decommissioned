@@ -142,7 +142,8 @@ public class Fastpath
 						// Notice from backend
 					case 'N':
 						int l_nlen = stream.ReceiveIntegerR(4);
-						conn.addWarning(conn.getEncoding().decode(stream.Receive(l_nlen-4)));
+						PSQLException notify = PSQLException.parseServerError(conn.getEncoding().decode(stream.Receive(l_nlen-4)));
+						conn.addWarning(notify.getMessage());
 						break;
 
 					case 'V':

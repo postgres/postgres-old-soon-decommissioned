@@ -460,7 +460,8 @@ public abstract class AbstractJdbc1Connection implements BaseConnection
 					throw new PSQLException("postgresql.con.backend", PSQLState.CONNECTION_UNABLE_TO_CONNECT, PSQLException.parseServerError(encoding.decode(pgStream.Receive(l_elen-4))));
 				case 'N':
 					int l_nlen = pgStream.ReceiveIntegerR(4);
-					addWarning(encoding.decode(pgStream.Receive(l_nlen-4)));
+					PSQLException notify = PSQLException.parseServerError(encoding.decode(pgStream.Receive(l_nlen-4)));
+					addWarning(notify.getMessage());
 					break;
 			    case 'S':
 					//TODO: handle parameter status messages
