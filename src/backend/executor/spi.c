@@ -270,6 +270,14 @@ SPI_pop(void)
 	_SPI_curid--;
 }
 
+/* Restore state of SPI stack after aborting a subtransaction */
+void
+SPI_restore_connection(void)
+{
+	Assert(_SPI_connected >= 0);
+	_SPI_curid = _SPI_connected - 1;
+}
+
 /* Parse, plan, and execute a querystring */
 int
 SPI_execute(const char *src, bool read_only, int tcount)
