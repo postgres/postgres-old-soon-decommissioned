@@ -20,6 +20,9 @@
 
 #include "postgres.h"
 #include <miscadmin.h>
+#ifdef HAVE_FLOAT_H
+# include <float.h>
+#endif
 #ifndef USE_POSIX_TIME
 #include <sys/timeb.h>
 #endif
