@@ -265,7 +265,7 @@ printtup_internal(HeapTuple tuple, TupleDesc typeinfo)
 				/* variable length, assume a varlena structure */
 				len = VARSIZE(attr) - VARHDRSZ;
 
-				pq_putint(len, sizeof(int32));
+				pq_putint(len, VARHDRSZ);
 				pq_putnchar(VARDATA(attr), len);
 #ifdef IPORTAL_DEBUG
 				{
