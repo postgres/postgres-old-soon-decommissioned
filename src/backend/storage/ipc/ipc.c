@@ -30,6 +30,7 @@
 #include <sys/types.h>
 #include <sys/file.h>
 #include <errno.h>
+#include <signal.h>
 #include <unistd.h>
 
 #include "storage/ipc.h"
