@@ -263,7 +263,7 @@ static struct _helpStruct QL_HELP[] = {
 	"notify <class_name>"},
 	{"reset",
 		"set run-time environment back to default",
-#ifdef MB
+#ifdef MULTIBYTE
 	"reset {DateStyle | GEQO | R_PLANS | CLIENT_ENCODING}"},
 #else
 	"reset {DateStyle | GEQO | R_PLANS}"},
@@ -288,7 +288,7 @@ static struct _helpStruct QL_HELP[] = {
 \t[union [all] select ...];"},
 	{"set",
 		"set run-time environment",
-#ifdef MB
+#ifdef MULTIBYTE
 	"set DateStyle to {'ISO' | 'SQL' | 'Postgres' | 'European' | 'US' | 'NonEuropean'}\n\
 set GEQO to {'ON[=#]' | 'OFF'}\n\
 set R_PLANS to {'ON' | 'OFF'}\n\
@@ -300,7 +300,7 @@ set R_PLANS to {'ON' | 'OFF'}"},
 #endif
 	{"show",
 		"show current run-time environment",
-#ifdef MB
+#ifdef MULTIBYTE
 	"show {DateStyle | GEQO | R_PLANS | CLIENT_ENCODING}"},
 #else
 	"show {DateStyle | GEQO | R_PLANS}"},

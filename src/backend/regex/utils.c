@@ -350,19 +350,19 @@ static pg_wchar_tbl pg_wchar_table[] = {
 /* convert a multi-byte string to a wchar */
 void pg_mb2wchar(const unsigned char *from, pg_wchar *to)
 {
-  (*pg_wchar_table[MB].mb2wchar_with_len)(from,to,strlen(from));
+  (*pg_wchar_table[MULTIBYTE].mb2wchar_with_len)(from,to,strlen(from));
 }
 
 /* convert a multi-byte string to a wchar with a limited length */
 void pg_mb2wchar_with_len(const unsigned char *from, pg_wchar *to, int len)
 {
-  (*pg_wchar_table[MB].mb2wchar_with_len)(from,to,len);
+  (*pg_wchar_table[MULTIBYTE].mb2wchar_with_len)(from,to,len);
 }
 
 /* returns the byte length of a multi-byte word */
 int pg_mblen(const unsigned char *mbstr)
 {
-  return((*pg_wchar_table[MB].mblen)(mbstr));
+  return((*pg_wchar_table[MULTIBYTE].mblen)(mbstr));
 }
 
 /* returns the byte length of a multi-byte word for an encoding */

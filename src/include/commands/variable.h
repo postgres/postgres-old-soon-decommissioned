@@ -54,7 +54,7 @@ extern bool set_geqo(void);
 extern bool show_geqo(void);
 extern bool reset_geqo(void);
 extern bool parse_geqo(const char *);
-#ifdef MB
+#ifdef MULTIBYTE
 extern bool show_client_encoding(void);
 extern bool reset_client_encoding(void);
 extern bool parse_client_encoding(const char *);

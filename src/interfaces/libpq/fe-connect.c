@@ -124,7 +124,7 @@ struct EnvironmentOptions
 	{
 		"PGTZ", "timezone"
 	},
-#ifdef MB
+#ifdef MULTIBYTE
 	{
 		"PGCLIENTENCODING", "client_encoding"
 	},

@@ -368,7 +368,7 @@ extern		"C"
 											 * 0, use variable width */
 		);
 
-#ifdef MB
+#ifdef MULTIBYTE
 	extern int PQmblen(unsigned char *s);
 #endif
 

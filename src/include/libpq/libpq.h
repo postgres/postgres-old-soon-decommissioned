@@ -270,7 +270,7 @@ extern void pq_putint(int i, int b);
 extern int	pq_getinaddr(struct sockaddr_in * sin, char *host, int port);
 extern int	pq_getinserv(struct sockaddr_in * sin, char *host, char *serv);
 
-#ifdef MB
+#ifdef MULTIBYTE
 extern void	pq_putncharlen(char *s, int n);
 #endif
 
