@@ -1209,6 +1209,7 @@ ltrmark:;
 		switch (test)
 		{
 			case HeapTupleSelfUpdated:
+				/* treat it as deleted; do not process */
 				ReleaseBuffer(buffer);
 				return (NULL);
 
