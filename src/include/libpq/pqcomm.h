@@ -178,7 +178,7 @@ typedef struct CancelRequestPacket
 extern int Unix_socket_permissions;
 
 extern char * Unix_socket_group;
-extern char * UnixSocketName;
+extern char * UnixSocketDir;
 extern char * Virtual_host;
 
 #endif	 /* PQCOMM_H */

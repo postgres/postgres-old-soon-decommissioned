@@ -316,7 +316,7 @@ ConfigureNamesString[] =
 	"postgres", NULL},	 
 #endif
 
-	{"unixsocket",         		  PGC_POSTMASTER,       &UnixSocketName,
+	{"unix_socket_directory",	  PGC_POSTMASTER,       &UnixSocketDir,
 	 "", NULL},
 
 	{"virtual_host",         		  PGC_POSTMASTER,       &Virtual_host,
