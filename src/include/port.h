@@ -22,21 +22,26 @@ int fseeko(FILE *stream, off_t offset, int whence);
 off_t ftello(FILE *stream);
 #endif
 
+#ifdef WIN32
 /*
  * Win32 doesn't have reliable rename/unlink during concurrent access
  */
-#if defined(WIN32) && !defined(FRONTEND)
+#ifndef FRONTEND
 int pgrename(const char *from, const char *to);
 int pgunlink(const char *path);      
 #define rename(from, to)	pgrename(from, to)
 #define unlink(path)		pgunlink(path)
 #endif
 
+extern int copydir(char *fromdir,char *todir);
+extern int gettimeofday(struct timeval *tp, struct timezone *tzp);
+
+#else
+
 /*
  *	Win32 requires a special close for sockets and pipes, while on Unix
  *	close() does them all.
  */
-#ifndef WIN32
 #define	closesocket close
 #endif
   
@@ -45,7 +50,7 @@ int pgunlink(const char *path);
  * When necessary, these routines are provided by files in src/port/.
  */
 #ifndef HAVE_CRYPT
-char *crypt(const char *key, const char *setting);
+extern char *crypt(const char *key, const char *setting);
 #endif
 
 #ifndef HAVE_FSEEKO
@@ -90,4 +95,3 @@ extern long random(void);
 #ifndef HAVE_SRANDOM
 extern void srandom(unsigned int seed);
 #endif
-
