@@ -192,7 +192,10 @@ strInArray(const char* pattern, char** arr, int arr_size)
  */
 
 TableInfo *
-dumpSchema(FILE *fout, int *numTablesPtr, const char *tablename)
+dumpSchema(FILE *fout, 
+           int *numTablesPtr, 
+           const char *tablename, 
+           const bool acls)
 {
     int numTypes;
     int numFuncs;
@@ -249,7 +252,7 @@ if (fout) {
   if (g_verbose) fprintf(stderr,"%s dumping out tables %s\n",
 		       g_comment_start, g_comment_end);
     dumpTables(fout, tblinfo, numTables, inhinfo, numInherits,
-	       tinfo, numTypes, tablename);
+	       tinfo, numTypes, tablename, acls);
 }	       
 
 if (!tablename && fout) {

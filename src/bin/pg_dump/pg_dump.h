@@ -55,6 +55,7 @@ typedef struct _tableInfo {
     char *oid;
     char *relname;
     char *relarch;
+    char *relacl;
     bool sequence;
     int numatts;            /* number of attributes */
     int *inhAttrs;          /* an array of flags, one for each attribute
@@ -143,9 +144,15 @@ extern char g_opaque_type[10]; /* name for the opaque type */
  *  common utility functions 
 */
 
-extern TableInfo* dumpSchema(FILE* fout, int *numTablesPtr, const char *tablename);
-extern void dumpSchemaIdx(FILE* fout, int *numTablesPtr, const char *tablename,
-				TableInfo* tblinfo, int numTables);
+extern TableInfo* dumpSchema(FILE* fout, 
+			     int *numTablesPtr, 
+			     const char *tablename, 
+			     const bool acls);
+extern void dumpSchemaIdx(FILE* fout, 
+			  int *numTablesPtr, 
+			  const char *tablename,
+			  TableInfo* tblinfo, 
+			  int numTables);
 
 extern char* findTypeByOid(TypeInfo* tinfo, int numTypes, const char* oid);
 extern char* findOprByOid(OprInfo *oprinfo, int numOprs, const char *oid);
@@ -188,7 +195,8 @@ extern void dumpOneFunc(FILE* fout, FuncInfo* finfo, int i,
 			TypeInfo *tinfo, int numTypes);
 extern void dumpTables(FILE* fout, TableInfo* tbinfo, int numTables,
 		       InhInfo *inhinfo, int numInherits,
-		       TypeInfo *tinfo, int numTypes, const char *tablename);
+		       TypeInfo *tinfo, int numTypes, const char *tablename,
+		       const bool acls);
 extern void dumpIndices(FILE* fout, IndInfo* indinfo, int numIndices,
 			TableInfo* tbinfo, int numTables, const char *tablename);
 
