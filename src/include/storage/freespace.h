@@ -18,6 +18,16 @@
 #include "storage/relfilenode.h"
 
 
+/*
+ * exported types
+ */
+typedef struct PageFreeSpaceInfo
+{
+	BlockNumber		blkno;		/* which page in relation */
+	Size			avail;		/* space available on this page */
+} PageFreeSpaceInfo;
+
+
 extern int	MaxFSMRelations;
 extern int	MaxFSMPages;
 
@@ -37,10 +47,8 @@ extern BlockNumber RecordAndGetPageWithFreeSpace(RelFileNode *rel,
 							  Size spaceNeeded);
 extern void MultiRecordFreeSpace(RelFileNode *rel,
 					 BlockNumber minPage,
-					 BlockNumber maxPage,
 					 int nPages,
-					 BlockNumber *pages,
-					 Size *spaceAvail);
+					 PageFreeSpaceInfo *pageSpaces);
 extern void FreeSpaceMapForgetRel(RelFileNode *rel);
 extern void FreeSpaceMapForgetDatabase(Oid dbid);
 
