@@ -28,12 +28,6 @@
 #include "parser/parse_expr.h"
 
 
-#if defined(FLEX_SCANNER)
-extern void DeleteBuffer(void);
-#endif   /* FLEX_SCANNER */
-
-char	   *parseString;		/* the char* which holds the string to be
-								 * parsed */
 List	   *parsetree;			/* result of parsing is left here */
 
 static int	lookahead_token;	/* one-token lookahead */
@@ -48,24 +42,20 @@ static bool have_lookahead;		/* lookahead_token set? */
  * Returns a list of raw (un-analyzed) parse trees.
  */
 List *
-parser(char *str, Oid *typev, int nargs)
+parser(StringInfo str, Oid *typev, int nargs)
 {
 	int			yyresult;
 
-	parseString = str;
 	parsetree = NIL;			/* in case parser forgets to set it */
 	have_lookahead = false;
 
-	scanner_init();
+	scanner_init(str);
 	parser_init(typev, nargs);
 	parse_expr_init();
 
 	yyresult = yyparse();
 
-#if defined(FLEX_SCANNER)
-	DeleteBuffer();
-#endif   /* FLEX_SCANNER */
-
+	scanner_finish();
 	clearerr(stdin);
 
 	if (yyresult)				/* error */

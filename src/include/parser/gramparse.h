@@ -15,11 +15,14 @@
 #ifndef GRAMPARSE_H
 #define GRAMPARSE_H
 
+#include "lib/stringinfo.h"
+
 /* from parser.c */
 extern int	yylex(void);
 
 /* from scan.l */
-extern void scanner_init(void);
+extern void scanner_init(StringInfo str);
+extern void scanner_finish(void);
 extern int	base_yylex(void);
 extern void yyerror(const char *message);
 

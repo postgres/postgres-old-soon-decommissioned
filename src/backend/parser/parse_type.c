@@ -473,17 +473,17 @@ typeidTypeRelid(Oid type_id)
 void
 parseTypeString(const char *str, Oid *type_id, int32 *typmod)
 {
-	char	   *buf;
+	StringInfoData buf;
 	List	   *raw_parsetree_list;
 	SelectStmt *stmt;
 	ResTarget  *restarget;
 	A_Const    *aconst;
 	TypeName   *typename;
 
-	buf = (char *) palloc(strlen(str) + 16);
-	sprintf(buf, "SELECT (NULL::%s)", str);
+	initStringInfo(&buf);
+	appendStringInfo(&buf, "SELECT (NULL::%s)", str);
 
-	raw_parsetree_list = parser(buf, NULL, 0);
+	raw_parsetree_list = parser(&buf, NULL, 0);
 
 	/*
 	 * Make sure we got back exactly what we expected and no more;
@@ -528,5 +528,5 @@ parseTypeString(const char *str, Oid *type_id, int32 *typmod)
 	*type_id = typenameTypeId(typename);
 	*typmod = typename->typmod;
 
-	pfree(buf);
+	pfree(buf.data);
 }

@@ -22,6 +22,7 @@
 #include <setjmp.h>
 
 #include "executor/execdesc.h"
+#include "lib/stringinfo.h"
 #include "tcop/dest.h"
 
 
@@ -37,7 +38,7 @@ extern bool ShowPortNumber;
 extern List *pg_parse_and_rewrite(char *query_string,
 					 Oid *typev, int nargs);
 extern Plan *pg_plan_query(Query *querytree);
-extern void pg_exec_query_string(char *query_string,
+extern void pg_exec_query_string(StringInfo query_string,
 					 CommandDest dest,
 					 MemoryContext parse_context);
 #endif   /* BOOTSTRAP_INCLUDE */
