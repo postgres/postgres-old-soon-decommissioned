@@ -105,8 +105,8 @@ cat > $OIDSFILE <<FuNkYfMgRsTuFf
  *	For example, we want to be able to assign different macro names to both
  *	char_text() and int4_text() even though these both appear with proname
  *	'text'.  If the same C function appears in more than one pg_proc entry,
- *	its equivalent macro will be defined with the OID of the entry appearing
- *	first in pg_proc.h.
+ *	its equivalent macro will be defined with the lowest OID among those
+ *	entries.
  */
 FuNkYfMgRsTuFf
 
@@ -170,11 +170,19 @@ cat >> $TABLEFILE <<FuNkYfMgRtAbStUfF
 const FmgrBuiltin fmgr_builtins[] = {
 FuNkYfMgRtAbStUfF
 
-awk '{ printf ("  { %d, \"%s\", %d, %s, %s, %s },\n"), \
-	$1, $(NF-1), $9, \
-	($8 == "t") ? "true" : "false", \
-	($4 == "11") ? "true" : "false", \
-	$(NF-1) }' $RAWFILE >> $TABLEFILE
+# Note: using awk arrays to translate from pg_proc values to fmgrtab values
+# may seem tedious, but avoid the temptation to write a quick x?y:z
+# conditional expression instead.  Not all awks have conditional expressions.
+
+awk 'BEGIN {
+    Strict["t"] = "true"
+    Strict["f"] = "false"
+    OldStyle["11"] = "true"
+    OldStyle["12"] = "false"
+}
+{ printf ("  { %d, \"%s\", %d, %s, %s, %s },\n"), \
+	$1, $(NF-1), $9, Strict[$8], OldStyle[$4], $(NF-1)
+}' $RAWFILE >> $TABLEFILE
 
 cat >> $TABLEFILE <<FuNkYfMgRtAbStUfF
   /* dummy entry is easier than getting rid of comma after last real one */
