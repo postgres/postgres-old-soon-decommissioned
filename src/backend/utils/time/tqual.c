@@ -961,7 +961,7 @@ HeapTupleSatisfiesSnapshot(HeapTupleHeader tuple, Snapshot snapshot,
 	}
 
 /* This is to be used only for disaster recovery and requires serious analysis. */
-#ifndef MAKE_ALL_TUPLES_VISIBLE
+#ifndef MAKE_EXPIRED_TUPLES_VISIBLE
 	return false;
 #else
 	return true;
