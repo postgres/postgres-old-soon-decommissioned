@@ -540,6 +540,14 @@ clause_selectivity(Query *root,
 								varRelid,
 								jointype);
 	}
+	else if (IsA(clause, CoerceToDomain))
+	{
+		/* Not sure this case is needed, but it can't hurt */
+		s1 = clause_selectivity(root,
+								(Node *) ((CoerceToDomain *) clause)->arg,
+								varRelid,
+								jointype);
+	}
 
 #ifdef SELECTIVITY_DEBUG
 	elog(DEBUG3, "clause_selectivity: s1 %f", s1);

@@ -185,9 +185,10 @@ expand_targetlist(List *tlist, int command_type,
 												  true, /* isnull */
 												  att_tup->attbyval);
 					if (!att_tup->attisdropped)
-						new_expr = coerce_type_constraints(new_expr,
-														   atttype,
-														   COERCE_IMPLICIT_CAST);
+						new_expr = coerce_to_domain(new_expr,
+													InvalidOid,
+													atttype,
+													COERCE_IMPLICIT_CAST);
 					break;
 				case CMD_UPDATE:
 					/* Insert NULLs for dropped columns */

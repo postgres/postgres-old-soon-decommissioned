@@ -3634,6 +3634,9 @@ exec_simple_check_node(Node *node)
 		case T_BooleanTest:
 			return exec_simple_check_node((Node *) ((BooleanTest *) node)->arg);
 
+		case T_CoerceToDomain:
+			return exec_simple_check_node((Node *) ((CoerceToDomain *) node)->arg);
+
 		case T_List:
 			{
 				List	   *expr = (List *) node;

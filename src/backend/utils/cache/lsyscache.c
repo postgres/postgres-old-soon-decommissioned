@@ -1013,6 +1013,33 @@ get_typstorage(Oid typid)
 }
 
 /*
+ * get_typtypmod
+ *
+ *		Given the type OID, return the typtypmod field (domain's typmod
+ *		for base type)
+ */
+int32
+get_typtypmod(Oid typid)
+{
+	HeapTuple	tp;
+
+	tp = SearchSysCache(TYPEOID,
+						ObjectIdGetDatum(typid),
+						0, 0, 0);
+	if (HeapTupleIsValid(tp))
+	{
+		Form_pg_type typtup = (Form_pg_type) GETSTRUCT(tp);
+		int32		result;
+
+		result = typtup->typtypmod;
+		ReleaseSysCache(tp);
+		return result;
+	}
+	else
+		return -1;
+}
+
+/*
  * get_typdefault
  *	  Given a type OID, return the type's default value, if any.
  *

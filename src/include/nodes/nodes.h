@@ -114,8 +114,8 @@ typedef enum NodeTag
 	T_CaseWhen,
 	T_NullTest,
 	T_BooleanTest,
-	T_ConstraintTest,
-	T_ConstraintTestValue,
+	T_CoerceToDomain,
+	T_CoerceToDomainValue,
 	T_TargetEntry,
 	T_RangeTblRef,
 	T_JoinExpr,
@@ -136,7 +136,8 @@ typedef enum NodeTag
 	T_SubPlanState,
 	T_CaseExprState,
 	T_CaseWhenState,
-	T_ConstraintTestState,
+	T_CoerceToDomainState,
+	T_DomainConstraintState,
 
 	/*
 	 * TAGS FOR PLANNER NODES (relation.h)

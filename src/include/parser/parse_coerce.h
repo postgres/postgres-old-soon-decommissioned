@@ -45,8 +45,8 @@ extern bool can_coerce_type(int nargs, Oid *input_typeids, Oid *target_typeids,
 							CoercionContext ccontext);
 extern Node *coerce_type(Node *node, Oid inputTypeId, Oid targetTypeId,
 						 CoercionContext ccontext, CoercionForm cformat);
-extern Node *coerce_type_constraints(Node *arg, Oid typeId,
-									 CoercionForm cformat);
+extern Node *coerce_to_domain(Node *arg, Oid baseTypeId, Oid typeId,
+							  CoercionForm cformat);
 
 extern Node *coerce_to_boolean(Node *node, const char *constructName);
 

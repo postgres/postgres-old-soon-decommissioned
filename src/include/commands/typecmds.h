@@ -32,6 +32,8 @@ extern void AlterDomainAddConstraint(List *names, Node *constr);
 extern void AlterDomainDropConstraint(List *names, const char *constrName,
 									  DropBehavior behavior);
 
+extern List *GetDomainConstraints(Oid typeOid);
+
 extern void AlterTypeOwner(List *names, AclId newOwnerSysId);
 
 #endif   /* TYPECMDS_H */
