@@ -40,7 +40,7 @@ dbState(DBState state)
 
 
 int
-main()
+main(int argc, char *argv[])
 {
 	ControlFileData ControlFile;
 	int			fd;
@@ -50,10 +50,13 @@ main()
 	char		pgctime_str[32];
 	char		ckpttime_str[32];
 
-	DataDir = getenv("PGDATA");
+	if (argc > 1)
+		DataDir = argv[1];
+	else
+		DataDir = getenv("PGDATA");
 	if (DataDir == NULL)
 	{
-		fprintf(stderr, "PGDATA is not defined\n");
+		fprintf(stderr, "no data directory specified\n");
 		exit(1);
 	}
 

@@ -1,18 +1,9 @@
-#
 # $Header$
-#
 
 subdir = contrib/tips
 top_builddir = ../..
-include ../../src/Makefile.global
+include $(top_builddir)/src/Makefile.global
 
-all:
+DOCS = README.apachelog
 
-install: installdirs
-	$(INSTALL_DATA) README.apachelog $(docdir)/contrib
-
-installdirs:
-	$(mkinstalldirs) $(docdir)/contrib
-
-uninstall:
-	rm -f $(docdir)/contrib/README.apachelog
+include $(top_srcdir)/contrib/contrib-global.mk
