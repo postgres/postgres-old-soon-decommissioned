@@ -118,9 +118,6 @@ long	*LastRefCount;  /* refcounts of last ExecMain level */
 
 SPINLOCK BufMgrLock;
 
-/* delayed write: TRUE on, FALSE off */
-int LateWrite = TRUE;
-
 int ReadBufferCount;
 int BufferHitCount;
 int BufferFlushCount;
