@@ -96,6 +96,7 @@
 <!entity page       SYSTEM "page.sgml">
 <!entity protocol   SYSTEM "protocol.sgml">
 <!entity sources    SYSTEM "sources.sgml">
+<!entity nls        SYSTEM "nls.sgml">
 
 <!-- see standalone-install.sgml about these -->
 <!entity % flattext-install-ignore  "INCLUDE">

@@ -21,7 +21,7 @@
 
 #include <pwd.h>
 #include <unistd.h>
-#ifdef USE_LOCALE
+#if defined(USE_LOCALE) || defined(ENABLE_NLS)
 #include <locale.h>
 #endif
 
@@ -95,6 +95,14 @@ main(int argc, char *argv[])
 #ifdef __BEOS__
 	/* BeOS-specific actions on startup */
 	beos_startup(argc, argv);
+#endif
+
+#ifdef ENABLE_NLS
+#ifdef LC_MESSAGES
+	setlocale(LC_MESSAGES, "");
+#endif
+	bindtextdomain("postgres", LOCALEDIR);
+	textdomain("postgres");
 #endif
 
 	/*

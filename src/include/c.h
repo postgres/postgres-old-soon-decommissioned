@@ -68,6 +68,11 @@
 #include <SupportDefs.h>
 #endif
 
+#ifdef ENABLE_NLS
+#include <libintl.h>
+#else
+#define gettext(x) (x)
+#endif
 
 /* ----------------------------------------------------------------
  *				Section 1: hacks to cope with non-ANSI C compilers

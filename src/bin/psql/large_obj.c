@@ -63,9 +63,9 @@ handle_transaction(void)
 	else if (!QUIET())
 	{
 		if (commit)
-			puts("Warning: Your transaction in progress has been committed.");
+			puts(gettext("Warning: Your transaction in progress has been committed."));
 		else
-			puts("Warning: Your transaction in progress has been rolled back.");
+			puts(gettext("Warning: Your transaction in progress has been rolled back."));
 	}
 
 	PQsetNoticeProcessor(pset.db, old_notice_hook, NULL);
@@ -92,9 +92,7 @@ do_lo_export(const char *loid_arg, const char *filename_arg)
 
 	if (!pset.db)
 	{
-		if (!pset.cur_cmd_interactive)
-			fprintf(stderr, "%s: ", pset.progname);
-		fputs("\\lo_export: not connected to a database\n", stderr);
+		psql_error("\\lo_export: not connected to a database\n");
 		return false;
 	}
 
@@ -161,9 +159,7 @@ do_lo_import(const char *filename_arg, const char *comment_arg)
 
 	if (!pset.db)
 	{
-		if (!pset.cur_cmd_interactive)
-			fprintf(stderr, "%s: ", pset.progname);
-		fputs("\\lo_import: not connected to a database\n", stderr);
+		psql_error("\\lo_import: not connected to a database\n");
 		return false;
 	}
 
@@ -254,9 +250,7 @@ do_lo_unlink(const char *loid_arg)
 
 	if (!pset.db)
 	{
-		if (!pset.cur_cmd_interactive)
-			fprintf(stderr, "%s: ", pset.progname);
-		fputs("\\lo_unlink: not connected to a database\n", stderr);
+		psql_error("\\lo_unlink: not connected to a database\n");
 		return false;
 	}
 
@@ -327,10 +321,11 @@ do_lo_list(void)
 	char		buf[1024];
 	printQueryOpt myopt = pset.popt;
 
-	strcpy(buf,
-	  "SELECT loid as \"ID\", obj_description(loid) as \"Description\"\n"
-		   "FROM (SELECT DISTINCT loid FROM pg_largeobject) x\n"
-		   "ORDER BY \"ID\"");
+	snprintf(buf, sizeof(buf),
+			 "SELECT loid as \"ID\", obj_description(loid) as \"%s\"\n"
+			 "FROM (SELECT DISTINCT loid FROM pg_largeobject) x\n"
+			 "ORDER BY \"ID\"",
+			 gettext("Description"));
 
 	res = PSQLexec(buf);
 	if (!res)
@@ -338,7 +333,7 @@ do_lo_list(void)
 
 	myopt.topt.tuples_only = false;
 	myopt.nullPrint = NULL;
-	myopt.title = "Large objects";
+	myopt.title = gettext("Large objects");
 
 	printQuery(res, &myopt, pset.queryFout);
 

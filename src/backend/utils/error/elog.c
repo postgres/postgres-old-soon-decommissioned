@@ -207,6 +207,7 @@ elog(int lev, const char *fmt,...)
 	if (Log_pid)
 		timestamp_size += PID_SIZE;
 
+	fmt = gettext(fmt);
 	/*
 	 * Set up the expanded format, consisting of the prefix string plus
 	 * input format, with any %m replaced by strerror() string (since

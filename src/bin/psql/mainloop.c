@@ -19,7 +19,6 @@
 #ifndef WIN32
 #include <setjmp.h>
 sigjmp_buf	main_loop_jmp;
-
 #endif
 
 
@@ -240,7 +239,7 @@ MainLoop(FILE *source)
 				else
 				{
 					if (!QUIET())
-						printf("Use \"\\q\" to leave %s.\n", pset.progname);
+						printf(gettext("Use \"\\q\" to leave %s.\n"), pset.progname);
 					continue;
 				}
 			}
