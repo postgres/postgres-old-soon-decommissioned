@@ -55,7 +55,7 @@ do
   
 	if [ `diff ${EXPECTED} results/${i}.out | wc -l` -ne 0 ]
 	then
-		( diff -u ${EXPECTED} results/${i}.out; \
+		( diff -wC3 ${EXPECTED} results/${i}.out; \
 		echo "";  \
 		echo "----------------------"; \
 		echo "" ) >> regression.diffs
