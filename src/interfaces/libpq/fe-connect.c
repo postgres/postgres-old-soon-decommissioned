@@ -25,9 +25,6 @@
 #ifndef HAVE_STRDUP
 #include "strdup.h"
 #endif
-#ifdef HAVE_CRYPT_H
-#include <crypt.h>
-#endif
 
 #include "libpq-fe.h"
 #include "libpq-int.h"
