@@ -85,7 +85,7 @@ getaddrinfo(const char *node, const char *service,
 
 #ifdef FRONTEND
 			struct hostent hpstr;
-			char		buf[sizeof(struct hostent)];
+			char		buf[BUFSIZ];
 			int			herrno = 0;
 
 			pqGethostbyname(node, &hpstr, buf, sizeof(buf),

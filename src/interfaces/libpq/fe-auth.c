@@ -749,7 +749,7 @@ fe_getauthname(char *PQerrormsg)
 		if (GetUserName(username, &namesize))
 			name = username;
 #else
-		char		pwdbuf[sizeof(struct passwd)];
+		char		pwdbuf[BUFSIZ];
 		struct passwd pwdstr;
 		struct passwd *pw = NULL;
 

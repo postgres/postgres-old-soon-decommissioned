@@ -512,7 +512,7 @@ verify_peer(PGconn *conn)
 
 	{
 		struct hostent hpstr;
-		char		buf[sizeof(struct hostent)];
+		char		buf[BUFSIZ];
 		int			herrno = 0;
 
 		/*
@@ -598,7 +598,7 @@ load_dh_file(int keylength)
 #ifdef WIN32
 	return NULL;
 #else
-	char		pwdbuf[sizeof(struct passwd)];
+	char		pwdbuf[BUFSIZ];
 	struct passwd pwdstr;
 	struct passwd *pwd = NULL;
 	FILE	   *fp;
@@ -745,7 +745,7 @@ client_cert_cb(SSL *ssl, X509 **x509, EVP_PKEY **pkey)
 #ifdef WIN32
 	return 0;
 #else
-	char		pwdbuf[sizeof(struct passwd)];
+	char		pwdbuf[BUFSIZ];
 	struct passwd pwdstr;
 	struct passwd *pwd = NULL;
 	struct stat buf,
@@ -952,7 +952,7 @@ initialize_SSL(PGconn *conn)
 {
 #ifndef WIN32
 	struct stat buf;
-	char		pwdbuf[sizeof(struct passwd)];
+	char		pwdbuf[BUFSIZ];
 	struct passwd pwdstr;
 	struct passwd *pwd = NULL;
 	char		fnbuf[MAXPGPATH];
