@@ -191,16 +191,15 @@ cat > $TABCFILE <<FuNkYfMgRtAbStUfF
  *-------------------------------------------------------------------------
  */
 #ifdef WIN32
-#include <limits.h>
+# include <limits.h>
 #else
-# if defined(BSD44_derived) || \
-     defined(bsdi)
-# include <machine/limits.h>
-# define MAXINT	INT_MAX
+# if defined(USE_LIMITS_H)
+#  include <machine/limits.h>
+#  define MAXINT	INT_MAX
 # else
-# include <values.h>           /* for MAXINT */
-# endif /* bsd descendents */
-#endif /* WIN32 */
+#  include <values.h>
+# endif 
+#endif 
 
 #include <postgres.h>
 #include "utils/fmgrtab.h"
