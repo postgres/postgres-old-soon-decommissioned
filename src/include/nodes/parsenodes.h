@@ -514,6 +514,7 @@ typedef struct IndexStmt
 typedef struct ProcedureStmt
 {
 	NodeTag		type;
+	bool		replace;		/* T => replace if already exists */
 	char	   *funcname;		/* name of function to create */
 	List	   *argTypes;		/* list of argument types (TypeName nodes) */
 	Node	   *returnType;		/* the return type (a TypeName node) */

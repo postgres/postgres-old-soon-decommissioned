@@ -941,6 +941,8 @@ _equalIndexStmt(IndexStmt *a, IndexStmt *b)
 static bool
 _equalProcedureStmt(ProcedureStmt *a, ProcedureStmt *b)
 {
+	if (a->replace != b->replace)
+		return false;
 	if (!equalstr(a->funcname, b->funcname))
 		return false;
 	if (!equal(a->argTypes, b->argTypes))

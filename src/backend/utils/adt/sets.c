@@ -51,6 +51,7 @@ SetDefine(char *querystr, char *typename)
 	char		repl[Natts_pg_proc];
 
 	setoid = ProcedureCreate(procname,	/* changed below, after oid known */
+							 false,		/* don't replace */
 							 true,		/* returnsSet */
 							 typename,	/* returnTypeName */
 							 "sql",		/* languageName */

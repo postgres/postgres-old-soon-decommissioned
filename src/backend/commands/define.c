@@ -324,6 +324,7 @@ CreateFunction(ProcedureStmt *stmt)
 	 * to do so, go ahead and create the function.
 	 */
 	ProcedureCreate(stmt->funcname,
+					stmt->replace,
 					returnsSet,
 					prorettype,
 					languageName,

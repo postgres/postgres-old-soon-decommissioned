@@ -216,6 +216,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"reindex", REINDEX},
 	{"relative", RELATIVE},
 	{"rename", RENAME},
+	{"replace", REPLACE},
 	{"reset", RESET},
 	{"restrict", RESTRICT},
 	{"returns", RETURNS},

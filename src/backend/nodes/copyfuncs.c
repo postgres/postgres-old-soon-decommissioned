@@ -2071,6 +2071,7 @@ _copyProcedureStmt(ProcedureStmt *from)
 {
 	ProcedureStmt *newnode = makeNode(ProcedureStmt);
 
+	newnode->replace = from->replace;
 	newnode->funcname = pstrdup(from->funcname);
 	Node_Copy(from, newnode, argTypes);
 	Node_Copy(from, newnode, returnType);

@@ -2854,6 +2854,7 @@ DESCR("time zone");
  * prototypes for functions pg_proc.c
  */
 extern Oid ProcedureCreate(char *procedureName,
+				bool replace,
 				bool returnsSet,
 				char *returnTypeName,
 				char *languageName,
