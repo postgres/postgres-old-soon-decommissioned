@@ -1018,6 +1018,13 @@ finalize_plan(Plan *plan, List *rtable,
 							  &context);
 			break;
 
+		case T_Limit:
+			finalize_primnode(((Limit *) plan)->limitOffset,
+							  &context);
+			finalize_primnode(((Limit *) plan)->limitCount,
+							  &context);
+			break;
+
 		case T_Hash:
 			finalize_primnode((Node *) ((Hash *) plan)->hashkeys,
 							  &context);
@@ -1029,7 +1036,6 @@ finalize_plan(Plan *plan, List *rtable,
 		case T_Sort:
 		case T_Unique:
 		case T_SetOp:
-		case T_Limit:
 		case T_Group:
 			break;
 
