@@ -634,7 +634,7 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 	    {
 		Node *lexpr = transformExpr(pstate, a->lexpr, precedence);
 		result = ParseFunc(pstate, 
-				   "NullValue", lcons(lexpr, NIL),
+				   "nullvalue", lcons(lexpr, NIL),
 				   &pstate->p_last_resno);
 	    }
 	    break;
@@ -642,7 +642,7 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 	    {
 		Node *lexpr = transformExpr(pstate, a->lexpr, precedence);
 		result = ParseFunc(pstate,
-				   "NonNullValue", lcons(lexpr, NIL),
+				   "nonnullvalue", lcons(lexpr, NIL),
 				   &pstate->p_last_resno);
 	    }
 	    break;
