@@ -350,18 +350,13 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 static char *
 Explain_PlanToString(Plan *plan, ExplainState *es)
 {
-	StringInfo	str;
-	char	   *s;
+	StringInfoData	str;
 
-	if (plan == NULL)
-		return "";
-	Assert(plan != NULL);
-	str = makeStringInfo();
-	explain_outNode(str, plan, 0, es);
-	s = str->data;
-	pfree(str);
-
-	return s;
+	/* see stringinfo.h for an explanation of this maneuver */
+	initStringInfo(&str);
+	if (plan != NULL)
+		explain_outNode(&str, plan, 0, es);
+	return str.data;
 }
 
 /*

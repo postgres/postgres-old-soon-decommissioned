@@ -1658,21 +1658,15 @@ _outNode(StringInfo str, void *obj)
 
 /*
  * nodeToString -
- *	   returns the ascii representation of the Node
+ *	   returns the ascii representation of the Node as a palloc'd string
  */
 char *
 nodeToString(void *obj)
 {
-	StringInfo	str;
-	char	   *s;
+	StringInfoData	str;
 
-	if (obj == NULL)
-		return "";
-	Assert(obj != NULL);
-	str = makeStringInfo();
-	_outNode(str, obj);
-	s = str->data;
-	pfree(str);
-
-	return s;
+	/* see stringinfo.h for an explanation of this maneuver */
+	initStringInfo(&str);
+	_outNode(&str, obj);
+	return str.data;
 }

@@ -3,6 +3,8 @@
  * pqcomm.h
  *		Definitions common to frontends and backends.
  *
+ * NOTE: for historical reasons, this does not correspond to pqcomm.c.
+ * pqcomm.c's routines are declared in libpq.h.
  *
  * Copyright (c) 1994, Regents of the University of California
  *
@@ -13,6 +15,8 @@
 #ifndef PQCOMM_H
 #define PQCOMM_H
 
+#include "postgres.h"
+
 #include <stdio.h>
 #include <sys/types.h>
 #ifdef WIN32
@@ -22,8 +26,6 @@
 #include <sys/un.h>
 #include <netinet/in.h>
 #endif
-
-#include "postgres.h"
 
 /* Define a generic socket address type. */
 
@@ -150,19 +152,5 @@ typedef struct CancelRequestPacket
 	uint32		backendPID;		/* PID of client's backend */
 	uint32		cancelAuthCode; /* secret key to authorize cancel */
 }			CancelRequestPacket;
-
-
-/* in pqcomprim.c */
-int			pqGetShort(int *);
-int			pqGetLong(int *);
-int			pqGetNBytes(char *, size_t);
-int			pqGetString(char *, size_t);
-int			pqGetByte(void);
-
-int			pqPutShort(int);
-int			pqPutLong(int);
-int			pqPutNBytes(const char *, size_t);
-int			pqPutString(const char *);
-int			pqPutByte(int);
 
 #endif	 /* PQCOMM_H */
