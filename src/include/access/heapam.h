@@ -13,8 +13,7 @@
 #ifndef	HEAPAM_H
 #define HEAPAM_H
 
-#include "access/relscan.h"
-#include "storage/buf.h"
+#include <access/relscan.h>
 
 /* ----------------------------------------------------------------
  *		heap access method statistics
@@ -83,7 +82,6 @@ extern HeapAccessStatistics heap_access_stats;	/* in stats.c */
  * ----------------
  */
 /* heap_create, heap_creatr, and heap_destroy are declared in catalog/heap.h */
-#include "catalog/heap.h"
 
 /* heapam.c */
 extern void doinsert(Relation relation, HeapTuple tup);
