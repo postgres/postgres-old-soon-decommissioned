@@ -18,7 +18,7 @@
 
 extern int	ExecCountSlotsAppend(Append *node);
 extern AppendState *ExecInitAppend(Append *node, EState *estate);
-extern TupleTableSlot *ExecProcAppend(AppendState *node);
+extern TupleTableSlot *ExecAppend(AppendState *node);
 extern void ExecEndAppend(AppendState *node);
 extern void ExecReScanAppend(AppendState *node, ExprContext *exprCtxt);
 

@@ -293,7 +293,7 @@ ExecProcNode(PlanState *node)
 			break;
 
 		case T_AppendState:
-			result = ExecProcAppend((AppendState *) node);
+			result = ExecAppend((AppendState *) node);
 			break;
 
 			/*
