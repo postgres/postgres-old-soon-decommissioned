@@ -139,7 +139,8 @@ canonicalize_qual(Expr *qual, bool removeAndFlag)
 	 * and only one relation is mentioned, and DNF is no larger than
 	 * the CNF representation.  (Pretty shaky; can we improve on this?)
 	 */
-	if (dnfok && dnfnodes <= cnfnodes && or_clause((Node *) newqual) &&
+	if (cnfok && dnfok && dnfnodes <= cnfnodes &&
+		or_clause((Node *) newqual) &&
 		NumRelids((Node *) newqual) == 1)
 		cnfok = false;
 	/*
