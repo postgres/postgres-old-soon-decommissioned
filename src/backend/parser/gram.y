@@ -3698,9 +3698,9 @@ a_expr:  attr opt_indirection
 				}
 		| '-' a_expr %prec UMINUS
 				{	$$ = doNegate($2); }
-		| '%' a_expr %prec UMINUS
+		| '%' a_expr
 				{	$$ = makeA_Expr(OP, "%", NULL, $2); }
-		| a_expr %prec UMINUS '%'
+		| a_expr '%'
 				{	$$ = makeA_Expr(OP, "%", $1, NULL); }
 		| a_expr '+' a_expr
 				{	$$ = makeA_Expr(OP, "+", $1, $3); }
