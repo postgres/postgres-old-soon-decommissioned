@@ -1195,10 +1195,10 @@ AlterTableAddConstraint(char *relationName,
 					pfree(slot);
 
 					heap_endscan(scan);
-					heap_close(rel, NoLock);
 
 					if (!successful)
 					{
+						heap_close(rel, NoLock);
 						elog(ERROR, "AlterTableAddConstraint: rejected due to CHECK constraint %s", name);
 					}
 					/*
@@ -1208,6 +1208,7 @@ AlterTableAddConstraint(char *relationName,
 					 * the table.
 					 */
 					AddRelationRawConstraints(rel, NIL, constlist);
+					heap_close(rel, NoLock);
 					pfree(constlist);
 
 					break;
