@@ -1052,6 +1052,12 @@ Tue Oct 26 21:40:57 CEST 1999
         Sets the client encoding, if you are using multibyte encodings.
         Without an argument, this command shows the current encoding.
         </para>
+	<note>
+	<para>
+	This command does not see changes made by <command>SET
+        CLIENT_ENCODING</>.
+	</para>
+	</note>	
         </listitem>
       </varlistentry>
 
