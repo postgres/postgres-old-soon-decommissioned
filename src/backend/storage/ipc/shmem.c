@@ -737,5 +737,4 @@ GetXmaxRecent(TransactionId *XmaxRecent)
 
 	SpinRelease(ShmemIndexLock);
 	elog(ERROR, "GetXmaxRecent: ShmemIndex corrupted");
-	return NULL;
 }
