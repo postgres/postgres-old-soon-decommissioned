@@ -509,6 +509,7 @@ su - postgres
          <filename>configure</filename>'s <literal>--disable-rpath</>
          option.  Also, you will need to tell the operating system how
          to find the shared libraries.
+        </para>
        </listitem>
       </varlistentry>
 
