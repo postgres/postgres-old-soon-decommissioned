@@ -210,6 +210,12 @@ case "$langname" in
 		handler="plperl_call_handler"
 		object="plperl"
 		;;
+	plperlu)
+		lancomp="PL/Perl (untrusted)"
+		trusted=""
+		handler="plperl_call_handler"
+		object="plperl"
+		;;
 	plpython)
 		lancomp="PL/Python"
 		trusted="TRUSTED "
