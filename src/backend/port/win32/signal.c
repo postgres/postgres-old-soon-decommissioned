@@ -162,7 +162,7 @@ pqsignal(int signum, pqsigfunc handler)
 void
 pg_queue_signal(int signum)
 {
-	if (signum >= PG_SIGNAL_COUNT || signum < 0)
+	if (signum >= PG_SIGNAL_COUNT || signum <= 0)
 		return;
 
 	EnterCriticalSection(&pg_signal_crit_sec);

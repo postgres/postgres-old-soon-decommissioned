@@ -26,7 +26,8 @@ pgkill(int pid, int sig)
 	BYTE		sigRet = 0;
 	DWORD		bytes;
 
-	if (sig >= PG_SIGNAL_COUNT || sig <= 0)
+	/* we allow signal 0 here, but it will be ignored in pg_queue_signal */
+	if (sig >= PG_SIGNAL_COUNT || sig < 0)
 	{
 		errno = EINVAL;
 		return -1;
