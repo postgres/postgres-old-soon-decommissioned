@@ -41,7 +41,6 @@ typedef int ssize_t;			/* ssize_t doesn't exist in VC (at least
 /* include stuff common to fe and be */
 #include "getaddrinfo.h"
 #include "libpq/pqcomm.h"
-#include "lib/dllist.h"
 /* include stuff found in fe only */
 #include "pqexpbuffer.h"
 
@@ -272,8 +271,8 @@ struct pg_conn
 	char		copy_is_binary; /* 1 = copy binary, 0 = copy text */
 	int			copy_already_done;		/* # bytes already returned in
 										 * COPY OUT */
-	Dllist	   *notifyList;		/* Notify msgs not yet handed to
-								 * application */
+	PGnotify   *notifyHead;		/* oldest unreported Notify msg */
+	PGnotify   *notifyTail;		/* newest unreported Notify msg */
 
 	/* Connection data */
 	int			sock;			/* Unix FD for socket, -1 if not connected */

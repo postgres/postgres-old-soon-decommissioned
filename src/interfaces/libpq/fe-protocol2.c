@@ -937,7 +937,12 @@ getNotify(PGconn *conn)
 		/* fake up an empty-string extra field */
 		newNotify->extra = newNotify->relname + nmlen;
 		newNotify->be_pid = be_pid;
-		DLAddTail(conn->notifyList, DLNewElem(newNotify));
+		newNotify->next = NULL;
+		if (conn->notifyTail)
+			conn->notifyTail->next = newNotify;
+		else
+			conn->notifyHead = newNotify;
+		conn->notifyTail = newNotify;
 	}
 
 	return 0;

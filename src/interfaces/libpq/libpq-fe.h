@@ -127,6 +127,8 @@ typedef struct pgNotify
 	char	   *relname;		/* notification condition name */
 	int			be_pid;			/* process ID of server process */
 	char	   *extra;			/* notification parameter */
+	/* Fields below here are private to libpq; apps should not use 'em */
+	struct pgNotify *next;		/* list link */
 } PGnotify;
 
 /* Function types for notice-handling callbacks */
