@@ -318,7 +318,15 @@ other			.
 					errno = 0;
 					yylval.ival = strtol((char *)yytext,&endptr,10);
 					if (*endptr != '\0' || errno == ERANGE)
-						elog(ERROR,"Bad integer input '%s'",yytext);
+					{
+						errno = 0;
+						yylval.dval = strtod(((char *)yytext),&endptr);
+						if (*endptr != '\0' || errno == ERANGE)
+							elog(ERROR,"Bad integer input '%s'",yytext);
+						CheckFloat8Val(yylval.dval);
+						elog(NOTICE,"Integer input '%s' is out of range; promoted to float", yytext);
+						return (FCONST);
+					}
 					return (ICONST);
 				}
 {real}/{space}*-{number} {
@@ -328,7 +336,7 @@ other			.
 					errno = 0;
 					yylval.dval = strtod(((char *)yytext),&endptr);
 					if (*endptr != '\0' || errno == ERANGE)
-					elog(ERROR,"Bad float8 input '%s'",yytext);
+						elog(ERROR,"Bad float8 input '%s'",yytext);
 					CheckFloat8Val(yylval.dval);
 					return (FCONST);
 				}
@@ -338,7 +346,15 @@ other			.
 					errno = 0;
 					yylval.ival = strtol((char *)yytext,&endptr,10);
 					if (*endptr != '\0' || errno == ERANGE)
-						elog(ERROR,"Bad integer input '%s'",yytext);
+					{
+						errno = 0;
+						yylval.dval = strtod(((char *)yytext),&endptr);
+						if (*endptr != '\0' || errno == ERANGE)
+							elog(ERROR,"Bad integer input '%s'",yytext);
+						CheckFloat8Val(yylval.dval);
+						elog(NOTICE,"Integer input '%s' is out of range; promoted to float", yytext);
+						return (FCONST);
+					}
 					return (ICONST);
 				}
 {real}			{
