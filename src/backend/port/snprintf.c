@@ -349,7 +349,7 @@ int			base,
 			zpad;
 {
 	int			signvalue = 0;
-#ifdef HAVE_LONG_INT_64
+#ifdef HAVE_LONG_LONG_INT_64
 	unsigned long_long uvalue;
 #else
 	unsigned long uvalue;
