@@ -47,16 +47,6 @@ int UsePrivateMemory = 1;
 int UsePrivateMemory = 0;
 #endif
 
-#if defined(PORTNAME_bsdi)||defined(PORTNAME_i386_solaris)
-/* hacka, hacka, hacka (XXX) */
-union semun {
-	int val; /* value for SETVAL */
-	struct semid_ds *buf; /* buffer for IPC_STAT & IPC_SET */
-	ushort *array; /* array for GETALL & SETALL */
-};
-#endif
-
-
 /* ----------------------------------------------------------------
  *			exit() handling stuff
  * ----------------------------------------------------------------
