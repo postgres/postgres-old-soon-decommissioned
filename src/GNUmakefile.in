@@ -80,6 +80,8 @@ distclean: clean
 		backend/port/tas.s \
 		backend/port/dynloader.c \
 		backend/utils/Gen_fmgrtab.sh \
+		bin/pgtclsh/Makefile.tcldefs \
+		bin/pgtclsh/Makefile.tkdefs \
 \
 \
 \
