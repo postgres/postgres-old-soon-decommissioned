@@ -20,6 +20,10 @@
 #include <sys/ioctl.h>			/* for ioctl() */
 #endif
 
+#ifdef HAVE_TERMIOS_H
+#include <termios.h>
+#endif
+
 #include "pqsignal.h"
 #include "libpq-fe.h"
 
