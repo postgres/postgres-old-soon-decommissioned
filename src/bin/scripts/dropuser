@@ -134,7 +134,7 @@ if [ "$forcedel" = f ]; then
 fi
 
 
-DelUser=`echo $DelUser | sed 's/\"/\\\"/g'`
+DelUser=`echo "$DelUser" | sed 's/\"/\\\"/g'`
 
 ${PATHNAME}psql $PSQLOPT -d template1 -c "DROP USER \"$DelUser\""
 

@@ -81,10 +81,10 @@ do
 		dbname="$2"
 		shift;;
         -d*)
-                dbname=`echo $1 | sed 's/^-d//'`
+                dbname=`echo "$1" | sed 's/^-d//'`
                 ;;
         --dbname=*)
-                dbname=`echo $1 | sed 's/^--dbname=//'`
+                dbname=`echo "$1" | sed 's/^--dbname=//'`
                 ;;
 
 	-*)
@@ -203,7 +203,7 @@ if [ $? -ne 0 ]; then
 	echo "$CMDNAME: external error" 1>&2
 	exit 1
 fi
-if [ $res -ne 0 ]; then
+if [ "$res" -ne 0 ]; then
 	echo "$CMDNAME: There are $res functions/trigger procedures declared in language" 1>&2
         echo "$lancomp. Language not removed." 1>&2
 	exit 1

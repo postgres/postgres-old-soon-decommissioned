@@ -81,20 +81,20 @@ do
 		dbname="$2"
 		shift;;
         -d*)
-                dbname=`echo $1 | sed 's/^-d//'`
+                dbname=`echo "$1" | sed 's/^-d//'`
                 ;;
         --dbname=*)
-                dbname=`echo $1 | sed 's/^--dbname=//'`
+                dbname=`echo "$1" | sed 's/^--dbname=//'`
                 ;;
 # misc options
 	--pglib|-L)
                 PGLIB="$2"
                 shift;;
         -L*)
-                PGLIB=`echo $1 | sed 's/^-L//'`
+                PGLIB=`echo "$1" | sed 's/^-L//'`
                 ;;
         --pglib=*)
-                PGLIB=`echo $1 | sed 's/^--pglib=//'`
+                PGLIB=`echo "$1" | sed 's/^--pglib=//'`
                 ;;
 
 	-*)
