@@ -15,7 +15,7 @@ $Header$
   <surname>Momjian</surname>
   </author>
   </authorgroup>
-  <date>2000-04-01</date>
+  <date>2000-05-08</date>
   </docinfo>
    -->
    <para>
@@ -89,7 +89,7 @@ $Header$
       </term>
       <listitem>
        <para>
-	In 7.1, we plan to have outer joins, storage for very long rows, and a
+	In 7.1 or 7.2, we plan to have outer joins, storage for very long rows, and a
 	write-ahead logging system.
        </para>
       </listitem>
