@@ -58,7 +58,7 @@ or
 is an integer constant and
 .IR array_str
 is an array constant (see
-.IR pgintro (l)).
+.IR pgintro (1)).
 .PP
 
 If the user does not specify any array bounds (as in the third form)

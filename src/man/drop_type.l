@@ -23,7 +23,7 @@ deleted type.
 drop type box
 .fi
 .SH "SEE ALSO"
-pgintro(l),
+pgintro(1),
 create type(l),
 drop operator(l).
 .SH "BUGS"

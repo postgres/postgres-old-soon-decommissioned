@@ -54,7 +54,7 @@ from the class are automatically a type and can be used in
 or other 
 .BR "create table"
 statements.  See 
-.IR pgintro (l)
+.IR pgintro (1)
 for a further discussion of this point.
 .PP
 The optional
