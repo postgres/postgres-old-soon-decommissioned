@@ -194,7 +194,9 @@ slashUsage(unsigned short int pager)
 	fprintf(output, _("  \\g [FILE]      send query buffer to server (and results to file or |pipe)\n"));
 	fprintf(output, _("  \\p             show the contents of the query buffer\n"));
 	fprintf(output, _("  \\r             reset (clear) the query buffer\n"));
+#ifdef USE_READLINE
 	fprintf(output, _("  \\s [FILE]      display history or save it to file\n"));
+#endif
 	fprintf(output, _("  \\w FILE        write query buffer to file\n"));
 	fprintf(output, "\n");
 
