@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------
 #
-# Makefile for src/bin/pg_controldata
+# Makefile for src/bin/pg_config
 #
 # Copyright (c) 1998-2002, PostgreSQL Global Development Group
 #
@@ -28,7 +28,7 @@ installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(DESTDIR)$(bindir)/pg_config
+	rm -f $(DESTDIR)$(bindir)/pg_config$(X)
 
 clean distclean maintainer-clean:
 	rm -f pg_config$(X) $(OBJS)
