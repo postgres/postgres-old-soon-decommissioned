@@ -588,6 +588,15 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
+       <term>--with-pltcl-unknown</term>
+       <listitem>
+        <para>
+         Enables enables PL/Tcl unknown support.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term>--enable-odbc</term>
        <listitem>
         <para>

@@ -70,8 +70,9 @@ override CFLAGS = $(TCL_CFLAGS_OPTIMIZE) $(TCL_SHLIB_CFLAGS)
 # first of all calls to the call handler. See the doc in the modules
 # directory about details.
 
-#override CPPFLAGS+= -DPLTCL_UNKNOWN_SUPPORT
-
+ifeq ($(with_pltcl_unknown), yes)
+override CPPFLAGS+= -DPLTCL_UNKNOWN_SUPPORT
+endif
 
 #
 # DLOBJS is the dynamically-loaded object file.
@@ -98,6 +99,16 @@ pltcl$(DLSUFFIX): pltcl.o
 
 install: all installdirs
 	$(INSTALL_SHLIB) $(DLOBJS) $(DESTDIR)$(libdir)/$(DLOBJS)
+ifeq ($(with_pltcl_unknown), yes)
+	$(INSTALL_SCRIPT) modules/pltcl_loadmod \
+		$(DESTDIR)$(bindir)/pltcl_loadmod
+	$(INSTALL_SCRIPT) modules/pltcl_delmod \
+		$(DESTDIR)$(bindir)/pltcl_delmod
+	$(INSTALL_SCRIPT) modules/pltcl_listmod \
+		$(DESTDIR)$(bindir)/pltcl_listmod
+	$(INSTALL_DATA) modules/unknown.pltcl \
+		$(DESTDIR)$(datadir)/unknown.pltcl
+endif
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(libdir)
@@ -117,4 +128,4 @@ Makefile.tcldefs: mkMakefile.tcldefs.sh
 	$(SHELL) $< '$(TCL_CONFIG_SH)' '$@'
 
 clean distclean maintainer-clean:
-	rm -f $(INFILES) pltcl.o Makefile.tcldefs
+	rm -f $(INFILES) pltcl.o Makefile.tcldefs modules/pltcl_listmod modules/pltcl_loadmod modules/pltcl_delmod
