@@ -524,7 +524,7 @@ fe_getauthname(char* PQerrormsg)
 #endif
     case STARTUP_MSG:
 	{
-	    struct passwd *pw = getpwuid(getuid());
+	    struct passwd *pw = getpwuid(geteuid());
 	    if (pw &&
 		pw->pw_name &&
 		(name = (char *) malloc(strlen(pw->pw_name) + 1))) {
