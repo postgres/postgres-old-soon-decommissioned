@@ -68,6 +68,7 @@ typedef struct cmdargs
 	char	   *user,
 			   *password,
 #ifdef WIN32
+			   *service_dependencies,
 			   *service_user,
 			   *service_password,
 #endif
