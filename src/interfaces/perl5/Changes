@@ -64,8 +64,8 @@ Revision history for Perl extension Pg.
           o added support for new method cmdTuples
           o cmdStatus returns now for DELETE the status 
             followed by the number of affected rows,
-	- test.pl.newstyle renamed to eg/example.newstyle
-	- test.pl.oldstyle renamed to eg/example.oldstyle
+	- test.pl.newstyle renamed to examples/example.newstyle
+	- test.pl.oldstyle renamed to examples/example.oldstyle
 	- example script ApachePg.pl now uses 
 	  $result->print with HTML option
 	- Makefile looks for $ENV{POSTGRES_HOME} instead of 
