@@ -1206,10 +1206,14 @@ PLy_procedure_munge_source(const char *name, const char *src)
 
 	while (*sp != '\0')
 	{
-		if (*sp == '\n')
+		if (*sp == '\r' && *(sp + 1) == '\n')
+			sp++;
+
+		if (*sp == '\n' || *sp == '\r')
 		{
-			*mp++ = *sp++;
+			*mp++ = '\n';
 			*mp++ = '\t';
+			sp++;
 		}
 		else
 			*mp++ = *sp++;
