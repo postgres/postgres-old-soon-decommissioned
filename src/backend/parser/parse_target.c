@@ -692,7 +692,6 @@ printf("MakeTargetlistExpr: attrtypmod is %d\n", (int4) attrtypmod);
 		attrtypmod = type_mod;
 	}
 
-	tent = makeNode(TargetEntry);
 	resnode = makeResdom((AttrNumber) resdomno,
 						 (Oid) attrtype,
 						 attrtypmod,
@@ -701,8 +700,7 @@ printf("MakeTargetlistExpr: attrtypmod is %d\n", (int4) attrtypmod);
 						 (Oid) 0,
 						 0);
 
-	tent->resdom = resnode;
-	tent->expr = expr;
+	tent = makeTargetEntry(resnode, expr);
 
 	return tent;
 } /* MakeTargetlistExpr() */

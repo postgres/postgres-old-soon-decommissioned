@@ -72,6 +72,20 @@ makeVar(Index varno,
 }
 
 /*
+ * makeTargetEntry -
+ *	  creates a TargetEntry node(contains a Resdom)
+ */
+TargetEntry *
+makeTargetEntry(Resdom *resdom, Node *expr)
+{
+	TargetEntry *rt = makeNode(TargetEntry);
+
+	rt->resdom = resdom;
+	rt->expr = expr;
+	return rt;
+}
+
+/*
  * makeResdom -
  *	  creates a Resdom (Result Domain) node
  */

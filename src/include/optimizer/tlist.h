@@ -26,7 +26,7 @@ extern List *get_actual_tlist(List *tlist);
 extern Resdom *tlist_member(Var *var, List *tlist);
 extern Resdom *tlist_resdom(List *tlist, Resdom *resnode);
 
-extern TargetEntry *MakeTLE(Resdom *resdom, Node *expr);
+extern TargetEntry *makeTargetEntry(Resdom *resdom, Node *expr);
 extern Var *get_expr(TargetEntry *tle);
 
 extern TargetEntry *match_varid(Var *test_var, List *tlist);
