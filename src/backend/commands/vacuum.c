@@ -244,12 +244,12 @@ vac_vacuum(NameData *VacRelP, bool analyze, List *anal_cols2)
 
 	/* vacuum each heap relation */
 	for (cur = vrl; cur != (VRelList) NULL; cur = cur->vrl_next)
+	{
 		vacuum_rel(cur->vrl_relid, analyze);
-
-	/* analyze separately so locking is minimized */
-	if (analyze)
-		for (cur = vrl; cur != (VRelList) NULL; cur = cur->vrl_next)
+		/* analyze separately so locking is minimized */
+		if (analyze)
 			analyze_rel(cur->vrl_relid, anal_cols2);
+	}
 }
 
 static VRelList
