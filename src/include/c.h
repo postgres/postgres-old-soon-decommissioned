@@ -821,6 +821,7 @@ extern char *form(const char *fmt,...);
 #if defined(sun) && defined(sparc) && !defined(__SVR4)
 #define memmove(d, s, l)		bcopy(s, d, l)
 #include <unistd.h>
+#include <varargs.h>
 #endif
 
 /* These are for things that are one way on Unix and another on NT */
