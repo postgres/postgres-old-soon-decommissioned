@@ -1173,8 +1173,10 @@ dumpClasses(const TableInfo *tblinfo, const int numTables, Archive *fout,
 				/* Dump/restore using COPY */
 				dumpFn = dumpClasses_nodumpData;
 				resetPQExpBuffer(copyBuf);
-				appendPQExpBuffer(copyBuf, "COPY %s %s %sFROM stdin;\n",
-								  fmtId(tblinfo[i].relname),
+				/* must use 2 steps here 'cause fmtId is nonreentrant */
+				appendPQExpBuffer(copyBuf, "COPY %s ",
+								  fmtId(tblinfo[i].relname));
+				appendPQExpBuffer(copyBuf, "%s %sFROM stdin;\n",
 								  fmtCopyColumnList(&(tblinfo[i])),
 					   (oids && tblinfo[i].hasoids) ? "WITH OIDS " : "");
 				copyStmt = copyBuf->data;
