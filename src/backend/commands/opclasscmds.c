@@ -124,12 +124,9 @@ DefineOpClass(CreateOpClassStmt *stmt)
 	 * do this mainly so that we can detect duplicate strategy numbers and
 	 * support-proc numbers.
 	 */
-	operators = (Oid *) palloc(sizeof(Oid) * numOperators);
-	MemSet(operators, 0, sizeof(Oid) * numOperators);
-	procedures = (Oid *) palloc(sizeof(Oid) * numProcs);
-	MemSet(procedures, 0, sizeof(Oid) * numProcs);
-	recheck = (bool *) palloc(sizeof(bool) * numOperators);
-	MemSet(recheck, 0, sizeof(bool) * numOperators);
+	operators = (Oid *) palloc0(sizeof(Oid) * numOperators);
+	procedures = (Oid *) palloc0(sizeof(Oid) * numProcs);
+	recheck = (bool *) palloc0(sizeof(bool) * numOperators);
 
 	/*
 	 * Scan the "items" list to obtain additional info.

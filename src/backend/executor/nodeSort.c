@@ -50,11 +50,9 @@ ExtractSortKeys(Sort *sortnode,
 	 */
 	if (keycount <= 0)
 		elog(ERROR, "ExtractSortKeys: keycount <= 0");
-	sortOps = (Oid *) palloc(keycount * sizeof(Oid));
-	MemSet(sortOps, 0, keycount * sizeof(Oid));
+	sortOps = (Oid *) palloc0(keycount * sizeof(Oid));
 	*sortOperators = sortOps;
-	attNos = (AttrNumber *) palloc(keycount * sizeof(AttrNumber));
-	MemSet(attNos, 0, keycount * sizeof(AttrNumber));
+	attNos = (AttrNumber *) palloc0(keycount * sizeof(AttrNumber));
 	*attNums = attNos;
 
 	/*

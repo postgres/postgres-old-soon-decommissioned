@@ -111,9 +111,7 @@ static void _bt_load(Relation index, BTSpool *btspool, BTSpool *btspool2);
 BTSpool *
 _bt_spoolinit(Relation index, bool isunique)
 {
-	BTSpool    *btspool = (BTSpool *) palloc(sizeof(BTSpool));
-
-	MemSet((char *) btspool, 0, sizeof(BTSpool));
+	BTSpool    *btspool = (BTSpool *) palloc0(sizeof(BTSpool));
 
 	btspool->index = index;
 	btspool->isunique = isunique;
@@ -207,9 +205,7 @@ _bt_blnewpage(Relation index, Buffer *buf, Page *page, int flags)
 static BTPageState *
 _bt_pagestate(Relation index, int flags, int level)
 {
-	BTPageState *state = (BTPageState *) palloc(sizeof(BTPageState));
-
-	MemSet((char *) state, 0, sizeof(BTPageState));
+	BTPageState *state = (BTPageState *) palloc0(sizeof(BTPageState));
 
 	/* create initial page */
 	_bt_blnewpage(index, &(state->btps_buf), &(state->btps_page), flags);

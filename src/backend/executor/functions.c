@@ -121,9 +121,7 @@ init_execution_state(char *src, Oid *argOidVect, int nargs)
 			int			i;
 			ParamListInfo paramLI;
 
-			paramLI = (ParamListInfo) palloc((nargs + 1) * sizeof(ParamListInfoData));
-
-			MemSet(paramLI, 0, (nargs + 1) * sizeof(ParamListInfoData));
+			paramLI = (ParamListInfo) palloc0((nargs + 1) * sizeof(ParamListInfoData));
 
 			estate->es_param_list_info = paramLI;
 
@@ -185,8 +183,7 @@ init_sql_fcache(FmgrInfo *finfo)
 
 	typeStruct = (Form_pg_type) GETSTRUCT(typeTuple);
 
-	fcache = (SQLFunctionCachePtr) palloc(sizeof(SQLFunctionCache));
-	MemSet(fcache, 0, sizeof(SQLFunctionCache));
+	fcache = (SQLFunctionCachePtr) palloc0(sizeof(SQLFunctionCache));
 
 	/*
 	 * get the type length and by-value flag from the type tuple

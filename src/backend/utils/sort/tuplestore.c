@@ -197,9 +197,7 @@ tuplestore_begin_common(bool randomAccess, int maxKBytes)
 {
 	Tuplestorestate *state;
 
-	state = (Tuplestorestate *) palloc(sizeof(Tuplestorestate));
-
-	MemSet((char *) state, 0, sizeof(Tuplestorestate));
+	state = (Tuplestorestate *) palloc0(sizeof(Tuplestorestate));
 
 	state->status = TSS_INITIAL;
 	state->randomAccess = randomAccess;

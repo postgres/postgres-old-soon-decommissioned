@@ -423,8 +423,7 @@ examine_attribute(Relation onerel, int attnum)
 	 * If we have "=" then we're at least able to do the minimal
 	 * algorithm, so start filling in a VacAttrStats struct.
 	 */
-	stats = (VacAttrStats *) palloc(sizeof(VacAttrStats));
-	MemSet(stats, 0, sizeof(VacAttrStats));
+	stats = (VacAttrStats *) palloc0(sizeof(VacAttrStats));
 	stats->attnum = attnum;
 	stats->attr = (Form_pg_attribute) palloc(ATTRIBUTE_TUPLE_SIZE);
 	memcpy(stats->attr, attr, ATTRIBUTE_TUPLE_SIZE);
