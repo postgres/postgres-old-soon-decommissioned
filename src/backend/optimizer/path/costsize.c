@@ -837,11 +837,12 @@ void
 set_joinrel_size_estimates(Query *root, RelOptInfo *rel,
 						   RelOptInfo *outer_rel,
 						   RelOptInfo *inner_rel,
+						   JoinType jointype,
 						   List *restrictlist)
 {
 	double		temp;
 
-	/* cartesian product */
+	/* Start with the Cartesian product */
 	temp = outer_rel->rows * inner_rel->rows;
 
 	/*
@@ -855,12 +856,42 @@ set_joinrel_size_estimates(Query *root, RelOptInfo *rel,
 									 0);
 
 	/*
+	 * If we are doing an outer join, take that into account: the output
+	 * must be at least as large as the non-nullable input.  (Is there any
+	 * chance of being even smarter?)
+	 */
+	switch (jointype)
+	{
+		case JOIN_INNER:
+			break;
+		case JOIN_LEFT:
+			if (temp < outer_rel->rows)
+				temp = outer_rel->rows;
+			break;
+		case JOIN_RIGHT:
+			if (temp < inner_rel->rows)
+				temp = inner_rel->rows;
+			break;
+		case JOIN_FULL:
+			if (temp < outer_rel->rows)
+				temp = outer_rel->rows;
+			if (temp < inner_rel->rows)
+				temp = inner_rel->rows;
+			break;
+		default:
+			elog(ERROR, "set_joinrel_size_estimates: unsupported join type %d",
+				 (int) jointype);
+			break;
+	}
+
+	/*
 	 * Force estimate to be at least one row, to make explain output look
 	 * better and to avoid possible divide-by-zero when interpolating
 	 * cost.
 	 */
 	if (temp < 1.0)
 		temp = 1.0;
+
 	rel->rows = temp;
 
 	/*

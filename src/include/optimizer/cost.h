@@ -70,6 +70,7 @@ extern void set_baserel_size_estimates(Query *root, RelOptInfo *rel);
 extern void set_joinrel_size_estimates(Query *root, RelOptInfo *rel,
 						   RelOptInfo *outer_rel,
 						   RelOptInfo *inner_rel,
+						   JoinType jointype,
 						   List *restrictlist);
 
 /*

@@ -66,8 +66,10 @@ extern HashPath *create_hashjoin_path(RelOptInfo *joinrel,
  */
 extern RelOptInfo *get_base_rel(Query *root, int relid);
 extern RelOptInfo *make_base_rel(Query *root, int relid);
-extern RelOptInfo *get_join_rel(Query *root, RelOptInfo *outer_rel,
-			 RelOptInfo *inner_rel,
-			 List **restrictlist_ptr);
+extern RelOptInfo *get_join_rel(Query *root,
+								RelOptInfo *outer_rel,
+								RelOptInfo *inner_rel,
+								JoinType jointype,
+								List **restrictlist_ptr);
 
 #endif	 /* PATHNODE_H */

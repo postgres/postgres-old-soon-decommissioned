@@ -394,7 +394,7 @@ make_join_rel(Query *root, RelOptInfo *rel1, RelOptInfo *rel2,
 	 * Find or build the join RelOptInfo, and compute the restrictlist
 	 * that goes with this particular joining.
 	 */
-	joinrel = get_join_rel(root, rel1, rel2, &restrictlist);
+	joinrel = get_join_rel(root, rel1, rel2, jointype, &restrictlist);
 
 	/*
 	 * Consider paths using each rel as both outer and inner.
