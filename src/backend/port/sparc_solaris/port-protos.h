@@ -36,8 +36,12 @@
 #define pg_dlerror		dlerror
 
 /* port.c */
+#ifndef HAVE_RANDOM
 extern long random(void);
+#endif
+#ifndef HAVE_SRANDOM
 extern void srandom(int seed);
+#endif
 
 /* inet_aton.c in backend/port directory */
 extern int	inet_aton(const char *cp, struct in_addr * addr);

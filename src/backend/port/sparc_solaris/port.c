@@ -22,17 +22,21 @@
 #include "rusagestub.h"
 #endif							/* HAVE_GETRUSAGE */
 
+#ifndef HAVE_RANDOM
 long
 random()
 {
 	return (lrand48());
 }
+#endif
 
+#ifndef HAVE_RANDOM
 void
 srandom(int seed)
 {
 	srand48((long int) seed);
 }
+#endif
 
 #ifndef HAVE_GETRUSAGE
 int
