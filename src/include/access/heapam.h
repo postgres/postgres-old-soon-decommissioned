@@ -129,6 +129,7 @@ extern Datum heap_getsysattr(HeapTuple tup, int attnum, bool *isnull);
 /* heapam.c */
 
 extern Relation relation_open(Oid relationId, LOCKMODE lockmode);
+extern Relation conditional_relation_open(Oid relationId, LOCKMODE lockmode, bool nowait);
 extern Relation relation_openrv(const RangeVar *relation, LOCKMODE lockmode);
 extern Relation relation_openr(const char *sysRelationName, LOCKMODE lockmode);
 extern void relation_close(Relation relation, LOCKMODE lockmode);

@@ -1619,6 +1619,7 @@ typedef struct LockStmt
 	NodeTag		type;
 	List	   *relations;		/* relations to lock */
 	int			mode;			/* lock mode */
+	bool		nowait;		/* no wait mode */
 } LockStmt;
 
 /* ----------------------

@@ -464,6 +464,33 @@ relation_open(Oid relationId, LOCKMODE lockmode)
 	return r;
 }
 
+Relation
+conditional_relation_open(Oid relationId, LOCKMODE lockmode, bool nowait)
+{
+	Relation	r;
+
+	Assert(lockmode >= NoLock && lockmode < MAX_LOCKMODES);
+
+	/* The relcache does all the real work... */
+	r = RelationIdGetRelation(relationId);
+
+	if (!RelationIsValid(r))
+		elog(ERROR, "could not open relation with OID %u", relationId);
+
+	if (lockmode != NoLock)
+	{
+		if (nowait)
+		{
+			if (!ConditionalLockRelation(r, lockmode))
+				elog(ERROR, "could not aquire relation lock");
+		}
+		else
+			LockRelation(r, lockmode);
+	}
+
+	return r;
+}
+
 /* ----------------
  *		relation_openrv - open any relation specified by a RangeVar
  *

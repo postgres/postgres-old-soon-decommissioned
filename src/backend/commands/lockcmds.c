@@ -59,7 +59,7 @@ LockTableCommand(LockStmt *lockstmt)
 			aclcheck_error(aclresult, ACL_KIND_CLASS,
 						   get_rel_name(reloid));
 
-		rel = relation_open(reloid, lockstmt->mode);
+		rel = conditional_relation_open(reloid, lockstmt->mode, lockstmt->nowait);
 
 		/* Currently, we only allow plain tables to be locked */
 		if (rel->rd_rel->relkind != RELKIND_RELATION)
