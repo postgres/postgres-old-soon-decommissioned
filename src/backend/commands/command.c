@@ -38,6 +38,8 @@
 #include "utils/builtins.h"
 #include "utils/mcxt.h"
 #include "utils/portal.h"
+#include "utils/relcache.h"
+#include "utils/temprel.h"
 #include "utils/syscache.h"
 #include "miscadmin.h"
 #include "string.h"
@@ -499,6 +501,13 @@ PerformAddAttribute(char *relationName,
 
 	((Form_pg_class) GETSTRUCT(reltup))->relnatts = maxatts;
 	heap_replace(rel, &reltup->t_self, reltup, NULL);
+
+	{
+		HeapTuple temptup;
+
+		if ((temptup = get_temp_rel_by_name(relationName)) != NULL)
+			((Form_pg_class) GETSTRUCT(temptup))->relnatts = maxatts;
+	}
 
 	/* keep catalog indices current */
 	CatalogOpenIndices(Num_pg_class_indices, Name_pg_class_indices, ridescs);
