@@ -19,7 +19,7 @@ endif
 
 OBJS = async.o creatinh.o command.o copy.o indexcmds.o define.o \
        remove.o rename.o vacuum.o view.o cluster.o \
-       recipe.o explain.o sequence.o trigger.o user.o proclang.o \
+       explain.o sequence.o trigger.o user.o proclang.o \
        dbcommands.o variable.o
 
 all: SUBSYS.o
