@@ -14,6 +14,7 @@
 #define	PARSENODES_H
 
 #include "nodes/primnodes.h"
+#include "utils/tqual.h"
 
 /*****************************************************************************
  *  Query Tree 
