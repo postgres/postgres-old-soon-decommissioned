@@ -3229,7 +3229,7 @@ dumpDBComment(Archive *fout)
  *    wites out to fout the queries to recrease a user-defined domains
  *    as requested by dumpTypes
  */
-void
+static void
 dumpOneDomain(Archive *fout, TypeInfo *tinfo)
 {
 	PQExpBuffer q = createPQExpBuffer();
