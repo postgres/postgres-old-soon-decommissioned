@@ -20,9 +20,11 @@ extern TargetEntry *transformTargetEntry(ParseState *pstate,
 										 Node *node, Node *expr,
 										 char *colname, bool resjunk);
 extern void updateTargetListEntry(ParseState *pstate, TargetEntry *tle,
-								  char *colname, List *indirection);
+								  char *colname, int attrno,
+								  List *indirection);
 extern Node *CoerceTargetExpr(ParseState *pstate, Node *expr,
 							  Oid type_id, Oid attrtype);
-extern List *makeTargetNames(ParseState *pstate, List *cols);
+extern List *checkInsertTargets(ParseState *pstate, List *cols,
+								List **attrnos);
 
 #endif	 /* PARSE_TARGET_H */
