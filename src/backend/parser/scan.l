@@ -136,6 +136,7 @@ xqcat			{quote}{whitespace_with_newline}{quote}
 dquote			\"
 xdstart			{dquote}
 xdstop			{dquote}
+xddouble		{dquote}{dquote}
 xdinside		[^"]+
 
 /* C-style comments
@@ -350,6 +351,9 @@ other			.
 					}
 					yylval.str = pstrdup(literalbuf);
 					return IDENT;
+				}
+<xd>{xddouble} {
+					addlit(yytext, yyleng-1);
 				}
 <xd>{xdinside}	{
 					addlit(yytext, yyleng);

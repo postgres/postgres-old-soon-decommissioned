@@ -517,8 +517,10 @@ fmtId(const char *rawid, bool force_quotes)
 
 	if (!force_quotes)
 	{
+		/* do a quick check on the first character... */
 		if (!islower((int) *rawid))
 			force_quotes = true;
+		/* otherwise check the entire string */
 		else
 			for (cp = rawid; *cp; cp++)
 			{
@@ -541,8 +543,15 @@ fmtId(const char *rawid, bool force_quotes)
 	appendPQExpBufferChar(id_return, '\"');
 	for (cp = rawid; *cp; cp++)
 	{
+		/* Did we find a double-quote in the string?
+		 * Then make this a double double-quote per SQL99.
+		 * Before, we put in a backslash/double-quote pair.
+		 * - thomas 2000-08-05 */
 		if (*cp == '\"')
-			appendPQExpBufferChar(id_return, '\\');
+		{
+			appendPQExpBufferChar(id_return, '\"');
+			appendPQExpBufferChar(id_return, '\"');
+		}
 		appendPQExpBufferChar(id_return, *cp);
 	}
 	appendPQExpBufferChar(id_return, '\"');
