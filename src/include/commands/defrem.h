@@ -35,6 +35,10 @@ extern void RemoveIndex(RangeVar *relation, DropBehavior behavior);
 extern void ReindexIndex(RangeVar *indexRelation, bool force);
 extern void ReindexTable(RangeVar *relation, bool force);
 extern void ReindexDatabase(const char *databaseName, bool force, bool all);
+extern char *makeObjectName(const char *name1, const char *name2,
+							const char *label);
+extern char *ChooseRelationName(const char *name1, const char *name2,
+								const char *label, Oid namespace);
 
 /* commands/functioncmds.c */
 extern void CreateFunction(CreateFunctionStmt *stmt);
