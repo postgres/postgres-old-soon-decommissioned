@@ -424,7 +424,7 @@ heap_getsysattr(HeapTuple tup, Buffer b, int attnum)
 		default:
 			elog(WARN, "heap_getsysattr: undefined attnum %d", attnum);
 	}
-	return (NULL);
+	return ((Datum) NULL);
 }
 
 /* ----------------
@@ -517,7 +517,7 @@ fastgetattr(HeapTuple tup,
 		{
 			if (isnull)
 				*isnull = true;
-			return NULL;
+			return (Datum) NULL;
 		}
 
 		/* ----------------
