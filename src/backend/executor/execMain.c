@@ -376,7 +376,7 @@ ExecCheckPerms(CmdType operation,
 	if (!ok)
 		elog(ERROR, "%s: %s", rname.data, aclcheck_error_strings[aclcheck_result]);
 
-	if (parseTree->rowMark != NULL)
+	if (parseTree != NULL && parseTree->rowMark != NULL)
 	{
 		foreach(lp, parseTree->rowMark)
 		{
