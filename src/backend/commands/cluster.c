@@ -184,7 +184,7 @@ rebuild_rel(Oid tableOid, Oid indexOid, List *indexes, bool dataCopy)
 	 * If dataCopy is true, we assume that we will be basing the
 	 * copy off an index for cluster operations.
 	 */
-	Assert(!dataCopy || indexOid != NULL);
+	Assert(!dataCopy || OidIsValid(indexOid));
 	/*
 	 * Create the new heap, using a temporary name in the same namespace
 	 * as the existing table.  NOTE: there is some risk of collision with

@@ -449,7 +449,7 @@ TruncateRelation(const RangeVar *relation)
 	 * Do the real work using the same technique as cluster, but
 	 * without the code copy portion
 	 */
-	rebuild_rel(relid, NULL, indexes, false);
+	rebuild_rel(relid, InvalidOid, indexes, false);
 }
 
 /*----------
