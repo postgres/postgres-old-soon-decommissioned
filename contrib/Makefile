@@ -43,11 +43,14 @@ WANTED_DIRS = \
 		vacuumlo
 
 # Missing:
+#		adddepend	\ (does not have a makefile)
 #		ipc_check	\ (does not have a makefile)
 #		mSQL-interface	\ (requires msql installed)
 #		mac		\ (does not have a makefile)
 #		mysql		\ (does not have a makefile)
 #		oracle		\ (does not have a makefile)
+#		pg_upgrade	\ (does not have a makefile)
+#		reindexdb	\ (does not have a makefile)
 #		start-scripts	\ (does not have a makefile)
 #		tools		\ (does not have a makefile)
 #		xml		\ (non-standard makefile)
