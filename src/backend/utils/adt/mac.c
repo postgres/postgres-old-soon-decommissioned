@@ -48,7 +48,6 @@ macaddr_in(PG_FUNCTION_ARGS)
 		count = sscanf(str, "%2x%2x.%2x%2x.%2x%2x", &a, &b, &c, &d, &e, &f);
 	if (count != 6)
 		count = sscanf(str, "%2x%2x%2x%2x%2x%2x", &a, &b, &c, &d, &e, &f);
-
 	if (count != 6)
 		elog(ERROR, "macaddr_in: error in parsing \"%s\"", str);
 

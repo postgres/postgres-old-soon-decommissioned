@@ -152,7 +152,7 @@ static void doNegateFloat(Value *v);
 				simple_select
 
 %type <node>    alter_column_default
-%type <ival>    drop_behavior, opt_drop_behavior
+%type <ival>    add_drop, drop_behavior, opt_drop_behavior
 
 %type <list>	createdb_opt_list, createdb_opt_item
 %type <boolean>	opt_equal
@@ -200,17 +200,19 @@ static void doNegateFloat(Value *v);
 %type <chr>	TriggerOneEvent
 
 %type <list>	stmtblock, stmtmulti,
-		OptTableElementList, OptInherit, definition, opt_distinct,
-		opt_definition, func_args, func_args_list, func_as, createfunc_opt_list
+		OptTableElementList, OptInherit, definition,
+		opt_distinct, opt_definition, func_args,
+		func_args_list, func_as, createfunc_opt_list
 		oper_argtypes, RuleActionList, RuleActionMulti,
 		opt_column_list, columnList, opt_name_list,
-		sort_clause, sortby_list, index_params, index_list, name_list,
-		from_clause, from_list, opt_array_bounds, qualified_name_list,
-		any_name, any_name_list, any_operator, expr_list, dotted_name, attrs,
+		sort_clause, sortby_list, index_params, index_list,
+		name_list, from_clause, from_list, opt_array_bounds,
+		qualified_name_list, any_name, any_name_list,
+		any_operator, expr_list, dotted_name, attrs,
 		target_list, update_target_list, insert_column_list,
-		insert_target_list,
-		def_list, opt_indirection, group_clause, TriggerFuncArgs,
-		select_limit, opt_select_limit
+		insert_target_list, def_list, opt_indirection,
+		group_clause, TriggerFuncArgs, select_limit,
+		opt_select_limit
 
 %type <range>	into_clause, OptTempTableName
 
@@ -709,23 +711,19 @@ OptGroupElem:  USER user_list
  *
  *****************************************************************************/
 
-AlterGroupStmt:  ALTER GROUP_P UserId ADD USER user_list
+AlterGroupStmt:  ALTER GROUP_P UserId add_drop USER user_list
 				{
 					AlterGroupStmt *n = makeNode(AlterGroupStmt);
 					n->name = $3;
-					n->action = +1;
-					n->listUsers = $6;
-					$$ = (Node *)n;
-				}
-			| ALTER GROUP_P UserId DROP USER user_list
-				{
-					AlterGroupStmt *n = makeNode(AlterGroupStmt);
-					n->name = $3;
-					n->action = -1;
+					n->action = $4;
 					n->listUsers = $6;
 					$$ = (Node *)n;
 				}
 			;
+
+add_drop:	ADD								{ $$ = +1; }
+		| DROP								{ $$ = -1; }
+		;
 
 
 /*****************************************************************************
