@@ -92,7 +92,9 @@ LISTEN <replaceable class="PARAMETER">name</replaceable>
   <title>Examples</title>
 
   <para>
-   Configure and execute a listen/notify sequence from <application>psql</application>:
+   Configure and execute a listen/notify sequence from
+   <application>psql</application>:
+
 <programlisting>
 LISTEN virtual;
 NOTIFY virtual;

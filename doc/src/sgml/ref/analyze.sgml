@@ -78,6 +78,16 @@ ANALYZE [ VERBOSE ] [ <replaceable class="PARAMETER">table</replaceable> [ (<rep
  </refsect1>
 
  <refsect1>
+  <title>Outputs</title>
+
+   <para>
+    When <literal>VERBOSE</> is specified, <command>ANALYZE</> emits
+    progress messages to indicate which table is currently being
+    processed.  Various statistics about the tables are printed as well.
+   </para>
+ </refsect1>
+
+ <refsect1>
   <title>Notes</title>
 
   <para>

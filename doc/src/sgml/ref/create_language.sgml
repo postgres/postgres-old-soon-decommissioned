@@ -139,7 +139,7 @@ CREATE [ TRUSTED ] [ PROCEDURAL ] LANGUAGE <replaceable class="parameter">langna
        for syntactical correctness, but it can also look at other
        properties of the function, for example if the language cannot
        handle certain argument types.  To signal an error, the
-       validator function should use the <function>elog()</function>
+       validator function should use the <function>ereport()</function>
        function.  The return value of the function is ignored.
       </para>
      </listitem>

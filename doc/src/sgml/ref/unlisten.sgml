@@ -93,13 +93,13 @@ UNLISTEN { <replaceable class="PARAMETER">name</replaceable> | * }
 <programlisting>
 LISTEN virtual;
 NOTIFY virtual;
-Asynchronous NOTIFY 'virtual' from backend with pid '8448' received
+Asynchronous notification "virtual" received from server process with PID 8448.
 </programlisting>
   </para>
 
   <para>
-   Once <command>UNLISTEN</> has been executed, further <command>NOTIFY</> commands will be
-   ignored:
+   Once <command>UNLISTEN</> has been executed, further <command>NOTIFY</>
+   commands will be ignored:
 
 <programlisting>
 UNLISTEN virtual;

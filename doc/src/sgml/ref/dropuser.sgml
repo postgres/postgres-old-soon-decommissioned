@@ -48,16 +48,6 @@ PostgreSQL documentation
    this utility and via other methods for accessing the server.
   </para>
 
-  <para>
-   In case of difficulty, see <xref linkend="SQL-DROPUSER"
-   endterm="sql-dropuser-title"> and <xref linkend="APP-PSQL"> for
-   discussions of potential problems and error messages.
-   The database server must be running at the
-   targeted host.  Also, any default connection settings and environment
-   variables used by the <application>libpq</application> front-end
-   library will apply.
-  </para>
-
  </refsect1>
 
 
@@ -182,6 +172,22 @@ PostgreSQL documentation
     </listitem>
    </varlistentry>
   </variablelist>
+ </refsect1>
+
+
+ <refsect1>
+  <title>Diagnostics</title>
+
+  <para>
+   In case of difficulty, see <xref linkend="SQL-DROPUSER"
+   endterm="sql-dropuser-title"> and <xref linkend="APP-PSQL"> for
+   discussions of potential problems and error messages.
+   The database server must be running at the
+   targeted host.  Also, any default connection settings and environment
+   variables used by the <application>libpq</application> front-end
+   library will apply.
+  </para>
+
  </refsect1>
 
 
