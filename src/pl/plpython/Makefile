@@ -12,10 +12,12 @@ ifneq (,$(wildcard $(python_configdir)/libpython*$(DLSUFFIX)*))
 shared_libpython = yes
 endif
 
-# Convert backslashed paths to normal slashes
+# Windows needs to convert backslashed paths to normal slashes,
+# and we have to remove -lpython from libspec since we are building our own
 ifeq ($(PORTNAME), win32)
 shared_libpython = yes
 python_includespec := $(subst \,/,$(python_includespec))
+python_libspec := $(subst -lpython$(python_version),,$(python_libspec))
 endif
 
 # Darwin (OS X) has its own ideas about how to do this.
