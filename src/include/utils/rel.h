@@ -49,12 +49,14 @@ typedef LockInfoData *LockInfo;
  */
 typedef struct Trigger
 {
-	Oid			tgoid;
+	Oid			tgoid;			/* OID of trigger (pg_trigger row) */
+	/* Remaining fields are copied from pg_trigger, see pg_trigger.h */
 	char	   *tgname;
 	Oid			tgfoid;
 	int16		tgtype;
 	bool		tgenabled;
 	bool		tgisconstraint;
+	Oid			tgconstrrelid;
 	bool		tgdeferrable;
 	bool		tginitdeferred;
 	int16		tgnargs;

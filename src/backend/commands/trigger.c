@@ -544,6 +544,7 @@ RelationBuildTriggers(Relation relation)
 		build->tgtype = pg_trigger->tgtype;
 		build->tgenabled = pg_trigger->tgenabled;
 		build->tgisconstraint = pg_trigger->tgisconstraint;
+		build->tgconstrrelid = pg_trigger->tgconstrrelid;
 		build->tgdeferrable = pg_trigger->tgdeferrable;
 		build->tginitdeferred = pg_trigger->tginitdeferred;
 		build->tgnargs = pg_trigger->tgnargs;
@@ -762,6 +763,8 @@ equalTriggerDescs(TriggerDesc *trigdesc1, TriggerDesc *trigdesc2)
 			if (trig1->tgenabled != trig2->tgenabled)
 				return false;
 			if (trig1->tgisconstraint != trig2->tgisconstraint)
+				return false;
+			if (trig1->tgconstrrelid != trig2->tgconstrrelid)
 				return false;
 			if (trig1->tgdeferrable != trig2->tgdeferrable)
 				return false;

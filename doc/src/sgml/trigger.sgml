@@ -374,6 +374,7 @@ typedef struct Trigger
     int16       tgtype;
     bool        tgenabled;
     bool        tgisconstraint;
+    Oid         tgconstrrelid;
     bool        tgdeferrable;
     bool        tginitdeferred;
     int16       tgnargs;

@@ -81,6 +81,12 @@ typedef struct TriggerData
  *   constrname\0fkrel\0pkrel\0matchtype\0fkatt\0pkatt\0fkatt\0pkatt\0...
  *
  * There are one or more pairs of fkatt/pkatt names.
+ *
+ * The relation names are no longer of much use since they are not
+ * guaranteed unique; they are present only for backwards compatibility.
+ * Use the tgrelid and tgconstrrelid fields to identify the referenced
+ * relations, instead.  (But note that which is which will depend on which
+ * trigger you are looking at!)
  */
 #define RI_CONSTRAINT_NAME_ARGNO		0
 #define RI_FK_RELNAME_ARGNO				1
@@ -127,9 +133,8 @@ extern void ExecARUpdateTriggers(EState *estate,
 					 HeapTuple newtuple);
 
 
-/* ----------
+/*
  * Deferred trigger stuff
- * ----------
  */
 typedef struct DeferredTriggerStatusData
 {
@@ -139,13 +144,11 @@ typedef struct DeferredTriggerStatusData
 
 typedef struct DeferredTriggerStatusData *DeferredTriggerStatus;
 
-
 typedef struct DeferredTriggerEventItem
 {
 	Oid			dti_tgoid;
 	int32		dti_state;
 } DeferredTriggerEventItem;
-
 
 typedef struct DeferredTriggerEventData *DeferredTriggerEvent;
 
@@ -173,7 +176,6 @@ extern void DeferredTriggerSetState(ConstraintsSetStmt *stmt);
 
 /*
  * in utils/adt/ri_triggers.c
- *
  */
 extern bool RI_FKey_keyequal_upd(TriggerData *trigdata);
 
