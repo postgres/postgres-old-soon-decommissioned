@@ -284,7 +284,7 @@ pq_getint(int *result, int b)
 			 * if we elog(ERROR) here, we will lose sync with the
 			 * frontend, so just complain to postmaster log instead...
 			 */
-			fprintf(stderr, "pq_getint: unsupported size %d\n", b);
+			elog(COMMERROR, "pq_getint: unsupported size %d", b);
 			status = EOF;
 			*result = 0;
 			break;

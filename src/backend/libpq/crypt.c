@@ -273,11 +273,8 @@ md5_crypt_verify(const Port *port, const char *user, const char *pgpass)
 	/* If they encrypt their password, force MD5 */
 	if (isMD5(passwd) && port->auth_method != uaMD5)
 	{
-		snprintf(PQerrormsg, PQERRORMSG_LENGTH,
-				 "Password is stored MD5 encrypted.  "
-				 "'password' and 'crypt' auth methods cannot be used.\n");
-		fputs(PQerrormsg, stderr);
-		pqdebug("%s", PQerrormsg);
+		elog(LOG, "Password is stored MD5 encrypted.  "
+			 "'password' and 'crypt' auth methods cannot be used.");
 		return STATUS_ERROR;
 	}
 

@@ -104,6 +104,9 @@ extern void ProcessInterrupts(void);
 /*
  * from postmaster/postmaster.c
  */
+extern bool IsUnderPostmaster;
+extern bool ClientAuthInProgress;
+
 extern int	PostmasterMain(int argc, char *argv[]);
 extern void ClosePostmasterPorts(bool pgstat_too);
 
@@ -126,8 +129,6 @@ extern char pg_pathname[];
  * extern BackendId    MyBackendId;
  */
 extern DLLIMPORT Oid MyDatabaseId;
-
-extern bool IsUnderPostmaster;
 
 /* Date/Time Configuration
  *
