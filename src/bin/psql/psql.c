@@ -1770,7 +1770,7 @@ HandleSlashCmds(PsqlSettings *pset,
 				SendQuery(&success, pset,"\
 					SELECT	t.typname as return_type, \
 							p.proname as function, \
-							oid8types(p.proargtypes) as arguments, \
+							substr(oid8types(p.proargtypes),1,20) as arguments, \
 							substr(obj_description(p.oid),1,23) \
 					FROM 	pg_proc p, pg_type t \
 					WHERE 	p.prorettype = t.oid and \
