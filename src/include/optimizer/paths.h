@@ -104,6 +104,8 @@ extern Path *get_cheapest_fractional_path_for_pathkeys(List *paths,
 extern List *build_index_pathkeys(Query *root, RelOptInfo *rel,
 					 IndexOptInfo *index,
 					 ScanDirection scandir);
+extern List *build_subquery_pathkeys(Query *root, RelOptInfo *rel,
+									 Query *subquery);
 extern List *build_join_pathkeys(Query *root,
 					RelOptInfo *joinrel,
 					List *outer_pathkeys);

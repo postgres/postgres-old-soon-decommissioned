@@ -676,13 +676,13 @@ hash_safe_tlist(List *tlist)
  *	  returning the pathnode.
  */
 Path *
-create_subqueryscan_path(RelOptInfo *rel)
+create_subqueryscan_path(RelOptInfo *rel, List *pathkeys)
 {
 	Path	   *pathnode = makeNode(Path);
 
 	pathnode->pathtype = T_SubqueryScan;
 	pathnode->parent = rel;
-	pathnode->pathkeys = NIL;	/* for now, assume unordered result */
+	pathnode->pathkeys = pathkeys;
 
 	/* just copy the subplan's cost estimates */
 	pathnode->startup_cost = rel->subplan->startup_cost;

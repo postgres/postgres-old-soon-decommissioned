@@ -204,15 +204,6 @@ add_to_flat_tlist(List *tlist, List *vars)
 	return tlist;
 }
 
-Var *
-get_expr(TargetEntry *tle)
-{
-	Assert(tle != NULL);
-	Assert(tle->expr != NULL);
-
-	return (Var *) tle->expr;
-}
-
 /*
  * get_sortgroupclause_tle
  *		Find the targetlist entry matching the given SortClause

@@ -381,11 +381,11 @@ new_join_tlist(List *tlist,
 
 	foreach(i, tlist)
 	{
-		TargetEntry *xtl = lfirst(i);
+		TargetEntry *tle = lfirst(i);
 
 		resdomno += 1;
 		t_list = lappend(t_list,
-						 create_tl_element(get_expr(xtl), resdomno));
+						 create_tl_element((Var *) tle->expr, resdomno));
 	}
 
 	return t_list;

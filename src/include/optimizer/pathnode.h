@@ -41,7 +41,7 @@ extern ResultPath *create_result_path(RelOptInfo *rel, Path *subpath,
 extern MaterialPath *create_material_path(RelOptInfo *rel, Path *subpath);
 extern UniquePath *create_unique_path(Query *root, RelOptInfo *rel,
 									  Path *subpath);
-extern Path *create_subqueryscan_path(RelOptInfo *rel);
+extern Path *create_subqueryscan_path(RelOptInfo *rel, List *pathkeys);
 extern Path *create_functionscan_path(Query *root, RelOptInfo *rel);
 
 extern NestPath *create_nestloop_path(Query *root,
