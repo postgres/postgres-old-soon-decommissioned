@@ -91,10 +91,12 @@ ExecGroupEveryTuple(Group *node)
 	{
 		grpstate->grp_useFirstTuple = FALSE;
 
+		/* note we rely on subplan to hold ownership of the tuple
+		 * for as long as we need it; we don't copy it.
+		 */
 		ExecStoreTuple(grpstate->grp_firstTuple,
 					   grpstate->csstate.css_ScanTupleSlot,
-					   InvalidBuffer,
-					   false);
+					   InvalidBuffer, false);
 	}
 	else
 	{
@@ -129,10 +131,12 @@ ExecGroupEveryTuple(Group *node)
 			}
 		}
 
+		/* note we rely on subplan to hold ownership of the tuple
+		 * for as long as we need it; we don't copy it.
+		 */
 		ExecStoreTuple(outerTuple,
 					   grpstate->csstate.css_ScanTupleSlot,
-					   outerslot->ttc_buffer,
-					   false);
+					   InvalidBuffer, false);
 	}
 
 	/* ----------------
@@ -226,10 +230,12 @@ ExecGroupOneTuple(Group *node)
 	 */
 	projInfo = grpstate->csstate.cstate.cs_ProjInfo;
 
+	/* note we rely on subplan to hold ownership of the tuple
+	 * for as long as we need it; we don't copy it.
+	 */
 	ExecStoreTuple(firsttuple,
 				   grpstate->csstate.css_ScanTupleSlot,
-				   InvalidBuffer,
-				   false);
+				   InvalidBuffer, false);
 	econtext->ecxt_scantuple = grpstate->csstate.css_ScanTupleSlot;
 	resultSlot = ExecProject(projInfo, &isDone);
 

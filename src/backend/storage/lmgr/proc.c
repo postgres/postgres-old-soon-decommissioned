@@ -296,6 +296,7 @@ InitProcess(IPCKey key)
 	SpinRelease(ProcStructLock);
 
 	MyProc->pid = MyProcPid;
+	MyProc->databaseId = MyDatabaseId;
 	MyProc->xid = InvalidTransactionId;
 	MyProc->xmin = InvalidTransactionId;
 

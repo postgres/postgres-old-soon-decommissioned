@@ -141,7 +141,7 @@ gistbuild(Relation heap,
 		tupleTable = ExecCreateTupleTable(1);
 		slot = ExecAllocTableSlot(tupleTable);
 		econtext = makeNode(ExprContext);
-		FillDummyExprContext(econtext, slot, hd, buffer);
+		FillDummyExprContext(econtext, slot, hd, InvalidBuffer);
 	}
 	else
 /* shut the compiler up */

@@ -26,5 +26,9 @@ extern void RegisterSharedInvalid(int cacheId, Index hashIndex,
 extern void InvalidateSharedInvalid(void (*invalFunction) (),
 												void (*resetFunction) ());
 
+extern bool DatabaseHasActiveBackends(Oid databaseId);
+extern bool TransactionIdIsInProgress(TransactionId xid);
+extern void GetXmaxRecent(TransactionId *XmaxRecent);
+
 
 #endif	 /* SINVAL_H */

@@ -55,7 +55,6 @@ CreateExecutorState(void)
 {
 	EState	   *state;
 	extern int	NBuffers;
-	long	   *refcount;
 
 	/* ----------------
 	 *	create a new executor state
@@ -80,10 +79,6 @@ CreateExecutorState(void)
 	state->es_tupleTable = NULL;
 
 	state->es_junkFilter = NULL;
-
-	refcount = (long *) palloc(NBuffers * sizeof(long));
-	MemSet((char *) refcount, 0, NBuffers * sizeof(long));
-	state->es_refcount = (int *) refcount;
 
 	/* ----------------
 	 *	return the executor state structure

@@ -70,8 +70,6 @@ extern bool ShmemPIDLookup(int pid, SHMEM_OFFSET *locationPtr);
 extern SHMEM_OFFSET ShmemPIDDestroy(int pid);
 extern long *ShmemInitStruct(char *name, unsigned long size,
 				bool *foundPtr);
-extern bool TransactionIdIsInProgress(TransactionId xid);
-extern void GetXmaxRecent(TransactionId *XmaxRecent);
 
 
 typedef int TableID;

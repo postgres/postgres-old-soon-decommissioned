@@ -111,7 +111,7 @@ extern char *DatabaseName;
 extern char *DatabasePath;
 
 /* in utils/misc/database.c */
-extern void GetRawDatabaseInfo(char *name, int4 *owner, Oid *db_id, char *path, int *encoding);
+extern void GetRawDatabaseInfo(char *name, Oid *db_id, char *path);
 extern int	GetDatabaseInfo(char *name, int4 *owner, char *path);
 extern char *ExpandDatabasePath(char *path);
 

@@ -68,7 +68,7 @@ struct buftag
 	(a)->relId = (xx_reln)->rd_lockInfo.lockRelId \
 )
 
-#define BAD_BUFFER_ID(bid) ((bid<1) || (bid>(NBuffers)))
+#define BAD_BUFFER_ID(bid) ((bid) < 1 || (bid) > NBuffers)
 #define INVALID_DESCRIPTOR (-3)
 
 /*
@@ -168,7 +168,6 @@ extern bool BufTableInsert(BufferDesc *buf);
 extern BufferDesc *BufferDescriptors;
 extern BufferBlock BufferBlocks;
 extern long *PrivateRefCount;
-extern long *LastRefCount;
 extern bits8 *BufferLocks;
 extern long *CommitInfoNeedsSave;
 extern SPINLOCK BufMgrLock;

@@ -205,7 +205,6 @@ typedef struct EState
 	int			es_BaseId;
 	TupleTable	es_tupleTable;
 	JunkFilter *es_junkFilter;
-	int		   *es_refcount;
 	uint32		es_processed;	/* # of tuples processed */
 	Oid			es_lastoid;		/* last oid processed (by INSERT) */
 	List	   *es_rowMark;		/* not good place, but there is no other */

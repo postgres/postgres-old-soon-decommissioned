@@ -58,7 +58,6 @@ hashbuild(Relation heap,
 				nitups;
 	int			i;
 	HashItem	hitem;
-	Buffer		buffer = InvalidBuffer;
 
 #ifndef OMIT_PARTIAL_INDEX
 	ExprContext *econtext;
@@ -101,7 +100,7 @@ hashbuild(Relation heap,
 		tupleTable = ExecCreateTupleTable(1);
 		slot = ExecAllocTableSlot(tupleTable);
 		econtext = makeNode(ExprContext);
-		FillDummyExprContext(econtext, slot, htupdesc, buffer);
+		FillDummyExprContext(econtext, slot, htupdesc, InvalidBuffer);
 	}
 	else
 /* quiet the compiler */

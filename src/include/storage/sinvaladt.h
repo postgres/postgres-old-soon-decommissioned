@@ -15,6 +15,7 @@
 
 #include "storage/ipc.h"
 #include "storage/itemptr.h"
+#include "storage/shmem.h"
 
 /*
  * The shared cache invalidation manager is responsible for transmitting
@@ -77,6 +78,7 @@ typedef struct ProcState
 	int			nextMsgNum;		/* next message number to read, or -1 */
 	bool		resetState;		/* true, if backend has to reset its state */
 	int			tag;			/* backend tag received from postmaster */
+	SHMEM_OFFSET procStruct;	/* location of backend's PROC struct */
 } ProcState;
 
 /* Shared cache invalidation memory segment */

@@ -36,22 +36,6 @@
 	) \
 )
 
-/* --------------------------------
- *		ExecIncrSlotBufferRefcnt
- *
- *		When we pass around buffers in the tuple table, we have to
- *		be careful to increment reference counts appropriately.
- *		This is used mainly in the mergejoin code.
- * --------------------------------
- */
-#define ExecIncrSlotBufferRefcnt(slot) \
-( \
-	BufferIsValid((slot)->ttc_buffer) ? \
-		IncrBufferRefCount((slot)->ttc_buffer) \
-	: (void)NULL \
-)
-
-
 /*
  * prototypes from functions in execAmi.c
  */

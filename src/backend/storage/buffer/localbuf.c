@@ -193,9 +193,11 @@ FlushLocalBuffer(Buffer buffer, bool release)
 	/* drop relcache refcount incremented by RelationIdCacheGetRelation */
 	RelationDecrementReferenceCount(bufrel);
 
-	Assert(LocalRefCount[bufid] > 0);
 	if (release)
+	{
+		Assert(LocalRefCount[bufid] > 0);
 		LocalRefCount[bufid]--;
+	}
 
 	return true;
 }
