@@ -1316,6 +1316,13 @@ _bt_getstackbuf(Relation rel, BTStack stack, int access)
 				start = minoff;
 
 			/*
+			 * Need this check too, to guard against possibility that page
+			 * split since we visited it originally.
+			 */
+			if (start > maxoff)
+				start = OffsetNumberNext(maxoff);
+
+			/*
 			 * These loops will check every item on the page --- but in an
 			 * order that's attuned to the probability of where it
 			 * actually is.  Scan to the right first, then to the left.
