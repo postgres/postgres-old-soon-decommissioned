@@ -25,6 +25,10 @@
 #include "rewrite/rewriteManip.h"
 #include "rewrite/rewriteRemove.h"
 
+#ifdef MULTIBYTE
+#include "mb/pg_wchar.h"
+#endif
+
 /*---------------------------------------------------------------------
  * DefineVirtualRelation
  *
