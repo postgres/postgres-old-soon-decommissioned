@@ -3095,11 +3095,15 @@ check_parameter_resolution_walker(Node *node,
 
 			if (paramno <= 0 ||		/* shouldn't happen, but... */
 				paramno > context->numParams)
-				elog(ERROR, "Parameter '$%d' is out of range", paramno);
+				ereport(ERROR,
+						(errcode(ERRCODE_UNDEFINED_PARAMETER),
+						 errmsg("there is no parameter $%d", paramno)));
 
 			if (param->paramtype != context->paramTypes[paramno-1])
-				elog(ERROR, "Could not determine datatype of parameter $%d",
-					 paramno);
+				ereport(ERROR,
+						(errcode(ERRCODE_AMBIGUOUS_PARAMETER),
+						 errmsg("could not determine datatype of parameter $%d",
+								paramno)));
 		}
 		return false;
 	}

@@ -128,13 +128,16 @@ transformExpr(ParseState *pstate, Node *expr)
 
 				/* Check parameter number is in range */
 				if (paramno <= 0) /* probably can't happen? */
-					elog(ERROR, "Parameter '$%d' is out of range",
-						 paramno);
+					ereport(ERROR,
+							(errcode(ERRCODE_UNDEFINED_PARAMETER),
+							 errmsg("there is no parameter $%d", paramno)));
 				if (paramno > toppstate->p_numparams)
 				{
 					if (!toppstate->p_variableparams)
-						elog(ERROR, "Parameter '$%d' is out of range",
-							 paramno);
+						ereport(ERROR,
+								(errcode(ERRCODE_UNDEFINED_PARAMETER),
+								 errmsg("there is no parameter $%d",
+										paramno)));
 					/* Okay to enlarge param array */
 					if (toppstate->p_paramtypes)
 						toppstate->p_paramtypes =
