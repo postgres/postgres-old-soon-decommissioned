@@ -808,6 +808,12 @@ PostmasterMain(int argc, char *argv[])
 	reset_shared(PostPortNumber);
 
 	/*
+	 * Estimate number of openable files.  This must happen after setting up
+	 * semaphores, because on some platforms semaphores count as open files.
+	 */
+	set_max_safe_fds();
+
+	/*
 	 * Initialize the list of active backends.
 	 */
 	BackendList = DLNewList();
