@@ -314,7 +314,7 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 		{"host", required_argument, NULL, 'h'},
 		{"html", no_argument, NULL, 'H'},
 		{"list", no_argument, NULL, 'l'},
-		{"noreadline", no_argument, NULL, 'n'},
+		{"no-readline", no_argument, NULL, 'n'},
 		{"output", required_argument, NULL, 'o'},
 		{"port", required_argument, NULL, 'p'},
 		{"pset", required_argument, NULL, 'P'},
