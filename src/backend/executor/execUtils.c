@@ -1137,7 +1137,6 @@ ExecInsertIndexTuples(TupleTableSlot *slot,
 	IndexInfo **indexInfoArray;
 	IndexInfo  *indexInfo;
 	Node	   *predicate;
-	bool		satisfied;
 	ExprContext *econtext;
 	InsertIndexResult result;
 	int			numberOfAttributes;
@@ -1178,8 +1177,7 @@ ExecInsertIndexTuples(TupleTableSlot *slot,
 			econtext->ecxt_scantuple = slot;
 
 			/* Skip this index-update if the predicate isn't satisfied */
-			satisfied = ExecQual((List *) predicate, econtext);
-			if (satisfied == false)
+			if (! ExecQual((List *) predicate, econtext, false))
 				continue;
 		}
 

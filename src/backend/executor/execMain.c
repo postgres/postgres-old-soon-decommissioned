@@ -1487,7 +1487,6 @@ ExecRelCheck(Relation rel, HeapTuple tuple, EState *estate)
 	RangeTblEntry *rte = makeNode(RangeTblEntry);
 	List	   *rtlist;
 	List	   *qual;
-	bool		res;
 	int			i;
 
 	slot->val = tuple;
@@ -1526,9 +1525,12 @@ ExecRelCheck(Relation rel, HeapTuple tuple, EState *estate)
 	{
 		qual = estate->es_result_relation_constraints[i];
 
-		res = ExecQual(qual, econtext);
-
-		if (!res)
+		/*
+		 * NOTE: SQL92 specifies that a NULL result from a constraint
+		 * expression is not to be treated as a failure.  Therefore,
+		 * tell ExecQual to return TRUE for NULL.
+		 */
+		if (! ExecQual(qual, econtext, true))
 			return check[i].ccname;
 	}
 

@@ -54,7 +54,6 @@ ExecHashJoin(HashJoin *node)
 	ExprContext *econtext;
 	HashJoinTable hashtable;
 	HeapTuple	curtuple;
-	bool		qualResult;
 	TupleTableSlot *outerTupleSlot;
 	TupleTableSlot *innerTupleSlot;
 	Var		   *innerhashkey;
@@ -220,14 +219,13 @@ ExecHashJoin(HashJoin *node)
 									  InvalidBuffer,
 									  false);	/* don't pfree this tuple */
 			econtext->ecxt_innertuple = inntuple;
-			qualResult = ExecQual(qual, econtext);
 			/* ----------------
 			 * if we pass the qual, then save state for next call and
 			 * have ExecProject form the projection, store it
 			 * in the tuple table, and return the slot.
 			 * ----------------
 			 */
-			if (qualResult)
+			if (ExecQual(qual, econtext, false))
 			{
 				ProjectionInfo *projInfo;
 				TupleTableSlot *result;

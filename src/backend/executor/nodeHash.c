@@ -584,7 +584,6 @@ ExecScanHashBucket(HashJoinState *hjstate,
 	{
 		HeapTuple	heapTuple = &hashTuple->htup;
 		TupleTableSlot *inntuple;
-		bool		qualResult;
 
 		/* insert hashtable's tuple into exec slot so ExecQual sees it */
 		inntuple = ExecStoreTuple(heapTuple,	/* tuple to store */
@@ -593,9 +592,7 @@ ExecScanHashBucket(HashJoinState *hjstate,
 								  false);		/* do not pfree this tuple */
 		econtext->ecxt_innertuple = inntuple;
 
-		qualResult = ExecQual(hjclauses, econtext);
-
-		if (qualResult)
+		if (ExecQual(hjclauses, econtext, false))
 		{
 			hjstate->hj_CurTuple = hashTuple;
 			return heapTuple;

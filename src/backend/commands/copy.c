@@ -886,7 +886,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim, char *null
 						 */
 						slot->val = tuple;
 						/* SetSlotContents(slot, tuple); */
-						if (ExecQual((List *) indexPred[i], econtext) == false)
+						if (! ExecQual((List *) indexPred[i], econtext, false))
 							continue;
 #endif	 /* OMIT_PARTIAL_INDEX */
 					}

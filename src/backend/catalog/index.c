@@ -1590,7 +1590,7 @@ DefaultBuild(Relation heapRelation,
 		{
 			/* SetSlotContents(slot, heapTuple); */
 			slot->val = heapTuple;
-			if (ExecQual((List *) oldPred, econtext) == true)
+			if (ExecQual((List *) oldPred, econtext, false))
 			{
 				indtuples++;
 				continue;
@@ -1605,7 +1605,7 @@ DefaultBuild(Relation heapRelation,
 		{
 			/* SetSlotContents(slot, heapTuple); */
 			slot->val = heapTuple;
-			if (ExecQual((List *) predicate, econtext) == false)
+			if (! ExecQual((List *) predicate, econtext, false))
 				continue;
 		}
 #endif	 /* OMIT_PARTIAL_INDEX */

@@ -79,7 +79,9 @@ ExecResult(Result *node)
 	 */
 	if (resstate->rs_checkqual)
 	{
-		bool		qualResult = ExecQual((List *) node->resconstantqual, econtext);
+		bool		qualResult = ExecQual((List *) node->resconstantqual,
+										  econtext,
+										  false);
 
 		resstate->rs_checkqual = false;
 		if (qualResult == false)

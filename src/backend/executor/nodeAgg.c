@@ -580,7 +580,7 @@ ExecAgg(Agg *node)
 		 * Otherwise, return the tuple.
 		 */
 	}
-	while (! ExecQual(node->plan.qual, econtext));
+	while (! ExecQual(node->plan.qual, econtext, false));
 
 	return resultSlot;
 }

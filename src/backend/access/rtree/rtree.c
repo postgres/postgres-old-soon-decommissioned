@@ -163,7 +163,7 @@ rtbuild(Relation heap,
 #ifndef OMIT_PARTIAL_INDEX
 			/* SetSlotContents(slot, htup); */
 			slot->val = htup;
-			if (ExecQual((List *) oldPred, econtext) == true)
+			if (ExecQual((List *) oldPred, econtext, false))
 			{
 				ni++;
 				continue;
@@ -180,7 +180,7 @@ rtbuild(Relation heap,
 #ifndef OMIT_PARTIAL_INDEX
 			/* SetSlotContents(slot, htup); */
 			slot->val = htup;
-			if (ExecQual((List *) pred, econtext) == false)
+			if (! ExecQual((List *) pred, econtext, false))
 				continue;
 #endif	 /* OMIT_PARTIAL_INDEX */
 		}

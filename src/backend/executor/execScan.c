@@ -137,9 +137,10 @@ ExecScan(Scan *node,
 
 		/*
 		 * add a check for non-nil qual here to avoid a function call to
-		 * ExecQual() when the qual is nil
+		 * ExecQual() when the qual is nil ... saves only a few cycles,
+		 * but they add up ...
 		 */
-		if (!qual || ExecQual(qual, econtext) == true)
+		if (!qual || ExecQual(qual, econtext, false))
 			break;
 	}
 

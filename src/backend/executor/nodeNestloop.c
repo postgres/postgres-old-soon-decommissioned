@@ -65,7 +65,6 @@ ExecNestLoop(NestLoop *node, Plan *parent)
 	TupleTableSlot *innerTupleSlot;
 
 	List	   *qual;
-	bool		qualResult;
 	ExprContext *econtext;
 
 	/* ----------------
@@ -208,9 +207,8 @@ ExecNestLoop(NestLoop *node, Plan *parent)
 		 * ----------------
 		 */
 		ENL1_printf("testing qualification");
-		qualResult = ExecQual((List *) qual, econtext);
 
-		if (qualResult)
+		if (ExecQual((List *) qual, econtext, false))
 		{
 			/* ----------------
 			 *	qualification was satisified so we project and
