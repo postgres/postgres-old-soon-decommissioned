@@ -31,6 +31,7 @@ $Header$
   &user-manag;
   &maintenance;
   &backup;
+  &monitoring;
   &wal;
   &storage;
   &recovery;
