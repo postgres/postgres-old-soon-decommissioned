@@ -2594,7 +2594,7 @@ FetchStmt:	FETCH direction fetch_how_many from_in name
 					if ($3 < 0)
 					{
 						$3 = -$3;
-						$2 = (($2 == FORWARD)? BACKWARD: FORWARD);
+						$2 = (($2 == FORWARD) ? BACKWARD : FORWARD);
 					}
 					n->direction = $2;
 					n->howMany = $3;
@@ -2652,7 +2652,7 @@ FetchStmt:	FETCH direction fetch_how_many from_in name
 					if ($3 < 0)
 					{
 						$3 = -$3;
-						$2 = (($2 == FORWARD) ? BACKWARD: FORWARD);
+						$2 = (($2 == FORWARD) ? BACKWARD : FORWARD);
 					}
 					n->direction = $2;
 					n->howMany = $3;
@@ -2720,8 +2720,8 @@ direction:	FORWARD									{ $$ = FORWARD; }
 fetch_how_many:
 			Iconst									{ $$ = $1; }
 			| '-' Iconst							{ $$ = - $2; }
-			| ALL									{ $$ = LONG_MAX; }
-			| LAST									{ $$ = LONG_MAX; }
+			| ALL									{ $$ = INT_MAX; }
+			| LAST									{ $$ = INT_MAX; }
 			| NEXT									{ $$ = 1; }
 			| PRIOR									{ $$ = -1; }
 		;
@@ -7115,8 +7115,8 @@ unreserved_keyword:
 			| INVOKER
 			| ISOLATION
 			| KEY
-			| LANGUAGE
 			| LANCOMPILER
+			| LANGUAGE
 			| LAST
 			| LEVEL
 			| LISTEN
