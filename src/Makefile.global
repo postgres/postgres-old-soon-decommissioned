@@ -59,7 +59,7 @@
 #	to change it in Makefile.custom.
 #  make sure that you have no whitespaces after the PORTNAME setting
 #  or the makefiles can get confused
-PORTNAME=	BSD44_derived
+PORTNAME=	UNDEFINED
 
 # Ignore LINUX_ELF if you're not using Linux.  But if you are, and you're
 # compiling to a.out (which means you're using the dld dynamic loading 
