@@ -14,15 +14,14 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"
+#include <postgres.h>
  
-#include "access/relscan.h"
-#include "access/hash.h"
-#include "storage/bufmgr.h"
-#include "utils/memutils.h"
+#include <access/hash.h>
+#include <storage/bufmgr.h>
+#include <utils/memutils.h>
 
 #ifndef HAVE_MEMMOVE
-# include "regex/utils.h"
+# include <regex/utils.h>
 #else
 # include <string.h>
 #endif

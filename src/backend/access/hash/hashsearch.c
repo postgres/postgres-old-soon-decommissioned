@@ -12,12 +12,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
  
-#include "access/relscan.h"
-#include "access/hash.h"
-#include "utils/palloc.h"
-#include "storage/bufmgr.h"
+#include <access/hash.h>
+#include <storage/bufmgr.h>
 
 #ifndef HAVE_MEMMOVE
 # include "regex/utils.h"

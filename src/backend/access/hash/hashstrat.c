@@ -12,11 +12,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
  
-#include "access/relscan.h"
-#include "access/hash.h"
-#include "access/istrat.h"
+#include <access/hash.h>
+#include <access/istrat.h>
 
 /* 
  *  only one valid strategy for hash tables: equality. 
