@@ -22,7 +22,7 @@
 #include "c.h"
 #include "fmgr.h"
 #include "utils/dynamic_loader.h"
-#include "port-protos.h"
+#include "dynloader.h"
 
 void	   *
 pg_dlopen(char *filename)
