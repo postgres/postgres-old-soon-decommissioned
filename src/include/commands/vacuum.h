@@ -46,6 +46,7 @@ typedef struct VPageListData
 {
 	int			vpl_empty_end_pages;	/* Number of "empty" end-pages */
 	int			vpl_num_pages;	/* Number of pages in vpl_pagedesc */
+	int			vpl_num_allocated_pages;	/* Number of allocated pages in vpl_pagedesc */
 	VPageDescr *vpl_pagedesc;	/* Descriptions of pages */
 } VPageListData;
 
