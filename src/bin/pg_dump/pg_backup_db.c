@@ -62,7 +62,7 @@ _check_database_version(ArchiveHandle *AH, bool ignoreVersion)
 	myversion = _parse_version(AH, PG_VERSION);
 
 	/*
-	 *	Autocommit could be off.  We turn it off later but we have to check
+	 *	Autocommit could be off.  We turn it on later but we have to check
 	 *	the database version first.
 	 */
 
