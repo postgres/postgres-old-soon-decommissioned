@@ -74,12 +74,12 @@ ECPGraise(int line, int code, const char *str)
 
 		case ECPG_NO_ARRAY:
 			snprintf(sqlca.sqlerrm.sqlerrmc, sizeof(sqlca.sqlerrm.sqlerrmc),
-					 "variable is not an array in line %d.", line);
+					 "Variable is not an array in line %d.", line);
 			break;
 
 		case ECPG_DATA_NOT_ARRAY:
 			snprintf(sqlca.sqlerrm.sqlerrmc, sizeof(sqlca.sqlerrm.sqlerrmc),
-			 "data read from backend is not an array in line %d.", line);
+			 "Data read from backend is not an array in line %d.", line);
 			break;
 
 		case ECPG_NO_CONN:
@@ -99,12 +99,12 @@ ECPGraise(int line, int code, const char *str)
 
 		case ECPG_UNKNOWN_DESCRIPTOR:
 			snprintf(sqlca.sqlerrm.sqlerrmc, sizeof(sqlca.sqlerrm.sqlerrmc),
-					 "Sescriptor %s not found in line %d.", str, line);
+					 "Descriptor %s not found in line %d.", str, line);
 			break;
 
 		case ECPG_INVALID_DESCRIPTOR_INDEX:
 			snprintf(sqlca.sqlerrm.sqlerrmc, sizeof(sqlca.sqlerrm.sqlerrmc),
-					 "Sescriptor index out of range in line %d.", line);
+					 "Descriptor index out of range in line %d.", line);
 			break;
 
 		case ECPG_UNKNOWN_DESCRIPTOR_ITEM:
