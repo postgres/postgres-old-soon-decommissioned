@@ -14,7 +14,6 @@
 #ifndef DATE_H
 #define DATE_H
 
-#include "c.h"
 #include "fmgr.h"
 
 
