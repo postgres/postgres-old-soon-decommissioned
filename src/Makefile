@@ -15,6 +15,7 @@ include Makefile.global
 
 all install installdirs uninstall dep depend distprep:
 	$(MAKE) -C port $@
+	$(MAKE) -C timezone $@
 	$(MAKE) -C backend $@
 	$(MAKE) -C backend/utils/mb/conversion_procs $@
 	$(MAKE) -C include $@
@@ -27,6 +28,7 @@ install-all-headers:
 
 clean:
 	$(MAKE) -C port $@
+	$(MAKE) -C timezone $@
 	$(MAKE) -C backend $@
 	$(MAKE) -C include $@
 	$(MAKE) -C interfaces $@
@@ -39,6 +41,7 @@ clean:
 
 distclean maintainer-clean:
 	-$(MAKE) -C port $@
+	-$(MAKE) -C timezone $@
 	-$(MAKE) -C backend $@
 	-$(MAKE) -C include $@
 	-$(MAKE) -C interfaces $@
