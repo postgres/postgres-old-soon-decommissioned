@@ -48,6 +48,7 @@
 <!entity dfunc      SYSTEM "dfunc.sgml">
 <!entity ecpg       SYSTEM "ecpg.sgml">
 <!entity extend     SYSTEM "extend.sgml">
+<!entity external-projects SYSTEM "external-projects.sgml">
 <!entity func-ref   SYSTEM "func-ref.sgml">
 <!entity infoschema SYSTEM "information_schema.sgml">
 <!entity libpq      SYSTEM "libpq.sgml">
