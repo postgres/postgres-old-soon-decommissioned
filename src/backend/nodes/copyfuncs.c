@@ -2895,6 +2895,9 @@ copyObject(void *from)
 		case T_SetSessionStmt:
 			retval = _copySetSessionStmt(from);
 			break;
+		case T_CheckPointStmt:
+			retval = (void*)makeNode(CheckPointStmt);
+			break;
 
 		case T_A_Expr:
 			retval = _copyAExpr(from);

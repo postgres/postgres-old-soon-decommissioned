@@ -678,7 +678,7 @@ RecordTransactionCommit()
 	leak = BufferPoolCheckLeak();
 
 #ifdef XLOG
-	if (MyLastRecPtr.xlogid != 0 || MyLastRecPtr.xrecoff != 0)
+	if (MyLastRecPtr.xrecoff != 0)
 	{
 		xl_xact_commit	xlrec;
 		struct timeval	delay;
@@ -701,7 +701,6 @@ RecordTransactionCommit()
 		delay.tv_usec = CommitDelay;
 		(void) select(0, NULL, NULL, NULL, &delay);
 		XLogFlush(recptr);
-		MyLastRecPtr.xlogid = 0;
 		MyLastRecPtr.xrecoff = 0;
 
 		TransactionIdCommit(xid);
@@ -836,7 +835,7 @@ RecordTransactionAbort(void)
 		TransactionIdAbort(xid);
 
 #ifdef XLOG
-	if (MyLastRecPtr.xlogid != 0 || MyLastRecPtr.xrecoff != 0)
+	if (MyLastRecPtr.xrecoff != 0)
 	{
 		xl_xact_abort	xlrec;
 		XLogRecPtr		recptr;
@@ -844,6 +843,8 @@ RecordTransactionAbort(void)
 		xlrec.xtime = time(NULL);
 		recptr = XLogInsert(RM_XACT_ID, XLOG_XACT_ABORT,
 			(char*) &xlrec, SizeOfXactAbort, NULL, 0);
+
+		MyProc->logRec.xrecoff = 0;
 	}
 #endif
 
@@ -1189,7 +1190,6 @@ AbortTransaction(void)
 	AtEOXact_Files();
 
 	/* Here we'll rollback xaction changes */
-	MyLastRecPtr.xlogid = 0;
 	MyLastRecPtr.xrecoff = 0;
 
 	AtAbort_Locks();

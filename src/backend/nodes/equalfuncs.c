@@ -2049,6 +2049,9 @@ equal(void *a, void *b)
 		case T_SetSessionStmt:
 			retval = _equalSetSessionStmt(a, b);
 			break;
+		case T_CheckPointStmt:
+			retval = true;
+			break;
 
 		case T_A_Expr:
 			retval = _equalAExpr(a, b);

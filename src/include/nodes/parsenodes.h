@@ -695,6 +695,11 @@ typedef struct SetSessionStmt
 	List	   *args;
 } SetSessionStmt;
 
+typedef struct CheckPointStmt
+{
+	NodeTag		type;
+} CheckPointStmt;
+
 /* ----------------------
  * Set Statement
  * ----------------------

@@ -60,6 +60,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"character", CHARACTER},
 	{"characteristics", CHARACTERISTICS},
 	{"check", CHECK},
+	{"checkpoint", CHECKPOINT},
 	{"close", CLOSE},
 	{"cluster", CLUSTER},
 	{"coalesce", COALESCE},

@@ -44,7 +44,7 @@
 #include "utils/acl.h"
 #include "utils/ps_status.h"
 #include "utils/syscache.h"
-
+#include "access/xlog.h"
 
 /*
  * Error-checking support for DROP commands
@@ -816,6 +816,14 @@ ProcessUtility(Node *parsetree,
 			set_ps_display(commandTag = "DROP GROUP");
 
 			DropGroup((DropGroupStmt *) parsetree);
+			break;
+
+		case T_CheckPointStmt:
+			{
+				set_ps_display(commandTag = "CHECKPOINT");
+
+				CreateCheckPoint(false);
+			}
 			break;
 
 		case T_ReindexStmt:
