@@ -109,6 +109,7 @@ extern List *build_subquery_pathkeys(Query *root, RelOptInfo *rel,
 						Query *subquery);
 extern List *build_join_pathkeys(Query *root,
 					RelOptInfo *joinrel,
+					JoinType jointype,
 					List *outer_pathkeys);
 extern List *make_pathkeys_for_sortclauses(List *sortclauses,
 							  List *tlist);
