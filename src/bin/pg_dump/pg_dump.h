@@ -177,7 +177,7 @@ typedef struct _oprInfo
 /* global decls */
 extern bool g_force_quotes;		/* double-quotes for identifiers flag */
 extern bool g_verbose;			/* verbose flag */
-extern int	g_last_builtin_oid; /* value of the last builtin oid */
+extern Oid	g_last_builtin_oid; /* value of the last builtin oid */
 extern Archive *g_fout;			/* the script file */
 
 /* placeholders for comment starting and ending delimiters */

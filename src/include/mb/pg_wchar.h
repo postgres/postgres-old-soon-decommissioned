@@ -152,8 +152,6 @@ extern int	pg_char_to_encoding(const char *);
 
 extern int	GetDatabaseEncoding(void);
 extern void SetDatabaseEncoding(int);
-extern void SetTemplateEncoding(int);
-extern int	GetTemplateEncoding(void);
 extern unsigned short BIG5toCNS(unsigned short, unsigned char *);
 extern unsigned short CNStoBIG5(unsigned short, unsigned char);
 

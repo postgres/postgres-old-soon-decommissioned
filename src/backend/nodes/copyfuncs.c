@@ -2231,6 +2231,8 @@ _copyCreatedbStmt(CreatedbStmt *from)
 		newnode->dbname = pstrdup(from->dbname);
 	if (from->dbpath)
 		newnode->dbpath = pstrdup(from->dbpath);
+	if (from->dbtemplate)
+		newnode->dbtemplate = pstrdup(from->dbtemplate);
 	newnode->encoding = from->encoding;
 
 	return newnode;

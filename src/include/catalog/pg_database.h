@@ -36,6 +36,8 @@ CATALOG(pg_database) BOOTSTRAP
 	NameData	datname;
 	int4		datdba;
 	int4		encoding;
+	bool		datistemplate;	/* allowed as template for CREATE DATABASE? */
+	bool		datallowconn;	/* new connections allowed? */
 	Oid			datlastsysoid;
 	text		datpath;		/* VARIABLE LENGTH FIELD */
 } FormData_pg_database;
@@ -51,15 +53,17 @@ typedef FormData_pg_database *Form_pg_database;
  *		compiler constants for pg_database
  * ----------------
  */
-#define Natts_pg_database			5	
+#define Natts_pg_database				7
 #define Anum_pg_database_datname		1
 #define Anum_pg_database_datdba			2
 #define Anum_pg_database_encoding		3
-#define Anum_pg_database_datlastsysoid  4
-#define Anum_pg_database_datpath		5
+#define Anum_pg_database_datistemplate  4
+#define Anum_pg_database_datallowconn	5
+#define Anum_pg_database_datlastsysoid  6
+#define Anum_pg_database_datpath		7
 
-DATA(insert OID = 1 (  template1 PGUID ENCODING 0 "" ));
-DESCR("");
+DATA(insert OID = 1 (  template1 PGUID ENCODING t t 0 "" ));
+DESCR("Default template database");
 
 #define TemplateDbOid			1
 

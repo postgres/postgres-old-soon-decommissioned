@@ -1087,6 +1087,8 @@ _equalCreatedbStmt(CreatedbStmt *a, CreatedbStmt *b)
 		return false;
 	if (!equalstr(a->dbpath, b->dbpath))
 		return false;
+	if (!equalstr(a->dbtemplate, b->dbtemplate))
+		return false;
 	if (a->encoding != b->encoding)
 		return false;
 

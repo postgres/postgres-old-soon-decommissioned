@@ -645,9 +645,10 @@ typedef struct LoadStmt
 typedef struct CreatedbStmt
 {
 	NodeTag		type;
-	char	   *dbname;			/* database to create */
-	char	   *dbpath;			/* location of database */
-	int			encoding;		/* default encoding (see regex/pg_wchar.h) */
+	char	   *dbname;			/* name of database to create */
+	char	   *dbpath;			/* location of database (NULL = default) */
+	char	   *dbtemplate;		/* template to use (NULL = default) */
+	int			encoding;		/* MULTIBYTE encoding (-1 = use default) */
 } CreatedbStmt;
 
 /* ----------------------

@@ -247,6 +247,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"sysid", SYSID},
 	{"table", TABLE},
 	{"temp", TEMP},
+	{"template", TEMPLATE},
 	{"temporary", TEMPORARY},
 	{"then", THEN},
 	{"time", TIME},

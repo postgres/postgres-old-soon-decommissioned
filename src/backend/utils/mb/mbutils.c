@@ -271,6 +271,7 @@ pg_mbcliplen(const unsigned char *mbstr, int len, int limit)
  * fuctions for utils/init
  */
 static int	DatabaseEncoding = MULTIBYTE;
+
 void
 SetDatabaseEncoding(int encoding)
 {
@@ -288,18 +289,4 @@ Datum
 getdatabaseencoding(PG_FUNCTION_ARGS)
 {
 	PG_RETURN_NAME(pg_encoding_to_char(DatabaseEncoding));
-}
-
-/* set and get template1 database encoding */
-static int	templateEncoding;
-void
-SetTemplateEncoding(int encoding)
-{
-	templateEncoding = encoding;
-}
-
-int
-GetTemplateEncoding()
-{
-	return (templateEncoding);
 }

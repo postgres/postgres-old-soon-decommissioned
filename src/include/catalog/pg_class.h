@@ -142,7 +142,7 @@ DATA(insert OID = 1260 (  pg_shadow 86		  PGUID 0 1260 0 0 0 0 f t r 8  0 0 0 0 
 DESCR("");
 DATA(insert OID = 1261 (  pg_group 87		  PGUID 0 1261 0 0 0 0 f t r 3  0 0 0 0 0 f f f _null_ ));
 DESCR("");
-DATA(insert OID = 1262 (  pg_database 88	  PGUID 0 1262 0 0 0 0 f t r 5  0 0 0 0 0 f f f _null_ ));
+DATA(insert OID = 1262 (  pg_database 88	  PGUID 0 1262 0 0 0 0 f t r 7  0 0 0 0 0 f f f _null_ ));
 DESCR("");
 DATA(insert OID = 1264 (  pg_variable 90	  PGUID 0 1264 0 0 0 0 f t s 1  0 0 0 0 0 f f f _null_ ));
 DESCR("");
