@@ -332,7 +332,7 @@ decl_statement	: decl_varname decl_const decl_datatype decl_notnull decl_defval
 					{
 						PLpgSQL_rec		*new;
 
-						new = malloc(sizeof(PLpgSQL_var));
+						new = malloc(sizeof(PLpgSQL_rec));
 
 						new->dtype		= PLPGSQL_DTYPE_REC;
 						new->refname	= $1.name;
@@ -374,8 +374,8 @@ decl_statement	: decl_varname decl_const decl_datatype decl_notnull decl_defval
 						new = malloc(sizeof(PLpgSQL_var));
 						memset(new, 0, sizeof(PLpgSQL_var));
 
-						curname_def = malloc(sizeof(PLpgSQL_var));
-						memset(curname_def, 0, sizeof(PLpgSQL_var));
+						curname_def = malloc(sizeof(PLpgSQL_expr));
+						memset(curname_def, 0, sizeof(PLpgSQL_expr));
 
 						new->dtype		= PLPGSQL_DTYPE_VAR;
 						new->refname	= $1.name;
