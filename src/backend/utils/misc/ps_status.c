@@ -22,6 +22,9 @@
 #include <machine/vmparam.h>	/* for old BSD */
 #include <sys/exec.h>
 #endif
+#if defined(__darwin__)
+#include <crt_externs.h>
+#endif
 
 #include "miscadmin.h"
 #include "utils/ps_status.h"
@@ -94,19 +97,21 @@ static char **save_argv;
 
 /*
  * Call this early in startup to save the original argc/argv values.
+ * If needed, we make a copy of the original argv[] array to preserve it
+ * from being clobbered by subsequent ps_display actions.
  *
- * argv[] will not be overwritten by this routine, but may be overwritten
- * during init_ps_display.	Also, the physical location of the environment
- * strings may be moved, so this should be called before any code that
- * might try to hang onto a getenv() result.
+ * (The original argv[] will not be overwritten by this routine, but may be
+ * overwritten during init_ps_display.  Also, the physical location of the
+ * environment strings may be moved, so this should be called before any code
+ * that might try to hang onto a getenv() result.)
  */
-void
-save_ps_display_args(int argc, char *argv[])
+char **
+save_ps_display_args(int argc, char **argv)
 {
 	save_argc = argc;
 	save_argv = argv;
 
-#ifdef PS_USE_CLOBBER_ARGV
+#if defined(PS_USE_CLOBBER_ARGV)
 
 	/*
 	 * If we're going to overwrite the argv area, count the available
@@ -130,7 +135,7 @@ save_ps_display_args(int argc, char *argv[])
 		{
 			ps_buffer = NULL;
 			ps_buffer_size = 0;
-			return;
+			return argv;
 		}
 
 		/*
@@ -148,13 +153,50 @@ save_ps_display_args(int argc, char *argv[])
 		/*
 		 * move the environment out of the way
 		 */
-		new_environ = malloc(sizeof(char *) * (i + 1));
+		new_environ = (char **) malloc((i + 1) * sizeof(char *));
 		for (i = 0; environ[i] != NULL; i++)
 			new_environ[i] = strdup(environ[i]);
 		new_environ[i] = NULL;
 		environ = new_environ;
 	}
 #endif   /* PS_USE_CLOBBER_ARGV */
+
+#if defined(PS_USE_CHANGE_ARGV) || defined(PS_USE_CLOBBER_ARGV)
+
+	/*
+	 * If we're going to change the original argv[] then make a copy for
+	 * argument parsing purposes.
+	 *
+	 * (NB: do NOT think to remove the copying of argv[], even though
+	 * postmaster.c finishes looking at argv[] long before we ever
+	 * consider changing the ps display.  On some platforms, getopt()
+	 * keeps pointers into the argv array, and will get horribly confused
+	 * when it is re-called to analyze a subprocess' argument string if
+	 * the argv storage has been clobbered meanwhile.  Other platforms
+	 * have other dependencies on argv[].
+	 */
+	{
+		char	  **new_argv;
+		int			i;
+
+		new_argv = (char **) malloc((argc + 1) * sizeof(char *));
+		for (i = 0; i < argc; i++)
+				new_argv[i] = strdup(argv[i]);
+		new_argv[argc] = NULL;
+
+#if defined(__darwin__)
+		/*
+		 * Darwin (and perhaps other NeXT-derived platforms?) has a static
+		 * copy of the argv pointer, which we may fix like so:
+		 */
+		*_NSGetArgv() = new_argv;
+#endif
+
+		argv = new_argv;
+	}
+#endif   /* PS_USE_CHANGE_ARGV or PS_USE_CLOBBER_ARGV */
+
+	return argv;
 }
 
 /*
