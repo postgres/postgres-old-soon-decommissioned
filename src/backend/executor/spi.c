@@ -409,7 +409,7 @@ SPI_modifytuple(Relation rel, HeapTuple tuple, int natts, int *attnum,
 	bool		isnull;
 	int			i;
 
-	if (rel == NULL || tuple == NULL || natts <= 0 || attnum == NULL || Values == NULL)
+	if (rel == NULL || tuple == NULL || natts < 0 || attnum == NULL || Values == NULL)
 	{
 		SPI_result = SPI_ERROR_ARGUMENT;
 		return NULL;
