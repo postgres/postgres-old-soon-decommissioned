@@ -59,8 +59,8 @@ cat $SYSFILES | \
 sed -e 's/\/\*.*\*\///g' \
     -e 's/;[ 	]*$//g'  \
     -e 's/^[ 	]*//' \
-    -e 's/\ Oid/\ oid/g' \
-    -e 's/\ NameData/\ name/g' \
+    -e 's/\[ 	]Oid/\ oid/g' \
+    -e 's/\[ 	]NameData/\ name/g' \
     -e 's/^Oid/oid/g' \
     -e 's/^NameData/\name/g' \
     -e 's/(NameData/(name/g' \
