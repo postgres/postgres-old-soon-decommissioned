@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Wed Jun 25 17:08:02 EDT 2003
+Last updated:		Wed Jun 25 17:40:40 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -467,6 +467,7 @@ Source Code
 * Allow the regression tests to start postmaster with -i so the tests
   can be run on systems that don't support unix-domain sockets
 * Allow creation of a libpq-only tarball
+* Promote debug_query_string into a server-side function current_query()
 
 
 * Wire Protocol Changes
