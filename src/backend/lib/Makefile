@@ -15,7 +15,7 @@ INCLUDE_OPT = -I.. \
               -I../port/$(PORTNAME) \
               -I../../include
 
-CFLAGS+=$(INCLUDE_OPT)
+CFLAGS+=$(INCLUDE_OPT) -fpic -DPIC
 
 OBJS = bit.o fstack.o hasht.o lispsort.o qsort.o stringinfo.o dllist.o
 
