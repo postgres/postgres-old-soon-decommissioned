@@ -65,8 +65,7 @@
 
 struct authsvc
 {
-	char		name[NAMEDATALEN];		/* service nickname (for command
-										 * line) */
+	const char *name;			/* service nickname (for command line) */
 	MsgType		msgtype;		/* startup packet header type */
 	int			allowed;		/* initially allowed (before command line
 								 * option parsing)? */
