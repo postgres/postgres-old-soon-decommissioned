@@ -151,7 +151,7 @@ extern int	pgunlink(const char *path);
 #ifdef WIN32
 
 /* open() replacement to allow delete of held files */
-#ifndef _MSC_VER
+#if !defined(_MSC_VER) && !defined(__BORLANDC__)
 extern int	win32_open(const char*,int,...);
 #define 	open(a,b,...)	win32_open(a,b,##__VA_ARGS__)
 #endif
