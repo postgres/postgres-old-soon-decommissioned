@@ -40,12 +40,8 @@
 #include "postgres.h"
 
 /* system stuff */
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <string.h>
 #include <setjmp.h>
 
 /* postgreSQL stuff */
@@ -54,7 +50,6 @@
 #include "utils/elog.h"
 #include "fmgr.h"
 #include "access/heapam.h"
-
 #include "tcop/tcopprot.h"
 #include "utils/syscache.h"
 #include "catalog/pg_language.h"
