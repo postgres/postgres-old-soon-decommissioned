@@ -542,25 +542,25 @@ CREATE OPERATOR = (
             oprleft = (SELECT oid FROM pg_type WHERE typname = 'complex_abs');
     
     UPDATE pg_operator
-        SET oprrest = 'intltsel'::regproc, oprjoin = 'intltjoinsel'
+        SET oprrest = 'scalarltsel'::regproc, oprjoin = 'scalarltjoinsel'
         WHERE oprname = '<' AND 
             oprleft = oprright AND
             oprleft = (SELECT oid FROM pg_type WHERE typname = 'complex_abs');
     
     UPDATE pg_operator
-        SET oprrest = 'intltsel'::regproc, oprjoin = 'intltjoinsel'
+        SET oprrest = 'scalarltsel'::regproc, oprjoin = 'scalarltjoinsel'
         WHERE oprname = '<=' AND
             oprleft = oprright AND
             oprleft = (SELECT oid FROM pg_type WHERE typname = 'complex_abs');
     
     UPDATE pg_operator
-        SET oprrest = 'intgtsel'::regproc, oprjoin = 'intgtjoinsel'
+        SET oprrest = 'scalargtsel'::regproc, oprjoin = 'scalargtjoinsel'
         WHERE oprname = '>' AND
             oprleft = oprright AND
             oprleft = (SELECT oid FROM pg_type WHERE typname = 'complex_abs');
     
     UPDATE pg_operator
-        SET oprrest = 'intgtsel'::regproc, oprjoin = 'intgtjoinsel'
+        SET oprrest = 'scalargtsel'::regproc, oprjoin = 'scalargtjoinsel'
         WHERE oprname = '>=' AND
             oprleft = oprright AND
             oprleft = (SELECT oid FROM pg_type WHERE typname = 'complex_abs');</filename></filename>
