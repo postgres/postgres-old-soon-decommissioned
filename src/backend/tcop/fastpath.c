@@ -97,7 +97,7 @@ SendFunctionResult(Datum retval, bool retbyval, int retlen)
 		{						/* by-reference ... */
 			if (retlen == -1)
 			{					/* ... varlena */
-				struct varlena *v = (struct varlena *) DatumGetPointer(retval);
+				struct varlena *v = PG_DETOAST_DATUM(retval);
 
 				pq_sendint(&buf, VARSIZE(v) - VARHDRSZ, VARHDRSZ);
 				pq_sendbytes(&buf, VARDATA(v), VARSIZE(v) - VARHDRSZ);
