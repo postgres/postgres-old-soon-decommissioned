@@ -757,6 +757,14 @@ AlterDatabaseSet(AlterDatabaseSetStmt *stmt)
 
 	systable_endscan(scan);
 	heap_close(rel, RowExclusiveLock);
+
+	/*
+	 * Force dirty buffers out to disk, so that newly-connecting backends
+	 * will see the updated database in pg_database right away.  (They'll
+	 * see an uncommitted tuple, but they don't care; see
+	 * GetRawDatabaseInfo.)
+	 */
+	BufferSync();
 }
 
 
