@@ -17,7 +17,7 @@ INCLUDE_OPT= -I.. \
 
 CFLAGS+= $(INCLUDE_OPT)
 
-ifeq ($CC), gcc)
+ifeq ($(CC), gcc)
 CFLAGS+= -Wno-error
 endif
 
