@@ -72,6 +72,12 @@ int			pg_vsnprintf(char *str, size_t count, const char *fmt, va_list args);
 int			pg_printf(const char *format, ...);
 static void dopr(char *buffer, const char *format, va_list args, char *end);
 
+/* Prevent recursion */
+#undef	vsnprintf
+#undef	snprintf
+#undef	fprintf
+#undef	printf
+
 int
 pg_vsnprintf(char *str, size_t count, const char *fmt, va_list args)
 {
@@ -97,18 +103,35 @@ pg_snprintf(char *str, size_t count, const char *fmt,...)
 }
 
 int
-pg_printf(const char *fmt,...)
+pg_fprintf(FILE *stream, const char *fmt,...)
 {
 	int			len;
-	va_list			args;
+	va_list		args;
 	char*		buffer[4096];
-	char*			p;
+	char*		p;
 
 	va_start(args, fmt);
 	len = pg_vsnprintf((char*)buffer, (size_t)4096, fmt, args);
 	va_end(args);
 	p = (char*)buffer;
-	for(;*p;p++)
+	for( ;*p; p++)
+		putc(*p, stream);
+	return len;
+}
+
+int
+pg_printf(const char *fmt,...)
+{
+	int			len;
+	va_list		args;
+	char*		buffer[4096];
+	char*		p;
+
+	va_start(args, fmt);
+	len = pg_vsnprintf((char*)buffer, (size_t)4096, fmt, args);
+	va_end(args);
+	p = (char*)buffer;
+	for( ;*p; p++)
 		putchar(*p);
 	return len;
 }

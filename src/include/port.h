@@ -112,17 +112,27 @@ extern int pg_vsnprintf(char *str, size_t count, const char *fmt, va_list args);
 extern int pg_snprintf(char *str, size_t count, const char *fmt,...)
 /* This extension allows gcc to check the format string */
 __attribute__((format(printf, 3, 4)));
+extern int pg_fprintf(FILE *stream, const char *fmt,...)
+/* This extension allows gcc to check the format string */
+__attribute__((format(printf, 2, 3)));
 extern int pg_printf(const char *fmt,...)
 /* This extension allows gcc to check the format string */
 __attribute__((format(printf, 1, 2)));
 
+/*
+ *	The GCC-specific code below prevents the __attribute__(... 'printf')
+ *	above from being replaced, and this is required because gcc doesn't
+ *	know anything about pg_printf.
+ */
 #ifdef __GNUC__
-#define vsnprintf(...)	pg_vsnprintf(__VA_ARGS__)
+#define	vsnprintf(...)	pg_vsnprintf(__VA_ARGS__)
 #define snprintf(...)	pg_snprintf(__VA_ARGS__)
+#define fprintf(...)	pg_fprintf(__VA_ARGS__)
 #define printf(...)		pg_printf(__VA_ARGS__)
 #else
 #define vsnprintf		pg_vsnprintf
 #define snprintf		pg_snprintf
+#define fprintf			pg_fprintf
 #define printf			pg_printf
 #endif
 #endif
