@@ -26,6 +26,7 @@
 #endif
 #else							/* not WIN32 */
 #include <sys/socket.h>
+#include <netdb.h>
 #ifdef HAVE_SYS_UN_H
 #include <sys/un.h>
 #endif
