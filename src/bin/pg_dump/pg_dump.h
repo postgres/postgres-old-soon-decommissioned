@@ -55,6 +55,7 @@ typedef struct _tableInfo {
     char *oid;
     char *relname;
     char *relarch;
+    bool sequence;
     int numatts;            /* number of attributes */
     int *inhAttrs;          /* an array of flags, one for each attribute
 		              if the value is 1, then this attribute is
