@@ -2611,7 +2611,7 @@ quote_identifier(const char *ident)
 		 * Note: ScanKeywordLookup() does case-insensitive comparison, but
 		 * that's fine, since we already know we have all-lower-case.
 		 */
-		if (ScanKeywordLookup((char *) ident) != NULL)
+		if (ScanKeywordLookup(ident) != NULL)
 			safe = false;
 	}
 

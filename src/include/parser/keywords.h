@@ -16,10 +16,10 @@
 
 typedef struct ScanKeyword
 {
-	char	   *name;
+	const char *name;
 	int			value;
 } ScanKeyword;
 
-extern ScanKeyword *ScanKeywordLookup(char *text);
+extern const ScanKeyword *ScanKeywordLookup(const char *text);
 
 #endif   /* KEYWORDS_H */

@@ -504,14 +504,17 @@ other			.
 
 
 {identifier}	{
-					ScanKeyword	   *keyword;
+					const ScanKeyword *keyword;
 					char		   *ident;
 					int				i;
 
 					/* Is it a keyword? */
 					keyword = ScanKeywordLookup(yytext);
 					if (keyword != NULL)
+					{
+						yylval.keyword = keyword->name;
 						return keyword->value;
+					}
 
 					/*
 					 * No.  Convert the identifier to lower case, and truncate

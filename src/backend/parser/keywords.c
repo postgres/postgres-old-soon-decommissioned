@@ -26,7 +26,7 @@
  * !!WARNING!!: This list must be sorted, because binary
  *		 search is used to locate entries.
  */
-static ScanKeyword ScanKeywords[] = {
+static const ScanKeyword ScanKeywords[] = {
 	/* name, value */
 	{"abort", ABORT_TRANS},
 	{"absolute", ABSOLUTE},
@@ -303,14 +303,14 @@ static ScanKeyword ScanKeywords[] = {
  * keywords are to be matched in this way even though non-keyword identifiers
  * receive a different case-normalization mapping.
  */
-ScanKeyword *
-ScanKeywordLookup(char *text)
+const ScanKeyword *
+ScanKeywordLookup(const char *text)
 {
 	int			len,
 				i;
 	char		word[NAMEDATALEN];
-	ScanKeyword *low;
-	ScanKeyword *high;
+	const ScanKeyword *low;
+	const ScanKeyword *high;
 
 	len = strlen(text);
 	/* We assume all keywords are shorter than NAMEDATALEN. */
@@ -342,7 +342,7 @@ ScanKeywordLookup(char *text)
 	high = endof(ScanKeywords) - 1;
 	while (low <= high)
 	{
-		ScanKeyword *middle;
+		const ScanKeyword *middle;
 		int			difference;
 
 		middle = low + (high - low) / 2;
