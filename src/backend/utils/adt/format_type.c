@@ -174,11 +174,11 @@ format_type_internal(Oid type_oid, int32 typemod)
 			break;
 
 		case TIMETZOID:
-			buf = pstrdup("time & time zone");
+			buf = pstrdup("time with time zone");
 			break;
 
 		case TIMESTAMPOID:
-			buf = pstrdup("timestamp & time zone");
+			buf = pstrdup("timestamp with time zone");
 			break;
 
 		case VARBITOID:
