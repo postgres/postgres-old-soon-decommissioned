@@ -190,7 +190,7 @@ parseNumericArray(const char *str, char **array, int arraysize)
 		}
 		else
 		{
-			if (!isdigit(s) || j >= sizeof(temp) - 1)
+			if (!(isdigit(s) || s == '-') || j >= sizeof(temp) - 1)
 			{
 				fprintf(stderr, "parseNumericArray: bogus number\n");
 				exit(2);
