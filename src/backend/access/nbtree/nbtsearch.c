@@ -458,7 +458,7 @@ _bt_binsrch(Relation rel,
 	 * return the first equal key if one exists, else the last lesser key
 	 * if one exists, else the first slot on the page.
 	 *
-	 * For a partial-match search (srchtype == BT_DESCENT and natts < keysz)
+	 * For a partial-match search (srchtype == BT_DESCENT and natts > keysz)
 	 * return the last lesser key if one exists, else the first slot.
 	 *
 	 * Old comments:
