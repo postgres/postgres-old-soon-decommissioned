@@ -103,7 +103,8 @@ ValidateBinary(char *path)
 		if (pwp->pw_gid == buf.st_gid)
 			++in_grp;
 		else if (pwp->pw_name &&
-				 (gp = getgrgid(buf.st_gid)) != NULL)
+				 (gp = getgrgid(buf.st_gid)) != NULL &&
+				 gp->gr_mem != NULL)
 		{
 			for (i = 0; gp->gr_mem[i]; ++i)
 			{
