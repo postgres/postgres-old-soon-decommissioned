@@ -20,7 +20,11 @@
 
 #ifdef HAVE_LONG_LONG_INT_64
 #ifndef LONG_LONG_MIN
+#ifdef LLONG_MIN
 #define LONG_LONG_MIN LLONG_MIN
+#else
+#define LONG_LONG_MIN LONGLONG_MIN
+#endif
 #endif
 #endif
 
