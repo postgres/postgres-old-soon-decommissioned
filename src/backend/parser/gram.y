@@ -3168,6 +3168,7 @@ opt_name_list:  '(' name_list ')'				{ $$ = $2; }
  *
  *		QUERY:
  *				EXPLAIN query
+ *				EXPLAIN ANALYZE query
  *
  *****************************************************************************/
 
@@ -3175,7 +3176,16 @@ ExplainStmt:  EXPLAIN opt_verbose OptimizableStmt
 				{
 					ExplainStmt *n = makeNode(ExplainStmt);
 					n->verbose = $2;
+					n->analyze = FALSE;
 					n->query = (Query*)$3;
+					$$ = (Node *)n;
+				}
+			| EXPLAIN analyze_keyword opt_verbose OptimizableStmt
+				{
+					ExplainStmt *n = makeNode(ExplainStmt);
+					n->verbose = $3;
+					n->analyze = TRUE;
+					n->query = (Query*)$4;
 					$$ = (Node *)n;
 				}
 		;

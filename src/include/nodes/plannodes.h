@@ -81,9 +81,21 @@ typedef struct Plan
 	double		plan_rows;		/* number of rows plan is expected to emit */
 	int			plan_width;		/* average row width in bytes */
 
+	/*
+	 * execution state data.  Having Plan point to this, rather than the
+	 * other way round, is 100% bogus.
+	 */
 	EState	   *state;			/* at execution time, state's of
 								 * individual nodes point to one EState
 								 * for the whole top-level plan */
+
+	struct Instrumentation *instrument;  /* Optional runtime stats for this
+										  * plan node */
+
+	/*
+	 * Common structural data for all Plan types.  XXX chgParam is runtime
+	 * data and should be in the EState, not here.
+	 */
 	List	   *targetlist;
 	List	   *qual;			/* implicitly-ANDed qual conditions */
 	struct Plan *lefttree;

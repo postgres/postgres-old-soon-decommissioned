@@ -709,6 +709,7 @@ typedef struct ExplainStmt
 	NodeTag		type;
 	Query	   *query;			/* the query */
 	bool		verbose;		/* print plan info */
+	bool		analyze;		/* get statistics by executing plan */
 } ExplainStmt;
 
 /* ----------------------

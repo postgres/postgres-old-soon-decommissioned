@@ -713,7 +713,7 @@ ProcessUtility(Node *parsetree,
 
 				set_ps_display(commandTag = "EXPLAIN");
 
-				ExplainQuery(stmt->query, stmt->verbose, dest);
+				ExplainQuery(stmt->query, stmt->verbose, stmt->analyze, dest);
 			}
 			break;
 

@@ -2262,6 +2262,7 @@ _copyExplainStmt(ExplainStmt *from)
 
 	Node_Copy(from, newnode, query);
 	newnode->verbose = from->verbose;
+	newnode->analyze = from->analyze;
 
 	return newnode;
 }

@@ -1135,6 +1135,8 @@ _equalExplainStmt(ExplainStmt *a, ExplainStmt *b)
 		return false;
 	if (a->verbose != b->verbose)
 		return false;
+	if (a->analyze != b->analyze)
+		return false;
 
 	return true;
 }

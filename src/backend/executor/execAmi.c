@@ -29,6 +29,7 @@
 #include "access/heapam.h"
 #include "catalog/heap.h"
 #include "executor/execdebug.h"
+#include "executor/instrument.h"
 #include "executor/nodeAgg.h"
 #include "executor/nodeAppend.h"
 #include "executor/nodeGroup.h"
@@ -260,6 +261,8 @@ ExecCloseR(Plan *node)
 void
 ExecReScan(Plan *node, ExprContext *exprCtxt, Plan *parent)
 {
+	if (node->instrument)
+		InstrEndLoop(node->instrument);
 
 	if (node->chgParam != NULL) /* Wow! */
 	{
