@@ -17,8 +17,6 @@
  */
 #include "postgres.h"
 
-#include "machine.h"		/* in port/ directory (needed for BLCKSZ) */
-
 #include "storage/buf.h"
 #include "storage/bufmgr.h"
 
