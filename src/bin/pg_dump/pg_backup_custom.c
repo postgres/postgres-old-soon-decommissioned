@@ -638,7 +638,7 @@ _PrintData(ArchiveHandle *AH)
 static void
 _LoadBlobs(ArchiveHandle *AH)
 {
-	int			oid;
+	Oid			oid;
 
 	StartRestoreBlobs(AH);
 
@@ -664,7 +664,7 @@ _LoadBlobs(ArchiveHandle *AH)
 static void
 _skipBlobs(ArchiveHandle *AH)
 {
-	int			oid;
+	Oid			oid;
 
 	oid = ReadInt(AH);
 	while (oid != 0)

@@ -729,7 +729,7 @@ FixupBlobRefs(ArchiveHandle *AH, TocEntry *te)
 	appendPQExpBuffer(tblQry,
 					  "SELECT a.attname FROM "
 					  "pg_catalog.pg_attribute a, pg_catalog.pg_type t "
-					  "WHERE a.attnum > 0 AND a.attrelid = '%s'::regclass "
+					  "WHERE a.attnum > 0 AND a.attrelid = '%s'::pg_catalog.regclass "
 					  "AND a.atttypid = t.oid AND t.typname in ('oid', 'lo')",
 					  tblName->data);
 
@@ -799,7 +799,7 @@ CreateBlobXrefTable(ArchiveHandle *AH)
 
 	ahlog(AH, 1, "creating table for large object cross-references\n");
 
-	appendPQExpBuffer(qry, "Create Temporary Table %s(oldOid oid, newOid oid);", BLOB_XREF_TABLE);
+	appendPQExpBuffer(qry, "Create Temporary Table %s(oldOid pg_catalog.oid, newOid pg_catalog.oid);", BLOB_XREF_TABLE);
 
 	ExecuteSqlCommand(AH, qry, "could not create large object cross-reference table", true);
 
@@ -812,11 +812,13 @@ CreateBlobXrefTable(ArchiveHandle *AH)
 }
 
 void
-InsertBlobXref(ArchiveHandle *AH, int old, int new)
+InsertBlobXref(ArchiveHandle *AH, Oid old, Oid new)
 {
 	PQExpBuffer qry = createPQExpBuffer();
 
-	appendPQExpBuffer(qry, "Insert Into %s(oldOid, newOid) Values (%d, %d);", BLOB_XREF_TABLE, old, new);
+	appendPQExpBuffer(qry,
+					  "Insert Into %s(oldOid, newOid) Values ('%u', '%u');",
+					  BLOB_XREF_TABLE, old, new);
 
 	ExecuteSqlCommand(AH, qry, "could not create large object cross-reference entry", true);
 
