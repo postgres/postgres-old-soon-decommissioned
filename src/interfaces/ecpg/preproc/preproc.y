@@ -630,15 +630,15 @@ stmt:  AlterDatabaseSetStmt		{ output_statement($1, 0, connection); }
 		| ECPGDeallocate
 		{
 			if (connection)
-				mmerror(PARSE_ERROR, ET_ERROR, "no at option for connect statement.\n");
-
-			fputc('{', yyout);
-			fputs($1, yyout);
+				mmerror(PARSE_ERROR, ET_ERROR, "no at option for deallocate statement.\n");
+			fprintf(yyout, "{ ECPGdeallocate(__LINE__, \"%s\");", $1);
 			whenever_action(2);
 			free($1);
 		}
 		| ECPGDeallocateDescr
 		{
+			if (connection)
+				mmerror(PARSE_ERROR, ET_ERROR, "no at option for deallocate statement.\n");
 			fprintf(yyout,"ECPGdeallocate_desc(__LINE__, %s);",$1);
 			whenever_action(0);
 			free($1);
@@ -4294,9 +4294,9 @@ ECPGCursorStmt:  DECLARE name cursor_options CURSOR opt_hold FOR ident
  * prepared statement
  */
 ECPGDeallocate: DEALLOCATE PREPARE ident
-			{ $$ = cat_str(3, make_str("ECPGdeallocate(__LINE__, \""), $3, make_str("\");")); }
+			{ $$ = $3; }
 		| DEALLOCATE ident
-			{ $$ = cat_str(2, make_str("ECPGdeallocate(__LINE__, \""), $2, make_str("\");")); }
+			{ $$ = $2; }
 		;
 
 /* 

@@ -618,7 +618,7 @@ cppline			{space}*#(.*\\{space})+.*
 						char* endptr;
 
 						errno = 0;
-						yylval.ival = strtol((char *)yytext,&endptr,16);
+						yylval.ival = strtoul((char *)yytext,&endptr,16);
 						if (*endptr != '\0' || errno == ERANGE)
 						{
 							errno = 0;
