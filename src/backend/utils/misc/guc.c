@@ -319,7 +319,7 @@ ConfigureNamesString[] =
 	{"unixsocket",         		  PGC_POSTMASTER,       &UnixSocketName,
 	 "", NULL},
 
-	{"hostname",         		  PGC_POSTMASTER,       &HostName,
+	{"virtual_host",         		  PGC_POSTMASTER,       &Virtual_host,
 	 "", NULL},
 
 	{NULL, 0, NULL, NULL, NULL}

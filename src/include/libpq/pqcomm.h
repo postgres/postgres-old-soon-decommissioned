@@ -180,6 +180,6 @@ extern int Unix_socket_permissions;
 
 extern char * Unix_socket_group;
 extern char * UnixSocketName;
-extern char * HostName;
+extern char * Virtual_host;
 
 #endif	 /* PQCOMM_H */
