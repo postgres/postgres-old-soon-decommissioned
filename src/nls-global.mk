@@ -57,6 +57,7 @@ $(srcdir)/po/$(CATALOG_NAME).pot: $(GETTEXT_FILES)
 # consistent #: file references in the po files.
 	$(XGETTEXT) -D $(srcdir) -n $(addprefix -k, $(GETTEXT_TRIGGERS)) $(GETTEXT_FILES)
 endif
+	@$(mkinstalldirs) $(dir $@)
 	mv messages.po $@
 else # not XGETTEXT
 	@echo "You don't have 'xgettext'."; exit 1
