@@ -29,11 +29,11 @@ typedef long int int64;
 
 #define INT64_FORMAT "%ld"
 #else
-#ifdef HAVE_LONG_LONG_INT_64_Ld
+#ifdef HAVE_LONG_LONG_INT_64_lld
 /* We have working support for "long long int", use that */
 typedef long long int int64;
 
-#define INT64_FORMAT "%Ld"
+#define INT64_FORMAT "%lld"
 #else
 #ifdef HAVE_LONG_LONG_INT_64_qd
 /* We have working support for "long long int", use that */
