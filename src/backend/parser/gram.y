@@ -5685,8 +5685,9 @@ Oid param_type(int t)
 }
 
 /*
- *	The optimizer doesn't like '-' 4, but wants an integer of -4, so we
- *  try to merge the minus into the constant.
+ *	The optimizer doesn't like '-' 4 for index use.  It only checks for
+ *	Var '=' Const.  It wants an integer of -4, so we try to merge the
+ *	minus into the constant.
  */
 static Node *doNegate(Node *n)
 {
