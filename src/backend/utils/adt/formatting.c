@@ -111,7 +111,7 @@
 #define MAXDOUBLEWIDTH	128
 
 /* ----------
- * External (defined in PgSQL dt.c (timestamp utils))
+ * External (defined in PgSQL datetime.c (timestamp utils))
  * ----------
  */
 extern char *months[],			/* month abbreviation	*/
