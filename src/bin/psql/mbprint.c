@@ -335,7 +335,6 @@ mbvalidate(unsigned char *pwcs, int encoding)
 	else
 	{
 #ifdef WIN32
-
 		/*
 		 * translate characters to DOS console encoding, e.g. needed for
 		 * German umlauts
