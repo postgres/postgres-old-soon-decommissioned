@@ -120,7 +120,9 @@ do { \
 /*
  * from utils/init/globals.c
  */
+#ifndef WIN32_CLIENT_ONLY
 extern pid_t PostmasterPid;
+#endif
 extern bool IsPostmasterEnvironment;
 extern bool IsUnderPostmaster;
 

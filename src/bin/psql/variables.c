@@ -51,7 +51,7 @@ GetVariableBool(VariableSpace space, const char *name)
 	val = GetVariable(space, name);
 	if (val == NULL)
 		return false;			/* not set -> assume "off" */
-	if (strcasecmp(val, "off") == 0)
+	if (pg_strcasecmp(val, "off") == 0)
 		return false;			/* accept "off" or "OFF" as true */
 
 	/*
