@@ -1881,8 +1881,13 @@ comparetup_index(Tuplesortstate *state, const void *a, const void *b)
 	 * equal they *must* get compared at some stage of the sort ---
 	 * otherwise the sort algorithm wouldn't have checked whether one must
 	 * appear before the other.
+	 *
+	 * Some rather brain-dead implementations of qsort will sometimes
+	 * call the comparison routine to compare a value to itself.  (At this
+	 * writing only QNX 4 is known to do such silly things.)  Don't raise
+	 * a bogus error in that case.
 	 */
-	if (state->enforceUnique && !equal_hasnull)
+	if (state->enforceUnique && !equal_hasnull && tuple1 != tuple2)
 		elog(ERROR, "Cannot create unique index. Table contains non-unique values");
 
 	return 0;
