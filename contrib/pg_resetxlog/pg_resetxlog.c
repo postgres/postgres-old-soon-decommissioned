@@ -273,7 +273,7 @@ static uint32 crc_tableV0[] = {
 #define INIT_CRC64V0(crc)	((crc).crc1 = 0xffffffff, (crc).crc2 = 0xffffffff)
 #define FIN_CRC64V0(crc)	((crc).crc1 ^= 0xffffffff, (crc).crc2 ^= 0xffffffff)
 #define COMP_CRC64V0(crc, data, len)	\
-{\
+do {\
 		uint32		 __c1 = (crc).crc1;\
 		uint32		 __c2 = (crc).crc2;\
 		char		*__data = (char *) (data);\
@@ -289,7 +289,7 @@ static uint32 crc_tableV0[] = {
 				__c1 = crc_tableV0[(__c1 ^ *__data++) & 0xff] ^ (__c1 >> 8);\
 		(crc).crc1 = __c1;\
 		(crc).crc2 = __c2;\
-}
+} while (0)
 
 #define EQ_CRC64V0(c1,c2)  ((c1).crc1 == (c2).crc1 && (c1).crc2 == (c2).crc2)
 
