@@ -762,6 +762,7 @@ UpdateIndexRelation(Oid indexoid,
 	predLen = VARSIZE(predText);
 	itupLen = predLen + sizeof(FormData_pg_index);
 	indexForm = (Form_pg_index) palloc(itupLen);
+	memset (indexForm, 0, sizeof(FormData_pg_index));
 
 	memmove((char *) &indexForm->indpred, (char *) predText, predLen);
 
