@@ -102,15 +102,15 @@ bool		Australian_timezones = false;
 
 bool		Password_encryption = true;
 
-int			log_min_error_statement;
+int			log_min_error_statement = ERROR;
 char	   *log_min_error_statement_str = NULL;
 const char	log_min_error_statement_str_default[] = "error";
 
-int			server_min_messages;
+int			server_min_messages = NOTICE;
 char	   *server_min_messages_str = NULL;
 const char	server_min_messages_str_default[] = "notice";
 
-int			client_min_messages;
+int			client_min_messages = NOTICE;
 char	   *client_min_messages_str = NULL;
 const char	client_min_messages_str_default[] = "notice";
 
