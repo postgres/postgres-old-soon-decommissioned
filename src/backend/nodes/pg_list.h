@@ -88,7 +88,7 @@ extern void *nth(int n, List *l);
 extern void set_nth(List *l, int n, void *elem);
 		    
 /* hack for now */
-#define	lconsi(i,l)	lcons((void*)i,l)
+#define	lconsi(i,l)	lcons((void*)(int)i,l)
 #define lfirsti(l)	((int)lfirst(l))
 #define	lappendi(l,i)	lappend(l,(void*)i)
 extern bool intMember(int, List *);
