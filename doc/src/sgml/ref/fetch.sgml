@@ -281,7 +281,7 @@ where <replaceable class="PARAMETER">direction</replaceable> can be empty or one
 
   <variablelist>
    <varlistentry>
-    <term><computeroutput>WARNING:  PerformPortalFetch: portal "<replaceable class="PARAMETER">cursor</replaceable>" not found</computeroutput></term>
+    <term><computeroutput>ERROR:  cursor "<replaceable class="PARAMETER">cursor</replaceable>" does not exist</computeroutput></term>
     <listitem>
      <para>
       There is no cursor with the specified name.

@@ -167,11 +167,11 @@ CreatePortal(const char *name, bool allowDup, bool dupSilent)
 		if (!allowDup)
 			ereport(ERROR,
 					(errcode(ERRCODE_DUPLICATE_CURSOR),
-					 errmsg("portal \"%s\" already exists", name)));
+					 errmsg("cursor \"%s\" already exists", name)));
 		if (!dupSilent)
 			ereport(WARNING,
 					(errcode(ERRCODE_DUPLICATE_CURSOR),
-					 errmsg("closing pre-existing portal \"%s\"",
+					 errmsg("closing existing cursor \"%s\"",
 							name)));
 		PortalDrop(portal, false);
 	}
