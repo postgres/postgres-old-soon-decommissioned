@@ -117,20 +117,6 @@ ERROR:  RemoveDomain: type '<replaceable class="parameter">domainname</replaceab
   </para>
  </refsect1>
 
- <refsect1 id="SQL-DROPDOMAIN-notes">
-  <title>Notes</title>
-
-  <itemizedlist>
-   <listitem>
-    <para>
-     It is the user's responsibility to remove any operators,
-     functions, aggregates, access methods, and tables that
-     use a deleted domain.
-    </para>
-   </listitem>
-  </itemizedlist>
- </refsect1>
-
  <refsect1 id="SQL-DROPDOMAIN-examples">
   <title>Examples</title>
   <para>
