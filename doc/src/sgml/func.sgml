@@ -4300,9 +4300,11 @@ SELECT timeofday();
     returns the wall clock time and does advance during transactions.
    </para>
 
-   <note>  
-    Many other database systems advance these values more
-    frequently.
+   <note>
+    <para>  
+     Many other database systems advance these values more
+     frequently.
+    </para>
    </note>
 
    <para>
