@@ -39,6 +39,8 @@
  *	The current setup is to assume either all standard functions are
  *	thread-safe (NEED_REENTRANT_FUNC_NAMES=no), or the operating system
  *	requires reentrant function names (NEED_REENTRANT_FUNC_NAMES=yes).
+ *	Compile and run src/tools/test_thread_funcs.c to see if your operating
+ *	system requires reentrant function names.
  */
  
 
