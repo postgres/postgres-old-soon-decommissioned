@@ -222,7 +222,7 @@ SELECT '' AS five, ABSTIME_TBL.*
 	< 'Jan 14 14:00:00 1977'::abstime; 
 
 SELECT '' AS five, ABSTIME_TBL.*
-   WHERE  (ABSTIME_TBL.f1 + '@ 3 year ago'::reltime) -- -3 years 
+   WHERE  (ABSTIME_TBL.f1 + '@ 3 year ago'::reltime)	-- -3 years 
 	< 'Jan 14 14:00:00 1971'::abstime;
 
 SELECT '' AS five, ABSTIME_TBL.*
