@@ -27,9 +27,7 @@ LIBPQHEADERDIR = $(SRCHEADERDIR)/libpq
 # because of our inclusion of c.h and we don't know how to stop that.
 
 ifeq ($(CXX), g++)
-CXXFLAGS= -Wno-error
-else
-CXXFLAGS=
+CXXFLAGS+= -Wno-error
 endif
 
 CXXFLAGS+=   -I$(SRCDIR)/backend \
