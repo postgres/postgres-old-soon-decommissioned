@@ -209,18 +209,13 @@ DefineOperator(List *names, List *parameters)
 /*
  * RemoveOperator
  *		Deletes an operator.
- *
- * Exceptions:
- *		BadArg if name is invalid.
- *		BadArg if type1 is invalid.
- *		"ERROR" if operator nonexistent.
- *		...
  */
 void
-RemoveOperator(List *operatorName,		/* operator name */
-			   TypeName *typeName1, /* left argument type name */
-			   TypeName *typeName2) /* right argument type name */
+RemoveOperator(RemoveOperStmt *stmt)
 {
+	List *operatorName = stmt->opname;
+	TypeName *typeName1 = (TypeName *) lfirst(stmt->args);
+	TypeName *typeName2 = (TypeName *) lsecond(stmt->args);
 	Oid			operOid;
 	Relation	relation;
 	HeapTuple	tup;

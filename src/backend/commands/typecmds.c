@@ -39,7 +39,6 @@
 #include "commands/comment.h"
 #include "commands/defrem.h"
 #include "miscadmin.h"
-#include "parser/parse.h"
 #include "parser/parse_func.h"
 #include "parser/parse_type.h"
 #include "utils/acl.h"
@@ -268,7 +267,7 @@ DefineType(List *names, List *parameters)
  * only work on scalar types.
  */
 void
-RemoveType(List *names)
+RemoveType(List *names, DropBehavior behavior)
 {
 	TypeName   *typename;
 	Relation	relation;
@@ -574,7 +573,7 @@ DefineDomain(CreateDomainStmt *stmt)
  *		Removes a domain.
  */
 void
-RemoveDomain(List *names, int behavior)
+RemoveDomain(List *names, DropBehavior behavior)
 {
 	TypeName   *typename;
 	Relation	relation;
@@ -583,7 +582,7 @@ RemoveDomain(List *names, int behavior)
 	char		typtype;
 
 	/* CASCADE unsupported */
-	if (behavior == CASCADE)
+	if (behavior == DROP_CASCADE)
 		elog(ERROR, "DROP DOMAIN does not support the CASCADE keyword");
 
 	/* Make a TypeName so we can use standard type lookup machinery */

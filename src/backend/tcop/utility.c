@@ -289,30 +289,30 @@ ProcessUtility(Node *parsetree,
 						case DROP_TABLE:
 							rel = makeRangeVarFromNameList(names);
 							CheckDropPermissions(rel, RELKIND_RELATION);
-							RemoveRelation(rel);
+							RemoveRelation(rel, stmt->behavior);
 							break;
 
 						case DROP_SEQUENCE:
 							rel = makeRangeVarFromNameList(names);
 							CheckDropPermissions(rel, RELKIND_SEQUENCE);
-							RemoveRelation(rel);
+							RemoveRelation(rel, stmt->behavior);
 							break;
 
 						case DROP_VIEW:
 							rel = makeRangeVarFromNameList(names);
 							CheckDropPermissions(rel, RELKIND_VIEW);
-							RemoveView(rel);
+							RemoveView(rel, stmt->behavior);
 							break;
 
 						case DROP_INDEX:
 							rel = makeRangeVarFromNameList(names);
 							CheckDropPermissions(rel, RELKIND_INDEX);
-							RemoveIndex(rel);
+							RemoveIndex(rel, stmt->behavior);
 							break;
 
 						case DROP_TYPE:
 							/* RemoveType does its own permissions checks */
-							RemoveType(names);
+							RemoveType(names, stmt->behavior);
 							break;
 
 						case DROP_DOMAIN:
@@ -606,24 +606,15 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_RemoveOperStmt:
-			{
-				RemoveOperStmt *stmt = (RemoveOperStmt *) parsetree;
-				TypeName   *typenode1 = (TypeName *) lfirst(stmt->args);
-				TypeName   *typenode2 = (TypeName *) lsecond(stmt->args);
-
-				RemoveOperator(stmt->opname, typenode1, typenode2);
-			}
+			RemoveOperator((RemoveOperStmt *) parsetree);
 			break;
 
 		case T_CreatedbStmt:
-			{
-				CreatedbStmt *stmt = (CreatedbStmt *) parsetree;
-				createdb(stmt);
-			}
+			createdb((CreatedbStmt *) parsetree);
 			break;
 
 		case T_AlterDatabaseSetStmt:
-			AlterDatabaseSet((AlterDatabaseSetStmt *)parsetree);
+			AlterDatabaseSet((AlterDatabaseSetStmt *) parsetree);
 			break;
 
 		case T_DropdbStmt:

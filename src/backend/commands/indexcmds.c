@@ -560,14 +560,9 @@ GetDefaultOpClass(Oid attrType, Oid accessMethodId)
 /*
  * RemoveIndex
  *		Deletes an index.
- *
- * Exceptions:
- *		BadArg if name is invalid.
- *		"ERROR" if index nonexistent.
- *		...
  */
 void
-RemoveIndex(RangeVar *relation)
+RemoveIndex(RangeVar *relation, DropBehavior behavior)
 {
 	Oid			indOid;
 	HeapTuple	tuple;

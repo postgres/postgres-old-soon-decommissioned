@@ -248,14 +248,13 @@ DefineView(const RangeVar *view, Query *viewParse)
 	DefineViewRules(view, viewParse);
 }
 
-/*------------------------------------------------------------------
+/*
  * RemoveView
  *
  * Remove a view given its name
- *------------------------------------------------------------------
  */
 void
-RemoveView(const RangeVar *view)
+RemoveView(const RangeVar *view, DropBehavior behavior)
 {
 	Oid			viewOid;
 

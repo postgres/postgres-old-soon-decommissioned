@@ -942,6 +942,8 @@ _equalRemoveAggrStmt(RemoveAggrStmt *a, RemoveAggrStmt *b)
 		return false;
 	if (!equal(a->aggtype, b->aggtype))
 		return false;
+	if (a->behavior != b->behavior)
+		return false;
 
 	return true;
 }
@@ -953,6 +955,8 @@ _equalRemoveFuncStmt(RemoveFuncStmt *a, RemoveFuncStmt *b)
 		return false;
 	if (!equal(a->args, b->args))
 		return false;
+	if (a->behavior != b->behavior)
+		return false;
 
 	return true;
 }
@@ -963,6 +967,8 @@ _equalRemoveOperStmt(RemoveOperStmt *a, RemoveOperStmt *b)
 	if (!equal(a->opname, b->opname))
 		return false;
 	if (!equal(a->args, b->args))
+		return false;
+	if (a->behavior != b->behavior)
 		return false;
 
 	return true;
@@ -1229,6 +1235,8 @@ _equalDropPropertyStmt(DropPropertyStmt *a, DropPropertyStmt *b)
 		return false;
 	if (a->removeType != b->removeType)
 		return false;
+	if (a->behavior != b->behavior)
+		return false;
 
 	return true;
 }
@@ -1254,6 +1262,8 @@ static bool
 _equalDropPLangStmt(DropPLangStmt *a, DropPLangStmt *b)
 {
 	if (!equalstr(a->plname, b->plname))
+		return false;
+	if (a->behavior != b->behavior)
 		return false;
 
 	return true;
