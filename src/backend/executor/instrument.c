@@ -37,7 +37,7 @@ InstrStartNode(Instrumentation *instr)
 		return;
 
 	if (instr->starttime.tv_sec != 0 || instr->starttime.tv_usec != 0)
-		elog(DEBUG2, "InstrStartTimer called twice in a row");
+		elog(DEBUG2, "InstrStartNode called twice in a row");
 	else
 		gettimeofday(&instr->starttime, NULL);
 }
