@@ -77,6 +77,7 @@
 #include "postgres.h"
 
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <signal.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -583,7 +584,8 @@ static int
 initialize_SSL (void)
 {
 	char fnbuf[2048];
-
+	struct stat buf;
+	
 	if (!SSL_context)
 	{
 		SSL_library_init();
