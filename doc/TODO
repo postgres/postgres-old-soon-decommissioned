@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sun Jun 22 23:52:20 EDT 2003
+Last updated:		Mon Jun 23 00:00:08 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -253,6 +253,7 @@ Clients
 * Allow psql to do table completion for SELECT * FROM schema_part and
   table completion for SELECT * FROM schema_name.
 * Add XML capability to pg_dump and COPY, when backend XML capability
+* Allow SSL-enabled clients to turn off SSL transfers
 
 
 * JDBC
