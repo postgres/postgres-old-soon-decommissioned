@@ -473,7 +473,7 @@ pmdaemonize(void)
 	int			i;
 
 	if (fork())
-		exit(0);
+		_exit(0);
 /* GH: If there's no setsid(), we hopefully don't need silent mode.
  * Until there's a better solution.
  */
