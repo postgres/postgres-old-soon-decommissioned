@@ -45,6 +45,10 @@ extern Node *ParseFuncOrColumn(ParseState *pstate,
 				  bool agg_star, bool agg_distinct,
 				  int *curr_resno, int precedence);
 
+extern bool func_get_detail(char *funcname, int nargs, Oid *argtypes,
+							Oid *funcid, Oid *rettype,
+							bool *retset, Oid **true_typeids);
+
 extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
 
 extern void func_error(char *caller, char *funcname,
