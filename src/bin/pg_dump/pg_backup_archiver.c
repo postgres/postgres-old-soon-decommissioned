@@ -162,8 +162,19 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 
 	AH->ropt = ropt;
 
+	/*
+	 * Check for nonsensical option combinations.
+	 *
+	 * NB: create+dropSchema is useless because if you're creating the DB,
+	 * there's no need to drop individual items in it.  Moreover, if we
+	 * tried to do that then we'd issue the drops in the database initially
+	 * connected to, not the one we will create, which is very bad...
+	 */
 	if (ropt->create && ropt->noReconnect)
 		die_horribly(AH, modulename, "-C and -R are incompatible options\n");
+
+	if (ropt->create && ropt->dropSchema)
+		die_horribly(AH, modulename, "-C and -c are incompatible options\n");
 
 	/*
 	 * If we're using a DB connection, then connect it.
