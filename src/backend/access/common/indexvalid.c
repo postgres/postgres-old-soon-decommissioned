@@ -14,22 +14,8 @@
 
 #include "postgres.h"
 
-#include "storage/block.h"
-#include "storage/off.h"
-#include "storage/itemptr.h"
-#include "nodes/nodes.h"
-#include "catalog/pg_attribute.h"
-#include "access/attnum.h"
-#include "nodes/pg_list.h"
-#include "access/tupdesc.h"
 #include "access/itup.h"
-
 #include "access/skey.h"
-
-#include "storage/block.h"
-#include "storage/off.h"
-#include "utils/nabstime.h"
-#include "storage/itemptr.h"
 #include "access/htup.h"
 
 /* ----------------------------------------------------------------

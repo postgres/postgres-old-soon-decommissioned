@@ -12,27 +12,14 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <sys/file.h>
-#include <stdio.h>
-#include <string.h>
 
 #include "postgres.h"
 
-#include "access/heapam.h"
 #include "access/htup.h"
-#include "access/skey.h"
-#include "access/printtup.h"
-#include "access/tupdesc.h"
-#include "storage/buf.h"
-#include "utils/memutils.h"
-#include "utils/palloc.h"
-#include "fmgr.h"
-#include "utils/elog.h"
-
 #include "utils/syscache.h"
 #include "catalog/pg_type.h"
+#include "storage/buf.h"
 
-#include "libpq/libpq.h"
 
 /* ----------------------------------------------------------------
  *	printtup / debugtup support

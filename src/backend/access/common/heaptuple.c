@@ -19,30 +19,9 @@
 
 #include "postgres.h"
 
-#include "catalog/pg_attribute.h"
-#include "access/attnum.h"
-#include "nodes/nodes.h" /* required for nodes/pg_list.h */
-#include "nodes/pg_list.h"
-#include "access/tupdesc.h"
-
-#include "storage/block.h" /* required for storage/itemptr.h */
-#include "storage/off.h" /* required for storage/itemptr.h */
-#include "storage/itemptr.h"
-#include "utils/nabstime.h"
 #include "access/htup.h"
-
 #include "storage/buf.h"
-
-#include "storage/itemid.h"
-#include "storage/item.h"
 #include "storage/bufpage.h"
-
-#include "storage/fd.h"
-#include "catalog/pg_am.h"
-#include "catalog/pg_class.h"
-#include "rewrite/prs2lock.h"
-#include "access/skey.h" /* required for access/strat.h */
-#include "access/strat.h"
 #include "utils/rel.h"
 
 /* this is so the sparcstation debugger works */

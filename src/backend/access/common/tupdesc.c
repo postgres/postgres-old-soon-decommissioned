@@ -15,29 +15,15 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>	/* for sprintf() */
-#include <ctype.h>
-#include <string.h>
 
 #include "postgres.h"
 
-#include "nodes/pg_list.h"
-#include "nodes/parsenodes.h"
-
-#include "access/attnum.h"
-#include "access/htup.h"
 #include "access/tupdesc.h"
-
-#include "utils/builtins.h"
-#include "utils/elog.h"		/* XXX generate exceptions instead */
-#include "utils/palloc.h"
-
-#include "utils/syscache.h"
+#include "access/htup.h"
 #include "catalog/pg_type.h"
-
-#include "nodes/primnodes.h"
-
+#include "utils/syscache.h"
 #include "parser/catalog_utils.h"
+#include "nodes/parsenodes.h"
 
 /* ----------------------------------------------------------------
  *	CreateTemplateTupleDesc

@@ -11,12 +11,11 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "c.h"
-#include "access/sdir.h"
-#include "access/attnum.h"
+
+#include "postgres.h"
+
 #include "access/skey.h"
 
-#include "fmgr.h"
 
 /*
  * ScanKeyEntryIsLegal --
