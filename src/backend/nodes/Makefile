@@ -20,7 +20,7 @@ OBJS = nodeFuncs.o nodes.o list.o \
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) -o SUBSYS.o $(OBJS)
+	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 outfuncs.o: ../parse.h
 

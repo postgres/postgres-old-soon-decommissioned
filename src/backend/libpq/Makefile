@@ -31,7 +31,7 @@ OBJS = be-dumpdata.o be-fsstubs.o be-pqexec.o portal.o portalbuf.o \
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) -o SUBSYS.o $(OBJS)
+	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 be-dumpdata.o be-pqexec.o: ../fmgr.h
 

@@ -18,7 +18,7 @@ OBJS = buf_table.o buf_init.o bufmgr.o freelist.o localbuf.o s_lock.o
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) -o SUBSYS.o $(OBJS)
+	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend

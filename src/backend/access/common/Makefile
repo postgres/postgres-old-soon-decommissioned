@@ -23,7 +23,7 @@ OBJS = heaptuple.o indextuple.o indexvalid.o printtup.o \
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) -o SUBSYS.o $(OBJS)
+	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 heaptuple.o heapvalid.o tupdesc.o: ../../fmgr.h
 

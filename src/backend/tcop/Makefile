@@ -26,7 +26,7 @@ OBJS= dest.o fastpath.o postgres.o pquery.o utility.o
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) -o SUBSYS.o $(OBJS)
+	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 # The following dependencies are picked up by the make dep, but since 
 # not everyone can do make dep, and these are particularly important

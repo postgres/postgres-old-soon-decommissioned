@@ -29,7 +29,7 @@ DIRS += mb
 endif
 
 SUBSYS.o: $(OBJS) 
-	$(LD) $(LDREL) -o SUBSYS.o $(OBJS)
+	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 .PHONY: submake clean dep
 submake:

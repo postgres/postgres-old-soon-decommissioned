@@ -109,7 +109,7 @@ catalog/global1.description catalog/local1_template1.description:
 # The postgres.o target is needed by the rule in Makefile.global that
 # creates the exports file when MAKE_EXPORTS = true.
 postgres.o: $(OBJS)
-	$(CC) $(LDREL) -o postgres.o $(OBJS) $(LDFLAGS)
+	$(CC) $(LDREL) $(LDOUT) postgres.o $(OBJS) $(LDFLAGS)
 
 ############################################################################
 # The following targets are specified in make commands that appear in the

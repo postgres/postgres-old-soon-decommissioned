@@ -26,7 +26,7 @@ endif
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) -o SUBSYS.o $(OBJS)
+	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 retest: retest.o SUBSYS.o $(DEBUGOBJ)
 	$(CC) -o retest retest.o SUBSYS.o $(DEBUGOBJ)

@@ -25,7 +25,7 @@ OBJS = async.o creatinh.o command.o comment.o copy.o indexcmds.o define.o \
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
-	$(LD) $(LDREL) -o SUBSYS.o $(OBJS)
+	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 # The following declares a hard-coded dependency on parse.h since, 
 # if compiled without make dep, comment.c would get compiled before 
