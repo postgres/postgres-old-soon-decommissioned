@@ -516,7 +516,7 @@ _copyAgg(Agg *from)
 	CopyTempFields((Temp *) from, (Temp *) newnode);
 
 	newnode->numAgg = from->numAgg;
-	newnode->aggs = malloc(sizeof(Aggreg *));
+    newnode->aggs = palloc(sizeof(Aggreg *));
 	for (i = 0; i < from->numAgg; i++)
 	{
 		newnode->aggs[i] = copyObject(from->aggs[i]);
@@ -1519,7 +1519,7 @@ static Query *
 _copyQuery(Query *from)
 {
 	Query	   *newnode = makeNode(Query);
-
+	
 	newnode->commandType = from->commandType;
 	newnode->resultRelation = from->resultRelation;
 	/* probably should dup this string instead of just pointing */
@@ -1554,6 +1554,11 @@ _copyQuery(Query *from)
 	Node_Copy(from, newnode, sortClause);
 	Node_Copy(from, newnode, targetList);
 	Node_Copy(from, newnode, qual);
+
+	Node_Copy(from, newnode, groupClause);
+	Node_Copy(from, newnode, havingQual); /* currently ignored */
+
+	Node_Copy(from, newnode, Aggreg);
 
 	return newnode;
 }

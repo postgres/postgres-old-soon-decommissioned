@@ -241,6 +241,9 @@ plan_union_query(List *relids,
 /*		new_root->uniqueFlag = false; */
 		new_root->uniqueFlag = NULL;
 		new_root->sortClause = NULL;
+		new_root->groupClause = NULL;
+		new_root->qry_numAgg = 0;
+		new_root->qry_aggs = NULL;
 		fix_parsetree_attnums(rt_index,
 							  rt_entry->relid,
 							  relid,

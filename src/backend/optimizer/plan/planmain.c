@@ -362,7 +362,7 @@ make_result(List *tlist,
 	Plan	   *plan = &node->plan;
 
 	tlist = generate_fjoin(tlist);
-	plan->cost = 0.0;
+    plan->cost = (subplan ? subplan->cost : 0);
 	plan->state = (EState *) NULL;
 	plan->targetlist = tlist;
 	plan->lefttree = subplan;
