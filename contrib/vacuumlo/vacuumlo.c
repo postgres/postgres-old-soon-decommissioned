@@ -284,6 +284,7 @@ vacuumlo(char *database, struct _param * param)
 	strcat(buf, "      AND t.typname in ('oid', 'lo') ");
 	strcat(buf, "      AND c.relkind = 'r'");
 	strcat(buf, "      AND c.relname NOT LIKE 'pg_%'");
+	strcat(buf, "      AND c.relname != 'vacuum_l'");
 	res = PQexec(conn, buf);
 	if (PQresultStatus(res) != PGRES_TUPLES_OK)
 	{
