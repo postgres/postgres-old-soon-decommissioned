@@ -142,9 +142,10 @@ typedef struct Path
 
 	PathOrder	*pathorder;
 
-	List	    *pathkeys;	/* This is a List of List of Var nodes.
-							 * It is a List of Lists because of multi-key
-							 * indexes.
+	List	    *pathkeys;	/*
+							 * This is a List of List of Var nodes.
+							 * See the top of optimizer/path/pathkeys.c
+							 * for more information.
 							 */							   
 	Cost		outerjoincost;
 	Relids		joinid;
