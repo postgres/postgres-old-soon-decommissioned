@@ -195,4 +195,6 @@ unescape_quotes(char *source, int quote, int escape)
 	*tmp = '\0';
 
 	strcpy(source, destination);
+
+	free(destination);
 }
