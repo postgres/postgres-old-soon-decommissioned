@@ -340,7 +340,7 @@ make_jointree_rel(Query *root, Node *jtnode)
 	{
 		int			varno = ((RangeTblRef *) jtnode)->rtindex;
 
-		return build_base_rel(root, varno);
+		return find_base_rel(root, varno);
 	}
 	else if (IsA(jtnode, FromExpr))
 	{

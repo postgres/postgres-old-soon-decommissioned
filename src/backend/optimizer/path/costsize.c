@@ -597,7 +597,7 @@ cost_mergejoin(Path *path, Query *root,
 
 	leftvar = get_leftop(firstclause->clause);
 	Assert(IsA(leftvar, Var));
-	if (intMember(leftvar->varno, outer_path->parent->relids))
+	if (VARISRELMEMBER(leftvar->varno, outer_path->parent))
 	{
 		/* left side of clause is outer */
 		outerscansel = firstclause->left_mergescansel;
@@ -748,7 +748,7 @@ cost_hashjoin(Path *path, Query *root,
 	 * a large query, we cache the bucketsize estimate in the RestrictInfo
 	 * node to avoid repeated lookups of statistics.
 	 */
-	if (intMember(right->varno, inner_path->parent->relids))
+	if (VARISRELMEMBER(right->varno, inner_path->parent))
 	{
 		/* righthand side is inner */
 		innerbucketsize = restrictinfo->right_bucketsize;
@@ -761,7 +761,7 @@ cost_hashjoin(Path *path, Query *root,
 	}
 	else
 	{
-		Assert(intMember(left->varno, inner_path->parent->relids));
+		Assert(VARISRELMEMBER(left->varno, inner_path->parent));
 		/* lefthand side is inner */
 		innerbucketsize = restrictinfo->left_bucketsize;
 		if (innerbucketsize < 0)

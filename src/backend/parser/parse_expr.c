@@ -646,7 +646,7 @@ transformIdent(ParseState *pstate, Ident *ident, int precedence)
 	 * appear
 	 */
 	if (ident->indirection == NIL &&
-	 refnameRangeOrJoinEntry(pstate, ident->name, &sublevels_up) != NULL)
+		refnameRangeTblEntry(pstate, ident->name, &sublevels_up) != NULL)
 	{
 		ident->isRel = TRUE;
 		result = (Node *) ident;

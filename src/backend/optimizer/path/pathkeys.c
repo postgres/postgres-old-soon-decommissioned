@@ -854,7 +854,8 @@ make_pathkeys_for_mergeclauses(Query *root,
 		cache_mergeclause_pathkeys(root, restrictinfo);
 
 		key = (Node *) get_leftop(restrictinfo->clause);
-		if (IsA(key, Var) &&intMember(((Var *) key)->varno, rel->relids))
+		if (IsA(key, Var) &&
+			VARISRELMEMBER(((Var *) key)->varno, rel))
 		{
 			/* Rel is left side of mergeclause */
 			pathkey = restrictinfo->left_pathkey;
@@ -862,7 +863,8 @@ make_pathkeys_for_mergeclauses(Query *root,
 		else
 		{
 			key = (Node *) get_rightop(restrictinfo->clause);
-			if (IsA(key, Var) &&intMember(((Var *) key)->varno, rel->relids))
+			if (IsA(key, Var) &&
+				VARISRELMEMBER(((Var *) key)->varno, rel))
 			{
 				/* Rel is right side of mergeclause */
 				pathkey = restrictinfo->right_pathkey;
