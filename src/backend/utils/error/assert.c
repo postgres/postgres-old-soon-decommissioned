@@ -16,7 +16,7 @@
  */
 #include <stdio.h>
 
-#include "c.h"			/* where the declaration goes */
+#include "postgres.h"		/* where the declaration goes */
 #include "utils/module.h"
 
 #include "utils/exc.h"
