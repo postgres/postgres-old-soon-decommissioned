@@ -49,7 +49,10 @@ ExceptionalCondition(char* conditionName,
 		exceptionP->message, conditionName, detail,
 		fileName, lineNumber);
     }
-    
+
+#ifdef ABORT_ON_ASSERT
+    abort();
+#endif
     /*
      * XXX Depending on the Exception and tracing conditions, you will
      * XXX want to stop here immediately and maybe dump core.
