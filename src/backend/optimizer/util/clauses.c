@@ -377,7 +377,8 @@ clause_relids_vars(Node *clause, List **relids, List **vars)
 			Var		   *in_list = (Var *) lfirst(vi);
 
 			if (in_list->varno == var->varno &&
-				in_list->varattno == var->varattno)
+				in_list->varattno == var->varattno &&
+				in_list->varlevelsup == var->varlevelsup)
 				break;
 		}
 		if (vi == NIL)

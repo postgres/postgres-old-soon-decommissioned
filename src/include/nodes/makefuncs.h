@@ -27,6 +27,7 @@ extern Var *
 makeVar(Index varno,
 		AttrNumber varattno,
 		Oid vartype,
+		Index varlevelsup,
 		Index varnoold,
 		AttrNumber varoattno);
 

@@ -814,6 +814,10 @@ _readVar()
 	token = lsptok(NULL, &length);		/* get vartype */
 	local_node->vartype = (Oid) atol(token);
 
+	token = lsptok(NULL, &length);		/* eat :varlevelsup */
+	token = lsptok(NULL, &length);		/* get varlevelsup */
+	local_node->varlevelsup = (Oid) atol(token);
+
 	token = lsptok(NULL, &length);		/* eat :varnoold */
 	token = lsptok(NULL, &length);		/* get varnoold */
 	local_node->varnoold = (Oid) atol(token);

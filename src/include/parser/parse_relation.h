@@ -20,8 +20,9 @@
 #include <parser/parse_node.h>
 #include <utils/rel.h>
 
-extern RangeTblEntry *refnameRangeTableEntry(List *rtable, char *refname);
-extern int refnameRangeTablePosn(List *rtable, char *refname);
+extern RangeTblEntry *refnameRangeTableEntry(ParseState *pstate, char *refname);
+extern int refnameRangeTablePosn(ParseState *pstate,
+										char *refname, int *sublevels_up);
 extern RangeTblEntry *colnameRangeTableEntry(ParseState *pstate, char *colname);
 extern RangeTblEntry *addRangeTableEntry(ParseState *pstate,
 								   char *relname,

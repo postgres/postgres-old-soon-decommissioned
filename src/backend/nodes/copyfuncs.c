@@ -671,6 +671,7 @@ _copyVar(Var *from)
 	newnode->varno = from->varno;
 	newnode->varattno = from->varattno;
 	newnode->vartype = from->vartype;
+	newnode->varlevelsup = from->varlevelsup;
 
 	newnode->varnoold = from->varnoold;
 	newnode->varoattno = from->varoattno;

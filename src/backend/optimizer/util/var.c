@@ -209,6 +209,7 @@ var_equal(Var *var1, Var *var2)
 	if (IsA(var1, Var) &&IsA(var2, Var) &&
 		(((Var *) var1)->varno == ((Var *) var2)->varno) &&
 		(((Var *) var1)->vartype == ((Var *) var2)->vartype) &&
+		(((Var *) var1)->varlevelsup == ((Var *) var2)->varlevelsup) &&
 		(((Var *) var1)->varattno == ((Var *) var2)->varattno))
 	{
 

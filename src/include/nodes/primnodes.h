@@ -104,6 +104,7 @@ typedef struct Expr
  *						  (could be INNER or OUTER)
  *		varattno		- attribute number of this var, or zero for all
  *		vartype			- pg_type tuple oid for the type of this var
+ *		varlevelsup		- for subquery variables referencing outer relations
  *		varnoold		- keep varno around in case it got changed to INNER/
  *						  OUTER (see match_varid)
  *		varoattno		- attribute number of this var
@@ -122,6 +123,7 @@ typedef struct Var
 	Index		varno;
 	AttrNumber	varattno;
 	Oid			vartype;
+	Index		varlevelsup;	/* erased by upper optimizer */
 	Index		varnoold;		/* only used by optimizer */
 	AttrNumber	varoattno;		/* only used by optimizer */
 } Var;

@@ -114,7 +114,7 @@ preprocess_targetlist(List *tlist,
 							0,
 							1);
 
-		var = makeVar(result_relation, -1, 27, result_relation, -1);
+		var = makeVar(result_relation, -1, 27, 0, result_relation, -1);
 
 		ctid = makeNode(TargetEntry);
 		ctid->resdom = resdom;
@@ -322,7 +322,7 @@ new_relation_targetlist(Oid relid, Index rt_index, NodeTag node_type)
 					TargetEntry *temp_list = NULL;
 
 					temp_var =
-						makeVar(rt_index, attno, atttype, rt_index, attno);
+						makeVar(rt_index, attno, atttype, 0, rt_index, attno);
 
 					temp_list = MakeTLE(makeResdom(attno,
 												   atttype,

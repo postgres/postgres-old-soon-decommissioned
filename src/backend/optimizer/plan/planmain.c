@@ -464,7 +464,7 @@ make_groupPlan(List **tlist,
 		else
 			te->expr = (Node *) makeVar(1, resdom->resno,
 										resdom->restype,
-										-1, resdom->resno);
+										0, -1, resdom->resno);
 	}
 
 	sortplan = make_sort(sort_tlist,

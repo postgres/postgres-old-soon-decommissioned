@@ -494,6 +494,7 @@ tg_replaceNumberedParam(Node *expression,
 							newVar = makeVar(rt_ind,
 											 0, /* the whole tuple */
 										   TypeGet(teeRelName, &defined),
+										     0,
 											 rt_ind,
 											 0);
 							return (Node *) newVar;
@@ -503,6 +504,7 @@ tg_replaceNumberedParam(Node *expression,
 											 1, /* just the first field,
 												 * which is 'result' */
 										   TypeGet(teeRelName, &defined),
+										     0,
 											 rt_ind,
 											 0);
 						return (Node *) newVar;

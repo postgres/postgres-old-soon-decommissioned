@@ -129,6 +129,8 @@ _equalVar(Var *a, Var *b)
 		return (false);
 	if (a->vartype != b->vartype)
 		return (false);
+	if (a->varlevelsup != b->varlevelsup)
+		return (false);
 	if (a->varnoold != b->varnoold)
 		return (false);
 	if (a->varoattno != b->varoattno)

@@ -698,6 +698,8 @@ _outVar(StringInfo str, Var *node)
 	appendStringInfo(str, buf);
 	sprintf(buf, " :vartype %u ", node->vartype);
 	appendStringInfo(str, buf);
+	sprintf(buf, " :varlevelsup %u ", node->varlevelsup);
+	appendStringInfo(str, buf);
 	sprintf(buf, " :varnoold %d ", node->varnoold);
 	appendStringInfo(str, buf);
 	sprintf(buf, " :varoattno %d ", node->varoattno);

@@ -53,6 +53,7 @@ Var		   *
 makeVar(Index varno,
 		AttrNumber varattno,
 		Oid vartype,
+		Index varlevelsup,
 		Index varnoold,
 		AttrNumber varoattno)
 {
@@ -61,6 +62,7 @@ makeVar(Index varno,
 	var->varno = varno;
 	var->varattno = varattno;
 	var->vartype = vartype;
+	var->varlevelsup = varlevelsup;
 	var->varnoold = varnoold;
 	var->varoattno = varoattno;
 
