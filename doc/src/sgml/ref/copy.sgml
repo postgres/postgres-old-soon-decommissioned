@@ -700,7 +700,7 @@ ZW      ZIMBABWE
     There is no <command>COPY</command> statement in SQL92.
    </para>
    <para>
-    The following syntax was used by pre-7.3 servers and is still supported:
+    The following syntax was used by pre-7.3 applications and is still supported:
     <synopsis>
     COPY [ BINARY ] <replaceable class="parameter">table</replaceable> [ WITH OIDS ]
         FROM { '<replaceable class="parameter">filename</replaceable>' | <filename>stdin</filename> }
