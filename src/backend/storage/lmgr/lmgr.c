@@ -322,6 +322,7 @@ XactLockTableWait(TransactionId xid)
 	tag.objId.xid = xid;
 
 	LockAcquire(LockTableId, &tag, ShareLock);
+	LockRelease(LockTableId, &tag, ShareLock);
 
 	TransactionIdFlushCache();
 
