@@ -658,7 +658,11 @@ StreamServerPort(char *hostName, short portName, int *fdP)
 	 */
 
 	*fdP = fd;
-	if (family == AF_UNIX) atexit(do_unlink);
+	if (family == AF_UNIX)
+	  {
+	    chmod(sock_path, 0777);
+	    atexit(do_unlink);
+	  }
 	return (STATUS_OK);
 }
 
