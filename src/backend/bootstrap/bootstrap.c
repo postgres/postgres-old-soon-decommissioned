@@ -11,6 +11,7 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <unistd.h>   /* For getopt() */
 #include <time.h>
 #include <stdio.h>
 #include <signal.h>
