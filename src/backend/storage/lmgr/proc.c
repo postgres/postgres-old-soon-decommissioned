@@ -486,7 +486,7 @@ ProcSleep(PROC_QUEUE *waitQueue,
 		proc = (PROC *) MAKE_PTR(proc->links.prev);
 
 	/* The rest of the queue is FIFO, with readers first, writers last */
-	while (i++ < waitQueue->size && proc->prio <= prio)
+	for (     ; i < waitQueue->size && proc->prio <= prio; i++)
 		proc = (PROC *) MAKE_PTR(proc->links.prev);
 
 	MyProc->prio = prio;
