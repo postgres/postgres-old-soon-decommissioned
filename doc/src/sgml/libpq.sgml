@@ -188,17 +188,6 @@ PGconn *PQconnectdb(const char *conninfo)
      </para>
      </listitem>
     </varlistentry>
-
-    <varlistentry>
-     <term><literal>requiressl</literal></term>
-     <listitem>
-     <para>
-      Set to '1' to require SSL connection to the backend. Libpq
-      will then refuse to connect if the server does not support
-      SSL. Set to '0' (default) to negotiate with server.
-     </para>
-     </listitem>
-    </varlistentry>
    </variablelist>
 
    If  any  parameter is unspecified, then the corresponding
