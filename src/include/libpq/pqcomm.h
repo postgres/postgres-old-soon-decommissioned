@@ -66,7 +66,7 @@ typedef union SockAddr
 /* The earliest and latest frontend/backend protocol version supported. */
 
 #define PG_PROTOCOL_EARLIEST	PG_PROTOCOL(0,0)
-#define PG_PROTOCOL_LATEST	PG_PROTOCOL(1,0)
+#define PG_PROTOCOL_LATEST	PG_PROTOCOL(2,0)
 
 /*
  * All packets sent to the postmaster start with the length.  This is omitted

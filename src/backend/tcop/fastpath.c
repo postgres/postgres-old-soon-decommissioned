@@ -113,7 +113,6 @@ SendFunctionResult(Oid fid,		/* function id */
 	}
 
 	pq_putnchar("0", 1);
-	pq_flush();
 }
 
 /*
