@@ -740,8 +740,8 @@ RelationBuildRuleLock(Relation relation)
 											(Buffer *) NULL)) != NULL)
 	{
 		bool		isnull;
-		char	   *ruleaction = NULL;
-		char	   *rule_evqual_string;
+		Datum		ruleaction;
+		Datum		rule_evqual_string;
 		RewriteRule *rule;
 
 		rule = (RewriteRule *) palloc(sizeof(RewriteRule));
@@ -770,11 +770,11 @@ RelationBuildRuleLock(Relation relation)
 						 Anum_pg_rewrite_ev_qual, pg_rewrite_tupdesc,
 						 &isnull);
 
-		ruleaction = textout((struct varlena *) ruleaction);
-		rule_evqual_string = textout((struct varlena *) rule_evqual_string);
+		ruleaction = PointerGetDatum (textout((struct varlena *) DatumGetPointer (ruleaction)));
+		rule_evqual_string = PointerGetDatum (textout((struct varlena *) DatumGetPointer (rule_evqual_string)));
 
-		rule->actions = (List *) stringToNode(ruleaction);
-		rule->qual = (Node *) stringToNode(rule_evqual_string);
+		rule->actions = (List *) stringToNode(DatumGetPointer (ruleaction));
+		rule->qual = (Node *) stringToNode(DatumGetPointer (rule_evqual_string));
 
 		rules[numlocks++] = rule;
 		if (numlocks == maxlocks)
