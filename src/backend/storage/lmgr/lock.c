@@ -668,7 +668,7 @@ LockAcquire(LOCKMETHOD lockmethod, LOCKTAG *locktag, LOCKMODE lockmode)
 			{
 				SHMQueueDelete(&result->queue);
 				result = (XIDLookupEnt *) hash_search(xidTable,
-													  (Pointer) &result,
+													  (Pointer) result,
 													  HASH_REMOVE, &found);
 				if (!result || !found) {
 					elog(NOTICE, "LockAcquire: remove xid, table corrupted");
