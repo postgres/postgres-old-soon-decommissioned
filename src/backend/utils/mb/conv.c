@@ -63,8 +63,7 @@
 
 /*
  * convert bogus chars that cannot be represented in the current
-encoding
- * system.
+ * encoding system.
  */
 static void
 printBogusChar(unsigned char **mic, unsigned char **p)
