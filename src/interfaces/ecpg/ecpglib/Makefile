@@ -23,7 +23,7 @@ override CFLAGS += $(PTHREAD_CFLAGS)
 OBJS= execute.o typename.o descriptor.o data.o error.o prepare.o memory.o \
 	connect.o misc.o
 
-SHLIB_LINK = -L../pgtypeslib -lpgtypes $(libpq) \
+SHLIB_LINK = -L../pgtypeslib -lpgtypes -lpgport $(libpq) \
 	$(filter -lintl -lssl -lcrypto -lkrb5 -lcrypt -lm, $(LIBS)) $(PTHREAD_LIBS)
 
 all: all-lib
