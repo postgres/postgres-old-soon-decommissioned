@@ -25,6 +25,9 @@ endif
 # TCL/TK programs
 #
 ifeq ($(USE_TCL), true)
+ifeq ($(USE_TK), true)
+	DIRS += pgaccess
+endif
 	DIRS += pgtclsh
 endif
 
