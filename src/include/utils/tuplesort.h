@@ -39,13 +39,13 @@ typedef struct Tuplesortstate Tuplesortstate;
 extern Tuplesortstate *tuplesort_begin_heap(TupleDesc tupDesc,
 					 int nkeys,
 					 Oid *sortOperators, AttrNumber *attNums,
-					 bool randomAccess);
+					 int workMem, bool randomAccess);
 extern Tuplesortstate *tuplesort_begin_index(Relation indexRel,
 					  bool enforceUnique,
-					  bool randomAccess);
+					  int workMem, bool randomAccess);
 extern Tuplesortstate *tuplesort_begin_datum(Oid datumType,
 					  Oid sortOperator,
-					  bool randomAccess);
+					  int workMem, bool randomAccess);
 
 extern void tuplesort_puttuple(Tuplesortstate *state, void *tuple);
 

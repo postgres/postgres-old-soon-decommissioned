@@ -1399,7 +1399,7 @@ kill `cat /usr/local/pgsql/data/postmaster.pid`
       not designed for optimum performance. To achieve optimum
       performance, several server parameters must be adjusted, the two
       most common being <varname>shared_buffers</varname> and
-      <varname> sort_mem</varname> mentioned in the documentation.
+      <varname>work_mem</varname>.
       Other parameters mentioned in the documentation also affect
       performance.
      </para>

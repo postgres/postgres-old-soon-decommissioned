@@ -78,6 +78,6 @@ int			CTimeZone = 0;
 
 bool		enableFsync = true;
 bool		allowSystemTableMods = false;
-int			SortMem = 1024;
-int			VacuumMem = 8192;
+int			work_mem = 1024;
+int			maintenance_work_mem = 16384;
 int			NBuffers = 1000;

@@ -490,7 +490,7 @@ extern BTItem _bt_formitem(IndexTuple itup);
  */
 typedef struct BTSpool BTSpool; /* opaque type known only within nbtsort.c */
 
-extern BTSpool *_bt_spoolinit(Relation index, bool isunique);
+extern BTSpool *_bt_spoolinit(Relation index, bool isunique, bool isdead);
 extern void _bt_spooldestroy(BTSpool *btspool);
 extern void _bt_spool(BTItem btitem, BTSpool *btspool);
 extern void _bt_leafbuild(BTSpool *btspool, BTSpool *spool2);

@@ -614,12 +614,12 @@ subplan_is_hashable(SubLink *slink, SubPlan *node)
 		return false;
 
 	/*
-	 * The estimated size of the subquery result must fit in SortMem. (XXX
+	 * The estimated size of the subquery result must fit in work_mem. (XXX
 	 * what about hashtable overhead?)
 	 */
 	subquery_size = node->plan->plan_rows *
 		(MAXALIGN(node->plan->plan_width) + MAXALIGN(sizeof(HeapTupleData)));
-	if (subquery_size > SortMem * 1024L)
+	if (subquery_size > work_mem * 1024L)
 		return false;
 
 	/*

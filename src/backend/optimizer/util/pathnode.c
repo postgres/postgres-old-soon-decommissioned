@@ -637,7 +637,7 @@ create_unique_path(Query *root, RelOptInfo *rel, Path *subpath)
 		 */
 		int			hashentrysize = rel->width + 64;
 
-		if (hashentrysize * pathnode->rows <= SortMem * 1024L)
+		if (hashentrysize * pathnode->rows <= work_mem * 1024L)
 		{
 			cost_agg(&agg_path, root,
 					 AGG_HASHED, 0,

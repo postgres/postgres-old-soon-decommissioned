@@ -207,8 +207,8 @@ extern int	CTimeZone;
 
 extern bool enableFsync;
 extern bool allowSystemTableMods;
-extern DLLIMPORT int SortMem;
-extern int	VacuumMem;
+extern DLLIMPORT int work_mem;
+extern DLLIMPORT int maintenance_work_mem;
 
 /*
  *	A few postmaster startup options are exported here so the

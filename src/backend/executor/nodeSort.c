@@ -17,6 +17,7 @@
 
 #include "executor/execdebug.h"
 #include "executor/nodeSort.h"
+#include "miscadmin.h"
 #include "utils/tuplesort.h"
 
 
@@ -88,6 +89,7 @@ ExecSort(SortState *node)
 											  plannode->numCols,
 											  plannode->sortOperators,
 											  plannode->sortColIdx,
+											  work_mem,
 											  true /* randomAccess */ );
 		node->tuplesortstate = (void *) tuplesortstate;
 

@@ -282,8 +282,8 @@ PortalCreateHoldStore(Portal portal)
 	/* Create the tuple store, selecting cross-transaction temp files. */
 	oldcxt = MemoryContextSwitchTo(portal->holdContext);
 
-	/* XXX: Should SortMem be used for this? */
-	portal->holdStore = tuplestore_begin_heap(true, true, SortMem);
+	/* XXX: Should maintenance_work_mem be used for the portal size? */
+	portal->holdStore = tuplestore_begin_heap(true, true, work_mem);
 
 	MemoryContextSwitchTo(oldcxt);
 }

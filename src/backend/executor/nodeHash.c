@@ -348,9 +348,9 @@ ExecChooseHashTableSize(double ntuples, int tupwidth,
 	inner_rel_bytes = ntuples * tupsize * FUDGE_FAC;
 
 	/*
-	 * Target in-memory hashtable size is SortMem kilobytes.
+	 * Target in-memory hashtable size is work_mem kilobytes.
 	 */
-	hash_table_bytes = SortMem * 1024L;
+	hash_table_bytes = work_mem * 1024L;
 
 	/*
 	 * Count the number of hash buckets we want for the whole relation,

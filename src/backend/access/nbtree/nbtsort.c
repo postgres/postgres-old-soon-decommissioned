@@ -112,14 +112,25 @@ static void _bt_load(Relation index, BTSpool *btspool, BTSpool *btspool2);
  * create and initialize a spool structure
  */
 BTSpool *
-_bt_spoolinit(Relation index, bool isunique)
+_bt_spoolinit(Relation index, bool isunique, bool isdead)
 {
 	BTSpool    *btspool = (BTSpool *) palloc0(sizeof(BTSpool));
+	int			btKbytes;
 
 	btspool->index = index;
 	btspool->isunique = isunique;
 
-	btspool->sortstate = tuplesort_begin_index(index, isunique, false);
+	/*
+	 * We size the sort area as maintenance_work_mem rather than work_mem to
+	 * speed index creation.  This should be OK since a single backend can't
+	 * run multiple index creations in parallel.  Note that creation of a
+	 * unique index actually requires two BTSpool objects.  We expect that the
+	 * second one (for dead tuples) won't get very full, so we give it only
+	 * work_mem.
+	 */
+	btKbytes = isdead ? work_mem : maintenance_work_mem;
+	btspool->sortstate = tuplesort_begin_index(index, isunique,
+											   btKbytes, false);
 
 	/*
 	 * Currently, tuplesort provides sort functions on IndexTuples. If we
