@@ -10,6 +10,8 @@
 
 #include "libpq-fe.h"
 
+extern bool copy_state;
+
 /* handler for \copy */
 bool		do_copy(const char *args);
 

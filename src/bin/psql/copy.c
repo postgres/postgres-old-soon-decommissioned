@@ -10,6 +10,7 @@
 
 #include <errno.h>
 #include <assert.h>
+#include <signal.h>
 #ifndef WIN32
 #include <unistd.h>				/* for isatty */
 #else
@@ -17,6 +18,7 @@
 #endif
 
 #include "libpq-fe.h"
+#include "pqsignal.h"
 
 #include "settings.h"
 #include "common.h"
@@ -25,6 +27,8 @@
 #ifdef WIN32
 #define strcasecmp(x,y) stricmp(x,y)
 #endif
+
+bool copy_state;
 
 /*
  * parse_slash_copy
@@ -358,7 +362,9 @@ handleCopyOut(PGconn *conn, FILE *copystream)
 		}
 	}
 	fflush(copystream);
-	return !PQendcopy(conn);
+	ret = !PQendcopy(conn);
+    copy_state = false;
+    return ret;
 }
 
 
@@ -386,6 +392,7 @@ handleCopyIn(PGconn *conn, FILE *copystream, const char *prompt)
 	char	   *s;
 	int			bufleft;
 	int			c = 0;
+    int         ret;
 
 	if (prompt)					/* disable prompt if not interactive */
 	{
@@ -435,5 +442,7 @@ handleCopyIn(PGconn *conn, FILE *copystream, const char *prompt)
 		}
 		PQputline(conn, "\n");
 	}
-	return !PQendcopy(conn);
+	ret = !PQendcopy(conn);
+    copy_state = false;
+    return ret;
 }
