@@ -35,6 +35,7 @@
 #include "commands/explain.h"
 #include "commands/trigger.h"
 #include "commands/proclang.h"
+#include "commands/variable.h"
 
 #include "nodes/parsenodes.h"
 #include "../backend/parser/parse.h"
@@ -45,7 +46,6 @@
 #include "rewrite/rewriteDefine.h"
 #include "tcop/tcopdebug.h"
 #include "tcop/dest.h"
-#include "tcop/variable.h"
 #include "tcop/utility.h"
 #include "fmgr.h"				/* For load_file() */
 #include "storage/fd.h"

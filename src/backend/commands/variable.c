@@ -12,7 +12,7 @@
 #include <time.h>
 #include "postgres.h"
 #include "miscadmin.h"
-#include "tcop/variable.h"
+#include "commands/variable.h"
 #include "utils/builtins.h"
 #include "optimizer/internal.h"
 

@@ -15,7 +15,7 @@ INCLUDE_OPT = -I..
 
 CFLAGS+=$(INCLUDE_OPT)
 
-OBJS = catalog.o heap.o index.o indexing.o \
+OBJS = catalog.o heap.o index.o indexing.o aclchk.o \
        pg_aggregate.o pg_operator.o pg_proc.o pg_type.o
 
 all: SUBSYS.o global1.bki.source local1_template1.bki.source \
