@@ -43,7 +43,7 @@
  *
  */
 bool
-op_class(Oid opno, int32 opclass, Oid amopid)
+op_class(Oid oprno, int32 opclass, Oid amopid)
 {
 	FormData_pg_amop amoptup;
 
