@@ -58,8 +58,8 @@ extern bool order_joinkeys_by_pathkeys(List *pathkeys,
 					 List *joinkeys, List *joinclauses, int outer_or_inner,
 					 List **matchedJoinKeysPtr,
 					 List **matchedJoinClausesPtr);
-extern List *extract_path_keys(List *joinkeys, List *tlist,
-				  int outer_or_inner);
+extern List *make_pathkeys_from_joinkeys(List *joinkeys, List *tlist,
+										  int outer_or_inner);
 extern Path *get_cheapest_path_for_joinkeys(List *joinkeys,
 					PathOrder *ordering, List *paths, int outer_or_inner);
 extern List *new_join_pathkeys(List *outer_pathkeys,

@@ -235,6 +235,9 @@ pull_var_clause(Node *clause)
 /*
  *		var_equal
  *
+ *		The only difference between this an equal() is that this does not
+ *		test varnoold and varoattno.
+ *
  *		Returns t iff two var nodes correspond to the same attribute.
  */
 bool

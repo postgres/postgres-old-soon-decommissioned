@@ -1384,7 +1384,7 @@ create_index_path_group(Query *root,
 static List *
 add_index_paths(List *indexpaths, List *new_indexpaths)
 {
-	return append(indexpaths, new_indexpaths);
+	return nconc(indexpaths, new_indexpaths);
 }
 
 static bool

@@ -72,7 +72,7 @@ make_var_only_tlist(Query *root, List *tlist)
 	{
 		TargetEntry *entry = (TargetEntry *) lfirst(l);
 
-		tlist_vars = append(tlist_vars, pull_var_clause(entry->expr));
+		tlist_vars = nconc(tlist_vars, pull_var_clause(entry->expr));
 	}
 
 	/* now, the target list only contains Var nodes */

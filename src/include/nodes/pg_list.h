@@ -82,7 +82,6 @@ typedef struct List
  * function prototypes in nodes/list.c
  */
 extern int	length(List *list);
-extern List *append(List *list1, List *list2);
 extern List *nconc(List *list1, List *list2);
 extern List *lcons(void *datum, List *list);
 extern bool member(void *foo, List *bar);
@@ -101,11 +100,9 @@ extern void set_nth(List *l, int n, void *elem);
 List	   *lconsi(int datum, List *list);
 List	   *lappendi(List *list, int datum);
 extern bool intMember(int, List *);
-extern List *intAppend(List *list1, List *list2);
 
 extern int	nthi(int n, List *l);
 
-extern List *nreverse(List *);
 extern List *set_difference(List *, List *);
 extern List *set_differencei(List *, List *);
 extern List *LispUnion(List *foo, List *bar);

@@ -109,6 +109,7 @@ nconc(List *l1, List *l2)
 }
 
 
+#ifdef NOT_USED
 List *
 nreverse(List *list)
 {
@@ -128,6 +129,7 @@ nreverse(List *list)
 	lnext(list) = lnext(rlist);
 	return list;
 }
+#endif
 
 Value *
 makeInteger(long i)
@@ -245,6 +247,7 @@ append(List *l1, List *l2)
 	return newlist;
 }
 
+#ifdef NOT_USED
 /*
  * below are for backwards compatibility
  */
@@ -266,6 +269,7 @@ intAppend(List *l1, List *l2)
 	lnext(p) = newlist2;
 	return newlist;
 }
+#endif
 
 /*
  *		same

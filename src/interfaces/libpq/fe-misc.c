@@ -438,8 +438,8 @@ tryAgain2:
 definitelyFailed:
 	sprintf(conn->errorMessage,
 			"pqReadData() -- backend closed the channel unexpectedly.\n"
-			"\tThis probably means the backend terminated abnormally"
-			" before or while processing the request.\n");
+			"\tThis probably means the backend terminated abnormally\n"
+			"\tbefore or while processing the request.\n");
 	conn->status = CONNECTION_BAD;		/* No more connection to backend */
 #ifdef WIN32
 	closesocket(conn->sock);

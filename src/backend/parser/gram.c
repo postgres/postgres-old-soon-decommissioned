@@ -11574,7 +11574,7 @@ makeRowExpr(char *opr, List *largs, List *rargs)
 		elog(ERROR,"Operator '%s' not implemented for row expressions",opr);
 	}
 
-#if FALSE
+#ifdef NOT_USED
 	while ((largs != NIL) && (rargs != NIL))
 	{
 		larg = lfirst(largs);

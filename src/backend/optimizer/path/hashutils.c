@@ -83,9 +83,7 @@ group_clauses_by_hashop(List *restrictinfo_list,
 				xhashinfo->jmethod.jmkeys = NIL;
 				xhashinfo->jmethod.clauses = NIL;
 
-				/* XXX was push  */
-				hashinfo_list = lappend(hashinfo_list, xhashinfo);
-				hashinfo_list = nreverse(hashinfo_list);
+				hashinfo_list = lcons(xhashinfo, hashinfo_list);
 			}
 
 			xhashinfo->jmethod.clauses = lcons(clause, xhashinfo->jmethod.clauses);

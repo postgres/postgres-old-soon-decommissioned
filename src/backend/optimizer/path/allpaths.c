@@ -126,7 +126,7 @@ set_base_rel_pathlist(Query *root, List *rels)
 
 		rel->pathlist = add_pathlist(rel,
 									 sequential_scan_list,
-									 append(rel_index_scan_list,
+									 nconc(rel_index_scan_list,
 											or_index_scan_list));
 
 		set_cheapest(rel, rel->pathlist);
