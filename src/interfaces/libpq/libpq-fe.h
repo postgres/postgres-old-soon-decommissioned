@@ -86,12 +86,6 @@ extern		"C"
  */
 	typedef struct pg_result PGresult;
 
-/* PGsetenvHandle is an opaque handle which is returned by PQsetenvStart and
- * which should be passed to PQsetenvPoll or PQsetenvAbort in order to refer
- * to the particular process being performed.
- */
-	typedef struct pg_setenv_state *PGsetenvHandle;
-
 /* PGnotify represents the occurrence of a NOTIFY message.
  * Ideally this would be an opaque typedef, but it's so simple that it's
  * unlikely to change.
@@ -230,15 +224,6 @@ extern		"C"
 
 	/* Override default notice processor */
 	extern PQnoticeProcessor PQsetNoticeProcessor(PGconn *conn, PQnoticeProcessor proc, void *arg);
-
-	/* Passing of environment variables */
-	/* Asynchronous (non-blocking) */
-	extern PGsetenvHandle PQsetenvStart(PGconn *conn);
-	extern PostgresPollingStatusType PQsetenvPoll(PGconn *conn);
-	extern void PQsetenvAbort(PGsetenvHandle handle);
-
-	/* Synchronous (blocking) */
-	extern int PQsetenv(PGconn *conn);
 
 /* === in fe-exec.c === */
 
