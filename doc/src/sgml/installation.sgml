@@ -915,6 +915,15 @@ JAVACMD=$JAVA_HOME/bin/java
       </varlistentry>
 
       <varlistentry>
+       <term><option>--with-threads</option></term>
+       <listitem>
+        <para>
+	 Allow separate libpq threads to safely control their private connection handles.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term><option>--without-zlib</option></term>
        <listitem>
         <para>
