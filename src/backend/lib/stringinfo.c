@@ -16,6 +16,7 @@
 #include "postgres.h"
 
 #include "lib/stringinfo.h"
+#include "utils/memutils.h"
 
 
 /*
@@ -220,7 +221,20 @@ enlargeStringInfo(StringInfo str, int needed)
 {
 	int			newlen;
 
+	/*
+	 * Guard against ridiculous "needed" values, which can occur if we're
+	 * fed bogus data.  Without this, we can get an overflow or infinite
+	 * loop in the following.
+	 */
+	if (needed < 0 ||
+		((Size) needed) >= (MaxAllocSize - (Size) str->len))
+		elog(ERROR, "invalid string enlargement request size %d",
+			 needed);
+
 	needed += str->len + 1;		/* total space required now */
+
+	/* Because of the above test, we now have needed <= MaxAllocSize */
+
 	if (needed <= str->maxlen)
 		return;					/* got enough space already */
 
@@ -233,6 +247,14 @@ enlargeStringInfo(StringInfo str, int needed)
 	newlen = 2 * str->maxlen;
 	while (needed > newlen)
 		newlen = 2 * newlen;
+
+	/*
+	 * Clamp to MaxAllocSize in case we went past it.  Note we are assuming
+	 * here that MaxAllocSize <= INT_MAX/2, else the above loop could
+	 * overflow.  We will still have newlen >= needed.
+	 */
+	if (newlen > (int) MaxAllocSize)
+		newlen = (int) MaxAllocSize;
 
 	str->data = (char *) repalloc(str->data, newlen);
 
