@@ -148,8 +148,9 @@ typedef struct _indInfo
 	char	   *indrelname;		/* name of the indexed table */
 	char	   *indexdef;		/* index definitional command */
 	char	   *indisprimary;	/* is this a PK index? */
-	char	   *indkey[INDEX_MAX_KEYS]; /* attribute numbers of the key
-										 * attributes */
+	int			indnkeys;		/* number of keys in index */
+	char	  **indkey;			/* attribute numbers of the key
+								 * attributes */
 } IndInfo;
 
 typedef struct _aggInfo
