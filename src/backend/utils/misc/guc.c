@@ -1557,7 +1557,7 @@ static struct config_string ConfigureNamesString[] =
 			GUC_LIST_INPUT | GUC_LIST_QUOTE
 		},
 		&preload_libraries_string,
-		"", assign_canonical_path, NULL
+		"", NULL, NULL
 	},
 
 	{

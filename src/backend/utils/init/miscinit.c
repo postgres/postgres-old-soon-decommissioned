@@ -926,6 +926,7 @@ process_preload_libraries(char *preload_libraries_string)
 			funcname = NULL;
 		}
 
+		canonicalize_path(filename);
 		initfunc = (func_ptr) load_external_function(filename, funcname,
 													 true, NULL);
 		if (initfunc)
