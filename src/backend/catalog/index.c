@@ -21,6 +21,7 @@
  */
 #include "postgres.h"
 
+#include <unistd.h>
 
 #include "access/genam.h"
 #include "access/heapam.h"
@@ -1513,7 +1514,7 @@ setNewRelfilenode(Relation relation)
 	Oid		newrelfilenode;
 	bool		in_place_update = false;
 	HeapTupleData 	lockTupleData;
-	HeapTuple 	classTuple;
+	HeapTuple 	classTuple = NULL;
 	Buffer		buffer;
 	RelationData	workrel;
 	

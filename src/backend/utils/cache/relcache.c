@@ -253,7 +253,6 @@ static void RelationClearRelation(Relation relation, bool rebuildIt);
 #ifdef	ENABLE_REINDEX_NAILED_RELATIONS
 static void RelationReloadClassinfo(Relation relation);
 #endif /* ENABLE_REINDEX_NAILED_RELATIONS */
-static void RelationResetRelation(Relation relation, bool rebuildIt);
 static void RelationFlushRelation(Relation *relationPtr,
 					  int skipLocalRelations);
 static Relation RelationNameCacheGetRelation(const char *relationName);
