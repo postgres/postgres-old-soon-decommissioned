@@ -61,14 +61,19 @@ typedef int LOCKMETHOD;
 
 typedef struct LTAG
 {
-	Oid			relId;
-	Oid			dbId;
+	Oid				relId;
+	Oid				dbId;
 	union
 	{
-		BlockNumber blkno;
-		TransactionId xid;
-	}			objId;
-	uint16		lockmethod;		/* needed by user locks */
+		BlockNumber		blkno;
+		TransactionId	xid;
+	}				objId;
+	/* 
+	 * offnum should be part of objId.tupleId above, but would increase 
+	 * sizeof(LOCKTAG) and so moved here; currently used by userlocks only.
+	 */
+	OffsetNumber	offnum;
+	uint16			lockmethod;		/* needed by userlocks */
 } LOCKTAG;
 
 #define TAGSIZE (sizeof(LOCKTAG))
