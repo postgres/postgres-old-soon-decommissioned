@@ -18,6 +18,8 @@
 #include <unistd.h>				/* for geteuid(), getpid(), stat() */
 #else
 #include <win32.h>
+#include <io.h>
+#include <fnctl.h>
 #endif
 
 #include "libpq-fe.h"
