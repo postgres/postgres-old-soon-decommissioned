@@ -96,10 +96,3 @@ PG_encoding_to_char(PG_FUNCTION_ARGS)
 }
 
 #endif
-
-/* returns the byte length of a multi-byte word for an encoding */
-int
-pg_encoding_mblen(int encoding, const unsigned char *mbstr)
-{
-	return ((*pg_wchar_table[encoding].mblen) (mbstr));
-}

@@ -497,3 +497,12 @@ pg_mic_mblen(const unsigned char *mbstr)
 {
 	return (pg_mule_mblen(mbstr));
 }
+
+/* 
+ * Returns the byte length of a multi-byte word.
+ */
+int
+pg_encoding_mblen(int encoding, const unsigned char *mbstr)
+{
+	return ((*pg_wchar_table[encoding].mblen) (mbstr));
+}
