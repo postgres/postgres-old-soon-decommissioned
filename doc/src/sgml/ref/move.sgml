@@ -1,6 +1,6 @@
 <!--
 $Header$
-Postgres documentation
+PostgreSQL documentation
 -->
 
 <refentry id="SQL-MOVE">
@@ -57,7 +57,7 @@ MOVE [ <replaceable class="PARAMETER">direction</replaceable> ] [ <replaceable c
    </title>
 
    <para>
-    <command>MOVE</command> is a <productname>Postgres</productname>
+    <command>MOVE</command> is a <productname>PostgreSQL</productname>
     language extension.
    </para>
 

@@ -200,7 +200,7 @@ CREATE [ OR REPLACE ] FUNCTION <replaceable class="parameter">name</replaceable>
     Refer to the chapter in the
     <citetitle>PostgreSQL Programmer's Guide</citetitle>
     on the topic of extending
-    <productname>Postgres</productname> via functions 
+    <productname>PostgreSQL</productname> via functions 
     for further information on writing external functions.
    </para>
 
@@ -215,7 +215,7 @@ CREATE [ OR REPLACE ] FUNCTION <replaceable class="parameter">name</replaceable>
    </para>
 
    <para>
-    <productname>Postgres</productname> allows function <firstterm>overloading</firstterm>;
+    <productname>PostgreSQL</productname> allows function <firstterm>overloading</firstterm>;
     that is, the same name can be used for several different functions
     so long as they have distinct argument types.  This facility must
     be used with caution for internal and C-language functions, however.    

@@ -1,6 +1,6 @@
 <!--
 $Header$
-Postgres documentation
+PostgreSQL documentation
 -->
 
 <refentry id="SQL-DROPSEQUENCE">
@@ -105,7 +105,7 @@ ERROR: sequence "<replaceable class="parameter">name</replaceable>" does not exi
    </title>
    <para>
     The <command>DROP SEQUENCE</command> statement is a
-    <productname>Postgres</productname>
+    <productname>PostgreSQL</productname>
     language extension.
    </para>
    <para>

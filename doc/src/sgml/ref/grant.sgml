@@ -1,6 +1,6 @@
 <!--
 $Header$
-Postgres documentation
+PostgreSQL documentation
 -->
 
 <refentry id="SQL-GRANT">
@@ -155,7 +155,7 @@ GRANT { { SELECT | INSERT | UPDATE | DELETE | RULE | REFERENCES | TRIGGER } [,..
   <title>Notes</title>
 
    <para>
-    Currently, to grant privileges in <productname>Postgres</productname>
+    Currently, to grant privileges in <productname>PostgreSQL</productname>
     to only a few columns, you must
     create a view having the desired columns and then grant privileges
     to that view.

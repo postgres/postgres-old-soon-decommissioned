@@ -1,6 +1,6 @@
 <!--
 $Header$
-Postgres documentation
+PostgreSQL documentation
 -->
 
 <refentry id="SQL-INSERT">
@@ -135,7 +135,7 @@ INSERT 0 <replaceable>#</replaceable>
   <para>
    Each column not present in the target list will be inserted 
    using a default value, either a declared DEFAULT value
-   or NULL. <productname>Postgres</productname> will reject the new
+   or NULL. <productname>PostgreSQL</productname> will reject the new
    column if a NULL is inserted into a column declared NOT NULL.
   </para>
 

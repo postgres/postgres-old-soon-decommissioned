@@ -1,6 +1,6 @@
 <!--
 $Header$
-Postgres documentation
+PostgreSQL documentation
 -->
 
 <refentry id="SQL-DROPAGGREGATE">
@@ -153,7 +153,7 @@ DROP AGGREGATE myavg(int4);
    <para>
     There is no <command>DROP AGGREGATE</command> statement
     in <acronym>SQL92</acronym>; the statement is a
-    <productname>Postgres</productname>
+    <productname>PostgreSQL</productname>
     language extension.
    </para>
   </refsect2>

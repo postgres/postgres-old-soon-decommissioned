@@ -1,6 +1,6 @@
 <!--
 $Header$
-Postgres documentation
+PostgreSQL documentation
 -->
 
 <refentry id="SQL-SHOW">
@@ -120,7 +120,7 @@ NOTICE:  geqo is on
 
   <para>
    The <command>SHOW</command> command is a
-   <productname>Postgres</productname> extension.
+   <productname>PostgreSQL</productname> extension.
   </para>
  </refsect1>
 </refentry>

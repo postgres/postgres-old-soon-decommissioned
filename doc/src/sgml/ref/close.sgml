@@ -1,6 +1,6 @@
 <!--
 $Header$
-Postgres documentation
+PostgreSQL documentation
 -->
 
 <refentry id="SQL-CLOSE">
@@ -112,7 +112,7 @@ NOTICE PerformPortalClose: portal "<replaceable class="PARAMETER">cursor</replac
     Notes
    </title>
    <para>
-    <productname>Postgres</productname> does not have
+    <productname>PostgreSQL</productname> does not have
     an explicit <command>OPEN</command> cursor statement;
     a cursor is considered open when it is declared.
     Use the <command>DECLARE</command> statement to declare a cursor.

@@ -98,8 +98,9 @@ SET default_transaction_isolation = '<replaceable>value</replaceable>'
 
    <para>
     SERIALIZABLE is the default level in <acronym>SQL</acronym>.
-    Postgres does not provide the isolation levels <option>READ
-     UNCOMMITTED</option> and <option>REPEATABLE READ</option>. Because
+    <productname>PostgreSQL</productname> does not provide the
+    isolation levels <option>READ UNCOMMITTED</option> 
+    and <option>REPEATABLE READ</option>. Because
     of multi-version concurrency control, the serializable level is not
     truly serializable. See the <citetitle>User's Guide</citetitle> for
     details.
@@ -109,7 +110,8 @@ SET default_transaction_isolation = '<replaceable>value</replaceable>'
     In <acronym>SQL</acronym> there are two other transaction
     characteristics that can be set with these commands: whether the
     transaction is read-only and the size of the diagnostics area.
-    Neither of these concepts are supported in Postgres.
+    Neither of these concepts are supported in
+    <productname>PostgreSQL</productname>. 
    </para>
   </refsect2>
  </refsect1>

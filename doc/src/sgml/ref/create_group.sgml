@@ -1,6 +1,6 @@
 <!--
 $Header$
-Postgres documentation
+PostgreSQL documentation
 -->
 
 <refentry id="SQL-CREATEGROUP">
@@ -55,7 +55,7 @@ where <replaceable class="PARAMETER">option</replaceable> can be:
       <listitem>
        <para>
         The <literal>SYSID</literal> clause can be used to choose
-        the <productname>Postgres</productname> group id of the new
+        the <productname>PostgreSQL</productname> group id of the new
         group. It is not necessary to do so, however.
        </para>
        <para>

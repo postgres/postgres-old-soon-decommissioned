@@ -1,6 +1,6 @@
 <!--
 $Header$
-Postgres documentation
+PostgreSQL documentation
 -->
 
 <refentry id="SQL-DROPVIEW">
@@ -184,7 +184,7 @@ DROP VIEW <replaceable class="parameter">view</replaceable> { RESTRICT | CASCADE
     </title>
     <para>
      At present, to remove a referenced view from a
-     <productname>Postgres</productname> database, 
+     <productname>PostgreSQL</productname> database, 
      you must drop it explicitly.
     </para>
    </refsect3>

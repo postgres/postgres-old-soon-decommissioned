@@ -1,6 +1,6 @@
 <!--
 $Header$
-Postgres documentation
+PostgreSQL documentation
 -->
 
 <refentry id="SQL-ANALYZE">
@@ -99,7 +99,7 @@ ANALYZE [ VERBOSE ] [ <replaceable class="PARAMETER">table</replaceable> [ (<rep
   </title>
   <para>
    <command>ANALYZE</command> collects statistics about the contents of
-   <productname>Postgres</productname> tables, and stores the results in
+   <productname>PostgreSQL</productname> tables, and stores the results in
    the system table <literal>pg_statistic</literal>.  Subsequently,
    the query planner uses the statistics to help determine the most efficient
    execution plans for queries.

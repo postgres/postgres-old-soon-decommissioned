@@ -1,6 +1,6 @@
 <!--
 $Header$
-Postgres documentation
+PostgreSQL documentation
 -->
 
 <refentry id="SQL-RESET">
@@ -92,7 +92,7 @@ RESET GEQO;
   <title>Compatibility</title>
 
   <para>
-   <command>RESET</command> is a <productname>Postgres</productname> extension.
+   <command>RESET</command> is a <productname>PostgreSQL</productname> extension.
   </para>
  </refsect1>
 </refentry>

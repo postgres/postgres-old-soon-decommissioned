@@ -1,6 +1,6 @@
 <!--
 $Header$
-Postgres documentation
+PostgreSQL documentation
 -->
 
 <refentry id="SQL-DROPOPERATOR">
@@ -149,7 +149,7 @@ ERROR: RemoveOperator: right unary operator '<replaceable class="PARAMETER">oper
    </title>
    <para>
     The <command>DROP OPERATOR</command> statement is a 
-    <productname>Postgres</productname>
+    <productname>PostgreSQL</productname>
     language extension.
    </para>
    <para>

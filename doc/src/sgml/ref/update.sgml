@@ -1,6 +1,6 @@
 <!--
 $Header$
-Postgres documentation
+PostgreSQL documentation
 -->
 
 <refentry id="SQL-UPDATE">
@@ -64,7 +64,7 @@ UPDATE [ ONLY ] <replaceable class="PARAMETER">table</replaceable> SET <replacea
       <term><replaceable class="PARAMETER">fromlist</replaceable></term>
       <listitem>
        <para>
-	A <productname>Postgres</productname>
+	A <productname>PostgreSQL</productname>
 	non-standard extension to allow columns
 	from other tables to appear in the WHERE condition.
        </para>
