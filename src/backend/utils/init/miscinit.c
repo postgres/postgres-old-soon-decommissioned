@@ -236,12 +236,12 @@ SetDatabaseName(char *name)
 
 #ifndef MULTIBYTE
 /* even if MULTIBYTE is not enabled, this function is neccesary
- * since pg_proc.h does have.
+ * since pg_proc.h has an entry for it.
  */
 const char *
 getdatabaseencoding()
 {
-	elog(ERROR, "you need to enable MB to use this function");
+	elog(ERROR, "MultiByte strings (MB) must be enabled to use this function");
 	return ("");
 }
 
@@ -421,13 +421,13 @@ SetPgUserName()
 	{
 		/* use the (possibly) authenticated name that's provided */
 		if (!(p = getenv("PG_USER")))
-			elog(FATAL, "SetPgUserName: PG_USER environment variable unset");
+			elog(FATAL, "SetPgUserName: PG_USER environment variable is unset");
 	}
 	else
 	{
 		/* setuid() has not yet been done, see above comment */
 		if (!(pw = getpwuid(geteuid())))
-			elog(FATAL, "SetPgUserName: no entry in passwd file");
+			elog(FATAL, "SetPgUserName: no entry in host passwd file");
 		p = pw->pw_name;
 	}
 	if (UserName)
@@ -473,7 +473,7 @@ SetUserId()
 								  PointerGetDatum(userName),
 								  0, 0, 0);
 	if (!HeapTupleIsValid(userTup))
-		elog(FATAL, "SetUserId: user \"%s\" is not in \"%s\"",
+		elog(FATAL, "SetUserId: user '%s' is not in '%s'",
 			 userName,
 			 ShadowRelationName);
 	UserId = (Oid) ((Form_pg_shadow) GETSTRUCT(userTup))->usesysid;
