@@ -1017,10 +1017,18 @@ CommitTransactionCommand()
 	 *	someplace within a transaction block.  We increment the
 	 *	command counter and return.  Someday we may free resources
 	 *	local to the command.
+	 *
+	 *	That someday is today, at least for memory allocated by
+	 *	command in the BlankPortal' HeapMemory context.
+	 *		- vadim 03/25/97
 	 * ----------------
 	 */
     case TBLOCK_INPROGRESS:
 	CommandCounterIncrement();
+#ifdef TBL_FREE_CMD_MEMORY
+	EndPortalAllocMode ();
+	StartPortalAllocMode (DefaultAllocMode, 0);
+#endif	
 	break;
 	
 	/* ----------------
