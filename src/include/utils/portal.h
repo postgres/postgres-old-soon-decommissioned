@@ -27,10 +27,21 @@ typedef struct PortalData
 	char	   *name;			/* Portal's name */
 	MemoryContext heap;			/* subsidiary memory */
 	QueryDesc  *queryDesc;		/* Info about query associated with portal */
-	bool		backwardOK;		/* is fetch backwards allowed at all? */
-	bool		atStart;		/* T => fetch backwards is not allowed now */
-	bool		atEnd;			/* T => fetch forwards is not allowed now */
 	void		(*cleanup) (Portal);	/* Cleanup routine (optional) */
+	bool		backwardOK;		/* is fetch backwards allowed? */
+	/*
+	 * atStart, atEnd and portalPos indicate the current cursor position.
+	 * portalPos is zero before the first row, N after fetching N'th row of
+	 * query.  After we run off the end, portalPos = # of rows in query, and
+	 * atEnd is true.  If portalPos overflows, set posOverflow (this causes
+	 * us to stop relying on its value for navigation).  Note that atStart
+	 * implies portalPos == 0, but not the reverse (portalPos could have
+	 * overflowed).
+	 */
+	bool		atStart;
+	bool		atEnd;
+	bool		posOverflow;
+	long		portalPos;
 } PortalData;
 
 /*

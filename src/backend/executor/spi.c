@@ -1349,8 +1349,11 @@ _SPI_cursor_operation(Portal portal, bool forward, int count,
 	_SPI_current->tuptable = NULL;
 
 	/* Run the cursor */
-	_SPI_current->processed = DoPortalFetch(portal, forward, (long) count,
-											dest);
+	_SPI_current->processed =
+		DoPortalFetch(portal,
+					  forward ? FETCH_FORWARD : FETCH_BACKWARD,
+					  (long) count,
+					  dest);
 
 	if (dest == SPI && _SPI_checktuples())
 		elog(FATAL, "SPI_fetch: # of processed tuples check failed");

@@ -287,6 +287,42 @@ ExecutorEnd(QueryDesc *queryDesc)
 	queryDesc->planstate = NULL;
 }
 
+/* ----------------------------------------------------------------
+ *		ExecutorRewind
+ *
+ *		This routine may be called on an open queryDesc to rewind it
+ *		to the start.
+ * ----------------------------------------------------------------
+ */
+void
+ExecutorRewind(QueryDesc *queryDesc)
+{
+	EState	   *estate;
+	MemoryContext oldcontext;
+
+	/* sanity checks */
+	Assert(queryDesc != NULL);
+
+	estate = queryDesc->estate;
+
+	Assert(estate != NULL);
+
+	/* It's probably not sensible to rescan updating queries */
+	Assert(queryDesc->operation == CMD_SELECT);
+
+	/*
+	 * Switch into per-query memory context
+	 */
+	oldcontext = MemoryContextSwitchTo(estate->es_query_cxt);
+
+	/*
+	 * rescan plan
+	 */
+	ExecReScan(queryDesc->planstate, NULL);
+
+	MemoryContextSwitchTo(oldcontext);
+}
+
 
 /*
  * ExecCheckRTPerms

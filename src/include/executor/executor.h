@@ -86,6 +86,7 @@ extern void ExecutorStart(QueryDesc *queryDesc);
 extern TupleTableSlot *ExecutorRun(QueryDesc *queryDesc,
 			ScanDirection direction, long count);
 extern void ExecutorEnd(QueryDesc *queryDesc);
+extern void ExecutorRewind(QueryDesc *queryDesc);
 extern void ExecCheckRTPerms(List *rangeTable, CmdType operation);
 extern void ExecEndPlan(PlanState *planstate, EState *estate);
 extern void ExecConstraints(const char *caller, ResultRelInfo *resultRelInfo,

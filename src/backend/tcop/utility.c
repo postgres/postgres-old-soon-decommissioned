@@ -321,15 +321,8 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_FetchStmt:
-			{
-				FetchStmt  *stmt = (FetchStmt *) parsetree;
-
-				PerformPortalFetch(stmt->portalname,
-								   stmt->direction == FETCH_FORWARD,
-								   stmt->howMany,
-								   (stmt->ismove) ? None : dest,
-								   completionTag);
-			}
+			PerformPortalFetch((FetchStmt *) parsetree, dest,
+							   completionTag);
 			break;
 
 			/*
