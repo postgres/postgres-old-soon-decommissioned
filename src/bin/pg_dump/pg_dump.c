@@ -2426,8 +2426,12 @@ getTables(int *numTables, FuncInfo *finfo, int numFuncs, const char *tablename)
 			n = PQntuples(res2);
 			if (n != 1)
 			{
-				write_msg(NULL, "query to obtain name of primary key of table \"%s\" did not return exactly one result\n",
-						  tblinfo[i].relname);
+				if (n == 0)
+					write_msg(NULL, "query to obtain name of primary key of table \"%s\" returned no rows\n",
+							  tblinfo[i].relname);
+				else
+					write_msg(NULL, "query to obtain name of primary key of table \"%s\" returned %d rows\n",
+							  tblinfo[i].relname, n);
 				exit_nicely();
 			}
 
@@ -2573,8 +2577,12 @@ getTables(int *numTables, FuncInfo *finfo, int numFuncs, const char *tablename)
 					numFuncs = PQntuples(r);
 					if (numFuncs != 1)
 					{
-						write_msg(NULL, "query to obtain procedure name for trigger \"%s\" did not return exactly one result\n",
-								  tgname);
+						if (numFuncs == 0)
+							write_msg(NULL, "query to obtain procedure name for trigger \"%s\" (procedure OID %s) returned no rows\n",
+									  tgname, tgfuncoid);
+						else
+							write_msg(NULL, "query to obtain procedure name for trigger \"%s\" (procedure OID %s) returned %d rows\n",
+									  tgname, tgfuncoid, numFuncs);
 						exit_nicely();
 					}
 
@@ -4736,12 +4744,15 @@ dumpSequence(Archive *fout, TableInfo tbinfo, const bool schemaOnly, const bool 
 		exit_nicely();
 	}
 
+	/* Disable this check: it fails if sequence has been renamed */
+#ifdef NOT_USED
 	if (strcmp(PQgetvalue(res, 0, 0), tbinfo.relname) != 0)
 	{
 		write_msg(NULL, "query to get data of sequence \"%s\" returned name \"%s\"\n",
 				  tbinfo.relname, PQgetvalue(res, 0, 0));
 		exit_nicely();
 	}
+#endif
 
 	last = PQgetvalue(res, 0, 1);
 	incby = PQgetvalue(res, 0, 2);
