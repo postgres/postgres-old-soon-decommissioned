@@ -1447,7 +1447,11 @@ DROP SCHEMA information_schema CASCADE;
     </listitem>
 
     <listitem>
-     <para>Have <command>COMMENT ON DATABASE</command> on nonlocal database generate a warning (Rod)</para>
+     <para>
+       Have <command>COMMENT ON DATABASE</command> on nonlocal
+       database generate a warning, rather than an error (Rod)
+      </para>
+
      <para>
       Database comments are stored in database-local tables so
       comments on a database have to be stored in each database.
