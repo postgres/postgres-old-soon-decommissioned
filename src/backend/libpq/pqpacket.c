@@ -4,7 +4,8 @@
  *	  routines for reading and writing data packets sent/received by
  *	  POSTGRES clients and servers
  *
- * Copyright (c) 1994, Regents of the University of California
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1994, Regents of the University of California
  *
  *
  * IDENTIFICATION

@@ -5,7 +5,8 @@
  *	  (Note that pg_dlsym and pg_dlclose are actually macros defined in
  *	  "port-protos.h".)
  *
- * Copyright (c) 1994, Regents of the University of California
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1994, Regents of the University of California
  *
  *
  * IDENTIFICATION

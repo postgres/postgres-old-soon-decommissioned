@@ -307,7 +307,8 @@ print_copyright(void)
 		 "Copyright(c) 1996 - 9 PostgreSQL Global Development Group\n\n"
 		 "This software is based on Postgres95, formerly known as Postgres, which\n"
 		 "contains the following notice:\n\n"
-	  "Copyright(c) 1994 - 7 Regents of the University of California\n\n"
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+	  "Portions Copyright(c) 1994 - 7 Regents of the University of California\n\n"
 		 "Permission to use, copy, modify, and distribute this software and its\n"
 		 "documentation for any purpose, without fee, and without a written agreement\n"
 		 "is hereby granted, provided that the above copyright notice and this paragraph\n"

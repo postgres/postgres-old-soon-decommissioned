@@ -3,7 +3,8 @@
  * hashovfl.c
  *	  Overflow page management code for the Postgres hash access method
  *
- * Copyright (c) 1994, Regents of the University of California
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1994, Regents of the University of California
  *
  *
  * IDENTIFICATION

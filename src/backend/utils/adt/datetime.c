@@ -3,7 +3,8 @@
  * datetime.c
  *	  implements DATE and TIME data types specified in SQL-92 standard
  *
- * Copyright (c) 1994-5, Regents of the University of California
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1994-5, Regents of the University of California
  *
  *
  * IDENTIFICATION

@@ -3,7 +3,8 @@
  * user.c
  *	  use pg_exec_query to create a new user in the catalog
  *
- * Copyright (c) 1994, Regents of the University of California
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1994, Regents of the University of California
  *
  * $Id$
  *

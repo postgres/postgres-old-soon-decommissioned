@@ -6,7 +6,8 @@
  *	  to the Postmaster and the postmaster uses the info in the
  *	  message to setup a backend process.
  *
- * Copyright (c) 1994, Regents of the University of California
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1994, Regents of the University of California
  *
  *
  * IDENTIFICATION

@@ -7,7 +7,8 @@
  *      declaration of the PGlobj class.
  *   PGlobj encapsulates a large object interface to Postgres backend 
  *
- * Copyright (c) 1994, Regents of the University of California
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1994, Regents of the University of California
  *
  *
  *  $Id$

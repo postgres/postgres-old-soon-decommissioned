@@ -5,7 +5,8 @@
  *	  Example:	 a set is defined as being the result of the query
  *			retrieve (X.all)
  *
- * Copyright (c) 1994, Regents of the University of California
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1994, Regents of the University of California
  *
  *
  * IDENTIFICATION

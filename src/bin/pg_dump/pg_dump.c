@@ -17,7 +17,8 @@
  *
  * the output script is SQL that is understood by PostgreSQL
  *
- * Copyright (c) 1994, Regents of the University of California
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1994, Regents of the University of California
  *
  *
  * IDENTIFICATION
@@ -176,7 +177,8 @@ version(void)
 {
     puts("pg_dump (PostgreSQL) " PG_RELEASE "." PG_VERSION "." PG_SUBVERSION);
     puts("Copyright (C) 2000 PostgreSQL Global Development Team");
-    puts("Copyright (C) 1996 Regents of the University of California");
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+    puts("Portions Copyright (C) 1996 Regents of the University of California");
     puts("Read the file COPYING to see the usage and distribution terms.");
 }
 

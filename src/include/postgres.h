@@ -4,7 +4,8 @@
  *	  definition of (and support for) postgres system types.
  * this file is included by almost every .c in the system
  *
- * Copyright (c) 1995, Regents of the University of California
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1995, Regents of the University of California
  *
  * $Id$
  *

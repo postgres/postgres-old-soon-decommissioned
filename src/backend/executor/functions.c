@@ -4,7 +4,8 @@
  *	  Routines to handle functions called from the executor
  *	  Putting this stuff in fmgr makes the postmaster a mess....
  *
- * Copyright (c) 1994, Regents of the University of California
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1994, Regents of the University of California
  *
  *
  * IDENTIFICATION
