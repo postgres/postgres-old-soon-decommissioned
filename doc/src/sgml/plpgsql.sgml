@@ -685,6 +685,8 @@ BEGIN
     RETURN in_t.f1 || use_t.f3 || in_t.f5 || use_t.f7;
 END;
 ' LANGUAGE plpgsql;
+
+SELECT use_two_tables(t.*) FROM tablename t WHERE ... ;
 </programlisting>
    </para>
   </sect2>
