@@ -300,9 +300,7 @@ InitProcess(IPCKey key)
 
 	MyProc->pid = MyProcPid;
 	MyProc->xid = InvalidTransactionId;
-#ifdef LowLevelLocking
 	MyProc->xmin = InvalidTransactionId;
-#endif
 
 	/* ----------------
 	 * Start keeping spin lock stats from here on.	Any botch before

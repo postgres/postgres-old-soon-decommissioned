@@ -42,6 +42,7 @@ typedef struct BTPageOpaqueData
 {
 	BlockNumber btpo_prev;
 	BlockNumber btpo_next;
+	BlockNumber	btpo_parent;
 	uint16		btpo_flags;
 
 #define BTP_LEAF		(1 << 0)
@@ -177,13 +178,6 @@ typedef struct BTPageState
 #define BT_DESCENT		1
 
 /*
- *	We must classify index modification types for the benefit of
- *	_bt_adjscans.
- */
-#define BT_INSERT		0
-#define BT_DELETE		1
-
-/*
  *	In general, the btree code tries to localize its knowledge about
  *	page layout to a couple of routines.  However, we need a special
  *	value to indicate "no page number" in those places where we expect
@@ -268,7 +262,7 @@ extern void btdelete(Relation rel, ItemPointer tid);
  */
 extern void _bt_regscan(IndexScanDesc scan);
 extern void _bt_dropscan(IndexScanDesc scan);
-extern void _bt_adjscans(Relation rel, ItemPointer tid, int op);
+extern void _bt_adjscans(Relation rel, ItemPointer tid);
 
 /*
  * prototypes for functions in nbtsearch.c

@@ -34,55 +34,6 @@ static bool MultiAcquire(LOCKMETHOD lockmethod, LOCKTAG *tag,
 static bool MultiRelease(LOCKMETHOD lockmethod, LOCKTAG *tag,
 			 LOCKMODE lockmode, PG_LOCK_LEVEL level);
 
-#ifdef LowLevelLocking
-
-static MASK MultiConflicts[] = {
-	(int) NULL,
-
-/* RowShareLock */
-	(1 << ExclusiveLock),
-
-/* RowExclusiveLock */
-	(1 << ExclusiveLock) | (1 << ShareRowExclusiveLock) | (1 << ShareLock),
-
-/* ShareLock */
-	(1 << ExclusiveLock) | (1 << ShareRowExclusiveLock) |
-	(1 << RowExclusiveLock),
-
-/* ShareRowExclusiveLock */
-	(1 << ExclusiveLock) | (1 << ShareRowExclusiveLock) |
-	(1 << ShareLock) | (1 << RowExclusiveLock),
-
-/* ExclusiveLock */
-	(1 << ExclusiveLock) | (1 << ShareRowExclusiveLock) | (1 << ShareLock) |
-	(1 << RowExclusiveLock) | (1 << RowShareLock),
-
-/* ObjShareLock */
-	(1 << ObjExclusiveLock),
-
-/* ObjExclusiveLock */
-	(1 << ObjExclusiveLock) | (1 << ObjShareLock),
-
-/* ExtendLock */
-	(1 << ExtendLock)
-
-};
-
-/*
- * write locks have higher priority than read locks and extend locks.  May
- * want to treat INTENT locks differently.
- */
-static int	MultiPrios[] = {
-	(int) NULL,
-	2,
-	1,
-	2,
-	1,
-	1
-};
-
-#else
-
 /*
  * INTENT indicates to higher level that a lower level lock has been
  * set.  For example, a write lock on a tuple conflicts with a write
@@ -120,8 +71,6 @@ static int	MultiPrios[] = {
 	1,
 	1
 };
-
-#endif	 /* !LowLevelLocking */
 
 /*
  * Lock table identifier for this lock table.  The multi-level

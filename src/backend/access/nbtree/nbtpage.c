@@ -421,6 +421,8 @@ _bt_pageinit(Page page, Size size)
 	MemSet(page, 0, size);
 
 	PageInit(page, size, sizeof(BTPageOpaqueData));
+	((BTPageOpaque) PageGetSpecialPointer(page))->btpo_parent = 
+		InvalidBlockNumber;
 }
 
 /*

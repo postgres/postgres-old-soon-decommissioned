@@ -117,8 +117,11 @@ typedef HeapTupleData *HeapTuple;
 #define HEAP_XMAX_COMMITTED		0x0400	/* t_xmax committed */
 #define HEAP_XMAX_INVALID		0x0800	/* t_xmax invalid/aborted */
 #define HEAP_MARKED_FOR_UPDATE	0x1000	/* marked for UPDATE */
+#define HEAP_UPDATED			0x2000	/* this is UPDATEd version of row */
+#define HEAP_MOVED_OFF			0x4000	/* removed or moved to another place by vacuum */
+#define HEAP_MOVED_IN			0x8000	/* moved from another place by vacuum */
 
-#define HEAP_XACT_MASK			0x0F00	/* */
+#define HEAP_XACT_MASK			0xFF00	/* */
 
 #define HeapTupleNoNulls(tuple) \
 		(!(((HeapTuple) (tuple))->t_data->t_infomask & HEAP_HASNULL))

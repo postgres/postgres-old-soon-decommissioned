@@ -933,7 +933,10 @@ CommitTransaction()
 	 * 11/26/96
 	 */
 	if (MyProc != (PROC *) NULL)
+	{
 		MyProc->xid = InvalidTransactionId;
+		MyProc->xmin = InvalidTransactionId;
+	}
 }
 
 /* --------------------------------
@@ -951,7 +954,10 @@ AbortTransaction()
 	 * 11/26/96
 	 */
 	if (MyProc != (PROC *) NULL)
+	{
 		MyProc->xid = InvalidTransactionId;
+		MyProc->xmin = InvalidTransactionId;
+	}
 
 	/* ----------------
 	 *	check the current transaction state

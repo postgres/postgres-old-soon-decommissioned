@@ -706,15 +706,7 @@ _bt_next(IndexScanDesc scan, ScanDirection dir)
 	so = (BTScanOpaque) scan->opaque;
 	current = &(scan->currentItemData);
 
-	/*
-	 * XXX 10 may 91:  somewhere there's a bug in our management of the
-	 * cached buffer for this scan.  wei discovered it.  the following is
-	 * a workaround so he can work until i figure out what's going on.
-	 */
-
-	if (!BufferIsValid(so->btso_curbuf))
-		so->btso_curbuf = _bt_getbuf(rel, ItemPointerGetBlockNumber(current),
-									 BT_READ);
+	Assert (BufferIsValid(so->btso_curbuf));
 
 	/* we still have the buffer pinned and locked */
 	buf = so->btso_curbuf;
@@ -1069,7 +1061,11 @@ _bt_step(IndexScanDesc scan, Buffer *bufP, ScanDirection dir)
 
 	rel = scan->relation;
 	current = &(scan->currentItemData);
-	offnum = ItemPointerGetOffsetNumber(current);
+	/*
+	 * Don't use ItemPointerGetOffsetNumber or you risk to get
+	 * assertion due to ability of ip_posid to be equal 0.
+	 */
+	offnum = current->ip_posid;
 	page = BufferGetPage(*bufP);
 	opaque = (BTPageOpaque) PageGetSpecialPointer(page);
 	so = (BTScanOpaque) scan->opaque;
