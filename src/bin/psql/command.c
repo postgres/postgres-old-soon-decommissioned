@@ -66,8 +66,6 @@ static bool do_edit(const char *filename_arg, PQExpBuffer query_buf);
 static bool do_connect(const char *new_dbname, const char *new_user);
 static bool do_shell(const char *command);
 
-
-
 /*----------
  * HandleSlashCmds:
  *
@@ -1515,7 +1513,11 @@ editFile(const char *fname)
 	sys = malloc(strlen(editorName) + strlen(fname) + 10 + 1);
 	if (!sys)
 		return false;
-	sprintf(sys, "exec  %s '%s'", editorName, fname);
+	sprintf(sys, 
+#ifndef WIN32
+		"exec "
+#endif
+		"%s '%s'", editorName, fname);
 	result = system(sys);
 	if (result == -1)
 		psql_error("could not start editor %s\n", editorName);
@@ -1944,7 +1946,11 @@ do_shell(const char *command)
 			else
 				exit(EXIT_FAILURE);
 		}
-		sprintf(sys, "exec %s", shellName);
+		sprintf(sys, 
+#ifndef WIN32
+			"exec "
+#endif
+			"%s", shellName);
 		result = system(sys);
 		free(sys);
 	}
