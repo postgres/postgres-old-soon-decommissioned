@@ -515,13 +515,12 @@ PQmblen(unsigned char *s)
 
 #else
 
-#ifdef WIN32
+/* Provide a default definition in case someone calls it anyway */
 int
 PQmblen(unsigned char *s)
 {
+	return 1;
 }
-#endif	/* WIN32 */
-
 
 #endif	/* MULTIBYTE */
 

@@ -283,9 +283,8 @@ extern		"C"
 							  int width);			/* width of column, if
 													 * 0, use variable width */
 
-#ifdef MULTIBYTE
+	/* Determine length of multibyte encoded char at *s */
 	extern int	PQmblen(unsigned char *s);
-#endif
 
 /* === in fe-lobj.c === */
 
