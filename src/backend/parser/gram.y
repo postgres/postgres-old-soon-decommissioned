@@ -3290,7 +3290,6 @@ Typename:  Array opt_array_bounds
 					else
 						$$->setof = FALSE;
 				}
-		| Character
 		| SETOF Array
 				{
 					$$ = $2;
@@ -3301,6 +3300,7 @@ Typename:  Array opt_array_bounds
 Array:  Generic
 		| Datetime
 		| Numeric
+		| Character
 		;
 
 Generic:  generic
@@ -3425,10 +3425,6 @@ opt_decimal:  '(' Iconst ',' Iconst ')'
 
 /* SQL92 character data types
  * The following implements CHAR() and VARCHAR().
- * We do it here instead of the 'Generic' production
- * because we don't want to allow arrays of VARCHAR().
- * I haven't thought about whether that will work or not.
- *								- ay 6/95
  */
 Character:  character '(' Iconst ')'
 				{

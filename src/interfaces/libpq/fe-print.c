@@ -105,7 +105,7 @@ PQprint(FILE *fout,
 		int			usePipe = 0;
 		pqsigfunc	oldsigpipehandler = NULL;
 		char	   *pagerenv;
-		char		buf[8192 * 2 + 1];
+		char		buf[MAX_QUERY_SIZE + 1];
 
 		nTups = PQntuples(res);
 		if (!(fieldNames = (char **) calloc(nFields, sizeof(char *))))

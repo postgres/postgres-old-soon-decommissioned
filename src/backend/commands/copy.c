@@ -1061,7 +1061,7 @@ GetIndexRelations(Oid main_relation_oid,
 	}
 }
 
-#define EXT_ATTLEN 5*8192
+#define EXT_ATTLEN 5*BLCKSZ
 
 /*
    returns 1 is c is in s

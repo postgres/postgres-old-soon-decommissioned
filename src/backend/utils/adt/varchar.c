@@ -14,7 +14,9 @@
 #include <stdio.h>				/* for sprintf() */
 #include <string.h>
 #include "postgres.h"
+#include "utils/array.h"
 #include "utils/builtins.h"
+#include "catalog/pg_type.h"
 
 #ifdef CYR_RECODE
 char	   *convertstr(char *, int, int);
@@ -199,6 +201,16 @@ bpchar(char *s, int32 len)
 
 	return result;
 }	/* bpchar() */
+
+/* _bpchar()
+ * Converts an array of char() type to a specific internal length.
+ * len is the length specified in () plus VARHDRSZ bytes.
+ */
+ArrayType *
+_bpchar(ArrayType *v, int32 len)
+{
+	return array_map(v, BPCHAROID, bpchar, BPCHAROID, 1, len);
+}
 
 
 /* bpchar_char()
@@ -395,6 +407,16 @@ varchar(char *s, int32 slen)
 
 	return result;
 }	/* varchar() */
+
+/* _varchar()
+ * Converts an array of varchar() type to the specified size.
+ * len is the length specified in () plus VARHDRSZ bytes.
+ */
+ArrayType *
+_varchar(ArrayType *v, int32 len)
+{
+	return array_map(v, VARCHAROID, varchar, VARCHAROID, 1, len);
+}
 
 
 /*****************************************************************************

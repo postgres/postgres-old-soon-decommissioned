@@ -319,7 +319,7 @@ funny_dup17()
 	Relation	rel;
 	TupleDesc	tupdesc;
 	HeapTuple	tuple;
-	char		sql[8192];
+	char		sql[MAX_QUERY_SIZE];
 	char	   *when;
 	int			inserted;
 	int			selected = 0;
@@ -563,7 +563,7 @@ ttdummy()
 	{
 		void	   *pplan;
 		Oid		   *ctypes;
-		char		sql[8192];
+		char		sql[MAX_QUERY_SIZE];
 
 		/* allocate ctypes for preparation */
 		ctypes = (Oid *) palloc(natts * sizeof(Oid));

@@ -32,6 +32,11 @@
 #include "parse.h"
 #include "utils/builtins.h"
 
+#ifdef  YY_READ_BUF_SIZE
+#undef  YY_READ_BUF_SIZE
+#endif
+#define YY_READ_BUF_SIZE	MAX_PARSE_BUFFER
+
 extern char *parseString;
 static char *parseCh;
 

@@ -115,7 +115,7 @@ static	char	   *has_client_encoding = 0;
 #define CMD_TERMINATE	2
 #define CMD_NEWEDIT		3
 
-#define MAX_QUERY_BUFFER 20000
+#define MAX_QUERY_BUFFER MAX_QUERY_SIZE
 
 #define COPYBUFSIZ	8192
 

@@ -255,7 +255,7 @@ extern int	pqFlush(PGconn *conn);
 extern int	pqWait(int forRead, int forWrite, PGconn *conn);
 
 /* max length of message to send  */
-#define MAX_MESSAGE_LEN 8193
+#define MAX_MESSAGE_LEN MAX_QUERY_SIZE
 
 /* maximum number of fields in a tuple */
 #define MAX_FIELDS 512
