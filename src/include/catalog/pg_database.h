@@ -31,7 +31,7 @@
  *		typedef struct FormData_pg_database
  * ----------------
  */
-CATALOG(pg_database) BOOTSTRAP
+CATALOG(pg_database) BOOTSTRAP BKI_SHARED_RELATION
 {
 	NameData	datname;		/* database name */
 	int4		datdba;			/* sysid of owner */

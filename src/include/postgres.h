@@ -597,7 +597,7 @@ extern int	assertTest(int val);
 #define CATALOG(x)	typedef struct CppConcat(FormData_,x)
 
 #define BOOTSTRAP
-
+#define BKI_SHARED_RELATION
 #define BKI_WITHOUT_OIDS
 
 /* these need to expand into some harmless, repeatable declaration */

@@ -30,6 +30,7 @@ typedef struct RawColumnDefault
 extern Relation heap_create(const char *relname,
 			Oid relnamespace,
 			TupleDesc tupDesc,
+			bool shared_relation,
 			bool storage_create,
 			bool allow_system_table_mods);
 
@@ -39,6 +40,7 @@ extern Oid heap_create_with_catalog(const char *relname,
 						 Oid relnamespace,
 						 TupleDesc tupdesc,
 						 char relkind,
+						 bool shared_relation,
 						 bool relhasoids,
 						 bool allow_system_table_mods);
 

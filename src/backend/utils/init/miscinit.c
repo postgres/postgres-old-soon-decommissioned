@@ -612,9 +612,8 @@ InitializeSessionUserId(const char *username)
 							Anum_pg_shadow_useconfig, &isnull);
 	if (!isnull)
 	{
-		ArrayType *a;
+		ArrayType *a = DatumGetArrayTypeP(datum);
 
-		a = (ArrayType *) pg_detoast_datum((struct varlena *)datum);
 		ProcessGUCArray(a, PGC_S_USER);
 	}
 

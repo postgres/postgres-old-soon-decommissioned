@@ -733,6 +733,7 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 											 namespaceId,
 											 tupdesc,
 											 RELKIND_RELATION,
+											 false,
 											 true,
 											 allowSystemTableMods);
 

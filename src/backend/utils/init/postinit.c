@@ -138,7 +138,7 @@ ReverifyMyDatabase(const char *name)
 #endif
 
 	/*
-	 * Set up datbase-specific configuration variables.
+	 * Set up database-specific configuration variables.
 	 */
 	if (IsUnderPostmaster)
 	{
@@ -149,9 +149,8 @@ ReverifyMyDatabase(const char *name)
 							 RelationGetDescr(pgdbrel), &isnull);
 		if (!isnull)
 		{
-			ArrayType *a;
+			ArrayType *a = DatumGetArrayTypeP(datum);
 
-			a = (ArrayType *) pg_detoast_datum((struct varlena *)datum);
 			ProcessGUCArray(a, PGC_S_DATABASE);
 		}
 	}

@@ -29,7 +29,7 @@
  *		typedef struct FormData_pg_shadow
  * ----------------
  */
-CATALOG(pg_shadow) BOOTSTRAP BKI_WITHOUT_OIDS
+CATALOG(pg_shadow) BOOTSTRAP BKI_SHARED_RELATION BKI_WITHOUT_OIDS
 {
 	NameData	usename;
 	int4		usesysid;
@@ -37,8 +37,9 @@ CATALOG(pg_shadow) BOOTSTRAP BKI_WITHOUT_OIDS
 	bool		usetrace;
 	bool		usesuper;		/* read this field via superuser() only */
 	bool		usecatupd;
+	/* remaining fields may be null; use heap_getattr to read them! */
 	text		passwd;
-	int4		valuntil;
+	int4		valuntil;		/* actually abstime */
 	text		useconfig[1];
 } FormData_pg_shadow;
 

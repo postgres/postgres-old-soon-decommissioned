@@ -658,10 +658,13 @@ $ECHO_N "enabling unlimited row size for system tables... "$ECHO_C
 
 "$PGPATH"/postgres $PGSQL_OPT template1 >/dev/null <<EOF
 ALTER TABLE pg_attrdef CREATE TOAST TABLE;
+ALTER TABLE pg_database CREATE TOAST TABLE;
 ALTER TABLE pg_description CREATE TOAST TABLE;
+ALTER TABLE pg_group CREATE TOAST TABLE;
 ALTER TABLE pg_proc CREATE TOAST TABLE;
 ALTER TABLE pg_relcheck CREATE TOAST TABLE;
 ALTER TABLE pg_rewrite CREATE TOAST TABLE;
+ALTER TABLE pg_shadow CREATE TOAST TABLE;
 ALTER TABLE pg_statistic CREATE TOAST TABLE;
 EOF
 if [ "$?" -ne 0 ]; then

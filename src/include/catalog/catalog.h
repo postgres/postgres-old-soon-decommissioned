@@ -30,7 +30,6 @@ extern bool IsSystemNamespace(Oid namespaceId);
 extern bool IsToastNamespace(Oid namespaceId);
 
 extern bool IsReservedName(const char *name);
-extern bool IsSharedSystemRelationName(const char *relname);
 
 extern Oid	newoid(void);
 

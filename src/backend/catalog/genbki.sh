@@ -217,6 +217,7 @@ BEGIN {
 	inside = 0;
 	raw = 0;
 	bootstrap = "";
+	shared_relation = "";
 	without_oids = "";
 	nc = 0;
 	reln_open = 0;
@@ -331,6 +332,9 @@ raw == 1 	{ print; next; }
 	if ($0 ~ /BOOTSTRAP/) {
 		bootstrap = "bootstrap ";
 	}
+	if ($0 ~ /BKI_SHARED_RELATION/) {
+		shared_relation = "shared_relation ";
+	}
 	if ($0 ~ /BKI_WITHOUT_OIDS/) {
 		without_oids = "without_oids ";
 	}
@@ -358,7 +362,7 @@ inside == 1 {
 #  if this is the last line, then output the bki catalog stuff.
 # ----
 	if ($1 ~ /}/) {
-		print "create " bootstrap without_oids catalog;
+		print "create " bootstrap shared_relation without_oids catalog;
 		print "\t(";
 
 		for (j=1; j<i-1; j++) {
@@ -375,6 +379,7 @@ inside == 1 {
 		reln_open = 1;
 		inside = 0;
 		bootstrap = "";
+		shared_relation = "";
 		without_oids = "";
 		next;
 	}

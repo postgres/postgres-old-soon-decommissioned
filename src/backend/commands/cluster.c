@@ -152,6 +152,7 @@ copy_heap(Oid OIDOldHeap, const char *NewName)
 										  RelationGetNamespace(OldHeap),
 										  tupdesc,
 										  OldHeap->rd_rel->relkind,
+										  OldHeap->rd_rel->relisshared,
 										  OldHeap->rd_rel->relhasoids,
 										  allowSystemTableMods);
 

@@ -25,7 +25,7 @@
  * ----------------
  */
 
-CATALOG(pg_group) BOOTSTRAP BKI_WITHOUT_OIDS
+CATALOG(pg_group) BOOTSTRAP BKI_SHARED_RELATION BKI_WITHOUT_OIDS
 {
 	NameData	groname;
 	int4		grosysid;
