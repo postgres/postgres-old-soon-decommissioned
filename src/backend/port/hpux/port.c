@@ -30,20 +30,3 @@ init_address_fixup()
 	 * by the kernel.
 	 */
 }
-
-long
-random()
-{
-	return (lrand48());
-}
-
-void
-srandom(unsigned seed)
-{
-	srand48((long int) seed);
-}
-
-getrusage(int who, struct rusage * ru)
-{
-	return (syscall(SYS_GETRUSAGE, who, ru));
-}
