@@ -333,7 +333,7 @@ ECPGis_type_an_array(int type, const struct statement * stmt, const struct varia
 	}
 	PQclear(query);
 	ECPGtypeinfocache_push(&(stmt->connection->cache_head), type, isarray, stmt->lineno);
-	ECPGlog("ECPGis_type_an_array line %d: TYPE database: %d C: %d array: %d\n", stmt->lineno, type, var->type, isarray);
+	ECPGlog("ECPGis_type_an_array line %d: TYPE database: %d C: %d array: %s\n", stmt->lineno, type, var->type, isarray?"Yes":"No");
 	return isarray;
 }
 
