@@ -96,7 +96,7 @@ static char *xlateSqlType(char *name);
 
 /* ----------
  * plpgsql_compile		Given a pg_proc's oid, make
- *				an execution tree for it.
+ *						an execution tree for it.
  * ----------
  */
 PLpgSQL_function *
