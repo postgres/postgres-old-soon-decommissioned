@@ -119,9 +119,10 @@ describeFunctions(const char *pattern, bool verbose)
 	initPQExpBuffer(&buf);
 
 	printfPQExpBuffer(&buf,
-		 "SELECT pg_catalog.format_type(p.prorettype, NULL) as \"%s\",\n"
-					  "  n.nspname as \"%s\",\n"
-					  "  p.proname as \"%s\",\n"
+		 "SELECT CASE WHEN p.proretset THEN 'setof ' ELSE '' END ||\n"
+				  "  pg_catalog.format_type(p.prorettype, NULL) as \"%s\",\n"
+				  "  n.nspname as \"%s\",\n"
+				  "  p.proname as \"%s\",\n"
 				  "  pg_catalog.oidvectortypes(p.proargtypes) as \"%s\"",
 					  _("Result data type"), _("Schema"), _("Name"),
 					  _("Argument data types"));
