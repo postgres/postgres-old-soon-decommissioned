@@ -146,6 +146,8 @@ ifeq ($(GCC), yes)
   CFLAGS += -Wall -Wmissing-prototypes -Wmissing-declarations
 endif
 
+CFLAGS += -DXLOG
+
 CXX = @CXX@
 GXX = @GXX@
 CXXFLAGS = @CXXFLAGS@

@@ -270,7 +270,7 @@ ConfigureNamesInt[] =
 	 300, 30, 1800},
 
 	{"wal_buffers", PGC_POSTMASTER,         &XLOGbuffers,
-	 4, 4, INT_MAX},
+	 8, 4, INT_MAX},
 
 	{"wal_debug", PGC_POSTMASTER,         &XLOG_DEBUG,
 	 0, 0, 16},

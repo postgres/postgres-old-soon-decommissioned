@@ -42,7 +42,7 @@ void		CreateCheckPoint(bool shutdown);
 
 char		XLogDir[MAXPGPATH];
 char		ControlFilePath[MAXPGPATH];
-int			XLOGbuffers = 0;
+int			XLOGbuffers = 8;
 XLogRecPtr	MyLastRecPtr = {0, 0};
 bool		StopIfError = false;
 bool		InRecovery = false;
