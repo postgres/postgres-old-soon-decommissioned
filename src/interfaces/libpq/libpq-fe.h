@@ -77,7 +77,7 @@ extern		"C"
 	{
 		char	   *name;		/* type name */
 		Oid			typid;		/* type id */
-		short		typlen;	/* type size */
+		short		typlen;		/* type size */
 		int			atttypmod;	/* type-specific modifier info */
 	} PGresAttDesc;
 
@@ -332,7 +332,7 @@ extern		"C"
 	extern int	PQfnumber(PGresult *res, const char *field_name);
 	extern Oid	PQftype(PGresult *res, int field_num);
 	extern short PQfsize(PGresult *res, int field_num);
-	extern short PQfmod(PGresult *res, int field_num);
+	extern int	PQfmod(PGresult *res, int field_num);
 	extern char *PQcmdStatus(PGresult *res);
 	extern const char *PQoidStatus(PGresult *res);
 	extern const char *PQcmdTuples(PGresult *res);

@@ -1299,7 +1299,7 @@ PQfsize(PGresult *res, int field_num)
 		return 0;
 }
 
-short
+int
 PQfmod(PGresult *res, int field_num)
 {
 	if (!res)

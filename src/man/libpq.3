@@ -309,8 +309,8 @@ returns the type-specific modification data of the field
 associated with the given field index.
 Field indices start at 0.
 .nf
-short PQfmod(PGresult *res,
-             int field_index);
+int PQfmod(PGresult *res,
+           int field_index);
 .fi
 
 .B PQgetvalue
