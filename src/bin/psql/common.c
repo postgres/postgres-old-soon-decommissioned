@@ -252,7 +252,7 @@ volatile bool cancel_pressed;
 #define write_stderr(String) write(fileno(stderr), String, strlen(String))
 
 void
-handle_sigint(int signum)
+handle_sigint(SIGNAL_ARGS)
 {
 	/* Don't muck around if copying in or prompting for a password. */
 	if ((copy_in_state && pset.cur_cmd_interactive) || prompt_state)

@@ -41,8 +41,8 @@ extern void pg_exec_query_dest(char *query_string,
 
 #endif	 /* BOOTSTRAP_INCLUDE */
 
-extern void handle_warn(int signum);
-extern void die(int signum);
+extern void handle_warn(SIGNAL_ARGS);
+extern void die(SIGNAL_ARGS);
 extern void CancelQuery(void);
 extern int PostgresMain(int argc, char *argv[],
 			 int real_argc, char *real_argv[]);

@@ -25,7 +25,7 @@ extern void AtCommit_Notify(void);
 extern void AtAbort_Notify(void);
 
 /* signal handler for inbound notifies (SIGUSR2) */
-extern void Async_NotifyHandler(int signum);
+extern void Async_NotifyHandler(SIGNAL_ARGS);
 
 /*
  * enable/disable processing of inbound notifies directly from signal handler.

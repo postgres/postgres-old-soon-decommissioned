@@ -34,7 +34,7 @@ extern volatile bool cancel_pressed;
 extern PGconn *cancelConn;
 
 #ifndef WIN32
-void		handle_sigint(int signum);
+void		handle_sigint(SIGNAL_ARGS);
 
 #endif	 /* not WIN32 */
 

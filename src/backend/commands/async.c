@@ -587,7 +587,7 @@ AtAbort_Notify()
  */
 
 void
-Async_NotifyHandler(int signum)
+Async_NotifyHandler(SIGNAL_ARGS)
 {
 
 	/*
