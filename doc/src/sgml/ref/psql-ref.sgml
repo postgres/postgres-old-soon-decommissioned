@@ -132,6 +132,7 @@ Postgres documentation
     <programlisting>
 $ <userinput>psql testdb</userinput>
 Welcome to psql, the PostgreSQL interactive terminal.
+
 Type \copyright for distribution terms
      \h for help with SQL commands
      \? for help on internal slash commands
