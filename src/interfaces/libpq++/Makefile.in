@@ -44,7 +44,11 @@ endif
 
 OBJS = pgconnection.o pgdatabase.o pgtransdb.o pgcursordb.o pglobject.o 
 
+ifeq ($(PORTNAME), win)
+SHLIB_LINK+= --driver-name g++ -L../libpq -lpq
+else
 SHLIB_LINK= -L../libpq -lpq
+endif
 
 # Shared library stuff, also default 'all' target
 include $(SRCDIR)/Makefile.shlib
