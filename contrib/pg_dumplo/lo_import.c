@@ -48,7 +48,7 @@ pglo_import(LODumpMaster * pgLO)
 		loa.lo_table = tab;
 		loa.lo_attr = attr;
 
-		sprintf(lo_path, "%s/%s", pgLO->space, path);
+		snprintf(lo_path, BUFSIZ, "%s/%s", pgLO->space, path);
 
 		/*
 		 * Import LO
@@ -81,7 +81,8 @@ pglo_import(LODumpMaster * pgLO)
 		/*
 		 * UPDATE oid in tab
 		 */
-		sprintf(Qbuff, "UPDATE \"%s\" SET \"%s\"=%u WHERE \"%s\"=%u",
+		snprintf(Qbuff, QUERY_BUFSIZ,
+			"UPDATE \"%s\" SET \"%s\"=%u WHERE \"%s\"=%u",
 			loa.lo_table, loa.lo_attr, new_oid, loa.lo_attr, loa.lo_oid);
 
 		/* fprintf(stderr, Qbuff); */

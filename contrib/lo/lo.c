@@ -92,7 +92,7 @@ lo_out(Blob * addr)
 		return (NULL);
 
 	result = (char *) palloc(32);
-	sprintf(result, "%u", *addr);
+	snprintf(result, 32, "%u", *addr);
 	return (result);
 }
 

@@ -352,7 +352,7 @@ KillExistingXLOG(void)
 		if (strlen(xlde->d_name) == 16 &&
 			strspn(xlde->d_name, "0123456789ABCDEF") == 16)
 		{
-			sprintf(path, "%s/%s", XLogDir, xlde->d_name);
+			snprintf(path, MAXPGPATH, "%s/%s", XLogDir, xlde->d_name);
 			if (unlink(path) < 0)
 			{
 				perror(path);

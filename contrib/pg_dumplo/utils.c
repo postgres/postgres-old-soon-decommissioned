@@ -36,7 +36,7 @@ index_file(LODumpMaster * pgLO)
 	if (pgLO->action == ACTION_SHOW)
 		return;
 
-	sprintf(path, "%s/%s", pgLO->space, pgLO->db);
+	snprintf(path, BUFSIZ, "%s/%s", pgLO->space, pgLO->db);
 
 	if (pgLO->action == ACTION_EXPORT_ATTR ||
 		pgLO->action == ACTION_EXPORT_ALL)
@@ -51,7 +51,7 @@ index_file(LODumpMaster * pgLO)
 			}
 		}
 
-		sprintf(path, "%s/lo_dump.index", path);
+		snprintf(path, BUFSIZ, "%s/lo_dump.index", path);
 
 		if ((pgLO->index = fopen(path, "w")) == NULL)
 		{
@@ -63,7 +63,7 @@ index_file(LODumpMaster * pgLO)
 	else if (pgLO->action != ACTION_NONE)
 	{
 
-		sprintf(path, "%s/lo_dump.index", path);
+		snprintf(path, BUFSIZ, "%s/lo_dump.index", path);
 
 		if ((pgLO->index = fopen(path, "r")) == NULL)
 		{

@@ -288,7 +288,7 @@ vacuumlo(char *database, struct _param *param)
 		 * Postgres-ism and not portable to other DBMSs, but then this
 		 * whole program is a Postgres-ism.
 		 */
-		sprintf(buf, "DELETE FROM vacuum_l WHERE lo = \"%s\".\"%s\" ",
+		snprintf(buf, BUFSIZE, "DELETE FROM vacuum_l WHERE lo = \"%s\".\"%s\" ",
 				table, field);
 		res2 = PQexec(conn, buf);
 		if (PQresultStatus(res2) != PGRES_COMMAND_OK)
