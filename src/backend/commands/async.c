@@ -295,13 +295,13 @@ Async_NotifyAtCommit()
 			notifyFrontEndPending = 1;
 		    } else {
 			elog(DEBUG, "Notifying others");
-#ifndef WIN32
+#ifndef win32
 			if (kill(DatumGetInt32(d), SIGUSR2) < 0) {
 			    if (errno == ESRCH) {
 				heap_delete(lRel, &lTuple->t_ctid);
 			    }
 			}
-#endif /* WIN32 */
+#endif /* win32 */
 		    }
 		}
 		ReleaseBuffer(b);
