@@ -262,7 +262,7 @@ LruDelete(File file)
     Delete(file);
     
     /* save the seek position */
-    fileP->seekPos = lseek(fileP->fd, 0L, SEEK_CUR);
+    fileP->seekPos = (long) lseek(fileP->fd, 0L, SEEK_CUR);
     Assert( fileP->seekPos != -1);
     
     /* if we have written to the file, sync it */
