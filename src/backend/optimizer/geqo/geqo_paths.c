@@ -112,7 +112,8 @@ geqo_rel_paths(Rel *rel)
     }
 
     cheapest = (JoinPath*)set_paths(rel, path);
-    rel->size = compute_joinrel_size(cheapest);
+    if ( IsA_JoinPath (cheapest) )
+    	rel->size = compute_joinrel_size(cheapest);
 }
 
 
