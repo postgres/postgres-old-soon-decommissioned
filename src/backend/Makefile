@@ -113,13 +113,7 @@ $(top_builddir)/src/include/utils/fmgroids.h: utils/fmgroids.h
 
 ##########################################################################
 
-install: all installdirs
-	$(INSTALL_PROGRAM) postgres$(X) $(bindir)/postgres$(X)
-	@rm -f $(bindir)/postmaster
-	ln -s postgres$(X) $(bindir)/postmaster
-ifeq ($(MAKE_EXPORTS), true)
-	$(INSTALL_DATA) $(POSTGRES_IMP) $(libdir)/$(POSTGRES_IMP)
-endif
+install: all installdirs install-bin
 ifeq ($(PORTNAME), win)
 ifeq ($(MAKE_DLL), true)
 	$(INSTALL_DATA) libpostgres.a $(libdir)/libpostgres.a
@@ -133,6 +127,15 @@ endif
 installdirs:
 	$(mkinstalldirs) $(bindir) $(libdir) $(datadir)
 
+install-bin:
+	$(INSTALL_PROGRAM) postgres$(X) $(bindir)/postgres$(X)
+	@rm -f $(bindir)/postmaster
+	ln -s postgres$(X) $(bindir)/postmaster
+ifeq ($(MAKE_EXPORTS), true)
+	$(INSTALL_DATA) $(POSTGRES_IMP) $(libdir)/$(POSTGRES_IMP)
+endif
+
+.PHONY: install installdirs install-bin
 
 ##########################################################################
 
