@@ -738,7 +738,7 @@ static struct config_int
 	},
 
 	{
-		{"log_min_duration_statement", PGC_USERSET}, &log_min_duration_statement,
+		{"log_min_duration_statement", PGC_SUSET}, &log_min_duration_statement,
 		0, 0, INT_MAX / 1000, NULL, NULL
 	},
 
