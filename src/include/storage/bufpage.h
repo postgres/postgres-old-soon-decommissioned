@@ -167,6 +167,13 @@ typedef enum {
      (sizeof(PageHeaderData) - sizeof(ItemIdData)) ? true : false)
 
 /*
+ * PageIsNew -- 
+ *	returns true iff page is not initialized (by PageInit)
+ */
+
+#define PageIsNew(page)	(((PageHeader) (page))->pd_upper == 0)
+
+/*
  * PageGetItemId --
  *	Returns an item identifier of a page.
  */
