@@ -33,6 +33,10 @@ FILESDIR=$PGDATA/files
 PATH=$BINDIR:$PATH
 export PATH
 
+# OPENLINK Added an fsync option to postmaster
+# REQUIRES: pg95 compiled with -DOPENLINK_PATCHES, see README_OPENLINK
+FSYNC=#-F
+
 CMDNAME=`basename $0`
 
 # ----------------
@@ -59,9 +63,9 @@ done
 # ----------------
 if test "$debug" -eq 1
 then
-    BACKENDARGS="-boot -C -d"
+    BACKENDARGS="-boot -C $FSYNC -d"
 else
-    BACKENDARGS="-boot -C -Q"
+    BACKENDARGS="-boot -C $FSYNC -Q"
 fi
 
 
@@ -216,7 +220,9 @@ then
     echo "vacuuming template1"
 fi
 
-    echo "vacuum" | postgres -Q template1 > /dev/null
+    echo "vacuum" | postgres $FSYNC -Q template1 > /dev/null
 fi
 
 rm -f /tmp/create.$$
+
+sync
