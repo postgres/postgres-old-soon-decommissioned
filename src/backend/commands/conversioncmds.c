@@ -148,11 +148,11 @@ RenameConversion(List *name, const char *newname)
 							 0, 0))
 		ereport(ERROR,
 				(errcode(ERRCODE_DUPLICATE_OBJECT),
-				 errmsg("conversion \"%s\" already exists in schema \"%s\"",
-						newname, get_namespace_name(namespaceOid))));
+			  errmsg("conversion \"%s\" already exists in schema \"%s\"",
+					 newname, get_namespace_name(namespaceOid))));
 
 	/* must be owner */
-    if (!superuser() &&
+	if (!superuser() &&
 		((Form_pg_conversion) GETSTRUCT(tup))->conowner != GetUserId())
 		aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_CONVERSION,
 					   NameListToString(name));

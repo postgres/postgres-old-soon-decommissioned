@@ -126,8 +126,8 @@ get_op_hash_function(Oid opno)
 	Oid			opclass = InvalidOid;
 
 	/*
-	 * Search pg_amop to see if the target operator is registered as the "="
-	 * operator of any hash opclass.  If the operator is registered in
+	 * Search pg_amop to see if the target operator is registered as the
+	 * "=" operator of any hash opclass.  If the operator is registered in
 	 * multiple opclasses, assume we can use the associated hash function
 	 * from any one.
 	 */
@@ -728,8 +728,8 @@ get_func_rettype(Oid funcid)
 Oid
 get_func_signature(Oid funcid, Oid *argtypes, int *nargs)
 {
-	HeapTuple		tp;
-	Form_pg_proc	procstruct;
+	HeapTuple	tp;
+	Form_pg_proc procstruct;
 	Oid			result;
 
 	tp = SearchSysCache(PROCOID,

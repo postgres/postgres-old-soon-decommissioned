@@ -408,7 +408,7 @@ extern Datum texticregexne(PG_FUNCTION_ARGS);
 extern Datum textregexsubstr(PG_FUNCTION_ARGS);
 extern Datum similar_escape(PG_FUNCTION_ARGS);
 extern const char *assign_regex_flavor(const char *value,
-									   bool doit, bool interactive);
+					bool doit, bool interactive);
 
 /* regproc.c */
 extern Datum regprocin(PG_FUNCTION_ARGS);

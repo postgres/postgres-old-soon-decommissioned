@@ -449,9 +449,7 @@ LocalExecuteInvalidationMessage(SharedInvalidationMessage *msg)
 		}
 	}
 	else
-	{
 		elog(FATAL, "unrecognized SI message id: %d", msg->id);
-	}
 }
 
 /*

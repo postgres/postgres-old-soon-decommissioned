@@ -41,6 +41,7 @@ pqGetpwuid(uid_t uid, struct passwd * resultbuf, char *buffer,
 		   size_t buflen, struct passwd ** result)
 {
 #if defined(USE_THREADS) && defined(HAVE_GETPWUID_R)
+
 	/*
 	 * broken (well early POSIX draft) getpwuid_r() which returns 'struct
 	 * passwd *'
@@ -65,6 +66,7 @@ pqGethostbyname(const char *name,
 				int *herrno)
 {
 #if defined(USE_THREADS) && defined(HAVE_GETHOSTBYNAME_R)
+
 	/*
 	 * broken (well early POSIX draft) gethostbyname_r() which returns
 	 * 'struct hostent *'

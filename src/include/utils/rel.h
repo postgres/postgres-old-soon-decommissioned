@@ -132,8 +132,8 @@ typedef struct RelationData
 
 	/* These are non-NULL only for an index relation: */
 	Form_pg_index rd_index;		/* pg_index tuple describing this index */
-	struct HeapTupleData *rd_indextuple; /* all of pg_index tuple */
-	/* "struct HeapTupleData *" avoids need to include htup.h here  */
+	struct HeapTupleData *rd_indextuple;		/* all of pg_index tuple */
+	/* "struct HeapTupleData *" avoids need to include htup.h here	*/
 	Form_pg_am	rd_am;			/* pg_am tuple for index's AM */
 
 	/* index access support info (used only for an index relation) */

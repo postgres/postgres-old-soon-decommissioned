@@ -58,7 +58,7 @@ CATALOG(pg_am)
 	regproc		amrestrpos;		/* "restore marked scan position" function */
 	regproc		ambuild;		/* "build new index" function */
 	regproc		ambulkdelete;	/* bulk-delete function */
-	regproc		amvacuumcleanup; /* post-VACUUM cleanup function */
+	regproc		amvacuumcleanup;	/* post-VACUUM cleanup function */
 	regproc		amcostestimate; /* estimate cost of an indexscan */
 } FormData_pg_am;
 

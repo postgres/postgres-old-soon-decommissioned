@@ -15,13 +15,15 @@
 
 
 static
-void vacuum_one_database(const char *dbname, bool full, bool verbose, bool analyze, const char *table,
-						 const char *host, const char *port, const char *username, bool password,
-						 const char *progname, bool echo, bool quiet);
+void
+vacuum_one_database(const char *dbname, bool full, bool verbose, bool analyze, const char *table,
+ const char *host, const char *port, const char *username, bool password,
+					const char *progname, bool echo, bool quiet);
 static
-void vacuum_all_databases(bool full, bool verbose, bool analyze,
-						  const char *host, const char *port, const char *username, bool password,
-						  const char *progname, bool echo, bool quiet);
+void
+vacuum_all_databases(bool full, bool verbose, bool analyze,
+ const char *host, const char *port, const char *username, bool password,
+					 const char *progname, bool echo, bool quiet);
 
 static void help(const char *progname);
 
@@ -120,7 +122,7 @@ main(int argc, char *argv[])
 			dbname = argv[optind];
 			break;
 		default:
-			fprintf(stderr,	_("%s: too many command-line arguments (first is \"%s\")\n"),
+			fprintf(stderr, _("%s: too many command-line arguments (first is \"%s\")\n"),
 					progname, argv[optind + 1]);
 			fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 			exit(1);
@@ -140,7 +142,7 @@ main(int argc, char *argv[])
 					progname);
 			exit(1);
 		}
-	
+
 		vacuum_all_databases(full, verbose, analyze,
 							 host, port, username, password,
 							 progname, echo, quiet);
@@ -167,9 +169,10 @@ main(int argc, char *argv[])
 
 
 static
-void vacuum_one_database(const char *dbname, bool full, bool verbose, bool analyze, const char *table,
-						 const char *host, const char *port, const char *username, bool password,
-						 const char *progname, bool echo, bool quiet)
+void
+vacuum_one_database(const char *dbname, bool full, bool verbose, bool analyze, const char *table,
+ const char *host, const char *port, const char *username, bool password,
+					const char *progname, bool echo, bool quiet)
 {
 	PQExpBufferData sql;
 
@@ -217,9 +220,10 @@ void vacuum_one_database(const char *dbname, bool full, bool verbose, bool analy
 
 
 static
-void vacuum_all_databases(bool full, bool verbose, bool analyze,
-						  const char *host, const char *port, const char *username, bool password,
-						  const char *progname, bool echo, bool quiet)
+void
+vacuum_all_databases(bool full, bool verbose, bool analyze,
+ const char *host, const char *port, const char *username, bool password,
+					 const char *progname, bool echo, bool quiet)
 {
 	PGconn	   *conn;
 	PGresult   *result;

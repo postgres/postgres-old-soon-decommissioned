@@ -20,4 +20,5 @@ typedef unsigned char slock_t;
 #define DLLIMPORT __declspec (dllexport)
 #else
 #define DLLIMPORT __declspec (dllimport)
+
 #endif

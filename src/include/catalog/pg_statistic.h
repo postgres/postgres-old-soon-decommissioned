@@ -27,7 +27,7 @@
  */
 
 /*
- * Keep C compiler happy with anyarray, below.  This will need to go elsewhere
+ * Keep C compiler happy with anyarray, below.	This will need to go elsewhere
  * if we ever use anyarray for more than pg_statistic.
  */
 typedef struct varlena anyarray;
@@ -116,8 +116,8 @@ CATALOG(pg_statistic) BKI_WITHOUT_OIDS
 
 	/*
 	 * Values in these arrays are values of the column's data type.  We
-	 * presently have to cheat quite a bit to allow polymorphic arrays
-	 * of this kind, but perhaps someday it'll be a less bogus facility.
+	 * presently have to cheat quite a bit to allow polymorphic arrays of
+	 * this kind, but perhaps someday it'll be a less bogus facility.
 	 */
 	anyarray	stavalues1;
 	anyarray	stavalues2;

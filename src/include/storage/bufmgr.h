@@ -23,7 +23,7 @@
 typedef void *Block;
 
 /* in globals.c ... this duplicates miscadmin.h */
-extern DLLIMPORT int	NBuffers;
+extern DLLIMPORT int NBuffers;
 
 /* in bufmgr.c */
 extern bool zero_damaged_pages;
@@ -33,7 +33,7 @@ extern DLLIMPORT Block *BufferBlockPointers;
 extern long *PrivateRefCount;
 
 /* in localbuf.c */
-extern DLLIMPORT int	NLocBuffer;
+extern DLLIMPORT int NLocBuffer;
 extern DLLIMPORT Block *LocalBufferBlockPointers;
 extern long *LocalRefCount;
 

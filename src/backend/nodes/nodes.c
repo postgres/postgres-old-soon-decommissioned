@@ -24,4 +24,4 @@
  * Support for newNode() macro
  */
 
-Node *newNodeMacroHolder;
+Node	   *newNodeMacroHolder;

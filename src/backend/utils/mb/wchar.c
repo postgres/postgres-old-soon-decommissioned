@@ -612,7 +612,7 @@ pg_encoding_max_length(int encoding)
  * mbstr is not necessarily NULL terminated; length of mbstr is
  * specified by len.
  *
- * If OK, return TRUE.  If a problem is found, return FALSE when noError is
+ * If OK, return TRUE.	If a problem is found, return FALSE when noError is
  * true; when noError is false, ereport() a descriptive message.
  */
 bool
@@ -637,7 +637,7 @@ pg_verifymbstr(const unsigned char *mbstr, int len, bool noError)
 				return false;
 			ereport(ERROR,
 					(errcode(ERRCODE_CHARACTER_NOT_IN_REPERTOIRE),
-					 errmsg("UNICODE characters >= 0x10000 are not supported")));
+			 errmsg("UNICODE characters >= 0x10000 are not supported")));
 		}
 
 		l = pg_mblen(mbstr);
@@ -659,12 +659,10 @@ pg_verifymbstr(const unsigned char *mbstr, int len, bool noError)
 					return false;
 
 				jlimit = Min(l, len);
-				jlimit = Min(jlimit, 8); /* prevent buffer overrun */
+				jlimit = Min(jlimit, 8);		/* prevent buffer overrun */
 
 				for (j = 0; j < jlimit; j++)
-				{
 					p += sprintf(p, "%02x", mbstr[j]);
-				}
 
 				ereport(ERROR,
 						(errcode(ERRCODE_CHARACTER_NOT_IN_REPERTOIRE),

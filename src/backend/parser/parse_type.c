@@ -91,8 +91,8 @@ LookupTypeName(const TypeName *typename)
 		if (attnum == InvalidAttrNumber)
 			ereport(ERROR,
 					(errcode(ERRCODE_UNDEFINED_COLUMN),
-					 errmsg("attribute \"%s\" of relation \"%s\" does not exist",
-							field, rel->relname)));
+			 errmsg("attribute \"%s\" of relation \"%s\" does not exist",
+					field, rel->relname)));
 		restype = get_atttype(relid, attnum);
 
 		/* this construct should never have an array indicator */
@@ -229,7 +229,7 @@ typenameType(const TypeName *typename)
 	tup = SearchSysCache(TYPEOID,
 						 ObjectIdGetDatum(typoid),
 						 0, 0, 0);
-	if (!HeapTupleIsValid(tup))	/* should not happen */
+	if (!HeapTupleIsValid(tup)) /* should not happen */
 		elog(ERROR, "cache lookup failed for type %u", typoid);
 	if (!((Form_pg_type) GETSTRUCT(tup))->typisdefined)
 		ereport(ERROR,

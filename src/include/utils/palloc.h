@@ -51,7 +51,7 @@ extern void *MemoryContextAllocZeroAligned(MemoryContext context, Size size);
 
 #define palloc(sz)	MemoryContextAlloc(CurrentMemoryContext, (sz))
 
-#define palloc0(sz)	MemoryContextAllocZero(CurrentMemoryContext, (sz))
+#define palloc0(sz) MemoryContextAllocZero(CurrentMemoryContext, (sz))
 
 /*
  * The result of palloc() is always word-aligned, so we can skip testing
@@ -61,7 +61,7 @@ extern void *MemoryContextAllocZeroAligned(MemoryContext context, Size size);
  * issue that it evaluates the argument multiple times isn't a problem in
  * practice.
  */
-#define palloc0fast(sz)	\
+#define palloc0fast(sz) \
 	( MemSetTest(0, sz) ? \
 		MemoryContextAllocZeroAligned(CurrentMemoryContext, sz) : \
 		MemoryContextAllocZero(CurrentMemoryContext, sz) )

@@ -172,8 +172,8 @@ main(int argc, char *argv[])
 					fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 					exit(1);
 				}
-				minXlogSeg = strtoul(endptr+1, &endptr2, 0);
-				if (endptr2 == endptr+1 || *endptr2 != '\0')
+				minXlogSeg = strtoul(endptr + 1, &endptr2, 0);
+				if (endptr2 == endptr + 1 || *endptr2 != '\0')
 				{
 					fprintf(stderr, _("%s: invalid argument for option -l\n"), progname);
 					fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);

@@ -46,7 +46,7 @@
 
 static int	plpgsql_firstcall = 1;
 
-void plpgsql_init(void);
+void		plpgsql_init(void);
 static void plpgsql_init_all(void);
 
 
@@ -78,8 +78,8 @@ plpgsql_init_all(void)
 		plpgsql_init();
 
 	/*
-	 * Any other initialization that must be done each time a new
-	 * backend starts -- currently none
+	 * Any other initialization that must be done each time a new backend
+	 * starts -- currently none
 	 */
 
 }

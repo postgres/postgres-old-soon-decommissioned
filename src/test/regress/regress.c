@@ -218,7 +218,7 @@ typedef struct
 }	WIDGET;
 
 WIDGET	   *widget_in(char *str);
-char	   *widget_out(WIDGET *widget);
+char	   *widget_out(WIDGET * widget);
 extern Datum pt_in_widget(PG_FUNCTION_ARGS);
 
 #define NARGS	3
@@ -250,7 +250,7 @@ widget_in(char *str)
 }
 
 char *
-widget_out(WIDGET *widget)
+widget_out(WIDGET * widget)
 {
 	char	   *result;
 

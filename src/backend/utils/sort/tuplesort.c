@@ -1715,12 +1715,12 @@ SelectSortFunction(Oid sortOperator,
 	Oid			opclass = InvalidOid;
 
 	/*
-	 * Search pg_amop to see if the target operator is registered as the "<"
-	 * or ">" operator of any btree opclass.  It's possible that it might
-	 * be registered both ways (eg, if someone were to build a "reverse
-	 * sort" opclass for some reason); prefer the "<" case if so. If the
-	 * operator is registered the same way in multiple opclasses, assume
-	 * we can use the associated comparator function from any one.
+	 * Search pg_amop to see if the target operator is registered as the
+	 * "<" or ">" operator of any btree opclass.  It's possible that it
+	 * might be registered both ways (eg, if someone were to build a
+	 * "reverse sort" opclass for some reason); prefer the "<" case if so.
+	 * If the operator is registered the same way in multiple opclasses,
+	 * assume we can use the associated comparator function from any one.
 	 */
 	catlist = SearchSysCacheList(AMOPOPID, 1,
 								 ObjectIdGetDatum(sortOperator),

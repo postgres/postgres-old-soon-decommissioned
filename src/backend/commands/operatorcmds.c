@@ -103,7 +103,7 @@ DefineOperator(List *names, List *parameters)
 			if (typeName1->setof)
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
-						 errmsg("setof type not allowed for operator argument")));
+				errmsg("setof type not allowed for operator argument")));
 		}
 		else if (strcasecmp(defel->defname, "rightarg") == 0)
 		{
@@ -111,7 +111,7 @@ DefineOperator(List *names, List *parameters)
 			if (typeName2->setof)
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
-						 errmsg("setof type not allowed for operator argument")));
+				errmsg("setof type not allowed for operator argument")));
 		}
 		else if (strcasecmp(defel->defname, "procedure") == 0)
 			functionName = defGetQualifiedName(defel);

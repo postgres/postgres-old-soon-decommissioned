@@ -295,7 +295,7 @@ extern int	pg_database_encoding_max_length(void);
 
 extern void SetDefaultClientEncoding(void);
 extern int	SetClientEncoding(int encoding, bool doit);
-extern void	InitializeClientEncoding(void);
+extern void InitializeClientEncoding(void);
 extern int	pg_get_client_encoding(void);
 extern const char *pg_get_client_encoding_name(void);
 

@@ -140,13 +140,13 @@ errstart(int elevel, const char *filename, int lineno,
 }
 
 void
-errfinish(int dummy, ...)
+errfinish(int dummy,...)
 {
 	proc_exit(1);
 }
 
 void
-elog_finish(int elevel, const char *fmt, ...)
+elog_finish(int elevel, const char *fmt,...)
 {
 	fprintf(stderr, "ERROR: %s\n", fmt);
 	proc_exit(1);
@@ -159,28 +159,28 @@ errcode(int sqlerrcode)
 }
 
 int
-errmsg(const char *fmt, ...)
+errmsg(const char *fmt,...)
 {
 	fprintf(stderr, "ERROR: %s\n", fmt);
 	return 0;					/* return value does not matter */
 }
 
 int
-errmsg_internal(const char *fmt, ...)
+errmsg_internal(const char *fmt,...)
 {
 	fprintf(stderr, "ERROR: %s\n", fmt);
 	return 0;					/* return value does not matter */
 }
 
 int
-errdetail(const char *fmt, ...)
+errdetail(const char *fmt,...)
 {
 	fprintf(stderr, "DETAIL: %s\n", fmt);
 	return 0;					/* return value does not matter */
 }
 
 int
-errhint(const char *fmt, ...)
+errhint(const char *fmt,...)
 {
 	fprintf(stderr, "HINT: %s\n", fmt);
 	return 0;					/* return value does not matter */

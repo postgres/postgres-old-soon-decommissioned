@@ -57,9 +57,9 @@ ExecUnique(UniqueState *node)
 	 * now loop, returning only non-duplicate tuples. We assume that the
 	 * tuples arrive in sorted order so we can detect duplicates easily.
 	 *
-	 * We return the first tuple from each group of duplicates (or the
-	 * last tuple of each group, when moving backwards).  At either end
-	 * of the subplan, clear priorTuple so that we correctly return the
+	 * We return the first tuple from each group of duplicates (or the last
+	 * tuple of each group, when moving backwards).  At either end of the
+	 * subplan, clear priorTuple so that we correctly return the
 	 * first/last tuple when reversing direction.
 	 */
 	for (;;)

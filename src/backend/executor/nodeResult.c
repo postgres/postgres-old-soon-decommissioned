@@ -64,7 +64,7 @@ ExecResult(ResultState *node)
 {
 	TupleTableSlot *outerTupleSlot;
 	TupleTableSlot *resultSlot;
-	PlanState   *outerPlan;
+	PlanState  *outerPlan;
 	ExprContext *econtext;
 	ExprDoneCond isDone;
 

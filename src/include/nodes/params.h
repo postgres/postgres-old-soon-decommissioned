@@ -51,7 +51,7 @@
  *	  ParamListInfo
  *
  *	  ParamListInfo entries are used to pass parameters into the executor
- *	  for parameterized plans.  Each entry in the array defines the value
+ *	  for parameterized plans.	Each entry in the array defines the value
  *	  to be substituted for a PARAM_NAMED or PARAM_NUM parameter.
  *
  *		kind   : the kind of parameter (PARAM_NAMED or PARAM_NUM)
@@ -89,9 +89,9 @@ typedef ParamListInfoData *ParamListInfo;
  *	  es_param_exec_vals or ecxt_param_exec_vals.
  *
  *	  If execPlan is not NULL, it points to a SubPlanState node that needs
- *	  to be executed to produce the value.  (This is done so that we can have
+ *	  to be executed to produce the value.	(This is done so that we can have
  *	  lazy evaluation of InitPlans: they aren't executed until/unless a
- *	  result value is needed.)  Otherwise the value is assumed to be valid
+ *	  result value is needed.)	Otherwise the value is assumed to be valid
  *	  when needed.
  * ----------------
  */

@@ -58,7 +58,7 @@ char *
 pg_dlerror(void)
 {
 	NSLinkEditErrors c;
-	int errorNumber;
+	int			errorNumber;
 	const char *fileName;
 	const char *errorString = NULL;
 

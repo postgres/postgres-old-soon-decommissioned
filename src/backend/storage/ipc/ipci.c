@@ -146,4 +146,3 @@ AttachSharedMemoryAndSemaphores(void)
 {
 	CLOGShmemInit();
 }
-

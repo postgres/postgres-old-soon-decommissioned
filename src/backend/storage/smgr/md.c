@@ -571,12 +571,13 @@ mdnblocks(Relation reln)
 	segno = 0;
 
 	/*
-	 * Skip through any segments that aren't the last one, to avoid redundant
-	 * seeks on them.  We have previously verified that these segments are
-	 * exactly RELSEG_SIZE long, and it's useless to recheck that each time.
-	 * (NOTE: this assumption could only be wrong if another backend has
-	 * truncated the relation.  We rely on higher code levels to handle that
-	 * scenario by closing and re-opening the md fd.)
+	 * Skip through any segments that aren't the last one, to avoid
+	 * redundant seeks on them.  We have previously verified that these
+	 * segments are exactly RELSEG_SIZE long, and it's useless to recheck
+	 * that each time. (NOTE: this assumption could only be wrong if
+	 * another backend has truncated the relation.	We rely on higher code
+	 * levels to handle that scenario by closing and re-opening the md
+	 * fd.)
 	 */
 	while (v->mdfd_chain != (MdfdVec *) NULL)
 	{

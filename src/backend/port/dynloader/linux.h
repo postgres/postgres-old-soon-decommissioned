@@ -39,7 +39,6 @@
 #define pg_dlsym		dlsym
 #define pg_dlclose		dlclose
 #define pg_dlerror		dlerror
-
 #endif   /* HAVE_DLOPEN */
 
 #endif   /* PORT_PROTOS_H */

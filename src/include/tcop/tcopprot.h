@@ -40,11 +40,10 @@ extern List *pg_parse_and_rewrite(const char *query_string,
 					 Oid *paramTypes, int numParams);
 extern List *pg_parse_query(const char *query_string);
 extern List *pg_analyze_and_rewrite(Node *parsetree,
-									Oid *paramTypes, int numParams);
+					   Oid *paramTypes, int numParams);
 extern List *pg_rewrite_queries(List *querytree_list);
 extern Plan *pg_plan_query(Query *querytree);
 extern List *pg_plan_queries(List *querytrees, bool needSnapshot);
-
 #endif   /* BOOTSTRAP_INCLUDE */
 
 extern void die(SIGNAL_ARGS);

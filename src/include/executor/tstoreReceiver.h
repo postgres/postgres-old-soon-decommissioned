@@ -20,6 +20,6 @@
 
 
 extern DestReceiver *CreateTuplestoreDestReceiver(Tuplestorestate *tStore,
-												  MemoryContext tContext);
+							 MemoryContext tContext);
 
-#endif	/* TSTORE_RECEIVER_H */
+#endif   /* TSTORE_RECEIVER_H */

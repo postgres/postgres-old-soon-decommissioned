@@ -33,8 +33,8 @@ extern Selectivity restriction_selectivity(Query *root,
 						int varRelid);
 
 extern Selectivity join_selectivity(Query *root,
-									Oid operator,
-									List *args,
-									JoinType jointype);
+				 Oid operator,
+				 List *args,
+				 JoinType jointype);
 
 #endif   /* PLANCAT_H */

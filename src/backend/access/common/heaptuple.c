@@ -617,7 +617,7 @@ heap_formtuple(TupleDesc tupleDescriptor,
 	td->t_natts = numberOfAttributes;
 	td->t_hoff = hoff;
 
-	if (tupleDescriptor->tdhasoid) /* else leave infomask = 0 */
+	if (tupleDescriptor->tdhasoid)		/* else leave infomask = 0 */
 		td->t_infomask = HEAP_HASOID;
 
 	DataFill((char *) td + hoff,

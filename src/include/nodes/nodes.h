@@ -129,8 +129,8 @@ typedef enum NodeTag
 	/*
 	 * TAGS FOR EXPRESSION STATE NODES (execnodes.h)
 	 *
-	 * These correspond (not always one-for-one) to primitive nodes
-	 * derived from Expr.
+	 * These correspond (not always one-for-one) to primitive nodes derived
+	 * from Expr.
 	 */
 	T_ExprState = 400,
 	T_GenericExprState,

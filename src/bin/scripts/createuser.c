@@ -148,11 +148,12 @@ main(int argc, char *argv[])
 
 	if (pwprompt)
 	{
-		char	   *pw1, *pw2;
+		char	   *pw1,
+				   *pw2;
 
 		pw1 = simple_prompt("Enter password for new user: ", 100, false);
 		pw2 = simple_prompt("Enter it again: ", 100, false);
-		if (strcmp(pw1, pw2)!=0)
+		if (strcmp(pw1, pw2) != 0)
 		{
 			fprintf(stderr, _("Passwords didn't match.\n"));
 			exit(1);
@@ -242,9 +243,9 @@ help(const char *progname)
 	printf(_("  -P, --pwprompt            assign a password to new user\n"));
 	printf(_("  -E, --encrypted           encrypt stored password\n"));
 	printf(_("  -N, --unencrypted         do no encrypt stored password\n"));
-	printf(_("  -i, --sysid=SYSID         select sysid for new user\n"     ));
+	printf(_("  -i, --sysid=SYSID         select sysid for new user\n"));
 	printf(_("  -e, --echo                show the commands being sent to the server\n"));
-    printf(_("  -q, --quiet               don't write any messages\n"));
+	printf(_("  -q, --quiet               don't write any messages\n"));
 	printf(_("  --help                    show this help, then exit\n"));
 	printf(_("  --version                 output version information, then exit\n"));
 	printf(_("\nConnection options:\n"));

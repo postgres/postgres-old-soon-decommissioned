@@ -45,9 +45,9 @@ typedef struct QueryDesc
 
 /* in pquery.c */
 extern QueryDesc *CreateQueryDesc(Query *parsetree, Plan *plantree,
-								  DestReceiver *dest,
-								  ParamListInfo params,
-								  bool doInstrument);
+				DestReceiver *dest,
+				ParamListInfo params,
+				bool doInstrument);
 
 extern void FreeQueryDesc(QueryDesc *qdesc);
 

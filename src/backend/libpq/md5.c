@@ -35,8 +35,8 @@
 #include "postgres_fe.h"
 #ifndef WIN32
 #include "libpq/crypt.h"
-#endif /* WIN32 */
-#endif /* FRONTEND */
+#endif   /* WIN32 */
+#endif   /* FRONTEND */
 
 #ifdef MD5_ODBC
 #include "md5.h"

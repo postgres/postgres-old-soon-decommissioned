@@ -18,25 +18,25 @@
 
 
 extern void ProcessQuery(Query *parsetree,
-						 Plan *plan,
-						 ParamListInfo params,
-						 DestReceiver *dest,
-						 char *completionTag);
+			 Plan *plan,
+			 ParamListInfo params,
+			 DestReceiver *dest,
+			 char *completionTag);
 
 extern PortalStrategy ChoosePortalStrategy(List *parseTrees);
 
 extern void PortalStart(Portal portal, ParamListInfo params);
 
 extern void PortalSetResultFormat(Portal portal, int nFormats,
-								  int16 *formats);
+					  int16 *formats);
 
 extern bool PortalRun(Portal portal, long count,
-					  DestReceiver *dest, DestReceiver *altdest,
-					  char *completionTag);
+		  DestReceiver *dest, DestReceiver *altdest,
+		  char *completionTag);
 
 extern long PortalRunFetch(Portal portal,
-						   FetchDirection fdirection,
-						   long count,
-						   DestReceiver *dest);
+			   FetchDirection fdirection,
+			   long count,
+			   DestReceiver *dest);
 
 #endif   /* PQUERY_H */

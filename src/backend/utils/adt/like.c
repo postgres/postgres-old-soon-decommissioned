@@ -451,7 +451,7 @@ like_escape_bytea(PG_FUNCTION_ARGS)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_ESCAPE_SEQUENCE),
 					 errmsg("invalid escape string"),
-					 errhint("Escape string must be empty or one character.")));
+			  errhint("Escape string must be empty or one character.")));
 
 		e = VARDATA(esc);
 

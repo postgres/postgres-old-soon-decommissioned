@@ -89,7 +89,7 @@ namerecv(PG_FUNCTION_ARGS)
 				(errcode(ERRCODE_NAME_TOO_LONG),
 				 errmsg("identifier too long"),
 				 errdetail("Identifier must be less than %d characters.",
-							NAMEDATALEN)));
+						   NAMEDATALEN)));
 	result = (NameData *) palloc0(NAMEDATALEN);
 	memcpy(result, str, nbytes);
 	pfree(str);

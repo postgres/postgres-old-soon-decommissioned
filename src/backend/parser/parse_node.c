@@ -121,8 +121,8 @@ transformArraySubscripts(ParseState *pstate,
 	if (elementType == InvalidOid)
 		ereport(ERROR,
 				(errcode(ERRCODE_DATATYPE_MISMATCH),
-				 errmsg("cannot subscript type %s because it is not an array",
-						format_type_be(arrayType))));
+			errmsg("cannot subscript type %s because it is not an array",
+				   format_type_be(arrayType))));
 
 	/*
 	 * A list containing only single subscripts refers to a single array
@@ -173,14 +173,14 @@ transformArraySubscripts(ParseState *pstate,
 				subexpr = transformExpr(pstate, ai->lidx);
 				/* If it's not int4 already, try to coerce */
 				subexpr = coerce_to_target_type(pstate,
-												subexpr, exprType(subexpr),
+											  subexpr, exprType(subexpr),
 												INT4OID, -1,
 												COERCION_ASSIGNMENT,
 												COERCE_IMPLICIT_CAST);
 				if (subexpr == NULL)
 					ereport(ERROR,
 							(errcode(ERRCODE_DATATYPE_MISMATCH),
-							 errmsg("array subscript must have type integer")));
+					  errmsg("array subscript must have type integer")));
 			}
 			else
 			{

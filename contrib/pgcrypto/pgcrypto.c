@@ -241,7 +241,7 @@ pg_gen_salt_rounds(PG_FUNCTION_ARGS)
 	if (len == 0)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("no such crypt algorithm or bad number of rounds")));
+			 errmsg("no such crypt algorithm or bad number of rounds")));
 
 	res = (text *) palloc(len + VARHDRSZ);
 	VARATT_SIZEP(res) = len + VARHDRSZ;

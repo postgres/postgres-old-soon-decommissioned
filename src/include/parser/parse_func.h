@@ -50,32 +50,32 @@ extern FuncDetailCode func_get_detail(List *funcname, List *fargs,
 				Oid *funcid, Oid *rettype,
 				bool *retset, Oid **true_typeids);
 
-extern int	func_match_argtypes(int nargs,
-								Oid *input_typeids,
-								FuncCandidateList raw_candidates,
-								FuncCandidateList *candidates);
+extern int func_match_argtypes(int nargs,
+					Oid *input_typeids,
+					FuncCandidateList raw_candidates,
+					FuncCandidateList *candidates);
 
 extern FuncCandidateList func_select_candidate(int nargs,
-											   Oid *input_typeids,
-											   FuncCandidateList candidates);
+					  Oid *input_typeids,
+					  FuncCandidateList candidates);
 
 extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
 
 extern void make_fn_arguments(ParseState *pstate,
-							  List *fargs,
-							  Oid *actual_arg_types,
-							  Oid *declared_arg_types);
+				  List *fargs,
+				  Oid *actual_arg_types,
+				  Oid *declared_arg_types);
 
 extern const char *funcname_signature_string(const char *funcname,
-											 int nargs, const Oid *argtypes);
+						  int nargs, const Oid *argtypes);
 extern const char *func_signature_string(List *funcname,
-										 int nargs, const Oid *argtypes);
+					  int nargs, const Oid *argtypes);
 
-extern Oid find_aggregate_func(List *aggname, Oid basetype, bool noError);
+extern Oid	find_aggregate_func(List *aggname, Oid basetype, bool noError);
 
-extern Oid	LookupFuncName(List *funcname, int nargs, const Oid *argtypes,
-						   bool noError);
+extern Oid LookupFuncName(List *funcname, int nargs, const Oid *argtypes,
+			   bool noError);
 extern Oid LookupFuncNameTypeNames(List *funcname, List *argtypes,
-								   bool noError);
+						bool noError);
 
 #endif   /* PARSE_FUNC_H */

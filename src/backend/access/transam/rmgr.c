@@ -19,7 +19,7 @@
 #include "commands/sequence.h"
 
 
-RmgrData	RmgrTable[RM_MAX_ID+1] = {
+RmgrData	RmgrTable[RM_MAX_ID + 1] = {
 	{"XLOG", xlog_redo, xlog_undo, xlog_desc, NULL, NULL},
 	{"Transaction", xact_redo, xact_undo, xact_desc, NULL, NULL},
 	{"Storage", smgr_redo, smgr_undo, smgr_desc, NULL, NULL},
@@ -32,7 +32,7 @@ RmgrData	RmgrTable[RM_MAX_ID+1] = {
 	{"Reserved 9", NULL, NULL, NULL, NULL, NULL},
 	{"Heap", heap_redo, heap_undo, heap_desc, NULL, NULL},
 	{"Btree", btree_redo, btree_undo, btree_desc,
-	 btree_xlog_startup, btree_xlog_cleanup},
+	btree_xlog_startup, btree_xlog_cleanup},
 	{"Hash", hash_redo, hash_undo, hash_desc, NULL, NULL},
 	{"Rtree", rtree_redo, rtree_undo, rtree_desc, NULL, NULL},
 	{"Gist", gist_redo, gist_undo, gist_desc, NULL, NULL},

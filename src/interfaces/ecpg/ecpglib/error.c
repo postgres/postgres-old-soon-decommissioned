@@ -13,9 +13,10 @@
 
 
 void
-ECPGraise(int line, int code, const char * sqlstate, const char *str)
+ECPGraise(int line, int code, const char *sqlstate, const char *str)
 {
 	struct sqlca_t *sqlca = ECPGget_sqlca();
+
 	sqlca->sqlcode = code;
 	strncpy(sqlca->sqlstate, sqlstate, sizeof(sqlca->sqlstate));
 
@@ -161,8 +162,8 @@ ECPGraise_backend(int line, PGresult *result, PGconn *conn, int compat)
 
 	/* copy error message */
 	snprintf(sqlca->sqlerrm.sqlerrmc, sizeof(sqlca->sqlerrm.sqlerrmc),
-			 "'%s' in line %d.", 
-			 result ? PQresultErrorField(result, 'M') : PQerrorMessage(conn),
+			 "'%s' in line %d.",
+		 result ? PQresultErrorField(result, 'M') : PQerrorMessage(conn),
 			 line);
 	sqlca->sqlerrm.sqlerrml = strlen(sqlca->sqlerrm.sqlerrmc);
 
@@ -172,9 +173,9 @@ ECPGraise_backend(int line, PGresult *result, PGconn *conn, int compat)
 			sizeof(sqlca->sqlstate));
 
 	/* assign SQLCODE for backward compatibility */
-	if (strncmp(sqlca->sqlstate, "23505", sizeof(sqlca->sqlstate))==0)
+	if (strncmp(sqlca->sqlstate, "23505", sizeof(sqlca->sqlstate)) == 0)
 		sqlca->sqlcode = INFORMIX_MODE(compat) ? ECPG_INFORMIX_DUPLICATE_KEY : ECPG_DUPLICATE_KEY;
-	if (strncmp(sqlca->sqlstate, "21000", sizeof(sqlca->sqlstate))==0)
+	if (strncmp(sqlca->sqlstate, "21000", sizeof(sqlca->sqlstate)) == 0)
 		sqlca->sqlcode = INFORMIX_MODE(compat) ? ECPG_INFORMIX_SUBSELECT_NOT_ONE : ECPG_SUBSELECT_NOT_ONE;
 	else
 		sqlca->sqlcode = ECPG_PGSQL;

@@ -30,7 +30,7 @@ extern void AlterDomainDefault(List *names, Node *defaultRaw);
 extern void AlterDomainNotNull(List *names, bool notNull);
 extern void AlterDomainAddConstraint(List *names, Node *constr);
 extern void AlterDomainDropConstraint(List *names, const char *constrName,
-									  DropBehavior behavior);
+						  DropBehavior behavior);
 
 extern List *GetDomainConstraints(Oid typeOid);
 

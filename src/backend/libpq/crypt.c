@@ -119,7 +119,10 @@ md5_crypt_verify(const Port *port, const char *user, char *client_pass)
 		default:
 			if (isMD5(shadow_pass))
 			{
-				/* Encrypt user-supplied password to match MD5 in pg_shadow */
+				/*
+				 * Encrypt user-supplied password to match MD5 in
+				 * pg_shadow
+				 */
 				crypt_client_pass = palloc(MD5_PASSWD_LEN + 1);
 				if (!EncryptMD5(client_pass,
 								port->user_name,

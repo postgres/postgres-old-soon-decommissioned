@@ -128,8 +128,8 @@ typedef struct _tableInfo
 	char	  **atttypnames;	/* attribute type names */
 	int		   *atttypmod;		/* type-specific type modifiers */
 	int		   *attstattarget;	/* attribute statistics targets */
-	char		   *attstorage;	/* attribute storage scheme */
-	char		   *typstorage;	/* type storage scheme */
+	char	   *attstorage;		/* attribute storage scheme */
+	char	   *typstorage;		/* type storage scheme */
 	bool	   *attisdropped;	/* true if attr is dropped; don't dump it */
 	bool	   *attislocal;		/* true if attr has local definition */
 	bool	   *attisserial;	/* true if attr is serial or bigserial */

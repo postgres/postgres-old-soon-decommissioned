@@ -61,7 +61,7 @@
 
 #ifndef HAVE_GETOPT_LONG
 #include "getopt_long.h"
-int optreset;
+int			optreset;
 #endif
 
 #ifdef ENABLE_NLS
@@ -401,7 +401,7 @@ usage(const char *progname)
 	printf(_("  -x, --no-privileges      skip restoration of access privileges (grant/revoke)\n"));
 	printf(_("  -X use-set-session-authorization, --use-set-session-authorization\n"
 			 "                           use SET SESSION AUTHORIZATION commands instead\n"
-			 "                           of reconnecting, if possible\n"));
+		   "                           of reconnecting, if possible\n"));
 	printf(_("  -X disable-triggers, --disable-triggers\n"
 			 "                           disable triggers during data-only restore\n"));
 

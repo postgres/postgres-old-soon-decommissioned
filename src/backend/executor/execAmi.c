@@ -48,7 +48,7 @@
  * ----------------------------------------------------------------
  */
 void
-ExecReScan(PlanState *node, ExprContext *exprCtxt)
+ExecReScan(PlanState * node, ExprContext *exprCtxt)
 {
 	/* If collecting timing stats, update them */
 	if (node->instrument)
@@ -61,7 +61,7 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 
 		foreach(lst, node->initPlan)
 		{
-			SubPlanState  *sstate = (SubPlanState *) lfirst(lst);
+			SubPlanState *sstate = (SubPlanState *) lfirst(lst);
 			PlanState  *splan = sstate->planstate;
 
 			if (splan->plan->extParam != NULL)	/* don't care about child
@@ -72,7 +72,7 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 		}
 		foreach(lst, node->subPlan)
 		{
-			SubPlanState  *sstate = (SubPlanState *) lfirst(lst);
+			SubPlanState *sstate = (SubPlanState *) lfirst(lst);
 			PlanState  *splan = sstate->planstate;
 
 			if (splan->plan->extParam != NULL)
@@ -177,7 +177,7 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
  * Marks the current scan position.
  */
 void
-ExecMarkPos(PlanState *node)
+ExecMarkPos(PlanState * node)
 {
 	switch (nodeTag(node))
 	{
@@ -218,7 +218,7 @@ ExecMarkPos(PlanState *node)
  * restores the scan position previously saved with ExecMarkPos()
  */
 void
-ExecRestrPos(PlanState *node)
+ExecRestrPos(PlanState * node)
 {
 	switch (nodeTag(node))
 	{
@@ -302,16 +302,16 @@ ExecSupportsBackwardScan(Plan *node)
 				return false;
 
 		case T_Append:
-		{
-			List   *l;
-
-			foreach(l, ((Append *) node)->appendplans)
 			{
-				if (!ExecSupportsBackwardScan((Plan *) lfirst(l)))
-					return false;
+				List	   *l;
+
+				foreach(l, ((Append *) node)->appendplans)
+				{
+					if (!ExecSupportsBackwardScan((Plan *) lfirst(l)))
+						return false;
+				}
+				return true;
 			}
-			return true;
-		}
 
 		case T_SeqScan:
 		case T_IndexScan:

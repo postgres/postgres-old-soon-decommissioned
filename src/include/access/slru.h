@@ -18,42 +18,42 @@
 
 typedef struct SlruLockData
 {
-	LWLockId ControlLock;
+	LWLockId	ControlLock;
 /*
  * BufferLocks is set during CLOGShmemInit and does not change thereafter.
  * The value is automatically inherited by backends via fork, and
  * doesn't need to be in shared memory.
  */
-	LWLockId BufferLocks[NUM_CLOG_BUFFERS];		/* Per-buffer I/O locks */
-} SlruLockData;
+	LWLockId	BufferLocks[NUM_CLOG_BUFFERS];	/* Per-buffer I/O locks */
+}	SlruLockData;
 typedef SlruLockData *SlruLock;
 
 typedef struct SlruCtlData
 {
-	void *shared;	/* pointer to SlruSharedData */
-	SlruLock locks;
+	void	   *shared;			/* pointer to SlruSharedData */
+	SlruLock	locks;
 
 /*
  * Dir is set during SimpleLruShmemInit and does not change thereafter.
  * The value is automatically inherited by backends via fork, and
  * doesn't need to be in shared memory.
  */
-	char Dir[MAXPGPATH];
-	
+	char		Dir[MAXPGPATH];
+
 /*
  * Decide which of two page numbers is "older" for truncation purposes.
  * We need to use comparison of TransactionIds here in order to do the right
  * thing with wraparound XID arithmetic.
  */
-	bool (*PagePrecedes)(int, int);
+	bool		(*PagePrecedes) (int, int);
 
-} SlruCtlData;
+}	SlruCtlData;
 typedef SlruCtlData *SlruCtl;
 
 extern int	SimpleLruShmemSize(void);
 extern void SimpleLruInit(SlruCtl ctl, const char *name, const char *subdir);
 extern int	SimpleLruZeroPage(SlruCtl ctl, int pageno);
-extern char	*SimpleLruReadPage(SlruCtl ctl, int pageno, TransactionId xid, bool forwrite);
+extern char *SimpleLruReadPage(SlruCtl ctl, int pageno, TransactionId xid, bool forwrite);
 extern void SimpleLruWritePage(SlruCtl ctl, int slotno);
 extern void SimpleLruSetLatestPage(SlruCtl ctl, int pageno);
 extern void SimpleLruFlush(SlruCtl ctl, bool checkpoint);

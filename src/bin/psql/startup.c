@@ -23,7 +23,7 @@
 
 #ifndef HAVE_GETOPT_LONG
 #include "getopt_long.h"
-int optreset;
+int			optreset;
 #endif
 
 #include <locale.h>
@@ -75,7 +75,7 @@ struct adhoc_opts
 };
 
 static void parse_psql_options(int argc, char *argv[],
-							   struct adhoc_opts * options);
+				   struct adhoc_opts * options);
 static void process_psqlrc(void);
 static void showVersion(void);
 
@@ -564,7 +564,7 @@ process_psqlrc(void)
 	if (home)
 	{
 		psqlrc = malloc(strlen(home) + 1 + strlen(PSQLRC) + 1 +
-				 strlen(PG_VERSION) + 1);
+						strlen(PG_VERSION) + 1);
 		if (!psqlrc)
 		{
 			fprintf(stderr, gettext("%s: out of memory\n"), pset.progname);

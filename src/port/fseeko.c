@@ -40,7 +40,7 @@
 int
 fseeko(FILE *stream, off_t offset, int whence)
 {
-	off_t floc;
+	off_t		floc;
 	struct stat filestat;
 
 	switch (whence)
@@ -79,7 +79,7 @@ fseeko(FILE *stream, off_t offset, int whence)
 			return 0;
 			break;
 		default:
-			errno =	EINVAL;
+			errno = EINVAL;
 			return -1;
 	}
 
@@ -94,10 +94,11 @@ failure:
 off_t
 ftello(FILE *stream)
 {
-	off_t floc;
+	off_t		floc;
 
 	if (fgetpos(stream, &floc) != 0)
 		return -1;
 	return floc;
 }
+
 #endif

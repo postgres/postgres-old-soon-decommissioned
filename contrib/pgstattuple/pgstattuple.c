@@ -221,5 +221,5 @@ pgstattuple_real(Relation rel)
 		pfree(values[i]);
 	pfree(values);
 
-	return(result);
+	return (result);
 }

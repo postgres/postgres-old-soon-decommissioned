@@ -151,7 +151,7 @@ cidrecv(PG_FUNCTION_ARGS)
 Datum
 cidsend(PG_FUNCTION_ARGS)
 {
-	CommandId arg1 = PG_GETARG_COMMANDID(0);
+	CommandId	arg1 = PG_GETARG_COMMANDID(0);
 	StringInfoData buf;
 
 	pq_begintypsend(&buf);

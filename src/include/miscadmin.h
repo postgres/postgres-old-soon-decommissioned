@@ -54,8 +54,8 @@
  * A related, but conceptually distinct, mechanism is the "critical section"
  * mechanism.  A critical section not only holds off cancel/die interrupts,
  * but causes any ereport(ERROR) or ereport(FATAL) to become ereport(PANIC)
- * --- that is, a system-wide reset is forced.  Needless to say, only really
- * *critical* code should be marked as a critical section!  Currently, this
+ * --- that is, a system-wide reset is forced.	Needless to say, only really
+ * *critical* code should be marked as a critical section!	Currently, this
  * mechanism is only used for XLOG-related code.
  *
  *****************************************************************************/
@@ -196,9 +196,11 @@ extern bool NetServer;
 extern bool EnableSSL;
 extern bool SilentMode;
 extern int	MaxBackends;
+
 #define DEF_MAXBACKENDS 32
 extern int	ReservedBackends;
-extern DLLIMPORT int	NBuffers;
+extern DLLIMPORT int NBuffers;
+
 #define DEF_NBUFFERS (DEF_MAXBACKENDS > 8 ? DEF_MAXBACKENDS * 2 : 16)
 extern int	PostPortNumber;
 extern int	Unix_socket_permissions;
@@ -243,7 +245,7 @@ extern char *convertstr(unsigned char *buff, int len, int dest);
 
 /* in utils/misc/superuser.c */
 extern bool superuser(void);	/* current user is superuser */
-extern bool superuser_arg(AclId userid);	/* given user is superuser */
+extern bool superuser_arg(AclId userid);		/* given user is superuser */
 
 
 /*****************************************************************************

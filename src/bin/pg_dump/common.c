@@ -290,9 +290,9 @@ flagInhAttrs(TableInfo *tblinfo, int numTables,
 		 * attr with the same name, then only dump it if:
 		 *
 		 * - it is NOT NULL and zero parents are NOT NULL
-		 *   OR
+		 *	 OR
 		 * - it has a default value AND the default value does not match
-		 *   all parent default values, or no parents specify a default.
+		 *	 all parent default values, or no parents specify a default.
 		 *
 		 * See discussion on -hackers around 2-Apr-2001.
 		 *----------------------------------------------------------------
@@ -364,9 +364,7 @@ flagInhAttrs(TableInfo *tblinfo, int numTables,
 
 				/* Clear it if attr has local definition */
 				if (g_fout->remoteVersion >= 70300 && tblinfo[i].attislocal[j])
-				{
 					tblinfo[i].inhAttrs[j] = false;
-				}
 			}
 		}
 	}

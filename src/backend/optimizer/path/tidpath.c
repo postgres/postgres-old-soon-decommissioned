@@ -27,7 +27,7 @@
 
 static List *TidqualFromRestrictinfo(Relids relids, List *restrictinfo);
 static bool isEvaluable(int varno, Node *node);
-static Node *TidequalClause(int varno, OpExpr *node);
+static Node *TidequalClause(int varno, OpExpr * node);
 static List *TidqualFromExpr(int varno, Expr *expr);
 
 static bool
@@ -66,7 +66,7 @@ isEvaluable(int varno, Node *node)
  *	  or	the left  node if the opclause is ....=CTID
  */
 static Node *
-TidequalClause(int varno, OpExpr *node)
+TidequalClause(int varno, OpExpr * node)
 {
 	Node	   *rnode = NULL,
 			   *arg1,

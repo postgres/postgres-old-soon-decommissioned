@@ -27,17 +27,17 @@ usage(const char *progname)
 {
 	printf(_("%s displays control information of a PostgreSQL database cluster.\n\n"), progname);
 	printf
-	(
-		_(
-			"Usage:\n"
-			"  %s [OPTION]\n\n"
-			"Options:\n"
-			"  DATADIR        show cluster control information for DATADIR\n"
-			"  --help         show this help, then exit\n"
-			"  --version      output version information, then exit\n"
-		),
-		progname
-	);
+		(
+		 _(
+		   "Usage:\n"
+		   "  %s [OPTION]\n\n"
+		   "Options:\n"
+		"  DATADIR        show cluster control information for DATADIR\n"
+		   "  --help         show this help, then exit\n"
+		   "  --version      output version information, then exit\n"
+		   ),
+		 progname
+		);
 	printf(_("\nIf no data directory is specified, the environment variable PGDATA\nis used.\n\n"));
 	printf(_("Report bugs to <pgsql-bugs@postgresql.org>.\n"));
 }

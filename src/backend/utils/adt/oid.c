@@ -222,9 +222,7 @@ oidvectorrecv(PG_FUNCTION_ARGS)
 	int			slot;
 
 	for (slot = 0; slot < INDEX_MAX_KEYS; slot++)
-	{
 		result[slot] = (Oid) pq_getmsgint(buf, sizeof(Oid));
-	}
 	PG_RETURN_POINTER(result);
 }
 
@@ -240,9 +238,7 @@ oidvectorsend(PG_FUNCTION_ARGS)
 
 	pq_begintypsend(&buf);
 	for (slot = 0; slot < INDEX_MAX_KEYS; slot++)
-	{
 		pq_sendint(&buf, oidArray[slot], sizeof(Oid));
-	}
 	PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
 }
 

@@ -1150,7 +1150,7 @@ _tarGetHeader(ArchiveHandle *AH, TAR_MEMBER *th)
 	int			sum,
 				chk;
 	size_t		len;
-	unsigned long	ullen;
+	unsigned long ullen;
 	off_t		hPos;
 	int			i;
 	bool		gotBlock = false;
@@ -1242,15 +1242,18 @@ _tarGetHeader(ArchiveHandle *AH, TAR_MEMBER *th)
  * Utility routine to print possibly larger than 32 bit integers in a
  * portable fashion.  Filled with zeros.
  */
-static void print_val(char *s, uint64 val, unsigned int base, size_t len)
+static void
+print_val(char *s, uint64 val, unsigned int base, size_t len)
 {
-        int i;
-        for (i = len; i > 0; i--)
-        {
-                int digit = val % base;
-                s[i - 1] = '0' + digit;
-                val = val / base;
-        }
+	int			i;
+
+	for (i = len; i > 0; i--)
+	{
+		int			digit = val % base;
+
+		s[i - 1] = '0' + digit;
+		val = val / base;
+	}
 }
 
 

@@ -603,10 +603,10 @@ Async_NotifyHandler(SIGNAL_ARGS)
 		bool		save_ImmediateInterruptOK = ImmediateInterruptOK;
 
 		/*
-		 * We may be called while ImmediateInterruptOK is true; turn it off
-		 * while messing with the NOTIFY state.  (We would have to save
-		 * and restore it anyway, because PGSemaphore operations inside
-		 * ProcessIncomingNotify() might reset it.)
+		 * We may be called while ImmediateInterruptOK is true; turn it
+		 * off while messing with the NOTIFY state.  (We would have to
+		 * save and restore it anyway, because PGSemaphore operations
+		 * inside ProcessIncomingNotify() might reset it.)
 		 */
 		ImmediateInterruptOK = false;
 
@@ -639,7 +639,8 @@ Async_NotifyHandler(SIGNAL_ARGS)
 		}
 
 		/*
-		 * Restore ImmediateInterruptOK, and check for interrupts if needed.
+		 * Restore ImmediateInterruptOK, and check for interrupts if
+		 * needed.
 		 */
 		ImmediateInterruptOK = save_ImmediateInterruptOK;
 		if (save_ImmediateInterruptOK)

@@ -31,8 +31,8 @@ extern int	DefaultXactIsoLevel;
 extern int	XactIsoLevel;
 
 /* Xact read-only state */
-extern bool	DefaultXactReadOnly;
-extern bool	XactReadOnly;
+extern bool DefaultXactReadOnly;
+extern bool XactReadOnly;
 
 /*
  *	transaction states - transaction state from server perspective
@@ -44,7 +44,7 @@ typedef enum TransState
 	TRANS_INPROGRESS,
 	TRANS_COMMIT,
 	TRANS_ABORT
-} TransState;
+}	TransState;
 
 /*
  *	transaction block states - transaction state of client queries
@@ -57,7 +57,7 @@ typedef enum TBlockState
 	TBLOCK_END,
 	TBLOCK_ABORT,
 	TBLOCK_ENDABORT
-} TBlockState;
+}	TBlockState;
 
 /* ----------------
  *		transaction state structure
@@ -70,7 +70,7 @@ typedef struct TransactionStateData
 	AbsoluteTime startTime;
 	int			startTimeUsec;
 	TransState	state;
-	TBlockState	blockState;
+	TBlockState blockState;
 } TransactionStateData;
 
 typedef TransactionStateData *TransactionState;

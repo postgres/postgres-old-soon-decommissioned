@@ -21,10 +21,10 @@
 
 typedef struct
 {
-	DestReceiver		pub;
-	Tuplestorestate    *tstore;
-	MemoryContext		cxt;
-} TStoreState;
+	DestReceiver pub;
+	Tuplestorestate *tstore;
+	MemoryContext cxt;
+}	TStoreState;
 
 
 /*

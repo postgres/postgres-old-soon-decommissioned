@@ -956,8 +956,8 @@ CatalogCacheInitializeCache(CatCache *cache)
 		cache->cc_isname[i] = (keytype == NAMEOID);
 
 		/*
-		 * Do equality-function lookup (we assume this won't need a catalog
-		 * lookup for any supported type)
+		 * Do equality-function lookup (we assume this won't need a
+		 * catalog lookup for any supported type)
 		 */
 		fmgr_info_cxt(cache->cc_skey[i].sk_procedure,
 					  &cache->cc_skey[i].sk_func,

@@ -26,7 +26,7 @@
 
 #ifndef HAVE_GETOPT_LONG
 #include "getopt_long.h"
-int optreset;
+int			optreset;
 #endif
 
 char	   *progname = NULL;

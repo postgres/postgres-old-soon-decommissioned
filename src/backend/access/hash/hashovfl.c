@@ -205,8 +205,8 @@ _hash_getovfladdr(Relation rel, Buffer *metabufp)
 			if (++splitnum >= NCACHED)
 				ereport(ERROR,
 						(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
-						 errmsg("out of overflow pages in hash index \"%s\"",
-								RelationGetRelationName(rel))));
+					 errmsg("out of overflow pages in hash index \"%s\"",
+							RelationGetRelationName(rel))));
 			metap->hashm_ovflpoint = splitnum;
 			metap->hashm_spares[splitnum] = metap->hashm_spares[splitnum - 1];
 			metap->hashm_spares[splitnum - 1]--;

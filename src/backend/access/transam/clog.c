@@ -73,7 +73,7 @@
 
 static SlruCtlData ClogCtlData;
 static SlruCtl ClogCtl = &ClogCtlData;
-  
+
 
 static int	ZeroCLOGPage(int pageno, bool writeXlog);
 static bool CLOGPagePrecedes(int page1, int page2);

@@ -18,7 +18,7 @@
 
 extern List *parse_analyze(Node *parseTree, Oid *paramTypes, int numParams);
 extern List *parse_analyze_varparams(Node *parseTree, Oid **paramTypes,
-									 int *numParams);
+						int *numParams);
 extern List *parse_sub_analyze(Node *parseTree, ParseState *parentParseState);
 extern List *analyzeCreateSchemaStmt(CreateSchemaStmt *stmt);
 

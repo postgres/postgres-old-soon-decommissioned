@@ -244,7 +244,7 @@ ExecHashTableCreate(Hash *node, List *hashOperators)
 	i = 0;
 	foreach(ho, hashOperators)
 	{
-		Oid		hashfn;
+		Oid			hashfn;
 
 		hashfn = get_op_hash_function(lfirsto(ho));
 		if (!OidIsValid(hashfn))

@@ -355,7 +355,7 @@ ExecReScanAppend(AppendState *node, ExprContext *exprCtxt)
 
 	for (i = node->as_firstplan; i <= node->as_lastplan; i++)
 	{
-		PlanState *subnode = node->appendplans[i];
+		PlanState  *subnode = node->appendplans[i];
 
 		/*
 		 * ExecReScan doesn't know about my subplans, so I have to do

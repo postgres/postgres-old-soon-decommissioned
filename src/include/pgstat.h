@@ -38,7 +38,7 @@
 
 #define PGSTAT_DESTROY_COUNT	(PGSTAT_DESTROY_DELAY / PGSTAT_STAT_INTERVAL)
 
-#define PGSTAT_RESTART_INTERVAL	60		/* How often to attempt to restart */
+#define PGSTAT_RESTART_INTERVAL 60		/* How often to attempt to restart */
  /* a failed statistics collector; in seconds. */
 
 /* ----------

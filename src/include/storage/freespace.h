@@ -23,9 +23,9 @@
  */
 typedef struct PageFreeSpaceInfo
 {
-	BlockNumber		blkno;		/* which page in relation */
-	Size			avail;		/* space available on this page */
-} PageFreeSpaceInfo;
+	BlockNumber blkno;			/* which page in relation */
+	Size		avail;			/* space available on this page */
+}	PageFreeSpaceInfo;
 
 
 /* GUC variables */
@@ -46,13 +46,13 @@ extern BlockNumber RecordAndGetPageWithFreeSpace(RelFileNode *rel,
 							  Size spaceNeeded);
 extern Size GetAvgFSMRequestSize(RelFileNode *rel);
 extern void RecordRelationFreeSpace(RelFileNode *rel,
-									int nPages,
-									PageFreeSpaceInfo *pageSpaces);
+						int nPages,
+						PageFreeSpaceInfo * pageSpaces);
 
 extern BlockNumber GetFreeIndexPage(RelFileNode *rel);
 extern void RecordIndexFreeSpace(RelFileNode *rel,
-								 int nPages,
-								 BlockNumber *pages);
+					 int nPages,
+					 BlockNumber *pages);
 
 extern void FreeSpaceMapTruncateRel(RelFileNode *rel, BlockNumber nblocks);
 extern void FreeSpaceMapForgetRel(RelFileNode *rel);

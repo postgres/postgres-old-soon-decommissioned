@@ -40,7 +40,7 @@
  * configuration file, or by client request in the connection startup
  * packet (e.g., from libpq's PGOPTIONS variable).  Furthermore, an
  * already-started backend will ignore changes to such an option in the
- * configuration file.  The idea is that these options are fixed for a
+ * configuration file.	The idea is that these options are fixed for a
  * given backend once it's started, but they can vary across backends.
  *
  * SUSET options can be set at postmaster startup, with the SIGHUP
@@ -146,8 +146,8 @@ extern ArrayType *GUCArrayAdd(ArrayType *array, const char *name, const char *va
 extern ArrayType *GUCArrayDelete(ArrayType *array, const char *name);
 
 #ifdef EXEC_BACKEND
-void write_nondefault_variables(GucContext context);
-void read_nondefault_variables(void);
+void		write_nondefault_variables(GucContext context);
+void		read_nondefault_variables(void);
 #endif
 
 #endif   /* GUC_H */

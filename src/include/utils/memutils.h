@@ -70,6 +70,7 @@ extern DLLIMPORT MemoryContext PostmasterContext;
 extern DLLIMPORT MemoryContext CacheMemoryContext;
 extern DLLIMPORT MemoryContext MessageContext;
 extern DLLIMPORT MemoryContext TopTransactionContext;
+
 /* These two are transient links to contexts owned by other objects: */
 extern DLLIMPORT MemoryContext QueryContext;
 extern DLLIMPORT MemoryContext PortalContext;
@@ -127,8 +128,8 @@ extern MemoryContext AllocSetContextCreate(MemoryContext parent,
  * Recommended alloc parameters for "small" contexts that are not expected
  * to contain much data (for example, a context to contain a query plan).
  */
-#define ALLOCSET_SMALL_MINSIZE   0
+#define ALLOCSET_SMALL_MINSIZE	 0
 #define ALLOCSET_SMALL_INITSIZE  (1 * 1024)
-#define ALLOCSET_SMALL_MAXSIZE   (8 * 1024)
+#define ALLOCSET_SMALL_MAXSIZE	 (8 * 1024)
 
 #endif   /* MEMUTILS_H */

@@ -93,7 +93,7 @@ typedef struct BTPageState
 
 
 static void _bt_blnewpage(Relation index, Buffer *buf, Page *page,
-						  uint32 level);
+			  uint32 level);
 static BTPageState *_bt_pagestate(Relation index, uint32 level);
 static void _bt_slideleft(Relation index, Buffer buf, Page page);
 static void _bt_sortaddtup(Page page, Size itemsize,
@@ -469,7 +469,7 @@ _bt_buildadd(Relation index, BTPageState *state, BTItem bti)
 
 			oopaque->btpo_next = BufferGetBlockNumber(nbuf);
 			nopaque->btpo_prev = BufferGetBlockNumber(obuf);
-			nopaque->btpo_next = P_NONE; /* redundant */
+			nopaque->btpo_next = P_NONE;		/* redundant */
 		}
 
 		/*

@@ -88,7 +88,7 @@ main(int argc, char *argv[])
 	switch (argc - optind)
 	{
 		case 0:
-			fprintf(stderr,	_("%s: missing required argument database name\n"), progname);
+			fprintf(stderr, _("%s: missing required argument database name\n"), progname);
 			fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 			exit(1);
 		case 1:

@@ -74,8 +74,8 @@ void
 proc_exit(int code)
 {
 	/*
-	 * Once we set this flag, we are committed to exit.  Any ereport() will
-	 * NOT send control back to the main loop, but right back here.
+	 * Once we set this flag, we are committed to exit.  Any ereport()
+	 * will NOT send control back to the main loop, but right back here.
 	 */
 	proc_exit_inprogress = true;
 

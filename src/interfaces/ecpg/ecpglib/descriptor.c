@@ -454,7 +454,7 @@ ECPGdescriptor_lvalue(int line, const char *descriptor)
 }
 
 bool
-ECPGdescribe(int line, bool input, const char *statement, ...)
+ECPGdescribe(int line, bool input, const char *statement,...)
 {
 	ECPGlog("ECPGdescribe called on line %d for %s in %s\n", line, (input) ? "input" : "output", statement);
 	return false;

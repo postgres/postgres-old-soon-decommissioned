@@ -84,7 +84,7 @@ extern Datum setval(PG_FUNCTION_ARGS);
 extern Datum setval_and_iscalled(PG_FUNCTION_ARGS);
 
 extern void DefineSequence(CreateSeqStmt *stmt);
-extern void AlterSequence(AlterSeqStmt *stmt);
+extern void AlterSequence(AlterSeqStmt * stmt);
 
 extern void seq_redo(XLogRecPtr lsn, XLogRecord *rptr);
 extern void seq_undo(XLogRecPtr lsn, XLogRecord *rptr);

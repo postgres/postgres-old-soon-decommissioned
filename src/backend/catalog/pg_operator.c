@@ -409,7 +409,7 @@ OperatorCreate(const char *operatorName,
 	if (!OidIsValid(leftTypeId) && !OidIsValid(rightTypeId))
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
-				 errmsg("at least one of leftarg or rightarg must be specified")));
+		errmsg("at least one of leftarg or rightarg must be specified")));
 
 	if (!(OidIsValid(leftTypeId) && OidIsValid(rightTypeId)))
 	{
@@ -417,11 +417,11 @@ OperatorCreate(const char *operatorName,
 		if (commutatorName)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
-					 errmsg("only binary operators can have commutators")));
+				  errmsg("only binary operators can have commutators")));
 		if (joinName)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
-					 errmsg("only binary operators can have join selectivity")));
+			 errmsg("only binary operators can have join selectivity")));
 		if (canHash)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),

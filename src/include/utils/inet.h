@@ -23,7 +23,7 @@ typedef struct
 	unsigned char family;
 	unsigned char bits;
 	unsigned char type;
-	unsigned char ip_addr[16]; /* 128 bits of address */
+	unsigned char ip_addr[16];	/* 128 bits of address */
 } inet_struct;
 
 /*

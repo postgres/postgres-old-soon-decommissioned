@@ -85,16 +85,16 @@ extern void performDeletion(const ObjectAddress *object,
 				DropBehavior behavior);
 
 extern void deleteWhatDependsOn(const ObjectAddress *object,
-								bool showNotices);
+					bool showNotices);
 
 extern void recordDependencyOnExpr(const ObjectAddress *depender,
 					   Node *expr, List *rtable,
 					   DependencyType behavior);
 
 extern void recordDependencyOnSingleRelExpr(const ObjectAddress *depender,
-					   Node *expr, Oid relId,
-					   DependencyType behavior,
-					   DependencyType self_behavior);
+								Node *expr, Oid relId,
+								DependencyType behavior,
+								DependencyType self_behavior);
 
 /* in pg_depend.c */
 

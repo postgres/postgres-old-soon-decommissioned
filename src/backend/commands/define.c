@@ -51,7 +51,8 @@ case_translate_language_name(const char *input, char *output)
 {
 	int			i;
 
-	MemSet(output, 0, NAMEDATALEN);	/* ensure result Name is zero-filled */
+	MemSet(output, 0, NAMEDATALEN);		/* ensure result Name is
+										 * zero-filled */
 
 	for (i = 0; i < NAMEDATALEN - 1 && input[i]; ++i)
 		output[i] = tolower((unsigned char) input[i]);

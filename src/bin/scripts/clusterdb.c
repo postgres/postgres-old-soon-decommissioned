@@ -15,12 +15,14 @@
 
 
 static
-void cluster_one_database(const char *dbname, const char *table,
-						  const char *host, const char *port, const char *username, bool password,
-						  const char *progname, bool echo, bool quiet);
+void
+cluster_one_database(const char *dbname, const char *table,
+ const char *host, const char *port, const char *username, bool password,
+					 const char *progname, bool echo, bool quiet);
 static
-void cluster_all_databases(const char *host, const char *port, const char *username, bool password,
-						   const char *progname, bool echo, bool quiet);
+void
+cluster_all_databases(const char *host, const char *port, const char *username, bool password,
+					  const char *progname, bool echo, bool quiet);
 
 static void help(const char *progname);
 
@@ -104,7 +106,7 @@ main(int argc, char *argv[])
 			dbname = argv[optind];
 			break;
 		default:
-			fprintf(stderr,	_("%s: too many command-line arguments (first is \"%s\")\n"),
+			fprintf(stderr, _("%s: too many command-line arguments (first is \"%s\")\n"),
 					progname, argv[optind + 1]);
 			fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 			exit(1);
@@ -124,7 +126,7 @@ main(int argc, char *argv[])
 					progname);
 			exit(1);
 		}
-	
+
 		cluster_all_databases(host, port, username, password,
 							  progname, echo, quiet);
 	}
@@ -150,9 +152,10 @@ main(int argc, char *argv[])
 
 
 static
-void cluster_one_database(const char *dbname, const char *table,
-						  const char *host, const char *port, const char *username, bool password,
-						  const char *progname, bool echo, bool quiet)
+void
+cluster_one_database(const char *dbname, const char *table,
+ const char *host, const char *port, const char *username, bool password,
+					 const char *progname, bool echo, bool quiet)
 {
 	PQExpBufferData sql;
 
@@ -194,8 +197,9 @@ void cluster_one_database(const char *dbname, const char *table,
 
 
 static
-void cluster_all_databases(const char *host, const char *port, const char *username, bool password,
-						   const char *progname, bool echo, bool quiet)
+void
+cluster_all_databases(const char *host, const char *port, const char *username, bool password,
+					  const char *progname, bool echo, bool quiet)
 {
 	PGconn	   *conn;
 	PGresult   *result;

@@ -335,13 +335,15 @@ mbvalidate(unsigned char *pwcs, int encoding)
 	else
 	{
 #ifdef WIN32
+
 		/*
-		 * translate characters to DOS console encoding, e.g. needed
-		 * for German umlauts
+		 * translate characters to DOS console encoding, e.g. needed for
+		 * German umlauts
 		 */
 		if (GetVariableBool(pset.vars, "WIN32_CONSOLE"))
 			CharToOem(pwcs, pwcs);
 #endif
+
 		/*
 		 * other encodings needing validation should add their own
 		 * routines here

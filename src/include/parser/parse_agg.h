@@ -20,11 +20,11 @@ extern void transformAggregateCall(ParseState *pstate, Aggref *agg);
 extern void parseCheckAggregates(ParseState *pstate, Query *qry);
 
 extern void build_aggregate_fnexprs(Oid agg_input_type,
-									Oid agg_state_type,
-									Oid agg_result_type,
-									Oid transfn_oid,
-									Oid finalfn_oid,
-									Expr **transfnexpr,
-									Expr **finalfnexpr);
+						Oid agg_state_type,
+						Oid agg_result_type,
+						Oid transfn_oid,
+						Oid finalfn_oid,
+						Expr **transfnexpr,
+						Expr **finalfnexpr);
 
 #endif   /* PARSE_AGG_H */

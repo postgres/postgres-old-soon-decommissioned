@@ -76,9 +76,9 @@ ConversionCreate(const char *conname, Oid connamespace,
 								  contoencoding))
 			ereport(ERROR,
 					(errcode(ERRCODE_DUPLICATE_OBJECT),
-					 errmsg("default conversion for %s to %s already exists",
-							pg_encoding_to_char(conforencoding),
-							pg_encoding_to_char(contoencoding))));
+				 errmsg("default conversion for %s to %s already exists",
+						pg_encoding_to_char(conforencoding),
+						pg_encoding_to_char(contoencoding))));
 	}
 
 	/* open pg_conversion */
@@ -147,7 +147,7 @@ ConversionDrop(Oid conversionOid, DropBehavior behavior)
 	if (!superuser() &&
 		((Form_pg_conversion) GETSTRUCT(tuple))->conowner != GetUserId())
 		aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_CONVERSION,
-					   NameStr(((Form_pg_conversion) GETSTRUCT(tuple))->conname));
+			  NameStr(((Form_pg_conversion) GETSTRUCT(tuple))->conname));
 
 	ReleaseSysCache(tuple);
 

@@ -289,11 +289,11 @@ Pg_conndefaults(ClientData cData, Tcl_Interp *interp, int argc, CONST84 char *ar
 int
 Pg_connect(ClientData cData, Tcl_Interp *interp, int argc, CONST84 char *argv[])
 {
-	const char	   *pghost = NULL;
-	const char	   *pgtty = NULL;
-	const char	   *pgport = NULL;
-	const char	   *pgoptions = NULL;
-	const char	   *dbName;
+	const char *pghost = NULL;
+	const char *pgtty = NULL;
+	const char *pgport = NULL;
+	const char *pgoptions = NULL;
+	const char *dbName;
 	int			i;
 	PGconn	   *conn;
 

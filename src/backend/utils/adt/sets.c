@@ -154,14 +154,15 @@ seteval(PG_FUNCTION_ARGS)
 	fcache = (FuncExprState *) fcinfo->flinfo->fn_extra;
 	if (fcache == NULL)
 	{
-		MemoryContext	oldcontext;
+		MemoryContext oldcontext;
 		FuncExpr   *func;
 
 		oldcontext = MemoryContextSwitchTo(fcinfo->flinfo->fn_mcxt);
 
 		func = makeNode(FuncExpr);
 		func->funcid = funcoid;
-		func->funcresulttype = InvalidOid; /* nothing will look at this */
+		func->funcresulttype = InvalidOid;		/* nothing will look at
+												 * this */
 		func->funcretset = true;
 		func->funcformat = COERCE_EXPLICIT_CALL;
 		func->args = NIL;		/* there are no arguments */

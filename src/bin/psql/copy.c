@@ -28,8 +28,8 @@
 
 #ifdef WIN32
 #define strcasecmp(x,y) stricmp(x,y)
-#define	__S_ISTYPE(mode, mask)	(((mode) & S_IFMT) == (mask))
-#define	S_ISDIR(mode)	 __S_ISTYPE((mode), S_IFDIR)
+#define __S_ISTYPE(mode, mask)	(((mode) & S_IFMT) == (mask))
+#define S_ISDIR(mode)	 __S_ISTYPE((mode), S_IFDIR)
 #endif
 
 /*
@@ -142,8 +142,9 @@ parse_slash_copy(const char *args)
 		goto error;
 
 	/*
-	 * strtokx() will not have returned a multi-character token starting with
-	 * '.', so we don't need strcmp() here.  Likewise for '(', etc, below.
+	 * strtokx() will not have returned a multi-character token starting
+	 * with '.', so we don't need strcmp() here.  Likewise for '(', etc,
+	 * below.
 	 */
 	if (token[0] == '.')
 	{
@@ -188,8 +189,7 @@ parse_slash_copy(const char *args)
 	}
 
 	/*
-	 * Allows old COPY syntax for backward compatibility
-	 * 2002-06-19
+	 * Allows old COPY syntax for backward compatibility 2002-06-19
 	 */
 	if (strcasecmp(token, "with") == 0)
 	{
@@ -227,8 +227,7 @@ parse_slash_copy(const char *args)
 					0, false, pset.encoding);
 
 	/*
-	 * Allows old COPY syntax for backward compatibility
-	 * 2002-06-19
+	 * Allows old COPY syntax for backward compatibility 2002-06-19
 	 */
 	if (token && strcasecmp(token, "using") == 0)
 	{

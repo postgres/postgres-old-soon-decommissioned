@@ -372,7 +372,7 @@ lo_import(PG_FUNCTION_ARGS)
 	if (!superuser())
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("must be superuser to use server-side lo_import()"),
+			  errmsg("must be superuser to use server-side lo_import()"),
 				 errhint("Anyone can use the client-side lo_import() provided by libpq.")));
 #endif
 
@@ -439,7 +439,7 @@ lo_export(PG_FUNCTION_ARGS)
 	if (!superuser())
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("must be superuser to use server-side lo_export()"),
+			  errmsg("must be superuser to use server-side lo_export()"),
 				 errhint("Anyone can use the client-side lo_export() provided by libpq.")));
 #endif
 

@@ -21,7 +21,7 @@ extern void dropdb(const char *dbname);
 extern void RenameDatabase(const char *oldname, const char *newname);
 extern void AlterDatabaseSet(AlterDatabaseSetStmt *stmt);
 
-extern Oid get_database_oid(const char *dbname);
-extern char * get_database_name(Oid dbid);
+extern Oid	get_database_oid(const char *dbname);
+extern char *get_database_name(Oid dbid);
 
 #endif   /* DBCOMMANDS_H */

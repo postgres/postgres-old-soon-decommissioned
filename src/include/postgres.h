@@ -130,6 +130,7 @@ typedef struct varattrib
  */
 
 typedef unsigned long Datum;	/* XXX sizeof(long) >= sizeof(void *) */
+
 #define SIZEOF_DATUM SIZEOF_UNSIGNED_LONG
 typedef Datum *DatumPtr;
 

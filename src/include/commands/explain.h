@@ -23,6 +23,6 @@ extern void ExplainQuery(ExplainStmt *stmt, DestReceiver *dest);
 extern TupleDesc ExplainResultDesc(ExplainStmt *stmt);
 
 extern void ExplainOnePlan(QueryDesc *queryDesc, ExplainStmt *stmt,
-						   TupOutputState *tstate);
+			   TupOutputState *tstate);
 
 #endif   /* EXPLAIN_H */

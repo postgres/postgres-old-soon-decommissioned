@@ -229,8 +229,8 @@ geqo(Query *root, int number_of_rels, List *initial_rels)
 
 
 	/*
-	 * got the cheapest query tree processed by geqo;
-	 * first element of the population indicates the best query tree
+	 * got the cheapest query tree processed by geqo; first element of the
+	 * population indicates the best query tree
 	 */
 	best_tour = (Gene *) pool->data[0].string;
 

@@ -45,6 +45,7 @@ MemoryContext PostmasterContext = NULL;
 MemoryContext CacheMemoryContext = NULL;
 MemoryContext MessageContext = NULL;
 MemoryContext TopTransactionContext = NULL;
+
 /* These two are transient links to contexts owned by other objects: */
 MemoryContext QueryContext = NULL;
 MemoryContext PortalContext = NULL;
@@ -494,7 +495,7 @@ MemoryContextAlloc(MemoryContext context, Size size)
 void *
 MemoryContextAllocZero(MemoryContext context, Size size)
 {
-	void *ret;
+	void	   *ret;
 
 	AssertArg(MemoryContextIsValid(context));
 
@@ -519,7 +520,7 @@ MemoryContextAllocZero(MemoryContext context, Size size)
 void *
 MemoryContextAllocZeroAligned(MemoryContext context, Size size)
 {
-	void *ret;
+	void	   *ret;
 
 	AssertArg(MemoryContextIsValid(context));
 

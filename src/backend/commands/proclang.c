@@ -60,7 +60,7 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 	if (!superuser())
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("must be superuser to create procedural language")));
+			 errmsg("must be superuser to create procedural language")));
 
 	/*
 	 * Translate the language name and check that this language doesn't
@@ -85,7 +85,7 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 	if (funcrettype != LANGUAGE_HANDLEROID)
 	{
 		/*
-		 * We allow OPAQUE just so we can load old dump files.  When we
+		 * We allow OPAQUE just so we can load old dump files.	When we
 		 * see a handler function declared OPAQUE, change it to
 		 * LANGUAGE_HANDLER.
 		 */
@@ -183,7 +183,7 @@ DropProceduralLanguage(DropPLangStmt *stmt)
 	if (!superuser())
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("must be superuser to drop procedural language")));
+			   errmsg("must be superuser to drop procedural language")));
 
 	/*
 	 * Translate the language name, check that this language exist and is
@@ -225,7 +225,7 @@ DropProceduralLanguageById(Oid langOid)
 	langTup = SearchSysCache(LANGOID,
 							 ObjectIdGetDatum(langOid),
 							 0, 0, 0);
-	if (!HeapTupleIsValid(langTup))	/* should not happen */
+	if (!HeapTupleIsValid(langTup))		/* should not happen */
 		elog(ERROR, "cache lookup failed for language %u", langOid);
 
 	simple_heap_delete(rel, &langTup->t_self);
@@ -266,7 +266,7 @@ RenameLanguage(const char *oldname, const char *newname)
 	if (!superuser())
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("must be superuser to rename procedural language")));
+			 errmsg("must be superuser to rename procedural language")));
 
 	/* rename */
 	namestrcpy(&(((Form_pg_language) GETSTRUCT(tup))->lanname), newname);

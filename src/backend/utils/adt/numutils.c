@@ -96,7 +96,7 @@ pg_atoi(char *s, int size, int c)
 		case sizeof(int32):
 			if (errno == ERANGE
 #if defined(HAVE_LONG_INT_64)
-				/* won't get ERANGE on these with 64-bit longs... */
+			/* won't get ERANGE on these with 64-bit longs... */
 				|| l < INT_MIN || l > INT_MAX
 #endif
 				)

@@ -32,8 +32,7 @@ typedef struct _printTableOpt
 	bool		expanded;		/* expanded/vertical output (if supported
 								 * by output format) */
 	unsigned short int pager;	/* use pager for output (if to stdout and
-								 * stdout is a tty)
- 								 * 0=off 1=on 2=always */
+								 * stdout is a tty) 0=off 1=on 2=always */
 	bool		tuples_only;	/* don't output headers, row counts, etc. */
 	unsigned short int border;	/* Print a border around the table.
 								 * 0=none, 1=dividing lines, 2=full */

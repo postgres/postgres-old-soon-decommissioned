@@ -211,8 +211,8 @@ get_sortgroupclause_expr(SortClause *sortClause, List *targetList)
 List *
 get_sortgrouplist_exprs(List *sortClauses, List *targetList)
 {
-	List   *result = NIL;
-	List   *l;
+	List	   *result = NIL;
+	List	   *l;
 
 	foreach(l, sortClauses)
 	{

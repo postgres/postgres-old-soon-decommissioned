@@ -19,7 +19,7 @@ extern void pq_beginmessage(StringInfo buf, char msgtype);
 extern void pq_sendbyte(StringInfo buf, int byt);
 extern void pq_sendbytes(StringInfo buf, const char *data, int datalen);
 extern void pq_sendcountedtext(StringInfo buf, const char *str, int slen,
-							   bool countincludesself);
+				   bool countincludesself);
 extern void pq_sendtext(StringInfo buf, const char *str, int slen);
 extern void pq_sendstring(StringInfo buf, const char *str);
 extern void pq_sendint(StringInfo buf, int i, int b);

@@ -104,11 +104,12 @@ gistrescan(PG_FUNCTION_ARGS)
 		memmove(s->keyData,
 				key,
 				s->numberOfKeys * sizeof(ScanKeyData));
+
 		/*
 		 * Play games here with the scan key to use the Consistent
-		 * function for all comparisons: 1) the sk_procedure field
-		 * will now be used to hold the strategy number 2) the
-		 * sk_func field will point to the Consistent function
+		 * function for all comparisons: 1) the sk_procedure field will
+		 * now be used to hold the strategy number 2) the sk_func field
+		 * will point to the Consistent function
 		 */
 		for (i = 0; i < s->numberOfKeys; i++)
 		{

@@ -54,7 +54,8 @@ typedef struct ParseState
 	int			p_numparams;	/* allocated size of p_paramtypes[] */
 	int			p_next_resno;	/* next targetlist resno to assign */
 	List	   *p_forUpdate;	/* FOR UPDATE clause, if any (see gram.y) */
-	Node	   *p_value_substitute;	/* what to replace VALUE with, if any */
+	Node	   *p_value_substitute;		/* what to replace VALUE with, if
+										 * any */
 	bool		p_variableparams;
 	bool		p_hasAggs;
 	bool		p_hasSubLinks;

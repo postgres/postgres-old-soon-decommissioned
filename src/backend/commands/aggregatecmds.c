@@ -256,16 +256,16 @@ RenameAggregate(List *name, TypeName *basetype, const char *newname)
 		if (basetypeOid == ANYOID)
 			ereport(ERROR,
 					(errcode(ERRCODE_DUPLICATE_FUNCTION),
-					 errmsg("function %s(*) already exists in schema \"%s\"",
-							newname,
-							get_namespace_name(namespaceOid))));
+				 errmsg("function %s(*) already exists in schema \"%s\"",
+						newname,
+						get_namespace_name(namespaceOid))));
 		else
 			ereport(ERROR,
 					(errcode(ERRCODE_DUPLICATE_FUNCTION),
 					 errmsg("function %s already exists in schema \"%s\"",
 							funcname_signature_string(newname,
 													  procForm->pronargs,
-													  procForm->proargtypes),
+												  procForm->proargtypes),
 							get_namespace_name(namespaceOid))));
 	}
 

@@ -42,7 +42,7 @@ avg_pool(Pool *pool)
 
 	/*
 	 * Since the pool may contain multiple occurrences of DBL_MAX, divide
-	 * by pool->size before summing, not after, to avoid overflow.  This
+	 * by pool->size before summing, not after, to avoid overflow.	This
 	 * loses a little in speed and accuracy, but this routine is only used
 	 * for debug printouts, so we don't care that much.
 	 */

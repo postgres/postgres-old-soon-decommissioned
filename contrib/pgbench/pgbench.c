@@ -122,7 +122,7 @@ doConnect()
 {
 	PGconn	   *con;
 	PGresult   *res;
- 
+
 	con = PQsetdbLogin(pghost, pgport, pgoptions, pgtty, dbName,
 					   login, pwd);
 	if (con == NULL)

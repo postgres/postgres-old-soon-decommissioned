@@ -18,4 +18,4 @@
 
 extern void ExecRenameStmt(RenameStmt *stmt);
 
-#endif /* ALTER_H */
+#endif   /* ALTER_H */
