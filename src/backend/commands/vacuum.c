@@ -564,6 +564,8 @@ analyze_rel(Oid relid, List *va_cols)
 	}
 #endif
 
+	elog(MESSAGE_LEVEL, "Analyzing %s...", RelationGetRelationName(onerel));
+
 	attr_cnt = onerel->rd_att->natts;
 	attr = onerel->rd_att->attrs;
 
