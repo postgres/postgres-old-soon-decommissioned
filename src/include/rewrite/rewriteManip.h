@@ -23,6 +23,8 @@ void
 ChangeVarNodes(Node *node, int old_varno, int new_varno,
 			   int sublevels_up);
 void		AddQual(Query *parsetree, Node *qual);
+void		AddHavingQual(Query *parsetree, Node *havingQual); 
+
 void		AddNotQual(Query *parsetree, Node *qual);
 void		FixResdomTypes(List *user_tlist);
 void		FixNew(RewriteInfo *info, Query *parsetree);

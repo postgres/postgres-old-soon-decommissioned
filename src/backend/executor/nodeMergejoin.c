@@ -365,7 +365,9 @@ CleanUpSort(Plan *plan)
 	{
 		Sort	   *sort = (Sort *) plan;
 
-		psort_end(sort);
+		/* This may need to be fixed or moved somewhere else, bjm */
+		/* psort_end(sort); */
+
 	}
 }
 

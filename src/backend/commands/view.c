@@ -222,6 +222,9 @@ UpdateRangeTableOfViewParse(char *viewName, Query *viewParse)
 	OffsetVarNodes((Node *) viewParse->targetList, 2);
 	OffsetVarNodes(viewParse->qual, 2);
 
+	OffsetVarNodes(viewParse->havingQual, 2);
+	
+
 	/*
 	 * find the old range table...
 	 */

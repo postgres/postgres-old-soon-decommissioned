@@ -64,6 +64,8 @@ extern void set_result_tlist_references(Result *resultNode);
 extern List *set_agg_tlist_references(Agg *aggNode);
 extern void set_agg_agglist_references(Agg *aggNode);
 extern void del_agg_tlist_references(List *tlist);
-extern List *check_having_qual_for_aggs(Node *clause, List *subplanTargetList);
+extern List *check_having_qual_for_aggs(Node *clause, 
+					List *subplanTargetList, List *groupClause);
+extern List *check_having_qual_for_vars(Node *clause, List *targetlist_so_far);
 
 #endif							/* PLANMAIN_H */
