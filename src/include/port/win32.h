@@ -147,6 +147,9 @@ extern int pgwin32_is_admin(void);
 extern int pgwin32_is_service(void);
 #endif
 
+/* in backend/port/win32/error.c */
+void _dosmaperr(unsigned long);
+
 
 #define WEXITSTATUS(w)  (((w) >> 8) & 0xff)
 #define WIFEXITED(w)    (((w) & 0xff) == 0)
@@ -222,3 +225,4 @@ int setitimer(int which, const struct itimerval *value, struct itimerval *ovalue
 #define ECONNREFUSED WSAECONNREFUSED
 #define EBADFD WSAENOTSOCK
 #define EOPNOTSUPP WSAEOPNOTSUPP
+

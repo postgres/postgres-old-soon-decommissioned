@@ -40,7 +40,7 @@ shmat(int memId, void *shmaddr, int flag)
 	if (lpmem == NULL)
 	{
 		lpmem = (void *) -1;
-		errno = GetLastError();
+		_dosmaperr(GetLastError());
 	}
 
 	return lpmem;
@@ -123,6 +123,7 @@ shmget(int memKey, int size, int flag)
 	else if (!hmap)
 	{
 		/* Unable to get shared memory */
+		_dosmaperr(GetLastError());
 		return -1;
 	}
 

@@ -706,6 +706,7 @@ pipeThread(void *arg)
 			if (error == ERROR_HANDLE_EOF ||
 				error == ERROR_BROKEN_PIPE)
 				break;
+			_dosmaperr(error);
 			ereport(LOG,
 					(errcode_for_file_access(),
 					 errmsg("could not read from logger pipe: %m")));
