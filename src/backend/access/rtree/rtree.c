@@ -905,7 +905,6 @@ static void initRtstate(RTSTATE *rtstate, Relation index)
     return;
 }
 
-#define RTDEBUG
 #ifdef RTDEBUG
 #include "utils/geo-decls.h"
 

@@ -59,10 +59,6 @@
 #include "utils/palloc.h"
 #include "utils/elog.h"
 
-/*#define FASTBUILD_DEBUG*/ /* turn on debugging output */
-
-#define FASTBUILD
-
 #ifdef FASTBUILD
 
 #define	MAXTAPES	(7)
