@@ -23,7 +23,9 @@ extern void debugSetup(DestReceiver *self, int operation,
 extern void debugtup(HeapTuple tuple, TupleDesc typeinfo,
 		 DestReceiver *self);
 
-/* XXX this one is really in executor/spi.c */
+/* XXX these are really in executor/spi.c */
+extern void spi_dest_setup(DestReceiver *self, int operation,
+		   const char *portalName, TupleDesc typeinfo);
 extern void spi_printtup(HeapTuple tuple, TupleDesc tupdesc,
 			 DestReceiver *self);
 

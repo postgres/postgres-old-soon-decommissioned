@@ -64,7 +64,7 @@ static DestReceiver debugtupDR = {
 	debugtup, debugSetup, donothingCleanup
 };
 static DestReceiver spi_printtupDR = {
-	spi_printtup, donothingSetup, donothingCleanup
+	spi_printtup, spi_dest_setup, donothingCleanup
 };
 
 /* ----------------
