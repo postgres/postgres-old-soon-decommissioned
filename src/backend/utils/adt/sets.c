@@ -123,7 +123,7 @@ SetDefine(char *querystr, char *typename)
 		oidKey[0].sk_argument = ObjectIdGetDatum(setoid);
 		pg_proc_scan = heap_beginscan(procrel,
 									  0,
-									  true,
+									  SnapshotSelf,
 									  1,
 									  oidKey);
 		tup = heap_getnext(pg_proc_scan, 0, &buffer);

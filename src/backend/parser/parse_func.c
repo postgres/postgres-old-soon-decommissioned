@@ -547,7 +547,7 @@ func_get_candidates(char *funcname, int nargs)
 			ItemPointer iptr;
 
 			iptr = &indexRes->heap_iptr;
-			tuple = heap_fetch(heapRelation, false, iptr, &buffer);
+			tuple = heap_fetch(heapRelation, SnapshotNow, iptr, &buffer);
 			pfree(indexRes);
 			if (HeapTupleIsValid(tuple))
 			{
@@ -1024,7 +1024,7 @@ find_inheritors(Oid relid, Oid **supervec)
 							   F_OIDEQ,
 							   ObjectIdGetDatum(relid));
 
-		inhscan = heap_beginscan(inhrel, 0, false, 1, &skey);
+		inhscan = heap_beginscan(inhrel, 0, SnapshotNow, 1, &skey);
 
 		while (HeapTupleIsValid(inhtup = heap_getnext(inhscan, 0, &buf)))
 		{

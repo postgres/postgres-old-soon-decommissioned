@@ -108,7 +108,7 @@ binary_oper_get_candidates(char *opname,
 	pg_operator_desc = heap_openr(OperatorRelationName);
 	pg_operator_scan = heap_beginscan(pg_operator_desc,
 									  0,
-									  TRUE,
+									  SnapshotSelf,	/* ??? */
 									  nkeys,
 									  opKey);
 
@@ -655,7 +655,7 @@ printf("unary_oper_get_candidates: start scan for '%s'\n", op);
 	pg_operator_desc = heap_openr(OperatorRelationName);
 	pg_operator_scan = heap_beginscan(pg_operator_desc,
 									  0,
-									  TRUE,
+									  SnapshotSelf,	/* ??? */
 									  2,
 									  opKey);
 

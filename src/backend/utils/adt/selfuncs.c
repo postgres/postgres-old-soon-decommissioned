@@ -349,7 +349,7 @@ gethilokey(Oid relid,
 	key[0].sk_argument = ObjectIdGetDatum(relid);
 	key[1].sk_argument = Int16GetDatum((int16) attnum);
 	key[2].sk_argument = ObjectIdGetDatum(opid);
-	sdesc = heap_beginscan(rdesc, 0, false, 3, key);
+	sdesc = heap_beginscan(rdesc, 0, SnapshotNow, 3, key);
 	tuple = heap_getnext(sdesc, 0, (Buffer *) NULL);
 	if (!HeapTupleIsValid(tuple))
 	{

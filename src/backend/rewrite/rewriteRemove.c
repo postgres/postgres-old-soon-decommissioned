@@ -87,7 +87,7 @@ RemoveRewriteRule(char *ruleName)
 	ScanKeyEntryInitialize(&scanKeyData, 0, Anum_pg_rewrite_rulename,
 						   F_NAMEEQ, NameGetDatum(ruleName));
 	scanDesc = heap_beginscan(RewriteRelation,
-							  0, false, 1, &scanKeyData);
+							  0, SnapshotNow, 1, &scanKeyData);
 
 	tuple = heap_getnext(scanDesc, 0, (Buffer *) NULL);
 
@@ -161,7 +161,7 @@ RelationRemoveRules(Oid relid)
 						   F_OIDEQ,
 						   ObjectIdGetDatum(relid));
 	scanDesc = heap_beginscan(RewriteRelation,
-							  0, false, 1, &scanKeyData);
+							  0, SnapshotNow, 1, &scanKeyData);
 
 	for (;;)
 	{

@@ -194,19 +194,20 @@ typedef struct JunkFilter
  */
 typedef struct EState
 {
-	NodeTag		type;
-	ScanDirection es_direction;
-	List	   *es_range_table;
-	RelationInfo *es_result_relation_info;
-	Relation	es_into_relation_descriptor;
-	ParamListInfo es_param_list_info;
-	ParamExecData *es_param_exec_vals;	/* this is for subselects */
-	int			es_BaseId;
-	TupleTable	es_tupleTable;
-	JunkFilter *es_junkFilter;
-	int		   *es_refcount;
-	uint32		es_processed;	/* # of tuples processed */
-	Oid			es_lastoid;		/* last oid processed (by INSERT) */
+	NodeTag			type;
+	ScanDirection	es_direction;
+	Snapshot		es_snapshot;
+	List		   *es_range_table;
+	RelationInfo   *es_result_relation_info;
+	Relation		es_into_relation_descriptor;
+	ParamListInfo	es_param_list_info;
+	ParamExecData  *es_param_exec_vals;	/* this is for subselects */
+	int				es_BaseId;
+	TupleTable		es_tupleTable;
+	JunkFilter	   *es_junkFilter;
+	int			   *es_refcount;
+	uint32			es_processed;	/* # of tuples processed */
+	Oid				es_lastoid;		/* last oid processed (by INSERT) */
 } EState;
 
 /* ----------------

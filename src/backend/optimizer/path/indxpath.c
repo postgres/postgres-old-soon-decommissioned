@@ -979,7 +979,7 @@ clause_pred_clause_test(Expr *predicate, Node *clause)
 	 * will be used to find the associated strategy numbers for the test.
 	 * --Nels, Jan '93
 	 */
-	scan = heap_beginscan(relation, false, false, 2, entry);
+	scan = heap_beginscan(relation, false, SnapshotNow, 2, entry);
 	tuple = heap_getnext(scan, false, (Buffer *) NULL);
 	if (!HeapTupleIsValid(tuple))
 	{
@@ -1010,7 +1010,7 @@ clause_pred_clause_test(Expr *predicate, Node *clause)
 						   F_OIDEQ,
 						   ObjectIdGetDatum(clause_op));
 
-	scan = heap_beginscan(relation, false, false, 3, entry);
+	scan = heap_beginscan(relation, false, SnapshotNow, 3, entry);
 	tuple = heap_getnext(scan, false, (Buffer *) NULL);
 	if (!HeapTupleIsValid(tuple))
 	{
@@ -1042,7 +1042,7 @@ clause_pred_clause_test(Expr *predicate, Node *clause)
 						   F_INT2EQ,
 						   Int16GetDatum(test_strategy));
 
-	scan = heap_beginscan(relation, false, false, 3, entry);
+	scan = heap_beginscan(relation, false, SnapshotNow, 3, entry);
 	tuple = heap_getnext(scan, false, (Buffer *) NULL);
 	if (!HeapTupleIsValid(tuple))
 	{

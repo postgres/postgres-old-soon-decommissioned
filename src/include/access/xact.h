@@ -22,13 +22,21 @@
  */
 typedef struct TransactionStateData
 {
-	TransactionId transactionIdData;
-	CommandId	commandId;
-	CommandId	scanCommandId;
-	AbsoluteTime startTime;
-	int			state;
-	int			blockState;
+	TransactionId		transactionIdData;
+	CommandId			commandId;
+	CommandId			scanCommandId;
+	AbsoluteTime		startTime;
+	int					state;
+	int					blockState;
 } TransactionStateData;
+
+/*
+ * Xact isolation levels
+ */
+#define	XACT_DIRTY_READ			0		/* not implemented */
+#define	XACT_READ_COMMITTED		1
+#define	XACT_REPEATABLE_READ	2		/* not implemented */
+#define	XACT_SERIALIZED			3
 
 /* ----------------
  *		transaction states

@@ -750,7 +750,7 @@ ExecOpenIndices(Oid resultRelationOid,
 	 */
 	indexSd = heap_beginscan(indexRd,	/* scan desc */
 							 false,		/* scan backward flag */
-							 false,		/* see self */
+							 SnapshotNow,	/* NOW snapshot */
 							 1, /* number scan keys */
 							 &key);		/* scan keys */
 

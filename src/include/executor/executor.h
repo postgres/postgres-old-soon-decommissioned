@@ -61,8 +61,8 @@
  */
 extern void
 ExecOpenScanR(Oid relOid, int nkeys, ScanKey skeys, bool isindex,
-			  ScanDirection dir, Relation *returnRelation,
-			  Pointer *returnScanDesc);
+			  ScanDirection dir, Snapshot snapshot, 
+			  Relation *returnRelation, Pointer *returnScanDesc);
 extern void ExecCloseR(Plan *node);
 extern void ExecReScan(Plan *node, ExprContext *exprCtxt, Plan *parent);
 extern HeapScanDesc

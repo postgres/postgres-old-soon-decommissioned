@@ -164,7 +164,7 @@ rtbuild(Relation heap,
 		slot = NULL;
 	}
 #endif							/* OMIT_PARTIAL_INDEX */
-	scan = heap_beginscan(heap, 0, false, 0, (ScanKey) NULL);
+	scan = heap_beginscan(heap, 0, SnapshotNow, 0, (ScanKey) NULL);
 	htup = heap_getnext(scan, 0, &buffer);
 
 	/* count the tuples as we insert them */

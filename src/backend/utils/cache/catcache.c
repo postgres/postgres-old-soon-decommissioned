@@ -994,7 +994,7 @@ SearchSysCache(struct catcache * cache,
 		 */
 		MemoryContextSwitchTo(oldcxt);
 
-		sd = heap_beginscan(relation, 0, false,
+		sd = heap_beginscan(relation, 0, SnapshotNow,
 							cache->cc_nkeys, cache->cc_skey);
 
 		/* should this buffer be ReleaseBuffer'd?  --djm 8/20/96 */

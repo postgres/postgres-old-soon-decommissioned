@@ -85,7 +85,8 @@ IndexNext(IndexScan *node)
 	EState	   *estate;
 	CommonScanState *scanstate;
 	IndexScanState *indexstate;
-	ScanDirection direction;
+	ScanDirection	direction;
+	Snapshot		snapshot;
 	int			indexPtr;
 	IndexScanDescPtr scanDescs;
 	IndexScanDesc scandesc;
@@ -101,6 +102,7 @@ IndexNext(IndexScan *node)
 	 */
 	estate = node->scan.plan.state;
 	direction = estate->es_direction;
+	snapshot = estate->es_snapshot;
 	scanstate = node->scan.scanstate;
 	indexstate = node->indxstate;
 	indexPtr = indexstate->iss_IndexPtr;
@@ -122,7 +124,8 @@ IndexNext(IndexScan *node)
 	 */
 	while ((result = index_getnext(scandesc, direction)) != NULL)
 	{
-		tuple = heap_fetch(heapRelation, false, &result->heap_iptr, &buffer);
+		tuple = heap_fetch(heapRelation, snapshot, 
+							&result->heap_iptr, &buffer);
 		/* be tidy */
 		pfree(result);
 
@@ -920,6 +923,7 @@ ExecInitIndexScan(IndexScan *node, EState *estate, Plan *parent)
 				  (ScanKey) NULL,		/* scan key */
 				  0,			/* is index */
 				  direction,	/* scan direction */
+				  estate->es_snapshot,	/* */
 				  &currentRelation,		/* return: rel desc */
 				  (Pointer *) &currentScanDesc);		/* return: scan desc */
 
@@ -958,6 +962,7 @@ ExecInitIndexScan(IndexScan *node, EState *estate, Plan *parent)
 						  scanKeys[i],	/* scan key */
 						  true, /* is index */
 						  direction,	/* scan direction */
+						  estate->es_snapshot,
 						  &(relationDescs[i]),	/* return: rel desc */
 						  (Pointer *) &(scanDescs[i]));
 			/* return: scan desc */

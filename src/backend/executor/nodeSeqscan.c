@@ -181,6 +181,7 @@ InitScanRelation(SeqScan *node, EState *estate,
 					  NULL,		/* scan key */
 					  0,		/* is index */
 					  direction,/* scan direction */
+					  estate->es_snapshot,
 					  &currentRelation, /* return: rel desc */
 					  (Pointer *) &currentScanDesc);	/* return: scan desc */
 

@@ -252,6 +252,9 @@ InitProcess(IPCKey key)
 	MyProc->pid = MyProcPid;
 #endif
 	MyProc->xid = InvalidTransactionId;
+#ifdef LowLevelLocking
+	MyProc->xmin = InvalidTransactionId;
+#endif
 
 	/* ----------------
 	 * Start keeping spin lock stats from here on.	Any botch before
@@ -479,11 +482,13 @@ ProcSleep(PROC_QUEUE *waitQueue,
 	MyProc->token = token;
 	MyProc->waitLock = lock;
 
+#ifndef LowLevelLocking
 	/* -------------------
 	 * currently, we only need this for the ProcWakeup routines
 	 * -------------------
 	 */
 	TransactionIdStore((TransactionId) GetCurrentTransactionId(), &MyProc->xid);
+#endif
 
 	/* -------------------
 	 * assume that these two operations are atomic (because

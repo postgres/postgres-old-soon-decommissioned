@@ -438,7 +438,7 @@ PerformAddAttribute(char *relationName,
 		 * XXX use syscache here as an optimization
 		 */
 		key[1].sk_argument = (Datum) colDef->colname;
-		attsdesc = heap_beginscan(attrdesc, 0, false, 2, key);
+		attsdesc = heap_beginscan(attrdesc, 0, SnapshotNow, 2, key);
 
 
 		tup = heap_getnext(attsdesc, 0, (Buffer *) NULL);
