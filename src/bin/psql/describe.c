@@ -1231,7 +1231,7 @@ describeUsers(const char *pattern)
  * i - indexes
  * v - views
  * s - sequences
- * S - system tables (~ '^pg_')
+ * S - system tables (pg_catalog)
  * (any order of the above is fine)
  */
 bool
@@ -1247,7 +1247,7 @@ listTables(const char *tabtypes, const char *pattern, bool verbose)
 	PGresult   *res;
 	printQueryOpt myopt = pset.popt;
 
-	if (showSystem && !(showSeq || showIndexes || showViews || showTables))
+	if (!(showTables || showIndexes || showViews || showSeq))
 		showTables = showViews = showSeq = true;
 
 	initPQExpBuffer(&buf);
@@ -1296,18 +1296,19 @@ listTables(const char *tabtypes, const char *pattern, bool verbose)
 	appendPQExpBuffer(&buf, ")\n");
 
 	/*
-	 * Unless showSystem is specified, we suppress system tables, ie,
+	 * If showSystem is specified, show only system objects (those in
+	 * pg_catalog).  Otherwise, suppress system objects, including
 	 * those in pg_catalog and pg_toast.  (We don't want to hide temp
 	 * tables though.)
 	 */
 	if (showSystem)
-		processNamePattern(&buf, pattern, true, false,
-						   "n.nspname", "c.relname", NULL,
-						   "pg_catalog.pg_table_is_visible(c.oid)");
+		appendPQExpBuffer(&buf, "      AND n.nspname = 'pg_catalog'\n");
 	else
-		processNamePattern(&buf, pattern, true, false,
-						   "n.nspname", "c.relname", NULL,
-						   "pg_catalog.pg_table_is_visible(c.oid) AND n.nspname <> 'pg_catalog' AND n.nspname <> 'pg_toast'");
+		appendPQExpBuffer(&buf, "      AND n.nspname NOT IN ('pg_catalog', 'pg_toast')\n");
+
+	processNamePattern(&buf, pattern, true, false,
+					   "n.nspname", "c.relname", NULL,
+					   "pg_catalog.pg_table_is_visible(c.oid)");
 
 	appendPQExpBuffer(&buf, "ORDER BY 1,2;");
 
