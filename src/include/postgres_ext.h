@@ -28,7 +28,11 @@
  */
 typedef unsigned int Oid;
 
+#ifdef __cplusplus
+#define InvalidOid		(Oid(0))
+#else
 #define InvalidOid		((Oid) 0)
+#endif
 
 #define OID_MAX  UINT_MAX
 /* you will need to include <limits.h> to use the above #define */
