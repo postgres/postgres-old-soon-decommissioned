@@ -6,7 +6,7 @@
 
 subdir = src/backend/utils/adt
 top_builddir = ../../../..
-include ../../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 # seems to be required for some date/time stuff 1999/07/22 bjm
 ifeq ($(CPU),alpha)
@@ -40,6 +40,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-
-
-

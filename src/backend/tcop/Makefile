@@ -8,12 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR= ../..
-include $(SRCDIR)/Makefile.global
-
-ifeq ($(CC), gcc)
-CFLAGS+= -Wno-error
-endif
+subdir = src/backend/tcop
+top_builddir = ../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS= dest.o fastpath.o postgres.o pquery.o utility.o
 
@@ -31,4 +28,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-

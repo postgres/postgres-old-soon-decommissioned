@@ -11,8 +11,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR= ../../..
-include ../../../Makefile.global
+subdir = src/test/regress/input
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 #
 # ... plus test query inputs
@@ -34,5 +35,5 @@ all: $(INFILES)
 	OBJ=`pwd`; \
 	sed -e "s:_OBJWD_:$$OBJ/\.\.:g" \
 	    -e "s:_DLSUFFIX_:$(DLSUFFIX):g" \
-	    -e "s:_LIBDIR_:$(LIBDIR):g" \
+	    -e "s:_LIBDIR_:$(libdir):g" \
 	    -e "s/_USER_/$$USER/g" < $< > ../sql/$@

@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../..
-include ../../Makefile.global
+subdir = src/backend/postmaster
+top_builddir = ../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = postmaster.o
 
@@ -27,4 +28,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-

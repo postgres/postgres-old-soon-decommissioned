@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../../..
-include ../../../Makefile.global
+subdir = src/backend/storage/smgr
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = md.o mm.o smgr.o smgrtype.o
 
@@ -27,4 +28,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-

@@ -6,7 +6,7 @@
 
 subdir = src/backend/utils/
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 SUBDIRS     := adt cache error fmgr hash init misc mmgr sort time
 ifdef MULTIBYTE

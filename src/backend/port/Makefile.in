@@ -17,8 +17,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR=../..
-include ../../Makefile.global
+subdir = src/backend/port
+top_builddir = ../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = dynloader.o @INET_ATON@ @STRERROR@ @MISSING_RANDOM@ @SRANDOM@
 OBJS+= @GETHOSTNAME@ @GETRUSAGE@ @STRCASECMP@ @STRDUP@ @TAS@ @ISINF@
@@ -38,8 +39,6 @@ qnx4.dir:
 
 tas.o: tas.s
 	$(CC) $(CFLAGS) -c tas.s
-
-.PHONY: clean dep
 
 distclean clean:
 	rm -f SUBSYS.o $(OBJS)

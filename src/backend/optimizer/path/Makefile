@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../../..
-include ../../../Makefile.global
+subdir = src/backend/optimizer/path
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = allpaths.o clausesel.o costsize.o indxpath.o \
        joinpath.o joinrels.o orindxpath.o pathkeys.o tidpath.o
@@ -28,4 +29,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-

@@ -10,7 +10,7 @@
 
 subdir = src/interfaces
 top_builddir = ../..
-include ../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 DIRS := libpq ecpg libpgeasy
 

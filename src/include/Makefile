@@ -11,7 +11,7 @@
 
 subdir = src/include
 top_builddir = ../..
-include ../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 
 HEADERS := os.h config.h c.h postgres.h postgres_ext.h fmgr.h \

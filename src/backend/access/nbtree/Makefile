@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../../..
-include ../../../Makefile.global
+subdir = src/backend/access/nbtree
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = nbtcompare.o nbtinsert.o nbtpage.o nbtree.o nbtscan.o nbtsearch.o \
        nbtstrat.o nbtutils.o nbtsort.o

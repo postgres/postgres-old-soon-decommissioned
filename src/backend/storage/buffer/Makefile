@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../../..
-include ../../../Makefile.global
+subdir = src/backend/storage/buffer
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = buf_table.o buf_init.o bufmgr.o freelist.o localbuf.o s_lock.o
 

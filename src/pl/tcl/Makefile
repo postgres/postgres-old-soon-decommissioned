@@ -8,7 +8,7 @@
 
 subdir = src/pl/tcl
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 -include Makefile.tcldefs
 

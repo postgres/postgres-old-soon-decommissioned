@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../../..
-include ../../../Makefile.global
+subdir = src/backend/access/rtree
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = rtget.o rtproc.o rtree.o rtscan.o rtstrat.o
 

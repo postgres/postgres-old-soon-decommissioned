@@ -8,14 +8,14 @@
 
 subdir = src/interfaces/odbc
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 # Shared library parameters
 NAME = psqlodbc
 SO_MAJOR_VERSION = 0
 SO_MINOR_VERSION = 26
 
-CFLAGS += -I$(srcdir) -DHAVE_CONFIG_H -DODBCINSTDIR='"$(odbcinst_ini_dir)"'
+CPPFLAGS += -I$(srcdir) -DHAVE_CONFIG_H -DODBCINSTDIR='"$(odbcinst_ini_dir)"'
 
 
 OBJS = info.o bind.o columninfo.o connection.o convert.o drvconn.o \

@@ -11,13 +11,14 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR= ../..
-include ../../Makefile.global
+subdir = src/test/bench
+top_builddir = ../../..
+include $(top_builddir)/src/Makefile.global
 
 CREATEFILES= create.sql bench.sql
 OUTFILES= bench.out bench.out.perquery
 
-CFLAGS+= -I$(LIBPQDIR) $(CFLAGS_SL)
+CFLAGS+= -I$(libpq_srcdir) $(CFLAGS_SL)
 
 
 all: $(CREATEFILES)

@@ -8,12 +8,11 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../../..
-include ../../../Makefile.global
+subdir = src/backend/optimizer/prep
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = prepqual.o preptlist.o prepunion.o prepkeyset.o
-
-# not ready yet: predmig.o xfunc.o
 
 all: SUBSYS.o
 

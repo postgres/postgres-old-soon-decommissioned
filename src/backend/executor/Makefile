@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../..
-include ../../Makefile.global
+subdir = src/backend/executor
+top_builddir = ../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = execAmi.o execFlatten.o execJunk.o execMain.o \
        execProcnode.o execQual.o execScan.o execTuples.o \
@@ -33,4 +34,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-

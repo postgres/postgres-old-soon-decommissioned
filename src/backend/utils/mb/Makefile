@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../../..
-include ../../../Makefile.global
+subdir = src/backend/utils/mb
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = common.o conv.o mbutils.o wchar.o wstrcmp.o wstrncmp.o variable.o \
        big5.o
@@ -47,4 +48,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-

@@ -10,7 +10,7 @@
 
 subdir = src/bin
 top_builddir = ../..
-include ../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 DIRS := initdb initlocation ipcclean pg_ctl pg_dump pg_id \
 	pg_passwd psql scripts pg-config

@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../../..
-include ../../../Makefile.global
+subdir = src/backend/port/qnx4
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = isnan.o rint.o sem.o shm.o
 
@@ -36,4 +37,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-

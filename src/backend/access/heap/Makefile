@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../../..
-include ../../../Makefile.global
+subdir = src/backend/access/heap
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = heapam.o hio.o stats.o tuptoaster.o
 

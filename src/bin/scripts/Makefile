@@ -10,7 +10,7 @@
 
 subdir = src/bin/scripts
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 SCRIPTS := createdb dropdb createuser dropuser createlang droplang vacuumdb
 

@@ -10,7 +10,7 @@
 
 subdir = src/bin/pgaccess
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 pgaccessdir = $(datadir)/pgaccess
 

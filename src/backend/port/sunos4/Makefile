@@ -1,15 +1,8 @@
-#-------------------------------------------------------------------------
-#
-# Makefile--
-#    Makefile for port/sparc
-#
-# IDENTIFICATION
-#    $Header$
-#
-#-------------------------------------------------------------------------
+# $Header$
 
-SRCDIR = ../../..
-include ../../../Makefile.global
+subdir = src/backend/port/sunos4
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = strtol.o
 
@@ -27,4 +20,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-

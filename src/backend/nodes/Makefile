@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../..
-include $(SRCDIR)/Makefile.global
+subdir = src/backend/nodes
+top_builddir = ../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = nodeFuncs.o nodes.o list.o \
        copyfuncs.o equalfuncs.o makefuncs.o \

@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR= ..
-include $(SRCDIR)/Makefile.global
+subdir = src/tutorial
+top_builddir = ../..
+include $(top_builddir)/src/Makefile.global
 
 CFLAGS+= $(CFLAGS_SL)
 

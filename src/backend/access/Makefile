@@ -6,7 +6,7 @@
 
 subdir = src/backend/access
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 SUBDIRS	    := common gist hash heap index nbtree rtree transam
 SUBDIROBJS  := $(SUBDIRS:%=%/SUBSYS.o)

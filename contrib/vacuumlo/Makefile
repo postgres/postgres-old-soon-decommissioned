@@ -6,8 +6,8 @@ subdir = contrib/vacuumlo
 top_builddir = ../..
 include ../../src/Makefile.global
 
-CPPFLAGS += -I$(LIBPQDIR)
-LIBS += $(LIBPQ)
+CPPFLAGS += -I$(libpq_srcdir)
+LIBS += $(libpq)
 
 all: vacuumlo
 

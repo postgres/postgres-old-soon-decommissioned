@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../..
-include $(SRCDIR)/Makefile.global
+subdir = src/backend/commands
+top_builddir = ../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = async.o creatinh.o command.o comment.o copy.o indexcmds.o define.o \
        remove.o rename.o vacuum.o analyze.o view.o cluster.o \
@@ -30,4 +31,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-

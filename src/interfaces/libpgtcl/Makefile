@@ -16,11 +16,11 @@ NAME= pgtcl
 SO_MAJOR_VERSION= 2
 SO_MINOR_VERSION= 1
 
-CFLAGS+= -I$(LIBPQDIR)
+CPPFLAGS += -I$(libpq_srcdir)
 
 OBJS= pgtcl.o pgtclCmds.o pgtclId.o
 
-SHLIB_LINK+= $(LIBPQ)
+SHLIB_LINK+= $(libpq)
 
 # If crypt is a separate library, rather than part of libc, it may need
 # to be referenced separately to keep (broken) linkers happy.  (This is

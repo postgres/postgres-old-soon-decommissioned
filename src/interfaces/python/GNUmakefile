@@ -10,14 +10,14 @@
 
 subdir = src/interfaces/python
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 all: Makefile pgmodule.c libpq-all
 	$(MAKE) -f Makefile
 
 .PHONY: libpq-all
 libpq-all:
-	$(MAKE) -C $(top_builddir)/src/interfaces/libpq all
+	$(MAKE) -C $(libpq_builddir) all
 
 Makefile: Setup.in Makefile.pre.in
 	$(MAKE) -f Makefile.pre.in boot srcdir=$(srcdir) VPATH=$(srcdir)
@@ -26,10 +26,11 @@ Makefile.pre.in: $(python_extmakefile)
 	cp $< $@
 
 Setup.in: Setup.in.raw
-	sed -e "s%__LIBPQ__%${top_srcdir}/src/interfaces/libpq%g" \
-	    -e "s%__EXTRA_LIBS__%${LIBS}%g" \
-	    -e "s%__INCLUDES__%${top_srcdir}/src/include%g" \
-	    < $< > $@
+	sed -e 's,@libpq_srcdir@,$(libpq_srcdir),g' \
+	    -e 's,@libpq_builddir@,$(libpq_builddir),g' \
+	    -e 's,@EXTRA_LIBS@,$(LIBS),g' \
+	    -e 's,@pg_includedir@,$(top_srcdir)/src/include,g' \
+	    $< > $@
 
 install: all
 	@echo "Installing Python module"

@@ -6,8 +6,8 @@ subdir = contrib/findoidjoins
 top_builddir = ../..
 include ../../src/Makefile.global
 
-CFLAGS	+= -I$(LIBPGEASYDIR) -I$(LIBPQDIR)
-LIBS	+= $(LIBPGEASY)
+CFLAGS	+= -I$(libpgeasy_srcdir) -I$(libpq_srcdir)
+LIBS	+= $(libpgeasy)
 
 all: findoidjoins
 

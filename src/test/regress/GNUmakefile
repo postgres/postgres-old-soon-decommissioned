@@ -19,9 +19,9 @@ CONTRIB= $(top_builddir)/contrib
 
 HOST := $(shell $(top_srcdir)/config/config.guess)
 
-CFLAGS+= -I$(LIBPQDIR) $(CFLAGS_SL)
+CFLAGS+= -I$(libpq_srcdir) $(CFLAGS_SL)
 
-LDADD+= -L$(LIBPQDIR) -lpq
+LDADD+= $(libpq)
         
 #
 # DLOBJS is the dynamically-loaded object file.  The regression test uses 

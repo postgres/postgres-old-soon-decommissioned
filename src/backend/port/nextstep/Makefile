@@ -1,12 +1,14 @@
 #-------------------------------------------------------------------------
 #
-# Makefile--
-#    Makefile for port/next (NeXTStep 3.3 specific stuff)
+# Makefile for NeXTStep 3.3 specific stuff
+#
+# $Header$
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../../..
-include ../../../Makefile.global
+subdir = src/backend/port/nextstep
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = dynloader.o port.o
 

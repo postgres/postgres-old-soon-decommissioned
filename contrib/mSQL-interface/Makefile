@@ -4,14 +4,14 @@
 
 subdir = contrib/mSQL-interface
 top_builddir = ../..
-include ../../src/Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 NAME	:= mpgsql
 SO_MAJOR_VERSION := 0
 SO_MINOR_VERSION := 0
 OBJS	:= mpgsql.o
 
-CFLAGS	+= -I$(LIBPQDIR)
+CFLAGS	+= -I$(libpq_srcdir)
 
 include $(top_srcdir)/src/Makefile.shlib
 

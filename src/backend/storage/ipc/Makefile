@@ -6,7 +6,7 @@
 
 subdir = src/backend/storage/ipc
 top_builddir = ../../../..
-include ../../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 # seems to be required 1999/07/22 bjm
 ifeq ($(CPU), alpha)

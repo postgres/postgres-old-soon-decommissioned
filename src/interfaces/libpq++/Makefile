@@ -10,21 +10,21 @@
 
 subdir = src/interfaces/libpq++
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 NAME= pq++
 SO_MAJOR_VERSION= 3
 SO_MINOR_VERSION= 1
 
 SRCHEADERDIR = $(top_srcdir)/src/include
-CXXFLAGS+= -I$(SRCHEADERDIR) -I$(LIBPQDIR)
+CXXFLAGS+= -I$(SRCHEADERDIR) -I$(libpq_srcdir)
 
 OBJS = pgconnection.o pgdatabase.o pgtransdb.o pgcursordb.o pglobject.o 
 
 ifeq ($(PORTNAME), win)
-SHLIB_LINK+= --driver-name g++ $(LIBPQ)
+SHLIB_LINK+= --driver-name g++ $(libpq)
 else
-SHLIB_LINK= $(LIBPQ)
+SHLIB_LINK= $(libpq)
 endif
 
 # For CC on IRIX, must use CC as linker/archiver of C++ libraries

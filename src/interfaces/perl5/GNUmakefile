@@ -8,7 +8,7 @@
 
 subdir = src/interfaces/perl5
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 
 all: Makefile libpq-all
@@ -19,7 +19,7 @@ Makefile: Makefile.PL
 
 .PHONY: libpq-all
 libpq-all:
-	$(MAKE) -C $(top_builddir)/src/interfaces/libpq all
+	$(MAKE) -C $(libpq_builddir) all
 
 # The klugery here is to ensure that the perl5 shared library gets
 # built with the correct path to the installed location of libpq

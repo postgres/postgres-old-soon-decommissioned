@@ -6,7 +6,7 @@
 
 subdir =
 top_builddir = .
-include src/Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 all:
 	$(MAKE) -C doc all

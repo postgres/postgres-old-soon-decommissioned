@@ -8,8 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../../..
-include ../../../Makefile.global
+subdir = src/backend/utils/cache
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = catcache.o inval.o rel.o relcache.o syscache.o lsyscache.o \
 	fcache.o temprel.o
@@ -28,4 +29,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-

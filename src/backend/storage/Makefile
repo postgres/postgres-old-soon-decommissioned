@@ -6,7 +6,7 @@
 
 subdir = src/backend/storage
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 SUBDIRS     := buffer file ipc large_object lmgr page smgr
 SUBDIROBJS  := $(SUBDIRS:%=%/SUBSYS.o)

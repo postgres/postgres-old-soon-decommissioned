@@ -8,10 +8,11 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../..
-include ../../Makefile.global
+subdir = src/backend/regex
+top_builddir = ../../..
+include $(top_builddir)/src/Makefile.global
 
-CFLAGS += -DPOSIX_MISTAKE 
+CPPFLAGS += -DPOSIX_MISTAKE 
 
 DEBUGOBJ =
 
@@ -27,7 +28,7 @@ SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 retest: retest.o SUBSYS.o $(DEBUGOBJ)
-	$(CC) -o retest retest.o SUBSYS.o $(DEBUGOBJ)
+	$(CC) $(CFLAGS) -o retest retest.o SUBSYS.o $(DEBUGOBJ)
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
@@ -38,4 +39,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-

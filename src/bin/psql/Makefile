@@ -10,11 +10,11 @@
 
 subdir = src/bin/psql
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 REFDOCDIR= $(top_srcdir)/doc/src/sgml/ref
 
-CFLAGS+= -I$(LIBPQDIR)
+CPPFLAGS+= -I$(libpq_srcdir)
 
 OBJS=command.o common.o help.o input.o stringutils.o mainloop.o \
 	copy.o startup.o prompt.o variables.o large_obj.o print.o describe.o \
@@ -47,8 +47,8 @@ endif
 
 # End of hacks for picking up backend 'port' modules
 
-psql$(X): $(OBJS) $(LIBPQDIR)/libpq.a
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBPQ) $(LDFLAGS)
+psql$(X): $(OBJS) $(libpq_builddir)/libpq.a
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(libpq) $(LDFLAGS)
 
 help.o: $(srcdir)/sql_help.h
 
@@ -63,7 +63,7 @@ endif
 .PHONY: submake
 
 submake:
-	$(MAKE) -C $(LIBPQDIR) all
+	$(MAKE) -C $(libpq_builddir) all
 
 distprep: $(srcdir)/sql_help.h
 

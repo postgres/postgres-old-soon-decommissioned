@@ -10,11 +10,11 @@
 
 subdir = src/bin/initdb
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 all: initdb
 
-initdb: initdb.sh ../../Makefile.global
+initdb: initdb.sh $(top_builddir)/src/Makefile.global
 	sed -e 's/__MULTIBYTE__/$(MULTIBYTE)/g' \
 	    -e 's/__VERSION__/$(VERSION)/g' \
 	    -e 's:__bindir__:$(bindir):g' \

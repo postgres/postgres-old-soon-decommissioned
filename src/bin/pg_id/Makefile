@@ -10,7 +10,7 @@
 
 subdir = src/bin/pg_id
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 all: pg_id$(X)
 

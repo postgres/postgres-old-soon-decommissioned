@@ -10,19 +10,19 @@
 
 subdir = src/bin/pg_encoding
 top_builddir = ../../..
-include ../../Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 OBJS= pg_encoding.o
 
 all: submake pg_encoding$(X)
 
 pg_encoding$(X): $(OBJS)
-	$(CC) -o $@ $(OBJS) $(LIBPQ) $(LDFLAGS) $(CFLAGS)
+	$(CC) -o $@ $(OBJS) $(libpq) $(LDFLAGS) $(CFLAGS)
 
 .PHONY: submake
 
 submake:
-	$(MAKE) -C $(LIBPQDIR) all
+	$(MAKE) -C $(libpq_builddir) all
 
 install: all installdirs
 	$(INSTALL_PROGRAM) pg_encoding$(X) $(bindir)/pg_encoding$(X)

@@ -1,9 +1,8 @@
-#
-# Makefile for example programs
-#
+# $Header$
 
-SRCDIR= ../..
-include ../../Makefile.global
+subdir = src/test/locale
+top_builddir = ../../..
+include $(top_builddir)/src/Makefile.global
 
 
 PROGS = test-pgsql-locale test-ctype
@@ -17,9 +16,7 @@ $(PROGS): % : %.c
 clean: 
 	rm -f $(PROGS) *.out
 	for d in $(DIRS); do \
-		cd $$d; \
-		$(MAKE) clean; \
-		cd ..; \
+		$(MAKE) -C $$d clean
 	done
 
 test-%: all

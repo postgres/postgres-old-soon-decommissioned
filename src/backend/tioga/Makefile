@@ -8,10 +8,12 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../..
-include ../../Makefile.global
+subdir = src/backend/tioga
+top_builddir = ../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = tgRecipe.o Varray.o
+CPPFLAGS += -I$(srcdir)
 
 all: SUBSYS.o
 
@@ -27,4 +29,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-

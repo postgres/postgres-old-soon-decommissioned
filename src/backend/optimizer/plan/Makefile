@@ -8,12 +8,11 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../../..
-include ../../../Makefile.global
+subdir = src/backend/optimizer/plan
+top_builddir = ../../../..
+include $(top_builddir)/src/Makefile.global
 
 OBJS = createplan.o initsplan.o planmain.o planner.o setrefs.o subselect.o
-
-# not ready yet: predmig.o xfunc.o
 
 all: SUBSYS.o
 
@@ -29,4 +28,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-
