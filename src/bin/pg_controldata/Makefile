@@ -17,7 +17,7 @@ OBJS= pg_controldata.o pg_crc.o
 pg_crc.c: $(top_builddir)/src/backend/utils/hash/pg_crc.c
 	rm -f $@ && $(LN_S) $< .
 
-all: submake-libpq submake-libpgport pg_controldata
+all: submake-libpgport pg_controldata
 
 pg_controldata: $(OBJS)
 	$(CC) $(CFLAGS) $^ $(libpq) $(LDFLAGS) $(LIBS) -o $@

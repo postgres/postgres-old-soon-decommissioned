@@ -33,7 +33,8 @@ PostgreSQL documentation
   </para>
 
   <para>
-   This utility may only be run by the user who installed the server.
+   This utility may only be run by the user who installed the server because
+   it requires read access to the <literal>datadir</>.
    You can specify the data directory on the command line, or use 
    the environment variable <envar>PGDATA</>.
   </para>
