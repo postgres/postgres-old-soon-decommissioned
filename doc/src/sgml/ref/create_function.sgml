@@ -400,6 +400,17 @@ CREATE FUNCTION add(integer, integer) RETURNS integer
     RETURNS NULL ON NULL INPUT;
 </programlisting>
   </para>
+
+  <para>
+   Increment an integer, making use of an argument name, in PL/PgSQL:
+
+<programlisting>
+CREATE OR REPLACE FUNCTION increment(i integer) RETURNS integer AS '
+	BEGIN
+		RETURN i + 1;
+	END;' LANGUAGE plpgsql;
+</programlisting>
+  </para>
  </refsect1>
 
  
