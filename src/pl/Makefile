@@ -18,9 +18,9 @@ ifeq ($(with_tcl), yes)
 DIRS += tcl
 endif
 
-#ifeq ($(with_perl), yes)
+ifeq ($(with_perl), yes)
 DIRS += plperl
-#endif
+endif
 
 all install installdirs uninstall depend distprep:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
