@@ -35,7 +35,7 @@ ALTER TABLE <replaceable class="PARAMETER">table</replaceable> [ * ]
 ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
     RENAME TO <replaceable class="PARAMETER">newtable</replaceable>
 ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
-    ADD CONSTRAINT<replaceable class="PARAMETER">table constraint definition</replaceable>
+    ADD <replaceable class="PARAMETER">table constraint definition</replaceable>
 ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
 	OWNER TO <replaceable class="PARAMETER">new owner</replaceable> 
   </synopsis>
@@ -167,7 +167,7 @@ ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
    the affected table. Thus, the table or column will
    remain of the same type and size after this command is
    executed.
-   The ADD CONSTRAINT<replaceable class="PARAMETER">table constraint definition</replaceable> clause 
+   The ADD <replaceable class="PARAMETER">table constraint definition</replaceable> clause 
    adds a new constraint to the table using the same syntax as <xref
    linkend="SQL-CREATETABLE" endterm="SQL-CREATETABLE-title">. 
    The OWNER clause chnages the owner of the table to the user <replaceable class="PARAMETER">
