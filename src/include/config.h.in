@@ -685,9 +685,6 @@ extern int fdatasync(int fildes);
 /* Define if you have on_exit() */
 #undef HAVE_ON_EXIT
 
-/* Define if you have SO_PEERCRED */
-#undef HAVE_SO_PEERCRED
-
 /*
  *------------------------------------------------------------------------
  * Part 4: pull in system-specific declarations.
