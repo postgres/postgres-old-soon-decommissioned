@@ -1649,12 +1649,9 @@ float8_variance(PG_FUNCTION_ARGS)
 	sumX = transvalues[1];
 	sumX2 = transvalues[2];
 
-	/* We define VARIANCE of no values to be NULL, of 1 value to be 0 */
-	if (N == 0.0)
-		PG_RETURN_NULL();
-
+	/* Sample variance is undefined when N is 0 or 1, so return NULL */
 	if (N <= 1.0)
-		PG_RETURN_FLOAT8(0.0);
+		PG_RETURN_NULL();
 
 	numerator = N * sumX2 - sumX * sumX;
 
@@ -1680,12 +1677,9 @@ float8_stddev(PG_FUNCTION_ARGS)
 	sumX = transvalues[1];
 	sumX2 = transvalues[2];
 
-	/* We define STDDEV of no values to be NULL, of 1 value to be 0 */
-	if (N == 0.0)
-		PG_RETURN_NULL();
-
+	/* Sample stddev is undefined when N is 0 or 1, so return NULL */
 	if (N <= 1.0)
-		PG_RETURN_FLOAT8(0.0);
+		PG_RETURN_NULL();
 
 	numerator = N * sumX2 - sumX * sumX;
 
