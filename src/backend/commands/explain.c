@@ -389,7 +389,7 @@ explain_outNode(StringInfo str, Plan *plan, Plan *outer_plan,
 	{
 		case T_IndexScan:
 			show_scan_qual(((IndexScan *) plan)->indxqualorig, true,
-						   "Index Filter",
+						   "Index Cond",
 						   ((Scan *) plan)->scanrelid,
 						   outer_plan,
 						   str, indent, es);
@@ -409,7 +409,7 @@ explain_outNode(StringInfo str, Plan *plan, Plan *outer_plan,
 			break;
 		case T_NestLoop:
 			show_upper_qual(((NestLoop *) plan)->join.joinqual,
-							"Join Cond",
+							"Join Filter",
 							"outer", OUTER, outerPlan(plan),
 							"inner", INNER, innerPlan(plan),
 							str, indent, es);
@@ -426,7 +426,7 @@ explain_outNode(StringInfo str, Plan *plan, Plan *outer_plan,
 							"inner", INNER, innerPlan(plan),
 							str, indent, es);
 			show_upper_qual(((MergeJoin *) plan)->join.joinqual,
-							"Join Cond",
+							"Join Filter",
 							"outer", OUTER, outerPlan(plan),
 							"inner", INNER, innerPlan(plan),
 							str, indent, es);
@@ -443,7 +443,7 @@ explain_outNode(StringInfo str, Plan *plan, Plan *outer_plan,
 							"inner", INNER, innerPlan(plan),
 							str, indent, es);
 			show_upper_qual(((HashJoin *) plan)->join.joinqual,
-							"Join Cond",
+							"Join Filter",
 							"outer", OUTER, outerPlan(plan),
 							"inner", INNER, innerPlan(plan),
 							str, indent, es);
