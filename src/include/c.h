@@ -798,6 +798,10 @@ extern int	vsnprintf(char *str, size_t count, const char *fmt, va_list args);
  * Default "extern" declarations or macro substitutes for library routines.
  * When necessary, these routines are provided by files in src/port/.
  */
+#ifndef HAVE_CRYPT
+char *crypt(const char *key, const char *setting);
+#endif
+
 #ifndef HAVE_FSEEKO
 #define fseeko(a, b, c) fseek((a), (b), (c))
 #define ftello(a) ftell((a))
