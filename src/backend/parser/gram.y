@@ -108,6 +108,7 @@ static void doNegateFloat(Value *v);
 	DropBehavior		dbehavior;
 	OnCommitAction		oncommit;
 	List				*list;
+	FastList			fastlist;
 	Node				*node;
 	Value				*value;
 	ColumnRef			*columnref;
@@ -6719,8 +6720,18 @@ opt_indirection:
 				{ $$ = NIL; }
 		;
 
-expr_list:	a_expr									{ $$ = makeList1($1); }
-			| expr_list ',' a_expr					{ $$ = lappend($1, $3); }
+expr_list:	a_expr
+				{
+					FastList *dst = (FastList *) &$$;
+					makeFastList1(dst, $1);
+				}
+			| expr_list ',' a_expr
+				{
+					FastList *dst = (FastList *) &$$;
+					FastList *src = (FastList *) &$1;
+					*dst = *src;
+					FastAppend(dst, $3);
+				}
 		;
 
 extract_list:
