@@ -47,6 +47,7 @@ PostgreSQL Reference Manual
 
    &abort;
    &alterDatabase;
+   &alterDomain;
    &alterGroup;
    &alterTable;
    &alterTrigger;
