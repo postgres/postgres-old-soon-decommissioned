@@ -101,7 +101,7 @@ InitArchiveFmt_Files(ArchiveHandle *AH)
 	/*
 	 * Set up some special context used in compressing data.
 	 */
-	ctx = (lclContext *) malloc(sizeof(lclContext));
+	ctx = (lclContext *) calloc(1, sizeof(lclContext));
 	AH->formatData = (void *) ctx;
 	ctx->filePos = 0;
 
@@ -167,7 +167,7 @@ _ArchiveEntry(ArchiveHandle *AH, TocEntry *te)
 	lclTocEntry *ctx;
 	char		fn[K_STD_BUF_SIZE];
 
-	ctx = (lclTocEntry *) malloc(sizeof(lclTocEntry));
+	ctx = (lclTocEntry *) calloc(1, sizeof(lclTocEntry));
 	if (te->dataDumper)
 	{
 #ifdef HAVE_LIBZ
@@ -206,7 +206,7 @@ _ReadExtraToc(ArchiveHandle *AH, TocEntry *te)
 
 	if (ctx == NULL)
 	{
-		ctx = (lclTocEntry *) malloc(sizeof(lclTocEntry));
+		ctx = (lclTocEntry *) calloc(1, sizeof(lclTocEntry));
 		te->formatData = (void *) ctx;
 	}
 
