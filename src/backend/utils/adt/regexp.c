@@ -240,6 +240,7 @@ char16regexne(char *s, struct varlena *p)
 bool 
 nameregexeq(NameData *n, struct varlena *p)
 {
+    if (!n) return FALSE;
     return (fixedlen_regexeq(n->data, p, NAMEDATALEN, REG_EXTENDED));
 }
 bool 
@@ -251,6 +252,7 @@ nameregexne(NameData *s, struct varlena *p)
 bool 
 textregexeq(struct varlena *s, struct varlena *p)
 {
+    if (!s) return (FALSE);
     return (fixedlen_regexeq(VARDATA(s), p, VARSIZE(s) - VARHDRSZ, REG_EXTENDED));
 }
 
@@ -319,6 +321,7 @@ char16icregexne(char *s, struct varlena *p)
 bool 
 texticregexeq(struct varlena *s, struct varlena *p)
 {
+    if (!s) return FALSE;
     return (fixedlen_regexeq(VARDATA(s), p, VARSIZE(s) - VARHDRSZ, 
 			     REG_ICASE | REG_EXTENDED));
 }
@@ -332,6 +335,7 @@ texticregexne(struct varlena *s, struct varlena *p)
 bool 
 nameicregexeq(NameData *n, struct varlena *p)
 {
+    if (!n) return FALSE;
     return (fixedlen_regexeq(n->data, p, NAMEDATALEN, 
 			     REG_ICASE | REG_EXTENDED));
 }
