@@ -710,7 +710,7 @@ exec_command(const char *cmd,
 			psql_error("\\%s: missing required argument\n", cmd);
 			success = false;
 		}
-		if (!SetVariable(pset.vars, opt, NULL))
+		else if (!SetVariable(pset.vars, opt, NULL))
 		{
 			psql_error("\\%s: error\n", cmd);
 			success = false;
