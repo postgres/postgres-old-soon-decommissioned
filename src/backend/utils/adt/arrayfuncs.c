@@ -275,7 +275,7 @@ ArrayCount(char *str, int *dim, char typdelim)
 {
 	int			nest_level = 0,
 				i;
-	int			ndim = 0,
+	int			ndim = 1,
 				temp[MAXDIM];
 	bool		scanning_string = false;
 	bool		eoArray = false;
