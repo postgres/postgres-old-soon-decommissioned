@@ -776,19 +776,19 @@ fori_lower	:
 			    switch (tok) {
 				case T_VARIABLE:
 				    params[nparams] = yylval.var->varno;
-				    sprintf(buf, "$%d", ++nparams);
+				    sprintf(buf, " $%d ", ++nparams);
 				    plpgsql_dstring_append(&ds, buf);
 				    break;
 				    
 				case T_RECFIELD:
 				    params[nparams] = yylval.recfield->rfno;
-				    sprintf(buf, "$%d", ++nparams);
+				    sprintf(buf, " $%d ", ++nparams);
 				    plpgsql_dstring_append(&ds, buf);
 				    break;
 				    
 				case T_TGARGV:
 				    params[nparams] = yylval.trigarg->dno;
-				    sprintf(buf, "$%d", ++nparams);
+				    sprintf(buf, " $%d ", ++nparams);
 				    plpgsql_dstring_append(&ds, buf);
 				    break;
 				    
@@ -1118,19 +1118,19 @@ read_sqlstmt (int until, char *s, char *sqlstart)
         switch (tok) {
 	    case T_VARIABLE:
 		params[nparams] = yylval.var->varno;
-		sprintf(buf, "$%d", ++nparams);
+		sprintf(buf, " $%d ", ++nparams);
 		plpgsql_dstring_append(&ds, buf);
 		break;
 	        
 	    case T_RECFIELD:
 		params[nparams] = yylval.recfield->rfno;
-		sprintf(buf, "$%d", ++nparams);
+		sprintf(buf, " $%d ", ++nparams);
 		plpgsql_dstring_append(&ds, buf);
 		break;
 	        
 	    case T_TGARGV:
 		params[nparams] = yylval.trigarg->dno;
-		sprintf(buf, "$%d", ++nparams);
+		sprintf(buf, " $%d ", ++nparams);
 		plpgsql_dstring_append(&ds, buf);
 		break;
 	        
@@ -1205,19 +1205,19 @@ make_select_stmt()
         switch (tok) {
 	    case T_VARIABLE:
 		params[nparams] = yylval.var->varno;
-		sprintf(buf, "$%d", ++nparams);
+		sprintf(buf, " $%d ", ++nparams);
 		plpgsql_dstring_append(&ds, buf);
 		break;
 	        
 	    case T_RECFIELD:
 		params[nparams] = yylval.recfield->rfno;
-		sprintf(buf, "$%d", ++nparams);
+		sprintf(buf, " $%d ", ++nparams);
 		plpgsql_dstring_append(&ds, buf);
 		break;
 	        
 	    case T_TGARGV:
 		params[nparams] = yylval.trigarg->dno;
-		sprintf(buf, "$%d", ++nparams);
+		sprintf(buf, " $%d ", ++nparams);
 		plpgsql_dstring_append(&ds, buf);
 		break;
 	        
@@ -1338,19 +1338,19 @@ make_select_stmt()
 		    switch (tok) {
 			case T_VARIABLE:
 			    params[nparams] = yylval.var->varno;
-			    sprintf(buf, "$%d", ++nparams);
+			    sprintf(buf, " $%d ", ++nparams);
 			    plpgsql_dstring_append(&ds, buf);
 			    break;
 			    
 			case T_RECFIELD:
 			    params[nparams] = yylval.recfield->rfno;
-			    sprintf(buf, "$%d", ++nparams);
+			    sprintf(buf, " $%d ", ++nparams);
 			    plpgsql_dstring_append(&ds, buf);
 			    break;
 			    
 			case T_TGARGV:
 			    params[nparams] = yylval.trigarg->dno;
-			    sprintf(buf, "$%d", ++nparams);
+			    sprintf(buf, " $%d ", ++nparams);
 			    plpgsql_dstring_append(&ds, buf);
 			    break;
 			    
@@ -1385,19 +1385,19 @@ make_select_stmt()
 	switch (tok) {
 	    case T_VARIABLE:
 		params[nparams] = yylval.var->varno;
-		sprintf(buf, "$%d", ++nparams);
+		sprintf(buf, " $%d ", ++nparams);
 		plpgsql_dstring_append(&ds, buf);
 		break;
 		
 	    case T_RECFIELD:
 		params[nparams] = yylval.recfield->rfno;
-		sprintf(buf, "$%d", ++nparams);
+		sprintf(buf, " $%d ", ++nparams);
 		plpgsql_dstring_append(&ds, buf);
 		break;
 		
 	    case T_TGARGV:
 		params[nparams] = yylval.trigarg->dno;
-		sprintf(buf, "$%d", ++nparams);
+		sprintf(buf, " $%d ", ++nparams);
 		plpgsql_dstring_append(&ds, buf);
 		break;
 		
