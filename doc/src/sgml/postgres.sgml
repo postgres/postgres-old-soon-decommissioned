@@ -6,6 +6,10 @@ Other subset docs should be copied and shrunk from here.
 thomas 1998-02-23
 
 $Log: postgres.sgml,v $
+Revision 1.25  1999/05/27 15:49:08  thomas
+Markup fixes.
+Update for v6.5 release.
+
 Revision 1.24  1999/05/26 17:30:29  thomas
 Add chapters on CVS access, MVCC, SQL theory to the docs.
 Add an appendix with more details on date/time attributes and handling.
@@ -289,7 +293,12 @@ Your name here...
     Installation and maintenance information.
    </Para>
   </PartIntro>
+<!--
+  Disable these extra intro chapters since some elements (e.g. y2k
+  statement) are included in the first intro.sgml and cause errors if
+  included twice.
    &intro-ag;
+-->
    &ports;
    &config;
    &layout;
@@ -311,7 +320,12 @@ Your name here...
     Information for extending <ProductName>Postgres</ProductName>.
    </Para>
   </PartIntro>
+<!--
+  Disable these extra intro chapters since some elements (e.g. y2k
+  statement) are included in the first intro.sgml and cause errors if
+  included twice.
    &intro-pg;
+-->
    &arch-pg;
    &extend;
    &xfunc;
