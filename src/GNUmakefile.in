@@ -44,7 +44,7 @@ ifneq ($(wildcard man), )
 	$(MAKE) -C man $@
 endif
 	@if test $@. = all. -o $@. = .; then \
-	echo All of Postgres95 is successfully made.  Ready to install. ;\
+	echo All of PostgreSQL is successfully made.  Ready to install. ;\
         fi
 
 TAGS:
