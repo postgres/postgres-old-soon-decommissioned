@@ -117,8 +117,19 @@ elif [ -x "$bindir/postgres" ]; then
     then
         PGPATH=$bindir
     else
-        echo "The program '$bindir/postgres' needed by $CMDNAME does not belong to" 1>&2
-        echo "PostgreSQL version $VERSION.  Check your installation." 1>&2
+        # Maybe there was an error message?
+        errormsg=`$bindir/postgres -V 2>&1 >/dev/null`
+      (
+        echo "The program "
+        echo "    '$bindir/postgres'"
+        echo "needed by $CMDNAME does not belong to PostgreSQL version $VERSION, or"
+        echo "there may be a configuration problem."
+        if test x"$errormsg" != x""; then
+            echo
+            echo "This was the error message issued by that program:"
+            echo "$errormsg"
+        fi
+      ) 1>&2
         exit 1
     fi
 else
@@ -638,9 +649,11 @@ echo "VACUUM pg_database" \
 echo
 echo "Success. You can now start the database server using:"
 echo ""
-echo "	$PGPATH/postmaster -D $PGDATA"
+echo "    $PGPATH/postmaster -D $PGDATA"
 echo "or"
-echo "	$PGPATH/pg_ctl -D $PGDATA start"
+# (Advertise -l option here, otherwise we have a background
+#  process writing to the terminal.)
+echo "    $PGPATH/pg_ctl -D $PGDATA -l logfile start"
 echo
 
 exit 0
