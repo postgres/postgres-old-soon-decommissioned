@@ -14,8 +14,6 @@ isinf(double d)
 
 	switch (type)
 	{
-		case FP_SNAN:
-		case FP_QNAN:
 		case FP_NINF:
 		case FP_PINF:
 			return (1);
