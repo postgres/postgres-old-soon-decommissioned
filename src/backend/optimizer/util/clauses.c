@@ -543,6 +543,14 @@ check_subplans_for_ungrouped_vars_walker(Node *node,
 		return false;
 
 	/*
+	 * If we find an aggregate function, do not recurse into its
+	 * arguments.  Subplans invoked within aggregate calls are allowed
+	 * to receive ungrouped variables.
+	 */
+	if (IsA(node, Aggref))
+		return false;
+
+	/*
 	 * We can ignore Vars other than in subplan args lists, since the
 	 * parser already checked 'em.
 	 */
