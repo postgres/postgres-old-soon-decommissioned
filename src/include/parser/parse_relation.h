@@ -27,6 +27,11 @@ extern void checkNameSpaceConflicts(ParseState *pstate, Node *namespace1,
 extern int RTERangeTablePosn(ParseState *pstate,
 				  RangeTblEntry *rte,
 				  int *sublevels_up);
+extern RangeTblEntry *GetRTEByRangeTablePosn(ParseState *pstate,
+											 int varno,
+											 int sublevels_up);
+extern Node *scanRTEForColumn(ParseState *pstate, RangeTblEntry *rte,
+							  char *colname);
 extern Node *colnameToVar(ParseState *pstate, char *colname);
 extern Node *qualifiedNameToVar(ParseState *pstate,
 				   char *schemaname,

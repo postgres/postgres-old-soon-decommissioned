@@ -60,14 +60,6 @@ transformTargetEntry(ParseState *pstate,
 	if (expr == NULL)
 		expr = transformExpr(pstate, node);
 
-	if (IsA(expr, RangeVar))
-		ereport(ERROR,
-				(errcode(ERRCODE_SYNTAX_ERROR),
-				 errmsg("relation reference \"%s\" cannot be used as a select-list entry",
-						((RangeVar *) expr)->relname),
-				 errhint("Write \"%s\".* to denote all the columns of the relation.",
-						 ((RangeVar *) expr)->relname)));
-
 	type_id = exprType(expr);
 	type_mod = exprTypmod(expr);
 
@@ -243,21 +235,12 @@ markTargetListOrigins(ParseState *pstate, List *targetlist)
 static void
 markTargetListOrigin(ParseState *pstate, Resdom *res, Var *var)
 {
-	Index		levelsup;
 	RangeTblEntry *rte;
 	AttrNumber	attnum;
 
 	if (var == NULL || !IsA(var, Var))
 		return;
-	levelsup = var->varlevelsup;
-	while (levelsup-- > 0)
-	{
-		pstate = pstate->parentParseState;
-		Assert(pstate != NULL);
-	}
-	Assert(var->varno > 0 &&
-		   (int) var->varno <= length(pstate->p_rtable));
-	rte = rt_fetch(var->varno, pstate->p_rtable);
+	rte = GetRTEByRangeTablePosn(pstate, var->varno, var->varlevelsup);
 	attnum = var->varattno;
 
 	switch (rte->rtekind)
