@@ -291,7 +291,7 @@ then
     if [ ! -d "$LOGDIR" ]; then
         mkdir -p "$LOGDIR" || { (exit 2); exit; }
     fi
-    $GMAKE -C "$top_builddir" DESTDIR="$temp_install" install >"$LOGDIR/install.log" 2>&1
+    $GMAKE -C "$top_builddir" DESTDIR="$temp_install" install with_perl=no with_python=no >"$LOGDIR/install.log" 2>&1
 
     if [ $? -ne 0 ]
     then
