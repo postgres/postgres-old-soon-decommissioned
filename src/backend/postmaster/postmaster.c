@@ -1123,6 +1123,14 @@ readStartupPacket(void *arg, PacketLen len, void *pkt)
 	if (port->database[0] == '\0')
 		StrNCpy(port->database, si->user, sizeof(port->database));
 
+	/* Truncate given database and user names to length of a Postgres name. */
+	/* This avoids lookup failures when overlength names are given. */
+
+	if ((int) sizeof(port->database) >= NAMEDATALEN)
+		port->database[NAMEDATALEN-1] = '\0';
+	if ((int) sizeof(port->user) >= NAMEDATALEN)
+		port->user[NAMEDATALEN-1] = '\0';
+
 	/* Check a user name was given. */
 
 	if (port->user[0] == '\0')
