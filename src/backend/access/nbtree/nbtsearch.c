@@ -332,7 +332,7 @@ _bt_binsrch(Relation rel,
 	else if (result < 0)
 	    high = mid - 1;
 	else
-	return (_bt_firsteq(rel, itupdesc, page, keysz, scankey, mid));
+	    return (_bt_firsteq(rel, itupdesc, page, keysz, scankey, mid));
     }
 	
 	/*

@@ -238,9 +238,7 @@ extern void btdelete(Relation rel, ItemPointer tid);
  */
 extern void _bt_regscan(IndexScanDesc scan);
 extern void _bt_dropscan(IndexScanDesc scan);
-extern void _bt_adjscans(Relation rel, ItemPointer tid);
-extern void _bt_scandel(IndexScanDesc scan, BlockNumber blkno, OffsetNumber offno);
-extern bool _bt_scantouched(IndexScanDesc scan, BlockNumber blkno, OffsetNumber offno);
+extern void _bt_adjscans(Relation rel, ItemPointer tid, int op);
 
 /*
  * prototypes for functions in nbtsearch.c
