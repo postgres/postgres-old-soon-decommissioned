@@ -461,7 +461,7 @@ typedef struct TidScanState
 	int			tss_NumTids;
 	int			tss_TidPtr;
 	int			tss_MarkTidPtr;
-	ItemPointer *tss_TidList;
+	ItemPointerData*	tss_TidList;
 	HeapTupleData tss_htup;
 } TidScanState;
 
