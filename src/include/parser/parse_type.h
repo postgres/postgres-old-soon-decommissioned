@@ -35,4 +35,6 @@ extern Oid	GetArrayElementType(Oid typearray);
 extern Oid	typeInfunc(Type typ);
 extern Oid	typeOutfunc(Type typ);
 
+#define ISCOMPLEX(typeid) (typeidTypeRelid(typeid) != InvalidOid)
+
 #endif	 /* PARSE_TYPE_H */
