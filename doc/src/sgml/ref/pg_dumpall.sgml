@@ -81,7 +81,6 @@ Postgres documentation
       </listitem>
      </varlistentry>
 
-    <variablelist>
      <varlistentry>
       <term>-h <replaceable>host</replaceable></term>
       <listitem>
