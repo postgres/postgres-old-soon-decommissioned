@@ -331,7 +331,7 @@ extern int32 userfntest(int i);
 #define NonNullValue(v,b) nonnullvalue(v,b)
 
 /* not_in.c */
-extern bool int4notin(int16 not_in_arg, char *relation_and_attr);
+extern bool int4notin(int32 not_in_arg, char *relation_and_attr);
 extern bool oidnotin(Oid the_oid, char *compare);
 
 /* oid.c */
