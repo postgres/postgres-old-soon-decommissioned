@@ -6,6 +6,13 @@
 #include "postgres.h"
 #include <sys/types.h>
 
+#ifdef FRONTEND
+#define elog(X...)
+#undef palloc
+#define palloc malloc
+#define pfree free
+#endif
+
 #define SQL_ASCII 0				/* SQL/ASCII */
 #define EUC_JP 1				/* EUC for Japanese */
 #define EUC_CN 2				/* EUC for Chinese */
