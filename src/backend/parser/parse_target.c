@@ -41,7 +41,6 @@ static Node *transformAssignmentIndirection(ParseState *pstate,
 static List *ExpandColumnRefStar(ParseState *pstate, ColumnRef *cref);
 static List *ExpandAllTables(ParseState *pstate);
 static List *ExpandIndirectionStar(ParseState *pstate, A_Indirection *ind);
-static char *FigureColname(Node *node);
 static int	FigureColnameInternal(Node *node, char **name);
 
 
@@ -893,7 +892,7 @@ ExpandIndirectionStar(ParseState *pstate, A_Indirection *ind)
  * Note that the argument is the *untransformed* parse tree for the target
  * item.  This is a shade easier to work with than the transformed tree.
  */
-static char *
+char *
 FigureColname(Node *node)
 {
 	char	   *name = NULL;

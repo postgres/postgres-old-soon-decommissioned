@@ -27,5 +27,6 @@ extern void updateTargetListEntry(ParseState *pstate, TargetEntry *tle,
 					  List *indirection);
 extern List *checkInsertTargets(ParseState *pstate, List *cols,
 				   List **attrnos);
+extern char *FigureColname(Node *node);
 
 #endif   /* PARSE_TARGET_H */

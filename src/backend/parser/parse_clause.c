@@ -497,12 +497,16 @@ transformRangeFunction(ParseState *pstate, RangeFunction *r)
 	RangeTblEntry *rte;
 	RangeTblRef *rtr;
 
-	/* Get function name for possible use as alias */
-	Assert(IsA(r->funccallnode, FuncCall));
-	funcname = strVal(llast(((FuncCall *) r->funccallnode)->funcname));
+	/*
+	 * Get function name for possible use as alias.  We use the same
+	 * transformation rules as for a SELECT output expression.  For a
+	 * FuncCall node, the result will be the function name, but it is
+	 * possible for the grammar to hand back other node types.
+	 */
+	funcname = FigureColname(r->funccallnode);
 
 	/*
-	 * Transform the raw FuncCall node.
+	 * Transform the raw expression.
 	 */
 	funcexpr = transformExpr(pstate, r->funccallnode);
 
