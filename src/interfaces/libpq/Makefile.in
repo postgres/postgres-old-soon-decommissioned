@@ -59,6 +59,12 @@ ifeq ($(PORTNAME), univel)
   LDFLAGS_SL = -G -z text
   CFLAGS += $(CFLAGS_SL)
 endif
+ifeq ($(PORTNAME), hpux)
+  install-shlib-dep := install-shlib
+  shlib := libpq.sl
+  LDFLAGS_SL = -b
+  CFLAGS += $(CFLAGS_SL)
+endif
 
 all: libpq.a $(shlib) c.h
 

@@ -48,6 +48,12 @@ ifeq ($(PORTNAME), i386_solaris)
   LDFLAGS_SL = -G -z text
   CFLAGS += $(CFLAGS_SL)
 endif
+ifeq ($(PORTNAME), hpux)
+  install-shlib-dep := install-shlib
+  shlib := libpq.sl
+  LDFLAGS_SL = -b
+  CFLAGS += $(CFLAGS_SL)
+endif
 
 all: $(LIBNAME).a $(SHLIB) install examples
 
