@@ -377,6 +377,7 @@ extern Datum OidFunctionCall9(Oid functionId, Datum arg1, Datum arg2,
  * Routines in fmgr.c
  */
 extern Pg_finfo_record *fetch_finfo_record(void *filehandle, char *funcname);
+extern void clear_external_function_hash(void *filehandle);
 extern Oid	fmgr_internal_function(const char *proname);
 extern Oid	get_fn_expr_rettype(FmgrInfo *flinfo);
 extern Oid	get_fn_expr_argtype(FmgrInfo *flinfo, int argnum);

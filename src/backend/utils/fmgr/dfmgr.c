@@ -213,6 +213,7 @@ load_file(char *filename)
 				prv->next = nxt;
 			else
 				file_list = nxt;
+			clear_external_function_hash(file_scanner->handle);
 			pg_dlclose(file_scanner->handle);
 			free((char *) file_scanner);
 			/* prv does not change */
