@@ -13,7 +13,6 @@
 #ifndef	ISTRAT_H
 #define ISTRAT_H
 
-#include "postgres.h"
 #include "access/attnum.h"
 #include "access/skey.h"
 #include "access/strat.h"

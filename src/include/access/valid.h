@@ -13,7 +13,6 @@
 #ifndef	VALID_H
 #define VALID_H
 
-#include "c.h"
 #include "access/skey.h"
 #include "storage/buf.h"
 #include "utils/tqual.h"

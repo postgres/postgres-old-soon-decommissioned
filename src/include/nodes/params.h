@@ -13,7 +13,6 @@
 #ifndef PARAMS_H
 #define PARAMS_H
 
-#include "postgres.h"
 #include "access/attnum.h"
 
 /* ----------------------------------------------------------------

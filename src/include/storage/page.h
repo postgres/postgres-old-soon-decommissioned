@@ -13,8 +13,6 @@
 #ifndef	PAGE_H
 #define PAGE_H
 
-#include "c.h"
-
 typedef Pointer	Page;
 
 /*

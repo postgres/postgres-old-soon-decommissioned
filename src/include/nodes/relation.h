@@ -13,7 +13,6 @@
 #ifndef RELATION_H
 #define RELATION_H
 
-#include "c.h"
 #include "nodes/pg_list.h"
 #include "nodes/primnodes.h"
 #include "nodes/parsenodes.h"

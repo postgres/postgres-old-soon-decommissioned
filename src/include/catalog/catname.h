@@ -13,7 +13,6 @@
 #ifndef	CATNAME_H
 #define CATNAME_H
 
-#include "postgres.h"
 
 
 #define  AggregateRelationName "pg_aggregate"

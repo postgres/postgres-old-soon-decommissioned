@@ -13,7 +13,6 @@
 #ifndef	IQUAL_H
 #define IQUAL_H
 
-#include "c.h"
 
 #include "storage/itemid.h"
 #include "utils/rel.h"

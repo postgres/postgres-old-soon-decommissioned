@@ -13,7 +13,6 @@
 #ifndef LOCK_H_
 #define LOCK_H_
 
-#include "postgres.h"
 #include "storage/itemptr.h"
 #include "storage/shmem.h"
 #include "storage/spin.h"

@@ -25,7 +25,6 @@
 #ifndef	PORTAL_H
 #define PORTAL_H
 
-#include "c.h"
 
 #include "nodes/execnodes.h"		/* for EState */
 #include "nodes/memnodes.h"

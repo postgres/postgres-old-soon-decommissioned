@@ -13,7 +13,6 @@
 #ifndef	EXC_H
 #define EXC_H
 
-#include "c.h"		/* for Exception, etc. */
 #include <setjmp.h>
 
 extern char *ExcFileName;

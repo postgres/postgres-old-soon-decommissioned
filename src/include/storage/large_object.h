@@ -14,7 +14,6 @@
 #ifndef	LARGE_OBJECT_H
 #define	LARGE_OBJECT_H
 
-#include "c.h"
 #include "utils/rel.h"
 #include "access/relscan.h"
 

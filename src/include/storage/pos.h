@@ -13,8 +13,6 @@
 #ifndef	POS_H
 #define POS_H
 
-#include "c.h"
-
 /*
  * a 'position' used to be <pagenumber, offset> in postgres.  this has
  * been changed to just <offset> as the notion of having multiple pages

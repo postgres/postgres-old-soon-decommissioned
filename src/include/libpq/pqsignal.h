@@ -19,7 +19,6 @@
 
 #include <signal.h>
 
-#include "c.h"
 
 typedef void (*pqsigfunc)(int);
 

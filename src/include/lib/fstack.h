@@ -25,7 +25,6 @@
 #ifndef	FSTACK_H
 #define FSTACK_H
 
-#include "c.h"
 
 /*
  * FixedItem --

@@ -34,7 +34,6 @@
 #ifndef DLLIST_H
 #define DLLIST_H
 
-#include "c.h"
 
 struct Dllist;
 struct Dlelem;

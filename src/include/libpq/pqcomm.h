@@ -25,7 +25,6 @@
 #include <netinet/in.h>
 #endif /* WIN32 */
 
-#include "postgres.h"
 
 /*
  * startup msg parameters: path length, argument string length

@@ -29,7 +29,6 @@
  *	can be read by both genbki.sh and the C compiler.
  * ----------------
  */
-#include "postgres.h"
 #include "access/attnum.h"
 
 /* ----------------

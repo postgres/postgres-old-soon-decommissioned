@@ -13,7 +13,6 @@
 #ifndef	ITEMPOS_H
 #define ITEMPOS_H
 
-#include "c.h"
 #include "storage/buf.h"
 #include "storage/itemid.h"
 

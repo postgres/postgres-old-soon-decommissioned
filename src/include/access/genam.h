@@ -13,7 +13,6 @@
 #ifndef	GENAM_H
 #define GENAM_H
 
-#include "postgres.h"
 
 #include "access/attnum.h"
 #include "access/htup.h"

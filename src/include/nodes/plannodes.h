@@ -13,7 +13,6 @@
 #ifndef PLANNODES_H
 #define	PLANNODES_H
 
-#include "postgres.h"
 
 #include "nodes/nodes.h"
 #include "nodes/pg_list.h"

@@ -15,7 +15,6 @@
 
 #include <sys/types.h>
 
-#include "postgres.h"
 #include "utils/rel.h"
 
 /*

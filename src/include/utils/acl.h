@@ -22,7 +22,6 @@
 #ifndef ACL_H
 #define ACL_H
 
-#include "postgres.h"
 #include "utils/array.h"
 #include "nodes/parsenodes.h" /* for ChangeACLStmt */
 

@@ -13,7 +13,6 @@
 #ifndef	ATTNUM_H
 #define ATTNUM_H
 
-#include "postgres.h"
 
 /*
  * user defined attribute numbers start at 1.	-ay 2/95

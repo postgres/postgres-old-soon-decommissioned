@@ -13,7 +13,6 @@
 #ifndef VERSION_H
 #define VERSION_H
 
-#include "postgres.h"
 #include "nodes/pg_list.h"
 
 extern void DefineVersion(char *name, char *fromRelname, char *date);

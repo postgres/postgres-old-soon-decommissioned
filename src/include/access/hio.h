@@ -13,7 +13,6 @@
 #ifndef	HIO_H
 #define HIO_H
 
-#include "c.h"
 
 #include "storage/block.h"
 #include "access/htup.h"

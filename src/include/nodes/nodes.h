@@ -13,7 +13,6 @@
 #ifndef NODES_H
 #define	NODES_H
 
-#include "c.h"
 
 /*
  * The first field of every node is NodeTag. Each node created (with makeNode)

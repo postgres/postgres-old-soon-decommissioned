@@ -13,7 +13,6 @@
 #ifndef	DEFREM_H
 #define DEFREM_H
 
-#include "postgres.h"
 #include "nodes/pg_list.h"
 #include "nodes/primnodes.h"
 #include "nodes/parsenodes.h"

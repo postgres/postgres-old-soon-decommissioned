@@ -13,10 +13,6 @@
 #ifndef	OFF_H
 #define OFF_H
 
-#include "c.h"
-#include "machine.h"		/* for BLCKSZ */
-#include "storage/itemid.h"
-
 /*
  * OffsetNumber:
  *

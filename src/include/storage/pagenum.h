@@ -13,7 +13,6 @@
 #ifndef	PAGENUM_H
 #define PAGENUM_H
 
-#include "c.h"
 #include "storage/page.h"
 
 typedef uint16	PageNumber;

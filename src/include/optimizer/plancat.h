@@ -13,7 +13,6 @@
 #ifndef PLANCAT_H
 #define PLANCAT_H
 
-#include "c.h"
 
 /*
  * transient data structure to hold return value of index_info. Note that

@@ -13,7 +13,6 @@
 #ifndef HSEARCH_H
 #define HSEARCH_H
 
-#include "postgres.h"
 
 /*
  * Constants

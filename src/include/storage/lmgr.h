@@ -13,7 +13,6 @@
 #ifndef	LMGR_H
 #define LMGR_H
 
-#include "postgres.h"
 
 #include "storage/itemptr.h"
 #include "storage/lock.h"

@@ -28,7 +28,6 @@
  *	can be read by both genbki.sh and the C compiler.
  * ----------------
  */
-#include "postgres.h"
 #include "nodes/pg_list.h"
 #include "tcop/dest.h"
 

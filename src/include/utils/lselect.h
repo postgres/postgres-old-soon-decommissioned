@@ -13,7 +13,6 @@
 #ifndef	LSELECT_H
 #define	LSELECT_H
 
-#include "c.h"
 #include "access/htup.h"
 
 struct	leftist {

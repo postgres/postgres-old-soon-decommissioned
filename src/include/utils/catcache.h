@@ -15,7 +15,6 @@
 
 /* #define	CACHEDEBUG 	 turns DEBUG elogs on */
 
-#include "postgres.h"
     
 #include "access/skey.h"
 #include "access/htup.h"

@@ -13,7 +13,6 @@
 #ifndef	SINVAL_H
 #define SINVAL_H
 
-#include "c.h"
 #include "storage/spin.h"
 #include "storage/ipc.h"
 #include "storage/itemptr.h"

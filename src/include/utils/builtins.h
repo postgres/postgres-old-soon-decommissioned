@@ -18,7 +18,6 @@
 #ifndef BUILTINS_H
 #define BUILTINS_H
 
-#include "postgres.h"
 
 #include "storage/itemptr.h"
 

@@ -13,7 +13,6 @@
 #ifndef	DATUM_H
 #define	DATUM_H
 
-#include "postgres.h"
 
 /*--------------------------------------------------------
  * SOME NOT VERY PORTABLE ROUTINES ???

@@ -14,7 +14,6 @@
 #define	CATALOG_UTILS_H
 
 
-#include "postgres.h"
 
 #include "access/htup.h"
 #include "utils/rel.h"

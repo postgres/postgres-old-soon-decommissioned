@@ -13,7 +13,6 @@
 #ifndef FMGRTAB_H
 #define FMGRTAB_H
 
-#include "postgres.h"		/* for ObjectId */
 #include "fmgr.h"		/* genearated by Gen_fmgrtab.sh */
 
 typedef struct {

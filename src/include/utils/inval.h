@@ -13,7 +13,6 @@
 #ifndef	INVAL_H
 #define INVAL_H
 
-#include "postgres.h"
 #include "access/htup.h"
 #include "utils/rel.h"
 

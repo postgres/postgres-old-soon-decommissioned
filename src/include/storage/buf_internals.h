@@ -17,7 +17,6 @@
 #ifndef	BUFMGR_INTERNALS_H
 #define BUFMGR_INTERNALS_H
 
-#include "postgres.h"
 #include "storage/buf.h"
 #include "storage/ipc.h"
 #include "storage/shmem.h"

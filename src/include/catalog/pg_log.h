@@ -26,7 +26,6 @@
  *	can be read by both genbki.sh and the C compiler.
  * ----------------
  */
-#include "postgres.h"
 
 CATALOG(pg_log) BOOTSTRAP {
     Oid  	logfoo;

@@ -24,7 +24,6 @@
  *	can be read by both genbki.sh and the C compiler.
  * ----------------
  */
-#include "postgres.h"
 
 /* ----------------
  *	pg_opclass definition.  cpp turns this into

@@ -13,8 +13,6 @@
 #ifndef SINVALADT_H
 #define SINVALADT_H
 
-#include "postgres.h"	/* XXX */
-
 #include "storage/ipc.h"
 #include "storage/itemptr.h"
 #include "storage/sinval.h"
