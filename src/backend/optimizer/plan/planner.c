@@ -1257,6 +1257,9 @@ grouping_planner(Query *parse, double tuple_fraction)
 					  sorted_path->parent->rows, sorted_path->parent->width);
 			sort_path.startup_cost += cheapest_path->total_cost;
 			sort_path.total_cost += cheapest_path->total_cost;
+			/* Convert absolute-count tuple_fraction into a fraction */
+			if (tuple_fraction >= 1.0)
+				tuple_fraction /= sorted_path->parent->rows;
 			if (compare_fractional_path_costs(sorted_path, &sort_path,
 											  tuple_fraction) <= 0)
 			{
