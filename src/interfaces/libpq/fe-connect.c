@@ -309,7 +309,8 @@ PQconnectStart(const char *conninfo)
 	conn->pgpass = tmp ? strdup(tmp) : NULL;
 #ifdef USE_SSL
 	tmp = conninfo_getval(connOptions, "requiressl");
-	conn->require_ssl = tmp ? (tmp[0] == '1' ? true : false) : false;
+	if (tmp && tmp[0] == '1')
+		conn->require_ssl = true;
 #endif
 
 	/*
@@ -504,8 +505,6 @@ PQsetdbLogin(const char *pghost, const char *pgport, const char *pgoptions,
 #ifdef USE_SSL
 	if ((tmp = getenv("PGREQUIRESSL")) != NULL)
 		conn->require_ssl = (tmp[0] == '1') ? true : false;
-	else
-		conn->require_ssl = 0;
 #endif
 
 	if (error)
@@ -871,6 +870,11 @@ connectDBStart(PGconn *conn)
 	{
 		UNIXSOCK_PATH(conn->raddr.un, portno, conn->pgunixsocket);
 		conn->raddr_len = UNIXSOCK_LEN(conn->raddr.un);
+#ifdef USE_SSL
+		/* Don't bother requesting SSL over a Unix socket */
+		conn->allow_ssl_try = false;
+		conn->require_ssl = false;
+#endif
 	}
 #endif
 
