@@ -629,9 +629,9 @@ const char *
 show_XactIsoLevel(void)
 {
 	if (XactIsoLevel == XACT_SERIALIZABLE)
-		return "SERIALIZABLE";
+		return "serializable";
 	else
-		return "READ COMMITTED";
+		return "read committed";
 }
 
 
