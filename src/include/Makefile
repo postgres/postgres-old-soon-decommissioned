@@ -78,7 +78,7 @@ remove-old-headers:
 			: ; \
 		else \
 			rm -f $(DESTDIR)$(includedir)/$$file; \
-		fi \
+		fi ; \
 	done
 
 
