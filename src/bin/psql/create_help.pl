@@ -109,7 +109,7 @@ foreach $file (sort readdir DIR) {
         $cmddesc =~ s/\"/\\"/g;
 
 	$cmdsynopsis =~ s/<[^>]+>//g;
-	$cmdsynopsis =~ s/\n/\\n/g;
+	$cmdsynopsis =~ s/\r?\n/\\n/g;
         $cmdsynopsis =~ s/\"/\\"/g;
 
 	print OUT "    { \"$cmdname\",\n      N_(\"$cmddesc\"),\n      N_(\"$cmdsynopsis\") },\n\n";
