@@ -462,6 +462,7 @@ typedef struct CursorStmt {
     List		*targetList;	/* the target list (of ResTarget) */
     List		*fromClause;	/* the from clause */
     Node		*whereClause;	/* qualifications */
+    List              *groupClause;   /* group by clause */
     List		*orderClause;	/* sort clause (a list of SortBy's) */
 } CursorStmt;    
 

@@ -1349,7 +1349,7 @@ ReplaceStmt:  UPDATE relation_name
 
 CursorStmt:  DECLARE name opt_binary CURSOR FOR 
 	     SELECT opt_unique res_target_list2	
-	     from_clause where_clause sort_clause
+	     from_clause where_clause group_clause sort_clause
 		{
 		    CursorStmt *n = makeNode(CursorStmt);
 
@@ -1370,7 +1370,8 @@ CursorStmt:  DECLARE name opt_binary CURSOR FOR
 		    n->targetList = $8;
 		    n->fromClause = $9;
 		    n->whereClause = $10;
-		    n->orderClause = $11;
+		    n->groupClause = $11;
+		    n->orderClause = $12;
 		    $$ = (Node *)n;
 		}
 	;

@@ -509,6 +509,10 @@ transformCursorStmt(ParseState *pstate, CursorStmt *stmt)
     qry->sortClause = transformSortClause(stmt->orderClause,
 					  qry->targetList,
 					  qry->uniqueFlag);
+    /* fix group by clause */
+    qry->groupClause = transformGroupClause(pstate,
+                                          stmt->groupClause);
+
     qry->rtable = pstate->p_rtable;
 
     if (pstate->p_numAgg > 0)
