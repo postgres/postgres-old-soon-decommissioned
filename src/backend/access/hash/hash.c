@@ -14,25 +14,11 @@
  *
  *-------------------------------------------------------------------------
  */
+
 #include "postgres.h"
-
-#include "storage/bufmgr.h"
-#include "storage/bufpage.h"
-#include "utils/elog.h"
-#include "utils/palloc.h"
 #include "utils/rel.h"
-#include "utils/excid.h"
-#include "access/heapam.h"
-#include "access/genam.h"
-#include "access/sdir.h"
 #include "access/hash.h"
-#include "access/funcindex.h"
 #include "nodes/execnodes.h"
-#include "nodes/plannodes.h"
-#include "executor/executor.h"
-#include "executor/tuptable.h"
-#include "catalog/index.h"
-
 
 bool	BuildingHash = false;
 

@@ -15,8 +15,8 @@
  *
  *-------------------------------------------------------------------------
  */
+
 #include "postgres.h"
-#include "utils/nabstime.h"
 
 uint32 hashint2(int16 key)
 {

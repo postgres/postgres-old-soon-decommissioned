@@ -22,17 +22,11 @@
  *
  *-------------------------------------------------------------------------
  */
+
 #include "postgres.h"
-
-#include "storage/bufmgr.h"
-#include "storage/bufpage.h"
-
-#include "utils/elog.h"
 #include "utils/rel.h"
-#include "utils/excid.h"
-
-#include "access/genam.h"
 #include "access/hash.h"
+#include "storage/bufmgr.h"
 
 static void _hash_setpagelock(Relation rel, BlockNumber blkno, int access);
 static void _hash_unsetpagelock(Relation rel, BlockNumber blkno, int access);

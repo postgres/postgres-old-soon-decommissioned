@@ -11,22 +11,9 @@
  *
  *-------------------------------------------------------------------------
  */
+
 #include "postgres.h"
-
-#include "storage/bufmgr.h"
-#include "storage/bufpage.h"
-
-#include "utils/elog.h"
-#include "utils/palloc.h"
 #include "utils/rel.h"
-#include "utils/excid.h"
-
-#include "fmgr.h"
-
-#include "access/heapam.h"
-#include "access/genam.h"
-#include "access/skey.h"
-#include "access/sdir.h"
 #include "access/hash.h"
 
 /*

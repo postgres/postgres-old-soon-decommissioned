@@ -11,20 +11,9 @@
  *
  *-------------------------------------------------------------------------
  */
+
 #include "postgres.h"
-
-#include "storage/bufmgr.h"
-#include "storage/bufpage.h"
-
-#include "fmgr.h"
-#include "utils/elog.h"
-#include "utils/palloc.h"
 #include "utils/rel.h"
-#include "utils/excid.h"
-
-#include "access/heapam.h"
-#include "access/genam.h"
-#include "access/iqual.h"
 #include "access/hash.h"
 
 ScanKey
