@@ -2920,7 +2920,7 @@ createForeignKeyTriggers(Relation rel, FkConstraint *fkconstraint,
 	 * unfortunately).
 	 */
 	myRel = makeRangeVar(get_namespace_name(RelationGetNamespace(rel)),
-						 RelationGetRelationName(rel));
+						 pstrdup(RelationGetRelationName(rel)));
 
 	/*
 	 * Preset objectAddress fields
