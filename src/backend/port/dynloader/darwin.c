@@ -18,7 +18,9 @@ pg_dlopen(char *filename)
 	if (NSCreateObjectFileImageFromFile(filename, &image) !=
 		NSObjectFileImageSuccess)
 		return NULL;
-	return NSLinkModule(image, filename, TRUE);
+	return NSLinkModule(image, filename,
+			    NSLINKMODULE_OPTION_BINDNOW |
+			    NSLINKMODULE_OPTION_RETURN_ON_ERROR);
 }
 
 void
