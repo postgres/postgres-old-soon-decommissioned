@@ -88,9 +88,10 @@ and must have one or two arguments.
 .\" .(l
 .\" MYBOXES2.description A (\*(lq0,0,1,1\*(rq A MYBOXES.description).
 .\" .)l
-The commutator operator is present so that Postgres can reverse the order
-of the operands if it wishes.  For example, the operator
-area-less-than, >>>, would have a commutator operator,
+The commutator operator should be identified if one exists,
+so that Postgres can reverse the order of the operands if it wishes.
+For example, the operator
+area-less-than, >>>, would probably have a commutator operator,
 area-greater-than, <<<.  Hence, the query optimizer
 could freely convert:
 .nf
@@ -109,9 +110,10 @@ MYBOXES.description <<< "0,0,1,1"::box
 This allows the execution code to always use the latter representation
 and simplifies the query optimizer somewhat.
 .PP
+Similarly, if there is a negator operator then it should be identified.
 Suppose that an operator, area-equal, ===,
 exists, as well as an area not equal, !==.
-The negator operator allows the query optimizer to convert
+The negator link allows the query optimizer to simplify
 .nf
 
 .ce 1
@@ -182,7 +184,7 @@ fraction of the instances in MYBOXES that satisfy the clause.  The
 function res_proc must be a registered function (meaning it is already
 defined using
 .IR create_function(l))
-which accepts one argument of the correct data type and returns a
+which accepts arguments of the correct data types and returns a
 floating point number.  The query optimizer simply calls this
 function, passing the parameter "0,0,1,1"
 and multiplies the result by the relation size to get the desired
