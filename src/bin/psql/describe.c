@@ -746,7 +746,7 @@ describeOneTableDetails(const char *schemaname,
 	{
 		PGresult   *result;
 
-		printfPQExpBuffer(&buf, "SELECT pg_catalog.pg_get_viewdef('%s'::pg_catalog.oid)", oid);
+		printfPQExpBuffer(&buf, "SELECT pg_catalog.pg_get_viewdef('%s'::pg_catalog.oid, true)", oid);
 		result = PSQLexec(buf.data, false);
 		if (!result)
 			goto error_return;
@@ -926,7 +926,7 @@ describeOneTableDetails(const char *schemaname,
 		footers = xmalloczero((rule_count + 2) * sizeof(*footers));
 		footers[count_footers] = xmalloc(64 + strlen(view_def));
 		snprintf(footers[count_footers], 64 + strlen(view_def),
-				 _("View definition: %s"), view_def);
+				 _("View definition:\n%s"), view_def);
 		count_footers++;
 
 		/* print rules */
