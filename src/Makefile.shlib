@@ -137,8 +137,8 @@ endif
 
 ifeq ($(PORTNAME), irix5)
   install-shlib-dep := install-shlib
-  shlib := lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
-  LDFLAGS_SL := -shared -rpath $(LIBDIR)
+  shlib := lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION)
+  LDFLAGS_SL := -shared -rpath $(LIBDIR) -set_version sgi$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
   CFLAGS += $(CFLAGS_SL)
 endif
 
