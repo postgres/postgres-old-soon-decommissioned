@@ -615,6 +615,8 @@ RecordTransactionCommit(void)
 static void
 AtCommit_Cache(void)
 {
+	/* Check for relcache reference-count leaks */
+	AtEOXactRelationCache(true);
 	/*
 	 * Make catalog changes visible to all backends.
 	 */
@@ -741,7 +743,7 @@ RecordTransactionAbort(void)
 static void
 AtAbort_Cache(void)
 {
-	RelationCacheAbort();
+	AtEOXactRelationCache(false);
 	AtEOXactInvalidationMessages(false);
 }
 

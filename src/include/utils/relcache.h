@@ -63,7 +63,7 @@ extern void RelationCacheInvalidate(void);
 
 extern void RelationPurgeLocalRelation(bool xactComitted);
 
-extern void RelationCacheAbort(void);
+extern void AtEOXactRelationCache(bool commit);
 
 /*
  * Routines to help manage rebuilding of relcache init file
