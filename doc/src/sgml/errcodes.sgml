@@ -311,6 +311,11 @@
 </row>
 
 <row>
+<entry><literal>2201G</literal></entry>
+<entry>INVALID ARGUMENT FOR WIDTH BUCKET FUNCTION</entry>
+</row>
+
+<row>
 <entry><literal>22018</literal></entry>
 <entry>INVALID CHARACTER VALUE FOR CAST</entry>
 </row>

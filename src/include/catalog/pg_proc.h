@@ -2508,6 +2508,8 @@ DATA(insert OID = 1745 ( float4					PGNSP PGUID 12 f f t f i 1 700 "1700" _null_
 DESCR("(internal)");
 DATA(insert OID = 1746 ( float8					PGNSP PGUID 12 f f t f i 1 701 "1700" _null_  numeric_float8 - _null_ ));
 DESCR("(internal)");
+DATA(insert OID = 2170 ( width_bucket			PGNSP PGUID 12 f f t f i 4 23 "1700 1700 1700 23" _null_  width_bucket_numeric - _null_ ));
+DESCR("bucket number of operand in equidepth histogram");
 
 DATA(insert OID = 1747 ( time_pl_interval		PGNSP PGUID 12 f f t f i 2 1083 "1083 1186" _null_  time_pl_interval - _null_ ));
 DESCR("plus");
