@@ -108,11 +108,10 @@ COMMIT;
   <title>Compatibility</title>
   
   <para>
-   The SQL2003 standard specifies that the keyword
-   <literal>SAVEPOINT</literal> is mandatory.
-   <productname>PostgreSQL</productname> allows the
-   <literal>SAVEPOINT</literal> keyword to be omitted. Otherwise, this
-   command is fully conforming.
+   This command conforms to the SQL:2003 standard.  The standard
+   specifies that the key word <literal>SAVEPOINT</literal> is
+   mandatory, but <productname>PostgreSQL</productname> allows it to
+   be omitted.
   </para>
  </refsect1>
 

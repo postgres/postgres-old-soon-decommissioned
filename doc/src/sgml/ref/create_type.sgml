@@ -535,7 +535,7 @@ CREATE TABLE big_objs (
   <para>
    This <command>CREATE TYPE</command> command is a
    <productname>PostgreSQL</productname> extension.  There is a
-   <command>CREATE TYPE</command> statement in SQL99 that is rather
+   <command>CREATE TYPE</command> statement in SQL:1999 and later that is rather
    different in detail.
   </para>
  </refsect1>

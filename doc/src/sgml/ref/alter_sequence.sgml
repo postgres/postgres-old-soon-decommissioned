@@ -190,22 +190,11 @@ ALTER SEQUENCE serial RESTART WITH 105;
 
 
  <refsect1>
-  <title>
-   Compatibility
-  </title>
+  <title>Compatibility</title>
 
-  <refsect2>
-   <title>
-    SQL99
-   </title>
-
-   <para>
-    <command>ALTER SEQUENCE</command> is a <productname>PostgreSQL</productname>
-    language extension.
-    There is no <command>ALTER SEQUENCE</command> statement
-    in <acronym>SQL99</acronym>.
-   </para>
-  </refsect2>
+  <para>
+   <command>ALTER SEQUENCE</command> conforms with <acronym>SQL:2003</acronym>.
+  </para>
  </refsect1>
 </refentry>
 

@@ -1181,8 +1181,8 @@ CREATE TABLE sql_languages (
     sql_language_programming_language character_data
 ) WITHOUT OIDS;
 
-INSERT INTO sql_languages VALUES ('ISO 9075', '1999', 'CORE', NULL, NULL, 'DIRECT', NULL);
-INSERT INTO sql_languages VALUES ('ISO 9075', '1999', 'CORE', NULL, NULL, 'EMBEDDED', 'C');
+INSERT INTO sql_languages VALUES ('ISO 9075', '2003', 'CORE', NULL, NULL, 'DIRECT', NULL);
+INSERT INTO sql_languages VALUES ('ISO 9075', '2003', 'CORE', NULL, NULL, 'EMBEDDED', 'C');
 
 GRANT SELECT ON sql_languages TO PUBLIC;
 
@@ -1209,7 +1209,7 @@ INSERT INTO sql_packages VALUES ('PKG005', 'CLI', 'NO', NULL, 'ODBC is similar.'
 INSERT INTO sql_packages VALUES ('PKG006', 'Basic object support', 'NO', NULL, '');
 INSERT INTO sql_packages VALUES ('PKG007', 'Enhanced object support', 'NO', NULL, '');
 INSERT INTO sql_packages VALUES ('PKG008', 'Active database', 'NO', NULL, '');
-INSERT INTO sql_packages VALUES ('PKG009', 'SQL/MM support', 'NO', NULL, '');
+INSERT INTO sql_packages VALUES ('PKG010', 'OLAP', 'NO', NULL, 'NO');
 
 GRANT SELECT ON sql_packages TO PUBLIC;
 

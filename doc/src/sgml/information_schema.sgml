@@ -3267,7 +3267,7 @@ ORDER BY c.ordinal_position;
       <entry>
        The year the standard referenced in
        <literal>sql_language_source</literal> was approved; currently
-       <literal>1999</>
+       <literal>2003</>
       </entry>
      </row>
 
@@ -3276,7 +3276,7 @@ ORDER BY c.ordinal_position;
       <entry><type>character_data</type></entry>
       <entry>
        The standard conformance level for the language binding.  For
-       ISO 9075:1999 this is always <literal>CORE</literal>.
+       ISO 9075:2003 this is always <literal>CORE</literal>.
       </entry>
      </row>
 

@@ -86,9 +86,9 @@
    <row>
     <entry>Key Word</entry>
     <entry><productname>PostgreSQL</productname></entry>
-    <entry><acronym>SQL</acronym> 2003</entry>
-    <entry><acronym>SQL</acronym> 1999</entry>
-    <entry><acronym>SQL</acronym> 1992</entry>
+    <entry>SQL:2003</entry>
+    <entry>SQL:1999</entry>
+    <entry>SQL-92</entry>
    </row>
   </thead>
 

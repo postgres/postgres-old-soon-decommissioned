@@ -419,7 +419,7 @@ CREATE OR REPLACE FUNCTION increment(i integer) RETURNS integer AS '
   <title>Compatibility</title>
 
   <para>
-   A <command>CREATE FUNCTION</command> command is defined in SQL99.
+   A <command>CREATE FUNCTION</command> command is defined in SQL:1999 and later.
    The <productname>PostgreSQL</productname> version is similar but
    not fully compatible.  The attributes are not portable, neither are the
    different available languages.

@@ -82,7 +82,7 @@ DROP SEQUENCE serial;
   <title>Compatibility</title>
 
   <para>
-   There is no <command>DROP SEQUENCE</command> statement in the SQL standard.
+    <command>DROP SEQUENCE</command> conforms with <acronym>SQL:2003</acronym>.
   </para>
  </refsect1>
 

@@ -298,8 +298,8 @@ CREATE CAST (text AS int4) WITH FUNCTION int4(text);
   <title>Compatibility</title>
 
   <para>
-   The <command>CREATE CAST</command> command conforms to SQL99,
-   except that SQL99 does not make provisions for binary-compatible
+   The <command>CREATE CAST</command> command conforms to SQL:1999,
+   except that SQL:1999 does not make provisions for binary-compatible
    types or extra arguments to implementation functions.
    <literal>AS IMPLICIT</> is a <productname>PostgreSQL</productname> 
    extension, too.

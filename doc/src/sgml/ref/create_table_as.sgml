@@ -166,9 +166,9 @@ CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } ] TABLE <replaceable>table_name
   <title>Compatibility</title>
 
   <para>
-   <command>CREATE TABLE AS</command> is specified by the SQL2003
+   <command>CREATE TABLE AS</command> is specified by the SQL:2003
    standard. There are some small differences between the definition
-   of the command in SQL2003 and its implementation in
+   of the command in SQL:2003 and its implementation in
    <productname>PostgreSQL</>:
 
    <itemizedlist spacing="compact">
