@@ -302,8 +302,10 @@ DATA(insert OID = 829 ( macaddr	   PGUID  6 -1 f b t \054 0	0 macaddr_in macaddr
 DESCR("MAC address");
 DATA(insert OID = 869 ( inet	   PGUID  -1 -1 f b t \054 0 0 inet_in inet_out inet_in inet_out i _null_ ));
 DESCR("Host address");
+#define INETOID 869
 DATA(insert OID = 650 ( cidr	   PGUID  -1 -1 f b t \054 0 0 cidr_in cidr_out cidr_in cidr_out i _null_ ));
 DESCR("Network address");
+#define CIDROID 650
 
 /* OIDS 900 - 999 */
 

@@ -23,6 +23,7 @@ typedef enum CATEGORY
 	DATETIME_TYPE,
 	TIMESPAN_TYPE,
 	GEOMETRIC_TYPE,
+	NETWORK_TYPE,
 	USER_TYPE,
 	MIXED_TYPE
 }			CATEGORY;
@@ -56,7 +57,9 @@ typedef enum CATEGORY
 		|| ((t) == BOXOID) \
 		|| ((t) == PATHOID) \
 		|| ((t) == POLYGONOID) \
-		|| ((t) == CIRCLEOID))
+		|| ((t) == CIRCLEOID) \
+		|| ((t) == INETOID) \
+		|| ((t) == CIDROID) )
 
 
 /* IS_BINARY_COMPATIBLE()
@@ -83,7 +86,9 @@ typedef enum CATEGORY
 		|| ((a) == INT4OID && (b) == ABSTIMEOID) \
 		|| ((a) == INT4OID && (b) == TIMESTAMPOID) \
 		|| ((a) == RELTIMEOID && (b) == INT4OID) \
-		|| ((a) == INT4OID && (b) == RELTIMEOID))
+		|| ((a) == INT4OID && (b) == RELTIMEOID) \
+		|| ((a) == INETOID && (b) == CIDROID) \
+		|| ((a) == CIDROID && (b) == INETOID))
 
 /* IS_HIGHER_TYPE()
  * These types are the most general in each of the type categories.
@@ -93,7 +98,8 @@ typedef enum CATEGORY
 		|| ((t) == FLOAT8OID) \
 		|| ((t) == TIMESPANOID) \
 		|| ((t) == DATETIMEOID) \
-		|| ((t) == POLYGONOID))
+		|| ((t) == POLYGONOID) \
+		|| ((t) == INETOID) )
 
 /* IS_HIGHEST_TYPE()
  * These types are the most general in each of the type categories.

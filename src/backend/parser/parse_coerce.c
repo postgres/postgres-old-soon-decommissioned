@@ -328,6 +328,11 @@ TypeCategory(Oid inType)
 			result = GEOMETRIC_TYPE;
 			break;
 
+		case (INETOID):
+		case (CIDROID):
+			result = NETWORK_TYPE;
+			break;
+
 		default:
 			result = USER_TYPE;
 			break;
@@ -379,6 +384,10 @@ PreferredType(CATEGORY category, Oid type)
 			result = TIMESPANOID;
 			break;
 
+		case (NETWORK_TYPE):
+			result = INETOID;
+			break;
+		
 		case (GEOMETRIC_TYPE):
 		case (USER_TYPE):
 			result = type;

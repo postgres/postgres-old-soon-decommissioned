@@ -533,16 +533,10 @@ bool		inet_sup(inet * a1, inet * a2);
 bool		inet_supeq(inet * a1, inet * a2);
 int4		inet_cmp(inet * a1, inet * a2);
 
-text	   *inet_netmask(inet * addr);
-int4		inet_netmasklen(inet * addr);
-text	   *inet_broadcast(inet * addr);
-text	   *inet_host(inet * addr);
-
-text	   *cidr_netmask(inet * addr);
-int4		cidr_netmasklen(inet * addr);
-text	   *cidr_broadcast(inet * addr);
-text	   *cidr_host(inet * addr);
-
+text	   *netmask(inet * addr);
+int4		masklen(inet * addr);
+text	   *broadcast(inet * addr);
+text	   *host(inet * addr);
 
 /* mac.c */
 macaddr    *macaddr_in(char *str);
