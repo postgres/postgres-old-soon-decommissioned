@@ -703,7 +703,7 @@ CREATE VIEW parameters AS
            CAST('IN' AS character_data) AS parameter_mode,
            CAST('NO' AS character_data) AS is_result,
            CAST('NO' AS character_data) AS as_locator,
-           CAST(null AS sql_identifier) AS parameter_name,
+           CAST(NULLIF(p.proargnames[pos.n], '') AS sql_identifier) AS parameter_name,
            CAST(
              CASE WHEN t.typelem <> 0 AND t.typlen = -1 THEN 'ARRAY'
                   WHEN nt.nspname = 'pg_catalog' THEN format_type(t.oid, null)
