@@ -428,7 +428,7 @@ FindLockCycleRecurse(PGPROC *checkProc,
 	LOCK	   *lock;
 	PROCLOCK   *proclock;
 	SHM_QUEUE  *lockHolders;
-	LOCKMETHODTABLE *lockMethodTable;
+	LockMethod	lockMethodTable;
 	PROC_QUEUE *waitQueue;
 	int			queue_size;
 	int			conflictMask;

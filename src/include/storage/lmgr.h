@@ -40,10 +40,7 @@
  * so increase that if you want to add more modes.
  */
 
-extern LOCKMETHOD LockTableId;
-
-
-extern LOCKMETHOD InitLockTable(int maxBackends);
+extern void InitLockTable(int maxBackends);
 extern void RelationInitLockInfo(Relation relation);
 
 /* Lock a relation */

@@ -106,10 +106,10 @@ extern void InitDummyProcess(int proctype);
 extern void ProcReleaseLocks(bool isCommit);
 
 extern void ProcQueueInit(PROC_QUEUE *queue);
-extern int ProcSleep(LOCKMETHODTABLE *lockMethodTable, LOCKMODE lockmode,
+extern int ProcSleep(LockMethod lockMethodTable, LOCKMODE lockmode,
 		  LOCK *lock, PROCLOCK *proclock);
 extern PGPROC *ProcWakeup(PGPROC *proc, int errType);
-extern void ProcLockWakeup(LOCKMETHODTABLE *lockMethodTable, LOCK *lock);
+extern void ProcLockWakeup(LockMethod lockMethodTable, LOCK *lock);
 extern bool LockWaitCancel(void);
 
 extern void ProcWaitForSignal(void);
