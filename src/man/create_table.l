@@ -29,8 +29,6 @@ Each attribute may be specified to be non-null and
 each may have a default value, specified by the
 .IR default
 clause which is the keyword "default" followed by a constant or expression.
-\fBNote\fR: DEFAULT in version 6.2 works like constraint - there is no
-way to insert NULL into an attribute having DEFAULT value.
 .PP
 Each array attribute stores arrays that must have the same number of
 dimensions but may have different sizes and array index bounds.  An
