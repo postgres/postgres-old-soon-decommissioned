@@ -253,7 +253,7 @@ PostgreSQL documentation
   <simplelist type="inline">
    <member><xref linkend="app-postgres"></member>
    <member><xref linkend="app-postmaster"></member>
-   <member><citetitle>PostgreSQL Administrator's Guide</citetitle></member>
+   <member>&cite-admin;</member>
   </simplelist>
  </refsect1>
 

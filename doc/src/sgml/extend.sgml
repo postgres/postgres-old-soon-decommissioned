@@ -214,8 +214,8 @@ $Header$
      </mediaobject>
     </figure>
 
-    The <citetitle>Developer's Guide</citetitle> gives a more detailed  explanation
-    of  these catalogs and their columns.  However,
+    The &cite-developer; gives a more detailed explanation of these
+    catalogs and their columns.  However,
     <xref linkend="EXTEND-CATALOGS">
     shows the major entities and their  relationships
     in  the system catalogs.  (Columns that do not refer

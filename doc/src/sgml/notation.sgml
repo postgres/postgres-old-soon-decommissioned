@@ -18,7 +18,7 @@ $Header$
   We use <filename>/usr/local/pgsql/</filename> as the root
   directory of the installation and <filename>/usr/local/pgsql/data</filename>
   as the directory with the database files.  These directories may vary
-  on your site, details can be derived in the <citetitle>Administrator's Guide</citetitle>.
+  on your site, details can be derived in the &cite-admin;.
  </para>
 
  <para>

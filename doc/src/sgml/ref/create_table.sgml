@@ -147,8 +147,8 @@ and <replaceable class="PARAMETER">table_constraint</replaceable> is:
     <listitem>
      <para>
       The data type of the column. This may include array specifiers.
-      Refer to the <citetitle>User's Guide</citetitle> for further
-      information about data types and arrays.
+      Refer to the &cite-user; for further information about data
+      types and arrays.
      </para>
     </listitem>
    </varlistentry>

@@ -281,7 +281,7 @@ comment from Olly; response from Thomas...
    by specifying its name as the template, this is not (yet) intended as
    a general-purpose COPY DATABASE facility.
    We recommend that databases used as templates be treated as read-only.
-   See the <citetitle>Administrator's Guide</> for more information.
+   See the &cite-admin; for more information.
   </para>
   </refsect2>
  </refsect1>

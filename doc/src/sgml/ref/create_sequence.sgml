@@ -256,7 +256,7 @@ ERROR:  DefineSequence: MINVALUE (<replaceable class="parameter">min</replaceabl
    <function>currval</function> and
    <function>setval</function>
    to operate on the sequence.  These functions are documented in
-   the <citetitle>User's Guide</citetitle>.
+   the &cite-user;.
   </para>
 
   <para>

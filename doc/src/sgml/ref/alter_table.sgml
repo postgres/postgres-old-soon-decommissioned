@@ -399,9 +399,8 @@ VACUUM FULL table;
 
    <para>
     Refer to <command>CREATE TABLE</command> for a further description
-    of valid arguments.
-    The <citetitle>PostgreSQL User's Guide</citetitle> has further
-    information on inheritance.
+    of valid arguments. The &cite-user; has further information on
+    inheritance.
    </para>
   </refsect2>
  </refsect1>

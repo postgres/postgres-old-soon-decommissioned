@@ -468,7 +468,7 @@ CREATE FUNCTION getfoo() RETURNS SETOF compfoo AS 'SELECT fooid, fooname FROM fo
   <simplelist type="inline">
    <member><xref linkend="sql-createfunction" endterm="sql-createfunction-title"></member>
    <member><xref linkend="sql-droptype" endterm="sql-droptype-title"></member>
-   <member><citetitle>PostgreSQL Programmer's Guide</citetitle></member>
+   <member>&cite-programmer;</member>
   </simplelist>
  </refsect1>
 

@@ -879,7 +879,7 @@ ECPG = ecpg
 FETCH <optional><replaceable>direction</></> <optional><replaceable>amount</></> IN|FROM <replaceable>cursor</replaceable>
 </synopsis>
       <indexterm><primary>Oracle</></>
-      <application>Oracle</application>, however, does not use the
+      <productname>Oracle</productname>, however, does not use the
       keywords <literal>IN</literal> or <literal>FROM</literal>. This
       feature cannot be added since it would create parsing conflicts.
      </para>

@@ -952,7 +952,7 @@ strings overlap.
    escape a character, it is converted into the three digit octal number
    equal to the decimal <acronym>ASCII</acronym> value, and preceded by
    two backslashes. The single quote (') and backslash (\) characters have
-   special alternate escape sequences. See the <citetitle>User's Guide</citetitle>
+   special alternate escape sequences. See the &cite-user;
    for more information. <function>PQescapeBytea
    </function> performs this operation, escaping only the minimally
    required characters.

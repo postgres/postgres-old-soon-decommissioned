@@ -64,7 +64,7 @@ SET <replaceable class="parameter">variable</replaceable> TO DEFAULT
    current session.  The actual source of this value might be a
    compiled-in default, the postmaster's configuration file or command-line
    switches, or per-database or per-user default settings.  See the
-   <citetitle>Administrator's Guide</citetitle> for details.
+   &cite-admin; for details.
   </para>
 
   <para>

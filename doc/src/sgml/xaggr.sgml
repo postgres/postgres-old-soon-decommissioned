@@ -114,8 +114,7 @@ CREATE AGGREGATE avg (
 
   <para>
    For further details see the description of the <command>CREATE
-   AGGREGATE</command> command in the <citetitle>Reference
-   Manual</citetitle>.
+   AGGREGATE</command> command in the &cite-reference;.
   </para>
  </chapter>
 

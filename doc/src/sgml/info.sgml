@@ -71,8 +71,7 @@ $Header$
       Information for <productname>PostgreSQL</productname>
       developers.  This is intended for those who are contributing to
       the <productname>PostgreSQL</productname> project; application
-      development information appears in the <citetitle>Programmer's
-      Guide</citetitle>.
+      development information appears in the &cite-programmer;.
      </para>
     </listitem>
    </varlistentry>
@@ -88,8 +87,8 @@ $Header$
     <term>man pages</term>
     <listitem>
      <para>
-      The <citetitle>Reference Manual</citetitle>'s pages in the
-      traditional Unix man format.  There is no difference in content.
+      The &cite-reference;'s pages in the traditional Unix man
+      format. There is no difference in content.
      </para>
     </listitem>
    </varlistentry>
