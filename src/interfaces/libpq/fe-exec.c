@@ -1587,7 +1587,15 @@ PQendcopy(PGconn *conn)
 
 	DONOTICE(conn, "PQendcopy: resetting connection\n");
 
-	PQreset(conn);
+	/*
+	 * Users doing non-blocking connections need to handle the reset
+	 * themselves, they'll need to check the connection status if we
+	 * return an error.
+	 */
+	if (pqIsnonblocking(conn))
+		PQresetStart(conn);
+	else
+		PQreset(conn);
 
 	return 1;
 }
