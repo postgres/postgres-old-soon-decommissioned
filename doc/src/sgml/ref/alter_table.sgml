@@ -107,7 +107,7 @@ ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
       <term><replaceable class="PARAMETER">New user </replaceable></term>
       <listitem>
        <para>
-	The userid of the new owner of the table.
+	The user name of the new owner of the table.
        </para>
       </listitem>
      </varlistentry>

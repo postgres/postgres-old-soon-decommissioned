@@ -298,7 +298,7 @@ CREATE
 
   <para>
    The <replaceable class="parameter">storage</replaceable> keyword
-   allows selection of TOAST storage method for variable-length data types
+   allows selection of The Oversized-Attribute Storage Technique (TOAST) for variable-length data types
    (only <literal>plain</literal> is allowed for fixed-length types).
    <literal>plain</literal> disables TOAST for the data type: it will always
    be stored in-line and not compressed.

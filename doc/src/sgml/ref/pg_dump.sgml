@@ -78,7 +78,7 @@ pg_dump [ -h <replaceable class="parameter">host</replaceable> ]
       <term>-b</term>
       <listitem>
        <para>
-	Dump BLOB data.
+ 	Dump data and BLOB data.
        </para>
       </listitem>
      </varlistentry>

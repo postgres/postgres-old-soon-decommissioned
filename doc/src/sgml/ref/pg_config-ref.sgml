@@ -32,7 +32,7 @@
  <refsect1>
   <title>Description</>
   <para>
-   The <application>pg_config</> stores and provides configuration parameters
+   The <application>pg_config</> utility provides configuration parameters
    of the currently installed version of <productname>PostgreSQL</>. It is
    intended, for example, to be used by software packages that want to interface
    to <productname>PostgreSQL</> in order to find the respective header files
