@@ -122,7 +122,7 @@ doc:
 	$(MAKE) -C man install
 
 clean:
-	rm $(LIBNAME).a $(OBJS)
+	rm -f $(LIBNAME).a $(OBJS)
 	$(MAKE) -C examples clean
 
 dep depend:
