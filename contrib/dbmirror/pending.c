@@ -437,6 +437,16 @@ packageData(HeapTuple tTupleData, TupleDesc tTupleDesc,
 				continue;
 			}
 		}						/* KeyUsage!=ALL */
+#ifndef  NODROPCOLUMN
+		if(tTupleDesc->attrs[iColumnCounter-1]->attisdropped)
+		  {
+		    /**
+		     * This column has been dropped.
+		     * Do not mirror it.
+		     */
+		    continue;
+		  }
+#endif
 		cpFieldName = DatumGetPointer(NameGetDatum(&tTupleDesc->attrs
 										 [iColumnCounter - 1]->attname));
 #if defined DEBUG_OUTPUT
