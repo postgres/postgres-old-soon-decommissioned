@@ -84,6 +84,7 @@ extern Datum ExecEvalExprSwitchContext(Node *expression, ExprContext *econtext,
 									   bool *isNull, bool *isDone);
 extern bool ExecQual(List *qual, ExprContext *econtext, bool resultForNull);
 extern int	ExecTargetListLength(List *targetlist);
+extern int	ExecCleanTargetListLength(List *targetlist);
 extern TupleTableSlot *ExecProject(ProjectionInfo *projInfo, bool *isDone);
 
 /*
