@@ -98,7 +98,6 @@ analyze_rel(Oid relid, List *anal_cols2, int MESSAGE_LEVEL)
 
 	onerel = heap_open(relid, AccessShareLock);
 
-#ifndef NO_SECURITY
 	if (!pg_ownercheck(GetUserId(), RelationGetRelationName(onerel),
 					   RELNAME))
 	{
@@ -110,7 +109,6 @@ analyze_rel(Oid relid, List *anal_cols2, int MESSAGE_LEVEL)
 		CommitTransactionCommand();
 		return;
 	}
-#endif
 
 	elog(MESSAGE_LEVEL, "Analyzing...");
 

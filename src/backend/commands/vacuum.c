@@ -397,7 +397,6 @@ vacuum_rel(Oid relid, bool analyze, bool is_toastrel)
 	 */
 	onerel = heap_open(relid, AccessExclusiveLock);
 
-#ifndef NO_SECURITY
 	if (!pg_ownercheck(GetUserId(), RelationGetRelationName(onerel),
 					   RELNAME))
 	{
@@ -408,7 +407,6 @@ vacuum_rel(Oid relid, bool analyze, bool is_toastrel)
 			CommitTransactionCommand();
 		return;
 	}
-#endif
 
 	/*
 	 * Remember the relation'ss TOAST relation for later

@@ -71,12 +71,10 @@ renameatt(char *relname,
 	if (!allowSystemTableMods && IsSystemRelationName(relname))
 		elog(ERROR, "renameatt: class \"%s\" is a system catalog",
 			 relname);
-#ifndef NO_SECURITY
 	if (!IsBootstrapProcessingMode() &&
 		!pg_ownercheck(GetUserId(), relname, RELNAME))
 		elog(ERROR, "renameatt: you do not own class \"%s\"",
 			 relname);
-#endif
 
 	/*
 	 * Grab an exclusive lock on the target table, which we will NOT

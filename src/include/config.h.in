@@ -276,7 +276,6 @@
 /* #define RTDEBUG */
 /* #define GISTDEBUG */
 /* #define OMIT_PARTIAL_INDEX */
-/* #define NO_SECURITY        */
 /* #define LOCK_DEBUG */
 
 /*

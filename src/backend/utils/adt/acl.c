@@ -589,11 +589,9 @@ ExecuteChangeACLStmt(ChangeACLStmt *stmt)
 		if (rel && rel->rd_rel->relkind == RELKIND_INDEX)
 			elog(ERROR, "\"%s\" is an index relation",
 				 relname);
-#ifndef NO_SECURITY
 		if (!pg_ownercheck(GetUserId(), relname, RELNAME))
 			elog(ERROR, "you do not own class \"%s\"",
 				 relname);
-#endif
 		ChangeAcl(relname, &aclitem, modechg);
 		/* close rel, but keep lock until end of xact */
 		heap_close(rel, NoLock);

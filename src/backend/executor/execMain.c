@@ -619,9 +619,7 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 	/*
 	 * Do permissions checks.
 	 */
-#ifndef NO_SECURITY
 	ExecCheckQueryPerms(operation, parseTree, plan);
-#endif
 
 	/*
 	 * get information from query descriptor
