@@ -385,7 +385,7 @@ cppline			{space}*#(.*\\{line_end})*.*
 					BEGIN(state_before);
 					if (strlen(literalbuf) >= NAMEDATALEN)
        			                {
-#ifdef MULTIBYTE
+#ifdef MULTIBYTE_NOTUSED
                                                 int len;
 
 	                                        len = pg_mbcliplen(literalbuf,strlen(literalbuf),NAMEDATALEN-1);
@@ -547,7 +547,7 @@ cppline			{space}*#(.*\\{line_end})*.*
 
 					if (i >= NAMEDATALEN)
 					{
-#ifdef MULTIBYTE
+#ifdef MULTIBYTE_NOTUSED
                                                 int len;
 
 	                                        len = pg_mbcliplen(lower_text,strlen(lower_text),NAMEDATALEN-1);
