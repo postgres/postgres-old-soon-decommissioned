@@ -66,9 +66,7 @@ index_formtuple(TupleDesc tupleDescriptor,
 		infomask |= INDEX_NULL_MASK;
 
 	hoff = IndexInfoFindDataOffset(infomask);
-	size = hoff
-		+ ComputeDataSize(tupleDescriptor,
-						  value, null);
+	size = hoff + ComputeDataSize(tupleDescriptor, value, null);
 	size = DOUBLEALIGN(size);	/* be conservative */
 
 	tp = (char *) palloc(size);
