@@ -387,6 +387,10 @@ ECPGconnect(int lineno, const char *name, const char *user, const char *passwd, 
 				host = strdup(dbname + offset);
 
 		}
+		else
+		{
+			realname = strdup(dbname);
+		}
 	}
 	else
 		realname = strdup(dbname);
