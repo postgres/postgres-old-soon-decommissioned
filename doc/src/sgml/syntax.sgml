@@ -1271,6 +1271,23 @@ SELECT ARRAY[[1,2],[3,4]];
   </para>
 
   <para>
+    Multidimensional array constructor elements can be anything yielding
+    an array of the proper kind, not only a sub-<literal>ARRAY</> construct.
+    For example:
+<programlisting>
+create table arr(f1 int[], f2 int[]);
+CREATE TABLE
+insert into arr values (ARRAY[[1,2],[3,4]],ARRAY[[5,6],[7,8]]);
+INSERT 2635544 1
+select ARRAY[f1, f2, '{{9,10},{11,12}}'::int[]] from arr;
+                     array
+------------------------------------------------
+ {{{1,2},{3,4}},{{5,6},{7,8}},{{9,10},{11,12}}}
+(1 row)
+</programlisting>
+  </para>
+
+  <para>
    It is also possible to construct an array from the results of a
    subquery.  In this form, the array constructor is written with the
    keyword <literal>ARRAY</literal> followed by a parenthesized (not
