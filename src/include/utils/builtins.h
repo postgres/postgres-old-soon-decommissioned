@@ -486,6 +486,18 @@ extern bool textlike(struct varlena *s, struct varlena *p);
 extern bool textnlike(struct varlena *s, struct varlena *p);
 extern int like(char *text, char *p);
 
+/* oracle_compat.c */
+
+extern text *lower(text *string);
+extern text *upper(text *string);
+extern text *initcap(text *string);
+extern text *lpad(text *string1, int4 len, text *string2);
+extern text *rpad(text *string1, int4 len, text *string2);
+extern text *ltrim(text *string, text *set);
+extern text *rtrim(text *string, text *set);
+extern text *substr(text *string, int4 m, int4 n);
+extern text *translate(text *string, char from, char to);
+
 /* acl.c */
 
 #endif	/* BUILTINS_H */

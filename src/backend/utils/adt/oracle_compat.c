@@ -9,6 +9,7 @@
 #include <ctype.h>
 #include "postgres.h"
 
+#include "utils/builtins.h"	/* where function declarations go */
 
 /********************************************************************
  *
