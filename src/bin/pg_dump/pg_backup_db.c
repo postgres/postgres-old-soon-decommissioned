@@ -213,6 +213,21 @@ _connectDB(ArchiveHandle *AH, const char *reqdb, const char *requser)
 	if (password)
 		free(password);
 
+	/* check for version mismatch */
+	_check_database_version(AH, true);
+
+	/* Turn autocommit on */
+	if (AH->public.remoteVersion >= 70300)
+	{
+		PGresult   *res;
+
+		res = PQexec(AH->connection, "SET autocommit TO 'on'");
+		if (!res || PQresultStatus(res) != PGRES_COMMAND_OK)
+			die_horribly(AH, NULL, "SET autocommit TO 'on' failed: %s",
+						  PQerrorMessage(AH->connection));
+		PQclear(res);
+	}
+
 	PQsetNoticeProcessor(newConn, notice_processor, NULL);
 
 	return newConn;
