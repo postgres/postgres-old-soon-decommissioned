@@ -153,7 +153,7 @@ psql_error(const char *fmt,...)
 
 
 /*
- * for backend INFO, WARNING, ERROR
+ * for backend Notice mesages (INFO, WARNING, etc)
  */
 void
 NoticeProcessor(void *arg, const char *message)

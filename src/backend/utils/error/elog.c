@@ -747,8 +747,8 @@ send_message_to_frontend(int type, const char *msg)
 	AssertArg(type <= ERROR);
 
 	pq_beginmessage(&buf);
-	pq_sendbyte(&buf, type != ERROR ? 'N' : 'E');		/* N is INFO, NOTICE, or
-														 * WARNING */
+	/* 'N' (Notice) is for nonfatal conditions, 'E' is for errors */
+	pq_sendbyte(&buf, type < ERROR ? 'N' : 'E');
 	pq_sendstring(&buf, msg);
 	pq_endmessage(&buf);
 

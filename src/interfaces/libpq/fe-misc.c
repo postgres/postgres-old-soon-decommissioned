@@ -690,7 +690,7 @@ pqSendSome(PGconn *conn)
 					/*
 					 * We used to close the socket here, but that's a bad
 					 * idea since there might be unread data waiting
-					 * (typically, a WARNING message from the backend
+					 * (typically, a NOTICE message from the backend
 					 * telling us it's committing hara-kiri...).  Leave
 					 * the socket open until pqReadData finds no more data
 					 * can be read.

@@ -2294,7 +2294,7 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 	 * status bits.  This is not really necessary, but will save time for
 	 * future transactions examining these tuples.
 	 *
-	 * XXX WARNING that this code fails to clear HEAP_MOVED_OFF tuples from
+	 * XXX NOTICE that this code fails to clear HEAP_MOVED_OFF tuples from
 	 * pages that were move source pages but not move dest pages.  One
 	 * also wonders whether it wouldn't be better to skip this step and
 	 * let the tuple status updates happen someplace that's not holding an
