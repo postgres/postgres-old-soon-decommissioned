@@ -186,7 +186,7 @@ Postgres documentation
    <para>
     To remove <literal>pltcl</literal>:
 <screen>
-<prompt>$ </prompt><userinput>droplang pltcl</userinput>
+<prompt>$ </prompt><userinput>droplang pltcl dbname</userinput>
 </screen>
    </para>
   </informalexample>
