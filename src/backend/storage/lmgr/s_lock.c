@@ -240,8 +240,15 @@ static void
 tas_dummy()						/* really means: extern int tas(slock_t
 								 * *lock); */
 {
+
+#ifdef SUNOS4_CC
 	asm(".seg \"data\"");
 	asm(".seg \"text\"");
+#else
+	asm(".section \"data\"");
+	asm(".section \"text\"");
+#endif
+
 	asm("_tas:");
 
 	/*
