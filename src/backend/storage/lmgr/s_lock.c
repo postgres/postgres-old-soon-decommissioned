@@ -124,8 +124,12 @@ s_lock(volatile slock_t *lock, const char *file, int line)
  */
 
 
+#ifdef HAVE_SPINLOCKS	/* skip spinlocks if requested */
+
+
 #if defined(__GNUC__)
-/*************************************************************************
+
+/*
  * All the gcc flavors that are not inlined
  */
 
@@ -150,6 +154,7 @@ _success:						\n\
 ");
 }
 #endif   /* __m68k__ */
+
 
 #if defined(__mips__) && !defined(__sgi)
 static void
@@ -178,11 +183,12 @@ fail:							\n\
 }
 #endif   /* __mips__ && !__sgi */
 
+
 #else							/* not __GNUC__ */
-/***************************************************************************
+
+/*
  * All non gcc
  */
-
 
 
 #if defined(sun3)
@@ -210,7 +216,6 @@ tas_dummy()						/* really means: extern int tas(slock_t
 #endif   /* sun3 */
 
 
-
 #if defined(__sparc__) || defined(__sparc)
 /*
  * sparc machines not using gcc
@@ -233,10 +238,9 @@ tas_dummy()						/* really means: extern int tas(slock_t
 #endif   /* __sparc || __sparc__ */
 
 
-
-
 #endif   /* not __GNUC__ */
 
+#endif /* HAVE_SPINLOCKS */
 
 
 
