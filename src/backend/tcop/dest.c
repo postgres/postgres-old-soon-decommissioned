@@ -179,27 +179,22 @@ DestToFunction(CommandDest dest)
 {
 	switch (dest)
 	{
-			case Remote:
-			/* printtup wants a dynamically allocated DestReceiver */
+		case Remote:
+		/* printtup wants a dynamically allocated DestReceiver */
 			return printtup_create_DR();
-			break;
 
 		case RemoteInternal:
 			return &printtup_internalDR;
-			break;
 
 		case Debug:
 			return &debugtupDR;
-			break;
 
 		case SPI:
 			return &spi_printtupDR;
-			break;
 
 		case None:
 		default:
 			return &donothingDR;
-			break;
 	}
 
 	/*

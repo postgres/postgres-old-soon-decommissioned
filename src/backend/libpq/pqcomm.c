@@ -332,6 +332,15 @@ StreamConnection(int server_fd, Port *port)
 		return STATUS_ERROR;
 	}
 
+#ifdef PG_ON_UNIXWARE
+	/*
+	 * Only UnixWare 7+ are known to have this bug, but it shouldn't
+	 * hurt it catch if for all of them.
+	 */
+	if (port->raddr.sa.sa_family == 0)
+		port->raddr.sa.sa_family = AF_UNIX;
+#endif
+
 	/* fill in the server (local) address */
 	addrlen = sizeof(port->laddr);
 	if (getsockname(port->sock, (struct sockaddr *) & port->laddr,

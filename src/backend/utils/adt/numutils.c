@@ -63,7 +63,13 @@ pg_atoi(char *s, int size, int c)
 		l = (long) 0;
 	else
 		l = strtol(s, &badp, 10);
-	if (errno)					/* strtol must set ERANGE */
+	/*
+	 * strtol() normally only sets ERANGE.  On some systems it also
+	 * may set EINVAL, which simply means it couldn't parse the
+	 * input string.  This is handled by the second "if" consistent
+	 * across platforms.
+	 */
+	if (errno && errno != EINVAL)
 		elog(ERROR, "pg_atoi: error reading \"%s\": %m", s);
 	if (badp && *badp && (*badp != c))
 		elog(ERROR, "pg_atoi: error in \"%s\": can\'t parse \"%s\"", s, badp);

@@ -236,7 +236,7 @@ tas(volatile slock_t *lock)
 #define TAS(lock)	tas(lock)
 
 asm int
-tas(slock_t *s_lock)
+tas(volatile slock_t *s_lock)
 {
 /* UNIVEL wants %mem in column 1, so we don't pg_indent this file */
 %mem s_lock
