@@ -159,9 +159,6 @@ getaddrinfo_unix(const char *path, const struct addrinfo *hintsp,
 	unp->sun_len = sizeof(struct sockaddr_un);
 #endif   /* SALEN */
 
-	if (hints.ai_flags & AI_PASSIVE)
-		unlink(unp->sun_path);
-
 	return 0;
 }
 #endif   /* HAVE_UNIX_SOCKETS */
