@@ -754,7 +754,6 @@ extern char *form(char *fmt, ...);
 
 #if defined(WIN32)
 #include "port/win32/nt.h"
-#include "port/win32/machine.h"
 #endif /* WIN32 */
 
 /* ----------------
