@@ -10,7 +10,7 @@ select \(em retrieve instances from a class
     expression1 [\fBas\fR attr_name-1]
     {, expression-1 [\fBas\fR attr_name-i]}
     [\fBinto\fR \fBtable\fR classname]
-    [\fBfrom\fR from-last]
+    [\fBfrom\fR from-list]
     [\fBwhere\fR where-clause]    
     [\fBgroup by\fR attr_name1 {, attr_name-i....}
     [\fBorder by\fR attr_name1
