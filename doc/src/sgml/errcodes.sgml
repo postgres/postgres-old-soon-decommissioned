@@ -311,6 +311,16 @@
 </row>
 
 <row>
+<entry><literal>2201E</literal></entry>
+<entry>INVALID ARGUMENT FOR LOGARITHM</entry>
+</row>
+
+<row>
+<entry><literal>2201F</literal></entry>
+<entry>INVALID ARGUMENT FOR POWER FUNCTION</entry>
+</row>
+
+<row>
 <entry><literal>2201G</literal></entry>
 <entry>INVALID ARGUMENT FOR WIDTH BUCKET FUNCTION</entry>
 </row>
