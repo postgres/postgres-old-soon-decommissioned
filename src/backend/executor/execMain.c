@@ -54,12 +54,12 @@
 #include "catalog/heap.h"
 #include "commands/trigger.h"
 
+void
+ExecCheckPerms(CmdType operation, int resultRelation, List *rangeTable,
+			   Query *parseTree);
 
 
 /* decls for local routines only used within this module */
-static void
-ExecCheckPerms(CmdType operation, int resultRelation, List *rangeTable,
-			   Query *parseTree);
 static TupleDesc
 InitPlan(CmdType operation, Query *parseTree,
 		 Plan *plan, EState *estate);
@@ -273,14 +273,7 @@ ExecutorEnd(QueryDesc *queryDesc, EState *estate)
 	BufferRefCountRestore(estate->es_refcount);
 }
 
-/* ===============================================================
- * ===============================================================
-						 static routines follow
- * ===============================================================
- * ===============================================================
- */
-
-static void
+void
 ExecCheckPerms(CmdType operation,
 			   int resultRelation,
 			   List *rangeTable,
@@ -375,6 +368,13 @@ ExecCheckPerms(CmdType operation,
 		elog(ERROR, "%s: %s", rname.data, aclcheck_error_strings[aclcheck_result]);
 	}
 }
+
+/* ===============================================================
+ * ===============================================================
+						 static routines follow
+ * ===============================================================
+ * ===============================================================
+ */
 
 
 /* ----------------------------------------------------------------
