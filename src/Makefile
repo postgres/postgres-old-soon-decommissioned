@@ -14,7 +14,7 @@
 #
 #-------------------------------------------------------------------------
 
-SUBDIR= backend libpq bin
+SUBDIR= backend libpq bin ../doc
 
 FIND = find
 # assuming gnu tar and split here
