@@ -12,6 +12,7 @@ pg_config: pg_config.sh $(top_builddir)/src/Makefile.global Makefile
 	    -e 's,@includedir_server@,$(includedir_server),g' \
 	    -e 's,@libdir@,$(libdir),g' \
 	    -e 's,@pkglibdir@,$(pkglibdir),g' \
+	    -e 's,@pgxsdir@,$(pgxsdir),g' \
 	    -e "s|@configure@|$(configure_args)|g" \
 	    -e 's,@version@,$(VERSION),g' \
 	  $< >$@
