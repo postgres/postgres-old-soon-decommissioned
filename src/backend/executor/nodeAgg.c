@@ -1321,14 +1321,9 @@ ExecInitAgg(Agg *node, EState *estate, Plan *parent)
 							&peraggstate->inputtypeLen,
 							&peraggstate->inputtypeByVal);
 
-			eq_function = compatible_oper_funcid(makeList1(makeString("=")),
-												 inputType, inputType,
-												 true);
-			if (!OidIsValid(eq_function))
-				elog(ERROR, "Unable to identify an equality operator for type %s",
-					 format_type_be(inputType));
+			eq_function = equality_oper_funcid(inputType);
 			fmgr_info(eq_function, &(peraggstate->equalfn));
-			peraggstate->sortOperator = any_ordering_op(inputType);
+			peraggstate->sortOperator = ordering_oper_opid(inputType);
 			peraggstate->sortstate = NULL;
 		}
 

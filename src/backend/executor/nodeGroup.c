@@ -353,11 +353,7 @@ execTuplesMatchPrepare(TupleDesc tupdesc,
 		Oid			typid = tupdesc->attrs[att - 1]->atttypid;
 		Oid			eq_function;
 
-		eq_function = compatible_oper_funcid(makeList1(makeString("=")),
-											 typid, typid, true);
-		if (!OidIsValid(eq_function))
-			elog(ERROR, "Unable to identify an equality operator for type %s",
-				 format_type_be(typid));
+		eq_function = equality_oper_funcid(typid);
 		fmgr_info(eq_function, &eqfunctions[i]);
 	}
 

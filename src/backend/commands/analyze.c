@@ -402,10 +402,7 @@ examine_attribute(Relation onerel, int attnum)
 		return NULL;
 
 	/* If column has no "=" operator, we can't do much of anything */
-	func_operator = compatible_oper(makeList1(makeString("=")),
-									attr->atttypid,
-									attr->atttypid,
-									true);
+	func_operator = equality_oper(attr->atttypid, true);
 	if (func_operator != NULL)
 	{
 		oprrest = ((Form_pg_operator) GETSTRUCT(func_operator))->oprrest;
@@ -443,10 +440,7 @@ examine_attribute(Relation onerel, int attnum)
 		stats->attr->attstattarget = default_statistics_target;
 
 	/* Is there a "<" operator with suitable semantics? */
-	func_operator = compatible_oper(makeList1(makeString("<")),
-									attr->atttypid,
-									attr->atttypid,
-									true);
+	func_operator = ordering_oper(attr->atttypid, true);
 	if (func_operator != NULL)
 	{
 		oprrest = ((Form_pg_operator) GETSTRUCT(func_operator))->oprrest;

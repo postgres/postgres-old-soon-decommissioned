@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * parse_oper.h
- *
+ *		handle operator things for parser
  *
  *
  * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
@@ -36,13 +36,14 @@ extern Operator compatible_oper(List *op, Oid arg1, Oid arg2, bool noError);
 
 /* currently no need for compatible_left_oper/compatible_right_oper */
 
-/* Convenience routines that call compatible_oper() and return either */
-/* the operator OID or the underlying function OID, or InvalidOid if fail */
-extern Oid	compatible_oper_opid(List *op, Oid arg1, Oid arg2, bool noError);
-extern Oid	compatible_oper_funcid(List *op, Oid arg1, Oid arg2, bool noError);
+/* Routines for identifying "=" and "<" operators for a type */
+extern Operator equality_oper(Oid argtype, bool noError);
+extern Operator ordering_oper(Oid argtype, bool noError);
 
-/* Convenience routine that packages a specific call on compatible_oper */
-extern Oid	any_ordering_op(Oid argtype);
+/* Convenience routines for common calls on the above */
+extern Oid	compatible_oper_opid(List *op, Oid arg1, Oid arg2, bool noError);
+extern Oid	equality_oper_funcid(Oid argtype);
+extern Oid	ordering_oper_opid(Oid argtype);
 
 /* Extract operator OID or underlying-function OID from an Operator tuple */
 extern Oid	oprid(Operator op);

@@ -3669,12 +3669,7 @@ ri_AttributesEqual(Oid typeid, Datum oldvalue, Datum newvalue)
 		Oid			opr_proc;
 		FmgrInfo	finfo;
 
-		opr_proc = compatible_oper_funcid(makeList1(makeString("=")),
-										  typeid, typeid, true);
-		if (!OidIsValid(opr_proc))
-			elog(ERROR,
-			"ri_AttributesEqual(): cannot find '=' operator for type %u",
-				 typeid);
+		opr_proc = equality_oper_funcid(typeid);
 
 		/*
 		 * Since fmgr_info could fail, call it *before* creating the
