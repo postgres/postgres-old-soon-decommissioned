@@ -1807,12 +1807,12 @@ split_opts(char **argv, int *argcp, char *s)
 {
 	while (s && *s)
 	{
-		while (isspace((int) *s))
+		while (isspace((unsigned char) *s))
 			++s;
 		if (*s == '\0')
 			break;
 		argv[(*argcp)++] = s;
-		while (*s && !isspace((int) *s))
+		while (*s && !isspace((unsigned char) *s))
 			++s;
 		if (*s)
 			*s++ = '\0';

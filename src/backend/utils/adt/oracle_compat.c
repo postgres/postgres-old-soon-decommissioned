@@ -118,7 +118,7 @@ initcap(PG_FUNCTION_ARGS)
 
 	while (m-- > 0)
 	{
-		if (isspace(ptr[-1]))
+		if (isspace((unsigned char) ptr[-1]))
 			*ptr = toupper((unsigned char) *ptr);
 		else
 			*ptr = tolower((unsigned char) *ptr);

@@ -1655,7 +1655,7 @@ dummyfunc()
 	for (;;)
 	{
 		c = *p;
-		if (isdigit(c))
+		if (isdigit((unsigned char) c))
 		{
 			*quantity = *quantity * 10 + (c - '0');
 			p++;

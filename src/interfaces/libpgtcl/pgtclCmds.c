@@ -1846,7 +1846,7 @@ Pg_listen(ClientData cData, Tcl_Interp *interp, int argc, char *argv[])
 		char	   *reld = caserelname;
 
 		while (*rels)
-			*reld++ = tolower(*rels++);
+			*reld++ = tolower((unsigned char) *rels++);
 		*reld = '\0';
 	}
 

@@ -215,7 +215,7 @@ PQconnectdb(conninfo)
 				}
 			} else {
 				while (*ptr && *ptr != ' ' && *ptr != '\t') {
-				      *ptr = tolower(*ptr);
+				      *ptr = tolower((unsigned char) *ptr);
 				      ptr++;
 				}
 			}
@@ -734,7 +734,7 @@ connectdb(conninfo)
 				}
 			} else {
 				while (*ptr && *ptr != ' ' && *ptr != '\t') {
-					*ptr = tolower(*ptr);
+					*ptr = tolower((unsigned char) *ptr);
 					ptr++;
 				}
 			}

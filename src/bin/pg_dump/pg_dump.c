@@ -813,9 +813,8 @@ main(int argc, char **argv)
 					else
 					{
 						for (i = 0; tablename[i]; i++)
-							if (isascii((int) tablename[i]) &&
-								isupper((int) tablename[i]))
-								tablename[i] = tolower(tablename[i]);
+							if (isupper((unsigned char) tablename[i]))
+								tablename[i] = tolower((unsigned char) tablename[i]);
 					}
 				}
 				break;

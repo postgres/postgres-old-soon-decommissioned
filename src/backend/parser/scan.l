@@ -478,9 +478,8 @@ other			.
 					ScanKeyword		*keyword;
 
 					for(i = 0; yytext[i]; i++)
-						if (isascii((int) yytext[i]) &&
-							isupper((int) yytext[i]))
-							yytext[i] = tolower(yytext[i]);
+						if (isupper((unsigned char) yytext[i]))
+							yytext[i] = tolower((unsigned char) yytext[i]);
 					if (i >= NAMEDATALEN)
                     {
 #ifdef MULTIBYTE

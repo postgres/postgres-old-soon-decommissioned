@@ -50,7 +50,7 @@
 /* If we don't have this, we might as well forget about the whole thing: */
 #ifdef USE_READLINE
 
-#include <ctype.h>				/* toupper */
+#include <ctype.h>
 #ifdef USE_ASSERT_CHECKING
 #include <assert.h>
 #endif
@@ -440,7 +440,8 @@ psql_completion(char *text, int start, int end)
 	/* Complete "AS ON <sth with a 'T' :)>" with a "TO" */
 	else if (strcasecmp(prev3_wd, "AS") == 0 &&
 			 strcasecmp(prev2_wd, "ON") == 0 &&
-			 (toupper(prev_wd[4]) == 'T' || toupper(prev_wd[5]) == 'T'))
+			 (toupper((unsigned char) prev_wd[4]) == 'T' ||
+			  toupper((unsigned char) prev_wd[5]) == 'T'))
 		COMPLETE_WITH_CONST("TO");
 	/* Complete "AS ON <sth> TO" with a table name */
 	else if (strcasecmp(prev4_wd, "AS") == 0 &&

@@ -203,7 +203,7 @@ format_type_internal(Oid type_oid, int32 typemod)
 		default:
 			name = NameStr(((Form_pg_type) GETSTRUCT(tuple))->typname);
 			if (strspn(name, "abcdefghijklmnopqrstuvwxyz0123456789_") != strlen(name)
-				|| isdigit((int) name[0]))
+				|| isdigit((unsigned char) name[0]))
 				buf = psnprintf(strlen(name) + 3, "\"%s\"", name);
 			else
 				buf = pstrdup(name);

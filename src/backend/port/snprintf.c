@@ -457,7 +457,7 @@ static void
 dopr_outch(int c)
 {
 #ifdef NOT_USED
-	if (iscntrl(c) && c != '\n' && c != '\t')
+	if (iscntrl((unsigned char) c) && c != '\n' && c != '\t')
 	{
 		c = '@' + (c & 0x1F);
 		if (end == 0 || output < end)

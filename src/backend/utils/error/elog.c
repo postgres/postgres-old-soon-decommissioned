@@ -693,13 +693,13 @@ write_syslog(int level, const char *line)
 			l = strlen(buf);
 #endif
 			/* already word boundary? */
-			if (isspace(line[l]) || line[l] == '\0')
+			if (isspace((unsigned char) line[l]) || line[l] == '\0')
 				buflen = l;
 			else
 			{
 				/* try to divide at word boundary */
 				i = l - 1;
-				while (i > 0 && !isspace(buf[i]))
+				while (i > 0 && !isspace((unsigned char) buf[i]))
 					i--;
 
 				if (i <= 0)	/* couldn't divide word boundary */

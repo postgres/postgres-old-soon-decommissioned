@@ -71,7 +71,7 @@ case_translate_language_name(const char *input, char *output)
 	int			i;
 
 	for (i = 0; i < NAMEDATALEN-1 && input[i]; ++i)
-		output[i] = tolower(input[i]);
+		output[i] = tolower((unsigned char) input[i]);
 
 	output[i] = '\0';
 

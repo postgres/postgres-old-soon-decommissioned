@@ -23,7 +23,7 @@
 #include <netdb.h>				/* for MAXHOSTNAMELEN on some */
 #endif
 #include <pwd.h>
-#include <ctype.h>				/* isspace() declaration */
+#include <ctype.h>
 
 #include <sys/types.h>			/* needed by in.h on Ultrix */
 #include <netinet/in.h>

@@ -1955,9 +1955,8 @@ PQfnumber(const PGresult *res, const char *field_name)
 	}
 	else
 		for (i = 0; field_case[i]; i++)
-			if (isascii((int) field_case[i]) &&
-				isupper((int) field_case[i]))
-				field_case[i] = tolower(field_case[i]);
+			if (isupper((unsigned char) field_case[i]))
+				field_case[i] = tolower((unsigned char) field_case[i]);
 
 	for (i = 0; i < res->numAttributes; i++)
 	{

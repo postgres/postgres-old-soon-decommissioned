@@ -146,14 +146,14 @@ array_in(PG_FUNCTION_ARGS)
 		 * Note: we currently allow whitespace between, but not within,
 		 * dimension items.
 		 */
-		while (isspace((int) *p))
+		while (isspace((unsigned char) *p))
 			p++;
 		if (*p != '[')
 			break;				/* no more dimension items */
 		p++;
 		if (ndim >= MAXDIM)
 			elog(ERROR, "array_in: more than %d dimensions", MAXDIM);
-		for (q = p; isdigit((int) *q); q++);
+		for (q = p; isdigit((unsigned char) *q); q++);
 		if (q == p)				/* no digits? */
 			elog(ERROR, "array_in: missing dimension value");
 		if (*q == ':')
@@ -162,7 +162,7 @@ array_in(PG_FUNCTION_ARGS)
 			*q = '\0';
 			lBound[ndim] = atoi(p);
 			p = q + 1;
-			for (q = p; isdigit((int) *q); q++);
+			for (q = p; isdigit((unsigned char) *q); q++);
 			if (q == p)			/* no digits? */
 				elog(ERROR, "array_in: missing dimension value");
 		}
@@ -197,7 +197,7 @@ array_in(PG_FUNCTION_ARGS)
 		if (strncmp(p, ASSGN, strlen(ASSGN)) != 0)
 			elog(ERROR, "array_in: missing assignment operator");
 		p += strlen(ASSGN);
-		while (isspace((int) *p))
+		while (isspace((unsigned char) *p))
 			p++;
 	}
 
@@ -323,7 +323,7 @@ ArrayCount(char *str, int *dim, int typdelim)
 		temp[ndim - 1]++;
 		q++;
 		if (!eoArray)
-			while (isspace((int) *q))
+			while (isspace((unsigned char) *q))
 				q++;
 	}
 	for (i = 0; i < ndim; ++i)
@@ -454,7 +454,7 @@ ReadArrayStr(char *arrayStr,
 		 * if not at the end of the array skip white space
 		 */
 		if (!eoArray)
-			while (isspace((int) *q))
+			while (isspace((unsigned char) *q))
 			{
 				p++;
 				q++;

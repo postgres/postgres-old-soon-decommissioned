@@ -56,9 +56,9 @@ byteain(PG_FUNCTION_ARGS)
 		{
 			if (*tp == '\\')
 				tp++;
-			else if (!isdigit((int) *tp++) ||
-					 !isdigit((int) *tp++) ||
-					 !isdigit((int) *tp++))
+			else if (!isdigit((unsigned char) *tp++) ||
+					 !isdigit((unsigned char) *tp++) ||
+					 !isdigit((unsigned char) *tp++))
 				elog(ERROR, "Bad input string for type bytea");
 		}
 	}
@@ -111,7 +111,7 @@ byteaout(PG_FUNCTION_ARGS)
 	{
 		if (*vp == '\\')
 			len += 2;
-		else if (isascii((int) *vp) && isprint((int) *vp))
+		else if (isprint((unsigned char) *vp))
 			len++;
 		else
 			len += 4;
@@ -125,7 +125,7 @@ byteaout(PG_FUNCTION_ARGS)
 			*rp++ = '\\';
 			*rp++ = '\\';
 		}
-		else if (isascii((int) *vp) && isprint((int) *vp))
+		else if (isprint((unsigned char) *vp))
 			*rp++ = *vp;
 		else
 		{

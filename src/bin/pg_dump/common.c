@@ -213,7 +213,8 @@ parseNumericArray(const char *str, char **array, int arraysize)
 		}
 		else
 		{
-			if (!(isdigit((int) s) || s == '-') || j >= sizeof(temp) - 1)
+			if (!(isdigit((unsigned char) s) || s == '-') ||
+				j >= sizeof(temp) - 1)
 			{
 				fprintf(stderr, "parseNumericArray: bogus number\n");
 				exit(2);
@@ -541,13 +542,15 @@ fmtId(const char *rawid, bool force_quotes)
 	if (!force_quotes)
 	{
 		/* do a quick check on the first character... */
-		if (!islower((int) *rawid))
+		if (!islower((unsigned char) *rawid))
 			force_quotes = true;
 		/* otherwise check the entire string */
 		else
 			for (cp = rawid; *cp; cp++)
 			{
-				if (!(islower((int) *cp) || isdigit((int) *cp) || (*cp == '_')))
+				if (!(islower((unsigned char) *cp) ||
+					  isdigit((unsigned char) *cp) ||
+					  (*cp == '_')))
 				{
 					force_quotes = true;
 					break;

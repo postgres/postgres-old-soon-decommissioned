@@ -142,7 +142,7 @@ HandleSlashCmds(const char *line,
 		status = exec_command(new_cmd, my_line + 1, &continue_parse, query_buf);
 
 #if 0 /* turned out to be too annoying */
-		if (status != CMD_UNKNOWN && isalpha(new_cmd[0]))
+		if (status != CMD_UNKNOWN && isalpha((unsigned char) new_cmd[0]))
 			psql_error("Warning: this syntax is deprecated\n");
 #endif
 	}
@@ -1070,8 +1070,8 @@ scan_option(char **string, enum option_type type, char *quote)
 
 				if (type == OT_SQLID)
 					for (cp = return_val; *cp; cp += PQmblen(cp, pset.encoding))
-						if (isascii(*cp))
-							*cp = tolower(*cp);
+						if (isupper((unsigned char) *cp))
+							*cp = tolower((unsigned char) *cp);
 
 				*string = &options_string[pos + token_end];
 				return return_val;

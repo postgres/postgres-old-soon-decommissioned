@@ -2339,7 +2339,7 @@ set_var_from_str(char *str, NumericVar *dest)
 
 	while (*cp)
 	{
-		if (!isspace((int) *cp))
+		if (!isspace((unsigned char) *cp))
 			break;
 		cp++;
 	}
@@ -2368,12 +2368,12 @@ set_var_from_str(char *str, NumericVar *dest)
 		cp++;
 	}
 
-	if (!isdigit((int) *cp))
+	if (!isdigit((unsigned char) *cp))
 		elog(ERROR, "Bad numeric input format '%s'", str);
 
 	while (*cp)
 	{
-		if (isdigit((int) *cp))
+		if (isdigit((unsigned char) *cp))
 		{
 			dest->digits[i++] = *cp++ - '0';
 			if (!have_dp)
@@ -2416,7 +2416,7 @@ set_var_from_str(char *str, NumericVar *dest)
 	/* Should be nothing left but spaces */
 	while (*cp)
 	{
-		if (!isspace((int) *cp))
+		if (!isspace((unsigned char) *cp))
 			elog(ERROR, "Bad numeric input format '%s'", str);
 		cp++;
 	}
