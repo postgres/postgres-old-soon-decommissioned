@@ -12,7 +12,7 @@
 #include "sqlca.h"
 
 bool
-get_data(PGresult *results, int act_tuple, int act_field, int lineno,
+get_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 		 enum ECPGttype type, enum ECPGttype ind_type,
 		 void *var, void *ind, long varcharsize, long offset,
 		 bool isarray)
