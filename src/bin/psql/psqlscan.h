@@ -32,7 +32,8 @@ enum slash_option_type
 	OT_SQLID,					/* treat as SQL identifier */
 	OT_SQLIDHACK,				/* SQL identifier, but don't downcase */
 	OT_FILEPIPE,				/* it's a filename or pipe */
-	OT_WHOLE_LINE				/* just snarf the rest of the line */
+	OT_WHOLE_LINE,				/* just snarf the rest of the line */
+	OT_VERBATIM					/* literal (no backticks or variables) */
 };
 
 
