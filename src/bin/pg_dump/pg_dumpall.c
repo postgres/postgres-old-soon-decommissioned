@@ -81,6 +81,7 @@ main(int argc, char *argv[])
 		{"inserts", no_argument, NULL, 'd'},
 		{"attribute-inserts", no_argument, NULL, 'D'},
 		{"column-inserts", no_argument, NULL, 'D'},
+		{"globals-only", no_argument, NULL, 'g'},
 		{"host", required_argument, NULL, 'h'},
 		{"ignore-version", no_argument, NULL, 'i'},
 		{"oids", no_argument, NULL, 'o'},
