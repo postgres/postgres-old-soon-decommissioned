@@ -18,6 +18,7 @@
 #include <signal.h>
 #include <sys/stat.h>
 #include <sys/file.h>
+#include <fcntl.h>
 #include <unistd.h>
 #include <grp.h>
 #include <pwd.h>
