@@ -1753,16 +1753,17 @@ finish_xact_command(void)
 		/* Cancel any active statement timeout before committing */
 		disable_sig_alarm(true);
 
-#ifdef MEMORY_CONTEXT_CHECKING
-		/* Check memory before committing (since commit discards much) */
-		MemoryContextCheck(TopMemoryContext);
-#endif
-
 		/* Now commit the command */
 		ereport(DEBUG3,
 				(errmsg_internal("CommitTransactionCommand")));
 
 		CommitTransactionCommand();
+
+#ifdef MEMORY_CONTEXT_CHECKING
+		/* Check all memory contexts that weren't freed during commit */
+		/* (those that were, were checked before being deleted) */
+		MemoryContextCheck(TopMemoryContext);
+#endif
 
 #ifdef SHOW_MEMORY_STATS
 		/* Print mem stats after each commit for leak tracking */
@@ -2657,7 +2658,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.362 $ $Date: 2003/09/02 19:04:12 $\n");
+		puts("$Revision: 1.363 $ $Date: 2003/09/14 00:03:32 $\n");
 	}
 
 	/*
