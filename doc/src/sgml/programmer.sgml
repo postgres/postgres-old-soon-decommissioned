@@ -48,6 +48,7 @@ PostgreSQL Programmer's Guide.
   &ecpg;
   &odbc;
   &jdbc;
+  &pygresql;
   &lisp;
  </part>
 

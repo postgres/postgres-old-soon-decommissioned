@@ -2,8 +2,8 @@
 $Header$
 -->
 
- <chapter id="libpq-chapter">
-  <title id="libpq">libpq - C Library</title>
+ <chapter id="libpq">
+  <title>libpq - C Library</title>
 
   <para>
    <filename>libpq</filename> is the <acronym>C</acronym>
