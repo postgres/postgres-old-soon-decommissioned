@@ -104,7 +104,7 @@ extern HeapTuple tuplecopy(HeapTuple tup);
 extern FILE *mergeruns(Sort *node);
 extern void merge(Sort *node, struct tape *dest);
 
-extern void dumptuples(Sort *node);
+extern void dumptuples(FILE *file, Sort *node);
 extern HeapTuple psort_grabtuple(Sort *node);
 extern void psort_markpos(Sort *node);
 extern void psort_restorepos(Sort *node);
