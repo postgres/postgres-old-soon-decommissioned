@@ -61,6 +61,7 @@ PostgreSQL Reference Manual
    &createAggregate;
    &createConstraint;
    &createDatabase;
+   &createDomain;
    &createFunction;
    &createGroup;
    &createIndex;
@@ -78,6 +79,7 @@ PostgreSQL Reference Manual
    &delete;
    &dropAggregate;
    &dropDatabase;
+   &dropDomain;
    &dropFunction;
    &dropGroup;
    &dropIndex;
@@ -115,7 +117,7 @@ PostgreSQL Reference Manual
    &unlisten;
    &update;
    &vacuum;
-  
+
  </reference>
 
 <!--

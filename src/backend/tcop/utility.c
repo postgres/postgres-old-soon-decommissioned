@@ -282,6 +282,11 @@ ProcessUtility(Node *parsetree,
 							/* RemoveType does its own permissions checks */
 							RemoveType(relname);
 							break;
+
+						case DROP_DOMAIN_P:
+							/* RemoveDomain does its own permissions checks */
+							RemoveDomain(relname, stmt->behavior);
+							break;
 					}
 
 					/*
@@ -725,6 +730,19 @@ ProcessUtility(Node *parsetree,
 		case T_DropPLangStmt:
 			DropProceduralLanguage((DropPLangStmt *) parsetree);
 			break;
+
+			/*
+			 * ******************************** DOMAIN statements ****
+			 *
+			 */
+		case T_CreateDomainStmt:
+			DefineDomain((CreateDomainStmt *) parsetree);
+			break;
+
+			/*
+			 * ******************************** USER statements ****
+			 *
+			 */
 
 		case T_CreateUserStmt:
 			CreateUser((CreateUserStmt *) parsetree);

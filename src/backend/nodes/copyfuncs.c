@@ -2231,6 +2231,20 @@ _copyLoadStmt(LoadStmt *from)
 	return newnode;
 }
 
+static CreateDomainStmt *
+_copyCreateDomainStmt(CreateDomainStmt *from)
+{
+	CreateDomainStmt *newnode = makeNode(CreateDomainStmt);
+
+	if (from->domainname)
+		newnode->domainname = pstrdup(from->domainname);
+
+	Node_Copy(from, newnode, typename);
+	Node_Copy(from, newnode, constraints);
+
+	return newnode;
+}
+
 static CreatedbStmt *
 _copyCreatedbStmt(CreatedbStmt *from)
 {
@@ -3030,6 +3044,9 @@ copyObject(void *from)
 			break;
 		case T_FuncWithArgs:
 			retval = _copyFuncWithArgs(from);
+			break;
+		case T_CreateDomainStmt:
+			retval = _copyCreateDomainStmt(from);
 			break;
 
 		default:

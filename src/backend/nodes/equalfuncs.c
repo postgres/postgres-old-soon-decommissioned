@@ -1094,6 +1094,19 @@ _equalLoadStmt(LoadStmt *a, LoadStmt *b)
 }
 
 static bool
+_equalCreateDomainStmt(CreateDomainStmt *a, CreateDomainStmt *b)
+{
+	if (!equalstr(a->domainname, b->domainname))
+		return false;
+	if (!equal(a->typename, b->typename))
+		return false;
+	if (!equal(a->constraints, b->constraints))
+		return false;
+
+	return true;
+}
+
+static bool
 _equalCreatedbStmt(CreatedbStmt *a, CreatedbStmt *b)
 {
 	if (!equalstr(a->dbname, b->dbname))
@@ -2020,6 +2033,9 @@ equal(void *a, void *b)
 			break;
 		case T_LoadStmt:
 			retval = _equalLoadStmt(a, b);
+			break;
+		case T_CreateDomainStmt:
+			retval = _equalCreateDomainStmt(a, b);
 			break;
 		case T_CreatedbStmt:
 			retval = _equalCreatedbStmt(a, b);

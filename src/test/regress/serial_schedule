@@ -80,3 +80,5 @@ test: foreign_key
 test: limit
 test: plpgsql
 test: temp
+test: domain
+
