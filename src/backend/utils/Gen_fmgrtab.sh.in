@@ -40,6 +40,7 @@ done
 
 INFILE=$1
 RAWFILE=fmgr.raw
+CPPTMPFILE=fmgrtmp.c
 HFILE=fmgr.h
 TABCFILE=fmgrtab.c
 
@@ -62,10 +63,13 @@ sed 	-e 's/^.*OID[^=]*=[^0-9]*//' \
 	-e 's/[ 	]*).*$//' | \
 awk '
 /^#/		{ print; next; }
-$4 == "11"	{ print; next; }' | \
-@CPP@ @CPPSTDIN@ $BKIOPTS | \
+$4 == "11"	{ print; next; }' > $CPPTMPFILE
+
+@CPP@ $BKIOPTS $CPPTMPFILE | \
 egrep '^[0-9]' | \
 sort -n > $RAWFILE
+
+rm -f $CPPTMPFILE
 
 #
 # Generate fmgr.h
