@@ -18,12 +18,10 @@
 #ifndef PG_USER_H
 #define PG_USER_H
 
-/* ----------------
- *	postgres.h contains the system type definintions and the
- *	CATALOG(), BOOTSTRAP and DATA() sugar words so this file
- *	can be read by both genbki.sh and the C compiler.
- * ----------------
- */
+
+/* Prototype required for superuser() from superuser.c */
+
+bool superuser(void);
 
 /* ----------------
  *	pg_user definition.  cpp turns this into
