@@ -302,7 +302,7 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 				{
 					if (varcharsize == 0)
 					{
-						strncpy((char *) ((long) var + offset * act_tuple), pval, strlen(pval));
+						strncpy((char *) ((long) var + offset * act_tuple), pval, strlen(pval)+1);
 					}
 					else
 					{
