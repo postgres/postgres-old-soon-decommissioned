@@ -46,6 +46,7 @@
  *		Material				MaterialState			matstate;
  *		Sort					SortState				sortstate;
  *		Unique					UniqueState				uniquestate;
+ *		SetOp					SetOpState				setopstate;
  *		Hash					HashState				hashstate;
  *
  * ----------------------------------------------------------------
@@ -145,16 +146,19 @@ typedef struct Result
 
 /* ----------------
  *		append node
+ *
+ * Append nodes can modify the query's rtable during execution.
+ * If inheritrelid > 0, then the RTE with index inheritrelid is replaced
+ * by the i'th element of inheritrtable to execute the i'th subplan.
+ * We assume that this RTE is not used in any other part of the
+ * query plan tree, else confusion may result...
  * ----------------
  */
 typedef struct Append
 {
 	Plan		plan;
 	List	   *appendplans;
-	List	   *unionrtables;	/* List of range tables, one for each
-								 * union query. */
-	Index		inheritrelid;	/* The range table has to be changed for
-								 * inheritance. */
+	Index		inheritrelid;
 	List	   *inheritrtable;
 	AppendState *appendstate;
 } Append;
@@ -347,6 +351,29 @@ typedef struct Unique
 	AttrNumber *uniqColIdx;		/* indexes into the target list */
 	UniqueState *uniquestate;
 } Unique;
+
+/* ----------------
+ *		setop node
+ * ----------------
+ */
+typedef enum SetOpCmd
+{
+	SETOPCMD_INTERSECT,
+	SETOPCMD_INTERSECT_ALL,
+	SETOPCMD_EXCEPT,
+	SETOPCMD_EXCEPT_ALL
+} SetOpCmd;
+
+typedef struct SetOp
+{
+	Plan		plan;
+	SetOpCmd	cmd;			/* what to do */
+	int			numCols;		/* number of columns to check for
+								 * duplicate-ness */
+	AttrNumber *dupColIdx;		/* indexes into the target list */
+	AttrNumber	flagColIdx;
+	SetOpState *setopstate;
+} SetOp;
 
 /* ----------------
  *		hash build node

@@ -26,6 +26,8 @@ extern Plan *query_planner(Query *root, List *tlist, double tuple_fraction);
  * prototypes for plan/createplan.c
  */
 extern Plan *create_plan(Query *root, Path *best_path);
+extern SubqueryScan *make_subqueryscan(List *qptlist, List *qpqual,
+									   Index scanrelid, Plan *subplan);
 extern Sort *make_sort(List *tlist, Plan *lefttree, int keycount);
 extern Sort *make_sort_from_pathkeys(List *tlist, Plan *lefttree,
 									 List *pathkeys);
@@ -34,7 +36,10 @@ extern Group *make_group(List *tlist, bool tuplePerGroup, int ngrp,
 		   AttrNumber *grpColIdx, Plan *lefttree);
 extern Material *make_material(List *tlist, Plan *lefttree);
 extern Unique *make_unique(List *tlist, Plan *lefttree, List *distinctList);
+extern SetOp *make_setop(SetOpCmd cmd, List *tlist, Plan *lefttree,
+						 List *distinctList, AttrNumber flagColIdx);
 extern Result *make_result(List *tlist, Node *resconstantqual, Plan *subplan);
+extern void copy_plan_costsize(Plan *dest, Plan *src);
 
 /*
  * prototypes for plan/initsplan.c

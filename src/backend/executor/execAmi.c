@@ -42,6 +42,7 @@
 #include "executor/nodeNestloop.h"
 #include "executor/nodeResult.h"
 #include "executor/nodeSeqscan.h"
+#include "executor/nodeSetOp.h"
 #include "executor/nodeSort.h"
 #include "executor/nodeSubplan.h"
 #include "executor/nodeSubqueryscan.h"
@@ -343,6 +344,10 @@ ExecReScan(Plan *node, ExprContext *exprCtxt, Plan *parent)
 
 		case T_Unique:
 			ExecReScanUnique((Unique *) node, exprCtxt, parent);
+			break;
+
+		case T_SetOp:
+			ExecReScanSetOp((SetOp *) node, exprCtxt, parent);
 			break;
 
 		case T_Sort:

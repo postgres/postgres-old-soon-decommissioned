@@ -449,7 +449,8 @@ setRuleCheckAsUser(Query *qry, Oid userid)
 
 	/* If there are sublinks, search for them and process their RTEs */
 	if (qry->hasSubLinks)
-		query_tree_walker(qry, setRuleCheckAsUser_walker, (void *) &userid);
+		query_tree_walker(qry, setRuleCheckAsUser_walker, (void *) &userid,
+						  false /* already did the ones in rtable */);
 }
 
 /*

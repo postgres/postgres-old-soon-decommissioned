@@ -135,6 +135,7 @@ extern List *lreverse(List *l);
 extern List *set_union(List *list1, List *list2);
 extern List *set_unioni(List *list1, List *list2);
 
+extern bool equali(List *list1, List *list2);
 extern bool sameseti(List *list1, List *list2);
 extern bool nonoverlap_setsi(List *list1, List *list2);
 extern bool is_subseti(List *list1, List *list2);

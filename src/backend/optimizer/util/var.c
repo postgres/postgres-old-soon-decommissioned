@@ -67,7 +67,7 @@ pull_varnos(Node *node)
 	 */
 	if (node && IsA(node, Query))
 		query_tree_walker((Query *) node, pull_varnos_walker,
-						  (void *) &context);
+						  (void *) &context, true);
 	else
 		pull_varnos_walker(node, &context);
 
@@ -108,12 +108,12 @@ pull_varnos_walker(Node *node, pull_varnos_context *context)
 	}
 	if (IsA(node, Query))
 	{
-		/* Recurse into not-yet-planned subquery */
+		/* Recurse into RTE subquery or not-yet-planned sublink subquery */
 		bool		result;
 
 		context->sublevels_up++;
 		result = query_tree_walker((Query *) node, pull_varnos_walker,
-								   (void *) context);
+								   (void *) context, true);
 		context->sublevels_up--;
 		return result;
 	}

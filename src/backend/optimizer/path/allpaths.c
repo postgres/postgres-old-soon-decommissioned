@@ -98,7 +98,8 @@ set_base_rel_pathlist(Query *root)
 			 */
 
 			/* Generate the plan for the subquery */
-			rel->subplan = planner(rte->subquery);
+			rel->subplan = subquery_planner(rte->subquery,
+											-1.0 /* default case */ );
 
 			/* Copy number of output rows from subplan */
 			rel->tuples = rel->subplan->plan_rows;

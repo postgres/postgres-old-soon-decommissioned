@@ -237,10 +237,32 @@ freeList(List *list)
 }
 
 /*
+ * equali
+ *	  compares two lists of integers
+ */
+bool
+equali(List *list1, List *list2)
+{
+	List	   *l;
+
+	foreach(l, list1)
+	{
+		if (list2 == NIL)
+			return false;
+		if (lfirsti(l) != lfirsti(list2))
+			return false;
+		list2 = lnext(list2);
+	}
+	if (list2 != NIL)
+		return false;
+	return true;
+}
+
+/*
  *		sameseti
  *
  *		Returns t if two integer lists contain the same elements
- *		(but unlike equal(), they need not be in the same order)
+ *		(but unlike equali(), they need not be in the same order)
  *
  *		Caution: this routine could be fooled if list1 contains
  *		duplicate elements.  It is intended to be used on lists

@@ -197,6 +197,26 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 		case T_Unique:
 			pname = "Unique";
 			break;
+		case T_SetOp:
+			switch (((SetOp *) plan)->cmd)
+			{
+				case SETOPCMD_INTERSECT:
+					pname = "SetOp Intersect";
+					break;
+				case SETOPCMD_INTERSECT_ALL:
+					pname = "SetOp Intersect All";
+					break;
+				case SETOPCMD_EXCEPT:
+					pname = "SetOp Except";
+					break;
+				case SETOPCMD_EXCEPT_ALL:
+					pname = "SetOp Except All";
+					break;
+				default:
+					pname = "SetOp ???";
+					break;
+			}
+			break;
 		case T_Hash:
 			pname = "Hash";
 			break;
@@ -320,8 +340,6 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 				Assert(rtentry != NULL);
 				rt_store(appendplan->inheritrelid, es->rtable, rtentry);
 			}
-			else
-				es->rtable = nth(whichplan, appendplan->unionrtables);
 
 			for (i = 0; i < indent; i++)
 				appendStringInfo(str, "  ");

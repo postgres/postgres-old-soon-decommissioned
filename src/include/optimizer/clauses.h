@@ -75,7 +75,9 @@ extern bool expression_tree_walker(Node *node, bool (*walker) (),
 extern Node *expression_tree_mutator(Node *node, Node *(*mutator) (),
 									 void *context);
 extern bool query_tree_walker(Query *query, bool (*walker) (),
-							  void *context);
+							  void *context, bool visitQueryRTEs);
+extern void query_tree_mutator(Query *query, Node *(*mutator) (),
+							   void *context, bool visitQueryRTEs);
 
 #define is_subplan(clause)	((clause) != NULL && \
 							 IsA(clause, Expr) && \

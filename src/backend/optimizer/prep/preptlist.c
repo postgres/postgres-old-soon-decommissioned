@@ -49,6 +49,17 @@ preprocess_targetlist(List *tlist,
 					  Index result_relation,
 					  List *range_table)
 {
+	/*
+	 * Sanity check: if there is a result relation, it'd better be a
+	 * real relation not a subquery.  Else parser or rewriter messed up.
+	 */
+	if (result_relation)
+	{
+		RangeTblEntry *rte = rt_fetch(result_relation, range_table);
+
+		if (rte->subquery != NULL || rte->relid == InvalidOid)
+			elog(ERROR, "preprocess_targetlist: subquery cannot be result relation");
+	}
 
 	/*
 	 * for heap_formtuple to work, the targetlist must match the exact

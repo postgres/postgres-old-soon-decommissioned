@@ -463,7 +463,6 @@ ExecCheckPlanPerms(Plan *plan, List *rangeTable, CmdType operation)
 					/* Append implements expansion of inheritance */
 					ExecCheckRTPerms(app->inheritrtable, operation);
 
-					/* Check appended plans w/outer rangetable */
 					foreach(appendplans, app->appendplans)
 					{
 						ExecCheckPlanPerms((Plan *) lfirst(appendplans),
@@ -474,15 +473,11 @@ ExecCheckPlanPerms(Plan *plan, List *rangeTable, CmdType operation)
 				else
 				{
 					/* Append implements UNION, which must be a SELECT */
-					List	   *rtables = app->unionrtables;
-
-					/* Check appended plans with their rangetables */
 					foreach(appendplans, app->appendplans)
 					{
 						ExecCheckPlanPerms((Plan *) lfirst(appendplans),
-										   (List *) lfirst(rtables),
+										   rangeTable,
 										   CMD_SELECT);
-						rtables = lnext(rtables);
 					}
 				}
 				break;

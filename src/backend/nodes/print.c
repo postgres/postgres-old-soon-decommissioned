@@ -338,6 +338,9 @@ plannode_type(Plan *p)
 		case T_Unique:
 			return "UNIQUE";
 			break;
+		case T_SetOp:
+			return "SETOP";
+			break;
 		case T_Hash:
 			return "HASH";
 			break;

@@ -762,6 +762,14 @@ NodeGetResultTupleSlot(Plan *node)
 			}
 			break;
 
+		case T_SetOp:
+			{
+				SetOpState *setopstate = ((SetOp *) node)->setopstate;
+
+				slot = setopstate->cstate.cs_ResultTupleSlot;
+			}
+			break;
+
 		case T_MergeJoin:
 			{
 				MergeJoinState *mergestate = ((MergeJoin *) node)->mergestate;
@@ -783,8 +791,8 @@ NodeGetResultTupleSlot(Plan *node)
 			 *	  should never get here
 			 * ----------------
 			 */
-			elog(ERROR, "NodeGetResultTupleSlot: node not yet supported: %d ",
-				 nodeTag(node));
+			elog(ERROR, "NodeGetResultTupleSlot: node not yet supported: %d",
+				 (int) nodeTag(node));
 
 			return NULL;
 	}
