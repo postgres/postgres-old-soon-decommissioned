@@ -250,7 +250,7 @@ pltcl_init_interp(Tcl_Interp *interp)
  *				  table pltcl_modules (if it exists)
  **********************************************************************/
 static void
-pltcl_init_load_unknown(void)
+pltcl_init_load_unknown(Tcl_Interp *interp)
 {
 	int			spi_rc;
 	int			tcl_rc;
