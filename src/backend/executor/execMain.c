@@ -37,6 +37,7 @@
 #include "utils/acl.h"
 #include "parser/parsetree.h"		/* rt_fetch() */
 #include "storage/bufmgr.h"
+#include "storage/lmgr.h"
 #include "commands/async.h"
 /* #include "access/localam.h" */
 #include "optimizer/var.h"

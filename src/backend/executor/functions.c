@@ -23,6 +23,7 @@
 #include "parser/parse_query.h"
 #include "tcop/pquery.h"
 #include "tcop/tcopprot.h"
+#include "tcop/utility.h"
 #include "nodes/params.h"
 #include "fmgr.h"
 #include "utils/fcache.h"
@@ -352,7 +353,7 @@ Datum
 postquel_function(Func *funcNode, char **args, bool *isNull, bool *isDone)
 {
     execution_state  *es;
-    Datum            result;
+    Datum            result = 0;
     FunctionCachePtr fcache = funcNode->func_fcache;
     
     es = (execution_state *) fcache->func_state;

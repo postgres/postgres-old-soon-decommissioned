@@ -171,7 +171,7 @@ ExecInitAppend(Append *node, EState *estate, Plan *parent)
 {
     AppendState *unionstate;
     int         nplans;
-    List        *resultList;
+    List        *resultList = NULL;
     List        *rtentries;
     List        *unionplans;
     bool        *initialized;

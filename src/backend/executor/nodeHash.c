@@ -22,6 +22,7 @@
 #include <stdio.h>	/* for sprintf() */
 #include <math.h>
 #include <sys/file.h>
+
 #include "storage/fd.h"		/* for SEEK_ */
 #include "storage/ipc.h"
 #include "storage/bufmgr.h"	/* for BLCKSZ */
@@ -29,6 +30,7 @@
 #include "executor/nodeHash.h"
 #include "executor/nodeHashjoin.h"
 #include "utils/palloc.h"
+#include "utils/hsearch.h"
 
 extern int NBuffers;
 static int HashTBSize;
@@ -55,7 +57,7 @@ ExecHash(Hash *node)
     ExprContext	  *econtext;
     
     int		  nbatch;
-    File	  *batches;
+    File	  *batches = NULL;
     RelativeAddr  *batchPos;
     int		  *batchSizes;
     int		  i;

@@ -918,7 +918,7 @@ ExecEvalOr(Expr *orExpr, ExprContext *econtext, bool *isNull)
     List   *clause;
     bool   isDone;
     bool IsNull;
-    Datum  const_value;
+    Datum  const_value = 0;
     
     IsNull = false; 
     clauses = orExpr->args;
@@ -979,7 +979,7 @@ ExecEvalAnd(Expr *andExpr, ExprContext *econtext, bool *isNull)
 {
     List   *clauses;
     List   *clause;
-    Datum  const_value;
+    Datum  const_value = 0;
     bool   isDone;
     bool IsNull;
     
@@ -1056,7 +1056,7 @@ ExecEvalExpr(Node *expression,
 	     bool *isNull,
 	     bool *isDone)
 {
-    Datum retDatum;
+    Datum retDatum = 0;
     
     *isNull = false;
     
