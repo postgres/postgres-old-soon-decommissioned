@@ -381,8 +381,8 @@ process_matched_tle(TargetEntry *src_tle,
 		((ArrayRef *) src_tle->expr)->refassgnexpr == NULL ||
 		prior_tle->expr == NULL || !IsA(prior_tle->expr, ArrayRef) ||
 		((ArrayRef *) prior_tle->expr)->refassgnexpr == NULL ||
-		((ArrayRef *) src_tle->expr)->refelemtype !=
-		((ArrayRef *) prior_tle->expr)->refelemtype)
+		((ArrayRef *) src_tle->expr)->refrestype !=
+		((ArrayRef *) prior_tle->expr)->refrestype)
 		elog(ERROR, "Multiple assignments to same attribute \"%s\"",
 			 resdom->resname);
 

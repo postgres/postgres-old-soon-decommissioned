@@ -413,6 +413,7 @@ DATA(insert OID = 1025 (  _tinterval PGNSP PGUID -1 f b t \054 0 704 array_in ar
 DATA(insert OID = 1027 (  _polygon	 PGNSP PGUID -1 f b t \054 0 604 array_in array_out d x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 1033 (  aclitem	 PGNSP PGUID  8 f b t \054 0 0 aclitemin aclitemout i p f 0 -1 0 _null_ _null_ ));
 DESCR("access control list");
+#define ACLITEMOID		1033
 DATA(insert OID = 1034 (  _aclitem	 PGNSP PGUID -1 f b t \054 0 1033 array_in array_out i x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 1040 (  _macaddr	 PGNSP PGUID -1 f b t \054 0  829 array_in array_out i x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 1041 (  _inet    PGNSP PGUID -1 f b t \054 0  869 array_in array_out i x f 0 -1 0 _null_ _null_ ));

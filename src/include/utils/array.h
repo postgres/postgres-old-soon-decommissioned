@@ -12,12 +12,6 @@
  *
  * $Id$
  *
- * NOTES
- *	  XXX the data array should be MAXALIGN'd -- currently we only INTALIGN
- *	  which is NOT good enough for, eg, arrays of Interval.  Changing this
- *	  will break existing user tables so hold off until we have some other
- *	  reason to break user tables (like WAL).
- *
  *-------------------------------------------------------------------------
  */
 #ifndef ARRAY_H
@@ -35,6 +29,7 @@ typedef struct
 	int			ndim;			/* # of dimensions */
 	int			flags;			/* implementation flags */
 	/* flags field is currently unused, always zero. */
+	Oid			elemtype;		/* element type OID */
 } ArrayType;
 
 /*
@@ -61,6 +56,7 @@ typedef struct
  */
 #define ARR_SIZE(a)				(((ArrayType *) (a))->size)
 #define ARR_NDIM(a)				(((ArrayType *) (a))->ndim)
+#define ARR_ELEMTYPE(a)			(((ArrayType *) (a))->elemtype)
 
 #define ARR_DIMS(a) \
 		((int *) (((char *) (a)) + sizeof(ArrayType)))
@@ -90,29 +86,31 @@ extern Datum array_eq(PG_FUNCTION_ARGS);
 extern Datum array_dims(PG_FUNCTION_ARGS);
 
 extern Datum array_ref(ArrayType *array, int nSubscripts, int *indx,
-		  bool elmbyval, int elmlen,
-		  int arraylen, bool *isNull);
+		  int arraylen, int elmlen, bool elmbyval, char elmalign,
+		  bool *isNull);
 extern ArrayType *array_set(ArrayType *array, int nSubscripts, int *indx,
 		  Datum dataValue,
-		  bool elmbyval, int elmlen,
-		  int arraylen, bool *isNull);
+		  int arraylen, int elmlen, bool elmbyval, char elmalign,
+		  bool *isNull);
 extern ArrayType *array_get_slice(ArrayType *array, int nSubscripts,
 				int *upperIndx, int *lowerIndx,
-				bool elmbyval, int elmlen,
-				int arraylen, bool *isNull);
+				int arraylen, int elmlen, bool elmbyval, char elmalign,
+				bool *isNull);
 extern ArrayType *array_set_slice(ArrayType *array, int nSubscripts,
 				int *upperIndx, int *lowerIndx,
 				ArrayType *srcArray,
-				bool elmbyval, int elmlen,
-				int arraylen, bool *isNull);
+				int arraylen, int elmlen, bool elmbyval, char elmalign,
+				bool *isNull);
 
 extern Datum array_map(FunctionCallInfo fcinfo, Oid inpType, Oid retType);
 
 extern ArrayType *construct_array(Datum *elems, int nelems,
-				bool elmbyval, int elmlen, char elmalign);
+								  Oid elmtype,
+								  int elmlen, bool elmbyval, char elmalign);
 extern void deconstruct_array(ArrayType *array,
-				  bool elmbyval, int elmlen, char elmalign,
-				  Datum **elemsp, int *nelemsp);
+							  Oid elmtype,
+							  int elmlen, bool elmbyval, char elmalign,
+							  Datum **elemsp, int *nelemsp);
 
 
 /*

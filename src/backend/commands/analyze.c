@@ -1731,7 +1731,8 @@ update_attstats(Oid relid, int natts, VacAttrStats **vacattrstats)
 					numdatums[n] = Float4GetDatum(stats->stanumbers[k][n]);
 				/* XXX knows more than it should about type float4: */
 				arry = construct_array(numdatums, nnum,
-									   false, sizeof(float4), 'i');
+									   FLOAT4OID,
+									   sizeof(float4), false, 'i');
 				values[i++] = PointerGetDatum(arry);	/* stanumbersN */
 			}
 			else
@@ -1767,7 +1768,8 @@ update_attstats(Oid relid, int natts, VacAttrStats **vacattrstats)
 				}
 				/* XXX knows more than it should about type text: */
 				arry = construct_array(txtdatums, ntxt,
-									   false, -1, 'i');
+									   TEXTOID,
+									   -1, false, 'i');
 				values[i++] = PointerGetDatum(arry);	/* stavaluesN */
 			}
 			else

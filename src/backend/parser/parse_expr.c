@@ -877,7 +877,7 @@ exprType(Node *expr)
 			type = ((Const *) expr)->consttype;
 			break;
 		case T_ArrayRef:
-			type = ((ArrayRef *) expr)->refelemtype;
+			type = ((ArrayRef *) expr)->refrestype;
 			break;
 		case T_Aggref:
 			type = ((Aggref *) expr)->aggtype;

@@ -258,7 +258,7 @@ _equalSubLink(SubLink *a, SubLink *b)
 static bool
 _equalArrayRef(ArrayRef *a, ArrayRef *b)
 {
-	if (a->refelemtype != b->refelemtype)
+	if (a->refrestype != b->refrestype)
 		return false;
 	if (a->refattrlength != b->refattrlength)
 		return false;
@@ -266,13 +266,17 @@ _equalArrayRef(ArrayRef *a, ArrayRef *b)
 		return false;
 	if (a->refelembyval != b->refelembyval)
 		return false;
+	if (a->refelemalign != b->refelemalign)
+		return false;
 	if (!equal(a->refupperindexpr, b->refupperindexpr))
 		return false;
 	if (!equal(a->reflowerindexpr, b->reflowerindexpr))
 		return false;
 	if (!equal(a->refexpr, b->refexpr))
 		return false;
-	return equal(a->refassgnexpr, b->refassgnexpr);
+	if (!equal(a->refassgnexpr, b->refassgnexpr))
+		return false;
+	return true;
 }
 
 static bool

@@ -22,6 +22,7 @@
  */
 #include "postgres.h"
 
+#include "utils/array.h"
 #include "utils/builtins.h"
 
 
@@ -112,13 +113,13 @@ anyarray_in(PG_FUNCTION_ARGS)
 
 /*
  * anyarray_out		- output routine for pseudo-type ANYARRAY.
+ *
+ * We may as well allow this, since array_out will in fact work.
  */
 Datum
 anyarray_out(PG_FUNCTION_ARGS)
 {
-	elog(ERROR, "Cannot display a value of type %s", "ANYARRAY");
-
-	PG_RETURN_VOID();			/* keep compiler quiet */
+	return array_out(fcinfo);
 }
 
 

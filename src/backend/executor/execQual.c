@@ -219,35 +219,38 @@ ExecEvalArrayRef(ArrayRef *arrayRef,
 			resultArray = array_set(array_source, i,
 									upper.indx,
 									sourceData,
-									arrayRef->refelembyval,
-									arrayRef->refelemlength,
 									arrayRef->refattrlength,
+									arrayRef->refelemlength,
+									arrayRef->refelembyval,
+									arrayRef->refelemalign,
 									isNull);
 		else
 			resultArray = array_set_slice(array_source, i,
 										  upper.indx, lower.indx,
 							   (ArrayType *) DatumGetPointer(sourceData),
-										  arrayRef->refelembyval,
-										  arrayRef->refelemlength,
 										  arrayRef->refattrlength,
+										  arrayRef->refelemlength,
+										  arrayRef->refelembyval,
+										  arrayRef->refelemalign,
 										  isNull);
 		return PointerGetDatum(resultArray);
 	}
 
 	if (lIndex == NULL)
-		return array_ref(array_source, i,
-						 upper.indx,
-						 arrayRef->refelembyval,
-						 arrayRef->refelemlength,
+		return array_ref(array_source, i, upper.indx,
 						 arrayRef->refattrlength,
+						 arrayRef->refelemlength,
+						 arrayRef->refelembyval,
+						 arrayRef->refelemalign,
 						 isNull);
 	else
 	{
 		resultArray = array_get_slice(array_source, i,
 									  upper.indx, lower.indx,
-									  arrayRef->refelembyval,
-									  arrayRef->refelemlength,
 									  arrayRef->refattrlength,
+									  arrayRef->refelemlength,
+									  arrayRef->refelembyval,
+									  arrayRef->refelemalign,
 									  isNull);
 		return PointerGetDatum(resultArray);
 	}

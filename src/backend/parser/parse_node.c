@@ -343,11 +343,12 @@ transformArraySubscripts(ParseState *pstate,
 	 * Ready to build the ArrayRef node.
 	 */
 	aref = makeNode(ArrayRef);
+	aref->refrestype = resultType;		/* XXX should save element type
+										 * too */
 	aref->refattrlength = type_struct_array->typlen;
 	aref->refelemlength = type_struct_element->typlen;
-	aref->refelemtype = resultType;		/* XXX should save element type
-										 * too */
 	aref->refelembyval = type_struct_element->typbyval;
+	aref->refelemalign = type_struct_element->typalign;
 	aref->refupperindexpr = upperIndexpr;
 	aref->reflowerindexpr = lowerIndexpr;
 	aref->refexpr = arrayBase;

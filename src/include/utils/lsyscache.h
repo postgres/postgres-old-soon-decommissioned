@@ -49,6 +49,8 @@ extern bool get_typisdefined(Oid typid);
 extern int16 get_typlen(Oid typid);
 extern bool get_typbyval(Oid typid);
 extern void get_typlenbyval(Oid typid, int16 *typlen, bool *typbyval);
+extern void get_typlenbyvalalign(Oid typid, int16 *typlen, bool *typbyval,
+								 char *typalign);
 extern char get_typstorage(Oid typid);
 extern Node *get_typdefault(Oid typid);
 extern char get_typtype(Oid typid);

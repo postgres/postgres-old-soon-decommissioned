@@ -21,6 +21,7 @@
 #include "catalog/dependency.h"
 #include "catalog/indexing.h"
 #include "catalog/pg_constraint.h"
+#include "catalog/pg_type.h"
 #include "miscadmin.h"
 #include "utils/array.h"
 #include "utils/builtins.h"
@@ -83,7 +84,7 @@ CreateConstraintEntry(const char *constraintName,
 		for (i = 0; i < constraintNKeys; i++)
 			conkey[i] = Int16GetDatum(constraintKey[i]);
 		conkeyArray = construct_array(conkey, constraintNKeys,
-									  true, 2, 's');
+									  INT2OID, 2, true, 's');
 	}
 	else
 		conkeyArray = NULL;
@@ -96,7 +97,7 @@ CreateConstraintEntry(const char *constraintName,
 		for (i = 0; i < foreignNKeys; i++)
 			confkey[i] = Int16GetDatum(foreignKey[i]);
 		confkeyArray = construct_array(confkey, foreignNKeys,
-									   true, 2, 's');
+									   INT2OID, 2, true, 's');
 	}
 	else
 		confkeyArray = NULL;

@@ -831,16 +831,18 @@ static void
 _outArrayRef(StringInfo str, ArrayRef *node)
 {
 	appendStringInfo(str,
-		" ARRAYREF :refelemtype %u :refattrlength %d :refelemlength %d ",
-					 node->refelemtype,
+		" ARRAYREF :refrestype %u :refattrlength %d :refelemlength %d ",
+					 node->refrestype,
 					 node->refattrlength,
 					 node->refelemlength);
 
-	appendStringInfo(str, " :refelembyval %c :refupperindex ",
-					 node->refelembyval ? 't' : 'f');
+	appendStringInfo(str,
+					 ":refelembyval %s :refelemalign %c :refupperindexpr ",
+					 booltostr(node->refelembyval),
+					 node->refelemalign);
 	_outNode(str, node->refupperindexpr);
 
-	appendStringInfo(str, " :reflowerindex ");
+	appendStringInfo(str, " :reflowerindexpr ");
 	_outNode(str, node->reflowerindexpr);
 
 	appendStringInfo(str, " :refexpr ");

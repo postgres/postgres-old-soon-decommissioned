@@ -1056,10 +1056,11 @@ _copyArrayRef(ArrayRef *from)
 	/*
 	 * copy remainder of node
 	 */
+	newnode->refrestype = from->refrestype;
 	newnode->refattrlength = from->refattrlength;
 	newnode->refelemlength = from->refelemlength;
-	newnode->refelemtype = from->refelemtype;
 	newnode->refelembyval = from->refelembyval;
+	newnode->refelemalign = from->refelemalign;
 
 	Node_Copy(from, newnode, refupperindexpr);
 	Node_Copy(from, newnode, reflowerindexpr);
