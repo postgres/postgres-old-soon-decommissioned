@@ -116,6 +116,11 @@ extern void fmgr_info_copy(FmgrInfo *dstinfo, FmgrInfo *srcinfo,
 #define PG_FUNCTION_ARGS	FunctionCallInfo fcinfo
 
 /*
+ * Get number of arguments passed to function.
+ */
+#define PG_NARGS() (fcinfo->nargs)
+
+/*
  * If function is not marked "proisstrict" in pg_proc, it must check for
  * null arguments using this macro.  Do not try to GETARG a null argument!
  */
