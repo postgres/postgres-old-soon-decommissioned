@@ -15,10 +15,7 @@ SO_MINOR_VERSION= 0
 SRCDIR= @top_srcdir@
 include $(SRCDIR)/Makefile.global
 
-CFLAGS+= -I$(LIBPQDIR) -I$(SRCDIR)/include
-
-# For fmgr.h
-CFLAGS+= -I$(SRCDIR)/backend
+CFLAGS+= -I$(SRCDIR)/include -I$(SRCDIR)/backend
 
 # If using flex, ask for a case-insensitive, lex-compatible lexer.
 ifneq (,$(findstring flex,$(LEX)))
@@ -30,13 +27,6 @@ LFLAGS+= -i -l
 endif
 
 OBJS=	pl_parse.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
-
-SHLIB_LINK+= $(LIBPQ)
-
-# If crypt is a separate library, rather than part of libc, it may need
-# to be referenced separately to keep (broken) linkers happy.  (This is
-# braindead; users of libpq should not need to know what it depends on.)
-SHLIB_LINK+= $(findstring -lcrypt,$(LIBS))
 
 # Shared library stuff, also default 'all' target
 include $(SRCDIR)/Makefile.shlib
