@@ -35,10 +35,8 @@ typedef double Timestamp;
 
 typedef struct
 {
-	double		time;			/* all time units other than months and
-								 * years */
-	int4		month;			/* months and years, after time for
-								 * alignment */
+	double		time;	/* all time units other than months and years */
+	int4		month;	/* months and years, after time for alignment */
 } Interval;
 
 
@@ -164,6 +162,7 @@ extern Datum interval_trunc(PG_FUNCTION_ARGS);
 extern Datum timestamp_part(PG_FUNCTION_ARGS);
 extern Datum interval_part(PG_FUNCTION_ARGS);
 extern Datum timestamp_zone(PG_FUNCTION_ARGS);
+extern Datum timestamp_izone(PG_FUNCTION_ARGS);
 
 extern Datum interval_um(PG_FUNCTION_ARGS);
 extern Datum interval_pl(PG_FUNCTION_ARGS);
