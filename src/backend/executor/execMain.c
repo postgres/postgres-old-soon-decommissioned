@@ -762,7 +762,10 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 				CommandCounterIncrement();
 
 				/*
-				 * Eventually create a TOAST table for the into relation
+				 * If necessary, create a TOAST table for the into relation.
+				 * Note that AlterTableCreateToastTable ends with
+				 * CommandCounterIncrement(), so that the TOAST table will
+				 * be visible for insertion.
 				 */
 				AlterTableCreateToastTable(intoName, true);
 
