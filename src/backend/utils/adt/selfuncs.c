@@ -291,6 +291,15 @@ getattnvals(Oid relid, AttrNumber attnum)
 	return(0);
     }
     nvals = ((Form_pg_class) GETSTRUCT(atp))->reltuples;
+    /* Look above how nvals is used. 	- vadim 04/09/97 */
+    if ( nvals > 0 )
+    {
+    	double selratio = 1.0 / (double)nvals;
+    	
+    	selratio *= (double)ATTNVALS_SCALE;
+    	nvals = (int) ceil (selratio);
+    }
+    
     return(nvals);
 }
 
