@@ -231,8 +231,9 @@ ExecEvalVar(Var *variable, ExprContext *econtext, bool *isNull)
     attnum =  	variable->varattno;
 
     /* (See prolog for explanation of this Assert) */
-    Assert(attnum < 0 ||
-     	(tuple_type->attrs[attnum-1] != NULL &&
+    Assert(attnum <= 0 ||
+    	(attnum - 1 <= tuple_type->natts - 1 &&
+     	 tuple_type->attrs[attnum-1] != NULL &&
          variable->vartype == tuple_type->attrs[attnum-1]->atttypid))
     
       /*
