@@ -20,4 +20,30 @@ include $(SRCDIR)/Makefile.global
 ifeq ($(USE_TCL), true)
 	$(MAKE) -C tcl $@
 endif
+ifeq ($(USE_PERL), true)
+	if [ "$@" = "install" ]; then \
+		$(MAKE) $(MFLAGS) install-plperl; \
+	else \
+		$(MAKE) $(MFLAGS) plperl/Makefile; \
+		$(MAKE) $(MFLAGS) -C plperl $@; \
+	fi
+endif
+
+plperl/Makefile: plperl/Makefile.PL
+	cd plperl && $(PERL) Makefile.PL
+
+install-plperl: plperl/Makefile
+	$(MAKE) -C plperl clean
+	cd plperl && POSTGRES_HOME="$(POSTGRESDIR)" $(PERL) Makefile.PL
+	$(MAKE) -C plperl all
+	-@if [ -w `sed -n -e 's/^ *INSTALLSITELIB *= *//p' plperl/Makefile` ]; then \
+		$(MAKE) $(MFLAGS) -C plperl install; \
+		rm -f plperl/Makefile; \
+	else \
+		echo "Skipping install of Perl module for lack of permissions."; \
+		echo "To install it, cd into interfaces/plperl, su to become the"; \
+		echo "appropriate user, and do '$(MAKE) install'."; \
+	fi
+
+.PHONY: install-plperl
 
