@@ -410,15 +410,6 @@ verify_peer (PGconn *conn)
 		}
 		break;
 
-	case AF_INET6:
-		sin6 = (struct sockaddr_in6 *) &addr;
-		for (s = h->h_addr_list; *s != NULL; s++)
-		{
-			if (!memcmp(sin6->sin6_addr.s6_addr8, *s, h->h_length))
-				return 0;
-		}
-		break;
-
 	default:
 		printfPQExpBuffer(&conn->errorMessage,
 			libpq_gettext("sorry, this protocol not yet supported\n"));
