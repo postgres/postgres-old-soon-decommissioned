@@ -665,7 +665,7 @@ CreateIndexName(char *table_name, char *column_name,
 	 * indexes, only among the indexes we're about to create now; this
 	 * ought to be improved someday.
 	 */
-	strcpy(typename, label);
+	strncpy(typename, label, sizeof(typename));
 
 	for (;;)
 	{
@@ -685,7 +685,7 @@ CreateIndexName(char *table_name, char *column_name,
 
 		/* found a conflict, so try a new name component */
 		pfree(iname);
-		sprintf(typename, "%s%d", label, ++pass);
+		snprintf(typename, sizeof(typename), "%s%d", label, ++pass);
 	}
 
 	return iname;

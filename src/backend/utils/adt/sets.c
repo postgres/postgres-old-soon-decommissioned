@@ -95,7 +95,7 @@ SetDefine(char *querystr, Oid elemType)
 	if (strcmp(procname, NameStr(proc->proname)) == 0)
 	{
 		/* make the real proc name */
-		sprintf(realprocname, "set%u", setoid);
+		snprintf(realprocname, sizeof(realprocname), "set%u", setoid);
 
 		/* set up the attributes to be modified or kept the same */
 		repl[0] = 'r';

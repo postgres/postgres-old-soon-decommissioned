@@ -136,9 +136,9 @@ aclparse(const char *s, AclItem *aip, unsigned *modechg)
 		*s != ACL_MODECHG_EQL_CHR)
 	{
 		/* we just read a keyword, not a name */
-		if (strcmp(name, ACL_IDTYPE_GID_KEYWORD) == 0)
+		if (strncmp(name, ACL_IDTYPE_GID_KEYWORD, sizeof(name)) == 0)
 			idtype = ACL_IDTYPE_GID;
-		else if (strcmp(name, ACL_IDTYPE_UID_KEYWORD) != 0)
+		else if (strncmp(name, ACL_IDTYPE_UID_KEYWORD, sizeof(name)) != 0)
 			elog(ERROR, "aclparse: bad keyword, must be [group|user]");
 		s = getid(s, name);		/* move s to the name beyond the keyword */
 		if (name[0] == '\0')
