@@ -513,12 +513,7 @@ ProcessCopyResult(PGresult *results)
 			break;
 
 		case PGRES_COPY_IN:
-			if (pset.cur_cmd_interactive && !QUIET())
-				puts(gettext("Enter data to be copied followed by a newline.\n"
-							 "End with a backslash and a period on a line by itself."));
-
-			success = handleCopyIn(pset.db, pset.cur_cmd_source,
-			  pset.cur_cmd_interactive ? get_prompt(PROMPT_COPY) : NULL);
+			success = handleCopyIn(pset.db, pset.cur_cmd_source);
 			break;
 
 		default:
