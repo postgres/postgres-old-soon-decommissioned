@@ -109,7 +109,7 @@ pages, and other free space management improvements.</para>
 </listitem>
 
 <listitem><para> New client-to-server protocol adds error codes, more status
-information, better support for binary data transmission, parameter
+information, faster startup, better support for binary data transmission, parameter
 values separated from SQL commands, prepared statements available at the
 protocol level, clean recovery from COPY failures, and cleaner startup
 packets.  The older protocol is still supported by both servers and
