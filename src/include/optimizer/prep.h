@@ -48,7 +48,7 @@ extern List *preprocess_targetlist(List *tlist, int command_type,
 /*
  * prototypes for prepunion.c
  */
-extern Plan *plan_set_operations(Query *parse);
+extern Plan *plan_set_operations(Query *parse, List **sortClauses);
 
 extern List *find_all_inheritors(Oid parentrel);
 
