@@ -10,7 +10,7 @@ hostname=$1
 shift
 extratests="$*"
 
-if [ "x$hostname" = "xwin" -o "x$hostname" = "xi386-pc-qnx4" ]; then
+if [ "x$hostname" = "xwin" -o "x$hostname" = "xi386-qnx-qnx4" ]; then
 	HOSTLOC="-h localhost"
 else
 	HOSTLOC=""
@@ -79,7 +79,7 @@ if [ $? -ne 0 ]; then
      exit 1
 fi
 
-if [ "x$hostname" != "xi386-pc-qnx4" ]; then
+if [ "x$hostname" != "xi386-qnx-qnx4" ]; then
 echo "=============== installing languages...               ================="
 $ECHO_N "installing PL/pgSQL .. " $ECHO_C
 createlang $HOSTLOC plpgsql regression
@@ -94,7 +94,7 @@ fi
 echo "=============== running regression queries...         ================="
 echo "" > regression.diffs
 
-if [ "x$hostname" = "xi386-pc-qnx4" ]; then
+if [ "x$hostname" = "xi386-qnx-qnx4" ]; then
 	DIFFOPT="-b"
 else
 	DIFFOPT="-w"
