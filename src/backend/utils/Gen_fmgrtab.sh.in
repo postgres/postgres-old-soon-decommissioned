@@ -107,10 +107,8 @@ cat > $HFILE <<FuNkYfMgRsTuFf
  *	    arguments from the user level since the catalogs only 
  *	    store 8 argument type values for type-checking ...
  */
-#define	MAXFMGRARGS	9
-
 typedef struct {
-    char *data[MAXFMGRARGS];
+    char *data[FUNC_MAX_ARGS+1];  /* function name is arg0 */
 } FmgrValues;
 
 typedef struct {
