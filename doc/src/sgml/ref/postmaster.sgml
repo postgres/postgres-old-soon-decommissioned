@@ -417,18 +417,6 @@ PostgreSQL documentation
     </listitem>
    </varlistentry>
 
-   <varlistentry>
-    <term>others</term>
-
-    <listitem>
-     <para>
-      Other environment variables may be used to designate alternative
-      data storage locations.  See <xref linkend="manage-ag-alternate-locs"> for more
-      information.
-     </para>
-    </listitem>
-   </varlistentry>
-
   </variablelist>
  </refsect1>
 
