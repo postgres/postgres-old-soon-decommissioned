@@ -1769,7 +1769,7 @@ CREATE TABLE SELLS
      <title>Create Index</title>
 
      <para>
-      Indices are used to speed up access to a relation. If a relation <classname>R</classname>
+      Indexes are used to speed up access to a relation. If a relation <classname>R</classname>
       has an index on attribute <classname>A</classname> then we can
       retrieve all tuples <replaceable>t</replaceable>
       having
