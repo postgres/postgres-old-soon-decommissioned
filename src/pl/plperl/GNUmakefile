@@ -8,6 +8,9 @@ include $(top_builddir)/src/Makefile.global
 ifeq ($(perl_useshrplib),true)
 shared_libperl = yes
 endif
+ifeq ($(perl_useshrplib),yes)
+shared_libperl = yes
+endif
 
 # If we don't have a shared library and the platform doesn't allow it
 # to work without, we have to skip it.
@@ -18,7 +21,13 @@ ifeq ($(GCC),yes)
 override CFLAGS := $(filter-out -Wall -Wmissing-declarations -Wmissing-prototypes, $(CFLAGS))
 endif
 
-override CPPFLAGS := -I$(srcdir) -I$(perl_archlibexp)/CORE $(CPPFLAGS)
+ifeq ($(PORTNAME), win32)
+perl_archlibexp := $(subst \,/,$(perl_archlibexp))
+perl_privlibexp := $(subst \,/,$(perl_privlibexp))
+perl_embed_ldflags := -L $(perl_archlibexp)/CORE -lperl58
+endif
+
+override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -I$(perl_archlibexp)/CORE
 
 
 NAME = plperl
