@@ -639,7 +639,7 @@ typedef NameData *Name;
 #include <unistd.h>
 #endif
 
-#if defined(bsdi)
+#if defined(bsdi) || defined(netbsd)
 int fseeko(FILE *stream, off_t offset, int whence);
 off_t ftello(FILE *stream);
 #endif
