@@ -26,13 +26,18 @@
 #include "executor/executor.h"
 #include "miscadmin.h"
 #include "storage/sinval.h"
-
+#include "access/xlogutils.h"
 
 bool		BuildingBtree = false;		/* see comment in btbuild() */
-bool		FastBuild = true;	/* use sort/build instead of insertion
-								 * build */
+bool		FastBuild = true;	/* use sort/build instead */
+								/* of insertion build */
 
-#include "access/xlogutils.h"
+
+/*
+ * TEMPORARY FLAG FOR TESTING NEW FIX TREE
+ * CODE WITHOUT AFFECTING ANYONE ELSE
+ */
+bool		FixBTree = false;
 
 static void _bt_restscan(IndexScanDesc scan);
 
