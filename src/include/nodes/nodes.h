@@ -158,7 +158,6 @@ typedef enum NodeTag
 	T_DropStmt,
 	T_TruncateStmt,
 	T_CommentStmt,
-	T_ExtendStmt,
 	T_FetchStmt,
 	T_IndexStmt,
 	T_ProcedureStmt,

@@ -466,19 +466,6 @@ typedef struct CommentStmt
 } CommentStmt;
 
 /* ----------------------
- *		Extend Index Statement
- * ----------------------
- */
-typedef struct ExtendStmt
-{
-	NodeTag		type;
-	char	   *idxname;		/* name of the index */
-	Node	   *whereClause;	/* qualifications */
-	List	   *rangetable;		/* range table, filled in by
-								 * transformStmt() */
-} ExtendStmt;
-
-/* ----------------------
  *		Begin Recipe Statement
  * ----------------------
  */

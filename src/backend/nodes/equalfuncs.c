@@ -899,19 +899,6 @@ _equalCommentStmt(CommentStmt *a, CommentStmt *b)
 }
 
 static bool
-_equalExtendStmt(ExtendStmt *a, ExtendStmt *b)
-{
-	if (!equalstr(a->idxname, b->idxname))
-		return false;
-	if (!equal(a->whereClause, b->whereClause))
-		return false;
-	if (!equal(a->rangetable, b->rangetable))
-		return false;
-
-	return true;
-}
-
-static bool
 _equalFetchStmt(FetchStmt *a, FetchStmt *b)
 {
 	if (a->direction != b->direction)
@@ -1939,9 +1926,6 @@ equal(void *a, void *b)
 			break;
 		case T_CommentStmt:
 			retval = _equalCommentStmt(a, b);
-			break;
-		case T_ExtendStmt:
-			retval = _equalExtendStmt(a, b);
 			break;
 		case T_FetchStmt:
 			retval = _equalFetchStmt(a, b);
