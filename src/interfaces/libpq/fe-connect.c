@@ -3193,16 +3193,10 @@ default_threadlock(int acquire)
 #ifndef WIN32
 	static pthread_mutex_t singlethread_lock = PTHREAD_MUTEX_INITIALIZER;
 #else
-	static pthread_mutex_t singlethread_lock = NULL;
-	static long mutex_initlock = 0;
-
-	if (singlethread_lock == NULL) {
-		while(InterlockedExchange(&mutex_initlock, 1) == 1)
-			/* loop, another thread own the lock */ ;
-		if (singlethread_lock == NULL)
-			pthread_mutex_init(&singlethread_lock, NULL);
-		InterlockedExchange(&mutex_initlock,0);
-	}
+	static pthread_mutex_t singlethread_lock;
+        static long mutex_initialized = 0;
+        if (!InterlockedExchange(&mutex_initialized, 1L))
+                pthread_mutex_init(&singlethread_lock, NULL);
 #endif
 	if (acquire)
 		pthread_mutex_lock(&singlethread_lock);
