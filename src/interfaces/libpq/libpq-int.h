@@ -334,19 +334,10 @@ extern int	pqWriteReady(PGconn *conn);
 #define DefaultAuthtype		  ""
 #define DefaultPassword		  ""
 
-/* supply an implementation of strerror() macro if system doesn't have it */
-#ifndef strerror
-#if defined(sun) && defined(__sparc__) && !defined(__SVR4)
-extern char *sys_errlist[];
-
-#define strerror(A) (sys_errlist[(A)])
-#endif	 /* sunos4 */
-#endif	 /* !strerror */
-
 /*
  * this is so that we can check is a connection is non-blocking internally
  * without the overhead of a function call
  */
-#define pqIsnonblocking(conn)	(conn->nonblocking)
+#define pqIsnonblocking(conn)	((conn)->nonblocking)
 
 #endif	 /* LIBPQ_INT_H */
