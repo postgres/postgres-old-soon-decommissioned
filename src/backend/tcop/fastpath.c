@@ -273,6 +273,7 @@ HandleFunctionRequest(StringInfo msgBuf)
 	Datum		retval;
 	struct fp_info my_fp;
 	struct fp_info *fip;
+	bool		callit;
 
 	/*
 	 * Read message contents if not already done.
@@ -341,8 +342,34 @@ HandleFunctionRequest(StringInfo msgBuf)
 	/* Verify we reached the end of the message where expected. */
 	pq_getmsgend(msgBuf);
 
-	/* Okay, do it ... */
-	retval = FunctionCallInvoke(&fcinfo);
+	/*
+	 * If func is strict, must not call it for null args.
+	 */
+	callit = true;
+	if (fip->flinfo.fn_strict)
+	{
+		int		i;
+
+		for (i = 0; i < fcinfo.nargs; i++)
+		{
+			if (fcinfo.argnull[i])
+			{
+				callit = false;
+				break;
+			}
+		}
+	}
+
+	if (callit)
+	{
+		/* Okay, do it ... */
+		retval = FunctionCallInvoke(&fcinfo);
+	}
+	else
+	{
+		fcinfo.isnull = true;
+		retval = (Datum) 0;
+	}
 
 	SendFunctionResult(retval, fcinfo.isnull, fip->rettype, rformat);
 
