@@ -1246,12 +1246,12 @@ ServerLoop(void)
 			PgStatPID = pgstat_start();
 
 		/*
-		 * Touch the socket and lock file at least every ten minutes, to
+		 * Touch the socket and lock file at least every hour, to
 		 * ensure that they are not removed by overzealous /tmp-cleaning
 		 * tasks.
 		 */
 		now = time(NULL);
-		if (now - last_touch_time >= 10 * 60)
+		if (now - last_touch_time >= 60 * 60)
 		{
 			TouchSocketFile();
 			TouchSocketLockFile();
