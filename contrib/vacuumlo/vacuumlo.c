@@ -309,7 +309,7 @@ main(int argc, char **argv)
 	param.pg_user = NULL;
 	param.pg_prompt = 0;
 	param.pg_host = NULL;
-	param.pg_port = 0;
+	param.pg_port = NULL;
 	param.verbose = 0;
 	param.dry_run = 0;
 
