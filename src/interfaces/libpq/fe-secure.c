@@ -110,7 +110,9 @@
 #include "strdup.h"
 #endif
 
+#ifndef WIN32
 #include <pwd.h>
+#endif
 #include <sys/stat.h>
 
 #ifdef USE_SSL

@@ -714,7 +714,7 @@ fe_getauthname(char *PQerrormsg)
 		char		username[128];
 		DWORD		namesize = sizeof(username) - 1;
 
-		if (GetUserNameFromId(username, &namesize))
+		if (GetUserName(username, &namesize))
 			name = username;
 #else
 		struct passwd *pw = getpwuid(geteuid());

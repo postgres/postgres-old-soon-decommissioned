@@ -20,6 +20,10 @@
 #ifndef LIBPQ_INT_H
 #define LIBPQ_INT_H
 
+#if defined(WIN32) && (!defined(ssize_t))
+  typedef int ssize_t; /* ssize_t doesn't exist in VC (atleast not VC6) */
+#endif 
+
 /* We assume libpq-fe.h has already been included. */
 #include "postgres_fe.h"
 
