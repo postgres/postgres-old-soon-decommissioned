@@ -190,7 +190,7 @@ typedef enum NodeTag {
     T_ParamString,
     T_TimeRange,
     T_RelExpr,
-    T_SortBy,
+    T_SortGroupBy,
     T_RangeVar,
     T_TypeName,
     T_IndexElem,
