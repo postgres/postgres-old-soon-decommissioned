@@ -483,7 +483,11 @@ BuildDescForRelation(List *schema, char *relname)
 
 		strNcpy(typename, entry->typename->name, NAMEDATALEN - 1);
 		if (arry != NIL)
+		{
+			/* array of XXX is _XXX */
+			sprintf(typename, "_%.*s", NAMEDATALEN-2,entry->typename->name);
 			attdim = length(arry);
+		}
 		else
 			attdim = 0;
 
