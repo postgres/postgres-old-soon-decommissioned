@@ -150,37 +150,37 @@ bool
 isbn_lt(isbn * a1, isbn * a2)
 {
 	return (strncmp(a1->num, a2->num, 13) < 0);
-};
+}
 
 bool
 isbn_le(isbn * a1, isbn * a2)
 {
 	return (strncmp(a1->num, a2->num, 13) <= 0);
-};
+}
 
 bool
 isbn_eq(isbn * a1, isbn * a2)
 {
 	return (strncmp(a1->num, a2->num, 13) == 0);
-};
+}
 
 bool
 isbn_ge(isbn * a1, isbn * a2)
 {
 	return (strncmp(a1->num, a2->num, 13) >= 0);
-};
+}
 
 bool
 isbn_gt(isbn * a1, isbn * a2)
 {
 	return (strncmp(a1->num, a2->num, 13) > 0);
-};
+}
 
 bool
 isbn_ne(isbn * a1, isbn * a2)
 {
 	return (strncmp(a1->num, a2->num, 13) != 0);
-};
+}
 
 /*
  *	Comparison function for sorting:
@@ -329,37 +329,37 @@ bool
 issn_lt(issn * a1, issn * a2)
 {
 	return (strncmp(a1->num, a2->num, 9) < 0);
-};
+}
 
 bool
 issn_le(issn * a1, issn * a2)
 {
 	return (strncmp(a1->num, a2->num, 9) <= 0);
-};
+}
 
 bool
 issn_eq(issn * a1, issn * a2)
 {
 	return (strncmp(a1->num, a2->num, 9) == 0);
-};
+}
 
 bool
 issn_ge(issn * a1, issn * a2)
 {
 	return (strncmp(a1->num, a2->num, 9) >= 0);
-};
+}
 
 bool
 issn_gt(issn * a1, issn * a2)
 {
 	return (strncmp(a1->num, a2->num, 9) > 0);
-};
+}
 
 bool
 issn_ne(issn * a1, issn * a2)
 {
 	return (strncmp(a1->num, a2->num, 9) != 0);
-};
+}
 
 /*
  *	Comparison function for sorting:
@@ -370,7 +370,3 @@ issn_cmp(issn * a1, issn * a2)
 {
 	return (strncmp(a1->num, a2->num, 9));
 }
-
-/*
- *	eof
- */
