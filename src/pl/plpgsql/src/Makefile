@@ -21,7 +21,14 @@ override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
 
 OBJS = pl_parse.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
 
+ifeq ($(PORTNAME), qnx4)
 all: all-lib
+else
+all:
+      @echo "*****"; \
+       echo "* PL/pgSQL was not built due to library manager problems."; \
+       echo "*****"
+endif
 
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib
