@@ -2681,7 +2681,7 @@ dumpIndices(FILE *fout, IndInfo *indinfo, int numIndices,
  *
  *	  We only need to do this for POSTGRES 4.2 databases since the
  *	  COPY TO statment doesn't escape newlines properly. It's been fixed
- *	  in Postgres95.
+ *	  in PostgreSQL.
  *
  * the attrmap passed in tells how to map the attributes copied in to the
  * attributes copied out

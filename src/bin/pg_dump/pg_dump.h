@@ -176,7 +176,7 @@ extern char g_opaque_type[10];	/* name for the opaque type */
 
 /* pg_dump is really two programs in one
 	one version works with postgres v4r2
-	and the other works with postgres95
+	and the other works with postgreSQL
 	the common routines are declared here
 */
 /*
