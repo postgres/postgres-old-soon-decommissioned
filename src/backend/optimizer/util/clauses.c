@@ -261,8 +261,8 @@ make_and_qual(Node *qual1, Node *qual2)
 }
 
 /*
- * Sometimes (such as in the result of canonicalize_qual or the input of
- * ExecQual), we use lists of expression nodes with implicit AND semantics.
+ * Sometimes (such as in the input of ExecQual), we use lists of expression
+ * nodes with implicit AND semantics.
  *
  * These functions convert between an AND-semantics expression list and the
  * ordinary representation of a boolean expression.

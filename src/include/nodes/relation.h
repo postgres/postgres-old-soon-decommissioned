@@ -245,7 +245,8 @@ typedef struct RelOptInfo
  *		zero entry, rather than looking at ncolumns.
  *
  *		The indexprs and indpred expressions have been run through
- *		eval_const_expressions() for ease of matching to WHERE clauses.
+ *		prepqual.c and eval_const_expressions() for ease of matching to
+ *		WHERE clauses.  indpred is in implicit-AND form.
  */
 
 typedef struct IndexOptInfo

@@ -1344,10 +1344,9 @@ StoreRelCheck(Relation rel, char *ccname, char *ccbin)
 	int16	   *attNos;
 
 	/*
-	 * Convert condition to a normal boolean expression tree.
+	 * Convert condition to an expression tree.
 	 */
 	expr = stringToNode(ccbin);
-	expr = (Node *) make_ands_explicit((List *) expr);
 
 	/*
 	 * deparse it
@@ -1650,14 +1649,6 @@ AddRelationRawConstraints(Relation rel,
 			ereport(ERROR,
 					(errcode(ERRCODE_GROUPING_ERROR),
 					 errmsg("cannot use aggregate function in check constraint")));
-
-		/*
-		 * Constraints are evaluated with execQual, which expects an
-		 * implicit-AND list, so convert expression to implicit-AND form.
-		 * (We could go so far as to convert to CNF, but that's probably
-		 * overkill...)
-		 */
-		expr = (Node *) make_ands_implicit((Expr *) expr);
 
 		/*
 		 * OK, store it.

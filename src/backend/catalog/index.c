@@ -397,13 +397,14 @@ UpdateIndexRelation(Oid indexoid,
 		exprsDatum = (Datum) 0;
 
 	/*
-	 * Convert the index predicate (if any) to a text datum
+	 * Convert the index predicate (if any) to a text datum.  Note we
+	 * convert implicit-AND format to normal explicit-AND for storage.
 	 */
 	if (indexInfo->ii_Predicate != NIL)
 	{
 		char	   *predString;
 
-		predString = nodeToString(indexInfo->ii_Predicate);
+		predString = nodeToString(make_ands_explicit(indexInfo->ii_Predicate));
 		predDatum = DirectFunctionCall1(textin,
 										CStringGetDatum(predString));
 		pfree(predString);

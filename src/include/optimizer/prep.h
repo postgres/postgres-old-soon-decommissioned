@@ -36,8 +36,8 @@ extern Relids get_relids_for_join(Query *parse, int joinrelid);
 /*
  * prototypes for prepqual.c
  */
-extern List *canonicalize_qual(Expr *qual, bool removeAndFlag);
-extern List *cnfify(Expr *qual, bool removeAndFlag);
+extern Expr *canonicalize_qual(Expr *qual);
+extern Node *flatten_andors(Node *node);
 
 /*
  * prototypes for preptlist.c
