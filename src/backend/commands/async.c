@@ -133,11 +133,7 @@ static void ClearPendingNotify(void);
  *      none
  */
 void
-#if defined(PORTNAME_linux)
-Async_NotifyHandler(int i)
-#else
-Async_NotifyHandler()
-#endif
+Async_NotifyHandler(SIGNAL_ARGS)
 {
     extern TransactionState CurrentTransactionState;
     
