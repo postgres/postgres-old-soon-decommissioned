@@ -45,6 +45,8 @@ OUTFILES= stud_emp.data onek.data regress.out aportal.out
 # prepare to run the test (including clean-up after the last run)
 #
 all: $(INFILES)
+	cd input; gmake all; cd ..
+	cd output; gmake all; cd ..
 	rm -f $(OUTFILES)
 
 #

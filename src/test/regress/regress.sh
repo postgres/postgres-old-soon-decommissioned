@@ -29,9 +29,9 @@ fi
 echo =============== running regression queries ... =================
 for i in `cat sql/tests`
 do
-	echo -n ${i} ..
-	$FRONTEND regression < sql/${i}.sql 2>&1 | tee output/${i}.out
-	if [ `diff expected/${i}.out output/${i}.out | wc -l` -ne 0 ]
+	echo -n "${i} .. "
+	$FRONTEND regression < sql/${i}.sql > results/${i}.out 2>&1
+	if [ `diff expected/${i}.out results/${i}.out | wc -l` -ne 0 ]
 	then
 		echo failed
 	else
