@@ -264,12 +264,6 @@ ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot)
 	cleanMap = junkfilter->jf_cleanMap;
 
 	/*
-	 * Handle the trivial case first.
-	 */
-	if (cleanLength == 0)
-		return (HeapTuple) NULL;
-
-	/*
 	 * Create the arrays that will hold the attribute values and the null
 	 * information for the new "clean" tuple.
 	 *
