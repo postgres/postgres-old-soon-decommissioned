@@ -114,16 +114,6 @@ createlang [ <replaceable class="parameter">connection options</replaceable> ] -
       </listitem>
      </varlistentry>
 
-     <varlistentry>
-      <term>-e, --echo</term>
-      <listitem>
-       <para>
-        Echo the commands that <application>createlang</application> generates
-	and sends to the backend.
-       </para>
-      </listitem>
-     </varlistentry>
-
     </variablelist>
    </para>
   </refsect2>
@@ -141,9 +131,6 @@ createlang [ <replaceable class="parameter">connection options</replaceable> ] -
     option and see under the respective <acronym>SQL</acronym> command
     for details. Check also under <xref linkend="APP-PSQL" endterm="APP-PSQL-title">
     for more possibilities.
-   </para>
-   <para>
-    No output is generated if <application>createlang</application> succeeds.
    </para>
   </refsect2>
  </refsynopsisdiv>

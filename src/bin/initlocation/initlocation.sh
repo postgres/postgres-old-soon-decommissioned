@@ -68,7 +68,7 @@ if [ "$usage" ]; then
 	echo "Usage:"
         echo "  $CMDNAME <location>"
 	echo ""
-        echo "Report bugs to <bugs@postgresql.org>."
+        echo "Report bugs to <pgsql-bugs@postgresql.org>."
 	exit 0
 fi
 

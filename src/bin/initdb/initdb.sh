@@ -235,7 +235,7 @@ if [ "$usage" ]; then
         echo "  -d, --debug                 Generate lots of debugging output"
         echo "  -n, --noclean               Do not clean up after errors"
  	echo	 
-        echo "Report bugs to <bugs@postgresql.org>."
+        echo "Report bugs to <pgsql-bugs@postgresql.org>."
  	exit 0
 fi
 

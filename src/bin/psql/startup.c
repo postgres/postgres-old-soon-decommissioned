@@ -205,10 +205,18 @@ main(int argc, char **argv)
 		successResult = process_file(options.action_string) ? 0 : 1;
 	/* process slash command if one was given to -c */
 	else if (options.action == ACT_SINGLE_SLASH)
+    {
+        if (GetVariable(pset.vars, "ECHO") && strcmp(GetVariable(pset.vars, "ECHO"), "full")==0)
+            puts(options.action_string);
 		successResult = HandleSlashCmds(options.action_string, NULL, NULL) != CMD_ERROR ? 0 : 1;
+    }
 	/* If the query given to -c was a normal one, send it */
 	else if (options.action == ACT_SINGLE_QUERY)
+    {
+        if (GetVariable(pset.vars, "ECHO") && strcmp(GetVariable(pset.vars, "ECHO"), "full")==0)
+            puts(options.action_string);
 		successResult = SendQuery( options.action_string) ? 0 : 1;
+    }
 	/* or otherwise enter interactive main loop */
 	else
     {

@@ -167,7 +167,7 @@ help(const char *progname)
         );
 #endif
     puts("If no database name is not supplied, then the PGDATABASE environment\nvariable value is used.\n");
-    puts("Report bugs to <bugs@postgresql.org>.");
+    puts("Report bugs to <pgsql-bugs@postgresql.org>.");
 }
 
 

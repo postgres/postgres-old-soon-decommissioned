@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------
 #
 # Makefile
-#    Makefile for src/bin (utility programs)
+#    Makefile for src/bin (client programs)
 #
 # Copyright (c) 1994, Regents of the University of California
 #

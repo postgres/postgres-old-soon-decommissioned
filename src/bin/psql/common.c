@@ -146,7 +146,7 @@ psql_error(const char *fmt, ...)
         fflush(pset.queryFout);
 
     if (pset.inputfile)
-        fprintf(stderr, "%s:%u: ", pset.inputfile ? pset.inputfile : pset.progname, pset.lineno);
+        fprintf(stderr, "%s:%s:%u: ", pset.progname, pset.inputfile, pset.lineno);
     va_start(ap, fmt);
     vfprintf(stderr, fmt, ap);
     va_end(ap);

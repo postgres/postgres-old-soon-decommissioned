@@ -129,7 +129,7 @@ usage(void)
     puts(  "(for SQL commands) from within psql, or consult the psql section in");
     puts(  "the PostgreSQL manual, which accompanies the distribution and is also");
     puts(  "available at <http://www.postgresql.org>.");
-    puts(  "Report bugs to <bugs@postgresql.org>.");
+    puts(  "Report bugs to <pgsql-bugs@postgresql.org>.");
 
 #ifndef WIN32
 	if (pw)
