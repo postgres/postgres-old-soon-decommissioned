@@ -684,7 +684,7 @@ dumpClasses(const TableInfo *tblinfo, const int numTables, Archive *fout,
 			{
 				dumpFn = dumpClasses_nodumpData;
 				/* dumpClasses_nodumpData(fout, classname, oids); */
-				sprintf(copyBuf, "COPY %s %s FROM stdin;\n", fmtId(tblinfo[i].relname, force_quotes),
+				sprintf(copyBuf, "COPY %s %sFROM stdin;\n", fmtId(tblinfo[i].relname, force_quotes),
 						oidsPart);
 				copyStmt = copyBuf;
 			}
