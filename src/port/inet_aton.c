@@ -1,4 +1,4 @@
-/* $Id$
+/* $PostgreSQL$
  *
  *	This inet_aton() function was taken from the GNU C library and
  *	incorporated into Postgres for those systems which do not have this

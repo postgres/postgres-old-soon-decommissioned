@@ -1,7 +1,7 @@
 # Czech translation of pg_resetxlog messages
 # Karel Zak <zakkr@zf.jcu.cz>, 2003.
 #
-# $Id$
+# $PostgreSQL$
 #
 msgid ""
 msgstr ""

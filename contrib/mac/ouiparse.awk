@@ -1,4 +1,4 @@
-# $Id$
+# $PostgreSQL$
 #
 # ouiparse.awk
 # Author: Lawrence E. Rosenman <ler@lerctr.org>

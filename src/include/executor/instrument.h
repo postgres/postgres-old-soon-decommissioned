@@ -6,7 +6,7 @@
  *
  * Copyright (c) 2001-2003, PostgreSQL Global Development Group
  *
- * $Id$
+ * $PostgreSQL$
  *
  *-------------------------------------------------------------------------
  */

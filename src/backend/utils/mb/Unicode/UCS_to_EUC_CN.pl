@@ -2,7 +2,7 @@
 #
 # Copyright (c) 2001-2003, PostgreSQL Global Development Group
 #
-# $Id$
+# $PostgreSQL$
 #
 # Generate UTF-8 <--> EUC_CN code conversion tables from
 # map files provided by Unicode organization.

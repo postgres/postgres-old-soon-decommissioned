@@ -7,7 +7,7 @@
  *
  * Copyright (c) 2002-2003, PostgreSQL Global Development Group
  *
- * $Id$
+ * $PostgreSQL$
  *
  * NOTES
  *	  the genbki.sh script reads this file and generates .bki

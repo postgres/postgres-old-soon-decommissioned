@@ -6,7 +6,7 @@
 *	 OX1 operator according to Davis
 *	 (Proc Int'l Joint Conf on AI)
 *
-* $Id$
+* $PostgreSQL$
 *
 *-------------------------------------------------------------------------
 */

@@ -5,7 +5,7 @@ import org.omg.CosNaming.*;
 /*
  * This class implements the server side of the example.
  *
- * $Id$
+ * $PostgreSQL$
  */
 public class StockServer
 {

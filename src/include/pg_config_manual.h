@@ -6,7 +6,7 @@
  * for developers.	If you edit any of these, be sure to do a *full*
  * rebuild (and an initdb if noted).
  *
- * $Id$
+ * $PostgreSQL$
  *------------------------------------------------------------------------
  */
 

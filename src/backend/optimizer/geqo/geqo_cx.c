@@ -6,7 +6,7 @@
 *	 CX operator according to Oliver et al
 *	 (Proc 2nd Int'l Conf on GA's)
 *
-* $Id$
+* $PostgreSQL$
 *
 *-------------------------------------------------------------------------
 */

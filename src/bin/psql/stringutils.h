@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2000-2003, PostgreSQL Global Development Group
  *
- * $Id$
+ * $PostgreSQL$
  */
 #ifndef STRINGUTILS_H
 #define STRINGUTILS_H

@@ -3,7 +3,7 @@
  *
  *	 Portions Copyright (c) 1999-2002, PostgreSQL Global Development Group
  *
- * $Id$
+ * $PostgreSQL$
  *
  *-----------------------------------------------------------------------
  */

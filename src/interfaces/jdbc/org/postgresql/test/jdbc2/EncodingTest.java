@@ -8,7 +8,7 @@ import java.io.*;
 /*
  * Tests for the Encoding class.
  *
- * $Id$
+ * $PostgreSQL$
  */
 
 

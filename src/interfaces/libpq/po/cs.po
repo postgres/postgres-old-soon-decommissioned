@@ -1,7 +1,7 @@
 # Czech translation of libpq messages
 # Karel Zak <zakkr@zf.jcu.cz>, 2001-2003.
 #
-# $Id$
+# $PostgreSQL$
 #
 msgid ""
 msgstr ""

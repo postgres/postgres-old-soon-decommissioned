@@ -3,7 +3,7 @@
 * geqo_recombination.c
 *	 misc recombination procedures
 *
-* $Id$
+* $PostgreSQL$
 *
 *-------------------------------------------------------------------------
 */

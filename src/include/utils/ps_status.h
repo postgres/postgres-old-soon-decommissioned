@@ -4,7 +4,7 @@
  *
  * Declarations for backend/utils/misc/ps_status.c
  *
- * $Id$
+ * $PostgreSQL$
  *
  *-------------------------------------------------------------------------
  */

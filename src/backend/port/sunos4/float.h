@@ -7,7 +7,7 @@
  * Portions Copyright (c) 1996-2003, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
- * $Id$
+ * $PostgreSQL$
  *
  * NOTES
  *	  These come straight out of ANSI X3.159-1989 (p.18) and

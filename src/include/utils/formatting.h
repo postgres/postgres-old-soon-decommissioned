@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------
  * formatting.h
  *
- * $Id$
+ * $PostgreSQL$
  *
  *
  *	 Portions Copyright (c) 1999-2003, PostgreSQL Global Development Group

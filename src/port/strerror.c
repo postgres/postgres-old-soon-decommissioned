@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $PostgreSQL$ */
 
 /*
  * strerror - map error number to descriptive string

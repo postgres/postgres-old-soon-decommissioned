@@ -7,7 +7,7 @@
  *
  * 1999/1/15 Tatsuo Ishii
  *
- * $Id$
+ * $PostgreSQL$
  */
 
 /* can be used in either frontend or backend */

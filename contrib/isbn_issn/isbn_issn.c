@@ -1,7 +1,7 @@
 /*
  *	PostgreSQL type definitions for ISBNs.
  *
- *	$Id$
+ *	$PostgreSQL$
  */
 
 #include "postgres.h"

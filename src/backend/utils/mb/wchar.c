@@ -1,7 +1,7 @@
 /*
  * conversion functions between pg_wchar and multibyte streams.
  * Tatsuo Ishii
- * $Id$
+ * $PostgreSQL$
  *
  * WIN1250 client encoding updated by Pavel Behal
  *

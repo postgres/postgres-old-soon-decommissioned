@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id$
+# $PostgreSQL$
 
 # Project exists to assist PostgreSQL users with their structural upgrade 
 # from PostgreSQL 7.2 (or prior) to 7.3 or 7.4.  Must be run against a 7.3 or 7.4

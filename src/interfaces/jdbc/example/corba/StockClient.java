@@ -9,7 +9,7 @@ import org.omg.CosNaming.*;
  *
  * It has no GUI, just a text frontend to keep it simple.
  *
- * $Id$
+ * $PostgreSQL$
  */
 public class StockClient
 {

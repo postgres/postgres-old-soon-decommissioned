@@ -3,7 +3,7 @@
 * geqo_erx.c
 *	 edge recombination crossover [ER]
 *
-* $Id$
+* $PostgreSQL$
 *
 *-------------------------------------------------------------------------
 */

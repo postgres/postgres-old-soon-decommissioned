@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $PostgreSQL$ */
 
 #ifndef PG_WCHAR_H
 #define PG_WCHAR_H

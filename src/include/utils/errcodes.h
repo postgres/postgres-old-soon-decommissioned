@@ -11,7 +11,7 @@
  *
  * Copyright (c) 2003, PostgreSQL Global Development Group
  *
- * $Id$
+ * $PostgreSQL$
  *
  *-------------------------------------------------------------------------
  */

@@ -1,5 +1,5 @@
 #
-# $Id$
+# $PostgreSQL$
 # convert UCS-2 to UTF-8
 #
 sub ucs2utf {

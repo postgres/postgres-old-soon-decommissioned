@@ -1,6 +1,6 @@
 --
 -- This creates the database for the stock example
--- $Id$
+-- $PostgreSQL$
 --
 drop table stock;
 

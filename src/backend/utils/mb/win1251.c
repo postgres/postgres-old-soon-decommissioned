@@ -4,7 +4,7 @@
  *
  * Tatsuo Ishii
  *
- * $Id$
+ * $PostgreSQL$
  */
 
 #include <stdio.h>

@@ -3,7 +3,7 @@
  *
  * Resource managers definition
  *
- * $Id$
+ * $PostgreSQL$
  */
 #ifndef RMGR_H
 #define RMGR_H

@@ -2,7 +2,7 @@
  * Encoding names and routines for work with it. All
  * in this file is shared bedween FE and BE.
  *
- * $Id$
+ * $PostgreSQL$
  */
 #ifdef FRONTEND
 #include "postgres_fe.h"

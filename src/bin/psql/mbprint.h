@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $PostgreSQL$ */
 #ifndef MBPRINT_H
 #define MBPRINT_H
 

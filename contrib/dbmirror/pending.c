@@ -1,6 +1,6 @@
 /****************************************************************************
  * pending.c
- * $Id$
+ * $PostgreSQL$
  *
  * This file contains a trigger for Postgresql-7.x to record changes to tables
  * to a pending table for mirroring.

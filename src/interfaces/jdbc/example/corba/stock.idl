@@ -1,9 +1,9 @@
-// $Id$
+// $PostgreSQL$
 //
 // This is our CORBA bindings for a very simple stock control
 // system.
 //
-// $Id$
+// $PostgreSQL$
 //
 
 // For some reason, idltojava on my setup doesn't like this to be

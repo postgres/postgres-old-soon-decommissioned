@@ -2,7 +2,7 @@
 #
 # Copyright (c) 2001-2003, PostgreSQL Global Development Group
 #
-# $Id$
+# $PostgreSQL$
 #
 # Generate UTF-8 <--> WINX code conversion tables from
 # map files provided by Unicode organization.

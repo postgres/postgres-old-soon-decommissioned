@@ -2,5 +2,5 @@
  *
  * see dgux.h
  *
- * $Id$
+ * $PostgreSQL$
  */

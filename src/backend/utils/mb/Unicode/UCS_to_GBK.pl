@@ -2,7 +2,7 @@
 #
 # Copyright (c) 2001-2003, PostgreSQL Global Development Group
 #
-# $Id$
+# $PostgreSQL$
 #
 #
 # Generate UTF-8 <--> GBK code conversion tables from

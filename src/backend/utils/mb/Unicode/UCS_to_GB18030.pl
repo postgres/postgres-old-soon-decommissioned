@@ -2,7 +2,7 @@
 #
 # Copyright 2002 by Bill Huang
 #
-# $Id$
+# $PostgreSQL$
 #
 # Generate UTF-8 <--> GB18030 code conversion tables from
 # map files provided by Unicode organization.

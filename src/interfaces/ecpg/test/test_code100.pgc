@@ -1,4 +1,4 @@
-// $Id$
+// $PostgreSQL$
 
 exec sql include sqlca;
 #include <stdio.h>

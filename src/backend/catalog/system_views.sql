@@ -3,7 +3,7 @@
  *
  * Copyright 1996-2003, PostgreSQL Global Development Group
  *
- * $Id$
+ * $PostgreSQL$
  */
 
 CREATE VIEW pg_user AS 

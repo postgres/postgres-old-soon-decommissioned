@@ -6,7 +6,7 @@
 *	 PX operator according to Syswerda
 *	 (The Genetic Algorithms Handbook, L Davis, ed)
 *
-* $Id$
+* $PostgreSQL$
 *
 *-------------------------------------------------------------------------
 */

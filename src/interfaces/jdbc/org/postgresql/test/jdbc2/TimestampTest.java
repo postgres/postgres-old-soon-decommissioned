@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 import java.sql.*;
 
 /*
- * $Id$
+ * $PostgreSQL$
  *
  * Test get/setTimestamp for both timestamp with time zone and
  * timestamp without time zone datatypes

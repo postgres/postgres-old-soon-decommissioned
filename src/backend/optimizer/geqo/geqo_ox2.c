@@ -6,7 +6,7 @@
 *	 OX2 operator according to Syswerda
 *	 (The Genetic Algorithms Handbook, ed L Davis)
 *
-* $Id$
+* $PostgreSQL$
 *
 *-------------------------------------------------------------------------
 */

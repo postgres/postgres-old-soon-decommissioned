@@ -4,7 +4,7 @@
  * darcy@druid.net
  * http://www.druid.net/darcy/
  *
- * $Id$
+ * $PostgreSQL$
  * best viewed with tabs set to 4
  */
 

@@ -9,7 +9,7 @@
  * $FreeBSD$
  *
  */
-/* $Id$ */
+/* $PostgreSQL$ */
 
 #include <postgres.h>
 #include "px.h"

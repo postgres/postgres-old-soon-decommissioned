@@ -6,7 +6,7 @@
 *	 PMX operator according to Goldberg & Lingle
 *	 (Proc Int'l Conf on GA's)
 *
-* $Id$
+* $PostgreSQL$
 *
 *-------------------------------------------------------------------------
 */

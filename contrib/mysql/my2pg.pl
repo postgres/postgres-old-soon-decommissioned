@@ -36,10 +36,13 @@
 # SUCH DAMAGE.
 #
 # $My2pg: my2pg.pl,v 1.27 2001/12/06 19:32:20 fonin Exp $
-# $Id$
+# $PostgreSQL$
 
 #
 # $Log: my2pg.pl,v $
+# Revision 1.10  2003/01/07 22:18:43  momjian
+# Upgrade to my2pg 1.9
+#
 # Revision 1.27  2002/07/16 14:54:07  fonin
 # Bugfix - didn't quote the fields inside PRIMARY KEY with -d option.
 # Fix by Milan P. Stanic <mps@rns-nis.co.yu>.
@@ -731,7 +734,7 @@ close(LIBTYPES);
 
 open(MAKE,">Makefile");
 print MAKE "#
-# My2Pg \$Revision: 1.10 $ \translated dump
+# My2Pg \$Revision: 1.11 $ \translated dump
 # Makefile
 #
 

@@ -7,7 +7,7 @@
  * Portions Copyright (c) 1996-2003, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
- * $Id$
+ * $PostgreSQL$
  *
  * OLD COMMENTS
  *	  This file was created so that other c files could get the two

@@ -4,7 +4,7 @@
  *	  Commands for manipulating users and groups.
  *
  *
- * $Id$
+ * $PostgreSQL$
  *
  *-------------------------------------------------------------------------
  */
