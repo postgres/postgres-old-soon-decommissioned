@@ -809,7 +809,7 @@ find_typmod_coercion_function(Oid typeId)
 			!pform->proisagg)
 		{
 			/* Okay to use it */
-			funcid = ftup->t_data->t_oid;
+			funcid = HeapTupleGetOid(ftup);
 		}
 		ReleaseSysCache(ftup);
 	}
