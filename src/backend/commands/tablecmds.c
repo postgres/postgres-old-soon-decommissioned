@@ -2632,14 +2632,16 @@ AlterTableAddConstraint(Oid myrelid, bool recurse,
 					 */
 					if (constr->name)
 					{
-						if (ConstraintNameIsUsed(RelationGetRelid(rel),
+						if (ConstraintNameIsUsed(CONSTRAINT_RELATION,
+												 RelationGetRelid(rel),
 												 RelationGetNamespace(rel),
 												 constr->name))
 							elog(ERROR, "constraint \"%s\" already exists for relation \"%s\"",
 								 constr->name, RelationGetRelationName(rel));
 					}
 					else
-						constr->name = GenerateConstraintName(RelationGetRelid(rel),
+						constr->name = GenerateConstraintName(CONSTRAINT_RELATION,
+															  RelationGetRelid(rel),
 															  RelationGetNamespace(rel),
 															  &counter);
 
@@ -2668,7 +2670,8 @@ AlterTableAddConstraint(Oid myrelid, bool recurse,
 					 */
 					if (fkconstraint->constr_name)
 					{
-						if (ConstraintNameIsUsed(RelationGetRelid(rel),
+						if (ConstraintNameIsUsed(CONSTRAINT_RELATION,
+												   RelationGetRelid(rel),
 											   RelationGetNamespace(rel),
 											  fkconstraint->constr_name))
 							elog(ERROR, "constraint \"%s\" already exists for relation \"%s\"",
@@ -2676,7 +2679,8 @@ AlterTableAddConstraint(Oid myrelid, bool recurse,
 								 RelationGetRelationName(rel));
 					}
 					else
-						fkconstraint->constr_name = GenerateConstraintName(RelationGetRelid(rel),
+						fkconstraint->constr_name = GenerateConstraintName(CONSTRAINT_RELATION,
+												   RelationGetRelid(rel),
 											   RelationGetNamespace(rel),
 															   &counter);
 
@@ -2734,7 +2738,7 @@ AlterTableAddCheckConstraint(Relation rel, Constraint *constr)
 	/*
 	 * Convert the A_EXPR in raw_expr into an EXPR
 	 */
-	expr = transformExpr(pstate, constr->raw_expr);
+	expr = transformExpr(pstate, constr->raw_expr, NULL);
 
 	/*
 	 * Make sure it yields a boolean result.

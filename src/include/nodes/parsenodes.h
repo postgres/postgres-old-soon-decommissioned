@@ -285,8 +285,25 @@ typedef struct ConstraintTest
 	Node	   *arg;			/* input expression */
 	ConstraintTestType testtype;	/* test type */
 	char	   *name;			/* name of constraint (for error msgs) */
+	char	   *domname; 		/* name of domain (for error messages) */
 	Node	   *check_expr;		/* for CHECK test, a boolean expression */
 } ConstraintTest;
+
+/*
+ * Placeholder node for the value to be processed by a domains
+ * check constraint.
+ */
+typedef struct DomainConstraintValue
+{
+	NodeTag		type;
+} DomainConstraintValue;
+
+typedef struct ConstraintTestValue
+{
+	NodeTag		type;
+	Oid			typeId;
+	int32		typeMod;
+} ConstraintTestValue;
 
 /*
  * ColumnDef - column definition (used in various creates)

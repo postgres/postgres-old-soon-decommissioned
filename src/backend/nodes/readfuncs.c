@@ -949,8 +949,52 @@ _readConstraintTest(void)
 	token = pg_strtok(&length); /* now read it */
 	local_node->name = nullable_string(token, length);
 
+	token = pg_strtok(&length); /* get :domname */
+	token = pg_strtok(&length); /* get domname */
+	local_node->domname = nullable_string(token, length);
+
 	token = pg_strtok(&length); /* eat :check_expr */
 	local_node->check_expr = nodeRead(true);	/* now read it */
+
+	return local_node;
+}
+
+/* ----------------
+ *		_readConstraintTestValue
+ *
+ *	ConstraintTestValue is a subclass of Node
+ * ----------------
+ */
+static ConstraintTestValue *
+_readConstraintTestValue(void)
+{
+	ConstraintTestValue *local_node;
+	char   *token;
+	int		length;
+
+	local_node = makeNode(ConstraintTestValue);
+	token = pg_strtok(&length); /* eat :typeid */
+	token = pg_strtok(&length); /* get typeid */
+	local_node->typeId = atooid(token);
+	token = pg_strtok(&length); /* eat :typemod */
+	token = pg_strtok(&length); /* get typemod */
+	local_node->typeMod = atoi(token);
+
+	return local_node;
+}
+
+/* ----------------
+ *		_readDomainConstraintValue
+ *
+ *	DomainConstraintValue is a subclass of Node
+ * ----------------
+ */
+static DomainConstraintValue *
+_readDomainConstraintValue(void)
+{
+	DomainConstraintValue *local_node;
+
+	local_node = makeNode(DomainConstraintValue);
 
 	return local_node;
 }
@@ -2300,6 +2344,10 @@ parsePlanString(void)
 		return_value = _readBooleanTest();
 	else if (length == 14 && strncmp(token, "CONSTRAINTTEST", length) == 0)
 		return_value = _readConstraintTest();
+	else if (length == 21 && strncmp(token, "DOMAINCONSTRAINTVALUE", length) == 0)
+		return_value = _readDomainConstraintValue();
+	else if (length == 19 && strncmp(token, "CONSTRAINTTESTVALUE", length) == 0)
+		return_value = _readConstraintTestValue();
 	else
 		elog(ERROR, "badly formatted planstring \"%.10s\"...", token);
 

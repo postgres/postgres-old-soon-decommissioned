@@ -1971,15 +1971,32 @@ _equalConstraintTest(ConstraintTest *a, ConstraintTest *b)
 		return false;
 	if (!equalstr(a->name, b->name))
 		return false;
+	if (!equalstr(a->domname, b->domname))
+		return false;
 	if (!equal(a->check_expr, b->check_expr))
 		return false;
+	return true;
+}
+
+static bool
+_equalConstraintTestValue(ConstraintTestValue *a, ConstraintTestValue *b)
+{
+	if (a->typeId != b->typeId)
+		return false;
+	if (a->typeMod != b->typeMod)
+		return false;
+	return true;
+}
+
+static bool
+_equalDomainConstraintValue(DomainConstraintValue *a, DomainConstraintValue *b)
+{
 	return true;
 }
 
 /*
  * Stuff from pg_list.h
  */
-
 static bool
 _equalValue(Value *a, Value *b)
 {
@@ -2438,6 +2455,9 @@ equal(void *a, void *b)
 		case T_ConstraintTest:
 			retval = _equalConstraintTest(a, b);
 			break;
+		case T_ConstraintTestValue:
+			retval = _equalConstraintTestValue(a, b);
+			break;
 		case T_FkConstraint:
 			retval = _equalFkConstraint(a, b);
 			break;
@@ -2449,6 +2469,9 @@ equal(void *a, void *b)
 			break;
 		case T_InsertDefault:
 			retval = _equalInsertDefault(a, b);
+			break;
+		case T_DomainConstraintValue:
+			retval = _equalDomainConstraintValue(a, b);
 			break;
 
 		default:

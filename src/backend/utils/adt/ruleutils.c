@@ -2226,6 +2226,12 @@ get_rule_expr(Node *node, deparse_context *context,
 			}
 			break;
 
+		case T_ConstraintTestValue:
+			{
+				appendStringInfo(buf, "VALUE");
+			}
+			break;
+
 		case T_SubLink:
 			get_sublink_expr(node, context);
 			break;

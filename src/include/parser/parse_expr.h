@@ -21,7 +21,8 @@
 extern int	max_expr_depth;
 extern bool Transform_null_equals;
 
-extern Node *transformExpr(ParseState *pstate, Node *expr);
+
+extern Node *transformExpr(ParseState *pstate, Node *expr, ConstraintTestValue *domVal);
 extern Oid	exprType(Node *expr);
 extern int32 exprTypmod(Node *expr);
 extern bool exprIsLengthCoercion(Node *expr, int32 *coercedTypmod);

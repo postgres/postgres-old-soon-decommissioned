@@ -393,7 +393,7 @@ static void doNegateFloat(Value *v);
 	UNENCRYPTED UNION UNIQUE UNKNOWN UNLISTEN UNTIL
 	UPDATE USAGE USER USING
 
-	VACUUM VALID VALIDATOR VALUES VARCHAR VARYING
+	VACUUM VALID VALIDATOR VALUE VALUES VARCHAR VARYING
 	VERBOSE VERSION VIEW VOLATILE
 
 	WHEN WHERE WITH WITHOUT WORK WRITE
@@ -6406,6 +6406,11 @@ c_expr:		columnref								{ $$ = (Node *) $1; }
 					n->subselect = $2;
 					$$ = (Node *)n;
 				}
+			| VALUE
+				{
+					DomainConstraintValue *n = makeNode(DomainConstraintValue);
+					$$ = (Node *)n;
+				}
 		;
 
 /*
@@ -7315,6 +7320,7 @@ reserved_keyword:
 			| UNIQUE
 			| USER
 			| USING
+			| VALUE
 			| WHEN
 			| WHERE
 		;

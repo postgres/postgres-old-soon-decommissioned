@@ -200,16 +200,6 @@ CREATE TABLE countrylist (id INT4, country country_code);
   </para>
  </refsect1>
 
- <refsect1 id="SQL-CREATEDOMAIN-compatibility">
-  <title>Compatibility</title>
-
-  <para>
-   SQL99 defines CREATE DOMAIN, but says that the only allowed constraint
-   type is CHECK constraints.  CHECK constraints for domains are not yet
-   supported by <productname>PostgreSQL</productname>.
-  </para>
- </refsect1>
-
  <refsect1 id="SQL-CREATEDOMAIN-see-also">
   <title>See Also</title>
 

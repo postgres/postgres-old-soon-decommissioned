@@ -2401,7 +2401,7 @@ transformExecuteStmt(ParseState *pstate, ExecuteStmt *stmt)
 			Oid			expected_type_id,
 						given_type_id;
 
-			expr = transformExpr(pstate, expr);
+			expr = transformExpr(pstate, expr, NULL);
 
 			/* Cannot contain subselects or aggregates */
 			if (contain_subplans(expr))

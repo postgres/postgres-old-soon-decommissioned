@@ -1926,6 +1926,8 @@ expression_tree_walker(Node *node,
 			if (walker(((ConstraintTest *) node)->arg, context))
 				return true;
 			return walker(((ConstraintTest *) node)->check_expr, context);
+		case T_ConstraintTestValue:
+			break;
 		case T_SubLink:
 			{
 				SubLink    *sublink = (SubLink *) node;
@@ -2307,6 +2309,15 @@ expression_tree_mutator(Node *node,
 				FLATCOPY(newnode, ctest, ConstraintTest);
 				MUTATE(newnode->arg, ctest->arg, Node *);
 				MUTATE(newnode->check_expr, ctest->check_expr, Node *);
+				return (Node *) newnode;
+			}
+			break;
+		case T_ConstraintTestValue:
+			{
+				ConstraintTestValue *ctest = (ConstraintTestValue *) node;
+				ConstraintTestValue *newnode;
+
+				FLATCOPY(newnode, ctest, ConstraintTestValue);
 				return (Node *) newnode;
 			}
 			break;

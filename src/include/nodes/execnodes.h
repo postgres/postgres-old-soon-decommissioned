@@ -113,6 +113,13 @@ typedef struct ExprContext
 	Datum	   *ecxt_aggvalues; /* precomputed values for Aggref nodes */
 	bool	   *ecxt_aggnulls;	/* null flags for Aggref nodes */
 
+	/*
+	 * Carry the domain value through the executor for application
+	 * in a domain constraint
+	 */
+	Datum		domainValue_datum;
+	bool		domainValue_isNull;
+
 	/* Functions to call back when ExprContext is shut down */
 	ExprContext_CB *ecxt_callbacks;
 } ExprContext;
