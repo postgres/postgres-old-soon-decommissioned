@@ -119,7 +119,7 @@ main(int argc, char *const argv[])
 				verbose = false,
 				out_option = 0;
 	struct _include_path *ip;
-	char	   *progname;
+	const char *progname;
 
 	progname = get_progname(argv[0]);
 

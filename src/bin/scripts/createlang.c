@@ -33,7 +33,7 @@ main(int argc, char *argv[])
 		{NULL, 0, NULL, 0}
 	};
 
-	char	   *progname;
+	const char *progname;
 	int			optindex;
 	int			c;
 

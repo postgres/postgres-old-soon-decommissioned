@@ -75,7 +75,7 @@ main(int argc, char *argv[])
 	char		ckpttime_str[128];
 	char		sysident_str[32];
 	char	   *strftime_fmt = "%c";
-	char	   *progname;
+	const char *progname;
 
 	setlocale(LC_ALL, "");
 #ifdef ENABLE_NLS

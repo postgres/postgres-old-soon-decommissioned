@@ -75,7 +75,7 @@ static ControlFileData ControlFile;		/* pg_control values */
 static uint32 newXlogId,
 			newXlogSeg;			/* ID/Segment of new XLOG segment */
 static bool guessed = false;	/* T if we had to guess at any values */
-static char *progname;
+static const char *progname;
 
 static bool ReadControlFile(void);
 static void GuessControlValues(void);

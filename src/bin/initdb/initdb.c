@@ -93,7 +93,7 @@ bool		show_setting = false;
 
 
 /* internal vars */
-char	   *progname;
+const char *progname;
 char	   *postgres;
 char	   *encodingid = "0";
 char	   *bki_file;
@@ -1932,7 +1932,7 @@ main(int argc, char *argv[])
 	sprintf(pgdenv, "PGDATA=%s", pg_data);
 	putenv(pgdenv);
 
-	if ((ret = find_other_binary(backendbin, argv[0], progname, "postgres",
+	if ((ret = find_other_exec(backendbin, argv[0], "postgres",
 						   PG_VERSIONSTR)) < 0)
 	{
 		if (ret == -1)

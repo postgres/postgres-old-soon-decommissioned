@@ -428,7 +428,7 @@ static char *dequote_file_name(char *text, char quote_char);
 void
 initialize_readline(void)
 {
-	rl_readline_name = pset.progname;
+	rl_readline_name = (char *)pset.progname;
 	rl_attempted_completion_function = (void *) psql_completion;
 
 	rl_basic_word_break_characters = "\t\n@$><=;|&{( ";

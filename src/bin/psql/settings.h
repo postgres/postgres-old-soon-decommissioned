@@ -42,7 +42,7 @@ typedef struct _psqlSettings
 								 * loop */
 	bool		cur_cmd_interactive;
 
-	char	   *progname;		/* in case you renamed psql */
+	const char *progname;		/* in case you renamed psql */
 	char	   *inputfile;		/* for error reporting */
 	unsigned	lineno;			/* also for error reporting */
 
