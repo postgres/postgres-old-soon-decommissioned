@@ -1825,7 +1825,7 @@ SET ENABLE_SEQSCAN TO OFF;
         <command>EXECUTE</> only displays the plan name, not the
         prepared query. Server-side languages like
         <application>PL/pgSQL</> that store functions in a cache only
-        display their queries on first function call. superusers can
+        display their queries on first function call. Only superusers can
         turn off this option if it is enabled by the administrator.
        </para>
       </listitem>
