@@ -151,7 +151,7 @@ InitProcGlobal(int maxBackends)
 			if (!proc)
 				ereport(FATAL,
 						(errcode(ERRCODE_OUT_OF_MEMORY),
-						 errmsg("out of memory")));
+						 errmsg("out of shared memory")));
 			MemSet(proc, 0, sizeof(PGPROC));
 			PGSemaphoreCreate(&proc->sem);
 			proc->links.next = ProcGlobal->freeProcs;
@@ -167,7 +167,7 @@ InitProcGlobal(int maxBackends)
 		if (!DummyProc)
 			ereport(FATAL,
 					(errcode(ERRCODE_OUT_OF_MEMORY),
-					 errmsg("out of memory")));
+					 errmsg("out of shared memory")));
 		MemSet(DummyProc, 0, sizeof(PGPROC));
 		DummyProc->pid = 0;		/* marks DummyProc as not in use */
 		PGSemaphoreCreate(&DummyProc->sem);

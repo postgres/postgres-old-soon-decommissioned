@@ -167,7 +167,7 @@ ShmemAlloc(Size size)
 	if (!newSpace)
 		ereport(WARNING,
 				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
+				 errmsg("out of shared memory")));
 
 	return newSpace;
 }
@@ -226,7 +226,7 @@ InitShmemIndex(void)
 	if (!result)
 		ereport(FATAL,
 				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
+				 errmsg("out of shared memory")));
 
 	Assert(ShmemBootstrap && !found);
 
@@ -346,7 +346,7 @@ ShmemInitStruct(const char *name, Size size, bool *foundPtr)
 		LWLockRelease(ShmemIndexLock);
 		ereport(ERROR,
 				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
+				 errmsg("out of shared memory")));
 		return NULL;
 	}
 

@@ -476,8 +476,8 @@ LockAcquire(LOCKMETHOD lockmethod, LOCKTAG *locktag,
 		LWLockRelease(masterLock);
 		ereport(ERROR,
 				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
-		return FALSE;
+				 errmsg("out of shared memory"),
+				 errhint("You may need to increase max_locks_per_transaction.")));
 	}
 
 	/*
@@ -524,8 +524,8 @@ LockAcquire(LOCKMETHOD lockmethod, LOCKTAG *locktag,
 		LWLockRelease(masterLock);
 		ereport(ERROR,
 				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
-		return FALSE;
+				 errmsg("out of shared memory"),
+				 errhint("You may need to increase max_locks_per_transaction.")));
 	}
 
 	/*
