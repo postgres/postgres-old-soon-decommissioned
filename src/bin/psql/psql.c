@@ -791,7 +791,7 @@ do_connect(const char *new_dbname, PsqlSettings * settings)
 	    PQfinish(olddb);
 	    free(settings->prompt);
 	    settings->prompt = malloc(strlen(PQdb(settings->db)) + 10);
-	    sprintf(settings->prompt, "%s%s ", PQdb(settings->db), PROMPT);
+	    sprintf(settings->prompt, "%s%s", PQdb(settings->db), PROMPT);
 	}
     }
 }
