@@ -421,6 +421,7 @@ CreateFunction(CreateFunctionStmt *stmt)
 	outin_ratio = OUTIN_RATIO;
 	isImplicit = false;
 	isStrict = false;
+	security = false;
 	volatility = PROVOLATILE_VOLATILE;
 
 	/* override attributes from explicit list */
@@ -489,7 +490,7 @@ CreateFunction(CreateFunctionStmt *stmt)
 					prosrc_str, /* converted to text later */
 					probin_str, /* converted to text later */
 					false,		/* not an aggregate */
-					true,		/* (obsolete "trusted") */
+					security,
 					isImplicit,
 					isStrict,
 					volatility,

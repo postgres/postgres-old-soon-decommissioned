@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+Functions can be executed with the privileges of the owner
 Syntax of CREATE FUNCTION has been extended to resemble SQL99
 Effects of SET within a transaction block now roll back if transaction aborts
 New SET LOCAL syntax sets a parameter for the life of the current transaction

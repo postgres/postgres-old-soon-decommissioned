@@ -4260,14 +4260,14 @@ SELECT NULLIF(value, '(none)') ...
    </indexterm>
 
    <para>
-    The <function>session_user</> is the user that initiated a database
-    connection; it is fixed for the duration of that connection. The
-    <function>current_user</> is the user identifier that is applicable
-    for permission checking. Currently it is always equal to the session
-    user, but in the future there might be <quote>setuid</> functions and
-    other facilities to allow the current user to change temporarily.
-    In Unix parlance, the session user is the <quote>real user</>
-    and the current user is the <quote>effective user</>.
+    The <function>session_user</> is the user that initiated a
+    database connection; it is fixed for the duration of that
+    connection. The <function>current_user</> is the user identifier
+    that is applicable for permission checking. Normally, it is equal
+    to the session user, but it changes during the execution of
+    functions with the attribute <literal>SECURITY DEFINER</literal>.
+    In Unix parlance, the session user is the <quote>real user</> and
+    the current user is the <quote>effective user</>.
    </para>
 
    <note>
