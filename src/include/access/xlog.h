@@ -35,18 +35,18 @@ typedef struct XLogRecord
 {
 	crc64		xl_crc;			/* CRC for this record */
 	XLogRecPtr	xl_prev;		/* ptr to previous record in log */
-	XLogRecPtr	xl_xact_prev;	/* ptr to previous record of this xact */
 	TransactionId xl_xid;		/* xact id */
-	uint16		xl_len;			/* total len of rmgr data */
+	uint32		xl_len;			/* total len of rmgr data */
 	uint8		xl_info;		/* flag bits, see below */
 	RmgrId		xl_rmid;		/* resource manager for this record */
+
+	/* Depending on MAXALIGN, there are either 2 or 6 wasted bytes here */
 
 	/* ACTUAL LOG DATA FOLLOWS AT END OF STRUCT */
 
 } XLogRecord;
 
 #define SizeOfXLogRecord	MAXALIGN(sizeof(XLogRecord))
-#define MAXLOGRECSZ			65535		/* the most that'll fit in xl_len */
 
 #define XLogRecGetData(record)	((char*) (record) + SizeOfXLogRecord)
 

@@ -58,7 +58,7 @@ typedef struct XLogContRecord
 /*
  * Each page of XLOG file has a header like this:
  */
-#define XLOG_PAGE_MAGIC 0xD05B	/* can be used as WAL version indicator */
+#define XLOG_PAGE_MAGIC 0xD05C	/* can be used as WAL version indicator */
 
 typedef struct XLogPageHeaderData
 {
@@ -202,13 +202,6 @@ typedef XLogLongPageHeaderData *XLogLongPageHeader;
 	snprintf(path, MAXPGPATH, "%s/%08X%08X%08X.%08X.backup", XLogDir, tli, log, seg, offset)
 
 extern char XLogDir[MAXPGPATH];
-
-/*
- * _INTL_MAXLOGRECSZ: max space needed for a record including header and
- * any backup-block data.
- */
-#define _INTL_MAXLOGRECSZ	(SizeOfXLogRecord + MAXLOGRECSZ + \
-							 XLR_MAX_BKP_BLOCKS * (sizeof(BkpBlock) + BLCKSZ))
 
 
 /*

@@ -645,8 +645,6 @@ WriteEmptyXLOG(void)
 	record = (XLogRecord *) ((char *) page + SizeOfXLogLongPHD);
 	record->xl_prev.xlogid = 0;
 	record->xl_prev.xrecoff = 0;
-	record->xl_xact_prev.xlogid = 0;
-	record->xl_xact_prev.xrecoff = 0;
 	record->xl_xid = InvalidTransactionId;
 	record->xl_len = sizeof(CheckPoint);
 	record->xl_info = XLOG_CHECKPOINT_SHUTDOWN;
