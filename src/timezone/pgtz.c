@@ -303,7 +303,7 @@ void
 pg_timezone_initialize(void)
 {
 	/* Do we need to try to figure the timezone? */
-	if (strcmp(GetConfigOption("timezone"), "UNKNOWN") == 0)
+	if (pg_strcasecmp(GetConfigOption("timezone"), "UNKNOWN") == 0)
 	{
 		const char *def_tz;
 
