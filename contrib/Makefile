@@ -26,6 +26,7 @@ WANTED_DIRS = \
 		pg_logger	\
 		pg_resetxlog	\
 		pgbench		\
+		pgcrypto	\
 		rserv		\
 		rtree_gist	\
 		seg		\
@@ -41,7 +42,6 @@ WANTED_DIRS = \
 #		mac		\ (does not have a makefile)
 #		mysql		\ (does not have a makefile)
 #		oracle		\ (does not have a makefile)
-#		pgcrypto	\ (non-standard makefile)
 #		start-scripts	\ (does not have a makefile)
 #		tools		\ (does not have a makefile)
 #		xml		\ (non-standard makefile)
