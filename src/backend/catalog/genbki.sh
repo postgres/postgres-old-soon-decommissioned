@@ -91,7 +91,7 @@ BEGIN {
 # by the sed above.
 # ----------------
 /^\/\*/           { comment_level += 1; next; }
-/^*\//            { comment_level -= 1; next; }
+/^\*\//           { comment_level -= 1; next; }
 comment_level > 0 { next; }
 
 /^[ 	]*$/      { next; }
