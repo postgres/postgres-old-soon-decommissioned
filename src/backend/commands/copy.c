@@ -475,10 +475,11 @@ CopyTo(Relation rel, bool binary, bool oids, FILE *fp, char *delim, char *null_p
 
 		if (oids && !binary)
 		{
-			CopySendString(DatumGetCString(DirectFunctionCall1(oidout,
-									ObjectIdGetDatum(tuple->t_data->t_oid))),
-						   fp);
+			string = DatumGetCString(DirectFunctionCall1(oidout,
+									 ObjectIdGetDatum(tuple->t_data->t_oid)));
+			CopySendString(string, fp);
 			CopySendChar(delim[0], fp);
+			pfree(string);
 		}
 
 		for (i = 0; i < attr_count; i++)
