@@ -676,6 +676,11 @@ cppline			{space}*#(.*\\{line_end})*.*
 <C>\[			{ return('['); }
 <C>\]			{ return(']'); }
 <C>\=			{ return('='); }
+<C>"->"			{ return(S_MEMBER); } 
+<C>">>"			{ return(S_RSHIFT); } 
+<C>"<<"			{ return(S_LSHIFT); } 
+<C>"||"			{ return(S_OR); } 
+<C>"&&"			{ return(S_AND); } 
 <C>{other}		{ return S_ANYTHING; }
 
 <C>{exec_sql}{define}{space_or_nl}*	{ BEGIN(def_ident); }
