@@ -419,6 +419,9 @@ ConstructTupleDescriptor(Oid heapoid,
 	
 	((AttributeTupleForm) to)->attnum = i+1;
 	((AttributeTupleForm) to)->attcacheoff = -1;
+	
+	((AttributeTupleForm) to)->attnotnull = false;
+	((AttributeTupleForm) to)->atthasdef = false;
 
 	/* if the keytype is defined, we need to change the tuple form's
 	   atttypid & attlen field to match that of the key's type */
