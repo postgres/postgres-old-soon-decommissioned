@@ -159,11 +159,6 @@ typedef char	*Pointer;
 
 #define CppAsString(identifier)	#identifier
 #define CppConcat(x, y)		x##y
-#define CppConcat0(x, y)	x##y
-#define CppConcat1(x, y)	x##y
-#define CppConcat2(x, y)	x##y
-#define CppConcat3(x, y)	x##y
-#define CppConcat4(x, y)	x##y
 
 #else /* !HAVE_ANSI_CPP */
 
@@ -179,11 +174,6 @@ typedef char	*Pointer;
  */
 #define _priv_CppIdentity(x)x
 #define CppConcat(x, y)		_priv_CppIdentity(x)y
-#define CppConcat0(x, y)	_priv_CppIdentity(x)y
-#define CppConcat1(x, y)	_priv_CppIdentity(x)y
-#define CppConcat2(x, y)	_priv_CppIdentity(x)y
-#define CppConcat3(x, y)	_priv_CppIdentity(x)y
-#define CppConcat4(x, y)	_priv_CppIdentity(x)y
 
 #endif /* !HAVE_ANSI_CPP */
 
