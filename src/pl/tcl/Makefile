@@ -10,7 +10,7 @@ subdir = src/pl/tcl
 top_builddir = ../../..
 include ../../Makefile.global
 
-include Makefile.tcldefs
+-include Makefile.tcldefs
 
 # Find out whether Tcl was built as a shared library --- if not, we
 # can't link a shared library that depends on it, and have to forget

@@ -30,9 +30,24 @@ endif
 # For CC on IRIX, must use CC as linker/archiver of C++ libraries
 ifeq ($(PORTNAME), irix5)
   ifeq ($(CXX), CC)
-    AR = CC
-    AROPT = -ar -o
-    LD = CC
+    AR		:= CC
+    AROPT	:= -ar -o
+    LD		:= CC
+  endif
+endif
+# Same for Solaris with native compiler
+ifeq ($(PORTNAME), solaris_sparc)
+  ifeq ($(CXX), CC)
+    AR		:= CC
+    AROPT	:= -xar -o
+    LD		:= CC
+  endif
+endif
+ifeq ($(PORTNAME), solaris_i386)
+  ifeq ($(CXX), CC)
+    AR		:= CC
+    AROPT	:= -xar -o
+    LD		:= CC
   endif
 endif
 

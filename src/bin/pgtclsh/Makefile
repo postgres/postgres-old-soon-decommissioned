@@ -16,9 +16,9 @@ include ../../Makefile.global
 #
 # Include definitions from the tclConfig.sh file
 #
-include Makefile.tcldefs
+-include Makefile.tcldefs
 ifeq ($(USE_TK), true)
-include Makefile.tkdefs
+-include Makefile.tkdefs
 endif
 
 CFLAGS+= $(X_CFLAGS) -I$(LIBPGTCLDIR)
