@@ -205,10 +205,13 @@ OSX = osx # (may be called sx or sgml2xml on some systems)
 XSLTPROC = xsltproc
 
 postgres.xml: postgres.sgml $(GENERATED_SGML)
-	$(OSX) -x lower $< >$@
+	$(OSX) -x lower $< | \
+	  sed -e 's/\[\(lt\|gt\|amp\|nbsp\|copy\|quot\|ouml\|uuml\|egrave\) *\]/\&\1;/g' \
+	      -e '1a\' -e '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">' \
+	  >$@
 
 testxml: stylesheet.xsl postgres.xml
-	$(XSLTPROC) $^
+	$(XSLTPROC) $(XSLTPROCFLAGS) --stringparam pg.version '$(VERSION)' $^
 
 
 ##
