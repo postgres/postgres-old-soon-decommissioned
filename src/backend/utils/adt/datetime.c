@@ -30,13 +30,13 @@
 #include "utils/datetime.h"
 
 static int DecodeNumber(int flen, char *field,
-			 int fmask, int *tmask,
-			 struct tm * tm, double *fsec, int *is2digits);
+						int fmask, int *tmask,
+						struct tm * tm, double *fsec, int *is2digits);
 static int DecodeNumberField(int len, char *str,
-				  int fmask, int *tmask,
-				  struct tm * tm, double *fsec, int *is2digits);
+							 int fmask, int *tmask,
+							 struct tm * tm, double *fsec, int *is2digits);
 static int DecodeTime(char *str, int fmask, int *tmask,
-		   struct tm * tm, double *fsec);
+					  struct tm * tm, double *fsec);
 static int	DecodeTimezone(char *str, int *tzp);
 static datetkn *datebsearch(char *key, datetkn *base, unsigned int nel);
 static int DecodeDate(char *str, int fmask, int *tmask, struct tm * tm);
