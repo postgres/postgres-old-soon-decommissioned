@@ -356,11 +356,21 @@ clause_relids_vars(Node *clause, List **relids, List **vars)
 
     foreach (i, clvars) {
 	Var *var = (Var *)lfirst(i);
+	List *vi;
 
 	if (!intMember(var->varno, varno_list)) {
 	    varno_list = lappendi(varno_list, var->varno);
-	    var_list = lappend(var_list, var);
 	}
+	foreach (vi, var_list)
+	{
+	    Var *in_list = (Var *)lfirst(vi);
+	    
+	    if ( in_list->varno == var->varno && 
+	    		in_list->varattno == var->varattno )
+	    	break;
+	}
+	if ( vi == NIL )
+	    var_list = lappend(var_list, var);
     }
 
     *relids = varno_list;
