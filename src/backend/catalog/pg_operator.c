@@ -35,7 +35,7 @@
 #include "fmgr.h"
 
 static Oid OperatorGetWithOpenRelation(Relation pg_operator_desc,
-				       char *operatorName,
+				       const char *operatorName,
 				       Oid leftObjectId,
 				       Oid rightObjectId );
 static Oid OperatorGet(char *operatorName,
@@ -79,7 +79,7 @@ static void OperatorUpd(Oid baseId , Oid commId , Oid negId );
  */
 static Oid
 OperatorGetWithOpenRelation(Relation pg_operator_desc,
-			    char *operatorName,
+			    const char *operatorName,
 			    Oid leftObjectId,
 			    Oid rightObjectId)
 {

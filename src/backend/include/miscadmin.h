@@ -186,8 +186,8 @@ extern ProcessingMode GetProcessingMode(void);
 /*
  * Prototypes for utils/init/magic.c
  */
-extern int DatabaseMetaGunkIsConsistent(char database[], char path[]);
-extern int ValidPgVersion(char path []);
-extern void SetPgVersion(char path []);
+extern int DatabaseMetaGunkIsConsistent(const char *database, char *path);
+extern int ValidPgVersion(const char *path);
+extern void SetPgVersion(const char *path);
 
 #endif	/* MISCADMIN_H */
