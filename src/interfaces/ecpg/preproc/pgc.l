@@ -540,7 +540,7 @@ cppline			{space}*#(.*\\{space})+.*
 						yylval.str = mm_strdup(yytext);
 						return FCONST;
 					}
-<SQL>:{identifier}(("->"|\.){identifier})*	{
+<SQL>:{identifier}((("->"|\.){identifier})|(\[{array}\]))*	{
 						yylval.str = mm_strdup(yytext+1);
 						return(CVARIABLE);
 					}
