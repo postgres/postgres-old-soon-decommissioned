@@ -720,7 +720,11 @@ static const char *useful_strerror(int errnum)
 	static char	errorstr_buf[48];
 	char	   *str;
 
-	str = strerror(errnum);
+	if (errnum == ERANGE)
+		/* small trick to save creating many regression test result files */
+		str = gettext("Numerical result out of range");
+	else
+		str = strerror(errnum);
 
 	/*
 	 * Some strerror()s return an empty string for out-of-range errno.
