@@ -619,7 +619,7 @@ Async_NotifyFrontEnd()
 		if (whereToSendOutput == Remote)
 		{
 			pq_putnchar("A", 1);
-			pq_putint(ourpid, 4);
+			pq_putint(ourpid, sizeof(ourpid));
 			pq_putstr(DatumGetName(d)->data);
 			pq_flush();
 		}

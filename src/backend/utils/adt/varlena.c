@@ -132,7 +132,7 @@ byteaout(struct varlena * vlena)
 		else if (isascii(*vp) && isprint(*vp))
 			len++;
 		else
-			len += 4;
+			len += VARHDRSZ;
 	rp = result = (char *) palloc(len);
 	vp = vlena->vl_dat;
 	for (i = vlena->vl_len - sizeof(int32); i != 0; i--)		/* varlena? */

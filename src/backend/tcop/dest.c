@@ -192,9 +192,9 @@ NullCommand(CommandDest dest)
 					 nPtr = (PQNotifyList *) SLGetSucc(&nPtr->Node))
 				{
 					pq_putnchar("A", 1);
-					pq_putint(0, 4);
+					pq_putint(0, sizeof(int4));
 					pq_putstr(nPtr->relname);
-					pq_putint(nPtr->be_pid, 4);
+					pq_putint(nPtr->be_pid, sizeof(nPtr->be_pid));
 					PQremoveNotify(nPtr);
 				}
 				pq_flush();
@@ -283,8 +283,8 @@ BeginCommand(char *pname,
 				{
 					pq_putstr(attrs[i]->attname.data);	/* if 16 char name
 														 * oops.. */
-					pq_putint((int) attrs[i]->atttypid, 4);
-					pq_putint(attrs[i]->attlen, 2);
+					pq_putint((int) attrs[i]->atttypid, sizeof(attrs[i]->atttypid));
+					pq_putint(attrs[i]->attlen, sizeof(attrs[i]->attlen));
 				}
 			}
 			break;

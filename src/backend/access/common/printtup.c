@@ -124,7 +124,7 @@ printtup(HeapTuple tuple, TupleDesc typeinfo)
 		{
 			outputstr = fmgr(typoutput, attr,
 							 gettypelem(typeinfo->attrs[i]->atttypid));
-			pq_putint(strlen(outputstr) + 4, 4);
+			pq_putint(strlen(outputstr) + VARHDRSZ, VARHDRSZ);
 			pq_putnchar(outputstr, strlen(outputstr));
 			pfree(outputstr);
 		}

@@ -101,7 +101,7 @@ SendFunctionResult(Oid fid,		/* function id */
 		{						/* by-reference ... */
 			if (retlen < 0)
 			{					/* ... varlena */
-				pq_putint(VARSIZE(retval) - VARHDRSZ, 4);
+				pq_putint(VARSIZE(retval) - VARHDRSZ, VARHDRSZ);
 				pq_putnchar(VARDATA(retval), VARSIZE(retval) - VARHDRSZ);
 			}
 			else

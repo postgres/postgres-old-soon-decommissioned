@@ -1671,7 +1671,7 @@ getTableAttrs(TableInfo *tblinfo, int numTables)
 			tblinfo[i].typnames[j] = strdup(PQgetvalue(res, j, i_typname));
 			tblinfo[i].attlen[j] = atoi(PQgetvalue(res, j, i_attlen));
 			if (tblinfo[i].attlen[j] > 0)
-				tblinfo[i].attlen[j] = tblinfo[i].attlen[j] - 4;
+				tblinfo[i].attlen[j] = tblinfo[i].attlen[j] - VARHDRSZ;
 			tblinfo[i].inhAttrs[j] = 0; /* this flag is set in
 										 * flagInhAttrs() */
 			tblinfo[i].notnull[j] = (PQgetvalue(res, j, i_attnotnull)[0] == 't') ? true : false;
