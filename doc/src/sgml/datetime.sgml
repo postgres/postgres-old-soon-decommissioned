@@ -9,6 +9,10 @@ Date/time details
  <sect1 id="timezones">
   <title>Time Zones</title>
 
+  <indexterm zone="timezones">
+   <primary>time zones</primary>
+  </indexterm>
+
   <para>
    <productname>Postgres</productname> must have internal tabular
    information for time zone decoding, since there is no *nix standard

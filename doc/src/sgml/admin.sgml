@@ -38,6 +38,7 @@ $Header$
 
 <![%single-book;[
   &biblio;
+  &bookindex;
 ]]>
 </book>
 

@@ -3,6 +3,10 @@
 <chapter id="arrays">
  <title>Arrays</title>
 
+ <indexterm>
+  <primary>arrays</primary>
+ </indexterm>
+
  <para>
   <productname>Postgres</productname> allows columns of a table to be
   defined as variable-length multi-dimensional arrays. Arrays of any

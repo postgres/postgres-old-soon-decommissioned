@@ -34,6 +34,10 @@ $Header$
 
  &biblio;
 
+ <![%single-book;[
+ &bookindex;
+ ]]>
+
 </book>
 
 <!-- Keep this comment at the end of the file

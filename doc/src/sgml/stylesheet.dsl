@@ -58,6 +58,8 @@
 (define %html-header-tags% 
   (list (list "META" '("NAME" "creation") (list "CONTENT" (time->string (time) #t)))))
 
+(define html-index #t)
+
 ]]> <!-- %output-html -->
 
 <![ %output-print; [

@@ -5,6 +5,10 @@ $Header$
 <chapter id="plpgsql"> 
   <title>PL/pgSQL - <acronym>SQL</acronym> Procedural Language</title>
 
+ <indexterm zone="plpgsql">
+  <primary>PL/pgSQL</primary>
+ </indexterm>
+
  <para>
   PL/pgSQL is a loadable procedural language for the
   <productname>Postgres</productname> database system.
@@ -1689,6 +1693,14 @@ CREATE FUNCTION c_overpaid (EMP, integer) RETURNS boolean AS '
   </sect1info> 
 
   <title>Porting from Oracle PL/SQL</title>
+
+  <indexterm>
+   <primary>Oracle</primary>
+  </indexterm>
+
+  <indexterm>
+   <primary>PL/SQL</primary>
+  </indexterm>
 
   <note>
    <title>Author</title>

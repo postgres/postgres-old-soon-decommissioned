@@ -5,6 +5,11 @@ $Header$
  <chapter id="xaggr">
   <title>Extending <acronym>SQL</acronym>: Aggregates</title>
 
+  <indexterm zone="xaggr">
+   <primary>aggregate functions</primary>
+   <secondary>extending</secondary>
+  </indexterm>
+
   <para>
    Aggregate functions  in <productname>Postgres</productname> 
    are expressed as <firstterm>state values</firstterm>

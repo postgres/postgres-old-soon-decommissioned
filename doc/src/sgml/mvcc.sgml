@@ -5,6 +5,10 @@ $Header$
  <chapter id="mvcc">
   <title>Multi-Version Concurrency Control</title>
 
+  <indexterm>
+   <primary>concurrency</primary>
+  </indexterm>
+
   <abstract>
    <para>
     Multi-Version Concurrency Control
@@ -55,6 +59,7 @@ $Header$
      <varlistentry>
       <term>
        dirty reads
+       <indexterm><primary>dirty reads</primary></indexterm>
       </term>
      <listitem>
       <para>
@@ -66,6 +71,7 @@ $Header$
      <varlistentry>
       <term>
        non-repeatable reads
+       <indexterm><primary>non-repeatable reads</primary></indexterm>
       </term>
      <listitem>
       <para>
@@ -79,6 +85,7 @@ $Header$
      <varlistentry>
       <term>
        phantom read
+       <indexterm><primary>phantom reads</primary></indexterm>
       </term>
      <listitem>
       <para>
@@ -92,6 +99,9 @@ $Header$
    </para>
 
    <para>
+    <indexterm>
+     <primary>isolation levels</primary>
+    </indexterm>
     The four isolation levels and the corresponding behaviors are described below.
 
     <table tocentry="1">
@@ -188,6 +198,11 @@ $Header$
   <sect1 id="xact-read-committed">
    <title>Read Committed Isolation Level</title>
 
+   <indexterm>
+    <primary>isolation levels</primary>
+    <secondary>read committed</secondary>
+   </indexterm>
+
    <para>
     <firstterm>Read Committed</firstterm>
     is the default isolation level in <productname>Postgres</productname>. 
@@ -233,6 +248,11 @@ $Header$
 
   <sect1 id="xact-serializable">
    <title>Serializable Isolation Level</title>
+
+   <indexterm>
+    <primary>isolation levels</primary>
+    <secondary>read serializable</secondary>
+   </indexterm>
 
    <para>
     <firstterm>Serializable</firstterm> provides the highest transaction
@@ -349,6 +369,10 @@ ERROR:  Can't serialize access due to concurrent update
 
   <sect1 id="locking-tables">
    <title>Locking and Tables</title>
+
+   <indexterm>
+    <primary>locking</primary>
+   </indexterm>
 
    <para>
     <productname>Postgres</productname>
