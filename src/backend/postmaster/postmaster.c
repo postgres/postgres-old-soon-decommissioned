@@ -1305,7 +1305,6 @@ ConnCreate(int serverFd)
 		 * using the same salt...
 		 */
 		RandomSalt(port->cryptSalt, port->md5Salt);
-		port->pktInfo.state = Idle;
 	}
 
 	return port;
