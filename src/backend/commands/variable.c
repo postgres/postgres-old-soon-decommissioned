@@ -213,7 +213,7 @@ parse_datestyle_internal(char *value)
 			DateStyle = USE_SQL_DATES;
 			dcnt++;
 		}
-		else if (!strcasecmp(tok, "POSTGRES"))
+		else if (!strncasecmp(tok, "POSTGRESQL", 8))
 		{
 			DateStyle = USE_POSTGRES_DATES;
 			dcnt++;
