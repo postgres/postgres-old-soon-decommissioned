@@ -204,7 +204,7 @@ print_expr(Node *expr, List *rtable)
 
 /*
  * print_pathkeys -
- *	  pathkeys list of list of Var's
+ *	  pathkeys list of list of PathKeyItems
  */
 void
 print_pathkeys(List *pathkeys, List *rtable)
@@ -220,9 +220,9 @@ print_pathkeys(List *pathkeys, List *rtable)
 		printf("(");
 		foreach(k, pathkey)
 		{
-			Node	   *var = lfirst(k);
+			PathKeyItem	*item = lfirst(k);
 
-			print_expr(var, rtable);
+			print_expr(item->key, rtable);
 			if (lnext(k))
 				printf(", ");
 		}

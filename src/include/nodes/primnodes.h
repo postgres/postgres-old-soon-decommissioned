@@ -256,6 +256,20 @@ typedef struct Func
 } Func;
 
 /* ----------------
+ * Iter
+ *		can anyone explain what this is for?  Seems to have something to do
+ *		with evaluation of functions that return sets...
+ * ----------------
+ */
+typedef struct Iter
+{
+	NodeTag		type;
+	Node	   *iterexpr;
+	Oid			itertype;		/* type of the iter expr (use for type
+								 * checking) */
+} Iter;
+
+/* ----------------
  * Aggref
  *		aggname			- name of the aggregate
  *		basetype		- base type Oid of the aggregate

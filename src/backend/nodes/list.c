@@ -448,6 +448,31 @@ intLispRemove(int elem, List *list)
 #endif
 
 /*
+ * ltruncate
+ *		Truncate a list to n elements.
+ *		Does nothing if n >= length(list).
+ *		NB: the list is modified in-place!
+ */
+List *
+ltruncate(int n, List *list)
+{
+	List	*ptr;
+
+	if (n <= 0)
+		return NIL;				/* truncate to zero length */
+
+	foreach(ptr, list)
+	{
+		if (--n == 0)
+		{
+			lnext(ptr) = NIL;
+			break;
+		}
+	}
+	return list;
+}
+
+/*
  *	set_difference
  *
  *	Return l1 without the elements in l2.

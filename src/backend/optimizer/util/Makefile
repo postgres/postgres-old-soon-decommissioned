@@ -14,7 +14,7 @@ include ../../../Makefile.global
 CFLAGS += -I../..
 
 OBJS = restrictinfo.o clauses.o indexnode.o plancat.o \
-       joininfo.o keys.o ordering.o pathnode.o relnode.o tlist.o var.o
+       joininfo.o pathnode.o relnode.o tlist.o var.o
 
 # not ready yet: predmig.o xfunc.o
 

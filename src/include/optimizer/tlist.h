@@ -30,4 +30,7 @@ extern List *flatten_tlist(List *tlist);
 extern List *flatten_tlist_vars(List *full_tlist,
 				   List *flat_tlist);
 
+extern Var *get_expr(TargetEntry *tle);
+extern Var *get_groupclause_expr(GroupClause *groupClause, List *targetList);
+
 #endif	 /* TLIST_H */
