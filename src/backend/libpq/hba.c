@@ -235,6 +235,10 @@ parse_hba_auth(List *line, ProtocolVersion proto, UserAuth *userauth_p,
 			*userauth_p = uaMD5;
 		else if (strcmp(token, "crypt") == 0)
 			*userauth_p = uaCrypt;
+#ifdef USE_PAM
+		else if (strcmp(token, "pam") == 0)
+			*userauth_p = uaPAM;
+#endif
 		else
 			*error_p = true;
 		line = lnext(line);
@@ -277,7 +281,6 @@ parse_hba(List *line, hbaPort *port, bool *found_p, bool *error_p)
 	line_number = lfirsti(line);
 	line = lnext(line);
 	Assert(line != NIL);
-
 	/* Check the record type. */
 	token = lfirst(line);
 	if (strcmp(token, "local") == 0)

@@ -63,6 +63,9 @@
 /* Define to build with (Open)SSL support (--with-openssl[=DIR]) */
 #undef USE_SSL
 
+/* Define to build with PAM Support */
+#undef USE_PAM
+
 /* 
  * DEF_PGPORT is the TCP port number on which the Postmaster listens and
  * which clients will try to connect to.  This is just a default value;
