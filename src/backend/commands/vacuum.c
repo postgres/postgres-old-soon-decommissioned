@@ -313,7 +313,7 @@ vc_getrels(NameData *VacRelP)
 	}
 
 	/* don't vacuum large objects for now - something breaks when we do */
-	if ( (strlen(rname) > 5) && rname[0] == 'x' &&
+	if ( (strlen(rname) >= 5) && rname[0] == 'x' &&
 		rname[1] == 'i' && rname[2] == 'n' &&
 		(rname[3] == 'v' || rname[3] == 'x') &&
 		rname[4] >= '0' && rname[4] <= '9')
