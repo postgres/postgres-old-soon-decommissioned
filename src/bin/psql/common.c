@@ -329,7 +329,6 @@ PSQLexec(const char *query)
 			SetVariable(pset.vars, "DBNAME", NULL);
 			SetVariable(pset.vars, "HOST", NULL);
 			SetVariable(pset.vars, "PORT", NULL);
-			SetVariable(pset.vars, "UNIXSOCKET", NULL);
 			SetVariable(pset.vars, "USER", NULL);
 			SetVariable(pset.vars, "ENCODING", NULL);
 			return NULL;
@@ -509,7 +508,6 @@ SendQuery(const char *query)
 				SetVariable(pset.vars, "DBNAME", NULL);
 				SetVariable(pset.vars, "HOST", NULL);
 				SetVariable(pset.vars, "PORT", NULL);
-				SetVariable(pset.vars, "UNIXSOCKET", NULL);
 				SetVariable(pset.vars, "USER", NULL);
 				SetVariable(pset.vars, "ENCODING", NULL);
 				return false;

@@ -190,11 +190,6 @@ get_prompt(promptStatus_t status)
 					if (pset.db && PQport(pset.db))
 						strncpy(buf, PQport(pset.db), MAX_PROMPT_SIZE);
 					break;
-					/* DB server Unix-domain socket */
-				case '<':
-					if (pset.db && PQunixsocket(pset.db))
-						strncpy(buf, PQunixsocket(pset.db), MAX_PROMPT_SIZE);
-					break;
 					/* DB server user name */
 				case 'n':
 					if (pset.db)

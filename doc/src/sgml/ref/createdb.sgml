@@ -56,18 +56,6 @@ Postgres documentation
       </listitem>
      </varlistentry>
 
-    <varlistentry>
-      <term>-k, --unixsocket <replaceable class="parameter">path</replaceable></term>
-      <listitem>
-      <para>
-      Specifies the Unix-domain socket on which the
-      <application>postmaster</application> is running.
-      Without this option, the socket is created in <filename>/tmp</filename>
-      based on the port number.
-      </para>
-      </listitem>
-    </varlistentry>
-
      <varlistentry>
       <term>-U, --username <replaceable class="parameter">username</replaceable></term>
       <listitem>

@@ -103,16 +103,6 @@ usage(void)
 	puts(")");
 
 	puts("  -H              HTML table output mode (-P format=html)");
-
-	/* Display default Unix-domain socket */
-	env = getenv("PGUNIXSOCKET");
-	printf("  -k <path>       Specify Unix domain socket name (default: ");
-	if (env)
-		fputs(env, stdout);
-	else
-		fputs("computed from the port", stdout);
-	puts(")");
-
 	puts("  -l              List available databases, then exit");
 	puts("  -n              Disable readline");
 	puts("  -o <filename>   Send query output to filename (or |pipe)");
