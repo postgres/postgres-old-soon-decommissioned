@@ -77,6 +77,7 @@ main(int argc, char **argv)
 {
 	RestoreOptions *opts;
 	int			c;
+	int			exit_code;
 	Archive    *AH;
 	char	   *inputFileSpec;
 	extern int	optind;
@@ -323,6 +324,11 @@ main(int argc, char **argv)
 	/* Let the archiver know how noisy to be */
 	AH->verbose = opts->verbose;
 
+	/* restore keeps submitting sql commands as "pg_restore ... | psql ... "
+	 * this behavior choice could be turned into an option.
+	 */
+	AH->die_on_errors = false;
+
 	if (opts->tocFile)
 		SortTocFromFile(AH, opts);
 
@@ -331,9 +337,17 @@ main(int argc, char **argv)
 	else
 		RestoreArchive(AH, opts);
 
+	/* done, print a summary of ignored errors */
+	if (AH->n_errors)
+		fprintf(stderr, _("WARNING, errors ignored on restore: %d\n"), 
+				AH->n_errors);
+
+	/* AH may be freed in CloseArchive? */
+	exit_code = AH->n_errors? 1: 0;
+
 	CloseArchive(AH);
 
-	return 0;
+	return exit_code;
 }
 
 static void

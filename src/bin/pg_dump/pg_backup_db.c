@@ -316,8 +316,8 @@ _executeSqlCommand(ArchiveHandle *AH, PGconn *conn, PQExpBuffer qry, char *desc)
 			AH->pgCopyIn = 1;
 		}
 		else
-			die_horribly(AH, modulename, "%s: %s",
-						 desc, PQerrorMessage(AH->connection));
+			warn_or_die_horribly(AH, modulename, "%s: %s",
+								 desc, PQerrorMessage(AH->connection));
 	}
 
 	PQclear(res);

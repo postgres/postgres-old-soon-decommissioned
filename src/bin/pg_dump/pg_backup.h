@@ -57,6 +57,11 @@ typedef struct _Archive
 	int			remoteVersion;
 	int			minRemoteVersion;
 	int			maxRemoteVersion;
+
+	/* error handling */
+	bool		die_on_errors;	/* whether to die on sql errors... */
+	int			n_errors;		/* number of errors (if no die) */
+
 	/* The rest is private */
 } Archive;
 

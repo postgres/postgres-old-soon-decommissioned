@@ -281,6 +281,7 @@ typedef struct _tocEntry
 extern const char *progname;
 
 extern void die_horribly(ArchiveHandle *AH, const char *modulename, const char *fmt,...) __attribute__((format(printf, 3, 4)));
+extern void warn_or_die_horribly(ArchiveHandle *AH, const char *modulename, const char *fmt,...) __attribute__((format(printf, 3, 4)));
 extern void write_msg(const char *modulename, const char *fmt,...) __attribute__((format(printf, 2, 3)));
 
 extern void WriteTOC(ArchiveHandle *AH);
