@@ -45,9 +45,9 @@ else # win
 # commands into variables?
 postgres: $(OBJS) $(top_builddir)/src/utils/dllinit.o postgres.def libpostgres.a
 	dlltool --dllname $@$(X) --output-exp $@.exp --def postgres.def
-	gcc -g -o $@$(X) -Wl,--base-file,$@.base $@.exp $(OBJS) $(DLLLIBS)
+	gcc $(LDFLAGS) -g -o $@$(X) -Wl,--base-file,$@.base $@.exp $(OBJS) $(DLLLIBS)
 	dlltool --dllname $@$(X) --base-file $@.base --output-exp $@.exp --def postgres.def
-	gcc -g -o $@$(X) $@.exp $(OBJS) $(DLLLIBS)
+	gcc $(LDFLAGS) -g -o $@$(X) $@.exp $(OBJS) $(DLLLIBS)
 	rm $@.exp $@.base
 
 endif # win
