@@ -17,26 +17,21 @@
 #include "access/heapam.h"
 #include "access/relscan.h"
 #include "access/skey.h"
-#include "utils/rel.h"
 #include "fmgr.h"
-#include "utils/elog.h"
 #include "utils/builtins.h"
 #include "utils/sets.h"
 
-#include "nodes/pg_list.h"
-
 #include "catalog/catname.h"
-#include "utils/syscache.h"
-#include "catalog/pg_proc.h"
 #include "catalog/indexing.h"
-#include "tcop/dest.h"
 #include "parser/parse_query.h"
 #include "tcop/tcopprot.h"
-#include "catalog/pg_type.h"
 #include "parser/catalog_utils.h"
-#include "utils/lsyscache.h"
 #include "optimizer/internal.h"
 #include "optimizer/planner.h"
+
+#include "utils/lsyscache.h"
+
+#include "miscadmin.h"
 
 /* ----------------------------------------------------------------
  *	ProcedureDefine
