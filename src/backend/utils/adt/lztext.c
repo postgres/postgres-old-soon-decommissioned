@@ -118,7 +118,7 @@ lztextlen(lztext *lz)
 #ifdef MULTIBYTE
 	len = 0;
 	s1 = s2 = (unsigned char *) lztextout(lz);
-	l = PGLZ_RAW_SIZE(lz);
+	l = strlen(s2);
 	while (l > 0)
 	{
 		wl = pg_mblen(s1);
