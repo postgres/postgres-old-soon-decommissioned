@@ -1231,9 +1231,10 @@ $MAKE -C $srcdir/src/tools/thread >&5 ||
 	  AC_MSG_ERROR([Can not build thread test proram.]))
 $srcdir/src/tools/thread/thread_test >&5 ||
 	( rm -f src/Makefile.global
-	  echo
+	  echo "no"
 	  echo
 	  $srcdir/src/tools/thread/thread_test
+	  echo
 	  AC_MSG_ERROR([Thread test program failed.  Your platform is not thread-safe.]))
 $MAKE -C $srcdir/src/tools/thread clean >&5 ||
 	( rm -f src/Makefile.global
