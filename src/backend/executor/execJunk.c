@@ -26,7 +26,7 @@
  * An attribute of a tuple living inside the executor, can be
  * either a normal attribute or a "junk" attribute. "junk" attributes
  * never make it out of the executor, i.e. they are never printed,
- * returned or stored in disk. Their only purpose in life is to
+ * returned or stored on disk. Their only purpose in life is to
  * store some information useful only to the executor, mainly the values
  * of some system attributes like "ctid" or rule locks.
  *
