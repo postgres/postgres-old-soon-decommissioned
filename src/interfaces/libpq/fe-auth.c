@@ -565,40 +565,36 @@ fe_getauthname(char *PQerrormsg)
 	MsgType		authsvc;
 
 	authsvc = fe_getauthsvc(PQerrormsg);
-	switch ((int) authsvc)
-	{
+
 #ifdef KRB4
-		case STARTUP_KRB4_MSG:
-			name = pg_krb4_authname(PQerrormsg);
-			break;
+	if (authsvc == STARTUP_KRB4_MSG)
+		name = pg_krb4_authname(PQerrormsg);
 #endif
 #ifdef KRB5
-		case STARTUP_KRB5_MSG:
-			name = pg_krb5_authname(PQerrormsg);
-			break;
+	if (authsvc == STARTUP_KRB5_MSG)
+		name = pg_krb5_authname(PQerrormsg);
 #endif
-		case STARTUP_MSG:
-			{
+
+	if (authsvc == STARTUP_MSG
+	    || (authsvc == STARTUP_KRB4_MSG && !name)
+	    || (authsvc == STARTUP_KRB5_MSG && !name))
+	{
 #ifdef WIN32
-				char		username[128];
-				DWORD		namesize = sizeof(username) - 1;
+		char		username[128];
+		DWORD		namesize = sizeof(username) - 1;
 
-				if (GetUserName(username, &namesize))
-					name = username;
+		if (GetUserName(username, &namesize))
+			name = username;
 #else
-				struct passwd *pw = getpwuid(geteuid());
+		struct passwd *pw = getpwuid(geteuid());
 
-				if (pw)
-					name = pw->pw_name;
+		if (pw)
+			name = pw->pw_name;
 #endif
-			}
-			break;
-		default:
-			(void) sprintf(PQerrormsg,
-				   "fe_getauthname: invalid authentication system: %d\n",
-						   authsvc);
-			break;
 	}
+
+	if (authsvc != STARTUP_MSG && authsvc != STARTUP_KRB4_MSG && authsvc != STARTUP_KRB5_MSG)
+		sprintf(PQerrormsg,"fe_getauthname: invalid authentication system: %d\n", authsvc);
 
 	if (name && (authn = (char *) malloc(strlen(name) + 1)))
 		strcpy(authn, name);

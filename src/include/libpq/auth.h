@@ -26,4 +26,6 @@ void		be_recvauth(Port *port);
 #define PG_KRB4_VERSION "PGVER4.1"		/* at most KRB_SENDAUTH_VLEN chars */
 #define PG_KRB5_VERSION "PGVER5.1"
 
+extern char * pg_krb_server_keyfile;
+
 #endif	 /* AUTH_H */

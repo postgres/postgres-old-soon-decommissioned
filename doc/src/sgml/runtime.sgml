@@ -899,6 +899,16 @@ env PGOPTIONS='--geqo=off' psql
      </varlistentry>
 
      <varlistentry>
+      <term>KRB_SERVER_KEYFILE</>
+      <listitem>
+       <para>
+        Sets the location of the Kerberos server key file. See
+        <xref linkend="kerberos-auth"> for details.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term>MAX_CONNECTIONS (<type>integer</type>)</term>
       <listitem>
        <para>

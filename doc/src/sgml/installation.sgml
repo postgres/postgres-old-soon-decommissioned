@@ -578,26 +578,12 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
-       <term>--with-krb-srvtab=<replaceable>FILE</></term>
-       <listitem>
-        <para>
-         Specifies the location of the Kerberos server shared key file
-         (<quote>srvtab</>). If you are using Kerberos 4, this
-         defaults to <filename>/etc/srvtab</>, with Kerberos 5 to
-         <filename>FILE:/usr/local/pgsql/etc/krb5.keytab</>, or
-         equivalent, depending on what you set <option>--sysconfdir</>
-         to above.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry>
        <term>--enable-syslog</term>
        <listitem>
         <para>
          Enables the <productname>PostgreSQL</> server to use the
          syslog logging facility. (Using this option does not mean
-         that you have to log with syslog or even that it will be done
+         that you will have to log with syslog or even that it will be done
          by default, it simply makes it possible to turn this option
          on at run time.)
         </para>
