@@ -63,7 +63,6 @@
 <!entity libpqpp    SYSTEM "libpq++.sgml">
 <!entity libpgtcl   SYSTEM "libpgtcl.sgml">
 <!entity pygresql   SYSTEM "pygresql.sgml">
-<!entity lisp       SYSTEM "lisp.sgml">
 <!entity lobj       SYSTEM "lobj.sgml">
 <!entity odbc       SYSTEM "odbc.sgml">
 <!entity rules      SYSTEM "rules.sgml">

@@ -49,7 +49,6 @@ PostgreSQL Programmer's Guide.
   &odbc;
   &jdbc;
   &pygresql;
-  &lisp;
  </part>
 
  <part id="programmer-server">
