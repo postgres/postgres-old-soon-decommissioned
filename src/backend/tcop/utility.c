@@ -254,7 +254,7 @@ ProcessUtility(Node *parsetree,
 	switch (nodeTag(parsetree))
 	{
 			/*
-			 * ******************************** transactions ********************************
+			 * ******************** transactions ********************
 			 */
 		case T_TransactionStmt:
 			{
