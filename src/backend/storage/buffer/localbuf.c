@@ -109,6 +109,8 @@ LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool *foundPtr)
 		smgrwrite(DEFAULT_SMGR, bufrel, bufHdr->tag.blockNum,
 				  (char *) MAKE_PTR(bufHdr->data));
 		LocalBufferFlushCount++;
+
+		/* drop relcache refcount incremented by RelationIdCacheGetRelation */
 		RelationDecrementReferenceCount(bufrel);
 	}
 
@@ -187,6 +189,8 @@ FlushLocalBuffer(Buffer buffer, bool release)
 	smgrflush(DEFAULT_SMGR, bufrel, bufHdr->tag.blockNum,
 			  (char *) MAKE_PTR(bufHdr->data));
 	LocalBufferFlushCount++;
+
+	/* drop relcache refcount incremented by RelationIdCacheGetRelation */
 	RelationDecrementReferenceCount(bufrel);
 
 	Assert(LocalRefCount[bufid] > 0);
@@ -260,6 +264,8 @@ LocalBufferSync(void)
 			smgrwrite(DEFAULT_SMGR, bufrel, buf->tag.blockNum,
 					  (char *) MAKE_PTR(buf->data));
 			LocalBufferFlushCount++;
+
+			/* drop relcache refcount from RelationIdCacheGetRelation */
 			RelationDecrementReferenceCount(bufrel);
 
 			buf->tag.relId.relId = InvalidOid;

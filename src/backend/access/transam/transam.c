@@ -405,8 +405,11 @@ InitializeTransactionLog(void)
 	 *	 (these are created by amiint so they are guaranteed to exist)
 	 * ----------------
 	 */
-	logRelation = heap_openr(LogRelationName);
-	VariableRelation = heap_openr(VariableRelationName);
+	logRelation = heap_openr(LogRelationName, NoLock);
+	Assert(logRelation != NULL);
+	VariableRelation = heap_openr(VariableRelationName, NoLock);
+	Assert(VariableRelation != NULL);
+
 	/* ----------------
 	 *	 XXX TransactionLogUpdate requires that LogRelation
 	 *	 is valid so we temporarily set it so we can initialize

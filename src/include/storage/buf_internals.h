@@ -64,8 +64,8 @@ struct buftag
 
 #define INIT_BUFFERTAG(a,xx_reln,xx_blockNum) \
 ( \
-	(a)->blockNum = xx_blockNum, \
-	(a)->relId = ((LockInfo)(xx_reln->lockInfo))->lockRelId \
+	(a)->blockNum = (xx_blockNum), \
+	(a)->relId = (xx_reln)->rd_lockInfo.lockRelId \
 )
 
 #define BAD_BUFFER_ID(bid) ((bid<1) || (bid>(NBuffers)))

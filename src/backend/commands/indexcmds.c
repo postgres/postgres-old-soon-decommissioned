@@ -324,15 +324,15 @@ ExtendIndex(char *indexRelationName, Expr *predicate, List *rangetable)
 		FIsetProcOid(funcInfo, tuple->t_data->t_oid);
 	}
 
-	heapRelation = heap_open(relationId);
+	heapRelation = heap_open(relationId, ShareLock);
 	indexRelation = index_open(indexId);
-
-	LockRelation(heapRelation, ShareLock);
 
 	InitIndexStrategy(numberOfAttributes, indexRelation, accessMethodId);
 
 	index_build(heapRelation, indexRelation, numberOfAttributes,
 				attributeNumberA, 0, NULL, funcInfo, predInfo);
+
+	/* heap and index rels are closed as a side-effect of index_build */
 }
 
 

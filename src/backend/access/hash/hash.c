@@ -66,8 +66,6 @@ hashbuild(Relation heap,
 	TupleTableSlot *slot;
 
 #endif
-	Oid			hrelid,
-				irelid;
 	Node	   *pred,
 			   *oldPred;
 
@@ -232,17 +230,20 @@ hashbuild(Relation heap,
 	/*
 	 * Since we just counted the tuples in the heap, we update its stats
 	 * in pg_class to guarantee that the planner takes advantage of the
-	 * index we just created. Finally, only update statistics during
+	 * index we just created.  But, only update statistics during
 	 * normal index definitions, not for indices on system catalogs
 	 * created during bootstrap processing.  We must close the relations
-	 * before updatings statistics to guarantee that the relcache entries
+	 * before updating statistics to guarantee that the relcache entries
 	 * are flushed when we increment the command counter in UpdateStats().
+	 * But we do not release any locks on the relations; those will be
+	 * held until end of transaction.
 	 */
 	if (IsNormalProcessingMode())
 	{
-		hrelid = RelationGetRelid(heap);
-		irelid = RelationGetRelid(index);
-		heap_close(heap);
+		Oid		hrelid = RelationGetRelid(heap);
+		Oid		irelid = RelationGetRelid(index);
+
+		heap_close(heap, NoLock);
 		index_close(index);
 		UpdateStats(hrelid, nhtups, true);
 		UpdateStats(irelid, nitups, false);

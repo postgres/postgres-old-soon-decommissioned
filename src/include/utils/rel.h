@@ -20,6 +20,26 @@
 #include "rewrite/prs2lock.h"
 #include "storage/fd.h"
 
+
+/*
+ * LockRelId and LockInfo really belong to lmgr.h, but it's more convenient
+ * to declare them here so we can have a LockInfoData field in a Relation.
+ */
+
+typedef struct LockRelId
+{
+	Oid			relId;			/* a relation identifier */
+	Oid			dbId;			/* a database identifier */
+} LockRelId;
+
+typedef struct LockInfoData
+{
+	LockRelId	lockRelId;
+} LockInfoData;
+
+typedef LockInfoData *LockInfo;
+
+
 typedef struct Trigger
 {
 	char	   *tgname;
@@ -44,20 +64,21 @@ typedef struct TriggerDesc
 	Trigger    *triggers;
 } TriggerDesc;
 
+
 typedef struct RelationData
 {
 	File		rd_fd;			/* open file descriptor */
 	int			rd_nblocks;		/* number of blocks in rel */
 	uint16		rd_refcnt;		/* reference count */
-	bool		rd_myxactonly;	/* uses the local buffer mgr */
+	bool		rd_myxactonly;	/* rel uses the local buffer mgr */
 	bool		rd_isnailed;	/* rel is nailed in cache */
 	bool		rd_isnoname;	/* rel has no name */
 	bool		rd_nonameunlinked;		/* noname rel already unlinked */
 	Form_pg_am	rd_am;			/* AM tuple */
 	Form_pg_class rd_rel;		/* RELATION tuple */
-	Oid			rd_id;			/* relations's object id */
-	Pointer		lockInfo;		/* ptr. to misc. info. */
-	TupleDesc	rd_att;			/* tuple desciptor */
+	Oid			rd_id;			/* relation's object id */
+	LockInfoData rd_lockInfo;	/* lock manager's info for locking relation */
+	TupleDesc	rd_att;			/* tuple descriptor */
 	RuleLock   *rd_rules;		/* rewrite rules */
 	IndexStrategy rd_istrat;
 	RegProcedure *rd_support;
@@ -65,6 +86,7 @@ typedef struct RelationData
 } RelationData;
 
 typedef RelationData *Relation;
+
 
 /* ----------------
  *		RelationPtr is used in the executor to support index scans
@@ -74,13 +96,14 @@ typedef RelationData *Relation;
  */
 typedef Relation *RelationPtr;
 
-#define InvalidRelation ((Relation)NULL)
 
 /*
  * RelationIsValid
  *		True iff relation descriptor is valid.
  */
 #define RelationIsValid(relation) PointerIsValid(relation)
+
+#define InvalidRelation ((Relation) NULL)
 
 /*
  * RelationGetSystemPort
@@ -90,13 +113,6 @@ typedef Relation *RelationPtr;
  *		Assumes relation descriptor is valid.
  */
 #define RelationGetSystemPort(relation) ((relation)->rd_fd)
-
-/*
- * RelationGetLockInfo
- *		Returns the lock information structure in the reldesc
- *
- */
-#define RelationGetLockInfo(relation) ((relation)->lockInfo)
 
 /*
  * RelationHasReferenceCountZero
@@ -112,13 +128,13 @@ typedef Relation *RelationPtr;
  * RelationSetReferenceCount
  *		Sets relation reference count.
  */
-#define RelationSetReferenceCount(relation,count) ((relation)->rd_refcnt = count)
+#define RelationSetReferenceCount(relation,count) ((relation)->rd_refcnt = (count))
 
 /*
  * RelationIncrementReferenceCount
  *		Increments relation reference count.
  */
-#define RelationIncrementReferenceCount(relation) ((relation)->rd_refcnt += 1);
+#define RelationIncrementReferenceCount(relation) ((relation)->rd_refcnt += 1)
 
 /*
  * RelationDecrementReferenceCount
@@ -135,7 +151,6 @@ typedef Relation *RelationPtr;
  */
 #define RelationGetForm(relation) ((relation)->rd_rel)
 
-
 /*
  * RelationGetRelid
  *
@@ -151,7 +166,6 @@ typedef Relation *RelationPtr;
  */
 #define RelationGetFile(relation) ((relation)->rd_fd)
 
-
 /*
  * RelationGetRelationName
  *
@@ -160,20 +174,18 @@ typedef Relation *RelationPtr;
 #define RelationGetRelationName(relation) (&(relation)->rd_rel->relname)
 
 /*
- * RelationGetRelationName
+ * RelationGetNumberOfAttributes
  *
- *	  Returns a the number of attributes.
+ *	  Returns the number of attributes.
  */
 #define RelationGetNumberOfAttributes(relation) ((relation)->rd_rel->relnatts)
 
 /*
  * RelationGetDescr
  *		Returns tuple descriptor for a relation.
- *
- * Note:
- *		Assumes relation descriptor is valid.
  */
 #define RelationGetDescr(relation) ((relation)->rd_att)
+
 
 extern IndexStrategy RelationGetIndexStrategy(Relation relation);
 

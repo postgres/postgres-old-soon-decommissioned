@@ -193,9 +193,9 @@ CatalogHasIndex(char *catName, Oid catId)
 		return false;
 	}
 
-	pg_class = heap_openr(RelationRelationName);
+	pg_class = heap_openr(RelationRelationName, AccessShareLock);
 	htup = ClassOidIndexScan(pg_class, catId);
-	heap_close(pg_class);
+	heap_close(pg_class, AccessShareLock);
 
 	if (!HeapTupleIsValid(htup))
 	{

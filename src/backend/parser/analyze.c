@@ -64,7 +64,7 @@ parse_analyze(List *pl, ParseState *parentParseState)
 
 		parsetree = transformStmt(pstate, lfirst(pl));
 		if (pstate->p_target_relation != NULL)
-			heap_close(pstate->p_target_relation);
+			heap_close(pstate->p_target_relation, AccessShareLock);
 		pstate->p_target_relation = NULL;
 		pstate->p_target_rangetblentry = NULL;
 
@@ -73,7 +73,7 @@ parse_analyze(List *pl, ParseState *parentParseState)
 			result = lappend(result,
 							 transformStmt(pstate, lfirst(extras_before)));
 			if (pstate->p_target_relation != NULL)
-				heap_close(pstate->p_target_relation);
+				heap_close(pstate->p_target_relation, AccessShareLock);
 			pstate->p_target_relation = NULL;
 			pstate->p_target_rangetblentry = NULL;
 			extras_before = lnext(extras_before);
@@ -86,7 +86,7 @@ parse_analyze(List *pl, ParseState *parentParseState)
 			result = lappend(result,
 							 transformStmt(pstate, lfirst(extras_after)));
 			if (pstate->p_target_relation != NULL)
-				heap_close(pstate->p_target_relation);
+				heap_close(pstate->p_target_relation, AccessShareLock);
 			pstate->p_target_relation = NULL;
 			pstate->p_target_rangetblentry = NULL;
 			extras_after = lnext(extras_after);

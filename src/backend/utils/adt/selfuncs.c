@@ -598,7 +598,7 @@ getattstatistics(Oid relid, AttrNumber attnum, Oid typid, int32 typmod,
 	HeapTuple	typeTuple;
 	FmgrInfo	inputproc;
 
-	rel = heap_openr(StatisticRelationName);
+	rel = heap_openr(StatisticRelationName, AccessShareLock);
 
 	key[0].sk_argument = ObjectIdGetDatum(relid);
 	key[1].sk_argument = Int16GetDatum((int16) attnum);
@@ -609,7 +609,7 @@ getattstatistics(Oid relid, AttrNumber attnum, Oid typid, int32 typmod,
 	{
 		/* no such stats entry */
 		heap_endscan(scan);
-		heap_close(rel);
+		heap_close(rel, AccessShareLock);
 		return false;
 	}
 
@@ -694,7 +694,7 @@ getattstatistics(Oid relid, AttrNumber attnum, Oid typid, int32 typmod,
 	}
 
 	heap_endscan(scan);
-	heap_close(rel);
+	heap_close(rel, AccessShareLock);
 	return true;
 }
 

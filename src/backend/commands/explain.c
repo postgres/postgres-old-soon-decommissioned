@@ -211,11 +211,14 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 			i = 0;
 			foreach(l, ((IndexScan *) plan)->indxid)
 			{
-				relation = RelationIdCacheGetRelation((int) lfirst(l));
+				relation = RelationIdGetRelation(lfirsti(l));
+				Assert(relation);
 				if (++i > 1)
 					appendStringInfo(str, ", ");
 				appendStringInfo(str,
 								 stringStringInfo((RelationGetRelationName(relation))->data));
+				/* drop relcache refcount from RelationIdGetRelation */
+				RelationDecrementReferenceCount(relation);
 			}
 		case T_SeqScan:
 			if (((Scan *) plan)->scanrelid > 0)

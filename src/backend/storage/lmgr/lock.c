@@ -596,7 +596,7 @@ LockAcquire(LOCKMETHOD lockmethod, LOCKTAG *locktag, LOCKMODE lockmode)
 	if (!result)
 	{
 		elog(NOTICE, "LockAcquire: xid table corrupted");
-		return STATUS_ERROR;
+		return FALSE;
 	}
 
 	/*
@@ -1117,7 +1117,7 @@ LockRelease(LOCKMETHOD lockmethod, LOCKTAG *locktag, LOCKMODE lockmode)
 			TPRINTF(TRACE_USERLOCKS, "LockRelease: no lock with this tag");
 		else
 #endif
-			elog(NOTICE, "LockReplace: xid table corrupted");
+			elog(NOTICE, "LockRelease: xid table corrupted");
 		return FALSE;
 	}
 	XID_PRINT("LockRelease: found", result);

@@ -16,6 +16,11 @@
 #include "storage/lock.h"
 #include "utils/rel.h"
 
+/* These are the valid values of type LOCKMODE: */
+
+/* NoLock is not a lock mode, but a flag value meaning "don't get a lock" */
+#define NoLock					0
+
 #define AccessShareLock			1		/* SELECT */
 #define RowShareLock			2		/* SELECT FOR UPDATE */
 #define RowExclusiveLock		3		/* INSERT, UPDATE, DELETE */
@@ -26,21 +31,6 @@
 
 extern LOCKMETHOD LockTableId;
 
-
-typedef struct LockRelId
-{
-	Oid			relId;			/* a relation identifier */
-	Oid			dbId;			/* a database identifier */
-} LockRelId;
-
-typedef struct LockInfoData
-{
-	LockRelId	lockRelId;
-} LockInfoData;
-
-typedef LockInfoData *LockInfo;
-
-#define LockInfoIsValid(lockinfo)	PointerIsValid(lockinfo)
 
 extern LOCKMETHOD InitLockTable(void);
 extern void RelationInitLockInfo(Relation relation);

@@ -184,7 +184,7 @@ checkLockPerms(List *locks, Query *parsetree, int rt_index)
 	 * Get the usename of the rules event relation owner
 	 */
 	rte = (RangeTblEntry *) nth(rt_index - 1, parsetree->rtable);
-	ev_rel = heap_openr(rte->relname);
+	ev_rel = heap_openr(rte->relname, AccessShareLock);
 	usertup = SearchSysCacheTuple(USESYSID,
 							  ObjectIdGetDatum(ev_rel->rd_rel->relowner),
 								  0, 0, 0);
@@ -193,7 +193,7 @@ checkLockPerms(List *locks, Query *parsetree, int rt_index)
 		elog(ERROR, "cache lookup for userid %d failed",
 			 ev_rel->rd_rel->relowner);
 	}
-	heap_close(ev_rel);
+	heap_close(ev_rel, AccessShareLock);
 	evowner = nameout(&(((Form_pg_shadow) GETSTRUCT(usertup))->usename));
 
 	/*

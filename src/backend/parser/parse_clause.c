@@ -75,11 +75,11 @@ setTargetTable(ParseState *pstate, char *relname)
 
 	/* This could only happen for multi-action rules */
 	if (pstate->p_target_relation != NULL)
-		heap_close(pstate->p_target_relation);
+		heap_close(pstate->p_target_relation, AccessShareLock);
 
 	pstate->p_target_rangetblentry = rte;
-	pstate->p_target_relation = heap_open(rte->relid);
-	/* will close relation later */
+	pstate->p_target_relation = heap_open(rte->relid, AccessShareLock);
+	/* will close relation later, see analyze.c */
 }
 
 /*
