@@ -35,7 +35,14 @@
 
 #ifdef WIN32
 #include "win32.h"
+#ifdef _WIN32_IE
+#undef _WIN32_IE
+#endif
 #define _WIN32_IE 0x0400
+#ifdef near
+#undef near
+#endif
+#define near
 #include <shlobj.h>
 #else
 #include <sys/socket.h>
