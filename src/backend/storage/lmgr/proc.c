@@ -520,20 +520,19 @@ ProcSleep(PROC_QUEUE *waitQueue,/* lock->waitProcs */
 
 	do
 	{
-		int expired;
-		
 		MyProc->errType = NO_ERROR;		/* reset flag after deadlock check */
 
 		if (deadlock_checked == false)
-			expired = sleep(DeadlockCheckTimer ? DeadlockCheckTimer : DEADLOCK_CHECK_TIMER);
+		{
+			if (sleep(DeadlockCheckTimer ? DeadlockCheckTimer : DEADLOCK_CHECK_TIMER)
+				== 0 /* no signal interruption */ )
+			{
+				HandleDeadLock();
+				deadlock_checked = true;
+			}
+		}
 		else
 			pause();
-
-		if (expired == 0 && deadlock_checked == false)
-		{
-			HandleDeadLock();
-			deadlock_checked = true;
-		}
 		
 		/* --------------
 		 * if someone wakes us between SpinRelease and IpcSemaphoreLock,
