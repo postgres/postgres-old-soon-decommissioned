@@ -24,8 +24,6 @@
 #include <sys/wait.h>
 #if !defined(_MSC_VER) && !defined(__BORLANDC__)
 #include <unistd.h>
-#else
-#include "port/win32.h"
 #endif
 
 #include "miscadmin.h"

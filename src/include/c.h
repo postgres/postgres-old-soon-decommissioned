@@ -80,7 +80,7 @@
 /* We have to redefine some system functions after they are included above */
 #include "pg_config_os.h"
 #else
-#include <windows.h>	/* We don't have a port file for MSC/BCC */
+#include "port/win32.h"	/* We didn't run configure, but this is our port file */
 #endif
 #endif
 
