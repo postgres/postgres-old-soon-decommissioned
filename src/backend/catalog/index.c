@@ -670,6 +670,9 @@ index_create(Oid heapRelationId,
 	 * linked to the table.  If it's not a CONSTRAINT, make the dependency
 	 * directly on the table.
 	 *
+	 * We don't need a dependency on the namespace, because there'll be
+	 * an indirect dependency via our parent table.
+	 *
 	 * During bootstrap we can't register any dependencies, and we don't
 	 * try to make a constraint either.
 	 */

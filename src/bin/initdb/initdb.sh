@@ -717,6 +717,9 @@ INSERT INTO pg_depend SELECT 0,0,0, tableoid,oid,0, 'p' FROM pg_language;
 INSERT INTO pg_depend SELECT 0,0,0, tableoid,oid,0, 'p' FROM pg_operator;
 INSERT INTO pg_depend SELECT 0,0,0, tableoid,oid,0, 'p' FROM pg_rewrite;
 INSERT INTO pg_depend SELECT 0,0,0, tableoid,oid,0, 'p' FROM pg_trigger;
+-- restriction here to avoid pinning the public namespace
+INSERT INTO pg_depend SELECT 0,0,0, tableoid,oid,0, 'p' FROM pg_namespace \
+    WHERE nspname LIKE 'pg%';
 EOF
 if [ "$?" -ne 0 ]; then
     exit_nicely

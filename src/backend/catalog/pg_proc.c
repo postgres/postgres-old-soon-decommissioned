@@ -268,6 +268,12 @@ ProcedureCreate(const char *procedureName,
 	myself.objectId = retval;
 	myself.objectSubId = 0;
 
+	/* dependency on namespace */
+	referenced.classId = get_system_catalog_relid(NamespaceRelationName);
+	referenced.objectId = procNamespace;
+	referenced.objectSubId = 0;
+	recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
+
 	/* dependency on implementation language */
 	referenced.classId = get_system_catalog_relid(LanguageRelationName);
 	referenced.objectId = languageObjectId;

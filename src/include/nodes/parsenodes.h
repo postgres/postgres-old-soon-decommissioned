@@ -1136,7 +1136,7 @@ typedef struct CreateDomainStmt
 } CreateDomainStmt;
 
 /* ----------------------
- *		Drop Table|Sequence|View|Index|Type|Domain Statement
+ *		Drop Table|Sequence|View|Index|Type|Domain|Conversion|Schema Statement
  * ----------------------
  */
 
@@ -1147,6 +1147,7 @@ typedef struct CreateDomainStmt
 #define DROP_TYPE     5
 #define DROP_DOMAIN	  6
 #define DROP_CONVERSION	  7
+#define DROP_SCHEMA	  8
 
 typedef struct DropStmt
 {

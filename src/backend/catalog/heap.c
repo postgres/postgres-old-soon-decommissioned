@@ -743,6 +743,25 @@ heap_create_with_catalog(const char *relname,
 						  relhasoids, relkind);
 
 	/*
+	 * make a dependency link to force the relation to be deleted if
+	 * its namespace is.  Skip this in bootstrap mode, since we don't
+	 * make dependencies while bootstrapping.
+	 */
+	if (!IsBootstrapProcessingMode())
+	{
+		ObjectAddress	myself,
+						referenced;
+
+		myself.classId = RelOid_pg_class;
+		myself.objectId = new_rel_oid;
+		myself.objectSubId = 0;
+		referenced.classId = get_system_catalog_relid(NamespaceRelationName);
+		referenced.objectId = relnamespace;
+		referenced.objectSubId = 0;
+		recordDependencyOn(&myself, &referenced, DEPENDENCY_NORMAL);
+	}
+
+	/*
 	 * store constraints and defaults passed in the tupdesc, if any.
 	 *
 	 * NB: this may do a CommandCounterIncrement and rebuild the relcache

@@ -19,4 +19,7 @@
 
 extern void CreateSchemaCommand(CreateSchemaStmt *parsetree);
 
+extern void RemoveSchema(List *names, DropBehavior behavior);
+extern void RemoveSchemaById(Oid schemaOid);
+
 #endif  /* SCHEMACMDS_H */

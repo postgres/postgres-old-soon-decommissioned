@@ -88,6 +88,7 @@ PostgreSQL Reference Manual
    &dropLanguage;
    &dropOperator;
    &dropRule;
+   &dropSchema;
    &dropSequence;
    &dropTable;
    &dropTrigger;
