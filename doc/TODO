@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sat Nov  8 23:23:47 EST 2003
+Last updated:		Tue Nov 11 19:25:31 EST 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -400,7 +400,7 @@ Fsync
 Cache
 =====
 * Shared catalog cache, reduce lseek()'s by caching table size in shared area
-* Add free-behind capability for large sequential scans (Bruce)
+* Add free-behind capability for large sequential scans (fadvise)
 * Consider use of open/fcntl(O_DIRECT) to minimize OS caching
 * Make blind writes go through the file descriptor cache
 * Cache last known per-tuple offsets to speed long tuple access
