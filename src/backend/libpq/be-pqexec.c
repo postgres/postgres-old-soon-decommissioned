@@ -241,7 +241,7 @@ strmake(char *str, int len)
 		len = strlen(str);
 
 	newstr = (char *) palloc((unsigned) len + 1);
-	StrNCpy(newstr, str, len+1);
+	StrNCpy(newstr, str, len + 1);
 	newstr[len] = (char) 0;
 	return newstr;
 }

@@ -85,9 +85,9 @@ PacketReceive(Port *port,		/* receive port */
 
 	/*
 	 * Assume port->nBytes is zero unless we were interrupted during
-	 * non-blocking I/O.  This first recv() is to get the hdr
-	 * information so we know how many bytes to read.  Life would be very
-	 * complicated if we read too much data (buffering).
+	 * non-blocking I/O.  This first recv() is to get the hdr information
+	 * so we know how many bytes to read.  Life would be very complicated
+	 * if we read too much data (buffering).
 	 */
 	tmp = ((Addr) buf) + port->nBytes;
 
@@ -227,7 +227,7 @@ PacketSend(Port *port,
 	Assert(!nonBlocking);
 	Assert(buf);
 
-	doneLen = write(port->sock,  buf, len);
+	doneLen = write(port->sock, buf, len);
 	if (doneLen < len)
 	{
 		sprintf(PQerrormsg,

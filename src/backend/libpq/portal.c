@@ -154,7 +154,7 @@ PQpnames(char **pnames, int rule_p)
 		{
 			if (!rule_p || portals[i]->portal->rule_p)
 			{
-				strncpy(pnames[cur_pname], portals[i]->name, PortalNameLength+1);
+				strncpy(pnames[cur_pname], portals[i]->name, PortalNameLength + 1);
 				++cur_pname;
 			}
 		}
