@@ -20,7 +20,7 @@
 #include "access/heapam.h"
 #include "executor/executor.h"
 #include "nodes/relation.h"
-#include "optimizer/tlist.h"	/* for makeTargetEntry */
+#include "nodes/makefuncs.h"
 
 /*-------------------------------------------------------------------------
  *		XXX this stuff should be rewritten to take advantage

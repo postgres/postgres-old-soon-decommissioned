@@ -317,7 +317,7 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 									att[defval[ndef].adnum - 1]->atttypmod,
 									pstrdup(nameout(&(att[defval[ndef].adnum - 1]->attname))),
 									0, 0, 0),
-						(Node *) stringToNode(defval[ndef].adbin);
+						(Node *) stringToNode(defval[ndef].adbin));
 			qry->targetList = lappend(qry->targetList, te);
 		}
 	}

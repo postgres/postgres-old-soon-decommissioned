@@ -14,6 +14,7 @@
 #define MAKEFUNC_H
 
 #include <nodes/primnodes.h>
+#include <nodes/parsenodes.h>
 #include <utils/fcache.h>
 
 extern Oper *
@@ -31,6 +32,9 @@ makeVar(Index varno,
 		Index varlevelsup,
 		Index varnoold,
 		AttrNumber varoattno);
+
+extern TargetEntry *
+makeTargetEntry(Resdom *resdom, Node *expr);
 
 extern Resdom *
 makeResdom(AttrNumber resno,
