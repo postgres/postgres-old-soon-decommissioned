@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Wed Jun 25 00:19:29 EDT 2003
+Last updated:		Wed Jun 25 00:23:56 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -56,7 +56,7 @@ Administration
 * Add group object ownership, so groups can rename/drop/grant on objects,
   so we can implement roles
 * Add the concept of dataspaces/tablespaces [tablespaces]
-* Allow CIDR format to be used in pg_hba.conf
+* -Allow CIDR format to be used in pg_hba.conf
 * Allow logging of only data definition(DDL), or DDL and modification statements
 
 
