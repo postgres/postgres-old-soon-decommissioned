@@ -20,10 +20,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include <pthread.h>
-#include <unistd.h>
 #include <stdio.h>
+
 #include <stdlib.h>
+#include <unistd.h>
 #include <netdb.h>
 #include <sys/types.h>
 #include <pwd.h>
@@ -32,6 +32,20 @@
 #include <errno.h>
 
 #include "postgres.h"
+
+#ifndef ENABLE_THREAD_SAFETY
+int
+main(int argc, char *argv[])
+{
+	fprintf(stderr, "This PostgreSQL build does not support threads.\n");
+	fprintf(stderr, "Perhaps rerun 'configure' using '--enable-thread-safety'.\n");
+	return 1;
+}
+
+#else
+
+/* This must be down here because this is the code that uses threads. */
+#include "pthread.h"
 
 void		func_call_1(void);
 void		func_call_2(void);
@@ -311,3 +325,5 @@ func_call_2(void)
 	pthread_mutex_lock(&init_mutex);	/* wait for parent to test */
 	pthread_mutex_unlock(&init_mutex);
 }
+#endif /* !ENABLE_THREAD_SAFETY */
+
