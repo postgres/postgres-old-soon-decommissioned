@@ -38,9 +38,9 @@ extern void debug_print_rel(Query *root, RelOptInfo *rel);
 extern void create_index_paths(Query *root, RelOptInfo *rel);
 extern Path *best_inner_indexscan(Query *root, RelOptInfo *rel,
 					 Relids outer_relids, JoinType jointype);
-extern List *extract_or_indexqual_conditions(RelOptInfo *rel,
-								IndexOptInfo *index,
-								Expr *orsubclause);
+extern List *group_clauses_by_indexkey_for_or(RelOptInfo *rel,
+											  IndexOptInfo *index,
+											  Expr *orsubclause);
 extern List *expand_indexqual_conditions(IndexOptInfo *index,
 							List *clausegroups);
 

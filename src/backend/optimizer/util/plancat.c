@@ -146,6 +146,7 @@ get_relation_info(Oid relationObjectId, RelOptInfo *rel)
 				ChangeVarNodes((Node *) info->indexprs, 1, varno, 0);
 			if (info->indpred && varno != 1)
 				ChangeVarNodes((Node *) info->indpred, 1, varno, 0);
+			info->predOK = false; /* set later in indxpath.c */
 			info->unique = index->indisunique;
 
 			/* initialize cached join info to empty */
