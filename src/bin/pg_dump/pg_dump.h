@@ -151,18 +151,6 @@ typedef struct _oprInfo
 	char	   *usename;
 } OprInfo;
 
-/*
- * This is some support functions to fix the acl problem of pg_dump
- *
- * Matthew C. Aycock 12/02/97
- */
-typedef struct _AclType
-{
-	char	   *user;
-	char	   *privledges;
-} ACL;
-
-
 /* global decls */
 extern bool g_force_quotes;		/* double-quotes for identifiers flag */
 extern bool g_verbose;			/* verbose flag */
