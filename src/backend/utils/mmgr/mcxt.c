@@ -238,6 +238,27 @@ MemoryContextStats(MemoryContext context)
 	}
 }
 
+
+/*
+ * MemoryContextCheck
+ *		Check all chunks in the named context.
+ *
+ * This is just a debugging utility, so it's not fancy.  
+ */
+#ifdef MEMORY_CONTEXT_CHECKING
+void
+MemoryContextCheck(MemoryContext context)
+{
+	MemoryContext	child;
+
+	(*context->methods->check) (context);
+	for (child = context->firstchild; child != NULL; child = child->nextchild)
+	{
+		MemoryContextCheck(child);
+	}
+}
+#endif
+
 /*
  * MemoryContextContains
  *		Detect whether an allocated chunk of memory belongs to a given

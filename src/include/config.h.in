@@ -229,6 +229,12 @@
 #define CLOBBER_FREED_MEMORY
 #endif
 
+/* Define this to check memory leaks
+ */
+#ifdef USE_ASSERT_CHECKING 
+#define MEMORY_CONTEXT_CHECKING
+#endif
+
 /* Define this to force all parse and plan trees to be passed through
  * copyObject(), to facilitate catching errors and omissions in copyObject().
  * XXX For 7.1 development, define this automatically if --enable-cassert.

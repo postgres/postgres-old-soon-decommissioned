@@ -48,6 +48,9 @@ typedef struct StandardChunkHeader
 {
 	MemoryContext context;			/* owning context */
 	Size size;						/* size of data space allocated in chunk */
+#ifdef MEMORY_CONTEXT_CHECKING
+	Size data_size;				/* real data size  (without align) */
+#endif
 } StandardChunkHeader;
 
 #define STANDARDCHUNKHEADERSIZE  MAXALIGN(sizeof(StandardChunkHeader))
@@ -78,6 +81,7 @@ extern void MemoryContextResetChildren(MemoryContext context);
 extern void MemoryContextDeleteChildren(MemoryContext context);
 extern void MemoryContextResetAndDeleteChildren(MemoryContext context);
 extern void MemoryContextStats(MemoryContext context);
+extern void MemoryContextCheck(MemoryContext context);
 extern bool MemoryContextContains(MemoryContext context, void *pointer);
 
 /*

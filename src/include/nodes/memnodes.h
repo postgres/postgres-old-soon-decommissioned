@@ -42,6 +42,9 @@ typedef struct MemoryContextMethods
 	void		(*init) (MemoryContext context);
 	void		(*reset) (MemoryContext context);
 	void		(*delete) (MemoryContext context);
+#ifdef MEMORY_CONTEXT_CHECKING	
+	void		(*check) (MemoryContext context);
+#endif
 	void		(*stats) (MemoryContext context);
 } MemoryContextMethods;
 
