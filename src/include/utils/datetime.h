@@ -109,8 +109,8 @@
 #define ABS_BEFORE		18
 #define ABS_AFTER		19
 /* generic fields to help with parsing */
-#define DATE	20
-#define TIME	21
+#define ISODATE	20
+#define ISOTIME	21
 /* reserved for unrecognized string values */
 #define UNKNOWN_FIELD	31
 

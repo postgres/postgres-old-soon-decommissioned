@@ -414,7 +414,7 @@ sgt
 #if 0
 syot
 #endif
-	{"t", TIME, DTK_TIME},		/* Filler for ISO time fields */
+	{"t", ISOTIME, DTK_TIME},		/* Filler for ISO time fields */
 #if 0
 taht
 #endif
@@ -1353,7 +1353,7 @@ DecodeDateTime(char **field, int *ftype, int nf,
 						ptype = val;
 						break;
 
-					case TIME:
+					case ISOTIME:
 						/* This is a filler field "t"
 						 * indicating that the next field is time.
 						 * Try to verify that this is sensible.
@@ -1909,7 +1909,7 @@ DecodeTimeOnly(char **field, int *ftype, int nf,
 						ptype = val;
 						break;
 
-					case TIME:
+					case ISOTIME:
 						tmask = 0;
 
 						/***
