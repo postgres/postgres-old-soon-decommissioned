@@ -54,7 +54,7 @@ areasel(Oid opid,
 	float64		result;
 
 	result = (float64) palloc(sizeof(float64data));
-	*result = 0.05;
+	*result = 0.02;
 	return result;
 }
 
@@ -68,7 +68,7 @@ areajoinsel(Oid opid,
 	float64		result;
 
 	result = (float64) palloc(sizeof(float64data));
-	*result = 0.05;
+	*result = 0.02;
 	return result;
 }
 
