@@ -184,6 +184,7 @@ typedef enum NodeTag
 	T_AlterUserStmt,
 	T_DropUserStmt,
 	T_LockStmt,
+	T_ConstraintsSetStmt,
 
 	T_A_Expr = 700,
 	T_Attr,

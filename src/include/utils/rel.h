@@ -42,10 +42,15 @@ typedef LockInfoData *LockInfo;
 
 typedef struct Trigger
 {
+	Oid			tgoid;
 	char	   *tgname;
 	Oid			tgfoid;
 	FmgrInfo	tgfunc;
 	int16		tgtype;
+	bool		tgenabled;
+	bool		tgisconstraint;
+	bool		tgdeferrable;
+	bool		tginitdeferred;
 	int16		tgnargs;
 	int16		tgattr[8];
 	char	  **tgargs;

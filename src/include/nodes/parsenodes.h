@@ -180,6 +180,13 @@ typedef struct CreateTrigStmt
 	char	   *text;			/* AS 'text' */
 	List	   *attr;			/* UPDATE OF a, b,... (NI) or NULL */
 	char	   *when;			/* WHEN 'a > 10 ...' (NI) or NULL */
+
+								/* The following are used for referential */
+								/* integrity constraint triggers */
+	bool		isconstraint;	/* This is an RI trigger */
+	bool		deferrable;		/* [NOT] DEFERRABLE */
+	bool		initdeferred;	/* INITIALLY {DEFERRED|IMMEDIATE} */
+	char	   *constrrelname;	/* opposite relation */
 } CreateTrigStmt;
 
 typedef struct DropTrigStmt
@@ -601,6 +608,19 @@ typedef struct LockStmt
 	char	   *relname;		/* relation to lock */
 	int			mode;			/* lock mode */
 } LockStmt;
+
+
+/* ----------------------
+ *		SET CONSTRAINTS Statement
+ * ----------------------
+ */
+typedef struct ConstraintsSetStmt
+{
+	NodeTag		type;
+	List		*constraints;
+	bool		deferred;
+} ConstraintsSetStmt;
+
 
 /*****************************************************************************
  *		Optimizable Statements

@@ -785,6 +785,13 @@ ProcessUtility(Node *parsetree,
 			LockTableCommand((LockStmt *) parsetree);
 			break;
 
+		case T_ConstraintsSetStmt:
+			PS_SET_STATUS(commandTag = "SET CONSTRAINTS");
+			CHECK_IF_ABORTED();
+
+			DeferredTriggerSetState((ConstraintsSetStmt *) parsetree);
+			break;
+
 
 			/*
 			 * ******************************** default ********************************

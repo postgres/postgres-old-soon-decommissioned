@@ -1468,8 +1468,7 @@ heap_destroy_with_catalog(char *relname)
 		RelationRemoveRules(rid);
 
 	/* triggers */
-	if (rel->rd_rel->reltriggers > 0)
-		RelationRemoveTriggers(rel);
+	RelationRemoveTriggers(rel);
 
 	/* ----------------
 	 *	delete attribute tuples

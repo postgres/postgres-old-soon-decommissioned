@@ -149,6 +149,7 @@
 #include "commands/async.h"
 #include "commands/sequence.h"
 #include "commands/vacuum.h"
+#include "commands/trigger.h"
 #include "libpq/be-fsstubs.h"
 #include "storage/proc.h"
 #include "storage/sinval.h"
@@ -866,6 +867,12 @@ StartTransaction()
 	InitNoNameRelList();
 
 	/* ----------------
+	 *	Tell the trigger manager to we're starting a transaction
+	 * ----------------
+	 */
+	DeferredTriggerBeginXact();
+
+	/* ----------------
 	 *	done with start processing, set current transaction
 	 *	state to "in progress"
 	 * ----------------
@@ -903,6 +910,14 @@ CommitTransaction()
 
 	if (s->state != TRANS_INPROGRESS)
 		elog(NOTICE, "CommitTransaction and not in in-progress state ");
+
+	/* ----------------
+	 *	Tell the trigger manager that this transaction is about to be
+	 *	committed. He'll invoke all trigger deferred until XACT before
+	 *	we really start on committing the transaction. 
+	 * ----------------
+	 */
+	DeferredTriggerEndXact();
 
 	/* ----------------
 	 *	set the current transaction state information
@@ -991,6 +1006,13 @@ AbortTransaction()
 
 	if (s->state != TRANS_INPROGRESS)
 		elog(NOTICE, "AbortTransaction and not in in-progress state ");
+
+	/* ----------------
+	 *	Tell the trigger manager that this transaction is about to be
+	 *	aborted. 
+	 * ----------------
+	 */
+	DeferredTriggerAbortXact();
 
 	/* ----------------
 	 *	set the current transaction state information
