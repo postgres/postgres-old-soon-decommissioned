@@ -13,9 +13,8 @@
 #ifndef	CATALOG_UTILS_H
 #define	CATALOG_UTILS_H
 
-#include "catalog/pg_proc.h"
-#include "catalog/pg_type.h"
-#include "utils/syscache.h"
+#include <catalog/pg_type.h>
+#include <access/htup.h>
     
 typedef HeapTuple	Type;
 typedef HeapTuple	Operator;

@@ -12,6 +12,9 @@
 #ifndef PARSE_STATE_H
 #define PARSE_STATE_H
 
+#include <nodes/parsenodes.h> 
+#include <utils/rel.h>
+
 /* state information used during parse analysis */
 typedef struct ParseState {
     int 	p_last_resno;

@@ -18,7 +18,7 @@
 #ifndef PG_TYPE_H
 #define PG_TYPE_H
 
-#include "utils/rel.h"
+#include <utils/rel.h>
 
 /* ----------------
  *	postgres.h contains the system type definintions and the

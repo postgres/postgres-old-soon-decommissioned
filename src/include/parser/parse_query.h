@@ -13,10 +13,9 @@
 #ifndef PARSE_QUERY_H
 #define PARSE_QUERY_H
 
-#include "nodes/pg_list.h"
-#include "nodes/parsenodes.h"
-#include "parser/catalog_utils.h"
-#include "parser/parse_state.h"
+#include <parser/catalog_utils.h>
+#include <parser/parse_state.h>
+#include <nodes/parsenodes.h>
 
 typedef struct QueryTreeList {
   int len; /* number of queries */
