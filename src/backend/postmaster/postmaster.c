@@ -432,7 +432,6 @@ PostmasterMain(int argc, char *argv[])
 				NetServer = true;
 				break;
 			case 'k':
-				/* Set PGUNIXSOCKET by hand. */
 				UnixSocketDir = optarg;
 				break;
 #ifdef USE_SSL
@@ -732,7 +731,7 @@ usage(const char *progname)
 	printf("  -F              turn fsync off\n");
 	printf("  -h HOSTNAME     host name or IP address to listen on\n");
 	printf("  -i              enable TCP/IP connections\n");
-	printf("  -k FILENAME     Unix domain socket location\n");
+	printf("  -k DIRECTORY    Unix-domain socket location\n");
 #ifdef USE_SSL
 	printf("  -l              enable SSL connections\n");
 #endif
