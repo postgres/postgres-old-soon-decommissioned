@@ -163,7 +163,7 @@ Postgres documentation
 
     <listitem>
      <para>
-      Retrieve information on tables, including owner, field information, indices.
+      Retrieve information on tables, including owner, field information, indexes.
      </para>
     </listitem>
    </itemizedlist>

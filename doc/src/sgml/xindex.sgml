@@ -4,7 +4,7 @@ Postgres documentation
 -->
 
  <chapter id="xindex">
-  <title>Interfacing Extensions To Indices</title>
+  <title>Interfacing Extensions To Indexes</title>
 
   <para>
    The procedures described thus far let you define a new type, new
@@ -34,7 +34,7 @@ Postgres documentation
 
    <table tocentry="1">
     <title>Index Schema</title>
-    <titleabbrev>Indices</titleabbrev>
+
     <tgroup cols="2">
      <thead>
       <row>
@@ -118,7 +118,7 @@ SELECT oid FROM pg_am WHERE amname = 'btree';
    example, that the  "&lt;="  and  "&gt;" operators partition a
    <acronym>B-tree</acronym>.  <productname>Postgres</productname>
    uses strategies to express these relationships  between
-   operators and the way they can be used to scan indices.
+   operators and the way they can be used to scan indexes.
   </para>
 
   <para>

@@ -115,7 +115,7 @@ END;
     for user defined types, anything that can be defined in C language
     functions can also be done with PL/pgSQL. It is possible to
     create complex conditional computation functions and later use
-    them to define operators or use them in functional indices.
+    them to define operators or use them in functional indexes.
    </para>
   <sect2 id="plpgsql-advantages">
    <title>Advantages of Using PL/pgSQL</title>
