@@ -3231,7 +3231,7 @@ index_params:	index_elem							{ $$ = list_make1($1); }
  * expressions in parens.  For backwards-compatibility reasons, we allow
  * an expression that's just a function call to be written without parens.
  */
-index_elem:	attr_name opt_class
+index_elem:	ColId opt_class
 				{
 					$$ = makeNode(IndexElem);
 					$$->name = $1;
@@ -7464,7 +7464,7 @@ database_name:
 access_method:
 			ColId									{ $$ = $1; };
 
-attr_name:	ColId									{ $$ = $1; };
+attr_name:	ColLabel								{ $$ = $1; };
 
 index_name: ColId									{ $$ = $1; };
 
