@@ -307,7 +307,7 @@ typedef enum CoercionForm
 	COERCE_EXPLICIT_CALL,		/* display as a function call */
 	COERCE_EXPLICIT_CAST,		/* display as an explicit cast */
 	COERCE_IMPLICIT_CAST,		/* implicit cast, so hide it */
-	COERCE_DONTCARE				/* special case for pathkeys */
+	COERCE_DONTCARE				/* special case for planner */
 } CoercionForm;
 
 /*
