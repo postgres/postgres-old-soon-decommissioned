@@ -70,7 +70,10 @@ INSERT INTO BOOLTBL2 (f1) VALUES ('false'::bool);
 
 INSERT INTO BOOLTBL2 (f1) VALUES ('False'::bool);
 
--- this evaluates to a false value 
+INSERT INTO BOOLTBL2 (f1) VALUES ('FALSE'::bool);
+
+-- this is now an invalid expression
+-- pre-v6.3 this evaluated to false - thomas 1997-10-23
 INSERT INTO BOOLTBL2 (f1) 
    VALUES ('XXX'::bool);  
 
