@@ -63,14 +63,13 @@ typedef struct SHM_QUEUE
 extern void ShmemIndexReset(void);
 extern void ShmemCreate(unsigned int key, unsigned int size);
 extern int	InitShmem(unsigned int key, unsigned int size);
-extern long *ShmemAlloc(unsigned long size);
+extern void *ShmemAlloc(Size size);
 extern int	ShmemIsValid(unsigned long addr);
 extern HTAB *ShmemInitHash(char *name, long init_size, long max_size,
 			  HASHCTL *infoP, int hash_flags);
 extern bool ShmemPIDLookup(int pid, SHMEM_OFFSET *locationPtr);
 extern SHMEM_OFFSET ShmemPIDDestroy(int pid);
-extern long *ShmemInitStruct(char *name, unsigned long size,
-				bool *foundPtr);
+extern void *ShmemInitStruct(char *name, Size size, bool *foundPtr);
 
 
 typedef int TableID;

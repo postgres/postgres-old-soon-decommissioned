@@ -44,6 +44,44 @@
 
 #include "libpq/pqsignal.h"
 
+
+/*
+ * Initialize BlockSig and UnBlockSig.
+ *
+ * BlockSig is the set of signals to block when we are trying to block
+ * signals.  This includes all signals we normally expect to get, but NOT
+ * signals that should never be turned off.
+ *
+ * UnBlockSig is the set of signals to block when we don't want to block
+ * signals (is this ever nonzero??)
+ */
+void
+pqinitmask(void)
+{
+#ifdef HAVE_SIGPROCMASK
+	sigemptyset(&UnBlockSig);
+	sigfillset(&BlockSig);
+	sigdelset(&BlockSig, SIGABRT);
+	sigdelset(&BlockSig, SIGILL);
+	sigdelset(&BlockSig, SIGSEGV);
+	sigdelset(&BlockSig, SIGBUS);
+	sigdelset(&BlockSig, SIGTRAP);
+	sigdelset(&BlockSig, SIGCONT);
+	sigdelset(&BlockSig, SIGSYS);
+#else
+	UnBlockSig = 0;
+	BlockSig = sigmask(SIGHUP) | sigmask(SIGQUIT) |
+		sigmask(SIGTERM) | sigmask(SIGALRM) |
+		sigmask(SIGINT) | sigmask(SIGUSR1) |
+		sigmask(SIGUSR2) | sigmask(SIGCHLD) |
+		sigmask(SIGWINCH) | sigmask(SIGFPE);
+#endif
+}
+
+
+/*
+ * Set up a signal handler
+ */
 pqsigfunc
 pqsignal(int signo, pqsigfunc func)
 {

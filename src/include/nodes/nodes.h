@@ -122,10 +122,7 @@ typedef enum NodeTag
 	 *---------------------
 	 */
 	T_MemoryContext = 400,
-	T_GlobalMemory,
-	T_PortalMemoryContext,
-	T_PortalVariableMemory,
-	T_PortalHeapMemory,
+	T_AllocSetContext,
 
 	/*---------------------
 	 * TAGS FOR VALUE NODES (pg_list.h)

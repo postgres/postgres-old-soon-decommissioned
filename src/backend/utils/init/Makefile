@@ -11,7 +11,7 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-OBJS = enbl.o findbe.o globals.o miscinit.o postinit.o
+OBJS = findbe.o globals.o miscinit.o postinit.o
 
 all: SUBSYS.o
 
@@ -27,4 +27,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-

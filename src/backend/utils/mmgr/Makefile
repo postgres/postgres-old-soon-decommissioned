@@ -11,7 +11,7 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-OBJS = aset.o mcxt.o palloc.o portalmem.o oset.o
+OBJS = aset.o mcxt.o portalmem.o
 
 all: SUBSYS.o
 

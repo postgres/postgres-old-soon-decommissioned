@@ -16,7 +16,6 @@
 
 #include "utils/portal.h"
 
-extern MemoryContext PortalExecutorHeapMemory;
 
 /*
  * PerformPortalFetch

@@ -217,8 +217,7 @@ ProcedureCreate(char *procedureName,
 
 	if (languageObjectId == SQLlanguageId)
 	{
-		querytree_list = pg_parse_and_rewrite(prosrc, typev, parameterCount,
-											  FALSE);
+		querytree_list = pg_parse_and_rewrite(prosrc, typev, parameterCount);
 		/* typecheck return value */
 		pg_checkretval(typeObjectId, querytree_list);
 	}

@@ -15,20 +15,13 @@
 #define PQUERY_H
 
 #include "executor/execdesc.h"
+#include "utils/portal.h"
 
-/* moved to execdesc.h
-extern QueryDesc *CreateQueryDesc(Query *parsetree, Plan *plantree,
-								  CommandDest dest);
 
-*/
+extern void ProcessQuery(Query *parsetree, Plan *plan, CommandDest dest);
+
 extern EState *CreateExecutorState(void);
 
+extern Portal PreparePortal(char *portalName);
 
-extern void ProcessPortal(char *portalName, Query *parseTree,
-			  Plan *plan, EState *state, TupleDesc attinfo,
-			  CommandDest dest);
-
-extern void
-			ProcessQuery(Query *parsetree, Plan *plan, CommandDest dest);
-
-#endif	 /* pqueryIncluded */
+#endif	 /* PQUERY_H */

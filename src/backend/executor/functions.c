@@ -87,8 +87,8 @@ init_execution_state(FunctionCachePtr fcache)
 	nextes = newes;
 	preves = (execution_state *) NULL;
 
-	queryTree_list = pg_parse_and_rewrite(fcache->src, fcache->argOidVect,
-										  nargs, FALSE);
+	queryTree_list = pg_parse_and_rewrite(fcache->src,
+										  fcache->argOidVect, nargs);
 
 	foreach(qtl_item, queryTree_list)
 	{

@@ -119,7 +119,7 @@ InitProcGlobal(IPCKey key, int maxBackends)
 
 	/* attach to the free list */
 	ProcGlobal = (PROC_HDR *)
-		ShmemInitStruct("Proc Header", (unsigned) sizeof(PROC_HDR), &found);
+		ShmemInitStruct("Proc Header", sizeof(PROC_HDR), &found);
 
 	/* --------------------
 	 * We're the first - initialize.
@@ -185,7 +185,7 @@ InitProcess(IPCKey key)
 
 	/* attach to the free list */
 	ProcGlobal = (PROC_HDR *)
-		ShmemInitStruct("Proc Header", (unsigned) sizeof(PROC_HDR), &found);
+		ShmemInitStruct("Proc Header", sizeof(PROC_HDR), &found);
 	if (!found)
 	{
 		/* this should not happen. InitProcGlobal() is called before this. */
@@ -218,7 +218,7 @@ InitProcess(IPCKey key)
 		 * cleanup dead processes).
 		 */
 
-		MyProc = (PROC *) ShmemAlloc((unsigned) sizeof(PROC));
+		MyProc = (PROC *) ShmemAlloc(sizeof(PROC));
 		if (!MyProc)
 		{
 			SpinRelease(ProcStructLock);
@@ -458,7 +458,7 @@ ProcQueueAlloc(char *name)
 {
 	bool		found;
 	PROC_QUEUE *queue = (PROC_QUEUE *)
-	ShmemInitStruct(name, (unsigned) sizeof(PROC_QUEUE), &found);
+		ShmemInitStruct(name, sizeof(PROC_QUEUE), &found);
 
 	if (!queue)
 		return NULL;

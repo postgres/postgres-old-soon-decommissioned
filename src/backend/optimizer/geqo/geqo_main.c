@@ -110,9 +110,6 @@ geqo(Query *root)
     else
         srandom(time(NULL));
 
-/* initialize plan evaluator */
-	geqo_eval_startup();
-
 /* allocate genetic pool memory */
 	pool = alloc_pool(pool_size, number_of_rels);
 

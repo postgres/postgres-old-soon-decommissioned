@@ -265,7 +265,7 @@ advance_transition_functions(AggStatePerAgg peraggstate,
 			else
 				newVal = FunctionCallInvoke(&fcinfo);
 			if (!peraggstate->transtype1ByVal && !peraggstate->value1IsNull)
-				pfree(peraggstate->value1);
+				pfree(DatumGetPointer(peraggstate->value1));
 			peraggstate->value1 = newVal;
 			peraggstate->value1IsNull = fcinfo.isnull;
 		}
@@ -288,7 +288,7 @@ advance_transition_functions(AggStatePerAgg peraggstate,
 		else
 			newVal = FunctionCallInvoke(&fcinfo);
 		if (!peraggstate->transtype2ByVal && !peraggstate->value2IsNull)
-			pfree(peraggstate->value2);
+			pfree(DatumGetPointer(peraggstate->value2));
 		peraggstate->value2 = newVal;
 		peraggstate->value2IsNull = fcinfo.isnull;
 	}
@@ -424,12 +424,12 @@ finalize_aggregate(AggStatePerAgg peraggstate,
 	if (OidIsValid(peraggstate->xfn1_oid) &&
 		!peraggstate->value1IsNull &&
 		!peraggstate->transtype1ByVal)
-		pfree(peraggstate->value1);
+		pfree(DatumGetPointer(peraggstate->value1));
 
 	if (OidIsValid(peraggstate->xfn2_oid) &&
 		!peraggstate->value2IsNull &&
 		!peraggstate->transtype2ByVal)
-		pfree(peraggstate->value2);
+		pfree(DatumGetPointer(peraggstate->value2));
 }
 
 /* ---------------------------------------

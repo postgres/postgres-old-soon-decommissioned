@@ -17,7 +17,8 @@ typedef struct
 	List	   *qtlist;
 	uint32		processed;		/* by Executor */
 	SPITupleTable *tuptable;
-	Portal		portal;			/* portal per procedure */
+	MemoryContext procCxt;		/* procedure context */
+	MemoryContext execCxt;		/* executor context */
 	MemoryContext savedcxt;
 	CommandId	savedId;
 } _SPI_connection;

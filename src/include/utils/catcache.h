@@ -75,8 +75,10 @@ typedef struct catcache
 
 #define InvalidCatalogCacheId	(-1)
 
-extern GlobalMemory CacheCxt;
+/* this extern duplicates utils/memutils.h... */
+extern MemoryContext CacheMemoryContext;
 
+extern void CreateCacheMemoryContext(void);
 extern void CatalogCacheIdInvalidate(int cacheId, Index hashIndex,
 						 ItemPointer pointer);
 extern void ResetSystemCache(void);

@@ -135,9 +135,11 @@ PQexec(char *query)
 	/* ----------------
 	 *	pg_exec_query_dest will put the query results in a portal which will
 	 *	end up on the top of the portal stack.
+	 *
+	 * XXX memory context manipulation needs thought here.
 	 * ----------------
 	 */
-	pg_exec_query_dest(query, Local, FALSE);
+	pg_exec_query_dest(query, Local, CurrentMemoryContext);
 
 	/* ----------------
 	 *	pop the portal off the portal stack and return the

@@ -67,7 +67,7 @@ create_temp_relation(const char *relname, HeapTuple pg_class_tuple)
 	MemoryContext oldcxt;
 	TempTable  *temp_rel;
 
-	oldcxt = MemoryContextSwitchTo((MemoryContext) CacheCxt);
+	oldcxt = MemoryContextSwitchTo(CacheMemoryContext);
 
 	temp_rel = (TempTable *) palloc(sizeof(TempTable));
 	temp_rel->user_relname = (char *) palloc(NAMEDATALEN);
@@ -135,7 +135,7 @@ remove_temp_relation(Oid relid)
 	List	   *l,
 			   *prev;
 
-	oldcxt = MemoryContextSwitchTo((MemoryContext) CacheCxt);
+	oldcxt = MemoryContextSwitchTo(CacheMemoryContext);
 
 	prev = NIL;
 	l = temp_rels;
@@ -185,7 +185,7 @@ invalidate_temp_relations(void)
 	List	   *l,
 			   *prev;
 
-	oldcxt = MemoryContextSwitchTo((MemoryContext) CacheCxt);
+	oldcxt = MemoryContextSwitchTo(CacheMemoryContext);
 
 	prev = NIL;
 	l = temp_rels;

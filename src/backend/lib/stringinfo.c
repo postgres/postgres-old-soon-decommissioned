@@ -29,8 +29,6 @@ makeStringInfo(void)
 	StringInfo	res;
 
 	res = (StringInfo) palloc(sizeof(StringInfoData));
-	if (res == NULL)
-		elog(ERROR, "makeStringInfo: Out of memory");
 
 	initStringInfo(res);
 
@@ -49,9 +47,6 @@ initStringInfo(StringInfo str)
 	int			size = 256;		/* initial default buffer size */
 
 	str->data = (char *) palloc(size);
-	if (str->data == NULL)
-		elog(ERROR,
-			 "initStringInfo: Out of memory (%d bytes requested)", size);
 	str->maxlen = size;
 	str->len = 0;
 	str->data[0] = '\0';
@@ -62,6 +57,11 @@ initStringInfo(StringInfo str)
  *
  * Internal routine: make sure there is enough space for 'needed' more bytes
  * ('needed' does not include the terminating null).
+ *
+ * NB: because we use repalloc() to enlarge the buffer, the string buffer
+ * will remain allocated in the same memory context that was current when
+ * initStringInfo was called, even if another context is now current.
+ * This is the desired and indeed critical behavior!
  */
 static void
 enlargeStringInfo(StringInfo str, int needed)
@@ -83,9 +83,6 @@ enlargeStringInfo(StringInfo str, int needed)
 		newlen = 2 * newlen;
 
 	str->data = (char *) repalloc(str->data, newlen);
-	if (str->data == NULL)
-		elog(ERROR,
-		"enlargeStringInfo: Out of memory (%d bytes requested)", newlen);
 
 	str->maxlen = newlen;
 }

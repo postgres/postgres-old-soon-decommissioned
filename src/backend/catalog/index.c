@@ -442,10 +442,10 @@ ConstructIndexReldesc(Relation indexRelation, Oid amoid)
 	 *	  context changes
 	 * ----------------
 	 */
-	if (!CacheCxt)
-		CacheCxt = CreateGlobalMemory("Cache");
+	if (!CacheMemoryContext)
+		CreateCacheMemoryContext();
 
-	oldcxt = MemoryContextSwitchTo((MemoryContext) CacheCxt);
+	oldcxt = MemoryContextSwitchTo(CacheMemoryContext);
 
 	indexRelation->rd_am = AccessMethodObjectIdGetForm(amoid);
 
@@ -904,16 +904,16 @@ InitIndexStrategy(int numatts,
 	 *	it will be lost at the end of the transaction.
 	 * ----------------
 	 */
-	if (!CacheCxt)
-		CacheCxt = CreateGlobalMemory("Cache");
+	if (!CacheMemoryContext)
+		CreateCacheMemoryContext();
 
-	strategy = (IndexStrategy)
-		MemoryContextAlloc((MemoryContext) CacheCxt, strsize);
+	strategy = (IndexStrategy) MemoryContextAlloc(CacheMemoryContext,
+												  strsize);
 
 	if (amsupport > 0)
 	{
 		strsize = numatts * (amsupport * sizeof(RegProcedure));
-		support = (RegProcedure *) MemoryContextAlloc((MemoryContext) CacheCxt,
+		support = (RegProcedure *) MemoryContextAlloc(CacheMemoryContext,
 													  strsize);
 	}
 	else

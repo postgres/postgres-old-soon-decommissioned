@@ -1090,7 +1090,7 @@ inv_newtuple(LargeObjectDesc *obj_desc,
 
 	ntup->t_len = tupsize;
 	ItemPointerSet(&ntup->t_self, BufferGetBlockNumber(buffer), off);
-	LastOidProcessed = ntup->t_data->t_oid = newoid();
+	ntup->t_data->t_oid = newoid();
 	TransactionIdStore(GetCurrentTransactionId(), &(ntup->t_data->t_xmin));
 	ntup->t_data->t_cmin = GetCurrentCommandId();
 	StoreInvalidTransactionId(&(ntup->t_data->t_xmax));

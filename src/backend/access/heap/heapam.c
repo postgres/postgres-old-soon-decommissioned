@@ -1230,10 +1230,7 @@ heap_insert(Relation relation, HeapTuple tup)
 	 * ----------------
 	 */
 	if (!OidIsValid(tup->t_data->t_oid))
-	{
 		tup->t_data->t_oid = newoid();
-		LastOidProcessed = tup->t_data->t_oid;
-	}
 	else
 		CheckMaxObjectId(tup->t_data->t_oid);
 

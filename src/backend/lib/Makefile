@@ -11,7 +11,7 @@
 SRCDIR = ../..
 include ../../Makefile.global
 
-OBJS = bit.o fstack.o hasht.o lispsort.o stringinfo.o dllist.o
+OBJS = bit.o hasht.o lispsort.o stringinfo.o dllist.o
 
 all: SUBSYS.o
 

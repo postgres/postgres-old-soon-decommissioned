@@ -39,7 +39,6 @@
 #include "postgres_ext.h"
 #include "c.h"
 #include "utils/elog.h"
-#include "utils/mcxt.h"
 #include "utils/palloc.h"
 
 /* ----------------------------------------------------------------

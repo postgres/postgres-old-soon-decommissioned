@@ -134,7 +134,7 @@ load_external_function(char *filename, char *funcname)
 		file_scanner = (DynamicFileList *)
 			malloc(sizeof(DynamicFileList) + strlen(filename));
 		if (file_scanner == NULL)
-			elog(FATAL, "Out of memory in load_external_function");
+			elog(ERROR, "Out of memory in load_external_function");
 
 		MemSet((char *) file_scanner, 0, sizeof(DynamicFileList));
 		strcpy(file_scanner->filename, filename);

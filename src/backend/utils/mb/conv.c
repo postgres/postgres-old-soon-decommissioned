@@ -1521,7 +1521,8 @@ pg_encoding_conv_tbl pg_conv_tbl[] = {
 };
 
 #ifdef DEBUGMAIN
-#include "utils/mcxt.h"
+#include "postgres.h"
+#include "utils/memutils.h"
 /*
  *	testing for sjis2mic() and mic2sjis()
  */
@@ -1565,21 +1566,23 @@ main()
 void
 elog(int lev, const char *fmt,...)
 {
-};
+}
+
 MemoryContext CurrentMemoryContext;
-Pointer
+
+void *
 MemoryContextAlloc(MemoryContext context, Size size)
 {
-};
-Pointer
-MemoryContextRealloc(MemoryContext context,
-					 Pointer pointer,
-					 Size size)
-{
-};
+}
+
 void
-MemoryContextFree(MemoryContext context, Pointer pointer)
+pfree(void *pointer)
 {
-};
+}
+
+void *
+repalloc(void *pointer, Size size)
+{
+}
 
 #endif

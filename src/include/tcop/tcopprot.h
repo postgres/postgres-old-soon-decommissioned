@@ -33,12 +33,11 @@ extern bool ShowPortNumber;
 #ifndef BOOTSTRAP_INCLUDE
 
 extern List *pg_parse_and_rewrite(char *query_string,
-					 Oid *typev, int nargs,
-					 bool aclOverride);
+								  Oid *typev, int nargs);
 extern Plan *pg_plan_query(Query *querytree);
 extern void pg_exec_query_dest(char *query_string,
-				   CommandDest dest,
-				   bool aclOverride);
+							   CommandDest dest,
+							   MemoryContext parse_context);
 
 #endif	 /* BOOTSTRAP_INCLUDE */
 

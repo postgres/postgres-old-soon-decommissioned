@@ -105,8 +105,6 @@ extern bool enableFsync;
 extern bool allowSystemTableMods;
 extern int	SortMem;
 
-extern Oid	LastOidProcessed;	/* for query rewrite */
-
 /* a few postmaster startup options are exported here so the
    configuration file processor has access to them */
 
@@ -189,9 +187,10 @@ typedef int16 ExitStatus;
 
 /* in utils/init/postinit.c */
 
-extern bool PostgresIsInitialized;
+extern int	lockingOff;
 
 extern void InitPostgres(const char *dbname);
+extern void BaseInit(void);
 
 /* one of the ways to get out of here */
 #define ExitPostgres(status) proc_exec(status)
