@@ -139,7 +139,7 @@ ProcedureCreate(const char *procedureName,
 	 */
 	if (parameterCount == 1 && OidIsValid(typev[0]) &&
 		(relid = typeidTypeRelid(typev[0])) != InvalidOid &&
-		get_attnum(relid, (char *) procedureName) != InvalidAttrNumber)
+		get_attnum(relid, procedureName) != InvalidAttrNumber)
 		ereport(ERROR,
 				(errcode(ERRCODE_DUPLICATE_COLUMN),
 				 errmsg("\"%s\" is already an attribute of type %s",
