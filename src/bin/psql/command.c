@@ -354,27 +354,32 @@ exec_command(const char *cmd,
             fputs("\n", fout);
 	}
 
-	/* \encoding -- set client side encoding */
+	/* \encoding -- set/show client side encoding */
 	else if (strcmp(cmd, "encoding") == 0)
 	{
 		char *encoding = scan_option(&string, OT_NORMAL, NULL);
 
-        if (!encoding)
-            puts(pg_encoding_to_char(pset.encoding));
-        else
-        {
+	        if (!encoding)
+			/* show encoding */
+			puts(pg_encoding_to_char(pset.encoding));
+	        else
+		{
 #ifdef MULTIBYTE
-            if (PQsetClientEncoding(pset.db, encoding) == -1)
-                psql_error("%s: invalid encoding name\n", encoding);
+			/* set encoding */
+			if (PQsetClientEncoding(pset.db, encoding) == -1)
+				psql_error("%s: invalid encoding name\n", encoding);
 
-            /* save encoding info into psql internal data */
-            pset.encoding = PQclientEncoding(pset.db);
-            SetVariable(pset.vars, "ENCODING", pg_encoding_to_char(pset.encoding));
+			else
+			{
+				/* save encoding info into psql internal data */
+				pset.encoding = PQclientEncoding(pset.db);
+				SetVariable(pset.vars, "ENCODING", pg_encoding_to_char(pset.encoding));
+			}
 #else
-            psql_error("\\%s: multi-byte support is not enabled\n", cmd);
+			psql_error("\\%s: multi-byte support is not enabled\n", cmd);
 #endif
-        }
-        free(encoding);
+		        free(encoding);
+	        }
 	}
 
 	/* \f -- change field separator */
