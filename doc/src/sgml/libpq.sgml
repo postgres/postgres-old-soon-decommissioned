@@ -2519,10 +2519,13 @@ This file should have lines of the following format:
 <synopsis>
 <replaceable>hostname</replaceable>:<replaceable>port</replaceable>:<replaceable>database</replaceable>:<replaceable>username</replaceable>:<replaceable>password</replaceable>
 </synopsis>
-Each of these fields may be a literal name or <literal>*</literal>, which
-matches anything.  The first matching entry will be used, so put more-specific
-entries first.  When an entry contain <literal>:</literal> or
-<literal>\</literal>, it must be escaped with <literal>\</literal>.
+Each of the first four fields may be a literal value, or <literal>*</literal>,
+which
+matches anything.  The password field from the first line that matches the
+current connection parameters will be used.  (Therefore, put more-specific
+entries first when you are using wildcards.)
+If an entry needs to contain <literal>:</literal> or
+<literal>\</literal>, escape this character with <literal>\</literal>.
 </para>
 <para>
 The permissions on <filename>.pgpass</filename> must disallow any
