@@ -20,6 +20,10 @@ RANLIB=		/usr/bin/ranlib
 
 AROPT = cq
 
+# FreeBSD 2.1R with new Flex v2.5.2 in /usr/local
+LEX = flex
+LDADD+= -L/usr/local/lib -lfl
+
 #
 # for postgres.user.mk
 #
