@@ -17,6 +17,9 @@
 #include "access/xlog.h"
 #include "storage/lock.h"
 
+/* configurable option */
+extern int DeadlockTimeout;
+
 typedef struct
 {
 	int			sleeplock;

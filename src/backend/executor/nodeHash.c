@@ -27,9 +27,8 @@
 #include "executor/executor.h"
 #include "executor/nodeHash.h"
 #include "executor/nodeHashjoin.h"
+#include "miscadmin.h"
 #include "utils/portal.h"
-
-extern int	SortMem;
 
 static int	hashFunc(Datum key, int len, bool byVal);
 

@@ -27,7 +27,6 @@
 
 #include "postgres.h"
 
-#include "utils/trace.h"
 
 /*****************************************************************************
  *	  globals.h --															 *
@@ -102,11 +101,19 @@ extern char CTZName[];
 extern char FloatFormat[];
 extern char DateFormat[];
 
-#define disableFsync	pg_options[OPT_NOFSYNC]
+extern bool enableFsync;
 extern bool allowSystemTableMods;
 extern int	SortMem;
 
 extern Oid	LastOidProcessed;	/* for query rewrite */
+
+/* a few postmaster startup options are exported here so the
+   configuration file processor has access to them */
+
+extern bool NetServer;
+extern int MaxBackends;
+extern int NBuffers;
+extern int PostPortName;
 
 /*****************************************************************************
  *	  pdir.h --																 *

@@ -21,15 +21,8 @@
 #include "optimizer/paths.h"
 
 
-#ifdef GEQO
 bool		enable_geqo = true;
-
-#else
-bool		enable_geqo = false;
-
-#endif
-
-int			geqo_rels = GEQO_RELS;
+int			geqo_rels = DEFAULT_GEQO_RELS;
 
 
 static void set_base_rel_pathlist(Query *root);

@@ -77,8 +77,11 @@ char		DateFormat[20] = "%d-%m-%Y";		/* mjl: sizes! or better
 												 * malloc? XXX */
 char		FloatFormat[20] = "%f";
 
+bool        enableFsync = true;
 bool		allowSystemTableMods = false;
 int			SortMem = 512;
+int			NBuffers = DEF_NBUFFERS;
+
 
 char	   *IndexedCatalogNames[] = {
 	AttributeRelationName,

@@ -268,8 +268,8 @@ SIInsertDataEntry(SISeg *segP, SharedInvalidData *data)
 	if (numMsgs == (MAXNUMMESSAGES * 70 / 100) &&
 		IsUnderPostmaster)
 	{
-		TPRINTF(TRACE_VERBOSE,
-		  "SIInsertDataEntry: table is 70%% full, signaling postmaster");
+		if (DebugLvl >= 1)
+			elog(DEBUG, "SIInsertDataEntry: table is 70%% full, signaling postmaster");
 		kill(getppid(), SIGUSR2);
 	}
 

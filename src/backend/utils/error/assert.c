@@ -15,12 +15,12 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <unistd.h>
-
 #include "postgres.h"
 
+#include <stdio.h>
+#include <unistd.h>
+
 #include "utils/exc.h"
-#include "utils/trace.h"
 
 int
 ExceptionalCondition(char *conditionName,
@@ -39,7 +39,7 @@ ExceptionalCondition(char *conditionName,
 		|| !PointerIsValid(fileName)
 		|| !PointerIsValid(exceptionP))
 	{
-		EPRINTF("TRAP: ExceptionalCondition: bad arguments\n");
+		fprintf(stderr, "TRAP: ExceptionalCondition: bad arguments\n");
 
 		ExcAbort(exceptionP,
 				 (ExcDetail) detail,
@@ -48,7 +48,7 @@ ExceptionalCondition(char *conditionName,
 	}
 	else
 	{
-		EPRINTF("TRAP: %s(\"%s:%s\", File: \"%s\", Line: %d)\n",
+		fprintf(stderr, "TRAP: %s(\"%s:%s\", File: \"%s\", Line: %d)\n",
 				exceptionP->message, conditionName,
 				(detail == NULL ? "" : detail),
 				fileName, lineNumber);

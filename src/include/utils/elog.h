@@ -23,6 +23,10 @@
 #define LOG		DEBUG
 #define NOIND	(-3)			/* debug message, don't indent as far */
 
+#ifdef ENABLE_SYSLOG
+extern int Use_syslog;
+#endif
+
 #ifndef __GNUC__
 extern void elog(int lev, const char *fmt,...);
 

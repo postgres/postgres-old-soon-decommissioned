@@ -36,12 +36,10 @@
 #include "postgres.h"
 
 #include "access/nbtree.h"
+#include "tcop/tcopprot.h"
+#include "utils/guc.h"
 #include "utils/tuplesort.h"
 
-
-#ifdef BTREE_BUILD_STATS
-#define ShowExecutorStats pg_options[TRACE_EXECUTORSTATS]
-#endif
 
 /*
  * turn on debugging output.
@@ -136,13 +134,13 @@ void
 _bt_leafbuild(BTSpool *btspool)
 {
 #ifdef BTREE_BUILD_STATS
-	if (ShowExecutorStats)
+	if (Show_btree_build_stats)
 	{
-		fprintf(stderr, "! BtreeBuild (Spool) Stats:\n");
+		fprintf(StatFp, "BTREE BUILD (Spool) STATISTICS\n");
 		ShowUsage();
 		ResetUsage();
 	}
-#endif
+#endif /* BTREE_BUILD_STATS */
 	tuplesort_performsort(btspool->sortstate);
 
 	_bt_load(btspool->index, btspool);

@@ -196,7 +196,10 @@ static long pg_nofile(void);
 int
 pg_fsync(int fd)
 {
-	return disableFsync ? 0 : fsync(fd);
+	if (enableFsync)
+		return fsync(fd);
+	else
+		return 0;
 }
 
 /*
@@ -916,7 +919,7 @@ FileSync(File file)
 		/* Need not sync if file is not dirty. */
 		returnCode = 0;
 	}
-	else if (disableFsync)
+	else if (!enableFsync)
 	{
 		/* Don't force the file open if pg_fsync isn't gonna sync it. */
 		returnCode = 0;

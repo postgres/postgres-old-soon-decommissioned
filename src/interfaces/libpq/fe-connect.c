@@ -122,7 +122,7 @@ static const PQconninfoOption PQconninfoOptions[] = {
 	"Database-Host-IPv4-Address", "", 15},		/* Room for
 												 * abc.def.ghi.jkl */
 
-	{"port", "PGPORT", DEF_PGPORT, NULL,
+	{"port", "PGPORT", DEF_PGPORT_STR, NULL,
 	"Database-Port", "", 6},
 
 	{"tty", "PGTTY", DefaultTty, NULL,
@@ -416,7 +416,7 @@ PQsetdbLogin(const char *pghost, const char *pgport, const char *pgoptions,
 	if ((pgport == NULL) || pgport[0] == '\0')
 	{
 		if ((tmp = getenv("PGPORT")) == NULL)
-			tmp = DEF_PGPORT;
+			tmp = DEF_PGPORT_STR;
 		conn->pgport = strdup(tmp);
 	}
 	else

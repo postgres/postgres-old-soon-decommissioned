@@ -18,7 +18,7 @@
 #include "nodes/relation.h"
 
 /* default GEQO threshold (default value for geqo_rels) */
-#define GEQO_RELS 11
+#define DEFAULT_GEQO_RELS 11
 
 
 /*

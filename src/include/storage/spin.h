@@ -28,6 +28,10 @@
 
 typedef int SPINLOCK;
 
+#ifdef LOCK_DEBUG
+extern bool Trace_spinlocks;
+#endif
+
 extern void CreateSpinlocks(IPCKey key);
 extern void InitSpinLocks(void);
 extern void SpinAcquire(SPINLOCK lockid);

@@ -267,7 +267,7 @@ BootstrapMain(int argc, char *argv[])
 				Noversion = true;
 				break;
 			case 'F':
-				disableFsync = true;
+				enableFsync = false;
 				break;
 			case 'Q':
 				Quiet = true;

@@ -176,6 +176,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"nullif", NULLIF},
 	{"numeric", NUMERIC},
 	{"of", OF},
+	{"off", OFF},
 	{"offset", OFFSET},
 	{"oids", OIDS},
 	{"old", CURRENT},

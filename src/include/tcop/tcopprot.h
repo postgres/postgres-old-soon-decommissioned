@@ -28,6 +28,9 @@ extern bool Warn_restart_ready;
 extern bool InError;
 extern bool ExitAfterAbort;
 
+extern bool HostnameLookup;
+extern bool ShowPortNumber;
+
 #ifndef BOOTSTRAP_INCLUDE
 
 extern List *pg_parse_and_rewrite(char *query_string,
@@ -50,5 +53,6 @@ extern int PostgresMain(int argc, char *argv[],
 			 int real_argc, char *real_argv[]);
 extern void ResetUsage(void);
 extern void ShowUsage(void);
+extern FILE * StatFp;
 
 #endif	 /* TCOPPROT_H */

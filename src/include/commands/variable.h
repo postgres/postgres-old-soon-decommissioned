@@ -6,11 +6,11 @@
  *
  */
 #ifndef VARIABLE_H
-#define VARIABLE_H 1
+#define VARIABLE_H
 
-extern bool SetPGVariable(const char *name, const char *value);
-extern bool GetPGVariable(const char *name);
-extern bool ResetPGVariable(const char *name);
+extern void SetPGVariable(const char *name, const char *value);
+extern void GetPGVariable(const char *name);
+extern void ResetPGVariable(const char *name);
 
 extern void set_default_datestyle(void);
 

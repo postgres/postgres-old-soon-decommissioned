@@ -12,13 +12,6 @@
  *
  *-------------------------------------------------------------------------
  */
-/* #define LOCKDEBUGALL 1 */
-/* #define LOCKDEBUG	1 */
-
-#ifdef	LOCKDEBUGALL
-#define LOCKDEBUG		1
-#endif	 /* LOCKDEBUGALL */
-
 
 #include "postgres.h"
 
