@@ -744,6 +744,16 @@ assign_var		: T_SCALAR
 						check_assignable(yylval.scalar);
 						$$ = yylval.scalar->dno;
 					}
+				| T_ROW
+					{
+						check_assignable((PLpgSQL_datum *) yylval.row);
+						$$ = yylval.row->rowno;
+					}
+				| T_RECORD
+					{
+						check_assignable((PLpgSQL_datum *) yylval.rec);
+						$$ = yylval.rec->recno;
+					}
 				| assign_var '[' expr_until_rightbracket
 					{
 						PLpgSQL_arrayelem	*new;
@@ -1965,6 +1975,12 @@ check_assignable(PLpgSQL_datum *datum)
 						 errmsg("\"%s\" is declared CONSTANT",
 								((PLpgSQL_var *) datum)->refname)));
 			}
+			break;
+		case PLPGSQL_DTYPE_ROW:
+			/* always assignable? */
+			break;
+		case PLPGSQL_DTYPE_REC:
+			/* always assignable?  What about NEW/OLD? */
 			break;
 		case PLPGSQL_DTYPE_RECFIELD:
 			/* always assignable? */
