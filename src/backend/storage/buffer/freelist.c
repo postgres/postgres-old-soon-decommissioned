@@ -29,6 +29,7 @@
 
 #include "storage/buf_internals.h"
 #include "storage/bufmgr.h"
+#include "storage/ipc.h"
 #include "storage/proc.h"
 
 

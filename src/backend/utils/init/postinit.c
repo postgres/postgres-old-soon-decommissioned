@@ -401,11 +401,12 @@ ShutdownPostgres(void)
 	 * since that just raises the odds of failure --- but there's some
 	 * stuff we need to do.
 	 *
-	 * Release any spinlocks or buffer context locks we might be holding.
+	 * Release any LW locks and buffer context locks we might be holding.
 	 * This is a kluge to improve the odds that we won't get into a
-	 * self-made stuck-spinlock scenario while trying to shut down.
+	 * self-made stuck-lock scenario while trying to shut down.
 	 */
-	ProcReleaseSpins(NULL);
+	LWLockReleaseAll();
+	AbortBufferIO();
 	UnlockBuffers();
 
 	/*

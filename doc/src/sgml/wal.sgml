@@ -146,7 +146,7 @@
   <para>
    The <acronym>WAL</acronym> buffers and control structure are in
    shared memory, and are handled by the backends; they are protected
-   by spinlocks.  The demand on shared memory is dependent on the
+   by lightweight locks.  The demand on shared memory is dependent on the
    number of buffers; the default size of the <acronym>WAL</acronym>
    buffers is 64 kB.
   </para>

@@ -16,7 +16,6 @@
 
 #include "storage/backendid.h"
 #include "storage/itemptr.h"
-#include "storage/spin.h"
 
 
 /*
@@ -64,8 +63,6 @@ typedef union
 } SharedInvalidationMessage;
 
 
-extern SPINLOCK SInvalLock;
-
 extern int	SInvalShmemSize(int maxBackends);
 extern void CreateSharedInvalidationState(int maxBackends);
 extern void InitBackendSharedInvalidationState(void);
@@ -78,7 +75,7 @@ extern bool DatabaseHasActiveBackends(Oid databaseId, bool ignoreMyself);
 extern bool TransactionIdIsInProgress(TransactionId xid);
 extern TransactionId GetOldestXmin(bool allDbs);
 extern int	CountActiveBackends(void);
-/* Use "struct proc", not PROC, to avoid including proc.h here */
-extern struct proc *BackendIdGetProc(BackendId procId);
+/* Use "struct PROC", not PROC, to avoid including proc.h here */
+extern struct PROC *BackendIdGetProc(BackendId procId);
 
 #endif	 /* SINVAL_H */

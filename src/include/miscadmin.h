@@ -46,8 +46,8 @@
  * will be held off until the last matching RESUME_INTERRUPTS() occurs.
  *
  * Special mechanisms are used to let an interrupt be accepted when we are
- * waiting for a lock or spinlock, and when we are waiting for command input
- * (but, of course, only if the interrupt holdoff counter is zero).  See the
+ * waiting for a lock or when we are waiting for command input (but, of
+ * course, only if the interrupt holdoff counter is zero).  See the
  * related code for details.
  *
  * A related, but conceptually distinct, mechanism is the "critical section"

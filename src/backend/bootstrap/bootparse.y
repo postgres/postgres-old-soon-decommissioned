@@ -45,7 +45,6 @@
 #include "storage/itemptr.h"
 #include "storage/off.h"
 #include "storage/smgr.h"
-#include "storage/spin.h"
 #include "tcop/dest.h"
 #include "utils/nabstime.h"
 #include "utils/rel.h"

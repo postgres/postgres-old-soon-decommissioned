@@ -172,8 +172,8 @@ InitDeadLockChecking(void)
  *
  * We must have already locked the master lock before being called.
  * NOTE: although the lockctl structure appears to allow each lock
- * table to have a different spinlock, all locks that can block had
- * better use the same spinlock, else this code will not be adequately
+ * table to have a different LWLock, all locks that can block had
+ * better use the same LWLock, else this code will not be adequately
  * interlocked!
  */
 bool

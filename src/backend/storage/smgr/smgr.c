@@ -19,6 +19,7 @@
 
 #include "storage/bufmgr.h"
 #include "storage/freespace.h"
+#include "storage/ipc.h"
 #include "storage/smgr.h"
 #include "utils/memutils.h"
 

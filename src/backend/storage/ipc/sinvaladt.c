@@ -83,7 +83,7 @@ SIBufferInit(int maxBackends)
  *	   <0	Some other failure (not currently used)
  *
  * NB: this routine, and all following ones, must be executed with the
- * SInvalLock spinlock held, since there may be multiple backends trying
+ * SInvalLock lock held, since there may be multiple backends trying
  * to access the buffer.
  */
 int
@@ -152,7 +152,7 @@ CleanupInvalidationState(int status, Datum arg)
 
 	Assert(PointerIsValid(segP));
 
-	SpinAcquire(SInvalLock);
+	LWLockAcquire(SInvalLock, LW_EXCLUSIVE);
 
 	/* Mark myself inactive */
 	segP->procState[MyBackendId - 1].nextMsgNum = -1;
@@ -167,7 +167,7 @@ CleanupInvalidationState(int status, Datum arg)
 	}
 	segP->lastBackend = i;
 
-	SpinRelease(SInvalLock);
+	LWLockRelease(SInvalLock);
 }
 
 /*
@@ -267,6 +267,10 @@ SISetProcStateInvalid(SISeg *segP)
  *	1: next SI message has been extracted into *data
  *		(there may be more messages available after this one!)
  * -1: SI reset message extracted
+ *
+ * NB: this can run in parallel with other instances of SIGetDataEntry
+ * executing on behalf of other backends.  See comments in sinval.c in
+ * ReceiveSharedInvalidMessages().
  */
 int
 SIGetDataEntry(SISeg *segP, int backendId,

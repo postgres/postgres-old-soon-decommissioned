@@ -23,8 +23,7 @@
  *
  * Synchronization:
  *
- *	All routines in this file assume buffer manager spinlock is
- *	held by their caller.
+ *	All routines in this file assume BufMgrLock is held by their caller.
  */
 
 #include "postgres.h"

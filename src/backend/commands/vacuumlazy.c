@@ -53,7 +53,7 @@
  * A page with less than PAGE_SPACE_THRESHOLD free space will be forgotten
  * immediately, and not even passed to the free space map.  Removing the
  * uselessly small entries early saves cycles, and in particular reduces
- * the amount of time we spend holding the FSM spinlock when we finally call
+ * the amount of time we spend holding the FSM lock when we finally call
  * MultiRecordFreeSpace.  Since the FSM will ignore pages below its own
  * runtime threshold anyway, there's no point in making this really small.
  * XXX Is it worth trying to measure average tuple size, and using that to

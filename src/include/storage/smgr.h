@@ -17,8 +17,8 @@
 #include "access/xlog.h"
 #include "storage/relfilenode.h"
 #include "storage/block.h"
-#include "storage/spin.h"
 #include "utils/rel.h"
+
 
 #define SM_FAIL			0
 #define SM_SUCCESS		1
@@ -79,8 +79,6 @@ extern int	mdabort(void);
 extern int	mdsync(void);
 
 /* mm.c */
-extern SPINLOCK MMCacheLock;
-
 extern int	mminit(void);
 extern int	mmcreate(Relation reln);
 extern int	mmunlink(RelFileNode rnode);

@@ -16,10 +16,7 @@
 
 #include "storage/block.h"
 #include "storage/relfilenode.h"
-#include "storage/spin.h"
 
-
-extern SPINLOCK FreeSpaceLock;
 
 extern int	MaxFSMRelations;
 extern int	MaxFSMPages;

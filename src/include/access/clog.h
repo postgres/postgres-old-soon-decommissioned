@@ -24,6 +24,9 @@ typedef int XidStatus;
 #define TRANSACTION_STATUS_ABORTED			0x02
 /* 0x03 is available without changing commit log space allocation */
 
+/* exported because lwlock.c needs it */
+#define NUM_CLOG_BUFFERS	8
+
 
 extern void TransactionIdSetStatus(TransactionId xid, XidStatus status);
 extern XidStatus TransactionIdGetStatus(TransactionId xid);

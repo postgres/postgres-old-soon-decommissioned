@@ -22,6 +22,7 @@
 #include "storage/bufmgr.h"
 #include "storage/freespace.h"
 #include "storage/lmgr.h"
+#include "storage/lwlock.h"
 #include "storage/proc.h"
 #include "storage/sinval.h"
 #include "storage/spin.h"
@@ -53,7 +54,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int maxBackends)
 	size += LockShmemSize(maxBackends);
 	size += XLOGShmemSize();
 	size += CLOGShmemSize();
-	size += SLockShmemSize();
+	size += LWLockShmemSize();
 	size += SInvalShmemSize(maxBackends);
 	size += FreeSpaceShmemSize();
 #ifdef STABLE_MEMORY_STORAGE
@@ -74,12 +75,23 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int maxBackends)
 	/*
 	 * First initialize spinlocks --- needed by InitShmemAllocation()
 	 */
-	CreateSpinlocks(seghdr);
+	CreateSpinlocks();
 
 	/*
-	 * Set up shmem.c hashtable
+	 * Set up shared memory allocation mechanism
 	 */
 	InitShmemAllocation(seghdr);
+
+	/*
+	 * Now initialize LWLocks, which do shared memory allocation and
+	 * are needed for InitShmemIndex.
+	 */
+	CreateLWLocks();
+
+	/*
+	 * Set up shmem.c index hashtable
+	 */
+	InitShmemIndex();
 
 	/*
 	 * Set up xlog, clog, and buffers

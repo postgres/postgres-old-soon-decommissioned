@@ -14,8 +14,6 @@
 #ifndef TRANSAM_H
 #define TRANSAM_H
 
-#include "storage/spin.h"
-
 
 /* ----------------
  *		Special transaction ID values
@@ -122,8 +120,6 @@ extern void CheckMaxObjectId(Oid assigned_oid);
 extern bool AMI_OVERRIDE;
 
 /* in varsup.c */
-extern SPINLOCK OidGenLockId;
-extern SPINLOCK XidGenLockId;
 extern VariableCache ShmemVariableCache;
 
 #endif	 /* TRAMSAM_H */
