@@ -17,6 +17,7 @@
 #include <sys/types.h>
 #include <nlist.h>
 #include <link.h>
+#include <dlfcn.h>
 
 #include "utils/dynamic_loader.h"
 
