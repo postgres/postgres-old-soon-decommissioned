@@ -815,48 +815,6 @@ _readVar()
 }
 
 /* ----------------
- * _readArray
- *
- * Array is a subclass of Expr
- * ----------------
- */
-static Array *
-_readArray()
-{
-	Array	   *local_node;
-	char	   *token;
-	int			length;
-
-	local_node = makeNode(Array);
-
-	token = lsptok(NULL, &length);		/* eat :arrayelemtype */
-	token = lsptok(NULL, &length);		/* get arrayelemtype */
-	local_node->arrayelemtype = strtoul(token, NULL, 10);
-
-	token = lsptok(NULL, &length);		/* eat :arrayelemlength */
-	token = lsptok(NULL, &length);		/* get arrayelemlength */
-	local_node->arrayelemlength = atoi(token);
-
-	token = lsptok(NULL, &length);		/* eat :arrayelembyval */
-	token = lsptok(NULL, &length);		/* get arrayelembyval */
-	local_node->arrayelembyval = (token[0] == 't') ? true : false;
-
-	token = lsptok(NULL, &length);		/* eat :arraylow */
-	token = lsptok(NULL, &length);		/* get arraylow */
-	local_node->arraylow.indx[0] = atoi(token);
-
-	token = lsptok(NULL, &length);		/* eat :arrayhigh */
-	token = lsptok(NULL, &length);		/* get arrayhigh */
-	local_node->arrayhigh.indx[0] = atoi(token);
-
-	token = lsptok(NULL, &length);		/* eat :arraylen */
-	token = lsptok(NULL, &length);		/* get arraylen */
-	local_node->arraylen = atoi(token);
-
-	return local_node;
-}
-
-/* ----------------
  * _readArrayRef
  *
  * ArrayRef is a subclass of Expr
@@ -1835,8 +1793,6 @@ parsePlanString(void)
 		return_value = _readExpr();
 	else if (length == 8 && strncmp(token, "ARRAYREF", length) == 0)
 		return_value = _readArrayRef();
-	else if (length == 5 && strncmp(token, "ARRAY", length) == 0)
-		return_value = _readArray();
 	else if (length == 3 && strncmp(token, "VAR", length) == 0)
 		return_value = _readVar();
 	else if (length == 4 && strncmp(token, "ATTR", length) == 0)

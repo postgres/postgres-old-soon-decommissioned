@@ -771,29 +771,6 @@ _outRelabelType(StringInfo str, RelabelType *node)
 }
 
 /*
- *	Array is a subclass of Expr
- */
-static void
-_outArray(StringInfo str, Array *node)
-{
-	int			i;
-
-	appendStringInfo(str,
-	  " ARRAY :arrayelemtype %u :arrayelemlength %d :arrayelembyval %c ",
-					 node->arrayelemtype,
-					 node->arrayelemlength,
-					 node->arrayelembyval ? 't' : 'f');
-
-	appendStringInfo(str, " :arrayndim %d :arraylow ", node->arrayndim);
-	for (i = 0; i < node->arrayndim; i++)
-		appendStringInfo(str, " %d ", node->arraylow.indx[i]);
-	appendStringInfo(str, " :arrayhigh ");
-	for (i = 0; i < node->arrayndim; i++)
-		appendStringInfo(str, " %d ", node->arrayhigh.indx[i]);
-	appendStringInfo(str, " :arraylen %d ", node->arraylen);
-}
-
-/*
  *	ArrayRef is a subclass of Expr
  */
 static void
@@ -1507,9 +1484,6 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_RelabelType:
 				_outRelabelType(str, obj);
-				break;
-			case T_Array:
-				_outArray(str, obj);
 				break;
 			case T_ArrayRef:
 				_outArrayRef(str, obj);
