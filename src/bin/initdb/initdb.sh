@@ -321,16 +321,6 @@ then
     exit 1
 fi
 
-# The data path must be absolute, because the backend doesn't like
-# '.' and '..' stuff. (Should perhaps be fixed there.)
-
-echo "$PGDATA" | grep '^/' > /dev/null 2>&1
-if [ "$?" -ne 0 ]
-then
-    echo "$CMDNAME: data path must be specified as an absolute path"
-    exit 1
-fi
-
 
 #-------------------------------------------------------------------------
 # Find the input files
@@ -433,6 +423,11 @@ else
         mkdir "$PGDATA"/pg_xlog || exit_nicely
     fi
 fi
+
+# Be sure that PGDATA is an absolute path, otherwise backend croaks.
+
+unset CDPATH
+PGDATA=`cd $PGDATA && pwd`
 
 
 ##########################################################################
