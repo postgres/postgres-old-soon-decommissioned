@@ -49,6 +49,7 @@ ValidateBinary(char *path)
 	uid_t		euid;
 	struct group *gp;
 	struct passwd *pwp;
+#else
 	char		path_exe[MAXPGPATH + 2 + strlen(".exe")];
 #endif
 	int			i;
