@@ -96,7 +96,8 @@ ExcPrint(Exception *excP,
 #if !defined(BSD44_derived) && \
     !defined(bsdi) && \
     !defined(bsdi_2_1) && \
-    !defined(linuxalpha)
+    !defined(linuxalpha) && \
+    !defined(__GLIBC__)
     extern	char	*sys_errlist[];
 #endif /* ! bsd_derived */
     
