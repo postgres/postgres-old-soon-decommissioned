@@ -198,6 +198,20 @@ regress_README.html: regress.sgml
 
 
 ##
+## Experimental XML stuff
+##
+
+OSX = osx # (may be called sx or sgml2xml on some systems)
+XSLTPROC = xsltproc
+
+postgres.xml: postgres.sgml $(GENERATED_SGML)
+	$(OSX) -x lower $< >$@
+
+testxml: stylesheet.xsl postgres.xml
+	$(XSLTPROC) $^
+
+
+##
 ## Check
 ##
 
