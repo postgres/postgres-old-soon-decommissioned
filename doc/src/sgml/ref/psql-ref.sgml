@@ -1120,6 +1120,16 @@ lo_import 152801
 
 
       <varlistentry>
+        <term><literal>\timing</literal>
+        <listitem>
+        <para>
+        Toggles a display of how long each query takes in seconds.
+        </para>
+        </listitem>
+      </varlistentry>
+
+
+      <varlistentry>
         <term><literal>\w</literal> {<replaceable class="parameter">filename</replaceable> | <replaceable class="parameter">|command</replaceable>}</term>
         <listitem>
         <para>

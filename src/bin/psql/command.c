@@ -715,6 +715,24 @@ exec_command(const char *cmd,
 		free(value);
 	}
 
+	/* \timing -- toggle timing of queries */
+	else if (strcmp(cmd, "timing") == 0)
+	{
+		pset.timing = !pset.timing;
+		if (!quiet)
+		{
+			if (pset.timing)
+			{
+				puts(gettext(("Timing is on.")));
+			}
+			else
+			{
+				puts(gettext(("Timing is off.")));
+
+			}
+		}
+	}
+  
 	/* \unset */
 	else if (strcmp(cmd, "unset") == 0)
 	{

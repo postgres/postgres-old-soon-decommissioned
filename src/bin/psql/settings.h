@@ -50,6 +50,7 @@ typedef struct _psqlSettings
 
 	bool		issuper;		/* is the current user a superuser? (used
 								 * to form the prompt) */
+	bool		timing;			/* timing of all queries */
 } PsqlSettings;
 
 extern PsqlSettings pset;

@@ -229,6 +229,8 @@ slashUsage(void)
 	fprintf(fout, _(" \\t             show only rows (currently %s)\n"),
 			ON(pset.popt.topt.tuples_only));
 	fprintf(fout, _(" \\T TEXT        set HTML table tag attributes\n"));
+	fprintf(fout, _(" \\timing        toggle timing of queries (currently %s)\n"),
+			ON(pset.timing));
 	fprintf(fout, _(" \\unset NAME    unset (delete) internal variable\n"));
 	fprintf(fout, _(" \\w FILENAME    write current query buffer to file\n"));
 	fprintf(fout, _(" \\x             toggle expanded output (currently %s)\n"),
