@@ -716,7 +716,7 @@ typedef struct Exception
  *	BSD/OS 3.0.	Larger values were slower.
  */
 #define MemSet(start, val, len) do \
-								{	
+								{ \
 									if (((long)(start) & INT_ALIGN_MASK) == 0 && \
 										((len) & INT_ALIGN_MASK) == 0 && \
 										(val) == 0 && \
