@@ -192,12 +192,6 @@ ON UPDATE TO emp-1.salary WHERE emp-2.name = "Joe"
     <literal>NOTHING</literal>.
    </para>
    <para>
-    When choosing between the rewrite and instance rule systems for a
-    particular rule application, remember that in the rewrite system,
-    <literal>current</literal> refers to a relation and some qualifiers
-    whereas in the instance system it refers to an instance (tuple).
-   </para>
-   <para>
     It is very important to note that the rewrite rule system
     will neither detect nor process circular rules. For example, though each
     of the following two rule definitions are accepted by
