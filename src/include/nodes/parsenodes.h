@@ -1233,17 +1233,23 @@ typedef struct RemoveOperStmt
 } RemoveOperStmt;
 
 /* ----------------------
- *		Alter Table Rename Statement
+ *		Alter Object Rename Statement
  * ----------------------
+ * Currently supports renaming tables, table columns, and triggers.
+ * If renaming a table, oldname is ignored.
  */
+#define RENAME_TABLE	110
+#define RENAME_COLUMN	111
+#define RENAME_TRIGGER	112
+#define RENAME_RULE		113
+
 typedef struct RenameStmt
 {
 	NodeTag		type;
-	RangeVar   *relation;		/* relation to be altered */
-	char	   *column;			/* if NULL, rename the relation name to
-								 * the new name. Otherwise, rename this
-								 * column name. */
+	RangeVar   *relation;		/* owning relation */
+	char	   *oldname;		/* name of rule, trigger, etc */
 	char	   *newname;		/* the new name */
+	int			renameType;		/* RENAME_TABLE, RENAME_COLUMN, etc */
 } RenameStmt;
 
 /* ----------------------

@@ -15,6 +15,7 @@
 #define TABLECMDS_H
 
 #include "nodes/parsenodes.h"
+#include "utils/inval.h"
 
 extern void AlterTableAddColumn(Oid myrelid, bool inherits,
 								ColumnDef *colDef);
@@ -59,5 +60,9 @@ extern void renameatt(Oid relid,
 
 extern void renamerel(Oid relid,
 		  const char *newrelname);
+
+extern void renametrig(Oid relid,
+		  const char *oldname,
+		  const char *newname);
 
 #endif   /* TABLECMDS_H */

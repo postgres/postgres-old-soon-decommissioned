@@ -983,9 +983,11 @@ _equalRenameStmt(RenameStmt *a, RenameStmt *b)
 {
 	if (!equal(a->relation, b->relation))
 		return false;
-	if (!equalstr(a->column, b->column))
+	if (!equalstr(a->oldname, b->oldname))
 		return false;
 	if (!equalstr(a->newname, b->newname))
+		return false;
+	if (a->renameType != b->renameType)
 		return false;
 
 	return true;

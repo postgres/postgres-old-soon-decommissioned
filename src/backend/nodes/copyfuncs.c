@@ -2137,10 +2137,11 @@ _copyRenameStmt(RenameStmt *from)
 	RenameStmt *newnode = makeNode(RenameStmt);
 
 	Node_Copy(from, newnode, relation);
-	if (from->column)
-		newnode->column = pstrdup(from->column);
+	if (from->oldname)
+		newnode->oldname = pstrdup(from->oldname);
 	if (from->newname)
 		newnode->newname = pstrdup(from->newname);
+	newnode->renameType = from->renameType;
 
 	return newnode;
 }
