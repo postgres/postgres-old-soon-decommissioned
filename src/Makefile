@@ -14,7 +14,16 @@
 #
 #-------------------------------------------------------------------------
 
-SUBDIR= backend libpq bin ../doc
+MKDIR=./mk
+-include $(MKDIR)/../Makefile.global
+
+SUBDIR= backend libpq 
+
+ifeq ($(USE_TCL), true)
+SUBDIR += libpgtcl
+endif
+
+SUBDIR+= bin ../doc
 
 FIND = find
 # assuming gnu tar and split here
@@ -23,10 +32,6 @@ SPLIT = split
 
 ETAGS = etags
 XARGS = xargs
-
-ifeq ($(USE_TCL), true)
-SUBDIR += libpgtcl
-endif
 
 include mk/postgres.subdir.mk
 
