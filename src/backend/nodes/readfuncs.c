@@ -793,17 +793,6 @@ _readExprFieldSelect(void)
 }
 
 /*
- * _readDomainConstraintValue
- */
-static DomainConstraintValue *
-_readDomainConstraintValue(void)
-{
-	READ_LOCALS_NO_FIELDS(DomainConstraintValue);
-
-	READ_DONE();
-}
-
-/*
  * _readRangeTblEntry
  */
 static RangeTblEntry *
@@ -935,8 +924,6 @@ parseNodeString(void)
 		return_value = _readTypeName();
 	else if (MATCH("EXPRFIELDSELECT", 15))
 		return_value = _readExprFieldSelect();
-	else if (MATCH("DOMAINCONSTRAINTVALUE", 21))
-		return_value = _readDomainConstraintValue();
 	else if (MATCH("RTE", 3))
 		return_value = _readRangeTblEntry();
 	else

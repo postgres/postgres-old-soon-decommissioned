@@ -458,9 +458,8 @@ coerce_type_constraints(Node *arg, Oid typeId, CoercionForm cformat)
 			r->testtype = CONSTR_TEST_CHECK;
 			r->name = NameStr(c->conname);
 			r->domname = NameStr(typTup->typname);
-			r->check_expr =	stringToNode(MemoryContextStrdup(CacheMemoryContext,
-										 DatumGetCString(DirectFunctionCall1(textout,
-																			 val))));
+			r->check_expr =	stringToNode(DatumGetCString(DirectFunctionCall1(textout,
+																			 val)));
 
 			arg = (Node *) r;
 		}

@@ -2737,7 +2737,7 @@ AlterTableAddCheckConstraint(Relation rel, Constraint *constr)
 	/*
 	 * Convert the A_EXPR in raw_expr into an EXPR
 	 */
-	expr = transformExpr(pstate, constr->raw_expr, NULL);
+	expr = transformExpr(pstate, constr->raw_expr);
 
 	/*
 	 * Make sure it yields a boolean result.

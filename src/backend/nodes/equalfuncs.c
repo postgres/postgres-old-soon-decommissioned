@@ -649,12 +649,6 @@ _equalInsertDefault(InsertDefault *a, InsertDefault *b)
 }
 
 static bool
-_equalDomainConstraintValue(DomainConstraintValue *a, DomainConstraintValue *b)
-{
-	return true;
-}
-
-static bool
 _equalClosePortalStmt(ClosePortalStmt *a, ClosePortalStmt *b)
 {
 	COMPARE_STRING_FIELD(portalname);
@@ -1930,9 +1924,6 @@ equal(void *a, void *b)
 			break;
 		case T_InsertDefault:
 			retval = _equalInsertDefault(a, b);
-			break;
-		case T_DomainConstraintValue:
-			retval = _equalDomainConstraintValue(a, b);
 			break;
 
 		default:

@@ -276,15 +276,6 @@ typedef struct InsertDefault
 } InsertDefault;
 
 /*
- * Empty node used as raw-parse-tree representation of VALUE keyword
- * for domain check constraints.
- */
-typedef struct DomainConstraintValue
-{
-	NodeTag		type;
-} DomainConstraintValue;
-
-/*
  * SortGroupBy - for ORDER BY clause
  */
 typedef struct SortGroupBy

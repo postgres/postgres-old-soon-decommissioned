@@ -56,7 +56,7 @@ transformTargetEntry(ParseState *pstate,
 
 	/* Transform the node if caller didn't do it already */
 	if (expr == NULL)
-		expr = transformExpr(pstate, node, NULL);
+		expr = transformExpr(pstate, node);
 
 	if (IsA(expr, RangeVar))
 		elog(ERROR, "You can't use relation names alone in the target list, try relation.*.");

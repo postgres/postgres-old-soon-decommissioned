@@ -42,6 +42,7 @@ typedef struct ParseState
 	List	   *p_namespace;	/* current lookup namespace (join items) */
 	int			p_last_resno;	/* last targetlist resno assigned */
 	List	   *p_forUpdate;	/* FOR UPDATE clause, if any (see gram.y) */
+	Node	   *p_value_substitute;	/* what to replace VALUE with, if any */
 	bool		p_hasAggs;
 	bool		p_hasSubLinks;
 	bool		p_is_insert;

@@ -1297,14 +1297,6 @@ _copyTypeName(TypeName *from)
 	return newnode;
 }
 
-static DomainConstraintValue *
-_copyDomainConstraintValue(DomainConstraintValue *from)
-{
-	DomainConstraintValue *newnode = makeNode(DomainConstraintValue);
-
-	return newnode;
-}
-
 static SortGroupBy *
 _copySortGroupBy(SortGroupBy *from)
 {
@@ -2762,9 +2754,6 @@ copyObject(void *from)
 			break;
 		case T_TypeCast:
 			retval = _copyTypeCast(from);
-			break;
-		case T_DomainConstraintValue:
-			retval = _copyDomainConstraintValue(from);
 			break;
 		case T_SortGroupBy:
 			retval = _copySortGroupBy(from);

@@ -252,7 +252,6 @@ typedef enum NodeTag
 	T_FuncWithArgs,
 	T_PrivTarget,
 	T_InsertDefault,
-	T_DomainConstraintValue,
 	T_CreateOpClassItem,
 	T_CompositeTypeStmt,
 
