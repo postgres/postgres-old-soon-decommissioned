@@ -2992,9 +2992,8 @@ main(int argc, char **argv)
 		exit(listAllDbs(&settings));
 	if (!settings.quiet && !settings.notty && !singleQuery && !qfilename)
 	{
-		printf("Welcome to the POSTGRESQL interactive sql monitor:\n");
-		printf("  Please read the file COPYRIGHT for copyright terms "
-			   "of POSTGRESQL\n");
+		printf("Welcome to the PostgreSQL interactive terminal.\n");
+		printf("(Please read the copyright file for legal issues.)\n");
 
 		if ((version = selectVersion(&settings)) != NULL)
 			printf("[%s]\n", version);
