@@ -482,8 +482,8 @@ Add more compatibility functions to odbc.sql (Peter E)
    <sect3>
     <title>ECPG</title>
 <literallayout>
-EXECUTE ... INTO implemented
-Multiple row descriptor support (e.g. CARDINALITY)
+EXECUTE ... INTO implemented (Christof Petig)
+Multiple row descriptor support (e.g. CARDINALITY) (Christof Petig)
 Fix for GRANT parameters (Lee Kindness)
 Fix INITIALLY DEFERRED bug
 Various bug fixes (Michael, Christof Petig)
