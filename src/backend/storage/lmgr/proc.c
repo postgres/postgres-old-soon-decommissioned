@@ -79,13 +79,6 @@
 static void HandleDeadLock(int sig);
 static PROC *ProcWakeup(PROC *proc, int errType);
 
-/*
- * timeout (in seconds) for resolving possible deadlock
- */
-#ifndef DEADLOCK_TIMEOUT
-#define DEADLOCK_TIMEOUT		60
-#endif
-
 /* --------------------
  * Spin lock for manipulating the shared process data structure:
  * ProcGlobal.... Adding an extra spin lock seemed like the smallest
