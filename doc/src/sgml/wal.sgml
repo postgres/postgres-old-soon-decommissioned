@@ -303,7 +303,7 @@
 
   <para>
    There will be at least one 16MB segment file, and will normally 
-   not be more than <varname>CHECKPOINT_SEGMENTS</varname>)
+   not be more than <varname>CHECKPOINT_SEGMENTS</varname>
    + 1 files.  You can use this to estimate space requirements for 
    WAL.  Ordinarily, when old log segment files are no longer needed, 
    they are recycled (renamed to become the next sequential future 
