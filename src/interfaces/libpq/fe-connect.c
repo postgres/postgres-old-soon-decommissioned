@@ -1206,9 +1206,6 @@ connectDBComplete(PGconn *conn)
 		 */
 		switch (flag)
 		{
-			case PGRES_POLLING_ACTIVE:
-				break;
-
 			case PGRES_POLLING_OK:
 				return 1;		/* success! */
 
@@ -1926,9 +1923,6 @@ PQsetenv(PGconn *conn)
 		 */
 		switch (flag)
 		{
-			case PGRES_POLLING_ACTIVE:
-				break;
-
 			case PGRES_POLLING_OK:
 				return true;	/* success! */
 
