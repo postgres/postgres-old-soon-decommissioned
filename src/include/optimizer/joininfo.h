@@ -18,7 +18,7 @@
 #include "nodes/primnodes.h"
 
 extern JInfo *joininfo_member(List *join_relids, List *joininfo_list);
-extern JInfo *find_joininfo_node(Rel *this_rel, List *join_relids);
+extern JInfo *find_joininfo_node(RelOptInfo *this_rel, List *join_relids);
 extern Var *other_join_clause_var(Var *var, Expr *clause);
 
 #endif							/* JOININFO_H */

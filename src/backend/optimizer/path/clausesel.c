@@ -95,12 +95,12 @@ product_selec(List *clauseinfo_list)
 void
 set_rest_relselec(Query *root, List *rel_list)
 {
-	Rel		   *rel;
+	RelOptInfo		   *rel;
 	List	   *x;
 
 	foreach(x, rel_list)
 	{
-		rel = (Rel *) lfirst(x);
+		rel = (RelOptInfo *) lfirst(x);
 		set_rest_selec(root, rel->clauseinfo);
 	}
 }

@@ -106,7 +106,7 @@ create_plan(Path *best_path)
 {
 	List	   *tlist;
 	Plan	   *plan_node = (Plan *) NULL;
-	Rel		   *parent_rel;
+	RelOptInfo		   *parent_rel;
 	int			size;
 	int			width;
 	int			pages;

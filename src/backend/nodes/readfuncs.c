@@ -1221,14 +1221,14 @@ _readEState()
  *		_readRel
  * ----------------
  */
-static Rel *
+static RelOptInfo *
 _readRel()
 {
-	Rel		   *local_node;
+	RelOptInfo		   *local_node;
 	char	   *token;
 	int			length;
 
-	local_node = makeNode(Rel);
+	local_node = makeNode(RelOptInfo);
 
 	token = lsptok(NULL, &length);		/* get :relids */
 	local_node->relids =
@@ -1990,9 +1990,9 @@ parsePlanString(void)
 		return_value = _readParam();
 	else if (!strncmp(token, "ESTATE", length))
 		return_value = _readEState();
-	else if (!strncmp(token, "REL", length))
+	else if (!strncmp(token, "RELOPTINFO", length))
 		return_value = _readRel();
-	else if (!strncmp(token, "TLE", length))
+	else if (!strncmp(token, "TARGETENTRY", length))
 		return_value = _readTargetEntry();
 	else if (!strncmp(token, "RTE", length))
 		return_value = _readRangeTblEntry();

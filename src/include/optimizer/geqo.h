@@ -70,13 +70,13 @@ double		SelectionBias;
  /* ^^^						*/
 
 /* geqo prototypes */
-extern Rel *geqo(Query *root);
+extern RelOptInfo *geqo(Query *root);
 
 extern void geqo_params(int string_length);
 
 extern Cost geqo_eval(Query *root, Gene *tour, int num_gene);
 double		geqo_log(double x, double b);
-extern Rel *gimme_tree(Query *root, Gene *tour, int rel_count, int num_gene, Rel *outer_rel);
+extern RelOptInfo *gimme_tree(Query *root, Gene *tour, int rel_count, int num_gene, RelOptInfo *outer_rel);
 
 
 #endif							/* GEQO_H */

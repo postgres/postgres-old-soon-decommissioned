@@ -23,6 +23,6 @@
 
 
 extern List *geqo_prune_rels(List *rel_list);
-extern void geqo_rel_paths(Rel *rel);
+extern void geqo_rel_paths(RelOptInfo *rel);
 
 #endif							/* GEQO_PATHS_H */

@@ -20,7 +20,7 @@
 extern int	exec_tlist_length(List *targelist);
 extern TargetEntry *tlistentry_member(Var *var, List *targetlist);
 extern Expr *matching_tlvar(Var *var, List *targetlist);
-extern void add_tl_element(Rel *rel, Var *var);
+extern void add_tl_element(RelOptInfo *rel, Var *var);
 extern TargetEntry *create_tl_element(Var *var, int resdomno);
 extern List *get_actual_tlist(List *tlist);
 extern Resdom *tlist_member(Var *var, List *tlist);

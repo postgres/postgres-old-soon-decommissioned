@@ -70,7 +70,7 @@ typedef enum NodeTag
 	 * TAGS FOR INNER PLAN NODES (relation.h)
 	 *---------------------
 	 */
-	T_Rel = 200,
+	T_RelOptInfo = 200,
 	T_Path,
 	T_IndexPath,
 	T_JoinPath,
