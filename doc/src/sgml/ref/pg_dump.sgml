@@ -565,7 +565,7 @@ $ pg_dump -Ft --blobs mydb > db.tar
    To reload this database (with BLOBs) to an existing db called newdb:
 
    <programlisting>
-$ pg_restore db.tar --db=newdb
+$ pg_restore db.tar --dbname=newdb
    </programlisting>
   </para>
 
