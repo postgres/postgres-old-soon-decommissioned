@@ -1447,7 +1447,7 @@ RelationPurgeLocalRelation(bool xactCommitted)
 #define INITRELCACHESIZE	400
 
 void
-RelationInitialize()
+RelationInitialize(void)
 {
     MemoryContext		oldcxt;
     HASHCTL			ctl;
@@ -1536,7 +1536,7 @@ RelationInitialize()
 #define Num_indices_bootstrap	3
 
 void
-init_irels()
+init_irels(void)
 {
     Size len;
     int nread;
@@ -1676,7 +1676,7 @@ init_irels()
 }
 
 void
-write_irels()
+write_irels(void)
 {
     int len;
     int nwritten;

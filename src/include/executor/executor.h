@@ -142,7 +142,7 @@ extern TupleDesc ExecTypeFromTL(List *targetList);
 /*
  * prototypes from functions in execTuples.c
  */
-extern void ResetTupleCount();
+extern void ResetTupleCount(void);
 extern void DisplayTupleCount(FILE *statfp);
 extern void ExecAssignNodeBaseInfo(EState *estate, CommonState *basenode,
 				   Plan *parent);

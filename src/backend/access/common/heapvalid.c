@@ -16,6 +16,7 @@
 
 #include <fmgr.h>
 #include <access/heaptuple.h>
+#include <access/valid.h>
 #include <access/xact.h>
 #include <storage/bufpage.h>
 #include <utils/rel.h>

@@ -25,6 +25,7 @@
 #include "nodes/parsenodes.h"
 #include "parser/catalog_utils.h"
 #include "rewrite/locks.h"			
+#include "rewrite/rewriteDefine.h"
 #include "rewrite/rewriteRemove.h"
 #include "rewrite/rewriteSupport.h"
 #include "tcop/tcopprot.h"

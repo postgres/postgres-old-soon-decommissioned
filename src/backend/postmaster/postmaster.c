@@ -982,7 +982,7 @@ BackendStartup(StartupInfo *packet, /* client's startup packet */
  * If you don't like that, well, we *used* to pass the whole option string
  * as ONE argument to execl(), which was even less intelligent...
  */
-void
+static void
 split_opts(char **argv, int *argcp, char *s)
 {
     int	i = *argcp;

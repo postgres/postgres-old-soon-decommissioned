@@ -65,7 +65,7 @@ CreateQueryDesc(Query *parsetree,
  * ----------------------------------------------------------------
  */
 EState *
-CreateExecutorState()
+CreateExecutorState(void)
 {
     EState		*state;
     extern int		NBuffers;

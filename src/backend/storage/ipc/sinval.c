@@ -75,7 +75,7 @@ AttachSharedInvalidationState(IPCKey key)
 }
 
 void
-InitSharedInvalidationState()
+InitSharedInvalidationState(void)
 {
     SpinAcquire(SInvalLock);
     if (!SIBackendInit(shmInvalBuffer))

@@ -98,7 +98,7 @@ static HTAB *BindingTable = NULL;
  * ----------------------
  */
 void
-ShmemBindingTabReset()
+ShmemBindingTabReset(void)
 {
     BindingTable = (HTAB *)NULL;
 }

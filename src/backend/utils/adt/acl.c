@@ -325,7 +325,7 @@ aclownerdefault(AclId ownerid)
 }
 
 Acl *
-acldefault()
+acldefault(void)
 {
     Acl *acl;
     AclItem *aip;

@@ -52,7 +52,7 @@ static void _outNode(StringInfo str, void *obj);
  * _outIntList -
  *     converts a List of integers
  */
-void
+static void
 _outIntList(StringInfo str, List *list)
 {
     List *l;

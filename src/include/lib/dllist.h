@@ -50,7 +50,7 @@ typedef struct Dllist {
   Dlelem *dll_tail;
 } Dllist;
   
-extern Dllist* DLNewList(); /* initialize a new list */
+extern Dllist* DLNewList(void); /* initialize a new list */
 extern void    DLFreeList(Dllist*); /* free up a list and all the nodes in it*/
 extern Dlelem* DLNewElem(void* val); 
 extern void    DLFreeElem(Dlelem*); 

@@ -201,7 +201,7 @@ MJFormOSortopI(List *qualList, Oid sortOp)
  *   	by "sortOp" and reversing the positions of the keys.
  *  ----------------------------------------------------------------
  */
-List *
+static List *
 MJFormISortopO(List *qualList, Oid sortOp)
 {
     List 	*ISortopO;

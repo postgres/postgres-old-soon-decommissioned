@@ -35,7 +35,7 @@
 
 extern void elog(int lev, const char *fmt, ...);
 #ifndef PG_STANDALONE
-int DebugFileOpen();
+int DebugFileOpen(void);
 #endif
 
 #endif	/* ELOG_H */

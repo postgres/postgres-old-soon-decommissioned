@@ -13,7 +13,10 @@
 #ifndef	HEAPAM_H
 #define HEAPAM_H
 
+#include <access/htup.h>
 #include <access/relscan.h>
+#include <storage/block.h>
+#include <utils/rel.h>
 
 /* ----------------------------------------------------------------
  *		heap access method statistics
@@ -133,5 +136,10 @@ extern HeapAccessStatistics GetHeapAccessStatistics(void);
 extern void PrintHeapAccessStatistics(HeapAccessStatistics stats);
 extern void PrintAndFreeHeapAccessStatistics(HeapAccessStatistics stats);
 extern void initam(void);
+
+/* hio.c */
+extern void RelationPutHeapTuple(Relation relation, BlockNumber blockIndex,
+		     HeapTuple tuple);
+extern void RelationPutHeapTupleAtEnd(Relation relation, HeapTuple tuple);
 
 #endif	/* HEAPAM_H */

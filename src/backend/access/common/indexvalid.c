@@ -15,6 +15,7 @@
 #include <postgres.h>
 
 #include <access/htup.h>
+#include <access/iqual.h>
 #include <access/itup.h>
 #include <access/skey.h>
 #include <executor/execdebug.h>

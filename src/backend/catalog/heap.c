@@ -26,27 +26,27 @@
  */
 #include <postgres.h>
 
+#include <miscadmin.h>
+#include <fmgr.h>
+#include <access/heapam.h>
+#include <catalog/catalog.h>
+#include <catalog/catname.h>
+#include <catalog/heap.h>
+#include <catalog/index.h>
+#include <catalog/indexing.h>
 #include <catalog/pg_ipl.h>
 #include <catalog/pg_inherits.h>
 #include <catalog/pg_proc.h>
-#include <miscadmin.h>
-#include <catalog/indexing.h>
-#include <catalog/catalog.h>
-#include <utils/builtins.h>
-#include <access/heapam.h>
-#include <utils/mcxt.h>
-#include <parser/catalog_utils.h>
-#include <catalog/index.h>
-#include <fmgr.h>
 #include <catalog/pg_index.h>
 #include <catalog/pg_type.h>
-#include <catalog/catname.h>
-#include <utils/relcache.h>
 #include <storage/bufmgr.h>
-#include <catalog/heap.h>
-#include <rewrite/rewriteRemove.h>
 #include <storage/lmgr.h>
 #include <storage/smgr.h>
+#include <parser/catalog_utils.h>
+#include <rewrite/rewriteRemove.h>
+#include <utils/builtins.h>
+#include <utils/mcxt.h>
+#include <utils/relcache.h>
 #ifndef HAVE_MEMMOVE
 # include <regex/utils.h>
 #else
@@ -1342,7 +1342,7 @@ heap_destroyr(Relation rdesc)
 
 */
 void
-InitTempRelList()
+InitTempRelList(void)
 {
     if (tempRels) {
 	free(tempRels->rels);
@@ -1402,7 +1402,7 @@ AddToTempRelList(Relation r)
    go through the tempRels list and destroy each of the relations
 */
 void
-DestroyTempRels()
+DestroyTempRels(void)
 {
     int i;
     Relation rdesc;

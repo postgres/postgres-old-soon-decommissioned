@@ -24,6 +24,7 @@
 #include "nodes/pg_list.h"
 #include "nodes/execnodes.h"
 #include "nodes/parsenodes.h"
+#include "nodes/print.h"
 #include "parser/parsetree.h"
 #include "parser/catalog_utils.h"
 #include "access/heapam.h"
@@ -377,3 +378,4 @@ print_plan (Plan* p, Query* parsetree)
 }
 
 
+ 

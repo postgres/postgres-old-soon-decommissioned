@@ -19,6 +19,7 @@
 #include "access/attnum.h"
 #include "utils/geo-decls.h"	/* where function declarations go */
 #include "utils/palloc.h"
+#include "utils/builtins.h"
 
 float64
 areasel(Oid opid, 

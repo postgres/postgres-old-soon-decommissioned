@@ -13,10 +13,6 @@
 #ifndef	NODEMERGEJOIN_H
 #define	NODEMERGEJOIN_H
 
-#if 0	/* aren't these static? */
-extern List MJFormOSortopI(List qualList, Oid sortOp);
-extern List MJFormISortopO(List qualList, Oid sortOp);
-#endif
 extern bool MergeCompare(List *eqQual, List *compareQual, ExprContext *econtext);
 
 extern void ExecMergeTupleDumpInner(ExprContext *econtext);

@@ -210,7 +210,7 @@ ExecCountSlotsTee(Tee *node)
       because the left and right scans may be at different points
 * ----------------------------------------------------------------
 */
-void 
+static void 
 initTeeScanDescs(Tee* node)
 {
   TeeState *teeState;

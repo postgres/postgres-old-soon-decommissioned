@@ -15,22 +15,8 @@
 #include <string.h>
 
 #include <postgres.h>
-#include <utils/palloc.h>
-
-/* these things look like structs, but we pass them by value so be careful
-   For example, passing an int -> DateADT is not portable! */
-typedef struct DateADT {
-    char	day;
-    char	month;
-    short	year;
-} DateADT;
-
-typedef struct TimeADT {
-    short	hr;
-    short	min;
-    float	sec;
-} TimeADT;
-
+#include <utils/builtins.h>
+#include <utils/datetime.h>
 
 static int	day_tab[2][12] = {
 	{31,28,31,30,31,30,31,31,30,31,30,31},

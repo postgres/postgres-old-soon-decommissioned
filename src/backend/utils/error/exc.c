@@ -135,7 +135,7 @@ ExcPrint(Exception *excP,
 }
 
 ExcProc *
-ExcGetUnCaught()
+ExcGetUnCaught(void)
 {
     return (ExcUnCaughtP);
 }

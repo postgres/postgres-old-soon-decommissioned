@@ -21,6 +21,7 @@
 #include "utils/lsyscache.h"
 #include "utils/builtins.h"
 #include "rewrite/rewriteHandler.h"
+#include "rewrite/rewriteManip.h"
 #include "rewrite/rewriteSupport.h"
 #include "rewrite/locks.h"
 

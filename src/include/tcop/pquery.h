@@ -20,7 +20,7 @@ extern QueryDesc *CreateQueryDesc(Query *parsetree, Plan *plantree,
 				  CommandDest dest);
 
 */
-extern EState *CreateExecutorState();
+extern EState *CreateExecutorState(void);
 
 
 extern void ProcessPortal(char *portalName, Query *parseTree,

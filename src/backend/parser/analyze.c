@@ -89,7 +89,8 @@ static void parseCheckAggregates(ParseState *pstate, Query *qry);
  */
 
 ParseState* 
-makeParseState() {
+makeParseState(void)
+{
     ParseState *pstate;
 
     pstate = malloc(sizeof(ParseState));

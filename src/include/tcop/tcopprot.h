@@ -29,11 +29,11 @@ extern void pg_eval_dest(char *query_string, char **argv, Oid *typev,
 			 int nargs, CommandDest dest);
 #endif /* BOOTSTRAP_HEADER */
 
-extern void handle_warn();
-extern void quickdie();
-extern void die();
+extern void handle_warn(SIGNAL_ARGS);
+extern void quickdie(SIGNAL_ARGS);
+extern void die(SIGNAL_ARGS);
 extern int PostgresMain(int argc, char *argv[]);
-extern void ResetUsage();
-extern void ShowUsage();
+extern void ResetUsage(void);
+extern void ShowUsage(void);
 
 #endif /* tcopprotIncluded */

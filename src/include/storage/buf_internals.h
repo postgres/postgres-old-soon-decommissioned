@@ -230,8 +230,8 @@ extern BufferDesc *LocalBufferAlloc(Relation reln, BlockNumber blockNum,
 				    bool *foundPtr);
 extern int WriteLocalBuffer(Buffer buffer, bool release);
 extern int FlushLocalBuffer(Buffer buffer);
-extern void InitLocalBuffer();
-extern void LocalBufferSync();
-extern void ResetLocalBufferPool();
+extern void InitLocalBuffer(void);
+extern void LocalBufferSync(void);
+extern void ResetLocalBufferPool(void);
      
 #endif	/* BUFMGR_INTERNALS_H */

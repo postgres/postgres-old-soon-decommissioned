@@ -196,7 +196,7 @@ elog(int lev, const char *fmt, ... )
 
 #ifndef PG_STANDALONE
 int
-DebugFileOpen()
+DebugFileOpen(void)
 {
     int fd, istty;
     

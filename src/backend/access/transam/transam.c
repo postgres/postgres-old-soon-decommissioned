@@ -96,7 +96,7 @@ extern bool	BuildingBtree;
  * ----------------
  */
 int
-RecoveryCheckingEnabled()
+RecoveryCheckingEnabled(void)
 {    
     return RecoveryCheckingEnableState;
 }
@@ -453,7 +453,7 @@ TransRecover(Relation logRelation)
  *	Initializes transaction logging.
  */
 void
-InitializeTransactionLog()
+InitializeTransactionLog(void)
 {
     Relation	  logRelation;
     Relation	  timeRelation;

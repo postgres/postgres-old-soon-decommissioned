@@ -81,7 +81,7 @@ extern int NIndexTupleProcessed;  /* have to be defined in the access
  * ----------------------------------------------------------------
  */
 void
-ResetTupleCount()
+ResetTupleCount(void)
 {
     NTupleProcessed = 0;
     NTupleRetrieved = 0;

@@ -1788,7 +1788,7 @@ _readIter()
  * ----------------
  */
 Node *
-parsePlanString()
+parsePlanString(void)
 {
     char *token;
     int length;

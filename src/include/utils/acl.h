@@ -126,7 +126,7 @@ typedef ArrayType IdList;
  */
 extern char *aclparse(char *s, AclItem *aip, unsigned *modechg);
 extern Acl *aclownerdefault(AclId ownerid);
-extern Acl *acldefault();
+extern Acl *acldefault(void);
 extern Acl *aclinsert3(Acl *old_acl, AclItem *mod_aip, unsigned modechg);
 
 extern char* aclmakepriv(char* old_privlist, char new_priv);

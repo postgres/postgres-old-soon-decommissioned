@@ -48,6 +48,8 @@
 
 #if defined(HAS_TEST_AND_SET)
 
+extern int tas(slock_t *lock);
+
 #if defined (next)
 /*
  * NEXTSTEP (mach)
@@ -163,9 +165,7 @@ S_LOCK_FREE(slock_t *lock)
 
 #if defined(i386_solaris) || \
     defined(sparc_solaris)
-
 /* for xxxxx_solaris, this is defined in port/.../tas.s */
-extern int tas(slock_t *lock);
 
 void
 S_LOCK(slock_t *lock)
@@ -226,9 +226,6 @@ S_INIT_LOCK(slock_t *lock)
  */
 
 #if defined(hpux)
-
-/* defined in port/.../tas.s */
-extern int tas(slock_t *lock);
 
 /*
 * a "set" slock_t has a single word cleared.  a "clear" slock_t has 
@@ -389,6 +386,7 @@ S_INIT_LOCK(unsigned char *addr)
     defined(bsdi_2_1) || \
     defined(linux)
 
+    
 int
 tas(slock_t *m)
 {

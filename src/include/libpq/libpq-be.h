@@ -33,7 +33,7 @@
 extern void be_portalinit(void);
 extern void be_portalpush(PortalEntry *entry);
 extern PortalEntry *be_portalpop(void);
-extern PortalEntry *be_currentportal();
+extern PortalEntry *be_currentportal(void);
 extern PortalEntry *be_newportal(void);
 extern void be_typeinit(PortalEntry *entry, TupleDesc attrs,
 			int natts);

@@ -37,6 +37,7 @@ relpath(char relname[])
     return(relname);
 }
 
+#ifdef NOT_USED
 /*
  * issystem	- returns non-zero iff relname is a system catalog
  *
@@ -56,6 +57,7 @@ issystem(char relname[])
     else
 	return FALSE;
 }
+#endif
 
 /*
  * IsSystemRelationName --

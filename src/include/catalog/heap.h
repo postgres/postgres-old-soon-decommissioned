@@ -36,9 +36,9 @@ extern void DeletePgTypeTuple(Relation rdesc);
 extern void heap_destroy(char relname[]);
 extern void heap_destroyr(Relation r);
  
-extern void InitTempRelList();
+extern void InitTempRelList(void);
 extern void AddToTempRelList(Relation r);
 extern void RemoveFromTempRelList(Relation r);
-extern void DestroyTempRels();
+extern void DestroyTempRels(void);
 
 #endif	/* HEAP_H */

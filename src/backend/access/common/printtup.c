@@ -17,6 +17,7 @@
 
 #include <fmgr.h> 
 #include <access/heaptuple.h> 
+#include <access/printtup.h> 
 #include <catalog/pg_type.h>
 #include <libpq/libpq.h>
 #include <utils/syscache.h>

@@ -85,5 +85,7 @@ extern int MMShmemSize(void);
 /* smgrtype.c */
 extern char *smgrout(int2 i);
 extern int2 smgrin(char *s);
+extern bool smgreq(int2 a, int2 b);
+extern bool smgrne(int2 a, int2 b);
 
 #endif	/* SMGR_H */

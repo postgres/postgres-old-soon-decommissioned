@@ -27,6 +27,7 @@
 #include <rewrite/rewriteManip.h>
 #include <rewrite/rewriteRemove.h>
 #include <commands/creatinh.h>
+#include <commands/view.h>
 
 /*---------------------------------------------------------------------
  * DefineVirtualRelation

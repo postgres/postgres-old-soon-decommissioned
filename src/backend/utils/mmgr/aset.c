@@ -128,6 +128,7 @@ AllocSetReset(AllocSet set)
     }
 }
 
+#ifdef NOT_USED
 void
 AllocSetReset_debug(char *file, int line, AllocSet set)
 {
@@ -139,6 +140,7 @@ AllocSetReset_debug(char *file, int line, AllocSet set)
 	AllocSetFree(set, pointer);
     }
 }
+#endif
 
 /*
  * AllocSetContains --

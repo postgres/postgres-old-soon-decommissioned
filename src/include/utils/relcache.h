@@ -36,9 +36,9 @@ extern void RelationCacheInvalidate(bool onlyFlushReferenceCountZero);
 
 extern void RelationRegisterRelation(Relation relation);
 extern void RelationPurgeLocalRelation(bool xactComitted);
-extern void RelationInitialize();
-extern void init_irels();
-extern void write_irels();
+extern void RelationInitialize(void);
+extern void init_irels(void);
+extern void write_irels(void);
 
 
 #endif	/* RELCACHE_H */

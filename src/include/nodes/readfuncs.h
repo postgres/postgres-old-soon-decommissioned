@@ -22,6 +22,6 @@ extern void *nodeRead(bool read_car_only);
 /*
  * prototypes for functions in readfuncs.c 
  */
-extern Node *parsePlanString();
+extern Node *parsePlanString(void);
 
 #endif	/* READFUNCS_H */

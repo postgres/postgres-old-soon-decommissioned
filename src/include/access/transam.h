@@ -140,14 +140,14 @@ typedef VariableRelationContentsData *VariableRelationContents;
 /*
  * prototypes for functions in transam/transam.c
  */
-extern int RecoveryCheckingEnabled();
+extern int RecoveryCheckingEnabled(void);
 extern void SetRecoveryCheckingEnabled(bool state);
 extern bool TransactionLogTest(TransactionId transactionId, XidStatus status);
 extern void TransactionLogUpdate(TransactionId transactionId,
 				 XidStatus status);
 extern AbsoluteTime TransactionIdGetCommitTime(TransactionId transactionId);
 extern void TransRecover(Relation logRelation);
-extern void InitializeTransactionLog();
+extern void InitializeTransactionLog(void);
 extern bool TransactionIdDidCommit(TransactionId transactionId);
 extern bool TransactionIdDidAbort(TransactionId transactionId);
 extern bool TransactionIdIsInProgress(TransactionId transactionId);

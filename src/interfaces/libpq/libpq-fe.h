@@ -170,7 +170,7 @@ typedef struct _PQconninfoOption PQconninfoOption;
 /* ===  in fe-connect.c === */
   /* make a new client connection to the backend */
 extern PGconn* PQconnectdb(const char* conninfo);
-extern PQconninfoOption *PQconndefaults();
+extern PQconninfoOption *PQconndefaults(void);
 extern PGconn* PQsetdb(const char* pghost, const char* pgport, const char* pgoptions, 
 		       const char* pgtty, const char* dbName);
   /* close the current connection and free the PGconn data structure */

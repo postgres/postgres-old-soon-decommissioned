@@ -59,7 +59,7 @@ enum Userauth {Trust, Ident};
 /* Some standard C libraries, including GNU, have an isblank() function.
    Others, including Solaris, do not.  So we have our own.
 */
-bool
+static bool
 isblank(const char c) {
   return(c == ' ' || c == 9 /* tab */);
 }

@@ -15,10 +15,10 @@
 #define GRAMPARSE_H		/* include once only */
 
 /* from scan.l */
-extern void init_io(); 
+extern void init_io(void); 
 
 /* from gram.y */
 extern void parser_init(Oid *typev, int nargs); 
-extern int yyparse();
+extern int yyparse(void);
 
 #endif /* GRAMPARSE_H */

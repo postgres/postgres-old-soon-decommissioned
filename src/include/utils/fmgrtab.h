@@ -23,5 +23,6 @@ typedef struct {
 
 extern FmgrCall	*fmgr_isbuiltin(Oid id);
 extern func_ptr fmgr_lookupByName(char* name);
+extern void load_file(char *filename);
 
 #endif	/* FMGRTAB_H */

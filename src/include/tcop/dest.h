@@ -64,14 +64,14 @@ typedef struct AttrInfo {
 extern void donothing(List *tuple, List *attrdesc);
 extern void (*DestToFunction(CommandDest dest))();
 extern void EndCommand(char *commandTag, CommandDest dest);
-extern void SendCopyBegin();
-extern void ReceiveCopyBegin();
+extern void SendCopyBegin(void);
+extern void ReceiveCopyBegin(void);
 extern void NullCommand(CommandDest dest);
 extern void BeginCommand(char *pname, int operation, TupleDesc attinfo,
 			 bool isIntoRel, bool isIntoPortal, char *tag,
 			 CommandDest dest);
-extern void ResetAppendOid();
+extern void ResetAppendOid(void);
 extern void UpdateAppendOid(Oid newoid);
-extern Oid GetAppendOid();
+extern Oid GetAppendOid(void);
 
 #endif  /* DEST_H */

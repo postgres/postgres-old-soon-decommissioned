@@ -21,6 +21,7 @@
 #include <catalog/indexing.h>
 #include <catalog/catalog.h>
 #include <commands/copy.h>
+#include <commands/rename.h>
 #include <executor/execdefs.h>	/* for EXEC_{FOR,BACK,FDEBUG,BDEBUG} */
 #include <miscadmin.h>
 #include <utils/portal.h>

@@ -18,6 +18,8 @@
 
 #include "postgres.h"
 
+#include "access/hash.h"
+
 uint32 hashint2(int16 key)
 {
     return ((uint32) ~key);

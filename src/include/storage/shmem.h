@@ -57,7 +57,7 @@ typedef struct SHM_QUEUE {
 } SHM_QUEUE;
 
 /* shmem.c */
-extern void ShmemBindingTabReset();
+extern void ShmemBindingTabReset(void);
 extern void ShmemCreate(unsigned int key, unsigned int size);
 extern int InitShmem(unsigned int key, unsigned int size);
 extern long *ShmemAlloc(unsigned long size);

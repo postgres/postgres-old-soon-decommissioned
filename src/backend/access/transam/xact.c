@@ -218,7 +218,7 @@ bool AMI_OVERRIDE = false;
 static int TransactionFlushState = 1;
 
 int
-TransactionFlushEnabled()
+TransactionFlushEnabled(void)
 {    
     return TransactionFlushState;
 }
@@ -237,7 +237,7 @@ SetTransactionFlushEnabled(bool state)
  * --------------------------------
  */
 bool
-IsTransactionState()
+IsTransactionState(void)
 {
     TransactionState s = CurrentTransactionState;
     
@@ -1113,7 +1113,7 @@ AbortCurrentTransaction()
  * --------------------------------
  */
 void
-BeginTransactionBlock()
+BeginTransactionBlock(void)
 {
     TransactionState s = CurrentTransactionState;
     
@@ -1151,7 +1151,7 @@ BeginTransactionBlock()
  * --------------------------------
  */
 void
-EndTransactionBlock()
+EndTransactionBlock(void)
 {
     TransactionState s = CurrentTransactionState;
     
@@ -1205,7 +1205,7 @@ EndTransactionBlock()
  * --------------------------------
  */
 void
-AbortTransactionBlock()
+AbortTransactionBlock(void)
 {
     TransactionState s = CurrentTransactionState;
     

@@ -33,6 +33,7 @@
 #include <catalog/pg_type.h>
 #include <catalog/catname.h>
 #include <catalog/pg_user.h>
+#include <commands/copy.h>
 
 #define ISOCTAL(c) (((c) >= '0') && ((c) <= '7'))
 #define VALUE(c) ((c) - '0')

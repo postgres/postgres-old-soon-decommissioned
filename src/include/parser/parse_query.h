@@ -66,7 +66,7 @@ extern int NumLevels;
 #endif
 
 Oid exprType(Node *expr);
-ParseState* makeParseState();
+ParseState* makeParseState(void);
 QueryTreeList *parse_analyze(List *querytree_list);
 
 /* define in parse_query.c, used in gram.y */

@@ -122,9 +122,9 @@ DynaHashFree(Pointer ptr)
  * ----------------
  */
 
-static int expand_table();
-static int hdefault();
-static int init_htab();
+static int expand_table(HTAB *hashp);
+static int hdefault(HTAB *hashp);
+static int init_htab(HTAB *hashp, int nelem);
 
 
 /*

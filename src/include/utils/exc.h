@@ -79,7 +79,7 @@ typedef	void ExcProc(Exception*, ExcDetail, ExcData, ExcMessage);
 extern void EnableExceptionHandling(bool on);
 extern void ExcPrint(Exception *excP, ExcDetail detail, ExcData data,
 		     ExcMessage message);
-extern ExcProc *ExcGetUnCaught();
+extern ExcProc *ExcGetUnCaught(void);
 extern ExcProc *ExcSetUnCaught(ExcProc *newP);
 extern void ExcUnCaught(Exception *excP, ExcDetail detail, ExcData data,
 			ExcMessage message);

@@ -26,6 +26,7 @@
 #include "parser/parsetree.h"		/* for getrelname() */
 #include "utils/builtins.h"
 #include "utils/fcache.h"
+#include "utils/fcache2.h"
 #include "nodes/primnodes.h"
 #include "nodes/execnodes.h"
 #ifndef HAVE_MEMMOVE

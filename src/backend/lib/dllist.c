@@ -19,7 +19,7 @@
 #include <lib/dllist.h>
 
 Dllist*
-DLNewList()
+DLNewList(void)
 {
   Dllist* l;
 

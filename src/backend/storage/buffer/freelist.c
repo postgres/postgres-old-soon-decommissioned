@@ -257,11 +257,12 @@ DBG_FreeListCheck(int nfree)
     }
 }
 
+#ifdef NOT_USED
 /*
  * PrintBufferFreeList -
  *    prints the buffer free list, for debugging
  */
-void
+static void
 PrintBufferFreeList()
 {
     BufferDesc *buf;
@@ -285,3 +286,5 @@ PrintBufferFreeList()
 	buf = &(BufferDescriptors[buf->freeNext]);
     }
 }
+
+#endif

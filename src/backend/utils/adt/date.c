@@ -852,7 +852,7 @@ static int istinterval(char *i_string,
  *     time with precision up to microsecs.)              - ay 3/95
  */
 text *
-timeofday()
+timeofday(void)
 {
 
 #ifndef WIN32

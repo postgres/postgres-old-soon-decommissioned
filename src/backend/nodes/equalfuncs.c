@@ -87,7 +87,8 @@ _equalExpr(Expr *a, Expr *b)
     return (true);
 }
 
-bool _equalIter(Iter *a, Iter *b)
+static bool
+_equalIter(Iter *a, Iter *b)
 {
     return (equal(a->iterexpr, b->iterexpr));
 }

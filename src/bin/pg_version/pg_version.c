@@ -30,8 +30,12 @@ main(int argc, char **argv)
     return(0);
 }
 
+void elog(void); /* make compiler happy */
+
 void
 elog(void) {}
+
+int GetDataHome(void); /* make compiler happy */
 
 int
 GetDataHome(void)

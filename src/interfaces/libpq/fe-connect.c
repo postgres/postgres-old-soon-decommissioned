@@ -18,6 +18,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <ctype.h>
 #include <string.h>
 #include <netdb.h>
 #include <errno.h>
@@ -55,7 +56,7 @@ static void freePGconn(PGconn *conn);
 static void closePGconn(PGconn *conn);
 static int conninfo_parse(const char *conninfo, char *errorMessage);
 static char *conninfo_getval(char *keyword);
-static void conninfo_free();
+static void conninfo_free(void);
 
 #define NOTIFYLIST_INITIAL_SIZE 10
 #define NOTIFYLIST_GROWBY 10
@@ -236,7 +237,7 @@ PQconnectdb(const char *conninfo)
  * ----------------
  */
 PQconninfoOption*
-PQconndefaults()
+PQconndefaults(void)
 {
     char errorMessage[ERROR_MSG_LENGTH];
 

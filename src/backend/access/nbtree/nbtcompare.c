@@ -24,6 +24,7 @@
 
 #include <postgres.h>
 
+#include <utils/builtins.h>
 #include <utils/nabstime.h>
 
 int32

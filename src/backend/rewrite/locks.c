@@ -26,7 +26,7 @@
  * if we find at least one such match, we return true
  * otherwise, we return false
  */
-bool
+static bool
 nodeThisLockWasTriggered(Node *node, int varno, AttrNumber attnum)
 {
     if (node==NULL)

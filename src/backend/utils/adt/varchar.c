@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * char.c--
+ * varchar.c--
  *    Functions for the built-in type char() and varchar().
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -14,7 +14,7 @@
 #include <stdio.h>		/* for sprintf() */
 #include <string.h>
 #include "postgres.h"
-#include "utils/palloc.h"
+#include "utils/builtins.h"
 
 /*
  * CHAR() and VARCHAR() types are part of the ANSI SQL standard. CHAR()

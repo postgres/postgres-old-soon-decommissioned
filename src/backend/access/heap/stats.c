@@ -324,7 +324,7 @@ PrintAndFreeHeapAccessStatistics(HeapAccessStatistics stats)
  * ----------------
  */
 void
-initam()
+initam(void)
 {
     /* ----------------
      *	initialize heap statistics.
