@@ -81,7 +81,7 @@ extern Datum ExecMakeFunctionResult(FunctionCachePtr fcache,
 					   ExprContext *econtext,
 					   bool *isNull,
 					   ExprDoneCond *isDone);
-extern Tuplestorestate *ExecMakeTableFunctionResult(Expr *funcexpr,
+extern Tuplestorestate *ExecMakeTableFunctionResult(Node *funcexpr,
 							ExprContext *econtext,
 							TupleDesc expectedDesc,
 							TupleDesc *returnDesc);
