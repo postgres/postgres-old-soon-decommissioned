@@ -943,7 +943,7 @@ testdb=>
      <term><literal>\w</literal> <replaceable class="parameter">filename</replaceable></term>
      <listitem>
       <para>
-       Outputs the current query buffer to the file
+       Write the current query buffer to the file
        <replaceable class="parameter">filename</replaceable>.
       </para>
      </listitem>
