@@ -219,10 +219,10 @@ UpdateRangeTableOfViewParse(char *viewName, Query *viewParse)
 	/*
 	 * first offset all var nodes by 2
 	 */
-	OffsetVarNodes((Node *) viewParse->targetList, 2);
-	OffsetVarNodes(viewParse->qual, 2);
+	OffsetVarNodes((Node *) viewParse->targetList, 2, 0);
+	OffsetVarNodes(viewParse->qual, 2, 0);
 
-	OffsetVarNodes(viewParse->havingQual, 2);
+	OffsetVarNodes(viewParse->havingQual, 2, 0);
 
 
 	/*
