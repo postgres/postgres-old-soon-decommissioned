@@ -30,6 +30,8 @@ fi
 
 PGTZ="PST8PDT"; export PGTZ
 PGDATESTYLE="Postgres,US"; export PGDATESTYLE
+LANG= ; export LANG
+LC_ALL= ; export LC_ALL
 
 FRONTEND="psql $HOSTLOC -a -q -X"
 
