@@ -1825,11 +1825,6 @@ DeferredTriggerSaveEvent(Relation rel, int event,
 				switch (triggers[i]->tgfoid)
 				{
 					case F_RI_FKEY_NOACTION_UPD:
-						is_ri_trigger = true;
-						new_event->dte_item[i].dti_state |=
-											TRIGGER_DEFERRED_DONE;
-						break;
-
 					case F_RI_FKEY_CASCADE_UPD:
 					case F_RI_FKEY_RESTRICT_UPD:
 					case F_RI_FKEY_SETNULL_UPD:
