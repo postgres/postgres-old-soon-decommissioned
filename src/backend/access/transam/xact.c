@@ -1737,8 +1737,6 @@ xact_redo(XLogRecPtr lsn, XLogRecord *record)
 
 	if (info == XLOG_XACT_COMMIT)
 	{
-		xl_xact_commit	*xlrec = (xl_xact_commit*) XLogRecGetData(record);
-
 		TransactionIdCommit(record->xl_xid);
 		/* SHOULD REMOVE FILES OF ALL DROPPED RELATIONS */
 	}
