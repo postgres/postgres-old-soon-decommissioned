@@ -259,6 +259,7 @@ Boot_DeclareUniqueIndexStmt:
 
 Boot_BuildIndsStmt:
 		  XBUILD INDICES		{ build_indices(); }
+		;
 
 
 boot_index_params:
@@ -274,6 +275,7 @@ boot_index_param:
 					n->class = LexIDStr($2);
 					$$ = n;
 				}
+		;
 
 optbootstrap:
 			XBOOTSTRAP	{ $$ = 1; }
