@@ -1728,7 +1728,7 @@ SELECT 3 OPERATOR(pg_catalog.+) 4;
    </indexterm>
 
    <para>
-    By default, users cannot see the objects in schemas they do not
+    By default, users cannot access any objects in schemas they do not
     own.  To allow that, the owner of the schema needs to grant the
     <literal>USAGE</literal> privilege on the schema.  To allow users
     to make use of the objects in the schema, additional privileges
