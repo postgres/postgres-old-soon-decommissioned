@@ -17,13 +17,8 @@
 #ifndef	BUFMGR_INTERNALS_H
 #define BUFMGR_INTERNALS_H
 
-#include "storage/buf.h"
-#include "storage/ipc.h"
-#include "storage/shmem.h"
-#include "miscadmin.h"
-#include "storage/lmgr.h"
-#include "utils/rel.h"
-#include "utils/relcache.h"
+#include <storage/lmgr.h>
+#include <storage/buf.h>
 
 /* Buf Mgr constants */
 /* in bufmgr.c */

@@ -13,8 +13,9 @@
 #ifndef	SHMEM_H
 #define SHMEM_H
 
-#include "storage/spin.h"		/* for SPINLOCK */
-#include "utils/hsearch.h"		/* for HTAB */
+#include <utils/hsearch.h>
+#include <storage/spin.h>
+
 
 /* The shared memory region can start at a different address
  * in every process.  Shared memory "pointers" are actually

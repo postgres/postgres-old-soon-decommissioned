@@ -14,8 +14,9 @@
 #ifndef	LARGE_OBJECT_H
 #define	LARGE_OBJECT_H
 
-#include "utils/rel.h"
-#include "access/relscan.h"
+#include <sys/types.h>
+
+#include <access/relscan.h>
 
 /*
  * This structure will eventually have lots more stuff associated with it.

@@ -13,7 +13,7 @@
 #ifndef	SPIN_H
 #define SPIN_H
 
-#include "ipc.h"
+#include <storage/ipc.h>
 
 /* 
  * two implementations of spin locks

@@ -13,11 +13,8 @@
 #ifndef LOCK_H_
 #define LOCK_H_
 
-#include "storage/itemptr.h"
-#include "storage/shmem.h"
-#include "storage/spin.h"
-#include "storage/backendid.h"
-#include "utils/hsearch.h"
+#include <storage/shmem.h>
+#include <storage/itemptr.h>
 
 extern SPINLOCK LockMgrLock;
 typedef int MASK;

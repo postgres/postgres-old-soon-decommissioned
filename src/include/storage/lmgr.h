@@ -13,10 +13,8 @@
 #ifndef	LMGR_H
 #define LMGR_H
 
-
-#include "storage/itemptr.h"
-#include "storage/lock.h"
-#include "utils/rel.h"
+#include <storage/lock.h>
+#include <utils/rel.h>
 
 /* 
  * This was moved from pladt.h for the new lock manager.  Want to obsolete

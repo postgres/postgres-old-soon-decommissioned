@@ -13,16 +13,13 @@
 #ifndef _PROC_H_
 #define _PROC_H_
 
-#include "storage/ipc.h"
-#include "storage/lock.h"
+#include <storage/lock.h>
+
 #ifndef WIN32
-#include <sys/ipc.h>
-#include <sys/sem.h>
 #else
 /* This is because WIN32 already defines PROC */
 #define PROC	PGL_PROC
 #endif /* WIN32 */
-#include "storage/shmem.h"
 
 
 typedef struct {

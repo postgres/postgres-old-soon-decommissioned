@@ -13,9 +13,8 @@
 #ifndef SINVALADT_H
 #define SINVALADT_H
 
-#include "storage/ipc.h"
-#include "storage/itemptr.h"
-#include "storage/sinval.h"
+#include <storage/itemptr.h>
+#include <storage/ipc.h>
  
 /*
  * The structure of the shared cache invaidation segment

@@ -14,8 +14,7 @@
 #ifndef MULTILEV_H
 #define MULTILEV_H
 
-#include "storage/lock.h"
-#include "storage/lmgr.h"
+#include <storage/lmgr.h>
 
 #define READ_LOCK  	2
 #define WRITE_LOCK 	1

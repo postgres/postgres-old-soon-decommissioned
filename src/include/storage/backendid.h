@@ -14,7 +14,6 @@
 #define BACKENDID_H
 
 /* ----------------
- *	pulled out of sinval.h to temporarily reduce #include nesting.
  *	-cim 8/17/90
  * ----------------
  */
