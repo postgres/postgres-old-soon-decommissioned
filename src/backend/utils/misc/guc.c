@@ -1041,11 +1041,11 @@ static struct config_int ConfigureNamesInt[] =
 	},
 
 	{
-		{"vacuum_cost_naptime", PGC_USERSET, RESOURCES,
-			gettext_noop("Vacuum cost naptime in milliseconds."),
+		{"vacuum_cost_delay", PGC_USERSET, RESOURCES,
+			gettext_noop("Vacuum cost delay in milliseconds."),
 			NULL
 		},
-		&VacuumCostNaptime,
+		&VacuumCostDelay,
 		0, 0, 1000, NULL, NULL
 	},
 
