@@ -748,8 +748,10 @@ PostmasterMain(int argc, char *argv[])
 	/*
 	 * Load cached files for client authentication.
 	 */
-	load_hba_and_ident();
-	load_password_cache();
+	load_hba();
+	load_ident();
+	load_user();
+	load_group();
 
 	/*
 	 * We're ready to rock and roll...
@@ -1389,7 +1391,8 @@ SIGHUP_handler(SIGNAL_ARGS)
 		elog(LOG, "Received SIGHUP, reloading configuration files");
 		SignalChildren(SIGHUP);
 		ProcessConfigFile(PGC_SIGHUP);
-		load_hba_and_ident();
+		load_hba();
+		load_ident();
 	}
 
 	PG_SETMASK(&UnBlockSig);
@@ -2288,9 +2291,10 @@ sigusr1_handler(SIGNAL_ARGS)
 	if (CheckPostmasterSignal(PMSIGNAL_PASSWORD_CHANGE))
 	{
 		/*
-		 * Password file has changed.
+		 * Password or group file has changed.
 		 */
-		load_password_cache();
+		load_user();
+		load_group();
 	}
 
 	if (CheckPostmasterSignal(PMSIGNAL_WAKEN_CHILDREN))

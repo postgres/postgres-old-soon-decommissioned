@@ -2101,8 +2101,8 @@ DESCR("does not match LIKE expression, case-insensitive");
 DATA(insert OID = 1637 (  like_escape		PGUID 12 f t t t 2 f 25 "25 25" 100 0 0 100 like_escape - _null_ ));
 DESCR("convert match pattern to use backslash escapes");
 
-DATA(insert OID = 1689 (  update_pg_pwd		  PGUID 12 f t f t 0 f 0  ""  100 0 0 100  update_pg_pwd - _null_ ));
-DESCR("update pg_pwd file");
+DATA(insert OID = 1689 (  update_pg_pwd_and_pg_group  PGUID 12 f t f t 0 f 0  ""  100 0 0 100  update_pg_pwd_and_pg_group - _null_ ));
+DESCR("update pg_pwd and pg_group files");
 
 /* Oracle Compatibility Related Functions - By Edmund Mergl <E.Mergl@bawue.de> */
 DATA(insert OID =  868 (  strpos	   PGUID 12 f t t t 2 f 23 "25 25" 100 0 0 100	textpos - _null_ ));

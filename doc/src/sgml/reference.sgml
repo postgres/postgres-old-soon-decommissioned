@@ -191,7 +191,6 @@ Disable this chapter until we have more functions documented.
    &initlocation;
    &ipcclean;
    &pgCtl;
-   &pgPasswd;
    &postgres;
    &postmaster;
 

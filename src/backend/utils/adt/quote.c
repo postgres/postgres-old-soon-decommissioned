@@ -124,8 +124,6 @@ do_quote_ident(text *iptr)
 	{
 		if (*cp1 == '"')
 			*cp2++ = '"';
-		if (*cp1 == '\\')
-			*cp2++ = '\\';
 		*cp2++ = *cp1++;
 	}
 	*cp2++ = '"';
@@ -234,8 +232,6 @@ do_quote_ident(text *iptr)
 
 		if (*cp1 == '"')
 			*cp2++ = '"';
-		if (*cp1 == '\\')
-			*cp2++ = '\\';
 		*cp2++ = *cp1++;
 
 		len--;
