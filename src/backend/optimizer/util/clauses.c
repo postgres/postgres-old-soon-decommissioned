@@ -199,7 +199,8 @@ bool
 or_clause(Node *clause)
 {
 	return clause != NULL &&
-		   nodeTag(clause) == T_Expr && ((Expr *) clause)->opType == OR_EXPR);
+		   nodeTag(clause) == T_Expr &&
+		   ((Expr *) clause)->opType == OR_EXPR;
 }
 
 /*

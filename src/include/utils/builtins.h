@@ -356,7 +356,7 @@ extern bool texticregexne(struct varlena * s, struct varlena * p);
 
 
 /* regproc.c */
-extern int32 regprocin(char *proname);
+extern int32 regprocin(char *pro_name_and_oid);
 extern char *regprocout(RegProcedure proid);
 extern text *oid8types(Oid (*oidArray)[]);
 extern Oid	regproctooid(RegProcedure rp);
