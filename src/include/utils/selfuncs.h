@@ -66,8 +66,10 @@ extern Datum icregexnejoinsel(PG_FUNCTION_ARGS);
 extern Datum nlikejoinsel(PG_FUNCTION_ARGS);
 extern Datum icnlikejoinsel(PG_FUNCTION_ARGS);
 
-extern Selectivity booltestsel(Query *root, BooleanTest *clause, int varRelid);
-extern Selectivity nulltestsel(Query *root, NullTest *clause, int varRelid);
+extern Selectivity booltestsel(Query *root, BoolTestType booltesttype,
+							   Node *arg, int varRelid);
+extern Selectivity nulltestsel(Query *root, NullTestType nulltesttype,
+							   Node *arg, int varRelid);
 
 extern void mergejoinscansel(Query *root, Node *clause,
 				 Selectivity *leftscan,
