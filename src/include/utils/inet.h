@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
- * builtins.h
- *	  Declarations for operations on built-in types.
+ * inet.h
+ *	  Declarations for operations on INET datatypes.
  *
  *
  * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
@@ -44,16 +44,5 @@ typedef struct macaddr
 	unsigned char e;
 	unsigned char f;
 } macaddr;
-
-
-typedef struct manufacturer
-{
-	unsigned char a;
-	unsigned char b;
-	unsigned char c;
-	char	   *name;
-} manufacturer;
-
-extern manufacturer manufacturers[];
 
 #endif	 /* MAC_H */

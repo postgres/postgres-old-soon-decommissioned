@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * version.c
- *	 Returns the version string
+ *	 Returns the PostgreSQL version string
  *
  * IDENTIFICATION
  *
@@ -10,20 +10,19 @@
  *-------------------------------------------------------------------------
  */
 
-
 #include "postgres.h"
 
+#include "utils/builtins.h"
 
-text	   *version(void);
 
-text *
-version(void)
+Datum
+pgsql_version(PG_FUNCTION_ARGS)
 {
-	int			n = strlen(PG_VERSION_STR) + VARHDRSZ;
-	text	   *ret = (text *) palloc(n);
+	int			n = strlen(PG_VERSION_STR);
+	text	   *ret = (text *) palloc(n + VARHDRSZ);
 
-	VARATT_SIZEP(ret) = n;
-	memcpy(VARDATA(ret), PG_VERSION_STR, strlen(PG_VERSION_STR));
+	VARATT_SIZEP(ret) = n + VARHDRSZ;
+	memcpy(VARDATA(ret), PG_VERSION_STR, n);
 
-	return ret;
+	PG_RETURN_TEXT_P(ret);
 }

@@ -1820,7 +1820,8 @@ string_lessthan(const char *str1, const char *str2, Oid datatype)
 	switch (datatype)
 	{
 		case TEXTOID:
-			result = text_lt((text *) datum1, (text *) datum2);
+			result = DatumGetBool(DirectFunctionCall2(text_lt,
+													  datum1, datum2));
 			break;
 
 		case BPCHAROID:

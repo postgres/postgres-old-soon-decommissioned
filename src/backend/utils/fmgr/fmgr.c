@@ -1284,3 +1284,33 @@ Float8GetDatum(float8 X)
 	*retval = X;
 	return PointerGetDatum(retval);
 }
+
+/*-------------------------------------------------------------------------
+ *		Support routines for toastable datatypes
+ *-------------------------------------------------------------------------
+ */
+
+struct varlena *
+pg_detoast_datum(struct varlena * datum)
+{
+	if (VARATT_IS_EXTENDED(datum))
+		return (struct varlena *) heap_tuple_untoast_attr((varattrib *) datum);
+	else
+		return datum;
+}
+
+struct varlena *
+pg_detoast_datum_copy(struct varlena * datum)
+{
+	if (VARATT_IS_EXTENDED(datum))
+		return (struct varlena *) heap_tuple_untoast_attr((varattrib *) datum);
+	else
+	{
+		/* Make a modifiable copy of the varlena object */
+		Size			len = VARSIZE(datum);
+		struct varlena *result = (struct varlena *) palloc(len);
+
+		memcpy(result, datum, len);
+		return result;
+	}
+}
