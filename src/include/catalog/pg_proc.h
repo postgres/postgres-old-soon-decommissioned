@@ -471,6 +471,8 @@ DATA(insert OID = 229 (  dtrunc			   PGNSP PGUID 12 f f t f i 1 701 "701" _null_
 DESCR("truncate to integer");
 DATA(insert OID = 2308 ( ceil			   PGNSP PGUID 12 f f t f i 1 701 "701" _null_  dceil - _null_ ));
 DESCR("smallest integer >= value");
+DATA(insert OID = 2320 ( ceiling		   PGNSP PGUID 12 f f t f i 1 701 "701" _null_  dceil - _null_ ));
+DESCR("smallest integer >= value");
 DATA(insert OID = 2309 ( floor			   PGNSP PGUID 12 f f t f i 1 701 "701" _null_  dfloor - _null_ ));
 DESCR("largest integer <= value");
 DATA(insert OID = 2310 ( sign			   PGNSP PGUID 12 f f t f i 1 701 "701" _null_  dsign - _null_ ));
@@ -1667,6 +1669,8 @@ DATA(insert OID = 1345 (  cbrt				 PGNSP PGUID 12 f f t f i 1 701 "701" _null_  
 DESCR("cube root");
 DATA(insert OID = 1346 (  pow				 PGNSP PGUID 12 f f t f i 2 701 "701 701" _null_  dpow - _null_ ));
 DESCR("exponentiation");
+DATA(insert OID = 1368 (  power				 PGNSP PGUID 12 f f t f i 2 701 "701 701" _null_  dpow - _null_ ));
+DESCR("exponentiation");
 DATA(insert OID = 1347 (  exp				 PGNSP PGUID 12 f f t f i 1 701 "701" _null_  dexp - _null_ ));
 DESCR("exponential");
 
@@ -2440,6 +2444,8 @@ DATA(insert OID = 1710 ( trunc					PGNSP PGUID 14 f f t f i 1 1700 "1700" _null_
 DESCR("value truncated to 'scale' of zero");
 DATA(insert OID = 1711 ( ceil					PGNSP PGUID 12 f f t f i 1 1700 "1700" _null_	numeric_ceil - _null_ ));
 DESCR("smallest integer >= value");
+DATA(insert OID = 2167 ( ceiling				PGNSP PGUID 12 f f t f i 1 1700 "1700" _null_	numeric_ceil - _null_ ));
+DESCR("smallest integer >= value");
 DATA(insert OID = 1712 ( floor					PGNSP PGUID 12 f f t f i 1 1700 "1700" _null_	numeric_floor - _null_ ));
 DESCR("largest integer <= value");
 DATA(insert OID = 1718 ( numeric_eq				PGNSP PGUID 12 f f t f i 2 16 "1700 1700" _null_  numeric_eq - _null_ ));
@@ -2483,6 +2489,8 @@ DESCR("logarithm base m of n");
 DATA(insert OID = 1737 ( numeric_log			PGNSP PGUID 12 f f t f i 2 1700 "1700 1700" _null_  numeric_log - _null_ ));
 DESCR("logarithm base m of n");
 DATA(insert OID = 1738 ( pow					PGNSP PGUID 12 f f t f i 2 1700 "1700 1700" _null_  numeric_power - _null_ ));
+DESCR("m raised to the power of n");
+DATA(insert OID = 2169 ( power					PGNSP PGUID 12 f f t f i 2 1700 "1700 1700" _null_  numeric_power - _null_ ));
 DESCR("m raised to the power of n");
 DATA(insert OID = 1739 ( numeric_power			PGNSP PGUID 12 f f t f i 2 1700 "1700 1700" _null_  numeric_power - _null_ ));
 DESCR("m raised to the power of n");
