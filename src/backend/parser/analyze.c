@@ -2299,7 +2299,7 @@ transformDeclareCursorStmt(ParseState *pstate, DeclareCursorStmt *stmt)
 	 */
 	if ((stmt->options & CURSOR_OPT_SCROLL) &&
 		(stmt->options & CURSOR_OPT_NO_SCROLL))
-		elog(ERROR, "Both SCROLL and NO SCROLL cannot be specified.");
+		elog(ERROR, "Cannot specify both SCROLL and NO SCROLL");
 
 	stmt->query = (Node *) transformStmt(pstate, stmt->query,
 										 &extras_before, &extras_after);

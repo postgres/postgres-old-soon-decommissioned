@@ -809,7 +809,7 @@ SPI_cursor_open(const char *name, void *plan, Datum *Values, const char *Nulls)
 	ExecutorStart(queryDesc);
 
 	/* Arrange to shut down the executor if portal is dropped */
-	PortalSetQuery(portal, queryDesc, PortalCleanup);
+	PortalSetQuery(portal, queryDesc);
 
 	/* Switch back to the callers memory context */
 	MemoryContextSwitchTo(oldcontext);

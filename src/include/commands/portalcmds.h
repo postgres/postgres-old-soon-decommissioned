@@ -29,6 +29,6 @@ extern long DoPortalFetch(Portal portal,
 
 extern void PerformPortalClose(char *name);
 
-extern void PortalCleanup(Portal portal);
+extern void PortalCleanup(Portal portal, bool isError);
 
 #endif   /* PORTALCMDS_H */
