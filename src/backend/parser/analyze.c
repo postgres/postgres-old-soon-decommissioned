@@ -1047,7 +1047,7 @@ transformTargetList(ParseState *pstate, List *targetlist)
 	    char *resname;
 	    
 	    identname = ((Ident*)res->val)->name;
-	    handleTargetColname(pstate, &res->name, NULL, res->name);
+	    handleTargetColname(pstate, &res->name, NULL, identname );
 
 	    /* here we want to look for column names only, not relation */
 	    /* names (even though they can be stored in Ident nodes,    */
