@@ -257,7 +257,7 @@ struct itemIdSortData
 };
 
 static int
-itemidcompare(void *itemidp1, void *itemidp2)
+itemidcompare(const void *itemidp1, const void *itemidp2)
 {
 	if (((struct itemIdSortData *) itemidp1)->itemiddata.lp_off ==
 		((struct itemIdSortData *) itemidp2)->itemiddata.lp_off)

@@ -42,7 +42,7 @@
 #include "optimizer/geqo_recombination.h"
 
 
-static int	compare(void *arg1, void *arg2);
+static int	compare(const void *arg1, const void *arg2);
 
 /*
  * alloc-pool--
@@ -136,7 +136,7 @@ sort_pool(Pool *pool)
  *	 don't change them!
  */
 static int
-compare(void *arg1, void *arg2)
+compare(const void *arg1, const void *arg2)
 {
 	Chromosome	chromo1 = *(Chromosome *) arg1;
 	Chromosome	chromo2 = *(Chromosome *) arg2;
