@@ -35,6 +35,8 @@
 void func_call_1(void);
 void func_call_2(void);
 
+char myhostname[MAXHOSTNAMELEN];
+
 int errno1_set = 0;
 int errno2_set = 0;
 
@@ -59,6 +61,12 @@ int main(int argc, char *argv[])
 	{
 			fprintf(stderr, "Usage: %s\n", argv[0]);
 			return 1;
+	}
+
+	if (gethostname(myhostname, MAXHOSTNAMELEN) != 0)
+	{
+			fprintf(stderr, "can not get local hostname, exiting\n");
+			exit(1);
 	}
 
 	printf("\
@@ -128,8 +136,9 @@ void func_call_1(void) {
 		passwd_p1 = NULL;	/* force thread-safe failure report */
 	}
 
-	hostent_p1 = gethostbyname("www.yahoo.com");
-	p = gethostbyname("www.weather.com");
+	/* threads do this in opposite order */
+	hostent_p1 = gethostbyname(myhostname);
+	p = gethostbyname("localhost");
 	if (hostent_p1 != p)
 	{
 		printf("Your gethostbyname() changes the static memory area between calls\n");
@@ -174,8 +183,9 @@ void func_call_2(void) {
 		passwd_p2 = NULL;	/* force thread-safe failure report */
 	}
 
-	hostent_p2 = gethostbyname("www.google.com");
-	p = gethostbyname("www.postgresql.org");
+	/* threads do this in opposite order */
+	hostent_p2 = gethostbyname("localhost");
+	p = gethostbyname(myhostname);
 	if (hostent_p2 != p)
 	{
 		printf("Your gethostbyname() changes the static memory area between calls\n");
