@@ -34,7 +34,7 @@ SUBSYS.o: $(OBJS)
 
 .PHONY: clean dep
 
-clean:
+distclean clean:
 	rm -f SUBSYS.o $(OBJS)
 
 depend dep:
