@@ -68,7 +68,7 @@
 
 #include "storage/proc.h"
 
-void		HandleDeadLock(SIGNAL_ARGS);
+void		HandleDeadLock(int signum);
 static void ProcFreeAllSemaphores(void);
 static bool GetOffWaitqueue(PROC *);
 
@@ -812,7 +812,7 @@ ProcAddLock(SHM_QUEUE *elem)
  * --------------------
  */
 void
-HandleDeadLock(SIGNAL_ARGS)
+HandleDeadLock(int signum)
 {
 	LOCK	   *mywaitlock;
 

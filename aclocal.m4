@@ -68,37 +68,6 @@ extern accept ($ac_cv_func_accept_arg1, $ac_cv_func_accept_arg2, $ac_cv_func_acc
 # $Header$
 
 
-# PGAC_C_SIGNED
-# -------------
-# Check if the C compiler understands signed types.
-# (Of course any ISO C compiler should, what is this still doing here?)
-AC_DEFUN([PGAC_C_SIGNED],
-[AC_CACHE_CHECK(for signed types, pgac_cv_c_signed,
-[AC_TRY_COMPILE([],
-[signed char c; signed short s; signed int i;],
-[pgac_cv_c_signed=yes],
-[pgac_cv_c_signed=no])])
-if test x"$pgac_cv_c_signed" = xno ; then
-  AC_DEFINE(signed,, [Define empty if the C compiler does not understand signed types])
-fi])# PGAC_C_SIGNED
-
-
-
-# PGAC_C_VOLATILE
-# ---------------
-# Check if the C compiler understands `volatile'. Note that if it doesn't
-# then this will potentially break the program semantics.
-AC_DEFUN([PGAC_C_VOLATILE],
-[AC_CACHE_CHECK(for volatile, pgac_cv_c_volatile,
-[AC_TRY_COMPILE([],
-[extern volatile int i;],
-[pgac_cv_c_volatile=yes],
-[pgac_cv_c_volatile=no])])
-if test x"$pgac_cv_c_volatile" = xno ; then
-  AC_DEFINE(volatile,, [Define empty if the C compiler does not understand `volatile'])
-fi])# PGAC_C_VOLATILE
-
-
 
 # PGAC_TYPE_64BIT_INT(TYPE)
 # -------------------------
