@@ -57,8 +57,7 @@ depend dep:
 
 clean: 
 	rm -f SUBSYS.o $(OBJS) global1.bki.source local1_template1.bki.source \
-				global1.description local1_template1.description \
-				$(GENBKI)
+				global1.description local1_template1.description
 
 ifeq (depend,$(wildcard depend))
 include depend
