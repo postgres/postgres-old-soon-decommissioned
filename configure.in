@@ -704,7 +704,7 @@ fi
 
 if test "$with_zlib" = yes; then
   AC_CHECK_HEADER(zlib.h, [], [AC_MSG_ERROR([zlib header not found
-If you have readline already installed, see config.log for details on the
+If you have zlib already installed, see config.log for details on the
 failure.  It is possible the compiler isn't looking in the proper directory.
 Use --without-zlib to disable zlib support.])])
 fi
