@@ -129,7 +129,7 @@
 
 
 
-#if (defined(__alpha)
+#if defined(__alpha)
 /*
  * OSF/1 (Alpha AXP)
  *
