@@ -36,42 +36,6 @@ static List *qualcleanup(Expr *qual);
 static List *remove_ands(Expr *qual);
 static List *remove_duplicates(List *list);
 
-/*
- * preprocess-qualification--
- *	  Driver routine for modifying the parse tree qualification.
- *
- * Returns the new base qualification and the existential qualification
- * in existentialQualPtr.
- *
- *	XXX right now, update_clauses() does nothing so
- *		preprocess-qualification simply converts the qual in conjunctive
- *		normal form  (see cnfify() below )
- */
-List	   *
-preprocess_qualification(Expr *qual, List *tlist, List **existentialQualPtr)
-{
-	List	   *cnf_qual = cnfify(qual, true);
-
-/*
-	List *existential_qual =
-		update_clauses(intCons(_query_result_relation_,
-								update_relations(tlist)),
-					   cnf_qual,
-					   _query_command_type_);
-	if (existential_qual) {
-		*existentialQualPtr = existential_qual;
-		return set_difference(cnf_qual, existential_qual);
-	} else {
-		*existentialQualPtr = NIL;
-		return cnf_qual;
-	}
-*/
-	/* update_clauses() is not working right now */
-	*existentialQualPtr = NIL;
-	return cnf_qual;
-
-}
-
 /*****************************************************************************
  *
  *		CNF CONVERSION ROUTINES
@@ -606,27 +570,6 @@ remove_ands(Expr *qual)
 		return ((List *) qual);
 	}
 }
-
-/*****************************************************************************
- *
- *		EXISTENTIAL QUALIFICATIONS
- *
- *****************************************************************************/
-
-/*
- * update-relations--
- *	  Returns the range table indices (i.e., varnos) for all relations which
- *	  are referenced in the target list.
- *
- */
-#ifdef NOT_USED
-static List *
-update_relations(List *tlist)
-{
-	return (NIL);
-}
-
-#endif
 
 /*****************************************************************************
  *

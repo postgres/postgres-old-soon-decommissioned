@@ -23,7 +23,6 @@
  *
  * control nodes
  *
- *		Existential				ExistentialState		exstate;
  *		Result					ResultState				resstate;
  *		Append					AppendState				unionstate;
  *
@@ -99,12 +98,6 @@ typedef struct Plan
    when nodes are cast to Plan's.  (node pointers are frequently cast to Plan*
    when passed around generically in the executor */
 
-
-/* ----------------
- *		existential node
- * ----------------
- */
-typedef Plan Existential;
 
 /* ----------------
  *	 result node -

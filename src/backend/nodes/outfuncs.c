@@ -259,21 +259,6 @@ _outResult(StringInfo str, Result *node)
 }
 
 /*
- *	Existential is a subclass of Plan.
- */
-static void
-_outExistential(StringInfo str, Existential *node)
-{
-	char		buf[500];
-
-	sprintf(buf, "EXISTENTIAL");
-	appendStringInfo(str, buf);
-	_outPlanInfo(str, (Plan *) node);
-
-
-}
-
-/*
  *	Append is a subclass of Plan.
  */
 static void
@@ -1640,9 +1625,6 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_Result:
 				_outResult(str, obj);
-				break;
-			case T_Existential:
-				_outExistential(str, obj);
 				break;
 			case T_Append:
 				_outAppend(str, obj);

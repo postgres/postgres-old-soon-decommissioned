@@ -19,9 +19,6 @@
 /*
  * prototypes for prepqual.h
  */
-extern List *
-preprocess_qualification(Expr *qual, List *tlist,
-						 List **existentialQualPtr);
 extern List *cnfify(Expr *qual, bool removeAndFlag);
 
 /*

@@ -29,7 +29,6 @@ typedef enum NodeTag
 	 *---------------------
 	 */
 	T_Plan = 10,
-	T_Existential,
 	T_Result,
 	T_Append,
 	T_Scan,

@@ -304,9 +304,6 @@ plannode_type(Plan *p)
 			case T_Plan:
 			return "PLAN";
 			break;
-		case T_Existential:
-			return "EXISTENTIAL";
-			break;
 		case T_Result:
 			return "RESULT";
 			break;

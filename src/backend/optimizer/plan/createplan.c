@@ -1175,10 +1175,10 @@ make_unique(List *tlist, Plan *lefttree, char *uniqueAttr)
 	return (node);
 }
 
+#ifdef NOT_USED
 List	   *
 generate_fjoin(List *tlist)
 {
-#if 0
 	List		tlistP;
 	List		newTlist = NIL;
 	List		fjoinList = NIL;
@@ -1227,6 +1227,7 @@ generate_fjoin(List *tlist)
 		newTlist = lappend(newTlist, tempList);
 	}
 	return newTlist;
-#endif
 	return tlist;				/* do nothing for now - ay 10/94 */
 }
+#endif
+

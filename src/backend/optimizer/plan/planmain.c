@@ -259,7 +259,9 @@ query_planner(Query *root,
 	 * Destructively modify the query plan's targetlist to add fjoin lists
 	 * to flatten functions that return sets of base types
 	 */
+#ifdef NOT_USED
 	subplan->targetlist = generate_fjoin(subplan->targetlist);
+#endif
 
 	return (subplan);
 }
@@ -360,7 +362,9 @@ make_result(List *tlist,
 	Result	   *node = makeNode(Result);
 	Plan	   *plan = &node->plan;
 
+#ifdef NOT_USED
 	tlist = generate_fjoin(tlist);
+#endif
     plan->cost = (subplan ? subplan->cost : 0);
 	plan->state = (EState *) NULL;
 	plan->targetlist = tlist;

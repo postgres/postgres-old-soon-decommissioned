@@ -218,24 +218,6 @@ _readResult()
 }
 
 /* ----------------
- *		_readExistential
- *
- *		Existential nodes are only used by the planner.
- * ----------------
- */
-static Existential *
-_readExistential()
-{
-	Existential *local_node;
-
-	local_node = makeNode(Existential);
-
-	_getPlan((Plan *) local_node);
-
-	return (local_node);
-}
-
-/* ----------------
  *		_readAppend
  *
  *	Append is a subclass of Plan.
@@ -1883,10 +1865,6 @@ parsePlanString(void)
 	else if (!strncmp(token, "RESULT", 6))
 	{
 		return_value = _readResult();
-	}
-	else if (!strncmp(token, "EXISTENTIAL", 11))
-	{
-		return_value = _readExistential();
 	}
 	else if (!strncmp(token, "APPEND", 6))
 	{

@@ -37,8 +37,6 @@ extern Agg *make_agg(List *tlist, int nagg, Aggreg **aggs, Plan *lefttree);
 extern Group *make_group(List *tlist, bool tuplePerGroup, int ngrp,
 		   AttrNumber *grpColIdx, Sort *lefttree);
 extern Unique *make_unique(List *tlist, Plan *lefttree, char *uniqueAttr);
-extern List *generate_fjoin(List *tlist);
-
 
 /*
  * prototypes for plan/initsplan.c

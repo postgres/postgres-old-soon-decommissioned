@@ -109,24 +109,6 @@ _copyPlan(Plan *from)
 
 
 /* ----------------
- *		_copyExistential
- * ----------------
- */
-static Existential *
-_copyExistential(Existential *from)
-{
-	Existential *newnode = makeNode(Existential);
-
-	/* ----------------
-	 *	copy node superclass fields
-	 * ----------------
-	 */
-	CopyPlanFields(from, newnode);
-
-	return newnode;
-}
-
-/* ----------------
  *		_copyResult
  * ----------------
  */
@@ -1622,9 +1604,6 @@ copyObject(void *from)
 			 */
 		case T_Plan:
 			retval = _copyPlan(from);
-			break;
-		case T_Existential:
-			retval = _copyExistential(from);
 			break;
 		case T_Result:
 			retval = _copyResult(from);

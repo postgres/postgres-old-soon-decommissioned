@@ -888,8 +888,6 @@ NodeGetResultTupleSlot(Plan *node)
  *		the node's inner or outer subplan easily without having
  *		to inspect the subplan.. -cim 10/16/89
  *
- *		Assume that for existential nodes, we get the targetlist out
- *		of the right node's targetlist
  * ----------------------------------------------------------------
  */
 
