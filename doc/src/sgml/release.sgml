@@ -1056,7 +1056,6 @@ DROP SCHEMA information_schema CASCADE;
     <listitem>
      <para>Implement <literal>CREATE TABLE AS EXECUTE</literal> (Neil, Peter)</para>
     </listitem>
-    <listitem><para>Don't lock referenced row when <command>UPDATE</command> doesn't change foreign key's value (Jan)</para></listitem>
    </itemizedlist>
   </sect3>
 
@@ -2090,6 +2089,7 @@ DROP SCHEMA information_schema CASCADE;
 <itemizedlist>
 <listitem><para>Repair sometimes-incorrect computation of StartUpID after a crash</para></listitem>
 <listitem><para>Avoid slowness with lots of deferred triggers in one transaction (Stephan)</para></listitem>
+<listitem><para>Don't lock referenced row when <command>UPDATE</command> doesn't change foreign key's value (Jan)</para></listitem>
 <listitem><para>Use <command>-fPIC</command> not <command>-fpic</command> on Sparc (Tom Callaway)</para></listitem>
 <listitem><para>Repair lack of schema-awareness in contrib/reindexdb</para></listitem>
 <listitem><para>Fix contrib/intarray error for zero-element result array (Teodor)</para></listitem>
