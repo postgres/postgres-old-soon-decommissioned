@@ -572,18 +572,18 @@ closerel(char *name)
 		if (reldesc)
 		{
 			if (namestrcmp(RelationGetRelationName(reldesc), name) != 0)
-				elog(ABORT, "closerel: close of '%s' when '%s' was expected",
+				elog(ERROR, "closerel: close of '%s' when '%s' was expected",
 					 name, relname ? relname : "(null)");
 		}
 		else
-			elog(ABORT, "closerel: close of '%s' before any relation was opened",
+			elog(ERROR, "closerel: close of '%s' before any relation was opened",
 				 name);
 
 	}
 
 	if (reldesc == NULL)
 	{
-		elog(ABORT, "Warning: no opened relation to close.\n");
+		elog(ERROR, "Warning: no opened relation to close.\n");
 	}
 	else
 	{
@@ -879,7 +879,7 @@ gettype(char *type)
 		heap_close(rdesc);
 		return (gettype(type));
 	}
-	elog(ABORT, "Error: unknown type '%s'.\n", type);
+	elog(ERROR, "Error: unknown type '%s'.\n", type);
 	err_out();
 	/* not reached, here to make compiler happy */
 	return 0;

@@ -647,7 +647,7 @@ deepRewriteQuery(Query *parsetree)
 
 	if (++numQueryRewriteInvoked > REWRITE_INVOKE_MAX)
 	{
-		elog(ABORT, "query rewritten %d times, may contain cycles",
+		elog(ERROR, "query rewritten %d times, may contain cycles",
 			 numQueryRewriteInvoked - 1);
 	}
 

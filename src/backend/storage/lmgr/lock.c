@@ -802,7 +802,7 @@ WaitOnLock(LOCKTAB *ltable, LockTableId tableId, LOCK *lock, LOCKT lockt)
 		lock->holders[lockt]--;
 		LOCK_DUMP_AUX("WaitOnLock: aborting on lock", lock, lockt);
 		SpinRelease(ltable->ctl->masterLock);
-		elog(ABORT, "WaitOnLock: error on wakeup - Aborting this transaction");
+		elog(ERROR, "WaitOnLock: error on wakeup - Aborting this transaction");
 	}
 
 	LOCK_DUMP_AUX("WaitOnLock: wakeup on lock", lock, lockt);
@@ -887,7 +887,7 @@ LockRelease(LockTableId tableId, LOCKTAG *lockName, LOCKT lockt)
 #endif
 
 	/*
-	 * let the caller print its own error message, too. Do not elog(ABORT).
+	 * let the caller print its own error message, too. Do not elog(ERROR).
 	 */
 	if (!lock)
 	{

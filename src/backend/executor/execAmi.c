@@ -313,7 +313,7 @@ ExecReScan(Plan *node, ExprContext *exprCtxt, Plan *parent)
 			break;
 
 		default:
-			elog(ABORT, "ExecReScan: not a seqscan or indexscan node.");
+			elog(ERROR, "ExecReScan: not a seqscan or indexscan node.");
 			return;
 	}
 }

@@ -45,7 +45,7 @@ typtoout(Oid type)
 		return ((Oid)
 				((TypeTupleForm) GETSTRUCT(typeTuple))->typoutput);
 
-	elog(ABORT, "typtoout: Cache lookup of type %d failed", type);
+	elog(ERROR, "typtoout: Cache lookup of type %d failed", type);
 	return (InvalidOid);
 }
 
@@ -62,7 +62,7 @@ gettypelem(Oid type)
 		return ((Oid)
 				((TypeTupleForm) GETSTRUCT(typeTuple))->typelem);
 
-	elog(ABORT, "typtoout: Cache lookup of type %d failed", type);
+	elog(ERROR, "typtoout: Cache lookup of type %d failed", type);
 	return (InvalidOid);
 }
 

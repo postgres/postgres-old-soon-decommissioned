@@ -32,7 +32,7 @@ void	   *
 pg_dlopen(char *filename)
 {
 #ifndef HAVE_DLD_H
-	elog(ABORT, "dynamic load not supported");
+	elog(ERROR, "dynamic load not supported");
 	return (NULL);
 #else
 	static int	dl_initialized = 0;

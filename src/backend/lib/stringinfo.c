@@ -36,14 +36,14 @@ makeStringInfo()
 	res = (StringInfo) palloc(sizeof(StringInfoData));
 	if (res == NULL)
 	{
-		elog(ABORT, "makeStringInfo: Out of memory!");
+		elog(ERROR, "makeStringInfo: Out of memory!");
 	}
 
 	size = 100;
 	res->data = palloc(size);
 	if (res->data == NULL)
 	{
-		elog(ABORT,
+		elog(ERROR,
 		   "makeStringInfo: Out of memory! (%ld bytes requested)", size);
 	}
 	res->maxlen = size;
@@ -105,7 +105,7 @@ appendStringInfo(StringInfo str, char *buffer)
 		s = palloc(newlen);
 		if (s == NULL)
 		{
-			elog(ABORT,
+			elog(ERROR,
 				 "appendStringInfo: Out of memory (%d bytes requested)",
 				 newlen);
 		}

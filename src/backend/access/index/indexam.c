@@ -103,13 +103,13 @@ Assert(RelationIsValid(relation)); \
 #define GET_REL_PROCEDURE(x,y) \
 		 procedure = relation->rd_am->y; \
 		 if (! RegProcedureIsValid(procedure)) \
-		 elog(ABORT, "index_%s: invalid %s regproc", \
+		 elog(ERROR, "index_%s: invalid %s regproc", \
 			  CppAsString(x), CppAsString(y))
 
 #define GET_SCAN_PROCEDURE(x,y) \
 		 procedure = scan->relation->rd_am->y; \
 		 if (! RegProcedureIsValid(procedure)) \
-		 elog(ABORT, "index_%s: invalid %s regproc", \
+		 elog(ERROR, "index_%s: invalid %s regproc", \
 			  CppAsString(x), CppAsString(y))
 
 

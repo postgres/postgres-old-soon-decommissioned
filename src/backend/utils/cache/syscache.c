@@ -371,7 +371,7 @@ InitCatalogCache()
 							 cacheinfo[cacheId].iScanFunc);
 			if (!PointerIsValid((char *) SysCache[cacheId]))
 			{
-				elog(ABORT,
+				elog(ERROR,
 					 "InitCatalogCache: Can't init cache %.16s(%d)",
 					 cacheinfo[cacheId].name,
 					 cacheId);
@@ -402,7 +402,7 @@ SearchSysCacheTuple(int cacheId,		/* cache selection code */
 
 	if (cacheId < 0 || cacheId >= SysCacheSize)
 	{
-		elog(ABORT, "SearchSysCacheTuple: Bad cache id %d", cacheId);
+		elog(ERROR, "SearchSysCacheTuple: Bad cache id %d", cacheId);
 		return ((HeapTuple) NULL);
 	}
 
@@ -423,7 +423,7 @@ SearchSysCacheTuple(int cacheId,		/* cache selection code */
 							 cacheinfo[cacheId].iScanFunc);
 			if (!PointerIsValid(SysCache[cacheId]))
 			{
-				elog(ABORT,
+				elog(ERROR,
 					 "InitCatalogCache: Can't init cache %.16s(%d)",
 					 cacheinfo[cacheId].name,
 					 cacheId);
@@ -469,7 +469,7 @@ SearchSysCacheStruct(int cacheId,		/* cache selection code */
 
 	if (!PointerIsValid(returnStruct))
 	{
-		elog(ABORT, "SearchSysCacheStruct: No receiving struct");
+		elog(ERROR, "SearchSysCacheStruct: No receiving struct");
 		return (0);
 	}
 	tp = SearchSysCacheTuple(cacheId, key1, key2, key3, key4);
@@ -537,7 +537,7 @@ SearchSysCacheGetAttribute(int cacheId,
 	}
 	else
 	{
-		elog(ABORT,
+		elog(ERROR,
 			 "SearchSysCacheGetAttribute: Bad attr # %d in %s(%d)",
 			 attributeNumber, cacheName, cacheId);
 		return (NULL);

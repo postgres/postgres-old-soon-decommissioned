@@ -329,7 +329,7 @@ ExecTee(Tee *node, Plan *parent)
 	}
 	else
 	{
-		elog(ABORT, "A Tee node can only be executed from its left or right parent\n");
+		elog(ERROR, "A Tee node can only be executed from its left or right parent\n");
 		return NULL;
 	}
 

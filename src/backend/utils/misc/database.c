@@ -61,7 +61,7 @@ GetDatabaseInfo(char *name, Oid *owner, char *path)
 
 	scan = heap_beginscan(dbrel, 0, false, 1, &scanKey);
 	if (!HeapScanIsValid(scan))
-		elog(ABORT, "GetDatabaseInfo: cannot begin scan of %s", DatabaseRelationName);
+		elog(ERROR, "GetDatabaseInfo: cannot begin scan of %s", DatabaseRelationName);
 
 	/*
 	 * Since we're going to close the relation, copy the tuple.

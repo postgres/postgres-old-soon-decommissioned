@@ -368,7 +368,7 @@ ExecCountSlotsNode(Plan *node)
 			return ExecCountSlotsTee((Tee *) node);
 
 		default:
-			elog(ABORT, "ExecCountSlotsNode: node not yet supported: %d",
+			elog(ERROR, "ExecCountSlotsNode: node not yet supported: %d",
 				 nodeTag(node));
 			break;
 	}

@@ -76,7 +76,7 @@ _hash_dropscan(IndexScanDesc scan)
 	}
 
 	if (chk == (HashScanList) NULL)
-		elog(ABORT, "hash scan list trashed; can't find 0x%lx", scan);
+		elog(ERROR, "hash scan list trashed; can't find 0x%lx", scan);
 
 	if (last == (HashScanList) NULL)
 		HashScans = chk->hashsl_next;

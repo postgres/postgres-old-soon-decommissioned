@@ -407,7 +407,7 @@ make_groupPlan(List **tlist,
 
 	if (length(glc) != 0)
 	{
-		elog(ABORT, "group attribute disappeared from target list");
+		elog(ERROR, "group attribute disappeared from target list");
 	}
 
 	/*

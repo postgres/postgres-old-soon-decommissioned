@@ -568,7 +568,7 @@ ResetSystemCache()
 	CACHE1_elog(DEBUG, "ResetSystemCache called");
 	if (DisableCache)
 	{
-		elog(ABORT, "ResetSystemCache: Called while cache disabled");
+		elog(ERROR, "ResetSystemCache: Called while cache disabled");
 		return;
 	}
 
@@ -605,7 +605,7 @@ ResetSystemCache()
 				nextelt = DLGetSucc(elt);
 				CatCacheRemoveCTup(cache, elt);
 				if (cache->cc_ntup == -1)
-					elog(ABORT, "ResetSystemCache: cc_ntup<0 (software error)");
+					elog(ERROR, "ResetSystemCache: cc_ntup<0 (software error)");
 			}
 		}
 		cache->cc_ntup = 0;		/* in case of WARN error above */
@@ -892,7 +892,7 @@ SearchSysCache(struct catcache * cache,
 
 	if (DisableCache)
 	{
-		elog(ABORT, "SearchSysCache: Called while cache disabled");
+		elog(ERROR, "SearchSysCache: Called while cache disabled");
 		return ((HeapTuple) NULL);
 	}
 

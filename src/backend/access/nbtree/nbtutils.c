@@ -119,7 +119,7 @@ _bt_orderkeys(Relation relation, BTScanOpaque so)
 
 	cur = &key[0];
 	if (cur->sk_attno != 1)
-		elog(ABORT, "_bt_orderkeys: key(s) for attribute 1 missed");
+		elog(ERROR, "_bt_orderkeys: key(s) for attribute 1 missed");
 
 	if (numberOfKeys == 1)
 	{
@@ -159,7 +159,7 @@ _bt_orderkeys(Relation relation, BTScanOpaque so)
 		{
 			if (cur->sk_attno != attno + 1 && i < numberOfKeys)
 			{
-				elog(ABORT, "_bt_orderkeys: key(s) for attribute %d missed", attno + 1);
+				elog(ERROR, "_bt_orderkeys: key(s) for attribute %d missed", attno + 1);
 			}
 
 			/*
@@ -296,7 +296,7 @@ _bt_formitem(IndexTuple itup)
 	/*
 	 * see comments in btbuild
 	 *
-	 * if (itup->t_info & INDEX_NULL_MASK) elog(ABORT, "btree indices cannot
+	 * if (itup->t_info & INDEX_NULL_MASK) elog(ERROR, "btree indices cannot
 	 * include null keys");
 	 */
 

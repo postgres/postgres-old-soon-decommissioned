@@ -203,10 +203,10 @@ Boot_InsertStmt:
 		  LPAREN  boot_tuplelist RPAREN
 				{
 					if (num_tuples_read != numattr)
-						elog(ABORT,"incorrect number of values for tuple");
+						elog(ERROR,"incorrect number of values for tuple");
 					if (reldesc == (Relation)NULL)
 					{
-						elog(ABORT,"must OPEN RELATION before INSERT\n");
+						elog(ERROR,"must OPEN RELATION before INSERT\n");
 						err_out();
 					}
 					if (DebugMode)

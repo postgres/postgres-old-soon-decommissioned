@@ -148,7 +148,7 @@ get_attisset(Oid relid, char *attname)
 							   PointerGetDatum(attname),
 							   0, 0);
 	if (!HeapTupleIsValid(htup))
-		elog(ABORT, "get_attisset: no attribute %s in relation %d",
+		elog(ERROR, "get_attisset: no attribute %s in relation %d",
 			 attname, relid);
 	if (heap_attisnull(htup, attno))
 		return (false);
@@ -203,7 +203,7 @@ get_opname(Oid opno)
 		return (pstrdup(optup.oprname.data));
 	else
 	{
-		elog(ABORT, "can't look up operator %d\n", opno);
+		elog(ERROR, "can't look up operator %d\n", opno);
 		return NULL;
 	}
 }

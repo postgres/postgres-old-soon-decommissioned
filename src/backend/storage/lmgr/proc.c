@@ -163,13 +163,13 @@ InitProcess(IPCKey key)
 	if (!found)
 	{
 		/* this should not happen. InitProcGlobal() is called before this. */
-		elog(ABORT, "InitProcess: Proc Header uninitialized");
+		elog(ERROR, "InitProcess: Proc Header uninitialized");
 	}
 
 	if (MyProc != NULL)
 	{
 		SpinRelease(ProcStructLock);
-		elog(ABORT, "ProcInit: you already exist");
+		elog(ERROR, "ProcInit: you already exist");
 		return;
 	}
 
@@ -803,7 +803,7 @@ ProcGetNewSemKeyAndNum(IPCKey *key, int *semNum)
 	}
 
 	/* if we reach here, all the semaphores are in use. */
-	elog(ABORT, "InitProc: cannot allocate a free semaphore");
+	elog(ERROR, "InitProc: cannot allocate a free semaphore");
 }
 
 /*

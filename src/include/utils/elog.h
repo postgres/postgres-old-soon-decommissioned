@@ -14,11 +14,10 @@
 #define ELOG_H
 
 #define NOTICE	0				/* random info - no special action */
-#define ERROR	-2				/* user error - return to known state */
-#define ABORT	-1				/* system error - return to known state */
+#define ERROR	-1				/* user error - return to known state */
 #define FATAL	1				/* Fatal error - abort process */
-#define DEBUG	-3				/* debug message */
-#define NOIND	-4				/* debug message, don't indent as far */
+#define DEBUG	-2				/* debug message */
+#define NOIND	-3				/* debug message, don't indent as far */
 
 #ifdef NOT_USED
 #define PTIME	0x100			/* prepend time to message */

@@ -68,7 +68,7 @@ TransComputeBlockNumber(Relation relation,		/* relation to test */
 	if (relation == LogRelation)
 		itemsPerBlock = TP_NumXidStatusPerBlock;
 	else
-		elog(ABORT, "TransComputeBlockNumber: unknown relation");
+		elog(ERROR, "TransComputeBlockNumber: unknown relation");
 
 	/* ----------------
 	 *	warning! if the transaction id's get too large

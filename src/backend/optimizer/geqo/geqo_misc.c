@@ -53,7 +53,7 @@ avg_pool(Pool *pool)
 	double		cumulative = 0.0;
 
 	if (pool->size == 0)
-		elog(ABORT, "avg_pool: pool_size of zero");
+		elog(ERROR, "avg_pool: pool_size of zero");
 
 	for (i = 0; i < pool->size; i++)
 		cumulative = cumulative + pool->data[i].worth;

@@ -183,7 +183,7 @@ TransactionLogTest(TransactionId transactionId, /* transaction id to test */
 	 *	  here the block didn't contain the information we wanted
 	 * ----------------
 	 */
-	elog(ABORT, "TransactionLogTest: failed to get xidstatus");
+	elog(ERROR, "TransactionLogTest: failed to get xidstatus");
 
 	/*
 	 * so lint is happy...
@@ -308,7 +308,7 @@ TransRecover(Relation logRelation)
 	 */
 	TransGetLastRecordedTransaction(logRelation, logLastXid, &fail);
 	if (fail == true)
-		elog(ABORT, "TransRecover: failed TransGetLastRecordedTransaction");
+		elog(ERROR, "TransRecover: failed TransGetLastRecordedTransaction");
 
 	/* ----------------
 	 *	  next get the "last" and "next" variables
@@ -322,7 +322,7 @@ TransRecover(Relation logRelation)
 	 * ----------------
 	 */
 	if (TransactionIdIsLessThan(varNextXid, logLastXid))
-		elog(ABORT, "TransRecover: varNextXid < logLastXid");
+		elog(ERROR, "TransRecover: varNextXid < logLastXid");
 
 	/* ----------------
 	 *	  intregity test (2)

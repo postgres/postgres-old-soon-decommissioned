@@ -434,7 +434,7 @@ RelationUnsetLockForRead(Relation relation)
 	 */
 	if (!LockInfoIsValid(linfo))
 	{
-		elog(ABORT,
+		elog(ERROR,
 			 "Releasing a lock on %s with invalid lock information",
 			 RelationGetRelationName(relation));
 	}
@@ -527,7 +527,7 @@ RelationUnsetLockForWrite(Relation relation)
 
 	if (!LockInfoIsValid(linfo))
 	{
-		elog(ABORT,
+		elog(ERROR,
 			 "Releasing a lock on %s with invalid lock information",
 			 RelationGetRelationName(relation));
 	}
@@ -769,7 +769,7 @@ RelationUnsetSingleWLockPage(Relation relation,
 		return;
 
 	if (!LockInfoIsValid(relation->lockInfo))
-		elog(ABORT,
+		elog(ERROR,
 			 "Releasing a lock on %s with invalid lock information",
 			 RelationGetRelationName(relation));
 
@@ -816,7 +816,7 @@ RelationUnsetSingleRLockPage(Relation relation,
 		return;
 
 	if (!LockInfoIsValid(relation->lockInfo))
-		elog(ABORT,
+		elog(ERROR,
 			 "Releasing a lock on %s with invalid lock information",
 			 RelationGetRelationName(relation));
 

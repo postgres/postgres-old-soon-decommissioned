@@ -39,13 +39,13 @@ RewriteGetRuleEventRel(char *rulename)
 	htp = SearchSysCacheTuple(REWRITENAME, PointerGetDatum(rulename),
 							  0, 0, 0);
 	if (!HeapTupleIsValid(htp))
-		elog(ABORT, "RewriteGetRuleEventRel: rule \"%s\" not found",
+		elog(ERROR, "RewriteGetRuleEventRel: rule \"%s\" not found",
 			 rulename);
 	eventrel = ((Form_pg_rewrite) GETSTRUCT(htp))->ev_class;
 	htp = SearchSysCacheTuple(RELOID, PointerGetDatum(eventrel),
 							  0, 0, 0);
 	if (!HeapTupleIsValid(htp))
-		elog(ABORT, "RewriteGetRuleEventRel: class %d not found",
+		elog(ERROR, "RewriteGetRuleEventRel: class %d not found",
 			 eventrel);
 	return ((Form_pg_class) GETSTRUCT(htp))->relname.data;
 }
@@ -99,7 +99,7 @@ RemoveRewriteRule(char *ruleName)
 	if (!HeapTupleIsValid(tuple))
 	{
 		heap_close(RewriteRelation);
-		elog(ABORT, "No rule with name = '%s' was found.\n", ruleName);
+		elog(ERROR, "No rule with name = '%s' was found.\n", ruleName);
 	}
 
 	/*
@@ -116,7 +116,7 @@ RemoveRewriteRule(char *ruleName)
 	if (isNull)
 	{
 		/* XXX strange!!! */
-		elog(ABORT, "RemoveRewriteRule: null event target relation!");
+		elog(ERROR, "RemoveRewriteRule: null event target relation!");
 	}
 	eventRelationOid = DatumGetObjectId(eventRelationOidDatum);
 

@@ -87,7 +87,7 @@ BufTableLookup(BufferTag *tagPtr)
 
 	if (!result)
 	{
-		elog(ABORT, "BufTableLookup: BufferLookup table corrupted");
+		elog(ERROR, "BufTableLookup: BufferLookup table corrupted");
 		return (NULL);
 	}
 	if (!found)
@@ -122,7 +122,7 @@ BufTableDelete(BufferDesc *buf)
 
 	if (!(result && found))
 	{
-		elog(ABORT, "BufTableDelete: BufferLookup table corrupted");
+		elog(ERROR, "BufTableDelete: BufferLookup table corrupted");
 		return (FALSE);
 	}
 
@@ -145,14 +145,14 @@ BufTableInsert(BufferDesc *buf)
 	if (!result)
 	{
 		Assert(0);
-		elog(ABORT, "BufTableInsert: BufferLookup table corrupted");
+		elog(ERROR, "BufTableInsert: BufferLookup table corrupted");
 		return (FALSE);
 	}
 	/* found something else in the table ! */
 	if (found)
 	{
 		Assert(0);
-		elog(ABORT, "BufTableInsert: BufferLookup table corrupted");
+		elog(ERROR, "BufTableInsert: BufferLookup table corrupted");
 		return (FALSE);
 	}
 

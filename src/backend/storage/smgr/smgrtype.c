@@ -49,7 +49,7 @@ smgrin(char *s)
 		if (strcmp(s, StorageManager[i].smgr_name) == 0)
 			return ((int2) i);
 	}
-	elog(ABORT, "smgrin: illegal storage manager name %s", s);
+	elog(ERROR, "smgrin: illegal storage manager name %s", s);
 	return 0;
 }
 
@@ -59,7 +59,7 @@ smgrout(int2 i)
 	char	   *s;
 
 	if (i >= NStorageManagers || i < 0)
-		elog(ABORT, "Illegal storage manager id %d", i);
+		elog(ERROR, "Illegal storage manager id %d", i);
 
 	s = (char *) palloc(strlen(StorageManager[i].smgr_name) + 1);
 	strcpy(s, StorageManager[i].smgr_name);

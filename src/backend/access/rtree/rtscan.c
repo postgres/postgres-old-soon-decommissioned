@@ -85,7 +85,7 @@ rtrescan(IndexScanDesc s, bool fromEnd, ScanKey key)
 
 	if (!IndexScanIsValid(s))
 	{
-		elog(ABORT, "rtrescan: invalid scan.");
+		elog(ERROR, "rtrescan: invalid scan.");
 		return;
 	}
 
@@ -284,7 +284,7 @@ rtdropscan(IndexScanDesc s)
 	}
 
 	if (l == (RTScanList) NULL)
-		elog(ABORT, "rtree scan list corrupted -- cannot find 0x%lx", s);
+		elog(ERROR, "rtree scan list corrupted -- cannot find 0x%lx", s);
 
 	if (prev == (RTScanList) NULL)
 		RTScans = l->rtsl_next;
@@ -400,7 +400,7 @@ adjustiptr(IndexScanDesc s,
 					break;
 
 				default:
-					elog(ABORT, "Bad operation in rtree scan adjust: %d", op);
+					elog(ERROR, "Bad operation in rtree scan adjust: %d", op);
 			}
 		}
 	}

@@ -737,6 +737,6 @@ geqo_nth(int stop, List *rels)
 			return lfirst(r);
 		i++;
 	}
-	elog(ABORT, "geqo_nth: Internal error - ran off end of list");
+	elog(ERROR, "geqo_nth: Internal error - ran off end of list");
 	return NULL;				/* to keep compiler happy */
 }
