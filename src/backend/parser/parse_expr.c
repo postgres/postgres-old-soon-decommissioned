@@ -63,7 +63,7 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 				Value	   *val = &con->val;
 
 				if (con->typename != NULL)
-					result = parser_typecast(val, con->typename, -1);
+					result = parser_typecast(val, con->typename, con->typename->typmod);
 				else
 					result = (Node *) make_const(val);
 				break;
