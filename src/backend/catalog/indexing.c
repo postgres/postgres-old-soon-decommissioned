@@ -106,9 +106,9 @@ CatalogIndexInsert(Relation *idescs,
 				   Relation heapRelation,
 				   HeapTuple heapTuple)
 {
-	HeapTuple	pgIndexTup;
+	HeapTuple	index_tup;
 	TupleDesc	heapDescriptor;
-	Form_pg_index pgIndexP;
+	Form_pg_index index_form;
 	Datum		datum;
 	int			natts;
 	AttrNumber *attnumP;
@@ -123,25 +123,25 @@ CatalogIndexInsert(Relation *idescs,
 	{
 		InsertIndexResult indexRes;
 
-		pgIndexTup = SearchSysCacheTupleCopy(INDEXRELID,
+		index_tup = SearchSysCacheTupleCopy(INDEXRELID,
 									  ObjectIdGetDatum(idescs[i]->rd_id),
 											 0, 0, 0);
-		Assert(pgIndexTup);
-		pgIndexP = (Form_pg_index) GETSTRUCT(pgIndexTup);
+		Assert(index_tup);
+		index_form = (Form_pg_index) GETSTRUCT(index_tup);
 
 		/*
 		 * Compute the number of attributes we are indexing upon.
 		 */
-		for (attnumP = pgIndexP->indkey, natts = 0;
+		for (attnumP = index_form->indkey, natts = 0;
 			 *attnumP != InvalidAttrNumber;
 			 attnumP++, natts++)
 			;
 
-		if (pgIndexP->indproc != InvalidOid)
+		if (index_form->indproc != InvalidOid)
 		{
 			FIgetnArgs(&finfo) = natts;
 			natts = 1;
-			FIgetProcOid(&finfo) = pgIndexP->indproc;
+			FIgetProcOid(&finfo) = index_form->indproc;
 			*(FIgetname(&finfo)) = '\0';
 			finfoP = &finfo;
 		}
@@ -149,7 +149,7 @@ CatalogIndexInsert(Relation *idescs,
 			finfoP = (FuncIndexInfo *) NULL;
 
 		FormIndexDatum(natts,
-					   (AttrNumber *) pgIndexP->indkey,
+					   (AttrNumber *) index_form->indkey,
 					   heapTuple,
 					   heapDescriptor,
 					   &datum,
@@ -160,7 +160,7 @@ CatalogIndexInsert(Relation *idescs,
 								&heapTuple->t_ctid, heapRelation);
 		if (indexRes)
 			pfree(indexRes);
-		pfree(pgIndexTup);
+		pfree(index_tup);
 	}
 }
 
@@ -230,10 +230,8 @@ CatalogIndexFetchTuple(Relation heapRelation,
 	sd = index_beginscan(idesc, false, num_keys, skey);
 	while ((indexRes = index_getnext(sd, ForwardScanDirection)))
 	{
-		ItemPointer iptr;
-
-		iptr = &indexRes->heap_iptr;
-		tuple = heap_fetch(heapRelation, SnapshotNow, iptr, &buffer);
+		tuple = heap_fetch(heapRelation, SnapshotNow, &indexRes->heap_iptr,
+							&buffer);
 		pfree(indexRes);
 		if (HeapTupleIsValid(tuple))
 			break;
