@@ -262,7 +262,7 @@ dumpSchema(FILE *fout,
 	if (g_verbose)
 		fprintf(stderr, "%s reading user-defined tables %s\n",
 				g_comment_start, g_comment_end);
-	tblinfo = getTables(&numTables);
+	tblinfo = getTables(&numTables, finfo, numFuncs);
 
 	if (g_verbose)
 		fprintf(stderr, "%s reading table inheritance information %s\n",
@@ -336,7 +336,7 @@ dumpSchema(FILE *fout,
  */
 
 extern void
-dumpSchemaIdx(FILE *fout, int *numTablesPtr, const char *tablename,
+dumpSchemaIdx(FILE *fout, const char *tablename,
 			  TableInfo *tblinfo, int numTables)
 {
 	int			numIndices;
