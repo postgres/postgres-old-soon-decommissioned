@@ -221,8 +221,10 @@ the problem with
 described below.
 .SH "EXAMPLES"
 .nf
+
 # start postmaster using default values
-postmaster -S
+nohup postmaster >logfile 2>&1 &
+
 .fi
 This command will start up 
 .IR "postmaster"
@@ -232,8 +234,10 @@ to find an executable file called \*(lqpostgres\*(rq.  This is the
 simplest and most common way to start the
 .IR "postmaster" .
 .nf
+
 # start with specific port and executable name
-postmaster -p -b /usr/postgres/bin/postgres &
+nohup postmaster -p -b /usr/postgres/bin/postgres &
+
 .fi
 This command will start up a 
 .IR "postmaster"
