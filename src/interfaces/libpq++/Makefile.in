@@ -34,7 +34,7 @@ CXXFLAGS+=   -I$(SRCDIR)/backend \
              -I$(SRCHEADERDIR) \
              -I$(LIBPQDIR)
 
-#CXXFLAGS+= -DDEBUG
+#CXXFLAGS+= -DDEBUGFILE
 
 ifdef KRBVERS
 CXXFLAGS+= $(KRBFLAGS)
