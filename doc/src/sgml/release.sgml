@@ -1375,7 +1375,7 @@ $Header$
     </listitem>
 
     <listitem>
-     <para>Fix <literal>date_trunc('quarter', ...)</literal> (B?jthe Zolt?n)</para>
+     <para>Fix <literal>date_trunc('quarter', ...)</literal> (Böjthe Zoltán)</para>
      <para>
       Prior releases returned an incorrect value for this function call.
      </para>
@@ -1844,8 +1844,8 @@ $Header$
     <listitem><para>Improve pgstattuple (Rod)</para></listitem>
     <listitem><para>Fix bug in <function>metaphone()</function> in fuzzystrmatch</para></listitem>
     <listitem><para>Improve adddepend (Rod)</para></listitem>
-    <listitem><para>Update spi/timetravel (B?jthe Zolt?n)</para></listitem>
-    <listitem><para>Fix dbase <option>-s</> option and improve non-ASCII handling (Thomas Behr,M?rcio Smiderle)</para></listitem>
+    <listitem><para>Update spi/timetravel (Böjthe Zoltán)</para></listitem>
+    <listitem><para>Fix dbase <option>-s</> option and improve non-ASCII handling (Thomas Behr, Márcio Smiderle)</para></listitem>
     <listitem><para>Remove array module because features now included by default (Joe)</para></listitem>
    </itemizedlist>
   </sect3>
