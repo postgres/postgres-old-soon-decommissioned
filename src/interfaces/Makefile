@@ -14,14 +14,10 @@ include $(top_builddir)/src/Makefile.global
 
 DIRS := libpq ecpg 
 
-ALLDIRS := $(DIRS) libpgtcl perl5 python jdbc
+ALLDIRS := $(DIRS) libpgtcl python jdbc
 
 ifeq ($(with_tcl), yes)
 DIRS += libpgtcl
-endif
-
-ifeq ($(with_perl), yes)
-DIRS += perl5
 endif
 
 ifeq ($(with_python), yes)
