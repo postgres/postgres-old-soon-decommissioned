@@ -121,7 +121,21 @@ struct pg_result
 												 * last query */
 	int			binary;			/* binary tuple values if binary == 1,
 								 * otherwise ASCII */
-	PGconn	   *conn;			/* connection we did the query on, if any */
+	/*
+	 * The conn link in PGresult is no longer used by any libpq code.
+	 * It should be removed entirely, because it could be a dangling link
+	 * (the application could keep the PGresult around longer than it keeps
+	 * the PGconn!)  But there may be apps out there that depend on it,
+	 * so we will leave it here at least for a release or so.
+	 */
+	PGconn	   *xconn;			/* connection we did the query on, if any */
+
+	/* Callback procedure for notice/error message processing
+	 * (copied from originating PGconn).
+	 */
+	PQnoticeProcessor noticeHook;
+	void	   *noticeArg;
+
 	char	   *errMsg;			/* error message, or NULL if no error */
 
 	/* All NULL attributes in the query result point to this null string */
