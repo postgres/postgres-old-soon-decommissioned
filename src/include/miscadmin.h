@@ -141,10 +141,8 @@ extern DLLIMPORT Oid MyDatabaseId;
  * DateStyle specifies preference for date formatting for output.
  * EuroDates if client prefers dates interpreted and written w/European conventions.
  *
- * HasCTZSet if client timezone is specified by client.
- * CDayLight is the apparent daylight savings time status.
- * CTimeZone is the timezone offset in seconds.
- * CTZName is the timezone label.
+ * HasCTZSet is true if user has set timezone as a numeric offset from UTC.
+ * If so, CTimeZone is the timezone offset in seconds.
  */
 
 #define MAXTZLEN		10		/* max TZ name len, not counting tr. null */
@@ -157,9 +155,7 @@ extern DLLIMPORT Oid MyDatabaseId;
 extern int	DateStyle;
 extern bool EuroDates;
 extern bool HasCTZSet;
-extern bool CDayLight;
 extern int	CTimeZone;
-extern char CTZName[];
 
 extern bool enableFsync;
 extern bool allowSystemTableMods;

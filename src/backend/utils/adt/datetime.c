@@ -1604,8 +1604,9 @@ DetermineLocalTimeZone(struct tm * tm)
 			tz = (int) delta2;
 		}
 #else							/* not (HAVE_TM_ZONE || HAVE_INT_TIMEZONE) */
+		/* Assume UTC if no system timezone info available */
 		tm->tm_isdst = 0;
-		tz = CTimeZone;
+		tz = 0;
 #endif
 	}
 	else

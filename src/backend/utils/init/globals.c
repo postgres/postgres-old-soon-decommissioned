@@ -62,9 +62,7 @@ bool		IsUnderPostmaster = false;
 int			DateStyle = USE_ISO_DATES;
 bool		EuroDates = false;
 bool		HasCTZSet = false;
-bool		CDayLight = false;
 int			CTimeZone = 0;
-char		CTZName[MAXTZLEN + 1] = "";
 
 bool		enableFsync = true;
 bool		allowSystemTableMods = false;
