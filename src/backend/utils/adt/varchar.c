@@ -361,7 +361,7 @@ varcharin(PG_FUNCTION_ARGS)
 	memcpy(VARDATA(result), s, len - VARHDRSZ);
 
 #ifdef CYR_RECODE
-	convertstr(VARDATA(result), len, 0);
+	convertstr(VARDATA(result), len - VARHDRSZ, 0);
 #endif
 
 	PG_RETURN_VARCHAR_P(result);
