@@ -370,7 +370,6 @@ verify_peer (PGconn *conn)
 	struct hostent *h = NULL;
 	struct sockaddr addr;
 	struct sockaddr_in *sin;
-	struct sockaddr_in6 *sin6;
 	socklen_t len;
 	char **s;
 	unsigned long l;
