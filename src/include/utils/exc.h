@@ -14,23 +14,14 @@
 #ifndef EXC_H
 #define EXC_H
 
-#include <setjmp.h>
-
 #include "config.h"
+
+#include <setjmp.h>
 
 extern char *ExcFileName;
 extern Index ExcLineNumber;
 
-/*
- * ExcMessage and Exception are now defined in c.h
- */
-#if defined(JMP_BUF)
-typedef jmp_buf ExcContext;
-
-#else
 typedef sigjmp_buf ExcContext;
-
-#endif
 
 typedef Exception *ExcId;
 typedef long ExcDetail;
