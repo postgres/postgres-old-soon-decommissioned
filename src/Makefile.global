@@ -704,10 +704,10 @@ DLSUFFIX= .o
 
 endif
 
-
 #---------------------------------------------------------------------------
+
 ifeq ($(PORTNAME), nextstep)
-LDADD_BE+= -lipc
+LDADD_BE+= -lIPC
 AROPT= rc
 DLSUFFIX= .o
 endif
