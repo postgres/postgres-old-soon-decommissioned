@@ -417,45 +417,68 @@ init(char *pghost, char *pgport, char *dbName)
 		PQclear(res);
 	}
 
-	res = PQexec(con, "copy accounts from stdin");
-	if (PQresultStatus(res) != PGRES_COPY_IN)
-	{
-		fprintf(stderr, "%s", PQerrorMessage(con));
-		exit(1);
-	}
-	PQclear(res);
-
-	fprintf(stderr, "creating tables...\n");
-	for (i = 0; i < naccounts * tps; i++)
-	{
-		int			j = i + 1;
-
-		sprintf(sql, "%d\t%d\t%d\t\n", i + 1, (i + 1) / naccounts, 0);
-		if (PQputline(con, sql))
-		{
-			fprintf(stderr, "PQputline failed\n");
-			exit(1);
-		}
-		if (j % 10000 == 0)
-			fprintf(stderr, "%d tuples done.\n", j);
-	}
-	if (PQputline(con, "\\.\n"))
-	{
-		fprintf(stderr, "very last PQputline failed\n");
-		exit(1);
-	}
-
-	if (PQendcopy(con))
-	{
-		fprintf(stderr, "PQendcopy failed\n");
-		exit(1);
-	}
-
 	res = PQexec(con, "end");
 	if (PQresultStatus(res) != PGRES_COMMAND_OK)
 	{
 		fprintf(stderr, "%s", PQerrorMessage(con));
 		exit(1);
+	}
+
+
+	/*
+	 * occupy accounts table with some data
+	 */
+	fprintf(stderr, "creating tables...\n");
+	for (i = 0; i < naccounts * tps; i++)
+	{
+		int			j = i + 1;
+
+		if (j % 10000 == 1)
+		{
+			res = PQexec(con, "copy accounts from stdin");
+			if (PQresultStatus(res) != PGRES_COPY_IN)
+			{
+				fprintf(stderr, "%s", PQerrorMessage(con));
+				exit(1);
+			}
+			PQclear(res);
+		}
+
+		sprintf(sql, "%d\t%d\t%d\t\n", j, j / naccounts, 0);
+		if (PQputline(con, sql))
+		{
+			fprintf(stderr, "PQputline failed\n");
+			exit(1);
+		}
+
+		if (j % 10000 == 0)
+		{
+			/*
+			 * every 10000 tuples, we commit the copy command.
+			 * this should avoid generating too much WAL logs
+			 */
+			fprintf(stderr, "%d tuples done.\n", j);
+			if (PQputline(con, "\\.\n"))
+			{
+			    fprintf(stderr, "very last PQputline failed\n");
+			    exit(1);
+			}
+
+			if (PQendcopy(con))
+			{
+			    fprintf(stderr, "PQendcopy failed\n");
+			    exit(1);
+			}
+			/*
+			 * do a checkpoint to purge the old WAL logs
+			 */
+			res = PQexec(con, "checkpoint");
+			if (PQresultStatus(res) != PGRES_COMMAND_OK)
+			{
+			    fprintf(stderr, "%s", PQerrorMessage(con));
+			    exit(1);
+			}
+		}
 	}
 
 	/* vacuum */
