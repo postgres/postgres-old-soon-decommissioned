@@ -66,6 +66,12 @@ SET <replaceable class="parameter">variable</replaceable> TO DEFAULT
    switches, or per-database or per-user default settings.  See the
    <citetitle>Administrator's Guide</citetitle> for details.
   </para>
+
+  <para>
+   See the <command>SHOW</> manual page for details on the transaction
+   behavior of <command>RESET</>.
+  </para>
+
  </refsect1>
 
  <refsect1>

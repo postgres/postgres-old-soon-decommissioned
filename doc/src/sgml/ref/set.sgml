@@ -109,6 +109,12 @@ SET [ SESSION | LOCAL ] TIME ZONE { <replaceable class="PARAMETER">timezone</rep
   </para>
 
   <para>
+   With <literal>autocommit</> set to <literal>off</>, <command>SET</>
+   does not start a new transaction block. See the
+   <literal>autocommit</> section of the documentation for details.
+  </para>
+
+  <para>
    Here are additional details about a few of the parameters that can be set:
 
    <variablelist>
