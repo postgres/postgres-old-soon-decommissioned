@@ -77,7 +77,6 @@
 <!entity arch-dev   SYSTEM "arch-dev.sgml">
 <!entity bki        SYSTEM "bki.sgml">
 <!entity catalogs   SYSTEM "catalogs.sgml">
-<!entity compiler   SYSTEM "compiler.sgml">
 <!entity geqo       SYSTEM "geqo.sgml">
 <!entity gist       SYSTEM "gist.sgml">
 <!entity indexcost  SYSTEM "indexcost.sgml">
