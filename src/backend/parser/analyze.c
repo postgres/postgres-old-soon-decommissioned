@@ -1140,7 +1140,7 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 				int found=0;
 				List *cols;
 				List *fkattrs;
-				Ident *fkattr;
+				Ident *fkattr = NULL;
 				ColumnDef *col;
 				foreach(fkattrs, fkconstraint->fk_attrs) {
 					found=0;
