@@ -57,6 +57,8 @@ extern bool	    IsPostmaster;
 
 extern short	    DebugLvl;
 
+extern int          EuroDates;
+
 extern Oid	    LastOidProcessed;	/* for query rewrite */
 
 #define MAX_PARSE_BUFFER 8192

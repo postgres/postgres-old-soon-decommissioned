@@ -29,6 +29,9 @@ backend_pathname]
 [\c
 .BR "-n" \c
 ]
+[\c
+.BR "-e" \c
+]
 .br
 [\c
 .BR "-o"
@@ -169,6 +172,23 @@ does not reinitialize shared data structures.  A knowledgable system
 programmer can then use the
 .IR shmemdoc
 program to examine shared memory and semaphore state.
+.TP
+.BR "-e"
+The
+.IR "-e"
+option controls how dates are input to and output from the database.
+.IP
+If the
+.IR "-e"
+option is supplied, then all dates passed to and from the frontend
+processes will be assumed to be in
+.IR "European"
+format ie.
+.IR "DD-MM-YYYY"
+otherwise dates are input and output in
+.IR "American"
+format ie.
+.IR "MM-DD-YYYY"
 .TP
 .BR "-o" " backend_options"
 The 

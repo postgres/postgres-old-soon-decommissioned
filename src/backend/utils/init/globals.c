@@ -65,6 +65,8 @@ bool		IsPostmaster = false;
 
 short		DebugLvl = 0;
 
+int             EuroDates = 0;
+
 char *IndexedCatalogNames[] = {
     AttributeRelationName,
     ProcedureRelationName,
