@@ -17,7 +17,7 @@ extern char *optarg;
 #include "extern.h"
 
 int			ret_value = 0,
-			autocommit = false;
+			autocommit = false,
 			auto_create_c = false;
 struct _include_path *include_paths = NULL;
 struct cursor *cur = NULL;
