@@ -587,6 +587,8 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 			/* strip off quotes, keep case */
 			seqrel = pstrdup(seqrel+1);
 			seqrel[strlen(seqrel)-1] = '\0';
+			pfree(DatumGetPointer(seq->constvalue));
+			seq->constvalue = (Datum)textin(seqrel);
 		}
 		else
 		{
