@@ -26,9 +26,11 @@ HEADERS+= dlfcn.h machine.h port-protos.h
 
 SUBSRCS+= dlfcn.c 
 
+MKLDEXPORT=$(POSTGRESDIR)/src/backend/port/aix/mkldexport.sh
+
 ${PROG}.exp: ${PROG}.noexp
 	mv -f $(objdir)/${PROG}.noexp $(objdir)/${PROG}
-	$(CURDIR)/port/aix/mkldexport.sh $(objdir)/${PROG} ${BINDIR} > $(objdir)/${PROG}.exp
+	$(MKLDEXPORT) $(objdir)/${PROG} ${BINDIR} > $(objdir)/${PROG}.exp
 	mv -f $(objdir)/${PROG} $(objdir)/${PROG}.noexp
 
 ${PROG}.noexp: ${OBJS}
