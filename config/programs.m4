@@ -38,7 +38,7 @@ else
       fi
     done
   done
-  rm -f conftest.l
+  rm -f conftest.l lex.yy.c
   : ${pgac_cv_path_flex=no}
 fi
 ])[]dnl AC_CACHE_CHECK
