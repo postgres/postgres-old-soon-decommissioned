@@ -200,15 +200,15 @@ TransactionIdDidCommit(TransactionId transactionId)
 
 	/*
 	 * If it's marked subcommitted, we have to check the parent
-	 * recursively. However, if it's older than RecentXmin, we can't look
-	 * at pg_subtrans; instead assume that the parent crashed without
+	 * recursively. However, if it's older than TransactionXmin, we can't
+	 * look at pg_subtrans; instead assume that the parent crashed without
 	 * cleaning up its children.
 	 */
 	if (xidstatus == TRANSACTION_STATUS_SUB_COMMITTED)
 	{
 		TransactionId parentXid;
 
-		if (TransactionIdPrecedes(transactionId, RecentXmin))
+		if (TransactionIdPrecedes(transactionId, TransactionXmin))
 			return false;
 		parentXid = SubTransGetParent(transactionId);
 		Assert(TransactionIdIsValid(parentXid));
@@ -249,15 +249,15 @@ TransactionIdDidAbort(TransactionId transactionId)
 
 	/*
 	 * If it's marked subcommitted, we have to check the parent
-	 * recursively. However, if it's older than RecentXmin, we can't look
-	 * at pg_subtrans; instead assume that the parent crashed without
+	 * recursively. However, if it's older than TransactionXmin, we can't
+	 * look at pg_subtrans; instead assume that the parent crashed without
 	 * cleaning up its children.
 	 */
 	if (xidstatus == TRANSACTION_STATUS_SUB_COMMITTED)
 	{
 		TransactionId parentXid;
 
-		if (TransactionIdPrecedes(transactionId, RecentXmin))
+		if (TransactionIdPrecedes(transactionId, TransactionXmin))
 			return true;
 		parentXid = SubTransGetParent(transactionId);
 		Assert(TransactionIdIsValid(parentXid));

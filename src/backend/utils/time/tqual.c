@@ -48,6 +48,7 @@ Snapshot	LatestSnapshot = NULL;
 Snapshot	ActiveSnapshot = NULL;
 
 /* These are updated by GetSnapshotData: */
+TransactionId TransactionXmin = InvalidTransactionId;
 TransactionId RecentXmin = InvalidTransactionId;
 TransactionId RecentGlobalXmin = InvalidTransactionId;
 
