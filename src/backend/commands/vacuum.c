@@ -1875,12 +1875,11 @@ vc_updstats(Oid relid, int num_pages, int num_tuples, bool hasindex, VRelStats *
 		heap_close(sd);
 	}
 
-	/* XXX -- after write, should invalidate relcache in other backends */
-	WriteNoReleaseBuffer(ItemPointerGetBlockNumber(&rtup->t_ctid));
-
 	RelationInvalidateHeapTuple(rd, rtup);
 
-	ReleaseBuffer(buffer);
+	/* XXX -- after write, should invalidate relcache in other backends */
+	WriteBuffer(ItemPointerGetBlockNumber(&rtup->t_ctid));
+
 	heap_close(rd);
 }
 
