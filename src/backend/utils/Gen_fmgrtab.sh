@@ -200,7 +200,7 @@ cat > $TABCFILE <<FuNkYfMgRtAbStUfF
 #ifdef WIN32
 # include <limits.h>
 #else
-# if defined(USE_LIMITS_H)
+# ifdef HAVE_LIMITS_H
 #  include <limits.h>
 #  define MAXINT	INT_MAX
 # else

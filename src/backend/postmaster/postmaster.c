@@ -53,12 +53,12 @@
 #include <sys/stat.h>           /* for umask */
 #include <sys/time.h>
 #include <sys/socket.h>
-#if defined(USE_LIMITS_H)
+#ifdef HAVE_LIMITS_H
 # include <limits.h>
 # define MAXINT         INT_MAX
 #else
 # include <values.h>
-#endif /* !USE_LIMITS_H */
+#endif 
 #include <sys/wait.h>
 
 #include <errno.h>
