@@ -396,7 +396,7 @@ DefineDomain(CreateDomainStmt *stmt)
 	typeTup = typenameType(stmt->typename);
 
 	baseType = (Form_pg_type) GETSTRUCT(typeTup);
-	basetypeoid = typeTup->t_data->t_oid;
+	basetypeoid = HeapTupleGetOid(typeTup);
 
 	/*
 	 * What we really don't want is domains of domains.  This could cause all sorts

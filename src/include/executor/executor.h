@@ -118,7 +118,7 @@ extern void ExecInitScanTupleSlot(EState *estate,
 extern TupleTableSlot *ExecInitExtraTupleSlot(EState *estate);
 extern TupleTableSlot *ExecInitNullTupleSlot(EState *estate,
 					  TupleDesc tupType);
-extern TupleDesc ExecTypeFromTL(List *targetList);
+extern TupleDesc ExecTypeFromTL(List *targetList, hasoid_t withoid);
 extern void SetChangedParamList(Plan *node, List *newchg);
 
 /*

@@ -283,7 +283,7 @@ typeTypeId(Type tp)
 {
 	if (tp == NULL)
 		elog(ERROR, "typeTypeId() called with NULL type struct");
-	return tp->t_data->t_oid;
+	return HeapTupleGetOid(tp);
 }
 
 /* given type (as type struct), return the length of type */

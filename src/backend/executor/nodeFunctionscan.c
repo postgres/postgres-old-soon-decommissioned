@@ -234,7 +234,7 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate, Plan *parent)
 		 */
 		char	   *attname = strVal(lfirst(rte->eref->colnames));
 
-		tupdesc = CreateTemplateTupleDesc(1);
+		tupdesc = CreateTemplateTupleDesc(1, WITHOUTOID);
 		TupleDescInitEntry(tupdesc,
 						   (AttrNumber) 1,
 						   attname,

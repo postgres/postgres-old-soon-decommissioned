@@ -592,7 +592,8 @@ ExecuteGrantStmt_Namespace(GrantStmt *stmt)
 			elog(ERROR, "namespace \"%s\" not found", nspname);
 		pg_namespace_tuple = (Form_pg_namespace) GETSTRUCT(tuple);
 
-		if (!pg_namespace_ownercheck(tuple->t_data->t_oid, GetUserId()))
+		AssertTupleDescHasOid(relation->rd_att);
+		if (!pg_namespace_ownercheck(HeapTupleGetOid(tuple), GetUserId()))
 			aclcheck_error(ACLCHECK_NOT_OWNER, nspname);
 
 		/*

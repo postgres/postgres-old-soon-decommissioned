@@ -220,7 +220,7 @@ GetRawDatabaseInfo(const char *name, Oid *db_id, char *path)
 			if (strcmp(name, NameStr(tup_db->datname)) == 0)
 			{
 				/* Found it; extract the OID and the database path. */
-				*db_id = tup.t_data->t_oid;
+				*db_id = HeapTupleGetOid(&tup);
 				pathlen = VARSIZE(&(tup_db->datpath)) - VARHDRSZ;
 				if (pathlen < 0)
 					pathlen = 0;				/* pure paranoia */

@@ -2091,7 +2091,7 @@ PLy_spi_prepare(PyObject * self, PyObject * args)
 				Py_DECREF(optr);
 				optr = NULL;	/* this is important */
 
-				plan->types[i] = typeTup->t_data->t_oid;
+				plan->types[i] = HeapTupleGetOid(typeTup);
 				typeStruct = (Form_pg_type) GETSTRUCT(typeTup);
 				if (typeStruct->typrelid == InvalidOid)
 					PLy_output_datum_func(&plan->args[i], typeStruct);

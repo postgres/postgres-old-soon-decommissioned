@@ -170,7 +170,7 @@ ExecInitJunkFilter(List *targetList, TupleDesc tupType,
 	 * Now calculate the tuple type for the cleaned tuple (we were already
 	 * given the type for the original targetlist).
 	 */
-	cleanTupType = ExecTypeFromTL(cleanTargetList);
+	cleanTupType = ExecTypeFromTL(cleanTargetList, tupType->tdhasoid);
 
 	len = ExecTargetListLength(targetList);
 	cleanLength = ExecTargetListLength(cleanTargetList);
@@ -383,8 +383,8 @@ ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot)
 	 * information for the new "clean" tuple.
 	 *
 	 * Note: we use memory on the stack to optimize things when we are
-	 * dealing with a small number of tuples. for large tuples we just use
-	 * palloc.
+	 * dealing with a small number of attributes. for large tuples we
+	 * just use palloc.
 	 */
 	if (cleanLength > 64)
 	{

@@ -1071,7 +1071,7 @@ CommuteClause(Expr *clause)
 
 	commuTup = (Form_pg_operator) GETSTRUCT(optup);
 
-	commu = makeOper(optup->t_data->t_oid,
+	commu = makeOper(HeapTupleGetOid(optup),
 					 commuTup->oprcode,
 					 commuTup->oprresult,
 					 ((Oper *) clause->oper)->opretset);

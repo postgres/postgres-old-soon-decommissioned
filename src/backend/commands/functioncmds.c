@@ -425,7 +425,7 @@ CreateFunction(CreateFunctionStmt *stmt)
 	if (!HeapTupleIsValid(languageTuple))
 		elog(ERROR, "language \"%s\" does not exist", languageName);
 
-	languageOid = languageTuple->t_data->t_oid;
+	languageOid = HeapTupleGetOid(languageTuple);
 	languageStruct = (Form_pg_language) GETSTRUCT(languageTuple);
 
 	if (languageStruct->lanpltrusted)

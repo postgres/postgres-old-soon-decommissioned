@@ -726,6 +726,8 @@ toast_insert_or_update(Relation rel, HeapTuple newtup, HeapTuple oldtup)
 		new_len = offsetof(HeapTupleHeaderData, t_bits);
 		if (has_nulls)
 			new_len += BITMAPLEN(numAttrs);
+		if (rel->rd_rel->relhasoids)
+			new_len += sizeof(Oid);
 		new_len = MAXALIGN(new_len);
 		Assert(new_len == olddata->t_hoff);
 		new_len += ComputeDataSize(tupleDesc, toast_values, toast_nulls);

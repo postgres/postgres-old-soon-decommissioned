@@ -341,7 +341,8 @@ createdb(const CreatedbStmt *stmt)
 
 	tuple = heap_formtuple(pg_database_dsc, new_record, new_record_nulls);
 
-	tuple->t_data->t_oid = dboid;		/* override heap_insert's OID
+	AssertTupleDescHasOid(pg_database_dsc);
+	HeapTupleSetOid(tuple, dboid);		/* override heap_insert's OID
 										 * selection */
 
 	simple_heap_insert(pg_database_rel, tuple);
@@ -616,7 +617,10 @@ get_db_info(const char *name, Oid *dbIdP, int4 *ownerIdP,
 
 		/* oid of the database */
 		if (dbIdP)
-			*dbIdP = tuple->t_data->t_oid;
+		{
+			AssertTupleDescHasOid(relation->rd_att);
+			*dbIdP = HeapTupleGetOid(tuple);
+		}
 		/* sysid of the owner */
 		if (ownerIdP)
 			*ownerIdP = dbform->datdba;

@@ -628,7 +628,8 @@ pgstat_vacuum_tabstat(void)
 			dbidlist = (Oid *) repalloc((char *) dbidlist,
 										sizeof(Oid) * dbidalloc);
 		}
-		dbidlist[dbidused++] = dbtup->t_data->t_oid;
+		AssertTupleDescHasOid(dbrel->rd_att);
+		dbidlist[dbidused++] = HeapTupleGetOid(dbtup);
 	}
 	heap_endscan(dbscan);
 	heap_close(dbrel, AccessShareLock);

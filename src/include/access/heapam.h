@@ -200,6 +200,6 @@ extern HeapTuple heap_formtuple(TupleDesc tupleDescriptor,
 extern HeapTuple heap_modifytuple(HeapTuple tuple,
 		Relation relation, Datum *replValue, char *replNull, char *repl);
 extern void heap_freetuple(HeapTuple tuple);
-extern HeapTuple heap_addheader(int natts, Size structlen, void *structure);
+extern HeapTuple heap_addheader(int natts, bool withoid, Size structlen, void *structure);
 
 #endif   /* HEAPAM_H */

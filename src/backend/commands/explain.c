@@ -855,7 +855,7 @@ begin_text_output(CommandDest dest, char *title)
 	tstate = (TextOutputState *) palloc(sizeof(TextOutputState));
 
 	/* need a tuple descriptor representing a single TEXT column */
-	tupdesc = CreateTemplateTupleDesc(1);
+	tupdesc = CreateTemplateTupleDesc(1, WITHOUTOID);
 	TupleDescInitEntry(tupdesc, (AttrNumber) 1, title,
 					   TEXTOID, -1, 0, false);
 

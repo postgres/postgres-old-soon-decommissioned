@@ -150,7 +150,7 @@ any_ordering_op(Oid argtype)
 Oid
 oprid(Operator op)
 {
-	return op->t_data->t_oid;
+	return HeapTupleGetOid(op);
 }
 
 /* given operator tuple, return the underlying function's OID */

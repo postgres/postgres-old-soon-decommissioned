@@ -179,13 +179,13 @@ Boot_CreateStmt:
 						}
 
 						tupdesc = CreateTupleDesc(numattr, attrtypes);
+						tupdesc->tdhasoid = BoolToHasOid(! ($4));
 						boot_reldesc = heap_create(LexIDStr($5),
 												   PG_CATALOG_NAMESPACE,
 												   tupdesc,
 												   $3,
 												   true,
 												   true);
-						boot_reldesc->rd_rel->relhasoids = ! ($4);
 						elog(DEBUG3, "bootstrap relation created");
 					}
 					else

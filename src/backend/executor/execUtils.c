@@ -290,9 +290,23 @@ ExecAssignResultTypeFromOuterPlan(Plan *node, CommonState *commonstate)
 void
 ExecAssignResultTypeFromTL(Plan *node, CommonState *commonstate)
 {
+	ResultRelInfo *ri;
+	Relation	rel;
+	hasoid_t	withoid;
 	TupleDesc	tupDesc;
 
-	tupDesc = ExecTypeFromTL(node->targetlist);
+	ri = node->state->es_result_relation_info;
+	if (ri != NULL)
+		rel = ri->ri_RelationDesc;
+	else
+		rel = node->state->es_into_relation_descriptor;
+
+	if (rel != NULL)
+		withoid = BoolToHasOid(rel->rd_rel->relhasoids);
+	else
+		withoid = WITHOUTOID;
+		
+	tupDesc = ExecTypeFromTL(node->targetlist, withoid);
 	ExecAssignResultType(commonstate, tupDesc, true);
 }
 

@@ -597,7 +597,7 @@ GetSysCacheOid(int cacheId,
 	tuple = SearchSysCache(cacheId, key1, key2, key3, key4);
 	if (!HeapTupleIsValid(tuple))
 		return InvalidOid;
-	result = tuple->t_data->t_oid;
+	result = HeapTupleGetOid(tuple);
 	ReleaseSysCache(tuple);
 	return result;
 }

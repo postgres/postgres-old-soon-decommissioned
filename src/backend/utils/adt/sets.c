@@ -119,7 +119,8 @@ SetDefine(char *querystr, Oid elemType)
 
 		simple_heap_update(procrel, &newtup->t_self, newtup);
 
-		setoid = newtup->t_data->t_oid;
+		AssertTupleDescHasOid(procrel->rd_att);
+		setoid = HeapTupleGetOid(newtup);
 
 		if (RelationGetForm(procrel)->relhasindex)
 		{

@@ -1770,7 +1770,10 @@ ExecTargetList(List *targetlist,
 	 * natts = 0 to deal with it.
 	 */
 	if (targettype == NULL)
+	{
 		targettype = &NullTupleDesc;
+		targettype->tdhasoid = WITHOUTOID;
+	}
 
 	/*
 	 * allocate an array of char's to hold the "null" information only if

@@ -717,6 +717,10 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 				}
 
 				/*
+				 * new "INTO" table is created WITH OIDS
+				 */
+				tupType->tdhasoid = WITHOID;
+				/*
 				 * have to copy tupType to get rid of constraints
 				 */
 				tupdesc = CreateTupleDescCopy(tupType);
