@@ -139,7 +139,6 @@ prune_rel_path(RelOptInfo * rel, Path *unorderedpath)
 	/* don't prune if not pruneable  -- JMH, 11/23/92 */
 	if (unorderedpath != cheapest && rel->pruneable)
 	{
-
 		rel->unorderedpath = (Path *) NULL;
 		rel->pathlist = lremove(unorderedpath, rel->pathlist);
 	}
