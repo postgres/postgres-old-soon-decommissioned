@@ -685,8 +685,15 @@ GetUserNameFromId(AclId userid)
 static void
 UnlinkLockFile(int status, Datum filename)
 {
-	unlink((char *) DatumGetPointer(filename));
-	/* Should we complain if the unlink fails? */
+  char *fname = (char *)DatumGetPointer(filename);
+  if( fname != NULL )
+    {
+      if( unlink(fname) != 0 )
+	{
+	  /* Should we complain if the unlink fails? */
+	}
+      free(fname);
+    }
 }
 
 /*
