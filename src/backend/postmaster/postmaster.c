@@ -244,7 +244,7 @@ PostmasterMain(int argc, char *argv[])
     DataDir = getenv("PGDATA");  /* default value */
     
     opterr = 0;
-    while ((opt = getopt(argc, argv, "a:B:b:D:demM:no:p:Ss")) != EOF) {
+    while ((opt = getopt(argc, argv, "a:B:b:D:dmM:no:p:Ss")) != EOF) {
         switch (opt) {
         case 'a': 
             /* Set the authentication system. */
