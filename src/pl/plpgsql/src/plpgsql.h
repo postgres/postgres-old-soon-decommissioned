@@ -324,7 +324,8 @@ typedef struct
 
 typedef struct PLpgSQL_condition
 {								/* One EXCEPTION condition name */
-	char	   *condname;
+	int			sqlerrstate;	/* SQLSTATE code */
+	char	   *condname;		/* condition name (for debugging) */
 	struct PLpgSQL_condition *next;
 }	PLpgSQL_condition;
 
@@ -682,6 +683,7 @@ extern PLpgSQL_type *plpgsql_build_datatype(Oid typeOid, int32 typmod);
 extern PLpgSQL_variable *plpgsql_build_variable(char *refname, int lineno,
 												PLpgSQL_type *dtype,
 												bool add2namespace);
+extern PLpgSQL_condition *plpgsql_parse_err_condition(char *condname);
 extern void plpgsql_adddatum(PLpgSQL_datum *new);
 extern int	plpgsql_add_initdatums(int **varnos);
 extern void plpgsql_HashTableInit(void);

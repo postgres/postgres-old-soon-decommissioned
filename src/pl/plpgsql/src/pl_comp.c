@@ -94,6 +94,20 @@ typedef struct plpgsql_hashent
 
 #define FUNCS_PER_USER		128 /* initial table size */
 
+/* ----------
+ * Lookup table for EXCEPTION condition names
+ * ----------
+ */
+typedef struct {
+	const char *label;
+	int			sqlerrstate;
+} ExceptionLabelMap;
+
+static const ExceptionLabelMap exception_label_map[] = {
+#include "plerrcodes.h"
+	{ NULL, 0 }
+};
+
 
 /* ----------
  * static prototypes
@@ -1710,6 +1724,59 @@ build_datatype(HeapTuple typeTup, int32 typmod)
 	return typ;
 }
 
+/*
+ * plpgsql_parse_err_condition
+ *		Generate PLpgSQL_condition entry(s) for an exception condition name
+ *
+ * This has to be able to return a list because there are some duplicate
+ * names in the table of error code names.
+ */
+PLpgSQL_condition *
+plpgsql_parse_err_condition(char *condname)
+{
+	int			i;
+	PLpgSQL_condition	*new;
+	PLpgSQL_condition	*prev;
+
+	/*
+	 * XXX Eventually we will want to look for user-defined exception names
+	 * here.
+	 */
+
+	/*
+	 * OTHERS is represented as code 0 (which would map to '00000', but
+	 * we have no need to represent that as an exception condition).
+	 */
+	if (strcmp(condname, "others") == 0)
+	{
+		new = malloc(sizeof(PLpgSQL_condition));
+		new->sqlerrstate = 0;
+		new->condname = condname;
+		new->next = NULL;
+		return new;
+	}
+
+	prev = NULL;
+	for (i = 0; exception_label_map[i].label != NULL; i++)
+	{
+		if (strcmp(condname, exception_label_map[i].label) == 0)
+		{
+			new = malloc(sizeof(PLpgSQL_condition));
+			new->sqlerrstate = exception_label_map[i].sqlerrstate;
+			new->condname = condname;
+			new->next = prev;
+			prev = new;
+		}
+	}
+
+	if (!prev)
+		ereport(ERROR,
+				(errcode(ERRCODE_UNDEFINED_OBJECT),
+				 errmsg("unrecognized exception condition \"%s\"",
+						condname)));
+
+	return prev;
+}
 
 /* ----------
  * plpgsql_adddatum			Add a variable, record or row
