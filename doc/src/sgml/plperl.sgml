@@ -101,7 +101,7 @@ SELECT name, totalcomp(basesalary, bonus) from employee
     <programlisting>
 CREATE FUNCTION empcomp(employee) returns int4
     AS 'my $emp = shift;
-        return $emp->{'basesalary'} + $emp->{'bonus'};'
+        return $emp->{''basesalary''} + $emp->{''bonus''};'
     LANGUAGE 'plperl';
     </programlisting>
     A tuple is passed as a reference to hash. The keys are the names of
