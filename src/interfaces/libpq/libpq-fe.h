@@ -182,7 +182,6 @@ typedef void (*PQnoticeProcessor) (void * arg, const char * message);
 	extern ConnStatusType PQstatus(PGconn *conn);
 	extern char *PQerrorMessage(PGconn *conn);
 	extern int	PQsocket(PGconn *conn);
-	extern int	PQsocket(PGconn *conn);
 	extern int	PQbackendPID(PGconn *conn);
 
 	/* Enable/disable tracing */
