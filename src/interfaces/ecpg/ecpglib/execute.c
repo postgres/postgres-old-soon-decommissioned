@@ -450,7 +450,7 @@ ECPGstore_result(const PGresult *results, int act_field,
 
 			if (!ECPGget_data(results, act_tuple, act_field, stmt->lineno,
 						 var->type, var->ind_type, current_data_location,
-							  var->ind_value, len, 0, 0, isarray, stmt->compat, stmt->force_indicator))
+							  var->ind_value, len, 0, var->ind_offset, isarray, stmt->compat, stmt->force_indicator))
 				status = false;
 			else
 			{
