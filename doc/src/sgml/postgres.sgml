@@ -237,8 +237,7 @@ $PostgreSQL$
   &geqo;
   &indexcost;
   &gist;
-  &filelayout;
-  &page;
+  &storage;
   &bki;
 
  </part>
