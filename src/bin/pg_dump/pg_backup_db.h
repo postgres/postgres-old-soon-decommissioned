@@ -1,6 +1,8 @@
 /*
  *	Definitions for pg_backup_db.c
  *
+ *	IDENTIFICATION
+ *		$Header$
  */
 
 #define BLOB_XREF_TABLE "dump_blob_xref" /* MUST be lower case */

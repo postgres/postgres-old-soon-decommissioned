@@ -17,6 +17,7 @@
  *
  *
  * IDENTIFICATION
+ *		$Header$
  *
  * Modifications - 09-Jul-2000 - pjw@rhyme.com.au
  *

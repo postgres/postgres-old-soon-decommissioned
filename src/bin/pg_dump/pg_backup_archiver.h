@@ -17,6 +17,7 @@
  *
  *
  * IDENTIFICATION
+ *		$Header$
  *
  * Modifications - 28-Jun-2000 - pjw@rhyme.com.au
  *
@@ -62,7 +63,7 @@ typedef z_stream *z_streamp;
 
 #define K_VERS_MAJOR 1
 #define K_VERS_MINOR 4 
-#define K_VERS_REV 29 
+#define K_VERS_REV 30 
 
 /* Data block types */
 #define BLK_DATA 1
