@@ -3154,6 +3154,13 @@ getRules(int *numRules)
 		ruleinfo[i].dobj.name = strdup(PQgetvalue(res, i, i_rulename));
 		ruletableoid = atooid(PQgetvalue(res, i, i_ruletable));
 		ruleinfo[i].ruletable = findTableByOid(ruletableoid);
+		if (ruleinfo[i].ruletable == NULL)
+		{
+			write_msg(NULL, "failed sanity check, parent table OID %u of pg_rewrite entry OID %u not found\n",
+					  ruletableoid,
+					  ruleinfo[i].dobj.catId.oid);
+			exit_nicely();
+		}
 		ruleinfo[i].dobj.namespace = ruleinfo[i].ruletable->dobj.namespace;
 		ruleinfo[i].ev_type = *(PQgetvalue(res, i, i_ev_type));
 		ruleinfo[i].is_instead = *(PQgetvalue(res, i, i_is_instead)) == 't';
