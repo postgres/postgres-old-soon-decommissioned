@@ -23,9 +23,6 @@
 
 #include <math.h>
 #include <limits.h>
-#ifdef HAVE_VALUES_H
-#include <values.h>
-#endif
 
 #include "optimizer/geqo.h"
 #include "optimizer/pathnode.h"

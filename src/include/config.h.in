@@ -327,9 +327,6 @@
 /* Set to 1 if you have <termios.h> */
 #undef HAVE_TERMIOS_H
 
-/* Set to 1 if  you have <values.h> */
-#undef HAVE_VALUES_H
-
 /* Set to 1 if you have <sys/pstat.h> */
 #undef HAVE_SYS_PSTAT_H
 

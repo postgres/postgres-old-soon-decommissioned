@@ -54,9 +54,6 @@
 #include "postgres.h"
 
 #include <limits.h>
-#ifdef HAVE_VALUES_H
-#include <values.h>
-#endif
 
 /* for finite() on Solaris */
 #ifdef HAVE_IEEEFP_H

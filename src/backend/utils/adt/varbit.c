@@ -21,10 +21,6 @@
 #include <math.h>
 #include <limits.h>
 
-#ifdef HAVE_VALUES_H
-#include <values.h>
-#endif
-
 #include "fmgr.h"
 #include "utils/builtins.h"
 #include "utils/varbit.h"
