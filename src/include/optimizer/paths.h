@@ -18,16 +18,11 @@
 #include "nodes/relation.h"
 
 
-/* default GEQO threshold (default value for geqo_rels) */
-/* If you change this, update backend/utils/misc/postgresql.sample.conf */
-#define DEFAULT_GEQO_RELS 11
-
-
 /*
  * allpaths.c
  */
 extern bool enable_geqo;
-extern int	geqo_rels;
+extern int	geqo_threshold;
 
 extern RelOptInfo *make_one_rel(Query *root);
 extern RelOptInfo *make_fromexpr_rel(Query *root, FromExpr *from);

@@ -20,6 +20,9 @@
 /*
  * prototypes for prepjointree.c
  */
+extern int	from_collapse_limit;
+extern int	join_collapse_limit;
+
 extern Node *pull_up_IN_clauses(Query *parse, Node *node);
 extern Node *pull_up_subqueries(Query *parse, Node *jtnode,
 				   bool below_outer_join);

@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+Explicit JOINs no longer constrain query plan, unless JOIN_COLLAPSE_LIMIT = 1
 Performance of "foo IN (SELECT ...)" queries has been considerably improved
 FETCH 0 now re-fetches cursor's current row, per SQL spec
 Revised executor state representation; plan trees are read-only to executor now

@@ -37,7 +37,7 @@
 #include "optimizer/cost.h"
 #include "optimizer/geqo.h"
 #include "optimizer/paths.h"
-#include "optimizer/planmain.h"
+#include "optimizer/prep.h"
 #include "parser/parse_expr.h"
 #include "storage/fd.h"
 #include "storage/freespace.h"
@@ -539,8 +539,16 @@ static struct config_int
 		10, 1, 1000, NULL, NULL
 	},
 	{
-		{"geqo_threshold", PGC_USERSET}, &geqo_rels,
-		DEFAULT_GEQO_RELS, 2, INT_MAX, NULL, NULL
+		{"from_collapse_limit", PGC_USERSET}, &from_collapse_limit,
+		8, 1, INT_MAX, NULL, NULL
+	},
+	{
+		{"join_collapse_limit", PGC_USERSET}, &join_collapse_limit,
+		8, 1, INT_MAX, NULL, NULL
+	},
+	{
+		{"geqo_threshold", PGC_USERSET}, &geqo_threshold,
+		11, 2, INT_MAX, NULL, NULL
 	},
 	{
 		{"geqo_pool_size", PGC_USERSET}, &Geqo_pool_size,
