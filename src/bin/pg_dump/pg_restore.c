@@ -335,18 +335,12 @@ main(int argc, char **argv)
 		SortTocByID(AH);
 
 	if (opts->rearrange)
+		SortTocByObjectType(AH);
+	else
 	{
-		MoveToStart(AH, "<Init>");
-		MoveToEnd(AH, "TABLE DATA");
-		MoveToEnd(AH, "BLOBS");
-		MoveToEnd(AH, "INDEX");
-		MoveToEnd(AH, "TRIGGER");
-		MoveToEnd(AH, "RULE");
-		MoveToEnd(AH, "SEQUENCE SET");
+		/* Database MUST be at start (see also SortTocByObjectType) */
+		MoveToStart(AH, "DATABASE");
 	}
-
-	/* Database MUST be at start */
-	MoveToStart(AH, "DATABASE");
 
 	if (opts->tocSummary)
 		PrintTOCSummary(AH, opts);
