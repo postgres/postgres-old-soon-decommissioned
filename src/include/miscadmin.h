@@ -208,7 +208,7 @@ extern AclId GetSessionUserId(void);
 extern void SetSessionUserId(AclId userid);
 extern void InitializeSessionUserId(const char *username);
 extern void InitializeSessionUserIdStandalone(void);
-extern void SetSessionAuthorization(AclId userid);
+extern void SetSessionAuthorization(AclId userid, bool is_superuser);
 
 extern void SetDataDir(const char *dir);
 

@@ -812,7 +812,8 @@ is not known.
 Parameters reported as of the current release include
 <literal>server_version</> (cannot change after startup);
 <literal>server_encoding</> (also not presently changeable after start);
-<literal>client_encoding</>, and
+<literal>client_encoding</>,
+<literal>is_superuser</>, and
 <literal>DateStyle</>.
 </para>
 

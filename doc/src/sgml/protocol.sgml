@@ -998,7 +998,8 @@
     <literal>server_version</> (a pseudo-parameter that cannot change after
     startup);
     <literal>server_encoding</> (also not presently changeable after start);
-    <literal>client_encoding</>, and
+    <literal>client_encoding</>,
+    <literal>is_superuser</>, and
     <literal>DateStyle</>.
     This set might change in the future, or even become configurable.
     Accordingly, a frontend should simply ignore ParameterStatus for
