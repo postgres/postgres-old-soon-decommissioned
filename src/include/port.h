@@ -21,6 +21,7 @@
 extern bool is_absolute_path(const char *filename);
 extern char *first_path_separator(const char *filename);
 extern char *last_path_separator(const char *filename);
+extern void canonicalize_path(char *path);
 extern char *get_progname(char *argv0);
 
 /* Portable delay handling */
