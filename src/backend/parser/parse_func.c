@@ -179,7 +179,7 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 				case RTE_RELATION:
 					toid = get_rel_type_id(rte->relid);
 					if (!OidIsValid(toid))
-						elog(ERROR, "cannot find type OID for relation %u",
+						elog(ERROR, "could not find type OID for relation %u",
 							 rte->relid);
 					/* replace RangeVar in the arg list */
 					lfirst(i) = makeVar(vnum,
