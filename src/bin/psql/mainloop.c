@@ -378,7 +378,8 @@ MainLoop(FILE *source)
 				{
 					out_length = strlen(value);
 
-					new = malloc(len + out_length - (1 + in_length) + 1);
+					/* Allow for 'after' character also 2002-05-27 */
+					new = malloc(len + out_length - (1 + in_length) + 1 + 1);
 					if (!new)
 					{
 						psql_error("out of memory\n");
