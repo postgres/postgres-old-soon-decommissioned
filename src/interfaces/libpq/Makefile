@@ -24,7 +24,7 @@ CFLAGS+= $(KRBFLAGS)
 endif
 
 OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-lobj.o \
-         dllist.o pqsignal.o 
+      dllist.o pqsignal.o pqcomprim.o
 
 # Shared library stuff
 shlib := 
@@ -58,7 +58,10 @@ fe-lobj.o: ../backend/fmgr.h
 # We need to compile this with special options for shared libs,
 # so we can't use the object in ../backend
 dllist.c:	../backend/lib/dllist.c
-	-ln ../backend/lib/dllist.c
+	-ln -s ../backend/lib/dllist.c
+
+pqcomprim.c:	    ../backend/libpq/pqcomprim.c
+	-ln -s ../backend/libpq/pqcomprim.c
 
 # The following rules cause dependencies in the backend directory to 
 # get made if they don't exist, but don't cause them to get remade if they

@@ -123,6 +123,11 @@ typedef struct Port {
 extern FILE *Pfout, *Pfin;
 extern int PQAsyncNotifyWaiting;
 
+/* in pqcompriv.c */
+int pqGetShort(int *, FILE *);
+int pqGetLong(int *, FILE *);
+int pqPutShort(int, FILE *);
+int pqPutLong(int, FILE *);
 /*
  * prototypes for functions in pqpacket.c
  */
