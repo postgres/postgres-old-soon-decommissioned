@@ -1237,13 +1237,16 @@ QueryRewrite(Query *parsetree)
 				switch (query->commandType)
 				{
 					case CMD_INSERT:
-						elog(ERROR, "Cannot insert into a view without an appropriate rule");
+						elog(ERROR, "Cannot insert into a view"
+							 "\n\tYou need an unconditional ON INSERT DO INSTEAD rule");
 						break;
 					case CMD_UPDATE:
-						elog(ERROR, "Cannot update a view without an appropriate rule");
+						elog(ERROR, "Cannot update a view"
+							 "\n\tYou need an unconditional ON UPDATE DO INSTEAD rule");
 						break;
 					case CMD_DELETE:
-						elog(ERROR, "Cannot delete from a view without an appropriate rule");
+						elog(ERROR, "Cannot delete from a view"
+							 "\n\tYou need an unconditional ON DELETE DO INSTEAD rule");
 						break;
 					default:
 						elog(ERROR, "QueryRewrite: unexpected commandType %d",
