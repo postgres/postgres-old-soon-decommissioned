@@ -94,6 +94,7 @@ xqdouble		{quote}{quote}
 xqinside		[^\\']*
 xqembedded		"\\'"
 xqliteral		[\\](.|\n)
+xqcat			{quote}{space}*\n{space}*{quote}
 
 xcline			[\/][\*].*[\*][\/]{space}*\n*
 xcstart			[\/][\*]{op_and_self}*
@@ -185,6 +186,8 @@ other			.
 						elog(WARN,"quoted string parse buffer of %d chars exceeded",MAX_PARSE_BUFFER);
 					memcpy(literal+llen, yytext, yyleng+1);
 					llen += yyleng;
+				}
+<xq>{xqcat}		{
 				}
 
 <xm>{space}*	{ /* ignore */ }
