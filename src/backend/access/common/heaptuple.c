@@ -17,35 +17,42 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
-
-#include "storage/block.h"
-#include "storage/off.h"
-#include "storage/itemptr.h"
+#include <stdio.h>
 #include <time.h>
-#include "utils/nabstime.h"
-#include "access/htup.h"
 
-#include "storage/buf.h"
-
-#include "storage/itemid.h"
-#include "storage/item.h"
-#include "storage/bufpage.h"
-
-#include "catalog/pg_attribute.h"
+#include "postgres.h"
 #include "access/attnum.h"
-#include "nodes/pg_list.h"
-#include "access/tupdesc.h"
-#include "storage/fd.h"
+#include "access/tupmacs.h"
 #include "catalog/pg_am.h"
+#include "catalog/pg_attribute.h"
 #include "catalog/pg_class.h"
 #include "nodes/nodes.h"
-#include "rewrite/prs2lock.h"
+#include "nodes/pg_list.h"
+#include "storage/block.h"
+#include "storage/buf.h"
+#include "storage/fd.h"
+#include "storage/ipc.h"
+#include "storage/item.h"
+#include "storage/itemid.h"
+#include "storage/off.h"
+#include "utils/memutils.h"
+#include "utils/nabstime.h"
+#include "utils/palloc.h"
+
 #include "access/skey.h"
+#include "access/tupdesc.h"
+#include "rewrite/prs2lock.h"
+#include "storage/bufpage.h"
+#include "storage/itemptr.h"
+
 #include "access/strat.h"
+
+#include "access/htup.h"
 #include "utils/rel.h"
 
-#include "utils/memutils.h"
+#include "storage/bufmgr.h"
+
+#include "access/transam.h"
 
 #ifndef HAVE_MEMMOVE
 # include "regex/utils.h"
@@ -53,14 +60,6 @@
 # include <string.h>
 #endif
 
-#include "access/tupmacs.h"
-
-#include "utils/palloc.h"
-
-#include <stdio.h>
-#include "storage/ipc.h"
-#include "storage/bufmgr.h"
-#include "access/transam.h"
 
 /* this is so the sparcstation debugger works */
 

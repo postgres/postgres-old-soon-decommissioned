@@ -16,49 +16,46 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
-
-#include "catalog/pg_attribute.h"
-#include "access/attnum.h"
-#include "nodes/pg_list.h"
-#include "access/tupdesc.h"
-
-#include "storage/block.h"
-#include "storage/off.h"
-#include "storage/itemptr.h"
+#include <string.h>
+#include <stdio.h>
 #include <time.h>
-#include "utils/nabstime.h"
-#include "access/htup.h"
 
-#include "storage/fd.h"
+#include "postgres.h"
+#include "access/attnum.h"
 #include "catalog/pg_am.h"
+#include "catalog/pg_attribute.h"
 #include "catalog/pg_class.h"
 #include "nodes/nodes.h"
-#include "rewrite/prs2lock.h"
-#include "access/skey.h"
-#include "access/strat.h"
-#include "utils/rel.h"
-#include "catalog/pg_type.h"
-
-#include "utils/syscache.h"
-
-#include "parser/catalog_utils.h"
-
-#include "nodes/primnodes.h"
-#include "utils/tqual.h"
-#include "nodes/parsenodes.h"
-
+#include "nodes/pg_list.h"
+#include "storage/block.h"
+#include "storage/fd.h"
+#include "storage/off.h"
+#include "utils/geo-decls.h"
+#include "utils/nabstime.h"
 #include "utils/palloc.h"
 
-#include <string.h>
+#include "nodes/primnodes.h"
+#include "access/tupdesc.h"
+#include "rewrite/prs2lock.h"
+#include "storage/itemptr.h"
+#include "access/skey.h"
+
+#include "access/strat.h"
+
+#include "access/htup.h"
+#include "utils/rel.h"
+
+#include "catalog/pg_type.h"
+#include "utils/builtins.h"
+#include "utils/syscache.h"
+#include "utils/tqual.h"
+
+#include "nodes/parsenodes.h"
+#include "parser/catalog_utils.h"
+
 #ifndef HAVE_MEMMOVE
 # include "regex/utils.h"
 #endif
-
-#include "utils/geo-decls.h"
-#include "utils/builtins.h"
-
-#include <stdio.h>
 
 /* ----------------------------------------------------------------
  *	CreateTemplateTupleDesc
