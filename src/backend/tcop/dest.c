@@ -69,9 +69,6 @@ donothingCleanup(DestReceiver *self)
 static DestReceiver donothingDR = {
 	donothingReceive, donothingSetup, donothingCleanup
 };
-static DestReceiver printtup_internalDR = {
-	printtup_internal, donothingSetup, donothingCleanup
-};
 static DestReceiver debugtupDR = {
 	debugtup, donothingSetup, donothingCleanup
 };
@@ -180,11 +177,10 @@ DestToFunction(CommandDest dest)
 	switch (dest)
 	{
 		case Remote:
-		/* printtup wants a dynamically allocated DestReceiver */
-			return printtup_create_DR();
+			return printtup_create_DR(false);
 
 		case RemoteInternal:
-			return &printtup_internalDR;
+			return printtup_create_DR(true);
 
 		case Debug:
 			return &debugtupDR;
