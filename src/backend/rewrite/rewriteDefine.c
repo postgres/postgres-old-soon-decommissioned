@@ -118,7 +118,8 @@ InsertRule(char *rulname,
 	appendStringInfo(&rulebuf, "::text, '%s'::bool);",
 					 is_instead);
 
-	pg_exec_query_acl_override(rulebuf.data);
+	pg_exec_query_dest(rulebuf.data, None, true);
+
 	pfree(rulebuf.data);
 
 	return LastOidProcessed;
