@@ -43,6 +43,8 @@
 #include "optimizer/geqo_gene.h"
 #include "optimizer/geqo.h"
 
+#include "storage/fd.h"
+
 #define POOL_TAG	"Pool_Size"
 #define TRIAL_TAG	"Generations"
 #define RAND_TAG	"Random_Seed"
@@ -89,7 +91,7 @@ geqo_params(int string_length)
 	sprintf(conf_file, "%s/%s", DataDir, GEQO_FILE);
 
 	/* open the config file */
-	file = fopen(conf_file, "r");
+	file = AllocateFile(conf_file, "r");
 	if (file)
 	{
 		/*
@@ -187,7 +189,7 @@ geqo_params(int string_length)
 		   }
 		}
 
-		fclose(file);
+		FreeFile(file);
 
 		pfree(conf_file);
 	}

@@ -34,11 +34,7 @@
 #ifndef	FD_H
 #define FD_H
 
-/*
- * FileOpen uses the standard UNIX open(2) flags.
- */
-#ifndef O_RDONLY
-#endif /* O_RDONLY */
+#include <stdio.h>
 
 /*
  * FileSeek uses the standard UNIX lseek(2) flags.
@@ -76,10 +72,9 @@ extern long FileTell(File file);
 extern int FileTruncate(File file, int offset);
 extern int FileSync(File file);
 extern int FileNameUnlink(char *filename);
-extern void AllocateFile(void);
-extern void FreeFile(void);
+extern FILE *AllocateFile(char *name, char *mode);
+extern void FreeFile(FILE *);
 extern void closeAllVfds(void);
-extern void closeOneVfd(void);
 extern int pg_fsync(int fd);
 
 #endif	/* FD_H */
