@@ -164,6 +164,8 @@ extern int	namestrcpy(Name name, const char *str);
 extern int	namestrcmp(Name name, const char *str);
 extern Datum current_user(PG_FUNCTION_ARGS);
 extern Datum session_user(PG_FUNCTION_ARGS);
+extern Datum current_schema(PG_FUNCTION_ARGS);
+extern Datum current_schemas(PG_FUNCTION_ARGS);
 
 /* numutils.c */
 extern int32 pg_atoi(char *s, int size, int c);

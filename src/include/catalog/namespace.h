@@ -79,4 +79,6 @@ extern bool check_search_path(const char *proposed);
 extern void assign_search_path(const char *newval);
 extern void InitializeSearchPath(void);
 
+extern List *fetch_search_path(void);
+
 #endif   /* NAMESPACE_H */

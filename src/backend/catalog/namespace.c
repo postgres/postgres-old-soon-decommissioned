@@ -1470,3 +1470,14 @@ InitializeSearchPath(void)
 			assign_search_path(namespace_search_path);
 	}
 }
+
+/*
+ * Fetch the active search path, expressed as a List of OIDs.
+ *
+ * NB: caller must treat the list as read-only!
+ */
+List *
+fetch_search_path(void)
+{
+	return namespaceSearchPath;
+}
