@@ -67,6 +67,9 @@
 #include <termios.h>
 #endif
 
+/* FreeBSD 4.3 seems to put getopt in unistd.h */
+#include <unistd.h>
+
 #ifdef HAVE_GETOPT_H
 #include <getopt.h>
 #endif
