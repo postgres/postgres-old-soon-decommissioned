@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# $Header$
+#
+
+
+if test $# -ne 1; then
+    echo "usage: $0 PORTNAME"
+    exit 1
+fi
+PORTNAME=$1
+ 
+gfind . port/$PORTNAME -type f  -name '*.[chly]' -print | mkid -S.gen=C - 2>&1 | grep -v 'No scanner for language'
+
+
+
+exit 0
