@@ -94,7 +94,7 @@
  */
 
 
-#if defined(__i386__)
+#if defined(__i386__) || defined(__x86_64__)
 #define TAS(lock) tas(lock)
 
 static __inline__ int
@@ -110,7 +110,7 @@ tas(volatile slock_t *lock)
 	return (int) _res;
 }
 
-#endif	 /* __i386__ */
+#endif	 /* __i386__ || __x86_64__ */
 
 
 #ifdef __ia64__
