@@ -1873,7 +1873,7 @@ pltcl_SPI_execp(ClientData cdata, Tcl_Interp *interp,
 	int			loop_body;
 	Tcl_HashEntry *hashent;
 	pltcl_query_desc *qdesc;
-	Datum	   *argvalues = NULL;
+	Datum	   *volatile argvalues = NULL;
 	char	   *volatile nulls = NULL;
 	char	   *volatile arrayname = NULL;
 	int			count = 0;
