@@ -63,27 +63,6 @@ typedef struct MemoryContextData
 
 
 /*
- * AllocSetContext is our standard implementation of MemoryContext.
- */
-typedef struct AllocBlockData *AllocBlock; /* internal to aset.c */
-typedef struct AllocChunkData *AllocChunk;
-
-typedef struct AllocSetContext
-{
-	MemoryContextData header;		/* Standard memory-context fields */
-	/* Info about storage allocated in this context: */
-	AllocBlock	blocks;				/* head of list of blocks in this set */
-#define ALLOCSET_NUM_FREELISTS	8
-	AllocChunk	freelist[ALLOCSET_NUM_FREELISTS]; /* free chunk lists */
-	/* Allocation parameters for this context: */
-	Size		initBlockSize;		/* initial block size */
-	Size		maxBlockSize;		/* maximum block size */
-	AllocBlock	keeper;				/* if not NULL, keep this block
-									 * over resets */
-} AllocSetContext;
-
-
-/*
  * MemoryContextIsValid
  *		True iff memory context is valid.
  *
