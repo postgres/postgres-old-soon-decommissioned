@@ -53,7 +53,7 @@ extern Node *parser_typecast(Value *expr, TypeName *typename, int typlen);
 extern Node *parser_typecast2(Node *expr, int exprType, Type tp, int typlen);
 extern Aggreg *ParseAgg(char *aggname, Oid basetype, Node *target);
 extern void handleTargetColname(ParseState *pstate, char **resname,
-					char *refname, char *colname)
+					char *refname, char *colname);
 extern void checkTargetTypes(ParseState *pstate, char *target_colname,
 					char *refname, char *colname);
 
