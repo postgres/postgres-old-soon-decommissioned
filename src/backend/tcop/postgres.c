@@ -45,11 +45,10 @@
 
 #include "lib/dllist.h"
 
-#include "parser/catalog_utils.h"
-#include "parser/parse_query.h" /* for MakeTimeRange() */
 #include "commands/async.h"
 #include "tcop/tcopprot.h"		/* where declarations for this file go */
 #include "optimizer/planner.h"
+#include "parser/parser.h"
 
 #include "tcop/tcopprot.h"
 #include "tcop/tcopdebug.h"
@@ -1341,7 +1340,7 @@ PostgresMain(int argc, char *argv[])
 	if (IsUnderPostmaster == false)
 	{
 		puts("\nPOSTGRES backend interactive interface");
-		puts("$Revision: 1.54 $ $Date: 1997/11/10 15:24:55 $");
+		puts("$Revision: 1.55 $ $Date: 1997/11/25 22:06:14 $");
 	}
 
 	/* ----------------

@@ -1,7 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * planner.h--
- *	  prototypes for planner.c.
+ * analyze.h
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -10,15 +9,11 @@
  *
  *-------------------------------------------------------------------------
  */
-#ifndef PLANNER_H
-#define PLANNER_H
-
-/*
-*/
+#ifndef ANALYZE_H
+#define ANALYZE_H
 
 #include <parser/parse_node.h>
 
-extern Plan *planner(Query *parse);
-extern void pg_checkretval(Oid rettype, QueryTreeList *querytree_list);
+QueryTreeList *parse_analyze(List *pl);
 
-#endif							/* PLANNER_H */
+#endif							/* ANALYZE_H */

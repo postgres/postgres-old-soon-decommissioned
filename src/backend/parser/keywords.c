@@ -18,8 +18,8 @@
 #include "nodes/pg_list.h"
 #include "nodes/parsenodes.h"
 #include "parse.h"
-#include "utils/elog.h"
 #include "parser/keywords.h"
+#include "utils/elog.h"
 
 /*
  * List of (keyword-name, keyword-token-value) pairs.

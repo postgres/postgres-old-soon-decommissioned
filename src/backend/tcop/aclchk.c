@@ -31,10 +31,12 @@
 #include "catalog/pg_operator.h"
 #include "catalog/pg_aggregate.h"
 #include "catalog/pg_proc.h"
+#include "catalog/pg_type.h"
 #include "catalog/pg_user.h"
+#include "parser/parse_agg.h"
+#include "parser/parse_func.h"
 #include "utils/syscache.h"
 #include "utils/tqual.h"
-#include "parser/catalog_utils.h"
 #include "fmgr.h"
 
 static int32 aclcheck(Acl *acl, AclId id, AclIdType idtype, AclMode mode);

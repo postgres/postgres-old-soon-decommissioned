@@ -17,7 +17,6 @@
 
 #include <ctype.h>
 #include <string.h>
-#include "c.h"
 #include "postgres.h"
 #include "miscadmin.h"
 #include "utils/elog.h"

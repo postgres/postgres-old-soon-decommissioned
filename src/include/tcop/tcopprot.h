@@ -19,7 +19,7 @@
 #define TCOPPROT_H
 
 #include <executor/execdesc.h>
-#include <parser/parse_query.h>
+#include <parser/parse_node.h>
 
 #ifndef BOOTSTRAP_INCLUDE
 extern List *

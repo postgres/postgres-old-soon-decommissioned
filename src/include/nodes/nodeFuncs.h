@@ -13,6 +13,9 @@
 #ifndef NODEFUNCS_H
 #define NODEFUNCS_H
 
+#include <nodes/nodes.h>
+#include <nodes/primnodes.h>
+
 extern bool single_node(Node *node);
 extern bool var_is_outer(Var *var);
 extern bool var_is_rel(Var *var);
