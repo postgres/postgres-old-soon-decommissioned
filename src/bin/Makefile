@@ -21,9 +21,6 @@ DIRS += pg_encoding
 endif
 
 ifeq ($(with_tcl), yes)
-ifeq ($(with_tk), yes)
-	DIRS += pgaccess
-endif
 	DIRS += pgtclsh
 endif
 
