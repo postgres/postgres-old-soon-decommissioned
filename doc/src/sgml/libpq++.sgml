@@ -360,6 +360,16 @@ $Header$
      </listitem>
      <listitem>
       <para>
+       <function>CmdTuples</function>
+              Returns the number of rows affected after an INSERT, UPDATE or DELETE. 
+              If the command was anything else, it returns -1. 
+       <synopsis>
+      int PgDatabase::CmdTuples()
+       </synopsis>
+      </para>
+     </listitem>
+     <listitem>
+      <para>
        <function>Fields</function>
        Returns the number of fields (attributes) in each tuple of the query result. 
        <synopsis>
