@@ -476,10 +476,7 @@ then
     "$PGPATH"/postgres $BACKENDARGS template1 < "$TEMPFILE"
     # Gotta remove that temp file before exiting on error.
     retval="$?"
-    if [ "$noclean" -eq 0 ]
-    then
-            rm -f "$TEMPFILE" || exit_nicely
-    fi
+    rm -f "$TEMPFILE" || exit_nicely
     [ "$retval" -ne 0 ] && exit_nicely
 fi
 
@@ -596,10 +593,7 @@ cat "$GLOBAL_DESCR" >> $TEMPFILE
 
 cat $TEMPFILE \
 	| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
-if [ "$noclean" -eq 0 ]
-then
-    rm -f "$TEMPFILE" || exit_nicely
-fi
+rm -f "$TEMPFILE" || exit_nicely
 
 echo "Vacuuming database."
 echo "VACUUM ANALYZE" \
