@@ -2553,6 +2553,7 @@ move_chain_tuple(Relation rel,
 	{
 		ExecStoreTuple(&newtup, ec->slot, InvalidBuffer, false);
 		ExecInsertIndexTuples(ec->slot, &(newtup.t_self), ec->estate, true);
+		ResetPerTupleExprContext(ec->estate);
 	}
 }
 
@@ -2662,6 +2663,7 @@ move_plain_tuple(Relation rel,
 	{
 		ExecStoreTuple(&newtup, ec->slot, InvalidBuffer, false);
 		ExecInsertIndexTuples(ec->slot, &(newtup.t_self), ec->estate, true);
+		ResetPerTupleExprContext(ec->estate);
 	}
 }
 
