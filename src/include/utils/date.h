@@ -41,7 +41,7 @@ typedef struct
 #ifdef HAVE_INT64_TIMESTAMP
 #define MAX_TIME_PRECISION 6
 #else
-#define MAX_TIME_PRECISION 13
+#define MAX_TIME_PRECISION 10
 #endif
 
 /*
