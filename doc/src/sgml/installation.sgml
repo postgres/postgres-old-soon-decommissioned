@@ -1531,8 +1531,9 @@ gunzip -c user.ps.gz \
 	<entry><systemitem>x86</></entry>
 	<entry>7.3</entry>
 	<entry>2002-10-29,
-	 Larry Rosenman (<email>ler@lerctr.org</email>)</entry>
-        <entry>4.7</entry>
+	 4.7, Larry Rosenman (<email>ler@lerctr.org</email>)</entry>
+	 5.0, Sean Chittenden (<email>sean@nxad.com</email>)</entry>
+        <entry></entry>
        </row>
        <row>
 	<entry><systemitem class="osname">HP-UX</></entry>
