@@ -134,16 +134,3 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 	 */
 	PMSignalInit();
 }
-
-
-/*
- * AttachSharedMemoryAndSemaphores
- *		Attaches to the existing shared resources when exec()'d off
- *		by the postmaster.
- */
-void
-AttachSharedMemoryAndSemaphores(void)
-{
-	CLOGShmemInit();
-}
-

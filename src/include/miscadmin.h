@@ -106,7 +106,6 @@ extern void ProcessInterrupts(void);
  */
 extern bool IsUnderPostmaster;
 extern bool ClientAuthInProgress;
-extern const bool ExecBackend;
 
 extern int	PostmasterMain(int argc, char *argv[]);
 extern void ClosePostmasterPorts(bool pgstat_too);
