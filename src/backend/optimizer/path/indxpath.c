@@ -493,7 +493,7 @@ match_clause_to_indexkey(Rel *rel,
 	    /*
 	     * Check for standard s-argable clause
 	     */
-	    if (IsA(rightop,Const))
+	    if (rightop && IsA(rightop,Const))
 		{
 		    restrict_op = ((Oper*)((Expr*)clause)->oper)->opno;
 		    isIndexable =
@@ -507,7 +507,7 @@ match_clause_to_indexkey(Rel *rel,
 	    /*
 	     * Must try to commute the clause to standard s-arg format.
 	     */
-	    else if (IsA(leftop,Const))
+	    else if (leftop && IsA(leftop,Const))
 		{
 		    restrict_op =
 			get_commutator(((Oper*)((Expr*)clause)->oper)->opno);
@@ -535,12 +535,14 @@ match_clause_to_indexkey(Rel *rel,
      */
     else
 	{
-	    if (match_index_to_operand(indexkey,(Expr*)rightop,rel,index)) {
+	    if (rightop
+		&& match_index_to_operand(indexkey,(Expr*)rightop,rel,index)) {
 					
 		join_op = get_commutator(((Oper*)((Expr*)clause)->oper)->opno);
 
-	    } else if (match_index_to_operand(indexkey,
-					      (Expr*)leftop,rel,index)) {
+	    } else if (leftop
+		       && match_index_to_operand(indexkey,
+						 (Expr*)leftop,rel,index)) {
 		join_op = ((Oper*)((Expr*)clause)->oper)->opno;
 	    }
 

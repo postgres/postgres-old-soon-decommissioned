@@ -198,8 +198,6 @@ textout(struct varlena *vlena)
 
 /* ========== PUBLIC ROUTINES ========== */
 
-/* 
-
 /*
  * textlen -
  *    returns the actual length of a text* (which may be less than
