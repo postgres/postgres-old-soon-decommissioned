@@ -469,7 +469,7 @@ ProcSleep(PROC_QUEUE *queue,
 	proc = (PROC *) MAKE_PTR(queue->links.prev);
 	for (i = 0; i < queue->size; i++)
 	{
-		if (proc->prio < prio)
+		if (proc->prio >= prio)
 			proc = (PROC *) MAKE_PTR(proc->links.prev);
 		else
 			break;
