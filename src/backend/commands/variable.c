@@ -665,6 +665,14 @@ reset_client_encoding(void)
 	return TRUE;
 }
 
+/* Called during MULTIBYTE backend startup ... */
+void
+set_default_client_encoding(void)
+{
+	reset_client_encoding();
+}
+
+
 static bool
 parse_server_encoding(char *value)
 {
