@@ -14,6 +14,8 @@
 #ifndef VACUUM_H
 #define VACUUM_H
 
+#include <sys/time.h>
+
 #ifdef HAVE_GETRUSAGE
 #include <sys/resource.h>
 #else
