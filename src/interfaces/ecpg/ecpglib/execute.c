@@ -144,7 +144,6 @@ create_statement(int lineno, int compat, int force_indicator, struct connection 
 				var->arrsize = 0;
 			if (var->varcharsize < 0)
 				var->varcharsize = 0;
-				
 		
 			var->ind_type = va_arg(ap, enum ECPGttype);
 			var->ind_pointer = va_arg(ap, char *);
@@ -158,6 +157,13 @@ create_statement(int lineno, int compat, int force_indicator, struct connection 
 				var->ind_value = *((char **) (var->ind_pointer));
 			else
 				var->ind_value = var->ind_pointer;
+			
+			/* negative values are used to indicate an array without given bounds */
+			/* reset to zero for us */
+			if (var->ind_arrsize < 0)
+				var->ind_arrsize = 0;
+			if (var->ind_varcharsize < 0)
+				var->ind_varcharsize = 0;
 
 			for (ptr = *list; ptr && ptr->next; ptr = ptr->next);
 
