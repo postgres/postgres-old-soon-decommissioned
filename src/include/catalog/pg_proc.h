@@ -1698,7 +1698,7 @@ DESCR("less-equal-greater");
 DATA(insert OID = 1359 (  timestamptz	   PGNSP PGUID 12 f f t f i 2 1184 "1082 1266"	datetimetz_timestamptz - _null_ ));
 DESCR("convert date and time with time zone to timestamp with time zone");
 
-DATA(insert OID = 1364 (  time			   PGNSP PGUID 14 f f t f i 1 1083 "702"  "select time(cast($1 as timestamp without time zone))" - _null_ ));
+DATA(insert OID = 1364 (  time			   PGNSP PGUID 14 f f t f s 1 1083 "702"  "select cast(cast($1 as timestamp without time zone) as time)" - _null_ ));
 DESCR("convert abstime to time");
 
 DATA(insert OID = 1367 (  character_length	PGNSP PGUID 12 f f t f i 1	23 "1042"  bpcharlen - _null_ ));
