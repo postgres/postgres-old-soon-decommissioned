@@ -394,7 +394,7 @@ $ cvsup -L 2 <replaceable class="parameter">postgres.cvsup</replaceable>
     <programlisting>
 # This file represents the standard CVSup distribution file
 # for the <productname>PostgreSQL</> ORDBMS project
-# Modified by lockhart@alumni.caltech.edu 1997-08-28
+# Modified by lockhart@fourpalms.org 1997-08-28
 # - Point to my local snapshot source tree
 # - Pull the full CVS repository, not just the latest snapshot
 #
