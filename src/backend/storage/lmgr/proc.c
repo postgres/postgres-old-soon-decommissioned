@@ -54,7 +54,7 @@
 #include <signal.h>
 #include <sys/types.h>
 
-#if defined(sparc_solaris)
+#if defined(solaris_sparc)
 #include <sys/ipc.h>
 #include <sys/sem.h>
 #endif

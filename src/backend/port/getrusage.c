@@ -7,9 +7,9 @@
 
 #if 0							/* this is from univel port ... how does
 								 * compiler define? */
- /* same for i386_solaris port ... how does compiler define? */
+ /* same for solaris_i386 port ... how does compiler define? */
  /* same for sco port ... how does compiler define? */
- /* same for sparc_solaris port ... how does compiler define? */
+ /* same for solaris_sparc port ... how does compiler define? */
  /* same for svr4 port ... how does compiler define? */
 int
 getrusage(int who, struct rusage * rusage)

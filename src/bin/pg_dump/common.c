@@ -24,7 +24,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <sys/param.h>			/* for MAXHOSTNAMELEN on most */
-#ifdef sparc_solaris
+#ifdef solaris_sparc
 #include <netdb.h>				/* for MAXHOSTNAMELEN on some */
 #endif
 

@@ -40,7 +40,7 @@
 #include "utils/memutils.h"
 #include "libpq/libpq.h"
 
-#if defined(sparc_solaris)
+#if defined(solaris_sparc)
 #include <string.h>
 #include <sys/ipc.h>
 #endif
