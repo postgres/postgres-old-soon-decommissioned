@@ -3385,9 +3385,9 @@ Character:  character '(' Iconst ')'
 
 					if ($3 < 1)
 						elog(ERROR,"length for '%s' type must be at least 1",$1);
-					else if ($3 > MaxTupleSize)
+					else if ($3 > MaxAttrSize)
 						elog(ERROR,"length for type '%s' cannot exceed %d",$1,
-							MaxTupleSize);
+							MaxAttrSize);
 
 					/* we actually implement this sort of like a varlen, so
 					 * the first 4 bytes is the length. (the difference

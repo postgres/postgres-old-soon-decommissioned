@@ -56,7 +56,9 @@ typedef HeapTupleHeaderData *HeapTupleHeader;
 #define MinTupleSize	(DOUBLEALIGN(sizeof (PageHeaderData) + \
 						 sizeof(HeapTupleHeaderData) + sizeof(int4)))
 
-#define MaxTupleSize	(BLCKSZ/2 - MinTupleSize)
+#define MaxTupleSize	(BLCKSZ - MinTupleSize)
+
+#define MaxAttrSize		(MaxTupleSize - sizeof(HeapTupleHeaderData))
 
 #define SelfItemPointerAttributeNumber			(-1)
 #define ObjectIdAttributeNumber					(-2)
