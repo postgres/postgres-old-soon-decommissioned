@@ -305,11 +305,7 @@ ParseAgg(ParseState *pstate, char *aggname, Oid basetype,
 	if (OidIsValid(xfn1))
 	{
 		basetype = aggform->aggbasetype;
-		if (nodeTag(lfirst(target)) == T_Var)
-			vartype = ((Var *) lfirst(target))->vartype;
-		else
-			vartype = ((Expr *) lfirst(target))->typeOid;
-
+		vartype = exprType(lfirst(target));
 		if ((basetype != vartype)
 			&& (! IS_BINARY_COMPATIBLE(basetype, vartype)))
 		{
