@@ -165,6 +165,7 @@ not				{ return K_NOT;				}
 notice			{ return K_NOTICE;			}
 null			{ return K_NULL;			}
 open			{ return K_OPEN;			}
+or				{ return K_OR;				}
 perform			{ return K_PERFORM;			}
 raise			{ return K_RAISE;			}
 rename			{ return K_RENAME;			}

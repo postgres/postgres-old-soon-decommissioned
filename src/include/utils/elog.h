@@ -61,6 +61,10 @@
 	(PGSIXBIT(ch1) + (PGSIXBIT(ch2) << 6) + (PGSIXBIT(ch3) << 12) + \
 	 (PGSIXBIT(ch4) << 18) + (PGSIXBIT(ch5) << 24))
 
+/* These macros depend on the fact that '0' becomes a zero in SIXBIT */
+#define ERRCODE_TO_CATEGORY(ec)  ((ec) & ((1 << 12) - 1))
+#define ERRCODE_IS_CATEGORY(ec)  (((ec) & ~((1 << 12) - 1)) == 0)
+
 /* SQLSTATE codes for errors are defined in a separate file */
 #include "utils/errcodes.h"
 

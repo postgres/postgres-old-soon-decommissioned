@@ -322,10 +322,16 @@ typedef struct
 }	PLpgSQL_stmts;
 
 
+typedef struct PLpgSQL_condition
+{								/* One EXCEPTION condition name */
+	char	   *condname;
+	struct PLpgSQL_condition *next;
+}	PLpgSQL_condition;
+
 typedef struct
 {								/* One EXCEPTION ... WHEN clause */
 	int			lineno;
-	char	   *label;
+	PLpgSQL_condition *conditions;
 	PLpgSQL_stmts *action;
 }	PLpgSQL_exception;
 
