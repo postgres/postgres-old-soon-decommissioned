@@ -2028,8 +2028,8 @@ LockBuffer(Buffer buffer, int mode)
 			S_LOCK(&(buf->cntx_lock));
 #else
 			IpcSemaphoreUnlock(WaitCLSemId, 0, IpcExclusiveLock);
-			s_lock_sleep(i++)
-				IpcSemaphoreLock(WaitCLSemId, 0, IpcExclusiveLock);
+			s_lock_sleep(i++);
+			IpcSemaphoreLock(WaitCLSemId, 0, IpcExclusiveLock);
 #endif
 		}
 		(buf->r_locks)++;
@@ -2054,8 +2054,8 @@ LockBuffer(Buffer buffer, int mode)
 			S_LOCK(&(buf->cntx_lock));
 #else
 			IpcSemaphoreUnlock(WaitCLSemId, 0, IpcExclusiveLock);
-			s_lock_sleep(i++)
-				IpcSemaphoreLock(WaitCLSemId, 0, IpcExclusiveLock);
+			s_lock_sleep(i++);
+			IpcSemaphoreLock(WaitCLSemId, 0, IpcExclusiveLock);
 #endif
 		}
 		buf->w_lock = true;
