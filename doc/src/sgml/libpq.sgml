@@ -2031,6 +2031,8 @@ main()
     PQfinish(conn);
 
     /* fclose(debug); */
+    return 0;
+
 }
 </programlisting>
 </para>
@@ -2152,6 +2154,7 @@ main()
     /* close the connection to the database and cleanup */
     PQfinish(conn);
 
+    return 0;
 }
 </programlisting>
 </para>
@@ -2334,6 +2337,7 @@ main()
     /* close the connection to the database and cleanup */
     PQfinish(conn);
 
+    return 0;
 }
 </programlisting>
 </para>

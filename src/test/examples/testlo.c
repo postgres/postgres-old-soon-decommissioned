@@ -248,5 +248,5 @@ main(int argc, char **argv)
 	res = PQexec(conn, "end");
 	PQclear(res);
 	PQfinish(conn);
-	exit(0);
+	return 0;
 }
