@@ -217,7 +217,7 @@ int PQgetline(char *s, int maxlen)
    	}
    else
    	{
-   	for( ; *s; *s++)
+   	for( ; *s; s++)
    		{
    		if(*s == '\n')
    			{

@@ -126,8 +126,16 @@ extern int PQAsyncNotifyWaiting;
 /* in pqcompriv.c */
 int pqGetShort(int *, FILE *);
 int pqGetLong(int *, FILE *);
+int pqGetNBytes(char *, size_t, FILE *);
+int pqGetString(char *, size_t, FILE *);
+int pqGetByte(FILE *);
+
 int pqPutShort(int, FILE *);
 int pqPutLong(int, FILE *);
+int pqPutNBytes(const char *, size_t, FILE *);
+int pqPutString(const char *, FILE *);
+int pqPutByte(int, FILE *);
+
 /*
  * prototypes for functions in pqpacket.c
  */
