@@ -364,7 +364,7 @@ CREATE [ OR REPLACE ] FUNCTION <replaceable class="parameter">name</replaceable>
   <title>Examples</title>
 
   <para>
-   Here is a trivial example to help you get startet.  For more
+   Here is a trivial example to help you get started.  For more
    information and examples, see <xref linkend="xfunc">.
 <programlisting>
 CREATE FUNCTION add(integer, integer) RETURNS integer
