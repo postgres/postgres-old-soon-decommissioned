@@ -399,6 +399,10 @@ BootstrapMain(int argc, char *argv[])
 	 */
 	Int_yyparse();
 
+#ifdef XLOG
+	FlushBufferPool();
+#endif
+
 	/* clean up processing */
 	StartTransactionCommand();
 	cleanup();
