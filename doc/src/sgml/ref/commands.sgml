@@ -124,6 +124,7 @@ functions supported by <productname>Postgres</productname>.
    &ecpgRef;
    &pgAccess;
    &pgAdmin;
+   &pgConfig;
    &pgCtl;
    &pgDump;
    &pgDumpall;
