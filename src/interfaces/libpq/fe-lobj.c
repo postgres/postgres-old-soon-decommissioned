@@ -31,6 +31,11 @@
 #include "libpq/libpq-fs.h"		/* must come after sys/stat.h */
 
 
+#ifdef WIN32					/* need to use normal errno in this file */
+#undef errno
+#endif
+
+
 #define LO_BUFSIZE		  8192
 
 static int	lo_initialize(PGconn *conn);
