@@ -47,7 +47,7 @@ endif
 # matter.)
 SHLIB_LINK += $(filter -lcrypt -ldes -lkrb -lcom_err -lcrypto -lk5crypto -lkrb5 -lssl -lsocket -lnsl -lresolv -lintl, $(LIBS)) $(PTHREAD_LIBS)
 ifeq ($(PORTNAME), win32)
-SHLIB_LINK += -lwsock32 -lws2_32
+SHLIB_LINK += -lwsock32 -lws2_32 $(filter -leay32 -lssleay32, $(LIBS))
 endif
 
 
