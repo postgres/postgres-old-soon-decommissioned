@@ -19,9 +19,9 @@
 typedef HeapTuple	Type;
 typedef HeapTuple	Operator;
 
-extern bool check_typeid(long id);
-extern Type get_id_type(long id);
-extern char *get_id_typname(long id);
+extern bool check_typeid(Oid id);
+extern Type get_id_type(Oid id);
+extern char *get_id_typname(Oid id);
 extern Type type(char *);
 extern Oid att_typeid(Relation rd, int attid);
 extern int att_attnelems(Relation rd, int attid);

@@ -68,7 +68,7 @@ DefineVirtualRelation(char *relname, List *tlist)
 	    entry = lfirst(t);
 	    res   = entry->resdom;
 	    resname = res->resname;
-	    restypename = tname(get_id_type((long)res->restype));
+	    restypename = tname(get_id_type(res->restype));
 
 	    typename = makeNode(TypeName);
 
