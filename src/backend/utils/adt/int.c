@@ -30,7 +30,7 @@
  */
 #include <stdio.h>
 #include <string.h>
-#ifdef HAVE_LIMITS
+#ifdef HAVE_LIMITS_H
 #include <limits.h>
 #endif
 
