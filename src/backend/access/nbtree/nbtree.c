@@ -112,7 +112,8 @@ btbuild(PG_FUNCTION_ARGS)
 			 RelationGetRelationName(index));
 
 	/* initialize the btree index metadata page */
-	_bt_metapinit(index);
+	/* mark it valid right away only if using slow build */
+	_bt_metapinit(index, !buildstate.usefast);
 
 	if (buildstate.usefast)
 	{
