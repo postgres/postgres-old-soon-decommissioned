@@ -25,7 +25,7 @@ OBJS = dynloader.o pg_sema.o pg_shmem.o
 
 OBJS += $(GETHOSTNAME) $(GETRUSAGE) $(INET_ATON) $(ISINF) $(MEMCMP) \
         $(MISSING_RANDOM) $(SNPRINTF) $(SRANDOM) $(STRCASECMP) $(STRERROR) \
-        $(STRTOL) $(STRTOUL) $(SNPRINTF)
+        $(STRTOL) $(STRTOUL)
 
 OBJS += $(TAS)
 
@@ -68,8 +68,12 @@ darwin.dir:
 tas.o: tas.s
 	$(CC) $(CFLAGS) -c $<
 
+# IPC test program
+ipc_test: ipc_test.o pg_sema.o pg_shmem.o $(MEMCMP) $(SNPRINTF) $(STRERROR)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(export_dynamic) $^ $(LIBS) -o $@
+
 distclean clean:
-	rm -f SUBSYS.o $(OBJS)
+	rm -f SUBSYS.o $(OBJS) ipc_test ipc_test.o
 	$(MAKE) -C beos clean
 	$(MAKE) -C darwin clean
 	$(MAKE) -C qnx4 clean
