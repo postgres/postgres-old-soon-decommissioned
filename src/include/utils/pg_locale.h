@@ -4,7 +4,7 @@
  *
  * $PostgreSQL$
  *
- * Copyright (c) 2002-2003, PostgreSQL Global Development Group
+ * Copyright (c) 2002-2004, PostgreSQL Global Development Group
  *
  *-----------------------------------------------------------------------
  */

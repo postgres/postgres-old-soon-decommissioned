@@ -1,6 +1,6 @@
 #! /usr/bin/perl
 #
-# Copyright (c) 2001-2003, PostgreSQL Global Development Group
+# Copyright (c) 2001-2004, PostgreSQL Global Development Group
 #
 # $PostgreSQL$
 #

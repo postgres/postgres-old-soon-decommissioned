@@ -3,7 +3,7 @@
  * dirmod.c
  *	  rename/unlink()
  *
- * Portions Copyright (c) 1996-2003, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2004, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  *	These are replacement versions of unlink and rename that work on

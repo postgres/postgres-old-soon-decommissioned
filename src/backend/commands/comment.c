@@ -4,7 +4,7 @@
  *
  * PostgreSQL object comments utility code.
  *
- * Copyright (c) 1996-2003, PostgreSQL Global Development Group
+ * Copyright (c) 1996-2004, PostgreSQL Global Development Group
  *
  * IDENTIFICATION
  *	  $PostgreSQL$
