@@ -101,13 +101,13 @@ Assert(RelationIsValid(relation)); \
 	 Assert(PointerIsValid(scan->relation->rd_am))
      
 #define GET_REL_PROCEDURE(x,y) \
-	 CppConcat(procedure = relation->rd_am->,y); \
+	 procedure = relation->rd_am->y; \
 	 if (! RegProcedureIsValid(procedure)) \
 	 elog(WARN, "index_%s: invalid %s regproc", \
 	      CppAsString(x), CppAsString(y))
      
 #define GET_SCAN_PROCEDURE(x,y) \
-	 CppConcat(procedure = scan->relation->rd_am->,y); \
+	 procedure = scan->relation->rd_am->y; \
 	 if (! RegProcedureIsValid(procedure)) \
 	 elog(WARN, "index_%s: invalid %s regproc", \
 	      CppAsString(x), CppAsString(y))
