@@ -24,6 +24,8 @@ extern int Pg_disconnect(
     ClientData cData, Tcl_Interp *interp, int argc, char* argv[]);
 extern int Pg_exec(
     ClientData cData, Tcl_Interp *interp, int argc, char* argv[]);
+extern int Pg_select(
+    ClientData cData, Tcl_Interp *interp, int argc, char* argv[]);
 extern int Pg_result(
     ClientData cData, Tcl_Interp *interp, int argc, char* argv[]);
 extern int Pg_lo_open(

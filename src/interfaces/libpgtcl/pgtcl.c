@@ -45,6 +45,11 @@ Pg_Init (Tcl_Interp *interp)
 		    (ClientData)NULL, (Tcl_CmdDeleteProc*)NULL);
   
   Tcl_CreateCommand(interp,
+		    "pg_select",
+		    Pg_select,
+		    (ClientData)NULL, (Tcl_CmdDeleteProc*)NULL);
+  
+  Tcl_CreateCommand(interp,
 		    "pg_result",
 		    Pg_result,
 		    (ClientData)NULL, (Tcl_CmdDeleteProc*)NULL);
