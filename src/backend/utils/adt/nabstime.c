@@ -71,8 +71,11 @@ GetCurrentAbsoluteTime(void)
 		strftime(CTZName, MAXTZLEN, "%Z", tm);
 #endif
 		/* XXX FreeBSD man pages indicate that this should work - thomas 1998-12-12 */
+		/* tzn isn't defined !!! - vadim 15-12-1998 */
+#if 0
 		if (tzn != NULL)
 		strcpy(tzn, tm->tm_zone);
+#endif
 
 #elif defined(HAVE_INT_TIMEZONE)
 		tm = localtime(&now);
