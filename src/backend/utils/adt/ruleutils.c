@@ -2202,15 +2202,15 @@ get_setop_query(Node *setOp, Query *query, deparse_context *context,
 		{
 			case SETOP_UNION:
 				appendContextKeyword(context, "UNION ",
-									 -PRETTYINDENT_STD, 0, 0);
+									 -PRETTYINDENT_STD, PRETTYINDENT_STD, 0);
 				break;
 			case SETOP_INTERSECT:
 				appendContextKeyword(context, "INTERSECT ",
-									 -PRETTYINDENT_STD, 0, 0);
+									 -PRETTYINDENT_STD, PRETTYINDENT_STD, 0);
 				break;
 			case SETOP_EXCEPT:
 				appendContextKeyword(context, "EXCEPT ",
-									 -PRETTYINDENT_STD, 0, 0);
+									 -PRETTYINDENT_STD, PRETTYINDENT_STD, 0);
 				break;
 			default:
 				elog(ERROR, "unrecognized set op: %d",
@@ -2220,7 +2220,7 @@ get_setop_query(Node *setOp, Query *query, deparse_context *context,
 			appendStringInfo(buf, "ALL ");
 
 		if (PRETTY_INDENT(context))
-			appendStringInfoChar(buf, '\n');
+			appendContextKeyword(context, "", 0, 0, 0);
 
 		need_paren = !IsA(op->rarg, RangeTblRef);
 
@@ -2869,22 +2869,18 @@ appendContextKeyword(deparse_context *context, const char *str,
 	if (PRETTY_INDENT(context))
 	{
 		context->indentLevel += indentBefore;
-		if (context->indentLevel < 0)
-			context->indentLevel = 0;
 
 		appendStringInfoChar(context->buf, '\n');
 		appendStringInfoSpaces(context->buf,
-							   context->indentLevel + indentPlus);
-	}
+							   Max(context->indentLevel, 0) + indentPlus);
+		appendStringInfoString(context->buf, str);
 
-	appendStringInfoString(context->buf, str);
-
-	if (PRETTY_INDENT(context))
-	{
 		context->indentLevel += indentAfter;
 		if (context->indentLevel < 0)
 			context->indentLevel = 0;
 	}
+	else
+		appendStringInfoString(context->buf, str);
 }
 
 /*
