@@ -33,12 +33,12 @@ typedef enum
 
 /* selfuncs.c */
 
-extern Pattern_Prefix_Status pattern_fixed_prefix(char *patt,
+extern Pattern_Prefix_Status pattern_fixed_prefix(Const *patt,
 					 Pattern_Type ptype,
-					 char **prefix,
-					 char **rest);
+					 Const **prefix,
+					 Const **rest);
 extern bool locale_is_like_safe(void);
-extern char *make_greater_string(const char *str, Oid datatype);
+extern Const *make_greater_string(const Const *str_const);
 
 extern Datum eqsel(PG_FUNCTION_ARGS);
 extern Datum neqsel(PG_FUNCTION_ARGS);

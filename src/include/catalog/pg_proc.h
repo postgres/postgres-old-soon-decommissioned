@@ -2770,13 +2770,13 @@ DESCR("adjust time precision");
 DATA(insert OID = 1969 (  timetz		   PGNSP PGUID 12 f f t f i 2 1266 "1266 23"	timetz_scale - _null_ ));
 DESCR("adjust time with time zone precision");
 
-DATA(insert OID = 2005 (  bytealike		   PGNSP PGUID 12 f f t f i 2 16 "17 25" bytealike - _null_ ));
+DATA(insert OID = 2005 (  bytealike		   PGNSP PGUID 12 f f t f i 2 16 "17 17" bytealike - _null_ ));
 DESCR("matches LIKE expression");
-DATA(insert OID = 2006 (  byteanlike	   PGNSP PGUID 12 f f t f i 2 16 "17 25" byteanlike - _null_ ));
+DATA(insert OID = 2006 (  byteanlike	   PGNSP PGUID 12 f f t f i 2 16 "17 17" byteanlike - _null_ ));
 DESCR("does not match LIKE expression");
-DATA(insert OID = 2007 (  like			   PGNSP PGUID 12 f f t f i 2 16 "17 25"	bytealike - _null_ ));
+DATA(insert OID = 2007 (  like			   PGNSP PGUID 12 f f t f i 2 16 "17 17"	bytealike - _null_ ));
 DESCR("matches LIKE expression");
-DATA(insert OID = 2008 (  notlike		   PGNSP PGUID 12 f f t f i 2 16 "17 25"	byteanlike - _null_ ));
+DATA(insert OID = 2008 (  notlike		   PGNSP PGUID 12 f f t f i 2 16 "17 17"	byteanlike - _null_ ));
 DESCR("does not match LIKE expression");
 DATA(insert OID = 2009 (  like_escape	   PGNSP PGUID 12 f f t f i 2 17 "17 17" like_escape_bytea - _null_ ));
 DESCR("convert match pattern to use backslash escapes");
