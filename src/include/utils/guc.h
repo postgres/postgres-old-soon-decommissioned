@@ -52,9 +52,6 @@
  * non-super users.
  *
  * USERSET options can be set by anyone any time.
- *
- * When updating the GucContexts, please make sure to update the
- * corresponding GucContext_names [] entries in pg_guc.c.
  */
 typedef enum
 {
