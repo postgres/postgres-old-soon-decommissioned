@@ -208,6 +208,17 @@ RI_FKey_check(PG_FUNCTION_ARGS)
 		new_row = trigdata->tg_trigtuple;
 	}
 
+        /*
+         * We should not even consider checking the row if it is no longer
+         * valid since it was either deleted (doesn't matter) or updated
+         * (in which case it'll be checked with its final values).
+         */
+        if (new_row) {
+                if (!HeapTupleSatisfiesItself(new_row->t_data)) {
+                        return PointerGetDatum(NULL);
+                }
+        }
+
 	/* ----------
 	 * SQL3 11.9 <referential constraint definition>
 	 *	Gereral rules 2) a):
