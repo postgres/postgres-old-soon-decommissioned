@@ -43,16 +43,16 @@ submake:
 	$(MAKE) -C $(libpgtcl_builddir) all
 
 install: all installdirs
-	$(INSTALL_PROGRAM) pgtclsh $(DESTDIR)$(bindir)/pgtclsh
+	$(INSTALL_PROGRAM) pgtclsh$(X) $(DESTDIR)$(bindir)/pgtclsh$(X)
 ifeq ($(with_tk), yes)
-	$(INSTALL_PROGRAM) pgtksh $(DESTDIR)$(bindir)/pgtksh
+	$(INSTALL_PROGRAM) pgtksh$(X) $(DESTDIR)$(bindir)/pgtksh$(X)
 endif
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(DESTDIR)$(bindir)/pgtclsh $(DESTDIR)$(bindir)/pgtksh
+	rm -f $(DESTDIR)$(bindir)/pgtclsh$(X) $(DESTDIR)$(bindir)/pgtksh$(X)
 
 clean distclean maintainer-clean:
 	rm -f pgtclAppInit.o pgtkAppInit.o pgtclsh pgtksh
