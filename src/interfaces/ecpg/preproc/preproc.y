@@ -6256,6 +6256,7 @@ c_anything:  IDENT				{ $$ = $1; }
 		| YEAR_P			{ $$ = make_str("year"); }
 		| CHAR_P			{ $$ = make_str("char"); }
 		| FLOAT_P			{ $$ = make_str("float"); }
+		| TO				{ $$ = make_str("to"); }
 		| UNION				{ $$ = make_str("union"); }
 		| VARCHAR			{ $$ = make_str("varchar"); }
 		| '['				{ $$ = make_str("["); }
