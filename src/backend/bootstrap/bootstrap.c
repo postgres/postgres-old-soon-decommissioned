@@ -184,24 +184,6 @@ static char *values[MAXATTR];	/* cooresponding attribute values */
 int			numattr;			/* number of attributes for cur. rel */
 extern bool	disableFsync;			/* do not fsync the database */
 
-/* The test for HAVE_SIGSETJMP fails on Linux 2.0.x because the test
- *	explicitly disallows sigsetjmp being a #define, which is how it
- *	is declared in Linux. So, to avoid compiler warnings about
- *	sigsetjmp() being redefined, let's not redefine unless necessary.
- * - thomas 1997-12-27
- */
-
-#if !defined(HAVE_SIGSETJMP) && !defined(sigsetjmp)
-static jmp_buf Warn_restart;
-
-#define sigsetjmp(x,y)	setjmp(x)
-#define siglongjmp longjmp
-
-#else
-static sigjmp_buf Warn_restart;
-
-#endif
-
 int			DebugMode;
 static GlobalMemory nogc = (GlobalMemory) NULL; /* special no-gc mem
 												 * context */
