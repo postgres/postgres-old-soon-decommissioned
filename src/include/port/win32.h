@@ -166,6 +166,7 @@ void		_dosmaperr(unsigned long);
 #define SIGPIPE				13
 #define SIGALRM				14
 #define SIGSTOP				17
+#define SIGTSTP				18
 #define SIGCONT				19
 #define SIGCHLD				20
 #define SIGTTIN				21
