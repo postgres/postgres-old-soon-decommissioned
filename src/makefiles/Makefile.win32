@@ -1,7 +1,7 @@
 # $Header$
 
 # Use replacement include files for those missing on Win32
-override CPPFLAGS+="-I$(top_srcdir)/src/include/port/win32_include"
+override CPPFLAGS+="-I$(top_srcdir)/src/include/port/win32"
 
 DLLTOOL= dlltool
 DLLWRAP= dllwrap
