@@ -561,7 +561,10 @@ AlterDatabaseSet(AlterDatabaseSetStmt *stmt)
 		else
 			a = GUCArrayDelete(a, stmt->variable);
 
-		repl_val[Anum_pg_database_datconfig - 1] = PointerGetDatum(a);
+		if (a)
+			repl_val[Anum_pg_database_datconfig - 1] = PointerGetDatum(a);
+		else
+			repl_null[Anum_pg_database_datconfig - 1] = 'n';
 	}
 
 	newtuple = heap_modifytuple(tuple, rel, repl_val, repl_null, repl_repl);
