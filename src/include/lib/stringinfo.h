@@ -44,4 +44,10 @@ extern StringInfo makeStringInfo(void);
  */
 extern void appendStringInfo(StringInfo str, const char *fmt,...);
 
+/*------------------------
+ * nullStringInfo
+ * return the string itself or "<>" if it is NULL
+ */
+#define stringStringInfo(s) (((s) == NULL) ? "<>" : (s))
+
 #endif	 /* STRINGINFO_H */
