@@ -43,6 +43,12 @@
 #ifndef	C_H
 #define C_H
 
+/* We have to include stdlib.h here because it defines many of these macros
+   on some platforms, and we only want our definitions used if stdlib.h doesn't
+   have its own.
+*/
+#include <stdlib.h>
+
 /* ----------------------------------------------------------------
  *		Section 1:  bool, true, false, TRUE, FALSE
  * ----------------------------------------------------------------
