@@ -726,6 +726,8 @@ freePGconn(PGconn *conn)
 		free(conn->dbName);
 	if (conn->pguser)
 		free(conn->pguser);
+	if (conn->pgpass)
+		free(conn->pgpass);
 	if (conn->notifyList)
 		DLFreeList(conn->notifyList);
 	free(conn);
