@@ -77,12 +77,14 @@ getaddrinfo(const char *node, const char *service,
 			if (hp->h_addrtype != AF_INET)
 				return EAI_ADDRFAMILY;
 
-			memmove(&(sin.sin_addr), hp->h_addr, hp->h_length);
+			memcpy(&(sin.sin_addr), hp->h_addr, hp->h_length);
 		}
 	}
 	else
 	{
 		if (hints->ai_flags & AI_PASSIVE)
+			sin.sin_addr.s_addr = htonl(INADDR_ANY);
+		else
 			sin.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
 	}
 
