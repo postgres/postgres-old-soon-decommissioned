@@ -1041,7 +1041,7 @@ XLogWrite(XLogwrtRqst WriteRqst)
 
 			if (!use_existent)	/* there was no precreated file */
 				elog(LOG, "XLogWrite: new log file created - "
-					 "consider increasing WAL_FILES");
+					 "consider increasing 'wal_files' in postgresql.conf.");
 
 			/* update pg_control, unless someone else already did */
 			LWLockAcquire(ControlFileLock, LW_EXCLUSIVE);
