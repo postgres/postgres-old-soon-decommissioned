@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sun Aug 17 00:28:15 EDT 2003
+Last updated:		Sun Aug 17 00:43:46 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -62,6 +62,8 @@ Administration
 * Allow server log information to be output as INSERT statements
 * Prevent default re-use of sysids for dropped users and groups
 * Prevent dropping user that still owns objects, or auto-drop the objects
+* Allow pooled connections to query prepared queries
+* Allow pooled connections to close all open WITH HOLD cursors
 
 
 
