@@ -5971,6 +5971,22 @@ SELECT TIMESTAMP 'now';
      as an array of two <type>point</> values.
     </para>
 
+    <para>
+     The <function>area</function> function works for the types
+     <type>box</type>, <type>circle</type>, and <type>path</type>.
+     The <function>area</function> function only works on the
+     <type>path</type> data type if the points in the
+     <type>path</type> are non-intersecting.  For example, the
+     <type>path</type>
+     <literal>'((0,0),(0,1),(2,1),(2,2),(1,2),(1,0),(0,0))'::PATH</literal>
+     won't work, however, the following visually identical
+     <type>path</type>
+     <literal>'((0,0),(0,1),(1,1),(1,2),(2,2),(2,1),(1,1),(1,0),(0,0))'::PATH</literal>
+     will work.  If the concept of an intersecting versus
+     non-intersecting <type>path</type> is confusing, draw both of the
+     above <type>path</type>s side by side on a piece of graph paper.
+    </para>
+
   </sect1>
 
 
