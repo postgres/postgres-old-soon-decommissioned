@@ -215,7 +215,7 @@ typedef enum NodeTag
 	T_SortClause,
 	T_GroupClause,
 	T_SubSelect,
-	T_JoinUsing,
+	T_JoinExpr,
 	T_CaseExpr,
 	T_CaseWhen,
 	T_RowMark

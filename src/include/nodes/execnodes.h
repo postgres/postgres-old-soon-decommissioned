@@ -607,7 +607,7 @@ typedef struct GroupState
  *	 SortState information
  *
  *|		sort nodes are really just a kind of a scan since
- *|		we implement sorts by retrieveing the entire subplan
+ *|		we implement sorts by retrieving the entire subplan
  *|		into a temp relation, sorting the temp relation into
  *|		another sorted relation, and then preforming a simple
  *|		unqualified sequential scan on the sorted relation..
