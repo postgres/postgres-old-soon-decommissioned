@@ -358,7 +358,7 @@ else # not temp-install
         echo "(using postmaster on Unix socket, $port_info)"
     fi
     message "dropping database \"$dbname\""
-    "$bindir/dropdb" $psql_options "$dbname" >/dev/null 2>&1
+    "$bindir/dropdb" $psql_options "$dbname"
     # errors can be ignored
 fi
 
