@@ -400,7 +400,10 @@ endif # enable_shared
 clean-lib:
 	rm -f lib$(NAME).a
 ifeq ($(enable_shared), yes)
-	rm -f $(shlib) lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION) lib$(NAME)$(DLSUFFIX)
+	rm -f lib$(NAME)$(DLSUFFIX) lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION) lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
+ifdef EXPSUFF
+	rm -f lib$(NAME)$(EXPSUFF)
+endif
 endif
 ifeq ($(PORTNAME), win)
 	rm -rf $(NAME).def

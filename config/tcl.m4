@@ -74,3 +74,16 @@ fi
 
 AC_SUBST([TK_CONFIG_SH])
 ])# PGAC_PATH_TKCONFIGSH
+
+
+# PGAC_EVAL_TCLCONFIGSH(FILE, WANTED-VARS)
+# ----------------------------------------
+# Assigns variables listed in WANTED-VARS by reading FILE and
+# evaluating it according to the quoting scheme of tclConfig.sh and
+# tkConfig.sh.  Calls AC_SUBST for each variable.
+
+AC_DEFUN([PGAC_EVAL_TCLCONFIGSH],
+[. "$1"
+m4_foreach([pgac_item], [$2],
+[eval pgac_item=\"[$]pgac_item\"
+AC_SUBST(pgac_item)])])
