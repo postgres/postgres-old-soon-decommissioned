@@ -13,6 +13,14 @@
 #ifndef	BE_FSSTUBS_H
 #define	BE_FSSTUBS_H
 
+/* Redefine names LOread() and LOwrite() to be lowercase to allow calling
+ *  using the new v6.1 case-insensitive SQL parser. Define macros to allow
+ *  the existing code to stay the same. - tgl 97/05/03
+ */
+
+#define LOread(f,l) loread(f,l)
+#define LOwrite(f,b) lowrite(f,b)
+
 extern Oid lo_import(text *filename);
 extern int4 lo_export(Oid lobjId, text *filename);
 
@@ -26,7 +34,7 @@ extern int lo_lseek(int fd, int offset, int whence);
 extern int lo_tell(int fd);
 extern int lo_unlink(Oid lobjId);
 
-extern struct varlena *LOread(int fd, int len);
-extern int LOwrite(int fd, struct varlena *wbuf);
-     
+extern struct varlena *loread(int fd, int len);
+extern int lowrite(int fd, struct varlena *wbuf);
+
 #endif	/* BE_FSSTUBS_H */
