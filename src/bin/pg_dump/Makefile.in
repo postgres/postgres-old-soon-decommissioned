@@ -16,6 +16,8 @@ include ../../Makefile.global
 
 OBJS= pg_dump.o common.o @STRDUP@
 
+CFLAGS+= -I$(LIBPQDIR)
+
 all: submake pg_dump
 
 pg_dump: $(OBJS) $(LIBPQDIR)/libpq.a
