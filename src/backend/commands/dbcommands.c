@@ -311,11 +311,10 @@ createdb(const CreatedbStmt *stmt)
 	/* Copy the template database to the new location */
 #ifndef WIN32
 	snprintf(buf, sizeof(buf), "cp -r '%s' '%s'", src_loc, target_dir);
-#else
-	snprintf(buf, sizeof(buf), "xcopy /e /i /q '%s' '%s'", src_loc, target_dir);
-#endif
-
 	if (system(buf) != 0)
+#else
+	if (copydir(src_loc, target_dir) != 0)
+#endif
 	{
 		if (remove_dbdirs(nominal_loc, alt_loc))
 			elog(ERROR, "CREATE DATABASE: could not initialize database directory");

@@ -863,8 +863,9 @@ AC_LIBOBJ(qsort) ;;
 esac
 
 # Win32 can't to rename or unlink on an open file
-case $host_os in win32*|mingw*)
-AC_LIBOBJ(dirmod) ;;
+case $host_os in mingw*)
+AC_LIBOBJ(dirmod)
+AC_LIBOBJ(copydir) ;;
 esac
 
 if test "$with_readline" = yes; then
