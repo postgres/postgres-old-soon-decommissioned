@@ -248,7 +248,7 @@ ProcessQuery(Query *parsetree,
 	 * ----------------
 	 */
 	if (isRetrieveIntoRelation)
-		queryDesc->dest = (int) None;
+		queryDesc->dest = None;
 
 	/* ----------------
 	 *	create a default executor state.
