@@ -57,7 +57,7 @@ PostgreSQL documentation
       <term>-t</term>
       <listitem>
        <para>
-	Turn on auto-transaction mode.
+	Turn on auto-commit of transactions.
        </para>
       </listitem>
      </varlistentry>
