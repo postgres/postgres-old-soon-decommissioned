@@ -48,16 +48,6 @@ get_user_name(const char *progname)
 
 
 /*
- * Initialized NLS if enabled.
- */
-void
-init_nls(const char *argv0)
-{
-	set_pglocale(argv0, "pgscripts");
-}
-
-
-/*
  * Provide strictly harmonized handling of --help and --version
  * options.
  */
