@@ -311,6 +311,7 @@ initdb --locale=sv_SE
         <row>
          <entry>Name</entry>
          <entry>Description</entry>
+         <entry>Language</entry>
          <entry>Aliases</entry>
         </row>
        </thead>
