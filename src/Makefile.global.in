@@ -280,7 +280,7 @@ ifneq ($(CUSTOM_COPT),)
 endif
 
 ifeq ($(CC), gcc)
-CFLAGS+= -Wall -Wmissing-prototypes
+CFLAGS+= -Wall -Wmissing-prototypes -Wmissing-declarations
 endif
 
 ifdef COPT
