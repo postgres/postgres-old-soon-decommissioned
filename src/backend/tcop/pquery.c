@@ -1033,7 +1033,7 @@ PortalRunMulti(Portal portal,
 		 * Increment command counter between queries, but not after the
 		 * last one.
 		 */
-		if (planlist_item != NULL)
+		if (lnext(planlist_item) != NULL)
 			CommandCounterIncrement();
 
 		/*
