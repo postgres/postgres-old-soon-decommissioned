@@ -252,7 +252,7 @@ plperl_init_safe_interp(void)
 		 */
 		"require Safe; SPI::bootstrap();"
 		"sub ::mksafefunc { my $x = new Safe; $x->permit_only(':default');$x->permit(':base_math');"
-		"$x->share(qw[&elog &DEBUG &NOTICE &NOIND &ERROR]);"
+		"$x->share(qw[&elog &DEBUG &NOTICE &ERROR]);"
 		" return $x->reval(qq[sub { $_[0] }]); }"
 	};
 
@@ -1192,8 +1192,6 @@ plperl_elog(ClientData cdata, Tcl_Interp *interp,
 		level = FATAL;
 	else if (strcmp(argv[1], "DEBUG") == 0)
 		level = DEBUG;
-	else if (strcmp(argv[1], "NOIND") == 0)
-		level = NOIND;
 	else
 	{
 		Tcl_AppendResult(interp, "Unknown elog level '", argv[1],

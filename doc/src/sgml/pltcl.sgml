@@ -348,7 +348,7 @@ CREATE TRIGGER trig_mytab_modcount BEFORE INSERT OR UPDATE ON mytab
       <listitem>
        <para>
 	Fire a log message. Possible levels are NOTICE, ERROR,
-	FATAL, DEBUG and NOIND
+	FATAL, and DEBUG
 	as for the <function>elog</function> C function.
        </para>
       </listitem>
