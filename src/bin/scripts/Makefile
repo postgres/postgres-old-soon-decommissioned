@@ -13,7 +13,8 @@ subdir = src/bin/scripts
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-SCRIPTS := createdb dropdb createuser dropuser createlang droplang vacuumdb
+SCRIPTS := createdb dropdb createuser dropuser createlang droplang vacuumdb \
+           clusterdb
 
 all: $(SCRIPTS)
 

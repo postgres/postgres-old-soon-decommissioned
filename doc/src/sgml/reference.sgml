@@ -165,6 +165,7 @@ Disable this chapter until we have more functions documented.
    </para>
   </partintro>
 
+   &clusterdb;
    &createdb;
    &createlang;
    &createuser;

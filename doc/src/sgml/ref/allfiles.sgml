@@ -120,6 +120,7 @@ Complete list of usable sgml source files in this directory.
 <!entity vacuum             system "vacuum.sgml">
 
 <!-- applications and utilities -->
+<!entity clusterdb          system "clusterdb.sgml">
 <!entity createdb           system "createdb.sgml">
 <!entity createlang         system "createlang.sgml">
 <!entity createuser         system "createuser.sgml">
