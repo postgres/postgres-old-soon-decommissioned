@@ -1901,6 +1901,11 @@ END LOOP;
    <sect2 id="plpgsql-error-trapping">
     <title>Trapping Errors</title>
 
+    <indexterm>
+     <primary>exceptions</primary>
+     <secondary>in PL/PgSQL</secondary>
+    </indexterm>
+
     <para>
      By default, any error occurring in a <application>PL/pgSQL</>
      function aborts execution of the function, and indeed of the
@@ -2338,6 +2343,15 @@ COMMIT;
 
   <sect1 id="plpgsql-errors-and-messages">
    <title>Errors and Messages</title>
+
+   <indexterm>
+    <primary>RAISE</primary>
+   </indexterm>
+
+   <indexterm>
+    <primary>reporting errors</primary>
+    <secondary>in PL/PgSQL</secondary>
+   </indexterm>
 
    <para>
     Use the <command>RAISE</command> statement to report messages and
