@@ -311,7 +311,7 @@ rj_encrypt(PX_Cipher * c, const uint8 *data, unsigned dlen, uint8 *res)
 	if (dlen == 0)
 		return 0;
 
-	if ((dlen & 15) || (((unsigned) res) & 3))
+	if (dlen & 15)
 		return -1;
 
 	memcpy(res, data, dlen);
@@ -339,7 +339,7 @@ rj_decrypt(PX_Cipher * c, const uint8 *data, unsigned dlen, uint8 *res)
 	if (dlen == 0)
 		return 0;
 
-	if ((dlen & 15) || (((unsigned) res) & 3))
+	if (dlen & 15)
 		return -1;
 
 	memcpy(res, data, dlen);
@@ -426,7 +426,7 @@ bf_encrypt(PX_Cipher * c, const uint8 *data, unsigned dlen, uint8 *res)
 	if (dlen == 0)
 		return 0;
 
-	if ((dlen & 7) || (((unsigned) res) & 3))
+	if (dlen & 7)
 		return -1;
 
 	memcpy(res, data, dlen);
@@ -450,7 +450,7 @@ bf_decrypt(PX_Cipher * c, const uint8 *data, unsigned dlen, uint8 *res)
 	if (dlen == 0)
 		return 0;
 
-	if ((dlen & 7) || (((unsigned) res) & 3))
+	if (dlen & 7)
 		return -1;
 
 	memcpy(res, data, dlen);
