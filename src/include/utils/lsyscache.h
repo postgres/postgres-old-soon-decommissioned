@@ -21,8 +21,6 @@ extern AttrNumber get_attnum(Oid relid, char *attname);
 extern Oid	get_atttype(Oid relid, AttrNumber attnum);
 extern bool get_attisset(Oid relid, char *attname);
 extern int32 get_atttypmod(Oid relid, AttrNumber attnum);
-extern double get_attdispersion(Oid relid, AttrNumber attnum,
-				  double min_estimate);
 extern RegProcedure get_opcode(Oid opno);
 extern char *get_opname(Oid opno);
 extern bool op_mergejoinable(Oid opno, Oid ltype, Oid rtype,
@@ -41,6 +39,14 @@ extern bool get_typbyval(Oid typid);
 extern void get_typlenbyval(Oid typid, int16 *typlen, bool *typbyval);
 extern char get_typstorage(Oid typid);
 extern Datum get_typdefault(Oid typid);
+extern bool get_attstatsslot(HeapTuple statstuple,
+							 Oid atttype, int32 atttypmod,
+							 int reqkind, Oid reqop,
+							 Datum **values, int *nvalues,
+							 float4 **numbers, int *nnumbers);
+extern void free_attstatsslot(Oid atttype,
+							  Datum *values, int nvalues,
+							  float4 *numbers, int nnumbers);
 
 #define TypeIsToastable(typid)	(get_typstorage(typid) != 'p')
 

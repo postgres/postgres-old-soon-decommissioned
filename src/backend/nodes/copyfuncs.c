@@ -1378,8 +1378,8 @@ _copyRestrictInfo(RestrictInfo *from)
 	newnode->left_pathkey = NIL;
 	newnode->right_pathkey = NIL;
 	newnode->hashjoinoperator = from->hashjoinoperator;
-	newnode->left_dispersion = from->left_dispersion;
-	newnode->right_dispersion = from->right_dispersion;
+	newnode->left_bucketsize = from->left_bucketsize;
+	newnode->right_bucketsize = from->right_bucketsize;
 
 	return newnode;
 }
@@ -2209,11 +2209,12 @@ _copyVacuumStmt(VacuumStmt *from)
 {
 	VacuumStmt *newnode = makeNode(VacuumStmt);
 
-	newnode->verbose = from->verbose;
+	newnode->vacuum = from->vacuum;
 	newnode->analyze = from->analyze;
+	newnode->verbose = from->verbose;
 	if (from->vacrel)
 		newnode->vacrel = pstrdup(from->vacrel);
-	Node_Copy(from, newnode, va_spec);
+	Node_Copy(from, newnode, va_cols);
 
 	return newnode;
 }

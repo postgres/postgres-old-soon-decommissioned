@@ -244,7 +244,7 @@ SELECT (a + b) AS c FROM test_complex;
     only a small fraction.  '&lt;' will accept a fraction that depends on
     where the given constant falls in the range of values for that table
     column (which, it just so happens, is information collected by
-    VACUUM ANALYZE and made available to the selectivity estimator).
+    <command>ANALYZE</command> and made available to the selectivity estimator).
     '&lt;=' will accept a slightly larger fraction than '&lt;' for the same
     comparison constant, but they're close enough to not be worth
     distinguishing, especially since we're not likely to do better than a

@@ -53,7 +53,7 @@
 #define RULEOID			22
 #define SHADOWNAME		23
 #define SHADOWSYSID		24
-#define STATRELID		25
+#define STATRELATT		25
 #define TYPENAME		26
 #define TYPEOID			27
 

@@ -126,10 +126,12 @@ for dir in $INCLUDE_DIRS; do
     fi
 done
 
-# Get INDEX_MAX_KEYS from config.h (who needs consistency?)
+# Get INDEX_MAX_KEYS and DEFAULT_ATTSTATTARGET from config.h
+# (who needs consistency?)
 for dir in $INCLUDE_DIRS; do
     if [ -f "$dir/config.h" ]; then
         INDEXMAXKEYS=`grep '#define[ 	]*INDEX_MAX_KEYS' $dir/config.h | $AWK '{ print $3 }'`
+        DEFAULTATTSTATTARGET=`grep '#define[ 	]*DEFAULT_ATTSTATTARGET' $dir/config.h | $AWK '{ print $3 }'`
         break
     fi
 done
@@ -168,6 +170,7 @@ sed -e "s/;[ 	]*$//g" \
     -e "s/(NameData/(name/g" \
     -e "s/(Oid/(oid/g" \
     -e "s/NAMEDATALEN/$NAMEDATALEN/g" \
+    -e "s/DEFAULT_ATTSTATTARGET/$DEFAULTATTSTATTARGET/g" \
     -e "s/INDEX_MAX_KEYS\*2/$INDEXMAXKEYS2/g" \
     -e "s/INDEX_MAX_KEYS\*4/$INDEXMAXKEYS4/g" \
     -e "s/INDEX_MAX_KEYS/$INDEXMAXKEYS/g" \

@@ -43,9 +43,13 @@ extern void PortalCleanup(Portal portal);
 extern void AlterTableAddColumn(const char *relationName,
 					bool inh, ColumnDef *colDef);
 
-extern void AlterTableAlterColumn(const char *relationName,
-					  bool inh, const char *colName,
-					  Node *newDefault);
+extern void AlterTableAlterColumnDefault(const char *relationName,
+										 bool inh, const char *colName,
+										 Node *newDefault);
+
+extern void AlterTableAlterColumnStatistics(const char *relationName,
+											bool inh, const char *colName,
+											Node *statsTarget);
 
 extern void AlterTableDropColumn(const char *relationName,
 					 bool inh, const char *colName,

@@ -52,7 +52,7 @@ CATALOG(pg_class) BOOTSTRAP
 	Oid			relam;
 	Oid			relfilenode;
 	int4		relpages;
-	int4		reltuples;
+	float4		reltuples;
 	Oid			reltoastrelid;
 	Oid			reltoastidxid;
 	bool		relhasindex;

@@ -59,7 +59,7 @@ extern HashPath *create_hashjoin_path(RelOptInfo *joinrel,
 					 Path *inner_path,
 					 List *restrict_clauses,
 					 List *hashclauses,
-					 Selectivity innerdispersion);
+					 Selectivity innerbucketsize);
 
 /*
  * prototypes for relnode.c

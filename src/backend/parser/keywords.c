@@ -238,6 +238,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"some", SOME},
 	{"start", START},
 	{"statement", STATEMENT},
+	{"statistics", STATISTICS},
 	{"stdin", STDIN},
 	{"stdout", STDOUT},
 	{"substring", SUBSTRING},

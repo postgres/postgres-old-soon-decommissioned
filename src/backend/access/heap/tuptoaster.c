@@ -167,6 +167,43 @@ heap_tuple_untoast_attr(varattrib *attr)
 
 
 /* ----------
+ * toast_raw_datum_size -
+ *
+ *	Return the raw (detoasted) size of a varlena datum
+ * ----------
+ */
+Size
+toast_raw_datum_size(Datum value)
+{
+	varattrib  *attr = (varattrib *) DatumGetPointer(value);
+	Size		result;
+
+	if (VARATT_IS_COMPRESSED(attr))
+	{
+		/*
+		 * va_rawsize shows the original data size, whether the datum
+		 * is external or not.
+		 */
+		result = attr->va_content.va_compressed.va_rawsize + VARHDRSZ;
+	}
+	else if (VARATT_IS_EXTERNAL(attr))
+	{
+		/*
+		 * an uncompressed external attribute has rawsize including the
+		 * header (not too consistent!)
+		 */
+		result = attr->va_content.va_external.va_rawsize;
+	}
+	else
+	{
+		/* plain untoasted datum */
+		result = VARSIZE(attr);
+	}
+	return result;
+}
+
+
+/* ----------
  * toast_delete -
  *
  *	Cascaded delete toast-entries on DELETE

@@ -157,6 +157,11 @@
 #define FUNC_MAX_ARGS		INDEX_MAX_KEYS
 
 /*
+ * System default value for pg_attribute.attstattarget
+ */
+#define DEFAULT_ATTSTATTARGET	10
+
+/*
  * Define this to make libpgtcl's "pg_result -assign" command process C-style
  * backslash sequences in returned tuple data and convert Postgres array
  * attributes into Tcl lists.  CAUTION: this conversion is *wrong* unless

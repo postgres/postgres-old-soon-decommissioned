@@ -36,8 +36,9 @@ typedef struct Tuplesortstate Tuplesortstate;
  */
 
 extern Tuplesortstate *tuplesort_begin_heap(TupleDesc tupDesc,
-					 int nkeys, ScanKey keys,
-					 bool randomAccess);
+					  int nkeys,
+					  Oid *sortOperators, AttrNumber *attNums,
+					  bool randomAccess);
 extern Tuplesortstate *tuplesort_begin_index(Relation indexRel,
 					  bool enforceUnique,
 					  bool randomAccess);
@@ -74,5 +75,20 @@ extern void tuplesort_end(Tuplesortstate *state);
 extern void tuplesort_rescan(Tuplesortstate *state);
 extern void tuplesort_markpos(Tuplesortstate *state);
 extern void tuplesort_restorepos(Tuplesortstate *state);
+
+/*
+ * This routine selects an appropriate sorting function to implement
+ * a sort operator as efficiently as possible.
+ */
+typedef enum
+{
+	SORTFUNC_LT,				/* raw "<" operator */
+	SORTFUNC_CMP,				/* -1 / 0 / 1 three-way comparator */
+	SORTFUNC_REVCMP				/* 1 / 0 / -1 (reversed) 3-way comparator */
+} SortFunctionKind;
+
+extern void SelectSortFunction(Oid sortOperator,
+							   RegProcedure *sortFunction,
+							   SortFunctionKind *kind);
 
 #endif	 /* TUPLESORT_H */

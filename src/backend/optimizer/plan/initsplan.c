@@ -12,9 +12,10 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
+
 #include <sys/types.h>
 
-#include "postgres.h"
 #include "catalog/pg_operator.h"
 #include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
@@ -348,8 +349,8 @@ distribute_qual_to_rels(Query *root, Node *clause,
 	restrictinfo->left_pathkey = NIL;	/* not computable yet */
 	restrictinfo->right_pathkey = NIL;
 	restrictinfo->hashjoinoperator = InvalidOid;
-	restrictinfo->left_dispersion = -1; /* not computed until needed */
-	restrictinfo->right_dispersion = -1;
+	restrictinfo->left_bucketsize = -1; /* not computed until needed */
+	restrictinfo->right_bucketsize = -1;
 
 	/*
 	 * Retrieve all relids and vars contained within the clause.

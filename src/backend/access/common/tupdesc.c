@@ -237,15 +237,15 @@ equalTupleDescs(TupleDesc tupdesc1, TupleDesc tupdesc2)
 		Form_pg_attribute attr2 = tupdesc2->attrs[i];
 
 		/*
-		 * We do not need to check every single field here, and in fact
-		 * some fields such as attdispersion probably shouldn't be
-		 * compared.  We can also disregard attnum (it was used to place
-		 * the row in the attrs array) and everything derived from the
-		 * column datatype.
+		 * We do not need to check every single field here: we can disregard
+		 * attrelid, attnum (it was used to place the row in the attrs array)
+		 * and everything derived from the column datatype.
 		 */
 		if (strcmp(NameStr(attr1->attname), NameStr(attr2->attname)) != 0)
 			return false;
 		if (attr1->atttypid != attr2->atttypid)
+			return false;
+		if (attr1->attstattarget != attr2->attstattarget)
 			return false;
 		if (attr1->atttypmod != attr2->atttypmod)
 			return false;
@@ -365,12 +365,12 @@ TupleDescInitEntry(TupleDesc desc,
 	else
 		MemSet(NameStr(att->attname), 0, NAMEDATALEN);
 
-	att->attdispersion = 0;		/* dummy value */
+	att->attstattarget = 0;
 	att->attcacheoff = -1;
 	att->atttypmod = typmod;
 
 	att->attnum = attributeNumber;
-	att->attnelems = attdim;
+	att->attndims = attdim;
 	att->attisset = attisset;
 
 	att->attnotnull = false;
@@ -506,7 +506,7 @@ TupleDescMakeSelfReference(TupleDesc desc,
 	att->attbyval = true;
 	att->attalign = 'i';
 	att->attstorage = 'p';
-	att->attnelems = 0;
+	att->attndims = 0;
 }
 
 /* ----------------------------------------------------------------

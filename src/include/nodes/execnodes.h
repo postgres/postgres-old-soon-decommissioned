@@ -628,7 +628,6 @@ typedef struct GroupState
  *	 SortState information
  *
  *		sort_Done		indicates whether sort has been performed yet
- *		sort_Keys		scan key structures describing the sort keys
  *		tuplesortstate	private state of tuplesort.c
  * ----------------
  */
@@ -636,7 +635,6 @@ typedef struct SortState
 {
 	CommonScanState csstate;	/* its first field is NodeTag */
 	bool		sort_Done;
-	ScanKey		sort_Keys;
 	void	   *tuplesortstate;
 } SortState;
 

@@ -14,9 +14,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <sys/types.h>
-
 #include "postgres.h"
+
+#include <sys/types.h>
 
 #include "catalog/pg_index.h"
 #include "nodes/makefuncs.h"
@@ -1484,9 +1484,9 @@ make_sort_from_pathkeys(List *tlist, Plan *lefttree, List *pathkeys)
 		 */
 		if (resdom->reskey == 0)
 		{
-			/* OK, mark it as a sort key and set the sort operator regproc */
+			/* OK, mark it as a sort key and set the sort operator */
 			resdom->reskey = ++numsortkeys;
-			resdom->reskeyop = get_opcode(pathkey->sortop);
+			resdom->reskeyop = pathkey->sortop;
 		}
 	}
 

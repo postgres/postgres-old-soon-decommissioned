@@ -26,6 +26,7 @@ PostgreSQL Reference Manual
    &alterGroup;
    &alterTable;
    &alterUser;
+   &analyze;
    &begin;
    &checkpoint;
    &close;

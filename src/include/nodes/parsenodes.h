@@ -118,11 +118,12 @@ typedef struct AlterTableStmt
 	NodeTag		type;
 	char		subtype;		/*------------
 								 * 	A = add column
-								 *	T = alter column
+								 *	T = alter column default
+								 *	S = alter column statistics
 								 *	D = drop column
 								 *	C = add constraint
 								 *	X = drop constraint
-								 *	E = add toast table,
+								 *	E = create toast table
 								 *	U = change owner
 								 *------------
 								 */
@@ -690,16 +691,20 @@ typedef struct ClusterStmt
 } ClusterStmt;
 
 /* ----------------------
- *		Vacuum Statement
+ *		Vacuum and Analyze Statements
+ *
+ * Even though these are nominally two statements, it's convenient to use
+ * just one node type for both.
  * ----------------------
  */
 typedef struct VacuumStmt
 {
 	NodeTag		type;
-	bool		verbose;		/* print status info */
-	bool		analyze;		/* analyze data */
-	char	   *vacrel;			/* table to vacuum */
-	List	   *va_spec;		/* columns to analyse */
+	bool		vacuum;			/* do VACUUM step */
+	bool		analyze;		/* do ANALYZE step */
+	bool		verbose;		/* print progress info */
+	char	   *vacrel;			/* name of single table to process, or NULL */
+	List	   *va_cols;		/* list of column names, or NIL for all */
 } VacuumStmt;
 
 /* ----------------------

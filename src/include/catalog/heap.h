@@ -14,6 +14,7 @@
 #ifndef HEAP_H
 #define HEAP_H
 
+#include "catalog/pg_attribute.h"
 #include "utils/rel.h"
 
 typedef struct RawColumnDefault
@@ -43,5 +44,7 @@ extern void heap_truncate(char *relname);
 extern void AddRelationRawConstraints(Relation rel,
 						  List *rawColDefaults,
 						  List *rawConstraints);
+
+extern Form_pg_attribute SystemAttributeDefinition(AttrNumber attno);
 
 #endif	 /* HEAP_H */

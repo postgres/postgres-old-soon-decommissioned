@@ -512,8 +512,8 @@ typedef struct RestrictInfo
 	Oid			hashjoinoperator;		/* copy of clause operator */
 
 	/* cache space for hashclause processing; -1 if not yet set */
-	Selectivity left_dispersion;/* dispersion of left side */
-	Selectivity right_dispersion;		/* dispersion of right side */
+	Selectivity left_bucketsize;		/* avg bucketsize of left side */
+	Selectivity right_bucketsize;		/* avg bucketsize of right side */
 } RestrictInfo;
 
 /*

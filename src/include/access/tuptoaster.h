@@ -13,8 +13,6 @@
 #ifndef TUPTOASTER_H
 #define TUPTOASTER_H
 
-#ifdef TUPLE_TOASTER_ACTIVE
-
 #include "access/heapam.h"
 #include "access/htup.h"
 #include "access/tupmacs.h"
@@ -109,7 +107,13 @@ extern varattrib *heap_tuple_untoast_attr(varattrib *attr);
  */
 extern Datum toast_compress_datum(Datum value);
 
-#endif	 /* TUPLE_TOASTER_ACTIVE */
+/* ----------
+ * toast_raw_datum_size -
+ *
+ *	Return the raw (detoasted) size of a varlena datum
+ * ----------
+ */
+extern Size toast_raw_datum_size(Datum value);
 
 
 #endif	 /* TUPTOASTER_H */

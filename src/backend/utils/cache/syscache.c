@@ -313,7 +313,7 @@ static struct cachedesc cacheinfo[] = {
 			0,
 			0
 	}},
-	{StatisticRelationName,		/* STATRELID */
+	{StatisticRelationName,		/* STATRELATT */
 		StatisticRelidAttnumIndex,
 		2,
 		{

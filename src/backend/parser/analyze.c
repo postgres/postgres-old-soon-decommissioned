@@ -2660,7 +2660,7 @@ transformForUpdate(Query *qry, List *forUpdate)
 		/* just the named tables */
 		foreach(l, forUpdate)
 		{
-			char	   *relname = lfirst(l);
+			char	   *relname = strVal(lfirst(l));
 
 			i = 0;
 			foreach(rt, qry->rtable)
