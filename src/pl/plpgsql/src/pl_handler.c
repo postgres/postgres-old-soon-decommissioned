@@ -47,7 +47,7 @@
 
 extern DLLIMPORT bool check_function_bodies;
 
-static int	plpgsql_firstcall = 1;
+static bool	plpgsql_firstcall = true;
 
 static void plpgsql_init_all(void);
 
@@ -65,10 +65,8 @@ plpgsql_init(void)
 		return;
 
 	plpgsql_HashTableInit();
-
 	RegisterXactCallback(plpgsql_xact_cb, NULL);
-
-	plpgsql_firstcall = 0;
+	plpgsql_firstcall = false;
 }
 
 /*
@@ -78,14 +76,12 @@ static void
 plpgsql_init_all(void)
 {
 	/* Execute any postmaster-startup safe initialization */
-	if (plpgsql_firstcall)
-		plpgsql_init();
+	plpgsql_init();
 
 	/*
 	 * Any other initialization that must be done each time a new backend
 	 * starts -- currently none
 	 */
-
 }
 
 /* ----------
