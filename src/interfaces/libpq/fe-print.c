@@ -498,26 +498,38 @@ PQprintTuples(const PGresult *res,
  * the backend is assumed.
  */
 int
-PQmblen(const unsigned char *s)
+PQmblen(const unsigned char *s, int encoding)
+{
+	return (pg_encoding_mblen(encoding, s));
+}
+
+/*
+ * Get encoding id from environment variable PGCLIENTENCODING.
+ */
+int
+PQenv2encoding(void)
 {
 	char	   *str;
-	int			encoding = -1;
+	int			encoding = SQL_ASCII;
 
 	str = getenv("PGCLIENTENCODING");
 	if (str && *str != '\0')
 		encoding = pg_char_to_encoding(str);
-	if (encoding < 0)
-		encoding = MULTIBYTE;
-	return (pg_encoding_mblen(encoding, s));
+	return(encoding);
 }
 
 #else
 
 /* Provide a default definition in case someone calls it anyway */
 int
-PQmblen(const unsigned char *s)
+PQmblen(const unsigned char *s, int encoding)
 {
 	return 1;
+}
+int
+PQenv2encoding(void)
+{
+	return 0;
 }
 
 #endif	 /* MULTIBYTE */
@@ -560,7 +572,7 @@ do_field(const PQprintOpt *po, const PGresult *res,
 			char		ch = '0';
 
 #ifdef MULTIBYTE
-			for (p = pval; *p; p += PQmblen(p))
+			for (p = pval; *p; p += PQmblen(p, PQclientencoding(res->conn)))
 #else
 			for (p = pval; *p; p++)
 #endif

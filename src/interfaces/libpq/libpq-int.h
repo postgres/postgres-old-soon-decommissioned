@@ -236,6 +236,8 @@ struct pg_conn
 
 	/* Buffer for receiving various parts of messages */
 	PQExpBufferData	workBuffer;	/* expansible string */
+
+	int client_encoding;		/* encoding id */
 };
 
 /* ----------------

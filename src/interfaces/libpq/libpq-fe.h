@@ -224,6 +224,7 @@ extern		"C"
 	extern const char *PQerrorMessage(const PGconn *conn);
 	extern int	PQsocket(const PGconn *conn);
 	extern int	PQbackendPID(const PGconn *conn);
+	extern int	PQclientencoding(const PGconn *conn);
 
 	/* Enable/disable tracing */
 	extern void PQtrace(PGconn *conn, FILE *debug_port);
@@ -235,7 +236,7 @@ extern		"C"
 	/* Passing of environment variables */
 	/* Asynchronous (non-blocking) */
 	extern PGsetenvHandle PQsetenvStart(PGconn *conn);
-	extern PostgresPollingStatusType PQsetenvPoll(PGsetenvHandle handle);
+	extern PostgresPollingStatusType PQsetenvPoll(PGconn *conn);
 	extern void PQsetenvAbort(PGsetenvHandle handle);
 
 	/* Synchronous (blocking) */
@@ -333,7 +334,10 @@ extern		"C"
 						 * 0, use variable width */
 
 	/* Determine length of multibyte encoded char at *s */
-	extern int	PQmblen(const unsigned char *s);
+	extern int	PQmblen(const unsigned char *s, int encoding);
+
+	/* Get encoding id from environment variable PGCLIENTENCODING */
+	int PQenv2encoding(void);
 
 /* === in fe-lobj.c === */
 
