@@ -84,8 +84,10 @@ chkpass_in(PG_FUNCTION_ARGS)
 
 	if (verify_pass(str) != 0)
 	{
-		elog(ERROR, "chkpass_in: purported CHKPASS \"%s\" is a weak password",
-			 str);
+		ereport(ERROR,
+				(errcode(ERRCODE_DATA_EXCEPTION),
+				 errmsg("password \"%s\" is weak", str)));
+
 		PG_RETURN_POINTER(NULL);
 	}
 

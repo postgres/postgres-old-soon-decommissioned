@@ -100,6 +100,9 @@
 #define ERRCODE_TRANSACTION_RESOLUTION_UNKNOWN		MAKE_SQLSTATE('0','8', '0','0','7')
 #define ERRCODE_PROTOCOL_VIOLATION			MAKE_SQLSTATE('0','8', 'P','0','1')
 
+/* Class 09 - Triggered Action Exception */
+#define ERRCODE_TRIGGERED_ACTION_EXCEPTION	MAKE_SQLSTATE('0','9', '0','0','0')
+
 /* Class 0A - Feature Not Supported */
 #define ERRCODE_FEATURE_NOT_SUPPORTED		MAKE_SQLSTATE('0','A', '0','0','0')
 

@@ -48,13 +48,19 @@ isbn_in(char *str)
 
 	if (strlen(str) != 13)
 	{
-		elog(ERROR, "isbn_in: invalid ISBN \"%s\"", str);
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				 errmsg("invalid ISBN: \"%s\"", str),
+				 errdetail("incorrect length")));
+
 		return (NULL);
 	}
 	if (isbn_sum(str) != 0)
 	{
-		elog(ERROR, "isbn_in: purported ISBN \"%s\" failed checksum",
-			 str);
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				 errmsg("invalid ISBN: \"%s\"", str),
+				 errdetail("failed checksum")));
 		return (NULL);
 	}
 
@@ -236,13 +242,19 @@ issn_in(char *str)
 
 	if (strlen(str) != 9)
 	{
-		elog(ERROR, "issn_in: invalid ISSN \"%s\"", str);
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				 errmsg("invalid ISSN: \"%s\"", str),
+				 errdetail("incorrect length")));
+
 		return (NULL);
 	}
 	if (issn_sum(str) != 0)
 	{
-		elog(ERROR, "issn_in: purported ISSN \"%s\" failed checksum",
-			 str);
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				 errmsg("invalid ISSN: \"%s\"", str),
+				 errdetail("failed checksum")));
 		return (NULL);
 	}
 
