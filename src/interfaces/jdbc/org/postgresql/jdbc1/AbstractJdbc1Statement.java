@@ -1864,9 +1864,12 @@ public abstract class AbstractJdbc1Statement implements BaseStatement
 	public byte getByte(int parameterIndex) throws SQLException
 	{
 		checkIndex (parameterIndex, Types.TINYINT, "Byte");
-		if (callResult == null)
-			return 0;
-		return (byte)((Integer)callResult).intValue ();
+		// We expect the above checkIndex call to fail because
+		// we don't have an equivalent pg type for TINYINT.
+		// Possibly "char" (not char(N)), could be used, but
+		// for the moment we just bail out.
+		//
+		throw new PSQLException("postgresql.unusual", PSQLState.UNEXPECTED_ERROR);
 	}
 
 	/*
@@ -1881,7 +1884,7 @@ public abstract class AbstractJdbc1Statement implements BaseStatement
 		checkIndex (parameterIndex, Types.SMALLINT, "Short");
 		if (callResult == null)
 			return 0;
-		return (short)((Integer)callResult).intValue ();
+		return (short)((Short)callResult).intValue ();
 	}
 
 
