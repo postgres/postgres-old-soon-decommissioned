@@ -1346,6 +1346,20 @@ PQnotifies(PGconn *conn)
 }
 
 /*
+ * PQfreeNotify - free's the memory associated with a PGnotify
+ *
+ * This function is needed on Windows when using libpq.dll and
+ * for example libpgtcl.dll: All memory allocated inside a dll
+ * should be freed in the context of the same dll.
+ *
+ */
+void
+PQfreeNotify(PGnotify *notify)
+{
+	free(notify);
+}
+
+/*
  * PQgetline - gets a newline-terminated string from the backend.
  *
  * Chiefly here so that applications can use "COPY <rel> to stdout"

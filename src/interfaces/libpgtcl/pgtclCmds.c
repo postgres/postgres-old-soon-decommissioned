@@ -403,6 +403,8 @@ Pg_connect(ClientData cData, Tcl_Interp *interp, int argc, char *argv[])
 int
 Pg_disconnect(ClientData cData, Tcl_Interp *interp, int argc, char *argv[])
 {
+	Pg_ConnectionId *connid;
+	PGconn	   *conn;
 	Tcl_Channel conn_chan;
 
 	if (argc != 2)
@@ -418,6 +420,12 @@ Pg_disconnect(ClientData cData, Tcl_Interp *interp, int argc, char *argv[])
 		Tcl_AppendResult(interp, argv[1], " is not a valid connection\n", 0);
 		return TCL_ERROR;
 	}
+
+#if TCL_MAJOR_VERSION >= 8
+	conn = PgGetConnectionId(interp, argv[1], &connid);
+	if (connid->notifier_channel != NULL)
+		Tcl_UnregisterChannel(interp, connid->notifier_channel);
+#endif
 
 	return Tcl_UnregisterChannel(interp, conn_chan);
 }

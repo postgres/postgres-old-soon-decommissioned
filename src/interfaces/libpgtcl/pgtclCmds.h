@@ -64,7 +64,11 @@ typedef struct Pg_ConnectionId_s
 
 	Pg_TclNotifies *notify_list;/* head of list of notify info */
 	int			notifier_running;		/* notify event source is live */
+#if TCL_MAJOR_VERSION >= 8
+	Tcl_Channel notifier_channel;/* Tcl_Channel on which notifier is listening */
+#else
 	int			notifier_socket;/* PQsocket on which notifier is listening */
+#endif
 }			Pg_ConnectionId;
 
 /* Values of res_copyStatus */
