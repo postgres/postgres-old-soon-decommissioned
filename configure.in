@@ -1237,7 +1237,7 @@ case $host_os in mingw*)
 AC_CONFIG_COMMANDS([check_win32_symlinks],[
 # Links sometimes fail undetected on Mingw - 
 # so here we detect it and warn the user
-for FILE in "$CONFIG_LINKS"
+for FILE in $CONFIG_LINKS
  do
 	# test -e works for symlinks in the MinGW console
 	test -e `expr "$FILE" : '\(^:*\)'` || AC_MSG_WARN([*** link for $FILE - please fix by hand])
