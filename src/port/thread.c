@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * threads.c
+ * thread.c
  *
  *		  Prototypes and macros around system calls, used to help make
  *		  threaded libraries reentrant and safe to use from threaded applications.
