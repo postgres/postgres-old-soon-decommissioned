@@ -3,6 +3,11 @@ $Header$
 Genetic Optimizer
 
 $Log: geqo.sgml,v $
+Revision 1.5  1998/12/29 02:24:15  thomas
+Clean up to ensure tag completion as required by the newest versions
+ of Norm's Modular Style Sheets and jade/docbook.
+From Vince Vielhaber <vev@michvhf.com>.
+
 Revision 1.4  1998/08/15 06:55:05  thomas
 Change Id field in chapter tag to change html output file name.
 
@@ -302,11 +307,6 @@ Suggestions are welcome :-(
 
 <Sect2>
 <Title>Further Improvements</Title>
-
-<Para>
-Enable bushy query tree processing within <ProductName>Postgres</ProductName>;
-that may improve the quality of query plans.
-</para>
 
 <BIBLIOGRAPHY Id="geqo-biblio">
 <TITLE>

@@ -80,8 +80,6 @@
 #define FLOAT_EQUAL(X,Y) ((X) - (Y) < TOLERANCE)
 #define FLOAT_IS_ZERO(X) (FLOAT_EQUAL(X,0.0))
 
-extern int	BushyPlanFlag;
-
 /* #define deactivate_joininfo(joininfo)		joininfo->inactive=true*/
 /*#define joininfo_inactive(joininfo)	joininfo->inactive */
 

@@ -69,9 +69,9 @@ make_rels_by_joins(Query *root, List *old_rels)
 			 */
 			joined_rels = make_rels_by_clauseless_joins(old_rel,
 														root->base_rel_list);
-			if (BushyPlanFlag)
-				joined_rels = make_rels_by_clauseless_joins(old_rel,
-															old_rels);
+			joined_rels = append(joined_rels,
+								 make_rels_by_clauseless_joins(old_rel,
+															   old_rels));
 		}
 
 		join_list = nconc(join_list, joined_rels);

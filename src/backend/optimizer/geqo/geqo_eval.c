@@ -119,12 +119,13 @@ gimme_tree(Query *root, Gene *tour, int rel_count, int num_gene, RelOptInfo *old
 													   inner_rel->joininfo,
 													   inner_rel->relids)))
 			{
-				if (!BushyPlanFlag)
-					new_rels = make_rels_by_clauseless_joins(old_rel,
-												 	lcons(inner_rel,NIL));
-				else
-					new_rels = make_rels_by_clauseless_joins(old_rel,
+				new_rels = make_rels_by_clauseless_joins(old_rel,
+											 	lcons(inner_rel,NIL));
+				/* we don't do bushy plans in geqo, do we?  bjm 02/18/1999
+				new_rels = append(new_rels,
+								  make_rels_by_clauseless_joins(old_rel,
 													 lcons(old_rel,NIL));
+				*/
 			}
 
 			/* process new_rel->pathlist */
