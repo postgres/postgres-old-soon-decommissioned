@@ -72,6 +72,6 @@ typedef FormData_pg_shadow *Form_pg_shadow;
  * user choices.
  * ----------------
  */
-DATA(insert OID = 0 ( POSTGRES PGUID t t t t PASSWORD _null_ ));
+DATA(insert OID = 0 ( POSTGRES PGUID t t t t _null_ _null_ ));
 
 #endif	 /* PG_SHADOW_H */

@@ -3,8 +3,8 @@
 #ifndef PG_WCHAR_H
 #define PG_WCHAR_H
 
+#include "postgres.h"
 #include <sys/types.h>
-#include "c.h"
 
 #define SQL_ASCII 0				/* SQL/ASCII */
 #define EUC_JP 1				/* EUC for Japanese */

@@ -13,14 +13,21 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
+# This is a bit of hackery here: pg_encoding uses backend includes and the
+# frontend library.
+
 OBJS= pg_encoding.o
+CFLAGS:= -I$(SRCDIR)/include $(CFLAGS)
 
-CFLAGS+= $(MBFLAGS) -I$(SRCDIR)/include
+all: submake pg_encoding
 
-all: pg_encoding
+pg_encoding: $(OBJS)
+	$(CC) -o pg_encoding $(OBJS) -L$(LIBPQDIR) -lpq $(LDFLAGS) $(CFLAGS)
 
-pg_encoding: $(OBJS) $(LIBPQDIR)/libpq.a
-	$(CC) -o pg_encoding $(OBJS) -L$(LIBPQDIR) -lpq $(LDFLAGS)
+.PHONY: submake
+
+submake:
+	$(MAKE) -C $(LIBPQDIR) libpq.a
 
 install: pg_encoding
 	$(INSTALL) $(INSTL_EXE_OPTS) pg_encoding$(X) $(BINDIR)/pg_encoding$(X)

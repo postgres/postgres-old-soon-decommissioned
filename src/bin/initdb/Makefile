@@ -17,7 +17,7 @@ include ../../Makefile.global
 all: initdb
 
 initdb: initdb.sh
-	sed -e 's/__MULTIBYTE__/$(MULTIBYTE)/' initdb.sh > initdb
+	sed -e 's/__MULTIBYTE__/$(MULTIBYTE)/g' < initdb.sh > initdb
 
 install: initdb
 	$(INSTALL) $(INSTL_EXE_OPTS) $+ $(BINDIR)
