@@ -13,7 +13,7 @@ subdir = src/bin/pg_dump
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
+override CPPFLAGS := -DFRONTEND -I$(libpq_srcdir) $(CPPFLAGS)
 
 OBJS=	pg_backup_archiver.o pg_backup_db.o pg_backup_custom.o \
 	pg_backup_files.o pg_backup_null.o pg_backup_tar.o \

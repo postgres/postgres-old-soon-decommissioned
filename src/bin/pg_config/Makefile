@@ -14,7 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 OBJS=   pg_config.o
 
-override CPPFLAGS := -I$(libpq_srcdir) -DVAL_CONFIGURE="\"$(configure_args)\"" $(CPPFLAGS)
+override CPPFLAGS := -DFRONTEND -I$(libpq_srcdir) -DVAL_CONFIGURE="\"$(configure_args)\"" $(CPPFLAGS)
 
 all: submake-libpgport pg_config
 
