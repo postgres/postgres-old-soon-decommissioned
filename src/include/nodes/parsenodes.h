@@ -689,6 +689,16 @@ typedef struct ExplainStmt
 } ExplainStmt;
 
 /* ----------------------
+ *		Set Session Statement
+ * ----------------------
+ */
+typedef struct SetSessionStmt
+{
+	NodeTag		type;
+	List	   *args;
+} SetSessionStmt;
+
+/* ----------------------
  * Set Statement
  * ----------------------
  */
