@@ -901,18 +901,6 @@ StartTransaction(void)
 
 }
 
-#ifdef NOT_USED
-/* ---------------
- * Tell me if we are currently in progress
- * ---------------
- */
-bool
-CurrentXactInProgress(void)
-{
-	return CurrentTransactionState->state == TRANS_INPROGRESS;
-}
-#endif
-
 /* --------------------------------
  *	CommitTransaction
  * --------------------------------

@@ -71,7 +71,7 @@ typedef struct TriggerDesc
 	 * trigger can appear in more than one class, for each class we
 	 * provide a list of integer indexes into the triggers array.
 	 */
-#define TRIGGER_NUM_EVENT_CLASSES  4
+#define TRIGGER_NUM_EVENT_CLASSES  3
 
 	uint16		n_before_statement[TRIGGER_NUM_EVENT_CLASSES];
 	uint16		n_before_row[TRIGGER_NUM_EVENT_CLASSES];

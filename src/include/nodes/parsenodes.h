@@ -1048,11 +1048,7 @@ typedef struct CreateTrigStmt
 	List	   *args;			/* list of (T_String) Values or NIL */
 	bool		before;			/* BEFORE/AFTER */
 	bool		row;			/* ROW/STATEMENT */
-	char		actions[4];		/* Insert, Update, Delete */
-	char	   *lang;			/* currently not used, always NULL */
-	char	   *text;			/* AS 'text' */
-	List	   *attr;			/* UPDATE OF a, b,... (NI) or NULL */
-	char	   *when;			/* WHEN 'a > 10 ...' (NI) or NULL */
+	char		actions[3];		/* Insert, Update, Delete */
 
 	/* The following are used for referential */
 	/* integrity constraint triggers */

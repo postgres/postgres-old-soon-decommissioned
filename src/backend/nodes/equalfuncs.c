@@ -1291,14 +1291,6 @@ _equalCreateTrigStmt(CreateTrigStmt *a, CreateTrigStmt *b)
 		return false;
 	if (strcmp(a->actions, b->actions) != 0)
 		return false;
-	if (!equalstr(a->lang, b->lang))
-		return false;
-	if (!equalstr(a->text, b->text))
-		return false;
-	if (!equal(a->attr, b->attr))
-		return false;
-	if (!equalstr(a->when, b->when))
-		return false;
 	if (a->isconstraint != b->isconstraint)
 		return false;
 	if (a->deferrable != b->deferrable)

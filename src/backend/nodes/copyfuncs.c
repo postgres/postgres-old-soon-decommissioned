@@ -2482,14 +2482,6 @@ _copyCreateTrigStmt(CreateTrigStmt *from)
 	newnode->before = from->before;
 	newnode->row = from->row;
 	memcpy(newnode->actions, from->actions, sizeof(from->actions));
-	if (from->lang)
-		newnode->lang = pstrdup(from->lang);
-	if (from->text)
-		newnode->text = pstrdup(from->text);
-
-	Node_Copy(from, newnode, attr);
-	if (from->when)
-		newnode->when = pstrdup(from->when);
 	newnode->isconstraint = from->isconstraint;
 	newnode->deferrable = from->deferrable;
 	newnode->initdeferred = from->initdeferred;

@@ -116,18 +116,30 @@ extern TriggerDesc *CopyTriggerDesc(TriggerDesc *trigdesc);
 
 extern void FreeTriggerDesc(TriggerDesc *trigdesc);
 
+extern void ExecBSInsertTriggers(EState *estate,
+								 ResultRelInfo *relinfo);
+extern void ExecASInsertTriggers(EState *estate,
+								 ResultRelInfo *relinfo);
 extern HeapTuple ExecBRInsertTriggers(EState *estate,
 					 ResultRelInfo *relinfo,
 					 HeapTuple trigtuple);
 extern void ExecARInsertTriggers(EState *estate,
 					 ResultRelInfo *relinfo,
 					 HeapTuple trigtuple);
+extern void ExecBSDeleteTriggers(EState *estate,
+								 ResultRelInfo *relinfo);
+extern void ExecASDeleteTriggers(EState *estate,
+								 ResultRelInfo *relinfo);
 extern bool ExecBRDeleteTriggers(EState *estate,
 					 ResultRelInfo *relinfo,
 					 ItemPointer tupleid);
 extern void ExecARDeleteTriggers(EState *estate,
 					 ResultRelInfo *relinfo,
 					 ItemPointer tupleid);
+extern void ExecBSUpdateTriggers(EState *estate,
+								 ResultRelInfo *relinfo);
+extern void ExecASUpdateTriggers(EState *estate,
+								 ResultRelInfo *relinfo);
 extern HeapTuple ExecBRUpdateTriggers(EState *estate,
 					 ResultRelInfo *relinfo,
 					 ItemPointer tupleid,
