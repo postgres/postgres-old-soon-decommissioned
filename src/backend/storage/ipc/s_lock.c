@@ -381,7 +381,8 @@ S_INIT_LOCK(unsigned char *addr)
  * Linux and friends
  */
 
-#if defined(PORTNAME_linux) || defined(PORTNAME_BSD44_derived) || defined(PORTNAME_bsdi)
+#if defined(PORTNAME_linux) || defined(PORTNAME_BSD44_derived) ||  defined(PORTNAME_bsdi) || defined(PORTNAME_bsdi_2_1)
+
 
 int
 tas(slock_t *m)
@@ -410,7 +411,7 @@ S_INIT_LOCK(slock_t *lock)
     S_UNLOCK(lock);
 }
 
-#endif /* PORTNAME_linux || PORTNAME_BSD44_derived */
+#endif /* PORTNAME_linux || PORTNAME_BSD44_derived || PORTNAME_bsdi || PORTNAME_bsdi_2_1 */
 
 
 #endif /* HAS_TEST_AND_SET */

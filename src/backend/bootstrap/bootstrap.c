@@ -187,7 +187,7 @@ typedef void (*sig_func)();
  *	error handling / abort routines
  * ----------------
  */
-#if !defined(PORTNAME_bsdi)
+#if !defined(PORTNAME_bsdi) && !defined(PORTNAME_bsdi_2_1)
 void err()
 {
     Warnings++;

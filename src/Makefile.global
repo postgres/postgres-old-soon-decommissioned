@@ -43,6 +43,7 @@
 #				"LINUX_ELF=1" in src/mk/port/postgres.mk.linux)
 #	BSD44_derived	-	OSs derived from 4.4-lite BSD (NetBSD, FreeBSD)
 #       bsdi            -       BSD/OS 2.0 and 2.01
+#       bsdi_2_1        -       BSD/OS 2.1
 #	aix		-	IBM on AIX 3.2.5
 #	irix5		-	SGI MIPS on IRIX 5.3
 #  Some hooks are provided for

@@ -48,7 +48,7 @@ elog(int lev, char *fmt, ... )
     char		buf[ELOG_MAXLEN], line[ELOG_MAXLEN];
     register char	*bp, *cp;
     extern	int	errno, sys_nerr;
-#if !defined(PORTNAME_BSD44_derived) && !defined(PORTNAME_bsdi)
+#if !defined(PORTNAME_BSD44_derived) && !defined(PORTNAME_bsdi) && !defined(PORTNAME_bsdi_2_1)
     extern	char	*sys_errlist[];
 #endif /* !PORTNAME_BSD44_derived */
 #ifndef PG_STANDALONE

@@ -17,7 +17,7 @@
 #include <limits.h>
 #define MAXINT        INT_MAX
 #else
-# if defined(PORTNAME_BSD44_derived) || defined(PORTNAME_bsdi)
+# if defined(PORTNAME_BSD44_derived) || defined(PORTNAME_bsdi) || defined(PORTNAME_bsdi_2_1)
 # include <machine/limits.h>
 # define MAXINT	INT_MAX
 # else

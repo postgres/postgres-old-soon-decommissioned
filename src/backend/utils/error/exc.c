@@ -90,7 +90,7 @@ ExcPrint(Exception *excP,
 {
     extern	int	errno;
     extern	int	sys_nerr;
-#if !defined(PORTNAME_BSD44_derived) && !defined(PORTNAME_bsdi)
+#if !defined(PORTNAME_BSD44_derived) && !defined(PORTNAME_bsdi) && !defined(PORTNAME_bsdi_2_1)
     extern	char	*sys_errlist[];
 #endif /* !PORTNAME_BSD44_derived */
     
