@@ -1046,7 +1046,7 @@ static struct config_int ConfigureNamesInt[] =
 			NULL
 		},
 		&VacuumCostDelay,
-		50, 0, 1000, NULL, NULL
+		0, 0, 1000, NULL, NULL
 	},
 
 	{
