@@ -209,3 +209,6 @@ clean distclean maintainer-clean:
 	rm -f *.rtf *.tex-ps *.tex-pdf *.dvi *.aux *.log *.ps *.pdf *.out *.eps *.fot
 # index
 	rm -f HTML.index $(GENERATED_SGML)
+# text
+	rm -f INSTALL HISTORY regress_README
+
