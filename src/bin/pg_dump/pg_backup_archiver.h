@@ -152,6 +152,14 @@ typedef struct
 	PQExpBuffer	tagBuf;
 } sqlparseInfo;
 
+typedef enum 
+{
+    STAGE_NONE = 0,
+    STAGE_INITIALIZING,
+    STAGE_PROCESSING,
+    STAGE_FINALIZING
+} ArchiverStage;
+
 typedef struct _archiveHandle
 {
 	Archive		public;			/* Public part of archive */
@@ -254,6 +262,12 @@ typedef struct _archiveHandle
 	void	   *lo_buf;
 	size_t		lo_buf_used;
 	size_t		lo_buf_size;
+
+	int		noTocComments;
+	ArchiverStage		stage;
+	ArchiverStage		lastErrorStage;
+	struct _tocEntry	*currentTE;
+	struct _tocEntry	*lastErrorTE;
 } ArchiveHandle;
 
 typedef struct _tocEntry
