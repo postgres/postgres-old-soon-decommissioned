@@ -137,10 +137,9 @@ pg_get_client_encoding()
 	Assert(DatabaseEncoding);
 
 	if (ClientEncoding == NULL)
-	{
 		/* this is the first time */
 		ClientEncoding = DatabaseEncoding;
-	}
+
 	return (ClientEncoding->encoding);
 }
 
@@ -153,10 +152,9 @@ pg_get_client_encoding_name()
 	Assert(DatabaseEncoding);
 
 	if (ClientEncoding == NULL)
-	{
 		/* this is the first time */
 		ClientEncoding = DatabaseEncoding;
-	}
+
 	return (ClientEncoding->name);
 }
 
@@ -311,8 +309,11 @@ pg_convert2(PG_FUNCTION_ARGS)
 unsigned char *
 pg_client_to_server(unsigned char *s, int len)
 {
-	Assert(ClientEncoding);
 	Assert(DatabaseEncoding);
+
+	if (ClientEncoding == NULL)
+		/* this is the first time */
+		ClientEncoding = DatabaseEncoding;
 
 	if (ClientEncoding->encoding == DatabaseEncoding->encoding)
 	    return s;
@@ -336,8 +337,11 @@ pg_client_to_server(unsigned char *s, int len)
 unsigned char *
 pg_server_to_client(unsigned char *s, int len)
 {
-	Assert(ClientEncoding);
 	Assert(DatabaseEncoding);
+
+	if (ClientEncoding == NULL)
+		/* this is the first time */
+		ClientEncoding = DatabaseEncoding;
 
 	if (ClientEncoding->encoding == DatabaseEncoding->encoding)
 		return s;
