@@ -100,8 +100,8 @@ typedef struct BTScanOpaqueData
 	ItemPointerData mrkHeapIptr;
 	/* these fields are set by _bt_orderkeys(), which see for more info: */
 	bool		qual_ok;		/* false if qual can never be satisfied */
-	uint16		numberOfKeys;	/* number of scan keys */
-	uint16		numberOfRequiredKeys;	/* number of keys that must be
+	int			numberOfKeys;	/* number of scan keys */
+	int			numberOfRequiredKeys;	/* number of keys that must be
 										 * matched to continue the scan */
 	ScanKey		keyData;		/* array of scan keys */
 } BTScanOpaqueData;
@@ -366,8 +366,8 @@ extern OffsetNumber _bt_binsrch(Relation rel, Buffer buf, int keysz,
 			ScanKey scankey);
 extern int32 _bt_compare(Relation rel, int keysz, ScanKey scankey,
 			Page page, OffsetNumber offnum);
-extern RetrieveIndexResult _bt_next(IndexScanDesc scan, ScanDirection dir);
-extern RetrieveIndexResult _bt_first(IndexScanDesc scan, ScanDirection dir);
+extern bool _bt_next(IndexScanDesc scan, ScanDirection dir);
+extern bool _bt_first(IndexScanDesc scan, ScanDirection dir);
 extern bool _bt_step(IndexScanDesc scan, Buffer *bufP, ScanDirection dir);
 
 /*

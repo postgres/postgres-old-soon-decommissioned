@@ -494,9 +494,9 @@ CopyTo(Relation rel, bool binary, bool oids, FILE *fp,
 		CopySendData(&tmp, sizeof(int32), fp);
 	}
 
-	scandesc = heap_beginscan(rel, 0, QuerySnapshot, 0, NULL);
+	scandesc = heap_beginscan(rel, QuerySnapshot, 0, NULL);
 
-	while (HeapTupleIsValid(tuple = heap_getnext(scandesc, 0)))
+	while ((tuple = heap_getnext(scandesc, ForwardScanDirection)) != NULL)
 	{
 		bool		need_delim = false;
 

@@ -70,9 +70,9 @@ pgstattuple(PG_FUNCTION_ARGS)
 	rel = heap_openrv(relrv, AccessShareLock);
 
 	nblocks = RelationGetNumberOfBlocks(rel);
-	scan = heap_beginscan(rel, false, SnapshotAny, 0, NULL);
+	scan = heap_beginscan(rel, SnapshotAny, 0, NULL);
 
-	while ((tuple = heap_getnext(scan, 0)))
+	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{
 		if (HeapTupleSatisfiesNow(tuple->t_data))
 		{

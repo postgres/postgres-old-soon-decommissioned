@@ -71,7 +71,7 @@ typedef struct RTreeScanOpaqueData
 	struct RTSTACK *s_stack;
 	struct RTSTACK *s_markstk;
 	uint16		s_flags;
-	uint16		s_internalNKey;
+	int			s_internalNKey;
 	ScanKey		s_internalKey;
 } RTreeScanOpaqueData;
 

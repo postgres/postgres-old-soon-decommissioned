@@ -75,13 +75,13 @@ int4notin(PG_FUNCTION_ARGS)
 		elog(ERROR, "int4notin: unknown attribute %s for relation %s",
 			 attribute, RelationGetRelationName(relation_to_scan));
 
-	scan_descriptor = heap_beginscan(relation_to_scan, false, SnapshotNow,
+	scan_descriptor = heap_beginscan(relation_to_scan, SnapshotNow,
 									 0, (ScanKey) NULL);
 
 	retval = true;
 
 	/* do a scan of the relation, and do the check */
-	while (HeapTupleIsValid(current_tuple = heap_getnext(scan_descriptor, 0)))
+	while ((current_tuple = heap_getnext(scan_descriptor, ForwardScanDirection)) != NULL)
 	{
 		value = heap_getattr(current_tuple,
 							 (AttrNumber) attrid,

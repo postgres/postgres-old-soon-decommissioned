@@ -619,8 +619,8 @@ pgstat_vacuum_tabstat(void)
 	dbidlist = (Oid *) palloc(sizeof(Oid) * dbidalloc);
 
 	dbrel = heap_openr(DatabaseRelationName, AccessShareLock);
-	dbscan = heap_beginscan(dbrel, 0, SnapshotNow, 0, NULL);
-	while (HeapTupleIsValid(dbtup = heap_getnext(dbscan, FALSE)))
+	dbscan = heap_beginscan(dbrel, SnapshotNow, 0, NULL);
+	while ((dbtup = heap_getnext(dbscan, ForwardScanDirection)) != NULL)
 	{
 		if (dbidused >= dbidalloc)
 		{

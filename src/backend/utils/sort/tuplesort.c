@@ -2076,9 +2076,9 @@ SelectSortFunction(Oid sortOperator,
 						   ObjectIdGetDatum(sortOperator));
 
 	relation = heap_openr(AccessMethodOperatorRelationName, AccessShareLock);
-	scan = heap_beginscan(relation, false, SnapshotNow, 1, skey);
+	scan = heap_beginscan(relation, SnapshotNow, 1, skey);
 
-	while (HeapTupleIsValid(tuple = heap_getnext(scan, 0)))
+	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{
 		Form_pg_amop aform = (Form_pg_amop) GETSTRUCT(tuple);
 

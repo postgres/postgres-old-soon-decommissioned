@@ -306,8 +306,8 @@ extern void AtEOXact_hash(void);
 /* hashsearch.c */
 extern void _hash_search(Relation rel, int keysz, ScanKey scankey,
 			 Buffer *bufP, HashMetaPage metap);
-extern RetrieveIndexResult _hash_next(IndexScanDesc scan, ScanDirection dir);
-extern RetrieveIndexResult _hash_first(IndexScanDesc scan, ScanDirection dir);
+extern bool _hash_next(IndexScanDesc scan, ScanDirection dir);
+extern bool _hash_first(IndexScanDesc scan, ScanDirection dir);
 extern bool _hash_step(IndexScanDesc scan, Buffer *bufP, ScanDirection dir,
 		   Buffer metabuf);
 

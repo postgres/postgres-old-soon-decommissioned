@@ -398,23 +398,6 @@ nocache_index_getattr(IndexTuple tup,
 	}
 }
 
-RetrieveIndexResult
-FormRetrieveIndexResult(ItemPointer indexItemPointer,
-						ItemPointer heapItemPointer)
-{
-	RetrieveIndexResult result;
-
-	Assert(ItemPointerIsValid(indexItemPointer));
-	Assert(ItemPointerIsValid(heapItemPointer));
-
-	result = (RetrieveIndexResult) palloc(sizeof *result);
-
-	result->index_iptr = *indexItemPointer;
-	result->heap_iptr = *heapItemPointer;
-
-	return result;
-}
-
 /*
  * Copies source into target.  If *target == NULL, we palloc space; otherwise
  * we assume we have space that is already palloc'ed.
@@ -423,12 +406,10 @@ void
 CopyIndexTuple(IndexTuple source, IndexTuple *target)
 {
 	Size		size;
-	IndexTuple	ret;
 
 	size = IndexTupleSize(source);
 	if (*target == NULL)
 		*target = (IndexTuple) palloc(size);
 
-	ret = *target;
-	memmove((char *) ret, (char *) source, size);
+	memmove((char *) *target, (char *) source, size);
 }

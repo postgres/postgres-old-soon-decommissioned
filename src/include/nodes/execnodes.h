@@ -463,7 +463,6 @@ typedef struct IndexScanState
 	bool		iss_RuntimeKeysReady;
 	RelationPtr iss_RelationDescs;
 	IndexScanDescPtr iss_ScanDescs;
-	HeapTupleData iss_htup;
 } IndexScanState;
 
 /* ----------------

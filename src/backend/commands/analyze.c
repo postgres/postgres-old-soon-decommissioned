@@ -524,8 +524,8 @@ acquire_sample_rows(Relation onerel, HeapTuple *rows, int targrows,
 	/*
 	 * Do a simple linear scan until we reach the target number of rows.
 	 */
-	scan = heap_beginscan(onerel, false, SnapshotNow, 0, NULL);
-	while (HeapTupleIsValid(tuple = heap_getnext(scan, 0)))
+	scan = heap_beginscan(onerel, SnapshotNow, 0, NULL);
+	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{
 		rows[numrows++] = heap_copytuple(tuple);
 		if (numrows >= targrows)

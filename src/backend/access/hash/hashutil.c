@@ -63,7 +63,7 @@ _hash_checkqual(IndexScanDesc scan, IndexTuple itup)
 {
 	if (scan->numberOfKeys > 0)
 		return (index_keytest(itup,
-							  RelationGetDescr(scan->relation),
+							  RelationGetDescr(scan->indexRelation),
 							  scan->numberOfKeys, scan->keyData));
 	else
 		return true;

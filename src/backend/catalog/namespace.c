@@ -1588,9 +1588,9 @@ FindTempRelations(Oid tempNamespaceId)
 						   ObjectIdGetDatum(tempNamespaceId));
 
 	pgclass = heap_openr(RelationRelationName, AccessShareLock);
-	scan = heap_beginscan(pgclass, false, SnapshotNow, 1, &key);
+	scan = heap_beginscan(pgclass, SnapshotNow, 1, &key);
 
-	while (HeapTupleIsValid(tuple = heap_getnext(scan, 0)))
+	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{
 		switch (((Form_pg_class) GETSTRUCT(tuple))->relkind)
 		{
@@ -1627,9 +1627,9 @@ FindDeletionConstraints(List *relOids)
 	 * Scan pg_inherits to find parents and children that are in the list.
 	 */
 	inheritsrel = heap_openr(InheritsRelationName, AccessShareLock);
-	scan = heap_beginscan(inheritsrel, 0, SnapshotNow, 0, NULL);
+	scan = heap_beginscan(inheritsrel, SnapshotNow, 0, NULL);
 
-	while (HeapTupleIsValid(tuple = heap_getnext(scan, 0)))
+	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{
 		Oid		inhrelid = ((Form_pg_inherits) GETSTRUCT(tuple))->inhrelid;
 		Oid		inhparent = ((Form_pg_inherits) GETSTRUCT(tuple))->inhparent;

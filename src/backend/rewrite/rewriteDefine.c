@@ -292,18 +292,11 @@ DefineQueryRewrite(RuleStmt *stmt)
 		if (event_relation->rd_rel->relkind != RELKIND_VIEW)
 		{
 			HeapScanDesc scanDesc;
-			HeapTuple	tuple;
 
-			scanDesc = heap_beginscan(event_relation, 0, SnapshotNow, 0, NULL);
-			tuple = heap_getnext(scanDesc, 0);
-			if (HeapTupleIsValid(tuple))
+			scanDesc = heap_beginscan(event_relation, SnapshotNow, 0, NULL);
+			if (heap_getnext(scanDesc, ForwardScanDirection) != NULL)
 				elog(ERROR, "Relation \"%s\" is not empty. Cannot convert it to view",
 					 event_obj->relname);
-
-			/*
-			 * don't need heap_freetuple because we never got a valid
-			 * tuple
-			 */
 			heap_endscan(scanDesc);
 
 			RelisBecomingView = true;

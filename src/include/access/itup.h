@@ -54,15 +54,6 @@ typedef struct InsertIndexResultData
 typedef InsertIndexResultData *InsertIndexResult;
 
 
-typedef struct RetrieveIndexResultData
-{
-	ItemPointerData index_iptr;
-	ItemPointerData heap_iptr;
-} RetrieveIndexResultData;
-
-typedef RetrieveIndexResultData *RetrieveIndexResult;
-
-
 /* ----------------
  *		externs
  * ----------------
@@ -147,8 +138,6 @@ extern IndexTuple index_formtuple(TupleDesc tupleDescriptor,
 				Datum *value, char *null);
 extern Datum nocache_index_getattr(IndexTuple tup, int attnum,
 					  TupleDesc tupleDesc, bool *isnull);
-extern RetrieveIndexResult FormRetrieveIndexResult(ItemPointer indexItemPointer,
-						ItemPointer heapItemPointer);
 extern void CopyIndexTuple(IndexTuple source, IndexTuple *target);
 
 #endif   /* ITUP_H */

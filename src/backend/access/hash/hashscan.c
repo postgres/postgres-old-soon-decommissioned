@@ -119,7 +119,7 @@ _hash_adjscans(Relation rel, ItemPointer tid)
 	relid = RelationGetRelid(rel);
 	for (l = HashScans; l != (HashScanList) NULL; l = l->hashsl_next)
 	{
-		if (relid == l->hashsl_scan->relation->rd_id)
+		if (relid == l->hashsl_scan->indexRelation->rd_id)
 			_hash_scandel(l->hashsl_scan, ItemPointerGetBlockNumber(tid),
 						  ItemPointerGetOffsetNumber(tid));
 	}
@@ -136,7 +136,7 @@ _hash_scandel(IndexScanDesc scan, BlockNumber blkno, OffsetNumber offno)
 	if (!_hash_scantouched(scan, blkno, offno))
 		return;
 
-	metabuf = _hash_getbuf(scan->relation, HASH_METAPAGE, HASH_READ);
+	metabuf = _hash_getbuf(scan->indexRelation, HASH_METAPAGE, HASH_READ);
 
 	so = (HashScanOpaque) scan->opaque;
 	buf = so->hashso_curbuf;

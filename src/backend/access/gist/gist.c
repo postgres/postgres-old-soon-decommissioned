@@ -1590,7 +1590,6 @@ gistbulkdelete(PG_FUNCTION_ARGS)
 	BlockNumber num_pages;
 	double		tuples_removed;
 	double		num_index_tuples;
-	RetrieveIndexResult res;
 	IndexScanDesc iscan;
 
 	tuples_removed = 0;
@@ -1607,23 +1606,20 @@ gistbulkdelete(PG_FUNCTION_ARGS)
 	 */
 
 	/* walk through the entire index */
-	iscan = index_beginscan(rel, false, 0, (ScanKey) NULL);
+	iscan = index_beginscan(NULL, rel, SnapshotAny, 0, (ScanKey) NULL);
 
-	while ((res = index_getnext(iscan, ForwardScanDirection))
-		   != (RetrieveIndexResult) NULL)
+	while (index_getnext_indexitem(iscan, ForwardScanDirection))
 	{
-		ItemPointer heapptr = &res->heap_iptr;
-
-		if (callback(heapptr, callback_state))
+		if (callback(&iscan->xs_ctup.t_self, callback_state))
 		{
-			ItemPointer indexptr = &res->index_iptr;
+			ItemPointerData indextup = iscan->currentItemData;
 			BlockNumber blkno;
 			OffsetNumber offnum;
 			Buffer		buf;
 			Page		page;
 
-			blkno = ItemPointerGetBlockNumber(indexptr);
-			offnum = ItemPointerGetOffsetNumber(indexptr);
+			blkno = ItemPointerGetBlockNumber(&indextup);
+			offnum = ItemPointerGetOffsetNumber(&indextup);
 
 			/* adjust any scans that will be affected by this deletion */
 			gistadjscans(rel, GISTOP_DEL, blkno, offnum);
@@ -1640,8 +1636,6 @@ gistbulkdelete(PG_FUNCTION_ARGS)
 		}
 		else
 			num_index_tuples += 1;
-
-		pfree(res);
 	}
 
 	index_endscan(iscan);

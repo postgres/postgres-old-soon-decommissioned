@@ -736,9 +736,9 @@ ReindexDatabase(const char *dbname, bool force, bool all)
 	 * Scan pg_class to build a list of the relations we need to reindex.
 	 */
 	relationRelation = heap_openr(RelationRelationName, AccessShareLock);
-	scan = heap_beginscan(relationRelation, false, SnapshotNow, 0, NULL);
+	scan = heap_beginscan(relationRelation, SnapshotNow, 0, NULL);
 	relcnt = relalc = 0;
-	while (HeapTupleIsValid(tuple = heap_getnext(scan, 0)))
+	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
 	{
 		if (!all)
 		{
