@@ -180,14 +180,18 @@ su - postgres
 <userinput>pg_dumpall &gt; <replaceable>outputfile</></userinput>
 </screen>
      If you need to preserve the OIDs (such as when using them as
-     foreign keys), then use the -o option when running
-     <application>pg_dumpall</>.
+     foreign keys), then use the <option>-o</option> option when running
+     <command>pg_dumpall</>.  <command>pg_dumpall</command> does not
+     save large objects.  Check
+     <![%flattext-install-include[the <citetitle>Administrator's Guide</>]]>
+     <![%flattext-install-ignore[<xref linkend="backup-dump-caveats">]]>
+     if you need to do this.
     </para>
 
     <para>
-     Make sure that you use the <application>pg_dumpall</> command
+     Make sure that you use the <command>pg_dumpall</> command
      from the version you are currently running. &version;'s
-     <application>pg_dumpall</> should not be used on older databases.
+     <command>pg_dumpall</> should not be used on older databases.
     </para>
    </step>
 
