@@ -127,7 +127,7 @@ extern void BeginReportingGUCOptions(void);
 extern void ParseLongOption(const char *string, char **name, char **value);
 extern bool set_config_option(const char *name, const char *value,
 				  GucContext context, GucSource source,
-				  bool isLocal, bool DoIt);
+				  bool isLocal, bool changeVal);
 extern void ShowGUCConfigOption(const char *name, DestReceiver *dest);
 extern void ShowAllGUCConfig(DestReceiver *dest);
 extern char *GetConfigOptionByName(const char *name, const char **varname);
