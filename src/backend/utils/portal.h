@@ -51,7 +51,7 @@ struct PortalD {
     QueryDesc				*queryDesc;
     TupleDesc                           attinfo;
     EState				*state;
-    void				(*cleanup)();
+    void				(*cleanup)(Portal);
 };
 
 /*
