@@ -167,7 +167,6 @@ null			{ return K_NULL;			}
 open			{ return K_OPEN;			}
 perform			{ return K_PERFORM;			}
 raise			{ return K_RAISE;			}
-record			{ return K_RECORD;			}
 rename			{ return K_RENAME;			}
 result_oid		{ return K_RESULT_OID;		}
 return			{ return K_RETURN;			}
