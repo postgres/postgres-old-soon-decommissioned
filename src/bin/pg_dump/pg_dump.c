@@ -494,7 +494,8 @@ dumpClasses_dumpData(Archive *fout, char *oid, void *dctxv)
 	int			tuple;
 	int			field;
 
-	appendPQExpBuffer(q, "SELECT * FROM %s", fmtId(classname, force_quotes));
+	appendPQExpBuffer(q, "SELECT * FROM ONLY %s",
+					  fmtId(classname, force_quotes));
 	res = PQexec(g_conn, q->data);
 	if (!res ||
 		PQresultStatus(res) != PGRES_TUPLES_OK)
