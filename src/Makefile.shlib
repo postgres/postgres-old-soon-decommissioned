@@ -56,6 +56,13 @@ install-shlib-dep :=
 # Makefile.global (or really Makefile.port) to supply DLSUFFIX and other
 # symbols.
 
+ifeq ($(PORTNAME), irix5)
+  install-shlib-dep := install-shlib
+  shlib := lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO__MINOR_VERSION)
+  LDFLAGS_SL := -shared
+  CFLAGS += $(CFLAGS_SL)
+endif
+
 ifeq ($(PORTNAME), freebsd)
   ifdef BSD_SHLIB
     install-shlib-dep	:= install-shlib
