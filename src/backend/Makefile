@@ -181,7 +181,7 @@ endif
 
 install: $(LIBDIR) $(BINDIR) $(HEADERDIR) postgres $(EXP) fmgr.h\
          global1.bki.source local1_template1.bki.source \
-         libpq/pg_hba.conf.sample 
+         libpq/pg_hba.conf.sample optimizer/geqo/pg_geqo.sample
 	
 	$(INSTALL) $(INSTL_EXE_OPTS) postgres $(BINDIR)/postgres
 ifeq ($(MAKE_EXPORTS), true)
@@ -196,6 +196,8 @@ endif
 	  $(LIBDIR)/local1_template1.bki.source
 	$(INSTALL) $(INSTLOPTS) libpq/pg_hba.conf.sample \
 	  $(LIBDIR)/pg_hba.conf.sample
+	$(INSTALL) $(INSTLOPTS) optimizer/geqo/pg_geqo.sample \
+	  $(LIBDIR)/pg_geqo.sample
 
 $(BINDIR) $(LIBDIR) $(HEADERDIR): 
 	mkdir $@
