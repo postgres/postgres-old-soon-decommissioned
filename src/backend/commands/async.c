@@ -178,7 +178,11 @@ Async_Notify(char *relname)
     if (!pendingNotifies) 
       pendingNotifies = DLNewList();
 
-    notifyName = pstrdup(relname);
+    /* 
+     * Allocate memory from the global malloc pool because it needs to be
+     * referenced also when the transaction is finished.  DZ - 26-08-1996
+     */
+    notifyName = strdup(relname);
     DLAddHead(pendingNotifies, DLNewElem(notifyName));
     
     ScanKeyEntryInitialize(&key, 0,
@@ -580,7 +584,8 @@ AsyncExistsPendingNotify(char *relname)
     for (p = DLGetHead(pendingNotifies); 
 	 p != NULL;
 	 p = DLGetSucc(p)) {
-      if (!strcmp(DLE_VAL(p), relname))
+      /* Use NAMEDATALEN for relname comparison.    DZ - 26-08-1996 */
+      if (!strncmp(DLE_VAL(p), relname, NAMEDATALEN))
 	return 1;
     }
 
