@@ -21,6 +21,10 @@ information.  The clustering is static.  In other words, if the class is
 updated, it may become unclustered.  No attempt is made to keep new
 instances or updated tuples clustered.  If desired, the user can
 recluster manually by issuing the command again.
+.PP
+The table is actually copied to temporary table in index order,
+then renamed back to the original name.  For this reason, all
+grant permissions and other indexes are lost when cluster is performed.
 .SH EXAMPLE
 .nf
 /*
