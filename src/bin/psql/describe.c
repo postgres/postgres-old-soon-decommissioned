@@ -1022,9 +1022,10 @@ listTables(const char *infotype, const char *name, bool desc)
 
 	printfPQExpBuffer(&buf,
 			 "SELECT c.relname as \"%s\",\n"
+			 "  n.nspname as \"%s\",\n"
 			 "  CASE c.relkind WHEN 'r' THEN '%s' WHEN 'v' THEN '%s' WHEN 'i' THEN '%s' WHEN 'S' THEN '%s' WHEN 's' THEN '%s' END as \"%s\",\n"
 			 "  u.usename as \"%s\"",
-			 _("Name"), _("table"), _("view"), _("index"), _("sequence"),
+			 _("Name"), _("Schema"), _("table"), _("view"), _("index"), _("sequence"),
 			 _("special"), _("Type"), _("Owner"));
 
 	if (desc)
@@ -1034,14 +1035,16 @@ listTables(const char *infotype, const char *name, bool desc)
     if (showIndexes)
 		appendPQExpBuffer(&buf,
 						  ",\n c2.relname as \"%s\""
-						  "\nFROM pg_class c, pg_class c2, pg_index i, pg_user u\n"
+						  "\nFROM pg_class c, pg_class c2, pg_index i, pg_user u, pg_namespace n\n"
 						  "WHERE c.relowner = u.usesysid\n"
+						  "AND c.relnamespace = n.oid\n"
 						  "AND i.indrelid = c2.oid AND i.indexrelid = c.oid\n",
 						  _("Table"));
 	else
 		appendPQExpBuffer(&buf,
-						  "\nFROM pg_class c, pg_user u\n"
-						  "WHERE c.relowner = u.usesysid\n");
+						  "\nFROM pg_class c, pg_user u, pg_namespace n\n"
+						  "WHERE c.relowner = u.usesysid\n"
+						  "AND c.relnamespace = n.oid\n");
 
 	appendPQExpBuffer(&buf, "AND c.relkind IN (");
 	if (showTables)
@@ -1058,14 +1061,14 @@ listTables(const char *infotype, const char *name, bool desc)
 	appendPQExpBuffer(&buf, ")\n");
 
 	if (showSystem)
-		appendPQExpBuffer(&buf, "  AND c.relname ~ '^pg_'\n");
+		appendPQExpBuffer(&buf, "  AND n.nspname ~ '^pg_'\n");
 	else
-		appendPQExpBuffer(&buf, "  AND c.relname !~ '^pg_'\n");
+		appendPQExpBuffer(&buf, "  AND n.nspname !~ '^pg_'\n");
 
 	if (name)
 		appendPQExpBuffer(&buf, "  AND c.relname ~ '^%s'\n", name);
 
-	appendPQExpBuffer(&buf, "ORDER BY 1;");
+	appendPQExpBuffer(&buf, "ORDER BY 2,1;");
 
 	res = PSQLexec(buf.data);
 	termPQExpBuffer(&buf);
