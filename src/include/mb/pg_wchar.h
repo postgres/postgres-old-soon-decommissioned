@@ -88,15 +88,15 @@ extern pg_encoding_conv_tbl pg_conv_tbl[];
 
 typedef struct
 {
-	void		(*mb2wchar_with_len) ();		/* convert a multi-byte
+	int		(*mb2wchar_with_len) ();		/* convert a multi-byte
 												 * string to a wchar */
 	int			(*mblen) ();	/* returns the length of a multi-byte word */
 }			pg_wchar_tbl;
 
 extern pg_wchar_tbl pg_wchar_table[];
 
-extern void pg_mb2wchar(const unsigned char *, pg_wchar *);
-extern void pg_mb2wchar_with_len(const unsigned char *, pg_wchar *, int);
+extern int pg_mb2wchar(const unsigned char *, pg_wchar *);
+extern int pg_mb2wchar_with_len(const unsigned char *, pg_wchar *, int);
 extern int	pg_char_and_wchar_strcmp(const char *, const pg_wchar *);
 extern int	pg_wchar_strncmp(const pg_wchar *, const pg_wchar *, size_t);
 extern int	pg_char_and_wchar_strncmp(const char *, const pg_wchar *, size_t);
