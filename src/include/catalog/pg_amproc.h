@@ -99,6 +99,7 @@ DATA(insert OID = 0 (403 810 836 1));
 DATA(insert OID = 0 (403 935 926 1));
 DATA(insert OID = 0 (403 652 926 1));
 DATA(insert OID = 0 (403 1768 1769 1));
+DATA(insert OID = 0 (403 1690 1693 1));
 
 
 /* hash */

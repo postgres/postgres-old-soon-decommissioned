@@ -120,6 +120,18 @@ boolgt(bool arg1, bool arg2)
 }
 
 bool
+boolle(bool arg1, bool arg2)
+{
+	return arg1 <= arg2;
+}
+
+bool
+boolge(bool arg1, bool arg2)
+{
+	return arg1 >= arg2;
+}
+
+bool
 istrue(bool arg1)
 {
 	return arg1 == TRUE;

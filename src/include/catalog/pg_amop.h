@@ -345,6 +345,16 @@ DATA(insert OID = 0 (  403 1768 1757 4 ));
 DATA(insert OID = 0 (  403 1768 1756 5 ));
 
 /*
+ *	nbtree bool
+ */
+
+DATA(insert OID = 0 (  403 1690   58 1 ));
+DATA(insert OID = 0 (  403 1690 1694 2 ));
+DATA(insert OID = 0 (  403 1690   91 3 ));
+DATA(insert OID = 0 (  403 1690 1695 4 ));
+DATA(insert OID = 0 (  403 1690   59 5 ));
+
+/*
  *	hash table _ops
  */
 

@@ -207,3 +207,9 @@ bttextcmp(struct varlena * a, struct varlena * b)
 	else
 		return 1;
 }
+
+int32
+btboolcmp(bool a, bool b)
+{
+	return (int32) ((uint8) a - (uint8) b);
+}

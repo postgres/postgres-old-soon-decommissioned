@@ -44,6 +44,8 @@ extern bool booleq(bool arg1, bool arg2);
 extern bool boolne(bool arg1, bool arg2);
 extern bool boollt(bool arg1, bool arg2);
 extern bool boolgt(bool arg1, bool arg2);
+extern bool boolle(bool arg1, bool arg2);
+extern bool boolge(bool arg1, bool arg2);
 extern bool istrue(bool arg1);
 extern bool isfalse(bool arg1);
 
@@ -181,6 +183,7 @@ extern int32 btabstimecmp(AbsoluteTime a, AbsoluteTime b);
 extern int32 btcharcmp(char a, char b);
 extern int32 btnamecmp(NameData *a, NameData *b);
 extern int32 bttextcmp(struct varlena * a, struct varlena * b);
+extern int32 btboolcmp(bool a, bool b);
 
 /* support routines for the rtree access method, by opclass */
 extern BOX *rt_box_union(BOX *a, BOX *b);
