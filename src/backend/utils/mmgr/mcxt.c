@@ -631,7 +631,7 @@ MemoryContextStrdup(MemoryContext context, const char *string)
 }
 
 
-#ifdef WIN32
+#if defined(WIN32) || defined(__CYGWIN__)
 /*
  *	Memory support routines for libpgport on Win32
  *
@@ -648,6 +648,7 @@ pgport_palloc(Size sz)
 {
 	return palloc(sz);
 }
+
 
 char *
 pgport_pstrdup(const char *str)
