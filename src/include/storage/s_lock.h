@@ -351,7 +351,7 @@ tas_dummy()
 								__asm__("ldstub [%1], %0" \
 						:		"=&r"(_res) \
 						:		"r"(lock)); \
-							} while (!_res != 0); \
+							} while (_res != 0); \
 						} while (0)
 
 #define	S_UNLOCK(lock)	(*(lock) = 0)
