@@ -19,12 +19,12 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>
+
 #include "postgres.h"
+
 #include "utils/palloc.h"
-#include "utils/elog.h"
-#include "utils/memutils.h"
-#include "utils/nabstime.h"
+
+#include <stdio.h>
 
 extern TransactionId NullTransactionId;
 extern TransactionId DisabledTransactionId;
