@@ -32,6 +32,7 @@ clean:
 	$(MAKE) -C bin $@
 	$(MAKE) -C pl $@
 	$(MAKE) -C test $@
+	$(MAKE) -C tutorial $@
 
 distclean maintainer-clean:
 	-$(MAKE) -C port $@
@@ -41,4 +42,5 @@ distclean maintainer-clean:
 	-$(MAKE) -C bin $@
 	-$(MAKE) -C pl $@
 	-$(MAKE) -C test $@
+	-$(MAKE) -C tutorial $@
 	rm -f Makefile.port Makefile.global

@@ -30,5 +30,5 @@ all: $(DLOBJS) $(QUERIES)
 	C=`pwd`; \
 	sed -e "s:_OBJWD_:$$C:g" < $< > $@
 
-clean:
+clean distclean maintainer-clean:
 	rm -f $(DLOBJS) $(QUERIES)
