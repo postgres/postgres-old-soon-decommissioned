@@ -224,9 +224,11 @@ path_decode(int opentype, int npts, char *str, int *isopen, char **ss, Point *p)
 			cp++;
 		if (*cp == LDELIM)
 		{
+#if FALSE
 			/* nested delimiters with only one point? */
 			if (npts <= 1)
 				return (FALSE);
+#endif
 			depth++;
 			s = cp;
 		}
