@@ -105,8 +105,7 @@ typedef struct pg_result PGresult;
  */
 typedef struct pgNotify
 {
-	char		relname[NAMEDATALEN];	/* name of relation containing
-										 * data */
+	char		*relname;		/* name of relation containing data */
 	int			be_pid;			/* process id of backend */
 } PGnotify;
 
