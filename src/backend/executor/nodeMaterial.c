@@ -336,7 +336,7 @@ ExecEndMaterial(Material *node)
     ExecClearTuple(matstate->csstate.css_ScanTupleSlot);
 } 
 
-#if 0	/* not used */
+#ifdef NOT_USED	/* not used */
 /* ----------------------------------------------------------------
  *	ExecMaterialMarkPos
  * ----------------------------------------------------------------

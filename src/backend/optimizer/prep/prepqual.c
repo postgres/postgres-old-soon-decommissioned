@@ -543,7 +543,7 @@ remove_ands(Expr *qual)
  *    are referenced in the target list.
  *    
  */
-#if 0 
+#ifdef NOT_USED 
 static List *
 update_relations(List *tlist)
 {

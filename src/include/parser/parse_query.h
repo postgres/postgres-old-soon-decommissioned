@@ -58,11 +58,6 @@ extern void handleTargetColname(ParseState *pstate, char **resname,
  * analyze.c
  */
 
-#if 0
-extern List *p_rtable;
-extern int NumLevels;
-#endif
-
 Oid exprType(Node *expr);
 QueryTreeList *parse_analyze(List *querytree_list);
 

@@ -532,7 +532,7 @@ get_expr(TargetEntry *tle)
  *    append the group attribute to the target list if it's not already
  *    in there.
  */
-#if 0
+#ifdef NOT_USED
 void
 AddGroupAttrToTlist(List *tlist, List *grpCl)
 {

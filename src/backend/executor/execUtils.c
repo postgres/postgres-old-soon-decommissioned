@@ -467,7 +467,7 @@ ExecAssignScanTypeFromOuterPlan(Plan *node, CommonScanState *csstate)
  *	    to share common code.
  * ----------------
  */
-#if 0 
+#ifdef NOT_USED 
 void
 ExecSetTypeInfo(int index,
 		TupleDesc typeInfo,
