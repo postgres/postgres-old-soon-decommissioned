@@ -464,6 +464,40 @@ TransactionIdIsInProgress(TransactionId xid)
 }
 
 /*
+ * IsBackendPid -- is a given pid a running backend
+ */
+bool
+IsBackendPid(int pid)
+{
+	bool		result = false;
+	SISeg	   *segP = shmInvalBuffer;
+	ProcState  *stateP = segP->procState;
+	int			index;
+
+	LWLockAcquire(SInvalLock, LW_SHARED);
+
+	for (index = 0; index < segP->lastBackend; index++)
+	{
+		SHMEM_OFFSET pOffset = stateP[index].procStruct;
+
+		if (pOffset != INVALID_OFFSET)
+		{
+			PGPROC	   *proc = (PGPROC *) MAKE_PTR(pOffset);
+
+			if (proc->pid == pid)
+			{
+				result = true;
+				break;
+			}
+		}
+	}
+
+	LWLockRelease(SInvalLock);
+
+	return result;
+}
+
+/*
  * GetOldestXmin -- returns oldest transaction that was running
  *					when any current transaction was started.
  *

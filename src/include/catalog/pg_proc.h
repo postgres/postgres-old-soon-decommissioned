@@ -2808,6 +2808,11 @@ DESCR("Statistics: Blocks fetched for database");
 DATA(insert OID = 1945 (  pg_stat_get_db_blocks_hit		PGNSP PGUID 12 f f t f s 1 20 "26" _null_	pg_stat_get_db_blocks_hit - _null_ ));
 DESCR("Statistics: Blocks found in cache for database");
 
+DATA(insert OID = 2171 ( pg_terminate_backend           PGNSP PGUID 12 f f t f s 1 23 "23" _null_ pg_terminate_backend - _null_ ));
+DESCR("Terminate a backend process");
+DATA(insert OID = 2172 ( pg_cancel_backend              PGNSP PGUID 12 f f t f s 1 23 "23" _null_ pg_cancel_backend - _null_ ));
+DESCR("Cancel running query on a backend process");
+
 DATA(insert OID = 1946 (  encode						PGNSP PGUID 12 f f t f i 2 25 "17 25" _null_  binary_encode - _null_ ));
 DESCR("Convert bytea value into some ascii-only text string");
 DATA(insert OID = 1947 (  decode						PGNSP PGUID 12 f f t f i 2 17 "25 25" _null_  binary_decode - _null_ ));

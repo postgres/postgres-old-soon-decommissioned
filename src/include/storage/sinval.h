@@ -97,6 +97,7 @@ extern void ReceiveSharedInvalidMessages(
 
 extern bool DatabaseHasActiveBackends(Oid databaseId, bool ignoreMyself);
 extern bool TransactionIdIsInProgress(TransactionId xid);
+extern bool IsBackendPid(int pid);
 extern TransactionId GetOldestXmin(bool allDbs);
 extern int	CountActiveBackends(void);
 extern int	CountEmptyBackendSlots(void);
