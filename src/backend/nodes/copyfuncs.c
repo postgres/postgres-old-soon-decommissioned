@@ -470,7 +470,10 @@ _copyAgg(Agg *from)
 
 	CopyPlanFields((Plan *) from, (Plan *) newnode);
 
-	newnode->aggs = get_agg_tlist_references(newnode);
+	/* Cannot copy agg list; it must be rebuilt to point to subnodes of
+	 * new node.
+	 */ 
+	set_agg_tlist_references(newnode);
 
 	return newnode;
 }
