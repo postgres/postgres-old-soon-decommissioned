@@ -1765,7 +1765,7 @@ ReadToc(ArchiveHandle *AH)
 
 		/* Sanity check */
 		if (te->id <= 0 || te->id > AH->tocCount)
-			die_horribly(AH, modulename, "failed sanity check (bad entry id) - perhaps a corrupt TOC\n");
+			die_horribly(AH, modulename, "entry id out of range - perhaps a corrupt TOC\n");
 
 		te->hadDumper = ReadInt(AH);
 		te->oid = ReadStr(AH);

@@ -2492,7 +2492,7 @@ getTables(int *numTables, FuncInfo *finfo, int numFuncs)
 
 						if (PQgetisnull(res2, i2, i_tgconstrrelname))
 						{
-							write_msg(NULL, "query produced NULL referenced table name for trigger \"%s\" on table \"%s\" (oid was %s)\n",
+							write_msg(NULL, "query produced NULL referenced table name for foreign key trigger \"%s\" on table \"%s\" (oid of table: %s)\n",
 									  tgname, tblinfo[i].relname, tgconstrrelid);
 							exit_nicely();
 						}

@@ -857,7 +857,7 @@ _getFilePos(ArchiveHandle *AH, lclContext *ctx)
 		pos = ftell(AH->FH);
 		if (pos != ctx->filePos)
 		{
-			write_msg(modulename, "WARNING: ftell mismatch with filePos - filePos used\n");
+			write_msg(modulename, "WARNING: ftell mismatch with expected position -- ftell ignored\n");
 			pos = ctx->filePos;
 		}
 	}
