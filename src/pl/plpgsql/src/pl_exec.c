@@ -1566,10 +1566,10 @@ exec_stmt_raise(PLpgSQL_execstate * estate, PLpgSQL_stmt_raise * stmt)
 						typeStruct = (Form_pg_type) GETSTRUCT(typetup);
 
 						fmgr_info(typeStruct->typoutput, &finfo_output);
-						extval = (char *) (*fmgr_faddr(&finfo_output))
-							(var->value,
-							 typeStruct->typelem,
-							 var->datatype->atttypmod);
+						extval = DatumGetCString(FunctionCall3(&finfo_output,
+									var->value,
+									ObjectIdGetDatum(typeStruct->typelem),
+									Int32GetDatum(var->datatype->atttypmod)));
 					}
 					plpgsql_dstring_append(&ds, extval);
 					break;
@@ -2414,13 +2414,14 @@ exec_cast_value(Datum value, Oid valtype,
 			typeStruct = (Form_pg_type) GETSTRUCT(typetup);
 
 			fmgr_info(typeStruct->typoutput, &finfo_output);
-			extval = (char *) (*fmgr_faddr(&finfo_output))
-				(value,
-				 typeStruct->typelem,
-				 -1);
-			value = (Datum) (*fmgr_faddr(reqinput)) (extval,
-													 reqtypelem,
-													 reqtypmod);
+			extval = DatumGetCString(FunctionCall3(&finfo_output,
+									 value,
+									 ObjectIdGetDatum(typeStruct->typelem),
+									 Int32GetDatum(-1)));
+			value = FunctionCall3(reqinput,
+								  CStringGetDatum(extval),
+								  ObjectIdGetDatum(reqtypelem),
+								  Int32GetDatum(reqtypmod));
 			pfree(extval);
 		}
 	}

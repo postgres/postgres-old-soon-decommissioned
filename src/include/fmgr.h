@@ -272,6 +272,8 @@ typedef int32 ((*func_ptr) ());
 typedef char *((*func_ptr) ());
 #endif
 
+#if 0
+
 typedef struct {
     char *data[FUNC_MAX_ARGS];
 } FmgrValues;
@@ -286,18 +288,11 @@ extern char *fmgr_faddr_link(char *arg0, ...);
  *	Macros for calling through the result of fmgr_info.
  */
 
-/* We don't make this static so fmgr_faddr() macros can access it */
+/* We don't make this static so fmgr_faddr() macro can access it */
 extern FmgrInfo        *fmgr_pl_finfo;
 
 #define fmgr_faddr(finfo) (fmgr_pl_finfo = (finfo), (func_ptr) fmgr_faddr_link)
 
-#define	FMGR_PTR2(FINFO, ARG1, ARG2)  ((*(fmgr_faddr(FINFO))) (ARG1, ARG2))
-
-/*
- *	Flags for the builtin oprrest selectivity routines.
- *  XXX These do not belong here ... put 'em in some planner/optimizer header.
- */
-#define	SEL_CONSTANT 	1		/* operator's non-var arg is a constant */
-#define	SEL_RIGHT	2			/* operator's non-var arg is on the right */
+#endif
 
 #endif	/* FMGR_H */

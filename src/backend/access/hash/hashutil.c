@@ -91,10 +91,8 @@ _hash_call(Relation rel, HashMetaPage metap, Datum key)
 {
 	uint32		n;
 	Bucket		bucket;
-	RegProcedure proc;
 
-	proc = metap->hashm_procid;
-	n = (uint32) fmgr(proc, key);
+	n = DatumGetUInt32(OidFunctionCall1(metap->hashm_procid, key));
 	bucket = n & metap->hashm_highmask;
 	if (bucket > metap->hashm_maxbucket)
 		bucket = bucket & metap->hashm_lowmask;

@@ -1647,7 +1647,6 @@ get_const_expr(Const *constval, deparse_context *context)
 	StringInfo	buf = context->buf;
 	HeapTuple	typetup;
 	Form_pg_type typeStruct;
-	FmgrInfo	finfo_output;
 	char	   *extval;
 	char	   *valptr;
 
@@ -1673,10 +1672,10 @@ get_const_expr(Const *constval, deparse_context *context)
 		return;
 	}
 
-	fmgr_info(typeStruct->typoutput, &finfo_output);
-	extval = (char *) (*fmgr_faddr(&finfo_output)) (constval->constvalue,
-													typeStruct->typelem,
-													-1);
+	extval = DatumGetCString(OidFunctionCall3(typeStruct->typoutput,
+							 constval->constvalue,
+							 ObjectIdGetDatum(typeStruct->typelem),
+							 Int32GetDatum(-1)));
 
 	switch (constval->consttype)
 	{

@@ -33,7 +33,7 @@ do \
    macro below */ \
 	bool		__isnull; \
 	Datum		__atp; \
-	int			__test; \
+	Datum		__test; \
 	int			__cur_nkeys = (nkeys); \
 	ScanKey		__cur_keys = (keys); \
  \
@@ -41,9 +41,9 @@ do \
 	for (; __cur_nkeys--; __cur_keys++) \
 	{ \
 		__atp = heap_getattr((tuple), \
-						   __cur_keys->sk_attno, \
-						   (tupdesc), \
-						   &__isnull); \
+							 __cur_keys->sk_attno, \
+							 (tupdesc), \
+							 &__isnull); \
  \
 		if (__isnull) \
 		{ \
@@ -58,16 +58,14 @@ do \
 			break; \
 		} \
  \
-		if (__cur_keys->sk_func.fn_addr == (PGFunction) oideq)	/* optimization */ \
-			__test = (__cur_keys->sk_argument == __atp); \
-		else if (__cur_keys->sk_flags & SK_COMMUTE) \
-			__test = (long) FMGR_PTR2(&__cur_keys->sk_func, \
-									__cur_keys->sk_argument, __atp); \
+		if (__cur_keys->sk_flags & SK_COMMUTE) \
+			__test = FunctionCall2(&__cur_keys->sk_func, \
+								   __cur_keys->sk_argument, __atp); \
 		else \
-			__test = (long) FMGR_PTR2(&__cur_keys->sk_func, \
-									__atp, __cur_keys->sk_argument); \
+			__test = FunctionCall2(&__cur_keys->sk_func, \
+								   __atp, __cur_keys->sk_argument); \
  \
-		if (!__test == !(__cur_keys->sk_flags & SK_NEGATE)) \
+		if (DatumGetBool(__test) == !!(__cur_keys->sk_flags & SK_NEGATE)) \
 		{ \
 			/* XXX eventually should check if SK_ISNULL */ \
 			(result) = false; \

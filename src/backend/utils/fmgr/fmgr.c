@@ -420,6 +420,8 @@ fmgr_sql(PG_FUNCTION_ARGS)
 	return 0;					/* keep compiler happy */
 }
 
+#if 0
+
 /*
  * Interface routine for functions using fmgr_faddr
  */
@@ -509,6 +511,8 @@ fmgr(Oid procedureId,...)
 
 	return (char *) result;
 }
+
+#endif
 
 
 /*-------------------------------------------------------------------------

@@ -16,6 +16,14 @@
 
 #include "nodes/relation.h"
 
+/*
+ *	Flag bits returned by get_relattval().
+ *	These are used in selectivity-estimation routines, too.
+ */
+#define	SEL_CONSTANT 	1		/* operator's non-var arg is a constant */
+#define	SEL_RIGHT		2		/* operator's non-var arg is on the right */
+
+
 extern Expr *make_clause(int type, Node *oper, List *args);
 
 extern bool is_opclause(Node *clause);

@@ -306,8 +306,10 @@ be_printtup(HeapTuple tuple, TupleDesc typeinfo, DestReceiver *self)
 		}
 
 		if (!isnull && OidIsValid(typoutput))
-			values[i] = fmgr(typoutput, attr, typelem,
-							 typeinfo->attrs[i]->atttypmod);
+			values[i] = DatumGetCString(OidFunctionCall3(typoutput,
+										attr,
+										ObjectIdGetDatum(typelem),
+										Int32GetDatum(typeinfo->attrs[i]->atttypmod)));
 		else
 			values[i] = NULL;
 

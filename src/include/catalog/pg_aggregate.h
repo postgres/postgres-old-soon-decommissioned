@@ -151,7 +151,8 @@ extern void AggregateCreate(char *aggName,
 				char *aggtransfn2typeName,
 				char *agginitval1,
 				char *agginitval2);
-extern char *AggNameGetInitVal(char *aggName, Oid basetype,
-				  int xfuncno, bool *isNull);
+
+extern Datum AggNameGetInitVal(char *aggName, Oid basetype,
+							   int xfuncno, bool *isNull);
 
 #endif	 /* PG_AGGREGATE_H */

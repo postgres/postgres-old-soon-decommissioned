@@ -1922,16 +1922,16 @@ index_build(Relation heapRelation,
 	 * ----------------
 	 */
 	if (RegProcedureIsValid(procedure))
-		fmgr(procedure,
-			 heapRelation,
-			 indexRelation,
-			 numberOfAttributes,
-			 attributeNumber,
-			 RelationGetIndexStrategy(indexRelation),
-			 parameterCount,
-			 parameter,
-			 funcInfo,
-			 predInfo);
+		OidFunctionCall9(procedure,
+						 PointerGetDatum(heapRelation),
+						 PointerGetDatum(indexRelation),
+						 Int32GetDatum(numberOfAttributes),
+						 PointerGetDatum(attributeNumber),
+						 PointerGetDatum(RelationGetIndexStrategy(indexRelation)),
+						 UInt16GetDatum(parameterCount),
+						 PointerGetDatum(parameter),
+						 PointerGetDatum(funcInfo),
+						 PointerGetDatum(predInfo));
 	else
 		DefaultBuild(heapRelation,
 					 indexRelation,

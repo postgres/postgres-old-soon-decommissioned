@@ -415,8 +415,10 @@ SPI_getvalue(HeapTuple tuple, TupleDesc tupdesc, int fnumber)
 		return NULL;
 	}
 
-	return (fmgr(foutoid, val, typelem,
-				 tupdesc->attrs[fnumber - 1]->atttypmod));
+	return DatumGetCString(OidFunctionCall3(foutoid,
+						   val,
+						   ObjectIdGetDatum(typelem),
+						   Int32GetDatum(tupdesc->attrs[fnumber - 1]->atttypmod)));
 }
 
 Datum

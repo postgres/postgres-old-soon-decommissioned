@@ -1398,8 +1398,8 @@ _bt_tuplecompare(Relation rel,
 		}
 		else
 		{
-			compare = (int32) FMGR_PTR2(&entry->sk_func,
-										attrDatum1, attrDatum2);
+			compare = DatumGetInt32(FunctionCall2(&entry->sk_func,
+												  attrDatum1, attrDatum2));
 		}
 
 		if (compare != 0)
@@ -1520,7 +1520,7 @@ _bt_isequal(TupleDesc itupdesc, Page page, OffsetNumber offnum,
 	IndexTuple	itup;
 	ScanKey		entry;
 	AttrNumber	attno;
-	long		result;
+	int32		result;
 	int			i;
 	bool		null;
 
@@ -1538,7 +1538,8 @@ _bt_isequal(TupleDesc itupdesc, Page page, OffsetNumber offnum,
 		if (entry->sk_flags & SK_ISNULL || null)
 			return false;
 
-		result = (long) FMGR_PTR2(&entry->sk_func, entry->sk_argument, datum);
+		result = DatumGetInt32(FunctionCall2(&entry->sk_func,
+											 entry->sk_argument, datum));
 		if (result != 0)
 			return false;
 	}

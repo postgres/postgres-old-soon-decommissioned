@@ -240,8 +240,14 @@ cost_index(Path *path, Query *root,
 	 * index (ie, the fraction of main-table tuples we will have to
 	 * retrieve).
 	 */
-	fmgr(index->amcostestimate, root, baserel, index, indexQuals,
-		 &indexStartupCost, &indexTotalCost, &indexSelectivity);
+	OidFunctionCall7(index->amcostestimate,
+					 PointerGetDatum(root),
+					 PointerGetDatum(baserel),
+					 PointerGetDatum(index),
+					 PointerGetDatum(indexQuals),
+					 PointerGetDatum(&indexStartupCost),
+					 PointerGetDatum(&indexTotalCost),
+					 PointerGetDatum(&indexSelectivity));
 
 	/* all costs for touching index itself included here */
 	startup_cost += indexStartupCost;
