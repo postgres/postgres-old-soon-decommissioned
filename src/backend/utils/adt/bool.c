@@ -72,7 +72,8 @@ boolin(char *b)
 			break;
 	}
 
-	elog(WARN,"Invalid input string '%s'\n", b);
+	elog(WARN,"Bad boolean external representation '%s'", b);
+	/* not reached */
 	return (FALSE);
 } /* boolin() */
 
@@ -88,6 +89,7 @@ boolout(bool b)
 	result[1] = '\0';
 	return (result);
 } /* boolout() */
+
 
 /*****************************************************************************
  *	 PUBLIC ROUTINES														 *
@@ -127,4 +129,4 @@ bool
 isfalse(bool arg1)
 {
 	return(arg1 != TRUE);
-} /* istrue() */
+} /* isfalse() */
