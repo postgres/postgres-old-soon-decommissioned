@@ -143,7 +143,6 @@ find_index_paths(Query *root,
 								  index->indexkeys[0],
 								  index->classlist[0],
 								  clauseinfo_list);
-		}
 	
 		/*
 		 * 2. If the keys of this index match any of the available restriction

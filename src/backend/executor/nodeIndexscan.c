@@ -305,7 +305,7 @@ ExecIndexReScan(IndexScan *node, ExprContext *exprCtxt, Plan *parent)
 			skey = scanKeys[i];
 			index_rescan(sdesc, direction, skey);
 		}
-
+	}
 	/* ----------------
 	 *	perhaps return something meaningful
 	 * ----------------
@@ -328,12 +328,14 @@ ExecEndIndexScan(IndexScan *node)
 	IndexScanState *indexstate;
 	Pointer    *runtimeKeyInfo;
 	ScanKey    *scanKeys;
+  	List	   *indxqual;
 	int		   *numScanKeys;
 	int			numIndices;
 	int			i;
 
 	scanstate = node->scan.scanstate;
 	indexstate = node->indxstate;
+	indxqual = node->indxqual;
 	runtimeKeyInfo = (Pointer *) indexstate->iss_RuntimeKeyInfo;
 	
 	/* ----------------
