@@ -463,23 +463,23 @@ AdjustIntervalForTypmod(Interval *interval, int32 typmod)
 	};
 #else
 	static const double IntervalScales[MAX_INTERVAL_PRECISION+1] = {
-		1000000,
-		100000,
-		10000,
-		1000,
-		100,
+		1,
 		10,
-		1
+		100,
+		1000,
+		10000,
+		100000,
+		1000000
 	};
 
 	static const double IntervalOffsets[MAX_INTERVAL_PRECISION+1] = {
-		-500000,
-		-50000,
-		-5000,
-		-500,
-		-50,
-		-5,
-		0
+		0.5,
+		0.05,
+		0.005,
+		0.0005,
+		0.00005,
+		0.000005,
+		0.0000005
 	};
 #endif
 
