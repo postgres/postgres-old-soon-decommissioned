@@ -17,6 +17,7 @@
 #include "access/heapam.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
+#include "commands/trigger.h"
 #include "executor/execdefs.h"
 #include "executor/executor.h"
 #include "executor/functions.h"
@@ -273,7 +274,10 @@ postquel_start(execution_state *es, SQLFunctionCachePtr fcache)
 
 	/* Utility commands don't need Executor. */
 	if (es->qd->operation != CMD_UTILITY)
+	{
+		AfterTriggerBeginQuery();
 		ExecutorStart(es->qd, false, false);
+	}
 
 	es->status = F_EXEC_RUN;
 }
@@ -316,7 +320,10 @@ postquel_end(execution_state *es)
 
 	/* Utility commands don't need Executor. */
 	if (es->qd->operation != CMD_UTILITY)
+	{
 		ExecutorEnd(es->qd);
+		AfterTriggerEndQuery();
+	}
 
 	FreeQueryDesc(es->qd);
 	es->qd = NULL;

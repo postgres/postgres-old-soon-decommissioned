@@ -336,6 +336,16 @@ $PostgreSQL$
        whitespace (which has always been ignored).
       </para>
      </listitem>
+
+     <listitem>
+      <para>
+       Non-deferred AFTER triggers are now fired immediately after completion
+       of the triggering query, rather than upon finishing the current
+       interactive command.  This makes a difference when the triggering query
+       occurred within a function: the trigger is invoked before the function
+       proceeds to its next operation.
+      </para>
+     </listitem>
     </itemizedlist>
    </para>
   </sect2>
@@ -1426,6 +1436,18 @@ $PostgreSQL$
 
     <listitem>
      <para>
+      Non-deferred AFTER triggers are now fired immediately after completion
+      of the triggering query, rather than upon finishing the current
+      interactive command.  This makes a difference when the triggering query
+      occurred within a function: the trigger is invoked before the function
+      proceeds to its next operation.  For example, if a function inserts
+      a new row into a table, any non-deferred foreign key checks occur
+      before proceeding with the function.
+     </para>
+    </listitem>
+
+    <listitem>
+     <para>
       Allow function parameters to be declared with names (Dennis Bjorklund)
      </para>
      <para>
@@ -1483,7 +1505,7 @@ $PostgreSQL$
 
     <listitem>
      <para>
-      New plperl server-side language (Command Prompt, Andrew Dunstan)
+      Major overhaul of plperl server-side language (Command Prompt, Andrew Dunstan)
      </para>
     </listitem>
 

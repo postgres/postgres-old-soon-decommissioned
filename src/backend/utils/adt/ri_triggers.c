@@ -2454,7 +2454,7 @@ RI_FKey_setdefault_upd(PG_FUNCTION_ARGS)
  *
  *	Check if we have a key change on update.
  *
- *	This is not a real trigger procedure. It is used by the deferred
+ *	This is not a real trigger procedure. It is used by the AFTER
  *	trigger queue manager to detect "triggered data change violation".
  * ----------
  */

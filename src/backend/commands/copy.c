@@ -1611,6 +1611,11 @@ CopyFrom(Relation rel, List *attnumlist, bool binary, bool oids,
 	}
 
 	/*
+	 * Prepare to catch AFTER triggers.
+	 */
+	AfterTriggerBeginQuery();
+
+	/*
 	 * Check BEFORE STATEMENT insertion triggers. It's debateable whether
 	 * we should do this for COPY, since it's not really an "INSERT"
 	 * statement as such. However, executing these triggers maintains
@@ -1973,6 +1978,11 @@ CopyFrom(Relation rel, List *attnumlist, bool binary, bool oids,
 	 * Execute AFTER STATEMENT insertion triggers
 	 */
 	ExecASInsertTriggers(estate, resultRelInfo);
+
+	/*
+	 * Handle queued AFTER triggers
+	 */
+	AfterTriggerEndQuery();
 
 	pfree(values);
 	pfree(nulls);

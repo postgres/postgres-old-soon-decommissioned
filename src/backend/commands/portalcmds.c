@@ -273,6 +273,7 @@ PortalCleanup(Portal portal)
 			{
 				CurrentResourceOwner = portal->resowner;
 				ExecutorEnd(queryDesc);
+				/* we do not need AfterTriggerEndQuery() here */
 			}
 			PG_CATCH();
 			{
@@ -373,6 +374,7 @@ PersistHoldablePortal(Portal portal)
 		 */
 		portal->queryDesc = NULL;		/* prevent double shutdown */
 		ExecutorEnd(queryDesc);
+		/* we do not need AfterTriggerEndQuery() here */
 
 		/*
 		 * Reset the position in the result set: ideally, this could be

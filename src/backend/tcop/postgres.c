@@ -1823,9 +1823,6 @@ finish_xact_command(void)
 {
 	if (xact_started)
 	{
-		/* Invoke IMMEDIATE constraint triggers */
-		DeferredTriggerEndQuery();
-
 		/* Cancel any active statement timeout before committing */
 		disable_sig_alarm(true);
 

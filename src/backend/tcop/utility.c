@@ -912,7 +912,7 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_ConstraintsSetStmt:
-			DeferredTriggerSetState((ConstraintsSetStmt *) parsetree);
+			AfterTriggerSetState((ConstraintsSetStmt *) parsetree);
 			break;
 
 		case T_CreateGroupStmt:
