@@ -379,7 +379,9 @@ RI_FKey_check(PG_FUNCTION_ARGS)
 	 */
 	if (TRIGGER_FIRED_BY_UPDATE(trigdata->tg_event))
 	{
-		if (ri_KeysEqual(fk_rel, old_row, new_row, &qkey,
+		if (HeapTupleHeaderGetXmin(old_row->t_data) !=
+				GetCurrentTransactionId() &&
+				ri_KeysEqual(fk_rel, old_row, new_row, &qkey,
 						 RI_KEYPAIR_FK_IDX))
 		{
 			heap_close(pk_rel, RowShareLock);
