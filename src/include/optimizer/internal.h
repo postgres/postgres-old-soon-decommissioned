@@ -27,9 +27,10 @@
  *    	System-dependent tuning constants
  *    
  */
-#define _CPU_PAGE_WEIGHT_  0.065      /* CPU-to-page cost weighting factor */
-#define _MAX_KEYS_     INDEX_MAX_KEYS /* maximum number of keys in an index */
-#define _TID_SIZE_     6              /* sizeof(itemid) (from ../h/itemid.h) */
+#define _CPU_PAGE_WEIGHT_  0.065	/* CPU-heap-to-page cost weighting factor */
+#define _CPU_INDEX_PAGE_WEIGHT_ 0.033	/* CPU-index-to-page cost weighting factor */
+#define _MAX_KEYS_     INDEX_MAX_KEYS	/* maximum number of keys in an index */
+#define _TID_SIZE_     6		/* sizeof(itemid) (from ../h/itemid.h) */
 
 /*    
  *    	Size estimates
