@@ -100,7 +100,7 @@ SELECT complex_sum(a) FROM test_complex;
 CREATE AGGREGATE avg (
     sfunc = float8_accum,
     basetype = float8,
-    stype = _float8,
+    stype = float8[],
     finalfunc = float8_avg,
     initcond = '{0,0}'
 );

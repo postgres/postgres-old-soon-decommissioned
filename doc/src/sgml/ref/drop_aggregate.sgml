@@ -47,7 +47,8 @@ DROP AGGREGATE <replaceable class="PARAMETER">name</replaceable> <replaceable cl
       <term><replaceable class="parameter">type</replaceable></term>
       <listitem>
        <para>
-	The type of an existing aggregate function.
+	The input datatype of an existing aggregate function,
+	or <literal>*</literal> if the function accepts any input type.
 	(Refer to the <citetitle>PostgreSQL User's Guide</citetitle> for
 	further information about data types.)
 	<comment>This should become a cross-reference rather than a
