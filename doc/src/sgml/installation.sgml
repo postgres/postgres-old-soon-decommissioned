@@ -1726,7 +1726,7 @@ gunzip -c postgres.ps.gz \
 	<entry>7.4</entry>
 	<entry>2003-10-25,
 	 Peter Eisentraut (<email>peter_e@gmx.net</email>)</entry>
-        <entry></entry>
+        <entry>5.1</entry>
        </row>
        <row>
 	<entry><systemitem class="osname">UnixWare</></entry>
