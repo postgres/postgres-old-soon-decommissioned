@@ -80,9 +80,10 @@ extern char *MemoryContextStrdup(MemoryContext context, const char *string);
 
 #define pstrdup(str)  MemoryContextStrdup(CurrentMemoryContext, (str))
 
-/* Used for Win32 */
-void *pgport_palloc(Size sz);
-char *pgport_pstrdup(const char *str);
-void pgport_pfree(void *pointer);
+#ifdef WIN32
+extern void *pgport_palloc(Size sz);
+extern char *pgport_pstrdup(const char *str);
+extern void pgport_pfree(void *pointer);
+#endif
 
 #endif   /* PALLOC_H */
