@@ -50,8 +50,9 @@ beforeinstall-headers:
 
 
 .PHONY: clean
-clean: 
-	rm -f $(OBJS) $(shlib) lib$(NAME).a
+
+clean: clean-shlib
+	rm -f $(OBJS) lib$(NAME).a
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
