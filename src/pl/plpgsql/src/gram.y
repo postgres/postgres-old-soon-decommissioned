@@ -1639,7 +1639,18 @@ opt_label		:
 opt_exitlabel	:
 					{ $$ = NULL; }
 				| T_LABEL
-					{ $$ = strdup(yytext); }
+					{
+						char	*name;
+
+						plpgsql_convert_ident(yytext, &name, 1);
+						$$ = strdup(name);
+						pfree(name);
+					}
+				| T_WORD
+					{
+						/* just to give a better error than "syntax error" */
+						yyerror("no such label");
+					}
 				;
 
 opt_exitcond	: ';'
