@@ -43,7 +43,8 @@ endif
 all: $(INFILES)
 	cd input; $(MAKE) all; cd ..
 	cd output; $(MAKE) all; cd ..
-	$(MAKE) -C ../../../contrib/spi REFINT_VERBOSE=1 refint$(DLSUFFIX)
+	$(MAKE) -C ../../../contrib/spi REFINT_VERBOSE=1 refint$(DLSUFFIX) \
+	autoinc$(DLSUFFIX)
 
 #
 # run the test
