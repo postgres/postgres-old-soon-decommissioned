@@ -217,10 +217,6 @@ RemoveSchema(List *names, DropBehavior behavior)
 	/*
 	 * Do the deletion.  Objects contained in the schema are removed by
 	 * means of their dependency links to the schema.
-	 *
-	 * XXX currently, index opclasses don't have creation/deletion commands,
-	 * so they will not get removed when the containing schema is removed.
-	 * This is annoying but not fatal.
 	 */
 	object.classId = get_system_catalog_relid(NamespaceRelationName);
 	object.objectId = namespaceId;
