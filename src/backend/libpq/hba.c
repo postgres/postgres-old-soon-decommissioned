@@ -22,6 +22,7 @@
 
 #include "libpq/libpq.h"
 #include "miscadmin.h"
+#include "storage/fd.h"
 
 
 #define MAX_TOKEN 80

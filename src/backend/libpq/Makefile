@@ -11,8 +11,10 @@
 SRCDIR = ../..
 include ../../Makefile.global
 
-OBJS = be-dumpdata.o be-fsstubs.o be-pqexec.o portal.o portalbuf.o \
-	auth.o hba.o crypt.o password.o \
+# be-fsstubs is here for historical reasons, probably belongs elsewhere
+
+OBJS = be-fsstubs.o \
+	auth.o crypt.o hba.o password.o \
 	pqcomm.o pqformat.o pqpacket.o pqsignal.o util.o
 
 

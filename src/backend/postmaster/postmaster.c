@@ -83,6 +83,7 @@
 #include "storage/proc.h"
 #include "access/xlog.h"
 #include "tcop/tcopprot.h"
+#include "utils/exc.h"
 #include "utils/guc.h"
 
 /*

@@ -184,14 +184,6 @@ extern Datum rt_poly_size(PG_FUNCTION_ARGS);
 extern POLYGON *rt_poly_union(POLYGON *a, POLYGON *b);
 extern POLYGON *rt_poly_inter(POLYGON *a, POLYGON *b);
 
-/* projection utilities */
-/* extern char *GetAttributeByName();
-   extern char *GetAttributeByNum(); ,
- in executor/executor.h*/
-
-
-extern int32 pqtest(struct varlena * vlena);
-
 /* arrayfuncs.c */
 
 /* filename.c */

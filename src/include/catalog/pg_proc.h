@@ -965,9 +965,6 @@ DESCR("distance between");
 DATA(insert OID = 729 (  poly_distance	   PGUID 11 f t t t 2 f 701 "604 604" 100 0 0 100  poly_distance - ));
 DESCR("distance between");
 
-DATA(insert OID = 730 (  pqtest			   PGUID 11 f t f t 1 f 23 "25" 100 0 0 100  pqtest - ));
-DESCR("");
-
 DATA(insert OID = 740 (  text_lt		   PGUID 12 f t t t 2 f 16 "25 25" 100 0 0 0	text_lt - ));
 DESCR("less-than");
 DATA(insert OID = 741 (  text_le		   PGUID 12 f t t t 2 f 16 "25 25" 100 0 0 0	text_le - ));

@@ -79,9 +79,8 @@
 
 #ifndef SOMAXCONN
 #define SOMAXCONN 5				/* from Linux listen(2) man page */
-#endif	 /* SOMAXCONN */
+#endif
 
-extern FILE *debug_port;		/* in util.c */
 
 /*
  * Buffers for low-level I/O
@@ -113,8 +112,6 @@ pq_init(void)
 {
 	PqSendPointer = PqRecvPointer = PqRecvLength = 0;
 	DoingCopyOut = false;
-	if (getenv("LIBPQ_DEBUG"))
-		debug_port = stderr;
 }
 
 

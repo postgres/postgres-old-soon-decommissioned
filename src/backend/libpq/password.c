@@ -9,14 +9,17 @@
 #include <unistd.h>
 
 #include "postgres.h"
+
 #ifdef HAVE_CRYPT_H
-#include "crypt.h"
+#include <crypt.h>
 #endif
 
 #include "libpq/libpq.h"
 #include "libpq/password.h"
 #include "libpq/crypt.h"
 #include "miscadmin.h"
+#include "storage/fd.h"
+
 
 int
 verify_password(const Port *port, const char *user, const char *password)
