@@ -719,6 +719,36 @@ get_func_rettype(Oid funcid)
 }
 
 /*
+ * get_func_signature
+ *		Given procedure id, return the function's argument and result types.
+ *		(The return value is the result type.)
+ *
+ * argtypes must point to a vector of size FUNC_MAX_ARGS.
+ */
+Oid
+get_func_signature(Oid funcid, Oid *argtypes, int *nargs)
+{
+	HeapTuple		tp;
+	Form_pg_proc	procstruct;
+	Oid			result;
+
+	tp = SearchSysCache(PROCOID,
+						ObjectIdGetDatum(funcid),
+						0, 0, 0);
+	if (!HeapTupleIsValid(tp))
+		elog(ERROR, "Function OID %u does not exist", funcid);
+
+	procstruct = (Form_pg_proc) GETSTRUCT(tp);
+
+	result = procstruct->prorettype;
+	memcpy(argtypes, procstruct->proargtypes, FUNC_MAX_ARGS * sizeof(Oid));
+	*nargs = (int) procstruct->pronargs;
+
+	ReleaseSysCache(tp);
+	return result;
+}
+
+/*
  * get_func_retset
  *		Given procedure id, return the function's proretset flag.
  */

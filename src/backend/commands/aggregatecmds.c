@@ -120,7 +120,9 @@ DefineAggregate(List *names, List *parameters)
 		baseTypeId = typenameTypeId(baseType);
 
 	transTypeId = typenameTypeId(transType);
-	if (get_typtype(transTypeId) == 'p')
+	if (get_typtype(transTypeId) == 'p' &&
+		transTypeId != ANYARRAYOID &&
+		transTypeId != ANYELEMENTOID)
 		elog(ERROR, "Aggregate transition datatype cannot be %s",
 			 format_type_be(transTypeId));
 

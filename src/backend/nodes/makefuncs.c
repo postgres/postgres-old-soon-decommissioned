@@ -251,3 +251,24 @@ makeTypeName(char *typnam)
 	n->typmod = -1;
 	return n;
 }
+
+/*
+ * makeFuncExpr -
+ *	build an expression tree representing a function call.
+ *
+ * The argument expressions must have been transformed already.
+ */
+FuncExpr *
+makeFuncExpr(Oid funcid, Oid rettype, List *args, CoercionForm fformat)
+{
+	FuncExpr   *funcexpr;
+
+	funcexpr = makeNode(FuncExpr);
+	funcexpr->funcid = funcid;
+	funcexpr->funcresulttype = rettype;
+	funcexpr->funcretset = false;		/* only allowed case here */
+	funcexpr->funcformat = fformat;
+	funcexpr->args = args;
+
+	return funcexpr;
+}

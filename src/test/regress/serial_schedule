@@ -91,3 +91,4 @@ test: conversion
 test: truncate
 test: alter_table
 test: sequence
+test: polymorphism

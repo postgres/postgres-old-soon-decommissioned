@@ -50,6 +50,7 @@ extern RegProcedure get_oprrest(Oid opno);
 extern RegProcedure get_oprjoin(Oid opno);
 extern char *get_func_name(Oid funcid);
 extern Oid	get_func_rettype(Oid funcid);
+extern Oid	get_func_signature(Oid funcid, Oid *argtypes, int *nargs);
 extern bool get_func_retset(Oid funcid);
 extern bool func_strict(Oid funcid);
 extern char func_volatile(Oid funcid);
