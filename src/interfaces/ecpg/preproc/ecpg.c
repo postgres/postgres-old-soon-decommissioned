@@ -173,9 +173,9 @@ main(int argc, char *const argv[])
 				{
 					compat = (strcmp(optarg, "INFORMIX") == 0) ? ECPG_COMPAT_INFORMIX : ECPG_COMPAT_INFORMIX_SE;
 					/* system_includes = true; */
-					add_preprocessor_define("dec_t=Numeric");
-					add_preprocessor_define("intrvl_t=Interval");
-					add_preprocessor_define("dtime_t=Timestamp");
+					add_preprocessor_define("dec_t=numeric");
+					add_preprocessor_define("intrvl_t=interval");
+					add_preprocessor_define("dtime_t=timestamp");
 				}
 				else
 				{

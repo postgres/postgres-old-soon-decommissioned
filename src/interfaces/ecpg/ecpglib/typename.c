@@ -49,15 +49,15 @@ ECPGtype_name(enum ECPGttype typ)
 		case ECPGt_char_variable:
 			return "char";
 		case ECPGt_decimal:
-			return "Decimal";
+			return "decimal";
 		case ECPGt_numeric:
-			return "Numeric";
+			return "numeric";
 		case ECPGt_date:
-			return "Date";
+			return "date";
 		case ECPGt_timestamp:
-			return "Timestamp";
+			return "timestamp";
 		case ECPGt_interval:
-			return "Interval";
+			return "interval";
 		case ECPGt_const:
 			return "Const";
 		default:

@@ -294,18 +294,18 @@ ECPGset_informix_null(enum ECPGttype type, void *ptr)
 			*(((struct ECPGgeneric_varchar *) ptr)->arr) = 0x00;
 			break;
 		case ECPGt_decimal:
-			memset((char *) ptr, 0, sizeof(Decimal));
-			((Decimal *) ptr)->sign = NUMERIC_NAN;
+			memset((char *) ptr, 0, sizeof(decimal));
+			((decimal *) ptr)->sign = NUMERIC_NAN;
 			break;
 		case ECPGt_numeric:
-			memset((char *) ptr, 0, sizeof(Numeric));
-			((Numeric *) ptr)->sign = NUMERIC_NAN;
+			memset((char *) ptr, 0, sizeof(numeric));
+			((numeric *) ptr)->sign = NUMERIC_NAN;
 			break;
 		case ECPGt_interval:
-			memset((char *) ptr, 0xff, sizeof(Interval));
+			memset((char *) ptr, 0xff, sizeof(interval));
 			break;
 		case ECPGt_timestamp:
-			memset((char *) ptr, 0xff, sizeof(Timestamp));
+			memset((char *) ptr, 0xff, sizeof(timestamp));
 			break;
 		default:
 			break;
@@ -365,18 +365,18 @@ ECPGis_informix_null(enum ECPGttype type, void *ptr)
 				return true;
 			break;
 		case ECPGt_decimal:
-			if (((Decimal *) ptr)->sign == NUMERIC_NAN)
+			if (((decimal *) ptr)->sign == NUMERIC_NAN)
 				return true;
 			break;
 		case ECPGt_numeric:
-			if (((Numeric *) ptr)->sign == NUMERIC_NAN)
+			if (((numeric *) ptr)->sign == NUMERIC_NAN)
 				return true;
 			break;
 		case ECPGt_interval:
-			return (_check(ptr, sizeof(Interval)));
+			return (_check(ptr, sizeof(interval)));
 			break;
 		case ECPGt_timestamp:
-			return (_check(ptr, sizeof(Timestamp)));
+			return (_check(ptr, sizeof(timestamp)));
 			break;
 		default:
 			break;
