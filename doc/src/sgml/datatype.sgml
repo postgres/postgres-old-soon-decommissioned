@@ -1908,8 +1908,8 @@ January 8 04:05:06 1999 PST
     </para>
    </sect2>
 
-   <sect2 id="inet-type">
-    <title><type>inet</type></title>
+   <sect2 id="inet-vs-cidr">
+    <title><type>inet</type> vs <type>cidr</type></title>
 
     <para>
     The essential difference between <type>inet</type> and <type>cidr</type>
