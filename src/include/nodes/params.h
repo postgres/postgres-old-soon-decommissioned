@@ -45,7 +45,7 @@
 #define PARAM_NUM		12
 #define PARAM_NEW		13
 #define PARAM_OLD		14
-#define	PARAM_EXEC		15
+#define PARAM_EXEC		15
 #define PARAM_INVALID	100
 
 
@@ -93,7 +93,8 @@ typedef ParamListInfoData *ParamListInfo;
 
 typedef struct ParamExecData
 {
-	void	   *execPlan;		/* plan must be executed to get param value */
+	void	   *execPlan;		/* plan must be executed to get param
+								 * value */
 	Datum		value;
 	bool		isnull;
 } ParamExecData;

@@ -24,7 +24,7 @@
 #include "utils/dynamic_loader.h"
 #include "dynloader.h"
 
-void	   *
+void *
 pg_dlopen(char *filename)
 {
 	shl_t		handle = shl_load(filename, BIND_DEFERRED, 0);
@@ -50,7 +50,7 @@ pg_dlclose(void *handle)
 	shl_unload((shl_t) handle);
 }
 
-char	   *
+char *
 pg_dlerror()
 {
 	static char errmsg[] = "shl_load failed";

@@ -50,7 +50,7 @@ static int	compare(void *arg1, void *arg2);
  * alloc-pool--
  *		allocates memory for GA pool
  */
-Pool	   *
+Pool *
 alloc_pool(int pool_size, int string_length)
 {
 	Pool	   *new_pool;

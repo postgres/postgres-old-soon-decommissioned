@@ -306,7 +306,7 @@ hashinsert(Relation rel, Datum *datum, char *nulls, ItemPointer ht_ctid, Relatio
 /*
  *	hashgettuple() -- Get the next tuple in the scan.
  */
-char	   *
+char *
 hashgettuple(IndexScanDesc scan, ScanDirection dir)
 {
 	RetrieveIndexResult res;
@@ -329,7 +329,7 @@ hashgettuple(IndexScanDesc scan, ScanDirection dir)
 /*
  *	hashbeginscan() -- start a scan on a hash index
  */
-char	   *
+char *
 hashbeginscan(Relation rel,
 			  bool fromEnd,
 			  uint16 keysz,

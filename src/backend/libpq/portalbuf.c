@@ -235,7 +235,7 @@ pbuf_addTuple(int n)
  *		pbuf_addTupleValueLengths - Allocate a tuple of n lengths (attributes)
  * --------------------------------
  */
-int		   *
+int *
 pbuf_addTupleValueLengths(int n)
 {
 	return (int *)
@@ -246,7 +246,7 @@ pbuf_addTupleValueLengths(int n)
  *		pbuf_addValues - Allocate n bytes for a value
  * --------------------------------
  */
-char	   *
+char *
 pbuf_addValues(int n)
 {
 	return
@@ -510,7 +510,7 @@ pbuf_checkFnumber(GroupBuffer *group,
  *		pbuf_findFname - Find the field name given the field index
  * --------------------------------
  */
-char	   *
+char *
 pbuf_findFname(GroupBuffer *group,
 			   int field_number)
 {

@@ -58,7 +58,7 @@ static char *strmake(char *str, int len);
  *		This code scavanged from HandleFunctionRequest() in tcop/fastpath.h
  * ----------------
  */
-char	   *
+char *
 PQfn(int fnid,
 	 int *result_buf,			/* can't use void, dec compiler barfs */
 	 int result_len,
@@ -129,7 +129,7 @@ PQfn(int fnid,
  *		returns because the system longjmp's back to the main loop.
  * ----------------
  */
-char	   *
+char *
 PQexec(char *query)
 {
 	PortalEntry *entry = NULL;

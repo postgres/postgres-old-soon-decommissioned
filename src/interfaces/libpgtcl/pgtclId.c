@@ -49,7 +49,7 @@ PgSetConnectionId(Pg_clientData * cd, char *id, PGconn *conn)
 /*
  * Get back the connection from the Id
  */
-PGconn	   *
+PGconn *
 PgGetConnectionId(Pg_clientData * cd, char *id)
 {
 	Tcl_HashEntry *hent;

@@ -53,7 +53,7 @@ smgrin(char *s)
 	return 0;
 }
 
-char	   *
+char *
 smgrout(int2 i)
 {
 	char	   *s;

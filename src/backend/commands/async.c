@@ -84,7 +84,7 @@
 #include <libpq/libpq.h>
 
 #ifndef HAVE_STRDUP
-#  include <port-protos.h>		/* for strdup() */
+#include <port-protos.h>		/* for strdup() */
 #endif
 
 #include <storage/lmgr.h>
@@ -97,7 +97,7 @@ static Dllist *pendingNotifies = NULL;
 static int	AsyncExistsPendingNotify(char *);
 static void ClearPendingNotify(void);
 static void Async_NotifyFrontEnd(void);
-void        Async_Unlisten(char *relname, int pid);
+void		Async_Unlisten(char *relname, int pid);
 static void Async_UnlistenOnExit(int code, char *relname);
 
 /*
@@ -617,7 +617,7 @@ Async_NotifyFrontEnd()
 		if (whereToSendOutput == Remote)
 		{
 			pq_putnchar("A", 1);
-			pq_putint((int32)MyProcPid, sizeof(int32));
+			pq_putint((int32) MyProcPid, sizeof(int32));
 			pq_putstr(DatumGetName(d)->data);
 			pq_flush();
 		}

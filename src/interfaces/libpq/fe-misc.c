@@ -65,7 +65,7 @@ pqPutnchar(const char *s, int len, FILE *f, FILE *debug)
 int
 pqGetnchar(char *s, int len, FILE *f, FILE *debug)
 {
-	int status;
+	int			status;
 
 	status = pqGetNBytes(s, len, f);
 
@@ -82,7 +82,7 @@ pqGetnchar(char *s, int len, FILE *f, FILE *debug)
 int
 pqGets(char *s, int len, FILE *f, FILE *debug)
 {
-	int status;
+	int			status;
 
 	status = pqGetString(s, len, f);
 

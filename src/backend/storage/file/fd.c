@@ -483,7 +483,7 @@ filepath(char *filename)
 	}
 
 #ifdef FILEDEBUG
-printf("filepath: path is %s\n", buf);
+	printf("filepath: path is %s\n", buf);
 #endif
 
 	return (buf);
@@ -852,7 +852,7 @@ FileNameUnlink(char *filename)
  */
 static int	allocatedFiles = 0;
 
-FILE	   *
+FILE *
 AllocateFile(char *name, char *mode)
 {
 	FILE	   *file;

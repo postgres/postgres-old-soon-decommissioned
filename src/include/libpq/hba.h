@@ -31,7 +31,7 @@
 #define MAX_TOKEN 80
 /* Maximum size of one token in the configuration file	*/
 
-#define MAX_AUTH_ARG	80	/* Max size of an authentication arg */
+#define MAX_AUTH_ARG	80		/* Max size of an authentication arg */
 
 #define IDENT_PORT 113
  /* Standard TCP port number for Ident service.  Assigned by IANA */
@@ -39,7 +39,8 @@
 #define IDENT_USERNAME_MAX 512
  /* Max size of username ident server can return */
 
-typedef enum UserAuth {
+typedef enum UserAuth
+{
 	uaReject,
 	uaKrb4,
 	uaKrb5,
@@ -49,9 +50,11 @@ typedef enum UserAuth {
 	uaCrypt
 } UserAuth;
 
-int hba_getauthmethod(SockAddr *raddr, char *database, char *auth_arg,
-						UserAuth *auth_method);
-int authident(struct sockaddr_in *raddr, struct sockaddr_in *laddr,
-				const char postgres_username[], const char auth_arg[]);
+int
+hba_getauthmethod(SockAddr *raddr, char *database, char *auth_arg,
+				  UserAuth *auth_method);
+int
+authident(struct sockaddr_in * raddr, struct sockaddr_in * laddr,
+		  const char postgres_username[], const char auth_arg[]);
 
 #endif

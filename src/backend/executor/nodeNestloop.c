@@ -380,18 +380,18 @@ ExecEndNestLoop(NestLoop *node)
 void
 ExecReScanNestLoop(NestLoop *node, ExprContext *exprCtxt, Plan *parent)
 {
-	NestLoopState	   *nlstate = node->nlstate;
-	Plan			   *outerPlan = outerPlan((Plan*) node);
+	NestLoopState *nlstate = node->nlstate;
+	Plan	   *outerPlan = outerPlan((Plan *) node);
 
 	/*
-	 * If outerPlan->chgParam is not null then plan will be
-	 * automatically re-scanned by first ExecProcNode.
-	 * innerPlan is re-scanned for each new outer tuple and MUST NOT 
-	 * be re-scanned from here or you'll get troubles from inner 
-	 * index scans when outer Vars are used as run-time keys...
+	 * If outerPlan->chgParam is not null then plan will be automatically
+	 * re-scanned by first ExecProcNode. innerPlan is re-scanned for each
+	 * new outer tuple and MUST NOT be re-scanned from here or you'll get
+	 * troubles from inner index scans when outer Vars are used as
+	 * run-time keys...
 	 */
 	if (outerPlan->chgParam == NULL)
-		ExecReScan (outerPlan, exprCtxt, (Plan *) node);
+		ExecReScan(outerPlan, exprCtxt, (Plan *) node);
 
 	/* let outerPlan to free its result typle ... */
 	nlstate->jstate.cs_OuterTupleSlot = NULL;

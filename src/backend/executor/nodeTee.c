@@ -168,7 +168,7 @@ ExecInitTee(Tee *node, EState *currentEstate, Plan *parent)
 			bufferRel = heap_openr(teeState->tee_bufferRelname);
 		else
 			bufferRel = heap_open(
-				heap_create_with_catalog(teeState->tee_bufferRelname, tupType));
+								  heap_create_with_catalog(teeState->tee_bufferRelname, tupType));
 	}
 	else
 	{
@@ -177,7 +177,7 @@ ExecInitTee(Tee *node, EState *currentEstate, Plan *parent)
 				newoid());
 /*		bufferRel = ExecCreatR(len, tupType, _TEMP_RELATION_ID); */
 		bufferRel = heap_open(
-				heap_create_with_catalog(teeState->tee_bufferRelname, tupType));
+		 heap_create_with_catalog(teeState->tee_bufferRelname, tupType));
 	}
 
 	teeState->tee_bufferRel = bufferRel;
@@ -246,7 +246,7 @@ initTeeScanDescs(Tee *node)
 	{
 		teeState->tee_leftScanDesc = heap_beginscan(bufferRel,
 											ScanDirectionIsBackward(dir),
-													false, /* seeself */
+													false,		/* seeself */
 													0,	/* num scan keys */
 													NULL		/* scan keys */
 			);
@@ -255,7 +255,7 @@ initTeeScanDescs(Tee *node)
 	{
 		teeState->tee_rightScanDesc = heap_beginscan(bufferRel,
 											ScanDirectionIsBackward(dir),
-													 false, /* seeself */
+													 false,		/* seeself */
 													 0, /* num scan keys */
 													 NULL		/* scan keys */
 			);

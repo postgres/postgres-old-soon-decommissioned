@@ -147,7 +147,7 @@ findNodeInRecipe()
    XXX Currently, this is done by linear search.  Change to using a hash table.
 -------------------------------------- */
 
-TgNode	   *
+TgNode *
 findNodeInRecipe(TgRecipe * r, char *nodeName)
 {
 	int			i;

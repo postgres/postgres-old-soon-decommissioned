@@ -293,7 +293,7 @@ MemoryContextRealloc(MemoryContext context,
  *		BadArgumentsErr if firstTime is true for subsequent calls.
  */
 #ifdef NOT_USED
-char	   *
+char *
 MemoryContextGetName(MemoryContext context)
 {
 	AssertState(MemoryContextEnabled);

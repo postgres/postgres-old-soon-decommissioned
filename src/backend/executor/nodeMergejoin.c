@@ -749,7 +749,8 @@ ExecMergeJoin(MergeJoin *node)
 				 *
 				 * new outer tuple > marked tuple
 				 *
-				*****************************
+				****************************
+				 *
 				 *
 				 *
 				 *
@@ -831,7 +832,8 @@ ExecMergeJoin(MergeJoin *node)
 				 * we have to advance the outer scan until we find the outer
 				 * 8.
 				 *
-				*****************************
+				****************************
+				 *
 				 *
 				 *
 				 *
@@ -935,7 +937,8 @@ ExecMergeJoin(MergeJoin *node)
 				 * we have to advance the inner scan until we find the inner
 				 * 12.
 				 *
-				*****************************
+				****************************
+				 *
 				 *
 				 *
 				 *

@@ -189,7 +189,7 @@ ExecAssignExprContext(EState *estate, CommonState *commonstate)
 	econtext->ecxt_relid = 0;	/* relid */
 	econtext->ecxt_param_list_info = estate->es_param_list_info;
 	econtext->ecxt_param_exec_vals = estate->es_param_exec_vals;
-	econtext->ecxt_range_table = estate->es_range_table;	/* range table */
+	econtext->ecxt_range_table = estate->es_range_table;		/* range table */
 
 	commonstate->cs_ExprContext = econtext;
 }
@@ -1176,24 +1176,24 @@ ExecInsertIndexTuples(TupleTableSlot *slot,
 		pfree(econtext);
 }
 
-void 
-SetChangedParamList (Plan *node, List *newchg)
+void
+SetChangedParamList(Plan *node, List *newchg)
 {
-	List   *nl;
-	
-	foreach (nl, newchg)
+	List	   *nl;
+
+	foreach(nl, newchg)
 	{
-		int	paramId = lfirsti(nl);
-		
+		int			paramId = lfirsti(nl);
+
 		/* if this node doesn't depend on a param ... */
-		if ( !intMember (paramId, node->extParam) &&
-				!intMember (paramId, node->locParam) )
+		if (!intMember(paramId, node->extParam) &&
+			!intMember(paramId, node->locParam))
 			continue;
 		/* if this param is already in list of changed ones ... */
-		if ( intMember (paramId, node->chgParam) )
+		if (intMember(paramId, node->chgParam))
 			continue;
 		/* else - add this param to the list */
-		node->chgParam = lappendi (node->chgParam, paramId);
+		node->chgParam = lappendi(node->chgParam, paramId);
 	}
 
 }

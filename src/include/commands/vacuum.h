@@ -19,7 +19,7 @@
 #include "nodes/pg_list.h"
 #include "storage/block.h"
 #include "storage/off.h"
-  
+
 
 typedef struct VAttListData
 {

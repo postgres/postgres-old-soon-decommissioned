@@ -17,7 +17,7 @@
 
 extern Relation heap_create(char *relname, TupleDesc att);
 
-extern Oid heap_create_with_catalog(char relname[],	TupleDesc tupdesc);
+extern Oid	heap_create_with_catalog(char relname[], TupleDesc tupdesc);
 
 extern void heap_destroy_with_catalog(char relname[]);
 extern void heap_destroy(Relation r);

@@ -118,7 +118,7 @@ DefineVirtualRelation(char *relname, List *tlist)
  * This routine is called when defining/removing a view.
  *------------------------------------------------------------------
  */
-char	   *
+char *
 MakeRetrieveViewRuleName(char *viewName)
 {
 	char	   *buf;

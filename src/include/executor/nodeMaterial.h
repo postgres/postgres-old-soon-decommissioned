@@ -22,8 +22,10 @@ extern bool ExecInitMaterial(Material *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsMaterial(Material *node);
 extern void ExecEndMaterial(Material *node);
 extern void ExecMaterialReScan(Material *node, ExprContext *exprCtxt, Plan *parent);
+
 #if 0
 extern List ExecMaterialMarkPos(Material *node);
 extern void ExecMaterialRestrPos(Material *node);
+
 #endif
 #endif							/* NODEMATERIAL_H */

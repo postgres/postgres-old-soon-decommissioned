@@ -34,26 +34,31 @@ typedef struct IdxInfoRetval
 } IdxInfoRetval;
 
 
-extern void relation_info(Query *root,
+extern void
+relation_info(Query *root,
 			  Oid relid,
 			  bool *hashindex, int *pages,
 			  int *tuples);
 
-extern bool index_info(Query *root,
+extern bool
+index_info(Query *root,
 		   bool first, int relid, IdxInfoRetval *info);
 
-extern Cost restriction_selectivity(Oid functionObjectId,
+extern Cost
+restriction_selectivity(Oid functionObjectId,
 						Oid operatorObjectId,
 						Oid relationObjectId,
 						AttrNumber attributeNumber,
 						char *constValue,
 						int32 constFlag);
 
-extern void index_selectivity(Oid indid, Oid *classes, List *opnos,
+extern void
+index_selectivity(Oid indid, Oid *classes, List *opnos,
 				  Oid relid, List *attnos, List *values, List *flags,
 				  int32 nkeys, float *idxPages, float *idxSelec);
 
-extern Cost join_selectivity(Oid functionObjectId, Oid operatorObjectId,
+extern Cost
+join_selectivity(Oid functionObjectId, Oid operatorObjectId,
 				 Oid relationObjectId1, AttrNumber attributeNumber1,
 				 Oid relationObjectId2, AttrNumber attributeNumber2);
 

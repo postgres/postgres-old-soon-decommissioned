@@ -26,7 +26,7 @@
  * relpath				- path to the relation
  *		Perhaps this should be in-line code in relopen().
  */
-char	   *
+char *
 relpath(char relname[])
 {
 	char	   *path;

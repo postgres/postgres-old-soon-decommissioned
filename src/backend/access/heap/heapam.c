@@ -654,6 +654,7 @@ heap_beginscan(Relation relation,
 	sdesc->rs_rd = relation;
 
 	if (nkeys)
+
 		/*
 		 * we do this here instead of in initsdesc() because heap_rescan
 		 * also calls initsdesc() and we don't want to allocate memory
@@ -1303,7 +1304,7 @@ heap_replace(Relation relation, ItemPointer otid, HeapTuple tup)
 	Page		dp;
 	Buffer		buffer;
 	HeapTuple	tuple;
-	
+
 	/* ----------------
 	 *	increment access statistics
 	 * ----------------
@@ -1375,13 +1376,13 @@ heap_replace(Relation relation, ItemPointer otid, HeapTuple tup)
 	 * ----------------
 	 */
 	HeapTupleSatisfies(lp,
-						 relation,
-						 buffer,
-						 (PageHeader) dp,
-						 false,
-						 0,
-						 (ScanKey) NULL,
-						 tuple);
+					   relation,
+					   buffer,
+					   (PageHeader) dp,
+					   false,
+					   0,
+					   (ScanKey) NULL,
+					   tuple);
 	if (!tuple)
 	{
 		ReleaseBuffer(buffer);

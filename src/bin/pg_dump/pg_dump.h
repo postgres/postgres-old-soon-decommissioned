@@ -156,9 +156,10 @@ typedef struct _oprInfo
  *
  * Matthew C. Aycock 12/02/97
  */
-typedef struct _AclType {
-  char *user;
-  char *privledges;
+typedef struct _AclType
+{
+	char	   *user;
+	char	   *privledges;
 } ACL;
 
 
@@ -242,7 +243,7 @@ dumpIndices(FILE *fout, IndInfo *indinfo, int numIndices,
 			TableInfo *tbinfo, int numTables, const char *tablename);
 
 extern const char *
-fmtId(const char *identifier);
+			fmtId(const char *identifier);
 
 /* largest query string size */
 #define MAXQUERYLEN  5000

@@ -512,7 +512,7 @@ _equalSubPlan(SubPlan *a, SubPlan *b)
 
 	if (!equal((a->sublink->oper), (b->sublink->oper)))
 		return (false);
-	
+
 	return (true);
 }
 

@@ -112,7 +112,7 @@ ExecSort(Sort *node)
 	ScanKey		sortkeys;
 	HeapTuple	heapTuple;
 	TupleTableSlot *slot;
-	bool should_free;
+	bool		should_free;
 
 	/* ----------------
 	 *	get state info from node
@@ -395,21 +395,21 @@ ExecReScanSort(Sort *node, ExprContext *exprCtxt, Plan *parent)
 	SortState  *sortstate = node->sortstate;
 
 	/*
-	 * If we haven't sorted yet, just return. If outerplan'
-	 * chgParam is not NULL then it will be re-scanned by
-	 * ExecProcNode, else - no reason to re-scan it at all.
+	 * If we haven't sorted yet, just return. If outerplan' chgParam is
+	 * not NULL then it will be re-scanned by ExecProcNode, else - no
+	 * reason to re-scan it at all.
 	 */
 	if (sortstate->sort_Flag == false)
 		return;
-	
+
 	ExecClearTuple(sortstate->csstate.cstate.cs_ResultTupleSlot);
-	
-	psort_rescan (node);
-	
+
+	psort_rescan(node);
+
 	/*
 	 * If subnode is to be rescanned then we aren't sorted
 	 */
-	if (((Plan*) node)->lefttree->chgParam != NULL)
+	if (((Plan *) node)->lefttree->chgParam != NULL)
 		sortstate->sort_Flag = false;
 
 }

@@ -70,7 +70,8 @@ extern void EndCommand(char *commandTag, CommandDest dest);
 extern void SendCopyBegin(void);
 extern void ReceiveCopyBegin(void);
 extern void NullCommand(CommandDest dest);
-extern void BeginCommand(char *pname, int operation, TupleDesc attinfo,
+extern void
+BeginCommand(char *pname, int operation, TupleDesc attinfo,
 			 bool isIntoRel, bool isIntoPortal, char *tag,
 			 CommandDest dest);
 extern void UpdateCommandInfo(int operation, Oid lastoid, uint32 tuples);

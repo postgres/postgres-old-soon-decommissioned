@@ -50,9 +50,11 @@ extern int	XfuncMode;			/* defined in tcop/postgres.c */
 
 /* function prototypes from planner/path/xfunc.c */
 extern void xfunc_trypullup(Rel *rel);
-extern int xfunc_shouldpull(Path *childpath, JoinPath *parentpath,
+extern int
+xfunc_shouldpull(Path *childpath, JoinPath *parentpath,
 				 int whichchild, CInfo *maxcinfopt);
-extern CInfo * xfunc_pullup(Path *childpath, JoinPath *parentpath, CInfo *cinfo,
+extern CInfo *
+xfunc_pullup(Path *childpath, JoinPath *parentpath, CInfo *cinfo,
 			 int whichchild, int clausetype);
 extern Cost xfunc_rank(Expr *clause);
 extern Cost xfunc_expense(Query *queryInfo, Expr *clause);

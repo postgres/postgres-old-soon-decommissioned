@@ -57,11 +57,11 @@ int
 inet_aton(const char *cp, struct in_addr * addr)
 {
 	unsigned int val;
-	int base,
+	int			base,
 				n;
-	char c;
+	char		c;
 	u_int		parts[4];
-	u_int *pp = parts;
+	u_int	   *pp = parts;
 
 	for (;;)
 	{

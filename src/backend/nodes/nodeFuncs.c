@@ -89,7 +89,7 @@ var_is_rel(Var *var)
  *		Returns the modified oper node.
  *
  */
-Oper	   *
+Oper *
 replace_opid(Oper *oper)
 {
 	oper->opid = get_opcode(oper->opno);

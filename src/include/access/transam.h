@@ -41,10 +41,10 @@
  *		commiting of child xactions.
  * ----------------
  */
-#define XID_COMMIT			2		/* transaction commited */
-#define XID_ABORT			1		/* transaction aborted */
-#define XID_INPROGRESS		0		/* transaction in progress */
-#define XID_COMMIT_CHILD	3		/* child xact commited */
+#define XID_COMMIT			2	/* transaction commited */
+#define XID_ABORT			1	/* transaction aborted */
+#define XID_INPROGRESS		0	/* transaction in progress */
+#define XID_COMMIT_CHILD	3	/* child xact commited */
 
 typedef unsigned char XidStatus;/* (2 bits) */
 
@@ -106,10 +106,10 @@ typedef LogRelationContentsData *LogRelationContents;
  */
 typedef struct VariableRelationContentsData
 {
-	int				TransSystemVersion;
-	TransactionId	nextXidData;
-	TransactionId	lastXidData;			/* unused */
-	Oid				nextOid;
+	int			TransSystemVersion;
+	TransactionId nextXidData;
+	TransactionId lastXidData;	/* unused */
+	Oid			nextOid;
 } VariableRelationContentsData;
 
 typedef VariableRelationContentsData *VariableRelationContents;
@@ -130,11 +130,14 @@ extern void TransactionIdAbort(TransactionId transactionId);
 
 /* in transam/transsup.c */
 extern void AmiTransactionOverride(bool flag);
-extern void TransComputeBlockNumber(Relation relation,
+extern void
+TransComputeBlockNumber(Relation relation,
 			  TransactionId transactionId, BlockNumber *blockNumberOutP);
-extern XidStatus TransBlockNumberGetXidStatus(Relation relation,
+extern XidStatus
+TransBlockNumberGetXidStatus(Relation relation,
 				BlockNumber blockNumber, TransactionId xid, bool *failP);
-extern void TransBlockNumberSetXidStatus(Relation relation,
+extern void
+TransBlockNumberSetXidStatus(Relation relation,
 		   BlockNumber blockNumber, TransactionId xid, XidStatus xstatus,
 							 bool *failP);
 

@@ -45,7 +45,7 @@ oidnamein(char *inStr)
 	return oc;
 }
 
-char	   *
+char *
 oidnameout(OidName oidname)
 {
 	char		buf[30 + NAMEDATALEN];	/* oidname length + oid length +

@@ -27,7 +27,7 @@
  * makeOper -
  *	  creates an Oper node
  */
-Oper	   *
+Oper *
 makeOper(Oid opno,
 		 Oid opid,
 		 Oid opresulttype,
@@ -49,7 +49,7 @@ makeOper(Oid opno,
  *	  creates a Var node
  *
  */
-Var		   *
+Var *
 makeVar(Index varno,
 		AttrNumber varattno,
 		Oid vartype,
@@ -75,7 +75,7 @@ makeVar(Index varno,
  * makeResdom -
  *	  creates a Resdom (Result Domain) node
  */
-Resdom	   *
+Resdom *
 makeResdom(AttrNumber resno,
 		   Oid restype,
 		   int16 restypmod,
@@ -100,7 +100,7 @@ makeResdom(AttrNumber resno,
  * makeConst -
  *	  creates a Const node
  */
-Const	   *
+Const *
 makeConst(Oid consttype,
 		  int constlen,
 		  Datum constvalue,

@@ -704,7 +704,7 @@ PortalGetQueryDesc(Portal portal)
  *		BadState if called when disabled.
  *		BadArg if portal is invalid.
  */
-EState	   *
+EState *
 PortalGetState(Portal portal)
 {
 	AssertState(PortalManagerEnabled);

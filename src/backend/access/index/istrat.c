@@ -242,17 +242,17 @@ StrategyTermEvaluate(StrategyTerm term,
 		switch (operator->flags ^ entry->sk_flags)
 		{
 			case 0x0:
-				tmpres = (long) FMGR_PTR2(&entry->sk_func, 
+				tmpres = (long) FMGR_PTR2(&entry->sk_func,
 										  left, right);
 				break;
 
 			case SK_NEGATE:
-				tmpres = (long) !FMGR_PTR2(&entry->sk_func, 
+				tmpres = (long) !FMGR_PTR2(&entry->sk_func,
 										   left, right);
 				break;
 
 			case SK_COMMUTE:
-				tmpres = (long) FMGR_PTR2(&entry->sk_func, 
+				tmpres = (long) FMGR_PTR2(&entry->sk_func,
 										  right, left);
 				break;
 

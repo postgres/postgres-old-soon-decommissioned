@@ -42,7 +42,7 @@ oidint2in(char *o)
 	return (oi);
 }
 
-char	   *
+char *
 oidint2out(OidInt2 o)
 {
 	char	   *r;

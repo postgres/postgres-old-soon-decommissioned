@@ -31,7 +31,7 @@
  *	  macro makeNode. eg. to create a Resdom node, use makeNode(Resdom)
  *
  */
-Node	   *
+Node *
 newNode(Size size, NodeTag tag)
 {
 	Node	   *newNode;

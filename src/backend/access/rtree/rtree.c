@@ -956,7 +956,7 @@ freestack(RTSTACK *s)
 	}
 }
 
-char	   *
+char *
 rtdelete(Relation r, ItemPointer tid)
 {
 	BlockNumber blkno;

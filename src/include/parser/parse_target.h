@@ -20,10 +20,9 @@
 #include <parser/parse_node.h>
 
 #define EXPR_COLUMN_FIRST	1
-#define EXPR_RELATION_FIRST	2
+#define EXPR_RELATION_FIRST 2
 
 extern List *transformTargetList(ParseState *pstate, List *targetlist);
 extern List *makeTargetNames(ParseState *pstate, List *cols);
 
 #endif							/* PARSE_TARGET_H */
-

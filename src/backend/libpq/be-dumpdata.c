@@ -313,8 +313,8 @@ be_printtup(HeapTuple tuple, TupleDesc typeinfo)
 		if (!isnull && OidIsValid(typoutput))
 		{
 			values[i] = fmgr(typoutput, attr,
-					gettypelem(typeinfo->attrs[i]->atttypid),
-							   typeinfo->attrs[i]->atttypmod);
+							 gettypelem(typeinfo->attrs[i]->atttypid),
+							 typeinfo->attrs[i]->atttypmod);
 		}
 		else
 			values[i] = NULL;

@@ -781,7 +781,7 @@ static int
 hashFunc(char *key, int len)
 {
 	unsigned int h;
-	int l;
+	int			l;
 	unsigned char *k;
 
 	/*
@@ -901,12 +901,12 @@ ExecReScanHash(Hash *node, ExprContext *exprCtxt, Plan *parent)
 		pfree(hashstate->hashBatches);
 		hashstate->hashBatches = NULL;
 	}
-	
-	/* 
-	 * if chgParam of subnode is not null then plan
-	 * will be re-scanned by first ExecProcNode.
+
+	/*
+	 * if chgParam of subnode is not null then plan will be re-scanned by
+	 * first ExecProcNode.
 	 */
-	if (((Plan*) node)->lefttree->chgParam == NULL)
-		ExecReScan (((Plan*) node)->lefttree, exprCtxt, (Plan *) node);
-	
+	if (((Plan *) node)->lefttree->chgParam == NULL)
+		ExecReScan(((Plan *) node)->lefttree, exprCtxt, (Plan *) node);
+
 }

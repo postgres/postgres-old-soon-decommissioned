@@ -53,7 +53,7 @@ leftTrim(char *s)
 
 #endif
 
-char	   *
+char *
 rightTrim(char *s)
 {
 	char	   *sEnd;

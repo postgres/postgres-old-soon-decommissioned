@@ -28,25 +28,25 @@
  */
 typedef struct HeapTupleData
 {
-	unsigned int	t_len;			/* length of entire tuple */
+	unsigned int t_len;			/* length of entire tuple */
 
-	Oid				t_oid;			/* OID of this tuple -- 4 bytes */
+	Oid			t_oid;			/* OID of this tuple -- 4 bytes */
 
-	CommandId		t_cmin;			/* insert CID stamp -- 4 bytes each */
-	CommandId		t_cmax;			/* delete CommandId stamp */
+	CommandId	t_cmin;			/* insert CID stamp -- 4 bytes each */
+	CommandId	t_cmax;			/* delete CommandId stamp */
 
-	TransactionId	t_xmin;			/* insert XID stamp -- 4 bytes each */
-	TransactionId	t_xmax;			/* delete XID stamp */
+	TransactionId t_xmin;		/* insert XID stamp -- 4 bytes each */
+	TransactionId t_xmax;		/* delete XID stamp */
 
-	ItemPointerData	t_ctid;			/* current TID of this tuple */
-	
-	int16			t_natts;		/* number of attributes */
+	ItemPointerData t_ctid;		/* current TID of this tuple */
 
-	uint16			t_infomask;		/* various infos */
+	int16		t_natts;		/* number of attributes */
 
-	uint8			t_hoff;			/* sizeof tuple header */
+	uint16		t_infomask;		/* various infos */
 
-	bits8			t_bits[MinHeapTupleBitmapSize / 8];
+	uint8		t_hoff;			/* sizeof tuple header */
+
+	bits8		t_bits[MinHeapTupleBitmapSize / 8];
 	/* bit map of domains */
 
 	/* MORE DATA FOLLOWS AT END OF STRUCT */

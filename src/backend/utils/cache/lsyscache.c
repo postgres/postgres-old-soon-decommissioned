@@ -67,7 +67,7 @@ op_class(Oid opno, int32 opclass, Oid amopid)
  *		return the "attname" field from the attribute relation.
  *
  */
-char	   *
+char *
 get_attname(Oid relid, AttrNumber attnum)
 {
 	FormData_pg_attribute att_tup;
@@ -161,7 +161,7 @@ get_attisset(Oid relid, char *attname)
  *		return the "atttypmod" field from the attribute relation.
  *
  */
-int16 
+int16
 get_atttypmod(Oid relid, AttrNumber attnum)
 {
 	FormData_pg_attribute att_tup;
@@ -209,7 +209,7 @@ get_opcode(Oid opno)
  *
  * Note: return the struct so that it gets copied.
  */
-char	   *
+char *
 get_opname(Oid opno)
 {
 	FormData_pg_operator optup;
@@ -395,7 +395,7 @@ get_relnatts(Oid relid)
  *		Returns the name of a given relation.
  *
  */
-char	   *
+char *
 get_rel_name(Oid relid)
 {
 	FormData_pg_class reltup;

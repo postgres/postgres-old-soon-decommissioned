@@ -34,7 +34,7 @@ static HInfo *match_hashop_hashinfo(Oid hashop, List *hashinfo_list);
  * Returns the new list of hashinfo nodes.
  *
  */
-List	   *
+List *
 group_clauses_by_hashop(List *clauseinfo_list,
 						int inner_relid)
 {

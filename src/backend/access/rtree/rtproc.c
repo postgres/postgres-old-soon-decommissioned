@@ -39,7 +39,7 @@ rt_box_union(BOX *a, BOX *b)
 	return (n);
 }
 
-BOX		   *
+BOX *
 rt_box_inter(BOX *a, BOX *b)
 {
 	BOX		   *n;

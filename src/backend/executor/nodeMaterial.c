@@ -350,16 +350,16 @@ ExecEndMaterial(Material *node)
 void
 ExecMaterialReScan(Material *node, ExprContext *exprCtxt, Plan *parent)
 {
-	MaterialState  *matstate = node->matstate;
+	MaterialState *matstate = node->matstate;
 
 	if (matstate->mat_Flag == false)
 		return;
-	
-	matstate->csstate.css_currentScanDesc = 
-					ExecReScanR (matstate->csstate.css_currentRelation, 
-								 matstate->csstate.css_currentScanDesc, 
-								 node->plan.state->es_direction, 0, NULL);
-	
+
+	matstate->csstate.css_currentScanDesc =
+		ExecReScanR(matstate->csstate.css_currentRelation,
+					matstate->csstate.css_currentScanDesc,
+					node->plan.state->es_direction, 0, NULL);
+
 }
 
 #ifdef NOT_USED					/* not used */

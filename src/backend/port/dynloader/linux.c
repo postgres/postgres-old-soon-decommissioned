@@ -28,7 +28,7 @@
 #if FALSE
 extern char pg_pathname[];
 
-void	   *
+void *
 pg_dlopen(char *filename)
 {
 #ifndef HAVE_DLD_H
@@ -106,7 +106,7 @@ pg_dlopen(char *filename)
 #endif
 }
 
-char	   *
+char *
 pg_dlerror()
 {
 #ifndef HAVE_DLD_H
@@ -115,4 +115,5 @@ pg_dlerror()
 	return dld_strerror(dld_errno);
 #endif
 }
+
 #endif

@@ -44,7 +44,7 @@ valid_or_clause(CInfo *clauseinfo)
  * Returns a list containing the clauses from 'clauseinfo-list'.
  *
  */
-List	   *
+List *
 get_actual_clauses(List *clauseinfo_list)
 {
 	List	   *temp = NIL;
@@ -173,7 +173,7 @@ get_joinvars(Oid relid,
  *	  of a list of clauseinfo nodes to be used with an index.
  *
  */
-List	   *
+List *
 get_opnos(List *clauseinfo_list)
 {
 	CInfo	   *temp = (CInfo *) NULL;

@@ -20,9 +20,9 @@
 
 extern void AddAggToParseState(ParseState *pstate, Aggreg *aggreg);
 extern void parseCheckAggregates(ParseState *pstate, Query *qry);
-extern Aggreg *ParseAgg(ParseState *pstate, char *aggname, Oid basetype,
-			List *target, int precedence);
+extern Aggreg *
+ParseAgg(ParseState *pstate, char *aggname, Oid basetype,
+		 List *target, int precedence);
 extern void agg_error(char *caller, char *aggname, Oid basetypeID);
 
 #endif							/* PARSE_AGG_H */
-

@@ -41,7 +41,7 @@ oidint4in(char *o)
 	return (oi);
 }
 
-char	   *
+char *
 oidint4out(OidInt4 o)
 {
 	char	   *r;

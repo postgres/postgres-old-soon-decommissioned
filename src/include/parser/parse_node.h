@@ -44,14 +44,17 @@ typedef struct ParseState
 
 extern ParseState *make_parsestate(ParseState *parentParseState);
 extern Expr *make_op(char *opname, Node *ltree, Node *rtree);
-extern Var *make_var(ParseState *pstate, Oid relid, char *refname,
-										char *attrname);
-extern ArrayRef   *make_array_ref(Node *expr,
+extern Var *
+make_var(ParseState *pstate, Oid relid, char *refname,
+		 char *attrname);
+extern ArrayRef *
+make_array_ref(Node *expr,
 			   List *indirection);
-extern ArrayRef   *make_array_set(Expr *target_expr,
-						   List *upperIndexpr,
-						   List *lowerIndexpr,
-						   Expr *expr);
+extern ArrayRef *
+make_array_set(Expr *target_expr,
+			   List *upperIndexpr,
+			   List *lowerIndexpr,
+			   Expr *expr);
 extern Const *make_const(Value *value);
-			   
+
 #endif							/* PARSE_NODE_H */

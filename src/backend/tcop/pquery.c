@@ -66,7 +66,7 @@ CreateQueryDesc(Query *parsetree,
  *		Note: this may someday take parameters -cim 9/18/89
  * ----------------------------------------------------------------
  */
-EState	   *
+EState *
 CreateExecutorState(void)
 {
 	EState	   *state;

@@ -38,7 +38,7 @@ xidin(char *representation)
 }
 
 /* XXX char16 name for catalogs */
-char	   *
+char *
 xidout(TransactionId transactionId)
 {
 /*	  return(TransactionIdFormString(transactionId)); */

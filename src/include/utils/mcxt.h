@@ -39,7 +39,8 @@ extern MemoryContext TopMemoryContext;
  */
 extern void EnableMemoryContext(bool on);
 extern Pointer MemoryContextAlloc(MemoryContext context, Size size);
-extern Pointer MemoryContextRealloc(MemoryContext context,
+extern Pointer
+MemoryContextRealloc(MemoryContext context,
 					 Pointer pointer,
 					 Size size);
 extern void MemoryContextFree(MemoryContext context, Pointer pointer);

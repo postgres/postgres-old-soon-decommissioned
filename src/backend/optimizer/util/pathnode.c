@@ -61,7 +61,7 @@ path_is_cheaper(Path *path1, Path *path2)
  * is minimum.
  *
  */
-Path	   *
+Path *
 set_cheapest(Rel *parent_rel, List *pathlist)
 {
 	List	   *p;
@@ -100,7 +100,7 @@ set_cheapest(Rel *parent_rel, List *pathlist)
  * Returns the list of unique pathnodes.
  *
  */
-List	   *
+List *
 add_pathlist(Rel *parent_rel, List *unique_paths, List *new_paths)
 {
 	List	   *x;
@@ -207,7 +207,7 @@ better_path(Path *new_path, List *unique_paths, bool *noOther)
  *	  pathnode.
  *
  */
-Path	   *
+Path *
 create_seqscan_path(Rel *rel)
 {
 	int			relid = 0;

@@ -30,7 +30,7 @@
  * RewriteGetRuleEventRel
  *-----------------------------------------------------------------------
  */
-char	   *
+char *
 RewriteGetRuleEventRel(char *rulename)
 {
 	HeapTuple	htp;

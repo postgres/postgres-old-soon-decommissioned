@@ -22,11 +22,13 @@
 #include <parser/parse_node.h>
 
 #ifndef BOOTSTRAP_INCLUDE
-extern List * pg_parse_and_plan(char *query_string, Oid *typev, int nargs,
-		QueryTreeList **queryListP, CommandDest dest);
+extern List *
+pg_parse_and_plan(char *query_string, Oid *typev, int nargs,
+				  QueryTreeList **queryListP, CommandDest dest);
 extern void pg_exec_query(char *query_string, char **argv, Oid *typev, int nargs);
-extern void pg_exec_query_dest(char *query_string, char **argv, Oid *typev,
-			 int nargs, CommandDest dest);
+extern void
+pg_exec_query_dest(char *query_string, char **argv, Oid *typev,
+				   int nargs, CommandDest dest);
 
 #endif							/* BOOTSTRAP_HEADER */
 

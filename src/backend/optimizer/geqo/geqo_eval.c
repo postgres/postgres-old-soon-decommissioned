@@ -98,7 +98,7 @@ geqo_eval(Query *root, Gene *tour, int num_gene)
  *
  * Returns a new join relation incorporating all joins in a left-sided tree.
  */
-Rel		   *
+Rel *
 gimme_tree(Query *root, Gene *tour, int rel_count, int num_gene, Rel *outer_rel)
 {
 	Rel		   *inner_rel;		/* current relation */

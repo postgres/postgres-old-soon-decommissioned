@@ -282,10 +282,13 @@ init_fcache(Oid foid,
 
 
 
-	if (retval->language != SQLlanguageId) {
+	if (retval->language != SQLlanguageId)
+	{
 		fmgr_info(foid, &(retval->func));
 		retval->nargs = retval->func.fn_nargs;
-	} else {
+	}
+	else
+	{
 		retval->func.fn_addr = (func_ptr) NULL;
 	}
 

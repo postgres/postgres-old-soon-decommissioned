@@ -84,7 +84,7 @@ init_tour(Gene *tour, int num_gene)
  *	 allocate memory for city table
  *
  */
-City	   *
+City *
 alloc_city_table(int num_gene)
 {
 	City	   *city_table;

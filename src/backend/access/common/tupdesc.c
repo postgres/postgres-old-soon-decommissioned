@@ -306,7 +306,7 @@ TupleDescInitEntry(TupleDesc desc,
 	att->attnum = attributeNumber;
 	att->attnelems = attdim;
 	att->attisset = attisset;
-	
+
 	att->attnotnull = false;
 	att->atthasdef = false;
 
@@ -487,7 +487,7 @@ BuildDescForRelation(List *schema, char *relname)
 		if (arry != NIL)
 		{
 			/* array of XXX is _XXX */
-			sprintf(typename, "_%.*s", NAMEDATALEN-2,entry->typename->name);
+			sprintf(typename, "_%.*s", NAMEDATALEN - 2, entry->typename->name);
 			attdim = length(arry);
 		}
 		else

@@ -65,7 +65,8 @@ extern TupleDesc CreateTupleDescCopyConstr(TupleDesc tupdesc);
 
 extern void FreeTupleDesc(TupleDesc tupdesc);
 
-extern bool TupleDescInitEntry(TupleDesc desc,
+extern bool
+TupleDescInitEntry(TupleDesc desc,
 				   AttrNumber attributeNumber,
 				   char *attributeName,
 				   Oid typeid,

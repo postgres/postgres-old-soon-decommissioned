@@ -58,7 +58,7 @@ set_joinrel_size(Rel *joinrel, Rel *outer_rel, Rel *inner_rel,
  *
  * Returns a list of rel nodes corresponding to the new join relations.
  */
-List	   *
+List *
 find_join_rels(Query *root, List *outer_rels)
 {
 	List	   *joins = NIL;
@@ -486,7 +486,7 @@ add_new_joininfos(Query *root, List *joinrels, List *outerrels)
  *
  * Returns the list of final join relations.
  */
-List	   *
+List *
 final_join_rels(List *join_rel_list)
 {
 	List	   *xrel = NIL;

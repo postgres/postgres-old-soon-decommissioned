@@ -32,7 +32,7 @@ static List *find_secondary_index(Query *root, Oid relid);
  *	  each (secondary) index defined on a relation.
  *
  */
-List	   *
+List *
 find_relation_indices(Query *root, Rel *rel)
 {
 	if (rel->indexed)

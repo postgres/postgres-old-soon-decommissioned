@@ -79,11 +79,14 @@ struct cachedesc
 
 extern void zerocaches(void);
 extern void InitCatalogCache(void);
-extern HeapTuple SearchSysCacheTuple(int cacheId, Datum key1, Datum key2,
+extern HeapTuple
+SearchSysCacheTuple(int cacheId, Datum key1, Datum key2,
 					Datum key3, Datum key4);
-extern int32 SearchSysCacheStruct(int cacheId, char *returnStruct,
+extern int32
+SearchSysCacheStruct(int cacheId, char *returnStruct,
 					 Datum key1, Datum key2, Datum key3, Datum key4);
-extern void * SearchSysCacheGetAttribute(int cacheId,
+extern void *
+SearchSysCacheGetAttribute(int cacheId,
 						   AttrNumber attributeNumber,
 						   Datum key1,
 						   Datum key2,

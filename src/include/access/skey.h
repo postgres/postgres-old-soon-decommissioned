@@ -46,7 +46,8 @@ typedef ScanKeyData *ScanKey;
  * prototypes for functions in access/common/scankey.c
  */
 extern void ScanKeyEntrySetIllegal(ScanKey entry);
-extern void ScanKeyEntryInitialize(ScanKey entry, bits16 flags,
+extern void
+ScanKeyEntryInitialize(ScanKey entry, bits16 flags,
 	 AttrNumber attributeNumber, RegProcedure procedure, Datum argument);
 
 #endif							/* SKEY_H */

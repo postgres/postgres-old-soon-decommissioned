@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "strdup.h"
 
-char	   *
+char *
 strdup(char const * string)
 {
 	char	   *nstr;

@@ -205,7 +205,7 @@ FlushLocalBuffer(Buffer buffer, bool release)
 			  (char *) MAKE_PTR(bufHdr->data));
 	LocalBufferFlushCount++;
 	RelationDecrementReferenceCount(bufrel);
-	
+
 	Assert(LocalRefCount[bufid] > 0);
 	if (release)
 		LocalRefCount[bufid]--;
@@ -279,7 +279,7 @@ LocalBufferSync(void)
 					  (char *) MAKE_PTR(buf->data));
 			LocalBufferFlushCount++;
 			RelationDecrementReferenceCount(bufrel);
-			
+
 			buf->tag.relId.relId = InvalidOid;
 			buf->flags &= ~BM_DIRTY;
 		}

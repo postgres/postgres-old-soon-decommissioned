@@ -39,7 +39,7 @@
 #define RELN_LEVEL 0
 #define PAGE_LEVEL 1
 #define TUPLE_LEVEL 2
-typedef int PG_LOCK_LEVEL; 
+typedef int PG_LOCK_LEVEL;
 
 /* multi.c */
 

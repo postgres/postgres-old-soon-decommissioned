@@ -38,7 +38,7 @@
  * ----------------
  */
 
-char	   *
+char *
 scanstr(char *s)
 {
 	static char newStr[MAX_PARSE_BUFFER];

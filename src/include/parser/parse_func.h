@@ -42,12 +42,13 @@ typedef struct _CandidateList
 	struct _CandidateList *next;
 }		   *CandidateList;
 
-extern Node *ParseNestedFuncOrColumn(ParseState *pstate, Attr *attr,
-		int *curr_resno, int precedence);
-extern Node *ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
-	int *curr_resno, int precedence);
+extern Node *
+ParseNestedFuncOrColumn(ParseState *pstate, Attr *attr,
+						int *curr_resno, int precedence);
+extern Node *
+ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
+				  int *curr_resno, int precedence);
 
 extern void func_error(char *caller, char *funcname, int nargs, Oid *argtypes);
 
 #endif							/* PARSE_FUNC_H */
-

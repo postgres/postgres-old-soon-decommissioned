@@ -371,7 +371,7 @@ extern bool oid8eq(Oid arg1[], Oid arg2[]);
 extern bool oideqint4(Oid arg1, int32 arg2);
 extern bool int4eqoid(int32 arg1, Oid arg2);
 extern text *oid_text(Oid arg1);
-extern Oid text_oid(text *arg1);
+extern Oid	text_oid(text *arg1);
 
 /* regexp.c */
 extern bool char2regexeq(uint16 arg1, struct varlena * p);
@@ -484,7 +484,7 @@ extern int32 textpos(text *arg1, text *arg2);
 extern text *text_substr(text *string, int32 m, int32 n);
 
 extern struct varlena *byteain(char *inputText);
-extern char *byteaout(struct varlena *vlena);
+extern char *byteaout(struct varlena * vlena);
 extern int32 byteaGetSize(struct varlena * v);
 extern int32 byteaGetByte(struct varlena * v, int32 n);
 extern int32 byteaGetBit(struct varlena * v, int32 n);

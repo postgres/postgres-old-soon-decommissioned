@@ -113,7 +113,7 @@ static bool SingleAttributeIndex(Rel *index);
  * Returns a list of index nodes.
  *
  */
-List	   *
+List *
 find_index_paths(Query *root,
 				 Rel *rel,
 				 List *indices,

@@ -64,7 +64,7 @@ static List *remove_duplicates(List *list);
  *		and from the rule manager (removeAndFlag = false).
  *
  */
-List	   *
+List *
 cnfify(Expr *qual, bool removeAndFlag)
 {
 	Expr	   *newqual = NULL;

@@ -68,7 +68,8 @@ extern void AtEOXact_portals(void);
 extern void EnablePortalManager(bool on);
 extern Portal GetPortalByName(char *name);
 extern Portal BlankPortalAssignName(char *name);
-extern void PortalSetQuery(Portal portal, QueryDesc *queryDesc,
+extern void
+PortalSetQuery(Portal portal, QueryDesc *queryDesc,
 			   TupleDesc attinfo, EState *state,
 			   void (*cleanup) (Portal portal));
 extern QueryDesc *PortalGetQueryDesc(Portal portal);

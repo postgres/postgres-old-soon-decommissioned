@@ -65,7 +65,7 @@ static Gene edge_failure(Gene *gene, int index, Edge *edge_table, int num_gene);
  *
  */
 
-Edge	   *
+Edge *
 alloc_edge_table(int num_gene)
 {
 	Edge	   *edge_table;

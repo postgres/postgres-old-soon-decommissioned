@@ -389,7 +389,7 @@ btinsert(Relation rel, Datum *datum, char *nulls, ItemPointer ht_ctid, Relation 
 /*
  *	btgettuple() -- Get the next tuple in the scan.
  */
-char	   *
+char *
 btgettuple(IndexScanDesc scan, ScanDirection dir)
 {
 	RetrieveIndexResult res;
@@ -411,7 +411,7 @@ btgettuple(IndexScanDesc scan, ScanDirection dir)
 /*
  *	btbeginscan() -- start a scan on a btree index
  */
-char	   *
+char *
 btbeginscan(Relation rel, bool fromEnd, uint16 keysz, ScanKey scankey)
 {
 	IndexScanDesc scan;

@@ -224,7 +224,7 @@ OperatorShellMakeWithOpenRelation(Relation pg_operator_desc,
 								  Oid leftObjectId,
 								  Oid rightObjectId)
 {
-	int i;
+	int			i;
 	HeapTuple	tup;
 	Datum		values[Natts_pg_operator];
 	char		nulls[Natts_pg_operator];
@@ -782,7 +782,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 	};
 
 	fmgr_info(ObjectIdEqualRegProcedure, &opKey[0].sk_func);
-        opKey[0].sk_nargs = opKey[0].sk_func.fn_nargs;
+	opKey[0].sk_nargs = opKey[0].sk_func.fn_nargs;
 
 	for (i = 0; i < Natts_pg_operator; ++i)
 	{

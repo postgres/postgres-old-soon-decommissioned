@@ -39,7 +39,7 @@ static Path *set_paths(Rel *rel, Path *unorderedpath);
  * Returns the resulting list.
  *
  */
-List	   *
+List *
 geqo_prune_rels(List *rel_list)
 {
 	List	   *temp_list = NIL;

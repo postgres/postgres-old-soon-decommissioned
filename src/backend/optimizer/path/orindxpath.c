@@ -50,7 +50,7 @@ best_or_subclause_index(Query *root, Rel *rel, Expr *subclause,
  * Returns a list of these index path nodes.
  *
  */
-List	   *
+List *
 create_or_index_paths(Query *root,
 					  Rel *rel, List *clauses)
 {

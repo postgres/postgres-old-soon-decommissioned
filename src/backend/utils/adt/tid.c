@@ -67,7 +67,7 @@ tidin(char *str)
  *		tidout
  * ----------------------------------------------------------------
  */
-char	   *
+char *
 tidout(ItemPointer itemPtr)
 {
 	BlockNumber blockNumber;

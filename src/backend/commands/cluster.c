@@ -212,8 +212,8 @@ copy_heap(Oid OIDOldHeap)
 	OldHeapDesc = RelationGetTupleDescriptor(OldHeap);
 
 	/*
-	 * Need to make a copy of the tuple descriptor, heap_create_with_catalog
-	 * modifies it.
+	 * Need to make a copy of the tuple descriptor,
+	 * heap_create_with_catalog modifies it.
 	 */
 
 	tupdesc = CreateTupleDescCopy(OldHeapDesc);

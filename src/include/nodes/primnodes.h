@@ -269,7 +269,7 @@ typedef struct Aggreg
 	char	   *aggname;
 	Oid			basetype;
 	Oid			aggtype;
-	Node	   *target;	
+	Node	   *target;
 	int			aggno;
 	bool		usenulls;
 } Aggreg;
@@ -292,11 +292,11 @@ typedef enum SubLinkType
 typedef struct SubLink
 {
 	NodeTag		type;
-	SubLinkType	subLinkType;
+	SubLinkType subLinkType;
 	bool		useor;
-	List		*lefthand;
-	List		*oper;
-	Node		*subselect;
+	List	   *lefthand;
+	List	   *oper;
+	Node	   *subselect;
 } SubLink;
 
 /* ----------------

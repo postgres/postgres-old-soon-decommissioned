@@ -457,25 +457,22 @@ ProcSleep(PROC_QUEUE *waitQueue,
 				dummy;
 
 	/*
-	 *	If the first entries in the waitQueue have a greater priority than
-	 *	we have, we must be a reader, and they must be a writers, and we
-	 *	must be here because the current holder is a writer or a
-	 *	reader but we don't share shared locks if a writer is waiting.
-	 *	We put ourselves after the writers.  This way, we have a FIFO, but
-	 *	keep the readers together to give them decent priority, and no one
-	 *	starves.  Because we group all readers together, a non-empty queue
-	 *	only has a few possible configurations:
+	 * If the first entries in the waitQueue have a greater priority than
+	 * we have, we must be a reader, and they must be a writers, and we
+	 * must be here because the current holder is a writer or a reader but
+	 * we don't share shared locks if a writer is waiting. We put
+	 * ourselves after the writers.  This way, we have a FIFO, but keep
+	 * the readers together to give them decent priority, and no one
+	 * starves.  Because we group all readers together, a non-empty queue
+	 * only has a few possible configurations:
 	 *
-	 *	[readers]
-	 *	[writers]
-	 *	[readers][writers]
-	 *	[writers][readers]
-	 *	[writers][readers][writers]
+	 * [readers] [writers] [readers][writers] [writers][readers]
+	 * [writers][readers][writers]
 	 *
-	 *	In a full queue, we would have a reader holding a lock, then a
-	 *	writer gets the lock, then a bunch of readers, made up of readers
-	 *	who could not share the first readlock because a writer was waiting,
-	 *	and new readers arriving while the writer had the lock.
+	 * In a full queue, we would have a reader holding a lock, then a writer
+	 * gets the lock, then a bunch of readers, made up of readers who
+	 * could not share the first readlock because a writer was waiting,
+	 * and new readers arriving while the writer had the lock.
 	 *
 	 */
 	proc = (PROC *) MAKE_PTR(waitQueue->links.prev);
@@ -486,13 +483,13 @@ ProcSleep(PROC_QUEUE *waitQueue,
 		proc = (PROC *) MAKE_PTR(proc->links.prev);
 
 	/* The rest of the queue is FIFO, with readers first, writers last */
-	for (     ; i < waitQueue->size && proc->prio <= prio; i++)
+	for (; i < waitQueue->size && proc->prio <= prio; i++)
 		proc = (PROC *) MAKE_PTR(proc->links.prev);
 
 	MyProc->prio = prio;
 	MyProc->token = token;
 	MyProc->waitLock = lock;
-	
+
 	/* -------------------
 	 * currently, we only need this for the ProcWakeup routines
 	 * -------------------
@@ -523,7 +520,7 @@ ProcSleep(PROC_QUEUE *waitQueue,
 
 	do
 	{
-		MyProc->errType = NO_ERROR; /* reset flag after deadlock check */
+		MyProc->errType = NO_ERROR;		/* reset flag after deadlock check */
 
 		if (setitimer(ITIMER_REAL, &timeval, &dummy))
 			elog(FATAL, "ProcSleep: Unable to set timer for process wakeup");
@@ -535,8 +532,9 @@ ProcSleep(PROC_QUEUE *waitQueue,
 		 * --------------
 		 */
 		IpcSemaphoreLock(MyProc->sem.semId, MyProc->sem.semNum, IpcExclusiveLock);
-	} while (MyProc->errType == STATUS_NOT_FOUND); /* sleep after deadlock check */
-	
+	} while (MyProc->errType == STATUS_NOT_FOUND);		/* sleep after deadlock
+														 * check */
+
 	/* ---------------
 	 * We were awoken before a timeout - now disable the timer
 	 * ---------------

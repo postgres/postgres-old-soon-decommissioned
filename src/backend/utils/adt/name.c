@@ -48,7 +48,7 @@ namein(char *s)
 /*
  *		nameout - converts internal reprsentation to "..."
  */
-char	   *
+char *
 nameout(NameData *s)
 {
 	if (s == NULL)

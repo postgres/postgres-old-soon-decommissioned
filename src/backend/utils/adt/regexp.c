@@ -189,7 +189,7 @@ fixedlen_regexeq(char *s, struct varlena * p, int charlen, int cflags)
 
 	/* be sure sterm is null-terminated */
 	sterm = (char *) palloc(charlen + 1);
-	StrNCpy(sterm, s, charlen+1);
+	StrNCpy(sterm, s, charlen + 1);
 
 	result = RE_compile_and_execute(p, sterm, cflags);
 

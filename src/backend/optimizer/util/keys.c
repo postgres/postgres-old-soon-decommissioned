@@ -85,7 +85,7 @@ equal_indexkey_var(int index_key, Var *var)
  *	 lelation.
  *
  */
-Var		   *
+Var *
 extract_subkey(JoinKey *jk, int which_subkey)
 {
 	Var		   *retval;
@@ -178,7 +178,7 @@ matching2_tlvar(int var, List *tlist, bool (*test) ())
 }
 
 
-List	   *
+List *
 collect_index_pathkeys(int *index_keys, List *tlist)
 {
 	List	   *retval = NIL;

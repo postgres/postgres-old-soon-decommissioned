@@ -150,7 +150,7 @@ exec_append_initialize_next(Append *node)
 		}
 		else
 			estate->es_range_table = nth(whichplan, rts);
-		
+
 		if (unionstate->as_junkFilter_list)
 		{
 			estate->es_junkFilter =
@@ -161,7 +161,7 @@ exec_append_initialize_next(Append *node)
 		{
 			estate->es_result_relation_info =
 				(RelationInfo *) nth(whichplan,
-						   unionstate->as_result_relation_info_list);
+							   unionstate->as_result_relation_info_list);
 		}
 		result_slot->ttc_whichplan = whichplan;
 

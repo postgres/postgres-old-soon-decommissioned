@@ -27,7 +27,7 @@
  *	  necessary. This is for base relations.
  *
  */
-Rel		   *
+Rel *
 get_base_rel(Query *root, int relid)
 {
 	List	   *relids;
@@ -100,7 +100,7 @@ get_base_rel(Query *root, int relid)
  *	  creating a new one if necessary. This is for join relations.
  *
  */
-Rel		   *
+Rel *
 get_join_rel(Query *root, List *relid)
 {
 	return rel_member(relid, root->join_relation_list_);
@@ -114,7 +114,7 @@ get_join_rel(Query *root, List *relid)
  * Returns the corresponding entry in 'rels' if it is there.
  *
  */
-Rel		   *
+Rel *
 rel_member(List *relid, List *rels)
 {
 	List	   *temp = NIL;

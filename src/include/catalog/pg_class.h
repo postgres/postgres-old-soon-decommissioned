@@ -68,7 +68,8 @@ CATALOG(pg_class) BOOTSTRAP
 	 * must be exactly this many instances in Class pg_attribute for this
 	 * class which have attnum > 0 (= user attribute).
 	 */
-	int2		relchecks;		/* # of CHECK constraints, not stored in db? */
+	int2		relchecks;		/* # of CHECK constraints, not stored in
+								 * db? */
 	int2		reltriggers;	/* # of TRIGGERs */
 	bool		relhasrules;
 	aclitem		relacl[1];		/* this is here for the catalog */

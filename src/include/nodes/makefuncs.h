@@ -16,13 +16,15 @@
 #include <nodes/primnodes.h>
 #include <utils/fcache.h>
 
-extern Oper * makeOper(Oid opno,
+extern Oper *
+makeOper(Oid opno,
 		 Oid opid,
 		 Oid opresulttype,
 		 int opsize,
 		 FunctionCachePtr op_fcache);
 
-extern Var * makeVar(Index varno,
+extern Var *
+makeVar(Index varno,
 		AttrNumber varattno,
 		Oid vartype,
 		int16 vartypmod,
@@ -30,7 +32,8 @@ extern Var * makeVar(Index varno,
 		Index varnoold,
 		AttrNumber varoattno);
 
-extern Resdom * makeResdom(AttrNumber resno,
+extern Resdom *
+makeResdom(AttrNumber resno,
 		   Oid restype,
 		   int16 restypmod,
 		   char *resname,
@@ -38,7 +41,8 @@ extern Resdom * makeResdom(AttrNumber resno,
 		   Oid reskeyop,
 		   int resjunk);
 
-extern Const * makeConst(Oid consttype,
+extern Const *
+makeConst(Oid consttype,
 		  int constlen,
 		  Datum constvalue,
 		  bool constisnull,

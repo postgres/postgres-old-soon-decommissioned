@@ -57,7 +57,7 @@ typedef TransactionStateData *TransactionState;
 #define TransactionIdIsValid(xid)		((bool) (xid != NullTransactionId))
 #define TransactionIdStore(xid, dest)	\
 	(*((TransactionId*)dest) = (TransactionId)xid)
-#define StoreInvalidTransactionId(dest)	\
+#define StoreInvalidTransactionId(dest) \
 	(*((TransactionId*)dest) = NullTransactionId)
 
 /* ----------------

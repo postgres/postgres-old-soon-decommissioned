@@ -51,7 +51,7 @@
 		( \
 			(char *) (long) *((int32 *)(T)) \
 		) \
-	 	: \
+		: \
 		( \
 			(*(A))->attlen < sizeof(int16) ? \
 				(char *) (long) *((char *)(T)) \

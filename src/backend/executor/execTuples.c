@@ -986,8 +986,8 @@ ExecTypeFromTL(List *targetList)
 							   resdom->resno,
 							   resdom->resname,
 			/* fix for SELECT NULL ... */
-						  	   (restype ? restype : UNKNOWNOID),
-						  	   resdom->restypmod,
+							   (restype ? restype : UNKNOWNOID),
+							   resdom->restypmod,
 							   0,
 							   false);
 
@@ -1021,7 +1021,7 @@ ExecTypeFromTL(List *targetList)
 							   fjRes->resno,
 							   fjRes->resname,
 							   restype,
-						  	   fjRes->restypmod,
+							   fjRes->restypmod,
 							   0,
 							   false);
 /*
@@ -1045,7 +1045,7 @@ ExecTypeFromTL(List *targetList)
 								   fjRes->resno,
 								   fjRes->resname,
 								   restype,
-							  	   fjRes->restypmod,
+								   fjRes->restypmod,
 								   0,
 								   false);
 

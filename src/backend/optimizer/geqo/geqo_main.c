@@ -63,7 +63,7 @@
  *	  similar to a constrained Traveling Salesman Problem (TSP)
  */
 
-Rel		   *
+Rel *
 geqo(Query *root)
 {
 	int			generation;

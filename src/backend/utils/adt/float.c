@@ -220,7 +220,7 @@ float4in(char *num)
  *		float4out		- converts a float4 number to a string
  *						  using a standard output format
  */
-char	   *
+char *
 float4out(float32 num)
 {
 	char	   *ascii = (char *) palloc(MAXFLOATWIDTH + 1);
@@ -262,7 +262,7 @@ float8in(char *num)
  *		float8out		- converts float8 number to a string
  *						  using a standard output format
  */
-char	   *
+char *
 float8out(float64 num)
 {
 	char	   *ascii = (char *) palloc(MAXDOUBLEWIDTH + 1);

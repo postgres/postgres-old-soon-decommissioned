@@ -24,7 +24,7 @@
 
 extern char pg_pathname[];
 
-void	   *
+void *
 pg_dlopen(char *filename)
 {
 	static int	dl_initialized = 0;

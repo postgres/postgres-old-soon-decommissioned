@@ -48,7 +48,7 @@ MakeTLE(Resdom *resdom, Node *expr)
 	return rt;
 }
 
-Var		   *
+Var *
 get_expr(TargetEntry *tle)
 {
 	Assert(tle != NULL);
