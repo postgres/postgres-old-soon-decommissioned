@@ -234,6 +234,11 @@ PerformPortalClose(char *name, CommandDest dest)
 		return;
 	}
 
+	if (PortalNameIsSpecial(name))
+		elog(ERROR,
+			 "The portal name \"%s\" is reserved for internal use",
+			 name);
+
 	/* ----------------
 	 *	get the portal from the portal name
 	 * ----------------
