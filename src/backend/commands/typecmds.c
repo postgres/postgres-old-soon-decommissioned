@@ -1554,9 +1554,9 @@ AlterDomainAddConstraint(List *names, Node *newConstraint)
 				if (!isNull && !DatumGetBool(conResult))
 					ereport(ERROR,
 							(errcode(ERRCODE_CHECK_VIOLATION),
-							 errmsg("relation \"%s\" column \"%s\" contains values that violate the new constraint",
-									RelationGetRelationName(testrel),
-						 NameStr(tupdesc->attrs[attnum - 1]->attname))));
+							 errmsg("column \"%s\" of table \"%s\" contains values that violate the new constraint",
+									NameStr(tupdesc->attrs[attnum - 1]->attname),
+									RelationGetRelationName(testrel))));
 			}
 
 			ResetExprContext(econtext);

@@ -960,7 +960,7 @@ enforce_generic_type_consistency(Oid *actual_arg_types,
 			if (!OidIsValid(array_typelem))
 				ereport(ERROR,
 						(errcode(ERRCODE_DATATYPE_MISMATCH),
-						 errmsg("argument declared \"anyarray\" is not an array but %s",
+						 errmsg("argument declared \"anyarray\" is not an array but type %s",
 								format_type_be(array_typeid))));
 		}
 

@@ -1227,7 +1227,7 @@ CheckPgUserAclNotNull(void)
 	if (heap_attisnull(htup, Anum_pg_class_relacl))
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-		errmsg("before using passwords you must revoke permissions on %s",
+		errmsg("before using passwords you must revoke privileges on %s",
 			   ShadowRelationName),
 				 errdetail("This restriction is to prevent unprivileged users from reading the passwords."),
 				 errhint("Try REVOKE ALL ON \"%s\" FROM PUBLIC.",

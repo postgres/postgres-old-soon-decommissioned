@@ -2853,7 +2853,7 @@ isoweek2date(int woy, int *year, int *mon, int *mday)
 	if (!*year)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-		 errmsg("cannot convert week number without year information")));
+		 errmsg("cannot calculate week number without year information")));
 
 	/* fourth day of current year */
 	day4 = date2j(*year, 1, 4);

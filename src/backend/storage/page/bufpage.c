@@ -489,7 +489,7 @@ PageIndexTupleDelete(Page page, OffsetNumber offnum)
 		offset != MAXALIGN(offset) || size != MAXALIGN(size))
 		ereport(ERROR,
 				(errcode(ERRCODE_DATA_CORRUPTED),
-				 errmsg("corrupted item pointer: offset = %u size = %u",
+				 errmsg("corrupted item pointer: offset = %u, size = %u",
 						offset, (unsigned int) size)));
 
 	/*

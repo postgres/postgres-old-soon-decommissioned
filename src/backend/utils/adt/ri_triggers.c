@@ -2731,7 +2731,7 @@ ri_CheckTrigger(FunctionCallInfo fcinfo, const char *funcname, int tgkind)
 			 errmsg("no target table given for trigger \"%s\" on table \"%s\"",
 					trigdata->tg_trigger->tgname,
 					RelationGetRelationName(trigdata->tg_relation)),
-				 errhint("Remove this RI trigger and its mates, then do ALTER TABLE ADD CONSTRAINT.")));
+				 errhint("Remove this referential integrity trigger and its mates, then do ALTER TABLE ADD CONSTRAINT.")));
 }
 
 

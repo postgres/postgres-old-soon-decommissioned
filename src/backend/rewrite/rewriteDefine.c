@@ -262,7 +262,7 @@ DefineQueryRewrite(RuleStmt *stmt)
 		if (length(action) > 1)
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("multiple action rules on select are not implemented")));
+					 errmsg("multiple actions for rules on SELECT are not implemented")));
 
 		/*
 		 * ... the one action must be a SELECT, ...

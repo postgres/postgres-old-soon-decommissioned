@@ -704,7 +704,7 @@ PrintFreeSpaceMapStatistics(int elevel)
 	ereport(elevel,
 			(errmsg("free space map: %d relations, %d pages stored; %.0f total pages needed",
 					numRels, storedPages, needed),
-			 errdetail("Allocated FSM size: %d relations + %d pages = %.0f kB shared mem.",
+			 errdetail("Allocated FSM size: %d relations + %d pages = %.0f kB shared memory.",
 					   MaxFSMRelations, MaxFSMPages,
 					   (double) FreeSpaceShmemSize() / 1024.0)));
 }

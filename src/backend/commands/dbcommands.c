@@ -200,7 +200,7 @@ createdb(const CreatedbStmt *stmt)
 	if (dbpath != NULL)
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-		   errmsg("cannot use an alternate location on this platform")));
+		   errmsg("cannot use an alternative location on this platform")));
 #endif
 
 	/*

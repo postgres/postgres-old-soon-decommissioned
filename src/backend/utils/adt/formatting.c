@@ -3163,7 +3163,7 @@ do_to_timestamp(text *date_txt, text *fmt,
 		if (!tm->tm_year)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_DATETIME_FORMAT),
-				errmsg("cannot convert yday without year information")));
+				errmsg("cannot calculate day of year without year information")));
 
 		y = ysum[isleap(tm->tm_year)];
 

@@ -1656,7 +1656,7 @@ reindex_index(Oid indexId)
 	if (inplace && IsUnderPostmaster)
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("shared index \"%s\" can only be reindexed in standalone mode",
+				 errmsg("shared index \"%s\" can only be reindexed in stand-alone mode",
 						RelationGetRelationName(iRel))));
 
 	/* Fetch info needed for index_build */

@@ -191,23 +191,23 @@ inet_recv(PG_FUNCTION_ARGS)
 		ip_family(addr) != PGSQL_AF_INET6)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_BINARY_REPRESENTATION),
-				 errmsg("invalid family in external inet")));
+				 errmsg("invalid address family in external \"inet\" value")));
 	bits = pq_getmsgbyte(buf);
 	if (bits < 0 || bits > ip_maxbits(addr))
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_BINARY_REPRESENTATION),
-				 errmsg("invalid bits in external inet")));
+				 errmsg("invalid bits in external \"inet\" value")));
 	ip_bits(addr) = bits;
 	ip_type(addr) = pq_getmsgbyte(buf);
 	if (ip_type(addr) != 0 && ip_type(addr) != 1)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_BINARY_REPRESENTATION),
-				 errmsg("invalid type in external inet")));
+				 errmsg("invalid type in external \"inet\" value")));
 	nb = pq_getmsgbyte(buf);
 	if (nb != ip_addrsize(addr))
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_BINARY_REPRESENTATION),
-				 errmsg("invalid length in external inet")));
+				 errmsg("invalid length in external \"inet\" value")));
 	VARATT_SIZEP(addr) = VARHDRSZ
 		+ ((char *) ip_addr(addr) - (char *) VARDATA(addr))
 		+ ip_addrsize(addr);
@@ -225,7 +225,7 @@ inet_recv(PG_FUNCTION_ARGS)
 		if (!addressOK(ip_addr(addr), bits, ip_family(addr)))
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_BINARY_REPRESENTATION),
-					 errmsg("invalid external cidr value"),
+					 errmsg("invalid external \"cidr\" value"),
 					 errdetail("Value has bits set to right of mask.")));
 	}
 

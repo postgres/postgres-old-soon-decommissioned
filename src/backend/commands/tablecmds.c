@@ -4075,7 +4075,7 @@ AlterTableCreateToastTable(Oid relOid, bool silent)
 	if (shared_relation && IsUnderPostmaster)
 		ereport(ERROR,
 				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
-			 errmsg("shared relations cannot be toasted after initdb")));
+			 errmsg("shared tables cannot be toasted after initdb")));
 
 	/*
 	 * Is it already toasted?
@@ -4090,7 +4090,7 @@ AlterTableCreateToastTable(Oid relOid, bool silent)
 
 		ereport(ERROR,
 				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
-				 errmsg("relation \"%s\" already has a TOAST table",
+				 errmsg("tables \"%s\" already has a TOAST table",
 						RelationGetRelationName(rel))));
 	}
 
@@ -4107,7 +4107,7 @@ AlterTableCreateToastTable(Oid relOid, bool silent)
 
 		ereport(ERROR,
 				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
-				 errmsg("relation \"%s\" does not need a TOAST table",
+				 errmsg("table \"%s\" does not need a TOAST table",
 						RelationGetRelationName(rel))));
 	}
 

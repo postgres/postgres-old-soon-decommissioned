@@ -69,7 +69,7 @@ macaddr_in(PG_FUNCTION_ARGS)
 		(e < 0) || (e > 255) || (f < 0) || (f > 255))
 		ereport(ERROR,
 				(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
-				 errmsg("invalid octet value in macaddr: \"%s\"", str)));
+				 errmsg("invalid octet value in \"macaddr\" value: \"%s\"", str)));
 
 	result = (macaddr *) palloc(sizeof(macaddr));
 

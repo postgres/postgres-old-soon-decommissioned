@@ -221,7 +221,7 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 					else
 						ereport(ERROR,
 								(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-								 errmsg("cannot pass result of subquery or join %s to a function",
+								 errmsg("cannot pass result of subquery or join \"%s\" to a function",
 										relname)));
 					toid = InvalidOid;	/* keep compiler quiet */
 					break;
