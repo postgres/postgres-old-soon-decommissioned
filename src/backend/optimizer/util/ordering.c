@@ -18,7 +18,8 @@
 #include "optimizer/internal.h"
 #include "optimizer/ordering.h"
 
-static bool equal_sortops_order(Oid *ordering1, Oid *ordering2, int *better_sort);
+static bool sortops_order_match(Oid *ordering1, Oid *ordering2,
+								int *better_sort);
 
 /*
  * equal-path-ordering--
@@ -56,7 +57,7 @@ pathorder_match(PathOrder *path_ordering1,
 	else if (path_ordering1->ordtype == SORTOP_ORDER &&
 			 path_ordering2->ordtype == SORTOP_ORDER)
 	{
-		return equal_sortops_order(path_ordering1->ord.sortop,
+		return sortops_order_match(path_ordering1->ord.sortop,
 									path_ordering2->ord.sortop,
 									better_sort);
 	}
@@ -127,7 +128,7 @@ equal_merge_ordering(MergeOrder *merge_ordering1,
  *	  Returns true iff the sort operators are in the same order.
  */
 static bool
-equal_sortops_order(Oid *ordering1, Oid *ordering2, int *better_sort)
+sortops_order_match(Oid *ordering1, Oid *ordering2, int *better_sort)
 {
 	int			i = 0;
 
@@ -160,7 +161,7 @@ equal_sortops_order(Oid *ordering1, Oid *ordering2, int *better_sort)
 		*better_sort = 1;
 		return true;
 	}
-	
+
 	if (ordering1[i] == 0 && ordering2[i] != 0)
 	{
 		*better_sort = 2;
