@@ -27,11 +27,11 @@ extern bool typeByVal(Type t);
 extern char *typeTypeName(Type t);
 extern char typeTypeFlag(Type t);
 extern char *stringTypeString(Type tp, char *string, int16 atttypmod);
-extern Oid typeidRetoutfunc(Oid type_id);
+extern Oid typeidOutfunc(Oid type_id);
 extern Oid typeidTypeRelid(Oid type_id);
 extern Oid typeTypeRelid(Type typ);
 extern Oid typeidTypElem(Oid type_id);
 extern Oid GetArrayElementType(Oid typearray);
-extern Oid typeidRetinfunc(Oid type_id);
+extern Oid typeidInfunc(Oid type_id);
 
 #endif							/* PARSE_TYPE_H */

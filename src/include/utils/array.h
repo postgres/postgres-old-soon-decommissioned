@@ -114,7 +114,7 @@ typedef struct
 /*
  * prototypes for functions defined in arrayfuncs.c
  */
-extern char *array_in(char *string, Oid element_type);
+extern char *array_in(char *string, Oid element_type, int16 typmod);
 extern char *array_out(ArrayType *v, Oid element_type);
 extern char *array_dims(ArrayType *v, bool *isNull);
 extern Datum array_ref(ArrayType *array, int n, int indx[], int reftype,

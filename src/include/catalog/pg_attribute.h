@@ -88,7 +88,8 @@ CATALOG(pg_attribute) BOOTSTRAP
 	int2		atttypmod;
 	/*
 	 * atttypmod records type-specific modifications supplied at table
-     * creation time.
+     * creation time, and passes it to input and output functions as the
+     * third argument.
 	 */
 
 	bool		attbyval;

@@ -394,7 +394,7 @@ make_targetlist_expr(ParseState *pstate,
 				lnext(expr) =
 					makeConst(attrtype,
 							  attrlen,
-							  (Datum) fmgr(typeidRetinfunc(attrtype),
+							  (Datum) fmgr(typeidInfunc(attrtype),
 										 val, typeidTypElem(attrtype), -1),
 							  false,
 							  true /* Maybe correct-- 80% chance */ ,

@@ -48,8 +48,7 @@ static Oid	GetOutputFunction(Oid type);
 static Oid	GetTypeElement(Oid type);
 static Oid	GetInputFunction(Oid type);
 static Oid	IsTypeByVal(Oid type);
-static void
-GetIndexRelations(Oid main_relation_oid,
+static void GetIndexRelations(Oid main_relation_oid,
 				  int *n_indices,
 				  Relation **index_rels);
 
