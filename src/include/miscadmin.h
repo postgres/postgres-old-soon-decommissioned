@@ -288,6 +288,7 @@ extern void RecordSharedMemoryInLockFile(unsigned long id1,
 							 unsigned long id2);
 
 extern void ValidatePgVersion(const char *path);
+extern void process_preload_libraries(char *preload_libraries_string);
 
 /* these externs do not belong here... */
 extern void IgnoreSystemIndexes(bool mode);

@@ -205,6 +205,8 @@ bool		LogSourcePort;
 bool		Log_connections = false;
 bool		Db_user_namespace = false;
 
+/* list of library:init-function to be preloaded */
+char       *preload_libraries_string = NULL;
 
 /* Startup/shutdown state */
 static pid_t StartupPID = 0,
@@ -644,6 +646,13 @@ PostmasterMain(int argc, char *argv[])
 	if (EnableSSL)
 		secure_initialize();
 #endif
+
+	/*
+	 * process any libraries that should be preloaded and
+	 * optionally pre-initialized
+	 */
+	if (preload_libraries_string)
+		process_preload_libraries(preload_libraries_string);
 
 	/*
 	 * Fork away from controlling terminal, if -S specified.
