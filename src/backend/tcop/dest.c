@@ -41,7 +41,7 @@
  * ----------------
  */
 static void
-donothingReceive(HeapTuple tuple, TupleDesc typeinfo, DestReceiver *self)
+donothingReceive(TupleTableSlot *slot, DestReceiver *self)
 {
 }
 

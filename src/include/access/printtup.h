@@ -23,13 +23,11 @@ extern void SendRowDescriptionMessage(TupleDesc typeinfo, List *targetlist,
 
 extern void debugStartup(DestReceiver *self, int operation,
 			 TupleDesc typeinfo);
-extern void debugtup(HeapTuple tuple, TupleDesc typeinfo,
-		 DestReceiver *self);
+extern void debugtup(TupleTableSlot *slot, DestReceiver *self);
 
 /* XXX these are really in executor/spi.c */
 extern void spi_dest_startup(DestReceiver *self, int operation,
 				 TupleDesc typeinfo);
-extern void spi_printtup(HeapTuple tuple, TupleDesc typeinfo,
-			 DestReceiver *self);
+extern void spi_printtup(TupleTableSlot *slot, DestReceiver *self);
 
 #endif   /* PRINTTUP_H */

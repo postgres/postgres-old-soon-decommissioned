@@ -99,7 +99,10 @@ FunctionNext(FunctionScanState *node)
 										ScanDirectionIsForward(direction),
 										&should_free);
 	slot = node->ss.ss_ScanTupleSlot;
-	return ExecStoreTuple(heapTuple, slot, InvalidBuffer, should_free);
+	if (heapTuple)
+		return ExecStoreTuple(heapTuple, slot, InvalidBuffer, should_free);
+	else
+		return ExecClearTuple(slot);
 }
 
 /* ----------------------------------------------------------------

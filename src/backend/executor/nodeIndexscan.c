@@ -165,7 +165,7 @@ IndexNext(IndexScanState *node)
 				break;
 		}
 		if (qual == NULL)		/* would not be returned by indices */
-			slot->val = NULL;
+			ExecClearTuple(slot);
 
 		/* Flag for the next call that no more tuples */
 		estate->es_evTupleNull[scanrelid - 1] = true;

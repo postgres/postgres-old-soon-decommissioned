@@ -127,7 +127,7 @@ ExecMaterial(MaterialState *node)
 			node->eof_underlying = true;
 			return NULL;
 		}
-		heapTuple = outerslot->val;
+		heapTuple = ExecFetchSlotTuple(outerslot);
 		should_free = false;
 
 		/*
@@ -139,10 +139,13 @@ ExecMaterial(MaterialState *node)
 	}
 
 	/*
-	 * Return the obtained tuple.
+	 * Return the obtained tuple, if any.
 	 */
 	slot = (TupleTableSlot *) node->ss.ps.ps_ResultTupleSlot;
-	return ExecStoreTuple(heapTuple, slot, InvalidBuffer, should_free);
+	if (heapTuple)
+		return ExecStoreTuple(heapTuple, slot, InvalidBuffer, should_free);
+	else
+		return ExecClearTuple(slot);
 }
 
 /* ----------------------------------------------------------------

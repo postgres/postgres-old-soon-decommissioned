@@ -80,10 +80,8 @@ static bool MergeCompare(List *eqQual, List *compareQual, ExprContext *econtext)
 
 #define MarkInnerTuple(innerTupleSlot, mergestate) \
 ( \
-	ExecStoreTuple(heap_copytuple((innerTupleSlot)->val), \
-				   (mergestate)->mj_MarkedTupleSlot, \
-				   InvalidBuffer, \
-				   true) \
+	ExecCopySlot((mergestate)->mj_MarkedTupleSlot, \
+				 (innerTupleSlot)) \
 )
 
 
@@ -246,8 +244,7 @@ ExecMergeTupleDumpOuter(MergeJoinState *mergestate)
 	if (TupIsNull(outerSlot))
 		printf("(nil)\n");
 	else
-		MJ_debugtup(outerSlot->val,
-					outerSlot->ttc_tupleDescriptor);
+		MJ_debugtup(outerSlot);
 }
 
 static void
@@ -259,8 +256,7 @@ ExecMergeTupleDumpInner(MergeJoinState *mergestate)
 	if (TupIsNull(innerSlot))
 		printf("(nil)\n");
 	else
-		MJ_debugtup(innerSlot->val,
-					innerSlot->ttc_tupleDescriptor);
+		MJ_debugtup(innerSlot);
 }
 
 static void
@@ -272,8 +268,7 @@ ExecMergeTupleDumpMarked(MergeJoinState *mergestate)
 	if (TupIsNull(markedSlot))
 		printf("(nil)\n");
 	else
-		MJ_debugtup(markedSlot->val,
-					markedSlot->ttc_tupleDescriptor);
+		MJ_debugtup(markedSlot);
 }
 
 static void

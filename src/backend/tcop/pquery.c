@@ -836,6 +836,9 @@ RunFromStore(Portal portal, ScanDirection direction, long count,
 			 DestReceiver *dest)
 {
 	long		current_tuple_count = 0;
+	TupleTableSlot *slot;
+
+	slot = MakeSingleTupleTableSlot(portal->tupDesc);
 
 	(*dest->rStartup) (dest, CMD_SELECT, portal->tupDesc);
 
@@ -863,10 +866,11 @@ RunFromStore(Portal portal, ScanDirection direction, long count,
 			if (tup == NULL)
 				break;
 
-			(*dest->receiveTuple) (tup, portal->tupDesc, dest);
+			ExecStoreTuple(tup, slot, InvalidBuffer, should_free);
 
-			if (should_free)
-				pfree(tup);
+			(*dest->receiveSlot) (slot, dest);
+
+			ExecClearTuple(slot);
 
 			/*
 			 * check our tuple count.. if we've processed the proper
@@ -880,6 +884,8 @@ RunFromStore(Portal portal, ScanDirection direction, long count,
 	}
 
 	(*dest->rShutdown) (dest);
+
+	ExecDropSingleTupleTableSlot(slot);
 
 	return (uint32) current_tuple_count;
 }

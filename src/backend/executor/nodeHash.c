@@ -75,7 +75,7 @@ ExecHash(HashState *node)
 		/* We have to compute the hash value */
 		econtext->ecxt_innertuple = slot;
 		hashvalue = ExecHashGetHashValue(hashtable, econtext, hashkeys);
-		ExecHashTableInsert(hashtable, slot->val, hashvalue);
+		ExecHashTableInsert(hashtable, ExecFetchSlotTuple(slot), hashvalue);
 	}
 
 	/*

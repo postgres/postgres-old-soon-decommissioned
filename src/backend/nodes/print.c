@@ -468,18 +468,18 @@ print_tl(List *tlist, List *rtable)
 void
 print_slot(TupleTableSlot *slot)
 {
-	if (!slot->val)
+	if (TupIsNull(slot))
 	{
 		printf("tuple is null.\n");
 		return;
 	}
-	if (!slot->ttc_tupleDescriptor)
+	if (!slot->tts_tupleDescriptor)
 	{
 		printf("no tuple descriptor.\n");
 		return;
 	}
 
-	debugtup(slot->val, slot->ttc_tupleDescriptor, NULL);
+	debugtup(slot, NULL);
 }
 
 static char *

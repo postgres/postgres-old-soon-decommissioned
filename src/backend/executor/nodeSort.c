@@ -104,7 +104,8 @@ ExecSort(SortState *node)
 			if (TupIsNull(slot))
 				break;
 
-			tuplesort_puttuple(tuplesortstate, (void *) slot->val);
+			tuplesort_puttuple(tuplesortstate,
+							   (void *) ExecFetchSlotTuple(slot));
 		}
 
 		/*
@@ -136,7 +137,10 @@ ExecSort(SortState *node)
 									   &should_free);
 
 	slot = node->ss.ps.ps_ResultTupleSlot;
-	return ExecStoreTuple(heapTuple, slot, InvalidBuffer, should_free);
+	if (heapTuple)
+		return ExecStoreTuple(heapTuple, slot, InvalidBuffer, should_free);
+	else
+		return ExecClearTuple(slot);
 }
 
 /* ----------------------------------------------------------------

@@ -188,7 +188,8 @@ ExecHashJoin(HashJoinState *node)
 				 * Save it in the corresponding outer-batch file.
 				 */
 				Assert(batchno > hashtable->curbatch);
-				ExecHashJoinSaveTuple(outerTupleSlot->val, hashvalue,
+				ExecHashJoinSaveTuple(ExecFetchSlotTuple(outerTupleSlot),
+									  hashvalue,
 									  &hashtable->outerBatchFile[batchno]);
 				node->hj_NeedNewOuter = true;
 				continue;	/* loop around for a new outer tuple */
@@ -652,7 +653,9 @@ start_over:
 			 * NOTE: some tuples may be sent to future batches.  Also,
 			 * it is possible for hashtable->nbatch to be increased here!
 			 */
-			ExecHashTableInsert(hashtable, slot->val, hashvalue);
+			ExecHashTableInsert(hashtable,
+								ExecFetchSlotTuple(slot),
+								hashvalue);
 		}
 
 		/*

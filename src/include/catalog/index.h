@@ -46,8 +46,7 @@ extern void index_drop(Oid indexId);
 extern IndexInfo *BuildIndexInfo(Relation index);
 
 extern void FormIndexDatum(IndexInfo *indexInfo,
-			   HeapTuple heapTuple,
-			   TupleDesc heapDescriptor,
+			   TupleTableSlot *slot,
 			   EState *estate,
 			   Datum *datum,
 			   char *nullv);

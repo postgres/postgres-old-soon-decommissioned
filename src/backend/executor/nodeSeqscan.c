@@ -110,12 +110,12 @@ SeqNext(SeqScanState *node)
 	 * refcount of the buffer; the refcount will not be dropped until the
 	 * tuple table slot is cleared.
 	 */
-
-	slot = ExecStoreTuple(tuple,	/* tuple to store */
-						  slot, /* slot to store in */
-						  scandesc->rs_cbuf,	/* buffer associated with
+	if (tuple)
+		ExecStoreTuple(tuple,					/* tuple to store */
+					   slot,					/* slot to store in */
+					   scandesc->rs_cbuf,		/* buffer associated with
 												 * this tuple */
-						  false);		/* don't pfree this pointer */
+					   false);		/* don't pfree this pointer */
 
 	return slot;
 }
