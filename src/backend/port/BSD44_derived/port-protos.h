@@ -43,7 +43,6 @@
 char *		BSD44_derived_dlerror(void);
 void *		BSD44_derived_dlopen(const char *filename, int num);
 void *		BSD44_derived_dlsym(void *handle, const char *name);
-void *		BSD44_derived_dlsym(void *handle, const char *name);
 void		BSD44_derived_dlclose(void *handle);
 
 #endif /* PORT_PROTOS_H */
