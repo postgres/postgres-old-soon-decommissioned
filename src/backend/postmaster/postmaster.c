@@ -442,6 +442,7 @@ usage(const char *progname)
     fprintf(stderr, "\t-b backend\tuse a specific backend server executable\n");
     fprintf(stderr, "\t-d [1|2|3]\tset debugging level\n");
     fprintf(stderr, "\t-D datadir\tset data directory\n");
+    fprintf(stderr, "\t-e \tturn on European date format\n");
     fprintf(stderr, "\t-m \tstart up multiplexing backends\n");
     fprintf(stderr, "\t-n\t\tdon't reinitialize shared memory after abnormal exit\n");
     fprintf(stderr, "\t-o option\tpass 'option' to each backend servers\n");
