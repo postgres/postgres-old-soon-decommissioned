@@ -531,7 +531,7 @@ psql_completion(char *text, int start, int end)
 			 strcasecmp(prev2_wd, "ISOLATION") == 0 &&
 			 strcasecmp(prev_wd, "LEVEL") == 0)
 	{
-		char	   *my_list[] = {"READ", "SERIALIZED", NULL};
+		char	   *my_list[] = {"READ", "SERIALIZABLE", NULL};
 
 		COMPLETE_WITH_LIST(my_list);
 	}
