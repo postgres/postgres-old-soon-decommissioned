@@ -522,6 +522,12 @@ fe_sendauth(AuthRequest areq, PGconn *conn, const char *hostname,
 
 		case AUTH_REQ_PASSWORD:
 		case AUTH_REQ_CRYPT:
+			if (password == NULL || *password == '\0')
+			{
+				(void) sprintf(PQerrormsg,
+				 "fe_sendauth: no password supplied\n");
+				return (STATUS_ERROR);
+			}
 			if (pg_password_sendauth(conn, password, areq) != STATUS_OK)
 			{
 				(void) sprintf(PQerrormsg,

@@ -768,17 +768,6 @@ connectDB(PGconn *conn)
 
 	PQsetenv(conn);
 
-	/* Free the password so it's not hanging out in memory forever */
-	/* XXX Is this *really* a good idea?  The security gain is marginal
-	 * if not totally illusory, and it breaks PQreset() for databases
-	 * that use passwords.
-	 */
-	if (conn->pgpass != NULL)
-	{
-		free(conn->pgpass);
-		conn->pgpass = NULL;
-	}
-
 	return CONNECTION_OK;
 
 connect_errReturn:
