@@ -589,10 +589,23 @@ static int
 runPgDump(const char *dbname)
 {
 	PQExpBuffer cmd = createPQExpBuffer();
+	const char *p;
 	int			ret;
 
-	appendPQExpBuffer(cmd, "%s %s -X use-set-session-authorization -Fp %s",
-					  pgdumploc, pgdumpopts->data, dbname);
+	appendPQExpBuffer(cmd, "%s %s -X use-set-session-authorization -Fp '",
+					  pgdumploc, pgdumpopts->data);
+
+	/* Shell quoting is not quite like SQL quoting, so can't use fmtId */
+	for (p = dbname; *p; p++)
+	{
+		if (*p == '\'')
+			appendPQExpBuffer(cmd, "'\"'\"'");
+		else
+			appendPQExpBufferChar(cmd, *p);
+	}
+
+	appendPQExpBufferChar(cmd, '\'');
+
 	if (verbose)
 		fprintf(stderr, _("%s: running %s\n"), progname, cmd->data);
 
@@ -600,6 +613,7 @@ runPgDump(const char *dbname)
 	fflush(stderr);
 
 	ret = system(cmd->data);
+
 	destroyPQExpBuffer(cmd);
 
 	return ret;
