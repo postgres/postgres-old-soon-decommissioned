@@ -61,10 +61,10 @@ enum config_group
  */
 enum config_type
 {
-	PGC_BOOL,
-	PGC_INT,
-	PGC_REAL,
-	PGC_STRING
+	PGC_BOOL = 0,
+	PGC_INT = 1,
+	PGC_REAL = 2,
+	PGC_STRING = 3
 };
 
 /*
