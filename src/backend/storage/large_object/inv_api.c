@@ -540,10 +540,16 @@ inv_write(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 		else
 		{
 			if (obj_desc->offset > obj_desc->highbyte)
+			{
 				tuplen = inv_wrnew(obj_desc, buf, nbytes - nwritten);
+				ReleaseBuffer(buffer);
+			}
 			else
 				tuplen = inv_wrold(obj_desc, buf, nbytes - nwritten, &tuple, buffer);
-			ReleaseBuffer(buffer);
+				/* inv_wrold() has already issued WriteBuffer()
+				   which has decremented local reference counter
+				   (LocalRefCount). So we should not call
+				   ReleaseBuffer() here. -- Tatsuo 99/2/4 */
 		}
 
 		/* move pointers past the amount we just wrote */
