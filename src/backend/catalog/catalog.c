@@ -27,11 +27,6 @@
 #include "storage/bufmgr.h"
 #include "access/transam.h"
 
-
-#ifndef	MAXPATHLEN
-#define	MAXPATHLEN	80
-#endif
-
 /*
  * relpath		- path to the relation
  *	Perhaps this should be in-line code in relopen().
