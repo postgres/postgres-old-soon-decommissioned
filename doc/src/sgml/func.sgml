@@ -1075,7 +1075,7 @@ PostgreSQL documentation
        <entry><type>text</type></entry>
        <entry>
         Remove the longest string consisting only of characters
-        in <parameter>characters</parameter> (or spaces if not supplied)
+        in <parameter>characters</parameter> (a space by default)
         from the start and end of <parameter>string</parameter>.
        </entry>
        <entry><literal>btrim('xyxtrimyyx', 'xy')</literal></entry>
