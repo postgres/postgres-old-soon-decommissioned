@@ -104,7 +104,7 @@ VPATH:= $(CURDIR)/$(objdir)
 
 # clean up the objects and generated files
 clean:
-	cd $(objdir); rm -f $(CLEANFILES)
+	@if test -d $(objdir); then cd $(objdir); rm -f $(CLEANFILES) ;else true; fi;
 
 # just a matter of personal taste; make sure we do something and don't
 # get this message: "gmake[1]: Nothing to be done for 'all'."
