@@ -262,10 +262,18 @@ plpgsql_exec_function(PLpgSQL_function * func, FunctionCallInfo fcinfo)
 					HeapTuple	tup;
 					TupleDesc	tupdesc;
 
-					Assert(slot != NULL && !fcinfo->argnull[i]);
-					tup = slot->val;
-					tupdesc = slot->ttc_tupleDescriptor;
-					exec_move_row(&estate, NULL, row, tup, tupdesc);
+					if (!fcinfo->argnull[i])
+					{
+						Assert(slot != NULL);
+						tup = slot->val;
+						tupdesc = slot->ttc_tupleDescriptor;
+						exec_move_row(&estate, NULL, row, tup, tupdesc);
+					}
+					else
+					{
+						/* If arg is null, treat it as an empty row */
+						exec_move_row(&estate, NULL, row, NULL, NULL);
+					}
 				}
 				break;
 
