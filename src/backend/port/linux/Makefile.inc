@@ -32,5 +32,3 @@ SUBSRCS+= dynloader.c
 endif
 
 HEADERS+= machine.h port-protos.h
-CFLAGS+= -DNEED_CBRT
-

@@ -29,15 +29,6 @@ LDADD+= -ll /usr/lib/libdld.sl
 endif
 endif
 
-CFLAGS+= -DUSE_POSIX_TIME
-
-#
-# cbrt(3m) and rint(3m) are missing from 8.07.
-# cbrt(3m) and rint(3m) are broken in 9.01.
-# cbrt(3m) seems to be missing on 9.00 even though it is documented.
-#
-CFLAGS+= -DNEED_RINT -DNEED_CBRT
-
 #
 # The #pragma trick required on 8.07 no longer works -- the #pragma
 # is thoroughly broken.  However, the +u flag has been extended to
