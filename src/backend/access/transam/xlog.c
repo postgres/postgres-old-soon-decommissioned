@@ -2439,7 +2439,7 @@ StartupXLOG(void)
 			 str_time(ControlFile->time));
 	else if (ControlFile->state == DB_IN_RECOVERY)
 		elog(LOG, "database system was interrupted being in recovery at %s\n"
-			 "\tThis propably means that some data blocks are corrupted\n"
+			 "\tThis probably means that some data blocks are corrupted\n"
 			 "\tand you will have to use the last backup for recovery.",
 			 str_time(ControlFile->time));
 	else if (ControlFile->state == DB_IN_PRODUCTION)
