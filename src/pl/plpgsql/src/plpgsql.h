@@ -95,7 +95,6 @@ enum
 	PLPGSQL_STMT_DYNEXECUTE,
 	PLPGSQL_STMT_DYNFORS,
 	PLPGSQL_STMT_GETDIAG,
-	PLPGSQL_STMT_SETAUTH,
 	PLPGSQL_STMT_OPEN,
 	PLPGSQL_STMT_FETCH,
 	PLPGSQL_STMT_CLOSE
@@ -111,16 +110,6 @@ enum
 	PLPGSQL_RC_OK,
 	PLPGSQL_RC_EXIT,
 	PLPGSQL_RC_RETURN
-};
-
-/* ---------
- * Authorization levels
- * ---------
- */
-enum
-{
-	PLPGSQL_AUTH_INVOKER,
-        PLPGSQL_AUTH_DEFINER,
 };
 
 /* ----------
@@ -436,12 +425,6 @@ typedef struct
 	int			retrecno;
 }			PLpgSQL_stmt_return;
 
-typedef struct
-{                               /* SET AUTHORIZATION statement */
-    int         cmd_type;
-    int         lineno;
-    int		auth_level;
-}           PLpgSQL_stmt_setauth;
 
 typedef struct
 {								/* RAISE statement			*/
@@ -497,7 +480,6 @@ typedef struct PLpgSQL_function
 	int			tg_nargs_varno;
 
 	int			ndatums;
-        Oid			definer_uid;
 	PLpgSQL_datum **datums;
 	PLpgSQL_stmt_block *action;
 	struct PLpgSQL_function *next;
@@ -520,9 +502,6 @@ typedef struct
 	int			found_varno;
 	int			ndatums;
 	PLpgSQL_datum **datums;
-	Oid		invoker_uid;
-	Oid		definer_uid;
-        int		auth_level;
 }			PLpgSQL_execstate;
 
 
