@@ -46,4 +46,5 @@ int main(int argc, char **argv)
     cout << "Exporting large object to file \"" << out_filename << "\"..." << endl;
     object.Export(out_filename);
     object.Exec("END"); // WHY DOES IT CORE DUMP HERE ???
+    return 0;
 }
