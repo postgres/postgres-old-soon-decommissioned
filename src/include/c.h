@@ -706,7 +706,7 @@ typedef struct Exception
 #define AssertState(condition) \
 		Trap(!(condition), BadState)
 
-extern int	assert_enabled;
+extern bool	assert_enabled;
 
 #endif	 /* USE_ASSERT_CHECKING */
 

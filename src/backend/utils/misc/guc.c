@@ -37,6 +37,9 @@ extern bool Log_connections;
 /*
  * Debugging options
  */
+#ifdef USE_ASSERT_CHECKING
+bool assert_enabled;
+#endif
 bool Debug_print_query      = false;
 bool Debug_print_plan       = false;
 bool Debug_print_parse      = false;
@@ -150,12 +153,16 @@ ConfigureNamesBool[] =
 	{"ksqo",                    PGC_USERSET,    &_use_keyset_query_optimizer, false},
 	{"geqo",                    PGC_USERSET,    &enable_geqo,           true},
 
-	{"net_server",              PGC_POSTMASTER, &NetServer,             false},
+	{"tcpip_socket",            PGC_POSTMASTER, &NetServer,             false},
 	{"fsync",                   PGC_USERSET,    &enableFsync,           true},
 
 	{"log_connections",         PGC_SIGHUP,     &Log_connections,       false},
 	{"log_timestamp",           PGC_SIGHUP,     &Log_timestamp,         false},
 	{"log_pid",                 PGC_SIGHUP,     &Log_pid,               false},
+
+#ifdef USE_ASSERT_CHECKING
+	{"debug_assertions",        PGC_USERSET,    &assert_enabled,        false},
+#endif
 
 	{"debug_print_query",       PGC_USERSET,    &Debug_print_query,     false},
 	{"debug_print_parse",       PGC_USERSET,    &Debug_print_parse,     false},
@@ -216,7 +223,7 @@ ConfigureNamesInt[] =
 	 * make sure the buffers are at least twice the number of
 	 * backends, so the constraints here are partially unused.
 	 */
-	{"max_backends",            PGC_POSTMASTER,         &MaxBackends,
+	{"max_connections",         PGC_POSTMASTER,         &MaxBackends,
 	 DEF_MAXBACKENDS, 1, MAXBACKENDS},
 	{"shmem_buffers",           PGC_POSTMASTER,         &NBuffers,
 	 DEF_NBUFFERS, 16, INT_MAX},
