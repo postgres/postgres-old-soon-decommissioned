@@ -14,14 +14,15 @@
 #ifndef LIBPQ_BE_H
 #define LIBPQ_BE_H
 
+#include <access/htup.h>
+#include <access/tupdesc.h>
+#include <libpq/libpq.h>
+
 /* ----------------
  *	include stuff common to fe and be
  * ----------------
  */
-#include "libpq/libpq.h"
-#include "access/htup.h"
 
-#include "access/tupdesc.h"
 
 /* ----------------
  *	declarations for backend libpq support routines
