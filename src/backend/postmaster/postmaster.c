@@ -34,7 +34,7 @@
  */
                                 /* moved here to prevent double define */
 #include <sys/param.h>          /* for MAXHOSTNAMELEN on most */
-#ifndef MAXHOSTNAMELEN
+#ifdef HAVE_NETDB_H
 #include <netdb.h>              /* for MAXHOSTNAMELEN on some */
 #endif
 
