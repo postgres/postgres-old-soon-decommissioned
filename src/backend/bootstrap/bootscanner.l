@@ -45,7 +45,7 @@
 #define fprintf(file, fmt, msg)  ereport(ERROR, (errmsg_internal("%s", msg)))
 
 
-static int	yyline;  /* keep track of the line number for error reporting */
+static int	yyline = 1;			/* line number for error reporting */
 
 %}
 
@@ -135,7 +135,7 @@ insert			{ return(INSERT_TUPLE); }
 %%
 
 void
-yyerror(const char *str)
+yyerror(const char *message)
 {
-	elog(ERROR, "syntax error at line %d: unexpected token \"%s\"", yyline, str);
+	elog(ERROR, "%s at line %d", message, yyline);
 }
