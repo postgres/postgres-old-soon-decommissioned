@@ -44,19 +44,21 @@
  * Use the raw pqcomm.c routines pq_getstring or pq_getbytes
  * to fetch data without conversion.
  */
+
 #include "postgres.h"
+
+#include <errno.h>
+#ifdef HAVE_SYS_PARAM_H
+#include <sys/param.h>
+#endif
 
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
-
 #ifdef MULTIBYTE
 #include "mb/pg_wchar.h"
 #endif
 #ifdef HAVE_ENDIAN_H
 #include "endian.h"
-#endif
-#ifdef HAVE_SYS_PARAM_H
-#include <sys/param.h>
 #endif
 
 #ifndef BYTE_ORDER
