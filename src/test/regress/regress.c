@@ -8,7 +8,7 @@
 
 #include <postgres.h>
 
-#include "utils/geo-decls.h"	/* includes <math.h> */
+#include "utils/geo_decls.h"	/* includes <math.h> */
 #include "executor/executor.h"  /* For GetAttributeByName */
 
 #define P_MAXDIG 12
