@@ -209,7 +209,7 @@ SpinAcquire(SPINLOCK lock)
 void
 SpinRelease(SPINLOCK lock)
 {
-	Assert(SpinIsLocked(lock))
+	Assert(SpinIsLocked(lock));
 	PROC_DECR_SLOCK(lock);
 	IpcSemaphoreUnlock(SpinLockId, lock, IpcExclusiveLock);
 }
