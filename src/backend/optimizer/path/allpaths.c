@@ -216,7 +216,9 @@ find_join_paths(Query *root, List *outer_rels, int levels_left)
 
     foreach(x, new_rels) {
 	rel = (Rel*)lfirst(x);
+#if 0	/* compute_joinrel_size already called by prune_rel_paths */
 	rel->size = compute_rel_size(rel);
+#endif
 	rel->width = compute_rel_width(rel);
 
 /*#define OPTIMIZER_DEBUG*/

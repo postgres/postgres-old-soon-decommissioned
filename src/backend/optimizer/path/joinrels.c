@@ -110,7 +110,8 @@ find_clause_joins(Query *root, Rel *outer_rel, List *joininfo_list)
 					get_base_rel(root, lfirsti(other_rels)),
 					joininfo);
 		    /* how about right-sided plan ? */
-		    if ( _use_right_sided_plans_ )
+		    if ( _use_right_sided_plans_ && 
+		    		length (outer_rel->relids) > 1 )
 		    {
 		    	if (rel != NULL)
 		    	    join_list = lappend(join_list, rel);
