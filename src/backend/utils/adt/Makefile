@@ -1,22 +1,16 @@
-#-------------------------------------------------------------------------
 #
-# Makefile--
-#    Makefile for utils/adt
+# Makefile for utils/adt
 #
-# IDENTIFICATION
-#    $Header$
+# $Header$
 #
-#-------------------------------------------------------------------------
 
-SRCDIR = ../../..
+subdir = src/backend/utils/adt
+top_builddir = ../../../..
 include ../../../Makefile.global
 
 # seems to be required for some date/time stuff 1999/07/22 bjm
 ifeq ($(CPU),alpha)
-ifeq ($(CC), gcc)
-CFLAGS+= -mieee
-endif
-ifeq ($(CC), egcs)
+ifeq ($(GCC), yes)
 CFLAGS+= -mieee
 endif
 endif
