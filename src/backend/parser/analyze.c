@@ -1351,7 +1351,7 @@ transformRuleStmt(ParseState *pstate, RuleStmt *stmt)
 		nothing_qry->commandType = CMD_NOTHING;
 
 		addRangeTableEntry(pstate, stmt->object->relname,
-						   makeAttr("*CURRENT*", NULL),
+						   makeAttr("*OLD*", NULL),
 						   FALSE, FALSE, FALSE);
 		addRangeTableEntry(pstate, stmt->object->relname,
 						   makeAttr("*NEW*", NULL),
@@ -1371,11 +1371,11 @@ transformRuleStmt(ParseState *pstate, RuleStmt *stmt)
 	{
 
 		/*
-		 * NOTE: 'CURRENT' must always have a varno equal to 1 and 'NEW'
+		 * NOTE: 'OLD' must always have a varno equal to 1 and 'NEW'
 		 * equal to 2.
 		 */
 		addRangeTableEntry(pstate, stmt->object->relname,
-						   makeAttr("*CURRENT*", NULL),
+						   makeAttr("*OLD*", NULL),
 						   FALSE, FALSE, FALSE);
 		addRangeTableEntry(pstate, stmt->object->relname,
 						   makeAttr("*NEW*", NULL),

@@ -142,8 +142,8 @@ typedef struct Expr
 #define    INNER		65000
 #define    OUTER		65001
 
-#define    PRS2_CURRENT_VARNO			1
-#define    PRS2_NEW_VARNO				2
+#define    PRS2_OLD_VARNO			1
+#define    PRS2_NEW_VARNO			2
 
 typedef struct Var
 {
