@@ -105,8 +105,12 @@ struct EnvironmentOptions
 	const char *envName, *pgName;
 	} EnvironmentOptions[] =
 	{
-		{ "PG_DATEFORMAT",	"pg_dateformat" },
-		{ "PG_FLOATFORMAT",	"pg_floatformat" },
+		{ "PG_DATE",	"date" },
+		{ "PG_TIME",	"time" },
+		{ "PG_FLOAT",	"float" },
+		{ "PG_LANG",	"language" },
+		{ "PG_TZONE",	"timezone" },
+		{ "PG_MONEY",	"money" },
 		{ NULL }
 	};
 	

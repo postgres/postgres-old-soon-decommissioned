@@ -24,7 +24,7 @@ ifeq ($(CC), gcc)
 CFLAGS+= -Wno-error
 endif
 
-OBJS= aclchk.o dest.o fastpath.o postgres.o pquery.o utility.o
+OBJS= aclchk.o dest.o fastpath.o postgres.o pquery.o utility.o variable.o
 
 all: SUBSYS.o
 
