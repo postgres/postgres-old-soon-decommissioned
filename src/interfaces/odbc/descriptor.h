@@ -92,5 +92,8 @@ void	IRDFields_free(IRDFields *self);
 void	IPDFields_free(IPDFields *self);
 void	ARD_unbind_cols(ARDFields *self, BOOL freeall);
 void	APD_free_params(APDFields *self, char option);
+#if (ODBCVER >= 0x0300)
+void	Desc_set_error(SQLHDESC hdesc, int errornumber, const char * errormsg);
+#endif /* ODBCVER */
 
 #endif
