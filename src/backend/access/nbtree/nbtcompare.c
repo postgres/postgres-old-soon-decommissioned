@@ -92,10 +92,12 @@ btoid8cmp(Oid *a, Oid *b)
 	for (i = 0; i < 8; i++)
 		/* we use this because we need the int4gt, etc */
 		if (!int4eq(a[i], b[i]))
+		{
 			if (int4gt(a[i], b[i]))
 				return 1;
 			else
 				return -1;
+		}
 	return 0;
 }
 
