@@ -50,7 +50,7 @@ static void check_hashjoinable(RestrictInfo *restrictinfo);
 void
 make_var_only_tlist(Query *root, List *tlist)
 {
-	List	   *tlist_vars = pull_var_clause((Node *) tlist);
+	List	   *tlist_vars = pull_var_clause((Node *) tlist, false);
 
 	add_vars_to_targetlist(root, tlist_vars);
 	freeList(tlist_vars);
