@@ -1422,7 +1422,6 @@ static void
 vc_vacpage(Page page, VPageDescr vpd)
 {
 	ItemId		itemid;
-	HeapTuple	htup;
 	int			i;
 
 	Assert(vpd->vpd_nusd == 0);

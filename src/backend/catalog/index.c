@@ -1119,7 +1119,6 @@ index_create(char *heapRelationName,
 	 * ----------------
 	 */
 	indexRelation = heap_creatr(indexRelationName,
-								DEFAULT_SMGR,
 								indexTupDesc);
 
 	/* ----------------
