@@ -678,33 +678,14 @@ printSSLInfo(void)
 {
 	int			sslbits = -1;
 	SSL		   *ssl;
-	X509	   *peer;
-	char		sn[256];
-	long		l;
 
 	ssl = PQgetssl(pset.db);
 	if (!ssl)
 		return;					/* no SSL */
 
-/*	peer = pset.db.peer; */
-	if ((peer = SSL_get_peer_certificate(ssl)) != NULL)
-	{
-		X509_NAME_oneline(X509_get_subject_name(peer), sn, sizeof sn);
-	}
-	else 
-	{
-		strncpy(sn, "(anonymous)", sizeof sn);
-	}
-	printf(gettext("SSL connection\n"));
-	printf(gettext("(host: %s)\n"), sn);
-
 	SSL_get_cipher_bits(ssl, &sslbits);
-	printf(gettext("(protocol: %s)\n"), SSL_get_version(ssl)),
-	printf(gettext("(cipher: %s, bits: %i)\n"),
+	printf(gettext("SSL connection (cipher: %s, bits: %i)\n\n"),
 		   SSL_get_cipher(ssl), sslbits);
-	l = SSL_get_default_timeout(ssl);
-	printf(gettext("(timeout: %ld:%02ld:%02ld)\n\n"), 
-		l / 3600L, (l / 60L) % 60L, l % 60L);
 }
 
 #endif

@@ -70,7 +70,6 @@ typedef struct Port
 	 */
 #ifdef USE_SSL
 	SSL		   *ssl;
-	X509	   *peer;
 #endif
 } Port;
 

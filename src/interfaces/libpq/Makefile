@@ -20,7 +20,7 @@ SO_MINOR_VERSION= 2
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -DFRONTEND -DSYSCONFDIR='"$(sysconfdir)"'
 
 OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
-      pqexpbuffer.o dllist.o md5.o pqsignal.o fe-ssl.o \
+      pqexpbuffer.o dllist.o md5.o pqsignal.o \
       $(INET_ATON) $(SNPRINTF) $(STRERROR)
 
 ifdef MULTIBYTE
