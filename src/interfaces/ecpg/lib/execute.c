@@ -56,7 +56,7 @@ struct sqlca sqlca =
 };
 
 /* This function returns a newly malloced string that has the  \
-   in the argument quoted with \ and the ' quote with ' as SQL92 says.
+   in the argument quoted with \ and the ' quoted with ' as SQL92 says.
  */
 static
 char *
@@ -84,13 +84,12 @@ quote_postgres(char *arg, int lineno)
 			default:
 				;
 		}
-
 		res[ri] = arg[i];
 	}
 
 	res[ri++] = '\'';
 	res[ri] = '\0';
-
+	
 	return res;
 }
 
