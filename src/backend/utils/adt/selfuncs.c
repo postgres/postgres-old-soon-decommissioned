@@ -536,7 +536,7 @@ convert_to_scalar(Datum value, Oid typid,
 		}
 		case BPCHAROID:
 		case VARCHAROID:
-	case BYTEA:
+		case BYTEAOID:
 		case TEXTOID:
 			if (VARSIZE(DatumGetPointer(value)) > VARHDRSZ)
 			{
