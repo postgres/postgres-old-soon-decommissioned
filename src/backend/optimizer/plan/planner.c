@@ -223,6 +223,10 @@ union_planner(Query *parse)
 			pfree(vpm);
 	}
 
+	/* query_planner returns NULL if it thinks plan is bogus */
+	if (! result_plan)
+		elog(ERROR, "union_planner: failed to create plan");
+
 	/*
 	 * If we have a GROUP BY clause, insert a group node (with the
 	 * appropriate sort node.)
