@@ -49,12 +49,12 @@
  *	  len is the length specified in () plus VARHDRSZ bytes. (XXX dummy is here
  *	  because we pass typelem as the second argument for array_in.)
  */
-char	   *
+char *
 bpcharin(char *s, int dummy, int typlen)
 {
 	char	   *result,
 			   *r;
-	int			len = typlen - VARHDRSZ;
+	int			len;
 	int			i;
 
 	if (s == NULL)
@@ -68,6 +68,10 @@ bpcharin(char *s, int dummy, int typlen)
 		 */
 		len = strlen(s);
 		typlen = len + VARHDRSZ;
+	}
+	else
+	{
+		len = typlen - VARHDRSZ;
 	}
 
 	if (len > 4096)
@@ -90,7 +94,7 @@ bpcharin(char *s, int dummy, int typlen)
 	return (result);
 }
 
-char	   *
+char *
 bpcharout(char *s)
 {
 	char	   *result;
@@ -150,7 +154,7 @@ varcharin(char *s, int dummy, int typlen)
 	return (result);
 }
 
-char	   *
+char *
 varcharout(char *s)
 {
 	char	   *result;
