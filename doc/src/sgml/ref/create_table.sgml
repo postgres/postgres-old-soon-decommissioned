@@ -2060,9 +2060,8 @@ CREATE ASSERTION name CHECK ( condition )
      </variablelist>
     </para>
     <para>
-     The constraint mode for every Constraint always has an initial
-     default value which is set for that Constraint at the beginning
-     of a transaction.
+     SET CONSTRAINT changes the foreign key constraint mode only for
+     the current transaction.
      <variablelist>
       <varlistentry>
        <term>INITIALLY IMMEDIATE</term>
