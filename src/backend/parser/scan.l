@@ -167,7 +167,7 @@ real				(((({digit}*\.{digit}+)|({digit}+\.{digit}*))([Ee][-+]?{digit}+)?)|({dig
 
 param			\${integer}
 
-comment			("--"|"//").*\n
+comment			("--"|"//").*
 
 space			[ \t\n\f]
 other			.
