@@ -47,6 +47,7 @@ typedef struct BTPageOpaqueData {
 #define BTP_ROOT	(1 << 1)
 #define BTP_FREE	(1 << 2)
 #define BTP_META	(1 << 3)
+#define BTP_CHAIN	(1 << 4)
 
 } BTPageOpaqueData;
 
