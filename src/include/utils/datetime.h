@@ -193,6 +193,11 @@ do { \
 		t -= rint(q * u); \
 } while(0)
 
+#ifdef __CYGWIN__
+#define TIMEZONE_GLOBAL _timezone
+#else
+#define TIMEZONE_GLOBAL timezone
+#endif
 
 /*
  * Date/time validation
