@@ -470,17 +470,6 @@ findFuncByName(FuncInfo *finfo, int numFuncs, const char *name)
 }
 
 /*
- * isArchiveName
- *
- *	 returns true if the relation name is an archive name, false otherwise
- */
-int
-isArchiveName(const char *relname)
-{
-	return (strlen(relname) > 1 && relname[1] == ',');
-}
-
-/*
  * fmtId
  *
  *	checks input string for non-lowercase characters

@@ -391,7 +391,6 @@ ProcessUtility(Node * parsetree,
 
 				commandTag = "CREATE";
 				CHECK_IF_ABORTED();
-				/* XXX no support for ARCHIVE indices, yet */
 				DefineIndex(stmt->relname,		/* relation name */
 							stmt->idxname,		/* index name */
 							stmt->accessMethod, /* am name */

@@ -88,8 +88,6 @@ struct pgdirent
  *	manager to be used, and the high sixteen bits for flags.
  */
 
-#define INV_SMGRMASK	0x0000ffff
-#define INV_ARCHIVE		0x00010000
 #define INV_WRITE		0x00020000
 #define INV_READ		0x00040000
 
