@@ -110,6 +110,19 @@ AC_DEFUN([PGAC_STRUCT_SOCKADDR_STORAGE],
 #endif
 ])])# PGAC_STRUCT_SOCKADDR_STORAGE
 
+# PGAC_STRUCT_SOCKADDR_STORAGE_SS_FAMILY
+# --------------------------------------
+# This checks if the struct sockaddr has a proper ss_family and not an
+# __ss_family as rfc2553 defined.
+AC_DEFUN([PGAC_STRUCT_SOCKADDR_STORAGE_SS_FAMILY],
+[AC_CHECK_MEMBERS([struct sockaddr_storage.ss_family,
+	struct sockaddr_storage.__ss_family], [], [],
+[#include <sys/types.h>
+#ifdef HAVE_SYS_SOCKET_H
+#include <sys/socket.h>
+#endif
+])])# PGAC_STRUCT_SOCKADDR_STORAGE_SS_FAMILY
+
 
 # PGAC_STRUCT_ADDRINFO
 # -----------------------
