@@ -652,6 +652,24 @@ _readSubqueryScan(void)
 }
 
 /* ----------------
+ *		_readFunctionScan
+ *
+ *	FunctionScan is a subclass of Scan
+ * ----------------
+ */
+static FunctionScan *
+_readFunctionScan(void)
+{
+	FunctionScan *local_node;
+
+	local_node = makeNode(FunctionScan);
+
+	_getScan((Scan *) local_node);
+
+	return local_node;
+}
+
+/* ----------------
  *		_readSort
  *
  *	Sort is a subclass of Plan
@@ -1514,6 +1532,11 @@ _readRangeTblEntry(void)
 			local_node->subquery = nodeRead(true);		/* now read it */
 			break;
 
+		case RTE_FUNCTION:
+			token = pg_strtok(&length); /* eat :funcexpr */
+			local_node->funcexpr = nodeRead(true);		/* now read it */
+			break;
+
 		case RTE_JOIN:
 			token = pg_strtok(&length); /* eat :jointype */
 			token = pg_strtok(&length); /* get jointype */
@@ -2031,6 +2054,8 @@ parsePlanString(void)
 		return_value = _readTidScan();
 	else if (length == 12 && strncmp(token, "SUBQUERYSCAN", length) == 0)
 		return_value = _readSubqueryScan();
+	else if (length == 12 && strncmp(token, "FUNCTIONSCAN", length) == 0)
+		return_value = _readFunctionScan();
 	else if (length == 4 && strncmp(token, "SORT", length) == 0)
 		return_value = _readSort();
 	else if (length == 6 && strncmp(token, "AGGREG", length) == 0)

@@ -146,7 +146,7 @@ ExecInitSubqueryScan(SubqueryScan *node, EState *estate, Plan *parent)
 	 * This should agree with ExecInitSubPlan
 	 */
 	rte = rt_fetch(node->scan.scanrelid, estate->es_range_table);
-	Assert(rte->subquery != NULL);
+	Assert(rte->rtekind == RTE_SUBQUERY);
 
 	sp_estate = CreateExecutorState();
 	subquerystate->sss_SubEState = sp_estate;

@@ -56,7 +56,8 @@ LookupTypeName(const TypeName *typename)
 		switch (length(typename->names))
 		{
 			case 1:
-				elog(ERROR, "Improper %%TYPE reference (too few dotted names)");
+				elog(ERROR, "Improper %%TYPE reference (too few dotted names): %s",
+					 NameListToString(typename->names));
 				break;
 			case 2:
 				rel->relname = strVal(lfirst(typename->names));
@@ -74,7 +75,8 @@ LookupTypeName(const TypeName *typename)
 				field = strVal(lfirst(lnext(lnext(lnext(typename->names)))));
 				break;
 			default:
-				elog(ERROR, "Improper %%TYPE reference (too many dotted names)");
+				elog(ERROR, "Improper %%TYPE reference (too many dotted names): %s",
+					 NameListToString(typename->names));
 				break;
 		}
 
@@ -121,7 +123,8 @@ LookupTypeName(const TypeName *typename)
 					elog(ERROR, "Cross-database references are not implemented");
 				break;
 			default:
-				elog(ERROR, "Improper type name (too many dotted names)");
+				elog(ERROR, "Improper type name (too many dotted names): %s",
+					 NameListToString(typename->names));
 				break;
 		}
 

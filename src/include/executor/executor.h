@@ -172,4 +172,11 @@ extern void ExecCloseIndices(ResultRelInfo *resultRelInfo);
 extern void ExecInsertIndexTuples(TupleTableSlot *slot, ItemPointer tupleid,
 					  EState *estate, bool is_update);
 
+extern void RegisterExprContextCallback(ExprContext *econtext,
+										ExprContextCallbackFunction function,
+										Datum arg);
+extern void UnregisterExprContextCallback(ExprContext *econtext,
+										  ExprContextCallbackFunction function,
+										  Datum arg);
+
 #endif   /* EXECUTOR_H  */

@@ -140,7 +140,7 @@ make_base_rel(Query *root, int relid)
 	rel->cheapest_startup_path = NULL;
 	rel->cheapest_total_path = NULL;
 	rel->pruneable = true;
-	rel->issubquery = false;
+	rel->rtekind = rte->rtekind;
 	rel->indexlist = NIL;
 	rel->pages = 0;
 	rel->tuples = 0;
@@ -168,8 +168,8 @@ make_base_rel(Query *root, int relid)
 			break;
 		}
 		case RTE_SUBQUERY:
-			/* Subquery --- mark it as such for later processing */
-			rel->issubquery = true;
+		case RTE_FUNCTION:
+			/* Subquery or function --- nothing to do here */
 			break;
 		case RTE_JOIN:
 			/* Join --- must be an otherrel */
@@ -351,7 +351,7 @@ build_join_rel(Query *root,
 	joinrel->cheapest_startup_path = NULL;
 	joinrel->cheapest_total_path = NULL;
 	joinrel->pruneable = true;
-	joinrel->issubquery = false;
+	joinrel->rtekind = RTE_JOIN;
 	joinrel->indexlist = NIL;
 	joinrel->pages = 0;
 	joinrel->tuples = 0;

@@ -388,6 +388,16 @@ typedef struct RangeSubselect
 } RangeSubselect;
 
 /*
+ * RangeFunction - function call appearing in a FROM clause
+ */
+typedef struct RangeFunction
+{
+	NodeTag		type;
+	Node	   *funccallnode;	/* untransformed function call tree */
+	Alias	   *alias;			/* table alias & optional column aliases */
+} RangeFunction;
+
+/*
  * IndexElem - index parameters (used in CREATE INDEX)
  *
  * For a plain index, each 'name' is an attribute name in the heap relation;
@@ -482,7 +492,8 @@ typedef enum RTEKind
 	RTE_RELATION,				/* ordinary relation reference */
 	RTE_SUBQUERY,				/* subquery in FROM */
 	RTE_JOIN,					/* join */
-	RTE_SPECIAL					/* special rule relation (NEW or OLD) */
+	RTE_SPECIAL,				/* special rule relation (NEW or OLD) */
+	RTE_FUNCTION				/* function in FROM */
 } RTEKind;
 
 typedef struct RangeTblEntry
@@ -506,6 +517,11 @@ typedef struct RangeTblEntry
 	 * Fields valid for a subquery RTE (else NULL):
 	 */
 	Query	   *subquery;		/* the sub-query */
+
+	/*
+	 * Fields valid for a function RTE (else NULL):
+	 */
+	Node	   *funcexpr;		/* expression tree for func call */
 
 	/*
 	 * Fields valid for a join RTE (else NULL/zero):

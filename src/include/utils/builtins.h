@@ -354,7 +354,7 @@ extern char *deparse_expression(Node *expr, List *dpcontext,
 extern List *deparse_context_for(const char *aliasname, Oid relid);
 extern List *deparse_context_for_plan(int outer_varno, Node *outercontext,
 									  int inner_varno, Node *innercontext);
-extern Node *deparse_context_for_relation(const char *aliasname, Oid relid);
+extern Node *deparse_context_for_rte(RangeTblEntry *rte);
 extern Node *deparse_context_for_subplan(const char *name, List *tlist,
 										 List *rtable);
 extern const char *quote_identifier(const char *ident);

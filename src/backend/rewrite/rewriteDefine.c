@@ -388,7 +388,7 @@ setRuleCheckAsUser(Query *qry, Oid userid)
 	{
 		RangeTblEntry *rte = (RangeTblEntry *) lfirst(l);
 
-		if (rte->subquery)
+		if (rte->rtekind == RTE_SUBQUERY)
 		{
 			/* Recurse into subquery in FROM */
 			setRuleCheckAsUser(rte->subquery, userid);

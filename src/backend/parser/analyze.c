@@ -2679,7 +2679,7 @@ transformForUpdate(Query *qry, List *forUpdate)
 			RangeTblEntry *rte = (RangeTblEntry *) lfirst(rt);
 
 			++i;
-			if (rte->subquery)
+			if (rte->rtekind == RTE_SUBQUERY)
 			{
 				/* FOR UPDATE of subquery is propagated to subquery's rels */
 				transformForUpdate(rte->subquery, makeList1(NULL));
@@ -2707,7 +2707,7 @@ transformForUpdate(Query *qry, List *forUpdate)
 				++i;
 				if (strcmp(rte->eref->aliasname, relname) == 0)
 				{
-					if (rte->subquery)
+					if (rte->rtekind == RTE_SUBQUERY)
 					{
 						/* propagate to subquery */
 						transformForUpdate(rte->subquery, makeList1(NULL));

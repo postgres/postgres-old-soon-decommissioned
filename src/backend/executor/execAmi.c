@@ -35,6 +35,7 @@
 #include "executor/nodeSort.h"
 #include "executor/nodeSubplan.h"
 #include "executor/nodeSubqueryscan.h"
+#include "executor/nodeFunctionscan.h"
 #include "executor/nodeUnique.h"
 
 
@@ -98,6 +99,10 @@ ExecReScan(Plan *node, ExprContext *exprCtxt, Plan *parent)
 
 		case T_SubqueryScan:
 			ExecSubqueryReScan((SubqueryScan *) node, exprCtxt, parent);
+			break;
+
+		case T_FunctionScan:
+			ExecFunctionReScan((FunctionScan *) node, exprCtxt, parent);
 			break;
 
 		case T_Material:
@@ -187,6 +192,10 @@ ExecMarkPos(Plan *node)
 			ExecIndexMarkPos((IndexScan *) node);
 			break;
 
+		case T_FunctionScan:
+			ExecFunctionMarkPos((FunctionScan *) node);
+			break;
+
 		case T_Material:
 			ExecMaterialMarkPos((Material *) node);
 			break;
@@ -227,6 +236,10 @@ ExecRestrPos(Plan *node)
 
 		case T_IndexScan:
 			ExecIndexRestrPos((IndexScan *) node);
+			break;
+
+		case T_FunctionScan:
+			ExecFunctionRestrPos((FunctionScan *) node);
 			break;
 
 		case T_Material:

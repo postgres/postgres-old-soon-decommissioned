@@ -455,6 +455,25 @@ create_subqueryscan_path(RelOptInfo *rel)
 }
 
 /*
+ * create_functionscan_path
+ *	  Creates a path corresponding to a sequential scan of a function,
+ *	  returning the pathnode.
+ */
+Path *
+create_functionscan_path(Query *root, RelOptInfo *rel)
+{
+	Path	   *pathnode = makeNode(Path);
+
+	pathnode->pathtype = T_FunctionScan;
+	pathnode->parent = rel;
+	pathnode->pathkeys = NIL;	/* for now, assume unordered result */
+
+	cost_functionscan(pathnode, root, rel);
+
+	return pathnode;
+}
+
+/*
  * create_nestloop_path
  *	  Creates a pathnode corresponding to a nestloop join between two
  *	  relations.

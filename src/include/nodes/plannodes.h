@@ -32,6 +32,7 @@
  *		Scan ***				CommonScanState			scanstate;
  *		IndexScan				IndexScanState			indxstate;
  *		SubqueryScan			SubqueryScanState		subquerystate;
+ *		FunctionScan			FunctionScanState		functionstate;
  *
  *		  (*** nodes which inherit Scan also inherit scanstate)
  *
@@ -241,6 +242,17 @@ typedef struct SubqueryScan
 	Scan		scan;
 	Plan	   *subplan;
 } SubqueryScan;
+
+/* ----------------
+ *		FunctionScan node
+ * ----------------
+ */
+typedef struct FunctionScan
+{
+	Scan				scan;
+	/* no other fields needed at present */
+	/* scan.scanstate actually points at a FunctionScanState node */
+} FunctionScan;
 
 /*
  * ==========

@@ -381,7 +381,7 @@ clause_selectivity(Query *root,
 		{
 			RangeTblEntry *rte = rt_fetch(var->varno, root->rtable);
 
-			if (rte->subquery)
+			if (rte->rtekind == RTE_SUBQUERY)
 			{
 				/*
 				 * XXX not smart about subquery references... any way to

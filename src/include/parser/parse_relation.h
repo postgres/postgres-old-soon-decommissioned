@@ -41,6 +41,11 @@ extern RangeTblEntry *addRangeTableEntryForSubquery(ParseState *pstate,
 							  Query *subquery,
 							  Alias *alias,
 							  bool inFromCl);
+extern RangeTblEntry *addRangeTableEntryForFunction(ParseState *pstate,
+													char *funcname,
+													Node *funcexpr,
+													Alias *alias,
+													bool inFromCl);
 extern RangeTblEntry *addRangeTableEntryForJoin(ParseState *pstate,
 						  List *colnames,
 						  JoinType jointype,

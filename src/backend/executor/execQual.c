@@ -700,6 +700,7 @@ ExecMakeFunctionResult(FunctionCachePtr fcache,
 	{
 		fcinfo.resultinfo = (Node *) &rsinfo;
 		rsinfo.type = T_ReturnSetInfo;
+		rsinfo.econtext = econtext;
 	}
 
 	/*

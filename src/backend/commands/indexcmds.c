@@ -452,7 +452,8 @@ GetAttrOpClass(IndexElem *attribute, Oid attrType,
 				elog(ERROR, "Cross-database references are not implemented");
 			break;
 		default:
-			elog(ERROR, "Improper opclass name (too many dotted names)");
+			elog(ERROR, "Improper opclass name (too many dotted names): %s",
+				 NameListToString(attribute->opclass));
 			break;
 	}
 

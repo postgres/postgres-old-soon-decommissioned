@@ -1922,6 +1922,7 @@ query_tree_walker(Query *query,
 		{
 			case RTE_RELATION:
 			case RTE_SPECIAL:
+			case RTE_FUNCTION:
 				/* nothing to do */
 				break;
 			case RTE_SUBQUERY:
@@ -2309,6 +2310,7 @@ query_tree_mutator(Query *query,
 		{
 			case RTE_RELATION:
 			case RTE_SPECIAL:
+			case RTE_FUNCTION:
 				/* nothing to do, don't bother to make a copy */
 				break;
 			case RTE_SUBQUERY:

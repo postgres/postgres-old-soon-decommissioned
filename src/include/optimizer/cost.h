@@ -59,6 +59,8 @@ extern void cost_index(Path *path, Query *root,
 		   List *indexQuals, bool is_injoin);
 extern void cost_tidscan(Path *path, Query *root,
 			 RelOptInfo *baserel, List *tideval);
+extern void cost_functionscan(Path *path, Query *root,
+							  RelOptInfo *baserel);
 extern void cost_sort(Path *path, Query *root,
 		  List *pathkeys, double tuples, int width);
 extern void cost_nestloop(Path *path, Query *root,
@@ -80,6 +82,7 @@ extern void set_joinrel_size_estimates(Query *root, RelOptInfo *rel,
 						   RelOptInfo *inner_rel,
 						   JoinType jointype,
 						   List *restrictlist);
+extern void set_function_size_estimates(Query *root, RelOptInfo *rel);
 
 /*
  * prototypes for clausesel.c

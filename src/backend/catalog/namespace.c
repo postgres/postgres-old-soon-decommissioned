@@ -492,7 +492,8 @@ FuncnameGetCandidates(List *names, int nargs)
 				elog(ERROR, "Cross-database references are not implemented");
 			break;
 		default:
-			elog(ERROR, "Improper qualified name (too many dotted names)");
+			elog(ERROR, "Improper qualified name (too many dotted names): %s",
+				 NameListToString(names));
 			break;
 	}
 
@@ -746,7 +747,8 @@ OpernameGetCandidates(List *names, char oprkind)
 				elog(ERROR, "Cross-database references are not implemented");
 			break;
 		default:
-			elog(ERROR, "Improper qualified name (too many dotted names)");
+			elog(ERROR, "Improper qualified name (too many dotted names): %s",
+				 NameListToString(names));
 			break;
 	}
 
@@ -1199,7 +1201,8 @@ QualifiedNameGetCreationNamespace(List *names, char **objname_p)
 				elog(ERROR, "Cross-database references are not implemented");
 			break;
 		default:
-			elog(ERROR, "Improper qualified name (too many dotted names)");
+			elog(ERROR, "Improper qualified name (too many dotted names): %s",
+				 NameListToString(names));
 			break;
 	}
 
