@@ -44,8 +44,8 @@ bench.sql:
 runtest: $(OUTFILES)
 
 bench.out: $(CREATEFILES)
-	$(SHELL) ./create.sh && \
-	$(SHELL) ./runwisc.sh >bench.out 2>&1
+	$(SHELL) ./create.sh $$PGDATA && \
+	$(SHELL) ./runwisc.sh $$PGDATA >bench.out 2>&1
 	@echo "RESULTS OF BENCHMARK ARE SAVED IN FILE bench.out";
 
 bench.out.perquery: bench.out
