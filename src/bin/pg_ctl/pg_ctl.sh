@@ -49,6 +49,8 @@ do
         fi
 done
 
+po_path=$PGPATH/postmaster
+
 # set default shutdown signal
 sig="-TERM"
 
