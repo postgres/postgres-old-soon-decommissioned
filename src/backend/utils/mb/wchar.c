@@ -2,6 +2,9 @@
  * conversion functions between pg_wchar and multi-byte streams.
  * Tatsuo Ishii
  * $Id$
+ *
+ * WIN1250 client encoding updated by Pavel Behal
+ *
  */
 
 #include "mb/pg_wchar.h"
@@ -454,7 +457,8 @@ pg_wchar_tbl pg_wchar_table[] = {
 	{pg_latin12wchar_with_len, pg_latin1_mblen},		/* 30 */
 	{pg_latin12wchar_with_len, pg_latin1_mblen},		/* 31 */
 	{0, pg_sjis_mblen},			/* 32 */
-	{0, pg_big5_mblen}			/* 33 */
+	{0, pg_big5_mblen},			/* 33 */
+	{pg_latin12wchar_with_len, pg_latin1_mblen}		/* 34 */
 };
 
 /* returns the byte length of a word for mule internal code */
