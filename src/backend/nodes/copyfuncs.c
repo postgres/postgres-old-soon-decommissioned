@@ -1385,6 +1385,17 @@ _copyTypeName(TypeName *from)
 	return newnode;
 }
 
+static TypeCast *
+_copyTypeCast(TypeCast *from)
+{
+	TypeCast   *newnode = makeNode(TypeCast);
+
+	Node_Copy(from, newnode, arg);
+	Node_Copy(from, newnode, typename);
+
+	return newnode;
+}
+
 static Query *
 _copyQuery(Query *from)
 {
@@ -1657,6 +1668,9 @@ copyObject(void *from)
 			break;
 		case T_TypeName:
 			retval = _copyTypeName(from);
+			break;
+		case T_TypeCast:
+			retval = _copyTypeCast(from);
 			break;
 
 			/*

@@ -191,6 +191,15 @@ _outTypeName(StringInfo str, TypeName *node)
 }
 
 static void
+_outTypeCast(StringInfo str, TypeCast *node)
+{
+	appendStringInfo(str, " TYPECAST :arg ");
+	_outNode(str, node->arg);
+	appendStringInfo(str, " :typename ");
+	_outNode(str, node->typename);
+}
+
+static void
 _outIndexElem(StringInfo str, IndexElem *node)
 {
 	appendStringInfo(str, " INDEXELEM :name ");
@@ -1292,6 +1301,8 @@ _outAConst(StringInfo str, A_Const *node)
 {
 	appendStringInfo(str, "CONST ");
 	_outValue(str, &(node->val));
+	appendStringInfo(str, " :typename ");
+	_outNode(str, node->typename);
 }
 
 static void
@@ -1399,6 +1410,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_TypeName:
 				_outTypeName(str, obj);
+				break;
+			case T_TypeCast:
+				_outTypeCast(str, obj);
 				break;
 			case T_IndexElem:
 				_outIndexElem(str, obj);

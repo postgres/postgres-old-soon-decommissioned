@@ -869,6 +869,22 @@ typedef struct A_Const
 } A_Const;
 
 /*
+ * TypeCast - a CAST expression
+ *
+ * NOTE: for mostly historical reasons, A_Const and ParamNo parsenodes contain
+ * room for a TypeName; we only generate a separate TypeCast node if the
+ * argument to be casted is neither of those kinds of nodes.  In theory either
+ * representation would work, but it is convenient (especially for A_Const)
+ * to have the target type immediately available.
+ */
+typedef struct TypeCast
+{
+	NodeTag		type;
+	Node	   *arg;			/* the expression being casted */
+	TypeName   *typename;		/* the target type */
+} TypeCast;
+
+/*
  * CaseExpr - a CASE expression
  */
 typedef struct CaseExpr

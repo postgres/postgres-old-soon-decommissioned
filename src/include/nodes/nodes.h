@@ -202,7 +202,7 @@ typedef enum NodeTag
 	T_FuncCall,
 	T_A_Indices,
 	T_ResTarget,
-	T_ParamString,		/* not used anymore */
+	T_TypeCast,
 	T_RelExpr,
 	T_SortGroupBy,
 	T_RangeVar,
