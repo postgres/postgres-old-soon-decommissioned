@@ -99,7 +99,7 @@ recordchange(PG_FUNCTION_ARGS)
  		sprintf(fullyqualtblname,"\"%s\".\"%s\"",
 			schemaname,tblname);
 #else
-		fullyqualtblname = SPI_palloc(strlen(tblname + 3));
+		fullyqualtblname = SPI_palloc(strlen(tblname) + 3);
 		sprintf(fullyqualtblname,"\"%s\"",tblname);
 #endif
 		tupdesc = trigdata->tg_relation->rd_att;
