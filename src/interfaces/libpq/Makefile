@@ -19,6 +19,8 @@ CFLAGS+= -I../backend/include \
 	-I../backend \
 	-I. \
 
+CFLAGS+= -DPOSTPORT='"$(POSTPORT)"'
+
 ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)
 endif
