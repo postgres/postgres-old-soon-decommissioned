@@ -3,6 +3,8 @@
  * syscache.h
  *	  System catalog cache definitions.
  *
+ * See also lsyscache.h, which provides convenience routines for
+ * common cache-lookup operations.
  *
  * Copyright (c) 1994, Regents of the University of California
  *
@@ -87,6 +89,5 @@ extern int32 SearchSysCacheStruct(int cacheId, char *returnStruct,
 extern void *SearchSysCacheGetAttribute(int cacheId,
 						   AttrNumber attributeNumber,
 						 Datum key1, Datum key2, Datum key3, Datum key4);
-extern void *TypeDefaultRetrieve(Oid typId);
 
 #endif	 /* SYSCACHE_H */

@@ -297,12 +297,12 @@ new_relation_targetlist(Oid relid, Index rt_index, NodeTag node_type)
 		{
 			case T_Const:		/* INSERT command */
 				{
-					struct varlena *typedefault = get_typdefault(atttype);
+					Datum		typedefault = get_typdefault(atttype);
 					int			typlen;
 					Const	   *temp_const;
 					TargetEntry *temp_tle;
 
-					if (typedefault == NULL)
+					if (typedefault == PointerGetDatum(NULL))
 						typlen = 0;
 					else
 					{
@@ -319,9 +319,8 @@ new_relation_targetlist(Oid relid, Index rt_index, NodeTag node_type)
 
 					temp_const = makeConst(atttype,
 										   typlen,
-										   (Datum) typedefault,
-										   (typedefault == NULL),
-										   /* XXX ? */
+										   typedefault,
+										   (typedefault == PointerGetDatum(NULL)),
 										   false,
 										   false, /* not a set */
 										   false);
