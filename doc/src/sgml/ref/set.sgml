@@ -510,9 +510,9 @@ SELECT CURRENT_TIMESTAMP AS today;
   <title>See Also</title>
 
   <simpara>
-   <xref linkend="sql-set-constraints" endterm="sql-set-constraints">,
-   <xref linkend="sql-set-session-auth" endterm="sql-set-session-auth">,
-   <xref linkend="sql-set-transaction" endterm="sql-set-transaction">
+   <xref linkend="sql-set-constraints" endterm="sql-set-constraints-title">,
+   <xref linkend="sql-set-session-authorization" endterm="sql-set-session-authorization-title">,
+   <xref linkend="sql-set-transaction" endterm="sql-set-transaction-title">
   </simpara>
 
   <para>
