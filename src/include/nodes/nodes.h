@@ -145,7 +145,7 @@ typedef enum NodeTag
 	T_UpdateStmt,
 	T_SelectStmt,
 	T_AlterTableStmt,
-	T_AggregateStmt,
+	T_AggregateStmtXXX,			/* not used anymore; this tag# is available */
 	T_ChangeACLStmt,
 	T_ClosePortalStmt,
 	T_ClusterStmt,
@@ -216,7 +216,7 @@ typedef enum NodeTag
 	T_RangeTblEntry,
 	T_SortClause,
 	T_GroupClause,
-	T_SubSelect,
+	T_SubSelectXXX,				/* not used anymore; this tag# is available */
 	T_JoinExpr,
 	T_CaseExpr,
 	T_CaseWhen,

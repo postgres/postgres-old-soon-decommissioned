@@ -490,8 +490,8 @@ typedef struct ProcedureStmt
 	Node	   *returnType;		/* the return type (as a string or a
 								 * TypeName (ie.setof) */
 	List	   *withClause;		/* a list of DefElem */
-	List	   *as;				/* the SQL statement or filename */
-	char	   *language;		/* C or SQL */
+	List	   *as;				/* definition of function body */
+	char	   *language;		/* C, SQL, etc */
 } ProcedureStmt;
 
 /* ----------------------
@@ -804,7 +804,7 @@ typedef struct DeleteStmt
 	NodeTag		type;
 	char	   *relname;		/* relation to delete from */
 	Node	   *whereClause;	/* qualifications */
-  bool        inh;              /* delete from subclasses */
+	bool		inh;			/* delete from subclasses */
 } DeleteStmt;
 
 /* ----------------------
@@ -818,7 +818,7 @@ typedef struct UpdateStmt
 	List	   *targetList;		/* the target list (of ResTarget) */
 	Node	   *whereClause;	/* qualifications */
 	List	   *fromClause;		/* the from clause */
-  bool        inh;              /* update subclasses */
+	bool		inh;			/* update subclasses */
 } UpdateStmt;
 
 /* ----------------------
