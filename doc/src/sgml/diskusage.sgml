@@ -86,6 +86,11 @@ play-# ORDER BY relpages DESC;
   </para>
 
   <para>
+   <application>dbsize</> loads functions into your database that allow
+   you to find the size of a table or database from inside
+   <application>psql</> without the need for <command>VACUUM/ANALYZE.</>
+  </para>
+  <para>
    You can also use <application>oid2name</> to show disk usage. See
    <filename>README.oid2name</> for examples. It includes a script
    shows disk usage for each database.
