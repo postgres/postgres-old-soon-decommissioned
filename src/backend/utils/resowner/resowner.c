@@ -158,7 +158,9 @@ ResourceOwnerRelease(ResourceOwner owner,
 
 	save = CurrentResourceOwner;
 	PG_TRY();
-	ResourceOwnerReleaseInternal(owner, phase, isCommit, isTopLevel);
+	{
+		ResourceOwnerReleaseInternal(owner, phase, isCommit, isTopLevel);
+	}
 	PG_CATCH();
 	{
 		CurrentResourceOwner = save;
