@@ -2104,7 +2104,7 @@ tleIsArrayAssign(TargetEntry *tle)
 	 * So aref->refexpr ought to match the tle's target.
 	 */
 	if (aref->refexpr == NULL || !IsA(aref->refexpr, Var) ||
-		((Var *) aref->refexpr)->varno != tle->resdom->resno)
+		((Var *) aref->refexpr)->varattno != tle->resdom->resno)
 		elog(NOTICE, "tleIsArrayAssign: I'm confused ...");
 	return true;
 }
