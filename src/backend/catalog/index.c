@@ -1894,8 +1894,8 @@ reindex_relation(Oid relid, bool force)
 
 	/*
 	 * Ensure to hold an exclusive lock throughout the transaction. The
-	 * lock could be less intensive (in the non-overwrite path) but now
-	 * it's AccessExclusiveLock for simplicity.
+	 * lock could be less intensive (in the non-overwrite path) but for
+	 * now it's AccessExclusiveLock for simplicity.
 	 */
 	rel = heap_open(relid, AccessExclusiveLock);
 

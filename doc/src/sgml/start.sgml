@@ -242,7 +242,7 @@ createdb: database creation failed
    </para>
 
    <para>
-    If you don't want to use your database anymore you can remove it.
+    If you do not want to use your database anymore you can remove it.
     For example, if you are the owner (creator) of the database
     <literal>mydb</literal>, you can destroy it using the following
     command:

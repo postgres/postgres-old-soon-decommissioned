@@ -286,6 +286,14 @@ VACUUM
    </para>
   </refsect2>
  </refsect1>
+
+ <refsect1>
+  <title>See Also</title>
+
+  <simplelist type="inline">
+   <member><xref linkend="app-vacuumdb" endterm="app-vacuumdb-title"></member>
+  </simplelist>
+ </refsect1>
 </refentry>
 
 <!-- Keep this comment at the end of the file
