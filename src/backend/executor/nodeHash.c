@@ -693,12 +693,12 @@ ExecScanHashBucket(HashJoinState *hjstate,
 		else
 			heapTuple = (HeapTuple)
 				LONGALIGN(((char *) curtuple + curtuple->t_len + HEAPTUPLESIZE));
-		
-		heapTuple->t_data = (HeapTupleHeader) 
-							((char *) heapTuple + HEAPTUPLESIZE);
 
 		while (heapTuple < (HeapTuple) ABSADDR(bucket->bottom))
 		{
+
+			heapTuple->t_data = (HeapTupleHeader) 
+								((char *) heapTuple + HEAPTUPLESIZE);
 
 			inntuple = ExecStoreTuple(heapTuple,		/* tuple to store */
 									  hjstate->hj_HashTupleSlot,		/* slot */
@@ -713,8 +713,6 @@ ExecScanHashBucket(HashJoinState *hjstate,
 
 			heapTuple = (HeapTuple)
 				LONGALIGN(((char *) heapTuple + heapTuple->t_len + HEAPTUPLESIZE));
-			heapTuple->t_data = (HeapTupleHeader) 
-								((char *) heapTuple + HEAPTUPLESIZE);
 		}
 
 		if (firstotuple == NULL)

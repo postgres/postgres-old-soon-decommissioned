@@ -342,7 +342,7 @@ ExtendIndex(char *indexRelationName, Expr *predicate, List *rangetable)
 	heapRelation = heap_open(relationId);
 	indexRelation = index_open(indexId);
 
-	RelationSetLockForWrite(heapRelation);
+	LockRelation(heapRelation, ShareLock);
 
 	InitIndexStrategy(numberOfAttributes, indexRelation, accessMethodId);
 

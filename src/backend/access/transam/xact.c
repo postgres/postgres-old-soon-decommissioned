@@ -194,6 +194,8 @@ TransactionStateData CurrentTransactionStateData = {
 TransactionState CurrentTransactionState =
 &CurrentTransactionStateData;
 
+int	XactIsoLevel = XACT_SERIALIZED;
+
 /* ----------------
  *		info returned when the system is disabled
  *
@@ -816,6 +818,8 @@ StartTransaction()
 	 */
 	GetNewTransactionId(&(s->transactionIdData));
 
+	XactLockTableInsert(s->transactionIdData);
+
 	/* ----------------
 	 *	initialize current transaction state fields
 	 * ----------------
@@ -966,6 +970,7 @@ AbortTransaction()
 	 *	do abort processing
 	 * ----------------
 	 */
+	UnlockBuffers();
 	AtAbort_Notify();
 	CloseSequences();
 	AtEOXact_portals();

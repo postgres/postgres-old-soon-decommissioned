@@ -68,6 +68,8 @@
 
 #include "storage/ipc.h"
 
+extern void s_lock_sleep(unsigned spin);
+
 #if defined(HAS_TEST_AND_SET)
 
 

@@ -109,7 +109,7 @@ SetDefine(char *querystr, char *typename)
 
 		/* change the pg_proc tuple */
 		procrel = heap_openr(ProcedureRelationName);
-		RelationSetLockForWrite(procrel);
+		LockRelation(procrel, AccessExclusiveLock);
 
 		tup = SearchSysCacheTuple(PROOID,
 								  ObjectIdGetDatum(setoid),
@@ -123,7 +123,7 @@ SetDefine(char *querystr, char *typename)
 									  repl);
 
 			setheapoverride(true);
-			heap_replace(procrel, &tup->t_self, newtup);
+			heap_replace(procrel, &tup->t_self, newtup, NULL);
 			setheapoverride(false);
 
 			setoid = newtup->t_data->t_oid;
@@ -139,7 +139,7 @@ SetDefine(char *querystr, char *typename)
 			CatalogIndexInsert(idescs, Num_pg_proc_indices, procrel, newtup);
 			CatalogCloseIndices(Num_pg_proc_indices, idescs);
 		}
-		RelationUnsetLockForWrite(procrel);
+		UnlockRelation(procrel, AccessExclusiveLock);
 		heap_close(procrel);
 	}
 	return setoid;

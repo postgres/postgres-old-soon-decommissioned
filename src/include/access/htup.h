@@ -116,6 +116,7 @@ typedef HeapTupleData *HeapTuple;
 #define HEAP_XMIN_INVALID		0x0200	/* t_xmin invalid/aborted */
 #define HEAP_XMAX_COMMITTED		0x0400	/* t_xmax committed */
 #define HEAP_XMAX_INVALID		0x0800	/* t_xmax invalid/aborted */
+#define HEAP_MARKED_FOR_UPDATE	0x1000	/* marked for UPDATE */
 
 #define HEAP_XACT_MASK			0x0F00	/* */
 

@@ -74,6 +74,14 @@ extern int	ShowPinTrace;
 #define BUFFER_LATE_WRITE		1		/* delayed write: mark as DIRTY */
 
 /*
+ * Buffer context lock modes
+ */
+#define	BUFFER_LOCK_UNLOCK		0
+#define	BUFFER_LOCK_SHARE		1
+#define	BUFFER_LOCK_EXCLUSIVE	2
+
+
+/*
  * BufferIsValid --
  *		True iff the refcnt of the local buffer is > 0
  * Note:
@@ -154,5 +162,8 @@ extern void BufferRefCountReset(int *refcountsave);
 extern void BufferRefCountRestore(int *refcountsave);
 extern int	SetBufferWriteMode(int mode);
 extern void SetBufferCommitInfoNeedsSave(Buffer buffer);
+
+extern void UnlockBuffers(void);
+extern void LockBuffer(Buffer buffer, int mode);
 
 #endif	 /* !defined(BufMgrIncluded) */

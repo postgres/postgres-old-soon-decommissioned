@@ -44,11 +44,9 @@ typedef struct proc
 	TransactionId xid;			/* transaction currently being executed by
 								 * this proc */
 
-#ifdef LowLevelLocking
 	TransactionId xmin;			/* minimal running XID as it was when we
 								 * were starting our xact: vacuum must not
 								 * remove tuples deleted by xid >= xmin ! */
-#endif
 
 	LOCK	   *waitLock;		/* Lock we're sleeping on */
 	int			token;			/* info for proc wakeup routines */

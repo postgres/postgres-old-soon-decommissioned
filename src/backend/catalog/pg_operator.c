@@ -711,7 +711,7 @@ OperatorDef(char *operatorName,
 								   replaces);
 
 			setheapoverride(true);
-			heap_replace(pg_operator_desc, &tup->t_self, tup);
+			heap_replace(pg_operator_desc, &tup->t_self, tup, NULL);
 			setheapoverride(false);
 		}
 		else
@@ -830,7 +830,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 									   replaces);
 
 				setheapoverride(true);
-				heap_replace(pg_operator_desc, &tup->t_self, tup);
+				heap_replace(pg_operator_desc, &tup->t_self, tup, NULL);
 				setheapoverride(false);
 
 			}
@@ -855,7 +855,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 							   replaces);
 
 		setheapoverride(true);
-		heap_replace(pg_operator_desc, &tup->t_self, tup);
+		heap_replace(pg_operator_desc, &tup->t_self, tup, NULL);
 		setheapoverride(false);
 
 		values[Anum_pg_operator_oprcom - 1] = (Datum) NULL;
@@ -884,7 +884,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 							   replaces);
 
 		setheapoverride(true);
-		heap_replace(pg_operator_desc, &tup->t_self, tup);
+		heap_replace(pg_operator_desc, &tup->t_self, tup, NULL);
 		setheapoverride(false);
 	}
 

@@ -180,7 +180,7 @@ renameatt(char *relname,
 			newattname, NAMEDATALEN);
 
 	attrelation = heap_openr(AttributeRelationName);
-	heap_replace(attrelation, &oldatttup->t_self, oldatttup);
+	heap_replace(attrelation, &oldatttup->t_self, oldatttup, NULL);
 
 	/* keep system catalog indices current */
 	CatalogOpenIndices(Num_pg_attr_indices, Name_pg_attr_indices, irelations);
@@ -248,7 +248,7 @@ renamerel(char *oldrelname, char *newrelname)
 
 	/* insert fixed rel tuple */
 	relrelation = heap_openr(RelationRelationName);
-	heap_replace(relrelation, &oldreltup->t_self, oldreltup);
+	heap_replace(relrelation, &oldreltup->t_self, oldreltup, NULL);
 
 	/* keep the system catalog indices current */
 	CatalogOpenIndices(Num_pg_class_indices, Name_pg_class_indices, irelations);

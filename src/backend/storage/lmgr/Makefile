@@ -16,7 +16,7 @@ ifdef MULTIBYTE
 CFLAGS+= $(MBFLAGS)
 endif
 
-OBJS = lmgr.o lock.o multi.o proc.o single.o
+OBJS = lmgr.o lock.o proc.o
 
 all: SUBSYS.o
 

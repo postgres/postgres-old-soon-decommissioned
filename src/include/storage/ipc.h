@@ -186,6 +186,8 @@ typedef enum _LockId_
 		((key == PrivateIPCKey) ? key : 11 + (key))
 #define IPCKeyGetWaitIOSemaphoreKey(key) \
 		((key == PrivateIPCKey) ? key : 12 + (key))
+#define IPCKeyGetWaitCLSemaphoreKey(key) \
+		((key == PrivateIPCKey) ? key : 13 + (key))
 
 /* --------------------------
  * NOTE: This macro must always give the highest numbered key as every backend

@@ -144,6 +144,8 @@ DATA(insert OID = 1264 (  pg_variable 90	  PGUID 0 0 0 f t s 2  0 0 0 0 0 f f _n
 DESCR("");
 DATA(insert OID = 1269 (  pg_log  99		  PGUID 0 0 0 f t s 1  0 0 0 0 0 f f _null_ ));
 DESCR("");
+DATA(insert OID = 376  (  pg_xactlock  0 	  PGUID 0 0 0 f t s 1  0 0 0 0 0 f f _null_ ));
+DESCR("");
 DATA(insert OID = 1215 (  pg_attrdef 109	  PGUID 0 0 0 t t r 4  0 0 0 0 0 f f _null_ ));
 DESCR("");
 DATA(insert OID = 1216 (  pg_relcheck 110	  PGUID 0 0 0 t t r 4  0 0 0 0 0 f f _null_ ));
@@ -163,6 +165,9 @@ DESCR("");
 #define RelOid_pg_attrdef		1215
 #define RelOid_pg_relcheck		1216
 #define RelOid_pg_trigger		1219
+
+/* Xact lock pseudo-table */
+#define XactLockTableId			376
 
 #define		  RELKIND_INDEX			  'i'		/* secondary index */
 #define		  RELKIND_LOBJECT		  'l'		/* large objects */

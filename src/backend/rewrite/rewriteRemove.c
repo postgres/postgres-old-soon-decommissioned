@@ -127,7 +127,7 @@ RemoveRewriteRule(char *ruleName)
 	/*
 	 * Now delete the tuple...
 	 */
-	heap_delete(RewriteRelation, &tuple->t_self);
+	heap_delete(RewriteRelation, &tuple->t_self, NULL);
 
 	pfree(tuple);
 	heap_close(RewriteRelation);
@@ -164,7 +164,7 @@ RelationRemoveRules(Oid relid)
 							  0, SnapshotNow, 1, &scanKeyData);
 
 	while (HeapTupleIsValid(tuple = heap_getnext(scanDesc, 0)))
-		heap_delete(RewriteRelation, &tuple->t_self);
+		heap_delete(RewriteRelation, &tuple->t_self, NULL);
 
 	heap_endscan(scanDesc);
 	heap_close(RewriteRelation);

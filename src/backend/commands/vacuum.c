@@ -497,7 +497,7 @@ vc_vacone(Oid relid, bool analyze, List *va_cols)
 	}
 
 	/* we require the relation to be locked until the indices are cleaned */
-	RelationSetLockForWrite(onerel);
+	LockRelation(onerel, AccessExclusiveLock);
 
 	/* scan it */
 	vacuum_pages.vpl_num_pages = fraged_pages.vpl_num_pages = 0;
@@ -1918,7 +1918,7 @@ vc_delhilowstats(Oid relid, int attcnt, int *attnums)
 			if (i >= attcnt)
 				continue;		/* don't delete it */
 		}
-		heap_delete(pgstatistic, &tuple->t_self);
+		heap_delete(pgstatistic, &tuple->t_self, NULL);
 	}
 
 	heap_endscan(scan);
@@ -1928,11 +1928,7 @@ vc_delhilowstats(Oid relid, int attcnt, int *attnums)
 static void
 vc_setpagelock(Relation rel, BlockNumber blkno)
 {
-	ItemPointerData itm;
-
-	ItemPointerSet(&itm, blkno, 1);
-
-	RelationSetLockForWritePage(rel, &itm);
+	LockPage(rel, blkno, ExclusiveLock);
 }
 
 /*

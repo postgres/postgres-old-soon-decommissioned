@@ -17,7 +17,6 @@
 #include "postgres.h"
 
 #include "storage/ipc.h"
-#include "storage/multilev.h"
 #include "storage/sinval.h"
 #include "storage/bufmgr.h"
 #include "storage/proc.h"
@@ -92,7 +91,7 @@ CreateSharedMemoryAndSemaphores(IPCKey key)
 	 * ----------------
 	 */
 	InitLocks();
-	if (InitMultiLevelLocks() == INVALID_TABLEID)
+	if (InitLockTable() == INVALID_TABLEID)
 		elog(FATAL, "Couldn't create the lock table");
 
 	/* ----------------
@@ -145,7 +144,7 @@ AttachSharedMemoryAndSemaphores(IPCKey key)
 	 * ----------------
 	 */
 	InitLocks();
-	if (InitMultiLevelLocks() == INVALID_TABLEID)
+	if (InitLockTable() == INVALID_TABLEID)
 		elog(FATAL, "Couldn't attach to the lock table");
 
 	AttachSharedInvalidationState(key);

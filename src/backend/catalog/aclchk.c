@@ -162,7 +162,7 @@ ChangeAcl(char *relname,
 	tuple = heap_modifytuple(tuple, relation, values, nulls, replaces);
 	/* XXX handle index on pg_class? */
 	setheapoverride(true);
-	heap_replace(relation, &tuple->t_self, tuple);
+	heap_replace(relation, &tuple->t_self, tuple, NULL);
 	setheapoverride(false);
 
 	/* keep the catalog indices up to date */

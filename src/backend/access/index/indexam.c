@@ -225,7 +225,7 @@ index_beginscan(Relation relation,
 	RELATION_CHECKS;
 	GET_REL_PROCEDURE(beginscan, ambeginscan);
 
-	RelationSetRIntentLock(relation);
+	LockRelation(relation, AccessShareLock);
 
 	scandesc = (IndexScanDesc)
 		fmgr(procedure, relation, scanFromEnd, numberOfKeys, key);
@@ -262,7 +262,7 @@ index_endscan(IndexScanDesc scan)
 
 	fmgr(procedure, scan);
 
-	RelationUnsetRIntentLock(scan->relation);
+	UnlockRelation(scan->relation, AccessShareLock);
 }
 
 /* ----------------

@@ -38,6 +38,8 @@ typedef struct TransactionStateData
 #define XACT_REPEATABLE_READ	2		/* not implemented */
 #define XACT_SERIALIZED			3
 
+extern int	XactIsoLevel;
+
 /* ----------------
  *		transaction states
  * ----------------

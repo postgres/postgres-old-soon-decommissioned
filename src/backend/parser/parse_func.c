@@ -1115,7 +1115,6 @@ find_inheritors(Oid relid, Oid **supervec)
 
 
 	inhrel = heap_openr(InheritsRelationName);
-	RelationSetLockForRead(inhrel);
 	inhtupdesc = RelationGetDescr(inhrel);
 
 	/*
@@ -1182,7 +1181,6 @@ find_inheritors(Oid relid, Oid **supervec)
 		}
 	} while (qentry != (SuperQE *) NULL);
 
-	RelationUnsetLockForRead(inhrel);
 	heap_close(inhrel);
 
 	if (nvisited > 0)

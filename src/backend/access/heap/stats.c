@@ -73,6 +73,7 @@ InitHeapAccessStatistics()
 	stats->global_insert = 0;
 	stats->global_delete = 0;
 	stats->global_replace = 0;
+	stats->global_mark4update = 0;
 	stats->global_markpos = 0;
 	stats->global_restrpos = 0;
 	stats->global_BufferGetRelation = 0;
@@ -94,6 +95,7 @@ InitHeapAccessStatistics()
 	stats->local_insert = 0;
 	stats->local_delete = 0;
 	stats->local_replace = 0;
+	stats->local_mark4update = 0;
 	stats->local_markpos = 0;
 	stats->local_restrpos = 0;
 	stats->local_BufferGetRelation = 0;
@@ -157,6 +159,7 @@ ResetHeapAccessStatistics()
 	stats->local_insert = 0;
 	stats->local_delete = 0;
 	stats->local_replace = 0;
+	stats->local_mark4update = 0;
 	stats->local_markpos = 0;
 	stats->local_restrpos = 0;
 	stats->local_BufferGetRelation = 0;
@@ -273,6 +276,9 @@ PrintHeapAccessStatistics(HeapAccessStatistics stats)
 
 	printf("local/global_replace:                     %6d/%6d\n",
 		   stats->local_replace, stats->global_replace);
+
+	printf("local/global_mark4update:                     %6d/%6d\n",
+		   stats->local_mark4update, stats->global_mark4update);
 
 	printf("local/global_markpos:                     %6d/%6d\n",
 		   stats->local_markpos, stats->global_markpos);

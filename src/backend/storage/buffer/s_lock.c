@@ -14,6 +14,7 @@
 
 #include <stdio.h>
 #include <sys/time.h>
+#include <unistd.h>
 
 #include "config.h"
 #include "c.h"
@@ -52,6 +53,16 @@ s_lock_stuck(volatile slock_t *lock, const char *file, const int line)
 }
 
 
+void
+s_lock_sleep(unsigned spin)
+{
+	struct timeval delay;
+
+	delay.tv_sec = 0;
+	delay.tv_usec = s_spincycle[spin % S_NSPINCYCLE];
+	(void) select(0, NULL, NULL, NULL, &delay);
+}
+
 
 /*
  * s_lock(lock) - take a spinlock with backoff
@@ -59,15 +70,11 @@ s_lock_stuck(volatile slock_t *lock, const char *file, const int line)
 void
 s_lock(volatile slock_t *lock, const char *file, const int line)
 {
-	int			spins = 0;
+	unsigned	spins = 0;
 
 	while (TAS(lock))
 	{
-		struct timeval delay;
-
-		delay.tv_sec = 0;
-		delay.tv_usec = s_spincycle[spins % S_NSPINCYCLE];
-		(void) select(0, NULL, NULL, NULL, &delay);
+		s_lock_sleep(spins);
 		if (++spins > S_MAX_BUSY)
 		{
 			/* It's been over a minute...  */
