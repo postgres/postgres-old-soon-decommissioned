@@ -185,6 +185,36 @@ get_atttypmod(Oid relid, AttrNumber attnum)
 		return -1;
 }
 
+/*
+ * get_atttypetypmod
+ *
+ *		A two-fer: given the relation id and the attribute number,
+ *		fetch both type OID and atttypmod in a single cache lookup.
+ *
+ * Unlike the otherwise-similar get_atttype/get_atttypmod, this routine
+ * raises an error if it can't obtain the information.
+ */
+void
+get_atttypetypmod(Oid relid, AttrNumber attnum,
+				  Oid *typid, int32 *typmod)
+{
+	HeapTuple	tp;
+	Form_pg_attribute att_tup;
+
+	tp = SearchSysCache(ATTNUM,
+						ObjectIdGetDatum(relid),
+						Int16GetDatum(attnum),
+						0, 0);
+	if (!HeapTupleIsValid(tp))
+		elog(ERROR, "cache lookup failed for relation %u attribute %d",
+			 relid, attnum);
+	att_tup = (Form_pg_attribute) GETSTRUCT(tp);
+
+	*typid = att_tup->atttypid;
+	*typmod = att_tup->atttypmod;
+	ReleaseSysCache(tp);
+}
+
 /*				---------- INDEX CACHE ----------						 */
 
 /*		watch this space...
