@@ -2538,16 +2538,16 @@ EndTransactionBlock(void)
 			break;
 
 			/*
-			 * here, the user issued COMMIT when not inside a transaction.
-			 * Issue a WARNING and go to abort state.  The upcoming call
-			 * to CommitTransactionCommand() will then put us back into
-			 * the default state.
+			 * The user issued COMMIT when not inside a transaction.  Issue a
+			 * WARNING, staying in TBLOCK_STARTED state.  The upcoming call to
+			 * CommitTransactionCommand() will then close the transaction and
+			 * put us back into the default state.
 			 */
 		case TBLOCK_STARTED:
 			ereport(WARNING,
 					(errcode(ERRCODE_NO_ACTIVE_SQL_TRANSACTION),
 					 errmsg("there is no transaction in progress")));
-			s->blockState = TBLOCK_ABORT_PENDING;
+			result = true;
 			break;
 
 			/* These cases are invalid. */
