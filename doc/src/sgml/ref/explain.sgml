@@ -188,7 +188,7 @@ ROLLBACK;
    <para>
     There is only sparse documentation on the optimizer's use of cost
     information in <productname>PostgreSQL</productname>.
-    Refer to the &cite-user; and &cite-programmer; for more information.
+    Refer to <xref linkend="using-explain"> for more information.
    </para>
   </refsect2>
  </refsect1>

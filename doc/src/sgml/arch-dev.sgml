@@ -480,8 +480,7 @@ current context are performed.
 
    <para>
     For information on the syntax and creation of rules in the
-    <productname>PostgreSQL</productname> system refer to the
-    &cite-user;.
+    <productname>PostgreSQL</productname> system refer to <xref linkend="sql">.
    </para>
 
    <sect2>

@@ -124,7 +124,7 @@ java Finder
    <para>
     Also, the client authentication setup in the
     <filename>pg_hba.conf</filename> file may need to be configured.
-    Refer to the &cite-admin; for details.  The
+    Refer to <xref linkend="client-authentication"> for details.  The
     <acronym>JDBC</acronym> Driver supports the trust, ident,
     password, md5, and crypt authentication methods.
    </para>

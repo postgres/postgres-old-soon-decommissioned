@@ -885,8 +885,7 @@ SELECT name FROM distributors ORDER BY code;
     already locked a selected row or rows, <command>SELECT FOR
     UPDATE</command> will wait for the other transaction to complete,
     and will then lock and return the updated row (or no row, if the
-    row was deleted).  For further discussion see the concurrency
-    chapter of the &cite-user;.
+    row was deleted).  For further discussion see <xref linkend="mvcc">.
    </para>
 
    <para>

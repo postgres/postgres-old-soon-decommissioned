@@ -483,7 +483,7 @@ fi
 if test x`pg_getlocale COLLATE` != xC && test x`pg_getlocale COLLATE` != xPOSIX; then
     echo "This locale setting will prevent the use of indexes for pattern matching"
     echo "operations.  If that is a concern, rerun $CMDNAME with the collation order"
-    echo "set to \"C\".  For more information see the Administrator's Guide."
+    echo "set to \"C\".  For more information see the documentation."
 fi
 echo
 

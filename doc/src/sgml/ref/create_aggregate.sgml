@@ -267,12 +267,10 @@ CREATE AGGREGATE
  </refsect1>
 
  <refsect1 id="R1-SQL-CREATEAGGREGATE-2">
-  <title>
-   Usage
-  </title>
+  <title>Examples</title>
+
   <para>
-   Refer to the chapter on aggregate functions in the
-   &cite-programmer; for complete examples of usage.
+   See <xref linkend="xaggr">.
   </para>
  </refsect1>
 

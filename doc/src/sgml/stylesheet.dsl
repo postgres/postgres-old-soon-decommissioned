@@ -147,7 +147,7 @@
 
 ;; Returns the depth of auto TOC that should be made at the nd-level
 (define (toc-depth nd)
-  (cond ((string=? (gi nd) (normalize "book")) 3)
+  (cond ((string=? (gi nd) (normalize "book")) 2)
 	((string=? (gi nd) (normalize "set")) 2)
 	((string=? (gi nd) (normalize "part")) 2)
 	((string=? (gi nd) (normalize "chapter")) 2)

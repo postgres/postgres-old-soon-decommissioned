@@ -63,8 +63,8 @@ SET <replaceable class="parameter">variable</replaceable> TO DEFAULT
    have had, had no <command>SET</> ever been issued for it in the
    current session.  The actual source of this value might be a
    compiled-in default, the postmaster's configuration file or command-line
-   switches, or per-database or per-user default settings.  See the
-   &cite-admin; for details.
+   switches, or per-database or per-user default settings.  See
+   <xref linkend="runtime-config"> for details.
   </para>
 
   <para>

@@ -70,8 +70,8 @@ ALTER DATABASE <replaceable class="PARAMETER">name</replaceable> RESET <replacea
        </para>
 
        <para>
-        See <xref linkend="sql-set" endterm="sql-set-title"> and the
-        &cite-admin; for more information about allowed variable names
+        See <xref linkend="sql-set" endterm="sql-set-title"> and <xref linkend="runtime-config">
+        for more information about allowed variable names
         and values.
        </para>
       </listitem>

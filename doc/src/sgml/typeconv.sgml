@@ -29,11 +29,6 @@ for more information on specific data types and allowed functions and
 operators.
 </para>
 
-<para>
-The &cite-programmer; has more details on the exact algorithms used for
-implicit type conversion and conversion.
-</para>
-
 <sect1 id="typeconv-overview">
 <title>Overview</title>
 

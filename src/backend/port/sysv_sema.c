@@ -128,7 +128,7 @@ InternalIpcSemaphoreCreate(IpcSemaphoreKey semKey, int numSems)
 					"consumption of semaphores by reducing its max_connections parameter\n"
 					"(currently %d).\n"
 					"\n"
-					"The PostgreSQL Administrator's Guide contains more information about\n"
+					"The PostgreSQL documentation contains more information about\n"
 					"configuring your system for PostgreSQL.\n\n",
 					MaxBackends);
 

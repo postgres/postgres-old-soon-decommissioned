@@ -1931,7 +1931,7 @@ RAISE <replaceable class="parameter">level</replaceable> '<replaceable class="pa
     written to the server log, or both is controlled by the
     <option>LOG_MIN_MESSAGES</option> and
     <option>CLIENT_MIN_MESSAGES</option> configuration variables. See
-    the &cite-admin; for more information.
+    <xref linkend="runtime-config"> for more information.
    </para>
 
    <para>

@@ -65,14 +65,6 @@ PostgreSQL documentation
    </para>
  </refsect1>
 
- <refsect1>
-  <title>See Also</title>
-
-  <simplelist type="inline">
-   <member>&cite-admin;</member>
-  </simplelist>
- </refsect1>
-
 </refentry>
 
 <!-- Keep this comment at the end of the file

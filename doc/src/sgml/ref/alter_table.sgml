@@ -437,7 +437,7 @@ VACUUM FULL table;
 
    <para>
     Refer to <command>CREATE TABLE</command> for a further description
-    of valid arguments. The &cite-user; has further information on
+    of valid arguments. <xref linkend="ddl"> has further information on
     inheritance.
    </para>
   </refsect2>

@@ -802,7 +802,7 @@ ECPG = ecpg
 
   <para>
    The complete syntax of the <command>ecpg</command> command is
-   detailed in the &cite-reference;.
+   detailed in <xref linkend="app-ecpg">.
   </para>
  </sect1>
 

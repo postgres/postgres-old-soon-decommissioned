@@ -121,7 +121,7 @@ WARNING:  BEGIN: already a transaction in progress
    <command>SET TRANSACTION ISOLATION LEVEL SERIALIZABLE</command>
    just after <command>BEGIN</command> if you need more rigorous transaction
    isolation.  (Alternatively, you can change the default transaction
-   isolation level; see the &cite-admin; for details.)
+   isolation level; see <xref linkend="runtime-config"> for details.)
    In SERIALIZABLE mode queries will see only changes committed before
    the entire
    transaction began (actually, before execution of the first <acronym>DML</> statement

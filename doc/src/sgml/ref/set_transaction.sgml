@@ -109,7 +109,7 @@ SET SESSION CHARACTERISTICS AS TRANSACTION
 <programlisting>
 SET default_transaction_isolation = '<replaceable>value</replaceable>'
 </programlisting>
-   and in the configuration file.  Consult the &cite-admin; for more
+   and in the configuration file.  Consult <xref linkend="runtime-config"> for more
    information.
   </para>
  </refsect1>
@@ -126,7 +126,7 @@ SET default_transaction_isolation = '<replaceable>value</replaceable>'
     not provide the isolation levels <option>READ UNCOMMITTED</option> 
     and <option>REPEATABLE READ</option>. Because of multiversion
     concurrency control, the <option>SERIALIZABLE</option> level is not
-    truly serializable. See the &cite-user; for details.
+    truly serializable. See <xref linkend="mvcc"> for details.
    </para>
 
    <para>

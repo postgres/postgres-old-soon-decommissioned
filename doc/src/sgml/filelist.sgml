@@ -8,7 +8,6 @@
 <!entity problems   SYSTEM "problems.sgml">
 
 <!entity bookindex  SYSTEM "bookindex.sgml">
-<!entity setindex   SYSTEM "setindex.sgml">
 
 <!-- tutorial -->
 <!entity advanced   SYSTEM "advanced.sgml">

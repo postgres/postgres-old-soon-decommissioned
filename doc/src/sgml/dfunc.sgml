@@ -318,9 +318,6 @@ ld <other flags> -H512 -T512 -o foo.so -e _nostart \e
    -bI:.../lib/postgres.exp -bE:foo.exp foo.o \e
    -lm -lc 2>/dev/null
 .fi
-You should look at the &cite-user; for an explanation of
-this procedure.
-
   -->
 
 </sect2>

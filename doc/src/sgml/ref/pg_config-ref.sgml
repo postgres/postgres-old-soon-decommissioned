@@ -154,15 +154,6 @@
    <productname>PostgreSQL</> 7.1.
   </para>
  </refsect1>
-
-
- <refsect1>
-  <title>See Also</title>
-
-  <para>
-   &cite-programmer;
-  </para>
- </refsect1>
 </refentry>
 
 <!-- Keep this comment at the end of the file

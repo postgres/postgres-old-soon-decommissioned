@@ -58,8 +58,6 @@ where <replaceable class="PARAMETER">constraint</replaceable> is:
        <para>
         The underlying data type of the domain. This may include array
 	specifiers.
-        Refer to the &cite-user; for further
-        information about data types and arrays.
        </para>
       </listitem>
      </varlistentry>
@@ -224,7 +222,6 @@ CREATE TABLE countrylist (id INT4, country country_code);
 
   <simplelist type="inline">
    <member><xref linkend="sql-dropdomain" endterm="sql-dropdomain-title"></member>
-   <member>&cite-programmer;</member>
   </simplelist>
  </refsect1>
 

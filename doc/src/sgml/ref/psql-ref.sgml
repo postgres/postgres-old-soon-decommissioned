@@ -2489,16 +2489,6 @@ Field separator is "oo".
  <refsect1 id="APP-PSQL-examples">
   <title id="APP-PSQL-examples-title">Examples</title>
 
-  <note>
-  <para>
-  This section only shows a few examples specific to
-  <application>psql</application>. If you want to learn
-  <acronym>SQL</acronym> or get familiar with
-  <productname>PostgreSQL</productname>, you might wish to read the
-  &cite-tutorial;.
-  </para>
-  </note>
-
   <para>
   The first example shows how to spread a command over several lines of
   input. Notice the changing prompt:

@@ -436,9 +436,8 @@ MYBOXES.description === box '((0,0), (1,1))'
     Notes
    </title>
    <para>
-    Refer to the chapter on operators in the &cite-user;
-    for further information.
-    Refer to <command>DROP OPERATOR</command> to delete
+    Refer to <xref linkend="xoper"> for further information.
+    Use <command>DROP OPERATOR</command> to delete
     user-defined operators from a database.
    </para>
 

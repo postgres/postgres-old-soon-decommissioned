@@ -89,7 +89,7 @@ INSERT INTO products DEFAULT VALUES;
    <para>
     To do <quote>bulk loads</quote>, that is, inserting a lot of data,
     take a look at the <command>COPY</command> command (see
-    &cite-reference;).  It is not as flexible as the
+    <xref linkend="reference">).  It is not as flexible as the
     <command>INSERT</command> command, but more efficient.
    </para>
   </tip>

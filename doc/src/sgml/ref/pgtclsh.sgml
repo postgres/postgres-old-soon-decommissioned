@@ -55,7 +55,7 @@ PostgreSQL documentation
   <simplelist type="inline">
    <member><xref linkend="app-pgtksh"></member>
    <member>
-    &cite-programmer; (description of <filename>libpgtcl</filename>)
+    <xref linkend="pgtcl"> (description of <filename>libpgtcl</filename>)
    </member>
    <member>
     <citerefentry><refentrytitle>tclsh</refentrytitle> <manvolnum>1</manvolnum></citerefentry>

@@ -152,7 +152,7 @@ ANALYZE [ VERBOSE ] [ <replaceable class="PARAMETER">table</replaceable> [ (<rep
    <command>ANALYZE</command> deems them uninteresting (for example, in
    a unique-key column, there are no common values) or if the column
    data type does not support the appropriate operators.  There is more
-   information about the statistics in the &cite-user;.
+   information about the statistics in <xref linkend="maintenance">.
   </para>
 
   <para>
