@@ -495,6 +495,16 @@ SELECT CURRENT_TIMESTAMP AS today;
    </para>
   </refsect2>
  </refsect1>
+
+ <refsect1>
+  <title>See Also</title>
+
+  <para>
+    The function <function>set_config</function> provides the equivalent
+    capability. See <citetitle>Miscellaneous Functions</citetitle> in the
+    <citetitle>PostgreSQL User's Guide</citetitle>.
+  </para>
+ </refsect1>
 </refentry>
 
 <!-- Keep this comment at the end of the file
