@@ -954,8 +954,8 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 
 		index = makeNode(IndexStmt);
 
-		index->unique = TRUE;
-		index->primary = (constraint->contype == CONSTR_PRIMARY ? TRUE : FALSE);
+		index->unique = true;
+		index->primary = (constraint->contype == CONSTR_PRIMARY);
 		if (index->primary)
 		{
 			if (pkey != NULL)
@@ -1057,6 +1057,17 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 				elog(ERROR, "CREATE TABLE: column \"%s\" named in key does not exist",
 					 key->name);
 
+			/* Check for PRIMARY KEY(foo, foo) */
+			foreach(columns, index->indexParams)
+			{
+				iparam = (IndexElem *) lfirst(columns);
+				if (strcmp(key->name, iparam->name) == 0)
+					elog(ERROR, "CREATE TABLE: column \"%s\" appears twice in %s constraint",
+						 key->name,
+						 index->primary ? "PRIMARY KEY" : "UNIQUE");
+			}
+
+			/* OK, add it to the index definition */
 			iparam = makeNode(IndexElem);
 			iparam->name = pstrdup(key->name);
 			iparam->args = NIL;
