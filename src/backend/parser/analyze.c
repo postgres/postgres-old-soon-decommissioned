@@ -1238,8 +1238,10 @@ transformIndexConstraints(ParseState *pstate, CreateStmtContext *cxt)
 			elog(ERROR, "%s: failed to make implicit index name",
 				 cxt->stmtType);
 
-		elog(NOTICE, "%s / %s will create implicit index '%s' for table '%s'",
-			 cxt->stmtType, (index->primary ? "PRIMARY KEY" : "UNIQUE"),
+		elog(NOTICE, "%s / %s%s will create implicit index '%s' for table '%s'",
+			 cxt->stmtType,
+			 (strcmp(cxt->stmtType,"ALTER TABLE") == 0) ? "ADD " : "",
+			 (index->primary ? "PRIMARY KEY" : "UNIQUE"),
 			 index->idxname, cxt->relname);
 	}
 }
