@@ -959,17 +959,17 @@ DecodeDateTime(char **field, int *ftype, int nf,
 					if (tzp == NULL)
 						return -1;
 
-					if (ptype != 0)
-					{
-						/* Sanity check; should not fail this test */
-						if (ptype != DTK_TIME)
-							return -1;
-						ptype = 0;
-					}
-
-					if (isdigit(*field[i]))
+					if ((isdigit(*field[i]) || (ptype != 0))
 					{
 						char *cp;
+
+						if (ptype != 0)
+						{
+							/* Sanity check; should not fail this test */
+							if (ptype != DTK_TIME)
+								return -1;
+							ptype = 0;
+						}
 
 						/* Starts with a digit but we already have a time field?
 						 * Then we are in trouble with a date and time already...
