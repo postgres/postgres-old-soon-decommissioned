@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>pg_passwd</refname>
-  <refpurpose>change a secondary password file</refpurpose>
+  <refpurpose>change a secondary <productname>PostgreSQL</> password file</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

@@ -91,7 +91,7 @@ CREATE INDEX test1_id_index ON test1 (id);
   </para>
 
   <para>
-   When an index is created, it has to be kept synchronized with the
+   When an index is created, the system has to keep it synchronized with the
    table.  This adds overhead to data manipulation operations.
    Therefore indexes that are non-essential or do not get used at all
    should be removed.  Note that a

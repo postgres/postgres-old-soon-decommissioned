@@ -3,6 +3,9 @@
 <chapter id="queries">
  <title>Queries</title>
 
+ <sect1 id="queries-overview">
+  <title>Overview</title>
+
  <para>
   A <firstterm>query</firstterm> is the process of retrieving or the command
   to retrieve data from a database.  In SQL the <command>SELECT</command>
@@ -51,6 +54,7 @@ SELECT 3 * 4;
 SELECT random();
 </programlisting>
  </para>
+ </sect1>
 
  <sect1 id="queries-table-expressions">
   <title>Table Expressions</title>

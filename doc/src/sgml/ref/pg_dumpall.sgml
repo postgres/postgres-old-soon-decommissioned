@@ -36,7 +36,7 @@ Postgres documentation
 
   <para>
    <application>pg_dumpall</application> is a utility for writing out
-   (<quote>dumping</quote>) all Postgres databases of a cluster into
+   (<quote>dumping</quote>) all PostgreSQL databases of a cluster into
    one script file.  The script file contains SQL commands that can be
    used as input to <xref linkend="app-psql">
    to restore the databases.  It does this by calling <xref
@@ -104,7 +104,7 @@ Postgres documentation
       <term>-h <replaceable>host</replaceable></term>
       <listitem>
        <para>
-	Specifies the hostname of the machine on which the database
+	Specifies the host name of the machine on which the database
 	server is running.  If host begins with a slash, it is used as
 	the directory for the Unix domain socket.  The default is
 	taken from the <envar>PGHOST</envar> environment variable, if
