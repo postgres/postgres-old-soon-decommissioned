@@ -35,6 +35,19 @@ extern DLLIMPORT const char *debug_query_string;
 extern char *rendezvous_name;
 extern int	max_stack_depth;
 
+/* GUC-configurable parameters */
+
+typedef enum
+{
+	/* Reverse order so GUC USERLIMIT is easier */
+	LOGSTMT_ALL,				/* log all statements */
+	LOGSTMT_DDL,				/* log data definition statements */
+	LOGSTMT_MOD,				/* log modification statements, plus DDL */
+	LOGSTMT_NONE				/* log no statements */
+} LogStmtLevel;
+
+extern LogStmtLevel log_statement;
+
 #ifndef BOOTSTRAP_INCLUDE
 
 extern List *pg_parse_and_rewrite(const char *query_string,
