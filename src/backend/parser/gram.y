@@ -2332,13 +2332,16 @@ opt_type:  ':' Typename							{ $$ = $2; }
  */
 opt_class:  class								{
 	/*
-	 * Release 7.0 removed network_ops, so we supress it from being passed
-	 * to the backend so the default *_ops is used.  This can be removed
-     * in some later release.  bjm 2000/02/07
+	 * Release 7.0 removed network_ops, timespan_ops, and datetime_ops, 
+	 * so we suppress it from being passed to the backend so the default 
+	 * *_ops is used.  This can be removed in some later release.  
+	 * bjm 2000/02/07 
 	 */ 
-												 if (strcmp($1, "network_ops") != 0)
-														$$ = $1;
-												  else	$$ = NULL; }
+										 if (strcmp($1, "network_ops") != 0 &&
+										     strcmp($1, "timespan_ops") != 0 &&
+										     strcmp($1, "datetime_ops") != 0)
+										 		$$ = $1;
+										 else	$$ = NULL; }
 		| USING class							{ $$ = $2; }
 		| /*EMPTY*/								{ $$ = NULL; }
 		;
