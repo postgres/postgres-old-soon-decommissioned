@@ -20,8 +20,9 @@
  *-------------------------------------------------------------------------
  */
 
-#include <stdio.h>
+#include "postgres.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <netdb.h>
@@ -30,8 +31,6 @@
 #include <string.h>
 #include <fcntl.h>
 #include <errno.h>
-
-#include "postgres.h"
 
 #ifndef ENABLE_THREAD_SAFETY
 int
