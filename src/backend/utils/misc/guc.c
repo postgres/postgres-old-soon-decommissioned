@@ -689,6 +689,7 @@ static struct config_int
 		60, 1, 600, NULL, NULL
 	},
 
+	/* Not for general use */
 	{
 		{"pre_auth_delay", PGC_SIGHUP}, &PreAuthDelay,
 		0, 0, 60, NULL, NULL
@@ -871,6 +872,7 @@ static struct config_string
 		"$user,public", assign_search_path, NULL
 	},
 
+	/* Can't be set in postgresql.conf */
 	{
 		{"server_encoding", PGC_INTERNAL, GUC_REPORT},
 		&server_encoding_string,
@@ -888,6 +890,7 @@ static struct config_string
 		"notice", assign_log_min_messages, NULL
 	},
 
+	/* Not for general use --- used by SET SESSION AUTHORIZATION */
 	{
 		{"session_authorization", PGC_USERSET, GUC_NO_SHOW_ALL | GUC_NO_RESET_ALL},
 		&session_authorization_string,
