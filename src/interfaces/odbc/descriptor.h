@@ -41,6 +41,7 @@ typedef struct
 	char		dot[MAX_TABLE_LEN + 1];
 	char		name[MAX_COLUMN_LEN + 1];
 	char		alias[MAX_COLUMN_LEN + 1];
+	char		*schema;
 } FIELD_INFO;
 Int4 FI_precision(const FIELD_INFO *);
 Int4 FI_scale(const FIELD_INFO *);
