@@ -44,17 +44,9 @@ GetNewTransactionId(TransactionId *xid)
 
 	SpinAcquire(XidGenLockId);
 
-	/* If we run out of logged for use xids then we must log more */
-	if (ShmemVariableCache->xidCount == 0)
-	{
-		XLogPutNextXid(ShmemVariableCache->nextXid + VAR_XID_PREFETCH);
-		ShmemVariableCache->xidCount = VAR_XID_PREFETCH;
-	}
-
 	*xid = ShmemVariableCache->nextXid;
 
 	(ShmemVariableCache->nextXid)++;
-	(ShmemVariableCache->xidCount)--;
 
 	SpinRelease(XidGenLockId);
 

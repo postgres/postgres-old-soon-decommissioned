@@ -201,7 +201,6 @@ extern void StartupXLOG(void);
 extern void ShutdownXLOG(void);
 extern void CreateCheckPoint(bool shutdown);
 extern void SetThisStartUpID(void);
-extern void XLogPutNextXid(TransactionId nextXid);
 extern void XLogPutNextOid(Oid nextOid);
 extern void SetRedoRecPtr(void);
 extern void GetRedoRecPtr(void);

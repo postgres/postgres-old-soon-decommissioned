@@ -129,9 +129,8 @@ typedef VariableRelationContentsData *VariableRelationContents;
 typedef struct VariableCacheData
 {
 	TransactionId	nextXid;	/* next XID to assign */
-	uint32			xidCount;	/* XIDs available before must do XLOG work */
-	Oid				nextOid;	/* and similarly for OIDs */
-	uint32			oidCount;
+	Oid				nextOid;	/* next OID to assign */
+	uint32			oidCount;	/* OIDs available before must do XLOG work */
 } VariableCacheData;
 
 typedef VariableCacheData *VariableCache;

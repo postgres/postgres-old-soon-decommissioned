@@ -45,7 +45,6 @@ typedef struct CheckPoint
 /* XLOG info values for XLOG rmgr */
 #define XLOG_CHECKPOINT_SHUTDOWN		0x00
 #define XLOG_CHECKPOINT_ONLINE			0x10
-#define XLOG_NEXTXID					0x20
 #define XLOG_NEXTOID					0x30
 
 

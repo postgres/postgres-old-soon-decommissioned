@@ -296,7 +296,7 @@ GetSnapshotData(bool serializable)
 	/*
 	 * Unfortunately, we have to call ReadNewTransactionId() after
 	 * acquiring SInvalLock above. It's not good because
-	 * ReadNewTransactionId() does SpinAcquire(OidGenLockId) but
+	 * ReadNewTransactionId() does SpinAcquire(XidGenLockId) but
 	 * _necessary_.
 	 */
 	ReadNewTransactionId(&(snapshot->xmax));
