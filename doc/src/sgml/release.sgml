@@ -32,9 +32,9 @@ $PostgreSQL$
 	supports NT-based Windows releases like NT4, Win2k, XP, Win2003.
         Older releases like Windows 95, 98, and ME are not supported because
 	these operating systems do not have the infrastructure to
-	support PostgreSQL.  A separate
-        installer project has been created to ease installation on
-	Windows: <ulink url="http://pgfoundry.org/projects/pginstaller">
+	support PostgreSQL.  A separate installer project has been created 
+        to ease installation on Windows (except NT4): 
+        <ulink url="http://pgfoundry.org/projects/pginstaller">
 	http://pgfoundry.org/projects/pginstaller</ulink>.
        </para>
        <para>
