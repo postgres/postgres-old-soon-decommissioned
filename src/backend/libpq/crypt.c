@@ -249,7 +249,7 @@ crypt_getloginfo(const char *user, char **passwd, char **valuntil)
 /*-------------------------------------------------------------------------*/
 
 int
-crypt_verify(Port *port, const char *user, const char *pgpass)
+crypt_verify(const Port *port, const char *user, const char *pgpass)
 {
 
 	char	   *passwd,
