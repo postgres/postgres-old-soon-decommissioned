@@ -145,6 +145,7 @@ extern void UserAbortTransactionBlock(void);
 extern void AbortOutOfAnyTransaction(void);
 extern void PreventTransactionChain(void *stmtNode, const char *stmtType);
 extern void RequireTransactionChain(void *stmtNode, const char *stmtType);
+extern bool IsInTransactionChain(void *stmtNode);
 extern void RegisterEOXactCallback(EOXactCallback callback, void *arg);
 extern void UnregisterEOXactCallback(EOXactCallback callback, void *arg);
 
