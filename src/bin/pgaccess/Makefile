@@ -16,8 +16,11 @@ pgaccessdir = $(datadir)/pgaccess
 
 all: pgaccess
 
-pgaccess: pgaccess.sh
-	sed -e 's,__wish__,$(WISH),' -e 's,__PGACCESSHOME__,$(pgaccessdir),' < $< > $@
+pgaccess: pgaccess.sh $(top_builddir)/src/Makefile.global
+	sed -e 's,@WISH@,$(WISH),g' \
+	    -e 's,@PGACCESSHOME@,$(pgaccessdir),g' \
+	  $< >$@
+	chmod a+x $@
 
 install: all installdirs
 	$(INSTALL_SCRIPT) pgaccess $(DESTDIR)$(bindir)/pgaccess

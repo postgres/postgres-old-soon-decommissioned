@@ -24,7 +24,7 @@ ifeq ($(with_CXX), yes)
 DIRS += libpq++
 endif
 
-ifeq ($(USE_TCL), true)
+ifeq ($(with_tcl), yes)
 DIRS += libpgtcl
 endif
 

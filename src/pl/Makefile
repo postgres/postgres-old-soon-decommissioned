@@ -14,7 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 DIRS := plpgsql
 
-ifeq ($(USE_TCL), true)
+ifeq ($(with_tcl), yes)
 DIRS += tcl
 endif
 
