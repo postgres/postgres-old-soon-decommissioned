@@ -36,7 +36,6 @@
 #include "pathnames.h"
 #endif
 
-#include <features.h>
 #include "postgres.h"
 
 #include "regex/cdefs.h"
