@@ -14,7 +14,7 @@
 #set -x
 
 # UPGRADE_VERSION is the expected old database version
-UPGRADE_VERSION="7.2"
+UPGRADE_VERSION="7.3"
 CUR_VERSION="7.3"
 
 # Set this to "Y" to enable this program
