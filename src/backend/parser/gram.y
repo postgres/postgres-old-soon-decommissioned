@@ -5779,6 +5779,8 @@ xlateSqlType(char *name)
 		return "int4";
 	else if (strcmp(name, "smallint") == 0)
 		return "int2";
+	else if (strcmp(name, "bigint") == 0)
+		return "int8";
 	else if ((strcmp(name, "real") == 0)
 			 || (strcmp(name, "float") == 0))
 		return "float8";

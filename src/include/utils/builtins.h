@@ -609,4 +609,7 @@ extern Datum getdatabaseencoding(PG_FUNCTION_ARGS);
 extern Datum PG_encoding_to_char(PG_FUNCTION_ARGS);
 extern Datum PG_char_to_encoding(PG_FUNCTION_ARGS);
 
+/* formatting for internal types */
+extern Datum format_type(PG_FUNCTION_ARGS);
+
 #endif	 /* BUILTINS_H */

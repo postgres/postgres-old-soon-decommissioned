@@ -1330,7 +1330,8 @@ DATA(insert OID = 1079 (  varcharcmp	   PGUID 11 f t t t 2 f 23 "1043 1043" 100 
 DESCR("less-equal-greater");
 DATA(insert OID = 1080 (  hashbpchar	   PGUID 12 f t t t 1 f 23 "1042" 100 0 0 100  hashbpchar - ));
 DESCR("hash");
-
+DATA(insert OID = 1081 (  format_type      PGUID 12 f t t f 2 f 25 "26 23" 100 0 0 100 format_type - ));
+DESCR("format a type oid and atttypmod to canonical SQL");
 DATA(insert OID = 1084 (  date_in		   PGUID 12 f t f t 1 f 1082 "0" 100 0 0 100	date_in - ));
 DESCR("(internal)");
 DATA(insert OID = 1085 (  date_out		   PGUID 12 f t f t 1 f 23 "0" 100 0 0 100  date_out - ));
