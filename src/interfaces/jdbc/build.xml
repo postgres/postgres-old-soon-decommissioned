@@ -44,7 +44,10 @@
       </or>
     </condition>
     <condition property="jdbc3">
+      <or>
         <equals arg1="${ant.java.version}" arg2="1.4"/>
+	<equals arg1="${ant.java.version}" arg2="1.5"/>
+      </or>
     </condition>
     <available property="datasource" classname="javax.sql.DataSource"/>
     <available property="ssl" classname="javax.net.ssl.SSLSocketFactory"/>
