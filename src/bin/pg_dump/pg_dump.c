@@ -4370,8 +4370,9 @@ dumpIndexes(Archive *fout, IndInfo *indinfo, int numIndexes,
 			continue;
 		}
 
-
-		if (strcmp(indinfo[i].indproc, "0") == 0)
+		/* indproc is regproc in 7.2, oid previously, so check both */
+		if (strcmp(indinfo[i].indproc, "-") == 0 ||
+			strcmp(indinfo[i].indproc, "0") == 0)
 			funcname = NULL;
 		else
 		{
