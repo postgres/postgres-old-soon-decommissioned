@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/local/bin/perl -w
 
 #-------------------------------------------------------
 #
@@ -148,7 +148,8 @@ $result = PQexec($conn, "COPY person TO STDOUT");
 cmp_eq(PGRES_COPY_OUT, PQresultStatus($result));
 PQclear($result);
 
-$i = 1;
+$i   = 1;
+$ret = 0;
 while (-1 != $ret) {
     $ret = PQgetline($conn, $string, 256);
     last if $string eq "\\.";
