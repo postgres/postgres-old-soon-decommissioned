@@ -1525,7 +1525,9 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 			VacPageList vacuum_pages, VacPageList fraged_pages,
 			int nindexes, Relation *Irel)
 {
+#ifdef	USE_ASSERT_CHECKING
 	TransactionId myXID = GetCurrentTransactionId();
+#endif
 	Buffer		dst_buffer = InvalidBuffer;
 	BlockNumber nblocks,
 				blkno;
