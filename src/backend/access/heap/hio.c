@@ -14,7 +14,6 @@
 
 #include "postgres.h"
 
-#include "storage/buf.h"
 #include "storage/bufpage.h"
 #include "access/relscan.h"
 #include "access/heapam.h"

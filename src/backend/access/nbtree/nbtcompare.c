@@ -21,7 +21,6 @@
  */
 
 #include <string.h>
-#include <time.h>
 
 #include "postgres.h"
 #include "utils/nabstime.h"

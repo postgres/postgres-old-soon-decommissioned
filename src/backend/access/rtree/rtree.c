@@ -13,24 +13,19 @@
  */
 
 #include <stdio.h>
-#include <time.h>
 
 #include "postgres.h"
+#include "access/genam.h"
 
 #include "utils/palloc.h"
 #include "catalog/index.h"
 
-#include "access/relscan.h"  
 #include "access/rtscan.h"
 
 #include "storage/lmgr.h"
 
-#include "access/genam.h"
-
 #include "access/rtree.h"
-#include "access/funcindex.h"
  
-#include "storage/ipc.h"
 #include "storage/bufmgr.h"
 
 #include "utils/geo-decls.h"

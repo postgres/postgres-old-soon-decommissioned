@@ -21,30 +21,17 @@
 #include "postgres.h"
 
 #include "utils/rel.h"
+#include "access/genam.h"
 
-#include "storage/block.h"
-#include "storage/off.h"
-#include "storage/itemptr.h"
-#include "access/itup.h"
-#include "access/funcindex.h"
-#include "storage/itemid.h"
-#include "storage/item.h"
-#include "storage/buf.h"
 #include "storage/bufpage.h"
 #include "storage/bufmgr.h"
-#include "utils/nabstime.h"
 #include "access/htup.h"
-#include "utils/tqual.h"
 #include "utils/palloc.h"
-#include "access/relscan.h"
-#include "access/sdir.h"
 #include "access/nbtree.h"
 
 #include "executor/executor.h"
 
 #include "access/heapam.h"
-
-#include "access/genam.h"
 
 #include "catalog/index.h"
 
