@@ -378,7 +378,7 @@ print_action(struct when *w)
 static void
 whenever_action(int mode)
 {
-	if (mode == 1 && when_nf.code != W_NOTHING)
+	if ((mode&1) ==  1 && when_nf.code != W_NOTHING)
 	{
 		output_line_number();
 		fprintf(yyout, "\nif (sqlca.sqlcode == ECPG_NOT_FOUND) ");
@@ -396,6 +396,8 @@ whenever_action(int mode)
                 fprintf(yyout, "\nif (sqlca.sqlcode < 0) ");
 		print_action(&when_error);
         }
+	if ((mode&2) == 2)
+		fputc('}', yyout);
 	output_line_number();
 }
 
@@ -823,7 +825,7 @@ output_statement(char * stmt, int mode)
 {
 	int i, j=strlen(stmt);
 
-	fprintf(yyout, "ECPGdo(__LINE__, %s, \"", connection ? connection : "NULL");
+	fprintf(yyout, "{ ECPGdo(__LINE__, %s, \"", connection ? connection : "NULL");
 
 	/* do this char by char as we have to filter '\"' */
 	for (i = 0;i < j; i++)
@@ -836,6 +838,7 @@ output_statement(char * stmt, int mode)
 	fputs("ECPGt_EOIT, ", yyout);
 	dump_variables(argsresult, 1);
 	fputs("ECPGt_EORT);", yyout);
+	mode |= 2;
 	whenever_action(mode);
 	free(stmt);
 	if (connection != NULL)
@@ -939,7 +942,7 @@ adjust_array(enum ECPGttype type_enum, int *dimension, int *length, int type_dim
 }
 
 
-#line 645 "preproc.y"
+#line 648 "preproc.y"
 typedef union {
 	double                  dval;
         int                     ival;
@@ -1613,148 +1616,148 @@ static const short yyrhs[] = {   314,
 
 #if YYDEBUG != 0
 static const short yyrline[] = { 0,
-   852,   854,   855,   857,   858,   859,   860,   861,   862,   863,
-   865,   867,   868,   869,   870,   871,   872,   873,   874,   875,
-   876,   877,   878,   879,   880,   881,   882,   883,   884,   885,
-   886,   887,   888,   889,   890,   891,   892,   893,   894,   895,
-   896,   897,   898,   904,   905,   910,   911,   912,   913,   914,
-   915,   916,   917,   918,   926,   929,   937,   940,   948,   951,
-   956,   981,   989,   990,   995,  1003,  1009,  1015,  1035,  1049,
-  1063,  1069,  1070,  1073,  1077,  1081,  1084,  1088,  1092,  1095,
-  1099,  1105,  1106,  1109,  1110,  1122,  1126,  1130,  1134,  1138,
-  1148,  1149,  1153,  1154,  1157,  1158,  1159,  1162,  1166,  1170,
-  1176,  1180,  1184,  1198,  1204,  1208,  1212,  1214,  1216,  1218,
-  1229,  1244,  1250,  1252,  1261,  1262,  1263,  1266,  1267,  1270,
-  1271,  1277,  1278,  1290,  1297,  1298,  1301,  1302,  1303,  1306,
-  1311,  1315,  1319,  1323,  1326,  1327,  1330,  1334,  1340,  1341,
-  1344,  1345,  1348,  1352,  1358,  1363,  1377,  1381,  1385,  1389,
-  1393,  1397,  1401,  1408,  1412,  1426,  1428,  1430,  1432,  1434,
-  1436,  1438,  1440,  1442,  1444,  1450,  1452,  1454,  1456,  1460,
-  1462,  1464,  1466,  1472,  1474,  1477,  1479,  1481,  1487,  1489,
-  1495,  1497,  1505,  1509,  1513,  1517,  1521,  1525,  1532,  1536,
-  1542,  1544,  1546,  1550,  1552,  1554,  1556,  1558,  1560,  1562,
-  1564,  1566,  1572,  1574,  1576,  1580,  1584,  1586,  1590,  1594,
-  1596,  1598,  1600,  1602,  1604,  1606,  1608,  1610,  1612,  1614,
-  1616,  1618,  1620,  1622,  1624,  1626,  1628,  1630,  1632,  1635,
-  1639,  1644,  1649,  1650,  1651,  1654,  1655,  1656,  1659,  1660,
-  1663,  1664,  1665,  1666,  1669,  1670,  1673,  1679,  1680,  1683,
-  1684,  1687,  1697,  1703,  1705,  1708,  1712,  1716,  1720,  1724,
-  1728,  1734,  1735,  1737,  1741,  1748,  1752,  1766,  1773,  1774,
-  1776,  1790,  1798,  1799,  1802,  1806,  1810,  1816,  1817,  1818,
-  1821,  1827,  1828,  1831,  1832,  1835,  1837,  1839,  1843,  1847,
-  1851,  1852,  1855,  1868,  1874,  1880,  1881,  1882,  1885,  1886,
-  1887,  1888,  1889,  1892,  1895,  1896,  1899,  1902,  1906,  1912,
-  1913,  1914,  1915,  1916,  1929,  1933,  1950,  1957,  1963,  1964,
-  1965,  1966,  1971,  1974,  1975,  1976,  1977,  1978,  1979,  1982,
-  1983,  1985,  1996,  2002,  2006,  2010,  2016,  2020,  2026,  2030,
-  2034,  2038,  2042,  2048,  2052,  2056,  2062,  2066,  2077,  2095,
-  2104,  2105,  2108,  2109,  2112,  2113,  2116,  2117,  2120,  2126,
-  2132,  2133,  2134,  2143,  2144,  2145,  2155,  2191,  2197,  2198,
-  2201,  2202,  2205,  2206,  2210,  2216,  2217,  2238,  2244,  2245,
-  2246,  2247,  2251,  2257,  2258,  2262,  2269,  2275,  2275,  2277,
-  2278,  2279,  2280,  2281,  2282,  2283,  2284,  2287,  2291,  2293,
-  2295,  2308,  2315,  2316,  2319,  2320,  2333,  2335,  2342,  2343,
-  2344,  2345,  2346,  2349,  2350,  2353,  2355,  2357,  2361,  2362,
-  2363,  2364,  2367,  2371,  2378,  2379,  2380,  2381,  2384,  2385,
-  2397,  2403,  2409,  2413,  2431,  2432,  2433,  2434,  2435,  2437,
-  2438,  2439,  2449,  2463,  2477,  2487,  2493,  2494,  2497,  2498,
-  2501,  2502,  2503,  2506,  2507,  2508,  2518,  2532,  2546,  2550,
-  2558,  2559,  2562,  2563,  2566,  2567,  2570,  2572,  2584,  2602,
-  2603,  2604,  2605,  2606,  2607,  2624,  2630,  2634,  2638,  2642,
-  2646,  2652,  2653,  2656,  2659,  2663,  2677,  2684,  2690,  2691,
-  2694,  2695,  2696,  2697,  2700,  2701,  2711,  2727,  2730,  2760,
-  2761,  2762,  2763,  2764,  2781,  2798,  2802,  2806,  2811,  2816,
-  2824,  2834,  2835,  2836,  2839,  2840,  2843,  2844,  2847,  2848,
-  2849,  2850,  2853,  2854,  2857,  2858,  2861,  2867,  2868,  2869,
-  2870,  2871,  2872,  2875,  2877,  2879,  2881,  2883,  2885,  2889,
-  2890,  2891,  2894,  2895,  2905,  2906,  2909,  2911,  2913,  2917,
-  2918,  2921,  2925,  2928,  2932,  2936,  2941,  2945,  2959,  2963,
-  2969,  2971,  2973,  2977,  2979,  2983,  2987,  2991,  3001,  3003,
-  3007,  3013,  3017,  3030,  3034,  3038,  3043,  3048,  3053,  3058,
-  3063,  3067,  3073,  3074,  3085,  3086,  3089,  3090,  3093,  3099,
-  3100,  3103,  3108,  3114,  3120,  3129,  3137,  3143,  3152,  3160,
-  3161,  3162,  3163,  3164,  3165,  3166,  3180,  3184,  3190,  3191,
-  3192,  3193,  3196,  3202,  3203,  3204,  3205,  3206,  3207,  3208,
-  3209,  3210,  3211,  3212,  3213,  3214,  3215,  3216,  3217,  3218,
-  3219,  3220,  3221,  3222,  3223,  3224,  3225,  3226,  3227,  3228,
-  3229,  3230,  3231,  3232,  3233,  3234,  3235,  3236,  3244,  3248,
-  3252,  3256,  3262,  3264,  3266,  3268,  3272,  3280,  3286,  3298,
-  3306,  3312,  3324,  3332,  3342,  3357,  3363,  3370,  3371,  3372,
-  3373,  3376,  3377,  3380,  3381,  3384,  3385,  3388,  3392,  3396,
-  3400,  3406,  3407,  3408,  3409,  3410,  3411,  3414,  3415,  3418,
-  3419,  3420,  3421,  3422,  3423,  3424,  3425,  3426,  3436,  3438,
-  3453,  3457,  3461,  3465,  3469,  3475,  3481,  3482,  3483,  3484,
-  3485,  3486,  3487,  3488,  3489,  3492,  3493,  3497,  3501,  3516,
-  3520,  3522,  3524,  3528,  3530,  3532,  3534,  3536,  3538,  3540,
-  3542,  3544,  3546,  3548,  3550,  3552,  3557,  3559,  3561,  3565,
-  3569,  3571,  3573,  3575,  3577,  3579,  3581,  3585,  3589,  3593,
-  3597,  3601,  3607,  3611,  3617,  3621,  3625,  3629,  3633,  3637,
-  3642,  3646,  3650,  3654,  3658,  3660,  3662,  3664,  3671,  3675,
-  3679,  3683,  3687,  3691,  3695,  3699,  3703,  3707,  3711,  3715,
-  3719,  3723,  3727,  3731,  3735,  3739,  3743,  3747,  3751,  3755,
-  3759,  3763,  3767,  3771,  3775,  3779,  3783,  3787,  3791,  3795,
-  3799,  3803,  3807,  3811,  3813,  3815,  3817,  3819,  3828,  3832,
-  3834,  3838,  3840,  3842,  3844,  3846,  3848,  3850,  3852,  3857,
-  3859,  3861,  3865,  3869,  3871,  3873,  3875,  3877,  3881,  3885,
-  3889,  3893,  3899,  3903,  3909,  3913,  3917,  3921,  3926,  3930,
-  3934,  3938,  3942,  3946,  3950,  3954,  3958,  3960,  3962,  3966,
-  3970,  3972,  3976,  3977,  3978,  3981,  3983,  3987,  3991,  3993,
-  3995,  3997,  3999,  4001,  4003,  4005,  4007,  4011,  4015,  4017,
-  4019,  4021,  4023,  4027,  4031,  4035,  4039,  4044,  4048,  4052,
-  4056,  4062,  4066,  4070,  4072,  4078,  4080,  4084,  4086,  4088,
-  4092,  4096,  4100,  4102,  4106,  4110,  4114,  4116,  4135,  4137,
-  4143,  4149,  4151,  4155,  4161,  4162,  4165,  4169,  4173,  4177,
-  4181,  4187,  4189,  4191,  4202,  4204,  4206,  4209,  4213,  4217,
-  4228,  4230,  4235,  4239,  4243,  4247,  4253,  4254,  4257,  4261,
-  4274,  4275,  4276,  4277,  4278,  4284,  4285,  4287,  4293,  4297,
-  4301,  4305,  4309,  4311,  4315,  4321,  4327,  4328,  4329,  4337,
-  4344,  4346,  4348,  4359,  4360,  4361,  4362,  4363,  4364,  4365,
-  4366,  4367,  4368,  4369,  4370,  4371,  4372,  4373,  4374,  4375,
-  4376,  4377,  4378,  4379,  4380,  4381,  4382,  4383,  4384,  4385,
-  4386,  4387,  4388,  4389,  4390,  4391,  4392,  4393,  4394,  4395,
-  4396,  4397,  4398,  4399,  4400,  4401,  4402,  4403,  4404,  4405,
-  4406,  4407,  4408,  4409,  4410,  4412,  4413,  4414,  4415,  4416,
-  4417,  4418,  4419,  4420,  4421,  4422,  4423,  4424,  4425,  4426,
-  4427,  4428,  4429,  4430,  4431,  4432,  4433,  4434,  4435,  4436,
-  4437,  4438,  4439,  4440,  4441,  4442,  4443,  4444,  4445,  4446,
-  4447,  4448,  4449,  4450,  4451,  4452,  4453,  4454,  4455,  4456,
-  4457,  4458,  4459,  4460,  4461,  4462,  4463,  4464,  4465,  4466,
-  4478,  4479,  4480,  4481,  4482,  4483,  4484,  4485,  4486,  4487,
-  4488,  4489,  4490,  4491,  4492,  4493,  4494,  4495,  4496,  4497,
-  4498,  4499,  4500,  4501,  4502,  4503,  4504,  4505,  4506,  4507,
-  4508,  4509,  4510,  4511,  4512,  4513,  4514,  4515,  4518,  4525,
-  4541,  4545,  4550,  4555,  4566,  4589,  4593,  4601,  4618,  4629,
-  4630,  4632,  4633,  4635,  4636,  4638,  4639,  4641,  4642,  4644,
-  4648,  4652,  4656,  4661,  4666,  4667,  4669,  4693,  4706,  4712,
-  4755,  4760,  4765,  4772,  4774,  4776,  4780,  4785,  4790,  4795,
-  4800,  4801,  4802,  4803,  4804,  4805,  4806,  4808,  4815,  4822,
-  4829,  4836,  4844,  4856,  4861,  4863,  4870,  4877,  4885,  4893,
-  4894,  4896,  4897,  4898,  4899,  4900,  4901,  4902,  4903,  4904,
-  4905,  4906,  4908,  4910,  4914,  4919,  4994,  4995,  4997,  4998,
-  5004,  5012,  5014,  5015,  5016,  5017,  5019,  5020,  5025,  5038,
-  5050,  5054,  5054,  5061,  5066,  5070,  5071,  5076,  5076,  5082,
-  5092,  5108,  5113,  5114,  5116,  5116,  5122,  5130,  5172,  5178,
-  5184,  5193,  5202,  5210,  5216,  5222,  5231,  5240,  5247,  5248,
-  5250,  5257,  5264,  5271,  5278,  5285,  5292,  5299,  5306,  5313,
-  5320,  5327,  5334,  5339,  5347,  5352,  5360,  5371,  5371,  5373,
-  5377,  5383,  5389,  5394,  5398,  5403,  5474,  5529,  5534,  5539,
-  5545,  5550,  5555,  5560,  5565,  5570,  5575,  5580,  5587,  5591,
-  5593,  5595,  5599,  5601,  5603,  5605,  5607,  5609,  5611,  5613,
-  5615,  5617,  5619,  5621,  5623,  5627,  5629,  5631,  5635,  5639,
-  5641,  5643,  5645,  5647,  5649,  5651,  5655,  5659,  5663,  5667,
-  5671,  5677,  5681,  5687,  5691,  5695,  5699,  5703,  5707,  5712,
-  5716,  5720,  5724,  5728,  5730,  5732,  5734,  5741,  5745,  5749,
-  5753,  5757,  5761,  5765,  5769,  5773,  5777,  5781,  5785,  5789,
-  5793,  5797,  5801,  5805,  5809,  5813,  5817,  5821,  5825,  5829,
-  5833,  5837,  5841,  5845,  5849,  5853,  5857,  5861,  5865,  5869,
-  5873,  5877,  5881,  5883,  5885,  5887,  5889,  5893,  5893,  5895,
-  5897,  5898,  5900,  5901,  5903,  5907,  5911,  5916,  5918,  5919,
-  5920,  5921,  5923,  5924,  5929,  5931,  5933,  5934,  5939,  5939,
-  5941,  5942,  5943,  5944,  5945,  5946,  5947,  5948,  5949,  5950,
-  5951,  5952,  5953,  5954,  5955,  5956,  5957,  5958,  5959,  5960,
-  5961,  5962,  5963,  5964,  5965,  5966,  5967,  5968,  5969,  5970,
-  5971,  5972,  5973,  5974,  5976,  5977,  5978,  5979,  5980,  5982,
-  5983,  5984,  5985,  5986,  5988,  5993
+   855,   857,   858,   860,   861,   862,   863,   864,   865,   866,
+   868,   870,   871,   872,   873,   874,   875,   876,   877,   878,
+   879,   880,   881,   882,   883,   884,   885,   886,   887,   888,
+   889,   890,   891,   892,   893,   894,   895,   896,   897,   898,
+   899,   900,   901,   907,   908,   913,   914,   915,   916,   917,
+   918,   919,   920,   921,   929,   932,   941,   944,   952,   955,
+   960,   985,   993,   994,   999,  1007,  1013,  1019,  1039,  1053,
+  1067,  1073,  1074,  1077,  1081,  1085,  1088,  1092,  1096,  1099,
+  1103,  1109,  1110,  1113,  1114,  1126,  1130,  1134,  1138,  1142,
+  1152,  1153,  1157,  1158,  1161,  1162,  1163,  1166,  1170,  1174,
+  1180,  1184,  1188,  1202,  1208,  1212,  1216,  1218,  1220,  1222,
+  1233,  1248,  1254,  1256,  1265,  1266,  1267,  1270,  1271,  1274,
+  1275,  1281,  1282,  1294,  1301,  1302,  1305,  1306,  1307,  1310,
+  1315,  1319,  1323,  1327,  1330,  1331,  1334,  1338,  1344,  1345,
+  1348,  1349,  1352,  1356,  1362,  1367,  1381,  1385,  1389,  1393,
+  1397,  1401,  1405,  1412,  1416,  1430,  1432,  1434,  1436,  1438,
+  1440,  1442,  1444,  1446,  1448,  1454,  1456,  1458,  1460,  1464,
+  1466,  1468,  1470,  1476,  1478,  1481,  1483,  1485,  1491,  1493,
+  1499,  1501,  1509,  1513,  1517,  1521,  1525,  1529,  1536,  1540,
+  1546,  1548,  1550,  1554,  1556,  1558,  1560,  1562,  1564,  1566,
+  1568,  1570,  1576,  1578,  1580,  1584,  1588,  1590,  1594,  1598,
+  1600,  1602,  1604,  1606,  1608,  1610,  1612,  1614,  1616,  1618,
+  1620,  1622,  1624,  1626,  1628,  1630,  1632,  1634,  1636,  1639,
+  1643,  1648,  1653,  1654,  1655,  1658,  1659,  1660,  1663,  1664,
+  1667,  1668,  1669,  1670,  1673,  1674,  1677,  1683,  1684,  1687,
+  1688,  1691,  1701,  1707,  1709,  1712,  1716,  1720,  1724,  1728,
+  1732,  1738,  1739,  1741,  1745,  1752,  1756,  1770,  1777,  1778,
+  1780,  1794,  1802,  1803,  1806,  1810,  1814,  1820,  1821,  1822,
+  1825,  1831,  1832,  1835,  1836,  1839,  1841,  1843,  1847,  1851,
+  1855,  1856,  1859,  1872,  1878,  1884,  1885,  1886,  1889,  1890,
+  1891,  1892,  1893,  1896,  1899,  1900,  1903,  1906,  1910,  1916,
+  1917,  1918,  1919,  1920,  1933,  1937,  1954,  1961,  1967,  1968,
+  1969,  1970,  1975,  1978,  1979,  1980,  1981,  1982,  1983,  1986,
+  1987,  1989,  2000,  2006,  2010,  2014,  2020,  2024,  2030,  2034,
+  2038,  2042,  2046,  2052,  2056,  2060,  2066,  2070,  2081,  2099,
+  2108,  2109,  2112,  2113,  2116,  2117,  2120,  2121,  2124,  2130,
+  2136,  2137,  2138,  2147,  2148,  2149,  2159,  2195,  2201,  2202,
+  2205,  2206,  2209,  2210,  2214,  2220,  2221,  2242,  2248,  2249,
+  2250,  2251,  2255,  2261,  2262,  2266,  2273,  2279,  2279,  2281,
+  2282,  2283,  2284,  2285,  2286,  2287,  2288,  2291,  2295,  2297,
+  2299,  2312,  2319,  2320,  2323,  2324,  2337,  2339,  2346,  2347,
+  2348,  2349,  2350,  2353,  2354,  2357,  2359,  2361,  2365,  2366,
+  2367,  2368,  2371,  2375,  2382,  2383,  2384,  2385,  2388,  2389,
+  2401,  2407,  2413,  2417,  2435,  2436,  2437,  2438,  2439,  2441,
+  2442,  2443,  2453,  2467,  2481,  2491,  2497,  2498,  2501,  2502,
+  2505,  2506,  2507,  2510,  2511,  2512,  2522,  2536,  2550,  2554,
+  2562,  2563,  2566,  2567,  2570,  2571,  2574,  2576,  2588,  2606,
+  2607,  2608,  2609,  2610,  2611,  2628,  2634,  2638,  2642,  2646,
+  2650,  2656,  2657,  2660,  2663,  2667,  2681,  2688,  2694,  2695,
+  2698,  2699,  2700,  2701,  2704,  2705,  2715,  2731,  2734,  2764,
+  2765,  2766,  2767,  2768,  2785,  2802,  2806,  2810,  2815,  2820,
+  2828,  2838,  2839,  2840,  2843,  2844,  2847,  2848,  2851,  2852,
+  2853,  2854,  2857,  2858,  2861,  2862,  2865,  2871,  2872,  2873,
+  2874,  2875,  2876,  2879,  2881,  2883,  2885,  2887,  2889,  2893,
+  2894,  2895,  2898,  2899,  2909,  2910,  2913,  2915,  2917,  2921,
+  2922,  2925,  2929,  2932,  2936,  2940,  2945,  2949,  2963,  2967,
+  2973,  2975,  2977,  2981,  2983,  2987,  2991,  2995,  3005,  3007,
+  3011,  3017,  3021,  3034,  3038,  3042,  3047,  3052,  3057,  3062,
+  3067,  3071,  3077,  3078,  3089,  3090,  3093,  3094,  3097,  3103,
+  3104,  3107,  3112,  3118,  3124,  3133,  3141,  3147,  3156,  3164,
+  3165,  3166,  3167,  3168,  3169,  3170,  3184,  3188,  3194,  3195,
+  3196,  3197,  3200,  3206,  3207,  3208,  3209,  3210,  3211,  3212,
+  3213,  3214,  3215,  3216,  3217,  3218,  3219,  3220,  3221,  3222,
+  3223,  3224,  3225,  3226,  3227,  3228,  3229,  3230,  3231,  3232,
+  3233,  3234,  3235,  3236,  3237,  3238,  3239,  3240,  3248,  3252,
+  3256,  3260,  3266,  3268,  3270,  3272,  3276,  3284,  3290,  3302,
+  3310,  3316,  3328,  3336,  3346,  3361,  3367,  3374,  3375,  3376,
+  3377,  3380,  3381,  3384,  3385,  3388,  3389,  3392,  3396,  3400,
+  3404,  3410,  3411,  3412,  3413,  3414,  3415,  3418,  3419,  3422,
+  3423,  3424,  3425,  3426,  3427,  3428,  3429,  3430,  3440,  3442,
+  3457,  3461,  3465,  3469,  3473,  3479,  3485,  3486,  3487,  3488,
+  3489,  3490,  3491,  3492,  3493,  3496,  3497,  3501,  3505,  3520,
+  3524,  3526,  3528,  3532,  3534,  3536,  3538,  3540,  3542,  3544,
+  3546,  3548,  3550,  3552,  3554,  3556,  3561,  3563,  3565,  3569,
+  3573,  3575,  3577,  3579,  3581,  3583,  3585,  3589,  3593,  3597,
+  3601,  3605,  3611,  3615,  3621,  3625,  3629,  3633,  3637,  3641,
+  3646,  3650,  3654,  3658,  3662,  3664,  3666,  3668,  3675,  3679,
+  3683,  3687,  3691,  3695,  3699,  3703,  3707,  3711,  3715,  3719,
+  3723,  3727,  3731,  3735,  3739,  3743,  3747,  3751,  3755,  3759,
+  3763,  3767,  3771,  3775,  3779,  3783,  3787,  3791,  3795,  3799,
+  3803,  3807,  3811,  3815,  3817,  3819,  3821,  3823,  3832,  3836,
+  3838,  3842,  3844,  3846,  3848,  3850,  3852,  3854,  3856,  3861,
+  3863,  3865,  3869,  3873,  3875,  3877,  3879,  3881,  3885,  3889,
+  3893,  3897,  3903,  3907,  3913,  3917,  3921,  3925,  3930,  3934,
+  3938,  3942,  3946,  3950,  3954,  3958,  3962,  3964,  3966,  3970,
+  3974,  3976,  3980,  3981,  3982,  3985,  3987,  3991,  3995,  3997,
+  3999,  4001,  4003,  4005,  4007,  4009,  4011,  4015,  4019,  4021,
+  4023,  4025,  4027,  4031,  4035,  4039,  4043,  4048,  4052,  4056,
+  4060,  4066,  4070,  4074,  4076,  4082,  4084,  4088,  4090,  4092,
+  4096,  4100,  4104,  4106,  4110,  4114,  4118,  4120,  4139,  4141,
+  4147,  4153,  4155,  4159,  4165,  4166,  4169,  4173,  4177,  4181,
+  4185,  4191,  4193,  4195,  4206,  4208,  4210,  4213,  4217,  4221,
+  4232,  4234,  4239,  4243,  4247,  4251,  4257,  4258,  4261,  4265,
+  4278,  4279,  4280,  4281,  4282,  4288,  4289,  4291,  4297,  4301,
+  4305,  4309,  4313,  4315,  4319,  4325,  4331,  4332,  4333,  4341,
+  4348,  4350,  4352,  4363,  4364,  4365,  4366,  4367,  4368,  4369,
+  4370,  4371,  4372,  4373,  4374,  4375,  4376,  4377,  4378,  4379,
+  4380,  4381,  4382,  4383,  4384,  4385,  4386,  4387,  4388,  4389,
+  4390,  4391,  4392,  4393,  4394,  4395,  4396,  4397,  4398,  4399,
+  4400,  4401,  4402,  4403,  4404,  4405,  4406,  4407,  4408,  4409,
+  4410,  4411,  4412,  4413,  4414,  4416,  4417,  4418,  4419,  4420,
+  4421,  4422,  4423,  4424,  4425,  4426,  4427,  4428,  4429,  4430,
+  4431,  4432,  4433,  4434,  4435,  4436,  4437,  4438,  4439,  4440,
+  4441,  4442,  4443,  4444,  4445,  4446,  4447,  4448,  4449,  4450,
+  4451,  4452,  4453,  4454,  4455,  4456,  4457,  4458,  4459,  4460,
+  4461,  4462,  4463,  4464,  4465,  4466,  4467,  4468,  4469,  4470,
+  4482,  4483,  4484,  4485,  4486,  4487,  4488,  4489,  4490,  4491,
+  4492,  4493,  4494,  4495,  4496,  4497,  4498,  4499,  4500,  4501,
+  4502,  4503,  4504,  4505,  4506,  4507,  4508,  4509,  4510,  4511,
+  4512,  4513,  4514,  4515,  4516,  4517,  4518,  4519,  4522,  4529,
+  4545,  4549,  4554,  4559,  4570,  4593,  4597,  4605,  4622,  4633,
+  4634,  4636,  4637,  4639,  4640,  4642,  4643,  4645,  4646,  4648,
+  4652,  4656,  4660,  4665,  4670,  4671,  4673,  4697,  4710,  4716,
+  4759,  4764,  4769,  4776,  4778,  4780,  4784,  4789,  4794,  4799,
+  4804,  4805,  4806,  4807,  4808,  4809,  4810,  4812,  4819,  4826,
+  4833,  4840,  4848,  4860,  4865,  4867,  4874,  4881,  4889,  4897,
+  4898,  4900,  4901,  4902,  4903,  4904,  4905,  4906,  4907,  4908,
+  4909,  4910,  4912,  4914,  4918,  4923,  4998,  4999,  5001,  5002,
+  5008,  5016,  5018,  5019,  5020,  5021,  5023,  5024,  5029,  5042,
+  5054,  5058,  5058,  5065,  5070,  5074,  5075,  5080,  5080,  5086,
+  5096,  5112,  5117,  5118,  5120,  5120,  5126,  5134,  5176,  5182,
+  5188,  5197,  5206,  5214,  5220,  5226,  5235,  5244,  5251,  5252,
+  5254,  5261,  5268,  5275,  5282,  5289,  5296,  5303,  5310,  5317,
+  5324,  5331,  5338,  5343,  5351,  5356,  5364,  5375,  5375,  5377,
+  5381,  5387,  5393,  5398,  5402,  5407,  5478,  5533,  5538,  5543,
+  5549,  5554,  5559,  5564,  5569,  5574,  5579,  5584,  5591,  5595,
+  5597,  5599,  5603,  5605,  5607,  5609,  5611,  5613,  5615,  5617,
+  5619,  5621,  5623,  5625,  5627,  5631,  5633,  5635,  5639,  5643,
+  5645,  5647,  5649,  5651,  5653,  5655,  5659,  5663,  5667,  5671,
+  5675,  5681,  5685,  5691,  5695,  5699,  5703,  5707,  5711,  5716,
+  5720,  5724,  5728,  5732,  5734,  5736,  5738,  5745,  5749,  5753,
+  5757,  5761,  5765,  5769,  5773,  5777,  5781,  5785,  5789,  5793,
+  5797,  5801,  5805,  5809,  5813,  5817,  5821,  5825,  5829,  5833,
+  5837,  5841,  5845,  5849,  5853,  5857,  5861,  5865,  5869,  5873,
+  5877,  5881,  5885,  5887,  5889,  5891,  5893,  5897,  5897,  5899,
+  5901,  5902,  5904,  5905,  5907,  5911,  5915,  5920,  5922,  5923,
+  5924,  5925,  5927,  5928,  5933,  5935,  5937,  5938,  5943,  5943,
+  5945,  5946,  5947,  5948,  5949,  5950,  5951,  5952,  5953,  5954,
+  5955,  5956,  5957,  5958,  5959,  5960,  5961,  5962,  5963,  5964,
+  5965,  5966,  5967,  5968,  5969,  5970,  5971,  5972,  5973,  5974,
+  5975,  5976,  5977,  5978,  5980,  5981,  5982,  5983,  5984,  5986,
+  5987,  5988,  5989,  5990,  5992,  5997
 };
 #endif
 
@@ -9468,155 +9471,155 @@ yyreduce:
   switch (yyn) {
 
 case 4:
-#line 857 "preproc.y"
+#line 860 "preproc.y"
 { connection = NULL; ;
     break;}
 case 7:
-#line 860 "preproc.y"
+#line 863 "preproc.y"
 { fprintf(yyout, "%s", yyvsp[0].str); free(yyvsp[0].str); ;
     break;}
 case 8:
-#line 861 "preproc.y"
+#line 864 "preproc.y"
 { fprintf(yyout, "%s", yyvsp[0].str); free(yyvsp[0].str); ;
     break;}
 case 9:
-#line 862 "preproc.y"
+#line 865 "preproc.y"
 { fputs(yyvsp[0].str, yyout); free(yyvsp[0].str); ;
     break;}
 case 10:
-#line 863 "preproc.y"
+#line 866 "preproc.y"
 { fputs(yyvsp[0].str, yyout); free(yyvsp[0].str); ;
     break;}
 case 11:
-#line 865 "preproc.y"
+#line 868 "preproc.y"
 { connection = yyvsp[0].str; ;
     break;}
 case 12:
-#line 867 "preproc.y"
-{ output_statement(yyvsp[0].str, 0); ;
-    break;}
-case 13:
-#line 868 "preproc.y"
-{ output_statement(yyvsp[0].str, 0); ;
-    break;}
-case 14:
-#line 869 "preproc.y"
-{ output_statement(yyvsp[0].str, 0); ;
-    break;}
-case 15:
 #line 870 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 16:
+case 13:
 #line 871 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 17:
+case 14:
 #line 872 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 18:
+case 15:
 #line 873 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 19:
+case 16:
 #line 874 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 20:
+case 17:
 #line 875 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 21:
+case 18:
 #line 876 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 22:
+case 19:
 #line 877 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 23:
+case 20:
 #line 878 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 24:
+case 21:
 #line 879 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 25:
+case 22:
 #line 880 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 26:
+case 23:
 #line 881 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 27:
+case 24:
 #line 882 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 28:
+case 25:
 #line 883 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 29:
+case 26:
 #line 884 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 30:
+case 27:
 #line 885 "preproc.y"
-{ output_statement(yyvsp[0].str, 1); ;
+{ output_statement(yyvsp[0].str, 0); ;
     break;}
-case 31:
+case 28:
 #line 886 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 32:
+case 29:
 #line 887 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 33:
+case 30:
 #line 888 "preproc.y"
-{ output_statement(yyvsp[0].str, 0); ;
+{ output_statement(yyvsp[0].str, 1); ;
     break;}
-case 34:
+case 31:
 #line 889 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 35:
+case 32:
 #line 890 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 36:
+case 33:
 #line 891 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 37:
+case 34:
 #line 892 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 38:
+case 35:
 #line 893 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 39:
+case 36:
 #line 894 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 40:
+case 37:
 #line 895 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 41:
+case 38:
 #line 896 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 42:
+case 39:
 #line 897 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 43:
+case 40:
 #line 898 "preproc.y"
+{ output_statement(yyvsp[0].str, 0); ;
+    break;}
+case 41:
+#line 899 "preproc.y"
+{ output_statement(yyvsp[0].str, 0); ;
+    break;}
+case 42:
+#line 900 "preproc.y"
+{ output_statement(yyvsp[0].str, 0); ;
+    break;}
+case 43:
+#line 901 "preproc.y"
 {
 						if (strncmp(yyvsp[0].str, "/* " , sizeof("/* ")-1) == 0)
 							output_simple_statement(yyvsp[0].str);
@@ -9625,110 +9628,111 @@ case 43:
 					;
     break;}
 case 44:
-#line 904 "preproc.y"
+#line 907 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
 case 45:
-#line 905 "preproc.y"
+#line 908 "preproc.y"
 {
-						fprintf(yyout, "ECPGtrans(__LINE__, %s, \"%s\");", connection ? connection : "NULL", yyvsp[0].str);
-						whenever_action(0);
+						fprintf(yyout, "{ ECPGtrans(__LINE__, %s, \"%s\");", connection ? connection : "NULL", yyvsp[0].str);
+						whenever_action(2);
 						free(yyvsp[0].str);
 					;
     break;}
 case 46:
-#line 910 "preproc.y"
-{ output_statement(yyvsp[0].str, 0); ;
-    break;}
-case 47:
-#line 911 "preproc.y"
-{ output_statement(yyvsp[0].str, 0); ;
-    break;}
-case 48:
-#line 912 "preproc.y"
-{ output_statement(yyvsp[0].str, 0); ;
-    break;}
-case 49:
 #line 913 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 50:
+case 47:
 #line 914 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 51:
+case 48:
 #line 915 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 52:
+case 49:
 #line 916 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 53:
+case 50:
 #line 917 "preproc.y"
 { output_statement(yyvsp[0].str, 0); ;
     break;}
-case 54:
+case 51:
 #line 918 "preproc.y"
+{ output_statement(yyvsp[0].str, 0); ;
+    break;}
+case 52:
+#line 919 "preproc.y"
+{ output_statement(yyvsp[0].str, 0); ;
+    break;}
+case 53:
+#line 920 "preproc.y"
+{ output_statement(yyvsp[0].str, 0); ;
+    break;}
+case 54:
+#line 921 "preproc.y"
 {
 						if (connection)
 							yyerror("no at option for connect statement.\n");
 
-						fprintf(yyout, "ECPGconnect(__LINE__, %s, %d);", yyvsp[0].str, autocommit);
-						whenever_action(0);
+						fprintf(yyout, "{ ECPGconnect(__LINE__, %s, %d);", yyvsp[0].str, autocommit);
+						whenever_action(2);
 						free(yyvsp[0].str);
 					;
     break;}
 case 55:
-#line 926 "preproc.y"
+#line 929 "preproc.y"
 {
 						output_simple_statement(yyvsp[0].str);
 					;
     break;}
 case 56:
-#line 929 "preproc.y"
+#line 932 "preproc.y"
 {
 						if (connection)
 							yyerror("no at option for connect statement.\n");
 
+						fputc('{', yyout);
 						fputs(yyvsp[0].str, yyout);
-						whenever_action(0);
+						whenever_action(2);
 						free(yyvsp[0].str);
 					;
     break;}
 case 57:
-#line 937 "preproc.y"
+#line 941 "preproc.y"
 {
 						output_simple_statement(yyvsp[0].str);
 					;
     break;}
 case 58:
-#line 940 "preproc.y"
+#line 944 "preproc.y"
 {
 						if (connection)
 							yyerror("no at option for disconnect statement.\n");
 
-						fprintf(yyout, "ECPGdisconnect(__LINE__, \"%s\");", yyvsp[0].str); 
-						whenever_action(0);
+						fprintf(yyout, "{ ECPGdisconnect(__LINE__, \"%s\");", yyvsp[0].str); 
+						whenever_action(2);
 						free(yyvsp[0].str);
 					;
     break;}
 case 59:
-#line 948 "preproc.y"
+#line 952 "preproc.y"
 {
 						output_statement(yyvsp[0].str, 0);
 					;
     break;}
 case 60:
-#line 951 "preproc.y"
+#line 955 "preproc.y"
 {
-						fprintf(yyout, "ECPGdeallocate(__LINE__, %s, \"%s\");", connection ? connection : "NULL", yyvsp[0].str); 
-						whenever_action(0);
+						fprintf(yyout, "{ ECPGdeallocate(__LINE__, %s, \"%s\");", connection ? connection : "NULL", yyvsp[0].str); 
+						whenever_action(2);
 						free(yyvsp[0].str);
 					;
     break;}
 case 61:
-#line 956 "preproc.y"
+#line 960 "preproc.y"
 {	
 						struct cursor *ptr;
 						 
@@ -9744,53 +9748,53 @@ case 61:
 							yyerror(errortext);
 						}
                   
-						fprintf(yyout, "ECPGdo(__LINE__, %s, \"%s\",", ptr->connection ? ptr->connection : "NULL", ptr->command);
+						fprintf(yyout, "{ ECPGdo(__LINE__, %s, \"%s\",", ptr->connection ? ptr->connection : "NULL", ptr->command);
 						/* dump variables to C file*/
 						dump_variables(ptr->argsinsert, 0);
 						dump_variables(argsinsert, 0);
 						fputs("ECPGt_EOIT, ", yyout);
 						dump_variables(ptr->argsresult, 0);
 						fputs("ECPGt_EORT);", yyout);
-						whenever_action(0);
+						whenever_action(2);
 						free(yyvsp[0].str);
 					;
     break;}
 case 62:
-#line 981 "preproc.y"
+#line 985 "preproc.y"
 {
 						if (connection)
 							yyerror("no at option for set connection statement.\n");
 
-						fprintf(yyout, "ECPGprepare(__LINE__, %s);", yyvsp[0].str); 
-						whenever_action(0);
+						fprintf(yyout, "{ ECPGprepare(__LINE__, %s);", yyvsp[0].str); 
+						whenever_action(2);
 						free(yyvsp[0].str);
 					;
     break;}
 case 63:
-#line 989 "preproc.y"
+#line 993 "preproc.y"
 { /* output already done */ ;
     break;}
 case 64:
-#line 990 "preproc.y"
+#line 994 "preproc.y"
 {
-						fprintf(yyout, "ECPGsetcommit(__LINE__, \"%s\", %s);", yyvsp[0].str, connection ? connection : "NULL");
-						whenever_action(0);
+						fprintf(yyout, "{ ECPGsetcommit(__LINE__, \"%s\", %s);", yyvsp[0].str, connection ? connection : "NULL");
+						whenever_action(2);
                                        		free(yyvsp[0].str);
 					;
     break;}
 case 65:
-#line 995 "preproc.y"
+#line 999 "preproc.y"
 {
 						if (connection)
 							yyerror("no at option for set connection statement.\n");
 
-						fprintf(yyout, "ECPGsetconn(__LINE__, %s);", yyvsp[0].str);
-						whenever_action(0);
+						fprintf(yyout, "{ ECPGsetconn(__LINE__, %s);", yyvsp[0].str);
+						whenever_action(2);
                                        		free(yyvsp[0].str);
 					;
     break;}
 case 66:
-#line 1003 "preproc.y"
+#line 1007 "preproc.y"
 {
 						if (connection)
 							yyerror("no at option for typedef statement.\n");
@@ -9799,7 +9803,7 @@ case 66:
 					;
     break;}
 case 67:
-#line 1009 "preproc.y"
+#line 1013 "preproc.y"
 {
 						if (connection)
 							yyerror("no at option for var statement.\n");
@@ -9808,7 +9812,7 @@ case 67:
 					;
     break;}
 case 68:
-#line 1015 "preproc.y"
+#line 1019 "preproc.y"
 {
 						if (connection)
 							yyerror("no at option for whenever statement.\n");
@@ -9817,117 +9821,117 @@ case 68:
 					;
     break;}
 case 69:
-#line 1037 "preproc.y"
+#line 1041 "preproc.y"
 {
 					yyval.str = cat3_str(cat5_str(make1_str("create user"), yyvsp[-5].str, yyvsp[-4].str, yyvsp[-3].str, yyvsp[-2].str), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 70:
-#line 1051 "preproc.y"
+#line 1055 "preproc.y"
 {
 					yyval.str = cat3_str(cat5_str(make1_str("alter user"), yyvsp[-5].str, yyvsp[-4].str, yyvsp[-3].str, yyvsp[-2].str), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 71:
-#line 1064 "preproc.y"
+#line 1068 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("drop user"), yyvsp[0].str);
 				;
     break;}
 case 72:
-#line 1069 "preproc.y"
+#line 1073 "preproc.y"
 { yyval.str = cat2_str(make1_str("with password") , yyvsp[0].str); ;
     break;}
 case 73:
-#line 1070 "preproc.y"
+#line 1074 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 74:
-#line 1074 "preproc.y"
+#line 1078 "preproc.y"
 {
 					yyval.str = make1_str("createdb");
 				;
     break;}
 case 75:
-#line 1078 "preproc.y"
+#line 1082 "preproc.y"
 {
 					yyval.str = make1_str("nocreatedb");
 				;
     break;}
 case 76:
-#line 1081 "preproc.y"
+#line 1085 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 77:
-#line 1085 "preproc.y"
+#line 1089 "preproc.y"
 {
 					yyval.str = make1_str("createuser");
 				;
     break;}
 case 78:
-#line 1089 "preproc.y"
+#line 1093 "preproc.y"
 {
 					yyval.str = make1_str("nocreateuser");
 				;
     break;}
 case 79:
-#line 1092 "preproc.y"
+#line 1096 "preproc.y"
 { yyval.str = NULL; ;
     break;}
 case 80:
-#line 1096 "preproc.y"
+#line 1100 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);
 				;
     break;}
 case 81:
-#line 1100 "preproc.y"
+#line 1104 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 82:
-#line 1105 "preproc.y"
+#line 1109 "preproc.y"
 { yyval.str = cat2_str(make1_str("in group"), yyvsp[0].str); ;
     break;}
 case 83:
-#line 1106 "preproc.y"
-{ yyval.str = make1_str(""); ;
-    break;}
-case 84:
-#line 1109 "preproc.y"
-{ yyval.str = cat2_str(make1_str("valid until"), yyvsp[0].str); ;
-    break;}
-case 85:
 #line 1110 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
+case 84:
+#line 1113 "preproc.y"
+{ yyval.str = cat2_str(make1_str("valid until"), yyvsp[0].str); ;
+    break;}
+case 85:
+#line 1114 "preproc.y"
+{ yyval.str = make1_str(""); ;
+    break;}
 case 86:
-#line 1123 "preproc.y"
+#line 1127 "preproc.y"
 {
 					yyval.str = cat4_str(make1_str("set"), yyvsp[-2].str, make1_str("to"), yyvsp[0].str);
 				;
     break;}
 case 87:
-#line 1127 "preproc.y"
+#line 1131 "preproc.y"
 {
 					yyval.str = cat4_str(make1_str("set"), yyvsp[-2].str, make1_str("="), yyvsp[0].str);
 				;
     break;}
 case 88:
-#line 1131 "preproc.y"
+#line 1135 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("set time zone"), yyvsp[0].str);
 				;
     break;}
 case 89:
-#line 1135 "preproc.y"
+#line 1139 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("set transaction isolation level"), yyvsp[0].str);
 				;
     break;}
 case 90:
-#line 1139 "preproc.y"
+#line 1143 "preproc.y"
 {
 #ifdef MB
 					yyval.str = cat2_str(make1_str("set names"), yyvsp[0].str);
@@ -9937,397 +9941,397 @@ case 90:
                                 ;
     break;}
 case 91:
-#line 1148 "preproc.y"
+#line 1152 "preproc.y"
 { yyval.str = make1_str("read committed"); ;
     break;}
 case 92:
-#line 1149 "preproc.y"
+#line 1153 "preproc.y"
 { yyval.str = make1_str("serializable"); ;
     break;}
 case 93:
-#line 1153 "preproc.y"
-{ yyval.str = yyvsp[0].str; ;
-    break;}
-case 94:
-#line 1154 "preproc.y"
-{ yyval.str = make1_str("default"); ;
-    break;}
-case 95:
 #line 1157 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
-case 96:
+case 94:
 #line 1158 "preproc.y"
 { yyval.str = make1_str("default"); ;
     break;}
+case 95:
+#line 1161 "preproc.y"
+{ yyval.str = yyvsp[0].str; ;
+    break;}
+case 96:
+#line 1162 "preproc.y"
+{ yyval.str = make1_str("default"); ;
+    break;}
 case 97:
-#line 1159 "preproc.y"
+#line 1163 "preproc.y"
 { yyval.str = make1_str("local"); ;
     break;}
 case 98:
-#line 1163 "preproc.y"
+#line 1167 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("show"), yyvsp[0].str);
 				;
     break;}
 case 99:
-#line 1167 "preproc.y"
+#line 1171 "preproc.y"
 {
 					yyval.str = make1_str("show time zone");
 				;
     break;}
 case 100:
-#line 1171 "preproc.y"
+#line 1175 "preproc.y"
 {
 					yyval.str = make1_str("show transaction isolation level");
 				;
     break;}
 case 101:
-#line 1177 "preproc.y"
+#line 1181 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("reset"), yyvsp[0].str);
 				;
     break;}
 case 102:
-#line 1181 "preproc.y"
+#line 1185 "preproc.y"
 {
 					yyval.str = make1_str("reset time zone");
 				;
     break;}
 case 103:
-#line 1185 "preproc.y"
+#line 1189 "preproc.y"
 {
 					yyval.str = make1_str("reset transaction isolation level");
 				;
     break;}
 case 104:
-#line 1199 "preproc.y"
+#line 1203 "preproc.y"
 {
 					yyval.str = cat4_str(make1_str("alter table"), yyvsp[-2].str, yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 105:
-#line 1205 "preproc.y"
+#line 1209 "preproc.y"
 {
 					yyval.str = cat3_str(make1_str("add"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 106:
-#line 1209 "preproc.y"
+#line 1213 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("add("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 107:
-#line 1213 "preproc.y"
+#line 1217 "preproc.y"
 {	yyerror("ALTER TABLE/DROP COLUMN not yet implemented"); ;
     break;}
 case 108:
-#line 1215 "preproc.y"
+#line 1219 "preproc.y"
 {	yyerror("ALTER TABLE/ALTER COLUMN/SET DEFAULT not yet implemented"); ;
     break;}
 case 109:
-#line 1217 "preproc.y"
+#line 1221 "preproc.y"
 {	yyerror("ALTER TABLE/ALTER COLUMN/DROP DEFAULT not yet implemented"); ;
     break;}
 case 110:
-#line 1219 "preproc.y"
+#line 1223 "preproc.y"
 {	yyerror("ALTER TABLE/ADD CONSTRAINT not yet implemented"); ;
     break;}
 case 111:
-#line 1230 "preproc.y"
+#line 1234 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("close"), yyvsp[0].str);
 				;
     break;}
 case 112:
-#line 1245 "preproc.y"
+#line 1249 "preproc.y"
 {
 					yyval.str = cat3_str(cat5_str(make1_str("copy"), yyvsp[-5].str, yyvsp[-4].str, yyvsp[-3].str, yyvsp[-2].str), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 113:
-#line 1251 "preproc.y"
+#line 1255 "preproc.y"
 { yyval.str = make1_str("to"); ;
     break;}
 case 114:
-#line 1253 "preproc.y"
+#line 1257 "preproc.y"
 { yyval.str = make1_str("from"); ;
     break;}
 case 115:
-#line 1261 "preproc.y"
+#line 1265 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 116:
-#line 1262 "preproc.y"
+#line 1266 "preproc.y"
 { yyval.str = make1_str("stdin"); ;
     break;}
 case 117:
-#line 1263 "preproc.y"
+#line 1267 "preproc.y"
 { yyval.str = make1_str("stdout"); ;
     break;}
 case 118:
-#line 1266 "preproc.y"
+#line 1270 "preproc.y"
 { yyval.str = make1_str("binary"); ;
     break;}
 case 119:
-#line 1267 "preproc.y"
-{ yyval.str = make1_str(""); ;
-    break;}
-case 120:
-#line 1270 "preproc.y"
-{ yyval.str = make1_str("with oids"); ;
-    break;}
-case 121:
 #line 1271 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
+case 120:
+#line 1274 "preproc.y"
+{ yyval.str = make1_str("with oids"); ;
+    break;}
+case 121:
+#line 1275 "preproc.y"
+{ yyval.str = make1_str(""); ;
+    break;}
 case 122:
-#line 1277 "preproc.y"
+#line 1281 "preproc.y"
 { yyval.str = cat2_str(make1_str("using delimiters"), yyvsp[0].str); ;
     break;}
 case 123:
-#line 1278 "preproc.y"
+#line 1282 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 124:
-#line 1292 "preproc.y"
+#line 1296 "preproc.y"
 {
 					yyval.str = cat3_str(cat4_str(make1_str("create"), yyvsp[-6].str, make1_str("table"), yyvsp[-4].str), make3_str(make1_str("("), yyvsp[-2].str, make1_str(")")), yyvsp[0].str);
 				;
     break;}
 case 125:
-#line 1297 "preproc.y"
+#line 1301 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 126:
-#line 1298 "preproc.y"
+#line 1302 "preproc.y"
 { yyval.str = cat2_str(yyvsp[-1].str,yyvsp[0].str); ;
     break;}
 case 127:
-#line 1301 "preproc.y"
+#line 1305 "preproc.y"
 { yyval.str = make1_str("temp"); ;
     break;}
 case 128:
-#line 1302 "preproc.y"
+#line 1306 "preproc.y"
 { yyval.str = make1_str("temporary"); ;
     break;}
 case 129:
-#line 1303 "preproc.y"
+#line 1307 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 130:
-#line 1307 "preproc.y"
+#line 1311 "preproc.y"
 {
                     yyerror("GLOBAL TEMPORARY TABLE is not currently supported");
                     yyval.str = make1_str("global");
                ;
     break;}
 case 131:
-#line 1311 "preproc.y"
+#line 1315 "preproc.y"
 { yyval.str = make1_str("local"); ;
     break;}
 case 132:
-#line 1316 "preproc.y"
+#line 1320 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);
 				;
     break;}
 case 133:
-#line 1320 "preproc.y"
+#line 1324 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 134:
-#line 1323 "preproc.y"
+#line 1327 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 135:
-#line 1326 "preproc.y"
+#line 1330 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 136:
-#line 1327 "preproc.y"
+#line 1331 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 137:
-#line 1331 "preproc.y"
+#line 1335 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 138:
-#line 1335 "preproc.y"
+#line 1339 "preproc.y"
 {
 			yyval.str = make3_str(yyvsp[-2].str, make1_str(" serial "), yyvsp[0].str);
 		;
     break;}
 case 139:
-#line 1340 "preproc.y"
+#line 1344 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 140:
-#line 1341 "preproc.y"
+#line 1345 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 141:
-#line 1344 "preproc.y"
+#line 1348 "preproc.y"
 { yyval.str = cat2_str(yyvsp[-1].str,yyvsp[0].str); ;
     break;}
 case 142:
-#line 1345 "preproc.y"
+#line 1349 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 143:
-#line 1349 "preproc.y"
+#line 1353 "preproc.y"
 {
 			yyval.str = make1_str("primary key");
                 ;
     break;}
 case 144:
-#line 1353 "preproc.y"
+#line 1357 "preproc.y"
 {
 			yyval.str = make1_str("");
 		;
     break;}
 case 145:
-#line 1360 "preproc.y"
+#line 1364 "preproc.y"
 {
 					yyval.str = cat3_str(make1_str("constraint"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 146:
-#line 1364 "preproc.y"
+#line 1368 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 147:
-#line 1378 "preproc.y"
+#line 1382 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("check("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 148:
-#line 1382 "preproc.y"
+#line 1386 "preproc.y"
 {
 					yyval.str = make1_str("default null");
 				;
     break;}
 case 149:
-#line 1386 "preproc.y"
+#line 1390 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("default"), yyvsp[0].str);
 				;
     break;}
 case 150:
-#line 1390 "preproc.y"
+#line 1394 "preproc.y"
 {
 					yyval.str = make1_str("not null");
 				;
     break;}
 case 151:
-#line 1394 "preproc.y"
+#line 1398 "preproc.y"
 {
 					yyval.str = make1_str("unique");
 				;
     break;}
 case 152:
-#line 1398 "preproc.y"
+#line 1402 "preproc.y"
 {
 					yyval.str = make1_str("primary key");
 				;
     break;}
 case 153:
-#line 1402 "preproc.y"
+#line 1406 "preproc.y"
 {
 					fprintf(stderr, "CREATE TABLE/FOREIGN KEY clause ignored; not yet implemented");
 					yyval.str = make1_str("");
 				;
     break;}
 case 154:
-#line 1409 "preproc.y"
+#line 1413 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);
 				;
     break;}
 case 155:
-#line 1413 "preproc.y"
+#line 1417 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 156:
-#line 1427 "preproc.y"
+#line 1431 "preproc.y"
 {	yyval.str = yyvsp[0].str; ;
     break;}
 case 157:
-#line 1429 "preproc.y"
+#line 1433 "preproc.y"
 {	yyval.str = cat2_str(make1_str("-"), yyvsp[0].str); ;
     break;}
 case 158:
-#line 1431 "preproc.y"
+#line 1435 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("+"), yyvsp[0].str); ;
     break;}
 case 159:
-#line 1433 "preproc.y"
+#line 1437 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("-"), yyvsp[0].str); ;
     break;}
 case 160:
-#line 1435 "preproc.y"
+#line 1439 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("/"), yyvsp[0].str); ;
     break;}
 case 161:
-#line 1437 "preproc.y"
+#line 1441 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("%"), yyvsp[0].str); ;
     break;}
 case 162:
-#line 1439 "preproc.y"
+#line 1443 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("*"), yyvsp[0].str); ;
     break;}
 case 163:
-#line 1441 "preproc.y"
-{	yyerror("boolean expressions not supported in DEFAULT"); ;
-    break;}
-case 164:
-#line 1443 "preproc.y"
-{	yyerror("boolean expressions not supported in DEFAULT"); ;
-    break;}
-case 165:
 #line 1445 "preproc.y"
 {	yyerror("boolean expressions not supported in DEFAULT"); ;
     break;}
+case 164:
+#line 1447 "preproc.y"
+{	yyerror("boolean expressions not supported in DEFAULT"); ;
+    break;}
+case 165:
+#line 1449 "preproc.y"
+{	yyerror("boolean expressions not supported in DEFAULT"); ;
+    break;}
 case 166:
-#line 1451 "preproc.y"
+#line 1455 "preproc.y"
 {	yyval.str = cat2_str(make1_str(";"), yyvsp[0].str); ;
     break;}
 case 167:
-#line 1453 "preproc.y"
+#line 1457 "preproc.y"
 {	yyval.str = cat2_str(make1_str("|"), yyvsp[0].str); ;
     break;}
 case 168:
-#line 1455 "preproc.y"
+#line 1459 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("::"), yyvsp[0].str); ;
     break;}
 case 169:
-#line 1457 "preproc.y"
+#line 1461 "preproc.y"
 {
 					yyval.str = cat3_str(make2_str(make1_str("cast("), yyvsp[-3].str) , make1_str("as"), make2_str(yyvsp[-1].str, make1_str(")")));
 				;
     break;}
 case 170:
-#line 1461 "preproc.y"
+#line 1465 "preproc.y"
 {	yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 171:
-#line 1463 "preproc.y"
+#line 1467 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-2].str, make1_str("()")); ;
     break;}
 case 172:
-#line 1465 "preproc.y"
+#line 1469 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-3].str, make3_str(make1_str("("), yyvsp[-1].str, make1_str(")"))); ;
     break;}
 case 173:
-#line 1467 "preproc.y"
+#line 1471 "preproc.y"
 {
 					if (!strcmp("<=", yyvsp[-1].str) || !strcmp(">=", yyvsp[-1].str))
 						yyerror("boolean expressions not supported in DEFAULT");
@@ -10335,23 +10339,23 @@ case 173:
 				;
     break;}
 case 174:
-#line 1473 "preproc.y"
+#line 1477 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 175:
-#line 1475 "preproc.y"
+#line 1479 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 176:
-#line 1478 "preproc.y"
+#line 1482 "preproc.y"
 {	yyval.str = make1_str("current_date"); ;
     break;}
 case 177:
-#line 1480 "preproc.y"
+#line 1484 "preproc.y"
 {	yyval.str = make1_str("current_time"); ;
     break;}
 case 178:
-#line 1482 "preproc.y"
+#line 1486 "preproc.y"
 {
 					if (yyvsp[-1].str != 0)
 						fprintf(stderr, "CURRENT_TIME(%s) precision not implemented; zero used instead",yyvsp[-1].str);
@@ -10359,11 +10363,11 @@ case 178:
 				;
     break;}
 case 179:
-#line 1488 "preproc.y"
+#line 1492 "preproc.y"
 {	yyval.str = make1_str("current_timestamp"); ;
     break;}
 case 180:
-#line 1490 "preproc.y"
+#line 1494 "preproc.y"
 {
 					if (yyvsp[-1].str != 0)
 						fprintf(stderr, "CURRENT_TIMESTAMP(%s) precision not implemented; zero used instead",yyvsp[-1].str);
@@ -10371,642 +10375,642 @@ case 180:
 				;
     break;}
 case 181:
-#line 1496 "preproc.y"
+#line 1500 "preproc.y"
 {	yyval.str = make1_str("current_user"); ;
     break;}
 case 182:
-#line 1498 "preproc.y"
+#line 1502 "preproc.y"
 {       yyval.str = make1_str("user"); ;
     break;}
 case 183:
-#line 1506 "preproc.y"
+#line 1510 "preproc.y"
 {
 						yyval.str = cat3_str(make1_str("constraint"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 184:
-#line 1510 "preproc.y"
+#line 1514 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 185:
-#line 1514 "preproc.y"
+#line 1518 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("check("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 186:
-#line 1518 "preproc.y"
+#line 1522 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("unique("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 187:
-#line 1522 "preproc.y"
+#line 1526 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("primary key("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 188:
-#line 1526 "preproc.y"
+#line 1530 "preproc.y"
 {
 					fprintf(stderr, "CREATE TABLE/FOREIGN KEY clause ignored; not yet implemented");
 					yyval.str = "";
 				;
     break;}
 case 189:
-#line 1533 "preproc.y"
+#line 1537 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);
 				;
     break;}
 case 190:
-#line 1537 "preproc.y"
+#line 1541 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 191:
-#line 1543 "preproc.y"
+#line 1547 "preproc.y"
 {	yyval.str = yyvsp[0].str; ;
     break;}
 case 192:
-#line 1545 "preproc.y"
+#line 1549 "preproc.y"
 {	yyval.str = make1_str("null"); ;
     break;}
 case 193:
-#line 1547 "preproc.y"
+#line 1551 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 194:
-#line 1551 "preproc.y"
+#line 1555 "preproc.y"
 {	yyval.str = cat2_str(make1_str("-"), yyvsp[0].str); ;
     break;}
 case 195:
-#line 1553 "preproc.y"
+#line 1557 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("+"), yyvsp[0].str); ;
     break;}
 case 196:
-#line 1555 "preproc.y"
+#line 1559 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("-"), yyvsp[0].str); ;
     break;}
 case 197:
-#line 1557 "preproc.y"
+#line 1561 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("/"), yyvsp[0].str); ;
     break;}
 case 198:
-#line 1559 "preproc.y"
+#line 1563 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("%"), yyvsp[0].str); ;
     break;}
 case 199:
-#line 1561 "preproc.y"
+#line 1565 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("*"), yyvsp[0].str); ;
     break;}
 case 200:
-#line 1563 "preproc.y"
+#line 1567 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("="), yyvsp[0].str); ;
     break;}
 case 201:
-#line 1565 "preproc.y"
+#line 1569 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("<"), yyvsp[0].str); ;
     break;}
 case 202:
-#line 1567 "preproc.y"
+#line 1571 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str(">"), yyvsp[0].str); ;
     break;}
 case 203:
-#line 1573 "preproc.y"
+#line 1577 "preproc.y"
 {	yyval.str = cat2_str(make1_str(";"), yyvsp[0].str); ;
     break;}
 case 204:
-#line 1575 "preproc.y"
+#line 1579 "preproc.y"
 {	yyval.str = cat2_str(make1_str("|"), yyvsp[0].str); ;
     break;}
 case 205:
-#line 1577 "preproc.y"
+#line 1581 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str("::"), yyvsp[0].str);
 				;
     break;}
 case 206:
-#line 1581 "preproc.y"
+#line 1585 "preproc.y"
 {
 					yyval.str = cat3_str(make2_str(make1_str("cast("), yyvsp[-3].str), make1_str("as"), make2_str(yyvsp[-1].str, make1_str(")"))); 
 				;
     break;}
 case 207:
-#line 1585 "preproc.y"
+#line 1589 "preproc.y"
 {	yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 208:
-#line 1587 "preproc.y"
+#line 1591 "preproc.y"
 {
 				{	yyval.str = cat2_str(yyvsp[-2].str, make1_str("()")); }
 				;
     break;}
 case 209:
-#line 1591 "preproc.y"
+#line 1595 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-3].str, make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")));
 				;
     break;}
 case 210:
-#line 1595 "preproc.y"
+#line 1599 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 211:
-#line 1597 "preproc.y"
+#line 1601 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("like"), yyvsp[0].str); ;
     break;}
 case 212:
-#line 1599 "preproc.y"
+#line 1603 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-3].str, make1_str("not like"), yyvsp[0].str); ;
     break;}
 case 213:
-#line 1601 "preproc.y"
+#line 1605 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("and"), yyvsp[0].str); ;
     break;}
 case 214:
-#line 1603 "preproc.y"
+#line 1607 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("or"), yyvsp[0].str); ;
     break;}
 case 215:
-#line 1605 "preproc.y"
+#line 1609 "preproc.y"
 {	yyval.str = cat2_str(make1_str("not"), yyvsp[0].str); ;
     break;}
 case 216:
-#line 1607 "preproc.y"
+#line 1611 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 217:
-#line 1609 "preproc.y"
+#line 1613 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 218:
-#line 1611 "preproc.y"
+#line 1615 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, make1_str("isnull")); ;
     break;}
 case 219:
-#line 1613 "preproc.y"
+#line 1617 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-2].str, make1_str("is null")); ;
     break;}
 case 220:
-#line 1615 "preproc.y"
+#line 1619 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, make1_str("notnull")); ;
     break;}
 case 221:
-#line 1617 "preproc.y"
+#line 1621 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-3].str, make1_str("is not null")); ;
     break;}
 case 222:
-#line 1619 "preproc.y"
+#line 1623 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-2].str, make1_str("is true")); ;
     break;}
 case 223:
-#line 1621 "preproc.y"
+#line 1625 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-2].str, make1_str("is false")); ;
     break;}
 case 224:
-#line 1623 "preproc.y"
+#line 1627 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-3].str, make1_str("is not true")); ;
     break;}
 case 225:
-#line 1625 "preproc.y"
+#line 1629 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-3].str, make1_str("is not false")); ;
     break;}
 case 226:
-#line 1627 "preproc.y"
+#line 1631 "preproc.y"
 {	yyval.str = cat4_str(yyvsp[-4].str, make1_str("in ("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 227:
-#line 1629 "preproc.y"
+#line 1633 "preproc.y"
 {	yyval.str = cat4_str(yyvsp[-5].str, make1_str("not in ("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 228:
-#line 1631 "preproc.y"
+#line 1635 "preproc.y"
 {	yyval.str = cat5_str(yyvsp[-4].str, make1_str("between"), yyvsp[-2].str, make1_str("and"), yyvsp[0].str); ;
     break;}
 case 229:
-#line 1633 "preproc.y"
+#line 1637 "preproc.y"
 {	yyval.str = cat5_str(yyvsp[-5].str, make1_str("not between"), yyvsp[-2].str, make1_str("and"), yyvsp[0].str); ;
     break;}
 case 230:
-#line 1636 "preproc.y"
+#line 1640 "preproc.y"
 {
 		yyval.str = make3_str(yyvsp[-2].str, make1_str(", "), yyvsp[0].str);
 	;
     break;}
 case 231:
-#line 1640 "preproc.y"
+#line 1644 "preproc.y"
 {
 		yyval.str = yyvsp[0].str;
 	;
     break;}
 case 232:
-#line 1645 "preproc.y"
+#line 1649 "preproc.y"
 {
 		yyval.str = yyvsp[0].str;
 	;
     break;}
 case 233:
-#line 1649 "preproc.y"
+#line 1653 "preproc.y"
 { yyval.str = make1_str("match full"); ;
     break;}
 case 234:
-#line 1650 "preproc.y"
+#line 1654 "preproc.y"
 { yyval.str = make1_str("match partial"); ;
     break;}
 case 235:
-#line 1651 "preproc.y"
+#line 1655 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 236:
-#line 1654 "preproc.y"
+#line 1658 "preproc.y"
 { yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 237:
-#line 1655 "preproc.y"
+#line 1659 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 238:
-#line 1656 "preproc.y"
+#line 1660 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 239:
-#line 1659 "preproc.y"
+#line 1663 "preproc.y"
 { yyval.str = cat2_str(make1_str("on delete"), yyvsp[0].str); ;
     break;}
 case 240:
-#line 1660 "preproc.y"
+#line 1664 "preproc.y"
 { yyval.str = cat2_str(make1_str("on update"), yyvsp[0].str); ;
     break;}
 case 241:
-#line 1663 "preproc.y"
+#line 1667 "preproc.y"
 { yyval.str = make1_str("no action"); ;
     break;}
 case 242:
-#line 1664 "preproc.y"
+#line 1668 "preproc.y"
 { yyval.str = make1_str("cascade"); ;
     break;}
 case 243:
-#line 1665 "preproc.y"
+#line 1669 "preproc.y"
 { yyval.str = make1_str("set default"); ;
     break;}
 case 244:
-#line 1666 "preproc.y"
+#line 1670 "preproc.y"
 { yyval.str = make1_str("set null"); ;
     break;}
 case 245:
-#line 1669 "preproc.y"
+#line 1673 "preproc.y"
 { yyval.str = make3_str(make1_str("inherits ("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 246:
-#line 1670 "preproc.y"
+#line 1674 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 247:
-#line 1674 "preproc.y"
+#line 1678 "preproc.y"
 {
 			yyval.str = cat5_str(cat3_str(make1_str("create"), yyvsp[-5].str, make1_str("table")), yyvsp[-3].str, yyvsp[-2].str, make1_str("as"), yyvsp[0].str); 
 		;
     break;}
 case 248:
-#line 1679 "preproc.y"
+#line 1683 "preproc.y"
 { yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 249:
-#line 1680 "preproc.y"
+#line 1684 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 250:
-#line 1683 "preproc.y"
+#line 1687 "preproc.y"
 { yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
     break;}
 case 251:
-#line 1684 "preproc.y"
+#line 1688 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 252:
-#line 1687 "preproc.y"
+#line 1691 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 253:
-#line 1698 "preproc.y"
+#line 1702 "preproc.y"
 {
 					yyval.str = cat3_str(make1_str("create sequence"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 254:
-#line 1704 "preproc.y"
+#line 1708 "preproc.y"
 { yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 255:
-#line 1705 "preproc.y"
+#line 1709 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 256:
-#line 1709 "preproc.y"
+#line 1713 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("cache"), yyvsp[0].str);
 				;
     break;}
 case 257:
-#line 1713 "preproc.y"
+#line 1717 "preproc.y"
 {
 					yyval.str = make1_str("cycle");
 				;
     break;}
 case 258:
-#line 1717 "preproc.y"
+#line 1721 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("increment"), yyvsp[0].str);
 				;
     break;}
 case 259:
-#line 1721 "preproc.y"
+#line 1725 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("maxvalue"), yyvsp[0].str);
 				;
     break;}
 case 260:
-#line 1725 "preproc.y"
+#line 1729 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("minvalue"), yyvsp[0].str);
 				;
     break;}
 case 261:
-#line 1729 "preproc.y"
+#line 1733 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("start"), yyvsp[0].str);
 				;
     break;}
 case 262:
-#line 1734 "preproc.y"
+#line 1738 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 263:
-#line 1735 "preproc.y"
+#line 1739 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 264:
-#line 1738 "preproc.y"
+#line 1742 "preproc.y"
 {
                                        yyval.str = yyvsp[0].str;
                                ;
     break;}
 case 265:
-#line 1742 "preproc.y"
+#line 1746 "preproc.y"
 {
                                        yyval.str = cat2_str(make1_str("-"), yyvsp[0].str);
                                ;
     break;}
 case 266:
-#line 1749 "preproc.y"
+#line 1753 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 267:
-#line 1753 "preproc.y"
+#line 1757 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("-"), yyvsp[0].str);
 				;
     break;}
 case 268:
-#line 1768 "preproc.y"
+#line 1772 "preproc.y"
 {
 				yyval.str = cat4_str(cat5_str(make1_str("create"), yyvsp[-7].str, make1_str("precedural language"), yyvsp[-4].str, make1_str("handler")), yyvsp[-2].str, make1_str("langcompiler"), yyvsp[0].str);
 			;
     break;}
 case 269:
-#line 1773 "preproc.y"
+#line 1777 "preproc.y"
 { yyval.str = make1_str("trusted"); ;
     break;}
 case 270:
-#line 1774 "preproc.y"
+#line 1778 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 271:
-#line 1777 "preproc.y"
+#line 1781 "preproc.y"
 {
 				yyval.str = cat2_str(make1_str("drop procedural language"), yyvsp[0].str);
 			;
     break;}
 case 272:
-#line 1793 "preproc.y"
+#line 1797 "preproc.y"
 {
 					yyval.str = cat2_str(cat5_str(cat5_str(make1_str("create trigger"), yyvsp[-11].str, yyvsp[-10].str, yyvsp[-9].str, make1_str("on")), yyvsp[-7].str, yyvsp[-6].str, make1_str("execute procedure"), yyvsp[-3].str), make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")));
 				;
     break;}
 case 273:
-#line 1798 "preproc.y"
+#line 1802 "preproc.y"
 { yyval.str = make1_str("before"); ;
     break;}
 case 274:
-#line 1799 "preproc.y"
+#line 1803 "preproc.y"
 { yyval.str = make1_str("after"); ;
     break;}
 case 275:
-#line 1803 "preproc.y"
+#line 1807 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 276:
-#line 1807 "preproc.y"
+#line 1811 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str("or"), yyvsp[0].str);
 				;
     break;}
 case 277:
-#line 1811 "preproc.y"
+#line 1815 "preproc.y"
 {
 					yyval.str = cat5_str(yyvsp[-4].str, make1_str("or"), yyvsp[-2].str, make1_str("or"), yyvsp[0].str);
 				;
     break;}
 case 278:
-#line 1816 "preproc.y"
+#line 1820 "preproc.y"
 { yyval.str = make1_str("insert"); ;
     break;}
 case 279:
-#line 1817 "preproc.y"
+#line 1821 "preproc.y"
 { yyval.str = make1_str("delete"); ;
     break;}
 case 280:
-#line 1818 "preproc.y"
+#line 1822 "preproc.y"
 { yyval.str = make1_str("update"); ;
     break;}
 case 281:
-#line 1822 "preproc.y"
+#line 1826 "preproc.y"
 {
 					yyval.str = cat3_str(make1_str("for"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 282:
-#line 1827 "preproc.y"
+#line 1831 "preproc.y"
 { yyval.str = make1_str("each"); ;
     break;}
 case 283:
-#line 1828 "preproc.y"
+#line 1832 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 284:
-#line 1831 "preproc.y"
+#line 1835 "preproc.y"
 { yyval.str = make1_str("row"); ;
     break;}
 case 285:
-#line 1832 "preproc.y"
+#line 1836 "preproc.y"
 { yyval.str = make1_str("statement"); ;
     break;}
 case 286:
-#line 1836 "preproc.y"
+#line 1840 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 287:
-#line 1838 "preproc.y"
+#line 1842 "preproc.y"
 { yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
     break;}
 case 288:
-#line 1840 "preproc.y"
+#line 1844 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 289:
-#line 1844 "preproc.y"
-{
-					yyval.str = yyvsp[0].str;
-				;
-    break;}
-case 290:
 #line 1848 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
+case 290:
+#line 1852 "preproc.y"
+{
+					yyval.str = yyvsp[0].str;
+				;
+    break;}
 case 291:
-#line 1851 "preproc.y"
+#line 1855 "preproc.y"
 {  yyval.str = yyvsp[0].str; ;
     break;}
 case 292:
-#line 1852 "preproc.y"
+#line 1856 "preproc.y"
 {  yyval.str = yyvsp[0].str; ;
     break;}
 case 293:
-#line 1856 "preproc.y"
+#line 1860 "preproc.y"
 {
 					yyval.str = cat4_str(make1_str("drop trigger"), yyvsp[-2].str, make1_str("on"), yyvsp[0].str);
 				;
     break;}
 case 294:
-#line 1869 "preproc.y"
+#line 1873 "preproc.y"
 {
 					yyval.str = cat3_str(make1_str("create"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 295:
-#line 1875 "preproc.y"
+#line 1879 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 296:
-#line 1880 "preproc.y"
+#line 1884 "preproc.y"
 { yyval.str = make1_str("operator"); ;
     break;}
 case 297:
-#line 1881 "preproc.y"
+#line 1885 "preproc.y"
 { yyval.str = make1_str("type"); ;
     break;}
 case 298:
-#line 1882 "preproc.y"
+#line 1886 "preproc.y"
 { yyval.str = make1_str("aggregate"); ;
     break;}
 case 299:
-#line 1885 "preproc.y"
+#line 1889 "preproc.y"
 { yyval.str = make1_str("procedure"); ;
     break;}
 case 300:
-#line 1886 "preproc.y"
+#line 1890 "preproc.y"
 { yyval.str = make1_str("join"); ;
     break;}
 case 301:
-#line 1887 "preproc.y"
+#line 1891 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 302:
-#line 1888 "preproc.y"
+#line 1892 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 303:
-#line 1889 "preproc.y"
+#line 1893 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 304:
-#line 1892 "preproc.y"
+#line 1896 "preproc.y"
 { yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 305:
-#line 1895 "preproc.y"
+#line 1899 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 306:
-#line 1896 "preproc.y"
+#line 1900 "preproc.y"
 { yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
     break;}
 case 307:
-#line 1899 "preproc.y"
+#line 1903 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str("="), yyvsp[0].str);
 				;
     break;}
 case 308:
-#line 1903 "preproc.y"
+#line 1907 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 309:
-#line 1907 "preproc.y"
+#line 1911 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("default ="), yyvsp[0].str);
 				;
     break;}
 case 310:
-#line 1912 "preproc.y"
+#line 1916 "preproc.y"
 {  yyval.str = yyvsp[0].str; ;
     break;}
 case 311:
-#line 1913 "preproc.y"
+#line 1917 "preproc.y"
 {  yyval.str = yyvsp[0].str; ;
     break;}
 case 312:
-#line 1914 "preproc.y"
+#line 1918 "preproc.y"
 {  yyval.str = yyvsp[0].str; ;
     break;}
 case 313:
-#line 1915 "preproc.y"
+#line 1919 "preproc.y"
 {  yyval.str = yyvsp[0].str; ;
     break;}
 case 314:
-#line 1917 "preproc.y"
+#line 1921 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("setof"), yyvsp[0].str);
 				;
     break;}
 case 315:
-#line 1930 "preproc.y"
+#line 1934 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("drop table"), yyvsp[0].str);
 				;
     break;}
 case 316:
-#line 1934 "preproc.y"
+#line 1938 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("drop sequence"), yyvsp[0].str);
 				;
     break;}
 case 317:
-#line 1951 "preproc.y"
+#line 1955 "preproc.y"
 {
 					if (strncmp(yyvsp[-4].str, "relative", strlen("relative")) == 0 && atol(yyvsp[-3].str) == 0L)
 						yyerror("FETCH/RELATIVE at current position is not supported");
@@ -11015,168 +11019,168 @@ case 317:
 				;
     break;}
 case 318:
-#line 1958 "preproc.y"
+#line 1962 "preproc.y"
 {
 					yyval.str = cat4_str(make1_str("fetch"), yyvsp[-2].str, yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 319:
-#line 1963 "preproc.y"
+#line 1967 "preproc.y"
 { yyval.str = make1_str("forward"); ;
     break;}
 case 320:
-#line 1964 "preproc.y"
+#line 1968 "preproc.y"
 { yyval.str = make1_str("backward"); ;
     break;}
 case 321:
-#line 1965 "preproc.y"
+#line 1969 "preproc.y"
 { yyval.str = make1_str("relative"); ;
     break;}
 case 322:
-#line 1967 "preproc.y"
+#line 1971 "preproc.y"
 {
 					fprintf(stderr, "FETCH/ABSOLUTE not supported, using RELATIVE");
 					yyval.str = make1_str("absolute");
 				;
     break;}
 case 323:
-#line 1971 "preproc.y"
+#line 1975 "preproc.y"
 { yyval.str = make1_str(""); /* default */ ;
     break;}
 case 324:
-#line 1974 "preproc.y"
+#line 1978 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 325:
-#line 1975 "preproc.y"
+#line 1979 "preproc.y"
 { yyval.str = make2_str(make1_str("-"), yyvsp[0].str); ;
     break;}
 case 326:
-#line 1976 "preproc.y"
+#line 1980 "preproc.y"
 { yyval.str = make1_str("all"); ;
     break;}
 case 327:
-#line 1977 "preproc.y"
+#line 1981 "preproc.y"
 { yyval.str = make1_str("next"); ;
     break;}
 case 328:
-#line 1978 "preproc.y"
+#line 1982 "preproc.y"
 { yyval.str = make1_str("prior"); ;
     break;}
 case 329:
-#line 1979 "preproc.y"
+#line 1983 "preproc.y"
 { yyval.str = make1_str(""); /*default*/ ;
     break;}
 case 330:
-#line 1982 "preproc.y"
+#line 1986 "preproc.y"
 { yyval.str = cat2_str(make1_str("in"), yyvsp[0].str); ;
     break;}
 case 331:
-#line 1983 "preproc.y"
+#line 1987 "preproc.y"
 { yyval.str = cat2_str(make1_str("from"), yyvsp[0].str); ;
     break;}
 case 332:
-#line 1985 "preproc.y"
+#line 1989 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 333:
-#line 1997 "preproc.y"
+#line 2001 "preproc.y"
 {
 					yyval.str = cat2_str(cat5_str(make1_str("grant"), yyvsp[-5].str, make1_str("on"), yyvsp[-3].str, make1_str("to")), yyvsp[-1].str);
 				;
     break;}
 case 334:
-#line 2003 "preproc.y"
+#line 2007 "preproc.y"
 {
 				 yyval.str = make1_str("all privileges");
 				;
     break;}
 case 335:
-#line 2007 "preproc.y"
+#line 2011 "preproc.y"
 {
 				 yyval.str = make1_str("all");
 				;
     break;}
 case 336:
-#line 2011 "preproc.y"
+#line 2015 "preproc.y"
 {
 				 yyval.str = yyvsp[0].str;
 				;
     break;}
 case 337:
-#line 2017 "preproc.y"
+#line 2021 "preproc.y"
 {
 						yyval.str = yyvsp[0].str;
 				;
     break;}
 case 338:
-#line 2021 "preproc.y"
+#line 2025 "preproc.y"
 {
 						yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);
 				;
     break;}
 case 339:
-#line 2027 "preproc.y"
+#line 2031 "preproc.y"
 {
 						yyval.str = make1_str("select");
 				;
     break;}
 case 340:
-#line 2031 "preproc.y"
+#line 2035 "preproc.y"
 {
 						yyval.str = make1_str("insert");
 				;
     break;}
 case 341:
-#line 2035 "preproc.y"
+#line 2039 "preproc.y"
 {
 						yyval.str = make1_str("update");
 				;
     break;}
 case 342:
-#line 2039 "preproc.y"
+#line 2043 "preproc.y"
 {
 						yyval.str = make1_str("delete");
 				;
     break;}
 case 343:
-#line 2043 "preproc.y"
+#line 2047 "preproc.y"
 {
 						yyval.str = make1_str("rule");
 				;
     break;}
 case 344:
-#line 2049 "preproc.y"
+#line 2053 "preproc.y"
 {
 						yyval.str = make1_str("public");
 				;
     break;}
 case 345:
-#line 2053 "preproc.y"
+#line 2057 "preproc.y"
 {
 						yyval.str = cat2_str(make1_str("group"), yyvsp[0].str);
 				;
     break;}
 case 346:
-#line 2057 "preproc.y"
+#line 2061 "preproc.y"
 {
 						yyval.str = yyvsp[0].str;
 				;
     break;}
 case 347:
-#line 2063 "preproc.y"
+#line 2067 "preproc.y"
 {
 					yyerror("WITH GRANT OPTION is not supported.  Only relation owners can set privileges");
 				 ;
     break;}
 case 349:
-#line 2078 "preproc.y"
+#line 2082 "preproc.y"
 {
 					yyval.str = cat2_str(cat5_str(make1_str("revoke"), yyvsp[-4].str, make1_str("on"), yyvsp[-2].str, make1_str("from")), yyvsp[0].str);
 				;
     break;}
 case 350:
-#line 2097 "preproc.y"
+#line 2101 "preproc.y"
 {
 					/* should check that access_method is valid,
 					   etc ... but doesn't */
@@ -11184,399 +11188,399 @@ case 350:
 				;
     break;}
 case 351:
-#line 2104 "preproc.y"
+#line 2108 "preproc.y"
 { yyval.str = make1_str("unique"); ;
     break;}
 case 352:
-#line 2105 "preproc.y"
-{ yyval.str = make1_str(""); ;
-    break;}
-case 353:
-#line 2108 "preproc.y"
-{ yyval.str = cat2_str(make1_str("using"), yyvsp[0].str); ;
-    break;}
-case 354:
 #line 2109 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
-case 355:
+case 353:
 #line 2112 "preproc.y"
+{ yyval.str = cat2_str(make1_str("using"), yyvsp[0].str); ;
+    break;}
+case 354:
+#line 2113 "preproc.y"
+{ yyval.str = make1_str(""); ;
+    break;}
+case 355:
+#line 2116 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 356:
-#line 2113 "preproc.y"
-{ yyval.str = yyvsp[0].str; ;
-    break;}
-case 357:
-#line 2116 "preproc.y"
-{ yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
-    break;}
-case 358:
 #line 2117 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
-case 359:
+case 357:
+#line 2120 "preproc.y"
+{ yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
+    break;}
+case 358:
 #line 2121 "preproc.y"
+{ yyval.str = yyvsp[0].str; ;
+    break;}
+case 359:
+#line 2125 "preproc.y"
 {
 					yyval.str = cat4_str(yyvsp[-5].str, make3_str(make1_str("("), yyvsp[-3].str, ")"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 360:
-#line 2127 "preproc.y"
+#line 2131 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 361:
-#line 2132 "preproc.y"
+#line 2136 "preproc.y"
 { yyval.str = cat2_str(make1_str(":"), yyvsp[0].str); ;
     break;}
 case 362:
-#line 2133 "preproc.y"
+#line 2137 "preproc.y"
 { yyval.str = cat2_str(make1_str("for"), yyvsp[0].str); ;
     break;}
 case 363:
-#line 2134 "preproc.y"
+#line 2138 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 364:
-#line 2143 "preproc.y"
+#line 2147 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 365:
-#line 2144 "preproc.y"
+#line 2148 "preproc.y"
 { yyval.str = cat2_str(make1_str("using"), yyvsp[0].str); ;
     break;}
 case 366:
-#line 2145 "preproc.y"
+#line 2149 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 367:
-#line 2156 "preproc.y"
+#line 2160 "preproc.y"
 {
 					yyval.str = cat3_str(make1_str("extend index"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 368:
-#line 2193 "preproc.y"
+#line 2197 "preproc.y"
 {
 					yyval.str = cat2_str(cat5_str(cat5_str(make1_str("create function"), yyvsp[-8].str, yyvsp[-7].str, make1_str("returns"), yyvsp[-5].str), yyvsp[-4].str, make1_str("as"), yyvsp[-2].str, make1_str("language")), yyvsp[0].str);
 				;
     break;}
 case 369:
-#line 2197 "preproc.y"
+#line 2201 "preproc.y"
 { yyval.str = cat2_str(make1_str("with"), yyvsp[0].str); ;
     break;}
 case 370:
-#line 2198 "preproc.y"
+#line 2202 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 371:
-#line 2201 "preproc.y"
+#line 2205 "preproc.y"
 { yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 372:
-#line 2202 "preproc.y"
+#line 2206 "preproc.y"
 { yyval.str = make1_str("()"); ;
     break;}
 case 373:
-#line 2205 "preproc.y"
+#line 2209 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 374:
-#line 2207 "preproc.y"
+#line 2211 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
     break;}
 case 375:
-#line 2211 "preproc.y"
+#line 2215 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 376:
-#line 2216 "preproc.y"
+#line 2220 "preproc.y"
 { yyval.str = make1_str("setof"); ;
     break;}
 case 377:
-#line 2217 "preproc.y"
+#line 2221 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 378:
-#line 2239 "preproc.y"
+#line 2243 "preproc.y"
 {
 					yyval.str = cat3_str(make1_str("drop"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 379:
-#line 2244 "preproc.y"
+#line 2248 "preproc.y"
 {  yyval.str = make1_str("type"); ;
     break;}
 case 380:
-#line 2245 "preproc.y"
+#line 2249 "preproc.y"
 {  yyval.str = make1_str("index"); ;
     break;}
 case 381:
-#line 2246 "preproc.y"
+#line 2250 "preproc.y"
 {  yyval.str = make1_str("rule"); ;
     break;}
 case 382:
-#line 2247 "preproc.y"
+#line 2251 "preproc.y"
 {  yyval.str = make1_str("view"); ;
     break;}
 case 383:
-#line 2252 "preproc.y"
+#line 2256 "preproc.y"
 {
 						yyval.str = cat3_str(make1_str("drop aggregate"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 384:
-#line 2257 "preproc.y"
+#line 2261 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 385:
-#line 2258 "preproc.y"
+#line 2262 "preproc.y"
 { yyval.str = make1_str("*"); ;
     break;}
 case 386:
-#line 2263 "preproc.y"
+#line 2267 "preproc.y"
 {
 						yyval.str = cat3_str(make1_str("drop function"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 387:
-#line 2270 "preproc.y"
+#line 2274 "preproc.y"
 {
 					yyval.str = cat3_str(make1_str("drop operator"), yyvsp[-3].str, make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")));
 				;
     break;}
 case 390:
-#line 2277 "preproc.y"
+#line 2281 "preproc.y"
 { yyval.str = make1_str("+"); ;
     break;}
 case 391:
-#line 2278 "preproc.y"
+#line 2282 "preproc.y"
 { yyval.str = make1_str("-"); ;
     break;}
 case 392:
-#line 2279 "preproc.y"
+#line 2283 "preproc.y"
 { yyval.str = make1_str("*"); ;
     break;}
 case 393:
-#line 2280 "preproc.y"
+#line 2284 "preproc.y"
 { yyval.str = make1_str("%"); ;
     break;}
 case 394:
-#line 2281 "preproc.y"
+#line 2285 "preproc.y"
 { yyval.str = make1_str("/"); ;
     break;}
 case 395:
-#line 2282 "preproc.y"
+#line 2286 "preproc.y"
 { yyval.str = make1_str("<"); ;
     break;}
 case 396:
-#line 2283 "preproc.y"
+#line 2287 "preproc.y"
 { yyval.str = make1_str(">"); ;
     break;}
 case 397:
-#line 2284 "preproc.y"
+#line 2288 "preproc.y"
 { yyval.str = make1_str("="); ;
     break;}
 case 398:
-#line 2288 "preproc.y"
+#line 2292 "preproc.y"
 {
 				   yyerror("parser: argument type missing (use NONE for unary operators)");
 				;
     break;}
 case 399:
-#line 2292 "preproc.y"
+#line 2296 "preproc.y"
 { yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
     break;}
 case 400:
-#line 2294 "preproc.y"
+#line 2298 "preproc.y"
 { yyval.str = cat2_str(make1_str("none,"), yyvsp[0].str); ;
     break;}
 case 401:
-#line 2296 "preproc.y"
+#line 2300 "preproc.y"
 { yyval.str = cat2_str(yyvsp[-2].str, make1_str(", none")); ;
     break;}
 case 402:
-#line 2310 "preproc.y"
+#line 2314 "preproc.y"
 {
 					yyval.str = cat4_str(cat5_str(make1_str("alter table"), yyvsp[-6].str, yyvsp[-5].str, make1_str("rename"), yyvsp[-3].str), yyvsp[-2].str, make1_str("to"), yyvsp[0].str);
 				;
     break;}
 case 403:
-#line 2315 "preproc.y"
+#line 2319 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 404:
-#line 2316 "preproc.y"
-{ yyval.str = make1_str(""); ;
-    break;}
-case 405:
-#line 2319 "preproc.y"
-{ yyval.str = make1_str("colmunn"); ;
-    break;}
-case 406:
 #line 2320 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
+case 405:
+#line 2323 "preproc.y"
+{ yyval.str = make1_str("colmunn"); ;
+    break;}
+case 406:
+#line 2324 "preproc.y"
+{ yyval.str = make1_str(""); ;
+    break;}
 case 407:
-#line 2334 "preproc.y"
+#line 2338 "preproc.y"
 { QueryIsRule=1; ;
     break;}
 case 408:
-#line 2337 "preproc.y"
+#line 2341 "preproc.y"
 {
 					yyval.str = cat2_str(cat5_str(cat5_str(make1_str("create rule"), yyvsp[-10].str, make1_str("as on"), yyvsp[-6].str, make1_str("to")), yyvsp[-4].str, yyvsp[-3].str, make1_str("do"), yyvsp[-1].str), yyvsp[0].str);
 				;
     break;}
 case 409:
-#line 2342 "preproc.y"
+#line 2346 "preproc.y"
 { yyval.str = make1_str("nothing"); ;
     break;}
 case 410:
-#line 2343 "preproc.y"
+#line 2347 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 411:
-#line 2344 "preproc.y"
+#line 2348 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 412:
-#line 2345 "preproc.y"
+#line 2349 "preproc.y"
 { yyval.str = cat3_str(make1_str("["), yyvsp[-1].str, make1_str("]")); ;
     break;}
 case 413:
-#line 2346 "preproc.y"
+#line 2350 "preproc.y"
 { yyval.str = cat3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 414:
-#line 2349 "preproc.y"
+#line 2353 "preproc.y"
 {  yyval.str = yyvsp[0].str; ;
     break;}
 case 415:
-#line 2350 "preproc.y"
+#line 2354 "preproc.y"
 {  yyval.str = yyvsp[0].str; ;
     break;}
 case 416:
-#line 2354 "preproc.y"
+#line 2358 "preproc.y"
 {  yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 417:
-#line 2356 "preproc.y"
+#line 2360 "preproc.y"
 {  yyval.str = cat3_str(yyvsp[-2].str, yyvsp[-1].str, make1_str(";")); ;
     break;}
 case 418:
-#line 2358 "preproc.y"
+#line 2362 "preproc.y"
 { yyval.str = cat2_str(yyvsp[-1].str, make1_str(";")); ;
     break;}
 case 423:
-#line 2368 "preproc.y"
+#line 2372 "preproc.y"
 {
 					yyval.str = make3_str(yyvsp[-2].str, make1_str("."), yyvsp[0].str);
 				;
     break;}
 case 424:
-#line 2372 "preproc.y"
+#line 2376 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 425:
-#line 2378 "preproc.y"
+#line 2382 "preproc.y"
 { yyval.str = make1_str("select"); ;
     break;}
 case 426:
-#line 2379 "preproc.y"
+#line 2383 "preproc.y"
 { yyval.str = make1_str("update"); ;
     break;}
 case 427:
-#line 2380 "preproc.y"
+#line 2384 "preproc.y"
 { yyval.str = make1_str("delete"); ;
     break;}
 case 428:
-#line 2381 "preproc.y"
+#line 2385 "preproc.y"
 { yyval.str = make1_str("insert"); ;
     break;}
 case 429:
-#line 2384 "preproc.y"
+#line 2388 "preproc.y"
 { yyval.str = make1_str("instead"); ;
     break;}
 case 430:
-#line 2385 "preproc.y"
+#line 2389 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 431:
-#line 2398 "preproc.y"
+#line 2402 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("notify"), yyvsp[0].str);
 				;
     break;}
 case 432:
-#line 2404 "preproc.y"
+#line 2408 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("listen"), yyvsp[0].str);
                                 ;
     break;}
 case 433:
-#line 2410 "preproc.y"
+#line 2414 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("unlisten"), yyvsp[0].str);
                                 ;
     break;}
 case 434:
-#line 2414 "preproc.y"
+#line 2418 "preproc.y"
 {
 					yyval.str = make1_str("unlisten *");
                                 ;
     break;}
 case 435:
-#line 2431 "preproc.y"
-{ yyval.str = make1_str("rollback"); ;
-    break;}
-case 436:
-#line 2432 "preproc.y"
-{ yyval.str = make1_str("begin transaction"); ;
-    break;}
-case 437:
-#line 2433 "preproc.y"
-{ yyval.str = make1_str("commit"); ;
-    break;}
-case 438:
-#line 2434 "preproc.y"
-{ yyval.str = make1_str("commit"); ;
-    break;}
-case 439:
 #line 2435 "preproc.y"
 { yyval.str = make1_str("rollback"); ;
     break;}
-case 440:
+case 436:
+#line 2436 "preproc.y"
+{ yyval.str = make1_str("begin transaction"); ;
+    break;}
+case 437:
 #line 2437 "preproc.y"
+{ yyval.str = make1_str("commit"); ;
+    break;}
+case 438:
+#line 2438 "preproc.y"
+{ yyval.str = make1_str("commit"); ;
+    break;}
+case 439:
+#line 2439 "preproc.y"
+{ yyval.str = make1_str("rollback"); ;
+    break;}
+case 440:
+#line 2441 "preproc.y"
 { yyval.str = ""; ;
     break;}
 case 441:
-#line 2438 "preproc.y"
+#line 2442 "preproc.y"
 { yyval.str = ""; ;
     break;}
 case 442:
-#line 2439 "preproc.y"
+#line 2443 "preproc.y"
 { yyval.str = ""; ;
     break;}
 case 443:
-#line 2450 "preproc.y"
+#line 2454 "preproc.y"
 {
 					yyval.str = cat4_str(make1_str("create view"), yyvsp[-2].str, make1_str("as"), yyvsp[0].str);
 				;
     break;}
 case 444:
-#line 2464 "preproc.y"
+#line 2468 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("load"), yyvsp[0].str);
 				;
     break;}
 case 445:
-#line 2478 "preproc.y"
+#line 2482 "preproc.y"
 {
 					if (strlen(yyvsp[-1].str) == 0 || strlen(yyvsp[0].str) == 0) 
 						yyerror("CREATE DATABASE WITH requires at least an option");
@@ -11588,71 +11592,71 @@ case 445:
 				;
     break;}
 case 446:
-#line 2488 "preproc.y"
+#line 2492 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("create database"), yyvsp[0].str);
 				;
     break;}
 case 447:
-#line 2493 "preproc.y"
+#line 2497 "preproc.y"
 { yyval.str = cat2_str(make1_str("location ="), yyvsp[0].str); ;
     break;}
 case 448:
-#line 2494 "preproc.y"
+#line 2498 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 449:
-#line 2497 "preproc.y"
+#line 2501 "preproc.y"
 { yyval.str = cat2_str(make1_str("encoding ="), yyvsp[0].str); ;
     break;}
 case 450:
-#line 2498 "preproc.y"
+#line 2502 "preproc.y"
 { yyval.str = NULL; ;
     break;}
 case 451:
-#line 2501 "preproc.y"
+#line 2505 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 452:
-#line 2502 "preproc.y"
+#line 2506 "preproc.y"
 { yyval.str = make1_str("default"); ;
     break;}
 case 453:
-#line 2503 "preproc.y"
+#line 2507 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 454:
-#line 2506 "preproc.y"
+#line 2510 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 455:
-#line 2507 "preproc.y"
+#line 2511 "preproc.y"
 { yyval.str = make1_str("default"); ;
     break;}
 case 456:
-#line 2508 "preproc.y"
+#line 2512 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 457:
-#line 2519 "preproc.y"
+#line 2523 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("drop database"), yyvsp[0].str);
 				;
     break;}
 case 458:
-#line 2533 "preproc.y"
+#line 2537 "preproc.y"
 {
 				   yyval.str = cat4_str(make1_str("cluster"), yyvsp[-2].str, make1_str("on"), yyvsp[0].str);
 				;
     break;}
 case 459:
-#line 2547 "preproc.y"
+#line 2551 "preproc.y"
 {
 					yyval.str = cat3_str(make1_str("vacuum"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 460:
-#line 2551 "preproc.y"
+#line 2555 "preproc.y"
 {
 					if ( strlen(yyvsp[0].str) > 0 && strlen(yyvsp[-1].str) == 0 )
 						yyerror("parser: syntax error at or near \"(\"");
@@ -11660,157 +11664,157 @@ case 460:
 				;
     break;}
 case 461:
-#line 2558 "preproc.y"
+#line 2562 "preproc.y"
 { yyval.str = make1_str("verbose"); ;
     break;}
 case 462:
-#line 2559 "preproc.y"
-{ yyval.str = make1_str(""); ;
-    break;}
-case 463:
-#line 2562 "preproc.y"
-{ yyval.str = make1_str("analyse"); ;
-    break;}
-case 464:
 #line 2563 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
-case 465:
+case 463:
 #line 2566 "preproc.y"
-{ yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
+{ yyval.str = make1_str("analyse"); ;
     break;}
-case 466:
+case 464:
 #line 2567 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
-case 467:
+case 465:
+#line 2570 "preproc.y"
+{ yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
+    break;}
+case 466:
 #line 2571 "preproc.y"
+{ yyval.str = make1_str(""); ;
+    break;}
+case 467:
+#line 2575 "preproc.y"
 { yyval.str=yyvsp[0].str; ;
     break;}
 case 468:
-#line 2573 "preproc.y"
+#line 2577 "preproc.y"
 { yyval.str=cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
     break;}
 case 469:
-#line 2585 "preproc.y"
+#line 2589 "preproc.y"
 {
 					yyval.str = cat3_str(make1_str("explain"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 476:
-#line 2625 "preproc.y"
+#line 2629 "preproc.y"
 {
 					yyval.str = cat3_str(make1_str("insert into"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 477:
-#line 2631 "preproc.y"
+#line 2635 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("values("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 478:
-#line 2635 "preproc.y"
+#line 2639 "preproc.y"
 {
 					yyval.str = make1_str("default values");
 				;
     break;}
 case 479:
-#line 2639 "preproc.y"
+#line 2643 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 480:
-#line 2643 "preproc.y"
+#line 2647 "preproc.y"
 {
 					yyval.str = make5_str(make1_str("("), yyvsp[-5].str, make1_str(") values ("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 481:
-#line 2647 "preproc.y"
+#line 2651 "preproc.y"
 {
 					yyval.str = make4_str(make1_str("("), yyvsp[-2].str, make1_str(")"), yyvsp[0].str);
 				;
     break;}
 case 482:
-#line 2652 "preproc.y"
+#line 2656 "preproc.y"
 { yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 483:
-#line 2653 "preproc.y"
+#line 2657 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 484:
-#line 2658 "preproc.y"
+#line 2662 "preproc.y"
 { yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
     break;}
 case 485:
-#line 2660 "preproc.y"
+#line 2664 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 486:
-#line 2664 "preproc.y"
+#line 2668 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 487:
-#line 2679 "preproc.y"
+#line 2683 "preproc.y"
 {
 					yyval.str = cat3_str(make1_str("delete from"), yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 488:
-#line 2685 "preproc.y"
+#line 2689 "preproc.y"
 {
 					yyval.str = cat4_str(make1_str("lock"), yyvsp[-2].str, yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 489:
-#line 2690 "preproc.y"
+#line 2694 "preproc.y"
 { yyval.str = cat3_str(make1_str("in"), yyvsp[-1].str, make1_str("mode")); ;
     break;}
 case 490:
-#line 2691 "preproc.y"
+#line 2695 "preproc.y"
 { yyval.str = make1_str("");;
     break;}
 case 491:
-#line 2694 "preproc.y"
+#line 2698 "preproc.y"
 { yyval.str = make1_str("share row exclusive"); ;
     break;}
 case 492:
-#line 2695 "preproc.y"
+#line 2699 "preproc.y"
 { yyval.str = cat2_str(make1_str("row"), yyvsp[0].str);;
     break;}
 case 493:
-#line 2696 "preproc.y"
+#line 2700 "preproc.y"
 { yyval.str = cat2_str(make1_str("access"), yyvsp[0].str);;
     break;}
 case 494:
-#line 2697 "preproc.y"
+#line 2701 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 495:
-#line 2700 "preproc.y"
+#line 2704 "preproc.y"
 { yyval.str = make1_str("share"); ;
     break;}
 case 496:
-#line 2701 "preproc.y"
+#line 2705 "preproc.y"
 { yyval.str = make1_str("exclusive"); ;
     break;}
 case 497:
-#line 2715 "preproc.y"
+#line 2719 "preproc.y"
 {
 					yyval.str = cat2_str(cat5_str(make1_str("update"), yyvsp[-4].str, make1_str("set"), yyvsp[-2].str, yyvsp[-1].str), yyvsp[0].str);
 				;
     break;}
 case 498:
-#line 2728 "preproc.y"
+#line 2732 "preproc.y"
 { ForUpdateNotAllowed = 1; ;
     break;}
 case 499:
-#line 2730 "preproc.y"
+#line 2734 "preproc.y"
 {
 					struct cursor *ptr, *this;
 	
@@ -11841,27 +11845,27 @@ case 499:
 				;
     break;}
 case 500:
-#line 2760 "preproc.y"
+#line 2764 "preproc.y"
 { yyval.str = make1_str("binary"); ;
     break;}
 case 501:
-#line 2761 "preproc.y"
+#line 2765 "preproc.y"
 { yyval.str = make1_str("insensitive"); ;
     break;}
 case 502:
-#line 2762 "preproc.y"
+#line 2766 "preproc.y"
 { yyval.str = make1_str("scroll"); ;
     break;}
 case 503:
-#line 2763 "preproc.y"
+#line 2767 "preproc.y"
 { yyval.str = make1_str("insensitive scroll"); ;
     break;}
 case 504:
-#line 2764 "preproc.y"
+#line 2768 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 505:
-#line 2782 "preproc.y"
+#line 2786 "preproc.y"
 {
 					if (strlen(yyvsp[-1].str) > 0 && ForUpdateNotAllowed != 0)
 							yyerror("FOR UPDATE is not allowed in this context");
@@ -11871,40 +11875,40 @@ case 505:
 				;
     break;}
 case 506:
-#line 2799 "preproc.y"
+#line 2803 "preproc.y"
 {
                                yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); 
                         ;
     break;}
 case 507:
-#line 2803 "preproc.y"
+#line 2807 "preproc.y"
 {
                                yyval.str = yyvsp[0].str; 
                         ;
     break;}
 case 508:
-#line 2807 "preproc.y"
+#line 2811 "preproc.y"
 {
 				yyval.str = cat3_str(yyvsp[-2].str, make1_str("except"), yyvsp[0].str);
 				ForUpdateNotAllowed = 1;
 			;
     break;}
 case 509:
-#line 2812 "preproc.y"
+#line 2816 "preproc.y"
 {
 				yyval.str = cat3_str(yyvsp[-3].str, make1_str("union"), yyvsp[-1].str);
 				ForUpdateNotAllowed = 1;
 			;
     break;}
 case 510:
-#line 2817 "preproc.y"
+#line 2821 "preproc.y"
 {
 				yyval.str = cat3_str(yyvsp[-3].str, make1_str("intersect"), yyvsp[-1].str);
 				ForUpdateNotAllowed = 1;
 			;
     break;}
 case 511:
-#line 2827 "preproc.y"
+#line 2831 "preproc.y"
 {
 					yyval.str = cat4_str(cat5_str(make1_str("select"), yyvsp[-6].str, yyvsp[-5].str, yyvsp[-4].str, yyvsp[-3].str), yyvsp[-2].str, yyvsp[-1].str, yyvsp[0].str);
 					if (strlen(yyvsp[-1].str) > 0 || strlen(yyvsp[0].str) > 0)
@@ -11912,393 +11916,393 @@ case 511:
 				;
     break;}
 case 512:
-#line 2834 "preproc.y"
+#line 2838 "preproc.y"
 { yyval.str= cat4_str(make1_str("into"), yyvsp[-2].str, yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 513:
-#line 2835 "preproc.y"
+#line 2839 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 514:
-#line 2836 "preproc.y"
-{ yyval.str = make1_str(""); ;
-    break;}
-case 515:
-#line 2839 "preproc.y"
-{ yyval.str = make1_str("table"); ;
-    break;}
-case 516:
 #line 2840 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
-case 517:
+case 515:
 #line 2843 "preproc.y"
-{ yyval.str = make1_str("all"); ;
+{ yyval.str = make1_str("table"); ;
     break;}
-case 518:
+case 516:
 #line 2844 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
-case 519:
+case 517:
 #line 2847 "preproc.y"
+{ yyval.str = make1_str("all"); ;
+    break;}
+case 518:
+#line 2848 "preproc.y"
+{ yyval.str = make1_str(""); ;
+    break;}
+case 519:
+#line 2851 "preproc.y"
 { yyval.str = make1_str("distinct"); ;
     break;}
 case 520:
-#line 2848 "preproc.y"
+#line 2852 "preproc.y"
 { yyval.str = cat2_str(make1_str("distinct on"), yyvsp[0].str); ;
     break;}
 case 521:
-#line 2849 "preproc.y"
+#line 2853 "preproc.y"
 { yyval.str = make1_str("all"); ;
     break;}
 case 522:
-#line 2850 "preproc.y"
-{ yyval.str = make1_str(""); ;
-    break;}
-case 523:
-#line 2853 "preproc.y"
-{ yyval.str = cat2_str(make1_str("order by"), yyvsp[0].str); ;
-    break;}
-case 524:
 #line 2854 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
-case 525:
+case 523:
 #line 2857 "preproc.y"
+{ yyval.str = cat2_str(make1_str("order by"), yyvsp[0].str); ;
+    break;}
+case 524:
+#line 2858 "preproc.y"
+{ yyval.str = make1_str(""); ;
+    break;}
+case 525:
+#line 2861 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 526:
-#line 2858 "preproc.y"
+#line 2862 "preproc.y"
 { yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
     break;}
 case 527:
-#line 2862 "preproc.y"
+#line 2866 "preproc.y"
 {
 					 yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
                                 ;
     break;}
 case 528:
-#line 2867 "preproc.y"
+#line 2871 "preproc.y"
 { yyval.str = cat2_str(make1_str("using"), yyvsp[0].str); ;
     break;}
 case 529:
-#line 2868 "preproc.y"
+#line 2872 "preproc.y"
 { yyval.str = make1_str("using <"); ;
     break;}
 case 530:
-#line 2869 "preproc.y"
+#line 2873 "preproc.y"
 { yyval.str = make1_str("using >"); ;
     break;}
 case 531:
-#line 2870 "preproc.y"
+#line 2874 "preproc.y"
 { yyval.str = make1_str("asc"); ;
     break;}
 case 532:
-#line 2871 "preproc.y"
+#line 2875 "preproc.y"
 { yyval.str = make1_str("desc"); ;
     break;}
 case 533:
-#line 2872 "preproc.y"
+#line 2876 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 534:
-#line 2876 "preproc.y"
+#line 2880 "preproc.y"
 { yyval.str = cat4_str(make1_str("limit"), yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
     break;}
 case 535:
-#line 2878 "preproc.y"
+#line 2882 "preproc.y"
 { yyval.str = cat4_str(make1_str("limit"), yyvsp[-2].str, make1_str("offset"), yyvsp[0].str); ;
     break;}
 case 536:
-#line 2880 "preproc.y"
+#line 2884 "preproc.y"
 { yyval.str = cat2_str(make1_str("limit"), yyvsp[0].str); ;
     break;}
 case 537:
-#line 2882 "preproc.y"
+#line 2886 "preproc.y"
 { yyval.str = cat4_str(make1_str("offset"), yyvsp[-2].str, make1_str("limit"), yyvsp[0].str); ;
     break;}
 case 538:
-#line 2884 "preproc.y"
+#line 2888 "preproc.y"
 { yyval.str = cat2_str(make1_str("offset"), yyvsp[0].str); ;
     break;}
 case 539:
-#line 2886 "preproc.y"
+#line 2890 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 540:
-#line 2889 "preproc.y"
+#line 2893 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 541:
-#line 2890 "preproc.y"
+#line 2894 "preproc.y"
 { yyval.str = make1_str("all"); ;
     break;}
 case 542:
-#line 2891 "preproc.y"
-{ yyval.str = make_name(); ;
-    break;}
-case 543:
-#line 2894 "preproc.y"
-{ yyval.str = yyvsp[0].str; ;
-    break;}
-case 544:
 #line 2895 "preproc.y"
 { yyval.str = make_name(); ;
     break;}
+case 543:
+#line 2898 "preproc.y"
+{ yyval.str = yyvsp[0].str; ;
+    break;}
+case 544:
+#line 2899 "preproc.y"
+{ yyval.str = make_name(); ;
+    break;}
 case 545:
-#line 2905 "preproc.y"
+#line 2909 "preproc.y"
 { yyval.str = make1_str("*"); ;
     break;}
 case 546:
-#line 2906 "preproc.y"
+#line 2910 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 547:
-#line 2909 "preproc.y"
+#line 2913 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 548:
-#line 2912 "preproc.y"
+#line 2916 "preproc.y"
 {	yyval.str = yyvsp[0].str; ;
     break;}
 case 549:
-#line 2914 "preproc.y"
+#line 2918 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
     break;}
 case 550:
-#line 2917 "preproc.y"
+#line 2921 "preproc.y"
 { yyval.str = cat2_str(make1_str("groub by"), yyvsp[0].str); ;
     break;}
 case 551:
-#line 2918 "preproc.y"
+#line 2922 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 552:
-#line 2922 "preproc.y"
+#line 2926 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("having"), yyvsp[0].str);
 				;
     break;}
 case 553:
-#line 2925 "preproc.y"
+#line 2929 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 554:
-#line 2929 "preproc.y"
+#line 2933 "preproc.y"
 {
                 	yyval.str = make1_str("for update"); 
 		;
     break;}
 case 555:
-#line 2933 "preproc.y"
+#line 2937 "preproc.y"
 {
 			yyval.str = make1_str("for read only");
 		;
     break;}
 case 556:
-#line 2937 "preproc.y"
+#line 2941 "preproc.y"
 {
                         yyval.str = make1_str("");
                 ;
     break;}
 case 557:
-#line 2942 "preproc.y"
+#line 2946 "preproc.y"
 {
 			yyval.str = cat2_str(make1_str("of"), yyvsp[0].str);
 	      ;
     break;}
 case 558:
-#line 2946 "preproc.y"
+#line 2950 "preproc.y"
 {
                         yyval.str = make1_str("");
               ;
     break;}
 case 559:
-#line 2960 "preproc.y"
+#line 2964 "preproc.y"
 {
 			yyval.str = cat2_str(make1_str("from"), yyvsp[0].str);
 		;
     break;}
 case 560:
-#line 2964 "preproc.y"
+#line 2968 "preproc.y"
 {
 			yyval.str = make1_str("");
 		;
     break;}
 case 561:
-#line 2970 "preproc.y"
+#line 2974 "preproc.y"
 { yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 562:
-#line 2972 "preproc.y"
+#line 2976 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 563:
-#line 2974 "preproc.y"
+#line 2978 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 564:
-#line 2978 "preproc.y"
+#line 2982 "preproc.y"
 { yyval.str = make3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
     break;}
 case 565:
-#line 2980 "preproc.y"
+#line 2984 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 566:
-#line 2984 "preproc.y"
+#line 2988 "preproc.y"
 {
                                         yyval.str = cat3_str(yyvsp[-2].str, make1_str("as"), yyvsp[0].str);
                                 ;
     break;}
 case 567:
-#line 2988 "preproc.y"
+#line 2992 "preproc.y"
 {
                                         yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
                                 ;
     break;}
 case 568:
-#line 2992 "preproc.y"
+#line 2996 "preproc.y"
 {
                                         yyval.str = yyvsp[0].str;
                                 ;
     break;}
 case 569:
-#line 3002 "preproc.y"
+#line 3006 "preproc.y"
 {       yyval.str = yyvsp[0].str; ;
     break;}
 case 570:
-#line 3004 "preproc.y"
+#line 3008 "preproc.y"
 {       yyerror("UNION JOIN not yet implemented"); ;
     break;}
 case 571:
-#line 3008 "preproc.y"
+#line 3012 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
                                 ;
     break;}
 case 572:
-#line 3014 "preproc.y"
+#line 3018 "preproc.y"
 {
                                         yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
                                 ;
     break;}
 case 573:
-#line 3018 "preproc.y"
+#line 3022 "preproc.y"
 {
                                         yyval.str = yyvsp[0].str;
                                 ;
     break;}
 case 574:
-#line 3031 "preproc.y"
+#line 3035 "preproc.y"
 {
 					yyval.str = cat4_str(yyvsp[-3].str, make1_str("join"), yyvsp[-1].str, yyvsp[0].str);
                                 ;
     break;}
 case 575:
-#line 3035 "preproc.y"
+#line 3039 "preproc.y"
 {
 					yyval.str = cat4_str(make1_str("natural"), yyvsp[-2].str, make1_str("join"), yyvsp[0].str);
                                 ;
     break;}
 case 576:
-#line 3039 "preproc.y"
+#line 3043 "preproc.y"
 { 	yyval.str = cat2_str(make1_str("cross join"), yyvsp[0].str); ;
     break;}
 case 577:
-#line 3044 "preproc.y"
+#line 3048 "preproc.y"
 {
                                         yyval.str = cat2_str(make1_str("full"), yyvsp[0].str);
                                         fprintf(stderr,"FULL OUTER JOIN not yet implemented\n");
                                 ;
     break;}
 case 578:
-#line 3049 "preproc.y"
+#line 3053 "preproc.y"
 {
                                         yyval.str = cat2_str(make1_str("left"), yyvsp[0].str);
                                         fprintf(stderr,"LEFT OUTER JOIN not yet implemented\n");
                                 ;
     break;}
 case 579:
-#line 3054 "preproc.y"
+#line 3058 "preproc.y"
 {
                                         yyval.str = cat2_str(make1_str("right"), yyvsp[0].str);
                                         fprintf(stderr,"RIGHT OUTER JOIN not yet implemented\n");
                                 ;
     break;}
 case 580:
-#line 3059 "preproc.y"
+#line 3063 "preproc.y"
 {
                                         yyval.str = make1_str("outer");
                                         fprintf(stderr,"OUTER JOIN not yet implemented\n");
                                 ;
     break;}
 case 581:
-#line 3064 "preproc.y"
+#line 3068 "preproc.y"
 {
                                         yyval.str = make1_str("inner");
 				;
     break;}
 case 582:
-#line 3068 "preproc.y"
+#line 3072 "preproc.y"
 {
                                         yyval.str = make1_str("");
 				;
     break;}
 case 583:
-#line 3073 "preproc.y"
+#line 3077 "preproc.y"
 { yyval.str = make1_str("outer"); ;
     break;}
 case 584:
-#line 3074 "preproc.y"
+#line 3078 "preproc.y"
 { yyval.str = make1_str("");  /* no qualifiers */ ;
     break;}
 case 585:
-#line 3085 "preproc.y"
+#line 3089 "preproc.y"
 { yyval.str = make3_str(make1_str("using ("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 586:
-#line 3086 "preproc.y"
+#line 3090 "preproc.y"
 { yyval.str = cat2_str(make1_str("on"), yyvsp[0].str); ;
     break;}
 case 587:
-#line 3089 "preproc.y"
+#line 3093 "preproc.y"
 { yyval.str = make3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
     break;}
 case 588:
-#line 3090 "preproc.y"
+#line 3094 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 589:
-#line 3094 "preproc.y"
+#line 3098 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 590:
-#line 3099 "preproc.y"
+#line 3103 "preproc.y"
 { yyval.str = cat2_str(make1_str("where"), yyvsp[0].str); ;
     break;}
 case 591:
-#line 3100 "preproc.y"
+#line 3104 "preproc.y"
 { yyval.str = make1_str("");  /* no qualifiers */ ;
     break;}
 case 592:
-#line 3104 "preproc.y"
+#line 3108 "preproc.y"
 {
 					/* normal relations */
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 593:
-#line 3109 "preproc.y"
+#line 3113 "preproc.y"
 {
 					/* inheritance query */
 					yyval.str = cat2_str(yyvsp[-1].str, make1_str("*"));
 				;
     break;}
 case 594:
-#line 3115 "preproc.y"
+#line 3119 "preproc.y"
 {
                             yyval.index.index1 = 0;
                             yyval.index.index2 = yyvsp[0].index.index1;
@@ -12306,7 +12310,7 @@ case 594:
                         ;
     break;}
 case 595:
-#line 3121 "preproc.y"
+#line 3125 "preproc.y"
 {
 			    char *txt = mm_alloc(20L);
 
@@ -12317,7 +12321,7 @@ case 595:
                         ;
     break;}
 case 596:
-#line 3130 "preproc.y"
+#line 3134 "preproc.y"
 {
                             yyval.index.index1 = -1;
                             yyval.index.index2 = -1;
@@ -12325,7 +12329,7 @@ case 596:
                         ;
     break;}
 case 597:
-#line 3138 "preproc.y"
+#line 3142 "preproc.y"
 {
                             yyval.index.index1 = 0;
                             yyval.index.index2 = yyvsp[0].index.index1;
@@ -12333,7 +12337,7 @@ case 597:
                         ;
     break;}
 case 598:
-#line 3144 "preproc.y"
+#line 3148 "preproc.y"
 {
 			    char *txt = mm_alloc(20L);
 
@@ -12344,7 +12348,7 @@ case 598:
                         ;
     break;}
 case 599:
-#line 3153 "preproc.y"
+#line 3157 "preproc.y"
 {
                             yyval.index.index1 = -1;
                             yyval.index.index2 = -1;
@@ -12352,249 +12356,249 @@ case 599:
                         ;
     break;}
 case 600:
-#line 3160 "preproc.y"
+#line 3164 "preproc.y"
 { yyval.ival = atol(yyvsp[0].str); ;
     break;}
 case 601:
-#line 3161 "preproc.y"
+#line 3165 "preproc.y"
 { yyval.ival = yyvsp[-1].ival; ;
     break;}
 case 602:
-#line 3162 "preproc.y"
+#line 3166 "preproc.y"
 { yyval.ival = yyvsp[-2].ival + yyvsp[0].ival; ;
     break;}
 case 603:
-#line 3163 "preproc.y"
+#line 3167 "preproc.y"
 { yyval.ival = yyvsp[-2].ival - yyvsp[0].ival; ;
     break;}
 case 604:
-#line 3164 "preproc.y"
+#line 3168 "preproc.y"
 { yyval.ival = yyvsp[-2].ival * yyvsp[0].ival; ;
     break;}
 case 605:
-#line 3165 "preproc.y"
+#line 3169 "preproc.y"
 { yyval.ival = yyvsp[-2].ival / yyvsp[0].ival; ;
     break;}
 case 606:
-#line 3166 "preproc.y"
+#line 3170 "preproc.y"
 { yyval.ival = yyvsp[-2].ival % yyvsp[0].ival; ;
     break;}
 case 607:
-#line 3181 "preproc.y"
+#line 3185 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].index.str);
 				;
     break;}
 case 608:
-#line 3185 "preproc.y"
+#line 3189 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("setof"), yyvsp[0].str);
 				;
     break;}
 case 609:
-#line 3190 "preproc.y"
+#line 3194 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 610:
-#line 3191 "preproc.y"
+#line 3195 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 611:
-#line 3192 "preproc.y"
+#line 3196 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 612:
-#line 3193 "preproc.y"
+#line 3197 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 613:
-#line 3197 "preproc.y"
+#line 3201 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 614:
-#line 3202 "preproc.y"
+#line 3206 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 615:
-#line 3203 "preproc.y"
+#line 3207 "preproc.y"
 { yyval.str = make1_str("type"); ;
     break;}
 case 616:
-#line 3204 "preproc.y"
+#line 3208 "preproc.y"
 { yyval.str = make1_str("at"); ;
     break;}
 case 617:
-#line 3205 "preproc.y"
+#line 3209 "preproc.y"
 { yyval.str = make1_str("autocommit"); ;
     break;}
 case 618:
-#line 3206 "preproc.y"
+#line 3210 "preproc.y"
 { yyval.str = make1_str("bool"); ;
     break;}
 case 619:
-#line 3207 "preproc.y"
+#line 3211 "preproc.y"
 { yyval.str = make1_str("break"); ;
     break;}
 case 620:
-#line 3208 "preproc.y"
+#line 3212 "preproc.y"
 { yyval.str = make1_str("call"); ;
     break;}
 case 621:
-#line 3209 "preproc.y"
+#line 3213 "preproc.y"
 { yyval.str = make1_str("connect"); ;
     break;}
 case 622:
-#line 3210 "preproc.y"
+#line 3214 "preproc.y"
 { yyval.str = make1_str("connection"); ;
     break;}
 case 623:
-#line 3211 "preproc.y"
+#line 3215 "preproc.y"
 { yyval.str = make1_str("continue"); ;
     break;}
 case 624:
-#line 3212 "preproc.y"
+#line 3216 "preproc.y"
 { yyval.str = make1_str("deallocate"); ;
     break;}
 case 625:
-#line 3213 "preproc.y"
+#line 3217 "preproc.y"
 { yyval.str = make1_str("disconnect"); ;
     break;}
 case 626:
-#line 3214 "preproc.y"
+#line 3218 "preproc.y"
 { yyval.str = make1_str("found"); ;
     break;}
 case 627:
-#line 3215 "preproc.y"
+#line 3219 "preproc.y"
 { yyval.str = make1_str("go"); ;
     break;}
 case 628:
-#line 3216 "preproc.y"
+#line 3220 "preproc.y"
 { yyval.str = make1_str("goto"); ;
     break;}
 case 629:
-#line 3217 "preproc.y"
+#line 3221 "preproc.y"
 { yyval.str = make1_str("identified"); ;
     break;}
 case 630:
-#line 3218 "preproc.y"
+#line 3222 "preproc.y"
 { yyval.str = make1_str("immediate"); ;
     break;}
 case 631:
-#line 3219 "preproc.y"
+#line 3223 "preproc.y"
 { yyval.str = make1_str("indicator"); ;
     break;}
 case 632:
-#line 3220 "preproc.y"
+#line 3224 "preproc.y"
 { yyval.str = make1_str("int"); ;
     break;}
 case 633:
-#line 3221 "preproc.y"
+#line 3225 "preproc.y"
 { yyval.str = make1_str("long"); ;
     break;}
 case 634:
-#line 3222 "preproc.y"
+#line 3226 "preproc.y"
 { yyval.str = make1_str("off"); ;
     break;}
 case 635:
-#line 3223 "preproc.y"
+#line 3227 "preproc.y"
 { yyval.str = make1_str("open"); ;
     break;}
 case 636:
-#line 3224 "preproc.y"
+#line 3228 "preproc.y"
 { yyval.str = make1_str("prepare"); ;
     break;}
 case 637:
-#line 3225 "preproc.y"
+#line 3229 "preproc.y"
 { yyval.str = make1_str("release"); ;
     break;}
 case 638:
-#line 3226 "preproc.y"
+#line 3230 "preproc.y"
 { yyval.str = make1_str("section"); ;
     break;}
 case 639:
-#line 3227 "preproc.y"
+#line 3231 "preproc.y"
 { yyval.str = make1_str("short"); ;
     break;}
 case 640:
-#line 3228 "preproc.y"
+#line 3232 "preproc.y"
 { yyval.str = make1_str("signed"); ;
     break;}
 case 641:
-#line 3229 "preproc.y"
+#line 3233 "preproc.y"
 { yyval.str = make1_str("sqlerror"); ;
     break;}
 case 642:
-#line 3230 "preproc.y"
+#line 3234 "preproc.y"
 { yyval.str = make1_str("sqlprint"); ;
     break;}
 case 643:
-#line 3231 "preproc.y"
+#line 3235 "preproc.y"
 { yyval.str = make1_str("sqlwarning"); ;
     break;}
 case 644:
-#line 3232 "preproc.y"
+#line 3236 "preproc.y"
 { yyval.str = make1_str("stop"); ;
     break;}
 case 645:
-#line 3233 "preproc.y"
+#line 3237 "preproc.y"
 { yyval.str = make1_str("struct"); ;
     break;}
 case 646:
-#line 3234 "preproc.y"
+#line 3238 "preproc.y"
 { yyval.str = make1_str("unsigned"); ;
     break;}
 case 647:
-#line 3235 "preproc.y"
+#line 3239 "preproc.y"
 { yyval.str = make1_str("var"); ;
     break;}
 case 648:
-#line 3236 "preproc.y"
+#line 3240 "preproc.y"
 { yyval.str = make1_str("whenever"); ;
     break;}
 case 649:
-#line 3245 "preproc.y"
+#line 3249 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("float"), yyvsp[0].str);
 				;
     break;}
 case 650:
-#line 3249 "preproc.y"
+#line 3253 "preproc.y"
 {
 					yyval.str = make1_str("double precision");
 				;
     break;}
 case 651:
-#line 3253 "preproc.y"
+#line 3257 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("decimal"), yyvsp[0].str);
 				;
     break;}
 case 652:
-#line 3257 "preproc.y"
+#line 3261 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("numeric"), yyvsp[0].str);
 				;
     break;}
 case 653:
-#line 3263 "preproc.y"
+#line 3267 "preproc.y"
 {	yyval.str = make1_str("float"); ;
     break;}
 case 654:
-#line 3265 "preproc.y"
+#line 3269 "preproc.y"
 {	yyval.str = make1_str("double precision"); ;
     break;}
 case 655:
-#line 3267 "preproc.y"
+#line 3271 "preproc.y"
 {	yyval.str = make1_str("decimal"); ;
     break;}
 case 656:
-#line 3269 "preproc.y"
+#line 3273 "preproc.y"
 {	yyval.str = make1_str("numeric"); ;
     break;}
 case 657:
-#line 3273 "preproc.y"
+#line 3277 "preproc.y"
 {
 					if (atol(yyvsp[-1].str) < 1)
 						yyerror("precision for FLOAT must be at least 1");
@@ -12604,13 +12608,13 @@ case 657:
 				;
     break;}
 case 658:
-#line 3281 "preproc.y"
+#line 3285 "preproc.y"
 {
 					yyval.str = make1_str("");
 				;
     break;}
 case 659:
-#line 3287 "preproc.y"
+#line 3291 "preproc.y"
 {
 					if (atol(yyvsp[-3].str) < 1 || atol(yyvsp[-3].str) > NUMERIC_MAX_PRECISION) {
 						sprintf(errortext, "NUMERIC precision %s must be between 1 and %d", yyvsp[-3].str, NUMERIC_MAX_PRECISION);
@@ -12624,7 +12628,7 @@ case 659:
 				;
     break;}
 case 660:
-#line 3299 "preproc.y"
+#line 3303 "preproc.y"
 {
 					if (atol(yyvsp[-1].str) < 1 || atol(yyvsp[-1].str) > NUMERIC_MAX_PRECISION) {
 						sprintf(errortext, "NUMERIC precision %s must be between 1 and %d", yyvsp[-1].str, NUMERIC_MAX_PRECISION);
@@ -12634,13 +12638,13 @@ case 660:
 				;
     break;}
 case 661:
-#line 3307 "preproc.y"
+#line 3311 "preproc.y"
 {
 					yyval.str = make1_str("");
 				;
     break;}
 case 662:
-#line 3313 "preproc.y"
+#line 3317 "preproc.y"
 {
 					if (atol(yyvsp[-3].str) < 1 || atol(yyvsp[-3].str) > NUMERIC_MAX_PRECISION) {
 						sprintf(errortext, "NUMERIC precision %s must be between 1 and %d", yyvsp[-3].str, NUMERIC_MAX_PRECISION);
@@ -12654,7 +12658,7 @@ case 662:
 				;
     break;}
 case 663:
-#line 3325 "preproc.y"
+#line 3329 "preproc.y"
 {
 					if (atol(yyvsp[-1].str) < 1 || atol(yyvsp[-1].str) > NUMERIC_MAX_PRECISION) {
 						sprintf(errortext, "NUMERIC precision %s must be between 1 and %d", yyvsp[-1].str, NUMERIC_MAX_PRECISION);
@@ -12664,13 +12668,13 @@ case 663:
 				;
     break;}
 case 664:
-#line 3333 "preproc.y"
+#line 3337 "preproc.y"
 {
 					yyval.str = make1_str("");
 				;
     break;}
 case 665:
-#line 3343 "preproc.y"
+#line 3347 "preproc.y"
 {
 					if (strncasecmp(yyvsp[-3].str, "char", strlen("char")) && strncasecmp(yyvsp[-3].str, "varchar", strlen("varchar")))
 						yyerror("internal parsing error; unrecognized character type");
@@ -12687,13 +12691,13 @@ case 665:
 				;
     break;}
 case 666:
-#line 3358 "preproc.y"
+#line 3362 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 667:
-#line 3364 "preproc.y"
+#line 3368 "preproc.y"
 {
 					if (strlen(yyvsp[0].str) > 0) 
 						fprintf(stderr, "COLLATE %s not yet implemented",yyvsp[0].str);
@@ -12702,387 +12706,387 @@ case 667:
 				;
     break;}
 case 668:
-#line 3370 "preproc.y"
+#line 3374 "preproc.y"
 { yyval.str = cat2_str(make1_str("char"), yyvsp[0].str); ;
     break;}
 case 669:
-#line 3371 "preproc.y"
+#line 3375 "preproc.y"
 { yyval.str = make1_str("varchar"); ;
     break;}
 case 670:
-#line 3372 "preproc.y"
+#line 3376 "preproc.y"
 { yyval.str = cat2_str(make1_str("national character"), yyvsp[0].str); ;
     break;}
 case 671:
-#line 3373 "preproc.y"
+#line 3377 "preproc.y"
 { yyval.str = cat2_str(make1_str("nchar"), yyvsp[0].str); ;
     break;}
 case 672:
-#line 3376 "preproc.y"
+#line 3380 "preproc.y"
 { yyval.str = make1_str("varying"); ;
     break;}
 case 673:
-#line 3377 "preproc.y"
-{ yyval.str = make1_str(""); ;
-    break;}
-case 674:
-#line 3380 "preproc.y"
-{ yyval.str = cat2_str(make1_str("character set"), yyvsp[0].str); ;
-    break;}
-case 675:
 #line 3381 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
-case 676:
+case 674:
 #line 3384 "preproc.y"
-{ yyval.str = cat2_str(make1_str("collate"), yyvsp[0].str); ;
+{ yyval.str = cat2_str(make1_str("character set"), yyvsp[0].str); ;
     break;}
-case 677:
+case 675:
 #line 3385 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
-case 678:
+case 676:
+#line 3388 "preproc.y"
+{ yyval.str = cat2_str(make1_str("collate"), yyvsp[0].str); ;
+    break;}
+case 677:
 #line 3389 "preproc.y"
+{ yyval.str = make1_str(""); ;
+    break;}
+case 678:
+#line 3393 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 679:
-#line 3393 "preproc.y"
+#line 3397 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("timestamp"), yyvsp[0].str);
 				;
     break;}
 case 680:
-#line 3397 "preproc.y"
+#line 3401 "preproc.y"
 {
 					yyval.str = make1_str("time");
 				;
     break;}
 case 681:
-#line 3401 "preproc.y"
+#line 3405 "preproc.y"
 {
 					yyval.str = cat2_str(make1_str("interval"), yyvsp[0].str);
 				;
     break;}
 case 682:
-#line 3406 "preproc.y"
+#line 3410 "preproc.y"
 { yyval.str = make1_str("year"); ;
     break;}
 case 683:
-#line 3407 "preproc.y"
+#line 3411 "preproc.y"
 { yyval.str = make1_str("month"); ;
     break;}
 case 684:
-#line 3408 "preproc.y"
+#line 3412 "preproc.y"
 { yyval.str = make1_str("day"); ;
     break;}
 case 685:
-#line 3409 "preproc.y"
+#line 3413 "preproc.y"
 { yyval.str = make1_str("hour"); ;
     break;}
 case 686:
-#line 3410 "preproc.y"
+#line 3414 "preproc.y"
 { yyval.str = make1_str("minute"); ;
     break;}
 case 687:
-#line 3411 "preproc.y"
+#line 3415 "preproc.y"
 { yyval.str = make1_str("second"); ;
     break;}
 case 688:
-#line 3414 "preproc.y"
+#line 3418 "preproc.y"
 { yyval.str = make1_str("with time zone"); ;
     break;}
 case 689:
-#line 3415 "preproc.y"
+#line 3419 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 690:
-#line 3418 "preproc.y"
+#line 3422 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 691:
-#line 3419 "preproc.y"
+#line 3423 "preproc.y"
 { yyval.str = make1_str("year to #month"); ;
     break;}
 case 692:
-#line 3420 "preproc.y"
+#line 3424 "preproc.y"
 { yyval.str = make1_str("day to hour"); ;
     break;}
 case 693:
-#line 3421 "preproc.y"
+#line 3425 "preproc.y"
 { yyval.str = make1_str("day to minute"); ;
     break;}
 case 694:
-#line 3422 "preproc.y"
+#line 3426 "preproc.y"
 { yyval.str = make1_str("day to second"); ;
     break;}
 case 695:
-#line 3423 "preproc.y"
+#line 3427 "preproc.y"
 { yyval.str = make1_str("hour to minute"); ;
     break;}
 case 696:
-#line 3424 "preproc.y"
+#line 3428 "preproc.y"
 { yyval.str = make1_str("minute to second"); ;
     break;}
 case 697:
-#line 3425 "preproc.y"
+#line 3429 "preproc.y"
 { yyval.str = make1_str("hour to second"); ;
     break;}
 case 698:
-#line 3426 "preproc.y"
+#line 3430 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 699:
-#line 3437 "preproc.y"
+#line 3441 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 700:
-#line 3439 "preproc.y"
+#line 3443 "preproc.y"
 {
 					yyval.str = make1_str("null");
 				;
     break;}
 case 701:
-#line 3454 "preproc.y"
+#line 3458 "preproc.y"
 {
 					yyval.str = make5_str(make1_str("("), yyvsp[-5].str, make1_str(") in ("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 702:
-#line 3458 "preproc.y"
+#line 3462 "preproc.y"
 {
 					yyval.str = make5_str(make1_str("("), yyvsp[-6].str, make1_str(") not in ("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 703:
-#line 3462 "preproc.y"
+#line 3466 "preproc.y"
 {
 					yyval.str = make4_str(make5_str(make1_str("("), yyvsp[-6].str, make1_str(")"), yyvsp[-4].str, yyvsp[-3].str), make1_str("("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 704:
-#line 3466 "preproc.y"
+#line 3470 "preproc.y"
 {
 					yyval.str = make3_str(make5_str(make1_str("("), yyvsp[-5].str, make1_str(")"), yyvsp[-3].str, make1_str("(")), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 705:
-#line 3470 "preproc.y"
+#line 3474 "preproc.y"
 {
 					yyval.str = cat3_str(make3_str(make1_str("("), yyvsp[-5].str, make1_str(")")), yyvsp[-3].str, make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")));
 				;
     break;}
 case 706:
-#line 3476 "preproc.y"
+#line 3480 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);
 				;
     break;}
 case 707:
-#line 3481 "preproc.y"
+#line 3485 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 708:
-#line 3482 "preproc.y"
+#line 3486 "preproc.y"
 { yyval.str = "<"; ;
     break;}
 case 709:
-#line 3483 "preproc.y"
+#line 3487 "preproc.y"
 { yyval.str = "="; ;
     break;}
 case 710:
-#line 3484 "preproc.y"
+#line 3488 "preproc.y"
 { yyval.str = ">"; ;
     break;}
 case 711:
-#line 3485 "preproc.y"
+#line 3489 "preproc.y"
 { yyval.str = "+"; ;
     break;}
 case 712:
-#line 3486 "preproc.y"
+#line 3490 "preproc.y"
 { yyval.str = "-"; ;
     break;}
 case 713:
-#line 3487 "preproc.y"
+#line 3491 "preproc.y"
 { yyval.str = "*"; ;
     break;}
 case 714:
-#line 3488 "preproc.y"
+#line 3492 "preproc.y"
 { yyval.str = "%"; ;
     break;}
 case 715:
-#line 3489 "preproc.y"
+#line 3493 "preproc.y"
 { yyval.str = "/"; ;
     break;}
 case 716:
-#line 3492 "preproc.y"
+#line 3496 "preproc.y"
 { yyval.str = make1_str("ANY"); ;
     break;}
 case 717:
-#line 3493 "preproc.y"
+#line 3497 "preproc.y"
 { yyval.str = make1_str("ALL"); ;
     break;}
 case 718:
-#line 3498 "preproc.y"
+#line 3502 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);
 				;
     break;}
 case 719:
-#line 3502 "preproc.y"
+#line 3506 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 720:
-#line 3517 "preproc.y"
+#line 3521 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 721:
-#line 3521 "preproc.y"
+#line 3525 "preproc.y"
 {	yyval.str = yyvsp[0].str;  ;
     break;}
 case 722:
-#line 3523 "preproc.y"
+#line 3527 "preproc.y"
 {	yyval.str = yyvsp[0].str;  ;
     break;}
 case 723:
-#line 3525 "preproc.y"
+#line 3529 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 724:
-#line 3529 "preproc.y"
+#line 3533 "preproc.y"
 {	yyval.str = cat2_str(make1_str("-"), yyvsp[0].str); ;
     break;}
 case 725:
-#line 3531 "preproc.y"
+#line 3535 "preproc.y"
 {       yyval.str = cat2_str(make1_str("%"), yyvsp[0].str); ;
     break;}
 case 726:
-#line 3533 "preproc.y"
+#line 3537 "preproc.y"
 {       yyval.str = cat2_str(yyvsp[-1].str, make1_str("%")); ;
     break;}
 case 727:
-#line 3535 "preproc.y"
+#line 3539 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("+"), yyvsp[0].str); ;
     break;}
 case 728:
-#line 3537 "preproc.y"
+#line 3541 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("-"), yyvsp[0].str); ;
     break;}
 case 729:
-#line 3539 "preproc.y"
+#line 3543 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("/"), yyvsp[0].str); ;
     break;}
 case 730:
-#line 3541 "preproc.y"
+#line 3545 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("%"), yyvsp[0].str); ;
     break;}
 case 731:
-#line 3543 "preproc.y"
+#line 3547 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("*"), yyvsp[0].str); ;
     break;}
 case 732:
-#line 3545 "preproc.y"
+#line 3549 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("<"), yyvsp[0].str); ;
     break;}
 case 733:
-#line 3547 "preproc.y"
+#line 3551 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str(">"), yyvsp[0].str); ;
     break;}
 case 734:
-#line 3549 "preproc.y"
+#line 3553 "preproc.y"
 {       yyval.str = cat2_str(yyvsp[-2].str, make1_str("= NULL")); ;
     break;}
 case 735:
-#line 3551 "preproc.y"
+#line 3555 "preproc.y"
 {       yyval.str = cat2_str(make1_str("= NULL"), yyvsp[0].str); ;
     break;}
 case 736:
-#line 3553 "preproc.y"
+#line 3557 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("="), yyvsp[0].str); ;
     break;}
 case 737:
-#line 3558 "preproc.y"
+#line 3562 "preproc.y"
 {	yyval.str = cat2_str(make1_str(";"), yyvsp[0].str); ;
     break;}
 case 738:
-#line 3560 "preproc.y"
+#line 3564 "preproc.y"
 {	yyval.str = cat2_str(make1_str("|"), yyvsp[0].str); ;
     break;}
 case 739:
-#line 3562 "preproc.y"
+#line 3566 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str("::"), yyvsp[0].str);
 				;
     break;}
 case 740:
-#line 3566 "preproc.y"
+#line 3570 "preproc.y"
 {
 					yyval.str = cat3_str(make2_str(make1_str("cast("), yyvsp[-3].str), make1_str("as"), make2_str(yyvsp[-1].str, make1_str(")")));
 				;
     break;}
 case 741:
-#line 3570 "preproc.y"
+#line 3574 "preproc.y"
 {	yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 742:
-#line 3572 "preproc.y"
+#line 3576 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, yyvsp[-1].str, yyvsp[0].str);	;
     break;}
 case 743:
-#line 3574 "preproc.y"
+#line 3578 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("like"), yyvsp[0].str); ;
     break;}
 case 744:
-#line 3576 "preproc.y"
+#line 3580 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-3].str, make1_str("not like"), yyvsp[0].str); ;
     break;}
 case 745:
-#line 3578 "preproc.y"
+#line 3582 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 746:
-#line 3580 "preproc.y"
+#line 3584 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 747:
-#line 3582 "preproc.y"
+#line 3586 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-3].str, make1_str("(*)")); 
 				;
     break;}
 case 748:
-#line 3586 "preproc.y"
+#line 3590 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-2].str, make1_str("()")); 
 				;
     break;}
 case 749:
-#line 3590 "preproc.y"
+#line 3594 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-3].str, make1_str("("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 750:
-#line 3594 "preproc.y"
+#line 3598 "preproc.y"
 {
 					yyval.str = make1_str("current_date");
 				;
     break;}
 case 751:
-#line 3598 "preproc.y"
+#line 3602 "preproc.y"
 {
 					yyval.str = make1_str("current_time");
 				;
     break;}
 case 752:
-#line 3602 "preproc.y"
+#line 3606 "preproc.y"
 {
 					if (atol(yyvsp[-1].str) != 0)
 						fprintf(stderr,"CURRENT_TIME(%s) precision not implemented; zero used instead", yyvsp[-1].str);
@@ -13090,13 +13094,13 @@ case 752:
 				;
     break;}
 case 753:
-#line 3608 "preproc.y"
+#line 3612 "preproc.y"
 {
 					yyval.str = make1_str("current_timestamp");
 				;
     break;}
 case 754:
-#line 3612 "preproc.y"
+#line 3616 "preproc.y"
 {
 					if (atol(yyvsp[-1].str) != 0)
 						fprintf(stderr,"CURRENT_TIMESTAMP(%s) precision not implemented; zero used instead",yyvsp[-1].str);
@@ -13104,421 +13108,421 @@ case 754:
 				;
     break;}
 case 755:
-#line 3618 "preproc.y"
+#line 3622 "preproc.y"
 {
 					yyval.str = make1_str("current_user");
 				;
     break;}
 case 756:
-#line 3622 "preproc.y"
+#line 3626 "preproc.y"
 {
   		     		        yyval.str = make1_str("user");
 			     	;
     break;}
 case 757:
-#line 3626 "preproc.y"
+#line 3630 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("exists("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 758:
-#line 3630 "preproc.y"
+#line 3634 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("extract("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 759:
-#line 3634 "preproc.y"
+#line 3638 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("position("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 760:
-#line 3638 "preproc.y"
+#line 3642 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("substring("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 761:
-#line 3643 "preproc.y"
+#line 3647 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim(both"), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 762:
-#line 3647 "preproc.y"
+#line 3651 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim(leading"), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 763:
-#line 3651 "preproc.y"
+#line 3655 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim(trailing"), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 764:
-#line 3655 "preproc.y"
+#line 3659 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 765:
-#line 3659 "preproc.y"
+#line 3663 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, make1_str("isnull")); ;
     break;}
 case 766:
-#line 3661 "preproc.y"
+#line 3665 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-2].str, make1_str("is null")); ;
     break;}
 case 767:
-#line 3663 "preproc.y"
+#line 3667 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, make1_str("notnull")); ;
     break;}
 case 768:
-#line 3665 "preproc.y"
+#line 3669 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-3].str, make1_str("is not null")); ;
     break;}
 case 769:
-#line 3672 "preproc.y"
+#line 3676 "preproc.y"
 {
 				{	yyval.str = cat2_str(yyvsp[-2].str, make1_str("is true")); }
 				;
     break;}
 case 770:
-#line 3676 "preproc.y"
+#line 3680 "preproc.y"
 {
 				{	yyval.str = cat2_str(yyvsp[-3].str, make1_str("is not false")); }
 				;
     break;}
 case 771:
-#line 3680 "preproc.y"
+#line 3684 "preproc.y"
 {
 				{	yyval.str = cat2_str(yyvsp[-2].str, make1_str("is false")); }
 				;
     break;}
 case 772:
-#line 3684 "preproc.y"
+#line 3688 "preproc.y"
 {
 				{	yyval.str = cat2_str(yyvsp[-3].str, make1_str("is not true")); }
 				;
     break;}
 case 773:
-#line 3688 "preproc.y"
+#line 3692 "preproc.y"
 {
 					yyval.str = cat5_str(yyvsp[-4].str, make1_str("between"), yyvsp[-2].str, make1_str("and"), yyvsp[0].str); 
 				;
     break;}
 case 774:
-#line 3692 "preproc.y"
+#line 3696 "preproc.y"
 {
 					yyval.str = cat5_str(yyvsp[-5].str, make1_str("not between"), yyvsp[-2].str, make1_str("and"), yyvsp[0].str); 
 				;
     break;}
 case 775:
-#line 3696 "preproc.y"
+#line 3700 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str(" in ("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 776:
-#line 3700 "preproc.y"
+#line 3704 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str(" not in ("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 777:
-#line 3704 "preproc.y"
+#line 3708 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-4].str, yyvsp[-3].str, make3_str(make1_str("("), yyvsp[-1].str, make1_str(")"))); 
 				;
     break;}
 case 778:
-#line 3708 "preproc.y"
+#line 3712 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("+("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 779:
-#line 3712 "preproc.y"
+#line 3716 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("-("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 780:
-#line 3716 "preproc.y"
+#line 3720 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("/("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 781:
-#line 3720 "preproc.y"
+#line 3724 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("%("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 782:
-#line 3724 "preproc.y"
+#line 3728 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("*("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 783:
-#line 3728 "preproc.y"
+#line 3732 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("<("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 784:
-#line 3732 "preproc.y"
+#line 3736 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str(">("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 785:
-#line 3736 "preproc.y"
+#line 3740 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("=("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 786:
-#line 3740 "preproc.y"
+#line 3744 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-5].str, yyvsp[-4].str, make3_str(make1_str("any("), yyvsp[-1].str, make1_str(")"))); 
 				;
     break;}
 case 787:
-#line 3744 "preproc.y"
+#line 3748 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("+ any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 788:
-#line 3748 "preproc.y"
+#line 3752 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("- any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 789:
-#line 3752 "preproc.y"
+#line 3756 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("/ any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 790:
-#line 3756 "preproc.y"
+#line 3760 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("% any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 791:
-#line 3760 "preproc.y"
+#line 3764 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("* any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 792:
-#line 3764 "preproc.y"
+#line 3768 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("< any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 793:
-#line 3768 "preproc.y"
+#line 3772 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("> any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 794:
-#line 3772 "preproc.y"
+#line 3776 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("= any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 795:
-#line 3776 "preproc.y"
+#line 3780 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-5].str, yyvsp[-4].str, make3_str(make1_str("all ("), yyvsp[-1].str, make1_str(")"))); 
 				;
     break;}
 case 796:
-#line 3780 "preproc.y"
+#line 3784 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("+ all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 797:
-#line 3784 "preproc.y"
+#line 3788 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("- all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 798:
-#line 3788 "preproc.y"
+#line 3792 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("/ all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 799:
-#line 3792 "preproc.y"
+#line 3796 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("% all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 800:
-#line 3796 "preproc.y"
+#line 3800 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("* all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 801:
-#line 3800 "preproc.y"
+#line 3804 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("< all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 802:
-#line 3804 "preproc.y"
+#line 3808 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("> all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 803:
-#line 3808 "preproc.y"
+#line 3812 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("= all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 804:
-#line 3812 "preproc.y"
+#line 3816 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("and"), yyvsp[0].str); ;
     break;}
 case 805:
-#line 3814 "preproc.y"
+#line 3818 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("or"), yyvsp[0].str); ;
     break;}
 case 806:
-#line 3816 "preproc.y"
+#line 3820 "preproc.y"
 {	yyval.str = cat2_str(make1_str("not"), yyvsp[0].str); ;
     break;}
 case 807:
-#line 3818 "preproc.y"
+#line 3822 "preproc.y"
 {       yyval.str = yyvsp[0].str; ;
     break;}
 case 808:
-#line 3820 "preproc.y"
+#line 3824 "preproc.y"
 { yyval.str = make1_str("?"); ;
     break;}
 case 809:
-#line 3829 "preproc.y"
+#line 3833 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 810:
-#line 3833 "preproc.y"
+#line 3837 "preproc.y"
 {	yyval.str = yyvsp[0].str;  ;
     break;}
 case 811:
-#line 3835 "preproc.y"
+#line 3839 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 812:
-#line 3839 "preproc.y"
+#line 3843 "preproc.y"
 {	yyval.str = cat2_str(make1_str("-"), yyvsp[0].str); ;
     break;}
 case 813:
-#line 3841 "preproc.y"
+#line 3845 "preproc.y"
 {       yyval.str = cat2_str(make1_str("%"), yyvsp[0].str); ;
     break;}
 case 814:
-#line 3843 "preproc.y"
+#line 3847 "preproc.y"
 {       yyval.str = cat2_str(yyvsp[-1].str, make1_str("%")); ;
     break;}
 case 815:
-#line 3845 "preproc.y"
+#line 3849 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("+"), yyvsp[0].str); ;
     break;}
 case 816:
-#line 3847 "preproc.y"
+#line 3851 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("-"), yyvsp[0].str); ;
     break;}
 case 817:
-#line 3849 "preproc.y"
+#line 3853 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("/"), yyvsp[0].str); ;
     break;}
 case 818:
-#line 3851 "preproc.y"
+#line 3855 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("%"), yyvsp[0].str); ;
     break;}
 case 819:
-#line 3853 "preproc.y"
+#line 3857 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("*"), yyvsp[0].str); ;
     break;}
 case 820:
-#line 3858 "preproc.y"
+#line 3862 "preproc.y"
 {	yyval.str = cat2_str(make1_str(";"), yyvsp[0].str); ;
     break;}
 case 821:
-#line 3860 "preproc.y"
+#line 3864 "preproc.y"
 {	yyval.str = cat2_str(make1_str("|"), yyvsp[0].str); ;
     break;}
 case 822:
-#line 3862 "preproc.y"
+#line 3866 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str("::"), yyvsp[0].str);
 				;
     break;}
 case 823:
-#line 3866 "preproc.y"
+#line 3870 "preproc.y"
 {
 					yyval.str = cat3_str(make2_str(make1_str("cast("), yyvsp[-3].str), make1_str("as"), make2_str(yyvsp[-1].str, make1_str(")")));
 				;
     break;}
 case 824:
-#line 3870 "preproc.y"
+#line 3874 "preproc.y"
 {	yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 825:
-#line 3872 "preproc.y"
+#line 3876 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, yyvsp[-1].str, yyvsp[0].str);	;
     break;}
 case 826:
-#line 3874 "preproc.y"
+#line 3878 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 827:
-#line 3876 "preproc.y"
+#line 3880 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 828:
-#line 3878 "preproc.y"
+#line 3882 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-2].str, make1_str("()")); 
 				;
     break;}
 case 829:
-#line 3882 "preproc.y"
+#line 3886 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-3].str, make1_str("("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 830:
-#line 3886 "preproc.y"
+#line 3890 "preproc.y"
 {
 					yyval.str = make1_str("current_date");
 				;
     break;}
 case 831:
-#line 3890 "preproc.y"
+#line 3894 "preproc.y"
 {
 					yyval.str = make1_str("current_time");
 				;
     break;}
 case 832:
-#line 3894 "preproc.y"
+#line 3898 "preproc.y"
 {
 					if (yyvsp[-1].str != 0)
 						fprintf(stderr,"CURRENT_TIME(%s) precision not implemented; zero used instead", yyvsp[-1].str);
@@ -13526,13 +13530,13 @@ case 832:
 				;
     break;}
 case 833:
-#line 3900 "preproc.y"
+#line 3904 "preproc.y"
 {
 					yyval.str = make1_str("current_timestamp");
 				;
     break;}
 case 834:
-#line 3904 "preproc.y"
+#line 3908 "preproc.y"
 {
 					if (atol(yyvsp[-1].str) != 0)
 						fprintf(stderr,"CURRENT_TIMESTAMP(%s) precision not implemented; zero used instead",yyvsp[-1].str);
@@ -13540,321 +13544,321 @@ case 834:
 				;
     break;}
 case 835:
-#line 3910 "preproc.y"
+#line 3914 "preproc.y"
 {
 					yyval.str = make1_str("current_user");
 				;
     break;}
 case 836:
-#line 3914 "preproc.y"
+#line 3918 "preproc.y"
 {
 					yyval.str = make1_str("user");
 				;
     break;}
 case 837:
-#line 3918 "preproc.y"
+#line 3922 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("position ("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 838:
-#line 3922 "preproc.y"
+#line 3926 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("substring ("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 839:
-#line 3927 "preproc.y"
+#line 3931 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim(both"), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 840:
-#line 3931 "preproc.y"
+#line 3935 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim(leading"), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 841:
-#line 3935 "preproc.y"
+#line 3939 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim(trailing"), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 842:
-#line 3939 "preproc.y"
+#line 3943 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 843:
-#line 3943 "preproc.y"
+#line 3947 "preproc.y"
 { 	yyval.str = yyvsp[0].str; ;
     break;}
 case 844:
-#line 3947 "preproc.y"
+#line 3951 "preproc.y"
 {
 					yyval.str = cat4_str(make1_str("["), yyvsp[-2].str, make1_str("]"), yyvsp[0].str);
 				;
     break;}
 case 845:
-#line 3951 "preproc.y"
+#line 3955 "preproc.y"
 {
 					yyval.str = cat2_str(cat5_str(make1_str("["), yyvsp[-4].str, make1_str(":"), yyvsp[-2].str, make1_str("]")), yyvsp[0].str);
 				;
     break;}
 case 846:
-#line 3955 "preproc.y"
+#line 3959 "preproc.y"
 {	yyval.str = make1_str(""); ;
     break;}
 case 847:
-#line 3959 "preproc.y"
+#line 3963 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 848:
-#line 3961 "preproc.y"
+#line 3965 "preproc.y"
 { yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str); ;
     break;}
 case 849:
-#line 3963 "preproc.y"
+#line 3967 "preproc.y"
 { yyval.str = cat3_str(yyvsp[-2].str, make1_str("using"), yyvsp[0].str); ;
     break;}
 case 850:
-#line 3967 "preproc.y"
+#line 3971 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str("from"), yyvsp[0].str);
 				;
     break;}
 case 851:
-#line 3971 "preproc.y"
+#line 3975 "preproc.y"
 {	yyval.str = make1_str(""); ;
     break;}
 case 852:
-#line 3973 "preproc.y"
+#line 3977 "preproc.y"
 { yyval.str = make1_str("?"); ;
     break;}
 case 853:
-#line 3976 "preproc.y"
+#line 3980 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 854:
-#line 3977 "preproc.y"
+#line 3981 "preproc.y"
 { yyval.str = make1_str("timezone_hour"); ;
     break;}
 case 855:
-#line 3978 "preproc.y"
+#line 3982 "preproc.y"
 { yyval.str = make1_str("timezone_minute"); ;
     break;}
 case 856:
-#line 3982 "preproc.y"
+#line 3986 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("in"), yyvsp[0].str); ;
     break;}
 case 857:
-#line 3984 "preproc.y"
+#line 3988 "preproc.y"
 {	yyval.str = make1_str(""); ;
     break;}
 case 858:
-#line 3988 "preproc.y"
+#line 3992 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 859:
-#line 3992 "preproc.y"
+#line 3996 "preproc.y"
 {	yyval.str = yyvsp[0].str;  ;
     break;}
 case 860:
-#line 3994 "preproc.y"
+#line 3998 "preproc.y"
 {	yyval.str = cat2_str(make1_str("-"), yyvsp[0].str); ;
     break;}
 case 861:
-#line 3996 "preproc.y"
+#line 4000 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("+"), yyvsp[0].str); ;
     break;}
 case 862:
-#line 3998 "preproc.y"
+#line 4002 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("-"), yyvsp[0].str); ;
     break;}
 case 863:
-#line 4000 "preproc.y"
+#line 4004 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("/"), yyvsp[0].str); ;
     break;}
 case 864:
-#line 4002 "preproc.y"
+#line 4006 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("%"), yyvsp[0].str); ;
     break;}
 case 865:
-#line 4004 "preproc.y"
+#line 4008 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("*"), yyvsp[0].str); ;
     break;}
 case 866:
-#line 4006 "preproc.y"
+#line 4010 "preproc.y"
 {	yyval.str = cat2_str(make1_str("|"), yyvsp[0].str); ;
     break;}
 case 867:
-#line 4008 "preproc.y"
+#line 4012 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str("::"), yyvsp[0].str);
 				;
     break;}
 case 868:
-#line 4012 "preproc.y"
+#line 4016 "preproc.y"
 {
 					yyval.str = cat3_str(make2_str(make1_str("cast("), yyvsp[-3].str), make1_str("as"), make2_str(yyvsp[-1].str, make1_str(")")));
 				;
     break;}
 case 869:
-#line 4016 "preproc.y"
+#line 4020 "preproc.y"
 {	yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 870:
-#line 4018 "preproc.y"
+#line 4022 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 871:
-#line 4020 "preproc.y"
+#line 4024 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 872:
-#line 4022 "preproc.y"
+#line 4026 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 873:
-#line 4024 "preproc.y"
+#line 4028 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 874:
-#line 4028 "preproc.y"
+#line 4032 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-2].str, make1_str("()"));
 				;
     break;}
 case 875:
-#line 4032 "preproc.y"
+#line 4036 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-3].str, make1_str("("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 876:
-#line 4036 "preproc.y"
+#line 4040 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("position("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 877:
-#line 4040 "preproc.y"
+#line 4044 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("substring("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 878:
-#line 4045 "preproc.y"
+#line 4049 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim(both"), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 879:
-#line 4049 "preproc.y"
+#line 4053 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim(leading"), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 880:
-#line 4053 "preproc.y"
+#line 4057 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim(trailing"), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 881:
-#line 4057 "preproc.y"
+#line 4061 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 882:
-#line 4063 "preproc.y"
+#line 4067 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 883:
-#line 4067 "preproc.y"
+#line 4071 "preproc.y"
 {	yyval.str = make1_str(""); ;
     break;}
 case 884:
-#line 4071 "preproc.y"
+#line 4075 "preproc.y"
 {	yyval.str = cat2_str(make1_str("from"), yyvsp[0].str); ;
     break;}
 case 885:
-#line 4073 "preproc.y"
+#line 4077 "preproc.y"
 {
 					yyval.str = make1_str("");
 				;
     break;}
 case 886:
-#line 4079 "preproc.y"
+#line 4083 "preproc.y"
 {	yyval.str = cat2_str(make1_str("for"), yyvsp[0].str); ;
     break;}
 case 887:
-#line 4081 "preproc.y"
+#line 4085 "preproc.y"
 {	yyval.str = make1_str(""); ;
     break;}
 case 888:
-#line 4085 "preproc.y"
+#line 4089 "preproc.y"
 { yyval.str = cat3_str(yyvsp[-2].str, make1_str("from"), yyvsp[0].str); ;
     break;}
 case 889:
-#line 4087 "preproc.y"
+#line 4091 "preproc.y"
 { yyval.str = cat2_str(make1_str("from"), yyvsp[0].str); ;
     break;}
 case 890:
-#line 4089 "preproc.y"
+#line 4093 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 891:
-#line 4093 "preproc.y"
+#line 4097 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 892:
-#line 4097 "preproc.y"
-{	yyval.str = yyvsp[0].str; ;
-    break;}
-case 893:
 #line 4101 "preproc.y"
 {	yyval.str = yyvsp[0].str; ;
     break;}
+case 893:
+#line 4105 "preproc.y"
+{	yyval.str = yyvsp[0].str; ;
+    break;}
 case 894:
-#line 4103 "preproc.y"
+#line 4107 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);;
     break;}
 case 895:
-#line 4107 "preproc.y"
+#line 4111 "preproc.y"
 {
 					yyval.str = yyvsp[0].str; 
 				;
     break;}
 case 896:
-#line 4111 "preproc.y"
-{	yyval.str = yyvsp[0].str; ;
-    break;}
-case 897:
 #line 4115 "preproc.y"
 {	yyval.str = yyvsp[0].str; ;
     break;}
+case 897:
+#line 4119 "preproc.y"
+{	yyval.str = yyvsp[0].str; ;
+    break;}
 case 898:
-#line 4117 "preproc.y"
+#line 4121 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);;
     break;}
 case 899:
-#line 4136 "preproc.y"
+#line 4140 "preproc.y"
 { yyval.str = cat5_str(make1_str("case"), yyvsp[-3].str, yyvsp[-2].str, yyvsp[-1].str, make1_str("end")); ;
     break;}
 case 900:
-#line 4138 "preproc.y"
+#line 4142 "preproc.y"
 {
 					yyval.str = cat5_str(make1_str("nullif("), yyvsp[-3].str, make1_str(","), yyvsp[-1].str, make1_str(")"));
 
@@ -13862,151 +13866,151 @@ case 900:
                                 ;
     break;}
 case 901:
-#line 4144 "preproc.y"
+#line 4148 "preproc.y"
 {
 					yyval.str = cat3_str(make1_str("coalesce("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 902:
-#line 4150 "preproc.y"
+#line 4154 "preproc.y"
 { yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 903:
-#line 4152 "preproc.y"
+#line 4156 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 904:
-#line 4156 "preproc.y"
+#line 4160 "preproc.y"
 {
 					yyval.str = cat4_str(make1_str("when"), yyvsp[-2].str, make1_str("then"), yyvsp[0].str);
                                ;
     break;}
 case 905:
-#line 4161 "preproc.y"
+#line 4165 "preproc.y"
 { yyval.str = cat2_str(make1_str("else"), yyvsp[0].str); ;
     break;}
 case 906:
-#line 4162 "preproc.y"
+#line 4166 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 907:
-#line 4166 "preproc.y"
+#line 4170 "preproc.y"
 {
                                        yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
                                ;
     break;}
 case 908:
-#line 4170 "preproc.y"
+#line 4174 "preproc.y"
 {
                                        yyval.str = yyvsp[0].str;
                                ;
     break;}
 case 909:
-#line 4174 "preproc.y"
+#line 4178 "preproc.y"
 {       yyval.str = make1_str(""); ;
     break;}
 case 910:
-#line 4178 "preproc.y"
-{
-					yyval.str = make3_str(yyvsp[-2].str, make1_str("."), yyvsp[0].str);
-				;
-    break;}
-case 911:
 #line 4182 "preproc.y"
 {
 					yyval.str = make3_str(yyvsp[-2].str, make1_str("."), yyvsp[0].str);
 				;
     break;}
+case 911:
+#line 4186 "preproc.y"
+{
+					yyval.str = make3_str(yyvsp[-2].str, make1_str("."), yyvsp[0].str);
+				;
+    break;}
 case 912:
-#line 4188 "preproc.y"
+#line 4192 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 913:
-#line 4190 "preproc.y"
+#line 4194 "preproc.y"
 { yyval.str = make3_str(yyvsp[-2].str, make1_str("."), yyvsp[0].str); ;
     break;}
 case 914:
-#line 4192 "preproc.y"
+#line 4196 "preproc.y"
 { yyval.str = make2_str(yyvsp[-2].str, make1_str(".*")); ;
     break;}
 case 915:
-#line 4203 "preproc.y"
+#line 4207 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str(","),yyvsp[0].str);  ;
     break;}
 case 916:
-#line 4205 "preproc.y"
+#line 4209 "preproc.y"
 {	yyval.str = yyvsp[0].str;  ;
     break;}
 case 917:
-#line 4206 "preproc.y"
+#line 4210 "preproc.y"
 { yyval.str = make1_str("*"); ;
     break;}
 case 918:
-#line 4210 "preproc.y"
+#line 4214 "preproc.y"
 {
 					yyval.str = cat4_str(yyvsp[-3].str, yyvsp[-2].str, make1_str("="), yyvsp[0].str);
 				;
     break;}
 case 919:
-#line 4214 "preproc.y"
+#line 4218 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 920:
-#line 4218 "preproc.y"
+#line 4222 "preproc.y"
 {
 					yyval.str = make2_str(yyvsp[-2].str, make1_str(".*"));
 				;
     break;}
 case 921:
-#line 4229 "preproc.y"
+#line 4233 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);  ;
     break;}
 case 922:
-#line 4231 "preproc.y"
+#line 4235 "preproc.y"
 {	yyval.str = yyvsp[0].str;  ;
     break;}
 case 923:
-#line 4236 "preproc.y"
+#line 4240 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str("as"), yyvsp[0].str);
 				;
     break;}
 case 924:
-#line 4240 "preproc.y"
+#line 4244 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 925:
-#line 4244 "preproc.y"
+#line 4248 "preproc.y"
 {
 					yyval.str = make2_str(yyvsp[-2].str, make1_str(".*"));
 				;
     break;}
 case 926:
-#line 4248 "preproc.y"
+#line 4252 "preproc.y"
 {
 					yyval.str = make1_str("*");
 				;
     break;}
 case 927:
-#line 4253 "preproc.y"
+#line 4257 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 928:
-#line 4254 "preproc.y"
+#line 4258 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 929:
-#line 4258 "preproc.y"
+#line 4262 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 930:
-#line 4262 "preproc.y"
+#line 4266 "preproc.y"
 {
 					/* disallow refs to variable system tables */
 					if (strcmp(LogRelationName, yyvsp[0].str) == 0
@@ -14019,93 +14023,93 @@ case 930:
 				;
     break;}
 case 931:
-#line 4274 "preproc.y"
-{ yyval.str = yyvsp[0].str; ;
-    break;}
-case 932:
-#line 4275 "preproc.y"
-{ yyval.str = yyvsp[0].str; ;
-    break;}
-case 933:
-#line 4276 "preproc.y"
-{ yyval.str = yyvsp[0].str; ;
-    break;}
-case 934:
-#line 4277 "preproc.y"
-{ yyval.str = yyvsp[0].str; ;
-    break;}
-case 935:
 #line 4278 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
+case 932:
+#line 4279 "preproc.y"
+{ yyval.str = yyvsp[0].str; ;
+    break;}
+case 933:
+#line 4280 "preproc.y"
+{ yyval.str = yyvsp[0].str; ;
+    break;}
+case 934:
+#line 4281 "preproc.y"
+{ yyval.str = yyvsp[0].str; ;
+    break;}
+case 935:
+#line 4282 "preproc.y"
+{ yyval.str = yyvsp[0].str; ;
+    break;}
 case 936:
-#line 4284 "preproc.y"
+#line 4288 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 937:
-#line 4285 "preproc.y"
+#line 4289 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 938:
-#line 4287 "preproc.y"
+#line 4291 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 939:
-#line 4294 "preproc.y"
-{
-					yyval.str = yyvsp[0].str;
-				;
-    break;}
-case 940:
 #line 4298 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
-case 941:
+case 940:
 #line 4302 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
-case 942:
+case 941:
 #line 4306 "preproc.y"
+{
+					yyval.str = yyvsp[0].str;
+				;
+    break;}
+case 942:
+#line 4310 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 943:
-#line 4310 "preproc.y"
+#line 4314 "preproc.y"
 {	yyval.str = yyvsp[0].str;  ;
     break;}
 case 944:
-#line 4312 "preproc.y"
+#line 4316 "preproc.y"
 {
 					yyval.str = make1_str("true");
 				;
     break;}
 case 945:
-#line 4316 "preproc.y"
+#line 4320 "preproc.y"
 {
 					yyval.str = make1_str("false");
 				;
     break;}
 case 946:
-#line 4322 "preproc.y"
+#line 4326 "preproc.y"
 {
 					yyval.str = cat2_str(make_name(), yyvsp[0].str);
 				;
     break;}
 case 947:
-#line 4327 "preproc.y"
+#line 4331 "preproc.y"
 { yyval.str = make_name();;
     break;}
 case 948:
-#line 4328 "preproc.y"
+#line 4332 "preproc.y"
 { yyval.str = make_name();;
     break;}
 case 949:
-#line 4329 "preproc.y"
+#line 4333 "preproc.y"
 {
 							yyval.str = (char *)mm_alloc(strlen(yyvsp[0].str) + 3);
 							yyval.str[0]='\'';
@@ -14116,603 +14120,603 @@ case 949:
 						;
     break;}
 case 950:
-#line 4337 "preproc.y"
+#line 4341 "preproc.y"
 { yyval.str = yyvsp[0].str;;
     break;}
 case 951:
-#line 4345 "preproc.y"
-{	yyval.str = yyvsp[0].str; ;
-    break;}
-case 952:
-#line 4347 "preproc.y"
-{	yyval.str = yyvsp[0].str; ;
-    break;}
-case 953:
 #line 4349 "preproc.y"
 {	yyval.str = yyvsp[0].str; ;
     break;}
+case 952:
+#line 4351 "preproc.y"
+{	yyval.str = yyvsp[0].str; ;
+    break;}
+case 953:
+#line 4353 "preproc.y"
+{	yyval.str = yyvsp[0].str; ;
+    break;}
 case 954:
-#line 4359 "preproc.y"
+#line 4363 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 955:
-#line 4360 "preproc.y"
+#line 4364 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 956:
-#line 4361 "preproc.y"
+#line 4365 "preproc.y"
 { yyval.str = make1_str("absolute"); ;
     break;}
 case 957:
-#line 4362 "preproc.y"
+#line 4366 "preproc.y"
 { yyval.str = make1_str("access"); ;
     break;}
 case 958:
-#line 4363 "preproc.y"
+#line 4367 "preproc.y"
 { yyval.str = make1_str("action"); ;
     break;}
 case 959:
-#line 4364 "preproc.y"
+#line 4368 "preproc.y"
 { yyval.str = make1_str("after"); ;
     break;}
 case 960:
-#line 4365 "preproc.y"
+#line 4369 "preproc.y"
 { yyval.str = make1_str("aggregate"); ;
     break;}
 case 961:
-#line 4366 "preproc.y"
+#line 4370 "preproc.y"
 { yyval.str = make1_str("backward"); ;
     break;}
 case 962:
-#line 4367 "preproc.y"
+#line 4371 "preproc.y"
 { yyval.str = make1_str("before"); ;
     break;}
 case 963:
-#line 4368 "preproc.y"
+#line 4372 "preproc.y"
 { yyval.str = make1_str("cache"); ;
     break;}
 case 964:
-#line 4369 "preproc.y"
+#line 4373 "preproc.y"
 { yyval.str = make1_str("committed"); ;
     break;}
 case 965:
-#line 4370 "preproc.y"
+#line 4374 "preproc.y"
 { yyval.str = make1_str("createdb"); ;
     break;}
 case 966:
-#line 4371 "preproc.y"
+#line 4375 "preproc.y"
 { yyval.str = make1_str("createuser"); ;
     break;}
 case 967:
-#line 4372 "preproc.y"
+#line 4376 "preproc.y"
 { yyval.str = make1_str("cycle"); ;
     break;}
 case 968:
-#line 4373 "preproc.y"
+#line 4377 "preproc.y"
 { yyval.str = make1_str("database"); ;
     break;}
 case 969:
-#line 4374 "preproc.y"
+#line 4378 "preproc.y"
 { yyval.str = make1_str("delimiters"); ;
     break;}
 case 970:
-#line 4375 "preproc.y"
+#line 4379 "preproc.y"
 { yyval.str = make1_str("double"); ;
     break;}
 case 971:
-#line 4376 "preproc.y"
+#line 4380 "preproc.y"
 { yyval.str = make1_str("each"); ;
     break;}
 case 972:
-#line 4377 "preproc.y"
+#line 4381 "preproc.y"
 { yyval.str = make1_str("encoding"); ;
     break;}
 case 973:
-#line 4378 "preproc.y"
+#line 4382 "preproc.y"
 { yyval.str = make1_str("exclusive"); ;
     break;}
 case 974:
-#line 4379 "preproc.y"
+#line 4383 "preproc.y"
 { yyval.str = make1_str("forward"); ;
     break;}
 case 975:
-#line 4380 "preproc.y"
+#line 4384 "preproc.y"
 { yyval.str = make1_str("function"); ;
     break;}
 case 976:
-#line 4381 "preproc.y"
+#line 4385 "preproc.y"
 { yyval.str = make1_str("handler"); ;
     break;}
 case 977:
-#line 4382 "preproc.y"
+#line 4386 "preproc.y"
 { yyval.str = make1_str("increment"); ;
     break;}
 case 978:
-#line 4383 "preproc.y"
+#line 4387 "preproc.y"
 { yyval.str = make1_str("index"); ;
     break;}
 case 979:
-#line 4384 "preproc.y"
+#line 4388 "preproc.y"
 { yyval.str = make1_str("inherits"); ;
     break;}
 case 980:
-#line 4385 "preproc.y"
+#line 4389 "preproc.y"
 { yyval.str = make1_str("insensitive"); ;
     break;}
 case 981:
-#line 4386 "preproc.y"
+#line 4390 "preproc.y"
 { yyval.str = make1_str("instead"); ;
     break;}
 case 982:
-#line 4387 "preproc.y"
+#line 4391 "preproc.y"
 { yyval.str = make1_str("isnull"); ;
     break;}
 case 983:
-#line 4388 "preproc.y"
+#line 4392 "preproc.y"
 { yyval.str = make1_str("key"); ;
     break;}
 case 984:
-#line 4389 "preproc.y"
+#line 4393 "preproc.y"
 { yyval.str = make1_str("language"); ;
     break;}
 case 985:
-#line 4390 "preproc.y"
+#line 4394 "preproc.y"
 { yyval.str = make1_str("lancompiler"); ;
     break;}
 case 986:
-#line 4391 "preproc.y"
+#line 4395 "preproc.y"
 { yyval.str = make1_str("location"); ;
     break;}
 case 987:
-#line 4392 "preproc.y"
+#line 4396 "preproc.y"
 { yyval.str = make1_str("match"); ;
     break;}
 case 988:
-#line 4393 "preproc.y"
+#line 4397 "preproc.y"
 { yyval.str = make1_str("maxvalue"); ;
     break;}
 case 989:
-#line 4394 "preproc.y"
+#line 4398 "preproc.y"
 { yyval.str = make1_str("minvalue"); ;
     break;}
 case 990:
-#line 4395 "preproc.y"
+#line 4399 "preproc.y"
 { yyval.str = make1_str("mode"); ;
     break;}
 case 991:
-#line 4396 "preproc.y"
+#line 4400 "preproc.y"
 { yyval.str = make1_str("next"); ;
     break;}
 case 992:
-#line 4397 "preproc.y"
+#line 4401 "preproc.y"
 { yyval.str = make1_str("nocreatedb"); ;
     break;}
 case 993:
-#line 4398 "preproc.y"
+#line 4402 "preproc.y"
 { yyval.str = make1_str("nocreateuser"); ;
     break;}
 case 994:
-#line 4399 "preproc.y"
+#line 4403 "preproc.y"
 { yyval.str = make1_str("nothing"); ;
     break;}
 case 995:
-#line 4400 "preproc.y"
+#line 4404 "preproc.y"
 { yyval.str = make1_str("notnull"); ;
     break;}
 case 996:
-#line 4401 "preproc.y"
+#line 4405 "preproc.y"
 { yyval.str = make1_str("of"); ;
     break;}
 case 997:
-#line 4402 "preproc.y"
+#line 4406 "preproc.y"
 { yyval.str = make1_str("oids"); ;
     break;}
 case 998:
-#line 4403 "preproc.y"
+#line 4407 "preproc.y"
 { yyval.str = make1_str("only"); ;
     break;}
 case 999:
-#line 4404 "preproc.y"
+#line 4408 "preproc.y"
 { yyval.str = make1_str("operator"); ;
     break;}
 case 1000:
-#line 4405 "preproc.y"
+#line 4409 "preproc.y"
 { yyval.str = make1_str("option"); ;
     break;}
 case 1001:
-#line 4406 "preproc.y"
+#line 4410 "preproc.y"
 { yyval.str = make1_str("password"); ;
     break;}
 case 1002:
-#line 4407 "preproc.y"
+#line 4411 "preproc.y"
 { yyval.str = make1_str("prior"); ;
     break;}
 case 1003:
-#line 4408 "preproc.y"
+#line 4412 "preproc.y"
 { yyval.str = make1_str("privileges"); ;
     break;}
 case 1004:
-#line 4409 "preproc.y"
+#line 4413 "preproc.y"
 { yyval.str = make1_str("procedural"); ;
     break;}
 case 1005:
-#line 4410 "preproc.y"
+#line 4414 "preproc.y"
 { yyval.str = make1_str("read"); ;
     break;}
 case 1006:
-#line 4412 "preproc.y"
+#line 4416 "preproc.y"
 { yyval.str = make1_str("relative"); ;
     break;}
 case 1007:
-#line 4413 "preproc.y"
+#line 4417 "preproc.y"
 { yyval.str = make1_str("rename"); ;
     break;}
 case 1008:
-#line 4414 "preproc.y"
+#line 4418 "preproc.y"
 { yyval.str = make1_str("returns"); ;
     break;}
 case 1009:
-#line 4415 "preproc.y"
+#line 4419 "preproc.y"
 { yyval.str = make1_str("row"); ;
     break;}
 case 1010:
-#line 4416 "preproc.y"
+#line 4420 "preproc.y"
 { yyval.str = make1_str("rule"); ;
     break;}
 case 1011:
-#line 4417 "preproc.y"
+#line 4421 "preproc.y"
 { yyval.str = make1_str("scroll"); ;
     break;}
 case 1012:
-#line 4418 "preproc.y"
+#line 4422 "preproc.y"
 { yyval.str = make1_str("sequence"); ;
     break;}
 case 1013:
-#line 4419 "preproc.y"
+#line 4423 "preproc.y"
 { yyval.str = make1_str("serial"); ;
     break;}
 case 1014:
-#line 4420 "preproc.y"
+#line 4424 "preproc.y"
 { yyval.str = make1_str("serializable"); ;
     break;}
 case 1015:
-#line 4421 "preproc.y"
+#line 4425 "preproc.y"
 { yyval.str = make1_str("share"); ;
     break;}
 case 1016:
-#line 4422 "preproc.y"
+#line 4426 "preproc.y"
 { yyval.str = make1_str("start"); ;
     break;}
 case 1017:
-#line 4423 "preproc.y"
+#line 4427 "preproc.y"
 { yyval.str = make1_str("statement"); ;
     break;}
 case 1018:
-#line 4424 "preproc.y"
+#line 4428 "preproc.y"
 { yyval.str = make1_str("stdin"); ;
     break;}
 case 1019:
-#line 4425 "preproc.y"
+#line 4429 "preproc.y"
 { yyval.str = make1_str("stdout"); ;
     break;}
 case 1020:
-#line 4426 "preproc.y"
+#line 4430 "preproc.y"
 { yyval.str = make1_str("time"); ;
     break;}
 case 1021:
-#line 4427 "preproc.y"
+#line 4431 "preproc.y"
 { yyval.str = make1_str("timestamp"); ;
     break;}
 case 1022:
-#line 4428 "preproc.y"
+#line 4432 "preproc.y"
 { yyval.str = make1_str("timezone_hour"); ;
     break;}
 case 1023:
-#line 4429 "preproc.y"
+#line 4433 "preproc.y"
 { yyval.str = make1_str("timezone_minute"); ;
     break;}
 case 1024:
-#line 4430 "preproc.y"
+#line 4434 "preproc.y"
 { yyval.str = make1_str("trigger"); ;
     break;}
 case 1025:
-#line 4431 "preproc.y"
+#line 4435 "preproc.y"
 { yyval.str = make1_str("trusted"); ;
     break;}
 case 1026:
-#line 4432 "preproc.y"
+#line 4436 "preproc.y"
 { yyval.str = make1_str("type"); ;
     break;}
 case 1027:
-#line 4433 "preproc.y"
+#line 4437 "preproc.y"
 { yyval.str = make1_str("valid"); ;
     break;}
 case 1028:
-#line 4434 "preproc.y"
+#line 4438 "preproc.y"
 { yyval.str = make1_str("version"); ;
     break;}
 case 1029:
-#line 4435 "preproc.y"
+#line 4439 "preproc.y"
 { yyval.str = make1_str("zone"); ;
     break;}
 case 1030:
-#line 4436 "preproc.y"
+#line 4440 "preproc.y"
 { yyval.str = make1_str("at"); ;
     break;}
 case 1031:
-#line 4437 "preproc.y"
+#line 4441 "preproc.y"
 { yyval.str = make1_str("bool"); ;
     break;}
 case 1032:
-#line 4438 "preproc.y"
+#line 4442 "preproc.y"
 { yyval.str = make1_str("break"); ;
     break;}
 case 1033:
-#line 4439 "preproc.y"
+#line 4443 "preproc.y"
 { yyval.str = make1_str("call"); ;
     break;}
 case 1034:
-#line 4440 "preproc.y"
+#line 4444 "preproc.y"
 { yyval.str = make1_str("connect"); ;
     break;}
 case 1035:
-#line 4441 "preproc.y"
+#line 4445 "preproc.y"
 { yyval.str = make1_str("continue"); ;
     break;}
 case 1036:
-#line 4442 "preproc.y"
+#line 4446 "preproc.y"
 { yyval.str = make1_str("deallocate"); ;
     break;}
 case 1037:
-#line 4443 "preproc.y"
+#line 4447 "preproc.y"
 { yyval.str = make1_str("disconnect"); ;
     break;}
 case 1038:
-#line 4444 "preproc.y"
+#line 4448 "preproc.y"
 { yyval.str = make1_str("found"); ;
     break;}
 case 1039:
-#line 4445 "preproc.y"
+#line 4449 "preproc.y"
 { yyval.str = make1_str("go"); ;
     break;}
 case 1040:
-#line 4446 "preproc.y"
+#line 4450 "preproc.y"
 { yyval.str = make1_str("goto"); ;
     break;}
 case 1041:
-#line 4447 "preproc.y"
+#line 4451 "preproc.y"
 { yyval.str = make1_str("identified"); ;
     break;}
 case 1042:
-#line 4448 "preproc.y"
+#line 4452 "preproc.y"
 { yyval.str = make1_str("immediate"); ;
     break;}
 case 1043:
-#line 4449 "preproc.y"
+#line 4453 "preproc.y"
 { yyval.str = make1_str("indicator"); ;
     break;}
 case 1044:
-#line 4450 "preproc.y"
+#line 4454 "preproc.y"
 { yyval.str = make1_str("int"); ;
     break;}
 case 1045:
-#line 4451 "preproc.y"
+#line 4455 "preproc.y"
 { yyval.str = make1_str("long"); ;
     break;}
 case 1046:
-#line 4452 "preproc.y"
+#line 4456 "preproc.y"
 { yyval.str = make1_str("off"); ;
     break;}
 case 1047:
-#line 4453 "preproc.y"
+#line 4457 "preproc.y"
 { yyval.str = make1_str("open"); ;
     break;}
 case 1048:
-#line 4454 "preproc.y"
+#line 4458 "preproc.y"
 { yyval.str = make1_str("prepare"); ;
     break;}
 case 1049:
-#line 4455 "preproc.y"
+#line 4459 "preproc.y"
 { yyval.str = make1_str("release"); ;
     break;}
 case 1050:
-#line 4456 "preproc.y"
+#line 4460 "preproc.y"
 { yyval.str = make1_str("section"); ;
     break;}
 case 1051:
-#line 4457 "preproc.y"
+#line 4461 "preproc.y"
 { yyval.str = make1_str("short"); ;
     break;}
 case 1052:
-#line 4458 "preproc.y"
+#line 4462 "preproc.y"
 { yyval.str = make1_str("signed"); ;
     break;}
 case 1053:
-#line 4459 "preproc.y"
+#line 4463 "preproc.y"
 { yyval.str = make1_str("sqlerror"); ;
     break;}
 case 1054:
-#line 4460 "preproc.y"
+#line 4464 "preproc.y"
 { yyval.str = make1_str("sqlprint"); ;
     break;}
 case 1055:
-#line 4461 "preproc.y"
+#line 4465 "preproc.y"
 { yyval.str = make1_str("sqlwarning"); ;
     break;}
 case 1056:
-#line 4462 "preproc.y"
+#line 4466 "preproc.y"
 { yyval.str = make1_str("stop"); ;
     break;}
 case 1057:
-#line 4463 "preproc.y"
+#line 4467 "preproc.y"
 { yyval.str = make1_str("struct"); ;
     break;}
 case 1058:
-#line 4464 "preproc.y"
+#line 4468 "preproc.y"
 { yyval.str = make1_str("unsigned"); ;
     break;}
 case 1059:
-#line 4465 "preproc.y"
+#line 4469 "preproc.y"
 { yyval.str = make1_str("var"); ;
     break;}
 case 1060:
-#line 4466 "preproc.y"
+#line 4470 "preproc.y"
 { yyval.str = make1_str("whenever"); ;
     break;}
 case 1061:
-#line 4478 "preproc.y"
+#line 4482 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1062:
-#line 4479 "preproc.y"
+#line 4483 "preproc.y"
 { yyval.str = make1_str("abort"); ;
     break;}
 case 1063:
-#line 4480 "preproc.y"
+#line 4484 "preproc.y"
 { yyval.str = make1_str("analyze"); ;
     break;}
 case 1064:
-#line 4481 "preproc.y"
+#line 4485 "preproc.y"
 { yyval.str = make1_str("binary"); ;
     break;}
 case 1065:
-#line 4482 "preproc.y"
+#line 4486 "preproc.y"
 { yyval.str = make1_str("case"); ;
     break;}
 case 1066:
-#line 4483 "preproc.y"
+#line 4487 "preproc.y"
 { yyval.str = make1_str("cluster"); ;
     break;}
 case 1067:
-#line 4484 "preproc.y"
+#line 4488 "preproc.y"
 { yyval.str = make1_str("coalesce"); ;
     break;}
 case 1068:
-#line 4485 "preproc.y"
+#line 4489 "preproc.y"
 { yyval.str = make1_str("constraint"); ;
     break;}
 case 1069:
-#line 4486 "preproc.y"
+#line 4490 "preproc.y"
 { yyval.str = make1_str("copy"); ;
     break;}
 case 1070:
-#line 4487 "preproc.y"
+#line 4491 "preproc.y"
 { yyval.str = make1_str("current"); ;
     break;}
 case 1071:
-#line 4488 "preproc.y"
+#line 4492 "preproc.y"
 { yyval.str = make1_str("do"); ;
     break;}
 case 1072:
-#line 4489 "preproc.y"
+#line 4493 "preproc.y"
 { yyval.str = make1_str("else"); ;
     break;}
 case 1073:
-#line 4490 "preproc.y"
+#line 4494 "preproc.y"
 { yyval.str = make1_str("end"); ;
     break;}
 case 1074:
-#line 4491 "preproc.y"
+#line 4495 "preproc.y"
 { yyval.str = make1_str("explain"); ;
     break;}
 case 1075:
-#line 4492 "preproc.y"
+#line 4496 "preproc.y"
 { yyval.str = make1_str("extend"); ;
     break;}
 case 1076:
-#line 4493 "preproc.y"
+#line 4497 "preproc.y"
 { yyval.str = make1_str("false"); ;
     break;}
 case 1077:
-#line 4494 "preproc.y"
+#line 4498 "preproc.y"
 { yyval.str = make1_str("foreign"); ;
     break;}
 case 1078:
-#line 4495 "preproc.y"
+#line 4499 "preproc.y"
 { yyval.str = make1_str("group"); ;
     break;}
 case 1079:
-#line 4496 "preproc.y"
+#line 4500 "preproc.y"
 { yyval.str = make1_str("listen"); ;
     break;}
 case 1080:
-#line 4497 "preproc.y"
+#line 4501 "preproc.y"
 { yyval.str = make1_str("load"); ;
     break;}
 case 1081:
-#line 4498 "preproc.y"
+#line 4502 "preproc.y"
 { yyval.str = make1_str("lock"); ;
     break;}
 case 1082:
-#line 4499 "preproc.y"
+#line 4503 "preproc.y"
 { yyval.str = make1_str("move"); ;
     break;}
 case 1083:
-#line 4500 "preproc.y"
+#line 4504 "preproc.y"
 { yyval.str = make1_str("new"); ;
     break;}
 case 1084:
-#line 4501 "preproc.y"
+#line 4505 "preproc.y"
 { yyval.str = make1_str("none"); ;
     break;}
 case 1085:
-#line 4502 "preproc.y"
+#line 4506 "preproc.y"
 { yyval.str = make1_str("nullif"); ;
     break;}
 case 1086:
-#line 4503 "preproc.y"
+#line 4507 "preproc.y"
 { yyval.str = make1_str("order"); ;
     break;}
 case 1087:
-#line 4504 "preproc.y"
+#line 4508 "preproc.y"
 { yyval.str = make1_str("position"); ;
     break;}
 case 1088:
-#line 4505 "preproc.y"
+#line 4509 "preproc.y"
 { yyval.str = make1_str("precision"); ;
     break;}
 case 1089:
-#line 4506 "preproc.y"
+#line 4510 "preproc.y"
 { yyval.str = make1_str("reset"); ;
     break;}
 case 1090:
-#line 4507 "preproc.y"
+#line 4511 "preproc.y"
 { yyval.str = make1_str("setof"); ;
     break;}
 case 1091:
-#line 4508 "preproc.y"
+#line 4512 "preproc.y"
 { yyval.str = make1_str("show"); ;
     break;}
 case 1092:
-#line 4509 "preproc.y"
+#line 4513 "preproc.y"
 { yyval.str = make1_str("table"); ;
     break;}
 case 1093:
-#line 4510 "preproc.y"
+#line 4514 "preproc.y"
 { yyval.str = make1_str("then"); ;
     break;}
 case 1094:
-#line 4511 "preproc.y"
+#line 4515 "preproc.y"
 { yyval.str = make1_str("transaction"); ;
     break;}
 case 1095:
-#line 4512 "preproc.y"
+#line 4516 "preproc.y"
 { yyval.str = make1_str("true"); ;
     break;}
 case 1096:
-#line 4513 "preproc.y"
+#line 4517 "preproc.y"
 { yyval.str = make1_str("vacuum"); ;
     break;}
 case 1097:
-#line 4514 "preproc.y"
+#line 4518 "preproc.y"
 { yyval.str = make1_str("verbose"); ;
     break;}
 case 1098:
-#line 4515 "preproc.y"
+#line 4519 "preproc.y"
 { yyval.str = make1_str("when"); ;
     break;}
 case 1099:
-#line 4519 "preproc.y"
+#line 4523 "preproc.y"
 {
 					if (QueryIsRule)
 						yyval.str = make1_str("current");
@@ -14721,7 +14725,7 @@ case 1099:
 				;
     break;}
 case 1100:
-#line 4526 "preproc.y"
+#line 4530 "preproc.y"
 {
 					if (QueryIsRule)
 						yyval.str = make1_str("new");
@@ -14730,25 +14734,25 @@ case 1100:
 				;
     break;}
 case 1101:
-#line 4542 "preproc.y"
+#line 4546 "preproc.y"
 {
 			yyval.str = make5_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str, make1_str(","), yyvsp[-1].str);
                 ;
     break;}
 case 1102:
-#line 4546 "preproc.y"
+#line 4550 "preproc.y"
 {
                 	yyval.str = make1_str("NULL,NULL,NULL,\"DEFAULT\"");
                 ;
     break;}
 case 1103:
-#line 4551 "preproc.y"
+#line 4555 "preproc.y"
 {
 		       yyval.str = make3_str(make1_str("NULL,"), yyvsp[0].str, make1_str(",NULL"));
 		;
     break;}
 case 1104:
-#line 4556 "preproc.y"
+#line 4560 "preproc.y"
 {
 		  /* old style: dbname[@server][:port] */
 		  if (strlen(yyvsp[-1].str) > 0 && *(yyvsp[-1].str) != '@')
@@ -14761,7 +14765,7 @@ case 1104:
 		;
     break;}
 case 1105:
-#line 4567 "preproc.y"
+#line 4571 "preproc.y"
 {
 		  /* new style: <tcp|unix>:postgresql://server[:port][/dbname] */
                   if (strncmp(yyvsp[-4].str, "://", 3) != 0)
@@ -14786,13 +14790,13 @@ case 1105:
 		;
     break;}
 case 1106:
-#line 4590 "preproc.y"
+#line 4594 "preproc.y"
 {
 		  yyval.str = yyvsp[0].str;
 		;
     break;}
 case 1107:
-#line 4594 "preproc.y"
+#line 4598 "preproc.y"
 {
 		  yyval.str = mm_strdup(yyvsp[0].str);
 		  yyval.str[0] = '\"';
@@ -14801,7 +14805,7 @@ case 1107:
 		;
     break;}
 case 1108:
-#line 4602 "preproc.y"
+#line 4606 "preproc.y"
 {
 		  if (strcmp(yyvsp[0].str, "postgresql") != 0 && strcmp(yyvsp[0].str, "postgres") != 0)
 		  {
@@ -14819,7 +14823,7 @@ case 1108:
 		;
     break;}
 case 1109:
-#line 4619 "preproc.y"
+#line 4623 "preproc.y"
 {
 		  if (strcmp(yyvsp[-1].str, "@") != 0 && strcmp(yyvsp[-1].str, "://") != 0)
 		  {
@@ -14831,71 +14835,71 @@ case 1109:
 	        ;
     break;}
 case 1110:
-#line 4629 "preproc.y"
+#line 4633 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1111:
-#line 4630 "preproc.y"
+#line 4634 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 1112:
-#line 4632 "preproc.y"
+#line 4636 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1113:
-#line 4633 "preproc.y"
+#line 4637 "preproc.y"
 { yyval.str = make3_str(yyvsp[-2].str, make1_str("."), yyvsp[0].str); ;
     break;}
 case 1114:
-#line 4635 "preproc.y"
+#line 4639 "preproc.y"
 { yyval.str = make2_str(make1_str(":"), yyvsp[0].str); ;
     break;}
 case 1115:
-#line 4636 "preproc.y"
+#line 4640 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 1116:
-#line 4638 "preproc.y"
+#line 4642 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1117:
-#line 4639 "preproc.y"
+#line 4643 "preproc.y"
 { yyval.str = make1_str("NULL"); ;
     break;}
 case 1118:
-#line 4641 "preproc.y"
+#line 4645 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1119:
-#line 4642 "preproc.y"
+#line 4646 "preproc.y"
 { yyval.str = make1_str("NULL,NULL"); ;
     break;}
 case 1120:
-#line 4645 "preproc.y"
+#line 4649 "preproc.y"
 {
                         yyval.str = make2_str(yyvsp[0].str, make1_str(",NULL"));
 	        ;
     break;}
 case 1121:
-#line 4649 "preproc.y"
+#line 4653 "preproc.y"
 {
         		yyval.str = make3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);
                 ;
     break;}
 case 1122:
-#line 4653 "preproc.y"
+#line 4657 "preproc.y"
 {
         		yyval.str = make3_str(yyvsp[-3].str, make1_str(","), yyvsp[0].str);
                 ;
     break;}
 case 1123:
-#line 4657 "preproc.y"
+#line 4661 "preproc.y"
 {
         		yyval.str = make3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);
                 ;
     break;}
 case 1124:
-#line 4661 "preproc.y"
+#line 4665 "preproc.y"
 { if (yyvsp[0].str[0] == '\"')
 				yyval.str = yyvsp[0].str;
 			  else
@@ -14903,15 +14907,15 @@ case 1124:
 			;
     break;}
 case 1125:
-#line 4666 "preproc.y"
+#line 4670 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1126:
-#line 4667 "preproc.y"
+#line 4671 "preproc.y"
 { yyval.str = make3_str(make1_str("\""), yyvsp[0].str, make1_str("\"")); ;
     break;}
 case 1127:
-#line 4670 "preproc.y"
+#line 4674 "preproc.y"
 { /* check if we have a char variable */
 			struct variable *p = find_variable(yyvsp[0].str);
 			enum ECPGttype typ = p->type->typ;
@@ -14936,7 +14940,7 @@ case 1127:
 		;
     break;}
 case 1128:
-#line 4694 "preproc.y"
+#line 4698 "preproc.y"
 {
 			if (strlen(yyvsp[-1].str) == 0)
 				yyerror("parse error");
@@ -14951,11 +14955,11 @@ case 1128:
 		;
     break;}
 case 1129:
-#line 4706 "preproc.y"
+#line 4710 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 1130:
-#line 4713 "preproc.y"
+#line 4717 "preproc.y"
 {
 					struct cursor *ptr, *this;
 					struct variable *thisquery = (struct variable *)mm_alloc(sizeof(struct variable));
@@ -14994,18 +14998,18 @@ case 1130:
 				;
     break;}
 case 1131:
-#line 4755 "preproc.y"
+#line 4759 "preproc.y"
 { yyval.str = make3_str(make1_str("ECPGdeallocate(__LINE__, \""), yyvsp[0].str, make1_str("\");")); ;
     break;}
 case 1132:
-#line 4761 "preproc.y"
+#line 4765 "preproc.y"
 {
 		fputs("/* exec sql begin declare section */", yyout);
 	        output_line_number();
 	;
     break;}
 case 1133:
-#line 4766 "preproc.y"
+#line 4770 "preproc.y"
 {
 		fprintf(yyout, "%s/* exec sql end declare section */", yyvsp[-1].str);
 		free(yyvsp[-1].str);
@@ -15013,33 +15017,33 @@ case 1133:
 	;
     break;}
 case 1134:
-#line 4772 "preproc.y"
+#line 4776 "preproc.y"
 {;
     break;}
 case 1135:
-#line 4774 "preproc.y"
+#line 4778 "preproc.y"
 {;
     break;}
 case 1136:
-#line 4777 "preproc.y"
+#line 4781 "preproc.y"
 {
 		yyval.str = make1_str("");
 	;
     break;}
 case 1137:
-#line 4781 "preproc.y"
+#line 4785 "preproc.y"
 {
 		yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
 	;
     break;}
 case 1138:
-#line 4786 "preproc.y"
+#line 4790 "preproc.y"
 {
 		actual_storage[struct_level] = mm_strdup(yyvsp[0].str);
 	;
     break;}
 case 1139:
-#line 4790 "preproc.y"
+#line 4794 "preproc.y"
 {
 		actual_type[struct_level].type_enum = yyvsp[0].type.type_enum;
 		actual_type[struct_level].type_dimension = yyvsp[0].type.type_dimension;
@@ -15047,41 +15051,41 @@ case 1139:
 	;
     break;}
 case 1140:
-#line 4796 "preproc.y"
+#line 4800 "preproc.y"
 {
  		yyval.str = cat4_str(yyvsp[-5].str, yyvsp[-3].type.type_str, yyvsp[-1].str, make1_str(";\n"));
 	;
     break;}
 case 1141:
-#line 4800 "preproc.y"
+#line 4804 "preproc.y"
 { yyval.str = make1_str("extern"); ;
     break;}
 case 1142:
-#line 4801 "preproc.y"
+#line 4805 "preproc.y"
 { yyval.str = make1_str("static"); ;
     break;}
 case 1143:
-#line 4802 "preproc.y"
+#line 4806 "preproc.y"
 { yyval.str = make1_str("signed"); ;
     break;}
 case 1144:
-#line 4803 "preproc.y"
+#line 4807 "preproc.y"
 { yyval.str = make1_str("const"); ;
     break;}
 case 1145:
-#line 4804 "preproc.y"
+#line 4808 "preproc.y"
 { yyval.str = make1_str("register"); ;
     break;}
 case 1146:
-#line 4805 "preproc.y"
+#line 4809 "preproc.y"
 { yyval.str = make1_str("auto"); ;
     break;}
 case 1147:
-#line 4806 "preproc.y"
+#line 4810 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 1148:
-#line 4809 "preproc.y"
+#line 4813 "preproc.y"
 {
 			yyval.type.type_enum = yyvsp[0].type_enum;
 			yyval.type.type_str = mm_strdup(ECPGtype_name(yyvsp[0].type_enum));
@@ -15090,7 +15094,7 @@ case 1148:
 		;
     break;}
 case 1149:
-#line 4816 "preproc.y"
+#line 4820 "preproc.y"
 {
 			yyval.type.type_enum = ECPGt_varchar;
 			yyval.type.type_str = make1_str("");
@@ -15099,7 +15103,7 @@ case 1149:
 		;
     break;}
 case 1150:
-#line 4823 "preproc.y"
+#line 4827 "preproc.y"
 {
 			yyval.type.type_enum = ECPGt_struct;
 			yyval.type.type_str = yyvsp[0].str;
@@ -15108,7 +15112,7 @@ case 1150:
 		;
     break;}
 case 1151:
-#line 4830 "preproc.y"
+#line 4834 "preproc.y"
 {
 			yyval.type.type_enum = ECPGt_union;
 			yyval.type.type_str = yyvsp[0].str;
@@ -15117,7 +15121,7 @@ case 1151:
 		;
     break;}
 case 1152:
-#line 4837 "preproc.y"
+#line 4841 "preproc.y"
 {
 			yyval.type.type_str = yyvsp[0].str;
 			yyval.type.type_enum = ECPGt_int;
@@ -15127,7 +15131,7 @@ case 1152:
 		;
     break;}
 case 1153:
-#line 4845 "preproc.y"
+#line 4849 "preproc.y"
 {
 			/* this is for typedef'ed types */
 			struct typedefs *this = get_typedef(yyvsp[0].str);
@@ -15140,17 +15144,17 @@ case 1153:
 		;
     break;}
 case 1154:
-#line 4857 "preproc.y"
+#line 4861 "preproc.y"
 {
 		yyval.str = cat4_str(yyvsp[-3].str, make1_str("{"), yyvsp[-1].str, make1_str("}"));
 	;
     break;}
 case 1155:
-#line 4861 "preproc.y"
+#line 4865 "preproc.y"
 { yyval.str = cat2_str(make1_str("enum"), yyvsp[0].str); ;
     break;}
 case 1156:
-#line 4864 "preproc.y"
+#line 4868 "preproc.y"
 {
 	    ECPGfree_struct_member(struct_member_list[struct_level]);
 	    free(actual_storage[struct_level--]);
@@ -15158,7 +15162,7 @@ case 1156:
 	;
     break;}
 case 1157:
-#line 4871 "preproc.y"
+#line 4875 "preproc.y"
 {
 	    ECPGfree_struct_member(struct_member_list[struct_level]);
 	    free(actual_storage[struct_level--]);
@@ -15166,7 +15170,7 @@ case 1157:
 	;
     break;}
 case 1158:
-#line 4878 "preproc.y"
+#line 4882 "preproc.y"
 {
             struct_member_list[struct_level++] = NULL;
             if (struct_level >= STRUCT_DEPTH)
@@ -15175,7 +15179,7 @@ case 1158:
 	;
     break;}
 case 1159:
-#line 4886 "preproc.y"
+#line 4890 "preproc.y"
 {
             struct_member_list[struct_level++] = NULL;
             if (struct_level >= STRUCT_DEPTH)
@@ -15184,75 +15188,75 @@ case 1159:
 	;
     break;}
 case 1160:
-#line 4893 "preproc.y"
+#line 4897 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 1161:
-#line 4894 "preproc.y"
+#line 4898 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1162:
-#line 4896 "preproc.y"
+#line 4900 "preproc.y"
 { yyval.type_enum = ECPGt_short; ;
     break;}
 case 1163:
-#line 4897 "preproc.y"
+#line 4901 "preproc.y"
 { yyval.type_enum = ECPGt_unsigned_short; ;
     break;}
 case 1164:
-#line 4898 "preproc.y"
+#line 4902 "preproc.y"
 { yyval.type_enum = ECPGt_int; ;
     break;}
 case 1165:
-#line 4899 "preproc.y"
+#line 4903 "preproc.y"
 { yyval.type_enum = ECPGt_unsigned_int; ;
     break;}
 case 1166:
-#line 4900 "preproc.y"
+#line 4904 "preproc.y"
 { yyval.type_enum = ECPGt_long; ;
     break;}
 case 1167:
-#line 4901 "preproc.y"
+#line 4905 "preproc.y"
 { yyval.type_enum = ECPGt_unsigned_long; ;
     break;}
 case 1168:
-#line 4902 "preproc.y"
+#line 4906 "preproc.y"
 { yyval.type_enum = ECPGt_float; ;
     break;}
 case 1169:
-#line 4903 "preproc.y"
+#line 4907 "preproc.y"
 { yyval.type_enum = ECPGt_double; ;
     break;}
 case 1170:
-#line 4904 "preproc.y"
+#line 4908 "preproc.y"
 { yyval.type_enum = ECPGt_bool; ;
     break;}
 case 1171:
-#line 4905 "preproc.y"
+#line 4909 "preproc.y"
 { yyval.type_enum = ECPGt_char; ;
     break;}
 case 1172:
-#line 4906 "preproc.y"
+#line 4910 "preproc.y"
 { yyval.type_enum = ECPGt_unsigned_char; ;
     break;}
 case 1173:
-#line 4908 "preproc.y"
+#line 4912 "preproc.y"
 { yyval.type_enum = ECPGt_varchar; ;
     break;}
 case 1174:
-#line 4911 "preproc.y"
+#line 4915 "preproc.y"
 {
 		yyval.str = yyvsp[0].str;
 	;
     break;}
 case 1175:
-#line 4915 "preproc.y"
+#line 4919 "preproc.y"
 {
 		yyval.str = cat3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);
 	;
     break;}
 case 1176:
-#line 4920 "preproc.y"
+#line 4924 "preproc.y"
 {
 			struct ECPGtype * type;
                         int dimension = yyvsp[-1].index.index1; /* dimension of array */
@@ -15328,58 +15332,58 @@ case 1176:
 		;
     break;}
 case 1177:
-#line 4994 "preproc.y"
+#line 4998 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 1178:
-#line 4995 "preproc.y"
+#line 4999 "preproc.y"
 { yyval.str = make2_str(make1_str("="), yyvsp[0].str); ;
     break;}
 case 1179:
-#line 4997 "preproc.y"
+#line 5001 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 1180:
-#line 4998 "preproc.y"
+#line 5002 "preproc.y"
 { yyval.str = make1_str("*"); ;
     break;}
 case 1181:
-#line 5005 "preproc.y"
+#line 5009 "preproc.y"
 {
 		/* this is only supported for compatibility */
 		yyval.str = cat3_str(make1_str("/* declare statement"), yyvsp[0].str, make1_str("*/"));
 	;
     break;}
 case 1182:
-#line 5012 "preproc.y"
+#line 5016 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1183:
-#line 5014 "preproc.y"
+#line 5018 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1184:
-#line 5015 "preproc.y"
+#line 5019 "preproc.y"
 { yyval.str = make1_str("CURRENT"); ;
     break;}
 case 1185:
-#line 5016 "preproc.y"
+#line 5020 "preproc.y"
 { yyval.str = make1_str("ALL"); ;
     break;}
 case 1186:
-#line 5017 "preproc.y"
+#line 5021 "preproc.y"
 { yyval.str = make1_str("CURRENT"); ;
     break;}
 case 1187:
-#line 5019 "preproc.y"
+#line 5023 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1188:
-#line 5020 "preproc.y"
+#line 5024 "preproc.y"
 { yyval.str = make1_str("DEFAULT"); ;
     break;}
 case 1189:
-#line 5026 "preproc.y"
+#line 5030 "preproc.y"
 { 
 		struct variable *thisquery = (struct variable *)mm_alloc(sizeof(struct variable));
 
@@ -15394,7 +15398,7 @@ case 1189:
 	;
     break;}
 case 1190:
-#line 5039 "preproc.y"
+#line 5043 "preproc.y"
 {
 		struct variable *thisquery = (struct variable *)mm_alloc(sizeof(struct variable));
 
@@ -15408,44 +15412,44 @@ case 1190:
 	;
     break;}
 case 1191:
-#line 5050 "preproc.y"
+#line 5054 "preproc.y"
 {
 		yyval.str = make1_str("?");
 	;
     break;}
 case 1193:
-#line 5055 "preproc.y"
+#line 5059 "preproc.y"
 { yyval.str = make3_str(make1_str("\""), yyvsp[0].str, make1_str("\"")); ;
     break;}
 case 1194:
-#line 5061 "preproc.y"
+#line 5065 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1195:
-#line 5066 "preproc.y"
+#line 5070 "preproc.y"
 {
 		yyval.str = yyvsp[-1].str;
 ;
     break;}
 case 1196:
-#line 5070 "preproc.y"
+#line 5074 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 1197:
-#line 5071 "preproc.y"
+#line 5075 "preproc.y"
 {
 					/* yyerror ("open cursor with variables not implemented yet"); */
 					yyval.str = make1_str("");
 				;
     break;}
 case 1200:
-#line 5083 "preproc.y"
+#line 5087 "preproc.y"
 {
 		yyval.str = make4_str(make1_str("\""), yyvsp[-2].str, make1_str("\", "), yyvsp[0].str);
 	;
     break;}
 case 1201:
-#line 5093 "preproc.y"
+#line 5097 "preproc.y"
 {
 		if (strncmp(yyvsp[-1].str, "begin", 5) == 0)
                         yyerror("RELEASE does not make sense when beginning a transaction");
@@ -15458,27 +15462,27 @@ case 1201:
 	;
     break;}
 case 1202:
-#line 5109 "preproc.y"
+#line 5113 "preproc.y"
 {
 				yyval.str = yyvsp[0].str;
                         ;
     break;}
 case 1203:
-#line 5113 "preproc.y"
+#line 5117 "preproc.y"
 { yyval.str = make1_str("on"); ;
     break;}
 case 1204:
-#line 5114 "preproc.y"
+#line 5118 "preproc.y"
 { yyval.str = make1_str("off"); ;
     break;}
 case 1207:
-#line 5123 "preproc.y"
+#line 5127 "preproc.y"
 {
 				yyval.str = yyvsp[0].str;
                         ;
     break;}
 case 1208:
-#line 5131 "preproc.y"
+#line 5135 "preproc.y"
 {
 		/* add entry to list */
 		struct typedefs *ptr, *this;
@@ -15521,7 +15525,7 @@ case 1208:
 	;
     break;}
 case 1209:
-#line 5173 "preproc.y"
+#line 5177 "preproc.y"
 {
                             yyval.index.index1 = 0;
                             yyval.index.index2 = yyvsp[0].index.index1;
@@ -15529,7 +15533,7 @@ case 1209:
                         ;
     break;}
 case 1210:
-#line 5179 "preproc.y"
+#line 5183 "preproc.y"
 {
                             yyval.index.index1 = 0;
                             yyval.index.index2 = yyvsp[0].index.index1;
@@ -15537,7 +15541,7 @@ case 1210:
                         ;
     break;}
 case 1211:
-#line 5185 "preproc.y"
+#line 5189 "preproc.y"
 {
 			    char *txt = mm_alloc(20L);
 
@@ -15548,7 +15552,7 @@ case 1211:
                         ;
     break;}
 case 1212:
-#line 5194 "preproc.y"
+#line 5198 "preproc.y"
 {
 			    char *txt = mm_alloc(20L);
 
@@ -15559,7 +15563,7 @@ case 1212:
                         ;
     break;}
 case 1213:
-#line 5203 "preproc.y"
+#line 5207 "preproc.y"
 {
                             yyval.index.index1 = -1;
                             yyval.index.index2 = -1;
@@ -15567,7 +15571,7 @@ case 1213:
                         ;
     break;}
 case 1214:
-#line 5211 "preproc.y"
+#line 5215 "preproc.y"
 {
                             yyval.index.index1 = 0;
                             yyval.index.index2 = yyvsp[0].index.index1;
@@ -15575,7 +15579,7 @@ case 1214:
                         ;
     break;}
 case 1215:
-#line 5217 "preproc.y"
+#line 5221 "preproc.y"
 {
                             yyval.index.index1 = 0;
                             yyval.index.index2 = yyvsp[0].index.index1;
@@ -15583,7 +15587,7 @@ case 1215:
                         ;
     break;}
 case 1216:
-#line 5223 "preproc.y"
+#line 5227 "preproc.y"
 {
 			    char *txt = mm_alloc(20L);
 
@@ -15594,7 +15598,7 @@ case 1216:
                         ;
     break;}
 case 1217:
-#line 5232 "preproc.y"
+#line 5236 "preproc.y"
 {
 			    char *txt = mm_alloc(20L);
 
@@ -15605,7 +15609,7 @@ case 1217:
                         ;
     break;}
 case 1218:
-#line 5241 "preproc.y"
+#line 5245 "preproc.y"
 {
                             yyval.index.index1 = -1;
                             yyval.index.index2 = -1;
@@ -15613,15 +15617,15 @@ case 1218:
                         ;
     break;}
 case 1219:
-#line 5247 "preproc.y"
+#line 5251 "preproc.y"
 { yyval.str = make1_str("reference"); ;
     break;}
 case 1220:
-#line 5248 "preproc.y"
+#line 5252 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 1221:
-#line 5251 "preproc.y"
+#line 5255 "preproc.y"
 {
 		yyval.type.type_str = make1_str("char");
                 yyval.type.type_enum = ECPGt_char;
@@ -15630,7 +15634,7 @@ case 1221:
 	;
     break;}
 case 1222:
-#line 5258 "preproc.y"
+#line 5262 "preproc.y"
 {
 		yyval.type.type_str = make1_str("varchar");
                 yyval.type.type_enum = ECPGt_varchar;
@@ -15639,7 +15643,7 @@ case 1222:
 	;
     break;}
 case 1223:
-#line 5265 "preproc.y"
+#line 5269 "preproc.y"
 {
 		yyval.type.type_str = make1_str("float");
                 yyval.type.type_enum = ECPGt_float;
@@ -15648,7 +15652,7 @@ case 1223:
 	;
     break;}
 case 1224:
-#line 5272 "preproc.y"
+#line 5276 "preproc.y"
 {
 		yyval.type.type_str = make1_str("double");
                 yyval.type.type_enum = ECPGt_double;
@@ -15657,7 +15661,7 @@ case 1224:
 	;
     break;}
 case 1225:
-#line 5279 "preproc.y"
+#line 5283 "preproc.y"
 {
 		yyval.type.type_str = make1_str("int");
        	        yyval.type.type_enum = ECPGt_int;
@@ -15666,7 +15670,7 @@ case 1225:
 	;
     break;}
 case 1226:
-#line 5286 "preproc.y"
+#line 5290 "preproc.y"
 {
 		yyval.type.type_str = make1_str("int");
        	        yyval.type.type_enum = ECPGt_int;
@@ -15675,7 +15679,7 @@ case 1226:
 	;
     break;}
 case 1227:
-#line 5293 "preproc.y"
+#line 5297 "preproc.y"
 {
 		yyval.type.type_str = make1_str("short");
        	        yyval.type.type_enum = ECPGt_short;
@@ -15684,7 +15688,7 @@ case 1227:
 	;
     break;}
 case 1228:
-#line 5300 "preproc.y"
+#line 5304 "preproc.y"
 {
 		yyval.type.type_str = make1_str("long");
        	        yyval.type.type_enum = ECPGt_long;
@@ -15693,7 +15697,7 @@ case 1228:
 	;
     break;}
 case 1229:
-#line 5307 "preproc.y"
+#line 5311 "preproc.y"
 {
 		yyval.type.type_str = make1_str("bool");
        	        yyval.type.type_enum = ECPGt_bool;
@@ -15702,7 +15706,7 @@ case 1229:
 	;
     break;}
 case 1230:
-#line 5314 "preproc.y"
+#line 5318 "preproc.y"
 {
 		yyval.type.type_str = make1_str("unsigned int");
        	        yyval.type.type_enum = ECPGt_unsigned_int;
@@ -15711,7 +15715,7 @@ case 1230:
 	;
     break;}
 case 1231:
-#line 5321 "preproc.y"
+#line 5325 "preproc.y"
 {
 		yyval.type.type_str = make1_str("unsigned short");
        	        yyval.type.type_enum = ECPGt_unsigned_short;
@@ -15720,7 +15724,7 @@ case 1231:
 	;
     break;}
 case 1232:
-#line 5328 "preproc.y"
+#line 5332 "preproc.y"
 {
 		yyval.type.type_str = make1_str("unsigned long");
        	        yyval.type.type_enum = ECPGt_unsigned_long;
@@ -15729,7 +15733,7 @@ case 1232:
 	;
     break;}
 case 1233:
-#line 5335 "preproc.y"
+#line 5339 "preproc.y"
 {
 		struct_member_list[struct_level++] = NULL;
 		if (struct_level >= STRUCT_DEPTH)
@@ -15737,7 +15741,7 @@ case 1233:
 	;
     break;}
 case 1234:
-#line 5340 "preproc.y"
+#line 5344 "preproc.y"
 {
 		ECPGfree_struct_member(struct_member_list[struct_level--]);
 		yyval.type.type_str = cat3_str(make1_str("struct {"), yyvsp[-1].str, make1_str("}"));
@@ -15747,7 +15751,7 @@ case 1234:
 	;
     break;}
 case 1235:
-#line 5348 "preproc.y"
+#line 5352 "preproc.y"
 {
 		struct_member_list[struct_level++] = NULL;
 		if (struct_level >= STRUCT_DEPTH)
@@ -15755,7 +15759,7 @@ case 1235:
 	;
     break;}
 case 1236:
-#line 5353 "preproc.y"
+#line 5357 "preproc.y"
 {
 		ECPGfree_struct_member(struct_member_list[struct_level--]);
 		yyval.type.type_str = cat3_str(make1_str("union {"), yyvsp[-1].str, make1_str("}"));
@@ -15765,7 +15769,7 @@ case 1236:
 	;
     break;}
 case 1237:
-#line 5361 "preproc.y"
+#line 5365 "preproc.y"
 {
 		struct typedefs *this = get_typedef(yyvsp[0].str);
 
@@ -15777,19 +15781,19 @@ case 1237:
 	;
     break;}
 case 1240:
-#line 5374 "preproc.y"
+#line 5378 "preproc.y"
 {
 		yyval.str = make1_str("");
 	;
     break;}
 case 1241:
-#line 5378 "preproc.y"
+#line 5382 "preproc.y"
 {
 		yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
 	;
     break;}
 case 1242:
-#line 5384 "preproc.y"
+#line 5388 "preproc.y"
 {
 		actual_type[struct_level].type_enum = yyvsp[0].type.type_enum;
 		actual_type[struct_level].type_dimension = yyvsp[0].type.type_dimension;
@@ -15797,25 +15801,25 @@ case 1242:
 	;
     break;}
 case 1243:
-#line 5390 "preproc.y"
+#line 5394 "preproc.y"
 {
 		yyval.str = cat3_str(yyvsp[-3].type.type_str, yyvsp[-1].str, make1_str(";"));
 	;
     break;}
 case 1244:
-#line 5395 "preproc.y"
+#line 5399 "preproc.y"
 {
 		yyval.str = yyvsp[0].str;
 	;
     break;}
 case 1245:
-#line 5399 "preproc.y"
+#line 5403 "preproc.y"
 {
 		yyval.str = make3_str(yyvsp[-2].str, make1_str(","), yyvsp[0].str);
 	;
     break;}
 case 1246:
-#line 5404 "preproc.y"
+#line 5408 "preproc.y"
 {
 			int dimension = yyvsp[0].index.index1;
 			int length = yyvsp[0].index.index2;
@@ -15884,7 +15888,7 @@ case 1246:
 		;
     break;}
 case 1247:
-#line 5475 "preproc.y"
+#line 5479 "preproc.y"
 {
 		struct variable *p = find_variable(yyvsp[-4].str);
 		int dimension = yyvsp[-1].index.index1;
@@ -15936,7 +15940,7 @@ case 1247:
 	;
     break;}
 case 1248:
-#line 5529 "preproc.y"
+#line 5533 "preproc.y"
 {
 	when_error.code = yyvsp[0].action.code;
 	when_error.command = yyvsp[0].action.command;
@@ -15944,7 +15948,7 @@ case 1248:
 ;
     break;}
 case 1249:
-#line 5534 "preproc.y"
+#line 5538 "preproc.y"
 {
 	when_nf.code = yyvsp[0].action.code;
 	when_nf.command = yyvsp[0].action.command;
@@ -15952,7 +15956,7 @@ case 1249:
 ;
     break;}
 case 1250:
-#line 5539 "preproc.y"
+#line 5543 "preproc.y"
 {
 	when_warn.code = yyvsp[0].action.code;
 	when_warn.command = yyvsp[0].action.command;
@@ -15960,7 +15964,7 @@ case 1250:
 ;
     break;}
 case 1251:
-#line 5545 "preproc.y"
+#line 5549 "preproc.y"
 {
 	yyval.action.code = W_NOTHING;
 	yyval.action.command = NULL;
@@ -15968,7 +15972,7 @@ case 1251:
 ;
     break;}
 case 1252:
-#line 5550 "preproc.y"
+#line 5554 "preproc.y"
 {
 	yyval.action.code = W_SQLPRINT;
 	yyval.action.command = NULL;
@@ -15976,7 +15980,7 @@ case 1252:
 ;
     break;}
 case 1253:
-#line 5555 "preproc.y"
+#line 5559 "preproc.y"
 {
 	yyval.action.code = W_STOP;
 	yyval.action.command = NULL;
@@ -15984,7 +15988,7 @@ case 1253:
 ;
     break;}
 case 1254:
-#line 5560 "preproc.y"
+#line 5564 "preproc.y"
 {
         yyval.action.code = W_GOTO;
         yyval.action.command = strdup(yyvsp[0].str);
@@ -15992,7 +15996,7 @@ case 1254:
 ;
     break;}
 case 1255:
-#line 5565 "preproc.y"
+#line 5569 "preproc.y"
 {
         yyval.action.code = W_GOTO;
         yyval.action.command = strdup(yyvsp[0].str);
@@ -16000,7 +16004,7 @@ case 1255:
 ;
     break;}
 case 1256:
-#line 5570 "preproc.y"
+#line 5574 "preproc.y"
 {
 	yyval.action.code = W_DO;
 	yyval.action.command = make4_str(yyvsp[-3].str, make1_str("("), yyvsp[-1].str, make1_str(")"));
@@ -16008,7 +16012,7 @@ case 1256:
 ;
     break;}
 case 1257:
-#line 5575 "preproc.y"
+#line 5579 "preproc.y"
 {
         yyval.action.code = W_BREAK;
         yyval.action.command = NULL;
@@ -16016,7 +16020,7 @@ case 1257:
 ;
     break;}
 case 1258:
-#line 5580 "preproc.y"
+#line 5584 "preproc.y"
 {
 	yyval.action.code = W_DO;
 	yyval.action.command = make4_str(yyvsp[-3].str, make1_str("("), yyvsp[-1].str, make1_str(")"));
@@ -16024,153 +16028,153 @@ case 1258:
 ;
     break;}
 case 1259:
-#line 5588 "preproc.y"
+#line 5592 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str);
 				;
     break;}
 case 1260:
-#line 5592 "preproc.y"
+#line 5596 "preproc.y"
 {	yyval.str = yyvsp[0].str;  ;
     break;}
 case 1261:
-#line 5594 "preproc.y"
+#line 5598 "preproc.y"
 {	yyval.str = yyvsp[0].str;  ;
     break;}
 case 1262:
-#line 5596 "preproc.y"
+#line 5600 "preproc.y"
 {
 					yyval.str = yyvsp[0].str;
 				;
     break;}
 case 1263:
-#line 5600 "preproc.y"
+#line 5604 "preproc.y"
 {	yyval.str = cat2_str(make1_str("-"), yyvsp[0].str); ;
     break;}
 case 1264:
-#line 5602 "preproc.y"
+#line 5606 "preproc.y"
 {       yyval.str = cat2_str(make1_str("%"), yyvsp[0].str); ;
     break;}
 case 1265:
-#line 5604 "preproc.y"
+#line 5608 "preproc.y"
 {       yyval.str = cat2_str(yyvsp[-1].str, make1_str("%")); ;
     break;}
 case 1266:
-#line 5606 "preproc.y"
+#line 5610 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("+"), yyvsp[0].str); ;
     break;}
 case 1267:
-#line 5608 "preproc.y"
+#line 5612 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("-"), yyvsp[0].str); ;
     break;}
 case 1268:
-#line 5610 "preproc.y"
+#line 5614 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("/"), yyvsp[0].str); ;
     break;}
 case 1269:
-#line 5612 "preproc.y"
+#line 5616 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("%"), yyvsp[0].str); ;
     break;}
 case 1270:
-#line 5614 "preproc.y"
+#line 5618 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("*"), yyvsp[0].str); ;
     break;}
 case 1271:
-#line 5616 "preproc.y"
+#line 5620 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("<"), yyvsp[0].str); ;
     break;}
 case 1272:
-#line 5618 "preproc.y"
+#line 5622 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str(">"), yyvsp[0].str); ;
     break;}
 case 1273:
-#line 5620 "preproc.y"
+#line 5624 "preproc.y"
 {       yyval.str = cat2_str(yyvsp[-2].str, make1_str("= NULL")); ;
     break;}
 case 1274:
-#line 5622 "preproc.y"
+#line 5626 "preproc.y"
 {       yyval.str = cat2_str(make1_str("= NULL"), yyvsp[0].str); ;
     break;}
 case 1275:
-#line 5624 "preproc.y"
+#line 5628 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("="), yyvsp[0].str); ;
     break;}
 case 1276:
-#line 5628 "preproc.y"
+#line 5632 "preproc.y"
 {	yyval.str = cat2_str(make1_str(";"), yyvsp[0].str); ;
     break;}
 case 1277:
-#line 5630 "preproc.y"
+#line 5634 "preproc.y"
 {	yyval.str = cat2_str(make1_str("|"), yyvsp[0].str); ;
     break;}
 case 1278:
-#line 5632 "preproc.y"
+#line 5636 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-2].str, make1_str("::"), yyvsp[0].str);
 				;
     break;}
 case 1279:
-#line 5636 "preproc.y"
+#line 5640 "preproc.y"
 {
 					yyval.str = cat3_str(make2_str(make1_str("cast("), yyvsp[-3].str), make1_str("as"), make2_str(yyvsp[-1].str, make1_str(")")));
 				;
     break;}
 case 1280:
-#line 5640 "preproc.y"
+#line 5644 "preproc.y"
 {	yyval.str = make3_str(make1_str("("), yyvsp[-1].str, make1_str(")")); ;
     break;}
 case 1281:
-#line 5642 "preproc.y"
+#line 5646 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, yyvsp[-1].str, yyvsp[0].str);	;
     break;}
 case 1282:
-#line 5644 "preproc.y"
+#line 5648 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("like"), yyvsp[0].str); ;
     break;}
 case 1283:
-#line 5646 "preproc.y"
+#line 5650 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-3].str, make1_str("not like"), yyvsp[0].str); ;
     break;}
 case 1284:
-#line 5648 "preproc.y"
+#line 5652 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 1285:
-#line 5650 "preproc.y"
+#line 5654 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 1286:
-#line 5652 "preproc.y"
+#line 5656 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-3].str, make1_str("(*)")); 
 				;
     break;}
 case 1287:
-#line 5656 "preproc.y"
+#line 5660 "preproc.y"
 {
 					yyval.str = cat2_str(yyvsp[-2].str, make1_str("()")); 
 				;
     break;}
 case 1288:
-#line 5660 "preproc.y"
+#line 5664 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-3].str, make1_str("("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1289:
-#line 5664 "preproc.y"
+#line 5668 "preproc.y"
 {
 					yyval.str = make1_str("current_date");
 				;
     break;}
 case 1290:
-#line 5668 "preproc.y"
+#line 5672 "preproc.y"
 {
 					yyval.str = make1_str("current_time");
 				;
     break;}
 case 1291:
-#line 5672 "preproc.y"
+#line 5676 "preproc.y"
 {
 					if (atol(yyvsp[-1].str) != 0)
 						fprintf(stderr,"CURRENT_TIME(%s) precision not implemented; zero used instead", yyvsp[-1].str);
@@ -16178,13 +16182,13 @@ case 1291:
 				;
     break;}
 case 1292:
-#line 5678 "preproc.y"
+#line 5682 "preproc.y"
 {
 					yyval.str = make1_str("current_timestamp");
 				;
     break;}
 case 1293:
-#line 5682 "preproc.y"
+#line 5686 "preproc.y"
 {
 					if (atol(yyvsp[-1].str) != 0)
 						fprintf(stderr,"CURRENT_TIMESTAMP(%s) precision not implemented; zero used instead",yyvsp[-1].str);
@@ -16192,585 +16196,585 @@ case 1293:
 				;
     break;}
 case 1294:
-#line 5688 "preproc.y"
+#line 5692 "preproc.y"
 {
 					yyval.str = make1_str("current_user");
 				;
     break;}
 case 1295:
-#line 5692 "preproc.y"
+#line 5696 "preproc.y"
 {
   		     		        yyval.str = make1_str("user");
 			     	;
     break;}
 case 1296:
-#line 5696 "preproc.y"
+#line 5700 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("exists("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 1297:
-#line 5700 "preproc.y"
+#line 5704 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("extract("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 1298:
-#line 5704 "preproc.y"
+#line 5708 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("position("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 1299:
-#line 5708 "preproc.y"
+#line 5712 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("substring("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 1300:
-#line 5713 "preproc.y"
+#line 5717 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim(both"), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 1301:
-#line 5717 "preproc.y"
+#line 5721 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim(leading"), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 1302:
-#line 5721 "preproc.y"
+#line 5725 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim(trailing"), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 1303:
-#line 5725 "preproc.y"
+#line 5729 "preproc.y"
 {
 					yyval.str = make3_str(make1_str("trim("), yyvsp[-1].str, make1_str(")"));
 				;
     break;}
 case 1304:
-#line 5729 "preproc.y"
+#line 5733 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, make1_str("isnull")); ;
     break;}
 case 1305:
-#line 5731 "preproc.y"
+#line 5735 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-2].str, make1_str("is null")); ;
     break;}
 case 1306:
-#line 5733 "preproc.y"
+#line 5737 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-1].str, make1_str("notnull")); ;
     break;}
 case 1307:
-#line 5735 "preproc.y"
+#line 5739 "preproc.y"
 {	yyval.str = cat2_str(yyvsp[-3].str, make1_str("is not null")); ;
     break;}
 case 1308:
-#line 5742 "preproc.y"
+#line 5746 "preproc.y"
 {
 				{	yyval.str = cat2_str(yyvsp[-2].str, make1_str("is true")); }
 				;
     break;}
 case 1309:
-#line 5746 "preproc.y"
+#line 5750 "preproc.y"
 {
 				{	yyval.str = cat2_str(yyvsp[-3].str, make1_str("is not false")); }
 				;
     break;}
 case 1310:
-#line 5750 "preproc.y"
+#line 5754 "preproc.y"
 {
 				{	yyval.str = cat2_str(yyvsp[-2].str, make1_str("is false")); }
 				;
     break;}
 case 1311:
-#line 5754 "preproc.y"
+#line 5758 "preproc.y"
 {
 				{	yyval.str = cat2_str(yyvsp[-3].str, make1_str("is not true")); }
 				;
     break;}
 case 1312:
-#line 5758 "preproc.y"
+#line 5762 "preproc.y"
 {
 					yyval.str = cat5_str(yyvsp[-4].str, make1_str("between"), yyvsp[-2].str, make1_str("and"), yyvsp[0].str); 
 				;
     break;}
 case 1313:
-#line 5762 "preproc.y"
+#line 5766 "preproc.y"
 {
 					yyval.str = cat5_str(yyvsp[-5].str, make1_str("not between"), yyvsp[-2].str, make1_str("and"), yyvsp[0].str); 
 				;
     break;}
 case 1314:
-#line 5766 "preproc.y"
+#line 5770 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str(" in ("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1315:
-#line 5770 "preproc.y"
+#line 5774 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str(" not in ("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1316:
-#line 5774 "preproc.y"
+#line 5778 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-4].str, yyvsp[-3].str, make3_str(make1_str("("), yyvsp[-1].str, make1_str(")"))); 
 				;
     break;}
 case 1317:
-#line 5778 "preproc.y"
+#line 5782 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("+("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1318:
-#line 5782 "preproc.y"
+#line 5786 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("-("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1319:
-#line 5786 "preproc.y"
+#line 5790 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("/("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1320:
-#line 5790 "preproc.y"
+#line 5794 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("%("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1321:
-#line 5794 "preproc.y"
+#line 5798 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("*("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1322:
-#line 5798 "preproc.y"
+#line 5802 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("<("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1323:
-#line 5802 "preproc.y"
+#line 5806 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str(">("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1324:
-#line 5806 "preproc.y"
+#line 5810 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-4].str, make1_str("=("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1325:
-#line 5810 "preproc.y"
+#line 5814 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-5].str, yyvsp[-4].str, make3_str(make1_str("any ("), yyvsp[-1].str, make1_str(")"))); 
 				;
     break;}
 case 1326:
-#line 5814 "preproc.y"
+#line 5818 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("+ any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1327:
-#line 5818 "preproc.y"
+#line 5822 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("- any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1328:
-#line 5822 "preproc.y"
+#line 5826 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("/ any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1329:
-#line 5826 "preproc.y"
+#line 5830 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("% any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1330:
-#line 5830 "preproc.y"
+#line 5834 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("* any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1331:
-#line 5834 "preproc.y"
+#line 5838 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("< any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1332:
-#line 5838 "preproc.y"
+#line 5842 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("> any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1333:
-#line 5842 "preproc.y"
+#line 5846 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("= any("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1334:
-#line 5846 "preproc.y"
+#line 5850 "preproc.y"
 {
 					yyval.str = cat3_str(yyvsp[-5].str, yyvsp[-4].str, make3_str(make1_str("all ("), yyvsp[-1].str, make1_str(")"))); 
 				;
     break;}
 case 1335:
-#line 5850 "preproc.y"
+#line 5854 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("+ all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1336:
-#line 5854 "preproc.y"
+#line 5858 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("- all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1337:
-#line 5858 "preproc.y"
+#line 5862 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("/ all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1338:
-#line 5862 "preproc.y"
+#line 5866 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("% all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1339:
-#line 5866 "preproc.y"
+#line 5870 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("* all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1340:
-#line 5870 "preproc.y"
+#line 5874 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("< all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1341:
-#line 5874 "preproc.y"
+#line 5878 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("> all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1342:
-#line 5878 "preproc.y"
+#line 5882 "preproc.y"
 {
 					yyval.str = make4_str(yyvsp[-5].str, make1_str("=all("), yyvsp[-1].str, make1_str(")")); 
 				;
     break;}
 case 1343:
-#line 5882 "preproc.y"
+#line 5886 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("and"), yyvsp[0].str); ;
     break;}
 case 1344:
-#line 5884 "preproc.y"
+#line 5888 "preproc.y"
 {	yyval.str = cat3_str(yyvsp[-2].str, make1_str("or"), yyvsp[0].str); ;
     break;}
 case 1345:
-#line 5886 "preproc.y"
+#line 5890 "preproc.y"
 {	yyval.str = cat2_str(make1_str("not"), yyvsp[0].str); ;
     break;}
 case 1346:
-#line 5888 "preproc.y"
+#line 5892 "preproc.y"
 {       yyval.str = yyvsp[0].str; ;
     break;}
 case 1347:
-#line 5890 "preproc.y"
+#line 5894 "preproc.y"
 { 	yyval.str = yyvsp[0].str; ;
     break;}
 case 1350:
-#line 5895 "preproc.y"
+#line 5899 "preproc.y"
 { reset_variables();;
     break;}
 case 1351:
-#line 5897 "preproc.y"
+#line 5901 "preproc.y"
 { yyval.str = make1_str(""); ;
     break;}
 case 1352:
-#line 5898 "preproc.y"
+#line 5902 "preproc.y"
 { yyval.str = make2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 1353:
-#line 5900 "preproc.y"
+#line 5904 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1354:
-#line 5901 "preproc.y"
+#line 5905 "preproc.y"
 { yyval.str = make2_str(yyvsp[-1].str, yyvsp[0].str); ;
     break;}
 case 1355:
-#line 5903 "preproc.y"
+#line 5907 "preproc.y"
 {
 		add_variable(&argsresult, find_variable(yyvsp[-1].str), (yyvsp[0].str == NULL) ? &no_indicator : find_variable(yyvsp[0].str)); 
 ;
     break;}
 case 1356:
-#line 5907 "preproc.y"
+#line 5911 "preproc.y"
 {
 		add_variable(&argsinsert, find_variable(yyvsp[-1].str), (yyvsp[0].str == NULL) ? &no_indicator : find_variable(yyvsp[0].str)); 
 ;
     break;}
 case 1357:
-#line 5911 "preproc.y"
+#line 5915 "preproc.y"
 {
 		add_variable(&argsinsert, find_variable(yyvsp[0].str), &no_indicator); 
 		yyval.str = make1_str("?");
 ;
     break;}
 case 1358:
-#line 5916 "preproc.y"
+#line 5920 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1359:
-#line 5918 "preproc.y"
+#line 5922 "preproc.y"
 { yyval.str = NULL; ;
     break;}
 case 1360:
-#line 5919 "preproc.y"
+#line 5923 "preproc.y"
 { check_indicator((find_variable(yyvsp[0].str))->type); yyval.str = yyvsp[0].str; ;
     break;}
 case 1361:
-#line 5920 "preproc.y"
+#line 5924 "preproc.y"
 { check_indicator((find_variable(yyvsp[0].str))->type); yyval.str = yyvsp[0].str; ;
     break;}
 case 1362:
-#line 5921 "preproc.y"
+#line 5925 "preproc.y"
 { check_indicator((find_variable(yyvsp[0].str))->type); yyval.str = yyvsp[0].str; ;
     break;}
 case 1363:
-#line 5923 "preproc.y"
+#line 5927 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1364:
-#line 5924 "preproc.y"
+#line 5928 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1365:
-#line 5929 "preproc.y"
-{ yyval.str = yyvsp[0].str; ;
-    break;}
-case 1366:
-#line 5931 "preproc.y"
-{ yyval.str = yyvsp[0].str; ;
-    break;}
-case 1367:
 #line 5933 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
-case 1368:
+case 1366:
 #line 5935 "preproc.y"
+{ yyval.str = yyvsp[0].str; ;
+    break;}
+case 1367:
+#line 5937 "preproc.y"
+{ yyval.str = yyvsp[0].str; ;
+    break;}
+case 1368:
+#line 5939 "preproc.y"
 {
 			yyval.str = make2_str(yyvsp[-1].str, yyvsp[0].str);
 		;
     break;}
 case 1370:
-#line 5939 "preproc.y"
+#line 5943 "preproc.y"
 { yyval.str = make1_str(";"); ;
     break;}
 case 1371:
-#line 5941 "preproc.y"
+#line 5945 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1372:
-#line 5942 "preproc.y"
+#line 5946 "preproc.y"
 { yyval.str = make3_str(make1_str("\""), yyvsp[0].str, make1_str("\"")); ;
     break;}
 case 1373:
-#line 5943 "preproc.y"
+#line 5947 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1374:
-#line 5944 "preproc.y"
+#line 5948 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1375:
-#line 5945 "preproc.y"
+#line 5949 "preproc.y"
 { yyval.str = make1_str("*"); ;
     break;}
 case 1376:
-#line 5946 "preproc.y"
+#line 5950 "preproc.y"
 { yyval.str = make1_str("+"); ;
     break;}
 case 1377:
-#line 5947 "preproc.y"
+#line 5951 "preproc.y"
 { yyval.str = make1_str("-"); ;
     break;}
 case 1378:
-#line 5948 "preproc.y"
+#line 5952 "preproc.y"
 { yyval.str = make1_str("/"); ;
     break;}
 case 1379:
-#line 5949 "preproc.y"
+#line 5953 "preproc.y"
 { yyval.str = make1_str("%"); ;
     break;}
 case 1380:
-#line 5950 "preproc.y"
+#line 5954 "preproc.y"
 { yyval.str = make1_str("auto"); ;
     break;}
 case 1381:
-#line 5951 "preproc.y"
+#line 5955 "preproc.y"
 { yyval.str = make1_str("bool"); ;
     break;}
 case 1382:
-#line 5952 "preproc.y"
+#line 5956 "preproc.y"
 { yyval.str = make1_str("char"); ;
     break;}
 case 1383:
-#line 5953 "preproc.y"
+#line 5957 "preproc.y"
 { yyval.str = make1_str("const"); ;
     break;}
 case 1384:
-#line 5954 "preproc.y"
+#line 5958 "preproc.y"
 { yyval.str = make1_str("double"); ;
     break;}
 case 1385:
-#line 5955 "preproc.y"
+#line 5959 "preproc.y"
 { yyval.str = make1_str("enum"); ;
     break;}
 case 1386:
-#line 5956 "preproc.y"
+#line 5960 "preproc.y"
 { yyval.str = make1_str("extern"); ;
     break;}
 case 1387:
-#line 5957 "preproc.y"
+#line 5961 "preproc.y"
 { yyval.str = make1_str("float"); ;
     break;}
 case 1388:
-#line 5958 "preproc.y"
+#line 5962 "preproc.y"
 { yyval.str = make1_str("int"); ;
     break;}
 case 1389:
-#line 5959 "preproc.y"
+#line 5963 "preproc.y"
 { yyval.str = make1_str("long"); ;
     break;}
 case 1390:
-#line 5960 "preproc.y"
+#line 5964 "preproc.y"
 { yyval.str = make1_str("register"); ;
     break;}
 case 1391:
-#line 5961 "preproc.y"
+#line 5965 "preproc.y"
 { yyval.str = make1_str("short"); ;
     break;}
 case 1392:
-#line 5962 "preproc.y"
+#line 5966 "preproc.y"
 { yyval.str = make1_str("signed"); ;
     break;}
 case 1393:
-#line 5963 "preproc.y"
+#line 5967 "preproc.y"
 { yyval.str = make1_str("static"); ;
     break;}
 case 1394:
-#line 5964 "preproc.y"
+#line 5968 "preproc.y"
 { yyval.str = make1_str("struct"); ;
     break;}
 case 1395:
-#line 5965 "preproc.y"
+#line 5969 "preproc.y"
 { yyval.str = make1_str("union"); ;
     break;}
 case 1396:
-#line 5966 "preproc.y"
+#line 5970 "preproc.y"
 { yyval.str = make1_str("unsigned"); ;
     break;}
 case 1397:
-#line 5967 "preproc.y"
+#line 5971 "preproc.y"
 { yyval.str = make1_str("varchar"); ;
     break;}
 case 1398:
-#line 5968 "preproc.y"
+#line 5972 "preproc.y"
 { yyval.str = make_name(); ;
     break;}
 case 1399:
-#line 5969 "preproc.y"
+#line 5973 "preproc.y"
 { yyval.str = make1_str("["); ;
     break;}
 case 1400:
-#line 5970 "preproc.y"
+#line 5974 "preproc.y"
 { yyval.str = make1_str("]"); ;
     break;}
 case 1401:
-#line 5971 "preproc.y"
+#line 5975 "preproc.y"
 { yyval.str = make1_str("("); ;
     break;}
 case 1402:
-#line 5972 "preproc.y"
+#line 5976 "preproc.y"
 { yyval.str = make1_str(")"); ;
     break;}
 case 1403:
-#line 5973 "preproc.y"
+#line 5977 "preproc.y"
 { yyval.str = make1_str("="); ;
     break;}
 case 1404:
-#line 5974 "preproc.y"
+#line 5978 "preproc.y"
 { yyval.str = make1_str(","); ;
     break;}
 case 1405:
-#line 5976 "preproc.y"
+#line 5980 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1406:
-#line 5977 "preproc.y"
+#line 5981 "preproc.y"
 { yyval.str = make3_str(make1_str("\""), yyvsp[0].str, make1_str("\""));;
     break;}
 case 1407:
-#line 5978 "preproc.y"
-{ yyval.str = yyvsp[0].str; ;
-    break;}
-case 1408:
-#line 5979 "preproc.y"
-{ yyval.str = yyvsp[0].str; ;
-    break;}
-case 1409:
-#line 5980 "preproc.y"
-{ yyval.str = make1_str(","); ;
-    break;}
-case 1410:
 #line 5982 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
-case 1411:
+case 1408:
 #line 5983 "preproc.y"
+{ yyval.str = yyvsp[0].str; ;
+    break;}
+case 1409:
+#line 5984 "preproc.y"
+{ yyval.str = make1_str(","); ;
+    break;}
+case 1410:
+#line 5986 "preproc.y"
+{ yyval.str = yyvsp[0].str; ;
+    break;}
+case 1411:
+#line 5987 "preproc.y"
 { yyval.str = make3_str(make1_str("\""), yyvsp[0].str, make1_str("\"")); ;
     break;}
 case 1412:
-#line 5984 "preproc.y"
+#line 5988 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1413:
-#line 5985 "preproc.y"
+#line 5989 "preproc.y"
 { yyval.str = yyvsp[0].str; ;
     break;}
 case 1414:
-#line 5986 "preproc.y"
+#line 5990 "preproc.y"
 { yyval.str = make3_str(make1_str("{"), yyvsp[-1].str, make1_str("}")); ;
     break;}
 case 1415:
-#line 5988 "preproc.y"
+#line 5992 "preproc.y"
 {
     braces_open++;
     yyval.str = make1_str("{");
 ;
     break;}
 case 1416:
-#line 5993 "preproc.y"
+#line 5997 "preproc.y"
 {
     remove_variables(braces_open--);
     yyval.str = make1_str("}");
@@ -16974,7 +16978,7 @@ yyerrhandle:
   yystate = yyn;
   goto yynewstate;
 }
-#line 5998 "preproc.y"
+#line 6002 "preproc.y"
 
 
 void yyerror(char * error)

@@ -381,7 +381,7 @@ CopyTo(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
 	int32		ntuples;
 	TupleDesc	tupDesc;
 
-	scandesc = heap_beginscan(rel, 0, SnapshotNow, 0, NULL);
+	scandesc = heap_beginscan(rel, 0, QuerySnapshot, 0, NULL);
 
 	attr_count = rel->rd_att->natts;
 	attr = rel->rd_att->attrs;
@@ -1363,7 +1363,7 @@ CountTuples(Relation relation)
 
 	int			i;
 
-	scandesc = heap_beginscan(relation, 0, SnapshotNow, 0, NULL);
+	scandesc = heap_beginscan(relation, 0, QuerySnapshot, 0, NULL);
 
 	i = 0;
 	while (HeapTupleIsValid(tuple = heap_getnext(scandesc, 0)))
