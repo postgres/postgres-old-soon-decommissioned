@@ -352,6 +352,7 @@ INET_ATON   = @INET_ATON@
 ISINF       = @ISINF@
 MEMCMP      = @MEMCMP@
 MISSING_RANDOM = @MISSING_RANDOM@
+QSORT       = @QSORT@
 SNPRINTF    = @SNPRINTF@
 SRANDOM     = @SRANDOM@
 STRCASECMP  = @STRCASECMP@
@@ -360,7 +361,7 @@ STRERROR    = @STRERROR@
 STRTOL      = @STRTOL@
 STRTOUL     = @STRTOUL@
 
-# Used by the backend
+# Not really standard libc functions, used by the backend.
 DLLINIT     = @DLLINIT@
 TAS         = @TAS@
 

@@ -932,6 +932,13 @@ case $host_os in
 esac
 AC_SUBST(DLLINIT)
 
+# Set path of qsort for solaris, which has a very slow qsort in certain cases.
+QSORT=""
+case $host_os in 
+  solaris*) DLLINIT='$(top_builddir)/src/backend/port/qsort.o' ;;
+esac
+AC_SUBST(QSORT)
+
 # On HPUX 9, rint() is not in regular libm.a but in /lib/pa1.1/libm.a;
 # this hackery with HPUXMATHLIB allows us to cope.
 HPUXMATHLIB=""

@@ -15,9 +15,9 @@ subdir = src/port
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS=$(GETHOSTNAME) $(GETRUSAGE) $(INET_ATON) $(ISINF) $(MEMCMP) \
-        $(MISSING_RANDOM) $(SNPRINTF) $(SRANDOM) $(STRCASECMP) $(STRDUP) \
-	$(STRERROR) $(STRTOL) $(STRTOUL)
 
-distclean clean:
-	rm -f $(OBJS)
+#
+# The backend/port directory removes these files.
+#
+#distclean clean:
+#	rm -f $(OBJS)
