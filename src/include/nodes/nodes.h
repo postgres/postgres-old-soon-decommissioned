@@ -305,7 +305,6 @@ typedef enum CmdType
 	CMD_UPDATE,					/* update stmt (formerly replace) */
 	CMD_INSERT,					/* insert stmt (formerly append) */
 	CMD_DELETE,
-	CMD_NOTIFY,
 	CMD_UTILITY,				/* cmds like create, destroy, copy,
 								 * vacuum, etc. */
 	CMD_NOTHING					/* dummy command for instead nothing rules
