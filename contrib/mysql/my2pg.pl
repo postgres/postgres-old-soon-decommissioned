@@ -35,7 +35,7 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #
-# $My2pg: my2pg.pl,v 1.21 2001/08/25 18:55:28 fonin Exp $
+# $My2pg: my2pg.pl,v 1.22 2001/12/06 19:32:20 fonin Exp $
 # $Id$
 
 # TODO:
@@ -47,6 +47,12 @@
 
 #
 # $Log: my2pg.pl,v $
+# Revision 1.22  2001/12/06 19:32:20  fonin
+# Patch: On line 594 where you check for UNIQUE, I believe the regex should try
+# and match 'UNIQUE KEY'. Otherwise it outputs no unique indexes for the
+# postgres dump.
+# Thanks to Brad Hilton <bhilton@vpop.net>
+#
 # Revision 1.21  2001/08/25 18:55:28  fonin
 # Incorporated changes from Yunliang Yu <yu@math.duke.edu>:
 # - By default table & column names are not quoted; use the new
@@ -138,7 +144,7 @@ if($opts{d} ne '') {
 $|=1;
 
 print("------------------------------------------------------------------");
-print("\n-- My2Pg \$Revision: 1.5 $ \translated dump");
+print("\n-- My2Pg \$Revision: 1.6 $ \translated dump");
 print("\n--");
 print("\n------------------------------------------------------------------");
 
@@ -160,7 +166,7 @@ $libtypename.='/libtypes.so';
 # push header to libtypes.c
 open(LIBTYPES,">$libtypesource");
 print LIBTYPES "/******************************************************";
-print LIBTYPES "\n * My2Pg \$Revision: 1.5 $ \translated dump";
+print LIBTYPES "\n * My2Pg \$Revision: 1.6 $ \translated dump";
 print LIBTYPES "\n * User types definitions";
 print LIBTYPES "\n ******************************************************/";
 print LIBTYPES "\n\n#include <postgres.h>\n";
@@ -624,7 +630,7 @@ CREATE OPERATOR <> (
 	$tmpfld=~s/\s*,\s*/","/g if $dq;
 	$index{$table_name}[++$j]="CREATE INDEX ${ky}_$table_name\_index ON $dq$table_name$dq ($dq$tmpfld$dq);";
     }
-    if(/^\s*UNIQUE ([\w\d_]+)\s*\((.*)\).*/i) {
+    if(/^\s*UNIQUE.*?([\w\d_]+)\s*\((.*)\).*/i) {
 	my $tmpfld=$2; my $ky=$1;
 	$tmpfld=~s/,/","/g if $dq;
 	$index{$table_name}[++$j]="CREATE UNIQUE INDEX ${ky}_$table_name\_index ON $dq$table_name$dq ($dq$tmpfld$dq);";
@@ -691,7 +697,7 @@ close(LIBTYPES);
 
 open(MAKE,">Makefile");
 print MAKE "#
-# My2Pg \$Revision: 1.5 $ \translated dump
+# My2Pg \$Revision: 1.6 $ \translated dump
 # Makefile
 #
 
@@ -905,6 +911,7 @@ B<(c) 2000 Valentine V. Danilchuk (valdan@ziet.zhitomir.ua)>
 Jeff Waugh <jaw@ic.net>
 Joakim Lemström <jocke@bytewize.com> || <buddyh19@hotmail.com>
 Yunliang Yu <yu@math.duke.edu>
+Brad Hilton <bhilton@vpop.net>
 
 =head1 LICENSE
 
