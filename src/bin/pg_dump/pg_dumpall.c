@@ -468,6 +468,9 @@ runPgDump(const char *dbname)
 	if (verbose)
 		fprintf(stderr, _("%s: running %s\n"), progname, cmd->data);
 
+	fflush(stdout);
+	fflush(stderr);
+
 	ret = system(cmd->data);
 	destroyPQExpBuffer(cmd);
 
