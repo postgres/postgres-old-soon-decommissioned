@@ -187,7 +187,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"procedure", PROCEDURE},
 	{"public", PUBLIC},
 	{"read", READ},
-	{"recipe", RECIPE},
 	{"references", REFERENCES},
 	{"relative", RELATIVE},
 	{"rename", RENAME},
