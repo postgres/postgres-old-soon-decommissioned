@@ -46,7 +46,7 @@ namein(PG_FUNCTION_ARGS)
 	int			len;
 	char	   *ermsg;
 
-	/* veryfy encoding */
+	/* verify encoding */
 	len = strlen(s);
 	if ((ermsg = pg_verifymbstr(s, len)))
 		elog(ERROR, "%s", ermsg);

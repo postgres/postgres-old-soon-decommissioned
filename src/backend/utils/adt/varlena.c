@@ -1663,7 +1663,7 @@ byteacmp(PG_FUNCTION_ARGS)
 
 /*
  * replace_text
- * replace all occurences of 'old_sub_str' in 'orig_str'
+ * replace all occurrences of 'old_sub_str' in 'orig_str'
  * with 'new_sub_str' to form 'new_str'
  *
  * returns 'orig_str' if 'old_sub_str' == '' or 'orig_str' == ''

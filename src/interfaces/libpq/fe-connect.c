@@ -210,7 +210,7 @@ char *PasswordFromFile(char *hostname, char *port, char *dbname,
  * If it is desired to connect in a synchronous (blocking) manner, use the
  * function PQconnectdb.
  *
- * To connect in an asychronous (non-blocking) manner, use the functions
+ * To connect in an asynchronous (non-blocking) manner, use the functions
  * PQconnectStart, and PQconnectPoll.
  *
  * Internally, the static functions connectDBStart, connectDBComplete

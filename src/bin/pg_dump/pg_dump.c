@@ -932,7 +932,7 @@ dumpClasses_nodumpData(Archive *fout, char *oid, void *dctxv)
 		 * select(0, NULL, NULL, NULL, &tvi);
 		 *
 		 * This will return after the interval specified in the structure
-		 * tvi. Fianally, call gettimeofday again to save the 'last sleep
+		 * tvi. Finally, call gettimeofday again to save the 'last sleep
 		 * time'.
 		 */
 	}

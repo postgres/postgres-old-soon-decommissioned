@@ -115,7 +115,7 @@ px_get_random_bytes(uint8 *dst, unsigned count)
 
 	/*
 	 * OpenSSL random should re-feeded occasionally. From /dev/urandom
-	 * preferrably.
+	 * preferably.
 	 */
 
 	res = RAND_bytes(dst, count);

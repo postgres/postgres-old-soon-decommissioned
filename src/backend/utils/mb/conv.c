@@ -335,7 +335,7 @@ compare2(const void *p1, const void *p2)
  * UTF-8 ---> local code
  *
  * utf: input UTF-8 string. Its length is limited by "len" parameter
- *		or a null terminater.
+ *		or a null terminator.
  * iso: pointer to the output.
  * map: the conversion map.
  * size: the size of the conversion map.

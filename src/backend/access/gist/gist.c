@@ -465,7 +465,7 @@ gistlayerinsert(Relation r, BlockNumber blkno,
 		/*
 		 * After this call: 1. if child page was splited, then itup
 		 * contains keys for each page 2. if  child page wasn't splited,
-		 * then itup contains additional for adjustement of current key
+		 * then itup contains additional for adjustment of current key
 		 */
 		ret = gistlayerinsert(r, nblkno, itup, len, res, giststate);
 
@@ -551,7 +551,7 @@ gistlayerinsert(Relation r, BlockNumber blkno,
 			ItemPointerSet(&((*res)->pointerData), blkno, l);
 
 		if (*len > 1)
-		{						/* previos insert ret & SPLITED != 0 */
+		{						/* previous insert ret & SPLITED != 0 */
 			int			i;
 
 			/*

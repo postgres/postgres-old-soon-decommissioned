@@ -46,7 +46,7 @@ typedef uint16 OffsetNumber;
  * OffsetNumberPrev
  *		Increments/decrements the argument.  These macros look pointless
  *		but they help us disambiguate the different manipulations on
- *		OffsetNumbers (e.g., sometimes we substract one from an
+ *		OffsetNumbers (e.g., sometimes we subtract one from an
  *		OffsetNumber to move back, and sometimes we do so to form a
  *		real C array index).
  */

@@ -644,8 +644,8 @@ PLy_modify_tuple(PLyProcedure * proc, PyObject * pltd, TriggerData *tdata,
 						   modvalues, modnulls);
 
 	/*
-	 * FIXME -- these leak if not explicity pfree'd by other elog calls,
-	 * no?
+	 * FIXME -- these leak if not explicitly pfree'd by other elog
+	 * calls, no?
 	 */
 	pfree(modattrs);
 	pfree(modvalues);

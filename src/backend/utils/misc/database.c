@@ -33,7 +33,7 @@ static bool PhonyHeapTupleSatisfiesNow(HeapTupleHeader tuple);
  * pg_database.datpath) to a full absolute path for further consumption.
  * NULL means an error, which the caller should process. One reason for
  * such an error would be an absolute alternative path when no absolute
- * paths are alllowed.
+ * paths are allowed.
  */
 
 char *

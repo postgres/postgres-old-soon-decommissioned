@@ -264,7 +264,7 @@ extern void PQfreeNotify(PGnotify *notify);
 extern int	PQsendQuery(PGconn *conn, const char *query);
 extern PGresult *PQgetResult(PGconn *conn);
 
-/* Routines for managing an asychronous query */
+/* Routines for managing an asynchronous query */
 extern int	PQisBusy(PGconn *conn);
 extern int	PQconsumeInput(PGconn *conn);
 

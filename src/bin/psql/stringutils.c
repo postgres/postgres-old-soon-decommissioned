@@ -39,7 +39,7 @@ static void strip_quotes(char *source, char quote, char escape, int encoding);
  * Characters in 'delim', if any, will be returned as single-character
  * tokens unless part of a quoted token.
  *
- * Double occurences of the quoting character are always taken to represent
+ * Double occurrences of the quoting character are always taken to represent
  * a single quote character in the data.  If escape isn't 0, then escape
  * followed by anything (except \0) is a data character too.
  *

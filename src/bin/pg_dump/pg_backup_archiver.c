@@ -1661,7 +1661,7 @@ _discoverArchiveFormat(ArchiveHandle *AH)
 	if (fseeko(fh, 0, SEEK_SET) != 0)
 	{
 		/*
-		 * NOTE: Formats that use the looahead buffer can unset this in
+		 * NOTE: Formats that use the lookahead buffer can unset this in
 		 * their Init routine.
 		 */
 		AH->readHeader = 1;
@@ -2030,7 +2030,7 @@ _tocEntryRequired(TocEntry *te, RestoreOptions *ropt)
 	if (ropt->dataOnly)
 		res = res & REQ_DATA;
 
-	/* Mask it if we don't have a schema contribition */
+	/* Mask it if we don't have a schema contribution */
 	if (!te->defn || strlen(te->defn) == 0)
 		res = res & ~REQ_SCHEMA;
 

@@ -389,7 +389,7 @@ CommentAttribute(List *qualname, char *comment)
  *
  * This routine is used to add/drop any user-comments a user might
  * have regarding the specified database. The routine will check
- * security for owner permissions, and, if succesful, will then
+ * security for owner permissions, and, if successful, will then
  * attempt to find the oid of the database specified. Once found,
  * a comment is added/dropped using the CreateComments() routine.
  */
@@ -427,7 +427,7 @@ CommentDatabase(List *qualname, char *comment)
  *
  * This routine is used to add/drop any user-comments a user might
  * have regarding the specified namespace. The routine will check
- * security for owner permissions, and, if succesful, will then
+ * security for owner permissions, and, if successful, will then
  * attempt to find the oid of the namespace specified. Once found,
  * a comment is added/dropped using the CreateComments() routine.
  */
@@ -579,7 +579,7 @@ CommentRule(List *qualname, char *comment)
  * have regarding a TYPE. The type is specified by name
  * and, if found, and the user has appropriate permissions, a
  * comment will be added/dropped using the CreateComments() routine.
- * The type's name and the comments are the paramters to this routine.
+ * The type's name and the comments are the parameters to this routine.
  */
 static void
 CommentType(List *typename, char *comment)

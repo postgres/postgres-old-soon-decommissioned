@@ -91,7 +91,7 @@
  *				CommitTransactionBlock
  *				AbortTransactionBlock
  *
- *		These are invoked only in responce to a user "BEGIN WORK", "COMMIT",
+ *		These are invoked only in response to a user "BEGIN WORK", "COMMIT",
  *		or "ROLLBACK" command.  The tricky part about these functions
  *		is that they are called within the postgres main loop, in between
  *		the StartTransactionCommand() and CommitTransactionCommand().
@@ -236,7 +236,7 @@ static void *_RollbackData = NULL;
  *	SetTransactionFlushEnabled()
  *
  *	These are used to test and set the "TransactionFlushState"
- *	varable.  If this variable is true (the default), then
+ *	variable.  If this variable is true (the default), then
  *	the system will flush all dirty buffers to disk at the end
  *	of each transaction.   If false then we are assuming the
  *	buffer pool resides in stable main memory, in which case we

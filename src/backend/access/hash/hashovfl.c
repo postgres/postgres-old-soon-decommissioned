@@ -452,7 +452,7 @@ _hash_initbitmap(Relation rel,
 /*
  *	_hash_squeezebucket(rel, bucket)
  *
- *	Try to squeeze the tuples onto pages occuring earlier in the
+ *	Try to squeeze the tuples onto pages occurring earlier in the
  *	bucket chain in an attempt to free overflow pages. When we start
  *	the "squeezing", the page from which we start taking tuples (the
  *	"read" page) is the last bucket in the bucket chain and the page

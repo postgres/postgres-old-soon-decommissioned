@@ -787,7 +787,7 @@ PQsendQuery(PGconn *conn, const char *query)
 
 		/*
 		 * give the data a push, ignore the return value as ConsumeInput()
-		 * will do any aditional flushing if needed
+		 * will do any additional flushing if needed
 		 */
 		pqFlush(conn);
 	}
@@ -1448,7 +1448,7 @@ PQexec(PGconn *conn, const char *query)
 				pqCatenateResultError(lastResult, result->errMsg);
 				PQclear(result);
 				result = lastResult;
-				/* Make sure PQerrorMessage agrees with catenated result */
+				/* Make sure PQerrorMessage agrees with concatenated result */
 				resetPQExpBuffer(&conn->errorMessage);
 				appendPQExpBufferStr(&conn->errorMessage, result->errMsg);
 			}
