@@ -37,6 +37,7 @@
  *
  */
 #include <stdio.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
@@ -65,7 +66,6 @@ PacketReceive(Port *port,		/* receive port */
 	PacketLen	cc;				/* character count -- bytes recvd */
 	PacketLen	packetLen;		/* remaining packet chars to read */
 	Addr		tmp;			/* curr recv buf pointer */
-	int			addrLen = sizeof(struct sockaddr_in);
 	int			hdrLen;
 	int			flag;
 	int			decr;
