@@ -860,7 +860,10 @@ deepRewriteQuery(Query *parsetree)
 	 * the rule actions cannot find them.
 	 */
 	if (!instead)
-		rewritten = lappend(rewritten, parsetree);
+		if (parsetree->commandType == CMD_INSERT)
+			rewritten = lcons(parsetree, rewritten);
+		else
+			rewritten = lappend(rewritten, parsetree);
 
 	return rewritten;
 }
