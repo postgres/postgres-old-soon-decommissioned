@@ -292,6 +292,8 @@ DATA(insert OID = 1082 ( date      PGUID  4  10 t b t \054 0  0 date_in date_out
 DATA(insert OID = 1083 ( time      PGUID  8  16 f b t \054 0  0 time_in time_out time_in time_out i _null_ ));
 DATA(insert OID = 1182 ( _date     PGUID  -1 -1 f b t \054 0  1082 array_in array_out array_in array_out i _null_ ));
 DATA(insert OID = 1183 ( _time     PGUID  -1 -1 f b t \054 0  1083 array_in array_out array_in array_out d _null_ ));
+DATA(insert OID = 1296 ( timestamp PGUID  4  19 t b t \054 0  0 timestamp_in timestamp_out timestamp_in timestamp_out i _null_ ));
+
 /*
  * prototypes for functions in pg_type.c 
  */

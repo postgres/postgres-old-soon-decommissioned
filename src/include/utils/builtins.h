@@ -403,6 +403,18 @@ extern float64 gistnpage(Oid operatorObjectId, Oid indrelid, AttrNumber attribut
 /* tid.c */
 extern ItemPointer tidin(char *str);
 extern char *tidout(ItemPointer itemPtr);
+
+/* timestamp.c */
+extern int4 timestamp_in(char *timestamp_str);
+extern char *timestamp_out(int4 timestamp);
+extern int4 now(void);
+int4 timestampeq(int4 t1, int4 t2);
+int4 timestampne(int4 t1, int4 t2);
+int4 timestamplt(int4 t1, int4 t2);
+int4 timestampgt(int4 t1, int4 t2);
+int4 timestample(int4 t1, int4 t2);
+int4 timestampge(int4 t1, int4 t2);
+
 /* varchar.c */
 extern char *bpcharin(char *s, int dummy, int typlen);
 extern char *bpcharout(char *s);

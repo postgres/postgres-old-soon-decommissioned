@@ -463,6 +463,12 @@ DATA(insert OID = 1232 (  "~*"      PGUID 0 b t f  1043  25  16 0 1233  0 0 text
 DATA(insert OID = 1233 ( "!~*"      PGUID 0 b t f  1043  25  16 0 1232  0 0 texticregexne neqsel neqjoinsel ));
 DATA(insert OID = 1234 (  "~*"      PGUID 0 b t f  1042  25  16 0 1235  0 0 texticregexeq eqsel eqjoinsel ));
 DATA(insert OID = 1235 ( "!~*"      PGUID 0 b t f  1042  25  16 0 1234  0 0 texticregexne neqsel neqjoinsel ));
+DATA(insert OID = 1300 (  "="       PGUID 0 b t t  1296 1296 16 1300 1301 1302 1302 timestampeq eqsel eqjoinsel ));
+DATA(insert OID = 1301 (  "<>"      PGUID 0 b t f  1296 1296 16 1301 1300 0 0 timestampne neqsel neqjoinsel ));
+DATA(insert OID = 1302 (  "<"       PGUID 0 b t f  1296 1296 16 1303 1305 0 0 timestamplt intltsel intltjoinsel ));
+DATA(insert OID = 1303 (  ">"       PGUID 0 b t f  1296 1296 16 1302 1304 0 0 timestampgt intltsel intltjoinsel ));
+DATA(insert OID = 1304 (  "<="      PGUID 0 b t f  1296 1296 16 1305 1303 0 0 timestample intltsel intltjoinsel ));
+DATA(insert OID = 1305 (  ">="      PGUID 0 b t f  1296 1296 16 1304 1302 0 0 timestampge intltsel intltjoinsel ));
 
 
 
