@@ -348,7 +348,7 @@ then
     # executables, not dlopen'ed ones)
     # ----------
     case $host_platform in
-        *-*-cygwin*)
+        *-*-cygwin*|*-*-mingw)
             PATH=$libdir:$PATH
             export PATH
             ;;
