@@ -1316,9 +1316,8 @@ conninfo_parse(const char *conninfo, char *errorMessage)
 		 */
 		if (!strcmp(option->keyword, "user"))
 		{
-			tmp = fe_getauthname(errortmp);
-			if (tmp)
-				option->val = strdup(tmp);
+			option->val = fe_getauthname(errortmp);
+			continue;
 		}
 
 		/* ----------
@@ -1330,6 +1329,7 @@ conninfo_parse(const char *conninfo, char *errorMessage)
 			tmp = conninfo_getval("user");
 			if (tmp)
 				option->val = strdup(tmp);
+			continue;
 		}
 	}
 
