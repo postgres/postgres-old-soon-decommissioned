@@ -2308,11 +2308,11 @@ DATA(insert OID = 699 (  host				PGUID 12 f t t t 1 f 25 "869" 100 0 0 100  netw
 DESCR("show address octets only");
 DATA(insert OID = 730 (  text				PGUID 12 f t t t 1 f 25 "869" 100 0 0 100  network_show - ));
 DESCR("show all parts of inet/cidr value");
-DATA(insert OID = 1910 (  inet				PGUID 12 f t t t 1 f 869 "25" 100 0 0 100	text_inet - ));
+DATA(insert OID = 1713 (  inet				PGUID 12 f t t t 1 f 869 "25" 100 0 0 100	text_inet - ));
 DESCR("text to inet");
-DATA(insert OID = 1911 (  cidr				PGUID 12 f t t t 1 f 650 "25" 100 0 0 100	text_cidr - ));
+DATA(insert OID = 1714 (  cidr				PGUID 12 f t t t 1 f 650 "25" 100 0 0 100	text_cidr - ));
 DESCR("text to cidr");
-DATA(insert OID = 1912 (  set_masklen			PGUID 12 f t t t 2 f 869 "869 23" 100 0 0 100	inet_set_masklen - ));
+DATA(insert OID = 1715 (  set_masklen			PGUID 12 f t t t 2 f 869 "869 23" 100 0 0 100	inet_set_masklen - ));
 DESCR("change the netmask of an inet");
 
 DATA(insert OID =  1691 (  boolle			PGUID 12 f t t t 2 f 16 "16 16" 100 0 0 100  boolle - ));
