@@ -1531,7 +1531,7 @@ gunzip -c postgres.ps.gz \
 	<entry><systemitem>RS6000</></entry>
 	<entry>7.4</entry>
 	<entry>2003-10-25,
-	  Hans-J?rgen Sch?nig (<email>hs@cybertec.at</email>)</entry>
+	  Hans-J&uuml;rgen Sch&ouml;nig (<email>hs@cybertec.at</email>)</entry>
         <entry>see also <filename>doc/FAQ_AIX</filename></entry>
        </row>
        <row>
