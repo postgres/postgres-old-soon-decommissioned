@@ -137,7 +137,7 @@
    divided into 8 kB pages. The log record headers are described in
    <filename>access/xlog.h</filename>; record content is dependent on
    the type of event that is being logged.  Segment files are given
-   sequential numbers as names, starting at
+   ever-increasing numbers as names, starting at
    <filename>0000000000000000</filename>.  The numbers do not wrap, at
    present, but it should take a very long time to exhaust the
    available stock of numbers.
