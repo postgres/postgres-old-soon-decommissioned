@@ -30,6 +30,10 @@
 #include <kernel/OS.h>
 #endif
 
+#ifdef WIN32
+#include "win32/shmem.h"
+#endif
+
 #include "miscadmin.h"
 #include "storage/ipc.h"
 #include "storage/pg_shmem.h"
