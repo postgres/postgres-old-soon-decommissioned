@@ -2431,7 +2431,7 @@ BackendFinalize(Port *port)
 #ifdef EXEC_BACKEND
  	Assert(UsedShmemSegID != 0 && UsedShmemSegAddr != NULL);
 	/* database name at the end because it might contain commas */
-	snprintf(pbuf, NAMEDATALEN + 256, "%d,%d,%p,%s", port->sock,
+	snprintf(pbuf, NAMEDATALEN + 256, "%d,%d,%d,%p,%s", port->sock, canAcceptConnections(),
 					UsedShmemSegID, UsedShmemSegAddr, port->database_name);
 	av[ac++] = pbuf;
 #else
