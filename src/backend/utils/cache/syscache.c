@@ -34,6 +34,7 @@
 #include "catalog/pg_proc.h"
 #include "catalog/pg_rewrite.h"
 #include "catalog/pg_shadow.h"
+#include "catalog/pg_statistic.h"
 #include "catalog/pg_type.h"
 #include "utils/catcache.h"
 #include "utils/temprel.h"
@@ -368,7 +369,7 @@ NULL,NULL
 		},
 		offsetof(FormData_pg_statistic, stacommonval),
 		StatisticRelidAttnumOpIndex,
-	StatisticRelidAttnumOpIndexScan},
+	(ScanFunc) StatisticRelidAttnumOpIndexScan},
 	{TypeRelationName,			/* TYPENAME */
 		1,
 		{
