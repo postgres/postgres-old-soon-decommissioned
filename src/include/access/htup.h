@@ -13,6 +13,7 @@
 #ifndef HTUP_H
 #define HTUP_H
 
+#include <utils/nabstime.h>
 #include <storage/bufpage.h>
 #include <storage/itemptr.h>
 #include <utils/memutils.h>
