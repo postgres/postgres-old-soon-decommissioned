@@ -478,7 +478,8 @@ mmblindwrt(char *dbstr,
 		   Oid dbid,
 		   Oid relid,
 		   BlockNumber blkno,
-		   char *buffer)
+		   char *buffer,
+		   bool dofsync)
 {
 	return SM_FAIL;
 }
