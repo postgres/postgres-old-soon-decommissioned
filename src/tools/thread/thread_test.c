@@ -83,7 +83,7 @@ defines to your template/$port file before compiling this program.\n\n"
 	pthread_create(&thread2, NULL, (void * (*)(void *)) func_call_2, NULL);
 
 	while (thread1_done == 0 || thread2_done == 0)
-		sched_yield();	/* force system call */
+		sched_yield();	/* if this is a portability problem, remove it */
 
 	printf("Add this to your template/$port file:\n\n");
 
@@ -129,7 +129,7 @@ void func_call_1(void) {
 	 */
 	errno1_set = 1;
 	while (errno2_set == 0)
-		sched_yield();	/* force system call */
+		sched_yield();
 	if (errno != EEXIST)
 	{
 			fprintf(stderr, "errno not thread-safe; exiting\n");
@@ -184,7 +184,7 @@ void func_call_2(void) {
 	 */
 	errno2_set = 1;
 	while (errno1_set == 0)
-		sched_yield();	/* force system call */
+		sched_yield();
 	if (errno != ENOENT)
 	{
 			fprintf(stderr, "errno not thread-safe; exiting\n");
