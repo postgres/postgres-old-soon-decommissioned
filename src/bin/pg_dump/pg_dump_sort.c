@@ -30,7 +30,7 @@ static const int oldObjectTypePriority[] =
 	1,							/* DO_NAMESPACE */
 	2,							/* DO_TYPE */
 	2,							/* DO_FUNC */
-	2,							/* DO_AGG */
+	3,							/* DO_AGG */
 	3,							/* DO_OPERATOR */
 	4,							/* DO_OPCLASS */
 	5,							/* DO_CONVERSION */
