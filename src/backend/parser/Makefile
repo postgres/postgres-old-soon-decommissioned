@@ -15,7 +15,7 @@ INCLUDE_OPT= -I.. \
              -I../port/$(PORTNAME) \
              -I../../include
 
-CFLAGS+= $(INCLUDE_OPT)
+CFLAGS+= $(INCLUDE_OPT) -Wno-error
 
 OBJS= analyze.o catalog_utils.o dbcommands.o gram.o \
       keywords.o parser.o parse_query.o scan.o scansup.o sysfunc.o

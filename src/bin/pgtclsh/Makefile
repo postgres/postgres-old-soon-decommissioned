@@ -25,12 +25,12 @@ all: pgtclsh pgtksh
 
 pgtclsh: pgtclAppInit.o
 	$(CC) $(CFLAGS) -o $@ pgtclAppInit.o \
-	  $(LIBPGTCL) $(LIBPQ) -L$(TCL_LIBDIR) $(TCL_LIB) -lm $(LD_ADD)
+	  $(LIBPGTCL) $(LIBPQ) -L$(TCL_LIBDIR) $(TCL_LIB) -lm $(LDFLAGS)
 
 pgtksh: pgtkAppInit.o
 	$(CC) $(CFLAGS) -o $@ pgtkAppInit.o \
 	  $(LIBPGTCL) $(LIBPQ) -L$(TCL_LIBDIR) -L$(TK_LIBDIR) -L$(X11_LIBDIR) \
-	  $(TK_LIB) $(TCL_LIB) -lX11 -lm $(LD_ADD)
+	  $(TK_LIB) $(TCL_LIB) -lX11 -lm $(LDFLAGS)
 
 install: pgtclsh pgtksh
 	$(INSTALL) $(INSTL_EXE_OPTS) pgtclsh $(DESTDIR)$(BINDIR)/pgtclsh

@@ -13,14 +13,11 @@
 
 LIBPQDIR:= $(SRCDIR)/libpq
 
-#LD_ADD+= -L$(SRCDIR)/libpq -lpq
-#DPADD+= -L$(SRCDIR)/libpq -lpq
-
 #
 # And where libpq goes, so goes the authentication stuff...
 #
 ifdef KRBVERS
-LD_ADD+= $(KRBLIBS)
+LDFLAGS+= $(KRBLIBS)
 CFLAGS+= $(KRBFLAGS)
 endif
 

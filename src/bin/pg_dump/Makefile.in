@@ -20,7 +20,7 @@ OBJS= pg_dump.o common.o @STRDUP@
 all: submake pg_dump
 
 pg_dump: $(OBJS) $(LIBPQDIR)/libpq.a
-	$(CC) $(LDFLAGS) -o pg_dump -L$(LIBPQDIR) $(OBJS) -lpq $(LD_ADD)
+	$(CC) -o pg_dump -L$(LIBPQDIR) $(OBJS) -lpq $(LDFLAGS)
 
 ../../utils/strdup.o:
 	$(MAKE) -C ../../utils strdup.o

@@ -40,13 +40,13 @@ ifeq ($(PORTNAME), BSD44_derived)
   install-shlib-dep := install-shlib
   shlib := libpq.so.1.0
   LDFLAGS_SL = -x -Bshareable -Bforcearchive
-  CFLAGS += -fpic -DPIC
+  CFLAGS += $(CFLAGS_SL)
 endif
 ifeq ($(PORTNAME), i386_solaris)
   install-shlib-dep := install-shlib
   shlib := libpq.so.1
   LDFLAGS_SL = -G -z text
-  CFLAGS += -fPIC
+  CFLAGS += $(CFLAGS_SL)
 endif
 
 all: libpq.a $(shlib) c.h
@@ -76,7 +76,7 @@ pqcomprim.c:	    ../backend/libpq/pqcomprim.c
 	$(MAKE) -C ../backend fmgr.h
 
 $(shlib): $(OBJS)
-	$(LD) $(LDFLAGS) $(LDFLAGS_SL) -o $@ $(OBJS)
+	$(LD) $(LDFLAGS_SL) -o $@ $(OBJS) 
 	ln -sf $@ libpq.so
 
 

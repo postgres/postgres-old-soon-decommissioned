@@ -20,7 +20,7 @@ OBJS= pg_id.o
 all: pg_id
 
 pg_id: $(OBJS) $(LIBPQDIR)/libpq.a
-	$(CC) $(LDFLAGS) -o pg_id -L$(LIBPQDIR) $(OBJS) -lpq $(LD_ADD)
+	$(CC) -o pg_id -L$(LIBPQDIR) $(OBJS) -lpq $(LDFLAGS)
 
 $(LIBPQDIR)/libpq.a:
 	$(MAKE) -C $(LIBPQDIR) libpq.a

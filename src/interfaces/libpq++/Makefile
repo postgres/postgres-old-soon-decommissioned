@@ -46,7 +46,7 @@ ifeq ($(PORTNAME), i386_solaris)
   INSTALL-SHLIB-DEP := install-shlib
   SHLIB := libpq++.so.1
   LDFLAGS_SL = -G -z text
-  CFLAGS += -fPIC
+  CFLAGS += $(CFLAGS_SL)
 endif
 
 all: $(LIBNAME).a $(SHLIB) install examples

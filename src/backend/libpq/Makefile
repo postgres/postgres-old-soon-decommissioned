@@ -20,7 +20,7 @@ CFLAGS+=$(INCLUDE_OPT)
 # kerberos flags
 ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)
-LDADD+= $(KRBLIBS)
+LDFLAGS+= $(KRBLIBS)
 endif
 
 OBJS = be-dumpdata.o be-fsstubs.o be-pqexec.o pqcomprim.o\

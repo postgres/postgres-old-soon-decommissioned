@@ -24,7 +24,7 @@ OBJS= psql.o stringutils.o @STRDUP@
 all: submake psql
 
 psql: $(OBJS) $(LIBPQDIR)/libpq.a
-	$(CC) $(LDFLAGS) -o psql -L$(LIBPQDIR) $(OBJS) -lpq $(LD_ADD)
+	$(CC) -o psql -L$(LIBPQDIR) $(OBJS) -lpq $(LDFLAGS)
 
 ../../utils/strdup.o:
 	$(MAKE) -C ../../utils strdup.o

@@ -20,7 +20,7 @@ OBJS= pg_version.o ../../utils/version.o
 all: pg_version
 
 pg_version: submake $(OBJS)
-	$(CC) $(LDFLAGS) -o pg_version $(OBJS) $(LD_ADD)
+	$(CC) -o pg_version $(OBJS) $(LDFLAGS)
 
 .PHONY: submake
 submake:
