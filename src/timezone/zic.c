@@ -152,10 +152,6 @@ static void usage(void);
 static void writezone(const char *name);
 static int	yearistype(int year, const char *type);
 
-#ifndef HAVE_STRERROR
-static char *strerror(int);
-#endif
-
 static int	charcnt;
 static int	errors;
 static const char *filename;
@@ -375,8 +371,7 @@ static char roll[TZ_MAX_LEAPS];
  */
 
 static char *
-memcheck(ptr)
-char	   *const ptr;
+memcheck(char *ptr)
 {
 	if (ptr == NULL)
 	{
@@ -397,18 +392,6 @@ char	   *const ptr;
 /*
  * Error handling.
  */
-
-#ifndef HAVE_STRERROR
-static char *
-strerror(int errnum)
-{
-	extern char *sys_errlist[];
-	extern int	sys_nerr;
-
-	return (errnum > 0 && errnum <= sys_nerr) ?
-		sys_errlist[errnum] : _("Unknown system error");
-}
-#endif
 
 static void
 eats(const char *name, const int num, const char *rname, const int rnum)
