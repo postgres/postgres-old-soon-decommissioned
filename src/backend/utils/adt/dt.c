@@ -3174,6 +3174,7 @@ printf( "DecodeDateDelta- field[%d] is %s (type %d)\n", ii, field[ii], ftype[ii]
 #endif
 	if (ftype[ii] == DTK_TIME) {
 	    if (DecodeTime(field[ii], fmask, &tmask, tm, fsec) != 0) return -1;
+	    fmask |= tmask;
 
 	} else {
 	    break;
