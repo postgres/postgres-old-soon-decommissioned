@@ -747,6 +747,9 @@ replace_agg_clause(Node *clause, List *subplanTargetList)
 	List	   *t;
 	List	   *agg_list = NIL;
 
+	if (clause == NULL)
+		return NIL;
+
 	if (IsA(clause, Var))
 	{
 		TargetEntry *subplanVar;
@@ -864,6 +867,9 @@ del_agg_clause(Node *clause)
 {
 	List	   *t;
 
+	if (clause == NULL)
+		return clause;
+
 	if (IsA(clause, Var))
 		return clause;
 	else if (is_funcclause(clause))
@@ -941,6 +947,9 @@ List *
 check_having_qual_for_vars(Node *clause, List *targetlist_so_far)
 {
 	List	   *t;
+
+	if (clause == NULL)
+		return targetlist_so_far;
 
 	if (IsA(clause, Var))
 	{
@@ -1034,6 +1043,9 @@ void
 check_having_for_ungrouped_vars(Node *clause, List *groupClause)
 {
 	List	   *t;
+
+	if (clause == NULL)
+		return;
 
 	if (IsA(clause, Var))
 	{
