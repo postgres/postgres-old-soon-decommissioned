@@ -132,7 +132,7 @@ manufacturer manufacturers[] = {
   ((unsigned long)((addr->a<<16)|(addr->b<<8)|(addr->c)))
 
 #define lobits(addr) \
-  ((unsigned long)((addr->c<<16)|(addr->e<<8)|(addr->f)))
+  ((unsigned long)((addr->d<<16)|(addr->e<<8)|(addr->f)))
 
 /*
  *	MAC address reader.  Accepts several common notations.
