@@ -6,9 +6,8 @@ ifeq ($(with_gnu_ld), yes)
 export_dynamic = -Wl,-E
 rpath = -Wl,-rpath,$(rpathdir)
 else
-rpath = -R$(rpathdir)
+rpath = -Wl,-R$(rpathdir)
 endif
-shlib_symbolic = -Wl,-Bsymbolic
 
 DLSUFFIX = .so
 ifeq ($(GCC), yes)
