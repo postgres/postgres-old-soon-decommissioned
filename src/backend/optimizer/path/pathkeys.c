@@ -520,6 +520,7 @@ build_index_pathkeys(Query *root,
 		funcnode->funcid = index->indproc;
 		funcnode->funcresulttype = get_func_rettype(index->indproc);
 		funcnode->funcretset = false;	/* can never be a set */
+		funcnode->funcformat = COERCE_DONTCARE;	/* to match any user expr */
 		funcnode->func_fcache = NULL;
 
 		while (*indexkeys != 0)

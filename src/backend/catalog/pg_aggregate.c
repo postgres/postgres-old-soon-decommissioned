@@ -95,7 +95,7 @@ AggregateCreate(const char *aggName,
 	 */
 	if (proc->proisstrict && agginitval == NULL)
 	{
-		if (!IsBinaryCompatible(aggBaseType, aggTransType))
+		if (!IsBinaryCoercible(aggBaseType, aggTransType))
 			elog(ERROR, "must not omit initval when transfn is strict and transtype is not compatible with input type");
 	}
 	ReleaseSysCache(tup);

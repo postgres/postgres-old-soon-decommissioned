@@ -147,6 +147,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"ilike", ILIKE},
 	{"immediate", IMMEDIATE},
 	{"immutable", IMMUTABLE},
+	{"implicit", IMPLICIT_P},
 	{"in", IN_P},
 	{"increment", INCREMENT},
 	{"index", INDEX},

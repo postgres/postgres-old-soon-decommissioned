@@ -420,8 +420,7 @@ generate_setop_tlist(List *colTypes, int flag,
 		}
 		else
 		{
-			expr = coerce_to_common_type(NULL,
-										 expr,
+			expr = coerce_to_common_type(expr,
 										 colType,
 										 "UNION/INTERSECT/EXCEPT");
 			colTypmod = -1;

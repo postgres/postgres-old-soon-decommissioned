@@ -24,6 +24,8 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+Mixed numeric-and-float expressions are evaluated as float, per SQL spec
+Explicit casts to char, varchar, bit, varbit will truncate or pad without error
 CREATE OR REPLACE VIEW, CREATE OR REPLACE RULE are available
 No-autocommit mode is available (set autocommit to off)
 Substantial improvements in functionality for functions returning sets

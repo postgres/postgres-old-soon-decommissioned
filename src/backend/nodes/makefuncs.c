@@ -215,13 +215,14 @@ makeAlias(const char *aliasname, List *colnames)
  *	  creates a RelabelType node
  */
 RelabelType *
-makeRelabelType(Node *arg, Oid rtype, int32 rtypmod)
+makeRelabelType(Node *arg, Oid rtype, int32 rtypmod, CoercionForm rformat)
 {
 	RelabelType *r = makeNode(RelabelType);
 
 	r->arg = arg;
 	r->resulttype = rtype;
 	r->resulttypmod = rtypmod;
+	r->relabelformat = rformat;
 
 	return r;
 }

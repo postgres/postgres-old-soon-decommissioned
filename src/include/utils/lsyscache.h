@@ -58,7 +58,6 @@ extern void getTypeInputInfo(Oid type, Oid *typInput, Oid *typElem);
 extern bool getTypeOutputInfo(Oid type, Oid *typOutput, Oid *typElem,
 				  bool *typIsVarlena);
 extern Oid	getBaseType(Oid typid);
-extern int32 getBaseTypeMod(Oid typid, int32 typmod);
 extern int32 get_typavgwidth(Oid typid, int32 typmod);
 extern int32 get_attavgwidth(Oid relid, AttrNumber attnum);
 extern bool get_attstatsslot(HeapTuple statstuple,

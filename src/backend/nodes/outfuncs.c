@@ -860,10 +860,11 @@ static void
 _outFunc(StringInfo str, Func *node)
 {
 	appendStringInfo(str,
-				   " FUNC :funcid %u :funcresulttype %u :funcretset %s ",
+		" FUNC :funcid %u :funcresulttype %u :funcretset %s :funcformat %d ",
 					 node->funcid,
 					 node->funcresulttype,
-					 booltostr(node->funcretset));
+					 booltostr(node->funcretset),
+					 (int) node->funcformat);
 }
 
 /*
@@ -914,9 +915,11 @@ _outRelabelType(StringInfo str, RelabelType *node)
 {
 	appendStringInfo(str, " RELABELTYPE :arg ");
 	_outNode(str, node->arg);
-
-	appendStringInfo(str, " :resulttype %u :resulttypmod %d ",
-					 node->resulttype, node->resulttypmod);
+	appendStringInfo(str,
+					 " :resulttype %u :resulttypmod %d :relabelformat %d ",
+					 node->resulttype,
+					 node->resulttypmod,
+					 (int) node->relabelformat);
 }
 
 /*

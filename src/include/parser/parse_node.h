@@ -57,6 +57,7 @@ extern Var *make_var(ParseState *pstate, RangeTblEntry *rte, int attrno);
 extern ArrayRef *transformArraySubscripts(ParseState *pstate,
 						 Node *arrayBase,
 						 Oid arrayType,
+						 int32 arrayTypMod,
 						 List *indirection,
 						 bool forceSlice,
 						 Node *assignFrom);

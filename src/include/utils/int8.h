@@ -29,6 +29,8 @@
 #define INT64_FORMAT "%ld"
 #endif
 
+extern bool scanint8(const char *str, bool errorOK, int64 *result);
+
 extern Datum int8in(PG_FUNCTION_ARGS);
 extern Datum int8out(PG_FUNCTION_ARGS);
 
@@ -105,6 +107,12 @@ extern Datum int82(PG_FUNCTION_ARGS);
 
 extern Datum i8tod(PG_FUNCTION_ARGS);
 extern Datum dtoi8(PG_FUNCTION_ARGS);
+
+extern Datum i8tof(PG_FUNCTION_ARGS);
+extern Datum ftoi8(PG_FUNCTION_ARGS);
+
+extern Datum i8tooid(PG_FUNCTION_ARGS);
+extern Datum oidtoi8(PG_FUNCTION_ARGS);
 
 extern Datum int8_text(PG_FUNCTION_ARGS);
 extern Datum text_int8(PG_FUNCTION_ARGS);

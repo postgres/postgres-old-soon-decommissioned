@@ -913,7 +913,7 @@ ExecInitAgg(Agg *node, EState *estate, Plan *parent)
 			 */
 			Oid			inputType = exprType(aggref->target);
 
-			if (!IsBinaryCompatible(inputType, aggform->aggtranstype))
+			if (!IsBinaryCoercible(inputType, aggform->aggtranstype))
 				elog(ERROR, "Aggregate %u needs to have compatible input type and transition type",
 					 aggref->aggfnoid);
 		}

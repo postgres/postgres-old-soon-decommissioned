@@ -16,6 +16,7 @@
 
 #include "nodes/parsenodes.h"
 
+
 extern A_Expr *makeA_Expr(int oper, List *name, Node *lexpr, Node *rexpr);
 
 extern A_Expr *makeSimpleA_Expr(int oper, const char *name,
@@ -52,7 +53,8 @@ extern Const *makeNullConst(Oid consttype);
 
 extern Alias *makeAlias(const char *aliasname, List *colnames);
 
-extern RelabelType *makeRelabelType(Node *arg, Oid rtype, int32 rtypmod);
+extern RelabelType *makeRelabelType(Node *arg, Oid rtype, int32 rtypmod,
+									CoercionForm rformat);
 
 extern RangeVar *makeRangeVar(char *schemaname, char *relname);
 
