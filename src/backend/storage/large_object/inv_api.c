@@ -998,10 +998,11 @@ inv_newtuple(LargeObjectDesc *obj_desc,
 
 	/* compute tuple size -- no nulls */
 	hoff = offsetof(HeapTupleHeaderData, t_bits);
+	hoff = DOUBLEALIGN(hoff);
 
 	/* add in olastbyte, varlena.vl_len, varlena.vl_dat */
 	tupsize = hoff + (2 * sizeof(int32)) + nwrite;
-	tupsize = LONGALIGN(tupsize);
+	tupsize = DOUBLEALIGN(tupsize);
 
 	/*
 	 * Allocate the tuple on the page, violating the page abstraction.
