@@ -520,8 +520,16 @@ pgstat_forkexec(STATS_PROCESS_TYPE procType)
 static void
 pgstat_parseArgs(PGSTAT_FORK_ARGS)
 {
-	Assert(argc == 12);
-	argc = 0;
+	Assert(argc == 14);
+
+	if (find_my_exec(argv[0], my_exec_path) < 0)
+		elog(FATAL,
+				gettext("%s: could not locate my own executable path"),
+						argv[0]);
+	
+	get_pkglib_path(my_exec_path, pkglib_path);
+
+	argc = 2;
 	pgStatSock 		= atoi(argv[argc++]);
 	pgStatPmPipe[0]	= atoi(argv[argc++]);
 	pgStatPmPipe[1]	= atoi(argv[argc++]);
