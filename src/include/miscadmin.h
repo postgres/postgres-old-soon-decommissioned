@@ -150,8 +150,6 @@ extern DLLIMPORT Oid MyDatabaseId;
  *	USE_ISO_DATES specifies ISO-compliant format
  *	USE_SQL_DATES specifies Oracle/Ingres-compliant format
  *	USE_GERMAN_DATES specifies German-style dd.mm/yyyy
- *	USE_ISO8601BASIC_DATES specifies ISO-8601-basic format (including
- *                         ISO compliant but non-human-friendly intervals)
  *
  * DateOrder defines the field order to be assumed when reading an
  * ambiguous date (anything not in YYYY-MM-DD format, with a four-digit
@@ -171,7 +169,6 @@ extern DLLIMPORT Oid MyDatabaseId;
 #define USE_ISO_DATES			1
 #define USE_SQL_DATES			2
 #define USE_GERMAN_DATES		3
-#define USE_ISO8601BASIC_DATES	4
 
 /* valid DateOrder values */
 #define DATEORDER_YMD			0
