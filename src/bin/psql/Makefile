@@ -15,7 +15,7 @@ include $(top_builddir)/src/Makefile.global
 
 REFDOCDIR= $(top_srcdir)/doc/src/sgml/ref
 
-override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS) -DFRONTEND
+override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS) -DFRONTEND -DSYSCONFDIR='"$(sysconfdir)"'
 
 OBJS=	command.o common.o help.o input.o stringutils.o mainloop.o copy.o \
 	startup.o prompt.o variables.o large_obj.o print.o describe.o \
@@ -50,6 +50,7 @@ distprep: $(srcdir)/sql_help.h $(srcdir)/psqlscan.c
 
 install: all installdirs
 	$(INSTALL_PROGRAM) psql$(X) $(DESTDIR)$(bindir)/psql$(X)
+	$(INSTALL_DATA) $(srcdir)/psql.rc.sample $(DESTDIR)$(datadir)/psql.rc.sample
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)
