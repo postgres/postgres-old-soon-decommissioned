@@ -135,9 +135,4 @@ extern void ProcessGUCArray(ArrayType *array, GucSource source);
 extern ArrayType *GUCArrayAdd(ArrayType *array, const char *name, const char *value);
 extern ArrayType *GUCArrayDelete(ArrayType *array, const char *name);
 
-#ifdef EXEC_BACKEND
-void write_nondefault_variables(GucContext context);
-void read_nondefault_variables(void);
-#endif
-
 #endif   /* GUC_H */
