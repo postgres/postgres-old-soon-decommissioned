@@ -317,7 +317,7 @@ TupleDescInitEntry(TupleDesc desc,
 	 *
 	 *	Note: in the special case of
 	 *
-	 *		create EMP (name = char16, manager = EMP)
+	 *		create EMP (name = text, manager = EMP)
 	 *
 	 *	RelationNameCreateHeapRelation() calls BuildDesc() which
 	 *	calls this routine and since EMP does not exist yet, the

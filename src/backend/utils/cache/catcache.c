@@ -79,7 +79,7 @@ static int	DisableCache;
  * ----------------
  */
 static long eqproc[] = {
-	F_BOOLEQ, 0l, F_CHAREQ, F_CHAR16EQ, 0l,
+	F_BOOLEQ, 0l, F_CHAREQ, F_NAMEEQ, 0l,
 	F_INT2EQ, F_KEYFIRSTEQ, F_INT4EQ, 0l, F_TEXTEQ,
 	F_OIDEQ, 0l, 0l, 0l, F_OID8EQ
 };

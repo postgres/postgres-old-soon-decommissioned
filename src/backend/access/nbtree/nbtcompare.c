@@ -102,30 +102,6 @@ btcharcmp(char a, char b)
 }
 
 int32
-btchar2cmp(uint16 a, uint16 b)
-{
-	return (strncmp((char *) &a, (char *) &b, 2));
-}
-
-int32
-btchar4cmp(uint32 a, uint32 b)
-{
-	return (strncmp((char *) &a, (char *) &b, 4));
-}
-
-int32
-btchar8cmp(char *a, char *b)
-{
-	return (strncmp(a, b, 8));
-}
-
-int32
-btchar16cmp(char *a, char *b)
-{
-	return (strncmp(a, b, 16));
-}
-
-int32
 btnamecmp(NameData *a, NameData *b)
 {
 	return (strncmp(a->data, b->data, NAMEDATALEN));

@@ -19,7 +19,7 @@
  *				Oid		   regproc	  RegProcedure
  *				aclitem
  *				struct varlena
- *				char8	   char16	   int28	  oid8
+ *				int28	  oid8
  *				bytea	   text
  *				NameData   Name
  *				oidint4    oidint2	  oidname
@@ -87,22 +87,6 @@ struct varlena
 
 typedef struct varlena bytea;
 typedef struct varlena text;
-
-typedef struct char8
-{
-	char		data[8];
-} char8;
-
-/* ----------------
- *		char16
- * ----------------
- */
-typedef struct char16
-{
-	char		data[16];
-} char16;
-
-typedef char16 *Char16;
 
 typedef int2 int28[8];
 typedef Oid oid8[8];

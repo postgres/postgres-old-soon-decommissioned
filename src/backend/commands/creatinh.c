@@ -179,7 +179,7 @@ RemoveRelation(char *name)
  *	  Here's an example:
  *
  *		create table person (name text, age int4, location point);
- *		create table emp (salary int4, manager char16) inherits(person);
+ *		create table emp (salary int4, manager text) inherits(person);
  *		create table student (gpa float8) inherits (person);
  *		create table stud_emp (percent int4) inherits (emp, student);
  *
