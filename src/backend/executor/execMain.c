@@ -124,7 +124,7 @@ ExecutorStart(QueryDesc *queryDesc, EState *estate)
 		memset(estate->es_param_exec_vals, 0, queryDesc->plantree->nParamExec * sizeof(ParamExecData));
 	}
 
-	estate->es_snapshot = SnapshotNow;
+	estate->es_snapshot = QuerySnapshot;
 
 	result = InitPlan(queryDesc->operation,
 					  queryDesc->parsetree,
