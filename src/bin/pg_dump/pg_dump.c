@@ -2575,6 +2575,10 @@ dumpOneFunc(FILE *fout, FuncInfo *finfo, int i,
 	int			j;
 	char	   *func_def;
 	char		func_lang[NAMEDATALEN + 1];
+	PGresult   *res;
+	int			nlangs;
+	int			i_lanname;
+	char		query[256];
 
 	if (finfo[i].dumped)
 		return;
@@ -2583,54 +2587,29 @@ dumpOneFunc(FILE *fout, FuncInfo *finfo, int i,
 
 	becomeUser(fout, finfo[i].usename);
 
-	if (finfo[i].lang == INTERNALlanguageId)
+	sprintf(query, "SELECT lanname FROM pg_language WHERE oid = %u",
+			finfo[i].lang);
+	res = PQexec(g_conn, query);
+	if (!res ||
+		PQresultStatus(res) != PGRES_TUPLES_OK)
 	{
-		func_def = finfo[i].prosrc;
-		strcpy(func_lang, "INTERNAL");
+		fprintf(stderr, "dumpOneFunc(): SELECT for procedural language failed.  Explanation from backend: '%s'.\n", PQerrorMessage(g_conn));
+		exit_nicely(g_conn);
 	}
-	else if (finfo[i].lang == ClanguageId)
+	nlangs = PQntuples(res);
+
+	if (nlangs != 1)
 	{
-		func_def = finfo[i].probin;
-		strcpy(func_lang, "C");
+		fprintf(stderr, "dumpOneFunc(): procedural language for function %s not found\n", finfo[i].proname);
+		exit_nicely(g_conn);
 	}
-	else if (finfo[i].lang == SQLlanguageId)
-	{
-		func_def = finfo[i].prosrc;
-		strcpy(func_lang, "SQL");
-	}
-	else
-	{
-		PGresult   *res;
-		int			nlangs;
-		int			i_lanname;
-		char		query[256];
 
-		sprintf(query, "SELECT lanname FROM pg_language "
-				"WHERE oid = %u",
-				finfo[i].lang);
-		res = PQexec(g_conn, query);
-		if (!res ||
-			PQresultStatus(res) != PGRES_TUPLES_OK)
-		{
-			fprintf(stderr, "dumpOneFunc(): SELECT for procedural language failed.  Explanation from backend: '%s'.\n", PQerrorMessage(g_conn));
-			exit_nicely(g_conn);
-		}
-		nlangs = PQntuples(res);
+	i_lanname = PQfnumber(res, "lanname");
 
-		if (nlangs != 1)
-		{
-			fprintf(stderr, "dumpOneFunc(): procedural language for function %s not found\n", finfo[i].proname);
-			exit_nicely(g_conn);
-		}
+	func_def = finfo[i].prosrc;
+	strcpy(func_lang, PQgetvalue(res, 0, i_lanname));
 
-		i_lanname = PQfnumber(res, "lanname");
-
-		func_def = finfo[i].prosrc;
-		strcpy(func_lang, PQgetvalue(res, 0, i_lanname));
-
-		PQclear(res);
-
-	}
+	PQclear(res);
 
 	if (dropSchema)
 	{

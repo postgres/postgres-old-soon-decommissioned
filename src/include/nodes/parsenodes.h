@@ -248,7 +248,7 @@ typedef struct CreateTrigStmt
 	bool		before;			/* BEFORE/AFTER */
 	bool		row;			/* ROW/STATEMENT */
 	char		actions[4];		/* Insert, Update, Delete */
-	char	   *lang;			/* NULL (which means Clanguage) */
+	char	   *lang;			/* currently not used, always NULL */
 	char	   *text;			/* AS 'text' */
 	List	   *attr;			/* UPDATE OF a, b,... (NI) or NULL */
 	char	   *when;			/* WHEN 'a > 10 ...' (NI) or NULL */

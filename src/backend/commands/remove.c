@@ -367,7 +367,8 @@ RemoveFunction(char *functionName,		/* function name to be removed */
 		func_error("RemoveFunction", functionName, nargs, argList, NULL);
 	}
 
-	if ((((Form_pg_proc) GETSTRUCT(tup))->prolang) == INTERNALlanguageId)
+	if (((Form_pg_proc) GETSTRUCT(tup))->prolang == INTERNALlanguageId ||
+		((Form_pg_proc) GETSTRUCT(tup))->prolang == NEWINTERNALlanguageId)
 	{
 		heap_close(relation, RowExclusiveLock);
 		elog(NOTICE, "Removing built-in function \"%s\"", functionName);
