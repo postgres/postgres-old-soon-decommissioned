@@ -4987,6 +4987,7 @@ extract_list:  extract_arg FROM a_expr
 		;
 
 extract_arg:  datetime						{ $$ = $1; }
+		| IDENT						{ $$ = $1; }
 		| TIMEZONE_HOUR						{ $$ = "tz_hour"; }
 		| TIMEZONE_MINUTE					{ $$ = "tz_minute"; }
 		;
