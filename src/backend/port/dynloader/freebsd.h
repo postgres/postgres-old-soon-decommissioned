@@ -34,6 +34,11 @@
  * begin with an underscore is fairly tricky, and some versions of
  * NetBSD (like 1.0, and 1.0A pre June 1995) have no dlerror.)
  */
+
+#ifndef RTLD_GLOBAL
+#define RTLD_GLOBAL 0
+#endif
+
 #define		   pg_dlopen(f)    BSD44_derived_dlopen((f), RTLD_LAZY | RTLD_GLOBAL)
 #define		   pg_dlsym		   BSD44_derived_dlsym
 #define		   pg_dlclose	   BSD44_derived_dlclose
