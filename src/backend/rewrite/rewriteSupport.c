@@ -65,7 +65,7 @@ RuleIdGetActionInfo(Oid ruleoid, bool *instead_flag, Query **parseTrees)
     rule_evqual_string = heap_getattr(ruletuple, InvalidBuffer, 
 				      Anum_pg_rewrite_ev_qual, 
 				      ruleTupdesc, &action_is_null) ;
-    *instead_flag = (bool) heap_getattr(ruletuple, InvalidBuffer, 
+    *instead_flag = !!heap_getattr(ruletuple, InvalidBuffer, 
 					Anum_pg_rewrite_is_instead, 
 					ruleTupdesc, &instead_is_null) ;
 
