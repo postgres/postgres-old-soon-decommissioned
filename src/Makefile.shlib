@@ -26,6 +26,12 @@
 #                       additional stuff to put in its link command
 # (If you want a patchlevel, include it in SO_MINOR_VERSION, e.g., "6.2".)
 #
+# Optional flags when building DLL's (only applicable to win32 and cygwin
+# platforms).
+# DLLTOOL_DEFFLAGS      Additional flags when creating the dll .def file
+# DLLTOOL_LIBFLAGS      Additional flags when creating the lib<module>.a file
+# DLLWRAP_FLAGS         Additional flags to dllwrap
+#
 # The module Makefile must also include
 # $(top_builddir)/src/Makefile.global before including this file.
 # (Makefile.global sets PORTNAME and other needed symbols.)
@@ -284,9 +290,9 @@ else # PORTNAME == win32
 
 # win32 case
 $(shlib) lib$(NAME).a: $(OBJS)
-	$(DLLTOOL) --export-all --output-def $(NAME).def $(OBJS)
-	$(DLLWRAP) -o $(shlib) --dllname $(shlib) --def $(NAME).def $(OBJS) $(SHLIB_LINK)
-	$(DLLTOOL) --dllname $(shlib) --def $(NAME).def --output-lib lib$(NAME).a
+	$(DLLTOOL) --export-all $(DLLTOOL_DEFFLAGS) --output-def $(NAME).def $(OBJS)
+	$(DLLWRAP) -o $(shlib) --dllname $(shlib) $(DLLWRAP_FLAGS) --def $(NAME).def $(OBJS) $(SHLIB_LINK)
+	$(DLLTOOL) --dllname $(shlib) $(DLLTOOL_LIBFLAGS) --def $(NAME).def --output-lib lib$(NAME).a
 
 endif # PORTNAME == win32
 
@@ -294,9 +300,9 @@ else # PORTNAME == cygwin
 
 # Cygwin case
 $(shlib) lib$(NAME).a: $(OBJS) $(DLLINIT)
-	$(DLLTOOL) --export-all --output-def $(NAME).def $(OBJS)
-	$(DLLWRAP) -o $(shlib) --dllname $(shlib) --def $(NAME).def $(OBJS) $(DLLINIT) $(SHLIB_LINK)
-	$(DLLTOOL) --dllname $(shlib) --def $(NAME).def --output-lib lib$(NAME).a
+	$(DLLTOOL) --export-all $(DLLTOOL_DEFFLAGS) --output-def $(NAME).def $(OBJS)
+	$(DLLWRAP) -o $(shlib) --dllname $(shlib) $(DLLWRAP_FLAGS) --def $(NAME).def $(OBJS) $(DLLINIT) $(SHLIB_LINK)
+	$(DLLTOOL) --dllname $(shlib) $(DLLTOOL_LIBFLAGS) --def $(NAME).def --output-lib lib$(NAME).a
 
 $(DLLINIT): $(DLLINIT:%.o=%.c)
 	$(MAKE) -C $(@D) $(@F)
