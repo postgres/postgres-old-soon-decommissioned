@@ -257,7 +257,6 @@ InitPostgres(const char *dbname)
 	}
 	else
 	{
-		char	   *reason;
 		char	   *fullpath,
 					datpath[MAXPGPATH];
 
