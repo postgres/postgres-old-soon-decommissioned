@@ -35,17 +35,10 @@
  * begin with an underscore is fairly tricky, and some versions of
  * NetBSD (like 1.0, and 1.0A pre June 1995) have no dlerror.)
  */
-#if !defined(__FreeBSD__)
 # define	pg_dlopen(f)	BSD44_derived_dlopen(f, 1)
 # define	pg_dlsym	BSD44_derived_dlsym
 # define	pg_dlclose	BSD44_derived_dlclose
 # define	pg_dlerror	BSD44_derived_dlerror
-#else
-# define	pg_dlopen(f)	dlopen(f, 1)
-# define	pg_dlsym	dlsym
-# define	pg_dlclose	dlclose
-# define	pg_dlerror	dlerror
-#endif
 
 char *		BSD44_derived_dlerror(void);
 void *		BSD44_derived_dlopen(const char *filename, int num);
