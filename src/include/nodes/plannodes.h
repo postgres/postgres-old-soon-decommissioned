@@ -318,7 +318,6 @@ typedef struct HashJoin
 {
 	Join		join;
 	List	   *hashclauses;
-	Oid			hashjoinop;
 	HashJoinState *hashjoinstate;
 } HashJoin;
 
@@ -443,7 +442,7 @@ typedef struct Limit
 typedef struct Hash
 {
 	Plan		plan;
-	Node	   *hashkey;
+	List	   *hashkeys;
 	HashState  *hashstate;
 } Hash;
 

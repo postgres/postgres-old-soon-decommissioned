@@ -677,7 +677,7 @@ SS_finalize_plan(Plan *plan, List *rtable)
 			break;
 
 		case T_Hash:
-			finalize_primnode(((Hash *) plan)->hashkey,
+			finalize_primnode((Node *) ((Hash *) plan)->hashkeys,
 							  &results);
 			break;
 

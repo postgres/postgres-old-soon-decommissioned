@@ -616,7 +616,7 @@ create_mergejoin_path(Query *root,
  * 'outer_path' is the cheapest outer path
  * 'inner_path' is the cheapest inner path
  * 'restrict_clauses' are the RestrictInfo nodes to apply at the join
- * 'hashclauses' is a list of the hash join clause (always a 1-element list)
+ * 'hashclauses' are the RestrictInfo nodes to use as hash clauses
  *		(this should be a subset of the restrict_clauses list)
  */
 HashPath *

@@ -538,7 +538,6 @@ _outHashJoin(StringInfo str, HashJoin *node)
 	_outJoinPlanInfo(str, (Join *) node);
 
 	WRITE_NODE_FIELD(hashclauses);
-	WRITE_OID_FIELD(hashjoinop);
 }
 
 static void
@@ -634,7 +633,7 @@ _outHash(StringInfo str, Hash *node)
 
 	_outPlanInfo(str, (Plan *) node);
 
-	WRITE_NODE_FIELD(hashkey);
+	WRITE_NODE_FIELD(hashkeys);
 }
 
 static void

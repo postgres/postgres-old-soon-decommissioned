@@ -24,10 +24,10 @@ extern HashJoinTable ExecHashTableCreate(Hash *node);
 extern void ExecHashTableDestroy(HashJoinTable hashtable);
 extern void ExecHashTableInsert(HashJoinTable hashtable,
 					ExprContext *econtext,
-					Node *hashkey);
+					List *hashkeys);
 extern int ExecHashGetBucket(HashJoinTable hashtable,
 				  ExprContext *econtext,
-				  Node *hashkey);
+				  List *hashkeys);
 extern HeapTuple ExecScanHashBucket(HashJoinState *hjstate, List *hjclauses,
 				   ExprContext *econtext);
 extern void ExecHashTableReset(HashJoinTable hashtable, long ntuples);
