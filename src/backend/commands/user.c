@@ -27,6 +27,7 @@
 #include "commands/user.h"
 #include "libpq/crypt.h"
 #include "miscadmin.h"
+#include "storage/fd.h"
 #include "storage/pmsignal.h"
 #include "utils/acl.h"
 #include "utils/array.h"

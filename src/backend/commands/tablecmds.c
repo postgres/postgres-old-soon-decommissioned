@@ -1010,7 +1010,7 @@ setRelhassubclassInRelation(Oid relationId, bool relhassubclass)
 	else
 	{
 		/* no need to change tuple, but force relcache rebuild anyway */
-		CacheInvalidateRelcache(relationId);
+		CacheInvalidateRelcacheByTuple(tuple);
 	}
 
 	heap_freetuple(tuple);

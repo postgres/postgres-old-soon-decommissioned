@@ -24,7 +24,6 @@ extern Relation RelationSysNameGetRelation(const char *relationName);
 
 /* finds an existing cache entry, but won't make a new one */
 extern Relation RelationIdCacheGetRelation(Oid relationId);
-extern Relation RelationNodeCacheGetRelation(RelFileNode rnode);
 
 extern void RelationClose(Relation relation);
 
@@ -61,7 +60,7 @@ extern Relation RelationBuildLocalRelation(const char *relname,
  */
 extern void RelationForgetRelation(Oid rid);
 
-extern void RelationIdInvalidateRelationCacheByRelationId(Oid relationId);
+extern void RelationCacheInvalidateEntry(Oid relationId, RelFileNode *rnode);
 
 extern void RelationCacheInvalidate(void);
 
@@ -72,11 +71,6 @@ extern void AtEOXact_RelationCache(bool commit);
  */
 extern bool RelationIdIsInInitFile(Oid relationId);
 extern void RelationCacheInitFileInvalidate(bool beforeSend);
-
-/* XLOG support */
-extern void CreateDummyCaches(void);
-extern void DestroyDummyCaches(void);
-
 
 /* should be used only by relcache.c and catcache.c */
 extern bool criticalRelcachesBuilt;

@@ -72,15 +72,6 @@ typedef FormData_pg_database *Form_pg_database;
 
 DATA(insert OID = 1 (  template1 PGUID ENCODING t t 0 0 0 "" _null_ _null_ ));
 DESCR("Default template database");
-
 #define TemplateDbOid			1
-
-/* Just to mark OID as used for unused_oid script -:) */
-#define DATAMARKOID(x)
-
-DATAMARKOID(= 2)
-#define RecoveryDb	2
-
-#undef DATAMARKOID
 
 #endif   /* PG_DATABASE_H */

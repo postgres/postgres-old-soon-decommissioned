@@ -48,6 +48,7 @@
 #include "parser/parse_type.h"
 #include "rewrite/rewriteDefine.h"
 #include "rewrite/rewriteRemove.h"
+#include "storage/fd.h"
 #include "tcop/pquery.h"
 #include "tcop/utility.h"
 #include "utils/acl.h"

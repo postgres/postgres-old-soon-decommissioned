@@ -12,7 +12,7 @@ subdir = src/backend/storage/smgr
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = md.o mm.o smgr.o smgrtype.o
+OBJS = md.o smgr.o smgrtype.o
 
 all: SUBSYS.o
 

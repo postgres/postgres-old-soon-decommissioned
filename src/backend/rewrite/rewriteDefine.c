@@ -480,7 +480,12 @@ DefineQueryRewrite(RuleStmt *stmt)
 	 * XXX what about getting rid of its TOAST table?  For now, we don't.
 	 */
 	if (RelisBecomingView)
-		smgrunlink(DEFAULT_SMGR, event_relation);
+	{
+		if (event_relation->rd_smgr == NULL)
+			event_relation->rd_smgr = smgropen(event_relation->rd_node);
+		smgrscheduleunlink(event_relation->rd_smgr, event_relation->rd_istemp);
+		event_relation->rd_smgr = NULL;
+	}
 
 	/* Close rel, but keep lock till commit... */
 	heap_close(event_relation, NoLock);

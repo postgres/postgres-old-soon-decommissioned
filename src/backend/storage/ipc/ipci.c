@@ -66,9 +66,6 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 #ifdef EXEC_BACKEND
 	size += ShmemBackendArraySize();
 #endif
-#ifdef STABLE_MEMORY_STORAGE
-	size += MMShmemSize();
-#endif
 	size += 100000;
 	/* might as well round it off to a multiple of a typical page size */
 	size += 8192 - (size % 8192);

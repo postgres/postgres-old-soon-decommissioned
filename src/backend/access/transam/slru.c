@@ -19,6 +19,7 @@
 #include <unistd.h>
 
 #include "access/slru.h"
+#include "storage/fd.h"
 #include "storage/lwlock.h"
 #include "miscadmin.h"
 

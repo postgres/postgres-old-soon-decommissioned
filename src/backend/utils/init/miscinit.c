@@ -33,6 +33,7 @@
 #include "catalog/pg_shadow.h"
 #include "libpq/libpq-be.h"
 #include "miscadmin.h"
+#include "storage/fd.h"
 #include "storage/ipc.h"
 #include "storage/pg_shmem.h"
 #include "utils/builtins.h"

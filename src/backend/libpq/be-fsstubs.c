@@ -41,6 +41,7 @@
 #include "libpq/be-fsstubs.h"
 #include "libpq/libpq-fs.h"
 #include "miscadmin.h"
+#include "storage/fd.h"
 #include "storage/large_object.h"
 #include "utils/memutils.h"
 

@@ -20,7 +20,6 @@
 #include "catalog/pg_index.h"
 #include "rewrite/prs2lock.h"
 #include "storage/block.h"
-#include "storage/fd.h"
 #include "storage/relfilenode.h"
 
 
@@ -98,16 +97,16 @@ typedef struct PgStat_Info
 	bool		index_scan_counted;
 } PgStat_Info;
 
+
 /*
  * Here are the contents of a relation cache entry.
  */
 
 typedef struct RelationData
 {
-	File		rd_fd;			/* open file descriptor, or -1 if
-								 * none; this is NOT an operating
-								 * system file descriptor */
-	RelFileNode rd_node;		/* file node (physical identifier) */
+	RelFileNode rd_node;		/* relation physical identifier */
+	/* use "struct" here to avoid needing to include smgr.h: */
+	struct SMgrRelationData *rd_smgr; /* cached file handle, or NULL */
 	BlockNumber rd_nblocks;		/* number of blocks in rel */
 	BlockNumber rd_targblock;	/* current insertion target block, or
 								 * InvalidBlockNumber */
@@ -225,14 +224,6 @@ typedef Relation *RelationPtr;
  *		Returns the OID of the relation
  */
 #define RelationGetRelid(relation) ((relation)->rd_id)
-
-/*
- * RelationGetFile
- *	  Returns the open file descriptor for the rel, or -1 if
- *	  none. This is NOT an operating system file descriptor; see md.c
- *	  for more information
- */
-#define RelationGetFile(relation) ((relation)->rd_fd)
 
 /*
  * RelationGetNumberOfAttributes

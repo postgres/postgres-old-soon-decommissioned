@@ -159,6 +159,7 @@
 #include "executor/spi.h"
 #include "libpq/be-fsstubs.h"
 #include "miscadmin.h"
+#include "storage/fd.h"
 #include "storage/proc.h"
 #include "storage/sinval.h"
 #include "storage/smgr.h"

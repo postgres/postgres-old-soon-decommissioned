@@ -16,26 +16,21 @@
 
 #include "storage/smgr.h"
 
+
 typedef struct smgrid
 {
-	char	   *smgr_name;
+	const char	   *smgr_name;
 } smgrid;
 
 /*
  *	StorageManager[] -- List of defined storage managers.
- *
- *		The weird comma placement is to keep compilers happy no matter
- *		which of these is (or is not) defined.
  */
-
-static smgrid StorageManager[] = {
-	{"magnetic disk"},
-#ifdef STABLE_MEMORY_STORAGE
-	{"main memory"}
-#endif
+static const smgrid StorageManager[] = {
+	{"magnetic disk"}
 };
 
-static int	NStorageManagers = lengthof(StorageManager);
+static const int	NStorageManagers = lengthof(StorageManager);
+
 
 Datum
 smgrin(PG_FUNCTION_ARGS)

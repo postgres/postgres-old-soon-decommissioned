@@ -465,14 +465,12 @@ BootstrapMain(int argc, char *argv[])
 			break;
 
 		case BS_XLOG_CHECKPOINT:
-			CreateDummyCaches();
 			CreateCheckPoint(false, false);
 			SetSavedRedoRecPtr();		/* pass redo ptr back to
 										 * postmaster */
 			proc_exit(0);		/* done */
 
 		case BS_XLOG_BGWRITER:
-			CreateDummyCaches();
 			BufferBackgroundWriter();
 			proc_exit(0);		/* done */
 

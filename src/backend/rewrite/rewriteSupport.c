@@ -84,7 +84,7 @@ SetRelationRuleStatus(Oid relationId, bool relHasRules,
 	else
 	{
 		/* no need to change tuple, but force relcache rebuild anyway */
-		CacheInvalidateRelcache(relationId);
+		CacheInvalidateRelcacheByTuple(tuple);
 	}
 
 	heap_freetuple(tuple);

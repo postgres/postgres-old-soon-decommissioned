@@ -2513,7 +2513,9 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 	/* truncate relation, if needed */
 	if (blkno < nblocks)
 	{
-		blkno = smgrtruncate(DEFAULT_SMGR, onerel, blkno);
+		if (onerel->rd_smgr == NULL)
+			onerel->rd_smgr = smgropen(onerel->rd_node);
+		blkno = smgrtruncate(onerel->rd_smgr, blkno);
 		onerel->rd_nblocks = blkno;		/* update relcache immediately */
 		onerel->rd_targblock = InvalidBlockNumber;
 		vacrelstats->rel_pages = blkno; /* set new number of blocks */
@@ -2582,7 +2584,9 @@ vacuum_heap(VRelStats *vacrelstats, Relation onerel, VacPageList vacuum_pages)
 				(errmsg("\"%s\": truncated %u to %u pages",
 						RelationGetRelationName(onerel),
 						vacrelstats->rel_pages, relblocks)));
-		relblocks = smgrtruncate(DEFAULT_SMGR, onerel, relblocks);
+		if (onerel->rd_smgr == NULL)
+			onerel->rd_smgr = smgropen(onerel->rd_node);
+		relblocks = smgrtruncate(onerel->rd_smgr, relblocks);
 		onerel->rd_nblocks = relblocks; /* update relcache immediately */
 		onerel->rd_targblock = InvalidBlockNumber;
 		vacrelstats->rel_pages = relblocks;		/* set new number of

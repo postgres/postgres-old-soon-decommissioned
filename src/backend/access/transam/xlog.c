@@ -30,6 +30,7 @@
 #include "catalog/catversion.h"
 #include "catalog/pg_control.h"
 #include "storage/bufpage.h"
+#include "storage/fd.h"
 #include "storage/lwlock.h"
 #include "storage/pmsignal.h"
 #include "storage/proc.h"
@@ -3126,7 +3127,6 @@ ShutdownXLOG(int code, Datum arg)
 	MyXactMadeTempRelUpdate = false;
 
 	CritSectionCount++;
-	CreateDummyCaches();
 	CreateCheckPoint(true, true);
 	ShutdownCLOG();
 	CritSectionCount--;

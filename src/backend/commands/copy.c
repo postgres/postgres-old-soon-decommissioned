@@ -40,6 +40,7 @@
 #include "parser/parse_coerce.h"
 #include "parser/parse_relation.h"
 #include "rewrite/rewriteHandler.h"
+#include "storage/fd.h"
 #include "tcop/pquery.h"
 #include "tcop/tcopprot.h"
 #include "utils/acl.h"

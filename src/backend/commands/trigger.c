@@ -691,7 +691,7 @@ renametrig(Oid relid,
 		 * relcache entries.  (Ideally this should happen
 		 * automatically...)
 		 */
-		CacheInvalidateRelcache(relid);
+		CacheInvalidateRelcache(targetrel);
 	}
 	else
 	{

@@ -28,7 +28,9 @@ extern void CommandEndInvalidationMessages(bool isCommit);
 
 extern void CacheInvalidateHeapTuple(Relation relation, HeapTuple tuple);
 
-extern void CacheInvalidateRelcache(Oid relationId);
+extern void CacheInvalidateRelcache(Relation relation);
+
+extern void CacheInvalidateRelcacheByTuple(HeapTuple classTuple);
 
 extern void CacheRegisterSyscacheCallback(int cacheid,
 							  CacheCallbackFunction func,

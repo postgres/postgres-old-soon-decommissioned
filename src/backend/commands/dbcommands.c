@@ -30,6 +30,7 @@
 #include "commands/comment.h"
 #include "commands/dbcommands.h"
 #include "miscadmin.h"
+#include "storage/fd.h"
 #include "storage/freespace.h"
 #include "storage/sinval.h"
 #include "utils/acl.h"

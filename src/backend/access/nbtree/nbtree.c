@@ -821,7 +821,9 @@ btvacuumcleanup(PG_FUNCTION_ARGS)
 			/*
 			 * Do the physical truncation.
 			 */
-			new_pages = smgrtruncate(DEFAULT_SMGR, rel, new_pages);
+			if (rel->rd_smgr == NULL)
+				rel->rd_smgr = smgropen(rel->rd_node);
+			new_pages = smgrtruncate(rel->rd_smgr, new_pages);
 			rel->rd_nblocks = new_pages;		/* update relcache
 												 * immediately */
 			rel->rd_targblock = InvalidBlockNumber;
