@@ -21,6 +21,8 @@
 #include <signal.h>
 #include <unistd.h>
 
+#include "miscadmin.h"
+#include "storage/ipc.h"
 #include "storage/pg_sema.h"
 
 
@@ -70,7 +72,7 @@ PosixSemaphoreCreate(void)
 
 		mySem = sem_open(semname, O_CREAT | O_EXCL,
 						 (mode_t) IPCProtection, (unsigned) 1);
-		if (mySem != SEM_FAILED)
+		if (mySem != (sem_t *) SEM_FAILED)
 			break;
 
 		/* Loop if error indicates a collision */
