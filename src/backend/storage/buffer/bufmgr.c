@@ -2269,8 +2269,7 @@ extern void	AbortBufferIO(void)
 		}
 		else
 		{
-			Assert(!(buf->flags & BM_DIRTY));
-			/* Assert(!(buf->flags & BM_IO_ERROR)); */
+			Assert((buf->flags & BM_DIRTY) != 0);
 			if (buf->flags & BM_IO_ERROR)
 			{
 				elog(NOTICE, "!!! write error seems permanent !!!");
