@@ -50,17 +50,18 @@ $Header$
 %allfiles;
 
 <!-- administrator's guide -->
-<!entity intro-ag    SYSTEM "intro-ag.sgml">
-<!entity installation SYSTEM "installation.sgml">
-<!entity installw    SYSTEM "install-win32.sgml">
-<!entity recovery    SYSTEM "recovery.sgml">
-<!entity regress     SYSTEM "regress.sgml">
-<!entity release     SYSTEM "release.sgml">
-<!entity runtime     SYSTEM "runtime.sgml">
-<!entity client-auth SYSTEM "client-auth.sgml">
-<!entity manage-ag   SYSTEM "manage-ag.sgml">
-<!entity user-manag  SYSTEM "user-manag.sgml">
-<!entity backup      SYSTEM "backup.sgml">
+<!entity backup        SYSTEM "backup.sgml">
+<!entity charset       SYSTEM "charset.sgml">
+<!entity client-auth   SYSTEM "client-auth.sgml">
+<!entity intro-ag      SYSTEM "intro-ag.sgml">
+<!entity installation  SYSTEM "installation.sgml">
+<!entity installw      SYSTEM "install-win32.sgml">
+<!entity manage-ag     SYSTEM "manage-ag.sgml">
+<!entity recovery      SYSTEM "recovery.sgml">
+<!entity regress       SYSTEM "regress.sgml">
+<!entity release       SYSTEM "release.sgml">
+<!entity runtime       SYSTEM "runtime.sgml">
+<!entity user-manag    SYSTEM "user-manag.sgml">
 
 <!-- programmer's guide -->
 <!entity arch-pg    SYSTEM "arch-pg.sgml">
@@ -170,16 +171,17 @@ $Header$
   included twice.
    &intro-ag;
 -->
-   &installation;
-   &installw;
-   &runtime;
-   &client-auth;
-   &manage-ag;
-   &user-manag;
-   &backup;
-   &recovery;
-   &regress;
-   &release;
+  &installation;
+  &installw;
+  &charset;
+  &runtime;
+  &client-auth;
+  &manage-ag;
+  &user-manag;
+  &backup;
+  &recovery;
+  &regress;
+  &release;
  </book>
 
  <book id="programmer">
@@ -199,20 +201,20 @@ $Header$
   included twice.
    &intro-pg;
 -->
-   &arch-pg;
-   &extend;
-   &xfunc;
-   &xtypes;
-   &xoper;
-   &xaggr;
-   &rules;
-   &xindex;
-   &indexcost;
-   &gist;
-   &dfunc;
-   &trigger;
-   &spi;
-   &xplang;
+  &arch-pg;
+  &extend;
+  &xfunc;
+  &xtypes;
+  &xoper;
+  &xaggr;
+  &rules;
+  &xindex;
+  &indexcost;
+  &gist;
+  &dfunc;
+  &trigger;
+  &spi;
+  &xplang;
  </book>
 
  <book id="interfaces">
