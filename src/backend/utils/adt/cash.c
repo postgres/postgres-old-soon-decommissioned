@@ -639,7 +639,7 @@ cash_words(PG_FUNCTION_ARGS)
 {
 	Cash		value = PG_GETARG_CASH(0);
 	unsigned int val;
-	char		buf[128];
+	char		buf[256];
 	char	   *p = buf;
 	Cash		m0;
 	Cash		m1;
