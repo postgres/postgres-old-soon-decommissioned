@@ -76,7 +76,7 @@
 #if defined(HAS_TEST_AND_SET)
 
 
-#if defined(__GNUC__)
+#if defined(__GNUC__) || defined(__ICC)
 /*************************************************************************
  * All the gcc inlines
  */
