@@ -90,6 +90,10 @@ extern void *SPI_prepare(const char *src, int nargs, Oid *argtypes);
 extern void *SPI_saveplan(void *plan);
 extern int	SPI_freeplan(void *plan);
 
+extern Oid SPI_getargtypeid(void *plan, int argIndex);
+extern int SPI_getargcount(void *plan);
+extern bool SPI_is_cursor_plan(void *plan);
+
 extern HeapTuple SPI_copytuple(HeapTuple tuple);
 extern TupleDesc SPI_copytupledesc(TupleDesc tupdesc);
 extern TupleTableSlot *SPI_copytupleintoslot(HeapTuple tuple,
