@@ -383,6 +383,11 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 						lexpr = lfirst(left_list);
 						left_list = lnext(left_list);
 
+						/*
+						 * It's OK to use oper() not compatible_oper() here,
+						 * because make_subplan() will insert type coercion
+						 * calls if needed.
+						 */
 						optup = oper(op,
 									 exprType(lexpr),
 									 exprType(tent->expr),

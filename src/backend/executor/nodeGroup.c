@@ -495,16 +495,13 @@ execTuplesMatchPrepare(TupleDesc tupdesc,
 	{
 		AttrNumber	att = matchColIdx[i];
 		Oid			typid = tupdesc->attrs[att - 1]->atttypid;
-		Operator	eq_operator;
-		Form_pg_operator pgopform;
+		Oid			eq_function;
 
-		eq_operator = oper("=", typid, typid, true);
-		if (!HeapTupleIsValid(eq_operator))
+		eq_function = compatible_oper_funcid("=", typid, typid, true);
+		if (!OidIsValid(eq_function))
 			elog(ERROR, "Unable to identify an equality operator for type '%s'",
 				 typeidTypeName(typid));
-		pgopform = (Form_pg_operator) GETSTRUCT(eq_operator);
-		fmgr_info(pgopform->oprcode, &eqfunctions[i]);
-		ReleaseSysCache(eq_operator);
+		fmgr_info(eq_function, &eqfunctions[i]);
 	}
 
 	return eqfunctions;

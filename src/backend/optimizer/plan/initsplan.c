@@ -617,7 +617,7 @@ process_implied_equality(Query *root, Node *item1, Node *item2,
 	 */
 	ltype = exprType(item1);
 	rtype = exprType(item2);
-	eq_operator = oper("=", ltype, rtype, true);
+	eq_operator = compatible_oper("=", ltype, rtype, true);
 	if (!HeapTupleIsValid(eq_operator))
 	{
 		/*
