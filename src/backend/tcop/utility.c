@@ -575,7 +575,7 @@ ProcessUtility(Node *parsetree,
 			{
 				TruncateStmt *stmt = (TruncateStmt *) parsetree;
 
-				TruncateRelation(stmt->relation);
+				ExecuteTruncate(stmt->relations);
 			}
 			break;
 

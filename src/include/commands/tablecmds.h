@@ -27,7 +27,7 @@ extern void AlterTableInternal(Oid relid, List *cmds, bool recurse);
 
 extern void AlterTableCreateToastTable(Oid relOid, bool silent);
 
-extern void TruncateRelation(const RangeVar *relation);
+extern void ExecuteTruncate(List *relations);
 
 extern void renameatt(Oid myrelid,
 		  const char *oldattname,

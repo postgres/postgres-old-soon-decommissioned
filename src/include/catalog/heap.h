@@ -56,9 +56,9 @@ extern Oid heap_create_with_catalog(const char *relname,
 
 extern void heap_drop_with_catalog(Oid relid);
 
-extern void heap_truncate(Oid rid);
+extern void heap_truncate(List *relids);
 
-extern void heap_truncate_check_FKs(Relation rel);
+extern void heap_truncate_check_FKs(List *relations, bool tempTables);
 
 extern List *AddRelationRawConstraints(Relation rel,
 						  List *rawColDefaults,

@@ -1283,7 +1283,7 @@ typedef struct DropPropertyStmt
 typedef struct TruncateStmt
 {
 	NodeTag		type;
-	RangeVar   *relation;		/* relation to be truncated */
+	List	   *relations;		/* relations (RangeVars) to be truncated */
 } TruncateStmt;
 
 /* ----------------------

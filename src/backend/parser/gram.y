@@ -2681,15 +2681,15 @@ attrs:		'.' attr_name
 /*****************************************************************************
  *
  *		QUERY:
- *				truncate table relname
+ *				truncate table relname1, relname2, ...
  *
  *****************************************************************************/
 
 TruncateStmt:
-			TRUNCATE opt_table qualified_name
+			TRUNCATE opt_table qualified_name_list
 				{
 					TruncateStmt *n = makeNode(TruncateStmt);
-					n->relation = $3;
+					n->relations = $3;
 					$$ = (Node *)n;
 				}
 		;

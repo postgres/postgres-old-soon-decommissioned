@@ -1815,7 +1815,7 @@ _copyTruncateStmt(TruncateStmt *from)
 {
 	TruncateStmt *newnode = makeNode(TruncateStmt);
 
-	COPY_NODE_FIELD(relation);
+	COPY_NODE_FIELD(relations);
 
 	return newnode;
 }

@@ -891,7 +891,7 @@ _equalDropStmt(DropStmt *a, DropStmt *b)
 static bool
 _equalTruncateStmt(TruncateStmt *a, TruncateStmt *b)
 {
-	COMPARE_NODE_FIELD(relation);
+	COMPARE_NODE_FIELD(relations);
 
 	return true;
 }
