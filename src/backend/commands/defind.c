@@ -105,7 +105,10 @@ DefineIndex(char *heapRelationName,
 	     heapRelationName);
     }
     relationId = tuple->t_oid;
-    
+
+    if (unique && strcmp(accessMethodName,"btree") != 0)
+	elog(WARN, "DefineIndex: unique indexes are only available with the btree access method");
+
     /*
      * compute access method id
      */
