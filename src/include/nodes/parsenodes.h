@@ -351,6 +351,16 @@ typedef struct ColumnDef
 } ColumnDef;
 
 /*
+ * inhRelation - Relations a CREATE TABLE is to inherit attributes of
+ */
+typedef struct InhRelation
+{
+	NodeTag		type;
+	RangeVar   *relation;
+	bool		including_defaults;
+} InhRelation;
+
+/*
  * IndexElem - index parameters (used in CREATE INDEX)
  *
  * For a plain index attribute, 'name' is the name of the table column to
@@ -851,7 +861,7 @@ typedef struct CreateStmt
 	NodeTag		type;
 	RangeVar   *relation;		/* relation to create */
 	List	   *tableElts;		/* column definitions (list of ColumnDef) */
-	List	   *inhRelations;	/* relations to inherit from */
+	List	   *inhRelations;	/* relations to inherit from (list of inhRelation) */
 	List	   *constraints;	/* constraints (list of Constraint nodes) */
 	bool		hasoids;		/* should it have OIDs? */
 	OnCommitAction oncommit;	/* what do we do at COMMIT? */

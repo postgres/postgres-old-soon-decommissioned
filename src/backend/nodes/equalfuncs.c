@@ -786,6 +786,15 @@ _equalCreateStmt(CreateStmt *a, CreateStmt *b)
 }
 
 static bool
+_equalInhRelation(InhRelation *a, InhRelation *b)
+{
+	COMPARE_NODE_FIELD(relation);
+	COMPARE_SCALAR_FIELD(including_defaults);
+
+	return true;
+}
+
+static bool
 _equalDefineStmt(DefineStmt *a, DefineStmt *b)
 {
 	COMPARE_SCALAR_FIELD(kind);
@@ -1806,6 +1815,9 @@ equal(void *a, void *b)
 			break;
 		case T_CreateStmt:
 			retval = _equalCreateStmt(a, b);
+			break;
+		case T_InhRelation:
+			retval = _equalInhRelation(a,b);
 			break;
 		case T_DefineStmt:
 			retval = _equalDefineStmt(a, b);

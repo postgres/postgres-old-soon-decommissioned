@@ -1731,6 +1731,17 @@ _copyCreateStmt(CreateStmt *from)
 	return newnode;
 }
 
+static InhRelation *
+_copyInhRelation(InhRelation *from)
+{
+	InhRelation *newnode = makeNode(InhRelation);
+
+	COPY_NODE_FIELD(relation);
+	COPY_SCALAR_FIELD(including_defaults);
+
+	return newnode;
+}
+
 static DefineStmt *
 _copyDefineStmt(DefineStmt *from)
 {
@@ -2692,6 +2703,9 @@ copyObject(void *from)
 			break;
 		case T_CreateStmt:
 			retval = _copyCreateStmt(from);
+			break;
+		case T_InhRelation:
+			retval = _copyInhRelation(from);
 			break;
 		case T_DefineStmt:
 			retval = _copyDefineStmt(from);
