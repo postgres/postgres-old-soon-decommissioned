@@ -11,15 +11,16 @@
 #
 #-------------------------------------------------------------------------
 
-#include ../Makefile.global
+SRCDIR= ..
+include $(SRCDIR)/Makefile.global
 
 .DEFAULT all:
 	$(MAKE) -C libpq $@
-
 ifeq ($(HAVE_Cplusplus), true)
 	$(MAKE) -C libpq++ $@
+else
+	echo $(HAVE_Cplusplus): No C++
 endif
-
 ifeq ($(USE_TCL), true)
 	$(MAKE) -C libpgtcl $@
 endif

@@ -12,11 +12,11 @@
 #-------------------------------------------------------------------------
 
 SRCDIR= ../..
-include ../../Makefile.global
+:nclude $(SRCDIR)/Makefile.global
 
 INCLUDE_OPT= \
-             -I../../backend \
-             -I../../include \
+             -I$(SRCDIR)/backend \
+             -I$(SRCDIR)/include \
              -I$(LIBPQDIR) \
              -I$(TCL_INCDIR)
 

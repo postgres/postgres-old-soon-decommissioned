@@ -8,8 +8,8 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR= ../..
-include ../../Makefile.global
+SRCDIR= ../../..
+include ../../../Makefile.global
 
 install: 
 	-mkdir -p $(POSTMANDIR)

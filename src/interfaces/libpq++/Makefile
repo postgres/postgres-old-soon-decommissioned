@@ -11,9 +11,9 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR= ..
-include ../Makefile.global
-SRCHEADERDIR = ../include
+SRCDIR= ../..
+include $(SRCDIR)/Makefile.global
+SRCHEADERDIR = $(SRCDIR)/include
 LIBPQHEADERDIR = $(SRCHEADERDIR)/libpq
 
 LIBNAME= libpq++
@@ -25,7 +25,7 @@ LIBNAME= libpq++
 CXXFLAGS= $(CFLAGS) -Wno-error
 
 INCLUDE_OPT= \
-             -I../backend \
+             -I$(SRCDIR)/backend \
              -I$(SRCHEADERDIR) \
              -I$(LIBPQDIR)
 
