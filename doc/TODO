@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sat Jan 24 23:50:15 EST 2004
+Last updated:		Mon Jan 26 13:32:06 EST 2004
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -176,6 +176,7 @@ Commands
 * Allow LISTEN/NOTIFY to store info in memory rather than tables
 * -COMMENT ON [ CAST | CONVERSION | OPERATOR CLASS | LARGE OBJECT | LANGUAGE ] 
   (Christopher) 
+* Dump large object comments in custom dump format
 * Add optional textual message to NOTIFY
 * Allow more ISOLATION LEVELS to be accepted, but issue a warning for them
 * Allow CREATE TABLE foo (f1 INT CHECK (f1 > 0) CHECK (f1 < 10)) to work
