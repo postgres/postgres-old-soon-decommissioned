@@ -94,13 +94,6 @@ RelationPutHeapTuple(Relation relation,
 }
 
 /*
- * The heap_insert routines "know" that a buffer page is initialized to
- * zero when a BlockExtend operation is performed. 
- */
-
-#define PageIsNew(page) ((page)->pd_upper == 0)
-
-/*
  * This routine is another in the series of attempts to reduce the number
  * of I/O's and system calls executed in the various benchmarks.  In
  * particular, this routine is used to append data to the end of a relation
