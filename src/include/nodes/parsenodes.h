@@ -500,7 +500,6 @@ typedef struct IndexStmt
 	char	   *relname;		/* name of relation to index on */
 	char	   *accessMethod;	/* name of access method (eg. btree) */
 	List	   *indexParams;	/* a list of IndexElem */
-	List	   *withClause;		/* a list of DefElem */
 	Node	   *whereClause;	/* qualification (partial-index predicate) */
 	List	   *rangetable;		/* range table for qual, filled in by
 								 * transformStmt() */

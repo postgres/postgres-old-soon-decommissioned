@@ -133,16 +133,10 @@ _outIndexStmt(StringInfo str, IndexStmt *node)
 	_outToken(str, node->accessMethod);
 	appendStringInfo(str, " :indexParams ");
 	_outNode(str, node->indexParams);
-
-	appendStringInfo(str, " :withClause ");
-	_outNode(str, node->withClause);
-
 	appendStringInfo(str, " :whereClause ");
 	_outNode(str, node->whereClause);
-
 	appendStringInfo(str, " :rangetable ");
 	_outNode(str, node->rangetable);
-
 	appendStringInfo(str, " :unique %s :primary %s ",
 					 booltostr(node->unique),
 					 booltostr(node->primary));

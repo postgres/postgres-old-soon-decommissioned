@@ -995,7 +995,6 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 		index->relname = stmt->relname;
 		index->accessMethod = "btree";
 		index->indexParams = NIL;
-		index->withClause = NIL;
 		index->whereClause = NULL;
 
 		foreach(keys, constraint->keys)

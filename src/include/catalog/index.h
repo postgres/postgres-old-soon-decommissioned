@@ -39,7 +39,6 @@ extern Oid index_create(char *heapRelationName,
 			 IndexInfo *indexInfo,
 			 Oid accessMethodObjectId,
 			 Oid *classObjectId,
-			 bool islossy,
 			 bool primary,
 			 bool allow_system_table_mods);
 

@@ -926,8 +926,6 @@ _equalIndexStmt(IndexStmt *a, IndexStmt *b)
 		return false;
 	if (!equal(a->indexParams, b->indexParams))
 		return false;
-	if (!equal(a->withClause, b->withClause))
-		return false;
 	if (!equal(a->whereClause, b->whereClause))
 		return false;
 	if (!equal(a->rangetable, b->rangetable))

@@ -36,8 +36,8 @@ extern RelOptInfo *make_fromexpr_rel(Query *root, FromExpr *from);
  *	  routines to generate index paths
  */
 extern void create_index_paths(Query *root, RelOptInfo *rel);
-extern Oid indexable_operator(Expr *clause, Oid opclass, Oid relam,
-				   bool indexkey_on_left);
+extern Oid indexable_operator(Expr *clause, Oid opclass,
+							  bool indexkey_on_left);
 extern List *extract_or_indexqual_conditions(RelOptInfo *rel,
 								IndexOptInfo *index,
 								Expr *orsubclause);

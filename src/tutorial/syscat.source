@@ -141,8 +141,8 @@ SELECT a.aggname, t.typname
 -- classes
 --
 SELECT am.amname, opc.opcname, opr.oprname
-  FROM pg_am am, pg_amop amop, pg_opclass opc, pg_operator opr
-  WHERE amop.amopid = am.oid
+  FROM pg_am am, pg_opclass opc, pg_amop amop, pg_operator opr
+  WHERE opc.opcamid = am.oid
     and amop.amopclaid = opc.oid
     and amop.amopopr = opr.oid
   ORDER BY amname, opcname, oprname;

@@ -225,7 +225,6 @@ copy_index(Oid OIDOldIndex, Oid OIDNewHeap, char *NewIndexName)
 				 indexInfo,
 				 Old_pg_index_relation_Form->relam,
 				 Old_pg_index_Form->indclass,
-				 Old_pg_index_Form->indislossy,
 				 Old_pg_index_Form->indisprimary,
 				 allowSystemTableMods);
 

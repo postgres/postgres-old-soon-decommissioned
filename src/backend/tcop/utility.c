@@ -538,7 +538,6 @@ ProcessUtility(Node *parsetree,
 							stmt->idxname,		/* index name */
 							stmt->accessMethod, /* am name */
 							stmt->indexParams,	/* parameters */
-							stmt->withClause,
 							stmt->unique,
 							stmt->primary,
 							(Expr *) stmt->whereClause,

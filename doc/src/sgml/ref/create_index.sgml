@@ -374,9 +374,8 @@ ERROR: Cannot create index: 'index_name' already exists.
 SELECT am.amname AS acc_method,
        opc.opcname AS ops_name,
        opr.oprname AS ops_comp
-    FROM pg_am am, pg_amop amop,
-         pg_opclass opc, pg_operator opr
-    WHERE amop.amopid = am.oid AND
+    FROM pg_am am, pg_opclass opc, pg_amop amop, pg_operator opr
+    WHERE opc.opcamid = am.oid AND
           amop.amopclaid = opc.oid AND
           amop.amopopr = opr.oid
     ORDER BY acc_method, ops_name, ops_comp

@@ -73,8 +73,8 @@ typedef struct GISTSTATE
 	FmgrInfo	picksplitFn[INDEX_MAX_KEYS];
 	FmgrInfo	equalFn[INDEX_MAX_KEYS];
 	bool		attbyval[INDEX_MAX_KEYS];
-	bool		haskeytype;
-	bool		keytypbyval;
+	bool		haskeytype[INDEX_MAX_KEYS];
+	bool		keytypbyval[INDEX_MAX_KEYS];
 } GISTSTATE;
 
 

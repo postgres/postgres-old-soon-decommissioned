@@ -1051,13 +1051,6 @@
      </row>
 
      <row>
-      <entry>indislossy</entry>
-      <entry><type>bool</type></entry>
-      <entry></entry>
-      <entry>???</entry>
-     </row>
-
-     <row>
       <entry>indisunique</entry>
       <entry><type>bool</type></entry>
       <entry></entry>

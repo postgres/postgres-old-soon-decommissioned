@@ -1166,7 +1166,6 @@ _copyIndexOptInfo(IndexOptInfo *from)
 	newnode->indproc = from->indproc;
 	Node_Copy(from, newnode, indpred);
 	newnode->unique = from->unique;
-	newnode->lossy = from->lossy;
 
 	return newnode;
 }
@@ -2059,7 +2058,6 @@ _copyIndexStmt(IndexStmt *from)
 	newnode->relname = pstrdup(from->relname);
 	newnode->accessMethod = pstrdup(from->accessMethod);
 	Node_Copy(from, newnode, indexParams);
-	Node_Copy(from, newnode, withClause);
 	Node_Copy(from, newnode, whereClause);
 	Node_Copy(from, newnode, rangetable);
 	newnode->unique = from->unique;
