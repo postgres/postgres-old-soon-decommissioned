@@ -21,8 +21,9 @@ extern "C" {
 #include "libpq/libpq-fs.h"
 }
 
-
+#ifdef HAVE_NAMESPACE_STD
 using namespace std;
+#endif
 
 
 // ****************************************************************

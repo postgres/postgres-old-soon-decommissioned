@@ -78,9 +78,7 @@ private:
 }; // End PgCursor Class Declaration
 
 
-#ifdef HAVE_NAMESPACE_STD
 #undef PGSTD
-#endif
 
 #endif	// PGCURSORDB_H
 

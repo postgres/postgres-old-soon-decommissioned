@@ -68,9 +68,6 @@ private:
 };
 
 
-#ifdef HAVE_NAMESPACE_STD
 #undef PGSTD
-#endif
-
 
 #endif	// PGLOBJECT_H

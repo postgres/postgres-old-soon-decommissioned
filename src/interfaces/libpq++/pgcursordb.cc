@@ -17,8 +17,9 @@
  
 #include "pgcursordb.h"
  
-
+#ifdef HAVE_NAMESPACE_STD
 using namespace std;
+#endif
 
 
 // ****************************************************************
