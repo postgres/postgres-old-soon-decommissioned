@@ -153,10 +153,11 @@ DROP FUNCTION c_overpaid(EMP, int4);
 DROP FUNCTION copytext(text);
 DROP FUNCTION makepoint(point,point);
 DROP FUNCTION add_one(int4);
-DROP FUNCTION clean_EMP();
+--DROP FUNCTION clean_EMP();
 DROP FUNCTION high_pay();
 DROP FUNCTION new_emp();
 DROP FUNCTION add_em(int4, int4);
 DROP FUNCTION one();
+DROP FUNCTION double_salary(EMP);
 
 DROP TABLE EMP;
