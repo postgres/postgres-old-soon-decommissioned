@@ -476,7 +476,7 @@ static struct config_bool
 	},
 	{
 		{ "password_encryption", PGC_USERSET }, &Password_encryption,
-		false, NULL, NULL
+		true, NULL, NULL
 	},
 	{
 		{ "transform_null_equals", PGC_USERSET }, &Transform_null_equals,
