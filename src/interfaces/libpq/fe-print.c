@@ -36,6 +36,7 @@
 #endif
 
 #ifdef MULTIBYTE
+#include "miscadmin.h"
 #include "mb/pg_wchar.h"
 #endif
 
