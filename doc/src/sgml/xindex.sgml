@@ -401,7 +401,7 @@ CREATE OPERATOR = (
      leftarg = complex, rightarg = complex,
      procedure = complex_abs_eq,
      restrict = eqsel, join = eqjoinsel
-         )
+         );
    </programlisting>
 
    The important
