@@ -119,7 +119,8 @@ RE_compile_and_execute(text *text_re, unsigned char *dat, int dat_len,
 	 */
 	for (i = 0; i < num_res; i++)
 	{
-		if (memcmp(re_array[i].cre_pat, text_re, text_re_len) == 0 &&
+		if (VARSIZE(re_array[i].cre_pat) == text_re_len &&
+			memcmp(re_array[i].cre_pat, text_re, text_re_len) == 0 &&
 			re_array[i].cre_flags == cflags)
 		{
 			/*
