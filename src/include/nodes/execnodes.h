@@ -605,7 +605,7 @@ typedef struct SortState {
     CommonScanState	csstate;	/* its first field is NodeTag */
     bool      		sort_Flag;
     ScanKey   		sort_Keys;
-    Relation  		sort_TempRelation;
+    bool		cleaned;
 } SortState;
 
 /* ----------------

@@ -60,7 +60,7 @@ understands the following command-line options:
 is the number of shared-memory buffers for the 
 .IR "postmaster"
 to allocate and manage for the backend server processes that it
-starts.  This value defaults to 64.
+starts.  This value defaults to 64, and each buffer is 8k bytes.
 .TP
 .BR "-D" " data_dir"
 Specifies the directory to use as the root of the tree of database

@@ -374,6 +374,18 @@ ExecMergeTupleDump(ExprContext *econtext, MergeJoinState *mergestate)
     printf("******** \n");
 }
  
+static void
+CleanUpSort(Plan *plan) {
+
+    if (plan == NULL)
+	return;
+    
+    if (plan->type == T_Sort) {
+	Sort *sort = (Sort *)plan;
+	psort_end(sort);
+    }
+}
+
 /* ----------------------------------------------------------------
  *   	ExecMergeJoin
  *
@@ -676,6 +688,8 @@ ExecMergeJoin(MergeJoin *node)
 	     */
             if (TupIsNull(outerTupleSlot)) {
 		MJ_printf("ExecMergeJoin: **** outer tuple is nil ****\n");
+		CleanUpSort(node->join.lefttree->lefttree);
+		CleanUpSort(node->join.righttree->lefttree);
 		return NULL;
 	    }
 	    

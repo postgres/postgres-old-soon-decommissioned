@@ -265,6 +265,8 @@ typedef struct Sort {
     Oid			tempid;
     int			keycount;
     SortState		*sortstate;
+    void		*psortstate;
+    bool		cleaned;
 } Sort;
 
 /* ----------------
