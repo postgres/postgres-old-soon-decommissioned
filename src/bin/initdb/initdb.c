@@ -126,7 +126,7 @@ char	   *authtrust_warning = \
 "# CAUTION: Configuring the system for local \"trust\" authentication allows\n"
 "# any local user to connect as any PostgreSQL user, including the database\n"
 "# superuser. If you do not trust all your local users, use another\n"
-"# authenication method.\n";
+"# authentication method.\n";
 char	   *authwarning = NULL;
 
 /*
