@@ -111,15 +111,9 @@ elog(int lev, const char *fmt, ...)
 
 	if (lev == ERROR || lev == FATAL)
 	{
+		/* this is probably redundant... */
 		if (IsInitProcessingMode())
-		{
-			extern TransactionState	CurrentTransactionState;
-
-			if (CurrentTransactionState->state != TRANS_DEFAULT && 
-				CurrentTransactionState->state != TRANS_DISABLED)
-				abort();
 			lev = FATAL;
-		}
 	}
 
 	/* choose message prefix and indent level */
