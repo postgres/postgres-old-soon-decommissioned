@@ -5,6 +5,10 @@ Postgres quick Installation Guide.
 - thomas 1998-10-26
 
 $Log: installation.sgml,v $
+Revision 1.7  1999/12/06 16:37:11  thomas
+Remove references to PostgreSQL as "public-domain" since that has a
+ specific meaning wrt copyright (or lack thereof).
+
 Revision 1.6  1999/06/04 15:51:42  thomas
 Add blurb on new docs in release notes.
 Make minor info and markup changes for v6.5 release.
@@ -35,7 +39,7 @@ First cut at standalone installation guide to replace INSTALL text source.
 
 -->
 
-<!doctype book PUBLIC "-//Davenport//DTD DocBook V3.0//EN" [
+<!doctype book PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
 
 <!entity about    SYSTEM "about.sgml">
 <!entity history  SYSTEM "history.sgml">

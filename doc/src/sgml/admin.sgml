@@ -6,6 +6,10 @@ Derived from postgres.sgml.
 - thomas 1998-10-27
 
 $Log: admin.sgml,v $
+Revision 1.19  2000/03/28 14:16:06  thomas
+Update SGML catalog references to DocBook 3.1 on FreeBSD.
+Matches postgresql.org/hub.org environment.
+
 Revision 1.18  1999/12/06 16:37:11  thomas
 Remove references to PostgreSQL as "public-domain" since that has a
  specific meaning wrt copyright (or lack thereof).
@@ -30,6 +34,7 @@ Clean out duplicate stuff in odbc.sgml resulting from a faulty patch.
 <!entity info      SYSTEM "info.sgml">
 <!entity legal     SYSTEM "legal.sgml">
 <!entity notation  SYSTEM "notation.sgml">
+<!entity problems  SYSTEM "problems.sgml">
 <!entity y2k       SYSTEM "y2k.sgml">
 
 <!entity config    SYSTEM "config.sgml">
