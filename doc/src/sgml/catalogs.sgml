@@ -3201,8 +3201,9 @@
       <entry>
        <structfield>typtype</structfield> is <literal>b</literal> for
        a base type, <literal>c</literal> for a complex type (i.e.,
-       a table's row type), or <literal>d</literal> for a derived type (i.e.,
-       a domain).  See also <structfield>typrelid</structfield> 
+       a table's row type), <literal>d</literal> for a derived type (i.e.,
+       a domain), or <literal>p</literal> for a pseudo-type.  See also
+       <structfield>typrelid</structfield>
        and <structfield>typbasetype</structfield>.
       </entry>
      </row>
@@ -3235,7 +3236,7 @@
        <structfield>typtype</structfield>), then this field points to
        the <structfield>pg_class</structfield> entry that defines the
        corresponding table. A table could theoretically be used as a
-       composite data type, but this is not fully functional.
+       composite data type, but this is only partly functional.
        Zero for non-complex types.
       </entry>
      </row>

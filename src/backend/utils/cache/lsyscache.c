@@ -1142,11 +1142,9 @@ get_typavgwidth(Oid typid, int32 typmod)
 /*
  * get_typtype
  *
- *		Given the type OID, find if it is a basic type, a named relation
- *		or the generic type 'relation'.
+ *		Given the type OID, find if it is a basic type, a complex type, etc.
  *		It returns the null char if the cache lookup fails...
  */
-#ifdef NOT_USED
 char
 get_typtype(Oid typid)
 {
@@ -1167,7 +1165,7 @@ get_typtype(Oid typid)
 	else
 		return '\0';
 }
-#endif
+
 
 /*				---------- STATISTICS CACHE ----------					 */
 

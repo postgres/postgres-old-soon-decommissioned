@@ -195,7 +195,7 @@ init_sql_fcache(FmgrInfo *finfo)
 	 */
 	fcache->typlen = typeStruct->typlen;
 
-	if (typeStruct->typtype == 'b')
+	if (typeStruct->typtype == 'b' || typeStruct->typtype == 'd')
 	{
 		/* The return type is not a relation, so just use byval */
 		fcache->typbyval = typeStruct->typbyval;
