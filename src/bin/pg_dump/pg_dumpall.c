@@ -242,6 +242,11 @@ main(int argc, char *argv[])
 	}
 
 	PQfinish(conn);
+
+	printf("--\n");
+	printf("-- PostgreSQL database cluster dump complete\n");
+	printf("--\n\n");
+
 	exit(0);
 }
 

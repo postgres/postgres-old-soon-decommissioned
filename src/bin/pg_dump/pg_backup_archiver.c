@@ -384,6 +384,8 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 			AH->blobConnection = NULL;
 		}
 	}
+
+	ahprintf(AH, "--\n-- PostgreSQL database dump complete\n--\n\n");
 }
 
 /*
