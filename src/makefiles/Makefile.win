@@ -4,6 +4,7 @@ DLLTOOL= dlltool
 DLLWRAP= dllwrap
 DLLLIBS= -lcygipc -lcrypt
 BE_DLLLIBS= -L$(top_builddir)/src/backend -lpostgres
+DLLINIT = $(top_builddir)/src/utils/dllinit.o
 MK_NO_LORDER=true
 MAKE_DLL=true
 #MAKE_DLL=false

@@ -18,10 +18,9 @@ override CFLAGS += -Wno-error
 endif
 
 OBJS=preproc.o pgc.o type.o ecpg.o ecpg_keywords.o output.o\
-    keywords.o c_keywords.o ../lib/typename.o descriptor.o variable.o \
-    $(SNPRINTF) $(STRDUP)
+    keywords.o c_keywords.o ../lib/typename.o descriptor.o variable.o
 
-all: ecpg
+all: submake-libpgport ecpg
 
 ecpg: $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
@@ -70,11 +69,3 @@ clean distclean:
 # inadequate tools.
 maintainer-clean: distclean
 	rm -f $(srcdir)/preproc.c $(srcdir)/preproc.h $(srcdir)/pgc.c
-
-
-depend dep: preproc.c pgc.c
-	$(CC) -MM $(CFLAGS) *.c >depend
-
-ifeq (depend,$(wildcard depend))
-include depend
-endif

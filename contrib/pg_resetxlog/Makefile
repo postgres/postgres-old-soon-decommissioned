@@ -4,13 +4,15 @@ subdir = contrib/pg_resetxlog
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
+all: submake-libpgport
+
 PROGRAM = pg_resetxlog
-OBJS	= pg_resetxlog.o pg_crc.o $(SNPRINTF)
+OBJS	= pg_resetxlog.o pg_crc.o
 
 pg_crc.c: $(top_srcdir)/src/backend/utils/hash/pg_crc.c
 	rm -f $@ && $(LN_S) $< .
 
-EXTRA_CLEAN = pg_crc.c snprintf.c
+EXTRA_CLEAN = pg_crc.c
 
 DOCS = README.pg_resetxlog
 

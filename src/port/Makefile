@@ -15,9 +15,12 @@ subdir = src/port
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
+ifdef LIBOBJS
+all: libpgport.a
+endif
 
-#
-# The backend/port directory removes these files.
-#
-#distclean clean:
-#	rm -f $(OBJS)
+libpgport.a: $(LIBOBJS)
+	$(AR) crs $@ $^
+
+clean distclean maintainer-clean:
+	rm -f libpgport.a $(LIBOBJS)

@@ -27,11 +27,7 @@ SHLIB_LINK = $(libpq)
 # braindead; users of libpq should not need to know what it depends on.)
 SHLIB_LINK+= $(filter -L%, $(LDFLAGS)) $(filter -lcrypt, $(LIBS))
 
-all: submake all-lib
-
-.PHONY: submake
-submake:
-	$(MAKE) -C $(libpq_builddir) all
+all: submake-libpq all-lib
 
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib

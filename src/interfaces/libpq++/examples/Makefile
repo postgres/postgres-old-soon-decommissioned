@@ -31,8 +31,6 @@ all: $(PROGS)
 $(PROGS): % : %.cc
 	$(CXX) $(CXXFLAGS) -o $@ $@.cc $(LDFLAGS)
 
-.PHONY: submake
-
 clean: 
 	rm -f $(PROGS)
 

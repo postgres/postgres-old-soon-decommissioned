@@ -332,7 +332,7 @@ $(shlib) lib$(NAME).a: $(OBJS) $(DLLINIT)
 	$(DLLWRAP) -o $(shlib) --dllname $(shlib) --def $(NAME).def $(OBJS) $(DLLINIT) $(DLLLIBS) $(SHLIB_LINK)
 	$(DLLTOOL) --dllname $(shlib) --def $(NAME).def --output-lib lib$(NAME).a
 
-$(DLLINIT):
+$(DLLINIT): $(DLLINIT:%.o=%.c)
 	$(MAKE) -C $(@D) $(@F)
 
 endif # PORTNAME == win

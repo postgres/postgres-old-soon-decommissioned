@@ -14,6 +14,7 @@ include Makefile.global
 
 
 all install installdirs uninstall dep depend distprep:
+	$(MAKE) -C port $@
 	$(MAKE) -C backend $@
 	$(MAKE) -C include $@
 	$(MAKE) -C interfaces $@
@@ -24,6 +25,7 @@ install-all-headers:
 	$(MAKE) -C include $@
 
 clean:
+	$(MAKE) -C port $@
 	$(MAKE) -C backend $@
 	$(MAKE) -C include $@
 	$(MAKE) -C interfaces $@
@@ -32,6 +34,7 @@ clean:
 	$(MAKE) -C test $@
 
 distclean maintainer-clean:
+	-$(MAKE) -C port $@
 	-$(MAKE) -C backend $@
 	-$(MAKE) -C include $@
 	-$(MAKE) -C interfaces $@
