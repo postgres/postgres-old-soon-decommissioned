@@ -115,7 +115,7 @@ vsnprintf(char *str, size_t count, const char *fmt, va_list args)
 
 static void fmtstr __P((char *value, int ljust, int len, int zpad, int maxwidth));
 
-#ifndef HAVE_LONG_INT_64
+#ifndef HAVE_LONG_LONG_INT_64
 static void fmtnum __P((long value, int base, int dosign, int ljust, int len, int zpad));
 #else
 static void fmtnum __P((long_long value, int base, int dosign, int ljust, int len, int zpad));
