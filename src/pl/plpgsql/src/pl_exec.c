@@ -2045,7 +2045,8 @@ exec_stmt_execsql(PLpgSQL_execstate * estate,
 			break;
 
 		case SPI_OK_SELECT:
-			elog(ERROR, "unexpected SELECT query in exec_stmt_execsql()");
+			elog(ERROR, "SELECT query has no destination for result data."
+				 "\n\tIf you want to discard the results, use PERFORM instead.");
 
 		default:
 			elog(ERROR, "error executing query \"%s\"",
