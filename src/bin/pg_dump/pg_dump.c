@@ -81,6 +81,10 @@ static int	findLastBuiltinOid(void);
 static bool isViewRule(char *relname);
 static void setMaxOid(FILE *fout);
 
+static char *AddAcl(char *s, const char *add);
+static char *GetPrivledges(char *s);
+static ACL *ParseACL(const char *acls,int *count);
+
 extern char *optarg;
 extern int	optind,
 			opterr;
@@ -2146,7 +2150,8 @@ dumpAggs(FILE *fout, AggInfo *agginfo, int numAggs,
 /*
  * This will return a new string: "s,add"
  */
-char *AddAcl(char *s, const char *add)
+static char *
+AddAcl(char *s, const char *add)
 {
 	char *t;
 
@@ -2162,7 +2167,8 @@ char *AddAcl(char *s, const char *add)
  * This will take a string of 'arwR' and return a
  * comma delimited string of SELECT,INSERT,UPDATE,DELETE,RULE
  */
-char *GetPrivledges(char *s)
+static char *
+GetPrivledges(char *s)
 {
 	char *acls=NULL;
 
@@ -2195,7 +2201,8 @@ char *GetPrivledges(char *s)
  * So to reset the acls I need to grant these priviledges
  * to user
  */
-ACL *ParseACL(const char *acls,int *count)
+static ACL *
+ParseACL(const char *acls,int *count)
 {
 	ACL *ParsedAcl=NULL;
 	int i,
