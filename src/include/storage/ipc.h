@@ -22,12 +22,12 @@
 #ifndef IPC_H
 #define IPC_H
 
+#include "config.h"
+
 #include <sys/types.h>
 #ifdef HAVE_SYS_IPC_H
 #include <sys/ipc.h>			/* For IPC_PRIVATE */
 #endif
-
-#include "config.h"
 
 #ifndef HAVE_UNION_SEMUN
 union semun
@@ -78,8 +78,8 @@ extern bool proc_exit_inprogress;
 
 extern void proc_exit(int code);
 extern void shmem_exit(int code);
-extern int	on_shmem_exit(void (*function) (), caddr_t arg);
-extern int	on_proc_exit(void (*function) (), caddr_t arg);
+extern int	on_shmem_exit(void (*function) (), Datum arg);
+extern int	on_proc_exit(void (*function) (), Datum arg);
 extern void on_exit_reset(void);
 
 extern IpcSemaphoreId IpcSemaphoreCreate(IpcSemaphoreKey semKey,

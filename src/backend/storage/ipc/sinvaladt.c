@@ -12,10 +12,10 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
+
 #include <signal.h>
 #include <unistd.h>
-
-#include "postgres.h"
 
 #include "miscadmin.h"
 #include "storage/backendid.h"
@@ -189,7 +189,7 @@ SIBackendInit(SISeg *segP)
 	stateP->procStruct = MAKE_OFFSET(MyProc);
 
 	/* register exit routine to mark my entry inactive at exit */
-	on_shmem_exit(CleanupInvalidationState, (caddr_t) segP);
+	on_shmem_exit(CleanupInvalidationState, PointerGetDatum(segP));
 
 	return 1;
 }

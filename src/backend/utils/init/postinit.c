@@ -232,7 +232,7 @@ InitPostgres(const char *dbname, const char *username)
 
 #ifndef XLOG
 	if (!TransactionFlushEnabled())
-		on_shmem_exit(FlushBufferPool, (caddr_t) NULL);
+		on_shmem_exit(FlushBufferPool, 0);
 #endif
 
 	SetDatabaseName(dbname);

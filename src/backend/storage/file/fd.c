@@ -38,6 +38,8 @@
  *-------------------------------------------------------------------------
  */
 
+#include "postgres.h"
+
 #include <sys/types.h>
 #include <sys/file.h>
 #include <sys/param.h>
@@ -46,7 +48,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-#include "postgres.h"
 #include "miscadmin.h"
 #include "storage/fd.h"
 
@@ -472,7 +473,7 @@ AllocateVfd(void)
 		 * register proc-exit call to ensure temp files are dropped at
 		 * exit
 		 */
-		on_proc_exit(AtEOXact_Files, NULL);
+		on_proc_exit(AtEOXact_Files, 0);
 	}
 
 	if (VfdCache[0].nextFree == 0)

@@ -112,7 +112,7 @@ smgrinit()
 	}
 
 	/* register the shutdown proc */
-	on_proc_exit(smgrshutdown, NULL);
+	on_proc_exit(smgrshutdown, 0);
 
 	return SM_SUCCESS;
 }

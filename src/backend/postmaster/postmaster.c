@@ -628,7 +628,7 @@ PostmasterMain(int argc, char *argv[])
 		/*
 		 * register clean up proc
 		 */
-		on_proc_exit(UnlinkPidFile, NULL);
+		on_proc_exit(UnlinkPidFile, 0);
 	}
 
 	/*
@@ -727,7 +727,7 @@ pmdaemonize(int argc, char *argv[])
 	/*
 	 * register clean up proc
 	 */
-	on_proc_exit(UnlinkPidFile, NULL);
+	on_proc_exit(UnlinkPidFile, 0);
 }
 
 

@@ -260,7 +260,7 @@ StreamServerPort(int family, unsigned short portName, int *fdP)
 
 	if (family == AF_UNIX)
 	{
-		on_proc_exit(StreamDoUnlink, NULL);
+		on_proc_exit(StreamDoUnlink, 0);
 
 		/*
 		 * Open the socket file and get an advisory lock on it. The
