@@ -312,8 +312,8 @@ then
     # ----------
 
     message "starting postmaster"
-    [ "$debug" = yes ] && postmaster_options='$postmaster_options -d 5'
-    [ "$unix_sockets" = no ] && postmaster_options='$postmaster_options -i'
+    [ "$debug" = yes ] && postmaster_options="$postmaster_options -d 5"
+    [ "$unix_sockets" = no ] && postmaster_options="$postmaster_options -i"
     "$bindir/postmaster" -D "$PGDATA" -p "$PGPORT" -F $postmaster_options >"$LOGDIR/postmaster.log" 2>&1 &
     postmaster_pid=$!
 
