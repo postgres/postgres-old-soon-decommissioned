@@ -12,19 +12,21 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <string.h>
 
-#include "c.h"
-#include "access/ibit.h"
-#include "access/itup.h"	/* where the declarations go */
-#include "access/heapam.h"
-#include "access/genam.h"	
-#include "access/tupdesc.h"
-#include "access/tupmacs.h"
+#include "postgres.h"
 
+#include "storage/block.h"
+#include "storage/off.h"
 #include "storage/itemptr.h"
-#include "utils/elog.h"
-#include "utils/palloc.h"
+#include "nodes/nodes.h"
+#include "access/attnum.h"
+#include "nodes/pg_list.h"
+#include "catalog/pg_attribute.h"
+#include "access/tupdesc.h"
+#include "access/itup.h"
+
+#include "utils/memutils.h"
+#include "access/ibit.h"
 
 static Size IndexInfoFindDataOffset(unsigned short t_info);
 
