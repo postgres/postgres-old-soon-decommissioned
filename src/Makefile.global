@@ -133,6 +133,9 @@ OIDNAMELEN= 36
 # Compile libpq++
 #HAVE_Cplusplus= true
 
+# Uncomment out CUSTOM_COPT to generate a debug version
+# This overrides the compiler flags defined later in this file
+#CUSTOM_COPT=-g
 
 # Commenting out CASSERT will make things go a LOT faster, but you will
 # also loose a lot of useful error-checking.
