@@ -143,9 +143,10 @@ main(int argc, char *argv[])
 			 localtime(&(ControlFile.time)));
 	strftime(ckpttime_str, sizeof(ckpttime_str), strftime_fmt,
 			 localtime(&(ControlFile.checkPointCopy.time)));
+
 	/*
-	 * Format system_identifier separately to keep platform-dependent format
-	 * code out of the translatable message string.
+	 * Format system_identifier separately to keep platform-dependent
+	 * format code out of the translatable message string.
 	 */
 	snprintf(sysident_str, sizeof(sysident_str), UINT64_FORMAT,
 			 ControlFile.system_identifier);

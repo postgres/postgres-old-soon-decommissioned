@@ -35,9 +35,9 @@ oidin_subr(const char *funcname, const char *s, char **endloc)
 
 	/*
 	 * In releases prior to 8.0, we accepted an empty string as valid
-	 * input (yielding an OID of 0). In 8.0, we accept empty strings,
-	 * but emit a warning noting that the feature is deprecated. In
-	 * 8.1+, the warning should be replaced by an error.
+	 * input (yielding an OID of 0). In 8.0, we accept empty strings, but
+	 * emit a warning noting that the feature is deprecated. In 8.1+, the
+	 * warning should be replaced by an error.
 	 */
 	if (*s == '\0')
 		ereport(WARNING,

@@ -249,7 +249,7 @@ main(int argc, char *argv[])
 		PQclear(result);
 	}
 	else
-		validatorexists = true;			/* don't try to create it */
+		validatorexists = true; /* don't try to create it */
 
 	/*
 	 * Create the function(s) and the language

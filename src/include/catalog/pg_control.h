@@ -30,13 +30,13 @@
  */
 typedef struct CheckPoint
 {
-	XLogRecPtr	redo;			/* next RecPtr available when we
-								 * began to create CheckPoint
-								 * (i.e. REDO start point) */
+	XLogRecPtr	redo;			/* next RecPtr available when we began to
+								 * create CheckPoint (i.e. REDO start
+								 * point) */
 	XLogRecPtr	undo;			/* first record of oldest in-progress
-								 * transaction when we started
-								 * (i.e. UNDO end point) */
-	TimeLineID	ThisTimeLineID;	/* current TLI */
+								 * transaction when we started (i.e. UNDO
+								 * end point) */
+	TimeLineID	ThisTimeLineID; /* current TLI */
 	TransactionId nextXid;		/* next free XID */
 	Oid			nextOid;		/* next free OID */
 	time_t		time;			/* time stamp of checkpoint */

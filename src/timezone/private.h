@@ -56,6 +56,7 @@
 
 #ifndef remove
 extern int	unlink(const char *filename);
+
 #define remove	unlink
 #endif   /* !defined remove */
 

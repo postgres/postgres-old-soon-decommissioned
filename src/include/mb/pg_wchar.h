@@ -255,7 +255,8 @@ typedef struct
 	mb2wchar_with_len_converter mb2wchar_with_len;		/* convert a multibyte
 														 * string to a wchar */
 	mblen_converter mblen;		/* returns the length of a multibyte char */
-	mbdisplaylen_converter	dsplen;	/* returns the lenghth of a display length */
+	mbdisplaylen_converter dsplen;		/* returns the lenghth of a
+										 * display length */
 	int			maxmblen;		/* max bytes for a char in this charset */
 } pg_wchar_tbl;
 

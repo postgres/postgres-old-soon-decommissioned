@@ -59,7 +59,7 @@ typedef FormData_pg_namespace *Form_pg_namespace;
 #define Natts_pg_namespace				4
 #define Anum_pg_namespace_nspname		1
 #define Anum_pg_namespace_nspowner		2
-#define Anum_pg_namespace_nsptablespace	3
+#define Anum_pg_namespace_nsptablespace 3
 #define Anum_pg_namespace_nspacl		4
 
 
@@ -82,7 +82,7 @@ DESCR("Standard public schema");
 /*
  * prototypes for functions in pg_namespace.c
  */
-extern Oid	NamespaceCreate(const char *nspName, int32 ownerSysId,
-							Oid nspTablespace);
+extern Oid NamespaceCreate(const char *nspName, int32 ownerSysId,
+				Oid nspTablespace);
 
 #endif   /* PG_NAMESPACE_H */

@@ -770,7 +770,7 @@ static void
 out_target(char *buf, xl_btreetid *target)
 {
 	sprintf(buf + strlen(buf), "rel %u/%u/%u; tid %u/%u",
-			target->node.spcNode, target->node.dbNode, target->node.relNode,
+		 target->node.spcNode, target->node.dbNode, target->node.relNode,
 			ItemPointerGetBlockNumber(&(target->tid)),
 			ItemPointerGetOffsetNumber(&(target->tid)));
 }

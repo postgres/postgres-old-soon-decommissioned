@@ -136,7 +136,7 @@ enlargePQExpBuffer(PQExpBuffer str, size_t needed)
 
 	/*
 	 * Guard against ridiculous "needed" values, which can occur if we're
-	 * fed bogus data.  Without this, we can get an overflow or infinite
+	 * fed bogus data.	Without this, we can get an overflow or infinite
 	 * loop in the following.
 	 */
 	if (needed >= ((size_t) INT_MAX - str->len))

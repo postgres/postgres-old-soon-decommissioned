@@ -30,13 +30,13 @@ extern void on_exit_reset(void);
 
 /* ipci.c */
 extern void CreateSharedMemoryAndSemaphores(bool makePrivate,
-											int maxBackends,
-											int port);
+								int maxBackends,
+								int port);
 
 #ifdef EXEC_BACKEND
 /* postmaster.c */
-extern size_t	ShmemBackendArraySize(void);
-extern void		ShmemBackendArrayAllocation(void);
+extern size_t ShmemBackendArraySize(void);
+extern void ShmemBackendArrayAllocation(void);
 #endif
 
 #endif   /* IPC_H */

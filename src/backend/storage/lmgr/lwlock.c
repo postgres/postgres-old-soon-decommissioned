@@ -533,7 +533,7 @@ LWLockReleaseAll(void)
 bool
 LWLockHeldByMe(LWLockId lockid)
 {
-	int	i;
+	int			i;
 
 	for (i = 0; i < num_held_lwlocks; i++)
 	{

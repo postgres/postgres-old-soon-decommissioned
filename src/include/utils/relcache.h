@@ -67,7 +67,7 @@ extern void RelationCacheInvalidate(void);
 
 extern void AtEOXact_RelationCache(bool isCommit);
 extern void AtEOSubXact_RelationCache(bool isCommit, TransactionId myXid,
-									  TransactionId parentXid);
+						  TransactionId parentXid);
 
 /*
  * Routines to help manage rebuilding of relcache init file

@@ -389,7 +389,11 @@ print_aligned_text(const char *title, const char *const * headers,
 			fprintf(fout, "%s\n", *ptr);
 
 #ifndef __MINGW32__
-	/* for some reason MinGW outputs an extra newline, so this supresses it */	
+
+	/*
+	 * for some reason MinGW outputs an extra newline, so this supresses
+	 * it
+	 */
 	fputc('\n', fout);
 #endif
 
@@ -839,15 +843,15 @@ const char *opt_align, bool opt_barebones, unsigned short int opt_border,
 	fputs("\\begin{tabular}{", fout);
 
 	if (opt_border == 2)
-	  fputs("| ", fout);
-        for (i = 0; i < col_count; i++)
+		fputs("| ", fout);
+	for (i = 0; i < col_count; i++)
 	{
-	  fputc(*(opt_align + i), fout);
-	  if (opt_border != 0 && i < col_count - 1)
-	    fputs (" | ", fout);
+		fputc(*(opt_align + i), fout);
+		if (opt_border != 0 && i < col_count - 1)
+			fputs(" | ", fout);
 	}
 	if (opt_border == 2)
-	  fputs(" |", fout);
+		fputs(" |", fout);
 
 	fputs("}\n", fout);
 
@@ -861,9 +865,9 @@ const char *opt_align, bool opt_barebones, unsigned short int opt_border,
 		{
 			if (i != 0)
 				fputs(" & ", fout);
-                        fputs("\\textit{", fout);
+			fputs("\\textit{", fout);
 			latex_escaped_print(*ptr, fout);
-                        fputc('}', fout);
+			fputc('}', fout);
 		}
 	}
 

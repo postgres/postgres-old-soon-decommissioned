@@ -912,7 +912,7 @@ ExecSetParamPlan(SubPlanState *node, ExprContext *econtext)
 	SubLinkType subLinkType = subplan->subLinkType;
 	MemoryContext oldcontext;
 	TupleTableSlot *slot;
-	ListCell	*l;
+	ListCell   *l;
 	bool		found = false;
 	ArrayBuildState *astate = NULL;
 

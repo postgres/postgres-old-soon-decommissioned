@@ -19,7 +19,7 @@
 
 typedef struct smgrid
 {
-	const char	   *smgr_name;
+	const char *smgr_name;
 } smgrid;
 
 /*
@@ -29,7 +29,7 @@ static const smgrid StorageManager[] = {
 	{"magnetic disk"}
 };
 
-static const int	NStorageManagers = lengthof(StorageManager);
+static const int NStorageManagers = lengthof(StorageManager);
 
 
 Datum

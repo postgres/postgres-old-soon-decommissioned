@@ -250,9 +250,10 @@ gistindex_keytest(IndexTuple tuple,
 					   FALSE, isNull);
 
 		/*
-		 * Call the Consistent function to evaluate the test.  The arguments
-		 * are the index datum (as a GISTENTRY*), the comparison datum, and
-		 * the comparison operator's strategy number and subtype from pg_amop.
+		 * Call the Consistent function to evaluate the test.  The
+		 * arguments are the index datum (as a GISTENTRY*), the comparison
+		 * datum, and the comparison operator's strategy number and
+		 * subtype from pg_amop.
 		 *
 		 * (Presently there's no need to pass the subtype since it'll always
 		 * be zero, but might as well pass it for possible future use.)

@@ -90,8 +90,8 @@ tlist_member(Node *node, List *targetlist)
 TargetEntry *
 create_tl_element(Var *var, int resdomno)
 {
-	Oid		vartype;
-	int32	vartypmod;
+	Oid			vartype;
+	int32		vartypmod;
 
 	if (IsA(var, Var))
 	{

@@ -67,7 +67,7 @@ typedef struct ParseState
 
 extern ParseState *make_parsestate(ParseState *parentParseState);
 extern Var *make_var(ParseState *pstate, RangeTblEntry *rte, int attrno);
-extern Oid transformArrayType(Oid arrayType);
+extern Oid	transformArrayType(Oid arrayType);
 extern ArrayRef *transformArraySubscripts(ParseState *pstate,
 						 Node *arrayBase,
 						 Oid arrayType,

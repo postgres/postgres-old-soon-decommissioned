@@ -252,7 +252,7 @@ extern Datum now(PG_FUNCTION_ARGS);
 /* Internal routines (not fmgr-callable) */
 
 extern int	tm2timestamp(struct pg_tm * tm, fsec_t fsec, int *tzp, Timestamp *dt);
-extern int	timestamp2tm(Timestamp dt, int *tzp, struct pg_tm * tm,
+extern int timestamp2tm(Timestamp dt, int *tzp, struct pg_tm * tm,
 			 fsec_t *fsec, char **tzn);
 extern void dt2time(Timestamp dt, int *hour, int *min, int *sec, fsec_t *fsec);
 
@@ -263,6 +263,7 @@ extern Timestamp SetEpochTimestamp(void);
 extern void GetEpochTime(struct pg_tm * tm);
 
 extern int	timestamp_cmp_internal(Timestamp dt1, Timestamp dt2);
+
 /* timestamp comparison works for timestamptz also */
 #define timestamptz_cmp_internal(dt1,dt2)	timestamp_cmp_internal(dt1, dt2)
 

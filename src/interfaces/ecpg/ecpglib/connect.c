@@ -14,8 +14,9 @@
 
 #ifdef ENABLE_THREAD_SAFETY
 static pthread_mutex_t connections_mutex = PTHREAD_MUTEX_INITIALIZER;
-static pthread_key_t  actual_connection_key;
+static pthread_key_t actual_connection_key;
 static pthread_once_t actual_connection_key_once = PTHREAD_ONCE_INIT;
+
 #else
 static struct connection *actual_connection = NULL;
 #endif
@@ -25,7 +26,7 @@ static struct connection *all_connections = NULL;
 static void
 ecpg_actual_connection_init(void)
 {
-  pthread_key_create(&actual_connection_key, NULL);
+	pthread_key_create(&actual_connection_key, NULL);
 }
 #endif
 
@@ -114,8 +115,8 @@ ecpg_finish(struct connection * act)
 		}
 
 #ifdef ENABLE_THREAD_SAFETY
-		if( pthread_getspecific(actual_connection_key) == act )
-		  pthread_setspecific(actual_connection_key, all_connections);
+		if (pthread_getspecific(actual_connection_key) == act)
+			pthread_setspecific(actual_connection_key, all_connections);
 #else
 		if (actual_connection == act)
 			actual_connection = all_connections;

@@ -179,7 +179,7 @@ CreateExecutorState(void)
 	 */
 	estate->es_direction = ForwardScanDirection;
 	estate->es_snapshot = SnapshotNow;
-	estate->es_crosscheck_snapshot = SnapshotAny; /* means no crosscheck */
+	estate->es_crosscheck_snapshot = SnapshotAny;		/* means no crosscheck */
 	estate->es_range_table = NIL;
 
 	estate->es_result_relations = NULL;
@@ -248,7 +248,8 @@ FreeExecutorState(EState *estate)
 	 */
 	while (estate->es_exprcontexts)
 	{
-		/* XXX: seems there ought to be a faster way to implement this
+		/*
+		 * XXX: seems there ought to be a faster way to implement this
 		 * than repeated list_delete(), no?
 		 */
 		FreeExprContext((ExprContext *) linitial(estate->es_exprcontexts));
@@ -364,7 +365,7 @@ FreeExprContext(ExprContext *econtext)
  * ReScanExprContext
  *
  *		Reset an expression context in preparation for a rescan of its
- *		plan node.  This requires calling any registered shutdown callbacks,
+ *		plan node.	This requires calling any registered shutdown callbacks,
  *		since any partially complete set-returning-functions must be canceled.
  *
  * Note we make no assumption about the caller's memory context.

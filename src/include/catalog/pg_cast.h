@@ -46,7 +46,7 @@ typedef enum CoercionCodes
 										 * expression */
 	COERCION_CODE_ASSIGNMENT = 'a',		/* coercion in context of
 										 * assignment */
-	COERCION_CODE_EXPLICIT = 'e'		/* explicit cast operation */
+	COERCION_CODE_EXPLICIT = 'e'	/* explicit cast operation */
 } CoercionCodes;
 
 

@@ -70,10 +70,12 @@ typedef int (*DataDumperPtr) (Archive *AH, void *userArg);
 typedef struct _restoreOptions
 {
 	int			create;			/* Issue commands to create the database */
-	int			noOwner;		/* Don't try to match original object owner */
+	int			noOwner;		/* Don't try to match original object
+								 * owner */
 	int			disable_triggers;		/* disable triggers during
 										 * data-only restore */
-	int			use_setsessauth;	/* Use SET SESSION AUTHORIZATION commands instead of OWNER TO */
+	int			use_setsessauth;/* Use SET SESSION AUTHORIZATION commands
+								 * instead of OWNER TO */
 	char	   *superuser;		/* Username to use as superuser */
 	int			dataOnly;
 	int			dropSchema;
@@ -179,4 +181,4 @@ archprintf(Archive *AH, const char *fmt,...)
 /* This extension allows gcc to check the format string */
 __attribute__((format(printf, 2, 3)));
 
-#endif /* PG_BACKUP_H */
+#endif   /* PG_BACKUP_H */

@@ -113,6 +113,7 @@ void
 _hash_checkpage(Relation rel, Page page, int flags)
 {
 	Assert(page);
+
 	/*
 	 * When checking the metapage, always verify magic number and version.
 	 */

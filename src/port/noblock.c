@@ -17,13 +17,14 @@
 #include <sys/types.h>
 #include <fcntl.h>
 
-bool set_noblock(int sock)
+bool
+set_noblock(int sock)
 {
 #if !defined(WIN32) && !defined(__BEOS__)
 	return (fcntl(sock, F_SETFL, O_NONBLOCK) != -1);
 #else
-	long ioctlsocket_ret = 1;
-	
+	long		ioctlsocket_ret = 1;
+
 	/* Returns non-0 on failure, while fcntl() returns -1 on failure */
 #ifdef WIN32
 	return (ioctlsocket(sock, FIONBIO, &ioctlsocket_ret) == 0);

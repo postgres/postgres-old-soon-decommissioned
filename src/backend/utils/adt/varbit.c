@@ -1215,9 +1215,7 @@ bitfromint4(PG_FUNCTION_ARGS)
 	}
 	/* store last fractional byte */
 	if (destbitsleft > 0)
-	{
 		*r = (bits8) ((a << (8 - destbitsleft)) & BITMASK);
-	}
 
 	PG_RETURN_VARBIT_P(result);
 }
@@ -1296,9 +1294,7 @@ bitfromint8(PG_FUNCTION_ARGS)
 	}
 	/* store last fractional byte */
 	if (destbitsleft > 0)
-	{
 		*r = (bits8) ((a << (8 - destbitsleft)) & BITMASK);
-	}
 
 	PG_RETURN_VARBIT_P(result);
 }

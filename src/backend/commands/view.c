@@ -191,8 +191,8 @@ checkViewTupleDesc(TupleDesc newdesc, TupleDesc olddesc)
 			newattr->atttypmod != oldattr->atttypmod)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_TABLE_DEFINITION),
-				   errmsg("cannot change data type of view column \"%s\"",
-						  NameStr(oldattr->attname))));
+				  errmsg("cannot change data type of view column \"%s\"",
+						 NameStr(oldattr->attname))));
 		/* We can ignore the remaining attributes of an attribute... */
 	}
 

@@ -62,11 +62,11 @@ SeqNext(SeqScanState *node)
 	slot = node->ss_ScanTupleSlot;
 
 	/*
-	 * Clear any reference to the previously returned tuple.  The idea here
-	 * is to not have the tuple slot be the last holder of a pin on that
-	 * tuple's buffer; if it is, we'll need a separate visit to the bufmgr
-	 * to release the buffer.  By clearing here, we get to have the release
-	 * done by ReleaseAndReadBuffer inside heap_getnext.
+	 * Clear any reference to the previously returned tuple.  The idea
+	 * here is to not have the tuple slot be the last holder of a pin on
+	 * that tuple's buffer; if it is, we'll need a separate visit to the
+	 * bufmgr to release the buffer.  By clearing here, we get to have the
+	 * release done by ReleaseAndReadBuffer inside heap_getnext.
 	 */
 	ExecClearTuple(slot);
 

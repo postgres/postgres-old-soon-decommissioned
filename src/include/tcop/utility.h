@@ -18,7 +18,7 @@
 
 
 extern void ProcessUtility(Node *parsetree, ParamListInfo params,
-						   DestReceiver *dest, char *completionTag);
+			   DestReceiver *dest, char *completionTag);
 
 extern bool UtilityReturnsTuples(Node *parsetree);
 

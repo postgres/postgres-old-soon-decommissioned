@@ -78,7 +78,7 @@ extern double estimate_num_groups(Query *root, List *groupExprs,
 					double input_rows);
 
 extern Selectivity estimate_hash_bucketsize(Query *root, Node *hashkey,
-											int nbuckets);
+						 int nbuckets);
 
 extern Datum btcostestimate(PG_FUNCTION_ARGS);
 extern Datum rtcostestimate(PG_FUNCTION_ARGS);

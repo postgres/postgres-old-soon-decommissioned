@@ -14,13 +14,11 @@
 #include "dumputils.h"
 
 
-static void
-cluster_one_database(const char *dbname, const char *table,
+static void cluster_one_database(const char *dbname, const char *table,
 					 const char *host, const char *port,
 					 const char *username, bool password,
 					 const char *progname, bool echo, bool quiet);
-static void
-cluster_all_databases(const char *host, const char *port,
+static void cluster_all_databases(const char *host, const char *port,
 					  const char *username, bool password,
 					  const char *progname, bool echo, bool quiet);
 

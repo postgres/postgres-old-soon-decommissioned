@@ -165,8 +165,8 @@ main(int argc, char *argv[])
 	conn = connectDatabase(dbname, host, port, username, password, progname);
 
 	/*
-	 * Make sure the language is installed and find the OIDs of the handler
-	 * and validator functions
+	 * Make sure the language is installed and find the OIDs of the
+	 * handler and validator functions
 	 */
 	printfPQExpBuffer(&sql, "SELECT lanplcallfoid, lanvalidator FROM pg_language WHERE lanname = '%s' AND lanispl;", langname);
 	result = executeQuery(conn, sql.data, progname, echo);

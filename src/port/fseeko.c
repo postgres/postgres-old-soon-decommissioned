@@ -68,7 +68,7 @@ fseeko(FILE *stream, off_t offset, int whence)
 #ifdef bsdi
 			flockfile(stream);
 #endif
-			fflush(stream);	/* force writes to fd for stat() */
+			fflush(stream);		/* force writes to fd for stat() */
 			if (fstat(fileno(stream), &filestat) != 0)
 				goto failure;
 			floc = filestat.st_size;

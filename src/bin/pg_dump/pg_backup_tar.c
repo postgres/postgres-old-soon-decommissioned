@@ -160,7 +160,7 @@ InitArchiveFmt_Tar(ArchiveHandle *AH)
 	AH->formatData = (void *) ctx;
 	ctx->filePos = 0;
 	ctx->isSpecialScript = 0;
-	
+
 	/* Initialize LO buffering */
 	AH->lo_buf_size = LOBBUFSIZE;
 	AH->lo_buf = (void *) malloc(LOBBUFSIZE);

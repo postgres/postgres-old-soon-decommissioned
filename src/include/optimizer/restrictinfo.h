@@ -17,10 +17,10 @@
 #include "nodes/relation.h"
 
 extern RestrictInfo *make_restrictinfo(Expr *clause, bool is_pushed_down,
-									   bool valid_everywhere);
+				  bool valid_everywhere);
 extern List *make_restrictinfo_from_indexclauses(List *indexclauses,
-												 bool is_pushed_down,
-												 bool valid_everywhere);
+									bool is_pushed_down,
+									bool valid_everywhere);
 extern bool restriction_is_or_clause(RestrictInfo *restrictinfo);
 extern List *get_actual_clauses(List *restrictinfo_list);
 extern void get_actual_join_clauses(List *restrictinfo_list,

@@ -26,7 +26,7 @@ typedef enum _backslashResult
 
 
 extern backslashResult HandleSlashCmds(PsqlScanState scan_state,
-									   PQExpBuffer query_buf);
+				PQExpBuffer query_buf);
 
 extern int	process_file(char *filename);
 

@@ -165,8 +165,8 @@ extern void DeferredTriggerSetState(ConstraintsSetStmt *stmt);
  * in utils/adt/ri_triggers.c
  */
 extern bool RI_FKey_keyequal_upd(TriggerData *trigdata);
-extern bool RI_Initial_Check(FkConstraint *fkconstraint, 
-							 Relation rel, 
-							 Relation pkrel);
+extern bool RI_Initial_Check(FkConstraint *fkconstraint,
+				 Relation rel,
+				 Relation pkrel);
 
 #endif   /* TRIGGER_H */

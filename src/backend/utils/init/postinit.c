@@ -327,8 +327,8 @@ InitPostgres(const char *dbname, const char *username)
 	AmiTransactionOverride(bootstrap);
 
 	/*
-	 * Initialize local process's access to XLOG.  In bootstrap case
-	 * we may skip this since StartupXLOG() was run instead.
+	 * Initialize local process's access to XLOG.  In bootstrap case we
+	 * may skip this since StartupXLOG() was run instead.
 	 */
 	if (!bootstrap)
 		InitXLOGAccess();

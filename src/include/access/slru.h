@@ -17,7 +17,7 @@
 
 
 /*
- * Number of page buffers.  Ideally this could be different for CLOG and
+ * Number of page buffers.	Ideally this could be different for CLOG and
  * SUBTRANS, but the benefit doesn't seem to be worth any additional
  * notational cruft.
  */
@@ -71,15 +71,15 @@ typedef struct SlruCtlData
 	SlruShared	shared;
 
 	/*
-	 * This flag tells whether to fsync writes (true for pg_clog,
-	 * false for pg_subtrans).
+	 * This flag tells whether to fsync writes (true for pg_clog, false
+	 * for pg_subtrans).
 	 */
 	bool		do_fsync;
 
 	/*
-	 * Decide which of two page numbers is "older" for truncation purposes.
-	 * We need to use comparison of TransactionIds here in order to do the
-	 * right thing with wraparound XID arithmetic.
+	 * Decide which of two page numbers is "older" for truncation
+	 * purposes. We need to use comparison of TransactionIds here in order
+	 * to do the right thing with wraparound XID arithmetic.
 	 */
 	bool		(*PagePrecedes) (int, int);
 
@@ -98,7 +98,7 @@ typedef struct SlruFlushData *SlruFlush;
 
 extern int	SimpleLruShmemSize(void);
 extern void SimpleLruInit(SlruCtl ctl, const char *name,
-						  LWLockId ctllock, const char *subdir);
+			  LWLockId ctllock, const char *subdir);
 extern int	SimpleLruZeroPage(SlruCtl ctl, int pageno);
 extern int	SimpleLruReadPage(SlruCtl ctl, int pageno, TransactionId xid);
 extern void SimpleLruWritePage(SlruCtl ctl, int slotno, SlruFlush fdata);

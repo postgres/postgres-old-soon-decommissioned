@@ -520,7 +520,7 @@ lo_export(PGconn *conn, Oid lobjId, const char *filename)
 	if (close(fd))
 	{
 		printfPQExpBuffer(&conn->errorMessage,
-						  libpq_gettext("error while writing to file \"%s\"\n"),
+				   libpq_gettext("error while writing to file \"%s\"\n"),
 						  filename);
 		return -1;
 	}
@@ -559,8 +559,8 @@ lo_initialize(PGconn *conn)
 	MemSet((char *) lobjfuncs, 0, sizeof(PGlobjfuncs));
 
 	/*
-	 * Execute the query to get all the functions at once.  In 7.3 and later
-	 * we need to be schema-safe.
+	 * Execute the query to get all the functions at once.	In 7.3 and
+	 * later we need to be schema-safe.
 	 */
 	if (conn->sversion >= 70300)
 		query = "select proname, oid from pg_catalog.pg_proc "

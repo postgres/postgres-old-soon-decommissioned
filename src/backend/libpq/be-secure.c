@@ -294,7 +294,7 @@ rloop:
 				ereport(COMMERROR,
 						(errcode(ERRCODE_PROTOCOL_VIOLATION),
 						 errmsg("unrecognized SSL error code %d",
-							SSL_get_error(port->ssl, n))));
+								SSL_get_error(port->ssl, n))));
 				n = -1;
 				break;
 		}
@@ -379,7 +379,7 @@ wloop:
 				ereport(COMMERROR,
 						(errcode(ERRCODE_PROTOCOL_VIOLATION),
 						 errmsg("unrecognized SSL error code %d",
-							SSL_get_error(port->ssl, n))));
+								SSL_get_error(port->ssl, n))));
 				n = -1;
 				break;
 		}
@@ -546,8 +546,8 @@ tmp_dh_cb(SSL *s, int is_export, int keylength)
 	if (r == NULL || 8 * DH_size(r) < keylength)
 	{
 		ereport(DEBUG2,
-				(errmsg_internal("DH: generating parameters (%d bits)....",
-								 keylength)));
+			  (errmsg_internal("DH: generating parameters (%d bits)....",
+							   keylength)));
 		r = DH_generate_parameters(keylength, DH_GENERATOR_2, NULL, NULL);
 	}
 
@@ -651,13 +651,13 @@ initialize_SSL(void)
 				   errmsg("could not access private key file \"%s\": %m",
 						  fnbuf)));
 
-		/* 
+		/*
 		 * Require no public access to key file.
 		 *
 		 * XXX temporarily suppress check when on Windows, because there may
-		 * not be proper support for Unix-y file permissions.  Need to think
-		 * of a reasonable check to apply on Windows.  (See also the data
-		 * directory permission check in postmaster.c)
+		 * not be proper support for Unix-y file permissions.  Need to
+		 * think of a reasonable check to apply on Windows.  (See also the
+		 * data directory permission check in postmaster.c)
 		 */
 #if !defined(__CYGWIN__) && !defined(WIN32)
 		if (!S_ISREG(buf.st_mode) || (buf.st_mode & (S_IRWXG | S_IRWXO)) ||

@@ -47,6 +47,6 @@ extern int	lo_write(int fd, char *buf, int len);
  */
 extern void AtEOXact_LargeObject(bool isCommit);
 extern void AtEOSubXact_LargeObject(bool isCommit, TransactionId myXid,
-									TransactionId parentXid);
+						TransactionId parentXid);
 
 #endif   /* BE_FSSTUBS_H */

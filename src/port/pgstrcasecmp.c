@@ -33,8 +33,8 @@ pg_strcasecmp(const char *s1, const char *s2)
 {
 	for (;;)
 	{
-		unsigned char	ch1 = (unsigned char) *s1++;
-		unsigned char	ch2 = (unsigned char) *s2++;
+		unsigned char ch1 = (unsigned char) *s1++;
+		unsigned char ch2 = (unsigned char) *s2++;
 
 		if (ch1 != ch2)
 		{
@@ -66,8 +66,8 @@ pg_strncasecmp(const char *s1, const char *s2, size_t n)
 {
 	while (n-- > 0)
 	{
-		unsigned char	ch1 = (unsigned char) *s1++;
-		unsigned char	ch2 = (unsigned char) *s2++;
+		unsigned char ch1 = (unsigned char) *s1++;
+		unsigned char ch2 = (unsigned char) *s2++;
 
 		if (ch1 != ch2)
 		{

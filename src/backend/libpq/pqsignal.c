@@ -50,6 +50,7 @@
 sigset_t	UnBlockSig,
 			BlockSig,
 			AuthBlockSig;
+
 #else
 int			UnBlockSig,
 			BlockSig,
@@ -169,4 +170,4 @@ pqsignal(int signo, pqsigfunc func)
 #endif   /* !HAVE_POSIX_SIGNALS */
 }
 
-#endif /* WIN32 */
+#endif   /* WIN32 */

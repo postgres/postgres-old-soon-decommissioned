@@ -1680,19 +1680,19 @@ _equalFkConstraint(FkConstraint *a, FkConstraint *b)
 static bool
 _equalList(List *a, List *b)
 {
-	ListCell *item_a;
-	ListCell *item_b;
+	ListCell   *item_a;
+	ListCell   *item_b;
 
 	/*
-	 * Try to reject by simple scalar checks before grovelling through
-	 * all the list elements...
+	 * Try to reject by simple scalar checks before grovelling through all
+	 * the list elements...
 	 */
 	COMPARE_SCALAR_FIELD(type);
 	COMPARE_SCALAR_FIELD(length);
 
 	/*
-	 * We place the switch outside the loop for the sake of
-	 * efficiency; this may not be worth doing...
+	 * We place the switch outside the loop for the sake of efficiency;
+	 * this may not be worth doing...
 	 */
 	switch (a->type)
 	{

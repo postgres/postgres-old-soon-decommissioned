@@ -451,8 +451,9 @@ distribute_qual_to_rels(Query *root, Node *clause,
 		 * tree.
 		 *
 		 * We also need to determine whether the qual is "valid everywhere",
-		 * which is true if the qual mentions no variables that are involved
-		 * in lower-level outer joins (this may be an overly strong test).
+		 * which is true if the qual mentions no variables that are
+		 * involved in lower-level outer joins (this may be an overly
+		 * strong test).
 		 */
 		Relids		addrelids = NULL;
 		Relids		tmprelids;
@@ -706,7 +707,7 @@ process_implied_equality(Query *root,
 				{
 					/* delete it from local restrictinfo list */
 					rel1->baserestrictinfo = list_delete_ptr(rel1->baserestrictinfo,
-															 restrictinfo);
+														   restrictinfo);
 				}
 				else
 				{

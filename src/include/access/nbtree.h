@@ -431,7 +431,7 @@ extern Buffer _bt_getroot(Relation rel, int access);
 extern Buffer _bt_gettrueroot(Relation rel);
 extern Buffer _bt_getbuf(Relation rel, BlockNumber blkno, int access);
 extern Buffer _bt_relandgetbuf(Relation rel, Buffer obuf,
-							   BlockNumber blkno, int access);
+				 BlockNumber blkno, int access);
 extern void _bt_relbuf(Relation rel, Buffer buf);
 extern void _bt_wrtbuf(Relation rel, Buffer buf);
 extern void _bt_wrtnorelbuf(Relation rel, Buffer buf);
@@ -445,8 +445,8 @@ extern int	_bt_pagedel(Relation rel, Buffer buf, bool vacuum_full);
  * prototypes for functions in nbtsearch.c
  */
 extern BTStack _bt_search(Relation rel,
-						  int keysz, ScanKey scankey, bool nextkey,
-						  Buffer *bufP, int access);
+		   int keysz, ScanKey scankey, bool nextkey,
+		   Buffer *bufP, int access);
 extern Buffer _bt_moveright(Relation rel, Buffer buf, int keysz,
 			  ScanKey scankey, bool nextkey, int access);
 extern OffsetNumber _bt_binsrch(Relation rel, Buffer buf, int keysz,

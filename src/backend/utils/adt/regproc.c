@@ -114,7 +114,7 @@ regprocin(PG_FUNCTION_ARGS)
 		if (matches == 0)
 			ereport(ERROR,
 					(errcode(ERRCODE_UNDEFINED_FUNCTION),
-				  errmsg("function \"%s\" does not exist", pro_name_or_oid)));
+			 errmsg("function \"%s\" does not exist", pro_name_or_oid)));
 
 		else if (matches > 1)
 			ereport(ERROR,
@@ -135,7 +135,7 @@ regprocin(PG_FUNCTION_ARGS)
 	if (clist == NULL)
 		ereport(ERROR,
 				(errcode(ERRCODE_UNDEFINED_FUNCTION),
-				 errmsg("function \"%s\" does not exist", pro_name_or_oid)));
+			 errmsg("function \"%s\" does not exist", pro_name_or_oid)));
 	else if (clist->next != NULL)
 		ereport(ERROR,
 				(errcode(ERRCODE_AMBIGUOUS_FUNCTION),
@@ -287,7 +287,7 @@ regprocedurein(PG_FUNCTION_ARGS)
 	if (clist == NULL)
 		ereport(ERROR,
 				(errcode(ERRCODE_UNDEFINED_FUNCTION),
-				 errmsg("function \"%s\" does not exist", pro_name_or_oid)));
+			 errmsg("function \"%s\" does not exist", pro_name_or_oid)));
 
 	result = clist->oid;
 
@@ -464,7 +464,7 @@ regoperin(PG_FUNCTION_ARGS)
 		if (matches == 0)
 			ereport(ERROR,
 					(errcode(ERRCODE_UNDEFINED_FUNCTION),
-				   errmsg("operator does not exist: %s", opr_name_or_oid)));
+				errmsg("operator does not exist: %s", opr_name_or_oid)));
 		else if (matches > 1)
 			ereport(ERROR,
 					(errcode(ERRCODE_AMBIGUOUS_FUNCTION),
@@ -834,7 +834,7 @@ regclassin(PG_FUNCTION_ARGS)
 		else
 			ereport(ERROR,
 					(errcode(ERRCODE_UNDEFINED_TABLE),
-					 errmsg("relation \"%s\" does not exist", class_name_or_oid)));
+			errmsg("relation \"%s\" does not exist", class_name_or_oid)));
 
 		/* We assume there can be only one match */
 
@@ -1000,7 +1000,7 @@ regtypein(PG_FUNCTION_ARGS)
 		else
 			ereport(ERROR,
 					(errcode(ERRCODE_UNDEFINED_OBJECT),
-					 errmsg("type \"%s\" does not exist", typ_name_or_oid)));
+				 errmsg("type \"%s\" does not exist", typ_name_or_oid)));
 
 		/* We assume there can be only one match */
 

@@ -45,4 +45,4 @@ enum
 								 * standard) */
 };
 
-#endif /* !_ECPG_SQL3TYPES_H */
+#endif   /* !_ECPG_SQL3TYPES_H */

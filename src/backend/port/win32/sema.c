@@ -228,12 +228,12 @@ semop(int semId, struct sembuf * sops, int nsops)
 	if (sops[0].sem_op == -1)
 	{
 		DWORD		ret;
-		HANDLE      wh[2];
+		HANDLE		wh[2];
 
 		wh[0] = cur_handle;
 		wh[1] = pgwin32_signal_event;
 
-		ret = WaitForMultipleObjects(2, wh, FALSE, (sops[0].sem_flg & IPC_NOWAIT)?0:INFINITE);
+		ret = WaitForMultipleObjects(2, wh, FALSE, (sops[0].sem_flg & IPC_NOWAIT) ? 0 : INFINITE);
 
 		if (ret == WAIT_OBJECT_0)
 		{
@@ -241,7 +241,7 @@ semop(int semId, struct sembuf * sops, int nsops)
 			sem_counts[sops[0].sem_num]--;
 			return 0;
 		}
-		else if (ret == WAIT_OBJECT_0+1)
+		else if (ret == WAIT_OBJECT_0 + 1)
 		{
 			/* Signal event is set - we have a signal to deliver */
 			pgwin32_dispatch_queued_signals();

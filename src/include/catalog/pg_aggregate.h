@@ -150,19 +150,19 @@ DATA(insert ( 2158	float8_accum	float8_stddev	1022	"{0,0,0}" ));
 DATA(insert ( 2159	numeric_accum	numeric_stddev	1231	"{0,0,0}" ));
 
 /* boolean-and and boolean-or */
-DATA(insert ( 2517  booland_statefunc 	-				16  _null_ ));
-DATA(insert ( 2518  boolor_statefunc  	- 				16  _null_ ));
-DATA(insert ( 2519  booland_statefunc	-				16	_null_ ));
+DATA(insert ( 2517	booland_statefunc	-				16	_null_ ));
+DATA(insert ( 2518	boolor_statefunc	-				16	_null_ ));
+DATA(insert ( 2519	booland_statefunc	-				16	_null_ ));
 
 /* bitwise integer */
-DATA(insert ( 2236 int2and        -                 21       _null_ ));
-DATA(insert ( 2237 int2or         -                 21       _null_ ));
-DATA(insert ( 2238 int4and        -                 23       _null_ ));
-DATA(insert ( 2239 int4or         -                 23       _null_ ));
-DATA(insert ( 2240 int8and        -                 20       _null_ ));
-DATA(insert ( 2241 int8or         -                 20       _null_ ));
-DATA(insert ( 2242 bitand         -               1560       _null_ ));
-DATA(insert ( 2243 bitor          -               1560       _null_ ));
+DATA(insert ( 2236 int2and		  -					21		 _null_ ));
+DATA(insert ( 2237 int2or		  -					21		 _null_ ));
+DATA(insert ( 2238 int4and		  -					23		 _null_ ));
+DATA(insert ( 2239 int4or		  -					23		 _null_ ));
+DATA(insert ( 2240 int8and		  -					20		 _null_ ));
+DATA(insert ( 2241 int8or		  -					20		 _null_ ));
+DATA(insert ( 2242 bitand		  -				  1560		 _null_ ));
+DATA(insert ( 2243 bitor		  -				  1560		 _null_ ));
 
 /*
  * prototypes for functions in pg_aggregate.c

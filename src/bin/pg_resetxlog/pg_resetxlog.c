@@ -48,7 +48,7 @@ extern char *optarg;
 #define _(x) gettext((x))
 
 
-char XLogDir[MAXPGPATH];		/* not static, see xlog_internal.h */
+char		XLogDir[MAXPGPATH]; /* not static, see xlog_internal.h */
 static char ControlFilePath[MAXPGPATH];
 
 static ControlFileData ControlFile;		/* pg_control values */
@@ -432,8 +432,8 @@ PrintControlValues(bool guessed)
 		printf(_("pg_control values:\n\n"));
 
 	/*
-	 * Format system_identifier separately to keep platform-dependent format
-	 * code out of the translatable message string.
+	 * Format system_identifier separately to keep platform-dependent
+	 * format code out of the translatable message string.
 	 */
 	snprintf(sysident_str, sizeof(sysident_str), UINT64_FORMAT,
 			 ControlFile.system_identifier);
@@ -476,7 +476,7 @@ RewriteControlFile(void)
 
 	/* adjust in case we are changing segment size */
 	newXlogSeg *= ControlFile.xlog_seg_size;
-	newXlogSeg = (newXlogSeg + XLogSegSize-1) / XLogSegSize;
+	newXlogSeg = (newXlogSeg + XLogSegSize - 1) / XLogSegSize;
 
 	/* be sure we wrap around correctly at end of a logfile */
 	NextLogSeg(newXlogId, newXlogSeg);
@@ -589,8 +589,11 @@ KillExistingXLOG(void)
 		errno = 0;
 	}
 #ifdef WIN32
-	/* This fix is in mingw cvs (runtime/mingwex/dirent.c rev 1.4), but
-	   not in released version */
+
+	/*
+	 * This fix is in mingw cvs (runtime/mingwex/dirent.c rev 1.4), but
+	 * not in released version
+	 */
 	if (GetLastError() == ERROR_NO_MORE_FILES)
 		errno = 0;
 #endif

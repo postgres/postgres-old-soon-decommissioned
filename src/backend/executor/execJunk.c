@@ -274,9 +274,9 @@ ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot)
 	 * dealing with a small number of attributes. for large tuples we just
 	 * use palloc.
 	 *
-	 * Note: we could use just one set of arrays if we were willing to
-	 * assume that the resno mapping is monotonic... I think it is, but
-	 * won't take the risk of breaking things right now.
+	 * Note: we could use just one set of arrays if we were willing to assume
+	 * that the resno mapping is monotonic... I think it is, but won't
+	 * take the risk of breaking things right now.
 	 */
 	if (cleanLength > 64)
 	{
@@ -309,7 +309,7 @@ ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot)
 	 */
 	for (i = 0; i < cleanLength; i++)
 	{
-		int j = cleanMap[i] - 1;
+		int			j = cleanMap[i] - 1;
 
 		values[i] = old_values[j];
 		nulls[i] = old_nulls[j];

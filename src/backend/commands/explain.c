@@ -317,7 +317,7 @@ explain_outNode(StringInfo str,
 				Plan *outer_plan,
 				int indent, ExplainState *es)
 {
-	ListCell	*l;
+	ListCell   *l;
 	char	   *pname;
 	int			i;
 

@@ -38,7 +38,7 @@
 
 
 /*
- * Executes an ALTER OBJECT / RENAME TO statement.  Based on the object
+ * Executes an ALTER OBJECT / RENAME TO statement.	Based on the object
  * type, the function appropriate to that type is executed.
  */
 void
@@ -153,7 +153,7 @@ ExecRenameStmt(RenameStmt *stmt)
 void
 ExecAlterOwnerStmt(AlterOwnerStmt *stmt)
 {
-	AclId	newowner = get_usesysid(stmt->newowner);
+	AclId		newowner = get_usesysid(stmt->newowner);
 
 	switch (stmt->objectType)
 	{

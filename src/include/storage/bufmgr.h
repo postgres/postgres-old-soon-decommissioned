@@ -131,7 +131,7 @@ extern void RelationTruncate(Relation rel, BlockNumber nblocks);
 extern void FlushRelationBuffers(Relation rel, BlockNumber firstDelBlock);
 extern void DropRelationBuffers(Relation rel);
 extern void DropRelFileNodeBuffers(RelFileNode rnode, bool istemp,
-								   BlockNumber firstDelBlock);
+					   BlockNumber firstDelBlock);
 extern void DropBuffers(Oid dbid);
 
 #ifdef NOT_USED

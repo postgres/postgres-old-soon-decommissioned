@@ -96,7 +96,7 @@ typedef struct XLogRecData
 	struct XLogRecData *next;
 } XLogRecData;
 
-extern TimeLineID ThisTimeLineID; /* current TLI */
+extern TimeLineID ThisTimeLineID;		/* current TLI */
 extern bool InRecovery;
 extern XLogRecPtr MyLastRecPtr;
 extern bool MyXactMadeXLogEntry;
@@ -113,7 +113,7 @@ extern const char XLOG_sync_method_default[];
 #define XLogArchivingActive()	(XLogArchiveCommand[0] != '\0')
 
 #ifdef WAL_DEBUG
-extern bool	XLOG_DEBUG;
+extern bool XLOG_DEBUG;
 #endif
 
 extern XLogRecPtr XLogInsert(RmgrId rmid, uint8 info, XLogRecData *rdata);

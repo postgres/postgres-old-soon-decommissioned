@@ -1409,7 +1409,7 @@ get_typdefault(Oid typid)
 			/* Convert C string to a value of the given type */
 			datum = OidFunctionCall3(type->typinput,
 									 CStringGetDatum(strDefaultVal),
-									 ObjectIdGetDatum(getTypeIOParam(typeTuple)),
+							 ObjectIdGetDatum(getTypeIOParam(typeTuple)),
 									 Int32GetDatum(-1));
 			/* Build a Const node containing the value */
 			expr = (Node *) makeConst(typid,

@@ -450,9 +450,9 @@ build_joinrel_restrictlist(Query *root,
 	 * Collect all the clauses that syntactically belong at this level.
 	 */
 	rlist = list_concat(subbuild_joinrel_restrictlist(joinrel,
-													  outer_rel->joininfo),
+													outer_rel->joininfo),
 						subbuild_joinrel_restrictlist(joinrel,
-													  inner_rel->joininfo));
+												   inner_rel->joininfo));
 
 	/*
 	 * Eliminate duplicate and redundant clauses.
@@ -500,7 +500,7 @@ subbuild_joinrel_restrictlist(RelOptInfo *joinrel,
 			 * but we can use a shallow copy.
 			 */
 			restrictlist = list_concat(restrictlist,
-									   list_copy(joininfo->jinfo_restrictinfo));
+								list_copy(joininfo->jinfo_restrictinfo));
 		}
 		else
 		{

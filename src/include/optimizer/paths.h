@@ -39,8 +39,8 @@ extern void create_index_paths(Query *root, RelOptInfo *rel);
 extern Path *best_inner_indexscan(Query *root, RelOptInfo *rel,
 					 Relids outer_relids, JoinType jointype);
 extern List *group_clauses_by_indexkey_for_or(RelOptInfo *rel,
-											  IndexOptInfo *index,
-											  Expr *orsubclause);
+								 IndexOptInfo *index,
+								 Expr *orsubclause);
 extern List *expand_indexqual_conditions(IndexOptInfo *index,
 							List *clausegroups);
 extern void check_partial_indexes(Query *root, RelOptInfo *rel);

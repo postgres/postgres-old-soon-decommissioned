@@ -96,8 +96,9 @@ random_init_pool(Pool *pool, GeqoEvalData *evaldata)
 	int			bad = 0;
 
 	/*
-	 * We immediately discard any invalid individuals (those that geqo_eval
-	 * returns DBL_MAX for), thereby not wasting pool space on them.
+	 * We immediately discard any invalid individuals (those that
+	 * geqo_eval returns DBL_MAX for), thereby not wasting pool space on
+	 * them.
 	 *
 	 * If we fail to make any valid individuals after 10000 tries, give up;
 	 * this probably means something is broken, and we shouldn't just let

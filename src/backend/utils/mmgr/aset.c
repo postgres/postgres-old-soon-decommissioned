@@ -652,12 +652,12 @@ AllocSetAlloc(MemoryContext context, Size size)
 		{
 			/*
 			 * Use first power of 2 that is larger than previous block,
-			 * but not more than the allowed limit.  (We don't simply double
-			 * the prior block size, because in some cases this could be a
-			 * funny size, eg if very first allocation was for an odd-sized
-			 * large chunk.)
+			 * but not more than the allowed limit.  (We don't simply
+			 * double the prior block size, because in some cases this
+			 * could be a funny size, eg if very first allocation was for
+			 * an odd-sized large chunk.)
 			 */
-			Size	pblksize = set->blocks->endptr - ((char *) set->blocks);
+			Size		pblksize = set->blocks->endptr - ((char *) set->blocks);
 
 			blksize = set->initBlockSize;
 			while (blksize <= pblksize)

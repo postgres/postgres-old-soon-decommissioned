@@ -18,7 +18,7 @@
 extern char *scanstr(const char *s);
 
 extern char *downcase_truncate_identifier(const char *ident, int len,
-										  bool warn);
+							 bool warn);
 
 extern void truncate_identifier(char *ident, int len, bool warn);
 

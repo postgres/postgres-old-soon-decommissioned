@@ -104,10 +104,10 @@ static void
 MJFormSkipQuals(List *qualList, List **ltQuals, List **gtQuals,
 				PlanState *parent)
 {
-	List		*ltexprs,
-				*gtexprs;
-	ListCell	*ltcdr,
-				*gtcdr;
+	List	   *ltexprs,
+			   *gtexprs;
+	ListCell   *ltcdr,
+			   *gtcdr;
 
 	/*
 	 * Make modifiable copies of the qualList.

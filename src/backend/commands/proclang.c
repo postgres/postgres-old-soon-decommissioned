@@ -101,8 +101,8 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 		else
 			ereport(ERROR,
 					(errcode(ERRCODE_WRONG_OBJECT_TYPE),
-					 errmsg("function %s must return type \"language_handler\"",
-							NameListToString(stmt->plhandler))));
+			  errmsg("function %s must return type \"language_handler\"",
+					 NameListToString(stmt->plhandler))));
 	}
 
 	/* validate the validator function */
@@ -126,12 +126,12 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 
 	i = 0;
 	namestrcpy(&langname, languageName);
-	values[i++] = NameGetDatum(&langname);			/* lanname */
-	values[i++] = BoolGetDatum(true);				/* lanispl */
-	values[i++] = BoolGetDatum(stmt->pltrusted);	/* lanpltrusted */
-	values[i++] = ObjectIdGetDatum(procOid);		/* lanplcallfoid */
-	values[i++] = ObjectIdGetDatum(valProcOid);		/* lanvalidator */
-	nulls[i] = 'n';									/* lanacl */
+	values[i++] = NameGetDatum(&langname);		/* lanname */
+	values[i++] = BoolGetDatum(true);	/* lanispl */
+	values[i++] = BoolGetDatum(stmt->pltrusted);		/* lanpltrusted */
+	values[i++] = ObjectIdGetDatum(procOid);	/* lanplcallfoid */
+	values[i++] = ObjectIdGetDatum(valProcOid); /* lanvalidator */
+	nulls[i] = 'n';				/* lanacl */
 
 	rel = heap_openr(LanguageRelationName, RowExclusiveLock);
 

@@ -23,7 +23,7 @@
  */
 typedef uint32 (*HashValueFunc) (const void *key, Size keysize);
 typedef int (*HashCompareFunc) (const void *key1, const void *key2,
-								Size keysize);
+											Size keysize);
 
 /*
  * Space allocation function for a hashtable --- designed to match malloc().
@@ -61,7 +61,7 @@ typedef void *(*HashAllocFunc) (Size request);
 typedef struct HASHELEMENT
 {
 	struct HASHELEMENT *link;	/* link to next entry in same bucket */
-	uint32	hashvalue;			/* hash function result for this entry */
+	uint32		hashvalue;		/* hash function result for this entry */
 } HASHELEMENT;
 
 /* A hash bucket is a linked list of HASHELEMENTs */

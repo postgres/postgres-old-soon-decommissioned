@@ -163,8 +163,9 @@ typedef struct GISTENTRY
  * methods union andpick split takes it as one of args
  */
 
-typedef struct {
-	int32		n; /* number of elements */
+typedef struct
+{
+	int32		n;				/* number of elements */
 	GISTENTRY	vector[1];
 } GistEntryVector;
 

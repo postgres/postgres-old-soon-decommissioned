@@ -33,6 +33,6 @@ extern Datum update_pg_pwd_and_pg_group(PG_FUNCTION_ARGS);
 
 extern void AtEOXact_UpdatePasswordFile(bool isCommit);
 extern void AtEOSubXact_UpdatePasswordFile(bool isCommit, TransactionId myXid,
-										   TransactionId parentXid);
+							   TransactionId parentXid);
 
 #endif   /* USER_H */

@@ -249,9 +249,9 @@ pg_do_encoding_conversion(unsigned char *src, int len,
 	{
 		ereport(LOG,
 				(errcode(ERRCODE_UNDEFINED_FUNCTION),
-			errmsg("default conversion function for encoding \"%s\" to \"%s\" does not exist",
-				   pg_encoding_to_char(src_encoding),
-				   pg_encoding_to_char(dest_encoding))));
+				 errmsg("default conversion function for encoding \"%s\" to \"%s\" does not exist",
+						pg_encoding_to_char(src_encoding),
+						pg_encoding_to_char(dest_encoding))));
 		return src;
 	}
 

@@ -326,7 +326,8 @@ main(int argc, char **argv)
 	AH->verbose = opts->verbose;
 
 	/*
-	 *	Whether to keep submitting sql commands as "pg_restore ... | psql ... "
+	 * Whether to keep submitting sql commands as "pg_restore ... | psql
+	 * ... "
 	 */
 	AH->exit_on_error = opts->exit_on_error;
 
@@ -340,11 +341,11 @@ main(int argc, char **argv)
 
 	/* done, print a summary of ignored errors */
 	if (AH->n_errors)
-		fprintf(stderr, _("WARNING, errors ignored on restore: %d\n"), 
+		fprintf(stderr, _("WARNING, errors ignored on restore: %d\n"),
 				AH->n_errors);
 
 	/* AH may be freed in CloseArchive? */
-	exit_code = AH->n_errors? 1: 0;
+	exit_code = AH->n_errors ? 1 : 0;
 
 	CloseArchive(AH);
 

@@ -14,14 +14,12 @@
 #include "common.h"
 
 
-static void
-vacuum_one_database(const char *dbname, bool full, bool verbose, bool analyze,
+static void vacuum_one_database(const char *dbname, bool full, bool verbose, bool analyze,
 					const char *table,
 					const char *host, const char *port,
 					const char *username, bool password,
 					const char *progname, bool echo, bool quiet);
-static void
-vacuum_all_databases(bool full, bool verbose, bool analyze,
+static void vacuum_all_databases(bool full, bool verbose, bool analyze,
 					 const char *host, const char *port,
 					 const char *username, bool password,
 					 const char *progname, bool echo, bool quiet);

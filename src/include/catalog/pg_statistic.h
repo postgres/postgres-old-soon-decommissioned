@@ -171,7 +171,7 @@ typedef FormData_pg_statistic *Form_pg_statistic;
  *
  * Code reading the pg_statistic relation should not assume that a particular
  * data "kind" will appear in any particular slot.	Instead, search the
- * stakind fields to see if the desired data is available.  (The standard
+ * stakind fields to see if the desired data is available.	(The standard
  * function get_attstatsslot() may be used for this.)
  */
 

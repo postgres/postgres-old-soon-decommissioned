@@ -261,7 +261,7 @@ doOne(CState * state, int n, int debug, int ttype)
 				 */
 				if (use_log)
 				{
-					double	diff;
+					double		diff;
 					struct timeval now;
 
 					gettimeofday(&now, 0);
@@ -492,7 +492,7 @@ init(void)
 	static char *DDLAFTERs[] = {
 		"alter table branches add primary key (bid)",
 		"alter table tellers add primary key (tid)",
-		"alter table accounts add primary key (aid)"};
+	"alter table accounts add primary key (aid)"};
 
 
 	char		sql[256];

@@ -28,11 +28,11 @@ extern int RTERangeTablePosn(ParseState *pstate,
 				  RangeTblEntry *rte,
 				  int *sublevels_up);
 extern RangeTblEntry *GetRTEByRangeTablePosn(ParseState *pstate,
-											 int varno,
-											 int sublevels_up);
+					   int varno,
+					   int sublevels_up);
 extern List *GetLevelNRangeTable(ParseState *pstate, int sublevels_up);
 extern Node *scanRTEForColumn(ParseState *pstate, RangeTblEntry *rte,
-							  char *colname);
+				 char *colname);
 extern Node *colNameToVar(ParseState *pstate, char *colname, bool localonly);
 extern Node *qualifiedNameToVar(ParseState *pstate,
 				   char *schemaname,
@@ -68,10 +68,10 @@ extern void addRTEtoQuery(ParseState *pstate, RangeTblEntry *rte,
 			  bool addToJoinList, bool addToNameSpace);
 extern RangeTblEntry *addImplicitRTE(ParseState *pstate, RangeVar *relation);
 extern void expandRTE(List *rtable, int rtindex, int sublevels_up,
-					  bool include_dropped,
-					  List **colnames, List **colvars);
+		  bool include_dropped,
+		  List **colnames, List **colvars);
 extern List *expandRelAttrs(ParseState *pstate, List *rtable,
-							int rtindex, int sublevels_up);
+			   int rtindex, int sublevels_up);
 extern int	attnameAttNum(Relation rd, const char *attname, bool sysColOK);
 extern Name attnumAttName(Relation rd, int attid);
 extern Oid	attnumTypeId(Relation rd, int attid);

@@ -281,7 +281,8 @@ typedef long long int int64;
 typedef unsigned long long int uint64;
 #endif
 
-#else	/* not HAVE_LONG_INT_64 and not HAVE_LONG_LONG_INT_64 */
+#else							/* not HAVE_LONG_INT_64 and not
+								 * HAVE_LONG_LONG_INT_64 */
 
 /* Won't actually work, but fall back to long int so that code compiles */
 #ifndef HAVE_INT64
@@ -292,7 +293,8 @@ typedef unsigned long int uint64;
 #endif
 
 #define INT64_IS_BUSTED
-#endif   /* not HAVE_LONG_INT_64 and not HAVE_LONG_LONG_INT_64 */
+#endif   /* not HAVE_LONG_INT_64 and not
+								 * HAVE_LONG_LONG_INT_64 */
 
 /* Decide if we need to decorate 64-bit constants */
 #ifdef HAVE_LL_CONSTANTS
@@ -673,10 +675,10 @@ typedef NameData *Name;
 
 /*
  *	NOTE:  this is also used for opening text files.
- *  WIN32 treats Control-Z as EOF in files opened in text mode.
- *  Therefore, we open files in binary mode on Win32 so we can read
- *  literal control-Z.  The other affect is that we see CRLF, but
- *  that is OK because we can already handle those cleanly.
+ *	WIN32 treats Control-Z as EOF in files opened in text mode.
+ *	Therefore, we open files in binary mode on Win32 so we can read
+ *	literal control-Z.	The other affect is that we see CRLF, but
+ *	that is OK because we can already handle those cleanly.
  */
 #if defined(__CYGWIN__) || defined(WIN32)
 #define PG_BINARY	O_BINARY

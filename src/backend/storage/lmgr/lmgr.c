@@ -66,7 +66,7 @@ static LOCKMASK LockConflicts[] = {
 
 };
 
-static	LOCKMETHODID	LockTableId = INVALID_LOCKMETHOD;
+static LOCKMETHODID LockTableId = INVALID_LOCKMETHOD;
 
 /*
  * Create the lock table described by LockConflicts
@@ -74,7 +74,7 @@ static	LOCKMETHODID	LockTableId = INVALID_LOCKMETHOD;
 void
 InitLockTable(int maxBackends)
 {
-	LOCKMETHODID	LongTermTableId;
+	LOCKMETHODID LongTermTableId;
 
 	/* there's no zero-th table */
 	NumLockMethods = 1;

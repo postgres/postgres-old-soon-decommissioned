@@ -171,13 +171,9 @@ inv_create(int flags)
 	retval->offset = 0;
 
 	if (flags & INV_WRITE)
-	{
 		retval->flags = IFS_WRLOCK | IFS_RDLOCK;
-	}
 	else if (flags & INV_READ)
-	{
 		retval->flags = IFS_RDLOCK;
-	}
 	else
 		elog(ERROR, "invalid flags: %d", flags);
 
@@ -207,13 +203,9 @@ inv_open(Oid lobjId, int flags)
 	retval->offset = 0;
 
 	if (flags & INV_WRITE)
-	{
 		retval->flags = IFS_WRLOCK | IFS_RDLOCK;
-	}
 	else if (flags & INV_READ)
-	{
 		retval->flags = IFS_RDLOCK;
-	}
 	else
 		elog(ERROR, "invalid flags: %d", flags);
 
@@ -238,7 +230,7 @@ inv_close(LargeObjectDesc *obj_desc)
 int
 inv_drop(Oid lobjId)
 {
-	Oid classoid;
+	Oid			classoid;
 
 	LargeObjectDrop(lobjId);
 

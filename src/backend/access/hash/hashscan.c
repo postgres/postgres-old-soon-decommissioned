@@ -44,9 +44,9 @@ ReleaseResources_hash(void)
 	HashScanList next;
 
 	/*
-	 * Note: this should be a no-op during normal query shutdown.
-	 * However, in an abort situation ExecutorEnd is not called and so
-	 * there may be open index scans to clean up.
+	 * Note: this should be a no-op during normal query shutdown. However,
+	 * in an abort situation ExecutorEnd is not called and so there may be
+	 * open index scans to clean up.
 	 */
 	prev = NULL;
 

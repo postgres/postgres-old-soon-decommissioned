@@ -176,9 +176,9 @@ extern Oid CreateConstraintEntry(const char *constraintName,
 extern void RemoveConstraintById(Oid conId);
 
 extern bool ConstraintNameIsUsed(ConstraintCategory conCat, Oid objId,
-								 Oid objNamespace, const char *conname);
+					 Oid objNamespace, const char *conname);
 extern char *ChooseConstraintName(const char *name1, const char *name2,
-								  const char *label, Oid namespace,
-								  List *others);
+					 const char *label, Oid namespace,
+					 List *others);
 
 #endif   /* PG_CONSTRAINT_H */

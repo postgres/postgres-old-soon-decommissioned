@@ -48,10 +48,11 @@ makePathKeyItem(Node *key, Oid sortop, bool checkType)
 
 	/*
 	 * Some callers pass expressions that are not necessarily of the same
-	 * type as the sort operator expects as input (for example when dealing
-	 * with an index that uses binary-compatible operators).  We must relabel
-	 * these with the correct type so that the key expressions will be seen
-	 * as equal() to expressions that have been correctly labeled.
+	 * type as the sort operator expects as input (for example when
+	 * dealing with an index that uses binary-compatible operators).  We
+	 * must relabel these with the correct type so that the key
+	 * expressions will be seen as equal() to expressions that have been
+	 * correctly labeled.
 	 */
 	if (checkType)
 	{

@@ -34,8 +34,8 @@ extern int	UnBlockSig,
 #ifndef WIN32
 #define PG_SETMASK(mask)	sigsetmask(*((int*)(mask)))
 #else
-#define PG_SETMASK(mask)        pqsigsetmask(*((int*)(mask)))
-int pqsigsetmask(int mask);
+#define PG_SETMASK(mask)		pqsigsetmask(*((int*)(mask)))
+int			pqsigsetmask(int mask);
 #endif
 #endif
 

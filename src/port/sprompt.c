@@ -55,7 +55,7 @@ simple_prompt(const char *prompt, int maxlen, bool echo)
 #else
 #ifdef WIN32
 	HANDLE		t = NULL;
-	LPDWORD		t_orig	= NULL;
+	LPDWORD		t_orig = NULL;
 #endif
 #endif
 

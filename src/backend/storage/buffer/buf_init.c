@@ -59,7 +59,7 @@ long int	LocalBufferFlushCount;
  *
  * IO_IN_PROGRESS -- this is a flag in the buffer descriptor.
  *		It must be set when an IO is initiated and cleared at
- *		the end of the IO.  It is there to make sure that one
+ *		the end of the IO.	It is there to make sure that one
  *		process doesn't start to use a buffer while another is
  *		faulting it in.  see IOWait/IOSignal.
  *
@@ -112,9 +112,9 @@ InitBufferPool(void)
 		char	   *block;
 
 		/*
-		 * It's probably not really necessary to grab the lock --- if there's
-		 * anyone else attached to the shmem at this point, we've got
-		 * problems.
+		 * It's probably not really necessary to grab the lock --- if
+		 * there's anyone else attached to the shmem at this point, we've
+		 * got problems.
 		 */
 		LWLockAcquire(BufMgrLock, LW_EXCLUSIVE);
 
@@ -122,8 +122,9 @@ InitBufferPool(void)
 		block = BufferBlocks;
 
 		/*
-		 * link the buffers into a single linked list. This will become the
-		 * LIFO list of unused buffers returned by StrategyGetBuffer().
+		 * link the buffers into a single linked list. This will become
+		 * the LIFO list of unused buffers returned by
+		 * StrategyGetBuffer().
 		 */
 		for (i = 0; i < NBuffers; block += BLCKSZ, buf++, i++)
 		{

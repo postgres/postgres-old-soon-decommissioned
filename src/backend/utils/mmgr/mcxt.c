@@ -664,4 +664,5 @@ pgport_pfree(void *pointer)
 	pfree(pointer);
 	return;
 }
+
 #endif

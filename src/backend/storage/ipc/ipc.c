@@ -146,7 +146,7 @@ shmem_exit(int code)
  * ----------------------------------------------------------------
  */
 void
-on_proc_exit(void (*function) (int code, Datum arg), Datum arg)
+			on_proc_exit(void (*function) (int code, Datum arg), Datum arg)
 {
 	if (on_proc_exit_index >= MAX_ON_EXITS)
 		ereport(FATAL,
@@ -167,7 +167,7 @@ on_proc_exit(void (*function) (int code, Datum arg), Datum arg)
  * ----------------------------------------------------------------
  */
 void
-on_shmem_exit(void (*function) (int code, Datum arg), Datum arg)
+			on_shmem_exit(void (*function) (int code, Datum arg), Datum arg)
 {
 	if (on_shmem_exit_index >= MAX_ON_EXITS)
 		ereport(FATAL,

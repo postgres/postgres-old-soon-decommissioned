@@ -219,7 +219,7 @@ tuplestore_begin_common(bool randomAccess, bool interXact, int maxKBytes)
 	state->myfile = NULL;
 
 	state->memtupcount = 0;
-	state->memtupsize = 1024;					/* initial guess */
+	state->memtupsize = 1024;	/* initial guess */
 	state->memtuples = (void **) palloc(state->memtupsize * sizeof(void *));
 
 	USEMEM(state, GetMemoryChunkSpace(state->memtuples));

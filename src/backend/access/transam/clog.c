@@ -62,6 +62,7 @@
  * Link to shared-memory data structures for CLOG control
  */
 static SlruCtlData ClogCtlData;
+
 #define ClogCtl (&ClogCtlData)
 
 

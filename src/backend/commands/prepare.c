@@ -211,7 +211,8 @@ EvaluateParams(EState *estate, List *params, List *argtypes)
 	int			nargs = list_length(argtypes);
 	ParamListInfo paramLI;
 	List	   *exprstates;
-	ListCell   *le, *la;
+	ListCell   *le,
+			   *la;
 	int			i = 0;
 
 	/* Parser should have caught this error, but check for safety */
@@ -510,7 +511,7 @@ ExplainExecuteQuery(ExplainStmt *stmt, TupOutputState *tstate)
 	}
 
 	/* Explain each query */
-	forboth (q, query_list, p, plan_list)
+	forboth(q, query_list, p, plan_list)
 	{
 		Query	   *query = (Query *) lfirst(q);
 		Plan	   *plan = (Plan *) lfirst(p);

@@ -91,6 +91,7 @@ PQprint(FILE *fout,
 		int			total_line_length = 0;
 		int			usePipe = 0;
 		char	   *pagerenv;
+
 #if !defined(ENABLE_THREAD_SAFETY) && !defined(WIN32)
 		pqsigfunc	oldsigpipehandler = NULL;
 #endif

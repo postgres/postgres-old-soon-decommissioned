@@ -223,7 +223,7 @@ enlargeStringInfo(StringInfo str, int needed)
 
 	/*
 	 * Guard against ridiculous "needed" values, which can occur if we're
-	 * fed bogus data.  Without this, we can get an overflow or infinite
+	 * fed bogus data.	Without this, we can get an overflow or infinite
 	 * loop in the following.
 	 */
 	if (needed < 0 ||
@@ -249,9 +249,9 @@ enlargeStringInfo(StringInfo str, int needed)
 		newlen = 2 * newlen;
 
 	/*
-	 * Clamp to MaxAllocSize in case we went past it.  Note we are assuming
-	 * here that MaxAllocSize <= INT_MAX/2, else the above loop could
-	 * overflow.  We will still have newlen >= needed.
+	 * Clamp to MaxAllocSize in case we went past it.  Note we are
+	 * assuming here that MaxAllocSize <= INT_MAX/2, else the above loop
+	 * could overflow.	We will still have newlen >= needed.
 	 */
 	if (newlen > (int) MaxAllocSize)
 		newlen = (int) MaxAllocSize;

@@ -22,13 +22,14 @@ extern char *Log_filename_prefix;
 extern bool am_syslogger;
 
 #ifndef WIN32
-extern int syslogPipe[2];
+extern int	syslogPipe[2];
+
 #else
 extern HANDLE syslogPipe[2];
 #endif
 
 
-extern int SysLogger_Start(void);
+extern int	SysLogger_Start(void);
 
 extern void write_syslogger_file(const char *buffer, int count);
 

@@ -105,7 +105,7 @@ typedef struct PortalData
 	const char *name;			/* portal's name */
 	MemoryContext heap;			/* subsidiary memory for portal */
 	ResourceOwner resowner;		/* resources owned by portal */
-	void		(*cleanup) (Portal portal);			/* cleanup hook */
+	void		(*cleanup) (Portal portal);		/* cleanup hook */
 	TransactionId createXact;	/* the xid of the creating xact */
 
 	/* The query or queries the portal will execute */
@@ -182,9 +182,9 @@ extern void AtCommit_Portals(void);
 extern void AtAbort_Portals(void);
 extern void AtCleanup_Portals(void);
 extern void AtSubCommit_Portals(TransactionId parentXid,
-								ResourceOwner parentXactOwner);
+					ResourceOwner parentXactOwner);
 extern void AtSubAbort_Portals(TransactionId parentXid,
-							   ResourceOwner parentXactOwner);
+				   ResourceOwner parentXactOwner);
 extern void AtSubCleanup_Portals(void);
 extern Portal CreatePortal(const char *name, bool allowDup, bool dupSilent);
 extern Portal CreateNewPortal(void);

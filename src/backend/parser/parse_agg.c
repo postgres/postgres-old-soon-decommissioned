@@ -307,7 +307,7 @@ check_ungrouped_columns_walker(Node *node,
 
 		/* Found an ungrouped local variable; generate error message */
 		Assert(var->varno > 0 &&
-			   (int) var->varno <= list_length(context->pstate->p_rtable));
+			 (int) var->varno <= list_length(context->pstate->p_rtable));
 		rte = rt_fetch(var->varno, context->pstate->p_rtable);
 		attname = get_rte_attribute_name(rte, var->varattno);
 		if (context->sublevels_up == 0)

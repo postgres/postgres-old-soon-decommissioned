@@ -436,7 +436,8 @@ static const struct cachedesc cacheinfo[] = {
 	}}
 };
 
-static CatCache *SysCache[lengthof(cacheinfo)];
+static CatCache *SysCache[
+						  lengthof(cacheinfo)];
 static int	SysCacheSize = lengthof(cacheinfo);
 static bool CacheInitialized = false;
 

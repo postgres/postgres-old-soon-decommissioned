@@ -35,7 +35,7 @@ get_user_name(const char *progname)
 	return pw->pw_name;
 #else
 	static char username[128];	/* remains after function exit */
-	DWORD len = sizeof(username)-1;
+	DWORD		len = sizeof(username) - 1;
 
 	if (!GetUserName(username, &len))
 	{

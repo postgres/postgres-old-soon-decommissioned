@@ -260,14 +260,14 @@ extern const int day_tab[2][13];
 
 /*
  * Datetime input parsing routines (ParseDateTime, DecodeDateTime, etc)
- * return zero or a positive value on success.  On failure, they return
+ * return zero or a positive value on success.	On failure, they return
  * one of these negative code values.  DateTimeParseError may be used to
  * produce a correct ereport.
  */
 #define DTERR_BAD_FORMAT		(-1)
 #define DTERR_FIELD_OVERFLOW	(-2)
-#define DTERR_MD_FIELD_OVERFLOW	(-3)	/* triggers hint about DateStyle */
-#define DTERR_INTERVAL_OVERFLOW	(-4)
+#define DTERR_MD_FIELD_OVERFLOW (-3)	/* triggers hint about DateStyle */
+#define DTERR_INTERVAL_OVERFLOW (-4)
 #define DTERR_TZDISP_OVERFLOW	(-5)
 
 
@@ -289,7 +289,7 @@ extern int DecodeInterval(char **field, int *ftype,
 			   int nf, int *dtype,
 			   struct pg_tm * tm, fsec_t *fsec);
 extern void DateTimeParseError(int dterr, const char *str,
-							   const char *datatype);
+				   const char *datatype);
 
 extern int	DetermineLocalTimeZone(struct pg_tm * tm);
 

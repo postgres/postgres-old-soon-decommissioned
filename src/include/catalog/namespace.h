@@ -92,7 +92,7 @@ extern Oid	FindDefaultConversionProc(int4 for_encoding, int4 to_encoding);
 extern void InitializeSearchPath(void);
 extern void AtEOXact_Namespace(bool isCommit);
 extern void AtEOSubXact_Namespace(bool isCommit, TransactionId myXid,
-								  TransactionId parentXid);
+					  TransactionId parentXid);
 
 /* stuff for search_path GUC variable */
 extern char *namespace_search_path;

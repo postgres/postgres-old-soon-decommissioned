@@ -307,7 +307,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 		{
 			ereport(LOG,
 					(errcode_for_socket_access(),
-					 /* translator: %s is IPv4, IPv6, or Unix */
+			/* translator: %s is IPv4, IPv6, or Unix */
 					 errmsg("could not create %s socket: %m",
 							familyDesc)));
 			continue;
@@ -352,7 +352,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 		{
 			ereport(LOG,
 					(errcode_for_socket_access(),
-					 /* translator: %s is IPv4, IPv6, or Unix */
+			/* translator: %s is IPv4, IPv6, or Unix */
 					 errmsg("could not bind %s socket: %m",
 							familyDesc),
 					 (IS_AF_UNIX(addr->ai_family)) ?
@@ -392,7 +392,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 		{
 			ereport(LOG,
 					(errcode_for_socket_access(),
-					 /* translator: %s is IPv4, IPv6, or Unix */
+			/* translator: %s is IPv4, IPv6, or Unix */
 					 errmsg("could not listen on %s socket: %m",
 							familyDesc)));
 			closesocket(fd);

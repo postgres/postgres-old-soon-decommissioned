@@ -62,12 +62,12 @@ init_tour(Gene *tour, int num_gene)
 	}
 
 	/*
-	 * Since geqo_eval() will reject tours where tour[0] > tour[1],
-	 * we may as well switch the two to make it a valid tour.
+	 * Since geqo_eval() will reject tours where tour[0] > tour[1], we may
+	 * as well switch the two to make it a valid tour.
 	 */
 	if (num_gene >= 2 && tour[0] > tour[1])
 	{
-		Gene	gtmp = tour[0];
+		Gene		gtmp = tour[0];
 
 		tour[0] = tour[1];
 		tour[1] = gtmp;
