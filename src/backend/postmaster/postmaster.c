@@ -172,6 +172,13 @@ static int	ServerSock_INET = INVALID_SOCK;		/* stream socket server */
 static int	ServerSock_UNIX = INVALID_SOCK;		/* stream socket server */
 #endif
 
+/* Used to reduce macros tests */
+#ifdef EXEC_BACKEND
+const bool ExecBackend = true;
+#else
+const bool ExecBackend = false;
+#endif
+
 /*
  * Set by the -o option
  */
@@ -1407,7 +1414,11 @@ processCancelRequest(Port *port, void *pkt)
 		elog(DEBUG1, "processCancelRequest: CheckPointPID in cancel request for process %d", backendPID);
 		return;
 	}
-
+	else if (ExecBackend)
+	{
+		AttachSharedMemoryAndSemaphores();
+	}
+	
 	/* See if we have a matching backend */
 
 	for (curr = DLGetHead(BackendList); curr; curr = DLGetSucc(curr))

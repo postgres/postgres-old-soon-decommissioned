@@ -301,6 +301,11 @@ BootstrapMain(int argc, char *argv[])
 
 	Assert(dbName);
 
+	if (IsUnderPostmaster && ExecBackend && MyProc /* ordinary backend */)
+	{
+		AttachSharedMemoryAndSemaphores();
+	}
+	
 	if (!IsUnderPostmaster)
 	{
 		if (!potential_DataDir)

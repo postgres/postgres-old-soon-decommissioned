@@ -32,5 +32,6 @@ extern void on_exit_reset(void);
 extern void CreateSharedMemoryAndSemaphores(bool makePrivate,
 								int maxBackends,
 								int port);
+extern void AttachSharedMemoryAndSemaphores(void);
 
 #endif   /* IPC_H */

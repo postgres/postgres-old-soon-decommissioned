@@ -1453,6 +1453,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 				break;
 		}
 
+
 	/*
 	 * -d is not the same as setting
 	 * log_min_messages because it enables other
@@ -1577,6 +1578,9 @@ PostgresMain(int argc, char *argv[], const char *username)
 								 * restart... */
 		}
 		BaseInit();
+#ifdef EXECBACKEND
+		AttachSharedMemoryAndSemaphores();
+#endif
 	}
 	else
 	{
@@ -1672,7 +1676,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.329 $ $Date: 2003/05/02 21:59:31 $\n");
+		puts("$Revision: 1.330 $ $Date: 2003/05/03 03:52:07 $\n");
 	}
 
 	/*
