@@ -234,8 +234,6 @@ ProcessUtility(Node *parsetree,
 				bool		forward;
 				int			count;
 
-				SetQuerySnapshot();
-
 				forward = (bool) (stmt->direction == FORWARD);
 
 				/*
