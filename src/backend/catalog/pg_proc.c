@@ -67,6 +67,7 @@ ProcedureCreate(char *procedureName,
 	Oid			toid;
 	NameData	procname;
 	TupleDesc	tupDesc;
+	Oid		retval;
 
 	/* ----------------
 	 *	sanity checks
@@ -327,5 +328,7 @@ ProcedureCreate(char *procedureName,
 		CatalogCloseIndices(Num_pg_proc_indices, idescs);
 	}
 	heap_close(rel, RowExclusiveLock);
-	return tup->t_data->t_oid;
+	retval = tup->t_data->t_oid;
+	heap_freetuple(tup);
+	return retval;
 }
