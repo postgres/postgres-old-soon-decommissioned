@@ -631,7 +631,7 @@ DefineType(char *typeName, List *parameters)
 
 			if (!strcasecmp(a, "double"))
 				alignment = 'd';
-			else if (!strcasecmp(a, "int"))
+			else if (!strcasecmp(a, "int4"))
 				alignment = 'i';
 			else
 			{
@@ -741,8 +741,11 @@ defGetTypeLength(DefElem *def)
 	if (nodeTag(def->arg) == T_Integer)
 		return intVal(def->arg);
 	else if (nodeTag(def->arg) == T_String &&
-			 !strcasecmp(strVal(def->arg), "variable"))
+			!strcasecmp(strVal(def->arg), "variable"))
 		return -1;				/* variable length */
+	else if (nodeTag(def->arg) == T_TypeName &&
+			!strcasecmp(((TypeName *)(def->arg))->name, "variable"))
+		return -1;
 
 	elog(ERROR, "Define: \"%s\" = what?", def->defname);
 	return -1;
