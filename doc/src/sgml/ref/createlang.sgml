@@ -186,6 +186,13 @@ Postgres documentation
   <para>
    Use <xref linkend="app-droplang"> to remove a language.
   </para>
+
+  <para>
+   <application>createlang</application> is a shell script that invokes
+   <application>psql</application> several times.  If you have things
+   arranged so that a password prompt is required to connect, you will be
+   prompted for a password several times.
+  </para>
  </refsect1>
  
  <refsect1 id="R1-APP-CREATELANG-3">
