@@ -122,6 +122,7 @@ extern int	StatementTimeout;
  * Function Prototypes
  */
 extern int	ProcGlobalSemas(int maxBackends);
+extern int	ProcGlobalShmemSize(int maxBackends);
 extern void InitProcGlobal(int maxBackends);
 extern void InitProcess(void);
 extern void InitDummyProcess(int proctype);

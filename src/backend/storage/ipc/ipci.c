@@ -69,6 +69,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 		size = hash_estimate_size(SHMEM_INDEX_SIZE, sizeof(ShmemIndexEnt));
 		size += BufferShmemSize();
 		size += LockShmemSize(maxBackends);
+		size += ProcGlobalShmemSize(maxBackends);
 		size += XLOGShmemSize();
 		size += CLOGShmemSize();
 		size += SUBTRANSShmemSize();

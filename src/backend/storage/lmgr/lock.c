@@ -1689,15 +1689,17 @@ LockReassignCurrentOwner(void)
 }
 
 
+/*
+ * Estimate shared-memory space used for lock tables
+ */
 int
 LockShmemSize(int maxBackends)
 {
 	int			size = 0;
 	long		max_table_size = NLOCKENTS(maxBackends);
 
-	size += MAXALIGN(sizeof(PROC_HDR)); /* ProcGlobal */
-	size += maxBackends * MAXALIGN(sizeof(PGPROC));		/* each MyProc */
-	size += MAX_LOCK_METHODS * MAXALIGN(sizeof(LockMethodData));		/* each lock method */
+	/* lock method headers */
+	size += MAX_LOCK_METHODS * MAXALIGN(sizeof(LockMethodData));
 
 	/* lockHash table */
 	size += hash_estimate_size(max_table_size, sizeof(LOCK));
@@ -1706,6 +1708,9 @@ LockShmemSize(int maxBackends)
 	size += hash_estimate_size(max_table_size, sizeof(PROCLOCK));
 
 	/*
+	 * Note we count only one pair of hash tables, since the userlocks
+	 * table actually overlays the main one.
+	 *
 	 * Since the lockHash entry count above is only an estimate, add 10%
 	 * safety margin.
 	 */

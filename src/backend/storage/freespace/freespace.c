@@ -330,7 +330,7 @@ FreeSpaceShmemSize(void)
 	size = MAXALIGN(sizeof(FSMHeader));
 
 	/* hash table, including the FSMRelation objects */
-	size += hash_estimate_size(MaxFSMRelations, sizeof(FSMRelation));
+	size += hash_estimate_size(MaxFSMRelations + 1, sizeof(FSMRelation));
 
 	/* page-storage arena */
 	nchunks = (MaxFSMPages - 1) / CHUNKPAGES + 1;
