@@ -204,7 +204,7 @@ extern DLLIMPORT ErrorContextCallback *error_context_stack;
 		sigjmp_buf *save_exception_stack = PG_exception_stack; \
 		ErrorContextCallback *save_context_stack = error_context_stack; \
 		sigjmp_buf local_sigjmp_buf; \
-		if (sigsetjmp(local_sigjmp_buf, 1) == 0) \
+		if (sigsetjmp(local_sigjmp_buf, 0) == 0) \
 		{ \
 			PG_exception_stack = &local_sigjmp_buf
 
