@@ -967,7 +967,7 @@ April 21, 1998 some enhancements/fixes
 	* add octet_length()
 	* add --with-mb option to configure
 	* new regression tests for EUC_KR
-  	  (contributed by Soonmyung Hong <email>hong@lunaris.hanmesoft.co.kr</email>)
+  	  (contributed by Soonmyung Hong)
 	* add some test cases to the EUC_JP regression test
 	* fix problem in regress/regress.sh in case of System V
 	* fix toupper(), tolower() to handle 8bit chars
