@@ -1372,7 +1372,9 @@ pltcl_elog(ClientData cdata, Tcl_Interp *interp,
 	 * Call elog(), restore the original restart address
 	 * and return to the caller (if not catched)
 	 ************************************************************/
-	elog(level, argv[2]);
+	UTF_BEGIN;
+	elog(level, UTF_U2E(argv[2]));
+	UTF_END;
 	memcpy(&Warn_restart, &save_restart, sizeof(Warn_restart));
 	return TCL_OK;
 }
