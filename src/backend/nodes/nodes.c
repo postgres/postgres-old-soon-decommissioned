@@ -17,16 +17,11 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"
+
 #include "nodes/nodes.h"
 
 /*
- * newNode -
- *	  create a new node of the specified size and tag the node with the
- *	  specified tag.
- *
- * !WARNING!: Avoid using newNode directly. You should be using the
- *	  macro makeNode. eg. to create a Resdom node, use makeNode(Resdom)
- *
+ * Support for newNode() macro
  */
-Node *newNodeMacroHolder;
 
+Node *newNodeMacroHolder;

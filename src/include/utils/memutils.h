@@ -83,6 +83,7 @@ extern void MemoryContextResetChildren(MemoryContext context);
 extern void MemoryContextDeleteChildren(MemoryContext context);
 extern void MemoryContextResetAndDeleteChildren(MemoryContext context);
 extern Size GetMemoryChunkSpace(void *pointer);
+extern MemoryContext GetMemoryChunkContext(void *pointer);
 extern void MemoryContextStats(MemoryContext context);
 
 #ifdef MEMORY_CONTEXT_CHECKING
