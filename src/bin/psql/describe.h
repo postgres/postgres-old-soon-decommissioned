@@ -35,7 +35,7 @@ bool		objectDescription(const char *pattern);
 bool		describeTableDetails(const char *pattern, bool verbose);
 
 /* \l */
-bool		listAllDbs(bool desc);
+bool		listAllDbs(bool verbose);
 
 /* \dt, \di, \ds, \dS, etc. */
 bool		listTables(const char *tabtypes, const char *pattern, bool verbose);

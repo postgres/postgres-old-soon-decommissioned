@@ -293,7 +293,7 @@ describeOperators(const char *pattern)
  * for \l, \list, and -l switch
  */
 bool
-listAllDbs(bool desc)
+listAllDbs(bool verbose)
 {
 	PGresult   *res;
 	PQExpBufferData buf;
@@ -310,7 +310,7 @@ listAllDbs(bool desc)
 			 ",\n       pg_catalog.pg_encoding_to_char(d.encoding) as \"%s\"",
 			 _("Encoding"));
 #endif
-	if (desc)
+	if (verbose)
 		appendPQExpBuffer(&buf,
 			 ",\n       pg_catalog.obj_description(d.oid, 'pg_database') as \"%s\"",
 				 _("Description"));
