@@ -67,8 +67,10 @@
  * ----------
  */
 extern PLPGSQL_YYSTYPE plpgsql_yylval;
-extern int	plpgsql_yylineno;
 extern char plpgsql_yytext[];
+
+/* We have to define this as non-extern somewhere for bsdi  bjm  1999/09/19 */
+int	plpgsql_yylineno;
 
 void		plpgsql_yyerror(const char *s);
 
