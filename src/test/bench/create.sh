@@ -2,7 +2,7 @@
 # $PostgreSQL$
 # 
 if [ ! -d $1 ]; then
-	echo " you must specify a valid data directory "
+	echo " you must specify a valid data directory " >&2
 	exit
 fi
 if [ -d ./obj ]; then
@@ -19,7 +19,7 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-postgres -D${1} -Q bench < create.sql > /dev/null
+postgres -D${1} bench < create.sql > /dev/null
 if [ $? -ne 0 ]; then
 	echo initial database load failed
 	exit 1

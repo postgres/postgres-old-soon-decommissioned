@@ -3,7 +3,8 @@
 # Makefile--
 #    Makefile for the Wisconsin Benchmark
 #
-# Copyright (c) 1994-5, Regents of the University of California
+# Portions Copyright (c) 1996-2004, PostgreSQL Global Development Group
+# Portions Copyright (c) 1994-5, Regents of the University of California
 #
 #
 # IDENTIFICATION
@@ -18,23 +19,14 @@ include $(top_builddir)/src/Makefile.global
 CREATEFILES= create.sql bench.sql
 OUTFILES= bench.out bench.out.perquery
 
-override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
-override CFLAGS += $(CFLAGS_SL)
-
 
 all: $(CREATEFILES)
 	rm -f $(OUTFILES)
 
 create.sql: create.source
-	if [ -z "$$USER" ]; then USER=$$LOGNAME; fi; \
-	if [ -z "$$USER" ]; then USER=`whoami`; fi; \
-	if [ -z "$$USER" ]; then echo 'Cannot deduce $$USER.'; exit 1; fi; \
 	rm -f $@; \
 	C=`pwd`; \
-	sed -e "s:_CWD_:$$C:g" \
-	    -e "s:_OBJWD_:$$C:g" \
-	    -e "s:_SLSUFF_:$(SLSUFF):g" \
-	    -e "s/_USER_/$$USER/g" < $< > $@
+	sed -e "s:_CWD_:$$C:g"  < $< > $@
 
 bench.sql: 
 	x=1; \
@@ -48,13 +40,12 @@ runtest: $(OUTFILES)
 
 bench.out: $(CREATEFILES)
 	$(SHELL) ./create.sh $$PGDATA && \
-	$(SHELL) ./runwisc.sh $$PGDATA >bench.out 2>&1
+	$(SHELL) ./runwisc.sh $$PGDATA > $@
 	@echo "RESULTS OF BENCHMARK ARE SAVED IN FILE bench.out";
 
 bench.out.perquery: bench.out
-	$(SHELL) ./perquery <bench.out 2>&1 > $@
-	@echo "BREAKDOWN OF BENCHMARK IS SAVED IN FILE" \
-	  "bench.out.perquery";
+	$(SHELL) ./perquery <bench.out > $@
+	@echo "BREAKDOWN OF BENCHMARK IS SAVED IN FILE bench.out.perquery";
 
 clean:
 	rm -f $(OUTFILES) $(CREATEFILES)
