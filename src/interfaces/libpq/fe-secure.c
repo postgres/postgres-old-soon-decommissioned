@@ -469,7 +469,13 @@ verify_peer(PGconn *conn)
 		struct hostent hpstr;
 		char		buf[BUFSIZ];
 		int			herrno = 0;
-
+		
+		/*
+		 *	Currently, pqGethostbyname() is used only on platforms that
+		 *	don't have getaddrinfo().  If you enable this function,
+		 *	you should convert the pqGethostbyname() function call to
+		 *	use getaddrinfo().
+		 */
 		pqGethostbyname(conn->peer_cn, &hpstr, buf, sizeof(buf),
 						&h, &herrno);
 	}

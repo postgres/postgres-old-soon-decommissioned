@@ -18,7 +18,7 @@ NAME= pq
 SO_MAJOR_VERSION= 3
 SO_MINOR_VERSION= 1
 
-override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) $(THREAD_CFLAGS) -DFRONTEND -DSYSCONFDIR='"$(sysconfdir)"'
+override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) $(THREAD_CPPFLAGS) -DFRONTEND -DSYSCONFDIR='"$(sysconfdir)"'
 
 OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
       fe-protocol2.o fe-protocol3.o pqexpbuffer.o pqsignal.o fe-secure.o \
