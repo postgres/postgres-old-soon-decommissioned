@@ -12,6 +12,8 @@ subdir = src/timezone
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
+override CPPFLAGS := -DFRONTEND $(CPPFLAGS)
+
 # files to build into backend
 OBJS= localtime.o strftime.o pgtz.o dirmod.o
 
