@@ -32,6 +32,9 @@
 
 #include "postgres.h"
 #include "miscadmin.h"
+#ifdef HAVE_FLOAT_H
+# include <float.h>
+#endif
 #ifdef HAVE_LIMITS_H
 # include <limits.h>
 #endif
