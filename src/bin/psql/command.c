@@ -1456,14 +1456,15 @@ do_edit(const char *filename_arg, PQExpBuffer query_buf)
 			fclose(stream);
 		}
 
-		/* remove temp file */
-		if (!filename_arg)
+    }
+
+  		/* remove temp file */
+	if (!filename_arg)
+    {
+		if (remove(fname)==-1)
         {
-			if (remove(fname)==-1)
-            {
-                psql_error("%s: %s\n", fname, strerror(errno));
-                error=true;
-            }
+            psql_error("%s: %s\n", fname, strerror(errno));
+            error=true;
         }
     }
 
