@@ -16,10 +16,6 @@
 
 #include "postgres.h"
 
-#include "access/htup.h"
-#include "access/xact.h"
-#include "storage/bufmgr.h"
-#include "access/transam.h"
 #include "utils/tqual.h"
 
 extern bool PostgresIsInitialized;

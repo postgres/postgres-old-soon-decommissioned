@@ -21,16 +21,9 @@
 #include "postgres.h"
 
 #include "access/printtup.h"
-#include "nodes/pg_list.h"
-#include "nodes/execnodes.h"
-#include "nodes/parsenodes.h"
 #include "nodes/print.h"
 #include "parser/parsetree.h"
-#include "access/heapam.h"
 #include "utils/lsyscache.h"
-#include "nodes/nodes.h"
-#include "nodes/plannodes.h"
-#include "parser/parse_relation.h"
 #include "optimizer/clauses.h"
 
 static char *plannode_type(Plan *p);

@@ -19,10 +19,7 @@
 
 #include "postgres.h"
 #ifdef HAVE_DLD_H
-#include <dld.h>
 #endif
-#include "dynloader.h"
-#include "fmgr.h"
 
 #ifdef NOT_USED
 extern char *pg_pathname;

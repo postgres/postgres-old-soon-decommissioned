@@ -15,22 +15,11 @@
 
 #include "postgres.h"
 
-#include "tcop/tcopdebug.h"
 
-#include "nodes/nodes.h"
-#include "miscadmin.h"
-#include "utils/portal.h"
 
-#include "nodes/pg_list.h"
-#include "nodes/primnodes.h"
-#include "nodes/plannodes.h"
-#include "nodes/execnodes.h"
-#include "nodes/memnodes.h"
 
-#include "tcop/dest.h"
 
 #include "executor/execdefs.h"
-#include "executor/execdesc.h"
 #include "executor/executor.h"
 #include "tcop/pquery.h"
 #include "utils/ps_status.h"

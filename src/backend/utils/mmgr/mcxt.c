@@ -15,12 +15,10 @@
 
 #include "postgres.h"
 
-#include "utils/memutils.h"
 #include "utils/module.h"
 #include "utils/excid.h"
 
 #include "nodes/memnodes.h"
-#include "nodes/nodes.h"
 
 
 

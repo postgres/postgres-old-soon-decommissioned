@@ -12,15 +12,11 @@
 
 #include <postgres.h>
 
-#include <nodes/plannodes.h>
 #include <nodes/print.h>
-#include <tcop/tcopprot.h>
 #include <lib/stringinfo.h>
 #include <commands/explain.h>
 #include <parser/parsetree.h>
-#include <parser/parse_node.h>
 #include <optimizer/planner.h>
-#include <access/xact.h>
 #include <utils/relcache.h>
 #include <rewrite/rewriteHandler.h>
 

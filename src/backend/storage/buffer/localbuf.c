@@ -29,23 +29,10 @@
 #include "postgres.h"
 
 /* declarations split between these three files */
-#include "storage/buf.h"
-#include "storage/buf_internals.h"
-#include "storage/bufmgr.h"
 
-#include "storage/fd.h"
-#include "storage/ipc.h"
-#include "storage/shmem.h"
-#include "storage/spin.h"
 #include "storage/smgr.h"
-#include "storage/lmgr.h"
-#include "miscadmin.h"
-#include "utils/builtins.h"
-#include "utils/hsearch.h"
-#include "utils/memutils.h"
 #include "utils/relcache.h"
 #include "executor/execdebug.h" /* for NDirectFileRead */
-#include "catalog/catalog.h"
 
 extern long int LocalBufferFlushCount;
 

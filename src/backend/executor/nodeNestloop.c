@@ -22,7 +22,6 @@
 #include "executor/executor.h"
 #include "executor/execdebug.h"
 #include "executor/nodeNestloop.h"
-#include "executor/nodeIndexscan.h"
 
 /* ----------------------------------------------------------------
  *		ExecNestLoop(node)

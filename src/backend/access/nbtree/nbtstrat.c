@@ -15,7 +15,6 @@
 #include <postgres.h>
 
 #include <access/istrat.h>
-#include <storage/bufpage.h>
 #include <access/nbtree.h>
 
 /*

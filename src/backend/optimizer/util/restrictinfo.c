@@ -13,7 +13,6 @@
  */
 #include "postgres.h"
 
-#include "nodes/relation.h"
 #include "nodes/nodeFuncs.h"
 
 #include "optimizer/internal.h"

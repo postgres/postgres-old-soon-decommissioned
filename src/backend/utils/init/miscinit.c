@@ -23,19 +23,13 @@
 
 #include "postgres.h"
 
-#include "utils/portal.h"		/* for EnablePortalManager, etc. */
-#include "utils/exc.h"			/* for EnableExceptionHandling, etc. */
-#include "utils/builtins.h"
 
 #include "miscadmin.h"			/* where the declarations go */
 
 #include "catalog/catname.h"
 #include "catalog/pg_shadow.h"
-#include "catalog/pg_proc.h"
 #include "utils/syscache.h"
 
-#include "storage/fd.h"			/* for O_ */
-#include "storage/ipc.h"		/* for proc_exit */
 
 /*
  * EnableAbortEnvVarName

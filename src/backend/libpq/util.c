@@ -21,9 +21,7 @@
 #include <string.h>
 
 #include <postgres.h>
-#include <lib/dllist.h>
 #include <libpq/libpq.h>		/* where the declarations go */
-#include <utils/exc.h>
 
 
 /* ----------------

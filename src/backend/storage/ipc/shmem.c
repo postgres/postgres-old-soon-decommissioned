@@ -61,15 +61,8 @@
 #include <string.h>
 
 #include "postgres.h"
-#include "storage/ipc.h"
-#include "storage/shmem.h"
-#include "storage/spin.h"
 #include "storage/proc.h"
-#include "utils/hsearch.h"
-#include "utils/memutils.h"
-#include "access/xact.h"
 #include "utils/tqual.h"
-#include "access/transam.h"
 
 /* shared memory global variables */
 

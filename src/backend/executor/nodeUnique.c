@@ -25,14 +25,11 @@
 #include <string.h>
 
 #include "postgres.h"
-#include "fmgr.h"
 
 #include "executor/executor.h"
 #include "executor/nodeUnique.h"
-#include "optimizer/clauses.h"
 #include "access/heapam.h"
 #include "access/printtup.h"	/* for getTypeOutAndElem() */
-#include "utils/builtins.h"		/* for namecpy() */
 
 /* ----------------------------------------------------------------
  *		ExecIdenticalTuples

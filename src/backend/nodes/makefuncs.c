@@ -19,9 +19,6 @@
  *	  Andrew Yu			Oct 20, 1994	file creation
  */
 #include "postgres.h"
-#include "nodes/pg_list.h"
-#include "nodes/primnodes.h"
-#include "nodes/parsenodes.h"
 #include "nodes/makefuncs.h"
 
 /*

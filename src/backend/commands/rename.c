@@ -14,31 +14,18 @@
 #include <postgres.h>
 
 #include <access/heapam.h>
-#include <access/relscan.h>
-#include <utils/builtins.h>
 #include <catalog/catname.h>
 #include <utils/syscache.h>
 #include <catalog/heap.h>
 #include <catalog/indexing.h>
 #include <catalog/catalog.h>
-#include <commands/copy.h>
 #include <commands/rename.h>
-#include <executor/execdefs.h>	/* for EXEC_{FOR,BACK,FDEBUG,BDEBUG} */
 #include <miscadmin.h>
-#include <utils/portal.h>
-#include <tcop/dest.h>
-#include <commands/command.h>
-#include <storage/bufmgr.h>
-#include <utils/excid.h>
-#include <catalog/pg_proc.h>
-#include <catalog/pg_class.h>
-#include <optimizer/internal.h>
 #include <optimizer/prep.h>		/* for find_all_inheritors */
 #ifndef NO_SECURITY
 #include <utils/acl.h>
 #endif	 /* !NO_SECURITY */
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

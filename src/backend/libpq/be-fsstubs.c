@@ -37,14 +37,8 @@
 
 #include <postgres.h>
 
-#include <lib/dllist.h>
-#include <libpq/libpq.h>
 #include <libpq/libpq-fs.h>
-#include <nodes/nodes.h>
-#include <utils/memutils.h>
-#include <lib/fstack.h>
 #include <catalog/pg_shadow.h>	/* for superuser() */
-#include <storage/fd.h>			/* for O_ */
 #include <storage/large_object.h>
 #include <libpq/be-fsstubs.h>
 

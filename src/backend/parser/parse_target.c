@@ -16,13 +16,9 @@
 #include <string.h>
 
 #include "postgres.h"
-#include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
-#include "nodes/primnodes.h"
-#include "nodes/print.h"
 #include "parser/parse_expr.h"
 #include "parser/parse_func.h"
-#include "parser/parse_node.h"
 #include "parser/parse_relation.h"
 #include "parser/parse_target.h"
 #include "parser/parse_coerce.h"

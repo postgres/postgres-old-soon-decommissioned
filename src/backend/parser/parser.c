@@ -14,10 +14,8 @@
 #include <stdio.h>
 
 #include "postgres.h"
-#include "nodes/pg_list.h"
 #include "parser/analyze.h"
 #include "parser/gramparse.h"
-#include "parser/parse_node.h"
 #include "parser/parser.h"
 
 #if defined(FLEX_SCANNER)

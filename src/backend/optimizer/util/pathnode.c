@@ -15,9 +15,7 @@
 
 #include "postgres.h"
 
-#include "nodes/relation.h"
 
-#include "optimizer/internal.h"
 #include "optimizer/pathnode.h"
 #include "optimizer/restrictinfo.h"
 #include "optimizer/plancat.h"

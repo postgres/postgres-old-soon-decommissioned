@@ -13,7 +13,6 @@
  */
 #include "postgres.h"
 
-#include "nodes/relation.h"
 
 #include "optimizer/internal.h"
 #include "optimizer/pathnode.h" /* where the decls go */

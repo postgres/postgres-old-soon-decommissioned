@@ -15,18 +15,14 @@
 #include "postgres.h"
 
 #include "access/genam.h"
-#include "access/iqual.h"
 #include "access/istrat.h"
 #include "access/nbtree.h"
 #include "executor/execdebug.h"
-#include "fmgr.h"
-#include "storage/bufpage.h"
 
 extern int	NIndexTupleProcessed;
 
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

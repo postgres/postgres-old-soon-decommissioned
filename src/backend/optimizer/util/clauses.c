@@ -19,16 +19,11 @@
 #include "postgres.h"
 
 #include <catalog/pg_operator.h>
-#include "nodes/primnodes.h"
-#include "nodes/relation.h"
-#include "nodes/parsenodes.h"
 #include "nodes/plannodes.h"
 #include "nodes/makefuncs.h"
 #include "nodes/nodeFuncs.h"
 
-#include "catalog/pg_aggregate.h"
 
-#include "utils/syscache.h"
 #include "utils/lsyscache.h"
 
 #include "optimizer/clauses.h"

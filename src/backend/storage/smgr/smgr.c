@@ -17,10 +17,7 @@
 #include <string.h>
 #include "postgres.h"
 
-#include "storage/ipc.h"
-#include "storage/block.h"
 #include "storage/smgr.h"
-#include "utils/rel.h"
 
 static void smgrshutdown(int dummy);
 

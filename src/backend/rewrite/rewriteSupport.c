@@ -16,16 +16,7 @@
 #include "access/heapam.h"
 #include "catalog/catname.h"
 #include "catalog/indexing.h"
-#include "catalog/pg_class.h"
-#include "catalog/pg_rewrite.h"
-#include "fmgr.h"
-#include "nodes/parsenodes.h"
-#include "nodes/pg_list.h"
-#include "storage/buf.h"		/* for InvalidBuffer */
-#include "storage/bufmgr.h"
-#include "utils/builtins.h"		/* for textout */
 #include "utils/catcache.h"		/* for CacheContext */
-#include "utils/rel.h"			/* for Relation, RelationData ... */
 #include "utils/syscache.h"		/* for SearchSysCache */
 
 #include "rewrite/rewriteSupport.h"

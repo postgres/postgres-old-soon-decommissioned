@@ -67,8 +67,6 @@
 
 #include <access/genam.h>
 #include <utils/relcache.h>
-#include <fmgr.h>
-#include <storage/lmgr.h>
 #include <access/heapam.h>
 
 /* ----------------

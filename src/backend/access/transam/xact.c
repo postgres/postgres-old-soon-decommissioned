@@ -144,15 +144,11 @@
  */
 #include <postgres.h>
 
-#include <access/xact.h>
 #include <utils/inval.h>
 #include <utils/portal.h>
-#include <access/transam.h>
-#include <storage/fd.h>
 #include <storage/proc.h>
 #include <catalog/heap.h>
 #include <utils/relcache.h>
-#include <miscadmin.h>
 #include <commands/async.h>
 #include <commands/sequence.h>
 #include <libpq/be-fsstubs.h>

@@ -16,18 +16,12 @@
 
 #include <access/genam.h>
 #include <catalog/index.h>
-#include <access/rtscan.h>
-#include <storage/lmgr.h>
 #include <access/rtree.h>
-#include <storage/bufmgr.h>
 #include <utils/geo_decls.h>
 #include <executor/executor.h>
 #include <access/heapam.h>
-#include <fmgr.h>
-#include <storage/bufpage.h>
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

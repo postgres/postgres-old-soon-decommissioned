@@ -81,10 +81,6 @@
 
 #include "libpq/libpq.h"		/* where my declarations go */
 #include "miscadmin.h"
-#include "libpq/pqsignal.h"
-#include "libpq/auth.h"
-#include "storage/ipc.h"
-#include "utils/trace.h"
 
 #ifndef SOMAXCONN
 #define SOMAXCONN 5				/* from Linux listen(2) man page */

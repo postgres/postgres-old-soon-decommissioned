@@ -15,10 +15,8 @@
 #include <postgres.h>
 
 #include <utils/builtins.h>
-#include <utils/geo_decls.h>
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

@@ -23,9 +23,7 @@
  */
 #include <stdarg.h>
 #include "postgres.h"
-#include "nodes/pg_list.h"
 #include "nodes/parsenodes.h"
-#include "utils/builtins.h"		/* for namecpy */
 
 /*
  *	makeList

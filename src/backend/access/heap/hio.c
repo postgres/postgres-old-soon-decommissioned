@@ -14,12 +14,8 @@
 
 #include <postgres.h>
 
-#include <storage/bufpage.h>
 #include <access/hio.h>
-#include <access/htup.h>
 #include <access/heapam.h>
-#include <storage/bufmgr.h>
-#include <utils/memutils.h>
 
 /*
  * amputunique	- place tuple at tid

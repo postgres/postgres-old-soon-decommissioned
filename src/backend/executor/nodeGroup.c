@@ -20,10 +20,8 @@
 #include <string.h>
 
 #include "postgres.h"
-#include "fmgr.h"
 
 #include "access/heapam.h"
-#include "catalog/catalog.h"
 #include "access/printtup.h"
 #include "executor/executor.h"
 #include "executor/nodeGroup.h"

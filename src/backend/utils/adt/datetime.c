@@ -21,9 +21,6 @@
 #endif
 #include "miscadmin.h"
 #include "utils/builtins.h"
-#include "utils/nabstime.h"
-#include "utils/datetime.h"
-#include "access/xact.h"
 
 static int	date2tm(DateADT dateVal, int *tzp, struct tm * tm, double *fsec, char **tzn);
 

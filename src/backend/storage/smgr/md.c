@@ -21,10 +21,7 @@
 #include "miscadmin.h"			/* for DataDir */
 
 #include "catalog/catalog.h"
-#include "storage/block.h"
-#include "storage/fd.h"
 #include "storage/smgr.h"		/* where the declarations go */
-#include "utils/rel.h"
 
 #undef DIAGNOSTIC
 

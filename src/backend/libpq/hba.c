@@ -23,10 +23,6 @@
 #include <postgres.h>
 #include <miscadmin.h>
 #include <libpq/libpq.h>
-#include <libpq/pqcomm.h>
-#include <libpq/hba.h>
-#include <port/inet_aton.h>		/* For inet_aton() */
-#include <storage/fd.h>
 
 /* Some standard C libraries, including GNU, have an isblank() function.
    Others, including Solaris, do not.  So we have our own.

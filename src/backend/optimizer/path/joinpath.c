@@ -16,16 +16,10 @@
 
 #include "postgres.h"
 
-#include "storage/buf_internals.h"
 
-#include "nodes/pg_list.h"
-#include "nodes/relation.h"
-#include "nodes/plannodes.h"
 
-#include "optimizer/internal.h"
 #include "optimizer/paths.h"
 #include "optimizer/pathnode.h"
-#include "optimizer/keys.h"
 #include "optimizer/cost.h"		/* for _enable_{hashjoin,
 								 * _enable_mergejoin} */
 

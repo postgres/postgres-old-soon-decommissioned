@@ -16,20 +16,14 @@
 
 #include "postgres.h"
 
-#include "nodes/pg_list.h"
-#include "nodes/relation.h"
-#include "nodes/primnodes.h"
 
 #include "optimizer/internal.h"
 
 #include "optimizer/paths.h"
 #include "optimizer/pathnode.h"
-#include "optimizer/clauses.h"
 #include "optimizer/cost.h"
 
-#include "commands/creatinh.h"
 
-#include "optimizer/geqo_gene.h"
 #include "optimizer/geqo.h"
 
 #ifdef GEQO

@@ -17,11 +17,9 @@
 
 #include "postgres.h"
 
-#include "fmgr.h"
 #include "access/heapam.h"
 #include "access/printtup.h"
 #include "catalog/pg_type.h"
-#include "libpq/libpq.h"
 #include "libpq/pqformat.h"
 #include "utils/syscache.h"
 

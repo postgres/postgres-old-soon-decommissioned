@@ -15,16 +15,10 @@
 
 #include "postgres.h"
 
-#include "nodes/relation.h"
-#include "nodes/primnodes.h"
-#include "nodes/plannodes.h"
-#include "nodes/nodeFuncs.h"
 
-#include "optimizer/internal.h"
 #include "optimizer/clauses.h"
 #include "optimizer/var.h"
 
-#include "parser/parsetree.h"
 
 
 static bool pull_varnos_walker(Node *node, List **listptr);

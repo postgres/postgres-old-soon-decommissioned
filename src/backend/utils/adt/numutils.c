@@ -23,7 +23,6 @@
 #include "postgres.h"
 #include "utils/builtins.h"		/* where the declarations go */
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

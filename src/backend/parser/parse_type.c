@@ -13,15 +13,9 @@
  */
 #include <string.h>
 #include "postgres.h"
-#include "fmgr.h"
 
-#include "nodes/nodes.h"
-#include "nodes/parsenodes.h"
-#include "nodes/primnodes.h"
-#include "parser/parse_node.h"
 
 #include "catalog/pg_type.h"
-#include "parser/parse_target.h"
 #include "parser/parse_type.h"
 #include "utils/syscache.h"
 

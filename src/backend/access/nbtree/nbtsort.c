@@ -52,19 +52,13 @@
 #include "postgres.h"
 
 #include "access/nbtree.h"
-#include "storage/bufpage.h"
-#include "storage/bufmgr.h"
-#include "utils/memutils.h"
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif
 
 #ifdef BTREE_BUILD_STATS
-#include "tcop/tcopprot.h"
-#include <utils/trace.h>
 #define ShowExecutorStats pg_options[TRACE_EXECUTORSTATS]
 #endif
 

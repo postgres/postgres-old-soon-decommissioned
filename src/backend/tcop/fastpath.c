@@ -61,9 +61,7 @@
 
 #include "postgres.h"
 
-#include "tcop/tcopdebug.h"
 
-#include "fmgr.h"
 #include "utils/builtins.h"		/* for oideq */
 #include "tcop/fastpath.h"
 #include "libpq/libpq.h"

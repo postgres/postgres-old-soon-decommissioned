@@ -15,7 +15,6 @@
 
 #include "postgres.h"
 
-#include "optimizer/internal.h"
 #include "optimizer/ordering.h"
 
 static bool sortops_order_match(Oid *ordering1, Oid *ordering2,

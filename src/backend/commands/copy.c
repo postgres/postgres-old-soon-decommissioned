@@ -17,17 +17,13 @@
 #include <postgres.h>
 
 #include <access/heapam.h>
-#include <tcop/dest.h>
-#include <fmgr.h>
 #include <miscadmin.h>
 #include <utils/builtins.h>
 #include <utils/acl.h>
 #include <sys/stat.h>
 #include <catalog/pg_index.h>
 #include <utils/syscache.h>
-#include <utils/memutils.h>
 #include <executor/executor.h>
-#include <access/transam.h>
 #include <catalog/index.h>
 #include <access/genam.h>
 #include <catalog/pg_type.h>
@@ -35,11 +31,9 @@
 #include <catalog/pg_shadow.h>
 #include <commands/copy.h>
 #include "commands/trigger.h"
-#include <storage/fd.h>
 #include <libpq/libpq.h>
 
 #ifdef MULTIBYTE
-#include "mb/pg_wchar.h"
 #endif
 
 #define ISOCTAL(c) (((c) >= '0') && ((c) <= '7'))

@@ -15,24 +15,16 @@
 #include "postgres.h"
 
 #include "catalog/pg_type.h"
-#include "nodes/pg_list.h"
-#include "nodes/relation.h"
-#include "nodes/primnodes.h"
-#include "nodes/parsenodes.h"
 
 #include "nodes/makefuncs.h"
 
-#include "utils/builtins.h"
 #include "utils/syscache.h"
 #include "utils/lsyscache.h"
-#include "parser/parse_type.h"
 
 #include "parser/parsetree.h"	/* for getrelid() */
 
-#include "optimizer/internal.h"
 #include "optimizer/prep.h"
 #include "optimizer/clauses.h"
-#include "optimizer/tlist.h"
 
 static List *expand_targetlist(List *tlist, Oid relid, int command_type,
 				  Index result_relation);

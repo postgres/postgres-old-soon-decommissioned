@@ -15,12 +15,6 @@
 
 #include <postgres.h>
 
-#include <nodes/pg_list.h>
-#include <nodes/primnodes.h>
-#include <nodes/plannodes.h>
-#include <nodes/relation.h>
-#include <lib/lispsort.h>
-#include <lib/qsort.h>
 
 #ifdef NOT_USED
 /*

@@ -13,24 +13,15 @@
  */
 #include "postgres.h"
 
-#include <nodes/parsenodes.h>
-#include <fmgr.h>
 
-#include "access/htup.h"
-#include "utils/catcache.h"
 #include "utils/syscache.h"
 #include "catalog/pg_type.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_language.h"
-#include "catalog/pg_class.h"
 #include "parser/parsetree.h"	/* for getrelname() */
 #include "utils/builtins.h"
-#include "utils/fcache.h"
 #include "utils/fcache2.h"
-#include "nodes/primnodes.h"
-#include "nodes/execnodes.h"
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

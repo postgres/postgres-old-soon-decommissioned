@@ -14,7 +14,6 @@
 
 #include <postgres.h>
 
-#include <fmgr.h>
 #include <access/skey.h>
 
 /*

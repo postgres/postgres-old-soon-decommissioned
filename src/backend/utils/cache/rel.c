@@ -14,11 +14,7 @@
 /* #define RELREFDEBUG	1 */
 
 #include "postgres.h"
-#include "miscadmin.h"
 #include "access/istrat.h"
-#include "access/tupdesc.h"
-#include "utils/rel.h"
-#include "storage/fd.h"
 
 
 /*

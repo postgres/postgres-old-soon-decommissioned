@@ -14,16 +14,12 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "access/relscan.h"
 #include "catalog/catname.h"
 #include "catalog/indexing.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
-#include "fmgr.h"
 #include "miscadmin.h"
-#include "optimizer/internal.h"
 #include "optimizer/planner.h"
-#include "parser/parse_node.h"
 #include "tcop/tcopprot.h"
 #include "utils/builtins.h"
 #include "utils/fmgrtab.h"
@@ -33,7 +29,6 @@
 #include "parser/parse_type.h"
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

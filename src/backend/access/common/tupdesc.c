@@ -24,11 +24,9 @@
 #include <nodes/parsenodes.h>
 #include <parser/parse_type.h>
 #include <utils/builtins.h>
-#include <utils/fcache.h>
 #include <utils/syscache.h>
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

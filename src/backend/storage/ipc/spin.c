@@ -26,12 +26,8 @@
  */
 #include <errno.h>
 #include "postgres.h"
-#include "storage/ipc.h"
 #include "storage/s_lock.h"
-#include "storage/shmem.h"
-#include "storage/spin.h"
 #include "storage/proc.h"
-#include "utils/trace.h"
 
 #ifndef HAS_TEST_AND_SET
 #include <sys/sem.h>

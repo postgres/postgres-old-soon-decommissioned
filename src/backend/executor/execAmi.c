@@ -29,7 +29,6 @@
 #include "postgres.h"
 
 #include "executor/executor.h"
-#include "storage/smgr.h"
 #include "executor/nodeSeqscan.h"
 #include "executor/nodeIndexscan.h"
 #include "executor/nodeSort.h"

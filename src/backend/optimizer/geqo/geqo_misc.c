@@ -23,20 +23,9 @@
 
 #include "postgres.h"
 
-#include "nodes/pg_list.h"
-#include "nodes/relation.h"
-#include "nodes/primnodes.h"
 
 
-#include "optimizer/internal.h"
-#include "optimizer/paths.h"
-#include "optimizer/pathnode.h"
-#include "optimizer/clauses.h"
-#include "optimizer/cost.h"
 
-#include "optimizer/geqo_gene.h"
-#include "optimizer/geqo_pool.h"
-#include "optimizer/geqo_recombination.h"
 #include "optimizer/geqo_misc.h"
 
 static float avg_pool(Pool *pool);

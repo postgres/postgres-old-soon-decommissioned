@@ -26,15 +26,10 @@
 #include <string.h>
 
 #include "postgres.h"
-#include "miscadmin.h"
-#include "nodes/pg_list.h"
 #include "utils/temprel.h"
-#include "access/xact.h"
-#include "access/htup.h"
 #include "access/heapam.h"
 #include "catalog/heap.h"
 #include "catalog/index.h"
-#include "catalog/pg_class.h"
 
 GlobalMemory CacheCxt;
 

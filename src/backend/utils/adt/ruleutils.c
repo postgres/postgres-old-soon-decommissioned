@@ -43,18 +43,10 @@
 #include <string.h>
 
 #include "executor/spi.h"
-#include "commands/trigger.h"
-#include "utils/builtins.h"
-#include "nodes/nodes.h"
 #include "optimizer/clauses.h"
-#include "utils/syscache.h"
 #include "utils/lsyscache.h"
-#include "catalog/pg_class.h"
-#include "catalog/pg_type.h"
 #include "catalog/pg_shadow.h"
 #include "catalog/pg_index.h"
-#include "catalog/pg_opclass.h"
-#include "fmgr.h"
 
 #define BUFSIZE 8192
 

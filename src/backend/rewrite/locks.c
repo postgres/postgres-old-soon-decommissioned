@@ -11,9 +11,6 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"			/* for oid defs */
-#include "nodes/pg_list.h"		/* lisp support package */
-#include "nodes/parsenodes.h"
-#include "nodes/primnodes.h"	/* Var node def */
 #include "utils/syscache.h"		/* for SearchSysCache */
 #include "rewrite/locks.h"		/* for rewrite specific lock defns */
 

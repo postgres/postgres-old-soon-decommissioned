@@ -46,12 +46,9 @@
 
 #include <postgres.h>
 
-#include <utils/catcache.h>
 #include <access/genam.h>
-#include <storage/bufmgr.h>
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

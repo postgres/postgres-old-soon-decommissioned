@@ -18,11 +18,8 @@
 
 #include <postgres.h>
 
-#include <access/transam.h>
-#include <access/xact.h>
 #include <access/heapam.h>
 #include <catalog/catname.h>
-#include <storage/spin.h>
 #include <commands/vacuum.h>
 
 static int	RecoveryCheckingEnabled(void);

@@ -16,10 +16,6 @@
 
 #include "postgres.h"
 
-#include "nodes/primnodes.h"
-#include "nodes/plannodes.h"
-#include "nodes/pg_list.h"
-#include "nodes/relation.h"
 #include "nodes/nodeFuncs.h"
 #include "utils/lsyscache.h"
 

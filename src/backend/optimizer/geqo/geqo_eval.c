@@ -30,21 +30,12 @@
 #include <values.h>
 #endif
 
-#include "nodes/pg_list.h"
-#include "nodes/relation.h"
-#include "nodes/primnodes.h"
 
 #include "utils/portal.h"
 
-#include "optimizer/internal.h"
 #include "optimizer/paths.h"
-#include "optimizer/pathnode.h"
-#include "optimizer/clauses.h"
 #include "optimizer/cost.h"
-#include "optimizer/tlist.h"
-#include "optimizer/joininfo.h"
 
-#include "optimizer/geqo_gene.h"
 #include "optimizer/geqo.h"
 
 /*

@@ -13,34 +13,23 @@
 #include <string.h>
 #include "postgres.h"
 #include "miscadmin.h"
-#include "utils/rel.h"
-#include "nodes/pg_list.h"
-#include "nodes/primnodes.h"
-#include "nodes/relation.h"
 #include "parser/parse_type.h"
 #include "parser/parsetree.h"	/* for parsetree manipulation */
 #include "parser/parse_relation.h"
-#include "nodes/parsenodes.h"
 
-#include "parser/parse_node.h"
 #include "parser/parse_target.h"
 
 #include "parser/analyze.h"
 #include "optimizer/clauses.h"
 #include "optimizer/prep.h"
 
-#include "rewrite/rewriteSupport.h"
-#include "rewrite/rewriteHandler.h"
 #include "rewrite/rewriteManip.h"
 #include "rewrite/locks.h"
 
-#include "commands/creatinh.h"
 #include "access/heapam.h"
 
 #include "utils/lsyscache.h"
-#include "utils/syscache.h"
 #include "utils/acl.h"
-#include "catalog/pg_shadow.h"
 #include "catalog/pg_type.h"
 
 

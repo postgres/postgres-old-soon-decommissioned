@@ -16,15 +16,11 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "access/relscan.h"
 #include "catalog/catname.h"
 #include "catalog/pg_operator.h"
-#include "catalog/pg_type.h"
-#include "fmgr.h"
 #include "parser/parse_oper.h"
 #include "parser/parse_type.h"
 #include "parser/parse_coerce.h"
-#include "storage/bufmgr.h"
 #include "utils/syscache.h"
 #include "parser/parse_func.h"
 

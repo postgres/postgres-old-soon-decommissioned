@@ -22,17 +22,11 @@
  */
 #include <postgres.h>
 
-#include <nodes/pg_list.h>
-#include <tcop/dest.h>
 #include <tcop/fastpath.h>
 #include <tcop/tcopprot.h>
-#include <lib/dllist.h>
 #include <libpq/libpq.h>
-#include <fmgr.h>
-#include <utils/exc.h>
 #include <utils/builtins.h>
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

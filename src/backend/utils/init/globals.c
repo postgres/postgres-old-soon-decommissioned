@@ -27,9 +27,6 @@
 #include "miscadmin.h"			/* where the declarations go */
 
 #include <storage/backendid.h>
-#include "access/heapam.h"
-#include "storage/sinval.h"
-#include "storage/sinvaladt.h"
 #include "storage/lmgr.h"
 #include "libpq/pqcomm.h"
 #include "catalog/catname.h"

@@ -24,12 +24,10 @@
 #include <string.h>
 
 #include "postgres.h"
-#include "miscadmin.h"
 #include "executor/execdebug.h"
 #include "executor/executor.h"
 #include "executor/nodeHash.h"
 #include "executor/nodeHashjoin.h"
-#include "utils/hsearch.h"
 #include "utils/portal.h"
 
 extern int	SortMem;

@@ -27,10 +27,8 @@
 #endif
 #endif
 
-#include "nodes/relation.h"
 #include "optimizer/cost.h"
 #include "optimizer/internal.h"
-#include "optimizer/keys.h"
 #include "optimizer/tlist.h"
 #include "utils/lsyscache.h"
 

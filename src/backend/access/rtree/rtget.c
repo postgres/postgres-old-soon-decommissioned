@@ -14,15 +14,10 @@
 
 #include <postgres.h>
 
-#include <storage/bufmgr.h>
-#include <access/sdir.h>
-#include <access/relscan.h>
 #include <access/iqual.h>
 #include <access/rtree.h>
-#include <storage/bufpage.h>
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

@@ -18,7 +18,6 @@
 
 #include "access/heapam.h"
 #include "executor/executor.h"
-#include "nodes/relation.h"
 #include "nodes/makefuncs.h"
 
 /*-------------------------------------------------------------------------

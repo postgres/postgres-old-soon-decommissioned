@@ -17,11 +17,8 @@
 
 #include "postgres.h"
 
-#include "storage/ipc.h"
 #include "storage/backendid.h"
-#include "storage/sinvaladt.h"
 #include "storage/lmgr.h"
-#include "utils/memutils.h"
 #include "utils/trace.h"
 
 /* ----------------

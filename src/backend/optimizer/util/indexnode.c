@@ -15,11 +15,7 @@
 
 #include "postgres.h"
 
-#include "nodes/plannodes.h"
-#include "nodes/parsenodes.h"
-#include "nodes/relation.h"
 
-#include "optimizer/internal.h"
 #include "optimizer/plancat.h"
 #include "optimizer/pathnode.h" /* where the decls go */
 

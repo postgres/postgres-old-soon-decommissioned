@@ -16,10 +16,6 @@
 #include "miscadmin.h"
 #include "access/heapam.h"
 #include "access/genam.h"
-#include "access/itup.h"
-#include "access/relscan.h"
-#include "storage/bufmgr.h"
-#include "fmgr.h"
 #include "utils/syscache.h"
 
 #include "catalog/catname.h"

@@ -16,13 +16,10 @@
 #include <postgres.h>
 
 #include <access/heapam.h>
-#include <access/ibit.h>
 #include <access/itup.h>
-#include <access/tupmacs.h>
 #include <catalog/pg_type.h>
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

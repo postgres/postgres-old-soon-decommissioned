@@ -40,16 +40,8 @@
 #include "executor/execFlatten.h"
 #include "executor/functions.h"
 #include "executor/nodeSubplan.h"
-#include "fmgr.h"
-#include "nodes/memnodes.h"
-#include "nodes/primnodes.h"
-#include "nodes/relation.h"
-#include "optimizer/clauses.h"
-#include "utils/array.h"
 #include "utils/builtins.h"
-#include "utils/fcache.h"
 #include "utils/fcache2.h"
-#include "utils/memutils.h"
 
 
 /*

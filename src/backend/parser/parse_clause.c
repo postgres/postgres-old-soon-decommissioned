@@ -17,16 +17,12 @@
 
 #include "postgres.h"
 #include "access/heapam.h"
-#include "catalog/pg_type.h"
-#include "parser/analyze.h"
 #include "parser/parse_clause.h"
 #include "parser/parse_expr.h"
-#include "parser/parse_node.h"
 #include "parser/parse_oper.h"
 #include "parser/parse_relation.h"
 #include "parser/parse_target.h"
 #include "parser/parse_coerce.h"
-#include "nodes/print.h"
 #include "nodes/relation.h"
 #include "parse.h"
 

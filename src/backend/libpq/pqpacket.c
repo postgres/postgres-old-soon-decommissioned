@@ -24,8 +24,6 @@
 #include <errno.h>
 
 #include <postgres.h>
-#include <miscadmin.h>
-#include <storage/ipc.h>
 #include <libpq/libpq.h>
 
 

@@ -26,9 +26,6 @@
  *	 node does the actual flattening work.
  */
 #include "postgres.h"
-#include "nodes/primnodes.h"
-#include "nodes/relation.h"
-#include "nodes/execnodes.h"
 #include "executor/executor.h"
 #include "executor/execFlatten.h"
 

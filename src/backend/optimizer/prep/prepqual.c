@@ -15,10 +15,8 @@
 
 #include "postgres.h"
 
-#include "nodes/pg_list.h"
 #include "nodes/makefuncs.h"
 
-#include "optimizer/internal.h"
 #include "optimizer/clauses.h"
 #include "optimizer/prep.h"
 

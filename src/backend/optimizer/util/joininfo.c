@@ -13,11 +13,8 @@
  */
 #include "postgres.h"
 
-#include "nodes/relation.h"
 
-#include "optimizer/internal.h"
 #include "optimizer/joininfo.h"
-#include "optimizer/var.h"
 #include "optimizer/clauses.h"
 
 

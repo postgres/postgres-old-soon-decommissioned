@@ -15,22 +15,16 @@
 
 #include "access/heapam.h"
 #include "catalog/catname.h"
-#include "catalog/pg_aggregate.h"
 #include "catalog/pg_language.h"
-#include "catalog/pg_operator.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
 #include "commands/defrem.h"
-#include "fmgr.h"
 #include "miscadmin.h"
 #include "parser/parse_func.h"
-#include "storage/bufmgr.h"
 #include "utils/acl.h"
-#include "utils/builtins.h"
 #include "utils/syscache.h"
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

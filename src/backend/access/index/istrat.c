@@ -24,8 +24,6 @@
 #include "catalog/pg_index.h"
 #include "catalog/pg_operator.h"
 #include "utils/syscache.h"
-#include "fmgr.h"
-#include "utils/memutils.h"		/* could have been access/itup.h */
 
 #ifdef USE_ASSERT_CHECKING
 static bool StrategyEvaluationIsValid(StrategyEvaluation evaluation);

@@ -29,8 +29,6 @@
 
 #include <postgres.h>
 
-#include <storage/bufpage.h>
-#include <storage/bufmgr.h>
 #include <access/nbtree.h>
 
 typedef struct BTScanListData

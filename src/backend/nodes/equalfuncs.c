@@ -15,15 +15,10 @@
 
 #include "postgres.h"
 
-#include "nodes/nodes.h"
-#include "nodes/primnodes.h"
 #include "nodes/relation.h"
-#include "nodes/execnodes.h"
 #include "nodes/plannodes.h"
 
-#include "utils/builtins.h"		/* for namestrcmp() */
 #include "utils/datum.h"
-#include "storage/itemptr.h"
 
 static bool equali(List *a, List *b);
 

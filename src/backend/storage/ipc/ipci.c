@@ -16,12 +16,8 @@
 
 #include "postgres.h"
 
-#include "storage/ipc.h"
 #include "storage/sinval.h"
 #include "storage/bufmgr.h"
-#include "storage/proc.h"
-#include "storage/smgr.h"
-#include "storage/lock.h"
 #include "miscadmin.h"			/* for DebugLvl */
 
 /*

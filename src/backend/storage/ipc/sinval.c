@@ -20,7 +20,6 @@
 #include "storage/backendid.h"
 #include "storage/sinval.h"
 #include "storage/sinvaladt.h"
-#include "storage/spin.h"
 
 extern SISeg *shmInvalBuffer;	/* the shared buffer segment, set by */
 

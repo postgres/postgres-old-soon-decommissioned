@@ -20,15 +20,9 @@
 #include <postgres.h>
 
 #include <access/heapam.h>
-#include <access/htup.h>
-#include <access/transam.h>
-#include <access/tupmacs.h>
 #include <catalog/pg_type.h>
-#include <storage/bufpage.h>
-#include <utils/memutils.h>
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

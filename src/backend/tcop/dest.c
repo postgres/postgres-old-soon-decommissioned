@@ -37,19 +37,13 @@
 
 #include "postgres.h"
 
-#include "access/htup.h"
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
 #include "access/printtup.h"
-#include "utils/portal.h"
 
-#include "executor/executor.h"
 
-#include "tcop/dest.h"
 
-#include "catalog/pg_type.h"
 
-#include "commands/async.h"
 
 static char CommandInfo[32] = {0};
 

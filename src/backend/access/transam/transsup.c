@@ -18,10 +18,8 @@
 
 #include <postgres.h>
 
-#include <access/transam.h>
 #include <utils/bit.h>
 #include <access/xact.h>
-#include <storage/lmgr.h>
 
 static XidStatus TransBlockGetXidStatus(Block tblock,
 					   TransactionId transactionId);

@@ -40,19 +40,9 @@
 #include "miscadmin.h"
 
 #include "access/heapam.h"
-#include "access/htup.h"
-#include "access/relscan.h"
-#include "access/skey.h"
 #include "executor/execdebug.h"
 #include "executor/executor.h"
-#include "nodes/execnodes.h"
-#include "nodes/plannodes.h"
-#include "storage/buf.h"
-#include "storage/fd.h"
-#include "utils/lselect.h"
-#include "utils/portal.h"		/* for {Start,End}PortalAllocMode */
 #include "utils/psort.h"
-#include "utils/rel.h"
 
 static bool createfirstrun(Sort *node);
 static bool createrun(Sort *node, BufFile *file);

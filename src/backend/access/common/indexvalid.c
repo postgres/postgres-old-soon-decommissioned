@@ -13,12 +13,8 @@
  */
 
 #include <postgres.h>
-#include <fmgr.h>
 
-#include <access/htup.h>
 #include <access/iqual.h>
-#include <access/itup.h>
-#include <access/skey.h>
 #include <executor/execdebug.h>
 
 /* ----------------------------------------------------------------

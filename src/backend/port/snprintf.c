@@ -32,13 +32,10 @@
  * SUCH DAMAGE.
  */
 #ifdef NOT_USED
-#include "sendmail.h"
-#include "pathnames.h"
 #endif
 
 #include "postgres.h"
 
-#include "regex/cdefs.h"
 
 #include <stdio.h>
 #include <stdarg.h>

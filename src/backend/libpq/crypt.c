@@ -26,7 +26,6 @@
 #include "libpq/crypt.h"
 
 #ifdef HAVE_CRYPT_H
-#include <crypt.h>
 #endif
 
 char	  **pwd_cache = NULL;

@@ -14,17 +14,10 @@
 
 #include <postgres.h>
 
-#include <utils/memutils.h>
-#include <storage/bufpage.h>
 #include <access/nbtree.h>
 #include <access/heapam.h>
-#include <access/xact.h>
-#include <storage/bufmgr.h>
-#include <access/transam.h>
-#include <fmgr.h>
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

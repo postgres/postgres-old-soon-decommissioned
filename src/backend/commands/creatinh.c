@@ -16,11 +16,8 @@
 
 #include <postgres.h>
 
-#include <utils/rel.h>
-#include <nodes/parsenodes.h>
 #include <catalog/heap.h>
 #include <commands/creatinh.h>
-#include <access/xact.h>
 #include <access/heapam.h>
 #include <utils/syscache.h>
 #include <catalog/catname.h>

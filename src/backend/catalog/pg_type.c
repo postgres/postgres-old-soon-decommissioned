@@ -14,21 +14,15 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "access/relscan.h"
 #include "catalog/catname.h"
 #include "catalog/indexing.h"
 #include "catalog/pg_type.h"
-#include "fmgr.h"
 #include "miscadmin.h"
 #include "parser/parse_func.h"
-#include "storage/bufmgr.h"
-#include "storage/lmgr.h"
 #include "utils/builtins.h"
 #include "utils/syscache.h"
-#include "utils/tqual.h"
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

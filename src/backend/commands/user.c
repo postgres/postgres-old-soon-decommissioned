@@ -24,12 +24,8 @@
 #include <catalog/pg_shadow.h>
 #include <libpq/crypt.h>
 #include <access/heapam.h>
-#include <access/xact.h>
-#include <storage/bufmgr.h>
-#include <storage/lmgr.h>
 #include <tcop/tcopprot.h>
 #include <utils/acl.h>
-#include <utils/rel.h>
 #include <utils/syscache.h>
 #include <commands/user.h>
 

@@ -80,13 +80,7 @@
 
 #include "lib/hasht.h"
 #include "utils/module.h"
-#include "utils/excid.h"		/* for Unimplemented */
-#include "utils/hsearch.h"
 
-#include "nodes/memnodes.h"
-#include "nodes/nodes.h"
-#include "nodes/pg_list.h"
-#include "nodes/execnodes.h"	/* for EState */
 
 #include "utils/portal.h"
 

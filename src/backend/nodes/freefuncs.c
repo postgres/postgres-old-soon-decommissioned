@@ -16,17 +16,7 @@
 
 #include "postgres.h"
 
-#include "nodes/pg_list.h"
-#include "nodes/execnodes.h"
-#include "nodes/plannodes.h"
-#include "nodes/parsenodes.h"
-#include "nodes/primnodes.h"
-#include "nodes/relation.h"
 
-#include "utils/syscache.h"
-#include "utils/builtins.h"		/* for namecpy */
-#include "catalog/pg_type.h"
-#include "storage/lmgr.h"
 #include "optimizer/planmain.h"
 
 /* ****************************************************************

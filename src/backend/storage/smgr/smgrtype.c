@@ -14,7 +14,6 @@
 #include <string.h>
 #include "postgres.h"
 
-#include "utils/builtins.h"		/* where the declarations go */
 #include "storage/smgr.h"
 
 typedef struct smgrid

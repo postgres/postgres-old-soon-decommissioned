@@ -14,9 +14,6 @@
 
 #include <postgres.h>
 
-#include <access/transam.h>
-#include <storage/spin.h>
-#include <access/xact.h>
 #include <access/heapam.h>
 #include <catalog/catname.h>
 #include <storage/proc.h>

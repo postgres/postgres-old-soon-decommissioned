@@ -16,10 +16,8 @@
 
 #include "postgres.h"
 
-#include "fmgr.h"				/* for F_NAMEEQ */
 
 #include "access/heapam.h"		/* heap AM calls defined here */
-#include "access/skey.h"
 #include "catalog/catname.h"	/* for RewriteRelationName */
 #include "catalog/pg_rewrite.h"
 #include "utils/syscache.h"

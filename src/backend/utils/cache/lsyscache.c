@@ -16,15 +16,9 @@
 #include <string.h>
 #include "postgres.h"
 
-#include "nodes/pg_list.h"
 #include "utils/syscache.h"
 #include "utils/lsyscache.h"
-#include "access/tupmacs.h"
-#include "utils/rel.h"
-#include "access/attnum.h"
-#include "access/heapam.h"
 
-#include "catalog/pg_amop.h"
 #include "catalog/pg_operator.h"
 #include "catalog/pg_type.h"
 

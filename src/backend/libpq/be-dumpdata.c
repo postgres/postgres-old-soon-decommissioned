@@ -34,13 +34,6 @@
 #include <lib/dllist.h>
 #include <libpq/libpq.h>
 #include <access/heapam.h>
-#include <access/htup.h>
-#include <storage/buf.h>
-#include <utils/memutils.h>
-#include <fmgr.h>
-#include <utils/exc.h>
-#include <utils/syscache.h>
-#include <catalog/pg_type.h>
 #include <catalog/catalog.h>
 #include <access/printtup.h>
 

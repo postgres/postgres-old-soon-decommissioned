@@ -9,11 +9,9 @@
 #include <miscadmin.h>
 #include <libpq/password.h>
 #include <libpq/libpq.h>
-#include <storage/fd.h>
 #include <string.h>
 #include <unistd.h>
 #ifdef HAVE_CRYPT_H
-#include <crypt.h>
 #endif
 
 int

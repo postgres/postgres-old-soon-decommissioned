@@ -37,34 +37,24 @@
 #include "postgres.h"
 #include "version.h"
 
-#include <storage/ipc.h>
 #include <storage/backendid.h>
-#include <storage/buf_internals.h>
 #include <storage/smgr.h>
 #include <storage/proc.h>
 #include <utils/relcache.h>
 
 #include "access/heapam.h"
-#include "access/xact.h"
-#include "storage/bufmgr.h"
-#include "access/transam.h"		/* XXX dependency problem */
 #include "utils/syscache.h"
 #include "storage/bufpage.h"	/* for page layout, for
 								 * InitMyDatabaseInfo() */
 #include "storage/sinval.h"
-#include "storage/sinvaladt.h"
-#include "storage/lmgr.h"
 
 #include "miscadmin.h"			/* for global decls */
 #include "utils/portal.h"		/* for EnablePortalManager, etc. */
 
-#include "utils/exc.h"			/* for EnableExceptionHandling, etc. */
-#include "fmgr.h"				/* for EnableDynamicFunctionManager, etc. */
 #include "utils/inval.h"
 
 #include "catalog/catname.h"
 #ifdef MULTIBYTE
-#include "mb/pg_wchar.h"
 #endif
 
 #include "libpq/libpq.h"

@@ -22,11 +22,9 @@
 #include <access/heapam.h>
 #include <access/genam.h>
 #include <catalog/index.h>
-#include <storage/bufmgr.h>
 #include <miscadmin.h>
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

@@ -28,8 +28,6 @@
 #include "postgres.h"
 
 #include "storage/bufmgr.h"
-#include "storage/buf_internals.h"		/* where declarations go */
-#include "storage/spin.h"
 
 
 static BufferDesc *SharedFreeList;

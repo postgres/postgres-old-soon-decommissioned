@@ -35,7 +35,6 @@
 #endif
 
 #include "postgres.h"
-#include "fmgr.h"
 #include "utils/builtins.h"		/* where the declarations go */
 
 #ifndef SHRT_MAX

@@ -17,13 +17,8 @@
 
 #include "postgres.h"
 
-#include "storage/buf.h"
-#include "access/skey.h"
 #include "access/heapam.h"
-#include "access/htup.h"
-#include "utils/rel.h"
 
-#include "utils/psort.h"
 #include "utils/lselect.h"
 
 /*

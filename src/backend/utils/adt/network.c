@@ -19,7 +19,6 @@
 
 #include <postgres.h>
 #include <utils/builtins.h>
-#include <utils/inet.h>
 
 static int	v4bitncmp(unsigned int a1, unsigned int a2, int bits);
 

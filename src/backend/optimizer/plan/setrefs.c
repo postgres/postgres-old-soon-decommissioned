@@ -15,18 +15,11 @@
 
 #include "postgres.h"
 
-#include "nodes/pg_list.h"
-#include "nodes/plannodes.h"
-#include "nodes/primnodes.h"
-#include "nodes/relation.h"
 
 #include "nodes/nodeFuncs.h"
 #include "nodes/makefuncs.h"
 
-#include "optimizer/internal.h"
 #include "optimizer/clauses.h"
-#include "optimizer/restrictinfo.h"
-#include "optimizer/keys.h"
 #include "optimizer/planmain.h"
 #include "optimizer/tlist.h"
 #include "optimizer/var.h"

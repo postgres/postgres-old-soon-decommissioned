@@ -13,11 +13,7 @@
  */
 #include "postgres.h"
 
-#include "nodes/pg_list.h"
-#include "nodes/relation.h"
-#include "nodes/primnodes.h"
 
-#include "nodes/makefuncs.h"
 #include "nodes/nodeFuncs.h"
 
 #include "optimizer/internal.h"

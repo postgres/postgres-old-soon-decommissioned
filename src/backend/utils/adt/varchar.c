@@ -15,17 +15,13 @@
 #include <string.h>
 #include "postgres.h"
 #include "access/htup.h"
-#include "utils/array.h"
 #include "utils/builtins.h"
 #include "catalog/pg_type.h"
-#include "storage/bufpage.h"
-#include "utils/memutils.h"
 
 #ifdef CYR_RECODE
 char	   *convertstr(char *, int, int);
 #endif
 
-#include "mb/pg_wchar.h"
 
 /*
  * CHAR() and VARCHAR() types are part of the ANSI SQL standard. CHAR()

@@ -20,12 +20,9 @@
 #include "postgres.h"
 
 #include "access/genam.h"
-#include "access/htup.h"
 #include "access/heapam.h"
 #include "access/istrat.h"
-#include "access/xact.h"
 #include "bootstrap/bootstrap.h"
-#include "catalog/catalog.h"
 #include "catalog/catname.h"
 #include "catalog/heap.h"
 #include "catalog/index.h"
@@ -34,23 +31,17 @@
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
 #include "executor/executor.h"
-#include "fmgr.h"
 #include "miscadmin.h"
 #include "optimizer/clauses.h"
 #include "optimizer/prep.h"
 #include "parser/parse_func.h"
-#include "storage/lmgr.h"
 #include "storage/smgr.h"
-#include "storage/bufpage.h"
 #include "utils/builtins.h"
-#include "utils/catcache.h"
 #include "utils/relcache.h"
 #include "utils/syscache.h"
-#include "utils/tqual.h"
 #include "utils/temprel.h"
 
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

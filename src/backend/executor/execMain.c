@@ -37,23 +37,15 @@
 #include "executor/executor.h"
 #include "executor/execdefs.h"
 #include "executor/execdebug.h"
-#include "executor/nodeIndexscan.h"
 #include "utils/builtins.h"
 #include "utils/acl.h"
 #include "utils/syscache.h"
-#include "utils/tqual.h"
 #include "parser/parsetree.h"	/* rt_fetch() */
-#include "storage/bufmgr.h"
-#include "storage/lmgr.h"
-#include "storage/smgr.h"
-#include "commands/async.h"
 /* #include "access/localam.h" */
 #include "optimizer/var.h"
 #include "access/heapam.h"
-#include "access/xact.h"
 #include "catalog/heap.h"
 #include "commands/trigger.h"
-#include "access/transam.h"
 
 void ExecCheckPerms(CmdType operation, int resultRelation, List *rangeTable,
 			   Query *parseTree);

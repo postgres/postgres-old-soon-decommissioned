@@ -19,15 +19,7 @@
 #ifdef STABLE_MEMORY_STORAGE
 
 #include <math.h>
-#include "storage/ipc.h"
-#include "storage/smgr.h"		/* where the declarations go */
-#include "storage/block.h"
-#include "storage/shmem.h"
-#include "storage/spin.h"
 
-#include "utils/hsearch.h"
-#include "utils/rel.h"
-#include "utils/memutils.h"
 
 /*
  *	MMCacheTag -- Unique triplet for blocks stored by the main memory

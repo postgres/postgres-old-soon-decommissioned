@@ -15,23 +15,12 @@
 #include <string.h>
 #include "postgres.h"
 
-#include "nodes/primnodes.h"
-#include "nodes/relation.h"
-#include "nodes/execnodes.h"
-#include "nodes/plannodes.h"
 
-#include "catalog/pg_proc.h"
 #include "tcop/pquery.h"
 #include "tcop/tcopprot.h"
 #include "tcop/utility.h"
-#include "nodes/params.h"
-#include "fmgr.h"
-#include "utils/fcache.h"
 #include "utils/datum.h"
-#include "utils/syscache.h"
-#include "catalog/pg_language.h"
 #include "access/heapam.h"
-#include "access/xact.h"
 #include "executor/executor.h"
 #include "executor/execdefs.h"
 #include "executor/functions.h"

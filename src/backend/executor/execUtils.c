@@ -44,17 +44,10 @@
 
 #include "access/genam.h"
 #include "access/heapam.h"
-#include "access/itup.h"
 #include "catalog/catname.h"
 #include "catalog/index.h"
-#include "catalog/pg_type.h"
-#include "commands/command.h"
 #include "executor/execdebug.h"
 #include "executor/executor.h"
-#include "fmgr.h"
-#include "optimizer/clauses.h"
-#include "parser/parsetree.h"
-#include "utils/lsyscache.h"
 #include "catalog/pg_index.h"
 
 static void ExecGetIndexKeyInfo(Form_pg_index indexTuple, int *numAttsOutP,

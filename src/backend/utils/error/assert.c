@@ -18,7 +18,6 @@
 #include <unistd.h>
 
 #include "postgres.h"			/* where the declaration goes */
-#include "utils/module.h"
 
 #include "utils/exc.h"
 #include "utils/trace.h"

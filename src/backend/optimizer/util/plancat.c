@@ -18,24 +18,18 @@
 
 #include "access/heapam.h"
 #include "access/genam.h"
-#include "access/htup.h"
-#include "access/itup.h"
 
 #include "catalog/catname.h"
 #include "catalog/pg_amop.h"
-#include "catalog/pg_index.h"
 #include "catalog/pg_inherits.h"
-#include "catalog/pg_version.h"
 
 #include "parser/parsetree.h"	/* for getrelid() */
-#include "fmgr.h"
 
 #include "optimizer/internal.h"
 #include "optimizer/plancat.h"
 
 #include "utils/syscache.h"
 #ifndef HAVE_MEMMOVE
-#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

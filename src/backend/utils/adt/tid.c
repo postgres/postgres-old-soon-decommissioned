@@ -17,7 +17,6 @@
 #include <stdio.h>				/* for sprintf() */
 #include <string.h>
 #include "postgres.h"
-#include "storage/bufpage.h"
 
 #include "utils/builtins.h"		/* where function declarations go */
 
