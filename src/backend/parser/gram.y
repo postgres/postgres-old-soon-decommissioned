@@ -6582,6 +6582,7 @@ reserved_keyword:
 		| ONLY
 		| OR
 		| ORDER
+		| PLACING
 		| PRIMARY
 		| REFERENCES
 		| SELECT
