@@ -702,9 +702,13 @@ endif
 
 
 ifeq ($(PORTNAME), nextstep)
-LDADD_BE+= -lipc -lm
+LDADD_BE+= -lipc
 AROPT= rc
 DLSUFFIX= .o
+endif
+
+ifneq ($(PORTNAME), nextstep)
+LD_ADD+= -lm
 endif
 
 # This goes here so that customization in Makefile.custom is effective
