@@ -121,7 +121,7 @@ typedef struct VacRUsage
 } VacRUsage;
 
 /* Default statistics target (GUC parameter) */
-extern int	default_statistics_target;
+extern DLLIMPORT int	default_statistics_target;	/* DLLIMPORT for PostGIS */
 
 
 /* in commands/vacuum.c */
