@@ -1841,7 +1841,7 @@ set semsys:seminfo_semmsl=32
      openssl rsa -in cert.pem.pw -out cert.pem 
     </programlisting>
    Enter the old passphrase to unlock the existing key. Now do
-    </programlisting>
+    <programlisting>
      openssl req -x509 -in cert.req -text -key cert.pem -out cert.cert
      cp cert.pem $PGDATA/server.key
      cp cert.cert $PGDATA/server.crt
