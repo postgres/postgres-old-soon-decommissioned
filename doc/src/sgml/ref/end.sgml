@@ -94,8 +94,8 @@ NOTICE:  COMMIT: no transaction in progress
   </title>
 
   <para>
-   <command>END</command> is a <productname>PostgreSQL</productname>
-   synonym for
+   <command>END</command> is a <productname>Postgres</productname>
+   extension, and is a synonym for the SQL92-compatible
    <xref linkend="sql-commit-title" endterm="sql-commit-title">.
   </para>
   

@@ -38,7 +38,7 @@ pg_upgrade [ -f <replaceable class="parameter">filename</replaceable> ] <replace
   <para>
    <application>pg_upgrade</application>
    is a utility for upgrading from a previous
-   PostgreSQL release without reloading all the data.
+   Postgres release without reloading all the data.
    Not all <productname>Postgres</productname> release transitions can be
    handled this way.  Check the release notes for details on your installation.
   </para>

@@ -109,7 +109,7 @@ DROP USER: user "<replaceable class="parameter">name</replaceable>" owns databas
    Use <xref linkend="SQL-CREATEUSER" endterm="SQL-CREATEUSER-title">
    to add new users, and <xref linkend="SQL-ALTERUSER"
    endterm="SQL-ALTERUSER-title"> to change a user's properties.
-   <productname>PostgreSQL</productname>
+   <productname>Postgres</productname>
    comes with a script <xref linkend="APP-DROPUSER"
    endterm="APP-DROPUSER-title">
    which has the same functionality as this command (in fact, it calls this command)

@@ -41,7 +41,7 @@ pgadmin [ <replaceable class="parameter">datasourcename</replaceable> [ <replace
       <term><replaceable class="PARAMETER">datasourcename</replaceable></term>
       <listitem>
        <para>
-	The name of an existing PostgreSQL ODBC System or User Data
+	The name of an existing <productname>Postgres</productname> ODBC System or User Data
 	Source.
        </para>
       </listitem>

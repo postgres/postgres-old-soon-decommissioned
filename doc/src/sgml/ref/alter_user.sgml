@@ -138,7 +138,7 @@ ERROR:  ALTER USER: user "username" does not exist
   </title>
   <para>
    <command>ALTER USER</command> is used to change the attributes of a user's
-   <productname>PostgreSQL</productname> account. Only a database superuser
+   <productname>Postgres</productname> account. Only a database superuser
    can change privileges and password expiration with this command. Ordinary
    users can only change their own password.
   </para>

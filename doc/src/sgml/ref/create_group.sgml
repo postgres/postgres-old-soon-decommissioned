@@ -53,7 +53,7 @@ CREATE GROUP <replaceable class="PARAMETER">name</replaceable>
       <listitem>
        <para>
         The <literal>SYSID</literal> clause can be used to choose
-        the <productname>PostgreSQL</productname> group id of the new
+        the <productname>Postgres</productname> group id of the new
         group. It is not necessary to do so, however.
        </para>
        <para>

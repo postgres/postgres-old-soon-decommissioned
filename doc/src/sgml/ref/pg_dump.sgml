@@ -99,7 +99,8 @@ pg_dump [ -h <replaceable class="parameter">host</replaceable> ] [ -p <replaceab
 	Suppress double quotes around identifiers unless absolutely necessary.
 	This may cause trouble loading this dumped data if there are reserved words
 	used for identifiers. 
-	This was the default behavior in pre-v6.4 <application>pg_dump</application>.
+	This was the default behavior for
+	<application>pg_dump</application> prior to v6.4.
        </para>
       </listitem>
      </varlistentry>

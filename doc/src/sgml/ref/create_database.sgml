@@ -157,7 +157,7 @@ CREATE DATABASE <replaceable class="PARAMETER">name</replaceable> [ WITH LOCATIO
   </title>
   <para>
    <command>CREATE DATABASE</command> creates a new
-   <productname>PostgreSQL</productname> database.
+   <productname>Postgres</productname> database.
    The creator becomes the owner of the new database.
   </para>
 

@@ -129,7 +129,7 @@ ABORT WORK;
     SQL92
    </title>
    <para>
-    This command is a <productname>PostgreSQL</productname> extension present
+    This command is a <productname>Postgres</productname> extension present
     for historical reasons. <command>ROLLBACK</command> is the <acronym>SQL92</acronym>
     equivalent command.
    </para>
