@@ -97,7 +97,7 @@
  * (see storage/ipc.h).
  */
 
-#if defined(__alpha__) || defined(__alpha)
+#if (defined(__alpha__) || defined(__alpha)) && !defined(linux)
 
 #define	S_LOCK(lock)	do \
 						{ \
