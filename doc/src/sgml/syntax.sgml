@@ -232,7 +232,7 @@ SELECT 'foo'      'bar';
     </para>
    </sect3>
 
-   <sect3>
+   <sect3 id="sql-syntax-bit-strings">
     <title>Bit String Constants</title>
 
     <para>
