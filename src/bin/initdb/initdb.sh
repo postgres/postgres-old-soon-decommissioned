@@ -31,7 +31,7 @@
 #-------------------------------------------------------------------------
 
 # ----------------
-#       The _fUnKy_..._sTuFf_ gets set when the script is built (with make)
+#       The OPT_..._PARAM gets set when the script is built (with make)
 #       from parameters set in the make file.
 #
 # ----------------

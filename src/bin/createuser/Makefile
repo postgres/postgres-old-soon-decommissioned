@@ -15,8 +15,8 @@ SRCDIR= ../..
 include ../../Makefile.global
 
 SEDSCRIPT= \
-    -e "s^_fUnKy_DASH_N_sTuFf_^$(DASH_N)^g" \
-    -e "s^_fUnKy_BACKSLASH_C_sTuFf_^$(BACKSLASH_C)^g"
+    -e "s^PG_OPT_DASH_N_PARAM^$(DASH_N)^g" \
+    -e "s^PG_OPT_BACKSLASH_C_PARAM^$(BACKSLASH_C)^g"
 
 all: createuser
 

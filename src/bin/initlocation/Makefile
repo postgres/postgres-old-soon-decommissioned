@@ -15,8 +15,8 @@ SRCDIR= ../..
 include ../../Makefile.global
 
 SEDSCRIPT= \
-    -e "s^_fUnKy_NAMEDATALEN_sTuFf_^$(NAMEDATALEN)^g" \
-    -e "s^_fUnKy_OIDNAMELEN_sTuFf_^$(OIDNAMELEN)^g" 
+    -e "s^PG_OPT_NAMEDATALEN_PARAM^$(NAMEDATALEN)^g" \
+    -e "s^PG_OPT_OIDNAMELEN_PARAM^$(OIDNAMELEN)^g" 
 
 all: initlocation
 

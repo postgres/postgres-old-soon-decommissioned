@@ -15,7 +15,7 @@ SRCDIR= ../..
 include ../../Makefile.global
 
 SEDSCRIPT= \
-    -e "s^_fUnKy_IPCCLEANPATH_sTuFf_^$(IPCSDIR)^g" 
+    -e "s^PG_OPT_IPCCLEANPATH_PARAM^$(IPCSDIR)^g" 
 
 all: ipcclean
 
