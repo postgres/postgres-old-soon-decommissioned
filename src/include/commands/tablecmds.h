@@ -14,6 +14,7 @@
 #ifndef TABLECMDS_H
 #define TABLECMDS_H
 
+#include "access/htup.h"
 #include "nodes/parsenodes.h"
 
 extern void AlterTableAddColumn(Oid myrelid, bool recurse, ColumnDef *colDef);
@@ -61,5 +62,30 @@ extern void renameatt(Oid myrelid,
 
 extern void renamerel(Oid myrelid,
 		  const char *newrelname);
+
+/*
+ *  Temp rel stuff
+ */
+typedef struct TempTable
+{
+	Oid				relid;			/* relid of temp relation */
+	char 			ateoxact;		/* what to do at end of xact */
+	TransactionId	tid;			/* trans id where in rel was created */
+	bool			dead;			/* table was dropped in the current xact */
+} TempTable;
+
+extern void AtEOXact_temp_relations(bool iscommit, int bstate);
+extern void reg_temp_rel(TempTable *t);
+extern void free_temp_rels(void);
+extern void rm_temp_rel(Oid relid);
+
+/*
+ *  What to do at commit time for temporary relations
+ */
+
+#define ATEOXACTNOOP		0 		/* no operation at commit */
+#define ATEOXACTPRESERVE	1		/* preserve rows */
+#define ATEOXACTDELETE		2		/* delete rows */
+#define ATEOXACTDROP		3		/* drop temp table */
 
 #endif   /* TABLECMDS_H */

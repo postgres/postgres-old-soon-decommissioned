@@ -34,6 +34,7 @@
 #include "catalog/pg_class.h"
 #include "catalog/pg_namespace.h"
 #include "commands/defrem.h"
+#include "commands/tablecmds.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
 #include "nodes/nodes.h"
@@ -197,6 +198,7 @@ Boot_CreateStmt:
 													  tupdesc,
 													  RELKIND_RELATION,
 													  $3,
+													  ATEOXACTNOOP,
 													  true);
 						elog(DEBUG3, "relation created with oid %u", id);
 					}

@@ -919,6 +919,7 @@ typedef struct CreateStmt
 	List	   *inhRelations;	/* relations to inherit from */
 	List	   *constraints;	/* constraints (list of Constraint nodes) */
 	bool		hasoids;		/* should it have OIDs? */
+	char		ateoxact;		/* what do we do at COMMIT for TEMP ? */
 } CreateStmt;
 
 /* ----------

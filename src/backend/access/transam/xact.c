@@ -166,6 +166,7 @@
 #include "catalog/index.h"
 #include "catalog/namespace.h"
 #include "commands/async.h"
+#include "commands/tablecmds.h"
 #include "commands/trigger.h"
 #include "commands/user.h"
 #include "executor/spi.h"
@@ -1026,6 +1027,7 @@ CommitTransaction(void)
 	AtEOXact_hash();
 	AtEOXact_nbtree();
 	AtEOXact_rtree();
+	AtEOXact_temp_relations(true,s->blockState);
 	AtEOXact_Namespace(true);
 	AtEOXact_CatCache(true);
 	AtEOXact_Files();
@@ -1136,6 +1138,7 @@ AbortTransaction(void)
 	AtEOXact_hash();
 	AtEOXact_nbtree();
 	AtEOXact_rtree();
+	AtEOXact_temp_relations(false,s->blockState);
 	AtEOXact_Namespace(false);
 	AtEOXact_CatCache(false);
 	AtEOXact_Files();
