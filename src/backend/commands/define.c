@@ -282,8 +282,9 @@ CreateFunction(ProcedureStmt *stmt)
 		if (!HeapTupleIsValid(languageTuple))
 			elog(ERROR,
 				 "Unrecognized language specified in a CREATE FUNCTION: "
-				 "'%s'.\n\tRecognized languages are sql, C, "
-				 "internal, and created procedural languages.",
+				 "'%s'.\n\tPre-installed languages are SQL, C, and "
+				 "internal.\n\tAdditional languages may be installed "
+				 "using 'createlang'.",
 				 languageName);
 
 		/* Check that this language is a PL */
