@@ -148,7 +148,7 @@
  * Define this if your operating system supports link()
  */
 #if !defined(__QNX__) && !defined(__BEOS__) && \
-	!defined(__CYGWIN__) && !defined(WIN32)
+	!defined(WIN32) && !defined(__CYGWIN__)
 #define HAVE_WORKING_LINK 1
 #endif
 
