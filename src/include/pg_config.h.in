@@ -33,6 +33,9 @@
 /* A canonical string containing the version number, platform, and C compiler */
 #undef PG_VERSION_STR
 
+/* Set to 1 if you want 64-bit integer timestamp and interval support (--enable-integer-datetimes) */
+#undef USE_INTEGER_DATETIMES
+
 /* Set to 1 if you want cyrillic recode (--enable-recode) */
 #undef CYR_RECODE
 

@@ -302,6 +302,10 @@ typedef unsigned long int uint64;
 
 #endif /* not HAVE_LONG_INT_64 and not HAVE_LONG_LONG_INT_64 */
 
+#if defined(USE_INTEGER_DATETIMES) && !defined(INT64_IS_BUSTED)
+#define HAVE_INT64_TIMESTAMP
+#endif
+
 /* sig_atomic_t is required by ANSI C, but may be missing on old platforms */
 #ifndef HAVE_SIG_ATOMIC_T
 typedef int sig_atomic_t;

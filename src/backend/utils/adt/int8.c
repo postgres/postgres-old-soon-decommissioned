@@ -23,6 +23,7 @@
 
 /* this should be set in pg_config.h, but just in case it wasn't: */
 #ifndef INT64_FORMAT
+#warning "Broken pg_config.h should have defined INT64_FORMAT"
 #define INT64_FORMAT "%ld"
 #endif
 

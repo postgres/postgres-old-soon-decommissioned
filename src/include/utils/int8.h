@@ -15,17 +15,25 @@
  *	is not currently supported, then please try to make it so, then post
  *	patches to the postgresql.org hackers mailing list.
  *
- * This code was written for and originally appeared in the contrib
- *	directory as a user-defined type.
- * - thomas 1998-06-08
- *
  *-------------------------------------------------------------------------
  */
 #ifndef INT8_H
 #define INT8_H
 
+#include "c.h"
 #include "fmgr.h"
 
+/* this should be set in pg_config.h, but just in case it wasn't: */
+#ifndef INT64_FORMAT
+#warning "Broken pg_config.h should have defined INT64_FORMAT"
+#define INT64_FORMAT "%ld"
+#endif
+
+#ifdef HAVE_LL_CONSTANTS
+#define INT64CONST(x)  ((int64) x##LL)
+#else
+#define INT64CONST(x)  ((int64) x)
+#endif
 
 extern Datum int8in(PG_FUNCTION_ARGS);
 extern Datum int8out(PG_FUNCTION_ARGS);
