@@ -1295,7 +1295,7 @@ EncryptedPasswordPacket (F)
 </Term>
 <ListItem>
 <Para>
-                The encrypted (using crypt()) password.
+                The encrypted (using MD5 or crypt()) password.
 </Para>
 </ListItem>
 </VarListEntry>

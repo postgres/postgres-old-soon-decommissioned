@@ -171,8 +171,10 @@ extern bool enableFsync;
 extern bool allowSystemTableMods;
 extern int	SortMem;
 
-/* a few postmaster startup options are exported here so the
-   configuration file processor has access to them */
+/*
+ *	A few postmaster startup options are exported here so the
+ *  configuration file processor can access them.
+ */
 
 extern bool NetServer;
 extern bool EnableSSL;

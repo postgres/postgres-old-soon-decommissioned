@@ -80,6 +80,8 @@ bool		SQL_inheritance = true;
 
 bool		Australian_timezones = false;
 
+bool		Password_encryption = false;
+
 #ifndef PG_KRB_SRVTAB
 #define PG_KRB_SRVTAB ""
 #endif
@@ -246,10 +248,11 @@ static struct config_bool
 
 	{"sql_inheritance", PGC_USERSET, &SQL_inheritance, true, NULL},
 
-	{"australian_timezones", PGC_USERSET, &Australian_timezones,
-	false, ClearDateCache},
+	{"australian_timezones", PGC_USERSET, &Australian_timezones, false, ClearDateCache},
 
 	{"fixbtree", PGC_POSTMASTER, &FixBTree, true, NULL},
+
+	{"password_encryption", PGC_USERSET, &Password_encryption, false, NULL},
 
 	{NULL, 0, NULL, false, NULL}
 };

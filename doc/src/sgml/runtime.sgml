@@ -968,6 +968,18 @@ env PGOPTIONS='-c geqo=off' psql
    <para>
     <variablelist>
      <varlistentry>
+      <term>AUSTRALIAN_TIMEZONES (<type>bool</type>)</term>
+      <listitem>
+       <para>
+        If set to true, <literal>CST</literal>, <literal>EST</literal>,
+        and <literal>SAT</literal> are interpreted as Australian
+        timezones rather than as North American Central/Eastern
+        Timezones and Saturday. The default is false.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <indexterm>
        <primary>deadlock</primary>
        <secondary>timeout</secondary>
@@ -1256,18 +1268,6 @@ dynamic_library_path = '/usr/local/lib:/home/my_project/lib:$libdir:$libdir/cont
         keyword to exclude subtables. See the SQL language reference
         and the <citetitle>User's Guide</citetitle> for more
         information about inheritance.
-       </para>
-      </listitem>
-     </varlistentry>
-
-     <varlistentry>
-      <term>AUSTRALIAN_TIMEZONES (<type>bool</type>)</term>
-      <listitem>
-       <para>
-        If set to true, <literal>CST</literal>, <literal>EST</literal>,
-        and <literal>SAT</literal> are interpreted as Australian
-        timezones rather than as North American Central/Eastern
-        Timezones and Saturday. The default is false.
        </para>
       </listitem>
      </varlistentry>

@@ -1269,7 +1269,6 @@ errout:
 static int
 getNotice(PGconn *conn)
 {
-
 	/*
 	 * Since the Notice might be pretty long, we create a temporary
 	 * PQExpBuffer rather than using conn->workBuffer.	workBuffer is
