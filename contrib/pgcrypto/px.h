@@ -43,21 +43,18 @@
 #endif
 
 
-#if 1
+#ifndef PX_OWN_ALLOC
 
 #define px_alloc(s) palloc(s)
-#define px_realloc(p, s) prealloc(p, s)
+#define px_realloc(p, s) repalloc(p, s)
 #define px_free(p)	pfree(p)
 
 #else
 
-void	   *xalloc(size_t s);
-void	   *xrealloc(void *p, size_t s);
-void		xfree(void *p);
+void	   *px_alloc(size_t s);
+void	   *px_realloc(void *p, size_t s);
+void		px_free(void *p);
 
-#define px_alloc(s) xalloc(s)
-#define px_realloc(p, s) xrealloc(p, s)
-#define px_free(p)	xfree(p)
 #endif
 
 /* max len of 'type' parms */
