@@ -19,17 +19,12 @@
 #ifndef TCOPPROT_H
 #define TCOPPROT_H
 
-#include <setjmp.h>
-
 #include "executor/execdesc.h"
 #include "nodes/params.h"
 #include "tcop/dest.h"
 #include "utils/guc.h"
 
 
-extern DLLIMPORT sigjmp_buf Warn_restart;
-extern bool Warn_restart_ready;
-extern bool InError;
 extern CommandDest whereToSendOutput;
 extern DLLIMPORT const char *debug_query_string;
 extern int	max_stack_depth;

@@ -73,7 +73,6 @@
 #include <ctype.h>
 #include <sys/stat.h>
 #include <sys/socket.h>
-#include <errno.h>
 #include <fcntl.h>
 #include <sys/param.h>
 #include <netinet/in.h>
@@ -3225,6 +3224,11 @@ StartChildProcess(int xlop)
 
 		/* Lose the postmaster's on-exit routines and port connections */
 		on_exit_reset();
+
+		/* Release postmaster's working memory context */
+		MemoryContextSwitchTo(TopMemoryContext);
+		MemoryContextDelete(PostmasterContext);
+		PostmasterContext = NULL;
 
 		BootstrapMain(ac, av);
 		ExitPostmaster(0);

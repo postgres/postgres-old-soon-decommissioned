@@ -38,7 +38,6 @@
 #include "plpgsql.h"
 
 #include <ctype.h>
-#include <setjmp.h>
 
 #include "pl.tab.h"
 

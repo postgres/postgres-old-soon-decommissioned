@@ -16,7 +16,6 @@
 
 #include <unistd.h>
 #include <signal.h>
-#include <setjmp.h>
 #ifdef HAVE_GETOPT_H
 #include <getopt.h>
 #endif
@@ -457,15 +456,6 @@ BootstrapMain(int argc, char *argv[])
 		strtable[i] = NULL;
 	for (i = 0; i < HASHTABLESIZE; ++i)
 		hashtable[i] = NULL;
-
-	/*
-	 * abort processing resumes here (this is probably dead code?)
-	 */
-	if (sigsetjmp(Warn_restart, 1) != 0)
-	{
-		Warnings++;
-		AbortCurrentTransaction();
-	}
 
 	/*
 	 * Process bootstrap input.

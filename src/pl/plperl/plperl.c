@@ -40,9 +40,8 @@
 #include "postgres.h"
 
 /* system stuff */
-#include <unistd.h>
 #include <fcntl.h>
-#include <setjmp.h>
+#include <unistd.h>
 
 /* postgreSQL stuff */
 #include "access/heapam.h"
