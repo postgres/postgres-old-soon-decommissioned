@@ -15,6 +15,8 @@
 /*
  * utils/memutils.h contains declarations of the functions in this file
  */
+#include "postgres.h"
+
 #include "utils/memutils.h"	
 
 void

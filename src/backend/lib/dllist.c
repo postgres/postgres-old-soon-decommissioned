@@ -14,7 +14,8 @@
  *-------------------------------------------------------------------------
  */
 
-#include "c.h"
+#include "postgres.h"
+
 #include "lib/dllist.h"
 
 Dllist*
