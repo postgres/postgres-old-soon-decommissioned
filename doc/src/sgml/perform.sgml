@@ -98,13 +98,6 @@ $Header$
    </para>
 
    <para>
-    Average width is pretty bogus because the thing really doesn't have
-    any idea of the average length of variable-length columns.  I'm thinking
-    about improving that in the future, but it may not be worth the trouble,
-    because the width isn't used for very much.
-   </para>
-
-   <para>
     Here are some examples (using the regress test database after a
     vacuum analyze, and almost-7.0 sources):
 
