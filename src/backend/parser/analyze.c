@@ -178,6 +178,18 @@ transformStmt(ParseState *pstate, Node *parseTree)
 			}
 			break;
 
+		case T_AlterTableStmt:
+			{
+				AlterTableStmt *n = (AlterTableStmt *) parseTree;
+
+				result = makeNode(Query);
+				result->commandType = CMD_UTILITY;
+				if (n->subtype == 'A') /* ADD COLUMN */
+					transformColumnType(pstate, (ColumnDef *) n->def);
+				result->utilityStmt = (Node *) parseTree;
+			}
+			break;
+
 			/*------------------------
 			 *	Optimizable statements
 			 *------------------------
