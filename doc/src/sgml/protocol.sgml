@@ -1005,7 +1005,6 @@
     ParameterStatus will be generated: they are
     <literal>server_version</> (a pseudo-parameter that cannot change after
     startup);
-    <literal>server_encoding</> (also not presently changeable after start);
     <literal>client_encoding</>,
     <literal>is_superuser</>, and
     <literal>DateStyle</>.

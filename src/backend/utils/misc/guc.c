@@ -1479,7 +1479,7 @@ static struct config_string ConfigureNamesString[] =
 		{"server_encoding", PGC_INTERNAL, CLIENT_CONN_LOCALE,
 			gettext_noop("Server (database) character set encoding"),
 			NULL,
-			GUC_REPORT | GUC_NOT_IN_SAMPLE | GUC_DISALLOW_IN_FILE
+			GUC_NOT_IN_SAMPLE | GUC_DISALLOW_IN_FILE
 		},
 		&server_encoding_string,
 		"SQL_ASCII", NULL, NULL
