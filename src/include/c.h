@@ -68,7 +68,9 @@
 #include <sys/types.h>
 
 #include <errno.h>
+#if defined(__CYGWIN__) || defined(WIN32)
 #include <fcntl.h>				/* ensure O_BINARY is available */
+#endif
 #ifdef HAVE_SUPPORTDEFS_H
 #include <SupportDefs.h>
 #endif
