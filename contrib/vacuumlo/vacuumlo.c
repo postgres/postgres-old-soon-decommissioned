@@ -471,7 +471,7 @@ main(int argc, char **argv)
 	}
 
 	/* No database given? Show usage */
-	if (optind >= argc - 1)
+	if (optind >= argc)
 	{
 		fprintf(stderr, "vacuumlo: missing required argument: database name\n");
 		fprintf(stderr, "Try 'vacuumlo -?' for help.\n");
