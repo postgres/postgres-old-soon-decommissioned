@@ -392,7 +392,7 @@ cppline			{space}*#(.*\\{line_end})*.*
                                                         literalbuf, NAMEDATALEN-1, literalbuf);
                                                 literalbuf[NAMEDATALEN-1] = '\0';
 #endif
- 						mmerror(ET_WARN, errortext);
+ 						mmerror(ET_NOTICE, errortext);
                                         }
 
 					yylval.str = mm_strdup(literalbuf);
@@ -554,7 +554,7 @@ cppline			{space}*#(.*\\{line_end})*.*
                                                         lower_text, NAMEDATALEN-1, lower_text);
                                                 lower_text[NAMEDATALEN-1] = '\0';
 #endif
- 						mmerror(ET_WARN, errortext);
+ 						mmerror(ET_NOTICE, errortext);
                                                 yytext[NAMEDATALEN-1] = '\0';
 					}
 
