@@ -29,7 +29,7 @@
 
 #include "postgres.h"
 #include "libpq-fe.h"
-#ifdef NEED_STRDUP
+#ifndef HAVE_STRDUP
 #include "strdup.h"
 #endif
 

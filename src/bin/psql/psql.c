@@ -26,7 +26,7 @@
 #include "pqsignal.h"
 #include "stringutils.h"
 #include "psqlHelp.h"
-#ifdef NEED_STRDUP
+#ifndef HAVE_STRDUP
 #include "strdup.h"
 #endif
 
