@@ -257,7 +257,6 @@ aclitemout(AclItem *aip)
 	(void) strcat(p, "group ");
 	tmpname = get_groname(aip->ai_id);
 	(void) strncat(p, tmpname, NAMEDATALEN);
-	pfree(tmpname);
 	break;
     case ACL_IDTYPE_WORLD:
 	break;
