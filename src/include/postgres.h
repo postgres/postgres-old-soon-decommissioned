@@ -204,4 +204,10 @@ typedef uint16			CommandId;
 #define STATUS_BAD_PACKET	(-7)
 #define STATUS_FOUND            (1)
 
+#if !defined(HAVE_ENDIAN_H)
+#  define LITTLE_ENDIAN 1
+#  define BIG_ENDIAN 2
+#  define PDP_ENDIAN 3
+#endif
+
 #endif /* POSTGRES_H */
