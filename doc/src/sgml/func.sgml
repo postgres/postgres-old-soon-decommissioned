@@ -5006,6 +5006,15 @@ SELECT EXTRACT(EPOCH FROM TIMESTAMP WITH TIME ZONE '2001-02-16 20:38:40-08');
 SELECT EXTRACT(EPOCH FROM INTERVAL '5 days 3 hours');
 <lineannotation>Result: </lineannotation><computeroutput>442800</computeroutput>
 </screen>
+
+       <para>
+        Here is how you can convert an epoch value back to a time
+        stamp:
+       </para>
+
+<screen>
+SELECT TIMESTAMP WITH TIME ZONE 'epoch' + 982384720 * interval '1 second';
+</screen>
       </listitem>
      </varlistentry>
 
