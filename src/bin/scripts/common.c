@@ -23,6 +23,7 @@
 const char *
 get_user_name(const char *progname)
 {
+#ifndef WIN32
 	struct passwd *pw;
 
 	pw = getpwuid(getuid());
@@ -32,6 +33,12 @@ get_user_name(const char *progname)
 		exit(1);
 	}
 	return pw->pw_name;
+#else
+	static char username[128];	/* remains after function exit */
+
+	GetUserName(username, sizeof(username)-1);
+	return username;
+#endif	
 }
 
 

@@ -41,7 +41,6 @@
 #include "catalog/catversion.h"
 #include "catalog/pg_control.h"
 
-
 /******************** stuff copied from xlog.c ********************/
 
 /* Increment an xlogid/segment pair */
@@ -80,6 +79,8 @@ static void RewriteControlFile(void);
 static void KillExistingXLOG(void);
 static void WriteEmptyXLOG(void);
 static void usage(void);
+
+extern char *optarg;
 
 
 

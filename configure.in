@@ -238,6 +238,12 @@ if test "$enable_debug" = yes && test "$ac_cv_prog_cc_g" = yes; then
 fi
 AC_MSG_NOTICE([using CFLAGS=$CFLAGS])
 
+# We already have this in Makefile.win32, but configure needs it too
+if test "$PORTNAME" = "win32"
+then
+	CPPFLAGS="$CPPFLAGS -Isrc/include/port/win32"
+fi
+
 # Check if the compiler still works with the template settings
 AC_MSG_CHECKING([whether the C compiler still works])
 AC_TRY_LINK([], [return 0;],

@@ -7,6 +7,9 @@
  */
 
 #include "postgres_fe.h"
+#ifndef PGSCRIPTS
+#include "settings.h"
+#endif
 #include "mbprint.h"
 
 #include "mb/pg_wchar.h"
@@ -334,7 +337,7 @@ mbvalidate(unsigned char *pwcs, int encoding)
 		return mb_utf_validate(pwcs);
 	else
 	{
-#ifdef WIN32
+#if defined(WIN32) && !defined(PGSCRIPTS)
 		/*
 		 * translate characters to DOS console encoding, e.g. needed for
 		 * German umlauts
