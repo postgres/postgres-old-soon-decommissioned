@@ -1580,7 +1580,7 @@ CreateAsStmt:  CREATE OptTemp TABLE qualified_name OptCreateAs WithOidsAs
 			if (FoundInto == 1)
 				mmerror(PARSE_ERROR, ET_ERROR, "CREATE TABLE / AS SELECT may not specify INTO");
 
-			$$ = cat_str(8, make_str("create"), $2, make_str("table"), $4, $5, $6, $8);
+			$$ = cat_str(7, make_str("create"), $2, make_str("table"), $4, $5, $6, $8);
 		}
 		;
 
