@@ -197,14 +197,12 @@ static int FileAccess(File file);
 static File fileNameOpenFile(FileName fileName, int fileFlags, int fileMode);
 static char *filepath(char *filename);
 
-#ifdef OPENLINK_PATCHES
 pg_fsync(fd)
 {
     extern int fsyncOff;
     return fsyncOff ? 0 : fsync(fd);
 }
 #define fsync pg_fsync
-#endif
 
 #if defined(FDDEBUG)
 static void

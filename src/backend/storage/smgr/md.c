@@ -470,11 +470,7 @@ mdblindwrt(char *dbstr,
     status = SM_SUCCESS;
 
     /* write and sync the block */
-#ifdef OPENLINK_PATCHES
     if (write(fd, buffer, BLCKSZ) != BLCKSZ || (pg_fsync(fd) < 0))
-#else
-    if (write(fd, buffer, BLCKSZ) != BLCKSZ || fsync(fd) < 0)
-#endif
 	status = SM_FAIL;
 
     if (close(fd) < 0)
