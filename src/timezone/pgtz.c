@@ -39,10 +39,9 @@ pg_TZDIR(void)
 		return NULL;
 	else
 		*p = '\0';
-	strcat(tzdir, "/../share/timezone");
+	strcat(tzdir, "/../share");
 #endif
 	strcat(tzdir, "/timezone");
-
 
 	done_tzdir = 1;
 	return tzdir;
