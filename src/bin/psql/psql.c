@@ -1285,7 +1285,7 @@ MainLoop(PsqlSettings * settings, FILE * source)
 
 	query_start = line;
 
-	if (line == NULL) {	/* No more input.  Time to quit */
+	if (line == NULL && !settings->quiet) {	/* No more input.  Time to quit */
 	    printf("EOF\n");	/* Goes on prompt line */
 	    eof = true;
 	} else {
