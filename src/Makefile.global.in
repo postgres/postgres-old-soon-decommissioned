@@ -341,7 +341,7 @@ endif
 #
 # substitute implementations of the C library
 
-LIBOBJS = @LIBOBJS@ path.o thread.o
+LIBOBJS = @LIBOBJS@ path.o sprompt.o thread.o
 
 ifneq (,$(LIBOBJS))
 LIBS += -lpgport

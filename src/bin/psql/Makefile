@@ -17,9 +17,9 @@ REFDOCDIR= $(top_srcdir)/doc/src/sgml/ref
 
 override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS) -DFRONTEND
 
-OBJS=command.o common.o help.o input.o stringutils.o mainloop.o copy.o \
+OBJS=	command.o common.o help.o input.o stringutils.o mainloop.o copy.o \
 	startup.o prompt.o variables.o large_obj.o print.o describe.o \
-	sprompt.o tab-complete.o mbprint.o
+	tab-complete.o mbprint.o
 
 all: submake-libpq submake-libpgport psql
 

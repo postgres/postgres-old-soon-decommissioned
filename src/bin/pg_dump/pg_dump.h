@@ -235,7 +235,4 @@ extern void dumpTables(Archive *fout, TableInfo tblinfo[], int numTables,
 		   const bool schemaOnly, const bool dataOnly);
 extern void dumpIndexes(Archive *fout, TableInfo *tbinfo, int numTables);
 
-/* sprompt.h */
-extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
-
 #endif   /* PG_DUMP_H */

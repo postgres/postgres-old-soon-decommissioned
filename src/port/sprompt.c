@@ -7,9 +7,6 @@
  */
 
 
-/* This file is shared by psql and pg_dump. */
-
-
 /*
  * simple_prompt
  *
@@ -22,7 +19,7 @@
  *
  * Returns a malloc()'ed string with the input (w/o trailing newline).
  */
-#include "postgres_fe.h"
+#include "postgres.h"
 
 #ifdef HAVE_TERMIOS_H
 #include <termios.h>
