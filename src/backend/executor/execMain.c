@@ -524,7 +524,7 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 			ResultRelInfo	*resultRelInfo;
 			ListCell		*l;
 
-			numResultRelations = length(resultRelations);
+			numResultRelations = list_length(resultRelations);
 			resultRelInfos = (ResultRelInfo *)
 				palloc(numResultRelations * sizeof(ResultRelInfo));
 			resultRelInfo = resultRelInfos;
@@ -590,7 +590,7 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 
 		foreach(l, parseTree->rowMarks)
 		{
-			Index		rti = lfirsti(l);
+			Index		rti = lfirst_int(l);
 			Oid			relid = getrelid(rti, rangeTable);
 			Relation	relation;
 			execRowMark *erm;
@@ -614,7 +614,7 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 		int			nSlots = ExecCountSlotsNode(plan);
 
 		if (parseTree->resultRelations != NIL)
-			nSlots += length(parseTree->resultRelations);
+			nSlots += list_length(parseTree->resultRelations);
 		else
 			nSlots += 1;
 		estate->es_tupleTable = ExecCreateTupleTable(nSlots);
@@ -2067,7 +2067,7 @@ EvalPlanQualStart(evalPlanQual *epq, EState *estate, evalPlanQual *priorepq)
 	int			rtsize;
 	MemoryContext oldcontext;
 
-	rtsize = length(estate->es_range_table);
+	rtsize = list_length(estate->es_range_table);
 
 	epq->estate = epqstate = CreateExecutorState();
 

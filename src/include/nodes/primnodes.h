@@ -42,8 +42,8 @@
  * transforms INSERT/UPDATE tlists into a normalized form with exactly
  * one entry for each column of the destination table.  Before that's
  * happened, however, it is risky to assume that resno == position.
- * Generally get_tle_by_resno() should be used rather than nth() to fetch
- * tlist entries by resno.
+ * Generally get_tle_by_resno() should be used rather than list_nth()
+ * to fetch tlist entries by resno.
  *
  * resname is required to represent the correct column name in non-resjunk
  * entries of top-level SELECT targetlists, since it will be used as the

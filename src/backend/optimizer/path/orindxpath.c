@@ -149,9 +149,9 @@ create_or_index_quals(Query *root, RelOptInfo *rel)
 	 */
 	newrinfos = make_restrictinfo_from_indexclauses(bestpath->indexclauses,
 													true, true);
-	Assert(length(newrinfos) == 1);
+	Assert(list_length(newrinfos) == 1);
 	or_rinfo = (RestrictInfo *) linitial(newrinfos);
-	rel->baserestrictinfo = nconc(rel->baserestrictinfo, newrinfos);
+	rel->baserestrictinfo = list_concat(rel->baserestrictinfo, newrinfos);
 
 	/*
 	 * Adjust the original OR clause's cached selectivity to compensate

@@ -429,7 +429,7 @@ ExecInitHashJoin(HashJoin *node, EState *estate)
 		Assert(IsA(hclause, OpExpr));
 		lclauses = lappend(lclauses, linitial(fstate->args));
 		rclauses = lappend(rclauses, lsecond(fstate->args));
-		hoperators = lappendo(hoperators, hclause->opno);
+		hoperators = lappend_oid(hoperators, hclause->opno);
 	}
 	hjstate->hj_OuterHashKeys = lclauses;
 	hjstate->hj_InnerHashKeys = rclauses;

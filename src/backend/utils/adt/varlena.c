@@ -1648,7 +1648,7 @@ textToQualifiedNameList(text *textval, const char *caller)
 	}
 
 	pfree(rawname);
-	freeList(namelist);
+	list_free(namelist);
 
 	return result;
 }

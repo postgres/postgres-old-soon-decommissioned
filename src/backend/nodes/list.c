@@ -13,8 +13,6 @@
  *
  *-------------------------------------------------------------------------
  */
-#define DISABLE_LIST_COMPAT
-
 #include "postgres.h"
 #include "nodes/pg_list.h"
 

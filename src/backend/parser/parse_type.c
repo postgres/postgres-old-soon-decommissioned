@@ -54,7 +54,7 @@ LookupTypeName(const TypeName *typename)
 		AttrNumber	attnum;
 
 		/* deconstruct the name list */
-		switch (length(typename->names))
+		switch (list_length(typename->names))
 		{
 			case 1:
 				ereport(ERROR,
@@ -486,7 +486,7 @@ parseTypeString(const char *str, Oid *type_id, int32 *typmod)
 	 * Make sure we got back exactly what we expected and no more;
 	 * paranoia is justified since the string might contain anything.
 	 */
-	if (length(raw_parsetree_list) != 1)
+	if (list_length(raw_parsetree_list) != 1)
 		goto fail;
 	stmt = (SelectStmt *) linitial(raw_parsetree_list);
 	if (stmt == NULL ||
@@ -503,7 +503,7 @@ parseTypeString(const char *str, Oid *type_id, int32 *typmod)
 		stmt->forUpdate != NIL ||
 		stmt->op != SETOP_NONE)
 		goto fail;
-	if (length(stmt->targetList) != 1)
+	if (list_length(stmt->targetList) != 1)
 		goto fail;
 	restarget = (ResTarget *) linitial(stmt->targetList);
 	if (restarget == NULL ||

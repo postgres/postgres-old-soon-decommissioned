@@ -188,7 +188,7 @@ regprocout(PG_FUNCTION_ARGS)
 			 * Would this proc be found (uniquely!) by regprocin? If not,
 			 * qualify it.
 			 */
-			clist = FuncnameGetCandidates(makeList1(makeString(proname)), -1);
+			clist = FuncnameGetCandidates(list_make1(makeString(proname)), -1);
 			if (clist != NULL && clist->next == NULL &&
 				clist->oid == proid)
 				nspname = NULL;
@@ -536,7 +536,7 @@ regoperout(PG_FUNCTION_ARGS)
 			 * Would this oper be found (uniquely!) by regoperin? If not,
 			 * qualify it.
 			 */
-			clist = OpernameGetCandidates(makeList1(makeString(oprname)),
+			clist = OpernameGetCandidates(list_make1(makeString(oprname)),
 										  '\0');
 			if (clist != NULL && clist->next == NULL &&
 				clist->oid == oprid)
@@ -1122,7 +1122,7 @@ stringToQualifiedNameList(const char *string, const char *caller)
 	}
 
 	pfree(rawname);
-	freeList(namelist);
+	list_free(namelist);
 
 	return result;
 }

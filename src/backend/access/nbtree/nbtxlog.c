@@ -81,7 +81,7 @@ forget_matching_split(Relation reln, RelFileNode node,
 		{
 			if (is_root != split->is_root)
 				elog(LOG, "forget_matching_split: fishy is_root data");
-			incomplete_splits = lremove(split, incomplete_splits);
+			incomplete_splits = list_delete_ptr(incomplete_splits, split);
 			break;				/* need not look further */
 		}
 	}

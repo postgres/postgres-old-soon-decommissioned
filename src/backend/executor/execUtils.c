@@ -249,7 +249,7 @@ FreeExecutorState(EState *estate)
 	while (estate->es_exprcontexts)
 	{
 		/* XXX: seems there ought to be a faster way to implement this
-		 * than repeated lremove(), no?
+		 * than repeated list_delete(), no?
 		 */
 		FreeExprContext((ExprContext *) linitial(estate->es_exprcontexts));
 		/* FreeExprContext removed the list link for us */
@@ -355,7 +355,7 @@ FreeExprContext(ExprContext *econtext)
 	MemoryContextDelete(econtext->ecxt_per_tuple_memory);
 	/* Unlink self from owning EState */
 	estate = econtext->ecxt_estate;
-	estate->es_exprcontexts = lremove(econtext, estate->es_exprcontexts);
+	estate->es_exprcontexts = list_delete_ptr(estate->es_exprcontexts, econtext);
 	/* And delete the ExprContext node */
 	pfree(econtext);
 }
@@ -656,7 +656,7 @@ ExecOpenIndices(ResultRelInfo *resultRelInfo)
 	 * Get cached list of index OIDs
 	 */
 	indexoidlist = RelationGetIndexList(resultRelation);
-	len = length(indexoidlist);
+	len = list_length(indexoidlist);
 	if (len == 0)
 		return;
 
@@ -676,7 +676,7 @@ ExecOpenIndices(ResultRelInfo *resultRelInfo)
 	i = 0;
 	foreach(l, indexoidlist)
 	{
-		Oid			indexOid = lfirsto(l);
+		Oid			indexOid = lfirst_oid(l);
 		Relation	indexDesc;
 		IndexInfo  *ii;
 
@@ -713,7 +713,7 @@ ExecOpenIndices(ResultRelInfo *resultRelInfo)
 		i++;
 	}
 
-	freeList(indexoidlist);
+	list_free(indexoidlist);
 }
 
 /* ----------------------------------------------------------------

@@ -1868,9 +1868,9 @@ pltcl_SPI_prepare(ClientData cdata, Tcl_Interp *interp,
 		qdesc->argtypelems[i] = ((Form_pg_type) GETSTRUCT(typeTup))->typelem;
 		ReleaseSysCache(typeTup);
 
-		freeList(typename->names);
+		list_free(typename->names);
 		pfree(typename);
-		freeList(names);
+		list_free(names);
 		pfree(argcopy);
 	}
 

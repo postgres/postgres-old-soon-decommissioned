@@ -333,7 +333,7 @@ print_expr(Node *expr, List *rtable)
 					RangeTblEntry *rte;
 
 					Assert(var->varno > 0 &&
-						   (int) var->varno <= length(rtable));
+						   (int) var->varno <= list_length(rtable));
 					rte = rt_fetch(var->varno, rtable);
 					relname = rte->eref->aliasname;
 					attname = get_rte_attribute_name(rte, var->varattno);
@@ -378,7 +378,7 @@ print_expr(Node *expr, List *rtable)
 		char	   *opname;
 
 		opname = get_opname(e->opno);
-		if (length(e->args) > 1)
+		if (list_length(e->args) > 1)
 		{
 			print_expr(get_leftop((Expr *) e), rtable);
 			printf(" %s ", ((opname != NULL) ? opname : "(invalid operator)"));

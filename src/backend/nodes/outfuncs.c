@@ -19,8 +19,6 @@
  *
  *-------------------------------------------------------------------------
  */
-#define DISABLE_LIST_COMPAT
-
 #include "postgres.h"
 
 #include <ctype.h>

@@ -1120,7 +1120,7 @@ ExecInitAgg(Agg *node, EState *estate)
 	 * get the count of aggregates in targetlist and quals
 	 */
 	numaggs = aggstate->numaggs;
-	Assert(numaggs == length(aggstate->aggs));
+	Assert(numaggs == list_length(aggstate->aggs));
 	if (numaggs <= 0)
 	{
 		/*

@@ -47,7 +47,7 @@ makeSimpleA_Expr(A_Expr_Kind kind, const char *name,
 	A_Expr	   *a = makeNode(A_Expr);
 
 	a->kind = kind;
-	a->name = makeList1(makeString((char *) name));
+	a->name = list_make1(makeString((char *) name));
 	a->lexpr = lexpr;
 	a->rexpr = rexpr;
 	return a;
@@ -259,7 +259,7 @@ makeTypeName(char *typnam)
 {
 	TypeName   *n = makeNode(TypeName);
 
-	n->names = makeList1(makeString(typnam));
+	n->names = list_make1(makeString(typnam));
 	n->typmod = -1;
 	return n;
 }

@@ -23,8 +23,6 @@
  *-------------------------------------------------------------------------
  */
 
-#define DISABLE_LIST_COMPAT
-
 #include "postgres.h"
 
 #include "nodes/params.h"

@@ -1794,10 +1794,10 @@ get_fn_expr_argtype(FmgrInfo *flinfo, int argnum)
 	else
 		return InvalidOid;
 
-	if (argnum < 0 || argnum >= length(args))
+	if (argnum < 0 || argnum >= list_length(args))
 		return InvalidOid;
 
-	argtype = exprType((Node *) nth(argnum, args));
+	argtype = exprType((Node *) list_nth(args, argnum));
 
 	/*
 	 * special hack for ScalarArrayOpExpr: what the underlying function

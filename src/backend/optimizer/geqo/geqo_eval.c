@@ -175,8 +175,8 @@ gimme_tree(Gene *tour, int num_gene, GeqoEvalData *evaldata)
 
 		/* Get the next input relation and push it */
 		cur_rel_index = (int) tour[rel_count];
-		stack[stack_depth] = (RelOptInfo *) nth(cur_rel_index - 1,
-												evaldata->initial_rels);
+		stack[stack_depth] = (RelOptInfo *) list_nth(evaldata->initial_rels,
+													 cur_rel_index - 1);
 		stack_depth++;
 
 		/*

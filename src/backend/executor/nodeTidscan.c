@@ -48,7 +48,7 @@ TidListCreate(TidScanState *tidstate)
 	ListCell   *l;
 
 	tidList = (ItemPointerData *)
-		palloc(length(tidstate->tss_tideval) * sizeof(ItemPointerData));
+		palloc(list_length(tidstate->tss_tideval) * sizeof(ItemPointerData));
 
 	foreach(l, evalList)
 	{

@@ -121,7 +121,7 @@ flatten_tlist(List *tlist)
 	List	   *new_tlist;
 
 	new_tlist = add_to_flat_tlist(NIL, vlist);
-	freeList(vlist);
+	list_free(vlist);
 	return new_tlist;
 }
 
@@ -137,7 +137,7 @@ flatten_tlist(List *tlist)
 List *
 add_to_flat_tlist(List *tlist, List *vars)
 {
-	int			next_resdomno = length(tlist) + 1;
+	int			next_resdomno = list_length(tlist) + 1;
 	ListCell   *v;
 
 	foreach(v, vars)

@@ -239,7 +239,7 @@ currtid_for_view(Relation viewrel, ItemPointer tid)
 			Query	   *query;
 			TargetEntry *tle;
 
-			if (length(rewrite->actions) != 1)
+			if (list_length(rewrite->actions) != 1)
 				elog(ERROR, "only one select rule is allowed in views");
 			query = (Query *) linitial(rewrite->actions);
 			tle = get_tle_by_resno(query->targetList, tididx+1);

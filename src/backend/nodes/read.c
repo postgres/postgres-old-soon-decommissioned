@@ -327,7 +327,7 @@ nodeRead(char *token, int tok_len)
 						if (endptr != token + tok_len)
 							elog(ERROR, "unrecognized integer: \"%.*s\"",
 								 tok_len, token);
-						l = lappendi(l, val);
+						l = lappend_int(l, val);
 					}
 				}
 				else if (tok_len == 1 && token[0] == 'o')
@@ -347,7 +347,7 @@ nodeRead(char *token, int tok_len)
 						if (endptr != token + tok_len)
 							elog(ERROR, "unrecognized OID: \"%.*s\"",
 								 tok_len, token);
-						l = lappendo(l, val);
+						l = lappend_oid(l, val);
 					}
 				}
 				else

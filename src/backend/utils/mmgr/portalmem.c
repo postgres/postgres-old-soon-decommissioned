@@ -245,7 +245,7 @@ PortalDefineQuery(Portal portal,
 	AssertArg(PortalIsValid(portal));
 	AssertState(portal->queryContext == NULL);	/* else defined already */
 
-	Assert(length(parseTrees) == length(planTrees));
+	Assert(list_length(parseTrees) == list_length(planTrees));
 
 	Assert(commandTag != NULL || parseTrees == NIL);
 

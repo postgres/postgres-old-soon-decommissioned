@@ -2712,7 +2712,7 @@ RI_Initial_Check(FkConstraint *fkconstraint, Relation rel, Relation pkrel)
 	{
 		HeapTuple	tuple = SPI_tuptable->vals[0];
 		TupleDesc	tupdesc = SPI_tuptable->tupdesc;
-		int			nkeys = length(fkconstraint->fk_attrs);
+		int			nkeys = list_length(fkconstraint->fk_attrs);
 		int			i;
 		RI_QueryKey	qkey;
 

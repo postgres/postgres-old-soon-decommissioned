@@ -79,7 +79,7 @@ preprocess_targetlist(List *tlist,
 		Resdom	   *resdom;
 		Var		   *var;
 
-		resdom = makeResdom(length(tlist) + 1,
+		resdom = makeResdom(list_length(tlist) + 1,
 							TIDOID,
 							-1,
 							pstrdup("ctid"),
@@ -94,7 +94,7 @@ preprocess_targetlist(List *tlist,
 		 * modify the original tlist (is this really necessary?).
 		 */
 		if (command_type == CMD_DELETE)
-			tlist = listCopy(tlist);
+			tlist = list_copy(tlist);
 
 		tlist = lappend(tlist, makeTargetEntry(resdom, (Expr *) var));
 	}

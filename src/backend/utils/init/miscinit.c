@@ -896,7 +896,7 @@ process_preload_libraries(char *preload_libraries_string)
 	{
 		/* syntax error in list */
 		pfree(rawstring);
-		freeList(elemlist);
+		list_free(elemlist);
 		ereport(LOG,
 				(errcode(ERRCODE_SYNTAX_ERROR),
 				 errmsg("invalid list syntax for parameter \"preload_libraries\"")));
@@ -957,5 +957,5 @@ process_preload_libraries(char *preload_libraries_string)
 	}
 
 	pfree(rawstring);
-	freeList(elemlist);
+	list_free(elemlist);
 }

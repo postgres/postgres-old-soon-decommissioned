@@ -484,7 +484,7 @@ BuildDescForRelation(List *schema)
 	/*
 	 * allocate a new tuple descriptor
 	 */
-	natts = length(schema);
+	natts = list_length(schema);
 	desc = CreateTemplateTupleDesc(natts, false);
 	constr->has_not_null = false;
 
@@ -503,7 +503,7 @@ BuildDescForRelation(List *schema)
 
 		attname = entry->colname;
 		atttypmod = entry->typename->typmod;
-		attdim = length(entry->typename->arrayBounds);
+		attdim = list_length(entry->typename->arrayBounds);
 
 		if (entry->typename->setof)
 			ereport(ERROR,
@@ -624,7 +624,7 @@ TypeGetTupleDesc(Oid typeoid, List *colaliases)
 			int			varattno;
 
 			/* does the list length match the number of attributes? */
-			if (length(colaliases) != natts)
+			if (list_length(colaliases) != natts)
 				ereport(ERROR,
 						(errcode(ERRCODE_DATATYPE_MISMATCH),
 						 errmsg("number of aliases does not match number of columns")));
@@ -632,7 +632,7 @@ TypeGetTupleDesc(Oid typeoid, List *colaliases)
 			/* OK, use the aliases instead */
 			for (varattno = 0; varattno < natts; varattno++)
 			{
-				char	   *label = strVal(nth(varattno, colaliases));
+				char	   *label = strVal(list_nth(colaliases, varattno));
 
 				if (label != NULL)
 					namestrcpy(&(tupdesc->attrs[varattno]->attname), label);
@@ -655,7 +655,7 @@ TypeGetTupleDesc(Oid typeoid, List *colaliases)
 					 errmsg("no column alias was provided")));
 
 		/* the alias list length must be 1 */
-		if (length(colaliases) != 1)
+		if (list_length(colaliases) != 1)
 			ereport(ERROR,
 					(errcode(ERRCODE_DATATYPE_MISMATCH),
 					 errmsg("number of aliases does not match number of columns")));

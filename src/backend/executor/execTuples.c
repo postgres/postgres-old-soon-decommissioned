@@ -610,7 +610,7 @@ ExecTypeFromExprList(List *exprList)
 	int			 cur_resno = 1;
 	char		fldname[NAMEDATALEN];
 
-	typeInfo = CreateTemplateTupleDesc(length(exprList), false);
+	typeInfo = CreateTemplateTupleDesc(list_length(exprList), false);
 
 	foreach(l, exprList)
 	{

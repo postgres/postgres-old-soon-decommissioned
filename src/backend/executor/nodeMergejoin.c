@@ -188,7 +188,7 @@ MergeCompare(List *eqQual, List *compareQual, ExprContext *econtext)
 	/*
 	 * We can't run out of one list before the other
 	 */
-	Assert(length(compareQual) == length(eqQual));
+	Assert(list_length(compareQual) == list_length(eqQual));
 
 	forboth(clause, compareQual, eqclause, eqQual)
 	{

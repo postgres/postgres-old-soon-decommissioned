@@ -16,8 +16,6 @@
  */
 #include "postgres.h"
 
-#define DISABLE_LIST_COMPAT
-
 #include <errno.h>
 #include <pwd.h>
 #include <fcntl.h>

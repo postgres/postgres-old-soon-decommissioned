@@ -360,7 +360,7 @@ current_schemas(PG_FUNCTION_ARGS)
 
 	/* +1 here is just to avoid palloc(0) error */
 
-	names = (Datum *) palloc((length(search_path) + 1) * sizeof(Datum));
+	names = (Datum *) palloc((list_length(search_path) + 1) * sizeof(Datum));
 	i = 0;
 	foreach(l, search_path)
 	{

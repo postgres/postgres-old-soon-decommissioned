@@ -20,8 +20,6 @@
  *-------------------------------------------------------------------------
  */
 
-#define DISABLE_LIST_COMPAT
-
 #include "postgres.h"
 
 #include "nodes/parsenodes.h"

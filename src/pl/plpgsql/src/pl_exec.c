@@ -3835,7 +3835,7 @@ exec_simple_check_plan(PLpgSQL_expr * expr)
 	 * 1. We can only evaluate queries that resulted in one single
 	 * execution plan
 	 */
-	if (length(spi_plan->ptlist) != 1)
+	if (list_length(spi_plan->ptlist) != 1)
 		return;
 
 	plan = (Plan *) linitial(spi_plan->ptlist);
@@ -3862,7 +3862,7 @@ exec_simple_check_plan(PLpgSQL_expr * expr)
 	/*
 	 * 4. The plan must have a single attribute as result
 	 */
-	if (length(plan->targetlist) != 1)
+	if (list_length(plan->targetlist) != 1)
 		return;
 
 	tle = (TargetEntry *) linitial(plan->targetlist);
