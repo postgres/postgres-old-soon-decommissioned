@@ -132,11 +132,6 @@ GRANT <replaceable class="PARAMETER">privilege</replaceable> [, ...] ON <replace
 	  </para>
 	 </listitem>
 
-	 <listitem>
-	  <para>
-	   index
-	  </para>
-	 </listitem>
 	</itemizedlist>
        </para>
       </listitem>
