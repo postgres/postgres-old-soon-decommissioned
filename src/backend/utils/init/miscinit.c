@@ -260,10 +260,12 @@ convertstr(unsigned char *buff, int len, int dest)
 	for (i = 0; i < len; i++, buff++)
 	{
 		if (*buff > 127)
+		{
 			if (dest)
 				*buff = RecodeForwTable[*buff - 128];
 			else
 				*buff = RecodeBackTable[*buff - 128];
+		}
 	}
 	return ch;
 }
