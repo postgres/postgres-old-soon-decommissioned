@@ -35,8 +35,9 @@ typedef union SockAddr
 /* Configure the UNIX socket address for the well known port. */
 
 #define UNIXSOCK_PATH(sun,port) \
-	(sprintf((sun).sun_path, "/tmp/.s.PGSQL.%d", (port)) + \
-		offsetof(struct sockaddr_un, sun_path))
+ 	(sprintf((sun).sun_path, "/tmp/.s.PGSQL.%d", (port)), \
+ 	 strlen((sun).sun_path)+ offsetof(struct sockaddr_un, sun_path))
+
 /*
  *		We do this because sun_len is in BSD's struct, while others don't.
  *		We never actually set BSD's sun_len, and I can't think of a

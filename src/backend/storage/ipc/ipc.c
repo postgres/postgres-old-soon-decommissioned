@@ -38,6 +38,7 @@
 #include <sys/sem.h>
 #include <sys/shm.h>
 #include "utils/memutils.h"
+#include "libpq/libpq.h"
 
 #if defined(sparc_solaris)
 #include <string.h>
@@ -136,6 +137,7 @@ exitpg(int code)
 	for (i = onexit_index - 1; i >= 0; --i)
 		(*onexit_list[i].function) (code, onexit_list[i].arg);
 
+ 	StreamDoUnlink();
 	exit(code);
 }
 
