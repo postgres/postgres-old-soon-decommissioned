@@ -541,7 +541,7 @@ ServerLoop(void)
 		}
 		FD_CLR(port->sock, &basemask);
 		StreamClose(port->sock);
-		next = DLGetPred(curr);
+		next = DLGetSucc(curr);
 		DLRemove(curr);
 		DLFreeElem(curr);
 		curr = next;
