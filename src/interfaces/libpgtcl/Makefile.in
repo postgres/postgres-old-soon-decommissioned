@@ -75,7 +75,7 @@ endif
 
 ifeq ($(PORTNAME), hpux)
   install-shlib-dep := install-shlib
-  shlib := libpq.sl
+  shlib := libpgtcl.sl
   LDFLAGS_SL = -b
   CFLAGS += $(CFLAGS_SL)
 endif
