@@ -55,7 +55,7 @@ install: all installdirs
 	$(INSTALL_PROGRAM) pg_dump$(X) $(DESTDIR)$(bindir)/pg_dump$(X)
 	$(INSTALL_PROGRAM) pg_restore$(X) $(DESTDIR)$(bindir)/pg_restore$(X)
 	$(INSTALL_SCRIPT) pg_dumpall $(DESTDIR)$(bindir)/pg_dumpall
-	$(INSTALL_SCRIPT) $(srcdir)/pg_upgrade $(DESTDIR)$(bindir)/pg_upgrade
+#	$(INSTALL_SCRIPT) $(srcdir)/pg_upgrade $(DESTDIR)$(bindir)/pg_upgrade
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)

@@ -160,7 +160,7 @@ Disable this chapter until we have more functions documented.
    &ipcclean;
    &pgCtl;
    &pgPasswd;
-   &pgUpgrade;
+<!--   &pgUpgrade; -->
    &postgres;
    &postmaster;
 
