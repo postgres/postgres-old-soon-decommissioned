@@ -2394,6 +2394,11 @@ archive_command = 'copy "%p" /mnt/server/archivedir/"%f"'  # Win32
             </row>
             <row>
              <entry><literal>%x</literal></entry>
+             <entry>Transaction ID</entry>
+             <entry>Yes</entry>
+            </row>
+            <row>
+             <entry><literal>%q</literal></entry>
              <entry>Does not produce any output, but tells non-session
              processes to stop at this point in the string. Ignored by
              session processes.</entry>
