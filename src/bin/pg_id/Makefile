@@ -1,7 +1,6 @@
 #-------------------------------------------------------------------------
 #
-# Makefile
-#    Makefile for bin/pg_id
+# Makefile for src/bin/pg_id
 #
 # Copyright (C) 2000 by PostgreSQL Global Development Team
 #
@@ -9,24 +8,29 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR= ../..
+subdir = src/bin/pg_id
+top_builddir = ../../..
 include ../../Makefile.global
 
-OBJS= pg_id.o
+all: pg_id$(X)
 
-all: pg_id
+pg_id$(X): pg_id.o
+	$(CC) -o $@ $^ $(LDFLAGS)
 
-pg_id: $(OBJS)
-	$(CC) -o pg_id $(OBJS) $(LDFLAGS)
+install: all installdirs
+	$(INSTALL_PROGRAM) pg_id$(X) $(bindir)/pg_id$(X)
 
-install: pg_id
-	$(INSTALL) $(INSTL_EXE_OPTS) pg_id$(X) $(BINDIR)/pg_id$(X)
+installdirs:
+	$(mkinstalldirs) $(bindir)
+
+uninstall:
+	rm -f $(bindir)/pg_id$(X)
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
 
-clean:
-	rm -f pg_id$(X) $(OBJS)
+clean distclean maintainer-clean:
+	rm -f pg_id$(X) pg_id.o
 
 ifeq (depend,$(wildcard depend))
 include depend

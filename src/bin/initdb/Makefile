@@ -1,28 +1,30 @@
 #-------------------------------------------------------------------------
 #
-# Makefile.inc--
-#    Makefile for bin/initdb
+# Makefile for src/bin/initdb
 #
 # Copyright (c) 1994, Regents of the University of California
 #
-#
-# IDENTIFICATION
-#    $Header$
+# $Header$
 #
 #-------------------------------------------------------------------------
 
-SRCDIR= ../..
+subdir = src/bin/initdb
+top_builddir = ../../..
 include ../../Makefile.global
 
 all: initdb
 
 initdb: initdb.sh
-	sed -e 's/__MULTIBYTE__/$(MULTIBYTE)/g' < initdb.sh > initdb
+	sed -e 's/__MULTIBYTE__/$(MULTIBYTE)/g' < $< > $@
 
-install: initdb
-	$(INSTALL) $(INSTL_EXE_OPTS) $+ $(BINDIR)/$+
+install: all installdirs
+	$(INSTALL_SCRIPT) initdb $(bindir)/initdb
 
-clean:
+installdirs:
+	$(mkinstalldirs) $(bindir)
+
+uninstall:
+	rm -f $(bindir)/initdb
+
+clean distclean maintainer-clean:
 	rm -f initdb
-
-dep depend:

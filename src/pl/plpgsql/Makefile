@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------
 #
-# Makefile for src/bin/initlocation
+# Makefile for src/pl/plpgsql (PostgreSQL's SQL procedural language)
 #
 # Copyright (c) 1994, Regents of the University of California
 #
@@ -8,23 +8,12 @@
 #
 #-------------------------------------------------------------------------
 
-subdir = src/bin/initlocation
+subdir = src/pl/plpgsql
 top_builddir = ../../..
 include ../../Makefile.global
 
-all: initlocation
-
-initlocation: initlocation.sh
-	cp $< $@
-
-install: all installdirs
-	$(INSTALL_SCRIPT) initlocation $(bindir)/initlocation
-
-installdirs:
-	$(mkinstalldirs) $(bindir)
-
-uninstall:
-	rm -f $(bindir)/initlocation
+all install installdirs uninstall:
+	$(MAKE) -C src $@
 
 clean distclean maintainer-clean:
-	rm -f initlocation
+	-$(MAKE) -C src $@

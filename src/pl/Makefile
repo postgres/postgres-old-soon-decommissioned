@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------
 #
-# Makefile for src/bin (client programs)
+# Makefile for src/pl (procedural languages)
 #
 # Copyright (c) 1994, Regents of the University of California
 #
@@ -8,26 +8,23 @@
 #
 #-------------------------------------------------------------------------
 
-subdir = src/bin
+subdir = src/pl
 top_builddir = ../..
 include ../Makefile.global
 
-DIRS := initdb initlocation ipcclean pg_ctl pg_dump pg_id \
-	pg_passwd pg_version psql scripts
+DIRS := plpgsql
 
-ALLDIRS := $(DIRS) pg_encoding pgaccess pgtclsh
-
-ifdef MULTIBYTE
-DIRS += pg_encoding
-endif
-
-# TCL/TK programs
 ifeq ($(USE_TCL), true)
-ifeq ($(USE_TK), true)
-	DIRS += pgaccess
+DIRS += tcl
 endif
-	DIRS += pgtclsh
-endif
+
+# Disabled because it doesn't work
+#ifeq ($(with_perl), yes)
+#	$(MAKE) -C plperl $@
+#endif
+
+ALLDIRS := plpgsql tcl plperl
+
 
 all install installdirs uninstall depend:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit 1; done
