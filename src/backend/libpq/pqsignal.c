@@ -61,13 +61,35 @@ pqinitmask(void)
 #ifdef HAVE_SIGPROCMASK
 	sigemptyset(&UnBlockSig);
 	sigfillset(&BlockSig);
-	sigdelset(&BlockSig, SIGABRT);
-	sigdelset(&BlockSig, SIGILL);
-	sigdelset(&BlockSig, SIGSEGV);
-	sigdelset(&BlockSig, SIGBUS);
+	/*
+	 * Unmark those signals that should never be blocked.
+	 * Some of these signal names don't exist on all platforms.  Most do,
+	 * but might as well ifdef them all for consistency...
+	 */
+#ifdef SIGTRAP
 	sigdelset(&BlockSig, SIGTRAP);
-	sigdelset(&BlockSig, SIGCONT);
+#endif
+#ifdef SIGABRT
+	sigdelset(&BlockSig, SIGABRT);
+#endif
+#ifdef SIGILL
+	sigdelset(&BlockSig, SIGILL);
+#endif
+#ifdef SIGFPE
+	sigdelset(&BlockSig, SIGFPE);
+#endif
+#ifdef SIGSEGV
+	sigdelset(&BlockSig, SIGSEGV);
+#endif
+#ifdef SIGBUS
+	sigdelset(&BlockSig, SIGBUS);
+#endif
+#ifdef SIGSYS
 	sigdelset(&BlockSig, SIGSYS);
+#endif
+#ifdef SIGCONT
+	sigdelset(&BlockSig, SIGCONT);
+#endif
 #else
 	UnBlockSig = 0;
 	BlockSig = sigmask(SIGHUP) | sigmask(SIGQUIT) |
