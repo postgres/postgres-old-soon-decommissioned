@@ -134,11 +134,6 @@ REVOKE <replaceable class="PARAMETER">privilege</replaceable> [, ...]
 	  </para>
 	 </listitem>
 
-	 <listitem>
-	  <para>
-	   index
-	  </para>
-	 </listitem>
 	</itemizedlist>
        </para>
       </listitem>
