@@ -51,7 +51,7 @@ CLUSTER
   <para>
    When a table is clustered, <productname>PostgreSQL</productname>
    remembers on which index it was clustered.  The form
-   <command>CLUSTER <replaceable class="parameter">tablename</replaceable></command>,
+   <command>CLUSTER <replaceable class="parameter">tablename</replaceable></command>
    reclusters the table on the same index that it was clustered before.
   </para>
 
