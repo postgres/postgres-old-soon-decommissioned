@@ -5,7 +5,7 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
 MODULE_big = cube
-OBJS= cube.o cubeparse.o buffer.o
+OBJS= cube.o cubeparse.o
 
 DATA_built = cube.sql
 DOCS = README.cube
@@ -28,7 +28,7 @@ endif
 
 cubescan.c: cubescan.l
 ifdef FLEX
-	$(FLEX) $(FLEXFLAGS) -Pcube_yy -o'$@' $<
+	$(FLEX) $(FLEXFLAGS) -o'$@' $<
 else
 	@$(missing) flex $< $@
 endif
