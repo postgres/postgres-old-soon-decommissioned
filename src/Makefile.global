@@ -168,10 +168,10 @@ USE_READLINE= false
 # if you have a libhistory.a
 #READLINE_INC+=	-DHAVE_LIBHISTORY
 
-# where to find includes
+# where to find includes, if not in include search path
 #READLINE_INC+=	-I/home/tools/include
 
-# where to find library files
+# where to find library files, if not in library search path
 #READLINE_LIB+= -L/home/tools/lib
 
 # not optional if USE_READLINE enabled
