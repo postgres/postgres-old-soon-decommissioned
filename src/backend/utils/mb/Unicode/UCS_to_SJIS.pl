@@ -34,7 +34,7 @@ while( <FILE> ){
     ( $c, $u, $rest ) = split;
   $ucs = hex($u);
   $code = hex($c);
-  if( $code >= 0x80 && $ucs >= 0x100 ){
+  if( $code >= 0x80 && $ucs >= 0x0080 ){
     $utf = &ucs2utf($ucs);
     if((( $code >= 0xed40 )
 	&& ( $code <= 0xeefc ))
@@ -100,7 +100,7 @@ while( <FILE> ){
 	( $c, $u, $rest ) = split;
 	$ucs = hex($u);
 	$code = hex($c);
-	if( $code >= 0x80 && $ucs >= 0x100 ){
+	if( $code >= 0x80 && $ucs >= 0x0080 ){
 		$utf = &ucs2utf($ucs);
 		$count++;
 
