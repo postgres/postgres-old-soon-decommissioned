@@ -301,7 +301,8 @@ typedef struct ColumnDef
 	NodeTag		type;
 	char	   *colname;		/* name of column */
 	TypeName   *typename;		/* type of column */
-	bool		is_inherited;	/* column is inherited? */
+	int			inhcount;		/* number of times column is inherited */
+	bool		is_local;		/* column has local (non-inherited) def'n */
 	bool		is_not_null;	/* NOT NULL constraint specified? */
 	Node	   *raw_default;	/* default value (untransformed parse
 								 * tree) */

@@ -1453,6 +1453,7 @@ columnDef:	ColId Typename ColQualList opt_collate
 					n->colname = $1;
 					n->typename = $2;
 					n->constraints = $3;
+					n->is_local = true;
 
 					if ($4 != NULL)
 						elog(NOTICE,
@@ -1842,6 +1843,8 @@ CreateAsElement:
 					ColumnDef *n = makeNode(ColumnDef);
 					n->colname = $1;
 					n->typename = NULL;
+					n->inhcount = 0;
+					n->is_local = true;
 					n->is_not_null = false;
 					n->raw_default = NULL;
 					n->cooked_default = NULL;
@@ -4844,6 +4847,7 @@ TableFuncElement:	ColId Typename
 					n->colname = $1;
 					n->typename = $2;
 					n->constraints = NIL;
+					n->is_local = true;
 					$$ = (Node *)n;
 				}
 		;

@@ -71,7 +71,8 @@ DefineVirtualRelation(const RangeVar *relation, List *tlist, bool replace)
 			typename->typmod = res->restypmod;
 			def->typename = typename;
 
-			def->is_inherited = false;
+			def->inhcount = 0;
+			def->is_local = true;
 			def->is_not_null = false;
 			def->raw_default = NULL;
 			def->cooked_default = NULL;

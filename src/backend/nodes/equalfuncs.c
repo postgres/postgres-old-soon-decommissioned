@@ -1769,7 +1769,9 @@ _equalColumnDef(ColumnDef *a, ColumnDef *b)
 		return false;
 	if (!equal(a->typename, b->typename))
 		return false;
-	if (a->is_inherited != b->is_inherited)
+	if (a->inhcount != b->inhcount)
+		return false;
+	if (a->is_local != b->is_local)
 		return false;
 	if (a->is_not_null != b->is_not_null)
 		return false;
