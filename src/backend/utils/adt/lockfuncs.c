@@ -11,17 +11,18 @@
 #include "postgres.h"
 #include "fmgr.h"
 #include "funcapi.h"
+#include "catalog/pg_type.h"
 #include "storage/lmgr.h"
 #include "storage/lock.h"
 #include "storage/lwlock.h"
 #include "storage/proc.h"
 
-Datum lock_status_srf(PG_FUNCTION_ARGS);
+Datum pg_lock_status(PG_FUNCTION_ARGS);
 
 static int next_lock(int locks[]);
 
 Datum
-lock_status_srf(PG_FUNCTION_ARGS)
+pg_lock_status(PG_FUNCTION_ARGS)
 {
 	FuncCallContext		*funccxt;
 	LockData			*lockData;
@@ -32,7 +33,18 @@ lock_status_srf(PG_FUNCTION_ARGS)
 		TupleDesc		tupdesc;
 
 		funccxt = SRF_FIRSTCALL_INIT();
-		tupdesc = RelationNameGetTupleDesc("pg_catalog.pg_locks_result");
+		tupdesc = CreateTemplateTupleDesc(5, WITHOUTOID);
+		TupleDescInitEntry(tupdesc, (AttrNumber) 1, "relation",
+						   OIDOID, -1, 0, false);
+		TupleDescInitEntry(tupdesc, (AttrNumber) 2, "database",
+						   OIDOID, -1, 0, false);
+		TupleDescInitEntry(tupdesc, (AttrNumber) 3, "backendpid",
+						   INT4OID, -1, 0, false);
+		TupleDescInitEntry(tupdesc, (AttrNumber) 4, "mode",
+						   TEXTOID, -1, 0, false);
+		TupleDescInitEntry(tupdesc, (AttrNumber) 5, "isgranted",
+						   BOOLOID, -1, 0, false);
+
 		funccxt->slot = TupleDescGetSlot(tupdesc);
 		funccxt->attinmeta = TupleDescGetAttInMetadata(tupdesc);
 

@@ -977,20 +977,11 @@ CREATE VIEW pg_stat_database AS \
             pg_stat_get_db_blocks_hit(D.oid) AS blks_hit \
     FROM pg_database D;
 
-CREATE VIEW pg_locks_result AS \
+CREATE VIEW pg_locks AS \
 	SELECT \
-			''::oid AS relation, \
-			''::oid AS database, \
-			''::int4 AS backendpid, \
-			''::text AS mode, \
-			NULL::bool AS isgranted;
-
-UPDATE pg_proc SET \
-	prorettype = (SELECT oid FROM pg_type \
-		WHERE typname = 'pg_locks_result') \
-	WHERE proname = 'pg_lock_status';
-
-CREATE VIEW pg_locks AS SELECT * FROM pg_lock_status();
+		L.relation, L.database, L.backendpid, L.mode, L.isgranted \
+	FROM pg_lock_status() AS L(relation oid, database oid, \
+	backendpid int4, mode text, isgranted boolean);
 
 CREATE VIEW pg_settings AS \
     SELECT \
