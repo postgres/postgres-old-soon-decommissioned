@@ -3112,8 +3112,8 @@ DecodeTimeOnly(char *field[], int ftype[], int nf, int *dtype, struct tm * tm, d
 	tm->tm_hour = 0;
 	tm->tm_min = 0;
 	tm->tm_sec = 0;
-	tm->tm_isdst = -1;			/* don't know daylight savings time status
-								 * apriori */
+	tm->tm_isdst = -1;			/* don't know daylight savings time status apriori */
+	*fsec = 0;
 
 	fmask = DTK_DATE_M;
 
