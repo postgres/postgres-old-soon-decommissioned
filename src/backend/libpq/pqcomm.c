@@ -134,12 +134,16 @@ pq_getport(void)
 
 /* --------------------------------
  *		pq_close - shutdown libpq at backend exit
+ *
+ * Note: in a standalone backend MyProcPort will be null,
+ * don't crash during exit...
  * --------------------------------
  */
 void
 pq_close(void)
 {
-	close(MyProcPort->sock);
+	if (MyProcPort != NULL)
+		close(MyProcPort->sock);
 }
 
 
