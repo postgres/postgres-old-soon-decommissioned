@@ -477,7 +477,6 @@ _bt_checkkeys(IndexScanDesc scan, IndexTuple tuple,
 
 		if (isNull)
 		{
-
 			/*
 			 * Since NULLs are sorted after non-NULLs, we know we have
 			 * reached the upper limit of the range of values for this
@@ -504,7 +503,6 @@ _bt_checkkeys(IndexScanDesc scan, IndexTuple tuple,
 
 		if (DatumGetBool(test) == !!(key->sk_flags & SK_NEGATE))
 		{
-
 			/*
 			 * Tuple fails this qual.  If it's a required qual, then we
 			 * can conclude no further tuples will pass, either.
