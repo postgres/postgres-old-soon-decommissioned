@@ -31,6 +31,8 @@ extern bool zero_damaged_pages;
 extern int	BgWriterDelay;
 extern int	BgWriterPercent;
 extern int	BgWriterMaxpages;
+extern char *BgWriterFlushMethod_str;
+extern const char BgWriterFlushMethod_default[];
 
 
 /* in buf_init.c */
@@ -180,8 +182,6 @@ extern void AbortBufferIO(void);
 extern void BufmgrCommit(void);
 extern int	BufferSync(int percent, int maxpages);
 extern void BufferBackgroundWriter(void);
-extern const char *BgWriterAssignSyncMethod(const char *method,
-			bool doid, bool interactive);
 
 extern void InitLocalBuffer(void);
 
