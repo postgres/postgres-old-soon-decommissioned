@@ -1663,20 +1663,25 @@ plpgsql_add_initdatums(int **varnos)
 
 	if (varnos != NULL)
 	{
-		*varnos = (int *) malloc(sizeof(int) * n);
-
-		n = 0;
-		for (i = datums_last; i < plpgsql_nDatums; i++)
+		if (n > 0)
 		{
-			switch (plpgsql_Datums[i]->dtype)
-			{
-				case PLPGSQL_DTYPE_VAR:
-					(*varnos)[n++] = plpgsql_Datums[i]->dno;
+			*varnos = (int *) malloc(sizeof(int) * n);
 
-				default:
-					break;
+			n = 0;
+			for (i = datums_last; i < plpgsql_nDatums; i++)
+			{
+				switch (plpgsql_Datums[i]->dtype)
+				{
+					case PLPGSQL_DTYPE_VAR:
+						(*varnos)[n++] = plpgsql_Datums[i]->dno;
+
+					default:
+						break;
+				}
 			}
 		}
+		else
+			*varnos = NULL;
 	}
 
 	datums_last = plpgsql_nDatums;
