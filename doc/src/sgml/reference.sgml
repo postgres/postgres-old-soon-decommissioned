@@ -202,6 +202,7 @@ Disable this chapter until we have more functions documented.
    &ipcclean;
    &pgCtl;
    &pgControldata;
+   &pgResetxlog;
    &postgres;
    &postmaster;
 
