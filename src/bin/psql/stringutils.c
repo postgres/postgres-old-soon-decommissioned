@@ -52,10 +52,6 @@ strtokx(const char *s,
 	char	   *start;
 	char	   *cp = NULL;
 
-#ifndef MULTIBYTE
-	(void) encoding;			/* not used */
-#endif
-
 	if (s)
 	{
 		free(storage);
@@ -95,11 +91,7 @@ strtokx(const char *s,
 
 		for (p = start;
 			 *p && (*p != *cp || *(p - 1) == escape);
-#ifdef MULTIBYTE
 			 p += PQmblen(p, encoding)
-#else
-			 p++
-#endif
 			);
 
 		/* not yet end of string? */

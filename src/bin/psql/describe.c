@@ -305,11 +305,9 @@ listAllDbs(bool verbose)
 			 "SELECT d.datname as \"%s\",\n"
 			 "       u.usename as \"%s\"",
 			 _("Name"), _("Owner"));
-#ifdef MULTIBYTE
 	appendPQExpBuffer(&buf,
 			 ",\n       pg_catalog.pg_encoding_to_char(d.encoding) as \"%s\"",
 			 _("Encoding"));
-#endif
 	if (verbose)
 		appendPQExpBuffer(&buf,
 			 ",\n       pg_catalog.obj_description(d.oid, 'pg_database') as \"%s\"",

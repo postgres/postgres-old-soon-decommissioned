@@ -466,7 +466,7 @@ SendQuery(const char *query)
 
 	/* Possible microtiming output */
 	if (pset.timing && success)
-		printf(gettext("Total time: %.2f msec\n"),
+		printf(gettext("Time: %.2f ms\n"),
 			   ((after.tv_sec-before.tv_sec)*1000000 + after.tv_usec - before.tv_usec) / 1000.0);
 
 	return success;
