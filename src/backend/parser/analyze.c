@@ -822,8 +822,15 @@ transformSelectStmt(ParseState *pstate, RetrieveStmt *stmt)
 	qry->qual = transformWhereClause(pstate, stmt->whereClause);
 
 	/* check subselect clause */
-	if (stmt->selectClause)
+	if (stmt->unionClause)
+	{
 		elog(NOTICE, "UNION not yet supported; using first SELECT only", NULL);
+
+		/* XXX HACK just playing with union clause - thomas 1997-12-19 */
+		if ((qry->uniqueFlag == NULL)
+		 && (! ((SubSelect *)lfirst(stmt->unionClause))->unionall))
+			qry->uniqueFlag = "*";
+	}
 
 	/* check subselect clause */
 	if (stmt->havingClause)
