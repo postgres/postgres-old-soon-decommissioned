@@ -204,22 +204,24 @@ static void *xmalloc(size_t);
 
 #define PG_CMD_OPEN \
 do { \
-		  pg = popen(cmd,PG_BINARY_W); \
-		  if (pg == NULL)  \
-			exit_nicely(); \
+	fflush(stdout); \
+	fflush(stderr); \
+	pg = popen(cmd, PG_BINARY_W); \
+	if (pg == NULL) \
+		exit_nicely(); \
 } while (0)
 
 #define PG_CMD_CLOSE \
 do { \
-		 if ((pclose(pg) >> 8) & 0xff) \
-			exit_nicely(); \
+	if ((pclose(pg) >> 8) & 0xff) \
+		exit_nicely(); \
 } while (0)
 
 #define PG_CMD_PUTLINE \
 do { \
-		 if (fputs(*line, pg) < 0) \
-		   exit_nicely(); \
-		 fflush(pg); \
+	if (fputs(*line, pg) < 0) \
+		exit_nicely(); \
+	fflush(pg); \
 } while (0)
 
 #ifndef WIN32
@@ -861,6 +863,10 @@ find_postgres(char *path)
 #endif
 
 	snprintf(cmd, sizeof(cmd), "\"%s/postgres\" -V 2>%s", path, DEVNULL);
+
+	/* flush output buffers in case popen does not... */
+	fflush(stdout);
+	fflush(stderr);
 
 	if ((pgver = popen(cmd, "r")) == NULL)
 		return FIND_EXEC_ERR;
