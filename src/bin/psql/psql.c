@@ -2876,9 +2876,11 @@ main(int argc, char **argv)
 		pqsignal(SIGINT, handle_sigint);		/* control-C => cancel */
 #ifdef USE_READLINE
 		settings.useReadline = 1;
-		/* Set the application name, used for parsing .inputrc */
-		char *progname = strrchr(argv[0], SEP_CHAR);
-		rl_readline_name = (progname ? progname+1 : argv[0]);
+		{
+			/* Set the application name, used for parsing .inputrc */
+			char *progname = strrchr(argv[0], SEP_CHAR);
+			rl_readline_name = (progname ? progname+1 : argv[0]);
+		}
 #endif
 	}
 #ifdef PSQL_ALWAYS_GET_PASSWORDS
