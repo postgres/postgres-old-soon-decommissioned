@@ -67,9 +67,10 @@ done
 if [ "$usage" ]; then
 	if [ -z "$MBENABLED" ];then
 		echo "Usage: $CMDNAME -a <authtype> -h <server> -p <portnumber> -D <location> [dbname]"
+		exit 1
 	else
 		echo "Usage: $CMDNAME -a <authtype> -h <server> -p <portnumber> -D <location> -E <encoding> [dbname]"
-	exit 1
+		exit 1
 	fi
 fi
 
