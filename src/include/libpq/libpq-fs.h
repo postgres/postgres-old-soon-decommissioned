@@ -28,18 +28,6 @@ struct pgdirent
 	char		d_name[MAXNAMLEN + 1];
 };
 
-/*
- * SysV struct dirent doesn't have d_namlen.
- * This counts on d_name being last, which is moderately safe (ha) since
- * it's the variable-length part of the structure.
- */
-#ifdef SYSV_DIRENT
-#define D_NAMLEN(dp) \
-		((dp)->d_reclen - offsetof(struct dirent, d_name[0]))
-#else							/* SYSV_DIRENT */
-#define D_NAMLEN(dp) \
-		((dp)->d_namlen)
-#endif	 /* SYSV_DIRENT */
 
 /* for stat(2) */
 #ifndef S_IRUSR
