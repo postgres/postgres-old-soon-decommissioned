@@ -23,7 +23,9 @@ extern Node *transformWhereClause(ParseState *pstate, Node *where,
 extern List *transformGroupClause(ParseState *pstate, List *grouplist,
 								  List *targetlist);
 extern List *transformSortClause(ParseState *pstate, List *orderlist,
-								 List *targetlist, char *uniqueFlag);
+								 List *targetlist);
+extern List *transformDistinctClause(ParseState *pstate, List *distinctlist,
+									 List *targetlist, List **sortClause);
 
 extern List *addAllTargetsToSortList(List *sortlist, List *targetlist);
 extern Index assignSortGroupRef(TargetEntry *tle, List *tlist);

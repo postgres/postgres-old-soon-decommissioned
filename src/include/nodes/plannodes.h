@@ -265,7 +265,7 @@ typedef struct Group
 	Plan		plan;
 	bool		tuplePerGroup;	/* what tuples to return (see above) */
 	int			numCols;		/* number of group columns */
-	AttrNumber *grpColIdx;		/* index into the target list */
+	AttrNumber *grpColIdx;		/* indexes into the target list */
 	GroupState *grpstate;
 } Group;
 
@@ -314,10 +314,8 @@ typedef struct Unique
 	Plan		plan;			/* noname node flattened out */
 	Oid			nonameid;
 	int			keycount;
-	char	   *uniqueAttr;		/* NULL if all attrs, or unique attribute
-								 * name */
-	AttrNumber	uniqueAttrNum;	/* attribute number of attribute to select
-								 * distinct on */
+	int			numCols;		/* number of columns to check for uniqueness */
+	AttrNumber *uniqColIdx;		/* indexes into the target list */
 	UniqueState *uniquestate;
 } Unique;
 

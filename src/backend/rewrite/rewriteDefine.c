@@ -312,7 +312,7 @@ DefineQueryRewrite(RuleStmt *stmt)
 		/*
 		 * DISTINCT on view is not supported
 		 */
-		if (query->uniqueFlag != NULL)
+		if (query->distinctClause != NIL)
 			elog(ERROR, "DISTINCT not supported in views");
 
 		/*

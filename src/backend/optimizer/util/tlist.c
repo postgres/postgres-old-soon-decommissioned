@@ -217,6 +217,33 @@ get_expr(TargetEntry *tle)
 }
 
 /*
+ * get_sortgroupclause_tle
+ *		Find the targetlist entry matching the given SortClause
+ *		(or GroupClause) by ressortgroupref, and return it.
+ *
+ * Because GroupClause is typedef'd as SortClause, either kind of
+ * node can be passed without casting.
+ */
+TargetEntry *
+get_sortgroupclause_tle(SortClause *sortClause,
+						List *targetList)
+{
+	Index		refnumber = sortClause->tleSortGroupRef;
+	List	   *l;
+
+	foreach(l, targetList)
+	{
+		TargetEntry *tle = (TargetEntry *) lfirst(l);
+
+		if (tle->resdom->ressortgroupref == refnumber)
+			return tle;
+	}
+
+	elog(ERROR, "get_sortgroupclause_tle: ORDER/GROUP BY expression not found in targetlist");
+	return NULL;				/* keep compiler quiet */
+}
+
+/*
  * get_sortgroupclause_expr
  *		Find the targetlist entry matching the given SortClause
  *		(or GroupClause) by ressortgroupref, and return its expression.
@@ -227,17 +254,7 @@ get_expr(TargetEntry *tle)
 Node *
 get_sortgroupclause_expr(SortClause *sortClause, List *targetList)
 {
-	Index		refnumber = sortClause->tleSortGroupRef;
-	List	   *l;
+	TargetEntry *tle = get_sortgroupclause_tle(sortClause, targetList);
 
-	foreach(l, targetList)
-	{
-		TargetEntry *tle = (TargetEntry *) lfirst(l);
-
-		if (tle->resdom->ressortgroupref == refnumber)
-			return tle->expr;
-	}
-
-	elog(ERROR, "get_sortgroupclause_expr: ORDER/GROUP BY expression not found in targetlist");
-	return NULL;				/* keep compiler quiet */
+	return tle->expr;
 }

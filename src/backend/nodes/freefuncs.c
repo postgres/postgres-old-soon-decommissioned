@@ -427,8 +427,7 @@ _freeUnique(Unique *node)
 	 *	free remainder of node
 	 * ----------------
 	 */
-	if (node->uniqueAttr)
-		pfree(node->uniqueAttr);
+	pfree(node->uniqColIdx);
 
 	pfree(node);
 }
@@ -1072,9 +1071,7 @@ _freeQuery(Query *node)
 	freeObject(node->targetList);
 	freeObject(node->qual);
 	freeObject(node->rowMark);
-	if (node->uniqueFlag)
-		pfree(node->uniqueFlag);
-
+	freeObject(node->distinctClause);
 	freeObject(node->sortClause);
 	freeObject(node->groupClause);
 	freeObject(node->havingQual);

@@ -753,7 +753,7 @@ NodeGetResultTupleSlot(Plan *node)
 			{
 				UniqueState *uniquestate = ((Unique *) node)->uniquestate;
 
-				slot = uniquestate->cs_ResultTupleSlot;
+				slot = uniquestate->cstate.cs_ResultTupleSlot;
 			}
 			break;
 

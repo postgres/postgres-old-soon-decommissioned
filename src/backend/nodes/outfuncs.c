@@ -256,12 +256,13 @@ _outQuery(StringInfo str, Query *node)
 	_outToken(str, node->into);
 
 	appendStringInfo(str,
-					 " :isPortal %s :isBinary %s :isTemp %s :unionall %s :unique ",
+					 " :isPortal %s :isBinary %s :isTemp %s :unionall %s :distinctClause ",
 					 node->isPortal ? "true" : "false",
 					 node->isBinary ? "true" : "false",
 					 node->isTemp ? "true" : "false",
 					 node->unionall ? "true" : "false");
-	_outToken(str, node->uniqueFlag);
+	_outNode(str, node->distinctClause);
+
 	appendStringInfo(str, " :sortClause ");
 	_outNode(str, node->sortClause);
 
@@ -584,9 +585,10 @@ _outUnique(StringInfo str, Unique *node)
 	appendStringInfo(str, " UNIQUE ");
 	_outPlanInfo(str, (Plan *) node);
 
-	appendStringInfo(str, " :nonameid %u :keycount %d ",
+	appendStringInfo(str, " :nonameid %u :keycount %d :numCols %d ",
 					 node->nonameid,
-					 node->keycount);
+					 node->keycount,
+					 node->numCols);
 }
 
 

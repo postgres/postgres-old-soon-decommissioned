@@ -1342,16 +1342,19 @@ make_group(List *tlist,
 }
 
 /*
- * The uniqueAttr argument must be a null-terminated string,
- * either the name of the attribute to select unique on
- * or "*"
+ * distinctList is a list of SortClauses, identifying the targetlist items
+ * that should be considered by the Unique filter.
  */
 
 Unique *
-make_unique(List *tlist, Plan *lefttree, char *uniqueAttr)
+make_unique(List *tlist, Plan *lefttree, List *distinctList)
 {
 	Unique	   *node = makeNode(Unique);
 	Plan	   *plan = &node->plan;
+	int			numCols = length(distinctList);
+	int			keyno = 0;
+	AttrNumber *uniqColIdx;
+	List	   *slitem;
 
 	copy_plan_costsize(plan, lefttree);
 	plan->state = (EState *) NULL;
@@ -1361,10 +1364,22 @@ make_unique(List *tlist, Plan *lefttree, char *uniqueAttr)
 	plan->righttree = NULL;
 	node->nonameid = _NONAME_RELATION_ID_;
 	node->keycount = 0;
-	if (strcmp(uniqueAttr, "*") == 0)
-		node->uniqueAttr = NULL;
-	else
-		node->uniqueAttr = pstrdup(uniqueAttr);
+
+	/* convert SortClause list into array of attr indexes, as wanted by exec */
+	Assert(numCols > 0);
+	uniqColIdx = (AttrNumber *) palloc(sizeof(AttrNumber) * numCols);
+
+	foreach(slitem, distinctList)
+	{
+		SortClause	   *sortcl = (SortClause *) lfirst(slitem);
+		TargetEntry	   *tle = get_sortgroupclause_tle(sortcl, tlist);
+
+		uniqColIdx[keyno++] = tle->resdom->resno;
+	}
+
+	node->numCols = numCols;
+	node->uniqColIdx = uniqColIdx;
+
 	return node;
 }
 

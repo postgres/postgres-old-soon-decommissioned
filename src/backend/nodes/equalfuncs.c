@@ -593,16 +593,8 @@ _equalQuery(Query *a, Query *b)
 		return false;
 	if (!equal(a->rowMark, b->rowMark))
 		return false;
-	if (a->uniqueFlag && b->uniqueFlag)
-	{
-		if (strcmp(a->uniqueFlag, b->uniqueFlag) != 0)
-			return false;
-	}
-	else
-	{
-		if (a->uniqueFlag != b->uniqueFlag)
-			return false;
-	}
+	if (!equal(a->distinctClause, b->distinctClause))
+		return false;
 	if (!equal(a->sortClause, b->sortClause))
 		return false;
 	if (!equal(a->groupClause, b->groupClause))
