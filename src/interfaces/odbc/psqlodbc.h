@@ -166,6 +166,7 @@ typedef struct TupleListClass_ TupleListClass;
 typedef struct EnvironmentClass_ EnvironmentClass;
 typedef struct TupleNode_ TupleNode;
 typedef struct TupleField_ TupleField;
+typedef struct KeySet_ KeySet;
 
 typedef struct col_info COL_INFO;
 typedef struct lo_arg LO_ARG;
