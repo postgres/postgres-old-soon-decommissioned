@@ -83,6 +83,7 @@ distclean: clean
 		backend/port/tas.s \
 		backend/port/dynloader.c \
 		backend/utils/Gen_fmgrtab.sh \
+		interfaces/ecpg/lib/Makefile \
 		interfaces/libpq/Makefile \
 		interfaces/libpgtcl/Makefile \
 		include/os.h \
