@@ -4,6 +4,11 @@ Documentation Guide
 Thomas Lockhart
 
 $Log: docguide.sgml,v $
+Revision 1.13  1998/12/29 02:24:14  thomas
+Clean up to ensure tag completion as required by the newest versions
+ of Norm's Modular Style Sheets and jade/docbook.
+From Vince Vielhaber <vev@michvhf.com>.
+
 Revision 1.12  1998/12/18 16:17:29  thomas
 Include more details on editing with Emacs.
 Remove mention of the old "migration" flat files.
@@ -87,7 +92,7 @@ Hardcopy, for in-depth reading and reference.
 <para>
 <table tocentry="1">
 <title><ProductName>Postgres</ProductName> Documentation Products</title>
-<tgroup cols="3">
+<tgroup cols="2">
 <thead>
 <row>
 <entry>
