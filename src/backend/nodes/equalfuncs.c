@@ -801,6 +801,8 @@ _equalCopyStmt(CopyStmt *a, CopyStmt *b)
 {
 	if (!equal(a->relation, b->relation))
 		return false;
+	if (!equal(a->attlist, b->attlist))
+		return false;
 	if (a->is_from != b->is_from)
 		return false;
 	if (!equalstr(a->filename, b->filename))

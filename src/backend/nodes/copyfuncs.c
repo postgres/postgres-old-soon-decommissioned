@@ -2016,6 +2016,7 @@ _copyCopyStmt(CopyStmt *from)
 	CopyStmt   *newnode = makeNode(CopyStmt);
 
 	Node_Copy(from, newnode, relation);
+	Node_Copy(from, newnode, attlist);
 	newnode->is_from = from->is_from;
 	if (from->filename)
 		newnode->filename = pstrdup(from->filename);

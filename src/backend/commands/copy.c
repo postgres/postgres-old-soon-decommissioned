@@ -1513,7 +1513,7 @@ CopyGetAttnums(Relation rel, List *attnamelist)
 
 		foreach(l, attnamelist)
 		{
-			char	   *name = strVal(lfirst(l));
+			char	   *name = ((Ident *) lfirst(l))->name;
 			int			attnum;
 
 			/* Lookup column name, elog on failure */
