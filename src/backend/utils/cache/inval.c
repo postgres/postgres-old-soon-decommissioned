@@ -643,6 +643,7 @@ RelationInvalidateHeapTuple(Relation relation, HeapTuple tuple)
 									RelationIdRegisterLocalInvalid);
 
 	if (RefreshWhenInvalidate)
+		/* what does this do?  bjm 1998/08/20 */
 		RelationInvalidateCatalogCacheTuple(relation,
 											tuple,
 											(void (*) ()) NULL);

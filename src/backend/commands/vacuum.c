@@ -2217,7 +2217,7 @@ vc_mkindesc(Relation onerel, int nindices, Relation *Irel, IndDesc **Idesc)
 		cachetuple = SearchSysCacheTupleCopy(INDEXRELID,
 										ObjectIdGetDatum(RelationGetRelid(Irel[i])),
 										0, 0, 0);
-		Assert(tuple);
+		Assert(cachetuple);
 
 		/* get the buffer cache tuple */
 		tuple = heap_fetch(onerel, SnapshotNow, &cachetuple->t_ctid, &buffer);

@@ -125,7 +125,7 @@ CatalogIndexInsert(Relation *idescs,
 		InsertIndexResult indexRes;
 
 		indexDescriptor = RelationGetTupleDescriptor(idescs[i]);
-		pgIndexTup = SearchSysCacheTuple(INDEXRELID,
+		pgIndexTup = SearchSysCacheTupleCopy(INDEXRELID,
 										 ObjectIdGetDatum(idescs[i]->rd_id),
 										 0, 0, 0);
 		Assert(pgIndexTup);
@@ -163,6 +163,7 @@ CatalogIndexInsert(Relation *idescs,
 								&heapTuple->t_ctid, heapRelation);
 		if (indexRes)
 			pfree(indexRes);
+		pfree(pgIndexTup);
 	}
 }
 
