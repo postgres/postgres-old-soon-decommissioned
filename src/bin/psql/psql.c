@@ -2093,10 +2093,15 @@ MainLoop(PsqlSettings *pset, char *query, FILE *source)
 	int			paren_level;
 	char	   *query_start;
 
-	if (query == NULL)
+	if (query_alloced == false)
 	{
-		query = malloc(MAX_QUERY_BUFFER);
-		query_alloced = true;
+		if((query = malloc(MAX_QUERY_BUFFER)) == NULL) {
+	
+			perror("Memory Allocation Failed");
+
+		} else {
+			query_alloced = true;
+		}
 	}
 
 	interactive = ((source == stdin) && !pset->notty);
