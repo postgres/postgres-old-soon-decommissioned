@@ -14,7 +14,7 @@ WANTED_DIRS = \
 		dbmirror	\
 		dbsize		\
 		earthdistance	\
-		findoidjoins	\
+#		findoidjoins	\
 		fulltextindex	\
 		fuzzystrmatch	\
 		intagg		\
