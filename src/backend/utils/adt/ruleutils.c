@@ -779,6 +779,27 @@ deparse_context_for_subplan(const char *name, List *tlist,
 	return (Node *) rte;
 }
 
+/*
+ * deparse_context_from_rtable	- Build deparse context given a rangetable
+ *
+ * This is suitable for deparsing expressions that refer to only a single
+ * level of variables (no outer-reference Vars).
+ */
+List *
+deparse_context_from_rtable(List *rtable)
+{
+	deparse_namespace *dpns;
+
+	dpns = (deparse_namespace *) palloc(sizeof(deparse_namespace));
+
+	dpns->rtable = rtable;
+	dpns->outer_varno = dpns->inner_varno = 0;
+	dpns->outer_rte = dpns->inner_rte = NULL;
+
+	/* Return a one-deep namespace stack */
+	return makeList1(dpns);
+}
+
 /* ----------
  * make_ruledef			- reconstruct the CREATE RULE command
  *				  for a given pg_rewrite tuple
