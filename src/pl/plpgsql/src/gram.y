@@ -40,8 +40,6 @@
 #include "string.h"
 #include "plpgsql.h"
 
-extern	int	yylineno;			/* not always declared by lexer... */
-
 #include "pl_scan.c"
 
 static	PLpgSQL_expr	*read_sqlstmt(int until, char *s, char *sqlstart);
