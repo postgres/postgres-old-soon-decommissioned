@@ -18,6 +18,7 @@
 extern "C" {
 #endif
 
+#include <stdio.h>
 /* ----------------
  *	include stuff common to fe and be
  * ----------------
