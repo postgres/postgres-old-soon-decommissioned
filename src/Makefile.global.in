@@ -161,10 +161,8 @@ USE_TCL= @USE_TCL@
 # customize these to your site's needs
 #
 TCL_INCDIR= @TCL_INCDIR@
-TCL_LIBDIR= /usr/local/lib
 TCL_LIB= @TCL_LIB@
 TK_INCDIR= @TK_INCDIR@
-TK_LIBDIR= /usr/local/lib
 TK_LIB= @TK_LIB@
 
 USE_PERL= @USE_PERL@
