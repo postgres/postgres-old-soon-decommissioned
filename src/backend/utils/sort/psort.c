@@ -123,10 +123,10 @@ psort_begin(Sort *node, int nkeys, ScanKey key)
     PS(node)->BytesRead = 0;
     PS(node)->BytesWritten = 0;
     PS(node)->treeContext.tupDesc =
-	ExecGetTupType(outerPlan((Plan *)node));
+    ExecGetTupType(outerPlan((Plan *)node));
     PS(node)->treeContext.nKeys = nkeys;
     PS(node)->treeContext.scanKeys = key;
-    PS(node)->treeContext.sortMem = SortMem;
+    PS(node)->treeContext.sortMem = SortMem * 1024;
 
     PS(node)->Tuples = NULL;
     PS(node)->tupcount = 0;

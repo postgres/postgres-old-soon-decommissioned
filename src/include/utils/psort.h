@@ -18,7 +18,6 @@
 #include "utils/lselect.h"
 #include "nodes/plannodes.h"
 
-#define	SORTMEM		(1 << 18)		/* 1/4 M - any static memory */
 #define	MAXTAPES	7			/* 7--See Fig. 70, p273 */
 #define	TAPEEXTLEN	strlen("pg_psort.xxxxx.xxx")	/* TEMPDIR/TAPEEXT */
 #define	FREE(x)		pfree((char *) x)
