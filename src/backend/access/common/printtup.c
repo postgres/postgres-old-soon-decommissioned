@@ -286,7 +286,7 @@ printtup(HeapTuple tuple, TupleDesc typeinfo, DestReceiver *self)
 {
 	DR_printtup *myState = (DR_printtup *) self;
 	StringInfoData buf;
-	int			natts = tuple->t_data->t_natts;
+	int			natts = typeinfo->natts;
 	int			i;
 
 	/* Set or update my derived attribute info, if needed */
@@ -370,7 +370,7 @@ printtup_20(HeapTuple tuple, TupleDesc typeinfo, DestReceiver *self)
 {
 	DR_printtup *myState = (DR_printtup *) self;
 	StringInfoData buf;
-	int			natts = tuple->t_data->t_natts;
+	int			natts = typeinfo->natts;
 	int			i,
 				j,
 				k;
@@ -517,7 +517,7 @@ debugStartup(DestReceiver *self, int operation, TupleDesc typeinfo)
 void
 debugtup(HeapTuple tuple, TupleDesc typeinfo, DestReceiver *self)
 {
-	int			natts = tuple->t_data->t_natts;
+	int			natts = typeinfo->natts;
 	int			i;
 	Datum		origattr,
 				attr;
@@ -573,7 +573,7 @@ printtup_internal_20(HeapTuple tuple, TupleDesc typeinfo, DestReceiver *self)
 {
 	DR_printtup *myState = (DR_printtup *) self;
 	StringInfoData buf;
-	int			natts = tuple->t_data->t_natts;
+	int			natts = typeinfo->natts;
 	int			i,
 				j,
 				k;
