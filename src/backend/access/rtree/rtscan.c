@@ -223,6 +223,7 @@ rtendscan(IndexScanDesc s)
     if (p != (RTreeScanOpaque) NULL) {
 	freestack(p->s_stack);
 	freestack(p->s_markstk);
+    	pfree (s->opaque);
     }
     
     rtdropscan(s);

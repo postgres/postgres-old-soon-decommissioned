@@ -277,7 +277,6 @@ btbuild(Relation heap,
 	    }  
 	}
     
-    /* be tidy */
     pfree(nulls);
     pfree(attdata);
     
@@ -467,14 +466,11 @@ btendscan(IndexScanDesc scan)
 	so->btso_mrkbuf = InvalidBuffer;
 	ItemPointerSetInvalid(iptr);
     }
-    
-    /* don't need scan registered anymore */
-    _bt_dropscan(scan);
-    
-    /* be tidy */
+
+    pfree (scan->opaque);
     if ( so->keyData != (ScanKey) NULL )
     	pfree (so->keyData);
-    pfree (scan->opaque);
+    _bt_dropscan(scan);
 }
 
 /*
