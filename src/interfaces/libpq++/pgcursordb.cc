@@ -31,9 +31,9 @@ PgCursor::PgCursor(const char* conninfo, const char* cursor)
 // Do not make a connection to the backend -- just query
 // Connection should not be closed after the object destructs since some
 // other object is using the connection
-PgCursor::PgCursor(const PgConnection& conn, const char* cursor)
-   : PgTransaction(conn), pgCursor(cursor)
-{}
+//PgCursor::PgCursor(const PgConnection& conn, const char* cursor)
+//   : PgTransaction(conn), pgCursor(cursor)
+//{}
 
 // Destructor: End the transaction block
 PgCursor::~PgCursor()
