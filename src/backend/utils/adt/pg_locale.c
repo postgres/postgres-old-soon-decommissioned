@@ -26,6 +26,8 @@
 /* #define DEBUG_LOCALE_UTILS  */
 
 
+static struct lconv *CurrentLocaleConv = NULL;
+
 /*------
  * Return in PG_LocaleCategories current locale setting
  *------
@@ -119,7 +121,9 @@ struct lconv *
 PGLC_localeconv(void)
 {
 	PG_LocaleCategories lc;
-	struct lconv *lconv;
+	
+	if (CurrentLocaleConv)
+		return CurrentLocaleConv;
 
 	/* Save current locale setting to lc */
 	PGLC_current(&lc);
@@ -128,12 +132,12 @@ PGLC_localeconv(void)
 	setlocale(LC_ALL, "");
 
 	/* Get numeric formatting information */
-	lconv = localeconv();
+	CurrentLocaleConv = localeconv();
 
 	/* Set previous original locale */
 	PGLC_setlocale(&lc);
 
-	return lconv;
+	return CurrentLocaleConv;
 }
 
 
