@@ -217,24 +217,22 @@ geqo(Query *root, int number_of_rels, List *initial_rels)
 
 #if defined(ERX) && defined(GEQO_DEBUG)
 	if (edge_failures != 0)
-		fprintf(stdout, "\nFailures: %d  Avg: %d\n", edge_failures, (int) generation / edge_failures);
-
+		elog(DEBUG, "[GEQO] failures: %d, average: %d",
+			 edge_failures, (int) generation / edge_failures);
 	else
-		fprintf(stdout, "No edge failures detected.\n");
+		elog(DEBUG, "[GEQO] No edge failures detected.");
 #endif
 
 
 #if defined(CX) && defined(GEQO_DEBUG)
 	if (mutations != 0)
-		fprintf(stdout, "\nMutations: %d  Generations: %d\n", mutations, generation);
-
+		elog(DEBUG, "[GEQO] mutations: %d, generations: %d", mutations, generation);
 	else
-		fprintf(stdout, "No mutations processed.\n");
+		elog(DEBUG, "[GEQO] No mutations processed.");
 #endif
 
 
 #ifdef GEQO_DEBUG
-	fprintf(stdout, "\n");
 	print_pool(stdout, pool, 0, pool_size - 1);
 #endif
 

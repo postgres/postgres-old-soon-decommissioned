@@ -122,6 +122,9 @@
 #define dummyret	char
 #endif
 
+#ifndef __GNUC__
+#define __attribute__(x)
+#endif
 
 /* ----------------------------------------------------------------
  *				Section 2:	bool, true, false, TRUE, FALSE, NULL
