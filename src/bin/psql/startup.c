@@ -636,21 +636,12 @@ showVersion(void)
 {
 	puts("psql (PostgreSQL) " PG_VERSION);
 
-#if defined(USE_READLINE) || defined (USE_HISTORY) || defined(MULTIBYTE)
+#if defined(USE_READLINE) || defined(MULTIBYTE)
 	fputs(gettext("contains support for: "), stdout);
 
 #ifdef USE_READLINE
 	fputs(gettext("readline"), stdout);
 #define _Feature
-#endif
-
-#ifdef USE_HISTORY
-#ifdef _Feature
-	fputs(", ", stdout);
-#else
-#define _Feature
-#endif
-	fputs(gettext("history"), stdout);
 #endif
 
 #ifdef MULTIBYTE

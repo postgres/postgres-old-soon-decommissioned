@@ -115,6 +115,27 @@ fi])# PGAC_CHECK_READLINE
 
 
 
+# PGAC_VAR_RL_COMPLETION_APPEND_CHARACTER
+# ---------------------------------------
+# Readline versions < 2.1 don't have rl_completion_append_character
+
+AC_DEFUN([PGAC_VAR_RL_COMPLETION_APPEND_CHARACTER],
+[AC_MSG_CHECKING([for rl_completion_append_character])
+AC_TRY_LINK([#include <stdio.h>
+#ifdef HAVE_READLINE_READLINE_H
+# include <readline/readline.h>
+#elif defined(HAVE_READLINE_H)
+# include <readline.h>
+#endif
+],
+[rl_completion_append_character = 'x';],
+[AC_MSG_RESULT(yes)
+AC_DEFINE(HAVE_RL_COMPLETION_APPEND_CHARACTER, 1,
+          [Define if you have rl_completion_append_character])],
+[AC_MSG_RESULT(no)])])# PGAC_VAR_RL_COMPLETION_APPEND_CHARACTER
+
+
+
 # PGAC_CHECK_GETTEXT
 # ------------------
 

@@ -19,8 +19,6 @@
 /* (of course there is no runtime command for doing that :) */
 #ifdef USE_READLINE
 static bool useReadline;
-#endif
-#ifdef USE_HISTORY
 static bool useHistory;
 #endif
 
@@ -44,7 +42,7 @@ gets_interactive(char *prompt)
 {
 	char	   *s;
 
-#ifdef USE_HISTORY
+#ifdef USE_READLINE
 	const char *var;
 	static char *prev_hist = NULL;
 #endif
@@ -62,7 +60,7 @@ gets_interactive(char *prompt)
 	}
 #endif
 
-#ifdef USE_HISTORY
+#ifdef USE_READLINE
 	if (useHistory && s && s[0] != '\0')
 	{
 		var = GetVariable(pset.vars, "HISTCONTROL");
@@ -133,7 +131,7 @@ initializeInput(int flags)
 	}
 #endif
 
-#ifdef USE_HISTORY
+#ifdef USE_READLINE
 	if (flags == 1)
 	{
 		const char *home;
@@ -168,7 +166,7 @@ initializeInput(int flags)
 bool
 saveHistory(char *fname)
 {
-#ifdef USE_HISTORY
+#ifdef USE_READLINE
 	if (useHistory && fname)
 	{
 		if (write_history(fname) != 0)
@@ -194,7 +192,7 @@ finishInput(void)
 finishInput(int exitstatus, void *arg)
 #endif
 {
-#ifdef USE_HISTORY
+#ifdef USE_READLINE
 	if (useHistory)
 	{
 		char	   *home;
