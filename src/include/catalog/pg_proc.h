@@ -2040,6 +2040,10 @@ DATA(insert OID = 1640 (  pg_get_ruledef	   PGUID 11 f t f 1 f 25 "19" 100 0 0 1
 DESCR("source text of a rule");
 DATA(insert OID = 1641 (  pg_get_viewdef	   PGUID 11 f t f 1 f 25 "19" 100 0 0 100  foo bar ));
 DESCR("select statement of a view");
+DATA(insert OID = 1642 (  pg_get_userbyid	   PGUID 11 f t f 1 f 19 "23" 100 0 0 100  foo bar ));
+DESCR("user name by UID (with fallback)");
+DATA(insert OID = 1643 (  pg_get_indexdef	   PGUID 11 f t f 1 f 25 "26" 100 0 0 100  foo bar ));
+DESCR("index description");
 
 /*
  * prototypes for functions pg_proc.c

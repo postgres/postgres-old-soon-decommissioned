@@ -24,7 +24,6 @@
 #include "utils/builtins.h"
 #include "catalog/pg_shadow.h"
 
-static void checkLockPerms(List *locks, Query *parsetree, int rt_index);
 
 /*
  * ThisLockWasTriggered
@@ -170,7 +169,7 @@ matchLocks(CmdType event,
 }
 
 
-static void
+void
 checkLockPerms(List *locks, Query *parsetree, int rt_index)
 {
 	Relation	ev_rel;

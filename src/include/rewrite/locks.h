@@ -19,5 +19,6 @@
 
 extern List *matchLocks(CmdType event, RuleLock *rulelocks, int varno,
 		   Query *parsetree);
+extern void checkLockPerms(List *locks, Query *parsetree, int rt_index);
 
 #endif	 /* LOCKS_H */

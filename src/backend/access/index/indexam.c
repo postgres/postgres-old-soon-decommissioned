@@ -362,7 +362,7 @@ GetIndexValue(HeapTuple tuple,
 			  bool *attNull)
 {
 	Datum		returnVal;
-	bool		isNull;
+	bool		isNull = FALSE;
 
 	if (PointerIsValid(fInfo) && FIgetProcOid(fInfo) != InvalidOid)
 	{
@@ -375,13 +375,15 @@ GetIndexValue(HeapTuple tuple,
 									  attrNums[i],
 									  hTupDesc,
 									  attNull);
+			if (*attNull)
+				isNull = TRUE;
 		}
 		returnVal = (Datum) fmgr_array_args(FIgetProcOid(fInfo),
 											FIgetnArgs(fInfo),
 											(char **) attData,
 											&isNull);
 		pfree(attData);
-		*attNull = FALSE;
+		*attNull = isNull;
 	}
 	else
 		returnVal = heap_getattr(tuple, attrNums[attOff], hTupDesc, attNull);
