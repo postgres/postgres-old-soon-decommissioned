@@ -1272,6 +1272,13 @@ MainLoop(PsqlSettings * settings, FILE * source)
 	    line = strdup(query);
 	    query[0] = '\0';
 	} else {
+	    sprintf(settings->prompt, "%s%s", PQdb(settings->db), PROMPT);
+	    if (in_quote)
+	    	settings->prompt[strlen(settings->prompt)-3] = '\'';
+	    else if (query[0] != '\0' && !querySent)
+	    	settings->prompt[strlen(settings->prompt)-3] = '-';
+	    else
+	    	settings->prompt[strlen(settings->prompt)-3] = '=';
 	    line = GetNextLine(settings->prompt, source);
 	    if (interactive && settings->useReadline && line != NULL)
 		add_history(line);	/* save non-empty lines in history */
