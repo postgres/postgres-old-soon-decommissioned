@@ -114,7 +114,7 @@ static int	server_encoding;
  */
 static void SendCopyBegin(bool binary);
 static void ReceiveCopyBegin(bool binary);
-static void SendCopyEnd(bool binary);
+static void SendCopyEnd(bool binary, bool pipe);
 static void CopySendData(void *databuf, int datasize);
 static void CopySendString(const char *str);
 static void CopySendChar(char c);
@@ -178,7 +178,7 @@ ReceiveCopyBegin(bool binary)
 }
 
 static void
-SendCopyEnd(bool binary)
+SendCopyEnd(bool binary, bool pipe)
 {
 	if (!binary)
 		CopySendData("\\.\n", 3);
@@ -680,7 +680,7 @@ DoCopy(const CopyStmt *stmt)
 	if (!pipe)
 		FreeFile(copy_file);
 	else if (IsUnderPostmaster && !is_from)
-		SendCopyEnd(binary);
+		SendCopyEnd(binary, pipe);
 	pfree(attribute_buf.data);
 
 	/*
