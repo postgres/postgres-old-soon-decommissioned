@@ -853,7 +853,6 @@ main(int argc, char **argv)
 		fprintf(stderr, "%s", PQerrorMessage(con));
 		exit(1);
 	}
-	PQclear(res);
 	tps = atoi(PQgetvalue(res, 0, 0));
 	if (tps < 0)
 	{
