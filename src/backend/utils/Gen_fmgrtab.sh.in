@@ -108,7 +108,7 @@ cat > $HFILE <<FuNkYfMgRsTuFf
  *	    store 8 argument type values for type-checking ...
  */
 typedef struct {
-    char *data[FUNC_MAX_ARGS+1];  /* function name is arg0 */
+    char *data[FUNC_MAX_ARGS];  /* function name is arg0 */
 } FmgrValues;
 
 typedef struct {
