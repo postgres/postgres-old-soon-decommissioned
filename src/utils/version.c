@@ -17,9 +17,9 @@
  *  stuff that does not cinterface.a
  *-------------------------------------------------------------------------
  */
+#include <sys/types.h>
 #include <sys/file.h>
 #include <fcntl.h>      /* For open() flags */
-#include <sys/types.h>
 #include <sys/stat.h>
 #include <ctype.h>
 #include <string.h>

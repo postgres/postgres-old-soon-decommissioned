@@ -37,6 +37,7 @@
  *-------------------------------------------------------------------------
  */
 
+#include <sys/types.h>
 #include <stdio.h>
 #include <sys/file.h>
 #include <sys/param.h>
@@ -44,7 +45,6 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <unistd.h>
-#include <sys/types.h>
 #include <fcntl.h>
 
 #include "postgres.h"

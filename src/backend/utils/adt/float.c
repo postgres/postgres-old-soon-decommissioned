@@ -1446,7 +1446,8 @@ static int isinf(x)
 }
 #endif /* alpha */
 
-#if defined(sparc_solaris) || defined(i386_solaris)  || defined(svr4)
+#if defined(sparc_solaris) || defined(i386_solaris)  || defined(svr4) || \
+    defined(sco)
 #include <ieeefp.h>
 static int
     isinf(d)

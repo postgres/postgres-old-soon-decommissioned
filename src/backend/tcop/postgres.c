@@ -29,6 +29,9 @@
 #ifndef MAXHOSTNAMELEN
 #include <netdb.h>              /* for MAXHOSTNAMELEN on some */
 #endif
+#ifndef MAXHOSTNAMELEN		/* for MAXHOSTNAMELEN under sco3.2v5.0.2 */
+#include <sys/socket.h>
+#endif
 #include <errno.h>
 #ifdef aix
 #include <sys/select.h>
@@ -1271,7 +1274,7 @@ PostgresMain(int argc, char *argv[])
      */
     if (IsUnderPostmaster == false) {
         puts("\nPOSTGRES backend interactive interface");
-        puts("$Revision: 1.34 $ $Date: 1997/07/24 20:15:03 $");
+        puts("$Revision: 1.35 $ $Date: 1997/07/28 00:55:28 $");
     }
     
     /* ----------------

@@ -493,7 +493,9 @@ pq_regoob(void (*fptr)())
     int fd = fileno(Pfout);
 #if defined(hpux)
     ioctl(fd, FIOSSAIOOWN, getpid());
-#else /* hpux */
+#elif defined(sco)
+    ioctl(fd, SIOCSPGRP, getpid());
+#else
     fcntl(fd, F_SETOWN, getpid());
 #endif /* hpux */
     (void) pqsignal(SIGURG,fptr);

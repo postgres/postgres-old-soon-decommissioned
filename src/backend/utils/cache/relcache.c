@@ -29,6 +29,7 @@
  *	careful....
  *
  */
+#include <sys/types.h>
 #include <stdio.h>		/* for sprintf() */
 #include <errno.h>
 #include <sys/file.h>

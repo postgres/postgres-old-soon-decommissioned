@@ -152,7 +152,7 @@ extern void load_file(char *filename);
 
 FuNkYfMgRsTuFf
 awk '{ print $2, $1; }' $RAWFILE | \
-@TR@ '[a-z]' '[A-Z]' | \
+@TR@ @TRARGS@ | \
 sed -e 's/^/#define F_/' >> $HFILE
 cat >> $HFILE <<FuNkYfMgRsTuFf
 
