@@ -22,6 +22,7 @@
 #include "postmaster/bgwriter.h"
 #include "storage/fd.h"
 #include "storage/lwlock.h"
+#include "storage/shmem.h"
 #include "miscadmin.h"
 
 

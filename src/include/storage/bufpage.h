@@ -87,12 +87,21 @@ typedef uint16 LocationIndex;
 
 /*
  * disk page organization
+ *
  * space management information generic to any page
  *
+ *		pd_lsn		- identifies xlog record for last change to this page.
+ *		pd_tli		- ditto.
  *		pd_lower	- offset to start of free space.
  *		pd_upper	- offset to end of free space.
  *		pd_special	- offset to start of special space.
  *		pd_pagesize_version - size in bytes and page layout version number.
+ *
+ * The LSN is used by the buffer manager to enforce the basic rule of WAL:
+ * "thou shalt write xlog before data".  A dirty buffer cannot be dumped
+ * to disk until xlog has been flushed at least as far as the page's LSN.
+ * We also store the TLI for identification purposes (it is not clear that
+ * this is actually necessary, but it seems like a good idea).
  *
  * The page version number and page size are packed together into a single
  * uint16 field.  This is for historical reasons: before PostgreSQL 7.3,
@@ -109,13 +118,10 @@ typedef uint16 LocationIndex;
  */
 typedef struct PageHeaderData
 {
-	/* XXX LSN is member of *any* block, not */
-	/* only page-organized - 'll change later */
-	XLogRecPtr	pd_lsn;			/* LSN: next byte after last byte of xlog */
-	/* record for last change of this page */
-	StartUpID	pd_sui;			/* SUI of last changes (currently it's */
-	/* used by heap AM only) */
-
+	/* XXX LSN is member of *any* block, not only page-organized ones */
+	XLogRecPtr	pd_lsn;			/* LSN: next byte after last byte of xlog
+								 * record for last change to this page */
+	TimeLineID	pd_tli;			/* TLI of last change */
 	LocationIndex pd_lower;		/* offset to start of free space */
 	LocationIndex pd_upper;		/* offset to end of free space */
 	LocationIndex pd_special;	/* offset to start of special space */
@@ -298,10 +304,10 @@ typedef PageHeaderData *PageHeader;
 #define PageSetLSN(page, lsn) \
 	(((PageHeader) (page))->pd_lsn = (lsn))
 
-#define PageGetSUI(page) \
-	(((PageHeader) (page))->pd_sui)
-#define PageSetSUI(page, sui) \
-	(((PageHeader) (page))->pd_sui = (StartUpID) (sui))
+#define PageGetTLI(page) \
+	(((PageHeader) (page))->pd_tli)
+#define PageSetTLI(page, tli) \
+	(((PageHeader) (page))->pd_tli = (tli))
 
 /* ----------------------------------------------------------------
  *		extern declarations

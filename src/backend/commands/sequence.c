@@ -279,7 +279,7 @@ DefineSequence(CreateSeqStmt *seq)
 		recptr = XLogInsert(RM_SEQ_ID, XLOG_SEQ_LOG | XLOG_NO_TRAN, rdata);
 
 		PageSetLSN(page, recptr);
-		PageSetSUI(page, ThisStartUpID);
+		PageSetTLI(page, ThisTimeLineID);
 	}
 
 	END_CRIT_SECTION();
@@ -354,7 +354,7 @@ AlterSequence(AlterSeqStmt *stmt)
 		recptr = XLogInsert(RM_SEQ_ID, XLOG_SEQ_LOG | XLOG_NO_TRAN, rdata);
 
 		PageSetLSN(page, recptr);
-		PageSetSUI(page, ThisStartUpID);
+		PageSetTLI(page, ThisTimeLineID);
 	}
 
 	END_CRIT_SECTION();
@@ -553,7 +553,7 @@ nextval(PG_FUNCTION_ARGS)
 		recptr = XLogInsert(RM_SEQ_ID, XLOG_SEQ_LOG | XLOG_NO_TRAN, rdata);
 
 		PageSetLSN(page, recptr);
-		PageSetSUI(page, ThisStartUpID);
+		PageSetTLI(page, ThisTimeLineID);
 	}
 
 	/* update on-disk data */
@@ -689,7 +689,7 @@ do_setval(RangeVar *sequence, int64 next, bool iscalled)
 		recptr = XLogInsert(RM_SEQ_ID, XLOG_SEQ_LOG | XLOG_NO_TRAN, rdata);
 
 		PageSetLSN(page, recptr);
-		PageSetSUI(page, ThisStartUpID);
+		PageSetTLI(page, ThisTimeLineID);
 	}
 
 	/* save info in sequence relation */
@@ -1091,7 +1091,7 @@ seq_redo(XLogRecPtr lsn, XLogRecord *record)
 		elog(PANIC, "seq_redo: failed to add item to page");
 
 	PageSetLSN(page, lsn);
-	PageSetSUI(page, ThisStartUpID);
+	PageSetTLI(page, ThisTimeLineID);
 	LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
 	WriteBuffer(buffer);
 }

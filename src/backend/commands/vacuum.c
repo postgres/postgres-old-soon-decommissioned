@@ -2341,7 +2341,7 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 
 				recptr = log_heap_clean(onerel, buf, unused, uncnt);
 				PageSetLSN(page, recptr);
-				PageSetSUI(page, ThisStartUpID);
+				PageSetTLI(page, ThisTimeLineID);
 			}
 			else
 			{
@@ -2491,10 +2491,10 @@ move_chain_tuple(Relation rel,
 		if (old_buf != dst_buf)
 		{
 			PageSetLSN(old_page, recptr);
-			PageSetSUI(old_page, ThisStartUpID);
+			PageSetTLI(old_page, ThisTimeLineID);
 		}
 		PageSetLSN(dst_page, recptr);
-		PageSetSUI(dst_page, ThisStartUpID);
+		PageSetTLI(dst_page, ThisTimeLineID);
 	}
 	else
 	{
@@ -2611,9 +2611,9 @@ move_plain_tuple(Relation rel,
 										   dst_buf, &newtup);
 
 		PageSetLSN(old_page, recptr);
-		PageSetSUI(old_page, ThisStartUpID);
+		PageSetTLI(old_page, ThisTimeLineID);
 		PageSetLSN(dst_page, recptr);
-		PageSetSUI(dst_page, ThisStartUpID);
+		PageSetTLI(dst_page, ThisTimeLineID);
 	}
 	else
 	{
@@ -2807,7 +2807,7 @@ vacuum_page(Relation onerel, Buffer buffer, VacPage vacpage)
 
 		recptr = log_heap_clean(onerel, buffer, unused, uncnt);
 		PageSetLSN(page, recptr);
-		PageSetSUI(page, ThisStartUpID);
+		PageSetTLI(page, ThisTimeLineID);
 	}
 	else
 	{

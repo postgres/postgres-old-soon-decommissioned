@@ -165,7 +165,7 @@ main(int argc, char *argv[])
 		   ControlFile.checkPointCopy.redo.xlogid, ControlFile.checkPointCopy.redo.xrecoff);
 	printf(_("Latest checkpoint's UNDO location:    %X/%X\n"),
 		   ControlFile.checkPointCopy.undo.xlogid, ControlFile.checkPointCopy.undo.xrecoff);
-	printf(_("Latest checkpoint's StartUpID:        %u\n"), ControlFile.checkPointCopy.ThisStartUpID);
+	printf(_("Latest checkpoint's TimeLineID:       %u\n"), ControlFile.checkPointCopy.ThisTimeLineID);
 	printf(_("Latest checkpoint's NextXID:          %u\n"), ControlFile.checkPointCopy.nextXid);
 	printf(_("Latest checkpoint's NextOID:          %u\n"), ControlFile.checkPointCopy.nextOid);
 	printf(_("Time of latest checkpoint:            %s\n"), ckpttime_str);

@@ -15,6 +15,7 @@
 #define XACT_H
 
 #include "access/xlog.h"
+#include "storage/relfilenode.h"
 #include "utils/nabstime.h"
 
 

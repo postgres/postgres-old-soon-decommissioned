@@ -299,14 +299,14 @@ _bt_blwritepage(BTWriteState *wstate, Page page, BlockNumber blkno)
 		recptr = XLogInsert(RM_HEAP_ID, XLOG_HEAP_NEWPAGE, rdata);
 
 		PageSetLSN(page, recptr);
-		PageSetSUI(page, ThisStartUpID);
+		PageSetTLI(page, ThisTimeLineID);
 
 		END_CRIT_SECTION();
 	}
 	else
 	{
-		/* Leave the page LSN zero if not WAL-logged, but set SUI anyway */
-		PageSetSUI(page, ThisStartUpID);
+		/* Leave the page LSN zero if not WAL-logged, but set TLI anyway */
+		PageSetTLI(page, ThisTimeLineID);
 	}
 
 	/*

@@ -5448,7 +5448,7 @@ copy_relation_data(Relation rel, SMgrRelation dst)
 			recptr = XLogInsert(RM_HEAP_ID, XLOG_HEAP_NEWPAGE, rdata);
 
 			PageSetLSN(page, recptr);
-			PageSetSUI(page, ThisStartUpID);
+			PageSetTLI(page, ThisTimeLineID);
 
 			END_CRIT_SECTION();
 		}
