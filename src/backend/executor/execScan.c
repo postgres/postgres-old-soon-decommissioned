@@ -196,7 +196,9 @@ tlist_matches_tupdesc(List *tlist, Index varno, TupleDesc tupdesc)
 
 	for (attrno = 1; attrno <= numattrs; attrno++)
 	{
+#ifdef USE_ASSERT_CHECKING		/* only used in Assert() */
 		Form_pg_attribute att_tup = tupdesc->attrs[attrno - 1];
+#endif
 		Var		   *var;
 
 		if (tlist == NIL)

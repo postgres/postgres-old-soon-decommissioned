@@ -742,7 +742,9 @@ SimpleLruSetLatestPage(SlruCtl ctl, int pageno)
 void
 SimpleLruFlush(SlruCtl ctl, bool checkpoint)
 {
+#ifdef USE_ASSERT_CHECKING		/* only used in Assert() */
 	SlruShared	shared = (SlruShared) ctl->shared;
+#endif
 	int			slotno;
 
 	LWLockAcquire(ctl->locks->ControlLock, LW_EXCLUSIVE);
