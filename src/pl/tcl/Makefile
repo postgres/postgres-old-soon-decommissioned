@@ -89,7 +89,7 @@ ifeq ($(TCL_SHARED_BUILD),1)
 all: $(INFILES)
 
 install: all
-	$(INSTALL) $(INSTL_LIB_OPTS) $(DLOBJS) $(LIBDIR)/$(DLOBJS)
+	$(INSTALL) $(INSTL_SHLIB_OPTS) $(DLOBJS) $(LIBDIR)/$(DLOBJS)
 
 else
 
