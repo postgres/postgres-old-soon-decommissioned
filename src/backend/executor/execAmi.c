@@ -369,6 +369,10 @@ ExecReScan(Plan *node, ExprContext *exprCtxt, Plan *parent)
 			ExecReScanMergeJoin((MergeJoin *) node, exprCtxt, parent);
 			break;
 
+		case T_Append:
+			ExecReScanAppend((Append *) node, exprCtxt, parent);
+			break;
+
 /*
  * Tee is never used
 		case T_Tee:
