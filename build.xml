@@ -69,6 +69,12 @@ e.g.
     </antcall>
   </target>
 
+  <target name="uninstall" if="install.directory">
+    <antcall target="call">
+      <param name="target" value="uninstall" />
+    </antcall>
+  </target>
+
   <!--
 	This actually calls the other two build.xml files.
 	To use it, use the <antcall> tag, and pass the destination target

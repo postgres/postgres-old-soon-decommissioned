@@ -56,5 +56,12 @@
     </copy>
   </target>
 
-</project>
+  <target name="uninstall" if="install.directory">
+    <delete>
+      <fileset dir="${install.directory}">
+        <include name="**/*.jar" />
+      </fileset>
+    </delete>
+  </target>
 
+</project>
