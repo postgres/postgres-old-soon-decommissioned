@@ -58,6 +58,7 @@ typedef enum TransState
 typedef enum TBlockState
 {
 	TBLOCK_DEFAULT,
+	TBLOCK_STARTED,
 	TBLOCK_BEGIN,
 	TBLOCK_INPROGRESS,
 	TBLOCK_END,
