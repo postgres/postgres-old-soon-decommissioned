@@ -187,10 +187,17 @@ _bt_blnewpage(Relation index, Buffer *buf, Page *page, int flags)
 
 	*buf = _bt_getbuf(index, P_NEW, BT_WRITE);
 	*page = BufferGetPage(*buf);
+
+	/* Zero the page and set up standard page header info */
 	_bt_pageinit(*page, BufferGetPageSize(*buf));
+
+	/* Initialize BT opaque state */
 	opaque = (BTPageOpaque) PageGetSpecialPointer(*page);
 	opaque->btpo_prev = opaque->btpo_next = P_NONE;
 	opaque->btpo_flags = flags;
+
+	/* Make the P_HIKEY line pointer appear allocated */
+	((PageHeader) *page)->pd_lower += sizeof(ItemIdData);
 }
 
 /*
