@@ -342,6 +342,15 @@ tryAgain:
 	{
 		if (errno == EINTR)
 			goto tryAgain;
+		/* Some systems return EAGAIN/EWOULDBLOCK for no data */
+#ifdef EAGAIN
+		if (errno == EAGAIN)
+			return 0;
+#endif
+#if defined(EWOULDBLOCK) && (!defined(EAGAIN) || (EWOULDBLOCK != EAGAIN))
+		if (errno == EWOULDBLOCK)
+			return 0;
+#endif
 		sprintf(conn->errorMessage,
 				"pqReadData() --  read() failed: errno=%d\n%s\n",
 				errno, strerror(errno));
@@ -374,6 +383,15 @@ tryAgain2:
 	{
 		if (errno == EINTR)
 			goto tryAgain2;
+		/* Some systems return EAGAIN/EWOULDBLOCK for no data */
+#ifdef EAGAIN
+		if (errno == EAGAIN)
+			return 0;
+#endif
+#if defined(EWOULDBLOCK) && (!defined(EAGAIN) || (EWOULDBLOCK != EAGAIN))
+		if (errno == EWOULDBLOCK)
+			return 0;
+#endif
 		sprintf(conn->errorMessage,
 				"pqReadData() --  read() failed: errno=%d\n%s\n",
 				errno, strerror(errno));

@@ -748,7 +748,8 @@ PQexec(PGconn *conn, const char *query)
 		return NULL;
 
 	/* For backwards compatibility, return the last result if there are
-	 * more than one.
+	 * more than one.  We have to stop if we see copy in/out, however.
+	 * We will resume parsing when application calls PQendcopy.
 	 */
 	lastResult = NULL;
 	while ((result = PQgetResult(conn)) != NULL)
@@ -756,6 +757,9 @@ PQexec(PGconn *conn, const char *query)
 		if (lastResult)
 			PQclear(lastResult);
 		lastResult = result;
+		if (result->resultStatus == PGRES_COPY_IN ||
+			result->resultStatus == PGRES_COPY_OUT)
+			break;
 	}
 	return lastResult;
 }
@@ -950,7 +954,7 @@ PQputline(PGconn *conn, const char *s)
 {
 	if (conn && conn->sock >= 0)
 	{
-		(void) pqPuts(s, conn);
+		(void) pqPutnchar(s, strlen(s), conn);
 	}
 }
 
@@ -988,7 +992,7 @@ PQendcopy(PGconn *conn)
 	result = PQgetResult(conn);
 
 	/* Expecting a successful result */
-	if (result->resultStatus == PGRES_COMMAND_OK)
+	if (result && result->resultStatus == PGRES_COMMAND_OK)
 	{
 		PQclear(result);
 		return 0;

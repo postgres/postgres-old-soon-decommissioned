@@ -230,7 +230,8 @@ dumpClasses_nodumpData(FILE *fout, const char *classname, const bool oids)
 		sprintf(query, "COPY %s TO stdout;\n", fmtId(classname));
 	}
 	res = PQexec(g_conn, query);
-	if (!res)
+	if (!res ||
+		PQresultStatus(res) == PGRES_FATAL_ERROR)
 	{
 		fprintf(stderr, "SQL query to dump the contents of Table %s "
 				"did not execute.  Explanation from backend: '%s'.\n"
