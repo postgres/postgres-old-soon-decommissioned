@@ -64,7 +64,8 @@ done
 
 
 if [ "$usage" ]; then
-        echo "$CMDNAME initializes an alternative filesystem location for database creation."
+        echo "$CMDNAME initializes an alternative filesystem location for database"
+	echo "creation."
 	echo ""
 	echo "Usage:"
         echo "  $CMDNAME LOCATION"

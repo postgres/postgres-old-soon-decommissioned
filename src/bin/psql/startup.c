@@ -640,11 +640,6 @@ showVersion(void)
 #if defined(USE_READLINE)
 	puts(gettext("contains support for command-line editing"));
 #endif
-
-	puts(gettext("Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group\n"
-				 "Portions Copyright (c) 1996, Regents of the University of California\n"
-	"Read the file COPYRIGHT or use the command \\copyright to see the\n"
-				 "usage and distribution terms."));
 }
 
 

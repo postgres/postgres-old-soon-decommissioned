@@ -6,7 +6,8 @@
 CMDNAME=`basename $0`
 
 if [ "$1" = '-?' -o "$1" = "--help" ]; then
-    echo "$CMDNAME cleans up shared memory and semaphores from aborted PostgreSQL backends."
+    echo "$CMDNAME cleans up shared memory and semaphores from aborted PostgreSQL"
+    echo "backends."
     echo
     echo "Usage:"
     echo "  $CMDNAME"

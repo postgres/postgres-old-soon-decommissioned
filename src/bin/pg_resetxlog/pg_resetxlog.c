@@ -692,12 +692,14 @@ static void
 usage(void)
 {
 	printf(_("%s resets the PostgreSQL transaction log.\n\n"), progname);
-	printf(_("Usage:\n  %s [OPTIONS] DATADIR\n\n"), progname);
+	printf(_("Usage:\n  %s [OPTION]... DATADIR\n\n"), progname);
 	printf(_("Options:\n"));
-	printf(_("  -f                force update to be done\n"));
-	printf(_("  -l FILEID,SEG     force minimum WAL starting location for new transaction log\n"));
-	printf(_("  -n                no update, just show extracted control values (for testing)\n"));
-	printf(_("  -o OID            set next OID\n"));
-	printf(_("  -x XID            set next transaction ID\n"));
+	printf(_("  -f              force update to be done\n"));
+	printf(_("  -l FILEID,SEG   force minimum WAL starting location for new transaction log\n"));
+	printf(_("  -n              no update, just show extracted control values (for testing)\n"));
+	printf(_("  -o OID          set next OID\n"));
+	printf(_("  -x XID          set next transaction ID\n"));
+	printf(_("  --help          show this help, then exit\n"));
+	printf(_("  --version       output version information, then exit\n"));
 	printf(_("\nReport bugs to <pgsql-bugs@postgresql.org>.\n"));
 }

@@ -23,9 +23,10 @@ val_version='@version@'
 help="\
 $me provides information about the installed version of PostgreSQL.
 
-Usage: $me --bindir | --includedir | --includedir-server | --libdir | --pkglibdir | --configure | --version
+Usage:
+  $me OPTION...
 
-Operation modes:
+Options:
   --bindir              show location of user executables
   --includedir          show location of C header files of the client
                         interfaces
@@ -34,7 +35,8 @@ Operation modes:
   --pkglibdir           show location of dynamically loadable modules
   --configure           show options given to 'configure' script when
                         PostgreSQL was built
-  --version             show the PostgreSQL version and exit
+  --version             show the PostgreSQL version, then exit
+  --help                show this help, then exit
 
 Report bugs to <pgsql-bugs@postgresql.org>."
 

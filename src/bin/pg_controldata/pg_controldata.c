@@ -25,7 +25,7 @@
 static void
 usage(const char *progname)
 {
-	printf(_("%s displays PostgreSQL database cluster control information.\n"), progname);
+	printf(_("%s displays PostgreSQL database cluster control information.\n\n"), progname);
 	printf(_("Usage:\n  %s [DATADIR]\n\n"), progname);
 	printf(_("If not data directory is specified, the environment variable PGDATA\nis used.\n\n"));
 	printf(_("Report bugs to <pgsql-bugs@postgresql.org>.\n"));
