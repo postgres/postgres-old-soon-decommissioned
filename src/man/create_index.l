@@ -6,11 +6,11 @@
 create index \(em construct a secondary index
 .SH SYNOPSIS
 .nf
-\fBcreate\fR \fBindex\fR index-name
+\fBcreate\fR [\fBunique\fR] \fBindex\fR index-name
 	\fBon\fR classname [\fBusing\fR am-name]
 	\fB(\fR attname [type_class\fB] )\fR
 
-\fBcreate\fR \fBindex\fR index-name
+\fBcreate\fR [\fBunique\fR] \fBindex\fR index-name
 	\fBon\fR classname [\fBusing\fR am-name]
 	\fB(\fR funcname \fB(\fR attname\-1 { , attname\-i } \fB)\fR type_class \fB)\fR
 .fi
