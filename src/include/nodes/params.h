@@ -56,7 +56,8 @@
  *
  *		kind   : the kind of parameter (PARAM_NAMED or PARAM_NUM)
  *		name   : the parameter name (valid if kind == PARAM_NAMED)
- *		id	   : the parameter id (valid if kind == PARAM_NUM)
+ *		id     : the parameter id (valid if kind == PARAM_NUM)
+ *		ptype  : the type of the parameter value
  *		isnull : true if the value is null (if so 'value' is undefined)
  *		value  : the value that has to be substituted in the place
  *				 of the parameter.
@@ -72,6 +73,7 @@ typedef struct ParamListInfoData
 	int			kind;
 	char	   *name;
 	AttrNumber	id;
+	Oid			ptype;
 	bool		isnull;
 	Datum		value;
 } ParamListInfoData;
@@ -102,5 +104,12 @@ typedef struct ParamExecData
 	Datum		value;
 	bool		isnull;
 } ParamExecData;
+
+
+/* Functions found in src/backend/nodes/params.c */
+extern ParamListInfo copyParamList(ParamListInfo from);
+extern ParamListInfo lookupParam(ParamListInfo paramList, int thisParamKind,
+								 const char *thisParamName, AttrNumber thisParamId,
+								 bool noError);
 
 #endif   /* PARAMS_H */

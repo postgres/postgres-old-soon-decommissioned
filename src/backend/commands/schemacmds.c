@@ -168,7 +168,7 @@ CreateSchemaCommand(CreateSchemaStmt *stmt)
 			/* schemas should contain only utility stmts */
 			Assert(querytree->commandType == CMD_UTILITY);
 			/* do this step */
-			ProcessUtility(querytree->utilityStmt, None_Receiver, NULL);
+			ProcessUtility(querytree->utilityStmt, NULL, None_Receiver, NULL);
 			/* make sure later steps can see the object created here */
 			CommandCounterIncrement();
 		}

@@ -1488,6 +1488,7 @@ exec_bind_message(StringInfo input_message)
 
 			params[i].kind = PARAM_NUM;
 			params[i].id = i + 1;
+			params[i].ptype = ptype;
 			params[i].isnull = isNull;
 
 			i++;

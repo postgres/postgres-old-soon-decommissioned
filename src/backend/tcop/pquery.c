@@ -833,14 +833,14 @@ PortalRunUtility(Portal portal, Query *query,
 	if (query->canSetTag)
 	{
 		/* utility statement can override default tag string */
-		ProcessUtility(utilityStmt, dest, completionTag);
+		ProcessUtility(utilityStmt, portal->portalParams, dest, completionTag);
 		if (completionTag && completionTag[0] == '\0' && portal->commandTag)
 			strcpy(completionTag, portal->commandTag);	/* use the default */
 	}
 	else
 	{
 		/* utility added by rewrite cannot set tag */
-		ProcessUtility(utilityStmt, dest, NULL);
+		ProcessUtility(utilityStmt, portal->portalParams, dest, NULL);
 	}
 
 	/* Some utility statements may change context on us */
