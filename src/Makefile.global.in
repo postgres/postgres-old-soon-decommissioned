@@ -200,6 +200,10 @@ JADE	= @JADE@
 NSGMLS	= @NSGMLS@
 SGMLSPL	= @SGMLSPL@
 
+# Feature settings
+
+DEF_PGPORT = @default_port@
+
 
 ##########################################################################
 #
