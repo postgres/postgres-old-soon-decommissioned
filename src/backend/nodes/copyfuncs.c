@@ -551,6 +551,10 @@ _copySubPlan(SubPlan *from)
 	newnode->parParam = listCopy(from->parParam);
 	Node_Copy(from, newnode, sublink);
 
+	/* do not copy execution state */
+	newnode->shutdown = false;
+	newnode->curTuple = NULL;
+
 	return newnode;
 }
 

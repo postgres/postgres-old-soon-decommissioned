@@ -406,7 +406,11 @@ _equalIndexScan(IndexScan *a, IndexScan *b)
 static bool
 _equalSubPlan(SubPlan *a, SubPlan *b)
 {
+	/* should compare plans, but have to settle for comparing plan IDs */
 	if (a->plan_id != b->plan_id)
+		return false;
+
+	if (!equal(a->rtable, b->rtable))
 		return false;
 
 	if (!equal(a->sublink, b->sublink))

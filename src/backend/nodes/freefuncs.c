@@ -441,6 +441,9 @@ _freeSubPlan(SubPlan *node)
 	freeList(node->parParam);
 	freeObject(node->sublink);
 
+	if (node->curTuple)
+		pfree(node->curTuple);
+
 	pfree(node);
 }
 
