@@ -1134,8 +1134,8 @@ main(int argc, char** argv)
   settings.opt.pager = 1;
   if (!isatty(0) || !isatty(1))
   	settings.quiet = settings.notty = 1;
-  else
 #ifndef NOREADLINE
+  else
 	settings.useReadline = 1;
 #endif
 
