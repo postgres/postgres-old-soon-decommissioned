@@ -135,27 +135,6 @@ PostgreSQL Reference Manual
 
  </reference>
 
-<!--
-Disable this chapter until we have more functions documented.
-- thomas 1998-10-27
-
- <reference id="sql-functions">
-  <title>SQL Functions</title>
-
-  <partintro>
-   <para>
-    This part provides reference information for the
-    <acronym>SQL</acronym> functions supported by
-    <productname>PostgreSQL</productname>.
-   </para>
-
-   &currentDate;
-   &currentTime;
-   &currentTimestamp;
-   &currentUser;
- </reference>
--->
-
  <reference id="reference-client">
   <title>PostgreSQL Client Applications</title>
 
@@ -182,9 +161,9 @@ Disable this chapter until we have more functions documented.
    &pgDump;
    &pgDumpall;
    &pgRestore;
-   &psqlRef;
    &pgTclSh;
    &pgTkSh;
+   &psqlRef;
    &vacuumdb;
 
  </reference>
@@ -205,8 +184,8 @@ Disable this chapter until we have more functions documented.
    &initdb;
    &initlocation;
    &ipcclean;
-   &pgCtl;
    &pgControldata;
+   &pgCtl;
    &pgResetxlog;
    &postgres;
    &postmaster;

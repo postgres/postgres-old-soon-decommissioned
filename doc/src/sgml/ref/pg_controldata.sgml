@@ -12,7 +12,7 @@ PostgreSQL documentation
 
  <refnamediv>
   <refname>pg_controldata</refname>
-  <refpurpose>display server-wide control information</refpurpose>
+  <refpurpose>display control information of a <productname>PostgreSQL</productname> database cluster</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>
@@ -25,16 +25,16 @@ PostgreSQL documentation
  <refsect1 id="R1-APP-PGCONTROLDATA-1">
   <title>Description</title>
   <para>
-   <command>pg_controldata</command> returns information initialized during
-   <application>initdb</>, such as the catalog version and server locale.
+   <command>pg_controldata</command> prints information initialized during
+   <command>initdb</>, such as the catalog version and server locale.
    It also shows information about write-ahead logging and checkpoint 
-   processing.  This information is server-wide, and not specific to any one
+   processing.  This information is cluster-wide, and not specific to any one
    database.
   </para>
 
   <para>
-   This utility may only be run by the user who installed the server because
-   it requires read access to the <literal>datadir</>.
+   This utility may only be run by the user who initialized the cluster because
+   it requires read access to the data directory.
    You can specify the data directory on the command line, or use 
    the environment variable <envar>PGDATA</>.
   </para>

@@ -20,7 +20,7 @@ PostgreSQL documentation
  <refsynopsisdiv>
   <cmdsynopsis>
    <command>pgtclsh</command>
-   <arg><replaceable>filename</replaceable> <arg rep="repeat"><replaceable>arguments</replaceable></arg></arg>
+   <arg><replaceable>filename</replaceable> <arg rep="repeat"><replaceable>argument</replaceable></arg></arg>
   </cmdsynopsis>
  </refsynopsisdiv>
 
