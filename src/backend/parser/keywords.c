@@ -47,6 +47,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"begin", BEGIN_TRANS},
 	{"between", BETWEEN},
 	{"binary", BINARY},
+	{"bit", BIT},
 	{"both", BOTH},
 	{"by", BY},
 	{"cache", CACHE},
