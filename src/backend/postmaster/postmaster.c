@@ -378,6 +378,7 @@ PostmasterMain(int argc, char *argv[])
     pqsignal(SIGHUP, pmdie);
     pqsignal(SIGTERM, pmdie);
     pqsignal(SIGCONT, dumpstatus);
+    pqsignal(SIGPIPE, SIG_IGN);
 
     status = ServerLoop();
     
