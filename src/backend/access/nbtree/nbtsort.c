@@ -346,10 +346,9 @@ _bt_buildadd(Relation index, BTPageState *state, BTItem bti)
 	 * oversize items being inserted into an already-existing index. But
 	 * during creation of an index, we don't go through there.
 	 */
-	if (btisz > (PageGetPageSize(npage) - sizeof(PageHeaderData) - MAXALIGN(sizeof(BTPageOpaqueData))) / 3 - sizeof(ItemIdData))
+	if (btisz > BTMaxItemSize(npage))
 		elog(ERROR, "btree: index item size %lu exceeds maximum %ld",
-			 (unsigned long) btisz,
-			 (PageGetPageSize(npage) - sizeof(PageHeaderData) - MAXALIGN(sizeof(BTPageOpaqueData))) / 3 - sizeof(ItemIdData));
+			 (unsigned long) btisz, BTMaxItemSize(npage));
 
 	if (pgspc < btisz || pgspc < state->btps_full)
 	{

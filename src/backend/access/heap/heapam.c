@@ -2067,7 +2067,7 @@ heap_xlog_clean(bool redo, XLogRecPtr lsn, XLogRecord *record)
 
 		while ((char *) unused < unend)
 		{
-			lp = ((PageHeader) page)->pd_linp + *unused;
+			lp = PageGetItemId(page, *unused + 1);
 			lp->lp_flags &= ~LP_USED;
 			unused++;
 		}

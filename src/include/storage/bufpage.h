@@ -158,12 +158,16 @@ typedef enum
 )
 
 /*
+ * line pointer does not count as part of header
+ */
+#define SizeOfPageHeaderData (offsetof(PageHeaderData, pd_linp[0]))
+
+/*
  * PageIsEmpty
  *		returns true iff no itemid has been allocated on the page
  */
 #define PageIsEmpty(page) \
-	(((PageHeader) (page))->pd_lower <= \
-	 (sizeof(PageHeaderData) - sizeof(ItemIdData)))
+	(((PageHeader) (page))->pd_lower <= SizeOfPageHeaderData)
 
 /*
  * PageIsNew
@@ -178,6 +182,13 @@ typedef enum
  */
 #define PageGetItemId(page, offsetNumber) \
 	((ItemId) (&((PageHeader) (page))->pd_linp[(offsetNumber) - 1]))
+
+/*
+ * PageGetContents
+ *		To be used in case the page does not contain item pointers.
+ */
+#define PageGetContents(page) \
+	((char *) (&((PageHeader) (page))->pd_linp[0]))
 
 /* ----------------
  *		macros to access opaque space
@@ -290,8 +301,7 @@ typedef enum
  *		That way we get -1 or so, not a huge positive number...
  */
 #define PageGetMaxOffsetNumber(page) \
-	(((int) (((PageHeader) (page))->pd_lower - \
-			 (sizeof(PageHeaderData) - sizeof(ItemIdData)))) \
+	(((int) (((PageHeader) (page))->pd_lower - SizeOfPageHeaderData)) \
 	 / ((int) sizeof(ItemIdData)))
 
 #define PageGetLSN(page) \
