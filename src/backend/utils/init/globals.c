@@ -63,7 +63,7 @@ bool		TransactionInitWasProcessed = false;
 
 bool		IsUnderPostmaster = false;
 
-short		DebugLvl = 0;
+int			DebugLvl = 0;
 
 int			DateStyle = USE_POSTGRES_DATES;
 bool		EuroDates = false;

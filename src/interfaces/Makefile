@@ -50,7 +50,7 @@ perl5/Makefile: perl5/Makefile.PL
 
 install-perl5: perl5/Makefile
 	$(MAKE) -C perl5 clean
-	cd perl5 && POSTGRES_HOME="$(POSTGRESDIR)" perl Makefile.PL
+	cd perl5 && POSTGRES_HOME="$(POSTGRESDIR)" $(PERL) Makefile.PL
 	$(MAKE) -C perl5 all
 	@if [ -w `sed -n -e 's/^ *INSTALLSITELIB *= *//p' perl5/Makefile` ]; then \
 		$(MAKE) $(MFLAGS) -C perl5 install; \

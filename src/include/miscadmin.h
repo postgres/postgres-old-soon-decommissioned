@@ -59,7 +59,7 @@ extern bool TransactionInitWasProcessed;
 
 extern bool IsUnderPostmaster;
 
-extern short DebugLvl;
+extern int DebugLvl;
 
 /* Date/Time Configuration
  *
