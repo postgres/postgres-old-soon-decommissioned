@@ -543,7 +543,7 @@ ArrayCount(char *str, int *dim, char typdelim)
 							itemdone = true;
 							nelems[nest_level - 1]++;
 						}
-						else if (!isspace(*ptr))
+						else if (!isspace((unsigned char) *ptr))
 						{
 							/*
 							 * Other non-space characters must be after a
@@ -572,7 +572,7 @@ ArrayCount(char *str, int *dim, char typdelim)
 	/* only whitespace is allowed after the closing brace */
 	while (*ptr)
 	{
-		if (!isspace(*ptr++))
+		if (!isspace((unsigned char) *ptr++))
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
 					 errmsg("malformed array literal: \"%s\"", str)));
