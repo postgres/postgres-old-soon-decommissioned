@@ -51,6 +51,7 @@
 extern bool Log_connections;
 extern int	PreAuthDelay;
 extern int	AuthenticationTimeout;
+extern int	StatementTimeout;
 extern int	CheckPointTimeout;
 extern int	CommitDelay;
 extern int	CommitSiblings;
@@ -573,6 +574,11 @@ static struct config_int
 	{
 		{ "max_expr_depth", PGC_USERSET }, &max_expr_depth,
 		DEFAULT_MAX_EXPR_DEPTH, 10, INT_MAX, NULL, NULL
+	},
+
+	{
+		{ "statement_timeout", PGC_USERSET }, &StatementTimeout,
+		0, 0, INT_MAX, NULL, NULL
 	},
 
 	{

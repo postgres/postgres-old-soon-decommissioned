@@ -105,13 +105,14 @@ extern int ProcSleep(LOCKMETHODTABLE *lockMethodTable, LOCKMODE lockmode,
 extern PGPROC *ProcWakeup(PGPROC *proc, int errType);
 extern void ProcLockWakeup(LOCKMETHODTABLE *lockMethodTable, LOCK *lock);
 extern bool LockWaitCancel(void);
-extern void HandleDeadLock(SIGNAL_ARGS);
+extern void CheckDeadLock(void);
 
 extern void ProcWaitForSignal(void);
 extern void ProcCancelWaitForSignal(void);
 extern void ProcSendSignal(BackendId procId);
 
-extern bool enable_sigalrm_interrupt(int delayms);
-extern bool disable_sigalrm_interrupt(void);
+extern bool enable_sig_alarm(int delayms, bool is_statement_timeout);
+extern bool disable_sig_alarm(bool is_statement_timeout);
+extern void handle_sig_alarm(SIGNAL_ARGS);
 
 #endif   /* PROC_H */
