@@ -633,7 +633,7 @@ fmgr_oldstyle(PG_FUNCTION_ARGS)
 struct fmgr_security_definer_cache
 {
 	FmgrInfo	flinfo;
-	Oid			userid;
+	AclId		userid;
 };
 
 /*
@@ -650,7 +650,7 @@ fmgr_security_definer(PG_FUNCTION_ARGS)
 	Datum		result;
 	FmgrInfo   *save_flinfo;
 	struct fmgr_security_definer_cache *fcache;
-	Oid			save_userid;
+	AclId		save_userid;
 	HeapTuple	tuple;
 
 	if (!fcinfo->flinfo->fn_extra)

@@ -171,7 +171,7 @@ RI_FKey_check(PG_FUNCTION_ARGS)
 	bool		isnull;
 	int			i;
 	int			match_type;
-	Oid			save_uid;
+	AclId		save_uid;
 
 	save_uid = GetUserId();
 
@@ -546,7 +546,7 @@ ri_Check_Pk_Match(Relation pk_rel, HeapTuple old_row, Oid tgoid, int match_type,
 	Datum		check_values[RI_MAX_NUMKEYS];
 	char		check_nulls[RI_MAX_NUMKEYS + 1];
 	int			i;
-	Oid			save_uid;
+	AclId		save_uid;
 	bool		result;
 
 	save_uid = GetUserId();
@@ -712,7 +712,7 @@ RI_FKey_noaction_del(PG_FUNCTION_ARGS)
 	bool		isnull;
 	int			i;
 	int			match_type;
-	Oid			save_uid;
+	AclId		save_uid;
 
 	save_uid = GetUserId();
 
@@ -942,7 +942,7 @@ RI_FKey_noaction_upd(PG_FUNCTION_ARGS)
 	bool		isnull;
 	int			i;
 	int			match_type;
-	Oid			save_uid;
+	AclId		save_uid;
 
 	save_uid = GetUserId();
 
@@ -1179,8 +1179,8 @@ RI_FKey_cascade_del(PG_FUNCTION_ARGS)
 	char		del_nulls[RI_MAX_NUMKEYS + 1];
 	bool		isnull;
 	int			i;
-	Oid			save_uid;
-	Oid			fk_owner;
+	AclId		save_uid;
+	AclId		fk_owner;
 
 	ReferentialIntegritySnapshotOverride = true;
 
@@ -1387,8 +1387,8 @@ RI_FKey_cascade_upd(PG_FUNCTION_ARGS)
 	bool		isnull;
 	int			i;
 	int			j;
-	Oid			save_uid;
-	Oid			fk_owner;
+	AclId		save_uid;
+	AclId		fk_owner;
 
 	ReferentialIntegritySnapshotOverride = true;
 
@@ -1631,8 +1631,8 @@ RI_FKey_restrict_del(PG_FUNCTION_ARGS)
 	char		del_nulls[RI_MAX_NUMKEYS + 1];
 	bool		isnull;
 	int			i;
-	Oid			save_uid;
-	Oid			fk_owner;
+	AclId		save_uid;
+	AclId		fk_owner;
 
 	ReferentialIntegritySnapshotOverride = true;
 
@@ -1854,8 +1854,8 @@ RI_FKey_restrict_upd(PG_FUNCTION_ARGS)
 	char		upd_nulls[RI_MAX_NUMKEYS + 1];
 	bool		isnull;
 	int			i;
-	Oid			save_uid;
-	Oid			fk_owner;
+	AclId		save_uid;
+	AclId		fk_owner;
 
 	ReferentialIntegritySnapshotOverride = true;
 
@@ -2082,8 +2082,8 @@ RI_FKey_setnull_del(PG_FUNCTION_ARGS)
 	char		upd_nulls[RI_MAX_NUMKEYS + 1];
 	bool		isnull;
 	int			i;
-	Oid			save_uid;
-	Oid			fk_owner;
+	AclId		save_uid;
+	AclId		fk_owner;
 
 	ReferentialIntegritySnapshotOverride = true;
 
@@ -2301,8 +2301,8 @@ RI_FKey_setnull_upd(PG_FUNCTION_ARGS)
 	int			i;
 	int			match_type;
 	bool		use_cached_query;
-	Oid			save_uid;
-	Oid			fk_owner;
+	AclId		save_uid;
+	AclId		fk_owner;
 
 	ReferentialIntegritySnapshotOverride = true;
 
@@ -2566,8 +2566,8 @@ RI_FKey_setdefault_del(PG_FUNCTION_ARGS)
 	char		upd_nulls[RI_MAX_NUMKEYS + 1];
 	bool		isnull;
 	int			i;
-	Oid			save_uid;
-	Oid			fk_owner;
+	AclId		save_uid;
+	AclId			fk_owner;
 
 	ReferentialIntegritySnapshotOverride = true;
 
@@ -2828,8 +2828,8 @@ RI_FKey_setdefault_upd(PG_FUNCTION_ARGS)
 	bool		isnull;
 	int			i;
 	int			match_type;
-	Oid			save_uid;
-	Oid			fk_owner;
+	AclId		save_uid;
+	AclId		fk_owner;
 
 	ReferentialIntegritySnapshotOverride = true;
 

@@ -32,7 +32,7 @@
 #include "utils/syscache.h"
 
 
-static void setRuleCheckAsUser(Query *qry, Oid userid);
+static void setRuleCheckAsUser(Query *qry, AclId userid);
 static bool setRuleCheckAsUser_walker(Node *node, Oid *context);
 
 
@@ -445,7 +445,7 @@ DefineQueryRewrite(RuleStmt *stmt)
  * them always.
  */
 static void
-setRuleCheckAsUser(Query *qry, Oid userid)
+setRuleCheckAsUser(Query *qry, AclId userid)
 {
 	List	   *l;
 

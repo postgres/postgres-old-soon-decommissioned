@@ -462,6 +462,8 @@ typedef NameData *Name;
 
 #define OidIsValid(objectId)  ((bool) ((objectId) != InvalidOid))
 
+#define AclIdIsValid(aclId)  ((bool) ((aclId) != 0))
+
 #define RegProcedureIsValid(p)	OidIsValid(p)
 
 

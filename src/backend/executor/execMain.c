@@ -346,7 +346,7 @@ static void
 ExecCheckRTEPerms(RangeTblEntry *rte, CmdType operation)
 {
 	Oid			relOid;
-	Oid			userid;
+	AclId		userid;
 	AclResult	aclcheck_result;
 
 	/*

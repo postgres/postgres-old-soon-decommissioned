@@ -11,6 +11,8 @@
 #ifndef PGSTAT_H
 #define PGSTAT_H
 
+#include "miscadmin.h"
+
 /* ----------
  * Paths for the statistics files. The %s is replaced with the
  * installations $PGDATA.
@@ -170,7 +172,7 @@ typedef struct PgStat_MsgHdr
 	int			m_backendid;
 	int			m_procpid;
 	Oid			m_databaseid;
-	Oid			m_userid;
+	AclId		m_userid;
 } PgStat_MsgHdr;
 
 /* ----------

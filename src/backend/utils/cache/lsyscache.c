@@ -14,6 +14,7 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"
+#include "miscadmin.h"
 
 #include "access/tupmacs.h"
 #include "catalog/pg_amop.h"
@@ -1529,7 +1530,7 @@ get_namespace_name(Oid nspid)
  * someday.  It'd be reasonable to return zero on failure if we were
  * using Oid ...
  */
-int32
+AclId
 get_usesysid(const char *username)
 {
 	int32		result;

@@ -63,7 +63,7 @@ createdb(const CreatedbStmt *stmt)
 	char		src_loc[MAXPGPATH];
 	char		buf[2 * MAXPGPATH + 100];
 	Oid			src_dboid;
-	int4		src_owner;
+	AclId		src_owner;
 	int			src_encoding;
 	bool		src_istemplate;
 	Oid			src_lastsysoid;
@@ -76,7 +76,7 @@ createdb(const CreatedbStmt *stmt)
 	Datum		new_record[Natts_pg_database];
 	char		new_record_nulls[Natts_pg_database];
 	Oid			dboid;
-	int32		datdba;
+	AclId		datdba;
 	List	   *option;
 	DefElem    *downer = NULL;
 	DefElem    *dpath = NULL;
@@ -157,7 +157,7 @@ createdb(const CreatedbStmt *stmt)
 	else
 		datdba = GetUserId();
 
-	if (datdba == (int32) GetUserId())
+	if (datdba == GetUserId())
 	{
 		/* creating database for self: can be superuser or createdb */
 		if (!superuser() && !have_createdb_privilege())
@@ -670,7 +670,7 @@ have_createdb_privilege(void)
 	bool		retval;
 
 	utup = SearchSysCache(SHADOWSYSID,
-						  ObjectIdGetDatum(GetUserId()),
+						  Int32GetDatum(GetUserId()),
 						  0, 0, 0);
 
 	if (!HeapTupleIsValid(utup))

@@ -984,7 +984,7 @@ DropUser(DropUserStmt *stmt)
 		TupleDesc	pg_dsc;
 		ScanKeyData scankey;
 		HeapScanDesc scan;
-		int32		usesysid;
+		AclId		usesysid;
 
 		tuple = SearchSysCache(SHADOWNAME,
 							   PointerGetDatum(user),

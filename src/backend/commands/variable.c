@@ -526,7 +526,7 @@ show_server_encoding(void)
 const char *
 assign_session_authorization(const char *value, bool doit, bool interactive)
 {
-	Oid			usesysid;
+	AclId		usesysid;
 	char	   *endptr;
 	char	   *result;
 

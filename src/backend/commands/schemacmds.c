@@ -41,8 +41,8 @@ CreateSchemaCommand(CreateSchemaStmt *stmt)
 	List	   *parsetree_list;
 	List	   *parsetree_item;
 	const char *owner_name;
-	Oid			owner_userid;
-	Oid			saved_userid;
+	AclId		owner_userid;
+	AclId		saved_userid;
 	AclResult	aclresult;
 
 	saved_userid = GetUserId();
