@@ -352,7 +352,10 @@ plpython_call_handler(PG_FUNCTION_ARGS)
 		else
 			PLy_restart_in_progress += 1;
 		if (proc)
+		{
+			/* note: Py_DECREF needs braces around it, as of 2003/08 */
 			Py_DECREF(proc->me);
+		}
 		RERAISE_EXC();
 	}
 
