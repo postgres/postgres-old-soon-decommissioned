@@ -43,8 +43,8 @@
 
 #if DEBUG_LEVEL
 #define CALL_LEVEL_INC() do { PLy_call_level += 1; \
-	elog(DEBUG4, "Level: %d", PLy_call_level); } while (0)
-#define CALL_LEVEL_DEC() do { elog(DEBUG4, "Level: %d", PLy_call_level); \
+	elog(DEBUG4, "level: %d", PLy_call_level); } while (0)
+#define CALL_LEVEL_DEC() do { elog(DEBUG4, "level: %d", PLy_call_level); \
 	PLy_call_level -= 1; } while (0)
 #else
 #define CALL_LEVEL_INC() do { PLy_call_level += 1; } while (0)
