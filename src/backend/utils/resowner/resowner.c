@@ -87,6 +87,7 @@ static void ResourceOwnerReleaseInternal(ResourceOwner owner,
 							 ResourceReleasePhase phase,
 							 bool isCommit,
 							 bool isTopLevel);
+static void PrintRelCacheLeakWarning(Relation rel);
 
 
 /*****************************************************************************
@@ -231,7 +232,11 @@ ResourceOwnerReleaseInternal(ResourceOwner owner,
 			 * iterate till there are none.
 			 */
 			while (owner->nrelrefs > 0)
+			{
+				if (isCommit)
+					PrintRelCacheLeakWarning(owner->relrefs[owner->nrelrefs - 1]);
 				RelationClose(owner->relrefs[owner->nrelrefs - 1]);
+			}
 		}
 	}
 	else if (phase == RESOURCE_RELEASE_LOCKS)
@@ -284,9 +289,17 @@ ResourceOwnerReleaseInternal(ResourceOwner owner,
 			 * to iterate till there are none.	Ditto for catcache lists.
 			 */
 			while (owner->ncatrefs > 0)
+			{
+				if (isCommit)
+					PrintCatCacheLeakWarning(owner->catrefs[owner->ncatrefs - 1]);
 				ReleaseCatCache(owner->catrefs[owner->ncatrefs - 1]);
+			}
 			while (owner->ncatlistrefs > 0)
+			{
+				if (isCommit)
+					PrintCatCacheListLeakWarning(owner->catlistrefs[owner->ncatlistrefs - 1]);
 				ReleaseCatCacheList(owner->catlistrefs[owner->ncatlistrefs - 1]);
+			}
 		}
 		/* Clean up index scans too */
 		ReleaseResources_gist();
@@ -745,4 +758,14 @@ ResourceOwnerForgetRelationRef(ResourceOwner owner, Relation rel)
 	}
 	elog(ERROR, "relcache reference %s is not owned by resource owner %s",
 		 RelationGetRelationName(rel), owner->name);
+}
+
+/*
+ * Debugging subroutine
+ */
+static void
+PrintRelCacheLeakWarning(Relation rel)
+{
+	elog(WARNING, "relcache reference leak: relation \"%s\" not closed",
+		 RelationGetRelationName(rel));
 }
