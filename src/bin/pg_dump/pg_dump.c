@@ -4418,36 +4418,6 @@ dumpTables(Archive *fout, TableInfo *tblinfo, int numTables,
 									  tblinfo[i].check_expr[k]);
 				}
 
-				/* Primary Key */
-				if (tblinfo[i].pkIndexOid != NULL)
-				{
-					PQExpBuffer consDef;
-
-					/* Find the corresponding index */
-					for (k = 0; k < numIndexes; k++)
-					{
-						if (strcmp(indinfo[k].indexreloid,
-								   tblinfo[i].pkIndexOid) == 0)
-							break;
-					}
-
-					if (k >= numIndexes)
-					{
-						write_msg(NULL, "dumpTables(): failed sanity check, could not find index (%s) for primary key constraint\n",
-								  tblinfo[i].pkIndexOid);
-						exit_nicely();
-					}
-
-					consDef = getPKconstraint(&tblinfo[i], &indinfo[k]);
-
-					if ((actual_atts + tblinfo[i].ncheck) > 0)
-						appendPQExpBuffer(q, ",\n\t");
-
-					appendPQExpBuffer(q, "%s", consDef->data);
-
-					destroyPQExpBuffer(consDef);
-				}
-
 				/*
 				 * Primary Key: In versions of PostgreSQL prior to 7.2, we
 				 * needed to include the primary key in the table definition.
