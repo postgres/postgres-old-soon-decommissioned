@@ -22,8 +22,9 @@
 #include "catalog/catalog.h"
 #include "miscadmin.h"
 #include "storage/smgr.h"
-#include "utils/inval.h"		/* ImmediateSharedRelationCacheInvalidate()
-								 * */
+#include "utils/inval.h"
+#include "utils/memutils.h"
+
 
 #undef DIAGNOSTIC
 

@@ -19,9 +19,12 @@
 
 #include <sys/types.h>
 #include <sys/file.h>
+
 #include "postgres.h"
 
 #include "executor/executor.h"
+#include "utils/memutils.h"
+
 
 /* ----------------------------------------------------------------
  *		ExecScan

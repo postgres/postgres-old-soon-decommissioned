@@ -19,7 +19,9 @@
 #include "executor/execdefs.h"
 #include "executor/executor.h"
 #include "tcop/pquery.h"
+#include "utils/memutils.h"
 #include "utils/ps_status.h"
+
 
 static char *CreateOperationTag(int operationType);
 

@@ -651,14 +651,6 @@ int2div(PG_FUNCTION_ARGS)
 }
 
 Datum
-int2inc(PG_FUNCTION_ARGS)
-{
-	int16		arg = PG_GETARG_INT16(0);
-
-	PG_RETURN_INT16(arg + 1);
-}
-
-Datum
 int24pl(PG_FUNCTION_ARGS)
 {
 	int16		arg1 = PG_GETARG_INT16(0);

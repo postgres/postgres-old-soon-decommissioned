@@ -729,12 +729,10 @@ _outAggref(StringInfo str, Aggref *node)
 	appendStringInfo(str, " AGGREG :aggname ");
 	_outToken(str, node->aggname);
 	appendStringInfo(str, " :basetype %u :aggtype %u :target ",
-					 node->basetype,
-					 node->aggtype);
+					 node->basetype, node->aggtype);
 	_outNode(str, node->target);
 
-	appendStringInfo(str, " :usenulls %s :aggstar %s :aggdistinct %s ",
-					 node->usenulls ? "true" : "false",
+	appendStringInfo(str, " :aggstar %s :aggdistinct %s ",
 					 node->aggstar ? "true" : "false",
 					 node->aggdistinct ? "true" : "false");
 	/* aggno is not dumped */

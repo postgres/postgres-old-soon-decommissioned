@@ -1117,10 +1117,6 @@ _readAggref()
 	token = lsptok(NULL, &length);		/* eat :target */
 	local_node->target = nodeRead(true);		/* now read it */
 
-	token = lsptok(NULL, &length);		/* eat :usenulls */
-	token = lsptok(NULL, &length);		/* get usenulls */
-	local_node->usenulls = (token[0] == 't') ? true : false;
-
 	token = lsptok(NULL, &length);		/* eat :aggstar */
 	token = lsptok(NULL, &length);		/* get aggstar */
 	local_node->aggstar = (token[0] == 't') ? true : false;

@@ -33,6 +33,7 @@
  *
  *-------------------------------------------------------------------------
  */
+
 #include "postgres.h"
 
 #include <unistd.h>
@@ -80,6 +81,7 @@
 #include "tcop/tcopprot.h"
 #include "utils/exc.h"
 #include "utils/guc.h"
+#include "utils/memutils.h"
 
 
 #define INVALID_SOCK	(-1)

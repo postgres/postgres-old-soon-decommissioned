@@ -257,8 +257,6 @@ _equalAggref(Aggref *a, Aggref *b)
 		return false;
 	if (!equal(a->target, b->target))
 		return false;
-	if (a->usenulls != b->usenulls)
-		return false;
 	if (a->aggstar != b->aggstar)
 		return false;
 	if (a->aggdistinct != b->aggdistinct)

@@ -43,6 +43,8 @@
 
 #include "executor/executor.h"
 #include "executor/nodeResult.h"
+#include "utils/memutils.h"
+
 
 /* ----------------------------------------------------------------
  *		ExecResult(node)

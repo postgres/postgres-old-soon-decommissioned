@@ -30,6 +30,8 @@
 #include "miscadmin.h"
 #include "parser/parse_expr.h"
 #include "parser/parse_type.h"
+#include "utils/memutils.h"
+
 
 static int	hashFunc(Datum key, int len, bool byVal);
 

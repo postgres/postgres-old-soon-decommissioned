@@ -133,14 +133,11 @@ typedef struct _aggInfo
 {
 	char	   *oid;
 	char	   *aggname;
-	char	   *aggtransfn1;
-	char	   *aggtransfn2;
+	char	   *aggtransfn;
 	char	   *aggfinalfn;
-	char	   *aggtranstype1;
+	char	   *aggtranstype;
 	char	   *aggbasetype;
-	char	   *aggtranstype2;
-	char	   *agginitval1;
-	char	   *agginitval2;
+	char	   *agginitval;
 	char	   *usename;
 } AggInfo;
 

@@ -111,10 +111,10 @@ SELECT  a + '(1.0,1.0)'::complex AS aa,
 -----------------------------
 
 CREATE AGGREGATE complex_sum (
-   sfunc1 = complex_add,
+   sfunc = complex_add,
    basetype = complex,
-   stype1 = complex,
-   initcond1 = '(0,0)'
+   stype = complex,
+   initcond = '(0,0)'
 );
 
 SELECT complex_sum(a) FROM test_complex;

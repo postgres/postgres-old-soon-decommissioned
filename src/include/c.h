@@ -587,6 +587,25 @@ extern Datum Float8GetDatum(float8 X);
 
 #define Float64GetDatum(X) PointerGetDatum(X)
 
+/*
+ * Int64GetDatumFast
+ * Float4GetDatumFast
+ * Float8GetDatumFast
+ *
+ * These macros are intended to allow writing code that does not depend on
+ * whether int64, float4, float8 are pass-by-reference types, while not
+ * sacrificing performance when they are.  The argument must be a variable
+ * that will exist and have the same value for as long as the Datum is needed.
+ * In the pass-by-ref case, the address of the variable is taken to use as
+ * the Datum.  In the pass-by-val case, these will be the same as the non-Fast
+ * macros.
+ */
+
+#define Int64GetDatumFast(X)  PointerGetDatum(&(X))
+#define Float4GetDatumFast(X) PointerGetDatum(&(X))
+#define Float8GetDatumFast(X) PointerGetDatum(&(X))
+
+
 /* ----------------------------------------------------------------
  *				Section 5:	IsValid macros for system types
  * ----------------------------------------------------------------
