@@ -388,10 +388,6 @@ EXEC SQL COMMIT;
  <refsect1 id="R1-APP-ECPG-notes">
   <title>Notes</title>
   <para>
-   There is no <command>EXEC SQL PREPARE</command> statement.
-  </para>
-
-  <para>
    The complete structure definition MUST be listed
    inside the declare section.
   </para>
