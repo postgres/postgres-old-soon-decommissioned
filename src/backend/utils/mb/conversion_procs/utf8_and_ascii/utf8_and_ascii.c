@@ -41,11 +41,11 @@ ascii_to_utf8(PG_FUNCTION_ARGS)
 
 	Assert(PG_GETARG_INT32(0) == PG_SQL_ASCII);
 	Assert(PG_GETARG_INT32(1) == PG_UTF8);
-	Assert(len > 0);
+	Assert(len >= 0);
 
 	pg_ascii2mic(src, dest, len);
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }
 
 Datum
@@ -57,9 +57,9 @@ utf8_to_ascii(PG_FUNCTION_ARGS)
 
 	Assert(PG_GETARG_INT32(0) == PG_UTF8);
 	Assert(PG_GETARG_INT32(1) == PG_SQL_ASCII);
-	Assert(len > 0);
+	Assert(len >= 0);
 
 	pg_mic2ascii(src, dest, len);
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }

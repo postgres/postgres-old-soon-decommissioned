@@ -42,12 +42,12 @@ gbk_to_utf8(PG_FUNCTION_ARGS)
 
 	Assert(PG_GETARG_INT32(0) == PG_GBK);
 	Assert(PG_GETARG_INT32(1) == PG_UTF8);
-	Assert(len > 0);
+	Assert(len >= 0);
 
 	LocalToUtf(src, dest, LUmapGBK,
 			   sizeof(LUmapGBK) / sizeof(pg_local_to_utf), PG_GBK, len);
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }
 
 Datum
@@ -59,10 +59,10 @@ utf8_to_gbk(PG_FUNCTION_ARGS)
 
 	Assert(PG_GETARG_INT32(0) == PG_UTF8);
 	Assert(PG_GETARG_INT32(1) == PG_GBK);
-	Assert(len > 0);
+	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapGBK,
 			   sizeof(ULmapGBK) / sizeof(pg_utf_to_local), len);
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }

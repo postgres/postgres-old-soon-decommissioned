@@ -43,12 +43,12 @@ utf_to_win1250(PG_FUNCTION_ARGS)
 
 	Assert(PG_GETARG_INT32(0) == PG_UTF8);
 	Assert(PG_GETARG_INT32(1) == PG_WIN1250);
-	Assert(len > 0);
+	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapWIN1250,
 			   sizeof(ULmapWIN1250) / sizeof(pg_utf_to_local), len);
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }
 
 Datum
@@ -60,10 +60,10 @@ win1250_to_utf(PG_FUNCTION_ARGS)
 
 	Assert(PG_GETARG_INT32(0) == PG_WIN1250);
 	Assert(PG_GETARG_INT32(1) == PG_UTF8);
-	Assert(len > 0);
+	Assert(len >= 0);
 
 	LocalToUtf(src, dest, LUmapWIN1250,
 		sizeof(LUmapWIN1250) / sizeof(pg_local_to_utf), PG_WIN1250, len);
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }

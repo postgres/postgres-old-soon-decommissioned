@@ -42,12 +42,12 @@ euc_jp_to_utf8(PG_FUNCTION_ARGS)
 
 	Assert(PG_GETARG_INT32(0) == PG_EUC_JP);
 	Assert(PG_GETARG_INT32(1) == PG_UTF8);
-	Assert(len > 0);
+	Assert(len >= 0);
 
 	LocalToUtf(src, dest, LUmapEUC_JP,
 		  sizeof(LUmapEUC_JP) / sizeof(pg_local_to_utf), PG_EUC_JP, len);
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }
 
 Datum
@@ -59,10 +59,10 @@ utf8_to_euc_jp(PG_FUNCTION_ARGS)
 
 	Assert(PG_GETARG_INT32(0) == PG_UTF8);
 	Assert(PG_GETARG_INT32(1) == PG_EUC_JP);
-	Assert(len > 0);
+	Assert(len >= 0);
 
 	UtfToLocal(src, dest, ULmapEUC_JP,
 			   sizeof(ULmapEUC_JP) / sizeof(pg_utf_to_local), len);
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }

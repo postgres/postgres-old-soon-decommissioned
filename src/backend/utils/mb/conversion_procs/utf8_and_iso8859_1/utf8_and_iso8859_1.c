@@ -42,7 +42,7 @@ iso8859_1_to_utf8(PG_FUNCTION_ARGS)
 
 	Assert(PG_GETARG_INT32(0) == PG_LATIN1);
 	Assert(PG_GETARG_INT32(1) == PG_UTF8);
-	Assert(len > 0);
+	Assert(len >= 0);
 
 	while (len-- > 0 && (c = *src++))
 	{
@@ -56,7 +56,7 @@ iso8859_1_to_utf8(PG_FUNCTION_ARGS)
 	}
 	*dest = '\0';
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }
 
 Datum
@@ -71,9 +71,9 @@ utf8_to_iso8859_1(PG_FUNCTION_ARGS)
 
 	Assert(PG_GETARG_INT32(0) == PG_UTF8);
 	Assert(PG_GETARG_INT32(1) == PG_LATIN1);
-	Assert(len > 0);
+	Assert(len >= 0);
 
-	while (len > 0 && (c = *src++))
+	while (len >= 0 && (c = *src++))
 	{
 		if ((c & 0xe0) == 0xc0)
 		{
@@ -93,5 +93,5 @@ utf8_to_iso8859_1(PG_FUNCTION_ARGS)
 	}
 	*dest = '\0';
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }

@@ -44,11 +44,11 @@ euc_cn_to_mic(PG_FUNCTION_ARGS)
 
 	Assert(PG_GETARG_INT32(0) == PG_EUC_CN);
 	Assert(PG_GETARG_INT32(1) == PG_MULE_INTERNAL);
-	Assert(len > 0);
+	Assert(len >= 0);
 
 	euc_cn2mic(src, dest, len);
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }
 
 Datum
@@ -60,11 +60,11 @@ mic_to_euc_cn(PG_FUNCTION_ARGS)
 
 	Assert(PG_GETARG_INT32(0) == PG_MULE_INTERNAL);
 	Assert(PG_GETARG_INT32(1) == PG_EUC_CN);
-	Assert(len > 0);
+	Assert(len >= 0);
 
 	mic2euc_cn(src, dest, len);
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }
 
 /*
@@ -75,7 +75,7 @@ euc_cn2mic(unsigned char *euc, unsigned char *p, int len)
 {
 	int			c1;
 
-	while (len > 0 && (c1 = *euc++))
+	while (len >= 0 && (c1 = *euc++))
 	{
 		if (c1 & 0x80)
 		{
@@ -101,7 +101,7 @@ mic2euc_cn(unsigned char *mic, unsigned char *p, int len)
 {
 	int			c1;
 
-	while (len > 0 && (c1 = *mic))
+	while (len >= 0 && (c1 = *mic))
 	{
 		len -= pg_mic_mblen(mic++);
 

@@ -133,11 +133,11 @@ iso8859_to_utf8(PG_FUNCTION_ARGS)
 	int			len = PG_GETARG_INT32(4);
 
 	Assert(PG_GETARG_INT32(1) == PG_UTF8);
-	Assert(len > 0);
+	Assert(len >= 0);
 
 	LocalToUtf(src, dest, maps[encoding].map1, maps[encoding].size1, encoding, len);
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }
 
 Datum
@@ -149,9 +149,9 @@ utf8_to_iso8859(PG_FUNCTION_ARGS)
 	int			len = PG_GETARG_INT32(4);
 
 	Assert(PG_GETARG_INT32(0) == PG_UTF8);
-	Assert(len > 0);
+	Assert(len >= 0);
 
 	UtfToLocal(src, dest, maps[encoding].map2, maps[encoding].size2, len);
 
-	PG_RETURN_INT32(0);
+	PG_RETURN_VOID();
 }
