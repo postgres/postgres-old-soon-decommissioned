@@ -52,6 +52,7 @@
 
 #include "pg_config.h"
 #include "pg_config_manual.h"	/* must be after pg_config.h */
+#include "pg_config_os.h"		/* must be before any system header files */
 #include "postgres_ext.h"
 
 #include <stdio.h>
@@ -69,9 +70,6 @@
 #ifdef HAVE_SUPPORTDEFS_H
 #include <SupportDefs.h>
 #endif
-
-/* Must be here so we can redefine some functions on Win32 */
-#include "pg_config_os.h"
 
 /* Must be before gettext() games below */
 #include <locale.h>
