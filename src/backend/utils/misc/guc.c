@@ -335,6 +335,9 @@ const char *const config_type_names[] =
  * 6. Add it to src/bin/psql/tab-complete.c, if it's a USERSET option.
  *
  * 7. Don't forget to document the option.
+ *
+ * 8. If it's a new GUC_LIST option you must edit pg_dumpall.c to ensure
+ *    it is not single quoted at dump time.
  */
 
 
