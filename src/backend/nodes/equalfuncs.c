@@ -405,7 +405,7 @@ _equalIndexPath(IndexPath *a, IndexPath *b)
 {
 	if (!_equalPath((Path *) a, (Path *) b))
 		return false;
-	if (!equali(a->indexid, b->indexid))
+	if (!equal(a->indexinfo, b->indexinfo))
 		return false;
 	if (!equal(a->indexqual, b->indexqual))
 		return false;
@@ -623,9 +623,9 @@ _equalQuery(Query *a, Query *b)
 
 	/*
 	 * We do not check the internal-to-the-planner fields: base_rel_list,
-	 * join_rel_list, equi_key_list, query_pathkeys. They might not be set
-	 * yet, and in any case they should be derivable from the other
-	 * fields.
+	 * other_rel_list, join_rel_list, equi_key_list, query_pathkeys.
+	 * They might not be set yet, and in any case they should be derivable
+	 * from the other fields.
 	 */
 	return true;
 }

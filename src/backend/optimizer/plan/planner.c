@@ -206,7 +206,8 @@ subquery_planner(Query *parse, double tuple_fraction)
 	 * grouping_planner.
 	 */
 	if (parse->resultRelation &&
-	(lst = expand_inherted_rtentry(parse, parse->resultRelation)) != NIL)
+		(lst = expand_inherted_rtentry(parse, parse->resultRelation, false))
+		!= NIL)
 		plan = inheritance_planner(parse, lst);
 	else
 		plan = grouping_planner(parse, tuple_fraction);

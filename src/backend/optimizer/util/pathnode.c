@@ -346,9 +346,9 @@ create_index_path(Query *root,
 
 	/*
 	 * We are making a pathnode for a single-scan indexscan; therefore,
-	 * both indexid and indexqual should be single-element lists.
+	 * both indexinfo and indexqual should be single-element lists.
 	 */
-	pathnode->indexid = makeListi1(index->indexoid);
+	pathnode->indexinfo = makeList1(index);
 	pathnode->indexqual = makeList1(indexquals);
 
 	pathnode->indexscandir = indexscandir;

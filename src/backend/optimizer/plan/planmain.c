@@ -194,6 +194,7 @@ subplanner(Query *root,
 	 * construction.
 	 */
 	root->base_rel_list = NIL;
+	root->other_rel_list = NIL;
 	root->join_rel_list = NIL;
 	root->equi_key_list = NIL;
 

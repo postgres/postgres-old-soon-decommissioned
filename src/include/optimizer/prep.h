@@ -35,7 +35,9 @@ extern List *preprocess_targetlist(List *tlist, int command_type,
 extern Plan *plan_set_operations(Query *parse);
 
 extern List *find_all_inheritors(Oid parentrel);
-extern List *expand_inherted_rtentry(Query *parse, Index rti);
+
+extern List *expand_inherted_rtentry(Query *parse, Index rti,
+									 bool dup_parent);
 
 extern Node *adjust_inherited_attrs(Node *node,
 					   Index old_rt_index, Oid old_relid,

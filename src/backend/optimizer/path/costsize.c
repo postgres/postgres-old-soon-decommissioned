@@ -773,7 +773,7 @@ estimate_hash_bucketsize(Query *root, Var *var)
 	if (relid == InvalidOid)
 		return 0.1;
 
-	rel = get_base_rel(root, var->varno);
+	rel = find_base_rel(root, var->varno);
 
 	if (rel->tuples <= 0.0 || rel->rows <= 0.0)
 		return 0.1;				/* ensure we can divide below */
