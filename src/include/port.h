@@ -201,7 +201,7 @@ extern int pqGethostbyname(const char *name,
 
 
 extern struct tm *pg_localtime(const time_t *);
-extern struct tm *gg_gmtime(const time_t *);
+extern struct tm *pg_gmtime(const time_t *);
 extern char *pg_asctime(const struct tm *);
 extern char *pg_ctime(const time_t *);
 extern double pg_difftime(const time_t, const time_t);

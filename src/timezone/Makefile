@@ -30,7 +30,7 @@ zic: $(ZICOBJS)
 	$(CC) $(CFLAGS) $(ZICOBJS) $(LDFLAGS) $(LIBS) -o $@$(X)
 
 install: zic
-	zic -d $(datadir)/timezone $(TZDATAFILES)
+	zic -d $(pkglibdir)/../timezone $(TZDATAFILES)
 
 clean distclean maintainer-clean:
 	rm -f SUBSYS.o $(OBJS) $(ZICOBJS)
