@@ -292,11 +292,10 @@ union_planner(Query *parse)
 		((Agg *) result_plan)->aggs =
 			set_agg_tlist_references((Agg *) result_plan); 
 
-		/***S*H***/
-		if(parse->havingQual!=NULL) {
+		if(parse->havingQual != NULL) {
 		  List	   *clause;
 
-		  /***S*H***/ /* set qpqual of having clause */
+		  /* set qpqual of having clause */
 		  ((Agg *) result_plan)->plan.qual=cnfify((Expr *)parse->havingQual,true);
 
 		  foreach(clause, ((Agg *) result_plan)->plan.qual)

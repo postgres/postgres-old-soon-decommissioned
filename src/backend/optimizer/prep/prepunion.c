@@ -280,6 +280,8 @@ plan_inherit_query(List *relids,
 		new_root->uniqueFlag = NULL;
 		new_root->sortClause = NULL;
 		new_root->groupClause = NULL;
+		new_root->havingQual = NULL;
+		
 		if (new_root->hasAggs)
 		{
 			new_root->hasAggs = false;
