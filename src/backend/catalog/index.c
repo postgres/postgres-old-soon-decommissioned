@@ -41,6 +41,7 @@
 #include "executor/executor.h"
 #include "miscadmin.h"
 #include "optimizer/clauses.h"
+#include "optimizer/planmain.h"
 #include "optimizer/prep.h"
 #include "parser/parse_func.h"
 #include "storage/sinval.h"
@@ -919,6 +920,7 @@ BuildIndexInfo(Form_pg_index indexStruct)
 		predString = DatumGetCString(DirectFunctionCall1(textout,
 								PointerGetDatum(&indexStruct->indpred)));
 		ii->ii_Predicate = stringToNode(predString);
+		fix_opfuncids((Node *) ii->ii_Predicate);
 		pfree(predString);
 	}
 	else

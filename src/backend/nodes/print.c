@@ -371,7 +371,7 @@ print_expr(Node *expr, List *rtable)
 			char	   *opname;
 
 			print_expr((Node *) get_leftop(e), rtable);
-			opname = get_opname(((Oper *) e->oper)->opno);
+			opname = get_opname(((OpExpr *) e)->opno);
 			printf(" %s ", ((opname != NULL) ? opname : "(invalid operator)"));
 			print_expr((Node *) get_rightop(e), rtable);
 		}
@@ -432,7 +432,7 @@ print_tl(List *tlist, List *rtable)
 			printf("(%d):\t", tle->resdom->reskey);
 		else
 			printf("    :\t");
-		print_expr(tle->expr, rtable);
+		print_expr((Node *) tle->expr, rtable);
 		printf("\n");
 	}
 	printf(")\n");

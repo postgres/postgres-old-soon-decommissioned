@@ -1603,11 +1603,6 @@ AddRelationRawConstraints(Relation rel,
 		expr = (Node *) make_ands_implicit((Expr *) expr);
 
 		/*
-		 * Must fix opids in operator clauses.
-		 */
-		fix_opids(expr);
-
-		/*
 		 * OK, store it.
 		 */
 		StoreRelCheck(rel, ccname, nodeToString(expr));
@@ -1749,11 +1744,6 @@ cookDefault(ParseState *pstate,
 	 * Might as well try to reduce any constant expressions.
 	 */
 	expr = eval_const_expressions(expr);
-
-	/*
-	 * Must fix opids, in case any operators remain...
-	 */
-	fix_opids(expr);
 
 	return (expr);
 }

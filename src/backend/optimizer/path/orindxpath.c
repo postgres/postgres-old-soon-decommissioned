@@ -96,7 +96,7 @@ create_or_index_paths(Query *root, RelOptInfo *rel)
 
 				best_or_subclause_indices(root,
 										  rel,
-										  restrictinfo->clause->args,
+										  ((BoolExpr *) restrictinfo->clause)->args,
 										  restrictinfo->subclauseindices,
 										  pathnode);
 

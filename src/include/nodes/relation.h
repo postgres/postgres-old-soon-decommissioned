@@ -295,7 +295,7 @@ typedef struct PathKeyItem
 
 	/*
 	 * key typically points to a Var node, ie a relation attribute, but it
-	 * can also point to a Func clause representing the value indexed by a
+	 * can also point to a FuncExpr clause representing the value indexed by a
 	 * functional index.  Someday we might allow arbitrary expressions as
 	 * path keys, so don't assume more than you must.
 	 */

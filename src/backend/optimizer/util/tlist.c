@@ -110,7 +110,7 @@ create_tl_element(Var *var, int resdomno)
 									  var->vartypmod,
 									  NULL,
 									  false),
-						   (Node *) var);
+						   (Expr *) var);
 }
 
 /*****************************************************************************
@@ -253,5 +253,5 @@ get_sortgroupclause_expr(SortClause *sortClause, List *targetList)
 {
 	TargetEntry *tle = get_sortgroupclause_tle(sortClause, targetList);
 
-	return tle->expr;
+	return (Node *) tle->expr;
 }

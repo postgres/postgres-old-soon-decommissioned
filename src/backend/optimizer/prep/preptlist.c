@@ -96,7 +96,7 @@ preprocess_targetlist(List *tlist,
 		if (command_type == CMD_DELETE)
 			tlist = listCopy(tlist);
 
-		tlist = lappend(tlist, makeTargetEntry(resdom, (Node *) var));
+		tlist = lappend(tlist, makeTargetEntry(resdom, (Expr *) var));
 	}
 
 	return tlist;
@@ -215,7 +215,7 @@ expand_targetlist(List *tlist, int command_type,
 												 atttypmod,
 									  pstrdup(NameStr(att_tup->attname)),
 												 false),
-									  new_expr);
+									  (Expr *) new_expr);
 		}
 
 		new_tlist = lappend(new_tlist, new_tle);

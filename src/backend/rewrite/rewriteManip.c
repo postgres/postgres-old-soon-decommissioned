@@ -706,7 +706,7 @@ AddInvertedQual(Query *parsetree, Node *qual)
 
 	/* Need not copy input qual, because AddQual will... */
 	invqual = makeNode(BooleanTest);
-	invqual->arg = qual;
+	invqual->arg = (Expr *) qual;
 	invqual->booltesttype = IS_NOT_TRUE;
 
 	AddQual(parsetree, (Node *) invqual);
@@ -724,7 +724,7 @@ FindMatchingNew(List *tlist, int attno)
 		TargetEntry *tle = lfirst(i);
 
 		if (tle->resdom->resno == attno)
-			return tle->expr;
+			return (Node *) tle->expr;
 	}
 	return NULL;
 }

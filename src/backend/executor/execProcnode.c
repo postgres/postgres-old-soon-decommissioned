@@ -228,9 +228,9 @@ ExecInitNode(Plan *node, EState *estate)
 	subps = NIL;
 	foreach(subp, node->initPlan)
 	{
-		SubPlan	   *subplan = (SubPlan *) lfirst(subp);
+		SubPlanExpr *subplan = (SubPlanExpr *) lfirst(subp);
 
-		Assert(IsA(subplan, SubPlan));
+		Assert(IsA(subplan, SubPlanExpr));
 		subps = lappend(subps, ExecInitSubPlan(subplan, estate));
 	}
 	result->initPlan = subps;
@@ -242,9 +242,9 @@ ExecInitNode(Plan *node, EState *estate)
 	subps = NIL;
 	foreach(subp, result->subPlan)
 	{
-		SubPlan	   *subplan = (SubPlan *) lfirst(subp);
+		SubPlanExpr *subplan = (SubPlanExpr *) lfirst(subp);
 
-		Assert(IsA(subplan, SubPlan));
+		Assert(IsA(subplan, SubPlanExpr));
 		subps = lappend(subps, ExecInitSubPlan(subplan, estate));
 	}
 	result->subPlan = subps;

@@ -1452,7 +1452,7 @@ expandRelAttrs(ParseState *pstate, RangeTblEntry *rte)
 								exprTypmod(varnode),
 								label,
 								false);
-		te->expr = varnode;
+		te->expr = (Expr *) varnode;
 		te_list = lappend(te_list, te);
 
 		names = lnext(names);

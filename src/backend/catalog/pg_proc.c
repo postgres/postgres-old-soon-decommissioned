@@ -424,7 +424,7 @@ checkretval(Oid rettype, char fn_typtype, List *queryTreeList)
 			} while (attr->attisdropped);
 			rellogcols++;
 
-			tletype = exprType(tle->expr);
+			tletype = exprType((Node *) tle->expr);
 			atttype = attr->atttypid;
 			if (!IsBinaryCoercible(tletype, atttype))
 				elog(ERROR, "function declared to return %s returns %s instead of %s at column %d",

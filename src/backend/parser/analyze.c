@@ -479,14 +479,14 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt,
 		{
 			TargetEntry *tle = (TargetEntry *) lfirst(tl);
 			Resdom	   *resnode = tle->resdom;
-			Node	   *expr;
+			Expr	   *expr;
 
 			if (resnode->resjunk)
 				continue;
 			if (tle->expr && IsA(tle->expr, Const))
 				expr = tle->expr;
 			else
-				expr = (Node *) makeVar(rtr->rtindex,
+				expr = (Expr *) makeVar(rtr->rtindex,
 										resnode->resno,
 										resnode->restype,
 										resnode->restypmod,
@@ -1807,14 +1807,14 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 		Resdom	   *leftResdom = ((TargetEntry *) lfirst(lefttl))->resdom;
 		char	   *colName = pstrdup(leftResdom->resname);
 		Resdom	   *resdom;
-		Node	   *expr;
+		Expr	   *expr;
 
 		resdom = makeResdom((AttrNumber) pstate->p_last_resno++,
 							colType,
 							-1,
 							colName,
 							false);
-		expr = (Node *) makeVar(1,
+		expr = (Expr *) makeVar(1,
 								leftResdom->resno,
 								colType,
 								-1,
@@ -2424,7 +2424,7 @@ transformExecuteStmt(ParseState *pstate, ExecuteStmt *stmt)
 					 format_type_be(given_type_id),
 					 format_type_be(expected_type_id));
 
-			fix_opids(expr);
+			fix_opfuncids(expr);
 
 			lfirst(l) = expr;
 

@@ -375,31 +375,4 @@ typedef struct Limit
 	Node	   *limitCount;		/* COUNT parameter, or NULL if none */
 } Limit;
 
-/* ---------------------
- *		SubPlan node
- *
- * XXX Perhaps does not belong in this file?  It's not really a Plan node.
- * Should we make it inherit from Plan anyway?
- * ---------------------
- */
-typedef struct SubPlan
-{
-	NodeTag		type;
-	Plan	   *plan;			/* subselect plan itself */
-	int			plan_id;		/* dummy thing because of we haven't equal
-								 * funcs for plan nodes... actually, we
-								 * could put *plan itself somewhere else
-								 * (TopPlan node ?)... */
-	List	   *rtable;			/* range table for subselect */
-	/* setParam and parParam are lists of integers (param IDs) */
-	List	   *setParam;		/* non-correlated EXPR & EXISTS subqueries
-								 * have to set some Params for paren Plan */
-	List	   *parParam;		/* indices of corr. Vars from parent plan */
-	SubLink    *sublink;		/* SubLink node from parser; holds info
-								 * about what to do with subselect's
-								 * results */
-
-	struct SubPlanState *pstate; /* XXX TEMPORARY HACK */
-} SubPlan;
-
 #endif   /* PLANNODES_H */

@@ -806,25 +806,28 @@ find_expr_references_walker(Node *node,
 		}
 		return false;
 	}
-	if (IsA(node, Expr))
+	if (IsA(node, FuncExpr))
 	{
-		Expr	   *expr = (Expr *) node;
+		FuncExpr   *funcexpr = (FuncExpr *) node;
 
-		if (expr->opType == OP_EXPR ||
-			expr->opType == DISTINCT_EXPR)
-		{
-			Oper	   *oper = (Oper *) expr->oper;
+		add_object_address(OCLASS_PROC, funcexpr->funcid, 0,
+						   &context->addrs);
+		/* fall through to examine arguments */
+	}
+	if (IsA(node, OpExpr))
+	{
+		OpExpr   *opexpr = (OpExpr *) node;
 
-			add_object_address(OCLASS_OPERATOR, oper->opno, 0,
-							   &context->addrs);
-		}
-		else if (expr->opType == FUNC_EXPR)
-		{
-			Func	   *func = (Func *) expr->oper;
+		add_object_address(OCLASS_OPERATOR, opexpr->opno, 0,
+						   &context->addrs);
+		/* fall through to examine arguments */
+	}
+	if (IsA(node, DistinctExpr))
+	{
+		DistinctExpr   *distinctexpr = (DistinctExpr *) node;
 
-			add_object_address(OCLASS_PROC, func->funcid, 0,
-							   &context->addrs);
-		}
+		add_object_address(OCLASS_OPERATOR, distinctexpr->opno, 0,
+						   &context->addrs);
 		/* fall through to examine arguments */
 	}
 	if (IsA(node, Aggref))

@@ -68,6 +68,6 @@ extern void set_plan_references(Plan *plan, List *rtable);
 extern List *join_references(List *clauses, List *rtable,
 				List *outer_tlist, List *inner_tlist,
 				Index acceptable_rel);
-extern void fix_opids(Node *node);
+extern void fix_opfuncids(Node *node);
 
 #endif   /* PLANMAIN_H */

@@ -35,6 +35,7 @@
 #include "catalog/pg_operator.h"
 #include "commands/trigger.h"
 #include "executor/spi_priv.h"
+#include "optimizer/planmain.h"
 #include "parser/parse_oper.h"
 #include "utils/lsyscache.h"
 #include "miscadmin.h"
@@ -2747,6 +2748,7 @@ RI_FKey_setdefault_del(PG_FUNCTION_ARGS)
 								nth(defval[j].adnum - 1,
 									spi_plan->targetlist);
 							spi_qptle->expr = stringToNode(defval[j].adbin);
+							fix_opfuncids((Node *) spi_qptle->expr);
 
 							break;
 						}
@@ -3037,6 +3039,7 @@ RI_FKey_setdefault_upd(PG_FUNCTION_ARGS)
 									nth(defval[j].adnum - 1,
 										spi_plan->targetlist);
 								spi_qptle->expr = stringToNode(defval[j].adbin);
+								fix_opfuncids((Node *) spi_qptle->expr);
 
 								break;
 							}

@@ -159,10 +159,10 @@ DefineIndex(RangeVar *heapRelation,
 	 * While we are at it, we reduce it to a canonical (CNF or DNF) form
 	 * to simplify the task of proving implications.
 	 */
-	if (predicate != NULL && rangetable != NIL)
+	if (predicate)
 	{
 		cnfPred = canonicalize_qual((Expr *) copyObject(predicate), true);
-		fix_opids((Node *) cnfPred);
+		fix_opfuncids((Node *) cnfPred);
 		CheckPredicate(cnfPred, rangetable, relationId);
 	}
 
