@@ -271,7 +271,13 @@ Postgres documentation
       <term>--<replaceable>name</replaceable>=<replaceable>value</replaceable></term>
       <listitem>
        <para>
-        Sets a named run-time parameter; a shorter form of <option>-c</>.
+        Sets a named run-time parameter; a shorter form of
+        <option>-c</>.
+       </para>
+       <para>
+	The <option>--</> option will not work on FreeBSD or OpenBSD.
+	Use <option>-c</> instead. This should be fixed in
+	<productname>PostgreSQL</productname> 7.3.
        </para>
       </listitem>
      </varlistentry>
