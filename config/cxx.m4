@@ -12,7 +12,7 @@ AC_DEFUN([PGAC_CLASS_STRING],
 [AC_LANG_PUSH(C++)
 AC_CHECK_HEADER(string,
                 [AC_DEFINE(HAVE_CXX_STRING_HEADER, 1,
-                           [Define to 1 if you have the C++ <string> header])]
+                           [Define to 1 if you have the C++ <string> header])],
                 [AC_CACHE_CHECK([for class string in <string.h>],
                                 [pgac_cv_class_string_in_string_h],
 [AC_TRY_COMPILE([#include <stdio.h>
