@@ -28,6 +28,7 @@ extern RelOptInfo *make_one_rel(Query *root, List *rels);
 extern List *create_index_paths(Query *root, RelOptInfo *rel, List *indices,
 				   List *restrictinfo_list,
 				   List *joininfo_list);
+extern List *expand_indexqual_conditions(List *indexquals);
 
 /*
  * joinpath.h

@@ -148,7 +148,6 @@ typedef struct Path
 								 * information. */
 	Cost		outerjoincost;
 	Relids		joinid;
-	List	   *loc_restrictinfo;
 } Path;
 
 /*----------
@@ -292,7 +291,7 @@ typedef struct Iter
  *	cinfo -- if NULL, this stream node referes to the path node.
  *			  Otherwise this is a pointer to the current clause.
  *	clausetype -- whether cinfo is in loc_restrictinfo or pathinfo in the
- *			  path node
+ *			  path node (XXX this is now used only by dead code...)
  *	upstream -- linked list pointer upwards
  *	downstream -- ditto, downwards
  *	groupup -- whether or not this node is in a group with the node upstream

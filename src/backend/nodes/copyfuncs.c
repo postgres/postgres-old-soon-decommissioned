@@ -1097,7 +1097,6 @@ CopyPathFields(Path *from, Path *newnode)
 	newnode->outerjoincost = from->outerjoincost;
 
 	newnode->joinid = listCopy(from->joinid);
-	Node_Copy(from, newnode, loc_restrictinfo);
 }
 
 /* ----------------

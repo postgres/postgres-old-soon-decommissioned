@@ -35,6 +35,7 @@ extern Expr *get_notclausearg(Expr *notclause);
 extern bool and_clause(Node *clause);
 extern Expr *make_andclause(List *andclauses);
 extern Expr *make_ands_explicit(List *andclauses);
+extern List *make_ands_implicit(Expr *clause);
 
 extern bool case_clause(Node *clause);
 

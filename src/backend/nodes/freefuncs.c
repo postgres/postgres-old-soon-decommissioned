@@ -750,7 +750,6 @@ FreePathFields(Path *node)
 	freeObject(node->pathkeys);
 
 	freeList(node->joinid);
-	freeObject(node->loc_restrictinfo);
 }
 
 /* ----------------
