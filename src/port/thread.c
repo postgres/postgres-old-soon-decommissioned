@@ -75,7 +75,7 @@ pqStrerror(int errnum, char *strerrbuf, size_t buflen)
 	if (strerror_r(errnum, strerrbuf, buflen) == 0)
 		return strerrbuf;
 	else
-		return NULL;
+		return "Unknown error";
 #else
 	/* GNU libc */
 	return strerror_r(errnum, strerrbuf, buflen);
@@ -109,7 +109,6 @@ pqGetpwuid(uid_t uid, struct passwd *resultbuf, char *buffer,
 	 */
 	*result = getpwuid_r(uid, resultbuf, buffer, buflen);
 #endif
-
 #else
 
 	/* no getpwuid_r() available, just use getpwuid() */
