@@ -22,14 +22,12 @@
 
 typedef struct Trigger {
     char		*tgname;
-    char		*tgfunc;
-    Oid			tglang;
+    Oid			tgfoid;
+    func_ptr		tgfunc;
     int16		tgtype;
     int16		tgnargs;
     int16		tgattr[8];
-    char		*tgtext;
     char		**tgargs;
-    char		*tgwhen;
 } Trigger;
 
 typedef struct TriggerDesc {
