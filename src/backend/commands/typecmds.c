@@ -1624,11 +1624,6 @@ domainAddConstraint(Oid domainOid, Oid domainNamespace, Oid baseTypeOid,
 		elog(ERROR, "cannot use aggregate function in CHECK constraint expression");
 
 	/*
-	 * Might as well try to reduce any constant expressions.
-	 */
-	expr = eval_const_expressions(expr);
-
-	/*
 	 * Convert to string form for storage.
 	 */
 	ccbin = nodeToString(expr);

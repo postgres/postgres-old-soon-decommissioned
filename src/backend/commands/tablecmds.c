@@ -2756,7 +2756,10 @@ AlterTableAddCheckConstraint(Relation rel, Constraint *constr)
 		elog(ERROR, "cannot use aggregate function in CHECK constraint expression");
 
 	/*
-	 * Might as well try to reduce any constant expressions.
+	 * Might as well try to reduce any constant expressions, so as to
+	 * minimize overhead while testing the constraint at each row.
+	 *
+	 * Note that the stored form of the constraint will NOT be const-folded.
 	 */
 	expr = eval_const_expressions(expr);
 
