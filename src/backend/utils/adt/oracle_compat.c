@@ -997,6 +997,10 @@ repeat(PG_FUNCTION_ARGS)
 	slen = (VARSIZE(string) - VARHDRSZ);
 	tlen = (VARHDRSZ + (count * slen));
 
+	/* Check for integer overflow */
+	if (slen != 0 && count != 0 && tlen / slen != count)
+		elog(ERROR, "Requested buffer is too large.");
+
 	result = (text *) palloc(tlen);
 
 	VARATT_SIZEP(result) = tlen;
