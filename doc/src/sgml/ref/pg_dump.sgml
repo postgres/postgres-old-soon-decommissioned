@@ -662,6 +662,15 @@ CREATE DATABASE foo WITH TEMPLATE = template0;
 
    </itemizedlist>
   </para>
+
+  <para>
+   Members of tar archives are limited to a size less than 8 GB.
+   (This is an inherent limitation of the tar file format.)  Therefore
+   this format cannot be used if the textual representation of a table
+   exceeds that size.  The total size of a tar archive and any of the
+   other output formats is not limited, except possibly by the
+   operating system.
+  </para>
  </refsect1>
 
  <refsect1 id="pg-dump-examples">
