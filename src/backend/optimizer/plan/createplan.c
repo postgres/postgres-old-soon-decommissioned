@@ -780,6 +780,7 @@ switch_outer(List *clauses)
 	{
 		clause = lfirst(i);
 		op = (Node *) get_rightop(clause);
+		Assert(op != (Node*) NULL);
 		if (IsA(op, ArrayRef))
 			op = ((ArrayRef *) op)->refexpr;
 		Assert(IsA(op, Var));

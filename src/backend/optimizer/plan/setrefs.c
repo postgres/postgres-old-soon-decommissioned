@@ -290,6 +290,8 @@ replace_clause_joinvar_refs(Expr *clause,
 {
 	List	   *temp = NULL;
 
+	if (clause == NULL)
+		return NULL;
 	if (IsA(clause, Var))
 	{
 		temp = (List *) replace_joinvar_refs((Var *) clause,
@@ -586,6 +588,8 @@ replace_result_clause(Node *clause,
 {
 	List	   *t;
 
+	if (clause == NULL)
+		return;
 	if (IsA(clause, Var))
 	{
 		TargetEntry *subplanVar;
