@@ -212,7 +212,7 @@ CreateTrigger(CreateTrigStmt *stmt)
 
 		foreach(le, stmt->args)
 		{
-			char	   *ar = (char *) lfirst(le);
+			char	   *ar = ((Value*) lfirst(le))->val.str;
 
 			len += strlen(ar) + 4;
 			for (; *ar; ar++)
@@ -222,10 +222,10 @@ CreateTrigger(CreateTrigStmt *stmt)
 			}
 		}
 		args = (char *) palloc(len + 1);
-		args[0] = 0;
+		args[0] = '\0';
 		foreach(le, stmt->args)
 		{
-			char	   *s = (char *) lfirst(le);
+			char	   *s = ((Value*) lfirst(le))->val.str;
 			char	   *d = args + strlen(args);
 
 			while (*s)
@@ -234,8 +234,7 @@ CreateTrigger(CreateTrigStmt *stmt)
 					*d++ = '\\';
 				*d++ = *s++;
 			}
-			*d = 0;
-			strcat(args, "\\000");
+			strcpy(d, "\\000");
 		}
 		values[Anum_pg_trigger_tgnargs - 1] = Int16GetDatum(nargs);
 		values[Anum_pg_trigger_tgargs - 1] = DirectFunctionCall1(byteain,

@@ -158,7 +158,8 @@ static void doNegateFloat(Value *v);
 
 %type <str>		OptConstrFromTable
 
-%type <str>		TriggerEvents, TriggerFuncArg
+%type <str>		TriggerEvents
+%type <value>	TriggerFuncArg
 
 %type <str>		relation_name, copy_file_name, copy_delimiter, copy_null, def_name,
 		database_name, access_method_clause, access_method, attr_name,
@@ -1792,11 +1793,20 @@ TriggerFuncArg:  ICONST
 				{
 					char buf[64];
 					sprintf (buf, "%d", $1);
-					$$ = pstrdup(buf);
+					$$ = makeString(pstrdup(buf));
 				}
-			| FCONST						{  $$ = $1; }
-			| Sconst						{  $$ = $1; }
-			| ColId							{  $$ = $1; }
+			| FCONST
+				{
+					$$ = makeString($1);
+				}
+			| Sconst
+				{
+					$$ = makeString($1);
+				}
+			| ColId
+				{
+					$$ = makeString($1);
+				}
 		;
 
 OptConstrFromTable:			/* Empty */
