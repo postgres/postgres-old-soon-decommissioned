@@ -1725,7 +1725,7 @@ HandleSlashCmds(PsqlSettings *pset,
 					ORDER BY return_type, function;",
 					false, false, 0);
 				SendQuery(&success, pset,"\
-					SELECT	t.typname as rets, \
+					SELECT	t.typname as rtns, \
 							p.proname as function, \
 							oid8types(p.proargtypes) as arguments, \
 							substr(obj_description(p.oid),1,34) \
@@ -1733,7 +1733,7 @@ HandleSlashCmds(PsqlSettings *pset,
 					WHERE p.prorettype = t.oid and \
 							(pronargs = 0 or oid8types(p.proargtypes) != '') and \
 							t.typname = 'bool' \
-					ORDER BY rets, function;",
+					ORDER BY rtns, function;",
 					false, false, 0);
 			}
 			else if (strncmp(cmd, "di", 2) == 0)
