@@ -26,10 +26,6 @@
 
 extern int	errno;
 
-#ifdef HAVE_SYS_NERR
-extern int sys_nerr;
-#endif
-
 
 static void ExcUnCaught(Exception *excP, ExcDetail detail, ExcData data,
 			ExcMessage message);
@@ -115,14 +111,7 @@ ExcPrint(Exception *excP,
 #endif
 
 	/* Save error str before calling any function that might change errno */
-	if (errno >= 0
-#ifdef HAVE_SYS_NERR
-		&& errno <= sys_nerr
-#endif
-		)
-		errorstr = strerror(errno);
-	else
-		errorstr = NULL;
+	errorstr = strerror(errno);
 	/*
 	 * Some strerror()s return an empty string for out-of-range errno.
 	 * This is ANSI C spec compliant, but not exactly useful.

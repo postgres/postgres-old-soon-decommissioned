@@ -43,10 +43,6 @@
 
 extern int	errno;
 
-#ifdef HAVE_SYS_NERR
-extern int sys_nerr;
-#endif
-
 extern CommandDest whereToSendOutput;
 
 #ifdef ENABLE_SYSLOG
@@ -139,14 +135,7 @@ elog(int lev, const char *fmt, ...)
 		return;					/* ignore debug msgs if noplace to send */
 
 	/* Save error str before calling any function that might change errno */
-	if (errno >= 0
-#ifdef HAVE_SYS_NERR
-		&& errno <= sys_nerr
-#endif
-		)
-		errorstr = strerror(errno);
-	else
-		errorstr = NULL;
+	errorstr = strerror(errno);
 	/*
 	 * Some strerror()s return an empty string for out-of-range errno.
 	 * This is ANSI C spec compliant, but not exactly useful.

@@ -617,9 +617,6 @@ extern void srandom(unsigned int seed);
 /* Define if you have the optreset variable */
 #undef HAVE_INT_OPTRESET
 
-/* Define if you have the sys_nerr global variable */
-#undef HAVE_SYS_NERR
-
 /* Define if you have strtoll() */
 #undef HAVE_STRTOLL
 
