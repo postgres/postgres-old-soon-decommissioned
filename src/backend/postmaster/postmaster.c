@@ -1387,5 +1387,5 @@ PostmasterRandom(void)
 		initialized = true;
 	}
 
-	return ramdom() ^ random_seed;
+	return random() ^ random_seed;
 }
