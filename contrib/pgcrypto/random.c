@@ -80,7 +80,7 @@ px_get_random_bytes(uint8 *dst, unsigned count)
 
 #ifdef RAND_SILLY
 
-int px_get_random_bytes(char *dst, unsigned count)
+int px_get_random_bytes(uint8 *dst, unsigned count)
 {
 	int i;
 	for (i = 0; i < count; i++) {
