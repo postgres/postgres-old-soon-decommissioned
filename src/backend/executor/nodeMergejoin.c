@@ -75,6 +75,8 @@
  *		  problem described above -cim 4/23/91
  *
  */
+#include "postgres.h"
+
 #include "executor/executor.h"
 #include "executor/nodeMergejoin.h"
 #include "utils/lsyscache.h"

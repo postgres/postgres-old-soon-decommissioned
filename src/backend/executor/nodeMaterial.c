@@ -18,6 +18,8 @@
  *     	ExecEndMaterial		- shutdown node and subnodes
  *
  */
+#include "postgres.h"
+
 
 #include "executor/executor.h"
 #include "executor/nodeMaterial.h"

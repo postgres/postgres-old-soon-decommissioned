@@ -28,6 +28,8 @@
  *	collected and merged with the genam stuff.
  *
  */
+#include "postgres.h"
+
 #include "executor/executor.h"
 #include "executor/nodeIndexscan.h"
 

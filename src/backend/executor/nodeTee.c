@@ -21,6 +21,8 @@
  */
 
 #include <sys/file.h>
+#include "postgres.h"
+
 #include "utils/palloc.h"
 #include "utils/relcache.h" 
 #include "storage/bufmgr.h"  /* for IncrBufferRefCount */

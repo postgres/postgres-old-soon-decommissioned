@@ -52,6 +52,8 @@
  *                            |       |        |        |
  *                          person employee student student-emp
  */
+#include "postgres.h"
+
 
 #include "executor/executor.h"
 #include "executor/nodeAppend.h"

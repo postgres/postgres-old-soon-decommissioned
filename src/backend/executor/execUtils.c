@@ -40,6 +40,8 @@
  *	
  */
 
+#include "postgres.h"
+
 #include "executor/executor.h"
 #include "access/itup.h"
 #include "optimizer/clauses.h"

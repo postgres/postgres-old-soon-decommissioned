@@ -11,6 +11,9 @@
  *
  *-------------------------------------------------------------------------
  */
+
+#include "postgres.h"
+
 #include "utils/palloc.h"
 #include "executor/executor.h"
 #include "nodes/relation.h"

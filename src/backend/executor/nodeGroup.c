@@ -17,6 +17,8 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
+
 #include "access/heapam.h"
 #include "catalog/catalog.h"
 #include "executor/executor.h"

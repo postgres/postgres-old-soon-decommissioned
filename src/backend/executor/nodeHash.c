@@ -22,6 +22,8 @@
 #include <stdio.h>	/* for sprintf() */
 #include <math.h>
 #include <sys/file.h>
+#include "postgres.h"
+
 
 #include "storage/fd.h"		/* for SEEK_ */
 #include "storage/ipc.h"

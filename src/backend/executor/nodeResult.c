@@ -31,6 +31,8 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
+
 
 #include "executor/executor.h"
 #include "executor/nodeResult.h"

@@ -22,6 +22,8 @@
  *	sorted order.
  *
  */
+#include "postgres.h"
+
 #include "executor/executor.h"
 #include "executor/nodeUnique.h"
 #include "optimizer/clauses.h"

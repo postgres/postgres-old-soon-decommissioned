@@ -22,6 +22,8 @@
  *   	ExecRestrPos		restores scan position
  *
  */
+#include "postgres.h"
+
 #include "executor/executor.h"
 #include "executor/nodeSeqscan.h"
 #include "parser/parsetree.h"

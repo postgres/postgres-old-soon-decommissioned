@@ -17,6 +17,8 @@
  *   	ExecInitNestLoop - initialize the join
  *   	ExecEndNestLoop	 - shut down the join
  */
+#include "postgres.h"
+
 #include "executor/executor.h"
 #include "executor/nodeNestloop.h"
 #include "executor/nodeIndexscan.h"

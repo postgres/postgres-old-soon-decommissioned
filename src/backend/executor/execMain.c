@@ -30,6 +30,8 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
+
 #include "executor/executor.h"
 #include "executor/nodeIndexscan.h"
 #include "utils/builtins.h"

@@ -116,6 +116,8 @@
  *	and the TupleTableSlot node in execnodes.h.
  *
  */
+#include "postgres.h"
+
 
 #include "executor/executor.h"
 #undef ExecStoreTuple

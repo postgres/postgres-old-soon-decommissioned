@@ -72,6 +72,8 @@
  *	in turn call these routines themselves on their subplans.
  *
  */
+#include "postgres.h"
+
 #include "executor/executor.h"
 #include "executor/nodeResult.h"
 #include "executor/nodeAppend.h"

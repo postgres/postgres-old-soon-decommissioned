@@ -27,6 +27,9 @@
  *
  */
 #include <stdio.h>	/* for sprintf() */
+
+#include "postgres.h"
+
 #include "executor/executor.h"
 #include "storage/smgr.h"
 #include "executor/nodeSeqscan.h"

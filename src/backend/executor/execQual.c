@@ -29,6 +29,8 @@
  *	instead of doing needless copying.  -cim 5/31/91
  *
  */
+#include "postgres.h"
+
 #include "nodes/primnodes.h"
 #include "nodes/relation.h"
 
