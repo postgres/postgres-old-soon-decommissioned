@@ -1062,8 +1062,8 @@ exprIsLengthCoercion(Node *expr, int32 *coercedTypmod)
 	}
 
 	/*
-	 * Furthermore, the name of the function must be the same as the
-	 * argument/result type's name.
+	 * Furthermore, the name and namespace of the function must be the same
+	 * as its result type's name/namespace (cf. find_coercion_function).
 	 */
 	typeTuple = SearchSysCache(TYPEOID,
 							   ObjectIdGetDatum(procStruct->prorettype),
@@ -1072,9 +1072,9 @@ exprIsLengthCoercion(Node *expr, int32 *coercedTypmod)
 		elog(ERROR, "cache lookup for type %u failed",
 			 procStruct->prorettype);
 	typeStruct = (Form_pg_type) GETSTRUCT(typeTuple);
-	if (strncmp(NameStr(procStruct->proname),
-				NameStr(typeStruct->typname),
-				NAMEDATALEN) != 0)
+	if (strcmp(NameStr(procStruct->proname),
+			   NameStr(typeStruct->typname)) != 0 ||
+		procStruct->pronamespace != typeStruct->typnamespace)
 	{
 		ReleaseSysCache(procTuple);
 		ReleaseSysCache(typeTuple);
