@@ -661,7 +661,9 @@ fi
 
 PGAC_PATH_PERL
 if test "$with_perl" = yes; then
-  PGAC_CHECK_PERL_DIRS
+  PGAC_CHECK_PERL_CONFIGS([installsitearch,installman3dir,
+                           archlibexp,privlibexp,useshrplib,man3ext])
+  PGAC_CHECK_PERL_EMBED_LDFLAGS
 fi
 
 if test "$with_python" = yes; then

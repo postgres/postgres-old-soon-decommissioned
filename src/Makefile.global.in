@@ -214,8 +214,12 @@ X = @EXEEXT@
 
 PERL			= @PERL@
 perl_installsitearch	= @perl_installsitearch@
-perl_installsitelib	= @perl_installsitelib@
 perl_installman3dir	= @perl_installman3dir@
+perl_archlibexp		= @perl_archlibexp@
+perl_privlibexp		= @perl_privlibexp@
+perl_useshrplib		= @perl_useshrplib@
+perl_embed_ldflags	= @perl_embed_ldflags@
+perl_man3ext		= @perl_man3ext@
 
 # Miscellaneous
 
