@@ -30,6 +30,6 @@ extern void InvalidateSharedInvalid(void (*invalFunction) (),
 extern bool DatabaseHasActiveBackends(Oid databaseId, bool ignoreMyself);
 extern bool TransactionIdIsInProgress(TransactionId xid);
 extern void GetXmaxRecent(TransactionId *XmaxRecent);
-
+extern int	CountActiveBackends(void);
 
 #endif	 /* SINVAL_H */

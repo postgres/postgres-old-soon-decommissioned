@@ -50,6 +50,10 @@ struct proc
 								 * were starting our xact: vacuum must not
 								 * remove tuples deleted by xid >= xmin ! */
 
+	/* XLOG location of first XLOG record written by this backend's current
+	 * transaction.  If backend is not in a transaction or hasn't yet modified
+	 * anything, logRec.xrecoff is zero.
+	 */
 	XLogRecPtr	logRec;
 
 	/* Info about lock the process is currently waiting for, if any. */

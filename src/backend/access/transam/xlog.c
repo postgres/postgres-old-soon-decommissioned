@@ -2096,8 +2096,6 @@ ShutdownXLOG()
 	elog(LOG, "database system is shut down");
 }
 
-extern XLogRecPtr	GetUndoRecPtr(void);
-
 void
 CreateCheckPoint(bool shutdown)
 {

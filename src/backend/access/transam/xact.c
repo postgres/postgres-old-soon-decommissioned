@@ -157,6 +157,7 @@
 #include <sys/time.h>
 
 #include "access/nbtree.h"
+#include "access/xact.h"
 #include "catalog/heap.h"
 #include "catalog/index.h"
 #include "commands/async.h"
@@ -176,8 +177,6 @@
 #include "utils/temprel.h"
 
 extern bool SharedBufferChanged;
-
-void RecordTransactionCommit(void);
 
 static void AbortTransaction(void);
 static void AtAbort_Cache(void);
@@ -216,12 +215,14 @@ TransactionStateData CurrentTransactionStateData = {
 
 TransactionState CurrentTransactionState = &CurrentTransactionStateData;
 
+/*
+ * User-tweakable parameters
+ */
 int			DefaultXactIsoLevel = XACT_READ_COMMITTED;
 int			XactIsoLevel;
 
-#include "access/xlogutils.h"
-
-int			CommitDelay = 0;	/* in microseconds */
+int			CommitDelay = 0;	/* precommit delay in microseconds */
+int			CommitSiblings = 5;	/* number of concurrent xacts needed to sleep */
 
 static void (*_RollbackFunc)(void*) = NULL;
 static void *_RollbackData = NULL;
@@ -687,10 +688,15 @@ RecordTransactionCommit()
 		 * Sleep before commit! So we can flush more than one
 		 * commit records per single fsync.  (The idea is some other
 		 * backend may do the XLogFlush while we're sleeping.  This
-		 * needs work however, because on most Unixen, the minimum
+		 * needs work still, because on most Unixen, the minimum
 		 * select() delay is 10msec or more, which is way too long.)
+		 *
+		 * We do not sleep if enableFsync is not turned on, nor if there
+		 * are fewer than CommitSiblings other backends with active
+		 * transactions.
 		 */
-		if (CommitDelay > 0)
+		if (CommitDelay > 0 && enableFsync &&
+			CountActiveBackends() >= CommitSiblings)
 		{
 			struct timeval	delay;
 
