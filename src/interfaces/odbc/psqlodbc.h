@@ -27,6 +27,10 @@
 #define ODBCVER						0x0250
 #endif   /* ODBCVER_REP */
 
+#ifndef NAMEDATALEN
+#define NAMEDATALEN					32
+#endif   /* NAMEDATALEN */
+
 
 #if defined(WIN32) || defined(WITH_UNIXODBC) || defined(WITH_IODBC)
 #include <sql.h>
@@ -124,9 +128,9 @@ typedef UInt4 Oid;
 #define BYTELEN						8
 #define VARHDRSZ					sizeof(Int4)
 
-#define MAX_SCHEMA_LEN				32
-#define MAX_TABLE_LEN				32
-#define MAX_COLUMN_LEN				32
+#define MAX_SCHEMA_LEN				NAMEDATALEN
+#define MAX_TABLE_LEN				NAMEDATALEN
+#define MAX_COLUMN_LEN				NAMEDATALEN
 #define MAX_CURSOR_LEN				32
 
 /*	Registry length limits */
@@ -239,7 +243,7 @@ void		logs_on_off(int cnopen, int, int);
 #define TEXT_FIELD_SIZE				8190		/* size of text fields
 												 * (not including null
 												 * term) */
-#define NAME_FIELD_SIZE				32	/* size of name fields */
+#define NAME_FIELD_SIZE			NAMEDATALEN	/* size of name fields */
 #define MAX_VARCHAR_SIZE			254 /* maximum size of a varchar (not
 										 * including null term) */
 
