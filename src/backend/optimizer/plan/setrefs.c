@@ -82,13 +82,6 @@ set_tlist_references(Plan *plan)
 		set_result_tlist_references((Result *) plan);
 	else if (IsA(plan, Hash))
 		set_tlist_references(plan->lefttree);
-	else if (IsA(plan, Choose))
-	{
-		List	   *x;
-
-		foreach(x, ((Choose *) plan)->chooseplanlist)
-			set_tlist_references((Plan *) lfirst(x));
-	}
 }
 
 /*

@@ -328,16 +328,6 @@ typedef struct Hash
 	int			hashtablesize;
 } Hash;
 
-/* ---------------------
- *		choose node
- * ---------------------
- */
-typedef struct Choose
-{
-	Plan		plan;
-	List	   *chooseplanlist;
-} Choose;
-
 /* -------------------
  *		Tee node information
  *
