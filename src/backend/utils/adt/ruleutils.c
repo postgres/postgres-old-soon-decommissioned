@@ -679,7 +679,7 @@ make_ruledef(HeapTuple ruletup, TupleDesc rulettc)
 	/* If the rule has an event qualification, add it */
 	if (ev_qual == NULL)
 		ev_qual = "";
-	if (strlen(ev_qual) > 0)
+	if (strlen(ev_qual) > 0 && strcmp(ev_qual, "<>") != 0)
 	{
 		Node	   *qual;
 		Query	   *query;
