@@ -275,7 +275,8 @@ dopr(char *buffer, const char *format, va_list args, char *end)
 							longlongflag = 1;
 							longflag = 1;
 							goto nextch;
-						}					
+						}
+						break;
 					case 'u':
 					case 'U':
 						/* fmtnum(value,base,dosign,ljust,len,zpad,&output) */
