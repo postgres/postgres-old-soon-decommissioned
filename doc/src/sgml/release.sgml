@@ -15,6 +15,15 @@ $Header$
 <glossentry><glossterm> Performance</glossterm>
 
 <glossdef><para> IN/NOT IN subqueries are now much more efficient
+  <footnote>
+  <para>
+   In previous releases, IN/NOT IN subqueries were joined to the
+   upper query by sequentially scanning the subquery looking for
+   a join.  The 7.4 code uses the same sophisticated techniques
+   used by ordinary joins and so is much faster, and is now faster
+   than EXISTS subqueries.
+  </para>
+  </footnote>
 </para>
 
 <para> Improved GROUP BY processing by using hash buckets</para>
