@@ -567,7 +567,7 @@ init(void)
 			PQclear(res);
 		}
 
-		snprintf(sql, 256, "%d\t%d\t%d\t\n", j, j / naccounts, 0);
+		snprintf(sql, 256, "%d\t%d\t%d\t\n", j, i / naccounts + 1, 0);
 		if (PQputline(con, sql))
 		{
 			fprintf(stderr, "PQputline failed\n");
