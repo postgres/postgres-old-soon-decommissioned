@@ -13,8 +13,6 @@
 #include "postgres.h"
 
 #include <fcntl.h>
-#include <dirent.h>
-#include <errno.h>
 #include <sys/stat.h>
 #include <unistd.h>
 
@@ -888,7 +886,7 @@ SlruScanDirectory(SlruCtl ctl, int cutoffPage, bool doDeletions)
 	int			segpage;
 	char		path[MAXPGPATH];
 
-	cldir = opendir(ctl->Dir);
+	cldir = AllocateDir(ctl->Dir);
 	if (cldir == NULL)
 		ereport(ERROR,
 				(errcode_for_file_access(),
@@ -927,7 +925,7 @@ SlruScanDirectory(SlruCtl ctl, int cutoffPage, bool doDeletions)
 		ereport(ERROR,
 				(errcode_for_file_access(),
 			   errmsg("could not read directory \"%s\": %m", ctl->Dir)));
-	closedir(cldir);
+	FreeDir(cldir);
 
 	return found;
 }

@@ -17,10 +17,8 @@
 #include <fcntl.h>
 #include <signal.h>
 #include <unistd.h>
-#include <errno.h>
 #include <sys/stat.h>
 #include <sys/time.h>
-#include <dirent.h>
 
 #include "access/clog.h"
 #include "access/transam.h"
@@ -1753,9 +1751,9 @@ MoveOfflineLogs(uint32 log, uint32 seg, XLogRecPtr endptr)
 
 	XLByteToPrevSeg(endptr, endlogId, endlogSeg);
 
-	xldir = opendir(XLogDir);
+	xldir = AllocateDir(XLogDir);
 	if (xldir == NULL)
-		ereport(PANIC,
+		ereport(ERROR,
 				(errcode_for_file_access(),
 			errmsg("could not open transaction log directory \"%s\": %m",
 				   XLogDir)));
@@ -1812,11 +1810,11 @@ MoveOfflineLogs(uint32 log, uint32 seg, XLogRecPtr endptr)
 		errno = 0;
 #endif
 	if (errno)
-		ereport(PANIC,
+		ereport(ERROR,
 				(errcode_for_file_access(),
 			errmsg("could not read transaction log directory \"%s\": %m",
 				   XLogDir)));
-	closedir(xldir);
+	FreeDir(xldir);
 }
 
 /*
