@@ -405,10 +405,11 @@
 
      <varlistentry>
       <term>-x</term>
+      <term>--no-privileges</term>
       <term>--no-acl</term>
       <listitem>
        <para>
-	Prevent restoration of ACLs (grant/revoke commands).
+	Prevent restoration of access privileges (grant/revoke commands).
        </para>
       </listitem>
      </varlistentry>

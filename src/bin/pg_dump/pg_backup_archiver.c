@@ -777,7 +777,7 @@ StartRestoreBlob(ArchiveHandle *AH, Oid oid)
 	if (!AH->createdBlobXref)
 	{
 		if (!AH->connection)
-			die_horribly(AH, modulename, "cannot restore BLOBs without a database connection");
+			die_horribly(AH, modulename, "cannot restore BLOBs without a database connection\n");
 
 		CreateBlobXrefTable(AH);
 		AH->createdBlobXref = 1;
