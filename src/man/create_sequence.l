@@ -71,14 +71,12 @@ After sequence created, You may use function
 .BR nextval
 with sequence name as argument to get new number from sequence
 specified.
-To determine the current sequence number use function 
-.BR currval 
-('sequence_name'). 
-.BR NOTE:
-after sequence creation You are to call 
+Function
+.BR currval
+('sequence_name')
+may be used to determine number returned by last call to
 .BR nextval
-before first call to
-.BR currval.
+for specified sequence in current session.
 .PP
 .nf
 Use query like
