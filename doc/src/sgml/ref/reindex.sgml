@@ -183,8 +183,10 @@ REINDEX
     <listitem>
      <para>
       Be aware that the standalone backend treats newline as the command
-      entry terminator, not semicolon; you can't continue commands across
-      lines, as you can in <application>psql</>.
+      entry terminator; there is no intelligence about semicolons,
+      as there is in <application>psql</>.  To continue a command
+      across multiple lines, you must type backslash just before each
+      newline except the last one.
       Also, you won't have any of the conveniences of readline processing
       (no command history, for example).
      </para>
