@@ -88,7 +88,7 @@ pg_atoi(char *s, int size, int c)
 	 * Skip any trailing whitespace; if anything but whitespace
 	 * remains before the terminating character, bail out
 	 */
-	while (*badp != c && isspace(*badp))
+	while (*badp != c && isspace((unsigned char) *badp))
 		badp++;
 
 	if (*badp != c)

@@ -114,7 +114,7 @@ scanint8(const char *str, bool errorOK, int64 *result)
 	}
 
 	/* allow trailing whitespace, but not other trailing chars */
-	while (*ptr != '\0' && isspace(*ptr))
+	while (*ptr != '\0' && isspace((unsigned char) *ptr))
 		ptr++;
 
 	if (*ptr != '\0')

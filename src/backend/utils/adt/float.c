@@ -276,7 +276,7 @@ float4in(PG_FUNCTION_ARGS)
 	}
 
 	/* skip leading whitespace */
-	while (*num != '\0' && isspace(*num))
+	while (*num != '\0' && isspace((unsigned char) *num))
 		num++;
 
 	errno = 0;
@@ -319,7 +319,7 @@ float4in(PG_FUNCTION_ARGS)
 	}
 
 	/* skip trailing whitespace */
-	while (*endptr != '\0' && isspace(*endptr))
+	while (*endptr != '\0' && isspace((unsigned char) *endptr))
 		endptr++;
 
 	/* if there is any junk left at the end of the string, bail out */
@@ -441,7 +441,7 @@ float8in(PG_FUNCTION_ARGS)
 	}
 
 	/* skip leading whitespace */
-	while (*num != '\0' && isspace(*num))
+	while (*num != '\0' && isspace((unsigned char) *num))
 		num++;
 
 	errno = 0;
@@ -484,7 +484,7 @@ float8in(PG_FUNCTION_ARGS)
 	}
 
 	/* skip trailing whitespace */
-	while (*endptr != '\0' && isspace(*endptr))
+	while (*endptr != '\0' && isspace((unsigned char) *endptr))
 		endptr++;
 
 	/* if there is any junk left at the end of the string, bail out */
