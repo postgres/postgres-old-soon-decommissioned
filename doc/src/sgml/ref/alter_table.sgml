@@ -538,6 +538,17 @@ ALTER TABLE distributors
   </para>
 
   <para>
+   To change an integer column containing UNIX timestamps to <type>timestamp
+   with time zone</type> via a <literal>USING</literal> clause:
+<programlisting>
+ALTER TABLE foo
+    ALTER COLUMN foo_timestamp TYPE timestamp with time zone
+    USING
+        timestamp with time zone 'epoch' + foo_timestamp * interval '1 second';
+</programlisting>
+  </para>
+
+  <para>
    To rename an existing column:
 <programlisting>
 ALTER TABLE distributors RENAME COLUMN address TO city;
