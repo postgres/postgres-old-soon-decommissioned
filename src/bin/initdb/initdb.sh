@@ -1064,6 +1064,14 @@ UPDATE pg_database SET \
 UPDATE pg_database SET datlastsysoid = \
     (SELECT oid - 1 FROM pg_database WHERE datname = 'template0');
 
+-- Explicitly revoke public create-schema and create-temp-table privileges
+-- in template1 and template0; else the latter would be on by default
+
+REVOKE CREATE,TEMPORARY ON DATABASE template1 FROM public;
+REVOKE CREATE,TEMPORARY ON DATABASE template0 FROM public;
+
+-- Finally vacuum to clean up dead rows in pg_database
+
 VACUUM FULL pg_database;
 EOF
 if [ "$?" -ne 0 ]; then

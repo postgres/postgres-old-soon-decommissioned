@@ -396,7 +396,7 @@ aclitemgt(const AclItem *a1, const AclItem *a2)
  * acldefault()  --- create an ACL describing default access permissions
  *
  * Change this routine if you want to alter the default access policy for
- * newly-created tables (or any table with a NULL acl entry in pg_class)
+ * newly-created objects (or any object with a NULL acl entry).
  */
 Acl *
 acldefault(GrantObjectType objtype, AclId ownerid)
@@ -413,7 +413,7 @@ acldefault(GrantObjectType objtype, AclId ownerid)
 			owner_default = ACL_ALL_RIGHTS_RELATION;
 			break;
 		case ACL_OBJECT_DATABASE:
-			world_default = ACL_NO_RIGHTS;
+			world_default = ACL_CREATE_TEMP; /* not NO_RIGHTS! */
 			owner_default = ACL_ALL_RIGHTS_DATABASE;
 			break;
 		case ACL_OBJECT_FUNCTION:
