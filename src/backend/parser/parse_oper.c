@@ -686,6 +686,9 @@ compatible_oper(char *op, Oid arg1, Oid arg2, bool noError)
 		 IS_BINARY_COMPATIBLE(opform->oprright, arg2)))
 		return optup;
 
+	/* nope... */
+	ReleaseSysCache(optup);
+
 	if (!noError)
 		op_error(op, arg1, arg2);
 
