@@ -385,6 +385,8 @@ pglz_find_match (PGLZ_HistEntry **hstart, char *input, char *end,
 
 /* ----------
  * pglz_compress -
+ *
+ *		Compresses source into dest using strategy.
  * ----------
  */
 int
@@ -580,6 +582,8 @@ pglz_compress (char *source, int slen, PGLZ_Header *dest, PGLZ_Strategy *strateg
 
 /* ----------
  * pglz_decompress -
+ *
+ *		Decompresses source into dest.
  * ----------
  */
 int

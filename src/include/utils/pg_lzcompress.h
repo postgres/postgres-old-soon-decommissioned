@@ -37,9 +37,36 @@ typedef struct PGLZ_Header {
  */
 #define PGLZ_MAX_OUTPUT(_dlen)			((_dlen) + (((_dlen) | 0x07) >> 3)	\
 													 + sizeof(PGLZ_Header))
+
+/* ----------
+ * PGLZ_RAW_SIZE -
+ *
+ *		Macro to determine the uncompressed data size contained
+ *		in the entry.
+ * ----------
+ */
 #define PGLZ_RAW_SIZE(_lzdata)			(_lzdata->rawsize)
+
+/* ----------
+ * PGLZ_IS_COMPRESSED -
+ *
+ *		Macro to determine if the data itself is stored as raw
+ *		uncompressed data.
+ * ----------
+ */
 #define PGLZ_IS_COMPRESSED(_lzdata)		(_lzdata->varsize != 				\
-										 _lzdata->rawsize + sizeof(PGLZ_Header))
+										 _lzdata->rawsize + 				\
+										 				sizeof(PGLZ_Header))
+
+/* ----------
+ * PGLZ_RAW_DATA -
+ *
+ *		Macro to get access to the plain compressed or uncompressed
+ *		data. Useful if PGLZ_IS_COMPRESSED returns false.
+ * ----------
+ */
+#define PGLZ_RAW_DATA(_lzdata)			(((char *)(_lzdata)) + 				\
+														sizeof(PGLZ_Header))
 
 /* ----------
  * PGLZ_Strategy -
