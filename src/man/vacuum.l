@@ -6,7 +6,8 @@
 vacuum - vacuum a database
 .SH SYNOPSIS
 .nf
-\fBvacuum [verbose] [analyze] [\fPtable [(column,...)]\fB]\fP
+\fBvacuum [verbose] [analyze] [\fPtable\fB]\fP
+\fBvacuum [verbose]  analyze  [\fPtable [(column,...)]\fB]\fP
 .fi
 .SH DESCRIPTION
 .BR Vacuum

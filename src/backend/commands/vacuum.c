@@ -135,7 +135,9 @@ vacuum(char *vacrel, bool verbose, bool analyze, List *va_spec)
 	pmem = PortalGetVariableMemory(vc_portal);
 	old = MemoryContextSwitchTo((MemoryContext) pmem);
 
-	Assert(va_spec == NIL || analyze);
+	if (va_spec == NIL || analyze)
+		elog(ERROR,"Can't vacuum columns, only tables.  You can 'vacuum analyze' columns.");
+
 	foreach(le, va_spec)
 	{
 		char	   *col = (char *) lfirst(le);
