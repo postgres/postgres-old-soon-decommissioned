@@ -864,6 +864,10 @@ index_create(char *heapRelationName,
 		indexInfo->ii_NumKeyAttrs < 1)
 		elog(ERROR, "must index at least one attribute");
 
+	if (heapRelationName && !allow_system_table_mods &&
+		IsSystemRelationName(heapRelationName) && IsNormalProcessingMode())
+		elog(ERROR, "User-defined indexes on system catalogs are not supported");
+
 	/*
 	 * get heap relation oid and open the heap relation
 	 */
