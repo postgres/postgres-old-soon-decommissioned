@@ -337,9 +337,9 @@ gethilokey(Oid relid,
 	register Relation rdesc;
 	register HeapScanDesc sdesc;
 	static ScanKeyData key[3] = {
-		{0, Anum_pg_statistic_starelid, F_OIDEQ},
-		{0, Anum_pg_statistic_staattnum, F_INT2EQ},
-		{0, Anum_pg_statistic_staop, F_OIDEQ}
+		{0, Anum_pg_statistic_starelid, F_OIDEQ, {0, 0, F_OIDEQ}},
+		{0, Anum_pg_statistic_staattnum, F_INT2EQ, {0, 0, F_INT2EQ}},
+		{0, Anum_pg_statistic_staop, F_OIDEQ, {0, 0, F_OIDEQ}}
 	};
 	bool		isnull;
 	HeapTuple	tuple;
