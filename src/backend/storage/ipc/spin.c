@@ -116,7 +116,7 @@ ex_try_again:
 			printf("OUT: ");
 			PRINT_LOCK(slckP);
 #endif
-			return;
+			break;
 		case SHAREDLOCK:
 		case EXCLUSIVELOCK:
 			S_UNLOCK(&(slckP->locklock));
