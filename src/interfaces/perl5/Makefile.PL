@@ -53,6 +53,14 @@ where Postgres is installed (often /usr/local/pgsql).\n";
 
 WriteMakefile(%opts);
 
-exit(0);
 
-# end of Makefile.PL
+sub MY::installbin { 
+
+q[
+# Create a target that interfaces/Makefile can use to
+# determine the Perl install directory.
+echo-installdir:
+	@echo $(INSTALLSITELIB)
+];
+
+}
