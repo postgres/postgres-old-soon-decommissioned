@@ -165,6 +165,7 @@ FLEXFLAGS = @FLEXFLAGS@ $(LFLAGS)
 LIBS = @LIBS@
 LD = @LD@
 with_gnu_ld = @with_gnu_ld@
+ld_R_works = @ld_R_works@
 LDFLAGS = @LDFLAGS@ $(LIBS)
 LDREL = -r
 LDOUT = -o
