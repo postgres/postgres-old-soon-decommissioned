@@ -161,8 +161,9 @@ dropuser <replaceable>name</replaceable>
 
     A user's attributes can be modified after creation with
     <command>ALTER USER</command>.<indexterm><primary>ALTER USER</></>
-    See the reference pages for <command>CREATE USER</command> and
-    <command>ALTER USER</command> for details.
+    See the reference pages for the <xref linkend="sql-createuser"
+    endterm="sql-createuser-title"> and <xref linkend="sql-alteruser"
+    endterm="sql-alteruser-title"> commands for details.
    </para>
 
   <para>
