@@ -19,11 +19,11 @@ typedef struct
 	Oid			proid;
 	int			nargs;
 	func_ptr	func;
-	int			dummy;			/* pad struct to 4 words for fast indexing */
+	char	   *funcName;
 } FmgrCall;
 
 extern FmgrCall *fmgr_isbuiltin(Oid id);
-
+extern func_ptr fmgr_lookupByName(char *name);
 extern void load_file(char *filename);
 
 #endif	 /* FMGRTAB_H */

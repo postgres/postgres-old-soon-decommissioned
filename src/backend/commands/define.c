@@ -186,14 +186,15 @@ interpret_AS_clause(const char *languageName, const char *as,
 					char **prosrc_str_p, char **probin_str_p)
 {
 
-	if (strcmp(languageName, "C") == 0 ||
-		strcmp(languageName, "internal") == 0)
+	if (strcmp(languageName, "C") == 0)
 	{
+		/* For "C" language, store the given string in probin */
 		*prosrc_str_p = "-";
 		*probin_str_p = (char *) as;
 	}
 	else
 	{
+		/* Everything else wants the given string in prosrc */
 		*prosrc_str_p = (char *) as;
 		*probin_str_p = "-";
 	}
