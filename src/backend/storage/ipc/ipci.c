@@ -72,11 +72,19 @@ CreateSharedMemoryAndSemaphores(IPCKey key, int maxBackends)
 	 * ----------------
 	 */
 	CreateSpinlocks(IPCKeyGetSpinLockSemaphoreKey(key));
-	size = BufferShmemSize() + LockShmemSize(maxBackends);
 
+	/*
+	 * Size of the primary shared-memory block is estimated via
+	 * moderately-accurate estimates for the big hogs, plus 100K for
+	 * the stuff that's too small to bother with estimating.
+	 * Then we add 10% for a safety margin.
+	 */
+	size = BufferShmemSize() + LockShmemSize(maxBackends);
 #ifdef STABLE_MEMORY_STORAGE
 	size += MMShmemSize();
 #endif
+	size += 100000;
+	size += size / 10;
 
 	if (DebugLvl > 1)
 	{
