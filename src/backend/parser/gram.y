@@ -1489,7 +1489,7 @@ CreateTrigStmt:  CREATE TRIGGER name TriggerActionTime TriggerEvents ON
 					n->constrrelname = NULL;
 					$$ = (Node *)n;
 				}
-		| CREATE CONSTRAINT TRIGGER name AFTER TriggerOneEvent ON
+		| CREATE CONSTRAINT TRIGGER name AFTER TriggerEvents ON
 				relation_name OptConstrFromTable 
 				ConstraintAttributeSpec
 				FOR EACH ROW EXECUTE PROCEDURE name '(' TriggerFuncArgs ')'

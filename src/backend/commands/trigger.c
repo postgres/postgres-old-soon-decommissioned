@@ -399,6 +399,15 @@ RelationRemoveTriggers(Relation rel)
 
 		DropTrigger(&stmt);
 
+		/* ----------
+		 * Need to do a command counter increment here to show up
+		 * new pg_class.reltriggers in the next loop invocation already
+		 * (there are multiple referential integrity action
+		 * triggers for the same FK table defined on the PK table).
+		 * ----------
+		 */
+		CommandCounterIncrement();
+
 		pfree(stmt.relname);
 		pfree(stmt.trigname);
 	}
