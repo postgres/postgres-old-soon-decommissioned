@@ -253,7 +253,8 @@ geqo(Query *root)
 	best_tour = (Gene *) pool->data[0].string;
 
 /* root->join_relation_list_ will be modified during this ! */
-	best_rel = (RelOptInfo *) gimme_tree(root, best_tour, 0, pool->string_length, NULL);
+	best_rel = (RelOptInfo *) gimme_tree(root, best_tour, 0,
+										 pool->string_length, NULL);
 
 /* DBG: show the query plan
 print_plan(best_plan, root);
