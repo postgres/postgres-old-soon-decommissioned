@@ -2099,7 +2099,7 @@ MainLoop(PsqlSettings *pset, char *query, FILE *source)
 		 * for next command
 		 */
 
-		if (line == NULL)
+		if (line == NULL || *line == '\0')
 		{		/* 	No more input.	Time to quit, or \i done */
 			if (!pset->quiet)
 				printf("EOF\n");/* Goes on prompt line */
