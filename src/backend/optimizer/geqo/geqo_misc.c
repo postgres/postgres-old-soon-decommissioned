@@ -26,6 +26,7 @@
 #include "optimizer/geqo_misc.h"
 #include "nodes/print.h"
 
+#ifdef GEQO_DEBUG
 
 static float avg_pool(Pool *pool);
 
@@ -92,7 +93,7 @@ print_gen(FILE *fp, Pool *pool, int generation)
 	lowest = pool->size > 1 ? pool->size - 2 : 0;
 
 	fprintf(fp,
-			"%5d | Bst: %f  Wst: %f  Mean: %f  Avg: %f\n",
+			"%5d | Best: %f  Worst: %f  Mean: %f  Avg: %f\n",
 			generation,
 			pool->data[0].worth,
 			pool->data[lowest].worth,
@@ -248,3 +249,5 @@ geqo_print_rel(Query *root, RelOptInfo *rel)
 	printf("\n\tcheapest total path:\n");
 	geqo_print_path(root, rel->cheapest_total_path, 1);
 }
+
+#endif	/* GEQO_DEBUG */
