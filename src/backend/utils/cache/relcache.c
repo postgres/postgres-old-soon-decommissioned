@@ -1065,6 +1065,7 @@ IndexedAccessMethodInitialize(Relation relation)
 		support = (RegProcedure *) NULL;
 
 	IndexSupportInitialize(strategy, support,
+						   &relation->rd_uniqueindex,
 						   relation->rd_att->attrs[0]->attrelid,
 						   relation->rd_rel->relam,
 						   relamstrategies, relamsupport, natts);

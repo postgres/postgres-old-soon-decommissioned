@@ -20,7 +20,6 @@
 
 
 #include "access/attnum.h"
-#include "access/funcindex.h"
 #include "access/htup.h"
 #include "access/itup.h"
 #include "access/skey.h"

@@ -14,7 +14,6 @@
 #ifndef GENAM_H
 #define GENAM_H
 
-#include "access/funcindex.h"
 #include "access/itup.h"
 #include "access/relscan.h"
 #include "access/sdir.h"
@@ -42,9 +41,6 @@ extern RetrieveIndexResult index_getnext(IndexScanDesc scan,
 extern RegProcedure index_cost_estimator(Relation relation);
 extern RegProcedure index_getprocid(Relation irel, AttrNumber attnum,
 				uint16 procnum);
-extern Datum GetIndexValue(HeapTuple tuple, TupleDesc hTupDesc,
-			  int attOff, AttrNumber *attrNums, FuncIndexInfo *fInfo,
-			  bool *attNull);
 
 /* in genam.c */
 extern IndexScanDesc RelationGetIndexScan(Relation relation, bool scanFromEnd,

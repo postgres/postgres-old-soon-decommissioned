@@ -27,25 +27,24 @@ extern void InitIndexStrategy(int numatts,
 				  Oid accessMethodObjectId);
 
 extern void index_create(char *heapRelationName,
-			 char *indexRelationName,
-			 FuncIndexInfo *funcInfo,
-			 List *attributeList,
-			 Oid accessMethodObjectId,
-			 int numatts,
-			 AttrNumber *attNums,
-			 Oid *classObjectId,
-			 Node *predicate,
-			 bool islossy,
-			 bool unique,
-			 bool primary,
-			 bool allow_system_table_mods);
+						 char *indexRelationName,
+						 IndexInfo *indexInfo,
+						 Oid accessMethodObjectId,
+						 Oid *classObjectId,
+						 bool islossy,
+						 bool primary,
+						 bool allow_system_table_mods);
 
 extern void index_drop(Oid indexId);
 
-extern void FormIndexDatum(int numberOfAttributes,
-			   AttrNumber *attributeNumber, HeapTuple heapTuple,
-			   TupleDesc heapDescriptor, Datum *datum,
-			   char *nullv, FuncIndexInfoPtr fInfo);
+extern IndexInfo *BuildIndexInfo(HeapTuple indexTuple);
+
+extern void FormIndexDatum(IndexInfo *indexInfo,
+						   HeapTuple heapTuple,
+						   TupleDesc heapDescriptor,
+						   MemoryContext resultCxt,
+						   Datum *datum,
+						   char *nullv);
 
 extern void UpdateStats(Oid relid, long reltuples, bool inplace);
 extern bool IndexesAreActive(Oid relid, bool comfirmCommitted);
@@ -54,11 +53,7 @@ extern bool SetReindexProcessing(bool processing);
 extern bool IsReindexProcessing(void);
 
 extern void index_build(Relation heapRelation, Relation indexRelation,
-						int numberOfAttributes, AttrNumber *attributeNumber,
-						FuncIndexInfo *funcInfo, PredInfo *predInfo,
-						bool unique);
-
-extern bool IndexIsUnique(Oid indexId);
+						IndexInfo *indexInfo, Node *oldPred);
 
 extern bool reindex_index(Oid indexId, bool force);
 extern bool activate_indexes_of_a_table(Oid relid, bool activate);

@@ -61,18 +61,6 @@ typedef struct RetrieveIndexResultData
 typedef RetrieveIndexResultData *RetrieveIndexResult;
 
 
-/*-----------------
- * PredInfo -
- *	  used for partial indices
- *-----------------
- */
-typedef struct PredInfo
-{
-	Node	   *pred;
-	Node	   *oldPred;
-} PredInfo;
-
-
 /* ----------------
  *		externs
  * ----------------

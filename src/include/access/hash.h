@@ -17,7 +17,6 @@
 #ifndef HASH_H
 #define HASH_H
 
-#include "access/funcindex.h"
 #include "access/itup.h"
 #include "access/relscan.h"
 #include "access/sdir.h"

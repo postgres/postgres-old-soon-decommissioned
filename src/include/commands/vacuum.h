@@ -14,10 +14,9 @@
 #ifndef VACUUM_H
 #define VACUUM_H
 
-#include "fmgr.h"
-#include "access/funcindex.h"
-#include "catalog/pg_index.h"
 #include "catalog/pg_attribute.h"
+#include "catalog/pg_index.h"
+#include "fmgr.h"
 #include "nodes/pg_list.h"
 #include "storage/itemptr.h"
 
@@ -53,14 +52,6 @@ typedef struct VacPageListData
 } VacPageListData;
 
 typedef VacPageListData *VacPageList;
-
-typedef struct
-{
-	FuncIndexInfo finfo;
-	FuncIndexInfo *finfoP;
-	Form_pg_index tform;
-	int			natts;
-} IndDesc;
 
 typedef struct
 {

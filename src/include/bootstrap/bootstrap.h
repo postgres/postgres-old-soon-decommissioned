@@ -14,11 +14,14 @@
 #ifndef BOOTSTRAP_H
 #define BOOTSTRAP_H
 
-#include "access/funcindex.h"
 #include "access/itup.h"
+#include "nodes/execnodes.h"
 #include "utils/rel.h"
 
-#define MAXATTR 40				/* max. number of attributes in a relation */
+/* MAXATTR is the maximum number of attributes in a relation supported
+ * at bootstrap time (ie, the max possible in a system table).
+ */
+#define MAXATTR 40
 
 typedef struct hashnode
 {
@@ -35,10 +38,7 @@ extern int	DebugMode;
 
 extern int	BootstrapMain(int ac, char *av[]);
 
-extern void index_register(char *heap, char *ind,
-						   int natts, AttrNumber *attnos,
-						   FuncIndexInfo *finfo, PredInfo *predInfo,
-						   bool unique);
+extern void index_register(char *heap, char *ind, IndexInfo *indexInfo);
 
 extern void err_out(void);
 extern void InsertOneTuple(Oid objectid);

@@ -56,9 +56,12 @@ extern StrategyNumber RelationGetStrategy(Relation relation,
 			   AttrNumber attributeNumber, StrategyEvaluation evaluation,
 					RegProcedure procedure);
 extern void IndexSupportInitialize(IndexStrategy indexStrategy,
-					   RegProcedure *indexSupport, Oid indexObjectId,
-			  Oid accessMethodObjectId, StrategyNumber maxStrategyNumber,
-		 StrategyNumber maxSupportNumber, AttrNumber maxAttributeNumber);
-
+								   RegProcedure *indexSupport,
+								   bool *isUnique,
+								   Oid indexObjectId,
+								   Oid accessMethodObjectId,
+								   StrategyNumber maxStrategyNumber,
+								   StrategyNumber maxSupportNumber,
+								   AttrNumber maxAttributeNumber);
 
 #endif	 /* ISTRAT_H */
