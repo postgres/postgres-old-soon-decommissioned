@@ -36,11 +36,6 @@ include $(SRCDIR)/Makefile.shlib
 
 install: install-lib $(install-shlib-dep)
 
-# Handmade dependencies in case make depend not done
-ecpglib.o : ecpglib.c ../include/ecpglib.h ../include/ecpgtype.h
-typename.o : typename.c ../include/ecpgtype.h
-
-
 .PHONY: clean
 
 clean: clean-shlib
