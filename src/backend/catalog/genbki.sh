@@ -161,10 +161,10 @@ sed -e 's;/\*.*\*/;;g' \
 ;g' | # we must run a new sed here to see the newlines we added
 sed -e "s/;[ 	]*$//g" \
     -e "s/^[ 	]*//" \
-    -e "s/[ 	]Oid/\ oid/g" \
-    -e "s/[ 	]NameData/\ name/g" \
+    -e "s/[ 	]Oid/ oid/g" \
+    -e "s/[ 	]NameData/ name/g" \
     -e "s/^Oid/oid/g" \
-    -e "s/^NameData/\name/g" \
+    -e "s/^NameData/name/g" \
     -e "s/(NameData/(name/g" \
     -e "s/(Oid/(oid/g" \
     -e "s/NAMEDATALEN/$NAMEDATALEN/g" \
