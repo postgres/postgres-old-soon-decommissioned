@@ -205,7 +205,7 @@ endif
 
 install: beforeinstall postgres fmgr.h\
          global1.bki.source local1_template1.bki.source \
-         libpq/pg_hba.sample
+         libpq/pg_hba.conf.sample
 	
 	$(INSTALL) $(INSTL_EXE_OPTS) $(objdir)/postgres \
 	  $(DESTDIR)$(BINDIR)/postgres
@@ -216,8 +216,8 @@ install: beforeinstall postgres fmgr.h\
 	  $(DESTDIR)$(LIBDIR)/global1.bki.source
 	$(INSTALL) $(INSTLOPTS) $(objdir)/local1_template1.bki.source \
 	  $(DESTDIR)$(LIBDIR)/local1_template1.bki.source
-	$(INSTALL) $(INSTLOPTS) libpq/pg_hba.sample \
-	  $(DESTDIR)$(LIBDIR)/pg_hba.sample
+	$(INSTALL) $(INSTLOPTS) libpq/pg_hba.conf.sample \
+	  $(DESTDIR)$(LIBDIR)/pg_hba.conf.sample
 
 # so we can get the UID of the postgres owner (w/o moving pg_id to
 # src/tools). We just want the vanilla LDFLAGS for pg_id
