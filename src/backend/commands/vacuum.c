@@ -558,7 +558,6 @@ vc_vacone(Oid relid, bool analyze, List *va_cols)
 				vacrelstats->num_tuples, vacrelstats->hasindex, vacrelstats);
 
 	/* next command frees attribute stats */
-
 	CommitTransactionCommand();
 }
 

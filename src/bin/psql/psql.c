@@ -2724,18 +2724,6 @@ main(int argc, char **argv)
 
 	char	   *home = NULL;	/* Used to store $HOME */
 
-#ifdef WIN32
-	{
-		WSADATA		wsaData;
-
-		if (WSAStartup(MAKEWORD(1, 1), &wsaData))
-		{
-			fprintf(stderr, "Failed to start winsock: %i\n", WSAGetLastError());
-			exit(1);
-		}
-	}
-#endif
-
 	MemSet(&settings, 0, sizeof settings);
 	settings.opt.align = 1;
 	settings.opt.header = 1;
