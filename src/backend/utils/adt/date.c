@@ -142,10 +142,6 @@ reltimein(char *str)
 		|| (DecodeDateDelta(field, ftype, nf, &dtype, tm, &fsec) != 0))
 		elog(ERROR, "Bad reltime external representation '%s'", str);
 
-#ifdef DATEDEBUG
-	printf("reltimein- %d fields are type %d (DTK_DATE=%d)\n", nf, dtype, DTK_DATE);
-#endif
-
 	switch (dtype)
 	{
 		case DTK_DELTA:
@@ -350,11 +346,6 @@ timespan_reltime(TimeSpan *timespan)
 		}
 
 		span = (((((double) 365 * year) + ((double) 30 * month)) * 86400) + timespan->time);
-
-#ifdef DATEDEBUG
-		printf("timespan_reltime- convert m%d s%f to %f [%d %d]\n",
-			   timespan->month, timespan->time, span, INT_MIN, INT_MAX);
-#endif
 
 		time = (((span > INT_MIN) && (span < INT_MAX)) ? span : INVALID_RELTIME);
 	}
