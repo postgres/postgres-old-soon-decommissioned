@@ -14,7 +14,7 @@
 #ifndef VAR_H
 #define VAR_H
 
-#include "nodes/primnodes.h"
+#include "nodes/parsenodes.h"
 
 
 extern List *pull_varnos(Node *node);
@@ -22,7 +22,9 @@ extern bool contain_var_reference(Node *node, int varno, int varattno,
 					  int levelsup);
 extern bool contain_whole_tuple_var(Node *node, int varno, int levelsup);
 extern bool contain_var_clause(Node *node);
+extern bool contain_vars_of_level(Node *node, int levelsup);
+extern bool contain_vars_above_level(Node *node, int levelsup);
 extern List *pull_var_clause(Node *node, bool includeUpperVars);
-extern Node *flatten_join_alias_vars(Node *node, List *rtable);
+extern Node *flatten_join_alias_vars(Query *root, Node *node);
 
 #endif   /* VAR_H */

@@ -75,7 +75,7 @@ extern void mergejoinscansel(Query *root, Node *clause,
 				 Selectivity *leftscan,
 				 Selectivity *rightscan);
 
-extern double estimate_num_groups(Query *root, List *groupClauses,
+extern double estimate_num_groups(Query *root, List *groupExprs,
 								  double input_rows);
 
 extern Datum btcostestimate(PG_FUNCTION_ARGS);

@@ -145,7 +145,8 @@ extern List *set_intersecti(List *list1, List *list2);
 
 extern bool equali(List *list1, List *list2);
 extern bool sameseti(List *list1, List *list2);
-extern bool nonoverlap_setsi(List *list1, List *list2);
+extern bool overlap_setsi(List *list1, List *list2);
+#define nonoverlap_setsi(list1, list2) (!overlap_setsi(list1, list2))
 extern bool is_subseti(List *list1, List *list2);
 
 extern void freeList(List *list);

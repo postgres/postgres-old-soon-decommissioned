@@ -32,6 +32,8 @@ extern SubqueryScan *make_subqueryscan(List *qptlist, List *qpqual,
 extern Append *make_append(List *appendplans, bool isTarget, List *tlist);
 extern Sort *make_sort(Query *root, List *tlist,
 		  Plan *lefttree, int keycount);
+extern Sort *make_sort_from_sortclauses(Query *root, List *tlist,
+										Plan *lefttree, List *sortcls);
 extern Agg *make_agg(Query *root, List *tlist, List *qual,
 					 AggStrategy aggstrategy,
 					 int numGroupCols, AttrNumber *grpColIdx,

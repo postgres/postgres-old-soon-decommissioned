@@ -255,3 +255,25 @@ get_sortgroupclause_expr(SortClause *sortClause, List *targetList)
 
 	return (Node *) tle->expr;
 }
+
+/*
+ * get_sortgrouplist_exprs
+ *		Given a list of SortClauses (or GroupClauses), build a list
+ *		of the referenced targetlist expressions.
+ */
+List *
+get_sortgrouplist_exprs(List *sortClauses, List *targetList)
+{
+	List   *result = NIL;
+	List   *l;
+
+	foreach(l, sortClauses)
+	{
+		SortClause *sortcl = (SortClause *) lfirst(l);
+		Node	   *sortexpr;
+
+		sortexpr = get_sortgroupclause_expr(sortcl, targetList);
+		result = lappend(result, sortexpr);
+	}
+	return result;
+}

@@ -750,6 +750,10 @@ print_path(Query *root, Path *path, int indent)
 			ptype = "Material";
 			subpath = ((MaterialPath *) path)->subpath;
 			break;
+		case T_UniquePath:
+			ptype = "Unique";
+			subpath = ((UniquePath *) path)->subpath;
+			break;
 		case T_NestPath:
 			ptype = "NestLoop";
 			join = true;

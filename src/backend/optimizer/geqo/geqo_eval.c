@@ -22,8 +22,8 @@
 #include "postgres.h"
 
 #include <float.h>
-#include <math.h>
 #include <limits.h>
+#include <math.h>
 
 #include "optimizer/geqo.h"
 #include "optimizer/pathnode.h"
@@ -91,7 +91,10 @@ geqo_eval(Query *root, List *initial_rels, Gene *tour, int num_gene)
 	 * XXX geqo does not currently support optimization for partial result
 	 * retrieval --- how to fix?
 	 */
-	fitness = joinrel->cheapest_total_path->total_cost;
+	if (joinrel)
+		fitness = joinrel->cheapest_total_path->total_cost;
+	else
+		fitness = DBL_MAX;
 
 	/* restore join_rel_list */
 	root->join_rel_list = savelist;
@@ -113,7 +116,7 @@ geqo_eval(Query *root, List *initial_rels, Gene *tour, int num_gene)
  *	 'tour' is the proposed join order, of length 'num_gene'
  *
  * Returns a new join relation whose cheapest path is the best plan for
- * this join order.
+ * this join order.  NB: will return NULL if join order is invalid.
  *
  * Note that at each step we consider using the next rel as both left and
  * right side of a join.  However, we cannot build general ("bushy") plan
@@ -153,6 +156,10 @@ gimme_tree(Query *root, List *initial_rels,
 		 * paths constructed for it will only include the ones we want.
 		 */
 		new_rel = make_join_rel(root, joinrel, inner_rel, JOIN_INNER);
+
+		/* Fail if join order is not valid */
+		if (new_rel == NULL)
+			return NULL;
 
 		/* Find and save the cheapest paths for this rel */
 		set_cheapest(new_rel);

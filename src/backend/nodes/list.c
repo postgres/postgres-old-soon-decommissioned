@@ -638,10 +638,10 @@ lreverse(List *l)
 }
 
 /*
- * Return t if two integer lists have no members in common.
+ * Return t if two integer lists have any members in common.
  */
 bool
-nonoverlap_setsi(List *list1, List *list2)
+overlap_setsi(List *list1, List *list2)
 {
 	List	   *x;
 
@@ -650,9 +650,9 @@ nonoverlap_setsi(List *list1, List *list2)
 		int			e = lfirsti(x);
 
 		if (intMember(e, list2))
-			return false;
+			return true;
 	}
-	return true;
+	return false;
 }
 
 /*

@@ -108,6 +108,8 @@ query_planner(Query *root, List *tlist, double tuple_fraction,
 
 	/*
 	 * init planner lists to empty
+	 *
+	 * NOTE: in_info_list was set up by subquery_planner, do not touch here
 	 */
 	root->base_rel_list = NIL;
 	root->other_rel_list = NIL;

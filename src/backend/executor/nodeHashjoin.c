@@ -96,6 +96,15 @@ ExecHashJoin(HashJoinState *node)
 	}
 
 	/*
+	 * If we're doing an IN join, we want to return at most one row per
+	 * outer tuple; so we can stop scanning the inner scan if we matched on
+	 * the previous try.
+	 */
+	if (node->js.jointype == JOIN_IN && 
+		node->hj_MatchedOuter)
+		node->hj_NeedNewOuter = true;
+
+	/*
 	 * Reset per-tuple memory context to free any expression evaluation
 	 * storage allocated in the previous tuple cycle.  Note this can't
 	 * happen until we're done projecting out tuples from a join tuple.
@@ -353,6 +362,7 @@ ExecInitHashJoin(HashJoin *node, EState *estate)
 	switch (node->join.jointype)
 	{
 		case JOIN_INNER:
+		case JOIN_IN:
 			break;
 		case JOIN_LEFT:
 			hjstate->hj_NullInnerTupleSlot =

@@ -1825,8 +1825,7 @@ mergejoinscansel(Query *root, Node *clause,
  *
  * Inputs:
  *	root - the query
- *	groupClauses - list of GroupClauses (or SortClauses for the DISTINCT
- *		case, but those are equivalent structs)
+ *	groupExprs - list of expressions being grouped by
  *	input_rows - number of rows estimated to arrive at the group/unique
  *		filter step
  *
@@ -1867,7 +1866,7 @@ mergejoinscansel(Query *root, Node *clause,
  * do better).
  */
 double
-estimate_num_groups(Query *root, List *groupClauses, double input_rows)
+estimate_num_groups(Query *root, List *groupExprs, double input_rows)
 {
 	List	   *allvars = NIL;
 	List	   *varinfos = NIL;
@@ -1879,14 +1878,12 @@ estimate_num_groups(Query *root, List *groupClauses, double input_rows)
 	} MyVarInfo;
 
 	/* We should not be called unless query has GROUP BY (or DISTINCT) */
-	Assert(groupClauses != NIL);
+	Assert(groupExprs != NIL);
 
 	/* Step 1: get the unique Vars used */
-	foreach(l, groupClauses)
+	foreach(l, groupExprs)
 	{
-		GroupClause *grpcl = (GroupClause *) lfirst(l);
-		Node	   *groupexpr = get_sortgroupclause_expr(grpcl,
-														 root->targetList);
+		Node	   *groupexpr = (Node *) lfirst(l);
 		List	   *varshere;
 
 		varshere = pull_var_clause(groupexpr, false);

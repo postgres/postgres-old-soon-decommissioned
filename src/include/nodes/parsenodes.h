@@ -101,6 +101,7 @@ typedef struct Query
 	List	   *join_rel_list;	/* list of join-relation RelOptInfos */
 	List	   *equi_key_list;	/* list of lists of equijoined
 								 * PathKeyItems */
+	List	   *in_info_list;	/* list of InClauseInfos */
 	List	   *query_pathkeys; /* desired pathkeys for query_planner() */
 	bool		hasJoinRTEs;	/* true if any RTEs are RTE_JOIN kind */
 } Query;

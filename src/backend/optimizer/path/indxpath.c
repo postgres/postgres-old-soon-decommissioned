@@ -1401,11 +1401,13 @@ best_inner_indexscan(Query *root, RelOptInfo *rel,
 	MemoryContext oldcontext;
 
 	/*
-	 * Nestloop only supports inner and left joins.
+	 * Nestloop only supports inner, left, and IN joins.
 	 */
 	switch (jointype)
 	{
 		case JOIN_INNER:
+		case JOIN_IN:
+		case JOIN_UNIQUE_OUTER:
 			isouterjoin = false;
 			break;
 		case JOIN_LEFT:
