@@ -38,11 +38,10 @@ OBJS = info.o bind.o columninfo.o connection.o convert.o drvconn.o \
         gpps.o tuple.o tuplelist.o dlg_specific.o $(OBJX)
 
 SHLIB_LINK= $(LD_FLAGS)
+SHLIB_LINK+= $(SHLIB_ODBC)
 
 # Shared library stuff, also default 'all' target
 include $(SRCDIR)/Makefile.shlib
-
-LDFLAGS_SL+= $(LDFLAGS_ODBC)
 
 .PHONY: install install-ini beforeinstall-headers install-headers
 
