@@ -83,6 +83,7 @@ HeapTupleSatisfiesItself(HeapTupleHeader tuple)
 					return false;
 				}
 				tuple->t_infomask |= HEAP_XMIN_COMMITTED;
+				tuple->t_infomask &= ~HEAP_MOVED;
 			}
 		}
 		else if (tuple->t_infomask & HEAP_MOVED_IN)
