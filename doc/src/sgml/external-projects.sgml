@@ -176,7 +176,7 @@ $PostgreSQL$
    extensible. For this reason, extensions loaded into the database can
    function just like features that are packaged with the database. The
    <filename>/contrib</> directory shipped with the source code
-   contains a large number of extensions. The <filename>READMD</> file
+   contains a large number of extensions. The <filename>README</> file
    in that directory contains a summary. They include conversion tools,
    full-text indexing, <acronym>XML</> tools, and additional data types
    and indexing methods. Other extensions are developed independently,
