@@ -32,7 +32,7 @@ include $(top_srcdir)/src/Makefile.shlib
 # rule and do this instead:
 
 install: installdirs all
-ifdef shlib
+ifeq ($(enable_shared), yes)
 	$(INSTALL_SHLIB) $(shlib) $(DESTDIR)$(libdir)/plpgsql$(DLSUFFIX)
 else
 	@echo "*****"; \

@@ -23,14 +23,12 @@ OBJS = info.o bind.o columninfo.o connection.o convert.o drvconn.o \
         pgtypes.o psqlodbc.o qresult.o results.o socket.o parse.o statement.o \
         gpps.o tuple.o tuplelist.o dlg_specific.o $(OBJX)
 
-SHLIB_LINK= $(LD_FLAGS)
+SHLIB_LINK= -lm
 
 all: all-lib
 
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib
-
-LDFLAGS_SL+= $(LDFLAGS_ODBC)
 
 odbc_headers = isql.h isqlext.h iodbc.h
 odbc_includedir = $(includedir)/iodbc
