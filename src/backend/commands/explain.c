@@ -270,7 +270,7 @@ ExplainOnePlan(QueryDesc *queryDesc, ExplainStmt *stmt,
 	if (es->printCost)
 	{
 		if (stmt->analyze)
-			appendStringInfo(str, "Total runtime: %.2f msec\n",
+			appendStringInfo(str, "Total runtime: %.3f ms\n",
 							 1000.0 * totaltime);
 		do_text_output_multiline(tstate, str->data);
 	}
@@ -582,7 +582,7 @@ explain_outNode(StringInfo str,
 		{
 			double		nloops = planstate->instrument->nloops;
 
-			appendStringInfo(str, " (actual time=%.2f..%.2f rows=%.0f loops=%.0f)",
+			appendStringInfo(str, " (actual time=%.3f..%.3f rows=%.0f loops=%.0f)",
 						1000.0 * planstate->instrument->startup / nloops,
 						  1000.0 * planstate->instrument->total / nloops,
 							 planstate->instrument->ntuples / nloops,
