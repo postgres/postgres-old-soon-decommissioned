@@ -46,7 +46,7 @@ int			MyProcPid;
 struct Port *MyProcPort;
 long		MyCancelKey;
 
-char	   *DataDir;
+char	   *DataDir = NULL;
 
  /*
   * The PGDATA directory user says to use, or defaults to via environment

@@ -1053,6 +1053,11 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[])
 				break;
 
 			case 'D':			/* PGDATA directory */
+			        if (!DataDir) {
+				    DataDir = optarg;
+				    /* must be done after DataDir is defined */
+				    read_pg_options(0);
+				}
 				DataDir = optarg;
 				break;
 
@@ -1514,7 +1519,7 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[])
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.93 $ $Date: 1998/10/13 20:05:44 $\n");
+		puts("$Revision: 1.94 $ $Date: 1998/10/16 06:05:13 $\n");
 	}
 
 	/* ----------------
