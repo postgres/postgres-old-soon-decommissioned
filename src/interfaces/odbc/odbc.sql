@@ -145,10 +145,6 @@ CREATE OR REPLACE FUNCTION odbc_timestamp() RETURNS timestamp with time zone AS 
     SELECT current_timestamp;
 ' LANGUAGE SQL;
 
-CREATE OR REPLACE FUNCTION odbc_timestamp() RETURNS timestamp with time zone AS '
-    SELECT current_timestamp;
-' LANGUAGE SQL;
-
 CREATE OR REPLACE FUNCTION dayname(timestamp) RETURNS text AS '
     SELECT to_char($1,''Day'');
 ' LANGUAGE SQL;
