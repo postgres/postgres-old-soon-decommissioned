@@ -1309,7 +1309,6 @@ make_targetlist_expr(ParseState *pstate,
 	  if (attrtype != type_id) {
 	      if (IsA(expr,Const)) {
 		  /* try to cast the constant */
-#ifdef ARRAY_PATCH
 		  if (arrayRef && !(((A_Indices *)lfirst(arrayRef))->lidx)) {
 		      /* updating a single item */
 		      Oid typelem = get_typelem(attrtype);
@@ -1318,7 +1317,6 @@ make_targetlist_expr(ParseState *pstate,
 						   get_id_type((long)typelem),
 					           attrlen);
 		  } else
-#endif
 		  expr = (Node*)parser_typecast2(expr,
 						 type_id,
 						 get_id_type((long)attrtype),
@@ -1345,11 +1343,7 @@ make_targetlist_expr(ParseState *pstate,
 						     &pstate->p_last_resno);
 	       while(ar!=NIL) {
 		   A_Indices *ind = lfirst(ar);
-#ifdef ARRAY_PATCH
 		   if (lowerIndexpr || (!upperIndexpr && ind->lidx)) {
-#else
-		   if (lowerIndexpr) {
-#endif
 		       /* XXX assume all lowerIndexpr is non-null in
 			* this case
 			*/
