@@ -63,6 +63,12 @@ typedef bits16	BufferLock;
 extern int ShowPinTrace;
 
 /*
+ * BufferWriteModes (settable via SetBufferWriteMode)
+ */
+#define BUFFER_FLUSH_WRITE	0	/* immediate write */
+#define BUFFER_LATE_WRITE	1	/* delayed write: mark as DIRTY */
+
+/*
  * prototypes for functions in bufmgr.c 
  */
 extern Buffer RelationGetBufferWithBuffer(Relation relation,
@@ -107,6 +113,7 @@ extern int ReleaseAndReadBuffer_Debug(char *file,
 				BlockNumber blockNum);
 extern void BufferRefCountReset(int *refcountsave);
 extern void BufferRefCountRestore(int *refcountsave);
+extern int SetBufferWriteMode (int mode);
 
 #endif	/* !defined(BufMgrIncluded) */
 
