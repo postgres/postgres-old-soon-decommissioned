@@ -128,7 +128,6 @@ void
 geqo_print_joinclauses(Query *root, List *clauses)
 {
 	List	   *l;
-	extern void print_expr(Node *expr, List *rtable);	/* in print.c */
 
 	foreach(l, clauses)
 	{

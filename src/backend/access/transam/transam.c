@@ -20,7 +20,9 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
+#include "access/transam.h"
 #include "catalog/catname.h"
+#include "miscadmin.h"
 
 static int	RecoveryCheckingEnabled(void);
 static void TransRecover(Relation logRelation);
@@ -76,17 +78,6 @@ TransactionId FirstTransactionId = (TransactionId) 514;
  * ----------------
  */
 int			RecoveryCheckingEnableState = 0;
-
-/* ------------------
- *		spinlock for oid generation
- * -----------------
- */
-extern int	OidGenLockId;
-
-#ifdef XLOG
-#include "miscadmin.h"
-extern VariableCache ShmemVariableCache;
-#endif
 
 /* ----------------
  *		recovery checking accessors

@@ -17,6 +17,7 @@
 #include "postgres.h"
 
 #include "miscadmin.h"
+#include "access/xlog.h"
 #include "storage/bufmgr.h"
 #include "storage/sinval.h"
 
@@ -55,8 +56,6 @@ void
 CreateSharedMemoryAndSemaphores(IPCKey key, int maxBackends)
 {
 	int			size;
-	extern int	XLOGShmemSize(void);
-	extern void XLOGShmemInit(void);
 
 #ifdef HAS_TEST_AND_SET
 

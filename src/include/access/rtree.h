@@ -17,6 +17,7 @@
 #include "access/itup.h"
 #include "access/sdir.h"
 #include "access/skey.h"
+#include "access/xlog.h"
 #include "utils/rel.h"
 
 /* see rtstrat.c for what all this is about */
@@ -120,6 +121,10 @@ extern Datum rtrestrpos(PG_FUNCTION_ARGS);
 extern Datum rtrescan(PG_FUNCTION_ARGS);
 extern Datum rtbuild(PG_FUNCTION_ARGS);
 extern void _rtdump(Relation r);
+
+extern void rtree_redo(XLogRecPtr lsn, XLogRecord *record);
+extern void rtree_undo(XLogRecPtr lsn, XLogRecord *record);
+extern void rtree_desc(char *buf, uint8 xl_info, char* rec);
 
 /* rtscan.c */
 extern void rtadjscans(Relation r, int op, BlockNumber blkno,

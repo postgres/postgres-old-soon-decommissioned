@@ -88,6 +88,7 @@
 #include "libpq/pqformat.h"
 #include "miscadmin.h"
 #include "tcop/dest.h"
+#include "tcop/tcopprot.h"
 #include "utils/fmgroids.h"
 #include "utils/ps_status.h"
 #include "utils/syscache.h"

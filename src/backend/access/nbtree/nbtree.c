@@ -35,9 +35,6 @@ bool		FastBuild = true;	/* use sort/build instead of insertion
 #ifdef XLOG
 #include "access/xlogutils.h"
 
-void btree_redo(XLogRecPtr lsn, XLogRecord *record);
-void btree_undo(XLogRecPtr lsn, XLogRecord *record);
-void btree_desc(char *buf, uint8 xl_info, char* rec);
 #endif
 
 static void _bt_restscan(IndexScanDesc scan);

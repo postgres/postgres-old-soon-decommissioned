@@ -89,10 +89,6 @@
 #ifdef XLOG
 #include "access/xlogutils.h"
 
-void heap_redo(XLogRecPtr lsn, XLogRecord *record);
-void heap_undo(XLogRecPtr lsn, XLogRecord *record);
-void heap_desc(char *buf, uint8 xl_info, char* rec);
-
 XLogRecPtr	log_heap_move(Relation reln, ItemPointerData from, HeapTuple newtup);
 
 /* comments are in heap_update */

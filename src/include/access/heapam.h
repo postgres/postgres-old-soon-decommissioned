@@ -18,6 +18,7 @@
 #include "access/htup.h"
 #include "access/relscan.h"
 #include "access/tupmacs.h"
+#include "access/xlogutils.h"
 #include "storage/block.h"
 #include "storage/lmgr.h"
 #include "utils/rel.h"
@@ -233,6 +234,10 @@ extern int heap_update(Relation relation, ItemPointer otid, HeapTuple tup,
 extern int	heap_mark4update(Relation relation, HeapTuple tup, Buffer *userbuf);
 extern void heap_markpos(HeapScanDesc scan);
 extern void heap_restrpos(HeapScanDesc scan);
+
+extern void heap_redo(XLogRecPtr lsn, XLogRecord *rptr);
+extern void heap_undo(XLogRecPtr lsn, XLogRecord *rptr);
+extern void heap_desc(char *buf, uint8 xl_info, char* rec);
 
 /* in common/heaptuple.c */
 extern Size ComputeDataSize(TupleDesc tupleDesc, Datum *value, char *nulls);

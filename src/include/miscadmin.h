@@ -141,6 +141,10 @@ extern void SetDataDir(const char *dir);
 extern int	FindExec(char *full_path, const char *argv0, const char *binary_name);
 extern int	CheckPathAccess(char *path, char *name, int open_mode);
 
+#ifdef CYR_RECODE
+extern char *convertstr(char *, int, int);
+#endif
+
 /*****************************************************************************
  *	  pmod.h --																 *
  *			POSTGRES processing mode definitions.							 *

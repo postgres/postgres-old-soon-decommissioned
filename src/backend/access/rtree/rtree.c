@@ -24,9 +24,6 @@
 
 #ifdef XLOG
 #include "access/xlogutils.h"
-void rtree_redo(XLogRecPtr lsn, XLogRecord *record);
-void rtree_undo(XLogRecPtr lsn, XLogRecord *record);
-void rtree_desc(char *buf, uint8 xl_info, char* rec);
 #endif
 
 typedef struct SPLITVEC

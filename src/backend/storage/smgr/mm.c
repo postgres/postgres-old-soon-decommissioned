@@ -16,6 +16,7 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"
+#include "miscadmin.h"
 
 #ifdef STABLE_MEMORY_STORAGE
 
@@ -71,7 +72,6 @@ typedef struct MMRelHashEntry
 #define MMNRELATIONS	2
 
 SPINLOCK	MMCacheLock;
-extern Oid	MyDatabaseId;
 
 static int *MMCurTop;
 static int *MMCurRelno;

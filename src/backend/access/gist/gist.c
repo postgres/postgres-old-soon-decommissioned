@@ -25,9 +25,6 @@
 
 #ifdef XLOG
 #include "access/xlogutils.h"
-void gist_redo(XLogRecPtr lsn, XLogRecord *record);
-void gist_undo(XLogRecPtr lsn, XLogRecord *record);
-void gist_desc(char *buf, uint8 xl_info, char* rec);
 #endif
 
 /* non-export function prototypes */

@@ -216,10 +216,6 @@ extern char *optarg;
 extern int	optind,
 			opterr;
 
-extern char XLogDir[];
-extern char ControlFilePath[];
-extern void SetThisStartUpID(void);
-
 /*
  * postmaster.c - function prototypes
  */

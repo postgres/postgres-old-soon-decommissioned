@@ -416,7 +416,6 @@ static int	IpcSemaphoreLock_return;
 void
 IpcSemaphoreLock(IpcSemaphoreId semId, int sem, int lock)
 {
-	extern int	errno;
 	int			errStatus;
 	struct sembuf sops;
 
@@ -460,7 +459,6 @@ static int	IpcSemaphoreUnlock_return;
 void
 IpcSemaphoreUnlock(IpcSemaphoreId semId, int sem, int lock)
 {
-	extern int	errno;
 	int			errStatus;
 	struct sembuf sops;
 

@@ -20,6 +20,7 @@
 #include "access/itup.h"
 #include "access/relscan.h"
 #include "access/sdir.h"
+#include "access/xlog.h"
 #include "fmgr.h"
 
 /*
@@ -329,5 +330,11 @@ extern HashItem _hash_formitem(IndexTuple itup);
 extern Bucket _hash_call(Relation rel, HashMetaPage metap, Datum key);
 extern uint32 _hash_log2(uint32 num);
 extern void _hash_checkpage(Page page, int flags);
+
+
+/* hash.c */
+extern void hash_redo(XLogRecPtr lsn, XLogRecord *record);
+extern void hash_undo(XLogRecPtr lsn, XLogRecord *record);
+extern void hash_desc(char *buf, uint8 xl_info, char* rec);
 
 #endif	 /* HASH_H */

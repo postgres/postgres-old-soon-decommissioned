@@ -52,6 +52,10 @@ extern void RelationPurgeLocalRelation(bool xactComitted);
 
 extern void RelationCacheAbort(void);
 
+
+extern void CreateDummyCaches(void);
+extern void DestroyDummyCaches(void);
+
 /*
  * both vacuum.c and relcache.c need to know the name of the relcache init file
  */

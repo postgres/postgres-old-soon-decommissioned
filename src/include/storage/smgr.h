@@ -14,6 +14,7 @@
 #ifndef SMGR_H
 #define SMGR_H
 
+#include "access/xlog.h"
 #include "storage/relfilenode.h"
 #include "storage/block.h"
 #include "storage/spin.h"
@@ -49,6 +50,10 @@ extern int	smgrabort(void);
 
 #ifdef XLOG
 extern int	smgrsync(void);
+
+extern void smgr_redo(XLogRecPtr lsn, XLogRecord *record);
+extern void smgr_undo(XLogRecPtr lsn, XLogRecord *record);
+extern void smgr_desc(char *buf, uint8 xl_info, char* rec);
 #endif
 
 

@@ -18,6 +18,7 @@
 #include "access/genam.h"
 #include "access/istrat.h"
 #include "access/nbtree.h"
+#include "catalog/catalog.h"
 #include "executor/execdebug.h"
 
 
@@ -133,7 +134,6 @@ _bt_formitem(IndexTuple itup)
 	int			nbytes_btitem;
 	BTItem		btitem;
 	Size		tuplen;
-	extern Oid	newoid();
 
 	/* make a copy of the index tuple with room for extra stuff */
 	tuplen = IndexTupleSize(itup);

@@ -29,9 +29,6 @@ bool		BuildingHash = false;
 
 #ifdef XLOG
 #include "access/xlogutils.h"
-void hash_redo(XLogRecPtr lsn, XLogRecord *record);
-void hash_undo(XLogRecPtr lsn, XLogRecord *record);
-void hash_desc(char *buf, uint8 xl_info, char* rec);
 #endif
 
 

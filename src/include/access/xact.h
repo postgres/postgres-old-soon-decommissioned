@@ -15,6 +15,7 @@
 #define XACT_H
 
 #include "access/transam.h"
+#include "access/xlog.h"
 #include "utils/nabstime.h"
 
 /*
@@ -141,6 +142,10 @@ extern TransactionId DisabledTransactionId;
 
 extern void XactPushRollback(void (*func) (void *), void* data);
 extern void XactPopRollback(void);
+
+extern void	xact_redo(XLogRecPtr lsn, XLogRecord *record);
+extern void	xact_undo(XLogRecPtr lsn, XLogRecord *record);
+extern void	xact_desc(char *buf, uint8 xl_info, char* rec);
 
 /* defined in xid.c */
 extern Datum xidin(PG_FUNCTION_ARGS);

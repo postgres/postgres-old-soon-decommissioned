@@ -27,6 +27,7 @@
 #include "access/tupdesc.h"
 #include "access/xact.h"
 #include "bootstrap/bootstrap.h"
+#include "catalog/catalog.h"
 #include "catalog/heap.h"
 #include "catalog/pg_am.h"
 #include "catalog/pg_attribute.h"
@@ -288,7 +289,7 @@ boot_type_thing:
 
 optoideq:
 			OBJ_ID EQUALS boot_ident { $$ = atol(LexIDStr($3));				}
-		|						{ extern Oid newoid(); $$ = newoid();	}
+		|						{ $$ = newoid();	}
 		;
 
 boot_tuplelist:

@@ -579,11 +579,6 @@ smgriswo(int16 smgrno)
 #endif
 
 #ifdef XLOG
-#include "access/xlog.h"
-
-void smgr_redo(XLogRecPtr lsn, XLogRecord *record);
-void smgr_undo(XLogRecPtr lsn, XLogRecord *record);
-void smgr_desc(char *buf, uint8 xl_info, char* rec);
 
 void
 smgr_redo(XLogRecPtr lsn, XLogRecord *record)

@@ -224,10 +224,6 @@ int			XactIsoLevel;
 
 int			CommitDelay = 5;	/* 1/200 sec */
 
-void		xact_redo(XLogRecPtr lsn, XLogRecord *record);
-void		xact_undo(XLogRecPtr lsn, XLogRecord *record);
-void		xact_desc(char *buf, uint8 xl_info, char* rec);
-
 static void (*_RollbackFunc)(void*) = NULL;
 static void *_RollbackData = NULL;
 

@@ -11,6 +11,8 @@
  *-------------------------------------------------------------------------
  */
 
+#include "postgres.h"
+
 #include <fcntl.h>
 #include <unistd.h>
 #include <errno.h>
@@ -19,8 +21,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 
-#include "postgres.h"
-
+#include "access/transam.h"
 #include "access/xact.h"
 #include "catalog/catversion.h"
 #include "storage/sinval.h"
@@ -29,16 +30,9 @@
 #include "storage/s_lock.h"
 #include "access/xlog.h"
 #include "access/xlogutils.h"
+#include "utils/relcache.h"
 
 #include "miscadmin.h"
-
-void		UpdateControlFile(void);
-int			XLOGShmemSize(void);
-void		XLOGShmemInit(void);
-void		BootStrapXLOG(void);
-void		StartupXLOG(void);
-void		ShutdownXLOG(void);
-void		CreateCheckPoint(bool shutdown);
 
 char		XLogDir[MAXPGPATH];
 char		ControlFilePath[MAXPGPATH];
@@ -55,8 +49,6 @@ SPINLOCK	ControlFileLockId;
 
 /* To generate new xid */
 SPINLOCK	XidGenLockId;
-
-extern VariableCache ShmemVariableCache;
 
 #define MinXLOGbuffers	4
 
@@ -1239,7 +1231,7 @@ UpdateControlFile()
 }
 
 int
-XLOGShmemSize()
+XLOGShmemSize(void)
 {
 	if (XLOGbuffers < MinXLOGbuffers)
 		XLOGbuffers = MinXLOGbuffers;
@@ -1631,8 +1623,6 @@ StartupXLOG()
  * Postmaster uses it to set ThisStartUpID from XLogCtlData
  * located in shmem after successful startup.
  */
-void	SetThisStartUpID(void);
-
 void
 SetThisStartUpID(void)
 {
@@ -1645,9 +1635,6 @@ SetThisStartUpID(void)
 void
 ShutdownXLOG()
 {
-#ifdef XLOG
-	extern void CreateDummyCaches(void);
-#endif
 	elog(LOG, "Data Base System shutting down at %s", str_time(time(NULL)));
 
 #ifdef XLOG
@@ -1829,9 +1816,6 @@ XLogPutNextOid(Oid nextOid)
 					(char *) &nextOid, sizeof(Oid), NULL, 0);
 }
 
-void xlog_redo(XLogRecPtr lsn, XLogRecord *record);
-void xlog_undo(XLogRecPtr lsn, XLogRecord *record);
-void xlog_desc(char *buf, uint8 xl_info, char* rec);
 
 void
 xlog_redo(XLogRecPtr lsn, XLogRecord *record)
