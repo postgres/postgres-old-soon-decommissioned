@@ -188,7 +188,7 @@ make_one_rel_by_joins(Query *root, int levels_needed, List *initial_rels)
 	 * rest will be skipped in case of GEQO    *
 	 *******************************************/
 	if (enable_geqo && levels_needed >= geqo_rels)
-		return geqo(root);
+		return geqo(root, levels_needed, initial_rels);
 
 	/*
 	 * We employ a simple "dynamic programming" algorithm: we first find

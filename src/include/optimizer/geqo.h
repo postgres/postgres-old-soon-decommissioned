@@ -62,11 +62,13 @@ extern int          Geqo_random_seed; /* or negative to use current time */
 
 
 /* routines in geqo_main.c */
-extern RelOptInfo *geqo(Query *root);
+extern RelOptInfo *geqo(Query *root, int number_of_rels, List *initial_rels);
 
 /* routines in geqo_eval.c */
-extern Cost geqo_eval(Query *root, Gene *tour, int num_gene);
-extern RelOptInfo *gimme_tree(Query *root, Gene *tour, int rel_count,
-		   int num_gene, RelOptInfo *old_rel);
+extern Cost geqo_eval(Query *root, List *initial_rels,
+					  Gene *tour, int num_gene);
+extern RelOptInfo *gimme_tree(Query *root, List *initial_rels,
+							  Gene *tour, int num_gene,
+							  int rel_count, RelOptInfo *old_rel);
 
 #endif	 /* GEQO_H */
