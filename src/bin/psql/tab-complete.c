@@ -261,6 +261,7 @@ psql_completion(char *text, int start, int end)
 		"max_expr_depth",
 		"commit_delay",
 		"commit_siblings",
+		"extra_float_digits",
 
 		"effective_cache_size",
 		"random_page_cost",

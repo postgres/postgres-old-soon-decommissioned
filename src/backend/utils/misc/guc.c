@@ -681,6 +681,11 @@ static struct config_int
 	},
 
 	{
+		{"extra_float_digits", PGC_USERSET}, &extra_float_digits,
+		0, -15, 2, NULL, NULL
+	},
+
+	{
 		{NULL, 0}, NULL, 0, 0, 0, NULL, NULL
 	}
 };

@@ -212,6 +212,8 @@ extern Datum btnamecmp(PG_FUNCTION_ARGS);
 extern Datum bttextcmp(PG_FUNCTION_ARGS);
 
 /* float.c */
+extern int	extra_float_digits;
+
 extern Datum float4in(PG_FUNCTION_ARGS);
 extern Datum float4out(PG_FUNCTION_ARGS);
 extern Datum float8in(PG_FUNCTION_ARGS);
