@@ -102,7 +102,7 @@ COMMENT
    <command>COMMENT</command> adds a comment to an object that can be 
     easily retrieved with <application>psql's</application>
     <emphasize>\dd</emphasize> command.
-    To remove a comment, use <literal>''</literal>.
+    To remove a comment, use <literal>NULL</literal>.
     Comments are automatically dropped when the object is dropped.
   </para>
  </refsect1>
