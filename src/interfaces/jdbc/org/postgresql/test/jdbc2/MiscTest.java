@@ -3,6 +3,7 @@ package org.postgresql.test.jdbc2;
 import org.postgresql.test.TestUtil;
 import junit.framework.TestCase;
 import java.sql.*;
+import java.io.*;
 
 /*
  * $PostgreSQL$
@@ -65,8 +66,18 @@ public class MiscTest extends TestCase
 			fail( "Should not execute this, as a SQLException s/b thrown" );
 			con.commit();
 		}
-		catch ( Exception ex )
-		{}
+		catch ( SQLException ex )
+		{
+			// Verify that the SQLException is serializable.
+			try {
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				ObjectOutputStream oos = new ObjectOutputStream(baos);
+				oos.writeObject(ex);
+				oos.close();
+			} catch (IOException ioe) {
+				fail(ioe.getMessage());
+			}
+		}
 		try
 		{
 			con.commit();
