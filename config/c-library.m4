@@ -99,6 +99,54 @@ HAVE_POSIX_SIGNALS=$pgac_cv_func_posix_signals
 AC_SUBST(HAVE_POSIX_SIGNALS)])# PGAC_FUNC_POSIX_SIGNALS
 
 
+# PGAC_STRUCT_CMSGCRED
+# --------------------
+# Check if `struct cmsgcred' exists. Define HAVE_STRUCT_CMSGCRED if so.
+AC_DEFUN([PGAC_STRUCT_CMSGCRED],
+[AC_CACHE_CHECK(for struct cmsgcred, pgac_cv_struct_cmsgcred,
+[AC_TRY_COMPILE([#include <sys/param.h>
+#include <sys/socket.h>
+#include <sys/ucred.h>],
+  [struct cmsgcred sockcred;],
+  [pgac_cv_struct_cmsgcred=yes],
+  [pgac_cv_struct_cmsgcred=no])])
+if test x"$pgac_cv_struct_cmsgcred" = xyes ; then
+  AC_DEFINE(HAVE_STRUCT_CMSGCRED, 1, [Set to 1 if you have `struct cmsgcred'])
+fi])# PGAC_STRUCT_CMSGCRED
+
+
+# PGAC_STRUCT_FCRED
+# -----------------
+# Check if `struct fcred' exists. Define HAVE_STRUCT_FCRED if so.
+AC_DEFUN([PGAC_STRUCT_FCRED],
+[AC_CACHE_CHECK(for struct fcred, pgac_cv_struct_fcred,
+[AC_TRY_COMPILE([#include <sys/param.h>
+#include <sys/socket.h>
+#include <sys/ucred.h>],
+  [struct fcred sockcred;],
+  [pgac_cv_struct_fcred=yes],
+  [pgac_cv_struct_fcred=no])])
+if test x"$pgac_cv_struct_fcred" = xyes ; then
+  AC_DEFINE(HAVE_STRUCT_FCRED, 1, [Set to 1 if you have `struct fcred'])
+fi])# PGAC_STRUCT_FCRED
+
+
+# PGAC_STRUCT_SOCKCRED
+# --------------------
+# Check if `struct sockcred' exists. Define HAVE_STRUCT_SOCKCRED if so.
+AC_DEFUN([PGAC_STRUCT_SOCKCRED],
+[AC_CACHE_CHECK(for struct sockcred, pgac_cv_struct_sockcred,
+[AC_TRY_COMPILE([#include <sys/param.h>
+#include <sys/socket.h>
+#include <sys/ucred.h>],
+  [struct sockcred sockcred;],
+  [pgac_cv_struct_sockcred=yes],
+  [pgac_cv_struct_sockcred=no])])
+if test x"$pgac_cv_struct_sockcred" = xyes ; then
+  AC_DEFINE(HAVE_STRUCT_SOCKCRED, 1, [Set to 1 if you have `struct sockcred'])
+fi])# PGAC_STRUCT_SOCKCRED
+
+
 # PGAC_HEADER_STRING
 # ------------------
 # Tests whether <string.h> and <strings.h> can both be included

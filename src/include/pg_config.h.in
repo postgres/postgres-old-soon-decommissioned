@@ -607,6 +607,15 @@ extern int fdatasync(int fildes);
 /* Set to 1 if you have union semun */
 #undef HAVE_UNION_SEMUN
 
+/* Set to 1 if you have struct cmsgcred */
+#undef HAVE_STRUCT_CMSGCRED
+
+/* Set to 1 if you have struct fcred */
+#undef HAVE_STRUCT_FCRED
+
+/* Set to 1 if you have struct sockcred */
+#undef HAVE_STRUCT_SOCKCRED
+
 /* Set to 1 if you have struct sockaddr_un */
 #undef HAVE_STRUCT_SOCKADDR_UN
 
