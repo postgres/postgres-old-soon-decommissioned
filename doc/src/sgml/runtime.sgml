@@ -928,8 +928,9 @@ SET ENABLE_SEQSCAN TO OFF;
         by <literal>ORDER BY</>, merge joins, and <command>CREATE INDEX</>.
         Hash tables are used in hash joins, hash-based aggregation, and
         hash-based processing of <literal>IN</> subqueries.  Because 
-        <command>CREATE INDEX</> is used when restoring a database, it might
-        be good to temporarily increase this value during a restore.
+        <command>CREATE INDEX</> is used when restoring a database,
+        increasing <varname>sort_mem</varname> before doing a large
+        restore operation can improve performance.
        </para>
       </listitem>
      </varlistentry>
