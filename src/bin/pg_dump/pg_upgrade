@@ -93,8 +93,7 @@ fi
 # looks uglier but is more flexible.
 
 case "$SRCVERSION" in
-    6.5) ;;
-    7.0) ;;
+#    7.0) ;;
     *)	echo "Sorry, `basename $0` cannot upgrade database version $SRCVERSION to $DESTVERSION." 1>&2
 	echo "The on-disk structure of tables has changed." 1>&2
 	echo "You will need to dump and restore using pg_dump." 1>&2
