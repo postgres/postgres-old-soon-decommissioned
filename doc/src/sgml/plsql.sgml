@@ -2744,7 +2744,7 @@ show errors
     package would become something like this:
  
 <programlisting>
-CREATE FUNCTION acs__add_user(INTEGER,INTEGER,VARCHAR,DATETIME,INTEGER,INTEGER,...)
+CREATE FUNCTION acs__add_user(INTEGER,INTEGER,VARCHAR,TIMESTAMP,INTEGER,INTEGER,...)
 RETURNS INTEGER AS '
 DECLARE
     user_id ALIAS FOR $1;

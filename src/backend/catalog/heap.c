@@ -1777,7 +1777,7 @@ cookDefault(ParseState *pstate,
 	 * column's type.  We store the expression without coercion,
 	 * however, to avoid premature coercion in cases like
 	 *
-	 * CREATE TABLE tbl (fld datetime DEFAULT 'now'::text);
+	 * CREATE TABLE tbl (fld timestamp DEFAULT 'now'::text);
 	 *
 	 * NB: this should match the code in optimizer/prep/preptlist.c that
 	 * will actually do the coercion, to ensure we don't accept an

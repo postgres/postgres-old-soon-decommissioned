@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+The last vestiges of support for type names datetime and timespan are gone; use timestamp and interval instead
 Rule names are now per-relation, not global; DROP RULE and COMMENT ON RULE syntax changes accordingly
 Readline and Zlib are now required by default and must be turned off explicitly if their use is not desired
 Define a third class of function volatility to allow indexscans in more cases
