@@ -13,8 +13,12 @@
 
 #set -x
 
+# UPGRADE_VERSION is the expected old database version
+UPGRADE_VERSION="7.1"
+CUR_VERSION="7.2"
+
 # Set this to "Y" to enable this program
-ENABLE="N"
+ENABLE="Y"
 
 if [ "$ENABLE" != "Y" ]
 then
@@ -24,10 +28,6 @@ then
 	exit 1
 fi
 
-
-# UPGRADE_VERSION is the expected old database version
-UPGRADE_VERSION="7.1"
-CUR_VERSION="7.2"
 
 trap "rm -f /tmp/$$.*" 0 1 2 3 15
 
