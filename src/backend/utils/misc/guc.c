@@ -1740,8 +1740,9 @@ static struct config_string ConfigureNamesString[] =
 
 	{
 		{"listen_addresses", PGC_POSTMASTER, CONN_AUTH_SETTINGS,
-			gettext_noop("Sets the host name or IP addresses to listen to."),
-			NULL
+			gettext_noop("Sets the host name or IP address(es) to listen to."),
+			NULL,
+			GUC_LIST_INPUT
 		},
 		&ListenAddresses,
 		"localhost", NULL, NULL
