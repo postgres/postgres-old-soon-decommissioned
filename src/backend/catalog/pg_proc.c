@@ -13,6 +13,8 @@
  */
 #include <string.h>
 #include "postgres.h"
+#include <utils/syscache.h>
+#include <catalog/pg_proc.h>
 
 #include "access/heapam.h"
 #include "access/relscan.h"

@@ -30,6 +30,9 @@
 
 #include "postgres.h"
 
+#include <catalog/heap.h>
+#include <catalog/pg_proc.h>
+
 #include "parser/catalog_utils.h"
 
 #include "access/heapam.h"

@@ -25,6 +25,10 @@
  */
 #include "postgres.h"
 
+#include <catalog/pg_proc.h>
+#include <storage/bufmgr.h>
+#include <fmgr.h>
+
 #include "access/genam.h"
 #include "access/heapam.h"
 #include "utils/builtins.h"
@@ -60,6 +64,11 @@
 #include "optimizer/prep.h"
 
 #include "access/istrat.h"
+#ifndef HAVE_MEMMOVE
+# include <regex/utils.h>
+#else
+# include <string.h>
+#endif
 
 /*
  * macros used in guessing how many tuples are on a page.
@@ -1469,9 +1478,11 @@ DefaultBuild(Relation heapRelation,
     Datum		*datum;
     char		*nullv;
     long		reltuples, indtuples;
+#ifndef OMIT_PARTIAL_INDEX
     ExprContext		*econtext;
     TupleTable		tupleTable;
     TupleTableSlot	*slot;
+#endif
     Node		*predicate;
     Node		*oldPred;
     

@@ -17,6 +17,9 @@
 #include <string.h>
 #include "postgres.h"
 
+#include <catalog/pg_proc.h>
+#include <utils/syscache.h>
+
 #include "access/heapam.h"
 #include "access/skey.h"
 #include "access/htup.h"
