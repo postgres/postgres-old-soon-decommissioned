@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * btcompare.c--
+ * nbtcompare.c--
  *    Comparison functions for btree access method.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -19,8 +19,9 @@
  *			> 0 if a > b.
  *-------------------------------------------------------------------------
  */
-#include <string.h>
+
 #include "postgres.h"
+#include <time.h>
 #include "utils/nabstime.h"
 
 int32
