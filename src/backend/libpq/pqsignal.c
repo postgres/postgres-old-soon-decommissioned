@@ -75,7 +75,10 @@ void
 pqinitmask(void)
 {
 #ifdef HAVE_SIGPROCMASK
+
 	sigemptyset(&UnBlockSig);
+
+	/* First set all signals, then clear some. */
 	sigfillset(&BlockSig);
 	sigfillset(&AuthBlockSig);
 
@@ -126,6 +129,7 @@ pqinitmask(void)
 	sigdelset(&AuthBlockSig, SIGALRM);
 #endif
 #else
+	/* Set the signals we want. */
 	UnBlockSig = 0;
 	BlockSig = sigmask(SIGHUP) | sigmask(SIGQUIT) |
 		sigmask(SIGTERM) | sigmask(SIGALRM) |
