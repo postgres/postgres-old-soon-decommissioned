@@ -481,7 +481,7 @@ ExecuteGrantStmt_Language(GrantStmt *stmt)
 			elog(ERROR, "language \"%s\" not found", langname);
 		pg_language_tuple = (Form_pg_language) GETSTRUCT(tuple);
 
-		if (!pg_language_tuple->lanpltrusted)
+		if (!pg_language_tuple->lanpltrusted && stmt->is_grant)
 			elog(ERROR, "language \"%s\" is not trusted", langname);
 
 		/*

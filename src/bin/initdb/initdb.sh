@@ -1034,6 +1034,8 @@ $ECHO_N "setting privileges on built-in objects... "$ECHO_C
         WHERE proacl IS NULL;
     UPDATE pg_language SET lanacl = '{"=U"}' \
         WHERE lanpltrusted;
+    UPDATE pg_language SET lanacl = '{"="}' \
+        WHERE NOT lanpltrusted;
 EOF
 ) \
 	| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely

@@ -417,11 +417,13 @@ acldefault(GrantObjectType objtype, AclId ownerid)
 			owner_default = ACL_ALL_RIGHTS_DATABASE;
 			break;
 		case ACL_OBJECT_FUNCTION:
-			world_default = ACL_NO_RIGHTS;
+			/* Grant EXECUTE by default, for now */
+			world_default = ACL_EXECUTE;
 			owner_default = ACL_ALL_RIGHTS_FUNCTION;
 			break;
 		case ACL_OBJECT_LANGUAGE:
-			world_default = ACL_NO_RIGHTS;
+			/* Grant USAGE by default, for now */
+			world_default = ACL_USAGE;
 			owner_default = ACL_ALL_RIGHTS_LANGUAGE;
 			break;
 		case ACL_OBJECT_NAMESPACE:
