@@ -19,7 +19,7 @@ LDADD+= -L$(LIBPQDIR) -lpq
 # DLOBJS is the dynamically-loaded object files.  The "funcs" queries
 # include CREATE FUNCTIONs that load routines from these files.
 #
-DLOBJS= complex$(SLSUFF) funcs$(SLSUFF)
+DLOBJS= complex$(DLSUFFIX) funcs$(DLSUFFIX)
 
 QUERIES= advanced.sql basics.sql complex.sql funcs.sql syscat.sql
 #
@@ -39,7 +39,7 @@ all: $(QUERIES)
 	C=`pwd`; \
 	sed -e "s:_CWD_:$$C:g" \
 	    -e "s:_OBJWD_:$$C:g" \
-	    -e "s:_SLSUFF_:$(SLSUFF):g" \
+	    -e "s:_DLSUFFIX_:$(DLSUFFIX):g" \
 	    -e "s/_USER_/$$USER/g" < $< > $@
 
 funcs.sql:: $(DLOBJS)

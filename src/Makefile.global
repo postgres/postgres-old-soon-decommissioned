@@ -289,7 +289,7 @@ endif
 # Shared libraries.
 # This is overridden for many PORTNAMEs below.
 
-SLSUFF= .so
+DLSUFFIX= .so
 
 #----------------------------------------------------------------------
 ifeq ($(PORTNAME), BSD44_derived)
@@ -476,7 +476,7 @@ INSTALL= bsdinst
 RANLIB= touch
 
 CFLAGS_SL= +z
-SLSUFF= .sl
+DLSUFFIX= .sl
 
 %.sl: %.o
 	$(LD) -b -o $@ $<
@@ -547,10 +547,10 @@ endif
 
 ifeq ($(PORTNAME), linux)
 ifndef LINUX_ELF
-SLSUFF= .o
+DLSUFFIX= .o
 LDADD_BE= -ldld
 else
-SLSUFF= .so
+DLSUFFIX= .so
 LDADD_BE= -ldl
 LDFLAGS_BE= -rdynamic
 endif
@@ -675,7 +675,7 @@ INSTALL= /usr/bin/install
 RANLIB= /usr/bin/ranlib
 
 CFLAGS_SL= -G 0
-SLSUFF= .o
+DLSUFFIX= .o
 
 endif
 
