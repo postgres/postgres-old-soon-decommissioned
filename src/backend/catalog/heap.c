@@ -421,8 +421,12 @@ CheckAttributeType(const char *attname, Oid atttypid)
 			 "\n\tProceeding with relation creation anyway",
 			 attname);
 	else if (att_typtype == 'p')
-		elog(ERROR, "Attribute \"%s\" has pseudo-type %s",
-			 attname, format_type_be(atttypid));
+	{
+		/* Special hack for pg_statistic: allow ANYARRAY during initdb */
+		if (atttypid != ANYARRAYOID || IsUnderPostmaster)
+			elog(ERROR, "Attribute \"%s\" has pseudo-type %s",
+				 attname, format_type_be(atttypid));
+	}
 	else if (att_typtype == 'c')
 	{
 		Oid		typrelid = get_typ_typrelid(atttypid);

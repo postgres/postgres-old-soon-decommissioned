@@ -26,6 +26,12 @@
  * ----------------
  */
 
+/*
+ * Keep C compiler happy with anyarray, below.  This will need to go elsewhere
+ * if we ever use anyarray for more than pg_statistic.
+ */
+typedef struct varlena anyarray;
+
 /* ----------------
  *		pg_statistic definition.  cpp turns this into
  *		typedef struct FormData_pg_statistic
@@ -109,14 +115,14 @@ CATALOG(pg_statistic) BKI_WITHOUT_OIDS
 	float4		stanumbers4[1];
 
 	/*
-	 * Values in these text arrays are external representations of values
-	 * of the column's data type.  To re-create the actual Datum, do
-	 * datatypein(textout(arrayelement)).
+	 * Values in these arrays are values of the column's data type.  We
+	 * presently have to cheat quite a bit to allow polymorphic arrays
+	 * of this kind, but perhaps someday it'll be a less bogus facility.
 	 */
-	text		stavalues1[1];
-	text		stavalues2[1];
-	text		stavalues3[1];
-	text		stavalues4[1];
+	anyarray	stavalues1;
+	anyarray	stavalues2;
+	anyarray	stavalues3;
+	anyarray	stavalues4;
 } FormData_pg_statistic;
 
 #define STATISTIC_NUM_SLOTS  4

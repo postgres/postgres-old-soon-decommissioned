@@ -1826,16 +1826,11 @@ mergejoinscansel(Query *root, Node *clause,
 	/*
 	 * Now skip any binary-compatible relabeling; there can only be one level
 	 * since constant-expression folder eliminates adjacent RelabelTypes.
-	 *
-	 * XXX can't enable this quite yet, it exposes regproc uncertainty problems
-	 * in regression tests.  FIXME soon.
 	 */
-#if 0
 	if (IsA(left, RelabelType))
 		left = (Var *) ((RelabelType *) left)->arg;
 	if (IsA(right, RelabelType))
 		right = (Var *) ((RelabelType *) right)->arg;
-#endif
 
 	/* Can't do anything if inputs are not Vars */
 	if (!IsA(left, Var) ||
