@@ -17,8 +17,8 @@
 #include <utils/rel.h>
 
 
-extern void RelationPutHeapTuple(Relation relation, Buffer buffer, 
-									HeapTuple tuple);
+extern void RelationPutHeapTuple(Relation relation, Buffer buffer,
+					 HeapTuple tuple);
 extern void RelationPutHeapTupleAtEnd(Relation relation, HeapTuple tuple);
 
 #endif	 /* HIO_H */

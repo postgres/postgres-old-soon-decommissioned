@@ -1,5 +1,5 @@
-#undef PORTNAME 
-#define PORTNAME OS2 
+#undef PORTNAME
+#define PORTNAME OS2
 /*-------------------------------------------------------------------------
  *
  * c.h--
@@ -65,7 +65,8 @@
 #ifndef __cplusplus
 #ifndef bool
 typedef char bool;
-#endif   /* ndef bool */
+
+#endif	 /* ndef bool */
 #endif	 /* not C++ */
 typedef bool *BoolPtr;
 

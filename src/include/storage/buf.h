@@ -19,19 +19,19 @@
 typedef long Buffer;
 
 /*
- * BufferIsInvalid 
+ * BufferIsInvalid
  *		True iff the buffer is invalid.
  */
 #define BufferIsInvalid(buffer) ((buffer) == InvalidBuffer)
 
 /*
- * BufferIsUnknown 
+ * BufferIsUnknown
  *		True iff the buffer is unknown.
  */
 #define BufferIsUnknown(buffer) ((buffer) == UnknownBuffer)
 
 /*
- * BufferIsLocal 
+ * BufferIsLocal
  *		True iff the buffer is local (not visible to other servers).
  */
 #define BufferIsLocal(buffer)	((buffer) < 0)

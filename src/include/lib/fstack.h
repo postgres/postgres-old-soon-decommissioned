@@ -27,7 +27,7 @@
 
 
 /*
- * FixedItem 
+ * FixedItem
  *		Fixed format stackable item chain component.
  *
  * Note:
@@ -43,7 +43,7 @@ struct FixedItemData
 };
 
 /*
- * FixedStack 
+ * FixedStack
  *		Fixed format stack.
  */
 typedef struct FixedStackData
@@ -56,7 +56,7 @@ typedef struct FixedStackData
 typedef FixedStackData *FixedStack;
 
 /*
- * FixedStackInit 
+ * FixedStackInit
  *		Iniitializes stack for structures with given fixed component offset.
  *
  * Exceptions:
@@ -65,7 +65,7 @@ typedef FixedStackData *FixedStack;
 extern void FixedStackInit(FixedStack stack, Offset offset);
 
 /*
- * FixedStackPop 
+ * FixedStackPop
  *		Returns pointer to top structure on stack or NULL if empty stack.
  *
  * Exceptions:
@@ -74,7 +74,7 @@ extern void FixedStackInit(FixedStack stack, Offset offset);
 Pointer		FixedStackPop(FixedStack stack);
 
 /*
- * FixedStackPush 
+ * FixedStackPush
  *		Places structure associated with pointer onto top of stack.
  *
  * Exceptions:
@@ -84,7 +84,7 @@ Pointer		FixedStackPop(FixedStack stack);
 extern void FixedStackPush(FixedStack stack, Pointer pointer);
 
 /*
- * FixedStackGetTop 
+ * FixedStackGetTop
  *		Returns pointer to top structure of a stack.  This item is not poped.
  *
  * Note:
@@ -97,7 +97,7 @@ extern void FixedStackPush(FixedStack stack, Pointer pointer);
 extern Pointer FixedStackGetTop(FixedStack stack);
 
 /*
- * FixedStackGetNext 
+ * FixedStackGetNext
  *		Returns pointer to next structure after pointer of a stack.
  *
  * Note:

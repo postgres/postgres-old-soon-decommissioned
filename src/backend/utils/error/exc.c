@@ -48,7 +48,7 @@ extern char *ProgramName;
  */
 
 /*
- * EnableExceptionHandling 
+ * EnableExceptionHandling
  *		Enables/disables the exception handling system.
  *
  * Note:

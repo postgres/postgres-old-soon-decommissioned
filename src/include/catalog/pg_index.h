@@ -53,8 +53,8 @@ CATALOG(pg_index)
 	bool		indhaskeytype;	/* does key type != attribute type? */
 	bool		indisunique;	/* is this a unique index? */
 	bool		indisprimary;	/* is this index for primary key */
-	Oid			indreference;	/* oid of index of referenced relation 
-								 * (ie - this index for foreign key */
+	Oid			indreference;	/* oid of index of referenced relation (ie
+								 * - this index for foreign key */
 	text		indpred;		/* query plan for partial index predicate */
 } FormData_pg_index;
 

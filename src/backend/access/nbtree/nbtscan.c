@@ -112,12 +112,12 @@ _bt_adjscans(Relation rel, ItemPointer tid)
 static void
 _bt_scandel(IndexScanDesc scan, BlockNumber blkno, OffsetNumber offno)
 {
-	ItemPointer		current;
-	Buffer			buf;
-	BTScanOpaque	so;
-	OffsetNumber	start;
-	Page			page;
-	BTPageOpaque	opaque;
+	ItemPointer current;
+	Buffer		buf;
+	BTScanOpaque so;
+	OffsetNumber start;
+	Page		page;
+	BTPageOpaque opaque;
 
 	so = (BTScanOpaque) scan->opaque;
 	buf = so->btso_curbuf;
@@ -140,7 +140,7 @@ _bt_scandel(IndexScanDesc scan, BlockNumber blkno, OffsetNumber offno)
 			{
 				Page		pg = BufferGetPage(buf);
 				BTItem		btitem = (BTItem) PageGetItem(pg,
-				   PageGetItemId(pg, ItemPointerGetOffsetNumber(current)));
+				 PageGetItemId(pg, ItemPointerGetOffsetNumber(current)));
 
 				so->curHeapIptr = btitem->bti_itup.t_tid;
 			}
@@ -181,7 +181,7 @@ _bt_scandel(IndexScanDesc scan, BlockNumber blkno, OffsetNumber offno)
 			{
 				Page		pg = BufferGetPage(buf);
 				BTItem		btitem = (BTItem) PageGetItem(pg,
-				   PageGetItemId(pg, ItemPointerGetOffsetNumber(current)));
+				 PageGetItemId(pg, ItemPointerGetOffsetNumber(current)));
 
 				so->mrkHeapIptr = btitem->bti_itup.t_tid;
 			}

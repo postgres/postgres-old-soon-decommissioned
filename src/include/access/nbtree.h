@@ -42,7 +42,7 @@ typedef struct BTPageOpaqueData
 {
 	BlockNumber btpo_prev;
 	BlockNumber btpo_next;
-	BlockNumber	btpo_parent;
+	BlockNumber btpo_parent;
 	uint16		btpo_flags;
 
 #define BTP_LEAF		(1 << 0)

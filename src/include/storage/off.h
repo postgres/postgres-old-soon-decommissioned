@@ -32,7 +32,7 @@ typedef uint16 OffsetNumber;
  */
 
 /*
- * OffsetNumberIsValid 
+ * OffsetNumberIsValid
  *		True iff the offset number is valid.
  */
 #define OffsetNumberIsValid(offsetNumber) \
@@ -40,8 +40,8 @@ typedef uint16 OffsetNumber;
 			 (offsetNumber <= MaxOffsetNumber)))
 
 /*
- * OffsetNumberNext 
- * OffsetNumberPrev 
+ * OffsetNumberNext
+ * OffsetNumberPrev
  *		Increments/decrements the argument.  These macros look pointless
  *		but they help us disambiguate the different manipulations on
  *		OffsetNumbers (e.g., sometimes we substract one from an

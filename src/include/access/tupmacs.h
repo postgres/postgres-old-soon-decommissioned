@@ -63,7 +63,7 @@
 )
 
 /* att_align aligns the given offset as needed for a datum of length attlen
- * and alignment requirement attalign.  In practice we don't need the length.
+ * and alignment requirement attalign.	In practice we don't need the length.
  * The attalign cases are tested in what is hopefully something like their
  * frequency of occurrence.
  */
@@ -89,5 +89,5 @@
 		(cur_offset) + VARSIZE(DatumGetPointer(attval)) \
 	) \
 )
-	
+
 #endif

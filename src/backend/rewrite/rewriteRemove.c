@@ -42,7 +42,7 @@ RewriteGetRuleEventRel(char *rulename)
 							   0, 0, 0);
 	if (!HeapTupleIsValid(htup))
 		elog(ERROR, "Rule or view '%s' not found",
-			 ((!strncmp(rulename, "_RET", 4))? (rulename+4): rulename));
+		  ((!strncmp(rulename, "_RET", 4)) ? (rulename + 4) : rulename));
 	eventrel = ((Form_pg_rewrite) GETSTRUCT(htup))->ev_class;
 	htup = SearchSysCacheTuple(RELOID,
 							   PointerGetDatum(eventrel),

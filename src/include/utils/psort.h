@@ -24,7 +24,7 @@ struct tape
 {
 	int			tp_dummy;		/* (D) */
 	int			tp_fib;			/* (A) */
-	BufFile	   *tp_file;		/* (TAPE) */
+	BufFile    *tp_file;		/* (TAPE) */
 	struct tape *tp_prev;
 };
 
@@ -56,7 +56,7 @@ typedef struct Psortstate
 
 	struct leftist *Tuples;
 
-	BufFile	   *psort_grab_file;
+	BufFile    *psort_grab_file;
 	long		psort_current;	/* could be file offset, or array index */
 	long		psort_saved;	/* could be file offset, or array index */
 	bool		using_tape_files;

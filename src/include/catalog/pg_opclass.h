@@ -109,11 +109,11 @@ DATA(insert OID = 1312 (	datetime_ops   1184   ));
 DESCR("");
 DATA(insert OID = 1313 (	timespan_ops   1186   ));
 DESCR("");
-DATA(insert OID = 810  (	macaddr_ops   829   ));
+DATA(insert OID = 810  (	macaddr_ops   829	));
 DESCR("");
-DATA(insert OID = 935  (	network_ops   869   ));
+DATA(insert OID = 935  (	network_ops   869	));
 DESCR("");
-DATA(insert OID = 652  (	network_ops   650   ));
+DATA(insert OID = 652  (	network_ops   650	));
 DESCR("");
 
 #endif	 /* PG_OPCLASS_H */

@@ -20,20 +20,20 @@
  */
 
 /*
- * FixedItemIsValid 
+ * FixedItemIsValid
  *		True iff item is valid.
  */
 #define FixedItemIsValid(item)	PointerIsValid(item)
 
 /*
- * FixedStackGetItemBase 
+ * FixedStackGetItemBase
  *		Returns base of enclosing structure.
  */
 #define FixedStackGetItemBase(stack, item) \
 		((Pointer)((char *)(item) - (stack)->offset))
 
 /*
- * FixedStackGetItem 
+ * FixedStackGetItem
  *		Returns item of given pointer to enclosing structure.
  */
 #define FixedStackGetItem(stack, pointer) \
@@ -84,7 +84,7 @@ FixedStackPush(FixedStack stack, Pointer pointer)
 
 #ifdef USE_ASSERT_CHECKING
 /*
- * FixedStackContains 
+ * FixedStackContains
  *		True iff ordered stack contains given element.
  *
  * Note:

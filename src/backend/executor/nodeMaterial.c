@@ -116,7 +116,7 @@ ExecMaterial(Material *node)
 
 			if (TupIsNull(slot))
 				break;
-			
+
 			/*
 			 * heap_insert changes something...
 			 */
@@ -124,12 +124,12 @@ ExecMaterial(Material *node)
 				heapTuple = heap_copytuple(slot->val);
 			else
 				heapTuple = slot->val;
-			
+
 			heap_insert(tempRelation, heapTuple);
 
 			if (slot->ttc_buffer != InvalidBuffer)
 				pfree(heapTuple);
-			
+
 			ExecClearTuple(slot);
 		}
 		currentRelation = tempRelation;
@@ -360,8 +360,8 @@ ExecMaterialReScan(Material *node, ExprContext *exprCtxt, Plan *parent)
 		return;
 
 	matstate->csstate.css_currentScanDesc = ExecReScanR(matstate->csstate.css_currentRelation,
-					matstate->csstate.css_currentScanDesc,
-					node->plan.state->es_direction, 0, NULL);
+								   matstate->csstate.css_currentScanDesc,
+								node->plan.state->es_direction, 0, NULL);
 
 }
 

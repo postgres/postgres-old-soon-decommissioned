@@ -193,8 +193,8 @@ ExecGroupOneTuple(Group *node)
 			grpstate->grp_done = TRUE;
 			return NULL;
 		}
-		grpstate->grp_firstTuple = firsttuple = 
-						heap_copytuple(outerslot->val);
+		grpstate->grp_firstTuple = firsttuple =
+			heap_copytuple(outerslot->val);
 	}
 
 	/*

@@ -32,28 +32,28 @@ typedef PositionIdData *PositionId;
  */
 
 /*
- * PositionIdIsValid 
+ * PositionIdIsValid
  *		True iff the position identifier is valid.
  */
 #define PositionIdIsValid(positionId) \
 	PointerIsValid(positionId)
 
 /*
- * PositionIdSetInvalid 
+ * PositionIdSetInvalid
  *		Make an invalid position.
  */
 #define PositionIdSetInvalid(positionId) \
 	*(positionId) = (bits16) 0
 
 /*
- * PositionIdSet 
+ * PositionIdSet
  *		Sets a position identifier to the specified value.
  */
 #define PositionIdSet(positionId, offsetNumber) \
 	*(positionId) = (offsetNumber)
 
 /*
- * PositionIdGetOffsetNumber 
+ * PositionIdGetOffsetNumber
  *		Retrieve the offset number from a position identifier.
  */
 #define PositionIdGetOffsetNumber(positionId) \

@@ -363,6 +363,6 @@ extern double circle_dt(CIRCLE *circle1, CIRCLE *circle2);
 extern float64 areasel(Oid opid, Oid relid, AttrNumber attno,
 		char *value, int32 flag);
 extern float64 areajoinsel(Oid opid, Oid relid1, AttrNumber attno1,
-		Oid relid2, AttrNumber attno2);
+			Oid relid2, AttrNumber attno2);
 
 #endif	 /* GEO_DECLS_H */

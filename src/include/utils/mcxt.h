@@ -27,7 +27,7 @@ extern MemoryContext TopMemoryContext;
 
 
 /*
- * MaxAllocSize 
+ * MaxAllocSize
  *		Arbitrary limit on size of allocations.
  *
  * Note:

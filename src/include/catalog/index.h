@@ -39,7 +39,7 @@ extern void index_create(char *heapRelationName,
 			 Node *predicate,
 			 bool islossy,
 			 bool unique,
-             bool primary);
+			 bool primary);
 
 extern void index_destroy(Oid indexId);
 

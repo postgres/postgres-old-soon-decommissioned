@@ -487,7 +487,7 @@ BuildDescForRelation(List *schema, char *relname)
 		{
 			/* array of XXX is _XXX */
 			snprintf(typename, NAMEDATALEN,
-							 "_%.*s", NAMEDATALEN - 2, entry->typename->name);
+					 "_%.*s", NAMEDATALEN - 2, entry->typename->name);
 			attdim = length(arry);
 		}
 		else

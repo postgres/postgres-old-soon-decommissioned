@@ -307,7 +307,7 @@ rtinsert(Relation r, Datum *datum, char *nulls, ItemPointer ht_ctid, Relation he
 	/*
 	 * Notes in ExecUtils:ExecOpenIndices()
 	 *
-	RelationSetLockForWrite(r);
+	 * RelationSetLockForWrite(r);
 	 */
 
 	res = rtdoinsert(r, itup, &rtState);
@@ -947,10 +947,10 @@ rtdelete(Relation r, ItemPointer tid)
 	Page		page;
 
 	/*
-	 * Notes in ExecUtils:ExecOpenIndices()
-	 * Also note that only vacuum deletes index tuples now...
+	 * Notes in ExecUtils:ExecOpenIndices() Also note that only vacuum
+	 * deletes index tuples now...
 	 *
-	RelationSetLockForWrite(r);
+	 * RelationSetLockForWrite(r);
 	 */
 
 	blkno = ItemPointerGetBlockNumber(tid);

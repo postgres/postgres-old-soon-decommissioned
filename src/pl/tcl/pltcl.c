@@ -1041,9 +1041,8 @@ pltcl_trigger_handler(FmgrInfo *proinfo)
 	if (SPI_finish() != SPI_OK_FINISH)
 		elog(ERROR, "pltcl: SPI_finish() failed");
 
-	if (strcmp(pltcl_safe_interp->result, "OK") == 0) {
+	if (strcmp(pltcl_safe_interp->result, "OK") == 0)
 		return rettup;
-	}
 	if (strcmp(pltcl_safe_interp->result, "SKIP") == 0)
 	{
 		return (HeapTuple) NULL;;

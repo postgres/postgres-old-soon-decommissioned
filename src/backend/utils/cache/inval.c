@@ -106,7 +106,7 @@ InvalidationEntryAllocate(uint16 size)
 }
 
 /* --------------------------------
- *		LocalInvalidRegister 
+ *		LocalInvalidRegister
  *		   Returns a new local cache invalidation state containing a new entry.
  * --------------------------------
  */
@@ -117,7 +117,7 @@ LocalInvalidRegister(LocalInvalid invalid,
 	Assert(PointerIsValid(entry));
 
 	((InvalidationUserData *) entry)->dataP[-1] =
-			(InvalidationUserData *) invalid;
+		(InvalidationUserData *) invalid;
 
 	return entry;
 }
@@ -504,7 +504,7 @@ InitLocalInvalidateData()
 
 
 /*
- * DiscardInvalid 
+ * DiscardInvalid
  *		Causes the invalidated cache state to be discarded.
  *
  * Note:
@@ -527,7 +527,7 @@ DiscardInvalid()
 }
 
 /*
- * RegisterInvalid 
+ * RegisterInvalid
  *		Causes registration of invalidated state with other backends iff true.
  *
  * Note:
@@ -559,7 +559,7 @@ RegisterInvalid(bool send)
 }
 
 /*
- * RelationIdInvalidateHeapTuple 
+ * RelationIdInvalidateHeapTuple
  *		Causes the given tuple in a relation to be invalidated.
  *
  * Note:

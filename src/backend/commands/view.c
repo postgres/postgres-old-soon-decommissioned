@@ -5,11 +5,11 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
- *  $Id$
+ *	$Id$
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>			
+#include <stdio.h>
 #include <string.h>
 
 #include <postgres.h>
@@ -230,9 +230,9 @@ UpdateRangeTableOfViewParse(char *viewName, Query *viewParse)
 	 * table... CURRENT first, then NEW....
 	 */
 	rt_entry1 = addRangeTableEntry(NULL, (char *) viewName, "*CURRENT*",
-						   FALSE, FALSE);
+								   FALSE, FALSE);
 	rt_entry2 = addRangeTableEntry(NULL, (char *) viewName, "*NEW*",
-						   FALSE, FALSE);
+								   FALSE, FALSE);
 	new_rt = lcons(rt_entry2, old_rt);
 	new_rt = lcons(rt_entry1, new_rt);
 

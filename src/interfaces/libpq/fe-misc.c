@@ -471,6 +471,7 @@ pqFlush(PGconn *conn)
 		/* Prevent being SIGPIPEd if backend has closed the connection. */
 #ifndef WIN32
 		pqsigfunc	oldsighandler = pqsignal(SIGPIPE, SIG_IGN);
+
 #endif
 
 		int			sent = send(conn->sock, ptr, len, 0);
@@ -481,10 +482,11 @@ pqFlush(PGconn *conn)
 
 		if (sent < 0)
 		{
+
 			/*
-			 * Anything except EAGAIN or EWOULDBLOCK is trouble.
-			 * If it's EPIPE or ECONNRESET, assume we've lost the
-			 * backend connection permanently.
+			 * Anything except EAGAIN or EWOULDBLOCK is trouble. If it's
+			 * EPIPE or ECONNRESET, assume we've lost the backend
+			 * connection permanently.
 			 */
 			switch (errno)
 			{
@@ -504,7 +506,7 @@ pqFlush(PGconn *conn)
 							"pqFlush() -- backend closed the channel unexpectedly.\n"
 							"\tThis probably means the backend terminated abnormally"
 							" before or while processing the request.\n");
-					conn->status = CONNECTION_BAD; /* No more connection */
+					conn->status = CONNECTION_BAD;		/* No more connection */
 #ifdef WIN32
 					closesocket(conn->sock);
 #else
@@ -514,7 +516,7 @@ pqFlush(PGconn *conn)
 					return EOF;
 				default:
 					sprintf(conn->errorMessage,
-							"pqFlush() --  couldn't send data: errno=%d\n%s\n",
+					  "pqFlush() --  couldn't send data: errno=%d\n%s\n",
 							errno, strerror(errno));
 					/* We don't assume it's a fatal error... */
 					return EOF;

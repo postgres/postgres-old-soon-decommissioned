@@ -223,8 +223,8 @@ plan_inherit_queries(Query *parse, Index rt_index)
 	List	   *union_relids = NIL;
 
 	union_relids = find_all_inheritors(lconsi(rt_entry->relid,
-								   NIL),
-							NIL);
+											  NIL),
+									   NIL);
 
 	/*
 	 * Remove the flag for this relation, since we're about to handle it

@@ -31,6 +31,7 @@ typedef struct StrategyTransformMapData
 								 *
 								 *
 								 *
+								 *
 								 * STRUCTURE */
 
 typedef StrategyTransformMapData *StrategyTransformMap;
@@ -70,7 +71,7 @@ typedef struct StrategyEvaluationData
 typedef StrategyEvaluationData *StrategyEvaluation;
 
 /*
- * StrategyTransformMapIsValid 
+ * StrategyTransformMapIsValid
  *		Returns true iff strategy transformation map is valid.
  */
 #define StrategyTransformMapIsValid(transform) PointerIsValid(transform)

@@ -144,9 +144,7 @@ SIAssignBackendId(SISeg *segInOutP, BackendTag backendTag)
 	for (index++; index < MAXBACKENDS; index++)
 	{
 		if (segInOutP->procState[index].tag == backendTag)
-		{
 			elog(FATAL, "SIAssignBackendId: tag %d found twice", backendTag);
-		}
 	}
 
 	Assert(stateP);
@@ -187,7 +185,7 @@ SISetDeadProcess(SISeg *segP, int backendId)
 }
 
 /*
- * CleanupInvalidationState 
+ * CleanupInvalidationState
  * Note:
  *		This is a temporary hack.  ExitBackend should call this instead
  *		of exit (via on_shmem_exit).

@@ -18,7 +18,7 @@
 #include <nodes/primnodes.h>
 #include <parser/parse_node.h>
 
-extern void AddAggToParseState(ParseState *pstate, Aggref *aggref);
+extern void AddAggToParseState(ParseState *pstate, Aggref * aggref);
 extern void parseCheckAggregates(ParseState *pstate, Query *qry);
 extern Aggref *ParseAgg(ParseState *pstate, char *aggname, Oid basetype,
 		 List *target, int precedence);

@@ -170,6 +170,7 @@ MultiLockTuple(LockInfo lockinfo, ItemPointer tidPtr, LOCKMODE lockmode)
 	tag.tupleId = *tidPtr;
 	return MultiAcquire(MultiTableId, &tag, lockmode, TUPLE_LEVEL);
 }
+
 #endif
 
 /*

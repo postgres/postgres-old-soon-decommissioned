@@ -41,7 +41,7 @@
 */
 
 void
-minspantree(Query *root, List *join_rels, RelOptInfo *garel)
+minspantree(Query *root, List *join_rels, RelOptInfo * garel)
 {
 	int			number_of_rels = length(root->base_rel_list);
 	int			number_of_joins = length(join_rels);

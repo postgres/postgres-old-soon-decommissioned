@@ -264,7 +264,7 @@ typedef struct Noname
 	Plan		plan;
 	Oid			nonameid;
 	int			keycount;
-} Noname;
+}			Noname;
 
 /* ----------------
  *		materialization node
@@ -339,6 +339,7 @@ typedef struct Tee
 								 * Tee may be different than the parent
 								 * plans */
 } Tee;
+
 #endif
 
 /* ---------------------

@@ -163,10 +163,10 @@ text_char(text *arg1)
 text *
 char_text(int8 arg1)
 {
-	text *result;
+	text	   *result;
 
-	result = palloc(VARHDRSZ+1);
-	VARSIZE(result) = VARHDRSZ+1;
+	result = palloc(VARHDRSZ + 1);
+	VARSIZE(result) = VARHDRSZ + 1;
 	*(VARDATA(result)) = arg1;
 
 	return result;

@@ -161,6 +161,7 @@ namecmp(Name n1, Name n2)
 {
 	return strncmp(n1->data, n2->data, NAMEDATALEN);
 }
+
 #endif
 
 int

@@ -1,7 +1,7 @@
-/* 
+/*
  * Copyright (c) 1994, Regents of the University of California
  *
- * $Id$ 
+ * $Id$
  *
  */
 
@@ -35,8 +35,8 @@ verify_password(char *auth_arg, char *user, char *password)
 	if (!pw_file)
 	{
 		snprintf(PQerrormsg, ERROR_MSG_LENGTH,
-				"verify_password: couldn't open password file '%s'\n",
-				pw_file_fullname);
+				 "verify_password: couldn't open password file '%s'\n",
+				 pw_file_fullname);
 		fputs(PQerrormsg, stderr);
 		pqdebug("%s", PQerrormsg);
 
@@ -80,8 +80,8 @@ verify_password(char *auth_arg, char *user, char *password)
 			}
 
 			snprintf(PQerrormsg, ERROR_MSG_LENGTH,
-					"verify_password: password mismatch for '%s'.\n",
-					user);
+					 "verify_password: password mismatch for '%s'.\n",
+					 user);
 			fputs(PQerrormsg, stderr);
 			pqdebug("%s", PQerrormsg);
 
@@ -92,8 +92,8 @@ verify_password(char *auth_arg, char *user, char *password)
 	}
 
 	snprintf(PQerrormsg, ERROR_MSG_LENGTH,
-			"verify_password: user '%s' not found in password file.\n",
-			user);
+			 "verify_password: user '%s' not found in password file.\n",
+			 user);
 	fputs(PQerrormsg, stderr);
 	pqdebug("%s", PQerrormsg);
 

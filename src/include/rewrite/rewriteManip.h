@@ -25,7 +25,7 @@ void		AddQual(Query *parsetree, Node *qual);
 void		AddHavingQual(Query *parsetree, Node *havingQual);
 
 void		AddNotQual(Query *parsetree, Node *qual);
-void            AddNotHavingQual(Query *parsetree, Node *havingQual);
+void		AddNotHavingQual(Query *parsetree, Node *havingQual);
 void		AddGroupClause(Query *parsetree, List *group_by, List *tlist);
 
 void		FixNew(RewriteInfo *info, Query *parsetree);

@@ -35,6 +35,7 @@ typedef struct
 								 *
 								 *
 								 *
+								 *
 								 * geo-decls.h */
 
 #endif	 /* TIOGA_FRONTEND */
@@ -114,7 +115,7 @@ typedef struct _tgrecipe
 {
 	TgElement	elmValue;		/* "inherits" TgElement attributes. */
 	Arr_TgNodePtr *allNodes;	/* array of all nodes for this recipe. */
-	Arr_TgNodePtr *rootNodes;	/* array of root nodes for this recipe. 
+	Arr_TgNodePtr *rootNodes;	/* array of root nodes for this recipe.
 								 * root nodes are nodes with no parents */
 	Arr_TgNodePtr *eyes;		/* array of pointers for the browser nodes
 								 * recipe, execution of recipe starts by

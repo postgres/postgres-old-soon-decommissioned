@@ -19,7 +19,7 @@
 #include "storage/bufpage.h"
 
 /*
- * ItemPointerEquals 
+ * ItemPointerEquals
  *	Returns true if both item pointers point to the same item,
  *	 otherwise returns false.
  *

@@ -194,8 +194,8 @@ TransactionStateData CurrentTransactionStateData = {
 
 TransactionState CurrentTransactionState = &CurrentTransactionStateData;
 
-int	DefaultXactIsoLevel = XACT_READ_COMMITTED;
-int	XactIsoLevel;
+int			DefaultXactIsoLevel = XACT_READ_COMMITTED;
+int			XactIsoLevel;
 
 /* ----------------
  *		info returned when the system is disabled
@@ -299,6 +299,7 @@ IsTransactionState(void)
 	 */
 	return false;
 }
+
 #endif
 
 /* --------------------------------
@@ -516,7 +517,7 @@ CommandCounterIncrement()
 	AtStart_Cache();
 
 	TransactionIdFlushCache();
-	
+
 }
 
 void
@@ -695,9 +696,9 @@ AtCommit_Memory()
 
 	/* ----------------
 	 *	Release memory in the blank portal.
-	 *  Since EndPortalAllocMode implicitly works on the current context,
-	 *  first make real sure that the blank portal is the selected context.
-	 *  (This is probably not necessary, but seems like a good idea...)
+	 *	Since EndPortalAllocMode implicitly works on the current context,
+	 *	first make real sure that the blank portal is the selected context.
+	 *	(This is probably not necessary, but seems like a good idea...)
 	 * ----------------
 	 */
 	portal = GetPortalByName(NULL);
@@ -789,9 +790,9 @@ AtAbort_Memory()
 
 	/* ----------------
 	 *	Release memory in the blank portal.
-	 *  Since EndPortalAllocMode implicitly works on the current context,
-	 *  first make real sure that the blank portal is the selected context.
-	 *  (This is ESSENTIAL in case we aborted from someplace where it wasn't.)
+	 *	Since EndPortalAllocMode implicitly works on the current context,
+	 *	first make real sure that the blank portal is the selected context.
+	 *	(This is ESSENTIAL in case we aborted from someplace where it wasn't.)
 	 * ----------------
 	 */
 	portal = GetPortalByName(NULL);
@@ -1074,7 +1075,7 @@ StartTransactionCommand()
 			break;
 
 			/* ----------------
-			 *		As with BEGIN, we should never experience this 
+			 *		As with BEGIN, we should never experience this
 			 *		if we do it means the END state was not changed in the
 			 *		previous CommitTransactionCommand().  If we get it, we
 			 *		print a warning, commit the transaction, start a new
@@ -1509,6 +1510,7 @@ AbortOutOfAnyTransaction()
 	 */
 	if (s->state != TRANS_DEFAULT)
 		AbortTransaction();
+
 	/*
 	 * Now reset the high-level state
 	 */

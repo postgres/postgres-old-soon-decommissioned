@@ -41,7 +41,7 @@
 
 static char *CreateOperationTag(int operationType);
 static void ProcessQueryDesc(QueryDesc *queryDesc, Node *limoffset,
-												   Node *limcount);
+				 Node *limcount);
 
 
 /* ----------------------------------------------------------------
@@ -374,5 +374,5 @@ ProcessQuery(Query *parsetree,
 	}
 	else
 		ProcessQueryDesc(queryDesc, parsetree->limitOffset,
-									parsetree->limitCount);
+						 parsetree->limitCount);
 }

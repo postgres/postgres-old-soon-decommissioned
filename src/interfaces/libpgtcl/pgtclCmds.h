@@ -54,7 +54,7 @@ typedef struct Pg_ConnectionId_s
 
 	Pg_TclNotifies *notify_list;/* head of list of notify info */
 	int			notifier_running;		/* notify event source is live */
-	int			notifier_socket; /* PQsocket on which notifier is listening */
+	int			notifier_socket;/* PQsocket on which notifier is listening */
 }			Pg_ConnectionId;
 
 /* Values of res_copyStatus */

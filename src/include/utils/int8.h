@@ -94,13 +94,13 @@ extern int32 int84(int64 * val);
 #if NOT_USED
 extern int64 *int28 (int16 val);
 extern int16 int82(int64 * val);
+
 #endif
 
 extern float64 i8tod(int64 * val);
 extern int64 *dtoi8(float64 val);
 
-extern text *int8_text(int64 *val);
+extern text *int8_text(int64 * val);
 extern int64 *text_int8(text *str);
 
 #endif	 /* INT8_H */
-

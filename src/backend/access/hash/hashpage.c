@@ -321,7 +321,7 @@ _hash_setpagelock(Relation rel,
 	{
 		switch (access)
 		{
-			case HASH_WRITE:
+				case HASH_WRITE:
 				LockPage(rel, blkno, ExclusiveLock);
 				break;
 			case HASH_READ:
@@ -345,7 +345,7 @@ _hash_unsetpagelock(Relation rel,
 	{
 		switch (access)
 		{
-			case HASH_WRITE:
+				case HASH_WRITE:
 				UnlockPage(rel, blkno, ExclusiveLock);
 				break;
 			case HASH_READ:

@@ -145,7 +145,7 @@ extern bool TransactionIdDidCommit(TransactionId transactionId);
 extern bool TransactionIdDidAbort(TransactionId transactionId);
 extern void TransactionIdCommit(TransactionId transactionId);
 extern void TransactionIdAbort(TransactionId transactionId);
-extern void	TransactionIdFlushCache(void);
+extern void TransactionIdFlushCache(void);
 
 /* in transam/transsup.c */
 extern void AmiTransactionOverride(bool flag);

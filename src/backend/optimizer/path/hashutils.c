@@ -30,7 +30,7 @@ static HashInfo *match_hashop_hashinfo(Oid hashop, List *hashinfo_list);
  *
  * 'restrictinfo_list' is the list of restrictinfo nodes
  * 'inner_relids' is the list of relids in the inner join relation
- *   (used to determine whether a join var is inner or outer)
+ *	 (used to determine whether a join var is inner or outer)
  *
  * Returns the new list of hashinfo nodes.
  *
@@ -84,7 +84,7 @@ group_clauses_by_hashop(List *restrictinfo_list,
 			}
 
 			xhashinfo->jmethod.clauses = lcons(clause,
-											   xhashinfo->jmethod.clauses);
+											 xhashinfo->jmethod.clauses);
 			xhashinfo->jmethod.jmkeys = lcons(joinkey,
 											  xhashinfo->jmethod.jmkeys);
 		}
@@ -105,7 +105,7 @@ static HashInfo *
 match_hashop_hashinfo(Oid hashop, List *hashinfo_list)
 {
 	Oid			key = 0;
-	HashInfo	   *xhashinfo = (HashInfo *) NULL;
+	HashInfo   *xhashinfo = (HashInfo *) NULL;
 	List	   *i = NIL;
 
 	foreach(i, hashinfo_list)

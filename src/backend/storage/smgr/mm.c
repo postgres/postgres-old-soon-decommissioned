@@ -569,15 +569,15 @@ MMShmemSize()
 	 * first compute space occupied by the (dbid,relid,blkno) hash table
 	 */
 	size += hash_estimate_size(MMNBUFFERS,
-				   0, /* MMHashEntry includes key */
-				   sizeof(MMHashEntry));
+							   0,		/* MMHashEntry includes key */
+							   sizeof(MMHashEntry));
 
 	/*
 	 * now do the same for the rel hash table
 	 */
 	size += hash_estimate_size(MMNRELATIONS,
-				   0, /* MMRelHashEntry includes key */
-				   sizeof(MMRelHashEntry));
+							   0,		/* MMRelHashEntry includes key */
+							   sizeof(MMRelHashEntry));
 
 	/*
 	 * finally, add in the memory block we use directly

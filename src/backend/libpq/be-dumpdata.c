@@ -6,7 +6,7 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
- *  $Id$
+ *	$Id$
  *
  *-------------------------------------------------------------------------
  */
@@ -130,8 +130,8 @@ static u_int be_portalcnt = 0;
 PortalEntry *
 be_newportal(void)
 {
-	PortalEntry	*entry;
-	char				buf[PortalNameLength];
+	PortalEntry *entry;
+	char		buf[PortalNameLength];
 
 	/* ----------------
 	 *	generate a new name
@@ -208,7 +208,7 @@ be_typeinit(PortalEntry *entry,
  * ----------------
  */
 void
-be_printtup(HeapTuple tuple, TupleDesc typeinfo, DestReceiver* self)
+be_printtup(HeapTuple tuple, TupleDesc typeinfo, DestReceiver * self)
 {
 	int			i;
 	Datum		attr;

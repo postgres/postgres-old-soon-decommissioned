@@ -17,12 +17,12 @@
 
 #define pq_beginmessage(buf)  initStringInfo(buf)
 
-extern void	pq_sendbyte(StringInfo buf, int byt);
-extern void	pq_sendbytes(StringInfo buf, const char *data, int datalen);
-extern void	pq_sendcountedtext(StringInfo buf, const char *str, int slen);
-extern void	pq_sendstring(StringInfo buf, const char *str);
-extern void	pq_sendint(StringInfo buf, int i, int b);
-extern void	pq_endmessage(StringInfo buf);
+extern void pq_sendbyte(StringInfo buf, int byt);
+extern void pq_sendbytes(StringInfo buf, const char *data, int datalen);
+extern void pq_sendcountedtext(StringInfo buf, const char *str, int slen);
+extern void pq_sendstring(StringInfo buf, const char *str);
+extern void pq_sendint(StringInfo buf, int i, int b);
+extern void pq_endmessage(StringInfo buf);
 
 extern int	pq_puttextmessage(char msgtype, const char *str);
 

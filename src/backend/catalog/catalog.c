@@ -29,8 +29,8 @@
 char *
 relpath(char *relname)
 {
-	char	*path;
-	int		bufsize = 0;
+	char	   *path;
+	int			bufsize = 0;
 
 	if (IsSharedSystemRelationName(relname))
 	{
@@ -43,7 +43,7 @@ relpath(char *relname)
 }
 
 /*
- * IsSystemRelationName 
+ * IsSystemRelationName
  *		True iff name is the name of a system catalog relation.
  *
  *		We now make a new requirement where system catalog relns must begin
@@ -64,7 +64,7 @@ IsSystemRelationName(char *relname)
 }
 
 /*
- * IsSharedSystemRelationName 
+ * IsSharedSystemRelationName
  *		True iff name is the name of a shared system catalog relation.
  */
 bool

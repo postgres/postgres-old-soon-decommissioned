@@ -87,7 +87,7 @@ InitSharedInvalidationState(void)
 }
 
 /*
- * RegisterSharedInvalid 
+ * RegisterSharedInvalid
  *	Returns a new local cache invalidation state containing a new entry.
  *
  * Note:
@@ -147,7 +147,7 @@ RegisterSharedInvalid(int cacheId,		/* XXX */
 }
 
 /*
- * InvalidateSharedInvalid 
+ * InvalidateSharedInvalid
  *	Processes all entries in a shared cache invalidation state.
  */
 /****************************************************************************/

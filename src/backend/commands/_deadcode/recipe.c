@@ -121,18 +121,18 @@ static QueryTreeList *tg_parseTeeNode(TgRecipe * r,
 void
 beginRecipe(RecipeStmt *stmt)
 {
-	TgRecipe			*r;
-	int						i,
-								numTees;
+	TgRecipe   *r;
+	int			i,
+				numTees;
 	QueryTreeList *qList;
-	char					portalName[1024];
+	char		portalName[1024];
 
-	Plan					*plan;
-	TupleDesc			attinfo;
-	QueryDesc			*queryDesc;
-	Query					*parsetree;
+	Plan	   *plan;
+	TupleDesc	attinfo;
+	QueryDesc  *queryDesc;
+	Query	   *parsetree;
 
-	TeeInfo				*teeInfo;
+	TeeInfo    *teeInfo;
 
 	/*
 	 * retrieveRecipe() reads the recipe from the database and returns a
@@ -808,21 +808,21 @@ tg_parseTeeNode(TgRecipe * r,
 static QueryTreeList *
 tg_parseSubQuery(TgRecipe * r, TgNode * n, TeeInfo * teeInfo)
 {
-	TgElement			*elem;
-	char					*funcName;
-	Oid						typev[8],		/* eight arguments maximum	*/
-								relid;
-	int						i,
-								parameterCount;
+	TgElement  *elem;
+	char	   *funcName;
+	Oid			typev[8],		/* eight arguments maximum	*/
+				relid;
+	int			i,
+				parameterCount;
 
 	QueryTreeList *qList;		/* the parse tree of the nodeElement */
 	QueryTreeList *inputQlist;	/* the list of parse trees for the inputs
 								 * to this node */
 	QueryTreeList *q;
-	TgNode				*child;
-	Relation			rel;
-	unsigned int	len;
-	TupleDesc			tupdesc;
+	TgNode	   *child;
+	Relation	rel;
+	unsigned int len;
+	TupleDesc	tupdesc;
 
 	qList = NULL;
 

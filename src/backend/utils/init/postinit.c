@@ -143,7 +143,7 @@ InitMyDatabaseInfo(char *name)
 
 
 /*
- * DoChdirAndInitDatabaseNameAndPath 
+ * DoChdirAndInitDatabaseNameAndPath
  *		Set current directory to the database directory for the database
  *		named <name>.
  *		Also set global variables DatabasePath and DatabaseName to those
@@ -415,7 +415,7 @@ InitStdio()
 }
 
 /* --------------------------------
- * InitPostgres 
+ * InitPostgres
  *		Initialize POSTGRES.
  *
  * Note:

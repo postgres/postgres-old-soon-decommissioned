@@ -988,6 +988,7 @@ isreltime(char *str)
 
 	return 0;
 }	/* isreltime() */
+
 #endif
 
 #ifdef NOT_USED

@@ -106,17 +106,17 @@ struct sbufdesc
 	bool		w_lock;			/* context exclusively locked */
 
 	char		sb_dbname[NAMEDATALEN]; /* name of db in which buf belongs */
-	char		sb_relname[NAMEDATALEN];/* name of reln */
+	char		sb_relname[NAMEDATALEN];		/* name of reln */
 };
 
 /*
  * Buffer lock infos in BufferLocks below.
  * We have to free these locks in elog(ERROR)...
  */
-#define	BL_IO_IN_PROGRESS	(1 << 0)	/* unimplemented */
-#define	BL_R_LOCK			(1 << 1)
-#define	BL_RI_LOCK			(1 << 2)
-#define	BL_W_LOCK			(1 << 3)
+#define BL_IO_IN_PROGRESS	(1 << 0)	/* unimplemented */
+#define BL_R_LOCK			(1 << 1)
+#define BL_RI_LOCK			(1 << 2)
+#define BL_W_LOCK			(1 << 3)
 
 /*
  *	mao tracing buffer allocation

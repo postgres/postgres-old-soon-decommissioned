@@ -22,7 +22,7 @@
 
 
 /* ----------------
- * PQArgBlock 
+ * PQArgBlock
  *		Information (pointer to array of this structure) required
  *		for the PQfn() call.
  * ----------------
@@ -39,7 +39,7 @@ typedef struct
 } PQArgBlock;
 
 /* ----------------
- * TypeBlock 
+ * TypeBlock
  *		Information about an attribute.
  * ----------------
  */
@@ -53,7 +53,7 @@ typedef struct TypeBlock
 } TypeBlock;
 
 /* ----------------
- * TupleBlock 
+ * TupleBlock
  *		Data of a tuple.
  * ----------------
  */
@@ -69,7 +69,7 @@ typedef struct TupleBlock
 } TupleBlock;
 
 /* ----------------
- * GroupBuffer 
+ * GroupBuffer
  *		A group of tuples with the same attributes.
  * ----------------
  */
@@ -83,7 +83,7 @@ typedef struct GroupBuffer
 } GroupBuffer;
 
 /* ----------------
- * PortalBuffer 
+ * PortalBuffer
  *		Data structure of a portal buffer.
  * ----------------
  */
@@ -96,7 +96,7 @@ typedef struct PortalBuffer
 } PortalBuffer;
 
 /* ----------------
- * PortalEntry 
+ * PortalEntry
  *		an entry in the global portal table
  *
  * Note: the portalcxt is only meaningful for PQcalls made from
@@ -220,7 +220,7 @@ extern PortalEntry *be_newportal(void);
 extern void be_typeinit(PortalEntry *entry, TupleDesc attrs,
 			int natts);
 extern void be_printtup(HeapTuple tuple, TupleDesc typeinfo,
-						DestReceiver* self);
+			DestReceiver * self);
 
 
 /* in be-pqexec.c */
@@ -246,7 +246,7 @@ extern int	pq_peekbyte(void);
 extern int	pq_putbytes(const char *s, size_t len);
 extern int	pq_flush(void);
 extern int	pq_putmessage(char msgtype, const char *s, size_t len);
-extern void	pq_startcopyout(void);
-extern void	pq_endcopyout(bool errorAbort);
+extern void pq_startcopyout(void);
+extern void pq_endcopyout(bool errorAbort);
 
 #endif	 /* LIBPQ_H */

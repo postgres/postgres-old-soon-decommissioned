@@ -5,7 +5,7 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
- *  $Id$
+ *	$Id$
  *
  *-------------------------------------------------------------------------
  */
@@ -17,7 +17,7 @@
  *		PQuntrace		- turn off pqdebug() tracing
  */
 
-#include <stdio.h>			
+#include <stdio.h>
 #include <string.h>
 
 #include <postgres.h>

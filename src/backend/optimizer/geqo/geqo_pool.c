@@ -109,7 +109,7 @@ random_init_pool(Query *root, Pool *pool, int strt, int stp)
 																 * "geqo_recombination.c"
 																 * */
 
-		pool->data[i].worth = geqo_eval(root, chromo[i].string, pool->string_length);		/* "from geqo_eval.c" */
+		pool->data[i].worth = geqo_eval(root, chromo[i].string, pool->string_length);	/* "from geqo_eval.c" */
 	}
 }
 

@@ -13,12 +13,12 @@ parse_client_encoding(const char *value)
 	int			encoding;
 
 	encoding = pg_valid_client_encoding(value);
-	if (encoding < 0) {
-	        if (value) {
+	if (encoding < 0)
+	{
+		if (value)
 			elog(ERROR, "Client encoding %s is not supported", value);
-		} else {
+		else
 			elog(ERROR, "No client encoding is specified");
-		}
 	}
 	else
 	{

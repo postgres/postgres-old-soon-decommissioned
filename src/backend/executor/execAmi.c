@@ -5,7 +5,7 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
- *  $Id$
+ *	$Id$
  *
  *-------------------------------------------------------------------------
  */
@@ -24,7 +24,7 @@
  *		ExecCreatR		function to create temporary relations
  *
  */
-#include <stdio.h>			
+#include <stdio.h>
 
 #include "postgres.h"
 

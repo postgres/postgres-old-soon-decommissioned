@@ -211,7 +211,7 @@ extern IndInfo *getIndices(int *numIndices);
 extern void dumpTypes(FILE *fout, FuncInfo *finfo, int numFuncs,
 		  TypeInfo *tinfo, int numTypes);
 extern void dumpProcLangs(FILE *fout, FuncInfo *finfo, int numFuncs,
-		  TypeInfo *tinfo, int numTypes);
+			  TypeInfo *tinfo, int numTypes);
 extern void dumpFuncs(FILE *fout, FuncInfo *finfo, int numFuncs,
 		  TypeInfo *tinfo, int numTypes);
 extern void dumpAggs(FILE *fout, AggInfo *agginfo, int numAggregates,

@@ -393,6 +393,7 @@ btreesel(Oid operatorObjectId,
 
 	if (FunctionalSelectivity(nIndexKeys, attributeNumber))
 	{
+
 		/*
 		 * Need to call the functions selectivity function here.  For now
 		 * simply assume it's 1/3 since functions don't currently have
@@ -437,6 +438,7 @@ btreenpage(Oid operatorObjectId,
 
 	if (FunctionalSelectivity(nIndexKeys, attributeNumber))
 	{
+
 		/*
 		 * Need to call the functions selectivity function here.  For now
 		 * simply assume it's 1/3 since functions don't currently have

@@ -172,6 +172,7 @@ typeidOutfunc(Oid type_id)
 	outfunc = type->typoutput;
 	return outfunc;
 }
+
 #endif
 
 Oid

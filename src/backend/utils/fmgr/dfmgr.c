@@ -237,14 +237,14 @@ void
 load_file(char *filename)
 {
 	DynamicFileList *file_scanner,
-				   *p;
+			   *p;
 	struct stat stat_buf;
 	int			done = 0;
 
 	/*
-	 * We need to do stat() in order to determine whether this is the
-	 * same file as a previously loaded file; it's also handy so as to
-	 * give a good error message if bogus file name given.
+	 * We need to do stat() in order to determine whether this is the same
+	 * file as a previously loaded file; it's also handy so as to give a
+	 * good error message if bogus file name given.
 	 */
 	if (stat(filename, &stat_buf) == -1)
 		elog(ERROR, "LOAD: could not open file '%s': %m", filename);
@@ -292,4 +292,5 @@ trigger_dynamic(char *filename, char *funcname)
 
 	return trigger_fn;
 }
+
 #endif

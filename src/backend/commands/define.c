@@ -203,7 +203,7 @@ interpret_AS_clause(const char *languageName, const char *as,
 
 
 /*
- * CreateFunction 
+ * CreateFunction
  *	 Execute a CREATE FUNCTION utility statement.
  *
  */
@@ -574,7 +574,7 @@ DefineAggregate(char *aggName, List *parameters)
 }
 
 /*
- * DefineType 
+ * DefineType
  *		Registers a new type.
  *
  */

@@ -22,6 +22,7 @@
 
 #if defined(FLEX_SCANNER)
 extern void DeleteBuffer(void);
+
 #endif	 /* FLEX_SCANNER */
 
 char	   *parseString;		/* the char* which holds the string to be
@@ -31,6 +32,7 @@ List	   *parsetree;			/* result of parsing is left here */
 #ifdef SETS_FIXED
 static void fixupsets();
 static void define_sets();
+
 #endif
 
 /*

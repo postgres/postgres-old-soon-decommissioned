@@ -17,14 +17,14 @@
 #include <access/strat.h>
 
 /*
- * StrategyNumberIsValid 
+ * StrategyNumberIsValid
  *		True iff the strategy number is valid.
  */
 #define StrategyNumberIsValid(strategyNumber) \
 	((bool) ((strategyNumber) != InvalidStrategy))
 
 /*
- * StrategyNumberIsInBounds 
+ * StrategyNumberIsInBounds
  *		True iff strategy number is within given bounds.
  *
  * Note:
@@ -36,13 +36,13 @@
 			(strategyNumber) <= (maxStrategyNumber)))
 
 /*
- * StrategyMapIsValid 
+ * StrategyMapIsValid
  *		True iff the index strategy mapping is valid.
  */
 #define StrategyMapIsValid(map) PointerIsValid(map)
 
 /*
- * IndexStrategyIsValid 
+ * IndexStrategyIsValid
  *		True iff the index strategy is valid.
  */
 #define IndexStrategyIsValid(s) PointerIsValid(s)

@@ -53,7 +53,7 @@ struct PortalD
 };
 
 /*
- * PortalIsValid 
+ * PortalIsValid
  *		True iff portal is valid.
  */
 #define PortalIsValid(p) PointerIsValid(p)

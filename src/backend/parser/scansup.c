@@ -51,8 +51,10 @@ scanstr(char *s)
 	{
 		if (s[i] == '\'')
 		{
-			/* Note: if scanner is working right, unescaped quotes can only
-			 * appear in pairs, so there should be another character.
+
+			/*
+			 * Note: if scanner is working right, unescaped quotes can
+			 * only appear in pairs, so there should be another character.
 			 */
 			i++;
 			newStr[j] = s[i];

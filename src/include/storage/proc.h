@@ -76,7 +76,9 @@ typedef struct procglobal
 	SHMEM_OFFSET freeProcs;
 	IPCKey		currKey;
 	int32		freeSemMap[MAX_PROC_SEMS / PROC_NSEMS_PER_SET];
-	/* In each freeSemMap entry, the PROC_NSEMS_PER_SET lsbs flag whether
+
+	/*
+	 * In each freeSemMap entry, the PROC_NSEMS_PER_SET lsbs flag whether
 	 * individual semaphores are in use, and the next higher bit is set to
 	 * show that the entire set is allocated.
 	 */
@@ -117,8 +119,8 @@ extern bool ProcRemove(int pid);
 /* make static in storage/lmgr/proc.c -- jolly */
 
 extern void ProcQueueInit(PROC_QUEUE *queue);
-extern int ProcSleep(PROC_QUEUE *queue, LOCKMETHODCTL *lockctl, int token, 
-					LOCK *lock);
+extern int ProcSleep(PROC_QUEUE *queue, LOCKMETHODCTL * lockctl, int token,
+		  LOCK *lock);
 extern PROC *ProcWakeup(PROC *proc, int errType);
 extern int ProcLockWakeup(PROC_QUEUE *queue, LOCKMETHOD lockmethod,
 			   LOCK *lock);

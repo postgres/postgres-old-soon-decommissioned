@@ -5,17 +5,17 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
- *	The version stuff has not been tested under postgres95 and probably 
+ *	The version stuff has not been tested under postgres95 and probably
  *	doesn't work! - jolly 8/19/95
  *
  *
- *  $Id$
+ *	$Id$
  *
  * NOTES
  *	At the point the version is defined, 2 physical relations are created
  *	<vname>_added and <vname>_deleted.
  *
- *	In addition, 4 rules are defined which govern the semantics of 
+ *	In addition, 4 rules are defined which govern the semantics of
  *	versions w.r.t retrieves, appends, replaces and deletes.
  *
  *-------------------------------------------------------------------------

@@ -196,6 +196,7 @@ CatalogCacheInitializeCache(struct catcache * cache,
 
 		if (cache->cc_key[i] > 0)
 		{
+
 			/*
 			 * Yoiks.  The implementation of the hashing code and the
 			 * implementation of int28's are at loggerheads.  The right
@@ -277,7 +278,7 @@ CatalogCacheSetId(CatCache *cacheInOutP, int id)
 #endif
 
 /* ----------------
- * comphash 
+ * comphash
  *		Compute a hash value, somehow.
  *
  * XXX explain algorithm here.

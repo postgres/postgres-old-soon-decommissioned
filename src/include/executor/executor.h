@@ -83,14 +83,16 @@ extern HeapTuple ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot);
  * prototypes from functions in execMain.c
  */
 extern TupleDesc ExecutorStart(QueryDesc *queryDesc, EState *estate);
-extern TupleTableSlot *ExecutorRun(QueryDesc *queryDesc, EState *estate, 
-							int feature, Node *limoffset, Node *limcount);
+extern TupleTableSlot *ExecutorRun(QueryDesc *queryDesc, EState *estate,
+			int feature, Node *limoffset, Node *limcount);
 extern void ExecutorEnd(QueryDesc *queryDesc, EState *estate);
-extern void ExecConstraints(char *caller, Relation rel, HeapTuple tuple, 
-											EState *estate);
+extern void ExecConstraints(char *caller, Relation rel, HeapTuple tuple,
+				EState *estate);
+
 #ifdef QUERY_LIMIT
-extern int ExecutorLimit(int limit);
-extern int ExecutorGetLimit(void);
+extern int	ExecutorLimit(int limit);
+extern int	ExecutorGetLimit(void);
+
 #endif
 
 /*

@@ -18,7 +18,7 @@
 #include <access/skey.h>
 
 /*
- * ScanKeyEntryIsLegal 
+ * ScanKeyEntryIsLegal
  *		True iff the scan key entry is legal.
  */
 #define ScanKeyEntryIsLegal(entry) \
@@ -28,7 +28,7 @@
 )
 
 /*
- * ScanKeyEntrySetIllegal 
+ * ScanKeyEntrySetIllegal
  *		Marks a scan key entry as illegal.
  */
 void
@@ -43,7 +43,7 @@ ScanKeyEntrySetIllegal(ScanKey entry)
 }
 
 /*
- * ScanKeyEntryInitialize 
+ * ScanKeyEntryInitialize
  *		Initializes an scan key entry.
  *
  * Note:

@@ -5,7 +5,7 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
- *  $Id$
+ *	$Id$
  *
  * OLD COMMENTS
  * XXX WARNING

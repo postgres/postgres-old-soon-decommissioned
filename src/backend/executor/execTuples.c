@@ -467,6 +467,7 @@ ExecSetSlotPolicy(TupleTableSlot *slot, /* slot to change */
 
 	return old_shouldFree;
 }
+
 #endif
 
 /* --------------------------------
@@ -650,6 +651,7 @@ ExecInitMarkedTupleSlot(EState *estate, MergeJoinState *mergestate)
 	INIT_SLOT_ALLOC;
 	mergestate->mj_MarkedTupleSlot = (TupleTableSlot *) slot;
 }
+
 #endif
 
 /* ----------------

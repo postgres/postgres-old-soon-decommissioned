@@ -681,8 +681,8 @@ cash_words_out(Cash *value)
 	Cash		m1;
 	Cash		m2;
 	Cash		m3;
-	text		*result;
-	
+	text	   *result;
+
 	/* work with positive numbers */
 	if (*value < 0)
 	{

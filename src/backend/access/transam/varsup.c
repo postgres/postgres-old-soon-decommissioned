@@ -260,7 +260,7 @@ VariableRelationPutNextOid(Oid *oidP)
  *		In the version 2 transaction system, transaction id's are
  *		restricted in several ways.
  *
- *		-- Old comments removed 
+ *		-- Old comments removed
  *
  *		Second, since we may someday preform compression of the data
  *		in the log and time relations, we cause the numbering of the

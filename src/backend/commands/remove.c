@@ -36,7 +36,7 @@
 #endif
 
 /*
- * RemoveOperator 
+ * RemoveOperator
  *		Deletes an operator.
  *
  * Exceptions:
@@ -288,7 +288,7 @@ RemoveType(char *typeName)		/* type name to be removed */
 }
 
 /*
- * RemoveFunction 
+ * RemoveFunction
  *		Deletes a function.
  *
  * Exceptions:

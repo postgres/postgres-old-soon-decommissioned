@@ -367,7 +367,7 @@ btinsert(Relation rel, Datum *datum, char *nulls, ItemPointer ht_ctid, Relation 
 	btitem = _bt_formitem(itup);
 
 	res = _bt_doinsert(rel, btitem,
-							 IndexIsUnique(RelationGetRelid(rel)), heapRel);
+					   IndexIsUnique(RelationGetRelid(rel)), heapRel);
 
 	pfree(btitem);
 	pfree(itup);
@@ -391,9 +391,10 @@ btgettuple(IndexScanDesc scan, ScanDirection dir)
 
 	if (ItemPointerIsValid(&(scan->currentItemData)))
 	{
+
 		/*
-		 * Restore scan position using heap TID returned 
-		 * by previous call to btgettuple().
+		 * Restore scan position using heap TID returned by previous call
+		 * to btgettuple().
 		 */
 		_bt_restscan(scan);
 		res = _bt_next(scan, dir);
@@ -623,16 +624,15 @@ _bt_restscan(IndexScanDesc scan)
 	BlockNumber blkno;
 
 	/*
-	 * We use this as flag when first index tuple on page
-	 * is deleted but we do not move left (this would
-	 * slowdown vacuum) - so we set current->ip_posid
-	 * before first index tuple on the current page
+	 * We use this as flag when first index tuple on page is deleted but
+	 * we do not move left (this would slowdown vacuum) - so we set
+	 * current->ip_posid before first index tuple on the current page
 	 * (_bt_step will move it right)...
 	 */
 	if (!ItemPointerIsValid(&target))
 	{
-		ItemPointerSetOffsetNumber(&(scan->currentItemData), 
-			OffsetNumberPrev(P_RIGHTMOST(opaque) ? P_HIKEY : P_FIRSTKEY));
+		ItemPointerSetOffsetNumber(&(scan->currentItemData),
+		   OffsetNumberPrev(P_RIGHTMOST(opaque) ? P_HIKEY : P_FIRSTKEY));
 		return;
 	}
 

@@ -16,7 +16,7 @@
 #include "nodes/pg_list.h"
 #include "nodes/relation.h"
 
-extern bool valid_or_clause(RestrictInfo *restrictinfo);
+extern bool valid_or_clause(RestrictInfo * restrictinfo);
 extern List *get_actual_clauses(List *restrictinfo_list);
 extern void get_relattvals(List *restrictinfo_list, List **attnos,
 			   List **values, List **flags);

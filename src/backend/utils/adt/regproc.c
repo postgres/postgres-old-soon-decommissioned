@@ -41,9 +41,9 @@
 int32
 regprocin(char *pro_name_or_oid)
 {
-	HeapTuple	 	proctup = NULL;
-	HeapTupleData	tuple;
-	RegProcedure	result = InvalidOid;
+	HeapTuple	proctup = NULL;
+	HeapTupleData tuple;
+	RegProcedure result = InvalidOid;
 
 	if (pro_name_or_oid == NULL)
 		return InvalidOid;
@@ -52,6 +52,7 @@ regprocin(char *pro_name_or_oid)
 
 	if (!IsBootstrapProcessingMode())
 	{
+
 		/*
 		 * we need to use the oid because there can be multiple entries
 		 * with the same name.	We accept int4eq_1323 and 1323.
@@ -76,23 +77,23 @@ regprocin(char *pro_name_or_oid)
 			RetrieveIndexResult indexRes;
 			Buffer		buffer;
 			int			matches = 0;
-		
+
 			ScanKeyEntryInitialize(&skey[0],
 								   (bits16) 0x0,
 								   (AttrNumber) 1,
 								   (RegProcedure) F_NAMEEQ,
 								   PointerGetDatum(pro_name_or_oid));
-		
+
 			hdesc = heap_openr(ProcedureRelationName);
 			idesc = index_openr(ProcedureNameIndex);
-		
+
 			sd = index_beginscan(idesc, false, 1, skey);
 			while ((indexRes = index_getnext(sd, ForwardScanDirection)))
 			{
 				tuple.t_self = indexRes->heap_iptr;
 				heap_fetch(hdesc, SnapshotNow,
-									&tuple,
-									&buffer);
+						   &tuple,
+						   &buffer);
 				pfree(indexRes);
 				if (tuple.t_data != NULL)
 				{

@@ -79,6 +79,7 @@ static bool smgrwo[] = {
 	false,						/* main memory */
 #endif
 };
+
 #endif
 
 static int	NSmgr = lengthof(smgrsw);
@@ -408,4 +409,5 @@ smgriswo(int16 smgrno)
 
 	return smgrwo[smgrno];
 }
+
 #endif

@@ -93,8 +93,8 @@ extern char CTZName[];
 extern char FloatFormat[];
 extern char DateFormat[];
 
-extern bool	disableFsync;
-extern bool	allowSystemTableMods;
+extern bool disableFsync;
+extern bool allowSystemTableMods;
 extern int	SortMem;
 
 extern Oid	LastOidProcessed;	/* for query rewrite */

@@ -61,6 +61,7 @@ BufferBlock BufferBlocks;
 
 #ifndef HAS_TEST_AND_SET
 long	   *NWaitIOBackendP;
+
 #endif
 
 extern IpcSemaphoreId WaitIOSemId;
@@ -238,14 +239,14 @@ InitBufferPool(IPCKey key)
 		WaitIOSemId = IpcSemaphoreCreate(IPCKeyGetWaitIOSemaphoreKey(key),
 										 1, IPCProtection, 0, 1, &status);
 		WaitCLSemId = IpcSemaphoreCreate(IPCKeyGetWaitCLSemaphoreKey(key),
-										 1, IPCProtection, 
-										 IpcSemaphoreDefaultStartValue, 
+										 1, IPCProtection,
+										 IpcSemaphoreDefaultStartValue,
 										 1, &status);
 	}
 #endif
 	PrivateRefCount = (long *) calloc(NBuffers, sizeof(long));
 	LastRefCount = (long *) calloc(NBuffers, sizeof(long));
-	BufferLocks = (bits8*) calloc (NBuffers, sizeof(bits8));
+	BufferLocks = (bits8 *) calloc(NBuffers, sizeof(bits8));
 	CommitInfoNeedsSave = (long *) calloc(NBuffers, sizeof(long));
 }
 

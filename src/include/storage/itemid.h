@@ -57,13 +57,13 @@ typedef struct ItemIdData *ItemId;
    ((itemId)->lp_flags)
 
 /*
- * ItemIdIsValid 
+ * ItemIdIsValid
  *		True iff disk item identifier is valid.
  */
 #define ItemIdIsValid(itemId)	PointerIsValid(itemId)
 
 /*
- * ItemIdIsUsed 
+ * ItemIdIsUsed
  *		True iff disk item identifier is in use.
  *
  * Note:

@@ -5,7 +5,7 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
- *  $Id$
+ *	$Id$
  *
  *-------------------------------------------------------------------------
  */
@@ -50,7 +50,7 @@
  *		see utils/mmgr/portalmem.c for why. -cim 2/22/91
  *
  */
-#include <stdio.h>			
+#include <stdio.h>
 #include <string.h>
 
 #include <postgres.h>
@@ -71,7 +71,7 @@ in_range(char *msg, int value, int min, int max)
 	if (value < min || value >= max)
 	{
 		snprintf(PQerrormsg, ERROR_MSG_LENGTH,
-			"FATAL: %s, %d is not in range [%d,%d)\n", msg, value, min, max);
+		"FATAL: %s, %d is not in range [%d,%d)\n", msg, value, min, max);
 		pqdebug("%s", PQerrormsg);
 		fputs(PQerrormsg, stderr);
 		return 0;

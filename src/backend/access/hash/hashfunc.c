@@ -34,9 +34,9 @@ hashint4(uint32 key)
 }
 
 uint32
-hashint8(int64 *key)
+hashint8(int64 * key)
 {
-	return ~((uint32)*key);
+	return ~((uint32) *key);
 }
 
 /* Hash function from Chris Torek. */

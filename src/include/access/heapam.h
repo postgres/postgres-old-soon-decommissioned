@@ -149,7 +149,7 @@ fastgetattr(HeapTuple tup, int attnum, TupleDesc tupleDesc,
 			   (attnum) == 1) ?
 			  (
 			   (Datum) fetchatt(&((tupleDesc)->attrs[(attnum) - 1]),
-								(char *) (tup)->t_data + (tup)->t_data->t_hoff +
+						 (char *) (tup)->t_data + (tup)->t_data->t_hoff +
 								(
 								 ((attnum) != 1) ?
 							(tupleDesc)->attrs[(attnum) - 1]->attcacheoff
@@ -256,8 +256,8 @@ extern HeapTuple heap_getnext(HeapScanDesc scandesc, int backw);
 extern void heap_fetch(Relation relation, Snapshot snapshot, HeapTuple tup, Buffer *userbuf);
 extern Oid	heap_insert(Relation relation, HeapTuple tup);
 extern int	heap_delete(Relation relation, ItemPointer tid, ItemPointer ctid);
-extern int	heap_replace(Relation relation, ItemPointer otid, HeapTuple tup,
-							ItemPointer ctid);
+extern int heap_replace(Relation relation, ItemPointer otid, HeapTuple tup,
+			 ItemPointer ctid);
 extern int	heap_mark4update(Relation relation, HeapTuple tup, Buffer *userbuf);
 extern void heap_markpos(HeapScanDesc scan);
 extern void heap_restrpos(HeapScanDesc scan);

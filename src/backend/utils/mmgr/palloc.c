@@ -36,7 +36,7 @@
 char *
 pstrdup(char *string)
 {
-	char		*nstr;
+	char	   *nstr;
 	int			len;
 
 	nstr = palloc(len = strlen(string) + 1);
@@ -44,4 +44,3 @@ pstrdup(char *string)
 
 	return nstr;
 }
-

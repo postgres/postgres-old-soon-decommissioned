@@ -27,7 +27,7 @@
  *		System-dependent tuning constants
  *
  */
-#define _CPU_PAGE_WEIGHT_  0.033  /* CPU-heap-to-page cost weighting factor */
+#define _CPU_PAGE_WEIGHT_  0.033/* CPU-heap-to-page cost weighting factor */
 #define _CPU_INDEX_PAGE_WEIGHT_ 0.017	/* CPU-index-to-page cost
 										 * weighting factor */
 #define _MAX_KEYS_	   INDEX_MAX_KEYS	/* maximum number of keys in an

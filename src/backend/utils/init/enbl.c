@@ -15,7 +15,7 @@
 #include "utils/module.h"		/* where the declarations go */
 
 /*
- * BypassEnable 
+ * BypassEnable
  *		False iff enable/disable processing is required given on and "*countP."
  *
  * Note:

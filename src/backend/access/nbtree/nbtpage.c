@@ -421,7 +421,7 @@ _bt_pageinit(Page page, Size size)
 	MemSet(page, 0, size);
 
 	PageInit(page, size, sizeof(BTPageOpaqueData));
-	((BTPageOpaque) PageGetSpecialPointer(page))->btpo_parent = 
+	((BTPageOpaque) PageGetSpecialPointer(page))->btpo_parent =
 		InvalidBlockNumber;
 }
 
@@ -494,17 +494,16 @@ _bt_getstackbuf(Relation rel, BTStack stack, int access)
 	opaque = (BTPageOpaque) PageGetSpecialPointer(page);
 	maxoff = PageGetMaxOffsetNumber(page);
 
-	if (stack->bts_offset == InvalidOffsetNumber || 
+	if (stack->bts_offset == InvalidOffsetNumber ||
 		maxoff >= stack->bts_offset)
 	{
+
 		/*
-		 * _bt_insertonpg set bts_offset to InvalidOffsetNumber
-		 * in the case of concurrent ROOT page split
+		 * _bt_insertonpg set bts_offset to InvalidOffsetNumber in the
+		 * case of concurrent ROOT page split
 		 */
 		if (stack->bts_offset == InvalidOffsetNumber)
-		{
 			i = P_RIGHTMOST(opaque) ? P_HIKEY : P_FIRSTKEY;
-		}
 		else
 		{
 			itemid = PageGetItemId(page, stack->bts_offset);
@@ -524,7 +523,7 @@ _bt_getstackbuf(Relation rel, BTStack stack, int access)
 		}
 
 		/* if the item has just moved right on this page, we're done */
-		for ( ;
+		for (;
 			 i <= maxoff;
 			 i = OffsetNumberNext(i))
 		{

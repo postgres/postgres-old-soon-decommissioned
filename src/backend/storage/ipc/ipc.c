@@ -680,7 +680,7 @@ struct ipcdummy
 	SLock		slocks[MAX_SPINS + 1];
 };
 
-#define	SLOCKMEMORYSIZE		sizeof(struct ipcdummy)
+#define SLOCKMEMORYSIZE		sizeof(struct ipcdummy)
 
 void
 CreateAndInitSLockMemory(IPCKey key)
@@ -747,4 +747,5 @@ IpcConfigTip(void)
 	fprintf(stderr, "shared memory or System V IPC semaphore configuration.\n");
 	fprintf(stderr, "See the FAQ for more detailed information\n");
 }
+
 #endif

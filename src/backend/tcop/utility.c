@@ -616,7 +616,7 @@ ProcessUtility(Node *parsetree,
 				PS_SET_STATUS(commandTag = "LOAD");
 				CHECK_IF_ABORTED();
 
-				closeAllVfds();	/* probably not necessary... */
+				closeAllVfds(); /* probably not necessary... */
 				load_file(stmt->filename);
 			}
 			break;
@@ -653,6 +653,7 @@ ProcessUtility(Node *parsetree,
 			break;
 
 #ifdef NOT_USED
+
 			/*
 			 * ******************************** Tioga-related statements *******************************
 			 */

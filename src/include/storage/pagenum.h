@@ -21,7 +21,7 @@ typedef uint32 LogicalPageNumber;
 #define InvalidLogicalPageNumber		0
 
 /*
- * LogicalPageNumberIsValid 
+ * LogicalPageNumberIsValid
  *		True iff the logical page number is valid.
  */
 #define LogicalPageNumberIsValid(pageNumber) \

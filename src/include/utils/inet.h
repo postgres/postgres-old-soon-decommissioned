@@ -24,7 +24,7 @@ typedef struct
 	unsigned char type;
 	union
 	{
-		unsigned int	ipv4_addr;	/* network byte order */
+		unsigned int ipv4_addr; /* network byte order */
 		/* add IPV6 address type here */
 	}			addr;
 }			inet_struct;
@@ -42,7 +42,7 @@ typedef struct macaddr
 	unsigned char d;
 	unsigned char e;
 	unsigned char f;
-}			macaddr;
+} macaddr;
 
 
 typedef struct manufacturer
@@ -51,9 +51,8 @@ typedef struct manufacturer
 	unsigned char b;
 	unsigned char c;
 	char	   *name;
-} manufacturer;
+}			manufacturer;
 
 extern manufacturer manufacturers[];
 
 #endif	 /* MAC_H */
-

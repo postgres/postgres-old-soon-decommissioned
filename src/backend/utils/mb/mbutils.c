@@ -10,7 +10,7 @@
 
 #include "mb/pg_wchar.h"
 
-static int client_encoding = -1;
+static int	client_encoding = -1;
 static void (*client_to_mic) ();/* something to MIC */
 static void (*client_from_mic) ();		/* MIC to something */
 static void (*server_to_mic) ();/* something to MIC */
@@ -213,16 +213,14 @@ pg_mbcliplen(const unsigned char *mbstr, int len, int limit)
 	int			clen = 0;
 	int			l;
 
-	while (*mbstr &&  len > 0)
+	while (*mbstr && len > 0)
 	{
 		l = pg_mblen(mbstr);
-		if ((clen + l) > limit) {
+		if ((clen + l) > limit)
 			break;
-		}
 		clen += l;
-		if (clen == limit) {
+		if (clen == limit)
 			break;
-		}
 		len -= l;
 		mbstr += l;
 	}

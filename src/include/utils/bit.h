@@ -19,19 +19,19 @@ typedef uint32 BitIndex;
 #define BitsPerByte		8
 
 /*
- * BitArraySetBit 
+ * BitArraySetBit
  *		Sets (to 1) the value of a bit in a bit array.
  */
 extern void BitArraySetBit(BitArray bitArray, BitIndex bitIndex);
 
 /*
- * BitArrayClearBit 
+ * BitArrayClearBit
  *		Clears (to 0) the value of a bit in a bit array.
  */
 extern void BitArrayClearBit(BitArray bitArray, BitIndex bitIndex);
 
 /*
- * BitArrayBitIsSet 
+ * BitArrayBitIsSet
  *		True iff the bit is set (1) in a bit array.
  */
 extern bool BitArrayBitIsSet(BitArray bitArray, BitIndex bitIndex);

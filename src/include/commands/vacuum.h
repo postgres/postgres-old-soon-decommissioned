@@ -97,33 +97,33 @@ typedef VRelListData *VRelList;
 
 typedef struct VTupleLinkData
 {
-	ItemPointerData		new_tid;
-	ItemPointerData		this_tid;
-} VTupleLinkData;
+	ItemPointerData new_tid;
+	ItemPointerData this_tid;
+}			VTupleLinkData;
 
 typedef VTupleLinkData *VTupleLink;
 
 typedef struct VTupleMoveData
 {
-	ItemPointerData		tid;		/* tuple ID */
-	VPageDescr			vpd;		/* where to move */
-	bool				cleanVpd;	/* clean vpd before using */
-} VTupleMoveData;
+	ItemPointerData tid;		/* tuple ID */
+	VPageDescr	vpd;			/* where to move */
+	bool		cleanVpd;		/* clean vpd before using */
+}			VTupleMoveData;
 
 typedef VTupleMoveData *VTupleMove;
 
 typedef struct VRelStats
 {
-	Oid				relid;
-	int				num_tuples;
-	int				num_pages;
-	Size			min_tlen;
-	Size			max_tlen;
-	bool			hasindex;
-	int				va_natts;		/* number of attrs being analyzed */
-	VacAttrStats   *vacattrstats;
-	int				num_vtlinks;
-	VTupleLink		vtlinks;
+	Oid			relid;
+	int			num_tuples;
+	int			num_pages;
+	Size		min_tlen;
+	Size		max_tlen;
+	bool		hasindex;
+	int			va_natts;		/* number of attrs being analyzed */
+	VacAttrStats *vacattrstats;
+	int			num_vtlinks;
+	VTupleLink	vtlinks;
 } VRelStats;
 
 extern bool VacuumRunning;

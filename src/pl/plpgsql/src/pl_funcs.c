@@ -328,8 +328,8 @@ plpgsql_ns_rename(char *oldname, char *newname)
 char *
 plpgsql_tolower(char *s)
 {
-	char   *ret;
-	char   *cp;
+	char	   *ret;
+	char	   *cp;
 
 	ret = palloc(strlen(s) + 1);
 	cp = ret;

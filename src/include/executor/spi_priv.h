@@ -35,4 +35,4 @@ typedef struct
 #define _SPI_CPLAN_PROCXT	1
 #define _SPI_CPLAN_TOPCXT	2
 
-#endif /* SPI_PRIV_H */
+#endif	 /* SPI_PRIV_H */

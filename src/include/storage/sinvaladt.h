@@ -70,8 +70,7 @@ typedef struct SISeg
 	Offset		endEntryChain;	/* (offset relative to B)		*/
 	int			numEntries;
 	int			maxNumEntries;
-	ProcState	procState[MAXBACKENDS];			/* reflects the
-												 * invalidation state */
+	ProcState	procState[MAXBACKENDS]; /* reflects the invalidation state */
 	/* here starts the entry section, controlled by offsets */
 } SISeg;
 

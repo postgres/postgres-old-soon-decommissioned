@@ -55,7 +55,7 @@ extern SPINLOCK BufMgrLock;
 
 
 /*
- * AddBufferToFreelist 
+ * AddBufferToFreelist
  *
  * In theory, this is the only routine that needs to be changed
  * if the buffer replacement strategy changes.	Just change

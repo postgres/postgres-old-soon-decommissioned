@@ -127,8 +127,8 @@ extern char *array_assgn(ArrayType *array, int n, int *upperIndx,
 			int *lowerIndx, ArrayType *newArr, int reftype,
 			int len, bool *isNull);
 extern ArrayType *array_map(ArrayType *v, Oid type,
-							char * (*fn)(),
-							Oid retType, int nargs, ...);
+		  char *(*fn) (),
+		  Oid retType, int nargs,...);
 extern int	array_eq(ArrayType *array1, ArrayType *array2);
 extern int _LOtransfer(char **destfd, int size, int nitems, char **srcfd,
 			int isSrcLO, int isDestLO);

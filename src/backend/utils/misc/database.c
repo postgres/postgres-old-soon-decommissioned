@@ -188,7 +188,7 @@ GetRawDatabaseInfo(char *name, int4 *owner, Oid *db_id, char *path, int *encodin
 	int			nbytes;
 	int			max,
 				i;
-	HeapTupleData	tup;
+	HeapTupleData tup;
 	Page		pg;
 	PageHeader	ph;
 	char	   *dbfname;
