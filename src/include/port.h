@@ -76,8 +76,10 @@ extern double rint(double x);
 #endif
 
 #ifndef HAVE_INET_ATON
+#if !defined(WIN32) || (!defined(_MSC_VER) && !defined(__BORLANDC__))
 # include <netinet/in.h>
 # include <arpa/inet.h>
+#endif
 extern int inet_aton(const char *cp, struct in_addr * addr);
 #endif
 

@@ -23,8 +23,10 @@
 #ifndef GETADDRINFO_H
 #define GETADDRINFO_H
 
+#if !defined(WIN32) || (!defined(_MSC_VER) && !defined(__BORLANDC__))
 #include <sys/socket.h>
 #include <netdb.h>
+#endif
 
 
 #ifndef HAVE_STRUCT_ADDRINFO
