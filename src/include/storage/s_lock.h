@@ -428,7 +428,7 @@ typedef unsigned char slock_t;
 #if defined(__mips__) && !defined(__sgi)
 #define HAS_TEST_AND_SET
 
-typedef unsigned char slock_t;
+typedef unsigned int slock_t;
 #endif
 
 
