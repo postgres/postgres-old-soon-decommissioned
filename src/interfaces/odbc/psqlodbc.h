@@ -87,7 +87,7 @@ typedef UInt4 Oid;
 #define DBMS_NAME					"PostgreSQL"
 #endif   /* ODBCVER */
 
-#define POSTGRESDRIVERVERSION		"07.01.0011"
+#define POSTGRESDRIVERVERSION		"07.02.0001"
 
 #ifdef WIN32
 #if (ODBCVER >= 0x0300)
