@@ -202,6 +202,7 @@ LD = @LD@
 with_gnu_ld = @with_gnu_ld@
 ld_R_works = @ld_R_works@
 LDFLAGS = @LDFLAGS@
+LDFLAGS_SL = @LDFLAGS_SL@
 LDREL = -r
 LDOUT = -o
 RANLIB = @RANLIB@
