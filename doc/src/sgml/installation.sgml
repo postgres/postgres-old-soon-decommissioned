@@ -232,8 +232,8 @@ su - postgres
    these commands while logged in to the special database user account
    (which you already have if you are upgrading).
 <programlisting>
-<userinput>/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/bin</>
-<userinput>/usr/local/pgsql/bin/postmaster -D /usr/local/pgsql/bin</>
+<userinput>/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data</>
+<userinput>/usr/local/pgsql/bin/postmaster -D /usr/local/pgsql/data</>
 </programlisting>
    Finally, restore your data with
 <screen>
