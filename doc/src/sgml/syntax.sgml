@@ -1216,7 +1216,7 @@ SELECT name, (SELECT max(pop) FROM cities WHERE cities.state = states.name)
    </para>
   </sect2>
 
-  <sect2>
+  <sect2 id="syntax-express-eval">
    <title>Expression Evaluation</title>
 
    <para>
