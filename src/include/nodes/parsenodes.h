@@ -136,8 +136,18 @@ typedef struct CreateStmt {
     ArchType		archiveType;	/* archive mode (ARCH_NONE if none */
     int			location;	/* smgrid (-1 if none) */
     int			archiveLoc;	/* smgrid (-1 if none) */
-    List		*check;		/* list of CHECK constr */
+    List		*constraints;	/* list of constraints (ConstaintDef) */
 } CreateStmt;
+
+typedef enum ConstrType {
+    CONSTR_NONE, CONSTR_CHECK		/* type of constaints */
+} ConstrType;
+
+typedef struct ConstaintDef {
+    ConstrType		type;
+    char		*name;		/* name */
+    char		*expr;		/*  */
+} ConstaintDef;
 
 /* ----------------------
  *	Create SEQUENCE Statement
