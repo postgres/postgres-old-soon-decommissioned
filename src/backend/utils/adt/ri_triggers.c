@@ -3073,7 +3073,7 @@ ri_PerformCheck(RI_QueryKey *qkey, void *qplan,
 	 * rows under current snapshot that wouldn't be visible per the
 	 * transaction snapshot).
 	 */
-	if (XactIsoLevel == XACT_SERIALIZABLE)
+	if (IsXactIsoLevelSerializable)
 	{
 		useCurrentSnapshot = detectNewRows;
 	}

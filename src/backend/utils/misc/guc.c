@@ -1346,7 +1346,7 @@ static struct config_string ConfigureNamesString[] =
 		{"default_transaction_isolation", PGC_USERSET, CLIENT_CONN_STATEMENT,
 			gettext_noop("Sets the transaction isolation level of each new transaction."),
 			gettext_noop("Each SQL transaction has an isolation level, which "
-				 "can be either \"read committed\" or \"serializable\".")
+				 "can be either \"read uncommitted\", \"read committed\", \"repeatable read\", or \"serializable\".")
 		},
 		&default_iso_level_string,
 		"read committed", assign_defaultxactisolevel, NULL
@@ -4238,10 +4238,20 @@ assign_defaultxactisolevel(const char *newval, bool doit, bool interactive)
 		if (doit)
 			DefaultXactIsoLevel = XACT_SERIALIZABLE;
 	}
+	else if (strcasecmp(newval, "repeatable read") == 0)
+	{
+		if (doit)
+			DefaultXactIsoLevel = XACT_REPEATABLE_READ;
+	}
 	else if (strcasecmp(newval, "read committed") == 0)
 	{
 		if (doit)
 			DefaultXactIsoLevel = XACT_READ_COMMITTED;
+	}
+	else if (strcasecmp(newval, "read uncommitted") == 0)
+	{
+		if (doit)
+			DefaultXactIsoLevel = XACT_READ_UNCOMMITTED;
 	}
 	else
 		return NULL;

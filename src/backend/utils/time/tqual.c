@@ -984,7 +984,7 @@ SetQuerySnapshot(void)
 		return;
 	}
 
-	if (XactIsoLevel == XACT_SERIALIZABLE)
+	if (IsXactIsoLevelSerializable)
 		QuerySnapshot = SerializableSnapshot;
 	else
 		QuerySnapshot = GetSnapshotData(&QuerySnapshotData, false);

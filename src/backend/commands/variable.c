@@ -640,10 +640,20 @@ assign_XactIsoLevel(const char *value, bool doit, bool interactive)
 		if (doit)
 			XactIsoLevel = XACT_SERIALIZABLE;
 	}
+	else if (strcmp(value, "repeatable read") == 0)
+	{
+		if (doit)
+			XactIsoLevel = XACT_REPEATABLE_READ;
+	}
 	else if (strcmp(value, "read committed") == 0)
 	{
 		if (doit)
 			XactIsoLevel = XACT_READ_COMMITTED;
+	}
+	else if (strcmp(value, "read uncommitted") == 0)
+	{
+		if (doit)
+			XactIsoLevel = XACT_READ_UNCOMMITTED;
 	}
 	else if (strcmp(value, "default") == 0)
 	{
@@ -659,10 +669,19 @@ assign_XactIsoLevel(const char *value, bool doit, bool interactive)
 const char *
 show_XactIsoLevel(void)
 {
-	if (XactIsoLevel == XACT_SERIALIZABLE)
-		return "serializable";
-	else
-		return "read committed";
+	switch (XactIsoLevel)
+	{
+		case XACT_READ_UNCOMMITTED:
+			return "read uncommitted";
+		case XACT_READ_COMMITTED:
+			return "read committed";
+		case XACT_REPEATABLE_READ:
+			return "repeatable read";
+		case XACT_SERIALIZABLE:
+			return "serializable";
+		default:
+			return "bogus";
+	}
 }
 
 

@@ -2043,10 +2043,12 @@ SET ENABLE_SEQSCAN TO OFF;
       <term><varname>default_transaction_isolation</varname> (<type>string</type>)</term>
       <listitem>
        <para>
-        Each SQL transaction has an isolation level, which can be either
-        <quote>read committed</quote> or <quote>serializable</quote>.
-        This parameter controls the default isolation level of each new
-        transaction. The default is <quote>read committed</quote>.
+        Each SQL transaction has an isolation level, which can be
+        either <quote>read uncommitted</quote>, <quote>read
+        committed</quote>, <quote>repeatable read</quote>, or
+        <quote>serializable</quote>.  This parameter controls the
+        default isolation level of each new transaction. The default
+        is <quote>read committed</quote>.
        </para>
 
        <para>

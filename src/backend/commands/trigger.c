@@ -1576,7 +1576,7 @@ ltrmark:;
 
 			case HeapTupleUpdated:
 				ReleaseBuffer(buffer);
-				if (XactIsoLevel == XACT_SERIALIZABLE)
+				if (IsXactIsoLevelSerializable)
 					ereport(ERROR,
 							(errcode(ERRCODE_T_R_SERIALIZATION_FAILURE),
 							 errmsg("could not serialize access due to concurrent update")));

@@ -22,13 +22,19 @@
 /*
  * Xact isolation levels
  */
-#define XACT_DIRTY_READ			0		/* not implemented */
+#define XACT_READ_UNCOMMITTED	0
 #define XACT_READ_COMMITTED		1
-#define XACT_REPEATABLE_READ	2		/* not implemented */
+#define XACT_REPEATABLE_READ	2
 #define XACT_SERIALIZABLE		3
 
 extern int	DefaultXactIsoLevel;
 extern int	XactIsoLevel;
+
+/*
+ * We only implement two distinct levels, so this is a convenience to
+ * check which level we're really using internally.
+ */
+#define IsXactIsoLevelSerializable ((XactIsoLevel == XACT_REPEATABLE_READ || XactIsoLevel == XACT_SERIALIZABLE))
 
 /* Xact read-only state */
 extern bool DefaultXactReadOnly;
