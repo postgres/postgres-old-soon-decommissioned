@@ -218,6 +218,7 @@ extern bool box_eq(BOX *box1, BOX *box2);
 extern bool box_le(BOX *box1, BOX *box2);
 extern bool box_ge(BOX *box1, BOX *box2);
 extern Point *box_center(BOX *box);
+extern double *box_area(BOX *box);
 extern double *box_width(BOX *box);
 extern double *box_height(BOX *box);
 extern double *box_distance(BOX *box1, BOX *box2);
