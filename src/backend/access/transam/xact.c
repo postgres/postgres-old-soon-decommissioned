@@ -162,6 +162,7 @@
 #include "commands/trigger.h"
 #include "executor/spi.h"
 #include "libpq/be-fsstubs.h"
+#include "miscadmin.h"
 #include "storage/proc.h"
 #include "storage/sinval.h"
 #include "utils/inval.h"
@@ -1087,6 +1088,11 @@ AbortTransaction()
 
 	if (s->state != TRANS_INPROGRESS)
 		elog(NOTICE, "AbortTransaction and not in in-progress state");
+
+	/*
+	 * Reset user id which might have been changed transiently
+	 */
+	SetUserId(GetSessionUserId());
 
 	/* ----------------
 	 *	Tell the trigger manager that this transaction is about to be
