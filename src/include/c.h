@@ -68,7 +68,7 @@
 #include <sys/types.h>
 
 #include <errno.h>
-#if defined(__CYGWIN__) || defined(WIN32)
+#if defined(WIN32) || defined(__CYGWIN__)
 #include <fcntl.h>				/* ensure O_BINARY is available */
 #endif
 #ifdef HAVE_SUPPORTDEFS_H
@@ -680,7 +680,7 @@ typedef NameData *Name;
  *	literal control-Z.	The other affect is that we see CRLF, but
  *	that is OK because we can already handle those cleanly.
  */
-#if defined(__CYGWIN__) || defined(WIN32)
+#if defined(WIN32) || defined(__CYGWIN__)
 #define PG_BINARY	O_BINARY
 #define PG_BINARY_R "rb"
 #define PG_BINARY_W "wb"

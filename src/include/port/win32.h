@@ -19,7 +19,7 @@
 #define USES_WINSOCK
 
 /* defines for dynamic linking on Win32 platform */
-#if defined(__CYGWIN__) || defined(__MINGW32__)
+#if defined(__MINGW32__) || defined(__CYGWIN__)
 
 #if __GNUC__ && ! defined (__declspec)
 #error You need egcs 1.1 or newer for compiling!

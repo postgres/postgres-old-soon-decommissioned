@@ -181,7 +181,7 @@ extern int	win32_open(const char *, int,...);
 #endif
 
 /* Global variable holding time zone information. */
-#if !defined(__CYGWIN__)
+#ifndef __CYGWIN__
 #define TIMEZONE_GLOBAL timezone
 #define TZNAME_GLOBAL tzname
 #else

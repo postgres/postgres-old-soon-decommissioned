@@ -66,14 +66,14 @@ pgrename(const char *from, const char *to)
 {
 	int			loops = 0;
 
-#ifdef WIN32
+#if defined(WIN32) && !defined(__CYGWIN__)
 	while (!MoveFileEx(from, to, MOVEFILE_REPLACE_EXISTING))
 #endif
 #ifdef __CYGWIN__
 		while (rename(from, to) < 0)
 #endif
 		{
-#ifdef WIN32
+#if defined(WIN32) && !defined(__CYGWIN__)
 			if (GetLastError() != ERROR_ACCESS_DENIED)
 #endif
 #ifdef __CYGWIN__

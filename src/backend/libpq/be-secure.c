@@ -659,7 +659,7 @@ initialize_SSL(void)
 		 * think of a reasonable check to apply on Windows.  (See also the
 		 * data directory permission check in postmaster.c)
 		 */
-#if !defined(__CYGWIN__) && !defined(WIN32)
+#if !defined(WIN32) && !defined(__CYGWIN__)
 		if (!S_ISREG(buf.st_mode) || (buf.st_mode & (S_IRWXG | S_IRWXO)) ||
 			buf.st_uid != getuid())
 			ereport(FATAL,
