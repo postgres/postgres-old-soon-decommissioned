@@ -289,24 +289,6 @@ PortalHeapMemoryFree(PortalHeapMemory this,
 	}
 }
 
-#ifdef FREE_TUPLE_MEMORY
-/*
- * PortalHeapMemoryIsValid --
- *
- * Check if a pointer is allocated in a memory context.
- *
- */
-bool
-PortalHeapMemoryIsValid(MemoryContext context, Pointer pointer)
-{
-	HeapMemoryBlock block = HEAPMEMBLOCK((PortalHeapMemory) context);
-
-	AssertState(PointerIsValid(block));
-
-	return (AllocSetContains(&block->setData, pointer));
-}
-#endif
-
 /* ----------------
  *		PortalHeapMemoryRealloc
  * ----------------

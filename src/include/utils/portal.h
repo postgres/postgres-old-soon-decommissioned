@@ -80,10 +80,6 @@ extern void EndPortalAllocMode(void);
 extern PortalVariableMemory PortalGetVariableMemory(Portal portal);
 extern PortalHeapMemory PortalGetHeapMemory(Portal portal);
 
-#ifdef FREE_TUPLE_MEMORY
-bool   PortalHeapMemoryIsValid(MemoryContext context, Pointer pointer);
-#endif
-
 /* estimate of the maximum number of open portals a user would have,
  * used in initially sizing the PortalHashTable in	EnablePortalManager()
  */
