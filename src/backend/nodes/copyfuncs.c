@@ -1481,19 +1481,6 @@ _copySortClause(SortClause *from)
 	return newnode;
 }
 
-#if FALSE
-static GroupClause *
-_copyGroupClause(GroupClause *from)
-{
-	GroupClause *newnode = makeNode(GroupClause);
-
-	Node_Copy(from, newnode, resdom);
-	newnode->opoid = from->opoid;
-
-	return newnode;
-}
-#endif
-
 static A_Const *
 _copyAConst(A_Const *from)
 {
@@ -1794,11 +1781,6 @@ copyObject(void *from)
 		case T_SortClause:
 			retval = _copySortClause(from);
 			break;
-#if FALSE
-		case T_GroupClause:
-			retval = _copyGroupClause(from);
-			break;
-#endif
 		case T_A_Const:
 			retval = _copyAConst(from);
 			break;
