@@ -153,8 +153,8 @@ if [ "$usage" ]; then
 	echo "  -N, --unencrypted         do no encrypt stored password"
 	echo "  -i, --sysid=SYSID         select sysid for new user"     
 	echo "  -e, --echo                show the query being sent to the backend"
-        echo "  -q, --quiet               don't write any messages"
-	echo " --help                     show this help, then exit"
+	echo "  -q, --quiet               don't write any messages"
+	echo "  --help                    show this help, then exit"
 	echo
 	echo "Connection options:"
 	echo "  -h, --host=HOSTNAME       database server host"

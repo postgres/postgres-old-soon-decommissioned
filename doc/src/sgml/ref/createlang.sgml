@@ -150,7 +150,7 @@ PostgreSQL documentation
       <term><option>--username <replaceable class="parameter">username</replaceable></></term>
       <listitem>
        <para>
-        User name to connect as
+        User name to connect as.
        </para>
       </listitem>
      </varlistentry>
