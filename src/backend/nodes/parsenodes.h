@@ -114,6 +114,7 @@ typedef struct CopyStmt {
     NodeTag		type;
     bool		binary;		/* is a binary copy? */
     char		*relname;	/* the relation to copy */
+    bool		oids;		/* copy oid's? */
     int			direction;	/* TO or FROM */
     char		*filename;	/* if NULL, use stdin/stdout */
     char                *delimiter;     /* delimiter character, \t by default*/

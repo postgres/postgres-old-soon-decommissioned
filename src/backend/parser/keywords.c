@@ -103,6 +103,7 @@ static ScanKeyword ScanKeywords[] = {
 	{ "notify",             NOTIFY          },
 	{ "notnull",            NOTNULL         },
 	{ "null",		PNULL		},
+	{ "oids",		OIDS		},
 	{ "on",			ON		},
 	{ "operator",		OPERATOR	},
         { "option",             OPTION          },

@@ -1093,6 +1093,8 @@ heap_insert(Relation relation, HeapTuple tup)
 	tup->t_oid = newoid();
 	LastOidProcessed = tup->t_oid;
     }
+    else
+    	CheckMaxObjectId(tup->t_oid);
     
     TransactionIdStore(GetCurrentTransactionId(), &(tup->t_xmin));
     tup->t_cmin = GetCurrentCommandId();

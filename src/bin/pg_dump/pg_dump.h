@@ -142,6 +142,8 @@ extern char g_opaque_type[10]; /* name for the opaque type */
 */
 
 extern TableInfo* dumpSchema(FILE* fout, int *numTablesPtr, char *tablename);
+extern void dumpSchemaIdx(FILE* fout, int *numTablesPtr, char *tablename,
+				TableInfo* tblinfo, int numTables);
 
 extern char* findTypeByOid(TypeInfo* tinfo, int numTypes, char* oid);
 extern char* findOprByOid(OprInfo *oprinfo, int numOprs, char *oid);

@@ -46,6 +46,14 @@
 
 typedef unsigned char XidStatus; 		/* (2 bits) */
 
+/* ----------
+ *      note: we reserve the first 16384 object ids for internal use.
+ *      oid's less than this appear in the .bki files.  the choice of
+ *      16384 is completely arbitrary.
+ * ----------
+ */
+#define BootstrapObjectIdData 16384
+
 /* ----------------
  *   	BitIndexOf computes the index of the Nth xid on a given block
  * ----------------
@@ -182,6 +190,7 @@ extern void GetNewTransactionId(TransactionId *xid);
 extern void UpdateLastCommittedXid(TransactionId xid);
 extern void GetNewObjectIdBlock(Oid *oid_return, int oid_block_size);
 extern void GetNewObjectId(Oid *oid_return);
+extern void CheckMaxObjectId(Oid assigned_oid);
 
 /* ----------------
  *	global variable extern declarations

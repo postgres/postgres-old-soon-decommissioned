@@ -199,6 +199,7 @@ ProcessUtility(Node *parsetree,
 	    char *filename;
 	    char *delim;
 	    bool	isBinary;
+	    bool	isOids;
 	    bool	isFrom;
 	    bool        pipe = false;
 
@@ -207,6 +208,7 @@ ProcessUtility(Node *parsetree,
 	    
 	    relname = stmt->relname;
 	    isBinary = stmt->binary;
+	    isOids = stmt->oids;
 	    
 	    isFrom = (bool)(stmt->direction == FROM);
 	    filename = stmt->filename;
@@ -234,7 +236,7 @@ ProcessUtility(Node *parsetree,
 	    
 	    if (pipe && IsUnderPostmaster) dest = CopyEnd;
 	    
-	    DoCopy(relname, isBinary, isFrom, pipe, filename, delim);
+	    DoCopy(relname, isBinary, isOids, isFrom, pipe, filename, delim);
 	}
 	break;
       
