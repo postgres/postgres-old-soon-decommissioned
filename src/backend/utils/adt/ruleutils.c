@@ -290,7 +290,7 @@ pg_get_ruledef_worker(Oid ruleoid, int prettyFlags)
 	 */
 	args[0] = ObjectIdGetDatum(ruleoid);
 	nulls[0] = ' ';
-	spirc = SPI_execp(plan_getrulebyoid, args, nulls, 1);
+	spirc = SPI_execute_plan(plan_getrulebyoid, args, nulls, true, 1);
 	if (spirc != SPI_OK_SELECT)
 		elog(ERROR, "failed to get pg_rewrite tuple for rule %u", ruleoid);
 	if (SPI_processed != 1)
@@ -425,7 +425,7 @@ pg_get_viewdef_worker(Oid viewoid, int prettyFlags)
 	args[1] = PointerGetDatum(ViewSelectRuleName);
 	nulls[0] = ' ';
 	nulls[1] = ' ';
-	spirc = SPI_execp(plan_getviewrule, args, nulls, 2);
+	spirc = SPI_execute_plan(plan_getviewrule, args, nulls, true, 2);
 	if (spirc != SPI_OK_SELECT)
 		elog(ERROR, "failed to get pg_rewrite tuple for view %u", viewoid);
 	if (SPI_processed != 1)

@@ -135,7 +135,7 @@ PerformCursorOpen(DeclareCursorStmt *stmt, ParamListInfo params)
 	/*
 	 * Start execution, inserting parameters if any.
 	 */
-	PortalStart(portal, params);
+	PortalStart(portal, params, ActiveSnapshot);
 
 	Assert(portal->strategy == PORTAL_ONE_SELECT);
 

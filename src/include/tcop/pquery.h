@@ -20,15 +20,10 @@
 extern DLLIMPORT Portal ActivePortal;
 
 
-extern void ProcessQuery(Query *parsetree,
-			 Plan *plan,
-			 ParamListInfo params,
-			 DestReceiver *dest,
-			 char *completionTag);
-
 extern PortalStrategy ChoosePortalStrategy(List *parseTrees);
 
-extern void PortalStart(Portal portal, ParamListInfo params);
+extern void PortalStart(Portal portal, ParamListInfo params,
+						Snapshot snapshot);
 
 extern void PortalSetResultFormat(Portal portal, int nFormats,
 					  int16 *formats);

@@ -339,6 +339,26 @@ $PostgreSQL$
 
      <listitem>
       <para>
+       In <literal>READ COMMITTED</> serialization mode, volatile functions
+       now see the results of concurrent transactions committed up to the
+       beginning of each statement within the function, rather than up to the
+       beginning of the interactive command that called the function.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+       Functions declared <literal>STABLE</> or <literal>IMMUTABLE</> always
+       use the snapshot of the calling query, and therefore do not see the
+       effects of actions taken after the calling query starts, whether in
+       their own transaction or other transactions.  Such a function must be
+       read-only, too, meaning that it cannot use any SQL commands other than
+       <command>SELECT</>.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
        Non-deferred AFTER triggers are now fired immediately after completion
        of the triggering query, rather than upon finishing the current
        interactive command.  This makes a difference when the triggering query
@@ -1433,6 +1453,26 @@ $PostgreSQL$
   <sect3>
    <title>Server-Side Language Changes</title>
    <itemizedlist>
+
+    <listitem>
+     <para>
+      In <literal>READ COMMITTED</> serialization mode, volatile functions
+      now see the results of concurrent transactions committed up to the
+      beginning of each statement within the function, rather than up to the
+      beginning of the interactive command that called the function.
+     </para>
+    </listitem>
+
+    <listitem>
+     <para>
+      Functions declared <literal>STABLE</> or <literal>IMMUTABLE</> always
+      use the snapshot of the calling query, and therefore do not see the
+      effects of actions taken after the calling query starts, whether in
+      their own transaction or other transactions.  Such a function must be
+      read-only, too, meaning that it cannot use any SQL commands other than
+      <command>SELECT</>.
+     </para>
+    </listitem>
 
     <listitem>
      <para>

@@ -180,7 +180,9 @@ ExplainOneQuery(Query *query, ExplainStmt *stmt, TupOutputState *tstate)
 	plan = planner(query, isCursor, cursorOptions, NULL);
 
 	/* Create a QueryDesc requesting no output */
-	queryDesc = CreateQueryDesc(query, plan, None_Receiver, NULL,
+	queryDesc = CreateQueryDesc(query, plan,
+								ActiveSnapshot, InvalidSnapshot,
+								None_Receiver, NULL,
 								stmt->analyze);
 
 	ExplainOnePlan(queryDesc, stmt, tstate);
@@ -212,7 +214,7 @@ ExplainOnePlan(QueryDesc *queryDesc, ExplainStmt *stmt,
 		AfterTriggerBeginQuery();
 
 	/* call ExecutorStart to prepare the plan for execution */
-	ExecutorStart(queryDesc, false, !stmt->analyze);
+	ExecutorStart(queryDesc, !stmt->analyze);
 
 	/* Execute the plan for statistics if asked for */
 	if (stmt->analyze)
@@ -272,7 +274,9 @@ ExplainOnePlan(QueryDesc *queryDesc, ExplainStmt *stmt,
 
 	FreeQueryDesc(queryDesc);
 
-	CommandCounterIncrement();
+	/* We need a CCI just in case query expanded to multiple plans */
+	if (stmt->analyze)
+		CommandCounterIncrement();
 
 	totaltime += elapsed_time(&starttime);
 

@@ -202,8 +202,8 @@ cluster(ClusterStmt *stmt)
 
 			/* Start a new transaction for each relation. */
 			StartTransactionCommand();
-			SetQuerySnapshot(); /* might be needed for functions in
-								 * indexes */
+			/* functions in indexes may want a snapshot set */
+			ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
 			cluster_rel(rvtc, true);
 			CommitTransactionCommand();
 		}

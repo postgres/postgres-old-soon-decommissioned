@@ -186,7 +186,7 @@ ExecuteQuery(ExecuteStmt *stmt, DestReceiver *dest, char *completionTag)
 	/*
 	 * Run the portal to completion.
 	 */
-	PortalStart(portal, paramLI);
+	PortalStart(portal, paramLI, ActiveSnapshot);
 
 	(void) PortalRun(portal, FETCH_ALL, dest, dest, completionTag);
 
@@ -544,7 +544,9 @@ ExplainExecuteQuery(ExplainStmt *stmt, TupOutputState *tstate)
 			}
 
 			/* Create a QueryDesc requesting no output */
-			qdesc = CreateQueryDesc(query, plan, None_Receiver,
+			qdesc = CreateQueryDesc(query, plan,
+									ActiveSnapshot, InvalidSnapshot,
+									None_Receiver,
 									paramLI, stmt->analyze);
 
 			ExplainOnePlan(qdesc, stmt, tstate);

@@ -401,11 +401,11 @@ CommandCounterIncrement(void)
 				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
 				 errmsg("cannot have more than 2^32-1 commands in a transaction")));
 
-	/* Propagate new command ID into query snapshots, if set */
-	if (QuerySnapshot)
-		QuerySnapshot->curcid = s->commandId;
+	/* Propagate new command ID into static snapshots, if set */
 	if (SerializableSnapshot)
 		SerializableSnapshot->curcid = s->commandId;
+	if (LatestSnapshot)
+		LatestSnapshot->curcid = s->commandId;
 
 	/*
 	 * make cache changes visible to me.
@@ -3001,8 +3001,10 @@ CommitSubTransaction(void)
 
 	s->state = TRANS_COMMIT;
 
-	/* Mark subtransaction as subcommitted */
+	/* Must CCI to ensure commands of subtransaction are seen as done */
 	CommandCounterIncrement();
+
+	/* Mark subtransaction as subcommitted */
 	RecordSubTransactionCommit();
 	AtSubCommit_childXids();
 

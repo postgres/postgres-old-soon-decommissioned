@@ -585,6 +585,7 @@ typedef struct PLpgSQL_function
 	Oid			fn_rettypioparam;
 	bool		fn_retistuple;
 	bool		fn_retset;
+	bool		fn_readonly;
 
 	int			fn_nargs;
 	int			fn_argvarnos[FUNC_MAX_ARGS];
@@ -614,6 +615,8 @@ typedef struct
 	Oid			fn_rettype;		/* info about declared function rettype */
 	bool		retistuple;
 	bool		retisset;
+
+	bool		readonly_func;
 
 	TupleDesc	rettupdesc;
 	char	   *exitlabel;

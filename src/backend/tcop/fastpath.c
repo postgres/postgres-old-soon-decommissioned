@@ -334,11 +334,6 @@ HandleFunctionRequest(StringInfo msgBuf)
 					   get_func_name(fid));
 
 	/*
-	 * Set up a query snapshot in case function needs one.
-	 */
-	SetQuerySnapshot();
-
-	/*
 	 * Prepare function call info block and insert arguments.
 	 */
 	MemSet(&fcinfo, 0, sizeof(fcinfo));

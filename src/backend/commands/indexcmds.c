@@ -1060,8 +1060,8 @@ ReindexDatabase(const char *dbname, bool force /* currently unused */ ,
 		Oid			relid = lfirst_oid(l);
 
 		StartTransactionCommand();
-		SetQuerySnapshot();		/* might be needed for functions in
-								 * indexes */
+		/* functions in indexes may want a snapshot set */
+		ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
 		if (reindex_relation(relid, true))
 			ereport(NOTICE,
 					(errmsg("table \"%s\" was reindexed",

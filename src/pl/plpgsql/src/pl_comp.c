@@ -578,6 +578,9 @@ do_compile(FunctionCallInfo fcinfo,
 			break;
 	}
 
+	/* Remember if function is STABLE/IMMUTABLE */
+	function->fn_readonly = (procStruct->provolatile != PROVOLATILE_VOLATILE);
+
 	/*
 	 * Create the magic FOUND variable.
 	 */

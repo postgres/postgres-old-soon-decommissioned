@@ -402,8 +402,8 @@ vacuum(VacuumStmt *vacstmt)
 				if (use_own_xacts)
 				{
 					StartTransactionCommand();
-					SetQuerySnapshot(); /* might be needed for functions
-										 * in indexes */
+					/* functions in indexes may want a snapshot set */
+					ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
 				}
 				else
 					old_context = MemoryContextSwitchTo(anl_context);
@@ -865,8 +865,8 @@ vacuum_rel(Oid relid, VacuumStmt *vacstmt, char expected_relkind)
 
 	/* Begin a transaction for vacuuming this relation */
 	StartTransactionCommand();
-	SetQuerySnapshot();			/* might be needed for functions in
-								 * indexes */
+	/* functions in indexes may want a snapshot set */
+	ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
 
 	/*
 	 * Tell the cache replacement strategy that vacuum is causing all

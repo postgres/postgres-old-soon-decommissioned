@@ -1182,7 +1182,6 @@ CopyTo(Relation rel, List *attnumlist, bool binary, bool oids,
 	Oid		   *typioparams;
 	bool	   *isvarlena;
 	char	   *string;
-	Snapshot	mySnapshot;
 	ListCell   *cur;
 	MemoryContext oldcontext;
 	MemoryContext mycontext;
@@ -1260,9 +1259,7 @@ CopyTo(Relation rel, List *attnumlist, bool binary, bool oids,
 									strlen(null_print));
 	}
 
-	mySnapshot = CopyQuerySnapshot();
-
-	scandesc = heap_beginscan(rel, mySnapshot, 0, NULL);
+	scandesc = heap_beginscan(rel, ActiveSnapshot, 0, NULL);
 
 	while ((tuple = heap_getnext(scandesc, ForwardScanDirection)) != NULL)
 	{
