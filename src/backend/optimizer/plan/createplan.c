@@ -643,6 +643,7 @@ create_unique_plan(Query *root, UniquePath *best_path)
 		plan = (Plan *) make_unique(my_tlist, plan, sortList);
 	}
 
+	/* Adjust output size estimate (other fields should be OK already) */
 	plan->plan_rows = best_path->rows;
 
 	return plan;

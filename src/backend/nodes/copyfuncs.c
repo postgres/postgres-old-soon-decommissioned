@@ -1168,8 +1168,9 @@ _copyRestrictInfo(RestrictInfo *from)
 	RestrictInfo *newnode = makeNode(RestrictInfo);
 
 	COPY_NODE_FIELD(clause);
-	COPY_SCALAR_FIELD(ispusheddown);
-	COPY_SCALAR_FIELD(canjoin);
+	COPY_SCALAR_FIELD(is_pushed_down);
+	COPY_SCALAR_FIELD(valid_everywhere);
+	COPY_SCALAR_FIELD(can_join);
 	COPY_BITMAPSET_FIELD(clause_relids);
 	COPY_BITMAPSET_FIELD(left_relids);
 	COPY_BITMAPSET_FIELD(right_relids);

@@ -43,11 +43,13 @@ extern List *group_clauses_by_indexkey_for_or(RelOptInfo *rel,
 											  Expr *orsubclause);
 extern List *expand_indexqual_conditions(IndexOptInfo *index,
 							List *clausegroups);
+extern void check_partial_indexes(Query *root, RelOptInfo *rel);
 
 /*
  * orindxpath.c
  *	  additional routines for indexable OR clauses
  */
+extern bool create_or_index_quals(Query *root, RelOptInfo *rel);
 extern void create_or_index_paths(Query *root, RelOptInfo *rel);
 
 /*

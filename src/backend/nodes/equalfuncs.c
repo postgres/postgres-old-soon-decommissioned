@@ -560,7 +560,8 @@ static bool
 _equalRestrictInfo(RestrictInfo *a, RestrictInfo *b)
 {
 	COMPARE_NODE_FIELD(clause);
-	COMPARE_SCALAR_FIELD(ispusheddown);
+	COMPARE_SCALAR_FIELD(is_pushed_down);
+	COMPARE_SCALAR_FIELD(valid_everywhere);
 
 	/*
 	 * We ignore all the remaining fields, since they may not be set yet,

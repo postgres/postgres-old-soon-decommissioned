@@ -49,6 +49,7 @@ extern bool enable_nestloop;
 extern bool enable_mergejoin;
 extern bool enable_hashjoin;
 
+extern double clamp_row_est(double nrows);
 extern void cost_seqscan(Path *path, Query *root,
 			 RelOptInfo *baserel);
 extern void cost_index(Path *path, Query *root,
