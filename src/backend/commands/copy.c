@@ -2599,7 +2599,7 @@ CopyAttributeOutCSV(char *server_string, char *delim, char *quote,
 
 	for (; (c = *string) != '\0'; string += mblen)
 	{
-		if (c == quotec || c == escapec)
+		if (need_quote && (c == quotec || c == escapec))
 			CopySendChar(escapec);
 
 		CopySendChar(c);
