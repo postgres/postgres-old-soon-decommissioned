@@ -1909,6 +1909,14 @@ OptSeqElem: CACHE NumericOnly
 				{
 					$$ = makeDefElem("minvalue", (Node *)$2);
 				}
+			| NO MAXVALUE
+				{
+					$$ = makeDefElem("maxvalue", (Node *)NULL);
+				}
+			| NO MINVALUE
+				{
+					$$ = makeDefElem("minvalue", (Node *)NULL);
+				}
 			| START opt_with NumericOnly
 				{
 					$$ = makeDefElem("start", (Node *)$3);
