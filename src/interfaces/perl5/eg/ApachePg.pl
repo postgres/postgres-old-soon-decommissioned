@@ -1,5 +1,13 @@
 #!/usr/local/bin/perl
 
+#-------------------------------------------------------
+#
+# $Id$
+#
+# Copyright (c) 1997, 1998  Edmund Mergl
+#
+#-------------------------------------------------------
+
 # demo script, tested with:
 #  - PostgreSQL-6.3
 #  - apache_1.3
@@ -37,7 +45,7 @@ if ($query->param) {
         print "<P><CENTER><TABLE CELLPADDING=4 CELLSPACING=2 BORDER=1>\n";
         my @row;
         while (@row = $result->fetchrow) {
-            print "<TR><TD>", join("</TD><TD>", @row), "</TD></TR>\n";
+            print "<TR><TD>", join("</TD><TD>", @row), "</TD></TR>";
         }
         print "</TABLE></CENTER><P>\n";
     } else {
