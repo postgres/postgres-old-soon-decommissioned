@@ -34,7 +34,7 @@ struct PGPROC
 	SHM_QUEUE	links;			/* list link if process is in a list */
 
 	PGSemaphoreData sem;		/* ONE semaphore to sleep on */
-	int			errType;		/* STATUS_OK or STATUS_ERROR after wakeup */
+	int			waitStatus;		/* STATUS_OK or STATUS_ERROR after wakeup */
 
 	TransactionId xid;			/* transaction currently being executed by
 								 * this proc */
@@ -103,13 +103,12 @@ extern int	ProcGlobalSemas(int maxBackends);
 extern void InitProcGlobal(int maxBackends);
 extern void InitProcess(void);
 extern void InitDummyProcess(int proctype);
-extern void ProcReleaseLocks(LockReleaseWhich which,
-							 int nxids, TransactionId *xids);
+extern void ProcReleaseLocks(bool isCommit);
 
 extern void ProcQueueInit(PROC_QUEUE *queue);
 extern int ProcSleep(LockMethod lockMethodTable, LOCKMODE lockmode,
 		  LOCK *lock, PROCLOCK *proclock);
-extern PGPROC *ProcWakeup(PGPROC *proc, int errType);
+extern PGPROC *ProcWakeup(PGPROC *proc, int waitStatus);
 extern void ProcLockWakeup(LockMethod lockMethodTable, LOCK *lock);
 extern bool LockWaitCancel(void);
 

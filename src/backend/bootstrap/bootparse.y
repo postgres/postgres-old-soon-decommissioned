@@ -269,7 +269,12 @@ Boot_DeclareUniqueIndexStmt:
 		;
 
 Boot_BuildIndsStmt:
-		  XBUILD INDICES		{ build_indices(); }
+		  XBUILD INDICES
+				{
+					do_start();
+					build_indices();
+					do_end();
+				}
 		;
 
 

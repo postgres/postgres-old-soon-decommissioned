@@ -2797,6 +2797,12 @@ PostgresMain(int argc, char *argv[], const char *username)
 		debug_query_string = NULL;
 
 		/*
+		 * If there's an active portal, mark it as failed
+		 */
+		if (ActivePortal)
+			ActivePortal->status = PORTAL_FAILED;
+
+		/*
 		 * Make sure we are in a valid memory context during recovery.
 		 *
 		 * We use ErrorContext in hopes that it will have some free space

@@ -26,14 +26,6 @@ typedef struct PROC_QUEUE
 	int			size;			/* number of entries in list */
 } PROC_QUEUE;
 
-/* Release options for LockReleaseAll */
-typedef enum
-{
-	ReleaseAll,					/* All my locks */
-	ReleaseAllExceptSession,	/* All except session locks (Xid = 0) */
-	ReleaseGivenXids			/* Only locks with Xids in given array */
-} LockReleaseWhich;
-
 /* struct PGPROC is declared in storage/proc.h, but must forward-reference it */
 typedef struct PGPROC PGPROC;
 
@@ -248,7 +240,7 @@ extern bool LockAcquire(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
 extern bool LockRelease(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
 			TransactionId xid, LOCKMODE lockmode);
 extern bool LockReleaseAll(LOCKMETHODID lockmethodid, PGPROC *proc,
-			   LockReleaseWhich which, int nxids, TransactionId *xids);
+						   bool allxids);
 extern int LockCheckConflicts(LockMethod lockMethodTable,
 				   LOCKMODE lockmode,
 				   LOCK *lock, PROCLOCK *proclock, PGPROC *proc,

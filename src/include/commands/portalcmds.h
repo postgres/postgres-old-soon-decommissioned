@@ -24,7 +24,7 @@ extern void PerformPortalFetch(FetchStmt *stmt, DestReceiver *dest,
 
 extern void PerformPortalClose(const char *name);
 
-extern void PortalCleanup(Portal portal, bool isError);
+extern void PortalCleanup(Portal portal);
 
 extern void PersistHoldablePortal(Portal portal);
 

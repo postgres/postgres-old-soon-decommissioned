@@ -59,16 +59,6 @@ static void btbuildCallback(Relation index,
 
 
 /*
- * AtEOXact_nbtree() --- clean up nbtree subsystem at xact abort or commit.
- */
-void
-AtEOXact_nbtree(void)
-{
-	/* nothing to do at the moment */
-}
-
-
-/*
  *	btbuild() -- build a new btree index.
  *
  *		We use a global variable to record the fact that we're creating

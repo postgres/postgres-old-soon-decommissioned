@@ -292,8 +292,7 @@ extern void _hash_expandtable(Relation rel, Buffer metabuf);
 extern void _hash_regscan(IndexScanDesc scan);
 extern void _hash_dropscan(IndexScanDesc scan);
 extern bool _hash_has_active_scan(Relation rel, Bucket bucket);
-extern void AtEOXact_hash(void);
-extern void AtEOSubXact_hash(TransactionId childXid);
+extern void ReleaseResources_hash(void);
 
 /* hashsearch.c */
 extern bool _hash_next(IndexScanDesc scan, ScanDirection dir);

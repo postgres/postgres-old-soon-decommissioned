@@ -402,8 +402,6 @@ typedef BTScanOpaqueData *BTScanOpaque;
 /*
  * prototypes for functions in nbtree.c (external entry points for btree)
  */
-extern void AtEOXact_nbtree(void);
-
 extern Datum btbuild(PG_FUNCTION_ARGS);
 extern Datum btinsert(PG_FUNCTION_ARGS);
 extern Datum btgettuple(PG_FUNCTION_ARGS);
