@@ -41,12 +41,12 @@
 
 /*	   The cost of sequentially scanning a materialized temporary relation
  */
-#define _TEMP_SCAN_COST_		10
+#define _NONAME_SCAN_COST_		10
 
 /*	   The number of pages and tuples in a materialized relation
  */
-#define _TEMP_RELATION_PAGES_			1
-#define _TEMP_RELATION_TUPLES_	10
+#define _NONAME_RELATION_PAGES_			1
+#define _NONAME_RELATION_TUPLES_	10
 
 /*	   The length of a variable-length field in bytes
  */
@@ -59,7 +59,7 @@
 
 /*	   Identifier for (sort) temp relations   */
 /* used to be -1 */
-#define _TEMP_RELATION_ID_	 InvalidOid
+#define _NONAME_RELATION_ID_	 InvalidOid
 
 /*	   Identifier for invalid relation OIDs and attribute numbers for use by
  *	   selectivity functions

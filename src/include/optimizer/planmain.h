@@ -31,7 +31,7 @@ extern Plan *query_planner(Query *root,
 extern Plan *create_plan(Path *best_path);
 extern SeqScan *make_seqscan(List *qptlist, List *qpqual, Index scanrelid,
 			 Plan *lefttree);
-extern Sort *make_sort(List *tlist, Oid tempid, Plan *lefttree,
+extern Sort *make_sort(List *tlist, Oid nonameid, Plan *lefttree,
 		  int keycount);
 extern Agg *make_agg(List *tlist, Plan *lefttree);
 extern Group *make_group(List *tlist, bool tuplePerGroup, int ngrp,

@@ -472,21 +472,21 @@ _outIndexScan(StringInfo str, IndexScan *node)
 }
 
 /*
- *	Temp is a subclass of Plan
+ *	Noname is a subclass of Plan
  */
 static void
-_outTemp(StringInfo str, Temp *node)
+_outNoname(StringInfo str, Noname *node)
 {
-	appendStringInfo(str, " TEMP ");
+	appendStringInfo(str, " NONAME ");
 	_outPlanInfo(str, (Plan *) node);
 
-	appendStringInfo(str, " :tempid %u :keycount %d ", 
-			node->tempid,
+	appendStringInfo(str, " :nonameid %u :keycount %d ", 
+			node->nonameid,
 			node->keycount);
 }
 
 /*
- *	Sort is a subclass of Temp
+ *	Sort is a subclass of Noname
  */
 static void
 _outSort(StringInfo str, Sort *node)
@@ -494,8 +494,8 @@ _outSort(StringInfo str, Sort *node)
 	appendStringInfo(str, " SORT ");
 	_outPlanInfo(str, (Plan *) node);
 
-	appendStringInfo(str, " :tempid %u :keycount %d ",
-			node->tempid,
+	appendStringInfo(str, " :nonameid %u :keycount %d ",
+			node->nonameid,
 			node->keycount);
 }
 
@@ -523,7 +523,7 @@ _outGroup(StringInfo str, Group *node)
 }
 
 /*
- *	For some reason, unique is a subclass of Temp.
+ *	For some reason, unique is a subclass of Noname.
  */
 static void
 _outUnique(StringInfo str, Unique *node)
@@ -531,14 +531,14 @@ _outUnique(StringInfo str, Unique *node)
 	appendStringInfo(str, " UNIQUE ");
 	_outPlanInfo(str, (Plan *) node);
 
-	appendStringInfo(str, " :tempid %u :keycount %d ",
-			node->tempid,
+	appendStringInfo(str, " :nonameid %u :keycount %d ",
+			node->nonameid,
 			node->keycount);
 }
 
 
 /*
- *	Hash is a subclass of Temp
+ *	Hash is a subclass of Noname
  */
 static void
 _outHash(StringInfo str, Hash *node)
@@ -1517,8 +1517,8 @@ _outNode(StringInfo str, void *obj)
 			case T_IndexScan:
 				_outIndexScan(str, obj);
 				break;
-			case T_Temp:
-				_outTemp(str, obj);
+			case T_Noname:
+				_outNoname(str, obj);
 				break;
 			case T_Sort:
 				_outSort(str, obj);

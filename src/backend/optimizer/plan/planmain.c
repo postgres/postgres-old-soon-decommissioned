@@ -478,7 +478,7 @@ make_groupPlan(List **tlist,
 	}
 
 	sortplan = make_sort(sort_tlist,
-						 _TEMP_RELATION_ID_,
+						 _NONAME_RELATION_ID_,
 						 subplan,
 						 numCols);
 	sortplan->plan.cost = subplan->cost;		/* XXX assume no cost */

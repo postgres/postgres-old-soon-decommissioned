@@ -313,8 +313,8 @@ plannode_type(Plan *p)
 		case T_HashJoin:
 			return "HASHJOIN";
 			break;
-		case T_Temp:
-			return "TEMP";
+		case T_Noname:
+			return "NONAME";
 			break;
 		case T_Material:
 			return "MATERIAL";

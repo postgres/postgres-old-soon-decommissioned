@@ -176,8 +176,8 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 		case T_IndexScan:
 			pname = "Index Scan";
 			break;
-		case T_Temp:
-			pname = "Temp Scan";
+		case T_Noname:
+			pname = "Noname Scan";
 			break;
 		case T_Sort:
 			pname = "Sort";

@@ -22,7 +22,7 @@
 #include "catalog/catalog.h"
 #include "catalog/heap.h"
 #include "storage/bufmgr.h"
-#include "optimizer/internal.h" /* for _TEMP_RELATION_ID_ */
+#include "optimizer/internal.h" /* for _NONAME_RELATION_ID_ */
 
 /* ----------------------------------------------------------------
  *		FormSortKeys(node)

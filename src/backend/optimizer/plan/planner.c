@@ -399,7 +399,7 @@ make_sortplan(List *tlist, List *sortcls, Plan *plannode)
 	}
 
 	sortplan = (Plan *) make_sort(temp_tlist,
-								  _TEMP_RELATION_ID_,
+								  _NONAME_RELATION_ID_,
 								  (Plan *) plannode,
 								  length(sortcls));
 
