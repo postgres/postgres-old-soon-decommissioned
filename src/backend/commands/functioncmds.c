@@ -676,8 +676,8 @@ CreateCast(CreateCastStmt *stmt)
 			elog(ERROR, "argument of cast function must match source data type");
 		if (procstruct->prorettype != targettypeid)
 			elog(ERROR, "return data type of cast function must match target data type");
-		if (procstruct->provolatile != PROVOLATILE_IMMUTABLE)
-			elog(ERROR, "cast function must be immutable");
+		if (procstruct->provolatile == PROVOLATILE_VOLATILE)
+			elog(ERROR, "cast function must not be volatile");
 		if (procstruct->proisagg)
 			elog(ERROR, "cast function must not be an aggregate function");
 		if (procstruct->proretset)
