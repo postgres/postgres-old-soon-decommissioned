@@ -641,30 +641,20 @@ get_relattval(Node *clause,
 			 is_funcclause((Node *) left) &&
 			 IsA(right, Const))
 	{
-		List	   *args = ((Expr *) left)->args;
-
-
-		*relid = ((Var *) lfirst(args))->varno;
+		List	   *vars = pull_var_clause((Node*)left);
+		
+		*relid = ((Var *) lfirst(vars))->varno;
 		*attno = InvalidAttrNumber;
 		*constval = ((Const *) right)->constvalue;
 		*flag = (_SELEC_CONSTANT_RIGHT_ | _SELEC_IS_CONSTANT_);
-
-		/*
-		 * XXX both of these func clause handling if's seem wrong to me.
-		 * they assume that the first argument is the Var.	It could not
-		 * handle (for example) f(1, emp.name).  I think I may have been
-		 * assuming no constants in functional index scans when I
-		 * implemented this originally (still currently true). -mer 10 Aug
-		 * 1992
-		 */
 	}
 	else if (is_opclause(clause) &&
 			 is_funcclause((Node *) right) &&
 			 IsA(left, Const))
 	{
-		List	   *args = ((Expr *) right)->args;
-
-		*relid = ((Var *) lfirst(args))->varno;
+		List	   *vars = pull_var_clause((Node*)right);
+		
+		*relid = ((Var *) lfirst(vars))->varno;
 		*attno = InvalidAttrNumber;
 		*constval = ((Const *) left)->constvalue;
 		*flag = (_SELEC_IS_CONSTANT_);
