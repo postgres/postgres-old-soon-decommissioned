@@ -30,11 +30,11 @@ ifeq ($(USE_PERL), true)
 endif
 
 plperl/Makefile: plperl/Makefile.PL
-	cd plperl && $(PERL) Makefile.PL
+	cd plperl && $(PERL) Makefile.PL POLLUTE=1
 
 install-plperl: plperl/Makefile
 	$(MAKE) -C plperl clean
-	cd plperl && POSTGRES_HOME="$(POSTGRESDIR)" $(PERL) Makefile.PL
+	cd plperl && POSTGRES_HOME="$(POSTGRESDIR)" $(PERL) Makefile.PL POLLUTE=1
 	$(MAKE) -C plperl all
 	-@if [ -w `sed -n -e 's/^ *INSTALLSITELIB *= *//p' plperl/Makefile` ]; then \
 		$(MAKE) $(MFLAGS) -C plperl install; \
