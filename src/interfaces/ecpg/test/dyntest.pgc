@@ -37,7 +37,7 @@ int main(int argc,char **argv)
   
   exec sql allocate descriptor MYDESC;
   
-  exec sql connect to test;
+  exec sql connect to mm;
   
   exec sql prepare MYQUERY from :QUERY;
   exec sql declare MYCURS cursor for MYQUERY;

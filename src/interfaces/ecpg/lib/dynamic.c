@@ -7,21 +7,6 @@
 
 /* I borrowed the include files from ecpglib.c, maybe we don't need all of them */
 
-#if 0
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdarg.h>
-#include <string.h>
-#include <ctype.h>
-#include <locale.h>
-
-#include <libpq-fe.h>
-#include <libpq/pqcomm.h>
-#include <ecpgtype.h>
-#include <ecpglib.h>
-#include <sqlca.h>
-#endif
 #include <sql3types.h>
 
 static struct descriptor
