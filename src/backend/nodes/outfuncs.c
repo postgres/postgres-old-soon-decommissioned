@@ -139,9 +139,9 @@ _outIndexStmt(StringInfo str, IndexStmt *node)
 	appendStringInfo(str, " :rangetable ");
 	_outNode(str, node->rangetable);
 
-	appendStringInfo(str, " :lossy %s :unique %s ",
-					 node->lossy ? "true" : "false",
-					 node->unique ? "true" : "false");
+	appendStringInfo(str, " :unique %s :primary %s ",
+					 node->unique ? "true" : "false",
+					 node->primary ? "true" : "false");
 }
 
 static void
@@ -210,8 +210,6 @@ _outIndexElem(StringInfo str, IndexElem *node)
 	_outNode(str, node->args);
 	appendStringInfo(str, " :class ");
 	_outToken(str, node->class);
-	appendStringInfo(str, " :typename ");
-	_outNode(str, node->typename);
 }
 
 static void

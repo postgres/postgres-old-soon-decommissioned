@@ -947,7 +947,6 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 			iparam->name = pstrdup(column->colname);
 			iparam->args = NIL;
 			iparam->class = NULL;
-			iparam->typename = NULL;
 			index->indexParams = lappend(index->indexParams, iparam);
 
 			if (index->idxname == NULL)
