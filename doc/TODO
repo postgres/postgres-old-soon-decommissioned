@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Wed Oct  8 23:17:22 EDT 2003
+Last updated:		Thu Oct  9 00:29:39 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -199,7 +199,8 @@ Commands
 * Allow TRUNCATE ... CASCADE/RESTRICT
 * Allow PREPARE of cursors
 * Allow LISTEN/NOTIFY to store info in memory rather than tables
-* COMMENT ON [ CAST | CONVERSION | OPERATOR CLASS | LARGE OBJECT ] (Christopher) 
+* COMMENT ON [ CAST | CONVERSION | OPERATOR CLASS | LARGE OBJECT | LANGUAGE ] 
+  (Christopher) 
 
 
 * ALTER
