@@ -115,7 +115,7 @@ static DH  *load_dh_file(int keylength);
 static DH  *load_dh_buffer(const char *, size_t);
 static DH  *tmp_dh_cb(SSL *s, int is_export, int keylength);
 static int	verify_cb(int, X509_STORE_CTX *);
-static void info_cb(SSL *ssl, int type, int args);
+static void info_cb(const SSL *ssl, int type, int args);
 static int	initialize_SSL(void);
 static void destroy_SSL(void);
 static int	open_server_SSL(Port *);
@@ -547,7 +547,7 @@ verify_cb(int ok, X509_STORE_CTX *ctx)
  *	into the PostgreSQL log.
  */
 static void
-info_cb(SSL *ssl, int type, int args)
+info_cb(const SSL *ssl, int type, int args)
 {
 	switch (type)
 	{
