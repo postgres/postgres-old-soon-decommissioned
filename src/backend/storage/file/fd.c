@@ -835,7 +835,7 @@ AllocateFile()
     }
     close(fd);
     ++allocatedFiles;
-    fdleft = pg_nofile() - allocatedFiles - nfile;
+    fdleft = pg_nofile() - allocatedFiles;
     if (fdleft < 6) {
         elog(NOTICE,"warning: few usable file descriptors left (%d)", fdleft);
     }
