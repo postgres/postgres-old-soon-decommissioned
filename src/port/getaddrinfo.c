@@ -20,7 +20,7 @@
 /* This is intended to be used in both frontend and backend, so use c.h */
 #include "c.h"
 
-#if !defined(_MSC_VER) && !defined(__BORLANDC__)
+#ifndef WIN32_CLIENT_ONLY
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>

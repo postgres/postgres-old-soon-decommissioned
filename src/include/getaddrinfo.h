@@ -22,7 +22,7 @@
 #ifndef GETADDRINFO_H
 #define GETADDRINFO_H
 
-#if !defined(_MSC_VER) && !defined(__BORLANDC__)
+#ifndef WIN32_CLIENT_ONLY
 #include <sys/socket.h>
 #include <netdb.h>
 #endif

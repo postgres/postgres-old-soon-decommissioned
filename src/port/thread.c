@@ -16,7 +16,7 @@
 
 #include <sys/types.h>
 #include <errno.h>
-#if defined(WIN32) && (defined(_MSC_VER) || defined(__BORLANDC__))
+#ifdef WIN32_CLIENT_ONLY
 #undef ERROR
 #else
 #include <pwd.h>

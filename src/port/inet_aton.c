@@ -44,7 +44,7 @@
 
 #include "c.h"
 
-#if !defined(_MSC_VER) && !defined(__BORLANDC__)
+#ifndef WIN32_CLIENT_ONLY
 #include <netinet/in.h>
 #include <ctype.h>
 #endif

@@ -12,7 +12,7 @@
 #include <math.h>
 #include <signal.h>
 
-#if !defined(_MSC_VER) && !defined(__BORLANDC__)
+#ifndef WIN32_CLIENT_ONLY
 #include <unistd.h>
 #endif
 

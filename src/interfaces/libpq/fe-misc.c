@@ -34,7 +34,7 @@
 #include <signal.h>
 #include <time.h>
 
-#if !defined(_MSC_VER) && !defined(__BORLANDC__)
+#ifndef WIN32_CLIENT_ONLY
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #endif

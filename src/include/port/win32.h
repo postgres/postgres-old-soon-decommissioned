@@ -31,7 +31,7 @@
 #define DLLIMPORT __declspec (dllimport)
 #endif
 
-#elif defined(WIN32) && (defined(_MSC_VER) || defined(__BORLANDC__))	/* not CYGWIN or MingW */
+#elif defined(WIN32_CLIENT_ONLY)
 
 #if defined(_DLL)
 #define DLLIMPORT __declspec (dllexport)
