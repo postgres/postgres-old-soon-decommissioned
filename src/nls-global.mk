@@ -94,8 +94,7 @@ init-po: $(srcdir)/$(CATALOG_NAME).pot
 
 update-po: $(srcdir)/$(CATALOG_NAME).pot
 ifdef MSGMERGE
-#	XXX  should be $(LANGUAGES)?
-	@for lang in $(AVAIL_LANGUAGES); do \
+	@for lang in $(LANGUAGES); do \
 	  echo "merging $$lang:"; \
 	  if $(MSGMERGE) $(srcdir)/$$lang.po $< -o $$lang.po.new; \
 	  then \
