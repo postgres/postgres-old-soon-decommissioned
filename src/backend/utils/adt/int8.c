@@ -67,7 +67,7 @@ int8in(PG_FUNCTION_ARGS)
 	 * Do our own scan, rather than relying on sscanf which might be
 	 * broken for long long.
 	 */
-	while (*ptr && isspace((unsigned char) *ptr))		/* skip leading spaces */
+	while (*ptr && isspace((unsigned char) *ptr)) /* skip leading spaces */
 		ptr++;
 	if (*ptr == '-')			/* handle sign */
 		sign = -1, ptr++;
@@ -688,10 +688,11 @@ int84(PG_FUNCTION_ARGS)
 	int64		val = PG_GETARG_INT64(0);
 	int32		result;
 
-	if ((val < INT_MIN) || (val > INT_MAX))
-		elog(ERROR, "int8 conversion to int4 is out of range");
-
 	result = (int32) val;
+
+	/* Test for overflow by reverse-conversion. */
+	if ((int64) result != val)
+		elog(ERROR, "int8 conversion to int4 is out of range");
 
 	PG_RETURN_INT32(result);
 }
