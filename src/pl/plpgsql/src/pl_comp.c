@@ -181,8 +181,12 @@ plpgsql_compile(Oid fn_oid, int functype)
 			if (!HeapTupleIsValid(typeTup))
 			{
 				plpgsql_comperrinfo();
-				elog(ERROR, "cache lookup for return type %u failed",
-					 procStruct->prorettype);
+				if (!OidIsValid(procStruct->prorettype))
+					elog(ERROR, "plpgsql functions cannot return type \"opaque\""
+						 "\n\texcept when used as triggers");
+				else
+					elog(ERROR, "cache lookup for return type %u failed",
+						 procStruct->prorettype);
 			}
 			typeStruct = (Form_pg_type) GETSTRUCT(typeTup);
 			if (typeStruct->typrelid != InvalidOid)
@@ -214,8 +218,11 @@ plpgsql_compile(Oid fn_oid, int functype)
 				if (!HeapTupleIsValid(typeTup))
 				{
 					plpgsql_comperrinfo();
-					elog(ERROR, "cache lookup for argument type %u failed",
-						 procStruct->proargtypes[i]);
+					if (!OidIsValid(procStruct->proargtypes[i]))
+						elog(ERROR, "plpgsql functions cannot take type \"opaque\"");
+					else
+						elog(ERROR, "cache lookup for argument type %u failed",
+							 procStruct->proargtypes[i]);
 				}
 				typeStruct = (Form_pg_type) GETSTRUCT(typeTup);
 
@@ -232,7 +239,8 @@ plpgsql_compile(Oid fn_oid, int functype)
 					if (plpgsql_parse_wordrowtype(buf) != T_ROW)
 					{
 						plpgsql_comperrinfo();
-						elog(ERROR, "cannot get tuple struct of argument %d", i + 1);
+						elog(ERROR, "cannot get tuple struct of argument %d",
+							 i + 1);
 					}
 
 					row = plpgsql_yylval.row;
