@@ -77,7 +77,7 @@ soname = lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION)
 
 ifeq ($(PORTNAME), aix)
   shlib			:= lib$(NAME)$(DLSUFFIX)
-  SHLIB_LINK		+= -lc
+#   SHLIB_LINK		+= -lc
 endif
 
 ifeq ($(PORTNAME), darwin)
@@ -267,8 +267,8 @@ else # PORTNAME == aix
 # AIX case
 $(shlib): lib$(NAME).a
 	$(MKLDEXPORT) lib$(NAME).a > lib$(NAME)$(EXPSUFF)
-	$(COMPILER) -Wl,-H512 -Wl,-bM:SRE -Wl,-bI:$(top_builddir)/src/backend/$(POSTGRES_IMP) -Wl,-bE:lib$(NAME)$(EXPSUFF) -o $@ $< $(LDFLAGS) $(SHLIB_LINK) $(LDFLAGS_SL) -Wl,-bnoentry
-
+	$(COMPILER) $(LDFLAGS_SL) -o $@ $< $(LDFLAGS) $(SHLIB_LINK) -Wl,-bI:$(top_builddir)/src/backend/$(POSTGRES_IMP) -Wl,-bE:lib$(NAME)$(EXPSUFF)
+	
 endif # PORTNAME == aix
 
 else # PORTNAME == win
