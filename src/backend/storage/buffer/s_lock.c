@@ -95,20 +95,23 @@ s_lock(volatile slock_t *lock, const char *file, const int line)
 
 #if defined(PPC)
 /* Note: need a nice gcc constrained asm version so it can be inlined */
-int
-tas(volatile slock_t *lock)
+static void
+tas_dummy()
 {
-	__asm__("lwarx	5,0,3	\n\
-			cmpwi	5,0		\n\
-			bne		fail	\n\
-			addi	5,5,1	\n\
+	__asm__("		\n\
+.global		tas		\n\
+tas:				\n\
+		lwarx	5,0,3	\n\
+		cmpwi	5,0	\n\
+		bne	fail	\n\
+		addi	5,5,1	\n\
         	stwcx.  5,0,3	\n\
-     		beq		success	\n\
-fail:		li		3,1		\n\
-			blr				\n\
-success:					\n\
-			li 3,0			\n\
-        	blr				\n\
+     		beq	success	\n\
+fail:		li	3,1	\n\
+		blr		\n\
+success:			\n\
+		li 3,0		\n\
+        	blr		\n\
 	");
 }
 
