@@ -14,7 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 all: pg_ctl
 
-pg_ctl: pg_ctl.sh
+pg_ctl: pg_ctl.sh $(top_builddir)/src/Makefile.global
 	sed -e 's/@VERSION@/$(VERSION)/g' \
 	    -e 's,@bindir@,$(bindir),g' \
 	    -e 's,@DEF_PGPORT@,$(DEF_PGPORT),g' \

@@ -40,7 +40,7 @@ endif
 
 all: pg_regress
 
-pg_regress: pg_regress.sh GNUmakefile
+pg_regress: pg_regress.sh GNUmakefile $(top_builddir)/src/Makefile.global
 	sed -e 's,@bindir@,$(bindir),g' \
 	    -e 's,@libdir@,$(libdir),g' \
 	    -e 's,@pkglibdir@,$(pkglibdir),g' \

@@ -33,3 +33,7 @@ uninstall:
 
 clean distclean maintainer-clean:
 	rm -f initdb$(X) $(OBJS)
+
+
+# ensure that changes in bindir etc. propagate into object file
+initdb.o: initdb.c $(top_builddir)/src/Makefile.global
