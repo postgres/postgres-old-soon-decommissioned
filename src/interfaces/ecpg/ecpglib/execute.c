@@ -838,7 +838,7 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 
 			case ECPGt_numeric:
 				{
-					char *str;
+					char *str = NULL;
 					int slen;
 					
 					if (var->arrsize > 1)
