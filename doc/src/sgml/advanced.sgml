@@ -412,10 +412,10 @@ SELECT name, altitude
    system.  Numerous languages may be used to implement functions and
    procedures; most built-in code is implemented in C.  The
    <quote>basic</quote> loadable procedural language for
-   <productname>PostgreSQL</productname> is <xref linkid="plpgsql">.
+   <productname>PostgreSQL</productname> is <xref linkend="plpgsql">.
    Numerous other languages may also be used, including <xref
-   linkid="plperl">, <xref linkid="pltcl">, and <xref
-   linkid="plpython">.
+   linkend="plperl">, <xref linkend="pltcl">, and <xref
+   linkend="plpython">.
    </para>
   
    <para> There are several ways that stored procedures are really
