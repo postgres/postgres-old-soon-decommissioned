@@ -25,7 +25,7 @@ version(void)
 	text	   *ret = (text *) palloc(n);
 
 	VARSIZE(ret) = n;
-	StrNCpy(VARDATA(ret), PG_VERSION_STR, strlen(PG_VERSION_STR));
+	memcpy(VARDATA(ret), PG_VERSION_STR, strlen(PG_VERSION_STR));
 
 	return ret;
 }
