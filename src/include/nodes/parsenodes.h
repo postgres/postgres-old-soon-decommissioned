@@ -698,7 +698,7 @@ typedef struct AlterTableStmt
 								 *	A = add column
 								 *	T = alter column default
 								 *	N = alter column drop not null
-								 *	O = alter column set not null
+								 *	n = alter column set not null
 								 *	S = alter column statistics
 								 *	M = alter column storage
 								 *	D = drop column
@@ -708,6 +708,7 @@ typedef struct AlterTableStmt
 								 *	X = drop constraint
 								 *	E = create toast table
 								 *	U = change owner
+								 *  o = DROP OIDS
 								 *------------
 								 */
 	RangeVar   *relation;		/* table to work on */
