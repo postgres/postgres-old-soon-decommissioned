@@ -26,6 +26,7 @@ $Header$
 
  <setinfo>
   <corpauthor>The PostgreSQL Global Development Group</corpauthor>
+  &legal;
  </setinfo>
 
  &tutorial;

@@ -85,7 +85,7 @@ man: $(ALLSGML)
 ## HTML
 ##
 
-JADE.html = $(JADE) $(JADEFLAGS) $(SGMLINCLUDE) -d $(HDSL) -V %use-id-as-filename% -t sgml
+JADE.html = $(JADE) $(JADEFLAGS) $(SGMLINCLUDE) -d $(HDSL) -V %use-id-as-filename% -V %generate-legalnotice-link% -t sgml
 
 postgres.html: postgres.sgml $(ALLSGML)
 	@rm -f *.htm
