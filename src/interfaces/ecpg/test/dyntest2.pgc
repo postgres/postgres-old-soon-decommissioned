@@ -6,13 +6,14 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 exec sql include sql3types;
 exec sql include sqlca;
 
-void error()
+static void error()
 {
-   printf("\n#%d:%s\n",sqlca.sqlcode,sqlca.sqlerrm.sqlerrmc);
+   printf("\n#%ld:%s\n",sqlca.sqlcode,sqlca.sqlerrm.sqlerrmc);
    exit(1);
 }
 

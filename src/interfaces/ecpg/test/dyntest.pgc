@@ -6,12 +6,14 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 exec sql include sql3types;
 exec sql include sqlca;
 
-void error()
-{  printf("#%d:%s\n",sqlca.sqlcode,sqlca.sqlerrm.sqlerrmc);
+static void error()
+{  printf("#%ld:%s\n",sqlca.sqlcode,sqlca.sqlerrm.sqlerrmc);
    exit(1);
 }
 
@@ -60,11 +62,12 @@ int main(int argc,char **argv)
      if (!done) 
      {  printf("%d Columns\n",COUNT);
         for (INDEX=1;INDEX<=COUNT;++INDEX)
-        {	exec sql get descriptor MYDESC value :INDEX 
+        {	exec sql get descriptor MYDESC value :INDEX
         		:TYPE = type,
         		:LENGTH = length, :OCTET_LENGTH=octet_length,
         		:PRECISION = precision, :SCALE=scale,
-        		:NULLABLE=nullable, :NAME=name;
+        		:NULLABLE=nullable, :NAME=name,
+        		:RETURNED_OCTET_LENGTH=returned_octet_length;
 			printf("%s ",NAME);
         	switch (TYPE)
         	{  case SQL3_BOOLEAN: 

@@ -4,7 +4,7 @@ exec sql include sqlca;
 
 #include <stdio.h>
 
-void printwarning(void)
+static void printwarning(void)
 {
    if (sqlca.sqlwarn[0]) printf("sqlca.sqlwarn: %c",sqlca.sqlwarn[0]);
    else return;
@@ -18,7 +18,7 @@ void printwarning(void)
 int main(int argc, char **argv)
 {
    exec sql begin declare section;
- 	  int index,payload;
+ 	  int payload;
    exec sql end declare section;
    FILE *dbgs; 
 
