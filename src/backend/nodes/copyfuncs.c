@@ -1563,6 +1563,8 @@ _copyGrantStmt(GrantStmt *from)
 	COPY_NODE_FIELD(objects);
 	COPY_INTLIST_FIELD(privileges);
 	COPY_NODE_FIELD(grantees);
+	COPY_SCALAR_FIELD(grant_option);
+	COPY_SCALAR_FIELD(behavior);
 
 	return newnode;
 }

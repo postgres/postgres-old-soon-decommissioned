@@ -5787,6 +5787,12 @@ SELECT has_table_privilege('myschema.mytable', 'select');
    </para>
 
   <para>
+   To evaluate whether a user holds a grant option on the privilege,
+   append <literal> WITH GRANT OPTION</literal> to the privilege key
+   word; for example <literal>'UPDATE WITH GRANT OPTION'</literal>.
+  </para>
+
+  <para>
    <xref linkend="functions-misc-schema-table"> shows functions that
    determine whether a certain object is <firstterm>visible</> in the
    current schema search path.  A table is said to be visible if its

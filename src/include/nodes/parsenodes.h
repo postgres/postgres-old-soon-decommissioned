@@ -750,7 +750,7 @@ typedef enum GrantObjectType
 
 /*
  * Grantable rights are encoded so that we can OR them together in a bitmask.
- * The present representation of AclItem limits us to 30 distinct rights.
+ * The present representation of AclItem limits us to 15 distinct rights.
  * Caution: changing these codes breaks stored ACLs, hence forces initdb.
  */
 #define ACL_INSERT		(1<<0)	/* for relations */
@@ -778,6 +778,8 @@ typedef struct GrantStmt
 								 * strings) */
 	List	   *privileges;		/* integer list of privilege codes */
 	List	   *grantees;		/* list of PrivGrantee nodes */
+	bool		grant_option;	/* grant or revoke grant option */
+	DropBehavior behavior;		/* drop behavior (for REVOKE) */
 } GrantStmt;
 
 typedef struct PrivGrantee

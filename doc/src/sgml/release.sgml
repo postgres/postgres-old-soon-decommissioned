@@ -38,6 +38,7 @@ ON COMMIT options for temp tables
 extra_float_digits option allows pg_dump to dump float data accurately
 Long options for psql and pg_dump are now available on all platforms
 Read-only transactions
+Object owners can allow grantees to grant the privilege to others (grant option)
 ]]></literallayout>
 
  </sect1>

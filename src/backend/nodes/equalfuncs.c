@@ -635,6 +635,8 @@ _equalGrantStmt(GrantStmt *a, GrantStmt *b)
 	COMPARE_NODE_FIELD(objects);
 	COMPARE_INTLIST_FIELD(privileges);
 	COMPARE_NODE_FIELD(grantees);
+	COMPARE_SCALAR_FIELD(grant_option);
+	COMPARE_SCALAR_FIELD(behavior);
 
 	return true;
 }
