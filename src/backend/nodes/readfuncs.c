@@ -777,6 +777,10 @@ _readExpr()
 	{
 		local_node->opType = NOT_EXPR;
 	}
+	else if (!strncmp(token, "subp", 4))
+	{
+		local_node->opType = SUBPLAN_EXPR;
+	}
 
 	token = lsptok(NULL, &length);		/* eat :oper */
 	local_node->oper = nodeRead(true);
