@@ -36,9 +36,6 @@
 #
 # ----------------
 
-NAMEDATALEN=_fUnKy_NAMEDATALEN_sTuFf_
-OIDNAMELEN=_fUnKy_OIDNAMELEN_sTuFf_
-
 CMDNAME=`basename $0`
 
 # Find the default PGLIB directory (the directory that contains miscellaneous 
@@ -266,8 +263,6 @@ echo "Running: postgres $BACKENDARGS template1"
 
 cat $TEMPLATE \
 | sed -e "s/postgres PGUID/$POSTGRES_SUPERUSERNAME $POSTGRES_SUPERUID/" \
-      -e "s/NAMEDATALEN/$NAMEDATALEN/g" \
-      -e "s/OIDNAMELEN/$OIDNAMELEN/g" \
       -e "s/PGUID/$POSTGRES_SUPERUID/" \
 | postgres $BACKENDARGS template1
 
@@ -296,8 +291,6 @@ if [ $template_only -eq 0 ]; then
 
     cat $GLOBAL \
     | sed -e "s/postgres PGUID/$POSTGRES_SUPERUSERNAME $POSTGRES_SUPERUID/" \
-        -e "s/NAMEDATALEN/$NAMEDATALEN/g" \
-        -e "s/OIDNAMELEN/$OIDNAMELEN/g" \
         -e "s/PGUID/$POSTGRES_SUPERUID/" \
     | postgres $BACKENDARGS template1
 

@@ -11,9 +11,7 @@
 SRCDIR = ../..
 include ../../Makefile.global
 
-INCLUDE_OPT = -I.. 
-
-CFLAGS+=$(INCLUDE_OPT)
+CFLAGS += -I..
 
 # kerberos flags
 ifdef KRBVERS
@@ -36,7 +34,7 @@ be-dumpdata.o be-pqexec.o: ../fmgr.h
 	$(MAKE) -C .. fmgr.h
 
 depend dep:
-	$(CC) -MM $(INCLUDE_OPT) *.c >depend
+	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 
 	rm -f SUBSYS.o $(OBJS) 

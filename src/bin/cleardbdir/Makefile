@@ -25,4 +25,4 @@ install: cleardbdir
 clean: 
 	rm -f cleardbdir
 
-dep:
+dep depend:

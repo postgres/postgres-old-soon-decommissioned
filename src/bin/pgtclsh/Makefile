@@ -42,3 +42,6 @@ install: pgtclsh pgtksh
 
 clean:
 	rm -f pgtclAppInit.o pgtkAppInit.o pgtclsh pgtksh
+
+dep depend:
+	$(CC) -MM $(CFLAGS) *.c > depend

@@ -11,9 +11,7 @@
 SRCDIR = ../..
 include ../../Makefile.global
 
-INCLUDE_OPT = -I.. 
-
-CFLAGS+=$(INCLUDE_OPT)
+CFLAGS += -I..
 
 OBJS = async.o creatinh.o command.o copy.o defind.o define.o \
        remove.o rename.o vacuum.o version.o view.o cluster.o \
@@ -26,7 +24,7 @@ SUBSYS.o: $(OBJS)
 	$(LD) -r -o SUBSYS.o $(OBJS)
 
 depend dep:
-	$(CC) -MM $(INCLUDE_OPT) *.c >depend
+	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 
 	rm -f SUBSYS.o $(OBJS) 

@@ -11,9 +11,7 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-INCLUDE_OPT = -I../.. 
-
-CFLAGS += $(INCLUDE_OPT)
+CFLAGS += -I../..
 
 OBJS = hash.o hashfunc.o hashinsert.o hashovfl.o hashpage.o hashscan.o \
        hashsearch.o hashstrat.o hashutil.o
@@ -24,7 +22,7 @@ SUBSYS.o: $(OBJS)
 	$(LD) -r -o SUBSYS.o $(OBJS)
 
 depend dep:
-	$(CC) -MM $(INCLUDE_OPT) *.c >depend
+	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 
 	rm -f SUBSYS.o $(OBJS)

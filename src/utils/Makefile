@@ -23,7 +23,7 @@ all: version.o
 install:
 
 depend dep:
-	$(CC) -MM *.c >depend
+	$(CC) $(CFLAGS) -MM *.c >depend
 
 clean: 
 	rm -f version.o

@@ -11,9 +11,8 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-INCLUDE_OPT = -I../.. 
+CFLAGS += -I../..
 
-CFLAGS+=$(INCLUDE_OPT)
 ifdef MB
 CFLAGS+=-DMB=$(MB)
 endif
@@ -31,7 +30,7 @@ SUBSYS.o: $(OBJS)
 	$(LD) -r -o SUBSYS.o $(OBJS)
 
 depend dep:
-	$(CC) -MM $(INCLUDE_OPT) *.c >depend
+	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 
 	rm -f SUBSYS.o $(OBJS)

@@ -89,3 +89,4 @@ clean:
 install: all
 	$(INSTALL) $(INSTL_LIB_OPTS) $(DLOBJS) $(LIBDIR)/$(DLOBJS)
 
+dep depend:

@@ -21,9 +21,7 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-INCLUDE_OPT= -I.. 
-
-CFLAGS+= $(INCLUDE_OPT)  
+CFLAGS += -I..
 
 ifeq ($(CC), gcc)
 CFLAGS+= -Wno-error
@@ -65,8 +63,8 @@ clean:
 
 # This is unusual:  We actually have to build some of the parts before
 # we know what the header file dependencies are.  
-dep: bootparse.c bootscanner.c bootstrap_tokens.h
-	$(CC) -MM $(INCLUDE_OPT) *.c >depend
+dep depend: bootparse.c bootscanner.c bootstrap_tokens.h
+	$(CC) -MM $(CFLAGS) *.c >depend
 
 ifeq (depend,$(wildcard depend))
 include depend

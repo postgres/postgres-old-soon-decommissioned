@@ -11,17 +11,7 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-INCLUDE_OPT = -I../.. 
-
-CFLAGS+=$(INCLUDE_OPT)
-
-ifeq ($(PORTNAME), linux)
-# LINUX_ELF tells us to use the ELF dynamic load facilities that come with
-# Linux.
-  ifdef LINUX_ELF
-    CFLAGS+=-DLINUX_ELF
-  endif
-endif
+CFLAGS += -I../..
 
 OBJS = dfmgr.o fmgr.o
 
@@ -31,7 +21,7 @@ SUBSYS.o: $(OBJS)
 	$(LD) -r -o SUBSYS.o $(OBJS)
 
 depend dep:
-	$(CC) -MM $(INCLUDE_OPT) *.c >depend
+	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 
 	rm -f SUBSYS.o $(OBJS)

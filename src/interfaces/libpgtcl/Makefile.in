@@ -104,3 +104,5 @@ install-shlib: $(shlib)
 .PHONY: clean
 clean: 
 	rm -f $(OBJS) $(shlib) libpgtcl.a libpgtcl.so
+
+dep depend:

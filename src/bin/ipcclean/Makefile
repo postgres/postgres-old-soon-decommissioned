@@ -28,4 +28,4 @@ install: ipcclean
 clean:
 	rm -f ipcclean
 
-dep:
+dep depend:

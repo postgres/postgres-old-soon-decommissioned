@@ -25,4 +25,4 @@ install: createdb
 clean:
 	rm -f createdb
 
-dep:
+dep depend:

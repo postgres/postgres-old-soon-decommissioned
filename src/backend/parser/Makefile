@@ -11,9 +11,7 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-INCLUDE_OPT= -I.. 
-
-CFLAGS+= $(INCLUDE_OPT)
+CFLAGS += -I..
 
 ifeq ($(CC), gcc)
 CFLAGS+= -Wno-error
@@ -47,8 +45,8 @@ analyze.o keywords.o scan.o: parse.h
 
 # This is unusual:  We actually have to build some of the parts before
 # we know what the header file dependencies are.  
-dep: gram.c scan.c
-	$(CC) -MM $(INCLUDE_OPT) *.c >depend
+dep depend: gram.c scan.c
+	$(CC) -MM $(CFLAGS) *.c >depend
 
 # Remove scan.c from the clean since we want to avoid rebuilding when using
 # the original source distribution. This should help Solaris machines whose

@@ -117,9 +117,9 @@ clean:
 	rm $(LIBNAME).a $(OBJS)
 	$(MAKE) -C examples clean
 
+dep depend:
+	$(CXX) -MM $(CXXFLAGS) *.cc > depend
 
-###########################################################################
-# Dependencies for the library
-###########################################################################
-include ./dependencies
-
+ifeq (depend,$(wildcard depend))
+include depend
+endif

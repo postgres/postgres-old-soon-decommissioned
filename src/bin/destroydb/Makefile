@@ -25,4 +25,4 @@ install: destroydb
 clean:
 	rm -f destroydb
 
-dep:
+dep depend:

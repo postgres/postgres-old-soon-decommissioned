@@ -178,7 +178,7 @@ install-shlib: $(shlib)
 	ln -s $(shlib) $(LIBDIR)/libpq.so
 
 depend dep:
-	$(CC) -MM *.c >depend
+	$(CC) -MM $(CFLAGS) *.c >depend
 
 .PHONY: clean
 clean:

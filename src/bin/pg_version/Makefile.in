@@ -31,7 +31,7 @@ install: pg_version
 	$(INSTALL) $(INSTL_EXE_OPTS) pg_version $(BINDIR)/pg_version
 
 depend dep:
-	$(CC) -MM $(INCLUDE_OPT) *.c >depend
+	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 
 	rm -f pg_version pg_version.o

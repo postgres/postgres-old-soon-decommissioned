@@ -29,4 +29,4 @@ install: initlocation
 clean:
 	rm -f initlocation
 
-dep:
+dep depend:
