@@ -16,6 +16,7 @@
 #include <pwd.h>
 #include <netdb.h>
 #endif
+#include <ctype.h>
 
 /* non-blocking */
 bool set_noblock(int sock);
