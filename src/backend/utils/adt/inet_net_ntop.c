@@ -189,7 +189,6 @@ inet_net_ntop_ipv4(const u_char *src, int bits, char *dst, size_t size)
 	char *odst = dst;
 	char *t;
 	size_t len = 4;
-	u_int m;
 	int b, tb;
 
 	if (bits < 0 || bits > 32)

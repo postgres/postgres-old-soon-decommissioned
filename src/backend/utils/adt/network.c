@@ -389,8 +389,7 @@ network_network(inet *ip)
 {
 	text	   *ret;
 	int			len;
-	char	   *ptr,
-				tmp[sizeof("255.255.255.255/32")];
+	char	   	tmp[sizeof("255.255.255.255/32")];
 
 	if (ip_family(ip) == AF_INET)
 	{

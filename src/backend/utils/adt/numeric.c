@@ -16,7 +16,7 @@
 #include <ctype.h>
 #include <float.h>
 #include <math.h>
-#include <nan.h>
+/*#include <nan.h> BSD/OS does not have this */
 #include <errno.h>
 #include <sys/types.h>
 
@@ -1723,7 +1723,11 @@ numeric_float8(Numeric num)
 	if (NUMERIC_IS_NAN(num))
 	{
 		result = (float64)palloc(sizeof(float64data));
+#ifdef NAN
 		*result = NAN;
+#else
+		*result = num;
+#endif
 		return result;
 	}
 
@@ -1773,7 +1777,11 @@ numeric_float4(Numeric num)
 	if (NUMERIC_IS_NAN(num))
 	{
 		result = (float32)palloc(sizeof(float32data));
+#ifdef NAN
 		*result = NAN;
+#else
+		*result = num;
+#endif
 		return result;
 	}
 
