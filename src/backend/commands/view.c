@@ -77,6 +77,8 @@ DefineVirtualRelation(char *relname, List *tlist)
 			typename = makeNode(TypeName);
 
 			typename->name = pstrdup(restypename);
+			typename->typmod = res->restypmod;
+
 			def->colname = pstrdup(resname);
 
 			def->typename = typename;

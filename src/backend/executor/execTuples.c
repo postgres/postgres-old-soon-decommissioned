@@ -986,7 +986,8 @@ ExecTypeFromTL(List *targetList)
 							   resdom->resno,
 							   resdom->resname,
 			/* fix for SELECT NULL ... */
-						  typeidTypeName(restype ? restype : UNKNOWNOID),
+						  	   (restype ? restype : UNKNOWNOID),
+						  	   resdom->restypmod,
 							   0,
 							   false);
 
@@ -1019,7 +1020,8 @@ ExecTypeFromTL(List *targetList)
 			TupleDescInitEntry(typeInfo,
 							   fjRes->resno,
 							   fjRes->resname,
-							   typeidTypeName(restype),
+							   restype,
+						  	   fjRes->restypmod,
 							   0,
 							   false);
 /*
@@ -1042,7 +1044,8 @@ ExecTypeFromTL(List *targetList)
 				TupleDescInitEntry(typeInfo,
 								   fjRes->resno,
 								   fjRes->resname,
-								   typeidTypeName(restype),
+								   restype,
+							  	   fjRes->restypmod,
 								   0,
 								   false);
 

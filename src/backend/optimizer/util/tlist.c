@@ -108,6 +108,7 @@ add_tl_element(Rel *rel, Var *var)
 		Var		   *newvar = makeVar(var->varno,
 									 var->varattno,
 									 var->vartype,
+									 var->vartypmod,
 									 var->varlevelsup,
 									 var->varno,
 									 var->varoattno);
@@ -137,7 +138,7 @@ create_tl_element(Var *var, int resdomno)
 	tlelement->resdom =
 		makeResdom(resdomno,
 				   var->vartype,
-				   get_typlen(var->vartype),
+				   var->vartypmod,
 				   NULL,
 				   (Index) 0,
 				   (Oid) 0,
@@ -398,7 +399,7 @@ flatten_tlist(List *tlist)
 
 			r = makeResdom(last_resdomno,
 						   var->vartype,
-						   get_typlen(var->vartype),
+						   var->vartypmod,
 						   NULL,
 						   (Index) 0,
 						   (Oid) 0,
@@ -591,7 +592,7 @@ AddGroupAttrToTlist(List *tlist, List *grpCl)
 
 			r = makeResdom(last_resdomno,
 						   var->vartype,
-						   get_typlen(var->vartype),
+						   var->vartypmod,
 						   NULL,
 						   (Index) 0,
 						   (Oid) 0,

@@ -234,8 +234,6 @@ expandAll(ParseState *pstate, char *relname, char *refname, int *this_resno)
 	Var		   *varnode;
 	int			varattno,
 				maxattrs;
-	Oid			type_id;
-	int			type_len;
 	RangeTblEntry *rte;
 
 	rte = refnameRangeTableEntry(pstate, refname);
@@ -257,9 +255,7 @@ expandAll(ParseState *pstate, char *relname, char *refname, int *this_resno)
 		TargetEntry *te = makeNode(TargetEntry);
 
 		attrname = pstrdup((rdesc->rd_att->attrs[varattno]->attname).data);
-		varnode = (Var *) make_var(pstate, rte->relid, refname,
-													attrname, &type_id);
-		type_len = (int) typeLen(typeidType(type_id));
+		varnode = (Var *) make_var(pstate, rte->relid, refname, attrname);
 
 		handleTargetColname(pstate, &resname, refname, attrname);
 		if (resname != NULL)
@@ -271,8 +267,8 @@ expandAll(ParseState *pstate, char *relname, char *refname, int *this_resno)
 		 */
 
 		te->resdom = makeResdom((AttrNumber) (*this_resno)++,
-								type_id,
-								(Size) type_len,
+								varnode->vartype,
+								varnode->vartypmod,
 								attrname,
 								(Index) 0,
 								(Oid) 0,

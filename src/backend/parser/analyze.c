@@ -307,7 +307,7 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 			te = makeNode(TargetEntry);
 			te->resdom = makeResdom(defval[ndef].adnum,
 									att[defval[ndef].adnum - 1]->atttypid,
-									att[defval[ndef].adnum - 1]->attlen,
+									att[defval[ndef].adnum - 1]->atttypmod,
 									pstrdup(nameout(&(att[defval[ndef].adnum - 1]->attname))),
 									0, 0, 0);
 			te->fjoin = NULL;

@@ -206,7 +206,7 @@ FixResdomTypes(List *tlist)
 			Var		   *var = (Var *) tle->expr;
 
 			tle->resdom->restype = var->vartype;
-			tle->resdom->reslen = get_typlen(var->vartype);
+			tle->resdom->restypmod = var->vartypmod;
 		}
 	}
 }

@@ -440,6 +440,7 @@ replace_joinvar_refs(Var *var, List *outer_tlist, List *inner_tlist)
 		return (makeVar(OUTER,
 						outer_resdom->resno,
 						var->vartype,
+						var->vartypmod,
 						0,
 						var->varnoold,
 						var->varoattno));
@@ -454,6 +455,7 @@ replace_joinvar_refs(Var *var, List *outer_tlist, List *inner_tlist)
 			return (makeVar(INNER,
 							inner_resdom->resno,
 							var->vartype,
+							var->vartypmod,
 							0,
 							var->varnoold,
 							var->varoattno));
@@ -499,6 +501,7 @@ tlist_temp_references(Oid tempid,
 					   (Node *) makeVar(tempid,
 										xtl->resdom->resno,
 										xtl->resdom->restype,
+										xtl->resdom->restypmod,
 										0,
 										tempid,
 										oattno));

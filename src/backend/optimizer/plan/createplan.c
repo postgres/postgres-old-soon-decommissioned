@@ -701,6 +701,7 @@ fix_indxqual_references(Node *clause, Path *index_path)
 		makeVar((Index) lfirsti(index_path->parent->relids),
 				1,				/* func indices have one key */
 				((Func *) ((Expr *) clause)->oper)->functype,
+				-1,
 				0,
 				(Index) lfirsti(index_path->parent->relids),
 				0);

@@ -68,7 +68,8 @@ extern void FreeTupleDesc(TupleDesc tupdesc);
 extern bool TupleDescInitEntry(TupleDesc desc,
 				   AttrNumber attributeNumber,
 				   char *attributeName,
-				   char *typeName,
+				   Oid typeid,
+				   int typmod,
 				   int attdim,
 				   bool attisset);
 

@@ -464,6 +464,7 @@ make_groupPlan(List **tlist,
 		else
 			te->expr = (Node *) makeVar(1, resdom->resno,
 										resdom->restype,
+										resdom->restypmod,
 										0, -1, resdom->resno);
 	}
 

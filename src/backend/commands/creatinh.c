@@ -304,6 +304,7 @@ MergeAttributes(List *schema, List *supers, List **supconstr)
 			typename = makeNode(TypeName);
 			def->colname = pstrdup(attributeName);
 			typename->name = pstrdup(attributeType);
+			typename->typmod = attribute->atttypmod;
 			def->typename = typename;
 			def->is_not_null = attribute->attnotnull;
 			def->defval = NULL;

@@ -18,11 +18,6 @@
 #include <stdio.h>
 #include <executor/execdesc.h>
 
-/* ----------------------------------------------------------------
- * ----------------------------------------------------------------
- */
-
-
 /*
  * prototypes from functions in execAmi.c
  */
@@ -120,8 +115,6 @@ extern TupleDesc ExecTypeFromTL(List *targetList);
 extern void ResetTupleCount(void);
 extern void ExecAssignNodeBaseInfo(EState *estate, CommonState *basenode,
 					   Plan *parent);
-extern void setAtttypmodForCreateTable(TupleDesc tupType, List *targetList,
-							List *rangeTable);
 extern void ExecAssignExprContext(EState *estate, CommonState *commonstate);
 extern void ExecAssignResultType(CommonState *commonstate,
 					 TupleDesc tupDesc);
@@ -143,14 +136,5 @@ extern void ExecOpenIndices(Oid resultRelationOid,
 extern void ExecCloseIndices(RelationInfo *resultRelationInfo);
 extern void ExecInsertIndexTuples(TupleTableSlot *slot, ItemPointer tupleid,
 					  EState *estate, bool is_update);
-extern void resetVarAttrLenForCreateTable(TupleDesc tupType);
-extern void setVarAttrLenForCreateTable(TupleDesc tupType,
-							List *targetList, List *rangeTable);
-
-
-/* ----------------------------------------------------------------
- *		the end
- * ----------------------------------------------------------------
- */
 
 #endif							/* EXECUTOR_H  */

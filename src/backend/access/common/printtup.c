@@ -123,7 +123,8 @@ printtup(HeapTuple tuple, TupleDesc typeinfo)
 		if (!isnull && OidIsValid(typoutput))
 		{
 			outputstr = fmgr(typoutput, attr,
-							 gettypelem(typeinfo->attrs[i]->atttypid));
+							 gettypelem(typeinfo->attrs[i]->atttypid),
+										(int)typeinfo->attrs[i]->atttypmod);
 			pq_putint(strlen(outputstr) + VARHDRSZ, VARHDRSZ);
 			pq_putnchar(outputstr, strlen(outputstr));
 			pfree(outputstr);
@@ -189,7 +190,8 @@ debugtup(HeapTuple tuple, TupleDesc typeinfo)
 		if (!isnull && OidIsValid(typoutput))
 		{
 			value = fmgr(typoutput, attr,
-						 gettypelem(typeinfo->attrs[i]->atttypid));
+						 gettypelem(typeinfo->attrs[i]->atttypid),
+							   (int)typeinfo->attrs[i]->atttypmod);
 			printatt((unsigned) i + 1, typeinfo->attrs[i], value);
 			pfree(value);
 		}

@@ -606,7 +606,7 @@ _outResdom(StringInfo str, Resdom *node)
 	appendStringInfo(str, buf);
 	sprintf(buf, " :restype %u ", node->restype);
 	appendStringInfo(str, buf);
-	sprintf(buf, " :reslen %d ", node->reslen);
+	sprintf(buf, " :restypmod %d ", node->restypmod);
 	appendStringInfo(str, buf);
 	appendStringInfo(str, " :resname ");
 	appendStringInfo(str, node->resname);
@@ -697,6 +697,8 @@ _outVar(StringInfo str, Var *node)
 	sprintf(buf, " :varattno %hd ", node->varattno);
 	appendStringInfo(str, buf);
 	sprintf(buf, " :vartype %u ", node->vartype);
+	appendStringInfo(str, buf);
+	sprintf(buf, " :vartypmod %u ", node->vartypmod);
 	appendStringInfo(str, buf);
 	sprintf(buf, " :varlevelsup %u ", node->varlevelsup);
 	appendStringInfo(str, buf);

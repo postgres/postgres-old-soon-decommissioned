@@ -42,7 +42,7 @@ _equalResdom(Resdom *a, Resdom *b)
 		return (false);
 	if (a->restype != b->restype)
 		return (false);
-	if (a->reslen != b->reslen)
+	if (a->restypmod != b->restypmod)
 		return (false);
 	if (strcmp(a->resname, b->resname) != 0)
 		return (false);
@@ -128,6 +128,8 @@ _equalVar(Var *a, Var *b)
 	if (a->varattno != b->varattno)
 		return (false);
 	if (a->vartype != b->vartype)
+		return (false);
+	if (a->vartypmod != b->vartypmod)
 		return (false);
 	if (a->varlevelsup != b->varlevelsup)
 		return (false);

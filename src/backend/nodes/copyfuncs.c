@@ -591,7 +591,7 @@ _copyResdom(Resdom *from)
 
 	newnode->resno = from->resno;
 	newnode->restype = from->restype;
-	newnode->reslen = from->reslen;
+	newnode->restypmod = from->restypmod;
 
 	if (from->resname != NULL)
 		newnode->resname = pstrdup(from->resname);
@@ -671,6 +671,7 @@ _copyVar(Var *from)
 	newnode->varno = from->varno;
 	newnode->varattno = from->varattno;
 	newnode->vartype = from->vartype;
+	newnode->vartypmod = from->vartypmod;
 	newnode->varlevelsup = from->varlevelsup;
 
 	newnode->varnoold = from->varnoold;

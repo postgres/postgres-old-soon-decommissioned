@@ -706,9 +706,9 @@ _readResdom()
 	token = lsptok(NULL, &length);		/* get restype */
 	local_node->restype = atol(token);
 
-	token = lsptok(NULL, &length);		/* eat :reslen */
-	token = lsptok(NULL, &length);		/* get reslen */
-	local_node->reslen = atoi(token);
+	token = lsptok(NULL, &length);		/* eat :restypmod */
+	token = lsptok(NULL, &length);		/* get restypmod */
+	local_node->restypmod = atoi(token);
 
 	token = lsptok(NULL, &length);		/* eat :resname */
 	token = lsptok(NULL, &length);		/* get the name */
@@ -813,6 +813,10 @@ _readVar()
 	token = lsptok(NULL, &length);		/* eat :vartype */
 	token = lsptok(NULL, &length);		/* get vartype */
 	local_node->vartype = (Oid) atol(token);
+
+	token = lsptok(NULL, &length);		/* eat :vartypmod */
+	token = lsptok(NULL, &length);		/* get vartypmod */
+	local_node->vartypmod = (Oid) atol(token);
 
 	token = lsptok(NULL, &length);		/* eat :varlevelsup */
 	token = lsptok(NULL, &length);		/* get varlevelsup */

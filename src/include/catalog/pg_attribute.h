@@ -95,8 +95,6 @@ CATALOG(pg_attribute) BOOTSTRAP
 	 * typed constant associated with a variable.  We also have a hack in
 	 * execMain.c/execUtils.c that uses atttypmod to properly create tables
 	 * for SELECT * INTO TABLE test2 FROM test;
-	 * One day, we may add this to Resdom, and pass it through all areas.
-	 * 1998/1/18 bjm
 	 */
 
 	bool		attbyval;
