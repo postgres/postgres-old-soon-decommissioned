@@ -861,10 +861,11 @@ _bt_split(Relation rel, Buffer buf, OffsetNumber firstright,
 
 	PageRestoreTempPage(leftpage, origpage);
 
+	END_CRIT_SECTION();
+
 	/* write and release the old right sibling */
 	if (!P_RIGHTMOST(ropaque))
 		_bt_wrtbuf(rel, sbuf);
-	END_CRIT_SECTION();
 
 	/* split's done */
 	return rbuf;
