@@ -303,7 +303,8 @@ PQsetdb(const char *pghost, const char* pgport, const char* pgoptions, const cha
     /* An error message from some service we call. */
   bool error;   
     /* We encountered an error that prevents successful completion */
-
+  int i;
+  
   conn = (PGconn*)malloc(sizeof(PGconn));
 
   if (conn == NULL) 
@@ -375,6 +376,9 @@ PQsetdb(const char *pghost, const char* pgport, const char* pgoptions, const cha
           ((tmp = getenv("PGDATABASE")))) {
         conn->dbName = strdup(tmp);
       } else conn->dbName = strdup(conn->pguser);
+      for(i = 0; conn->dbName[i]; i++)
+	if (isupper(conn->dbName[i]))
+	  conn->dbName[i] = tolower(conn->dbName[i]);
     } else conn->dbName = NULL;
 
     if (error) conn->status = CONNECTION_BAD;

@@ -1471,7 +1471,7 @@ PQfnumber(PGresult *res, const char* field_name)
     return  -1;
 
   for (i=0;i<res->numAttributes;i++) {
-    if ( strcmp(field_name, res->attDescs[i].name) == 0 )
+    if ( strcasecmp(field_name, res->attDescs[i].name) == 0 )
       return i;
   }
   return -1;
@@ -1629,4 +1629,4 @@ PQgetisnull(PGresult *res, int tup_num, int field_num)
         return 1;
     else
         return 0;
-  }
+}
