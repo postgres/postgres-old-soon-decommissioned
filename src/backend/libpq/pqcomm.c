@@ -38,7 +38,6 @@
 #include <string.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <signal.h>
 #ifndef WIN32
 #include <unistd.h>		/* for ttyname() */
 #include <sys/types.h>

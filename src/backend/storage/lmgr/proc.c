@@ -53,7 +53,6 @@
 #include <unistd.h>
 #endif /* WIN32 */
 #include <string.h>
-#include <signal.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>

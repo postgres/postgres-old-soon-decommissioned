@@ -40,7 +40,6 @@
 
 #include "postgres.h"
 
-#include <signal.h>             /* for other stuff */
 #include "libpq/pqsignal.h"     /* substitute for <signal.h> */
 #include <string.h>
 #include <stdlib.h>
