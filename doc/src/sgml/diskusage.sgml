@@ -47,7 +47,7 @@ play-# WHERE relname = 'customer';
 <programlisting>
 play=# SELECT relname, relpages
 play-# FROM pg_class
-play-# WHERE relname = 'pg_toast_16806' or
+play-# WHERE relname = 'pg_toast_16806' OR
 play-#       relname = 'pg_toast_16806_index'
 play-# ORDER BY relname;
        relname        | relpages 
