@@ -556,10 +556,6 @@ AtCleanup_Portals(void)
 	{
 		Portal		portal = hentry->portal;
 
-		/* AtAbort_Portals should have fixed these: */
-		Assert(portal->status != PORTAL_ACTIVE);
-		Assert(portal->resowner == NULL);
-
 		/*
 		 * Do nothing else to cursors held over from a previous
 		 * transaction. (This test must include checking CURSOR_OPT_HOLD,
@@ -568,7 +564,11 @@ AtCleanup_Portals(void)
 		 */
 		if (portal->createXact != xact &&
 			(portal->cursorOptions & CURSOR_OPT_HOLD))
+		{
+			Assert(portal->status != PORTAL_ACTIVE);
+			Assert(portal->resowner == NULL);
 			continue;
+		}
 
 		/* Else zap it. */
 		PortalDrop(portal, false);
