@@ -61,7 +61,7 @@ void		(*
 {
 	switch (dest)
 	{
-			case RemoteInternal:
+		case RemoteInternal:
 			return printtup_internal;
 			break;
 
