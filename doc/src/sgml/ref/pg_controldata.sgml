@@ -26,7 +26,7 @@ PostgreSQL documentation
   <title>Description</title>
   <para>
    <command>pg_controldata</command> returns information initialized during
-   <application>initdb</>. such as the catalog version and server encoding.
+   <application>initdb</>, such as the catalog version and server locale.
    It also shows information about write-ahead logging and checkpoint 
    processing.  This information is server-wide, and not specific to any one
    database.
@@ -49,7 +49,7 @@ PostgreSQL documentation
 
     <listitem>
      <para>
-      Default data direction location
+      Default data directory location
      </para>
     </listitem>
    </varlistentry>
