@@ -687,8 +687,8 @@ cost_qual_eval_walker(Node *node, Cost *total)
 				 * (We assume that sub-selects that can be executed as
 				 * InitPlans have already been removed from the expression.)
 				 *
-				 * NOTE: this logic should agree with make_subplan in
-				 * subselect.c. 
+				 * NOTE: this logic should agree with the estimates used by
+				 * make_subplan() in plan/subselect.c. 
 				 */
 				{
 					SubPlan	   *subplan = (SubPlan *) expr->oper;
@@ -701,16 +701,18 @@ cost_qual_eval_walker(Node *node, Cost *total)
 						subcost = plan->startup_cost +
 							(plan->total_cost - plan->startup_cost) / plan->plan_rows;
 					}
-					else if (subplan->sublink->subLinkType == EXPR_SUBLINK)
-					{
-						/* assume we need all tuples */
-						subcost = plan->total_cost;
-					}
-					else
+					else if (subplan->sublink->subLinkType == ALL_SUBLINK ||
+							 subplan->sublink->subLinkType == ANY_SUBLINK)
 					{
 						/* assume we need 50% of the tuples */
 						subcost = plan->startup_cost +
 							0.50 * (plan->total_cost - plan->startup_cost);
+						/* XXX what if subplan has been materialized? */
+					}
+					else
+					{
+						/* assume we need all tuples */
+						subcost = plan->total_cost;
 					}
 					*total += subcost;
 				}
