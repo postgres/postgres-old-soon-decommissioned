@@ -521,7 +521,7 @@ int
 ProcSleep(LOCKMETHODTABLE *lockMethodTable,
 		  LOCKMODE lockmode,
 		  LOCK *lock,
-		  PROCLOCK *holder)
+		  PROCLOCK *proclock)
 {
 	LWLockId	masterLock = lockMethodTable->masterLock;
 	PROC_QUEUE *waitQueue = &(lock->waitProcs);
@@ -577,12 +577,12 @@ ProcSleep(LOCKMETHODTABLE *lockMethodTable,
 					LockCheckConflicts(lockMethodTable,
 									   lockmode,
 									   lock,
-									   holder,
+									   proclock,
 									   MyProc,
 									   NULL) == STATUS_OK)
 				{
 					/* Skip the wait and just grant myself the lock. */
-					GrantLock(lock, holder, lockmode);
+					GrantLock(lock, proclock, lockmode);
 					return STATUS_OK;
 				}
 				/* Break out of loop to put myself before him */
@@ -615,7 +615,7 @@ ProcSleep(LOCKMETHODTABLE *lockMethodTable,
 
 	/* Set up wait information in PGPROC object, too */
 	MyProc->waitLock = lock;
-	MyProc->waitHolder = holder;
+	MyProc->waitHolder = proclock;
 	MyProc->waitLockMode = lockmode;
 
 	MyProc->errType = STATUS_OK;	/* initialize result for success */

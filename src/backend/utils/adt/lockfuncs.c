@@ -88,7 +88,7 @@ pg_lock_status(PG_FUNCTION_ARGS)
 
 	while (mystatus->currIdx < lockData->nelements)
 	{
-		PROCLOCK   *holder;
+		PROCLOCK   *proclock;
 		LOCK	   *lock;
 		PGPROC	   *proc;
 		bool		granted;
@@ -98,7 +98,7 @@ pg_lock_status(PG_FUNCTION_ARGS)
 		HeapTuple	tuple;
 		Datum		result;
 
-		holder = &(lockData->holders[mystatus->currIdx]);
+		proclock = &(lockData->proclocks[mystatus->currIdx]);
 		lock = &(lockData->locks[mystatus->currIdx]);
 		proc = &(lockData->procs[mystatus->currIdx]);
 
@@ -110,10 +110,10 @@ pg_lock_status(PG_FUNCTION_ARGS)
 		granted = false;
 		for (mode = 0; mode < MAX_LOCKMODES; mode++)
 		{
-			if (holder->holding[mode] > 0)
+			if (proclock->holding[mode] > 0)
 			{
 				granted = true;
-				holder->holding[mode] = 0;
+				proclock->holding[mode] = 0;
 				break;
 			}
 		}
@@ -124,7 +124,7 @@ pg_lock_status(PG_FUNCTION_ARGS)
 		 */
 		if (!granted)
 		{
-			if (proc->waitLock == (LOCK *) MAKE_PTR(holder->tag.lock))
+			if (proc->waitLock == (LOCK *) MAKE_PTR(proclock->tag.lock))
 			{
 				/* Yes, so report it with proper mode */
 				mode = proc->waitLockMode;

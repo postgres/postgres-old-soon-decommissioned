@@ -102,7 +102,7 @@ extern void ProcReleaseLocks(bool isCommit);
 
 extern void ProcQueueInit(PROC_QUEUE *queue);
 extern int ProcSleep(LOCKMETHODTABLE *lockMethodTable, LOCKMODE lockmode,
-		  LOCK *lock, PROCLOCK *holder);
+		  LOCK *lock, PROCLOCK *proclock);
 extern PGPROC *ProcWakeup(PGPROC *proc, int errType);
 extern void ProcLockWakeup(LOCKMETHODTABLE *lockMethodTable, LOCK *lock);
 extern bool LockWaitCancel(void);
