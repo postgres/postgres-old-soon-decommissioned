@@ -42,7 +42,7 @@ char *rightTrim(char *s)
 {
   char *sEnd;
   sEnd = s+strlen(s)-1;
-  while (isspace(*sEnd))
+  while (sEnd >= s && isspace(*sEnd))
     sEnd--;
   if (sEnd < s)
     s[0]='\0';
