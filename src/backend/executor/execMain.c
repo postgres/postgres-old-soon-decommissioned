@@ -1508,7 +1508,8 @@ ExecRelCheck(Relation rel, HeapTuple tuple, EState *estate)
 	slot->ttc_buffer = InvalidBuffer;
 	slot->ttc_whichplan = -1;
 	rte->relname = RelationGetRelationName(rel);
-	rte->refname = rte->relname;
+	rte->ref = makeNode(Attr);
+	rte->ref->relname = rte->relname;
 	rte->relid = RelationGetRelid(rel);
 	/* inh, inFromCl, inJoinSet, skipAcl won't be used, leave them zero */
 	rtlist = lcons(rte, NIL);

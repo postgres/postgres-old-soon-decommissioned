@@ -96,6 +96,17 @@ _equalExpr(Expr *a, Expr *b)
 }
 
 static bool
+_equalAttr(Attr *a, Attr *b)
+{
+	if (!strcmp(a->relname, b->relname))
+		return false;
+	if (length(a->attrs) != length(b->attrs))
+		return false;
+
+	return equal(a->attrs, b->attrs);
+}
+
+static bool
 _equalVar(Var *a, Var *b)
 {
 	if (a->varno != b->varno)
@@ -633,14 +644,14 @@ _equalRangeTblEntry(RangeTblEntry *a, RangeTblEntry *b)
 		if (a->relname != b->relname)
 			return false;
 	}
-	if (a->refname && b->refname)
+	if (a->ref && b->ref)
 	{
-		if (strcmp(a->refname, b->refname) != 0)
+		if (! equal(a->ref, b->ref))
 			return false;
 	}
 	else
 	{
-		if (a->refname != b->refname)
+		if (a->ref != b->ref)
 			return false;
 	}
 	if (a->relid != b->relid)
@@ -844,6 +855,9 @@ equal(void *a, void *b)
 			break;
 		case T_EState:
 			retval = _equalEState(a, b);
+			break;
+		case T_Attr:
+			retval = _equalAttr(a, b);
 			break;
 		case T_Integer:
 		case T_String:

@@ -954,8 +954,8 @@ _outRangeTblEntry(StringInfo str, RangeTblEntry *node)
 {
 	appendStringInfo(str, " RTE :relname ");
 	_outToken(str, node->relname);
-	appendStringInfo(str, " :refname ");
-	_outToken(str, node->refname);
+	appendStringInfo(str, " :ref ");
+	_outNode(str, node->ref);
 	appendStringInfo(str,
 					 " :relid %u :inh %s :inFromCl %s :inJoinSet %s :skipAcl %s",
 					 node->relid,
@@ -1273,18 +1273,10 @@ _outIdent(StringInfo str, Ident *node)
 static void
 _outAttr(StringInfo str, Attr *node)
 {
-	List	   *l;
-
-	appendStringInfo(str, " ATTR ");
+	appendStringInfo(str, " ATTR :relname ");
 	_outToken(str, node->relname);
-	appendStringInfo(str, " (");
-	foreach(l, node->attrs)
-	{
-		_outNode(str, lfirst(l));
-		if (lnext(l))
-			appendStringInfo(str, " ");
-	}
-	appendStringInfo(str, ")");
+	appendStringInfo(str, " :attrs ");
+	_outNode(str, node->attrs);
 }
 
 static void

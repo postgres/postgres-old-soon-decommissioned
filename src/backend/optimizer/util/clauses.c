@@ -556,7 +556,7 @@ check_subplans_for_ungrouped_vars_walker(Node *node,
 					elog(ERROR, "cache lookup of attribute %d in relation %u failed",
 						 var->varattno, rte->relid);
 				elog(ERROR, "Sub-SELECT uses un-GROUPed attribute %s.%s from outer query",
-					 rte->refname, attname);
+					 rte->ref->relname, attname);
 			}
 		}
 	}

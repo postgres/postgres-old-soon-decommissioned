@@ -39,8 +39,8 @@
  */
 
 #define rt_relname(rt_entry) \
-	  ((!strcmp(((rt_entry)->refname),"*CURRENT*") ||\
-		!strcmp(((rt_entry)->refname),"*NEW*")) ? ((rt_entry)->refname) : \
+	  ((!strcmp(((rt_entry)->ref->relname),"*CURRENT*") ||\
+		!strcmp(((rt_entry)->ref->relname),"*NEW*")) ? ((rt_entry)->ref->relname) : \
 		((char *)(rt_entry)->relname))
 
 /*

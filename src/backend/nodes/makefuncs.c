@@ -141,3 +141,26 @@ makeConst(Oid consttype,
 	cnst->constiscast = constiscast;
 	return cnst;
 }
+
+/*
+ * makeAttr -
+ *	  creates an Attr node
+ */
+Attr *
+makeAttr(char *relname, char *attname)
+{
+	Attr	   *a = makeNode(Attr);
+
+	a->relname = pstrdup(relname);
+	a->paramNo = NULL;
+	if (attname != NULL)
+		a->attrs = lcons(makeString(pstrdup(attname)), NIL);
+	a->indirection = NULL;
+
+	return a;
+}
+
+
+
+
+

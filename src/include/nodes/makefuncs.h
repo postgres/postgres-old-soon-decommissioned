@@ -46,4 +46,7 @@ extern Const *makeConst(Oid consttype,
 		  bool constisset,
 		  bool constiscast);
 
+extern Attr *
+makeAttr(char *relname, char *attname);
+
 #endif	 /* MAKEFUNC_H */

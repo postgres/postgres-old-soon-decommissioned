@@ -18,17 +18,20 @@
 
 extern RangeTblEntry *refnameRangeTableEntry(ParseState *pstate, char *refname);
 extern int refnameRangeTablePosn(ParseState *pstate,
-					  char *refname, int *sublevels_up);
+								 char *refname,
+								 int *sublevels_up);
 extern RangeTblEntry *colnameRangeTableEntry(ParseState *pstate, char *colname);
 extern RangeTblEntry *addRangeTableEntry(ParseState *pstate,
-				   char *relname,
-				   char *refname,
-				   bool inh,
-				   bool inFromCl,
-				   bool inJoinSet);
-extern List *expandAll(ParseState *pstate, char *relname, char *refname,
-		  int *this_resno);
+										 char *relname,
+										 Attr *ref,
+										 bool inh,
+										 bool inFromCl,
+										 bool inJoinSet);
+extern Attr *expandTable(ParseState *pstate, char *refname, bool getaliases);
+extern List *expandAll(ParseState *pstate, char *relname, Attr *ref,
+					   int *this_resno);
 extern int	attnameAttNum(Relation rd, char *a);
+extern int	specialAttNum(char *a);
 extern bool attnameIsSet(Relation rd, char *name);
 extern int	attnumAttNelems(Relation rd, int attid);
 extern Oid	attnumTypeId(Relation rd, int attid);

@@ -230,12 +230,12 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 				RangeTblEntry *rte = nth(((Scan *) plan)->scanrelid - 1, es->rtable);
 
 				appendStringInfo(str, " on ");
-				if (strcmp(rte->refname, rte->relname) != 0)
+				if (strcmp(rte->ref->relname, rte->relname) != 0)
 				{
 					appendStringInfo(str, "%s ",
 									 stringStringInfo(rte->relname));
 				}
-				appendStringInfo(str, stringStringInfo(rte->refname));
+				appendStringInfo(str, stringStringInfo(rte->ref->relname));
 			}
 			break;
 		case T_TidScan:
@@ -244,12 +244,12 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 				RangeTblEntry *rte = nth(((TidScan *) plan)->scan.scanrelid - 1, es->rtable);
 
 				appendStringInfo(str, " on ");
-				if (strcmp(rte->refname, rte->relname) != 0)
+				if (strcmp(rte->ref->relname, rte->relname) != 0)
 				{
 					appendStringInfo(str, "%s ",
 									 stringStringInfo(rte->relname));
 				}
-				appendStringInfo(str, stringStringInfo(rte->refname));
+				appendStringInfo(str, stringStringInfo(rte->ref->relname));
 			}
 			break;
 		default:
