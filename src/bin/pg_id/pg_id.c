@@ -32,7 +32,6 @@ main(int argc, char *argv[])
 	struct passwd *pw;
 
 	extern int	optind;
-	extern char *optarg;
 
 	while ((c = getopt(argc, argv, "nru")) != -1)
 	{
