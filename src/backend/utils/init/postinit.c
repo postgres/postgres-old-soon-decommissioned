@@ -176,12 +176,8 @@ InitCommunication(void)
 	{
 		/*
 		 * We're running a postgres bootstrap process or a standalone backend.
-		 * Create private "shmem" and semaphores.  Force MaxBackends to 1 so
-		 * that we don't allocate more resources than necessary.
+		 * Create private "shmem" and semaphores.
 		 */
-		SetConfigOption("max_connections", "1",
-						PGC_POSTMASTER, PGC_S_OVERRIDE);
-
 		CreateSharedMemoryAndSemaphores(true, MaxBackends, 0);
 	}
 }
