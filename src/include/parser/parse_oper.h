@@ -23,7 +23,4 @@ extern Operator oper(char *op, Oid arg1, Oid arg2, bool noWarnings);
 extern Operator right_oper(char *op, Oid arg);
 extern Operator left_oper(char *op, Oid arg);
 
-extern Operator oper_exact(char *op, Oid arg1, Oid arg2, Node **ltree, Node **rtree, bool noWarnings);
-extern Operator oper_inexact(char *op, Oid arg1, Oid arg2, Node **ltree, Node **rtree, bool noWarnings);
-
 #endif	 /* PARSE_OPER_H */
