@@ -311,9 +311,6 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 
 		if ((reqs & REQ_SCHEMA) != 0)	/* We want the schema */
 		{
-			/* Reconnect if necessary */
-			_reconnectAsOwner(AH, NULL, te);
-
 			ahlog(AH, 1, "creating %s %s\n", te->desc, te->name);
 			_printTocEntry(AH, te, ropt, false);
 			defnDumped = true;
@@ -2032,6 +2029,9 @@ static int
 _printTocEntry(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt, bool isData)
 {
 	char	   *pfx;
+
+	/* Reconnect if necessary */
+	_reconnectAsOwner(AH, NULL, te);
 
 	if (isData)
 		pfx = "Data for ";

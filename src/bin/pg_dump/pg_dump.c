@@ -4765,7 +4765,8 @@ dumpSequence(Archive *fout, TableInfo tbinfo, const bool schemaOnly, const bool 
 						  last, (called ? "true" : "false"));
 
 		ArchiveEntry(fout, tbinfo.oid, tbinfo.relname, "SEQUENCE SET", NULL,
-					 query->data, "" /* Del */ , "", "", NULL, NULL);
+					 query->data, "" /* Del */ , "", tbinfo.usename,
+					 NULL, NULL);
 	}
 
 	if (!dataOnly)
