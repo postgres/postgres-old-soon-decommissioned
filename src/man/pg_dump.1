@@ -112,5 +112,15 @@ the same as above.  Partial index predicates are stored as plans)
 .BR "large objects"
 pg_dump does not handle large objects.  Large objects are ignored and
 must be dealt with manually. 
+.SH EXAMPLES
+.nf
+To dump a database:
+
+	pg_dump >db.out
+
+To reload it:
+
+	psql -e database <db.out
+
 .SH "SEE ALSO"
 copy(l)
