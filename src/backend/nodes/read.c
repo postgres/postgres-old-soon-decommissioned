@@ -94,7 +94,9 @@ nodeTokenType(char *token, int length)
 
 		retval = (*token != '.') ? T_Integer : T_Float;
 	}
-	else if (isalpha(*token) || *token == '_')
+		/* make "" == NULL, not T_String.  Is this a problem? 1998/1/7 bjm */
+	else if (isalpha(*token) || *token == '_' || 
+			 (token[0] == '\"' && token[1] == '\"'))
 		retval = ATOM_TOKEN;
 	else if (*token == '(')
 		retval = LEFT_PAREN;
@@ -147,8 +149,8 @@ lsptok(char *string, int *length)
 	{
 		for (local_str++; *local_str != '\"'; (*length)++, local_str++)
 			;
-		if (*length == 2)
-			*length -= 2;	/* if "", return zero length */
+		if (*length == 1)
+			*length = 0;	/* if "", return zero length */
 		else
 			(*length)++;
 		local_str++;
