@@ -13,9 +13,33 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"
+
+#include "storage/block.h"
+#include "storage/off.h"
+#include "storage/itemptr.h"
+#include "catalog/pg_attribute.h"
+#include "access/attnum.h"
+#include "nodes/pg_list.h"
+#include "access/tupdesc.h"
+#include "access/itup.h"
+#include "access/funcindex.h"
+#include "storage/fd.h"
+#include "catalog/pg_am.h"
+#include "catalog/pg_class.h"
+#include "nodes/nodes.h"  
+#include "rewrite/prs2lock.h"
+#include "access/skey.h"
+#include "access/strat.h"
+#include "utils/rel.h"
 #include "bootstrap/bootstrap.h"
-#include "utils/portal.h" 
-#include "access/xact.h"
+
+#include "nodes/primnodes.h"
+#include <time.h>
+#include "utils/nabstime.h"
+#include "access/htup.h"  
+#include "utils/tqual.h"
+#include "nodes/parsenodes.h"
+
 #include "parser/scansup.h"
 
 #include "bootstrap_tokens.h"
