@@ -2,7 +2,7 @@
  *
  * bgwriter.c
  *
- * The background writer (bgwriter) is new in Postgres 7.5.  It attempts
+ * The background writer (bgwriter) is new in Postgres 8.0.  It attempts
  * to keep regular backends from having to write out dirty shared buffers
  * (which they would only do when needing to free a shared buffer to read in
  * another page).  In the best scenario all writes from shared buffers will

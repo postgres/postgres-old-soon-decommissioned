@@ -4,7 +4,7 @@
  *	  definition of the system "type casts" relation (pg_cast)
  *	  along with the relation's initial contents.
  *
- * As of Postgres 7.5, pg_cast describes not only type coercion functions
+ * As of Postgres 8.0, pg_cast describes not only type coercion functions
  * but also length coercion functions.
  *
  *

@@ -259,10 +259,10 @@ float4in(PG_FUNCTION_ARGS)
 	 * Check for an empty-string input to begin with, to avoid
 	 * the vagaries of strtod() on different platforms.
 	 *
-	 * In releases prior to 7.5, we accepted an empty string as valid
-	 * input (yielding a float4 of 0). In 7.5, we accept empty
+	 * In releases prior to 8.0, we accepted an empty string as valid
+	 * input (yielding a float4 of 0). In 8.0, we accept empty
 	 * strings, but emit a warning noting that the feature is
-	 * deprecated. In 7.6+, the warning should be replaced by an
+	 * deprecated. In 8.1+, the warning should be replaced by an
 	 * error.
 	 */
 	if (*num == '\0')
@@ -424,10 +424,10 @@ float8in(PG_FUNCTION_ARGS)
 	 * Check for an empty-string input to begin with, to avoid
 	 * the vagaries of strtod() on different platforms.
 	 *
-	 * In releases prior to 7.5, we accepted an empty string as valid
-	 * input (yielding a float8 of 0). In 7.5, we accept empty
+	 * In releases prior to 8.0, we accepted an empty string as valid
+	 * input (yielding a float8 of 0). In 8.0, we accept empty
 	 * strings, but emit a warning noting that the feature is
-	 * deprecated. In 7.6+, the warning should be replaced by an
+	 * deprecated. In 8.1+, the warning should be replaced by an
 	 * error.
 	 */
 	if (*num == '\0')

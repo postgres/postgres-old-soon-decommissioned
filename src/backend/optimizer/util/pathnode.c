@@ -286,7 +286,7 @@ add_path(RelOptInfo *parent_rel, Path *new_path)
 		int			costcmp;
 
 		/*
-		 * As of Postgres 7.5, we use fuzzy cost comparison to avoid wasting
+		 * As of Postgres 8.0, we use fuzzy cost comparison to avoid wasting
 		 * cycles keeping paths that are really not significantly different
 		 * in cost.
 		 */

@@ -4588,7 +4588,7 @@ ReadCheckpointRecord(XLogRecPtr RecPtr,
  * instead).  We need to initialize the local copies of ThisTimeLineID and
  * RedoRecPtr.
  *
- * Note: before Postgres 7.5, we went to some effort to keep the postmaster
+ * Note: before Postgres 8.0, we went to some effort to keep the postmaster
  * process's copies of ThisTimeLineID and RedoRecPtr valid too.  This was
  * unnecessary however, since the postmaster itself never touches XLOG anyway.
  */

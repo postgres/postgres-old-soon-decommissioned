@@ -2408,7 +2408,7 @@ cast(-44 as bit(12))           <lineannotation>111111010100</lineannotation>
 
     <note>
      <para>
-      Prior to <productname>PostgreSQL</productname> 7.5, casting an
+      Prior to <productname>PostgreSQL</productname> 8.0, casting an
       integer to <type>bit(n)</> would copy the leftmost <literal>n</>
       bits of the integer, whereas now it copies the rightmost <literal>n</>
       bits.  Also, casting an integer to a bit string width wider than

@@ -539,7 +539,7 @@ GetIndexOpClass(List *opclass, Oid attrType,
 	 * too for awhile.	I'm starting to think we need a better approach.
 	 * tgl 2000/10/01
 	 *
-	 * Release 7.5 removes bigbox_ops (which was dead code for a long while
+	 * Release 8.0 removes bigbox_ops (which was dead code for a long while
 	 * anyway).  tgl 2003/11/11
 	 */
 	if (list_length(opclass) == 1)

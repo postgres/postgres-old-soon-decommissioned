@@ -355,7 +355,7 @@ typedef struct Path
  * derived indexscannable conditions in 'indexquals'.
  *
  * Both 'indexclauses' and 'indexquals' are lists of sublists of RestrictInfo
- * nodes.  (Before 7.5, we kept bare operator expressions in these lists, but
+ * nodes.  (Before 8.0, we kept bare operator expressions in these lists, but
  * storing RestrictInfos is more efficient since selectivities can be cached.)
  *
  * 'isjoininner' is TRUE if the path is a nestloop inner scan (that is,

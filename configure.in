@@ -17,7 +17,7 @@ dnl Read the Autoconf manual for details.
 dnl
 m4_pattern_forbid(^PGAC_)dnl to catch undefined macros
 
-AC_INIT([PostgreSQL], [7.5devel], [pgsql-bugs@postgresql.org])
+AC_INIT([PostgreSQL], [8.0devel], [pgsql-bugs@postgresql.org])
 
 AC_PREREQ(2.53)
 AC_COPYRIGHT([Copyright 2003 PostgreSQL Global Development Group])

@@ -94,13 +94,13 @@ SELECT [ ALL | DISTINCT [ ON ( <replaceable class="PARAMETER">expression</replac
   </para>
 
   <para>
-   Prior to <productname>PostgreSQL</> 7.5, the table created by
+   Prior to <productname>PostgreSQL</> 8.0, the table created by
    <command>SELECT INTO</command> always included OIDs. Furthermore,
    these OIDs were newly generated: they were distinct from the OIDs
    of any of the rows in the source tables of the <command>SELECT
    INTO</command> statement. Therefore, if <command>SELECT
    INTO</command> was frequently executed, the OID counter would be
-   rapidly incremented. As of <productname>PostgreSQL</> 7.5, the
+   rapidly incremented. As of <productname>PostgreSQL</> 8.0, the
    inclusion of OIDs in the table created by <command>SELECT
    INTO</command> is controlled by the
    <xref linkend="guc-default-with-oids"> configuration variable. This

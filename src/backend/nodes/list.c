@@ -251,7 +251,7 @@ lappend_cell_oid(List *list, ListCell *prev, Oid datum)
  * value, rather than continuing to use the pointer passed as the
  * second argument.
  *
- * Caution: before Postgres 7.5, the original List was unmodified and
+ * Caution: before Postgres 8.0, the original List was unmodified and
  * could be considered to retain its separate identity.  This is no longer
  * the case.
  */

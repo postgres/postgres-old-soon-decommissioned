@@ -146,7 +146,7 @@ static FunctionCallInfo pltcl_current_fcinfo = NULL;
  * returns to the calling function, we re-throw the error (even if Tcl
  * thinks it trapped the error and doesn't return TCL_ERROR).  Eventually
  * this ought to be improved to let Tcl code really truly trap the error,
- * but that's more of a change from the pre-7.5 semantics than I have time
+ * but that's more of a change from the pre-8.0 semantics than I have time
  * for now --- it will only be possible if the callback query is executed
  * inside a subtransaction.
  */

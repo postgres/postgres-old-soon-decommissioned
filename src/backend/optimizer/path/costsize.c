@@ -238,7 +238,7 @@ cost_nonsequential_access(double relpages)
  * tuples, but they won't reduce the number of tuples we have to fetch from
  * the table, so they don't reduce the scan cost.
  *
- * NOTE: as of 7.5, indexQuals is a list of RestrictInfo nodes, where formerly
+ * NOTE: as of 8.0, indexQuals is a list of RestrictInfo nodes, where formerly
  * it was a list of bare clause expressions.
  */
 void

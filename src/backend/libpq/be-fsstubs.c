@@ -27,7 +27,7 @@
  *	  existing documented semantics of LO FDs: they're only good within a
  *	  transaction.
  *
- *	  As of PostgreSQL 7.5, much of the angst expressed above is no longer
+ *	  As of PostgreSQL 8.0, much of the angst expressed above is no longer
  *	  relevant, and in fact it'd be pretty easy to allow LO FDs to stay
  *	  open across transactions.  However backwards compatibility suggests
  *	  that we should stick to the status quo.

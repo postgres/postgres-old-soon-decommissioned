@@ -199,7 +199,7 @@ IsToastNamespace(Oid namespaceId)
  *		True iff name starts with the pg_ prefix.
  *
  *		For some classes of objects, the prefix pg_ is reserved for
- *		system objects only.  As of 7.5, this is only true for
+ *		system objects only.  As of 8.0, this is only true for
  *		schema and tablespace names.
  */
 bool
