@@ -475,15 +475,6 @@ ExecSetParamPlan(SubPlanState *node, ExprContext *econtext)
 		}
 	}
 
-	if (planstate->plan->extParam == NULL) /* un-correlated ... */
-	{
-		ExecEndPlan(planstate, node->sub_estate);
-		/* mustn't free context while still in it... */
-		MemoryContextSwitchTo(oldcontext);
-		FreeExecutorState(node->sub_estate);
-		node->needShutdown = false;
-	}
-
 	MemoryContextSwitchTo(oldcontext);
 }
 
@@ -502,6 +493,8 @@ ExecEndSubPlan(SubPlanState *node)
 		ExecEndPlan(node->planstate, node->sub_estate);
 		MemoryContextSwitchTo(oldcontext);
 		FreeExecutorState(node->sub_estate);
+		node->sub_estate = NULL;
+		node->planstate = NULL;
 		node->needShutdown = false;
 	}
 	if (node->curTuple)
