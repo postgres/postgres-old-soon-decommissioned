@@ -516,6 +516,10 @@ ExecEndIndexScan(IndexScan *node)
 	 */
 	ExecClearTuple(scanstate->cstate.cs_ResultTupleSlot);
 	ExecClearTuple(scanstate->css_ScanTupleSlot);
+	pfree(scanstate);
+	pfree(indexstate->iss_RelationDescs);
+	pfree(indexstate->iss_ScanDescs);
+	pfree(indexstate);
 }
 
 /* ----------------------------------------------------------------
