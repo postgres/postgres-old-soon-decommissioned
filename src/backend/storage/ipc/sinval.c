@@ -509,7 +509,6 @@ TransactionIdIsInProgress(TransactionId xid)
 
 			if (result)
 				break;
-
 		}
 	}
 
@@ -531,11 +530,17 @@ TransactionIdIsInProgress(TransactionId xid)
 		 * We don't care if it aborted, because if it did, we won't find
 		 * it in the array.
 		 */
-
 		for (i = 0; i < nxids; i++)
+		{
 			if (TransactionIdEquals(xids[i], xid))
-				return true;
+			{
+				result = true;
+				break;
+			}
+		}
 	}
+
+	pfree(xids);
 
 	return result;
 }
