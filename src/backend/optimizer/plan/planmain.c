@@ -87,9 +87,25 @@ query_planner(Query *root,
 		tlist = (List *) SS_replace_correlation_vars((Node *) tlist);
 		qual = (List *) SS_replace_correlation_vars((Node *) qual);
 	}
+
 	/* Expand SubLinks to SubPlans */
 	if (root->hasSubLinks)
+	{
+		tlist = (List *) SS_process_sublinks((Node *) tlist);
 		qual = (List *) SS_process_sublinks((Node *) qual);
+		if (root->groupClause != NIL)
+		{
+			/*
+			 * Check for ungrouped variables passed to subplans.
+			 * Note we do NOT do this for subplans in WHERE; it's legal
+			 * there because WHERE is evaluated pre-GROUP.
+			 */
+			if (check_subplans_for_ungrouped_vars((Node *) tlist,
+												  root->groupClause,
+												  tlist))
+				elog(ERROR, "Sub-SELECT must use only GROUPed attributes from outer SELECT");
+		}
+	}
 
 	/*
 	 * If the query contains no relation references at all, it must be

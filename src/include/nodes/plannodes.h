@@ -356,8 +356,8 @@ typedef struct SubPlan
 	List	   *setParam;		/* non-correlated EXPR & EXISTS subqueries
 								 * have to set some Params for paren Plan */
 	List	   *parParam;		/* indices of corr. Vars from parent plan */
-	SubLink    *sublink;		/* SubLink node for subselects in WHERE
-								 * and HAVING */
+	SubLink    *sublink;		/* SubLink node from parser; holds info about
+								 * what to do with subselect's results */
 	bool		shutdown;		/* shutdown plan if TRUE */
 } SubPlan;
 

@@ -231,11 +231,11 @@ transformDeleteStmt(ParseState *pstate, DeleteStmt *stmt)
 
 	/* fix where clause */
 	qry->qual = transformWhereClause(pstate, stmt->whereClause, NULL);
-	qry->hasSubLinks = pstate->p_hasSubLinks;
 
 	qry->rtable = pstate->p_rtable;
 	qry->resultRelation = refnameRangeTablePosn(pstate, stmt->relname, NULL);
 
+	qry->hasSubLinks = pstate->p_hasSubLinks;
 	qry->hasAggs = pstate->p_hasAggs;
 	if (pstate->p_hasAggs)
 		parseCheckAggregates(pstate, qry);
@@ -422,6 +422,9 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 
 	if (stmt->forUpdate != NULL)
 		transformForUpdate(qry, stmt->forUpdate);
+
+	/* in case of subselects in default clauses... */
+	qry->hasSubLinks = pstate->p_hasSubLinks;
 
 	return (Query *) qry;
 }
