@@ -140,7 +140,7 @@ if [ $? -ne 0 ]; then
 fi
 if [ ! -z "$res" ]; then
 	echo "The language '$langname' is already installed in database $dbname"
-	exit 1
+	exit 2
 fi
 
 # ----------

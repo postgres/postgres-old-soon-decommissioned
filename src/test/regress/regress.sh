@@ -69,7 +69,7 @@ fi
 
 echo "=============== installing PL/pgSQL...                ================="
 createlang $HOST plpgsql regression
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 -a $? -ne 2 ]; then
      echo createlang failed
      exit 1
 fi
