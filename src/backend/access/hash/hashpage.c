@@ -619,7 +619,10 @@ _hash_splitpage(Relation rel,
 			}
 
 			noffnum = OffsetNumberNext(PageGetMaxOffsetNumber(npage));
-			PageAddItem(npage, (Item) hitem, itemsz, noffnum, LP_USED);
+			if (PageAddItem(npage, (Item) hitem, itemsz, noffnum, LP_USED)
+				== InvalidOffsetNumber)
+				elog(ERROR, "_hash_splitpage: failed to add index item to %s",
+					 RelationGetRelationName(rel));
 			_hash_wrtnorelbuf(rel, nbuf);
 
 			/*

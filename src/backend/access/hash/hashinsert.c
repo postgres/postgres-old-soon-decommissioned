@@ -230,7 +230,10 @@ _hash_pgaddtup(Relation rel,
 	_hash_checkpage(page, LH_BUCKET_PAGE | LH_OVERFLOW_PAGE);
 
 	itup_off = OffsetNumberNext(PageGetMaxOffsetNumber(page));
-	PageAddItem(page, (Item) hitem, itemsize, itup_off, LP_USED);
+	if (PageAddItem(page, (Item) hitem, itemsize, itup_off, LP_USED)
+		== InvalidOffsetNumber)
+		elog(ERROR, "_hash_pgaddtup: failed to add index item to %s",
+			 RelationGetRelationName(rel));
 
 	/* write the buffer, but hold our lock */
 	_hash_wrtnorelbuf(rel, buf);

@@ -395,6 +395,9 @@ gistPageAddItem(GISTSTATE *giststate,
 	*newtup = gist_tuple_replacekey(r, tmpcentry, itup);
 	retval = PageAddItem(page, (Item) *newtup, IndexTupleSize(*newtup),
 						offsetNumber, flags);
+	if (retval == InvalidOffsetNumber)
+		elog(ERROR, "gist: failed to add index item to %s",
+			 RelationGetRelationName(r));
 	/* be tidy */
 	if (tmpcentry.pred && tmpcentry.pred != dentry->pred
 		&& tmpcentry.pred != (((char *) itup) + sizeof(IndexTupleData)))

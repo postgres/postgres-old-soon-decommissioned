@@ -564,7 +564,10 @@ _hash_squeezebucket(Relation rel,
 		 * page.
 		 */
 		woffnum = OffsetNumberNext(PageGetMaxOffsetNumber(wpage));
-		PageAddItem(wpage, (Item) hitem, itemsz, woffnum, LP_USED);
+		if (PageAddItem(wpage, (Item) hitem, itemsz, woffnum, LP_USED)
+			== InvalidOffsetNumber)
+			elog(ERROR, "_hash_squeezebucket: failed to add index item to %s",
+				 RelationGetRelationName(rel));
 
 		/*
 		 * delete the tuple from the "read" page. PageIndexTupleDelete

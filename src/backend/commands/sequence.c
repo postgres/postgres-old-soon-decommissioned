@@ -785,7 +785,8 @@ void seq_redo(XLogRecPtr lsn, XLogRecord *record)
 	itemsz = record->xl_len - sizeof(xl_seq_rec);
 	itemsz = MAXALIGN(itemsz);
 	if (PageAddItem(page, (Item)item, itemsz, 
-			FirstOffsetNumber, LP_USED) == InvalidOffsetNumber)
+					FirstOffsetNumber, LP_USED) == InvalidOffsetNumber)
+		elog(STOP, "seq_redo: failed to add item to page");
 
 	PageSetLSN(page, lsn);
 	PageSetSUI(page, ThisStartUpID);
