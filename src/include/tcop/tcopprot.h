@@ -18,9 +18,8 @@
 #ifndef TCOPPROT_H
 #define TCOPPROT_H
 
-#include "tcop/dest.h"
-#include "nodes/pg_list.h"
-#include "parser/parse_query.h"
+#include <executor/execdesc.h>
+#include <parser/parse_query.h>
 
 #ifndef BOOTSTRAP_INCLUDE
 extern List *pg_plan(char *query_string, Oid *typev, int nargs,

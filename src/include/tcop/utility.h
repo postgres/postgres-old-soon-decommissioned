@@ -13,6 +13,8 @@
 #ifndef UTILITY_H
 #define UTILITY_H
 
+#include <executor/execdesc.h>
+
 extern void ProcessUtility(Node *parsetree, CommandDest dest);
 
 #endif	/* UTILITY_H */
