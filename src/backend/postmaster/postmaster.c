@@ -35,7 +35,11 @@
                                 /* moved here to prevent double define */
 #include <sys/param.h>          /* for MAXHOSTNAMELEN on most */
 #ifdef HAVE_NETDB_H
-#include <netdb.h>              /* for MAXHOSTNAMELEN on some */
+#  include <netdb.h>              /* for MAXHOSTNAMELEN on some */
+#endif
+
+#ifndef MAXHOSTNAMELEN
+#  define MAXHOSTNAMELEN 256
 #endif
 
 #include "postgres.h"
