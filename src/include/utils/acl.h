@@ -111,10 +111,14 @@ typedef ArrayType IdList;
 #define	ACL_MODE_WR_CHR		'w'
 #define	ACL_MODE_RU_CHR		'R'
 
-/* we use this warning string both for non-existent tables and
-   insufficient privilege so non-privileged users cannot ascertain whether 
-   the class exists or not */
-#define ACL_NO_PRIV_WARNING "Either no such class or insufficient privilege"
+/* result codes for pg_aclcheck */
+#define ACLCHECK_OK               0
+#define ACLCHECK_NO_PRIV          1
+#define ACLCHECK_NO_CLASS         2
+#define ACLCHECK_NOT_OWNER        3
+
+/* warning messages.  set these in aclchk.c. */
+extern char *aclcheck_error_strings[];
 
 /*
  * Enable ACL execution tracing and table dumps

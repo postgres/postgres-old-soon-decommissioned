@@ -381,10 +381,13 @@ ProcessUtility(Node *parsetree,
     case T_RuleStmt:            /* CREATE RULE */
 	{
 	    RuleStmt *stmt = (RuleStmt *)parsetree;
+	    int aclcheck_result;
+
 #ifndef NO_SECURITY
 	    relname = stmt->object->relname;
-	    if (!pg_aclcheck(relname, userName, ACL_RU))
-		elog(WARN, "%s %s", relname, ACL_NO_PRIV_WARNING);	
+	    aclcheck_result = pg_aclcheck(relname, userName, ACL_RU);
+	    if(aclcheck_result != ACLCHECK_OK)
+		elog(WARN, "%s: %s", relname, aclcheck_error_strings[aclcheck_result]);	
 #endif
 	    commandTag = "CREATE";
 	    CHECK_IF_ABORTED();
@@ -423,19 +426,21 @@ ProcessUtility(Node *parsetree,
 			 relname);
 #ifndef NO_SECURITY
 		if (!pg_ownercheck(userName, relname, RELNAME))
-		    elog(WARN, "you do not own class \"%s\"",
-			 relname);
+		    elog(WARN, "%s: %s", relationName, aclcheck_error_strings[ACLCHECK_NOT_OWNER]);
 #endif
 		RemoveIndex(relname);
 		break;
 	    case RULE:
 		{
 		    char *rulename = stmt->name;
+		    int aclcheck_result;
 #ifndef NO_SECURITY
 		
 		    relationName = RewriteGetRuleEventRel(rulename);
-		    if (!pg_aclcheck(relationName, userName, ACL_RU))
-			elog(WARN, "%s %s", relationName, ACL_NO_PRIV_WARNING);
+		    aclcheck_result = pg_aclcheck(relationName, userName, ACL_RU);
+		    if(aclcheck_result != ACLCHECK_OK) {
+		        elog(WARN, "%s: %s", relationName, aclcheck_error_strings[aclcheck_result]);
+		    }
 #endif
 		    RemoveRewriteRule(rulename);
 		}
@@ -457,7 +462,7 @@ ProcessUtility(Node *parsetree,
 		    ruleName = MakeRetrieveViewRuleName(viewName);
 		    relationName = RewriteGetRuleEventRel(ruleName);
 		    if (!pg_ownercheck(userName, relationName, RELNAME))
-			elog(WARN, "%s %s", relationName, ACL_NO_PRIV_WARNING);
+			elog(WARN, "%s: %s", relationName, aclcheck_error_strings[ACLCHECK_NOT_OWNER]);
 		    pfree(ruleName);
 #endif
 		    RemoveView(viewName);

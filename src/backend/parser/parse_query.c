@@ -133,7 +133,7 @@ addRangeTableEntry(ParseState *pstate,
     relation = heap_openr(relname);
     if (relation == NULL) {
 	elog(WARN,"%s: %s",
-	     relname, ACL_NO_PRIV_WARNING);
+	     relname, aclcheck_error_strings[ACLCHECK_NO_CLASS]);
     }
 
     /*
