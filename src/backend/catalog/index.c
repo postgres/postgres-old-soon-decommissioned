@@ -2175,12 +2175,12 @@ reindex_relation(Oid relid, bool force)
 	heap_endscan(scan);
 	heap_close(indexRelation, AccessShareLock);
 	if (reindexed)
+	{
 
 		/*
 		 * Ok,we could use the reindexed indexes of the target system
 		 * relation now.
 		 */
-	{
 		if (deactivate_needed)
 		{
 			if (!overwrite && relid == RelOid_pg_class)

@@ -40,7 +40,7 @@ typedef struct _CandidateList
 
 extern Node *ParseNestedFuncOrColumn(ParseState *pstate, Attr *attr,
 						int precedence);
-extern Node *ParseFuncOrColumn(ParseState *pstate,
+extern Node *ParseColumnOrFunc(ParseState *pstate,
 				  char *funcname, List *fargs,
 				  bool agg_star, bool agg_distinct,
 				  int precedence);
