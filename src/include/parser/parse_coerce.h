@@ -54,6 +54,9 @@ extern Oid	select_common_type(List *typeids, const char *context);
 extern Node *coerce_to_common_type(Node *node, Oid targetTypeId,
 					  const char *context);
 
+extern bool find_coercion_pathway(Oid targetTypeId, Oid sourceTypeId,
+								  CoercionContext ccontext,
+								  Oid *funcid);
 extern Oid	find_typmod_coercion_function(Oid typeId, int *nargs);
 
 #endif   /* PARSE_COERCE_H */

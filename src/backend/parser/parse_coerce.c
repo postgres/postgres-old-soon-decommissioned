@@ -32,9 +32,6 @@ static Node *coerce_type_typmod(Node *node,
 								Oid targetTypeId, int32 targetTypMod,
 								CoercionForm cformat);
 static Oid	PreferredType(CATEGORY category, Oid type);
-static bool find_coercion_pathway(Oid targetTypeId, Oid sourceTypeId,
-								  CoercionContext ccontext,
-								  Oid *funcid);
 static Node *build_func_call(Oid funcid, Oid rettype, List *args,
 							 CoercionForm fformat);
 
@@ -910,7 +907,7 @@ IsBinaryCoercible(Oid srctype, Oid targettype)
  * to the castfunc value (which may be InvalidOid for a binary-compatible
  * coercion).
  */
-static bool
+bool
 find_coercion_pathway(Oid targetTypeId, Oid sourceTypeId,
 					  CoercionContext ccontext,
 					  Oid *funcid)
