@@ -30,7 +30,7 @@ pg_dump: pg_dump.o common.o pg_dump_sort.o $(OBJS) $(libpq_builddir)/libpq.a
 pg_restore: pg_restore.o $(OBJS) $(libpq_builddir)/libpq.a
 	$(CC) $(CFLAGS) pg_restore.o $(OBJS) $(EXTRA_OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@
 
-pg_dumpall: pg_dumpall.o $(libpq_builddir)/libpq.a
+pg_dumpall: pg_dumpall.o dumputils.o $(libpq_builddir)/libpq.a
 	$(CC) $(CFLAGS) pg_dumpall.o dumputils.o $(EXTRA_OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@
 
 .PHONY: submake-backend
