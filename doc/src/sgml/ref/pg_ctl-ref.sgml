@@ -140,7 +140,8 @@ PostgreSQL documentation
   <para>
    <option>kill</option> mode allows you to send a signal to a specified
     process.  This is particularly valuable for <productname>MS Windows</>
-    which does not have a <application>kill</> command.
+    which does not have a <application>kill</> command.  Use 
+    <literal>--help</> to see a list of supported signal names.
   </para>
  </refsect1>
 
