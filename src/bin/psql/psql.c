@@ -805,15 +805,32 @@ HandleSlashCmds(PsqlSettings *settings,
 	char *cmd;
 	int i, numCmds;
 	int all_help = 0;
+	char left_center_right = 'L';
 
 	if (!optarg) {
 	    printf("type \\h <cmd> where <cmd> is one of the following:\n");
 	    i = 0;
 	    while (QL_HELP[i].cmd != NULL)
 	      {
-		printf("\t%s\n", QL_HELP[i].cmd);
+		switch(left_center_right)
+		{
+			case 'L':
+				printf("    %-25s", QL_HELP[i].cmd);
+				left_center_right = 'C';
+				break;
+			case 'C':
+				printf("%-25s", QL_HELP[i].cmd);
+				left_center_right = 'R';
+				break;
+			case 'R':
+				printf("%-25s\n", QL_HELP[i].cmd);
+				left_center_right = 'L';
+				break;
+	      	};
 		i++;
 	      }
+	     if (left_center_right != 'L')
+	     	puts("\n");
  	     printf("type \\h * for a complete description of all commands\n");
 	  }
 	else
