@@ -4359,6 +4359,10 @@ b_expr:  attr opt_indirection
 				}
 		| '-' b_expr %prec UMINUS
 				{	$$ = doNegate($2); }
+		| '%' b_expr
+				{	$$ = makeA_Expr(OP, "%", NULL, $2); }
+		| b_expr '%'
+				{	$$ = makeA_Expr(OP, "%", $1, NULL); }
 		| b_expr '+' b_expr
 				{	$$ = makeA_Expr(OP, "+", $1, $3); }
 		| b_expr '-' b_expr
