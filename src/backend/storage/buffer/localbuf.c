@@ -172,7 +172,7 @@ WriteLocalBuffer(Buffer buffer, bool release)
  *    flushes a local buffer
  */
 int
-FlushLocalBuffer(Buffer buffer)
+FlushLocalBuffer(Buffer buffer, bool release)
 {
     int bufid;
     Relation bufrel;
@@ -194,7 +194,8 @@ FlushLocalBuffer(Buffer buffer)
 	      (char *) MAKE_PTR(bufHdr->data));
 
     Assert(LocalRefCount[bufid] > 0);
-    LocalRefCount[bufid]--;
+    if ( release )
+    	LocalRefCount[bufid]--;
     
     return true;
 }
