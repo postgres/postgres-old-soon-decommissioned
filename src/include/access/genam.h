@@ -47,5 +47,6 @@ extern Datum GetIndexValue(HeapTuple tuple, TupleDesc hTupDesc,
 /* in genam.c */
 extern IndexScanDesc RelationGetIndexScan(Relation relation, bool scanFromEnd,
 					 uint16 numberOfKeys, ScanKey key);
+extern void IndexScanEnd(IndexScanDesc scan);
 
 #endif	 /* GENAM_H */

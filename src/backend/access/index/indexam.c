@@ -298,6 +298,9 @@ index_endscan(IndexScanDesc scan)
 	UnlockRelation(scan->relation, AccessShareLock);
 
 	RelationDecrementReferenceCount(scan->relation);
+
+	/* Release the scan data structure itself */
+	IndexScanEnd(scan);
 }
 
 /* ----------------

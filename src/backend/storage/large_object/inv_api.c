@@ -258,7 +258,6 @@ inv_close(LargeObjectDesc *obj_desc)
 	if (obj_desc->iscan != (IndexScanDesc) NULL)
 	{
 		index_endscan(obj_desc->iscan);
-		pfree(obj_desc->iscan);
 		obj_desc->iscan = NULL;
 	}
 
@@ -583,7 +582,6 @@ inv_cleanindex(LargeObjectDesc *obj_desc)
 		return;
 
 	index_endscan(obj_desc->iscan);
-	pfree(obj_desc->iscan);
 	obj_desc->iscan = (IndexScanDesc) NULL;
 
 	ItemPointerSetInvalid(&(obj_desc->htid));
@@ -1255,7 +1253,6 @@ _inv_getsize(Relation hreln, TupleDesc hdesc, Relation ireln)
 		if (res == (RetrieveIndexResult) NULL)
 		{
 			index_endscan(iscan);
-			pfree(iscan);
 			return 0;
 		}
 
@@ -1271,7 +1268,6 @@ _inv_getsize(Relation hreln, TupleDesc hdesc, Relation ireln)
 
 	/* don't need the index scan anymore */
 	index_endscan(iscan);
-	pfree(iscan);
 
 	/* get olastbyte attribute */
 	d = heap_getattr(&tuple, 1, hdesc, &isNull);

@@ -102,7 +102,6 @@ regprocin(char *pro_name_or_oid)
 			}
 
 			index_endscan(sd);
-			pfree(sd);
 			index_close(idesc);
 			heap_close(hdesc, AccessShareLock);
 

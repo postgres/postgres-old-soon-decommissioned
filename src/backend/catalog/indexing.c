@@ -266,7 +266,7 @@ CatalogIndexFetchTuple(Relation heapRelation,
 	}
 
 	index_endscan(sd);
-	pfree(sd);
+
 	return result;
 }
 
