@@ -198,13 +198,14 @@ tas(volatile slock_t *lock)
 asm int
 tas(slock_t *s_lock)
 {
-	%mem s_lock
-	pushl % ebx
+/* UNIVEL wants %mem in column 1, so we don't pg_indent this file */
+%mem s_lock
+	pushl %ebx
 	movl s_lock, %ebx
 	movl $255, %eax
 	lock
-	xchgb % al, (%ebx)
-	popl % ebx
+	xchgb %al, (%ebx)
+	popl %ebx
 }
 
 #endif	 /* USE_UNIVEL_CC */
