@@ -917,6 +917,12 @@ SlruScanDirectory(SlruCtl ctl, int cutoffPage, bool doDeletions)
 		}
 		errno = 0;
 	}
+#ifdef WIN32
+	/* This fix is in mingw cvs (runtime/mingwex/dirent.c rev 1.4), but
+	   not in released version */
+	if (GetLastError() == ERROR_NO_MORE_FILES)
+		errno = 0;
+#endif
 	if (errno)
 		ereport(ERROR,
 				(errcode_for_file_access(),
