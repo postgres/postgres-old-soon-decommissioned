@@ -24,6 +24,7 @@
 #include "commands/cluster.h"
 #include "commands/comment.h"
 #include "commands/copy.h"
+#include "commands/conversioncmds.h"
 #include "commands/dbcommands.h"
 #include "commands/defrem.h"
 #include "commands/explain.h"
@@ -318,6 +319,11 @@ ProcessUtility(Node *parsetree,
 						case DROP_DOMAIN:
 							/* RemoveDomain does its own permissions checks */
 							RemoveDomain(names, stmt->behavior);
+							break;
+
+						case DROP_CONVERSION:
+							/* RemoveDomain does its own permissions checks */
+							DropConversionCommand(names);
 							break;
 					}
 
@@ -820,6 +826,12 @@ ProcessUtility(Node *parsetree,
 						break;
 				}
 				break;
+			}
+			break;
+
+		case T_CreateConversionStmt:
+			{
+				CreateConversionCommand((CreateConversionStmt *) parsetree);
 			}
 			break;
 

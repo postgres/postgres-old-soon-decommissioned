@@ -12,7 +12,7 @@ include $(top_builddir)/src/Makefile.global
 
 OBJS = catalog.o heap.o index.o indexing.o namespace.o aclchk.o \
        pg_aggregate.o pg_largeobject.o pg_namespace.o \
-       pg_operator.o pg_proc.o pg_type.o
+       pg_operator.o pg_proc.o pg_type.o pg_conversion.o
 
 BKIFILES = postgres.bki postgres.description
 
@@ -31,7 +31,8 @@ POSTGRES_BKI_SRCS := $(addprefix $(top_srcdir)/src/include/catalog/,\
 	pg_operator.h pg_opclass.h pg_am.h pg_amop.h pg_amproc.h \
 	pg_language.h pg_largeobject.h pg_aggregate.h pg_statistic.h \
 	pg_rewrite.h pg_trigger.h pg_listener.h pg_description.h \
-	pg_namespace.h pg_database.h pg_shadow.h pg_group.h indexing.h \
+	pg_namespace.h pg_conversion.h pg_database.h pg_shadow.h pg_group.h \
+	indexing.h \
     )
 
 pg_includes := $(sort -I$(top_srcdir)/src/include -I$(top_builddir)/src/include)

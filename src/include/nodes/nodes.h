@@ -198,6 +198,7 @@ typedef enum NodeTag
 	T_CreateSchemaStmt,
 	T_AlterDatabaseSetStmt,
 	T_AlterUserSetStmt,
+	T_CreateConversionStmt,
 
 	T_A_Expr = 700,
 	T_ColumnRef,
