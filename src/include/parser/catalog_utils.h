@@ -31,7 +31,7 @@ extern bool tbyval(Type t);
 extern char *tname(Type t);
 extern int tbyvalue(Type t);
 extern Oid oprid(Operator op);
-extern Operator oper(char *op, Oid arg1, Oid arg2);
+extern Operator oper(char *op, Oid arg1, Oid arg2, bool noWarnings);
 extern Operator right_oper(char *op, Oid arg);
 extern Operator left_oper(char *op, Oid arg);
 extern int varattno(Relation rd, char *a);
