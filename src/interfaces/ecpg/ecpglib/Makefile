@@ -16,7 +16,8 @@ NAME= ecpg
 SO_MAJOR_VERSION= 4
 SO_MINOR_VERSION= 2
 
-override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include -I$(libpq_srcdir) $(CPPFLAGS) $(PTHREAD_CFLAGS) 
+override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include -I$(libpq_srcdir) $(CPPFLAGS)
+override CFLAGS += $(PTHREAD_CFLAGS)
 
 OBJS= execute.o typename.o descriptor.o data.o error.o prepare.o memory.o \
 	connect.o misc.o
