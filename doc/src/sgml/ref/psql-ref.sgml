@@ -671,8 +671,7 @@ testdb=>
      <listitem>
       <para>
        List the description from <literal>pg_description</literal>
-       of the specified object, which can be a
-       table, table.column, type, operator, or aggregate.
+       of the specified object.
       </para>
       <tip>
        <para>
