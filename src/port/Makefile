@@ -20,7 +20,7 @@ all: libpgport.a
 endif
 
 libpgport.a: $(LIBOBJS)
-	$(AR) crs $@ $^
+	$(AR) $(AROPT) $@ $^
 
 thread.o: thread.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(THREAD_CPPFLAGS) -c $<
