@@ -33,8 +33,8 @@
 /*
  * Names of indices on system catalogs
  */
-#define AttributeNameIndex "pg_attribute_mkoidname_index"
-#define AttributeNumIndex  "pg_attribute_mkoidint2_index"
+#define AttributeNameIndex "pg_attribute_relid_attnam_index"
+#define AttributeNumIndex  "pg_attribute_relid_attnum_index"
 #define AttributeRelidIndex "pg_attribute_attrelid_index"
 #define ProcedureOidIndex  "pg_proc_oid_index"
 #define ProcedureNameIndex "pg_proc_proname_index"
@@ -100,8 +100,8 @@ extern HeapTuple ClassOidIndexScan(Relation heapRelation, Oid relId);
  * The keyword is DECLARE_INDEX every thing after that is just like in a
  * normal specification of the 'define index' POSTQUEL command.
  */
-DECLARE_INDEX(pg_attribute_mkoidname_index on pg_attribute using btree(mkoidname(attrelid, attname) oidname_ops));
-DECLARE_INDEX(pg_attribute_mkoidint2_index on pg_attribute using btree(mkoidint2(attrelid, attnum) oidint2_ops));
+DECLARE_INDEX(pg_attribute_relid_attnam_index on pg_attribute using btree(mkoidname(attrelid, attname) oidname_ops));
+DECLARE_INDEX(pg_attribute_relid_attnum_index on pg_attribute using btree(mkoidint2(attrelid, attnum) oidint2_ops));
 DECLARE_INDEX(pg_attribute_attrelid_index on pg_attribute using btree(attrelid oid_ops));
 
 DECLARE_INDEX(pg_proc_oid_index on pg_proc using btree(oid oid_ops));

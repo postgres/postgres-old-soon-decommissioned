@@ -82,11 +82,16 @@ s...)
 		(((long)(LEN) + (sizeof (long) - 1)) & ~(sizeof (long) -1))
 #endif
 
+#if ! defined(sco)
 #define DOUBLEALIGN(LEN)\
 		(((long)(LEN) + (sizeof (double) - 1)) & ~(sizeof (double) -1))
 
 #define MAXALIGN(LEN)\
 		(((long)(LEN) + (sizeof (double) - 1)) & ~(sizeof (double) -1))
+#else
+#define DOUBLEALIGN(LEN) INTALIGN(LEN)
+#define MAXALIGN(LEN)    INTALIGN(LEN)
+#endif
 
 /*****************************************************************************
  *	  oset.h --			Fixed format ordered set definitions.				 *
