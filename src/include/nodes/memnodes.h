@@ -60,7 +60,9 @@ typedef struct MemoryContextData
 {
 	NodeTag		type;
 	MemoryContextMethods method;
-}		   *MemoryContext;
+}			MemoryContextData;
+
+/* utils/mcxt.h contains typedef struct MemoryContextData *MemoryContext */
 
 /* think about doing this right some time but we'll have explicit fields
    for now -ay 10/94 */
@@ -71,9 +73,11 @@ typedef struct GlobalMemoryData
 	AllocSetData setData;
 	char	   *name;
 	OrderedElemData elemData;
-}		   *GlobalMemory;
+}			GlobalMemoryData;
 
-typedef MemoryContext *PortalMemoryContext;
+/* utils/mcxt.h contains typedef struct GlobalMemoryData *GlobalMemory */
+
+typedef struct MemoryContextData *PortalMemoryContext;
 
 typedef struct PortalVariableMemoryData
 {

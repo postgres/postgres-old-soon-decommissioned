@@ -13,7 +13,14 @@
 #ifndef MCXT_H
 #define MCXT_H
 
-#include <nodes/memnodes.h>
+/* These types are declared in nodes/memnodes.h, but most users of memory
+ * allocation should just treat them as abstract types, so we do not provide
+ * the struct contents here.
+ */
+
+typedef struct MemoryContextData *MemoryContext;
+typedef struct GlobalMemoryData *GlobalMemory;
+
 
 extern MemoryContext CurrentMemoryContext;
 extern MemoryContext TopMemoryContext;

@@ -49,6 +49,7 @@
 #include	   "utils/mcxt.h"
 #endif	 /* !FRONTEND */
 #include	   "utils/palloc.h"
+#include	   "utils/memutils.h"
 
 /*
  * Fast arithmetic, relying on powers of 2,
