@@ -50,10 +50,9 @@ ifeq ($(USE_READLINE), true)
        endif
      endif
    endif
-   OBJS= psql.o stringutils.o  
-else
-   OBJS= psql.o stringutils.o  rlstubs.o
 endif
+
+OBJS= psql.o stringutils.o  
 
 ifeq ($(PORTNAME), ultrix4)
 OBJS+= ../../utils/strdup.o
