@@ -429,8 +429,10 @@ pqsecure_write(PGconn *conn, const void *ptr, size_t len)
 
 					if (n == -1)
 					{
+#ifdef ENABLE_THREAD_SAFETY
 						if (SOCK_ERRNO == EPIPE)
 							got_epipe = true;
+#endif
 						printfPQExpBuffer(&conn->errorMessage,
 								libpq_gettext("SSL SYSCALL error: %s\n"),
 						SOCK_STRERROR(SOCK_ERRNO, sebuf, sizeof(sebuf)));
