@@ -79,6 +79,15 @@ EXECUTE <replaceable class="PARAMETER">plan_name</replaceable> [ (<replaceable c
  </refsect1>
 
  <refsect1>
+  <title>Examples</>
+   <para>
+    Examples are given in the <xref linkend="sql-prepare-examples"
+    endterm="sql-prepare-examples-title"> section of the <xref
+    linkend="sql-prepare" endterm="sql-prepare-title"> documentation.
+   </para>
+ </refsect1>
+
+ <refsect1>
   <title>Compatibility</title>
 
   <para>
