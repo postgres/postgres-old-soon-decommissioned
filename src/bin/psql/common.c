@@ -332,6 +332,7 @@ AcceptResult(const PGresult *result)
 		{
 			case PGRES_COMMAND_OK:
 			case PGRES_TUPLES_OK:
+			case PGRES_EMPTY_QUERY:
 			case PGRES_COPY_IN:
 				/* Fine, do nothing */
 				break;
