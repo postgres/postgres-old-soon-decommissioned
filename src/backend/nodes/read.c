@@ -26,7 +26,7 @@
 
 /*
  * stringToNode -
- *	  returns a Node with a given legal ascii representation
+ *	  returns a Node with a given legal ASCII representation
  */
 void *
 stringToNode(char *str)

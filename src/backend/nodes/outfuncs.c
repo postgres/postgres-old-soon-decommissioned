@@ -1203,18 +1203,14 @@ _outDatum(StringInfo str, Datum value, Oid type)
 		s = (char *) (&value);
 		appendStringInfo(str, " %d [ ", length);
 		for (i = 0; i < sizeof(Datum); i++)
-		{
 			appendStringInfo(str, " %d ", (int) (s[i]));
-		}
 		appendStringInfo(str, "] ");
 	}
 	else
 	{							/* !byValue */
 		s = (char *) DatumGetPointer(value);
 		if (!PointerIsValid(s))
-		{
 			appendStringInfo(str, " 0 [ ] ");
-		}
 		else
 		{
 			/*

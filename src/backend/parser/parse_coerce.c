@@ -75,7 +75,6 @@ coerce_type(ParseState *pstate, Node *node, Oid inputTypeId, Oid targetTypeId)
 		 */
 		else if (inputTypeId != UNKNOWNOID)
 		{
-
 			/*
 			 * We already know there is a function which will do this, so
 			 * let's use it
