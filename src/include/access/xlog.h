@@ -176,6 +176,15 @@ extern	StartUpID	ThisStartUpID;	/* current SUI */
 extern	bool		InRecovery;
 extern	XLogRecPtr	MyLastRecPtr;
 
+/* these variables are GUC parameters related to XLOG */
+extern int CheckPointSegments;
+extern int XLOGbuffers;
+extern int XLOGfiles;
+extern int XLOG_DEBUG;
+extern char *XLOG_sync_method;
+extern const char XLOG_sync_method_default[];
+
+
 extern XLogRecPtr XLogInsert(RmgrId rmid, uint8 info, XLogRecData *rdata);
 extern void XLogFlush(XLogRecPtr RecPtr);
 
@@ -201,5 +210,8 @@ extern void GetRedoRecPtr(void);
  * we'd have to include xlog.h into that ...
  */
 extern XLogRecPtr GetUndoRecPtr(void);
+
+extern bool check_xlog_sync_method(const char *method);
+extern void assign_xlog_sync_method(const char *method);
 
 #endif	 /* XLOG_H */
