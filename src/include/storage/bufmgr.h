@@ -51,12 +51,13 @@ extern int32 *LocalRefCount;
  * These routines are beaten on quite heavily, hence the macroization.
  */
 
-#define BAD_BUFFER_ID(bid) ((bid) < 1 || (bid) > NBuffers)
-
 /*
  * BufferIsValid
  *		True iff the given buffer number is valid (either as a shared
  *		or local buffer).
+ *
+ * This is not quite the inverse of the BufferIsInvalid() macro, since this
+ * adds sanity rangechecks on the buffer number.
  *
  * Note: For a long time this was defined the same as BufferIsPinned,
  * that is it would say False if you didn't hold a pin on the buffer.
@@ -66,10 +67,9 @@ extern int32 *LocalRefCount;
  */
 #define BufferIsValid(bufnum) \
 ( \
-	BufferIsLocal(bufnum) ? \
-		((bufnum) >= -NLocBuffer) \
-	: \
-		(! BAD_BUFFER_ID(bufnum)) \
+	(bufnum) != InvalidBuffer && \
+	(bufnum) >= -NLocBuffer && \
+	(bufnum) <= NBuffers \
 )
 
 /*
@@ -81,15 +81,13 @@ extern int32 *LocalRefCount;
  */
 #define BufferIsPinned(bufnum) \
 ( \
-	BufferIsLocal(bufnum) ? \
-		((bufnum) >= -NLocBuffer && LocalRefCount[-(bufnum) - 1] > 0) \
+	!BufferIsValid(bufnum) ? \
+		false \
 	: \
-	( \
-		BAD_BUFFER_ID(bufnum) ? \
-			false \
+		BufferIsLocal(bufnum) ? \
+			(LocalRefCount[-(bufnum) - 1] > 0) \
 		: \
 			(PrivateRefCount[(bufnum) - 1] > 0) \
-	) \
 )
 
 /*

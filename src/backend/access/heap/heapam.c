@@ -1314,7 +1314,7 @@ heap_delete(Relation relation, ItemPointer tid,
 	tp.t_tableOid = relation->rd_id;
 
 l1:
-	result = HeapTupleSatisfiesUpdate(tp.t_data, cid);
+	result = HeapTupleSatisfiesUpdate(tp.t_data, cid, buffer);
 
 	if (result == HeapTupleInvisible)
 	{
@@ -1331,7 +1331,7 @@ l1:
 		XactLockTableWait(xwait);
 
 		LockBuffer(buffer, BUFFER_LOCK_EXCLUSIVE);
-		if (TransactionIdDidAbort(xwait))
+		if (!TransactionIdDidCommit(xwait))
 			goto l1;
 
 		/*
@@ -1356,7 +1356,7 @@ l1:
 	if (crosscheck != InvalidSnapshot && result == HeapTupleMayBeUpdated)
 	{
 		/* Perform additional check for serializable RI updates */
-		if (!HeapTupleSatisfiesSnapshot(tp.t_data, crosscheck))
+		if (!HeapTupleSatisfiesSnapshot(tp.t_data, crosscheck, buffer))
 			result = HeapTupleUpdated;
 	}
 
@@ -1543,7 +1543,7 @@ heap_update(Relation relation, ItemPointer otid, HeapTuple newtup,
 	 */
 
 l2:
-	result = HeapTupleSatisfiesUpdate(oldtup.t_data, cid);
+	result = HeapTupleSatisfiesUpdate(oldtup.t_data, cid, buffer);
 
 	if (result == HeapTupleInvisible)
 	{
@@ -1560,7 +1560,7 @@ l2:
 		XactLockTableWait(xwait);
 
 		LockBuffer(buffer, BUFFER_LOCK_EXCLUSIVE);
-		if (TransactionIdDidAbort(xwait))
+		if (!TransactionIdDidCommit(xwait))
 			goto l2;
 
 		/*
@@ -1585,7 +1585,7 @@ l2:
 	if (crosscheck != InvalidSnapshot && result == HeapTupleMayBeUpdated)
 	{
 		/* Perform additional check for serializable RI updates */
-		if (!HeapTupleSatisfiesSnapshot(oldtup.t_data, crosscheck))
+		if (!HeapTupleSatisfiesSnapshot(oldtup.t_data, crosscheck, buffer))
 			result = HeapTupleUpdated;
 	}
 
@@ -1871,7 +1871,7 @@ heap_mark4update(Relation relation, HeapTuple tuple, Buffer *buffer,
 	tuple->t_len = ItemIdGetLength(lp);
 
 l3:
-	result = HeapTupleSatisfiesUpdate(tuple->t_data, cid);
+	result = HeapTupleSatisfiesUpdate(tuple->t_data, cid, *buffer);
 
 	if (result == HeapTupleInvisible)
 	{
@@ -1888,7 +1888,7 @@ l3:
 		XactLockTableWait(xwait);
 
 		LockBuffer(*buffer, BUFFER_LOCK_EXCLUSIVE);
-		if (TransactionIdDidAbort(xwait))
+		if (!TransactionIdDidCommit(xwait))
 			goto l3;
 
 		/*

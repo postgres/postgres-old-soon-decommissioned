@@ -224,10 +224,15 @@ RI_FKey_check(PG_FUNCTION_ARGS)
 	 * We should not even consider checking the row if it is no longer
 	 * valid since it was either deleted (doesn't matter) or updated (in
 	 * which case it'll be checked with its final values).
+	 *
+	 * We do not know what buffer the new_row is in, but it doesn't matter
+	 * since it's not possible for a hint-bit update to occur here (the
+	 * new_row could only contain our own XID, and we haven't yet committed
+	 * or aborted...)
 	 */
 	if (new_row)
 	{
-		if (!HeapTupleSatisfiesItself(new_row->t_data))
+		if (!HeapTupleSatisfiesItself(new_row->t_data, InvalidBuffer))
 		{
 			heap_close(pk_rel, RowShareLock);
 			return PointerGetDatum(NULL);
