@@ -437,6 +437,15 @@ MYBOXES.description === box '((0,0), (1,1))'
     Refer to <command>DROP OPERATOR</command> to delete
     user-defined operators from a database.
    </para>
+
+   <para>
+    To give a schema-qualified operator name in <replaceable
+    class="parameter">com_op</replaceable> or the other optional
+    arguments, use the <literal>OPERATOR()</> syntax, for example
+<programlisting>
+   COMMUTATOR = OPERATOR(myschema.===) ,
+</programlisting>  
+   </para>
   </refsect2>
  </refsect1>
   

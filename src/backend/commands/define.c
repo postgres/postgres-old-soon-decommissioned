@@ -35,6 +35,7 @@
 #include <ctype.h>
 #include <math.h>
 
+#include "catalog/namespace.h"
 #include "commands/defrem.h"
 #include "parser/parse_type.h"
 #include "utils/int8.h"
@@ -86,6 +87,8 @@ defGetString(DefElem *def)
 			return strVal(def->arg);
 		case T_TypeName:
 			return TypeNameToString((TypeName *) def->arg);
+		case T_List:
+			return NameListToString((List *) def->arg);
 		default:
 			elog(ERROR, "Define: cannot interpret argument of \"%s\"",
 				 def->defname);
@@ -156,6 +159,8 @@ defGetQualifiedName(DefElem *def)
 	{
 		case T_TypeName:
 			return ((TypeName *) def->arg)->names;
+		case T_List:
+			return (List *) def->arg;
 		case T_String:
 			/* Allow quoted name for backwards compatibility */
 			return makeList1(def->arg);
@@ -168,6 +173,9 @@ defGetQualifiedName(DefElem *def)
 
 /*
  * Extract a TypeName from a DefElem.
+ *
+ * Note: we do not accept a List arg here, because the parser will only
+ * return a bare List when the name looks like an operator name.
  */
 TypeName *
 defGetTypeName(DefElem *def)
@@ -223,11 +231,14 @@ defGetTypeLength(DefElem *def)
 						   "variable") == 0)
 				return -1;		/* variable length */
 			break;
+		case T_List:
+			/* must be an operator name */
+			break;
 		default:
 			elog(ERROR, "Define: cannot interpret argument of \"%s\"",
 				 def->defname);
 	}
-	elog(ERROR, "Define: invalid argument for \"%s\"",
-		 def->defname);
+	elog(ERROR, "Define: invalid argument for \"%s\": \"%s\"",
+		 def->defname, defGetString(def));
 	return 0;					/* keep compiler quiet */
 }
