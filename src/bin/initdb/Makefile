@@ -28,3 +28,5 @@ install: initdb
 
 clean:
 	rm -f initdb
+
+dep:
