@@ -210,22 +210,30 @@ prune_oldrels(List *old_rels)
 {
 	Rel		   *rel;
 	List	   *joininfo_list,
-			   *xjoininfo;
+			   *xjoininfo,
+			   *i,
+			   *temp_list = NIL;
 
-	if (old_rels == NIL)
-		return (NIL);
-
-	rel = (Rel *) lfirst(old_rels);
-	joininfo_list = rel->joininfo;
-	if (joininfo_list == NIL)
-		return (lcons(rel, prune_oldrels(lnext(old_rels))));
-
-	foreach(xjoininfo, joininfo_list)
+	foreach(i, old_rels)
 	{
-		JInfo	   *joininfo = (JInfo *) lfirst(xjoininfo);
+		rel = (Rel *) lfirst(i);
+		joininfo_list = rel->joininfo;
 
-		if (!joininfo->inactive)
-			return (lcons(rel, prune_oldrels(lnext(old_rels))));
+		if (joininfo_list == NIL)
+			temp_list = lcons(rel, temp_list);
+		else
+		{
+			foreach(xjoininfo, joininfo_list)
+			{
+				JInfo	   *joininfo = (JInfo *) lfirst(xjoininfo);
+	
+				if (!joininfo->inactive)
+				{
+					temp_list = lcons(rel, temp_list);
+					break;
+				}
+			}
+		}
 	}
-	return (prune_oldrels(lnext(old_rels)));
+	return temp_list;		
 }
