@@ -509,17 +509,13 @@ typedef struct SubqueryScanState
  *		Function nodes are used to scan the results of a
  *		function appearing in FROM (typically a function returning set).
  *
- *		functionmode		function operating mode:
- *							- repeated call
- *							- materialize
- *							- return query
+ *		functionmode		function operating mode
  *		tupdesc				function's return tuple description
  *		tuplestorestate		private state of tuplestore.c
  *		funcexpr			function expression being evaluated
  *		returnsTuple		does function return tuples?
  *		fn_typeid			OID of function return type
- *		fn_typtype			return Datum type, i.e. 'b'ase,
- *							'c'atalog, or 'p'seudo
+ *		fn_typtype			return type's typtype
  * ----------------
  */
 typedef enum FunctionMode

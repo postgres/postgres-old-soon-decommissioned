@@ -193,9 +193,10 @@ init_sql_fcache(FmgrInfo *finfo)
 	 */
 	fcache->typlen = typeStruct->typlen;
 
-	if (typeStruct->typtype != 'c')
+	if (typeStruct->typtype != 'c' &&
+		procedureStruct->prorettype != RECORDOID)
 	{
-		/* The return type is not a relation, so just use byval */
+		/* The return type is not a composite type, so just use byval */
 		fcache->typbyval = typeStruct->typbyval;
 		fcache->returnsTuple = false;
 	}

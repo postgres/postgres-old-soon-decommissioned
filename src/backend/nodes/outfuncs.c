@@ -145,7 +145,7 @@ _outIndexStmt(StringInfo str, IndexStmt *node)
 static void
 _outNotifyStmt(StringInfo str, NotifyStmt *node)
 {
-	appendStringInfo(str, "NOTIFY :relation ");
+	appendStringInfo(str, " NOTIFY :relation ");
 	_outNode(str, node->relation);
 }
 
@@ -153,14 +153,14 @@ static void
 _outSelectStmt(StringInfo str, SelectStmt *node)
 {
 	/* XXX this is pretty durn incomplete */
-	appendStringInfo(str, "SELECT :where ");
+	appendStringInfo(str, " SELECT :where ");
 	_outNode(str, node->whereClause);
 }
 
 static void
 _outFuncCall(StringInfo str, FuncCall *node)
 {
-	appendStringInfo(str, "FUNCTION ");
+	appendStringInfo(str, " FUNCCALL ");
 	_outNode(str, node->funcname);
 	appendStringInfo(str, " :args ");
 	_outNode(str, node->args);
@@ -1006,7 +1006,7 @@ _outRangeTblEntry(StringInfo str, RangeTblEntry *node)
 		case RTE_FUNCTION:
 			appendStringInfo(str, ":funcexpr ");
 			_outNode(str, node->funcexpr);
-			appendStringInfo(str, ":coldeflist ");
+			appendStringInfo(str, " :coldeflist ");
 			_outNode(str, node->coldeflist);
 			break;
 		case RTE_JOIN:

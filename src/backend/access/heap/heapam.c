@@ -607,6 +607,9 @@ heap_open(Oid relationId, LOCKMODE lockmode)
 	else if (r->rd_rel->relkind == RELKIND_SPECIAL)
 		elog(ERROR, "%s is a special relation",
 			 RelationGetRelationName(r));
+	else if (r->rd_rel->relkind == RELKIND_COMPOSITE_TYPE)
+		elog(ERROR, "%s is a composite type",
+			 RelationGetRelationName(r));
 
 	pgstat_initstats(&r->pgstat_info, r);
 
@@ -633,6 +636,9 @@ heap_openrv(const RangeVar *relation, LOCKMODE lockmode)
 	else if (r->rd_rel->relkind == RELKIND_SPECIAL)
 		elog(ERROR, "%s is a special relation",
 			 RelationGetRelationName(r));
+	else if (r->rd_rel->relkind == RELKIND_COMPOSITE_TYPE)
+		elog(ERROR, "%s is a composite type",
+			 RelationGetRelationName(r));
 
 	pgstat_initstats(&r->pgstat_info, r);
 
@@ -658,6 +664,9 @@ heap_openr(const char *sysRelationName, LOCKMODE lockmode)
 			 RelationGetRelationName(r));
 	else if (r->rd_rel->relkind == RELKIND_SPECIAL)
 		elog(ERROR, "%s is a special relation",
+			 RelationGetRelationName(r));
+	else if (r->rd_rel->relkind == RELKIND_COMPOSITE_TYPE)
+		elog(ERROR, "%s is a composite type",
 			 RelationGetRelationName(r));
 
 	pgstat_initstats(&r->pgstat_info, r);

@@ -233,6 +233,7 @@ DefineType(List *names, List *parameters)
 				   typeNamespace,	/* namespace */
 				   InvalidOid,		/* preassigned type oid (not done here) */
 				   InvalidOid,		/* relation oid (n/a here) */
+				   0,				/* relation kind (ditto) */
 				   internalLength,	/* internal size */
 				   'b',				/* type-type (base type) */
 				   delimiter,		/* array element delimiter */
@@ -262,6 +263,7 @@ DefineType(List *names, List *parameters)
 			   typeNamespace,	/* namespace */
 			   InvalidOid,		/* preassigned type oid (not done here) */
 			   InvalidOid,		/* relation oid (n/a here) */
+			   0,				/* relation kind (ditto) */
 			   -1,				/* internal size */
 			   'b',				/* type-type (base type) */
 			   DEFAULT_TYPDELIM,	/* array element delimiter */
@@ -562,6 +564,7 @@ DefineDomain(CreateDomainStmt *stmt)
 				   domainNamespace,		/* namespace */
 				   InvalidOid,			/* preassigned type oid (none here) */
 				   InvalidOid,			/* relation oid (n/a here) */
+				   0,					/* relation kind (ditto) */
 				   internalLength,		/* internal size */
 				   'd',					/* type-type (domain type) */
 				   delimiter,			/* array element delimiter */

@@ -226,9 +226,6 @@ currtid_byreloid(PG_FUNCTION_ARGS)
 	if (rel->rd_rel->relkind == RELKIND_VIEW)
 		return currtid_for_view(rel, tid);
 
-	if (rel->rd_rel->relkind == RELKIND_COMPOSITE_TYPE)
-		elog(ERROR, "currtid can't handle type relations");
-
 	ItemPointerCopy(tid, result);
 	heap_get_latest_tid(rel, SnapshotNow, result);
 
@@ -251,9 +248,6 @@ currtid_byrelname(PG_FUNCTION_ARGS)
 	rel = heap_openrv(relrv, AccessShareLock);
 	if (rel->rd_rel->relkind == RELKIND_VIEW)
 		return currtid_for_view(rel, tid);
-
-	if (rel->rd_rel->relkind == RELKIND_COMPOSITE_TYPE)
-		elog(ERROR, "currtid can't handle type relations");
 
 	result = (ItemPointer) palloc(sizeof(ItemPointerData));
 	ItemPointerCopy(tid, result);

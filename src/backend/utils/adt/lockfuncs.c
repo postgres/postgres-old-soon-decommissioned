@@ -7,19 +7,19 @@
  * IDENTIFICATION
  *		$Header$
  */
-
 #include "postgres.h"
-#include "fmgr.h"
+
 #include "funcapi.h"
 #include "catalog/pg_type.h"
 #include "storage/lmgr.h"
 #include "storage/lock.h"
 #include "storage/lwlock.h"
 #include "storage/proc.h"
+#include "utils/builtins.h"
 
-Datum pg_lock_status(PG_FUNCTION_ARGS);
 
 static int next_lock(int locks[]);
+
 
 Datum
 pg_lock_status(PG_FUNCTION_ARGS)

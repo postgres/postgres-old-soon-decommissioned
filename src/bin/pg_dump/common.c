@@ -215,10 +215,9 @@ flagInhTables(TableInfo *tblinfo, int numTables,
 
 	for (i = 0; i < numTables; i++)
 	{
-		/* Sequences, views, and types never have parents */
+		/* Sequences and views never have parents */
 		if (tblinfo[i].relkind == RELKIND_SEQUENCE ||
-			tblinfo[i].relkind == RELKIND_VIEW ||
-			tblinfo[i].relkind == RELKIND_COMPOSITE_TYPE)
+			tblinfo[i].relkind == RELKIND_VIEW)
 			continue;
 
 		/* Don't bother computing anything for non-target tables, either */
@@ -270,10 +269,9 @@ flagInhAttrs(TableInfo *tblinfo, int numTables,
 
 	for (i = 0; i < numTables; i++)
 	{
-		/* Sequences, views, and types never have parents */
+		/* Sequences and views never have parents */
 		if (tblinfo[i].relkind == RELKIND_SEQUENCE ||
-			tblinfo[i].relkind == RELKIND_VIEW ||
-			tblinfo[i].relkind == RELKIND_COMPOSITE_TYPE)
+			tblinfo[i].relkind == RELKIND_VIEW)
 			continue;
 
 		/* Don't bother computing anything for non-target tables, either */

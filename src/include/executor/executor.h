@@ -123,7 +123,8 @@ extern void SetChangedParamList(Plan *node, List *newchg);
 
 typedef struct TupOutputState
 {
-	TupleDesc	tupdesc;
+	/* use "struct" here to allow forward reference */
+	struct AttInMetadata *metadata;
 	DestReceiver *destfunc;
 } TupOutputState;
 
@@ -132,10 +133,15 @@ extern void do_tup_output(TupOutputState *tstate, char **values);
 extern void do_text_output_multiline(TupOutputState *tstate, char *text);
 extern void end_tup_output(TupOutputState *tstate);
 
-#define PROJECT_LINE_OF_TEXT(tstate, text_to_project) \
+/*
+ * Write a single line of text given as a C string.
+ *
+ * Should only be used with a single-TEXT-attribute tupdesc.
+ */
+#define do_text_output_oneline(tstate, text_to_emit) \
 	do { \
 		char *values_[1]; \
-		values_[0] = (text_to_project); \
+		values_[0] = (text_to_emit); \
 		do_tup_output(tstate, values_); \
 	} while (0)
 

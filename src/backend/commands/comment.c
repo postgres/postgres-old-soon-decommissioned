@@ -362,7 +362,7 @@ CommentAttribute(List *qualname, char *comment)
 
 	/* Open the containing relation to ensure it won't go away meanwhile */
 	rel = makeRangeVarFromNameList(relname);
-	relation = heap_openrv(rel, AccessShareLock);
+	relation = relation_openrv(rel, AccessShareLock);
 
 	/* Check object security */
 
@@ -383,7 +383,7 @@ CommentAttribute(List *qualname, char *comment)
 
 	/* Done, but hold lock until commit */
 
-	heap_close(relation, NoLock);
+	relation_close(relation, NoLock);
 }
 
 /*

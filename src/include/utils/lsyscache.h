@@ -54,6 +54,7 @@ extern void get_typlenbyvalalign(Oid typid, int16 *typlen, bool *typbyval,
 extern char get_typstorage(Oid typid);
 extern Node *get_typdefault(Oid typid);
 extern char get_typtype(Oid typid);
+extern void getTypeInputInfo(Oid type, Oid *typInput, Oid *typElem);
 extern bool getTypeOutputInfo(Oid type, Oid *typOutput, Oid *typElem,
 							  bool *typIsVarlena);
 extern Oid getBaseType(Oid typid);

@@ -129,7 +129,8 @@ Oid
 TypeCreate(const char *typeName,
 		   Oid typeNamespace,
 		   Oid assignedTypeOid,
-		   Oid relationOid,			/* only for 'c'atalog typeTypes */
+		   Oid relationOid,			/* only for 'c'atalog typeType */
+		   char relationKind,		/* ditto */
 		   int16 internalSize,
 		   char typeType,
 		   char typDelim,
@@ -332,15 +333,11 @@ TypeCreate(const char *typeName,
 		 */
 		if (OidIsValid(relationOid))
 		{
-			Relation	rel = relation_open(relationOid, AccessShareLock);
-			char		relkind = rel->rd_rel->relkind;
-			relation_close(rel, AccessShareLock);
-
 			referenced.classId = RelOid_pg_class;
 			referenced.objectId = relationOid;
 			referenced.objectSubId = 0;
 
-			if (relkind != RELKIND_COMPOSITE_TYPE)
+			if (relationKind != RELKIND_COMPOSITE_TYPE)
 				recordDependencyOn(&myself, &referenced, DEPENDENCY_INTERNAL);
 			else
 				recordDependencyOn(&referenced, &myself, DEPENDENCY_INTERNAL);
