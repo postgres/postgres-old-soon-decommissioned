@@ -874,7 +874,7 @@ SELECT kind, sum(len) AS total FROM films GROUP BY kind;
 SELECT kind, sum(len) AS total
     FROM films
     GROUP BY kind
-    HAVING sum(len) < interval '5 hours';
+    HAVING sum(len) &lt; interval '5 hours';
 
    kind   | total
 ----------+-------

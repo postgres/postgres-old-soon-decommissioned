@@ -234,8 +234,8 @@ REINDEX INDEX my_index;
 $ <userinput>export PGOPTIONS="-P"</userinput>
 $ <userinput>psql broken_db</userinput>
 ...
-broken_db=> REINDEX DATABASE broken_db;
-broken_db=> \q
+broken_db=&gt; REINDEX DATABASE broken_db;
+broken_db=&gt; \q
 </programlisting>
   </para>
  </refsect1>
