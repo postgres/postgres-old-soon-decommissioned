@@ -190,8 +190,7 @@ ProcessPortal(char *portalName,
 	 *	do what is possible across transaction boundries. -hirohama
 	 * ----------------
 	 */
-	portalContext = (MemoryContext)
-		PortalGetHeapMemory(GetPortalByName(NULL));
+	portalContext = (MemoryContext) PortalGetHeapMemory(GetPortalByName(NULL));
 
 	MemoryContextSwitchTo(portalContext);
 

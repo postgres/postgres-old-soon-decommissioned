@@ -190,8 +190,7 @@ PerformPortalFetch(char *name,
 	 *	execute the portal fetch operation
 	 * ----------------
 	 */
-	PortalExecutorHeapMemory = (MemoryContext)
-		PortalGetHeapMemory(portal);
+	PortalExecutorHeapMemory = (MemoryContext) PortalGetHeapMemory(portal);
 
 	ExecutorRun(queryDesc, PortalGetState(portal), feature, 
 				(Node *)NULL, (Node *)&limcount);
