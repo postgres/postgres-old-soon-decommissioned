@@ -225,6 +225,7 @@ dopr(char *buffer, const char *format, va_list args, char *end)
 		if (*p == '%')			/* counts %% as two, so overcounts */
 			percents++;
 
+	/* Need to use malloc() because memory system might not be started yet. */
 	if ((fmtpar = malloc(sizeof(struct fmtpar) * percents)) == NULL)
 	{
 		fprintf(stderr, _("out of memory\n"));
