@@ -25,12 +25,15 @@
 #include <locale.h>
 #endif
 
-#if defined(__alpha) && !defined(linux) && !defined(__FreeBSD__)
+#if defined(__alpha) && !defined(linux) && !defined(__FreeBSD__) && !defined(__NetBSD__)
 #include <sys/sysinfo.h>
 #include "machine/hal_sysinfo.h"
 #define ASSEMBLER
 #include <sys/proc.h>
 #undef ASSEMBLER
+#endif
+#if defined(__NetBSD__)
+#include <sys/param.h>
 #endif
 
 #include "miscadmin.h"
