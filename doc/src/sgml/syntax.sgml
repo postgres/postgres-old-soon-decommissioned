@@ -965,6 +965,11 @@ SELECT 3 OPERATOR(pg_catalog.+) 4;
     place <literal>pg_catalog</> at the end of your search path if you
     prefer to have user-defined names override built-in names.
    </para>
+
+    <para>
+     The search path is determined by the GUC variable SEARCH_PATH and
+     may be changed at any time.  See <xref linkend="set-search-path">.
+    </para>
   </sect2>
 
   <sect2 id="sql-reserved-names">

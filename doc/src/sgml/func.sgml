@@ -5144,6 +5144,17 @@ SELECT NULLIF(value, '(none)') ...
     path returned.
    </para>
 
+   <para id=set-search-path xreflabel="SET SEARCH_PATH">
+    <indexterm>
+     <primary>search path</primary>
+     <secondary>changing at runtime</secondary>
+    </indexterm>
+    The search path may be altered by a runtime-alterable GUC setting.  The
+    command to use is <command>
+     SET SEARCH_PATH '<varname>schema</varname>'[,'<varname>schema</varname>']...
+    </command>
+   </para>
+
    <table>
     <title>System Information Functions</title>
     <tgroup cols="3">
