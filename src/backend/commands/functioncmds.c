@@ -745,8 +745,15 @@ CreateCast(CreateCastStmt *stmt)
 			elog(ERROR, "argument of cast function must match source data type");
 		if (procstruct->prorettype != targettypeid)
 			elog(ERROR, "return data type of cast function must match target data type");
+		/*
+		 * Restricting the volatility of a cast function may or may not be
+		 * a good idea in the abstract, but it definitely breaks many old
+		 * user-defined types.  Disable this check --- tgl 2/1/03
+		 */
+#ifdef NOT_USED
 		if (procstruct->provolatile == PROVOLATILE_VOLATILE)
 			elog(ERROR, "cast function must not be volatile");
+#endif
 		if (procstruct->proisagg)
 			elog(ERROR, "cast function must not be an aggregate function");
 		if (procstruct->proretset)
