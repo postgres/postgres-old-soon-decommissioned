@@ -69,7 +69,7 @@ ExplainQuery(ExplainStmt *stmt, CommandDest dest)
 	List	   *l;
 
 	/* need a tuple descriptor representing a single TEXT column */
-	tupdesc = CreateTemplateTupleDesc(1, WITHOUTOID);
+	tupdesc = CreateTemplateTupleDesc(1, false);
 	TupleDescInitEntry(tupdesc, (AttrNumber) 1, "QUERY PLAN",
 					   TEXTOID, -1, 0, false);
 

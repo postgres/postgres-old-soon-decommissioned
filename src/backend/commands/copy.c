@@ -597,10 +597,8 @@ CopyTo(Relation rel, List *attnumlist, bool binary, bool oids,
 			/* Send OID if wanted --- note fld_count doesn't include it */
 			if (oids)
 			{
-				Oid oid;
-				
-				AssertTupleDescHasOid(tupDesc);
-				oid = HeapTupleGetOid(tuple);
+				Oid oid = HeapTupleGetOid(tuple);
+
 				fld_size = sizeof(Oid);
 				CopySendData(&fld_size, sizeof(int16), fp);
 				CopySendData(&oid, sizeof(Oid), fp);
@@ -611,7 +609,6 @@ CopyTo(Relation rel, List *attnumlist, bool binary, bool oids,
 			/* Text format has no per-tuple header, but send OID if wanted */
 			if (oids)
 			{
-				AssertTupleDescHasOid(tupDesc);
 				string = DatumGetCString(DirectFunctionCall1(oidout,
 								ObjectIdGetDatum(HeapTupleGetOid(tuple))));
 				CopySendString(string, fp);

@@ -50,7 +50,7 @@ pg_lock_status(PG_FUNCTION_ARGS)
 
 		/* build tupdesc for result tuples */
 		/* this had better match pg_locks view in initdb.sh */
-		tupdesc = CreateTemplateTupleDesc(6, WITHOUTOID);
+		tupdesc = CreateTemplateTupleDesc(6, false);
 		TupleDescInitEntry(tupdesc, (AttrNumber) 1, "relation",
 						   OIDOID, -1, 0, false);
 		TupleDescInitEntry(tupdesc, (AttrNumber) 2, "database",

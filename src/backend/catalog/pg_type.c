@@ -267,7 +267,6 @@ TypeCreate(const char *typeName,
 
 		simple_heap_update(pg_type_desc, &tup->t_self, tup);
 
-		AssertTupleDescHasOid(pg_type_desc->rd_att);
 		typeObjectId = HeapTupleGetOid(tup);
 	}
 	else
@@ -279,7 +278,6 @@ TypeCreate(const char *typeName,
 							 nulls);
 
 		/* preassign tuple Oid, if one was given */
-		AssertTupleDescHasOid(tupDesc);
 		HeapTupleSetOid(tup, assignedTypeOid);
 
 		typeObjectId = simple_heap_insert(pg_type_desc, tup);

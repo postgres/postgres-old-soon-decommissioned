@@ -199,7 +199,6 @@ make_new_heap(Oid OIDOldHeap, const char *NewName)
 										  tupdesc,
 										  OldHeap->rd_rel->relkind,
 										  OldHeap->rd_rel->relisshared,
-										  OldHeap->rd_rel->relhasoids,
 										  allowSystemTableMods);
 
 	/*

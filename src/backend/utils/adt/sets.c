@@ -116,7 +116,6 @@ SetDefine(char *querystr, Oid elemType)
 
 		simple_heap_update(procrel, &newtup->t_self, newtup);
 
-		AssertTupleDescHasOid(procrel->rd_att);
 		setoid = HeapTupleGetOid(newtup);
 
 		CatalogUpdateIndexes(procrel, newtup);

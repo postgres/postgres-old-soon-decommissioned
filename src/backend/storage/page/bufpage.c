@@ -45,7 +45,7 @@ PageInit(Page page, Size pageSize, Size specialSize)
 	p->pd_lower = SizeOfPageHeaderData;
 	p->pd_upper = pageSize - specialSize;
 	p->pd_special = pageSize - specialSize;
-	PageSetPageSize(page, pageSize);
+	PageSetPageSizeAndVersion(page, pageSize, PG_PAGE_LAYOUT_VERSION);
 }
 
 

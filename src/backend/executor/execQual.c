@@ -997,7 +997,7 @@ ExecMakeTableFunctionResult(Expr *funcexpr,
 					/*
 					 * Scalar type, so make a single-column descriptor
 					 */
-					tupdesc = CreateTemplateTupleDesc(1, WITHOUTOID);
+					tupdesc = CreateTemplateTupleDesc(1, false);
 					TupleDescInitEntry(tupdesc,
 									   (AttrNumber) 1,
 									   "column",
@@ -2006,10 +2006,7 @@ ExecTargetList(List *targetlist,
 	 * natts = 0 to deal with it.
 	 */
 	if (targettype == NULL)
-	{
 		targettype = &NullTupleDesc;
-		targettype->tdhasoid = WITHOUTOID;
-	}
 
 	/*
 	 * allocate an array of char's to hold the "null" information only if

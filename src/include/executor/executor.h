@@ -122,7 +122,7 @@ extern void ExecInitScanTupleSlot(EState *estate,
 extern TupleTableSlot *ExecInitExtraTupleSlot(EState *estate);
 extern TupleTableSlot *ExecInitNullTupleSlot(EState *estate,
 					  TupleDesc tupType);
-extern TupleDesc ExecTypeFromTL(List *targetList, hasoid_t withoid);
+extern TupleDesc ExecTypeFromTL(List *targetList, bool hasoid);
 extern void SetChangedParamList(Plan *node, List *newchg);
 
 typedef struct TupOutputState

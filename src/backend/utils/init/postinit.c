@@ -98,7 +98,6 @@ ReverifyMyDatabase(const char *name)
 	pgdbscan = heap_beginscan(pgdbrel, SnapshotNow, 1, &key);
 
 	tup = heap_getnext(pgdbscan, ForwardScanDirection);
-	AssertTupleDescHasOid(pgdbrel->rd_att);
 	if (!HeapTupleIsValid(tup) ||
 		HeapTupleGetOid(tup) != MyDatabaseId)
 	{

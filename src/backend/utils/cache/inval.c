@@ -525,10 +525,7 @@ PrepareForTupleInvalidation(Relation relation, HeapTuple tuple,
 	tupleRelId = RelationGetRelid(relation);
 
 	if (tupleRelId == RelOid_pg_class)
-	{
-		AssertTupleDescHasOid(relation->rd_att);
 		relationId = HeapTupleGetOid(tuple);
-	}
 	else if (tupleRelId == RelOid_pg_attribute)
 		relationId = ((Form_pg_attribute) GETSTRUCT(tuple))->attrelid;
 	else

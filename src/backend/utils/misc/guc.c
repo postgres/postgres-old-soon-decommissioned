@@ -2288,7 +2288,7 @@ ShowGUCConfigOption(const char *name)
 	value = GetConfigOptionByName(name, &varname);
 
 	/* need a tuple descriptor representing a single TEXT column */
-	tupdesc = CreateTemplateTupleDesc(1, WITHOUTOID);
+	tupdesc = CreateTemplateTupleDesc(1, false);
 	TupleDescInitEntry(tupdesc, (AttrNumber) 1, (char *) varname,
 					   TEXTOID, -1, 0, false);
 
@@ -2314,7 +2314,7 @@ ShowAllGUCConfig(void)
 	char		  *values[2];
 
 	/* need a tuple descriptor representing two TEXT columns */
-	tupdesc = CreateTemplateTupleDesc(2, WITHOUTOID);
+	tupdesc = CreateTemplateTupleDesc(2, false);
 	TupleDescInitEntry(tupdesc, (AttrNumber) 1, "name",
 					   TEXTOID, -1, 0, false);
 	TupleDescInitEntry(tupdesc, (AttrNumber) 2, "setting",
@@ -2445,7 +2445,7 @@ show_all_settings(PG_FUNCTION_ARGS)
 		oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 		/* need a tuple descriptor representing two TEXT columns */
-		tupdesc = CreateTemplateTupleDesc(2, WITHOUTOID);
+		tupdesc = CreateTemplateTupleDesc(2, false);
 		TupleDescInitEntry(tupdesc, (AttrNumber) 1, "name",
 						   TEXTOID, -1, 0, false);
 		TupleDescInitEntry(tupdesc, (AttrNumber) 2, "setting",

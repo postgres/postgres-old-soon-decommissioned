@@ -541,7 +541,6 @@ ExecInitNullTupleSlot(EState *estate, TupleDesc tupType)
 
 	ExecSetSlotDescriptor(slot, tupType, false);
 
-	NullTupleDesc.tdhasoid = WITHOUTOID;
 	nullTuple = heap_formtuple(&NullTupleDesc, values, nulls);
 
 	return ExecStoreTuple(nullTuple, slot, InvalidBuffer, true);
@@ -559,7 +558,7 @@ ExecInitNullTupleSlot(EState *estate, TupleDesc tupType)
  * ----------------------------------------------------------------
  */
 TupleDesc
-ExecTypeFromTL(List *targetList, hasoid_t withoid)
+ExecTypeFromTL(List *targetList, bool hasoid)
 {
 	List	   *tlitem;
 	TupleDesc	typeInfo;
@@ -578,7 +577,7 @@ ExecTypeFromTL(List *targetList, hasoid_t withoid)
 	/*
 	 * allocate a new typeInfo
 	 */
-	typeInfo = CreateTemplateTupleDesc(len, withoid);
+	typeInfo = CreateTemplateTupleDesc(len, hasoid);
 
 	/*
 	 * scan list, generate type info for each entry
