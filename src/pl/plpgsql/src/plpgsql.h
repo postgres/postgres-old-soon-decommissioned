@@ -606,7 +606,7 @@ extern void plpgsql_dumptree(PLpgSQL_function * func);
  * Externs in gram.y and scan.l
  * ----------
  */
-extern PLpgSQL_expr *plpgsql_read_expression(int until, char *s);
+extern PLpgSQL_expr *plpgsql_read_expression(int until, const char *expected);
 extern int	plpgsql_yyparse(void);
 extern int	plpgsql_base_yylex(void);
 extern int	plpgsql_yylex(void);
