@@ -1145,7 +1145,7 @@ l1:
 	{
 		TransactionId xwait = tp.t_data->t_xmax;
 
-		/* sleep untill concurrent transaction ends */
+		/* sleep until concurrent transaction ends */
 		LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
 		XactLockTableWait(xwait);
 
