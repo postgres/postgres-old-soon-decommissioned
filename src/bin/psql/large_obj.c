@@ -328,9 +328,8 @@ do_lo_list(void)
 	printQueryOpt myopt = pset.popt;
 
 	strcpy(buf,
-	"SELECT DISTINCT loid as \"ID\",\n"
-		   "  obj_description(loid) as \"Description\"\n"
-		   "FROM pg_largeobject\n"
+	"SELECT loid as \"ID\", obj_description(loid) as \"Description\"\n"
+		   "FROM (SELECT DISTINCT loid FROM pg_largeobject) x\n"
 		   "ORDER BY \"ID\"");
 
 	res = PSQLexec(buf);
