@@ -40,7 +40,9 @@ qnx4/SUBSYS.o: qnx4.dir
 qnx4.dir:
 	$(MAKE) -C qnx4 all
 
-beos/SUBSYS.o:
+beos/SUBSYS.o: beos.dir
+
+beos.dir:
 	$(MAKE) -C beos all
 
 tas.o: tas.s
