@@ -35,7 +35,6 @@ WANTED_DIRS = \
 		spi		\
 		string		\
 		tips		\
-		unixdate	\
 		userlock	\
 		vacuumlo	
 
