@@ -20,7 +20,6 @@
 #define RESOWNER_H
 
 #include "storage/buf.h"
-#include "storage/lock.h"
 #include "utils/catcache.h"
 #include "utils/rel.h"
 
@@ -76,6 +75,7 @@ extern void ResourceOwnerRelease(ResourceOwner owner,
 								 bool isCommit,
 								 bool isTopLevel);
 extern void ResourceOwnerDelete(ResourceOwner owner);
+extern ResourceOwner ResourceOwnerGetParent(ResourceOwner owner);
 extern void ResourceOwnerNewParent(ResourceOwner owner,
 								   ResourceOwner newparent);
 extern void RegisterResourceReleaseCallback(ResourceReleaseCallback callback,
@@ -87,17 +87,6 @@ extern void UnregisterResourceReleaseCallback(ResourceReleaseCallback callback,
 extern void ResourceOwnerEnlargeBuffers(ResourceOwner owner);
 extern void ResourceOwnerRememberBuffer(ResourceOwner owner, Buffer buffer);
 extern void ResourceOwnerForgetBuffer(ResourceOwner owner, Buffer buffer);
-
-/* support for lock management */
-extern void ResourceOwnerEnlargeLocks(ResourceOwner owner);
-extern void ResourceOwnerRememberLock(ResourceOwner owner,
-									  LOCKTAG *locktag,
-									  TransactionId xid,
-									  LOCKMODE lockmode);
-extern void ResourceOwnerForgetLock(ResourceOwner owner,
-									LOCKTAG *locktag,
-									TransactionId xid,
-									LOCKMODE lockmode);
 
 /* support for catcache refcount management */
 extern void ResourceOwnerEnlargeCatCacheRefs(ResourceOwner owner);

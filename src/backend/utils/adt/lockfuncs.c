@@ -92,7 +92,7 @@ pg_lock_status(PG_FUNCTION_ARGS)
 		LOCK	   *lock;
 		PGPROC	   *proc;
 		bool		granted;
-		LOCKMODE	mode;
+		LOCKMODE	mode = 0;
 		Datum		values[6];
 		char		nulls[6];
 		HeapTuple	tuple;
@@ -108,13 +108,16 @@ pg_lock_status(PG_FUNCTION_ARGS)
 		 * report again.
 		 */
 		granted = false;
-		for (mode = 0; mode < MAX_LOCKMODES; mode++)
+		if (proclock->holdMask)
 		{
-			if (proclock->holding[mode] > 0)
+			for (mode = 0; mode < MAX_LOCKMODES; mode++)
 			{
-				granted = true;
-				proclock->holding[mode] = 0;
-				break;
+				if (proclock->holdMask & LOCKBIT_ON(mode))
+				{
+					granted = true;
+					proclock->holdMask &= LOCKBIT_OFF(mode);
+					break;
+				}
 			}
 		}
 
