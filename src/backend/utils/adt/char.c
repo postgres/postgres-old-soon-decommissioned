@@ -124,7 +124,7 @@ char16out(char *s)
 		result[1] = '\0';
 	}
 	else
-		StrNCpy(result, s, 16);
+		StrNCpy(result, s, 17);
 	return (result);
 }
 
