@@ -70,12 +70,17 @@ pqStrerror(int errnum, char *strerrbuf, size_t buflen)
 {
 #if defined(FRONTEND) && defined(ENABLE_THREAD_SAFETY) && defined(HAVE_STRERROR_R)
 	/* reentrant strerror_r is available */
-	/* some early standards had strerror_r returning char * */
-	strerror_r(errnum, strerrbuf, buflen);
-	return strerrbuf;
-
+#ifdef STRERROR_R_INT
+	/* SUSv3 version */
+	if (strerror_r(errnum, strerrbuf, buflen) == 0)
+		return strerrbuf;
+	else
+		return NULL;
 #else
-
+	/* GNU libc */
+	return strerror_r(errnum, strerrbuf, buflen);
+#endif
+#else
 	/* no strerror_r() available, just use strerror */
 	StrNCpy(strerrbuf, strerror(errnum), buflen);
 

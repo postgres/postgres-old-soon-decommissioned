@@ -96,6 +96,23 @@ fi
 ])# PGAC_FUNC_GETPWUID_R_5ARG
 
 
+# PGAC_FUNC_STRERROR_R_INT
+# ---------------------------
+# Check if strerror_r() returns an int (SUSv3) rather than a char * (GNU libc)
+# If so, define STRERROR_R_INT
+AC_DEFUN([PGAC_FUNC_STRERROR_R_INT],
+[AC_CACHE_CHECK(whether strerror_r returns int,
+pgac_func_strerror_r_int,
+[AC_TRY_COMPILE([#include <string.h>],
+[int strerror_r(int, char *, size_t);],
+[pgac_func_strerror_r_int=yes],
+[pgac_func_strerror_r_int=no])])
+if test x"$pgac_func_strerror_r_int" = xyes ; then
+  AC_DEFINE(STRERROR_R_INT,, [Define to 1 if strerror_r() returns a int.])
+fi
+])# PGAC_FUNC_STRERROR_R_INT
+
+
 # PGAC_UNION_SEMUN
 # ----------------
 # Check if `union semun' exists. Define HAVE_UNION_SEMUN if so.

@@ -993,6 +993,7 @@ CFLAGS="$_CFLAGS"
 LIBS="$_LIBS"
 
 PGAC_FUNC_GETPWUID_R_5ARG
+PGAC_FUNC_STRERROR_R_INT
 
 else
 # do not use values from template file
