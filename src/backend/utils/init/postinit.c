@@ -374,9 +374,9 @@ InitPostgres(const char *dbname, const char *username)
 	 * user id.
 	 */
 	if (bootstrap)
-		SetUserId(geteuid());
+		SetSessionUserId(geteuid());
 	else
-		SetUserIdFromUserName(username);
+		SetSessionUserIdFromUserName(username);
 
 	setuid(geteuid());
 

@@ -348,7 +348,7 @@ AlterUser(AlterUserStmt *stmt)
 	/* must be superuser or just want to change your own password */
 	if (!superuser() &&
 	  !(stmt->createdb == 0 && stmt->createuser == 0 && !stmt->validUntil
-		&& stmt->password && strcmp(GetPgUserName(), stmt->user) == 0))
+		&& stmt->password && strcmp(GetUserName(GetUserId()), stmt->user) == 0))
 		elog(ERROR, "ALTER USER: permission denied");
 
 	/* changes to the flat password file cannot be rolled back */

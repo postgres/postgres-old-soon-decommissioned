@@ -4993,7 +4993,7 @@ c_expr:  attr
 		| CURRENT_USER
 				{
 					FuncCall *n = makeNode(FuncCall);
-					n->funcname = "getpgusername";
+					n->funcname = "current_user";
 					n->args = NIL;
 					n->agg_star = FALSE;
 					n->agg_distinct = FALSE;
@@ -5002,7 +5002,7 @@ c_expr:  attr
 		| SESSION_USER
 				{
 					FuncCall *n = makeNode(FuncCall);
-					n->funcname = "getpgusername";
+					n->funcname = "session_user";
 					n->args = NIL;
 					n->agg_star = FALSE;
 					n->agg_distinct = FALSE;
@@ -5011,7 +5011,7 @@ c_expr:  attr
 		| USER
 				{
 					FuncCall *n = makeNode(FuncCall);
-					n->funcname = "getpgusername";
+					n->funcname = "current_user";
 					n->args = NIL;
 					n->agg_star = FALSE;
 					n->agg_distinct = FALSE;

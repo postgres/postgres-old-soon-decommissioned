@@ -212,11 +212,6 @@ $Header$
      </thead>
      <tbody>
       <row>
-       <entry>getpgusername()</entry>
-       <entry>current_user</entry>
-       <entry>user name in current session</entry>
-      </row>
-      <row>
        <entry>date('now')</entry>
        <entry>current_date</entry>
        <entry>date of current transaction</entry>
