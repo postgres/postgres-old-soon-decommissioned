@@ -1023,6 +1023,12 @@ plpgsql_dumptree(PLpgSQL_function * func)
 					   ((PLpgSQL_recfield *) d)->fieldname,
 					   ((PLpgSQL_recfield *) d)->recparentno);
 				break;
+			case PLPGSQL_DTYPE_ARRAYELEM:
+				printf("ARRAYELEM of VAR %d subscript ", 
+					   ((PLpgSQL_arrayelem *) d)->arrayparentno);
+				dump_expr(((PLpgSQL_arrayelem *) d)->subscript);
+				printf("\n");
+				break;
 			case PLPGSQL_DTYPE_TRIGARG:
 				printf("TRIGARG ");
 				dump_expr(((PLpgSQL_trigarg *) d)->argnum);

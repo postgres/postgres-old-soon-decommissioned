@@ -72,6 +72,7 @@ enum
 	PLPGSQL_DTYPE_ROW,
 	PLPGSQL_DTYPE_REC,
 	PLPGSQL_DTYPE_RECFIELD,
+	PLPGSQL_DTYPE_ARRAYELEM,
 	PLPGSQL_DTYPE_EXPR,
 	PLPGSQL_DTYPE_TRIGARG
 };
@@ -154,7 +155,8 @@ typedef struct
 
 /*
  * PLpgSQL_datum is the common supertype for PLpgSQL_expr, PLpgSQL_var,
- * PLpgSQL_row, PLpgSQL_rec, PLpgSQL_recfield, PLpgSQL_trigarg
+ * PLpgSQL_row, PLpgSQL_rec, PLpgSQL_recfield, PLpgSQL_arrayelem, and
+ * PLpgSQL_trigarg
  */
 typedef struct
 {								/* Generic datum array item		*/
@@ -231,8 +233,17 @@ typedef struct
 	int			dtype;
 	int			rfno;
 	char	   *fieldname;
-	int			recparentno;	/* recno of parent record */
+	int			recparentno;	/* dno of parent record */
 }	PLpgSQL_recfield;
+
+
+typedef struct
+{								/* Element of array variable */
+	int			dtype;
+	int			dno;
+	PLpgSQL_expr *subscript;
+	int			arrayparentno;	/* dno of parent array variable */
+}	PLpgSQL_arrayelem;
 
 
 typedef struct
