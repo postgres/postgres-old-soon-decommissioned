@@ -1521,7 +1521,6 @@ $PostgreSQL$
     <listitem>
      <para>
       Remove alternate database locations using initlocation (Tom)
-      (fix dbsize and oidname)
      </para>
     </listitem>
 
