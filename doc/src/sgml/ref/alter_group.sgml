@@ -45,7 +45,7 @@ ALTER GROUP <replaceable class="PARAMETER">groupname</replaceable> RENAME TO <re
  </refsect1>
 
  <refsect1>
-  <title>Parameter</title>
+  <title>Parameters</title>
 
   <variablelist>
    <varlistentry>

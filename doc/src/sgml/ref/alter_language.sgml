@@ -35,7 +35,7 @@ ALTER LANGUAGE <replaceable>name</replaceable> RENAME TO <replaceable>newname</r
  </refsect1>
 
  <refsect1>
-  <title>Parameter</title>
+  <title>Parameters</title>
 
   <variablelist>
    <varlistentry>
