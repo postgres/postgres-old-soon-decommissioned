@@ -36,6 +36,8 @@ extern Snapshot SnapshotDirty;
 extern Snapshot QuerySnapshot;
 extern Snapshot SerializableSnapshot;
 
+extern bool ReferentialIntegritySnapshotOverride;
+
 #define IsSnapshotNow(snapshot)		((Snapshot) snapshot == SnapshotNow)
 #define IsSnapshotSelf(snapshot)	((Snapshot) snapshot == SnapshotSelf)
 #define IsSnapshotAny(snapshot)		((Snapshot) snapshot == SnapshotAny)
