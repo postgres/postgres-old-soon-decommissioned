@@ -26,6 +26,11 @@
 #ifndef MEMUTILS_H
 #define MEMUTILS_H
 
+/*
+ *	This is not needed by this include file, but by almost every file
+ *	that includes this file.
+ */
+#include "utils/mcxt.h"
 
 /* ----------------
  * Alignment macros: align a length or address appropriately for a given type.

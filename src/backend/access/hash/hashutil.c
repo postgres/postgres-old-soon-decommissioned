@@ -18,6 +18,7 @@
 #include <fmgr.h>
 #include <utils/memutils.h>
 #include <access/iqual.h>
+#include <utils/mcxt.h>
 
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>

@@ -62,6 +62,7 @@
 #include "fmgr.h"
 #include "utils/builtins.h"		/* for ftod() prototype */
 #include "utils/palloc.h"
+#include "utils/mcxt.h"
 
 #ifndef NAN
 #define NAN		(0.0/0.0)

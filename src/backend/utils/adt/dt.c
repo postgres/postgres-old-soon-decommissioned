@@ -30,7 +30,7 @@
 #include <sys/timeb.h>
 #endif
 #include "utils/builtins.h"
-
+#include "utils/mcxt.h"
 
 static int	DecodeDate(char *str, int fmask, int *tmask, struct tm * tm);
 static int DecodeNumber(int flen, char *field,

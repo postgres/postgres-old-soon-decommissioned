@@ -23,6 +23,7 @@
 
 #include "utils/geo_decls.h"
 #include "utils/palloc.h"
+#include "utils/mcxt.h"
 
 #ifndef PI
 #define PI 3.1415926536

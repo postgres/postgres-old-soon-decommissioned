@@ -20,6 +20,8 @@
 #include <storage/bufpage.h>
 #include <access/rtree.h>
 #include <access/rtstrat.h>
+#include <utils/mcxt.h>
+
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>
 #else

@@ -13,6 +13,9 @@
 #ifndef PARSE_COERCE_H
 #define PARSE_COERCE_H
 
+#include "nodes/pg_list.h"
+#include "parser/parse_node.h"
+
 typedef enum CATEGORY
 {
 	INVALID_TYPE,

@@ -51,6 +51,7 @@
 #include "optimizer/geqo_recombination.h"
 #include "optimizer/geqo_random.h"
 
+#include "utils/mcxt.h"
 
 static int	gimme_edge(Gene gene1, Gene gene2, Edge *edge_table);
 static void remove_gene(Gene gene, Edge edge, Edge *edge_table);

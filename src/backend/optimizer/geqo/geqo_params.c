@@ -45,6 +45,8 @@
 
 #include "storage/fd.h"
 
+#include "utils/mcxt.h"
+
 /*
  * Parameter values read from the config file (or defaulted) are stored here
  * by geqo_params().

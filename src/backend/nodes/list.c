@@ -28,6 +28,7 @@
 #include "utils/builtins.h"		/* for namecpy */
 #include "utils/elog.h"
 #include "utils/palloc.h"
+#include "utils/mcxt.h"
 
 /*
  *	makeList

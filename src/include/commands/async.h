@@ -12,8 +12,6 @@
 #ifndef ASYNC_H
 #define ASYNC_H
 
-#include <postgres.h>
-
 /* notify-related SQL statements */
 extern void Async_Notify(char *relname);
 extern void Async_Listen(char *relname, int pid);

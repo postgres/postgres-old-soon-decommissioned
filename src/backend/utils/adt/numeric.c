@@ -23,7 +23,7 @@
 #include "utils/builtins.h"
 #include "utils/palloc.h"
 #include "utils/numeric.h"
-
+#include "utils/mcxt.h"
 
 /* ----------
  * Uncomment the following to enable compilation of dump_numeric()

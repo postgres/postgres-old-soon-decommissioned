@@ -42,6 +42,7 @@
 #include "utils/builtins.h"		/* where function declarations go */
 #include "utils/palloc.h"
 #include "utils/dt.h"
+#include "utils/mcxt.h"
 
 #define INVALID_RELTIME_STR		"Undefined RelTime"
 #define INVALID_RELTIME_STR_LEN (sizeof(INVALID_RELTIME_STR)-1)

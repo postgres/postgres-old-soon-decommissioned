@@ -41,6 +41,7 @@
 #include "optimizer/geqo_copy.h"
 #include "optimizer/geqo_recombination.h"
 
+#include "utils/mcxt.h"
 
 static int	compare(const void *arg1, const void *arg2);
 

@@ -13,9 +13,6 @@
 #ifndef _PG_NUMERIC_H_
 #define _PG_NUMERIC_H_
 
-#include "postgres.h"
-
-
 /* ----------
  * The hardcoded limits and defaults of the numeric data type
  * ----------

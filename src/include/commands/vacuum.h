@@ -13,11 +13,13 @@
 #ifndef VACUUM_H
 #define VACUUM_H
 
+#include "fmgr.h"
 #include "access/funcindex.h"
 #include "catalog/pg_index.h"
 #include "catalog/pg_attribute.h"
 #include "nodes/pg_list.h"
 #include "storage/block.h"
+#include "storage/itemptr.h"
 #include "storage/off.h"
 
 

@@ -20,6 +20,7 @@
 #include <access/heapam.h>
 #include <access/xact.h>
 #include <fmgr.h>
+#include <utils/mcxt.h>
 
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>

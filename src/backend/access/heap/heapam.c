@@ -88,6 +88,8 @@
 #include <access/xact.h>
 #include <utils/inval.h>
 #include <utils/memutils.h>
+#include <utils/builtins.h>
+#include <utils/mcxt.h>
 
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>

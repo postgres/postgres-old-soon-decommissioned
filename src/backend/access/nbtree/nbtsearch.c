@@ -19,6 +19,7 @@
 #include <storage/bufpage.h>
 #include <access/nbtree.h>
 #include <catalog/pg_proc.h>
+#include <utils/mcxt.h>
 
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>

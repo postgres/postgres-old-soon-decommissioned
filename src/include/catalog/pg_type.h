@@ -18,8 +18,6 @@
 #ifndef PG_TYPE_H
 #define PG_TYPE_H
 
-#include <utils/rel.h>
-
 /* ----------------
  *		postgres.h contains the system type definitions and the
  *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file

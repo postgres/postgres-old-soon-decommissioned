@@ -13,6 +13,7 @@
 #ifndef DBCOMMANDS_H
 #define DBCOMMANDS_H
 
+#include "tcop/dest.h"
 /*
  * Originally from tmp/daemon.h. The functions declared in daemon.h does not
  * exist; hence removed.		-- AY 7/29/94

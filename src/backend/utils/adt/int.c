@@ -37,6 +37,7 @@
 #include "postgres.h"
 #include "fmgr.h"
 #include "utils/builtins.h"		/* where the declarations go */
+#include "utils/mcxt.h"
 
 #ifndef SHRT_MAX
 #define SHRT_MAX (0x7FFF)

@@ -13,8 +13,6 @@
 #ifndef PALLOC_H
 #define PALLOC_H
 
-#include "c.h"
-
 #ifdef PALLOC_IS_MALLOC
 
 #define palloc(s)	  malloc(s)
@@ -27,8 +25,6 @@
  * In the case we use memory contexts, use macro's for palloc() etc.
  * ----------
  */
-#include "utils/mcxt.h"
-
 #define palloc(s)	  ((void *)MemoryContextAlloc(CurrentMemoryContext,(Size)(s)))
 #define pfree(p)	  MemoryContextFree(CurrentMemoryContext,(Pointer)(p))
 #define repalloc(p,s) ((void *)MemoryContextRealloc(CurrentMemoryContext,(Pointer)(p),(Size)(s)))

@@ -21,6 +21,7 @@
 #include "postgres.h"
 #include <miscadmin.h>
 #include "utils/builtins.h"		/* where function declarations go */
+#include "utils/mcxt.h"
 
 char *
 filename_in(char *file)

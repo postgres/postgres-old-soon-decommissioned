@@ -22,6 +22,7 @@
 #include "miscadmin.h"
 #include "utils/builtins.h"
 #include "utils/cash.h"
+#include "utils/mcxt.h"
 
 static const char *num_word(Cash value);
 

@@ -17,6 +17,7 @@
 
 #include "utils/builtins.h"		/* where the declarations go */
 #include "utils/palloc.h"
+#include "utils/mcxt.h"
 
 /*****************************************************************************
  *	 USER I/O ROUTINES														 *

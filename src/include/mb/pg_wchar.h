@@ -4,8 +4,6 @@
 #define PG_WCHAR_H
 
 #include <sys/types.h>
-#include "postgres.h"
-#include "miscadmin.h"			/* for getdatabaseencoding() */
 
 #define SQL_ASCII 0				/* SQL/ASCII */
 #define EUC_JP 1				/* EUC for Japanese */

@@ -13,8 +13,7 @@
 
 #include <netinet/in.h>
 
-#include "libpq/libpq-be.h"
-
+#include "libpq/pqcomm.h"
 
 #define CONF_FILE "pg_hba.conf"
  /* Name of the config file  */

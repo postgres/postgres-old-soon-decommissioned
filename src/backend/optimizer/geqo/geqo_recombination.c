@@ -38,6 +38,7 @@
 #include "optimizer/geqo_recombination.h"
 #include "optimizer/geqo_random.h"
 
+#include "utils/mcxt.h"
 
 /*
  * init_tour

@@ -52,6 +52,7 @@
 #include "utils/palloc.h"
 #include "storage/fd.h"
 #include "utils/elog.h"
+#include "utils/mcxt.h"
 
 /*
  * Problem: Postgres does a system(ld...) to do dynamic loading.

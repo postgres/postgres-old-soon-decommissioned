@@ -19,8 +19,8 @@
 #include "postgres.h"
 #include "utils/palloc.h"
 #include "utils/elog.h"
-#include "nodes/nodes.h"		/* where func declarations of this file
-								 * goes */
+#include "nodes/nodes.h"
+#include "utils/mcxt.h"
 
 /*
  * newNode -

@@ -13,8 +13,6 @@
 #ifndef EXECDEBUG_H
 #define EXECDEBUG_H
 
-#include "access/printtup.h"
-
 /* ----------------------------------------------------------------
  *		debugging defines.
  *
@@ -318,8 +316,6 @@ extern int	NIndexTupleInserted;
  * ----------------
  */
 #ifdef EXEC_MERGEJOINDEBUG
-
-#include "nodes/print.h"
 
 #define MJ_nodeDisplay(l)				nodeDisplay(l)
 #define MJ_printf(s)					printf(s)

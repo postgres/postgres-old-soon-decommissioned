@@ -15,6 +15,7 @@
 #include "postgres.h"
 #include "version.h"
 
+#include "utils/mcxt.h"
 
 text	   *version(void);
 

@@ -10,6 +10,7 @@
 #ifndef SPI_PRIV_H
 #define SPI_PRIV_H
 
+#include "executor/spi.h"
 #include "catalog/pg_type.h"
 #include "access/printtup.h"
 

@@ -13,20 +13,6 @@
 #ifndef VALID_H
 #define VALID_H
 
-#include <fmgr.h>
-#include <access/heapam.h>
-#include <access/valid.h>
-#include <storage/bufmgr.h>
-#include <storage/bufpage.h>
-#include <utils/rel.h>
-#include <utils/builtins.h>
-#include <utils/tqual.h>
-
-/* ----------------
- *		extern decl's
- * ----------------
- */
-
 /* ----------------
  *		HeapKeyTest
  *
