@@ -444,6 +444,10 @@ index_getnext(IndexScanDesc scan, ScanDirection direction)
 					   &scan->xs_pgstat_info))
 			break;
 
+		/* Skip if no tuple at this location */
+		if (heapTuple->t_data == NULL)
+			continue;			/* should we raise an error instead? */
+
 		/*
 		 * If we can't see it, maybe no one else can either.  Check to see
 		 * if the tuple is dead to all transactions.  If so, signal the

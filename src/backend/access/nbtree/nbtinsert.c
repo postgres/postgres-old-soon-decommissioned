@@ -248,7 +248,7 @@ _bt_check_unique(Relation rel, BTItem btitem, Relation heapRel,
 					elog(ERROR, "Cannot insert a duplicate key into unique index %s",
 						 RelationGetRelationName(rel));
 				}
-				else
+				else if (htup.t_data != NULL)
 				{
 					/*
 					 * Hmm, if we can't see the tuple, maybe it can be
