@@ -34,7 +34,7 @@
  * %d0. So if a function pointer is declared to return a pointer, the
  * compiler may look only into %a0, but if the called function was declared
  * to return an integer type, it puts its value only into %d0. So the
- * caller doesn't pink up the correct return value. The solution is to
+ * caller doesn't pick up the correct return value. The solution is to
  * declare the function pointer to return int, so the compiler picks up the
  * return value from %d0. (Functions returning pointers put their value
  * *additionally* into %d0 for compatibility.) The price is that there are

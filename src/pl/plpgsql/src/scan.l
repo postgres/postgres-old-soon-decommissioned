@@ -118,7 +118,7 @@ dolqinside		[^$]+
 
     /* ----------
      * On the first call to a new source report the
-     * functions type (T_FUNCTION or T_TRIGGER)
+     * function's type (T_FUNCTION or T_TRIGGER)
      * ----------
      */
 	if (!scanner_typereported)
