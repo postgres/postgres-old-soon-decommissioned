@@ -31,6 +31,7 @@
 #include <string.h>
 #include <sys/file.h>
 #include <sys/types.h>
+#include <sys/ipc.h>
 #include <math.h>
 
 #include "postgres.h"

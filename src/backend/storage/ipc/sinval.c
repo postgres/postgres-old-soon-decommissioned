@@ -13,6 +13,8 @@
  */
 /* #define INVALIDDEBUG	1 */
 
+#include <sys/ipc.h>
+
 #include "postgres.h"
 
 #include "storage/sinval.h"

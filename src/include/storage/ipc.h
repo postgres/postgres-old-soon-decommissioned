@@ -23,6 +23,8 @@
 
 #include <sys/types.h>
 
+#include "postgres.h"
+
 /*
  * Many architectures have support for user-level spinlocks (i.e., an
  * atomic test-and-set instruction).  However, we have only written

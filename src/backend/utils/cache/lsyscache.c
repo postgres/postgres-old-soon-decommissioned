@@ -31,6 +31,7 @@
 #include "access/heapam.h"
 
 #include "catalog/pg_amop.h"
+#include "catalog/pg_operator.h"
 #include "catalog/pg_type.h"
 
 /*    		---------- AMOP CACHES ----------			 */

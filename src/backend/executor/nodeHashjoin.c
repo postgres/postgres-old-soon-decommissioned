@@ -13,6 +13,7 @@
  */
 #include <sys/file.h>
 
+#include "postgres.h"
 #include "storage/bufmgr.h"	/* for BLCKSZ */
 #include "storage/fd.h"		/* for SEEK_ */
 #include "executor/executor.h"

@@ -38,6 +38,8 @@
 
 #include "storage/bufmgr.h"	/* for BLCKSZ */
 
+extern int NBuffers;
+
 static int compute_attribute_width(TargetEntry *tlistentry);
 static double base_log(double x, double b);
 
