@@ -59,7 +59,7 @@ typedef union SockAddr
 #endif
 
 #define UNIXSOCK_PATH(sun,port,defpath) \
-        (snprintf((sun).sun_path, UNIXSOCK_LEN(sun), "%s/.s.PGSQL.%d", (defpath && *(defpath) != '\0') ? (defpath) : "/tmp", (port)))
+        (snprintf((sun).sun_path, UNIXSOCK_LEN(sun), "/tmp/.s.PGSQL.%d", (port)))
 
 /*
  *		We do this because sun_len is in BSD's struct, while others don't.
