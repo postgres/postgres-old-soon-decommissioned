@@ -552,29 +552,6 @@ fi])
 AC_SUBST(ELF_SYS)
 
 #
-# Pthreads
-#
-# For each platform, we need to know about any special compile and link
-# libraries, and whether the normal C function names are thread-safe.
-#
-NEED_REENTRANT_FUNC_NAMES=no
-if test "$with_threads" = yes; then
-AC_CHECK_HEADER(pthread.h, [], [AC_MSG_ERROR([pthread.h not found, required for --with-threads])])
-
-if test "$SUPPORTS_THREADS" != yes; then
-AC_MSG_ERROR([
-Cannot enable threads on your platform.
-Please report your platform threading info to the PostgreSQL mailing lists
-so it can be added to the next release.  Report any compile flags, link flags,
-functions, or libraries required for threading support.
-])
-fi
-fi
-AC_SUBST(THREAD_CFLAGS)
-AC_SUBST(THREAD_LIBS)
-
-
-#
 # Assignments
 #
 
@@ -980,6 +957,29 @@ AC_CHECK_FUNCS(atexit, [],
                [AC_MSG_ERROR([neither atexit() nor on_exit() found])])])
 
 AC_FUNC_FSEEKO
+
+#
+# Pthreads
+#
+# For each platform, we need to know about any special compile and link
+# libraries, and whether the normal C function names are thread-safe.
+#
+NEED_REENTRANT_FUNC_NAMES=no
+if test "$with_threads" = yes; then
+AC_CHECK_HEADER(pthread.h, [], [AC_MSG_ERROR([pthread.h not found, required for --with-threads])])
+
+if test "$SUPPORTS_THREADS" != yes; then
+AC_MSG_ERROR([
+Cannot enable threads on your platform.
+Please report your platform threading info to the PostgreSQL mailing lists
+so it can be added to the next release.  Report any compile flags, link flags,
+functions, or libraries required for threading support.
+])
+fi
+fi
+AC_SUBST(THREAD_CFLAGS)
+AC_SUBST(THREAD_LIBS)
+
 
 #
 # Check for re-entrant versions of certain functions
