@@ -33,7 +33,8 @@ Snapshot	SnapshotDirty = &SnapshotDirtyData;
 Snapshot	QuerySnapshot = NULL;
 Snapshot	SerializableSnapshot = NULL;
 
-/* This is updated by GetSnapshotData: */
+/* These are updated by GetSnapshotData: */
+TransactionId RecentXmin = InvalidTransactionId;
 TransactionId RecentGlobalXmin = InvalidTransactionId;
 
 bool		ReferentialIntegritySnapshotOverride = false;

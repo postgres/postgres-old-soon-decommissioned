@@ -41,6 +41,7 @@ extern DLLIMPORT Snapshot SnapshotDirty;
 extern DLLIMPORT Snapshot QuerySnapshot;
 extern DLLIMPORT Snapshot SerializableSnapshot;
 
+extern TransactionId RecentXmin;
 extern TransactionId RecentGlobalXmin;
 
 extern bool ReferentialIntegritySnapshotOverride;

@@ -544,7 +544,7 @@ _bt_page_recyclable(Page page)
 	 */
 	opaque = (BTPageOpaque) PageGetSpecialPointer(page);
 	if (P_ISDELETED(opaque) &&
-		TransactionIdPrecedesOrEquals(opaque->btpo.xact, RecentGlobalXmin))
+		TransactionIdPrecedesOrEquals(opaque->btpo.xact, RecentXmin))
 		return true;
 	return false;
 }
