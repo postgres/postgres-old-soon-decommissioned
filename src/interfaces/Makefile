@@ -12,7 +12,7 @@ subdir = src/interfaces
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
-DIRS := libpq ecpg libpgeasy
+DIRS := libpq ecpg 
 
 ALLDIRS := $(DIRS) libpgtcl perl5 python jdbc
 
