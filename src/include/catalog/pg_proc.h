@@ -2369,6 +2369,8 @@ DESCR("is-supernet-or-equal");
 /* inet/cidr functions */
 DATA(insert OID = 605 (  abbrev				PGNSP PGUID 12 f f t f i 1 25 "869"  network_abbrev - _null_ ));
 DESCR("abbreviated display of inet/cidr value");
+DATA(insert OID = 711 (  family				PGNSP PGUID 12 f f t f i 1 23 "869"  network_family - _null_ ));
+DESCR("return address family (4 for IPv4, 6 for IPv6)");
 DATA(insert OID = 683 (  network			PGNSP PGUID 12 f f t f i 1 650 "869"	network_network - _null_ ));
 DESCR("network part of address");
 DATA(insert OID = 696 (  netmask			PGNSP PGUID 12 f f t f i 1 869 "869"	network_netmask - _null_ ));

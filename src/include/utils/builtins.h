@@ -644,6 +644,7 @@ extern Datum network_network(PG_FUNCTION_ARGS);
 extern Datum network_netmask(PG_FUNCTION_ARGS);
 extern Datum network_hostmask(PG_FUNCTION_ARGS);
 extern Datum network_masklen(PG_FUNCTION_ARGS);
+extern Datum network_family(PG_FUNCTION_ARGS);
 extern Datum network_broadcast(PG_FUNCTION_ARGS);
 extern Datum network_host(PG_FUNCTION_ARGS);
 extern Datum network_show(PG_FUNCTION_ARGS);
