@@ -76,9 +76,11 @@ verify_password(const Port *port, const char *user, const char *password)
 			FreeFile(pw_file);
 
 			/*
-			 * If the password is empty of "+" then we use the regular
+			 * If the password is empty or "+" then we use the regular
 			 * pg_shadow passwords. If we use crypt then we have to use
-			 * pg_shadow passwords no matter what.
+			 * pg_shadow passwords no matter what.  This is because
+			 * the current code needs non-encrypted passwords to
+			 * encrypt with a random salt.
 			 */
 			if (port->auth_method == uaCrypt
 				|| test_pw == NULL || test_pw[0] == '\0'
