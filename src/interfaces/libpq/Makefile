@@ -72,7 +72,7 @@ encnames.c wchar.c : % : $(backend_src)/utils/mb/%
 	rm -f $@ && $(LN_S) $< .
 
 
-ifeq ($(PTHREAD_H_WIN32))
+ifneq ($(PTHREAD_H_WIN32), "")
 pthread.h : % : $(top_srcdir)/src/interfaces/libpq/pthread.h.win
 	rm -f $@ && $(LN_S) $< .
 endif
