@@ -14,7 +14,6 @@
 
 #include <unistd.h>
 #include <fcntl.h>
-#include <io.h>
 #include <sys/stat.h>
 
 #include "postgres.h"
@@ -23,6 +22,7 @@
 
 #ifdef WIN32
 #include "win32.h"
+#include "io.h"
 #endif
 
 #include "libpq/libpq-fs.h"		/* must come after sys/stat.h */
