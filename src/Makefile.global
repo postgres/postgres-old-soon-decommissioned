@@ -219,7 +219,7 @@ TK_LIB= -ltk4.1
 
 X11_INCDIR= /usr/include
 X11_LIBDIR= /usr/lib
-X11_LIB= -lX11 -lsocket -lnsl
+X11_LIB= -lX11 
 
 ##############################################################################
 #
