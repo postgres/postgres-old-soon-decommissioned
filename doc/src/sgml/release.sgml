@@ -22,7 +22,7 @@ $Header$
     <variablelist>
      <varlistentry>
       <term>
-       <literal>IN</literal>/<literal>NOT IN</literal> subqueries are
+       <literal>IN</literal> / <literal>NOT IN</literal> subqueries are
        now much more efficient
       </term>
 
