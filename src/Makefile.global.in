@@ -220,6 +220,7 @@ GZCAT= @GZCAT@
 
 # Name of the target platform.
 PORTNAME= @PORTNAME@
+CPU= @CPU@
 
 # Various grungy items needed to configure some platforms.
 HAVE_POSIX_SIGNALS= @HAVE_POSIX_SIGNALS@
