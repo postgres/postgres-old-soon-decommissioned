@@ -16,10 +16,6 @@ DIRS := access bootstrap catalog parser commands executor lib libpq \
 	main nodes optimizer port postmaster regex rewrite \
 	storage tcop utils
 
-ifdef TIOGA
-DIRS += tioga
-endif
-
 OBJS := $(DIRS:%=%/SUBSYS.o)
 
 ifeq ($(PORTNAME), qnx4)
