@@ -81,6 +81,9 @@ bool		Log_disconnections = false;
 
 LogStmtLevel log_statement = LOGSTMT_NONE;
 
+/* flag indicating if the statement satisfies log_statement */
+bool		statement_logged;
+
 /* GUC variable for maximum stack depth (measured in kilobytes) */
 int			max_stack_depth = 2048;
 
@@ -463,9 +466,13 @@ pg_parse_query(const char *query_string)
 	List	   *raw_parsetree_list;
 	ListCell   *parsetree_item;
 
+	statement_logged = false;
 	if (log_statement == LOGSTMT_ALL)
+	{
 		ereport(LOG,
 				(errmsg("statement: %s", query_string)));
+		statement_logged = true;
+	}
 
 	if (log_parser_stats)
 		ResetUsage();
@@ -501,6 +508,7 @@ pg_parse_query(const char *query_string)
 			{
 				ereport(LOG,
 						(errmsg("statement: %s", query_string)));
+				statement_logged = true;
 				break;
 			}
 			commandTag = CreateCommandTag(parsetree);
@@ -512,6 +520,7 @@ pg_parse_query(const char *query_string)
 			{
 				ereport(LOG,
 						(errmsg("statement: %s", query_string)));
+				statement_logged = true;
 				break;
 			}
 		}
@@ -1003,7 +1012,8 @@ exec_simple_query(const char *query_string)
 		}
 		usecs = (long) (stop_t.tv_sec - start_t.tv_sec) * 1000000 + (long) (stop_t.tv_usec - start_t.tv_usec);
 
-		if (save_log_duration)
+		/* Only print duration if we previously printed the statement. */
+		if (statement_logged && save_log_duration)
 			ereport(LOG,
 					(errmsg("duration: %ld.%03ld ms",
 						(long) ((stop_t.tv_sec - start_t.tv_sec) * 1000 +
