@@ -186,7 +186,7 @@ pqGethostbyname(const char *name,
 	 * broken (well early POSIX draft) gethostbyname_r() which returns
 	 * 'struct hostent *'
 	 */
-	*result = gethostbyname_r(name, resbuf, buffer, buflen, herrno);
+	*result = gethostbyname_r(name, resultbuf, buffer, buflen, herrno);
 	return (*result == NULL) ? -1 : 0;
 
 #else
