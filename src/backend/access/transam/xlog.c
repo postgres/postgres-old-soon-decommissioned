@@ -3778,27 +3778,27 @@ assign_xlog_sync_method(const char *method, bool doit, GucSource source)
 	int			new_sync_method;
 	int			new_sync_bit;
 
-	if (strcasecmp(method, "fsync") == 0)
+	if (pg_strcasecmp(method, "fsync") == 0)
 	{
 		new_sync_method = SYNC_METHOD_FSYNC;
 		new_sync_bit = 0;
 	}
 #ifdef HAVE_FDATASYNC
-	else if (strcasecmp(method, "fdatasync") == 0)
+	else if (pg_strcasecmp(method, "fdatasync") == 0)
 	{
 		new_sync_method = SYNC_METHOD_FDATASYNC;
 		new_sync_bit = 0;
 	}
 #endif
 #ifdef OPEN_SYNC_FLAG
-	else if (strcasecmp(method, "open_sync") == 0)
+	else if (pg_strcasecmp(method, "open_sync") == 0)
 	{
 		new_sync_method = SYNC_METHOD_OPEN;
 		new_sync_bit = OPEN_SYNC_FLAG;
 	}
 #endif
 #ifdef OPEN_DATASYNC_FLAG
-	else if (strcasecmp(method, "open_datasync") == 0)
+	else if (pg_strcasecmp(method, "open_datasync") == 0)
 	{
 		new_sync_method = SYNC_METHOD_OPEN;
 		new_sync_bit = OPEN_DATASYNC_FLAG;

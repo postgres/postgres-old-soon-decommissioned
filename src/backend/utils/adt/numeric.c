@@ -315,7 +315,7 @@ numeric_in(PG_FUNCTION_ARGS)
 	/*
 	 * Check for NaN
 	 */
-	if (strcasecmp(str, "NaN") == 0)
+	if (pg_strcasecmp(str, "NaN") == 0)
 		PG_RETURN_NUMERIC(make_result(&const_nan));
 
 	/*

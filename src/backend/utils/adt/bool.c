@@ -39,35 +39,35 @@ boolin(PG_FUNCTION_ARGS)
 	{
 		case 't':
 		case 'T':
-			if (strncasecmp(b, "true", strlen(b)) == 0)
+			if (pg_strncasecmp(b, "true", strlen(b)) == 0)
 				PG_RETURN_BOOL(true);
 			break;
 
 		case 'f':
 		case 'F':
-			if (strncasecmp(b, "false", strlen(b)) == 0)
+			if (pg_strncasecmp(b, "false", strlen(b)) == 0)
 				PG_RETURN_BOOL(false);
 			break;
 
 		case 'y':
 		case 'Y':
-			if (strncasecmp(b, "yes", strlen(b)) == 0)
+			if (pg_strncasecmp(b, "yes", strlen(b)) == 0)
 				PG_RETURN_BOOL(true);
 			break;
 
 		case '1':
-			if (strncasecmp(b, "1", strlen(b)) == 0)
+			if (pg_strncasecmp(b, "1", strlen(b)) == 0)
 				PG_RETURN_BOOL(true);
 			break;
 
 		case 'n':
 		case 'N':
-			if (strncasecmp(b, "no", strlen(b)) == 0)
+			if (pg_strncasecmp(b, "no", strlen(b)) == 0)
 				PG_RETURN_BOOL(false);
 			break;
 
 		case '0':
-			if (strncasecmp(b, "0", strlen(b)) == 0)
+			if (pg_strncasecmp(b, "0", strlen(b)) == 0)
 				PG_RETURN_BOOL(false);
 			break;
 

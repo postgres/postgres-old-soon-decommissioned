@@ -217,9 +217,9 @@ find_hashid(const char *name)
 		mname = mhash_get_hash_name(i);
 		if (mname == NULL)
 			continue;
-		b = strcasecmp(name, mname);
+		b = pg_strcasecmp(name, mname);
 		free(mname);
-		if (!b)
+		if (b == 0)
 		{
 			res = i;
 			break;
@@ -312,7 +312,7 @@ px_find_cipher(const char *name, PX_Cipher ** res)
 
 	PX_Cipher  *c;
 
-	strcpy(nbuf, name);
+	StrNCpy(nbuf, name, sizeof(nbuf));
 
 	if ((p = strrchr(nbuf, '-')) != NULL)
 	{

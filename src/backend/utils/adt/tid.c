@@ -218,7 +218,7 @@ currtid_for_view(Relation viewrel, ItemPointer tid)
 
 	for (i = 0; i < natts; i++)
 	{
-		if (strcasecmp(NameStr(att->attrs[i]->attname), "ctid") == 0)
+		if (strcmp(NameStr(att->attrs[i]->attname), "ctid") == 0)
 		{
 			if (att->attrs[i]->atttypid != TIDOID)
 				elog(ERROR, "ctid isn't of type TID");

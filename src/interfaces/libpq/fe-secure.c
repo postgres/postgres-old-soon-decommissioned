@@ -544,7 +544,7 @@ verify_peer(PGconn *conn)
 	 */
 	for (s = h->h_aliases; *s != NULL; s++)
 	{
-		if (strcasecmp(conn->peer_cn, *s) == 0)
+		if (pg_strcasecmp(conn->peer_cn, *s) == 0)
 			return 0;
 	}
 

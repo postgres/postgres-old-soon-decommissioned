@@ -117,7 +117,7 @@ pqSetenvPoll(PGconn *conn)
 
 						if ((val = getenv(conn->next_eo->envName)))
 						{
-							if (strcasecmp(val, "default") == 0)
+							if (pg_strcasecmp(val, "default") == 0)
 								sprintf(setQuery, "SET %s = DEFAULT",
 										conn->next_eo->pgName);
 							else

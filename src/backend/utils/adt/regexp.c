@@ -233,17 +233,17 @@ const char *
 assign_regex_flavor(const char *value,
 					bool doit, GucSource source)
 {
-	if (strcasecmp(value, "advanced") == 0)
+	if (pg_strcasecmp(value, "advanced") == 0)
 	{
 		if (doit)
 			regex_flavor = REG_ADVANCED;
 	}
-	else if (strcasecmp(value, "extended") == 0)
+	else if (pg_strcasecmp(value, "extended") == 0)
 	{
 		if (doit)
 			regex_flavor = REG_EXTENDED;
 	}
-	else if (strcasecmp(value, "basic") == 0)
+	else if (pg_strcasecmp(value, "basic") == 0)
 	{
 		if (doit)
 			regex_flavor = REG_BASIC;

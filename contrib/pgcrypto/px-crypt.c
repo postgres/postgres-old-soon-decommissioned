@@ -170,7 +170,7 @@ px_gen_salt(const char *salt_type, char *buf, int rounds)
 	for (i = 0; gen_list[i].name; i++)
 	{
 		g = &gen_list[i];
-		if (strcasecmp(g->name, salt_type) != 0)
+		if (pg_strcasecmp(g->name, salt_type) != 0)
 			continue;
 
 		if (g->def_rounds)

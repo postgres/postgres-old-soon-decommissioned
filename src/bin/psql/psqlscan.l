@@ -1374,10 +1374,7 @@ psql_scan_slash_option(PsqlScanState state,
 					else
 					{
 						if (!inquotes && type == OT_SQLID)
-						{
-							if (isupper((unsigned char) *cp))
-								*cp = tolower((unsigned char) *cp);
-						}
+							*cp = pg_tolower((unsigned char) *cp);
 						cp += PQmblen(cp, pset.encoding);
 					}
 				}

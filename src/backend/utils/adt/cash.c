@@ -745,7 +745,7 @@ cash_words(PG_FUNCTION_ARGS)
 	strcat(buf, m0 == 1 ? " cent" : " cents");
 
 	/* capitalize output */
-	buf[0] = toupper((unsigned char) buf[0]);
+	buf[0] = pg_toupper((unsigned char) buf[0]);
 
 	/* make a text type for output */
 	result = (text *) palloc(strlen(buf) + VARHDRSZ);

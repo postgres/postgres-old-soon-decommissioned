@@ -317,7 +317,7 @@ helpSQL(const char *topic, unsigned short int pager)
 		/* Count newlines for pager */
 		for (i = 0; QL_HELP[i].cmd; i++)
 		{
-			if (strncasecmp(topic, QL_HELP[i].cmd, len) == 0 ||
+			if (pg_strncasecmp(topic, QL_HELP[i].cmd, len) == 0 ||
 				strcmp(topic, "*") == 0)
 			{
 				nl_count += 5;
@@ -325,7 +325,7 @@ helpSQL(const char *topic, unsigned short int pager)
 					if (*ch == '\n')
 						nl_count++;
 				/* If we have an exact match, exit.  Fixes \h SELECT */
-				if (strcasecmp(topic, QL_HELP[i].cmd) == 0)
+				if (pg_strcasecmp(topic, QL_HELP[i].cmd) == 0)
 					break;
 			}
 		}
@@ -334,7 +334,7 @@ helpSQL(const char *topic, unsigned short int pager)
 
 		for (i = 0; QL_HELP[i].cmd; i++)
 		{
-			if (strncasecmp(topic, QL_HELP[i].cmd, len) == 0 ||
+			if (pg_strncasecmp(topic, QL_HELP[i].cmd, len) == 0 ||
 				strcmp(topic, "*") == 0)
 			{
 				help_found = true;
@@ -345,7 +345,7 @@ helpSQL(const char *topic, unsigned short int pager)
 						gettext(QL_HELP[i].help),
 						gettext(QL_HELP[i].syntax));
 				/* If we have an exact match, exit.  Fixes \h SELECT */
-				if (strcasecmp(topic, QL_HELP[i].cmd) == 0)
+				if (pg_strcasecmp(topic, QL_HELP[i].cmd) == 0)
 					break;
 			}
 		}

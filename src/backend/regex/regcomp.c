@@ -178,17 +178,17 @@ static struct cvec *getcvec(struct vars *, int, int, int);
 static void freecvec(struct cvec *);
 
 /* === regc_locale.c === */
-static int	pg_isdigit(pg_wchar c);
-static int	pg_isalpha(pg_wchar c);
-static int	pg_isalnum(pg_wchar c);
-static int	pg_isupper(pg_wchar c);
-static int	pg_islower(pg_wchar c);
-static int	pg_isgraph(pg_wchar c);
-static int	pg_isprint(pg_wchar c);
-static int	pg_ispunct(pg_wchar c);
-static int	pg_isspace(pg_wchar c);
-static pg_wchar pg_toupper(pg_wchar c);
-static pg_wchar pg_tolower(pg_wchar c);
+static int	pg_wc_isdigit(pg_wchar c);
+static int	pg_wc_isalpha(pg_wchar c);
+static int	pg_wc_isalnum(pg_wchar c);
+static int	pg_wc_isupper(pg_wchar c);
+static int	pg_wc_islower(pg_wchar c);
+static int	pg_wc_isgraph(pg_wchar c);
+static int	pg_wc_isprint(pg_wchar c);
+static int	pg_wc_ispunct(pg_wchar c);
+static int	pg_wc_isspace(pg_wchar c);
+static pg_wchar pg_wc_toupper(pg_wchar c);
+static pg_wchar pg_wc_tolower(pg_wchar c);
 static int	nmcces(struct vars *);
 static int	nleaders(struct vars *);
 static struct cvec *allmcces(struct vars *, struct cvec *);

@@ -328,9 +328,9 @@ compute_attributes_with_style(List *parameters, bool *isStrict_p, char *volatili
 	{
 		DefElem    *param = (DefElem *) lfirst(pl);
 
-		if (strcasecmp(param->defname, "isstrict") == 0)
+		if (pg_strcasecmp(param->defname, "isstrict") == 0)
 			*isStrict_p = true;
-		else if (strcasecmp(param->defname, "iscachable") == 0)
+		else if (pg_strcasecmp(param->defname, "iscachable") == 0)
 		{
 			/* obsolete spelling of isImmutable */
 			*volatility_p = PROVOLATILE_IMMUTABLE;

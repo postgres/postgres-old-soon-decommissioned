@@ -1471,7 +1471,7 @@ build_startup_packet(const PGconn *conn, char *packet,
 
 		if ((val = getenv(next_eo->envName)) != NULL)
 		{
-			if (strcasecmp(val, "default") != 0)
+			if (pg_strcasecmp(val, "default") != 0)
 			{
 				if (packet)
 					strcpy(packet + packet_len, next_eo->pgName);

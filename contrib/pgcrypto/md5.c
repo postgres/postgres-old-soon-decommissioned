@@ -141,7 +141,7 @@ md5_init(md5_ctxt * ctxt)
 	ctxt->md5_stb = MD5_B0;
 	ctxt->md5_stc = MD5_C0;
 	ctxt->md5_std = MD5_D0;
-	bzero(ctxt->md5_buf, sizeof(ctxt->md5_buf));
+	memset(ctxt->md5_buf, 0, sizeof(ctxt->md5_buf));
 }
 
 void

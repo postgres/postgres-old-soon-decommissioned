@@ -75,21 +75,21 @@ DefineAggregate(List *names, List *parameters)
 		 * sfunc1, stype1, and initcond1 are accepted as obsolete
 		 * spellings for sfunc, stype, initcond.
 		 */
-		if (strcasecmp(defel->defname, "sfunc") == 0)
+		if (pg_strcasecmp(defel->defname, "sfunc") == 0)
 			transfuncName = defGetQualifiedName(defel);
-		else if (strcasecmp(defel->defname, "sfunc1") == 0)
+		else if (pg_strcasecmp(defel->defname, "sfunc1") == 0)
 			transfuncName = defGetQualifiedName(defel);
-		else if (strcasecmp(defel->defname, "finalfunc") == 0)
+		else if (pg_strcasecmp(defel->defname, "finalfunc") == 0)
 			finalfuncName = defGetQualifiedName(defel);
-		else if (strcasecmp(defel->defname, "basetype") == 0)
+		else if (pg_strcasecmp(defel->defname, "basetype") == 0)
 			baseType = defGetTypeName(defel);
-		else if (strcasecmp(defel->defname, "stype") == 0)
+		else if (pg_strcasecmp(defel->defname, "stype") == 0)
 			transType = defGetTypeName(defel);
-		else if (strcasecmp(defel->defname, "stype1") == 0)
+		else if (pg_strcasecmp(defel->defname, "stype1") == 0)
 			transType = defGetTypeName(defel);
-		else if (strcasecmp(defel->defname, "initcond") == 0)
+		else if (pg_strcasecmp(defel->defname, "initcond") == 0)
 			initval = defGetString(defel);
-		else if (strcasecmp(defel->defname, "initcond1") == 0)
+		else if (pg_strcasecmp(defel->defname, "initcond1") == 0)
 			initval = defGetString(defel);
 		else
 			ereport(WARNING,
@@ -124,7 +124,7 @@ DefineAggregate(List *names, List *parameters)
 	 * be able to store values of the transtype.  However, we can allow
 	 * polymorphic transtype in some cases (AggregateCreate will check).
 	 */
-	if (strcasecmp(TypeNameToString(baseType), "ANY") == 0)
+	if (pg_strcasecmp(TypeNameToString(baseType), "ANY") == 0)
 		baseTypeId = ANYOID;
 	else
 		baseTypeId = typenameTypeId(baseType);

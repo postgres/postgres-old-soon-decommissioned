@@ -1904,8 +1904,7 @@ PQfnumber(const PGresult *res, const char *field_name)
 		}
 		else
 		{
-			if (isupper((unsigned char) c))
-				c = tolower((unsigned char) c);
+			c = pg_tolower((unsigned char) c);
 			*optr++ = c;
 		}
 	}

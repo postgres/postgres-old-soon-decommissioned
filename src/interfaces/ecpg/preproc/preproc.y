@@ -609,7 +609,7 @@ stmt:  AlterDatabaseSetStmt		{ output_statement($1, 0, connection); }
 				/* Informix also has a CLOSE DATABASE command that
 				   essantially works like a DISCONNECT CURRENT 
 				   as far as I know. */
-				if (strcasecmp($1+strlen("close "), "database") == 0)
+				if (pg_strcasecmp($1+strlen("close "), "database") == 0)
 				{
 					if (connection)
 		                                mmerror(PARSE_ERROR, ET_ERROR, "no at option for close database statement.\n");

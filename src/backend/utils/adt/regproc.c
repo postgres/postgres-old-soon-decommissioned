@@ -1259,7 +1259,7 @@ parseNameAndArgTypes(const char *string, const char *caller,
 			*ptr2 = '\0';
 		}
 
-		if (allowNone && strcasecmp(typename, "none") == 0)
+		if (allowNone && pg_strcasecmp(typename, "none") == 0)
 		{
 			/* Special case for NONE */
 			typeid = InvalidOid;

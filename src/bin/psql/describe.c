@@ -1718,7 +1718,7 @@ processNamePattern(PQExpBuffer buf, const char *pattern,
 		else if (!inquotes && isupper((unsigned char) *cp))
 		{
 			appendPQExpBufferChar(&namebuf,
-								  tolower((unsigned char) *cp));
+								  pg_tolower((unsigned char) *cp));
 			cp++;
 		}
 		else if (!inquotes && *cp == '*')

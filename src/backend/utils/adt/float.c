@@ -291,17 +291,17 @@ float4in(PG_FUNCTION_ARGS)
 		 * set ERANGE anyway...)  Therefore, we check for these inputs
 		 * ourselves.
 		 */
-		if (strncasecmp(num, "NaN", 3) == 0)
+		if (pg_strncasecmp(num, "NaN", 3) == 0)
 		{
 			val = get_float4_nan();
 			endptr = num + 3;
 		}
-		else if (strncasecmp(num, "Infinity", 8) == 0)
+		else if (pg_strncasecmp(num, "Infinity", 8) == 0)
 		{
 			val = get_float4_infinity();
 			endptr = num + 8;
 		}
-		else if (strncasecmp(num, "-Infinity", 9) == 0)
+		else if (pg_strncasecmp(num, "-Infinity", 9) == 0)
 		{
 			val = - get_float4_infinity();
 			endptr = num + 9;
@@ -456,17 +456,17 @@ float8in(PG_FUNCTION_ARGS)
 		 * set ERANGE anyway...)  Therefore, we check for these inputs
 		 * ourselves.
 		 */
-		if (strncasecmp(num, "NaN", 3) == 0)
+		if (pg_strncasecmp(num, "NaN", 3) == 0)
 		{
 			val = get_float8_nan();
 			endptr = num + 3;
 		}
-		else if (strncasecmp(num, "Infinity", 8) == 0)
+		else if (pg_strncasecmp(num, "Infinity", 8) == 0)
 		{
 			val = get_float8_infinity();
 			endptr = num + 8;
 		}
-		else if (strncasecmp(num, "-Infinity", 9) == 0)
+		else if (pg_strncasecmp(num, "-Infinity", 9) == 0)
 		{
 			val = - get_float8_infinity();
 			endptr = num + 9;

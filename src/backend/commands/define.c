@@ -240,12 +240,12 @@ defGetTypeLength(DefElem *def)
 							def->defname)));
 			break;
 		case T_String:
-			if (strcasecmp(strVal(def->arg), "variable") == 0)
+			if (pg_strcasecmp(strVal(def->arg), "variable") == 0)
 				return -1;		/* variable length */
 			break;
 		case T_TypeName:
 			/* cope if grammar chooses to believe "variable" is a typename */
-			if (strcasecmp(TypeNameToString((TypeName *) def->arg),
+			if (pg_strcasecmp(TypeNameToString((TypeName *) def->arg),
 						   "variable") == 0)
 				return -1;		/* variable length */
 			break;
