@@ -2667,10 +2667,13 @@ dynamic_library_path = '/usr/local/lib/postgresql:/home/my_project/lib:$libdir'
      </varlistentry>
 
      <varlistentry>
-      <term><varname>wal_debug</varname> (<type>integer</type>)</term>
+      <term><varname>wal_debug</varname> (<type>boolean</type>)</term>
       <listitem>
        <para>
-        If nonzero, turn on WAL-related debugging output.
+        If true, emit WAL-related debugging output. This option is
+        only available if the <symbol>WAL_DEBUG</symbol> macro was
+        defined when <productname>PostgreSQL</productname> was
+        compiled.
        </para>
       </listitem>
      </varlistentry>

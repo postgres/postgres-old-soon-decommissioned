@@ -172,7 +172,7 @@ SHOW ALL;
     .
     .
     .
- wal_debug                     | 0
+ wal_debug                     | off
  wal_sync_method               | fdatasync
 (94 rows)
 </programlisting>

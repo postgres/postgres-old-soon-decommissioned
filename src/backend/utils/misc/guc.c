@@ -336,17 +336,18 @@ const char *const config_type_names[] =
  * TO ADD AN OPTION:
  *
  * 1. Declare a global variable of type bool, int, double, or char*
- * and make use of it.
+ *    and make use of it.
  *
  * 2. Decide at what times it's safe to set the option. See guc.h for
- * details.
+ *    details.
  *
  * 3. Decide on a name, a default value, upper and lower bounds (if
- * applicable), etc.
+ *    applicable), etc.
  *
  * 4. Add a record below.
  *
- * 5. Add it to src/backend/utils/misc/postgresql.conf.sample.
+ * 5. Add it to src/backend/utils/misc/postgresql.conf.sample, if
+ *    appropriate
  *
  * 6. Add it to src/bin/psql/tab-complete.c, if it's a USERSET option.
  *
@@ -862,6 +863,18 @@ static struct config_bool ConfigureNamesBool[] =
 #endif
 	},
 
+#ifdef WAL_DEBUG
+	{
+		{"wal_debug", PGC_SUSET, DEVELOPER_OPTIONS,
+			gettext_noop("Emit WAL-related debugging output."),
+			NULL,
+			GUC_NOT_IN_SAMPLE
+		},
+		&XLOG_DEBUG,
+		false, NULL, NULL
+	},
+#endif
+
 	/* End-of-list marker */
 	{
 		{NULL, 0, 0, NULL, NULL}, NULL, false, NULL, NULL
@@ -1169,16 +1182,6 @@ static struct config_int ConfigureNamesInt[] =
 		},
 		&XLOGbuffers,
 		8, 4, INT_MAX, NULL, NULL
-	},
-
-	{
-		{"wal_debug", PGC_SUSET, DEVELOPER_OPTIONS,
-			gettext_noop("If nonzero, WAL-related debugging output is logged."),
-			NULL,
-			GUC_NOT_IN_SAMPLE
-		},
-		&XLOG_DEBUG,
-		0, 0, 16, NULL, NULL
 	},
 
 	{

@@ -225,6 +225,12 @@
 /* #define LOCK_DEBUG */
 
 /*
+ * Enable debugging print statements for WAL-related operations; see
+ * also the wal_debug GUC var.
+ */
+/* #define WAL_DEBUG */
+
+/*
  * Other debug #defines (documentation, anyone?)
  */
 /* #define IPORTAL_DEBUG  */

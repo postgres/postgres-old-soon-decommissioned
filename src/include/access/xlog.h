@@ -189,10 +189,12 @@ extern XLogRecPtr ProcLastRecEnd;
 extern int	CheckPointSegments;
 extern int	CheckPointWarning;
 extern int	XLOGbuffers;
-extern int	XLOG_DEBUG;
 extern char *XLOG_sync_method;
 extern const char XLOG_sync_method_default[];
 
+#ifdef WAL_DEBUG
+extern bool	XLOG_DEBUG;
+#endif
 
 extern XLogRecPtr XLogInsert(RmgrId rmid, uint8 info, XLogRecData *rdata);
 extern void XLogFlush(XLogRecPtr RecPtr);
