@@ -469,7 +469,7 @@ PostgreSQL documentation
 
       <row>
        <entry> <literal>&lt;&lt;</literal> </entry>
-       <entry>biwise shift left</entry>
+       <entry>bitwise shift left</entry>
        <entry><literal>1 &lt;&lt; 4</literal></entry>
        <entry><literal>16</literal></entry>
       </row>

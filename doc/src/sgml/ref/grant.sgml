@@ -316,7 +316,7 @@ GRANT SELECT, UPDATE, INSERT ON mytable TO GROUP todos;
 
    <para>
    If the <quote>Access privileges</> column is empty for a given object,
-it means the object has default privileges (that is, its privileges columm
+it means the object has default privileges (that is, its privileges column
 is null).  Default privileges always include all privileges for the owner,
 and may include some privileges for <literal>PUBLIC</> depending on the
 object type, as explained above.  The first <command>GRANT</> or
