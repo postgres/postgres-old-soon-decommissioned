@@ -110,19 +110,20 @@ char *
 MakeRetrieveViewRuleName(char *viewName)
 {
 	char	   *buf;
-#ifdef MULTIBYTE
-	int			len;
-#endif
+	int			buflen,
+				maxlen;
 
-	buf = palloc(strlen(viewName) + 5);
-	snprintf(buf, strlen(viewName) + 5, "_RET%s", viewName);
-
+	buflen = strlen(viewName) + 5;
+	buf = palloc(buflen);
+	snprintf(buf, buflen, "_RET%s", viewName);
+	/* clip to less than NAMEDATALEN bytes, if necessary */
 #ifdef MULTIBYTE
-	len = pg_mbcliplen(buf,strlen(buf),NAMEDATALEN-1);
-	buf[len] = '\0';
+	maxlen = pg_mbcliplen(buf, strlen(buf), NAMEDATALEN-1);
 #else
-	buf[NAMEDATALEN-1] = '\0';
+	maxlen = NAMEDATALEN-1;
 #endif
+	if (maxlen < buflen)
+		buf[maxlen] = '\0';
 
 	return buf;
 }
