@@ -190,14 +190,14 @@ SendRowDescriptionMessage(TupleDesc typeinfo, List *targetlist, int16 *formats)
 		{
 			/* Do we have a non-resjunk tlist item? */
 			while (tlist_item &&
-				   ((TargetEntry *) lfirst(tlist_item))->resdom->resjunk)
+				   ((TargetEntry *) lfirst(tlist_item))->resjunk)
 				tlist_item = lnext(tlist_item);
 			if (tlist_item)
 			{
-				Resdom	   *res = ((TargetEntry *) lfirst(tlist_item))->resdom;
+				TargetEntry *tle = (TargetEntry *) lfirst(tlist_item);
 
-				pq_sendint(&buf, res->resorigtbl, 4);
-				pq_sendint(&buf, res->resorigcol, 2);
+				pq_sendint(&buf, tle->resorigtbl, 4);
+				pq_sendint(&buf, tle->resorigcol, 2);
 				tlist_item = lnext(tlist_item);
 			}
 			else

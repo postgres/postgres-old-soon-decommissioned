@@ -29,13 +29,12 @@ extern Var *makeVar(Index varno,
 		int32 vartypmod,
 		Index varlevelsup);
 
-extern TargetEntry *makeTargetEntry(Resdom *resdom, Expr *expr);
+extern TargetEntry *makeTargetEntry(Expr *expr,
+									AttrNumber resno,
+									char *resname,
+									bool resjunk);
 
-extern Resdom *makeResdom(AttrNumber resno,
-		   Oid restype,
-		   int32 restypmod,
-		   char *resname,
-		   bool resjunk);
+extern TargetEntry *flatCopyTargetEntry(TargetEntry *src_tle);
 
 extern Const *makeConst(Oid consttype,
 		  int constlen,

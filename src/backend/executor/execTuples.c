@@ -784,15 +784,14 @@ ExecTypeFromTLInternal(List *targetList, bool hasoid, bool skipjunk)
 	foreach(l, targetList)
 	{
 		TargetEntry *tle = lfirst(l);
-		Resdom	   *resdom = tle->resdom;
 
-		if (skipjunk && resdom->resjunk)
+		if (skipjunk && tle->resjunk)
 			continue;
 		TupleDescInitEntry(typeInfo,
 						   cur_resno++,
-						   resdom->resname,
-						   resdom->restype,
-						   resdom->restypmod,
+						   tle->resname,
+						   exprType((Node *) tle->expr),
+						   exprTypmod((Node *) tle->expr),
 						   0);
 	}
 

@@ -17,10 +17,7 @@
 #include "nodes/relation.h"
 
 
-extern TargetEntry *tlistentry_member(Node *node, List *targetlist);
-extern Resdom *tlist_member(Node *node, List *targetlist);
-
-extern TargetEntry *create_tl_element(Var *var, int resdomno);
+extern TargetEntry *tlist_member(Node *node, List *targetlist);
 
 extern List *flatten_tlist(List *tlist);
 extern List *add_to_flat_tlist(List *tlist, List *vars);

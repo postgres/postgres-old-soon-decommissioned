@@ -789,7 +789,7 @@ is_distinct_query(Query *query)
 			TargetEntry *tle = get_sortgroupclause_tle(grpcl,
 													   query->targetList);
 
-			if (tle->resdom->resjunk)
+			if (tle->resjunk)
 				break;
 		}
 		if (!gl)				/* got to the end? */

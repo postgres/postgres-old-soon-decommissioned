@@ -828,12 +828,10 @@ ExecInitSubPlan(SubPlanState *node, EState *estate)
 			/* Process lefthand argument */
 			exstate = (ExprState *) linitial(fstate->args);
 			expr = exstate->expr;
-			tle = makeTargetEntry(makeResdom(i,
-											 exprType((Node *) expr),
-											 exprTypmod((Node *) expr),
-											 NULL,
-											 false),
-								  expr);
+			tle = makeTargetEntry(expr,
+								  i,
+								  NULL,
+								  false);
 			tlestate = makeNode(GenericExprState);
 			tlestate->xprstate.expr = (Expr *) tle;
 			tlestate->xprstate.evalfunc = NULL;
@@ -844,12 +842,10 @@ ExecInitSubPlan(SubPlanState *node, EState *estate)
 			/* Process righthand argument */
 			exstate = (ExprState *) lsecond(fstate->args);
 			expr = exstate->expr;
-			tle = makeTargetEntry(makeResdom(i,
-											 exprType((Node *) expr),
-											 exprTypmod((Node *) expr),
-											 NULL,
-											 false),
-								  expr);
+			tle = makeTargetEntry(expr,
+								  i,
+								  NULL,
+								  false);
 			tlestate = makeNode(GenericExprState);
 			tlestate->xprstate.expr = (Expr *) tle;
 			tlestate->xprstate.evalfunc = NULL;

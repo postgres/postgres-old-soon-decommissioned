@@ -640,7 +640,7 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 				{
 					TargetEntry *tle = (TargetEntry *) lfirst(tlist);
 
-					if (tle->resdom->resjunk)
+					if (tle->resjunk)
 					{
 						junk_filter_needed = true;
 						break;

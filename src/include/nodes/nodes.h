@@ -93,8 +93,7 @@ typedef enum NodeTag
 	/*
 	 * TAGS FOR PRIMITIVE NODES (primnodes.h)
 	 */
-	T_Resdom = 300,
-	T_Alias,
+	T_Alias = 300,
 	T_RangeVar,
 	T_Expr,
 	T_Var,

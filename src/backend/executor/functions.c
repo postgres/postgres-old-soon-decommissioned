@@ -935,7 +935,7 @@ check_sql_fn_retval(Oid func_id, Oid rettype, List *queryTreeList,
 							format_type_be(rettype)),
 			 errdetail("Final SELECT must return exactly one column.")));
 
-		restype = ((TargetEntry *) linitial(tlist))->resdom->restype;
+		restype = exprType((Node *) ((TargetEntry *) linitial(tlist))->expr);
 		if (!IsBinaryCoercible(restype, rettype))
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
@@ -961,7 +961,7 @@ check_sql_fn_retval(Oid func_id, Oid rettype, List *queryTreeList,
 		 */
 		if (tlistlen == 1)
 		{
-			restype = ((TargetEntry *) linitial(tlist))->resdom->restype;
+			restype = exprType((Node *) ((TargetEntry *) linitial(tlist))->expr);
 			if (IsBinaryCoercible(restype, rettype))
 				return false;	/* NOT returning whole tuple */
 		}
@@ -996,7 +996,7 @@ check_sql_fn_retval(Oid func_id, Oid rettype, List *queryTreeList,
 			Oid			tletype;
 			Oid			atttype;
 
-			if (tle->resdom->resjunk)
+			if (tle->resjunk)
 				continue;
 
 			do

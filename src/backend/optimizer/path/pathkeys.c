@@ -791,7 +791,7 @@ build_subquery_pathkeys(Query *root, RelOptInfo *rel, Query *subquery)
 			{
 				TargetEntry *tle = (TargetEntry *) lfirst(k);
 
-				if (!tle->resdom->resjunk &&
+				if (!tle->resjunk &&
 					equal(tle->expr, sub_key))
 				{
 					/* Found a representation for this sub_key */
@@ -800,9 +800,9 @@ build_subquery_pathkeys(Query *root, RelOptInfo *rel, Query *subquery)
 					int			score;
 
 					outer_var = makeVar(rel->relid,
-										tle->resdom->resno,
-										tle->resdom->restype,
-										tle->resdom->restypmod,
+										tle->resno,
+										exprType((Node *) tle->expr),
+										exprTypmod((Node *) tle->expr),
 										0);
 					outer_item = makePathKeyItem((Node *) outer_var,
 												 sub_item->sortop,

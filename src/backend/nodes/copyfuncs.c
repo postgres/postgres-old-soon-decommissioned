@@ -540,26 +540,6 @@ _copyLimit(Limit *from)
  */
 
 /*
- * _copyResdom
- */
-static Resdom *
-_copyResdom(Resdom *from)
-{
-	Resdom	   *newnode = makeNode(Resdom);
-
-	COPY_SCALAR_FIELD(resno);
-	COPY_SCALAR_FIELD(restype);
-	COPY_SCALAR_FIELD(restypmod);
-	COPY_STRING_FIELD(resname);
-	COPY_SCALAR_FIELD(ressortgroupref);
-	COPY_SCALAR_FIELD(resorigtbl);
-	COPY_SCALAR_FIELD(resorigcol);
-	COPY_SCALAR_FIELD(resjunk);
-
-	return newnode;
-}
-
-/*
  * _copyAlias
  */
 static Alias *
@@ -1077,8 +1057,13 @@ _copyTargetEntry(TargetEntry *from)
 {
 	TargetEntry *newnode = makeNode(TargetEntry);
 
-	COPY_NODE_FIELD(resdom);
 	COPY_NODE_FIELD(expr);
+	COPY_SCALAR_FIELD(resno);
+	COPY_STRING_FIELD(resname);
+	COPY_SCALAR_FIELD(ressortgroupref);
+	COPY_SCALAR_FIELD(resorigtbl);
+	COPY_SCALAR_FIELD(resorigcol);
+	COPY_SCALAR_FIELD(resjunk);
 
 	return newnode;
 }
@@ -2670,9 +2655,6 @@ copyObject(void *from)
 			/*
 			 * PRIMITIVE NODES
 			 */
-		case T_Resdom:
-			retval = _copyResdom(from);
-			break;
 		case T_Alias:
 			retval = _copyAlias(from);
 			break;

@@ -83,21 +83,6 @@
  */
 
 static bool
-_equalResdom(Resdom *a, Resdom *b)
-{
-	COMPARE_SCALAR_FIELD(resno);
-	COMPARE_SCALAR_FIELD(restype);
-	COMPARE_SCALAR_FIELD(restypmod);
-	COMPARE_STRING_FIELD(resname);
-	COMPARE_SCALAR_FIELD(ressortgroupref);
-	COMPARE_SCALAR_FIELD(resorigtbl);
-	COMPARE_SCALAR_FIELD(resorigcol);
-	COMPARE_SCALAR_FIELD(resjunk);
-
-	return true;
-}
-
-static bool
 _equalAlias(Alias *a, Alias *b)
 {
 	COMPARE_STRING_FIELD(aliasname);
@@ -546,8 +531,13 @@ _equalSetToDefault(SetToDefault *a, SetToDefault *b)
 static bool
 _equalTargetEntry(TargetEntry *a, TargetEntry *b)
 {
-	COMPARE_NODE_FIELD(resdom);
 	COMPARE_NODE_FIELD(expr);
+	COMPARE_SCALAR_FIELD(resno);
+	COMPARE_STRING_FIELD(resname);
+	COMPARE_SCALAR_FIELD(ressortgroupref);
+	COMPARE_SCALAR_FIELD(resorigtbl);
+	COMPARE_SCALAR_FIELD(resorigcol);
+	COMPARE_SCALAR_FIELD(resjunk);
 
 	return true;
 }
@@ -1814,9 +1804,6 @@ equal(void *a, void *b)
 			/*
 			 * PRIMITIVE NODES
 			 */
-		case T_Resdom:
-			retval = _equalResdom(a, b);
-			break;
 		case T_Alias:
 			retval = _equalAlias(a, b);
 			break;

@@ -458,7 +458,7 @@ has_nullable_targetlist(Query *subquery)
 		TargetEntry *tle = (TargetEntry *) lfirst(l);
 
 		/* ignore resjunk columns */
-		if (tle->resdom->resjunk)
+		if (tle->resjunk)
 			continue;
 
 		/* Must contain a Var of current level */
