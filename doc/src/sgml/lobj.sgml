@@ -39,6 +39,8 @@ $Header$
     Inversion large objects. (We will use  Inversion  and  large
     objects  interchangeably to mean the same thing in this
     section.)
+    Since <productname>PostgreSQL 7.1</productname> all large objects are placed in
+    one system table called pg_largeobject.
    </para>
   </sect1>
 
