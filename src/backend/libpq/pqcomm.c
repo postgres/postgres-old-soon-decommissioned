@@ -315,7 +315,7 @@ StreamServerPort(int family, unsigned short portName, int *fdP)
 int
 StreamConnection(int server_fd, Port *port)
 {
-	SOCKET_SIZE_TYPE addrlen;
+	ACCEPT_TYPE_ARG3 addrlen;
 
 	/* accept connection (and fill in the client (remote) address) */
 	addrlen = sizeof(port->raddr);

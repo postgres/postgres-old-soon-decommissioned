@@ -17,7 +17,7 @@
  *
  *	A NOTE ABOUT SIGNAL HANDLING ACROSS THE VARIOUS PLATFORMS.
  *
- *	config.h defines the macro USE_POSIX_SIGNALS for some platforms and
+ *	config.h defines the macro HAVE_POSIX_SIGNALS for some platforms and
  *	not for others.  This file and pqsignal.h use that macro to decide
  *	how to handle signalling.
  *
@@ -47,7 +47,7 @@
 pqsigfunc
 pqsignal(int signo, pqsigfunc func)
 {
-#if !defined(USE_POSIX_SIGNALS)
+#if !defined(HAVE_POSIX_SIGNALS)
 	return signal(signo, func);
 #else
 	struct sigaction act,
@@ -61,5 +61,5 @@ pqsignal(int signo, pqsigfunc func)
 	if (sigaction(signo, &act, &oact) < 0)
 		return SIG_ERR;
 	return oact.sa_handler;
-#endif	 /* !USE_POSIX_SIGNALS */
+#endif	 /* !HAVE_POSIX_SIGNALS */
 }

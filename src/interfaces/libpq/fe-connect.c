@@ -1076,7 +1076,7 @@ keep_going:						/* We will come back to here until there
 	{
 		case CONNECTION_STARTED:
 			{
-				SOCKET_SIZE_TYPE laddrlen;
+				ACCEPT_TYPE_ARG3 laddrlen;
 
 #ifndef WIN32
 				int			optval;
@@ -1085,7 +1085,7 @@ keep_going:						/* We will come back to here until there
 				char		optval;
 
 #endif
-				SOCKET_SIZE_TYPE optlen = sizeof(optval);
+				ACCEPT_TYPE_ARG3 optlen = sizeof(optval);
 
 				/*
 				 * Write ready, since we've made it here, so the

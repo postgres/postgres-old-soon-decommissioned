@@ -25,7 +25,7 @@
 pqsigfunc
 pqsignal(int signo, pqsigfunc func)
 {
-#if !defined(USE_POSIX_SIGNALS)
+#if !defined(HAVE_POSIX_SIGNALS)
 	return signal(signo, func);
 #else
 	struct sigaction act,
@@ -39,5 +39,5 @@ pqsignal(int signo, pqsigfunc func)
 	if (sigaction(signo, &act, &oact) < 0)
 		return SIG_ERR;
 	return oact.sa_handler;
-#endif	 /* !USE_POSIX_SIGNALS */
+#endif	 /* !HAVE_POSIX_SIGNALS */
 }
