@@ -397,7 +397,7 @@ where <replaceable class="PARAMETER">from_item</replaceable> can be:
 
    <para>
     LEFT OUTER JOIN returns all rows in the qualified Cartesian product
-    (ie, all combined rows that pass its ON condition), plus one copy of each
+    (i.e., all combined rows that pass its ON condition), plus one copy of each
     row in the left-hand table for which there was no right-hand row that
     passed the ON condition.  This left-hand row is extended to the full
     width of the joined table by inserting NULLs for the right-hand columns.

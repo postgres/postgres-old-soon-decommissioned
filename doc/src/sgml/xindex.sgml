@@ -107,7 +107,7 @@ SELECT oid FROM pg_am WHERE amname = 'btree';
    impose a strict ordering on keys, lesser to greater.  Since
    <productname>Postgres</productname> allows the user to define operators,
    <productname>Postgres</productname> cannot look at the name of an operator
-   (eg, "&gt;" or "&lt;") and tell what kind of comparison it is.  In fact,
+   (e.g., "&gt;" or "&lt;") and tell what kind of comparison it is.  In fact,
    some  access methods don't impose any ordering at all.  For example,
    <acronym>R-tree</acronym>s express a rectangle-containment relationship,
    whereas a hashed data structure expresses only bitwise similarity based

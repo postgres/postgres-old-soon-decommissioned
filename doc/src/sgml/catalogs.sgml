@@ -1841,7 +1841,7 @@
        Possible values are:
        <itemizedlist>
         <listitem>
-         <para>'c' = CHAR alignment, ie no alignment needed.</para>
+         <para>'c' = CHAR alignment, i.e., no alignment needed.</para>
         </listitem>
         <listitem>
          <para>'s' = SHORT alignment (2 bytes on most machines).</para>

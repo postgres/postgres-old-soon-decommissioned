@@ -40,7 +40,7 @@ $Header$
      <listitem>
       <para>
        Estimated start-up cost (time expended before output scan can start,
-       eg, time to do the sorting in a SORT node).
+       e.g., time to do the sorting in a SORT node).
       </para>
      </listitem>
 
