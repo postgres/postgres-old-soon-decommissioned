@@ -144,7 +144,7 @@ text_tid(const text *string)
 
 	if (!string)	return (ItemPointer)0;
 
-	str = textout(string);
+	str = textout((text *) string);
 	result = tidin(str);
 	pfree(str);
 
@@ -188,7 +188,7 @@ currtid_byrelname(const text *relname, ItemPointer tid)
 
 	if (!relname)	return result;
 
-	str = textout(relname);
+	str = textout((text *) relname);
 
 	result = (ItemPointer) palloc(sizeof(ItemPointerData));
 	ItemPointerSetInvalid(result);
