@@ -473,10 +473,11 @@ PostgreSQL documentation
   <para>
    If at all possible, <emphasis>do not</emphasis> use
    <literal>SIGKILL</literal> to kill the
-   <command>postmaster</command>.  This will prevent
+   <command>postmaster</command>.  Doing so will prevent
    <command>postmaster</command> from freeing the system
    resources (e.g., shared memory and semaphores) that it holds before
-   terminating.
+   terminating.  This may cause problems for starting a fresh
+   <command>postmaster</command> run.
   </para>
 
   <para>
