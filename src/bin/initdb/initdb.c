@@ -2275,6 +2275,11 @@ main(int argc, char *argv[])
 	check_input(features_file);
 	check_input(system_views_file);
 
+	printf("The files belonging to this database system will be owned "
+	       "by user \"%s\".\n"
+	       "This user must also own the server process.\n\n",
+	       effective_user);
+
 	setlocales();
 
 	if (strcmp(lc_ctype, lc_collate) == 0 &&
