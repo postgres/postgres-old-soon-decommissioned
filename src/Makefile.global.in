@@ -135,10 +135,6 @@ OIDNAMELEN= 36
 # Compile libpq++
 @HAVECXX@
 
-# Commenting out CASSERT will make things go a LOT faster, but you will
-# also loose a lot of useful error-checking.
-CASSERT= @CASSERT@
-
 # Comment out ENFORCE_ALIGNMENT if you do NOT want unaligned access to
 # multi-byte types to generate a bus error.
 ENFORCE_ALIGNMENT= true
