@@ -240,12 +240,14 @@ CreateTrigger(CreateTrigStmt *stmt)
 			strcat(args, "\\000");
 		}
 		values[Anum_pg_trigger_tgnargs - 1] = Int16GetDatum(nargs);
-		values[Anum_pg_trigger_tgargs - 1] = PointerGetDatum(byteain(args));
+		values[Anum_pg_trigger_tgargs - 1] = DirectFunctionCall1(byteain,
+													CStringGetDatum(args));
 	}
 	else
 	{
 		values[Anum_pg_trigger_tgnargs - 1] = Int16GetDatum(0);
-		values[Anum_pg_trigger_tgargs - 1] = PointerGetDatum(byteain(""));
+		values[Anum_pg_trigger_tgargs - 1] = DirectFunctionCall1(byteain,
+													CStringGetDatum(""));
 	}
 	MemSet(tgattr, 0, FUNC_MAX_ARGS * sizeof(int16));
 	values[Anum_pg_trigger_tgattr - 1] = PointerGetDatum(tgattr);

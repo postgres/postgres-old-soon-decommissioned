@@ -185,6 +185,7 @@ extern struct varlena * pg_detoast_datum_copy(struct varlena * datum);
 
 /* Macros for returning results of standard types */
 
+#define PG_RETURN_DATUM(x)   return (x)
 #define PG_RETURN_INT32(x)   return Int32GetDatum(x)
 #define PG_RETURN_UINT32(x)  return UInt32GetDatum(x)
 #define PG_RETURN_INT16(x)   return Int16GetDatum(x)
