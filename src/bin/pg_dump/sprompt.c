@@ -18,6 +18,11 @@
  *
  * Returns a malloc()'ed string with the input (w/o trailing newline).
  */
+
+
+/* This file is shared by psql and pg_dump. */
+
+
 #include "postgres_fe.h"
 
 #ifdef HAVE_TERMIOS_H
