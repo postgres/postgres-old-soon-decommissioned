@@ -204,8 +204,9 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt)
 	}
 
 	/*
-	 * Check that it's a plain table; we used to do this in getrels() but
-	 * seems safer to check after we've locked the relation.
+	 * Check that it's a plain table; we used to do this in
+	 * get_rel_oids() but seems safer to check after we've locked the
+	 * relation.
 	 */
 	if (onerel->rd_rel->relkind != RELKIND_RELATION)
 	{
