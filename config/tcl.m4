@@ -23,7 +23,7 @@ if test -z "$TCL_CONFIG_SH"; then
         set X `echo 'puts $auto_path' | $TCLSH`; shift
     fi
 
-    for pgac_dir; do
+    for pgac_dir do
         if test -r "$pgac_dir/tclConfig.sh"; then
             TCL_CONFIG_SH=$pgac_dir/tclConfig.sh
             break
@@ -57,7 +57,7 @@ if test -z "$TK_CONFIG_SH"; then
         set X `echo 'puts $auto_path' | $TCLSH`; shift
     fi
 
-    for pgac_dir; do
+    for pgac_dir do
         if test -r "$pgac_dir/tkConfig.sh"; then
             TK_CONFIG_SH=$pgac_dir/tkConfig.sh
             break
