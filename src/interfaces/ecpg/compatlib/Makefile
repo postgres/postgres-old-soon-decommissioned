@@ -8,7 +8,7 @@
 #
 #-------------------------------------------------------------------------
 
-subdir = src/interfaces/ecpg/pgtypeslib
+subdir = src/interfaces/ecpg/compatlib
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
