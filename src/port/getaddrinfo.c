@@ -84,8 +84,16 @@ getaddrinfo(const char *node, const char *service,
 		else
 		{
 			struct hostent *hp;
+#ifdef FRONTEND
+			struct hostent hpstr;
+			char buf[BUFSIZ];
+			int herrno = 0;
 
+			pqGethostbyname(node, &hpstr, buf, sizeof(buf),
+			                &hp, &herrno);
+#else
 			hp = gethostbyname(node);
+#endif
 			if (hp == NULL)
 			{
 				switch (h_errno)

@@ -453,8 +453,17 @@ verify_peer(PGconn *conn)
 	if (addr.sa_family == AF_UNIX)
 		return 0;
 
+	{
+		struct hostent hpstr;
+		char buf[BUFSIZ];
+		int herrno = 0;
+
+		pqGethostbyname(conn->peer_cn, &hpstr, buf, sizeof(buf),
+		                &h, &herrno);
+	}
+	
 	/* what do we know about the peer's common name? */
-	if ((h = gethostbyname(conn->peer_cn)) == NULL)
+	if ((h == NULL)
 	{
 		printfPQExpBuffer(&conn->errorMessage,
 		libpq_gettext("could not get information about host (%s): %s\n"),
