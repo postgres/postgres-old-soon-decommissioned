@@ -1148,28 +1148,28 @@ main(int argc, char** argv)
 	fe_setauthsvc(optarg, errbuf);
 	break;
     case 'c':
-	singleQuery = dupstr(optarg);
+	singleQuery = optarg;
 	if ( singleQuery[0] == '\\' ) {
 	    singleSlashCmd=1;
 	}
 	break;
     case 'd':
-      dbname = dupstr(optarg);
+      dbname = optarg;
       break;
     case 'e':
       settings.echoQuery = 1;
       break;
     case 'f':
-      qfilename = dupstr(optarg);
+      qfilename = optarg;
       break;
     case 'F':
-      settings.opt.fieldSep=dupstr(optarg);
+      settings.opt.fieldSep=optarg;
       break;
     case 'l':
       listDatabases = 1;
       break;
     case 'h':
-      host = dupstr(optarg);
+      host = optarg;
       break;
     case 'H':
       settings.opt.html3 = 1;
@@ -1181,7 +1181,7 @@ main(int argc, char** argv)
       setFout(&settings, optarg);
       break;
     case 'p':
-      port = dupstr(optarg);
+      port = optarg;
       break;
     case 'q':
       settings.quiet = 1;
@@ -1196,7 +1196,7 @@ main(int argc, char** argv)
       settings.opt.header = 0;
       break;
     case 'T':
-      settings.opt.tableOpt = dupstr(optarg);
+      settings.opt.tableOpt = optarg;
       break;
     case 'x':
       settings.opt.expanded = 0;
