@@ -1728,9 +1728,8 @@ pgstat_mainChild(PGSTAT_FORK_ARGS)
 
 			while (nread < targetlen)
 			{
-				len = piperead(readPipe,
-						   ((char *) &msg) + nread,
-						   targetlen - nread);
+				len = piperead(readPipe, ((char *) &msg) + nread,
+								targetlen - nread);
 				if (len < 0)
 				{
 					if (errno == EINTR)
