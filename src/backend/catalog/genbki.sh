@@ -65,7 +65,7 @@ sed -e 's/\/\*.*\*\///g' \
     -e 's/^NameData/\name/g' \
     -e 's/(NameData/(name/g' \
     -e 's/(Oid/(oid/g' | \
-gawk '
+awk '
 # ----------------
 #	now use awk to process remaining .h file..
 #
