@@ -32,7 +32,7 @@
  *		typedef struct FormData_pg_description
  * ----------------
  */
-CATALOG(pg_description) BOOTSTRAP
+CATALOG(pg_description)
 {
 	Oid			objoid;
 	text		description;

@@ -227,19 +227,6 @@ DATA(insert OID = 0 ( 1262 xmax				28 0  4  -5 0 -1 f f i f f));
 DATA(insert OID = 0 ( 1262 cmax				29 0  4  -6 0 -1 t f i f f));
 
 /* ----------------
- *		pg_description
- * ----------------
- */
-DATA(insert OID = 0 ( 1251 objoid			26 0  4   1 0 -1 t f i f f));
-DATA(insert OID = 0 ( 1251 description		25 0 -1   2 0 -1 f f i f f));
-DATA(insert OID = 0 ( 1251 ctid				27 0  6  -1 0 -1 f f i f f));
-DATA(insert OID = 0 ( 1251 oid				26 0  4  -2 0 -1 t f i f f));
-DATA(insert OID = 0 ( 1251 xmin				28 0  4  -3 0 -1 f f i f f));
-DATA(insert OID = 0 ( 1251 cmin				29 0  4  -4 0 -1 t f i f f));
-DATA(insert OID = 0 ( 1251 xmax				28 0  4  -5 0 -1 f f i f f));
-DATA(insert OID = 0 ( 1251 cmax				29 0  4  -6 0 -1 t f i f f));
-
-/* ----------------
  *		pg_proc
  * ----------------
  */
