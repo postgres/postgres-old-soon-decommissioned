@@ -105,7 +105,9 @@ ERROR:  RemoveType: type '<replaceable class="parameter">typename</replaceable>'
     <para>
      It is the user's responsibility to remove any operators,
      functions, aggregates, access methods, subtypes, and tables that
-     use a deleted type.
+     use a deleted type.  However, the associated array datatype
+     (which was automatically created by <command>CREATE TYPE</command>)
+     will be removed automatically.
     </para>
    </listitem>
 
