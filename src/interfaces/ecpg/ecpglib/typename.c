@@ -53,6 +53,8 @@ ECPGtype_name(enum ECPGttype typ)
 			return "date";
 		case ECPGt_timestamp:
 			return "timestamp";
+		case ECPGt_interval:
+			return "interval";
 		default:
 			abort();
 	}

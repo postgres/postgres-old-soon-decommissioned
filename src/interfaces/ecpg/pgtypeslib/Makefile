@@ -16,7 +16,7 @@ NAME= pgtypes
 SO_MAJOR_VERSION= 1
 SO_MINOR_VERSION= 0.0
 
-override CPPFLAGS := -g -I$(top_srcdir)/src/interfaces/ecpg/include -I$(top_srcdir)/src/include/utils $(CPPFLAGS)
+override CPPFLAGS := -O1 -g -I$(top_srcdir)/src/interfaces/ecpg/include -I$(top_srcdir)/src/include/utils $(CPPFLAGS)
 
 OBJS= numeric.o datetime.o common.o dt_common.o timestamp.o
 
