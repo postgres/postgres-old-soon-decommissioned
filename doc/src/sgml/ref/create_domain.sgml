@@ -25,7 +25,7 @@ PostgreSQL documentation
   <synopsis>
 CREATE DOMAIN <replaceable class="parameter">domainname</replaceable> [AS] <replaceable class="parameter">data_type</replaceable>
     [ DEFAULT <replaceable>default_expr</> ]
-    [ <replaceable class="PARAMETER">constraint</replaceable> [, ... ] ]
+    [ <replaceable class="PARAMETER">constraint</replaceable> [ ... ] ]
 
 where <replaceable class="PARAMETER">constraint</replaceable> is:
 
