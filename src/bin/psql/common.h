@@ -37,4 +37,7 @@ extern PGresult *PSQLexec(const char *query);
 
 extern bool SendQuery(const char *query);
 
+/* sprompt.h */
+extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
+
 #endif   /* COMMON_H */

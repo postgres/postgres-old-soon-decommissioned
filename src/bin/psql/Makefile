@@ -19,7 +19,7 @@ override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 
 OBJS=command.o common.o help.o input.o stringutils.o mainloop.o \
 	copy.o startup.o prompt.o variables.o large_obj.o print.o describe.o \
-	tab-complete.o mbprint.o
+	sprompt.o tab-complete.o mbprint.o
 
 all: submake psql
 
