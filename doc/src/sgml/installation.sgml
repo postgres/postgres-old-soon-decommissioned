@@ -1597,6 +1597,14 @@ gunzip -c user.ps.gz \
 	 Henry B. Hotz (<email>hotz@jpl.nasa.gov</email>)</entry>
 	<entry>Mac 8xx</entry>
        </row>
+      <row>
+       <entry><systemitem class="osname">NetBSD</></entry>
+       <entry><systemitem>MIPS</></entry>
+       <entry>7.2.1</entry>
+       <entry>2002-06-13,
+        Warwick Hunter (<email>whunter@agile.tv</email>)</entry>
+       <entry>1.5.3</entry>
+      </row>
        <row>
 	<entry><systemitem class="osname">NetBSD</></entry>
 	<entry><systemitem>PPC</></entry>
