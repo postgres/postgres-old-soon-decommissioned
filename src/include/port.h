@@ -59,7 +59,7 @@ extern void get_pkglib_path(const char *my_exec_path, char *ret_path);
 
 
 /* Portable way to find binaries */
-extern int find_my_exec(const char *argv0, char *full_path);
+extern int find_my_exec(const char *argv0, char *retpath);
 extern int find_other_exec(const char *argv0, char const *target,
 						   const char *versionstr, char *retpath);
 #if defined(__CYGWIN__) || defined(WIN32)
