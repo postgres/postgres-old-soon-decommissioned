@@ -154,7 +154,7 @@ SELECT setseed(<replaceable>value</replaceable>);
        for <literal>SET timezone TO <replaceable>value</></>.  The
        syntax <literal>SET TIME ZONE</literal> allows special syntax
        for the time zone specification.  Here are examples of valid
-       values:
+       values (but note some are accepted only on some platforms):
 
        <variablelist>
         <varlistentry>

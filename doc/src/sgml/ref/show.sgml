@@ -156,9 +156,9 @@ SHOW ALL
 
 <programlisting>
 SHOW DateStyle;
-               DateStyle
----------------------------------------
- ISO with US (NonEuropean) conventions
+ DateStyle
+-----------
+ ISO, US
 (1 row)
 </programlisting>
   </para>

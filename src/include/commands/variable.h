@@ -10,7 +10,6 @@
 
 extern const char *assign_datestyle(const char *value,
 				 bool doit, bool interactive);
-extern const char *show_datestyle(void);
 extern const char *assign_timezone(const char *value,
 				bool doit, bool interactive);
 extern const char *show_timezone(void);

@@ -6501,9 +6501,9 @@ SET search_path TO <replaceable>schema</> <optional>, <replaceable>schema</>, ..
 <programlisting>
 SELECT current_setting('datestyle');
 
-            current_setting
----------------------------------------
- ISO with US (NonEuropean) conventions
+ current_setting
+-----------------
+ ISO, US
 (1 row)
 </programlisting>
    </para>

@@ -1265,7 +1265,7 @@ static struct config_string ConfigureNamesString[] =
 			GUC_LIST_INPUT | GUC_REPORT
 		},
 		&datestyle_string,
-		"ISO, US", assign_datestyle, show_datestyle
+		"ISO, US", assign_datestyle, NULL
 	},
 
 	{
