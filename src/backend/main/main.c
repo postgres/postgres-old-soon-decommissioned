@@ -249,6 +249,8 @@ main(int argc, char *argv[])
 		exit(1);
 	}
 	
+	get_pkglib_path(my_exec_path, pkglib_path);
+
 	/*
 	 * Now dispatch to one of PostmasterMain, PostgresMain, GucInfoMain,
 	 * SubPostmasterMain, pgstat_main, pgstat_mainChild or BootstrapMain

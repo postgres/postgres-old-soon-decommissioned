@@ -688,9 +688,6 @@ PostmasterMain(int argc, char *argv[])
 				(errmsg_internal("-----------------------------------------")));
 	}
 
-	if (strlen(pkglib_path) == 0)
-		get_pkglib_path(my_exec_path, pkglib_path);
-
 #ifdef EXEC_BACKEND
 	if (find_other_exec(argv[0], "postgres", PG_VERSIONSTR, postgres_exec_path) < 0)
 		ereport(FATAL,

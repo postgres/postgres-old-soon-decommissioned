@@ -2549,9 +2549,6 @@ PostgresMain(int argc, char *argv[], const char *username)
 	}
 	Assert(DataDir);
 
-	if (strlen(pkglib_path) == 0)
-		get_pkglib_path(my_exec_path, pkglib_path);
-			
 	/* Acquire configuration parameters */
 	if (IsUnderPostmaster)
 	{
