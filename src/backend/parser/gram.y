@@ -1400,6 +1400,8 @@ opt_portal_name:  IN name				{ $$ = $2; }
 GrantStmt:  GRANT privileges ON relation_name_list TO grantee opt_with_grant
 				{
 					$$ = (Node*)makeAclStmt($2,$4,$6,'+');
+					pfree($2);
+					pfree($6);
 				}
 		;
 
@@ -1424,6 +1426,7 @@ operation_commalist:  operation
 		| operation_commalist ',' operation
 				{
 						$$ = aclmakepriv($1,$3);
+						pfree($1);
 				}
 		;
 
