@@ -341,6 +341,27 @@ ExecEndMaterial(Material *node)
 	ExecClearTuple(matstate->csstate.css_ScanTupleSlot);
 }
 
+/* ----------------------------------------------------------------
+ *		ExecMaterialReScan
+ *
+ *		Rescans the temporary relation.
+ * ----------------------------------------------------------------
+ */
+void
+ExecMaterialReScan(Material *node, ExprContext *exprCtxt, Plan *parent)
+{
+	MaterialState  *matstate = node->matstate;
+
+	if (matstate->mat_Flag == false)
+		return;
+	
+	matstate->csstate.css_currentScanDesc = 
+					ExecReScanR (matstate->csstate.css_currentRelation, 
+								 matstate->csstate.css_currentScanDesc, 
+								 node->plan.state->es_direction, 0, NULL);
+	
+}
+
 #ifdef NOT_USED					/* not used */
 /* ----------------------------------------------------------------
  *		ExecMaterialMarkPos
