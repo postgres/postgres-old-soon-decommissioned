@@ -38,10 +38,14 @@ extern Expr *make_andclause(List *andclauses);
 extern Expr *make_ands_explicit(List *andclauses);
 extern List *make_ands_implicit(Expr *clause);
 
-extern List *pull_constant_clauses(List *quals, List **constantQual);
 extern bool contain_agg_clause(Node *clause);
 extern List *pull_agg_clause(Node *clause);
+
+extern bool contain_subplans(Node *clause);
+extern List *pull_subplans(Node *clause);
 extern void check_subplans_for_ungrouped_vars(Node *clause, Query *query);
+
+extern List *pull_constant_clauses(List *quals, List **constantQual);
 
 extern void clause_get_relids_vars(Node *clause, Relids *relids, List **vars);
 extern int	NumRelids(Node *clause);
