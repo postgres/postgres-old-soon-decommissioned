@@ -7298,15 +7298,6 @@ dumpSequence(Archive *fout, TableInfo *tbinfo)
 						  "    CACHE %s%s",
 						  cache, (cycled ? "\n    CYCLE" : ""));
 
-		/* Output tablespace clause if necessary */
-		if (strlen(tbinfo->reltablespace) != 0 &&
-			strcmp(tbinfo->reltablespace,
-				   tbinfo->dobj.namespace->nsptablespace) != 0)
-		{
-			appendPQExpBuffer(query, " TABLESPACE %s",
-							  fmtId(tbinfo->reltablespace));
-		}
-
 		appendPQExpBuffer(query, ";\n");
 
 		ArchiveEntry(fout, tbinfo->dobj.catId, tbinfo->dobj.dumpId,

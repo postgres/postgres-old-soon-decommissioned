@@ -1165,7 +1165,6 @@ typedef struct CreateSeqStmt
 	NodeTag		type;
 	RangeVar   *sequence;		/* the sequence to create */
 	List	   *options;
-	char	   *tablespacename;	/* tablespace, or NULL for default */
 } CreateSeqStmt;
 
 typedef struct AlterSeqStmt

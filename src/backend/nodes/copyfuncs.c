@@ -2152,7 +2152,6 @@ _copyCreateSeqStmt(CreateSeqStmt *from)
 
 	COPY_NODE_FIELD(sequence);
 	COPY_NODE_FIELD(options);
-	COPY_STRING_FIELD(tablespacename);
 
 	return newnode;
 }

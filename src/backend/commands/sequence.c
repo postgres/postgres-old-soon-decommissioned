@@ -180,7 +180,7 @@ DefineSequence(CreateSeqStmt *seq)
 	stmt->constraints = NIL;
 	stmt->hasoids = MUST_NOT_HAVE_OIDS;
 	stmt->oncommit = ONCOMMIT_NOOP;
-	stmt->tablespacename = seq->tablespacename;
+	stmt->tablespacename = NULL;
 
 	seqoid = DefineRelation(stmt, RELKIND_SEQUENCE);
 

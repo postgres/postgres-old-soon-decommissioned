@@ -874,7 +874,6 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		seqstmt = makeNode(CreateSeqStmt);
 		seqstmt->sequence = makeRangeVar(snamespace, sname);
 		seqstmt->options = NIL;
-		seqstmt->tablespacename = NULL;
 
 		cxt->blist = lappend(cxt->blist, seqstmt);
 
