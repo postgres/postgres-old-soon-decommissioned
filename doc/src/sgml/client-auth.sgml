@@ -644,9 +644,6 @@ local   db1,db2,@demodbs  all                                       md5
 
     If you use <application>mod_auth_kerb</application> from
     <ulink url="http://modauthkerb.sf.net">http://modauthkerb.sf.net</ulink>
-    or <application>mod_auth_gss_krb5</application> from
-    <ulink url="http://meta.cesnet.cz/software/negotiate.en.html">
-    http://meta.cesnet.cz/software/negotiate.en.html</ulink>,
     and <application>mod_perl</application> on your
     <productname>Apache</productname> web server, you can use
     <literal>AuthType KerberosV5SaveCredentials</literal> with a
