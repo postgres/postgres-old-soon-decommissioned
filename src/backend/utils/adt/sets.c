@@ -118,14 +118,8 @@ SetDefine(char *querystr, Oid elemType)
 		AssertTupleDescHasOid(procrel->rd_att);
 		setoid = HeapTupleGetOid(newtup);
 
-		if (RelationGetForm(procrel)->relhasindex)
-		{
-			Relation	idescs[Num_pg_proc_indices];
+		CatalogUpdateIndexes(procrel, newtup);
 
-			CatalogOpenIndices(Num_pg_proc_indices, Name_pg_proc_indices, idescs);
-			CatalogIndexInsert(idescs, Num_pg_proc_indices, procrel, newtup);
-			CatalogCloseIndices(Num_pg_proc_indices, idescs);
-		}
 		heap_freetuple(newtup);
 	}
 

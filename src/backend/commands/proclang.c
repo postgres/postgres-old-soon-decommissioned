@@ -119,14 +119,7 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 
 	simple_heap_insert(rel, tup);
 
-	if (RelationGetForm(rel)->relhasindex)
-	{
-		Relation	idescs[Num_pg_language_indices];
-
-		CatalogOpenIndices(Num_pg_language_indices, Name_pg_language_indices, idescs);
-		CatalogIndexInsert(idescs, Num_pg_language_indices, rel, tup);
-		CatalogCloseIndices(Num_pg_language_indices, idescs);
-	}
+	CatalogUpdateIndexes(rel, tup);
 
 	/*
 	 * Create dependencies for language

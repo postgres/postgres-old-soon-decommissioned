@@ -236,15 +236,8 @@ ProcedureCreate(const char *procedureName,
 		is_update = false;
 	}
 
-	/* Need to update indices for either the insert or update case */
-	if (RelationGetForm(rel)->relhasindex)
-	{
-		Relation	idescs[Num_pg_proc_indices];
-
-		CatalogOpenIndices(Num_pg_proc_indices, Name_pg_proc_indices, idescs);
-		CatalogIndexInsert(idescs, Num_pg_proc_indices, rel, tup);
-		CatalogCloseIndices(Num_pg_proc_indices, idescs);
-	}
+	/* Need to update indexes for either the insert or update case */
+	CatalogUpdateIndexes(rel, tup);
 
 	AssertTupleDescHasOid(tupDesc);
 	retval = HeapTupleGetOid(tup);

@@ -36,7 +36,6 @@ LargeObjectCreate(Oid loid)
 {
 	Relation	pg_largeobject;
 	HeapTuple	ntup;
-	Relation	idescs[Num_pg_largeobject_indices];
 	Datum		values[Natts_pg_largeobject];
 	char		nulls[Natts_pg_largeobject];
 	int			i;
@@ -65,15 +64,8 @@ LargeObjectCreate(Oid loid)
 	 */
 	simple_heap_insert(pg_largeobject, ntup);
 
-	/*
-	 * Update indices
-	 */
-	if (!IsIgnoringSystemIndexes())
-	{
-		CatalogOpenIndices(Num_pg_largeobject_indices, Name_pg_largeobject_indices, idescs);
-		CatalogIndexInsert(idescs, Num_pg_largeobject_indices, pg_largeobject, ntup);
-		CatalogCloseIndices(Num_pg_largeobject_indices, idescs);
-	}
+	/* Update indexes */
+	CatalogUpdateIndexes(pg_largeobject, ntup);
 
 	heap_close(pg_largeobject, RowExclusiveLock);
 

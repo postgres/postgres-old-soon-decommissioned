@@ -105,14 +105,7 @@ Oid	ConversionCreate(const char *conname, Oid connamespace,
 	Assert(OidIsValid(oid));
 
 	/* update the index if any */
-	if (RelationGetForm(rel)->relhasindex)
-	{
-		Relation	idescs[Num_pg_conversion_indices];
-
-		CatalogOpenIndices(Num_pg_conversion_indices, Name_pg_conversion_indices, idescs);
-		CatalogIndexInsert(idescs, Num_pg_conversion_indices, rel, tup);
-		CatalogCloseIndices(Num_pg_conversion_indices, idescs);
-	}
+	CatalogUpdateIndexes(rel, tup);
 
 	myself.classId = get_system_catalog_relid(ConversionRelationName);
 	myself.objectId = HeapTupleGetOid(tup);

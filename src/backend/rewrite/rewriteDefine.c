@@ -95,16 +95,7 @@ InsertRule(char *rulname,
 
 	rewriteObjectId = simple_heap_insert(pg_rewrite_desc, tup);
 
-	if (RelationGetForm(pg_rewrite_desc)->relhasindex)
-	{
-		Relation	idescs[Num_pg_rewrite_indices];
-
-		CatalogOpenIndices(Num_pg_rewrite_indices, Name_pg_rewrite_indices,
-						   idescs);
-		CatalogIndexInsert(idescs, Num_pg_rewrite_indices, pg_rewrite_desc,
-						   tup);
-		CatalogCloseIndices(Num_pg_rewrite_indices, idescs);
-	}
+	CatalogUpdateIndexes(pg_rewrite_desc, tup);
 
 	heap_freetuple(tup);
 
@@ -486,17 +477,8 @@ RenameRewriteRule(Oid owningRel, const char *oldName,
 
 	simple_heap_update(pg_rewrite_desc, &ruletup->t_self, ruletup);
 
-	/* keep system catalog indices current */
-	if (RelationGetForm(pg_rewrite_desc)->relhasindex)
-	{
-		Relation	idescs[Num_pg_rewrite_indices];
-
-		CatalogOpenIndices(Num_pg_rewrite_indices, Name_pg_rewrite_indices,
-						   idescs);
-		CatalogIndexInsert(idescs, Num_pg_rewrite_indices, pg_rewrite_desc,
-						   ruletup);
-		CatalogCloseIndices(Num_pg_rewrite_indices, idescs);
-	}
+	/* keep system catalog indexes current */
+	CatalogUpdateIndexes(pg_rewrite_desc, ruletup);
 
 	heap_freetuple(ruletup);
 	heap_close(pg_rewrite_desc, RowExclusiveLock);

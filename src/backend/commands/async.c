@@ -245,14 +245,7 @@ Async_Listen(char *relname, int pid)
 	simple_heap_insert(lRel, tuple);
 
 #ifdef NOT_USED					/* currently there are no indexes */
-	if (RelationGetForm(lRel)->relhasindex)
-	{
-		Relation	idescs[Num_pg_listener_indices];
-
-		CatalogOpenIndices(Num_pg_listener_indices, Name_pg_listener_indices, idescs);
-		CatalogIndexInsert(idescs, Num_pg_listener_indices, lRel, tuple);
-		CatalogCloseIndices(Num_pg_listener_indices, idescs);
-	}
+	CatalogUpdateIndexes(lRel, tuple);
 #endif
 
 	heap_freetuple(tuple);
@@ -529,14 +522,7 @@ AtCommit_Notify(void)
 				simple_heap_update(lRel, &lTuple->t_self, rTuple);
 
 #ifdef NOT_USED					/* currently there are no indexes */
-				if (RelationGetForm(lRel)->relhasindex)
-				{
-					Relation	idescs[Num_pg_listener_indices];
-
-					CatalogOpenIndices(Num_pg_listener_indices, Name_pg_listener_indices, idescs);
-					CatalogIndexInsert(idescs, Num_pg_listener_indices, lRel, rTuple);
-					CatalogCloseIndices(Num_pg_listener_indices, idescs);
-				}
+				CatalogUpdateIndexes(lRel, rTuple);
 #endif
 			}
 		}
@@ -802,14 +788,7 @@ ProcessIncomingNotify(void)
 			simple_heap_update(lRel, &lTuple->t_self, rTuple);
 
 #ifdef NOT_USED					/* currently there are no indexes */
-			if (RelationGetForm(lRel)->relhasindex)
-			{
-				Relation	idescs[Num_pg_listener_indices];
-
-				CatalogOpenIndices(Num_pg_listener_indices, Name_pg_listener_indices, idescs);
-				CatalogIndexInsert(idescs, Num_pg_listener_indices, lRel, rTuple);
-				CatalogCloseIndices(Num_pg_listener_indices, idescs);
-			}
+			CatalogUpdateIndexes(lRel, rTuple);
 #endif
 		}
 	}

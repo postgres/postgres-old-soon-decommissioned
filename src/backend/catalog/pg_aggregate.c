@@ -175,14 +175,7 @@ AggregateCreate(const char *aggName,
 	tup = heap_formtuple(tupDesc, values, nulls);
 	simple_heap_insert(aggdesc, tup);
 
-	if (RelationGetForm(aggdesc)->relhasindex)
-	{
-		Relation	idescs[Num_pg_aggregate_indices];
-
-		CatalogOpenIndices(Num_pg_aggregate_indices, Name_pg_aggregate_indices, idescs);
-		CatalogIndexInsert(idescs, Num_pg_aggregate_indices, aggdesc, tup);
-		CatalogCloseIndices(Num_pg_aggregate_indices, idescs);
-	}
+	CatalogUpdateIndexes(aggdesc, tup);
 
 	heap_close(aggdesc, RowExclusiveLock);
 

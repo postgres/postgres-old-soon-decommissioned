@@ -64,18 +64,16 @@
 	This is used by CatalogCacheFlushRelation() to remove the correct
 	tuples during a table drop or relcache invalidation event.
 
-	In include/catalog/indexing.h, add a define for the number of indexes
-	on the relation, add define(s) for the index name(s), add an extern
-	array to hold the index names, and use DECLARE_UNIQUE_INDEX to define
-	the index.	Cache lookups return only one row, so the index should be
-	unique in most cases.
-
-	In backend/catalog/indexing.c, initialize the relation array with
-	the index names for the relation.
+	There must be a unique index underlying each syscache (ie, an index
+	whose key is the same as that of the cache).  If there is not one
+	already, add definitions for it to include/catalog/indexing.h: you
+	need a #define for the index name and a DECLARE_UNIQUE_INDEX macro
+	with the actual declaration.  (This will require a catversion.h update,
+	while simply adding/deleting caches only requires a recompile.)
 
 	Finally, any place your relation gets heap_insert() or
-	heap_update calls, include code to do a CatalogIndexInsert() to update
-	the system indexes.  The heap_* calls do not update indexes.
+	heap_update calls, make sure there is a CatalogUpdateIndexes() or
+	similar call.  The heap_* calls do not update indexes.
 
 	bjm 1999/11/22
 

@@ -404,8 +404,7 @@ inv_write(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 	Datum		values[Natts_pg_largeobject];
 	char		nulls[Natts_pg_largeobject];
 	char		replace[Natts_pg_largeobject];
-	bool		write_indices;
-	Relation	idescs[Num_pg_largeobject_indices];
+	CatalogIndexState indstate;
 
 	Assert(PointerIsValid(obj_desc));
 	Assert(buf != NULL);
@@ -413,11 +412,7 @@ inv_write(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 	if (nbytes <= 0)
 		return 0;
 
-	write_indices = !IsIgnoringSystemIndexes();
-	if (write_indices)
-		CatalogOpenIndices(Num_pg_largeobject_indices,
-						   Name_pg_largeobject_indices,
-						   idescs);
+	indstate = CatalogOpenIndexes(obj_desc->heap_r);
 
 	ScanKeyEntryInitialize(&skey[0],
 						   (bits16) 0x0,
@@ -511,9 +506,7 @@ inv_write(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 			newtup = heap_modifytuple(oldtuple, obj_desc->heap_r,
 									  values, nulls, replace);
 			simple_heap_update(obj_desc->heap_r, &newtup->t_self, newtup);
-			if (write_indices)
-				CatalogIndexInsert(idescs, Num_pg_largeobject_indices,
-								   obj_desc->heap_r, newtup);
+			CatalogIndexInsert(indstate, newtup);
 			heap_freetuple(newtup);
 
 			/*
@@ -556,9 +549,7 @@ inv_write(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 			values[Anum_pg_largeobject_data - 1] = PointerGetDatum(&workbuf);
 			newtup = heap_formtuple(obj_desc->heap_r->rd_att, values, nulls);
 			simple_heap_insert(obj_desc->heap_r, newtup);
-			if (write_indices)
-				CatalogIndexInsert(idescs, Num_pg_largeobject_indices,
-								   obj_desc->heap_r, newtup);
+			CatalogIndexInsert(indstate, newtup);
 			heap_freetuple(newtup);
 		}
 		pageno++;
@@ -566,8 +557,7 @@ inv_write(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 
 	index_endscan(sd);
 
-	if (write_indices)
-		CatalogCloseIndices(Num_pg_largeobject_indices, idescs);
+	CatalogCloseIndexes(indstate);
 
 	/*
 	 * Advance command counter so that my tuple updates will be seen by

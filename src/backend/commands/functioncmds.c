@@ -685,16 +685,10 @@ CreateCast(CreateCastStmt *stmt)
 		nulls[i] = ' ';
 
 	tuple = heap_formtuple(RelationGetDescr(relation), values, nulls);
+
 	simple_heap_insert(relation, tuple);
 
-	if (RelationGetForm(relation)->relhasindex)
-	{
-		Relation	idescs[Num_pg_cast_indices];
-
-		CatalogOpenIndices(Num_pg_cast_indices, Name_pg_cast_indices, idescs);
-		CatalogIndexInsert(idescs, Num_pg_cast_indices, relation, tuple);
-		CatalogCloseIndices(Num_pg_cast_indices, idescs);
-	}
+	CatalogUpdateIndexes(relation, tuple);
 
 	myself.classId = RelationGetRelid(relation);
 	myself.objectId = HeapTupleGetOid(tuple);

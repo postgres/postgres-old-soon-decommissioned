@@ -347,19 +347,8 @@ createdb(const CreatedbStmt *stmt)
 
 	simple_heap_insert(pg_database_rel, tuple);
 
-	/*
-	 * Update indexes
-	 */
-	if (RelationGetForm(pg_database_rel)->relhasindex)
-	{
-		Relation	idescs[Num_pg_database_indices];
-
-		CatalogOpenIndices(Num_pg_database_indices,
-						   Name_pg_database_indices, idescs);
-		CatalogIndexInsert(idescs, Num_pg_database_indices, pg_database_rel,
-						   tuple);
-		CatalogCloseIndices(Num_pg_database_indices, idescs);
-	}
+	/* Update indexes */
+	CatalogUpdateIndexes(pg_database_rel, tuple);
 
 	/* Close pg_database, but keep lock till commit */
 	heap_close(pg_database_rel, NoLock);
@@ -562,19 +551,8 @@ AlterDatabaseSet(AlterDatabaseSetStmt *stmt)
 	newtuple = heap_modifytuple(tuple, rel, repl_val, repl_null, repl_repl);
 	simple_heap_update(rel, &tuple->t_self, newtuple);
 
-	/*
-	 * Update indexes
-	 */
-	if (RelationGetForm(rel)->relhasindex)
-	{
-		Relation	idescs[Num_pg_database_indices];
-
-		CatalogOpenIndices(Num_pg_database_indices,
-						   Name_pg_database_indices, idescs);
-		CatalogIndexInsert(idescs, Num_pg_database_indices, rel,
-						   newtuple);
-		CatalogCloseIndices(Num_pg_database_indices, idescs);
-	}
+	/* Update indexes */
+	CatalogUpdateIndexes(rel, newtuple);
 
 	heap_endscan(scan);
 	heap_close(rel, RowExclusiveLock);

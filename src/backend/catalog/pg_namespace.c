@@ -63,17 +63,11 @@ NamespaceCreate(const char *nspName, int32 ownerSysId)
 	tupDesc = nspdesc->rd_att;
 
 	tup = heap_formtuple(tupDesc, values, nulls);
+
 	nspoid = simple_heap_insert(nspdesc, tup);
 	Assert(OidIsValid(nspoid));
 
-	if (RelationGetForm(nspdesc)->relhasindex)
-	{
-		Relation	idescs[Num_pg_namespace_indices];
-
-		CatalogOpenIndices(Num_pg_namespace_indices, Name_pg_namespace_indices, idescs);
-		CatalogIndexInsert(idescs, Num_pg_namespace_indices, nspdesc, tup);
-		CatalogCloseIndices(Num_pg_namespace_indices, idescs);
-	}
+	CatalogUpdateIndexes(nspdesc, tup);
 
 	heap_close(nspdesc, RowExclusiveLock);
 

@@ -206,19 +206,9 @@ CreateComments(Oid oid, Oid classoid, int32 subid, char *comment)
 	}
 
 	/* Update indexes, if necessary */
-
 	if (newtuple != NULL)
 	{
-		if (RelationGetForm(description)->relhasindex)
-		{
-			Relation	idescs[Num_pg_description_indices];
-
-			CatalogOpenIndices(Num_pg_description_indices,
-							   Name_pg_description_indices, idescs);
-			CatalogIndexInsert(idescs, Num_pg_description_indices, description,
-							   newtuple);
-			CatalogCloseIndices(Num_pg_description_indices, idescs);
-		}
+		CatalogUpdateIndexes(description, newtuple);
 		heap_freetuple(newtuple);
 	}
 
