@@ -24,7 +24,3 @@ SUBSYS.o: $(OBJS)
 
 clean: 
 	rm -f SUBSYS.o $(OBJS)
-
-
-# ensure that changes in PKGLIBDIR propagate to dfmgr.o
-dfmgr.o: dfmgr.c $(top_builddir)/src/Makefile.global

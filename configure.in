@@ -1202,6 +1202,59 @@ CFLAGS="$_CFLAGS"
 LIBS="$_LIBS"
 fi
 
+# Adjust installation directories.
+#
+# These are initially set by the equivalent --xxxdir configure options.
+# We append "postgresql" to some of them, if the string does not already
+# contain "pgsql" or "postgres", in order to avoid directory clutter.
+
+if echo "$libexecdir" | egrep 'pgsql|postgres' >/dev/null 2>&1
+then
+  :
+else
+  libexecdir="$libexecdir/postgresql"
+fi
+
+if echo "$datadir" | egrep 'pgsql|postgres' >/dev/null 2>&1
+then
+  :
+else
+  datadir="$datadir/postgresql"
+fi
+
+if echo "$sysconfdir" | egrep 'pgsql|postgres' >/dev/null 2>&1
+then
+  :
+else
+  sysconfdir="$sysconfdir/postgresql"
+fi
+
+pkglibdir="$libdir"
+if echo "$pkglibdir" | egrep 'pgsql|postgres' >/dev/null 2>&1
+then
+  :
+else
+  pkglibdir="$pkglibdir/postgresql"
+fi
+AC_SUBST(pkglibdir)
+
+pkgincludedir="$includedir"
+if echo "$pkgincludedir" | egrep 'pgsql|postgres' >/dev/null 2>&1
+then
+  :
+else
+  pkgincludedir="$pkgincludedir/postgresql"
+fi
+AC_SUBST(pkgincludedir)
+
+if echo "$docdir" | egrep 'pgsql|postgres' >/dev/null 2>&1
+then
+  :
+else
+  docdir="$docdir/postgresql"
+fi
+
+
 # prepare build tree if outside source tree
 # Note 1: test -ef might not exist, but it's more reliable than `pwd`.
 # Note 2: /bin/pwd might be better than shell's built-in at getting
