@@ -1232,7 +1232,7 @@ $MAKE -C $srcdir/src/tools/thread >&5 ||
 	  AC_MSG_ERROR([Can not build thread test proram.]))
 $srcdir/src/tools/thread/thread_test >&5 ||
 	( rm -f src/Makefile.global
-	  AC_MSG_ERROR([Thread test program failed.]))
+	  AC_MSG_ERROR([Thread test program failed.  See 'config.log' for details.]))
 $MAKE -C $srcdir/src/tools/thread clean >&5 ||
 	( rm -f src/Makefile.global
 	  AC_MSG_ERROR([Can not clean thread test directory.]))
