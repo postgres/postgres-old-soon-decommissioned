@@ -313,7 +313,7 @@ network_host(inet *ip)
 	if (ip_family(ip) == AF_INET)
 	{
 		/* It's an IP V4 address: */
-		if (inet_net_ntop(AF_INET, &ip_v4addr(ip), 32, tmp, sizeof(tmp)) < 0)
+		if (inet_net_ntop(AF_INET, &ip_v4addr(ip), 32, tmp, sizeof(tmp)) == NULL)
 		{
 			elog(ERROR, "unable to print host (%s)", strerror(errno));
 			return (NULL);
@@ -358,7 +358,7 @@ network_broadcast(inet *ip)
 		/* It's an IP V4 address: */
 		int	addr = htonl(ntohl(ip_v4addr(ip)) | (0xffffffff >> ip_bits(ip)));
 
-		if (inet_net_ntop(AF_INET, &addr, 32, tmp, sizeof(tmp)) < 0)
+		if (inet_net_ntop(AF_INET, &addr, 32, tmp, sizeof(tmp)) == NULL)
 		{
 			elog(ERROR, "unable to print address (%s)", strerror(errno));
 			return (NULL);
@@ -397,7 +397,7 @@ network_network(inet *ip)
 		/* It's an IP V4 address: */
 		int	addr = ntohl(ip_v4addr(ip)) & (0xffffffff << (32 - ip_bits(ip)));
 
-		if (inet_cidr_ntop(AF_INET, &addr, 32, tmp, sizeof(tmp)) < 0)
+		if (inet_cidr_ntop(AF_INET, &addr, 32, tmp, sizeof(tmp)) == NULL)
 		{
 			elog(ERROR, "unable to print network (%s)", strerror(errno));
 			return (NULL);
@@ -436,7 +436,7 @@ network_netmask(inet *ip)
 		/* It's an IP V4 address: */
 		int			addr = htonl((-1 << (32 - ip_bits(ip))) & 0xffffffff);
 
-		if (inet_net_ntop(AF_INET, &addr, 32, tmp, sizeof(tmp)) < 0)
+		if (inet_net_ntop(AF_INET, &addr, 32, tmp, sizeof(tmp)) == NULL)
 		{
 			elog(ERROR, "unable to print netmask (%s)", strerror(errno));
 			return (NULL);
