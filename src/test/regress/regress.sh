@@ -20,12 +20,6 @@ if [ $? -ne 0 ]; then
      exit 1
 fi
 
-#$FRONTEND regression < create.sql
-#if [ $? -ne 0 ]; then
-#     echo the creation script has an error
-#     exit 1
-#fi
-
 echo =============== running regression queries ... =================
 for i in `cat sql/tests`
 do
@@ -39,8 +33,6 @@ do
 	fi
 done
 exit
-$FRONTEND regression < queries.sql
-# this will generate error result code
 
 echo =============== running error queries ... =================
 $FRONTEND regression < errors.sql
