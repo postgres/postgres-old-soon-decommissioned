@@ -866,6 +866,7 @@ ProcessUtility(Node *parsetree,
 						relname = (char *) stmt->name;
 						if (IsSystemRelationName(relname))
 						{
+#ifdef	OLD_FILE_NAMING
 							if (!allowSystemTableMods && IsSystemRelationName(relname))
 								elog(ERROR, "\"%s\" is a system table. call REINDEX under standalone postgres with -O -P options",
 								 relname);
@@ -873,6 +874,7 @@ ProcessUtility(Node *parsetree,
 								elog(ERROR, "\"%s\" is a system table. call REINDEX under standalone postgres with -P -O options",
 
 								 relname);
+#endif /* OLD_FILE_NAMING */
 						}
 						if (!pg_ownercheck(GetUserId(), relname, RELNAME))
 							elog(ERROR, "%s: %s", relname, aclcheck_error_strings[ACLCHECK_NOT_OWNER]);
