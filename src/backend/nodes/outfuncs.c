@@ -1353,7 +1353,8 @@ _outValue(StringInfo str, Value *value)
 			appendStringInfo(str, "\" ");
 			break;
 		case T_BitString:
-			appendStringInfo(str, " B%s ", value->val.str);
+			/* internal representation already has leading 'b' */
+			appendStringInfo(str, " %s ", value->val.str);
 			break;
 		default:
 			elog(NOTICE, "_outValue: don't know how to print type %d ",
