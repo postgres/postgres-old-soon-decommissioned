@@ -21,6 +21,7 @@
  */
 extern Relation RelationIdGetRelation(Oid relationId);
 extern Relation RelationNameGetRelation(const char *relationName);
+extern Relation RelationNodeCacheGetRelation(RelFileNode rnode);
 
 /* finds an existing cache entry, but won't make a new one */
 extern Relation RelationIdCacheGetRelation(Oid relationId);

@@ -68,7 +68,6 @@ bits8	   *BufferLocks;		/* flag bits showing locks I have set */
 BufferTag  *BufferTagLastDirtied;		/* tag buffer had when last
 										 * dirtied by me */
 BufferBlindId  *BufferBlindLastDirtied;
-LockRelId	   *BufferRelidLastDirtied;
 bool		   *BufferDirtiedByMe;	/* T if buf has been dirtied in cur xact */
 
 
@@ -252,7 +251,6 @@ InitBufferPool(IPCKey key)
 	BufferLocks = (bits8 *) calloc(NBuffers, sizeof(bits8));
 	BufferTagLastDirtied = (BufferTag *) calloc(NBuffers, sizeof(BufferTag));
 	BufferBlindLastDirtied = (BufferBlindId *) calloc(NBuffers, sizeof(BufferBlindId));
-	BufferRelidLastDirtied = (LockRelId *) calloc(NBuffers, sizeof(LockRelId));
 	BufferDirtiedByMe = (bool *) calloc(NBuffers, sizeof(bool));
 }
 

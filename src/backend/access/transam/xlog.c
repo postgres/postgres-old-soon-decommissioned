@@ -991,6 +991,7 @@ got_record:;
 			nextRecord = (XLogRecord *) ((char *) subrecord + 
 				MAXALIGN(subrecord->xl_len) + SizeOfXLogSubRecord);
 		}
+		record->xl_len = len;
 		EndRecPtr.xlogid = readId;
 		EndRecPtr.xrecoff = readSeg * XLogSegSize + readOff * BLCKSZ +
 			SizeOfXLogPHD + SizeOfXLogSubRecord + 
@@ -1412,7 +1413,9 @@ StartupXLOG()
 				{
 					char	buf[8192];
 
-					sprintf(buf, "REDO @ %u/%u: ", ReadRecPtr.xlogid, ReadRecPtr.xrecoff);
+					sprintf(buf, "REDO @ %u/%u; LSN %u/%u: ", 
+						ReadRecPtr.xlogid, ReadRecPtr.xrecoff,
+						EndRecPtr.xlogid, EndRecPtr.xrecoff);
 					xlog_outrec(buf, record);
 					strcat(buf, " - ");
 					RmgrTable[record->xl_rmid].rm_desc(buf, 
