@@ -15,7 +15,7 @@ Postgres documentation
 
   <para>
    Look back at
-   <xref endterm="EXTEND-CATALOGS" linkend="EXTEND-CATALOGS">.
+   <xref linkend="EXTEND-CATALOGS">.
    The right half shows the  catalogs  that we must modify in order to tell
    <productname>Postgres</productname> how to use a user-defined type and/or
    user-defined  operators with an index (i.e., <filename>pg_am, pg_amop,

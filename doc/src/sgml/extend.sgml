@@ -196,7 +196,7 @@ $Header$
 
     The Reference Manual gives a more detailed  explanation
     of  these catalogs and their attributes.  However,
-    <xref endterm="EXTEND-CATALOGS" linkend="EXTEND-CATALOGS">
+    <xref linkend="EXTEND-CATALOGS">
     shows the major entities and their  relationships
     in  the system catalogs.  (Attributes that do not refer
     to other entities are not shown unless they are part of

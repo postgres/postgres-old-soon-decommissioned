@@ -3,7 +3,7 @@ $Header$
 -->
 
  <chapter id="libpqplusplus">
-  <title>libpq - C++ Binding Library</title>
+  <title>libpq++ - C++ Binding Library</title>
   
   <para>
    <filename>libpq++</filename> is the C++ API to 
@@ -57,7 +57,7 @@ $Header$
      an application program:
      <note>
       <para>
-       Refer to the <xref endterm="libpq" linkend="libpq-envars"> for a complete
+       Refer to <xref linkend="libpq-envars"> for a complete
        list of available connection options.
       </para>
      </note>
