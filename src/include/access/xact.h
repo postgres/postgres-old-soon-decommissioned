@@ -78,9 +78,6 @@ typedef TransactionStateData *TransactionState;
 #define StoreInvalidTransactionId(dest) \
 	(*((TransactionId*) (dest)) = NullTransactionId)
 
-
-#ifdef XLOG
-
 /*
  * XLOG allows to store some information in high 4 bits of log
  * record xl_info field
@@ -105,8 +102,6 @@ typedef struct xl_xact_abort
 } xl_xact_abort;
 
 #define SizeOfXactAbort	((offsetof(xl_xact_abort, xtime) + sizeof(time_t)))
-
-#endif
 
 /* ----------------
  *		extern definitions

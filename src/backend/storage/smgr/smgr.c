@@ -47,9 +47,7 @@ typedef struct f_smgr
 	int			(*smgr_truncate) (Relation reln, int nblocks);
 	int			(*smgr_commit) (void);	/* may be NULL */
 	int			(*smgr_abort) (void);	/* may be NULL */
-#ifdef XLOG
 	int			(*smgr_sync) (void);
-#endif
 } f_smgr;
 
 /*
@@ -62,11 +60,7 @@ static f_smgr smgrsw[] = {
 	/* magnetic disk */
 	{mdinit, NULL, mdcreate, mdunlink, mdextend, mdopen, mdclose,
 		mdread, mdwrite, mdflush, mdblindwrt, mdmarkdirty, mdblindmarkdirty,
-#ifdef XLOG
 	mdnblocks, mdtruncate, mdcommit, mdabort, mdsync
-#else
-	mdnblocks, mdtruncate, mdcommit, mdabort
-#endif
 	},
 
 #ifdef STABLE_MEMORY_STORAGE
@@ -545,7 +539,6 @@ smgrabort()
 	return SM_SUCCESS;
 }
 
-#ifdef XLOG
 int
 smgrsync()
 {
@@ -564,7 +557,6 @@ smgrsync()
 
 	return SM_SUCCESS;
 }
-#endif
 
 #ifdef NOT_USED
 bool
@@ -577,8 +569,6 @@ smgriswo(int16 smgrno)
 }
 
 #endif
-
-#ifdef XLOG
 
 void
 smgr_redo(XLogRecPtr lsn, XLogRecord *record)
@@ -594,4 +584,3 @@ void
 smgr_desc(char *buf, uint8 xl_info, char* rec)
 {
 }
-#endif

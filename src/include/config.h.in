@@ -234,9 +234,6 @@
 # define HAVE_UNIX_SOCKETS 1
 #endif
 
-/* Enable WAL.  Don't disable this, it was only used during development. */
-#define XLOG 1
-
 /*
  *------------------------------------------------------------------------
  * These hand-configurable symbols are for enabling debugging code,

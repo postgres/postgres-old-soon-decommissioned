@@ -32,10 +32,7 @@ bool		BuildingBtree = false;		/* see comment in btbuild() */
 bool		FastBuild = true;	/* use sort/build instead of insertion
 								 * build */
 
-#ifdef XLOG
 #include "access/xlogutils.h"
-
-#endif
 
 static void _bt_restscan(IndexScanDesc scan);
 
@@ -732,8 +729,6 @@ _bt_restscan(IndexScanDesc scan)
 		so->btso_curbuf = buf;
 	}
 }
-
-#ifdef XLOG
 
 static bool
 _bt_cleanup_page(Page page, RelFileNode hnode)
@@ -1529,5 +1524,3 @@ btree_desc(char *buf, uint8 xl_info, char* rec)
 	else
 		strcat(buf, "UNKNOWN");
 }
-
-#endif

@@ -2027,8 +2027,7 @@ RelationCacheInitializePhase2(void)
 	}
 }
 
-#ifdef XLOG		/* used by XLogInitCache */
-
+/* used by XLogInitCache */
 void CreateDummyCaches(void);
 void DestroyDummyCaches(void);
 
@@ -2081,8 +2080,6 @@ DestroyDummyCaches(void)
 
 	MemoryContextSwitchTo(oldcxt);
 }
-
-#endif	/* XLOG */
 
 static void
 AttrDefaultFetch(Relation relation)

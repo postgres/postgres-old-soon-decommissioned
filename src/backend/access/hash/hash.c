@@ -27,9 +27,7 @@
 
 bool		BuildingHash = false;
 
-#ifdef XLOG
 #include "access/xlogutils.h"
-#endif
 
 
 /*
@@ -482,7 +480,6 @@ hashdelete(PG_FUNCTION_ARGS)
 	PG_RETURN_VOID();
 }
 
-#ifdef XLOG
 void
 hash_redo(XLogRecPtr lsn, XLogRecord *record)
 {
@@ -499,4 +496,3 @@ void
 hash_desc(char *buf, uint8 xl_info, char* rec)
 {
 }
-#endif

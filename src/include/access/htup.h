@@ -63,11 +63,6 @@ typedef struct HeapTupleHeaderData
 
 typedef HeapTupleHeaderData *HeapTupleHeader;
 
-
-#ifdef XLOG
-
-/* XLOG stuff */
-
 /*
  * XLOG allows to store some information in high 4 bits of log
  * record xl_info field
@@ -127,11 +122,6 @@ typedef struct xl_heap_update
 
 #define SizeOfHeapUpdate	(offsetof(xl_heap_update, mask) + sizeof(uint8))
 
-/* end of XLOG stuff */
-
-#endif	/* XLOG */
-
-
 /*
  * MaxTupleSize is the maximum allowed size of a tuple, including header and
  * MAXALIGN alignment padding.  Basically it's BLCKSZ minus the other stuff
@@ -146,7 +136,6 @@ typedef struct xl_heap_update
 
 #define MaxTupleSize	\
 	(BLCKSZ - MAXALIGN(sizeof(PageHeaderData) + MaxSpecialSpace))
-
 
 /*
  * MaxAttrSize is a somewhat arbitrary upper limit on the declared size of

@@ -18,7 +18,6 @@
 #include "storage/lmgr.h"
 #include "storage/s_lock.h"
 
-
 /* Buf Mgr constants */
 /* in bufmgr.c */
 extern int	Data_Descriptors;
@@ -27,7 +26,6 @@ extern int	Lookup_List_Descriptor;
 extern int	Num_Descriptors;
 
 extern int	ShowPinTrace;
-
 
 /*
  * Flags for buffer descriptors
@@ -105,9 +103,7 @@ typedef struct sbufdesc
 	bool		ri_lock;		/* read-intent lock */
 	bool		w_lock;			/* context exclusively locked */
 
-#ifdef XLOG
 	bool		cntxDirty;		/* new way to mark block as dirty */
-#endif
 
 	BufferBlindId blind;		/* was used to support blind write */
 

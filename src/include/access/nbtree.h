@@ -42,10 +42,7 @@ typedef struct BTPageOpaqueData
 #define BTP_ROOT		(1 << 1)	/* It's the root page (has no parent) */
 #define BTP_FREE		(1 << 2)	/* not currently used... */
 #define BTP_META		(1 << 3)	/* Set in the meta-page only */
-
-#ifdef	XLOG
 #define	BTP_REORDER		(1 << 4)	/* items must be re-ordered */
-#endif
 } BTPageOpaqueData;
 
 typedef BTPageOpaqueData *BTPageOpaque;
@@ -209,11 +206,6 @@ typedef BTStackData *BTStack;
 #define P_FIRSTKEY		((OffsetNumber) 2)
 #define P_FIRSTDATAKEY(opaque)  (P_RIGHTMOST(opaque) ? P_HIKEY : P_FIRSTKEY)
 
-
-#ifdef XLOG
-
-/* XLOG stuff */
-
 /*
  * XLOG allows to store some information in high 4 bits of log
  * record xl_info field
@@ -257,7 +249,6 @@ typedef struct xl_btree_insert
 
 #define SizeOfBtreeInsert	(offsetof(xl_btreetid, tid) + SizeOfIptrData)
 
-
 /* 
  * This is what we need to know about insert with split - 
  * 22 + {4 + 8 | left hi-key} + [btitem] + right sibling btitems. Note that
@@ -291,10 +282,6 @@ typedef struct xl_btree_newroot
 } xl_btree_newroot;
 
 #define SizeOfBtreeNewroot	(offsetof(xl_btree_newroot, rootblk) + sizeof(BlockIdData))
-
-/* end of XLOG stuff */
-
-#endif	/* XLOG */
 
 /*
  *	Operator strategy numbers -- ordering of these is <, <=, =, >=, >

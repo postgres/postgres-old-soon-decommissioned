@@ -424,23 +424,12 @@ InitializeTransactionLog(void)
 	SpinAcquire(OidGenLockId);
 	if (!TransactionIdDidCommit(AmiTransactionId))
 	{
-
-		/* ----------------
-		 *	SOMEDAY initialize the information stored in
-		 *			the headers of the log/variable relations.
-		 * ----------------
-		 */
 		TransactionLogUpdate(AmiTransactionId, XID_COMMIT);
 		TransactionIdStore(AmiTransactionId, &cachedTestXid);
 		cachedTestXidStatus = XID_COMMIT;
-#ifdef XLOG
 		Assert(!IsUnderPostmaster && 
 				ShmemVariableCache->nextXid <= FirstTransactionId);
 		ShmemVariableCache->nextXid = FirstTransactionId;
-#else
-		VariableRelationPutNextXid(FirstTransactionId);
-#endif
-
 	}
 	else if (RecoveryCheckingEnabled())
 	{
