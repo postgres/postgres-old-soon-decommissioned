@@ -15,6 +15,8 @@
 SRCDIR=..
 include ../Makefile.global
 
+all:
+
 install:
 	-mkdir $(POSTMANDIR)
 	-mkdir $(POSTMANDIR)/man1
@@ -27,7 +29,5 @@ install:
 	cp *.l* $(POSTMANDIR)/manl
 
 clean:
-
-all:
 
 dep depend:
