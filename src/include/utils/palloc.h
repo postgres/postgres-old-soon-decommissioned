@@ -70,7 +70,25 @@ extern void pfree(void *pointer);
 
 extern void *repalloc(void *pointer, Size size);
 
+/*
+ * MemoryContextSwitchTo can't be a macro in standard C compilers.
+ * But we can make it an inline function when using GCC.
+ */
+#ifdef __GNUC__
+
+static __inline__ MemoryContext
+MemoryContextSwitchTo(MemoryContext context)
+{
+	MemoryContext old = CurrentMemoryContext;
+	CurrentMemoryContext = context;
+	return old;
+}
+
+#else
+
 extern MemoryContext MemoryContextSwitchTo(MemoryContext context);
+
+#endif   /* __GNUC__ */
 
 /*
  * These are like standard strdup() except the copied string is
