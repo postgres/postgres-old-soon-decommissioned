@@ -82,7 +82,7 @@ ifeq ($(PORTNAME), bsdi)
     ifeq ($(DLSUFFIX), .so)
       install-shlib-dep := install-shlib
       shlib			:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
-      LDFLAGS_SL		+= -shared
+      LDFLAGS_SL                += -shared -soname $(shlib)
       CFLAGS			+= $(CFLAGS_SL)
     endif
     ifeq ($(DLSUFFIX), .o)
