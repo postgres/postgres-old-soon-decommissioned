@@ -1991,11 +1991,9 @@ DeferredTriggerSetState(ConstraintsSetStmt *stmt)
 	List	   *l;
 
 	/*
-	 * If called outside a transaction block, we can safely return: this
-	 * command cannot effect any subsequent transactions, and there are no
-	 * "session-level" trigger settings.
+	 * Ignore call if we aren't in a transaction.
 	 */
-	if (!IsTransactionBlock())
+	if (deftrig_cxt == NULL)
 		return;
 
 	/*
