@@ -107,6 +107,7 @@
 #endif
 #include <arpa/inet.h>
 #endif
+#include <sys/stat.h>
 
 #ifdef ENABLE_THREAD_SAFETY
 #include <pthread.h>
@@ -115,11 +116,6 @@
 #ifndef HAVE_STRDUP
 #include "strdup.h"
 #endif
-
-#ifndef WIN32
-#include <pwd.h>
-#endif
-#include <sys/stat.h>
 
 #ifdef USE_SSL
 #include <openssl/ssl.h>
@@ -492,31 +488,6 @@ pqsecure_write(PGconn *conn, const void *ptr, size_t len)
 /*						  SSL specific code						*/
 /* ------------------------------------------------------------ */
 #ifdef USE_SSL
-
-/*
- * Obtain user's home directory, return in given buffer
- *
- * This code isn't really SSL-specific, but currently we only need it in
- * SSL-related places.
- */
-static bool
-pqGetHomeDirectory(char *buf, int bufsize)
-{
-#ifndef WIN32
-	char		pwdbuf[BUFSIZ];
-	struct passwd pwdstr;
-	struct passwd *pwd = NULL;
-
-	if (pqGetpwuid(geteuid(), &pwdstr, pwdbuf, sizeof(pwdbuf), &pwd) != 0)
-		return false;
-	StrNCpy(buf, pwd->pw_dir, bufsize);
-	return true;
-
-#else
-
-	return false;				/* PLACEHOLDER */
-#endif
-}
 
 /*
  *	Certificate verification callback

@@ -98,12 +98,6 @@ extern int find_other_exec(const char *argv0, const char *target,
 #define SYSTEMQUOTE ""
 #endif
 
-#if defined(WIN32) && !defined(__CYGWIN__)
-#define HOMEDIR "USERPROFILE"
-#else
-#define HOMEDIR "HOME"
-#endif
-
 /* Portable delay handling */
 extern void pg_usleep(long microsec);
 
