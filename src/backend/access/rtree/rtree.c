@@ -280,12 +280,8 @@ rtdoinsert(Relation r, IndexTuple itup, RTSTATE *rtstate)
 
 	do
 	{
-		/* let go of current buffer before getting next */
-		if (buffer != InvalidBuffer)
-			ReleaseBuffer(buffer);
-
-		/* get next buffer */
-		buffer = ReadBuffer(r, blk);
+		/* release the current buffer, read in the next one */
+		buffer = ReleaseAndReadBuffer(buffer, r, blk);
 		page = (Page) BufferGetPage(buffer);
 
 		opaque = (RTreePageOpaque) PageGetSpecialPointer(page);
