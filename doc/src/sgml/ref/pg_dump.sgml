@@ -650,6 +650,11 @@ CREATE DATABASE foo WITH TEMPLATE template0;
 </programlisting>
   </para>
 
+   <para>
+    Once restored, it is wise to run <command>ANALYZE</> on each
+    restored object so the optimizer has useful statistics.
+   </para>
+
   <para>
    <application>pg_dump</application> has a few limitations:
 
@@ -682,6 +687,12 @@ CREATE DATABASE foo WITH TEMPLATE template0;
    other output formats is not limited, except possibly by the
    operating system.
   </para>
+
+  <para>
+   Once restored, it is wise to run <command>ANALYZE</> on each
+   restored object so the optimizer has useful statistics.
+  </para>
+
  </refsect1>
 
  <refsect1 id="pg-dump-examples">

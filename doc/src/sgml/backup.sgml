@@ -126,6 +126,13 @@ psql <replaceable class="parameter">dbname</replaceable> &lt; <replaceable class
    </para>
 
    <para>
+    Once restored, it is wise to run <command>ANALYZE</> on each
+    database so the optimizer has useful statistics. You
+    can also run <command>vacuumdb -a -z</> to <command>ANALYZE</> all
+    databases.
+   </para>
+
+   <para>
     The ability of <application>pg_dump</> and <application>psql</> to
     write to or read from pipes makes it possible to dump a database
     directly from one server to another, for example
