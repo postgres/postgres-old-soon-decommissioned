@@ -800,6 +800,7 @@ adjust_inherited_attrs_mutator(Node *node,
 			var->varno == context->old_rt_index)
 		{
 			var->varno = context->new_rt_index;
+			var->varnoold = context->new_rt_index;
 			if (var->varattno > 0)
 			{
 				char	   *attname = get_attname(context->old_relid,
@@ -809,6 +810,7 @@ adjust_inherited_attrs_mutator(Node *node,
 				if (var->varattno == InvalidAttrNumber)
 					elog(ERROR, "Relation \"%s\" has no column \"%s\"",
 						 get_rel_name(context->new_relid), attname);
+				var->varoattno = var->varattno;
 				pfree(attname);
 			}
 		}

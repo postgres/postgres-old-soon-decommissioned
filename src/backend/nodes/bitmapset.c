@@ -389,6 +389,36 @@ bms_overlap(const Bitmapset *a, const Bitmapset *b)
 }
 
 /*
+ * bms_nonempty_difference - do sets have a nonempty difference?
+ */
+bool
+bms_nonempty_difference(const Bitmapset *a, const Bitmapset *b)
+{
+	int			shortlen;
+	int			i;
+
+	/* Handle cases where either input is NULL */
+	if (a == NULL)
+		return false;
+	if (b == NULL)
+		return !bms_is_empty(a);
+	/* Check words in common */
+	shortlen = Min(a->nwords, b->nwords);
+	for (i = 0; i < shortlen; i++)
+	{
+		if ((a->words[i] & ~ b->words[i]) != 0)
+			return true;
+	}
+	/* Check extra words in a */
+	for (; i < a->nwords; i++)
+	{
+		if (a->words[i] != 0)
+			return true;
+	}
+	return false;
+}
+
+/*
  * bms_singleton_member - return the sole integer member of set
  *
  * Raises error if |a| is not 1.

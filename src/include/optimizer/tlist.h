@@ -16,10 +16,10 @@
 
 #include "nodes/relation.h"
 
+
 extern TargetEntry *tlistentry_member(Node *node, List *targetlist);
 extern Resdom *tlist_member(Node *node, List *targetlist);
 
-extern void add_var_to_tlist(RelOptInfo *rel, Var *var);
 extern TargetEntry *create_tl_element(Var *var, int resdomno);
 
 extern List *flatten_tlist(List *tlist);

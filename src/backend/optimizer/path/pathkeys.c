@@ -703,20 +703,18 @@ find_indexkey_var(Query *root, RelOptInfo *rel, AttrNumber varattno)
 				vartypeid;
 	int32		type_mod;
 
-	foreach(temp, rel->targetlist)
+	foreach(temp, FastListValue(&rel->reltargetlist))
 	{
-		Var		   *tle_var = (Var *) ((TargetEntry *) lfirst(temp))->expr;
+		Var		   *var = (Var *) lfirst(temp);
 
-		if (IsA(tle_var, Var) &&
-			tle_var->varattno == varattno)
-			return tle_var;
+		if (IsA(var, Var) &&
+			var->varattno == varattno)
+			return var;
 	}
 
 	relid = rel->relid;
-	Assert(relid > 0);
 	reloid = getrelid(relid, root->rtable);
-	vartypeid = get_atttype(reloid, varattno);
-	type_mod = get_atttypmod(reloid, varattno);
+	get_atttypetypmod(reloid, varattno, &vartypeid, &type_mod);
 
 	return makeVar(relid, varattno, vartypeid, type_mod, 0);
 }

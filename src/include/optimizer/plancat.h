@@ -19,6 +19,8 @@
 
 extern void get_relation_info(Oid relationObjectId, RelOptInfo *rel);
 
+extern List *build_physical_tlist(Query *root, RelOptInfo *rel);
+
 extern List *find_inheritance_children(Oid inhparent);
 
 extern bool has_subclass(Oid relationId);
