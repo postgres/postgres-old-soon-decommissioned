@@ -34,7 +34,7 @@ WANTED_DIRS = \
 
 all install installdirs uninstall clean distclean maintainer-clean:
 	for dir in $(WANTED_DIRS); do \
-	    if [ -e $$dir/Makefile ]; then \
+	    if [ -f $$dir/Makefile ]; then \
 		$(MAKE) -C $$dir $@; \
 	    fi; \
 	done
