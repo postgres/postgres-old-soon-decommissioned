@@ -24,7 +24,7 @@ extern		"C"
 /* postgres_ext.h defines the backend's externally visible types,
  * such as Oid.
  */
-#include "postgres_ext.h"
+#include <postgres_ext.h>
 
 /* Application-visible enum types */
 
