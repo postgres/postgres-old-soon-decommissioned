@@ -87,7 +87,7 @@ compute_return_type(const Node *returnType,
     if (nodeTag(returnType) == T_TypeName) {
         /* a set of values */
         TypeName *setType = (TypeName *)returnType;
-        *prorettype_p = setType->name,
+        *prorettype_p = setType->name;
         *returnsSet_p = true;
     }else {
         /* singleton */
