@@ -424,7 +424,7 @@ BufferAlloc(Relation reln,
 			{
 				/*
 				 * BM_JUST_DIRTIED cleared by BufferReplace and shouldn't
-				 * be setted by anyone.		- vadim 01/17/97
+				 * be set by anyone.		- vadim 01/17/97
 				 */
 				if (buf->flags & BM_JUST_DIRTIED)
 				{

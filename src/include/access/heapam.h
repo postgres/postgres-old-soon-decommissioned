@@ -25,13 +25,6 @@
 #include "utils/rel.h"
 #include "utils/tqual.h"
 
-/* ----------------------------------------------------------------
- *				leftover cruft from old statistics code
- * ----------------------------------------------------------------
- */
-
-#define IncrHeapAccessStat(x)	((void) 0)
-
 /* ----------------
  *		fastgetattr
  *
