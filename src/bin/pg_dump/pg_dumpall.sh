@@ -217,7 +217,7 @@ while read DATABASE DBOWNER ENCODING ISTEMPLATE DBPATH; do
     echo "--"
     echo "-- Database $DATABASE"
     echo "--"
-    echo "${BS}connect template1 $DBOWNER"
+    echo "${BS}connect template1 \"$DBOWNER\""
 
     if [ "$cleanschema" = yes -a "$DATABASE" != template1 ] ; then
         echo "DROP DATABASE \"$DATABASE\";"
@@ -234,7 +234,7 @@ while read DATABASE DBOWNER ENCODING ISTEMPLATE DBPATH; do
 	echo "$createdbcmd;"
     fi
 
-    echo "${BS}connect $DATABASE $DBOWNER"
+    echo "${BS}connect \"$DATABASE\" \"$DBOWNER\""
     echo "dumping database \"$DATABASE\"..." 1>&2
     $PGDUMP "$DATABASE" <&4
     if [ "$?" -ne 0 ] ; then
