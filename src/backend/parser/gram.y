@@ -3702,6 +3702,7 @@ a_expr:  attr opt_indirection
 				{	$$ = makeA_Expr(OP, "<", $1, $3); }
 		| a_expr '>' a_expr
 				{	$$ = makeA_Expr(OP, ">", $1, $3); }
+		/* We allow this for standards-broken SQL products, like MS stuff */
   		| a_expr '=' NULL_P
   				{	$$ = makeA_Expr(ISNULL, NULL, $1, NULL); }
 		| a_expr '=' a_expr
