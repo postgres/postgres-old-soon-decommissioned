@@ -88,10 +88,8 @@ extern Datum charlt(PG_FUNCTION_ARGS);
 extern Datum charle(PG_FUNCTION_ARGS);
 extern Datum chargt(PG_FUNCTION_ARGS);
 extern Datum charge(PG_FUNCTION_ARGS);
-extern Datum charpl(PG_FUNCTION_ARGS);
-extern Datum charmi(PG_FUNCTION_ARGS);
-extern Datum charmul(PG_FUNCTION_ARGS);
-extern Datum chardiv(PG_FUNCTION_ARGS);
+extern Datum chartoi4(PG_FUNCTION_ARGS);
+extern Datum i4tochar(PG_FUNCTION_ARGS);
 extern Datum text_char(PG_FUNCTION_ARGS);
 extern Datum char_text(PG_FUNCTION_ARGS);
 

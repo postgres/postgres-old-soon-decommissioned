@@ -299,11 +299,6 @@ DATA(insert OID = 632 (  "<="	   PGNSP PGUID b f	18	18	16 634 633	0 0 0 0 charle
 DATA(insert OID = 633 (  ">"	   PGNSP PGUID b f	18	18	16 631 632	0 0 0 0 chargt scalargtsel scalargtjoinsel ));
 DATA(insert OID = 634 (  ">="	   PGNSP PGUID b f	18	18	16 632 631	0 0 0 0 charge scalargtsel scalargtjoinsel ));
 
-DATA(insert OID = 635 (  "+"	   PGNSP PGUID b f	18	18	18 0 0	0 0 0 0 charpl - - ));
-DATA(insert OID = 636 (  "-"	   PGNSP PGUID b f	18	18	18 0 0	0 0 0 0 charmi - - ));
-DATA(insert OID = 637 (  "*"	   PGNSP PGUID b f	18	18	18 0 0	0 0 0 0 charmul - - ));
-DATA(insert OID = 638 (  "/"	   PGNSP PGUID b f	18	18	18 0 0	0 0 0 0 chardiv - - ));
-
 DATA(insert OID = 639 (  "~"	   PGNSP PGUID b f	19	25	16 0 640	0 0   0   0 nameregexeq regexeqsel regexeqjoinsel ));
 #define OID_NAME_REGEXEQ_OP		639
 DATA(insert OID = 640 (  "!~"	   PGNSP PGUID b f	19	25	16 0 639	0 0   0   0 nameregexne regexnesel regexnejoinsel ));

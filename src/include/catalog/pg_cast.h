@@ -182,6 +182,9 @@ DATA(insert ( 1043	 18  944 a ));
 DATA(insert (	25	 19  407 i ));
 DATA(insert ( 1042	 19  409 i ));
 DATA(insert ( 1043	 19 1400 i ));
+/* Cross-category casts between int4 and "char" */
+DATA(insert (	18	 23   77 e ));
+DATA(insert (	23	 18   78 e ));
 
 /*
  * Datetime category
