@@ -88,7 +88,7 @@ static struct _helpStruct QL_HELP[] = {
 		"create a user-defined function",
 	"\
 \tCREATE FUNCTION function_name ([type1, ...typeN]) RETURNS return_type\n\
-\tAS 'object_filename'|'sql-queries'\n\
+\tAS 'object_filename'|'sql-queries'|'builtin_function_name'\n\
 \tLANGUAGE 'c'|'sql'|'internal';"},
 	{"create index",
 		"construct an index",
