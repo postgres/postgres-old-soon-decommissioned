@@ -155,7 +155,6 @@ InitArchiveFmt_Files(ArchiveHandle *AH)
 		if (fclose(AH->FH) != 0)
 			die_horribly(AH, modulename, "could not close TOC file: %s\n", strerror(errno));
 	}
-
 }
 
 /*
@@ -244,7 +243,6 @@ _StartData(ArchiveHandle *AH, TocEntry *te)
 
 	if (tctx->FH == NULL)
 		die_horribly(AH, modulename, "could not open data file for output\n");
-
 }
 
 static size_t
@@ -298,7 +296,6 @@ _PrintFileData(ArchiveHandle *AH, char *filename, RestoreOptions *ropt)
 
 	if (GZCLOSE(AH->FH) != 0)
 		die_horribly(AH, modulename, "could not close data file after reading\n");
-
 }
 
 
@@ -473,7 +470,6 @@ _StartBlobs(ArchiveHandle *AH, TocEntry *te)
 	if (ctx->blobToc == NULL)
 		die_horribly(AH, modulename,
 					 "could not open large object TOC for output: %s\n", strerror(errno));
-
 }
 
 /*
