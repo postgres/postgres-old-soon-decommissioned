@@ -16,6 +16,8 @@ host]
 .BR -p
 port]
 [\c
+.BR "-u"]
+[\c
 .BR -D
 location]
 [dbname]
@@ -77,6 +79,9 @@ extension on which the
 is listening for connections.  Defaults to 5432, or the value of the
 .SM PGPORT
 environment variable (if set).
+.TP
+.BR "-u"
+Use password authentication. Prompts for username and password.
 .SH EXAMPLES
 .nf
 # create the demo database using the postmaster on the local host, port 5432.
