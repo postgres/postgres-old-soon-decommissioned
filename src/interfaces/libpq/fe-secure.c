@@ -156,6 +156,8 @@ static SSL_CTX *SSL_context = NULL;
  *	It's not critical that users have EPH keys, but it doesn't
  *	hurt and if it's missing someone will demand it, so....
  */
+#ifdef USE_SSL
+
 static const char file_dh512[] =
 "-----BEGIN DH PARAMETERS-----\n\
 MEYCQQD1Kv884bEpQBgRjXyEpwpy1obEAxnIByl6ypUM2Zafq9AKUJsCRtMIPWak\n\
@@ -193,6 +195,8 @@ OvOzKGtwcTqO/1wV5gKkzu1ZVswVUQd5Gg8lJicwqRWyyNRczDDoG9jVDxmogKTH\n\
 AaqLulO7R8Ifa1SwF2DteSGVtgWEN8gDpN3RBmmPTDngyF2DHb5qmpnznwtFKdTL\n\
 KWbuHn491xNO25CQWMtem80uKw+pTnisBRF/454n1Jnhub144YRBoN8CAQI=\n\
 -----END DH PARAMETERS-----\n";
+
+#endif
 
 /* ------------------------------------------------------------ */
 /*			 Procedures common to all secure sessions			*/
