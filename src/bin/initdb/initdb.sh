@@ -351,8 +351,19 @@ echo "vacuuming template1"
 echo "vacuum" | postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
 	grep -v "^DEBUG:"
 
-echo "COPY pg_user TO '$PGDATA/pg_pwd' USING DELIMITERS '\\t'" | postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
-         grep -v "'DEBUG:"
+echo "COPY pg_user TO '$PGDATA/pg_pwd' USING DELIMITERS '\\t'" |\
+	postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
+	grep -v "'DEBUG:"
+
+echo "GRANT SELECT ON pg_class TO PUBLIC" |\
+	 postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
+
+echo "create view db_user as select usename,usesysid from pg_user;" |\
+	postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
+	grep -v "'DEBUG:"
+echo "grant select on db_user to public" |\
+	postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
+	grep -v "'DEBUG:"
 
 echo "loading pg_description"
 echo "copy pg_description from '$TEMPLATE_DESCR'" | postgres -F -Q -D$PGDATA template1 > /dev/null
