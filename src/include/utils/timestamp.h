@@ -248,5 +248,6 @@ extern void GetEpochTime(struct tm * tm);
 
 extern void isoweek2date(int woy, int *year, int *mon, int *mday);
 extern int	date2isoweek(int year, int mon, int mday);
+extern int	date2isoyear(int year, int mon, int mday);
 
 #endif   /* TIMESTAMP_H */

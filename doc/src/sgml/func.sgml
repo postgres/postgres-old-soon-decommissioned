@@ -3984,6 +3984,22 @@ substring('foobar' from 'o(.)b')   <lineannotation>o</lineannotation>
 	<entry>last digit of year</entry>
        </row>
        <row>
+	<entry><literal>IYYY</literal></entry>
+	<entry>ISO year (4 and more digits)</entry>
+       </row>
+       <row>
+	<entry><literal>IYY</literal></entry>
+	<entry>last 3 digits of ISO year</entry>
+       </row>
+       <row>
+	<entry><literal>IY</literal></entry>
+	<entry>last 2 digits of ISO year</entry>
+       </row>
+       <row>
+	<entry><literal>I</literal></entry>
+	<entry>last digits of ISO year</entry>
+       </row>
+       <row>
 	<entry><literal>BC</literal> or <literal>B.C.</literal> or
 	<literal>AD</literal> or <literal>A.D.</literal></entry>
 	<entry>era indicator (upper case)</entry>
