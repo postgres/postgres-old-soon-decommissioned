@@ -3455,6 +3455,13 @@ validateForeignKeyConstraint(FkConstraint *fkconstraint,
 	int			count;
 
 	/*
+	 * See if we can do it with a single LEFT JOIN query.  A FALSE result
+	 * indicates we must proceed with the fire-the-trigger method.
+	 */
+	if (RI_Initial_Check(fkconstraint, rel, pkrel))
+		return;
+
+	/*
 	 * Scan through each tuple, calling RI_FKey_check_ins (insert trigger)
 	 * as if that tuple had just been inserted.  If any of those fail, it
 	 * should ereport(ERROR) and that's that.
