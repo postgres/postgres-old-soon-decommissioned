@@ -308,13 +308,73 @@ explain_outNode(StringInfo str,
 			pname = "Append";
 			break;
 		case T_NestLoop:
-			pname = "Nested Loop";
+			switch (((NestLoop *) plan)->join.jointype)
+			{
+				case JOIN_INNER:
+					pname = "Nested Loop";
+					break;
+				case JOIN_LEFT:
+					pname = "Nested Loop Left Join";
+					break;
+				case JOIN_FULL:
+					pname = "Nested Loop Full Join";
+					break;
+				case JOIN_RIGHT:
+					pname = "Nested Loop Right Join";
+					break;
+				case JOIN_IN:
+					pname = "Nested Loop IN Join";
+					break;
+				default:
+					pname = "Nested Loop ??? Join";
+					break;
+			}
 			break;
 		case T_MergeJoin:
-			pname = "Merge Join";
+			switch (((MergeJoin *) plan)->join.jointype)
+			{
+				case JOIN_INNER:
+					pname = "Merge Join";
+					break;
+				case JOIN_LEFT:
+					pname = "Merge Left Join";
+					break;
+				case JOIN_FULL:
+					pname = "Merge Full Join";
+					break;
+				case JOIN_RIGHT:
+					pname = "Merge Right Join";
+					break;
+				case JOIN_IN:
+					pname = "Merge IN Join";
+					break;
+				default:
+					pname = "Merge ??? Join";
+					break;
+			}
 			break;
 		case T_HashJoin:
-			pname = "Hash Join";
+			switch (((HashJoin *) plan)->join.jointype)
+			{
+				case JOIN_INNER:
+					pname = "Hash Join";
+					break;
+				case JOIN_LEFT:
+					pname = "Hash Left Join";
+					break;
+				case JOIN_FULL:
+					pname = "Hash Full Join";
+					break;
+				case JOIN_RIGHT:
+					pname = "Hash Right Join";
+					break;
+				case JOIN_IN:
+					pname = "Hash IN Join";
+					break;
+				default:
+					pname = "Hash ??? Join";
+					break;
+			}
 			break;
 		case T_SeqScan:
 			pname = "Seq Scan";
