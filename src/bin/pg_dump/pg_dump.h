@@ -141,16 +141,10 @@ typedef struct _indInfo
 	char	   *indreloid;		/* oid of the table the index is on */
 	char	   *indexrelname;	/* name of the index itself */
 	char	   *indrelname;		/* name of the indexed table */
-	char	   *indamname;		/* name of the access method (e.g. btree,
-								 * rtree, etc.) */
-	char	   *indproc;		/* oid of the function to compute the
-								 * index, 0 if none */
+	char	   *indexdef;		/* index definitional command */
+	char	   *indisprimary;	/* is this a PK index? */
 	char	   *indkey[INDEX_MAX_KEYS]; /* attribute numbers of the key
 										 * attributes */
-	char	   *indclass[INDEX_MAX_KEYS];		/* opclass of the keys */
-	char	   *indisunique;	/* is this index unique? */
-	char	   *indisprimary;	/* is this a PK index? */
-	char	   *indhaspred;		/* does this index have a predicate? */
 } IndInfo;
 
 typedef struct _aggInfo
