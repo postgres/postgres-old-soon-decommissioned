@@ -14,7 +14,7 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-CFLAGS+=  $(X_CFLAGS) -I$(TCL_INCDIR) -I$(TK_INCDIR) -I$(SRCDIR)/interfaces/libpgtcl
+CFLAGS+=  $(X_CFLAGS) -I$(SRCDIR)/interfaces/libpgtcl
 
 ifdef KRBVERS
 LDFLAGS+= $(KRBLIBS)
