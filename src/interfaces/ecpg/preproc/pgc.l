@@ -35,6 +35,8 @@
 
 extern YYSTYPE yylval;
 
+static int		xcdepth = 0;	/* depth of nesting in slash-star comments */
+
 /*
  * literalbuf is used to accumulate literal values when multiple rules
  * are needed to parse a single literal.  Call startlit to reset buffer
@@ -44,8 +46,6 @@ extern YYSTYPE yylval;
 static char	   *literalbuf = NULL;		/* expandable buffer */
 static int		literallen;		/* actual current length */
 static int		literalalloc;	/* current allocated buffer size */
-
-static int             xcdepth = 0; 
 
 #define startlit()  (literalbuf[0] = '\0', literallen = 0)
 static void addlit(char *ytext, int yleng);
@@ -923,9 +923,10 @@ addlit(char *ytext, int yleng)
 		} while ((literallen+yleng) >= literalalloc);
 		literalbuf = (char *) realloc(literalbuf, literalalloc);
 	}
-	/* append data --- note we assume ytext is null-terminated */
-	memcpy(literalbuf+literallen, ytext, yleng+1);
+	/* append new data, add trailing null */
+	memcpy(literalbuf+literallen, ytext, yleng);
 	literallen += yleng;
+	literalbuf[literallen] = '\0';
 }
 
 int yywrap(void) 
