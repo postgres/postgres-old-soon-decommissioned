@@ -92,6 +92,7 @@ static datetkn datetktbl[] = {
 	{"awsst", DTZ, 54},			/* W. Australia */
 	{"awst", TZ, 48},			/* W. Australia */
 	{DB_C, ADBC, BC},			/* "bc" for years < 0 */
+	{"bdst", TZ, 12},			/* British Double Summer Time */
 	{"bst", TZ, 6},				/* British Summer Time */
 	{"bt", TZ, 18},				/* Baghdad Time */
 	{"cadt", DTZ, 63},			/* Central Australian DST */
