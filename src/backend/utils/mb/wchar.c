@@ -502,5 +502,5 @@ pg_mic_mblen(const unsigned char *mbstr)
 int
 pg_encoding_mblen(int encoding, const unsigned char *mbstr)
 {
-	return ((*pg_wchar_table[encoding].mblen) (mbstr));
+	return( (encoding >= 0 && encoding < sizeof(pg_wchar_table)/sizeof(pg_wchar_tbl))? ((*pg_wchar_table[encoding].mblen) (mbstr)) : ((*pg_wchar_table[SQL_ASCII].mblen) (mbstr)));
 }
