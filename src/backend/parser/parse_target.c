@@ -462,7 +462,10 @@ FigureColname(Node *expr, Node *resval)
 	/* Some of these are easiest to do with the untransformed node */
 	switch (nodeTag(resval))
 	{
-			case T_Ident:
+		case T_TypeCast: 
+			return( ( ((Ident *) ((TypeCast *) resval)->arg)->name));
+			
+		case T_Ident:
 			return ((Ident *) resval)->name;
 		case T_Attr:
 			{
