@@ -65,6 +65,8 @@ extern bool OperatorIsVisible(Oid oprid);
 extern OpclassCandidateList OpclassGetCandidates(Oid amid);
 extern Oid	OpclassnameGetOpcid(Oid amid, const char *opcname);
 extern bool OpclassIsVisible(Oid opcid);
+extern bool ConversionIsVisible(Oid opcid);
+extern Oid	ConversionGetConid(const char *conname);
 
 extern void DeconstructQualifiedName(List *names,
 						 char **nspname_p,

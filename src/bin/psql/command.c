@@ -381,7 +381,13 @@ exec_command(const char *cmd,
 			case 'D':
 				success = listDomains(pattern);
 				break;
-
+			case 'c':
+				success = listConversions(pattern);
+				break;
+			case 'C':
+				success = listCasts(pattern);
+				break;
+				
 			default:
 				status = CMD_UNKNOWN;
 		}

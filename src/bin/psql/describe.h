@@ -43,4 +43,11 @@ bool		listTables(const char *tabtypes, const char *pattern, bool verbose);
 /* \dD */
 bool		listDomains(const char *pattern);
 
+/* \dc */
+bool		listConversions(const char *pattern);
+
+/* \dC */
+bool		listCasts(const char *pattern);
+
+
 #endif   /* DESCRIBE_H */

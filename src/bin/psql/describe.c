@@ -1390,6 +1390,106 @@ listDomains(const char *pattern)
 }
 
 /*
+ * \dc
+ *
+ * Describes conversions.
+ */
+bool
+listConversions(const char *pattern)
+{
+	PQExpBufferData buf;
+	PGresult   *res;
+	printQueryOpt myopt = pset.popt;
+
+	initPQExpBuffer(&buf);
+
+	printfPQExpBuffer(&buf,
+					  "SELECT n.nspname AS \"%s\",\n"
+					  "       c.conname AS \"%s\",\n"
+					  "       pg_catalog.pg_encoding_to_char(c.conforencoding) AS \"%s\",\n"
+					  "       pg_catalog.pg_encoding_to_char(c.contoencoding) AS \"%s\",\n"
+					  "       CASE WHEN c.condefault THEN '%s'\n"
+					  "       ELSE NULL END AS \"%s\"\n"
+					  "FROM pg_catalog.pg_conversion c, pg_catalog.pg_namespace n\n"
+					  "WHERE n.oid = c.connamespace\n",
+					  _("Schema"),
+					  _("Name"),
+					  _("Source"),
+					  _("Dest"),
+					  _("default"),
+					  _("Modifier"));
+
+	processNamePattern(&buf, pattern, true, false,
+					   "n.nspname", "c.conname", NULL,
+					   "pg_catalog.pg_conversion_is_visible(c.oid)");
+
+	appendPQExpBuffer(&buf, "ORDER BY 1, 2;");
+
+	res = PSQLexec(buf.data, false);
+	termPQExpBuffer(&buf);
+	if (!res)
+		return false;
+
+	myopt.nullPrint = NULL;
+	myopt.title = _("List of conversions");
+
+	printQuery(res, &myopt, pset.queryFout);
+
+	PQclear(res);
+	return true;
+}
+
+/*
+ * \dC
+ *
+ * Describes casts.
+ */
+bool
+listCasts(const char *pattern)
+{
+	PQExpBufferData buf;
+	PGresult   *res;
+	printQueryOpt myopt = pset.popt;
+
+	initPQExpBuffer(&buf);
+/* NEED LEFT JOIN FOR BINARY CASTS */
+	printfPQExpBuffer(&buf,
+					  "SELECT t1.typname AS \"%s\",\n"
+					  "       t2.typname AS \"%s\",\n"
+					  "       CASE WHEN p.proname IS NULL THEN '%s'\n"
+					  "            ELSE p.proname\n"
+					  "       END as \"%s\",\n"
+					  "       CASE WHEN c.castcontext = 'e' THEN '%s'\n"
+					  "            WHEN c.castcontext = 'a' THEN '%s'\n"
+					  "            ELSE '%s'\n"
+					  "       END as \"%s\"\n"
+					  "FROM pg_catalog.pg_cast c LEFT JOIN pg_catalog.pg_proc p\n"
+					  "       ON c.castfunc=p.oid, pg_catalog.pg_type t1, pg_catalog.pg_type t2\n"
+					  "WHERE c.castsource=t1.oid AND c.casttarget=t2.oid ORDER BY 1, 2",
+					  _("Source"),
+					  _("Target"),
+					  _("BINARY"),
+					  _("Function"),
+					  _("explicit"),
+					  _("assignment explicit"),
+					  _("implicit"),
+					  _("Context"));
+
+	res = PSQLexec(buf.data, false);
+	termPQExpBuffer(&buf);
+	if (!res)
+		return false;
+
+	myopt.nullPrint = NULL;
+	myopt.title = _("List of casts");
+
+	printQuery(res, &myopt, pset.queryFout);
+
+	PQclear(res);
+	return true;
+}
+
+/*
  * processNamePattern
  *
  * Scan a wildcard-pattern option and generate appropriate WHERE clauses

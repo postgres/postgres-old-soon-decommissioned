@@ -852,6 +852,29 @@ testdb=>
 
 
       <varlistentry>
+        <term><literal>\dc</literal> [ <replaceable class="parameter">pattern</replaceable> ]</term>
+        <listitem>
+        <para>
+        Lists all available conversions (between encodings). If <replaceable
+        class="parameter">pattern</replaceable>
+        is specified, only matching conversions are shown.
+        </para>
+        </listitem>
+      </varlistentry>
+
+
+      <varlistentry>
+        <term><literal>\dC</literal></term>
+        <listitem>
+        <para>
+        Lists all available type casts.  Casts can be explicit, explicit and assignment
+	or implicit, and are used to change a variable from one type to another.
+        </para>
+        </listitem>
+      </varlistentry>
+
+
+      <varlistentry>
         <term><literal>\df [ <replaceable class="parameter">pattern</replaceable> ]</literal></term>
 
         <listitem>
