@@ -213,6 +213,10 @@
 #define ERRCODE_E_R_I_E_TRIGGER_PROTOCOL_VIOLATED	MAKE_SQLSTATE('3','9', 'P','0','1')
 #define ERRCODE_E_R_I_E_SRF_PROTOCOL_VIOLATED	MAKE_SQLSTATE('3','9', 'P','0','2')
 
+/* Class 3B - Savepoint Exception */
+#define ERRCODE_SAVEPOINT_EXCEPTION			MAKE_SQLSTATE('3','B', '0','0','0')
+#define ERRCODE_S_E_INVALID_SPECIFICATION	MAKE_SQLSTATE('3','B', '0','0','1')
+
 /* Class 3D - Invalid Catalog Name */
 #define ERRCODE_INVALID_CATALOG_NAME		MAKE_SQLSTATE('3','D', '0','0','0')
 

@@ -1514,14 +1514,17 @@ typedef enum TransactionStmtKind
 	TRANS_STMT_BEGIN,
 	TRANS_STMT_START,			/* semantically identical to BEGIN */
 	TRANS_STMT_COMMIT,
-	TRANS_STMT_ROLLBACK
+	TRANS_STMT_ROLLBACK,
+	TRANS_STMT_SAVEPOINT,
+	TRANS_STMT_RELEASE,
+	TRANS_STMT_ROLLBACK_TO
 } TransactionStmtKind;
 
 typedef struct TransactionStmt
 {
 	NodeTag		type;
 	TransactionStmtKind kind;	/* see above */
-	List	   *options;		/* for BEGIN/START only */
+	List	   *options;		/* for BEGIN/START and savepoint commands */
 } TransactionStmt;
 
 /* ----------------------

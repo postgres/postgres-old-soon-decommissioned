@@ -16,6 +16,7 @@
 
 #include "access/xlog.h"
 #include "storage/relfilenode.h"
+#include "nodes/pg_list.h"
 #include "utils/nabstime.h"
 
 
@@ -101,12 +102,16 @@ extern void StartTransactionCommand(void);
 extern void CommitTransactionCommand(void);
 extern void AbortCurrentTransaction(void);
 extern void BeginTransactionBlock(void);
-extern void EndTransactionBlock(void);
+extern bool EndTransactionBlock(void);
+extern void UserAbortTransactionBlock(void);
+extern void ReleaseSavepoint(List *options);
+extern void DefineSavepoint(char *name);
+extern void RollbackToSavepoint(List *options);
+extern void RollbackAndReleaseSavepoint(List *options);
 extern bool IsSubTransaction(void);
 extern bool IsTransactionBlock(void);
 extern bool IsTransactionOrTransactionBlock(void);
 extern char TransactionBlockStatusCode(void);
-extern void UserAbortTransactionBlock(void);
 extern void AbortOutOfAnyTransaction(void);
 extern void PreventTransactionChain(void *stmtNode, const char *stmtType);
 extern void RequireTransactionChain(void *stmtNode, const char *stmtType);
