@@ -20,8 +20,9 @@
 #ifndef LIBPQ_INT_H
 #define LIBPQ_INT_H
 
-#include <sys/types.h>
 #include <time.h>
+#include <sys/time.h>
+#include <sys/types.h>
 
 #if defined(WIN32) && (!defined(ssize_t))
   typedef int ssize_t; /* ssize_t doesn't exist in VC (atleast not VC6) */
