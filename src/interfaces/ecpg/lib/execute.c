@@ -377,6 +377,7 @@ ECPGexecute(struct statement * stmt)
 		char	   *tobeinserted = NULL;
 		char	   *p;
 		char		buff[20];
+		int		hostvarl = 0;
 
 		/*
 		 * Some special treatment is needed for records since we want
@@ -701,7 +702,7 @@ ECPGexecute(struct statement * stmt)
 			return false;
 
 		strcpy(newcopy, copiedquery);
-		if ((p = next_insert(newcopy)) == NULL)
+		if ((p = next_insert(newcopy + hostvarl)) == NULL)
 		{
 
 			/*
@@ -714,6 +715,7 @@ ECPGexecute(struct statement * stmt)
 		else
 		{
 			strcpy(p, tobeinserted);
+			hostvarl = strlen(newcopy);
 
 			/*
 			 * The strange thing in the second argument is the rest of the
