@@ -1111,7 +1111,7 @@ interval_time(PG_FUNCTION_ARGS)
 	}
 	else if (result < 0)
 	{
-		days = (-result + INT64CONST(86400000000 - 1)) / INT64CONST(86400000000);
+		days = (-result + INT64CONST(86400000000) - 1) / INT64CONST(86400000000);
 		result += days * INT64CONST(86400000000);
 	}
 #else
