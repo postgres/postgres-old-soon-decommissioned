@@ -13,16 +13,7 @@
 #ifndef DBCOMMANDS_H
 #define DBCOMMANDS_H
 
-#include <signal.h>
-#include "tcop/dest.h"
-
-/*
- * Originally from tmp/daemon.h. The functions declared in daemon.h does not
- * exist; hence removed.		-- AY 7/29/94
- */
-#define SIGKILLDAEMON1	SIGTERM
-
-extern void createdb(char *dbname, char *dbpath, int encoding, CommandDest);
-extern void dropdb(char *dbname, CommandDest);
+extern void createdb(const char *dbname, const char *dbpath, int encoding);
+extern void dropdb(const char *dbname);
 
 #endif	 /* DBCOMMANDS_H */

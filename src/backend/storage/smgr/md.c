@@ -623,8 +623,6 @@ mdblindwrt(char *dbstr,
 	/* user table? then put in user database area... */
 	else if (dbid == MyDatabaseId)
 	{
-		extern char *DatabasePath;
-
 		path = (char *) palloc(strlen(DatabasePath) + 2 * sizeof(NameData) + 2 + nchars);
 		if (segno == 0)
 			sprintf(path, "%s%c%s", DatabasePath, SEP_CHAR, relstr);
@@ -663,8 +661,6 @@ mdblindwrt(char *dbstr,
 	/* user table? then put in user database area... */
 	else if (dbid == MyDatabaseId)
 	{
-		extern char *DatabasePath;
-
 		path = (char *) palloc(strlen(DatabasePath) + 2 * sizeof(NameData) + 2);
 		sprintf(path, "%s%c%s", DatabasePath, SEP_CHAR, relstr);
 	}

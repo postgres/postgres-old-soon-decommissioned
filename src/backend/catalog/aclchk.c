@@ -359,23 +359,6 @@ pg_aclcheck(char *relname, char *usename, AclMode mode)
 	id = (AclId) ((Form_pg_shadow) GETSTRUCT(tuple))->usesysid;
 
 	/*
-	 * for the 'pg_database' relation, check the usecreatedb field before
-	 * checking normal permissions
-	 */
-	if (strcmp(DatabaseRelationName, relname) == 0 &&
-		(((Form_pg_shadow) GETSTRUCT(tuple))->usecreatedb))
-	{
-
-		/*
-		 * note that even though the user can now append to the
-		 * pg_database table, there is still additional permissions
-		 * checking in dbcommands.c
-		 */
-		if ((mode & ACL_WR) || (mode & ACL_AP))
-			return ACLCHECK_OK;
-	}
-
-	/*
 	 * Deny anyone permission to update a system catalog unless
 	 * pg_shadow.usecatupd is set.	(This is to let superusers protect
 	 * themselves from themselves.)

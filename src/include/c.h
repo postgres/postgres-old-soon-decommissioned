@@ -767,7 +767,6 @@ extern char *vararg_format(const char *fmt,...);
 
 /* These are for things that are one way on Unix and another on NT */
 #define NULL_DEV		"/dev/null"
-#define COPY_CMD		"cp"
 #define SEP_CHAR		'/'
 
 /* defines for dynamic linking on Win32 platform */

@@ -29,7 +29,7 @@
  */
 
 char *
-pstrdup(char *string)
+pstrdup(const char *string)
 {
 	char	   *nstr;
 	int			len;

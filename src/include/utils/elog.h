@@ -22,7 +22,13 @@
 #define	LOG		DEBUG
 #define NOIND	(-3)			/* debug message, don't indent as far */
 
+#ifndef __GNUC__
 extern void elog(int lev, const char *fmt, ...);
+#else
+/* This extension allows gcc to check the format string for consistency with
+   the supplied arguments. */
+extern void elog(int lev, const char *fmt, ...) __attribute__ ((format (printf, 2, 3)));
+#endif
 
 #ifndef PG_STANDALONE
 extern int	DebugFileOpen(void);

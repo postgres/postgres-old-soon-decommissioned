@@ -592,7 +592,7 @@ ProcessUtility(Node *parsetree,
 
 				PS_SET_STATUS(commandTag = "CREATE DATABASE");
 				CHECK_IF_ABORTED();
-				createdb(stmt->dbname, stmt->dbpath, stmt->encoding, dest);
+				createdb(stmt->dbname, stmt->dbpath, stmt->encoding);
 			}
 			break;
 
@@ -602,7 +602,7 @@ ProcessUtility(Node *parsetree,
 
 				PS_SET_STATUS(commandTag = "DROP DATABASE");
 				CHECK_IF_ABORTED();
-				dropdb(stmt->dbname, dest);
+				dropdb(stmt->dbname);
 			}
 			break;
 

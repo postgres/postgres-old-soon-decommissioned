@@ -47,6 +47,8 @@ extern long MyCancelKey;
 
 extern char OutputFileName[];
 
+extern char *UserName;
+
 /*
  * done in storage/backendid.h for now.
  *
@@ -110,13 +112,12 @@ extern char *DatabaseName;
 extern char *DatabasePath;
 
 /* in utils/misc/database.c */
-extern void GetRawDatabaseInfo(char *name, Oid *db_id, char *path);
-extern int	GetDatabaseInfo(char *name, int4 *owner, char *path);
-extern char *ExpandDatabasePath(char *path);
+extern void GetRawDatabaseInfo(const char *name, Oid *db_id, char *path);
+extern char *ExpandDatabasePath(const char *path);
 
 /* now in utils/init/miscinit.c */
-extern void SetDatabaseName(char *name);
-extern void SetDatabasePath(char *path);
+extern void SetDatabaseName(const char *name);
+extern void SetDatabasePath(const char *path);
 
 /* even if MB is not enabled, this function is neccesary
  * since pg_proc.h does have.
@@ -184,16 +185,27 @@ typedef int16 ExitStatus;
 
 extern bool PostgresIsInitialized;
 
-extern void InitPostgres(char *name);
+extern void InitPostgres(const char *dbname);
 
-/* in miscinit.c */
-extern void ExitPostgres(ExitStatus status);
+/* one of the ways to get out of here */
+#define ExitPostgres(status) proc_exec(status)
 
-extern bool IsBootstrapProcessingMode(void);
-extern bool IsInitProcessingMode(void);
-extern bool IsNormalProcessingMode(void);
-extern void SetProcessingMode(ProcessingMode mode);
-extern ProcessingMode GetProcessingMode(void);
+/* processing mode support stuff */
+extern ProcessingMode Mode;
+
+#define IsBootstrapProcessingMode() ((bool)(Mode == BootstrapProcessing))
+#define IsInitProcessingMode() ((bool)(Mode == InitProcessing))
+#define IsNormalProcessingMode() ((bool)(Mode == NormalProcessing))
+
+#define SetProcessingMode(mode) \
+    do { \
+        AssertArg(mode == BootstrapProcessing || mode == InitProcessing || \
+		 		  mode == NormalProcessing); \
+        Mode = mode; \
+    } while(0)
+
+#define GetProcessingMode() Mode
+
 
 /* 
  * "postmaster.pid" is a file containing postmaster's pid, being

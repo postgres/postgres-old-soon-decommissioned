@@ -32,6 +32,6 @@
 #endif	 /* PALLOC_IS_MALLOC */
 
 /* like strdup except uses palloc */
-extern char *pstrdup(char *pointer);
+extern char *pstrdup(const char *pointer);
 
 #endif	 /* PALLOC_H */
