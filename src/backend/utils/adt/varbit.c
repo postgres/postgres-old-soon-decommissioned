@@ -764,6 +764,9 @@ bitsubstr(PG_FUNCTION_ARGS)
 			   *ps;
 
 	bitlen = VARBITLEN(arg);
+	/* If we do not have an upper bound, set bitlen */
+	if (l==-1)
+		l = bitlen;
 	e = s + l;
 	s1 = Max(s, 1);
 	e1 = Min(e, bitlen + 1);
