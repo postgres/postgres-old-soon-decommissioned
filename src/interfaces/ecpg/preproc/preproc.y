@@ -3628,7 +3628,8 @@ connection_target: database_name opt_server opt_port
 			/* old style: dbname[@server][:port] */
 			if (strlen($2) > 0 && *($2) != '@')
 			{
-				sprintf(errortext, sizeof(errortext), "Expected '@', found '%s'", $2);
+				snprintf(errortext, sizeof(errortext),
+						 "Expected '@', found '%s'", $2);
 				mmerror(PARSE_ERROR, ET_ERROR, errortext);
 			}
 
