@@ -59,6 +59,7 @@ static ScanKeyword ScanKeywords[] = {
 	{ "cluster",		CLUSTER		},
 	{ "column",		COLUMN		},
 	{ "commit",		COMMIT		},
+	{ "constraint",		CONSTRAINT	},
 	{ "copy",		COPY		},
 	{ "create",		CREATE		},
 	{ "current",		CURRENT		},
