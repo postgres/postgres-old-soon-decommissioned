@@ -79,6 +79,9 @@ remove_all_temp_relations(void)
 	List	   *l,
 			   *next;
 
+	if (temp_rels == NIL)
+		return;
+
 	AbortOutOfAnyTransaction();
 	StartTransactionCommand();
 
@@ -102,6 +105,7 @@ remove_all_temp_relations(void)
 
 		l = next;
 	}
+	temp_rels = NIL;
 	CommitTransactionCommand();
 }
 
