@@ -482,9 +482,6 @@ GetDefaultOpClass(Oid attrType, Oid accessMethodId)
 	Oid			exactOid = InvalidOid;
 	Oid			compatibleOid = InvalidOid;
 
-	/* It could be a domain */
-	attrType = getBaseType(attrType);
-
 	/*
 	 * We scan through all the opclasses available for the access method,
 	 * looking for one that is marked default and matches the target type
