@@ -208,7 +208,8 @@ rewriteRuleAction(Query *parsetree,
 	 * apply it to sub_action; we have to remember to update the sublink
 	 * inside rule_action, too.
 	 */
-	if (event == CMD_INSERT || event == CMD_UPDATE)
+	if ((event == CMD_INSERT || event == CMD_UPDATE) &&
+		sub_action->commandType != CMD_UTILITY)
 	{
 		sub_action = (Query *) ResolveNew((Node *) sub_action,
 										  new_varno,
