@@ -47,7 +47,7 @@ $PostgreSQL$
 <listitem><para>Add missing check for invalid protocol packet length in binary COPY (Tom)</para></listitem>
 <para>
   This fixes a difficult-to-exploit security hole.
-</para>
+</para></listitem>
 </itemizedlist>
 
   </sect2>
