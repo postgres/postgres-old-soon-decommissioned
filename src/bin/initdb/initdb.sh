@@ -111,6 +111,7 @@ template_only=0
 #       fail, and in that case the argument _must_ be the name of the effective
 #       user.
 POSTGRES_SUPERUSERNAME="$EffectiveUser"
+POSTGRES_SUPERUSERID="`id -u 2>/dev/null || echo 0`"
 
 Password='_null_'
 
