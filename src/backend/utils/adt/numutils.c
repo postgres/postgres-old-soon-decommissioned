@@ -3,7 +3,7 @@
  * numutils.c
  *	  utility functions for I/O of built-in numeric types.
  *
- *		integer:				itoa, ltoa
+ *		integer:				pg_itoa, pg_ltoa
  *		floating point:			ftoa, atof1
  *
  * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
@@ -116,27 +116,27 @@ pg_atoi(char *s, int size, int c)
 }
 
 /*
- *		itoa			- converts a short int to its string represention
+ *		pg_itoa			- converts a short int to its string represention
  *
  *		Note:
  *				previously based on ~ingres/source/gutil/atoi.c
  *				now uses vendor's sprintf conversion
  */
 void
-itoa(int i, char *a)
+pg_itoa(int16 i, char *a)
 {
 	sprintf(a, "%hd", (short) i);
 }
 
 /*
- *		ltoa			- converts a long int to its string represention
+ *		pg_ltoa			- converts a long int to its string represention
  *
  *		Note:
  *				previously based on ~ingres/source/gutil/atoi.c
  *				now uses vendor's sprintf conversion
  */
 void
-ltoa(int32 l, char *a)
+pg_ltoa(int32 l, char *a)
 {
 	sprintf(a, "%d", l);
 }

@@ -425,31 +425,31 @@ cash_mi(Cash *c1, Cash *c2)
 /* cash_mul_flt8()
  * Multiply cash by float8.
  */
-Cash *
-cash_mul_flt8(Cash *c, float8 *f)
+Datum
+cash_mul_flt8(PG_FUNCTION_ARGS)
 {
-	Cash	   *result;
+	Cash		c = PG_GETARG_CASH(0);
+	float8		f = PG_GETARG_FLOAT8(1);
+	Cash		result;
 
-	if (!PointerIsValid(f) || !PointerIsValid(c))
-		return NULL;
-
-	if (!PointerIsValid(result = palloc(sizeof(Cash))))
-		elog(ERROR, "Memory allocation failed, can't multiply cash");
-
-	*result = ((*f) * (*c));
-
-	return result;
-}	/* cash_mul_flt8() */
+	result = c * f;
+	PG_RETURN_CASH(result);
+}
 
 
 /* flt8_mul_cash()
  * Multiply float8 by cash.
  */
-Cash *
-flt8_mul_cash(float8 *f, Cash *c)
+Datum
+flt8_mul_cash(PG_FUNCTION_ARGS)
 {
-	return cash_mul_flt8(c, f);
-}	/* flt8_mul_cash() */
+	float8		f = PG_GETARG_FLOAT8(0);
+	Cash		c = PG_GETARG_CASH(1);
+	Cash		result;
+
+	result = f * c;
+	PG_RETURN_CASH(result);
+}
 
 
 /* cash_div_flt8()
@@ -458,53 +458,48 @@ flt8_mul_cash(float8 *f, Cash *c)
  * XXX Don't know if rounding or truncating is correct behavior.
  * Round for now. - tgl 97/04/15
  */
-Cash *
-cash_div_flt8(Cash *c, float8 *f)
+Datum
+cash_div_flt8(PG_FUNCTION_ARGS)
 {
-	Cash	   *result;
+	Cash		c = PG_GETARG_CASH(0);
+	float8		f = PG_GETARG_FLOAT8(1);
+	Cash		result;
 
-	if (!PointerIsValid(f) || !PointerIsValid(c))
-		return NULL;
-
-	if (!PointerIsValid(result = palloc(sizeof(Cash))))
-		elog(ERROR, "Memory allocation failed, can't divide cash");
-
-	if (*f == 0.0)
+	if (f == 0.0)
 		elog(ERROR, "cash_div:  divide by 0.0 error");
 
-	*result = rint(*c / *f);
-
-	return result;
-}	/* cash_div_flt8() */
+	result = rint(c / f);
+	PG_RETURN_CASH(result);
+}
 
 /* cash_mul_flt4()
  * Multiply cash by float4.
  */
-Cash *
-cash_mul_flt4(Cash *c, float4 *f)
+Datum
+cash_mul_flt4(PG_FUNCTION_ARGS)
 {
-	Cash	   *result;
+	Cash		c = PG_GETARG_CASH(0);
+	float4		f = PG_GETARG_FLOAT4(1);
+	Cash		result;
 
-	if (!PointerIsValid(f) || !PointerIsValid(c))
-		return NULL;
-
-	if (!PointerIsValid(result = palloc(sizeof(Cash))))
-		elog(ERROR, "Memory allocation failed, can't multiply cash");
-
-	*result = ((*f) * (*c));
-
-	return result;
-}	/* cash_mul_flt4() */
+	result = c * f;
+	PG_RETURN_CASH(result);
+}
 
 
 /* flt4_mul_cash()
- * Multiply float4 by float4.
+ * Multiply float4 by cash.
  */
-Cash *
-flt4_mul_cash(float4 *f, Cash *c)
+Datum
+flt4_mul_cash(PG_FUNCTION_ARGS)
 {
-	return cash_mul_flt4(c, f);
-}	/* flt4_mul_cash() */
+	float4		f = PG_GETARG_FLOAT4(0);
+	Cash		c = PG_GETARG_CASH(1);
+	Cash		result;
+
+	result = f * c;
+	PG_RETURN_CASH(result);
+}
 
 
 /* cash_div_flt4()
@@ -513,24 +508,19 @@ flt4_mul_cash(float4 *f, Cash *c)
  * XXX Don't know if rounding or truncating is correct behavior.
  * Round for now. - tgl 97/04/15
  */
-Cash *
-cash_div_flt4(Cash *c, float4 *f)
+Datum
+cash_div_flt4(PG_FUNCTION_ARGS)
 {
-	Cash	   *result;
+	Cash		c = PG_GETARG_CASH(0);
+	float4		f = PG_GETARG_FLOAT4(1);
+	Cash		result;
 
-	if (!PointerIsValid(f) || !PointerIsValid(c))
-		return NULL;
-
-	if (!PointerIsValid(result = palloc(sizeof(Cash))))
-		elog(ERROR, "Memory allocation failed, can't divide cash");
-
-	if (*f == 0.0)
+	if (f == 0.0)
 		elog(ERROR, "cash_div:  divide by 0.0 error");
 
-	*result = rint(*c / *f);
-
-	return result;
-}	/* cash_div_flt4() */
+	result = rint(c / f);
+	PG_RETURN_CASH(result);
+}
 
 
 /* cash_mul_int4()

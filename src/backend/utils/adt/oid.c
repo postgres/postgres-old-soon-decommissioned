@@ -79,7 +79,7 @@ oidvectorout(PG_FUNCTION_ARGS)
 	{
 		if (num != 0)
 			*rp++ = ' ';
-		ltoa(oidArray[num], rp);
+		pg_ltoa((int32) oidArray[num], rp);
 		while (*++rp != '\0')
 			;
 	}

@@ -566,7 +566,7 @@ parse_random_seed(char *value)
 	else
 	{
 		sscanf(value, "%lf", &seed);
-		setseed(&seed);
+		DirectFunctionCall1(setseed, Float8GetDatum(seed));
 	}
 	return (TRUE);
 }
@@ -583,7 +583,7 @@ reset_random_seed(void)
 {
 	double		seed = 0.5;
 
-	setseed(&seed);
+	DirectFunctionCall1(setseed, Float8GetDatum(seed));
 	return (TRUE);
 }
 
