@@ -27,10 +27,9 @@
 /* include stuff found in fe only */
 #include "pqexpbuffer.h"
 
-
 #ifdef USE_SSL
-#include "openssl/ssl.h"
-#include "openssl/err.h"
+#include <openssl/ssl.h>
+#include <openssl/err.h>
 #endif
 
 /* libpq supports this version of the frontend/backend protocol.
@@ -63,7 +62,7 @@
 /* Subsidiary-storage management structure for PGresult.
  * See space management routines in fe-exec.c for details.
  * Note that space[k] refers to the k'th byte starting from the physical
- * head of the block.
+ * head of the block --- it's a union, not a struct!
  */
 typedef union pgresult_data PGresult_data;
 
@@ -228,7 +227,8 @@ struct pg_conn
 	PGsetenvHandle setenv_handle;
 
 #ifdef USE_SSL
-        SSL *ssl;
+	bool allow_ssl_try;			/* Allowed to try SSL negotiation */
+	SSL *ssl;					/* SSL status, if have SSL connection */
 #endif
 
 	/* Buffer for current error message */
