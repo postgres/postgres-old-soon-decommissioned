@@ -17,6 +17,7 @@ all: pg_ctl
 pg_ctl: pg_ctl.sh
 	sed -e 's/@VERSION@/$(VERSION)/g' \
 	    -e 's,@bindir@,$(bindir),g' \
+	    -e 's,@DEF_PGPORT@,$(DEF_PGPORT),g' \
 	  $< >$@
 	chmod a+x $@
 
