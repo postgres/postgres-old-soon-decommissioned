@@ -545,7 +545,7 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 					constraint = makeNode(Constraint);
 					constraint->contype = CONSTR_DEFAULT;
 					constraint->name = sname;
-					cstring = palloc(9 + strlen(constraint->name) + 2 + 1);
+					cstring = palloc(10 + strlen(constraint->name) + 3 + 1);
 					strcpy(cstring, "nextval('\"");
 					strcat(cstring, constraint->name);
 					strcat(cstring, "\"')");
