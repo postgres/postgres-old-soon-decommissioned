@@ -61,7 +61,7 @@ prune_joinrels(List *rel_list)
 static List *
 prune_joinrel(RelOptInfo *rel, List *other_rels)
 {
-	List	   *r1 = NIL;
+	List	   *i = NIL;
 	List	   *result = NIL;
 
 	foreach(i, other_rels)
