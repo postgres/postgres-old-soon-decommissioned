@@ -24,6 +24,12 @@ all: SUBSYS.o
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
+sjistest: $(OBJS)
+	$(CC) -c $(CFLAGS) -DDEBUGMAIN conv.c
+	$(CC) -o sjistest conv.o \
+	common.o mbutils.o wchar.o wstrcmp.o wstrncmp.o variable.o \
+       big5.o $(LDFLAGS)
+
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
 
