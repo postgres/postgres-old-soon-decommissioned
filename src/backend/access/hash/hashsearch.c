@@ -45,6 +45,18 @@
 #include "access/relscan.h"
 #include "access/hash.h"
 
+#include "utils/palloc.h"
+
+#ifndef HAVE_MEMMOVE
+# include "regex/utils.h"
+#else
+# include <string.h>
+#endif 
+
+#include <stdio.h>
+#include "storage/ipc.h" 
+#include "storage/bufmgr.h"
+
 /*
  *  _hash_search() -- Finds the page/bucket that the contains the
  *  scankey and loads it into *bufP.  the buffer has a read lock.

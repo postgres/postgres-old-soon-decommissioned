@@ -45,6 +45,20 @@
 #include "access/relscan.h"
 #include "access/hash.h"
 
+#include "utils/palloc.h"
+
+#ifndef HAVE_MEMMOVE
+# include "regex/utils.h"
+#else
+# include <string.h>
+#endif
+
+#include "fmgr.h"
+
+#include "utils/memutils.h"
+
+#include "access/iqual.h"
+
 ScanKey
 _hash_mkscankey(Relation rel, IndexTuple itup, HashMetaPage metap)
 {

@@ -66,6 +66,21 @@
 
 #include "access/genam.h"
 
+#include "utils/palloc.h"
+
+#include "catalog/index.h"
+
+#ifndef HAVE_MEMMOVE
+# include "regex/utils.h"
+#else
+# include <string.h>
+#endif
+
+#include "storage/ipc.h"
+#include "storage/bufmgr.h"
+
+#include "miscadmin.h"
+
 bool	BuildingHash = false;
 
 /*

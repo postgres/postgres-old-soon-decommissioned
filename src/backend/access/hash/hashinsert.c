@@ -45,6 +45,13 @@
 #include "access/relscan.h"
 #include "access/hash.h"
 
+#include <stdio.h>
+#include "storage/ipc.h"
+#include "storage/bufmgr.h"
+
+#include "utils/palloc.h"
+
+#include "utils/memutils.h"
 
 static InsertIndexResult _hash_insertonpg(Relation rel, Buffer buf, int keysz, ScanKey scankey, HashItem hitem, Buffer metabuf);
 static OffsetNumber _hash_pgaddtup(Relation rel, Buffer buf, int keysz, ScanKey itup_scankey, Size itemsize, HashItem hitem);

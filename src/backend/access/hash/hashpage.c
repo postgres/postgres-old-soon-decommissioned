@@ -56,7 +56,23 @@
 #include "access/relscan.h"
 #include "access/hash.h"
 
+#include <stdio.h>
+#include "storage/ipc.h"
 #include "storage/bufmgr.h"
+
+#include "miscadmin.h"
+
+#include "utils/memutils.h"
+
+#include <string.h>
+
+#include "storage/spin.h"
+#include "utils/hsearch.h"
+#include "storage/shmem.h"
+#include "storage/lock.h"
+#include "storage/lmgr.h"
+
+#include "access/genam.h"
 
 static void _hash_setpagelock(Relation rel, BlockNumber blkno, int access);
 static void _hash_unsetpagelock(Relation rel, BlockNumber blkno, int access);

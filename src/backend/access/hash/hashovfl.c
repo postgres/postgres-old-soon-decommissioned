@@ -48,6 +48,13 @@
 #include "access/relscan.h"
 #include "access/hash.h"
 
+#include <stdio.h>
+#include "storage/ipc.h"
+#include "storage/bufmgr.h"
+
+#include <string.h>
+
+#include "utils/memutils.h"
 
 static OverflowPageAddress _hash_getovfladdr(Relation rel, Buffer *metabufp);
 static uint32 _hash_firstfreebit(uint32 map);
