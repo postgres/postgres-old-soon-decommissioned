@@ -116,7 +116,7 @@ pqGetpwuid(uid_t uid, struct passwd *resultbuf, char *buffer,
 	 * Early POSIX draft of getpwuid_r() returns 'struct passwd *'.
 	 *    getpwuid_r(uid, resultbuf, buffer, buflen)
 	 */
-	result = getpwuid_r(uid, resultbuf, buffer, buflen);
+	*result = getpwuid_r(uid, resultbuf, buffer, buflen);
 #endif
 #else
 
