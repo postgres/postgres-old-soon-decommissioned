@@ -40,8 +40,9 @@
 #include "string.h"
 #include "plpgsql.h"
 
-extern	int	yylineno;
-extern	char	yytext[];
+extern	int	yylineno;			/* not always declared by lexer... */
+
+#include "pl_scan.c"
 
 static	PLpgSQL_expr	*read_sqlstmt(int until, char *s, char *sqlstart);
 static	PLpgSQL_stmt	*make_select_stmt(void);
@@ -1454,7 +1455,3 @@ make_tupret_expr(PLpgSQL_row *row)
     plpgsql_dstring_free(&ds);
     return expr;
 }
-
-
-
-#include "pl_scan.c"
