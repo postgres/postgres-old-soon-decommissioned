@@ -22,6 +22,7 @@ extern const char *fmtId(const char *identifier);
 extern void appendStringLiteral(PQExpBuffer buf, const char *str,
 					bool escapeAll);
 extern int	parse_version(const char *versionString);
+extern bool parsePGArray(const char *atext, char ***itemarray, int *nitems);
 extern bool buildACLCommands(const char *name, const char *type,
 				 const char *acls, const char *owner,
 				 int remoteVersion,
