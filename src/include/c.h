@@ -700,7 +700,7 @@ extern int ExceptionalCondition(char *conditionName,
  *	form is used by assert and the exception handling stuff
  * ----------------
  */
-extern char *form(char *fmt, ...);
+extern char *form(const char *fmt, ...);
 
 
 
