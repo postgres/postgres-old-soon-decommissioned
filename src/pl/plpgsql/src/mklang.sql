@@ -5,7 +5,7 @@
 --
 
 create function plpgsql_call_handler() returns opaque
-	as '/usr/local/pgsql/lib/plpgsql.so'
+	as '${exec_prefix}/lib/plpgsql.so'
 	language 'C';
 
 create trusted procedural language 'plpgsql'
