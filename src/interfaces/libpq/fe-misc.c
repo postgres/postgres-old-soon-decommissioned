@@ -351,7 +351,13 @@ pqReadData(PGconn *conn)
 
 	/* OK, try to read some data */
 tryAgain:
-	nread = recv(conn->sock, conn->inBuffer + conn->inEnd,
+#ifdef USE_SSL
+	if (conn->ssl) 
+	  nread = SSL_read(conn->ssl, conn->inBuffer + conn->inEnd,
+			   conn->inBufSize - conn->inEnd);
+	else
+#endif
+	  nread = recv(conn->sock, conn->inBuffer + conn->inEnd,
 				 conn->inBufSize - conn->inEnd, 0);
 	if (nread < 0)
 	{
@@ -420,7 +426,13 @@ tryAgain:
 	 * arrived.
 	 */
 tryAgain2:
-	nread = recv(conn->sock, conn->inBuffer + conn->inEnd,
+#ifdef USE_SSL
+	if (conn->ssl) 
+	  nread = SSL_read(conn->ssl, conn->inBuffer + conn->inEnd,
+			   conn->inBufSize - conn->inEnd);
+	else
+#endif
+	  nread = recv(conn->sock, conn->inBuffer + conn->inEnd,
 				 conn->inBufSize - conn->inEnd, 0);
 	if (nread < 0)
 	{
@@ -494,7 +506,13 @@ pqFlush(PGconn *conn)
 		pqsigfunc	oldsighandler = pqsignal(SIGPIPE, SIG_IGN);
 #endif
 
-		int			sent = send(conn->sock, ptr, len, 0);
+		int sent;
+#ifdef USE_SSL
+		if (conn->ssl) 
+		  sent = SSL_write(conn->ssl, ptr, len);
+		else
+#endif
+		  sent = send(conn->sock, ptr, len, 0);
 
 #ifndef WIN32
 		pqsignal(SIGPIPE, oldsighandler);

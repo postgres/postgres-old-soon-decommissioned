@@ -152,4 +152,11 @@ typedef struct CancelRequestPacket
 	uint32		cancelAuthCode; /* secret key to authorize cancel */
 } CancelRequestPacket;
 
+
+/*
+ * A client can also start by sending a SSL negotiation request, to get a
+ * secure channel.
+ */
+#define NEGOTIATE_SSL_CODE PG_PROTOCOL(1234,5679)
+
 #endif	 /* PQCOMM_H */

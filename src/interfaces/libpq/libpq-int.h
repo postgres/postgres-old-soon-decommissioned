@@ -28,6 +28,11 @@
 #include "pqexpbuffer.h"
 
 
+#ifdef USE_SSL
+#include "openssl/ssl.h"
+#include "openssl/err.h"
+#endif
+
 /* libpq supports this version of the frontend/backend protocol.
  *
  * NB: we used to use PG_PROTOCOL_LATEST from the backend pqcomm.h file,
@@ -214,6 +219,10 @@ struct pg_conn
 	/* Status for asynchronous result construction */
 	PGresult   *result;			/* result being constructed */
 	PGresAttValue *curTuple;	/* tuple currently being read */
+
+#ifdef USE_SSL
+        SSL *ssl;
+#endif
 
 	/* Buffer for current error message */
 	PQExpBufferData	errorMessage;	/* expansible string */

@@ -50,13 +50,20 @@ PacketReceiveSetup(Packet *pkt, PacketDoneProc iodone, void *arg)
  */
 
 int
-PacketReceiveFragment(Packet *pkt, int sock)
+PacketReceiveFragment(Port *port)
 {
 	int			got;
+	Packet                  *pkt = &port->pktInfo;
 
-	if ((got = read(sock, pkt->ptr, pkt->nrtodo)) > 0)
+#ifdef USE_SSL
+	if (port->ssl) 
+	  got = SSL_read(port->ssl, pkt->ptr, pkt->nrtodo);
+	else
+#endif
+  	  got = read(port->sock, pkt->ptr, pkt->nrtodo);
+	if (got > 0)
 	{
-		pkt->nrtodo -= got;
+	        pkt->nrtodo -= got;
 		pkt->ptr += got;
 
 		/* See if we have got what we need for the packet length. */
@@ -132,11 +139,19 @@ PacketSendSetup(Packet *pkt, int nbytes, PacketDoneProc iodone, void *arg)
  */
 
 int
-PacketSendFragment(Packet *pkt, int sock)
+PacketSendFragment(Port *port)
 {
 	int			done;
+        Packet                  *pkt = &port->pktInfo;
 
-	if ((done = write(sock, pkt->ptr, pkt->nrtodo)) > 0)
+#ifdef USE_SSL
+	if (port->ssl) 
+	  done = SSL_write(port->ssl, pkt->ptr, pkt->nrtodo);
+	else
+#endif
+	  done = write(port->sock, pkt->ptr, pkt->nrtodo);
+
+	if (done > 0)
 	{
 		pkt->nrtodo -= done;
 		pkt->ptr += done;

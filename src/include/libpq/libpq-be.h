@@ -18,6 +18,11 @@
 
 #include "libpq/hba.h"
 
+#ifdef USE_SSL
+#include <openssl/ssl.h>
+#include <openssl/err.h>
+#endif
+
 
 /* Protocol v0 password packet. */
 
@@ -126,6 +131,13 @@ typedef struct Port
 	char		tty[SM_TTY + 1];
 	char		auth_arg[MAX_AUTH_ARG];
 	UserAuth	auth_method;
+
+        /*
+	 * SSL structures 
+	 */
+#ifdef USE_SSL
+        SSL             *ssl;
+#endif
 } Port;
 
 
@@ -136,9 +148,9 @@ extern ProtocolVersion FrontendProtocol;
  * prototypes for functions in pqpacket.c
  */
 void		PacketReceiveSetup(Packet *pkt, PacketDoneProc iodone, void *arg);
-int			PacketReceiveFragment(Packet *pkt, int sock);
+int			PacketReceiveFragment(Port *port);
 void		PacketSendSetup(Packet *pkt, int nbytes, PacketDoneProc iodone, void *arg);
-int			PacketSendFragment(Packet *pkt, int sock);
+int			PacketSendFragment(Port *port);
 void		PacketSendError(Packet *pkt, char *errormsg);
 
 #endif	 /* LIBPQ_BE_H */

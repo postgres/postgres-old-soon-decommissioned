@@ -452,8 +452,7 @@ be_recvauth(Port *port)
 	 * an error message into the postmaster logfile if it failed.
 	 */
 
-	if (hba_getauthmethod(&port->raddr, port->user, port->database,
-						port->auth_arg, &port->auth_method) != STATUS_OK)
+        if (hba_getauthmethod(port) != STATUS_OK) 
 		PacketSendError(&port->pktInfo,
 						"Missing or erroneous pg_hba.conf file, see postmaster log for details");
 
@@ -470,7 +469,6 @@ be_recvauth(Port *port)
 
 		AuthRequest areq = AUTH_REQ_OK;
 		PacketDoneProc auth_handler = NULL;
-
 		switch (port->auth_method)
 		{
 			case uaReject:
