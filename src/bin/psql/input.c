@@ -187,7 +187,8 @@ initializeInput(int flags)
 		initialize_readline();
 
 		useHistory = true;
-		SetVariable(pset.vars, "HISTSIZE", "500");
+		if (GetVariable(pset.vars, "HISTSIZE") == NULL)
+			SetVariable(pset.vars, "HISTSIZE", "500");
 		using_history();
 		home = getenv("HOME");
 		if (home)
