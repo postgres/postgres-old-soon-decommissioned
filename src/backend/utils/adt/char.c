@@ -181,7 +181,9 @@ chardiv(PG_FUNCTION_ARGS)
 	char		arg2 = PG_GETARG_CHAR(1);
 
 	if (arg2 == 0)
-		elog(ERROR, "division by zero");
+		ereport(ERROR,
+				(errcode(ERRCODE_DIVISION_BY_ZERO),
+				 errmsg("division by zero")));
 
 	PG_RETURN_CHAR((int8) arg1 / (int8) arg2);
 }

@@ -75,7 +75,9 @@ boolin(PG_FUNCTION_ARGS)
 			break;
 	}
 
-	elog(ERROR, "Bad boolean external representation '%s'", b);
+	ereport(ERROR,
+			(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+			 errmsg("invalid input syntax for boolean: \"%s\"", b)));
 
 	/* not reached */
 	PG_RETURN_BOOL(false);

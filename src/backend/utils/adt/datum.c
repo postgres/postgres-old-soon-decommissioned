@@ -75,7 +75,10 @@ datumGetSize(Datum value, bool typByVal, int typLen)
 			struct varlena *s = (struct varlena *) DatumGetPointer(value);
 
 			if (!PointerIsValid(s))
-				elog(ERROR, "datumGetSize: Invalid Datum Pointer");
+				ereport(ERROR,
+						(errcode(ERRCODE_DATA_EXCEPTION),
+						 errmsg("invalid Datum pointer")));
+
 			size = (Size) VARATT_SIZE(s);
 		}
 		else if (typLen == -2)
@@ -84,12 +87,15 @@ datumGetSize(Datum value, bool typByVal, int typLen)
 			char	   *s = (char *) DatumGetPointer(value);
 
 			if (!PointerIsValid(s))
-				elog(ERROR, "datumGetSize: Invalid Datum Pointer");
+				ereport(ERROR,
+						(errcode(ERRCODE_DATA_EXCEPTION),
+						 errmsg("invalid Datum pointer")));
+
 			size = (Size) (strlen(s) + 1);
 		}
 		else
 		{
-			elog(ERROR, "datumGetSize: Invalid typLen %d", typLen);
+			elog(ERROR, "invalid typLen: %d", typLen);
 			size = 0;			/* keep compiler quiet */
 		}
 	}

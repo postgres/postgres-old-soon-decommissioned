@@ -157,7 +157,7 @@ lc_collate_is_c(void)
 		return (bool) result;
 	localeptr = setlocale(LC_COLLATE, NULL);
 	if (!localeptr)
-		elog(PANIC, "Invalid LC_COLLATE setting");
+		elog(ERROR, "invalid LC_COLLATE setting");
 
 	if (strcmp(localeptr, "C") == 0)
 		result = true;
