@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------
 #
 # Makefile--
-#    Makefile for regex
+#    Makefile for backend/regex
 #
 # IDENTIFICATION
 #    $Header$
@@ -12,23 +12,17 @@ subdir = src/backend/regex
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-override CPPFLAGS += -DPOSIX_MISTAKE 
-
 OBJS = regcomp.o regerror.o regexec.o regfree.o
-DEBUGOBJ += ../utils/mb/SUBSYS.o
 
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
-regexec.o: regexec.c engine.c
+# mark inclusion dependencies between .c files explicitly
+regcomp.o: regcomp.c regc_lex.c regc_color.c regc_nfa.c regc_cvec.c regc_locale.c
 
-# retest will not compile because multibyte is now enabled by default
-# and the multibyte calls require /mmgr, /adt, and other calls that
-# are complex for linkage,  bjm 2002-09-16
-#retest: retest.o SUBSYS.o $(DEBUGOBJ)
-#	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
+regexec.o: regexec.c rege_dfa.c
 
 clean: 
-	rm -f SUBSYS.o $(OBJS) retest retest.o
+	rm -f SUBSYS.o $(OBJS)

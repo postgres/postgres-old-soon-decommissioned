@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+New regular expression package, many more regexp features (most of Perl5)
 Can now do EXPLAIN ... EXECUTE to see plan used for a prepared query
 Explicit JOINs no longer constrain query plan, unless JOIN_COLLAPSE_LIMIT = 1
 Performance of "foo IN (SELECT ...)" queries has been considerably improved
