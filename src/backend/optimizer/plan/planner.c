@@ -380,11 +380,11 @@ pg_checkretval(Oid rettype, QueryTreeList *queryTreeList)
 	    tletype = (Oid) ((Var*)thenode)->vartype;
 	else if (IsA(thenode,Const))
 	    tletype = (Oid) ((Const*)thenode)->consttype;
-	else if (IsA(thenode,Param)) {
+	else if (IsA(thenode,Param))
 	    tletype = (Oid) ((Param*)thenode)->paramtype;
-	else if (IsA(thenode,Expr)) {
+	else if (IsA(thenode,Expr))
 	    tletype = Expr;
-	} else if (IsA(thenode,LispList)) {
+	else if (IsA(thenode,LispList)) {
 	    thenode = lfirst(thenode);
 	    if (IsA(thenode,Oper))
 		tletype = (Oid) get_opresulttype((Oper*)thenode);
