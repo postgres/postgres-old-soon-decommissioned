@@ -2,7 +2,7 @@
 #
 # Makefile for src/bin/initdb
 #
-# Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
+# Portions Copyright (c) 1996-2003, PostgreSQL Global Development Group
 # Portions Copyright (c) 1994, Regents of the University of California
 #
 # $Header$
@@ -15,18 +15,12 @@ include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS := -DPGBINDIR=\"$(bindir)\" -DPGDATADIR=\"$(datadir)\" -DFRONTEND -I$(libpq_srcdir) $(CPPFLAGS)
 
-OBJS=	initdb.o sprompt.o
-ifeq ($(PORTNAME), win32)
-OBJS+=dirmod.o
-endif
+OBJS=	initdb.o
 
 all: submake-libpq submake-libpgport initdb
 
 initdb: $(OBJS) $(libpq_builddir)/libpq.a
 	$(CC) $(CFLAGS) $(OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@
-
-dirmod.c sprompt.c: % : $(top_srcdir)/src/port/%
-	rm -f $@ && $(LN_S) $< .
 
 install: all installdirs
 	$(INSTALL_PROGRAM) initdb$(X) $(DESTDIR)$(bindir)/initdb$(X)
