@@ -23,7 +23,7 @@ Postgres documentation
    <date>1999-07-20</date>
   </refsynopsisdivinfo>
   <synopsis>
-MOVE [ <replaceable class="PARAMETER">selector</replaceable> ] [ <replaceable class="PARAMETER">count</replaceable> ] 
+MOVE [ <replaceable class="PARAMETER">direction</replaceable> ] [ <replaceable class="PARAMETER">count</replaceable> ] 
     { IN | FROM } <replaceable class="PARAMETER">cursor</replaceable>
   </synopsis>
  </refsynopsisdiv>

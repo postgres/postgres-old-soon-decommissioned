@@ -112,7 +112,7 @@ $Header$
    <listitem>
     <para>
      The
-     <ulink url="http://postgresql.org"><productname>Postgres</productname></ulink>
+     <ulink url="http://www.postgresql.org"><productname>Postgres</productname></ulink>
      web site might have some information not appearing in the distribution.
      There is a <productname>mhonarc</productname> catalog of mailing list traffic
      which is a rich resource for many topics.
