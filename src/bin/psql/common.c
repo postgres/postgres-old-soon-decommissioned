@@ -217,12 +217,14 @@ simple_prompt(const char *prompt, int maxlen, bool echo)
 	if (length > 0 && destination[length - 1] != '\n')
 	{
 		/* eat rest of the line */
-		char		buf[512];
+		char		buf[128];
+		int			buflen;
 
 		do
 		{
-			fgets(buf, 512, stdin);
-		} while (buf[strlen(buf) - 1] != '\n');
+			fgets(buf, sizeof(buf), stdin);
+			buflen = strlen(buf);
+		} while (buflen > 0 && buf[buflen - 1] != '\n');
 	}
 
 	if (length > 0 && destination[length - 1] == '\n')
