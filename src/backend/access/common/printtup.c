@@ -197,8 +197,6 @@ debugtup(HeapTuple tuple, TupleDesc typeinfo)
     printf("\t----\n");
 }
 
-/*#define IPORTAL_DEBUG*/
-
 /* ----------------
  *	printtup_internal
  *      Protocol expects either T, D, C, E, or N.
