@@ -806,8 +806,8 @@ mic2ascii(unsigned char *mic, unsigned char *p, int len)
 		else
 		{						/* should be ASCII */
 			*p++ = c1;
+			mic++;
 		}
-		mic++;
 	}
 	*p = '\0';
 }
