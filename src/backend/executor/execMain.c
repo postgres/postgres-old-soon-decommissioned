@@ -419,6 +419,10 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 	resultRelationOid =   rtentry->relid;
 	resultRelationDesc =  heap_open(resultRelationOid);
 	
+	if ( resultRelationDesc->rd_rel->relkind == RELKIND_SEQUENCE )
+	    elog (WARN, "You can't change sequence relation %s",
+			resultRelationDesc->rd_rel->relname.data);
+
 	/* Write-lock the result relation right away: if the relation
 	   is used in a subsequent scan, we won't have to elevate the 
 	   read-lock set by heap_beginscan to a write-lock (needed by 
