@@ -1133,7 +1133,7 @@ _outCreateStmt(StringInfo str, CreateStmt *node)
 	WRITE_NODE_FIELD(tableElts);
 	WRITE_NODE_FIELD(inhRelations);
 	WRITE_NODE_FIELD(constraints);
-	WRITE_BOOL_FIELD(hasoids);
+	WRITE_ENUM_FIELD(hasoids, ContainsOids);
 	WRITE_ENUM_FIELD(oncommit, OnCommitAction);
 }
 
