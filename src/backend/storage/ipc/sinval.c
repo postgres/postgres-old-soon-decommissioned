@@ -673,7 +673,7 @@ GetOldestXmin(bool allDbs)
 	TransactionId result;
 	int			index;
 
-	result = GetCurrentTransactionId();
+	result = GetTopTransactionId();
 
 	LWLockAcquire(SInvalLock, LW_SHARED);
 
@@ -763,7 +763,7 @@ GetSnapshotData(Snapshot snapshot, bool serializable)
 					 errmsg("out of memory")));
 	}
 
-	globalxmin = xmin = GetCurrentTransactionId();
+	globalxmin = xmin = GetTopTransactionId();
 
 	/*
 	 * If we are going to set MyProc->xmin then we'd better get exclusive
