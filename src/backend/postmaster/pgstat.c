@@ -382,10 +382,9 @@ pgstat_beterm(int pid)
 	if (pgStatSock < 0)
 		return;
 
+	MemSet(&(msg.m_hdr), 0, sizeof(msg.m_hdr));
 	msg.m_hdr.m_type = PGSTAT_MTYPE_BETERM;
-	msg.m_hdr.m_backendid = 0;
 	msg.m_hdr.m_procpid = pid;
-	msg.m_hdr.m_databaseid = 0;
 
 	pgstat_send(&msg, sizeof(msg));
 }
