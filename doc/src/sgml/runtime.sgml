@@ -2876,6 +2876,7 @@ openssl rsa -in privkey.pem -out cert.pem
    Enter the old passphrase to unlock the existing key. Now do
 <programlisting>
 openssl req -x509 -in cert.req -text -key cert.pem -out cert.cert
+chmod og-rwx cert.pem
 cp cert.pem <replaceable>$PGDATA</replaceable>/server.key
 cp cert.cert <replaceable>$PGDATA</replaceable>/server.crt
 </programlisting>
