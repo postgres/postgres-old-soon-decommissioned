@@ -536,8 +536,10 @@ ExecHashGetBucket(HashJoinTable hashtable,
     /* ----------------
      *	Get the join attribute value of the tuple
      * ----------------
+     * ...It's quick hack - use ExecEvalExpr instead of ExecEvalVar:
+     * hashkey may be T_ArrayRef, not just T_Var.	- vadim 04/22/97
      */
-    keyval = ExecEvalVar(hashkey, econtext, &isNull);
+    keyval = ExecEvalExpr((Node*)hashkey, econtext, &isNull, NULL);
     
     /*
      * keyval could be null, so we better point it to something

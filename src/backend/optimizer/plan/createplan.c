@@ -734,10 +734,16 @@ switch_outer(List *clauses)
     Expr *temp = NULL;
     List *i = NIL;
     Expr *clause;
+    Node *op;
 
     foreach(i,clauses) {
 	clause = lfirst(i);
-	if(var_is_outer(get_rightop(clause))) {
+	op = (Node*)get_rightop(clause);
+	if ( IsA (op, ArrayRef) )
+	    op = ((ArrayRef*)op)->refexpr;
+	Assert ( IsA (op, Var) );
+	if ( var_is_outer ((Var*)op) )
+	{
 	    temp = make_clause(clause->opType, clause->oper,
 			       lcons(get_rightop(clause),
 				    lcons(get_leftop(clause),
