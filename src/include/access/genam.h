@@ -13,10 +13,10 @@
 #ifndef GENAM_H
 #define GENAM_H
 
-#include "access/sdir.h"
 #include "access/funcindex.h"
-#include "access/relscan.h"
 #include "access/itup.h"
+#include "access/relscan.h"
+#include "access/sdir.h"
 
 /* ----------------
  *		generalized index_ interface routines

@@ -13,8 +13,8 @@
 #ifndef SHMEM_H
 #define SHMEM_H
 
-#include "utils/hsearch.h"
 #include "storage/spin.h"
+#include "utils/hsearch.h"
 
 
 /* The shared memory region can start at a different address

@@ -24,11 +24,11 @@
 
 #include "storage/itemptr.h"
 #include "utils/array.h"
-#include "utils/geo_decls.h"
 #include "utils/datetime.h"
-#include "utils/nabstime.h"
-#include "utils/int8.h"
+#include "utils/geo_decls.h"
 #include "utils/inet.h"
+#include "utils/int8.h"
+#include "utils/nabstime.h"
 #include "utils/numeric.h"
 
 /*

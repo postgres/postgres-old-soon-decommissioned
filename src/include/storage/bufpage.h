@@ -13,12 +13,12 @@
 #ifndef BUFPAGE_H
 #define BUFPAGE_H
 
-#include "storage/off.h"
-#include "storage/itemid.h"
-#include "storage/item.h"
 #include "storage/buf.h"
-#include "storage/page.h"
 #include "storage/bufmgr.h"
+#include "storage/item.h"
+#include "storage/itemid.h"
+#include "storage/off.h"
+#include "storage/page.h"
 
 /*
  * a postgres disk page is an abstraction layered on top of a postgres

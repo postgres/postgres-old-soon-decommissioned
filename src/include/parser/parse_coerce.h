@@ -13,8 +13,8 @@
 #ifndef PARSE_COERCE_H
 #define PARSE_COERCE_H
 
-#include "parser/parse_node.h"
 #include "catalog/pg_type.h"
+#include "parser/parse_node.h"
 
 typedef enum CATEGORY
 {

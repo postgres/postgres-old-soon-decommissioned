@@ -13,9 +13,9 @@
 #ifndef PRIMNODES_H
 #define PRIMNODES_H
 
-#include "utils/fcache.h"
 #include "access/attnum.h"
 #include "nodes/pg_list.h"
+#include "utils/fcache.h"
 
 /* ----------------------------------------------------------------
  *						node definitions

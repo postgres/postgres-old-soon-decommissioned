@@ -13,8 +13,8 @@
 #ifndef PREP_H
 #define PREP_H
 
-#include "nodes/plannodes.h"
 #include "nodes/parsenodes.h"
+#include "nodes/plannodes.h"
 
 /*
  * prototypes for prepqual.c

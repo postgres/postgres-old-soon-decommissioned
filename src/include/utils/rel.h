@@ -13,10 +13,10 @@
 #ifndef REL_H
 #define REL_H
 
-#include "catalog/pg_am.h"
-#include "catalog/pg_class.h"
 #include "access/strat.h"
 #include "access/tupdesc.h"
+#include "catalog/pg_am.h"
+#include "catalog/pg_class.h"
 #include "rewrite/prs2lock.h"
 #include "storage/fd.h"
 

@@ -19,8 +19,8 @@
 #define MEMNODES_H
 
 #include "lib/fstack.h"
-#include "utils/memutils.h"
 #include "nodes/nodes.h"
+#include "utils/memutils.h"
 
 /*
  * MemoryContext

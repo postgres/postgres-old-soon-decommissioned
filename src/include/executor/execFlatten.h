@@ -13,8 +13,8 @@
 #ifndef EXECFLATTEN_H
 #define EXECFLATTEN_H
 
-#include "nodes/relation.h"
 #include "nodes/execnodes.h"
+#include "nodes/relation.h"
 
 extern Datum ExecEvalIter(Iter *iterNode, ExprContext *econtext, bool *resultIsNull, bool *iterIsDone);
 

@@ -13,8 +13,8 @@
 #ifndef LOCK_H_
 #define LOCK_H_
 
-#include "storage/shmem.h"
 #include "storage/itemptr.h"
+#include "storage/shmem.h"
 #include "storage/sinvaladt.h"
 #include "utils/array.h"
 

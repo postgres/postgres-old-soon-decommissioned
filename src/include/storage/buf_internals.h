@@ -17,8 +17,8 @@
 #ifndef BUFMGR_INTERNALS_H
 #define BUFMGR_INTERNALS_H
 
-#include "storage/lmgr.h"
 #include "storage/buf.h"
+#include "storage/lmgr.h"
 
 /* Buf Mgr constants */
 /* in bufmgr.c */

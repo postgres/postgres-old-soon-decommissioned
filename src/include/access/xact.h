@@ -13,8 +13,8 @@
 #ifndef XACT_H
 #define XACT_H
 
-#include "utils/nabstime.h"
 #include "access/transam.h"
+#include "utils/nabstime.h"
 
 /* ----------------
  *		transaction state structure

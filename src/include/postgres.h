@@ -40,9 +40,9 @@
 #include "config.h"
 #endif
 #include "c.h"
-#include "utils/palloc.h"
-#include "utils/mcxt.h"
 #include "utils/elog.h"
+#include "utils/mcxt.h"
+#include "utils/palloc.h"
 
 /* ----------------------------------------------------------------
  *				Section 1:	simple type definitions

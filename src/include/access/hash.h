@@ -16,10 +16,10 @@
 #ifndef HASH_H
 #define HASH_H
 
-#include "access/sdir.h"
 #include "access/funcindex.h"
-#include "access/relscan.h"
 #include "access/itup.h"
+#include "access/relscan.h"
+#include "access/sdir.h"
 #include "utils/int8.h"
 
 /*

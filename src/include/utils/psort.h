@@ -13,10 +13,10 @@
 #ifndef PSORT_H
 #define PSORT_H
 
-#include "storage/fd.h"
 #include "access/relscan.h"
-#include "utils/lselect.h"
 #include "nodes/plannodes.h"
+#include "storage/fd.h"
+#include "utils/lselect.h"
 
 #define MAXTAPES		7		/* See Knuth Fig. 70, p273 */
 

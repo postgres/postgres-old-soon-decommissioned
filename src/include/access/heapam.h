@@ -14,9 +14,9 @@
 #define HEAPAM_H
 
 #include <time.h>
-#include "access/tupmacs.h"
 #include "access/htup.h"
 #include "access/relscan.h"
+#include "access/tupmacs.h"
 #include "storage/block.h"
 #include "utils/rel.h"
 #include "utils/tqual.h"

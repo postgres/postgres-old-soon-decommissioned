@@ -13,8 +13,8 @@
 #ifndef INDEX_H
 #define INDEX_H
 
-#include "nodes/execnodes.h"
 #include "access/itup.h"
+#include "nodes/execnodes.h"
 
 extern Form_pg_am AccessMethodObjectIdGetForm(Oid accessMethodObjectId);
 

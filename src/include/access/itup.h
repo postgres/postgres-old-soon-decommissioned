@@ -14,8 +14,8 @@
 #define ITUP_H
 
 #include "access/ibit.h"
-#include "access/tupmacs.h"
 #include "access/tupdesc.h"
+#include "access/tupmacs.h"
 #include "storage/itemptr.h"
 
 #define MaxIndexAttributeNumber 7
