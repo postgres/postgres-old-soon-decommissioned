@@ -27,6 +27,7 @@
 
 #include "parser/catalog_utils.h"
 #include "catalog/pg_inherits.h"
+#include "catalog/pg_operator.h"
 #include "catalog/pg_type.h"
 #include "catalog/indexing.h"
 #include "catalog/catname.h"

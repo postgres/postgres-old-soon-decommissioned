@@ -16,6 +16,7 @@
 #include <string.h>
 #include "postgres.h"
 #include "nodes/nodes.h"
+#include "nodes/params.h"
 #include "nodes/primnodes.h"
 #include "nodes/parsenodes.h"
 #include "nodes/relation.h"
