@@ -289,8 +289,8 @@ bytesToHex(uint8 b[16], char *s)
  *						  characters.  you thus need to provide an array
  *						  of 33 characters, including the trailing '\0'.
  *
- *	RETURNS		  0 on failure (out of memory for internal buffers) or
- *				  non-zero on success.
+ *	RETURNS		  false on failure (out of memory for internal buffers) or
+ *				  true on success.
  *
  *	STANDARDS	  MD5 is described in RFC 1321.
  *
