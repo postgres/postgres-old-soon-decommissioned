@@ -162,6 +162,7 @@ ConfigureNamesBool[] =
 	{"tcpip_socket",            PGC_POSTMASTER, &NetServer,             false},
 	{"ssl",                     PGC_POSTMASTER, &EnableSSL,             false},
 	{"fsync",                   PGC_USERSET,    &enableFsync,           true},
+	{"silent_mode",             PGC_POSTMASTER, &SilentMode,            false},
 
 	{"log_connections",         PGC_SIGHUP,     &Log_connections,       false},
 	{"log_timestamp",           PGC_SIGHUP,     &Log_timestamp,         false},

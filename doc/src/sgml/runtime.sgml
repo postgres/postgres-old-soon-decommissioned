@@ -963,6 +963,21 @@ env PGOPTIONS='--geqo=off' psql
      </varlistentry>
 
      <varlistentry>
+      <term>SILENT_MODE (<type>bool</type>)</term>
+      <listitem>
+       <para>
+	    Runs postmaster silently. If this option is set, postmaser
+        will automatically run in background and any controlling ttys
+        are disassociated, thus no message is put to stdout or
+        stderr(same effect as postmaster's -S option). Unless some
+        logging systems such as syslog is enabled, using this option
+        is discouraged since it makes difficult to find error
+        messages.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term>SORT_MEM (<type>integer</type>)</term>
       <listitem>
        <para>

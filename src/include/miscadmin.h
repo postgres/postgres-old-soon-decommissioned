@@ -108,6 +108,7 @@ extern int	SortMem;
 
 extern bool NetServer;
 extern bool EnableSSL;
+extern bool SilentMode;
 extern int MaxBackends;
 extern int NBuffers;
 extern int PostPortName;
