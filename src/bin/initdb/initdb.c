@@ -649,7 +649,7 @@ exit_nicely(void)
 }
 
 /*
- * find the current user using code lifted from pg_id.c
+ * find the current user
  *
  * on unix make sure it isn't really root
  */
