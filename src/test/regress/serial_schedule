@@ -23,7 +23,9 @@ test: polygon
 test: circle
 test: date
 test: time
+test: timetz
 test: timestamp
+test: timestamptz
 test: interval
 test: abstime
 test: reltime
