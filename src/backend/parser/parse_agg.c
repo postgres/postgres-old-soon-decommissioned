@@ -15,6 +15,7 @@
 #include "postgres.h"
 #include "catalog/pg_aggregate.h"
 #include "optimizer/clauses.h"
+#include "optimizer/tlist.h"
 #include "parser/parse_agg.h"
 #include "parser/parse_coerce.h"
 #include "parser/parse_expr.h"
