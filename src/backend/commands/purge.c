@@ -85,7 +85,7 @@ RelationPurge(char *relationName,
 #endif	/* defined(PURGEDEBUG) */
     
     if (PointerIsValid(relativeTimeString)) {
-	if (isreltime(relativeTimeString, NULL, NULL, NULL) != 1) {
+	if (isreltime(relativeTimeString) != 1) {
 	    elog(WARN, "%s: bad relative time string \"%s\"",
 		 cmdname, relativeTimeString);
 	}
