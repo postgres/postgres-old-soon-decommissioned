@@ -551,7 +551,7 @@ OperatorDef(char *operatorName,
 	tup = SearchSysCacheTuple(PRONAME,
 				  PointerGetDatum(restrictionName),
 				  Int32GetDatum(5),
-				  ObjectIdGetDatum(typeId),
+				  PointerGetDatum(typeId),
 				  0);
 	if (!HeapTupleIsValid(tup))
 	    func_error("OperatorDef", restrictionName, 5, typeId);
@@ -575,7 +575,7 @@ OperatorDef(char *operatorName,
 	tup = SearchSysCacheTuple(PRONAME,
 				  PointerGetDatum(joinName),
 				  Int32GetDatum(5),
-				  Int32GetDatum(typeId),
+				  PointerGetDatum(typeId),
 				  0);
 	if (!HeapTupleIsValid(tup))
 	    func_error("OperatorDef", joinName, 5, typeId);
