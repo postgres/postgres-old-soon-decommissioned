@@ -432,7 +432,7 @@ exec_command(const char *cmd,
 		}
 		else
         {
-			success = process_file(fname) == EXIT_SUCCESS;
+			success = (process_file(fname) == EXIT_SUCCESS);
             free (fname);
         }
 	}
@@ -727,7 +727,7 @@ exec_command(const char *cmd,
 	else if (strcmp(cmd, "?") == 0)
 		slashUsage();
 
-#if 1
+#if 0
     /*
 	 * These commands don't do anything. I just use them to test the
 	 * parser.

@@ -91,7 +91,7 @@ PGDATESTYLE="ISO,US"; export PGDATESTYLE
 # ----------
 # The SQL shell to use during this test
 # ----------
-FRONTEND="$BINDIR/psql $HOSTLOC -a -q"
+FRONTEND="$BINDIR/psql $HOSTLOC -a -q -X"
 
 # ----------
 # Scan resultmap file to find which platform-specific expected files to use.

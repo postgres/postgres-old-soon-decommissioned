@@ -29,6 +29,7 @@ void        NoticeProcessor(void * arg, const char * message);
 char *		simple_prompt(const char *prompt, int maxlen, bool echo);
 
 extern volatile bool cancel_pressed;
+extern PGconn *cancelConn;
 void        handle_sigint(SIGNAL_ARGS);
 
 PGresult *	PSQLexec(const char *query);
