@@ -28,7 +28,7 @@
 #include "catalog/pg_user.h"
 #include "catalog/pg_database.h"
 #include "utils/syscache.h"
-#include "parser/dbcommands.h"
+#include "commands/dbcommands.h"
 #include "tcop/tcopprot.h"
 #include "storage/bufmgr.h"
 #include "storage/lmgr.h"

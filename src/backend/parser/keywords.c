@@ -20,8 +20,6 @@
 #include "parse.h"
 #include "utils/elog.h"
 #include "parser/keywords.h"
-#include "parser/dbcommands.h"	/* createdb, destroydb stop_vacuum */
-
 
 /*
  * List of (keyword-name, keyword-token-value) pairs.
