@@ -173,6 +173,10 @@ AllocSetReset(AllocSet set)
 	while (block != NULL)
 	{
 		next = block->next;
+#ifdef CLOBBER_FREED_MEMORY
+		/* Wipe freed memory for debugging purposes */
+		memset(block, 0x7F, ((char *) block->endptr) - ((char *) block));
+#endif
 		free(block);
 		block = next;
 	}
@@ -419,6 +423,10 @@ AllocSetFree(AllocSet set, AllocPointer pointer)
 			set->blocks = block->next;
 		else
 			prevblock->next = block->next;
+#ifdef CLOBBER_FREED_MEMORY
+		/* Wipe freed memory for debugging purposes */
+		memset(block, 0x7F, ((char *) block->endptr) - ((char *) block));
+#endif
 		free(block);
 	}
 	else
