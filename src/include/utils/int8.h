@@ -23,12 +23,6 @@
 #include "fmgr.h"
 
 
-/* this should be set in pg_config.h, but just in case it wasn't: */
-#ifndef INT64_FORMAT
-#warning "Broken pg_config.h should have defined INT64_FORMAT"
-#define INT64_FORMAT "%ld"
-#endif
-
 extern bool scanint8(const char *str, bool errorOK, int64 *result);
 
 extern Datum int8in(PG_FUNCTION_ARGS);
