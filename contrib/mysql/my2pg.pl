@@ -35,7 +35,7 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #
-# $My2pg: my2pg.pl,v 1.23 2001/12/06 19:32:20 fonin Exp $
+# $My2pg: my2pg.pl,v 1.24 2001/12/06 19:32:20 fonin Exp $
 # $Id$
 
 # TODO:
@@ -47,6 +47,26 @@
 
 #
 # $Log: my2pg.pl,v $
+# Revision 1.24  2002/04/20 14:15:43  fonin
+# Patch by Felipe Nievinski <fnievinski@terra.com.br>.
+# A table I was re-creating had a composite primary key, and I was using
+# the -d switch to maintain the table and column names
+# adding double quotes around them.
+#
+# The SQL code generated was something like this:
+#
+# CREATE TABLE "rinav" (
+#    "UnidadeAtendimento" INT8 DEFAULT '0' NOT NULL,
+#    "NumeroRinav" INT8 DEFAULT '0' NOT NULL,
+# -- ...
+#    PRIMARY KEY ("UnidadeAtendimento"," NumeroRinav")
+# );
+#
+# Please note the space inside the second column name string in the PK
+# definition. Because of this PostgreSQL was not able to create the table.
+#
+# FIXED.
+#
 # Revision 1.23  2002/02/07 22:13:52  fonin
 # Bugfix by Hans-Juergen Schoenig <hs@cybertec.at>: additional space after
 # FLOAT8 is required.
@@ -148,7 +168,7 @@ if($opts{d} ne '') {
 $|=1;
 
 print("------------------------------------------------------------------");
-print("\n-- My2Pg 1.23 translated dump");
+print("\n-- My2Pg 1.24 translated dump");
 print("\n--");
 print("\n------------------------------------------------------------------");
 
@@ -170,7 +190,7 @@ $libtypename.='/libtypes.so';
 # push header to libtypes.c
 open(LIBTYPES,">$libtypesource");
 print LIBTYPES "/******************************************************";
-print LIBTYPES "\n * My2Pg \$Revision: 1.7 $ \translated dump";
+print LIBTYPES "\n * My2Pg \$Revision: 1.8 $ \translated dump";
 print LIBTYPES "\n * User types definitions";
 print LIBTYPES "\n ******************************************************/";
 print LIBTYPES "\n\n#include <postgres.h>\n";
@@ -625,6 +645,7 @@ CREATE OPERATOR <> (
     if(/PRIMARY KEY \((.*)\)/i) {
 	my $tmpfld=$1;
 	$tmpfld=~s/,/","/g if $dq;
+	$tmpfld=~s/ //g;
 	s/PRIMARY KEY (\(.*\))/PRIMARY KEY \($dq$tmpfld$dq\)/i;
 	s/(PRIMARY KEY \(.*\)).*/$1$check\n/i;
     }
@@ -701,7 +722,7 @@ close(LIBTYPES);
 
 open(MAKE,">Makefile");
 print MAKE "#
-# My2Pg \$Revision: 1.7 $ \translated dump
+# My2Pg \$Revision: 1.8 $ \translated dump
 # Makefile
 #
 
