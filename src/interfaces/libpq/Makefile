@@ -17,6 +17,7 @@ MKDIR=	../mk
 include $(MKDIR)/postgres.mk
 
 CFLAGS+= -I$(srcdir)/backend/include \
+	-I$(srcdir)/include \
 	-I$(srcdir)/backend \
 	-I$(CURDIR) \
 
