@@ -99,9 +99,9 @@ DefineRelation(CreateStmt *stmt)
 
 		foreach(entry, constraints)
 		{
-			ConstraintDef *cdef = (ConstraintDef *) lfirst(entry);
+			Constraint *cdef = (Constraint *) lfirst(entry);
 
-			if (cdef->type == CONSTR_CHECK)
+			if (cdef->contype == CONSTR_CHECK)
 			{
 				if (cdef->name != NULL)
 				{
@@ -218,7 +218,7 @@ MergeAttributes(List *schema, List *supers, List **supconstr)
 
 			if (!strcmp(coldef->colname, restdef->colname))
 			{
-				elog(WARN, "attribute \"%s\" duplicated",
+				elog(WARN, "attribute '%s' duplicated",
 					 coldef->colname);
 			}
 		}
@@ -231,7 +231,7 @@ MergeAttributes(List *schema, List *supers, List **supconstr)
 		{
 			if (!strcmp(strVal(lfirst(entry)), strVal(lfirst(rest))))
 			{
-				elog(WARN, "relation \"%s\" duplicated",
+				elog(WARN, "relation '%s' duplicated",
 					 strVal(lfirst(entry)));
 			}
 		}
@@ -253,13 +253,11 @@ MergeAttributes(List *schema, List *supers, List **supconstr)
 		if (relation == NULL)
 		{
 			elog(WARN,
-			"MergeAttr: Can't inherit from non-existent superclass '%s'",
-				 name);
+			"MergeAttr: Can't inherit from non-existent superclass '%s'", name);
 		}
 		if (relation->rd_rel->relkind == 'S')
 		{
-			elog(WARN, "MergeAttr: Can't inherit from sequence superclass '%s'",
-				 name);
+			elog(WARN, "MergeAttr: Can't inherit from sequence superclass '%s'", name);
 		}
 		tupleDesc = RelationGetTupleDescriptor(relation);
 		constr = tupleDesc->constr;
@@ -335,9 +333,9 @@ MergeAttributes(List *schema, List *supers, List **supconstr)
 
 			for (i = 0; i < constr->num_check; i++)
 			{
-				ConstraintDef *cdef = (ConstraintDef *) palloc(sizeof(ConstraintDef));
+				Constraint *cdef = (Constraint *) makeNode(Constraint); /* palloc(sizeof(Constraint)); */
 
-				cdef->type = CONSTR_CHECK;
+				cdef->contype = CONSTR_CHECK;
 				if (check[i].ccname[0] == '$')
 					cdef->name = NULL;
 				else
