@@ -592,6 +592,7 @@ connectMakeNonblocking(PGconn *conn)
 #ifndef WIN32
 	if (fcntl(conn->sock, F_SETFL, O_NONBLOCK) < 0)
 #else
+	int on = 1;
 	if (ioctlsocket(conn->sock, FIONBIO, &on) != 0)
 #endif
 	{
