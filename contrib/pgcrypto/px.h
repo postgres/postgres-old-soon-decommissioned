@@ -33,6 +33,7 @@
 #define __PX_H
 
 #include <sys/types.h>
+#include <sys/param.h>
 #ifdef HAVE_ENDIAN_H
 #include <endian.h>
 #endif
