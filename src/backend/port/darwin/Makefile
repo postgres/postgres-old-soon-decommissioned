@@ -12,7 +12,7 @@ subdir = src/backend/port/darwin
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = sem.o
+OBJS = sem.o system.o
 
 all: SUBSYS.o
 
