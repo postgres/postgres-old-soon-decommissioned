@@ -16,10 +16,10 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
+
 /* System includes */
 #include <a.out.h>
-
-#include "postgres.h"
 
 #include "dl.h"
 #include "dynloader.h"

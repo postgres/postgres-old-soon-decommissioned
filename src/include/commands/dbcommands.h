@@ -14,7 +14,7 @@
 #ifndef DBCOMMANDS_H
 #define DBCOMMANDS_H
 
-#include <nodes/parsenodes.h>
+#include "nodes/parsenodes.h"
 
 extern void createdb(const CreatedbStmt *stmt);
 extern void dropdb(const char *dbname);

@@ -13,10 +13,10 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
 
 #include <ctype.h>
 
-#include "postgres.h"
 #include "miscadmin.h"
 #include "parser/scansup.h"
 

@@ -35,10 +35,10 @@
  *
  **********************************************************************/
 
-#include <ctype.h>
-
 #include "plpgsql.h"
 #include "pl.tab.h"
+
+#include <ctype.h>
 
 #include "mb/pg_wchar.h"
 

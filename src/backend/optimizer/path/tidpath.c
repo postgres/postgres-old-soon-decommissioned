@@ -13,9 +13,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <math.h>
-
 #include "postgres.h"
+
+#include <math.h>
 
 #include "catalog/pg_operator.h"
 #include "optimizer/clauses.h"

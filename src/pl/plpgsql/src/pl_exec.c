@@ -35,11 +35,11 @@
  *
  **********************************************************************/
 
-#include <ctype.h>
-#include <setjmp.h>
-
 #include "plpgsql.h"
 #include "pl.tab.h"
+
+#include <ctype.h>
+#include <setjmp.h>
 
 #include "access/heapam.h"
 #include "catalog/pg_proc.h"

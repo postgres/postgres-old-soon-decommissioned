@@ -12,12 +12,12 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
+
 #include <math.h>
 #include <limits.h>
 #include <float.h>
 #include <ctype.h>
-
-#include "postgres.h"
 
 #include "utils/geo_decls.h"
 

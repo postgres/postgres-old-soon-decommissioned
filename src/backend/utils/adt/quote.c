@@ -11,9 +11,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <ctype.h>
-
 #include "postgres.h"
+
+#include <ctype.h>
 
 #include "mb/pg_wchar.h"
 #include "utils/builtins.h"

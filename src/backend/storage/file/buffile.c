@@ -32,9 +32,9 @@
  *-------------------------------------------------------------------------
  */
 
-#include <errno.h>
-
 #include "postgres.h"
+
+#include <errno.h>
 
 #include "storage/fd.h"
 #include "storage/buffile.h"

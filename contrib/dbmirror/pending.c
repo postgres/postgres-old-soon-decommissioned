@@ -18,9 +18,10 @@
  *
  *
  ***************************************************************************/
+#include <postgres.h>
+
 #include <executor/spi.h>
 #include <commands/trigger.h>
-#include <postgres.h>
 
 enum FieldUsage
 {
