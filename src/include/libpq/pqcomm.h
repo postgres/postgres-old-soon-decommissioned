@@ -19,6 +19,11 @@
 #include <sys/types.h>
 #ifdef WIN32
 #include <winsock.h>
+/* workaround for clashing defines of "ERROR" */
+#ifdef ELOG_H
+#undef ERROR
+#define ERROR	(-1)
+#endif
 #else							/* not WIN32 */
 #include <sys/socket.h>
 #ifdef HAVE_SYS_UN_H
