@@ -299,6 +299,13 @@ IpcSemaphoreCreate: semget(key=5440026, num=16, 01600) failed: No space left on 
     </para>
 
     <para>
+     If you get an <quote>illegal system call</> error, then it is likely that
+     shared memory or semaphores are not supported at all in your kernel. In
+     that case your only option is to re-configure the kernel to turn on these
+     features.
+    </para>
+
+    <para>
      Details about configuring System V IPC facilities are given in
      <xref linkend="sysvipc">.
     </para>
