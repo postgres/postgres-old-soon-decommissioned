@@ -543,8 +543,8 @@ index_create(Oid heapRelationId,
 								namespaceId,
 								tableSpaceId,
 								indexTupDesc,
+								RELKIND_INDEX,
 								shared_relation,
-								true,
 								allow_system_table_mods);
 
 	/* Fetch the relation OID assigned by heap_create */

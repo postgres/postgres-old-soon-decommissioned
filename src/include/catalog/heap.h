@@ -39,8 +39,8 @@ extern Relation heap_create(const char *relname,
 			Oid relnamespace,
 			Oid reltablespace,
 			TupleDesc tupDesc,
+			char relkind,
 			bool shared_relation,
-			bool create_storage,
 			bool allow_system_table_mods);
 
 extern Oid heap_create_with_catalog(const char *relname,

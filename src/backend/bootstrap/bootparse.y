@@ -184,8 +184,8 @@ Boot_CreateStmt:
 												   PG_CATALOG_NAMESPACE,
 												   $3 ? GLOBALTABLESPACE_OID : 0,
 												   tupdesc,
+												   RELKIND_RELATION,
 												   $3,
-												   true,
 												   true);
 						elog(DEBUG4, "bootstrap relation created");
 					}
