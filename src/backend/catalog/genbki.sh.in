@@ -164,6 +164,20 @@ raw == 1 	{ print; next; }
 	print "declare index " data
 }
 
+/^DECLARE_UNIQUE_INDEX\(/ {
+# ----
+#  end any prior catalog data insertions before starting a define unique index
+# ----
+	if (reln_open == 1) {
+#		print "show";
+		print "close " catalog;
+		reln_open = 0;
+	}
+
+	data = substr($0, 22, length($0) - 22);
+	print "declare unique index " data
+}
+
 /^BUILD_INDICES/	{ print "build indices"; }
 	
 # ----------------

@@ -138,6 +138,7 @@ typedef uint32 CommandId;
 #define DATA(x) extern int errno
 #define DESCR(x) extern int errno
 #define DECLARE_INDEX(x) extern int errno
+#define DECLARE_UNIQUE_INDEX(x) extern int errno
 
 #define BUILD_INDICES
 #define BOOTSTRAP

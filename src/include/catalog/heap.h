@@ -23,7 +23,8 @@ typedef struct RawColumnDefault
 
 extern Oid RelnameFindRelid(char *relname);
 extern Relation heap_create(char *relname, TupleDesc att,
-			    bool isnoname, bool istemp);
+			    bool isnoname, bool istemp, bool storage_create);
+extern bool heap_storage_create(Relation rel);
 
 extern Oid heap_create_with_catalog(char *relname, TupleDesc tupdesc, 
 				    char relkind, bool istemp);

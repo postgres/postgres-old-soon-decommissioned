@@ -90,6 +90,7 @@ insert			{ return(INSERT_TUPLE); }
 "declare"		{ return(XDECLARE); }
 "build"			{ return(XBUILD); }
 "indices"		{ return(INDICES); }
+"unique"		{ return(UNIQUE); }
 "index"			{ return(INDEX); }
 "on"			{ return(ON); }
 "using"			{ return(USING); }

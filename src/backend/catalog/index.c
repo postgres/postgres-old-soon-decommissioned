@@ -997,7 +997,7 @@ index_create(char *heapRelationName,
 	 * ----------------
 	 */
 	indexRelation = heap_create(indexRelationName,
-								indexTupDesc, false, istemp);
+				indexTupDesc, false, istemp, false);
 
 	/* ----------------
 	 *	  construct the index relation descriptor
@@ -1014,6 +1014,10 @@ index_create(char *heapRelationName,
 	 */
 	indexoid = UpdateRelationRelation(indexRelation, temp_relname);
 
+	/*
+	 * We create the disk file for this relation here
+	 */
+	heap_storage_create(indexRelation);
 	/* ----------------
 	 * Now get the index procedure (only relevant for functional indices).
 	 * ----------------

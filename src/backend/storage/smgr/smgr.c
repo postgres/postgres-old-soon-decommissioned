@@ -182,7 +182,8 @@ smgropen(int16 which, Relation reln)
 {
 	int			fd;
 
-	if ((fd = (*(smgrsw[which].smgr_open)) (reln)) < 0)
+	if ((fd = (*(smgrsw[which].smgr_open)) (reln)) < 0 &&
+		!reln->rd_unlinked)
 		elog(ERROR, "cannot open %s", reln->rd_rel->relname.data);
 
 	return fd;

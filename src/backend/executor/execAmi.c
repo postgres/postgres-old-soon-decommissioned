@@ -503,7 +503,7 @@ ExecCreatR(TupleDesc tupType,
 		 * heap_create creates a name if the argument to heap_create is
 		 * '\0 '
 		 */
-		relDesc = heap_create(NULL, tupType, true, false);
+		relDesc = heap_create(NULL, tupType, true, false, true);
 	}
 	else
 	{
