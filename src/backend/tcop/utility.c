@@ -80,11 +80,14 @@ DropErrorMsg(char* relname, char wrongkind, char rightkind)
 	for (wentry = kindstringarray; wentry->kind != '\0'; wentry++)
 		if (wentry->kind == wrongkind)
 			break;
-	Assert(wentry->kind != '\0');
-	
-	elog(ERROR, "\"%s\" is not %s %s. Use DROP %s to remove %s %s",
-		 relname, rentry->indef_article, rentry->name,
-		 wentry->command, wentry->indef_article, wentry->name);
+	/* wrongkind could be something we don't have in our table... */
+	if (wentry->kind != '\0')
+		elog(ERROR, "\"%s\" is not %s %s. Use DROP %s to remove %s %s",
+			 relname, rentry->indef_article, rentry->name,
+			 wentry->command, wentry->indef_article, wentry->name);
+	else
+		elog(ERROR, "\"%s\" is not %s %s",
+			 relname, rentry->indef_article, rentry->name);
 }
 
 static void
