@@ -38,7 +38,7 @@ uninstall:
 	rm -f $(DESTDIR)$(bindir)/initdb$(X)
 
 clean distclean maintainer-clean:
-	rm -f initdb$(X) $(OBJS) exec.c
+	rm -f initdb$(X) $(OBJS) dirmod.c exec.c
 
 
 # ensure that changes in datadir propagate into object file
