@@ -34,7 +34,6 @@
 #include "rewrite/rewriteManip.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"
-#include "utils/numeric.h"
 #include "utils/relcache.h"
 #include "utils/syscache.h"
 #include "utils/temprel.h"
@@ -3178,32 +3177,6 @@ transformColumnType(ParseState *pstate, ColumnDef *column)
 {
 	TypeName   *typename = column->typename;
 	Type		ctype = typenameType(typename->name);
-
-	/*
-	 * If the column doesn't have an explicitly specified typmod, check to
-	 * see if we want to insert a default length.
-	 *
-	 * Note that we deliberately do NOT look at array or set information
-	 * here; "numeric[]" needs the same default typmod as "numeric".
-	 */
-	if (typename->typmod == -1)
-	{
-		switch (typeTypeId(ctype))
-		{
-			case BPCHAROID:
-				/* "char" -> "char(1)" */
-				typename->typmod = VARHDRSZ + 1;
-				break;
-			case NUMERICOID:
-				typename->typmod = VARHDRSZ +
-					((NUMERIC_DEFAULT_PRECISION << 16) | NUMERIC_DEFAULT_SCALE);
-				break;
-			case BITOID:
-				/* 'bit' -> 'bit(1)' */
-				typename->typmod = 1;
-				break;
-		}
-	}
 
 	/*
 	 * Is this the name of a complex type? If so, implement it as a set.
