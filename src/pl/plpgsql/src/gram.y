@@ -628,52 +628,9 @@ decl_defval		: ';'
 					{ $$ = NULL; }
 				| decl_defkey
 					{
-						int				tok;
-						int				lno;
-						PLpgSQL_dstring ds;
-						PLpgSQL_expr	*expr;
-
-						lno = plpgsql_scanner_lineno();
-						expr = malloc(sizeof(PLpgSQL_expr));
-						plpgsql_dstring_init(&ds);
-						plpgsql_dstring_append(&ds, "SELECT ");
-
-						expr->dtype   = PLPGSQL_DTYPE_EXPR;
-						expr->plan	  = NULL;
-						expr->nparams = 0;
-
-						tok = yylex();
-						switch (tok)
-						{
-							case 0:
-								yyerror("unexpected end of function");
-							case K_NULL:
-								if (yylex() != ';')
-									yyerror("expected \";\" after \"NULL\"");
-
-								free(expr);
-								plpgsql_dstring_free(&ds);
-
-								$$ = NULL;
-								break;
-
-							default:
-								plpgsql_dstring_append(&ds, yytext);
-								while ((tok = yylex()) != ';')
-								{
-									if (tok == 0)
-										yyerror("unterminated default value");
-
-									if (plpgsql_SpaceScanned)
-										plpgsql_dstring_append(&ds, " ");
-									plpgsql_dstring_append(&ds, yytext);
-								}
-								expr->query = strdup(plpgsql_dstring_get(&ds));
-								plpgsql_dstring_free(&ds);
-
-								$$ = expr;
-								break;
-						}
+						plpgsql_ns_setlocal(false);
+						$$ = plpgsql_read_expression(';', ";");
+						plpgsql_ns_setlocal(true);
 					}
 				;
 
