@@ -927,6 +927,96 @@ i2tof(int16 num)
 
 
 /*
+ *		float8_text		- converts a float8 number to a text string
+ */
+text *
+float8_text(float64 num)
+{
+	text   *result;
+	int		len;
+	char   *str;
+
+	str = float8out(num);
+	len = (strlen(str)+VARHDRSZ);
+
+	result = palloc(len);
+
+	VARSIZE(result) = len;
+	memmove(VARDATA(result), str, (len - VARHDRSZ));
+
+	pfree(str);
+	return result;
+}	/* float8_text() */
+
+
+/*
+ *		text_float8		- converts a text string to a float8 number
+ */
+float64
+text_float8(text *string)
+{
+	float64	result;
+	int		len;
+	char   *str;
+
+	len = (VARSIZE(string) - VARHDRSZ);
+	str = palloc(len + 1);
+	memmove(str, VARDATA(string), len);
+	*(str + len) = '\0';
+
+	result = float8in(str);
+	pfree(str);
+
+	return result;
+}	/* text_float8() */
+
+
+/*
+ *		float4_text		- converts a float4 number to a text string
+ */
+text *
+float4_text(float32 num)
+{
+	text   *result;
+	int		len;
+	char   *str;
+
+	str = float4out(num);
+	len = (strlen(str)+VARHDRSZ);
+
+	result = palloc(len);
+
+	VARSIZE(result) = len;
+	memmove(VARDATA(result), str, (len - VARHDRSZ));
+
+	pfree(str);
+	return result;
+}	/* float4_text() */
+
+
+/*
+ *		text_float4		- converts a text string to a float4 number
+ */
+float32
+text_float4(text *string)
+{
+	float32	result;
+	int		len;
+	char   *str;
+
+	len = (VARSIZE(string) - VARHDRSZ);
+	str = palloc(len + 1);
+	memmove(str, VARDATA(string), len);
+	*(str + len) = '\0';
+
+	result = float4in(str);
+	pfree(str);
+
+	return result;
+}	/* text_float4() */
+
+
+/*
  *		=======================
  *		RANDOM FLOAT8 OPERATORS
  *		=======================
