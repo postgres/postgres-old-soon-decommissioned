@@ -436,8 +436,14 @@ typedef HeapTupleData *HeapTuple;
  */
 #define HeapTupleIsValid(tuple) PointerIsValid(tuple)
 
+#define HeapTupleHasNulls(tuple) \
+		(((tuple)->t_data->t_infomask & HEAP_HASNULL) != 0)
+
 #define HeapTupleNoNulls(tuple) \
 		(!((tuple)->t_data->t_infomask & HEAP_HASNULL))
+
+#define HeapTupleHasVarWidth(tuple) \
+		(((tuple)->t_data->t_infomask & HEAP_HASVARWIDTH) != 0)
 
 #define HeapTupleAllFixed(tuple) \
 		(!((tuple)->t_data->t_infomask & HEAP_HASVARWIDTH))

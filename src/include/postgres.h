@@ -59,8 +59,6 @@
  * TOASTed.
  * ----------------
  */
-#define TUPLE_TOASTER_ACTIVE
-
 typedef struct varattrib
 {
 	int32		va_header;		/* External/compressed storage */

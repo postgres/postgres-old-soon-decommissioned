@@ -303,7 +303,7 @@ nocachegetattr(HeapTuple tuple,
 			return fetchatt(att[attnum],
 							tp + att[attnum]->attcacheoff);
 		}
-		else if (!HeapTupleAllFixed(tuple))
+		else if (HeapTupleHasVarWidth(tuple))
 		{
 			int			j;
 
@@ -378,13 +378,10 @@ nocachegetattr(HeapTuple tuple,
 
 		for (i = 0; i < attnum; i++)
 		{
-			if (!HeapTupleNoNulls(tuple))
+			if (HeapTupleHasNulls(tuple) && att_isnull(i, bp))
 			{
-				if (att_isnull(i, bp))
-				{
-					usecache = false;
-					continue;
-				}
+				usecache = false;
+				continue;
 			}
 
 			/* If we know the next offset, we can skip the rest */
