@@ -36,6 +36,30 @@ if test x"$pgac_cv_func_gettimeofday_1arg" = xyes ; then
 fi])# PGAC_FUNC_GETTIMEOFDAY_1ARG
 
 
+# PGAC_FUNC_MEMCMP
+# -----------
+# Check if memcmp() properly handles negative bytes and returns +/-.
+# SunOS does not.
+# AC_FUNC_MEMCMP
+AC_DEFUN(PGAC_FUNC_MEMCMP,
+[AC_CACHE_CHECK(for 8-bit clean memcmp, pgac_cv_func_memcmp_clean,
+[AC_TRY_RUN([
+main()
+{
+  char c0 = 0x40, c1 = 0x80, c2 = 0x81;
+  exit(memcmp(&c0, &c2, 1) < 0 && memcmp(&c1, &c2, 1) < 0 ? 0 : 1);
+}
+], pgac_cv_func_memcmp_clean=yes, pgac_cv_func_memcmp_clean=no,
+pgac_cv_func_memcmp_clean=no)])
+if test $pgac_cv_func_memcmp_clean = no ; then
+  MEMCMP=memcmp.o
+else
+  MEMCMP=
+fi
+AC_SUBST(MEMCMP)dnl
+])
+
+
 # PGAC_UNION_SEMUN
 # ----------------
 # Check if `union semun' exists. Define HAVE_UNION_SEMUN if so.

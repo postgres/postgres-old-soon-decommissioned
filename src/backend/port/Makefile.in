@@ -22,7 +22,7 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 OBJS = dynloader.o @INET_ATON@ @STRERROR@ @MISSING_RANDOM@ @SRANDOM@
-OBJS+= @GETHOSTNAME@ @GETRUSAGE@ @STRCASECMP@ @TAS@ @ISINF@
+OBJS+= @GETHOSTNAME@ @GETRUSAGE@ @MEMCMP@ @STRCASECMP@ @TAS@ @ISINF@
 OBJS+= @STRTOL@ @STRTOUL@ @SNPRINTF@
 ifdef STRDUP
 OBJS += $(top_builddir)/src/utils/strdup.o
