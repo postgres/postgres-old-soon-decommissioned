@@ -15,6 +15,7 @@ SRCDIR= ../..
 include $(SRCDIR)/Makefile.global
 
 DOCDIR= $(SRCDIR)/../doc/src/sgml/ref
+PERL = @PERL@
 
 CFLAGS+= -I$(LIBPQDIR)
 
