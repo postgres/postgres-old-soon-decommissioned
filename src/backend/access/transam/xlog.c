@@ -1276,6 +1276,7 @@ BootStrapXLOG()
 	CheckPoint	checkPoint;
 
 #ifdef XLOG
+	bool        usexistent = false;
 	XLogPageHeader page = (XLogPageHeader) buffer;
 	XLogRecord *record;
 
