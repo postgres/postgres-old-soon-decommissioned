@@ -1047,11 +1047,7 @@ tg_parseSubQuery(TgRecipe * r, TgNode * n, TeeInfo * teeInfo)
 				len = length(q->qtrees[0]->targetList);
 				tupdesc = rel->rd_att;
 
-				relid = heap_create(child->nodeElem->outTypes->val[0],
-									NULL,		/* XXX */
-									'n',
-									DEFAULT_SMGR,
-									tupdesc);
+				relid = heap_create(child->nodeElem->outTypes->val[0], tupdesc);
 			}
 			else
 			{
@@ -1076,9 +1072,6 @@ tg_parseSubQuery(TgRecipe * r, TgNode * n, TeeInfo * teeInfo)
 				else
 				{
 					relid = heap_create(child->nodeElem->outTypes->val[0],
-										NULL,	/* XXX */
-										'n',
-										DEFAULT_SMGR,
 										tupdesc);
 				}
 			}

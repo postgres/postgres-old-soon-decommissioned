@@ -116,7 +116,6 @@ struct sbufdesc_unpadded
 	BufferTag	tag;
 	int			buf_id;
 	BufFlags	flags;
-	int16		bufsmgr;
 	unsigned	refcount;
 #ifdef HAS_TEST_AND_SET
 	slock_t		io_in_progress_lock;
@@ -139,7 +138,6 @@ struct sbufdesc
 	int			buf_id;			/* maps global desc to local desc */
 
 	BufFlags	flags;			/* described below */
-	int16		bufsmgr;		/* storage manager id for buffer */
 	unsigned	refcount;		/* # of times buffer is pinned */
 
 #ifdef HAS_TEST_AND_SET

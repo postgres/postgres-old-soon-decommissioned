@@ -162,7 +162,6 @@ typedef enum NodeTag
 	T_FetchStmt,
 	T_IndexStmt,
 	T_ProcedureStmt,
-	T_PurgeStmt,
 	T_RecipeStmt,
 	T_RemoveAggrStmt,
 	T_RemoveFuncStmt,

@@ -100,9 +100,6 @@ DefineVirtualRelation(char *relname, List *tlist)
 	createStmt.tableElts = attrList;
 /*	  createStmt.tableType = NULL;*/
 	createStmt.inhRelnames = NIL;
-	createStmt.archiveType = ARCH_NONE;
-	createStmt.location = -1;
-	createStmt.archiveLoc = -1;
 	createStmt.constraints = NIL;
 
 	/*

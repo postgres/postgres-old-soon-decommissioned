@@ -148,10 +148,7 @@ inv_create(int flags)
 	 * be located on whatever storage manager the user requested.
 	 */
 
-	heap_create(objname,
-				objname,
-				(int) archchar, smgr,
-				tupdesc);
+	heap_create(objname, tupdesc);
 
 	/* make the relation visible in this transaction */
 	CommandCounterIncrement();
@@ -160,7 +157,7 @@ inv_create(int flags)
 	if (!RelationIsValid(r))
 	{
 		elog(WARN, "cannot create large object on %s under inversion",
-			 smgrout(smgr));
+			 smgrout(DEFAULT_SMGR));
 	}
 
 	/*
@@ -185,7 +182,7 @@ inv_create(int flags)
 	if (!RelationIsValid(indr))
 	{
 		elog(WARN, "cannot create index for large obj on %s under inversion",
-			 smgrout(smgr));
+			 smgrout(DEFAULT_SMGR));
 	}
 
 	retval = (LargeObjectDesc *) palloc(sizeof(LargeObjectDesc));

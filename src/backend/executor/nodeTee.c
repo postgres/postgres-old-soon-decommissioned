@@ -168,9 +168,6 @@ ExecInitTee(Tee *node, EState *currentEstate, Plan *parent)
 			bufferRel = heap_openr(teeState->tee_bufferRelname);
 		else
 			bufferRel = heap_open(heap_create(teeState->tee_bufferRelname,
-											   /* FIX */ NULL,
-											  'n',
-											  DEFAULT_SMGR,
 											  tupType));
 	}
 	else
@@ -180,9 +177,6 @@ ExecInitTee(Tee *node, EState *currentEstate, Plan *parent)
 				newoid());
 /*		bufferRel = ExecCreatR(len, tupType, _TEMP_RELATION_ID); */
 		bufferRel = heap_open(heap_create(teeState->tee_bufferRelname,
-										  NULL, /* XXX */
-										  'n',
-										  DEFAULT_SMGR,
 										  tupType));
 	}
 

@@ -17,7 +17,7 @@ INCLUDE_OPT = -I../.. \
 
 CFLAGS+=$(INCLUDE_OPT)
 
-OBJS = archive.o prepqual.o preptlist.o prepunion.o
+OBJS = prepqual.o preptlist.o prepunion.o
 
 # not ready yet: predmig.o xfunc.o
 

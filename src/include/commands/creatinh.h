@@ -15,6 +15,5 @@
 
 extern void DefineRelation(CreateStmt *stmt);
 extern void RemoveRelation(char *name);
-extern char *MakeArchiveName(Oid relid);
 
 #endif							/* CREATINH_H */

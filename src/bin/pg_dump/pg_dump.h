@@ -66,7 +66,6 @@ typedef struct _tableInfo
 {
 	char	   *oid;
 	char	   *relname;
-	char	   *relarch;
 	char	   *relacl;
 	bool		sequence;
 	int			numatts;		/* number of attributes */
@@ -191,7 +190,6 @@ extern int	findTableByName(TableInfo *tbinfo, int numTables, const char *relname
 
 extern void check_conn_and_db(void);
 extern void parseArgTypes(char **argtypes, const char *str);
-extern int	isArchiveName(const char *);
 
 /*
  * version specific routines

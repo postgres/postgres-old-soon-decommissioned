@@ -41,6 +41,7 @@
 #include <fcntl.h>
 #include <unistd.h>				/* for ttyname() */
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/socket.h>
 #include <netdb.h>
 #include <netinet/in.h>

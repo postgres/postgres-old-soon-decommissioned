@@ -48,7 +48,6 @@ CATALOG(pg_index)
 	int28		indkey;
 	oid8		indclass;
 	bool		indisclustered;
-	bool		indisarchived;
 	bool		indislossy;		/* do we fetch false tuples (lossy
 								 * compression)? */
 	bool		indhaskeytype;	/* does key type != attribute type? */
@@ -70,17 +69,16 @@ typedef FormData_pg_index *IndexTupleForm;
  *		compiler constants for pg_index
  * ----------------
  */
-#define Natts_pg_index					11
+#define Natts_pg_index					10
 #define Anum_pg_index_indexrelid		1
 #define Anum_pg_index_indrelid			2
 #define Anum_pg_index_indproc			3
 #define Anum_pg_index_indkey			4
 #define Anum_pg_index_indclass			5
 #define Anum_pg_index_indisclustered	6
-#define Anum_pg_index_indisarchived		7
-#define Anum_pg_index_indislossy		8
-#define Anum_pg_index_indhaskeytype		9
-#define Anum_pg_index_indisunique		10
-#define Anum_pg_index_indpred			11
+#define Anum_pg_index_indislossy		7
+#define Anum_pg_index_indhaskeytype		8
+#define Anum_pg_index_indisunique		8
+#define Anum_pg_index_indpred			10
 
 #endif							/* PG_INDEX_H */

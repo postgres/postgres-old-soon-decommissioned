@@ -92,17 +92,6 @@ planner(Query *parse)
 													INHERITS_FLAG);
 	}
 
-	/*
-	 * plan archive queries
-	 */
-	rt_index = first_matching_rt_entry(rangetable, ARCHIVE_FLAG);
-	if (rt_index != -1)
-	{
-		special_plans = (Plan *) plan_union_queries((Index) rt_index,
-													parse,
-													ARCHIVE_FLAG);
-	}
-
 	if (special_plans)
 		result_plan = special_plans;
 	else

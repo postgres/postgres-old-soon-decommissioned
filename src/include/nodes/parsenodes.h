@@ -129,11 +129,6 @@ typedef struct CopyStmt
  *		Create Table Statement
  * ----------------------
  */
-typedef enum ArchType
-{
-	ARCH_NONE, ARCH_LIGHT, ARCH_HEAVY	/* archive mode */
-} ArchType;
-
 typedef struct CreateStmt
 {
 	NodeTag		type;
@@ -141,9 +136,6 @@ typedef struct CreateStmt
 	List	   *tableElts;		/* column definitions list of ColumnDef */
 	List	   *inhRelnames;	/* relations to inherit from list of Value
 								 * (string) */
-	ArchType	archiveType;	/* archive mode (ARCH_NONE if none */
-	int			location;		/* smgrid (-1 if none) */
-	int			archiveLoc;		/* smgrid (-1 if none) */
 	List	   *constraints;	/* list of constraints (ConstaintDef) */
 }			CreateStmt;
 
@@ -327,18 +319,6 @@ typedef struct ProcedureStmt
 	char	   *as;				/* the SQL statement or filename */
 	char	   *language;		/* C or SQL */
 }			ProcedureStmt;
-
-/* ----------------------
- *		Purge Statement
- * ----------------------
- */
-typedef struct PurgeStmt
-{
-	NodeTag		type;
-	char	   *relname;		/* relation to purge */
-	char	   *beforeDate;		/* purge before this date */
-	char	   *afterDate;		/* purge after this date */
-}			PurgeStmt;
 
 /* ----------------------
  *		Drop Aggregate Statement
@@ -880,7 +860,6 @@ typedef struct RangeTblEntry
 								 * from clause) */
 	Oid			relid;
 	bool		inh;			/* inheritance? */
-	bool		archive;		/* filled in by plan_archive */
 	bool		inFromCl;		/* comes from From Clause */
 }			RangeTblEntry;
 
