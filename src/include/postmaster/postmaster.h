@@ -29,6 +29,7 @@ extern char *preload_libraries_string;
 extern bool Log_connections;
 extern bool log_hostname;
 extern char *rendezvous_name;
+extern bool autovacuum_start_daemon; 
 
 #ifdef WIN32
 extern HANDLE PostmasterHandle;

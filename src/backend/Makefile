@@ -29,13 +29,13 @@ endif
 
 ##########################################################################
 
-all: submake-libpgport postgres $(POSTGRES_IMP)
+all: submake-libpgport submake-libpq postgres $(POSTGRES_IMP)
 
 ifneq ($(PORTNAME), cygwin)
 ifneq ($(PORTNAME), win32)
 
 postgres: $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(export_dynamic) $^ $(LIBS) -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) -I $(libpq_srcdir) $(export_dynamic) $^ $(LIBS)  $(libpq) -o $@
 
 endif
 endif

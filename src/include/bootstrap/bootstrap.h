@@ -59,5 +59,6 @@ extern void Int_yyerror(const char *str);
 #define BS_XLOG_BOOTSTRAP	1
 #define BS_XLOG_STARTUP		2
 #define BS_XLOG_BGWRITER	3
+#define BS_XLOG_AUTOVAC		4
 
 #endif   /* BOOTSTRAP_H */
