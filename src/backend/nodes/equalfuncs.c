@@ -98,7 +98,7 @@ _equalExpr(Expr *a, Expr *b)
 static bool
 _equalAttr(Attr *a, Attr *b)
 {
-	if (!strcmp(a->relname, b->relname))
+	if (strcmp(a->relname, b->relname) != 0)
 		return false;
 	if (!equal(a->attrs, b->attrs))
 		return false;
