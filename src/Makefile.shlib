@@ -155,7 +155,7 @@ endif
 
 ifeq ($(PORTNAME), irix5)
   shlib			:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION)
-  LINK.shared		= $(COMPILER) -shared -set_version sgi$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
+  LINK.shared		= $(COMPILER) -shared -Wl,-set_version,sgi$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
 endif
 
 ifeq ($(PORTNAME), linux)
