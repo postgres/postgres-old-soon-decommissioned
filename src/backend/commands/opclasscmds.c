@@ -195,7 +195,7 @@ DefineOpClass(CreateOpClassStmt *stmt)
 				if (procedures[item->number - 1] != InvalidOid)
 					ereport(ERROR,
 							(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
-							 errmsg("DefineOpClass: procedure number %d appears more than once",
+							 errmsg("procedure number %d appears more than once",
 									item->number)));
 				funcOid = LookupFuncNameTypeNames(item->name, item->args,
 												  false);
