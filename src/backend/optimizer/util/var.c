@@ -194,8 +194,8 @@ pull_var_clause(Node *clause)
 			retval = nconc(retval,
 				 pull_var_clause(lfirst(((Expr *) lfirst(temp))->args)));
 	}
-	else if (IsA(clause, Aggreg))
-		retval = pull_var_clause(((Aggreg *) clause)->target);
+	else if (IsA(clause, Aggref))
+		retval = pull_var_clause(((Aggref *) clause)->target);
 	else if (IsA(clause, ArrayRef))
 	{
 		List	   *temp;

@@ -60,7 +60,7 @@ typedef enum NodeTag
 	T_Oper,
 	T_Const,
 	T_Param,
-	T_Aggreg,
+	T_Aggref,
 	T_SubLink,
 	T_Func,
 	T_Array,

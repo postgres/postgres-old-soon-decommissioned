@@ -66,9 +66,9 @@ nodeThisLockWasTriggered(Node *node, int varno, AttrNumber attnum,
 												sublevels_up);
 			}
 			break;
-		case T_Aggreg:
+		case T_Aggref:
 			{
-				Aggreg	   *agg = (Aggreg *) node;
+				Aggref	   *agg = (Aggref *) node;
 
 				return nodeThisLockWasTriggered(agg->target, varno, attnum,
 												sublevels_up);

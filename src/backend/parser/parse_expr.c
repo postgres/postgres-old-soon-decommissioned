@@ -586,8 +586,8 @@ exprType(Node *expr)
 		case T_ArrayRef:
 			type = ((ArrayRef *) expr)->refelemtype;
 			break;
-		case T_Aggreg:
-			type = ((Aggreg *) expr)->aggtype;
+		case T_Aggref:
+			type = ((Aggref *) expr)->aggtype;
 			break;
 		case T_Param:
 			type = ((Param *) expr)->paramtype;

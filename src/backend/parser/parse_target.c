@@ -872,8 +872,8 @@ FigureColname(Node *expr, Node *resval)
 {
 	switch (nodeTag(expr))
 	{
-		case T_Aggreg:
-			return (char *) ((Aggreg *) expr)->aggname;
+		case T_Aggref:
+			return (char *) ((Aggref *) expr)->aggname;
 		case T_Expr:
 			if (((Expr *) expr)->opType == FUNC_EXPR)
 			{

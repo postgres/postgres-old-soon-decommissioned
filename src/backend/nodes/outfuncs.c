@@ -686,10 +686,10 @@ _outConst(StringInfo str, Const *node)
 }
 
 /*
- *	Aggreg
+ *	Aggref
  */
 static void
-_outAggreg(StringInfo str, Aggreg *node)
+_outAggref(StringInfo str, Aggref *node)
 {
 	appendStringInfo(str, 
 			" AGGREG :aggname %s :basetype %u :aggtype %u :target ",
@@ -1506,8 +1506,8 @@ _outNode(StringInfo str, void *obj)
 			case T_Const:
 				_outConst(str, obj);
 				break;
-			case T_Aggreg:
-				_outAggreg(str, obj);
+			case T_Aggref:
+				_outAggref(str, obj);
 				break;
 			case T_SubLink:
 				_outSubLink(str, obj);

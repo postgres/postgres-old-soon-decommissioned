@@ -145,7 +145,7 @@ static bool
 agg_clause(Node *clause)
 {
 	return
-	(clause != NULL && nodeTag(clause) == T_Aggreg);
+	(clause != NULL && nodeTag(clause) == T_Aggref);
 }
 
 /*****************************************************************************
@@ -548,7 +548,7 @@ fix_opid(Node *clause)
 		fix_opid((Node *) get_rightop((Expr *) clause));
 	}
 	else if (agg_clause(clause))
-		fix_opid(((Aggreg *) clause)->target);
+		fix_opid(((Aggref *) clause)->target);
 	else if (is_subplan(clause) &&
 			 ((SubPlan *) ((Expr *) clause)->oper)->sublink->subLinkType != EXISTS_SUBLINK)
 	{

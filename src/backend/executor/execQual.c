@@ -67,7 +67,7 @@ bool		execConstByVal;
 int			execConstLen;
 
 /* static functions decls */
-static Datum ExecEvalAggreg(Aggreg *agg, ExprContext *econtext, bool *isNull);
+static Datum ExecEvalAggref(Aggref *agg, ExprContext *econtext, bool *isNull);
 static Datum ExecEvalArrayRef(ArrayRef *arrayRef, ExprContext *econtext,
 				 bool *isNull, bool *isDone);
 static Datum ExecEvalAnd(Expr *andExpr, ExprContext *econtext, bool *isNull);
@@ -185,14 +185,14 @@ ExecEvalArrayRef(ArrayRef *arrayRef,
 
 
 /* ----------------------------------------------------------------
- *		ExecEvalAggreg
+ *		ExecEvalAggref
  *
  *		Returns a Datum whose value is the value of the precomputed
  *		aggregate found in the given expression context.
  * ----------------------------------------------------------------
  */
 static Datum
-ExecEvalAggreg(Aggreg *agg, ExprContext *econtext, bool *isNull)
+ExecEvalAggref(Aggref *agg, ExprContext *econtext, bool *isNull)
 {
 	*isNull = econtext->ecxt_nulls[agg->aggno];
 	return econtext->ecxt_values[agg->aggno];
@@ -1268,8 +1268,8 @@ ExecEvalExpr(Node *expression,
 											isNull,
 											isDone);
 			break;
-		case T_Aggreg:
-			retDatum = (Datum) ExecEvalAggreg((Aggreg *) expression,
+		case T_Aggref:
+			retDatum = (Datum) ExecEvalAggref((Aggref *) expression,
 											  econtext,
 											  isNull);
 			break;

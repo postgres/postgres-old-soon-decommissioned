@@ -483,7 +483,7 @@ flatten_tlistentry(Node *tlistentry, List *flat_tlist)
 
 		return ((Node *) make_funcclause((Func *) expr->oper, temp_result));
 	}
-	else if (IsA(tlistentry, Aggreg))
+	else if (IsA(tlistentry, Aggref))
 	{
 		return tlistentry;
 	}

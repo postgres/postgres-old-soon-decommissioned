@@ -1245,9 +1245,9 @@ get_rule_expr(QryHier *qh, int rt_index, Node *node, bool varprefix)
 			}
 			break;
 
-		case T_Aggreg:
+		case T_Aggref:
 			{
-				Aggreg	   *agg = (Aggreg *) node;
+				Aggref	   *agg = (Aggref *) node;
 
 				strcat(buf, "\"");
 				strcat(buf, agg->aggname);
@@ -1727,9 +1727,9 @@ check_if_rte_used(int rt_index, Node *node, int sup)
 			}
 			break;
 
-		case T_Aggreg:
+		case T_Aggref:
 			{
-				Aggreg	   *agg = (Aggreg *) node;
+				Aggref	   *agg = (Aggref *) node;
 
 				return check_if_rte_used(rt_index,
 										 (Node *) (agg->target), sup);

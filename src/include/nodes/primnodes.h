@@ -255,7 +255,7 @@ typedef struct Func
 } Func;
 
 /* ----------------
- * Aggreg
+ * Aggref
  *		aggname			- name of the aggregate
  *		basetype		- base type Oid of the aggregate
  *		aggtype			- type Oid of final result of the aggregate
@@ -263,7 +263,7 @@ typedef struct Func
  *		aggno			- index to ecxt_values
  * ----------------
  */
-typedef struct Aggreg
+typedef struct Aggref
 {
 	NodeTag		type;
 	char	   *aggname;
@@ -272,7 +272,7 @@ typedef struct Aggreg
 	Node	   *target;
 	int			aggno;
 	bool		usenulls;
-} Aggreg;
+} Aggref;
 
 /* ----------------
  * SubLink
