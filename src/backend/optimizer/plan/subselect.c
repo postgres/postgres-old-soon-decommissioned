@@ -324,6 +324,12 @@ make_subplan(SubLink *slink)
 		 * is anything more complicated than a plain sequential scan, and
 		 * we do it even for seqscan if the qual appears selective enough
 		 * to eliminate many tuples.
+		 *
+		 * XXX It's pretty ugly to be inserting a MATERIAL node at this
+		 * point.  Since subquery_planner has already run SS_finalize_plan
+		 * on the subplan tree, we have to kluge up parameter lists for
+		 * the MATERIAL node.  Possibly this could be fixed by postponing
+		 * SS_finalize_plan processing until setrefs.c is run.
 		 */
 		if (node->parParam == NIL)
 		{
@@ -362,8 +368,13 @@ make_subplan(SubLink *slink)
 			}
 			if (use_material)
 			{
-				plan = (Plan *) make_material(plan->targetlist, plan);
-				node->plan = plan;
+				Plan   *matplan;
+
+				matplan = (Plan *) make_material(plan->targetlist, plan);
+				/* kluge --- see comments above */
+				matplan->extParam = listCopy(plan->extParam);
+				matplan->locParam = listCopy(plan->locParam);
+				node->plan = plan = matplan;
 			}
 		}
 
