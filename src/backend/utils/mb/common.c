@@ -28,6 +28,10 @@ pg_char_to_encoding(const char *s)
 {
 	pg_encoding_conv_tbl *p = pg_conv_tbl;
 
+        if (!s) {
+		return (-1);
+	}
+
 	for (; p->encoding >= 0; p++)
 	{
 		if (!strcasecmp(s, p->name))
