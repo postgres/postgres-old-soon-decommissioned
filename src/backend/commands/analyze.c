@@ -1787,7 +1787,7 @@ update_attstats(Oid relid, int natts, VacAttrStats **vacattrstats)
 		{
 			/* No, insert new tuple */
 			stup = heap_formtuple(sd->rd_att, values, nulls);
-			heap_insert(sd, stup);
+			simple_heap_insert(sd, stup);
 		}
 
 		/* update indices too */

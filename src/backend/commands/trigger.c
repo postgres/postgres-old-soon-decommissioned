@@ -270,7 +270,7 @@ CreateTrigger(CreateTrigStmt *stmt)
 	/*
 	 * Insert tuple into pg_trigger.
 	 */
-	heap_insert(tgrel, tuple);
+	simple_heap_insert(tgrel, tuple);
 	CatalogOpenIndices(Num_pg_trigger_indices, Name_pg_trigger_indices, idescs);
 	CatalogIndexInsert(idescs, Num_pg_trigger_indices, tgrel, tuple);
 	CatalogCloseIndices(Num_pg_trigger_indices, idescs);
@@ -1183,7 +1183,8 @@ GetTupleForTrigger(EState *estate, ResultRelInfo *relinfo,
 		*newSlot = NULL;
 		tuple.t_self = *tid;
 ltrmark:;
-		test = heap_mark4update(relation, &tuple, &buffer);
+		test = heap_mark4update(relation, &tuple, &buffer,
+								GetCurrentCommandId());
 		switch (test)
 		{
 			case HeapTupleSelfUpdated:

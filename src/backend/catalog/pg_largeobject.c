@@ -63,7 +63,7 @@ LargeObjectCreate(Oid loid)
 	/*
 	 * Insert it
 	 */
-	heap_insert(pg_largeobject, ntup);
+	simple_heap_insert(pg_largeobject, ntup);
 
 	/*
 	 * Update indices

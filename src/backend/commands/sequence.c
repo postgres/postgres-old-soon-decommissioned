@@ -197,7 +197,7 @@ DefineSequence(CreateSeqStmt *seq)
 
 	/* Now form & insert sequence tuple */
 	tuple = heap_formtuple(tupDesc, value, null);
-	heap_insert(rel, tuple);
+	simple_heap_insert(rel, tuple);
 
 	Assert(ItemPointerGetOffsetNumber(&(tuple->t_self)) == FirstOffsetNumber);
 

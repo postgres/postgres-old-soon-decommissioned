@@ -102,7 +102,7 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 	tupDesc = rel->rd_att;
 	tup = heap_formtuple(tupDesc, values, nulls);
 
-	heap_insert(rel, tup);
+	simple_heap_insert(rel, tup);
 
 	if (RelationGetForm(rel)->relhasindex)
 	{

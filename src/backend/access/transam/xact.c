@@ -350,14 +350,6 @@ GetCurrentCommandId(void)
 	return s->commandId;
 }
 
-CommandId
-GetScanCommandId(void)
-{
-	TransactionState s = CurrentTransactionState;
-
-	return s->scanCommandId;
-}
-
 
 /* --------------------------------
  *		GetCurrentTransactionStartTime
@@ -418,17 +410,6 @@ CommandIdIsCurrentCommandId(CommandId cid)
 	return (cid == s->commandId) ? true : false;
 }
 
-bool
-CommandIdGEScanCommandId(CommandId cid)
-{
-	TransactionState s = CurrentTransactionState;
-
-	if (AMI_OVERRIDE)
-		return false;
-
-	return (cid >= s->scanCommandId) ? true : false;
-}
-
 
 /* --------------------------------
  *		CommandCounterIncrement
@@ -437,11 +418,17 @@ CommandIdGEScanCommandId(CommandId cid)
 void
 CommandCounterIncrement(void)
 {
-	CurrentTransactionStateData.commandId += 1;
-	if (CurrentTransactionStateData.commandId == FirstCommandId)
+	TransactionState s = CurrentTransactionState;
+
+	s->commandId += 1;
+	if (s->commandId == FirstCommandId)	/* check for overflow */
 		elog(ERROR, "You may only have 2^32-1 commands per transaction");
 
-	CurrentTransactionStateData.scanCommandId = CurrentTransactionStateData.commandId;
+	/* Propagate new command ID into query snapshots, if set */
+	if (QuerySnapshot)
+		QuerySnapshot->curcid = s->commandId;
+	if (SerializableSnapshot)
+		SerializableSnapshot->curcid = s->commandId;
 
 	/*
 	 * make cache changes visible to me.  AtCommit_LocalCache() instead of
@@ -451,11 +438,6 @@ CommandCounterIncrement(void)
 	AtStart_Cache();
 }
 
-void
-SetScanCommandId(CommandId savedId)
-{
-	CurrentTransactionStateData.scanCommandId = savedId;
-}
 
 /* ----------------------------------------------------------------
  *						StartTransaction stuff
@@ -889,10 +871,6 @@ StartTransaction(void)
 	 * initialize current transaction state fields
 	 */
 	s->commandId = FirstCommandId;
-	s->scanCommandId = FirstCommandId;
-#if NOT_USED
-	s->startTime = GetCurrentAbsoluteTime();
-#endif
 	s->startTime = GetCurrentAbsoluteTimeUsec(&(s->startTimeUsec));
 
 	/*

@@ -31,7 +31,6 @@ typedef struct PortalData
 	MemoryContext heap;			/* subsidiary memory */
 	QueryDesc  *queryDesc;		/* Info about query associated with portal */
 	TupleDesc	attinfo;
-	CommandId	commandId;		/* Command counter value for query */
 	EState	   *state;			/* Execution state of query */
 	bool		atStart;		/* T => fetch backwards is not allowed */
 	bool		atEnd;			/* T => fetch forwards is not allowed */
@@ -49,7 +48,6 @@ typedef struct PortalData
  */
 #define PortalGetQueryDesc(portal)	((portal)->queryDesc)
 #define PortalGetTupleDesc(portal)	((portal)->attinfo)
-#define PortalGetCommandId(portal)	((portal)->commandId)
 #define PortalGetState(portal)		((portal)->state)
 #define PortalGetHeapMemory(portal)	((portal)->heap)
 

@@ -680,7 +680,7 @@ InsertOneTuple(Oid objectid)
 
 	if (objectid != (Oid) 0)
 		tuple->t_data->t_oid = objectid;
-	heap_insert(boot_reldesc, tuple);
+	simple_heap_insert(boot_reldesc, tuple);
 	heap_freetuple(tuple);
 	elog(DEBUG3, "row inserted");
 

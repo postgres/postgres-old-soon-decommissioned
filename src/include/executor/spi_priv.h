@@ -20,7 +20,6 @@ typedef struct
 	MemoryContext procCxt;		/* procedure context */
 	MemoryContext execCxt;		/* executor context */
 	MemoryContext savedcxt;
-	CommandId	savedId;
 } _SPI_connection;
 
 typedef struct

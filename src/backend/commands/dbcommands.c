@@ -293,7 +293,7 @@ createdb(const char *dbname, const char *dbowner,
 	tuple->t_data->t_oid = dboid;		/* override heap_insert's OID
 										 * selection */
 
-	heap_insert(pg_database_rel, tuple);
+	simple_heap_insert(pg_database_rel, tuple);
 
 	/*
 	 * Update indexes

@@ -260,8 +260,7 @@ OperatorShellMake(const char *operatorName,
 	/*
 	 * insert our "shell" operator tuple
 	 */
-	heap_insert(pg_operator_desc, tup);
-	operatorObjectId = tup->t_data->t_oid;
+	operatorObjectId = simple_heap_insert(pg_operator_desc, tup);
 
 	if (RelationGetForm(pg_operator_desc)->relhasindex)
 	{
@@ -360,7 +359,7 @@ OperatorShellMake(const char *operatorName,
  *	 get the t_self from the modified tuple and call RelationReplaceHeapTuple
  * else if a new operator is being created
  *	 create a tuple using heap_formtuple
- *	 call heap_insert
+ *	 call simple_heap_insert
  */
 void
 OperatorCreate(const char *operatorName,
@@ -647,8 +646,7 @@ OperatorCreate(const char *operatorName,
 		tupDesc = pg_operator_desc->rd_att;
 		tup = heap_formtuple(tupDesc, values, nulls);
 
-		heap_insert(pg_operator_desc, tup);
-		operatorObjectId = tup->t_data->t_oid;
+		operatorObjectId = simple_heap_insert(pg_operator_desc, tup);
 	}
 
 	/* Must update the indexes in either case */

@@ -61,13 +61,10 @@ NamespaceCreate(const char *nspName, int32 ownerSysId)
 
 	nspdesc = heap_openr(NamespaceRelationName, RowExclusiveLock);
 	tupDesc = nspdesc->rd_att;
-	if (!HeapTupleIsValid(tup = heap_formtuple(tupDesc,
-											   values,
-											   nulls)))
-		elog(ERROR, "NamespaceCreate: heap_formtuple failed");
-	nspoid = heap_insert(nspdesc, tup);
-	if (!OidIsValid(nspoid))
-		elog(ERROR, "NamespaceCreate: heap_insert failed");
+
+	tup = heap_formtuple(tupDesc, values, nulls);
+	nspoid = simple_heap_insert(nspdesc, tup);
+	Assert(OidIsValid(nspoid));
 
 	if (RelationGetForm(nspdesc)->relhasindex)
 	{

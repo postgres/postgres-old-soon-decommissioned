@@ -88,9 +88,7 @@ InsertRule(char *rulname,
 						 values,
 						 nulls);
 
-	heap_insert(pg_rewrite_desc, tup);
-
-	rewriteObjectId = tup->t_data->t_oid;
+	rewriteObjectId = simple_heap_insert(pg_rewrite_desc, tup);
 
 	if (RelationGetForm(pg_rewrite_desc)->relhasindex)
 	{

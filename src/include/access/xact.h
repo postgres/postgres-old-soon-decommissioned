@@ -38,7 +38,6 @@ typedef struct TransactionStateData
 {
 	TransactionId transactionIdData;
 	CommandId	commandId;
-	CommandId	scanCommandId;
 	AbsoluteTime startTime;
 	int			startTimeUsec;
 	int			state;
@@ -101,13 +100,10 @@ extern bool IsTransactionState(void);
 extern bool IsAbortedTransactionBlockState(void);
 extern TransactionId GetCurrentTransactionId(void);
 extern CommandId GetCurrentCommandId(void);
-extern CommandId GetScanCommandId(void);
-extern void SetScanCommandId(CommandId);
 extern AbsoluteTime GetCurrentTransactionStartTime(void);
 extern AbsoluteTime GetCurrentTransactionStartTimeUsec(int *usec);
 extern bool TransactionIdIsCurrentTransactionId(TransactionId xid);
 extern bool CommandIdIsCurrentCommandId(CommandId cid);
-extern bool CommandIdGEScanCommandId(CommandId cid);
 extern void CommandCounterIncrement(void);
 extern void StartTransactionCommand(void);
 extern void CommitTransactionCommand(void);

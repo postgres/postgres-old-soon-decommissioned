@@ -947,7 +947,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp,
 			/*
 			 * OK, store the tuple and create index entries for it
 			 */
-			heap_insert(rel, tuple);
+			simple_heap_insert(rel, tuple);
 
 			if (resultRelInfo->ri_NumIndices > 0)
 				ExecInsertIndexTuples(slot, &(tuple->t_self), estate, false);

@@ -242,7 +242,7 @@ Async_Listen(char *relname, int pid)
 	values[i++] = (Datum) 0;	/* no notifies pending */
 
 	tuple = heap_formtuple(RelationGetDescr(lRel), values, nulls);
-	heap_insert(lRel, tuple);
+	simple_heap_insert(lRel, tuple);
 
 #ifdef NOT_USED					/* currently there are no indexes */
 	if (RelationGetForm(lRel)->relhasindex)

@@ -596,7 +596,7 @@ CreateUser(CreateUserStmt *stmt)
 	/*
 	 * Insert new record in the pg_shadow table
 	 */
-	heap_insert(pg_shadow_rel, tuple);
+	simple_heap_insert(pg_shadow_rel, tuple);
 
 	/*
 	 * Update indexes
@@ -1213,9 +1213,9 @@ CreateGroup(CreateGroupStmt *stmt)
 	tuple = heap_formtuple(pg_group_dsc, new_record, new_record_nulls);
 
 	/*
-	 * Insert a new record in the pg_group_table
+	 * Insert a new record in the pg_group table
 	 */
-	heap_insert(pg_group_rel, tuple);
+	simple_heap_insert(pg_group_rel, tuple);
 
 	/*
 	 * Update indexes

@@ -174,7 +174,7 @@ AggregateCreate(const char *aggName,
 	tupDesc = aggdesc->rd_att;
 
 	tup = heap_formtuple(tupDesc, values, nulls);
-	heap_insert(aggdesc, tup);
+	simple_heap_insert(aggdesc, tup);
 
 	if (RelationGetForm(aggdesc)->relhasindex)
 	{

@@ -199,7 +199,7 @@ CreateComments(Oid oid, Oid classoid, int32 subid, char *comment)
 	{
 		newtuple = heap_formtuple(RelationGetDescr(description),
 								  values, nulls);
-		heap_insert(description, newtuple);
+		simple_heap_insert(description, newtuple);
 	}
 
 	/* Update indexes, if necessary */

@@ -241,7 +241,7 @@ rebuildheap(Oid OIDNewHeap, Oid OIDOldHeap, Oid OIDOldIndex)
 		 */
 		HeapTuple	copiedTuple = heap_copytuple(LocalHeapTuple);
 
-		heap_insert(LocalNewHeap, copiedTuple);
+		simple_heap_insert(LocalNewHeap, copiedTuple);
 		heap_freetuple(copiedTuple);
 
 		CHECK_FOR_INTERRUPTS();

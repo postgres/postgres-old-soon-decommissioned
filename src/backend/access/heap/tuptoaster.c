@@ -911,7 +911,7 @@ toast_save_datum(Relation rel, Datum value)
 		if (!HeapTupleIsValid(toasttup))
 			elog(ERROR, "Failed to build TOAST tuple");
 
-		heap_insert(toastrel, toasttup);
+		simple_heap_insert(toastrel, toasttup);
 
 		/*
 		 * Create the index entry.	We cheat a little here by not using

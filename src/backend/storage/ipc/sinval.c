@@ -397,6 +397,9 @@ GetSnapshotData(bool serializable)
 	Assert(TransactionIdIsValid(MyProc->xmin));
 
 	snapshot->xcnt = count;
+
+	snapshot->curcid = GetCurrentCommandId();
+
 	return snapshot;
 }
 

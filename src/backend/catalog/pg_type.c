@@ -102,8 +102,7 @@ TypeShellMake(const char *typeName, Oid typeNamespace)
 	/*
 	 * insert the tuple in the relation and get the tuple's oid.
 	 */
-	heap_insert(pg_type_desc, tup);
-	typoid = tup->t_data->t_oid;
+	typoid = simple_heap_insert(pg_type_desc, tup);
 
 	if (RelationGetForm(pg_type_desc)->relhasindex)
 	{
@@ -286,9 +285,7 @@ TypeCreate(const char *typeName,
 		/* preassign tuple Oid, if one was given */
 		tup->t_data->t_oid = assignedTypeOid;
 
-		heap_insert(pg_type_desc, tup);
-
-		typeObjectId = tup->t_data->t_oid;
+		typeObjectId = simple_heap_insert(pg_type_desc, tup);
 	}
 
 	/* Update indices (not necessary if bootstrapping) */

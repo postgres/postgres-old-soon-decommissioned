@@ -168,7 +168,6 @@ PortalSetQuery(Portal portal,
 
 	portal->queryDesc = queryDesc;
 	portal->attinfo = attinfo;
-	portal->commandId = GetScanCommandId();
 	portal->state = state;
 	portal->atStart = true;		/* Allow fetch forward only */
 	portal->atEnd = false;
@@ -214,7 +213,6 @@ CreatePortal(char *name)
 	/* initialize portal query */
 	portal->queryDesc = NULL;
 	portal->attinfo = NULL;
-	portal->commandId = 0;
 	portal->state = NULL;
 	portal->atStart = true;		/* disallow fetches until query is set */
 	portal->atEnd = true;

@@ -555,7 +555,7 @@ inv_write(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 			values[Anum_pg_largeobject_pageno - 1] = Int32GetDatum(pageno);
 			values[Anum_pg_largeobject_data - 1] = PointerGetDatum(&workbuf);
 			newtup = heap_formtuple(obj_desc->heap_r->rd_att, values, nulls);
-			heap_insert(obj_desc->heap_r, newtup);
+			simple_heap_insert(obj_desc->heap_r, newtup);
 			if (write_indices)
 				CatalogIndexInsert(idescs, Num_pg_largeobject_indices,
 								   obj_desc->heap_r, newtup);

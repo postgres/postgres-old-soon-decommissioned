@@ -298,7 +298,7 @@ ProcedureCreate(const char *procedureName,
 		nulls[Anum_pg_proc_proacl-1] = 'n';
 
 		tup = heap_formtuple(tupDesc, values, nulls);
-		heap_insert(rel, tup);
+		simple_heap_insert(rel, tup);
 	}
 
 	/* Need to update indices for either the insert or update case */

@@ -26,6 +26,7 @@ typedef struct SnapshotData
 	uint32		xcnt;			/* # of xact ids in xip[] */
 	TransactionId *xip;			/* array of xact IDs in progress */
 	/* note: all ids in xip[] satisfy xmin <= xip[i] < xmax */
+	CommandId	curcid;			/* in my xact, CID < curcid are visible */
 	ItemPointerData tid;		/* required for Dirty snapshot -:( */
 } SnapshotData;
 
@@ -104,7 +105,8 @@ extern bool HeapTupleSatisfiesDirty(HeapTupleHeader tuple);
 extern bool HeapTupleSatisfiesToast(HeapTupleHeader tuple);
 extern bool HeapTupleSatisfiesSnapshot(HeapTupleHeader tuple,
 						   Snapshot snapshot);
-extern int	HeapTupleSatisfiesUpdate(HeapTuple tuple);
+extern int	HeapTupleSatisfiesUpdate(HeapTuple tuple,
+									 CommandId curcid);
 extern HTSV_Result HeapTupleSatisfiesVacuum(HeapTupleHeader tuple,
 						 TransactionId OldestXmin);
 
