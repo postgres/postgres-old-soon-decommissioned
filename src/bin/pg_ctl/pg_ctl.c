@@ -531,17 +531,22 @@ do_start(void)
 		if ((ret = find_other_exec(argv0, "postmaster", PM_VERSIONSTR,
 								   postmaster_path)) < 0)
 		{
+			char full_path[MAXPGPATH];
+	
+			if (find_my_exec(argv0, full_path) < 0)
+				StrNCpy(full_path, progname, MAXPGPATH);
+	
 			if (ret == -1)
 				write_stderr(_("The program \"postmaster\" is needed by %s "
-							"but was not found in the same directory as "
-							   "\"%s\".\n"
+							   "but was not found in the\n"
+							   "same directory as \"%s\".\n"
 							   "Check your installation.\n"),
-							 progname, progname);
+							 progname, full_path);
 			else
-				write_stderr(_("The program \"postmaster\" was found by %s "
-							   "but was not the same version as \"%s\".\n"
+				write_stderr(_("The program \"postmaster\" was found by \"%s\"\n"
+							   "but was not the same version as %s.\n"
 							   "Check your installation.\n"),
-							 progname, progname);
+							 full_path, progname);
 			exit(1);
 		}
 		postgres_path = postmaster_path;
