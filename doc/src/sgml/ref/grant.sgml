@@ -74,8 +74,8 @@ GRANT { { SELECT | INSERT | UPDATE | DELETE | RULE | REFERENCES | TRIGGER } [,..
        specified table.  <literal>SELECT ... FOR UPDATE</literal>
        also requires this privilege (besides the
        <literal>SELECT</literal> privilege).  For sequences, this
-       privilege allows the use of <function>currval</function> and
-       <function>nextval</function>.
+       privilege allows the use of <function>nextval</function>,
+       <function>currval</function> and <function>setval</function>.
       </para>
      </listitem>
     </varlistentry>
