@@ -718,7 +718,7 @@ static void
 _outArrayRef(StringInfo str, ArrayRef *node)
 {
 	appendStringInfo(str,
-		" ARRAYREF :refelemtype %u :refattrlength $d :refelemlength %d ",
+		" ARRAYREF :refelemtype %u :refattrlength %d :refelemlength %d ",
 					 node->refelemtype,
 					 node->refattrlength,
 					 node->refelemlength);
