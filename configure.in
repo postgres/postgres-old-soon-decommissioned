@@ -326,7 +326,7 @@ PGAC_ARG_BOOL(enable, cassert, no, [  --enable-cassert        enable assertion c
 # Include directories
 #
 ac_save_IFS=$IFS
-IFS="${IFS}:"
+IFS="${IFS}${PATH_SEPARATOR}"
 # SRCH_INC comes from the template file
 for dir in $with_includes $SRCH_INC; do
   if test -d "$dir"; then
@@ -343,7 +343,7 @@ AC_SUBST(INCLUDES)
 # Library directories
 #
 ac_save_IFS=$IFS
-IFS="${IFS}:"
+IFS="${IFS}${PATH_SEPARATOR}"
 # LIBRARY_DIRS comes from command line, SRCH_LIB from template file.
 for dir in $LIBRARY_DIRS $SRCH_LIB; do
   if test -d "$dir"; then
