@@ -136,44 +136,18 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "access/xact.h"
-
-#include "access/tupdesc.h"
-#include "utils/rel.h"  
-#include "access/htup.h"    
-#include "utils/inval.h"
-
-#include "nodes/memnodes.h"
-#include "nodes/parsenodes.h" 
-#include "nodes/params.h"
-#include "access/sdir.h"
-#include "executor/hashjoin.h"
-#include "storage/buf.h"
-#include "executor/tuptable.h"
-#include "access/funcindex.h"
-#include "access/htup.h"
-#include "access/relscan.h"
-#include "nodes/execnodes.h"
-#include "nodes/plannodes.h"
-#include "tcop/dest.h"
-#include "executor/execdesc.h"
-#include "utils/portal.h"
-
-#include "access/transam.h" 
-
-#include "storage/proc.h"
-
-#include "utils/mcxt.h"
-
-#include "catalog/heap.h"
-
-#include "utils/relcache.h"
-
-#include "miscadmin.h"
-
-#include "commands/async.h"
+#include <access/xact.h>
+#include <utils/inval.h>
+#include <utils/portal.h>
+#include <access/transam.h> 
+#include <storage/proc.h>
+#include <utils/mcxt.h>
+#include <catalog/heap.h>
+#include <utils/relcache.h>
+#include <miscadmin.h>
+#include <commands/async.h>
 
 /* ----------------
  *	global variables holding the current transaction state.

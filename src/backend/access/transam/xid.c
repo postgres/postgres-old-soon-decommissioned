@@ -19,11 +19,10 @@
  *
  *-------------------------------------------------------------------------
  */
+
 #include <stdio.h>
 
-#include "postgres.h"
-#include "utils/palloc.h"
-
+#include <postgres.h>
 
 extern TransactionId NullTransactionId;
 extern TransactionId DisabledTransactionId;

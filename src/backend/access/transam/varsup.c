@@ -12,25 +12,13 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "catalog/pg_attribute.h"
-#include "access/tupdesc.h"
-#include "storage/bufmgr.h"
-#include "utils/nabstime.h"
-#include "access/transam.h"
-
-#include "storage/spin.h"
-
-#include "access/xact.h"
-
-#include "storage/off.h"
-#include "storage/itemptr.h"
-#include "access/htup.h"
-#include "access/relscan.h"
-#include "access/heapam.h"
-
-#include "catalog/catname.h"
+#include <access/transam.h>
+#include <storage/spin.h>
+#include <access/xact.h>
+#include <access/heapam.h>
+#include <catalog/catname.h>
 
 /* ---------------------
  *	spin lock for oid generation

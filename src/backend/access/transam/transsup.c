@@ -16,16 +16,12 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "utils/rel.h"
-#include "access/transam.h"
-
-#include "utils/bit.h"
-
-#include "access/xact.h"
-
-#include "storage/lmgr.h"
+#include <access/transam.h>
+#include <utils/bit.h>
+#include <access/xact.h>
+#include <storage/lmgr.h>
 
 /* ----------------------------------------------------------------
  *		      general support routines
