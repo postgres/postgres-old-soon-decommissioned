@@ -433,10 +433,18 @@ extern Datum namelike(PG_FUNCTION_ARGS);
 extern Datum namenlike(PG_FUNCTION_ARGS);
 extern Datum namelike_escape(PG_FUNCTION_ARGS);
 extern Datum namenlike_escape(PG_FUNCTION_ARGS);
+extern Datum inamelike(PG_FUNCTION_ARGS);
+extern Datum inamenlike(PG_FUNCTION_ARGS);
+extern Datum inamelike_escape(PG_FUNCTION_ARGS);
+extern Datum inamenlike_escape(PG_FUNCTION_ARGS);
 extern Datum textlike(PG_FUNCTION_ARGS);
 extern Datum textnlike(PG_FUNCTION_ARGS);
 extern Datum textlike_escape(PG_FUNCTION_ARGS);
 extern Datum textnlike_escape(PG_FUNCTION_ARGS);
+extern Datum itextlike(PG_FUNCTION_ARGS);
+extern Datum itextnlike(PG_FUNCTION_ARGS);
+extern Datum itextlike_escape(PG_FUNCTION_ARGS);
+extern Datum itextnlike_escape(PG_FUNCTION_ARGS);
 
 /* oracle_compat.c */
 extern Datum lower(PG_FUNCTION_ARGS);
