@@ -533,7 +533,7 @@ if [ "$PwPrompt" ]; then
     fi
     echo "ALTER USER \"$POSTGRES_SUPERUSERNAME\" WITH PASSWORD '$FirstPw'" \
 	| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
-    if [ ! -f $PGDATA/pg_pwd ]; then
+    if [ ! -f $PGDATA/global/pg_pwd ]; then
         echo "The password file wasn't generated. Please report this problem." 1>&2
         exit_nicely
     fi
