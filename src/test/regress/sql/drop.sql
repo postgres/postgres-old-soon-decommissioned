@@ -1,5 +1,5 @@
 --
--- destroy.source
+-- drop.source
 --
 -- $Header$
 --
