@@ -59,6 +59,40 @@ postgreSQL installation to another.  After running
 .IR "pg_dump"
 , one should examine the output script file for any warnings, especially
 in light of the limitations listed below. 
+.PP
+pg_dump understands the following options:
+.TP
+.BR "-f" " filename"
+Specifies the output file
+.TP
+.BR "-H" " hostname"
+Specifies the server host name
+.TP
+.BR "-p" " port"
+Specifies the server port number
+.TP
+.BR "-v" ""
+Specifies verbose mode
+.TP
+.BR "-d" ""
+Dump data as proper insert strings
+.TP
+.BR "-D" ""
+Dump data as inserts with attribute names
+.TP
+.BR "-S" ""
+Dump out only the schema, no data
+.TP
+.BR "-a" ""
+Dump out only the data, no schema
+.TP
+.BR "-t" " table"
+Dump for this table only
+.TP
+.BR "-o" ""
+Dump object id's (oids)
+.PP
+If dbname is not supplied, then the DATABASE environment variable value is used.
 .SH "CAVEATS AND LIMITATIONS"
 .IR pg_dump 
 has a few limitations.
