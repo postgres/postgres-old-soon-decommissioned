@@ -435,10 +435,23 @@ CreateFunction(CreateFunctionStmt *stmt)
 								   PointerGetDatum(languageName),
 								   0, 0, 0);
 	if (!HeapTupleIsValid(languageTuple))
+		/* Add any new languages to this list to invoke the hint. */
 		ereport(ERROR,
 				(errcode(ERRCODE_UNDEFINED_OBJECT),
-				 errmsg("language \"%s\" does not exist", languageName)));
-
+				 errmsg("language \"%s\" does not exist", languageName),
+				   (strcmp(languageName, "plperl") == 0 ||
+					strcmp(languageName, "plperlu") == 0 ||
+					strcmp(languageName, "plphp") == 0 ||
+					strcmp(languageName, "plpgsql") == 0 ||
+					strcmp(languageName, "plpython") == 0 ||
+					strcmp(languageName, "plpythonu") == 0 ||
+					strcmp(languageName, "plr") == 0 ||
+					strcmp(languageName, "plruby") == 0 ||
+					strcmp(languageName, "plsh") == 0 ||
+					strcmp(languageName, "pltcl") == 0 ||
+					strcmp(languageName, "pltclu") == 0) ?
+				 errhint("You need to use 'createlang' to load the language into the database.") : 0));
+	
 	languageOid = HeapTupleGetOid(languageTuple);
 	languageStruct = (Form_pg_language) GETSTRUCT(languageTuple);
 
