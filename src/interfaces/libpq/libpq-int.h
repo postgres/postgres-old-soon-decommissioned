@@ -456,8 +456,8 @@ extern void pqsecure_close(PGconn *);
 extern ssize_t pqsecure_read(PGconn *, void *ptr, size_t len);
 extern ssize_t pqsecure_write(PGconn *, const void *ptr, size_t len);
 #ifdef ENABLE_THREAD_SAFETY
-extern void check_sigpipe_handler(void);
-extern pthread_key_t thread_in_send;
+extern void pq_check_sigpipe_handler(void);
+extern pthread_key_t pq_thread_in_send;
 #endif
 
 #ifdef USE_SSL

@@ -886,7 +886,7 @@ connectDBStart(PGconn *conn)
 	static pthread_once_t check_sigpipe_once = PTHREAD_ONCE_INIT;
 
 	/* Check only on first connection request */
-	pthread_once(&check_sigpipe_once, check_sigpipe_handler);
+	pthread_once(&check_sigpipe_once, pq_check_sigpipe_handler);
 #endif
 #endif
 

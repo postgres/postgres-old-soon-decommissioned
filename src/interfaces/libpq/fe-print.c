@@ -188,7 +188,7 @@ PQprint(FILE *fout,
 				{
 					usePipe = 1;
 #ifdef ENABLE_THREAD_SAFETY
-					pthread_setspecific(thread_in_send, "t");
+					pthread_setspecific(pq_thread_in_send, "t");
 #else
 #ifndef WIN32
 					oldsigpipehandler = pqsignal(SIGPIPE, SIG_IGN);
@@ -310,7 +310,7 @@ PQprint(FILE *fout,
 			pclose(fout);
 #endif
 #ifdef ENABLE_THREAD_SAFETY
-			pthread_setspecific(thread_in_send, "f");
+			pthread_setspecific(pq_thread_in_send, "f");
 #else
 #ifndef WIN32
 			pqsignal(SIGPIPE, oldsigpipehandler);
