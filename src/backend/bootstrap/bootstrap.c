@@ -484,7 +484,7 @@ boot_openrel(char *relname)
     }
     
     if (!Quiet)
-        printf("Amopen: relation %s. attrsize %d\n", relname,
+        printf("Amopen: relation %s. attrsize %d\n", relname ? relname : "(null)",
                (int)ATTRIBUTE_TUPLE_SIZE);
     
     reldesc = heap_openr(relname);
@@ -530,7 +530,7 @@ closerel(char *name)
         if (reldesc) {
             if (namestrcmp(RelationGetRelationName(reldesc), name) != 0)
                 elog(WARN,"closerel: close of '%s' when '%s' was expected",
-                     name, relname);
+                     name, relname ? relname : "(null)");
         } else
             elog(WARN,"closerel: close of '%s' before any relation was opened",
                  name);
@@ -540,7 +540,7 @@ closerel(char *name)
     if (reldesc == NULL) {
         elog(WARN,"Warning: no opened relation to close.\n");
     } else {
-        if (!Quiet) printf("Amclose: relation %s.\n", relname);
+        if (!Quiet) printf("Amclose: relation %s.\n", relname ? relname : "(null)");
         heap_close(reldesc);
         reldesc = (Relation)NULL;
     }
