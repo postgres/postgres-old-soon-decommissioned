@@ -130,5 +130,7 @@ DATA(insert OID = 0 (405 430 499 1));
 DATA(insert OID = 0 (405 431 456 1));
 DATA(insert OID = 0 (405 1076 1080 1));
 DATA(insert OID = 0 (405 1077 1081 1));
+DATA(insert OID = 0 (405 1114 450 1));
+DATA(insert OID = 0 (405 1115 694 1));
 
 #endif /* PG_AMPROC_H */
