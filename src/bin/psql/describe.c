@@ -549,7 +549,7 @@ objectDescription(const char *pattern)
 
 	appendPQExpBuffer(&buf,
 					  ") AS tt\n"
-					  "  JOIN pg_catalog.pg_description d ON (tt.oid = d.objoid and tt.tableoid = d.classoid and d.objsubid = 0)\n");
+					  "  JOIN pg_catalog.pg_description d ON (tt.oid = d.objoid AND tt.tableoid = d.classoid AND d.objsubid = 0)\n");
 
 	appendPQExpBuffer(&buf, "ORDER BY 1, 2, 3;");
 
@@ -1028,7 +1028,7 @@ describeOneTableDetails(const char *schemaname,
 				 "SELECT t.tgname, pg_catalog.pg_get_triggerdef(t.oid)\n"
 							  "FROM pg_catalog.pg_trigger t\n"
 							  "WHERE t.tgrelid = '%s' "
-							  "and (not tgisconstraint "
+							  "AND (not tgisconstraint "
 							  " OR NOT EXISTS"
 							  "  (SELECT 1 FROM pg_catalog.pg_depend d "
 							  "   JOIN pg_catalog.pg_constraint c ON (d.refclassid = c.tableoid AND d.refobjid = c.oid) "
