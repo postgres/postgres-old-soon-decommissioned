@@ -63,7 +63,12 @@ return PQntuples(pgResult);
 
 int PgDatabase::CmdTuples()
 {
-return PQcmdTuples (pgResult);
+char *a;
+
+  a = (char *)PQcmdTuples(pgResult);
+  if(NULL == a) return -1;
+
+return atoi(a);
 }
 
 

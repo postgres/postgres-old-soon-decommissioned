@@ -79,6 +79,7 @@ public:
   ~PgDatabase() {}; // close connection and clean up
   // query result access
   int Tuples();
+  int CmdTuples();
   int Fields();
   const char* FieldName(int field_num);
   int FieldNum(const char *field_name);
