@@ -95,7 +95,6 @@ thisLockWasTriggered(int varno,
 					 AttrNumber attnum,
 					 Query *parsetree)
 {
-	int i;
 	
 	if (nodeThisLockWasTriggered(parsetree->qual, varno, attnum))
 		return true;
@@ -103,10 +102,6 @@ thisLockWasTriggered(int varno,
 	if (nodeThisLockWasTriggered((Node *) parsetree->targetList, varno, attnum))
 		return true;
 
-	for(i=0; i < parsetree->qry_numAgg; i++)
-		if (nodeThisLockWasTriggered(parsetree->qry_aggs[i]->target,
-					varno, attnum))
-			return true;
 	return false;
 		
 }

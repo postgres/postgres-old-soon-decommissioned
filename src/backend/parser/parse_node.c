@@ -49,8 +49,7 @@ make_parsestate(void)
 	pstate = palloc(sizeof(ParseState));
 	pstate->p_last_resno = 1;
 	pstate->p_rtable = NIL;
-	pstate->p_numAgg = 0;
-	pstate->p_aggs = NIL;
+	pstate->p_hasAggs = false;
 	pstate->p_is_insert = false;
 	pstate->p_insert_columns = NIL;
 	pstate->p_is_update = false;

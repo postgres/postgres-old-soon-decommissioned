@@ -1106,7 +1106,7 @@ make_material(List *tlist,
 }
 
 Agg		   *
-make_agg(List *tlist, int nagg, Aggreg **aggs, Plan *lefttree)
+make_agg(List *tlist, Plan *lefttree)
 {
 	Agg		   *node = makeNode(Agg);
 
@@ -1116,8 +1116,7 @@ make_agg(List *tlist, int nagg, Aggreg **aggs, Plan *lefttree)
 	node->plan.targetlist = tlist;
 	node->plan.lefttree = lefttree;
 	node->plan.righttree = (Plan *) NULL;
-	node->numAgg = nagg;
-	node->aggs = aggs;
+	node->aggs = NIL;
 
 	return (node);
 }

@@ -221,13 +221,8 @@ ParseFunc(ParseState *pstate, char *funcname, List *fargs,
 									PointerGetDatum(funcname),
 									ObjectIdGetDatum(basetype),
 									0, 0))
-			{
-				Aggreg	   *aggreg = ParseAgg(pstate, funcname, basetype,
+				return (Node *)ParseAgg(pstate, funcname, basetype,
 										fargs, precedence);
-
-				AddAggToParseState(pstate, aggreg);
-				return (Node *) aggreg;
-			}
 		}
 	}
 

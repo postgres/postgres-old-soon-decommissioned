@@ -30,10 +30,9 @@ typedef struct ParseState
 {
 	int			p_last_resno;
 	List	   *p_rtable;
-	int			p_numAgg;
-	List	   *p_aggs;
-	bool		p_is_insert;
 	List	   *p_insert_columns;
+	bool		p_hasAggs;
+	bool		p_is_insert;
 	bool		p_is_update;
 	bool		p_is_rule;
 	bool		p_in_where_clause;

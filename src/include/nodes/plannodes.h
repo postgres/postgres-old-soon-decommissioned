@@ -214,8 +214,7 @@ typedef struct HashJoin
 typedef struct Agg
 {
 	Plan		plan;
-	int			numAgg;
-	Aggreg	  **aggs;
+	List 		*aggs;
 	AggState   *aggstate;
 } Agg;
 
