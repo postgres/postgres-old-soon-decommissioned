@@ -156,7 +156,7 @@ $(SQLSCRIPT): Makefile
 		func=$$1; shift; \
 		obj=$$1; shift; \
 		echo "-- $$se --> $$de"; \
-		echo "CREATE OR REPLACE FUNCTION $$func (INTEGER, INTEGER, CSTRING, CSTRING, INTEGER) RETURNS VOID AS '$$"libdir"/$$obj', '$$func' LANGUAGE 'c';"; \
+		echo "CREATE OR REPLACE FUNCTION $$func (INTEGER, INTEGER, CSTRING, CSTRING, INTEGER) RETURNS VOID AS '$$"libdir"/$$obj', '$$func' LANGUAGE 'c' STRICT;"; \
 		echo "DROP CONVERSION pg_catalog.$$name;"; \
 		echo "CREATE DEFAULT CONVERSION pg_catalog.$$name FOR '$$se' TO '$$de' FROM $$func;"; \
 	done > $@
