@@ -1226,6 +1226,7 @@ Pg_select(ClientData cData, Tcl_Interp *interp, int argc, char **argv)
 	}
 
 	Tcl_SetVar2(interp, argv[3], ".headers", Tcl_DStringValue(&headers), 0);
+	Tcl_DStringFree(&headers);
 	sprintf(buffer, "%d", ncols);
 	Tcl_SetVar2(interp, argv[3], ".numcols", buffer, 0);
 
@@ -1236,8 +1237,7 @@ Pg_select(ClientData cData, Tcl_Interp *interp, int argc, char **argv)
 
 		for (column = 0; column < ncols; column++)
 		{
-			strcpy(buffer, PQgetvalue(result, tupno, column));
-			Tcl_SetVar2(interp, argv[3], info[column].cname, buffer, 0);
+			Tcl_SetVar2(interp, argv[3], info[column].cname, PQgetvalue(result, tupno, column), 0);
 		}
 
 		Tcl_SetVar2(interp, argv[3], ".command", "update", 0);
