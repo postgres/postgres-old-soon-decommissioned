@@ -400,6 +400,8 @@ typedef struct RangeFunction
 	NodeTag		type;
 	Node	   *funccallnode;	/* untransformed function call tree */
 	Alias	   *alias;			/* table alias & optional column aliases */
+	List	   *coldeflist;		/* list of ColumnDef nodes for runtime
+								 * assignment of RECORD TupleDesc */
 } RangeFunction;
 
 /*
@@ -527,6 +529,8 @@ typedef struct RangeTblEntry
 	 * Fields valid for a function RTE (else NULL):
 	 */
 	Node	   *funcexpr;		/* expression tree for func call */
+	List	   *coldeflist;		/* list of ColumnDef nodes for runtime
+								 * assignment of RECORD TupleDesc */
 
 	/*
 	 * Fields valid for a join RTE (else NULL/zero):

@@ -515,7 +515,7 @@ transformRangeFunction(ParseState *pstate, RangeFunction *r)
 	 * OK, build an RTE for the function.
 	 */
 	rte = addRangeTableEntryForFunction(pstate, funcname, funcexpr,
-										r->alias, true);
+										r, true);
 
 	/*
 	 * We create a RangeTblRef, but we do not add it to the joinlist or

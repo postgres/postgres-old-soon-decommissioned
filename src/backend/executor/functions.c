@@ -194,7 +194,8 @@ init_sql_fcache(FmgrInfo *finfo)
 	 * get the type length and by-value flag from the type tuple
 	 */
 	fcache->typlen = typeStruct->typlen;
-	if (typeStruct->typrelid == InvalidOid)
+
+	if (typeStruct->typtype == 'b')
 	{
 		/* The return type is not a relation, so just use byval */
 		fcache->typbyval = typeStruct->typbyval;

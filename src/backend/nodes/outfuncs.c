@@ -1004,6 +1004,8 @@ _outRangeTblEntry(StringInfo str, RangeTblEntry *node)
 		case RTE_FUNCTION:
 			appendStringInfo(str, ":funcexpr ");
 			_outNode(str, node->funcexpr);
+			appendStringInfo(str, ":coldeflist ");
+			_outNode(str, node->coldeflist);
 			break;
 		case RTE_JOIN:
 			appendStringInfo(str, ":jointype %d :joinaliasvars ",

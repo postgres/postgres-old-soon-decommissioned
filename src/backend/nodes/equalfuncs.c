@@ -1607,6 +1607,8 @@ _equalRangeVar(RangeVar *a, RangeVar *b)
 		return false;
 	if (!equal(a->alias, b->alias))
 		return false;
+	if (!equal(a->coldeflist, b->coldeflist))
+		return false;
 
 	return true;
 }
@@ -1741,6 +1743,8 @@ _equalRangeTblEntry(RangeTblEntry *a, RangeTblEntry *b)
 	if (!equal(a->subquery, b->subquery))
 		return false;
 	if (!equal(a->funcexpr, b->funcexpr))
+		return false;
+	if (!equal(a->coldeflist, b->coldeflist))
 		return false;
 	if (a->jointype != b->jointype)
 		return false;

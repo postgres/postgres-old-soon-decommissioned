@@ -1545,6 +1545,10 @@ _readRangeTblEntry(void)
 		case RTE_FUNCTION:
 			token = pg_strtok(&length); /* eat :funcexpr */
 			local_node->funcexpr = nodeRead(true);		/* now read it */
+
+			token = pg_strtok(&length); /* eat :coldeflist */
+			local_node->coldeflist = nodeRead(true);	/* now read it */
+
 			break;
 
 		case RTE_JOIN:
