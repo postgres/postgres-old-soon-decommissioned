@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-VACUUM">
  <refmeta>
-  <refentrytitle id="sql-vacuum-title">
-   VACUUM
-  </refentrytitle>
+  <refentrytitle id="sql-vacuum-title">VACUUM</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

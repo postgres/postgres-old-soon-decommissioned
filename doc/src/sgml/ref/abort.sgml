@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-ABORT">
  <refmeta>
-  <refentrytitle id="sql-abort-title">
-   ABORT
-  </refentrytitle>
+  <refentrytitle id="sql-abort-title">ABORT</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

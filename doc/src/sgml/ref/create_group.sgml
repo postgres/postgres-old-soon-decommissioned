@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-CREATEGROUP">
  <refmeta>
-  <refentrytitle id="sql-creategroup-title">
-   CREATE GROUP
-  </refentrytitle>
+  <refentrytitle id="sql-creategroup-title">CREATE GROUP</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

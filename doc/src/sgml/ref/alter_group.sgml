@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-ALTERGROUP">
  <refmeta>
-  <refentrytitle id="SQL-ALTERGROUP-title">
-   ALTER GROUP
-  </refentrytitle>
+  <refentrytitle id="SQL-ALTERGROUP-title">ALTER GROUP</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

@@ -4,14 +4,8 @@ PostgreSQL documentation
 -->
 
 <refentry id="APP-PGTKSH">
- <docinfo>
-  <date>2001-03-05</date>
- </docinfo>
-
  <refmeta>
-  <refentrytitle>
-   pgtksh
-  </refentrytitle>
+  <refentrytitle>pgtksh</refentrytitle>
   <manvolnum>1</manvolnum>
   <refmiscinfo>Application</refmiscinfo>
  </refmeta>

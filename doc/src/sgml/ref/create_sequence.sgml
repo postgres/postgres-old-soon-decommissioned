@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-CREATESEQUENCE">
  <refmeta>
-  <refentrytitle id="sql-createsequence-title">
-   CREATE SEQUENCE
-  </refentrytitle>
+  <refentrytitle id="sql-createsequence-title">CREATE SEQUENCE</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

@@ -1,10 +1,6 @@
 <!-- $Header$ -->
 
 <refentry id="sql-checkpoint">
- <docinfo>
-  <date>2001-01-24</date>
- </docinfo>
-
  <refmeta>
   <refentrytitle id="sql-checkpoint-title">CHECKPOINT</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>

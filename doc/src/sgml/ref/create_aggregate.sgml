@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-CREATEAGGREGATE">
  <refmeta>
-  <refentrytitle id="sql-createaggregate-title">
-   CREATE AGGREGATE
-  </refentrytitle>
+  <refentrytitle id="sql-createaggregate-title">CREATE AGGREGATE</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 

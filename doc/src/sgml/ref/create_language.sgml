@@ -4,10 +4,6 @@ PostgreSQL documentation
 -->
 
 <refentry id="SQL-CREATELANGUAGE">
- <docinfo>
-  <date>2001-09-05</date>
- </docinfo>
-
  <refmeta>
   <refentrytitle id="sql-createlanguage-title">CREATE LANGUAGE</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>

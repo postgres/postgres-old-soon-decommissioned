@@ -4,10 +4,6 @@ PostgreSQL documentation
 -->
 
 <refentry id="APP-CREATEUSER">
- <docinfo>
-  <date>2000-11-11</date>
- </docinfo>
-
  <refmeta>
   <refentrytitle id="APP-CREATEUSER-TITLE"><application>createuser</application></refentrytitle>
   <manvolnum>1</manvolnum>

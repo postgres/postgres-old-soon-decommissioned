@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-FETCH">
  <refmeta>
-  <refentrytitle id="SQL-FETCH-TITLE">
-   FETCH
-  </refentrytitle>
+  <refentrytitle id="SQL-FETCH-TITLE">FETCH</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

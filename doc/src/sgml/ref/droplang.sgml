@@ -4,10 +4,6 @@ PostgreSQL documentation
 -->
 
 <refentry id="APP-DROPLANG">
- <docinfo>
-  <date>2001-05-09</date>
- </docinfo>
-
  <refmeta>
   <refentrytitle id="APP-DROPLANG-TITLE"><application>droplang</application></refentrytitle>
   <manvolnum>1</manvolnum>

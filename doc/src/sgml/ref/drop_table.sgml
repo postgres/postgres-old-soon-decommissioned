@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-DROPTABLE">
  <refmeta>
-  <refentrytitle id="SQL-DROPTABLE-TITLE">
-   DROP TABLE
-  </refentrytitle>
+  <refentrytitle id="SQL-DROPTABLE-TITLE">DROP TABLE</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

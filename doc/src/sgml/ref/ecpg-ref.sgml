@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="APP-ECPG">
  <refmeta>
-  <refentrytitle id="app-ecpg-title">
-   <application>ecpg</application>
-  </refentrytitle>
+  <refentrytitle id="app-ecpg-title"><application>ecpg</application></refentrytitle>
   <manvolnum>1</manvolnum>
   <refmiscinfo>Application</refmiscinfo>
  </refmeta>

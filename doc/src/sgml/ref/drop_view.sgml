@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-DROPVIEW">
  <refmeta>
-  <refentrytitle id="SQL-DROPVIEW-TITLE">
-   DROP VIEW
-  </refentrytitle>
+  <refentrytitle id="SQL-DROPVIEW-TITLE">DROP VIEW</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

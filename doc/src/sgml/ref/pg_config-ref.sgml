@@ -1,10 +1,6 @@
 <!-- $Header$ -->
 
 <refentry id="app-pgconfig">
- <docinfo>
-  <date>2000-11-11</date>
- </docinfo>
-
  <refmeta>
   <refentrytitle id="app-pgconfig-title">pg_config</refentrytitle>
   <manvolnum>1</manvolnum>

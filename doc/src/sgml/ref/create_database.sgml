@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-CREATEDATABASE">
  <refmeta>
-  <refentrytitle id="sql-createdatabase-title">
-   CREATE DATABASE
-  </refentrytitle>
+  <refentrytitle id="sql-createdatabase-title">CREATE DATABASE</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

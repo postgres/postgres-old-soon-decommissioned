@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-BEGIN">
  <refmeta>
-  <refentrytitle id="SQL-BEGIN-TITLE">
-   BEGIN
-  </refentrytitle>
+  <refentrytitle id="SQL-BEGIN-TITLE">BEGIN</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

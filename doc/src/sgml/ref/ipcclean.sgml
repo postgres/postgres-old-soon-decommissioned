@@ -4,10 +4,6 @@ PostgreSQL documentation
 -->
 
 <refentry id="APP-IPCCLEAN">
- <docinfo>
-  <date>2000-11-11</date>
- </docinfo>
-
  <refmeta>
   <refentrytitle id="APP-IPCCLEAN-TITLE"><application>ipcclean</application></refentrytitle>
   <manvolnum>1</manvolnum>

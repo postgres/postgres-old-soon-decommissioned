@@ -4,10 +4,6 @@ PostgreSQL documentation
 -->
 
 <refentry id="SQL-CREATETRIGGER">
- <docinfo>
-  <date>2001-09-13</date>
- </docinfo>
-
  <refmeta>
   <refentrytitle id="SQL-CREATETRIGGER-TITLE">CREATE TRIGGER</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>

@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-COMMIT">
  <refmeta>
-  <refentrytitle id="SQL-COMMIT-TITLE">
-   COMMIT
-  </refentrytitle>
+  <refentrytitle id="SQL-COMMIT-TITLE">COMMIT</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

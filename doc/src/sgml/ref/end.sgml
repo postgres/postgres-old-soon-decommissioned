@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-END">
  <refmeta>
-  <refentrytitle id="SQL-END-TITLE">
-   END
-  </refentrytitle>
+  <refentrytitle id="SQL-END-TITLE">END</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

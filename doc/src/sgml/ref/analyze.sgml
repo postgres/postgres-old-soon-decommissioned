@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-ANALYZE">
  <refmeta>
-  <refentrytitle id="sql-analyze-title">
-   ANALYZE
-  </refentrytitle>
+  <refentrytitle id="sql-analyze-title">ANALYZE</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

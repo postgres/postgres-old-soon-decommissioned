@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-ROLLBACK">
  <refmeta>
-  <refentrytitle id="SQL-ROLLBACK-TITLE">
-   ROLLBACK
-  </refentrytitle>
+  <refentrytitle id="SQL-ROLLBACK-TITLE">ROLLBACK</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

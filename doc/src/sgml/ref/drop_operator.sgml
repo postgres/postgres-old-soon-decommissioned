@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-DROPOPERATOR">
  <refmeta>
-  <refentrytitle id="SQL-DROPOPERATOR-TITLE">
-   DROP OPERATOR
-  </refentrytitle>
+  <refentrytitle id="SQL-DROPOPERATOR-TITLE">DROP OPERATOR</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-CREATEOPERATOR">
  <refmeta>
-  <refentrytitle id="sql-createoperator-title">
-   CREATE OPERATOR
-  </refentrytitle>
+  <refentrytitle id="sql-createoperator-title">CREATE OPERATOR</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

@@ -6,9 +6,7 @@
  </docinfo>
 
  <refmeta>
-  <refentrytitle>
-   pg_restore
-  </refentrytitle>
+  <refentrytitle>pg_restore</refentrytitle>
   <manvolnum>1</manvolnum>
   <refmiscinfo>Application</refmiscinfo>
  </refmeta>

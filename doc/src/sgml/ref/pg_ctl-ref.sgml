@@ -4,10 +4,6 @@ PostgreSQL documentation
 -->
 
 <refentry id="app-pg-ctl">
- <docinfo>
-  <date>2001-02-08</date>
- </docinfo>
-
  <refmeta>
   <refentrytitle id="app-pg-ctl-title"><application>pg_ctl</application></refentrytitle>
   <manvolnum>1</manvolnum>

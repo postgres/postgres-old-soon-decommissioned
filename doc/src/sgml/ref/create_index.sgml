@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-CREATEINDEX">
  <refmeta>
-  <refentrytitle id="sql-createindex-title">
-   CREATE INDEX
-  </refentrytitle>
+  <refentrytitle id="sql-createindex-title">CREATE INDEX</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-MOVE">
  <refmeta>
-  <refentrytitle id="SQL-MOVE-TITLE">
-   MOVE
-  </refentrytitle>
+  <refentrytitle id="SQL-MOVE-TITLE">MOVE</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-DROPAGGREGATE">
  <refmeta>
-  <refentrytitle id="SQL-DROPAGGREGATE-TITLE">
-   DROP AGGREGATE
-  </refentrytitle>
+  <refentrytitle id="SQL-DROPAGGREGATE-TITLE">DROP AGGREGATE</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

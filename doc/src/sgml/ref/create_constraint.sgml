@@ -5,9 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-CREATECONSTRAINT">
  <refmeta>
-  <refentrytitle id="sql-createconstraint-title">
-   CREATE CONSTRAINT TRIGGER
-  </refentrytitle>
+  <refentrytitle id="sql-createconstraint-title">CREATE CONSTRAINT TRIGGER</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>

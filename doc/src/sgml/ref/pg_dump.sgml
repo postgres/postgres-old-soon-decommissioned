@@ -4,14 +4,8 @@ PostgreSQL documentation
 -->
 
 <refentry id="APP-PGDUMP">
- <docinfo>
-  <date>2001-03-06</date>
- </docinfo>
-
  <refmeta>
-  <refentrytitle>
-   pg_dump
-  </refentrytitle>
+  <refentrytitle>pg_dump</refentrytitle>
   <manvolnum>1</manvolnum>
   <refmiscinfo>Application</refmiscinfo>
  </refmeta>

@@ -4,14 +4,8 @@ PostgreSQL documentation
 -->
 
 <refentry id="SQL-DROPTRIGGER">
- <docinfo>
-  <date>2001-09-13</date>
- </docinfo>
-
  <refmeta>
-  <refentrytitle id="SQL-DROPTRIGGER-TITLE">
-   DROP TRIGGER
-  </refentrytitle>
+  <refentrytitle id="SQL-DROPTRIGGER-TITLE">DROP TRIGGER</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
  <refnamediv>
