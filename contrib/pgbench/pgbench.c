@@ -527,7 +527,7 @@ int main(int argc, char **argv) {
 	exit(1);
       }
 #ifndef __CYGWIN32__
-#ifdef HAVE_RLIMIT_NOFILE	/* most platform uses RLIMIT_NOFILE */
+#ifdef RLIMIT_NOFILE		/* most platform uses RLIMIT_NOFILE */
       if (getrlimit(RLIMIT_NOFILE,&rlim) == -1) {
 #else	/* but BSD doesn't ... */
       if (getrlimit(RLIMIT_OFILE,&rlim) == -1) {
