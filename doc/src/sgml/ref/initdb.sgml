@@ -185,6 +185,16 @@ PostgreSQL documentation
        </para>
       </listitem>
      </varlistentry>
+
+     <varlistentry>
+      <term><option>--pwfile=<replaceable>filename</></option></term>
+      <listitem>
+       <para>
+        Makes <command>initdb</command> read the database superuser's password
+        from a file.  The first line of the file is taken as the password.
+       </para>
+      </listitem>
+     </varlistentry>
     </variablelist>
    </para>
 
