@@ -191,11 +191,14 @@ slashUsage(unsigned short int pager)
 	fprintf(output, _(" \\g [FILE]      send query buffer to server (and results to file or |pipe)\n"));
 	fprintf(output, _(" \\r             reset (clear) the query buffer\n"));
 	fprintf(output, _(" \\e [FILE]      edit the query buffer (or file) with external editor\n"));
-	fprintf(output, _(" \\i FILE        execute commands from file\n"));
 	fprintf(output, _(" \\p             show the contents of the query buffer\n"));
 	fprintf(output, _(" \\w [FILE]      write query buffer to file\n"));
-	fprintf(output, _(" \\o FILE        send all query results to file or |pipe\n"));
 	fprintf(output, _(" \\s [FILE]      display history or save it to file\n"));
+	fprintf(output, _("\n"));
+
+	fprintf(output, _("I/O Redirection\n"));
+	fprintf(output, _(" \\i FILE        execute commands from file\n"));
+	fprintf(output, _(" \\o FILE        send all query results to file or |pipe\n"));
 	fprintf(output, _("\n"));
 
 	fprintf(output, _("Informational\n"));
@@ -236,12 +239,10 @@ slashUsage(unsigned short int pager)
 			ON(pset.popt.topt.tuples_only));
 	fprintf(output, _(" \\echo [STRING] write string to standard output\n"));
 	fprintf(output, _(" \\qecho [STRING]  write string to query output stream (see \\o)\n"));
-	fprintf(output, _("\n"));
-
-	fprintf(output, _("HTML Output\n"));
 	fprintf(output, _(" \\H             toggle HTML output mode (currently %s)\n"),
 			ON(pset.popt.topt.format == PRINT_HTML));
 	fprintf(output, _(" \\T [STRING]    set HTML <table> tag attributes, or unset if none\n"));
+	fprintf(output, _("\n"));
 
 	if (output != stdout)
 	{
