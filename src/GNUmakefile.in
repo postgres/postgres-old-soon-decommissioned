@@ -65,7 +65,7 @@ install:
 ifneq ($(wildcard man), )
 	$(MAKE) -C man install
 endif
-	more -e ../register.txt
+	more ../register.txt
 
 clean:
 	@if test $(PORTNAME) = UNDEFINED; then \
