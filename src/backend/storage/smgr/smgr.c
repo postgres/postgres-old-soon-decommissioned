@@ -410,7 +410,7 @@ smgrtruncate(int16 which, Relation reln, BlockNumber nblocks)
 		 * for the about-to-be-deleted blocks.	We want to be sure it
 		 * won't return bogus block numbers later on.
 		 */
-		MultiRecordFreeSpace(&reln->rd_node, nblocks, 0, NULL);
+		FreeSpaceMapTruncateRel(&reln->rd_node, nblocks);
 
 		newblks = (*(smgrsw[which].smgr_truncate)) (reln, nblocks);
 		if (newblks == InvalidBlockNumber)
