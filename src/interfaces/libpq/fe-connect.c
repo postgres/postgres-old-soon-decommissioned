@@ -148,7 +148,6 @@ PGconn *
 PQconnectdb(const char *conninfo)
 {
 	PGconn	   *conn;
-	PQconninfoOption *option;
 	char		errorMessage[ERROR_MSG_LENGTH];
 	char* tmp;
 	/* ----------
