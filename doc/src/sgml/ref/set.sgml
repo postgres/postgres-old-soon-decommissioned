@@ -379,7 +379,7 @@ SELECT setseed(<replaceable>value</replaceable>);
     
     <variablelist>
      <varlistentry>
-      <term>pg_options</term>
+      <term>PG_OPTIONS</term>
       <listitem>
        <para>
         Sets various backend parameters.
