@@ -12,13 +12,12 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "storage/bufpage.h"
-#include "access/relscan.h"
-#include "access/heapam.h"
-#include "storage/bufmgr.h"
-#include "utils/memutils.h"
+#include <storage/bufpage.h>
+#include <access/heapam.h>
+#include <storage/bufmgr.h>
+#include <utils/memutils.h>
 
 /*
  * amputunique	- place tuple at tid

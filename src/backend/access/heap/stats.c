@@ -15,22 +15,13 @@
  *-------------------------------------------------------------------------
  */
 
-#include <stdio.h>
+#include <postgres.h>
 
-#include "postgres.h"
-
-#include "access/relscan.h"
-
-#include "access/heapam.h"
-
-#include "nodes/memnodes.h"
-
-#include "utils/mcxt.h"
-
-#include "utils/palloc.h"
+#include <access/heapam.h>
+#include <utils/mcxt.h>
 
 #ifndef HAVE_MEMMOVE
-# include "regex/utils.h"
+# include <regex/utils.h>
 #else
 # include <string.h>
 #endif
