@@ -35,18 +35,11 @@ typedef long long int int64;
 
 #define INT64_FORMAT "%lld"
 #else
-#ifdef HAVE_LONG_LONG_INT_64_qd
-/* We have working support for "long long int", use that */
-typedef long long int int64;
-
-#define INT64_FORMAT "%qd"
-#else
 /* Won't actually work, but fall back to long int so that int8.c compiles */
 typedef long int int64;
 
 #define INT64_FORMAT "%ld"
 #define INT64_IS_BUSTED
-#endif
 #endif
 #endif
 
