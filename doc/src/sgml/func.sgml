@@ -1082,6 +1082,32 @@ PostgreSQL documentation
       </row>
 
       <row>
+       <entry><function>quote_ident</function>(<parameter>string</parameter> text)</entry>
+       <entry><type>text</type></entry>
+       <entry>
+        Returns the given string suitably quoted to be used as an identifier
+	in an SQL query string.
+	Quotes are added only if necessary (i.e., if the string contains
+	non-identifier characters or would be case-folded).
+	Embedded quotes are properly doubled.
+       </entry>
+       <entry><literal>quote_ident('Foo')</literal></entry>
+       <entry><literal>"Foo"</literal></entry>
+      </row>
+
+      <row>
+       <entry><function>quote_literal</function>(<parameter>string</parameter> text)</entry>
+       <entry><type>text</type></entry>
+       <entry>
+        Returns the given string suitably quoted to be used as a literal
+	in an SQL query string.
+	Embedded quotes and backslashes are properly doubled.
+       </entry>
+       <entry><literal>quote_literal('O\'Reilly')</literal></entry>
+       <entry><literal>'O''Reilly'</literal></entry>
+      </row>
+
+      <row>
        <entry><function>repeat</function>(<type>text</type>, <type>integer</type>)</entry>
        <entry><type>text</type></entry>
        <entry>Repeat text a number of times.</entry>
