@@ -17,7 +17,7 @@ MKDIR=../mk
 #
 # C programs
 #
-SUBDIR=  monitor pg_id pg_version psql pg_dump
+SUBDIR=  pg_id pg_version psql pg_dump
 
 #
 # Shell scripts
