@@ -3,7 +3,7 @@
  * pg_backup_null.c
  *
  *	Implementation of an archive that is never saved; it is used by
- *	pg_dump to output output a plain text SQL script instead of save
+ *	pg_dump to output a plain text SQL script instead of save
  *	a real archive.
  *
  *	See the headers to pg_restore for more details.
