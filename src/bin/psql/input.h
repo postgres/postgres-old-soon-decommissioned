@@ -24,7 +24,7 @@
 #endif
 #endif
 
-#if defined(HAVE_LIBHISTORY) || (defined(HAVE_LIBREADLINE) && defined(HAVE_HISTORY_IN_READLINE))
+#if defined(HAVE_HISTORY_FUNCTIONS)
 #if defined(HAVE_READLINE_HISTORY_H)
 #include <readline/history.h>
 #define USE_HISTORY 1

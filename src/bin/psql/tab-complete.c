@@ -60,7 +60,7 @@
 #include "common.h"
 #include "settings.h"
 
-#if defined(HAVE_FILENAME_COMPLETION_FUNCTION) && !defined(HAVE_FILENAME_COMPLETION_FUNCTION_DECL)
+#ifndef HAVE_FILENAME_COMPLETION_FUNCTION_DECL
 char	   *filename_completion_function(char *, int);
 
 #endif
@@ -699,17 +699,7 @@ psql_completion(char *text, int start, int end)
 		   strcmp(prev_wd, "\\w") == 0 || strcmp(prev_wd, "\\write") == 0
 		)
 	{
-#ifdef HAVE_FILENAME_COMPLETION_FUNCTION
 		matches = completion_matches(text, filename_completion_function);
-#else
-
-		/*
-		 * This will probably have the same effect, but you never know
-		 * what the heck some readline incarnation out there is going to
-		 * do.
-		 */
-		matches = NULL;
-#endif
 	}
 
 
