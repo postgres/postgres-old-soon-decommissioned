@@ -173,7 +173,7 @@ typedef struct {
  * Bit mask definitions for time parsing.
  */
 
-#define DTK_M(t)	(0x01 << t)
+#define DTK_M(t)	(0x01 << (t))
 
 #define DTK_DATE_M	(DTK_M(YEAR) | DTK_M(MONTH) | DTK_M(DAY))
 #define DTK_TIME_M	(DTK_M(HOUR) | DTK_M(MINUTE) | DTK_M(SECOND))
@@ -241,7 +241,7 @@ typedef struct {
 #define TIMESPAN_NOT_FINITE(j)	TIMESPAN_IS_INVALID(j)
 
 #define TIME_PREC 1e-6
-#define JROUND(j) (rint(((double) j)/TIME_PREC)*TIME_PREC)
+#define JROUND(j) (rint(((double) (j))/TIME_PREC)*TIME_PREC)
 
 /*
  * dt.c prototypes 
