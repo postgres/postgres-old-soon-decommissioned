@@ -44,7 +44,7 @@ equal_path_path_ordering(PathOrder *path_ordering1,
 			 path_ordering2->ordtype == SORTOP_ORDER)
 	{
 		return (equal_sortops_order(path_ordering1->ord.sortop,
-								 path_ordering2->ord.sortop));
+									path_ordering2->ord.sortop));
 	}
 	else if (path_ordering1->ordtype == MERGE_ORDER &&
 			 path_ordering2->ordtype == SORTOP_ORDER)

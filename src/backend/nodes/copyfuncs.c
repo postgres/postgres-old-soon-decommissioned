@@ -1343,7 +1343,7 @@ _copyRestrictInfo(RestrictInfo * from)
 	Node_Copy(from, newnode, indexids);
 	Node_Copy(from, newnode, mergejoinorder);
 	newnode->hashjoinoperator = from->hashjoinoperator;
-	newnode->cinfojoinid = listCopy(from->cinfojoinid);
+	newnode->restrictinfojoinid = listCopy(from->restrictinfojoinid);
 
 	return newnode;
 }

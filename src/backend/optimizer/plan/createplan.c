@@ -321,7 +321,7 @@ create_indexscan_node(IndexPath *best_path,
 
 	/*
 	 * Extract the(first if conjunct, only if disjunct) clause from the
-	 * clauseinfo list.
+	 * restrictinfo list.
 	 */
 	Expr	   *index_clause = (Expr *) NULL;
 	List	   *indxqual = NIL;

@@ -1107,7 +1107,7 @@ _outMergeOrder(StringInfo str, MergeOrder *node)
 static void
 _outRestrictInfo(StringInfo str, RestrictInfo * node)
 {
-	appendStringInfo(str, " CINFO :clause ");
+	appendStringInfo(str, " RESTRICTINFO :clause ");
 	_outNode(str, node->clause);
 
 	appendStringInfo(str, 

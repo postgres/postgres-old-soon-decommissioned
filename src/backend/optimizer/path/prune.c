@@ -64,9 +64,9 @@ prune_joinrel(RelOptInfo *rel, List *other_rels)
 	List	   *r1 = NIL;
 	List	   *result = NIL;
 
-	foreach(r1, other_rels)
+	foreach(i, other_rels)
 	{
-		RelOptInfo *other_rel = (RelOptInfo *) lfirst(r1);
+		RelOptInfo *other_rel = (RelOptInfo *) lfirst(i);
 
 		if (same(rel->relids, other_rel->relids))
 			/*
