@@ -194,7 +194,7 @@ ifeq ($(enable_nls), yes)
 endif
 
 distclean: clean
-	rm -f port/Makefile port/tas.s port/dynloader.c
+	rm -f port/tas.s port/dynloader.c
 
 maintainer-clean: distclean
 	rm -f $(srcdir)/bootstrap/bootparse.c \

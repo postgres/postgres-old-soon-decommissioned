@@ -325,12 +325,21 @@ endif
 #
 # substitute implementations of the C library
 
-INET_ATON = @INET_ATON@
-STRERROR = @STRERROR@
-SNPRINTF = @SNPRINTF@
-STRDUP = @STRDUP@
-MEMCMP = @MEMCMP@
-STRTOUL = @STRTOUL@
+GETHOSTNAME = @GETHOSTNAME@
+GETRUSAGE   = @GETRUSAGE@
+INET_ATON   = @INET_ATON@
+ISINF       = @ISINF@
+MEMCMP      = @MEMCMP@
+MISSING_RANDOM = @MISSING_RANDOM@
+SNPRINTF    = @SNPRINTF@
+SRANDOM     = @SRANDOM@
+STRCASECMP  = @STRCASECMP@
+STRDUP      = @STRDUP@
+STRERROR    = @STRERROR@
+STRTOL      = @STRTOL@
+STRTOUL     = @STRTOUL@
+
+TAS         = @TAS@
 
 
 ##########################################################################
