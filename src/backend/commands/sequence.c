@@ -24,19 +24,6 @@
 #include "utils/acl.h"
 #include "utils/builtins.h"
 
-
-#ifndef INT64_IS_BUSTED
-#ifdef HAVE_LL_CONSTANTS
-#define SEQ_MAXVALUE	((int64) 0x7FFFFFFFFFFFFFFFLL)
-#else
-#define SEQ_MAXVALUE	((int64) 0x7FFFFFFFFFFFFFFF)
-#endif
-#else							/* INT64_IS_BUSTED */
-#define SEQ_MAXVALUE	((int64) 0x7FFFFFFF)
-#endif   /* INT64_IS_BUSTED */
-
-#define SEQ_MINVALUE	(-SEQ_MAXVALUE)
-
 /*
  * We don't want to log each fetching of a value from a sequence,
  * so we pre-log a few fetches in advance. In the event of
