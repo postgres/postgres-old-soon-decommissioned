@@ -302,7 +302,7 @@ exec_command(const char *cmd,
 				success = describeAggregates(pattern, show_verbose);
 				break;
 			case 'b':
-				success = describeTablespaces(pattern);
+				success = describeTablespaces(pattern, show_verbose);
 				break;
 			case 'c':
 				success = listConversions(pattern);

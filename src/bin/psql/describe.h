@@ -14,7 +14,7 @@
 bool		describeAggregates(const char *pattern, bool verbose);
 
 /* \db */
-bool		describeTablespaces(const char *pattern);
+bool		describeTablespaces(const char *pattern, bool verbose);
 
 /* \df */
 bool		describeFunctions(const char *pattern, bool verbose);
