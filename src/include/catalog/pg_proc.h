@@ -814,6 +814,12 @@ DATA(insert OID =  881 (  ltrim             PGUID 14 f t f 1 f 25 "25" 100 0 0 1
 DATA(insert OID =  882 (  rtrim             PGUID 14 f t f 1 f 25 "25" 100 0 0 100  "select rtrim($1, \' \')" - ));
 DATA(insert OID =  883 (  substr            PGUID 14 f t f 2 f 25 "25 23" 100 0 0 100  "select substr($1, $2, 10000)" - ));
 
+/* SEQUENCEs nextval & currval functions */
+DATA(insert OID =  1317 (  nextval          PGUID 11 f t f 1 f 23 "25" 100 0 0 100  foo bar ));
+DATA(insert OID =  1319 (  currval          PGUID 11 f t f 1 f 23 "25" 100 0 0 100  foo bar ));
+#define SeqNextValueRegProcedure 1317
+#define SeqCurrValueRegProcedure 1319
+
 /* 
  * prototypes for functions pg_proc.c 
  */

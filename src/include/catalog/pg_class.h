@@ -160,6 +160,7 @@ DATA(insert OID = 1273 (  pg_hosts 101           PGUID 0 0 0 0 0 f t s n 3 0 - -
 #define       RELKIND_INDEX           'i'     /* secondary index */
 #define       RELKIND_RELATION        'r'     /* cataloged heap */
 #define       RELKIND_SPECIAL         's'     /* special (non-heap) */
+#define       RELKIND_SEQUENCE        'S'     /* SEQUENCE relation */
 #define       RELKIND_UNCATALOGED     'u'     /* temporary heap */
 
 #endif /* PG_RELATION_H */
