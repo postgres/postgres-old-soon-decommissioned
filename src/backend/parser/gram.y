@@ -2841,7 +2841,6 @@ RuleStmt:  CREATE RULE name AS
 
 RuleActionList:  NOTHING				{ $$ = NIL; }
 		| RuleActionStmt				{ $$ = makeList1($1); }
-		| '[' RuleActionMulti ']'		{ $$ = $2; }
 		| '(' RuleActionMulti ')'		{ $$ = $2; } 
 		;
 
