@@ -862,6 +862,7 @@ to <parameter>to</>, not including the terminating NUL character.
 Behavior is undefined when the <parameter>to</> and <parameter>from</>
 strings overlap.
 </para>
+</sect2>
 
 <sect2 id="libpq-exec-select-info">
   <title>Retrieving SELECT Result Information</title>
