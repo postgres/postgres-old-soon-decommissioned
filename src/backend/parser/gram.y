@@ -1803,12 +1803,12 @@ VacuumStmt:  VACUUM opt_verbose opt_analyze
 					n->va_spec = NIL;
 					$$ = (Node *)n;
 				}
-		| VACUUM opt_verbose relation_name opt_analyze opt_va_list
+		| VACUUM opt_verbose opt_analyze relation_name opt_va_list
 				{
 					VacuumStmt *n = makeNode(VacuumStmt);
 					n->verbose = $2;
-					n->analyze = $4;
-					n->vacrel = $3;
+					n->analyze = $3;
+					n->vacrel = $4;
 					n->va_spec = $5;
 					if ( $5 != NIL && !$4 )
 						elog(WARN,"parser: syntax error at or near \"(\"",NULL);
