@@ -190,7 +190,7 @@ typedef enum pg_enc
 } pg_enc;
 
 #define PG_ENCODING_BE_LAST PG_ISO_8859_8
-#define PG_ENCODING_FE_LAST PG_WIN1256
+#define PG_ENCODING_FE_LAST PG_GB18030
 
 /*
  * Please use these tests before access to pg_encconv_tbl[]
