@@ -64,7 +64,7 @@ LDADD+= -lln
 endif
 
 ifeq ($(PORTNAME), bsdi)
-  ifeq ($(PRE_BSDI_2_1), N)
+  ifeq ($(PRE_BSDI_2_1), false)
     LDADD+= -ldl -lipc
   else
     LDADD+= -ldld -lipc

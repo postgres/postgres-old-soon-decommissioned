@@ -17,7 +17,11 @@ INCLUDE_OPT = -I../.. \
 
 CFLAGS+=$(INCLUDE_OPT)
 
+ifeq ($(PRE_BSDI_2_1), false)
+OBJS = port.o
+else
 OBJS = dynloader.o port.o
+endif
 
 all: SUBSYS.o
 
