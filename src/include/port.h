@@ -124,6 +124,8 @@ extern off_t ftello(FILE *stream);
 /*
  *	WIN32 doesn't allow descriptors returned by pipe() to be used in select(),
  *	so for that platform we use socket() instead of pipe().
+ *	There is some inconsistency here because sometimes we require pg*, like
+ *	pgpipe, but in other cases we define rename to pgrename just on Win32.
  */
 #ifndef WIN32
 #define pgpipe(a)			pipe(a)
