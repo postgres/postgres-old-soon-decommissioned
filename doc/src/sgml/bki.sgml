@@ -97,6 +97,7 @@ $PostgreSQL$
       <type>oid</type>, <type>tid</type>, <type>xid</type>,
       <type>cid</type>, <type>int2vector</type>, <type>oidvector</type>,
       <type>_int4</type> (array), <type>_text</type> (array),
+      <type>_oid</type> (array), <type>_char</type> (array),
       <type>_aclitem</type> (array).  Although it is possible to create
       tables containing columns of other types, this cannot be done until
       after <structname>pg_type</> has been created and filled with
