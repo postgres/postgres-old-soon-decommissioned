@@ -48,7 +48,9 @@ extern void ResetCancelConn(void);
 
 #ifndef WIN32
 extern void handle_sigint(SIGNAL_ARGS);
-#endif   /* not WIN32 */
+#else
+extern void setup_cancel_handler(void);
+#endif
 
 extern PGresult *PSQLexec(const char *query, bool start_xact);
 

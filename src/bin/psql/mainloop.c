@@ -121,7 +121,10 @@ MainLoop(FILE *source)
 		 * ready
 		 */
 		pqsignal(SIGINT, handle_sigint);		/* control-C => cancel */
-#endif   /* not WIN32 */
+
+#else /* WIN32 */
+		setup_cancel_handler();
+#endif
 
 		fflush(stdout);
 

@@ -116,6 +116,12 @@ typedef struct pg_conn PGconn;
  */
 typedef struct pg_result PGresult;
 
+/* PGcancel encapsulates the information needed to cancel a running
+ * query on an existing connection.
+ * The contents of this struct are not supposed to be known to applications.
+ */
+typedef struct pg_cancel PGcancel;
+
 /* PGnotify represents the occurrence of a NOTIFY message.
  * Ideally this would be an opaque typedef, but it's so simple that it's
  * unlikely to change.
@@ -234,7 +240,16 @@ extern PostgresPollingStatusType PQresetPoll(PGconn *conn);
 /* Synchronous (blocking) */
 extern void PQreset(PGconn *conn);
 
+/* request a cancel structure */
+extern PGcancel *PQgetCancel(PGconn *conn);
+
+/* free a cancel structure */
+extern void PQfreeCancel(PGcancel *cancel);
+
 /* issue a cancel request */
+extern int	PQcancel(PGcancel *cancel, char *errbuf, int errbufsize);
+
+/* backwards compatible version of PQcancel; not thread-safe */
 extern int	PQrequestCancel(PGconn *conn);
 
 /* Accessor functions for PGconn objects */

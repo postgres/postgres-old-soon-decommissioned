@@ -346,6 +346,18 @@ struct pg_conn
 	PQExpBufferData workBuffer; /* expansible string */
 };
 
+/* PGcancel stores all data necessary to cancel a connection. A copy of this
+ * data is required to safely cancel a connection running on a different
+ * thread.
+ */
+struct pg_cancel
+{
+	SockAddr	raddr;			/* Remote address */
+	int			be_pid;			/* PID of backend --- needed for cancels */
+	int			be_key;			/* key of backend --- needed for cancels */
+};
+
+
 /* String descriptions of the ExecStatusTypes.
  * direct use of this array is deprecated; call PQresStatus() instead.
  */
