@@ -2477,7 +2477,7 @@ exec_simple_check_plan(PLpgSQL_expr * expr)
 	 *	  execution plan
 	 * ----------
 	 */
-	if (spi_plan->ptlist == NULL || length(spi_plan->ptlist) != 1)
+	if (length(spi_plan->ptlist) != 1)
 		return;
 
 	plan = (Plan *) lfirst(spi_plan->ptlist);
@@ -2486,6 +2486,9 @@ exec_simple_check_plan(PLpgSQL_expr * expr)
 	 * 2. It must be a RESULT plan --> no scan's required
 	 * ----------
 	 */
+	if (plan == NULL)			/* utility statement produces this */
+		return;
+
 	if (nodeTag(plan) != T_Result)
 		return;
 
