@@ -55,3 +55,4 @@ clean:
 	rm -f $(INFILES)
 	$(MAKE) -C sql clean
 	$(MAKE) -C expected clean
+	$(MAKE) -C results clean
