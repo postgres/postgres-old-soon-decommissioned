@@ -372,6 +372,13 @@ RelationRemoveTriggers(Relation rel)
 
 	heap_endscan(tgscan);
 
+	/* ----------
+	 * Need to bump it here so the following doesn't see
+	 * the already deleted triggers again for a self-referencing
+	 * table.
+	 * ----------
+	 */
+	CommandCounterIncrement();
 
 	/* ----------
 	 * Also drop all constraint triggers referencing this relation
@@ -388,6 +395,7 @@ RelationRemoveTriggers(Relation rel)
 		DropTrigStmt	stmt;
 
 		pg_trigger = (Form_pg_trigger) GETSTRUCT(tup);
+
 		refrel = heap_open(pg_trigger->tgrelid, NoLock);
 
 		stmt.relname = pstrdup(RelationGetRelationName(refrel));
