@@ -172,14 +172,13 @@ ListTableAsAttrs(ParseState *pstate, char *table);
 List *
 ListTableAsAttrs(ParseState *pstate, char *table)
 {
-	List *rlist = NULL;
+	Attr *attr = expandTable(pstate, table, TRUE);
+	List *rlist = NIL;
 	List *col;
 
-	Attr *attr = expandTable(pstate, table, TRUE);
 	foreach(col, attr->attrs)
 	{
-		Attr *a;
-		a = makeAttr(table, strVal((Value *) col));
+		Attr *a = makeAttr(table, strVal((Value *) lfirst(col)));
 		rlist = lappend(rlist, a);
 	}
 
