@@ -94,7 +94,7 @@ bool		SQL_inheritance = true;
 
 bool		Australian_timezones = false;
 
-bool		Password_encryption = false;
+bool		Password_encryption = true;
 
 #ifndef PG_KRB_SRVTAB
 #define PG_KRB_SRVTAB ""
