@@ -33,9 +33,9 @@ CREATE TABLE cities (
     altitude        int     -- (in ft)
 );
 
-CREATE TABLE capitals (
+CREATE TABLE capitals UNDER cities (
     state           char(2)
-) UNDER cities;
+);
     </programlisting>
 
     In this case, an  instance  of  capitals  <firstterm>inherits</firstterm>  all
