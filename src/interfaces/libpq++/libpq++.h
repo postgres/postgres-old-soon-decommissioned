@@ -1,4 +1,3 @@
-
 /*-------------------------------------------------------------------------
  *
  * libpq++.h
@@ -14,6 +13,7 @@
  * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
  * Portions Copyright (c) 1994, Regents of the University of California
  *
+ * $Id$
  *
  *-------------------------------------------------------------------------
  */
@@ -21,19 +21,23 @@
 #ifndef LIBPQXX_H
 #define LIBPQXX_H
 
-#include <stdio.h>
-#include <strings.h>
-#include <string>
-
 extern "C" {
 #include "config.h"
+}
+
+#ifdef HAVE_CXX_STRING_HEADER
+#include <string>
+#endif
+
+extern "C" {
 #include "postgres.h"
 #include "libpq-fe.h"
 }
 
-static char rcsid[] = "$Id$";
-
+#ifdef HAVE_NAMESPACE_STD
 using namespace std;
+#endif
+
 
 // ****************************************************************
 //
@@ -194,5 +198,3 @@ public:
 #define BUFSIZE 1024
 
 #endif /* LIBPQXX_H */
-
-

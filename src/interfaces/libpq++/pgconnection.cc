@@ -15,8 +15,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include <stdlib.h>
-#include <string.h>
 #include "pgconnection.h"
 
 extern "C" {

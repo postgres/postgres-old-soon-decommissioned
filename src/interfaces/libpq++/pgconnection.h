@@ -21,14 +21,23 @@
 #ifndef PGCONN_H
 #define PGCONN_H
 
-#include <stdio.h>
+extern "C" {
+#include "config.h"
+}
+
+#ifdef HAVE_CXX_STRING_HEADER
 #include <string>
+#endif
 
 extern "C" {
+#include "postgres.h"
 #include "libpq-fe.h"
 }
 
+#ifdef HAVE_NAMESPACE_STD
 using namespace std;
+#endif
+
 
 // ****************************************************************
 //
