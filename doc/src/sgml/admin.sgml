@@ -6,6 +6,13 @@ Derived from postgres.sgml.
 - thomas 1998-10-27
 
 $Log: admin.sgml,v $
+Revision 1.14  1999/05/26 17:30:27  thomas
+Add chapters on CVS access, MVCC, SQL theory to the docs.
+Add an appendix with more details on date/time attributes and handling.
+Update most references to Postgres version numbers to 6.5,
+ *except* for the porting list which will require a report
+ from a successful installation to be updated.
+
 Revision 1.13  1999/05/20 05:39:25  thomas
 Rearrange and consolidate the Admin Guide.
 Add reference pages for utilities and remove standalone chapters for same.
@@ -101,7 +108,7 @@ Bigger updates to the installation instructions (install and config).
 
   <LegalNotice>
    <Para>
-    <ProductName>PostgreSQL</ProductName> is &copy; 1998-9
+    <ProductName>PostgreSQL</ProductName> is Copyright &copy; 1996-9
     by the Postgres Global Development Group.
    </Para>
   </LegalNotice>

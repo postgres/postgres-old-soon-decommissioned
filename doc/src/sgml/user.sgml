@@ -6,6 +6,13 @@ Derived from postgres.sgml.
 thomas 1998-02-24
 
 $Log: user.sgml,v $
+Revision 1.11  1999/05/26 17:30:30  thomas
+Add chapters on CVS access, MVCC, SQL theory to the docs.
+Add an appendix with more details on date/time attributes and handling.
+Update most references to Postgres version numbers to 6.5,
+ *except* for the porting list which will require a report
+ from a successful installation to be updated.
+
 Revision 1.10  1999/05/22 02:27:25  thomas
 Finish initial markup of cvs.sgml, and include it in the programmer's guide
  and the integrated doc. Clean up other markup.
@@ -62,7 +69,6 @@ Move SQL reference pages up into the User's Guide.
 <!entity manage   SYSTEM "manage.sgml">
 <!entity mvcc     SYSTEM "mvcc.sgml">
 <!entity oper     SYSTEM "oper.sgml">
-<!entity sql      SYSTEM "sql.sgml">
 <!entity storage  SYSTEM "storage.sgml">
 <!entity syntax   SYSTEM "syntax.sgml">
 <!entity typeconv SYSTEM "typeconv.sgml">
@@ -106,7 +112,7 @@ Move SQL reference pages up into the User's Guide.
 
   <LegalNotice>
    <Para>
-    <ProductName>PostgreSQL</ProductName> is &copy; 1998-9
+    <ProductName>PostgreSQL</ProductName> is Copyright &copy; 1996-9
     by the Postgres Global Development Group.
    </Para>
   </LegalNotice>
@@ -142,7 +148,6 @@ Your name here...
  </Preface>
 
  &intro;
- &sql;
  &syntax;
  &datatype;
  &oper;
