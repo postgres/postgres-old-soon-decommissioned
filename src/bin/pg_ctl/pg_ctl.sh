@@ -4,7 +4,7 @@
 # pg_ctl.sh--
 #    Start/Stop/Restart/Report status of postmaster
 #
-# Copyright (c) 1999, PostgreSQL Global Development Group
+# Copyright (c) 2000, PostgreSQL Global Development Group
 #
 #
 # IDENTIFICATION
@@ -85,6 +85,8 @@ do
 	-m)
 	    shift
 	    case $1 in
+		s|smart)
+		    ;;
 		f|fast)
 		    sig="-INT"
 		    ;;
