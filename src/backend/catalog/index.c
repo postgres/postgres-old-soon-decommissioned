@@ -1281,8 +1281,7 @@ FormIndexDatum(int numberOfAttributes,
 	{
 		offset = AttrNumberGetAttrOffset(i);
 
-		datum[offset] =
-			PointerGetDatum(GetIndexValue(heapTuple,
+		datum[offset] =	PointerGetDatum(GetIndexValue(heapTuple,
 										  heapDescriptor,
 										  offset,
 										  attributeNumber,

@@ -129,7 +129,6 @@ ProcedureCreate(char *procedureName,
 
 	if (!strcmp(languageName, "sql"))
 	{
-
 		/*
 		 * If this call is defining a set, check if the set is already
 		 * defined by looking to see whether this call's function text
@@ -142,6 +141,7 @@ ProcedureCreate(char *procedureName,
 			tup = SearchSysCacheTuple(PROSRC,
 									  PointerGetDatum(prosrctext),
 									  0, 0, 0);
+			pfree(prosrctext);
 			if (HeapTupleIsValid(tup))
 				return tup->t_oid;
 		}
@@ -152,8 +152,7 @@ ProcedureCreate(char *procedureName,
 							  0, 0, 0);
 
 	if (!HeapTupleIsValid(tup))
-		elog(ERROR, "ProcedureCreate: no such language %s",
-			 languageName);
+		elog(ERROR, "ProcedureCreate: no such language %s", languageName);
 
 	languageObjectId = tup->t_oid;
 
