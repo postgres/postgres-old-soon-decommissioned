@@ -811,6 +811,10 @@ extern int isinf(double x);
 extern int gethostname(char *name, int namelen);
 #endif
 
+#ifndef HAVE_RINT
+extern double rint(double x);
+#endif
+
 #ifndef HAVE_INET_ATON
 # include <netinet/in.h>
 # include <arpa/inet.h>
