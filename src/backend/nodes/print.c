@@ -275,7 +275,7 @@ print_slot(TupleTableSlot *slot)
 		return;
 	}
 
-	debugtup(slot->val, slot->ttc_tupleDescriptor);
+	debugtup(slot->val, slot->ttc_tupleDescriptor, NULL);
 }
 
 static char *

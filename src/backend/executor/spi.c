@@ -32,8 +32,6 @@ uint32		SPI_processed = 0;
 SPITupleTable *SPI_tuptable;
 int			SPI_result;
 
-void		spi_printtup(HeapTuple tuple, TupleDesc tupdesc);
-
 typedef struct
 {
 	QueryTreeList *qtlist;
@@ -566,7 +564,7 @@ SPI_pfree(void *pointer)
  *
  */
 void
-spi_printtup(HeapTuple tuple, TupleDesc tupdesc)
+spi_printtup(HeapTuple tuple, TupleDesc tupdesc, DestReceiver* self)
 {
 	SPITupleTable *tuptable;
 	MemoryContext oldcxt;

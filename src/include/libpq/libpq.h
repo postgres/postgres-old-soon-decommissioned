@@ -18,8 +18,7 @@
 #include <netinet/in.h>
 
 #include "libpq/libpq-be.h"
-#include "access/htup.h"
-#include "access/tupdesc.h"
+#include "tcop/dest.h"
 
 
 /* ----------------
@@ -236,7 +235,8 @@ extern PortalEntry *be_currentportal(void);
 extern PortalEntry *be_newportal(void);
 extern void be_typeinit(PortalEntry *entry, TupleDesc attrs,
 			int natts);
-extern void be_printtup(HeapTuple tuple, TupleDesc typeinfo);
+extern void be_printtup(HeapTuple tuple, TupleDesc typeinfo,
+						DestReceiver* self);
 
 
 /* in be-pqexec.c */
