@@ -720,6 +720,10 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 			elog(ERROR, "You can't change sequence relation %s",
 				 RelationGetRelationName(resultRelationDesc));
 
+		if (resultRelationDesc->rd_rel->relkind == RELKIND_TOASTVALUE)
+			elog(ERROR, "You can't change toast relation %s",
+				 RelationGetRelationName(resultRelationDesc));
+
 		resultRelationInfo = makeNode(RelationInfo);
 		resultRelationInfo->ri_RangeTableIndex = resultRelationIndex;
 		resultRelationInfo->ri_RelationDesc = resultRelationDesc;

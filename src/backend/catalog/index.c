@@ -1335,7 +1335,8 @@ IndexesAreActive(Oid relid, bool confirmCommitted)
 
 	if (!LockClassinfoForUpdate(relid, &tuple, &buffer, confirmCommitted))
 		elog(ERROR, "IndexesAreActive couldn't lock %u", relid);
-	if (((Form_pg_class) GETSTRUCT(&tuple))->relkind != RELKIND_RELATION)
+	if (((Form_pg_class) GETSTRUCT(&tuple))->relkind != RELKIND_RELATION &&
+	    ((Form_pg_class) GETSTRUCT(&tuple))->relkind != RELKIND_TOASTVALUE)
 		elog(ERROR, "relation %u isn't an relation", relid);
 	isactive = ((Form_pg_class) GETSTRUCT(&tuple))->relhasindex;
 	ReleaseBuffer(buffer);
