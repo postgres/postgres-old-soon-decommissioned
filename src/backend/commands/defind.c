@@ -20,6 +20,7 @@
 #include <access/heapam.h>
 #include <utils/builtins.h>
 #include <utils/syscache.h>
+#include <catalog/heap.h>
 #include <catalog/index.h>
 #include <catalog/pg_index.h>
 #include <catalog/pg_proc.h>

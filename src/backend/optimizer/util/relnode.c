@@ -51,7 +51,7 @@ get_base_rel(Query *root, int relid)
 		rel->classlist = NULL;
 		rel->ordering = NULL;
 		rel->relam = InvalidOid;
-		rel->clauseinfo = NIL;
+		rel->restrictinfo = NIL;
 		rel->joininfo = NIL;
 		rel->innerjoin = NIL;
 		rel->superrels = NIL;

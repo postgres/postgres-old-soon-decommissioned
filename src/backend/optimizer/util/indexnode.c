@@ -81,7 +81,7 @@ find_secondary_index(Query *root, Oid relid)
 		indexnode->unorderedpath = NULL;
 		indexnode->cheapestpath = NULL;
 		indexnode->pruneable = true;
-		indexnode->clauseinfo = NIL;
+		indexnode->restrictinfo = NIL;
 		indexnode->joininfo = NIL;
 		indexnode->innerjoin = NIL;
 

@@ -97,14 +97,14 @@ find_all_join_paths(Query *root, List *joinrels)
 		if (_enable_mergejoin_)
 		{
 			mergeinfo_list =
-				group_clauses_by_order(joinrel->clauseinfo,
+				group_clauses_by_order(joinrel->restrictinfo,
 									   lfirsti(innerrel->relids));
 		}
 
 		if (_enable_hashjoin_)
 		{
 			hashinfo_list =
-				group_clauses_by_hashop(joinrel->clauseinfo,
+				group_clauses_by_hashop(joinrel->restrictinfo,
 										lfirsti(innerrel->relids));
 		}
 

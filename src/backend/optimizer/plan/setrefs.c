@@ -26,7 +26,7 @@
 
 #include "optimizer/internal.h"
 #include "optimizer/clauses.h"
-#include "optimizer/clauseinfo.h"
+#include "optimizer/restrictinfo.h"
 #include "optimizer/keys.h"
 #include "optimizer/planmain.h"
 #include "optimizer/tlist.h"

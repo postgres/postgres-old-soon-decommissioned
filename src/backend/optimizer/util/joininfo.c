@@ -71,7 +71,7 @@ find_joininfo_node(RelOptInfo * this_rel, List *join_relids)
 	{
 		joininfo = makeNode(JoinInfo);
 		joininfo->otherrels = join_relids;
-		joininfo->jinfoclauseinfo = NIL;
+		joininfo->jinfo_restrictinfo = NIL;
 		joininfo->mergejoinable = false;
 		joininfo->hashjoinable = false;
 		joininfo->inactive = false;

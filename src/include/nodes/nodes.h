@@ -79,7 +79,7 @@ typedef enum NodeTag
 	T_OrderKey,
 	T_JoinKey,
 	T_MergeOrder,
-	T_ClauseInfo,
+	T_RestrictInfo,
 	T_JoinMethod,
 	T_HInfo,
 	T_MInfo,

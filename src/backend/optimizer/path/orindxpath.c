@@ -22,7 +22,7 @@
 
 #include "optimizer/internal.h"
 #include "optimizer/clauses.h"
-#include "optimizer/clauseinfo.h"
+#include "optimizer/restrictinfo.h"
 #include "optimizer/paths.h"
 #include "optimizer/cost.h"
 #include "optimizer/plancat.h"
@@ -58,7 +58,7 @@ create_or_index_paths(Query *root,
 
 	foreach(clist, clauses)
 	{
-		ClauseInfo *clausenode = (ClauseInfo *) (lfirst(clist));
+		RestrictInfo *clausenode = (RestrictInfo *) (lfirst(clist));
 
 		/*
 		 * Check to see if this clause is an 'or' clause, and, if so,
@@ -118,11 +118,11 @@ create_or_index_paths(Query *root,
 				pathnode->path.path_cost = cost;
 
 				/*
-				 * copy clauseinfo list into path for expensive function
+				 * copy restrictinfo list into path for expensive function
 				 * processing	 -- JMH, 7/7/92
 				 */
-				pathnode->path.locclauseinfo =
-					set_difference(copyObject((Node *) rel->clauseinfo),
+				pathnode->path.loc_restrictinfo =
+					set_difference(copyObject((Node *) rel->restrictinfo),
 								   lcons(clausenode, NIL));
 
 #if 0							/* fix xfunc */

@@ -39,7 +39,7 @@
 
 /* DATA STRUCTURE CREATION/MANIPULATION ROUTINES */
 #include "nodes/relation.h"
-#include "optimizer/clauseinfo.h"
+#include "optimizer/restrictinfo.h"
 #include "optimizer/joininfo.h"
 #include "optimizer/keys.h"
 #include "optimizer/ordering.h"

@@ -146,7 +146,7 @@ geqo_print_joinclauses(Query *root, List *clauses)
 
 	foreach(l, clauses)
 	{
-		ClauseInfo *c = lfirst(l);
+		RestrictInfo *c = lfirst(l);
 
 		print_expr((Node *) c->clause, root->rtable);
 		if (lnext(l))
@@ -204,7 +204,7 @@ geqo_print_path(Query *root, Path *path, int indent)
 					printf("\t");
 				printf("   clauses=(");
 				geqo_print_joinclauses(root,
-									((JoinPath *) path)->pathclauseinfo);
+									((JoinPath *) path)->pathinfo);
 				printf(")\n");
 
 				if (nodeTag(path) == T_MergePath)
