@@ -19,8 +19,8 @@
 #include <nodes/primnodes.h>
 #include <parser/parse_node.h>
 
-extern void makeRangeTable(ParseState *pstate, char *relname, List *frmList);
-extern Node *transformWhereClause(ParseState *pstate, Node *a_expr);
+extern void makeRangeTable(ParseState *pstate, char *relname, List *frmList, Node **qual);
+extern Node *transformWhereClause(ParseState *pstate, Node *where, Node *using);
 extern List *transformGroupClause(ParseState *pstate, List *grouplist,
 					 List *targetlist);
 extern List *transformSortClause(ParseState *pstate,
