@@ -200,16 +200,36 @@ format_type_internal(Oid type_oid, int32 typemod, bool allow_invalid)
 				buf = pstrdup("numeric");
 			break;
 
+		case TIMEOID:
+			if (with_typemod && typemod > 0)
+				buf = psnprintf(50, "time(%d) without time zone",
+								typemod);
+			else
+				buf = pstrdup("time without time zone");
+			break;
+
 		case TIMETZOID:
-			buf = pstrdup("time with time zone");
+			if (with_typemod && typemod > 0)
+				buf = psnprintf(50, "time(%d) with time zone",
+								typemod);
+			else
+				buf = pstrdup("time with time zone");
 			break;
 
 		case TIMESTAMPOID:
-			buf = pstrdup("timestamp without time zone");
+			if (with_typemod && typemod > 0)
+				buf = psnprintf(50, "timestamp(%d) without time zone",
+								typemod);
+			else
+				buf = pstrdup("timestamp without time zone");
 			break;
 
 		case TIMESTAMPTZOID:
-			buf = pstrdup("timestamp with time zone");
+			if (with_typemod && typemod > 0)
+				buf = psnprintf(50, "timestamp(%d) with time zone",
+								typemod);
+			else
+				buf = pstrdup("timestamp with time zone");
 			break;
 
 		case VARBITOID:
