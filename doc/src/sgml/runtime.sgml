@@ -1910,6 +1910,20 @@ SET ENABLE_SEQSCAN TO OFF;
 
 
      <varlistentry>
+      <term><varname>log_disconnections</varname> (<type>boolean</type>)</term>
+      <listitem>
+       <para>
+       This outputs a line in the server logs similar to LOG_CONNECTIONS 
+       but at session termination, and includes the duration of the 
+       session.   This is off by default. This option can only be set at 
+       server start or in the <filename>postgresql.conf</filename> 
+       configuration file.
+       </para>
+      </listitem>
+     </varlistentry>
+
+
+     <varlistentry>
       <term><varname>log_duration</varname> (<type>boolean</type>)</term>
       <listitem>
        <para>

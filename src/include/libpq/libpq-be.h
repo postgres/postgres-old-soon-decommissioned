@@ -47,6 +47,9 @@ typedef struct Port
 	ProtocolVersion proto;		/* FE/BE protocol version */
 	SockAddr	laddr;			/* local addr (postmaster) */
 	SockAddr	raddr;			/* remote addr (client) */
+	char        *remote_host;   /* name (or ip addr) of remote host */
+	char        *remote_port;   /* text rep of remote port */
+	struct timeval  session_start;  /* for session duration logging */
 	CAC_state	canAcceptConnections;	/* postmaster connection status */
 
 	/*

@@ -65,6 +65,7 @@
 
 /* XXX these should appear in other modules' header files */
 extern bool Log_connections;
+extern bool Log_disconnections;
 extern bool check_function_bodies;
 extern int	PreAuthDelay;
 extern int	AuthenticationTimeout;
@@ -497,6 +498,14 @@ static struct config_bool ConfigureNamesBool[] =
 			NULL
 		},
 		&Log_connections,
+		false, NULL, NULL
+	},
+	{
+		{"log_disconnections", PGC_BACKEND, LOGGING_WHAT,
+		 gettext_noop("Logs end of a session, including duration"),
+		 NULL
+		},
+		&Log_disconnections,
 		false, NULL, NULL
 	},
 	{
