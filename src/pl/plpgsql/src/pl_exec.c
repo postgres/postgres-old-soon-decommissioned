@@ -3548,9 +3548,10 @@ exec_eval_simple_expr(PLpgSQL_execstate *estate,
 					  Oid *rettype)
 {
 	Datum		retval;
-	ExprContext *econtext;
+	ExprContext * volatile econtext;
 	ParamListInfo paramLI;
 	int			i;
+	Snapshot	saveActiveSnapshot;
 
 	/*
 	 * Pass back previously-determined result type.
@@ -3629,13 +3630,39 @@ exec_eval_simple_expr(PLpgSQL_execstate *estate,
 	econtext->ecxt_param_list_info = paramLI;
 
 	/*
-	 * Now call the executor to evaluate the expression
+	 * We have to do some of the things SPI_execute_plan would do,
+	 * in particular adjust ActiveSnapshot if we are in a non-read-only
+	 * function.  Without this, stable functions within the expression
+	 * would fail to see updates made so far by our own function.
 	 */
 	SPI_push();
-	retval = ExecEvalExprSwitchContext(expr->expr_simple_state,
-									   econtext,
-									   isNull,
-									   NULL);
+	saveActiveSnapshot = ActiveSnapshot;
+
+	PG_TRY();
+	{
+		MemoryContext oldcontext;
+
+		oldcontext = MemoryContextSwitchTo(econtext->ecxt_per_tuple_memory);
+		if (!estate->readonly_func)
+			ActiveSnapshot = CopySnapshot(GetTransactionSnapshot());
+		/*
+		 * Finally we can call the executor to evaluate the expression
+		 */
+		retval = ExecEvalExpr(expr->expr_simple_state,
+							  econtext,
+							  isNull,
+							  NULL);
+		MemoryContextSwitchTo(oldcontext);
+	}
+	PG_CATCH();
+	{
+		/* Restore global vars and propagate error */
+		ActiveSnapshot = saveActiveSnapshot;
+		PG_RE_THROW();
+	}
+	PG_END_TRY();
+
+	ActiveSnapshot = saveActiveSnapshot;
 	SPI_pop();
 
 	/*
