@@ -186,11 +186,11 @@ CREATE DATABASE <replaceable class="PARAMETER">name</replaceable>
    as an environment variable name, which must be known to the
    server process. This way the database administrator can
    exercise control over locations in which databases can be created.
-   (A customary choice is, e.g., '<envar>PGDATA2</envar>'.)
+   (A customary choice is, e.g., <envar>PGDATA2</envar>.)
    If the server is compiled with <literal>ALLOW_ABSOLUTE_DBPATHS</literal>
    (not so by default), absolute path names, as identified by
    a leading slash
-   (e.g., '<filename>/usr/local/pgsql/data</filename>'),
+   (e.g., <filename>/usr/local/pgsql/data</filename>),
    are allowed as well.
   </para>
 

@@ -95,7 +95,7 @@ UNLISTEN { <replaceable class="PARAMETER">notifyname</replaceable> | * }
    UNLISTEN cancels any existing registration of the current
    <productname>Postgres</productname> session as a listener on the notify
    condition <replaceable class="PARAMETER">notifyname</replaceable>.
-   The special condition wildcard "*" cancels all listener registrations
+   The special condition wildcard <literal>*</literal> cancels all listener registrations
    for the current session.
   </para>
 

@@ -29,10 +29,10 @@ $Header$
 
  <para>
   In a command synopsis, brackets
-  ("<literal>[</literal>" and "<literal>]</literal>") indicate an optional phrase or keyword.
+  (<literal>[</literal> and <literal>]</literal>) indicate an optional phrase or keyword.
   Anything in braces
-  ("<literal>{</literal>" and "<literal>}</literal>") and containing vertical bars
-  ("<literal>|</literal>")
+  (<literal>{</literal> and <literal>}</literal>) and containing vertical bars
+  (<literal>|</literal>)
   indicates that you must choose one.
  </para>
 

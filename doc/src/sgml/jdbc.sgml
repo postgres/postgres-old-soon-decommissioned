@@ -2372,7 +2372,7 @@ maidast   |  2610132
    <para>
     The only time you would access this class, is to use the create()
     methods. These are not used by the driver, but issue one or more
-    "create table" statements to the database, based on a Java Object
+    <command>CREATE TABLE</command> statements to the database, based on a Java Object
     or Class that you want to serialize.
    </para>
 
@@ -2865,7 +2865,7 @@ Methods
                                   String original)
 
           Encrypt a password given the clear-text password and a 
-"salt".
+<quote>salt</quote>.
    
         Parameters:
                 salt - A two-character string representing the salt 

@@ -114,7 +114,7 @@ Genetic Optimizer
    </para>
 
    <para>
-    According to the "comp.ai.genetic" <acronym>FAQ</acronym> it cannot be stressed too
+    According to the <systemitem class="resource">comp.ai.genetic</> <acronym>FAQ</acronym> it cannot be stressed too
     strongly that a <acronym>GA</acronym> is not a pure random search for a solution to a
     problem. A <acronym>GA</acronym> uses stochastic processes, but the result is distinctly
     non-random (better than random). 

@@ -51,15 +51,15 @@ $Header$
     are documented in the current <citetitle>User's Guide</citetitle>
     in the chapter on data types.
     For two-digit years, the significant transition year is 1970, not 2000;
-    e.g. "<literal>70-01-01</literal>" is interpreted as 1970-01-01,
-    whereas "<literal>69-01-01</literal>" is interpreted as 2069-01-01.
+    e.g. <literal>70-01-01</literal> is interpreted as 1970-01-01,
+    whereas <literal>69-01-01</literal> is interpreted as 2069-01-01.
    </para>
   </listitem>
 
   <listitem>
    <para>
-    Any Y2K problems in the underlying OS related to obtaining "the
-    current time" may propagate into apparent Y2K problems in
+    Any Y2K problems in the underlying OS related to obtaining the
+    <quote>current time</quote> may propagate into apparent Y2K problems in
     <productname>Postgres</productname>.
    </para>
   </listitem>

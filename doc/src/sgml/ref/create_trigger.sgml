@@ -126,7 +126,7 @@ CREATE
    being  inserted  (for  <command>INSERT</command> and
    <command>UPDATE</command> operations only).  If
    the trigger fires after the event,  all  changes,  including  the
-   last insertion, update, or deletion, are "visible" to the trigger.
+   last insertion, update, or deletion, are <quote>visible</quote> to the trigger.
   </para>
 
   <para>

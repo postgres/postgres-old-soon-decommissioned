@@ -152,7 +152,7 @@ UPDATE <replaceable class="parameter">#</replaceable>
   </title>
 
   <para>
-   Change word "Drama" with "Dramatic" on column kind:
+   Change word <literal>Drama</> with <literal>Dramatic</> on column <structfield>kind</>:
 
 <programlisting>
 UPDATE films 
