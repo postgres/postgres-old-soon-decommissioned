@@ -8647,7 +8647,7 @@ msgid "This connection has been terminated by the administrator."
 msgstr "Az adminisztrátor megszüntette ezt a kapcsolatot."
 
 #: ../tcop/postgres.c:1034
-msgid "Query was cancelled."
+msgid "Query was canceled."
 msgstr "A lekérdezés visszavonva."
 
 #: ../tcop/postgres.c:1175

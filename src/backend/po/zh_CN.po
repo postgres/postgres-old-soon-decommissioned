@@ -250,7 +250,7 @@ msgid "This connection has been terminated by the administrator."
 msgstr "这个联接已被管理员终止."
 
 #: ../tcop/postgres.c:1068
-msgid "Query was cancelled."
+msgid "Query was canceled."
 msgstr "查询已被取消."
 
 #: ../tcop/postgres.c:1216
