@@ -60,7 +60,7 @@ postgres.tar:
 
 man.tar:
 	$(MAKE) -C sgml man
-	$(TAR) -cf $@ -C sgml man1 manl
+	$(TAR) -cf $@ -C sgml man1 man$(sqlmansect_dummy)
 
 # Generic production rules
 

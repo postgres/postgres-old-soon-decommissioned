@@ -65,8 +65,6 @@ static char *lock_mode_names[] =
 	"AccessExclusiveLock"
 };
 
-static char *DeadLockMessage = "Deadlock detected.\n\tSee the lock(l) manual page for a possible cause.";
-
 
 #ifdef LOCK_DEBUG
 
@@ -953,7 +951,7 @@ WaitOnLock(LOCKMETHOD lockmethod, LOCKMODE lockmode,
 		 */
 		LOCK_PRINT("WaitOnLock: aborting on lock", lock, lockmode);
 		SpinRelease(lockMethodTable->ctl->masterLock);
-		elog(ERROR, DeadLockMessage);
+		elog(ERROR, "deadlock detected");
 		/* not reached */
 	}
 

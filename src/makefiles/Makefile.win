@@ -33,3 +33,5 @@ override CPPFLAGS+= -DUSE_DL_IMPORT
 endif
 
 override javadir := '$(shell cygpath -w $(javadir))'
+
+sqlmansect = 7

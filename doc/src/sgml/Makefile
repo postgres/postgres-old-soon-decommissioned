@@ -60,7 +60,7 @@ CATALOG = $(DOCBOOKSTYLE)/catalog
 
 .PHONY: man
 
-DEFAULTSECTION := l
+DEFAULTSECTION := $(sqlmansect_dummy)
 
 man: $(ALLSGML)
 	$(NSGMLS) $(NSGMLS_FLAGS) $(srcdir)/book-decl.sgml $(srcdir)/reference.sgml \

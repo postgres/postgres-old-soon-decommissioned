@@ -88,6 +88,7 @@ includedir_server = $(pkgincludedir)/server
 includedir_internal = $(pkgincludedir)/internal
 
 mandir := @mandir@
+sqlmansect_dummy = l
 
 docdir := @docdir@
 ifeq "$(findstring pgsql, $(docdir))" ""
