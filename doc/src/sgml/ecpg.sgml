@@ -332,6 +332,16 @@ struct sqlca
       </varlistentry>
 
       <varlistentry>
+       <term><computeroutput>-209, NULL value without indicator in line %d.</computeroutput></term>
+       <listitem>
+	<para>
+	 <productname>Postgres</productname> returned <symbol>ECPG_MISSING_INDICATOR</symbol>
+	 because a NULL was returned and no NULL indicator variable was supplied.
+	</para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term><computeroutput>-220, No such connection %s in line %d.</computeroutput></term>
        <listitem>
 	<para>
