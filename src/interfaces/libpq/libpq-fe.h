@@ -251,6 +251,9 @@ extern		"C"
 
 /* === in fe-exec.c === */
 
+	/* Quoting strings before inclusion in queries. */
+	extern size_t PQescapeString (char *to, const char *from, size_t length);
+
 	/* Simple synchronous query */
 	extern PGresult *PQexec(PGconn *conn, const char *query);
 	extern PGnotify *PQnotifies(PGconn *conn);
