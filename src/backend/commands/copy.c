@@ -337,7 +337,7 @@ DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
       
       fstat(fileno(fp),&st);
       if( S_ISDIR(st.st_mode) ){
-        fclose(fp);
+		FreeFile(fp);
         elog(ERROR,"COPY: %s is a directory.",filename);
       }
 		}
@@ -389,7 +389,7 @@ DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
 					 (int) geteuid(), filename, strerror(errno), errno);
       fstat(fileno(fp),&st);
       if( S_ISDIR(st.st_mode) ){
-        fclose(fp);
+		FreeFile(fp);
         elog(ERROR,"COPY: %s is a directory.",filename);
       }
 		}
