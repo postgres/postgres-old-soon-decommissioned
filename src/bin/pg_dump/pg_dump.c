@@ -2221,7 +2221,7 @@ ACL *ParseACL(const char *acls,int *count)
 	ParsedAcl=(ACL *)calloc(AclLen,sizeof(ACL));
 	if (!ParsedAcl) {
 		fprintf(stderr,"Could not allocate space for ACLS!\n");
-		return (ACL *)NULL;
+		exit_nicely(g_conn);
 	}
 
 	s=strdup(acls);
