@@ -23,10 +23,6 @@ include ../../Makefile.global
 
 INCLUDE_OPT= -I.. 
 
-ifdef PORTNAME
-INCLUDE_OPT+=-I../port/$(PORTNAME) 
-endif
-
 CFLAGS+= $(INCLUDE_OPT)  
 
 ifeq ($(CC), gcc)

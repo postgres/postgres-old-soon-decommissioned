@@ -13,10 +13,6 @@ include ../../../Makefile.global
 
 INCLUDE_OPT = -I../.. 
 
-ifdef PORTNAME
-  INCLUDE_OPT += -I../../port/$(PORTNAME) 
-endif
-
 CFLAGS += $(INCLUDE_OPT)
 
 OBJS = hash.o hashfunc.o hashinsert.o hashovfl.o hashpage.o hashscan.o \

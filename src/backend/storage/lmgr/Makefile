@@ -13,10 +13,6 @@ include ../../../Makefile.global
 
 INCLUDE_OPT = -I../.. 
 
-ifdef PORTNAME
-INCLUDE+=-I../../port/$(PORTNAME)    
-endif
-
 CFLAGS+=$(INCLUDE_OPT)
 
 OBJS = lmgr.o lock.o multi.o proc.o single.o

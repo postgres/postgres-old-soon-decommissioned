@@ -13,10 +13,6 @@ include ../../../Makefile.global
 
 INCLUDE_OPT = -I../.. 
 
-ifdef PORTNAME
-INCLUDE+=-I../../port/$(PORTNAME)    
-endif
-
 CFLAGS+=$(INCLUDE_OPT)
 
 OBJS = aset.o mcxt.o palloc.o portalmem.o oset.o

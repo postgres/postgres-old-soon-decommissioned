@@ -13,10 +13,6 @@ include ../../../Makefile.global
 
 INCLUDE_OPT = -I../.. 
 
-ifdef PORTNAME
-INCLUDE_OPT += -I../../port/$(PORTNAME) 
-endif 
-
 CFLAGS += $(INCLUDE_OPT)
 
 OBJS = nbtcompare.o nbtinsert.o nbtpage.o nbtree.o nbtscan.o nbtsearch.o \
