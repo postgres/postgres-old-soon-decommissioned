@@ -215,7 +215,7 @@ CREATE OPERATOR
 
   <para>
    The operator <replaceable class="parameter">name</replaceable>
-   is a sequence of up to <symbol>NAMEDATALEN</>-1 (31 by default) characters
+   is a sequence of up to <symbol>NAMEDATALEN</>-1 (63 by default) characters
    from the following list:
    <literallayout>
 + - * / &lt; &gt; = ~ ! @ # % ^ &amp; | ` ? $
