@@ -1,5 +1,5 @@
 # $Header$
 CATALOG_NAME	:= pg_resetxlog
-AVAIL_LANGUAGES	:= cs de hu pt_BR ru sv zh_CN
+AVAIL_LANGUAGES	:= cs de hu nb pt_BR ru sv zh_CN
 GETTEXT_FILES	:= pg_resetxlog.c
 GETTEXT_TRIGGERS:= _
