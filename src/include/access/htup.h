@@ -131,6 +131,7 @@ typedef struct xl_heap_clean
 {
 	RelFileNode			node;
 	BlockNumber			block;
+	/* UNUSED OFFSET NUMBERS FOLLOW AT THE END */
 } xl_heap_clean;
 
 #define	SizeOfHeapClean	(offsetof(xl_heap_clean, block) + sizeof(BlockNumber))

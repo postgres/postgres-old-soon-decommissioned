@@ -314,11 +314,12 @@ typedef enum
  */
 
 extern void PageInit(Page page, Size pageSize, Size specialSize);
+extern void PageZero(Page page);
 extern OffsetNumber PageAddItem(Page page, Item item, Size size,
 			OffsetNumber offsetNumber, ItemIdFlags flags);
 extern Page PageGetTempPage(Page page, Size specialSize);
 extern void PageRestoreTempPage(Page tempPage, Page oldPage);
-extern void PageRepairFragmentation(Page page);
+extern int PageRepairFragmentation(Page page, OffsetNumber *unused);
 extern Size PageGetFreeSpace(Page page);
 extern void PageIndexTupleDelete(Page page, OffsetNumber offset);
 extern void IndexPageCleanup(Buffer buffer);
