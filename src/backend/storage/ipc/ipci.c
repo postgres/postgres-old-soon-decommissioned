@@ -138,8 +138,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 
 /*
  * AttachSharedMemoryAndSemaphores
- *		Attaches to the existing shared resources when exec()'d off
- *		by the postmaster.
+ *		Attaches to the existing shared resources.
  */
 void
 AttachSharedMemoryAndSemaphores(void)
