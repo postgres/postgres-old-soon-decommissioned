@@ -146,7 +146,7 @@ PostgreSQL documentation
     <xref linkend="app-pgdump">
     calls.  This is useful to control some aspects of the output
     format, but some options such as <option>-f</option>,
-    <option>-t</option>, and <replaceable
+    <option>-F</option>, <option>-t</option>, and <replaceable
     class="parameter">dbname</replaceable> should be avoided.
    </para>
   </refsect2>
