@@ -30,14 +30,15 @@
  *
  *	 NOTES
  *
- *	In general, this file should contain declarations that are widely needed in the
- *	backend environment, but are of no interest outside the backend.
+ *	In general, this file should contain declarations that are widely needed
+ *	in the backend environment, but are of no interest outside the backend.
  *
- *	Simple type definitions live in c.h, where they are shared with postgres_fe.h.
- *	We do that since those type definitions are needed by frontend modules that want
- *	to deal with binary data transmission to or from the backend.  Type definitions
- *	in this file should be for representations that never escape the backend, such
- *	as Datum or TOASTed varlena objects.
+ *	Simple type definitions live in c.h, where they are shared with
+ *	postgres_fe.h.  We do that since those type definitions are needed by
+ *	frontend modules that want to deal with binary data transmission to or
+ *	from the backend.  Type definitions in this file should be for
+ *	representations that never escape the backend, such as Datum or
+ *	TOASTed varlena objects.
  *
  *----------------------------------------------------------------
  */
@@ -54,7 +55,8 @@
  */
 
 /* ----------------
- * struct varattrib is the header of a varlena object that may have been TOASTed.
+ * struct varattrib is the header of a varlena object that may have been
+ * TOASTed.
  * ----------------
  */
 #define TUPLE_TOASTER_ACTIVE

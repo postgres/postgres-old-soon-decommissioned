@@ -43,7 +43,7 @@ CATALOG(pg_statistic) BKI_WITHOUT_OIDS
 	/*
 	 * stawidth is the average width in bytes of non-null entries.	For
 	 * fixed-width datatypes this is of course the same as the typlen, but
-	 * for varlena types it is more useful.  Note that this is the average
+	 * for var-width types it is more useful.  Note that this is the average
 	 * width of the data as actually stored, post-TOASTing (eg, for a
 	 * moved-out-of-line value, only the size of the pointer object is
 	 * counted).  This is the appropriate definition for the primary use

@@ -50,7 +50,7 @@ static List *IdArrayToList(IdList *oldarray);
  *	fputs_quote
  *
  *	Outputs string in quotes, with double-quotes duplicated.
- *	We could use quote_ident(), but that expects varlena.
+ *	We could use quote_ident(), but that expects a TEXT argument.
  */
 static void fputs_quote(char *str, FILE *fp)
 {

@@ -4,9 +4,9 @@
  *	  Fundamental C definitions.  This is included by every .c file in
  *	  PostgreSQL (via either postgres.h or postgres_fe.h, as appropriate).
  *
- *	  Note that the definitions here are not intended to be exposed to clients of
- *	  the frontend interface libraries --- so we don't worry much about polluting
- *	  the namespace with lots of stuff...
+ *	  Note that the definitions here are not intended to be exposed to clients
+ *	  of the frontend interface libraries --- so we don't worry much about
+ *	  polluting the namespace with lots of stuff...
  *
  *
  * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
@@ -36,18 +36,19 @@
  *		8)		system-specific hacks
  *
  * NOTE: since this file is included by both frontend and backend modules, it's
- * almost certainly wrong to put an "extern" declaration here.	typedefs and macros
- * are the kind of thing that might go here.
+ * almost certainly wrong to put an "extern" declaration here.	typedefs and
+ * macros are the kind of thing that might go here.
  *
  *----------------------------------------------------------------
  */
 #ifndef C_H
 #define C_H
 
-/* We have to include stdlib.h here because it defines many of these macros
-   on some platforms, and we only want our definitions used if stdlib.h doesn't
-   have its own.  The same goes for stddef and stdarg if present.
-*/
+/*
+ * We have to include stdlib.h here because it defines many of these macros
+ * on some platforms, and we only want our definitions used if stdlib.h doesn't
+ * have its own.  The same goes for stddef and stdarg if present.
+ */
 
 #include "pg_config.h"
 #include "postgres_ext.h"
@@ -387,10 +388,11 @@ typedef struct
 /* ----------------
  *		Variable-length datatypes all share the 'struct varlena' header.
  *
- * NOTE: for TOASTable types, this is an oversimplification, since the value may be
- * compressed or moved out-of-line.  However datatype-specific routines are mostly
- * content to deal with de-TOASTed values only, and of course client-side routines
- * should never see a TOASTed value.  See postgres.h for details of the TOASTed form.
+ * NOTE: for TOASTable types, this is an oversimplification, since the value
+ * may be compressed or moved out-of-line.  However datatype-specific routines
+ * are mostly content to deal with de-TOASTed values only, and of course
+ * client-side routines should never see a TOASTed value.  See postgres.h for
+ * details of the TOASTed form.
  * ----------------
  */
 struct varlena
@@ -661,10 +663,5 @@ extern int	vsnprintf(char *str, size_t count, const char *fmt, va_list args);
 #if !defined(HAVE_MEMMOVE) && !defined(memmove)
 #define memmove(d, s, c)		bcopy(s, d, c)
 #endif
-
-/* ----------------
- *		end of c.h
- * ----------------
- */
 
 #endif   /* C_H */

@@ -396,7 +396,7 @@ inv_write(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 	bool		pfreeit;
 	struct
 	{
-		struct varlena hdr;
+		bytea		hdr;
 		char		data[LOBLKSIZE];
 	}			workbuf;
 	char	   *workb = VARATT_DATA(&workbuf.hdr);
