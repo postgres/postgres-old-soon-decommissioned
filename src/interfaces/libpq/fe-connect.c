@@ -19,6 +19,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <ctype.h>
+#include <time.h>
 
 #include "libpq-fe.h"
 #include "libpq-int.h"
@@ -1078,18 +1079,18 @@ connectDBComplete(PGconn *conn)
       }
 
 
-      while (NULL == rp || remains.tv_sec > 0 || remains.tv_sec == 0 && remains.tv_usec > 0)
+      while (rp == NULL || remains.tv_sec > 0 || (remains.tv_sec == 0 && remains.tv_usec > 0))
       {
 		/*
                * If connecting timeout is set, get current time.
                */
-              if ( NULL != rp && -1 == gettimeofday(&start_time, NULL))
+              if (rp != NULL && gettimeofday(&start_time, NULL) == -1)
               {
                       conn->status = CONNECTION_BAD;
                       return 0;
               }
 
-              /*
+        /*
 		 * Wait, if necessary.	Note that the initial state (just after
 		 * PQconnectStart) is to wait for the socket to select for
 		 * writing.
