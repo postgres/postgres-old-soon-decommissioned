@@ -14,7 +14,7 @@
 
 #include "access/htup.h"
 
-extern bool op_class(Oid oprno, int32 opclass, Oid amopid);
+extern bool op_class(Oid opid, Oid opclass, Oid amopid);
 extern char *get_attname(Oid relid, AttrNumber attnum);
 extern AttrNumber get_attnum(Oid relid, char *attname);
 extern Oid	get_atttype(Oid relid, AttrNumber attnum);

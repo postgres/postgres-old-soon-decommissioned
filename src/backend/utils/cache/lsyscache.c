@@ -25,15 +25,16 @@
 /*
  * op_class -
  *
- *		Return t iff operator 'opno' is in operator class 'opclass'.
+ *		Return t iff operator 'opid' is in operator class 'opclass' for
+ *		access method 'amopid'.
  *
  */
 bool
-op_class(Oid oprno, int32 opclass, Oid amopid)
+op_class(Oid opid, Oid opclass, Oid amopid)
 {
 	if (HeapTupleIsValid(SearchSysCacheTuple(AMOPOPID,
 											 ObjectIdGetDatum(opclass),
-											 ObjectIdGetDatum(oprno),
+											 ObjectIdGetDatum(opid),
 											 ObjectIdGetDatum(amopid),
 											 0)))
 		return true;
