@@ -250,10 +250,6 @@ CreateUser(CreateUserStmt *stmt)
 		return;
 	}
 
-    AssertState(BoolIsValid(stmt->createtable));
-    new_record[Anum_pg_shadow_usecreatetable-1] = (Datum)(stmt->createtable);
-    AssertState(BoolIsValid(stmt->locktable));
-    new_record[Anum_pg_shadow_uselocktable-1] = (Datum)(stmt->locktable);
 	/*
 	 * Build a tuple to insert
 	 */
@@ -267,8 +263,6 @@ CreateUser(CreateUserStmt *stmt)
 	AssertState(BoolIsValid(stmt->createuser));
 	new_record[Anum_pg_shadow_usesuper - 1] = (Datum) (stmt->createuser);
 	/* superuser gets catupd right by default */
-    new_record_nulls[Anum_pg_shadow_usecreatetable-1] = ' ';
-    new_record_nulls[Anum_pg_shadow_uselocktable-1] = ' ';
 	new_record[Anum_pg_shadow_usecatupd - 1] = (Datum) (stmt->createuser);
 
 	if (stmt->password)
@@ -358,8 +352,7 @@ AlterUser(AlterUserStmt *stmt)
 
 	/* must be superuser or just want to change your own password */
 	if (!superuser() &&
-        !(stmt->createdb==0 && stmt->createuser==0 && stmt->createtable==0 
-          && stmt->locktable==0 && !stmt->validUntil
+	  !(stmt->createdb == 0 && stmt->createuser == 0 && !stmt->validUntil
 		&& stmt->password && strcmp(GetPgUserName(), stmt->user) == 0))
 		elog(ERROR, "ALTER USER: permission denied");
 
@@ -387,32 +380,8 @@ AlterUser(AlterUserStmt *stmt)
 	/*
 	 * Build a tuple to update, perusing the information just obtained
 	 */
-
-    /* createtable */
-    if (stmt->createtable == 0)
-    {
-        /* don't change */
-        new_record[Anum_pg_shadow_usecreatetable-1] = heap_getattr(tuple, Anum_pg_shadow_usecreatetable, pg_shadow_dsc, &null);
-        new_record_nulls[Anum_pg_shadow_usecreatetable-1] = null ? 'n' : ' ';
-    }
-    else
-    {
-        new_record[Anum_pg_shadow_usecreatetable-1] = (Datum)(stmt->createtable > 0 ? true : false);
-        new_record_nulls[Anum_pg_shadow_usecreatetable-1] = ' ';
-    }
-
-    /* locktable */
-    if (stmt->locktable == 0)
-    {
-        /* don't change */
-        new_record[Anum_pg_shadow_uselocktable-1] = heap_getattr(tuple, Anum_pg_shadow_uselocktable, pg_shadow_dsc, &null);
-        new_record_nulls[Anum_pg_shadow_uselocktable-1] = null ? 'n' : ' ';
-    }
-    else
-    {
-        new_record[Anum_pg_shadow_uselocktable-1] = (Datum)(stmt->locktable > 0 ? true : false);
-        new_record_nulls[Anum_pg_shadow_uselocktable-1] = ' ';
-	}
+	new_record[Anum_pg_shadow_usename - 1] = PointerGetDatum(namein(stmt->user));
+	new_record_nulls[Anum_pg_shadow_usename - 1] = ' ';
 
 	/* sysid - leave as is */
 	new_record[Anum_pg_shadow_usesysid - 1] = heap_getattr(tuple, Anum_pg_shadow_usesysid, pg_shadow_dsc, &null);
