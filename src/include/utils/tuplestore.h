@@ -41,6 +41,9 @@ extern Tuplestorestate *tuplestore_begin_heap(bool randomAccess,
 
 extern void tuplestore_puttuple(Tuplestorestate *state, void *tuple);
 
+/* tuplestore_donestoring() used to be required, but is no longer used */
+#define tuplestore_donestoring(state)	((void) 0)
+
 /* backwards scan is only allowed if randomAccess was specified 'true' */
 extern void *tuplestore_gettuple(Tuplestorestate *state, bool forward,
 					bool *should_free);
