@@ -7,11 +7,11 @@ create index \(em construct a secondary index
 .SH SYNOPSIS
 .nf
 \fBcreate\fR \fBindex\fR index-name
-	\fBon\fR classname \fBusing\fR am-name
-	\fB(\fR attname type_class \fB)\fR
+	\fBon\fR classname [\fBusing\fR am-name]
+	\fB(\fR attname [type_class\fB] )\fR
 
 \fBcreate\fR \fBindex\fR index-name
-	\fBon\fR classname \fBusing\fR am-name
+	\fBon\fR classname [\fBusing\fR am-name]
 	\fB(\fR funcname \fB(\fR attname\-1 { , attname\-i } \fB)\fR type_class \fB)\fR
 .fi
 .SH DESCRIPTION
@@ -20,6 +20,7 @@ This command constructs an index called
 .PP
 .IR Am-name
 is the name of the access method which is used for the index.
+The default access method is btree.
 .PP
 In the first syntax shown above, the key field for the index is
 specified as an attribute name and an associated
@@ -30,6 +31,8 @@ would use the
 .IR int4_ops
 class; this operator class includes comparison functions for four-byte
 integers.
+The default operator class is the appropriate operator class for
+that field type.
 .PP
 In the second syntax shown above, an index can be defined on the
 result of a user-defined function
