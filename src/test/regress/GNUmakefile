@@ -74,7 +74,8 @@ else
 endif
 	@echo "ACTUAL RESULTS OF REGRESSION TEST ARE NOW IN FILE regress.out"
 	@echo ""
-	@echo "To run the optional huge test(s) too type 'make bigtest'"
+	@echo "To run the optional big test(s) too, type 'make bigtest'"
+	@echo "These big tests can take over an hour to complete"
 	@echo "These actually are: $(EXTRA_TESTS)"
 
 #
