@@ -125,6 +125,7 @@ make_subplan(SubLink *slink)
 {
 	SubPlan    *node = makeNode(SubPlan);
 	Query	   *subquery = (Query *) (slink->subselect);
+	Oid			result_type = exprType((Node *) slink);
 	double		tuple_fraction;
 	Plan	   *plan;
 	List	   *lst;
@@ -368,7 +369,7 @@ make_subplan(SubLink *slink)
 		/*
 		 * Make expression of SUBPLAN type
 		 */
-		expr->typeOid = BOOLOID;/* bogus, but we don't really care */
+		expr->typeOid = result_type;
 		expr->opType = SUBPLAN_EXPR;
 		expr->oper = (Node *) node;
 

@@ -18,7 +18,6 @@
 #include "optimizer/tlist.h"
 #include "optimizer/var.h"
 
-static TargetEntry *tlistentry_member(Node *node, List *targetlist);
 
 /*****************************************************************************
  *	---------- RELATION node target list routines ----------
@@ -29,7 +28,7 @@ static TargetEntry *tlistentry_member(Node *node, List *targetlist);
  *	  Finds the (first) member of the given tlist whose expression is
  *	  equal() to the given expression.	Result is NULL if no such member.
  */
-static TargetEntry *
+TargetEntry *
 tlistentry_member(Node *node, List *targetlist)
 {
 	List	   *temp;
