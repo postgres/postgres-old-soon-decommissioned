@@ -143,9 +143,9 @@ endif
 
 ifeq ($(PORTNAME), linux)
   shlib			:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
-  LDFLAGS_SL		:= -Bdynamic -shared -soname $(shlib)
-  LDFLAGS_ODBC		:= -Bsymbolic -lc -lm
-  SHLIB_LINK		+= -lc
+  LD			:= $(CC)
+  LDFLAGS_SL		:= -shared -Wl,-soname,$(shlib)
+  LDFLAGS_ODBC		:= -lm
   CFLAGS		+= $(CFLAGS_SL)
 endif
 
