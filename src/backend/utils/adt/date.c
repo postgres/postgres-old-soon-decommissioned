@@ -511,6 +511,7 @@ time_in(PG_FUNCTION_ARGS)
 	fsec_t		fsec;
 	struct tm	tt,
 			   *tm = &tt;
+	int			tz;
 	int			nf;
 	char		lowstr[MAXDATELEN + 1];
 	char	   *field[MAXDATEFIELDS];
@@ -521,7 +522,7 @@ time_in(PG_FUNCTION_ARGS)
 		elog(ERROR, "Bad time external representation (too long) '%s'", str);
 
 	if ((ParseDateTime(str, lowstr, field, ftype, MAXDATEFIELDS, &nf) != 0)
-	 || (DecodeTimeOnly(field, ftype, nf, &dtype, tm, &fsec, NULL) != 0))
+	 || (DecodeTimeOnly(field, ftype, nf, &dtype, tm, &fsec, &tz) != 0))
 		elog(ERROR, "Bad time external representation '%s'", str);
 
 	tm2time(tm, fsec, &result);
