@@ -19,6 +19,7 @@
  * prototypes for functions in read.c (the lisp token parser)
  */
 extern char *lsptok(char *string, int *length);
+extern char *debackslash(char *token, int length);
 extern void *nodeRead(bool read_car_only);
 
 /*
