@@ -510,7 +510,6 @@ AtCommit_Notify()
 				 * signal first, because the other guy can't read
 				 * pg_listener until we unlock it.
 				 */
-#ifdef HAVE_KILL
 				if (kill(listenerPID, SIGUSR2) < 0)
 				{
 
@@ -526,7 +525,6 @@ AtCommit_Notify()
 					heap_delete(lRel, &lTuple->t_self, NULL);
 				}
 				else
-#endif
 				{
 					d = heap_getattr(lTuple, Anum_pg_listener_notify,
 									 tdesc, &isnull);
