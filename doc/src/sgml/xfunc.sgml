@@ -772,6 +772,15 @@ CREATE FUNCTION test(int, int) RETURNS int
     <primary>volatility</primary>
     <secondary>functions</secondary>
    </indexterm>
+   <indexterm zone="xfunc-volatility">
+    <primary>VOLATILE</primary>
+   </indexterm>
+   <indexterm zone="xfunc-volatility">
+    <primary>STABLE</primary>
+   </indexterm>
+   <indexterm zone="xfunc-volatility">
+    <primary>IMMUTABLE</primary>
+   </indexterm>
 
    <para>
     Every function has a <firstterm>volatility</> classification, with
