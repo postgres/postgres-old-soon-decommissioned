@@ -73,7 +73,7 @@ pg_guest:/nB7.w5Auq.BY:93001
   <para>
    Supply the password file to the pg_passwd command.
    In the case described above, after changing the working directory to
-   <envar>PGDATA</envar>, the following command execution specify
+   <envar>PGDATA</envar>, the following command execution specifies
    the new password for <literal>pg_guest</literal>:
 
    <programlisting>
