@@ -662,20 +662,24 @@ parse_map_record(FILE *file,
 	file_iuser[0] = '\0';
 
 	next_token(file, buf, sizeof(buf));
-	if (buf != '\0')
+	if (buf[0] != '\0')
 	{
 		strcpy(file_map, buf);
 		next_token(file, buf, sizeof(buf));
-		if (buf != '\0')
+		if (buf[0] != '\0')
 		{
 			strcpy(file_iuser, buf);
 			next_token(file, buf, sizeof(buf));
-			if (buf != '\0')
+			if (buf[0] != '\0')
 			{
 				strcpy(file_pguser, buf);
 				read_through_eol(file);
+				return;
 			}
 		}
+		sprintf(PQerrormsg,"Incomplete line in pg_ident: %s",file_map);
+		fputs(PQerrormsg, stderr);
+		pqdebug("%s", PQerrormsg);
 	}
 }
 
