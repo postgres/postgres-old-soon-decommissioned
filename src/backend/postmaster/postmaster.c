@@ -719,15 +719,11 @@ static void readStartupPacket(char *arg, PacketLen len, char *pkt)
 	port = (Port *)arg;
 	si = (StartupPacket *)pkt;
 
-	/* At the moment the startup packet must be a fixed length. */
-
-	if (len != sizeof (StartupPacket))
-	{
-		PacketSendError(&port->pktInfo, "Invalid startup packet.");
-		return;
-	}
-
-	/* Get the parameters from the startup packet as C strings. */
+	/*
+	 * Get the parameters from the startup packet as C strings.  The packet
+	 * destination was cleared first so a short packet has zeros silently
+	 * added and a long packet is silently truncated.
+	 */
 
 	StrNCpy(port->database, si->database, sizeof (port->database) - 1);
 	StrNCpy(port->user, si->user, sizeof (port->user) - 1);

@@ -40,6 +40,10 @@ void PacketReceiveSetup(Packet *pkt, void (*iodone)(), char *arg)
 	pkt->iodone = iodone;
 	pkt->arg = arg;
 	pkt->state = ReadingPacketLength;
+
+	/* Clear the destination. */
+
+	MemSet(&pkt->pkt, 0, sizeof (pkt->pkt));
 }
 
 
