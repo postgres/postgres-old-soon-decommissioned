@@ -60,6 +60,7 @@ dumpSchema(Archive *fout,
 	int			numInherits;
 	int			numAggregates;
 	int			numOperators;
+	int			numOpclasses;
 	NamespaceInfo *nsinfo;
 	TypeInfo   *tinfo;
 	FuncInfo   *finfo;
@@ -67,6 +68,7 @@ dumpSchema(Archive *fout,
 	TableInfo  *tblinfo;
 	InhInfo    *inhinfo;
 	OprInfo    *oprinfo;
+	OpclassInfo *opcinfo;
 
 	if (g_verbose)
 		write_msg(NULL, "reading namespaces\n");
@@ -87,6 +89,10 @@ dumpSchema(Archive *fout,
 	if (g_verbose)
 		write_msg(NULL, "reading user-defined operators\n");
 	oprinfo = getOperators(&numOperators);
+
+	if (g_verbose)
+		write_msg(NULL, "reading user-defined operator classes\n");
+	opcinfo = getOpclasses(&numOpclasses);
 
 	if (g_verbose)
 		write_msg(NULL, "reading user-defined tables\n");
@@ -168,6 +174,13 @@ dumpSchema(Archive *fout,
 		if (g_verbose)
 			write_msg(NULL, "dumping out user-defined operators\n");
 		dumpOprs(fout, oprinfo, numOperators);
+	}
+
+	if (!dataOnly)
+	{
+		if (g_verbose)
+			write_msg(NULL, "dumping out user-defined operator classes\n");
+		dumpOpclasses(fout, opcinfo, numOpclasses);
 	}
 
 	if (!dataOnly)

@@ -86,6 +86,14 @@ typedef struct _oprInfo
 	char	   *oprcode;		/* as OID, not regproc name */
 } OprInfo;
 
+typedef struct _opclassInfo
+{
+	char	   *oid;
+	char	   *opcname;
+	NamespaceInfo *opcnamespace;	/* link to containing namespace */
+	char	   *usename;
+} OpclassInfo;
+
 typedef struct _tableInfo
 {
 	/*
@@ -192,6 +200,7 @@ extern TypeInfo *getTypes(int *numTypes);
 extern FuncInfo *getFuncs(int *numFuncs);
 extern AggInfo *getAggregates(int *numAggregates);
 extern OprInfo *getOperators(int *numOperators);
+extern OpclassInfo *getOpclasses(int *numOpclasses);
 extern TableInfo *getTables(int *numTables);
 extern InhInfo *getInherits(int *numInherits);
 
@@ -207,6 +216,8 @@ extern void dumpCasts(Archive *fout, FuncInfo *finfo, int numFuncs,
 					  TypeInfo *tinfo, int numTypes);
 extern void dumpAggs(Archive *fout, AggInfo agginfo[], int numAggregates);
 extern void dumpOprs(Archive *fout, OprInfo *oprinfo, int numOperators);
+extern void dumpOpclasses(Archive *fout,
+						  OpclassInfo *opcinfo, int numOpclasses);
 extern void dumpTables(Archive *fout, TableInfo tblinfo[], int numTables,
 					   const bool aclsSkip,
 					   const bool schemaOnly, const bool dataOnly);
