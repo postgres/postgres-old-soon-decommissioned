@@ -23,7 +23,6 @@
 #include <unistd.h>
 #include <grp.h>
 #include <pwd.h>
-#include <errno.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #ifdef HAVE_UTIME_H
