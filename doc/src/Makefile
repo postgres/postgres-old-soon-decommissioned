@@ -6,7 +6,7 @@ top_builddir = ../..
 -include $(top_builddir)/src/Makefile.global
 
 TAR= tar
-ZIP= gzip
+GZIP= gzip
 TAREXCLUDE= --exclude=Makefile --exclude='*.sgml' --exclude=ref
 
 SRC= admin postgres programmer tutorial user
