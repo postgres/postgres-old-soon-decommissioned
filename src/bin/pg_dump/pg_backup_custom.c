@@ -153,6 +153,12 @@ InitArchiveFmt_Custom(ArchiveHandle *AH)
 	if (ctx->zp == NULL)
 		die_horribly(AH, modulename, "out of memory\n");
 
+	/* Initialize LO buffering */
+	AH->lo_buf_size = LOBBUFSIZE;
+	AH->lo_buf = (void *)malloc(LOBBUFSIZE);
+	if(AH->lo_buf == NULL)
+                die_horribly(AH, modulename, "out of memory\n");
+
 	/*
 	 * zlibOutSize is the buffer size we tell zlib it can output to.  We
 	 * actually allocate one extra byte because some routines want to

@@ -41,6 +41,7 @@
 #include <errno.h>
 
 #include "pqexpbuffer.h"
+#define LOBBUFSIZE 32768
 
 #ifdef HAVE_LIBZ
 #include <zlib.h>
@@ -240,6 +241,9 @@ typedef struct _archiveHandle
 
 	RestoreOptions *ropt;		/* Used to check restore options in
 								 * ahwrite etc */
+	void                    *lo_buf;
+	int                     lo_buf_used;
+	int                     lo_buf_size;
 } ArchiveHandle;
 
 typedef struct _tocEntry

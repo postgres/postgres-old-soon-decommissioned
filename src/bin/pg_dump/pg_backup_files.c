@@ -113,6 +113,12 @@ InitArchiveFmt_Files(ArchiveHandle *AH)
 	AH->formatData = (void *) ctx;
 	ctx->filePos = 0;
 
+	/* Initialize LO buffering */
+	AH->lo_buf_size = LOBBUFSIZE;
+	AH->lo_buf = (void *)malloc(LOBBUFSIZE);
+	if(AH->lo_buf == NULL)
+                die_horribly(AH, modulename, "out of memory\n");
+
 	/*
 	 * Now open the TOC file
 	 */

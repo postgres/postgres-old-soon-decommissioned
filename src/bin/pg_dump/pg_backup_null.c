@@ -64,7 +64,6 @@ InitArchiveFmt_Null(ArchiveHandle *AH)
 	 */
 	if (AH->mode == archModeRead)
 		die_horribly(AH, NULL, "this format cannot be read\n");
-
 }
 
 /*
