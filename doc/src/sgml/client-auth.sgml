@@ -85,6 +85,20 @@ hostssl <replaceable>database</replaceable> <replaceable>IP-address</replaceable
      <listitem>
       <para>
        This record pertains to connection attemps with SSL over
+       TCP/IP. Note that SSL connections are completely disabled
+       unless the server is started with the <option>-i</option>,
+       and also require ordinary TCP/IP connections to be enabled.
+       SSL connections also require SSL support to be enabled in
+       the backend at compile time.
+      </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry>
+     <term><literal>hostssl</literal></term>
+     <listitem>
+      <para>
+       This record pertains to connection attemps with SSL over
        TCP/IP. To make use of this option the server must be
        built with SSL support enabled. Furthermore, SSL must be
        enabled with the <option>-l</> option or equivalent configuration
