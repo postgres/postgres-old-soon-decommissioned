@@ -29,15 +29,16 @@ help(const char *progname)
 {
 	printf("%s is the PostgreSQL embedded SQL preprocessor for C programs.\n\n",
 		   progname);
-	printf("Usage:\n"
-		   "  %s %s[-I DIRECTORY] [-o OUTFILE] [-t] file1 [file2...]\n\n",
-		   progname,
+	/* printf is a macro some places; don't #ifdef inside its arguments */
 #ifdef YYDEBUG
-		   "[-d] "
+	printf("Usage:\n"
+		   "  %s [-d] [-I DIRECTORY] [-o OUTFILE] [-t] file1 [file2...]\n\n",
+		   progname);
 #else
-		   ""
+	printf("Usage:\n"
+		   "  %s [-I DIRECTORY] [-o OUTFILE] [-t] file1 [file2...]\n\n",
+		   progname);
 #endif
-		);
 	printf("Options:\n");
 #ifdef YYDEBUG
 	printf("  -d                   generate parser debug output\n");
