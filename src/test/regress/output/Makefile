@@ -21,7 +21,8 @@ include ../../../Makefile.global
 INFILES= copy.out \
          create_function_1.out \
          create_function_2.out \
-         misc.out
+         misc.out \
+	 constraints.out
 
 all: $(INFILES)
 

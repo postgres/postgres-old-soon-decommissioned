@@ -21,7 +21,8 @@ include ../../../Makefile.global
 INFILES= copy.sql \
          create_function_1.sql \
          create_function_2.sql \
-         misc.sql
+         misc.sql \
+	 constraints.sql
 
 all: $(INFILES)
 
