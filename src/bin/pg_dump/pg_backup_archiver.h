@@ -245,7 +245,6 @@ typedef struct _archiveHandle
 	/* these vars track state to avoid sending redundant SET commands */
 	char	   *currUser;		/* current username */
 	char	   *currSchema;		/* current schema */
-	bool		chk_fn_bodies;	/* current state of check_function_bodies */
 
 	void	   *lo_buf;
 	size_t		lo_buf_used;
