@@ -24,6 +24,7 @@ Postgres documentation
    &commit;
    &copyTable;
    &createAggregate;
+   &createConstraint;
    &createDatabase;
    &createFunction;
    &createGroup;
