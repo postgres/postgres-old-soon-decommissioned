@@ -22,6 +22,7 @@
 #ifndef PG_DUMP_H
 #define PG_DUMP_H
 
+#include "pqexpbuffer.h"
 #include "catalog/pg_index.h"
 
 /*
