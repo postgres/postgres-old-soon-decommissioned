@@ -208,6 +208,18 @@ esac
 
 
 # ----------
+# Set up pwd to give a win32 happy pathname
+# ----------
+
+case $host_platform in
+    *-*-mingw32*)
+        PWDFLAGS=-W;;
+    *)
+        PWDFLAGS=;;
+esac
+
+
+# ----------
 # Set backend timezone and datestyle explicitly
 #
 # To pass the horology test in its current form, the postmaster must be
@@ -294,7 +306,7 @@ LOGDIR=$outputdir/log
 if [ x"$temp_install" != x"" ]
 then
     if echo x"$temp_install" | grep -v '^x/' >/dev/null 2>&1; then
-        temp_install="`pwd`/$temp_install"
+        temp_install="`pwd $PWDFLAGS`/$temp_install"
     fi
 
     bindir=$temp_install/install/$bindir
