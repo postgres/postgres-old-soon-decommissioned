@@ -610,7 +610,7 @@ pq_getstring(StringInfo s)
 
 	/* Read until we get the terminating '\0' */
 	while ((c = pq_getbyte()) != EOF && c != '\0')
-		appendStringInfoChar(s, c);
+		appendStringInfoCharMacro(s, c);
 
 	if (c == EOF)
 		return EOF;

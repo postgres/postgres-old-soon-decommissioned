@@ -102,7 +102,7 @@
 void
 pq_sendbyte(StringInfo buf, int byt)
 {
-	appendStringInfoChar(buf, byt);
+	appendStringInfoCharMacro(buf, byt);
 }
 
 /* --------------------------------
