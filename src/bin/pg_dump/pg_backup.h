@@ -133,7 +133,7 @@ PGconn *ConnectDatabase(Archive *AH,
 
 
 /* Called to add a TOC entry */
-extern void ArchiveEntry(Archive *AHX, const char *oid, const char *name,
+extern void ArchiveEntry(Archive *AHX, const char *oid, const char *tag,
 						 const char *namespace, const char *owner,
 						 const char *desc, const char *((*deps)[]),
 						 const char *defn, const char *dropStmt,

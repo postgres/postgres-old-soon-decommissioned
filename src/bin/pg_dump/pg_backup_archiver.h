@@ -245,7 +245,7 @@ typedef struct _tocEntry
 	int			id;
 	int			hadDumper;		/* Archiver was passed a dumper routine
 								 * (used in restore) */
-	char	   *name;
+	char	   *tag;				/* index tag */
 	char	   *namespace;		/* null or empty string if not in a schema */
 	char	   *owner;
 	char	   *desc;
