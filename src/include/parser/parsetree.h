@@ -55,6 +55,13 @@ extern char *get_rte_attribute_name(RangeTblEntry *rte, AttrNumber attnum);
 extern void get_rte_attribute_type(RangeTblEntry *rte, AttrNumber attnum,
 					   Oid *vartype, int32 *vartypmod);
 
+/*
+ * Check whether an attribute of an RTE has been dropped (note that
+ * get_rte_attribute_type will fail on such an attr)
+ */
+extern bool get_rte_attribute_is_dropped(RangeTblEntry *rte,
+										 AttrNumber attnum);
+
 
 /* ----------------
  *		target list operations
