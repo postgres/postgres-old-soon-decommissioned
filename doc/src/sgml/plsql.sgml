@@ -1306,7 +1306,7 @@ END LOOP;
     <productname>Postgres</productname> elog mechanism.
 
 <synopsis>
-RAISE <replaceable class="parameter">level</replaceable> '<replaceable class="parameter">format</replaceable>' <optional>, <replaceable class="parameter">identifier</replaceable> <optional>...</optional></optional>;
+RAISE <replaceable class="parameter">level</replaceable> '<replaceable class="parameter">string</replaceable>' <optional>, <replaceable class="parameter">variable</replaceable> <optional>...</optional></optional>;
 </synopsis>
 
     Inside the format, <literal>%</literal> is used as a placeholder for the
