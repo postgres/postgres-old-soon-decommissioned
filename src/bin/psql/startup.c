@@ -253,10 +253,9 @@ main(int argc, char *argv[])
 	 */
 	else if (options.action == ACT_SINGLE_SLASH)
 	{
-		const char *value;
-
-		if ((value = GetVariable(pset.vars, "ECHO")) && strcmp(value, "all") == 0)
+		if (VariableEquals(pset.vars, "ECHO", "all"))
 			puts(options.action_string);
+
 		successResult = HandleSlashCmds(options.action_string, NULL, NULL, NULL) != CMD_ERROR
 			? EXIT_SUCCESS : EXIT_FAILURE;
 	}
@@ -266,10 +265,9 @@ main(int argc, char *argv[])
 	 */
 	else if (options.action == ACT_SINGLE_QUERY)
 	{
-		const char *value;
-
-		if ((value = GetVariable(pset.vars, "ECHO")) && strcmp(value, "all") == 0)
+		if (VariableEquals(pset.vars, "ECHO", "all"))
 			puts(options.action_string);
+
 		successResult = SendQuery(options.action_string)
 			? EXIT_SUCCESS : EXIT_FAILURE;
 	}

@@ -368,7 +368,7 @@ PSQLexec(const char *query, bool ignore_command_ok)
 {
 	PGresult   *res = NULL;
 	PGresult   *newres;
-	const char *var;
+	int	echo_hidden;
 	ExecStatusType rstatus;
 
 	if (!pset.db)
@@ -377,17 +377,17 @@ PSQLexec(const char *query, bool ignore_command_ok)
 		return NULL;
 	}
 
-	var = GetVariable(pset.vars, "ECHO_HIDDEN");
-	if (var)
+	echo_hidden = SwitchVariable(pset.vars, "ECHO_HIDDEN", "noexec", NULL);
+	if (echo_hidden != var_notset)
 	{
 		printf("********* QUERY **********\n"
 			   "%s\n"
 			   "**************************\n\n", query);
 		fflush(stdout);
-	}
 
-	if (var && strcmp(var, "noexec") == 0)
+		if (echo_hidden == 1)
 		return NULL;
+	}
 
 	/* discard any uneaten results of past queries */
 	while ((newres = PQgetResult(pset.db)) != NULL)
@@ -579,13 +579,13 @@ SendQuery(const char *query)
 	bool OK;
 
 	if (!pset.db)
-			{
+	{
 		psql_error("You are currently not connected to a database.\n");
 		return false;
-			}
+	}
 
 	if (GetVariableBool(pset.vars, "SINGLESTEP"))
-			{
+	{
 		char		buf[3];
 
 		printf(gettext("***(Single step mode: Verify query)*********************************************\n"
@@ -596,14 +596,9 @@ SendQuery(const char *query)
 		if (fgets(buf, sizeof(buf), stdin) != NULL)
 			if (buf[0] == 'x')
 				return false;
-			}
-			else
-		{
-		const char *var = GetVariable(pset.vars, "ECHO");
-
-		if (var && strncmp(var, "queries", strlen(var)) == 0)
-			puts(query);
 	}
+	else if (VariableEquals(pset.vars, "ECHO", "queries"))
+		puts(query);
 
 	SetCancelConn();
 
@@ -619,3 +614,15 @@ SendQuery(const char *query)
 	PrintNotifications();
 	return OK;
 }
+
+
+char parse_char(char **buf)
+{
+  long l;
+
+  l = strtol(*buf, buf, 0);
+  (*buf)--;
+  return (char)l;
+}
+
+
