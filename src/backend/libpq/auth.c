@@ -363,32 +363,32 @@ auth_failed(Port *port, int status)
 	switch (port->auth_method)
 	{
 		case uaReject:
-			errstr = gettext("Rejected host: authentication failed for user \"%s\"");
+			errstr = gettext_noop("Rejected host: authentication failed for user \"%s\"");
 			break;
 		case uaKrb4:
-			errstr = gettext("Kerberos4 authentication failed for user \"%s\"");
+			errstr = gettext_noop("Kerberos4 authentication failed for user \"%s\"");
 			break;
 		case uaKrb5:
-			errstr = gettext("Kerberos5 authentication failed for user \"%s\"");
+			errstr = gettext_noop("Kerberos5 authentication failed for user \"%s\"");
 			break;
 		case uaTrust:
-			errstr = gettext("Trusted authentication failed for user \"%s\"");
+			errstr = gettext_noop("Trusted authentication failed for user \"%s\"");
 			break;
 		case uaIdent:
-			errstr = gettext("IDENT authentication failed for user \"%s\"");
+			errstr = gettext_noop("IDENT authentication failed for user \"%s\"");
 			break;
 		case uaMD5:
 		case uaCrypt:
 		case uaPassword:
-			errstr = gettext("Password authentication failed for user \"%s\"");
+			errstr = gettext_noop("Password authentication failed for user \"%s\"");
 			break;
 #ifdef USE_PAM
 		case uaPAM:
-			errstr = gettext("PAM authentication failed for user \"%s\"");
+			errstr = gettext_noop("PAM authentication failed for user \"%s\"");
 			break;
 #endif   /* USE_PAM */
 		default :
-			errstr = gettext("Unknown auth method: authentication failed for user \"%s\"");
+			errstr = gettext_noop("Unknown auth method: authentication failed for user \"%s\"");
 			break;
 	}
 
