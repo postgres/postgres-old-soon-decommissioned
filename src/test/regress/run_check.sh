@@ -162,6 +162,7 @@ fi
 echo "=============== Create ./tmp_check directory           ================"
 mkdir -p $CHKDIR
 mkdir -p $LOGDIR
+mkdir -p results
 
 
 # ----------

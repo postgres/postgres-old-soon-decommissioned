@@ -27,7 +27,7 @@ clean:
 	$(MAKE) -C bin $@
 	$(MAKE) -C pl $@
 	$(MAKE) -C utils $@
-	$(MAKE) -C test clean
+	$(MAKE) -C test $@
 
 distclean maintainer-clean:
 	-$(MAKE) -C utils $@
@@ -36,5 +36,5 @@ distclean maintainer-clean:
 	-$(MAKE) -C interfaces $@
 	-$(MAKE) -C bin $@
 	-$(MAKE) -C pl $@
-	-$(MAKE) -C test clean
+	-$(MAKE) -C test $@
 	rm -f Makefile.port Makefile.global GNUmakefile

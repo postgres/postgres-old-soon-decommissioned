@@ -237,7 +237,8 @@ if [ $? -ne 0 ]; then
 fi
 if [ "$res" ]; then
 	echo "$CMDNAME: '$langname' is already installed in database $dbname"
-	exit 1
+	# separate exit status for "already installed"
+	exit 2
 fi
 
 # ----------
