@@ -316,8 +316,6 @@ cppline			{space}*#(.*\\{line_end})*.*
 					startlit();
 				}
 <xbit>{xbitstop}		{
-					char* endptr;
-
 					BEGIN(SQL);
 					if (literalbuf[strspn(literalbuf, "01") + 1] != '\0')
 						mmerror(ET_ERROR, "invalid bit string input.");
