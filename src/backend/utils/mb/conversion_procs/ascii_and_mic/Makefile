@@ -1,11 +1,12 @@
-#-------------------------------------------------------------------------
+]#-------------------------------------------------------------------------
 #
 # $Id$
 #
 #-------------------------------------------------------------------------
+subdir = src/backend/utils/mb/conversion_procs/ascii_and_mic
 top_builddir = ../../../../../..
 include $(top_builddir)/src/Makefile.global
 
 NAME		:= ascii_and_mic
 
-include ../proc.mk
+include $(srcdir)/../proc.mk
