@@ -12,6 +12,11 @@
  *
  *-------------------------------------------------------------------------
  */
+#ifdef XLOG
+
+#include "xlog_varsup.c"
+
+#else
 
 #include "postgres.h"
 
@@ -125,11 +130,7 @@ VariableRelationPutNextXid(TransactionId xid)
 
 	TransactionIdStore(xid, &(var->nextXidData));
 
-#ifdef XLOG
-	WriteBuffer(buf);	/* temp */
-#else
 	FlushBuffer(buf, TRUE);
-#endif
 }
 
 /* --------------------------------
@@ -520,3 +521,5 @@ CheckMaxObjectId(Oid assigned_oid)
 	prefetched_oid_count = 0;	/* force reload */
 	GetNewObjectId(&temp_oid);	/* cause target OID to be allocated */
 }
+
+#endif	/* !XLOG */

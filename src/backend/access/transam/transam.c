@@ -83,6 +83,10 @@ int			RecoveryCheckingEnableState = 0;
  */
 extern int	OidGenLockId;
 
+#ifdef XLOG
+#include "miscadmin.h"
+extern VariableCache ShmemVariableCache;
+#endif
 
 /* ----------------
  *		recovery checking accessors
@@ -438,7 +442,13 @@ InitializeTransactionLog(void)
 		TransactionLogUpdate(AmiTransactionId, XID_COMMIT);
 		TransactionIdStore(AmiTransactionId, &cachedTestXid);
 		cachedTestXidStatus = XID_COMMIT;
+#ifdef XLOG
+		Assert(!IsUnderPostmaster && 
+				ShmemVariableCache->nextXid <= FirstTransactionId);
+		ShmemVariableCache->nextXid = FirstTransactionId;
+#else
 		VariableRelationPutNextXid(FirstTransactionId);
+#endif
 
 	}
 	else if (RecoveryCheckingEnabled())
