@@ -44,7 +44,7 @@
   <!-- Builds the various jar files -->
   <target name="jar" depends="xml">
     <jar jarfile="${jars}/retepTools.jar" basedir="${dest}">
-      <include name="${package}/xml/parser/**" if="xml" />
+      <include name="${package}/xml/**" if="xml" />
     </jar>
   </target>
 
