@@ -1035,6 +1035,8 @@ $ECHO_N "setting privileges on built-in objects... "$ECHO_C
         WHERE proacl IS NULL;
     UPDATE pg_language SET lanacl = '{"=U/$POSTGRES_SUPERUSERNAME"}' \
         WHERE lanpltrusted;
+    GRANT USAGE ON SCHEMA pg_catalog TO PUBLIC;
+    GRANT CREATE, USAGE ON SCHEMA public TO PUBLIC;
 EOF
 ) \
 	| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
