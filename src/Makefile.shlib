@@ -109,6 +109,12 @@ ifeq ($(PORTNAME), darwin)
   LINK.shared		= $(COMPILER) $(CFLAGS_SL)
 endif
 
+# While the linker allows creation of most shared libraries,
+# -Bsymbolic requires resolution of all symbols, making the
+# compiler a better choice for shared library creation on BSD platforms.
+# With the linker, -Bsymbolic requires the crt1.o startup object file.
+# bjm 2001-02-10
+
 ifeq ($(PORTNAME), openbsd)
   shlib			:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
   ifdef ELF_SYSTEM
