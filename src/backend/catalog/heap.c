@@ -303,14 +303,15 @@ heap_creatr(char *name,
      */
 
     rdesc->rd_istemp = isTemp;
-    rdesc->rd_tmpunlinked = TRUE;	/* change once table is opened */
     
     /* ----------------
      *	have the storage manager create the relation.
      * ----------------
      */
     
+    rdesc->rd_tmpunlinked = TRUE;	/* change once table is created */
     rdesc->rd_fd = (File)smgrcreate(smgr, rdesc);
+    rdesc->rd_tmpunlinked = FALSE;
     
     RelationRegisterRelation(rdesc);
     
@@ -1302,10 +1303,11 @@ heap_destroy(char *relname)
      *	unlink the relation and finish up.
      * ----------------
      */
-    (void) smgrunlink(rdesc->rd_rel->relsmgr, rdesc);
-    if(rdesc->rd_istemp) {
-        rdesc->rd_tmpunlinked = TRUE;
+    if ( !(rdesc->rd_istemp) || !(rdesc->rd_tmpunlinked) )
+    {
+    	(void) smgrunlink(rdesc->rd_rel->relsmgr, rdesc);
     }
+    rdesc->rd_tmpunlinked = TRUE;
 
     RelationUnsetLockForWrite(rdesc);
 
@@ -1322,10 +1324,11 @@ void
 heap_destroyr(Relation rdesc)
 {
     ReleaseRelationBuffers(rdesc);
-    (void) smgrunlink(rdesc->rd_rel->relsmgr, rdesc);
-    if(rdesc->rd_istemp) {
-        rdesc->rd_tmpunlinked = TRUE;
+    if ( !(rdesc->rd_istemp) || !(rdesc->rd_tmpunlinked) )
+    {
+	(void) smgrunlink(rdesc->rd_rel->relsmgr, rdesc);
     }
+    rdesc->rd_tmpunlinked = TRUE;
     heap_close(rdesc);
     RemoveFromTempRelList(rdesc);
 }
