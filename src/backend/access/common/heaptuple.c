@@ -554,7 +554,7 @@ nocachegetattr(HeapTuple tup,
 		while (att[j]->attcacheoff > 0)
 			j++;
 
-		if (!VARLENA_FIXED_SIZE(att[j]))
+		if (!VARLENA_FIXED_SIZE(att[j - 1]))
 			off = att[j - 1]->attcacheoff + att[j - 1]->attlen;
 		else
 			off = att[j - 1]->attcacheoff + att[j - 1]->atttypmod;
