@@ -4376,10 +4376,12 @@ dumpTables(Archive *fout, TableInfo *tblinfo, int numTables,
 				 */
 				for (j = 0; j < tblinfo[i].numatts; j++)
 				{
-					if (tblinfo[i].adef_expr[j] != NULL && tblinfo[i].inhAttrDef[j] == 0)
-						appendPQExpBuffer(q, "ALTER TABLE %s ALTER COLUMN %s SET DEFAULT %s;\n",
-										  tblinfo[i].relname, tblinfo[i].attnames[j],
+					if (tblinfo[i].adef_expr[j] != NULL && tblinfo[i].inhAttrDef[j] == 0) {
+						appendPQExpBuffer(q, "ALTER TABLE %s ", fmtId(tblinfo[i].relname, force_quotes));
+						appendPQExpBuffer(q, "ALTER COLUMN %s SET DEFAULT %s;\n",
+										  fmtId(tblinfo[i].attnames[j], force_quotes),
 										  tblinfo[i].adef_expr[j]);
+					}
 				}
 
 				commentDeps = malloc(sizeof(char *) * 2);
