@@ -13,6 +13,7 @@
 #ifndef XACT_H
 #define XACT_H
 
+#include <access/transam.h>
 #include <utils/nabstime.h>
 
 /* ----------------
