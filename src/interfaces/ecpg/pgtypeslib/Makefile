@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------
 #
-# Makefile for ecpg library
+# Makefile for ecpg pgtypes library
 #
 # Copyright (c) 1994, Regents of the University of California
 #
@@ -15,6 +15,7 @@ include $(top_builddir)/src/Makefile.global
 NAME= pgtypes
 SO_MAJOR_VERSION= 1
 SO_MINOR_VERSION= 2
+DLTYPE= library
 
 override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include \
 	-I$(top_srcdir)/src/include/utils -I$(libpq_srcdir) $(CPPFLAGS) \

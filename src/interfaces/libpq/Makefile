@@ -17,6 +17,7 @@ include $(top_builddir)/src/Makefile.global
 NAME= pq
 SO_MAJOR_VERSION= 3
 SO_MINOR_VERSION= 2
+DLTYPE= library
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -I$(top_builddir)/src/port -DFRONTEND
 override CFLAGS += $(PTHREAD_CFLAGS)
