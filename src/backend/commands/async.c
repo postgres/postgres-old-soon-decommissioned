@@ -221,7 +221,7 @@ Async_Listen(char *relname, int pid)
 	if (alreadyListener)
 	{
 		heap_close(lRel, AccessExclusiveLock);
-		elog(NOTICE, "Async_Listen: We are already listening on %s", relname);
+		elog(WARNING, "Async_Listen: We are already listening on %s", relname);
 		return;
 	}
 

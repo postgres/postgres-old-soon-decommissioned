@@ -367,7 +367,7 @@ abstime2tm(AbsoluteTime _time, int *tzp, struct tm * tm, char **tzn)
 				 */
 				StrNCpy(*tzn, tm->tm_zone, MAXTZLEN + 1);
 				if (strlen(tm->tm_zone) > MAXTZLEN)
-					elog(NOTICE, "Invalid timezone \'%s\'", tm->tm_zone);
+					elog(WARNING, "Invalid timezone \'%s\'", tm->tm_zone);
 			}
 		}
 	}
@@ -400,7 +400,7 @@ abstime2tm(AbsoluteTime _time, int *tzp, struct tm * tm, char **tzn)
 				 */
 				StrNCpy(*tzn, tzname[tm->tm_isdst], MAXTZLEN + 1);
 				if (strlen(tzname[tm->tm_isdst]) > MAXTZLEN)
-					elog(NOTICE, "Invalid timezone \'%s\'", tzname[tm->tm_isdst]);
+					elog(WARNING, "Invalid timezone \'%s\'", tzname[tm->tm_isdst]);
 			}
 		}
 	}

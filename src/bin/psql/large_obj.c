@@ -59,8 +59,8 @@ handle_transaction(void)
 
 	if (notice[0])
 	{
-		if ((!commit && strcmp(notice, "NOTICE:  ROLLBACK: no transaction in progress\n") != 0) ||
-			(commit && strcmp(notice, "NOTICE:  COMMIT: no transaction in progress\n") != 0))
+		if ((!commit && strcmp(notice, "WARNING:  ROLLBACK: no transaction in progress\n") != 0) ||
+			(commit && strcmp(notice, "WARNING:  COMMIT: no transaction in progress\n") != 0))
 			fputs(notice, stderr);
 	}
 	else if (!QUIET())

@@ -156,7 +156,7 @@ plpgsql_compile(Oid fn_oid, int functype)
 		 */
 		if (plpgsql_error_funcname != NULL)
 		{
-			elog(NOTICE, "plpgsql: ERROR during compile of %s near line %d",
+			elog(WARNING, "plpgsql: ERROR during compile of %s near line %d",
 				 plpgsql_error_funcname, plpgsql_error_lineno);
 
 			plpgsql_error_funcname = NULL;

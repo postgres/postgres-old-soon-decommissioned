@@ -147,7 +147,7 @@ psql_error(const char *fmt,...)
 
 
 /*
- * for backend NOTICES
+ * for backend INFO, WARNING, ERROR
  */
 void
 NoticeProcessor(void *arg, const char *message)
@@ -574,14 +574,11 @@ SendQuery(const char *query)
 
 		if (results)
 			PQclear(results);
-  	}
+	}
 
 	/* Possible microtiming output */
-
 	if (pset.timing && success)
-	{
-		! 			printf(gettext("Total time: %.3fs\n"), ((after.tv_sec-before.tv_sec)*1000000 + after.tv_usec - before.tv_usec) / 1000000.0);
-	}
+		printf(gettext("Total time: %.3fs\n"), ((after.tv_sec-before.tv_sec)*1000000 + after.tv_usec - before.tv_usec) / 1000000.0);
 
 	return success;
 }

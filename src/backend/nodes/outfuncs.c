@@ -1291,7 +1291,7 @@ _outValue(StringInfo str, Value *value)
 			appendStringInfo(str, " %s ", value->val.str);
 			break;
 		default:
-			elog(NOTICE, "_outValue: don't know how to print type %d ",
+			elog(WARNING, "_outValue: don't know how to print type %d ",
 				 value->type);
 			break;
 	}
@@ -1693,7 +1693,7 @@ _outNode(StringInfo str, void *obj)
 				break;
 
 			default:
-				elog(NOTICE, "_outNode: don't know how to print type %d ",
+				elog(WARNING, "_outNode: don't know how to print type %d ",
 					 nodeTag(obj));
 				break;
 		}

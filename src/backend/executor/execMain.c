@@ -1359,7 +1359,7 @@ ExecReplace(TupleTableSlot *slot,
 	 */
 	if (IsBootstrapProcessingMode())
 	{
-		elog(NOTICE, "ExecReplace: replace can't run without transactions");
+		elog(WARNING, "ExecReplace: replace can't run without transactions");
 		return;
 	}
 

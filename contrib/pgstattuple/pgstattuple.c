@@ -123,7 +123,7 @@ pgstattuple(PG_FUNCTION_ARGS)
 		free_percent = (double) free_space *100.0 / table_len;
 	}
 
-	elog(NOTICE, "physical length: %.2fMB live tuples: %.0f (%.2fMB, %.2f%%) dead tuples: %.0f (%.2fMB, %.2f%%) free/reusable space: %.2fMB (%.2f%%) overhead: %.2f%%",
+	elog(DEBUG3, "physical length: %.2fMB live tuples: %.0f (%.2fMB, %.2f%%) dead tuples: %.0f (%.2fMB, %.2f%%) free/reusable space: %.2fMB (%.2f%%) overhead: %.2f%%",
 
 		 table_len / (1024 * 1024),		/* physical length in MB */
 

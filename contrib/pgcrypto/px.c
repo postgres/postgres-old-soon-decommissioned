@@ -217,7 +217,7 @@ combo_decrypt(PX_Combo * cx, const uint8 *data, unsigned dlen,
 
 	/* error reporting should be done in pgcrypto.c */
 block_error:
-	elog(NOTICE, "Data not a multiple of block size");
+	elog(WARNING, "Data not a multiple of block size");
 	return -1;
 }
 

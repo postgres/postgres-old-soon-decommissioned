@@ -2631,7 +2631,7 @@ tleIsArrayAssign(TargetEntry *tle)
 	 */
 	if (aref->refexpr == NULL || !IsA(aref->refexpr, Var) ||
 		((Var *) aref->refexpr)->varattno != tle->resdom->resno)
-		elog(NOTICE, "tleIsArrayAssign: I'm confused ...");
+		elog(WARNING, "tleIsArrayAssign: I'm confused ...");
 	return true;
 }
 

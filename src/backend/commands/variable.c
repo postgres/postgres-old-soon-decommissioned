@@ -250,7 +250,7 @@ parse_datestyle_internal(char *value)
 	}
 
 	if (dcnt > 1 || ecnt > 1)
-		elog(NOTICE, "Conflicting settings for date");
+		elog(WARNING, "Conflicting settings for date");
 
 	return TRUE;
 }

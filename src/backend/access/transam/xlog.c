@@ -1284,7 +1284,7 @@ XLogFlush(XLogRecPtr record)
 	 * CreateCheckpoint will try to flush it at the end of recovery.)
 	 *
 	 * The current approach is to ERROR under normal conditions, but only
-	 * NOTICE during recovery, so that the system can be brought up even if
+	 * WARNING during recovery, so that the system can be brought up even if
 	 * there's a corrupt LSN.  Note that for calls from xact.c, the ERROR
 	 * will be promoted to PANIC since xact.c calls this routine inside a
 	 * critical section.  However, calls from bufmgr.c are not within
@@ -1292,7 +1292,7 @@ XLogFlush(XLogRecPtr record)
 	 * on a data page.
 	 */
 	if (XLByteLT(LogwrtResult.Flush, record))
-		elog(InRecovery ? NOTICE : ERROR,
+		elog(InRecovery ? WARNING : ERROR,
 			 "XLogFlush: request %X/%X is not satisfied --- flushed only to %X/%X",
 			 record.xlogid, record.xrecoff,
 			 LogwrtResult.Flush.xlogid, LogwrtResult.Flush.xrecoff);
@@ -1609,7 +1609,7 @@ MoveOfflineLogs(uint32 log, uint32 seg, XLogRecPtr endptr)
 			{
 				elog(LOG, "archiving transaction log file %s",
 					 xlde->d_name);
-				elog(NOTICE, "archiving log files is not implemented!");
+				elog(WARNING, "archiving log files is not implemented!");
 			}
 			else
 			{
@@ -2091,12 +2091,12 @@ WriteControlFile(void)
 	StrNCpy(ControlFile->lc_ctype, localeptr, LOCALE_NAME_BUFLEN);
 
 	/*
-	 * Issue warning notice if initdb'ing in a locale that will not permit
+	 * Issue warning WARNING if initdb'ing in a locale that will not permit
 	 * LIKE index optimization.  This is not a clean place to do it, but I
 	 * don't see a better place either...
 	 */
 	if (!locale_is_like_safe())
-		elog(NOTICE, "Initializing database with %s collation order."
+		elog(WARNING, "Initializing database with %s collation order."
 			 "\n\tThis locale setting will prevent use of index optimization for"
 			 "\n\tLIKE and regexp searches.  If you are concerned about speed of"
 		  "\n\tsuch queries, you may wish to set LC_COLLATE to \"C\" and"

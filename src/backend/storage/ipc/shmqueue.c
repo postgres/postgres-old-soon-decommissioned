@@ -30,7 +30,7 @@
 /*#define SHMQUEUE_DEBUG*/
 #ifdef SHMQUEUE_DEBUG
 
-#define SHMQUEUE_DEBUG_ELOG NOTICE
+#define SHMQUEUE_DEBUG_ELOG WARNING
 
 static void dumpQ(SHM_QUEUE *q, char *s);
 #endif

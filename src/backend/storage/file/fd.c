@@ -1193,7 +1193,7 @@ FreeFile(FILE *file)
 		}
 	}
 	if (i < 0)
-		elog(NOTICE, "FreeFile: file was not obtained from AllocateFile");
+		elog(WARNING, "FreeFile: file was not obtained from AllocateFile");
 
 	fclose(file);
 }

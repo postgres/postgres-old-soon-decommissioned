@@ -2270,7 +2270,7 @@ interval_trunc(PG_FUNCTION_ARGS)
 		}
 		else
 		{
-			elog(NOTICE, "Unable to decode INTERVAL; internal coding error");
+			elog(WARNING, "Unable to decode INTERVAL; internal coding error");
 			*result = *interval;
 		}
 	}
@@ -2771,7 +2771,7 @@ interval_part(PG_FUNCTION_ARGS)
 		}
 		else
 		{
-			elog(NOTICE, "Unable to decode INTERVAL"
+			elog(WARNING, "Unable to decode INTERVAL"
 				 "\n\tinterval_part() internal coding error");
 			result = 0;
 		}

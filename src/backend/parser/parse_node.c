@@ -483,7 +483,7 @@ make_const(Value *value)
 			break;
 
 		default:
-			elog(NOTICE, "make_const: unknown type %d", nodeTag(value));
+			elog(WARNING, "make_const: unknown type %d", nodeTag(value));
 			/* FALLTHROUGH */
 
 		case T_Null:

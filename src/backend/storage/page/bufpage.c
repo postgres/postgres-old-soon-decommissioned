@@ -107,7 +107,7 @@ PageAddItem(Page page,
 		{
 			if (offsetNumber > limit)
 			{
-				elog(NOTICE, "PageAddItem: tried overwrite after maxoff");
+				elog(WARNING, "PageAddItem: tried overwrite after maxoff");
 				return InvalidOffsetNumber;
 			}
 			if (offsetNumber < limit)
@@ -116,7 +116,7 @@ PageAddItem(Page page,
 				if (((*itemId).lp_flags & LP_USED) ||
 					((*itemId).lp_len != 0))
 				{
-					elog(NOTICE, "PageAddItem: tried overwrite of used ItemId");
+					elog(WARNING, "PageAddItem: tried overwrite of used ItemId");
 					return InvalidOffsetNumber;
 				}
 			}

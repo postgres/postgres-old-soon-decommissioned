@@ -1019,7 +1019,7 @@ CopyReadNewline(FILE *fp, int *newline)
 {
 	if (!*newline)
 	{
-		elog(NOTICE, "CopyReadNewline: extra fields ignored");
+		elog(WARNING, "CopyReadNewline: extra fields ignored");
 		while (!CopyGetEof(fp) && (CopyGetChar(fp) != '\n'));
 	}
 	*newline = 0;

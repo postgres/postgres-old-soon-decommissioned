@@ -2150,7 +2150,7 @@ pgstat_read_statsfile(HTAB **dbhash, Oid onlydb,
 					}
 					else
 					{
-						elog(NOTICE,
+						elog(WARNING,
 							 "PGSTAT: corrupted pgstat.stat file");
 						fclose(fpin);
 						return;
@@ -2187,7 +2187,7 @@ pgstat_read_statsfile(HTAB **dbhash, Oid onlydb,
 					}
 					else
 					{
-						elog(NOTICE,
+						elog(WARNING,
 							 "PGSTAT: corrupted pgstat.stat file");
 						fclose(fpin);
 						return;
@@ -2260,7 +2260,7 @@ pgstat_read_statsfile(HTAB **dbhash, Oid onlydb,
 					}
 					else
 					{
-						elog(NOTICE,
+						elog(WARNING,
 							 "PGSTAT: corrupted pgstat.stat file");
 						fclose(fpin);
 						return;
@@ -2301,7 +2301,7 @@ pgstat_read_statsfile(HTAB **dbhash, Oid onlydb,
 					}
 					else
 					{
-						elog(NOTICE,
+						elog(WARNING,
 							 "PGSTAT: corrupted pgstat.stat file");
 						fclose(fpin);
 						return;
@@ -2332,7 +2332,7 @@ pgstat_read_statsfile(HTAB **dbhash, Oid onlydb,
 					}
 					else
 					{
-						elog(NOTICE,
+						elog(WARNING,
 							 "PGSTAT: corrupted pgstat.stat file");
 						fclose(fpin);
 						return;
@@ -2388,7 +2388,7 @@ pgstat_read_statsfile(HTAB **dbhash, Oid onlydb,
 					}
 					else
 					{
-						elog(NOTICE,
+						elog(WARNING,
 							 "PGSTAT: corrupted pgstat.stat file");
 						fclose(fpin);
 						return;
@@ -2430,7 +2430,7 @@ pgstat_read_statsfile(HTAB **dbhash, Oid onlydb,
 				}
 				else
 				{
-					elog(NOTICE, "PGSTAT: corrupted pgstat.stat file");
+					elog(WARNING, "PGSTAT: corrupted pgstat.stat file");
 					fclose(fpin);
 					return;
 				}

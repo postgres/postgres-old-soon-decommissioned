@@ -189,15 +189,15 @@ plpgsql_exec_function(PLpgSQL_function * func, FunctionCallInfo fcinfo)
 		 */
 		if (error_info_func != NULL)
 		{
-			elog(NOTICE, "Error occurred while executing PL/pgSQL function %s",
+			elog(WARNING, "Error occurred while executing PL/pgSQL function %s",
 				 error_info_func->fn_name);
 			if (error_info_stmt != NULL)
-				elog(NOTICE, "line %d at %s", error_info_stmt->lineno,
+				elog(WARNING, "line %d at %s", error_info_stmt->lineno,
 					 plpgsql_stmt_typename(error_info_stmt));
 			else if (error_info_text != NULL)
-				elog(NOTICE, "%s", error_info_text);
+				elog(WARNING, "%s", error_info_text);
 			else
-				elog(NOTICE, "no more error information available");
+				elog(WARNING, "no more error information available");
 
 			error_info_func = NULL;
 			error_info_stmt = NULL;
@@ -437,15 +437,15 @@ plpgsql_exec_trigger(PLpgSQL_function * func,
 		 */
 		if (error_info_func != NULL)
 		{
-			elog(NOTICE, "Error occurred while executing PL/pgSQL function %s",
+			elog(WARNING, "Error occurred while executing PL/pgSQL function %s",
 				 error_info_func->fn_name);
 			if (error_info_stmt != NULL)
-				elog(NOTICE, "line %d at %s", error_info_stmt->lineno,
+				elog(WARNING, "line %d at %s", error_info_stmt->lineno,
 					 plpgsql_stmt_typename(error_info_stmt));
 			else if (error_info_text != NULL)
-				elog(NOTICE, "%s", error_info_text);
+				elog(WARNING, "%s", error_info_text);
 			else
-				elog(NOTICE, "no more error information available");
+				elog(WARNING, "no more error information available");
 
 			error_info_func = NULL;
 			error_info_stmt = NULL;

@@ -2171,7 +2171,7 @@ equal(void *a, void *b)
 			break;
 
 		default:
-			elog(NOTICE, "equal: don't know whether nodes of type %d are equal",
+			elog(WARNING, "equal: don't know whether nodes of type %d are equal",
 				 nodeTag(a));
 			break;
 	}

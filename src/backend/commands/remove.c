@@ -336,8 +336,8 @@ RemoveFunction(char *functionName,		/* function name to be removed */
 
 	if (((Form_pg_proc) GETSTRUCT(tup))->prolang == INTERNALlanguageId)
 	{
-		/* "Helpful" notice when removing a builtin function ... */
-		elog(NOTICE, "Removing built-in function \"%s\"", functionName);
+		/* "Helpful" WARNING when removing a builtin function ... */
+		elog(WARNING, "Removing built-in function \"%s\"", functionName);
 	}
 
 	/* Delete any comments associated with this function */

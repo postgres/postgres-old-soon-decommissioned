@@ -394,7 +394,7 @@ cppline			{space}*#(.*\\{space})*.*
                                                         literalbuf, NAMEDATALEN-1, literalbuf);
                                                 literalbuf[NAMEDATALEN-1] = '\0';
 #endif
- 						mmerror(PARSE_ERROR, ET_NOTICE, errortext);
+ 						mmerror(PARSE_ERROR, ET_WARNING, errortext);
                                         }
 
 					yylval.str = mm_strdup(literalbuf);

@@ -119,28 +119,28 @@ static void
 PGLC_setlocale(PG_LocaleCategories *lc)
 {
 	if (!setlocale(LC_COLLATE, lc->lc_collate))
-		elog(NOTICE, "pg_setlocale(): 'LC_COLLATE=%s' cannot be honored.",
+		elog(WARNING, "pg_setlocale(): 'LC_COLLATE=%s' cannot be honored.",
 			 lc->lc_collate);
 
 	if (!setlocale(LC_CTYPE, lc->lc_ctype))
-		elog(NOTICE, "pg_setlocale(): 'LC_CTYPE=%s' cannot be honored.",
+		elog(WARNING, "pg_setlocale(): 'LC_CTYPE=%s' cannot be honored.",
 			 lc->lc_ctype);
 
 	if (!setlocale(LC_NUMERIC, lc->lc_numeric))
-		elog(NOTICE, "pg_setlocale(): 'LC_NUMERIC=%s' cannot be honored.",
+		elog(WARNING, "pg_setlocale(): 'LC_NUMERIC=%s' cannot be honored.",
 			 lc->lc_numeric);
 
 	if (!setlocale(LC_TIME, lc->lc_time))
-		elog(NOTICE, "pg_setlocale(): 'LC_TIME=%s' cannot be honored.",
+		elog(WARNING, "pg_setlocale(): 'LC_TIME=%s' cannot be honored.",
 			 lc->lc_time);
 
 	if (!setlocale(LC_MONETARY, lc->lc_monetary))
-		elog(NOTICE, "pg_setlocale(): 'LC_MONETARY=%s' cannot be honored.",
+		elog(WARNING, "pg_setlocale(): 'LC_MONETARY=%s' cannot be honored.",
 			 lc->lc_monetary);
 
 #ifdef LC_MESSAGES
 	if (!setlocale(LC_MESSAGES, lc->lc_messages))
-		elog(NOTICE, "pg_setlocale(): 'LC_MESSAGES=%s' cannot be honored.",
+		elog(WARNING, "pg_setlocale(): 'LC_MESSAGES=%s' cannot be honored.",
 			 lc->lc_messages);
 #endif
 }

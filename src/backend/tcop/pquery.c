@@ -109,7 +109,7 @@ PreparePortal(char *portalName)
 		 * XXX Should we raise an error rather than closing the old
 		 * portal?
 		 */
-		elog(NOTICE, "Closing pre-existing portal \"%s\"",
+		elog(WARNING, "Closing pre-existing portal \"%s\"",
 			 portalName);
 		PortalDrop(portal);
 	}

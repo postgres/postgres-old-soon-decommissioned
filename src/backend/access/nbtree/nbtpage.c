@@ -253,7 +253,7 @@ _bt_getroot(Relation rel, int access)
 				/* handle concurrent fix of root page */
 				if (BTreeInvalidParent(rootopaque))		/* unupdated! */
 				{
-					elog(NOTICE, "bt_getroot[%s]: fixing root page", RelationGetRelationName(rel));
+					elog(WARNING, "bt_getroot[%s]: fixing root page", RelationGetRelationName(rel));
 					newrootbuf = _bt_fixroot(rel, rootbuf, true);
 					LockBuffer(newrootbuf, BUFFER_LOCK_UNLOCK);
 					LockBuffer(newrootbuf, BT_READ);

@@ -378,7 +378,7 @@ CheckAttributeNames(TupleDesc tupdesc, bool relhasoids)
 			elog(ERROR, "name of column \"%s\" conflicts with an existing system column",
 				 NameStr(tupdesc->attrs[i]->attname));
 		if (tupdesc->attrs[i]->atttypid == UNKNOWNOID)
-			elog(NOTICE, "Attribute '%s' has an unknown type"
+			elog(WARNING, "Attribute '%s' has an unknown type"
 				 "\n\tProceeding with relation creation anyway",
 				 NameStr(tupdesc->attrs[i]->attname));
 	}

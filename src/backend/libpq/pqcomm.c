@@ -716,7 +716,7 @@ pq_eof(void)
  *		If msgtype is '\0', then the buffer already includes the type code.
  *
  *		All normal messages are suppressed while COPY OUT is in progress.
- *		(In practice only NOTICE messages might get emitted then; dropping
+ *		(In practice only a few messages might get emitted then; dropping
  *		them is annoying, but at least they will still appear in the
  *		postmaster log.)
  *

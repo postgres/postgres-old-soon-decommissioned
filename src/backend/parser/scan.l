@@ -362,11 +362,11 @@ other			.
 #ifdef MULTIBYTE
 						int len;
 						len = pg_mbcliplen(literalbuf,strlen(literalbuf),NAMEDATALEN-1);
-						elog(NOTICE, "identifier \"%s\" will be truncated to \"%.*s\"",
+						elog(WARNING, "identifier \"%s\" will be truncated to \"%.*s\"",
 							 literalbuf, len, literalbuf);
 						literalbuf[len] = '\0';
 #else
-						elog(NOTICE, "identifier \"%s\" will be truncated to \"%.*s\"",
+						elog(WARNING, "identifier \"%s\" will be truncated to \"%.*s\"",
 							 literalbuf, NAMEDATALEN-1, literalbuf);
 						literalbuf[NAMEDATALEN-1] = '\0';
 #endif
@@ -517,11 +517,11 @@ other			.
 #ifdef MULTIBYTE
 						int len;
 						len = pg_mbcliplen(yytext,i,NAMEDATALEN-1);
-                        elog(NOTICE, "identifier \"%s\" will be truncated to \"%.*s\"",
+                        elog(WARNING, "identifier \"%s\" will be truncated to \"%.*s\"",
                              yytext, len, yytext);
 						yytext[len] = '\0';
 #else
-                        elog(NOTICE, "identifier \"%s\" will be truncated to \"%.*s\"",
+                        elog(WARNING, "identifier \"%s\" will be truncated to \"%.*s\"",
                              yytext, NAMEDATALEN-1, yytext);
 						yytext[NAMEDATALEN-1] = '\0';
 #endif

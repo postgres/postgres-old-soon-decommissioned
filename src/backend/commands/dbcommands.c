@@ -689,7 +689,7 @@ remove_dbdirs(const char *nominal_loc, const char *alt_loc)
 		/* remove symlink */
 		if (unlink(nominal_loc) != 0)
 		{
-			elog(NOTICE, "could not remove '%s': %m", nominal_loc);
+			elog(WARNING, "could not remove '%s': %m", nominal_loc);
 			success = false;
 		}
 	}
@@ -698,7 +698,7 @@ remove_dbdirs(const char *nominal_loc, const char *alt_loc)
 
 	if (system(buf) != 0)
 	{
-		elog(NOTICE, "database directory '%s' could not be removed",
+		elog(WARNING, "database directory '%s' could not be removed",
 			 target_dir);
 		success = false;
 	}

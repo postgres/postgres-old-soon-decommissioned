@@ -55,10 +55,10 @@ pg_dlopen(char *filename)
 		/* list the undefined symbols, if any */
 		if (count)
 		{
-			elog(NOTICE, "dl: Undefined:");
+			elog(WARNING, "dl: Undefined:");
 			while (*list)
 			{
-				elog(NOTICE, "  %s", *list);
+				elog(WARNING, "  %s", *list);
 				list++;
 			}
 		}

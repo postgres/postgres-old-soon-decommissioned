@@ -631,7 +631,7 @@ in_group(AclId uid, AclId gid)
 		ReleaseSysCache(tuple);
 	}
 	else
-		elog(NOTICE, "in_group: group %u not found", gid);
+		elog(WARNING, "in_group: group %u not found", gid);
 	return result;
 }
 

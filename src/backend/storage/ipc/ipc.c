@@ -350,7 +350,7 @@ IpcSemaphoreKill(IpcSemaphoreId semId)
 				semId, strerror(errno));
 
 	/*
-	 * We used to report a failure via elog(NOTICE), but that's pretty
+	 * We used to report a failure via elog(WARNING), but that's pretty
 	 * pointless considering any client has long since disconnected ...
 	 */
 }
@@ -663,7 +663,7 @@ IpcMemoryDetach(int status, Datum shmaddr)
 				DatumGetPointer(shmaddr), strerror(errno));
 
 	/*
-	 * We used to report a failure via elog(NOTICE), but that's pretty
+	 * We used to report a failure via elog(WARNING), but that's pretty
 	 * pointless considering any client has long since disconnected ...
 	 */
 }
@@ -680,7 +680,7 @@ IpcMemoryDelete(int status, Datum shmId)
 				DatumGetInt32(shmId), IPC_RMID, strerror(errno));
 
 	/*
-	 * We used to report a failure via elog(NOTICE), but that's pretty
+	 * We used to report a failure via elog(WARNING), but that's pretty
 	 * pointless considering any client has long since disconnected ...
 	 */
 }
