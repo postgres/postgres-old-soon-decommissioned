@@ -466,7 +466,7 @@ static struct config_bool ConfigureNamesBool[] =
 						 "zero_damaged_pages to true causes the system to instead report a "
 						 "warning, zero out the damaged page, and continue processing. This "
 						 "behavior will destroy data, namely all the rows on the damaged page."),
-			GUC_NOT_IN_SAMPLE | GUC_DISALLOW_IN_FILE
+			GUC_NOT_IN_SAMPLE
 		},
 		&zero_damaged_pages,
 		false, NULL, NULL
