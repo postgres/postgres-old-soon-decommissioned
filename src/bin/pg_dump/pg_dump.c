@@ -2678,6 +2678,11 @@ dumpIndices(FILE *fout, IndInfo *indinfo, int numIndices,
 
 		if (!tablename || (!strcmp(indinfo[i].indrelname, tablename)))
 		{
+			/* We make the index belong to the owner of its table,
+			 * which is not necessarily right but should answer 99% of the
+			 * time.  Would have to add owner name to IndInfo to do it right.
+			 */
+			becomeUser(fout, tblinfo[tableInd].usename);
 
 			strcpy(id1, fmtId(indinfo[i].indexrelname));
 			strcpy(id2, fmtId(indinfo[i].indrelname));
