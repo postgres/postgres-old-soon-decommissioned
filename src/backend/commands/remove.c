@@ -410,7 +410,6 @@ RemoveAggregate(char *aggName, char *aggType)
     HeapTuple           tup;
     ItemPointerData     itemPointerData;
     char                *userName;
-    char                *typename;
     Oid                 basetypeID = InvalidOid;
     bool                defined;
     ScanKeyData         aggregateKey[3];
