@@ -504,7 +504,7 @@ getRowDescriptions(PGconn *conn)
 		if (pqGets(typName, MAX_MESSAGE_LEN, conn) ||
 			pqGetInt(&adtid, 4, conn) ||
 			pqGetInt(&adtsize, 2, conn) ||
-			pqGetInt(&adtmod, 2, conn))
+			pqGetInt(&adtmod, 4, conn))
 		{
 			PQclear(result);
 			return EOF;
@@ -512,7 +512,7 @@ getRowDescriptions(PGconn *conn)
 		result->attDescs[i].name = strdup(typName);
 		result->attDescs[i].adtid = adtid;
 		result->attDescs[i].adtsize = (short) adtsize;
-		result->attDescs[i].adtmod = (short) adtmod;
+		result->attDescs[i].adtmod = adtmod;
 	}
 
 	/* Success! */
