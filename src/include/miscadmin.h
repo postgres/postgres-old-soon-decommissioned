@@ -42,6 +42,8 @@ extern char *DataDir;
 
 extern int	MyProcPid;
 
+extern long	MyCancelKey;
+
 extern char OutputFileName[];
 
 /*

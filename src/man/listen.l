@@ -21,9 +21,7 @@ is cleared.
 .PP
 This event notification is performed through the Libpq protocol
 and frontend application interface.  The application program 
-must explicitly poll a Libpq global variable, 
-.IR PQAsyncNotifyWaiting ,
-and call the routine
+must call the routine
 .IR PQnotifies
 in order to find out the name of the class to which a given 
 notification corresponds.  If this code is not included in 

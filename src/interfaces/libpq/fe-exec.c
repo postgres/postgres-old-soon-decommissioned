@@ -361,6 +361,16 @@ parseInput(PGconn *conn)
 														 PGRES_EMPTY_QUERY);
 					conn->asyncStatus = PGASYNC_READY;
 					break;
+				case 'K':		/* secret key data from the backend */
+					/* This is expected only during backend startup,
+					 * but it's just as easy to handle it as part of the
+					 * main loop.  Save the data and continue processing.
+					 */
+					if (pqGetInt(&(conn->be_pid), 4, conn))
+						return;
+					if (pqGetInt(&(conn->be_key), 4, conn))
+						return;
+					break;
 				case 'N':		/* notices from the backend */
 					if (getNotice(conn))
 						return;
@@ -758,44 +768,6 @@ PQexec(PGconn *conn, const char *query)
 			break;
 	}
 	return lastResult;
-}
-
-
-/*
- * Attempt to request cancellation of the current operation.
- *
- * The return value is TRUE if the cancel request was successfully
- * dispatched, FALSE if not (in which case errorMessage is set).
- * Note: successful dispatch is no guarantee that there will be any effect at
- * the backend.  The application must read the operation result as usual.
- */
-
-int
-PQrequestCancel(PGconn *conn)
-{
-	char msg[1];
-
-	if (!conn)
-		return FALSE;
-
-	if (conn->sock < 0)
-	{
-		sprintf(conn->errorMessage,
-				"PQrequestCancel() -- connection is not open\n");
-		return FALSE;
-	}
-
-	msg[0] = '\0';
-
-	if (send(conn->sock, msg, 1, MSG_OOB) < 0)
-	{
-		sprintf(conn->errorMessage,
-				"PQrequestCancel() -- couldn't send OOB data: errno=%d\n%s\n",
-				errno, strerror(errno));
-		return FALSE;
-	}
-
-	return TRUE;
 }
 
 

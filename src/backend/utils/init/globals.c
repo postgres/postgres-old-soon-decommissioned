@@ -44,6 +44,8 @@ bool		QueryCancel = false;
 
 int			MyProcPid;
 
+long		MyCancelKey;
+
 char	   *DataDir;
 
  /*
