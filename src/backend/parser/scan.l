@@ -148,12 +148,10 @@ self			[,()\[\].;$\:\+\-\*\/\<\>\=\|]
 op_and_self		[\~\!\@\#\%\^\&\|\`\?\$\:\+\-\*\/\<\>\=]
 operator		{op_and_self}+
 
-xminteger		{integer}/-
-xmreal			{real}/{space}*-{digit}
 xmstop			-
 
-integer			-?{digit}+
-real			-?{digit}+\.{digit}+([Ee][-+]?{digit}+)?
+integer			[\-]?{digit}+
+real			[\-]?{digit}+\.{digit}+([Ee][-+]?{digit}+)?
 
 param			\${integer}
 
@@ -291,7 +289,8 @@ other			.
 
 {typecast}		{ return TYPECAST; }
 
-{self}/-[\.0-9]	{
+{self}/{space}*-[\.0-9]	{
+					BEGIN(xm);
 					return (yytext[0]);
 				}
 {self}			{ 	return (yytext[0]); }
@@ -310,6 +309,7 @@ other			.
 					yylval.ival = atoi((char*)&yytext[1]);
 					return (PARAM);
 				}
+
 
 {identifier}/{space}*-{number}	{
 					int i;
@@ -386,6 +386,8 @@ other			.
 					CheckFloat8Val(yylval.dval);
 					return (FCONST);
 				}
+
+
 {identifier}	{
 					int i;
 					ScanKeyword		*keyword;
