@@ -56,7 +56,7 @@ RuleIdGetActionInfo(Oid ruleoid, bool *instead_flag, Query **parseTrees)
 				     ObjectIdGetDatum(ruleoid),
 				     0,0,0);
     if (ruletuple == NULL)
-	elog(WARN, "rule %d isn't in rewrite system relation");
+	elog(WARN, "rule %ud isn't in rewrite system relation", ruleoid);
 
     ruleaction = heap_getattr(ruletuple,
 			      InvalidBuffer,
