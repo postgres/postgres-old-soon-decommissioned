@@ -157,7 +157,7 @@ copy_heap(Oid OIDOldHeap, char *NewName, bool istemp)
 	 * Need to make a copy of the tuple descriptor,
 	 * since heap_create_with_catalog modifies it.
 	 */
-	tupdesc = CreateTupleDescCopy(OldHeapDesc);
+	tupdesc = CreateTupleDescCopyConstr(OldHeapDesc);
 
 	OIDNewHeap = heap_create_with_catalog(NewName, tupdesc,
 										  RELKIND_RELATION, istemp,
