@@ -75,7 +75,7 @@
 		( \
 			((attlen) == sizeof(char)) ? \
 			( \
-				(cur_offset) \
+				(long)(cur_offset) \
 			) \
 			: \
 			( \
