@@ -322,7 +322,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 			ereport(LOG,
 					(errcode_for_socket_access(),
 					 errmsg("failed to bind server socket: %m"),
-					 (addr->ai_family == AF_UNIX) ?
+					 (IS_AF_UNIX(addr->ai_family)) ?
 					 errhint("Is another postmaster already running on port %d?"
 							 " If not, remove socket node \"%s\" and retry.",
 							 (int) portNumber, sock_path) :
