@@ -234,16 +234,16 @@ gistindex_keytest(IndexTuple tuple,
 							  key[0].sk_attno,
 							  giststate->tupdesc,
 							  &isNull);
+		/* is the index entry NULL? */
 		if (isNull)
 		{
 			/* XXX eventually should check if SK_ISNULL */
 			return false;
 		}
-
-/* this code from backend/access/common/indexvalid.c. But why and what???
+		/* is the compared-to datum NULL? */
 		if (key[0].sk_flags & SK_ISNULL)
 			return false;
-*/
+
 		gistdentryinit(giststate, key[0].sk_attno - 1, &de,
 					   datum, r, p, offset,
 					   IndexTupleSize(tuple) - sizeof(IndexTupleData),
