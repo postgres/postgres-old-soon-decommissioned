@@ -54,7 +54,6 @@ ifeq ($(PORTNAME), bsdi)
     ifeq ($(DLSUFFIX), .so)
       install-shlib-dep	:= install-shlib
       shlib		:= libpgtcl.so
-      LD		:= shlicc
       LDFLAGS_SL	+= -O -shared
       CFLAGS		+= $(CFLAGS_SL)
     endif
