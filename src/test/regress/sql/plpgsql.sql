@@ -1,10 +1,6 @@
--- ************************************************************
--- * 
--- * Tables for the patchfield test of PL/pgSQL
--- * 
--- * $Header$
--- * 
--- ************************************************************
+--
+-- PLPGSQL
+--
 
 create table Room (
     roomno	char(8),
@@ -1404,3 +1400,4 @@ insert into HSlot values ('HS', 'base.hub1', 20, '');
 delete from HSlot;
 insert into IFace values ('IF', 'notthere', 'eth0', '');
 insert into IFace values ('IF', 'orion', 'ethernet_interface_name_too_long', '');
+

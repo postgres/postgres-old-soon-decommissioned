@@ -1,8 +1,6 @@
 --
--- errors.source
+-- ERRORS
 --
--- $Header$
- 
 
 -- bad in postquel, but ok in postsql
 select 1
