@@ -100,6 +100,16 @@ static PQconninfoOption PQconninfoOptions[] = {
     			NULL,				NULL, 0	}
 };
 
+struct EnvironmentOptions
+	{
+	const char *envName, *pgName;
+	} EnvironmentOptions[] =
+	{
+		{ "PG_DATEFORMAT",	"pg_dateformat" },
+		{ "PG_FLOATFORMAT",	"pg_floatformat" },
+		{ NULL }
+	};
+	
 /* ----------------
  *	PQconnectdb
  * 
@@ -514,6 +524,24 @@ connectDB(PGconn *conn)
     
     conn->port = port;
 
+		{	
+		struct EnvironmentOptions *eo;
+		char setQuery[80]; /* mjl: size okay? XXX */
+		
+		for(eo = EnvironmentOptions; eo->envName; eo++)
+			{
+			const char *val;
+			
+			if(val = getenv(eo->envName))
+				{
+				PGresult *res;
+				
+				sprintf(setQuery, "SET %s TO \".60%s\"", eo->pgName, val);
+				res = PQexec(conn, setQuery);
+				PQclear(res);	/* Don't care? */
+				}
+			}
+		}
     return CONNECTION_OK;
 
 connect_errReturn:

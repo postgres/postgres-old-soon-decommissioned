@@ -70,6 +70,9 @@ extern bool	    CDayLight;
 extern int	    CTimeZone;
 extern char	    CTZName[];
 
+extern char FloatFormat[];
+extern char DateFormat[];
+
 extern Oid	    LastOidProcessed;	/* for query rewrite */
 
 #define MAX_PARSE_BUFFER 8192

@@ -71,6 +71,9 @@ bool		CDayLight = false;
 int		CTimeZone = 0;
 char		CTZName[8] = "";
 
+char DateFormat[20] 	= "%d-%m-%Y";	/* mjl: sizes! or better malloc? XXX */
+char FloatFormat[20] = "%f";
+
 char *IndexedCatalogNames[] = {
     AttributeRelationName,
     ProcedureRelationName,

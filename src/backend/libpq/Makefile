@@ -23,7 +23,7 @@ CFLAGS+= $(KRBFLAGS)
 LDADD+= $(KRBLIBS)
 endif
 
-OBJS = be-dumpdata.o be-fsstubs.o be-pqexec.o \
+OBJS = be-dumpdata.o be-fsstubs.o be-pqexec.o pqcomprim.o\
        auth.o hba.o pqcomm.o portal.o util.o portalbuf.o pqpacket.o pqsignal.o \
        password.o
 
