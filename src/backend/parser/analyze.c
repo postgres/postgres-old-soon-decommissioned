@@ -1565,10 +1565,6 @@ transformFKConstraints(ParseState *pstate, CreateStmtContext *cxt,
 	if (cxt->fkconstraints == NIL)
 		return;
 
-	ereport(NOTICE,
-			(errmsg("%s will create implicit triggers for foreign-key checks",
-					cxt->stmtType)));
-
 	/*
 	 * For ALTER TABLE ADD CONSTRAINT, nothing to do.  For CREATE TABLE or
 	 * ALTER TABLE ADD COLUMN, gin up an ALTER TABLE ADD CONSTRAINT
