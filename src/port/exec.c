@@ -402,7 +402,7 @@ static char *pipe_read_line(char *cmd, char *line, int maxsize)
 			 *	We emulate fgets() behaviour. So if there is no newline
 			 *	at the end, we add one...
 			 */
-			if (line[len-1] != '\n')
+			if (len == 0 || line[len-1] != '\n')
 				strcat(line,"\n");
 		}
 
