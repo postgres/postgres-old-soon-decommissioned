@@ -61,6 +61,7 @@ pqinitmask(void)
 #ifdef HAVE_SIGPROCMASK
 	sigemptyset(&UnBlockSig);
 	sigfillset(&BlockSig);
+	sigfillset(&AuthBlockSig);
 
 	/*
 	 * Unmark those signals that should never be blocked. Some of these
@@ -69,32 +70,50 @@ pqinitmask(void)
 	 */
 #ifdef SIGTRAP
 	sigdelset(&BlockSig, SIGTRAP);
+	sigdelset(&AuthBlockSig, SIGTRAP);
 #endif
 #ifdef SIGABRT
 	sigdelset(&BlockSig, SIGABRT);
+	sigdelset(&AuthBlockSig, SIGABRT);
 #endif
 #ifdef SIGILL
 	sigdelset(&BlockSig, SIGILL);
+	sigdelset(&AuthBlockSig, SIGILL);
 #endif
 #ifdef SIGFPE
 	sigdelset(&BlockSig, SIGFPE);
+	sigdelset(&AuthBlockSig, SIGFPE);
 #endif
 #ifdef SIGSEGV
 	sigdelset(&BlockSig, SIGSEGV);
+	sigdelset(&AuthBlockSig, SIGSEGV);
 #endif
 #ifdef SIGBUS
 	sigdelset(&BlockSig, SIGBUS);
+	sigdelset(&AuthBlockSig, SIGBUS);
 #endif
 #ifdef SIGSYS
 	sigdelset(&BlockSig, SIGSYS);
+	sigdelset(&AuthBlockSig, SIGSYS);
 #endif
 #ifdef SIGCONT
 	sigdelset(&BlockSig, SIGCONT);
+	sigdelset(&AuthBlockSig, SIGCONT);
+#endif
+#ifdef SIGTERM
+	sigdelset(&AuthBlockSig, SIGTERM);
+#endif
+#ifdef SIGQUIT
+	sigdelset(&AuthBlockSig, SIGQUIT);
 #endif
 #else
 	UnBlockSig = 0;
 	BlockSig = sigmask(SIGHUP) | sigmask(SIGQUIT) |
 		sigmask(SIGTERM) | sigmask(SIGALRM) |
+		sigmask(SIGINT) | sigmask(SIGUSR1) |
+		sigmask(SIGUSR2) | sigmask(SIGCHLD) |
+		sigmask(SIGWINCH) | sigmask(SIGFPE);
+	AuthBlockSig = sigmask(SIGHUP) | sigmask(SIGALRM) |
 		sigmask(SIGINT) | sigmask(SIGUSR1) |
 		sigmask(SIGUSR2) | sigmask(SIGCHLD) |
 		sigmask(SIGWINCH) | sigmask(SIGFPE);

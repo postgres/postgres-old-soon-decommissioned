@@ -44,6 +44,7 @@ extern void pg_exec_query_string(char *query_string,
 
 extern void die(SIGNAL_ARGS);
 extern void quickdie(SIGNAL_ARGS);
+extern void authdie(SIGNAL_ARGS);
 extern int PostgresMain(int argc, char *argv[],
 			 int real_argc, char *real_argv[], const char *username);
 extern void ResetUsage(void);

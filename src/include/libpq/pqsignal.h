@@ -22,7 +22,8 @@
 
 #ifdef HAVE_SIGPROCMASK
 extern sigset_t UnBlockSig,
-			BlockSig;
+			BlockSig,
+			AuthBlockSig;
 
 #define PG_SETMASK(mask)	sigprocmask(SIG_SETMASK, mask, NULL)
 #else
