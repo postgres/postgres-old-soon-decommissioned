@@ -16,7 +16,7 @@
 #include <nodes/relation.h>
 
 extern bool pathorder_match(PathOrder *path_ordering1,
-						 PathOrder *path_ordering2, int *more_sort);
+						 PathOrder *path_ordering2, int *better_sort);
 extern bool equal_path_merge_ordering(Oid *path_ordering,
 						  MergeOrder *merge_ordering);
 extern bool equal_merge_ordering(MergeOrder *merge_ordering1,
