@@ -901,6 +901,10 @@ ECPGexecute(struct statement * stmt)
 				sqlca.sqlerrd[1] = atol(PQoidStatus(results));
 				sqlca.sqlerrd[2] = atol(PQcmdTuples(results));
 				ECPGlog("ECPGexecute line %d Ok: %s\n", stmt->lineno, PQcmdStatus(results));
+				if (!sqlca.sqlerrd[2] && (!strncmp(PQcmdStatus(results),"UPDATE",6) 
+									|| !strncmp(PQcmdStatus(results),"INSERT",6) 
+									|| !strncmp(PQcmdStatus(results),"DELETE",6)))
+					ECPGraise(stmt->lineno, ECPG_NOT_FOUND, NULL);
 				break;
 			case PGRES_NONFATAL_ERROR:
 			case PGRES_FATAL_ERROR:

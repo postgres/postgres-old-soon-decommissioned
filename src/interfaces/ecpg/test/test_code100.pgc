@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 
    // ECPGdebug(1,stdout);
    
-   exec sql connect to test;
+   exec sql connect to mm;
    if (sqlca.sqlcode) printf("%ld:%s\n",sqlca.sqlcode,sqlca.sqlerrm.sqlerrmc);
 
    exec sql create table test (
