@@ -965,7 +965,7 @@ SearchSysCache(struct catcache *cache,
 void
 RelationInvalidateCatalogCacheTuple(Relation relation,
 				    HeapTuple tuple,
-				    void (*function)())
+ 				    void (*function)(int, Index, ItemPointer))
 {
     struct catcache 	*ccp;
     MemoryContext	oldcxt;
