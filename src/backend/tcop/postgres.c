@@ -2533,18 +2533,6 @@ PostgresMain(int argc, char *argv[], const char *username)
 			on_proc_exit(log_disconnections,0);
 	}
 
-	/*
-	 * Post-processing for command line options.
-	 */
-	if (log_statement_stats &&
-		(log_parser_stats || log_planner_stats || log_executor_stats))
-	{
-		ereport(WARNING,
-				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("statement-level statistics are disabled because parser, planner, or executor statistics are on")));
-		SetConfigOption("log_statement_stats", "false", ctx, gucsource);
-	}
-
 	if (!IsUnderPostmaster || ExecBackend)
 	{
 		if (!potential_DataDir)

@@ -4720,7 +4720,7 @@ assign_stage_log_stats(bool newval, bool doit, GucSource source)
 		{
 			if (doit)
 				ereport(ERROR,
-						(errcode(ERRCODE_ERROR_IN_ASSIGNMENT),
+						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 					errmsg("Can not enable parameter when \"log_statement_stats\" is true.")));
 			else
 				return false;
@@ -4740,7 +4740,7 @@ assign_log_stats(bool newval, bool doit, GucSource source)
 		{
 			if (doit)
 				ereport(ERROR,
-						(errcode(ERRCODE_ERROR_IN_ASSIGNMENT),
+						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 					errmsg("Can not enable \"log_statement_stats\" when \"log_parser_stats\",\n"
 							"\"log_planner_stats\", or \"log_executor_stats\" is true.")));
 			else
