@@ -804,7 +804,7 @@ _bt_pagedel(Relation rel, Buffer buf, bool vacuum_full)
 	/* we need a scan key to do our search, so build one */
 	itup_scankey = _bt_mkscankey(rel, &(targetkey->bti_itup));
 	/* find the leftmost leaf page containing this key */
-	stack = _bt_search(rel, rel->rd_rel->relnatts, itup_scankey,
+	stack = _bt_search(rel, rel->rd_rel->relnatts, itup_scankey, false,
 					   &lbuf, BT_READ);
 	/* don't need a pin on that either */
 	_bt_relbuf(rel, lbuf);
