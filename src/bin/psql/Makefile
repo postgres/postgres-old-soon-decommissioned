@@ -29,7 +29,7 @@ ifeq ($(USE_READLINE), true)
 # uncomment this
 # CFLAGS += -DOLD_READLINE
 
-   LIBCURSES=	-lcurses
+   LIBCURSES=	-lcurses -ltermcap
    LD_ADD += -L$(READLINE_LIBDIR) -L$(HISTORY_LIBDIR) -lreadline -lhistory $(LIBCURSES)
 # use the following if your readline has no separate history lib
 #   LD_ADD += -L$(READLINE_LIBDIR) -lreadline $(LIBCURSES)
