@@ -224,7 +224,8 @@ _PrintExtraToc(ArchiveHandle *AH, TocEntry *te)
 {
 	lclTocEntry *ctx = (lclTocEntry *) te->formatData;
 
-	ahprintf(AH, "-- File: %s\n", ctx->filename);
+	if (AH->public.verbose)
+		ahprintf(AH, "-- File: %s\n", ctx->filename);
 }
 
 static void

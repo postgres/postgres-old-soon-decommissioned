@@ -309,7 +309,7 @@ _PrintExtraToc(ArchiveHandle *AH, TocEntry *te)
 {
 	lclTocEntry *ctx = (lclTocEntry *) te->formatData;
 
-	if (ctx->filename != NULL)
+	if (AH->public.verbose && ctx->filename != NULL)
 		ahprintf(AH, "-- File: %s\n", ctx->filename);
 }
 

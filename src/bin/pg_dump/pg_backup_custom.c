@@ -279,8 +279,9 @@ _PrintExtraToc(ArchiveHandle *AH, TocEntry *te)
 {
 	lclTocEntry *ctx = (lclTocEntry *) te->formatData;
 
-	ahprintf(AH, "-- Data Pos: " INT64_FORMAT "\n",
-			 (int64) ctx->dataPos);
+	if (AH->public.verbose)
+		ahprintf(AH, "-- Data Pos: " INT64_FORMAT "\n",
+				 (int64) ctx->dataPos);
 }
 
 /*
@@ -417,8 +418,8 @@ _EndBlobs(ArchiveHandle *AH, TocEntry *te)
 }
 
 /*
- * Print data for a gievn TOC entry
-*/
+ * Print data for a given TOC entry
+ */
 static void
 _PrintTocData(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt)
 {
@@ -497,8 +498,6 @@ _PrintTocData(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt)
 						 blkType);
 			break;
 	}
-
-	ahprintf(AH, "\n\n");
 }
 
 /*

@@ -12,6 +12,7 @@ extern int	ExecuteSqlCommand(ArchiveHandle *AH, PQExpBuffer qry, char *desc, boo
 extern int	ExecuteSqlCommandBuf(ArchiveHandle *AH, void *qry, size_t bufLen);
 
 extern void CreateBlobXrefTable(ArchiveHandle *AH);
+extern void CreateBlobXrefIndex(ArchiveHandle *AH);
 extern void InsertBlobXref(ArchiveHandle *AH, Oid old, Oid new);
 extern void StartTransaction(ArchiveHandle *AH);
 extern void StartTransactionXref(ArchiveHandle *AH);
