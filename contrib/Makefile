@@ -12,7 +12,6 @@ WANTED_DIRS = \
 		fulltextindex	\
 		intarray	\
 		isbn_issn	\
-		linux		\
 		lo			\
 		mSQL-interface	\
 		mac			\
