@@ -36,6 +36,7 @@ typedef struct catcache
 	char	   *cc_relname;		/* name of relation the tuples come from */
 	char	   *cc_indname;		/* name of index matching cache keys */
 	int			cc_reloidattr;	/* AttrNumber of relation OID, or 0 */
+	bool		cc_relisshared;	/* is relation shared? */
 	TupleDesc	cc_tupdesc;		/* tuple descriptor (copied from reldesc) */
 	int			cc_ntup;		/* # of tuples currently in this cache */
 	int			cc_size;		/* # of hash buckets in this cache */
@@ -98,7 +99,7 @@ extern void CatalogCacheFlushRelation(Oid relId);
 extern void CatalogCacheIdInvalidate(int cacheId, Index hashIndex,
 						 ItemPointer pointer);
 extern void PrepareToInvalidateCacheTuple(Relation relation,
-							  HeapTuple tuple,
-							  void (*function) (int, Index, ItemPointer));
+						 HeapTuple tuple,
+						 void (*function) (int, Index, ItemPointer, Oid));
 
 #endif	 /* CATCACHE_H */

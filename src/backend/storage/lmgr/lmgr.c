@@ -144,7 +144,7 @@ LockRelation(Relation relation, LOCKMODE lockmode)
 	 * rebuild it and not just delete it.
 	 */
 	RelationIncrementReferenceCount(relation);
-	DiscardInvalid();
+	AcceptInvalidationMessages();
 	RelationDecrementReferenceCount(relation);
 }
 

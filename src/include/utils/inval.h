@@ -16,11 +16,12 @@
 
 #include "access/htup.h"
 
-extern void DiscardInvalid(void);
 
-extern void RegisterInvalid(bool send);
+extern void AcceptInvalidationMessages(void);
 
-extern void ImmediateLocalInvalidation(bool send);
+extern void AtEOXactInvalidationMessages(bool isCommit);
+
+extern void CommandEndInvalidationMessages(bool isCommit);
 
 extern void RelationInvalidateHeapTuple(Relation relation, HeapTuple tuple);
 
