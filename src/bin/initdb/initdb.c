@@ -801,7 +801,6 @@ static bool
 mkdatadir(char *subdir)
 {
 	char	   *path;
-	int			res;
 
 	path = xmalloc(strlen(pg_data) + 2 +
 				   (subdir == NULL ? 0 : strlen(subdir)));
@@ -811,13 +810,7 @@ mkdatadir(char *subdir)
 	else
 		strcpy(path, pg_data);
 
-	res = mkdir(path, 0700);
-	if (res == 0)
-		return true;
-	else if (subdir == NULL || errno != ENOENT)
-		return false;
-	else
-		return !mkdir_p(path, 0700);
+	return (mkdir_p(path, 0700) == 0);
 }
 
 
