@@ -1191,7 +1191,9 @@ LIBS="$LIBS $PTHREAD_LIBS"
 AC_TRY_RUN([#include "$srcdir/src/tools/thread/thread_test.c"],
   [AC_MSG_RESULT(yes)],
   [AC_MSG_RESULT(no)
-  AC_MSG_ERROR([Thread test program failed.  Your platform is not thread-safe.  See 'config.log])],
+  AC_MSG_ERROR([
+*** Thread test program failed.  Your platform is not thread-safe.  
+*** Check the file 'config.log'for the exact reason.])],
   [AC_MSG_RESULT(maybe)
   AC_MSG_WARN([
 *** Skipping thread test program because of cross-compile build.
