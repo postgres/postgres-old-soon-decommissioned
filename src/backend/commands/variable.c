@@ -462,12 +462,12 @@ parse_XactIsoLevel(char *value)
 	}
 
 
-	if (strcasecmp(value, "SERIALIZABLE") == 0)
+	if (strcmp(value, "serializable") == 0)
 		XactIsoLevel = XACT_SERIALIZABLE;
-	else if (strcasecmp(value, "READ COMMITTED") == 0)
+	else if (strcmp(value, "read committed") == 0)
 		XactIsoLevel = XACT_READ_COMMITTED;
 	else
-		elog(ERROR, "Bad TRANSACTION ISOLATION LEVEL (%s)", value);
+		elog(ERROR, "invalid transaction isolation level: %s", value);
 
 	return TRUE;
 }
