@@ -70,9 +70,6 @@ RelationGetIndexScan(Relation indexRelation,
 {
 	IndexScanDesc scan;
 
-	if (!RelationIsValid(indexRelation))
-		elog(ERROR, "RelationGetIndexScan: relation invalid");
-
 	scan = (IndexScanDesc) palloc(sizeof(IndexScanDescData));
 
 	scan->heapRelation = NULL;	/* may be set later */
@@ -135,9 +132,6 @@ RelationGetIndexScan(Relation indexRelation,
 void
 IndexScanEnd(IndexScanDesc scan)
 {
-	if (!IndexScanIsValid(scan))
-		elog(ERROR, "IndexScanEnd: invalid scan");
-
 	if (scan->keyData != NULL)
 		pfree(scan->keyData);
 

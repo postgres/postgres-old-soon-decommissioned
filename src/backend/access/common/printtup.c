@@ -273,7 +273,9 @@ printtup_prepare_info(DR_printtup *myState, TupleDesc typeinfo, int numAttrs)
 			fmgr_info(thisState->typsend, &thisState->finfo);
 		}
 		else
-			elog(ERROR, "Unsupported format code %d", format);
+			ereport(ERROR,
+					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+					 errmsg("unsupported format code: %d", format)));
 	}
 }
 

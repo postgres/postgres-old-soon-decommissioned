@@ -69,7 +69,7 @@ hashbuild(PG_FUNCTION_ARGS)
 	 * that's not the case, big trouble's what we have.
 	 */
 	if (RelationGetNumberOfBlocks(index) != 0)
-		elog(ERROR, "%s already contains data",
+		elog(ERROR, "index \"%s\" already contains data",
 			 RelationGetRelationName(index));
 
 	/* initialize the hash index metadata page */

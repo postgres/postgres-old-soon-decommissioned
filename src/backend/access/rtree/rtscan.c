@@ -384,7 +384,7 @@ adjustiptr(IndexScanDesc s,
 					break;
 
 				default:
-					elog(ERROR, "Bad operation in rtree scan adjust: %d", op);
+					elog(ERROR, "unrecognized operation in rtree scan adjust: %d", op);
 			}
 		}
 	}

@@ -48,7 +48,7 @@ _hash_doinsert(Relation rel, HashItem hitem)
 	/* we need a scan key to do our search, so build one */
 	itup = &(hitem->hash_itup);
 	if ((natts = rel->rd_rel->relnatts) != 1)
-		elog(ERROR, "Hash indices valid for only one index key.");
+		elog(ERROR, "Hash indexes support only one index key");
 	itup_scankey = _hash_mkscankey(rel, itup);
 
 	/*
@@ -228,7 +228,7 @@ _hash_pgaddtup(Relation rel,
 	itup_off = OffsetNumberNext(PageGetMaxOffsetNumber(page));
 	if (PageAddItem(page, (Item) hitem, itemsize, itup_off, LP_USED)
 		== InvalidOffsetNumber)
-		elog(ERROR, "_hash_pgaddtup: failed to add index item to %s",
+		elog(ERROR, "failed to add index item to \"%s\"",
 			 RelationGetRelationName(rel));
 
 	/* write the buffer, but hold our lock */

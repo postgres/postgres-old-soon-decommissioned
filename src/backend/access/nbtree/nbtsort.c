@@ -332,7 +332,7 @@ _bt_sortaddtup(Page page,
 
 	if (PageAddItem(page, (Item) btitem, itemsize, itup_off,
 					LP_USED) == InvalidOffsetNumber)
-		elog(ERROR, "btree: failed to add item to the page in _bt_sort");
+		elog(ERROR, "failed to add item to the index page");
 }
 
 /*----------
@@ -397,8 +397,11 @@ _bt_buildadd(Relation index, BTPageState *state, BTItem bti)
 	 * during creation of an index, we don't go through there.
 	 */
 	if (btisz > BTMaxItemSize(npage))
-		elog(ERROR, "btree: index item size %lu exceeds maximum %ld",
-			 (unsigned long) btisz, BTMaxItemSize(npage));
+		ereport(ERROR,
+				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
+				 errmsg("index tuple size %lu exceeds btree maximum, %lu",
+						(unsigned long) btisz,
+						(unsigned long) BTMaxItemSize(npage))));
 
 	if (pgspc < btisz || pgspc < state->btps_full)
 	{
