@@ -2418,6 +2418,7 @@ _copyCreatePLangStmt(CreatePLangStmt *from)
 	if (from->plname)
 		newnode->plname = pstrdup(from->plname);
 	Node_Copy(from, newnode, plhandler);
+	Node_Copy(from, newnode, plvalidator);
 	if (from->plcompiler)
 		newnode->plcompiler = pstrdup(from->plcompiler);
 	newnode->pltrusted = from->pltrusted;

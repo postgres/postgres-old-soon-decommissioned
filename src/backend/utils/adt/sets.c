@@ -58,6 +58,7 @@ SetDefine(char *querystr, Oid elemType)
 							 true,		/* returnsSet */
 							 elemType,	/* returnType */
 							 SQLlanguageId,	/* language */
+							 SQLvalidatorId,
 							 querystr,	/* prosrc */
 							 fileName,	/* probin */
 							 false,		/* not aggregate */

@@ -292,6 +292,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"using", USING},
 	{"vacuum", VACUUM},
 	{"valid", VALID},
+	{"validator", VALIDATOR},
 	{"values", VALUES},
 	{"varchar", VARCHAR},
 	{"varying", VARYING},

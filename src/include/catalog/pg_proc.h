@@ -2962,6 +2962,13 @@ DESCR("(internal)");
 DATA(insert OID = 2221 (  regtypeout		PGNSP PGUID 12 f f f t f s 1   23 "0" 100 0 0 100	regtypeout - _null_ ));
 DESCR("(internal)");
 
+DATA(insert OID = 2246 ( fmgr_internal_validator PGNSP PGUID 12 f f f t f s 1 26 "23" 100 0 0 100 fmgr_internal_validator - _null_ ));
+DESCR("(internal)");
+DATA(insert OID = 2247 ( fmgr_c_validator	PGNSP PGUID 12 f f f t f s 1   26 "23" 100 0 0 100	fmgr_c_validator - _null_ ));
+DESCR("(internal)");
+DATA(insert OID = 2248 ( fmgr_sql_validator	PGNSP PGUID 12 f f f t f s 1   26 "23" 100 0 0 100	fmgr_sql_validator - _null_ ));
+DESCR("(internal)");
+#define SQLvalidatorId 2248
 
 /*
  * Symbolic values for provolatile column: these indicate whether the result
@@ -2985,6 +2992,7 @@ extern Oid ProcedureCreate(const char *procedureName,
 				bool returnsSet,
 				Oid returnType,
 				Oid languageObjectId,
+				Oid languageValidator,
 				const char *prosrc,
 				const char *probin,
 				bool isAgg,

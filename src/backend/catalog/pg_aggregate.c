@@ -136,6 +136,7 @@ AggregateCreate(const char *aggName,
 							  false,		/* doesn't return a set */
 							  finaltype,	/* returnType */
 							  INTERNALlanguageId,	/* languageObjectId */
+							  0,
 							  "aggregate_dummy",	/* placeholder proc */
 							  "-",			/* probin */
 							  true,			/* isAgg */
