@@ -25,6 +25,8 @@ endif
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -I$(perl_archlibexp)/CORE
 
+rpathdir = $(perl_archlibexp)/CORE
+
 
 NAME = plperl
 SO_MAJOR_VERSION = 0

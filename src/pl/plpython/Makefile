@@ -33,7 +33,8 @@ endif
 ifneq (,$(findstring yes, $(shared_libpython)$(allow_nonpic_in_shlib)))
 
 override CPPFLAGS := -I$(srcdir) $(python_includespec) $(CPPFLAGS)
-rpath :=
+
+rpathdir = $(python_libdir)
 
 NAME = plpython
 SO_MAJOR_VERSION = 0
