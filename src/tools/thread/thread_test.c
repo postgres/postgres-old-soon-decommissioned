@@ -100,6 +100,7 @@ main(int argc, char *argv[])
 	temp_filename_1 = malloc(strlen(TEMP_FILENAME_1) + 1);
 	strcpy(temp_filename_1, TEMP_FILENAME_1);
 	mktemp(temp_filename_1);
+
 	temp_filename_2 = malloc(strlen(TEMP_FILENAME_2) + 1);
 	strcpy(temp_filename_2, TEMP_FILENAME_2);
 	mktemp(temp_filename_2);
