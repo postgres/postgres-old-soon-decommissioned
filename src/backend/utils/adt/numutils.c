@@ -137,7 +137,7 @@ ltoa(int32 l, char *a)
 int
 ftoa(double value, char *ascii, int width, int prec1, char format)
 {
-#if defined(BSD44_derived) || \
+#if defined(__FreeBSD__) || \
     defined(bsdi) || \
     defined(bsdi_2_1)
 	char	out[256];
