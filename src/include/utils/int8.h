@@ -27,6 +27,8 @@ extern bool scanint8(const char *str, bool errorOK, int64 *result);
 
 extern Datum int8in(PG_FUNCTION_ARGS);
 extern Datum int8out(PG_FUNCTION_ARGS);
+extern Datum int8recv(PG_FUNCTION_ARGS);
+extern Datum int8send(PG_FUNCTION_ARGS);
 
 extern Datum int8eq(PG_FUNCTION_ARGS);
 extern Datum int8ne(PG_FUNCTION_ARGS);
