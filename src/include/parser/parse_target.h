@@ -23,12 +23,6 @@
 #define EXPR_RELATION_FIRST	2
 
 extern List *transformTargetList(ParseState *pstate, List *targetlist);
-extern TargetEntry *make_targetlist_expr(ParseState *pstate,
-					 char *colname,
-					 Node *expr,
-					 List *arrayRef);
-extern List *expandAllTables(ParseState *pstate);
-extern char *figureColname(Node *expr, Node *resval);
 extern List *makeTargetNames(ParseState *pstate, List *cols);
 
 #endif							/* PARSE_TARGET_H */

@@ -20,9 +20,6 @@
 
 extern void AddAggToParseState(ParseState *pstate, Aggreg *aggreg);
 extern void finalizeAggregates(ParseState *pstate, Query *qry);
-extern bool contain_agg_clause(Node *clause);
-extern bool exprIsAggOrGroupCol(Node *expr, List *groupClause);
-extern bool tleIsAggOrGroupCol(TargetEntry *tle, List *groupClause);
 extern void parseCheckAggregates(ParseState *pstate, Query *qry);
 extern Aggreg *ParseAgg(char *aggname, Oid basetype, Node *target);
 extern void agg_error(char *caller, char *aggname, Oid basetypeID);

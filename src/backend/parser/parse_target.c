@@ -25,6 +25,13 @@
 #include "parser/parse_target.h"
 #include "utils/builtins.h"
 
+static List *expandAllTables(ParseState *pstate);
+static char *figureColname(Node *expr, Node *resval);
+static TargetEntry *make_targetlist_expr(ParseState *pstate,
+					 char *colname,
+					 Node *expr,
+					 List *arrayRef);
+
 /*
  * transformTargetList -
  *	  turns a list of ResTarget's into a list of TargetEntry's
@@ -310,7 +317,7 @@ transformTargetList(ParseState *pstate, List *targetlist)
  *
  * arrayRef is a list of transformed A_Indices
  */
-TargetEntry *
+static TargetEntry *
 make_targetlist_expr(ParseState *pstate,
 					 char *colname,
 					 Node *expr,
@@ -568,7 +575,7 @@ makeTargetNames(ParseState *pstate, List *cols)
  *	  turns '*' (in the target list) into a list of attributes
  *	   (of all relations in the range table)
  */
-List *
+static List *
 expandAllTables(ParseState *pstate)
 {
 	List	   *target = NIL;
@@ -633,7 +640,7 @@ expandAllTables(ParseState *pstate)
  *	  list, we have to guess.
  *
  */
-char *
+static char *
 figureColname(Node *expr, Node *resval)
 {
 	switch (nodeTag(expr))

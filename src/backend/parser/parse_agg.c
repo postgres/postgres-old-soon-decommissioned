@@ -27,6 +27,10 @@
 #include "parser/parse_target.h"
 #include "utils/syscache.h"
 
+static bool contain_agg_clause(Node *clause);
+static bool exprIsAggOrGroupCol(Node *expr, List *groupClause);
+static bool tleIsAggOrGroupCol(TargetEntry *tle, List *groupClause);
+
 /*
  * AddAggToParseState -
  *	  add the aggregate to the list of unique aggregates in pstate.
@@ -93,7 +97,7 @@ finalizeAggregates(ParseState *pstate, Query *qry)
  *
  *	  Returns true if any aggregate found.
  */
-bool
+static bool
 contain_agg_clause(Node *clause)
 {
 	if (clause == NULL)
@@ -151,7 +155,7 @@ contain_agg_clause(Node *clause)
  * exprIsAggOrGroupCol -
  *	  returns true if the expression does not contain non-group columns.
  */
-bool
+static bool
 exprIsAggOrGroupCol(Node *expr, List *groupClause)
 {
 	List	   *gl;
@@ -185,7 +189,7 @@ exprIsAggOrGroupCol(Node *expr, List *groupClause)
  * tleIsAggOrGroupCol -
  *	  returns true if the TargetEntry is Agg or GroupCol.
  */
-bool
+static bool
 tleIsAggOrGroupCol(TargetEntry *tle, List *groupClause)
 {
 	Node	   *expr = tle->expr;

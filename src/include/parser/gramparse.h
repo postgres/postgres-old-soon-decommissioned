@@ -18,6 +18,7 @@
 extern void init_io(void);
 
 /* from gram.y */
+extern Oid param_type(int t);
 extern void parser_init(Oid *typev, int nargs);
 extern int	yyparse(void);
 

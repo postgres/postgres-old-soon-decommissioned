@@ -28,6 +28,12 @@
 #include "utils/builtins.h"
 #include "utils/syscache.h"
 
+static void disallow_setop(char *op, Type optype, Node *operand);
+static Node *make_operand(char *opname,
+			 Node *tree,
+			 Oid orig_typeId,
+			 Oid true_typeId);
+
 /*
  * make_parsestate() --
  *	  allocate and initialize a new ParseState.
@@ -56,7 +62,7 @@ make_parsestate(void)
 	return (pstate);
 }
 
-Node *
+static Node *
 make_operand(char *opname,
 			 Node *tree,
 			 Oid orig_typeId,
@@ -110,7 +116,7 @@ make_operand(char *opname,
 }
 
 
-void
+static void
 disallow_setop(char *op, Type optype, Node *operand)
 {
 	if (operand == NULL)

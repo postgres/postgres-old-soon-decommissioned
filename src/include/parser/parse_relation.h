@@ -38,7 +38,5 @@ extern Oid attnameTypeId(Oid relid, char *attrname);
 extern Oid attnumTypeId(Relation rd, int attid);
 extern void handleTargetColname(ParseState *pstate, char **resname,
 					char *refname, char *colname);
-extern void checkTargetTypes(ParseState *pstate, char *target_colname,
-				 char *refname, char *colname);
 
 #endif							/* PARSE_RANGE_H */
