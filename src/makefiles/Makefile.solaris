@@ -8,7 +8,7 @@ rpath = -Wl,-rpath,$(libdir)
 else
 rpath = -Wl,-R$(libdir)
 endif
-
+shlib_symbolic = -Wl,-Bsymbolic
 
 DLSUFFIX = .so
 ifeq ($(GCC), yes)
