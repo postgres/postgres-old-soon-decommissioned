@@ -1526,7 +1526,7 @@ RelationNameGetRelation(const char *relationName)
 	 * ----------------
 	 */
 	temprelname = get_temp_rel_by_username(relationName);
-	if (temprelname)
+	if (temprelname != NULL)
 		relationName = temprelname;
 
 	/* ----------------

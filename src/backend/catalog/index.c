@@ -145,7 +145,7 @@ GetHeapRelationOid(char *heapRelationName, char *indexRelationName, bool istemp)
 	indoid = RelnameFindRelid(indexRelationName);
 
 	if ((!istemp && OidIsValid(indoid)) ||
-		(istemp && get_temp_rel_by_username(indexRelationName) != NULL))
+		(istemp && is_temp_rel_name(indexRelationName)))
 		elog(ERROR, "Cannot create index: '%s' already exists",
 			 indexRelationName);
 
@@ -885,7 +885,7 @@ index_create(char *heapRelationName,
 	TupleDesc	indexTupDesc;
 	Oid			heapoid;
 	Oid			indexoid;
-	bool		istemp = (get_temp_rel_by_username(heapRelationName) != NULL);
+	bool		istemp = is_temp_rel_name(heapRelationName);
 	char	   *temp_relname = NULL;
 
 	SetReindexProcessing(false);
