@@ -140,6 +140,8 @@ usage(const char *progname)
 	fprintf(stderr,
 			"\t -n          \t\t suppress most quotes around identifiers\n");
 	fprintf(stderr,
+			"\t -N          \t\t enable most quotes around identifiers\n");
+	fprintf(stderr,
 			"\t -o          \t\t dump object id's (oids)\n");
 	fprintf(stderr,
 			"\t -p port     \t\t server port number\n");
@@ -560,7 +562,7 @@ main(int argc, char **argv)
 
 	progname = *argv;
 
-	while ((c = getopt(argc, argv, "adDf:h:nop:st:vzu")) != EOF)
+	while ((c = getopt(argc, argv, "adDf:h:nNop:st:vzu")) != EOF)
 	{
 		switch (c)
 		{
@@ -583,6 +585,9 @@ main(int argc, char **argv)
 				break;
 			case 'n':			/* Do not force double-quotes on identifiers */
 				g_force_quotes = false;
+				break;
+			case 'N':			/* Force double-quotes on identifiers */
+				g_force_quotes = true;
 				break;
 			case 'o':			/* Dump oids */
 				oids = 1;
@@ -2536,14 +2541,18 @@ dumpACL(FILE *fout, TableInfo tbinfo)
 
 	ACLlist = ParseACL(tbinfo.relacl, &l);
 	if (ACLlist == (ACL *) NULL)
+	{
 		if (l == 0)
+		{
 			return;
+		}
 		else
 		{
 			fprintf(stderr, "Could not parse ACL list for '%s'...Exiting!\n",
 					tbinfo.relname);
 			exit_nicely(g_conn);
 		}
+	}
 
 	/* Revoke Default permissions for PUBLIC */
 	fprintf(fout,
