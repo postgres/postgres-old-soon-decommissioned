@@ -342,13 +342,13 @@ StreamConnection(int server_fd, Port *port)
 		int			on = 1;
 
 		if (setsockopt(port->sock, IPPROTO_TCP, TCP_NODELAY,
-					   &on, sizeof(on)) < 0)
+					   (char *) &on, sizeof(on)) < 0)
 		{
 			perror("postmaster: StreamConnection: setsockopt(TCP_NODELAY)");
 			return STATUS_ERROR;
 		}
 		if (setsockopt(port->sock, SOL_SOCKET, SO_KEEPALIVE,
-					   &on, sizeof(on)) < 0)
+					   (char *) &on, sizeof(on)) < 0)
 		{
 			perror("postmaster: StreamConnection: setsockopt(SO_KEEPALIVE)");
 			return STATUS_ERROR;

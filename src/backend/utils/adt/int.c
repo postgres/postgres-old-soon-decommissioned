@@ -88,12 +88,12 @@ int2vectorin(PG_FUNCTION_ARGS)
 	{
 		if (sscanf(intString, "%hd", &result[slot]) != 1)
 			break;
-		while (*intString && isspace(*intString))
+		while (*intString && isspace((int) *intString))
 			intString++;
-		while (*intString && !isspace(*intString))
+		while (*intString && !isspace((int) *intString))
 			intString++;
 	}
-	while (*intString && isspace(*intString))
+	while (*intString && isspace((int) *intString))
 		intString++;
 	if (*intString)
 		elog(ERROR, "int2vector value has too many values");

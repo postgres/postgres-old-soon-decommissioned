@@ -446,8 +446,8 @@ other			.
 					ScanKeyword		*keyword;
 
 					for(i = 0; yytext[i]; i++)
-						if (isascii((unsigned char)yytext[i]) &&
-							isupper(yytext[i]))
+						if (isascii((int) yytext[i]) &&
+							isupper((int) yytext[i]))
 							yytext[i] = tolower(yytext[i]);
 					if (i >= NAMEDATALEN)
                     {

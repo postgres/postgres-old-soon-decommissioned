@@ -354,7 +354,7 @@ plpgsql_tolower(char *s)
 		}
 		else
 		{
-			if (isupper(*s))
+			if (isupper((int) *s))
 				*cp++ = tolower(*s++);
 			else
 				*cp++ = *s++;

@@ -70,8 +70,8 @@ _outToken(StringInfo str, char *s)
 	if (*s == '<' ||
 		*s == '\"' ||
 		*s == '@' ||
-		isdigit(*s) ||
-		(*s == '-' && isdigit(s[1])))
+		isdigit((int) *s) ||
+		(*s == '-' && isdigit((int) s[1])))
 		appendStringInfoChar(str, '\\');
 	while (*s)
 	{

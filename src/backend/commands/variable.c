@@ -96,7 +96,7 @@ get_token(char **tok, char **val, char *str)
 		return NULL;
 
 	/* skip leading white space */
-	while (isspace(*str))
+	while (isspace((int) *str))
 		str++;
 
 	/* end of string? then return NULL */
@@ -110,7 +110,7 @@ get_token(char **tok, char **val, char *str)
 	*tok = str;
 
 	/* Advance to end of word */
-	while (*str && !isspace(*str) && *str != ',' && *str != '=')
+	while (*str && !isspace((int) *str) && *str != ',' && *str != '=')
 		str++;
 
 	/* Terminate word string for caller */
@@ -118,7 +118,7 @@ get_token(char **tok, char **val, char *str)
 	*str = '\0';
 
 	/* Skip any whitespace */
-	while (isspace(ch))
+	while (isspace((int) ch))
 		ch = *(++str);
 
 	/* end of string? */
@@ -136,7 +136,7 @@ get_token(char **tok, char **val, char *str)
 	str++;
 
 	/* skip whitespace after '=' */
-	while (isspace(*str))
+	while (isspace((int) *str))
 		str++;
 
 	if (*str == ',' || *str == '\0')
@@ -146,7 +146,7 @@ get_token(char **tok, char **val, char *str)
 	*val = str;
 
 	/* Advance to end of word */
-	while (*str && !isspace(*str) && *str != ',')
+	while (*str && !isspace((int) *str) && *str != ',')
 		str++;
 
 	/* Terminate word string for caller */
@@ -154,7 +154,7 @@ get_token(char **tok, char **val, char *str)
 	*str = '\0';
 
 	/* Skip any whitespace */
-	while (isspace(ch))
+	while (isspace((int) ch))
 		ch = *(++str);
 
 	/* end of string? */

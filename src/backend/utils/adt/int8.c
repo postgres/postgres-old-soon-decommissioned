@@ -70,15 +70,15 @@ int8in(PG_FUNCTION_ARGS)
 	 * Do our own scan, rather than relying on sscanf which might be
 	 * broken for long long.
 	 */
-	while (*ptr && isspace(*ptr))		/* skip leading spaces */
+	while (*ptr && isspace((int) *ptr))		/* skip leading spaces */
 		ptr++;
 	if (*ptr == '-')			/* handle sign */
 		sign = -1, ptr++;
 	else if (*ptr == '+')
 		ptr++;
-	if (!isdigit(*ptr))			/* require at least one digit */
+	if (!isdigit((int) *ptr))			/* require at least one digit */
 		elog(ERROR, "Bad int8 external representation \"%s\"", str);
-	while (*ptr && isdigit(*ptr))		/* process digits */
+	while (*ptr && isdigit((int) *ptr))		/* process digits */
 	{
 		int64		newtmp = tmp * 10 + (*ptr++ - '0');
 

@@ -500,14 +500,14 @@ SetPidFile(pid_t pid)
 			 */
 			fprintf(stderr, "Can't create pid file: %s\n", pidfile);
 			if (is_postgres)
-				fprintf(stderr, "Is another postgres (pid: %d) running?\n", post_pid);
+				fprintf(stderr, "Is another postgres (pid: %d) running?\n", (int) post_pid);
 			else
 				fprintf(stderr, "Is another postmaster (pid: %s) running?\n", pidstr);
 			return (-1);
 		}
 	}
 
-	sprintf(pidstr, "%d", pid);
+	sprintf(pidstr, "%d", (int) pid);
 	if (write(fd, pidstr, strlen(pidstr)) != strlen(pidstr))
 	{
 		fprintf(stderr, "Write to pid file failed\n");

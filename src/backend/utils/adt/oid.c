@@ -41,12 +41,12 @@ oidvectorin(PG_FUNCTION_ARGS)
 	{
 		if (sscanf(oidString, "%u", &result[slot]) != 1)
 			break;
-		while (*oidString && isspace(*oidString))
+		while (*oidString && isspace((int) *oidString))
 			oidString++;
-		while (*oidString && !isspace(*oidString))
+		while (*oidString && !isspace((int) *oidString))
 			oidString++;
 	}
-	while (*oidString && isspace(*oidString))
+	while (*oidString && isspace((int) *oidString))
 		oidString++;
 	if (*oidString)
 		elog(ERROR, "oidvector value has too many values");

@@ -1383,7 +1383,7 @@ regex_fixed_prefix(char *patt, bool case_insensitive,
 			patt[pos] == '(' ||
 			patt[pos] == '[' ||
 			patt[pos] == '$' ||
-			(case_insensitive && isalpha(patt[pos])))
+			(case_insensitive && isalpha((int) patt[pos])))
 			break;
 		/*
 		 * Check for quantifiers.  Except for +, this means the preceding

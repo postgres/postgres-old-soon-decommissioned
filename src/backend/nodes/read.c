@@ -205,8 +205,8 @@ nodeTokenType(char *token, int length)
 	numlen = length;
 	if (*numptr == '+' || *numptr == '-')
 		numptr++, numlen--;
-	if ((numlen > 0 && isdigit(*numptr)) ||
-		(numlen > 1 && *numptr == '.' && isdigit(numptr[1])))
+	if ((numlen > 0 && isdigit((int) *numptr)) ||
+		(numlen > 1 && *numptr == '.' && isdigit((int) numptr[1])))
 	{
 
 		/*

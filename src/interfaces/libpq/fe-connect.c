@@ -629,10 +629,7 @@ connectNoDelay(PGconn *conn)
 	int			on = 1;
 
 	if (setsockopt(conn->sock, IPPROTO_TCP, TCP_NODELAY,
-#ifdef WIN32
-				   (char *)
-#endif
-				   &on,
+				   (char *) &on,
 				   sizeof(on)) < 0)
 	{
 		printfPQExpBuffer(&conn->errorMessage,
@@ -1098,7 +1095,7 @@ keep_going:						/* We will come back to here until there
 				 */
 
 				if (getsockopt(conn->sock, SOL_SOCKET, SO_ERROR,
-							   &optval, &optlen) == -1)
+							   (char *) &optval, &optlen) == -1)
 				{
 					printfPQExpBuffer(&conn->errorMessage,
 							   "PQconnectPoll() -- getsockopt() failed: "
@@ -2117,7 +2114,7 @@ conninfo_parse(const char *conninfo, PQExpBuffer errorMessage)
 	while (*cp)
 	{
 		/* Skip blanks before the parameter name */
-		if (isspace(*cp))
+		if (isspace((int) *cp))
 		{
 			cp++;
 			continue;
@@ -2129,12 +2126,12 @@ conninfo_parse(const char *conninfo, PQExpBuffer errorMessage)
 		{
 			if (*cp == '=')
 				break;
-			if (isspace(*cp))
+			if (isspace((int) *cp))
 			{
 				*cp++ = '\0';
 				while (*cp)
 				{
-					if (!isspace(*cp))
+					if (!isspace((int) *cp))
 						break;
 					cp++;
 				}
@@ -2158,7 +2155,7 @@ conninfo_parse(const char *conninfo, PQExpBuffer errorMessage)
 		/* Skip blanks after the '=' */
 		while (*cp)
 		{
-			if (!isspace(*cp))
+			if (!isspace((int) *cp))
 				break;
 			cp++;
 		}
@@ -2171,7 +2168,7 @@ conninfo_parse(const char *conninfo, PQExpBuffer errorMessage)
 			cp2 = pval;
 			while (*cp)
 			{
-				if (isspace(*cp))
+				if (isspace((int) *cp))
 				{
 					*cp++ = '\0';
 					break;

@@ -64,6 +64,11 @@
 #endif
 #endif
 
+/* for finite() on Solaris */
+#ifdef HAVE_IEEEFP_H
+# include <ieeefp.h>
+#endif
+
 #include "fmgr.h"
 #include "utils/builtins.h"
 

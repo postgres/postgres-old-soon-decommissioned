@@ -1192,7 +1192,7 @@ DCH_processor(FormatNode *node, char *inout, int flag)
 				 */
 				if (isspace(n->character) && IS_FX == 0)
 				{
-					while (*s != '\0' && isspace(*(s + 1)))
+					while (*s != '\0' && isspace((int) *(s + 1)))
 						++s;
 				}
 			}

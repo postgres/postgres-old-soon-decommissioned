@@ -520,7 +520,7 @@ fitsInFloat(Value *value)
 	ndigits = 0;
 	for (; *ptr; ptr++)
 	{
-		if (isdigit(*ptr))
+		if (isdigit((int) *ptr))
 			ndigits++;
 		else if (*ptr == 'e' || *ptr == 'E')
 			break;				/* don't count digits in exponent */
