@@ -248,7 +248,7 @@ extern Node *newNode(Size size, NodeTag tag);
 /*
  * nodes/{outfuncs.c,print.c}
  */
-#define nodeDisplay	print
+#define nodeDisplay	pprint
 
 extern char *nodeToString(void *obj);
 extern void print(void *obj);
