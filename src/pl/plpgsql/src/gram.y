@@ -512,6 +512,10 @@ decl_cursor_arglist : decl_cursor_arg
 					{
 						int i = $1->nfields++;
 
+						/* Guard against overflowing the array on malicious input */
+						if (i >= 1024)
+							yyerror("too many parameters specified for refcursor");
+
 						$1->fieldnames[i] = $3->refname;
 						$1->varnos[i] = $3->varno;
 
