@@ -58,6 +58,9 @@ typedef struct Query
 								 * BY */
 	Node	   *havingQual;		/* qualification of each group */
 
+        /***S*I***/
+	List	   *intersectClause;	
+
 	List	   *unionClause;	/* unions are linked under the previous
 								 * query */
 	Node	   *limitOffset;	/* # of result tuples to skip */
@@ -605,7 +608,9 @@ typedef struct InsertStmt
 	List	   *groupClause;	/* group by clause */
 	Node	   *havingClause;	/* having conditional-expression */
 	List	   *unionClause;	/* union subselect parameters */
-	bool		unionall;		/* union without unique sort */
+	bool	   unionall;		/* union without unique sort */
+        /***S*I***/
+        List       *intersectClause;  
 } InsertStmt;
 
 /* ----------------------
@@ -646,6 +651,10 @@ typedef struct SelectStmt
 	Node	   *whereClause;	/* qualifications */
 	List	   *groupClause;	/* group by clause */
 	Node	   *havingClause;	/* having conditional-expression */
+        /***S*I***/
+        List       *intersectClause;
+        List       *exceptClause;
+  
 	List	   *unionClause;	/* union subselect parameters */
 	List	   *sortClause;		/* sort clause (a list of SortGroupBy's) */
 	char	   *portalname;		/* the portal (cursor) to create */

@@ -227,6 +227,9 @@ _outQuery(StringInfo str, Query *node)
 			node->hasSubLinks ? "true" : "false");
 	_outNode(str, node->unionClause);
 
+	appendStringInfo(str, " :intersectClause ");
+	_outNode(str, node->intersectClause);
+
 	appendStringInfo(str, " :limitOffset ");
 	_outNode(str, node->limitOffset);
 

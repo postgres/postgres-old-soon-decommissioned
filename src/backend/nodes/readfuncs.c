@@ -163,6 +163,11 @@ _readQuery()
 	token = lsptok(NULL, &length);		/* skip :unionClause */
 	local_node->unionClause = nodeRead(true);
 
+	/***S*I***/
+ 	token = lsptok(NULL, &length);		/* skip :intersectClause */
+ 	local_node->intersectClause = nodeRead(true);
+ 
+
 	token = lsptok(NULL, &length);		/* skip :limitOffset */
 	local_node->limitOffset = nodeRead(true);
 

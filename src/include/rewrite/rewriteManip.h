@@ -25,6 +25,8 @@ void		AddQual(Query *parsetree, Node *qual);
 void		AddHavingQual(Query *parsetree, Node *havingQual);
 
 void		AddNotQual(Query *parsetree, Node *qual);
+void            AddNotHavingQual(Query *parsetree, Node *havingQual);
+
 void		FixNew(RewriteInfo *info, Query *parsetree);
 
 void HandleRIRAttributeRule(Query *parsetree, List *rtable, List *targetlist,

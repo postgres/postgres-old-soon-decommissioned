@@ -29,7 +29,12 @@
 #define ABORTX	0x4000			/* abort process after logging */
 #endif
 
-#define ELOG_MAXLEN 4096
+/***S*I***/
+/* Increase this to be able to use postmaster -d 3 with complex
+ * view definitions (which are transformed to very, very large INSERT statements
+ * and if -d 3 is used the query string of these statements is printed using
+ * vsprintf which expects enough memory reserved! */
+#define ELOG_MAXLEN 12288
 
 
 /* uncomment the following if you want your elog's to be timestamped */

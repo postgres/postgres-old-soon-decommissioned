@@ -22,5 +22,8 @@ extern bool ExecInitGroup(Group *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsGroup(Group *node);
 extern void ExecEndGroup(Group *node);
 extern void ExecReScanGroup(Group *node, ExprContext *exprCtxt, Plan *parent);
+/***S*I***/
+extern void ExecReScanGroup(Group *node, ExprContext *exprCtxt, Plan *parent);
+
 
 #endif	 /* NODEGROUP_H */
