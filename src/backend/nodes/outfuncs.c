@@ -990,7 +990,7 @@ _outEState(StringInfo str, EState *node)
  *	Stuff from relation.h
  */
 static void
-_outRel(StringInfo str, RelOptInfo *node)
+_outRelOptInfo(StringInfo str, RelOptInfo *node)
 {
 	char		buf[500];
 
@@ -1788,7 +1788,7 @@ _outNode(StringInfo str, void *obj)
 				_outEState(str, obj);
 				break;
 			case T_RelOptInfo:
-				_outRel(str, obj);
+				_outRelOptInfo(str, obj);
 				break;
 			case T_TargetEntry:
 				_outTargetEntry(str, obj);

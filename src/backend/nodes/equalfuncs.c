@@ -302,6 +302,19 @@ _equalCInfo(CInfo *a, CInfo *b)
 				  (b->indexids)));
 }
 
+/*
+ * RelOptInfo is a subclass of Node.
+ */
+static bool
+_equalRelOptInfo(RelOptInfo *a, RelOptInfo *b)
+{
+	Assert(IsA(a, RelOptInfo));
+	Assert(IsA(b, RelOptInfo));
+
+	return (equal((a->relids),
+				  (b->relids)));
+}
+
 static bool
 _equalJoinMethod(JoinMethod *a, JoinMethod *b)
 {
@@ -662,6 +675,9 @@ equal(void *a, void *b)
 			break;
 		case T_CInfo:
 			retval = _equalCInfo(a, b);
+			break;
+		case T_RelOptInfo:
+			retval = _equalRelOptInfo(a, b);
 			break;
 		case T_JoinMethod:
 			retval = _equalJoinMethod(a, b);

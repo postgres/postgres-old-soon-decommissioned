@@ -1349,8 +1349,6 @@ ExecQual(List *qual, ExprContext *econtext)
 
 	foreach(clause, qual)
 	{
-	 
-	  
 		result = ExecQualClause((Node *) lfirst(clause), econtext);
 		if (result == true)
 			break;

@@ -1218,11 +1218,11 @@ _readEState()
  */
 
 /* ----------------
- *		_readRel
+ *		_readRelOptInfo
  * ----------------
  */
 static RelOptInfo *
-_readRel()
+_readRelOptInfo()
 {
 	RelOptInfo		   *local_node;
 	char	   *token;
@@ -1991,7 +1991,7 @@ parsePlanString(void)
 	else if (!strncmp(token, "ESTATE", length))
 		return_value = _readEState();
 	else if (!strncmp(token, "RELOPTINFO", length))
-		return_value = _readRel();
+		return_value = _readRelOptInfo();
 	else if (!strncmp(token, "TARGETENTRY", length))
 		return_value = _readTargetEntry();
 	else if (!strncmp(token, "RTE", length))
