@@ -503,7 +503,7 @@ connectDB(PGconn *conn)
 	struct hostent *hp;
 	StartupPacket sp;
 	AuthRequest areq;
-	int			laddrlen;
+	SOCKET_SIZE_TYPE	laddrlen;
 	int			portno,
 				family;
 	char		beresp;
