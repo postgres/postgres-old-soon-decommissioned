@@ -224,11 +224,12 @@ start_postmaster(void)
 
 	/* Does '&' work on Win32? */
 	if (log_file != NULL)
-		snprintf(cmd, MAXPGPATH, "'%s' %s < %s >> '%s' 2>&1 &",
-				 postgres_path, post_opts, DEVNULL, log_file);
+		snprintf(cmd, MAXPGPATH, "%s\"%s\" %s < %s >> \"%s\" 2>&1 &%s",
+				 SYSTEMQUOTE, postgres_path, post_opts, DEVNULL, log_file,
+				 SYSTEMQUOTE);
 	else
-		snprintf(cmd, MAXPGPATH, "'%s' %s < %s 2>&1 &",
-				 postgres_path, post_opts, DEVNULL);
+		snprintf(cmd, MAXPGPATH, "%s\"%s\" %s < \"%s\" 2>&1 &%s",
+				 SYSTEMQUOTE, postgres_path, post_opts, DEVNULL, SYSTEMQUOTE);
 	return system(cmd);
 }
 

@@ -72,6 +72,18 @@ extern int find_other_exec(const char *argv0, const char *target,
 #define DEVNULL "/dev/null"
 #endif
 
+/*
+ *	Win32 needs double quotes at the beginning and end of system()
+ *	strings.  If not, it gets confused with multiple quoted strings.
+ *	It also must use double-quotes around the executable name
+ *	and any files use for redirection.  Other args can use single-quotes.
+ */
+#ifdef WIN32
+#define SYSTEMQUOTE "\""
+#else
+#define SYSTEMQUOTE ""
+#endif
+
 /* Portable delay handling */
 extern void pg_usleep(long microsec);
 

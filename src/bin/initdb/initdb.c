@@ -812,12 +812,12 @@ test_connections(void)
 	for (i = 0; i < len; i++)
 	{
 		snprintf(cmd, sizeof(cmd),
-				 "\"%s\" -boot -x0 %s "
+				 "%s\"%s\" -boot -x0 %s "
 				 "-c shared_buffers=%d -c max_connections=%d template1 "
-				 "<%s >%s 2>&1",
-				 backend_exec, boot_options,
+				 "< \"%s\" > \"%s\" 2>&1%s",
+				 SYSTEMQUOTE, backend_exec, boot_options,
 				 conns[i] * 5, conns[i],
-				 DEVNULL, DEVNULL);
+				 DEVNULL, DEVNULL, SYSTEMQUOTE);
 		status = system(cmd);
 		if (status == 0)
 			break;
@@ -848,12 +848,12 @@ test_buffers(void)
 	for (i = 0; i < len; i++)
 	{
 		snprintf(cmd, sizeof(cmd),
-				 "\"%s\" -boot -x0 %s "
+				 "%s\"%s\" -boot -x0 %s "
 				 "-c shared_buffers=%d -c max_connections=%d template1 "
-				 "<%s >%s 2>&1",
-				 backend_exec, boot_options,
+				 "< \"%s\" > \"%s\" 2>&1%s",
+				 SYSTEMQUOTE, backend_exec, boot_options,
 				 bufs[i], n_connections,
-				 DEVNULL, DEVNULL);
+				 DEVNULL, DEVNULL, SYSTEMQUOTE);
 		status = system(cmd);
 		if (status == 0)
 			break;
