@@ -108,8 +108,8 @@ NumLWLocks(void)
 	/* bufmgr.c needs two for each shared buffer */
 	numLocks += 2 * NBuffers;
 
-	/* clog.c needs one per CLOG buffer */
-	numLocks += NUM_CLOG_BUFFERS;
+	/* clog.c needs one per CLOG buffer + one control lock */
+	numLocks += NUM_CLOG_BUFFERS + 1;
 
 	/* Perhaps create a few more for use by user-defined modules? */
 
