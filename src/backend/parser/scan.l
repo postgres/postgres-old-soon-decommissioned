@@ -246,7 +246,7 @@ other			.
 				}
 <xq>{xqstop}	{
 					BEGIN(INITIAL);
-					yylval.str = pstrdup(scanstr(literal));
+					yylval.str = scanstr(literal);
 					return SCONST;
 				}
 <xq>{xqdouble}	|

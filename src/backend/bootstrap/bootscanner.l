@@ -98,12 +98,17 @@ insert			{ return(INSERT_TUPLE); }
 					return(ID);
 				}
 {id}			{
-					yylval.ival = EnterString(scanstr((char*)yytext));
+					char   *newid = scanstr((char*)yytext);
+					yylval.ival = EnterString(newid);
+					pfree(newid);
 					return(ID);
 				}
 {sid}			{
+					char   *newid;
 					yytext[strlen(yytext)-1] = '\0'; /* strip off quotes */
-					yylval.ival = EnterString(scanstr((char*)yytext+1));
+					newid = scanstr((char*)yytext+1);
+					yylval.ival = EnterString(newid);
+					pfree(newid);
 					yytext[strlen(yytext)] = '"'; /* restore quotes */
 					return(ID);
 				}
