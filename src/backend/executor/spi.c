@@ -695,8 +695,11 @@ _SPI_execute(char *src, int tcount, _SPI_plan *plan)
 		}
 	}
 
-	plan->qtlist = queryTree_list;
-	plan->ptlist = planTree_list;
+	if (plan)
+	{
+		plan->qtlist = queryTree_list;
+		plan->ptlist = planTree_list;
+	}
 
 	return res;
 }
