@@ -49,6 +49,10 @@
 #define MAXINT        INT_MAX
 #else
 #include <netdb.h>		/* for MAXHOSTNAMELEN on some */
+#ifndef MAXHOSTNAMELEN		/* for MAXHOSTNAMELEN everywhere else */
+#include <arpa/nameser.h>
+#define MAXHOSTNAMELEN		MAXDNAME
+#endif
 # if defined(PORTNAME_BSD44_derived) || \
      defined(PORTNAME_bsdi) || \
      defined(PORTNAME_bsdi_2_1)

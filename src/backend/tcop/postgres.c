@@ -29,6 +29,10 @@
 #include <sys/param.h>		/* for MAXHOSTNAMELEN on most */
 #ifndef WIN32
 #include <netdb.h>		/* for MAXHOSTNAMELEN on some */
+#ifndef MAXHOSTNAMELEN		/* for MAXHOSTNAMELEN everywhere else */
+#include <arpa/nameser.h>
+#define MAXHOSTNAMELEN		MAXDNAME
+#endif
 #endif /* WIN32 */
 #include <errno.h>
 #ifdef PORTNAME_aix
@@ -1223,7 +1227,7 @@ PostgresMain(int argc, char *argv[])
      */
     if (IsUnderPostmaster == false) {
 	puts("\nPOSTGRES backend interactive interface");
-	puts("$Revision: 1.4 $ $Date: 1996/07/22 23:00:26 $");
+	puts("$Revision: 1.5 $ $Date: 1996/08/06 16:43:41 $");
     }
     
     /* ----------------

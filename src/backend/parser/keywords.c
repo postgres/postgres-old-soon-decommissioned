@@ -87,6 +87,7 @@ static ScanKeyword ScanKeywords[] = {
 	{ "insert",		INSERT		},
 	{ "instead",		INSTEAD		},
 	{ "into",		INTO		},
+	{ "is",			IS		},
 	{ "isnull",             ISNULL          },
 	{ "language",		LANGUAGE	},
 	{ "light",		LIGHT		},
