@@ -196,7 +196,7 @@ pg_nofile(void)
         static long no_files = 0;
 
         if (no_files == 0) {
-#if defined(MISSING_SYSCONF)
+#ifndef HAVE_SYSCONF 
 		no_files = (long)NOFILE;
 #else
                 no_files = sysconf(_SC_OPEN_MAX);
@@ -204,7 +204,7 @@ pg_nofile(void)
         		elog(DEBUG,"pg_nofile: Unable to get _SC_OPEN_MAX using sysconf() using (%d)", NOFILE);
 			no_files = (long)NOFILE;
 		}
-#endif /* MISSING_SYSCONF */
+#endif 
         }
 
 	if ((no_files - RESERVE_FOR_LD) < FD_MINFREE)
