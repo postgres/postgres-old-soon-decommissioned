@@ -124,8 +124,7 @@ set_base_rel_pathlists(Query *root)
 			/* RangeFunction --- generate a separate plan for it */
 			set_function_pathlist(root, rel, rte);
 		}
-		else if ((inheritlist = expand_inherited_rtentry(root, rti, true))
-				 != NIL)
+		else if ((inheritlist = expand_inherited_rtentry(root, rti)) != NIL)
 		{
 			/* Relation is root of an inheritance tree, process specially */
 			set_inherited_rel_pathlist(root, rel, rti, rte, inheritlist);
@@ -222,13 +221,6 @@ set_inherited_rel_pathlist(Query *root, RelOptInfo *rel,
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 				 errmsg("SELECT FOR UPDATE is not supported for inheritance queries")));
-
-	/*
-	 * The executor will check the parent table's access permissions when
-	 * it examines the parent's inheritlist entry.  There's no need to
-	 * check twice, so turn off access check bits in the original RTE.
-	 */
-	rte->requiredPerms = 0;
 
 	/*
 	 * Initialize to compute size estimates for whole inheritance tree

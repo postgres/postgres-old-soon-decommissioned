@@ -3254,10 +3254,20 @@ query_tree_mutator(Query *query,
 					CHECKFLATCOPY(newrte->subquery, rte->subquery, Query);
 					MUTATE(newrte->subquery, newrte->subquery, Query *);
 				}
+				else
+				{
+					/* else, copy RT subqueries as-is */
+					newrte->subquery = copyObject(rte->subquery);
+				}
 				break;
 			case RTE_JOIN:
 				if (!(flags & QTW_IGNORE_JOINALIASES))
 					MUTATE(newrte->joinaliasvars, rte->joinaliasvars, List *);
+				else
+				{
+					/* else, copy join aliases as-is */
+					newrte->joinaliasvars = copyObject(rte->joinaliasvars);
+				}
 				break;
 			case RTE_FUNCTION:
 				MUTATE(newrte->funcexpr, rte->funcexpr, Node *);
