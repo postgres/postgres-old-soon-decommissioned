@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Thu Oct 23 23:24:19 EDT 2003
+Last updated:		Sat Oct 25 22:57:43 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -204,6 +204,7 @@ Commands
 * COMMENT ON [ CAST | CONVERSION | OPERATOR CLASS | LARGE OBJECT | LANGUAGE ] 
   (Christopher) 
 * Add optional textual message to NOTIFY
+* Allow more ISOLATION LEVELS to be accepted, but issue a warning for them
 
 
 * ALTER
