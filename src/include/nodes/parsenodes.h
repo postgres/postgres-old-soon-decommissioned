@@ -653,6 +653,7 @@ typedef struct SelectStmt
 	bool		unionall;		/* union without unique sort */
 	Node	   *limitOffset;	/* # of result tuples to skip */
 	Node	   *limitCount;		/* # of result tuples to return */
+	List	   *forUpdate;		/* FOR UPDATE clause */
 } SelectStmt;
 
 
