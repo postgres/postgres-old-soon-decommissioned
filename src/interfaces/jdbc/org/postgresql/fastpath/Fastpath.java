@@ -78,22 +78,19 @@ public class Fastpath
 			// send the function call
 			try
 			{
-				int l_msgLen = 14;
-				for (int i=0; i < args.length; i++) {
-					l_msgLen += 2;
+				int l_msgLen = 0;
+				l_msgLen += 16;
+				for (int i=0;i < args.length;i++)
 					l_msgLen += args[i].sendSize();
-				}
 					
 				stream.SendChar('F');
 				stream.SendInteger(l_msgLen,4);
 				stream.SendInteger(fnid, 4);
-
+				stream.SendInteger(1,2);
+				stream.SendInteger(1,2);
 				stream.SendInteger(args.length,2);
-				for (int i=0; i < args.length; i++)
-					stream.SendInteger(1,2);
 
-				stream.SendInteger(args.length,2);
-				for (int i = 0; i < args.length; i++)
+				for (int i = 0;i < args.length;i++)
 					args[i].send(stream);
 				
 				stream.SendInteger(1,2);
