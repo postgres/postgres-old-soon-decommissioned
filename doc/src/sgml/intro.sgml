@@ -73,6 +73,13 @@ $Header$
      program.
     </para>
    </listitem>
+
+   <listitem>
+    <para>
+     <xref linkend="internals"> contains assorted information that can be of
+     use to <productname>PostgreSQL</> developers.
+    </para>
+   </listitem>
   </itemizedlist>
  </para>
 
