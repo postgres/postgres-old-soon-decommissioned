@@ -139,6 +139,8 @@ install-libpq: libpq.a
 
 install-shlib: $(shlib)
 	$(INSTALL) $(INSTL_LIB_OPTS) $(shlib) $(DESTDIR)$(LIBDIR)/$(shlib)
+	rm -f $(DESTDIR)$(LIBDIR)/libpq.so
+	ln -s libpq.so.1 $(DESTDIR)$(LIBDIR)/libpq.so
 
 depend dep:
 	$(CC) -MM $(INCLUDE_OPT) *.c >depend

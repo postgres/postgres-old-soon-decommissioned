@@ -80,7 +80,7 @@ install-libpgtcl: libpgtcl.a
 
 install-shlib: libpgtcl.so.1
 	$(INSTALL) $(INSTL_LIB_OPTS) libpgtcl.so.1 \
-		$(DESTDIR)$(LIBDIR)/libpgtcl.so
+		$(DESTDIR)$(LIBDIR)/libpgtcl.so.1
 	rm -f $(DESTDIR)$(LIBDIR)/libpgtcl.so
 	ln -s libpgtcl.so.1 $(DESTDIR)$(LIBDIR)/libpgtcl.so
 
