@@ -205,6 +205,7 @@ _equalAggref(Aggref *a, Aggref *b)
 	COMPARE_SCALAR_FIELD(agglevelsup);
 	COMPARE_SCALAR_FIELD(aggstar);
 	COMPARE_SCALAR_FIELD(aggdistinct);
+	COMPARE_NODE_FIELD(args);
 
 	return true;
 }
@@ -301,6 +302,7 @@ _equalSubLink(SubLink *a, SubLink *b)
 {
 	COMPARE_SCALAR_FIELD(subLinkType);
 	COMPARE_SCALAR_FIELD(useOr);
+	COMPARE_SCALAR_FIELD(isExpr);
 	COMPARE_NODE_FIELD(lefthand);
 	COMPARE_NODE_FIELD(operName);
 	COMPARE_OIDLIST_FIELD(operOids);
@@ -314,6 +316,12 @@ _equalSubPlan(SubPlan *a, SubPlan *b)
 {
 	COMPARE_SCALAR_FIELD(subLinkType);
 	COMPARE_SCALAR_FIELD(useOr);
+	COMPARE_SCALAR_FIELD(isExpr);
+	COMPARE_SCALAR_FIELD(exprtype);
+	COMPARE_SCALAR_FIELD(elemtype);
+	COMPARE_SCALAR_FIELD(elmlen);
+	COMPARE_SCALAR_FIELD(elmbyval);
+	COMPARE_SCALAR_FIELD(elmalign);
 	COMPARE_NODE_FIELD(exprs);
 	COMPARE_INTLIST_FIELD(paramIds);
 	/* should compare plans, but have to settle for comparing plan IDs */

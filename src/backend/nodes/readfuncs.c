@@ -416,6 +416,7 @@ _readAggref(void)
 	READ_UINT_FIELD(agglevelsup);
 	READ_BOOL_FIELD(aggstar);
 	READ_BOOL_FIELD(aggdistinct);
+	READ_NODE_FIELD(args);
 
 	READ_DONE();
 }
@@ -545,6 +546,7 @@ _readSubLink(void)
 
 	READ_ENUM_FIELD(subLinkType, SubLinkType);
 	READ_BOOL_FIELD(useOr);
+	READ_BOOL_FIELD(isExpr);
 	READ_NODE_FIELD(lefthand);
 	READ_NODE_FIELD(operName);
 	READ_OIDLIST_FIELD(operOids);

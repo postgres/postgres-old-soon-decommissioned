@@ -728,6 +728,7 @@ _copyAggref(Aggref *from)
 	COPY_SCALAR_FIELD(agglevelsup);
 	COPY_SCALAR_FIELD(aggstar);
 	COPY_SCALAR_FIELD(aggdistinct);
+	COPY_NODE_FIELD(args);
 
 	return newnode;
 }
@@ -826,6 +827,7 @@ _copySubLink(SubLink *from)
 
 	COPY_SCALAR_FIELD(subLinkType);
 	COPY_SCALAR_FIELD(useOr);
+	COPY_SCALAR_FIELD(isExpr);
 	COPY_NODE_FIELD(lefthand);
 	COPY_NODE_FIELD(operName);
 	COPY_OIDLIST_FIELD(operOids);
@@ -844,6 +846,12 @@ _copySubPlan(SubPlan *from)
 
 	COPY_SCALAR_FIELD(subLinkType);
 	COPY_SCALAR_FIELD(useOr);
+	COPY_SCALAR_FIELD(isExpr);
+	COPY_SCALAR_FIELD(exprtype);
+	COPY_SCALAR_FIELD(elemtype);
+	COPY_SCALAR_FIELD(elmlen);
+	COPY_SCALAR_FIELD(elmbyval);
+	COPY_SCALAR_FIELD(elmalign);
 	COPY_NODE_FIELD(exprs);
 	COPY_INTLIST_FIELD(paramIds);
 	COPY_NODE_FIELD(plan);

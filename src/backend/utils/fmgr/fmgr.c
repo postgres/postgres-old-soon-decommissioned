@@ -1673,3 +1673,29 @@ get_fn_expr_argtype(FunctionCallInfo fcinfo, int argnum)
 
 	return exprType((Node *) nth(argnum, args));
 }
+
+/*
+ * Get the OID of the function or operator
+ *
+ * Returns InvalidOid if information is not available
+ */
+Oid
+get_fn_expr_functype(FunctionCallInfo fcinfo)
+{
+	Node   *expr;
+
+	/*
+	 * can't return anything useful if we have no FmgrInfo or if
+	 * its fn_expr node has not been initialized
+	 */
+	if (!fcinfo || !fcinfo->flinfo || !fcinfo->flinfo->fn_expr)
+		return InvalidOid;
+
+	expr = fcinfo->flinfo->fn_expr;
+	if (IsA(expr, FuncExpr))
+		return ((FuncExpr *) expr)->funcid;
+	else if (IsA(expr, OpExpr))
+		return ((OpExpr *) expr)->opno;
+	else
+		return InvalidOid;
+}
