@@ -20,7 +20,6 @@
 #include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
 #include "parser/analyze.h"
-#include "parser/parse.h"
 #include "parser/parsetree.h"
 #include "parser/parse_agg.h"
 #include "parser/parse_clause.h"
