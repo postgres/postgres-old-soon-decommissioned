@@ -327,7 +327,7 @@ rloop:
 				break;
 			default:
 				printfPQExpBuffer(&conn->errorMessage,
-							  libpq_gettext("Unknown SSL error code\n"));
+							  libpq_gettext("unrecognized SSL error code\n"));
 				n = -1;
 				break;
 		}
@@ -398,7 +398,7 @@ pqsecure_write(PGconn *conn, const void *ptr, size_t len)
 				break;
 			default:
 				printfPQExpBuffer(&conn->errorMessage,
-							  libpq_gettext("Unknown SSL error code\n"));
+							  libpq_gettext("unrecognized SSL error code\n"));
 				n = -1;
 				break;
 		}
@@ -926,7 +926,7 @@ open_client_SSL(PGconn *conn)
 
 			default:
 				printfPQExpBuffer(&conn->errorMessage,
-							  libpq_gettext("Unknown SSL error code\n"));
+							  libpq_gettext("unrecognized SSL error code\n"));
 				close_SSL(conn);
 				return PGRES_POLLING_FAILED;
 		}
