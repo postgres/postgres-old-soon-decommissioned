@@ -30,7 +30,9 @@ char *		simple_prompt(const char *prompt, int maxlen, bool echo);
 
 extern volatile bool cancel_pressed;
 extern PGconn *cancelConn;
+#ifndef WIN32
 void        handle_sigint(SIGNAL_ARGS);
+#endif /* not WIN32 */
 
 PGresult *	PSQLexec(const char *query);
 

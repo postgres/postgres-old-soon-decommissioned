@@ -247,6 +247,8 @@ simple_prompt(const char *prompt, int maxlen, bool echo)
 PGconn *cancelConn;
 volatile bool cancel_pressed;
 
+#ifndef WIN32
+
 #define write_stderr(String) write(fileno(stderr), String, strlen(String))
 
 void
@@ -269,7 +271,7 @@ handle_sigint(SIGNAL_ARGS)
 		write_stderr(PQerrorMessage(cancelConn));
 	}
 }
-
+#endif /* not WIN32 */
 
 
 /*

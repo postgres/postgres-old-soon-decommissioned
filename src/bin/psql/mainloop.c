@@ -92,6 +92,7 @@ MainLoop(FILE *source)
 	/* main loop to get queries and execute them */
 	while (1)
 	{
+#ifndef WIN32
         /*
          * Welcome code for Control-C
          */
@@ -133,7 +134,7 @@ MainLoop(FILE *source)
                 break;
             }
         }
-
+#endif /* not WIN32 */
 
 		if (slashCmdStatus == CMD_NEWEDIT)
 		{
