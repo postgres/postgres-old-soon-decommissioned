@@ -25,7 +25,7 @@ SHLIB_LINK+= $(libpq)
 # If crypt is a separate library, rather than part of libc, it may need
 # to be referenced separately to keep (broken) linkers happy.  (This is
 # braindead; users of libpq should not need to know what it depends on.)
-SHLIB_LINK+= $(findstring -lcrypt,$(LIBS))
+SHLIB_LINK+= $(filter -lcrypt, $(LIBS))
 
 all: submake all-lib
 
