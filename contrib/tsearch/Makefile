@@ -4,6 +4,8 @@ subdir = contrib/tsearch
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
+override CPPFLAGS := -I. $(CPPFLAGS)
+
 MODULE_big = tsearch
 OBJS = crc32.o morph.o txtidx.o query.o gistidx.o rewrite.o
 
