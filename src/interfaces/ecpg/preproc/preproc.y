@@ -398,8 +398,6 @@ make_name(void)
 %type  <index>	opt_array_bounds opt_type_array_bounds
 
 %type  <ival>	Iresult
-
-%token YYERROR_VERBOSE
 %%
 prog: statements;
 
