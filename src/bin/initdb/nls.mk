@@ -1,5 +1,5 @@
 # $PostgreSQL$
 CATALOG_NAME	:= initdb
-AVAIL_LANGUAGES	:= de it pt_BR
+AVAIL_LANGUAGES	:= de it pt_BR sv
 GETTEXT_FILES	:= initdb.c
 GETTEXT_TRIGGERS:= _ simple_prompt
