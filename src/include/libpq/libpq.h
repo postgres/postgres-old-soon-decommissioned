@@ -49,6 +49,7 @@ extern int StreamServerPort(int family, char *hostName,
 			  unsigned short portNumber, char *unixSocketName, int *fdP);
 extern int	StreamConnection(int server_fd, Port *port);
 extern void StreamClose(int sock);
+extern void TouchSocketFile(void);
 extern void pq_init(void);
 extern int	pq_getbytes(char *s, size_t len);
 extern int	pq_getstring(StringInfo s, int maxlen);

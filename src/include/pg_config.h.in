@@ -383,6 +383,9 @@
 /* Set to 1 if you have <termios.h> */
 #undef HAVE_TERMIOS_H
 
+/* Set to 1 if you have <utime.h> */
+#undef HAVE_UTIME_H
+
 /* Set to 1 if you have <sys/pstat.h> */
 #undef HAVE_SYS_PSTAT_H
 
@@ -519,6 +522,12 @@
 
 /* Define if you have fdatasync() */
 #undef HAVE_FDATASYNC
+
+/* Define if you have utime() */
+#undef HAVE_UTIME
+
+/* Define if you have utimes() */
+#undef HAVE_UTIMES
 
 /* Define if the standard header unistd.h declares fdatasync() */
 #undef HAVE_DECL_FDATASYNC

@@ -2678,6 +2678,7 @@ SSDataBase(int xlop)
 		 * do other actions that should happen every now and then on no
 		 * particular schedule.  Such as...
 		 */
+		TouchSocketFile();
 		TouchSocketLockFile();
 	}
 
