@@ -275,5 +275,6 @@ extern void dumpTables(Archive *fout, TableInfo *tbinfo, int numTables,
 extern void dumpIndexes(Archive *fout, IndInfo *indinfo, int numIndexes,
 			TableInfo *tbinfo, int numTables, const char *tablename);
 extern const char *fmtId(const char *identifier, bool force_quotes);
+extern void exit_nicely(void);
 
 #endif	 /* PG_DUMP_H */

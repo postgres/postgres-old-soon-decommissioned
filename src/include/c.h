@@ -73,6 +73,8 @@
 #else
 #define gettext(x) (x)
 #endif
+#define gettext_noop(x) (x)
+
 
 /* ----------------------------------------------------------------
  *				Section 1: hacks to cope with non-ANSI C compilers

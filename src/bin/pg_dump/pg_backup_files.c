@@ -74,7 +74,7 @@ typedef struct
 	char	   *filename;
 } lclTocEntry;
 
-static char *modulename = "file archiver";
+static char *modulename = gettext_noop("file archiver");
 static void _LoadBlobs(ArchiveHandle *AH, RestoreOptions *ropt);
 static void _getBlobTocEntry(ArchiveHandle *AH, int *oid, char *fname);
 
@@ -120,7 +120,7 @@ InitArchiveFmt_Files(ArchiveHandle *AH)
 	{
 
 		write_msg(modulename, "WARNING:\n"
-				  "  This format is for demonstration purposes, it is not intended for\n"
+				  "  This format is for demonstration purposes; it is not intended for\n"
 				  "  normal use. Files will be written in the current working directory.\n");
 
 		if (AH->fSpec && strcmp(AH->fSpec, "") != 0)

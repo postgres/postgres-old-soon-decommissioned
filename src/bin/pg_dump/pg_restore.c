@@ -248,7 +248,7 @@ main(int argc, char **argv)
 
 			case 'u':
 				opts->requirePassword = true;
-				opts->username = simple_prompt("Username: ", 100, true);
+				opts->username = simple_prompt("User name: ", 100, true);
 				break;
 
 			case 'U':
