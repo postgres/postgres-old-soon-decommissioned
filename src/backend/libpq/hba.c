@@ -1248,7 +1248,7 @@ ident_unix(int sock, char *ident_user)
 
 	return true;
 
-#elsif defined(SO_PEERCRED)
+#elif defined(SO_PEERCRED)
 	/* Linux style: use getsockopt(SO_PEERCRED) */
 	struct ucred peercred;
 	ACCEPT_TYPE_ARG3 so_len = sizeof(peercred);
