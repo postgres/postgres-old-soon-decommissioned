@@ -11,6 +11,7 @@ WANTED_DIRS = \
 		cube		\
 		dbase		\
 		dblink		\
+		dbsize		\
 		earthdistance	\
 		findoidjoins	\
 		fulltextindex	\
