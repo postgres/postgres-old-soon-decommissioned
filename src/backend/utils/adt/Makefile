@@ -15,7 +15,7 @@ CFLAGS+= -mieee
 endif
 endif
 
-OBJS = acl.o arrayfuncs.o arrayutils.o bool.o cash.o char.o chunk.o \
+OBJS = acl.o arrayfuncs.o arrayutils.o bool.o cash.o char.o \
 	date.o datetime.o datum.o filename.o float.o format_type.o \
 	geo_ops.o geo_selfuncs.o int.o int8.o like.o lztext.o \
 	misc.o nabstime.o name.o not_in.o numeric.o numutils.o \

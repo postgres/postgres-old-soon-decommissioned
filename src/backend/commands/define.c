@@ -691,10 +691,10 @@ DefineType(char *typeName, List *parameters)
 			   "array_in",		/* receive procedure */
 			   "array_out",		/* send procedure */
 			   typeName,		/* element type name */
-			   defaultValue,	/* default type value */
+			   NULL,			/* never a default type value */
 			   false,			/* never passed by value */
-			   alignment,
-			   'p');			/* ARRAY doesn't support TOAST yet */
+			   alignment,		/* NB: must be 'i' or 'd' for arrays... */
+			   'x');			/* ARRAY is always toastable */
 
 	pfree(shadow_type);
 }
