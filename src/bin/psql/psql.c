@@ -493,7 +493,7 @@ rightsList(PsqlSettings *pset)
 	listbuf[0] = '\0';
 	strcat(listbuf, "SELECT relname, relacl ");
 	strcat(listbuf, "FROM pg_class, pg_user ");
-	strcat(listbuf, "WHERE ( relkind = 'r' OR relkind = 'i') ");
+	strcat(listbuf, "WHERE ( relkind = 'r' OR relkind = 'i' OR relkind = 'S') ");
 	strcat(listbuf, "  and relname !~ '^pg_'");
 	strcat(listbuf, "  and relname !~ '^xin[vx][0-9]+'");
 	strcat(listbuf, "  and usesysid = relowner");
