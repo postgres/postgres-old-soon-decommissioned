@@ -187,7 +187,7 @@ CreateFunction(ProcedureStmt *stmt, CommandDest dest)
       /* SQL that executes this function, if any */
     char   *prorettype;
       /* Type of return value (or member of set of values) from function */
-    char   languageName[NAMEDATALEN+1];
+    char   languageName[NAMEDATALEN];
       /* name of language of function, with case adjusted:
          "C", "internal", or "SQL" 
       */

@@ -83,10 +83,10 @@ cluster(char oldrelname[], char oldindexname[])
     Relation OldHeap, OldIndex;
     Relation NewHeap;
     
-    char NewIndexName[NAMEDATALEN+1];
-    char NewHeapName[NAMEDATALEN+1];
-    char saveoldrelname[NAMEDATALEN+1];
-    char saveoldindexname[NAMEDATALEN+1];
+    char NewIndexName[NAMEDATALEN];
+    char NewHeapName[NAMEDATALEN];
+    char saveoldrelname[NAMEDATALEN];
+    char saveoldindexname[NAMEDATALEN];
 
 
     /* Save the old names because they will get lost when the old relations
@@ -258,7 +258,7 @@ copy_index(Oid OIDOldIndex, Oid OIDNewHeap)
     Old_pg_index_relation_Form =
 	(Form_pg_class)GETSTRUCT(Old_pg_index_relation_Tuple);
 
-     NewIndexName = palloc(NAMEDATALEN+1);  /* XXX */
+     NewIndexName = palloc(NAMEDATALEN);  /* XXX */
      sprintf(NewIndexName, "temp_%x", OIDOldIndex); /* Set the name. */
 
     /*

@@ -328,7 +328,7 @@ BuildDescForRelation(List *schema, char *relname)
     
     attnum = 0;
     
-    typename = palloc(NAMEDATALEN+1);
+    typename = palloc(NAMEDATALEN);
 
     foreach(p, schema) {
 	ColumnDef *entry;

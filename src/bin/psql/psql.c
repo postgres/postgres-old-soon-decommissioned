@@ -835,7 +835,7 @@ do_copy(const char *args, PsqlSettings * settings)
     /* The direction of the copy is from a file to a table. */
     char            file[MAXPATHLEN + 1];
     /* The pathname of the file from/to which we copy */
-    char            table[NAMEDATALEN + 1];
+    char            table[NAMEDATALEN];
     /* The name of the table from/to which we copy */
     bool            syntax_error;
     /* The \c command has invalid syntax */

@@ -118,10 +118,10 @@ struct sbufdesc_unpadded {
 #ifdef HAS_TEST_AND_SET
     slock_t	io_in_progress_lock;
 #endif /* HAS_TEST_AND_SET */
-    char sb_dbname[NAMEDATALEN+1];
+    char sb_dbname[NAMEDATALEN];
 
     /* NOTE NO PADDING OF THE MEMBER HERE */
-    char sb_relname[NAMEDATALEN+1];
+    char sb_relname[NAMEDATALEN];
 };
 
 /* THE REAL STRUCTURE - the structure above must match it, minus sb_pad */
@@ -143,7 +143,7 @@ struct sbufdesc {
     slock_t	io_in_progress_lock;
 #endif /* HAS_TEST_AND_SET */
 
-    char sb_dbname[NAMEDATALEN+1];	/* name of db in which buf belongs */
+    char sb_dbname[NAMEDATALEN];	/* name of db in which buf belongs */
 
     /*
      * I padded this structure to a power of 2 (PADDED_SBUFDESC_SIZE) because
@@ -159,7 +159,7 @@ struct sbufdesc {
     /* please, don't take the sizeof() this member and use it for
 	something important */
 	
-    char sb_relname[NAMEDATALEN+1+	/* name of reln */
+    char sb_relname[NAMEDATALEN+	/* name of reln */
 		PADDED_SBUFDESC_SIZE-sizeof(struct sbufdesc_unpadded)];
 };
 

@@ -167,8 +167,8 @@ mdunlink(Relation reln)
  ** to do this.
  */
 
-    memset(fname,0, NAMEDATALEN);
     strncpy(fname, RelationGetRelationName(reln)->data, NAMEDATALEN);
+    fname[NAMEDATALEN-1] = '\0';
 
     if (FileNameUnlink(fname) < 0)
 	return (SM_FAIL);

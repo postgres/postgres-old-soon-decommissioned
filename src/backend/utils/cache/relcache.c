@@ -1066,7 +1066,6 @@ RelationNameCacheGetRelation(char *relationName)
     
     /* make sure that the name key used for hash lookup is properly
        null-padded */
-    memset(&name,0, NAMEDATALEN); 
     namestrcpy(&name, relationName);
     RelationNameCacheLookup(name.data, rd);
     

@@ -19,9 +19,9 @@ of the line e.g:
 .fi
 .SH "Names"
 .IR Names
-in SQL are sequences of not more than NAMEDATALEN alphanumeric characters,
+in SQL are sequences of less than NAMEDATALEN alphanumeric characters,
 starting with an alphabetic character.  By default, NAMEDATALEN is set
-to 16, but at the time the system is built, NAMEDATALEN can be changed
+to 32, but at the time the system is built, NAMEDATALEN can be changed
 by changing the #ifdef in src/backend/include/postgres.h.  Underscore
 (\*(lq_\*(rq) is considered an alphabetic character. 
 .SH "Keywords"

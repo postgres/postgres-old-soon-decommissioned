@@ -456,8 +456,8 @@ Async_Listen(char *relname, int pid)
      * to unlisten prior to dying.
      */
     relnamei = malloc(NAMEDATALEN); /* persists to process exit */
-    memset (relnamei, 0, NAMEDATALEN);
     strncpy(relnamei, relname, NAMEDATALEN);
+    relnamei[NAMEDATALEN-1] = '\0';
     on_exitpg(Async_UnlistenOnExit, (caddr_t) relnamei);
 }
 

@@ -39,8 +39,8 @@ NameData *namein(char *s)
 	return(NULL);
     result = (NameData*) palloc(NAMEDATALEN);
     /* always keep it null-padded */
-    memset(result->data, 0, NAMEDATALEN); 
-    (void) strncpy(result->data, s, NAMEDATALEN-1);
+    (void) strncpy(result->data, s, NAMEDATALEN);
+    result->data[NAMEDATALEN-1] = '\0';
     return(result);
 }
 
@@ -145,8 +145,8 @@ namestrcpy(Name name, char *str)
 {
     if (!name || !str)
 	return(-1);
-    memset(name->data, 0, sizeof(NameData));
     (void) strncpy(name->data, str, NAMEDATALEN);
+    name->data[NAMEDATALEN-1] = '\0';
     return(0);
 }
 
