@@ -86,18 +86,18 @@ tas(volatile slock_t *lock)
 	register slock_t _res;
 
 __asm__("    ldq   $0, %0              \n\
-                 bne   $0, already_set     \n\
+                 bne   $0, 3f          \n\
                  ldq_l $0, %0	           \n\
-                 bne   $0, already_set     \n\
+                 bne   $0, 3f          \n\
                  or    $31, 1, $0          \n\
                  stq_c $0, %0	           \n\
-                 beq   $0, stqc_fail       \n\
-        success: bis   $31, $31, %1        \n\
+                 beq   $0, 2f              \n\
+                 bis   $31, $31, %1        \n\
                  mb		                   \n\
-                 jmp   $31, end	           \n\
-      stqc_fail: or    $31, 1, $0	       \n\
-    already_set: bis   $0, $0, %1	       \n\
-            end: nop      ": "=m"(*lock), "=r"(_res): :"0");
+                 jmp   $31, 4f	           \n\
+              2: or    $31, 1, $0	       \n\
+              3: bis   $0, $0, %1	       \n\
+              4: nop      ": "=m"(*lock), "=r"(_res): :"0");
 
 	return (int) _res;
 }
