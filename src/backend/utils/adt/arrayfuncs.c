@@ -44,9 +44,9 @@
 /*-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-*/
 static int	_ArrayCount(char *str, int dim[], int typdelim);
 static char *_ReadArrayStr(char *arrayStr, int nitems, int ndim, int dim[],
-			  FmgrInfo *inputproc, Oid typelem, char typdelim,
-			  int typlen, bool typbyval, char typalign,
-			  int *nbytes, int16 typmod);
+			  FmgrInfo *inputproc, Oid typelem, int16 typmod,
+			  char typdelim, int typlen, bool typbyval,
+			  char typalign, int *nbytes);
 
 #ifdef LOARRAY
 static char *
