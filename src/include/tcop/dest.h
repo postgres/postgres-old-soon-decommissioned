@@ -61,7 +61,6 @@ typedef struct AttrInfo {
 } AttrInfo;
 */
 
-extern void donothing(List *tuple, List *attrdesc);
 extern void (*DestToFunction(CommandDest dest))();
 extern void EndCommand(char *commandTag, CommandDest dest);
 extern void SendCopyBegin(void);

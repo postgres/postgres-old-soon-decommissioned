@@ -45,12 +45,12 @@
  *	output functions
  * ----------------
  */
-void
-donothing(List *tuple, List *attrdesc)
+static void
+donothing(HeapTuple tuple, TupleDesc attrdesc)
 {
 }
 
-void (*DestToFunction(CommandDest dest))()
+void (*DestToFunction(CommandDest dest))(HeapTuple, TupleDesc)
 {
     switch (dest) {
     case RemoteInternal:

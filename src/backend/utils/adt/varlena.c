@@ -297,8 +297,8 @@ text_lt(struct varlena *arg1, struct varlena *arg2)
     if (arg1 == NULL || arg2 == NULL)
 	return((int32) 0);
     
-    a1p = VARDATA(arg1);
-    a2p = VARDATA(arg2);
+    a1p = (unsigned char *)VARDATA(arg1);
+    a2p = (unsigned char *)VARDATA(arg2);
     
     if ((len = arg1->vl_len) > arg2->vl_len)
 	len = arg2->vl_len;
@@ -328,8 +328,8 @@ text_le(struct varlena *arg1, struct varlena *arg2)
     if (arg1 == NULL || arg2 == NULL)
 	return((int32) 0);
     
-    a1p = VARDATA(arg1);
-    a2p = VARDATA(arg2);
+    a1p = (unsigned char *)VARDATA(arg1);
+    a2p = (unsigned char *)VARDATA(arg2);
     
     if ((len = arg1->vl_len) > arg2->vl_len)
 	len = arg2->vl_len;
