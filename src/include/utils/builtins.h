@@ -403,19 +403,23 @@ extern bool convert_to_scalar(Datum value, Oid typid, double *scaleval);
 
 extern void btcostestimate(Query *root, RelOptInfo *rel,
 						   IndexOptInfo *index, List *indexQuals,
-						   Cost *indexAccessCost,
+						   Cost *indexStartupCost,
+						   Cost *indexTotalCost,
 						   Selectivity *indexSelectivity);
 extern void rtcostestimate(Query *root, RelOptInfo *rel,
 						   IndexOptInfo *index, List *indexQuals,
-						   Cost *indexAccessCost,
+						   Cost *indexStartupCost,
+						   Cost *indexTotalCost,
 						   Selectivity *indexSelectivity);
 extern void hashcostestimate(Query *root, RelOptInfo *rel,
 							 IndexOptInfo *index, List *indexQuals,
-							 Cost *indexAccessCost,
+							 Cost *indexStartupCost,
+							 Cost *indexTotalCost,
 							 Selectivity *indexSelectivity);
 extern void gistcostestimate(Query *root, RelOptInfo *rel,
 							 IndexOptInfo *index, List *indexQuals,
-							 Cost *indexAccessCost,
+							 Cost *indexStartupCost,
+							 Cost *indexTotalCost,
 							 Selectivity *indexSelectivity);
 
 /* tid.c */

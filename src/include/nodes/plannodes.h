@@ -65,10 +65,15 @@ typedef struct Plan
 {
 	NodeTag		type;
 
-	/* planner's estimates of cost and result size */
-	Cost		cost;
-	double		plan_rows;
-	int			plan_width;
+	/* estimated execution costs for plan (see costsize.c for more info) */
+	Cost		startup_cost;	/* cost expended before fetching any tuples */
+	Cost		total_cost;		/* total cost (assuming all tuples fetched) */
+
+	/* planner's estimate of result size (note: LIMIT, if any, is not
+	 * considered in setting plan_rows)
+	 */
+	double		plan_rows;		/* number of rows plan is expected to emit */
+	int			plan_width;		/* average row width in bytes */
 
 	EState	   *state;			/* at execution time, state's of
 								 * individual nodes point to one EState

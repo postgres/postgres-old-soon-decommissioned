@@ -72,6 +72,7 @@ typedef struct Query
 	/* internal to planner */
 	List	   *base_rel_list;	/* list of base-relation RelOptInfos */
 	List	   *join_rel_list;	/* list of join-relation RelOptInfos */
+	List	   *equi_key_list;	/* list of lists of equijoined PathKeyItems */
 	List	   *query_pathkeys; /* pathkeys for query_planner()'s result */
 } Query;
 
@@ -1124,7 +1125,6 @@ typedef struct RangeTblEntry
 {
 	NodeTag		type;
 	char	   *relname;		/* real name of the relation */
-//	char	   *refname;		/* reference name (given in FROM clause) */
 #ifndef DISABLE_JOIN_SYNTAX
 	Attr	   *ref;			/* reference names (given in FROM clause) */
 #endif

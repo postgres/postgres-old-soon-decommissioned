@@ -96,8 +96,13 @@ geqo_eval(Query *root, Gene *tour, int num_gene)
 	/* construct the best path for the given combination of relations */
 	joinrel = gimme_tree(root, tour, 0, num_gene, NULL);
 
-	/* compute fitness */
-	fitness = joinrel->cheapestpath->path_cost;
+	/*
+	 * compute fitness
+	 *
+	 * XXX geqo does not currently support optimization for partial
+	 * result retrieval --- how to fix?
+	 */
+	fitness = joinrel->cheapest_total_path->total_cost;
 
 	/* restore join_rel_list */
 	root->join_rel_list = savelist;
@@ -155,8 +160,8 @@ gimme_tree(Query *root, Gene *tour, int rel_count, int num_gene, RelOptInfo *old
 			rel_count++;
 			Assert(length(new_rel->relids) == rel_count);
 
-			/* Find and save the cheapest path for this rel */
-			set_cheapest(new_rel, new_rel->pathlist);
+			/* Find and save the cheapest paths for this rel */
+			set_cheapest(new_rel);
 
 			return gimme_tree(root, tour, rel_count, num_gene, new_rel);
 		}

@@ -212,9 +212,9 @@ DESCR("not equal");
 DATA(insert OID =  89 (  version		   PGUID 11 f t f 0 f 25 "" 100 0 0 100 version - ));
 DESCR("PostgreSQL version string");
 
-DATA(insert OID = 1265 (  rtcostestimate   PGUID 11 f t f 6 f 0 "0 0 0 0 0 0" 100 0 0 100  rtcostestimate - ));
+DATA(insert OID = 1265 (  rtcostestimate   PGUID 11 f t f 7 f 0 "0 0 0 0 0 0 0" 100 0 0 100  rtcostestimate - ));
 DESCR("r-tree cost estimator");
-DATA(insert OID = 1268 (  btcostestimate   PGUID 11 f t f 6 f 0 "0 0 0 0 0 0" 100 0 0 100  btcostestimate - ));
+DATA(insert OID = 1268 (  btcostestimate   PGUID 11 f t f 7 f 0 "0 0 0 0 0 0 0" 100 0 0 100  btcostestimate - ));
 DESCR("btree cost estimator");
 
 /* OIDS 100 - 199 */
@@ -796,7 +796,7 @@ DESCR("convert name to char()");
 DATA(insert OID =  409 (  bpchar_name	   PGUID 11 f t t 1 f	19 "1042" 100 0 0 100	bpchar_name - ));
 DESCR("convert char() to name");
 
-DATA(insert OID =  438 (  hashcostestimate PGUID 11 f t f 6 f 0 "0 0 0 0 0 0" 100 0 0 100  hashcostestimate - ));
+DATA(insert OID =  438 (  hashcostestimate PGUID 11 f t f 7 f 0 "0 0 0 0 0 0 0" 100 0 0 100  hashcostestimate - ));
 DESCR("hash index cost estimator");
 
 DATA(insert OID = 440 (  hashgettuple	   PGUID 11 f t f 2 f 23 "0" 100 0 0 100  hashgettuple - ));
@@ -1031,7 +1031,7 @@ DESCR("larger of two");
 DATA(insert OID = 771 (  int2smaller	   PGUID 11 f t t 2 f 21 "21 21" 100 0 0 100  int2smaller - ));
 DESCR("smaller of two");
 
-DATA(insert OID = 772 (  gistcostestimate  PGUID 11 f t f 6 f 0 "0 0 0 0 0 0" 100 0 0 100  gistcostestimate - ));
+DATA(insert OID = 772 (  gistcostestimate  PGUID 11 f t f 7 f 0 "0 0 0 0 0 0 0" 100 0 0 100  gistcostestimate - ));
 DESCR("gist cost estimator");
 DATA(insert OID = 774 (  gistgettuple	   PGUID 11 f t f 2 f 23 "0" 100 0 0 100  gistgettuple - ));
 DESCR("gist(internal)");

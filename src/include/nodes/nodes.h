@@ -257,6 +257,9 @@ typedef struct Node
 	(IsA(t, Noname) || IsA(t, Material) || IsA(t, Sort) || \
 	 IsA(t, Unique))
 
+#define IsA_Value(t) \
+	(IsA(t, Integer) || IsA(t, Float) || IsA(t, String))
+
 /* ----------------------------------------------------------------
  *					  extern declarations follow
  * ----------------------------------------------------------------

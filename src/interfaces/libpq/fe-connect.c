@@ -173,12 +173,6 @@ static struct EnvironmentOptions
 #endif
 	/* internal performance-related settings */
 	{
-		"PGCOSTHEAP", "cost_heap"
-	},
-	{
-		"PGCOSTINDEX", "cost_index"
-	},
-	{
 		"PGGEQO", "geqo"
 	},
 	{
