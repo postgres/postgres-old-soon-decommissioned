@@ -85,6 +85,7 @@ typedef struct _restoreOptions
 								 * original object owner */
 	int			noReconnect;	/* Don't reconnect to database under any
 								 * cirsumstances */
+	int			use_setsessauth; /* use SET SESSSION AUTHORIZATION instead of \connect */
 	char	   *superuser;		/* Username to use as superuser */
 	int			dataOnly;
 	int			dropSchema;

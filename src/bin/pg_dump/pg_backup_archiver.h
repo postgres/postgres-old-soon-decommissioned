@@ -310,7 +310,7 @@ extern int	isValidTarHeader(char *header);
 extern OutputContext SetOutput(ArchiveHandle *AH, char *filename, int compression);
 extern void ResetOutput(ArchiveHandle *AH, OutputContext savedContext);
 extern int	RestoringToDB(ArchiveHandle *AH);
-extern int	ReconnectDatabase(ArchiveHandle *AH, const char *dbname, char *newUser);
+extern int	ReconnectToServer(ArchiveHandle *AH, const char *dbname, const char *newUser);
 extern int	UserIsSuperuser(ArchiveHandle *AH, char *user);
 extern char *ConnectedUser(ArchiveHandle *AH);
 extern int	ConnectedUserIsSuperuser(ArchiveHandle *AH);
