@@ -1166,7 +1166,6 @@ heap_fetch(Relation relation,
 	}
 	else
 	{
-
 		/*
 		 * All checks passed, so return the tuple as valid. Caller is now
 		 * responsible for releasing the buffer.
