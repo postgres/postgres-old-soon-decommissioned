@@ -73,7 +73,6 @@
 #include "executor/executor.h"
 #include "executor/nodeMergejoin.h"
 #include "utils/lsyscache.h"
-#include "utils/psort.h"
 #include "utils/syscache.h"
 
 
