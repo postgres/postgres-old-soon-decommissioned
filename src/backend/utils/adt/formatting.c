@@ -3112,7 +3112,7 @@ to_date(PG_FUNCTION_ARGS)
 	 * Quick hack: since our inputs are just like to_timestamp, hand over
 	 * the whole input info struct...
 	 */
-	return DirectFunctionCall1(timestamp_date, to_timestamp(fcinfo));
+	return DirectFunctionCall1(timestamptz_date, to_timestamp(fcinfo));
 }
 
 /**********************************************************************
