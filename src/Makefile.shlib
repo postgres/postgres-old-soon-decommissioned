@@ -148,9 +148,13 @@ endif
 
 ifeq ($(PORTNAME), hpux)
   shlib			= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION)
-  LINK.shared		= $(LD) +h $(soname) -b +b $(libdir)
   ifeq ($(GCC), yes)
     SHLIB_LINK		+= `$(CC) -print-libgcc-file-name`
+  endif
+  ifeq ($(with_gnu_ld), yes)
+    LINK.shared		= $(CC) $(LDFLAGS) -shared -Wl,-h -Wl,$(soname)
+  else
+    LINK.shared		= $(LD) +h $(soname) -b +b $(libdir)
   endif
 endif
 
