@@ -618,7 +618,7 @@ yyerror(const char *message)
 		ereport(ERROR,
 				(errcode(ERRCODE_SYNTAX_ERROR),
 				 /* translator: %s is typically "syntax error" */
-				 errmsg("%s at end of input", message),
+				 errmsg("%s at end of input", gettext(message)),
 				 errposition(cursorpos)));
 	}
 	else
@@ -626,7 +626,7 @@ yyerror(const char *message)
 		ereport(ERROR,
 				(errcode(ERRCODE_SYNTAX_ERROR),
 				 /* translator: first %s is typically "syntax error" */
-				 errmsg("%s at or near \"%s\"", message, loc),
+				 errmsg("%s at or near \"%s\"", gettext(message), loc),
 				 errposition(cursorpos)));
 	}
 }
