@@ -10,7 +10,7 @@
   alink="#0000ff">
     <H1>Perguntas Frequentes (FAQ) sobre PostgreSQL</H1>
 
-    <P>&Uacute;ltima atualiza&ccedil;&atilde;o: Sex Jun  4 00:09:16 EDT 2004</P>
+    <P>&Uacute;ltima atualiza&ccedil;&atilde;o: Sab Fev  7 22:16:21 EST 2004</P>
 
     <P>Mantenedor atual: Bruce Momjian (<A href=
     "mailto:pgman@candle.pha.pa.us">pgman@candle.pha.pa.us</A>)<BR>
@@ -118,13 +118,11 @@
 
     <H4><A name="1.1">1.1</A>) O que &eacute; PostgreSQL? Como ele &eacute; pronunciado?</H4>
 
-    <P>PostgreSQL &eacute; pronunciado <I>Post-Gres-Qui-El</I>.  Um arquivo de &aacute;udio est&aacute;
-    dispon&iacute;vel em  http://www.postgresql.org/postgresql.mp3 para aqueles que gostariam
-    de ouvir a pron&uacute;ncia.</P>
+    <P>PostgreSQL &eacute; pronunciado <I>Post-Gres-Qui-El</I>.  O nome "Postgres" &eacute;
+    utilizado frequentemente em conversa&ccedil;&otilde;es.</P>
 
     <P>PostgreSQL &eacute; um melhoramento do sistema de ger&ecirc;ncia 
-    de banco de dados POSTGRES (e tamb&eacute;m &eacute;, &agrave;s vezes, chamado simplesmente de "Postgres"),
-    um prot&oacute;tipo de pesquisa de um <SMALL>SGBD</SMALL> de
+    de banco de dados POSTGRES, um prot&oacute;tipo de pesquisa de um <SMALL>SGBD</SMALL> de
     &uacute;ltima gera&ccedil;&atilde;o. Enquanto o PostgreSQL ret&eacute;m a
     modelagem de dados poderosa e a grande quantidade de tipos de dados do POSTGRES, ele
     substituiu a linguagem de consulta PostQuel com um subconjunto extendido do
@@ -139,7 +137,7 @@
     se juntar ao grupo). O grupo &eacute; respons&aacute;vel
     por todo o desenvolvimento do PostgreSQL. &Eacute; um projeto da
     comunidade e n&atilde;o &eacute; controlado por nenhuma empresa.
-    Para se juntar ao grupo, veja a FAQ do desenvolvedor em
+    Para se juntar ao grupo, veja a FAQ do desenvolvedor
     <A href="http://www.PostgreSQL.org/docs/faqs/FAQ_DEV.html">
     http://www.PostgreSQL.org/docs/faqs/FAQ_DEV.html</A></P>
 
@@ -162,7 +160,7 @@
 
     <P>PostgreSQL Sistema de Ger&ecirc;ncia de Banco de Dados</P>
 
-    <P>Portions copyright (c) 1996-2004, PostgreSQL Global Development
+    <P>Portions copyright (c) 1996-2002, PostgreSQL Global Development
     Group Portions Copyright (c) 1994-6 Regents of the University of
     California</P>
     <P>Permiss&atilde;o de uso, c&oacute;pia, modifica&ccedil;&atilde;o
@@ -195,7 +193,7 @@
 
     <H4><A name="1.3">1.3</A>) Quais plataformas Unix o PostgreSQL pode ser executado?</H4>
 
-    <P>Em geral, qualquer plataforma moderna compat&iacute;vel com Unix deve ser capaz de executar o PostgreSQL. As plataformas que foram testadas antes do lan&ccedil;amento de uma vers&atilde;o s&atilde;o listadas nas instru&ccedil;&otilde;es de instala&ccedil;&atilde;o.</P>
+    <P>Em geral, uma plataforma moderna compat&iacute;vel com Unix deve ser capaz de executar o PostgreSQL. As plataformas que foram testadas antes do lan&ccedil;amento de uma vers&atilde;o s&atilde;o listadas nas instru&ccedil;&otilde;es de instala&ccedil;&atilde;o.</P>
 
     <H4><A name="1.4">1.4</A>) Quais portabilidades n&atilde;o-Unix est&atilde;o dispon&iacute;veis?</H4>
 
@@ -264,7 +262,7 @@ H&aacute; tamb&eacute;m uma lista de discuss&atilde;o dos desenvolvedores dispon
 
     <H4><A name="1.7">1.7</A>) Qual &eacute; a &uacute;ltima vers&atilde;o?</H4>
 
-    <P>A &uacute;ltima vers&atilde;o do PostgreSQL &eacute; a vers&atilde;o 7.4.2.</P>
+    <P>A &uacute;ltima vers&atilde;o do PostgreSQL &eacute; a vers&atilde;o 7.4.1.</P>
 
     <P>N&oacute;s planejamos lan&ccedil;ar vers&otilde;es novas a cada seis ou oito meses.</P>
 
@@ -411,7 +409,7 @@ H&aacute; tamb&eacute;m uma lista de discuss&atilde;o dos desenvolvedores dispon
     href="http://sources.redhat.com/rhdb/">http://sources.redhat.com/rhdb/
     </A>) e o Rekall (<A href="http://www.thekompany.com/products/rekall/">
     http://www.thekompany.com/products/rekall/</A>, propriet&aacute;ria). H&aacute;
-    tamb&eacute;m o PhpPgAdmin (<A href="http://phppgadmin.sourceforge.net/">
+    tamb&eacute;m o PHPPgAdmin (<A href="http://phppgadmin.sourceforge.net/">
     http://phppgadmin.sourceforge.net/ </A>), uma interface web para
     PostgreSQL.</P>
 
@@ -466,11 +464,11 @@ H&aacute; tamb&eacute;m uma lista de discuss&atilde;o dos desenvolvedores dispon
 
     <H4><A name="3.5">3.5</A>) Como eu controlo conex&otilde;es de outras m&aacute;quinas?</H4>
 
-    <P>Por padr&atilde;o, o PostgreSQL s&oacute; permite conex&otilde;es da m&aacute;quina local utilizando soquetes de dom&iacute;nio Unix. Outras m&aacute;quinas n&atilde;o poder&atilde;o conectar-se a menos que voc&ecirc; habilite tcpip_sockets no postgresql.conf, <B>e</B> habilite a autentica&ccedil;&atilde;o por m&aacute;quina modificando o arquivo <I>$PGDATA/pg_hba.conf</I>. Isso ir&aacute; permitir conex&otilde;es TCP/IP.</P>
+    <P>Por padr&atilde;o, o PostgreSQL s&oacute; permite conex&otilde;es da m&aacute;quina local utilizando soquetes de dom&iacute;nio Unix. Outras m&aacute;quinas n&atilde;o poder&atilde;o conectar-se a menos que voc&ecirc; adicione a op&ccedil;&atilde;o <I>-i</I> no <I>postmaster</I>, <B>e</B> habilite a autentica&ccedil;&atilde;o por m&aacute;quina modificando o arquivo <I>$PGDATA/pg_hba.conf</I>. Isso ir&aacute; permitir conex&otilde;es TCP/IP.</P>
 
     <H4><A name="3.6">3.6</A>) Como eu ajusto o servidor de banco de dados para obter uma performance melhor?</H4>
 
-    <P>Certamente, &iacute;ndices podem acelerar consultas. O comando <SMALL>EXPLAIN ANALYZE</SMALL> permite que voc&ecirc; veja como o PostgreSQL est&aacute; interpretando a consulta, e quais os &iacute;ndices s&atilde;o utilizados.</P>
+    <P>Certamente, &iacute;ndices podem acelerar consultas. O comando <SMALL>EXPLAIN</SMALL> permite que voc&ecirc; veja como o PostgreSQL est&aacute; interpretando a consulta, e quais os &iacute;ndices s&atilde;o utilizados.</P>
 
     <P>Se voc&ecirc; est&aacute; fazendo muitos <SMALL>INSERTs</SMALL>, considere faz&ecirc;-los em lote utilizando o comando <SMALL>COPY</SMALL>. Isso &eacute; mais r&aacute;pido do que <SMALL>INSERTs</SMALL> individuais. Segundo, senten&ccedil;as que n&atilde;o est&atilde;o em um bloco de transa&ccedil;&atilde;o <SMALL>BEGIN WORK/COMMIT</SMALL> s&atilde;o consideradas com se estivessem em sua pr&oacute;pria transa&ccedil;&atilde;o. Considere executar v&aacute;rias senten&ccedil;as em um mesmo bloco de transa&ccedil;&atilde;o. Isso reduz a quantidade de transa&ccedil;&otilde;es. Tamb&eacute;m, considere remover e criar &iacute;ndices novamente quando estiver fazendo muitas mudan&ccedil;as nos dados.</P>
 
@@ -547,9 +545,7 @@ H&aacute; tamb&eacute;m uma lista de discuss&atilde;o dos desenvolvedores dispon
 
 <H4><A name="4.3">4.3</A>) Como eu obtenho a lista de tabelas ou outras coisas que eu posso ver no <I>psql</I>?</h4>
 
-<P>Utilize o comando \dt para ver tabelas no <I>psql</I>. Para obter uma lista completa de
-comandos no psql voc&ecirc; pode utilizar \?. Alternativamente
-voc&ecirc; pode ler o c&oacute;digo-fonte do <I>psql</I> no arquivo <I>pgsql/src/bin/psql/describe.c</I>. Ele cont&eacute;m comandos <SMALL>SQL</SMALL> que geram a sa&iacute;da para os comandos do psql. Voc&ecirc; tamb&eacute;m pode iniciar o <I>psql</I> com a op&ccedil;&atilde;o <I>-E</I> ent&atilde;o ser&atilde;o mostradas as consultas utilizadas para executar os comandos que voc&ecirc; digitou. PostgreSQL tamb&eacute;m fornece uma interface para o INFORMATION SCHEMA <SMALL>SQLi</SMALL> na qual voc&ecirc; pode consultar informa&ccedil;&otilde;es sobre o banco de dados.</P>
+<P>Voc&ecirc; pode ler o c&oacute;digo-fonte do <I>psql</I> no arquivo <I>pgsql/src/bin/psql/describe.c</I>. Ele cont&eacute;m comandos <SMALL>SQL</SMALL> que geram a sa&iacute;da para os comandos do psql. Voc&ecirc; tamb&eacute;m pode iniciar o <I>psql</I> com a op&ccedil;&atilde;o <I>-E</I> ent&atilde;o ser&atilde;o mostradas as consultas utilizadas para executar os comandos que voc&ecirc; digitou.</P>
 
     <H4><A name="4.4">4.4</A>) Como eu removo uma coluna de uma tabela ou mudo o seu tipo de dados?</H4>
 
@@ -832,12 +828,16 @@ Veja a p&aacute;gina sobre <I>create_sequence</I> no manual para mais informa&cc
     o <SMALL>OID</SMALL> de alguma coisa, ou se voc&ecirc; quer fazer uma c&oacute;pia da tabela,
     com os <SMALL>OID</SMALL>s, n&atilde;o h&aacute; raz&atilde;o para que voc&ecirc; n&atilde;o possa faz&ecirc;-la:</P>
 <PRE>
-	CREATE TABLE nova_tabela(minha_coluna int);
-        SELECT oid as oid_antigo, minha_coluna INTO tabela_tmp FROM tabela_antiga;
-        COPY tabela_tmp TO '/tmp/pgtable';
-        DROP TABLE tabela_tmp;
+	CREATE TABLE nova_tabela(oid_antigo oid, minha_coluna int);
+        SELECT oid_antigo, minha_coluna INTO novo FROM tabela_antiga;
+        COPY novo TO '/tmp/pgtable';
+        DELETE FROM novo;
 	COPY nova_tabela WITH OIDS FROM '/tmp/pgtable';
 </PRE>
+<!--
+    CREATE TABLE nova_tabela (minha_coluna int);
+    INSERT INTO nova_tabela (oid, minha_coluna) SELECT oid, minha_coluna FROM tabela_antiga;
+-->
     <P><SMALL>OID</SMALL>s s&atilde;o armazenados como inteiros de 4 bytes, e 
     n&atilde;o ultrapassam 4 bilh&otilde;es. Ningu&eacute;m nunca reportou que isso tenha ocorrido,
     e n&oacute;s planejamos remover o limite antes que alg&uacute;em o alcan&ccedil;e.</P>

@@ -1,7 +1,7 @@
 
                   Perguntas Frequentes (FAQ) sobre PostgreSQL
                                        
-   Última atualização: Sex Jun 4 00:09:16 EDT 2004
+   Última atualização: Sab Fev 7 22:16:21 EST 2004
    
    Mantenedor atual: Bruce Momjian (pgman@candle.pha.pa.us)
    
@@ -128,17 +128,15 @@
                                       
     1.1) O que é PostgreSQL? Como ele é pronunciado?
     
-   PostgreSQL é pronunciado Post-Gres-Qui-El. Um arquivo de áudio está
-   disponível em http://www.postgresql.org/postgresql.mp3 para aqueles
-   que gostariam de ouvir a pronúncia.
+   PostgreSQL é pronunciado Post-Gres-Qui-El. O nome "Postgres" é
+   utilizado frequentemente em conversações.
    
    PostgreSQL é um melhoramento do sistema de gerência de banco de dados
-   POSTGRES (e também é, às vezes, chamado simplesmente de "Postgres"),
-   um protótipo de pesquisa de um SGBD de última geração. Enquanto o
-   PostgreSQL retém a modelagem de dados poderosa e a grande quantidade
-   de tipos de dados do POSTGRES, ele substituiu a linguagem de consulta
-   PostQuel com um subconjunto extendido do SQL. PostgreSQL é livre e o
-   código-fonte completo está disponível.
+   POSTGRES, um protótipo de pesquisa de um SGBD de última geração.
+   Enquanto o PostgreSQL retém a modelagem de dados poderosa e a grande
+   quantidade de tipos de dados do POSTGRES, ele substituiu a linguagem
+   de consulta PostQuel com um subconjunto extendido do SQL. PostgreSQL é
+   livre e o código-fonte completo está disponível.
    
    O desenvolvimento do PostgreSQL é feito por um grupo de
    desenvolvedores que estão inscritos na lista de e-mails de
@@ -146,7 +144,7 @@
    (scrappy@PostgreSQL.org). (Veja a seção 1.6 para saber como se juntar
    ao grupo). O grupo é responsável por todo o desenvolvimento do
    PostgreSQL. É um projeto da comunidade e não é controlado por nenhuma
-   empresa. Para se juntar ao grupo, veja a FAQ do desenvolvedor em
+   empresa. Para se juntar ao grupo, veja a FAQ do desenvolvedor
    http://www.PostgreSQL.org/docs/faqs/FAQ_DEV.html
    
    Os autores do PostgreSQL 1.01 foram Andrew Yu e Jolly Chen. Muitos
@@ -166,7 +164,7 @@
    
    PostgreSQL Sistema de Gerência de Banco de Dados
    
-   Portions copyright (c) 1996-2004, PostgreSQL Global Development Group
+   Portions copyright (c) 1996-2002, PostgreSQL Global Development Group
    Portions Copyright (c) 1994-6 Regents of the University of California
    
    Permissão de uso, cópia, modificação e distribuição desse software e
@@ -194,10 +192,9 @@
    
     1.3) Quais plataformas Unix o PostgreSQL pode ser executado?
     
-   Em geral, qualquer plataforma moderna compatível com Unix deve ser
-   capaz de executar o PostgreSQL. As plataformas que foram testadas
-   antes do lançamento de uma versão são listadas nas instruções de
-   instalação.
+   Em geral, uma plataforma moderna compatível com Unix deve ser capaz de
+   executar o PostgreSQL. As plataformas que foram testadas antes do
+   lançamento de uma versão são listadas nas instruções de instalação.
    
     1.4) Quais portabilidades não-Unix estão disponíveis?
     
@@ -276,7 +273,7 @@
    
     1.7) Qual é a última versão?
     
-   A última versão do PostgreSQL é a versão 7.4.2.
+   A última versão do PostgreSQL é a versão 7.4.1.
    
    Nós planejamos lançar versões novas a cada seis ou oito meses.
    
@@ -470,7 +467,7 @@
    elas o PgAccess http://www.pgaccess.org), PgAdmin III
    (http://www.pgadmin.org, RHDB Admin (http://sources.redhat.com/rhdb/ )
    e o Rekall ( http://www.thekompany.com/products/rekall/,
-   proprietária). Há também o PhpPgAdmin (
+   proprietária). Há também o PHPPgAdmin (
    http://phppgadmin.sourceforge.net/ ), uma interface web para
    PostgreSQL.
    
@@ -542,16 +539,16 @@
     
    Por padrão, o PostgreSQL só permite conexões da máquina local
    utilizando soquetes de domínio Unix. Outras máquinas não poderão
-   conectar-se a menos que você habilite tcpip_sockets no
-   postgresql.conf, e habilite a autenticação por máquina modificando o
-   arquivo $PGDATA/pg_hba.conf. Isso irá permitir conexões TCP/IP.
+   conectar-se a menos que você adicione a opção -i no postmaster, e
+   habilite a autenticação por máquina modificando o arquivo
+   $PGDATA/pg_hba.conf. Isso irá permitir conexões TCP/IP.
    
     3.6) Como eu ajusto o servidor de banco de dados para obter uma performance
     melhor?
     
    Certamente, índices podem acelerar consultas. O comando EXPLAIN
-   ANALYZE permite que você veja como o PostgreSQL está interpretando a
-   consulta, e quais os índices são utilizados.
+   permite que você veja como o PostgreSQL está interpretando a consulta,
+   e quais os índices são utilizados.
    
    Se você está fazendo muitos INSERTs, considere fazê-los em lote
    utilizando o comando COPY. Isso é mais rápido do que INSERTs
@@ -702,15 +699,11 @@
     4.3) Como eu obtenho a lista de tabelas ou outras coisas que eu posso ver
     no psql?
     
-   Utilize o comando \dt para ver tabelas no psql. Para obter uma lista
-   completa de comandos no psql você pode utilizar \?. Alternativamente
-   você pode ler o código-fonte do psql no arquivo
+   Você pode ler o código-fonte do psql no arquivo
    pgsql/src/bin/psql/describe.c. Ele contém comandos SQL que geram a
    saída para os comandos do psql. Você também pode iniciar o psql com a
    opção -E então serão mostradas as consultas utilizadas para executar
-   os comandos que você digitou. PostgreSQL também fornece uma interface
-   para o INFORMATION SCHEMA SQLi na qual você pode consultar informações
-   sobre o banco de dados.
+   os comandos que você digitou.
    
     4.4) Como eu removo uma coluna de uma tabela ou mudo o seu tipo de dados?
     
@@ -1038,11 +1031,10 @@ te safe)
    que é utilizada por todos os bancos de dados. Se você quer mudar o OID
    de alguma coisa, ou se você quer fazer uma cópia da tabela, com os
    OIDs, não há razão para que você não possa fazê-la:
-        CREATE TABLE nova_tabela(minha_coluna int);
-        SELECT oid as oid_antigo, minha_coluna INTO tabela_tmp FROM tabela_anti
-ga;
-        COPY tabela_tmp TO '/tmp/pgtable';
-        DROP TABLE tabela_tmp;
+        CREATE TABLE nova_tabela(oid_antigo oid, minha_coluna int);
+        SELECT oid_antigo, minha_coluna INTO novo FROM tabela_antiga;
+        COPY novo TO '/tmp/pgtable';
+        DELETE FROM novo;
         COPY nova_tabela WITH OIDS FROM '/tmp/pgtable';
 
    OIDs são armazenados como inteiros de 4 bytes, e não ultrapassam 4
