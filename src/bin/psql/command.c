@@ -95,7 +95,6 @@ HandleSlashCmds(const char *line,
 
 #ifdef USE_ASSERT_CHECKING
 	assert(line);
-	assert(end_of_cmd);
 #endif
 
 	my_line = xstrdup(line);
