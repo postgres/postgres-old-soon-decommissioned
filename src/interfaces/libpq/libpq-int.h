@@ -278,7 +278,7 @@ extern int	pqWait(int forRead, int forWrite, PGconn *conn);
 
 /* supply an implementation of strerror() macro if system doesn't have it */
 #ifndef strerror
-#if defined(sun) && defined(sparc) && !defined(__SVR4)
+#if defined(sun) && defined(__sparc__) && !defined(__SVR4)
 extern char *sys_errlist[];
 
 #define strerror(A) (sys_errlist[(A)])
