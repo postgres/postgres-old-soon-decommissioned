@@ -15,32 +15,11 @@
 
 #include "nodes/parsenodes.h"
 
-/*
- * transient data structure to hold return value of index_info. Note that
- * indexkeys, orderOprs and classlist is "null-terminated".
- */
-typedef struct IdxInfoRetval
-{
-	Oid			relid;			/* OID of the index relation (not the OID
-								 * of the relation being indexed) */
-	Oid			relam;			/* OID of the pg_am of this index */
-	int			pages;			/* number of pages in the index relation */
-	int			tuples;			/* number of tuples in the index relation */
-	int		   *indexkeys;		/* keys over which we're indexing */
-	Oid		   *orderOprs;		/* operators used for ordering purposes */
-	Oid		   *classlist;		/* classes of AM operators */
-	Oid			indproc;
-	Node	   *indpred;
-} IdxInfoRetval;
 
+extern void relation_info(Query *root, Index relid,
+						  bool *hasindex, int *pages, int *tuples);
 
-extern void relation_info(Query *root,
-			  Oid relid,
-			  bool *hashindex, int *pages,
-			  int *tuples);
-
-extern bool index_info(Query *root,
-		   bool first, int relid, IdxInfoRetval *info);
+extern List *find_secondary_indexes(Query *root, Index relid);
 
 extern Cost restriction_selectivity(Oid functionObjectId,
 						Oid operatorObjectId,
