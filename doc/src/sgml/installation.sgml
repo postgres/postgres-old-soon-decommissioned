@@ -5,6 +5,10 @@ Postgres quick Installation Guide.
 - thomas 1998-10-26
 
 $Log: installation.sgml,v $
+Revision 1.5  1999/06/03 04:21:48  thomas
+Markup changes for v6.5 release.
+Clean out duplicate stuff in odbc.sgml resulting from a faulty patch.
+
 Revision 1.4  1999/05/26 17:30:29  thomas
 Add chapters on CVS access, MVCC, SQL theory to the docs.
 Add an appendix with more details on date/time attributes and handling.
@@ -84,7 +88,7 @@ First cut at standalone installation guide to replace INSTALL text source.
 
 <legalnotice>
 <para>
-<productname>PostgreSQL</productname> is &copy; 1998-9
+<productname>PostgreSQL</productname> is Copyright &copy; 1996-9
 by the Postgres Global Development Group.
 </para>
 </legalnotice>
