@@ -178,7 +178,7 @@ elog(int lev, const char *fmt,...)
 		ProcReleaseSpins(NULL); /* get rid of spinlocks we hold */
 		if (!InError)
 		{
-			kill(MyProcPid, 1); /* abort to traffic cop */
+			kill(MyProcPid, SIGHUP); /* abort to traffic cop */
 			pause();
 		}
 
