@@ -34,4 +34,10 @@ extern void RelationRegisterRelation(Relation relation);
 extern void RelationPurgeLocalRelation(bool xactComitted);
 extern void RelationInitialize(void);
 
+/*
+ * both vacuum.c and relcache.c need to know the name of the relcache init file
+ */
+
+#define RELCACHE_INIT_FILENAME	"pg_internal.init"
+
 #endif	 /* RELCACHE_H */
