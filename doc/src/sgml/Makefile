@@ -150,13 +150,16 @@ distclean::
 #
 
 %.1: %-ref.sgml
-	nsgmls $< | sgmlspl $(D2MSCRIPT) --lowercase --section 1
+	nsgmls $(NSGMLS_FLAGS) refentry.sgml $< \
+	| sgmlspl $(D2MSCRIPT) --lowercase --blockformat --section 1
 
 %.1: %.sgml
-	nsgmls $< | sgmlspl $(D2MSCRIPT) --lowercase --section 1
+	nsgmls $(NSGMLS_FLAGS) refentry.sgml $< \
+	| sgmlspl $(D2MSCRIPT) --lowercase --blockformat --section 1
 
 %.l: %.sgml
-	nsgmls $< | sgmlspl $(D2MSCRIPT) --lowercase --section l
+	nsgmls $(NSGMLS_FLAGS) refentry.sgml $< \
+	| sgmlspl $(D2MSCRIPT) --lowercase --blockformat --section l
 
 # HTML
 # Include some softlinks to the generic default file names
