@@ -40,6 +40,7 @@
 #include "utils/portal.h"
 #include "utils/syscache.h"
 #include "miscadmin.h"
+#include "string.h"
 
 /* ----------------
  *		PortalExecutorHeapMemory stuff
@@ -102,6 +103,7 @@ PerformPortalFetch(char *name,
 	int			feature;
 	QueryDesc  *queryDesc;
 	MemoryContext context;
+	Const		limcount;
 
 	/* ----------------
 	 *	sanity checks
@@ -112,6 +114,21 @@ PerformPortalFetch(char *name,
 		elog(NOTICE, "PerformPortalFetch: blank portal unsupported");
 		return;
 	}
+
+	/* ----------------
+	 *  Create a const node from the given count value
+	 * ----------------
+	 */
+	memset(&limcount, 0, sizeof(limcount));
+	limcount.type       = T_Const;
+	limcount.consttype  = INT4OID;
+	limcount.constlen   = sizeof(int4);
+	limcount.constvalue = (Datum)count;
+	limcount.constisnull    = FALSE;
+	limcount.constbyval = TRUE;
+	limcount.constisset = FALSE;
+	limcount.constiscast    = FALSE;
+
 
 	/* ----------------
 	 *	get the portal from the portal name
@@ -176,7 +193,8 @@ PerformPortalFetch(char *name,
 	PortalExecutorHeapMemory = (MemoryContext)
 		PortalGetHeapMemory(portal);
 
-	ExecutorRun(queryDesc, PortalGetState(portal), feature, count);
+	ExecutorRun(queryDesc, PortalGetState(portal), feature, 
+				(Node *)NULL, (Node *)&limcount);
 
 	if (dest == None)			/* MOVE */
 		pfree(queryDesc);

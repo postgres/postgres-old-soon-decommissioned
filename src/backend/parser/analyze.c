@@ -205,7 +205,11 @@ transformStmt(ParseState *pstate, Node *parseTree)
 
 		case T_SelectStmt:
 			if (!((SelectStmt *) parseTree)->portalname)
+			{
 				result = transformSelectStmt(pstate, (SelectStmt *) parseTree);
+				result->limitOffset = ((SelectStmt *)parseTree)->limitOffset;
+				result->limitCount = ((SelectStmt *)parseTree)->limitCount;
+			}
 			else
 				result = transformCursorStmt(pstate, (SelectStmt *) parseTree);
 			break;

@@ -312,6 +312,12 @@ DefineQueryRewrite(RuleStmt *stmt)
 		heap_close(event_relation);
 
 		/*
+		 * LIMIT in view is not supported
+		 */
+		if (query->limitOffset != NULL || query->limitCount != NULL)
+			elog(ERROR, "LIMIT clause not supported in views");
+
+		/*
 		 * ... and finally the rule must be named _RETviewname.
 		 */
 		sprintf(expected_name, "_RET%s", event_obj->relname);

@@ -40,7 +40,8 @@
 #include "commands/command.h"
 
 static char *CreateOperationTag(int operationType);
-static void ProcessQueryDesc(QueryDesc *queryDesc);
+static void ProcessQueryDesc(QueryDesc *queryDesc, Node *limoffset,
+												   Node *limcount);
 
 
 /* ----------------------------------------------------------------
@@ -205,7 +206,7 @@ ProcessPortal(char *portalName,
  * ----------------------------------------------------------------
  */
 static void
-ProcessQueryDesc(QueryDesc *queryDesc)
+ProcessQueryDesc(QueryDesc *queryDesc, Node *limoffset, Node *limcount)
 {
 	Query	   *parseTree;
 	Plan	   *plan;
@@ -330,7 +331,7 @@ ProcessQueryDesc(QueryDesc *queryDesc)
 	 *	 actually run the plan..
 	 * ----------------
 	 */
-	ExecutorRun(queryDesc, state, EXEC_RUN, 0);
+	ExecutorRun(queryDesc, state, EXEC_RUN, limoffset, limcount);
 
 	/* save infos for EndCommand */
 	UpdateCommandInfo(operation, state->es_lastoid, state->es_processed);
@@ -373,5 +374,6 @@ ProcessQuery(Query *parsetree,
 		print_plan(plan, parsetree);
 	}
 	else
-		ProcessQueryDesc(queryDesc);
+		ProcessQueryDesc(queryDesc, parsetree->limitOffset,
+									parsetree->limitCount);
 }
