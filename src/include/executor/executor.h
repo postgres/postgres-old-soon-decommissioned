@@ -13,25 +13,15 @@
 #ifndef EXECUTOR_H
 #define EXECUTOR_H
 
+#include <catalog/pg_index.h>
+#include <access/itup.h>
+#include <stdio.h>
+#include <executor/execdesc.h>
+
 /* ----------------------------------------------------------------
- *     #includes
  * ----------------------------------------------------------------
  */
 
-#include <stdio.h>
-
-#include "access/itup.h"
-#include "access/relscan.h"
-#include "access/skey.h"
-#include "access/sdir.h"
-#include "catalog/pg_index.h"
-#include "executor/execdesc.h"
-
-#ifndef HAVE_MEMMOVE
-# include "regex/utils.h"
-#else
-# include <string.h>
-#endif
 
 /*
  * prototypes from functions in execAmi.c

@@ -14,7 +14,6 @@
 #define	PLANNODES_H
 
 #include <nodes/execnodes.h>
-#include <nodes/nodes.h>
 
 /* ----------------------------------------------------------------
  *  Executor State types are used in the plannode structures

@@ -17,7 +17,6 @@
 #include <tcop/dest.h>
 #include <nodes/plannodes.h>
 #include <nodes/parsenodes.h>
-#include <nodes/nodes.h>
 
 /* ----------------
  *	query descriptor:

@@ -13,6 +13,10 @@
 #ifndef RTREE_H
 #define RTREE_H
 
+#include <access/skey.h>
+#include <storage/block.h>
+#include <storage/off.h>
+
 /* see rtstrat.c for what all this is about */
 #define RTNStrategies			8
 #define RTLeftStrategyNumber		1
