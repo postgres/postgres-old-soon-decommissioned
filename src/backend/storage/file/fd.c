@@ -193,13 +193,33 @@ static char *filepath(char *filename);
 static long pg_nofile(void);
 
 /*
- * pg_fsync --- same as fsync except does nothing if -F switch was given
+ * pg_fsync --- same as fsync except does nothing if enableFsync is off
  */
 int
 pg_fsync(int fd)
 {
 	if (enableFsync)
 		return fsync(fd);
+	else
+		return 0;
+}
+
+/*
+ * pg_fdatasync --- same as fdatasync except does nothing if enableFsync is off
+ *
+ * Not all platforms have fdatasync; treat as fsync if not available.
+ */
+int
+pg_fdatasync(int fd)
+{
+	if (enableFsync)
+	{
+#ifdef HAVE_FDATASYNC
+		return fdatasync(fd);
+#else
+		return fsync(fd);
+#endif
+	}
 	else
 		return 0;
 }

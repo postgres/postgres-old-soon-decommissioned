@@ -1990,6 +1990,9 @@ UnlockBuffers(void)
 	}
 }
 
+/* Max time to wait to acquire a buffer read or write lock */
+#define BUFFER_LOCK_TIMEOUT		(10*60*1000000) /* 10 minutes */
+
 void
 LockBuffer(Buffer buffer, int mode)
 {
@@ -2041,7 +2044,7 @@ LockBuffer(Buffer buffer, int mode)
 		{
 			S_UNLOCK(&(buf->cntx_lock));
 			RESUME_INTERRUPTS();
-			S_LOCK_SLEEP(&(buf->cntx_lock), i++);
+			S_LOCK_SLEEP(&(buf->cntx_lock), i++, BUFFER_LOCK_TIMEOUT);
 			HOLD_INTERRUPTS();
 			S_LOCK(&(buf->cntx_lock));
 		}
@@ -2069,7 +2072,7 @@ LockBuffer(Buffer buffer, int mode)
 			}
 			S_UNLOCK(&(buf->cntx_lock));
 			RESUME_INTERRUPTS();
-			S_LOCK_SLEEP(&(buf->cntx_lock), i++);
+			S_LOCK_SLEEP(&(buf->cntx_lock), i++, BUFFER_LOCK_TIMEOUT);
 			HOLD_INTERRUPTS();
 			S_LOCK(&(buf->cntx_lock));
 		}
