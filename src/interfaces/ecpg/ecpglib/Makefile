@@ -13,15 +13,15 @@ top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
 NAME= ecpg
-SO_MAJOR_VERSION= 3
-SO_MINOR_VERSION= 4.2
+SO_MAJOR_VERSION= 4
+SO_MINOR_VERSION= 1.1
 
-override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include -I$(libpq_srcdir) $(CPPFLAGS)
+override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include -I$(libpq_srcdir) $(CPPFLAGS) $(THREAD_CFLAGS) 
 
 OBJS= execute.o typename.o descriptor.o data.o error.o prepare.o memory.o \
 	connect.o misc.o
 
-SHLIB_LINK = -L../pgtypeslib -lpgtypes $(libpq)
+SHLIB_LINK = -L../pgtypeslib -lpgtypes $(libpq) $(THREAD_LIBS)
 
 all: all-lib
 

@@ -1,5 +1,6 @@
 /* $Header$ */
 
+#define POSTGRES_ECPG_INTERNAL
 #include "postgres_fe.h"
 
 #include <stdlib.h>
@@ -21,6 +22,7 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 			 char *var, char *ind, long varcharsize, long offset,
 			 long ind_offset, bool isarray)
 {
+	struct sqlca_t *sqlca = ECPGget_sqlca();
 	char	   *pval = (char *) PQgetvalue(results, act_tuple, act_field);
 
 	ECPGlog("ECPGget_data line %d: RESULT: %s offset: %ld\n", lineno, pval ? pval : "", offset);
@@ -328,7 +330,7 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 							default:
 								break;
 						}
-						sqlca.sqlwarn[0] = sqlca.sqlwarn[1] = 'W';
+						sqlca->sqlwarn[0] = sqlca->sqlwarn[1] = 'W';
 					}
 				}
 				break;
@@ -373,7 +375,7 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 							default:
 								break;
 						}
-						sqlca.sqlwarn[0] = sqlca.sqlwarn[1] = 'W';
+						sqlca->sqlwarn[0] = sqlca->sqlwarn[1] = 'W';
 
 						variable->len = varcharsize;
 					}
