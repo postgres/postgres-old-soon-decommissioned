@@ -177,12 +177,12 @@ ERROR:  PL handler function <replaceable class="parameter">funcname</replaceable
   </para>
 
   <para>
-   Use the <xref linkend="sql-createfunction"> command to create a new
+   Use the <xref linkend="sql-createfunction" endterm="sql-createfunction-title"> command to create a new
    function.
   </para>
 
   <para>
-   Use <xref linkend="sql-droplanguage">, or better yet the <xref
+   Use <xref linkend="sql-droplanguage" endterm="sql-droplanguage-title">, or better yet the <xref
    linkend="app-droplang"> script, to drop procedural languages.
   </para>
 

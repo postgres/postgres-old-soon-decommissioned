@@ -5,14 +5,13 @@
  </docinfo>
 
  <refmeta>
-  <refentrytitle>SET SESSION AUTHORIZATION</refentrytitle>
+  <refentrytitle id="sql-set-session-authorization-title">SET SESSION AUTHORIZATION</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 
  <refnamediv>
   <refname>SET SESSION AUTHORIZATION</refname>
-  <refpurpose>set the session user identifier and the current user identifier
-         of the current session</refpurpose>
+  <refpurpose>set the session user identifier and the current user identifier of the current session</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

@@ -192,7 +192,7 @@ Postgres documentation
     </variablelist>
 
     If there is an error condition, the backend error message will be displayed.
-    See <xref linkend="SQL-CREATEDATABASE">
+    See <xref linkend="SQL-CREATEDATABASE" endterm="SQL-CREATEDATABASE-TITLE">
     and <xref linkend="APP-PSQL"> for possibilities.
    </para>
   </refsect2>
