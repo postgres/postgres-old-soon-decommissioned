@@ -222,9 +222,13 @@ start_postmaster(void)
 	 */
 	char		cmd[MAXPGPATH];
 
-	/* Does '&' work on Win32? */
 	if (log_file != NULL)
+		/* Win32 needs START rather than "&" */
+#ifndef WIN32
 		snprintf(cmd, MAXPGPATH, "%s\"%s\" %s < %s >> \"%s\" 2>&1 &%s",
+#else
+		snprintf(cmd, MAXPGPATH, "START %s\"%s\" %s < %s >> \"%s\" 2>&1%s",
+#endif
 				 SYSTEMQUOTE, postgres_path, post_opts, DEVNULL, log_file,
 				 SYSTEMQUOTE);
 	else
