@@ -1,6 +1,15 @@
 #!/bin/sh
 # $Header$
 #
+if echo '\c' | grep -s c >/dev/null 2>&1
+then
+	ECHO_N="echo -n"
+	ECHO_C=""
+else
+	ECHO_N="echo"
+	ECHO_C='\c'
+fi
+
 if [ -d ./obj ]; then
 	cd ./obj
 fi
@@ -33,7 +42,7 @@ fi
 echo "=============== running regression queries...         ================="
 for i in `cat sql/tests`
 do
-	echo -n "${i} .. "
+	$ECHO_N "${i} .. " $ECHO_C
 	$FRONTEND regression < sql/${i}.sql > results/${i}.out 2>&1
 	if [ `diff expected/${i}.out results/${i}.out | wc -l` -ne 0 ]
 	then
