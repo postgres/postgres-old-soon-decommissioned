@@ -357,7 +357,7 @@ PostgreSQL documentation
 
     <listitem>
      <para>
-      Default data direction location
+      Default data directory location
      </para>
     </listitem>
    </varlistentry>
