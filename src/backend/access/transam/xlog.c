@@ -4918,6 +4918,14 @@ CreateCheckPoint(bool shutdown, bool force)
 	if (!shutdown)
 		PreallocXlogFiles(recptr);
 
+	/*
+	 * Truncate pg_subtrans if possible.  We can throw away all data before
+	 * the oldest XMIN of any running transaction.  No future transaction will
+	 * attempt to reference any pg_subtrans entry older than that (see Asserts
+	 * in subtrans.c).
+	 */
+	TruncateSUBTRANS(GetOldestXmin(true));
+
 	LWLockRelease(CheckpointLock);
 }
 

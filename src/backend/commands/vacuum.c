@@ -810,9 +810,8 @@ vac_truncate_clog(TransactionId vacuumXID, TransactionId frozenXID)
 		return;
 	}
 
-	/* Truncate CLOG and SUBTRANS to the oldest vacuumxid */
+	/* Truncate CLOG to the oldest vacuumxid */
 	TruncateCLOG(vacuumXID);
-	TruncateSUBTRANS(vacuumXID);
 
 	/* Give warning about impending wraparound problems */
 	if (frozenAlreadyWrapped)
