@@ -135,8 +135,8 @@ extern char *aclcheck_error_strings[];
 /*
  * routines used internally (parser, etc.)
  */
-extern Acl *aclownerdefault(AclId ownerid);
-extern Acl *acldefault(void);
+extern Acl *aclownerdefault(char *relname, AclId ownerid);
+extern Acl *acldefault(char *relname);
 extern Acl *aclinsert3(Acl *old_acl, AclItem *mod_aip, unsigned modechg);
 
 extern char *aclmakepriv(char *old_privlist, char new_priv);
