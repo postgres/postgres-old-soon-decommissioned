@@ -304,7 +304,16 @@ static struct cachedesc cacheinfo[] = {
 		  0 },
 	   offsetof(FormData_pg_proc, prosrc),
       ProcedureSrcIndex,
-      (ScanFunc) ProcedureSrcIndexScan  }
+      (ScanFunc) ProcedureSrcIndexScan  },
+    { OperatorClassRelationName,               /* CLADEFTYPE */
+	   1,
+  	   { Anum_pg_opclass_opcdeftype,
+                  0,
+                  0,
+                  0 },
+	   sizeof(FormData_pg_opclass),
+           NULL,
+           (ScanFunc) NULL   }
 };
  
 static struct catcache	*SysCache[lengthof(cacheinfo)];

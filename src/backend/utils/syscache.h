@@ -58,6 +58,7 @@
 #define GROSYSID	24
 #define	REWRITENAME	25
 #define PROSRC          26
+#define CLADEFTYPE      27
 
 /* ----------------
  *	struct cachedesc:	information needed for a call to InitSysCache()

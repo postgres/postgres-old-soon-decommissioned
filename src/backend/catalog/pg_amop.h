@@ -219,11 +219,11 @@ DATA(insert OID = 0 (  403 408 462 5 btreesel btreenpage ));
  *  nbtree name_ops
  */
 
-DATA(insert OID = 0 (  403 409 660 1 btreesel btreenpage ));
-DATA(insert OID = 0 (  403 409 661 2 btreesel btreenpage ));
-DATA(insert OID = 0 (  403 409 93 3 btreesel btreenpage ));
-DATA(insert OID = 0 (  403 409 663 4 btreesel btreenpage ));
-DATA(insert OID = 0 (  403 409 662 5 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 1181 660 1 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 1181 661 2 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 1181 93 3 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 1181 663 4 btreesel btreenpage ));
+DATA(insert OID = 0 (  403 1181 662 5 btreesel btreenpage ));
 
 /*
  *  nbtree char16_ops
@@ -453,11 +453,11 @@ DATA(insert OID = 0 (  404 430 647 5 btreesel btreenpage ));
  *  nobtree name_ops
  */
 
-DATA(insert OID = 0 (  404 409 660 1 btreesel btreenpage ));
-DATA(insert OID = 0 (  404 409 661 2 btreesel btreenpage ));
-DATA(insert OID = 0 (  404 409 93 3 btreesel btreenpage ));
-DATA(insert OID = 0 (  404 409 663 4 btreesel btreenpage ));
-DATA(insert OID = 0 (  404 409 662 5 btreesel btreenpage ));
+DATA(insert OID = 0 (  404 1181 660 1 btreesel btreenpage ));
+DATA(insert OID = 0 (  404 1181 661 2 btreesel btreenpage ));
+DATA(insert OID = 0 (  404 1181 93 3 btreesel btreenpage ));
+DATA(insert OID = 0 (  404 1181 663 4 btreesel btreenpage ));
+DATA(insert OID = 0 (  404 1181 662 5 btreesel btreenpage ));
 
 /*
  *  nobtree text_ops
@@ -526,7 +526,7 @@ DATA(insert OID = 0 (  405 430 99 1 hashsel hashnpage ));
 /*
  *  hash table name_ops
  */
-DATA(insert OID = 0 (  405 409 93 1 hashsel hashnpage ));
+DATA(insert OID = 0 (  405 1181 93 1 hashsel hashnpage ));
 /*
  *  hash table text_ops
  */
