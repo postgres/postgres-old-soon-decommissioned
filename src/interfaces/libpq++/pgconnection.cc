@@ -9,6 +9,8 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
+ * IDENTIFICATION
+ *	  $Header$
  *
  *-------------------------------------------------------------------------
  */
@@ -20,8 +22,6 @@
 extern "C" {
 #include "fe-auth.h"
 }
-
-static char rcsid[] = "$Id$";
 
 // ****************************************************************
 //

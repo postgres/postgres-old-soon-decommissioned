@@ -9,15 +9,13 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
+ * IDENTIFICATION
+ *	  $Header$
  *
  *-------------------------------------------------------------------------
  */
  
- #include "pgcursordb.h"
-
-static char rcsid[] = "$Id$";
-
- 
+#include "pgcursordb.h"
  
 // ****************************************************************
 //

@@ -9,14 +9,14 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
+ * IDENTIFICATION
+ *	  $Header$
  *
  *-------------------------------------------------------------------------
  */
  
- #include "pgtransdb.h"
- 
-static char rcsid[] = "$Id$";
- 
+#include "pgtransdb.h"
+
 // ****************************************************************
 //
 // PgTransaction Implementation

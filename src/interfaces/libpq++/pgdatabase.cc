@@ -10,13 +10,13 @@
  * Copyright (c) 1994, Regents of the University of California
  *
  * IDENTIFICATION
+ *	  $Header$
  *
  *-------------------------------------------------------------------------
  */
  
 #include "pgdatabase.h"
 
-static char rcsid[] = "$Id$"; 
 
 void PgDatabase::DisplayTuples(FILE *out = 0, int fillAlign = 1, 
 	const char* fieldSep = "|",int printHeader = 1, int quiet = 0) 
