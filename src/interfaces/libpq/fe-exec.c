@@ -22,7 +22,11 @@
 #include "libpq/pqsignal.h"
 #include "libpq-fe.h"
 #include <sys/ioctl.h>
-#include TERMIOS_H_LOCATION
+#ifndef HAVE_TERMIOS_H
+# include <sys/termios.h>
+#else
+# include <termios.h>
+#endif
 
 
 #ifdef TIOCGWINSZ
