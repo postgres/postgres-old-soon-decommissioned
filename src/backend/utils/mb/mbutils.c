@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "postgres.h"
+#include "miscadmin.h"
 #include "mb/pg_wchar.h"
 
 static int	client_encoding = -1;

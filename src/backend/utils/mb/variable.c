@@ -5,6 +5,7 @@
  * $Id$
  */
 
+#include "postgres.h"
 #include "mb/pg_wchar.h"
 
 bool

@@ -50,6 +50,10 @@
 #include "utils/syscache.h"
 #include "version.h"
 
+#ifdef MULTIBYTE
+#include "mb/pg_wchar.h"
+#endif
+
 static void VerifySystemDatabase(void);
 static void VerifyMyDatabase(void);
 static void InitCommunication(void);

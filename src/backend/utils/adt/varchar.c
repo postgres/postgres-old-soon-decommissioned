@@ -19,6 +19,10 @@
 #include "catalog/pg_type.h"
 #include "utils/builtins.h"
 
+#ifdef MULTIBYTE
+#include "mb/pg_wchar.h"
+#endif
+
 #ifdef CYR_RECODE
 char	   *convertstr(char *, int, int);
 #endif
