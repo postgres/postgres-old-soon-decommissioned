@@ -6899,7 +6899,7 @@ dumpIndex(Archive *fout, IndxInfo *indxinfo)
 		ArchiveEntry(fout, indxinfo->dobj.catId, indxinfo->dobj.dumpId,
 					 indxinfo->dobj.name,
 					 tbinfo->dobj.namespace->dobj.name,
-					 tbinfo->reltablespace,
+					 indxinfo->tablespace,
 					 tbinfo->usename, false,
 					 "INDEX", q->data, delq->data, NULL,
 					 indxinfo->dobj.dependencies, indxinfo->dobj.nDeps,
