@@ -2086,7 +2086,8 @@ readDatum(bool typbyval)
 	if (typbyval)
 	{
 		if (length > (Size) sizeof(Datum))
-			elog(ERROR, "readDatum: byval & length = %u", length);
+			elog(ERROR, "readDatum: byval & length = %lu",
+				 (unsigned long) length);
 		res = (Datum) 0;
 		s = (char *) (&res);
 		for (i = 0; i < (Size) sizeof(Datum); i++)
@@ -2110,7 +2111,8 @@ readDatum(bool typbyval)
 
 	token = pg_strtok(&tokenLength); /* skip the ']' */
 	if (token == NULL || token[0] != ']')
-		elog(ERROR, "readDatum: ']' expected, length = %d", length);
+		elog(ERROR, "readDatum: ']' expected, length = %lu",
+			 (unsigned long) length);
 
 	return res;
 }
