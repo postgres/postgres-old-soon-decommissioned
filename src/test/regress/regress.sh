@@ -110,7 +110,6 @@ do
 		echo "----------------------"; \
 		echo "" ) >> regression.diffs
 		echo failed
-		echo "diff ${DIFFOPT} -C3 ${EXPECTED} results/${i}.out"
 	else
 		echo ok
 	fi

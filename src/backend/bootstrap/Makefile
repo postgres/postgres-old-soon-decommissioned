@@ -32,17 +32,20 @@ endif
 
 BOOTYACCS= bootstrap_tokens.h bootparse.c
 
-ifneq ($(PORTNAME), qnx4)
 OBJS= bootparse.o bootscanner.o bootstrap.o 
-else
-# wlink crashes with bootstrap.o
-OBJS= bootparse.o bootscanner.o
+ifeq ($(PORTNAME), qnx4)
+# wlink currently crashes with bootstrap.o
+OBJS1= bootparse.o bootscanner.o
 endif
 
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
+ifneq ($(PORTNAME), qnx4)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
+else
+	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS1)
+endif
 
 # bootstrap.o's dependency on bootstrap_tokens.h is computed by the
 # make depend, but we state it here explicitly anyway because 
