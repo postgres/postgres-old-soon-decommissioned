@@ -272,7 +272,7 @@ get_attdispersion(Oid relid, AttrNumber attnum, double min_estimate)
 
 	/*
 	 * VACUUM ANALYZE has not been run for this table. Produce an estimate
-	 * = 1/numtuples.  This may produce unreasonably small estimates for
+	 * of 1/numtuples.  This may produce unreasonably small estimates for
 	 * large tables, so limit the estimate to no less than min_estimate.
 	 */
 	dispersion = 1.0 / (double) ntuples;

@@ -404,7 +404,7 @@ IpcSemaphoreLock(IpcSemaphoreId semId, int sem, bool interruptOK)
 	 * and entering the semop() call.  If a cancel/die interrupt occurs in
 	 * that window, we would fail to notice it until after we acquire the
 	 * lock (or get another interrupt to escape the semop()).  We can
-	 * avoid this problem by temporarily setting ImmediateInterruptOK =
+	 * avoid this problem by temporarily setting ImmediateInterruptOK to
 	 * true before we do CHECK_FOR_INTERRUPTS; then, a die() interrupt in
 	 * this interval will execute directly.  However, there is a huge
 	 * pitfall: there is another window of a few instructions after the

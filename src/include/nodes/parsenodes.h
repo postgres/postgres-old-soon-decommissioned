@@ -116,10 +116,16 @@ typedef enum InhOption
 typedef struct AlterTableStmt
 {
 	NodeTag		type;
-	char		subtype;		/* A = add column, T = alter column, D =
-								 * drop column, C = add constraint, X =
-								 * drop constraint, E = add toast table, U
-								 * = change owner */
+	char		subtype;		/*------------
+								 * 	A = add column
+								 *	T = alter column
+								 *	D = drop column
+								 *	C = add constraint
+								 *	X = drop constraint
+								 *	E = add toast table,
+								 *	U = change owner
+								 *------------
+								 */
 	char	   *relname;		/* table to work on */
 	InhOption	inhOpt;			/* recursively act on children? */
 	char	   *name;			/* column or constraint name to act on, or

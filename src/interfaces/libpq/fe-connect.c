@@ -582,10 +582,11 @@ update_db_info(PGconn *conn)
 		if (strncmp(conn->dbName + offset, "postgresql://", strlen("postgresql://")) == 0)
 		{
 
-			/*
+			/*-------
 			 * new style:
-			 * <tcp|unix>:postgresql://server[:port|:/unixsocket/path:][/db
-			 * name][?options]
+			 * 	<tcp|unix>:postgresql://server[:port|:/unixsocket/path:]
+			 *	[/db name][?options]
+			 *-------
 			 */
 			offset += strlen("postgresql://");
 

@@ -1642,9 +1642,10 @@ prefix_selectivity(char *prefix,
 							   Int32GetDatum(SEL_CONSTANT | SEL_RIGHT)));
 	pfree(DatumGetPointer(prefixcon));
 
-	/*
-	 * If we can create a string larger than the prefix, say "x <
-	 * greaterstr".
+	/*-------
+	 * If we can create a string larger than the prefix, say
+	 *	"x < greaterstr".
+	 *-------
 	 */
 	greaterstr = make_greater_string(prefix, datatype);
 	if (greaterstr)

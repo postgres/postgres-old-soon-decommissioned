@@ -1986,9 +1986,10 @@ prefix_quals(Var *leftop, Oid expr_op,
 	expr = make_opclause(op, leftop, (Var *) con);
 	result = makeList1(expr);
 
-	/*
-	 * If we can create a string larger than the prefix, we can say "x <
-	 * greaterstr".
+	/*-------
+	 * If we can create a string larger than the prefix, we can say
+	 * "x < greaterstr".
+	 *-------
 	 */
 	greaterstr = make_greater_string(prefix, datatype);
 	if (greaterstr)

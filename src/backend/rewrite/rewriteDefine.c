@@ -130,10 +130,14 @@ ValidateRule(int event_type,
 
 #ifdef NOT_USED
 
-	/*
+	/*---------
 	 * on retrieve to class.attribute do instead nothing is converted to
-	 * 'on retrieve to class.attribute do instead retrieve (attribute =
-	 * NULL)' --- this is also a terrible hack that works well -- glass
+	 * 'on retrieve to class.attribute do instead:
+	 *
+	 *	 retrieve (attribute = NULL)'
+	 *
+	 * this is also a terrible hack that works well -- glass
+	 *---------
 	 */
 	if (is_instead && !*action && eslot_string && event_type == CMD_SELECT)
 	{

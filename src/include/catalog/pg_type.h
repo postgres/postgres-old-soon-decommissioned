@@ -77,8 +77,9 @@ CATALOG(pg_type) BOOTSTRAP
 	 * be a "real" array type; some ordinary fixed-length types can also
 	 * be subscripted (e.g., oidvector). Variable-length types can *not*
 	 * be turned into pseudo-arrays like that. Hence, the way to determine
-	 * whether a type is a "true" array type is typelem != 0 and typlen <
-	 * 0.
+	 * whether a type is a "true" array type is if:
+	 *
+	 *	typelem != 0 and typlen < 0.
 	 */
 	Oid			typelem;
 	regproc		typinput;

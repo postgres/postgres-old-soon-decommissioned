@@ -334,9 +334,11 @@ _hash_step(IndexScanDesc scan, Buffer *bufP, ScanDirection dir, Buffer metabuf)
 				while (offnum > maxoff)
 				{
 
-					/*
-					 * either this page is empty (maxoff ==
-					 * InvalidOffsetNumber) or we ran off the end.
+					/*--------
+					 * either this page is empty
+					 * (maxoff == InvalidOffsetNumber)
+					 * or we ran off the end.
+					 *--------
 					 */
 					_hash_readnext(rel, &buf, &page, &opaque);
 					if (BufferIsInvalid(buf))
@@ -382,9 +384,11 @@ _hash_step(IndexScanDesc scan, Buffer *bufP, ScanDirection dir, Buffer metabuf)
 				while (offnum < FirstOffsetNumber)
 				{
 
-					/*
-					 * either this page is empty (offnum ==
-					 * InvalidOffsetNumber) or we ran off the end.
+					/*---------
+					 * either this page is empty
+					 * (offnum == InvalidOffsetNumber)
+					 * or we ran off the end.
+					 *---------
 					 */
 					_hash_readprev(rel, &buf, &page, &opaque);
 					if (BufferIsInvalid(buf))

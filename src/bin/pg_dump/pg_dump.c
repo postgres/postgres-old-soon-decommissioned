@@ -4405,8 +4405,10 @@ dumpSequence(Archive *fout, TableInfo tbinfo, const bool schemaOnly, const bool 
 	/*
 	 * The logic we use for restoring sequences is as follows: -   Add a
 	 * basic CREATE SEQUENCE statement (use last_val for start if called
-	 * == 'f', else use min_val for start_val). -	Add a 'SETVAL(seq,
-	 * last_val, iscalled)' at restore-time iff we load data
+	 * with 'f', else use min_val for start_val).
+	 *
+	 *	Add a 'SETVAL(seq, last_val, iscalled)' at restore-time iff
+	 *  we load data
 	 */
 
 	if (!dataOnly)

@@ -297,9 +297,11 @@ addRangeClause(RangeQueryClause **rqlist, Node *clause,
 			else
 			{
 
-				/*
-				 * We have found two similar clauses, such as x < y AND x
-				 * < z.  Keep only the more restrictive one.
+				/*------
+				 * We have found two similar clauses, such as
+				 * x < y AND x < z.
+				 * Keep only the more restrictive one.
+				 *------
 				 */
 				if (rqelem->lobound > s2)
 					rqelem->lobound = s2;
@@ -315,9 +317,11 @@ addRangeClause(RangeQueryClause **rqlist, Node *clause,
 			else
 			{
 
-				/*
-				 * We have found two similar clauses, such as x > y AND x
-				 * > z.  Keep only the more restrictive one.
+				/*------
+				 * We have found two similar clauses, such as
+				 * x > y AND x > z.
+				 * Keep only the more restrictive one.
+				 *------
 				 */
 				if (rqelem->hibound > s2)
 					rqelem->hibound = s2;

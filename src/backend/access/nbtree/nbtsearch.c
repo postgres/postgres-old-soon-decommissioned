@@ -584,8 +584,10 @@ _bt_first(IndexScanDesc scan, ScanDirection dir)
 
 	/*
 	 * At this point we are positioned at the first item >= scan key, or
-	 * possibly at the end of a page on which all the existing items are <
-	 * scan key and we know that everything on later pages is >= scan key.
+	 * possibly at the end of a page on which all the existing items are 
+	 * greater than the scan key and we know that everything on later pages
+	 * is less than or equal to scan key.
+     *
 	 * We could step forward in the latter case, but that'd be a waste of
 	 * time if we want to scan backwards.  So, it's now time to examine
 	 * the scan strategy to find the exact place to start the scan.

@@ -77,9 +77,12 @@ static void
 eval_as_new_xact(char *query)
 {
 
-	/*
+	/*------
 	 * WARNING! do not uncomment the following lines WARNING!
-	 * CommitTransactionCommand(); StartTransactionCommand();
+	 *
+	 *	CommitTransactionCommand();
+	 *	StartTransactionCommand();
+	 *------
 	 */
 	CommandCounterIncrement();
 	pg_exec_query(query);

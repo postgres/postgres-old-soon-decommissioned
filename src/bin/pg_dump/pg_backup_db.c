@@ -473,9 +473,10 @@ ExecuteSqlCommandBuf(ArchiveHandle *AH, void *qryv, int bufLen)
 				qry += loc + 1;
 				isEnd = (strcmp(AH->pgCopyBuf->data, "\\.\n") == 0);
 
-				/*
-				 * fprintf(stderr, "Sending '%s' via COPY (at end =
-				 * %d)\n\n", AH->pgCopyBuf->data, isEnd);
+				/*---------
+				 * fprintf(stderr, "Sending '%s' via
+				 *		COPY (at end = %d)\n\n", AH->pgCopyBuf->data, isEnd);
+				 *---------
 				 */
 
 				if (PQputline(AH->connection, AH->pgCopyBuf->data) != 0)

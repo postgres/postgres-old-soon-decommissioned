@@ -1499,8 +1499,9 @@ ExecTargetList(List *targetlist,
 	 * and another array that holds the isDone status for each targetlist
 	 * item. The isDone status is needed so that we can iterate,
 	 * generating multiple tuples, when one or more tlist items return
-	 * sets.  (We expect the caller to call us again if we return *isDone
-	 * = ExprMultipleResult.)
+	 * sets.  (We expect the caller to call us again if we return:
+	 *
+	 *	isDone = ExprMultipleResult.)
 	 */
 	if (nodomains > NPREALLOCDOMAINS)
 	{

@@ -412,8 +412,8 @@ _bt_orderkeys(Relation relation, BTScanOpaque so)
 			if (DatumGetBool(test))
 				xform[j].sk_argument = cur->sk_argument;
 			else if (j == (BTEqualStrategyNumber - 1))
-				so->qual_ok = false;	/* key == a && key == b, but a !=
-										 * b */
+				so->qual_ok = false;
+			/* key == a && key == b, but a != b */
 		}
 		else
 		{

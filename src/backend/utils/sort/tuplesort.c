@@ -129,8 +129,10 @@ struct Tuplesortstate
 	 * kind of tuple we are sorting from the routines that don't need to
 	 * know it. They are set up by the tuplesort_begin_xxx routines.
 	 *
-	 * Function to compare two tuples; result is per qsort() convention, ie,
-	 * <0, 0, >0 according as a<b, a=b, a>b.
+	 * Function to compare two tuples; result is per qsort() convention,
+	 * ie:
+	 *
+	 * 	<0, 0, >0 according as a<b, a=b, a>b.
 	 */
 	int			(*comparetup) (Tuplesortstate *state, const void *a, const void *b);
 

@@ -458,9 +458,10 @@ toast_insert_or_update(Relation rel, HeapTuple newtup, HeapTuple oldtup)
 		int32		biggest_size = MAXALIGN(sizeof(varattrib));
 		Datum		old_value;
 
-		/*
-		 * Search for the biggest yet inlined attribute with attstorage =
-		 * 'x' or 'e'
+		/*------
+		 * Search for the biggest yet inlined attribute with
+		 * attstorage equals 'x' or 'e'
+		 *------
 		 */
 		for (i = 0; i < numAttrs; i++)
 		{
@@ -572,9 +573,10 @@ toast_insert_or_update(Relation rel, HeapTuple newtup, HeapTuple oldtup)
 		int32		biggest_size = MAXALIGN(sizeof(varattrib));
 		Datum		old_value;
 
-		/*
-		 * Search for the biggest yet inlined attribute with attstorage =
-		 * 'm'
+		/*--------
+		 * Search for the biggest yet inlined attribute with
+		 * attstorage = 'm'
+		 *--------
 		 */
 		for (i = 0; i < numAttrs; i++)
 		{

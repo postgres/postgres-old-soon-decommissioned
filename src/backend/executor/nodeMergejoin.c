@@ -240,10 +240,11 @@ MergeCompare(List *eqQual, List *compareQual, ExprContext *econtext)
 			break;
 		}
 
-		/*
+		/*-----------
 		 * ok, the compare clause failed so we test if the keys are
-		 * equal... if key1 != key2, we return false. otherwise key1 =
-		 * key2 so we move on to the next pair of keys.
+		 * equal... if key1 != key2, we return false. otherwise
+		 * key1 = key2 so we move on to the next pair of keys.
+		 *-----------
 		 */
 		const_value = ExecEvalExpr((Node *) lfirst(eqclause),
 								   econtext,

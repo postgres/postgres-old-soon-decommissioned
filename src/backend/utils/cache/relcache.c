@@ -2833,11 +2833,14 @@ write_irels(void)
 	 * the descriptors, nail them into cache so we never lose them.
 	 */
 
-	/*
-	 * Removed the following ProcessingMode change -- inoue At this point
-	 * 1) Catalog Cache isn't initialized 2) Relation Cache for the
-	 * following critical indexes aren't built oldmode =
-	 * GetProcessingMode(); SetProcessingMode(BootstrapProcessing);
+	/*---------
+	 * Removed the following ProcessingMode change -- inoue
+	 * At this point
+	 * 1) Catalog Cache isn't initialized
+	 * 2) Relation Cache for the following critical indexes aren't built
+	 * oldmode = GetProcessingMode();
+	 * SetProcessingMode(BootstrapProcessing);
+	 *---------
 	 */
 
 	bi.infotype = INFO_RELNAME;

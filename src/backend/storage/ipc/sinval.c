@@ -319,11 +319,13 @@ GetSnapshotData(bool serializable)
 				xid < FirstTransactionId || xid >= snapshot->xmax)
 			{
 
-				/*
-				 * Seems that there is no sense to store xid >=
-				 * snapshot->xmax (what we got from ReadNewTransactionId
-				 * above) in snapshot->xip - we just assume that all xacts
+				/*--------
+				 * Seems that there is no sense to store
+				 * 		xid >= snapshot->xmax
+				 * (what we got from ReadNewTransactionId above)
+				 * in snapshot->xip.  We just assume that all xacts
 				 * with such xid-s are running and may be ignored.
+				 *--------
 				 */
 				continue;
 			}

@@ -158,8 +158,12 @@ typedef struct _oprInfo
 {
 	char	   *oid;
 	char	   *oprname;
-	char	   *oprkind;		/* "b" = binary, "l" = left unary, "r" =
-								 * right unary */
+	char	   *oprkind;		/*----------
+								 * 	b = binary,
+								 *	l = left unary
+								 *	r = right unary
+								 *----------
+								 */
 	char	   *oprcode;		/* operator function name */
 	char	   *oprleft;		/* left operand type */
 	char	   *oprright;		/* right operand type */
