@@ -841,7 +841,7 @@ SPI_cursor_open(const char *name, void *plan, Datum *Values, const char *Nulls)
 	 * Set up options for portal.
 	 */
 	portal->cursorOptions &= ~(CURSOR_OPT_SCROLL | CURSOR_OPT_NO_SCROLL);
-	if (ExecSupportsBackwardScan(plan))
+	if (ExecSupportsBackwardScan(planTree))
 		portal->cursorOptions |= CURSOR_OPT_SCROLL;
 	else
 		portal->cursorOptions |= CURSOR_OPT_NO_SCROLL;
