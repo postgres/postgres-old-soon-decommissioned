@@ -1106,6 +1106,9 @@ DESCR("does not match LIKE expression");
 DATA(insert OID =  860 (  bpchar		   PGNSP PGUID 12 f f t f i 1 1042 "18"  char_bpchar - _null_ ));
 DESCR("convert char to char()");
 
+DATA(insert OID = 861 ( current_database       PGNSP PGUID 12 f f t f i 0 19 "0" current_database - _null_ ));
+DESCR("returns the current database");
+
 DATA(insert OID =  862 (  int4_mul_cash		   PGNSP PGUID 12 f f t f i 2 790 "23 790"  int4_mul_cash - _null_ ));
 DESCR("multiply");
 DATA(insert OID =  863 (  int2_mul_cash		   PGNSP PGUID 12 f f t f i 2 790 "21 790"  int2_mul_cash - _null_ ));
