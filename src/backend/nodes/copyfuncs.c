@@ -481,6 +481,28 @@ _copySort(Sort *from)
 	return newnode;
 }
 
+
+/* ----------------
+ *		_copyGroup
+ * ----------------
+ */
+static Group *
+_copyGroup(Group *from)
+{
+	Group	   *newnode = makeNode(Group);
+	
+	CopyPlanFields((Plan *) from, (Plan *) newnode);
+	CopyTempFields((Temp *) from, (Temp *) newnode);
+	
+	newnode->tuplePerGroup = from->tuplePerGroup;
+	newnode->numCols = from->numCols;
+	newnode->grpColIdx = palloc (from->numCols * sizeof (AttrNumber));
+	memcpy (newnode->grpColIdx, from->grpColIdx, from->numCols * sizeof (AttrNumber));
+	Node_Copy(from, newnode, grpstate);
+
+	return newnode;
+}
+
 /* ---------------
  *	_copyAgg
  * --------------
@@ -1645,6 +1667,9 @@ copyObject(void *from)
 			break;
 		case T_Sort:
 			retval = _copySort(from);
+			break;
+		case T_Group:
+			retval = _copyGroup(from);
 			break;
 		case T_Agg:
 			retval = _copyAgg(from);
