@@ -381,7 +381,7 @@ S_INIT_LOCK(unsigned char *addr)
  * Linux and friends
  */
 
-#if defined(PORTNAME_linux) || defined(PORTNAME_BSD44_derived)
+#if defined(PORTNAME_linux) || defined(PORTNAME_BSD44_derived) || defined(PORTNAME_bsdi)
 
 int
 tas(slock_t *m)
