@@ -23,7 +23,7 @@ override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -DFRONTEND -DSYSCONFDIR='"$(sysconf
 OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
       pqexpbuffer.o pqsignal.o fe-secure.o \
       dllist.o md5.o ip.o wchar.o encnames.o \
-      $(filter getaddrinfo.o inet_aton.o snprintf.o strerror.o path.o, $(LIBOBJS))
+      $(filter crypt.o getaddrinfo.o inet_aton.o snprintf.o strerror.o path.o, $(LIBOBJS))
 
 
 # Add libraries that libpq depends (or might depend) on into the
