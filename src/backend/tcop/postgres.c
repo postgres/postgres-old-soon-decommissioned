@@ -2535,7 +2535,9 @@ PostgresMain(int argc, char *argv[], const char *username)
 					 errmsg("invalid command-line arguments for server process"),
 					 errhint("Try \"%s --help\" for more information.", argv[0])));
 		}
-
+#ifdef EXEC_BACKEND
+		AttachSharedMemoryAndSemaphores();
+#endif
 		XLOGPathInit();
 
 		BaseInit();

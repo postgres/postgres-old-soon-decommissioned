@@ -15,7 +15,7 @@
 #define NOFILE		  100
 
 /* defines for dynamic linking on Win32 platform */
-#if defined(__CYGWIN__) || defined(__MINGW32__)
+#ifdef __CYGWIN__
 
 #if __GNUC__ && ! defined (__declspec)
 #error You need egcs 1.1 or newer for compiling!
@@ -27,7 +27,7 @@
 #define DLLIMPORT __declspec (dllimport)
 #endif
 
-#elif defined(WIN32) && defined(_MSC_VER)		/* not CYGWIN or MingW */
+#elif defined(WIN32) && defined(_MSC_VER)		/* not CYGWIN */
 
 #if defined(_DLL)
 #define DLLIMPORT __declspec (dllexport)
@@ -35,7 +35,7 @@
 #define DLLIMPORT __declspec (dllimport)
 #endif
 
-#else							/* not CYGWIN, not MSVC, not MingW */
+#else							/* not CYGWIN, not MSVC */
 
 #define DLLIMPORT
 #endif
