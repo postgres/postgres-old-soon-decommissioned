@@ -721,9 +721,18 @@ extern int fdatasync(int fildes);
 #include "pg_config_os.h"
 
 /*
+ * Provide default definitions for things that port-specific pg_config_os.h
+ * files can set, but typically don't.
+ */
+
+#ifndef DLLIMPORT
+#define DLLIMPORT				/* no special DLL markers on most ports */
+#endif
+
+/*
  * The following is used as the arg list for signal handlers.  Any ports
  * that take something other than an int argument should override this in
- * the port-specific pg_config_os.h file.  Note that variable names are required
+ * their pg_config_os.h file.  Note that variable names are required
  * because it is used in both the prototypes as well as the definitions.
  * Note also the long name.  We expect that this won't collide with
  * other names causing compiler warnings.
