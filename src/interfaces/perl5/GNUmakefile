@@ -53,7 +53,7 @@ Pg.bs:
 	touch $@
 
 Pg.$(perl_man3ext): Pg.pm
-	$(POD2MAN) $< $@
+	$(POD2MAN) --section=$(perl_man3ext) $< > Pg.$(perl_man3ext)
 
 
 # During install, we must guard against the likelihood that we don't
