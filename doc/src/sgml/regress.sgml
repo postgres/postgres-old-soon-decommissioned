@@ -67,7 +67,9 @@
     For example,
 <screen>
 <prompt>root# </prompt><userinput>chmod -R a+w src/test/regress</userinput>
+<prompt>root# </prompt><userinput>chmod -R a+w contrib/spi</userinput>
 <prompt>root# </prompt><userinput>su - joeuser</userinput>
+<prompt>joeuser$ </prompt><userinput>cd &lt;build top-level directory&gt;</userinput>
 <prompt>joeuser$ </prompt><userinput>gmake check</userinput>
 </screen>
     (The only possible <quote>security risk</quote> here is that other
