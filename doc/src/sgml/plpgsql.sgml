@@ -986,7 +986,6 @@ END IF;
 <programlisting>
 DECLARE
     users_rec RECORD;
-    full_name varchar;
 BEGIN
     SELECT INTO users_rec * FROM users WHERE user_id=3;
 
