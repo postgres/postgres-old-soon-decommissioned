@@ -281,7 +281,7 @@ ShmemInitHash(const char *name, /* table string name for shmem index */
 	 */
 	infoP->dsize = infoP->max_dsize = hash_select_dirsize(max_size);
 	infoP->alloc = ShmemAlloc;
-	hash_flags |= HASH_SHARED_MEM | HASH_DIRSIZE;
+	hash_flags |= HASH_SHARED_MEM | HASH_ALLOC | HASH_DIRSIZE;
 
 	/* look it up in the shmem index */
 	location = ShmemInitStruct(name,
