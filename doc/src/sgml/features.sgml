@@ -888,6 +888,11 @@ $Header$
         <entry></entry>
        </row>
        <row>
+        <entry>F302-01</entry>
+        <entry>INTERSECT DISTINCT table operator</entry>
+        <entry></entry>
+       </row>
+       <row>
         <entry>F302-02</entry>
         <entry>INTERSECT ALL table operator</entry>
         <entry></entry>
@@ -1424,11 +1429,6 @@ $Header$
         <entry>F301</entry>
         <entry>CORRESPONDING in query expressions</entry>
         <entry></entry>
-       </row>
-       <row>
-        <entry>F302-01</entry>
-        <entry>INTERSECT DISTINCT table operator</entry>
-        <entry>Syntax accepted</entry>
        </row>
        <row>
         <entry>F381</entry>
