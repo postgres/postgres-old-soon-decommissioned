@@ -57,5 +57,6 @@ extern RelabelType *makeRelabelType(Node *arg, Oid rtype, int32 rtypmod);
 extern RangeVar *makeRangeVar(char *schemaname, char *relname);
 
 extern TypeName *makeTypeName(char *typnam);
+extern TypeName *makeQualifiedTypeName(List *lst);
 
 #endif   /* MAKEFUNC_H */
