@@ -1159,6 +1159,57 @@ env PGOPTIONS='-c geqo=off' psql
    </para>
    </sect2>
 
+   <sect2 id="runtime-config-wal">
+    <title>WAL</title>
+
+   <para>
+    See also <xref linkend="wal-configuration"> for details on WAL
+    tuning.
+
+    <variablelist>
+     <varlistentry>
+      <term>CHECKPOINT_TIMEOUT (<type>integer</type>)</term>
+      <listitem>
+       <para>
+        Frequency of automatic WAL checkpoints, in seconds.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>WAL_BUFFERS (<type>integer</type>)</term>
+      <listitem>
+       <para>
+        Number of buffers for WAL.  This option can only be set at
+        server start.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>WAL_DEBUG (<type>integer</type>)</term>
+      <listitem>
+       <para>
+        If non-zero, turn on WAL-related debugging output on standard
+        error.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>WAL_FILES (<type>integer</type>)</term>
+      <listitem>
+       <para>
+        Number of log files that are created in advance at checkpoint
+        time.  This option can only be set at server start.
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+    </para>
+   </sect2>
+
+
    <sect2 id="runtime-config-short">
     <title>Short options</title>
    <para>

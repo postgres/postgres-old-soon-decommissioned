@@ -58,6 +58,7 @@ $Header$
   &manage-ag;
   &user-manag;
   &backup;
+  &wal;
   &recovery;
   &regress;
   &release;

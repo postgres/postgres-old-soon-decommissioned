@@ -54,6 +54,7 @@
 <!entity release       SYSTEM "release.sgml">
 <!entity runtime       SYSTEM "runtime.sgml">
 <!entity user-manag    SYSTEM "user-manag.sgml">
+<!entity wal           SYSTEM "wal.sgml">
 
 <!-- programmer's guide -->
 <!entity arch-pg    SYSTEM "arch-pg.sgml">
