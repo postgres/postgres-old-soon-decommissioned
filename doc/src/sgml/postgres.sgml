@@ -244,6 +244,7 @@ $Header$
  <part id="appendixes">
   <title>Appendixes</title>
 
+  &errcodes;
   &datetime;
   &keywords;
   &features;

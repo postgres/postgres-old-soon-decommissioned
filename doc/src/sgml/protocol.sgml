@@ -3833,9 +3833,8 @@ message.
 </Term>
 <ListItem>
 <Para>
-        Code: the SQLSTATE code for the error (a 5-character
-        string following SQL spec conventions).  Not localizable.
-        Always present.
+        Code: the SQLSTATE code for the error (see <xref
+	linkend="errcodes-appendix">).  Not localizable.  Always present.
 </Para>
 </ListItem>
 </VarListEntry>

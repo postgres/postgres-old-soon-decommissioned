@@ -1332,8 +1332,8 @@ localized translation of one of these.  Always present.
 </term>
 <listitem>
 <para>
-The SQLSTATE code for the error (a 5-character string following SQL
-spec conventions).  Not localizable.  Always present.
+The SQLSTATE code for the error (see <xref linkend="errcodes-appendix">).
+Not localizable.  Always present.
 </para>
 </listitem>
 </varlistentry>

@@ -23,6 +23,7 @@
 <!entity datetime   SYSTEM "datetime.sgml">
 <!entity ddl        SYSTEM "ddl.sgml">
 <!entity dml        SYSTEM "dml.sgml">
+<!entity errcodes   SYSTEM "errcodes.sgml">
 <!entity features   SYSTEM "features.sgml">
 <!entity func       SYSTEM "func.sgml">
 <!entity indices    SYSTEM "indices.sgml">
