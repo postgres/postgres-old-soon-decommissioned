@@ -766,7 +766,6 @@ index_drop(Oid indexId)
 	Relation	indexRelation;
 	HeapTuple	tuple;
 	bool		hasexprs;
-	int			i;
 
 	Assert(OidIsValid(indexId));
 
@@ -826,9 +825,7 @@ index_drop(Oid indexId)
 	/*
 	 * flush buffer cache and physically remove the file
 	 */
-	i = FlushRelationBuffers(userIndexRelation, (BlockNumber) 0);
-	if (i < 0)
-		elog(ERROR, "FlushRelationBuffers returned %d", i);
+	FlushRelationBuffers(userIndexRelation, (BlockNumber) 0);
 
 	if (userIndexRelation->rd_smgr == NULL)
 		userIndexRelation->rd_smgr = smgropen(userIndexRelation->rd_node);

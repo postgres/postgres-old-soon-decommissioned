@@ -784,8 +784,6 @@ btvacuumcleanup(PG_FUNCTION_ARGS)
 		}
 		if (new_pages != num_pages)
 		{
-			int			i;
-
 			/*
 			 * Okay to truncate.
 			 *
@@ -795,9 +793,7 @@ btvacuumcleanup(PG_FUNCTION_ARGS)
 			 * blocks we aren't deleting, but it's the closest thing in
 			 * bufmgr's API.
 			 */
-			i = FlushRelationBuffers(rel, new_pages);
-			if (i < 0)
-				elog(ERROR, "FlushRelationBuffers returned %d", i);
+			FlushRelationBuffers(rel, new_pages);
 
 			/*
 			 * Do the physical truncation.
