@@ -23,7 +23,7 @@
 
 
 extern int md5_crypt_verify(const Port *port, const char *user,
-				 const char *pgpass);
+				char *pgpass);
 extern bool md5_hash(const void *buff, size_t len, char *hexsum);
 extern bool CheckMD5Pwd(char *passwd, char *storedpwd, char *seed);
 
