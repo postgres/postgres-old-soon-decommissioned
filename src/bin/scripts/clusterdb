@@ -126,7 +126,7 @@ if [ "$usage" ]; then
 	echo "  -e, --echo                      Show the command being sent to the backend"
 	echo "  -q, --quiet                     Don't write any output"
 	echo
-	echo "Read the description of the SQL command VACUUM for details."
+	echo "Read the description of the SQL command CLUSTER for details."
 	echo
 	echo "Report bugs to <pgsql-bugs@postgresql.org>."
 	exit 0
