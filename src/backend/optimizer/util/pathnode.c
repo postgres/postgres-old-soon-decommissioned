@@ -165,8 +165,8 @@ better_path(Path *new_path, List *unique_paths, bool *noOther)
 		path = (Path *) lfirst(temp);
 
 		if (samekeys(path->keys, new_path->keys) &&
-			equal_path_path_ordering(&path->p_ordering,
-									 &new_path->p_ordering))
+			equal_path_ordering(&path->p_ordering,
+								&new_path->p_ordering))
 		{
 			old_path = path;
 			break;

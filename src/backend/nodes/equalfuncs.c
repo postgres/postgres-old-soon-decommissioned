@@ -344,7 +344,6 @@ _equalPath(Path *a, Path *b)
 		if (a->p_ordering.ord.sortop == NULL ||
 			b->p_ordering.ord.sortop == NULL)
 		{
-
 			if (a->p_ordering.ord.sortop != b->p_ordering.ord.sortop)
 				return false;
 		}

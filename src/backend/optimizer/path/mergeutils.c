@@ -115,7 +115,7 @@ match_order_mergeinfo(PathOrder *ordering, List *mergeinfo_list)
 		xmergeorder = mergeinfo->m_ordering;
 
 		if ((ordering->ordtype == MERGE_ORDER &&
-		 equal_merge_merge_ordering(ordering->ord.merge, xmergeorder)) ||
+		 equal_merge_ordering(ordering->ord.merge, xmergeorder)) ||
 			(ordering->ordtype == SORTOP_ORDER &&
 		   equal_path_merge_ordering(ordering->ord.sortop, xmergeorder)))
 		{
