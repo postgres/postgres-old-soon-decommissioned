@@ -4454,15 +4454,19 @@ read_nondefault_variables(void)
 
 	for (;;)
 	{
+		struct config_generic *record;
+
 		if ((varname = read_string_with_null(fp)) == NULL)
 			break;
 
+		if ((record = find_option(varname)) == NULL)
+			elog(FATAL, "failed to locate variable %s in exec config params file",varname);
 		if ((varvalue = read_string_with_null(fp)) == NULL)
 			elog(FATAL, "invalid format of exec config params file");
 		if (fread(&varsource, sizeof(varsource), 1, fp) == 0)
 			elog(FATAL, "invalid format of exec config params file");
 
-		(void) set_config_option(varname, varvalue, PGC_POSTMASTER,
+		(void) set_config_option(varname, varvalue, record->context,
 								 varsource, false, true);
 		free(varname);
 		free(varvalue);

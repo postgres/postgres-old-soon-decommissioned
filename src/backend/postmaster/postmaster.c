@@ -830,6 +830,10 @@ PostmasterMain(int argc, char *argv[])
 	 */
 	StartupPID = StartupDataBase();
 
+#ifdef EXEC_BACKEND
+	write_nondefault_variables(PGC_POSTMASTER);
+#endif
+
 	status = ServerLoop();
 
 	/*
