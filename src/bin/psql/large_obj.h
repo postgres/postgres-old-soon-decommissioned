@@ -1,3 +1,10 @@
+/*
+ * psql - the PostgreSQL interactive terminal
+ *
+ * Copyright 2000 by PostgreSQL Global Development Team
+ *
+ * $Header$
+ */
 #ifndef LARGE_OBJ_H
 #define LARGE_OBJ_H
 

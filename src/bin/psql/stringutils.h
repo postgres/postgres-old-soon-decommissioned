@@ -1,3 +1,10 @@
+/*
+ * psql - the PostgreSQL interactive terminal
+ *
+ * Copyright 2000 by PostgreSQL Global Development Team
+ *
+ * $Header$
+ */
 #ifndef STRINGUTILS_H
 #define STRINGUTILS_H
 

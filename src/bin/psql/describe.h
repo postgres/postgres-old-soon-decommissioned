@@ -1,3 +1,10 @@
+/*
+ * psql - the PostgreSQL interactive terminal
+ *
+ * Copyright 2000 by PostgreSQL Global Development Team
+ *
+ * $Header$
+ */
 #ifndef DESCRIBE_H
 #define DESCRIBE_H
 

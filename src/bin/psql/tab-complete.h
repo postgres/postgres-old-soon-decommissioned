@@ -1,8 +1,13 @@
+/*
+ * psql - the PostgreSQL interactive terminal
+ *
+ * Copyright 2000 by PostgreSQL Global Development Team
+ *
+ * $Header$
+ */
 #ifndef TAB_COMPLETE_H
 #define TAB_COMPLETE_H
 
-#include <libpq-fe.h>
-
-void initialize_readline(PGconn ** conn);
+void initialize_readline(void);
 
 #endif

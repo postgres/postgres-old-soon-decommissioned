@@ -854,6 +854,7 @@ AlterTableStmt:
       | ALTER TABLE relation_name opt_inh_star DROP CONSTRAINT name drop_behavior
         {
                 AlterTableStmt *n = makeNode(AlterTableStmt);
+		n->subtype = 'X';
                 n->relname = $3;
                 n->inh = $4;
                 n->name = $7;
