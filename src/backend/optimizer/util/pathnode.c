@@ -362,6 +362,9 @@ create_index_path(Query *root,
 	pathnode->indexinfo = makeList1(index);
 	pathnode->indexqual = makeList1(indexquals);
 
+	/* It's not an innerjoin path. */
+	pathnode->indexjoinclauses = NIL;
+
 	pathnode->indexscandir = indexscandir;
 
 	/*

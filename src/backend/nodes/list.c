@@ -359,6 +359,21 @@ llast(List *l)
 }
 
 /*
+ *	llastnode
+ *
+ *	Get the last node of l ... NIL if empty list
+ */
+List *
+llastnode(List *l)
+{
+	if (l == NIL)
+		return NIL;
+	while (lnext(l) != NIL)
+		l = lnext(l);
+	return l;
+}
+
+/*
  *	freeList
  *
  *	Free the List nodes of a list

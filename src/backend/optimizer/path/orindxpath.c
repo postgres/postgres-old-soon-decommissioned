@@ -89,6 +89,9 @@ create_or_index_paths(Query *root, RelOptInfo *rel)
 				 */
 				pathnode->path.pathkeys = NIL;
 
+				/* It's not an innerjoin path. */
+				pathnode->indexjoinclauses = NIL;
+
 				/* We don't actually care what order the index scans in. */
 				pathnode->indexscandir = NoMovementScanDirection;
 

@@ -23,5 +23,9 @@ extern void get_actual_join_clauses(List *restrictinfo_list,
 extern List *remove_redundant_join_clauses(Query *root,
 										   List *restrictinfo_list,
 										   JoinType jointype);
+extern List *select_nonredundant_join_clauses(Query *root,
+											  List *restrictinfo_list,
+											  List *reference_list,
+											  JoinType jointype);
 
 #endif   /* RESTRICTINFO_H */
