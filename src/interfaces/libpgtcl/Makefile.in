@@ -19,14 +19,6 @@ include $(SRCDIR)/Makefile.global
 
 CFLAGS+= -I$(LIBPQDIR)
 
-#
-# Include definitions from the tclConfig.sh file
-#
-include Makefile.tcldefs
-ifeq ($(USE_TK), true)
-include Makefile.tkdefs
-endif
-
 ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)
 endif
@@ -42,7 +34,6 @@ SHLIB_LINK+= $(findstring -lcrypt,$(LIBS))
 
 # Shared library stuff, also default 'all' target
 include $(SRCDIR)/Makefile.shlib
-
 
 .PHONY: install beforeinstall-headers install-headers
 
