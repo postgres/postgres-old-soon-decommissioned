@@ -401,7 +401,7 @@ typedef struct IndexElem
 	char	   *name;			/* name of attribute to index, or NULL */
 	List	   *funcname;		/* qualified name of function */
 	List	   *args;			/* list of names of function arguments */
-	char	   *class;			/* name of desired opclass; NULL = default */
+	List	   *opclass;		/* name of desired opclass; NIL = default */
 } IndexElem;
 
 /*

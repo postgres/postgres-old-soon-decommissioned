@@ -1599,7 +1599,7 @@ _equalIndexElem(IndexElem *a, IndexElem *b)
 		return false;
 	if (!equal(a->args, b->args))
 		return false;
-	if (!equalstr(a->class, b->class))
+	if (!equal(a->opclass, b->opclass))
 		return false;
 
 	return true;

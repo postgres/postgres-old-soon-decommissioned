@@ -217,8 +217,8 @@ _outIndexElem(StringInfo str, IndexElem *node)
 	_outNode(str, node->funcname);
 	appendStringInfo(str, " :args ");
 	_outNode(str, node->args);
-	appendStringInfo(str, " :class ");
-	_outToken(str, node->class);
+	appendStringInfo(str, " :opclass ");
+	_outNode(str, node->opclass);
 }
 
 static void

@@ -1209,7 +1209,7 @@ transformIndexConstraints(ParseState *pstate, CreateStmtContext *cxt)
 			iparam->name = pstrdup(key->name);
 			iparam->funcname = NIL;
 			iparam->args = NIL;
-			iparam->class = NULL;
+			iparam->opclass = NIL;
 			index->indexParams = lappend(index->indexParams, iparam);
 		}
 

@@ -1714,8 +1714,7 @@ _copyIndexElem(IndexElem *from)
 		newnode->name = pstrdup(from->name);
 	Node_Copy(from, newnode, funcname);
 	Node_Copy(from, newnode, args);
-	if (from->class)
-		newnode->class = pstrdup(from->class);
+	Node_Copy(from, newnode, opclass);
 
 	return newnode;
 }

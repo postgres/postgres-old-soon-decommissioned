@@ -60,7 +60,7 @@ char	   *Name_pg_largeobject_indices[Num_pg_largeobject_indices] =
 char	   *Name_pg_namespace_indices[Num_pg_namespace_indices] =
 {NamespaceNameIndex, NamespaceOidIndex};
 char	   *Name_pg_opclass_indices[Num_pg_opclass_indices] =
-{OpclassAmNameIndex, OpclassOidIndex};
+{OpclassAmNameNspIndex, OpclassOidIndex};
 char	   *Name_pg_operator_indices[Num_pg_operator_indices] =
 {OperatorOidIndex, OperatorNameNspIndex};
 char	   *Name_pg_proc_indices[Num_pg_proc_indices] =

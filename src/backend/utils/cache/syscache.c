@@ -173,14 +173,14 @@ static const struct cachedesc cacheinfo[] = {
 			0,
 			0
 	}},
-	{OperatorClassRelationName, /* CLAAMNAME */
-		OpclassAmNameIndex,
+	{OperatorClassRelationName, /* CLAAMNAMENSP */
+		OpclassAmNameNspIndex,
 		0,
-		2,
+		3,
 		{
 			Anum_pg_opclass_opcamid,
 			Anum_pg_opclass_opcname,
-			0,
+			Anum_pg_opclass_opcnamespace,
 			0
 	}},
 	{OperatorClassRelationName, /* CLAOID */

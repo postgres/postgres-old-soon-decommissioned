@@ -36,7 +36,7 @@
 #define AMPROCNUM		5
 #define ATTNAME			6
 #define ATTNUM			7
-#define CLAAMNAME		8
+#define CLAAMNAMENSP	8
 #define CLAOID			9
 #define GRONAME			10
 #define GROSYSID		11
