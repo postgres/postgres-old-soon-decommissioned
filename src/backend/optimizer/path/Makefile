@@ -11,8 +11,6 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-CFLAGS += -I../..
-
 OBJS = allpaths.o clausesel.o costsize.o indxpath.o \
        joinpath.o joinrels.o orindxpath.o pathkeys.o tidpath.o
 

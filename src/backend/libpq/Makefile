@@ -11,8 +11,6 @@
 SRCDIR = ../..
 include ../../Makefile.global
 
-CFLAGS += -I..
-
 # kerberos flags
 ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)

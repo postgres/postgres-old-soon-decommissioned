@@ -11,8 +11,6 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-CFLAGS += -I../..
-
 OBJS = dynahash.o hashfn.o
 
 all: SUBSYS.o

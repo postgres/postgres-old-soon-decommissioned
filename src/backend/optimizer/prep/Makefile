@@ -11,8 +11,6 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-CFLAGS += -I../..
-
 OBJS = prepqual.o preptlist.o prepunion.o prepkeyset.o
 
 # not ready yet: predmig.o xfunc.o

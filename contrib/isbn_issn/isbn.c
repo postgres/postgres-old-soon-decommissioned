@@ -47,8 +47,6 @@ isbn *
 isbn_in(char *str)
 {
 	isbn	   *result;
-	char	   *cp;
-	int			count;
 
 	if (strlen(str) != 13)
 	{

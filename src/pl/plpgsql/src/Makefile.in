@@ -15,8 +15,6 @@ SO_MINOR_VERSION= 0
 SRCDIR= @top_srcdir@
 include $(SRCDIR)/Makefile.global
 
-CFLAGS+= -I$(SRCDIR)/include -I$(SRCDIR)/backend
-
 # If using flex, ask for a case-insensitive, lex-compatible lexer.
 ifneq (,$(findstring flex,$(LEX)))
 LFLAGS+= -i -l

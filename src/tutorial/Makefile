@@ -11,7 +11,7 @@
 SRCDIR= ..
 include $(SRCDIR)/Makefile.global
 
-CFLAGS+= -I$(SRCDIR)/include $(CFLAGS_SL)
+CFLAGS+= $(CFLAGS_SL)
 
 #
 # DLOBJS is the dynamically-loaded object files.  The "funcs" queries

@@ -11,13 +11,9 @@
 #-------------------------------------------------------------------------
 
 SRCDIR= ../..
-include ../../Makefile.global
-
-# This is a bit of hackery here: pg_encoding uses backend includes and the
-# frontend library.
+include $(SRCDIR)/Makefile.global
 
 OBJS= pg_encoding.o
-CFLAGS:= -I$(SRCDIR)/include $(CFLAGS)
 
 all: submake pg_encoding
 

@@ -6,7 +6,7 @@ include $(SRCDIR)/Makefile.global
 
 CONTRIBDIR=$(LIBDIR)/contrib
 
-CFLAGS+= -I$(HEADERDIR)
+CFLAGS+= -I$(LIBPQDIR)
 
 TARGETS= vacuumlo
 CLEANFILES+= $(TARGETS)

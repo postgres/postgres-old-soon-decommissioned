@@ -11,10 +11,6 @@
 SRCDIR = ../..
 include $(SRCDIR)/Makefile.global
 
-INCLUDE_OPT = -I.. 
-
-CFLAGS+=$(INCLUDE_OPT)
-
 all: submake SUBSYS.o
 
 OBJS = fmgrtab.o adt/SUBSYS.o cache/SUBSYS.o error/SUBSYS.o \

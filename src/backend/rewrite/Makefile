@@ -11,8 +11,6 @@
 SRCDIR = ../..
 include ../../Makefile.global
 
-CFLAGS += -I..
-
 OBJS = rewriteRemove.o rewriteDefine.o \
        rewriteHandler.o rewriteManip.o rewriteSupport.o locks.o
 

@@ -11,7 +11,6 @@
 SRCDIR = ../..
 include ../../Makefile.global
 
-CFLAGS += -I..
 CFLAGS += -DPOSIX_MISTAKE 
 
 DEBUGOBJ =

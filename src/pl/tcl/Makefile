@@ -70,7 +70,7 @@ CFLAGS= $(TCL_CFLAGS_OPTIMIZE)
 
 CFLAGS+= $(TCL_SHLIB_CFLAGS) $(TCL_DEFS)
 
-CFLAGS+= -I$(SRCDIR)/include -I$(SRCDIR)/backend $(PGSQL_INCLUDES)
+CFLAGS+= -I$(SRCDIR)/include $(PGSQL_INCLUDES)
         
 #
 # Uncomment the following to enable the unknown command lookup

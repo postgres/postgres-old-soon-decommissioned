@@ -14,11 +14,12 @@
  */
 
 #include "postgres.h"
+
 #include "access/heapam.h"
 #include "miscadmin.h"
 #include "optimizer/tlist.h"
-#include "parse.h"
 #include "nodes/makefuncs.h"
+#include "parser/parse.h"
 #include "parser/parse_clause.h"
 #include "parser/parse_coerce.h"
 #include "parser/parse_expr.h"

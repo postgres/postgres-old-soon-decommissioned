@@ -11,8 +11,6 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-CFLAGS += -I../..
-
 OBJS = fd.o buffile.o
 
 all: SUBSYS.o

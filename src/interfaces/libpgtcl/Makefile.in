@@ -17,9 +17,7 @@ SO_MINOR_VERSION= 1
 SRCDIR= @top_srcdir@
 include $(SRCDIR)/Makefile.global
 
-CFLAGS+= -I$(SRCDIR)/backend \
-         -I$(SRCDIR)/include \
-         -I$(LIBPQDIR)
+CFLAGS+= -I$(LIBPQDIR)
 
 ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)

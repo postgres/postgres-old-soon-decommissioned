@@ -11,8 +11,6 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-CFLAGS += -I../..
-
 OBJS = createplan.o initsplan.o planmain.o planner.o setrefs.o subselect.o
 
 # not ready yet: predmig.o xfunc.o

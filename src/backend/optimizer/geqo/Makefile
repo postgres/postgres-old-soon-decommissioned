@@ -12,8 +12,6 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-CFLAGS += -I../..
-
 ifeq ($(CC), gcc)
 CFLAGS+= -Wno-error
 endif

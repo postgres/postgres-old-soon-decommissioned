@@ -11,8 +11,6 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-CFLAGS += -I../..
-
 OBJS = catcache.o inval.o rel.o relcache.o syscache.o lsyscache.o \
 	fcache.o temprel.o
 

@@ -11,8 +11,6 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-CFLAGS += -I../..
-
 OBJS = restrictinfo.o clauses.o indexnode.o plancat.o \
        joininfo.o pathnode.o relnode.o tlist.o var.o
 

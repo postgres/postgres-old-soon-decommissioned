@@ -591,7 +591,7 @@ main(int argc, char **argv)
 				}
 				if (rlim.rlim_cur <= (nclients + 2))
 				{
-					fprintf(stderr, "You need at least %d open files resource but you are only allowed to use %ld.\n", nclients + 2, rlim.rlim_cur);
+					fprintf(stderr, "You need at least %d open files resource but you are only allowed to use %ld.\n", nclients + 2, (long) rlim.rlim_cur);
 					fprintf(stderr, "Use limit/ulimt to increase the limit before using pgbench.\n");
 					exit(1);
 				}

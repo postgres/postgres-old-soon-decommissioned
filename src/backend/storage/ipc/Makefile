@@ -11,8 +11,6 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-CFLAGS += -I../..
-
 # seems to be required 1999/07/22 bjm
 ifeq ($(CPU),alpha)
 ifeq ($(CC), gcc)

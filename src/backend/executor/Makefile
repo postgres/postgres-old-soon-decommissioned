@@ -11,8 +11,6 @@
 SRCDIR = ../..
 include ../../Makefile.global
 
-CFLAGS += -I..
-
 OBJS = execAmi.o execFlatten.o execJunk.o execMain.o \
        execProcnode.o execQual.o execScan.o execTuples.o \
        execUtils.o functions.o nodeAppend.o nodeAgg.o nodeHash.o \

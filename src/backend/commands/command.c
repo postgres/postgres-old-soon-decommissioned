@@ -51,7 +51,7 @@
 #include "commands/comment.h"
 #include "access/genam.h"
 #include "optimizer/clauses.h"
-#include "../parser/parse.h"
+#include "parser/parse.h"
 #endif	 /* _DROP_COLUMN_HACK__ */
 
 /* ----------------

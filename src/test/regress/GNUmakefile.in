@@ -18,7 +18,7 @@ CONTRIB= $(SRCDIR)/../contrib
 
 HOST= @host@
 
-CFLAGS+= -I$(LIBPQDIR) -I$(SRCDIR)/include $(CFLAGS_SL)
+CFLAGS+= -I$(LIBPQDIR) $(CFLAGS_SL)
 
 LDADD+= -L$(LIBPQDIR) -lpq
         

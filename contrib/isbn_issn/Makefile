@@ -3,23 +3,16 @@
 #
 #	$Id$
 
-all: isbn.so issn.so
+SRCDIR= ../../src
 
-isbn.so: isbn.o
-	ld -Bshareable -o isbn.so isbn.o
+include $(SRCDIR)/Makefile.global
 
-isbn.o: isbn.c
-	cc -g -O -fPIC -I/usr/local/pgsql/include -c isbn.c
+CFLAGS+= $(CFLAGS_SL)
 
-issn.so: issn.o
-	ld -Bshareable -o issn.so issn.o
+all: isbn$(DLSUFFIX) issn$(DLSUFFIX)
 
-issn.o: issn.c
-	cc -g -O -fPIC -I/usr/local/pgsql/include -c issn.c
+install: isbn$(DLSUFFIX) issn$(DLSUFFIX)
+	install -c isbn$(DLSUFFIX) issn$(DLSUFFIX) /usr/local/pgsql/modules
 
-install: isbn.so issn.so
-	install -c isbn.so issn.so /usr/local/pgsql/modules
-
-#
-#	eof
-#
+clean:
+	rm -f isbn$(DLSUFFIX) issn$(DLSUFFIX) *.o

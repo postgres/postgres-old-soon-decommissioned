@@ -9,9 +9,7 @@
 #-------------------------------------------------------------------------
 
 SRCDIR= ../..
-include ../../Makefile.global
-
-CFLAGS+= -I..
+include $(SRCDIR)/Makefile.global
 
 ifeq ($(CC), gcc)
 CFLAGS+= -Wno-error
@@ -24,17 +22,7 @@ all: SUBSYS.o
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
-# The following dependencies are picked up by the make dep, but since 
-# not everyone can do make dep, and these are particularly important
-# dependencies (because they don't even exist until you make them),
-# they are hardcoded here.
-
-utility.o: ../parse.h
-
-../parse.h: 
-	$(MAKE) -C .. parse.h
-
-dep depend: ../parse.h
+depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 

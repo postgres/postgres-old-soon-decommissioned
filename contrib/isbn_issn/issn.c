@@ -47,8 +47,6 @@ issn *
 issn_in(char *str)
 {
 	issn	   *result;
-	char	   *cp;
-	int			count;
 
 	if (strlen(str) != 9)
 	{

@@ -9,9 +9,7 @@
 #-------------------------------------------------------------------------
 
 SRCDIR = ../..
-include ../../Makefile.global
-
-CFLAGS += -I..
+include $(SRCDIR)/Makefile.global
 
 OBJS = nodeFuncs.o nodes.o list.o \
        copyfuncs.o equalfuncs.o freefuncs.o makefuncs.o outfuncs.o \
@@ -22,12 +20,7 @@ all: SUBSYS.o
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
-outfuncs.o: ../parse.h
-
-../parse.h:
-	$(MAKE) -C .. parse.h
-
-depend dep: ../parse.h
+depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 

@@ -11,8 +11,6 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-CFLAGS += -I../..
-
 OBJS = hash.o hashfunc.o hashinsert.o hashovfl.o hashpage.o hashscan.o \
        hashsearch.o hashstrat.o hashutil.o
 

@@ -11,8 +11,6 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-CFLAGS += -I../.. 
-
 OBJS = heapam.o hio.o stats.o tuptoaster.o
 
 all: SUBSYS.o
