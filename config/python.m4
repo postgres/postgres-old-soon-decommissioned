@@ -69,6 +69,11 @@ AC_DEFUN([PGAC_CHECK_PYTHON_EMBED_SETUP],
 [AC_REQUIRE([_PGAC_CHECK_PYTHON_DIRS])
 AC_MSG_CHECKING([how to link an embedded Python application])
 
+if test ! -f "$python_configdir/Makefile"; then
+  AC_MSG_RESULT(no)
+  AC_MSG_ERROR([Python Makefile not found])
+fi
+
 _python_libs=`grep '^LIBS=' $python_configdir/Makefile | sed 's/^.*=//'`
 _python_libc=`grep '^LIBC=' $python_configdir/Makefile | sed 's/^.*=//'`
 _python_libm=`grep '^LIBM=' $python_configdir/Makefile | sed 's/^.*=//'`

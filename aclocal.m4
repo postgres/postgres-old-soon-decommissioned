@@ -2,7 +2,6 @@ dnl $Header$
 m4_include([config/ac_func_accept_argtypes.m4])
 m4_include([config/c-compiler.m4])
 m4_include([config/c-library.m4])
-m4_include([config/cxx.m4])
 m4_include([config/docbook.m4])
 m4_include([config/general.m4])
 m4_include([config/java.m4])

@@ -149,7 +149,6 @@
 /* BeOS defines bool already, but the compiler chokes on the
  * #ifndef unless we wrap it in this check.
  */
-/* Also defined in interfaces/odbc/md5.h */
 #ifndef __BEOS__
 
 #ifndef __cplusplus
