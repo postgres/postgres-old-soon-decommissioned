@@ -125,16 +125,15 @@ destroydb(char *dbname)
 			"delete from pg_database where pg_database.oid = \'%d\'::oid", db_id);
 	pg_exec_query(buf);
 
+	/* drop pages for this database that are in the shared buffer cache */
+	DropBuffers(db_id);
+
 	/*
 	 * remove the data directory. If the DELETE above failed, this will
 	 * not be reached
 	 */
-
 	snprintf(buf, 512, "rm -r %s", path);
 	system(buf);
-
-	/* drop pages for this database that are in the shared buffer cache */
-	DropBuffers(db_id);
 }
 
 static HeapTuple
