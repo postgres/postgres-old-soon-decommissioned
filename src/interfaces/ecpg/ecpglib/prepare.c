@@ -110,7 +110,7 @@ ECPGdeallocate(int lineno, int c, char *name)
 	bool ret = ECPGdeallocate_one(lineno, name);
 	enum COMPAT_MODE compat = c;
 
-	if (compat == ECPG_COMPAT_INFORMIX)
+	if (INFORMIX_MODE(compat))
 	{
 		/* Just ignore all errors since we do not know the list of cursors we
 		 * are allowed to free. We have to trust that the software. */

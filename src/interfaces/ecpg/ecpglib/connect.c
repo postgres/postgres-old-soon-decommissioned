@@ -304,7 +304,7 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 
 	ECPGinit_sqlca(sqlca);
 	
-	if (compat == ECPG_COMPAT_INFORMIX)
+	if (INFORMIX_MODE(compat))
 	{
 		char *envname;
 		
