@@ -126,6 +126,7 @@ dopr (char *buffer, const char *format, ... )
 	int ch;
 	long value;
 	int longflag  = 0;
+	int longlongflag  = 0;
 	int pointflag = 0;
 	int maxwidth  = 0;
 	char *strvalue;
@@ -167,7 +168,11 @@ dopr (char *buffer, const char *format, ... )
 				 len = va_arg( args, int );
 			       goto nextch;
 		       case '.': pointflag = 1; goto nextch;
-                       case 'l': longflag = 1; goto nextch;
+                       case 'l': if(longflag) {
+                                   longlongflag = 1; goto nextch;
+                                 } else {
+                                   longflag = 1; goto nextch;
+                                 }
                        case 'u': case 'U':
                                /*fmtnum(value,base,dosign,ljust,len,zpad) */
                                if( longflag ){
@@ -186,7 +191,11 @@ dopr (char *buffer, const char *format, ... )
                                fmtnum( value, 8,0, ljust, len, zpad ); break;
                        case 'd': case 'D':
                                if( longflag ){
+                                 if( longlongflag ) {
+                                       value = va_arg( args, long long );
+                                 } else {
                                        value = va_arg( args, long );
+                                 }
                                } else {
                                        value = va_arg( args, int );
                                }
