@@ -504,7 +504,7 @@ PQmblen(unsigned char *s)
 	int			encoding = -1;
 
 	str = getenv("PGCLIENTENCODING");
-	if (str && *str != NULL)
+	if (str && *str != '\0')
 		encoding = pg_char_to_encoding(str);
 	if (encoding < 0)
 		encoding = MULTIBYTE;
