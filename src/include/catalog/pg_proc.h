@@ -888,6 +888,8 @@ DATA(insert OID = 1309 (  timestampgt      PGUID 11 f t f 2 f 16 "1296 1296" 100
 DATA(insert OID = 1310 (  timestample      PGUID 11 f t f 2 f 16 "1296 1296" 100 0 0 100  foo bar ));
 DATA(insert OID = 1311 (  timestampge      PGUID 11 f t f 2 f 16 "1296 1296" 100 0 0 100  foo bar ));
 /* reserve OIDs 1312-1319 for additional date/time conversion routines! tgl 97/04/01 */
+DATA(insert OID = 1314 (  datetime_cmp     PGUID 11 f t f 2 f 23 "1184 1184" 100 0 0 100  foo bar ));
+DATA(insert OID = 1315 (  timespan_cmp     PGUID 11 f t f 2 f 23 "1186 1186" 100 0 0 100  foo bar ));
 
 DATA(insert OID = 1339 (  date_zone    PGUID 14 f t f 2 f   25 "25 1184" 100 0 0 100  "select datetime_zone($1, $2)" - ));
 DATA(insert OID = 1340 (  text         PGUID 14 f t f 1 f   25 "1184" 100 0 0 100  "select datetime_text($1)" - ));
