@@ -5811,7 +5811,7 @@ dumpConstraints(Archive *fout, TableInfo *tblinfo, int numTables)
 			continue;
 
 		if (g_verbose)
-			write_msg(NULL, "dumping triggers for table %s\n",
+			write_msg(NULL, "dumping foreign key constraints for table %s\n",
 					  tbinfo->relname);
 
 		/* select table schema to ensure regproc name is qualified if needed */
