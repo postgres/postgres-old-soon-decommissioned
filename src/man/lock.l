@@ -6,7 +6,7 @@
 lock - exclusive lock a table
 .SH SYNOPSIS
 .nf
-\fBlock\fR [\fBtable\fR] classname [[IN] [ROW|ACCESS] [SHARE|EXCLUSIVE] MODE]
+\fBlock\fR [\fBtable\fR] classname [IN [ROW|ACCESS] [SHARE|EXCLUSIVE] MODE]
 .fi
 .SH DESCRIPTION
 By default,
