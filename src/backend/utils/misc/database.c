@@ -222,8 +222,10 @@ GetRawDatabaseInfo(const char *name, Oid *db_id, char *path)
 				/* Found it; extract the OID and the database path. */
 				*db_id = tup.t_data->t_oid;
 				pathlen = VARSIZE(&(tup_db->datpath)) - VARHDRSZ;
+				if (pathlen < 0)
+					pathlen = 0;				/* pure paranoia */
 				if (pathlen >= MAXPGPATH)
-					pathlen = MAXPGPATH - 1;	/* pure paranoia */
+					pathlen = MAXPGPATH - 1;	/* more paranoia */
 				strncpy(path, VARDATA(&(tup_db->datpath)), pathlen);
 				path[pathlen] = '\0';
 				goto done;
