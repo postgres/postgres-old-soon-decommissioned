@@ -150,7 +150,7 @@ CREATE
     Only the relation owner may create a trigger on this relation.
    </para>
    <para>
-    As of the current release (v7.0), STATEMENT triggers are not implemented.
+    As of the current release, STATEMENT triggers are not implemented.
    </para>
    <para>
     Refer to <command>DROP TRIGGER</command> for information on how to 
