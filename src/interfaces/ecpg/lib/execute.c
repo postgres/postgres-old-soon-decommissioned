@@ -102,6 +102,7 @@ quote_postgres(char *arg, int lineno)
 		return (res);
 
 	res[ri++] = '\'';
+		
 	for (i = 0; arg[i]; i++, ri++)
 	{
 		switch (arg[i])
@@ -118,6 +119,7 @@ quote_postgres(char *arg, int lineno)
 
 		res[ri] = arg[i];
 	}
+	
 	res[ri++] = '\'';
 	res[ri] = '\0';
 
@@ -247,10 +249,17 @@ next_insert(char *text)
 	char	   *ptr = text;
 	bool		string = false;
 
+printf("%s\n", text);
 	for (; *ptr != '\0' && (*ptr != '?' || string); ptr++)
-		if (*ptr == '\'' && *(ptr - 1) != '\\')
-			string = string ? false : true;
+	{
+		if (*ptr == '\\') /* escape character */
+			ptr++;
+		else
+			if (*ptr == '\'' )
+				string = string ? false : true;
+	}
 
+printf("%s\n", ptr);
 	return (*ptr == '\0') ? NULL : ptr;
 }
 
@@ -704,7 +713,6 @@ ECPGexecute(struct statement * stmt)
 		strcpy(newcopy, copiedquery);
 		if ((p = next_insert(newcopy + hostvarl)) == NULL)
 		{
-
 			/*
 			 * We have an argument but we dont have the matched up string
 			 * in the string
