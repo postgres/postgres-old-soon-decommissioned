@@ -482,7 +482,7 @@ usage(void)
 			"  -f\t  force update to be done\n"
 			"  -n\t  no update, just show extracted pg_control values (for testing)\n"
 			"  -x XID  set XID in pg_control\n"
-			"  -l log_id offset   set checkpoint location in pg_control\n");
+			"  -l log_id offset   set hex checkpoint location in pg_control\n");
 	exit(1);
 }
 
@@ -523,11 +523,11 @@ main(int argc, char **argv)
 			argn++;
 			if (argn == argc)
 				usage();
-			set_checkpoint.xlogid = strtoul(argv[argn], NULL, 0);
+			set_checkpoint.xlogid = strtoul(argv[argn], NULL, 16);
 			argn++;
 			if (argn == argc)
 				usage();
-			set_checkpoint.xrecoff = strtoul(argv[argn], NULL, 0);
+			set_checkpoint.xrecoff = strtoul(argv[argn], NULL, 16);
 			if (set_checkpoint.xlogid == 0 &&
 				set_checkpoint.xrecoff == 0)
 			{
