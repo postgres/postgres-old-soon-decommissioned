@@ -3525,7 +3525,7 @@ validateForeignKeyConstraint(FkConstraint *fkconstraint,
 		trigdata.tg_newtuple = NULL;
 		trigdata.tg_trigger = &trig;
 
-		fcinfo.context = (void *) &trigdata;
+		fcinfo.context = (Node *) &trigdata;
 
 		RI_FKey_check_ins(&fcinfo);
 	}

@@ -365,7 +365,7 @@ PGSharedMemoryAttach(IpcMemoryKey key, IpcMemoryId *shmid)
 
 	if (hdr->magic != PGShmemMagic)
 	{
-		shmdt((void *) hdr);
+		shmdt(hdr);
 		return NULL;			/* segment belongs to a non-Postgres app */
 	}
 

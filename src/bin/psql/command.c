@@ -1280,7 +1280,7 @@ unescape(const unsigned char *source, size_t len)
 				case '7':
 				case '8':
 				case '9':
-					c = parse_char((void *) &p);
+					c = parse_char((char **) &p);
 					break;
 
 				default:
