@@ -79,7 +79,7 @@ findTypeByOid(TypeInfo *tinfo, int numTypes, const char *oid, OidOptions opts)
 	{
 		if (strcmp(tinfo[i].oid, oid) == 0) {
 			if ( (opts & useBaseTypeName) != 0 ) {
-				return fmtId(tinfo[i].typname, false);
+				return (char*) fmtId(tinfo[i].typname, false);
 			} else {
 				return tinfo[i].typedefn;
 			}
