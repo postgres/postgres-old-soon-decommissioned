@@ -16,7 +16,7 @@ OBJS = aggregatecmds.o analyze.o async.o cluster.o comment.o  \
 	conversioncmds.o copy.o \
 	dbcommands.o define.o explain.o functioncmds.o \
 	indexcmds.o lockcmds.o operatorcmds.o opclasscmds.o \
-	portalcmds.o proclang.o \
+	portalcmds.o prepare.o proclang.o \
 	schemacmds.o sequence.o tablecmds.o trigger.o typecmds.o user.o \
 	vacuum.o vacuumlazy.o variable.o view.o
 

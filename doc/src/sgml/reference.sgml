@@ -80,6 +80,7 @@ PostgreSQL Reference Manual
    &createType;
    &createUser;
    &createView;
+   &deallocate;
    &declare;
    &delete;
    &dropAggregate;
@@ -98,10 +99,11 @@ PostgreSQL Reference Manual
    &dropSequence;
    &dropTable;
    &dropTrigger;
-   &dropType
+   &dropType;
    &dropUser;
    &dropView;
    &end;
+   &execute;
    &explain;
    &fetch;
    &grant;
@@ -111,6 +113,7 @@ PostgreSQL Reference Manual
    &lock;
    &move;
    &notify;
+   &prepare;
    &reindex;
    &reset;
    &revoke;

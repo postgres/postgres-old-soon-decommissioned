@@ -30,6 +30,9 @@
 
 List	   *parsetree;			/* result of parsing is left here */
 
+static Oid	*param_type_info;	/* state for param_type() */
+static int	param_count;
+
 static int	lookahead_token;	/* one-token lookahead */
 static bool have_lookahead;		/* lookahead_token set? */
 
@@ -50,8 +53,9 @@ parser(StringInfo str, Oid *typev, int nargs)
 	have_lookahead = false;
 
 	scanner_init(str);
-	parser_init(typev, nargs);
+	parser_init();
 	parse_expr_init();
+	parser_param_set(typev, nargs);
 
 	yyresult = yyparse();
 
@@ -62,6 +66,35 @@ parser(StringInfo str, Oid *typev, int nargs)
 		return NIL;
 
 	return parsetree;
+}
+
+
+/*
+ * Save information needed to fill out the type of Param references ($n)
+ *
+ * This is used for SQL functions, PREPARE statements, etc.  It's split
+ * out from parser() setup because PREPARE needs to change the info after
+ * the grammar runs and before parse analysis is done on the preparable
+ * query.
+ */
+void
+parser_param_set(Oid *typev, int nargs)
+{
+	param_type_info = typev;
+	param_count = nargs;
+}
+
+/*
+ * param_type()
+ *
+ * Fetch a parameter type previously passed to parser_param_set
+ */
+Oid
+param_type(int t)
+{
+	if (t > param_count || t <= 0)
+		return InvalidOid;
+	return param_type_info[t - 1];
 }
 
 

@@ -200,6 +200,9 @@ typedef enum NodeTag
 	T_DropCastStmt,
 	T_CreateOpClassStmt,
 	T_RemoveOpClassStmt,
+	T_PrepareStmt,
+	T_ExecuteStmt,
+	T_DeallocateStmt,
 
 	T_A_Expr = 700,
 	T_ColumnRef,
