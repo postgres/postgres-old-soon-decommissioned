@@ -7914,7 +7914,7 @@ msgid ""
 "memory block with ipcrm(1), or just delete \"%s\"."
 msgstr ""
 "Ako ste sigurni da drugi 'backend' procesi nisu pokrenuti, uklonite blok "
-"dijeljene memorije sa icpm(1), ili jednostavno obrišite  \"%s\"."
+"dijeljene memorije sa ipcrm(1), ili jednostavno obrišite  \"%s\"."
 
 #: utils/init/miscinit.c:549
 #, c-format
