@@ -549,8 +549,12 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
             }
         }
         if (done) continue;
-            
+
+	/*
+	 * Does it have any sence ? - vadim 12/14/96
+	 *                    
         tupDesc = CreateTupleDesc(attr_count, attr);
+	 */
         tuple = heap_formtuple(tupDesc, values, nulls);
         if (oids)
             tuple->t_oid = loaded_oid;
