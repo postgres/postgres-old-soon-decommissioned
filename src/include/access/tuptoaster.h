@@ -34,10 +34,6 @@ extern void heap_tuple_toast_attrs(Relation rel,
 
 extern varattrib *heap_tuple_untoast_attr(varattrib * attr);
 
-extern void heap_create_toast_table(Oid new_reloid,
-				TupleDesc new_tupdesc, bool istemp);
-				
-
 #endif	 /* TUPLE_TOASTER_ACTIVE */
 
 

@@ -877,8 +877,12 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 				 */
 				tupdesc = CreateTupleDescCopy(tupType);
 
-				intoRelationId = heap_create_with_catalog(intoName,
-						   tupdesc, RELKIND_RELATION, parseTree->isTemp);
+				intoRelationId =
+					heap_create_with_catalog(intoName,
+											 tupdesc,
+											 RELKIND_RELATION,
+											 parseTree->isTemp,
+											 allowSystemTableMods);
 
 				FreeTupleDesc(tupdesc);
 

@@ -136,7 +136,11 @@ PQexec(char *query)
 	 *	pg_exec_query_dest will put the query results in a portal which will
 	 *	end up on the top of the portal stack.
 	 *
-	 * XXX memory context manipulation needs thought here.
+	 * XXX memory context manipulation is WRONG here --- the query needs
+	 * to be executed in a context different from CurrentMemoryContext,
+	 * perhaps a freshly created sub-context.  If I were expecting that
+	 * this code needs to work again, then I'd fix it.  But actually I'm
+	 * planning to rip out this entire module sometime soon...  tgl 7/2000.
 	 * ----------------
 	 */
 	pg_exec_query_dest(query, Local, CurrentMemoryContext);

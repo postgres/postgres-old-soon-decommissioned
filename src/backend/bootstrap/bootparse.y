@@ -166,7 +166,7 @@ Boot_CreateStmt:
 							puts("creating bootstrap relation");
 						tupdesc = CreateTupleDesc(numattr,attrtypes);
 						reldesc = heap_create(LexIDStr($3), tupdesc,
-											  false, true);
+											  false, true, true);
 						if (DebugMode)
 							puts("bootstrap relation created ok");
 					}
@@ -177,7 +177,10 @@ Boot_CreateStmt:
 
 						tupdesc = CreateTupleDesc(numattr,attrtypes);
 						id = heap_create_with_catalog(LexIDStr($3),
-											tupdesc, RELKIND_RELATION, false);
+													  tupdesc,
+													  RELKIND_RELATION,
+													  false,
+													  true);
 						if (!Quiet)
 							printf("CREATED relation %s with OID %u\n",
 								   LexIDStr($3), id);

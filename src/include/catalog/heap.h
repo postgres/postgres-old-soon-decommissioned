@@ -26,13 +26,18 @@ typedef struct RawColumnDefault
 extern Oid	RelnameFindRelid(const char *relname);
 
 extern Relation heap_create(char *relname, TupleDesc tupDesc,
-							bool istemp, bool storage_create);
+							bool istemp, bool storage_create,
+							bool allow_system_table_mods);
+
 extern bool heap_storage_create(Relation rel);
 
 extern Oid heap_create_with_catalog(char *relname, TupleDesc tupdesc,
-						 char relkind, bool istemp);
+									char relkind, bool istemp,
+									bool allow_system_table_mods);
 
-extern void heap_drop_with_catalog(const char *relname);
+extern void heap_drop_with_catalog(const char *relname,
+								   bool allow_system_table_mods);
+
 extern void heap_truncate(char *relname);
 
 extern void AddRelationRawConstraints(Relation rel,

@@ -17,6 +17,7 @@
 #include "catalog/heap.h"
 #include "commands/creatinh.h"
 #include "commands/view.h"
+#include "miscadmin.h"
 #include "nodes/makefuncs.h"
 #include "parser/parse_relation.h"
 #include "parser/parse_type.h"
@@ -296,5 +297,5 @@ RemoveView(char *viewName)
 	 * We just have to drop the relation; the associated rules will
 	 * be cleaned up automatically.
 	 */
-	heap_drop_with_catalog(viewName);
+	heap_drop_with_catalog(viewName, allowSystemTableMods);
 }

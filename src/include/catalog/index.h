@@ -37,7 +37,8 @@ extern void index_create(char *heapRelationName,
 			 Node *predicate,
 			 bool islossy,
 			 bool unique,
-			 bool primary);
+			 bool primary,
+			 bool allow_system_table_mods);
 
 extern void index_drop(Oid indexId);
 

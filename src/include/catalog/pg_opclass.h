@@ -74,6 +74,7 @@ DESCR("");
 #define INT4_OPS_OID 426
 DATA(insert OID =  427 (	oid_ops			 26   ));
 DESCR("");
+#define OID_OPS_OID 427
 DATA(insert OID =  428 (	float4_ops		700   ));
 DESCR("");
 DATA(insert OID =  429 (	char_ops		 18   ));

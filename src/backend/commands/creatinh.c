@@ -27,6 +27,7 @@
 #include "catalog/pg_ipl.h"
 #include "catalog/pg_type.h"
 #include "commands/creatinh.h"
+#include "miscadmin.h"
 #include "utils/syscache.h"
 
 /* ----------------
@@ -146,7 +147,8 @@ DefineRelation(CreateStmt *stmt, char relkind)
 	}
 
 	relationId = heap_create_with_catalog(relname, descriptor,
-										  relkind, stmt->istemp);
+										  relkind, stmt->istemp,
+										  allowSystemTableMods);
 
 	StoreCatalogInheritance(relationId, inheritList);
 
@@ -224,7 +226,7 @@ void
 RemoveRelation(char *name)
 {
 	AssertArg(name);
-	heap_drop_with_catalog(name);
+	heap_drop_with_catalog(name, allowSystemTableMods);
 }
 
 /*
