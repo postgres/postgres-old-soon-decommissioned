@@ -20,7 +20,8 @@
 #include <ctype.h>
 
 /* non-blocking */
-extern bool set_noblock(int sock);
+extern bool pg_set_noblock(int sock);
+extern bool pg_set_block(int sock);
 
 /* Portable path handling for Unix/Win32 */
 

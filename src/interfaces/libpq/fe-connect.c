@@ -1211,7 +1211,7 @@ keep_going:						/* We will come back to here until there
 							continue;
 						}
 					}
-					if (!set_noblock(conn->sock))
+					if (!pg_set_noblock(conn->sock))
 					{
 						printfPQExpBuffer(&conn->errorMessage,
 										  libpq_gettext("could not set socket to non-blocking mode: %s\n"),

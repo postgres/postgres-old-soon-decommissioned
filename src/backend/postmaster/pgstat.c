@@ -422,7 +422,7 @@ pgstat_init(void)
 	 * messages will be discarded; backends won't block waiting to send
 	 * messages to the collector.
 	 */
-	if (!set_noblock(pgStatSock))
+	if (!pg_set_noblock(pgStatSock))
 	{
 		ereport(LOG,
 				(errcode_for_socket_access(),
@@ -1766,7 +1766,7 @@ pgstat_recvbuffer(void)
 	 * Set the write pipe to nonblock mode, so that we cannot block when
 	 * the collector falls behind.
 	 */
-	if (!set_noblock(writePipe))
+	if (!pg_set_noblock(writePipe))
 		ereport(ERROR,
 				(errcode_for_socket_access(),
 				 errmsg("could not set statistics collector pipe to nonblocking mode: %m")));
