@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * rewriteManip.h
- *
+ *		Querytree manipulation subroutines for query rewriter.
  *
  *
  * Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
@@ -14,9 +14,9 @@
 #ifndef REWRITEMANIP_H
 #define REWRITEMANIP_H
 
-#include "rewrite/rewriteHandler.h"
+#include "nodes/parsenodes.h"
 
-/* RewriteManip.c */
+
 extern void OffsetVarNodes(Node *node, int offset, int sublevels_up);
 extern void ChangeVarNodes(Node *node, int old_varno, int new_varno,
 			   int sublevels_up);
