@@ -23,7 +23,8 @@ extern RangeTblEntry *addRangeTableEntry(ParseState *pstate,
 				   char *relname,
 				   char *refname,
 				   bool inh,
-				   bool inFromCl);
+				   bool inFromCl,
+				   bool inJoinSet);
 extern List *expandAll(ParseState *pstate, char *relname, char *refname,
 		  int *this_resno);
 extern int	attnameAttNum(Relation rd, char *a);

@@ -1514,8 +1514,7 @@ ExecRelCheck(Relation rel, HeapTuple tuple, EState *estate)
 	rte->relname = nameout(&(rel->rd_rel->relname));
 	rte->refname = rte->relname;
 	rte->relid = RelationGetRelid(rel);
-	rte->inh = false;
-	rte->inFromCl = true;
+	/* inh, inFromCl, inJoinSet, skipAcl won't be used, leave them zero */
 	rtlist = lcons(rte, NIL);
 	econtext->ecxt_scantuple = slot;	/* scan tuple slot */
 	econtext->ecxt_innertuple = NULL;	/* inner tuple slot */

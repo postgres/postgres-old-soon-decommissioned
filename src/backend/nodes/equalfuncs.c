@@ -597,6 +597,8 @@ _equalRangeTblEntry(RangeTblEntry *a, RangeTblEntry *b)
 		return false;
 	if (a->inFromCl != b->inFromCl)
 		return false;
+	if (a->inJoinSet != b->inJoinSet)
+		return false;
 	if (a->skipAcl != b->skipAcl)
 		return false;
 

@@ -864,12 +864,13 @@ static void
 _outRangeTblEntry(StringInfo str, RangeTblEntry *node)
 {
 	appendStringInfo(str,
-					 " RTE :relname %s :refname %s :relid %u :inh %s :inFromCl %s :skipAcl %s",
+					 " RTE :relname %s :refname %s :relid %u :inh %s :inFromCl %s :inJoinSet %s :skipAcl %s",
 					 stringStringInfo(node->relname),
 					 stringStringInfo(node->refname),
 					 node->relid,
 					 node->inh ? "true" : "false",
 					 node->inFromCl ? "true" : "false",
+					 node->inJoinSet ? "true" : "false",
 					 node->skipAcl ? "true" : "false");
 }
 

@@ -1380,6 +1380,10 @@ _readRangeTblEntry()
 	token = lsptok(NULL, &length);		/* get :inFromCl */
 	local_node->inFromCl = (token[0] == 't') ? true : false;
 
+	token = lsptok(NULL, &length);		/* eat :inJoinSet */
+	token = lsptok(NULL, &length);		/* get :inJoinSet */
+	local_node->inJoinSet = (token[0] == 't') ? true : false;
+
 	token = lsptok(NULL, &length);		/* eat :skipAcl */
 	token = lsptok(NULL, &length);		/* get :skipAcl */
 	local_node->skipAcl = (token[0] == 't') ? true : false;
