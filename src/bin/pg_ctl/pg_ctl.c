@@ -987,7 +987,8 @@ static void WINAPI pgwin32_ServiceMain(DWORD argc, LPTSTR *argv)
 			break;
 
 		default:
-			/* assert(false); */
+			/* shouldn't get here? */
+			break;
 	}
 
 	CloseHandle(shutdownEvent);
