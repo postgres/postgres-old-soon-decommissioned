@@ -1677,7 +1677,7 @@ getOperators(int *numOprs)
 		appendPQExpBuffer(query, "SELECT pg_operator.oid, oprname, "
 						  "oprnamespace, "
 						  "(select usename from pg_user where oprowner = usesysid) as usename, "
-						  "oprcode::oid "
+						  "oprcode::oid as oprcode "
 						  "from pg_operator");
 	}
 	else
@@ -1685,7 +1685,7 @@ getOperators(int *numOprs)
 		appendPQExpBuffer(query, "SELECT pg_operator.oid, oprname, "
 						  "0::oid as oprnamespace, "
 						  "(select usename from pg_user where oprowner = usesysid) as usename, "
-						  "oprcode::oid "
+						  "oprcode::oid as oprcode "
 						  "from pg_operator");
 	}
 
