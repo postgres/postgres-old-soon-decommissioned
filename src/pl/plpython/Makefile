@@ -12,6 +12,12 @@ ifneq (,$(wildcard $(python_configdir)/libpython*$(DLSUFFIX)*))
 shared_libpython = yes
 endif
 
+# Darwin (OS X) has its own ideas about how to do this.
+ifeq ($(PORTNAME), darwin)
+shared_libpython = yes
+override python_libspec := -framework Python
+endif
+
 # If we don't have a shared library and the platform doesn't allow it
 # to work without, we have to skip it.
 ifneq (,$(findstring yes, $(shared_libpython)$(allow_nonpic_in_shlib)))
