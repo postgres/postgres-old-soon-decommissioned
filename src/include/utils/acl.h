@@ -62,7 +62,7 @@ typedef uint8 AclMode;
 #define ACL_MODECHG_EQL			3
 
 /* change this line if you want to set the default acl permission  */
-#define ACL_WORLD_DEFAULT		(ACL_RD)
+#define ACL_WORLD_DEFAULT		(ACL_NO)
 /* #define		ACL_WORLD_DEFAULT		(ACL_RD|ACL_WR|ACL_AP|ACL_RU) */
 #define ACL_OWNER_DEFAULT		(ACL_RD|ACL_WR|ACL_AP|ACL_RU)
 

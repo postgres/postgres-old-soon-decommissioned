@@ -591,7 +591,8 @@ InitPostgres(char *name)		/* database name */
 	 *	 initialize local data in cache invalidation stuff
 	 * ----------------
 	 */
-	InitLocalInvalidateData();
+	if (!bootstrap)
+		InitLocalInvalidateData();
 
 	/* ----------------
 	 *	ok, all done, now let's make sure we don't do it again.
