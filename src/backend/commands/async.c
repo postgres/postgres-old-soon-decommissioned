@@ -82,6 +82,8 @@
 #include <commands/async.h>
 #include <libpq/libpq.h>
 
+#include <port-protos.h>  /* for strdup() */
+
 static int notifyFrontEndPending = 0;
 static int notifyIssued = 0;
 static Dllist *pendingNotifies = NULL;
