@@ -507,13 +507,14 @@ ShutdownPostgres(int code, Datum arg)
 	 * since that just raises the odds of failure --- but there's some
 	 * stuff we need to do.
 	 *
-	 * Release any LW locks and buffer context locks we might be holding.
-	 * This is a kluge to improve the odds that we won't get into a
-	 * self-made stuck-lock scenario while trying to shut down.
+	 * Release any LW locks, buffer content locks, and buffer pins we might be
+	 * holding.  This is a kluge to improve the odds that we won't get into a
+	 * self-made stuck-lock scenario while trying to shut down.  We *must*
+	 * release buffer pins to make it safe to do file deletion, since we
+	 * might have some pins on pages of the target files.
 	 */
 	LWLockReleaseAll();
-	AbortBufferIO();
-	UnlockBuffers();
+	AtProcExit_Buffers();
 
 	/*
 	 * In case a transaction is open, delete any files it created.	This
