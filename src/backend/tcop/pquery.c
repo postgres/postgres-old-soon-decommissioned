@@ -90,6 +90,7 @@ CreateExecutorState(void)
 	state->es_result_relation_info = NULL;
 
 	state->es_param_list_info = NULL;
+	state->es_param_exec_vals = NULL;
 
 	state->es_BaseId = 0;
 	state->es_tupleTable = NULL;
