@@ -73,6 +73,29 @@ AH_VERBATIM(GETTIMEOFDAY_1ARG_,
 ])# PGAC_FUNC_GETTIMEOFDAY_1ARG
 
 
+# PGAC_FUNC_GETPWUID_R_5ARG
+# ---------------------------
+# Check if getpwuid_r() takes a fifth argument (later POSIX standard, not draft version)
+# If so, define GETPWUID_R_5ARG
+AC_DEFUN([PGAC_FUNC_GETPWUID_R_5ARG],
+[AC_CACHE_CHECK(whether getpwuid_r takes a fifth argument,
+pgac_func_getpwuid_r_5arg,
+[AC_TRY_COMPILE([#include <sys/types.h>
+#include <pwd.h>],
+[uid_t uid;
+struct passwd *space;
+char *buf;
+size_t bufsize;
+struct passwd **result;
+getpwuid_r(uid, space, buf, bufsize, result);],
+[pgac_func_getpwuid_r_5arg=yes],
+[pgac_func_getpwuid_r_5arg=no])])
+if test x"$pgac_func_getpwuid_r_5arg" = xyes ; then
+  AC_DEFINE(GETPWUID_R_5ARG,, [Define to 1 if getpwuid_r() takes a 5th argument.])
+fi
+])# PGAC_FUNC_GETPWUID_R_5ARG
+
+
 # PGAC_UNION_SEMUN
 # ----------------
 # Check if `union semun' exists. Define HAVE_UNION_SEMUN if so.

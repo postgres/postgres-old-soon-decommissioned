@@ -1061,6 +1061,7 @@ LIBS="$LIBS $THREAD_LIBS"
 AC_CHECK_FUNCS([strerror_r getpwuid_r gethostbyname_r])
 CFLAGS="$_CFLAGS"
 LIBS="$_LIBS"
+PGAC_FUNC_GETPWUID_R_5ARG
 fi
 
 
