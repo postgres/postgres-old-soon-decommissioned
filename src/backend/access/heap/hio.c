@@ -16,6 +16,7 @@
 
 #include <storage/bufpage.h>
 #include <access/hio.h>
+#include <access/htup.h>
 #include <access/heapam.h>
 #include <storage/bufmgr.h>
 #include <utils/memutils.h>
@@ -161,7 +162,7 @@ RelationPutHeapTupleAtEnd(Relation relation, HeapTuple tuple)
 		pageHeader = (Page) BufferGetPage(buffer);
 		PageInit(pageHeader, BufferGetPageSize(buffer), 0);
 
-		if (len > PageGetFreeSpace(pageHeader))
+		if (len > PageGetFreeSpace(pageHeader) && len <= MaxTupleSize)
 			elog(ERROR, "Tuple is too big: size %d", len);
 	}
 
