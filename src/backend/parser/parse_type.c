@@ -313,16 +313,6 @@ typeTypeName(Type t)
 	return pstrdup(NameStr(typ->typname));
 }
 
-/* given a type, return its typetype ('c' for 'c'atalog types) */
-char
-typeTypeFlag(Type t)
-{
-	Form_pg_type typ;
-
-	typ = (Form_pg_type) GETSTRUCT(t);
-	return typ->typtype;
-}
-
 Oid
 typeTypeRelid(Type typ)
 {
