@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-UNLISTEN">
  <refmeta>
-  <refentrytitle>UNLISTEN</refentrytitle>
+  <refentrytitle id="SQL-UNLISTEN-TITLE">UNLISTEN</refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
  </refmeta>
 
