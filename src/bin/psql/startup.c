@@ -42,6 +42,7 @@
  */
 PsqlSettings pset;
 
+#define PSQLRC "/.psqlrc"
 
 /*
  * Structures to pass information between the option parsing routine
@@ -604,19 +605,20 @@ process_psqlrc(void)
 
 	if (home)
 	{
-		psqlrc = malloc(strlen(home) + 20);
+		psqlrc = malloc(strlen(home) + strlen(PSQLRC) + 1 +
+				 strlen(PG_VERSION) + 1);
 		if (!psqlrc)
 		{
 			fprintf(stderr, gettext("%s: out of memory\n"), pset.progname);
 			exit(EXIT_FAILURE);
 		}
 
-		sprintf(psqlrc, "%s/.psqlrc-" PG_VERSION, home);
+		sprintf(psqlrc, "%s" PSQLRC "-" PG_VERSION, home);
 		if (access(psqlrc, R_OK) == 0)
 			process_file(psqlrc);
 		else
 		{
-			sprintf(psqlrc, "%s/.psqlrc", home);
+			sprintf(psqlrc, "%s" PSQLRC, home);
 			if (access(psqlrc, R_OK) == 0)
 				process_file(psqlrc);
 		}

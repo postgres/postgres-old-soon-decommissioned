@@ -30,6 +30,8 @@ static void finishInput(void);
 static void finishInput(int, void *);
 #endif
 
+#define PSQLHISTORY	"/.psql_history"
+
 
 /*
  * gets_interactive()
@@ -142,11 +144,12 @@ initializeInput(int flags)
 		home = getenv("HOME");
 		if (home)
 		{
-			char	   *psql_history = (char *) malloc(strlen(home) + 20);
+			char	   *psql_history = (char *) malloc(strlen(home) +
+												strlen(PSQLHISTORY) + 1);
 
 			if (psql_history)
 			{
-				sprintf(psql_history, "%s/.psql_history", home);
+				sprintf(psql_history, "%s" PSQLHISTORY, home);
 				read_history(psql_history);
 				free(psql_history);
 			}
@@ -201,14 +204,15 @@ finishInput(int exitstatus, void *arg)
 		home = getenv("HOME");
 		if (home)
 		{
-			psql_history = (char *) malloc(strlen(home) + 20);
+			psql_history = (char *) malloc(strlen(home) +
+									strlen(PSQLHISTORY) + 1);
 			if (psql_history)
 			{
 				const char *var = GetVariable(pset.vars, "HISTSIZE");
 
 				if (var)
 					stifle_history(atoi(var));
-				sprintf(psql_history, "%s/.psql_history", home);
+				sprintf(psql_history, "%s" PSQLHISTORY, home);
 				write_history(psql_history);
 				free(psql_history);
 			}
