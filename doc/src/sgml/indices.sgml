@@ -407,8 +407,18 @@ CREATE INDEX <replaceable>name</replaceable> ON <replaceable>table</replaceable>
   </para>
 
   <para>
-   The following query shows all defined operator classes:
-<programlisting>
+    The following query shows all defined operator classes:
+
+    <programlisting>
+SELECT am.amname AS acc_method,
+       opc.opcname AS ops_name
+    FROM pg_am am, pg_opclass opc
+    WHERE opc.opcamid = am.oid
+    ORDER BY acc_method, ops_name;
+    </programlisting>
+
+    It can be extended to show all the operators included in each class:
+    <programlisting>
 SELECT am.amname AS acc_method,
        opc.opcname AS ops_name,
        opr.oprname AS ops_comp
@@ -416,8 +426,8 @@ SELECT am.amname AS acc_method,
     WHERE opc.opcamid = am.oid AND
           amop.amopclaid = opc.oid AND
           amop.amopopr = opr.oid
-    ORDER BY acc_method, ops_name, ops_comp
-</programlisting>
+    ORDER BY acc_method, ops_name, ops_comp;
+    </programlisting>
   </para>
  </sect1>
 
