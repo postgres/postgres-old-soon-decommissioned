@@ -36,6 +36,7 @@ typedef enum LWLockId
 	WALWriteLock,
 	ControlFileLock,
 	CheckpointLock,
+	CheckpointStartLock,
 	RelCacheInitLock,
 	BgWriterCommLock,
 
