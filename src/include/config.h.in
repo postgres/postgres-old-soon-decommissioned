@@ -227,7 +227,7 @@
  * Define this is your operating system kernel supports AF_UNIX family
  * sockets.
  */
-#if !defined(__CYGWIN32__) && !defined(__QNX__)
+#if !defined(__CYGWIN__) && !defined(__QNX__)
 # define HAVE_UNIX_SOCKETS 1
 #endif
 

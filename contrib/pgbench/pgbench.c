@@ -536,7 +536,7 @@ main(int argc, char **argv)
 	int			nsocks;			/* return from select(2) */
 	int			maxsock;		/* max socket number to be waited */
 
-#ifndef __CYGWIN32__
+#ifndef __CYGWIN__
 	struct rlimit rlim;
 
 #endif
@@ -576,7 +576,7 @@ main(int argc, char **argv)
 					fprintf(stderr, "wrong number of clients: %d\n", nclients);
 					exit(1);
 				}
-#ifndef __CYGWIN32__
+#ifndef __CYGWIN__
 #ifdef RLIMIT_NOFILE			/* most platform uses RLIMIT_NOFILE */
 				if (getrlimit(RLIMIT_NOFILE, &rlim) == -1)
 				{
@@ -593,7 +593,7 @@ main(int argc, char **argv)
 					fprintf(stderr, "Use limit/ulimt to increase the limit before using pgbench.\n");
 					exit(1);
 				}
-#endif	 /* #ifndef __CYGWIN32__ */
+#endif	 /* #ifndef __CYGWIN__ */
 				break;
 			case 's':
 				tps = atoi(optarg);
