@@ -383,7 +383,6 @@ usage(void)
 	fprintf(stdout, "  -U username\tUsername to connect as\n");
 	fprintf(stdout, "  -W\t\tPrompt for password\n");
 	fprintf(stdout, "  -h hostname\tDatabase server host\n");
-	fprintf(stdout, "  -p port\tDatabase server port\n");
 	fprintf(stdout, "  -p port\tDatabase server port\n\n");
 }
 
