@@ -1287,7 +1287,7 @@ utf_to_local(unsigned char *utf, unsigned char *iso,
 					sizeof(pg_utf_to_local), compare1);
 		if (p == NULL)
 		{
-			elog(NOTICE, "utf_to_latin: could not convert UTF-8 (0x%04x) Ignored", iutf);
+			elog(NOTICE, "utf_to_local: could not convert UTF-8 (0x%04x). Ignored", iutf);
 			continue;
 		}
 		if (p->code & 0xff000000)
