@@ -71,8 +71,6 @@ extern TupleHashTable BuildTupleHashTable(int numCols, AttrNumber *keyColIdx,
 extern TupleHashEntry LookupTupleHashEntry(TupleHashTable hashtable,
 					 TupleTableSlot *slot,
 					 bool *isnew);
-extern TupleHashEntry ScanTupleHashTable(TupleHashTable hashtable,
-				   TupleHashIterator *state);
 
 /*
  * prototypes from functions in execJunk.c

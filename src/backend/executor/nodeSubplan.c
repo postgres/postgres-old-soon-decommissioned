@@ -627,8 +627,8 @@ findPartialMatch(TupleHashTable hashtable, TupleTableSlot *slot)
 	TupleHashIterator hashiter;
 	TupleHashEntry entry;
 
-	ResetTupleHashIterator(&hashiter);
-	while ((entry = ScanTupleHashTable(hashtable, &hashiter)) != NULL)
+	ResetTupleHashIterator(hashtable, &hashiter);
+	while ((entry = ScanTupleHashTable(&hashiter)) != NULL)
 	{
 		if (!execTuplesUnequal(entry->firstTuple,
 							   tuple,
