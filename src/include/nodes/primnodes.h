@@ -105,7 +105,7 @@ typedef struct Expr {
  * Var
  *	varno 		- index of this var's relation in the range table
  *			  (could be INNER or OUTER)
- *	varattno 	- attribute number of this var
+ *	varattno 	- attribute number of this var, or zero for all
  *	vartype 	- pg_type tuple oid for the type of this var
  *	varnoold	- keep varno around in case it got changed to INNER/
  *			  OUTER (see match_varid)
