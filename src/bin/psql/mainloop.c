@@ -281,15 +281,9 @@ MainLoop(FILE *source)
 			/* in or end of extended comment? */
 			else if (in_xcomment)
 			{
-				if (line[i] == '*' && line[i + thislen] == '/')
-				{
-					in_xcomment--;
-					if (in_xcomment <= 0)
-					{
-						in_xcomment = 0;
+				if (line[i] == '*' && line[i + thislen] == '/' &&
+					!--in_xcomment)
 						ADVANCE_1;
-					}
-				}
 			}
 
 			/* start of quote? */
