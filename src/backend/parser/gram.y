@@ -887,13 +887,18 @@ zone_value:  Sconst
 		| ConstInterval Sconst opt_interval
 			{
 				A_Const *n = (A_Const *) makeStringConst($2, $1);
-				n->typename->typmod = (($3 << 16) | 0xFFFF);
+				if ($3 != -1)
+					n->typename->typmod = (($3 << 16) | 0xFFFF);
 				$$ = (Node *)n;
 			}
 		| ConstInterval '(' Iconst ')' Sconst opt_interval
 			{
 				A_Const *n = (A_Const *) makeStringConst($5, $1);
-				n->typename->typmod = (($3 << 16) | $6);
+				if ($6 != -1)
+					n->typename->typmod = (($6 << 16) | $3);
+				else
+					n->typename->typmod = ((0x7FFF << 16) | $3);
+
 				$$ = (Node *)n;
 			}
 		| FCONST
@@ -4044,12 +4049,13 @@ SimpleTypename:  ConstTypename
 		| ConstInterval opt_interval
 				{
 					$$ = $1;
-					$$->typmod = (($2 << 16) | 0xFFFF);
+					if ($2 != -1)
+						$$->typmod = ((($2 & 0x7FFF) << 16) | 0xFFFF);
 				}
 		| ConstInterval '(' Iconst ')' opt_interval
 				{
 					$$ = $1;
-					$$->typmod = (($5 << 16) | $3);
+					$$->typmod = ((($5 & 0x7FFF) << 16) | $3);
 				}
 		;
 
@@ -5625,7 +5631,9 @@ AexprConst:  Iconst
 					n->typename = $1;
 					n->val.type = T_String;
 					n->val.val.str = $2;
-					n->typename->typmod = (($3 << 16) | 0xFFFF);
+					/* precision is not specified, but fields may be... */
+					if ($3 != -1)
+						n->typename->typmod = ((($3 & 0x7FFF) << 16) | 0xFFFF);
 					$$ = (Node *)n;
 				}
 		| ConstInterval '(' Iconst ')' Sconst opt_interval
@@ -5634,7 +5642,9 @@ AexprConst:  Iconst
 					n->typename = $1;
 					n->val.type = T_String;
 					n->val.val.str = $5;
-					n->typename->typmod = (($6 << 16) | $3);
+					/* precision specified, and fields may be... */
+					n->typename->typmod = ((($6 & 0x7FFF) << 16) | $3);
+
 					$$ = (Node *)n;
 				}
 		| ParamNo
