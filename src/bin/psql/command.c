@@ -11,6 +11,9 @@
 #include <errno.h>
 #include <assert.h>
 #include <ctype.h>
+#ifdef HAVE_PWD_H
+#include <pwd.h>
+#endif
 #ifndef WIN32
 #include <sys/types.h>			/* for umask() */
 #include <sys/stat.h>			/* for stat() */
@@ -254,6 +257,45 @@ exec_command(const char *cmd,
 
 		free(opt1);
 		free(opt2);
+	}
+
+	/* \cd */
+	else if (strcmp(cmd, "cd") == 0)
+	{
+		char   *opt = scan_option(&string, OT_NORMAL, NULL);
+		char   *dir;
+
+		if (opt)
+			dir = opt;
+		else
+		{
+#ifndef WIN32
+			struct passwd *pw;
+
+			pw = getpwuid(geteuid());
+			if (!pw)
+			{
+				psql_error("could not get home directory: %s\n", strerror(errno));
+				exit(EXIT_FAILURE);
+			}
+			dir = pw->pw_dir;
+#else /* WIN32 */
+			/* On Windows, 'cd' without arguments prints the current
+               directory, so if someone wants to code this here
+               instead... */
+			dir = "/";
+#endif /* WIN32 */
+		}
+
+		if (chdir(dir) == -1)
+		{
+			psql_error("\\%s: could not change directory to '%s': %s\n",
+					   cmd, dir, strerror(errno));
+			success = false;
+		}
+
+		if (opt)
+			free(opt);
 	}
 
 	/* \copy */

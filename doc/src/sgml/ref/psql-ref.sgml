@@ -218,6 +218,23 @@ testdb=>
       </varlistentry>
 
       <varlistentry>
+       <term><literal>\cd</literal> <optional><replaceable>directory</replaceable></optional></term>
+       <listitem>
+        <para>
+	 Change the current working directory to
+	 <replaceable>directory</replaceable>.  Without argument,
+	 change to the current user's home directory.
+        </para>
+
+	<tip>
+	 <para>
+	  To print your current working directory, use <literal>\!pwd</literal>.
+	 </para>
+	</tip>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term><literal>\C</literal> [ <replaceable class="parameter">title</replaceable> ]</term>
         <listitem>
         <para>

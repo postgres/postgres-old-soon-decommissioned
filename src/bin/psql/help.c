@@ -196,6 +196,7 @@ slashUsage(void)
 	fprintf(fout, " \\c[onnect] [dbname|- [user]]\n"
 			"                connect to new database (currently '%s')\n", PQdb(pset.db));
 	fprintf(fout, " \\C <title>     table title\n");
+	fprintf(fout, " \\cd [<dir>]    change the current working directory\n");
 	fprintf(fout, " \\copy ...      perform SQL COPY with data stream to the client machine\n");
 	fprintf(fout, " \\copyright     show PostgreSQL usage and distribution terms\n");
 	fprintf(fout, " \\d <table>     describe table (or view, index, sequence)\n");
