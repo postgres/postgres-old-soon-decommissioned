@@ -82,7 +82,7 @@ endif
 
 ifeq ($(PORTNAME), darwin)
   shlib			:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
-  LINK.shared		= $(COMPILER) $(DARWIN_NAMESPACE_SPEC) -bundle -undefined suppress
+  LINK.shared		= $(COMPILER) -bundle
 endif
 
 ifeq ($(PORTNAME), openbsd)

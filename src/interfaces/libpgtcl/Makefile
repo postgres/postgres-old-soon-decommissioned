@@ -20,12 +20,8 @@ override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS) $(TCL_INCLUDE_SPEC)
 
 OBJS= pgtcl.o pgtclCmds.o pgtclId.o
 
-SHLIB_LINK = $(libpq)
-
-# If crypt is a separate library, rather than part of libc, it may need
-# to be referenced separately to keep (broken) linkers happy.  (This is
-# braindead; users of libpq should not need to know what it depends on.)
-SHLIB_LINK+= $(filter -L%, $(LDFLAGS)) $(filter -lcrypt, $(LIBS))
+SHLIB_LINK = $(TCL_LIB_SPEC) $(TCL_LIBS) $(libpq) \
+	$(filter -lssl -lcrypto -lcrypt, $(LIBS)) $(THREAD_LIBS)
 
 all: submake-libpq all-lib
 

@@ -17,7 +17,8 @@ SO_MAJOR_VERSION= 1
 SO_MINOR_VERSION= 0
 
 override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include -I$(libpq_srcdir) -I$(top_srcdir)/src/include/utils $(CPPFLAGS) $(THREAD_CPPFLAGS)
-SHLIB_LINK = -L../pgtypeslib -lpgtypes -L../ecpglib -lecpg $(THREAD_LIBS)
+SHLIB_LINK = -L../ecpglib -lecpg -L../pgtypeslib -lpgtypes $(libpq) \
+	$(filter -lssl -lcrypto -lcrypt -lm, $(LIBS)) $(THREAD_LIBS)
 
 OBJS= informix.o
 
