@@ -58,9 +58,9 @@ pg_atoi(char *s, int size, int c)
 	 */
 
 	if (s == (char *) NULL)
-		elog(ERROR, "pg_atoi: NULL pointer!");
+		elog(ERROR, "pg_atoi: NULL pointer");
 	else if (*s == 0)
-		l = (long) 0;
+		elog(ERROR, "pg_atoi: zero-length string");
 	else
 		l = strtol(s, &badp, 10);
 
