@@ -151,7 +151,8 @@ data. Empty in ordinary tables.</entry>
  </table>
 
  <para>
-  All the details may be found in src/include/storage/bufpage.h.
+  All the details may be found in
+  <filename>src/include/storage/bufpage.h</filename>.
  </para>
 
  <para>  
@@ -305,7 +306,8 @@ data. Empty in ordinary tables.</entry>
  </table>
 
  <para>
-   All the details may be found in src/include/access/htup.h.
+   All the details may be found in
+   <filename>src/include/access/htup.h</filename>.
  </para>
 
  <para>

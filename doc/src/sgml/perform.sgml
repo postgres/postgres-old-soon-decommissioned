@@ -100,7 +100,7 @@ $PostgreSQL$
 
    <para>
     Here are some examples (using the regression test database after a
-    <literal>VACUUM ANALYZE</>, and 7.3 development sources):
+    <command>VACUUM ANALYZE</>, and 7.3 development sources):
 
 <programlisting>
 EXPLAIN SELECT * FROM tenk1;
