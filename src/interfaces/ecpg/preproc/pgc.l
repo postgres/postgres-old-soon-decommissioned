@@ -328,7 +328,7 @@ cppline			{space}*#(.*\\{space})+.*
 <xc>{xcinside}		{ ECHO; }
 <xc>{op_chars}		{ ECHO; }
 
-<xc><<EOF>>			{ mmerror(PARSE_ERROR, ET_ERROR, "Unterminated /* comment"); }
+<xc><<EOF>>		{ mmerror(PARSE_ERROR, ET_FATAL, "Unterminated /* comment"); }
 
 <SQL>{xbstart}	{
 						token_start = yytext;
@@ -348,7 +348,7 @@ cppline			{space}*#(.*\\{space})+.*
 <xb>{xbinside}	{ addlit(yytext, yyleng); }
 <xh>{xhcat}		|
 <xb>{xbcat}		{ /* ignore */ }
-<xb><<EOF>>		{ mmerror(PARSE_ERROR, ET_ERROR, "Unterminated bit string"); }
+<xb><<EOF>>		{ mmerror(PARSE_ERROR, ET_FATAL, "Unterminated bit string"); }
 
 <SQL>{xhstart}		{
 						token_start = yytext;
@@ -361,7 +361,7 @@ cppline			{space}*#(.*\\{space})+.*
 						return XCONST;
 					}
 
-<xh><<EOF>>			{ mmerror(PARSE_ERROR, ET_ERROR, "Unterminated hexadecimal integer"); }
+<xh><<EOF>>		{ mmerror(PARSE_ERROR, ET_FATAL, "Unterminated hexadecimal integer"); }
 <SQL>{xnstart}              {
 				/* National character.
 				 * Need to remember type info to flow it forward into the parser.
@@ -386,9 +386,9 @@ cppline			{space}*#(.*\\{space})+.*
 <xq>{xqinside}		{ addlit(yytext, yyleng); }
 <xq>{xqescape}  	{ addlit(yytext, yyleng); }
 <xq>{xqoctesc}          { addlit(yytext, yyleng); }
-<xq>{xqcat}			{ /* ignore */ }
+<xq>{xqcat}		{ /* ignore */ }
 
-<xq><<EOF>>			{ mmerror(PARSE_ERROR, ET_ERROR, "Unterminated quoted string"); }
+<xq><<EOF>>		{ mmerror(PARSE_ERROR, ET_FATAL, "Unterminated quoted string"); }
 
 <SQL>{xdstart}		{
 						state_before = YYSTATE;
@@ -409,7 +409,7 @@ cppline			{space}*#(.*\\{space})+.*
 					}
 <xd>{xddouble}		{ addlitchar('"'); }
 <xd>{xdinside}		{ addlit(yytext, yyleng); }
-<xd,xdc><<EOF>>		{ mmerror(PARSE_ERROR, ET_ERROR, "Unterminated quoted identifier"); }
+<xd,xdc><<EOF>>		{ mmerror(PARSE_ERROR, ET_FATAL, "Unterminated quoted identifier"); }
 <C,SQL>{xdstart}	{
 						state_before = YYSTATE;
 						BEGIN(xdc);
