@@ -72,7 +72,6 @@ PostgreSQL Programmer's Guide.
   &indexcost;
   &gist;
   &xplang;
-  &dfunc;
 
 <!-- reference -->
 
