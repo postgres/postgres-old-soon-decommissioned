@@ -373,6 +373,46 @@ set_unioni(List *l1, List *l2)
 }
 
 /*
+ * Generate the intersection of two lists,
+ * ie, all members of both l1 and l2.
+ *
+ * NOTE: if there are duplicates in l1 they will still be duplicate in the
+ * result; but duplicates in l2 are discarded.
+ *
+ * The result is a fresh List, but it points to the same member nodes
+ * as were in the inputs.
+ */
+#ifdef NOT_USED
+List *
+set_intersect(List *l1, List *l2)
+{
+	List	   *retval = NIL;
+	List	   *i;
+
+	foreach(i, l1)
+	{
+		if (member(lfirst(i), l2))
+			retval = lappend(retval, lfirst(i));
+	}
+	return retval;
+}
+#endif
+
+List *
+set_intersecti(List *l1, List *l2)
+{
+	List	   *retval = NIL;
+	List	   *i;
+
+	foreach(i, l1)
+	{
+		if (intMember(lfirsti(i), l2))
+			retval = lappendi(retval, lfirsti(i));
+	}
+	return retval;
+}
+
+/*
  * member()
  *	nondestructive, returns t iff l1 is a member of the list l2
  */

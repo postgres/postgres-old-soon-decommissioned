@@ -172,6 +172,10 @@ find_secondary_indexes(Oid relationObjectId)
 			}
 		}
 
+		/* initialize cached join info to empty */
+		info->outer_relids = NIL;
+		info->inner_paths = NIL;
+
 		index_close(indexRelation);
 
 		indexinfos = lcons(info, indexinfos);

@@ -1824,13 +1824,6 @@ _readIndexPath(void)
 	token = pg_strtok(&length); /* now read it */
 	local_node->indexscandir = (ScanDirection) atoi(token);
 
-	token = pg_strtok(&length); /* get :joinrelids */
-	local_node->joinrelids = toIntList(nodeRead(true));
-
-	token = pg_strtok(&length); /* get :alljoinquals */
-	token = pg_strtok(&length); /* now read it */
-	local_node->alljoinquals = strtobool(token);
-
 	token = pg_strtok(&length); /* get :rows */
 	token = pg_strtok(&length); /* now read it */
 	local_node->rows = atof(token);

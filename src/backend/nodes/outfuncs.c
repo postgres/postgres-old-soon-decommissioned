@@ -1067,12 +1067,8 @@ _outIndexPath(StringInfo str, IndexPath *node)
 	appendStringInfo(str, " :indexqual ");
 	_outNode(str, node->indexqual);
 
-	appendStringInfo(str, " :indexscandir %d :joinrelids ",
-					 (int) node->indexscandir);
-	_outIntList(str, node->joinrelids);
-
-	appendStringInfo(str, " :alljoinquals %s :rows %.2f ",
-					 booltostr(node->alljoinquals),
+	appendStringInfo(str, " :indexscandir %d :rows %.2f ",
+					 (int) node->indexscandir,
 					 node->rows);
 }
 

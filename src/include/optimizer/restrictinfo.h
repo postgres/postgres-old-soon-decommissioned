@@ -20,5 +20,8 @@ extern bool restriction_is_or_clause(RestrictInfo *restrictinfo);
 extern List *get_actual_clauses(List *restrictinfo_list);
 extern void get_actual_join_clauses(List *restrictinfo_list,
 						List **joinquals, List **otherquals);
+extern List *remove_redundant_join_clauses(Query *root,
+										   List *restrictinfo_list,
+										   JoinType jointype);
 
 #endif   /* RESTRICTINFO_H */

@@ -92,9 +92,6 @@ create_or_index_paths(Query *root, RelOptInfo *rel)
 				/* We don't actually care what order the index scans in. */
 				pathnode->indexscandir = NoMovementScanDirection;
 
-				/* This isn't a nestloop innerjoin, so: */
-				pathnode->joinrelids = NIL;		/* no join clauses here */
-				pathnode->alljoinquals = false;
 				pathnode->rows = rel->rows;
 
 				best_or_subclause_indices(root,

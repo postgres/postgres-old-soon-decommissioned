@@ -87,6 +87,7 @@ typedef enum NodeTag
 	T_RestrictInfo,
 	T_JoinInfo,
 	T_IndexOptInfo,
+	T_InnerIndexscanInfo,
 
 	/*
 	 * TAGS FOR EXECUTOR NODES (execnodes.h)

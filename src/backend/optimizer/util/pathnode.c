@@ -354,12 +354,9 @@ create_index_path(Query *root,
 	pathnode->indexscandir = indexscandir;
 
 	/*
-	 * This routine is only used to generate "standalone" indexpaths, not
-	 * nestloop inner indexpaths.  So joinrelids is always NIL and the
-	 * number of rows is the same as the parent rel's estimate.
+	 * The number of rows is the same as the parent rel's estimate, since
+	 * this isn't a join inner indexscan.
 	 */
-	pathnode->joinrelids = NIL; /* no join clauses here */
-	pathnode->alljoinquals = false;
 	pathnode->rows = rel->rows;
 
 	/*
