@@ -1627,7 +1627,7 @@ dynamic_library_path = '/usr/local/lib/postgresql:/home/my_project/lib:$libdir'
       <listitem>
        <para>
         Aborts any statement that takes over the specified number of
-        microseconds.  A value of zero turns off the timer.
+        milliseconds.  A value of zero turns off the timer.
        </para>
       </listitem>
      </varlistentry>
