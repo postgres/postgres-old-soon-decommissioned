@@ -19,7 +19,7 @@ DIRS += tcl
 endif
 
 #ifeq ($(with_perl), yes)
-#DIRS += plperl
+DIRS += plperl
 #endif
 
 all install installdirs uninstall depend distprep:
