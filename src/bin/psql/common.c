@@ -550,7 +550,7 @@ PrintQueryResults(PGresult *results,
 
 	/* Possible microtiming output */
 	if (pset.timing && success)
-		printf(gettext("Time: %.2f ms\n"), DIFF_MSEC(after, before));
+		printf(gettext("Time: %.3f ms\n"), DIFF_MSEC(after, before));
 
 	return success;
 }
