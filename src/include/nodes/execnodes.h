@@ -917,14 +917,13 @@ typedef struct HashJoinState
  *		of a subplan into a temporary file.
  *
  *		ss.ss_ScanTupleSlot refers to output of underlying plan.
- *
- *		tuplestorestate		private state of tuplestore.c
  * ----------------
  */
 typedef struct MaterialState
 {
 	ScanState	ss;				/* its first field is NodeTag */
-	void	   *tuplestorestate;
+	void	   *tuplestorestate; /* private state of tuplestore.c */
+	bool		eof_underlying;	/* reached end of underlying plan? */
 } MaterialState;
 
 /* ----------------

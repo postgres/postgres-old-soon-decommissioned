@@ -348,14 +348,15 @@ plpgsql_exec_function(PLpgSQL_function * func, FunctionCallInfo fcinfo)
 		/* If we produced any tuples, send back the result */
 		if (estate.tuple_store)
 		{
-			MemoryContext oldcxt;
-
-			oldcxt = MemoryContextSwitchTo(estate.tuple_store_cxt);
-			tuplestore_donestoring(estate.tuple_store);
 			rsi->setResult = estate.tuple_store;
 			if (estate.rettupdesc)
+			{
+				MemoryContext oldcxt;
+
+				oldcxt = MemoryContextSwitchTo(estate.tuple_store_cxt);
 				rsi->setDesc = CreateTupleDescCopy(estate.rettupdesc);
-			MemoryContextSwitchTo(oldcxt);
+				MemoryContextSwitchTo(oldcxt);
+			}
 		}
 		estate.retval = (Datum) 0;
 		fcinfo->isnull = true;

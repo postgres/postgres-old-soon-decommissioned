@@ -6,7 +6,11 @@
  * This module handles temporary storage of tuples for purposes such
  * as Materialize nodes, hashjoin batch files, etc.  It is essentially
  * a dumbed-down version of tuplesort.c; it does no sorting of tuples
- * but can only store a sequence of tuples and regurgitate it later.
+ * but can only store and regurgitate a sequence of tuples.  However,
+ * because no sort is required, it is allowed to start reading the sequence
+ * before it has all been written.  This is particularly useful for cursors,
+ * because it allows random access within the already-scanned portion of
+ * a query without having to process the underlying scan to completion.
  * A temporary file is used to handle the data if it exceeds the
  * space limit specified by the caller.
  *
@@ -37,8 +41,7 @@ extern Tuplestorestate *tuplestore_begin_heap(bool randomAccess,
 
 extern void tuplestore_puttuple(Tuplestorestate *state, void *tuple);
 
-extern void tuplestore_donestoring(Tuplestorestate *state);
-
+/* backwards scan is only allowed if randomAccess was specified 'true' */
 extern void *tuplestore_gettuple(Tuplestorestate *state, bool forward,
 					bool *should_free);
 
@@ -47,11 +50,7 @@ extern void *tuplestore_gettuple(Tuplestorestate *state, bool forward,
 
 extern void tuplestore_end(Tuplestorestate *state);
 
-/*
- * These routines may only be called if randomAccess was specified 'true'.
- * Likewise, backwards scan in gettuple/getdatum is only allowed if
- * randomAccess was specified.
- */
+extern bool tuplestore_ateof(Tuplestorestate *state);
 
 extern void tuplestore_rescan(Tuplestorestate *state);
 extern void tuplestore_markpos(Tuplestorestate *state);
