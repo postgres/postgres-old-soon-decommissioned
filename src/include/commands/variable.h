@@ -8,7 +8,7 @@
 #ifndef VARIABLE_H
 #define VARIABLE_H
 
-extern void SetPGVariable(const char *name, const char *value);
+extern void SetPGVariable(const char *name, List *args);
 extern void GetPGVariable(const char *name);
 extern void ResetPGVariable(const char *name);
 

@@ -105,6 +105,7 @@ extern Datum timestamp_larger(PG_FUNCTION_ARGS);
 
 extern Datum interval_in(PG_FUNCTION_ARGS);
 extern Datum interval_out(PG_FUNCTION_ARGS);
+extern Datum interval_scale(PG_FUNCTION_ARGS);
 extern Datum interval_eq(PG_FUNCTION_ARGS);
 extern Datum interval_ne(PG_FUNCTION_ARGS);
 extern Datum interval_lt(PG_FUNCTION_ARGS);

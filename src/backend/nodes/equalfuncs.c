@@ -1159,7 +1159,7 @@ _equalVariableSetStmt(VariableSetStmt *a, VariableSetStmt *b)
 {
 	if (!equalstr(a->name, b->name))
 		return false;
-	if (!equalstr(a->value, b->value))
+	if (!equal(a->args, b->args))
 		return false;
 
 	return true;

@@ -740,7 +740,7 @@ ProcessUtility(Node *parsetree,
 			{
 				VariableSetStmt *n = (VariableSetStmt *) parsetree;
 
-				SetPGVariable(n->name, n->value);
+				SetPGVariable(n->name, n->args);
 				set_ps_display(commandTag = "SET VARIABLE");
 			}
 			break;

@@ -736,7 +736,7 @@ typedef struct VariableSetStmt
 {
 	NodeTag		type;
 	char	   *name;
-	char	   *value;
+	List	   *args;
 } VariableSetStmt;
 
 /* ----------------------

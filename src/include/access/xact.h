@@ -40,7 +40,7 @@ typedef struct TransactionStateData
 	CommandId	commandId;
 	CommandId	scanCommandId;
 	AbsoluteTime startTime;
-	int			startTimeMsec;
+	int			startTimeUsec;
 	int			state;
 	int			blockState;
 } TransactionStateData;

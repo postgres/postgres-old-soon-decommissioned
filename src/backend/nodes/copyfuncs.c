@@ -2287,8 +2287,7 @@ _copyVariableSetStmt(VariableSetStmt *from)
 
 	if (from->name)
 		newnode->name = pstrdup(from->name);
-	if (from->value)
-		newnode->value = pstrdup(from->value);
+	Node_Copy(from, newnode, args);
 
 	return newnode;
 }

@@ -118,6 +118,7 @@ extern Datum timestamptz_timetz(PG_FUNCTION_ARGS);
 extern Datum datetimetz_timestamptz(PG_FUNCTION_ARGS);
 extern Datum text_timetz(PG_FUNCTION_ARGS);
 extern Datum timetz_text(PG_FUNCTION_ARGS);
+extern Datum timetz_part(PG_FUNCTION_ARGS);
 extern Datum timetz_zone(PG_FUNCTION_ARGS);
 extern Datum timetz_izone(PG_FUNCTION_ARGS);
 extern Datum timetz_pl_interval(PG_FUNCTION_ARGS);

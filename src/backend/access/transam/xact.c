@@ -378,7 +378,7 @@ GetCurrentTransactionStartTimeUsec(int *msec)
 {
 	TransactionState s = CurrentTransactionState;
 
-	*msec = s->startTimeMsec;
+	*msec = s->startTimeUsec;
 
 	return s->startTime;
 }
@@ -877,7 +877,7 @@ StartTransaction(void)
 #if NOT_USED
 	s->startTime = GetCurrentAbsoluteTime();
 #endif
-	s->startTime = GetCurrentAbsoluteTimeUsec(&(s->startTimeMsec));
+	s->startTime = GetCurrentAbsoluteTimeUsec(&(s->startTimeUsec));
 
 	/*
 	 * initialize the various transaction subsystems
