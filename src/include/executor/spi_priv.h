@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * spi.c--
+ * spi.c
  *				Server Programming Interface private declarations
  *
  * $Header$

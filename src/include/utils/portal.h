@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * portal.h--
+ * portal.h
  *	  POSTGRES portal definitions.
  *
  *
@@ -53,7 +53,7 @@ struct PortalD
 };
 
 /*
- * PortalIsValid --
+ * PortalIsValid 
  *		True iff portal is valid.
  */
 #define PortalIsValid(p) PointerIsValid(p)

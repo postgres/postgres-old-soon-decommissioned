@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * exc.c--
+ * exc.c
  *	  POSTGRES exception handling code.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -48,7 +48,7 @@ extern char *ProgramName;
  */
 
 /*
- * EnableExceptionHandling --
+ * EnableExceptionHandling 
  *		Enables/disables the exception handling system.
  *
  * Note:

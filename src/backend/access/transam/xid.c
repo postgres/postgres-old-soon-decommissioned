@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * xid.c--
+ * xid.c
  *	  POSTGRES transaction identifier code.
  *
  * Copyright (c) 1994, Regents of the University of California

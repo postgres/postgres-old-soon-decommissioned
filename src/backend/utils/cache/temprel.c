@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * temprel.c--
+ * temprel.c
  *	  POSTGRES temporary relation handling
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * shmem.c--
+ * shmem.c
  *	  create shared memory and initialize shared memory data structures.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -107,7 +107,7 @@ ShmemIndexReset(void)
 }
 
 /*
- *	CreateSharedRegion() --
+ *	CreateSharedRegion() 
  *
  *	This routine is called once by the postmaster to
  *	initialize the shared buffer pool.	Assume there is

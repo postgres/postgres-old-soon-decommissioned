@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_amop.h--
+ * pg_amop.h
  *	  definition of the system "amop" relation (pg_amop)
  *	  along with the relation's initial contents.
  *

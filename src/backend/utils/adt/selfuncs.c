@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * selfuncs.c--
+ * selfuncs.c
  *	  Selectivity functions for system catalogs and builtin types
  *
  *	  These routines are registered in the operator catalog in the

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * parse_agg.c--
+ * parse_agg.c
  *	  handle aggregates in parser
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -36,7 +36,7 @@ static bool exprIsAggOrGroupCol(Node *expr, List *groupClause);
 static bool tleIsAggOrGroupCol(TargetEntry *tle, List *groupClause);
 
 /*
- * contain_agg_clause--
+ * contain_agg_clause
  *	  Recursively find aggref nodes from a clause.
  *
  *	  Returns true if any aggregate found.

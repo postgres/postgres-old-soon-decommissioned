@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_proc.c--
+ * pg_proc.c
  *	  routines to support manipulation of the pg_proc relation
  *
  * Copyright (c) 1994, Regents of the University of California

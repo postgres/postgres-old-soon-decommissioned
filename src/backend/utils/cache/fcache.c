@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * fcache.c--
+ * fcache.c
  *	  Code for the 'function cache' used in Oper and Func nodes....
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * int.c--
+ * int.c
  *	  Functions for the built-in integer types.
  *
  * Copyright (c) 1994, Regents of the University of California

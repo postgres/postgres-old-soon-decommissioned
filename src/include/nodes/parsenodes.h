@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * parsenodes.h--
+ * parsenodes.h
  *	  definitions for parse tree nodes
  *
  *

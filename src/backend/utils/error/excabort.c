@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * excabort.c--
+ * excabort.c
  *	  Default exception abort code.
  *
  * Copyright (c) 1994, Regents of the University of California

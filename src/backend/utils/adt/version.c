@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * version.c--
+ * version.c
  *	 Returns the version string
  *
  * IDENTIFICATION

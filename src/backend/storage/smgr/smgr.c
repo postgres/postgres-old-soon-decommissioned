@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * smgr.c--
+ * smgr.c
  *	  public interface routines to storage manager switch.
  *
  *	  All file system operations in POSTGRES dispatch through these

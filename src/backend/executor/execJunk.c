@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * junk.c--
+ * junk.c
  *	  Junk attribute support stuff....
  *
  * Copyright (c) 1994, Regents of the University of California

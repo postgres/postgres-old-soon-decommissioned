@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * tgRecipe.c--
+ * tgRecipe.c
  *		Tioga recipe-related definitions
  *		these functions can be used in both the frontend and the
  *		backend

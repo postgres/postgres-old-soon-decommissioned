@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * exc.h--
+ * exc.h
  *	  POSTGRES exception handling definitions.
  *
  *

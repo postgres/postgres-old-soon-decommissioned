@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * tcopdebug.h--
+ * tcopdebug.h
  *	  #defines governing debugging behaviour in the traffic cop
  *
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_attribute.h--
+ * pg_attribute.h
  *	  definition of the system "attribute" relation (pg_attribute)
  *	  along with the relation's initial contents.
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * be-dumpdata.c--
+ * be-dumpdata.c
  *	  support for collection of returned tuples from an internal
  *	  PQ call into a backend buffer.
  *

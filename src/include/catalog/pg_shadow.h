@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_shadow.h--
+ * pg_shadow.h
  *	  definition of the system "shadow" relation (pg_shadow)
  *	  along with the relation's initial contents.
  *		  pg_user is now a public accessible view on pg_shadow.

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * rtproc.c--
+ * rtproc.c
  *	  pg_amproc entries for rtrees.
  *
  * Copyright (c) 1994, Regents of the University of California

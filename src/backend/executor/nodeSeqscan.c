@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nodeSeqscan.c--
+ * nodeSeqscan.c
  *	  Support routines for sequential scans of relations.
  *
  * Copyright (c) 1994, Regents of the University of California

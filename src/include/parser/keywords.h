@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * keywords.h--
+ * keywords.h
  *	  string,atom lookup thingy, reduces strcmp traffic greatly
  *	  in the bowels of the system.	Look for actual defs in lib/C/atoms.c
  *

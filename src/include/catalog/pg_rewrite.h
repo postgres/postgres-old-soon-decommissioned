@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_rewrite.h--
+ * pg_rewrite.h
  *	  definition of the system "rewrite-rule" relation (pg_rewrite)
  *	  along with the relation's initial contents.
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_encoding.c--
+ * pg_encoding.c
  *
  *
  * Copyright (c) 1998, PostgreSQL development group

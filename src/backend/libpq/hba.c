@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * hba.c--
+ * hba.c
  *	  Routines to handle host based authentication (that's the scheme
  *	  wherein you authenticate a user by seeing what IP address the system
  *	  says he comes from and possibly using ident).

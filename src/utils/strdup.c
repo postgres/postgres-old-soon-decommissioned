@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * strdup.c--
+ * strdup.c
  *	  copies a null-terminated string.
  *
  * Copyright (c) 1994, Regents of the University of California

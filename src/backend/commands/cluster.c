@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * cluster.c--
+ * cluster.c
  *	  Paul Brown's implementation of cluster index.
  *
  *	  I am going to use the rename function as a model for this in the

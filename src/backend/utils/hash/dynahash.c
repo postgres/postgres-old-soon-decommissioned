@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * dynahash.c--
+ * dynahash.c
  *	  dynamic hashing
  *
  * Copyright (c) 1994, Regents of the University of California

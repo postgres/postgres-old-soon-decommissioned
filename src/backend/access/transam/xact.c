@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * xact.c--
+ * xact.c
  *	  top level transaction system support routines
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -1036,7 +1036,7 @@ StartTransactionCommand()
 			break;
 
 			/* ----------------
-			 *		As with BEGIN, we should never experience this --
+			 *		As with BEGIN, we should never experience this 
 			 *		if we do it means the END state was not changed in the
 			 *		previous CommitTransactionCommand().  If we get it, we
 			 *		print a warning, commit the transaction, start a new

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * valid.h--
+ * valid.h
  *	  POSTGRES tuple qualification validity definitions.
  *
  *

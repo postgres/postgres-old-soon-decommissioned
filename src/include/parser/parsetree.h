@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * parsetree.h--
+ * parsetree.h
  *	  Routines to access various components and subcomponents of
  *	  parse trees.
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * internal.h--
+ * internal.h
  *	  Definitions required throughout the query optimizer.
  *
  *

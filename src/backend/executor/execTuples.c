@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * execTuples.c--
+ * execTuples.c
  *	  Routines dealing with the executor tuple tables.	These are used to
  *	  ensure that the executor frees copies of tuples (made by
  *	  ExecTargetList) properly.

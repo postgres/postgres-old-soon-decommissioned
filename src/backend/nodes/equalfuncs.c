@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * equalfuncs.c--
+ * equalfuncs.c
  *	  equal functions to compare the nodes
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -281,7 +281,7 @@ _equalFunc(Func *a, Func *b)
  * RestrictInfo is a subclass of Node.
  */
 static bool
-_equalRestrictInfo(RestrictInfo * a, RestrictInfo * b)
+_equalRestrictInfo(RestrictInfo *a, RestrictInfo *b)
 {
 	Assert(IsA(a, RestrictInfo));
 	Assert(IsA(b, RestrictInfo));
@@ -697,7 +697,7 @@ _equalValue(Value *a, Value *b)
 }
 
 /*
- * equal--
+ * equal
  *	  returns whether two nodes are equal
  */
 bool
@@ -846,7 +846,7 @@ equal(void *a, void *b)
 }
 
 /*
- * equali--
+ * equali
  *	  compares two lists of integers
  *
  * XXX temp hack. needs something like T_IntList

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * rtree.h--
+ * rtree.h
  *	  common declarations for the rtree access method code.
  *
  *

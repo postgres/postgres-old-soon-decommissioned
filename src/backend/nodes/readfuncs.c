@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * readfuncs.c--
+ * readfuncs.c
  *	  Reader functions for Postgres tree nodes.
  *
  * Copyright (c) 1994, Regents of the University of California

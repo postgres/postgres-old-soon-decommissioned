@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * float.h--
+ * float.h
  *	  definitions for ANSI floating point
  *
  *

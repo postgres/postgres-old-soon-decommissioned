@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nodeHashjoin.c--
+ * nodeHashjoin.c
  *	  Routines to handle hash join nodes
  *
  * Copyright (c) 1994, Regents of the University of California

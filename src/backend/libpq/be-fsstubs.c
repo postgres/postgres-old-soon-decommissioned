@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * be-fsstubs.c--
+ * be-fsstubs.c
  *	  support for filesystem operations on large objects
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * spin.c--
+ * spin.c
  *	  routines for managing spin locks
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * hashpage.c--
+ * hashpage.c
  *	  Hash table page management code for the Postgres hash access method
  *
  * Copyright (c) 1994, Regents of the University of California

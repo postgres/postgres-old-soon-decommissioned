@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * geqo_gene.h--
+ * geqo_gene.h
  *	  genome representation in optimizer/geqo
  *
  * Copyright (c) 1994, Regents of the University of California

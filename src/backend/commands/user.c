@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * user.c--
+ * user.c
  *	  use pg_exec_query to create a new user in the catalog
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * tqual.c--
+ * tqual.c
  *	  POSTGRES "time" qualification code.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -59,7 +59,7 @@ setheapoverride(bool on)
  */
 
 /*
- * HeapTupleSatisfiesItself --
+ * HeapTupleSatisfiesItself 
  *		True iff heap tuple is valid for "itself."
  *		"{it}self" means valid as of everything that's happened
  *		in the current transaction, _including_ the current command.
@@ -144,7 +144,7 @@ HeapTupleSatisfiesItself(HeapTupleHeader tuple)
 }
 
 /*
- * HeapTupleSatisfiesNow --
+ * HeapTupleSatisfiesNow 
  *		True iff heap tuple is valid "now."
  *		"now" means valid including everything that's happened
  *		 in the current transaction _up to, but not including,_

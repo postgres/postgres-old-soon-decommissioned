@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * command.c--
+ * command.c
  *	  random postgres portal and utility support code
  *
  * Copyright (c) 1994, Regents of the University of California

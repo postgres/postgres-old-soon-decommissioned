@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * index.c--
+ * index.c
  *	  code to create and destroy POSTGRES index relations
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -356,7 +356,7 @@ ConstructTupleDescriptor(Oid heapoid,
 }
 
 /* ----------------------------------------------------------------
- * AccessMethodObjectIdGetForm --
+ * AccessMethodObjectIdGetForm 
  *		Returns the formated access method tuple given its object identifier.
  *
  * XXX ADD INDEXING

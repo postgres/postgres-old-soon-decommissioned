@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * beard.c--
+ * beard.c
  *	  sample routines to use large objects
  *
  * Copyright (c) 1994, Regents of the University of California

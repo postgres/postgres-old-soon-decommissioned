@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nodes.c--
+ * nodes.c
  *	  support code for nodes (now that we get rid of the home-brew
  *	  inheritance system, our support code for nodes get much simpler)
  *

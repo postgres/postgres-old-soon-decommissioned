@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * rtstrat.c--
+ * rtstrat.c
  *	  strategy map data for rtrees.
  *
  * Copyright (c) 1994, Regents of the University of California

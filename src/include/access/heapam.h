@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * heapam.h--
+ * heapam.h
  *	  POSTGRES heap access method definitions.
  *
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * excid.h--
+ * excid.h
  *	  POSTGRES known exception identifier definitions.
  *
  *

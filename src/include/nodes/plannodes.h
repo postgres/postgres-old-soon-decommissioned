@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * plannodes.h--
+ * plannodes.h
  *	  definitions for query plan nodes
  *
  *

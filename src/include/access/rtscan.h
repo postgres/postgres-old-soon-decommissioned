@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * rtscan.h--
+ * rtscan.h
  *	  routines defined in access/rtree/rtscan.c
  *
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * database.c--
+ * database.c
  *	  miscellanious initialization support stuff
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * read.c--
+ * read.c
  *	  routines to convert a string (legal ascii representation of node) back
  *	  to nodes
  *

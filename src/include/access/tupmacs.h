@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * tupmacs.h--
+ * tupmacs.h
  *	  Tuple macros used by both index tuples and heap tuples.
  *
  *

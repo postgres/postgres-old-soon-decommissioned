@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * geqo_pool.h--
+ * geqo_pool.h
  *	  pool representation in optimizer/geqo
  *
  * Copyright (c) 1994, Regents of the University of California

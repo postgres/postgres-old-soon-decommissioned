@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * geo-selfuncs.c--
+ * geo-selfuncs.c
  *	  Selectivity routines registered in the operator catalog in the
  *	  "oprrest" and "oprjoin" attributes.
  *

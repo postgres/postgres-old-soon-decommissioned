@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------
  *
- * geqo_main.c--
+ * geqo_main.c
  *	  solution of the query optimization problem
  *	  by means of a Genetic Algorithm (GA)
  *
@@ -58,7 +58,7 @@
 
 
 /*
- * geqo--
+ * geqo
  *	  solution of the query optimization problem
  *	  similar to a constrained Traveling Salesman Problem (TSP)
  */

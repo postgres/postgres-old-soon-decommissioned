@@ -1,5 +1,5 @@
 /* ----------
- * numeric.c -
+ * numeric.c
  *
  *	An exact numeric data type for the Postgres database system
  *

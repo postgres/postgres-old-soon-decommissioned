@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * s_lock.h--
+ * s_lock.h
  *	   This file contains the implementation (if any) for spinlocks.
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * remove.c--
+ * remove.c
  *	  POSTGRES remove (function | type | operator ) utilty code.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -36,7 +36,7 @@
 #endif
 
 /*
- * RemoveOperator --
+ * RemoveOperator 
  *		Deletes an operator.
  *
  * Exceptions:
@@ -288,7 +288,7 @@ RemoveType(char *typeName)		/* type name to be removed */
 }
 
 /*
- * RemoveFunction --
+ * RemoveFunction 
  *		Deletes a function.
  *
  * Exceptions:

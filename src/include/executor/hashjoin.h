@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * hashjoin.h--
+ * hashjoin.h
  *	  internal structures for hash table and buckets
  *
  *

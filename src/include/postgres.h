@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * postgres.h--
+ * postgres.h
  *	  definition of (and support for) postgres system types.
  * this file is included by almost every .c in the system
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * dest.h--
+ * dest.h
  *		Whenever the backend executes a query, the results
  *		have to go someplace - either to the standard output,
  *		to a local portal buffer or to a remote portal buffer.

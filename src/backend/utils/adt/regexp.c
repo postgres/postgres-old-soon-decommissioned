@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * regexp.c--
+ * regexp.c
  *	  regular expression handling code.
  *
  * Copyright (c) 1994, Regents of the University of California

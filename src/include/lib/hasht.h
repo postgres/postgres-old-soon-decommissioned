@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * hasht.h--
+ * hasht.h
  *	  hash table related functions that are not directly supported
  *	  under utils/hash.
  *

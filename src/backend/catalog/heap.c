@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * heap.c--
+ * heap.c
  *	  code to create and destroy POSTGRES heap relations
  *
  * Copyright (c) 1994, Regents of the University of California

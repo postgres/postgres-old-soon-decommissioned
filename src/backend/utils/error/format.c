@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * format.c--
+ * format.c
  *	  a wrapper around code that does what vsprintf does.
  *
  * Copyright (c) 1994, Regents of the University of California

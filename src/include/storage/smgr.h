@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * smgr.h--
+ * smgr.h
  *	  storage manager switch public interface declarations.
  *
  *

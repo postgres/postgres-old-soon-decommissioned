@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * itempos.h--
+ * itempos.h
  *	  Standard POSTGRES buffer page long item subposition definitions.
  *
  *

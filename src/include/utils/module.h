@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * module.h--
+ * module.h
  *	  this file contains general "module" stuff  that used to be
  *	  spread out between the following files:
  *

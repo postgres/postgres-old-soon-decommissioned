@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * fe-auth.c--
+ * fe-auth.c
  *	   The front-end (client) authorization routines
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_language.h--
+ * pg_language.h
  *	  definition of the system "language" relation (pg_language)
  *	  along with the relation's initial contents.
  *

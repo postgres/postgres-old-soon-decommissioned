@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * clausesel.c--
+ * clausesel.c
  *	  Routines to compute and set clause selectivities
  *
  * Copyright (c) 1994, Regents of the University of California

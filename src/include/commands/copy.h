@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * copy.h--
+ * copy.h
  *	  Definitions for using the POSTGRES copy command.
  *
  *

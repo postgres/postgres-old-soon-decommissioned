@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * char.c--
+ * char.c
  *	  Functions for the built-in type "char".
  *	  Functions for the built-in type "cid".
  *

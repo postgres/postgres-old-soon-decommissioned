@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * stringutils.h--
+ * stringutils.h
  *
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * common.c--
+ * common.c
  *	  common routines between pg_dump and pg4_dump
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -101,7 +101,7 @@ findOprByOid(OprInfo *oprinfo, int numOprs, const char *oid)
 
 
 /*
- * findParentsByOid --
+ * findParentsByOid 
  *	  given the oid of a class, return the names of its parent classes
  * and assign the number of parents to the last argument.
  *

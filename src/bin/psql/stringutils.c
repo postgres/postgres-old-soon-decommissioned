@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * stringutils.c--
+ * stringutils.c
  *	  simple string manipulation routines
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * libpq-fs.h--
+ * libpq-fs.h
  *	  definitions for using Inversion file system routines
  *
  *

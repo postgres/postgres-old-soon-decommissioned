@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * geqo.h--
+ * geqo.h
  *	  prototypes for various files in optimizer/geqo
  *
  * Copyright (c) 1994, Regents of the University of California

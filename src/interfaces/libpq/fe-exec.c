@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * fe-exec.c--
+ * fe-exec.c
  *	  functions related to sending a query down to the backend
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * auth.c--
+ * auth.c
  *	  Routines to handle network authentication
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * date.c--
+ * date.c
  *	  Utilities for the built-in type "AbsoluteTime" (defined in nabstime).
  *	  Functions for the built-in type "RelativeTime".
  *	  Functions for the built-in type "TimeInterval".

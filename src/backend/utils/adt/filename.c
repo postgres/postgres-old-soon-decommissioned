@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * filename.c--
+ * filename.c
  *
  *
  * Copyright (c) 1994, Regents of the University of California

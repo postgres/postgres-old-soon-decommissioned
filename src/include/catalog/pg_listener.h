@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_listener.h--
+ * pg_listener.h
  *	  Asynchronous notification
  *
  *

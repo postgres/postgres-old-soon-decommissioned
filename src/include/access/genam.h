@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * genam.h--
+ * genam.h
  *	  POSTGRES general access method definitions.
  *
  *

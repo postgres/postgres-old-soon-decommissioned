@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * fe-lobj.c--
+ * fe-lobj.c
  *	  Front-end large object interface
  *
  * Copyright (c) 1994, Regents of the University of California

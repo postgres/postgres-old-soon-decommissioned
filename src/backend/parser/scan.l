@@ -1,7 +1,7 @@
 %{
 /*-------------------------------------------------------------------------
  *
- * scan.l--
+ * scan.l
  *	  lexical scanner for POSTGRES
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * catalog.c--
+ * catalog.c
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -43,7 +43,7 @@ relpath(char *relname)
 }
 
 /*
- * IsSystemRelationName --
+ * IsSystemRelationName 
  *		True iff name is the name of a system catalog relation.
  *
  *		We now make a new requirement where system catalog relns must begin
@@ -64,7 +64,7 @@ IsSystemRelationName(char *relname)
 }
 
 /*
- * IsSharedSystemRelationName --
+ * IsSharedSystemRelationName 
  *		True iff name is the name of a shared system catalog relation.
  */
 bool

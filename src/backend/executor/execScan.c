@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * execScan.c--
+ * execScan.c
  *	  This code provides support for generalized relation scans. ExecScan
  *	  is passed a node and a pointer to a function to "do the right thing"
  *	  and return a tuple from the relation. ExecScan then does the tedious

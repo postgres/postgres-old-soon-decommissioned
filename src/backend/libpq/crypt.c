@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * crypt.c--
+ * crypt.c
  *	Look into pg_shadow and check the encrypted password with 
  *	the one passed in from the frontend.
  *

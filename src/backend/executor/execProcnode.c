@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * execProcnode.c--
+ * execProcnode.c
  *	 contains dispatch functions which call the appropriate "initialize",
  *	 "get a tuple", and "cleanup" routines for the given node type.
  *	 If the node has children, then it will presumably call ExecInitNode,

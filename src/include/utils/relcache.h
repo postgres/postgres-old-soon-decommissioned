@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * relcache.h--
+ * relcache.h
  *	  Relation descriptor cache definitions.
  *
  *

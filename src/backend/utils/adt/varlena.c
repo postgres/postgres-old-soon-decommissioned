@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * varlena.c--
+ * varlena.c
  *	  Functions for the variable-length built-in types.
  *
  * Copyright (c) 1994, Regents of the University of California

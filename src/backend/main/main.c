@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * main.c--
+ * main.c
  *	  Stub main() routine for the postgres backend.
  *
  * Copyright (c) 1994, Regents of the University of California

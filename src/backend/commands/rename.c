@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * rename.c--
+ * rename.c
  *	  renameatt() and renamerel() reside here.
  *
  * Copyright (c) 1994, Regents of the University of California

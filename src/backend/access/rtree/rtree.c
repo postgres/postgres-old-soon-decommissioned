@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * rtree.c--
+ * rtree.c
  *	  interface routines for the postgres rtree indexed access method.
  *
  * Copyright (c) 1994, Regents of the University of California

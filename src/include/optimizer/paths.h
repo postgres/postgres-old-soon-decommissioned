@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * paths.h--
+ * paths.h
  *	  prototypes for various files in optimizer/paths (were separate
  *	  header files
  *

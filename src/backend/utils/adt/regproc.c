@@ -1,6 +1,6 @@
  /*-------------------------------------------------------------------------
  *
- * regproc.c--
+ * regproc.c
  *	  Functions for the built-in type "RegProcedure".
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * aset.c--
+ * aset.c
  *	  Allocation set definitions.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -88,7 +88,7 @@ AllocSetFreeIndex(Size size)
  */
 
 /*
- * AllocSetInit --
+ * AllocSetInit 
  *		Initializes given allocation set.
  *
  * Note:
@@ -116,7 +116,7 @@ AllocSetInit(AllocSet set, AllocMode mode, Size limit)
 
 
 /*
- * AllocSetReset --
+ * AllocSetReset 
  *		Frees memory which is allocated in the given set.
  *
  * Exceptions:
@@ -141,7 +141,7 @@ AllocSetReset(AllocSet set)
 }
 
 /*
- * AllocSetContains --
+ * AllocSetContains 
  *		True iff allocation set contains given allocation element.
  *
  * Exceptions:
@@ -158,7 +158,7 @@ AllocSetContains(AllocSet set, AllocPointer pointer)
 }
 
 /*
- * AllocSetAlloc --
+ * AllocSetAlloc 
  *		Returns pointer to allocated memory of given size; memory is added
  *		to the set.
  *
@@ -273,7 +273,7 @@ AllocSetAlloc(AllocSet set, Size size)
 }
 
 /*
- * AllocSetFree --
+ * AllocSetFree 
  *		Frees allocated memory; memory is removed from the set.
  *
  * Exceptions:
@@ -299,7 +299,7 @@ AllocSetFree(AllocSet set, AllocPointer pointer)
 }
 
 /*
- * AllocSetRealloc --
+ * AllocSetRealloc 
  *		Returns new pointer to allocated memory of given size; this memory
  *		is added to the set.  Memory associated with given pointer is copied
  *		into the new memory, and the old memory is freed.
@@ -342,7 +342,7 @@ AllocSetRealloc(AllocSet set, AllocPointer pointer, Size size)
 }
 
 /*
- * AllocSetDump --
+ * AllocSetDump 
  *		Displays allocated set.
  */
 void

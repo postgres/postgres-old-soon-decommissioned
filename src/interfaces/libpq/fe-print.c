@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * fe-print.c--
+ * fe-print.c
  *	  functions for pretty-printing query results
  *
  * Copyright (c) 1994, Regents of the University of California

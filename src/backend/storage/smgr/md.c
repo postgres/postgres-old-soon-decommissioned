@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * md.c--
+ * md.c
  *	  This code manages relations that reside on magnetic disk.
  *
  * Copyright (c) 1994, Regents of the University of California

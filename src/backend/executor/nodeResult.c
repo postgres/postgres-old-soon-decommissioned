@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nodeResult.c--
+ * nodeResult.c
  *	  support for constant nodes needing special code.
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * lmgr.c--
+ * lmgr.c
  *	  POSTGRES lock manager code
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -129,7 +129,7 @@ InitLockTable()
 }
 
 /*
- * RelationInitLockInfo --
+ * RelationInitLockInfo 
  *		Initializes the lock information in a relation descriptor.
  */
 void

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * libpq-be.h--
+ * libpq_be.h
  *	  This file contains definitions for structures and
  *	  externs for functions used by the POSTGRES backend.
  *

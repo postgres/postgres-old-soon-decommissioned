@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * acl.h--
+ * acl.h
  *	  Definition of (and support for) access control list data structures.
  *
  *

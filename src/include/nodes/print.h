@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * execnodes.h--
+ * execnodes.h
  *	  definitions for executor state nodes
  *
  *

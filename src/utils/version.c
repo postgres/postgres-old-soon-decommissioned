@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * version.c--
+ * version.c
  *	  Routines to handle Postgres version number.
  *
  * Copyright (c) 1994, Regents of the University of California

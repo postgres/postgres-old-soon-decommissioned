@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * dl.h--
+ * dl.h
  *
  *
  *
@@ -13,7 +13,7 @@
 /*
  *	Ultrix 4.x Dynamic Loader Library Version 1.0
  *
- *	dl.h--
+ *	dl.h
  *		header file for the Dynamic Loader Library
  *
  *

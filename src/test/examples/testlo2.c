@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * lotest.c--
+ * lotest.c
  *	  test using large objects with libpq
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * fmgr.c--
+ * fmgr.c
  *	  Interface routines for the table-driven function manager.
  *
  * Copyright (c) 1994, Regents of the University of California

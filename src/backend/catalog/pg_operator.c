@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_operator.c--
+ * pg_operator.c
  *	  routines to support manipulation of the pg_operator relation
  *
  * Copyright (c) 1994, Regents of the University of California

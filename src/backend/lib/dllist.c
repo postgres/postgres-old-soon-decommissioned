@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * dllist.c--
+ * dllist.c
  *	  this is a simple doubly linked list implementation
  *	  replaces the old simplelists stuff
  *	  the elements of the lists are void*

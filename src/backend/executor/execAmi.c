@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * execAmi.c--
+ * execAmi.c
  *	  miscellanious executor access method routines
  *
  * Copyright (c) 1994, Regents of the University of California

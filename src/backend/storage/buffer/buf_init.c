@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * buf_init.c--
+ * buf_init.c
  *	  buffer manager initialization routines
  *
  * Copyright (c) 1994, Regents of the University of California

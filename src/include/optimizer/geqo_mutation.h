@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * geqo_mutation.h--
+ * geqo_mutation.h
  *	  prototypes for mutation functions in optimizer/geqo
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nodeMaterial.c--
+ * nodeMaterial.c
  *	  Routines to handle materialization nodes.
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,5 +1,5 @@
 /*
- * nabstime.c--
+ * nabstime.c
  *	  parse almost any absolute date getdate(3) can (& some it can't)
  *
  * Copyright (c) 1994, Regents of the University of California

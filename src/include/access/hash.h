@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * hash.h--
+ * hash.h
  *	  header file for postgres hash access method implementation
  *
  *

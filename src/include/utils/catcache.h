@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * catcache.h--
+ * catcache.h
  *	  Low-level catalog cache definitions.
  *
  *

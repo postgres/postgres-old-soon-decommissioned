@@ -1,5 +1,5 @@
 /* ----------
- * numeric.h -
+ * numeric.h
  *
  *	Definitions for the exact numeric data type of Postgres
  *

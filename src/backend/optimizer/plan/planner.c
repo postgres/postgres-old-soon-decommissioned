@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * planner.c--
+ * planner.c
  *	  The query optimizer external interface.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -91,7 +91,7 @@ planner(Query *parse)
 }
 
 /*
- * union_planner--
+ * union_planner
  *
  *	  Invokes the planner on union queries if there are any left,
  *	  recursing if necessary to get them all, then processes normal plans.
@@ -357,7 +357,7 @@ union_planner(Query *parse)
 }
 
 /*
- * make_sortplan--
+ * make_sortplan
  *	  Returns a sortplan which is basically a SORT node attached to the
  *	  top of the plan returned from the planner.  It also adds the
  *	   cost of sorting into the plan.

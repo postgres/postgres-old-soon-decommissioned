@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * hashinsert.c--
+ * hashinsert.c
  *	  Item insertion in hash tables for Postgres.
  *
  * Copyright (c) 1994, Regents of the University of California

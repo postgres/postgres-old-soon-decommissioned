@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * lselect.c--
+ * lselect.c
  *	  leftist tree selection algorithm (linked priority queue--Knuth, Vol.3,
  *	  pp.150-52)
  *

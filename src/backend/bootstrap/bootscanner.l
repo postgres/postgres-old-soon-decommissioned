@@ -1,7 +1,7 @@
 %{
 /*-------------------------------------------------------------------------
  *
- * bootscanner.lex--
+ * bootscanner.lex
  *	  a lexical scanner for the bootstrap parser
  *
  * Copyright (c) 1994, Regents of the University of California

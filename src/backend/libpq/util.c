@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * util.c--
+ * util.c
  *	  general routines for libpq backend
  *
  * Copyright (c) 1994, Regents of the University of California

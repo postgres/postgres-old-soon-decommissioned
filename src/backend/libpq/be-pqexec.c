@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * be-pqexec.c--
+ * be-pqexec.c
  *	  support for executing POSTGRES commands and functions from a
  *	  user-defined function in a backend.
  *

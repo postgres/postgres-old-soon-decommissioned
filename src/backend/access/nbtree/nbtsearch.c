@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * btsearch.c--
+ * btsearch.c
  *	  search code for postgres btrees.
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * hashsearch.c--
+ * hashsearch.c
  *	  search code for postgres hash tables
  *
  * Copyright (c) 1994, Regents of the University of California

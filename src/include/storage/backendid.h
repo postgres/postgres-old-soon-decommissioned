@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * backendid.h--
+ * backendid.h
  *	  POSTGRES backend id communication definitions
  *
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * recipe.c--
+ * recipe.c
  *	  routines for handling execution of Tioga recipes
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * istrat.c--
+ * istrat.c
  *	  index scan strategy manipulation code and index strategy manipulation
  *	  operator code.
  *
@@ -57,7 +57,7 @@ static bool StrategyTermIsValid(StrategyTerm term,
  */
 
 /*
- * StrategyMapGetScanKeyEntry --
+ * StrategyMapGetScanKeyEntry 
  *		Returns a scan key entry of a index strategy mapping member.
  *
  * Note:
@@ -75,7 +75,7 @@ StrategyMapGetScanKeyEntry(StrategyMap map,
 }
 
 /*
- * IndexStrategyGetStrategyMap --
+ * IndexStrategyGetStrategyMap 
  *		Returns an index strategy mapping of an index strategy.
  *
  * Note:
@@ -97,7 +97,7 @@ IndexStrategyGetStrategyMap(IndexStrategy indexStrategy,
 }
 
 /*
- * AttributeNumberGetIndexStrategySize --
+ * AttributeNumberGetIndexStrategySize 
  *		Computes the size of an index strategy.
  */
 Size
@@ -526,7 +526,7 @@ OperatorRelationFillScanKeyEntry(Relation operatorRelation,
 
 
 /*
- * IndexSupportInitialize --
+ * IndexSupportInitialize 
  *		Initializes an index strategy and associated support procedures.
  */
 void

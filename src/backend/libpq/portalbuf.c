@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * portalbuf.c--
+ * portalbuf.c
  *	  portal buffer support routines for src/libpq/portal.c
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -63,7 +63,7 @@ size_t		portals_array_size = 0;
 /*	GlobalMemory portals_mmcxt = (GlobalMemory) NULL;  */
 
 /* -------------------------------
- * portals_realloc --
+ * portals_realloc 
  *	  grow the size of the portals array by size
  *
  *	  also ensures that elements are initially NULL

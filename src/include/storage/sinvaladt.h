@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * sinvaladt.h--
+ * sinvaladt.h
  *	  POSTGRES shared cache invalidation segment definitions.
  *
  *

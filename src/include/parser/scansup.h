@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * scansup.h--
+ * scansup.h
  *	  scanner support routines.  used by both the bootstrap lexer
  * as well as the normal lexer
  *

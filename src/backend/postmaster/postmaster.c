@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * postmaster.c--
+ * postmaster.c
  *	  This program acts as a clearing house for requests to the
  *	  POSTGRES system.	Frontend programs send a startup message
  *	  to the Postmaster and the postmaster uses the info in the

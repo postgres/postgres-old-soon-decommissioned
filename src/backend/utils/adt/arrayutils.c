@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * arrayutils.c--
+ * arrayutils.c
  *	  This file contains some support routines required for array functions.
  *
  * Copyright (c) 1994, Regents of the University of California

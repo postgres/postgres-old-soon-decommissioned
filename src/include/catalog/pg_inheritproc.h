@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_inheritproc.h--
+ * pg_inheritproc.h
  *	  definition of the system "inheritproc" relation (pg_inheritproc)
  *	  along with the relation's initial contents.
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * dest.c--
+ * dest.c
  *	  support for various communication destinations - see include/tcop/dest.h
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * vacuum.h--
+ * vacuum.h
  *	  header file for postgres vacuum cleaner
  *
  *

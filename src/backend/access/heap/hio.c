@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * hio.c--
+ * hio.c
  *	  POSTGRES heap access method input/output code.
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pqcomm.h--
+ * pqcomm.h
  *		Definitions common to frontends and backends.
  *
  *

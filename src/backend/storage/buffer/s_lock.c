@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * s_lock.c--
+ * s_lock.c
  *	  buffer manager interface routines
  *
  * Copyright (c) 1994, Regents of the University of California

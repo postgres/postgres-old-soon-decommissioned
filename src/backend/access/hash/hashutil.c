@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * btutils.c--
+ * btutils.c
  *	  Utility code for Postgres btree implementation.
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * hio.h--
+ * hio.h
  *	  POSTGRES heap access method input/output definitions.
  *
  *

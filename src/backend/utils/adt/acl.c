@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * acl.c--
+ * acl.c
  *	  Basic access control list data structures manipulation routines.
  *
  * Copyright (c) 1994, Regents of the University of California

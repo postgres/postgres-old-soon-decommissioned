@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nbtpage.c--
+ * nbtpage.c
  *	  BTree-specific page management code for the Postgres btree access
  *	  method.
  *
@@ -413,7 +413,7 @@ _bt_pageinit(Page page, Size size)
 {
 
 	/*
-	 * Cargo-cult programming -- don't really need this to be zero, but
+	 * Cargo_cult programming -- don't really need this to be zero, but
 	 * creating new pages is an infrequent occurrence and it makes me feel
 	 * good when I know they're empty.
 	 */

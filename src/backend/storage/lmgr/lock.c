@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * lock.c--
+ * lock.c
  *	  simple lock acquisition
  *
  * Copyright (c) 1994, Regents of the University of California

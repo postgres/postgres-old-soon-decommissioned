@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * readfuncs.h--
+ * readfuncs.h
  *	  header file for read.c and readfuncs.c. These functions are internal
  *	  to the stringToNode interface and should not be used by anyone else.
  *

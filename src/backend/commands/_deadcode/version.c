@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * version.c--
+ * version.c
  *	  This file contains all the rules that govern all version semantics.
  *
  * Copyright (c) 1994, Regents of the University of California

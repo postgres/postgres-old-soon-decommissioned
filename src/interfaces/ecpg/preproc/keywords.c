@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * keywords.c--
+ * keywords.c
  *	  lexical token lookup for reserved words in postgres SQL
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * geqo_copy.h--
+ * geqo_copy.h
  *	  prototypes for copy functions in optimizer/geqo
  *
  * Copyright (c) 1994, Regents of the University of California

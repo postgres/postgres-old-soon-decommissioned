@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * dt.c--
+ * dt.c
  *	  Functions for the built-in type "dt".
  *
  * Copyright (c) 1994, Regents of the University of California

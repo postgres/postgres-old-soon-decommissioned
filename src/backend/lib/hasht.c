@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * hasht.c--
+ * hasht.c
  *	  hash table related functions that are not directly supported
  *	  by the hashing packages under utils/hash.
  *

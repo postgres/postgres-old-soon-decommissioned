@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * sets.c--
+ * sets.c
  *	  Functions for sets, which are defined by queries.
  *	  Example:	 a set is defined as being the result of the query
  *			retrieve (X.all)

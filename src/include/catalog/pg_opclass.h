@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_opclass.h--
+ * pg_opclass.h
  *	  definition of the system "opclass" relation (pg_opclass)
  *	  along with the relation's initial contents.
  *

@@ -1,5 +1,5 @@
 /*
- * psort.c--
+ * psort.c
  *	  Polyphase merge sort.
  *
  * Copyright (c) 1994, Regents of the University of California

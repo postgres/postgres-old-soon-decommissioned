@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nodeAppend.c--
+ * nodeAppend.c
  *	  routines to handle append nodes.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -68,7 +68,7 @@
 static bool exec_append_initialize_next(Append *node);
 
 /* ----------------------------------------------------------------
- *		exec-append-initialize-next
+ *		exec_append_initialize_next
  *
  *		Sets up the append node state (i.e. the append state node)
  *		for the "next" scan.

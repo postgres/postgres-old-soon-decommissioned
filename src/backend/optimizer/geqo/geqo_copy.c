@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------
  *
- * geqo_copy.c--
+ * geqo_copy.c
  *
  * Copyright (c) 1994, Regents of the University of California
  *
@@ -50,7 +50,7 @@
 #include "optimizer/geqo_gene.h"
 #include "optimizer/geqo_copy.h"
 
-/* geqo_copy--
+/* geqo_copy
  *
  *	 copies one gene to another
  *

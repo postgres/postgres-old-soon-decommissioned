@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * relation.h--
+ * relation.h
  *	  Definitions for internal planner nodes.
  *
  *

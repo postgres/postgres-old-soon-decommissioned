@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * palloc.h--
+ * palloc.h
  *	  POSTGRES memory allocator definitions.
  *
  *

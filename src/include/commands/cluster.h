@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * cluster.h--
+ * cluster.h
  *	  header file for postgres cluster command stuff
  *
  * Copyright (c) 1994-5, Regents of the University of California

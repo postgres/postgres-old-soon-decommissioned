@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_inherits.h--
+ * pg_inherits.h
  *	  definition of the system "inherits" relation (pg_inherits)
  *	  along with the relation's initial contents.
  *

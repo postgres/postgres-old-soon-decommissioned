@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * dt.h--
+ * dt.h
  *	  Definitions for the date/time and other date/time support code.
  *	  The support code is shared with other date data types,
  *	   including abstime, reltime, date, and time.

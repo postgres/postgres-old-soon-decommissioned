@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_parg.h--
+ * pg_parg.h
  *	  definition of the system "parg" relation (pg_parg)
  *	  along with the relation's initial contents.
  *

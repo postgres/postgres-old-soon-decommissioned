@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * execFlatten.c--
+ * execFlatten.c
  *	  This file handles the nodes associated with flattening sets in the
  *	  target list of queries containing functions returning sets.
  *

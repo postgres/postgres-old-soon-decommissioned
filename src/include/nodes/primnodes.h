@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * primnodes.h--
+ * primnodes.h
  *	  Definitions for parse tree/query tree ("primitive") nodes.
  *
  *

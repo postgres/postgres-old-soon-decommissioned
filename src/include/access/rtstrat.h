@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * rtstrat.h--
+ * rtstrat.h
  *	  routines defined in access/rtree/rtstrat.c
  *
  *

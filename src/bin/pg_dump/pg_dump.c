@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_dump.c--
+ * pg_dump.c
  *	  pg_dump is an utility for dumping out a postgres database
  * into a script file.
  *
@@ -2952,7 +2952,7 @@ dumpIndices(FILE *fout, IndInfo *indinfo, int numIndices,
 }
 
 /*
- * dumpTuples --
+ * dumpTuples 
  *	  prints out the tuples in ASCII representation. The output is a valid
  *	  input to COPY FROM stdin.
  *

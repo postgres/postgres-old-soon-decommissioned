@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_description.h--
+ * pg_description.h
  *	  definition of the system "description" relation (pg_description)
  *
  *

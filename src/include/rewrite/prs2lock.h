@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * prs2lock.h--
+ * prs2lock.h
  *	  data structures for POSTGRES Rule System II (rewrite rules only)
  *
  * Copyright (c) 1994, Regents of the University of California

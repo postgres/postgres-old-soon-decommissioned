@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * multi.c--
+ * multi.c
  *	  multi level lock table manager
  *
  *	  Standard multi-level lock manager as per the Gray paper

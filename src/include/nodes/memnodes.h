@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * memnodes.h--
+ * memnodes.h
  *	  POSTGRES memory context node definitions.
  *
  *
@@ -23,7 +23,7 @@
 #include <nodes/nodes.h>
 
 /*
- * MemoryContext --
+ * MemoryContext 
  *		A logical context in which memory allocations occur.
  *
  * The types of memory contexts can be thought of as members of the
@@ -91,7 +91,7 @@ typedef struct PortalHeapMemoryData
 }		   *PortalHeapMemory;
 
 /*
- * MemoryContextIsValid --
+ * MemoryContextIsValid 
  *		True iff memory context is valid.
  */
 #define MemoryContextIsValid(context) \

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pquery.c--
+ * pquery.c
  *	  POSTGRES process query command code
  *
  * Copyright (c) 1994, Regents of the University of California

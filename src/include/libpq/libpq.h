@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * libpq.h--
+ * libpq.h
  *	  POSTGRES LIBPQ buffer structure definitions.
  *
  *
@@ -22,7 +22,7 @@
 
 
 /* ----------------
- * PQArgBlock --
+ * PQArgBlock 
  *		Information (pointer to array of this structure) required
  *		for the PQfn() call.
  * ----------------
@@ -39,7 +39,7 @@ typedef struct
 } PQArgBlock;
 
 /* ----------------
- * TypeBlock --
+ * TypeBlock 
  *		Information about an attribute.
  * ----------------
  */
@@ -53,7 +53,7 @@ typedef struct TypeBlock
 } TypeBlock;
 
 /* ----------------
- * TupleBlock --
+ * TupleBlock 
  *		Data of a tuple.
  * ----------------
  */
@@ -69,7 +69,7 @@ typedef struct TupleBlock
 } TupleBlock;
 
 /* ----------------
- * GroupBuffer --
+ * GroupBuffer 
  *		A group of tuples with the same attributes.
  * ----------------
  */
@@ -83,7 +83,7 @@ typedef struct GroupBuffer
 } GroupBuffer;
 
 /* ----------------
- * PortalBuffer --
+ * PortalBuffer 
  *		Data structure of a portal buffer.
  * ----------------
  */
@@ -96,7 +96,7 @@ typedef struct PortalBuffer
 } PortalBuffer;
 
 /* ----------------
- * PortalEntry --
+ * PortalEntry 
  *		an entry in the global portal table
  *
  * Note: the portalcxt is only meaningful for PQcalls made from

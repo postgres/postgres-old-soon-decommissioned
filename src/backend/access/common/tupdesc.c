@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * tupdesc.c--
+ * tupdesc.c
  *	  POSTGRES tuple descriptor support code
  *
  * Copyright (c) 1994, Regents of the University of California

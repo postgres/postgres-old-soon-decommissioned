@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nbtree.h--
+ * nbtree.h
  *	  header file for postgres btree access method implementation.
  *
  *

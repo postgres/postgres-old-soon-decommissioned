@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * multilev.h--
+ * multilev.h
  *	  multi level lock table consts/defs for single.c and multi.c and their
  *	  clients
  *

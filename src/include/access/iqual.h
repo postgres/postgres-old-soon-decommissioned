@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * iqual.h--
+ * iqual.h
  *	  Index scan key qualification definitions.
  *
  *

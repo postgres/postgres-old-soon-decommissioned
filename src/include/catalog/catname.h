@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * catname.h--
+ * catname.h
  *	  POSTGRES system catalog relation name definitions.
  *
  *

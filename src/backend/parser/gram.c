@@ -235,7 +235,7 @@
 /*#define YYDEBUG 1*/
 /*-------------------------------------------------------------------------
  *
- * gram.y--
+ * gram.y
  *	  POSTGRES SQL YACC rules/actions
  *
  * Copyright (c) 1994, Regents of the University of California

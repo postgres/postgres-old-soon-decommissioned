@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * bool.c--
+ * bool.c
  *	  Functions for the built-in type "bool".
  *
  * Copyright (c) 1994, Regents of the University of California

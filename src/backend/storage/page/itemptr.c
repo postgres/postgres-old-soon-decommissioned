@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * itemptr.c--
+ * itemptr.c
  *	  POSTGRES disk item pointer code.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -19,7 +19,7 @@
 #include "storage/bufpage.h"
 
 /*
- * ItemPointerEquals --
+ * ItemPointerEquals 
  *	Returns true if both item pointers point to the same item,
  *	 otherwise returns false.
  *

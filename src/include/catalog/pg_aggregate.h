@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_aggregate.h--
+ * pg_aggregate.h
  *	  definition of the system "aggregate" relation (pg_aggregate)
  *	  along with the relation's initial contents.
  *

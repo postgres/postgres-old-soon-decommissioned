@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * geqo_paths.h--
+ * geqo_paths.h
  *	  prototypes for various subroutines in geqo_path.c
  *
  * Copyright (c) 1994, Regents of the University of California

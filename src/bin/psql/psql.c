@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * psql.c--
+ * psql.c
  *	  an interactive front-end to postgreSQL
  *
  * Copyright (c) 1996, Regents of the University of California

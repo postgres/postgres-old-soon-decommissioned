@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * transam.c--
+ * transam.c
  *	  postgres transaction log/time interface routines
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -375,7 +375,7 @@ TransRecover(Relation logRelation)
  */
 
 /*
- * InitializeTransactionLog --
+ * InitializeTransactionLog 
  *		Initializes transaction logging.
  */
 void
@@ -485,7 +485,7 @@ InitializeTransactionLog(void)
  */
 
 /*
- * TransactionIdDidCommit --
+ * TransactionIdDidCommit 
  *		True iff transaction associated with the identifier did commit.
  *
  * Note:
@@ -501,7 +501,7 @@ TransactionIdDidCommit(TransactionId transactionId)
 }
 
 /*
- * TransactionIdDidAborted --
+ * TransactionIdDidAborted 
  *		True iff transaction associated with the identifier did abort.
  *
  * Note:
@@ -542,7 +542,7 @@ TransactionIdIsInProgress(TransactionId transactionId)
  */
 
 /*
- * TransactionIdCommit --
+ * TransactionIdCommit 
  *		Commits the transaction associated with the identifier.
  *
  * Note:
@@ -558,7 +558,7 @@ TransactionIdCommit(TransactionId transactionId)
 }
 
 /*
- * TransactionIdAbort --
+ * TransactionIdAbort 
  *		Aborts the transaction associated with the identifier.
  *
  * Note:

@@ -1,6 +1,6 @@
 /*
  *
- * outfuncs.c--
+ * outfuncs.c
  *	  routines to convert a node to ascii representation
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -1148,7 +1148,7 @@ _outMergeOrder(StringInfo str, MergeOrder *node)
  *	RestrictInfo is a subclass of Node.
  */
 static void
-_outRestrictInfo(StringInfo str, RestrictInfo * node)
+_outRestrictInfo(StringInfo str, RestrictInfo *node)
 {
 	appendStringInfo(str, " RESTRICTINFO :clause ");
 	_outNode(str, node->clause);

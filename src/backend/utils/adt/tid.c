@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * tid.c--
+ * tid.c
  *	  Functions for the built-in type tuple id
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * enbl.c--
+ * enbl.c
  *	  POSTGRES module enable and disable support code.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -15,7 +15,7 @@
 #include "utils/module.h"		/* where the declarations go */
 
 /*
- * BypassEnable --
+ * BypassEnable 
  *		False iff enable/disable processing is required given on and "*countP."
  *
  * Note:

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * indexvalid.c--
+ * indexvalid.c
  *	  index tuple qualification validity checking code
  *
  * Copyright (c) 1994, Regents of the University of California

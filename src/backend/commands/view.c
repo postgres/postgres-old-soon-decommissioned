@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * view.c--
+ * view.c
  *	  use rewrite rules to construct views
  *
  * Copyright (c) 1994, Regents of the University of California

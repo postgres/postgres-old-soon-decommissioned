@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * lselect.h--
+ * lselect.h
  *	  definitions for the replacement selection algorithm.
  *
  *

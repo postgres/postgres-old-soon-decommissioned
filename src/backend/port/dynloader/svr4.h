@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * dynloader.h--
+ * dynloader.h
  *	  port-specific prototypes for Intel x86/Intel SVR4
  *
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * array.h--
+ * array.h
  *	  Utilities for the new array code. Contain prototypes from the
  *	  following files:
  *				utils/adt/arrayfuncs.c

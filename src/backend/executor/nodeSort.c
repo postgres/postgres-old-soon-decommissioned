@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nodeSort.c--
+ * nodeSort.c
  *	  Routines to handle sorting of relations.
  *
  * Copyright (c) 1994, Regents of the University of California

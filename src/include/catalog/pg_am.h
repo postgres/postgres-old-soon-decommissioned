@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_am.h--
+ * pg_am.h
  *	  definition of the system "am" relation (pg_am)
  *	  along with the relation's initial contents.
  *

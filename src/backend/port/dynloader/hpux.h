@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * dynloader.h--
+ * dynloader.h
  *	  dynamic loader for HP-UX using the shared library mechanism
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * parse_relation.c--
+ * parse_relation.c
  *	  parser support routines dealing with relations
  *
  * Copyright (c) 1994, Regents of the University of California

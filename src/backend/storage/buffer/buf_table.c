@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * buf_table.c--
+ * buf_table.c
  *	  routines for finding buffers in the buffer pool.
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------
 *
-* geqo_ox1.c--
+* geqo_ox1.c
 *
 *	 order crossover [OX] routines;
 *	 OX1 operator according to Davis
@@ -54,7 +54,7 @@
 #include "optimizer/geqo_random.h"
 
 
-/* ox1--
+/* ox1
  *
  *	 position crossover
  */

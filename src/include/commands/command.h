@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * command.h--
+ * command.h
  *	  prototypes for command.c.
  *
  *
@@ -18,7 +18,7 @@
 extern MemoryContext PortalExecutorHeapMemory;
 
 /*
- * PerformPortalFetch --
+ * PerformPortalFetch 
  *		Performs the POSTQUEL function FETCH.  Fetches count (or all if 0)
  * tuples in portal with name in the forward direction iff goForward.
  *
@@ -30,7 +30,7 @@ extern void PerformPortalFetch(char *name, bool forward, int count,
 				   char *tag, CommandDest dest);
 
 /*
- * PerformPortalClose --
+ * PerformPortalClose 
  *		Performs the POSTQUEL function CLOSE.
  */
 extern void PerformPortalClose(char *name, CommandDest dest);
@@ -38,7 +38,7 @@ extern void PerformPortalClose(char *name, CommandDest dest);
 extern void PortalCleanup(Portal portal);
 
 /*
- * PerformAddAttribute --
+ * PerformAddAttribute 
  *		Performs the POSTQUEL function ADD.
  */
 extern void PerformAddAttribute(char *relationName, char *userName,

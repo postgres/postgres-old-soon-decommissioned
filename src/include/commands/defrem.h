@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * defrem.h--
+ * defrem.h
  *	  POSTGRES define and remove utility definitions.
  *
  *

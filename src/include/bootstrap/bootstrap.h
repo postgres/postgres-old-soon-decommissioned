@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * bootstrap.h--
+ * bootstrap.h
  *	  include file for the bootstrapping code
  *
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * psqlHelp.h--
+ * psqlHelp.h
  *	  Help for query language syntax
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_database.h--
+ * pg_database.h
  *	  definition of the system "database" relation (pg_database)
  *	  along with the relation's initial contents.
  *

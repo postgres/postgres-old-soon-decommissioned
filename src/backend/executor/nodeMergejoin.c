@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nodeMergejoin.c--
+ * nodeMergejoin.c
  *	  routines supporting merge joins
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pqpacket.c--
+ * pqpacket.c
  *	  routines for reading and writing data packets sent/received by
  *	  POSTGRES clients and servers
  *

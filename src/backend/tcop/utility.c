@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * utility.c--
+ * utility.c
  *	  Contains functions which control the execution of the POSTGRES utility
  *	  commands.  At one time acted as an interface between the Lisp and C
  *	  systems.

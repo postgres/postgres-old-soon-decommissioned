@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * inval.h--
+ * inval.h
  *	  POSTGRES cache invalidation dispatcher definitions.
  *
  *

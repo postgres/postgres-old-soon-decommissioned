@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * proc.c--
+ * proc.c
  *	  routines to manage per-process shared memory data structure
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * btinsert.c--
+ * btinsert.c
  *	  Item insertion in Lehman and Yao btrees for Postgres.
  *
  * Copyright (c) 1994, Regents of the University of California

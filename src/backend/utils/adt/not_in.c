@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * not_in.c--
+ * not_in.c
  *	  Executes the "not_in" operator for any data type
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * scansup.c--
+ * scansup.c
  *	  support routines for the lex/flex scanner, used by both the normal
  * backend as well as the bootstrap backend
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * mm.c--
+ * mm.c
  *	  main memory storage manager
  *
  *	  This code manages relations that reside in (presumably stable)

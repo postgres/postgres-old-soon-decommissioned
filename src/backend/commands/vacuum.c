@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * vacuum.c--
+ * vacuum.c
  *	  the postgres vacuum cleaner
  *
  * Copyright (c) 1994, Regents of the University of California

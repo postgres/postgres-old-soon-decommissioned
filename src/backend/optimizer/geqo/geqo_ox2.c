@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------
 *
-* geqo_ox2.c--
+* geqo_ox2.c
 *
 *	 order crossover [OX] routines;
 *	 OX2 operator according to Syswerda
@@ -54,7 +54,7 @@
 #include "optimizer/geqo_random.h"
 
 
-/* ox2--
+/* ox2
  *
  *	 position crossover
  */

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * catcache.c--
+ * catcache.c
  *	  System catalog cache for tuples matching a key.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -277,7 +277,7 @@ CatalogCacheSetId(CatCache *cacheInOutP, int id)
 #endif
 
 /* ----------------
- * comphash --
+ * comphash 
  *		Compute a hash value, somehow.
  *
  * XXX explain algorithm here.

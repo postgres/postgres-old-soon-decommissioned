@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_class.h--
+ * pg_class.h
  *	  definition of the system "relation" relation (pg_class)
  *	  along with the relation's initial contents.
  *

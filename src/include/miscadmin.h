@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * miscadmin.h--
+ * miscadmin.h
  *	  this file contains general postgres administration and initialization
  *	  stuff that used to be spread out between the following files:
  *		globals.h						global variables

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * makefuncs.h--
+ * makefuncs.h
  *	  prototypes for the creator functions (for primitive nodes)
  *
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * executor.h--
+ * executor.h
  *	  support for the POSTGRES executor module
  *
  *

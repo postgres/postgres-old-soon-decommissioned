@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * localbuf.c--
+ * localbuf.c
  *	  local buffer manager. Fast buffer manager for temporary tables
  *	  or special cases when the operation is not visible to other backends.
  *

@@ -1,5 +1,5 @@
 /*
- * makefuncs.c--
+ * makefuncs.c
  *	  creator functions for primitive nodes. The functions here are for
  *	  the most frequently created nodes.
  *

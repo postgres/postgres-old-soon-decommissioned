@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * hash.c--
+ * hash.c
  *	  Implementation of Margo Seltzer's Hashing package for postgres.
  *
  * Copyright (c) 1994, Regents of the University of California

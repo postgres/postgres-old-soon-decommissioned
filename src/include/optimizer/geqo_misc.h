@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * geqo_misc.h--
+ * geqo_misc.h
  *	  prototypes for printout routines in optimizer/geqo
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
  /*-------------------------------------------------------------------------
  *
- * freefuncs.c--
+ * freefuncs.c
  *	  Free functions for Postgres tree nodes.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -939,7 +939,7 @@ _freeMergeOrder(MergeOrder *node)
  * ----------------
  */
 static void
-_freeRestrictInfo(RestrictInfo * node)
+_freeRestrictInfo(RestrictInfo *node)
 {
 	/* ----------------
 	 *	free remainder of node

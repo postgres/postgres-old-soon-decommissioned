@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * execQual.c--
+ * execQual.c
  *	  Routines to evaluate qualification and targetlist expressions
  *
  * Copyright (c) 1994, Regents of the University of California

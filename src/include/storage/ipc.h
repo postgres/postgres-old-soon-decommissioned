@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * ipc.h--
+ * ipc.h
  *	  POSTGRES inter-process communication definitions.
  *
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_index.h--
+ * pg_index.h
  *	  definition of the system "index" relation (pg_index)
  *	  along with the relation's initial contents.
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_type.c--
+ * pg_type.c
  *	  routines to support manipulation of the pg_type relation
  *
  * Copyright (c) 1994, Regents of the University of California

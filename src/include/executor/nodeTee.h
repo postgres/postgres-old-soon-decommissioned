@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nodeTee.h--
+ * nodeTee.h
  *	  support functions for a Tee executor node
  *
  * Copyright (c) 1994, Regents of the University of California

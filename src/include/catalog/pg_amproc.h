@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_amproc.h--
+ * pg_amproc.h
  *	  definition of the system "amproc" relation (pg_amproce)
  *	  along with the relation's initial contents.  The amproc
  *	  catalog is used to store procedures used by indexed access

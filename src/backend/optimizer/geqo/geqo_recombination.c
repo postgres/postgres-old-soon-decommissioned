@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------
 *
-* geqo_recombination.c--
+* geqo_recombination.c
 *	 misc recombination procedures
 *
 * $Id$
@@ -40,7 +40,7 @@
 
 
 /*
- * init_tour--
+ * init_tour
  *
  *	 Randomly generates a legal "traveling salesman" tour
  *	 (i.e. where each point is visited only once.)
@@ -79,7 +79,7 @@ init_tour(Gene *tour, int num_gene)
 	pfree(tmp);
 }
 
-/* alloc_city_table--
+/* alloc_city_table
  *
  *	 allocate memory for city table
  *
@@ -99,7 +99,7 @@ alloc_city_table(int num_gene)
 	return city_table;
 }
 
-/* free_city_table--
+/* free_city_table
  *
  *	  deallocate memory of city table
  *

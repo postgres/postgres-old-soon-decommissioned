@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_version.c--
+ * pg_version.c
  *
  *
  * Copyright (c) 1994, Regents of the University of California

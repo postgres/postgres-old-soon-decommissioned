@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * sinval.h--
+ * sinval.h
  *	  POSTGRES shared cache invalidation communication definitions.
  *
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * oid.c--
+ * oid.c
  *	  Functions for the built-in type Oid.
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pqsignal.h--
+ * pqsignal.h
  *	  prototypes for the reliable BSD-style signal(2) routine.
  *
  *

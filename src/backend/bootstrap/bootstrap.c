@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * bootstrap.c--
+ * bootstrap.c
  *	  routines to support running postgres in 'bootstrap' mode
  *	bootstrap mode is used to create the initial template database
  *

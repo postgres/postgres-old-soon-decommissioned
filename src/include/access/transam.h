@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * transam.h--
+ * transam.h
  *	  postgres transaction access method support code header
  *
  *

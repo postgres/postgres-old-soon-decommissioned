@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * heaptuple.c--
+ * heaptuple.c
  *	  This file contains heap tuple accessor and mutator routines, as well
  *	  as a few various tuple utilities.
  *

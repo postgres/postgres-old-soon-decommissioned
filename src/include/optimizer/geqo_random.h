@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * geqo_random.h--
+ * geqo_random.h
  *	  random number generator
  *
  * Copyright (c) 1994, Regents of the University of California

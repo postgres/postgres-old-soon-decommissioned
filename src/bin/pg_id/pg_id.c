@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_id.c--
+ * pg_id.c
  *	  Print the user ID for the login name passed as argument,
  *	  or the real user ID of the caller if no argument.  If the
  *	  login name doesn't exist, print "NOUSER" and exit 1.

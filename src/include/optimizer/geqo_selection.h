@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * geqo_selection.h--
+ * geqo_selection.h
  *	  prototypes for selection routines in optimizer/geqo
  *
  * Copyright (c) 1994, Regents of the University of California

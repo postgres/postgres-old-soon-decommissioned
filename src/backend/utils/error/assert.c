@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * assert.c--
+ * assert.c
  *	  Assert code.
  *
  * Copyright (c) 1994, Regents of the University of California

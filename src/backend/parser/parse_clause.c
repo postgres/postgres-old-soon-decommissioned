@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * parse_clause.c--
+ * parse_clause.c
  *	  handle clauses in parser
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -43,7 +43,7 @@ static void parseFromClause(ParseState *pstate, List *frmList);
 /*
  * makeRangeTable -
  *	  make a range table with the specified relation (optional) and the
- *	  from-clause.
+ *	  from_clause.
  */
 void
 makeRangeTable(ParseState *pstate, char *relname, List *frmList)

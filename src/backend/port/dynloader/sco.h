@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * port-protos.h--
+ * port_protos.h
  *	  port-specific prototypes for SCO 3.2v5.2
  *
  *

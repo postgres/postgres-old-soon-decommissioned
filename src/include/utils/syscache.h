@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * syscache.h--
+ * syscache.h
  *	  System catalog cache definitions.
  *
  *

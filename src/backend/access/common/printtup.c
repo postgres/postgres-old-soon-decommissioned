@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * printtup.c--
+ * printtup.c
  *	  Routines to print out tuples to the destination (binary or non-binary
  *	  portals, frontend/interactive backend, etc.).
  *

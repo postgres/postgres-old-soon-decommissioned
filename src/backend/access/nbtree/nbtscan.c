@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * btscan.c--
+ * btscan.c
  *	  manage scans on btrees.
  *
  * Copyright (c) 1994, Regents of the University of California

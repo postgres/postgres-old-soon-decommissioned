@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * proc.h--
+ * proc.h
  *
  *
  *
@@ -75,8 +75,8 @@ typedef struct procglobal
 
 extern PROC *MyProc;
 
-#define PROC_INCR_SLOCK(lock) if (MyProc) (MyProc->sLocks[(lock)])++
-#define PROC_DECR_SLOCK(lock) if (MyProc) (MyProc->sLocks[(lock)])--
+#define PROC_INCR_SLOCK(lock) if (MyProc) ((MyProc->sLocks[(lock)])++)
+#define PROC_DECR_SLOCK(lock) if (MyProc) ((MyProc->sLocks[(lock)])--)
 
 /*
  * flags explaining why process woke up

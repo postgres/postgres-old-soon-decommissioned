@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nodeNestloop.c--
+ * nodeNestloop.c
  *	  routines to support nest-loop joins
  *
  * Copyright (c) 1994, Regents of the University of California

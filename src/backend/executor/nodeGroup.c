@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nodeGroup.c--
+ * nodeGroup.c
  *	  Routines to handle group nodes (used for queries with GROUP BY clause).
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * heap.h--
+ * heap.h
  *	  prototypes for functions in lib/catalog/heap.c
  *
  *

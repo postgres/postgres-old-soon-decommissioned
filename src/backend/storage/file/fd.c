@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * fd.c--
+ * fd.c
  *	  Virtual file descriptor code.
  *
  * Copyright (c) 1994, Regents of the University of California

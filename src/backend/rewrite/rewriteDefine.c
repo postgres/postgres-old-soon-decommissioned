@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * rewriteDefine.c--
+ * rewriteDefine.c
  *	  routines for defining a rewrite rule
  *
  * Copyright (c) 1994, Regents of the University of California

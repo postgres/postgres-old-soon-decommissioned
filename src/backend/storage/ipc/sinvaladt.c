@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * sinvaladt.c--
+ * sinvaladt.c
  *	  POSTGRES shared cache invalidation segment definitions.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -193,7 +193,7 @@ SISetDeadProcess(SISeg *segP, int backendId)
 }
 
 /*
- * CleanupInvalidationState --
+ * CleanupInvalidationState 
  * Note:
  *		This is a temporary hack.  ExitBackend should call this instead
  *		of exit (via on_shmem_exit).

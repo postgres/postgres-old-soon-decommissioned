@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * numutils.c--
+ * numutils.c
  *	  utility functions for I/O of built-in numeric types.
  *
  *		integer:				itoa, ltoa

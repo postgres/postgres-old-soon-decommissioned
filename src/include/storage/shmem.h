@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * shmem.h--
+ * shmem.h
  *	  shared memory management structures
  *
  *

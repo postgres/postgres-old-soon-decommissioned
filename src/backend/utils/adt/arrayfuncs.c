@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * arrayfuncs.c--
+ * arrayfuncs.c
  *	  Special functions for arrays.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -244,7 +244,7 @@ array_in(char *string,			/* input array in external form */
 }
 
 /*-----------------------------------------------------------------------------
- * _ArrayCount --
+ * _ArrayCount 
  *	 Counts the number of dimensions and the *dim array for an array string.
  *		 The syntax for array input is C-like nested curly braces
  *-----------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * tupdesc.h--
+ * tupdesc.h
  *	  POSTGRES tuple descriptor definitions.
  *
  *

@@ -1,6 +1,6 @@
  /*-------------------------------------------------------------------------
  *
- * ipc.c--
+ * ipc.c
  *	  POSTGRES inter-process communication definitions.
  *
  * Copyright (c) 1994, Regents of the University of California

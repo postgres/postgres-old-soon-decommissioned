@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * datetime.h--
+ * datetime.h
  *	  Definitions for the datetime
  *
  *

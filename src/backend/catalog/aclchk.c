@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * aclchk.c--
+ * aclchk.c
  *	  Routines to check access control permissions.
  *
  * Copyright (c) 1994, Regents of the University of California

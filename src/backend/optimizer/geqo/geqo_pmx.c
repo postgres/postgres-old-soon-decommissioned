@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------
 *
-* geqo_pmx.c--
+* geqo_pmx.c
 *
 *	 partially matched crossover [PMX] routines;
 *	 PMX operator according to Goldberg & Lingle
@@ -54,7 +54,7 @@
 #include "optimizer/geqo_random.h"
 
 
-/* pmx--
+/* pmx
  *
  *	 partially matched crossover
  */

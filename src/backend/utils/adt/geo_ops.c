@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * geo_ops.c--
+ * geo_ops.c
  *	  2D geometric operations
  *
  * Copyright (c) 1994, Regents of the University of California

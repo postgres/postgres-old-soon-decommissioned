@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * single.c--
+ * single.c
  *	  set single locks in the multi-level lock hierarchy
  *
  *	  Sometimes we don't want to set all levels of the multi-level

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * geqo_selection.c--
+ * geqo_selection.c
  *	  linear selection scheme for the genetic query optimizer
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -57,7 +57,7 @@
 
 static int	linear(int max, double bias);
 
-/* geqo_selection--
+/* geqo_selection
  *
  *	 according to bias described by input parameters,
  *	 second genes are selected from the pool
@@ -81,7 +81,7 @@ geqo_selection(Chromosome *momma, Chromosome *daddy, Pool *pool, double bias)
 	geqo_copy(daddy, &pool->data[second], pool->string_length);
 }
 
-/* linear--
+/* linear
  *	  generates random integer between 0 and input max number
  *	  using input linear bias
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * functions.c--
+ * functions.c
  *	  Routines to handle functions called from the executor
  *	  Putting this stuff in fmgr makes the postmaster a mess....
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * catalog.h--
+ * catalog.h
  *	  prototypes for functions in lib/catalog/catalog.c
  *
  *

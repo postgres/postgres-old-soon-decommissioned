@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_operator.h--
+ * pg_operator.h
  *	  definition of the system "operator" relation (pg_operator)
  *	  along with the relation's initial contents.
  *

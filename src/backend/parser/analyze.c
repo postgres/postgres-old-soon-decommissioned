@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * analyze.c--
+ * analyze.c
  *	  transform the parse tree into a query tree
  *
  * Copyright (c) 1994, Regents of the University of California

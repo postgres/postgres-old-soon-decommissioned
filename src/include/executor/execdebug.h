@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * execdebug.h--
+ * execdebug.h
  *	  #defines governing debugging behaviour in the executor
  *
  *

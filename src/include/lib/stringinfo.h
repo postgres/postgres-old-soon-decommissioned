@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * stringinfo.h--
+ * stringinfo.h
  *	  Declarations/definitons for "string" functions.
  *
  *

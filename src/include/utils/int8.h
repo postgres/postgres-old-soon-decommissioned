@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * int8.h--
+ * int8.h
  *	  Declarations for operations on 64-bit integers.
  *
  *

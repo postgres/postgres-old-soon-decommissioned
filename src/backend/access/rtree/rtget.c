@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * rtget.c--
+ * rtget.c
  *	  fetch tuples from an rtree scan.
  *
  * Copyright (c) 1994, Regents of the University of California

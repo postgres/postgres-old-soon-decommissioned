@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * fastpath.c--
+ * fastpath.c
  *	  routines to handle function requests from the frontend
  *
  * Copyright (c) 1994, Regents of the University of California

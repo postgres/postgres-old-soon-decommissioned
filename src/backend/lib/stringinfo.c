@@ -1,5 +1,5 @@
 /*
- * stringinfo.c--
+ * stringinfo.c
  *	  These are routines that can be used to write informations to a string,
  *	  without having to worry about string lengths, space allocation etc.
  *	  Ideally the interface should look like the file i/o interface,

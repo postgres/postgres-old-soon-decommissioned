@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_aggregate.c--
+ * pg_aggregate.c
  *	  routines to support manipulation of the pg_aggregate relation
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------
 *
-* minspantree.c--
+* minspantree.c
 *	 routine to sort a join graph which is including cycles
 *
 * Copyright (c) 1994, Regents of the University of California
@@ -32,7 +32,7 @@
 #include "optimizer/geqo/geqo.h"
 
 /*
- * minspantree--
+ * minspantree
  *		 The function minspantree computes the minimum spanning tree
  *		for a given number of nodes and a given distance function.
  *		For each pair of nodes found to be connected, a given

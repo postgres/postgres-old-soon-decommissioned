@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * postgres.c--
+ * postgres.c
  *	  POSTGRES C Backend Interface
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -1538,7 +1538,7 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[])
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.98 $ $Date: 1999/02/02 03:44:51 $\n");
+		puts("$Revision: 1.99 $ $Date: 1999/02/13 23:18:45 $\n");
 	}
 
 	/* ----------------

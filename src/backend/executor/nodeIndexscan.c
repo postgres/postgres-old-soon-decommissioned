@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nodeIndexscan.c--
+ * nodeIndexscan.c
  *	  Routines to support indexes and indexed scans of relations
  *
  * Copyright (c) 1994, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * btstrat.c--
+ * btstrat.c
  *	  Srategy map entries for the btree indexed access method
  *
  * Copyright (c) 1994, Regents of the University of California

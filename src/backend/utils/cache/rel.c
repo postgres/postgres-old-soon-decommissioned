@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * rel.c--
+ * rel.c
  *	  POSTGRES relation descriptor code.
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -29,7 +29,7 @@
  */
 
 /*
- * RelationGetIndexStrategy --
+ * RelationGetIndexStrategy 
  *		Returns index strategy for a relation.
  *
  * Note:
@@ -43,7 +43,7 @@ RelationGetIndexStrategy(Relation relation)
 }
 
 /*
- * RelationSetIndexSupport --
+ * RelationSetIndexSupport 
  *		Sets index strategy and support info for a relation.
  *
  * Note:

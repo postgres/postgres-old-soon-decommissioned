@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nabstime.h--
+ * nabstime.h
  *	  Definitions for the "new" abstime code.
  *
  *
@@ -91,7 +91,7 @@ typedef TimeIntervalData *TimeInterval;
 extern AbsoluteTime GetCurrentAbsoluteTime(void);
 
 /*
- * getSystemTime --
+ * getSystemTime 
  *		Returns system time.
  */
 #define getSystemTime() \

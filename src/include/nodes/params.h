@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * params.h--
+ * params.h
  *	  Declarations/definitions of stuff needed to handle parameterized plans.
  *
  *

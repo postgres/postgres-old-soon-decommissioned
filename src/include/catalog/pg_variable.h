@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_variable.h--
+ * pg_variable.h
  *	  the system variable relation "pg_variable" is not a "heap" relation.
  *	  it is automatically created by the transam/ code and the
  *	  information here is all bogus and is just here to make the

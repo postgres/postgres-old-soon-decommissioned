@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * execMain.c--
+ * execMain.c
  *	  top level executor interface routines
  *
  * INTERFACE ROUTINES

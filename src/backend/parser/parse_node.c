@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * parse_node.c--
+ * parse_node.c
  *	  various routines that make nodes for query plans
  *
  * Copyright (c) 1994, Regents of the University of California

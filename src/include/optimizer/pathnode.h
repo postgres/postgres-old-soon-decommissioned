@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pathnode.h--
+ * pathnode.h
  *	  prototypes for pathnode.c, indexnode.c, relnode.c.
  *
  *

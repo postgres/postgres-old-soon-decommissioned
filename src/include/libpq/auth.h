@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * auth.h--
+ * auth.h
  *	  Definitions for network authentication routines
  *
  *

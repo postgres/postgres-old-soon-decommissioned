@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * bit.c--
+ * bit.c
  *	  Standard bit array code.
  *
  * Copyright (c) 1994, Regents of the University of California

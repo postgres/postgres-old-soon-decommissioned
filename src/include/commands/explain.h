@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * explain.h--
+ * explain.h
  *	  prototypes for explain.c
  *
  * Copyright (c) 1994-5, Regents of the University of California

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * name.c--
+ * name.c
  *	  Functions for the built-in type "name".
  * name replaces char16 and is carefully implemented so that it
  * is a string of length NAMEDATALEN.  DO NOT use hard-coded constants anywhere

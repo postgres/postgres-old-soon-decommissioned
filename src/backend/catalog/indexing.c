@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * indexing.c--
+ * indexing.c
  *	  This file contains routines to support indices defined on system
  *	  catalogs.
  *

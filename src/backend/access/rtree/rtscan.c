@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * rtscan.c--
+ * rtscan.c
  *	  routines to manage scans on index relations
  *
  * Copyright (c) 1994, Regents of the University of California

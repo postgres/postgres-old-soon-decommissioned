@@ -1,7 +1,7 @@
 %{
 /*-------------------------------------------------------------------------
  *
- * backendparse.y--
+ * backendparse.y
  *	  yacc parser grammer for the "backend" initialization program.
  *
  * Copyright (c) 1994, Regents of the University of California

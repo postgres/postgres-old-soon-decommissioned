@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * shmqueue.c--
+ * shmqueue.c
  *	  shared memory linked lists
  *
  * Copyright (c) 1994, Regents of the University of California

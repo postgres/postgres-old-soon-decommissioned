@@ -1,5 +1,5 @@
 /*
- * explain.c--
+ * explain.c
  *	  Explain the query execution plan
  *
  * Copyright (c) 1994-5, Regents of the University of California

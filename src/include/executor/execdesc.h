@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * execdesc.h--
+ * execdesc.h
  *	  plan and query descriptor accessor macros used by the executor
  *	  and related modules.
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * nodeUnique.c--
+ * nodeUnique.c
  *	  Routines to handle unique'ing of queries where appropriate
  *
  * Copyright (c) 1994, Regents of the University of California

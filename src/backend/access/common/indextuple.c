@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * indextuple.c--
+ * indextuple.c
  *	   This file contains index tuple accessor and mutator routines,
  *	   as well as a few various tuple utilities.
  *

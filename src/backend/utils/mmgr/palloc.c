@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * palloc.c--
+ * palloc.c
  *	  POSTGRES memory allocator code.
  *
  * Copyright (c) 1994, Regents of the University of California

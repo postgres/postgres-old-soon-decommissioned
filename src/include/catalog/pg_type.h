@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_type.h--
+ * pg_type.h
  *	  definition of the system "type" relation (pg_type)
  *	  along with the relation's initial contents.
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * async.h--
+ * async.h
  *	  Asynchronous notification: NOTIFY, LISTEN, UNLISTEN
  *
  * Copyright (c) 1994, Regents of the University of California

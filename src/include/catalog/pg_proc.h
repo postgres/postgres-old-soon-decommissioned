@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_proc.h--
+ * pg_proc.h
  *	  definition of the system "procedure" relation (pg_proc)
  *	  along with the relation's initial contents.
  *

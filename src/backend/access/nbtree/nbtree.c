@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * btree.c--
+ * btree.c
  *	  Implementation of Lehman and Yao's btree management algorithm for
  *	  Postgres.
  *

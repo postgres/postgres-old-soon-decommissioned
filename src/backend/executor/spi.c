@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * spi.c--
+ * spi.c
  *				Server Programming Interface
  *
  * $Id$
@@ -549,7 +549,7 @@ SPI_pfree(void *pointer)
 /* =================== private functions =================== */
 
 /*
- * spi_printtup --
+ * spi_printtup 
  *		store tuple retrieved by Executor into SPITupleTable
  *		of current SPI procedure
  *
@@ -925,7 +925,7 @@ _SPI_procmem()
 }
 
 /*
- * _SPI_begin_call --
+ * _SPI_begin_call 
  *
  */
 static int

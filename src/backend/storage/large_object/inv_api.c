@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * inv_api.c--
+ * inv_api.c
  *	  routines for manipulating inversion fs large objects. This file
  *	  contains the user-level large object application interface routines.
  *
@@ -563,7 +563,7 @@ inv_write(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 }
 
 /*
- * inv_cleanindex --
+ * inv_cleanindex
  *		 Clean opened indexes for large objects, and clears current result.
  *		 This is necessary on transaction commit in order to prevent buffer
  *		 leak.

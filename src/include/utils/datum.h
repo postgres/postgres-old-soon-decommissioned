@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * datum.h--
+ * datum.h
  *	  POSTGRES abstract data type datum representation definitions.
  *
  *

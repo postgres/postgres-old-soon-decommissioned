@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * postgres_ext.h--
+ * postgres_ext.h
  *
  *	   This file contains declarations of things that are visible
  *	external to Postgres.  For example, the Oid type is part of a

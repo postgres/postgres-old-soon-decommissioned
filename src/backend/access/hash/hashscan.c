@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * hashscan.c--
+ * hashscan.c
  *	  manage scans on hash tables
  *
  * Copyright (c) 1994, Regents of the University of California

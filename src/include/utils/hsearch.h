@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * hsearch.h--
+ * hsearch.h
  *	  for hashing in the new buffer manager
  *
  *

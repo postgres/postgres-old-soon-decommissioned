@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * indexing.h--
+ * indexing.h
  *	  This include provides some definitions to support indexing
  *	  on system catalogs
  *

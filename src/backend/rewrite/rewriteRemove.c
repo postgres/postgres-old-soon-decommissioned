@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * rewriteRemove.c--
+ * rewriteRemove.c
  *	  routines for removing rewrite rules
  *
  * Copyright (c) 1994, Regents of the University of California

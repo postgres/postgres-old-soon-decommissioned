@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------
 *
-* geqo_cx.c--
+* geqo_cx.c
 *
 *	 cycle crossover [CX] routines;
 *	 CX operator according to Oliver et al
@@ -55,7 +55,7 @@
 #include "optimizer/geqo_random.h"
 
 
-/* cx--
+/* cx
  *
  *	 cycle crossover
  */

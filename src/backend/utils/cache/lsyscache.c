@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * lsyscache.c--
+ * lsyscache.c
  *	  Routines to access information within system caches
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -253,7 +253,7 @@ op_mergejoinable(Oid opno, Oid ltype, Oid rtype, Oid *leftOp, Oid *rightOp)
 }
 
 /*
- * op_hashjoinable--
+ * op_hashjoinable
  *
  * Returns the hash operator corresponding to a hashjoinable operator,
  * or nil if the operator is not hashjoinable.

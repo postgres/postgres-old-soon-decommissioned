@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * builtins.h--
+ * builtins.h
  *	  Declarations for operations on built-in types.
  *
  *

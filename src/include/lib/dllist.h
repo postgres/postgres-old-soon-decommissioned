@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * dllist.h--
+ * dllist.h
  *		simple doubly linked list primitives
  *		the elements of the list are void* so the lists can contain
  *		anything

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * prepqual.c--
+ * prepqual.c
  *	  Routines for preprocessing the parse tree qualification
  *
  * Copyright (c) 1994, Regents of the University of California

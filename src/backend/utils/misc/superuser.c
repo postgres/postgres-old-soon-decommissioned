@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * superuser.c--
+ * superuser.c
  *
  *	  The superuser() function.  Determines if user has superuser privilege.
  *

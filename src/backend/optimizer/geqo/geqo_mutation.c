@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------
 *
-* geqo_mutation.c--
+* geqo_mutation.c
 *
 *	 TSP mutation routines
 *

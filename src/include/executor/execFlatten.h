@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * execFlatten.h--
+ * execFlatten.h
  *	  prototypes for execFlatten.c.
  *
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pgtclId.c--
+ * pgtclId.c
  *
  *	Contains Tcl "channel" interface routines, plus useful routines
  *	to convert between strings and pointers.  These are needed because

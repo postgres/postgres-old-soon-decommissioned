@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pgtclCmds.c--
+ * pgtclCmds.c
  *	  C functions which implement pg_* tcl commands
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -28,7 +28,7 @@
 #define DIGIT(c)		((c) - '0')
 
 /*
- * translate_escape() --
+ * translate_escape() 
  *
  * This function performs in-place translation of a single C-style
  * escape sequence pointed by p. Curly braces { } and double-quote
@@ -132,7 +132,7 @@ translate_escape(char *p, int isArray)
 }
 
 /*
- * tcl_value() --
+ * tcl_value() 
  *
  * This function does in-line conversion of a value returned by libpq
  * into a tcl string or into a tcl list if the value looks like the

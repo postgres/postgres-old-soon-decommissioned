@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------
 *
-* geqo_px.c--
+* geqo_px.c
 *
 *	 position crossover [PX] routines;
 *	 PX operator according to Syswerda
@@ -54,7 +54,7 @@
 #include "optimizer/geqo_random.h"
 
 
-/* px--
+/* px
  *
  *	 position crossover
  */

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_ipl.h--
+ * pg_ipl.h
  *	  definition of the system "ipl" relation (pg_ipl)
  *	  along with the relation's initial contents.
  *

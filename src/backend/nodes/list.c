@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * list.c--
+ * list.c
  *	  various list handling routines
  *
  * Copyright (c) 1994, Regents of the University of California

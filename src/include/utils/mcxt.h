@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * mcxt.h--
+ * mcxt.h
  *	  POSTGRES memory context definitions.
  *
  *
@@ -20,7 +20,7 @@ extern MemoryContext TopMemoryContext;
 
 
 /*
- * MaxAllocSize --
+ * MaxAllocSize 
  *		Arbitrary limit on size of allocations.
  *
  * Note:

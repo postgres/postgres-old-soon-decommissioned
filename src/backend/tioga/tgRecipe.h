@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * tgRecipe.h--
+ * tgRecipe.h
  *		Tioga recipe-related definitions and declarations
  *		these functions can be used in both the frontend and the
  *		backend
@@ -114,7 +114,7 @@ typedef struct _tgrecipe
 {
 	TgElement	elmValue;		/* "inherits" TgElement attributes. */
 	Arr_TgNodePtr *allNodes;	/* array of all nodes for this recipe. */
-	Arr_TgNodePtr *rootNodes;	/* array of root nodes for this recipe. --
+	Arr_TgNodePtr *rootNodes;	/* array of root nodes for this recipe. 
 								 * root nodes are nodes with no parents */
 	Arr_TgNodePtr *eyes;		/* array of pointers for the browser nodes
 								 * recipe, execution of recipe starts by

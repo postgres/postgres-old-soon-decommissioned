@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * testlo.c--
+ * testlo.c
  *	  test using large objects with libpq
  *
  * Copyright (c) 1994, Regents of the University of California

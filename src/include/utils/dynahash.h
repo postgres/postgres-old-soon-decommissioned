@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * dynahash--
+ * dynahash
  *	  POSTGRES dynahash.h file definitions
  *
  *

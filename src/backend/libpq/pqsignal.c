@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pqsignal.c--
+ * pqsignal.c
  *	  reliable BSD-style signal(2) routine stolen from RWW who stole it
  *	  from Stevens...
  *

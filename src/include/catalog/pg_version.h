@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_version.h--
+ * pg_version.h
  *	  definition of the system "version" relation (pg_version)
  *	  along with the relation's initial contents.
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * portal.c--
+ * portal.c
  *	  generalized portal support routines
  *
  * Copyright (c) 1994, Regents of the University of California

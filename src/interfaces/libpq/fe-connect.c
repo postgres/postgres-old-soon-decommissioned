@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * fe-connect.c--
+ * fe-connect.c
  *	  functions related to setting up a connection to the backend
  *
  * Copyright (c) 1994, Regents of the University of California

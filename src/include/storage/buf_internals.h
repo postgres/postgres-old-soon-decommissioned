@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * buf_internals.h--
+ * buf_internals.h
  *	  Internal definitions.
  *
  *

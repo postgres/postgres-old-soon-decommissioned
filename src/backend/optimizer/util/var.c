@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * var.c--
+ * var.c
  *	  Var node manipulation routines
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -67,7 +67,7 @@ pull_varnos(Node *me)
 }
 
 /*
- * contain_var_clause--
+ * contain_var_clause
  *	  Recursively find var nodes from a clause by pulling vars from the
  *	  left and right operands of the clause.
  *
@@ -157,7 +157,7 @@ contain_var_clause(Node *clause)
 }
 
 /*
- * pull_var_clause--
+ * pull_var_clause
  *	  Recursively pulls all var nodes from a clause by pulling vars from the
  *	  left and right operands of the clause.
  *

@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * fixade.h--
+ * fixade.h
  *	  compiler tricks to make things work while POSTGRES does non-native
  *	  dereferences on PA-RISC.
  *

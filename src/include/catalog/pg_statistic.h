@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * pg_statistic.h--
+ * pg_statistic.h
  *	  definition of the system "statistic" relation (pg_statistic)
  *	  along with the relation's initial contents.
  *
