@@ -44,9 +44,6 @@ static volatile sig_atomic_t * PMSignalFlags;
 void
 PMSignalInit(void)
 {
-	/* Should be called only once */
-	Assert(!PMSignalFlags);
-
 	PMSignalFlags = (sig_atomic_t *)
 		ShmemAlloc(NUM_PMSIGNALS * sizeof(sig_atomic_t));
 
