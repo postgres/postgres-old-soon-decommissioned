@@ -3534,18 +3534,6 @@ DESCR("non-persistent series generator");
 DATA(insert OID = 1069 (  generate_series PGNSP PGUID 12 f f t t v 2 20 "20 20" _null_ generate_series_int8 - _null_ ));
 DESCR("non-persistent series generator");
 
-/* aclitem utils */
-DATA(insert OID = 2510 (  aclitem_grantor 			   PGNSP PGUID 12 f f t f i 1 23 "1033" _null_ aclitem_grantor - _null_ ));
-DESCR("extract user id grantor from aclitem");
-DATA(insert OID = 2511 (  aclitem_grantee 			   PGNSP PGUID 12 f f t f i 1 23 "1033" _null_ aclitem_grantee - _null_ ));
-DESCR("extract grantee (user or group id) from aclitem");
-DATA(insert OID = 2512 (  aclitem_idtype 			   PGNSP PGUID 12 f f t f i 1 23 "1033" _null_ aclitem_idtype - _null_ ));
-DESCR("extract id type of grantee (0 public, 1 user, 2 group) from aclitem");
-DATA(insert OID = 2513 (  aclitem_privs 			   PGNSP PGUID 12 f f t f i 1 23 "1033" _null_ aclitem_privs - _null_ ));
-DESCR("extract privileges from aclitem");
-DATA(insert OID = 2514 (  aclitem_goptions 			   PGNSP PGUID 12 f f t f i 1 23 "1033" _null_ aclitem_goptions - _null_ ));
-DESCR("extract grant options from aclitem");
-
 
 /*
  * Symbolic values for provolatile column: these indicate whether the result
