@@ -45,7 +45,6 @@ typedef enum NodeTag
 	T_Unique,
 	T_Hash,
 	T_Choose,
-	T_Tee,
 	T_Group,
 	T_SubPlan,
 
@@ -117,7 +116,6 @@ typedef enum NodeTag
 	T_SortState,
 	T_UniqueState,
 	T_HashState,
-	T_TeeState,
 
 	/*---------------------
 	 * TAGS FOR MEMORY NODES (memnodes.h)

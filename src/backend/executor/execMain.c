@@ -884,7 +884,6 @@ ExecutePlan(EState *estate,
 			DestReceiver* destfunc)
 {
 	JunkFilter *junkfilter;
-
 	TupleTableSlot *slot;
 	ItemPointer tupleid = NULL;
 	ItemPointerData tuple_ctid;
@@ -898,7 +897,7 @@ ExecutePlan(EState *estate,
 	current_tuple_count = 0;
 	result = NULL;
 
-	/*
+ 	/*
 	 *	Set the direction.
 	 */
 	estate->es_direction = direction;

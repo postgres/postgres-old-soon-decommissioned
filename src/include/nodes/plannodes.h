@@ -325,6 +325,7 @@ typedef struct Hash
 	int			hashtablesize;
 } Hash;
 
+#ifdef NOT_USED
 /* -------------------
  *		Tee node information
  *
@@ -344,6 +345,7 @@ typedef struct Tee
 								 * Tee may be different than the parent
 								 * plans */
 } Tee;
+#endif
 
 /* ---------------------
  *		SubPlan node

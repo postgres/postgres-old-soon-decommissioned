@@ -800,14 +800,6 @@ NodeGetResultTupleSlot(Plan *node)
 			}
 			break;
 
-		case T_Tee:
-			{
-				TeeState   *teestate = ((Tee *) node)->teestate;
-
-				slot = teestate->cstate.cs_ResultTupleSlot;
-			}
-			break;
-
 		default:
 			/* ----------------
 			 *	  should never get here

@@ -194,9 +194,6 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 		case T_Hash:
 			pname = "Hash";
 			break;
-		case T_Tee:
-			pname = "Tee";
-			break;
 		default:
 			pname = "";
 			break;

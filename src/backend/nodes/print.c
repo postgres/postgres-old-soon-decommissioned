@@ -339,9 +339,6 @@ plannode_type(Plan *p)
 		case T_Hash:
 			return "HASH";
 			break;
-		case T_Tee:
-			return "TEE";
-			break;
 		case T_Choose:
 			return "CHOOSE";
 			break;

@@ -544,20 +544,6 @@ _outHash(StringInfo str, Hash *node)
 			node->hashtablesize);
 }
 
-static void
-_outTee(StringInfo str, Tee *node)
-{
-	appendStringInfo(str, " TEE ");
-	_outPlanInfo(str, (Plan *) node);
-
-	appendStringInfo(str, " :leftParent %X :rightParent %X ",
-		(int) node->leftParent,
-		(int) node->rightParent);
-
-	appendStringInfo(str, " :rtentries ");
-	_outNode(str, node->rtentries);
-}
-
 /*****************************************************************************
  *
  *	Stuff from primnodes.h.
@@ -1527,9 +1513,6 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_SubPlan:
 				_outSubPlan(str, obj);
-				break;
-			case T_Tee:
-				_outTee(str, obj);
 				break;
 			case T_Resdom:
 				_outResdom(str, obj);

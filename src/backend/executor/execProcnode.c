@@ -90,7 +90,6 @@
 #include "executor/nodeAgg.h"
 #include "executor/nodeHash.h"
 #include "executor/nodeHashjoin.h"
-#include "executor/nodeTee.h"
 #include "executor/nodeSubplan.h"
 
 /* ------------------------------------------------------------------------
@@ -196,10 +195,6 @@ ExecInitNode(Plan *node, EState *estate, Plan *parent)
 			result = ExecInitHashJoin((HashJoin *) node, estate, parent);
 			break;
 
-		case T_Tee:
-			result = ExecInitTee((Tee *) node, estate, parent);
-			break;
-
 		default:
 			elog(ERROR, "ExecInitNode: node %d unsupported", nodeTag(node));
 			result = FALSE;
@@ -248,7 +243,7 @@ ExecProcNode(Plan *node, Plan *parent)
 	switch (nodeTag(node))
 	{
 			/* ----------------
-			 *		control nodes
+			 *	control nodes
 			 * ----------------
 			 */
 		case T_Result:
@@ -313,10 +308,6 @@ ExecProcNode(Plan *node, Plan *parent)
 
 		case T_HashJoin:
 			result = ExecHashJoin((HashJoin *) node);
-			break;
-
-		case T_Tee:
-			result = ExecTee((Tee *) node, parent);
 			break;
 
 		default:
@@ -389,9 +380,6 @@ ExecCountSlotsNode(Plan *node)
 
 		case T_HashJoin:
 			return ExecCountSlotsHashJoin((HashJoin *) node);
-
-		case T_Tee:
-			return ExecCountSlotsTee((Tee *) node);
 
 		default:
 			elog(ERROR, "ExecCountSlotsNode: node not yet supported: %d",
@@ -507,10 +495,6 @@ ExecEndNode(Plan *node, Plan *parent)
 
 		case T_HashJoin:
 			ExecEndHashJoin((HashJoin *) node);
-			break;
-
-		case T_Tee:
-			ExecEndTee((Tee *) node, parent);
 			break;
 
 		default:

@@ -34,7 +34,6 @@
 #include "executor/nodeSeqscan.h"
 #include "executor/nodeIndexscan.h"
 #include "executor/nodeSort.h"
-#include "executor/nodeTee.h"
 #include "executor/nodeMaterial.h"
 #include "executor/nodeNestloop.h"
 #include "executor/nodeHashjoin.h"
@@ -382,12 +381,6 @@ ExecReScan(Plan *node, ExprContext *exprCtxt, Plan *parent)
 			ExecReScanAppend((Append *) node, exprCtxt, parent);
 			break;
 
-/*
- * Tee is never used
-		case T_Tee:
-			ExecTeeReScan((Tee *) node, exprCtxt, parent);
-			break;
- */
 		default:
 			elog(ERROR, "ExecReScan: node type %u not supported", nodeTag(node));
 			return;
