@@ -847,7 +847,7 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 					{
 						for (element = 0; element < var->arrsize; element++)
 						{
-							str = PGTYPESnumeric_ntoa((Numeric *)((var + var->offset * element)->value));
+							str = PGTYPESnumeric_ntoa((Numeric *)((var + var->offset * element)->value), 0);
 							slen = strlen (str);
 							
 							if (!(mallocedval = ECPGrealloc(mallocedval, strlen(mallocedval) + slen + 5, stmt->lineno)))
@@ -863,7 +863,7 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 					}
 					else
 					{
-						str = PGTYPESnumeric_ntoa((Numeric *)(var->value));
+						str = PGTYPESnumeric_ntoa((Numeric *)(var->value), 0);
 						slen = strlen (str);
 					
 						if (!(mallocedval = ECPGalloc(slen + 1, stmt->lineno)))
@@ -1239,7 +1239,9 @@ ECPGexecute(struct statement * stmt)
 	{
 		ECPGlog("ECPGexecute line %d: ASYNC NOTIFY of '%s' from backend pid '%d' received\n",
 				stmt->lineno, notify->relname, notify->be_pid);
-		PQfreemem(notify);
+/*		PQfreemem(notify);*/
+		free(notify);
+#warning Remove PQfreemem define
 	}
 
 	return status;
