@@ -10,7 +10,7 @@
 
 NAME= pgeasy
 SO_MAJOR_VERSION= 2
-SO_MINOR_VERSION= 0
+SO_MINOR_VERSION= 1
 
 SRCDIR= @top_srcdir@
 include $(SRCDIR)/Makefile.global
