@@ -205,7 +205,7 @@ ECPGnoticeProcessor(void *arg, const char *message)
 	/* these are harmless - do nothing */
 
 	/*
-	 * NOTICE:	CREATE TABLE/PRIMARY KEY will create implicit index '*'
+	 * NOTICE:	CREATE TABLE / PRIMARY KEY will create implicit index '*'
 	 * for table '*'
 	 */
 
