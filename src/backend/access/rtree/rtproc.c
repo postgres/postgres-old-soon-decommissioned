@@ -12,12 +12,14 @@
  *-------------------------------------------------------------------------
  */
 
-#include <string.h>
+#include <postgres.h>
 
-#include "postgres.h"
-
-#include "utils/geo-decls.h"
-#include "utils/palloc.h"
+#include <utils/geo-decls.h>
+#ifndef HAVE_MEMMOVE
+# include <regex/utils.h>
+#else
+# include <string.h>
+#endif
 
 BOX
 *rt_box_union(BOX *a, BOX *b)

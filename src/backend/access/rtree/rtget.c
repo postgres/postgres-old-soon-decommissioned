@@ -12,24 +12,20 @@
  *-------------------------------------------------------------------------
  */
 
-#include <string.h>
-#include <time.h>
-
-#include "postgres.h"
+#include <postgres.h>
  
-#include "storage/bufmgr.h"
+#include <storage/bufmgr.h>
+#include <access/sdir.h>
+#include <access/relscan.h>
+#include <access/iqual.h>
+#include <access/rtree.h>
+#include <storage/bufpage.h>
+#ifndef HAVE_MEMMOVE
+# include <regex/utils.h>
+#else
+# include <string.h>
+#endif
 
-#include "access/sdir.h"
- 
-#include "access/htup.h"
-#include "utils/palloc.h"
-#include "access/relscan.h"
-#include "access/itup.h"
-#include "access/iqual.h"
- 
-#include "access/rtree.h"
-
-#include "storage/bufpage.h"
 
 static OffsetNumber findnext(IndexScanDesc s, Page p, OffsetNumber n,
 			     ScanDirection dir);

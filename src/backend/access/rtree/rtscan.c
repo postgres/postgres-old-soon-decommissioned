@@ -12,21 +12,20 @@
  *-------------------------------------------------------------------------
  */
 
-#include <string.h>
-
-#include "postgres.h"
+#include <postgres.h>
  
-#include "storage/bufmgr.h"
-#include "access/genam.h"
- 
-#include "utils/palloc.h"
-#include "access/htup.h"
-#include "storage/lmgr.h"
-#include "storage/bufpage.h"
-#include <stdio.h>
+#include <storage/bufmgr.h>
+#include <access/genam.h>
+#include <storage/lmgr.h>
+#include <storage/bufpage.h>
+#include <access/rtree.h>
+#include <access/rtstrat.h>
+#ifndef HAVE_MEMMOVE
+# include <regex/utils.h>
+#else
+# include <string.h>
+#endif
 
-#include "access/rtree.h"
-#include "access/rtstrat.h"
  
 /* routines defined and used here */
 static void rtregscan(IndexScanDesc s);

@@ -12,15 +12,11 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
  
-#include "utils/rel.h"
-
-#include "storage/off.h"
-#include "storage/block.h"
-#include "access/rtree.h"
-
-#include "access/istrat.h"
+#include <utils/rel.h>
+#include <access/rtree.h>
+#include <access/istrat.h>
 
 /*
  *  Note:  negate, commute, and negatecommute all assume that operators are
