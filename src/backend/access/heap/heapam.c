@@ -1202,7 +1202,10 @@ heap_delete(Relation relation, ItemPointer tid)
 	Assert(HeapTupleIsValid(tp));
 	if (TupleUpdatedByCurXactAndCmd(tp))
 	{
-		elog(NOTICE, "Non-functional delete, tuple already deleted");
+		/*
+			Vadim says this is no longer needed 1998/6/15
+			elog(NOTICE, "Non-functional delete, tuple already deleted");
+		*/
 		if (IsSystemRelationName(RelationGetRelationName(relation)->data))
 			RelationUnsetLockForWrite(relation);
 		ReleaseBuffer(b);

@@ -74,7 +74,7 @@ if (1) \
 	if (IsAbortedTransactionBlockState()) \
 	{ \
 		elog(NOTICE, "(transaction aborted): %s", \
-			 "queries ignored until END"); \
+			 "all queries ignored until end of transaction block"); \
 		commandTag = "*ABORT STATE*"; \
 		break; \
 	} \
