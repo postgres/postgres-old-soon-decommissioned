@@ -13,6 +13,7 @@
 #ifndef	REL_H
 #define REL_H
 
+#include "access/tupdesc.h"
 #include "storage/fd.h"
 #include "catalog/pg_am.h"
 #include "catalog/pg_class.h"
