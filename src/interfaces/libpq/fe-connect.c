@@ -1078,7 +1078,8 @@ connectDBComplete(PGconn *conn)
 		finish_time = time((time_t *) NULL) + remains.tv_sec;
 	}
 
-	while (rp == NULL || remains.tv_sec > 0 || remains.tv_usec > 0)
+	while (rp == NULL || remains.tv_sec > 0 ||
+		   (remains.tv_sec == 0 && remains.tv_usec > 0))
 	{
 		/*
 		 * Wait, if necessary.	Note that the initial state (just after
@@ -1131,10 +1132,7 @@ connectDBComplete(PGconn *conn)
 				return 0;
 			}
 
-			if (finish_time > current_time)
-				remains.tv_sec = finish_time - current_time;
-			else
-				remains.tv_sec = 0;
+			remains.tv_sec = finish_time - current_time;
 			remains.tv_usec = 0;
 		}
 	}
