@@ -88,7 +88,7 @@
 	) \
 	: \
 	( \
-		(cur_offset) + VARSIZE(DatumGetPointer(attval)) \
+		(cur_offset) + VARATT_SIZE(DatumGetPointer(attval)) \
 	) \
 )
 

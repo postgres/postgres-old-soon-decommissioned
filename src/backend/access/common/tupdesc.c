@@ -378,8 +378,12 @@ TupleDescInitEntry(TupleDesc desc,
  * relations for automatic move off into "secondary" relation.
  * Jan
  */
-#ifdef LONG_ATTRIBUTES_NOW_IMPLEMENTED_FOR_ALL_VARLENA_DATA_TYPES
-		att->attcanlong = (att->attlen == -1) ? 'e' : 'p';
+#ifdef TUPLE_TOASTER_ACTIVE
+#ifdef TUPLE_TOASTER_ALL_TYPES
+		att->attstorage = (att->attlen == -1) ? 'e' : 'p';
+#else
+		att->attstorage = 'p';
+#endif
 #else
 		att->attstorage = 'p';
 #endif

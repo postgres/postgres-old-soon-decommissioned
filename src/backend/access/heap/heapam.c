@@ -78,6 +78,7 @@
 #include "access/heapam.h"
 #include "access/hio.h"
 #include "access/valid.h"
+#include "access/tuptoaster.h"
 #include "catalog/catalog.h"
 #include "miscadmin.h"
 #include "storage/smgr.h"
