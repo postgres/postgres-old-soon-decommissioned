@@ -7,14 +7,14 @@
  *
  */
 /* can be used in either frontend or backend */
-#include "postgres_fe.h"
-#include "mb/pg_wchar.h"
-
 #ifdef FRONTEND
-	#define Assert(condition)
+#include "postgres_fe.h"
+#define Assert(condition)
 #else
-	#include "postgres.h"
+#include "postgres.h"
 #endif
+
+#include "mb/pg_wchar.h"
 
 
 /*
@@ -499,6 +499,17 @@ pg_encoding_mblen(int encoding, const unsigned char *mbstr)
 			((*pg_wchar_table[PG_SQL_ASCII].mblen) (mbstr)));
 }
 
+/*
+ * fetch maximum length of a char encoding
+ */
+int
+pg_encoding_max_length(int encoding)
+{
+	Assert(PG_VALID_ENCODING(encoding));
+
+	return pg_wchar_table[encoding].maxmblen;
+}
+
 #ifndef FRONTEND
 /*
  * Verify mbstr to make sure that it has a valid character sequence.
@@ -517,7 +528,7 @@ pg_verifymbstr(const unsigned char *mbstr, int len)
 	int	slen = 0;
 
 	/* we do not check single byte encodings */
-	if (pg_wchar_table[GetDatabaseEncoding()].maxmblen <= 1)
+	if (pg_encoding_max_length(GetDatabaseEncoding()) <= 1)
 	    return NULL;
 
 	while (len > 0 && *mbstr)
