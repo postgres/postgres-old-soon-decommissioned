@@ -275,8 +275,18 @@ advance_transition_function(AggStatePerAgg peraggstate,
 		}
 	}
 
-	/* OK to call the transition function */
-	MemSet(&fcinfo, 0, sizeof(fcinfo));
+	/*
+	 * OK to call the transition function
+	 *
+	 * This is heavily-used code, so manually zero just the necessary fields
+	 * instead of using MemSet().  Compare FunctionCall2().
+	 */
+
+	/* MemSet(&fcinfo, 0, sizeof(fcinfo)); */
+	fcinfo.context = NULL;
+	fcinfo.resultinfo = NULL;
+	fcinfo.isnull = false;
+
 	fcinfo.flinfo = &peraggstate->transfn;
 	fcinfo.nargs = 2;
 	fcinfo.arg[0] = peraggstate->transValue;
