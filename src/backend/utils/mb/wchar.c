@@ -537,11 +537,19 @@ pg_verifymbstr(const unsigned char *mbstr, int len)
 	int	slen = 0;
 
 	/* we do not check single byte encodings */
-	if (pg_encoding_max_length(GetDatabaseEncoding()) <= 1)
+	if (pg_database_encoding_max_length() <= 1)
 	    return NULL;
 
 	while (len > 0 && *mbstr)
 	{
+		/* special UTF-8 check */
+		if (GetDatabaseEncoding() == PG_UTF8 &&
+		    (*mbstr & 0xf8) == 0xf0)
+		{
+		    snprintf(buf, sizeof(buf), "Unicode >= 0x10000 is not supoorted");
+		    return(buf);
+		}
+		    
 		l = pg_mblen(mbstr);
 
 		/* multi-byte letter? */
