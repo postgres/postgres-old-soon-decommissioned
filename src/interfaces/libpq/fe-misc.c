@@ -29,7 +29,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include <unistd.h>
 #include <sys/time.h>
 #include <errno.h>
 #include <signal.h>
@@ -42,6 +41,8 @@
 
 #ifdef WIN32
 #include "win32.h"
+#else
+#include <unistd.h>
 #endif
 
 #ifdef HAVE_SYS_SELECT_H

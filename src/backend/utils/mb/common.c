@@ -5,11 +5,12 @@
  * $Id$ */
 
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
 
 #ifdef WIN32
 #include "win32.h"
+#else
+#include <unistd.h>
 #endif
 
 #include "mb/pg_wchar.h"

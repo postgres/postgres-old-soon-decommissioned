@@ -12,7 +12,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
 #include <ctype.h>
@@ -25,6 +24,7 @@
 #ifdef WIN32
 #include "win32.h"
 #else
+#include <unistd.h>
 #include <netdb.h>
 #include <netinet/tcp.h>
 #endif

@@ -12,7 +12,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
 
@@ -23,6 +22,8 @@
 #ifdef WIN32
 #include "win32.h"
 #include "io.h"
+#else
+#include <unistd.h>
 #endif
 
 #include "libpq/libpq-fs.h"		/* must come after sys/stat.h */

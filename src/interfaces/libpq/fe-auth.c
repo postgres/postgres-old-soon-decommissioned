@@ -25,8 +25,6 @@
  *
  */
 
-#include <unistd.h>
-
 #include "postgres.h"
 #include "libpq-fe.h"
 #include "libpq-int.h"
@@ -35,6 +33,7 @@
 #ifdef WIN32
 #include "win32.h"
 #else
+#include <unistd.h>
 #include <sys/param.h>			/* for MAXHOSTNAMELEN on most */
 #ifndef  MAXHOSTNAMELEN
 #include <netdb.h>				/* for MAXHOSTNAMELEN on some */

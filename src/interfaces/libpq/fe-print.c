@@ -13,7 +13,6 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <unistd.h>
 #include <signal.h>
 
 #include "postgres.h"
@@ -24,6 +23,7 @@
 #ifdef WIN32
 #include "win32.h"
 #else
+#include <unistd.h>
 #include <sys/ioctl.h>
 #endif
 
