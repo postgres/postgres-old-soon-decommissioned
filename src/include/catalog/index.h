@@ -15,6 +15,7 @@
 #define INDEX_H
 
 #include "access/itup.h"
+#include "catalog/pg_index.h"
 #include "nodes/execnodes.h"
 
 
@@ -27,9 +28,6 @@ typedef void (*IndexBuildCallback) (Relation index,
 												void *state);
 
 
-extern Form_pg_am AccessMethodObjectIdGetForm(Oid accessMethodObjectId,
-							MemoryContext resultCxt);
-
 extern Oid index_create(char *heapRelationName,
 			 char *indexRelationName,
 			 IndexInfo *indexInfo,
@@ -40,7 +38,7 @@ extern Oid index_create(char *heapRelationName,
 
 extern void index_drop(Oid indexId);
 
-extern IndexInfo *BuildIndexInfo(HeapTuple indexTuple);
+extern IndexInfo *BuildIndexInfo(Form_pg_index indexStruct);
 
 extern void FormIndexDatum(IndexInfo *indexInfo,
 			   HeapTuple heapTuple,

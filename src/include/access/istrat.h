@@ -47,6 +47,8 @@
  */
 #define IndexStrategyIsValid(s) PointerIsValid(s)
 
+extern ScanKey StrategyMapGetScanKeyEntry(StrategyMap map,
+										  StrategyNumber strategyNumber);
 extern StrategyMap IndexStrategyGetStrategyMap(IndexStrategy indexStrategy,
 					  StrategyNumber maxStrategyNum, AttrNumber attrNum);
 
@@ -55,13 +57,5 @@ extern Size AttributeNumberGetIndexStrategySize(AttrNumber maxAttributeNumber,
 extern StrategyNumber RelationGetStrategy(Relation relation,
 			   AttrNumber attributeNumber, StrategyEvaluation evaluation,
 					RegProcedure procedure);
-extern void IndexSupportInitialize(IndexStrategy indexStrategy,
-					   RegProcedure *indexSupport,
-					   bool *isUnique,
-					   Oid indexObjectId,
-					   Oid accessMethodObjectId,
-					   StrategyNumber maxStrategyNumber,
-					   StrategyNumber maxSupportNumber,
-					   AttrNumber maxAttributeNumber);
 
 #endif   /* ISTRAT_H */

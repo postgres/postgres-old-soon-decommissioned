@@ -30,13 +30,7 @@
 /*
  * prototypes from functions in execAmi.c
  */
-extern void ExecOpenScanR(Oid relOid, int nkeys, ScanKey skeys, bool isindex,
-			  ScanDirection dir, Snapshot snapshot,
-			  Relation *returnRelation, Pointer *returnScanDesc);
-extern void ExecCloseR(Plan *node);
 extern void ExecReScan(Plan *node, ExprContext *exprCtxt, Plan *parent);
-extern HeapScanDesc ExecReScanR(Relation relDesc, HeapScanDesc scanDesc,
-			ScanDirection direction, int nkeys, ScanKey skeys);
 extern void ExecMarkPos(Plan *node);
 extern void ExecRestrPos(Plan *node);
 

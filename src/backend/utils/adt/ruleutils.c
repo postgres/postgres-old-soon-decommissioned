@@ -341,6 +341,7 @@ pg_get_indexdef(PG_FUNCTION_ARGS)
 	HeapTuple	ht_idx;
 	HeapTuple	ht_idxrel;
 	HeapTuple	ht_indrel;
+	HeapTuple	ht_am;
 	Form_pg_index idxrec;
 	Form_pg_class idxrelrec;
 	Form_pg_class indrelrec;
@@ -383,13 +384,13 @@ pg_get_indexdef(PG_FUNCTION_ARGS)
 
 	/*
 	 * Fetch the pg_am tuple of the index' access method
-	 *
-	 * There is no syscache for this, so use index.c subroutine.
 	 */
-	amrec = AccessMethodObjectIdGetForm(idxrelrec->relam,
-										CurrentMemoryContext);
-	if (!amrec)
-		elog(ERROR, "lookup for AM %u failed", idxrelrec->relam);
+	ht_am = SearchSysCache(AMOID,
+						   ObjectIdGetDatum(idxrelrec->relam),
+						   0, 0, 0);
+	if (!HeapTupleIsValid(ht_am))
+		elog(ERROR, "syscache lookup for AM %u failed", idxrelrec->relam);
+	amrec = (Form_pg_am) GETSTRUCT(ht_am);
 
 	/*
 	 * Start the index definition
@@ -504,10 +505,11 @@ pg_get_indexdef(PG_FUNCTION_ARGS)
 
 	pfree(buf.data);
 	pfree(keybuf.data);
-	pfree(amrec);
+
 	ReleaseSysCache(ht_idx);
 	ReleaseSysCache(ht_idxrel);
 	ReleaseSysCache(ht_indrel);
+	ReleaseSysCache(ht_am);
 
 	PG_RETURN_TEXT_P(indexdef);
 }

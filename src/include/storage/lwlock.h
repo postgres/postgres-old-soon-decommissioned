@@ -38,6 +38,7 @@ typedef enum LWLockId
 	ControlFileLock,
 	CheckpointLock,
 	CLogControlLock,
+	RelCacheInitLock,
 
 	NumFixedLWLocks,			/* must be last except for
 								 * MaxDynamicLWLock */

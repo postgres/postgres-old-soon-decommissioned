@@ -40,6 +40,7 @@ extern void RelationInitIndexAccessInfo(Relation relation);
  */
 extern void RelationCacheInitialize(void);
 extern void RelationCacheInitializePhase2(void);
+extern void RelationCacheInitializePhase3(void);
 
 /*
  * Routine to create a relcache entry for an about-to-be-created relation
@@ -62,15 +63,18 @@ extern void RelationPurgeLocalRelation(bool xactComitted);
 
 extern void RelationCacheAbort(void);
 
+/*
+ * Routines to help manage rebuilding of relcache init file
+ */
+extern bool RelationIdIsInInitFile(Oid relationId);
+extern void RelationCacheInitFileInvalidate(bool beforeSend);
 
 /* XLOG support */
 extern void CreateDummyCaches(void);
 extern void DestroyDummyCaches(void);
 
-/*
- * both vacuum.c and relcache.c need to know the name of the relcache init file
- */
 
-#define RELCACHE_INIT_FILENAME	"pg_internal.init"
+/* should be used only by relcache.c and catcache.c */
+extern bool criticalRelcachesBuilt;
 
 #endif   /* RELCACHE_H */

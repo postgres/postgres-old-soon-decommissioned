@@ -44,6 +44,12 @@ typedef struct catcache
 	int			cc_key[4];		/* AttrNumber of each key */
 	PGFunction	cc_hashfunc[4]; /* hash function to use for each key */
 	ScanKeyData cc_skey[4];		/* precomputed key info for heap scans */
+#ifdef CATCACHE_STATS
+	long		cc_searches;	/* total # searches against this cache */
+	long		cc_hits;		/* # of matches against existing entry */
+	long		cc_newloads;	/* # of successful loads of new entry */
+	/* cc_searches - (cc_hits + cc_newloads) is # of failed searches */
+#endif
 	Dllist		cc_bucket[1];	/* hash buckets --- VARIABLE LENGTH ARRAY */
 } CatCache;						/* VARIABLE LENGTH STRUCT */
 
@@ -89,6 +95,7 @@ extern void AtEOXact_CatCache(bool isCommit);
 extern CatCache *InitCatCache(int id, char *relname, char *indname,
 			 int reloidattr,
 			 int nkeys, int *key);
+extern void InitCatCachePhase2(CatCache *cache);
 
 extern HeapTuple SearchCatCache(CatCache *cache,
 			   Datum v1, Datum v2,
