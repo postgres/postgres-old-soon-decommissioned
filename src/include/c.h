@@ -691,7 +691,7 @@ typedef struct Exception
  */
 /* we do this so if the macro is used in an if action, it will work */
 #define StrNCpy(dst,src,len)	\
-	(strncpy((dst),(src),(len)),(len > 0) ? *((dst)+(len)-1)='\0' : NULL,(void)(dst))
+	(strncpy((dst),(src),(len)),(len > 0) ? *((dst)+(len)-1)='\0' : (void)NULL,(void)(dst))
 
 /* Get a bit mask of the bits set in non-int32 aligned addresses */
 #define INT_ALIGN_MASK (sizeof(int32) - 1)
