@@ -16,7 +16,6 @@
 
 #include "nodes/parsenodes.h"
 
-#define DEFAULT_TYPDELIM		','
 
 /* commands/indexcmds.c */
 extern void DefineIndex(RangeVar *heapRelation,
