@@ -136,7 +136,7 @@ DATA(insert OID = 1259 (  pg_class 83		  PGUID 0 0 0 f f r 18 0 0 0 0 0 f f _nul
 DESCR("");
 DATA(insert OID = 1260 (  pg_shadow 86		  PGUID 0 0 0 f t r 8  0 0 0 0 0 f f _null_ ));
 DESCR("");
-DATA(insert OID = 1261 (  pg_group 87		  PGUID 0 0 0 f t s 3  0 0 0 0 0 f f _null_ ));
+DATA(insert OID = 1261 (  pg_group 87		  PGUID 0 0 0 f t r 3  0 0 0 0 0 f f _null_ ));
 DESCR("");
 DATA(insert OID = 1262 (  pg_database 88	  PGUID 0 0 0 f t r 4  0 0 0 0 0 f f _null_ ));
 DESCR("");

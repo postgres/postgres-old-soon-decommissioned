@@ -286,6 +286,34 @@ typedef struct DropUserStmt
 
 
 /* ----------------------
+ *      Create/Alter/Drop Group Statements
+ * ----------------------
+ */
+typedef struct CreateGroupStmt
+{
+    NodeTag     type;
+    char       *name;           /* name of the new group */
+    int         sysid;          /* group id (-1 if pick default) */
+    List       *initUsers;      /* list of initial users */
+} CreateGroupStmt;
+
+typedef struct AlterGroupStmt
+{
+    NodeTag     type;
+    char       *name;           /* name of group to alter */
+    int         action;         /* +1 = add, -1 = drop, 0 = other (HACK!) */
+    int         sysid;          /* sysid change */
+    List       *listUsers;      /* list of users to add/drop */
+} AlterGroupStmt;
+
+typedef struct DropGroupStmt
+{
+    NodeTag     type;
+    char       *name;
+} DropGroupStmt;
+
+
+/* ----------------------
  *		Create SEQUENCE Statement
  * ----------------------
  */

@@ -35,7 +35,7 @@ CATALOG(pg_group) BOOTSTRAP
 
 typedef FormData_pg_group *Form_pg_group;
 
-#define Natts_pg_group			1
+#define Natts_pg_group			3
 #define Anum_pg_group_groname	1
 #define Anum_pg_group_grosysid	2
 #define Anum_pg_group_grolist	3

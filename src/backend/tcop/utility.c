@@ -809,6 +809,26 @@ ProcessUtility(Node *parsetree,
 			DeferredTriggerSetState((ConstraintsSetStmt *) parsetree);
 			break;
 
+        case T_CreateGroupStmt:
+            PS_SET_STATUS(commandTag = "CREATE GROUP");
+			CHECK_IF_ABORTED();
+
+            CreateGroup((CreateGroupStmt *) parsetree, dest);
+            break;
+
+        case T_AlterGroupStmt:
+            PS_SET_STATUS(commandTag = "ALTER GROUP");
+			CHECK_IF_ABORTED();
+
+            AlterGroup((AlterGroupStmt *) parsetree, dest);
+            break;
+
+        case T_DropGroupStmt:
+            PS_SET_STATUS(commandTag = "DROP GROUP");
+			CHECK_IF_ABORTED();
+
+            DropGroup((DropGroupStmt *) parsetree, dest);
+            break;
 
 			/*
 			 * ******************************** default ********************************
