@@ -3445,8 +3445,9 @@ static void
 get_const_expr(Const *constval, deparse_context *context)
 {
 	StringInfo	buf = context->buf;
-	HeapTuple	typetup;
-	Form_pg_type typeStruct;
+	Oid			typoutput;
+	Oid			typioparam;
+	bool		typIsVarlena;
 	char	   *extval;
 	char	   *valptr;
 	bool		isfloat = false;
@@ -3463,17 +3464,12 @@ get_const_expr(Const *constval, deparse_context *context)
 		return;
 	}
 
-	typetup = SearchSysCache(TYPEOID,
-							 ObjectIdGetDatum(constval->consttype),
-							 0, 0, 0);
-	if (!HeapTupleIsValid(typetup))
-		elog(ERROR, "cache lookup failed for type %u", constval->consttype);
+	getTypeOutputInfo(constval->consttype,
+					  &typoutput, &typioparam, &typIsVarlena);
 
-	typeStruct = (Form_pg_type) GETSTRUCT(typetup);
-
-	extval = DatumGetCString(OidFunctionCall3(typeStruct->typoutput,
+	extval = DatumGetCString(OidFunctionCall3(typoutput,
 											  constval->constvalue,
-								   ObjectIdGetDatum(typeStruct->typelem),
+											  ObjectIdGetDatum(typioparam),
 											  Int32GetDatum(-1)));
 
 	switch (constval->consttype)
@@ -3570,8 +3566,6 @@ get_const_expr(Const *constval, deparse_context *context)
 	if (needlabel)
 		appendStringInfo(buf, "::%s",
 					  format_type_with_typemod(constval->consttype, -1));
-
-	ReleaseSysCache(typetup);
 }
 
 

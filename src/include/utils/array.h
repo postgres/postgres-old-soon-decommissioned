@@ -59,7 +59,7 @@ typedef struct ArrayMetaState
 	bool		typbyval;
 	char		typalign;
 	char		typdelim;
-	Oid			typelem;
+	Oid			typioparam;
 	Oid			typiofunc;
 	FmgrInfo	proc;
 } ArrayMetaState;

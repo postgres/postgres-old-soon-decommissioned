@@ -356,14 +356,10 @@ can_coerce_type(int nargs, Oid *input_typeids, Oid *target_typeids,
 
 		/*
 		 * If input is an untyped string constant, assume we can convert
-		 * it to anything except a class type.
+		 * it to anything.
 		 */
 		if (inputTypeId == UNKNOWNOID)
-		{
-			if (ISCOMPLEX(targetTypeId))
-				return false;
 			continue;
-		}
 
 		/*
 		 * If pg_cast shows that we can coerce, accept.  This test now

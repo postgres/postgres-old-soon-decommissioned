@@ -40,8 +40,8 @@ typedef struct AttInMetadata
 	/* array of attribute type input function finfo */
 	FmgrInfo   *attinfuncs;
 
-	/* array of attribute type typelem */
-	Oid		   *attelems;
+	/* array of attribute type i/o parameter OIDs */
+	Oid		   *attioparams;
 
 	/* array of attribute typmod */
 	int32	   *atttypmods;
