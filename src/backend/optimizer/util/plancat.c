@@ -90,7 +90,14 @@ get_relation_info(Oid relationObjectId, RelOptInfo *rel)
 			int			i;
 			int16		amorderstrategy;
 
-			/* Extract info from the relation descriptor for the index */
+			/*
+			 * Extract info from the relation descriptor for the index.
+			 *
+			 * Note that we take no lock on the index; we assume our lock on
+			 * the parent table will protect the index's schema information.
+			 * When and if the executor actually uses the index, it will take
+			 * a lock as needed to protect the access to the index contents.
+			 */
 			indexRelation = index_open(indexoid);
 			index = indexRelation->rd_index;
 
