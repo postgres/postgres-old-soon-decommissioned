@@ -17,7 +17,7 @@ include $(top_builddir)/src/Makefile.global
 # shared library parameters
 NAME= pq
 SO_MAJOR_VERSION= 3
-SO_MINOR_VERSION= 2
+SO_MINOR_VERSION= 3
 DLTYPE= library
 
 override CPPFLAGS :=  -DFRONTEND -I$(srcdir) $(CPPFLAGS) -I$(top_builddir)/src/port
