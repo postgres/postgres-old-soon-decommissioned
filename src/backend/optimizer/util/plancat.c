@@ -26,17 +26,18 @@
 #include "catalog/pg_inherits.h"
 #include "catalog/pg_version.h"
 
-#include "nodes/pg_list.h"
 #include "parser/parsetree.h"		/* for getrelid() */
 #include "fmgr.h"
 
 #include "optimizer/internal.h"
 #include "optimizer/plancat.h"
 
-#include "utils/tqual.h"
-#include "utils/elog.h"
-#include "utils/palloc.h"
 #include "utils/syscache.h"
+#ifndef HAVE_MEMMOVE
+# include <regex/utils.h>
+#else
+# include <string.h>
+#endif
 
 
 static void IndexSelectivity(Oid indexrelid, Oid indrelid, int32 nIndexKeys,

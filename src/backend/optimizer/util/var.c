@@ -15,6 +15,8 @@
 
 #include "postgres.h"
 
+#include <nodes/relation.h>
+
 #include "nodes/primnodes.h"
 #include "nodes/nodeFuncs.h"
 

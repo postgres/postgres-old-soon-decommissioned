@@ -29,6 +29,7 @@
 
 #include "postgres.h"
 
+#include <utils/lsyscache.h>
 #include "nodes/relation.h"
 
 #include "optimizer/cost.h"

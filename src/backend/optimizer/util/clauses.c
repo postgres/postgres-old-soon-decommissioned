@@ -18,7 +18,7 @@
 
 #include "postgres.h"
 
-#include "nodes/pg_list.h"
+#include <catalog/pg_operator.h>
 #include "nodes/primnodes.h"
 #include "nodes/relation.h"
 #include "nodes/parsenodes.h"
@@ -27,7 +27,6 @@
 
 #include "catalog/pg_aggregate.h"
 
-#include "utils/elog.h"
 #include "utils/syscache.h"
 #include "utils/lsyscache.h"
 

@@ -15,6 +15,9 @@
 
 #include "postgres.h"
 
+#include <utils/syscache.h>
+#include <catalog/pg_index.h>
+
 #include "nodes/execnodes.h"
 #include "nodes/plannodes.h"
 #include "nodes/relation.h"
