@@ -273,6 +273,7 @@ endif
 
 # Globally pass PORTNAME
 CFLAGS+= -DPORTNAME_$(PORTNAME)
+CFLAGS += -I ../../backend/port/$(PORTNAME)
 
 # Globally pass the default TCP port for postmaster(1).
 CFLAGS+= -DPOSTPORT='"5432"'
@@ -290,7 +291,7 @@ CFLAGS += -DNULL_PATCH
 CFLAGS += -DESCAPE_PATCH
 # enable patches for varchar and fsync
 CFLAGS += -DOPENLINK_PATCHES
- 
+
 ##############################################################################
 #
 # Miscellaneous configuration
