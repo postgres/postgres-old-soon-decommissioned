@@ -1293,8 +1293,13 @@ index_innerjoin(Query *root, RelOptInfo * rel, List *clausegroup_list,
 						  length(clausegroup),
 						  &temp_pages,
 						  &temp_selec);
+
 		pathnode->path.pathtype = T_IndexScan;
 		pathnode->path.parent = rel;
+	    pathnode->path.p_ordering.ordtype = SORTOP_ORDER;
+	    pathnode->path.p_ordering.ord.sortop = index->ordering;
+	    pathnode->path.keys = NIL;	/* not sure about this, bjm 1998/09/21 */
+
 		pathnode->indexid = index->relids;
 		pathnode->indexkeys = index->indexkeys;
 		pathnode->indexqual = clausegroup;
