@@ -925,14 +925,14 @@ describeUsers (const char *name)
 	headers[cols] = NULL;
 
 	strcpy(buf,
-		   "SELECT u.usename AS \"User Name\"\n
-                 , u.usesysid AS \"User ID\"\n
-                 , u.usesuper AS \"Super User\"\n
-                 , u.usecreatedb AS \"Create DB\"\n
-              FROM pg_user u\n");
+		   "SELECT u.usename AS \"User Name\",\n"
+           "       u.usesysid AS \"User ID\",\n"
+           "       u.usesuper AS \"Super User\",\n"
+           "       u.usecreatedb AS \"Create DB\"\n"
+           "FROM pg_user u\n");
 	if (name)
 	{
-		strcat(buf, "   WHERE u.usename ~ '^");
+		strcat(buf, "WHERE u.usename ~ '^");
 		strncat(buf, name, REGEXP_CUTOFF);
 		strcat(buf, "'\n");
 	}
