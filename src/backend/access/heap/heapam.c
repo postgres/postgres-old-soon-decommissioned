@@ -2204,7 +2204,7 @@ heap_xlog_insert(bool redo, XLogRecPtr lsn, XLogRecord *record)
 		htup->t_infomask = HEAP_XMAX_INVALID | xlhdr.mask;
 		HeapTupleHeaderSetXmin(htup, record->xl_xid);
 		HeapTupleHeaderSetCmin(htup, FirstCommandId);
-		HeapTupleHeaderSetXmax(htup, InvalidTransactionId);
+		HeapTupleHeaderSetXmaxInvalid(htup);
 		HeapTupleHeaderSetCmax(htup, FirstCommandId);
 
 		offnum = PageAddItem(page, (Item) htup, newlen, offnum,
