@@ -492,7 +492,7 @@ pg_parse_and_plan(char *query_string,		/* string to execute */
 
 		for (i = 0; i < querytree_list->len; i++)
 		{
-			print(querytree_list->qtrees[i]);
+			nodeDisplay(querytree_list->qtrees[i]);
 			printf("\n");
 		}
 	}
@@ -1293,7 +1293,7 @@ PostgresMain(int argc, char *argv[])
 	if (IsUnderPostmaster == false)
 	{
 		puts("\nPOSTGRES backend interactive interface");
-		puts("$Revision: 1.63 $ $Date: 1998/01/26 01:41:35 $");
+		puts("$Revision: 1.64 $ $Date: 1998/02/01 19:43:46 $");
 	}
 
 	/* ----------------
