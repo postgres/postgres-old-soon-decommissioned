@@ -3438,4 +3438,7 @@ extern Oid ProcedureCreate(const char *procedureName,
 				int parameterCount,
 				const Oid *parameterTypes);
 
+extern void check_sql_fn_retval(Oid rettype, char fn_typtype,
+								List *queryTreeList);
+
 #endif   /* PG_PROC_H */

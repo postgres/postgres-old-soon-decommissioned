@@ -37,8 +37,8 @@ array_push(PG_FUNCTION_ARGS)
 	int16		typlen;
 	bool		typbyval;
 	char		typalign;
-	Oid			arg0_typeid = get_fn_expr_argtype(fcinfo, 0);
-	Oid			arg1_typeid = get_fn_expr_argtype(fcinfo, 1);
+	Oid			arg0_typeid = get_fn_expr_argtype(fcinfo->flinfo, 0);
+	Oid			arg1_typeid = get_fn_expr_argtype(fcinfo->flinfo, 1);
 	Oid			arg0_elemid;
 	Oid			arg1_elemid;
 	ArrayMetaState *my_extra;

@@ -2792,7 +2792,7 @@ array_type_coerce(PG_FUNCTION_ARGS)
 
 	if (my_extra->srctype != src_elem_type)
 	{
-		Oid			tgt_type = get_fn_expr_rettype(fcinfo);
+		Oid			tgt_type = get_fn_expr_rettype(fmgr_info);
 		Oid			tgt_elem_type;
 		Oid			funcId;
 

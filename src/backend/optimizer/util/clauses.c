@@ -1731,6 +1731,7 @@ inline_function(Oid funcid, Oid result_type, List *args,
 	int		   *usecounts;
 	List	   *arg;
 	int			i;
+	int			j;
 
 	/*
 	 * Forget it if the function is not SQL-language or has other
@@ -1742,11 +1743,19 @@ inline_function(Oid funcid, Oid result_type, List *args,
 		funcform->pronargs != length(args))
 		return NULL;
 
-	/* Forget it if declared return type is tuple or void */
+	/* Forget it if declared return type is not base or domain */
 	result_typtype = get_typtype(funcform->prorettype);
 	if (result_typtype != 'b' &&
 		result_typtype != 'd')
 		return NULL;
+
+	/* Forget it if any declared argument type is polymorphic */
+	for (j = 0; j < funcform->pronargs; j++)
+	{
+		if (funcform->proargtypes[j] == ANYARRAYOID ||
+			funcform->proargtypes[j] == ANYELEMENTOID)
+			return NULL;
+	}
 
 	/* Check for recursive function, and give up trying to expand if so */
 	if (oidMember(funcid, active_fns))
