@@ -1239,7 +1239,7 @@ transformIndexConstraints(ParseState *pstate, CreateStmtContext *cxt)
 				 cxt->stmtType);
 
 		elog(NOTICE, "%s / %s will create implicit index '%s' for table '%s'",
-			 cxt->stmtType, (index->primary ? "ADD PRIMARY KEY" : "ADD UNIQUE"),
+			 cxt->stmtType, (index->primary ? "PRIMARY KEY" : "UNIQUE"),
 			 index->idxname, cxt->relname);
 	}
 }
