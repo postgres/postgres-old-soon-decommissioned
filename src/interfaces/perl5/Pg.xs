@@ -1,6 +1,6 @@
 /*-------------------------------------------------------
  *
- * $Id$
+ * $Id$ with patch for NULs
  *
  * Copyright (c) 1997, 1998  Edmund Mergl
  *
@@ -643,7 +643,7 @@ lo_read(conn, fd, buf, len)
 		}
 	OUTPUT:
 		RETVAL
-		buf
+		buf sv_setpvn((SV*)ST(2), buf, RETVAL);   /* to handle NULs */
 
 int
 lo_write(conn, fd, buf, len)
@@ -1029,7 +1029,7 @@ lo_read(conn, fd, buf, len)
 		}
 	OUTPUT:
 		RETVAL
-		buf
+		buf sv_setpvn((SV*)ST(2), buf, RETVAL);   /* to handle NULs */
 
 
 int
