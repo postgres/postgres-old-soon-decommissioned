@@ -953,7 +953,7 @@ DecodeDateTime(char **field, int *ftype, int nf,
 		if (tm->tm_year > 0)
 			tm->tm_year = -(tm->tm_year - 1);
 		else
-			elog(ERROR, "Inconsistant use of year %04d and 'BC'", tm->tm_year);
+			elog(ERROR, "Inconsistent use of year %04d and 'BC'", tm->tm_year);
 	}
 	else if (is2digits)
 	{
@@ -1405,7 +1405,7 @@ DecodeDate(char *str, int fmask, int *tmask, struct tm * tm)
 		if (tm->tm_year > 0)
 			tm->tm_year = -(tm->tm_year - 1);
 		else
-			elog(ERROR, "Inconsistant use of year %04d and 'BC'", tm->tm_year);
+			elog(ERROR, "Inconsistent use of year %04d and 'BC'", tm->tm_year);
 	}
 	else if (is2digits)
 	{

@@ -20,7 +20,7 @@ CREATE TABLE sal_emp (
 );
 </programlisting>
   As shown, an array data type is named by appending square brackets
-  (<literal>[ ]</>) to the data type name of the array elements.
+  (<literal>[]</>) to the data type name of the array elements.
   The above query will create a table named
   <structname>sal_emp</structname> with a <type>text</type> string
   (<structfield>name</structfield>), a one-dimensional array of type
