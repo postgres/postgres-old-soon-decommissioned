@@ -49,7 +49,6 @@
 <!entity maintenance   SYSTEM "maintenance.sgml">
 <!entity manage-ag     SYSTEM "manage-ag.sgml">
 <!entity monitoring    SYSTEM "monitoring.sgml">
-<!entity recovery      SYSTEM "recovery.sgml">
 <!entity regress       SYSTEM "regress.sgml">
 <!entity release       SYSTEM "release.sgml">
 <!entity runtime       SYSTEM "runtime.sgml">
