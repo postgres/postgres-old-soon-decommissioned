@@ -248,7 +248,10 @@ make_one_rel_by_joins(Query *root, List *rels, int levels_needed)
 		root->join_rel_list = rels = joined_rels;
 	}
 
+#ifdef NOT_USED
 	Assert(BushyPlanFlag || length(rels) == 1);
+#endif
+	Assert(length(rels) == 1);
 
 #ifdef NOT_USED
 	if (BushyPlanFlag)
