@@ -48,6 +48,8 @@ _equalResdom(Resdom *a, Resdom *b)
 		return false;
 	if (a->reskey != b->reskey)
 		return false;
+	if (a->resgroupref != b->resgroupref)
+		return false;
 	if (a->reskeyop != b->reskeyop)
 		return false;
 

@@ -62,7 +62,9 @@ extern void replace_vars_with_subplan_refs(Node *clause,
 										   List *subplanTargetList);
 extern bool set_agg_tlist_references(Agg *aggNode);
 extern void del_agg_tlist_references(List *tlist);
-extern void check_having_for_ungrouped_vars(Node *clause, List *groupClause);
+extern void check_having_for_ungrouped_vars(Node *clause,
+											List *groupClause,
+											List *targetList);
 extern void transformKeySetQuery(Query *origNode);
 
 #endif	 /* PLANMAIN_H */

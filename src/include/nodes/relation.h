@@ -103,6 +103,7 @@ typedef struct RelOptInfo
 } RelOptInfo;
 
 extern Var *get_expr(TargetEntry *foo);
+extern Var *get_groupclause_expr(GroupClause *groupClause, List *targetList);
 
 typedef struct MergeOrder
 {

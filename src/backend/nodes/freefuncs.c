@@ -396,8 +396,6 @@ _freeAgg(Agg *node)
 static void
 _freeGroupClause(GroupClause *node)
 {
-	freeObject(node->entry);
-
 	pfree(node);
 }
 

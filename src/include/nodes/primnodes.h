@@ -30,6 +30,7 @@
  *		resname			- name of the resdom (could be NULL)
  *		reskey			- order of key in a sort (for those > 0)
  *		reskeyop		- sort operator Oid
+ *		resgroupref		- set to nonzero if referenced from a group by clause
  *		resjunk			- set to nonzero to eliminate the attribute
  *						  from final target list  e.g., ctid for replace
  *						  and delete
@@ -45,6 +46,7 @@ typedef struct Resdom
 	char	   *resname;
 	Index		reskey;
 	Oid			reskeyop;
+	Index		resgroupref;
 	int			resjunk;
 } Resdom;
 

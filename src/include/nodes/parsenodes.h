@@ -960,8 +960,8 @@ typedef struct SortClause
 typedef struct GroupClause
 {
 	NodeTag		type;
-	TargetEntry *entry;			/* attributes to group on */
 	Oid			grpOpoid;		/* the sort operator to use */
+	Index		tleGroupref;	/* reference into targetlist */
 } GroupClause;
 
 #define	ROW_MARK_FOR_UPDATE		(1 << 0)

@@ -107,6 +107,7 @@ makeResdom(AttrNumber resno,
 	resdom->resname = resname;
 	resdom->reskey = reskey;
 	resdom->reskeyop = reskeyop;
+	resdom->resgroupref = 0;
 	resdom->resjunk = resjunk;
 	return resdom;
 }
