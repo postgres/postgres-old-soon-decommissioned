@@ -3273,11 +3273,23 @@ timestamp_part(PG_FUNCTION_ARGS)
 				break;
 
 			case DTK_CENTURY:
-				result = (tm->tm_year / 100);
+				/* centuries AD, c>0: year in [ (c-1)*100+1 :     c*100   ]
+				 * centuries BC, c<0: year in [     c*100   : (c+1)*100-1 ]
+				 * there is no number 0 century.
+				 */
+				if (tm->tm_year > 0)
+					result = ((tm->tm_year+99) / 100);
+				else
+					/* caution: C division may yave negative remainder */
+					result = - ((99 - (tm->tm_year-1))/100);
 				break;
 
 			case DTK_MILLENNIUM:
-				result = (tm->tm_year / 1000);
+				/* see comments above. */
+				if (tm->tm_year > 0)
+					result = ((tm->tm_year+999) / 1000);
+				else
+					result = - ((999 - (tm->tm_year-1))/1000);
 				break;
 
 			case DTK_JULIAN:
