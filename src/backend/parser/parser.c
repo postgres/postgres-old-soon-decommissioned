@@ -17,7 +17,7 @@
 #endif /*WIN32 */
 #include <sys/param.h>		/* for MAXPATHLEN */
 
-#include "utils/elog.h"
+#include "postgres.h"
 #include "parser/catalog_utils.h"
 #include "nodes/pg_list.h"
 #include "utils/exc.h"

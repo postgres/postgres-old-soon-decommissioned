@@ -17,6 +17,8 @@
 #include <nlist.h>
 #include <link.h>
 
+#include "postgres.h"
+
 #include "fmgr.h"			/* for func_ptr */
 #include "utils/dynamic_loader.h"
 
