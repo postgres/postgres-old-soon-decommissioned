@@ -215,9 +215,8 @@ ProcessUtility(Node *parsetree,
 							BeginTransactionBlock();
 
 							/*
-							 * Currently, the only option that can be set is
-							 * the transaction isolation level by START
-							 * TRANSACTION.
+							 * Currently, the only option that can be set by
+							 * START TRANSACTION is the isolation level.
 							 */
 							if (stmt->options)
 							{
