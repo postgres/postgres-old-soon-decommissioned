@@ -218,8 +218,8 @@ typedef enum NodeTag
 	T_RangeTblEntry,
 	T_SortClause,
 	T_GroupClause,
-	T_SubSelectXXX,				/* not used anymore; tag# available */
-	T_oldJoinExprXXX,			/* not used anymore; tag# available */
+	T_NullTest,
+	T_BooleanTest,
 	T_CaseExpr,
 	T_CaseWhen,
 	T_RowMarkXXX,				/* not used anymore; tag# available */

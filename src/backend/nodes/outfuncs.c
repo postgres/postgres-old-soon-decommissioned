@@ -1259,12 +1259,6 @@ _outAExpr(StringInfo str, A_Expr *node)
 		case NOT:
 			appendStringInfo(str, "NOT ");
 			break;
-		case ISNULL:
-			appendStringInfo(str, "ISNULL ");
-			break;
-		case NOTNULL:
-			appendStringInfo(str, "NOTNULL ");
-			break;
 		case OP:
 			_outToken(str, node->opname);
 			appendStringInfo(str, " ");
@@ -1400,6 +1394,32 @@ _outCaseWhen(StringInfo str, CaseWhen *node)
 
 	appendStringInfo(str, " :then ");
 	_outNode(str, node->result);
+}
+
+/*
+ *	NullTest
+ */
+static void
+_outNullTest(StringInfo str, NullTest *node)
+{
+	appendStringInfo(str, " NULLTEST :arg ");
+	_outNode(str, node->arg);
+
+	appendStringInfo(str, " :nulltesttype %d ",
+					 (int) node->nulltesttype);
+}
+
+/*
+ *	BooleanTest
+ */
+static void
+_outBooleanTest(StringInfo str, BooleanTest *node)
+{
+	appendStringInfo(str, " BOOLEANTEST :arg ");
+	_outNode(str, node->arg);
+
+	appendStringInfo(str, " :booltesttype %d ",
+					 (int) node->booltesttype);
 }
 
 /*
@@ -1639,7 +1659,12 @@ _outNode(StringInfo str, void *obj)
 			case T_CaseWhen:
 				_outCaseWhen(str, obj);
 				break;
-
+			case T_NullTest:
+				_outNullTest(str, obj);
+				break;
+			case T_BooleanTest:
+				_outBooleanTest(str, obj);
+				break;
 			case T_VariableSetStmt:
 				break;
 			case T_SelectStmt:

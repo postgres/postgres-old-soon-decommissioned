@@ -1017,6 +1017,42 @@ _copyCaseWhen(CaseWhen *from)
 	return newnode;
 }
 
+/* ----------------
+ *		_copyNullTest
+ * ----------------
+ */
+static NullTest *
+_copyNullTest(NullTest *from)
+{
+	NullTest *newnode = makeNode(NullTest);
+
+	/*
+	 * copy remainder of node
+	 */
+	Node_Copy(from, newnode, arg);
+	newnode->nulltesttype = from->nulltesttype;
+
+	return newnode;
+}
+
+/* ----------------
+ *		_copyBooleanTest
+ * ----------------
+ */
+static BooleanTest *
+_copyBooleanTest(BooleanTest *from)
+{
+	BooleanTest *newnode = makeNode(BooleanTest);
+
+	/*
+	 * copy remainder of node
+	 */
+	Node_Copy(from, newnode, arg);
+	newnode->booltesttype = from->booltesttype;
+
+	return newnode;
+}
+
 static ArrayRef *
 _copyArrayRef(ArrayRef *from)
 {
@@ -2953,6 +2989,12 @@ copyObject(void *from)
 			break;
 		case T_CaseWhen:
 			retval = _copyCaseWhen(from);
+			break;
+		case T_NullTest:
+			retval = _copyNullTest(from);
+			break;
+		case T_BooleanTest:
+			retval = _copyBooleanTest(from);
 			break;
 		case T_FkConstraint:
 			retval = _copyFkConstraint(from);

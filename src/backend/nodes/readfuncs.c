@@ -860,6 +860,56 @@ _readCaseWhen(void)
 }
 
 /* ----------------
+ *		_readNullTest
+ *
+ *	NullTest is a subclass of Node
+ * ----------------
+ */
+static NullTest *
+_readNullTest(void)
+{
+	NullTest	*local_node;
+	char		*token;
+	int			length;
+
+	local_node = makeNode(NullTest);
+
+	token = pg_strtok(&length); /* eat :arg */
+	local_node->arg = nodeRead(true);	/* now read it */
+
+	token = pg_strtok(&length); /* eat :nulltesttype */
+	token = pg_strtok(&length); /* get nulltesttype */
+	local_node->nulltesttype = (NullTestType) atoi(token);
+
+	return local_node;
+}
+
+/* ----------------
+ *		_readBooleanTest
+ *
+ *	BooleanTest is a subclass of Node
+ * ----------------
+ */
+static BooleanTest *
+_readBooleanTest(void)
+{
+	BooleanTest	*local_node;
+	char		*token;
+	int			length;
+
+	local_node = makeNode(BooleanTest);
+
+	token = pg_strtok(&length); /* eat :arg */
+	local_node->arg = nodeRead(true);	/* now read it */
+
+	token = pg_strtok(&length); /* eat :booltesttype */
+	token = pg_strtok(&length); /* get booltesttype */
+	local_node->booltesttype = (BoolTestType) atoi(token);
+
+	return local_node;
+}
+
+/* ----------------
  *		_readVar
  *
  *	Var is a subclass of Expr
@@ -1966,6 +2016,10 @@ parsePlanString(void)
 		return_value = _readCaseExpr();
 	else if (length == 4 && strncmp(token, "WHEN", length) == 0)
 		return_value = _readCaseWhen();
+	else if (length == 8 && strncmp(token, "NULLTEST", length) == 0)
+		return_value = _readNullTest();
+	else if (length == 11 && strncmp(token, "BOOLEANTEST", length) == 0)
+		return_value = _readBooleanTest();
 	else
 		elog(ERROR, "badly formatted planstring \"%.10s\"...", token);
 

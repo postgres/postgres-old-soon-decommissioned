@@ -1712,6 +1712,26 @@ _equalCaseWhen(CaseWhen *a, CaseWhen *b)
 	return true;
 }
 
+static bool
+_equalNullTest(NullTest *a, NullTest *b)
+{
+	if (!equal(a->arg, b->arg))
+		return false;
+	if (a->nulltesttype != b->nulltesttype)
+		return false;
+	return true;
+}
+
+static bool
+_equalBooleanTest(BooleanTest *a, BooleanTest *b)
+{
+	if (!equal(a->arg, b->arg))
+		return false;
+	if (a->booltesttype != b->booltesttype)
+		return false;
+	return true;
+}
+
 /*
  * Stuff from pg_list.h
  */
@@ -2119,6 +2139,12 @@ equal(void *a, void *b)
 			break;
 		case T_CaseWhen:
 			retval = _equalCaseWhen(a, b);
+			break;
+		case T_NullTest:
+			retval = _equalNullTest(a, b);
+			break;
+		case T_BooleanTest:
+			retval = _equalBooleanTest(a, b);
 			break;
 		case T_FkConstraint:
 			retval = _equalFkConstraint(a, b);
