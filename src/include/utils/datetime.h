@@ -108,6 +108,9 @@
 #define AGO		17
 #define ABS_BEFORE		18
 #define ABS_AFTER		19
+/* generic fields to help with parsing */
+#define DATE	20
+#define TIME	21
 /* reserved for unrecognized string values */
 #define UNKNOWN_FIELD	31
 
@@ -162,9 +165,6 @@
 #define DTK_DOY			33
 #define DTK_TZ_HOUR		34
 #define DTK_TZ_MINUTE	35
-
-#define DTK_ISO_DATE	36
-#define DTK_ISO_TIME	37
 
 
 /*
