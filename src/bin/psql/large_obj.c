@@ -78,6 +78,7 @@ handle_transaction(void)
 	}
 
 	PQsetNoticeProcessor(pset.db, old_notice_hook, NULL);
+	PQclear(res);
 	return true;
 }
 
@@ -324,6 +325,7 @@ do_lo_unlink(const char *loid_arg)
 			}
 			return false;
 		}
+		PQclear(res);
 	}
 
 	if (own_transaction)
