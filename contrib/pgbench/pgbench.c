@@ -548,16 +548,6 @@ init()
 				fprintf(stderr, "PQendcopy failed\n");
 				exit(1);
 			}
-
-			/*
-			 * do a checkpoint to purge the old WAL logs
-			 */
-			res = PQexec(con, "checkpoint");
-			if (PQresultStatus(res) != PGRES_COMMAND_OK)
-			{
-				fprintf(stderr, "%s", PQerrorMessage(con));
-				exit(1);
-			}
 		}
 	}
 
