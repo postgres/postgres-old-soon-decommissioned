@@ -1237,6 +1237,7 @@ do_connect(const char *new_dbname, const char *new_user)
 		if (PQstatus(pset.db) == CONNECTION_BAD &&
 			strcmp(PQerrorMessage(pset.db), "fe_sendauth: no password supplied\n") == 0)
 		{
+			PQfinish(pset.db);
 			need_pass = true;
 			free(prompted_password);
 			prompted_password = NULL;
