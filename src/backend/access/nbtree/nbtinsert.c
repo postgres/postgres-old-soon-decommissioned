@@ -269,8 +269,8 @@ _bt_check_unique(Relation rel, BTItem btitem, Relation heapRel,
 						SetBufferCommitInfoNeedsSave(buf);
 					}
 					LockBuffer(hbuffer, BUFFER_LOCK_UNLOCK);
-					ReleaseBuffer(hbuffer);
 				}
+				ReleaseBuffer(hbuffer);
 			}
 		}
 
