@@ -485,8 +485,8 @@ typedefs (Michael)</para></listitem>
    <itemizedlist>
     <listitem>
      <para>
-      The 8.1 release will remove the function
-       <function>to_char(interval, text)</>.
+      The 8.1 release will remove the <function>to_char()</> function
+      for intervals.
      </para>
     </listitem>
 
