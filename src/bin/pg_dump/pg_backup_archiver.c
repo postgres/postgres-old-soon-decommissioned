@@ -1249,18 +1249,18 @@ ahwrite(const void *ptr, size_t size, size_t nmemb, ArchiveHandle *AH)
 		  int remaining = AH->lo_buf_size - AH->lo_buf_used;
 		  int slack = nmemb * size - remaining;
 
-		  memcpy(AH->lo_buf + AH->lo_buf_used, ptr, remaining);
+		  memcpy((char *)AH->lo_buf + AH->lo_buf_used, ptr, remaining);
 		  res = lo_write(AH->connection, AH->loFd, AH->lo_buf, AH->lo_buf_size);
 		  ahlog(AH, 5, "wrote %d bytes of large object data (result = %d)\n",
 		  	        AH->lo_buf_size, res);
 		  if (res != AH->lo_buf_size)
 			die_horribly(AH, modulename, "could not write to large object (result: %d, expected: %d)\n",
 						 res, AH->lo_buf_size);
-	          memcpy(AH->lo_buf, ptr + remaining, slack);
+	          memcpy(AH->lo_buf, (char *)ptr + remaining, slack);
 		  AH->lo_buf_used = slack;
 	       } else {
 	         /* LO Buffer is still large enough, buffer it */
-		 memcpy(AH->lo_buf + AH->lo_buf_used, ptr, size * nmemb);
+		 memcpy((char *)AH->lo_buf + AH->lo_buf_used, ptr, size * nmemb);
 		 AH->lo_buf_used += size * nmemb;
 	       }
 
