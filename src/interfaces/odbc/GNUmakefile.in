@@ -42,6 +42,7 @@ SHLIB_LINK= $(LIBS)
 # Shared library stuff, also default 'all' target
 include $(SRCDIR)/Makefile.shlib
 
+LDFLAGS_SL+= $(LDFLAGS_ODBC)
 
 .PHONY: install install-ini beforeinstall-headers install-headers
 

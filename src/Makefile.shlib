@@ -95,6 +95,7 @@ ifeq ($(PORTNAME), linux)
   install-shlib-dep	:= install-shlib
   shlib				:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
   LDFLAGS_SL		:= -shared -soname $(shlib)
+  LDFLAGS_ODBC		:= -Bsymbolic -lc -lm
   CFLAGS			+= $(CFLAGS_SL)
 endif
 
