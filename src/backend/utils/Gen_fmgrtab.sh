@@ -201,7 +201,7 @@ cat > $TABCFILE <<FuNkYfMgRtAbStUfF
 # include <limits.h>
 #else
 # if defined(USE_LIMITS_H)
-#  include <machine/limits.h>
+#  include <limits.h>
 #  define MAXINT	INT_MAX
 # else
 #  include <values.h>
