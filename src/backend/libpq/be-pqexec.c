@@ -236,8 +236,8 @@ strmake(char *str, int len)
 	if (len <= 0)
 		len = strlen(str);
 
-	newstr = (char *) palloc((unsigned) len + 1);
-	StrNCpy(newstr, str, len + 1);
+	newstr = (char *) palloc(len + 1);
+	memcpy(newstr, str, len);
 	newstr[len] = (char) 0;
 	return newstr;
 }

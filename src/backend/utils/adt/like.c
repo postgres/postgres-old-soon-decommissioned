@@ -48,7 +48,8 @@ fixedlen_like(char *s, text *p, int charlen)
 	(void) pg_mb2wchar_with_len((unsigned char *) s, sterm, charlen);
 #else
 	sterm = (char *) palloc(charlen + 1);
-	StrNCpy(sterm, s, charlen + 1);
+	memcpy(sterm, s, charlen);
+	sterm[charlen] = '\0';
 #endif
 
 	/*
