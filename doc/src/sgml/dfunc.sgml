@@ -38,8 +38,8 @@ $PostgreSQL$
   in memory when they are loaded by the executable.  (Object files
   intended for executables are usually not compiled that way.)  The
   command to link a shared library contains special flags to
-  distinguish it from linking an executable. --- At least this is the
-  theory.  On some systems the practice is much uglier.
+  distinguish it from linking an executable (at least in theory
+  &mdash; on some systems the practice is much uglier).
  </para>
 
  <para>

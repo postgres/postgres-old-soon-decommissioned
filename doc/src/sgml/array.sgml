@@ -49,7 +49,7 @@ CREATE TABLE tictactoe (
 </programlisting>
 
   However, the current implementation does not enforce the array size
-  limits --- the behavior is the same as for arrays of unspecified
+  limits &mdash; the behavior is the same as for arrays of unspecified
   length.
  </para>
 

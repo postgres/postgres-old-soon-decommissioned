@@ -159,7 +159,7 @@ CREATE TABLE <replaceable class="parameter">newtable</replaceable> AS
     to rename <replaceable class="parameter">newtable</replaceable> to the old name, and
     recreate the table's indexes. However, this approach does not preserve
     OIDs, constraints, foreign key relationships, granted privileges, and
-    other ancillary properties of the table --- all such items must be
+    other ancillary properties of the table &mdash; all such items must be
     manually recreated.
    </para>
  </refsect1>

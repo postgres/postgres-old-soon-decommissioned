@@ -211,7 +211,7 @@ gmake installcheck
      fail if you run the test on the day of a daylight-saving time
      changeover, or the day after one.  These queries expect that
      the intervals between midnight yesterday, midnight today and
-     midnight tomorrow are exactly twenty-four hours --- which is wrong
+     midnight tomorrow are exactly twenty-four hours &mdash; which is wrong
      if daylight-saving time went into or out of effect meanwhile.
     </para>
 

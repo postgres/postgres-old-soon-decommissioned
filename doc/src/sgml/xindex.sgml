@@ -42,7 +42,7 @@ $PostgreSQL$
    <productname>PostgreSQL</productname>, but all index methods are
    described in <classname>pg_am</classname>.  It is possible to add a
    new index method by defining the required interface routines and
-   then creating a row in <classname>pg_am</classname> --- but that is
+   then creating a row in <classname>pg_am</classname> &mdash; but that is
    far beyond the scope of this chapter.
   </para>
 
@@ -745,7 +745,7 @@ SELECT * FROM table WHERE integer_column &lt; 4;
    Consider again the situation where we are storing in the index only
    the bounding box of a complex object such as a polygon.  In this
    case there's not much value in storing the whole polygon in the index
-   entry --- we may as well store just a simpler object of type
+   entry &mdash; we may as well store just a simpler object of type
    <type>box</>.  This situation is expressed by the <literal>STORAGE</>
    option in <command>CREATE OPERATOR CLASS</>: we'd write something like
 

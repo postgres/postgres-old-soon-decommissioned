@@ -18,7 +18,7 @@ $PostgreSQL$
   <para>
    <productname>PostgreSQL</>
    programs (server and client) can issue their messages in
-   your favorite language -- if the messages have been translated.
+   your favorite language &mdash; if the messages have been translated.
    Creating and maintaining translated message sets needs the help of
    people who speak their own language well and want to contribute to
    the <productname>PostgreSQL</> effort.  You do not have to be a
@@ -30,7 +30,7 @@ $PostgreSQL$
    <title>Requirements</title>
 
    <para>
-    We won't judge your language skills -- this section is about
+    We won't judge your language skills &mdash; this section is about
     software tools.  Theoretically, you only need a text editor.  But
     this is only in the unlikely event that you do not want to try out
     your translated messages.  When you configure your source tree, be
@@ -389,7 +389,7 @@ fprintf(stderr, gettext("panic level %d\n"), lvl);
 
        <listitem>
         <para>
-         List of provided translations -- empty in the beginning.
+         List of provided translations &mdash; initially empty.
         </para>
        </listitem>
       </varlistentry>

@@ -370,7 +370,7 @@ $PostgreSQL$
     <xref linkend="datetime-timezone-input-table"> shows the time zone
     abbreviations recognized by <productname>PostgreSQL</productname>
     in date/time input values.  Note that these names are <emphasis>not</>
-    used for date/time output --- display is driven by the currently
+    used for date/time output &mdash; display is driven by the currently
     selected <xref linkend="guc-timezone"> parameter setting.  (It is
     likely that future releases will make some use of <varname>timezone</>
     for input as well.)

@@ -2252,7 +2252,7 @@ unsigned char *PQescapeBytea(const unsigned char *from,
   <listitem>
   <para>
    Converts an escaped string representation of binary data into binary
-   data --- the reverse of <function>PQescapeBytea</function>.
+   data &mdash; the reverse of <function>PQescapeBytea</function>.
    This is needed when retrieving <type>bytea</type> data in text format,
    but not when retrieving it in binary format.
 

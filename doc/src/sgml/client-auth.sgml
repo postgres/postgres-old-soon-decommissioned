@@ -14,7 +14,7 @@ $PostgreSQL$
   specifies which <productname>PostgreSQL</productname> user name it
   wants to connect as, much the same way one logs into a Unix computer
   as a particular user. Within the SQL environment the active database
-  user name determines access privileges to database objects -- see
+  user name determines access privileges to database objects &mdash; see
   <xref linkend="user-manag"> for more information. Therefore, it is
   essential to restrict which database users can connect.
  </para>

@@ -117,7 +117,7 @@ less -x4
     error).  The <function>errcode</> call specifies the SQLSTATE error code
     using a macro defined in <filename>src/include/utils/errcodes.h</>.  The
     <function>errmsg</> call provides the primary message text.  Notice the
-    extra set of parentheses surrounding the auxiliary function calls ---
+    extra set of parentheses surrounding the auxiliary function calls &mdash;
     these are annoying but syntactically necessary.
    </para>
 

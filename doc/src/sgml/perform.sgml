@@ -576,7 +576,7 @@ SELECT * FROM a CROSS JOIN b, c, d, e WHERE ...;
    both for reducing planning time and for directing the planner to a
    good query plan.  If the planner chooses a bad join order by default,
    you can force it to choose a better order via <literal>JOIN</> syntax
-   --- assuming that you know of a better order, that is.  Experimentation
+   &mdash; assuming that you know of a better order, that is.  Experimentation
    is recommended.
   </para>
 
