@@ -33,7 +33,7 @@ CREATE OR REPLACE FUNCTION concat(text, text) RETURNS text AS '
 
 -- INSERT(string1, start, len, string2)
 CREATE OR REPLACE FUNCTION insert(text, integer, integer, text) RETURNS text AS '
-    SELECT substring($1 from 1 for $2) || $4 || substring($1 from $2 + $3 + 1);
+    SELECT substring($1 from 1 for $2 - 1) || $4 || substring($1 from $2 + $3);
 ' LANGUAGE SQL;
 
 
