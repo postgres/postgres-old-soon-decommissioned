@@ -128,7 +128,7 @@ int			log_min_error_statement = PANIC;
 int			log_min_messages = NOTICE;
 int			client_min_messages = NOTICE;
 
-int			log_min_duration_statement = 0;
+int			log_min_duration_statement = -1;
 
 
 /*
@@ -1185,10 +1185,10 @@ static struct config_int ConfigureNamesInt[] =
 		{"log_min_duration_statement", PGC_USERLIMIT, LOGGING_WHEN,
 			gettext_noop("minimum execution time in milliseconds above which statements will "
 						 "be logged"),
-			gettext_noop("The default is 0 (turning this feature off).")
+			gettext_noop("Zero prints all queries.  The default is -1 (turning this feature off).")
 		},
 		&log_min_duration_statement,
-		0, 0, INT_MAX / 1000, NULL, NULL
+		-1, -1, INT_MAX / 1000, NULL, NULL
 	},
 
 	/* End-of-list marker */
