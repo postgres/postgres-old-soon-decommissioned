@@ -25,8 +25,6 @@
 typedef HeapTuple	Type;
 typedef HeapTuple	Operator;
 
-extern	Oid	typeid_get_relid();
-
 extern bool check_typeid(long id);
 extern Type get_id_type(long id);
 extern char *get_id_typname(long id);
