@@ -783,15 +783,17 @@ clearTableInfo(TableInfo *tblinfo, int numTables)
     for(i=0;i<numTables;++i) {
 
         if(tblinfo[i].oid) free (tblinfo[i].oid);
-        if(tblinfo[i].relname) free (tblinfo[i].relname);
         if(tblinfo[i].relarch) free (tblinfo[i].relarch);
         if(tblinfo[i].relacl) free (tblinfo[i].relacl);
-        if(tblinfo[i].sequence) free (tblinfo[i].sequence);
         if(tblinfo[i].usename) free (tblinfo[i].usename);
 
         /* skip archive tables */
         if (isArchiveName(tblinfo[i].relname))
+        {
+	    if(tblinfo[i].relname) free (tblinfo[i].relname);
             continue;
+        }
+	if(tblinfo[i].relname) free (tblinfo[i].relname);
         
         if ( tblinfo[i].sequence )
             continue;
