@@ -1626,7 +1626,7 @@ SET ENABLE_SEQSCAN TO OFF;
         it succeeds.  Examples:
 <programlisting>
 archive_command = 'cp "%p" /mnt/server/archivedir/"%f"'
-archive_command = 'copy "%p" /mnt/server/archivedir/"%f"'  # Win32
+archive_command = 'copy "%p" /mnt/server/archivedir/"%f"'  # Windows
 </programlisting>
        </para>
       </listitem>
