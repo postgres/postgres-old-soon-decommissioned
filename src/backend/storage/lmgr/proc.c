@@ -469,6 +469,7 @@ ProcSleep(PROC_QUEUE *queue,
 		break;
 	}
     
+    MyProc->proc = proc;
     MyProc->token = token;
     MyProc->waitLock = lock;
     
