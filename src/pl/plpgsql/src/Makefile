@@ -71,12 +71,8 @@ endif
 
 distprep: $(srcdir)/pl_scan.c $(srcdir)/pl.tab.h $(srcdir)/pl_gram.c
 
-mklang.sql: mklang.sql.in
-	sed -e 's%__libdir__%$(libdir)%g' -e 's%__DLSUFFIX__%$(DLSUFFIX)%g' < $< > $@
-
-
 clean distclean: clean-lib
-	rm -f $(OBJS) mklang.sql
+	rm -f $(OBJS)
 	@rm -f y.tab.c y.tab.h lex.yy.c
 
 maintainer-clean: clean
