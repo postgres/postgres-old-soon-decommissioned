@@ -133,6 +133,26 @@ Postgres documentation
      </varlistentry>
 
      <varlistentry>
+      <term>--encrypted</term>
+      <listitem>
+       <para>
+	Encrypts the user's password stored in the database. If not
+	specified, the default is used.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>--unencrypted</term>
+      <listitem>
+       <para>
+	Does not encrypt the user's password stored in the database. If
+	not specified, the default is used.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term><replaceable class="parameter">username</replaceable></term>
       <listitem>
        <para>
