@@ -496,15 +496,6 @@ extern Datum varcharout(PG_FUNCTION_ARGS);
 extern Datum varcharrecv(PG_FUNCTION_ARGS);
 extern Datum varcharsend(PG_FUNCTION_ARGS);
 extern Datum varchar(PG_FUNCTION_ARGS);
-extern Datum varchareq(PG_FUNCTION_ARGS);
-extern Datum varcharne(PG_FUNCTION_ARGS);
-extern Datum varcharlt(PG_FUNCTION_ARGS);
-extern Datum varcharle(PG_FUNCTION_ARGS);
-extern Datum varchargt(PG_FUNCTION_ARGS);
-extern Datum varcharge(PG_FUNCTION_ARGS);
-extern Datum varcharcmp(PG_FUNCTION_ARGS);
-extern Datum varcharlen(PG_FUNCTION_ARGS);
-extern Datum varcharoctetlen(PG_FUNCTION_ARGS);
 
 /* varlena.c */
 extern Datum textin(PG_FUNCTION_ARGS);

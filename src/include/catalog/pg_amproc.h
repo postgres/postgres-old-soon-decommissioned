@@ -103,10 +103,10 @@ DATA(insert (	1996 1 1107 ));
 DATA(insert (	1998 1 1314 ));
 DATA(insert (	2000 1 1358 ));
 DATA(insert (	2002 1 1672 ));
-DATA(insert (	2003 1 1079 ));
-DATA(insert (	2039 1 1314 ));
+DATA(insert (	2003 1  360 ));
+DATA(insert (	2039 1 2045 ));
 DATA(insert (	2095 1 2166 ));
-DATA(insert (	2096 1 2173 ));
+DATA(insert (	2096 1 2166 ));
 DATA(insert (	2097 1 2180 ));
 DATA(insert (	2098 1 2187 ));
 

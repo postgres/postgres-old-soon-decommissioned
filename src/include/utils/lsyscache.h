@@ -17,6 +17,7 @@
 
 extern bool op_in_opclass(Oid opno, Oid opclass);
 extern bool op_requires_recheck(Oid opno, Oid opclass);
+extern Oid	get_opclass_member(Oid opclass, int16 strategy);
 extern char *get_attname(Oid relid, AttrNumber attnum);
 extern AttrNumber get_attnum(Oid relid, const char *attname);
 extern Oid	get_atttype(Oid relid, AttrNumber attnum);

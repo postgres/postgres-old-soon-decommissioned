@@ -161,8 +161,8 @@ DATA(insert ( 2206	 23    0 a ));
  */
 DATA(insert (	25 1042    0 i ));
 DATA(insert (	25 1043    0 i ));
-DATA(insert ( 1042	 25    0 i ));
-DATA(insert ( 1042 1043    0 i ));
+DATA(insert ( 1042	 25  401 i ));
+DATA(insert ( 1042 1043  401 i ));
 DATA(insert ( 1043	 25    0 i ));
 DATA(insert ( 1043 1042    0 i ));
 DATA(insert (	18	 25  946 i ));

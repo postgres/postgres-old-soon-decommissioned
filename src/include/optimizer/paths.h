@@ -41,7 +41,8 @@ extern Path *best_inner_indexscan(Query *root, RelOptInfo *rel,
 extern List *extract_or_indexqual_conditions(RelOptInfo *rel,
 								IndexOptInfo *index,
 								Expr *orsubclause);
-extern List *expand_indexqual_conditions(List *indexquals);
+extern List *expand_indexqual_conditions(IndexOptInfo *index,
+										 List *clausegroups);
 
 /*
  * orindxpath.c

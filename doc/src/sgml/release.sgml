@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+CHAR(n) to TEXT conversion automatically strips trailing blanks
 Pattern matching operations can use indexes regardless of locale
 New frontend/backend protocol supports many long-requested features
 SET AUTOCOMMIT TO OFF is no longer supported

@@ -14,6 +14,7 @@
 #ifndef PARSER_FUNC_H
 #define PARSER_FUNC_H
 
+#include "catalog/namespace.h"
 #include "parser/parse_node.h"
 
 
@@ -47,6 +48,15 @@ extern FuncDetailCode func_get_detail(List *funcname, List *fargs,
 				int nargs, Oid *argtypes,
 				Oid *funcid, Oid *rettype,
 				bool *retset, Oid **true_typeids);
+
+extern int	func_match_argtypes(int nargs,
+								Oid *input_typeids,
+								FuncCandidateList raw_candidates,
+								FuncCandidateList *candidates);
+
+extern FuncCandidateList func_select_candidate(int nargs,
+											   Oid *input_typeids,
+											   FuncCandidateList candidates);
 
 extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
 
