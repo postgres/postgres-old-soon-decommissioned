@@ -112,8 +112,7 @@ CREATE VIEW check_constraints AS
     WHERE rs.oid = con.connamespace
           AND u.usesysid = coalesce(c.relowner, t.typowner)
           AND u.usename = current_user
-          AND con.contype = 'c'
-          AND c.relkind = 'r';
+          AND con.contype = 'c';
 
 GRANT SELECT ON check_constraints TO PUBLIC;
 
