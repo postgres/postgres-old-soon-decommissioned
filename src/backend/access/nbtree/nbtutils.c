@@ -16,17 +16,6 @@
 
 #include "postgres.h"
 
-#include "catalog/pg_attribute.h"
-#include "access/attnum.h"
-#include "nodes/pg_list.h"
-#include "access/tupdesc.h"
-#include "storage/fd.h"
-#include "catalog/pg_am.h"
-#include "catalog/pg_class.h"
-#include "nodes/nodes.h"
-#include "rewrite/prs2lock.h"
-#include "access/skey.h"
-#include "access/strat.h"
 #include "utils/rel.h"
 
 #include "storage/block.h"
@@ -48,7 +37,11 @@
 #include "access/istrat.h"
 #include "access/genam.h"
 #include "access/iqual.h"
-
+#ifndef HAVE_MEMMOVE
+# include "regex/utils.h"
+#else
+# include <string.h>
+#endif
 #include "fmgr.h"
 
 ScanKey 

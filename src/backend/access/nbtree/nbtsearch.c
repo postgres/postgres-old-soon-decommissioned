@@ -48,6 +48,12 @@
 #include "access/nbtree.h"
 #include "access/genam.h"
 
+#ifndef HAVE_MEMMOVE
+# include "regex/utils.h"
+#else
+# include <string.h>
+#endif
+
 #include "fmgr.h"
 
 static BTStack _bt_searchr(Relation rel, int keysz, ScanKey scankey, Buffer *bufP, BTStack stack_in);

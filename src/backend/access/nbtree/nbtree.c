@@ -20,18 +20,6 @@
 
 #include "postgres.h"
 
-#include "catalog/pg_attribute.h"
-#include "access/attnum.h"
-#include "nodes/pg_list.h"
-#include "access/tupdesc.h"
-#include "storage/fd.h"
-#include "catalog/pg_am.h"
-#include "catalog/pg_class.h"
-#include "catalog/index.h"
-#include "nodes/nodes.h"
-#include "rewrite/prs2lock.h"
-#include "access/skey.h"
-#include "access/strat.h"
 #include "utils/rel.h"
 
 #include "storage/block.h"
@@ -52,23 +40,15 @@
 #include "access/sdir.h"
 #include "access/nbtree.h"
 
-#include "nodes/params.h"
-#include "executor/hashjoin.h"
-#include "nodes/primnodes.h"
-#include "nodes/memnodes.h"
-#include "executor/tuptable.h"
-#include "nodes/execnodes.h"
-
-#include "nodes/plannodes.h"
-#include "nodes/parsenodes.h"
-#include "tcop/dest.h"
-#include "executor/execdesc.h"
-#include "catalog/pg_index.h"
 #include "executor/executor.h"
 
 #include "access/heapam.h"
 
 #include "access/genam.h"
+
+#include "catalog/index.h"
+
+#include "miscadmin.h"
 
 bool	BuildingBtree = false;
 bool	FastBuild = false; /* turn this on to make bulk builds work*/

@@ -23,57 +23,26 @@
  *-------------------------------------------------------------------------
  */
 
-#include <stdio.h>
-#include <time.h>
-#include <string.h>
-
 #include "postgres.h"
  
-#include "catalog/pg_attribute.h"
-#include "access/attnum.h"
-#include "nodes/nodes.h"
-#include "nodes/pg_list.h"
-#include "access/tupdesc.h"
-#include "storage/fd.h" 
-#include "catalog/pg_am.h"
-#include "catalog/pg_class.h"
-#include "nodes/nodes.h"
-#include "rewrite/prs2lock.h" 
-#include "access/skey.h"
-#include "access/strat.h"
-#include "utils/rel.h"
- 
-#include "storage/block.h"
-#include "storage/off.h"  
-#include "storage/itemptr.h"
-#include "utils/nabstime.h"
-#include "access/htup.h"
-#include "access/itup.h"   
-#include "storage/itemid.h"
-#include "storage/item.h"
-#include "storage/buf.h"
-#include "storage/page.h"
-#include "storage/bufpage.h"
-#include "access/sdir.h"
-#include "access/funcindex.h"
-#include "utils/tqual.h"
 #include "access/relscan.h"
 #include "access/hash.h"
 
-#include "storage/ipc.h"
 #include "storage/bufmgr.h"
 
 #include "miscadmin.h"
 
 #include "utils/memutils.h"
 
-#include "storage/spin.h"
-#include "utils/hsearch.h"
-#include "storage/shmem.h"
-#include "storage/lock.h"
 #include "storage/lmgr.h"
 
 #include "access/genam.h"
+
+#ifndef HAVE_MEMMOVE
+# include "regex/utils.h"
+#else
+# include <string.h>
+#endif
 
 static void _hash_setpagelock(Relation rel, BlockNumber blkno, int access);
 static void _hash_unsetpagelock(Relation rel, BlockNumber blkno, int access);
