@@ -335,6 +335,10 @@ dropdb <replaceable class="parameter">dbname</replaceable>
  <sect1 id="manage-ag-tablespaces">
   <title>Tablespaces</title>
 
+  <indexterm zone="manage-ag-tablespaces">
+   <primary>tablespace</primary>
+  </indexterm>
+
    <para>
     Tablespaces in <productname>PostgreSQL</> allow database administrators to
     define locations in the file system where the files representing
