@@ -249,8 +249,17 @@ float8in(char *num)
 
 	errno = 0;
 	val = strtod(num, &endptr);
-	if (*endptr != '\0' || errno == ERANGE)
-		elog(ERROR, "Bad float8 input format '%s'", num);
+	if (*endptr != '\0')
+	{
+		if (strcasecmp(num, "NaN") == 0)
+			val = NAN;
+		else if (strcasecmp(num, "Infinity") == 0)
+			val = HUGE_VAL;
+		else if (errno == ERANGE)
+			elog(ERROR, "Input '%s' is out of range for float8", num);
+		else
+			elog(ERROR, "Bad float8 input format '%s'", num);
+	}
 
 	CheckFloat8Val(val);
 	*result = val;
