@@ -63,6 +63,9 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 	size += LWLockShmemSize();
 	size += SInvalShmemSize(maxBackends);
 	size += FreeSpaceShmemSize();
+#ifdef EXEC_BACKEND
+	size += ShmemBackendArraySize();
+#endif
 #ifdef STABLE_MEMORY_STORAGE
 	size += MMShmemSize();
 #endif
@@ -132,6 +135,13 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 	 * Set up child-to-postmaster signaling mechanism
 	 */
 	PMSignalInit();
+
+#ifdef EXEC_BACKEND
+	/*
+	 * Alloc the win32 shared backend array
+	 */
+	ShmemBackendArrayAllocation();
+#endif
 }
 
 

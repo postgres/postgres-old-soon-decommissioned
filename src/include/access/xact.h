@@ -75,12 +75,12 @@ typedef void (*EOXactCallback) (bool isCommit, void *arg);
  */
 typedef struct TransactionStateData
 {
-	TransactionId transactionIdData;
-	CommandId	commandId;
-	AbsoluteTime startTime;
-	int			startTimeUsec;
-	TransState	state;
-	TBlockState blockState;
+	TransactionId	transactionIdData;
+	CommandId		commandId;
+	AbsoluteTime	startTime;
+	int				startTimeUsec;
+	TransState		state;
+	TBlockState		blockState;
 } TransactionStateData;
 
 typedef TransactionStateData *TransactionState;

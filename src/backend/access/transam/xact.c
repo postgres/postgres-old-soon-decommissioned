@@ -87,7 +87,7 @@
  *
  *		Support for transaction blocks is provided via the functions:
  *
- *				StartTransactionBlock
+ *				BeginTransactionBlock
  *				CommitTransactionBlock
  *				AbortTransactionBlock
  *
@@ -108,7 +108,7 @@
  *
  *			/	StartTransactionCommand();
  *		1) /	ProcessUtility();				<< begin
- *		   \		StartTransactionBlock();
+ *		   \		BeginTransactionBlock();
  *			\	CommitTransactionCommand();
  *
  *			/	StartTransactionCommand();
@@ -127,7 +127,7 @@
  *		The point of this example is to demonstrate the need for
  *		StartTransactionCommand() and CommitTransactionCommand() to
  *		be state smart -- they should do nothing in between the calls
- *		to StartTransactionBlock() and EndTransactionBlock() and
+ *		to BeginTransactionBlock() and EndTransactionBlock() and
  *		outside these calls they need to do normal start/commit
  *		processing.
  *
@@ -399,7 +399,7 @@ CommandIdIsCurrentCommandId(CommandId cid)
 {
 	TransactionState s = CurrentTransactionState;
 
-	return (cid == s->commandId) ? true : false;
+	return (cid == s->commandId);
 }
 
 
@@ -860,7 +860,7 @@ StartTransaction(void)
 	AtStart_Locks();
 
 	/*
-	 * Tell the trigger manager to we're starting a transaction
+	 * Tell the trigger manager we're starting a transaction
 	 */
 	DeferredTriggerBeginXact();
 

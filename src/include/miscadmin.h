@@ -109,8 +109,12 @@ do { \
 #else
 #define PG_USLEEP(_usec) \
 do { \
-	Sleep(_usec < 500) ? 1 : (_usec+500)/ 1000); \
+	Sleep((_usec) < 500 ? 1 : ((_usec)+500)/ 1000); \
 } while(0)
+#endif
+
+#ifdef WIN32
+#define ftruncate(a,b)	chsize(a,b)
 #endif
 
 /*****************************************************************************
@@ -132,6 +136,7 @@ extern void ClosePostmasterPorts(bool pgstat_too);
 /*
  * from utils/init/globals.c
  */
+extern pid_t PostmasterPid;
 extern bool IsPostmasterEnvironment;
 extern bool IsUnderPostmaster;
 
