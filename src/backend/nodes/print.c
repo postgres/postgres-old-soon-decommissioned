@@ -154,10 +154,10 @@ print_rt(List *rtable)
 
 		if (rte->relname)
 			printf("%d\t%s (%s)\t%u",
-				   i, rte->relname, rte->eref->relname, rte->relid);
+				   i, rte->relname, rte->eref->aliasname, rte->relid);
 		else
 			printf("%d\t[subquery] (%s)\t",
-				   i, rte->eref->relname);
+				   i, rte->eref->aliasname);
 		printf("\t%s\t%s\n",
 			   (rte->inh ? "inh" : ""),
 			   (rte->inFromCl ? "inFromCl" : ""));
@@ -202,7 +202,7 @@ print_expr(Node *expr, List *rtable)
 					Assert(var->varno > 0 &&
 						   (int) var->varno <= length(rtable));
 					rte = rt_fetch(var->varno, rtable);
-					relname = rte->eref->relname;
+					relname = rte->eref->aliasname;
 					attname = get_rte_attribute_name(rte, var->varattno);
 				}
 				break;

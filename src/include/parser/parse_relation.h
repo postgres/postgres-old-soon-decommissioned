@@ -29,12 +29,12 @@ extern Node *qualifiedNameToVar(ParseState *pstate, char *refname,
 				   char *colname, bool implicitRTEOK);
 extern RangeTblEntry *addRangeTableEntry(ParseState *pstate,
 				   char *relname,
-				   Attr *alias,
+				   Alias *alias,
 				   bool inh,
 				   bool inFromCl);
 extern RangeTblEntry *addRangeTableEntryForSubquery(ParseState *pstate,
 							  Query *subquery,
-							  Attr *alias,
+							  Alias *alias,
 							  bool inFromCl);
 extern RangeTblEntry *addRangeTableEntryForJoin(ParseState *pstate,
 						  List *colnames,
@@ -43,7 +43,7 @@ extern RangeTblEntry *addRangeTableEntryForJoin(ParseState *pstate,
 						  List *coltypmods,
 						  List *leftcols,
 						  List *rightcols,
-						  Attr *alias,
+						  Alias *alias,
 						  bool inFromCl);
 extern void addRTEtoQuery(ParseState *pstate, RangeTblEntry *rte,
 			  bool addToJoinList, bool addToNameSpace);

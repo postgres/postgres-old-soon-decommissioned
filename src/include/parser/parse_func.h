@@ -47,12 +47,9 @@ typedef enum
 } FuncDetailCode;
 
 
-extern Node *ParseNestedFuncOrColumn(ParseState *pstate, Attr *attr,
-						int precedence);
 extern Node *ParseFuncOrColumn(ParseState *pstate,
 				  char *funcname, List *fargs,
-				  bool agg_star, bool agg_distinct,
-				  int precedence);
+				  bool agg_star, bool agg_distinct, bool is_column);
 
 extern FuncDetailCode func_get_detail(char *funcname, List *fargs,
 				int nargs, Oid *argtypes,

@@ -72,4 +72,9 @@ extern void AlterTableOwner(const char *relationName, const char *newOwnerName);
  */
 extern void LockTableCommand(LockStmt *lockstmt);
 
+/*
+ * SCHEMA
+ */
+extern void CreateSchemaCommand(CreateSchemaStmt *parsetree);
+
 #endif   /* COMMAND_H */

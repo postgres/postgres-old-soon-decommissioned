@@ -159,19 +159,18 @@ makeNullConst(Oid consttype)
 }
 
 /*
- * makeAttr -
- *	  creates an Attr node
+ * makeAlias -
+ *	  creates an Alias node
+ *
+ * NOTE: the given name is copied, but the colnames list (if any) isn't.
  */
-Attr *
-makeAttr(char *relname, char *attname)
+Alias *
+makeAlias(const char *aliasname, List *colnames)
 {
-	Attr	   *a = makeNode(Attr);
+	Alias	   *a = makeNode(Alias);
 
-	a->relname = pstrdup(relname);
-	a->paramNo = NULL;
-	if (attname != NULL)
-		a->attrs = makeList1(makeString(pstrdup(attname)));
-	a->indirection = NULL;
+	a->aliasname = pstrdup(aliasname);
+	a->colnames = colnames;
 
 	return a;
 }

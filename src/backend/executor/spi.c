@@ -775,7 +775,8 @@ SPI_cursor_open(char *name, void *plan, Datum *Values, char *Nulls)
 
 	/* Modify the parsetree to be a cursor */
 	queryTree->isPortal = true;
-	queryTree->into = pstrdup(name);
+	queryTree->into = makeNode(RangeVar);
+	queryTree->into->relname = pstrdup(name);
 	queryTree->isBinary = false;
 
 	/* Create the QueryDesc object and the executor state */
@@ -1145,7 +1146,7 @@ _SPI_pquery(QueryDesc *queryDesc, EState *state, int tcount)
 			if (parseTree->isPortal)
 			{
 				isRetrieveIntoPortal = true;
-				intoName = parseTree->into;
+				intoName = parseTree->into->relname;
 				parseTree->isBinary = false;	/* */
 
 				return SPI_ERROR_CURSOR;

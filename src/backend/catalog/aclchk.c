@@ -200,7 +200,7 @@ ExecuteGrantStmt_Table(GrantStmt *stmt)
 
 	foreach(i, stmt->objects)
 	{
-		char	   *relname = strVal(lfirst(i));
+		char	   *relname = ((RangeVar *) lfirst(i))->relname;
 		Relation	relation;
 		HeapTuple	tuple;
 		Form_pg_class pg_class_tuple;

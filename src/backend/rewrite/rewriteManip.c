@@ -573,9 +573,9 @@ getInsertSelectQuery(Query *parsetree, Query ***subquery_ptr)
 	 * they've been pushed down to the SELECT.
 	 */
 	if (length(parsetree->rtable) >= 2 &&
-		strcmp(rt_fetch(PRS2_OLD_VARNO, parsetree->rtable)->eref->relname,
+		strcmp(rt_fetch(PRS2_OLD_VARNO, parsetree->rtable)->eref->aliasname,
 			   "*OLD*") == 0 &&
-		strcmp(rt_fetch(PRS2_NEW_VARNO, parsetree->rtable)->eref->relname,
+		strcmp(rt_fetch(PRS2_NEW_VARNO, parsetree->rtable)->eref->aliasname,
 			   "*NEW*") == 0)
 		return parsetree;
 	Assert(parsetree->jointree && IsA(parsetree->jointree, FromExpr));
@@ -589,9 +589,9 @@ getInsertSelectQuery(Query *parsetree, Query ***subquery_ptr)
 		  selectquery->commandType == CMD_SELECT))
 		elog(ERROR, "getInsertSelectQuery: expected to find SELECT subquery");
 	if (length(selectquery->rtable) >= 2 &&
-	 strcmp(rt_fetch(PRS2_OLD_VARNO, selectquery->rtable)->eref->relname,
+	 strcmp(rt_fetch(PRS2_OLD_VARNO, selectquery->rtable)->eref->aliasname,
 			"*OLD*") == 0 &&
-	 strcmp(rt_fetch(PRS2_NEW_VARNO, selectquery->rtable)->eref->relname,
+	 strcmp(rt_fetch(PRS2_NEW_VARNO, selectquery->rtable)->eref->aliasname,
 			"*NEW*") == 0)
 	{
 		if (subquery_ptr)

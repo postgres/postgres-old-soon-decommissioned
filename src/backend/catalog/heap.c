@@ -1728,7 +1728,7 @@ AddRelationRawConstraints(Relation rel,
 		/*
 		 * Transform raw parsetree to executable expression.
 		 */
-		expr = transformExpr(pstate, cdef->raw_expr, EXPR_COLUMN_FIRST);
+		expr = transformExpr(pstate, cdef->raw_expr);
 
 		/*
 		 * Make sure it yields a boolean result.
@@ -1863,7 +1863,7 @@ cookDefault(ParseState *pstate,
 	/*
 	 * Transform raw parsetree to executable expression.
 	 */
-	expr = transformExpr(pstate, raw_default, EXPR_COLUMN_FIRST);
+	expr = transformExpr(pstate, raw_default);
 
 	/*
 	 * Make sure default expr does not refer to any vars.

@@ -16,6 +16,7 @@
 #include "parser/parse_node.h"
 
 extern List *parse_analyze(Node *parseTree, ParseState *parentParseState);
+extern List *analyzeCreateSchemaStmt(CreateSchemaStmt *stmt);
 
 extern void CheckSelectForUpdate(Query *qry);
 

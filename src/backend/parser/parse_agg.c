@@ -116,7 +116,7 @@ check_ungrouped_columns_walker(Node *node,
 		rte = rt_fetch(var->varno, context->pstate->p_rtable);
 		attname = get_rte_attribute_name(rte, var->varattno);
 		elog(ERROR, "Attribute %s.%s must be GROUPed or used in an aggregate function",
-			 rte->eref->relname, attname);
+			 rte->eref->aliasname, attname);
 	}
 	/* Otherwise, recurse. */
 	return expression_tree_walker(node, check_ungrouped_columns_walker,
@@ -188,8 +188,7 @@ parseCheckAggregates(ParseState *pstate, Query *qry, Node *qual)
 
 Aggref *
 ParseAgg(ParseState *pstate, char *aggname, Oid basetype,
-		 List *args, bool agg_star, bool agg_distinct,
-		 int precedence)
+		 List *args, bool agg_star, bool agg_distinct)
 {
 	HeapTuple	aggtuple;
 	Form_pg_aggregate aggform;

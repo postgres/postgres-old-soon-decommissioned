@@ -310,9 +310,9 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 
 				appendStringInfo(str, " on %s",
 								 stringStringInfo(rte->relname));
-				if (strcmp(rte->eref->relname, rte->relname) != 0)
+				if (strcmp(rte->eref->aliasname, rte->relname) != 0)
 					appendStringInfo(str, " %s",
-								   stringStringInfo(rte->eref->relname));
+								   stringStringInfo(rte->eref->aliasname));
 			}
 			break;
 		case T_SubqueryScan:
@@ -322,7 +322,7 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 											  es->rtable);
 
 				appendStringInfo(str, " %s",
-								 stringStringInfo(rte->eref->relname));
+								 stringStringInfo(rte->eref->aliasname));
 			}
 			break;
 		default:

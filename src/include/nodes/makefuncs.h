@@ -44,7 +44,7 @@ extern Const *makeConst(Oid consttype,
 
 extern Const *makeNullConst(Oid consttype);
 
-extern Attr *makeAttr(char *relname, char *attname);
+extern Alias *makeAlias(const char *aliasname, List *colnames);
 
 extern RelabelType *makeRelabelType(Node *arg, Oid rtype, int32 rtypmod);
 
