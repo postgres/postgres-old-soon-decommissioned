@@ -6,7 +6,8 @@
 create table \(em create a new class
 .SH SYNOPSIS
 .nf
-\fBcreate table\fR classname \fB(\fPattname type [\fBdefault\fP value] [\fB,\fP attname type \fBdefault\fP value]\fB)\fP
+\fBcreate table\fR classname \fB(\fPattname type [\fBdefault\fP value]
+	[\fB,\fP attname type \fBdefault\fP value]\fB )\fP
 	[\fBinherits\fR \fB(\fR classname [\fB,\fR classname] \fB)\fR]
 	[\fBconstraint\fR cname \fBcheck\fR \fB(\fR test \fB)\fR [\fB,\fR \fBcheck\fR test]
 	[\fBarchive\fR \fB=\fR archive_mode]

@@ -6,8 +6,8 @@
 update \(em replace values of attributes in a class
 .SH SYNOPSIS
 .nf
-\fBupdate\fR classname \fBset\fR attname-1 = expression-1,
-	{attname-i = expression-i}
+\fBupdate\fR classname \fBset\fR attname-1 = expression-1
+	[, attname-i = expression-i]
 	[\fBfrom\fR from-list]
 	[\fBwhere\fR qual]
 .fi

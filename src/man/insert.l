@@ -7,9 +7,9 @@ insert \(em insert tuples to a relation
 .SH SYNOPSIS
 .nf
 \fBinsert\fR into classname
-    [(att.expr-1,{att_expr.i})]
-	{\fBvalues\fR (expression1 {,expression-i}) |
-    \fBselect\fR expression1,{expression-i}
+    [(att.expr-1 [,att_expr.i] )]
+	{\fBvalues\fR (expression1 [,expression-i] ) |
+    \fBselect\fR expression1 [,expression-i]
 	[\fBfrom\fR from-list] [\fBwhere\fR qual] 
 .fi
 .SH DESCRIPTION
