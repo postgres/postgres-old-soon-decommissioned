@@ -85,6 +85,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"extend", EXTEND},
 	{"extract", EXTRACT},
 	{"fetch", FETCH},
+	{"float", FLOAT},
 	{"for", FOR},
 	{"forward", FORWARD},
 	{"from", FROM},
