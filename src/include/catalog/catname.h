@@ -45,6 +45,8 @@
 #define  UserRelationName "pg_user"
 #define  VariableRelationName "pg_variable"
 #define  VersionRelationName "pg_version"
+#define  AttrDefaultRelationName "pg_attrdef"
+#define  RelCheckRelationName "pg_relcheck"
 
 extern char *SharedSystemRelationNames[];
 
