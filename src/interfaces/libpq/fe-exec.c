@@ -332,7 +332,7 @@ makePGresult(PGconn* conn, char* pname)
                 backend dumps core */
       sprintf(conn->errorMessage,
               "FATAL:  unrecognized data from the backend.  "
-              "It probably dumped core.");
+              "It probably dumped core.\n");
       fprintf(stderr, conn->errorMessage);
       result->resultStatus = PGRES_FATAL_ERROR;
       return result;
