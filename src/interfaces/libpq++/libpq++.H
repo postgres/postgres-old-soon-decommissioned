@@ -88,6 +88,8 @@ public:
   short FieldSize(const char *field_name);
   const char* GetValue(int tup_num, int field_num);
   const char* GetValue(int tup_num, const char *field_name);
+  int GetIsNull(int tup_num, int field_num);
+  int GetIsNull(int tup_num, const char* field_name);
   int GetLength(int tup_num, int field_num);
   int GetLength(int tup_num, const char* field_name);
   void DisplayTuples(FILE *out = 0, int fillAlign = 1, 
