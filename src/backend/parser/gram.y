@@ -3674,11 +3674,11 @@ TransactionStmt:
 					n->options = NIL;
 					$$ = (Node *)n;
 				}
-			| BEGIN_P opt_transaction
+			| BEGIN_P opt_transaction transaction_mode_list_or_empty
 				{
 					TransactionStmt *n = makeNode(TransactionStmt);
 					n->kind = TRANS_STMT_BEGIN;
-					n->options = NIL;
+					n->options = $3;
 					$$ = (Node *)n;
 				}
 			| START TRANSACTION transaction_mode_list_or_empty

@@ -33,9 +33,8 @@ START TRANSACTION
    This command begins a new transaction. If the isolation level or
    read/write mode is specified, the new transaction has those
    characteristics, as if <xref linkend="sql-set-transaction"
-   endterm="sql-set-transaction-title"> was executed. In all other
-   respects, the behavior of this command is identical to the <xref
-   linkend="sql-begin" endterm="sql-begin-title"> command.
+   endterm="sql-set-transaction-title"> was executed. It is the same
+   as the <xref linkend="sql-begin" endterm="sql-begin-title"> command.
   </para>
  </refsect1>
 
