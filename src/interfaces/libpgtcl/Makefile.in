@@ -33,7 +33,7 @@ shlib             :=
 
 LIBPQ			= -L$(SRCDIR)/interfaces/libpq -lpq
 
-ifeq ($(PORTNAME), linux)
+ifeq ($(PORTNAME), linux_i386)
   install-shlib-dep	:= install-shlib
   shlib		:= libpgtcl.so.1
   CFLAGS		+= $(CFLAGS_SL)
@@ -49,14 +49,14 @@ ifeq ($(PORTNAME), bsd)
   endif
 endif
 
-ifeq ($(PORTNAME), i386_solaris)
+ifeq ($(PORTNAME), solaris_i386)
   install-shlib-dep	:= install-shlib
   shlib			:= libpgtcl.so.1
   LDFLAGS_SL		= -G -z text
   CFLAGS		+= $(CFLAGS_SL)
 endif
 
-ifeq ($(PORTNAME), sparc_solaris)
+ifeq ($(PORTNAME), solaris_sparc)
   install-shlib-dep     := install-shlib
   shlib                 := libpgtcl.so.1
   LDFLAGS_SL            = -G
