@@ -111,5 +111,7 @@ DATA(insert OID = 810  (	macaddr_ops   829   ));
 DESCR("");
 DATA(insert OID = 935  (	inet_ops   869   ));
 DESCR("");
+DATA(insert OID = 652  (	inet_ops   650   ));
+DESCR("");
 
 #endif	 /* PG_OPCLASS_H */

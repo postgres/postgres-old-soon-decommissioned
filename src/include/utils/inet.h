@@ -21,6 +21,7 @@ typedef struct
 {
 	unsigned char family;
 	unsigned char bits;
+	unsigned char type;
 	union
 	{
 		unsigned int	ipv4_addr;	/* network byte order */
