@@ -32,7 +32,13 @@ include $(top_srcdir)/src/Makefile.shlib
 all: all-lib
 
 install: all installdirs
+ifeq ($(enable_shared), yes)
 	$(INSTALL_SHLIB) $(shlib) $(DESTDIR)$(pkglibdir)/plpython$(DLSUFFIX)
+else
+	@echo "*****"; \
+	 echo "* PL/Python was not installed due to lack of shared library support."; \
+	 echo "*****"
+endif
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(pkglibdir)
