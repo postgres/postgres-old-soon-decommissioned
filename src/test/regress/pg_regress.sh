@@ -666,7 +666,7 @@ do
                 fi
                 ;;
             2)
-                # desaster struck
+                # disaster struck
                 echo "trouble" 1>&2
                 (exit 2); exit;;
         esac
