@@ -326,6 +326,10 @@
 #define ERRCODE_CONFIG_FILE_ERROR			MAKE_SQLSTATE('F','0', '0','0','0')
 #define ERRCODE_LOCK_FILE_EXISTS			MAKE_SQLSTATE('F','0', '0','0','1')
 
+/* Class P0 - PL/pgSQL Error (PostgreSQL-specific error class) */
+#define ERRCODE_PLPGSQL_ERROR				MAKE_SQLSTATE('P','0', '0','0','0')
+#define ERRCODE_RAISE_EXCEPTION				MAKE_SQLSTATE('P','0', '0','0','1')
+
 /* Class XX - Internal Error (PostgreSQL-specific error class) */
 /* (this is for "can't-happen" conditions and software bugs) */
 #define ERRCODE_INTERNAL_ERROR				MAKE_SQLSTATE('X','X', '0','0','0')
