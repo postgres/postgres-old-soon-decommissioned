@@ -113,7 +113,7 @@ if [ x"$TMPDIR" = x"" ] ; then
 fi
 
 
-TMPFILE="$TMPDIR/genbkitmp.c"
+TMPFILE="$TMPDIR/genbkitmp$$.c"
 
 trap "rm -f $TMPFILE ${OUTPUT_PREFIX}.bki.$$ ${OUTPUT_PREFIX}.description.$$" 0 1 2 3 15
 
