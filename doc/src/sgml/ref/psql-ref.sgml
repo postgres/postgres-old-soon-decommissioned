@@ -133,11 +133,11 @@ Postgres documentation
 $ <userinput>psql testdb</userinput>
 Welcome to psql, the PostgreSQL interactive terminal.
 
-Type \copyright for distribution terms
-     \h for help with SQL commands
-     \? for help on internal slash commands
-     \g or terminate with semicolon to execute query
-     \q to quit
+Type:  \copyright for distribution terms
+       \h for help with SQL commands
+       \? for help on internal slash commands
+       \g or terminate with semicolon to execute query
+       \q to quit
 
 testdb=>
     </programlisting>
