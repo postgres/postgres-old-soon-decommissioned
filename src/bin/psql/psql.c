@@ -757,6 +757,7 @@ objectDescription(PsqlSettings *pset, char *object, FILE *fout)
 			strcat(descbuf, " pg_type.oid = pg_description.objoid " );
 			if (!(res = PSQLexec(pset, descbuf)))
 				return -1;
+			else if (PQntuples(res) <= 0)
 			{
 				PQclear(res);
 				descbuf[0] = '\0';
