@@ -1108,7 +1108,7 @@ DoExec(StartupInfo *packet, int portFd)
      */
     
     if (DebugLvl > 1) {
-        (void) sprintf(debugbuf, "-d%d", DebugLvl - 1);
+        (void) sprintf(debugbuf, "-d%d", DebugLvl);
         av[ac++] = debugbuf;
     }
     else
