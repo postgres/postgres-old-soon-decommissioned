@@ -319,6 +319,7 @@ BootstrapMain(int argc, char *argv[])
         switch (flag) {
         case 'D':
             DataDir = optarg;
+            break;
         case 'd':
             DebugMode = 1; /* print out debugging info while parsing */
             break;
