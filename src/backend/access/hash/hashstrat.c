@@ -21,6 +21,7 @@
  *  only one valid strategy for hash tables: equality. 
  */
 
+#ifdef NOT_USED
 static StrategyNumber	HTNegate[1] = {
     InvalidStrategy
 };
@@ -33,7 +34,6 @@ static StrategyNumber	HTNegateCommute[1] = {
     InvalidStrategy
 };
 
-#ifdef NOT_USED
 static StrategyEvaluationData	HTEvaluationData = {
     /* XXX static for simplicity */
 
