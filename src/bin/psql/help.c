@@ -7,6 +7,7 @@
  */
 #include "postgres_fe.h"
 #include "common.h"
+#include "input.h"
 #include "print.h"
 #include "help.h"
 
