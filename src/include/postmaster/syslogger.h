@@ -17,7 +17,8 @@ extern bool Redirect_stderr;
 extern int	Log_RotationAge;
 extern int	Log_RotationSize;
 extern char *Log_directory;
-extern char *Log_filename_prefix;
+extern char *Log_filename;
+extern bool Log_truncate_on_rotation;
 
 extern bool am_syslogger;
 

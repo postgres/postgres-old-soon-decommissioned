@@ -812,6 +812,14 @@ static struct config_bool ConfigureNamesBool[] =
 		&Redirect_stderr,
 		false, NULL, NULL
 	},
+	{
+		{"log_truncate_on_rotation", PGC_SIGHUP, LOGGING_WHERE,
+			gettext_noop("Truncate existing log files of same name during log rotation"),
+			NULL
+		},
+		&Log_truncate_on_rotation,
+		false, NULL, NULL
+	},
 
 #ifdef WAL_DEBUG
 	{
@@ -1665,7 +1673,7 @@ static struct config_string ConfigureNamesString[] =
 	},
 	{
 		{"log_directory", PGC_SIGHUP, LOGGING_WHERE,
-			gettext_noop("Sets the destination directory for logfiles."),
+			gettext_noop("Sets the destination directory for log files."),
 			gettext_noop("May be specified as relative to the cluster directory "
 						 "or as absolute path.")
 		},
@@ -1673,12 +1681,12 @@ static struct config_string ConfigureNamesString[] =
 		"pg_log", NULL, NULL
 	},
 	{
-		{"log_filename_prefix", PGC_SIGHUP, LOGGING_WHERE,
-			gettext_noop("Prefix for file names created in the log_directory."),
+		{"log_filename", PGC_SIGHUP, LOGGING_WHERE,
+			gettext_noop("Sets the file name pattern for log files."),
 			NULL
 		},
-		&Log_filename_prefix,
-		"postgresql-", NULL, NULL
+		&Log_filename,
+		"postgresql-%Y-%m-%d_%H%M%S.log", NULL, NULL
 	},
 
 #ifdef HAVE_SYSLOG
