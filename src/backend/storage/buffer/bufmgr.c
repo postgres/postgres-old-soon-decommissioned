@@ -1058,10 +1058,7 @@ BufferBackgroundWriter(void)
 		 * Nap for the configured time or sleep for 10 seconds if
 		 * there was nothing to do at all.
 		 */
-		if (n > 0)
-			PG_USLEEP(BgWriterDelay * 1000);
-		else
-			sleep(10);
+		PG_USLEEP((n > 0) ? BgWriterDelay * 1000 : 10000000);
 	}
 }
 

@@ -109,7 +109,7 @@ do { \
 #else
 #define PG_USLEEP(_usec) \
 do { \
-	Sleep((_usec) < 500 ? 1 : ((_usec)+500)/ 1000); \
+	SleepEx(((_usec) < 500 ? 1 : ((_usec) + 500) / 1000), TRUE); \
 } while(0)
 #endif
 
