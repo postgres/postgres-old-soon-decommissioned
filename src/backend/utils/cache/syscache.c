@@ -372,7 +372,7 @@ InitCatalogCache()
 			if (!PointerIsValid((char *) SysCache[cacheId]))
 			{
 				elog(ERROR,
-					 "InitCatalogCache: Can't init cache %.16s(%d)",
+					 "InitCatalogCache: Can't init cache %s(%d)",
 					 cacheinfo[cacheId].name,
 					 cacheId);
 			}
@@ -419,7 +419,7 @@ SearchSysCacheTuple(int cacheId,/* cache selection code */
 						 cacheinfo[cacheId].iScanFunc);
 		if (!PointerIsValid(SysCache[cacheId]))
 			elog(ERROR,
-				 "InitCatalogCache: Can't init cache %.16s(%d)",
+				 "InitCatalogCache: Can't init cache %s(%d)",
 				 cacheinfo[cacheId].name,
 				 cacheId);
 	}

@@ -87,15 +87,6 @@ struct buftag
 #define INVALID_DESCRIPTOR (-3)
 
 /*
- *	bletch hack -- anyplace that we declare space for relation or
- *	database names, we just use '16', not a symbolic constant, to
- *	specify their lengths.	BM_NAMESIZE is the length of these names,
- *	and is used in the buffer manager code.  somebody with lots of
- *	spare time should do this for all the other modules, too.
- */
-#define BM_NAMESIZE		16
-
-/*
  *	struct sbufdesc -- shared buffer cache metadata for a single
  *					   shared buffer descriptor.
  *

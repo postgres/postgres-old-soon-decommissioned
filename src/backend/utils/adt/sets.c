@@ -47,7 +47,7 @@ SetDefine(char *querystr, char *typename)
 	Oid			setoid;
 	char	   *procname = GENERICSETNAME;
 	char	   *fileName = "-";
-	char		realprocname[16];
+	char		realprocname[NAMEDATALEN];
 	HeapTuple	tup,
 				newtup = NULL;
 	Form_pg_proc proc;

@@ -284,8 +284,7 @@ BeginCommand(char *pname,
 
 				for (i = 0; i < natts; ++i)
 				{
-					pq_putstr(attrs[i]->attname.data);	/* if 16 char name
-														 * oops.. */
+					pq_putstr(attrs[i]->attname.data);
 					pq_putint((int) attrs[i]->atttypid, sizeof(attrs[i]->atttypid));
 					pq_putint(attrs[i]->attlen, sizeof(attrs[i]->attlen));
 					if (PG_PROTOCOL_MAJOR(FrontendProtocol) >= 2)

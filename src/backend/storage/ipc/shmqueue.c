@@ -99,7 +99,7 @@ SHMQueueDelete(SHM_QUEUE *queue)
 void
 dumpQ(SHM_QUEUE *q, char *s)
 {
-	char		elem[16];
+	char		elem[NAMEDATALEN];
 	char		buf[1024];
 	SHM_QUEUE  *start = q;
 	int			count = 0;

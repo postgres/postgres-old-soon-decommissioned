@@ -44,7 +44,7 @@ typedef struct
  *		Information about an attribute.
  * ----------------
  */
-#define NameLength 16
+#define NameLength NAMEDATALEN
 
 typedef struct TypeBlock
 {

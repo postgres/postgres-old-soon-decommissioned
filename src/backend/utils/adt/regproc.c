@@ -130,7 +130,7 @@ regprocout(RegProcedure proid)
 							  RelationGetTupleDescriptor(proc), &isnull);
 			if (!isnull)
 			{
-				StrNCpy(result, s, 16);
+				StrNCpy(result, s, NAMEDATALEN);
 				break;
 			}
 			elog(FATAL, "regprocout: null procedure %d", proid);
@@ -207,7 +207,8 @@ oid8types(Oid (*oidArray)[])
 							  RelationGetTupleDescriptor(type), &isnull);
 				if (!isnull)
 				{
-					StrNCpy(VARDATA(result) + strlen(VARDATA(result)), s, 16);
+					StrNCpy(VARDATA(result) + strlen(VARDATA(result)), s,
+							NAMEDATALEN);
 					strcat(VARDATA(result), " ");
 				}
 				else
