@@ -18,7 +18,7 @@ CFLAGS+= $(MBFLAGS)
 endif
 
 OBJS = async.o creatinh.o command.o copy.o defind.o define.o \
-       remove.o rename.o vacuum.o version.o view.o cluster.o \
+       remove.o rename.o vacuum.o view.o cluster.o \
        recipe.o explain.o sequence.o trigger.o user.o proclang.o \
        dbcommands.o variable.o
 
