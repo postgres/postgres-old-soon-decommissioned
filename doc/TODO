@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sun Aug 17 00:43:46 EDT 2003
+Last updated:		Sun Aug 17 00:50:56 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -122,6 +122,8 @@ Multi-Language Support
 * Prevent mismatch of frontend/backend encodings from converting bytea
   data from being interpreted as encoded strings
 * -Remove Cyrillic recode support
+* Fix upper()/lower() to work for multibyte encodings
+
 
  
 Views / Rules
