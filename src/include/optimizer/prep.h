@@ -33,8 +33,10 @@ extern List *preprocess_targetlist(List *tlist, int command_type,
  * prototypes for prepunion.c
  */
 extern List *find_all_inheritors(Oid parentrel);
-extern int	first_inherit_rt_entry(List *rangetable);
-extern Append *plan_union_queries(Query *parse);
-extern Append *plan_inherit_queries(Query *parse, List *tlist, Index rt_index);
+extern bool find_inheritable_rt_entry(List *rangetable,
+									  Index *rt_index, List **inheritors);
+extern Plan *plan_inherit_queries(Query *root, List *tlist,
+								  Index rt_index, List *inheritors);
+extern Plan *plan_union_queries(Query *parse);
 
 #endif	 /* PREP_H */
