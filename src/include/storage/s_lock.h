@@ -141,7 +141,7 @@ static int	tas(slock_t *lock);
  * (see storage/ipc.h).
  */
 
-#if defined(aix)
+#if defined(__AIX)
 
 #define	S_LOCK(lock)	do \
 						{ \
@@ -153,7 +153,7 @@ static int	tas(slock_t *lock);
 
 #define	S_INIT_LOCK(lock)	S_UNLOCK(lock)
 
-#endif							/* aix */
+#endif							/* __AIX */
 
 /*
  * HP-UX (PA-RISC)
