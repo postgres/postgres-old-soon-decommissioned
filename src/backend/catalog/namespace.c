@@ -1201,7 +1201,8 @@ LookupExplicitNamespace(const char *nspname)
 
 	aclresult = pg_namespace_aclcheck(namespaceId, GetUserId(), ACL_USAGE);
 	if (aclresult != ACLCHECK_OK)
-		aclcheck_error(aclresult, nspname);
+		aclcheck_error(aclresult, ACL_KIND_NAMESPACE,
+					   nspname);
 
 	return namespaceId;
 }
@@ -1624,7 +1625,7 @@ InitTempTableNamespace(void)
 							 ACL_CREATE_TEMP) != ACLCHECK_OK)
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("not authorized to create temp tables in database \"%s\"",
+				 errmsg("permission denied to create temp tables in database \"%s\"",
 						get_database_name(MyDatabaseId))));
 
 	snprintf(namespaceName, sizeof(namespaceName), "pg_temp_%d", MyBackendId);

@@ -176,6 +176,22 @@ typedef enum
 	ACLCHECK_NOT_OWNER
 } AclResult;
 
+/* this enum covers all object types that can have privilege errors */
+/* currently it's only used to tell aclcheck_error what to say */
+typedef enum AclObjectKind
+{
+	ACL_KIND_CLASS,				/* pg_class */
+	ACL_KIND_DATABASE,			/* pg_database */
+	ACL_KIND_PROC,				/* pg_proc */
+	ACL_KIND_OPER,				/* pg_operator */
+	ACL_KIND_TYPE,				/* pg_type */
+	ACL_KIND_LANGUAGE,			/* pg_language */
+	ACL_KIND_NAMESPACE,			/* pg_namespace */
+	ACL_KIND_OPCLASS,			/* pg_opclass */
+	ACL_KIND_CONVERSION,		/* pg_conversion */
+	MAX_ACL_KIND				/* MUST BE LAST */
+} AclObjectKind;
+
 /*
  * routines used internally
  */
@@ -207,7 +223,8 @@ extern AclResult pg_proc_aclcheck(Oid proc_oid, AclId userid, AclMode mode);
 extern AclResult pg_language_aclcheck(Oid lang_oid, AclId userid, AclMode mode);
 extern AclResult pg_namespace_aclcheck(Oid nsp_oid, AclId userid, AclMode mode);
 
-extern void aclcheck_error(AclResult aclerr, const char *objectname);
+extern void aclcheck_error(AclResult aclerr, AclObjectKind objectkind,
+						   const char *objectname);
 
 /* ownercheck routines just return true (owner) or false (not) */
 extern bool pg_class_ownercheck(Oid class_oid, AclId userid);

@@ -213,7 +213,8 @@ DefineQueryRewrite(RuleStmt *stmt)
 	 */
 	aclresult = pg_class_aclcheck(ev_relid, GetUserId(), ACL_RULE);
 	if (aclresult != ACLCHECK_OK)
-		aclcheck_error(aclresult, RelationGetRelationName(event_relation));
+		aclcheck_error(aclresult, ACL_KIND_CLASS,
+					   RelationGetRelationName(event_relation));
 
 	/*
 	 * No rule actions that modify OLD or NEW

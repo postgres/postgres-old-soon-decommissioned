@@ -730,7 +730,8 @@ DoCopy(const CopyStmt *stmt)
 	aclresult = pg_class_aclcheck(RelationGetRelid(rel), GetUserId(),
 								  required_access);
 	if (aclresult != ACLCHECK_OK)
-		aclcheck_error(aclresult, RelationGetRelationName(rel));
+		aclcheck_error(aclresult, ACL_KIND_CLASS,
+					   RelationGetRelationName(rel));
 	if (!pipe && !superuser())
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),

@@ -64,7 +64,8 @@ DefineAggregate(List *names, List *parameters)
 	/* Check we have creation rights in target namespace */
 	aclresult = pg_namespace_aclcheck(aggNamespace, GetUserId(), ACL_CREATE);
 	if (aclresult != ACLCHECK_OK)
-		aclcheck_error(aclresult, get_namespace_name(aggNamespace));
+		aclcheck_error(aclresult, ACL_KIND_NAMESPACE,
+					   get_namespace_name(aggNamespace));
 
 	foreach(pl, parameters)
 	{
@@ -191,7 +192,8 @@ RemoveAggregate(RemoveAggrStmt *stmt)
 	if (!pg_proc_ownercheck(procOid, GetUserId()) &&
 		!pg_namespace_ownercheck(((Form_pg_proc) GETSTRUCT(tup))->pronamespace,
 								 GetUserId()))
-		aclcheck_error(ACLCHECK_NOT_OWNER, NameListToString(aggName));
+		aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_PROC,
+					   NameListToString(aggName));
 
 	/* find_aggregate_func already checked it is an aggregate */
 
@@ -269,12 +271,14 @@ RenameAggregate(List *name, TypeName *basetype, const char *newname)
 
 	/* must be owner */
 	if (!pg_proc_ownercheck(procOid, GetUserId()))
-		aclcheck_error(ACLCHECK_NOT_OWNER, NameListToString(name));
+		aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_PROC,
+					   NameListToString(name));
 
 	/* must have CREATE privilege on namespace */
 	aclresult = pg_namespace_aclcheck(namespaceOid, GetUserId(), ACL_CREATE);
 	if (aclresult != ACLCHECK_OK)
-		aclcheck_error(aclresult, get_namespace_name(namespaceOid));
+		aclcheck_error(aclresult, ACL_KIND_NAMESPACE,
+					   get_namespace_name(namespaceOid));
 
 	/* rename */
 	namestrcpy(&(((Form_pg_proc) GETSTRUCT(tup))->proname), newname);

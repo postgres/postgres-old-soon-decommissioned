@@ -1193,7 +1193,8 @@ transformInhRelation(ParseState *pstate, CreateStmtContext *cxt,
 	aclresult = pg_class_aclcheck(RelationGetRelid(relation), GetUserId(),
 								  ACL_SELECT);
 	if (aclresult != ACLCHECK_OK)
-		aclcheck_error(aclresult, RelationGetRelationName(relation));
+		aclcheck_error(aclresult, ACL_KIND_CLASS,
+					   RelationGetRelationName(relation));
 
 	tupleDesc = RelationGetDescr(relation);
 	constr = tupleDesc->constr;

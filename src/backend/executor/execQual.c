@@ -612,7 +612,7 @@ init_fcache(Oid foid, FuncExprState *fcache, MemoryContext fcacheCxt)
 	/* Check permission to call function */
 	aclresult = pg_proc_aclcheck(foid, GetUserId(), ACL_EXECUTE);
 	if (aclresult != ACLCHECK_OK)
-		aclcheck_error(aclresult, get_func_name(foid));
+		aclcheck_error(aclresult, ACL_KIND_PROC, get_func_name(foid));
 
 	/* Safety check (should never fail, as parser should check sooner) */
 	if (length(fcache->args) > FUNC_MAX_ARGS)

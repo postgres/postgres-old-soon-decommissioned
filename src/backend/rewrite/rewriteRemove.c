@@ -66,7 +66,8 @@ RemoveRewriteRule(Oid owningRel, const char *ruleName, DropBehavior behavior)
 	Assert(eventRelationOid == owningRel);
 	aclresult = pg_class_aclcheck(eventRelationOid, GetUserId(), ACL_RULE);
 	if (aclresult != ACLCHECK_OK)
-		aclcheck_error(aclresult, get_rel_name(eventRelationOid));
+		aclcheck_error(aclresult, ACL_KIND_CLASS,
+					   get_rel_name(eventRelationOid));
 
 	/*
 	 * Do the deletion

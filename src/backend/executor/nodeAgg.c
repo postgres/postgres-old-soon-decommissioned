@@ -1241,7 +1241,8 @@ ExecInitAgg(Agg *node, EState *estate)
 		aclresult = pg_proc_aclcheck(aggref->aggfnoid, GetUserId(),
 									 ACL_EXECUTE);
 		if (aclresult != ACLCHECK_OK)
-			aclcheck_error(aclresult, get_func_name(aggref->aggfnoid));
+			aclcheck_error(aclresult, ACL_KIND_PROC,
+						   get_func_name(aggref->aggfnoid));
 
 		peraggstate->transfn_oid = transfn_oid = aggform->aggtransfn;
 		peraggstate->finalfn_oid = finalfn_oid = aggform->aggfinalfn;

@@ -620,7 +620,7 @@ SetSessionAuthorization(AclId userid, bool is_superuser)
 		!AuthenticatedUserIsSuperuser)
 		ereport(ERROR,
 				(errcode(ERRCODE_INSUFFICIENT_PRIVILEGE),
-				 errmsg("permission denied")));
+				 errmsg("permission denied to set session authorization")));
 
 	SetSessionUserId(userid);
 	SetUserId(userid);

@@ -56,7 +56,8 @@ LockTableCommand(LockStmt *lockstmt)
 										  ACL_UPDATE | ACL_DELETE);
 
 		if (aclresult != ACLCHECK_OK)
-			aclcheck_error(aclresult, get_rel_name(reloid));
+			aclcheck_error(aclresult, ACL_KIND_CLASS,
+						   get_rel_name(reloid));
 
 		rel = relation_open(reloid, lockstmt->mode);
 

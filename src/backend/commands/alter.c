@@ -102,7 +102,7 @@ ExecRenameStmt(RenameStmt *stmt)
 													  GetUserId(),
 													  ACL_CREATE);
 					if (aclresult != ACLCHECK_OK)
-						aclcheck_error(aclresult,
+						aclcheck_error(aclresult, ACL_KIND_NAMESPACE,
 									   get_namespace_name(namespaceId));
 
 					renamerel(relid, stmt->newname);

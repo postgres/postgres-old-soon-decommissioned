@@ -114,7 +114,8 @@ DefineVirtualRelation(const RangeVar *relation, List *tlist, bool replace)
 							RelationGetRelationName(rel))));
 
 		if (!pg_class_ownercheck(viewOid, GetUserId()))
-			aclcheck_error(ACLCHECK_NOT_OWNER, RelationGetRelationName(rel));
+			aclcheck_error(ACLCHECK_NOT_OWNER, ACL_KIND_CLASS,
+						   RelationGetRelationName(rel));
 
 		/*
 		 * Create a tuple descriptor to compare against the existing view,
