@@ -169,8 +169,8 @@ CreateTrigger(CreateTrigStmt *stmt)
 			ObjectIdGetDatum(((Form_pg_proc) GETSTRUCT(tuple))->prolang),
 									  0, 0, 0);
 		if (!HeapTupleIsValid(langTup))
-			elog(ERROR, "CreateTrigger: cache lookup for PL failed");
-
+			elog(ERROR, "CreateTrigger: cache lookup for PL %u failed",
+				 ((Form_pg_proc) GETSTRUCT(tuple))->prolang);
 		if (((Form_pg_language) GETSTRUCT(langTup))->lanispl == false)
 			elog(ERROR, "CreateTrigger: only builtin, C and PL functions are supported");
 	}
