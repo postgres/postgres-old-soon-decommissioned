@@ -28,6 +28,8 @@
 
 <!-- (applicable to all output formats) -->
 
+(define draft-mode              #f)
+
 (define pgsql-docs-list "pgsql-docs@postgresql.org")
 
 ;; Don't show manpage volume numbers
@@ -37,9 +39,8 @@
 ;; it needs extra work.)
 (define %callout-graphics%      #f)
 
-;; Don't show comments.  (We ought to show them, at least during the
-;; development stage.)
-(define %show-comments%         #f)
+;; Show comments during the development stage.
+(define %show-comments%         draft-mode)
 
 ;; Don't append period if run-in title ends with any of these
 ;; characters.  We had to add the colon here.  This is fixed in
@@ -57,6 +58,7 @@
 (element structname ($mono-seq$))
 (element symbol ($mono-seq$))
 (element type ($mono-seq$))
+(element (programlisting emphasis) ($bold-seq$)) ;; to highlight sections of code
 
 ;; Indentation of verbatim environments
 (define %indent-programlisting-lines% "    ")

@@ -3093,6 +3093,8 @@ SELECT SUBSTRING(b FROM 1 FOR 2) FROM test;
 
   </sect1>
 
+  &array;
+
  </chapter>
 
 <!-- Keep this comment at the end of the file

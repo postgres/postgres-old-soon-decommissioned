@@ -1,6 +1,6 @@
 <!-- $Header$ -->
 
-<chapter id="arrays">
+<sect1 id="arrays">
  <title>Arrays</title>
 
  <indexterm>
@@ -325,4 +325,4 @@ INSERT ... VALUES ('{"\\\\","\\""}');
   </para>
  </tip>
 
-</chapter>
+</sect1>

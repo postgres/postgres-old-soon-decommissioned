@@ -3,7 +3,7 @@ $Header$
 -->
 
  <chapter id="mvcc">
-  <title>Multiversion Concurrency Control</title>
+  <title>Concurrency Control</title>
 
   <indexterm>
    <primary>concurrency</primary>

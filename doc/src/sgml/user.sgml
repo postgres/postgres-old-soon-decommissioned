@@ -16,13 +16,13 @@ $Header$
  &intro;
 
  &syntax;
+ &ddl;
+ &dml;
  &queries;
  &datatype;
  &func;
  &typeconv;
- &array;
  &indices;
- &inherit;
  &mvcc;
  &manage;
  &perform;

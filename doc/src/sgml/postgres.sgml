@@ -12,6 +12,9 @@ $Header$
 <!entity % set-of-books "INCLUDE">
 <!entity % single-book "IGNORE">
 
+<!entity % entities SYSTEM "entities.sgml">
+%entities;
+
 <!entity admin      SYSTEM "admin.sgml">
 <!entity developer  SYSTEM "developer.sgml">
 <!entity programmer SYSTEM "programmer.sgml">
