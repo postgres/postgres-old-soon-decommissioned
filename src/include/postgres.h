@@ -544,9 +544,6 @@ extern int ExceptionalCondition(char *conditionName, char *errorType,
 #define DATA(x)   extern int no_such_variable
 #define DESCR(x)  extern int no_such_variable
 
-#define BKI_BEGIN
-#define BKI_END
-
 typedef int4 aclitem;			/* PHONY definition for catalog use only */
 
 #endif   /* POSTGRES_H */

@@ -24,7 +24,7 @@ $(SUBDIRS:%=%-recursive): fmgroids.h
 	$(MAKE) -C $(subst -recursive,,$@) SUBSYS.o
 
 fmgroids.h fmgrtab.c: Gen_fmgrtab.sh $(top_srcdir)/src/include/catalog/pg_proc.h
-	CPP='$(CPP)' AWK='$(AWK)' $(SHELL) $< $(top_srcdir)/src/include/catalog/pg_proc.h
+	AWK='$(AWK)' $(SHELL) $< $(top_srcdir)/src/include/catalog/pg_proc.h
 
 
 clean:
