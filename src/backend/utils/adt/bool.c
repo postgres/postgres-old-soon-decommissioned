@@ -61,7 +61,14 @@ boolne(int8 arg1, int8 arg2)
     return(arg1 != arg2); 
 }
 
+bool
+boollt(int8 arg1, int8 arg2)	
+{ 
+    return(arg1 < arg2); 
+}
 
-
-
-
+bool
+boolgt(int8 arg1, int8 arg2)	
+{ 
+    return(arg1 > arg2); 
+}

@@ -144,7 +144,12 @@ char *regprocout(RegProcedure proid)
  *   PUBLIC ROUTINES                                                         *
  *****************************************************************************/
 
-Oid RegprocToOid(RegProcedure rp)
+/* regproctooid()
+ * Lowercase version of RegprocToOid() to allow case-insensitive SQL.
+ * Define RegprocToOid() as a macro in builtins.h.
+ * Referenced in pg_proc.h. - tgl 97/04/26
+ */
+Oid regproctooid(RegProcedure rp)
 {
     return (Oid)rp;
 }
