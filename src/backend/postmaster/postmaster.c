@@ -818,11 +818,15 @@ reaper(SIGNAL_ARGS)
         fprintf(stderr, "%s: reaping dead processes...\n",
                 progname);
 #ifdef HAVE_WAITPID
-    while((pid = waitpid(-1, &status, WNOHANG)) > 0)
+    while((pid = waitpid(-1, &status, WNOHANG)) > 0) {
         CleanupProc(pid, status);
+        pqsignal(SIGCHLD, reaper);
+    }
 #else
-    while((pid = wait3(&statusp, WNOHANG, NULL)) > 0)
+    while((pid = wait3(&statusp, WNOHANG, NULL)) > 0) {
         CleanupProc(pid, statusp.w_status);
+        pqsignal(SIGCHLD, reaper);
+    }
 #endif
 }
 
