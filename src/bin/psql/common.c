@@ -528,7 +528,7 @@ SendQuery(const char *query)
 		/* check for asynchronous notification returns */
 		while ((notify = PQnotifies(pset.db)) != NULL)
 		{
-			fprintf(pset.queryFout, gettext("Asynchronous NOTIFY '%s' from backend with pid '%d' received.\n"),
+			fprintf(pset.queryFout, gettext("Asynchronous NOTIFY '%s' from backend with pid %d received.\n"),
 					notify->relname, notify->be_pid);
 			free(notify);
 			fflush(pset.queryFout);
