@@ -2104,7 +2104,7 @@ DESCR("is-supernet-or-equal");
 
 /* inet/cidr base versions */
 DATA(insert OID = 940 (  inet_netmask		PGUID 11 f t f 1 f 25 "869" 100 0 0 100  foo bar ));
-DESCR("netmask of inet address");
+DESCR("netmask of address");
 DATA(insert OID = 941 (  inet_netmasklen	PGUID 11 f t f 1 f 23 "869" 100 0 0 100  foo bar ));
 DESCR("netmask length");
 DATA(insert OID = 945 (  inet_broadcast		PGUID 11 f t f 1 f 25 "869" 100 0 0 100  foo bar ));
