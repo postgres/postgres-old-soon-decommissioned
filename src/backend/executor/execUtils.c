@@ -1182,6 +1182,7 @@ setVarAttrLenForCreateTable(TupleDesc tupType, List *targetList,
 }
 
 
+#ifdef NOT_USED		/* look at execMain.c */
 /* ----------------------------------------------------------------
  * resetVarAttrLenForCreateTable -
  *    called when we do a SELECT * INTO TABLE tab
@@ -1202,3 +1203,4 @@ resetVarAttrLenForCreateTable(TupleDesc tupType)
 	    tupType->attrs[varno]->attlen = -1;
     }
 }
+#endif
