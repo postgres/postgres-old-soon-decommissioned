@@ -195,8 +195,7 @@ write_group_file(Relation urel, Relation grel)
 				}
 
 				/* File format is:
-				 *		"dbname"	"user1","user2","user3"
-				 * This matches pg_hba.conf.
+				 *		"dbname"	"user1" "user2" "user3"
 				 */
 				if (first_user)
 				{
@@ -335,6 +334,7 @@ write_user_file(Relation urel)
 		fputs_quote(passwd, fp);
 		fputs(" ", fp);
 		fputs_quote(valuntil, fp);
+		fputs("\n", fp);
 
 		pfree(passwd);
 		pfree(valuntil);
