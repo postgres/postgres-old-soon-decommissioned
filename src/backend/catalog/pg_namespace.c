@@ -18,7 +18,6 @@
 #include "catalog/catname.h"
 #include "catalog/indexing.h"
 #include "catalog/pg_namespace.h"
-#include "miscadmin.h"
 #include "utils/builtins.h"
 #include "utils/syscache.h"
 
@@ -28,7 +27,7 @@
  * ---------------
  */
 Oid
-NamespaceCreate(const char *nspName)
+NamespaceCreate(const char *nspName, int32 ownerSysId)
 {
 	Relation	nspdesc;
 	HeapTuple	tup;
@@ -57,7 +56,7 @@ NamespaceCreate(const char *nspName)
 	}
 	namestrcpy(&nname, nspName);
 	values[Anum_pg_namespace_nspname - 1] = NameGetDatum(&nname);
-	values[Anum_pg_namespace_nspowner - 1] = Int32GetDatum(GetUserId());
+	values[Anum_pg_namespace_nspowner - 1] = Int32GetDatum(ownerSysId);
 	nulls[Anum_pg_namespace_nspacl - 1] = 'n';
 
 	nspdesc = heap_openr(NamespaceRelationName, RowExclusiveLock);

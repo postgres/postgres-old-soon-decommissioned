@@ -178,9 +178,8 @@
 #include "utils/portal.h"
 #include "utils/catcache.h"
 #include "utils/relcache.h"
-#include "utils/temprel.h"
-
 #include "pgstat.h"
+
 
 extern bool SharedBufferChanged;
 
@@ -999,7 +998,6 @@ CommitTransaction(void)
 	 */
 
 	RelationPurgeLocalRelation(true);
-	AtEOXact_temp_relations(true);
 	smgrDoPendingDeletes(true);
 
 	AtEOXact_SPI();
@@ -1102,7 +1100,6 @@ AbortTransaction(void)
 	}
 
 	RelationPurgeLocalRelation(false);
-	AtEOXact_temp_relations(false);
 	smgrDoPendingDeletes(false);
 
 	AtEOXact_SPI();

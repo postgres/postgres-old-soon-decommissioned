@@ -29,4 +29,6 @@ extern Oid	QualifiedNameGetCreationNamespace(List *names, char **objname_p);
 
 extern RangeVar *makeRangeVarFromNameList(List *names);
 
+extern bool isTempNamespace(Oid namespaceId);
+
 #endif   /* NAMESPACE_H */

@@ -13,7 +13,7 @@ top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
 OBJS = catcache.o inval.o relcache.o syscache.o lsyscache.o \
-	fcache.o temprel.o
+	fcache.o
 
 all: SUBSYS.o
 

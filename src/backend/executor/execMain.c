@@ -724,8 +724,8 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 					heap_create_with_catalog(intoName,
 											 namespaceId,
 											 tupdesc,
-											 RELKIND_RELATION, true,
-											 parseTree->into->istemp,
+											 RELKIND_RELATION,
+											 true,
 											 allowSystemTableMods);
 
 				FreeTupleDesc(tupdesc);

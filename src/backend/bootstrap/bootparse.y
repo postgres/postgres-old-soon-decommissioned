@@ -184,7 +184,7 @@ Boot_CreateStmt:
 						reldesc = heap_create(LexIDStr($4),
 											  PG_CATALOG_NAMESPACE,
 											  tupdesc,
-											  false, true, true);
+											  true, true);
 						reldesc->rd_rel->relhasoids = ! ($3);
 						elog(DEBUG3, "bootstrap relation created");
 					}
@@ -199,7 +199,6 @@ Boot_CreateStmt:
 													  tupdesc,
 													  RELKIND_RELATION,
 													  ! ($3),
-													  false,
 													  true);
 						elog(DEBUG3, "relation created with oid %u", id);
 					}

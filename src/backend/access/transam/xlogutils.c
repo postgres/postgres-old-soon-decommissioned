@@ -335,7 +335,7 @@ XLogOpenRelation(bool redo, RmgrId rmid, RelFileNode rnode)
 	{
 		res = _xl_new_reldesc();
 
-		sprintf(RelationGetPhysicalRelationName(&(res->reldata)), "%u", rnode.relNode);
+		sprintf(RelationGetRelationName(&(res->reldata)), "%u", rnode.relNode);
 
 		/* unexisting DB id */
 		res->reldata.rd_lockInfo.lockRelId.dbId = RecoveryDb;

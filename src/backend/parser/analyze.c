@@ -37,8 +37,6 @@
 #include "utils/fmgroids.h"
 #include "utils/relcache.h"
 #include "utils/syscache.h"
-#include "utils/temprel.h"
-
 #ifdef MULTIBYTE
 #include "mb/pg_wchar.h"
 #endif
@@ -2553,7 +2551,6 @@ transformAlterTableStmt(ParseState *pstate, AlterTableStmt *stmt,
 			cxt.stmtType = "ALTER TABLE";
 			cxt.relation = stmt->relation;
 			cxt.inhRelations = NIL;
-			cxt.relation->istemp = is_temp_rel_name(stmt->relation->relname);
 			cxt.relOid = RangeVarGetRelid(stmt->relation, false);
 			cxt.hasoids = SearchSysCacheExists(ATTNUM,
 											ObjectIdGetDatum(cxt.relOid),
@@ -2583,7 +2580,6 @@ transformAlterTableStmt(ParseState *pstate, AlterTableStmt *stmt,
 			cxt.stmtType = "ALTER TABLE";
 			cxt.relation = stmt->relation;
 			cxt.inhRelations = NIL;
-			cxt.relation->istemp = is_temp_rel_name(stmt->relation->relname);
 			cxt.relOid = RangeVarGetRelid(stmt->relation, false);
 			cxt.hasoids = SearchSysCacheExists(ATTNUM,
 											ObjectIdGetDatum(cxt.relOid),

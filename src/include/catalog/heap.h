@@ -27,16 +27,19 @@ typedef struct RawColumnDefault
 								 * tree) */
 } RawColumnDefault;
 
-extern Relation heap_create(char *relname, Oid relnamespace,
+extern Relation heap_create(const char *relname,
+			Oid relnamespace,
 			TupleDesc tupDesc,
-			bool istemp, bool storage_create,
+			bool storage_create,
 			bool allow_system_table_mods);
 
 extern void heap_storage_create(Relation rel);
 
-extern Oid heap_create_with_catalog(char *relname, Oid relnamespace,
+extern Oid heap_create_with_catalog(const char *relname,
+						 Oid relnamespace,
 						 TupleDesc tupdesc,
-						 char relkind, bool relhasoids, bool istemp,
+						 char relkind,
+						 bool relhasoids,
 						 bool allow_system_table_mods);
 
 extern void heap_drop_with_catalog(Oid rid, bool allow_system_table_mods);

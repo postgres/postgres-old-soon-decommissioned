@@ -40,7 +40,6 @@
 #include "parser/parse_type.h"
 #include "utils/acl.h"
 #include "utils/syscache.h"
-#include "utils/temprel.h"
 
 
 static void ExecuteGrantStmt_Table(GrantStmt *stmt);
@@ -811,7 +810,6 @@ pg_class_aclcheck(Oid table_oid, Oid userid, AclMode mode)
 	relname = NameStr(((Form_pg_class) GETSTRUCT(tuple))->relname);
 	if ((mode & (ACL_INSERT | ACL_UPDATE | ACL_DELETE)) &&
 		!allowSystemTableMods && IsSystemRelationName(relname) &&
-		!is_temp_relname(relname) &&
 		!usecatupd)
 	{
 #ifdef ACLDEBUG

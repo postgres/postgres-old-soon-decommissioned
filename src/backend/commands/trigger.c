@@ -471,7 +471,7 @@ RelationRemoveTriggers(Relation rel)
 		Form_pg_trigger pg_trigger = (Form_pg_trigger) GETSTRUCT(tup);
 
 		elog(NOTICE, "DROP TABLE implicitly drops referential integrity trigger from table \"%s\"",
-			 get_temp_rel_by_physicalname(get_rel_name(pg_trigger->tgrelid)));
+			 get_rel_name(pg_trigger->tgrelid));
 
 		DropTrigger(pg_trigger->tgrelid, NameStr(pg_trigger->tgname));
 
