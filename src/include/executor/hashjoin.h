@@ -54,9 +54,7 @@ typedef struct HashTableData
 	RelativeAddr batch;			/* char* */
 	RelativeAddr readbuf;		/* char* */
 	int			nbatch;
-	RelativeAddr outerbatchNames;		/* RelativeAddr* */
 	RelativeAddr outerbatchPos; /* RelativeAddr* */
-	RelativeAddr innerbatchNames;		/* RelativeAddr* */
 	RelativeAddr innerbatchPos; /* RelativeAddr* */
 	RelativeAddr innerbatchSizes;		/* int* */
 	int			curbatch;
