@@ -587,7 +587,7 @@ initialize_SSL(void)
 	{
 		SSL_library_init();
 		SSL_load_error_strings();
-		SSL_context = SSL_CTX_new(TLSv1_method());
+		SSL_context = SSL_CTX_new(SSLv23_method());
 		if (!SSL_context)
 		{
 			postmaster_error("failed to create SSL context: %s",

@@ -714,7 +714,7 @@ initialize_SSL(PGconn *conn)
 	{
 		SSL_library_init();
 		SSL_load_error_strings();
-		SSL_context = SSL_CTX_new(TLSv1_method());
+		SSL_context = SSL_CTX_new(SSLv23_method());
 		if (!SSL_context)
 		{
 			printfPQExpBuffer(&conn->errorMessage,
