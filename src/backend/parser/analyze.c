@@ -51,7 +51,6 @@ List   *extras = NIL;
  * Returns a list of transformed parse trees. Optimizable statements are
  * all transformed to Query while the rest stays the same.
  *
- * CALLER is responsible for freeing the QueryTreeList* returned
  */
 QueryTreeList *
 parse_analyze(List *pl)
@@ -82,7 +81,7 @@ parse_analyze(List *pl)
 		pl = lnext(pl);
 		if (pstate->p_target_relation != NULL)
 			heap_close(pstate->p_target_relation);
-		free(pstate);
+		pfree(pstate);
 	}
 
 	return result;

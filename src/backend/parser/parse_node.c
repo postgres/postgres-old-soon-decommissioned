@@ -46,7 +46,7 @@ make_parsestate(void)
 {
 	ParseState *pstate;
 
-	pstate = malloc(sizeof(ParseState));
+	pstate = palloc(sizeof(ParseState));
 	pstate->p_last_resno = 1;
 	pstate->p_rtable = NIL;
 	pstate->p_numAgg = 0;

@@ -68,7 +68,7 @@ ExplainQuery(Query *query, bool verbose, CommandDest dest)
 	if (plan == NULL)
 		return;
 
-	es = (ExplainState *) malloc(sizeof(ExplainState));
+	es = (ExplainState *) palloc(sizeof(ExplainState));
 	MemSet(es, 0, sizeof(ExplainState));
 
 	es->printCost = true;		/* default */
@@ -103,7 +103,7 @@ ExplainQuery(Query *query, bool verbose, CommandDest dest)
 		elog(NOTICE, "%.*s", ELOG_MAXLEN - 64, s);
 		len -= ELOG_MAXLEN - 64;
 	}
-	free(es);
+	pfree(es);
 }
 
 /*****************************************************************************
