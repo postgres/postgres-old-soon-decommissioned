@@ -185,6 +185,8 @@ typedef enum NodeTag
 	T_VariableResetStmt,
 	T_CreateTrigStmt,
 	T_DropTrigStmt,
+	T_CreatePLangStmt,
+	T_DropPLangStmt,
 
 	T_A_Expr = 700,
 	T_Attr,

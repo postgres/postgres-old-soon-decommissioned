@@ -114,6 +114,8 @@ typedef struct {
 /*
  * defined in fmgr.c
  */
+extern char *fmgr_pl(Oid func_id, int n_arguments, FmgrValues *values,
+	bool *isNull);
 extern char *fmgr_c(func_ptr user_fn, Oid func_id, int n_arguments,
 	FmgrValues *values, bool *isNull);
 extern void fmgr_info(Oid procedureId, func_ptr *function, int *nargs);
