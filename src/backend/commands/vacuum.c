@@ -1566,7 +1566,7 @@ vc_attrstats(Relation onerel, VacAttrStats *vacattrstats, HeapTuple htup)
 		}
 		stats->initialized = true;
 	    }
-	    if (VacAttrStatsLtGtValid(stats) {
+	    if (VacAttrStatsLtGtValid(stats)) {
 		if (fmgr(stats->cmplt,value,stats->min)) {
 		    vc_bucketcpy(stats->attr, value, &stats->min, &stats->min_len);
 		    stats->min_cnt = 0;
