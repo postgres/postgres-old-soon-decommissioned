@@ -52,8 +52,8 @@ GRANT { { CREATE | USAGE } [,...] | ALL [ PRIVILEGES ] }
 
   <para>
    The <command>GRANT</command> command gives specific privileges on
-   an object (table, view, sequence, database, function, procedural language,
-   or schema) to
+   an object (table, view, sequence, database, tablespace, function,
+   procedural language, or schema) to
    one or more users or groups of users.  These privileges are added
    to those already granted, if any.
   </para>
