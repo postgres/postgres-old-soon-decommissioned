@@ -98,6 +98,13 @@
 /* location of locale files */
 #undef LOCALEDIR
 
+/* Define to build the ODBC driver for unixODBC */
+#undef WITH_UNIXODBC
+
+/* Define to build the ODBC driver for iODBC */
+#undef WITH_IODBC
+
+
 /*
  *------------------------------------------------------------------------
  * Part 2: feature symbols and limits that are user-configurable, but
