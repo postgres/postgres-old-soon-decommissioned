@@ -94,14 +94,6 @@ char	   *IndexedCatalogNames[] = {
 };
 
 
-/*
- * ps status buffer
- */
-#ifndef linux
-char		Ps_status_buffer[1024];
-
-#endif
-
 /* ----------------
  * we just do a linear search now so there's no requirement that the list
  * be ordered.	The list is so small it shouldn't make much difference.
