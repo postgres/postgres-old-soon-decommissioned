@@ -133,7 +133,9 @@ typedef char *Pointer;
  * Example:
  *		extern const Version	RomVersion;
  */
+#ifndef WIN32
 #define const					/* const */
+#endif
 
 /*
  * signed --

@@ -15,12 +15,15 @@
 
 #include <stdio.h>
 #include <sys/types.h>
+#ifdef WIN32
+#include <winsock.h>
+#else
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <netinet/in.h>
+#endif
 
 #include "c.h"
-
 
 /* Define a generic socket address type. */
 
@@ -28,7 +31,9 @@ typedef union SockAddr
 {
 	struct sockaddr sa;
 	struct sockaddr_in in;
+#ifndef WIN32
 	struct sockaddr_un un;
+#endif
 } SockAddr;
 
 
