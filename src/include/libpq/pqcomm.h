@@ -153,16 +153,16 @@ typedef struct CancelRequestPacket
 
 
 /* in pqcomprim.c */
-int			pqGetShort(int *, FILE *);
-int			pqGetLong(int *, FILE *);
-int			pqGetNBytes(char *, size_t, FILE *);
-int			pqGetString(char *, size_t, FILE *);
-int			pqGetByte(FILE *);
+int			pqGetShort(int *);
+int			pqGetLong(int *);
+int			pqGetNBytes(char *, size_t);
+int			pqGetString(char *, size_t);
+int			pqGetByte(void);
 
-int			pqPutShort(int, FILE *);
-int			pqPutLong(int, FILE *);
-int			pqPutNBytes(const char *, size_t, FILE *);
-int			pqPutString(const char *, FILE *);
-int			pqPutByte(int, FILE *);
+int			pqPutShort(int);
+int			pqPutLong(int);
+int			pqPutNBytes(const char *, size_t);
+int			pqPutString(const char *);
+int			pqPutByte(int);
 
 #endif	 /* PQCOMM_H */
