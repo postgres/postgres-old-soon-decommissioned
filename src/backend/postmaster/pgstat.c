@@ -517,14 +517,6 @@ pgstat_vacuum_tabstat(void)
 		return 0;
 
 	/*
-	 * We don't vacuum inside of transaction blocks, because a possible
-	 * later rollback might reactivate objects we didn't find because of
-	 * earlier destruction in the xact.
-	 */
-	if (IsTransactionBlock())
-		return 0;
-
-	/*
 	 * If not done for this transaction, read the statistics collector
 	 * stats file into some hash tables.
 	 */
