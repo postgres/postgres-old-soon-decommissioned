@@ -1725,11 +1725,8 @@ BackendStartup(Port *port)
 	putenv(envEntry[1]);
 	sprintf(envEntry[2], "PG_USER=%s", port->user);
 	putenv(envEntry[2]);
-	if (!getenv("PGDATA"))
-	{
-		sprintf(envEntry[3], "PGDATA=%s", DataDir);
-		putenv(envEntry[3]);
-	}
+	sprintf(envEntry[3], "PGDATA=%s", DataDir);
+	putenv(envEntry[3]);
 	sprintf(envEntry[4], "IPC_KEY=%d", ipc_key);
 	putenv(envEntry[4]);
 
@@ -2175,11 +2172,8 @@ SSDataBase(bool startup)
 	putenv(ssEntry[0]);
 	sprintf(ssEntry[1], "POSTID=%d", NextBackendTag);
 	putenv(ssEntry[1]);
-	if (!getenv("PGDATA"))
-	{
-		sprintf(ssEntry[2], "PGDATA=%s", DataDir);
-		putenv(ssEntry[2]);
-	}
+	sprintf(ssEntry[2], "PGDATA=%s", DataDir);
+	putenv(ssEntry[2]);
 	sprintf(ssEntry[3], "IPC_KEY=%d", ipc_key);
 	putenv(ssEntry[3]);
 
