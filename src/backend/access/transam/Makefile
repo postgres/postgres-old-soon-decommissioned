@@ -26,6 +26,10 @@ depend dep:
 clean: 
 	rm -f SUBSYS.o $(OBJS)
 
+# ensure that version checks in xlog.c get recompiled when config.h or
+# catversion.h changes, even if "make depend" hasn't been done.
+xlog.o: xlog.c $(SRCDIR)/include/config.h $(SRCDIR)/include/catalog/catversion.h
+
 ifeq (depend,$(wildcard depend))
 include depend
 endif
