@@ -36,7 +36,7 @@ random()
 	return(lrand48());
 }
 
-void srandom(int seed)
+void srandom(unsigned seed)
 {
 	srand48((long int) seed);
 }
