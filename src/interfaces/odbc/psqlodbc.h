@@ -209,6 +209,14 @@ typedef struct StatementOptions_
 	UInt4	   *rowsFetched;
 	UInt2	   *rowStatusArray;
 	void	   *bookmark_ptr;
+	UInt2			*row_operation_ptr;
+	UInt4			*row_offset_ptr;
+	UInt4			paramset_size;
+	UInt4			param_bind_type;
+	UInt4			*param_processed_ptr;
+	UInt2			*param_status_ptr;
+	UInt2			*param_operation_ptr;
+	UInt4			*param_offset_ptr;
 } StatementOptions;
 
 /*	Used to pass extra query info to send_query */
