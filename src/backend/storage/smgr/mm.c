@@ -489,15 +489,15 @@ mmblindwrt(char *dbstr,
 /*
  *	mmnblocks() -- Get the number of blocks stored in a relation.
  *
- *		Returns # of blocks or -1 on error.
+ *		Returns # of blocks or InvalidBlockNumber on error.
  */
-int
+BlockNumber
 mmnblocks(Relation reln)
 {
 	MMRelTag	rtag;
 	MMRelHashEntry *rentry;
 	bool		found;
-	int			nblocks;
+	BlockNumber	nblocks;
 
 	if (reln->rd_rel->relisshared)
 		rtag.mmrt_dbid = (Oid) 0;
@@ -520,7 +520,7 @@ mmnblocks(Relation reln)
 	if (found)
 		nblocks = rentry->mmrhe_nblocks;
 	else
-		nblocks = -1;
+		nblocks = InvalidBlockNumber;
 
 	SpinRelease(MMCacheLock);
 

@@ -1089,6 +1089,7 @@ RelationTruncateIndexes(Oid heapId)
 		/* Now truncate the actual data and set blocks to zero */
 		smgrtruncate(DEFAULT_SMGR, currentIndex, 0);
 		currentIndex->rd_nblocks = 0;
+		currentIndex->rd_targblock = InvalidBlockNumber;
 
 		/* Initialize the index and rebuild */
 		InitIndexStrategy(indexInfo->ii_NumIndexAttrs,
@@ -1143,9 +1144,9 @@ heap_truncate(char *relname)
 	DropRelationBuffers(rel);
 
 	/* Now truncate the actual data and set blocks to zero */
-
 	smgrtruncate(DEFAULT_SMGR, rel, 0);
 	rel->rd_nblocks = 0;
+	rel->rd_targblock = InvalidBlockNumber;
 
 	/* If this relation has indexes, truncate the indexes too */
 	RelationTruncateIndexes(rid);

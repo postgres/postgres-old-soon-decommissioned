@@ -15,11 +15,14 @@
 #define VACUUM_H
 
 #include "nodes/parsenodes.h"
+#include "storage/block.h"
 
 
 /* in commands/vacuum.c */
 extern void vacuum(VacuumStmt *vacstmt);
-extern void vac_update_relstats(Oid relid, long num_pages, double num_tuples,
+extern void vac_update_relstats(Oid relid,
+								BlockNumber num_pages,
+								double num_tuples,
 								bool hasindex);
 /* in commands/analyze.c */
 extern void analyze_rel(Oid relid, VacuumStmt *vacstmt);

@@ -8,7 +8,7 @@ subdir = src/backend/storage
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-SUBDIRS     := buffer file ipc large_object lmgr page smgr
+SUBDIRS     := buffer file freespace ipc large_object lmgr page smgr
 SUBDIROBJS  := $(SUBDIRS:%=%/SUBSYS.o)
 
 all: SUBSYS.o

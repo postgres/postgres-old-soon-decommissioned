@@ -70,18 +70,15 @@ _hash_metapinit(Relation rel)
 	int			nbuckets;
 	uint32		nelem;			/* number elements */
 	uint32		lg2nelem;		/* _hash_log2(nelem)   */
-	uint32		nblocks;
 	uint16		i;
 
 	/* can't be sharing this with anyone, now... */
 	if (USELOCKING)
 		LockRelation(rel, AccessExclusiveLock);
 
-	if ((nblocks = RelationGetNumberOfBlocks(rel)) != 0)
-	{
+	if (RelationGetNumberOfBlocks(rel) != 0)
 		elog(ERROR, "Cannot initialize non-empty hash table %s",
 			 RelationGetRelationName(rel));
-	}
 
 	metabuf = _hash_getbuf(rel, HASH_METAPAGE, HASH_WRITE);
 	pg = BufferGetPage(metabuf);

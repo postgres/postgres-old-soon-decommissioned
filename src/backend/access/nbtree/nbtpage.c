@@ -55,7 +55,6 @@ _bt_metapinit(Relation rel)
 {
 	Buffer		buf;
 	Page		pg;
-	int			nblocks;
 	BTMetaPageData metad;
 	BTPageOpaque op;
 
@@ -63,11 +62,9 @@ _bt_metapinit(Relation rel)
 	if (USELOCKING)
 		LockRelation(rel, AccessExclusiveLock);
 
-	if ((nblocks = RelationGetNumberOfBlocks(rel)) != 0)
-	{
+	if (RelationGetNumberOfBlocks(rel) != 0)
 		elog(ERROR, "Cannot initialize non-empty btree %s",
 			 RelationGetRelationName(rel));
-	}
 
 	buf = ReadBuffer(rel, P_NEW);
 	pg = BufferGetPage(buf);

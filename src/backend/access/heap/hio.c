@@ -147,7 +147,7 @@ RelationGetBufferForTuple(Relation relation, Size len,
 	 */
 	relation->rd_nblocks = RelationGetNumberOfBlocks(relation);
 
-	if ((BlockNumber) relation->rd_nblocks > oldnblocks)
+	if (relation->rd_nblocks > oldnblocks)
 	{
 		/*
 		 * Someone else has indeed extended the relation recently.
