@@ -741,6 +741,12 @@ $Header$
         <entry></entry>
        </row>
        <row>
+        <entry>F031-19</entry>
+        <entry>Core</entry>
+        <entry>REVOKE statement: RESTRICT clause</entry>
+        <entry></entry>
+       </row>
+       <row>
         <entry>F032</entry>
         <entry></entry>
         <entry>CASCADE drop behavior</entry>
@@ -1627,12 +1633,6 @@ $Header$
         <entry>E182</entry>
         <entry>Core</entry>
         <entry>Module language</entry>
-        <entry></entry>
-       </row>
-       <row>
-        <entry>F031-19</entry>
-        <entry>Core</entry>
-        <entry>REVOKE statement: RESTRICT clause</entry>
         <entry></entry>
        </row>
        <row>

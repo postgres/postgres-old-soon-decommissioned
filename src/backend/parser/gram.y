@@ -2751,7 +2751,7 @@ GrantStmt:	GRANT privileges ON privilege_target TO grantee_list
 		;
 
 RevokeStmt: REVOKE opt_revoke_grant_option privileges ON privilege_target
-			FROM grantee_list
+			FROM grantee_list opt_drop_behavior
 				{
 					GrantStmt *n = makeNode(GrantStmt);
 					n->is_grant = false;
@@ -2759,6 +2759,10 @@ RevokeStmt: REVOKE opt_revoke_grant_option privileges ON privilege_target
 					n->objtype = ($5)->objtype;
 					n->objects = ($5)->objs;
 					n->grantees = $7;
+
+					if ($8 == DROP_CASCADE)
+						elog(ERROR, "REVOKE ... CASCADE is not implemented");
+
 					$$ = (Node *)n;
 				}
 		;
