@@ -13,6 +13,7 @@
  */
 
 #include "postgres.h"
+#include "config.h"
 
 #include <math.h>
 #ifdef WIN32
@@ -24,7 +25,9 @@
 #  include <machine/limits.h>
 #  define MAXINT	INT_MAX
 # else
-#  include <values.h>
+#  ifdef USE_VALUES_H
+#   include <values.h>
+#  endif
 # endif 
 #endif 
 

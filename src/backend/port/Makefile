@@ -31,12 +31,7 @@ else
 
 OBJS = $(PORTNAME)/SUBSYS.o
 
-ifeq ($(PORTNAME), sparc_solaris)
-# Other ports get the inet_aton() function from their standard C libraries.
-OBJS += inet_aton.o
-endif
-
-ifeq ($(PORTNAME), ultrix4)
+ifneq ($(findstring /$(PORTNAME)/, /sparc_solaris/ultrix4/nextstep/))
 # Other ports get the inet_aton() function from their standard C libraries.
 OBJS += inet_aton.o
 endif
