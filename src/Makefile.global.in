@@ -145,10 +145,10 @@ endif
 #
 USE_TCL= @USE_TCL@
 USE_TK= @USE_TK@
-WISH= @wish@
+WISH= @WISH@
 
 USE_PERL= @USE_PERL@
-PERL=perl
+PERL= perl
 
 #
 # enable native odbc driver support
