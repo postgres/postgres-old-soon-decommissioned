@@ -1187,7 +1187,7 @@ index_destroy(Oid indexId)
 	 */
 	ReleaseRelationBuffers(userindexRelation);
 
-	if (mdunlink(userindexRelation) != SM_SUCCESS)
+	if (smgrunlink(userindexRelation) != SM_SUCCESS)
 		elog(ERROR, "amdestroyr: unlink: %m");
 
 	index_close(userindexRelation);
