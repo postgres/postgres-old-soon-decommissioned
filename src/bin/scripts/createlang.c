@@ -195,16 +195,16 @@ main(int argc, char *argv[])
 		handler = "plperl_call_handler";
 		object = "plperl";
 	}
-	else if (strcmp(langname, "plpython")==0)
+	else if (strcmp(langname, "plpythonu")==0)
 	{
-		trusted = true;
+		trusted = false;
 		handler = "plpython_call_handler";
 		object = "plpython";
 	}
 	else
 	{
 		fprintf(stderr, _("%s: unsupported language \"%s\"\n"), progname, langname);
-		fprintf(stderr, _("Supported languages are plpgsql, pltcl, pltclu, plperl, plperlu, and plpython.\n"));
+		fprintf(stderr, _("Supported languages are plpgsql, pltcl, pltclu, plperl, plperlu, and plpythonu.\n"));
 		exit(1);
 	}
 

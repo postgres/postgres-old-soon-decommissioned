@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+PL/Python is now an untrusted language, and is renamed to 'plpythonu'
 Dollar sign ($) is no longer allowed in operator names
 Dollar sign ($) can be a non-first character in identifiers
 Precision in FLOAT(p) is now interpreted as bits, not decimal digits
