@@ -53,7 +53,7 @@ typedef struct HeapTupleHeaderData
 
 typedef HeapTupleHeaderData *HeapTupleHeader;
 
-#define MinTupleSize	(MAXALIGN(sizeof (PageHeaderData) + \
+#define MinTupleSize	(MAXALIGN(sizeof (PageHeaderData)) + \
 						 MAXALIGN(sizeof(HeapTupleHeaderData)) + \
 						 MAXALIGN(sizeof(char)))
 
