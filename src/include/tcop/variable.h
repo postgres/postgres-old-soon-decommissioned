@@ -5,6 +5,8 @@
  * $Id$
  *
  */
+#ifndef VARIABLE_H
+#define VARIABLE_H 1
 
 enum DateFormat
 {
@@ -27,3 +29,30 @@ extern struct PGVariables PGVariables;
 bool		SetPGVariable(const char *, const char *);
 bool		GetPGVariable(const char *);
 bool		ResetPGVariable(const char *);
+
+extern bool set_date(void);
+extern bool show_date(void);
+extern bool reset_date(void);
+extern bool parse_date(const char *);
+extern bool set_timezone(void);
+extern bool show_timezone(void);
+extern bool reset_timezone(void);
+extern bool parse_timezone(const char *);
+extern bool set_cost_heap(void);
+extern bool show_cost_heap(void);
+extern bool reset_cost_heap(void);
+extern bool parse_cost_heap(const char *);
+extern bool set_cost_index(void);
+extern bool show_cost_index(void);
+extern bool reset_cost_index(void);
+extern bool parse_cost_index(const char *);
+extern bool set_r_plans(void);
+extern bool show_r_plans(void);
+extern bool reset_r_plans(void);
+extern bool parse_r_plans(const char *);
+extern bool set_geqo(void);
+extern bool show_geqo(void);
+extern bool reset_geqo(void);
+extern bool parse_geqo(const char *);
+
+#endif /* VARIABLE_H */
