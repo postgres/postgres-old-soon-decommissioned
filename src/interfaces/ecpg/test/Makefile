@@ -8,7 +8,7 @@ override CPPFLAGS := -I$(srcdir)/../include $(CPPFLAGS)
 
 ECPG = ../preproc/ecpg -I$(srcdir)/../include
 
-TESTS = test1 test2 test3 test4 perftest dyntest dyntest2 test_notice test_code100 test_init
+TESTS = test1 test2 test3 test4 perftest dyntest dyntest2 test_notice test_code100 test_init testdynalloc
 
 all: $(TESTS)
 

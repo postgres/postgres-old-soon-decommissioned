@@ -8,7 +8,7 @@
 #include "extern.h"
 
 char *
-ecpg_alloc(long size, int lineno)
+ECPGalloc(long size, int lineno)
 {
 	char	   *new = (char *) calloc(1L, size);
 
@@ -23,7 +23,7 @@ ecpg_alloc(long size, int lineno)
 }
 
 char *
-ecpg_strdup(const char *string, int lineno)
+ECPGstrdup(const char *string, int lineno)
 {
 	char	   *new = strdup(string);
 

@@ -12,14 +12,14 @@
 #include "sqlca.h"
 
 bool
-get_data(const PGresult *results, int act_tuple, int act_field, int lineno,
+ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 		 enum ECPGttype type, enum ECPGttype ind_type,
 		 void *var, void *ind, long varcharsize, long offset,
 		 bool isarray)
 {
 	char	   *pval = (char *) PQgetvalue(results, act_tuple, act_field);
 
-	ECPGlog("get_data line %d: RESULT: %s\n", lineno, pval ? pval : "");
+	ECPGlog("ECPGget_data line %d: RESULT: %s\n", lineno, pval ? pval : "");
 
 	/* pval is a pointer to the value */
 	/* let's check is it really is an array if it should be one */

@@ -69,11 +69,11 @@ ECPGprepare(int lineno, char *name, char *variable)
 			return false;
 	}
 
-	this = (struct prepared_statement *) ecpg_alloc(sizeof(struct prepared_statement), lineno);
+	this = (struct prepared_statement *) ECPGalloc(sizeof(struct prepared_statement), lineno);
 	if (!this)
 		return false;
 
-	stmt = (struct statement *) ecpg_alloc(sizeof(struct statement), lineno);
+	stmt = (struct statement *) ECPGalloc(sizeof(struct statement), lineno);
 	if (!stmt)
 	{
 		free(this);
@@ -83,14 +83,14 @@ ECPGprepare(int lineno, char *name, char *variable)
 	/* create statement */
 	stmt->lineno = lineno;
 	stmt->connection = NULL;
-	stmt->command = ecpg_strdup(variable, lineno);
+	stmt->command = ECPGstrdup(variable, lineno);
 	stmt->inlist = stmt->outlist = NULL;
 
 	/* if we have C variables in our statment replace them with '?' */
 	replace_variables(stmt->command);
 
 	/* add prepared statement to our list */
-	this->name = ecpg_strdup(name, lineno);
+	this->name = ECPGstrdup(name, lineno);
 	this->stmt = stmt;
 
 	if (prep_stmts == NULL)

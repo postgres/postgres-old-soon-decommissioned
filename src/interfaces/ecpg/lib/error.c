@@ -154,7 +154,7 @@ ECPGraise(int line, int code, const char *str)
 	ECPGlog("raising sqlcode %d in line %d, '%s'.\n", code, line, sqlca.sqlerrm.sqlerrmc);
 
 	/* free all memory we have allocated for the user */
-	free_auto_mem();
+	ECPGfree_auto_mem();
 }
 
 /* print out an error message */
