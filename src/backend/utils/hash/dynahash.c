@@ -120,8 +120,6 @@ hash_create(const char *tabname, long nelem, HASHCTL *info, int flags)
 
 	/* Initialize the hash header */
 	hashp = (HTAB *) MEM_ALLOC(sizeof(HTAB));
-	if (!hashp)
-		return NULL;
 	MemSet(hashp, 0, sizeof(HTAB));
 
 	hashp->tabname = (char *) MEM_ALLOC(strlen(tabname) + 1);
@@ -175,7 +173,9 @@ hash_create(const char *tabname, long nelem, HASHCTL *info, int flags)
 	{
 		hashp->hctl = (HASHHDR *) hashp->alloc(sizeof(HASHHDR));
 		if (!hashp->hctl)
-			return NULL;
+			ereport(ERROR,
+					(errcode(ERRCODE_OUT_OF_MEMORY),
+					 errmsg("out of memory")));
 	}
 
 	hdefault(hashp);
@@ -231,7 +231,7 @@ hash_create(const char *tabname, long nelem, HASHCTL *info, int flags)
 	if (!init_htab(hashp, nelem))
 	{
 		hash_destroy(hashp);
-		return NULL;
+		elog(ERROR, "failed to initialize hash table");
 	}
 
 	/*
@@ -243,7 +243,9 @@ hash_create(const char *tabname, long nelem, HASHCTL *info, int flags)
 		if (!element_alloc(hashp, (int) nelem))
 		{
 			hash_destroy(hashp);
-			return NULL;
+			ereport(ERROR,
+					(errcode(ERRCODE_OUT_OF_MEMORY),
+					 errmsg("out of memory")));
 		}
 	}
 

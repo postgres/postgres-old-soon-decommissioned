@@ -322,10 +322,6 @@ BuildTupleHashTable(int numCols, AttrNumber *keyColIdx,
 	hashtable->hashtab = hash_create("TupleHashTable", (long) nbuckets,
 									 &hash_ctl,
 				HASH_ELEM | HASH_FUNCTION | HASH_COMPARE | HASH_CONTEXT);
-	if (hashtable->hashtab == NULL)
-		ereport(ERROR,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
 
 	return hashtable;
 }

@@ -335,9 +335,6 @@ LockMethodTableInit(const char *tabName,
 													&info,
 													hash_flags);
 
-	if (!LockMethodLocalHash[lockmethodid])
-		elog(FATAL, "could not initialize lock table \"%s\"", tabName);
-
 	pfree(shmemName);
 
 	return lockmethodid;

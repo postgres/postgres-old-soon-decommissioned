@@ -1045,10 +1045,6 @@ create_duphash(IndexScanState *node)
 									nbuckets,
 									&hash_ctl,
 							   HASH_ELEM | HASH_FUNCTION | HASH_CONTEXT);
-	if (node->iss_DupHash == NULL)
-		ereport(ERROR,
-				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("out of memory")));
 }
 
 int

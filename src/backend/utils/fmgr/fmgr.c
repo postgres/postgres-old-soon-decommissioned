@@ -515,10 +515,6 @@ record_C_func(HeapTuple procedureTuple,
 								100,
 								&hash_ctl,
 								HASH_ELEM | HASH_FUNCTION);
-		if (CFuncHash == NULL)
-			ereport(ERROR,
-					(errcode(ERRCODE_OUT_OF_MEMORY),
-					 errmsg("out of memory")));
 	}
 
 	entry = (CFuncHashTabEntry *)

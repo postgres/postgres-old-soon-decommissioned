@@ -264,9 +264,6 @@ InitQueryHashTable(void)
 								   32,
 								   &hash_ctl,
 								   HASH_ELEM);
-
-	if (!prepared_queries)
-		elog(ERROR, "could not create hash table");
 }
 
 /*

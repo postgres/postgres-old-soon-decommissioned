@@ -132,10 +132,6 @@ mdinit(void)
 									  100L,
 									  &hash_ctl,
 							   HASH_ELEM | HASH_FUNCTION | HASH_CONTEXT);
-		if (pendingOpsTable == NULL)
-			ereport(FATAL,
-					(errcode(ERRCODE_OUT_OF_MEMORY),
-					 errmsg("out of memory")));
 	}
 
 	return true;
