@@ -942,7 +942,7 @@ addressOK(unsigned char *a, int bits, int family)
 	if (bits == maxbits)
 		return true;
 
-	byte = (bits + 7) / 8;
+	byte = bits / 8;
 	nbits = bits % 8;
 	mask = 0xff;
 	if (bits != 0)
