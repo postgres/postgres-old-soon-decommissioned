@@ -66,8 +66,6 @@ update_rels_pathlist_for_joins(Query *root, List *joinrels)
 {
 	List	   *mergeinfo_list = NIL;
 	List	   *hashinfo_list = NIL;
-	List	   *temp_list = NIL;
-	List	   *path = NIL;
 	List	   *j;
 
 	foreach(j, joinrels)
@@ -144,37 +142,11 @@ update_rels_pathlist_for_joins(Query *root, List *joinrels)
 		 * 4. Consider paths where both outer and inner relations must be
 		 * hashed before being joined.
 		 */
-
 		pathlist = add_pathlist(joinrel, pathlist,
 						 hash_inner_and_outer(joinrel, outerrel,
 											  innerrel, hashinfo_list));
 
 		joinrel->pathlist = pathlist;
-
-		/*
-		 * 'OuterJoinCost is only valid when calling
-		 * (match_unsorted_inner) with the same arguments as the previous
-		 * invokation of (match_unsorted_outer), so clear the field before
-		 * going on.
-		 */
-		temp_list = innerrel->pathlist;
-		foreach(path, temp_list)
-		{
-			/*
-			 * XXX
-			 *
-			 * This gross hack is to get around an apparent optimizer bug on
-			 * Sparc (or maybe it is a bug of ours?) that causes really
-			 * wierd behavior.
-			 */
-			if (IsA_JoinPath(path))
-				((Path *) lfirst(path))->outerjoincost = (Cost) 0;
-
-			/*
-			 * do it iff it is a join path, which is not always true, esp
-			 * since the base level
-			 */
-		}
 	}
 }
 
