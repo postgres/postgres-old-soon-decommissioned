@@ -195,4 +195,16 @@ extern bool IsNormalProcessingMode(void);
 extern void SetProcessingMode(ProcessingMode mode);
 extern ProcessingMode GetProcessingMode(void);
 
+/* 
+ * "postmaster.pid" is a file containing postmaster's pid, being
+ * created uder $PGDATA upon postmaster's starting up. When postmaster
+ * shuts down, it will be unlinked.
+*/
+#define PIDFNAME	"postmaster.pid"
+
+extern void SetPidFname(char *datadir);
+extern char *GetPidFname(void);
+extern void UnlinkPidFile(void);
+extern int SetPidFile(pid_t pid);
+
 #endif	 /* MISCADMIN_H */
