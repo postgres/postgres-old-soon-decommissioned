@@ -132,7 +132,7 @@ varcharin(char *s, int dummy, int typlen)
 	if (s == NULL)
 		return ((char *) NULL);
 
-	if (typelen == -1)	/* we will remove this soon to make compact storage */
+	if (typlen == -1)	/* we will remove this soon to make compact storage */
 						/* change varcharlen at the same time to use VARSIZE */
 		len = strlen(s) + VARHDRSZ;
 /*	if (typlen != -1 && len > typlen) */
