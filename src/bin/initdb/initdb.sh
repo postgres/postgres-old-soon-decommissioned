@@ -534,6 +534,11 @@ if [ "$PwPrompt" ]; then
 fi
 
 
+echo "Enabling unlimited storage for pg_rewrite"
+echo "ALTER TABLE pg_rewrite CREATE TOAST TABLE" \
+        | "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
+
+
 echo "Creating view pg_user."
 echo "CREATE VIEW pg_user AS \
         SELECT \
