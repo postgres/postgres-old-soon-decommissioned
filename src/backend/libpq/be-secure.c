@@ -116,7 +116,7 @@ void		secure_destroy(void);
 int			secure_open_server(Port *);
 void		secure_close(Port *);
 ssize_t		secure_read(Port *, void *ptr, size_t len);
-ssize_t		secure_write(Port *, const void *ptr, size_t len);
+ssize_t		secure_write(Port *, void *ptr, size_t len);
 
 #ifdef USE_SSL
 static DH  *load_dh_file(int keylength);
@@ -307,7 +307,7 @@ secure_read(Port *port, void *ptr, size_t len)
  *	Write data to a secure connection.
  */
 ssize_t
-secure_write(Port *port, const void *ptr, size_t len)
+secure_write(Port *port, void *ptr, size_t len)
 {
 	ssize_t		n;
 
