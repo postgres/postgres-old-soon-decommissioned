@@ -84,6 +84,7 @@ create_or_index_paths(Query *root,
 					break;
 				}
 			}
+			/* do they all have indexes? */
 			if (index_flag)
 			{					/* used to be a lisp every function */
 				IndexPath  *pathnode = makeNode(IndexPath);
@@ -215,6 +216,11 @@ best_or_subclause_index(Query *root,
 {
 	List *ilist;
 	bool first_run = true;
+
+	/* if we don't match anything, return zeros */
+	*retIndexid = 0;
+	*retCost = 0.0;
+	*retSelec = 0.0;
 	
 	foreach (ilist, indices)
 	{
@@ -268,12 +274,5 @@ best_or_subclause_index(Query *root,
 		}
 	}
 
-	/* we didn't get any indexes, so zero return values */
-	if (first_run)
-	{
-		*retIndexid = 0;
-		*retCost = 0.0;
-		*retSelec = 0.0;
-	}
 	return;
 }
