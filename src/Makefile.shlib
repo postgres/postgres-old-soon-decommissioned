@@ -132,6 +132,12 @@ ifeq ($(PORTNAME), solaris_sparc)
   CFLAGS			+= $(CFLAGS_SL)
 endif
 
+ifeq ($(PORTNAME), alpha)
+  install-shlib-dep	:= install-shlib
+  shlib			:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
+  LDFLAGS_SL		+= -shared -expect_unresolved '*'
+endif
+
 ifeq ($(PORTNAME), svr4)
   install-shlib-dep	:= install-shlib
   shlib				:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
