@@ -1201,6 +1201,12 @@ PQgetssl(PGconn *conn)
 		return NULL;
 	return conn->ssl;
 }
+#else
+void *
+PQgetssl(PGconn *conn)
+{
+	return NULL;
+}
 #endif   /* USE_SSL */
 
 

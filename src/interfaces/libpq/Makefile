@@ -34,6 +34,7 @@ ifeq ($(PORTNAME), win32)
 OBJS += win32.o libpqrc.o
 libpqrc.o : libpq.rc
 	windres -i libpq.rc -o libpqrc.o
+DLL_DEFFILE=libpqdll.def
 ifeq ($(enable_thread_safety), yes)
 # This doesn't work yet because configure test fails.  2004-06-19
 OBJS += pthread-win32.o

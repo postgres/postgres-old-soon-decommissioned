@@ -258,6 +258,8 @@ extern int	PQsetClientEncoding(PGconn *conn, const char *encoding);
 #ifdef USE_SSL
 /* Get the SSL structure associated with a connection */
 extern SSL *PQgetssl(PGconn *conn);
+#else
+extern void *PQgetssl(PGconn *conn);
 #endif
 
 /* Set verbosity for PQerrorMessage and PQresultErrorMessage */
