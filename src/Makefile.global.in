@@ -123,7 +123,6 @@ localedir := @localedir@
 with_perl	= @with_perl@
 with_python	= @with_python@
 with_tcl	= @with_tcl@
-with_tk		= @with_tk@
 enable_shared	= @enable_shared@
 enable_rpath	= @enable_rpath@
 enable_nls	= @enable_nls@

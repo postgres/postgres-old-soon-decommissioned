@@ -17,10 +17,6 @@ DIRS := initdb initlocation ipcclean pg_ctl pg_dump \
 	psql scripts pg_config pg_controldata pg_resetxlog \
 	pg_encoding
 
-ifeq ($(with_tcl), yes)
-	DIRS += pgtclsh
-endif
-
 all install installdirs uninstall depend distprep:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
 

@@ -14,12 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 DIRS := libpq ecpg 
 
-ALLDIRS := $(DIRS) libpgtcl
-
-ifeq ($(with_tcl), yes)
-DIRS += libpgtcl
-endif
-
+ALLDIRS := $(DIRS) 
 
 all install installdirs uninstall dep depend distprep:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
