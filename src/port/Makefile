@@ -35,6 +35,8 @@ pg_config_paths.h: $(top_builddir)/src/Makefile.global
 	echo "#define SYSCONFDIR \"$(sysconfdir)\"" >>$@
 	echo "#define INCLUDEDIR \"$(includedir)\"" >>$@
 	echo "#define PKGINCLUDEDIR \"$(pkgincludedir)\"" >>$@
+	echo "#define INCLUDEDIRSERVER \"$(includedir_server)\"" >>$@
+	echo "#define LIBDIR \"$(libdir)\"" >>$@
 	echo "#define PKGLIBDIR \"$(pkglibdir)\"" >>$@
 	echo "#define LOCALEDIR \"$(localedir)\"" >>$@
 
