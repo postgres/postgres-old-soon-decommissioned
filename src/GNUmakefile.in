@@ -69,7 +69,18 @@ ifneq ($(wildcard man), )
 endif
 
 distclean: clean
-	rm -f Makefile.global include/config.h GNUmakefile
+	rm -f Makefile.global \
+		config.cache \
+		config.status \
+		config.log \
+		GNUmakefile \
+		Makefile.global \
+		backend/port/Makefile \
+		bin/psql/Makefile \
+		bin/pg_dump/Makefile \
+		include/config.h \
+		include/os.h
+
 
 .DEFAULT:
 	@if test $(PORTNAME) = UNDEFINED; then \
