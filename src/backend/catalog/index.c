@@ -1621,7 +1621,8 @@ IndexBuildHeapScan(Relation heapRelation,
 					 * (Consider INSERT followed by CREATE INDEX within a
 					 * transaction.)
 					 */
-					if (!TransactionIdIsCurrentTransactionId(heapTuple->t_data->t_xmin))
+					if (!TransactionIdIsCurrentTransactionId(
+							HeapTupleHeaderGetXmin(heapTuple->t_data)))
 						elog(ERROR, "IndexBuildHeapScan: concurrent insert in progress");
 					indexIt = true;
 					tupleIsAlive = true;
@@ -1635,7 +1636,8 @@ IndexBuildHeapScan(Relation heapRelation,
 					 * (Consider DELETE followed by CREATE INDEX within a
 					 * transaction.)
 					 */
-					if (!TransactionIdIsCurrentTransactionId(heapTuple->t_data->t_xmax))
+					if (!TransactionIdIsCurrentTransactionId(
+							HeapTupleHeaderGetXmax(heapTuple->t_data)))
 						elog(ERROR, "IndexBuildHeapScan: concurrent delete in progress");
 					indexIt = true;
 					tupleIsAlive = false;

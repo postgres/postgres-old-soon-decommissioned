@@ -552,8 +552,8 @@ compile_plperl_function(Oid fn_oid, bool is_trigger)
 		 * This is needed because CREATE OR REPLACE FUNCTION can modify the
 		 * function's pg_proc entry without changing its OID.
 		 ************************************************************/
-		uptodate = (prodesc->fn_xmin == procTup->t_data->t_xmin &&
-					prodesc->fn_cmin == procTup->t_data->t_cmin);
+		uptodate = (prodesc->fn_xmin == HeapTupleHeaderGetXmin(procTup->t_data) &&
+					prodesc->fn_cmin == HeapTupleHeaderGetCmin(procTup->t_data));
 
 		if (!uptodate)
 		{
@@ -586,8 +586,8 @@ compile_plperl_function(Oid fn_oid, bool is_trigger)
 			elog(ERROR, "plperl: out of memory");
 		MemSet(prodesc, 0, sizeof(plperl_proc_desc));
 		prodesc->proname = strdup(internal_proname);
-		prodesc->fn_xmin = procTup->t_data->t_xmin;
-		prodesc->fn_cmin = procTup->t_data->t_cmin;
+		prodesc->fn_xmin = HeapTupleHeaderGetXmin(procTup->t_data);
+		prodesc->fn_cmin = HeapTupleHeaderGetCmin(procTup->t_data);
 
 		/************************************************************
 		 * Lookup the pg_language tuple by Oid

@@ -73,7 +73,8 @@ XLogIsOwnerOfTuple(RelFileNode hnode, ItemPointer iptr,
 	htup = (HeapTupleHeader) PageGetItem(page, lp);
 
 	Assert(PageGetSUI(page) == ThisStartUpID);
-	if (!TransactionIdEquals(htup->t_xmin, xid) || htup->t_cmin != cid)
+	if (!TransactionIdEquals(HeapTupleHeaderGetXmin(htup), xid) ||
+		HeapTupleHeaderGetCmin(htup) != cid)
 	{
 		UnlockAndReleaseBuffer(buffer);
 		return (-1);
@@ -137,8 +138,8 @@ XLogIsValidTuple(RelFileNode hnode, ItemPointer iptr)
 	{
 		if (htup->t_infomask & HEAP_XMIN_INVALID ||
 			(htup->t_infomask & HEAP_MOVED_IN &&
-			 TransactionIdDidAbort((TransactionId) htup->t_cmin)) ||
-			TransactionIdDidAbort(htup->t_xmin))
+			 TransactionIdDidAbort(HeapTupleHeaderGetXvac(htup))) ||
+			TransactionIdDidAbort(HeapTupleHeaderGetXmin(htup)))
 		{
 			UnlockAndReleaseBuffer(buffer);
 			return (false);

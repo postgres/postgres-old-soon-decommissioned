@@ -439,16 +439,16 @@ heap_getsysattr(HeapTuple tup, int attnum, bool *isnull)
 			result = ObjectIdGetDatum(tup->t_data->t_oid);
 			break;
 		case MinTransactionIdAttributeNumber:
-			result = TransactionIdGetDatum(tup->t_data->t_xmin);
+			result = TransactionIdGetDatum(HeapTupleHeaderGetXmin(tup->t_data));
 			break;
 		case MinCommandIdAttributeNumber:
-			result = CommandIdGetDatum(tup->t_data->t_cmin);
+			result = CommandIdGetDatum(HeapTupleHeaderGetCmin(tup->t_data));
 			break;
 		case MaxTransactionIdAttributeNumber:
-			result = TransactionIdGetDatum(tup->t_data->t_xmax);
+			result = TransactionIdGetDatum(HeapTupleHeaderGetXmax(tup->t_data));
 			break;
 		case MaxCommandIdAttributeNumber:
-			result = CommandIdGetDatum(tup->t_data->t_cmax);
+			result = CommandIdGetDatum(HeapTupleHeaderGetCmax(tup->t_data));
 			break;
 		case TableOidAttributeNumber:
 			result = ObjectIdGetDatum(tup->t_tableOid);

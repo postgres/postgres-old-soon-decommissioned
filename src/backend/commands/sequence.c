@@ -249,10 +249,10 @@ DefineSequence(CreateSeqStmt *seq)
 		itemId = PageGetItemId((Page) page, FirstOffsetNumber);
 		item = PageGetItem((Page) page, itemId);
 
-		((HeapTupleHeader) item)->t_xmin = FrozenTransactionId;
+		HeapTupleHeaderSetXmin((HeapTupleHeader) item, FrozenTransactionId);
 		((HeapTupleHeader) item)->t_infomask |= HEAP_XMIN_COMMITTED;
 
-		tuple->t_data->t_xmin = FrozenTransactionId;
+		HeapTupleHeaderSetXmin(tuple->t_data, FrozenTransactionId);
 		tuple->t_data->t_infomask |= HEAP_XMIN_COMMITTED;
 	}
 

@@ -167,8 +167,8 @@ func_up_to_date(PLpgSQL_function * func)
 		elog(ERROR, "plpgsql: cache lookup for proc %u failed",
 			 func->fn_oid);
 
-	result = (func->fn_xmin == procTup->t_data->t_xmin &&
-			  func->fn_cmin == procTup->t_data->t_cmin);
+	result = (func->fn_xmin == HeapTupleHeaderGetXmin(procTup->t_data) &&
+			  func->fn_cmin == HeapTupleHeaderGetCmin(procTup->t_data));
 
 	ReleaseSysCache(procTup);
 

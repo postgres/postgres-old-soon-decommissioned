@@ -332,11 +332,11 @@ lazy_scan_heap(Relation onerel, LVRelStats *vacrelstats,
 					 * assumption by momentarily acquiring exclusive lock,
 					 * but for the moment I see no need to.
 					 */
-					if (TransactionIdIsNormal(tuple.t_data->t_xmin) &&
-						TransactionIdPrecedes(tuple.t_data->t_xmin,
+					if (TransactionIdIsNormal(HeapTupleHeaderGetXmin(tuple.t_data)) &&
+						TransactionIdPrecedes(HeapTupleHeaderGetXmin(tuple.t_data),
 											  FreezeLimit))
 					{
-						tuple.t_data->t_xmin = FrozenTransactionId;
+						HeapTupleHeaderSetXmin(tuple.t_data, FrozenTransactionId);
 						/* infomask should be okay already */
 						Assert(tuple.t_data->t_infomask & HEAP_XMIN_COMMITTED);
 						pgchanged = true;

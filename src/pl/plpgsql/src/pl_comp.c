@@ -188,8 +188,8 @@ plpgsql_compile(Oid fn_oid, int functype)
 
 	function->fn_name = strdup(NameStr(procStruct->proname));
 	function->fn_oid = fn_oid;
-	function->fn_xmin = procTup->t_data->t_xmin;
-	function->fn_cmin = procTup->t_data->t_cmin;
+	function->fn_xmin = HeapTupleHeaderGetXmin(procTup->t_data);
+	function->fn_cmin = HeapTupleHeaderGetCmin(procTup->t_data);
 	function->fn_functype = functype;
 
 	switch (functype)
