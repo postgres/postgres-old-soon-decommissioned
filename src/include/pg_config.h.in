@@ -89,9 +89,6 @@
 /* --enable-pltcl-unknown */
 #undef ENABLE_PLTCL_UNKNOWN
 
-/* --enable-pltcl-utf */
-#undef ENABLE_PLTCL_UTF
-
 /* --enable-nls */
 #undef ENABLE_NLS
 
