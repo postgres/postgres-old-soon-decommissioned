@@ -132,6 +132,7 @@ MULTIBYTE	= @MULTIBYTE@
 enable_shared	= @enable_shared@
 enable_rpath	= @enable_rpath@
 enable_nls	= @enable_nls@
+enable_debug	= @enable_debug@
 
 python_version		= @python_version@
 python_includespec	= @python_includespec@
