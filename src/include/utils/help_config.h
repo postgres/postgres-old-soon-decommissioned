@@ -12,6 +12,6 @@
 #ifndef HELP_CONFIG_H
 #define HELP_CONFIG_H 1
 
-extern int	GucInfoMain(int argc, char *argv[]);
+extern int	GucInfoMain(void);
 
 #endif

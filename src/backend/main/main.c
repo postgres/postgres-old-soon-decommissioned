@@ -222,12 +222,11 @@ main(int argc, char *argv[])
 		exit(BootstrapMain(argc - 1, new_argv + 1));
 
 	/*
-	 * If the first argument is "--help-config", then invoke runtime
-	 * configuration option display mode. We remove "--help-config" from
-	 * the arguments passed on to GucInfoMain.
+	 * If the first argument is "--describe-config", then invoke runtime
+	 * configuration option display mode.
 	 */
-	if (argc > 1 && strcmp(new_argv[1], "--help-config") == 0)
-		exit(GucInfoMain(argc, new_argv));
+	if (argc > 1 && strcmp(new_argv[1], "--describe-config") == 0)
+		exit(GucInfoMain());
 
 	/*
 	 * Otherwise we're a standalone backend.  Invoke PostgresMain,
