@@ -403,7 +403,8 @@ PostgreSQL documentation
        <para>
 	Specifies verbose mode.  This will cause
 	<application>pg_dump</application> to output detailed object
-        comments in the dump file, and progress messages to standard error.
+        comments and start/stop times to the dump file, and progress 
+        messages to standard error.
        </para>
       </listitem>
      </varlistentry>
