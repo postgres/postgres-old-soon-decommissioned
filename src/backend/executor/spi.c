@@ -219,9 +219,6 @@ SPI_execp(void *plan, Datum *Values, char *Nulls, int tcount)
 	if (res < 0)
 		return res;
 
-	/* copy plan to current (executor) context */
-	plan = (void *) _SPI_copy_plan(plan, _SPI_CPLAN_CURCXT);
-
 	res = _SPI_execute_plan((_SPI_plan *) plan, Values, Nulls, tcount);
 
 	_SPI_end_call(true);
@@ -1480,7 +1477,7 @@ _SPI_copy_plan(_SPI_plan *plan, int location)
 		parentcxt = _SPI_current->procCxt;
 	else if (location == _SPI_CPLAN_TOPCXT)
 		parentcxt = TopMemoryContext;
-	else
+	else						/* (this case not currently used) */
 		parentcxt = CurrentMemoryContext;
 
 	/*
