@@ -31,9 +31,6 @@
 
 typedef enum UserAuth
 {
-#ifdef USE_PAM
-	uaPAM,
-#endif /* USE_PAM */
 	uaReject,
 	uaKrb4,
 	uaKrb5,
@@ -41,7 +38,10 @@ typedef enum UserAuth
 	uaIdent,
 	uaPassword,
 	uaCrypt,
-	uaMD5
+	uaMD5,
+#ifdef USE_PAM
+	uaPAM
+#endif /* USE_PAM */
 } UserAuth;
 
 typedef struct Port hbaPort;

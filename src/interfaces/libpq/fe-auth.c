@@ -30,12 +30,6 @@
 
 #include "postgres_fe.h"
 
-/* XXX is there a reason these appear before the system defines? */
-#include "libpq-fe.h"
-#include "libpq-int.h"
-#include "fe-auth.h"
-#include "libpq/crypt.h"
-
 #ifdef WIN32
 #include "win32.h"
 #else
@@ -58,6 +52,11 @@
 #ifdef HAVE_CRYPT_H
 #include <crypt.h>
 #endif
+
+#include "libpq-fe.h"
+#include "libpq-int.h"
+#include "fe-auth.h"
+#include "libpq/crypt.h"
 
 
 /*

@@ -282,7 +282,7 @@ md5_crypt_verify(const Port *port, const char *user, const char *pgpass)
 	{
 		snprintf(PQerrormsg, PQERRORMSG_LENGTH,
 			"Password is stored MD5 encrypted.  "
-			"Only pg_hba.conf's MD5 protocol can be used for this user.\n");
+			"'password' and 'crypt' auth methods cannot be used.\n");
 		fputs(PQerrormsg, stderr);
 		pqdebug("%s", PQerrormsg);
 		return STATUS_ERROR;
@@ -339,7 +339,7 @@ md5_crypt_verify(const Port *port, const char *user, const char *pgpass)
 			break;
 	}
 
-	if (!strcmp(pgpass, crypt_pwd))
+	if (strcmp(pgpass, crypt_pwd) == 0)
 	{
 		/*
 		 * check here to be sure we are not past valuntil

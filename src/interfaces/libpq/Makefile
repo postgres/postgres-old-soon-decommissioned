@@ -84,5 +84,5 @@ uninstall: uninstall-lib
 	rm -f $(DESTDIR)$(includedir)/libpq-fe.h $(DESTDIR)$(includedir_internal)/libpq-int.h $(includedir_internal)/pqexpbuffer.h
 
 clean distclean maintainer-clean: clean-lib
-	rm -f $(OBJS) dllist.c md5.c md5.h wchar.c encnames.c
+	rm -f $(OBJS) dllist.c md5.c wchar.c encnames.c
 	rm -f $(OBJS) inet_aton.c snprintf.c strerror.c

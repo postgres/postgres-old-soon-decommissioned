@@ -53,13 +53,23 @@ where <replaceable class="PARAMETER">option</replaceable> can be:
      </varlistentry>
 
      <varlistentry>
-      <term><replaceable class="PARAMETER">[ encrypted | unencrypted ] password</replaceable></term>
+      <term><replaceable class="PARAMETER">password</replaceable></term>
       <listitem>
        <para>
 	The new password to be used for this account.
-	<literal>Encrypted</literal>/ <literal>unencrypted</literal>
-	controls whether the password is stored encrypted in the
-	database.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>ENCRYPTED</term>
+      <term>UNENCRYPTED</term>
+      <listitem>
+       <para> 
+	These keywords control whether the
+	password is stored encrypted in <literal>pg_shadow</>.  (See
+	<xref linkend="SQL-CREATEUSER" endterm="SQL-CREATEUSER-title">
+	for more information about this choice.)
        </para>
       </listitem>
      </varlistentry>
