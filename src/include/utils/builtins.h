@@ -535,9 +535,6 @@ int4		inet_cmp(inet * a1, inet * a2);
 
 text	   *inet_netmask(inet * addr);
 int4		inet_masklen(inet * addr);
-text	   *inet_host(inet * addr);
-text	   *inet_network_without_bits(inet * addr);
-text	   *inet_network_with_bits(inet * addr);
 text	   *inet_broadcast(inet * addr);
 
 
