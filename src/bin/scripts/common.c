@@ -27,7 +27,7 @@ get_user_name(const char *progname)
 #ifndef WIN32
 	struct passwd *pw;
 
-	pw = getpwuid(getuid());
+	pw = getpwuid(geteuid());
 	if (!pw)
 	{
 		fprintf(stderr, _("%s: could not obtain information about current user: %s\n"),

@@ -628,11 +628,11 @@ get_id(void)
 
 	struct passwd *pw;
 
-	pw = getpwuid(getuid());
+	pw = getpwuid(geteuid());
 
 #ifndef __BEOS__				/* no root check on BEOS */
 
-	if (!geteuid())				/* 0 is root's uid */
+	if (geteuid() == 0)			/* 0 is root's uid */
 	{
 		fprintf(stderr,
 				_("%s: cannot be run as root\n"

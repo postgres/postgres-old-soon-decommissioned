@@ -676,7 +676,7 @@ initialize_SSL(void)
 		 */
 #if !defined(WIN32) && !defined(__CYGWIN__)
 		if (!S_ISREG(buf.st_mode) || (buf.st_mode & (S_IRWXG | S_IRWXO)) ||
-			buf.st_uid != getuid())
+			buf.st_uid != geteuid())
 			ereport(FATAL,
 					(errcode(ERRCODE_CONFIG_FILE_ERROR),
 				  errmsg("unsafe permissions on private key file \"%s\"",

@@ -79,12 +79,9 @@
 
 #include "postgres_fe.h"
 
-#include <sys/types.h>
 #include <signal.h>
 #include <fcntl.h>
-#include <errno.h>
 #include <ctype.h>
-#include <string.h>
 
 #include "libpq-fe.h"
 #include "libpq-int.h"
@@ -819,7 +816,7 @@ client_cert_cb(SSL *ssl, X509 **x509, EVP_PKEY **pkey)
 	}
 #ifndef WIN32
 	if (!S_ISREG(buf.st_mode) || (buf.st_mode & 0077) ||
-		buf.st_uid != getuid())
+		buf.st_uid != geteuid())
 	{
 		printfPQExpBuffer(&conn->errorMessage,
 		libpq_gettext("private key file \"%s\" has wrong permissions\n"),
