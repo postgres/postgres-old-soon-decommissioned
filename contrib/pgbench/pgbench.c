@@ -41,6 +41,10 @@
 #include <sys/resource.h>
 #endif   /* ! WIN32 */
 
+extern char *optarg;
+extern int	optind;
+
+
 /********************************************************************
  * some configurable parameters */
 
@@ -661,10 +665,6 @@ printResults(
 int
 main(int argc, char **argv)
 {
-	extern char *optarg;
-	extern int	optind,
-				opterr,
-				optopt;
 	int			c;
 	int			is_init_mode = 0;		/* initialize mode? */
 	int			is_no_vacuum = 0;		/* no vacuum at all before
