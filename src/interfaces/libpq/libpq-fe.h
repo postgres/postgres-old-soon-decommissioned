@@ -112,6 +112,7 @@ typedef struct pg_conn{
   void *port; /* really a Port* */
   int asyncNotifyWaiting;
   Dllist* notifyList;
+  char *pguser;  /* Postgres username of user who is connected */
 } PGconn;
 
 #define CMDSTATUS_LEN 40
