@@ -15,7 +15,7 @@ override CFLAGS += $(CFLAGS_SL)
 all: $(SONAME) $(NAME).sql
 
 $(NAME).sql: $(NAME).sql.in
-	sed -e 's:MODULE_PATHNAME:$(datadir)/contrib/$(SONAME):g' < $< > $@
+	sed -e 's:MODULE_PATHNAME:$(libdir)/contrib/$(SONAME):g' < $< > $@
 
 install: all installdirs
 	$(INSTALL_SHLIB) $(SONAME)	$(libdir)/contrib
