@@ -25,6 +25,17 @@
 #include <sys/timeb.h>			/* for _ftime() */
 #endif
 
+#ifndef WIN32
+#include <sys/ioctl.h>			/* for ioctl() */
+#else
+#define popen(x,y) _popen(x,y)
+#define pclose(x) _pclose(x)
+#endif
+
+#ifdef HAVE_TERMIOS_H
+#include <termios.h>
+#endif
+
 #include "libpq-fe.h"
 #include "pqsignal.h"
 

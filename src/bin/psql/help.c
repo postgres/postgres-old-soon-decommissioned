@@ -14,7 +14,6 @@
 #include <errno.h>
 
 #ifndef WIN32
-#include <sys/ioctl.h>			/* for ioctl() */
 #ifdef HAVE_PWD_H
 #include <pwd.h>				/* for getpwuid() */
 #endif
