@@ -120,6 +120,25 @@ defGetNumeric(DefElem *def)
 }
 
 /*
+ * Extract a boolean value from a DefElem.
+ */
+bool
+defGetBoolean(DefElem *def)
+{
+	/*
+	 * Presently, boolean flags must simply be present or absent.
+	 * Later we could allow 'flag = t', 'flag = f', etc.
+	 */
+	if (def->arg == NULL)
+		return true;
+	ereport(ERROR,
+			(errcode(ERRCODE_SYNTAX_ERROR),
+			 errmsg("%s does not take a parameter",
+					def->defname)));
+	return false;				/* keep compiler quiet */
+}
+
+/*
  * Extract an int64 value from a DefElem.
  */
 int64

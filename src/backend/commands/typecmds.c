@@ -176,7 +176,7 @@ DefineType(List *names, List *parameters)
 		else if (pg_strcasecmp(defel->defname, "default") == 0)
 			defaultValue = defGetString(defel);
 		else if (pg_strcasecmp(defel->defname, "passedbyvalue") == 0)
-			byValue = true;
+			byValue = defGetBoolean(defel);
 		else if (pg_strcasecmp(defel->defname, "alignment") == 0)
 		{
 			char	   *a = defGetString(defel);

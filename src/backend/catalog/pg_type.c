@@ -201,7 +201,7 @@ TypeCreate(const char *typeName,
 		(internalSize <= 0 || internalSize > (int16) sizeof(Datum)))
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
-				 errmsg("invalid type internal size %d",
+				 errmsg("internal size %d is invalid for passed-by-value type",
 						internalSize)));
 
 	/* Only varlena types can be toasted */
