@@ -826,7 +826,7 @@ extern struct descriptor
    struct descriptor *next;
 } *all_descriptors;
 
-// like ECPGexecute
+/* like ECPGexecute */
 static bool execute_descriptor(int lineno,const char *query
 							,struct connection *con,PGresult **resultptr)
 {

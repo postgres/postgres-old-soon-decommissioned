@@ -139,7 +139,7 @@ int main(int argc,char **argv)
      			break;
      	   	case SQL3_NUMERIC:
      	   	case SQL3_DECIMAL:
-     	        if (SCALE==0) // we might even print leading zeros "%0*d"
+     	        if (SCALE==0) /* we might even print leading zeros "%0*d" */
      	        {  exec sql get descriptor MYDESC value :INDEX :INTVAR=data;
      	           printf("%*d",PRECISION,INTVAR);
      	        }
