@@ -69,7 +69,7 @@ static struct _helpStruct QL_HELP[] = {
 		"copy data to and from a table",
 	"\
 \tCOPY [BINARY] table_name [WITH OIDS]\n\
-\tTO|FROM filename|STDIN|STDOUT [USING DELIMITERS 'delim'];"},
+\tTO|FROM filename|STDIN|STDOUT [ [USING] DELIMITERS 'delim'];"},
 	{"create",
 		"Please be more specific:",
 	"\
