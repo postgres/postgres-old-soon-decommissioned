@@ -266,6 +266,9 @@ match_varid(Var *test_var, List *tlist)
 
 	entry = lfirst(tl);
 	tlvar = get_expr(entry);
+	
+	if ( !IsA (tlvar, Var) )
+	    continue;
 
 	/*
 	 * we test the original varno (instead of varno which might
@@ -532,6 +535,7 @@ get_expr(TargetEntry *tle)
 void
 AddGroupAttrToTlist(List *tlist, List *grpCl)
 {
+#if 0
     List *gl;
     int last_resdomno = length(tlist) + 1;
     
@@ -553,6 +557,7 @@ AddGroupAttrToTlist(List *tlist, List *grpCl)
 	    tlist = lappend(tlist, MakeTLE(r, (Node*)var));
 	}
     }
+#endif
 }
 
 /* was ExecTargetListLength() in execQual.c, 
