@@ -40,3 +40,25 @@ pqsignal(int signo, pqsigfunc func)
 	return oact.sa_handler;
 #endif   /* !HAVE_POSIX_SIGNALS */
 }
+
+pqsigfunc
+pqsignalinquire(int signo)
+{
+#if !defined(HAVE_POSIX_SIGNALS)
+	pqsigfunc old_sigfunc;
+	int		old_sigmask;
+
+	/* Prevent signal handler calls during test */
+	old_sigmask = sigblock(sigmask(signo));
+ 	old_sigfunc = signal(signo, SIG_DFL);
+	signal(signo, old_sigfunc);
+	sigblock(old_sigmask);
+	return old_sigfunc;
+#else
+	struct sigaction oact;
+
+	if (sigaction(signo, NULL, &oact) < 0)
+       return SIG_ERR;
+	return oact.sa_handler;
+#endif   /* !HAVE_POSIX_SIGNALS */
+}

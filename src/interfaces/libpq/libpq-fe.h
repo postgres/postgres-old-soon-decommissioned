@@ -450,6 +450,14 @@ extern int	PQmblen(const unsigned char *s, int encoding);
 /* Get encoding id from environment variable PGCLIENTENCODING */
 extern int	PQenv2encoding(void);
 
+/* === in fe-secure.c === */
+
+/*
+ *	Indicates whether the libpq thread is in send().
+ *	Used to ignore SIGPIPE if thread is in send().
+ */
+pqbool PQinSend(void);
+
 #ifdef __cplusplus
 }
 #endif

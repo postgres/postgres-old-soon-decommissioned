@@ -29,6 +29,9 @@
 #include <sys/time.h>
 #endif
 
+#ifdef ENABLE_THREAD_SAFETY
+#include <pthread.h>
+#endif
 
 #if defined(WIN32) && (!defined(ssize_t))
 typedef int ssize_t;			/* ssize_t doesn't exist in VC (at least
@@ -442,6 +445,10 @@ extern PostgresPollingStatusType pqsecure_open_client(PGconn *);
 extern void pqsecure_close(PGconn *);
 extern ssize_t pqsecure_read(PGconn *, void *ptr, size_t len);
 extern ssize_t pqsecure_write(PGconn *, const void *ptr, size_t len);
+#ifdef ENABLE_THREAD_SAFETY
+extern void check_sigpipe_handler(void);
+extern pthread_key_t thread_in_send;
+#endif
 
 /*
  * this is so that we can check if a connection is non-blocking internally

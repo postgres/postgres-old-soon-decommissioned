@@ -22,6 +22,7 @@
 #include <ctype.h>
 #include <errno.h>
 
+#include "nodes/value.h"
 #include "nodes/pg_list.h"
 #include "nodes/readfuncs.h"
 #include "nodes/value.h"
