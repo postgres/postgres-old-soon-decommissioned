@@ -19,8 +19,11 @@
 
 /* all routines assume null-terminated strings! */
 
-/* removes whitespaces from the left, right and both sides of a string */
+/* The following routines remove whitespaces from the left, right
+   and both sides of a string */
 /* MODIFIES the string passed in and returns the head of it */
+
+
 char *leftTrim(char *s)  
 {
   char *s2 = s;
