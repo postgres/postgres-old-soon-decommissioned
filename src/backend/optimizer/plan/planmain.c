@@ -394,7 +394,6 @@ make_groupPlan(List **tlist,
 	Group	   *grpplan;
 	int			numCols;
 	AttrNumber *grpColIdx;
-	int			keyno = 1;
 	int			last_resno = 1;
 
 	numCols = length(groupClause);
@@ -412,13 +411,15 @@ make_groupPlan(List **tlist,
 	 */
 	foreach(sl, sort_tlist)
 	{
-		Resdom	   *resdom = NULL;
-		TargetEntry *te = (TargetEntry *) lfirst(sl);
+		Resdom		   *resdom = NULL;
+		TargetEntry	   *te = (TargetEntry *) lfirst(sl);
+		int				keyno = 0;
 
-		foreach(gl, glc)
+		foreach(gl, groupClause)
 		{
 			GroupClause *grpcl = (GroupClause *) lfirst(gl);
 
+			keyno++;
 			if (grpcl->entry->resdom->resno == te->resdom->resno)
 			{
 
@@ -427,7 +428,6 @@ make_groupPlan(List **tlist,
 				resdom->reskeyop = get_opcode(grpcl->grpOpoid);
 				resdom->resno = last_resno;		/* re-set */
 				grpColIdx[keyno - 1] = last_resno++;
-				keyno++;
 				glc = lremove(lfirst(gl), glc); /* TLE found for it */
 				break;
 			}
