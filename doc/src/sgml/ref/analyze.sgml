@@ -46,7 +46,8 @@ ANALYZE [ VERBOSE ] [ <replaceable class="PARAMETER">table</replaceable> [ (<rep
       <term><replaceable class="PARAMETER">table</replaceable></term>
       <listitem>
        <para>
-	The name of a specific table to analyze. Defaults to all tables.
+	The name (possibly schema-qualified) of a specific table to
+	analyze. Defaults to all tables in the current database.
        </para>
       </listitem>
      </varlistentry>

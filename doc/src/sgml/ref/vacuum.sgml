@@ -73,8 +73,8 @@ VACUUM [ FULL ] [ FREEZE ] [ VERBOSE ] ANALYZE [ <replaceable class="PARAMETER">
       <term><replaceable class="PARAMETER">table</replaceable></term>
       <listitem>
        <para>
-	The name of a specific table to vacuum. Defaults to all tables
-	in the current database.
+	The name (optionally schema-qualified) of a specific table to
+	vacuum. Defaults to all tables in the current database.
        </para>
       </listitem>
      </varlistentry>

@@ -37,7 +37,7 @@ DROP INDEX <replaceable class="PARAMETER">index_name</replaceable> [, ...]
       <term><replaceable class="PARAMETER">index_name</replaceable></term>
       <listitem>
        <para>
-	The name of an index to remove.
+	The name (optionally schema-qualified) of an index to remove.
        </para>
       </listitem>
      </varlistentry>

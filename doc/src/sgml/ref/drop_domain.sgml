@@ -39,7 +39,7 @@ DROP DOMAIN <replaceable class="PARAMETER">domainname</replaceable> [, ...]  [ C
       <term><replaceable class="PARAMETER">domainname</replaceable></term>
       <listitem>
        <para>
-	The name of an existing domain.
+	The name (optionally schema-qualified) of an existing domain.
        </para>
       </listitem>
      </varlistentry>

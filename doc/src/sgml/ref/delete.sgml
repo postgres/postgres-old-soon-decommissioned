@@ -38,7 +38,7 @@ DELETE FROM [ ONLY ] <replaceable class="PARAMETER">table</replaceable> [ WHERE 
       <term><replaceable class="parameter">table</replaceable></term>
       <listitem>
        <para>
-	The name of an existing table.
+	The name (optionally schema-qualified) of an existing table.
        </para>
       </listitem>
      </varlistentry>

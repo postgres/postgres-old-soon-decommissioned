@@ -37,7 +37,7 @@ DROP TYPE <replaceable class="PARAMETER">typename</replaceable> [, ...]
       <term><replaceable class="PARAMETER">typename</replaceable></term>
       <listitem>
        <para>
-	The name of an existing type.
+	The name (optionally schema-qualified) of an existing type.
        </para>
       </listitem>
      </varlistentry>

@@ -45,7 +45,8 @@ DROP RULE <replaceable class="PARAMETER">name</replaceable> ON <replaceable clas
       <term><replaceable class="parameter">relation</replaceable></term>
       <listitem>
        <para>
-	The name of the relation the rule applies to.
+	The name (optionally schema-qualified) of the relation the rule
+	applies to.
        </para>
       </listitem>
      </varlistentry>

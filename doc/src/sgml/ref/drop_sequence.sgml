@@ -37,7 +37,7 @@ DROP SEQUENCE <replaceable class="PARAMETER">name</replaceable> [, ...]
       <term><replaceable class="PARAMETER">name</replaceable></term>
       <listitem>
        <para>
-	The name of a sequence.
+	The name (optionally schema-qualified) of a sequence.
        </para>
       </listitem>
      </varlistentry>

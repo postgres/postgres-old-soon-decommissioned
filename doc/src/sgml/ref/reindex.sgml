@@ -63,7 +63,8 @@ REINDEX { TABLE | DATABASE | INDEX } <replaceable class="PARAMETER">name</replac
       <term><replaceable class="PARAMETER">name</replaceable></term>
       <listitem>
        <para>
-	The name of the specific table/database/index to be be reindexed.
+	The name of the specific table/database/index to be reindexed.
+	Table and index names may be schema-qualified.
        </para>
       </listitem>
      </varlistentry>

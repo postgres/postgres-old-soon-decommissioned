@@ -46,7 +46,7 @@ CLUSTER <replaceable class="PARAMETER">indexname</replaceable> ON <replaceable c
      <term><replaceable class="PARAMETER">table</replaceable></term>
      <listitem>
       <para>
-       The name of a table.
+       The name (possibly schema-qualified) of a table.
       </para>
      </listitem>
     </varlistentry>

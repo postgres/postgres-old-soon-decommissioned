@@ -56,7 +56,7 @@ COPY [ BINARY ] <replaceable class="parameter">table</replaceable> [ WITH OIDS ]
       <term><replaceable class="parameter">table</replaceable></term>
       <listitem>
        <para>
-	The name of an existing table.
+	The name (possibly schema-qualified) of an existing table.
        </para>
       </listitem>
      </varlistentry>
