@@ -236,7 +236,7 @@ BootstrapMain(int argc, char *argv[])
 	 *
 	 * If we are running under the postmaster, this is done already.
 	 */
-	if (!IsUnderPostmaster || ExecBackend)
+	if (!IsUnderPostmaster /* when exec || ExecBackend */)
 		MemoryContextInit();
 
 	/*
@@ -245,12 +245,9 @@ BootstrapMain(int argc, char *argv[])
 
 	/* Set defaults, to be overriden by explicit options below */
 	dbName = NULL;
-	if (!IsUnderPostmaster || ExecBackend)
+	if (!IsUnderPostmaster /* when exec || ExecBackend*/)
 	{
 		InitializeGUCOptions();
-#ifdef EXEC_BACKEND
-		read_nondefault_variables();
-#endif
 		potential_DataDir = getenv("PGDATA");	/* Null if no PGDATA
 												 * variable */
 	}
@@ -309,7 +306,7 @@ BootstrapMain(int argc, char *argv[])
 		AttachSharedMemoryAndSemaphores();
 	}
 	
-	if (!IsUnderPostmaster || ExecBackend)
+	if (!IsUnderPostmaster /* when exec || ExecBackend*/)
 	{
 		if (!potential_DataDir)
 		{
@@ -327,6 +324,10 @@ BootstrapMain(int argc, char *argv[])
 	/* Validate we have been given a reasonable-looking DataDir */
 	Assert(DataDir);
 	ValidatePgVersion(DataDir);
+
+#ifdef EXEC_BACKEND
+	read_nondefault_variables();
+#endif
 
 	if (IsUnderPostmaster)
 	{
