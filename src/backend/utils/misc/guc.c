@@ -632,7 +632,7 @@ static struct config_int
 
 	{
 		{"max_fsm_relations", PGC_POSTMASTER}, &MaxFSMRelations,
-		100, 10, INT_MAX, NULL, NULL
+		1000, 10, INT_MAX, NULL, NULL
 	},
 	{
 		{"max_fsm_pages", PGC_POSTMASTER}, &MaxFSMPages,
