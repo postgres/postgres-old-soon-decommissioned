@@ -1902,8 +1902,6 @@ float8_accum(PG_FUNCTION_ARGS)
 	float8		N,
 				sumX,
 				sumX2;
-	Datum		transdatums[3];
-	ArrayType  *result;
 
 	transvalues = check_float8_array(transarray, "float8_accum");
 	N = transvalues[0];
@@ -1914,15 +1912,35 @@ float8_accum(PG_FUNCTION_ARGS)
 	sumX += newval;
 	sumX2 += newval * newval;
 
-	transdatums[0] = Float8GetDatumFast(N);
-	transdatums[1] = Float8GetDatumFast(sumX);
-	transdatums[2] = Float8GetDatumFast(sumX2);
+	/*
+	 * If we're invoked by nodeAgg, we can cheat and modify our first
+	 * parameter in-place to reduce palloc overhead. Otherwise we
+	 * construct a new array with the updated transition data and
+	 * return it.
+	 */
+	if (fcinfo->context && IsA(fcinfo->context, AggState))
+	{
+		transvalues[0] = N;
+		transvalues[1] = sumX;
+		transvalues[2] = sumX2;
 
-	result = construct_array(transdatums, 3,
-							 FLOAT8OID,
-						 sizeof(float8), false /* float8 byval */ , 'd');
+		PG_RETURN_ARRAYTYPE_P(transarray);
+	}
+	else
+	{
+		Datum		transdatums[3];
+		ArrayType  *result;
 
-	PG_RETURN_ARRAYTYPE_P(result);
+		transdatums[0] = Float8GetDatumFast(N);
+		transdatums[1] = Float8GetDatumFast(sumX);
+		transdatums[2] = Float8GetDatumFast(sumX2);
+
+		result = construct_array(transdatums, 3,
+								 FLOAT8OID,
+								 sizeof(float8), false /* float8 byval */ , 'd');
+
+		PG_RETURN_ARRAYTYPE_P(result);
+	}
 }
 
 Datum
@@ -1935,8 +1953,6 @@ float4_accum(PG_FUNCTION_ARGS)
 				sumX,
 				sumX2,
 				newval;
-	Datum		transdatums[3];
-	ArrayType  *result;
 
 	transvalues = check_float8_array(transarray, "float4_accum");
 	N = transvalues[0];
@@ -1950,15 +1966,35 @@ float4_accum(PG_FUNCTION_ARGS)
 	sumX += newval;
 	sumX2 += newval * newval;
 
-	transdatums[0] = Float8GetDatumFast(N);
-	transdatums[1] = Float8GetDatumFast(sumX);
-	transdatums[2] = Float8GetDatumFast(sumX2);
+	/*
+	 * If we're invoked by nodeAgg, we can cheat and modify our first
+	 * parameter in-place to reduce palloc overhead. Otherwise we
+	 * construct a new array with the updated transition data and
+	 * return it.
+	 */
+	if (fcinfo->context && IsA(fcinfo->context, AggState))
+	{
+		transvalues[0] = N;
+		transvalues[1] = sumX;
+		transvalues[2] = sumX2;
 
-	result = construct_array(transdatums, 3,
-							 FLOAT8OID,
-						 sizeof(float8), false /* float8 byval */ , 'd');
+		PG_RETURN_ARRAYTYPE_P(transarray);
+	}
+	else
+	{
+		Datum		transdatums[3];
+		ArrayType  *result;
 
-	PG_RETURN_ARRAYTYPE_P(result);
+		transdatums[0] = Float8GetDatumFast(N);
+		transdatums[1] = Float8GetDatumFast(sumX);
+		transdatums[2] = Float8GetDatumFast(sumX2);
+
+		result = construct_array(transdatums, 3,
+								 FLOAT8OID,
+								 sizeof(float8), false /* float8 byval */ , 'd');
+
+		PG_RETURN_ARRAYTYPE_P(result);
+	}
 }
 
 Datum
