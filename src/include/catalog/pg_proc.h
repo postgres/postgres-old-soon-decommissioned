@@ -2270,17 +2270,19 @@ DESCR("is-supernet");
 DATA(insert OID = 930 (  network_supeq		PGUID 12 f t t t 2 f 16 "869 869" 100 0 0 100	network_supeq - ));
 DESCR("is-supernet-or-equal");
 
-/* inet/cidr versions */
-DATA(insert OID = 696 (  netmask			PGUID 12 f t t t 1 f 25 "869" 100 0 0 100  network_netmask - ));
+/* inet/cidr functions */
+DATA(insert OID = 683 (  network			PGUID 12 f t t t 1 f 650 "869" 100 0 0 100  network_network - ));
+DESCR("network part of address");
+DATA(insert OID = 696 (  netmask			PGUID 12 f t t t 1 f 869 "869" 100 0 0 100  network_netmask - ));
 DESCR("netmask of address");
 DATA(insert OID = 697 (  masklen			PGUID 12 f t t t 1 f 23 "869" 100 0 0 100  network_masklen - ));
 DESCR("netmask length");
-DATA(insert OID = 698 (  broadcast			PGUID 12 f t t t 1 f 25 "869" 100 0 0 100  network_broadcast - ));
-DESCR("broadcast address");
+DATA(insert OID = 698 (  broadcast			PGUID 12 f t t t 1 f 869 "869" 100 0 0 100  network_broadcast - ));
+DESCR("broadcast address of network");
 DATA(insert OID = 699 (  host				PGUID 12 f t t t 1 f 25 "869" 100 0 0 100  network_host - ));
-DESCR("host address");
-DATA(insert OID = 683 (  network			PGUID 12 f t t t 1 f 25 "869" 100 0 0 100  network_network - ));
-DESCR("network address");
+DESCR("show address octets only");
+DATA(insert OID = 730 (  text				PGUID 12 f t t t 1 f 25 "869" 100 0 0 100  network_show - ));
+DESCR("show all parts of inet/cidr value");
 
 DATA(insert OID =  1691 (  boolle			PGUID 12 f t t t 2 f 16 "16 16" 100 0 0 100  boolle - ));
 DESCR("less-than-or-equal");
