@@ -32,7 +32,7 @@ $Header$
     </listitem>
     <listitem>
      <para>
-      Client connections may be authenticated vi other external packages.
+      Client connections may be authenticated via other external packages.
      </para>
     </listitem>
     <listitem>
