@@ -614,7 +614,7 @@ DATA(insert OID = 1567 (  "##"	  PGUID 0 b t f  601  603  600	  0  0 0 0 close_s
 DATA(insert OID = 1568 (  "##"	  PGUID 0 b t f  628  603  600	  0  0 0 0 close_lb - - ));
 DATA(insert OID = 1577 (  "##"	  PGUID 0 b t f  628  601  600	  0  0 0 0 close_ls - - ));
 DATA(insert OID = 1578 (  "##"	  PGUID 0 b t f  601  601  600	  0  0 0 0 close_lseg - - ));
-DATA(insert OID = 1585 (  "/"	  PGUID 0 b t f 1186 1186 1186	  0  0 0 0 timespan_div - - ));
+DATA(insert OID = 1585 (  "/"	  PGUID 0 b t f 1186  701 1186	  0  0 0 0 timespan_div - - ));
 
 DATA(insert OID = 1586 (  "<>"	  PGUID 0 b t f  601  601	16 1586 1535 0 0 lseg_ne intltsel - ));
 DATA(insert OID = 1587 (  "<"	  PGUID 0 b t f  601  601	16 1589 1590 0 0 lseg_lt intltsel - ));

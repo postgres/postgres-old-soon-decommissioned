@@ -191,6 +191,8 @@ DESCR("4-byte integer, -2B to 2B");
 
 DATA(insert OID = 24 (	regproc    PGUID  4  16 t b t \054 0   0 regprocin regprocout regprocin regprocout i _null_ ));
 DESCR("registered procedure");
+#define REGPROCOID		24
+
 DATA(insert OID = 25 (	text	   PGUID -1  -1 f b t \054 0  18 textin textout textin textout i _null_ ));
 DESCR("native variable-length string");
 #define TEXTOID			25
