@@ -38,8 +38,8 @@ ifeq ($(USE_TCL), true)
 	$(MAKE) -C libpgtcl $@
 endif
 	$(MAKE) -C bin $@
-ifneq ($(wildcard ../doc), )
-	$(MAKE) -C ../doc $@
+ifneq ($(wildcard man), )
+	$(MAKE) -C man $@
 endif
 	@if test $@. = all. -o $@. = .; then \
 	echo All of Postgres95 is successfully made.  Ready to install. ;\
