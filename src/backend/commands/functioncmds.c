@@ -401,7 +401,7 @@ CreateFunction(CreateFunctionStmt *stmt)
 	Oid			prorettype;
 	bool		returnsSet;
 	char	   *language;
-	char		languageName[NAMEDATALEN];
+	char	   *languageName;
 	Oid			languageOid;
 	Oid			languageValidator;
 	char	   *funcname;
@@ -437,7 +437,7 @@ CreateFunction(CreateFunctionStmt *stmt)
 			   &as_clause, &language, &volatility, &isStrict, &security);
 
 	/* Convert language name to canonical case */
-	case_translate_language_name(language, languageName);
+	languageName = case_translate_language_name(language);
 
 	/* Look up the language and validate permissions */
 	languageTuple = SearchSysCache(LANGNAME,

@@ -38,24 +38,19 @@
 #include "catalog/namespace.h"
 #include "commands/defrem.h"
 #include "parser/parse_type.h"
+#include "parser/scansup.h"
 #include "utils/int8.h"
 
 
 /*
- * Translate the input language name to lower case.
+ * Translate the input language name to lower case, and truncate if needed.
  *
- * Output buffer must be NAMEDATALEN long.
+ * Returns a palloc'd string
  */
-void
-case_translate_language_name(const char *input, char *output)
+char *
+case_translate_language_name(const char *input)
 {
-	int			i;
-
-	MemSet(output, 0, NAMEDATALEN);		/* ensure result Name is
-										 * zero-filled */
-
-	for (i = 0; i < NAMEDATALEN - 1 && input[i]; ++i)
-		output[i] = tolower((unsigned char) input[i]);
+	return downcase_truncate_identifier(input, strlen(input), false);
 }
 
 

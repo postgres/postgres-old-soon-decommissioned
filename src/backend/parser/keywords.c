@@ -369,17 +369,13 @@ ScanKeywordLookup(const char *text)
 
 	/*
 	 * Apply an ASCII-only downcasing.	We must not use tolower() since it
-	 * may produce the wrong translation in some locales (eg, Turkish),
-	 * and we don't trust isupper() very much either.  In an ASCII-based
-	 * encoding the tests against A and Z are sufficient, but we also
-	 * check isupper() so that we will work correctly under EBCDIC.  The
-	 * actual case conversion step should work for either ASCII or EBCDIC.
+	 * may produce the wrong translation in some locales (eg, Turkish).
 	 */
 	for (i = 0; i < len; i++)
 	{
 		char		ch = text[i];
 
-		if (ch >= 'A' && ch <= 'Z' && isupper((unsigned char) ch))
+		if (ch >= 'A' && ch <= 'Z')
 			ch += 'a' - 'A';
 		word[i] = ch;
 	}

@@ -15,6 +15,11 @@
 #ifndef SCANSUP_H
 #define SCANSUP_H
 
-extern char *scanstr(char *s);
+extern char *scanstr(const char *s);
+
+extern char *downcase_truncate_identifier(const char *ident, int len,
+										  bool warn);
+
+extern void truncate_identifier(char *ident, int len, bool warn);
 
 #endif   /* SCANSUP_H */

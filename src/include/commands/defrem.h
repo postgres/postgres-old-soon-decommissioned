@@ -61,7 +61,7 @@ extern void RenameOpClass(List *name, const char *access_method, const char *new
 
 /* support routines in commands/define.c */
 
-extern void case_translate_language_name(const char *input, char *output);
+extern char *case_translate_language_name(const char *input);
 
 extern char *defGetString(DefElem *def);
 extern double defGetNumeric(DefElem *def);
