@@ -338,7 +338,7 @@ secure_write(Port *port, void *ptr, size_t len)
 				port->count += n;
 				break;
 			case SSL_ERROR_WANT_WRITE:
-				n = secure_read(port, ptr, len);
+				n = secure_write(port, ptr, len);
 				break;
 			case SSL_ERROR_SYSCALL:
 				if (n == -1)
