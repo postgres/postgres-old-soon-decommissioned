@@ -612,6 +612,7 @@ begin:;
 	if (updrqst)
 	{
 		S_LOCK(&(XLogCtl->info_lck));
+		LgwrResult = XLogCtl->LgwrResult;
 		if (XLByteLT(XLogCtl->LgwrRqst.Write, LgwrRqst.Write))
 			XLogCtl->LgwrRqst.Write = LgwrRqst.Write;
 		S_UNLOCK(&(XLogCtl->info_lck));
@@ -760,6 +761,10 @@ XLogFlush(XLogRecPtr record)
 
 }
 
+/*
+ * We use this routine when Insert->curridx block is full and the next XLOG
+ * buffer looks as unwritten to OS' cache. insert_lck is assumed here.
+ */
 static void
 GetFreeXLBuffer()
 {
@@ -768,12 +773,24 @@ GetFreeXLBuffer()
 	uint16		curridx = NextBufIdx(Insert->curridx);
 	unsigned	spins = 0;
 
+	/* Use Insert->LgwrResult copy if it's more fresh */
+	if (XLByteLT(LgwrResult.Write, Insert->LgwrResult.Write))
+	{
+		LgwrResult = Insert->LgwrResult;
+		if (XLByteLE(XLogCtl->xlblocks[curridx], LgwrResult.Write))
+		{
+			InitXLBuffer(curridx);
+			return;
+		}
+	}
+
 	LgwrRqst.Write = XLogCtl->xlblocks[Insert->curridx];
 	for (;;)
 	{
 		if (!TAS(&(XLogCtl->info_lck)))
 		{
 			LgwrResult = XLogCtl->LgwrResult;
+			/* LgwrRqst.Write GE XLogCtl->LgwrRqst.Write */
 			XLogCtl->LgwrRqst.Write = LgwrRqst.Write;
 			S_UNLOCK(&(XLogCtl->info_lck));
 			if (XLByteLE(XLogCtl->xlblocks[curridx], LgwrResult.Write))
