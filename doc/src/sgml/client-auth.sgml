@@ -639,7 +639,7 @@ local   db1,db2,@demodbs  all                                       md5
    </para>
 
    <para>
-<ulink url="http://www.kernel.org/pub/linux/libs/pam/"><productname>Linux-PAM</>
+<ulink url="http://www.kernel.org/pub/linux/libs/pam/"><productname>Linux-PAM</></ulink>
     Page
 
     If you use <application>mod_auth_kerb</application> from
