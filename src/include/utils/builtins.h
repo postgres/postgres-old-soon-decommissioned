@@ -623,6 +623,8 @@ float64		numeric_float8(Numeric num);
 /* ri_triggers.c */
 HeapTuple	RI_FKey_check_ins(FmgrInfo *proinfo);
 HeapTuple	RI_FKey_check_upd(FmgrInfo *proinfo);
+HeapTuple	RI_FKey_noaction_del(FmgrInfo *proinfo);
+HeapTuple	RI_FKey_noaction_upd(FmgrInfo *proinfo);
 HeapTuple	RI_FKey_cascade_del(FmgrInfo *proinfo);
 HeapTuple	RI_FKey_cascade_upd(FmgrInfo *proinfo);
 HeapTuple	RI_FKey_restrict_del(FmgrInfo *proinfo);

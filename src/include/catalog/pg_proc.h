@@ -2142,6 +2142,10 @@ DATA(insert OID = 1652 (  RI_FKey_setdefault_del PGUID 11 f t f 0 f 0 "" 100 0 0
 DESCR("referential integrity ON DELETE SET DEFAULT");
 DATA(insert OID = 1653 (  RI_FKey_setdefault_upd PGUID 11 f t f 0 f 0 "" 100 0 0 100  RI_FKey_setdefault_upd - ));
 DESCR("referential integrity ON UPDATE SET DEFAULT");
+DATA(insert OID = 1654 (  RI_FKey_noaction_del PGUID 11 f t f 0 f 0 "" 100 0 0 100  RI_FKey_setdefault_del - ));
+DESCR("referential integrity ON DELETE NO ACTION");
+DATA(insert OID = 1655 (  RI_FKey_noaction_upd PGUID 11 f t f 0 f 0 "" 100 0 0 100  RI_FKey_setdefault_upd - ));
+DESCR("referential integrity ON UPDATE NO ACTION");
 
 /* for mac type support */
 DATA(insert OID = 436 (  macaddr_in			PGUID 11 f t t 1 f 829 "0" 100 0 0 100	macaddr_in - ));
