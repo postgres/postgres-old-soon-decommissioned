@@ -673,8 +673,8 @@ DATA(insert OID = 949 (  mkoidname	   PGUID 11 f t f 2 f 911 "26 19" 100 0 0 100
 
 DATA(insert OID = 952 (  lo_open           PGUID 11 f t f 2 f 23 "26 23" 100 0 0 100  foo bar ));
 DATA(insert OID = 953 (  lo_close          PGUID 11 f t f 1 f 23 "23" 100 0 0 100  foo bar ));
-DATA(insert OID = 954 (  LOread            PGUID 11 f t f 2 f 17 "23 23" 100 0 0 100  foo bar ));
-DATA(insert OID = 955 (  LOwrite           PGUID 11 f t f 2 f 23 "23 17" 100 0 0 100  foo bar ));
+DATA(insert OID = 954 (  loread            PGUID 11 f t f 2 f 17 "23 23" 100 0 0 100  foo bar ));
+DATA(insert OID = 955 (  lowrite           PGUID 11 f t f 2 f 23 "23 17" 100 0 0 100  foo bar ));
 DATA(insert OID = 956 (  lo_lseek          PGUID 11 f t f 3 f 23 "23 23 23" 100 0 0 100  foo bar ));
 DATA(insert OID = 957 (  lo_creat          PGUID 11 f t f 1 f 26 "23" 100 0 0 100  foo bar ));
 DATA(insert OID = 958 (  lo_tell           PGUID 11 f t f 1 f 23 "23" 100 0 0 100  foo bar ));
