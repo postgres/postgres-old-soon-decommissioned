@@ -695,26 +695,20 @@ heap_getattr(HeapTuple tup,
     if (attnum > (int) tup->t_natts) {
         *isnull = true;
         return ((char *) NULL);
+    } else if (attnum > 0) {
+	/* ----------------
+	 *  take care of user defined attributes
+	 * ----------------
+	 */
+        return fastgetattr(tup, attnum, tupleDesc, isnull);
+    } else {
+	/* ----------------
+	 *  take care of system attributes
+	 * ----------------
+	 */
+	*isnull = false;
+	return heap_getsysattr(tup, b, attnum);
     }
-    
-    /* ----------------
-     *  take care of user defined attributes
-     * ----------------
-     */
-    if (attnum > 0) {
-        char  *datum;
-        datum = fastgetattr(tup, attnum, tupleDesc, isnull);
-        
-        return (datum);
-    }
-    
-    /* ----------------
-     *  take care of system attributes
-     * ----------------
-     */
-    *isnull = false;
-    return
-        heap_getsysattr(tup, b, attnum);
 }
 
 /* ----------------

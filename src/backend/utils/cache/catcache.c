@@ -656,8 +656,19 @@ InitSysCache(char *relname,
      *  and the LRU tuple list
      * ----------------
      */
-    for (i = 0; i <= NCCBUCK; ++i) {
-      cp->cc_cache[i] = DLNewList();
+    {
+	/*
+	 *  We can only do this optimization because the number of hash
+         *  buckets never changes.  Without it, we call malloc() too much.
+         *  We could move this to dllist.c, but the way we do this is not
+         *  dynamic/portabl, so why allow other routines to use it.
+         */
+    	void *cache_begin = malloc((NCCBUCK+1)*sizeof(Dllist));
+	for (i = 0; i <= NCCBUCK; ++i) {
+	    cp->cc_cache[i] = cache_begin + i * sizeof(Dllist);
+	    cp->cc_cache[i]->dll_head = 0;
+	    cp->cc_cache[i]->dll_tail = 0;
+	}
     }
     
     cp->cc_lrulist = DLNewList();

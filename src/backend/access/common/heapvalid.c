@@ -22,6 +22,7 @@
 #include <utils/rel.h>
 #include <utils/tqual.h>
 #include <storage/bufmgr.h>
+#include <utils/builtins.h>
 
 /* ----------------
  *	heap_keytest
@@ -53,7 +54,9 @@ heap_keytest(HeapTuple t,
 	    return (false);
 	}
 
-	if (keys->sk_flags & SK_COMMUTE)
+	if (keys->sk_func == (func_ptr)oideq)	/* optimization */
+	    test = (keys->sk_argument == atp);
+	else if (keys->sk_flags & SK_COMMUTE)
 	    test = (long) FMGR_PTR2(keys->sk_func, keys->sk_procedure,
 				    keys->sk_argument, atp);
 	else

@@ -686,8 +686,7 @@ typedef struct Exception {
  *	Does string copy, and forces terminating NULL
  */
 /* we do this so if the macro is used in an if action, it will work */
-#define strNcpy(dest,src,len)	do \
-		{strncpy((dest),(src),(len));*((dest) + (len)) = '\0';} while (0)
+#define strNcpy(dst,src,len)	(strncpy((dst),(src),(len)),*((dst)+(len))='\0',dst)
 
 /* ----------------------------------------------------------------
  *		Section 9: externs

@@ -96,6 +96,10 @@ char *oidout(Oid o)
  *   PUBLIC ROUTINES                                                         *
  *****************************************************************************/
 
+/*
+ * If you change this function, change heap_keytest()
+ * because we have hardcoded this in there as an optimization
+ */
 bool oideq(Oid arg1, Oid arg2)
 {
     return(arg1 == arg2);

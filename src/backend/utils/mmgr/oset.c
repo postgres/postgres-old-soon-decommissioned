@@ -20,7 +20,6 @@
 #include "utils/memutils.h"	/* where declarations of this file goes */
 
 static Pointer OrderedElemGetBase(OrderedElem elem);
-static void OrderedElemInit(OrderedElem elem, OrderedSet set);
 static void OrderedElemPush(OrderedElem elem);
 static void OrderedElemPushHead(OrderedElem elem);
 
@@ -47,18 +46,6 @@ OrderedSetInit(OrderedSet set, Offset offset)
     set->dummy = NULL;
     set->tail = (OrderedElem)&set->head;
     set->offset = offset;
-}
-
-/*
- * OrderedElemInit --
- */
-static void
-OrderedElemInit(OrderedElem elem, OrderedSet set)
-{
-    elem->set = set;
-    /* mark as unattached */
-    elem->next = NULL;
-    elem->prev = NULL;
 }
 
 /*
@@ -148,7 +135,10 @@ OrderedElemPop(OrderedElem elem)
 void
 OrderedElemPushInto(OrderedElem elem, OrderedSet set)
 {
-    OrderedElemInit(elem, set);
+    elem->set = set;
+    /* mark as unattached */
+    elem->next = NULL;
+    elem->prev = NULL;
     OrderedElemPush(elem);
 }
 

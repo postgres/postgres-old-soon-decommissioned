@@ -32,43 +32,6 @@ static void PageIndexTupleDeleteAdjustLinePointers(PageHeader phdr,
 static bool PageManagerShuffle = true;	/* default is shuffle mode */
 
 /* ----------------------------------------------------------------
- *			Buffer support functions
- * ----------------------------------------------------------------
- */
-/*
- * BufferGetPageSize --
- *	Returns the page size within a buffer.
- *
- * Notes:
- *	Assumes buffer is valid.
- *
- *	The buffer can be a raw disk block and need not contain a valid
- *	(formatted) disk page.
- */
-Size
-BufferGetPageSize(Buffer buffer)
-{
-    Size	pageSize;
-    
-    Assert(BufferIsValid(buffer));
-    pageSize = BLCKSZ;	/* XXX dig out of buffer descriptor */
-    
-    Assert(PageSizeIsValid(pageSize));
-    return (pageSize);
-}
-
-/*
- * BufferGetPage --
- *	Returns the page associated with a buffer.
- */
-Page
-BufferGetPage(Buffer buffer)
-{
-    return (Page) BufferGetBlock(buffer);
-}
-
-
-/* ----------------------------------------------------------------
  *			Page support functions
  * ----------------------------------------------------------------
  */
@@ -92,31 +55,6 @@ PageInit(Page page, Size pageSize, Size specialSize)
     p->pd_upper = pageSize - specialSize;
     p->pd_special = pageSize - specialSize;
     PageSetPageSize(page, pageSize);
-}
-
-/*
- * PageGetItem --
- *	Retrieves an item on the given page.
- *
- * Note:
- *	This does change the status of any of the resources passed.
- *	The semantics may change in the future.
- */
-Item
-PageGetItem(Page page, ItemId itemId)
-{
-    Item	item;
-    
-    Assert(PageIsValid(page));
-/*    Assert(itemId->lp_flags & LP_USED); */
-    if(!(itemId->lp_flags & LP_USED)) {
-	elog(NOTICE, "LP_USED assertion failed.  dumping core.");
-	abort();
-    }
-    
-    item = (Item)(((char *)page) + itemId->lp_off);
-    
-    return (item);
 }
 
 /*
