@@ -30,12 +30,6 @@ liketest: liketest.o palloc.o $(OBJS)
 utftest: utftest.o palloc.o common.o wstrcmp.o wstrncmp.o big5.o
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
-uconv: uconv.o palloc.o common.o conv.o wchar.o big5.o mbutils.o
-	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
-
-uconv2: uconv2.o palloc.o common.o conv.o wchar.o big5.o mbutils.o
-	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
-
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
 

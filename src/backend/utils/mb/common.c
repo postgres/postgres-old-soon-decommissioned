@@ -19,6 +19,7 @@
 #include "mb/pg_wchar.h"
 #include "utils/builtins.h"
 
+#ifndef FRONTEND
 /*
  * convert encoding char to encoding symbol value.
  * case is ignored.
@@ -96,6 +97,8 @@ PG_encoding_to_char(PG_FUNCTION_ARGS)
 
 	PG_RETURN_NAME(pg_encoding_to_char(encoding));
 }
+
+#endif
 
 /* returns the byte length of a multi-byte word for an encoding */
 int

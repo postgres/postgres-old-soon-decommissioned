@@ -209,13 +209,6 @@ pg_mblen(const unsigned char *mbstr)
 	return ((*pg_wchar_table[GetDatabaseEncoding()].mblen) (mbstr));
 }
 
-/* returns the byte length of a multi-byte word with specified enciding */
-int
-pg_mblen_with_encoding(const unsigned char *mbstr, int encoding)
-{
-	return ((*pg_wchar_table[encoding].mblen) (mbstr));
-}
-
 /* returns the length (counted as a wchar) of a multi-byte string */
 int
 pg_mbstrlen(const unsigned char *mbstr)
