@@ -39,6 +39,7 @@ WANTED_DIRS = \
 		tablefunc	\
 		tips		\
 		tsearch		\
+		tsearch2	\
 		userlock	\
 		vacuumlo
 
