@@ -881,6 +881,7 @@ typedef struct SelectStmt
 								 * DISTINCT) */
 	char	   *into;			/* name of table (for select into table) */
 	bool		istemp;			/* into is a temp table? */
+	List	   *intoColNames;	/* column names for into table */
 	List	   *targetList;		/* the target list (of ResTarget) */
 	List	   *fromClause;		/* the FROM clause */
 	Node	   *whereClause;	/* WHERE qualification */

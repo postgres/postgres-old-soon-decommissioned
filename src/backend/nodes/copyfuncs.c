@@ -1835,6 +1835,7 @@ _copySelectStmt(SelectStmt *from)
 	if (from->into)
 		newnode->into = pstrdup(from->into);
 	newnode->istemp = from->istemp;
+	Node_Copy(from, newnode, intoColNames);
 	Node_Copy(from, newnode, targetList);
 	Node_Copy(from, newnode, fromClause);
 	Node_Copy(from, newnode, whereClause);

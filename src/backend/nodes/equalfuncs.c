@@ -681,6 +681,8 @@ _equalSelectStmt(SelectStmt *a, SelectStmt *b)
 		return false;
 	if (a->istemp != b->istemp)
 		return false;
+	if (!equal(a->intoColNames, b->intoColNames))
+		return false;
 	if (!equal(a->targetList, b->targetList))
 		return false;
 	if (!equal(a->fromClause, b->fromClause))
