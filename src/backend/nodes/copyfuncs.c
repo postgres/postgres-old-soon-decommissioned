@@ -509,6 +509,21 @@ _copyAgg(Agg *from)
 	return newnode;
 }
 
+/* ---------------
+ *	_copyGroupClause
+ * --------------
+ */
+static GroupClause *
+_copyGroupClause(GroupClause *from)
+{
+		GroupClause		   *newnode = makeNode(GroupClause);
+
+		newnode->grpOpoid = from->grpOpoid;
+		newnode->entry = copyObject(from->entry);
+
+		return newnode;
+}
+
 
 /* ----------------
  *		_copyUnique
@@ -1664,6 +1679,9 @@ copyObject(void *from)
 			break;
 		case T_Agg:
 			retval = _copyAgg(from);
+			break;
+		case T_GroupClause:
+			retval = _copyGroupClause(from);
 			break;
 		case T_Unique:
 			retval = _copyUnique(from);
