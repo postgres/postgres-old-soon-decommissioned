@@ -733,7 +733,7 @@ msgstr "Используйте \"\\q\" чтобы выйти из %s.\n"
 
 #: print.c:370
 msgid "(No rows)\n"
-msgstr "(Нет строк)\n "
+msgstr "(Нет строк)\n"
 
 #: print.c:1075
 msgid "(1 row)"
