@@ -320,7 +320,6 @@ TypeCategory(Oid inType)
 		case (NAMEOID):
 		case (BPCHAROID):
 		case (VARCHAROID):
-	case (BYTEAOID):
 		case (TEXTOID):
 		case (LZTEXTOID):
 			result = STRING_TYPE;
@@ -551,7 +550,6 @@ PromoteLesserType(Oid inType1, Oid inType2, Oid *newType1, Oid *newType2)
 				{
 					case (BPCHAROID):
 					case (VARCHAROID):
-		    case (BYTEAOID):
 					case (TEXTOID):
 
 					case (INT2OID):

@@ -45,7 +45,6 @@ typedef enum CATEGORY
 		|| ((t) == BPCHAROID) \
 		|| ((t) == VARCHAROID) \
 		|| ((t) == TEXTOID) \
-		|| ((t) == BYTEAOID) \
 		|| ((t) == INT4OID) \
 		|| ((t) == INT8OID) \
 		|| ((t) == FLOAT8OID) \
@@ -82,16 +81,10 @@ typedef enum CATEGORY
 #define IS_BINARY_COMPATIBLE(a,b) \
 		  (((a) == BPCHAROID && (b) == TEXTOID) \
 		|| ((a) == BPCHAROID && (b) == VARCHAROID) \
-		|| ((a) == BPCHAROID && (b) == BYTEAOID) \
 		|| ((a) == VARCHAROID && (b) == TEXTOID) \
 		|| ((a) == VARCHAROID && (b) == BPCHAROID) \
-		|| ((a) == VARCHAROID && (b) == BYTEAOID) \
 		|| ((a) == TEXTOID && (b) == BPCHAROID) \
 		|| ((a) == TEXTOID && (b) == VARCHAROID) \
-		|| ((a) == TEXTOID && (b) == BYTEAOID) \
- 		|| ((a) == BYTEAOID && (b) == BPCHAROID) \
-		|| ((a) == BYTEAOID && (b) == VARCHAROID) \
-		|| ((a) == BYTEAOID && (b) == TEXTOID) \
 		|| ((a) == OIDOID && (b) == INT4OID) \
 		|| ((a) == OIDOID && (b) == REGPROCOID) \
 		|| ((a) == INT4OID && (b) == OIDOID) \
