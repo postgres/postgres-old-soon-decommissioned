@@ -1661,6 +1661,11 @@ useful_strerror(int errnum)
 	static char errorstr_buf[48];
 	const char *str;
 
+#ifdef WIN32
+	/* Winsock error code range, per WinError.h */
+	if (errnum >= 10000 && errnum <= 11999)
+		return pgwin32_socket_strerror(errnum);
+#endif
 	str = strerror(errnum);
 
 	/*

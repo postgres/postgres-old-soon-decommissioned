@@ -139,6 +139,8 @@ int pgwin32_connect(SOCKET s, const struct sockaddr* name, int namelen);
 int pgwin32_select(int nfds, fd_set* readfs, fd_set* writefds, fd_set* exceptfds, const struct timeval* timeout);
 int pgwin32_recv(SOCKET s, char* buf, int len, int flags);
 int pgwin32_send(SOCKET s, char* buf, int len, int flags);
+
+const char *pgwin32_socket_strerror(int err);
 #endif
 
 
