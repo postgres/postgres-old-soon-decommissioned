@@ -191,6 +191,8 @@ make_one_rel_by_joins(Query *root, List *rels, int levels_needed)
 
 		merge_rels_with_same_relids(joined_rels);
 
+		root->join_rel_list = rels = joined_rels;
+
 #if 0
 		/*
 		 * * for each expensive predicate in each path in each distinct
@@ -202,17 +204,6 @@ make_one_rel_by_joins(Query *root, List *rels, int levels_needed)
 #endif
 
 		rels_set_cheapest(joined_rels);
-
-		if (BushyPlanFlag)
-		{
-			/*
-			 * In case of bushy trees if there is still a join between a
-			 * join relation and another relation, add a new joininfo that
-			 * involves the join relation to the joininfo list of the
-			 * other relation
-			 */
-			add_rel_to_rel_joininfos(root, joined_rels, rels);
-		}
 
 		foreach(x, joined_rels)
 		{
@@ -228,20 +219,6 @@ make_one_rel_by_joins(Query *root, List *rels, int levels_needed)
 #endif
 		}
 
-		if (BushyPlanFlag)
-		{
-			/*
-			 * prune rels that have been completely incorporated into new
-			 * join rels
-			 */
-			joined_rels = del_rels_all_bushy_inactive(rels);
-
-			/*
-			 * merge join rels if then contain the same list of base rels
-			 */
-			merge_rels_with_same_relids(joined_rels);
-		}
-		root->join_rel_list = rels = joined_rels;
 	}
 
 	Assert(BushyPlanFlag || length(rels) == 1);

@@ -62,8 +62,8 @@ extern Cost xfunc_func_expense(Expr *node, List *args);
 extern int	xfunc_width(Expr *clause);
 
 /* static, moved to xfunc.c */
-/* extern int xfunc_card_unreferenced(Expr *clause, Relid referenced); */
-extern int	xfunc_card_product(Relid relids);
+/* extern int xfunc_card_unreferenced(Expr *clause, Relids referenced); */
+extern int	xfunc_card_product(Relids relids);
 extern List *xfunc_find_references(List *clause);
 extern List *xfunc_primary_join(JoinPath *pathnode);
 extern Cost xfunc_get_path_cost(Path *pathnode);

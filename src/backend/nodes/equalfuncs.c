@@ -526,7 +526,7 @@ _equalJoinInfo(JoinInfo *a, JoinInfo *b)
 {
 	Assert(IsA(a, JoinInfo));
 	Assert(IsA(b, JoinInfo));
-	if (!equal(a->unjoined_rels, b->unjoined_rels))
+	if (!equal(a->unjoined_relids, b->unjoined_relids))
 		return false;
 	if (!equal(a->jinfo_restrictinfo, b->jinfo_restrictinfo))
 		return false;

@@ -42,9 +42,9 @@ extern HashPath *create_hashjoin_path(RelOptInfo *joinrel, int outersize,
 /*
  * prototypes for rel.c
  */
-extern RelOptInfo *rel_member(List *relid, List *rels);
+extern RelOptInfo *rel_member(Relids relid, List *rels);
 extern RelOptInfo *get_base_rel(Query *root, int relid);
-extern RelOptInfo *get_join_rel(Query *root, List *relid);
+extern RelOptInfo *get_join_rel(Query *root, Relids relid);
 
 /*
  * prototypes for indexnode.h

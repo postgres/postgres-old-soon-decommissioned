@@ -740,7 +740,6 @@ _freeRelOptInfo(RelOptInfo *node)
 	freeObject(node->restrictinfo);
 	freeObject(node->joininfo);
 	freeObject(node->innerjoin);
-	freeObject(node->superrels);
 
 	pfree(node);
 }
@@ -1024,7 +1023,7 @@ _freeJoinInfo(JoinInfo *node)
 	 *	free remainder of node
 	 * ----------------
 	 */
-	freeList(node->unjoined_rels);
+	freeList(node->unjoined_relids);
 	freeObject(node->jinfo_restrictinfo);
 
 	pfree(node);

@@ -1982,8 +1982,8 @@ _readJoinInfo()
 
 	local_node = makeNode(JoinInfo);
 
-	token = lsptok(NULL, &length);		/* get :unjoined_rels */
-	local_node->unjoined_rels = toIntList(nodeRead(true));		/* now read it */
+	token = lsptok(NULL, &length);		/* get :unjoined_relids */
+	local_node->unjoined_relids = toIntList(nodeRead(true));		/* now read it */
 
 	token = lsptok(NULL, &length);		/* get :jinfo_restrictinfo */
 	local_node->jinfo_restrictinfo = nodeRead(true);		/* now read it */

@@ -633,7 +633,7 @@ create_hashjoin_path(RelOptInfo *joinrel,
 	pathnode->jpath.path.pathorder->ordtype = SORTOP_ORDER;
 	pathnode->jpath.path.pathorder->ord.sortop = NULL;
 	pathnode->jpath.path.outerjoincost = (Cost) 0.0;
-	pathnode->jpath.path.joinid = (Relid) NULL;
+	pathnode->jpath.path.joinid = (Relids) NULL;
 	/* pathnode->hashjoinoperator = operator;  */
 	pathnode->path_hashclauses = hashclauses;
 	pathnode->outerhashkeys = outerkeys;

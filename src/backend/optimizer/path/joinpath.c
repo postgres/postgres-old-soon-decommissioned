@@ -71,8 +71,8 @@ update_rels_pathlist_for_joins(Query *root, List *joinrels)
 	foreach(j, joinrels)
 	{
 		RelOptInfo *joinrel = (RelOptInfo *) lfirst(j);
-		List	   *innerrelids;
-		List	   *outerrelids;
+		Relids		innerrelids;
+		Relids		outerrelids;
 		RelOptInfo *innerrel;
 		RelOptInfo *outerrel;
 		Path	   *bestinnerjoin;
@@ -163,7 +163,7 @@ update_rels_pathlist_for_joins(Query *root, List *joinrels)
  * Returns the pathnode of the selected path.
  */
 static Path *
-best_innerjoin(List *join_paths, List *outer_relids)
+best_innerjoin(List *join_paths, Relids outer_relids)
 {
 	Path	   *cheapest = (Path *) NULL;
 	List	   *join_path;

@@ -61,7 +61,7 @@ _outIntList(StringInfo str, List *list)
 	appendStringInfo(str, "(");
 	foreach(l, list)
 	{
-		appendStringInfo(str, " %d ", (int) lfirst(l));
+		appendStringInfo(str, " %d ", lfirsti(l));
 	}
 	appendStringInfo(str, ")");
 }
@@ -1198,8 +1198,8 @@ _outHashInfo(StringInfo str, HashInfo *node)
 static void
 _outJoinInfo(StringInfo str, JoinInfo *node)
 {
-	appendStringInfo(str, " JINFO :unjoined_rels ");
-	_outIntList(str, node->unjoined_rels);
+	appendStringInfo(str, " JINFO :unjoined_relids ");
+	_outIntList(str, node->unjoined_relids);
 
 	appendStringInfo(str, " :jinfo_restrictinfo ");
 	_outNode(str, node->jinfo_restrictinfo);
