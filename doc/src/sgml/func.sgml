@@ -6111,6 +6111,7 @@ SELECT TIMESTAMP 'now';
     <literal>6</literal> for IPv6</entry>
     <entry><literal>family('::1')</literal></entry>
     <entry><literal>6</literal></entry>
+       </row>
       </tbody>
      </tgroup>
     </table>
