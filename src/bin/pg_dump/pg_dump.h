@@ -66,7 +66,7 @@ typedef struct _funcInfo
 	char	   *proowner;
 	Oid			lang;
 	int			nargs;
-	char	   *argtypes[FUNC_MAX_ARGS];
+	char	   **argtypes;
 	char	   *prorettype;
 	int			retset;			/* 1 if the function returns a set, else 0 */
 	char	   *prosrc;
