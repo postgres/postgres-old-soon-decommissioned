@@ -659,7 +659,7 @@ showVersion(void)
 	puts("");
 #endif
 
-	puts(gettext("Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group\n"
+	puts(gettext("Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group\n"
 				 "Portions Copyright (c) 1996, Regents of the University of California\n"
 	"Read the file COPYRIGHT or use the command \\copyright to see the\n"
 				 "usage and distribution terms."));
