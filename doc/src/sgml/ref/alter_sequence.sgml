@@ -236,6 +236,12 @@ ALTER SEQUENCE serial RESTART WITH 105;
    later aborts. This means that aborted transactions may leave unused "holes" in
    the sequence of assigned values. setval operations are never rolled back, either.
   </para>
+  <para>
+   <command>ALTER SEQUENCE</command> will not immediately affect backends, other than the
+   current one, which have cached sequence values. They must use up all cached values
+   prior to noticing the changed sequence parameters.  The current backend will be 
+   immediatly affected.
+  </para>
  </refsect1>
 
 

@@ -345,6 +345,11 @@ AlterSequence(AlterSeqStmt *stmt)
 		seq->log_cnt = 1;
 	}
 
+	/* save info in local cache */
+	elm->last = new.last_value;		/* last returned number */
+	elm->cached = new.last_value;	/* last cached number (forget cached
+									 * values) */
+
 	START_CRIT_SECTION();
 
 	/* XLOG stuff */
