@@ -922,7 +922,7 @@ initialize_SSL(PGconn *conn)
 	char		fnbuf[2048];
 #endif
 
-	if(!init_ssl_system(conn))
+	if(init_ssl_system(conn))
 		return -1;
 
 #ifndef WIN32
