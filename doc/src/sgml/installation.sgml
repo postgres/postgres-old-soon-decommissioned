@@ -120,10 +120,9 @@ su - postgres
        <secondary>on Windows</secondary>
       </indexterm>
 
-      To build on <productname>Windows NT</> or <productname>Windows
-      2000</> you need the <productname>Cygwin</> and
-      <productname>cygipc</> packages. See the file
-      <filename>doc/FAQ_MSWIN</> for details.
+      To build on <productname>Windows</> platforms see
+      <![%standalone-include[the documentation chapter "Installation on Windows"]]>
+      <![%standalone-ignore[<xref linkend="install-win32">]]>.
      </para>
     </listitem>
    </itemizedlist>
