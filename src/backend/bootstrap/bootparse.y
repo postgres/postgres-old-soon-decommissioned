@@ -64,6 +64,7 @@ do_end()
 {
 	CommitTransactionCommand();
 	elog(DEBUG4, "commit transaction");
+	CHECK_FOR_INTERRUPTS();		/* allow SIGINT to kill bootstrap run */
 	if (isatty(0))
 	{
 		printf("bootstrap> ");
