@@ -100,7 +100,7 @@ extern bool HeapTupleSatisfiesDirty(HeapTupleHeader tuple);
 extern bool HeapTupleSatisfiesToast(HeapTupleHeader tuple);
 extern bool HeapTupleSatisfiesSnapshot(HeapTupleHeader tuple,
 						   Snapshot snapshot);
-extern int HeapTupleSatisfiesUpdate(HeapTuple tuple,
+extern int HeapTupleSatisfiesUpdate(HeapTupleHeader tuple,
 						 CommandId curcid);
 extern HTSV_Result HeapTupleSatisfiesVacuum(HeapTupleHeader tuple,
 						 TransactionId OldestXmin);
@@ -108,6 +108,7 @@ extern HTSV_Result HeapTupleSatisfiesVacuum(HeapTupleHeader tuple,
 extern Snapshot GetSnapshotData(Snapshot snapshot, bool serializable);
 extern void SetQuerySnapshot(void);
 extern Snapshot CopyQuerySnapshot(void);
+extern Snapshot CopyCurrentSnapshot(void);
 extern void FreeXactSnapshot(void);
 
 #endif   /* TQUAL_H */

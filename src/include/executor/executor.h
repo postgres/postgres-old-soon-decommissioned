@@ -85,7 +85,7 @@ extern HeapTuple ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot);
 /*
  * prototypes from functions in execMain.c
  */
-extern void ExecutorStart(QueryDesc *queryDesc, bool useSnapshotNow,
+extern void ExecutorStart(QueryDesc *queryDesc, bool useCurrentSnapshot,
 						  bool explainOnly);
 extern TupleTableSlot *ExecutorRun(QueryDesc *queryDesc,
 			ScanDirection direction, long count);

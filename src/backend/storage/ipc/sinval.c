@@ -330,10 +330,10 @@ GetSnapshotData(Snapshot snapshot, bool serializable)
 	 * lastBackend would be sufficient.  But it seems better to do the
 	 * malloc while not holding the lock, so we can't look at lastBackend.
 	 *
-	 * if (snapshot->xip != NULL) no need to free and reallocate xip;
-	 *
-	 * We can reuse the old xip array, because MaxBackends does not change at
-	 * runtime.
+	 * This does open a possibility for avoiding repeated malloc/free:
+	 * since MaxBackends does not change at runtime, we can simply reuse
+	 * the previous xip array if any.  (This relies on the fact that all
+	 * calls pass static SnapshotData structs.)
 	 */
 	if (snapshot->xip == NULL)
 	{

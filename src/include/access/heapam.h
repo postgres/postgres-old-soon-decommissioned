@@ -155,9 +155,9 @@ extern void setLastTid(const ItemPointer tid);
 
 extern Oid	heap_insert(Relation relation, HeapTuple tup, CommandId cid);
 extern int heap_delete(Relation relation, ItemPointer tid, ItemPointer ctid,
-			CommandId cid, bool wait);
+			CommandId cid, Snapshot crosscheck, bool wait);
 extern int heap_update(Relation relation, ItemPointer otid, HeapTuple tup,
-			ItemPointer ctid, CommandId cid, bool wait);
+			ItemPointer ctid, CommandId cid, Snapshot crosscheck, bool wait);
 extern int heap_mark4update(Relation relation, HeapTuple tup,
 				 Buffer *userbuf, CommandId cid);
 
