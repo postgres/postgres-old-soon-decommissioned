@@ -81,7 +81,7 @@
 #endif
 
 #include "libpq/libpq.h"
-#include "utils/trace.h" /* needed on some OS's */
+#include "utils/trace.h" /* needed for HAVE_FCNTL_SETLK */
 #include "miscadmin.h"
 
 
