@@ -216,19 +216,19 @@ char *tintervalout(TimeInterval interval)
     char	*i_str, *p;
     
     i_str = (char	*) palloc( T_INTERVAL_LEN );  /* ['...' '...'] */
-    (void) strcpy(i_str,"['");
+    (void) strcpy(i_str,"[\"");
     if (interval->status == T_INTERVAL_INVAL)
 	(void) strcat(i_str,INVALID_INTERVAL_STR);
     else {
 	p = nabstimeout(interval->data[0]);
 	(void) strcat(i_str,p);
 	pfree(p);
-	(void) strcat(i_str,"' '");
+	(void) strcat(i_str,"\" \"");
 	p = nabstimeout(interval->data[1]);
 	(void) strcat(i_str,p);
 	pfree(p);
     }
-    (void) strcat(i_str,"']\0");
+    (void) strcat(i_str,"\"]\0");
     return(i_str);
 }
 
