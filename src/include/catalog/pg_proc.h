@@ -727,7 +727,11 @@ DATA(insert OID = 1089 (  date_gt          PGUID 11 f t f 2 f 16 "1082 1082" 100
 DATA(insert OID = 1090 (  date_ge          PGUID 11 f t f 2 f 16 "1082 1082" 100 0 0 100  foo bar ));
 DATA(insert OID = 1091 (  date_ne          PGUID 11 f t f 2 f 16 "1082 1082" 100 0 0 100  foo bar ));
 DATA(insert OID = 1092 (  date_cmp         PGUID 11 f t f 2 f 23 "1082 1082" 100 0 0 100  foo bar ));
-
+DATA(insert OID = 1093 (  date_larger      PGUID 11 f t f 2 f 1082 "1082 1082" 100 0 0 100  foo bar ));
+DATA(insert OID = 1094 (  date_smaller     PGUID 11 f t f 2 f 1082 "1082 1082" 100 0 0 100  foo bar ));
+DATA(insert OID = 1095 (  date_mi          PGUID 11 f t f 2 f 23 "1082 1082" 100 0 0 100  foo bar ));
+DATA(insert OID = 1096 (  date_pli         PGUID 11 f t f 2 f 1082 "1082 23" 100 0 0 100  foo bar ));
+DATA(insert OID = 1097 (  date_mii         PGUID 11 f t f 2 f 1082 "1082 23" 100 0 0 100  foo bar ));
 DATA(insert OID = 1099 (  time_in          PGUID 11 f t f 1 f 1083 "0" 100 0 0 100  foo bar ));
 
 /* OIDS 1100 - 1199 */
