@@ -1172,6 +1172,18 @@ $PostgreSQL$
 
     <listitem>
      <para>
+      <command>REINDEX</command> does not exclusively lock the index's
+      parent table anymore
+     </para>
+     <para>
+      The index itself is still exclusively locked, but readers of the
+      table can continue if they are not using the particular index
+      being rebuilt.
+     </para>
+    </listitem>
+
+    <listitem>
+     <para>
       Erase MD5 user passwords when a user is renamed (Bruce)
      </para>
      <para>
