@@ -263,6 +263,9 @@ static void IndexedAccessMethodInitialize(Relation relation);
 static void AttrDefaultFetch (Relation relation);
 static void RelCheckFetch (Relation relation);
 
+extern void RelationBuildTriggers (Relation relation);
+extern void FreeTriggerDesc (Relation relation);
+
 /*
  * newlyCreatedRelns -
  *    relations created during this transaction. We need to keep track of
@@ -892,6 +895,12 @@ RelationBuildDesc(RelationBuildDescInfo buildinfo)
 	relation->rd_rules = NULL;
     }
     
+    /* Triggers */
+    if ( relp->reltriggers > 0 )
+    	RelationBuildTriggers (relation);
+    else
+    	relation->trigdesc = NULL;
+    
     /* ----------------
      *	initialize index strategy and support information for this relation
      * ----------------
@@ -1290,6 +1299,8 @@ RelationFlushRelation(Relation *relationPtr,
 	RelationCacheDelete(relation);
 	
 	FreeTupleDesc (relation->rd_att);
+	
+	FreeTriggerDesc (relation);
 
 #if 0
 	if (relation->rd_rules) {
