@@ -18,13 +18,14 @@
 #ifndef LIBPQ_BE_H
 #define LIBPQ_BE_H
 
-#include "libpq/hba.h"
-#include "libpq/pqcomm.h"
-
+#include <sys/time.h>
 #ifdef USE_SSL
 #include <openssl/ssl.h>
 #include <openssl/err.h>
 #endif
+
+#include "libpq/hba.h"
+#include "libpq/pqcomm.h"
 
 
 typedef enum CAC_state

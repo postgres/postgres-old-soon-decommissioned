@@ -3240,8 +3240,9 @@ log_disconnections(int code, Datum arg)
 		snprintf(session_time,sizeof(session_time),"negative!");
 	else
 		/* for stricter accuracy here we could round - this is close enough */
-		snprintf(session_time, sizeof(session_time),"%d:%02d:%02d.%02ld",
-				 hours, minutes, seconds, end.tv_usec/10000);
+		snprintf(session_time, sizeof(session_time),
+			 "%d:%02d:%02d.%02d",
+			 hours, minutes, seconds, (int) (end.tv_usec/10000));
       
 	ereport(
 		LOG,
