@@ -782,7 +782,7 @@ AC_CHECK_TYPES([struct cmsgcred, struct fcred, struct sockcred], [], [],
 
 AC_CHECK_TYPES([struct option], [], [],
 [#ifdef HAVE_GETOPT_H
-include <getopt.h>
+#include <getopt.h>
 #endif])
 
 if test "$with_zlib" = yes; then
