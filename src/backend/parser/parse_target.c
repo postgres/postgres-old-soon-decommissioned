@@ -29,7 +29,8 @@
 #include "utils/typcache.h"
 
 
-static void markTargetListOrigin(ParseState *pstate, Resdom *res, Var *var);
+static void markTargetListOrigin(ParseState *pstate, Resdom *res,
+								 Var *var, int levelsup);
 static Node *transformAssignmentIndirection(ParseState *pstate,
 							   Node *basenode,
 							   const char *targetName,
@@ -174,7 +175,7 @@ markTargetListOrigins(ParseState *pstate, List *targetlist)
 	{
 		TargetEntry *tle = (TargetEntry *) lfirst(l);
 
-		markTargetListOrigin(pstate, tle->resdom, (Var *) tle->expr);
+		markTargetListOrigin(pstate, tle->resdom, (Var *) tle->expr, 0);
 	}
 }
 
@@ -182,18 +183,22 @@ markTargetListOrigins(ParseState *pstate, List *targetlist)
  * markTargetListOrigin()
  *		If 'var' is a Var of a plain relation, mark 'res' with its origin
  *
+ * levelsup is an extra offset to interpret the Var's varlevelsup correctly.
+ *
  * This is split out so it can recurse for join references.  Note that we
  * do not drill down into views, but report the view as the column owner.
  */
 static void
-markTargetListOrigin(ParseState *pstate, Resdom *res, Var *var)
+markTargetListOrigin(ParseState *pstate, Resdom *res, Var *var, int levelsup)
 {
+	int			netlevelsup;
 	RangeTblEntry *rte;
 	AttrNumber	attnum;
 
 	if (var == NULL || !IsA(var, Var))
 		return;
-	rte = GetRTEByRangeTablePosn(pstate, var->varno, var->varlevelsup);
+	netlevelsup = var->varlevelsup + levelsup;
+	rte = GetRTEByRangeTablePosn(pstate, var->varno, netlevelsup);
 	attnum = var->varattno;
 
 	switch (rte->rtekind)
@@ -223,7 +228,7 @@ markTargetListOrigin(ParseState *pstate, Resdom *res, Var *var)
 
 				Assert(attnum > 0 && attnum <= list_length(rte->joinaliasvars));
 				aliasvar = (Var *) list_nth(rte->joinaliasvars, attnum - 1);
-				markTargetListOrigin(pstate, res, aliasvar);
+				markTargetListOrigin(pstate, res, aliasvar, netlevelsup);
 			}
 			break;
 		case RTE_SPECIAL:
