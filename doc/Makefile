@@ -12,7 +12,7 @@
 #
 #----------------------------------------------------------------------------
 
-PGDOCS= $(POSTGRESDIR)/doc
+PGDOCS= /home/projects/pgsql/ftp/www/html/docs2
 SRCDIR= ../src
 
 TAR= tar

@@ -67,7 +67,7 @@ s...)
  */
 #if defined(sun) && ! defined(sparc)
 #define LONGALIGN(LEN)	SHORTALIGN(LEN)
-#elif defined (alpha)
+#elif defined (__alpha)
 
  /*
   * even though "long alignment" should really be on 8-byte boundaries for

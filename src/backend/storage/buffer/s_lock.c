@@ -37,7 +37,7 @@
 #include "storage/ipc.h"
 #include "storage/s_lock.h"
 
-#if defined(__alpha__) && defined(linux)
+#if defined(__alpha) && defined(linux)
 void
 S_LOCK(slock_t *lock)
 {

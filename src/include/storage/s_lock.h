@@ -97,7 +97,7 @@
  * (see storage/ipc.h).
  */
 
-#if (defined(__alpha__) || defined(__alpha)) && !defined(linux)
+#if defined(__alpha) && !defined(linux)
 
 #define S_LOCK(lock)	do \
 						{ \
@@ -340,7 +340,7 @@ again:
 #endif							/* NEED_I386_TAS_ASM */
 
 
-#if defined(__alpha__) && defined(linux)
+#if defined(__alpha) && defined(linux)
 
 void		S_LOCK(slock_t *lock);
 
@@ -348,7 +348,7 @@ void		S_LOCK(slock_t *lock);
 
 #define S_INIT_LOCK(lock)	S_UNLOCK(lock)
 
-#endif							/* defined(__alpha__) && defined(linux) */
+#endif							/* defined(__alpha) && defined(linux) */
 
 #if defined(linux) && defined(sparc)
 
