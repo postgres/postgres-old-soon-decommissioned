@@ -29,13 +29,13 @@ extern TargetEntry *MakeTargetEntryIdent(ParseState *pstate,
 					 char **resname,
 					 char *refname,
 					 char *colname,
-					 int16 resjunk);
+					 bool resjunk);
 extern Node *CoerceTargetExpr(ParseState *pstate, Node *expr,
 				 Oid type_id, Oid attrtype);
 TargetEntry *MakeTargetEntryExpr(ParseState *pstate,
 					char *colname,
 					Node *expr,
 					List *arrayRef,
-					int16 resjunk);
+					bool resjunk);
 
 #endif	 /* PARSE_TARGET_H */

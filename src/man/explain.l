@@ -33,12 +33,12 @@ NOTICE:QUERY PLAN:
 
 {AGG :cost 0 :size 0 :width 0 :state <> :qptargetlist
  ({TLE :resdom {RESDOM :resno 1 :restype 700 :restypmod 4 :resname "sum"
-   :reskey 0 :reskeyop 0 :resjunk 0}
+   :reskey 0 :reskeyop 0 :resjunk false}
   :expr {AGGREG :aggname "sum" :basetype 700 :aggtype 700 :aggno 0
  :target {VAR :varno 1 :varattno 1 :vartype 700 :varnoold 1 :varoattno 1}}})
  :qpqual <> :lefttree {SEQSCAN :cost 0 :size 0 :width 4 :state <>
   :qptargetlist ({TLE :resdom {RESDOM :resno 1 :restype 700 :restypmod 4
-   :resname "null" :reskey 0 :reskeyop 0 :resjunk 0}
+   :resname "null" :reskey 0 :reskeyop 0 :resjunk false}
   :expr {VAR :varno 1 :varattno 1 :vartype 700 :varnoold 1 :varoattno 1}})
  :qpqual <> :lefttree <> :righttree <> :scanrelid 1} :righttree <> :numagg 1 }
 

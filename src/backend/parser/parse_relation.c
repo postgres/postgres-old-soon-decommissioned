@@ -283,7 +283,7 @@ expandAll(ParseState *pstate, char *relname, char *refname, int *this_resno)
 								attrname,
 								(Index) 0,
 								(Oid) 0,
-								0);
+								false);
 		te->expr = (Node *) varnode;
 		if (te_head == NIL)
 			te_head = te_tail = lcons(te, NIL);

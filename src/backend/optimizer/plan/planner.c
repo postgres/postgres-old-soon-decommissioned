@@ -168,7 +168,7 @@ union_planner(Query *parse)
 								resname,
 								0,
 								0,
-								1);
+								true);
 
 			var = makeVar(rowmark->rti, -1, TIDOID, 
 						  -1, 0, rowmark->rti, -1);

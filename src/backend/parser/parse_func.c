@@ -1352,7 +1352,7 @@ setup_tlist(char *attname, Oid relid)
 						 get_attname(relid, attno),
 						 0,
 						 (Oid) 0,
-						 0);
+						 false);
 	varnode = makeVar(-1, attno, typeid, type_mod, 0, -1, attno);
 
 	tle = makeTargetEntry(resnode, (Node *) varnode);
@@ -1377,7 +1377,7 @@ setup_base_tlist(Oid typeid)
 						 "<noname>",
 						 0,
 						 (Oid) 0,
-						 0);
+						 false);
 	varnode = makeVar(-1, 1, typeid, -1, 0, -1, 1);
 	tle = makeTargetEntry(resnode, (Node *) varnode);
 

@@ -565,9 +565,9 @@ _outResdom(StringInfo str, Resdom *node)
 			node->reskey,
 			node->reskeyop);
 
-	appendStringInfo(str, " :resgroupref %d :resjunk %d",
+	appendStringInfo(str, " :resgroupref %d :resjunk %s ",
 			node->resgroupref,
-			node->resjunk);
+			node->resjunk ? "true" : "false");
 }
 
 static void

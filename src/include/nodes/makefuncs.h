@@ -39,7 +39,7 @@ extern Resdom *makeResdom(AttrNumber resno,
 						  char *resname,
 						  Index reskey,
 						  Oid reskeyop,
-						  int resjunk);
+						  bool resjunk);
 
 extern Const *makeConst(Oid consttype,
 						int constlen,

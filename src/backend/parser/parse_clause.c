@@ -495,14 +495,14 @@ findTargetlistEntry(ParseState *pstate, Node *node, List *tlist, int clause)
 			case T_Attr:
 				target_result = MakeTargetEntryIdent(pstate, node,
 										 &((Attr *) node)->relname, NULL,
-										 ((Attr *) node)->relname, TRUE);
+										 ((Attr *) node)->relname, true);
 				lappend(tlist, target_result);
 				break;
 
 			case T_Ident:
 				target_result = MakeTargetEntryIdent(pstate, node,
 										   &((Ident *) node)->name, NULL,
-										   ((Ident *) node)->name, TRUE);
+										   ((Ident *) node)->name, true);
 				lappend(tlist, target_result);
 				break;
 
@@ -517,7 +517,7 @@ findTargetlistEntry(ParseState *pstate, Node *node, List *tlist, int clause)
 
 			case T_FuncCall:
 			case T_A_Expr:
-				target_result = MakeTargetEntryExpr(pstate, "resjunk", expr, FALSE, TRUE);
+				target_result = MakeTargetEntryExpr(pstate, "resjunk", expr, false, true);
 				lappend(tlist, target_result);
 				break;
 

@@ -97,7 +97,7 @@ makeResdom(AttrNumber resno,
 		   char *resname,
 		   Index reskey,
 		   Oid reskeyop,
-		   int resjunk)
+		   bool resjunk)
 {
 	Resdom	   *resdom = makeNode(Resdom);
 

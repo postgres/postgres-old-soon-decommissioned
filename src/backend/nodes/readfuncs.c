@@ -751,7 +751,7 @@ _readResdom()
 
 	token = lsptok(NULL, &length);		/* eat :resjunk */
 	token = lsptok(NULL, &length);		/* get resjunk */
-	local_node->resjunk = atoi(token);
+	local_node->resjunk = (token[0] == 't') ? true : false;
 
 	return local_node;
 }

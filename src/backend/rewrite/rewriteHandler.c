@@ -1063,7 +1063,7 @@ modifyAggrefMakeSublink(Expr *origexp, Query *parsetree)
 	resdom->resname = pstrdup("<noname>");
 	resdom->reskey	= 0;
 	resdom->reskeyop = 0;
-	resdom->resjunk	= 0;
+	resdom->resjunk	= false;
 
 	tle->resdom	= resdom;
 	tle->expr	= (Node *)aggref;
