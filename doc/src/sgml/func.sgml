@@ -2554,13 +2554,13 @@ PostgreSQL documentation
 
        <row>
         <entry> <literal>-</literal> </entry>
-        <entry><type>date</type> '2001-09-28' + <type>interval</type> '1 hour'</entry>
+        <entry><type>date</type> '2001-09-28' - <type>interval</type> '1 hour'</entry>
         <entry><type>timestamp</type> '2001-09-27 23:00'</entry>
        </row>
 
        <row>
         <entry> <literal>-</literal> </entry>
-        <entry><type>time</type> '05:00' + <type>interval</type> '2 hours'</entry>
+        <entry><type>time</type> '05:00' - <type>interval</type> '2 hours'</entry>
         <entry><type>time</type> '03:00'</entry>
        </row>
 
