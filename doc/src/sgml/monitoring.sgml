@@ -519,6 +519,14 @@ postgres: <replaceable>user</> <replaceable>database</> <replaceable>host</> <re
        Current query of backend process (NULL if caller is not superuser)
       </entry>
      </row>
+
+     <row>
+      <entry><function>pg_stat_reset</function>()</entry>
+      <entry><type>boolean</type></entry>
+      <entry>
+       Reset all currently collected statistics.
+      </entry>
+     </row>
     </tbody>
    </tgroup>
   </table>
