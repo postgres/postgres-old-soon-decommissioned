@@ -1025,7 +1025,7 @@ BufferBackgroundWriter(void)
 	 */
 	for (;;)
 	{
-		int			n, i;
+		int			n;
 
 		/*
 		 * Call BufferSync() with instructions to keep just the
