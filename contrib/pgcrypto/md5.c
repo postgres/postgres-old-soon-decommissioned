@@ -41,29 +41,33 @@
 #define H(X, Y, Z) ((X) ^ (Y) ^ (Z))
 #define I(X, Y, Z) ((Y) ^ ((X) | (~Z)))
 
-#define ROUND1(a, b, c, d, k, s, i) { \
+#define ROUND1(a, b, c, d, k, s, i) \
+do { \
 	(a) = (a) + F((b), (c), (d)) + X[(k)] + T[(i)]; \
 	(a) = SHIFT((a), (s)); \
 	(a) = (b) + (a); \
-}
+} while (0)
 
-#define ROUND2(a, b, c, d, k, s, i) { \
+#define ROUND2(a, b, c, d, k, s, i) \
+do { \
 	(a) = (a) + G((b), (c), (d)) + X[(k)] + T[(i)]; \
 	(a) = SHIFT((a), (s)); \
 	(a) = (b) + (a); \
-}
+} while (0)
 
-#define ROUND3(a, b, c, d, k, s, i) { \
+#define ROUND3(a, b, c, d, k, s, i) \
+do { \
 	(a) = (a) + H((b), (c), (d)) + X[(k)] + T[(i)]; \
 	(a) = SHIFT((a), (s)); \
 	(a) = (b) + (a); \
-}
+} while (0)
 
-#define ROUND4(a, b, c, d, k, s, i) { \
+#define ROUND4(a, b, c, d, k, s, i) \
+do { \
 	(a) = (a) + I((b), (c), (d)) + X[(k)] + T[(i)]; \
 	(a) = SHIFT((a), (s)); \
 	(a) = (b) + (a); \
-}
+} while (0)
 
 #define Sa	 7
 #define Sb	12
