@@ -453,14 +453,14 @@ MemoryContextAlloc(MemoryContext context, Size size)
 }
 
 /*
- * MemoryContextAllocZero
+ * MemoryContextAllocPalloc0
  *		Like MemoryContextAlloc, but clears allocated memory
  *
  *	We could just call MemoryContextAlloc then clear the memory, but this
  *	function is called too many times, so we have a separate version.
  */
 void *
-MemoryContextAllocZero(MemoryContext context, Size size)
+MemoryContextAllocPalloc0(MemoryContext context, Size size)
 {
 	void *ret;
 
@@ -471,7 +471,7 @@ MemoryContextAllocZero(MemoryContext context, Size size)
 			 (unsigned long) size);
 
 	ret = (*context->methods->alloc) (context, size);
-	MemSet(ret, 0, size);
+	MemSetLoop(ret, 0, size);
 	return ret;
 }
 
