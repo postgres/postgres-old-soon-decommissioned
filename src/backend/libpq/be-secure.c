@@ -59,7 +59,7 @@
  *	  [ ] use 'random' file, read from '/dev/urandom?'
  *	  [*] emphermal DH keys, default values
  *	  [*] periodic renegotiation
- *	  [ ] private key permissions
+ *	  [*] private key permissions
  *
  *	  milestone 4: provide endpoint authentication (client)
  *	  [ ] server verifies client certificates
@@ -551,7 +551,20 @@ initialize_SSL (void)
 							 fnbuf, SSLerrmessage());
 			ExitPostmaster(1);
 		}
+
 		snprintf(fnbuf, sizeof(fnbuf), "%s/server.key", DataDir);
+		if (lstat(fnbuf, &buf) == -1)
+		{
+			postmaster_error("failed to stat private key file (%s): %s",
+							 fnbuf, strerror(errno));
+			ExitPostmaster(1);
+		}
+		if (!S_ISREG(buf.st_mode) || (buf.st_mode & 0077) ||
+			buf.st_uid != getuid())
+		{
+			postmaster_error("bad permissions on private key file (%s)", fnbuf);
+			ExitPostmaster(1);
+		}
 		if (!SSL_CTX_use_PrivateKey_file(SSL_context, fnbuf, SSL_FILETYPE_PEM))
 		{
 			postmaster_error("failed to load private key file (%s): %s",
