@@ -88,3 +88,4 @@ test: domain
 test: rangefuncs
 test: without_oid
 test: conversion
+test: truncate
