@@ -1744,15 +1744,15 @@ datetime_part(text *units, DateTime *datetime)
 					break;
 
 				case DTK_DECADE:
-					*result = (tm->tm_year / 10) + 1;
+					*result = (tm->tm_year / 10);
 					break;
 
 				case DTK_CENTURY:
-					*result = (tm->tm_year / 100) + 1;
+					*result = (tm->tm_year / 100);
 					break;
 
 				case DTK_MILLENIUM:
-					*result = (tm->tm_year / 1000) + 1;
+					*result = (tm->tm_year / 1000);
 					break;
 
 				default:
