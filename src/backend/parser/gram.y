@@ -349,7 +349,7 @@ Oid	param_type(int t); /* used in parse_expr.c */
 %nonassoc	NULL_P
 %nonassoc	IS
 %left		'+' '-'
-%left		'*' '/' '%'
+%left		'*' '/' '%' '^'
 %left		'|'				/* this is the relation union op, not logical or */
 /* Unary Operators */
 %right		':'
@@ -973,6 +973,8 @@ default_expr:  AexprConst
 				{	$$ = nconc( $1, lcons( makeString( "%"), $3)); }
 			| default_expr '*' default_expr
 				{	$$ = nconc( $1, lcons( makeString( "*"), $3)); }
+			| default_expr '^' default_expr
+				{	$$ = nconc( $1, lcons( makeString( "^"), $3)); }
 			| default_expr '=' default_expr
 				{	elog(ERROR,"boolean expressions not supported in DEFAULT"); }
 			| default_expr '<' default_expr
@@ -1121,6 +1123,8 @@ constraint_expr:  AexprConst
 				{	$$ = nconc( $1, lcons( makeString( "%"), $3)); }
 			| constraint_expr '*' constraint_expr
 				{	$$ = nconc( $1, lcons( makeString( "*"), $3)); }
+			| constraint_expr '^' constraint_expr
+				{	$$ = nconc( $1, lcons( makeString( "^"), $3)); }
 			| constraint_expr '=' constraint_expr
 				{	$$ = nconc( $1, lcons( makeString( "="), $3)); }
 			| constraint_expr '<' constraint_expr
@@ -3641,8 +3645,12 @@ a_expr:  attr opt_indirection
 				{	$$ = doNegate($2); }
 		| '%' a_expr
 				{	$$ = makeA_Expr(OP, "%", NULL, $2); }
+		| '^' a_expr
+				{	$$ = makeA_Expr(OP, "^", NULL, $2); }
 		| a_expr '%'
 				{	$$ = makeA_Expr(OP, "%", $1, NULL); }
+		| a_expr '^'
+				{	$$ = makeA_Expr(OP, "^", $1, NULL); }
 		| a_expr '+' a_expr
 				{	$$ = makeA_Expr(OP, "+", $1, $3); }
 		| a_expr '-' a_expr
@@ -3653,6 +3661,8 @@ a_expr:  attr opt_indirection
 				{	$$ = makeA_Expr(OP, "%", $1, $3); }
 		| a_expr '*' a_expr
 				{	$$ = makeA_Expr(OP, "*", $1, $3); }
+		| a_expr '^' a_expr
+				{	$$ = makeA_Expr(OP, "^", $1, $3); }
 		| a_expr '<' a_expr
 				{	$$ = makeA_Expr(OP, "<", $1, $3); }
 		| a_expr '>' a_expr
@@ -4302,8 +4312,12 @@ b_expr:  attr opt_indirection
 				{	$$ = doNegate($2); }
 		| '%' b_expr
 				{	$$ = makeA_Expr(OP, "%", NULL, $2); }
+		| '^' b_expr
+				{	$$ = makeA_Expr(OP, "^", NULL, $2); }
 		| b_expr '%'
 				{	$$ = makeA_Expr(OP, "%", $1, NULL); }
+		| b_expr '^'
+				{	$$ = makeA_Expr(OP, "^", $1, NULL); }
 		| b_expr '+' b_expr
 				{	$$ = makeA_Expr(OP, "+", $1, $3); }
 		| b_expr '-' b_expr
@@ -4312,6 +4326,8 @@ b_expr:  attr opt_indirection
 				{	$$ = makeA_Expr(OP, "/", $1, $3); }
 		| b_expr '%' b_expr
 				{	$$ = makeA_Expr(OP, "%", $1, $3); }
+		| b_expr '^' b_expr
+				{	$$ = makeA_Expr(OP, "^", $1, $3); }
 		| b_expr '*' b_expr
 				{	$$ = makeA_Expr(OP, "*", $1, $3); }
 		| ':' b_expr

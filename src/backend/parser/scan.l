@@ -155,7 +155,7 @@ identifier		{letter}{letter_or_digit}*
 
 typecast		"::"
 
-self			[,()\[\].;$\:\+\-\*\/\%\<\>\=\|]
+self			[,()\[\].;$\:\+\-\*\/\%\^\<\>\=\|]
 op_and_self		[\~\!\@\#\^\&\|\`\?\$\:\+\-\*\/\%\<\>\=]
 operator		{op_and_self}+
 
