@@ -20,7 +20,6 @@
 
 #include "utils/guc.h"
 
-#include "access/transam.h"
 #include "commands/async.h"
 #include "miscadmin.h"
 #include "optimizer/cost.h"
@@ -28,13 +27,8 @@
 #include "optimizer/paths.h"
 #include "optimizer/planmain.h"
 #include "parser/parse_expr.h"
-#include "storage/fd.h"
-#include "storage/lock.h"
 #include "storage/proc.h"
-#include "storage/spin.h"
 #include "tcop/tcopprot.h"
-#include "utils/builtins.h"
-#include "utils/elog.h"
 
 
 /* XXX should be in a header file */

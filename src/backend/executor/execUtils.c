@@ -50,7 +50,6 @@
 #include "catalog/catalog.h"
 #include "catalog/pg_index.h"
 #include "executor/execdebug.h"
-#include "executor/executor.h"
 #include "miscadmin.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"

@@ -37,11 +37,6 @@
 #include "commands/trigger.h"
 #ifdef	_DROP_COLUMN_HACK__
 #include "catalog/pg_index.h"
-#include "catalog/pg_relcheck.h"
-#include "access/genam.h"
-#include "commands/comment.h"
-#include "commands/defrem.h"
-#include "optimizer/clauses.h"
 #include "parser/parse.h"
 #endif	 /* _DROP_COLUMN_HACK__ */
 

@@ -19,8 +19,8 @@
 
 #include "catalog/pg_proc.h"
 #include "dynloader.h"
-#include "utils/builtins.h"
 #include "utils/dynamic_loader.h"
+#include "utils/builtins.h"
 #include "utils/syscache.h"
 
 

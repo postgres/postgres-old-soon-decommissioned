@@ -71,7 +71,6 @@
 #include "catalog/pg_operator.h"
 #include "executor/execdebug.h"
 #include "executor/execdefs.h"
-#include "executor/executor.h"
 #include "executor/nodeMergejoin.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"

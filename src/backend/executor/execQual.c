@@ -37,7 +37,6 @@
 #include "catalog/pg_language.h"
 #include "executor/execFlatten.h"
 #include "executor/execdebug.h"
-#include "executor/executor.h"
 #include "executor/functions.h"
 #include "executor/nodeSubplan.h"
 #include "utils/builtins.h"

@@ -25,8 +25,6 @@
 #include "catalog/index.h"
 #include "executor/executor.h"
 #include "miscadmin.h"
-#include "tcop/tcopprot.h"
-#include "utils/guc.h"
 
 bool		BuildingBtree = false;		/* see comment in btbuild() */
 bool		FastBuild = true;	/* use sort/build instead of insertion

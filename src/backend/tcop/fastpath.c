@@ -67,7 +67,6 @@
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
 #include "tcop/fastpath.h"
-#include "utils/builtins.h"
 #include "utils/syscache.h"
 
 

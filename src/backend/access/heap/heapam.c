@@ -81,7 +81,6 @@
 #include "access/valid.h"
 #include "catalog/catalog.h"
 #include "miscadmin.h"
-#include "utils/builtins.h"
 #include "utils/inval.h"
 #include "utils/relcache.h"
 

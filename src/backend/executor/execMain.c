@@ -38,7 +38,6 @@
 #include "commands/trigger.h"
 #include "executor/execdebug.h"
 #include "executor/execdefs.h"
-#include "executor/executor.h"
 #include "miscadmin.h"
 #include "optimizer/var.h"
 #include "parser/parsetree.h"

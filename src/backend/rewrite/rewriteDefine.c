@@ -16,7 +16,6 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "utils/builtins.h"
 #include "lib/stringinfo.h"
 #include "parser/parse_relation.h"
 #include "rewrite/rewriteDefine.h"

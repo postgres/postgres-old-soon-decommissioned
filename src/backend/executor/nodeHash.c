@@ -24,7 +24,6 @@
 
 #include "postgres.h"
 #include "executor/execdebug.h"
-#include "executor/executor.h"
 #include "executor/nodeHash.h"
 #include "executor/nodeHashjoin.h"
 #include "miscadmin.h"

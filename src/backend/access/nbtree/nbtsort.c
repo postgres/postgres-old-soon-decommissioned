@@ -36,8 +36,6 @@
 #include "postgres.h"
 
 #include "access/nbtree.h"
-#include "tcop/tcopprot.h"
-#include "utils/guc.h"
 #include "utils/tuplesort.h"
 
 

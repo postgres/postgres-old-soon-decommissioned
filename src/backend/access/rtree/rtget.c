@@ -18,7 +18,6 @@
 #include "access/iqual.h"
 #include "access/relscan.h"
 #include "access/rtree.h"
-#include "storage/off.h"
 
 static OffsetNumber findnext(IndexScanDesc s, Page p, OffsetNumber n,
 		 ScanDirection dir);

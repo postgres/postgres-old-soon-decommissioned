@@ -59,7 +59,6 @@
 
 #include "access/heapam.h"
 #include "executor/execdebug.h"
-#include "executor/executor.h"
 #include "executor/nodeAppend.h"
 #include "parser/parsetree.h"
 

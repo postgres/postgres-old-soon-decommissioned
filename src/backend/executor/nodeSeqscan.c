@@ -27,7 +27,6 @@
 
 #include "access/heapam.h"
 #include "executor/execdebug.h"
-#include "executor/executor.h"
 #include "executor/nodeSeqscan.h"
 #include "parser/parsetree.h"
 

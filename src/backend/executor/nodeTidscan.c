@@ -24,7 +24,6 @@
  */
 #include "postgres.h"
 
-#include "executor/executor.h"
 #include "executor/execdebug.h"
 #include "executor/nodeTidscan.h"
 #include "access/heapam.h"

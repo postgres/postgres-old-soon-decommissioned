@@ -15,7 +15,6 @@
 
 #include "postgres.h"
 
-#include "executor/executor.h"
 #include "executor/execdebug.h"
 #include "executor/nodeSort.h"
 #include "utils/tuplesort.h"

@@ -36,7 +36,6 @@
 #include "access/genam.h"
 #include "access/heapam.h"
 #include "executor/execdebug.h"
-#include "executor/executor.h"
 #include "executor/nodeIndexscan.h"
 #include "nodes/nodeFuncs.h"
 #include "optimizer/clauses.h"

@@ -66,7 +66,6 @@
 /* In Ultrix and QNX, sem.h must be included after ipc.h */
 #include <sys/sem.h>
 
-#include "storage/lock.h"
 #include "storage/proc.h"
 
 void		HandleDeadLock(SIGNAL_ARGS);

@@ -49,7 +49,6 @@
 #include "postgres.h"
 #include "miscadmin.h"
 #include "storage/fd.h"
-#include "storage/ipc.h"
 
 /*
  * Problem: Postgres does a system(ld...) to do dynamic loading.

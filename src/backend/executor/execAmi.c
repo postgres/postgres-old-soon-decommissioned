@@ -33,7 +33,6 @@
 #include "access/heapam.h"
 #include "catalog/heap.h"
 #include "executor/execdebug.h"
-#include "executor/executor.h"
 #include "executor/nodeAgg.h"
 #include "executor/nodeAppend.h"
 #include "executor/nodeGroup.h"
