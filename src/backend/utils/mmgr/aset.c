@@ -324,7 +324,10 @@ AllocSetContextCreate(MemoryContext parent,
 
 		block = (AllocBlock) malloc(blksize);
 		if (block == NULL)
+		{
+			MemoryContextStats(TopMemoryContext);
 			elog(ERROR, "Memory exhausted in AllocSetContextCreate()");
+		}
 		block->aset = context;
 		block->freeptr = ((char *) block) + ALLOC_BLOCKHDRSZ;
 		block->endptr = ((char *) block) + blksize;
@@ -482,7 +485,10 @@ AllocSetAlloc(MemoryContext context, Size size)
 		blksize = chunk_size + ALLOC_BLOCKHDRSZ + ALLOC_CHUNKHDRSZ;
 		block = (AllocBlock) malloc(blksize);
 		if (block == NULL)
+		{
+			MemoryContextStats(TopMemoryContext);
 			elog(ERROR, "Memory exhausted in AllocSetAlloc()");
+		}
 		block->aset = set;
 		block->freeptr = block->endptr = ((char *) block) + blksize;
 
@@ -673,7 +679,10 @@ AllocSetAlloc(MemoryContext context, Size size)
 		}
 
 		if (block == NULL)
+		{
+			MemoryContextStats(TopMemoryContext);
 			elog(ERROR, "Memory exhausted in AllocSetAlloc()");
+		}
 			
 		block->aset = set;
 		block->freeptr = ((char *) block) + ALLOC_BLOCKHDRSZ;
@@ -843,7 +852,10 @@ AllocSetRealloc(MemoryContext context, void *pointer, Size size)
 		blksize = chksize + ALLOC_BLOCKHDRSZ + ALLOC_CHUNKHDRSZ;
 		block = (AllocBlock) realloc(block, blksize);
 		if (block == NULL)
+		{
+			MemoryContextStats(TopMemoryContext);
 			elog(ERROR, "Memory exhausted in AllocSetReAlloc()");
+		}
 		block->freeptr = block->endptr = ((char *) block) + blksize;
 
 		/* Update pointers since block has likely been moved */
