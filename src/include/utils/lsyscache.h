@@ -32,6 +32,7 @@ extern HeapTuple get_operator_tuple(Oid opno);
 extern Oid	get_negator(Oid opid);
 extern RegProcedure get_oprrest(Oid opid);
 extern RegProcedure get_oprjoin(Oid opid);
+extern Oid	get_func_rettype(Oid funcid);
 extern int	get_relnatts(Oid relid);
 extern char *get_rel_name(Oid relid);
 extern struct varlena *get_relstub(Oid relid, int no, bool *islast);

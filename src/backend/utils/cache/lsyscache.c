@@ -15,6 +15,7 @@
 #include "postgres.h"
 
 #include "catalog/pg_operator.h"
+#include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
@@ -451,6 +452,31 @@ get_oprjoin(Oid opno)
 	}
 	else
 		return (RegProcedure) NULL;
+}
+
+/*				---------- FUNCTION CACHE ----------					 */
+
+/*
+ * get_func_rettype
+ *		Given procedure id, return the function's result type.
+ */
+Oid
+get_func_rettype(Oid funcid)
+{
+	HeapTuple	func_tuple;
+	Oid			funcrettype;
+
+	func_tuple = SearchSysCacheTuple(PROOID,
+									 ObjectIdGetDatum(funcid),
+									 0, 0, 0);
+
+	if (!HeapTupleIsValid(func_tuple))
+		elog(ERROR, "Function OID %u does not exist", funcid);
+
+	funcrettype = (Oid)
+		((Form_pg_proc) GETSTRUCT(func_tuple))->prorettype;
+
+	return funcrettype;
 }
 
 /*				---------- RELATION CACHE ----------					 */
