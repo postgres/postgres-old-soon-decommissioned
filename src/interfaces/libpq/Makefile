@@ -28,7 +28,9 @@ OBJS=	fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
 	$(filter crypt.o getaddrinfo.o inet_aton.o open.o snprintf.o strerror.o, $(LIBOBJS))
 
 ifeq ($(PORTNAME), win32)
-OBJS+=win32.o
+OBJS+=win32.o libpqrc.o
+libpqrc.o: libpq.rc
+	windres -i libpq.rc -o libpqrc.o
 ifeq ($(enable_thread_safety), yes)
 # This doesn't work yet because configure test fails.  2004-06-19
 OBJS+=pthread-win32.o
