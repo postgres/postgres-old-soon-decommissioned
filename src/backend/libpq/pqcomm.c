@@ -34,9 +34,14 @@
  *		the postgres backend.
  *
  */
+#include "postgres.h"
+
 #include <stdio.h>
-#include <string.h>
-#include <strings.h>
+#if defined(HAVE_STRING_H)
+# include <string.h>
+#else
+# include <strings.h>
+#endif
 #include <signal.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -56,13 +61,11 @@
 #endif							/* SOMAXCONN */
 #endif							/* linux */
 
-#include <postgres.h>
-
-#include <miscadmin.h>
-#include <libpq/pqsignal.h>
-#include <libpq/auth.h>
-#include <libpq/libpq.h>		/* where the declarations go */
-#include <storage/ipc.h>
+#include "miscadmin.h"
+#include "libpq/pqsignal.h"
+#include "libpq/auth.h"
+#include "libpq/libpq.h"		/* where the declarations go */
+#include "storage/ipc.h"
 
 /* ----------------
  *		declarations
