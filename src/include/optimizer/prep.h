@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * prep.h
- *	  prototypes for files in prep.c
+ *	  prototypes for files in optimizer/prep/
  *
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -20,6 +20,7 @@
  * prototypes for prepqual.c
  */
 extern List *cnfify(Expr *qual, bool removeAndFlag);
+extern Expr *dnfify(Expr *qual);
 
 /*
  * prototypes for preptlist.c
