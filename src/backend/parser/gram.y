@@ -3647,17 +3647,18 @@ OptUseOp:  USING all_Op							{ $$ = $2; }
 		;
 
 
-select_limit:	LIMIT select_offset_value ',' select_limit_value
-			{ elog(ERROR,"LIMIT #,# syntax no longer supported.  Use LIMIT # OFFSET #."); }
-		| LIMIT select_limit_value OFFSET select_offset_value
+select_limit:	LIMIT select_limit_value OFFSET select_offset_value
 			{ $$ = makeList2($4, $2); }
-		| LIMIT select_limit_value
-			{ $$ = makeList2(NULL, $2); }
 		| OFFSET select_offset_value LIMIT select_limit_value
 			{ $$ = makeList2($2, $4); }
+		| LIMIT select_limit_value
+			{ $$ = makeList2(NULL, $2); }
 		| OFFSET select_offset_value
 			{ $$ = makeList2($2, NULL); }
+		| LIMIT select_offset_value ',' select_limit_value
+			{ elog(ERROR, "LIMIT #,# syntax no longer supported.\n\tUse separate LIMIT and OFFSET clauses."); }
 		;
+
 
 opt_select_limit:	select_limit				{ $$ = $1; }
 		| /* EMPTY */							{ $$ = makeList2(NULL,NULL); }
