@@ -50,7 +50,7 @@ distprep: $(srcdir)/sql_help.h $(srcdir)/psqlscan.c
 
 install: all installdirs
 	$(INSTALL_PROGRAM) psql$(X) $(DESTDIR)$(bindir)/psql$(X)
-	$(INSTALL_DATA) $(srcdir)/psql.rc.sample $(DESTDIR)$(datadir)/psql.rc.sample
+	$(INSTALL_DATA) $(srcdir)/psqlrc.sample $(DESTDIR)$(datadir)/psqlrc.sample
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)

@@ -45,7 +45,7 @@ int			optreset;
 PsqlSettings pset;
 
 #define PSQLRC 		".psqlrc"
-#define SYSPSQLRC	"psql.rc"
+#define SYSPSQLRC	"psqlrc"
 
 /*
  * Structures to pass information between the option parsing routine
