@@ -1258,6 +1258,9 @@ DESCR("equal");
 
 /* OIDS 1000 - 1999 */
 
+DATA(insert OID = 1026 (  timezone		   PGUID 12 f t f t 2 f	25 "1186 1184" 100 0 0 100  timestamp_izone - ));
+DESCR("time zone");
+
 DATA(insert OID = 1029 (  nullvalue		   PGUID 12 f t t f 1 f 16 "0" 100 0 0 100  nullvalue - ));
 DESCR("(internal)");
 DATA(insert OID = 1030 (  nonnullvalue	   PGUID 12 f t t f 1 f 16 "0" 100 0 0 100  nonnullvalue - ));
