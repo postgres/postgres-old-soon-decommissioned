@@ -77,7 +77,7 @@ pg_dumpall [ -h <replaceable class="parameter">host</replaceable> ] [ -p <replac
      </varlistentry>
 
      <varlistentry>
-      <term>-O</term>
+      <term>-o</term>
       <listitem>
        <para>
 	Dump object identifiers (<acronym>OID</acronym>s) for every table.

@@ -176,8 +176,26 @@ agg_select_candidate(Oid typeid, CandidateList candidates)
 				current_category;
 
 /*
- * Look for candidates which allow coersion and have a preferred type.
- * Keep all candidates if none match.
+ * First look for exact matches or binary compatible matches.
+ * (Of course exact matches shouldn't even get here, but anyway.)
+ */
+	for (current_candidate = candidates;
+		 current_candidate != NULL;
+		 current_candidate = current_candidate->next)
+	{
+		current_typeid = current_candidate->args[0];
+
+		if (current_typeid == typeid
+            || IS_BINARY_COMPATIBLE(current_typeid, typeid))
+		{
+            /* we're home free */
+            return current_typeid;
+        }
+    }
+
+/*
+ * If no luck that way, look for candidates which allow coersion
+ * and have a preferred type. Keep all candidates if none match.
  */
 	category = TypeCategory(typeid);
 	ncandidates = 0;
@@ -189,7 +207,7 @@ agg_select_candidate(Oid typeid, CandidateList candidates)
 		current_typeid = current_candidate->args[0];
 		current_category = TypeCategory(current_typeid);
 
-		if ((current_category == category)
+		if (current_category == category
 			&& IsPreferredType(current_category, current_typeid)
 			&& can_coerce_type(1, &typeid, &current_typeid))
 		{

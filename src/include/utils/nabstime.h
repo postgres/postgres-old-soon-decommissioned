@@ -23,13 +23,14 @@
  *
  * ----------------------------------------------------------------
  */
-/* The original typedefs are bogus - they assume that the system's 'time_t'
- * type is of size 32-bits.  Under AlphaLinux, time_t is a long int, which
- * is 64-bits.	Therefore, typedef these both as simply 'time_t', and let
- * the OS define what the size really is. -- RME 3/5/99
+/* 
+ * Although time_t generally is a long int on 64 bit systems, these two
+ * types must be 4 bytes, because that's what the system assumes. They
+ * should be yanked (long) before 2038 and be replaced by timestamp and
+ * interval.
  */
-typedef time_t AbsoluteTime;
-typedef time_t RelativeTime;
+typedef int32 AbsoluteTime;
+typedef int32 RelativeTime;
 
 typedef struct
 {
