@@ -216,13 +216,6 @@ do { \
 } while(0)
 #endif
 
-/* Global variable holding time zone information. */
-#if defined(__CYGWIN__) || defined(N_PLAT_NLM)
-#define TIMEZONE_GLOBAL _timezone
-#else
-#define TIMEZONE_GLOBAL timezone
-#endif
-
 /*
  * Date/time validation
  * Include check for leap year.

@@ -1,10 +1,9 @@
 /* $Header$ */
 
+#include <port/win32defs.h>
+
 #define HAS_TEST_AND_SET
 typedef unsigned char slock_t;
-
-#define tzname _tzname			/* should be in time.h? */
-#define HAVE_INT_TIMEZONE		/* has int _timezone */
 
 #include <cygwin/version.h>
 
