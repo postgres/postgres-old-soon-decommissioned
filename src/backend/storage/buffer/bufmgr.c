@@ -832,6 +832,8 @@ FlushBuffer(Buffer buffer, bool release)
 
 	status = smgrflush(bufHdr->bufsmgr, bufrel, bufHdr->tag.blockNum,
 					   (char *) MAKE_PTR(bufHdr->data));
+	
+	RelationDecrementReferenceCount(bufrel);
 
 	if (status == SM_FAIL)
 	{
@@ -1065,15 +1067,8 @@ BufferSync()
 				 * were flushing it out we must not clear DIRTY flag -
 				 * vadim 01/17/97
 				 */
-				if (bufHdr->flags & BM_JUST_DIRTIED)
-				{
-					elog(NOTICE, "BufferSync: content of block %u (%s) changed while flushing",
-						 bufHdr->tag.blockNum, bufHdr->sb_relname);
-				}
-				else
-				{
+				if (!(bufHdr->flags & BM_JUST_DIRTIED))
 					bufHdr->flags &= ~BM_DIRTY;
-				}
 				if (reln != (Relation) NULL)
 					RelationDecrementReferenceCount(reln);
 			}
@@ -1392,6 +1387,9 @@ BufferReplace(BufferDesc *bufHdr, bool bufferLockHeld)
 							  bufHdr->tag.blockNum,
 							  (char *) MAKE_PTR(bufHdr->data));
 	}
+	
+	if (reln != (Relation) NULL)
+		RelationDecrementReferenceCount(reln);
 
 	if (status == SM_FAIL)
 		return (FALSE);
