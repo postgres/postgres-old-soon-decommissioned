@@ -23,7 +23,7 @@ pg_encoding: $(OBJS) $(LIBPQDIR)/libpq.a
 	$(CC) -o pg_encoding $(OBJS) -L$(LIBPQDIR) -lpq $(LDFLAGS)
 
 install: pg_encoding
-	$(INSTALL) $(INSTL_EXE_OPTS) pg_encoding $(BINDIR)/pg_encoding
+	$(INSTALL) $(INSTL_EXE_OPTS) pg_encoding$(X) $(BINDIR)/pg_encoding$(X)
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
