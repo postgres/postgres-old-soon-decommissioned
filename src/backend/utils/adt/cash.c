@@ -165,8 +165,9 @@ cash_in(const char *str)
  *	positive-valued amounts. - tgl 97/04/14
  */
 const char *
-cash_out(Cash *value)
+cash_out(Cash *in_value)
 {
+	Cash		value = *in_value;
 	char	   *result;
 	char		buf[CASH_BUFSZ];
 	int			minus = 0;
