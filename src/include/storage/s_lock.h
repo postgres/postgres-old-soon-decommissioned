@@ -226,7 +226,7 @@ tas(volatile slock_t *lock)
 	register	_res;
 
 	__asm__("	movl $1, r0 \
-			bbssi $0, (%1), 1 f \
+			bbssi $0, (%1), 1f \
 			clrl r0 \
 1:			movl r0, %0 "
 :			"=r"(_res)			/* return value, in register */
