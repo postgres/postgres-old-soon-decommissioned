@@ -73,6 +73,7 @@ Postgres documentation
    &selectInto;
    &set;
    &setConstraints;
+   &setSession;
    &setTransaction;
    &show;
    &truncate;

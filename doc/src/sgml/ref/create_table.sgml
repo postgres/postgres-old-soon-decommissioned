@@ -1849,7 +1849,7 @@ CREATE TABLE distributors (
   <title>
    Compatibility
   </title>
-  
+
   <refsect2 id="R2-SQL-CREATETABLE-4">
    <title>
     SQL92
