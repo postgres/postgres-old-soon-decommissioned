@@ -331,6 +331,19 @@ TypeCategory(Oid inType)
 			result = STRING_TYPE;
 			break;
 
+		/*
+		 * Kluge added 4/8/00 by tgl: treat the new BIT types as strings,
+		 * so that 'unknown' || 'unknown' continues to resolve as textcat
+		 * rather than generating an ambiguous-operator error.  Probably
+		 * BIT types should have their own type category, or maybe they
+		 * should be numeric?  Need a better way of handling unknown types
+		 * first.
+		 */
+		case (ZPBITOID):
+		case (VARBITOID):
+			result = STRING_TYPE;
+			break;
+
 		case (OIDOID):
 		case (REGPROCOID):
 		case (INT2OID):
