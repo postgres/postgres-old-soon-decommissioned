@@ -23,9 +23,9 @@ top_builddir = ..
 include $(top_builddir)/src/Makefile.global
 
 
-MODULES := admin postgres programmer tutorial user
-
-found_MODULES := $(foreach module, $(MODULES), $(shell test -f $(srcdir)/$(module).tar.gz && echo $(module)))
+ifneq ($(wildcard $(srcdir)/postgres.tar.gz),)
+found_html := yes
+endif
 
 ifneq ($(wildcard $(srcdir)/man.tar.gz),)
 found_man := yes
@@ -36,11 +36,8 @@ all:
 
 
 install: all installdirs
-ifneq ($(strip $(found_MODULES)),)
-	for module in $(found_MODULES); do \
-	  gzip -d -c $${module}.tar.gz | ( cd $(DESTDIR)$(docdir)/$$module && $(TAR) xf - ) || \
-	  exit; \
-	done
+ifdef found_html
+	gzip -d -c postgres.tar.gz | ( cd $(DESTDIR)$(docdir)/html && $(TAR) xf - )
 endif
 ifdef found_man
 	gzip -d -c man.tar.gz | ( cd $(DESTDIR)$(mandir) && $(TAR) xf - )
@@ -48,11 +45,13 @@ endif
 
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(mandir) $(addprefix $(DESTDIR)$(docdir)/, . $(found_MODULES))
+	$(mkinstalldirs) $(DESTDIR)$(mandir) $(DESTDIR)$(docdir)/html
 
 
 uninstall:
-	-rm -rf $(addprefix $(DESTDIR)$(docdir)/, $(MODULES))
+ifdef found_html
+	-rm -f $(addprefix $(DESTDIR)$(docdir)/html/, $(shell gunzip -c $(srcdir)/postgres.tar.gz | tar tf -))
+endif
 ifdef found_man
-	-rm -f $(addprefix $(DESTDIR)$(mandir)/, $(shell gunzip -c man.tar.gz | tar tf -))
+	-rm -f $(addprefix $(DESTDIR)$(mandir)/, $(shell gunzip -c $(srcdir)/man.tar.gz | tar tf -))
 endif
