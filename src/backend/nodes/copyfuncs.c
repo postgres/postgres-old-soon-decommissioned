@@ -803,7 +803,7 @@ _copyConst(Const *from)
 				 */
 				int			length;
 
-				length = *((int *) from->constvalue);
+				length = VARSIZE(from->constvalue);
 				newnode->constvalue = PointerGetDatum(palloc(length));
 				memmove((char *) newnode->constvalue,
 						(char *) from->constvalue, length);
