@@ -226,6 +226,7 @@ extern int	pg_mbstrlen_with_len(const unsigned char *, int);
 extern int	pg_mbcliplen(const unsigned char *, int, int);
 extern int	pg_mbcharcliplen(const unsigned char *, int, int);
 extern int	pg_encoding_max_length(int);
+extern int	pg_database_encoding_max_length(void);
 
 extern int		pg_set_client_encoding(int);
 extern int		pg_get_client_encoding(void);

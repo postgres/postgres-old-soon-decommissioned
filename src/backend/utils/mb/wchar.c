@@ -573,4 +573,14 @@ pg_verifymbstr(const unsigned char *mbstr, int len)
 	}
 	return NULL;
 }
+
+/*
+ * fetch maximum length of a char encoding for the current database
+ */
+int
+pg_database_encoding_max_length(void)
+{
+	return pg_wchar_table[GetDatabaseEncoding()].maxmblen;
+}
+
 #endif
