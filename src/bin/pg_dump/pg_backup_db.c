@@ -721,7 +721,7 @@ FixupBlobRefs(ArchiveHandle *AH, char *tablename)
 
 	appendPQExpBuffer(tblQry, "SELECT a.attname FROM pg_class c, pg_attribute a, pg_type t "
 	 " WHERE a.attnum > 0 AND a.attrelid = c.oid AND a.atttypid = t.oid "
-			  " AND t.typname = 'oid' AND c.relname = '%s';", tablename);
+			  " AND t.typname in ('oid', 'lo') AND c.relname = '%s';", tablename);
 
 	res = PQexec(AH->blobConnection, tblQry->data);
 	if (!res)
