@@ -354,7 +354,7 @@ XLogOpenRelation(bool redo, RmgrId rmid, RelFileNode rnode)
 		 * though, since we are presumably running by ourselves and can't
 		 * have any lock conflicts ...
 		 */
-		res->reldata.rd_lockInfo.lockRelId.dbId = rnode.tblNode;
+		res->reldata.rd_lockInfo.lockRelId.dbId = rnode.dbNode;
 		res->reldata.rd_lockInfo.lockRelId.relId = rnode.relNode;
 
 		hentry = (XLogRelCacheEntry *)

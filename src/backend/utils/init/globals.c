@@ -58,6 +58,8 @@ BackendId	MyBackendId = InvalidBackendId;
 char	   *DatabasePath = NULL;
 Oid			MyDatabaseId = InvalidOid;
 
+Oid			MyDatabaseTableSpace = InvalidOid;
+
 pid_t		PostmasterPid = 0;
 
 /*

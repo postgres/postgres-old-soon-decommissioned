@@ -184,6 +184,7 @@ typedef ArrayType IdList;
 #define ACL_ALL_RIGHTS_FUNCTION		(ACL_EXECUTE)
 #define ACL_ALL_RIGHTS_LANGUAGE		(ACL_USAGE)
 #define ACL_ALL_RIGHTS_NAMESPACE	(ACL_USAGE|ACL_CREATE)
+#define ACL_ALL_RIGHTS_TABLESPACE	(ACL_CREATE)
 
 /* operation codes for pg_*_aclmask */
 typedef enum
@@ -213,6 +214,7 @@ typedef enum AclObjectKind
 	ACL_KIND_NAMESPACE,			/* pg_namespace */
 	ACL_KIND_OPCLASS,			/* pg_opclass */
 	ACL_KIND_CONVERSION,		/* pg_conversion */
+	ACL_KIND_TABLESPACE,		/* pg_tablespace */
 	MAX_ACL_KIND				/* MUST BE LAST */
 } AclObjectKind;
 
@@ -254,12 +256,15 @@ extern AclMode pg_language_aclmask(Oid lang_oid, AclId userid,
 								   AclMode mask, AclMaskHow how);
 extern AclMode pg_namespace_aclmask(Oid nsp_oid, AclId userid,
 									AclMode mask, AclMaskHow how);
+extern AclMode pg_tablespace_aclmask(Oid spc_oid, AclId userid,
+						            AclMode mask, AclMaskHow how);
 
 extern AclResult pg_class_aclcheck(Oid table_oid, AclId userid, AclMode mode);
 extern AclResult pg_database_aclcheck(Oid db_oid, AclId userid, AclMode mode);
 extern AclResult pg_proc_aclcheck(Oid proc_oid, AclId userid, AclMode mode);
 extern AclResult pg_language_aclcheck(Oid lang_oid, AclId userid, AclMode mode);
 extern AclResult pg_namespace_aclcheck(Oid nsp_oid, AclId userid, AclMode mode);
+extern AclResult pg_tablespace_aclcheck(Oid spc_oid, AclId userid, AclMode mode);
 
 extern void aclcheck_error(AclResult aclerr, AclObjectKind objectkind,
 			   const char *objectname);
@@ -270,6 +275,7 @@ extern bool pg_type_ownercheck(Oid type_oid, AclId userid);
 extern bool pg_oper_ownercheck(Oid oper_oid, AclId userid);
 extern bool pg_proc_ownercheck(Oid proc_oid, AclId userid);
 extern bool pg_namespace_ownercheck(Oid nsp_oid, AclId userid);
+extern bool pg_tablespace_ownercheck(Oid spc_oid, AclId userid);
 extern bool pg_opclass_ownercheck(Oid opc_oid, AclId userid);
 extern bool pg_database_ownercheck(Oid db_oid, AclId userid);
 extern bool pg_conversion_ownercheck(Oid conv_oid, AclId userid);

@@ -51,8 +51,9 @@ extern void RelationCacheInitializePhase3(void);
 extern Relation RelationBuildLocalRelation(const char *relname,
 						   Oid relnamespace,
 						   TupleDesc tupDesc,
-						   Oid relid, Oid dbid,
-						   RelFileNode rnode,
+						   Oid relid,
+						   Oid reltablespace,
+						   bool shared_relation,
 						   bool nailit);
 
 /*

@@ -41,7 +41,7 @@ CATALOG(pg_database) BOOTSTRAP BKI_SHARED_RELATION
 	Oid			datlastsysoid;	/* highest OID to consider a system OID */
 	TransactionId datvacuumxid; /* all XIDs before this are vacuumed */
 	TransactionId datfrozenxid; /* all XIDs before this are frozen */
-	text		datpath;		/* default database location (VAR LENGTH) */
+	Oid			dattablespace;	/* default table space for this DB */
 	text		datconfig[1];	/* database-specific GUC (VAR LENGTH) */
 	aclitem		datacl[1];		/* access permissions (VAR LENGTH) */
 } FormData_pg_database;
@@ -66,11 +66,11 @@ typedef FormData_pg_database *Form_pg_database;
 #define Anum_pg_database_datlastsysoid	6
 #define Anum_pg_database_datvacuumxid	7
 #define Anum_pg_database_datfrozenxid	8
-#define Anum_pg_database_datpath		9
+#define Anum_pg_database_dattablespace	9
 #define Anum_pg_database_datconfig		10
 #define Anum_pg_database_datacl			11
 
-DATA(insert OID = 1 (  template1 PGUID ENCODING t t 0 0 0 "" _null_ _null_ ));
+DATA(insert OID = 1 (  template1 PGUID ENCODING t t 0 0 0 1663 _null_ _null_ ));
 DESCR("Default template database");
 #define TemplateDbOid			1
 

@@ -150,6 +150,8 @@ extern char postgres_exec_path[];
  */
 extern DLLIMPORT Oid MyDatabaseId;
 
+extern DLLIMPORT Oid MyDatabaseTableSpace;
+
 /*
  * Date/Time Configuration
  *
@@ -224,7 +226,7 @@ extern void check_stack_depth(void);
 extern char *DatabasePath;
 
 /* in utils/misc/database.c */
-extern void GetRawDatabaseInfo(const char *name, Oid *db_id, char *path);
+extern void GetRawDatabaseInfo(const char *name, Oid *db_id, Oid *db_tablespace);
 
 /* now in utils/init/miscinit.c */
 extern void SetDatabasePath(const char *path);

@@ -26,6 +26,7 @@
 #include "catalog/namespace.h"
 #include "catalog/pg_database.h"
 #include "catalog/pg_shadow.h"
+#include "catalog/pg_tablespace.h"
 #include "commands/trigger.h"
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
@@ -239,12 +240,12 @@ InitPostgres(const char *dbname, const char *username)
 	if (bootstrap)
 	{
 		MyDatabaseId = TemplateDbOid;
-		SetDatabasePath(GetDatabasePath(MyDatabaseId));
+		MyDatabaseTableSpace = DEFAULTTABLESPACE_OID;
+		SetDatabasePath(GetDatabasePath(MyDatabaseId, MyDatabaseTableSpace));
 	}
 	else
 	{
-		char	   *fullpath,
-					datpath[MAXPGPATH];
+		char	   *fullpath;
 
 		/*
 		 * Formerly we validated DataDir here, but now that's done
@@ -252,11 +253,11 @@ InitPostgres(const char *dbname, const char *username)
 		 */
 
 		/*
-		 * Find oid and path of the database we're about to open. Since
-		 * we're not yet up and running we have to use the hackish
+		 * Find oid and tablespace of the database we're about to open.
+		 * Since we're not yet up and running we have to use the hackish
 		 * GetRawDatabaseInfo.
 		 */
-		GetRawDatabaseInfo(dbname, &MyDatabaseId, datpath);
+		GetRawDatabaseInfo(dbname, &MyDatabaseId, &MyDatabaseTableSpace);
 
 		if (!OidIsValid(MyDatabaseId))
 			ereport(FATAL,
@@ -264,7 +265,7 @@ InitPostgres(const char *dbname, const char *username)
 					 errmsg("database \"%s\" does not exist",
 							dbname)));
 
-		fullpath = GetDatabasePath(MyDatabaseId);
+		fullpath = GetDatabasePath(MyDatabaseId, MyDatabaseTableSpace);
 
 		/* Verify the database path */
 

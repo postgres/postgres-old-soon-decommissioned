@@ -134,8 +134,8 @@ DefineVirtualRelation(const RangeVar *relation, List *tlist, bool replace)
 	else
 	{
 		/*
-		 * now create the parameters for keys/inheritance etc. All of them
-		 * are nil...
+		 * now set the parameters for keys/inheritance etc. All of these
+		 * are uninteresting for views...
 		 */
 		createStmt->relation = (RangeVar *) relation;
 		createStmt->tableElts = attrList;
@@ -143,6 +143,7 @@ DefineVirtualRelation(const RangeVar *relation, List *tlist, bool replace)
 		createStmt->constraints = NIL;
 		createStmt->hasoids = MUST_NOT_HAVE_OIDS;
 		createStmt->oncommit = ONCOMMIT_NOOP;
+		createStmt->tablespacename = NULL;
 
 		/*
 		 * finally create the relation (this will error out if there's an

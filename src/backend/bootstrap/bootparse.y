@@ -31,6 +31,7 @@
 #include "catalog/pg_attribute.h"
 #include "catalog/pg_class.h"
 #include "catalog/pg_namespace.h"
+#include "catalog/pg_tablespace.h"
 #include "commands/defrem.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
@@ -181,6 +182,7 @@ Boot_CreateStmt:
 
 						boot_reldesc = heap_create(LexIDStr($5),
 												   PG_CATALOG_NAMESPACE,
+												   $3 ? GLOBALTABLESPACE_OID : 0,
 												   tupdesc,
 												   $3,
 												   true,
@@ -193,6 +195,7 @@ Boot_CreateStmt:
 
 						id = heap_create_with_catalog(LexIDStr($5),
 													  PG_CATALOG_NAMESPACE,
+													  $3 ? GLOBALTABLESPACE_OID : 0,
 													  tupdesc,
 													  RELKIND_RELATION,
 													  $3,
@@ -239,6 +242,7 @@ Boot_DeclareIndexStmt:
 					DefineIndex(makeRangeVar(NULL, LexIDStr($5)),
 								LexIDStr($3),
 								LexIDStr($7),
+								NULL,
 								$9,
 								NULL, NIL,
 								false, false, false,
@@ -255,6 +259,7 @@ Boot_DeclareUniqueIndexStmt:
 					DefineIndex(makeRangeVar(NULL, LexIDStr($6)),
 								LexIDStr($4),
 								LexIDStr($8),
+								NULL,
 								$10,
 								NULL, NIL,
 								true, false, false,

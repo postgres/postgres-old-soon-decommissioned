@@ -99,6 +99,45 @@ describeAggregates(const char *pattern, bool verbose)
 	return true;
 }
 
+/* \db
+ * Takes an optional regexp to select particular tablespaces
+ */
+bool
+describeTablespaces(const char *pattern)
+{
+	PQExpBufferData buf;
+	PGresult   *res;
+	printQueryOpt myopt = pset.popt;
+
+	initPQExpBuffer(&buf);
+
+	printfPQExpBuffer(&buf,
+					  "SELECT spcname AS \"%s\",\n"
+					  "  pg_catalog.pg_get_userbyid(spcowner) AS \"%s\",\n"
+					  "  spclocation AS \"%s\"\n"
+					  "FROM pg_catalog.pg_tablespace\n",
+					  _("Name"), _("Owner"), _("Location"));
+
+	processNamePattern(&buf, pattern, false, false,
+					   NULL, "spcname", NULL,
+					   NULL);
+
+	appendPQExpBuffer(&buf, "ORDER BY 1;");
+
+	res = PSQLexec(buf.data, false);
+	termPQExpBuffer(&buf);
+	if (!res)
+		return false;
+
+	myopt.nullPrint = NULL;
+	myopt.title = _("List of tablespaces");
+
+	printQuery(res, &myopt, pset.queryFout);
+
+	PQclear(res);
+	return true;
+}
+
 
 /* \df
  * Takes an optional regexp to select particular functions
@@ -351,7 +390,7 @@ permissionsList(const char *pattern)
 	printfPQExpBuffer(&buf,
 					  "SELECT n.nspname as \"%s\",\n"
 					  "  c.relname as \"%s\",\n"
-					  "  CASE c.relkind WHEN 'r' THEN '%s' WHEN 'v' THEN '%s' WHEN 'S' THEN '%s' END as \"%s\",\n" 
+					  "  CASE c.relkind WHEN 'r' THEN '%s' WHEN 'v' THEN '%s' WHEN 'S' THEN '%s' END as \"%s\",\n"
 					  "  c.relacl as \"%s\"\n"
 					  "FROM pg_catalog.pg_class c\n"
 	"     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace\n"

@@ -98,6 +98,7 @@ typedef struct _namespaceInfo
 	DumpableObject dobj;
 	char	   *usename;		/* name of owner, or empty string */
 	char	   *nspacl;
+	char	   *nsptablespace;	/* default tablespace */
 	bool		dump;			/* true if need to dump definition */
 } NamespaceInfo;
 
@@ -168,6 +169,7 @@ typedef struct _tableInfo
 	char	   *usename;		/* name of owner, or empty string */
 	char	   *relacl;
 	char		relkind;
+	char	   *reltablespace;	/* relation tablespace */
 	bool		hasindex;		/* does it have any indexes? */
 	bool		hasrules;		/* does it have any rules? */
 	bool		hasoids;		/* does it have OIDs? */

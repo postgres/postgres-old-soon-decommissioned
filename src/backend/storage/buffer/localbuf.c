@@ -236,10 +236,10 @@ AtEOXact_LocalBuffers(bool isCommit)
 
 			if (isCommit)
 				elog(WARNING,
-					 "local buffer leak: [%03d] (rel=%u/%u, blockNum=%u, flags=0x%x, refcount=%u %d)",
+					 "local buffer leak: [%03d] (rel=%u/%u/%u, blockNum=%u, flags=0x%x, refcount=%u %d)",
 					 i,
-					 buf->tag.rnode.tblNode, buf->tag.rnode.relNode,
-					 buf->tag.blockNum, buf->flags,
+					 buf->tag.rnode.spcNode, buf->tag.rnode.dbNode,
+					 buf->tag.rnode.relNode, buf->tag.blockNum, buf->flags,
 					 buf->refcount, LocalRefCount[i]);
 
 			LocalRefCount[i] = 0;

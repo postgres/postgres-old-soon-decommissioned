@@ -1668,7 +1668,7 @@ InitTempTableNamespace(void)
 		 * that access the temp namespace for my own backend skip
 		 * permissions checks on it.
 		 */
-		namespaceId = NamespaceCreate(namespaceName, BOOTSTRAP_USESYSID);
+		namespaceId = NamespaceCreate(namespaceName, BOOTSTRAP_USESYSID, 0);
 		/* Advance command counter to make namespace visible */
 		CommandCounterIncrement();
 	}

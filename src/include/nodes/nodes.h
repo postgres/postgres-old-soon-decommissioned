@@ -268,6 +268,8 @@ typedef enum NodeTag
 	T_ExecuteStmt,
 	T_DeallocateStmt,
 	T_DeclareCursorStmt,
+	T_CreateTableSpaceStmt,
+	T_DropTableSpaceStmt,
 	T_AlterDbOwnerStmt,
 
 	T_A_Expr = 800,

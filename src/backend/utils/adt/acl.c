@@ -539,6 +539,10 @@ acldefault(GrantObjectType objtype, AclId ownerid)
 			world_default = ACL_NO_RIGHTS;
 			owner_default = ACL_ALL_RIGHTS_NAMESPACE;
 			break;
+		case ACL_OBJECT_TABLESPACE:
+			world_default = ACL_NO_RIGHTS;
+			owner_default = ACL_ALL_RIGHTS_TABLESPACE;
+			break;
 		default:
 			elog(ERROR, "unrecognized objtype: %d", (int) objtype);
 			world_default = ACL_NO_RIGHTS;		/* keep compiler quiet */

@@ -1753,6 +1753,7 @@ _copyCreateStmt(CreateStmt *from)
 	COPY_NODE_FIELD(constraints);
 	COPY_SCALAR_FIELD(hasoids);
 	COPY_SCALAR_FIELD(oncommit);
+	COPY_STRING_FIELD(tablespacename);
 
 	return newnode;
 }
@@ -1836,6 +1837,7 @@ _copyIndexStmt(IndexStmt *from)
 	COPY_STRING_FIELD(idxname);
 	COPY_NODE_FIELD(relation);
 	COPY_STRING_FIELD(accessMethod);
+	COPY_STRING_FIELD(tableSpace);
 	COPY_NODE_FIELD(indexParams);
 	COPY_NODE_FIELD(whereClause);
 	COPY_NODE_FIELD(rangetable);
@@ -2146,6 +2148,7 @@ _copyCreateSeqStmt(CreateSeqStmt *from)
 
 	COPY_NODE_FIELD(sequence);
 	COPY_NODE_FIELD(options);
+	COPY_STRING_FIELD(tablespacename);
 
 	return newnode;
 }
@@ -2189,6 +2192,28 @@ _copyVariableResetStmt(VariableResetStmt *from)
 	VariableResetStmt *newnode = makeNode(VariableResetStmt);
 
 	COPY_STRING_FIELD(name);
+
+	return newnode;
+}
+
+static CreateTableSpaceStmt *
+_copyCreateTableSpaceStmt(CreateTableSpaceStmt *from)
+{
+	CreateTableSpaceStmt *newnode = makeNode(CreateTableSpaceStmt);
+
+	COPY_STRING_FIELD(tablespacename);
+	COPY_STRING_FIELD(owner);
+	COPY_STRING_FIELD(location);
+
+	return newnode;
+}
+
+static DropTableSpaceStmt *
+_copyDropTableSpaceStmt(DropTableSpaceStmt *from)
+{
+	DropTableSpaceStmt *newnode = makeNode(DropTableSpaceStmt);
+
+	COPY_STRING_FIELD(tablespacename);
 
 	return newnode;
 }
@@ -2371,6 +2396,7 @@ _copyCreateSchemaStmt(CreateSchemaStmt *from)
 
 	COPY_STRING_FIELD(schemaname);
 	COPY_STRING_FIELD(authid);
+	COPY_STRING_FIELD(tablespacename);
 	COPY_NODE_FIELD(schemaElts);
 
 	return newnode;
@@ -2913,6 +2939,12 @@ copyObject(void *from)
 			break;
 		case T_VariableResetStmt:
 			retval = _copyVariableResetStmt(from);
+			break;
+		case T_CreateTableSpaceStmt:
+			retval = _copyCreateTableSpaceStmt(from);
+			break;
+		case T_DropTableSpaceStmt:
+			retval = _copyDropTableSpaceStmt(from);
 			break;
 		case T_CreateTrigStmt:
 			retval = _copyCreateTrigStmt(from);

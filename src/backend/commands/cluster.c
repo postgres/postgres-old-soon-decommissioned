@@ -568,6 +568,7 @@ make_new_heap(Oid OIDOldHeap, const char *NewName)
 
 	OIDNewHeap = heap_create_with_catalog(NewName,
 										  RelationGetNamespace(OldHeap),
+		                                  OldHeap->rd_rel->reltablespace,
 										  tupdesc,
 										  OldHeap->rd_rel->relkind,
 										  OldHeap->rd_rel->relisshared,

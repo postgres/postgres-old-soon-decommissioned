@@ -53,7 +53,8 @@ typedef struct buftag
 
 #define CLEAR_BUFFERTAG(a) \
 ( \
-	(a).rnode.tblNode = InvalidOid, \
+	(a).rnode.spcNode = InvalidOid, \
+	(a).rnode.dbNode = InvalidOid, \
 	(a).rnode.relNode = InvalidOid, \
 	(a).blockNum = InvalidBlockNumber \
 )

@@ -874,6 +874,7 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 		seqstmt = makeNode(CreateSeqStmt);
 		seqstmt->sequence = makeRangeVar(snamespace, sname);
 		seqstmt->options = NIL;
+		seqstmt->tablespacename = NULL;
 
 		cxt->blist = lappend(cxt->blist, seqstmt);
 
@@ -1199,6 +1200,7 @@ transformIndexConstraints(ParseState *pstate, CreateStmtContext *cxt)
 
 		index->relation = cxt->relation;
 		index->accessMethod = DEFAULT_INDEX_TYPE;
+		index->tableSpace = NULL;
 		index->indexParams = NIL;
 		index->whereClause = NULL;
 

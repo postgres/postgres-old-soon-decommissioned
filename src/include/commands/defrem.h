@@ -21,6 +21,7 @@
 extern void DefineIndex(RangeVar *heapRelation,
 			char *indexRelationName,
 			char *accessMethodName,
+			char *tableSpaceName,
 			List *attributeList,
 			Expr *predicate,
 			List *rangetable,

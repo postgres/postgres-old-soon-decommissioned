@@ -986,6 +986,34 @@ get_rel_namespace(Oid relid)
 }
 
 /*
+ * get_rel_tablespace
+ *		Returns the pg_tablespace OID associated with a given relation.
+ *
+ * Note: failure return is InvalidOid, which cannot be distinguished from
+ * "default tablespace for this database", but that seems OK.
+ */
+Oid
+get_rel_tablespace(Oid relid)
+{
+	HeapTuple	tp;
+
+	tp = SearchSysCache(RELOID,
+						ObjectIdGetDatum(relid),
+						0, 0, 0);
+	if (HeapTupleIsValid(tp))
+	{
+		Form_pg_class reltup = (Form_pg_class) GETSTRUCT(tp);
+		Oid			result;
+
+		result = reltup->reltablespace;
+		ReleaseSysCache(tp);
+		return result;
+	}
+	else
+		return InvalidOid;
+}
+
+/*
  * get_rel_type_id
  *
  *		Returns the pg_type OID associated with a given relation.
@@ -1978,6 +2006,34 @@ get_namespace_name(Oid nspid)
 	}
 	else
 		return NULL;
+}
+
+/*
+ * get_namespace_tablespace
+ *		Returns the default tablespace of a given namespace
+ *
+ * Note: failure return is InvalidOid, which cannot be distinguished from
+ * "default tablespace for this database", but that seems OK.
+ */
+Oid
+get_namespace_tablespace(Oid nspid)
+{
+	HeapTuple	tp;
+
+	tp = SearchSysCache(NAMESPACEOID,
+						ObjectIdGetDatum(nspid),
+						0, 0, 0);
+	if (HeapTupleIsValid(tp))
+	{
+		Form_pg_namespace nsptup = (Form_pg_namespace) GETSTRUCT(tp);
+		Oid			result;
+
+		result = nsptup->nsptablespace;
+		ReleaseSysCache(tp);
+		return result;
+	}
+	else
+		return InvalidOid;
 }
 
 /*				---------- PG_SHADOW CACHE ----------					 */

@@ -658,9 +658,6 @@ FreeSpaceMapForgetRel(RelFileNode *rel)
  *
  * This is called during DROP DATABASE.  As above, might as well reclaim
  * map space sooner instead of later.
- *
- * XXX when we implement tablespaces, target Oid will need to be tablespace
- * ID not database ID.
  */
 void
 FreeSpaceMapForgetDatabase(Oid dbid)
@@ -672,7 +669,7 @@ FreeSpaceMapForgetDatabase(Oid dbid)
 	for (fsmrel = FreeSpaceMap->usageList; fsmrel; fsmrel = nextrel)
 	{
 		nextrel = fsmrel->nextUsage;	/* in case we delete it */
-		if (fsmrel->key.tblNode == dbid)
+		if (fsmrel->key.dbNode == dbid)
 			delete_fsm_rel(fsmrel);
 	}
 	LWLockRelease(FreeSpaceLock);
@@ -1847,8 +1844,9 @@ DumpFreeSpace(void)
 	for (fsmrel = FreeSpaceMap->usageList; fsmrel; fsmrel = fsmrel->nextUsage)
 	{
 		relNum++;
-		fprintf(stderr, "Map %d: rel %u/%u isIndex %d avgRequest %u lastPageCount %d nextPage %d\nMap= ",
-				relNum, fsmrel->key.tblNode, fsmrel->key.relNode,
+		fprintf(stderr, "Map %d: rel %u/%u/%u isIndex %d avgRequest %u lastPageCount %d nextPage %d\nMap= ",
+				relNum,
+				fsmrel->key.spcNode, fsmrel->key.dbNode, fsmrel->key.relNode,
 				(int) fsmrel->isIndex, fsmrel->avgRequest,
 				fsmrel->lastPageCount, fsmrel->nextPage);
 		if (fsmrel->isIndex)

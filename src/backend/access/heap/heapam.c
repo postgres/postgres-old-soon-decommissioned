@@ -2630,8 +2630,8 @@ heap_undo(XLogRecPtr lsn, XLogRecord *record)
 static void
 out_target(char *buf, xl_heaptid *target)
 {
-	sprintf(buf + strlen(buf), "node %u/%u; tid %u/%u",
-			target->node.tblNode, target->node.relNode,
+	sprintf(buf + strlen(buf), "rel %u/%u/%u; tid %u/%u",
+			target->node.spcNode, target->node.dbNode, target->node.relNode,
 			ItemPointerGetBlockNumber(&(target->tid)),
 			ItemPointerGetOffsetNumber(&(target->tid)));
 }
@@ -2673,8 +2673,9 @@ heap_desc(char *buf, uint8 xl_info, char *rec)
 	{
 		xl_heap_clean *xlrec = (xl_heap_clean *) rec;
 
-		sprintf(buf + strlen(buf), "clean: node %u/%u; blk %u",
-				xlrec->node.tblNode, xlrec->node.relNode, xlrec->block);
+		sprintf(buf + strlen(buf), "clean: rel %u/%u/%u; blk %u",
+				xlrec->node.spcNode, xlrec->node.dbNode,
+				xlrec->node.relNode, xlrec->block);
 	}
 	else
 		strcat(buf, "UNKNOWN");

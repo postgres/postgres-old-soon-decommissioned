@@ -40,6 +40,7 @@
 #define  RewriteRelationName "pg_rewrite"
 #define  ShadowRelationName "pg_shadow"
 #define  StatisticRelationName "pg_statistic"
+#define  TableSpaceRelationName "pg_tablespace"
 #define  TypeRelationName "pg_type"
 #define  VersionRelationName "pg_version"
 #define  AttrDefaultRelationName "pg_attrdef"

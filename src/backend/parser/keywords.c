@@ -297,6 +297,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"substring", SUBSTRING},
 	{"sysid", SYSID},
 	{"table", TABLE},
+	{"tablespace", TABLESPACE},
 	{"temp", TEMP},
 	{"template", TEMPLATE},
 	{"temporary", TEMPORARY},

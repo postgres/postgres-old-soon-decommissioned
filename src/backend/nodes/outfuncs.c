@@ -1128,7 +1128,7 @@ _outInClauseInfo(StringInfo str, InClauseInfo *node)
 static void
 _outCreateStmt(StringInfo str, CreateStmt *node)
 {
-	WRITE_NODE_TYPE("CREATE");
+	WRITE_NODE_TYPE("CREATESTMT");
 
 	WRITE_NODE_FIELD(relation);
 	WRITE_NODE_FIELD(tableElts);
@@ -1136,16 +1136,18 @@ _outCreateStmt(StringInfo str, CreateStmt *node)
 	WRITE_NODE_FIELD(constraints);
 	WRITE_ENUM_FIELD(hasoids, ContainsOids);
 	WRITE_ENUM_FIELD(oncommit, OnCommitAction);
+	WRITE_STRING_FIELD(tablespacename);
 }
 
 static void
 _outIndexStmt(StringInfo str, IndexStmt *node)
 {
-	WRITE_NODE_TYPE("INDEX");
+	WRITE_NODE_TYPE("INDEXSTMT");
 
 	WRITE_STRING_FIELD(idxname);
 	WRITE_NODE_FIELD(relation);
 	WRITE_STRING_FIELD(accessMethod);
+	WRITE_STRING_FIELD(tableSpace);
 	WRITE_NODE_FIELD(indexParams);
 	WRITE_NODE_FIELD(whereClause);
 	WRITE_NODE_FIELD(rangetable);

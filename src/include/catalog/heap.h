@@ -37,6 +37,7 @@ typedef struct CookedConstraint
 
 extern Relation heap_create(const char *relname,
 			Oid relnamespace,
+			Oid reltablespace,
 			TupleDesc tupDesc,
 			bool shared_relation,
 			bool storage_create,
@@ -46,6 +47,7 @@ extern void heap_storage_create(Relation rel);
 
 extern Oid heap_create_with_catalog(const char *relname,
 						 Oid relnamespace,
+						 Oid reltablespace,
 						 TupleDesc tupdesc,
 						 char relkind,
 						 bool shared_relation,

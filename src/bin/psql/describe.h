@@ -13,6 +13,9 @@
 /* \da */
 bool		describeAggregates(const char *pattern, bool verbose);
 
+/* \db */
+bool		describeTablespaces(const char *pattern);
+
 /* \df */
 bool		describeFunctions(const char *pattern, bool verbose);
 
