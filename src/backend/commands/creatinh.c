@@ -447,7 +447,6 @@ MergeAttributes(List *schema, List *supers, bool istemp,
 				typename->typmod = attribute->atttypmod;
 				def->typename = typename;
 				def->is_not_null = attribute->attnotnull;
-				def->is_sequence = false;
 				def->raw_default = NULL;
 				def->cooked_default = NULL;
 				def->constraints = NIL;

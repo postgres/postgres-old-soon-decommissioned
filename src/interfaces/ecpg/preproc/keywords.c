@@ -227,7 +227,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"second", SECOND_P},
 	{"select", SELECT},
 	{"sequence", SEQUENCE},
-	{"serial", SERIAL},
 	{"serializable", SERIALIZABLE},
 	{"session", SESSION},
 	{"session_user", SESSION_USER},

@@ -175,9 +175,8 @@ _outColumnDef(StringInfo str, ColumnDef *node)
 	_outToken(str, node->colname);
 	appendStringInfo(str, " :typename ");
 	_outNode(str, node->typename);
-	appendStringInfo(str, " :is_not_null %s :is_sequence %s :raw_default ",
-					 booltostr(node->is_not_null),
-					 booltostr(node->is_sequence));
+	appendStringInfo(str, " :is_not_null %s :raw_default ",
+					 booltostr(node->is_not_null));
 	_outNode(str, node->raw_default);
 	appendStringInfo(str, " :cooked_default ");
 	_outToken(str, node->cooked_default);

@@ -1708,7 +1708,6 @@ _copyColumnDef(ColumnDef *from)
 		newnode->colname = pstrdup(from->colname);
 	Node_Copy(from, newnode, typename);
 	newnode->is_not_null = from->is_not_null;
-	newnode->is_sequence = from->is_sequence;
 	Node_Copy(from, newnode, raw_default);
 	if (from->cooked_default)
 		newnode->cooked_default = pstrdup(from->cooked_default);

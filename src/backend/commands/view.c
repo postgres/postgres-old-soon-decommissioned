@@ -68,7 +68,6 @@ DefineVirtualRelation(char *relname, List *tlist)
 			def->typename = typename;
 
 			def->is_not_null = false;
-			def->is_sequence = false;
 			def->raw_default = NULL;
 			def->cooked_default = NULL;
 			def->constraints = NIL;

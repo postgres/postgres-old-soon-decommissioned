@@ -1543,8 +1543,6 @@ _equalColumnDef(ColumnDef *a, ColumnDef *b)
 		return false;
 	if (a->is_not_null != b->is_not_null)
 		return false;
-	if (a->is_sequence != b->is_sequence)
-		return false;
 	if (!equal(a->raw_default, b->raw_default))
 		return false;
 	if (!equalstr(a->cooked_default, b->cooked_default))

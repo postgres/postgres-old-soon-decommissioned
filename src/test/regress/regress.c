@@ -565,6 +565,8 @@ ttdummy(PG_FUNCTION_ARGS)
 
 		newoff = DirectFunctionCall1(nextval,
 									 PointerGetDatum(seqname));
+		/* nextval now returns int64; coerce down to int32 */
+		newoff = Int32GetDatum((int32) DatumGetInt64(newoff));
 		pfree(seqname);
 	}
 
