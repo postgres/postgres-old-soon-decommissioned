@@ -199,14 +199,14 @@ do
                 ;;
 # The encoding of the template1 database. Defaults to what you chose
 # at configure time. (see above)
-        --encoding|-e)
+        --encoding|-E)
                 MULTIBYTE="$2"
                 shift;;
         --encoding=*)
                 MULTIBYTE=`echo $1 | sed 's/^--encoding=//'`
                 ;;
-        -e*)
-                MULTIBYTE=`echo $1 | sed 's/^-e//'`
+        -E*)
+                MULTIBYTE=`echo $1 | sed 's/^-E//'`
                 ;;
         *)
                 PGDATA=$1
