@@ -242,16 +242,13 @@ ExecInitNode(Plan *node, EState *estate)
 	 * do this after initializing initPlans, in case their arguments
 	 * contain subPlans (is that actually possible? perhaps not).
 	 */
-	subps = NIL;
 	foreach(subp, result->subPlan)
 	{
 		SubPlanState *sstate = (SubPlanState *) lfirst(subp);
 
 		Assert(IsA(sstate, SubPlanState));
 		ExecInitSubPlan(sstate, estate);
-		subps = lappend(subps, sstate);
 	}
-	result->subPlan = subps;
 
 	/* Set up instrumentation for this node if requested */
 	if (estate->es_instrument)
