@@ -38,7 +38,7 @@ OBJS= bootparse.o bootscanner.o bootstrap.o
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
-	ld -r -o SUBSYS.o $(OBJS)
+	$(LD) -r -o SUBSYS.o $(OBJS)
 
 # bootstrap.o's dependency on bootstrap_tokens.h is computed by the
 # make depend, but we state it here explicitly anyway because 

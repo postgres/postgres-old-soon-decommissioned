@@ -8,6 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
+SRCDIR = ../..
+include ../../Makefile.global
+
 OBJS = common/SUBSYS.o gist/SUBSYS.o hash/SUBSYS.o heap/SUBSYS.o \
        index/SUBSYS.o rtree/SUBSYS.o nbtree/SUBSYS.o transam/SUBSYS.o
 

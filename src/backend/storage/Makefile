@@ -8,6 +8,9 @@
 #
 #-------------------------------------------------------------------------
 
+SRCDIR= ../..
+include ../../Makefile.global
+
 all: submake SUBSYS.o
 
 OBJS = buffer/SUBSYS.o file/SUBSYS.o ipc/SUBSYS.o large_object/SUBSYS.o \
