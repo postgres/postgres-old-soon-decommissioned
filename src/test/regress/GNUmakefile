@@ -41,8 +41,8 @@ endif
 # prepare to run the test (including clean-up after the last run)
 #
 all: $(INFILES)
-	cd input; gmake all; cd ..
-	cd output; gmake all; cd ..
+	cd input; $(MAKE) all; cd ..
+	cd output; $(MAKE) all; cd ..
 
 #
 # run the test
