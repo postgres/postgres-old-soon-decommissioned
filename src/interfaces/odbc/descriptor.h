@@ -17,7 +17,7 @@
 typedef struct
 {
 	COL_INFO	*col_info; /* cached SQLColumns info for this table */
-	char		schema[MAX_TABLE_LEN + 1];
+	char		schema[MAX_SCHEMA_LEN + 1];
 	char		name[MAX_TABLE_LEN + 1];
 	char		alias[MAX_TABLE_LEN + 1];
 } TABLE_INFO;

@@ -124,6 +124,7 @@ typedef UInt4 Oid;
 #define BYTELEN						8
 #define VARHDRSZ					sizeof(Int4)
 
+#define MAX_SCHEMA_LEN				32
 #define MAX_TABLE_LEN				32
 #define MAX_COLUMN_LEN				32
 #define MAX_CURSOR_LEN				32
