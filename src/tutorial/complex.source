@@ -285,6 +285,6 @@ DROP OPERATOR <= (complex, complex);
 DROP OPERATOR = (complex, complex);
 DROP OPERATOR >= (complex, complex);
 DROP OPERATOR > (complex, complex);
-DROP AGGREGATE complex_sum complex;
+DROP AGGREGATE complex_sum (complex);
 DROP TYPE complex;
 DROP TABLE test_complex, complex_ops_tmp;

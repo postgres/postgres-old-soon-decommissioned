@@ -2811,8 +2811,10 @@ transformTypeRefsList(ParseState *pstate, List *l)
 
 	foreach(ele, l)
 	{
-		if (IsA(lfirst(ele), TypeName))
-			transformTypeRef(pstate, (TypeName *) lfirst(ele));
+		Node   *elem = lfirst(ele);
+
+		if (elem && IsA(elem, TypeName))
+			transformTypeRef(pstate, (TypeName *) elem);
 	}
 }
 
