@@ -53,6 +53,7 @@
 #include <unistd.h>
 #endif /* WIN32 */
 #include <string.h>
+#include <signal.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
@@ -251,6 +252,7 @@ InitProcess(IPCKey key)
     SpinRelease(ProcStructLock);
     
     MyProc->pid = 0;
+    MyProc->xid = InvalidTransactionId;
 #if 0
     MyProc->pid = MyPid;
 #endif
