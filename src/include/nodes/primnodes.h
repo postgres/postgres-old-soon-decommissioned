@@ -13,16 +13,7 @@
 #ifndef PRIMNODES_H
 #define	PRIMNODES_H
 
-#include "postgres.h"
-
-#include "access/attnum.h"
-#include "storage/buf.h"
-#include "utils/rel.h"
 #include "utils/fcache.h"
-#include "nodes/params.h"
-
-#include "nodes/nodes.h"
-#include "nodes/pg_list.h"
 
 /* ----------------------------------------------------------------
  *			node definitions
