@@ -75,6 +75,10 @@ extern int Pg_lo_import(
     ClientData cData, Tcl_Interp *interp, int argc, char* argv[]);
 extern int Pg_lo_export(
     ClientData cData, Tcl_Interp *interp, int argc, char* argv[]);
+extern int Pg_listen(
+    ClientData cData, Tcl_Interp *interp, int argc, char* argv[]);
+extern int Pg_notifies(
+    ClientData cData, Tcl_Interp *interp, int argc, char* argv[]);
 
 
 #endif /*PGTCLCMDS_H*/
