@@ -93,13 +93,6 @@ ExcPrint(Exception *excP,
 {
     extern	int	errno;
     extern	int	sys_nerr;
-#if !defined(BSD44_derived) && \
-    !defined(bsdi) && \
-    !defined(bsdi_2_1) && \
-    !defined(linuxalpha) && \
-    !defined(__GLIBC__)
-    extern	char	*sys_errlist[];
-#endif /* ! bsd_derived */
     
 #ifdef	lint
     data = data;
@@ -125,9 +118,8 @@ ExcPrint(Exception *excP,
     
     (void) fprintf(stderr, " (%ld)", detail);
     
-    if (errno > 0 && errno < sys_nerr &&
-	sys_errlist[errno] != NULL && sys_errlist[errno][0] != '\0')
-	(void) fprintf(stderr, " [%s]", sys_errlist[errno]);
+    if (errno > 0 && errno < sys_nerr) 
+	(void) fprintf(stderr, " [%s]", strerror(errno));
     else if (errno != 0)
 	(void) fprintf(stderr, " [Error %d]", errno);
     
