@@ -346,7 +346,7 @@ typedef struct IndexStmt
 	char	   *relname;		/* name of relation to index on */
 	char	   *accessMethod;	/* name of acess methood (eg. btree) */
 	List	   *indexParams;	/* a list of IndexElem */
-	List	   *withClause;		/* a list of ParamString */
+	List	   *withClause;		/* a list of DefElem */
 	Node	   *whereClause;	/* qualifications */
 	List	   *rangetable;		/* range table, filled in by
 								 * transformStmt() */
@@ -367,7 +367,7 @@ typedef struct ProcedureStmt
 								 * (as Value *) */
 	Node	   *returnType;		/* the return type (as a string or a
 								 * TypeName (ie.setof) */
-	List	   *withClause;		/* a list of ParamString */
+	List	   *withClause;		/* a list of DefElem */
 	List	   *as;				/* the SQL statement or filename */
 	char	   *language;		/* C or SQL */
 } ProcedureStmt;
@@ -861,16 +861,6 @@ typedef struct ResTarget
 	Node	   *val;			/* the value expression to compute or
 								 * assign */
 } ResTarget;
-
-/*
- * ParamString - used in WITH clauses
- */
-typedef struct ParamString
-{
-	NodeTag		type;
-	char	   *name;
-	char	   *val;
-} ParamString;
 
 /*
  * RelExpr - relation expressions

@@ -103,7 +103,6 @@ Oid	param_type(int t); /* used in parse_expr.c */
 
 	TypeName			*typnam;
 	DefElem				*defelt;
-	ParamString			*param;
 	SortGroupBy			*sortgroupby;
 	JoinExpr			*joinexpr;
 	IndexElem			*ielem;
