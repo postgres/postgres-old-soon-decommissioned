@@ -1539,7 +1539,7 @@ do_shell(const char *command)
 	if (!command)
 	{
 		char	   *sys;
-		const char *shellName = NULL;
+		const char *shellName;
 
 		shellName = getenv("SHELL");
 #ifdef WIN32
