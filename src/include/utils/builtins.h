@@ -329,7 +329,7 @@ extern bool oidnotin(Oid the_oid, char *compare);
 
 /* oid.c */
 extern Oid *oid8in(char *oidString);
-extern char *oid8out(Oid **oidArray);
+extern char *oid8out(Oid (*oidArray)[]);
 extern Oid	oidin(char *s);
 extern char *oidout(Oid o);
 extern bool oideq(Oid arg1, Oid arg2);
