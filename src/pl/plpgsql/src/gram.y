@@ -40,7 +40,6 @@
 #include "string.h"
 #include "plpgsql.h"
 
-#include "pl_scan.c"
 
 static	PLpgSQL_expr	*read_sqlstmt(int until, char *s, char *sqlstart);
 static	PLpgSQL_stmt	*make_select_stmt(void);
@@ -1079,6 +1078,8 @@ lno		:
 		;
 
 %%
+
+#include "pl_scan.c"
 
 PLpgSQL_expr *
 plpgsql_read_expression (int until, char *s)
