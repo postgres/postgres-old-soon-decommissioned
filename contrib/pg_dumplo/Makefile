@@ -10,7 +10,7 @@ NAME	= pg_dumplo
 
 PROGRAM	= $(NAME)
 OBJS	= main.o lo_export.o lo_import.o utils.o
-DOCS	= $(NAME).doc
+DOCS	= README
 SQLS	= 
 BINS	= $(PROGRAM)
 EXAMPLES=
@@ -29,7 +29,7 @@ install: install_doc install_bin
 
 install_doc:
 	for inst_file in $(DOCS); do \
-		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR); \
+		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR)/$(DOCS).$(NAME); \
 	done
 
 install_bin:

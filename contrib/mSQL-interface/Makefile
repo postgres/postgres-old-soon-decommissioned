@@ -10,7 +10,7 @@ NAME	= mpgsql
 
 PROGRAM	= 
 OBJS	= 
-DOCS	= $(NAME).doc $(NAME).c
+DOCS	= README $(NAME).c
 SQLS	= 
 BINS    = 
 EXAMPLES=
@@ -24,7 +24,7 @@ install: install_doc
 
 install_doc:
 	for inst_file in $(DOCS); do \
-		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR); \
+		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR)/$(DOCS).$(NAME); \
 	done
 
 clean:

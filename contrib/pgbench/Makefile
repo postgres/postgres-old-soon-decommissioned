@@ -10,7 +10,7 @@ NAME	= pgbench
 
 PROGRAM	= $(NAME)
 OBJS	= $(NAME).o
-DOCS	= $(NAME).doc $(NAME)_jis.doc
+DOCS	= README README.jis
 SQLS	= 
 BINS    = $(PROGRAM) 
 EXAMPLES=
@@ -29,7 +29,7 @@ install: install_doc install_bin
 
 install_doc:
 	for inst_file in $(DOCS); do \
-		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR); \
+		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR)/$(DOCS).$(NAME); \
 	done
 
 install_bin:
