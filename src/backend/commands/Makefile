@@ -33,6 +33,9 @@ SUBSYS.o: $(OBJS)
 
 comment.o: ../parse.h
 
+../parse.h:
+	$(MAKE) -C .. parse.h
+
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
 
