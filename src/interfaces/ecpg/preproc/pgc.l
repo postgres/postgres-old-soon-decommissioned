@@ -319,7 +319,7 @@ cppline			{space}*#(.*\\{line_end})*.*
 					return ICONST;
 				}
 
-<xb><<EOF>>            { mmerror(ET_ERROR, "Unterminated hexadecimal integer"); }
+<xh><<EOF>>		{ mmerror(ET_ERROR, "Unterminated hexadecimal integer"); }
 
 {xqstart}			{
 					state_before = YYSTATE;
@@ -355,7 +355,7 @@ cppline			{space}*#(.*\\{line_end})*.*
 <xd>{xdinside}			{
 					addlit(yytext, yyleng);
 				}
-<xq><<EOF>> 	 	        { mmerror(ET_ERROR, "Unterminated quoted identifier"); }
+<xd><<EOF>> 	 	        { mmerror(ET_ERROR, "Unterminated quoted identifier"); }
 <SQL>{typecast}			{ 	return TYPECAST; }
 <SQL>{self}			{ /* 
 				   * We may find a ';' inside a structure
