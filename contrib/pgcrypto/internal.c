@@ -134,7 +134,7 @@ int_sha1_update(PX_MD * h, const uint8 * data, uint dlen)
 {
 	SHA1_CTX   *ctx = (SHA1_CTX *) h->p.ptr;
 
-	SHA1Update(ctx, (const char *)data, dlen);
+	SHA1Update(ctx, data, dlen);
 }
 
 static void
