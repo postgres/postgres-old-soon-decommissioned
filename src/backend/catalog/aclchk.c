@@ -455,14 +455,14 @@ pg_aclcheck(char *relname, char *usename, AclMode mode)
 		 * if the acl is null, by default the owner can do whatever he
 		 * wants to with it
 		 */
-		Oid			ownerId;
+		int4		ownerId;
 
 		relation = heap_openr(RelationRelationName);
-		ownerId = (Oid) heap_getattr(htp,
+		ownerId = (int4) heap_getattr(htp,
 									 Anum_pg_class_relowner,
 									 RelationGetTupleDescriptor(relation),
 									 (bool *) NULL);
-		acl = aclownerdefault(relname, ownerId);
+		acl = aclownerdefault(relname, (AclId)ownerId);
 	}
 #else
 	{							/* This is why the syscache is great... */

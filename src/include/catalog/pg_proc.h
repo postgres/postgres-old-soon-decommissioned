@@ -39,7 +39,7 @@
 CATALOG(pg_proc) BOOTSTRAP
 {
 	NameData	proname;
-	Oid			proowner;
+	int4		proowner;
 	Oid			prolang;
 	bool		proisinh;
 	bool		proistrusted;

@@ -36,7 +36,7 @@
 CATALOG(pg_operator)
 {
 	NameData	oprname;
-	Oid			oprowner;
+	int4		oprowner;
 	int2		oprprec;
 	char		oprkind;
 	bool		oprisleft;

@@ -442,7 +442,7 @@ SetPgUserName()
  */
 static Oid	UserId = InvalidOid;
 
-Oid
+int
 GetUserId()
 {
 	Assert(OidIsValid(UserId));

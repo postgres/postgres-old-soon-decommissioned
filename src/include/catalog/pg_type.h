@@ -40,7 +40,7 @@
 CATALOG(pg_type) BOOTSTRAP
 {
 	NameData	typname;
-	Oid			typowner;
+	int4		typowner;
 	int2		typlen;
 
 	/*

@@ -565,8 +565,8 @@ mdblindwrt(char *dbstr,
 /* this is work arround only !!! */
 	{
 		char		dbpath[MAXPGPATH + 1];
-		Oid			owner,
-					id;
+		int4		owner;
+		Oid			id;
 		char	   *tmpPath;
 #ifdef MULTIBYTE
 		int	   tmpEncoding;
@@ -610,8 +610,8 @@ mdblindwrt(char *dbstr,
 /* this is work arround only !!! */
 	{
 		char		dbpath[MAXPGPATH + 1];
-		Oid			owner,
-					id;
+		int4		owner;
+		Oid			id;
 		char	   *tmpPath;
 
 #ifdef MULTIBYTE

@@ -54,7 +54,7 @@ CATALOG(pg_class) BOOTSTRAP
 {
 	NameData	relname;
 	Oid			reltype;
-	Oid			relowner;
+	int4		relowner;
 	Oid			relam;
 	int4		relpages;
 	int4		reltuples;

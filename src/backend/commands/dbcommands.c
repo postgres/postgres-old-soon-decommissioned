@@ -38,7 +38,7 @@
 /* non-export function prototypes */
 static void
 check_permissions(char *command, char *dbpath, char *dbname,
-				  Oid *dbIdP, Oid *userIdP);
+				  Oid *dbIdP, int4 *userIdP);
 static HeapTuple get_pg_dbtup(char *command, char *dbname, Relation dbrel);
 static void stop_vacuum(char *dbpath, char *dbname);
 
@@ -191,12 +191,12 @@ check_permissions(char *command,
 				  char *dbpath,
 				  char *dbname,
 				  Oid *dbIdP,
-				  Oid *userIdP)
+				  int4 *userIdP)
 {
 	Relation	dbrel;
 	HeapTuple	dbtup,
 				utup;
-	Oid			dbowner = (Oid) 0;
+	int4		dbowner = 0;
 	char		use_createdb;
 	bool		dbfound;
 	bool		use_super;
@@ -250,7 +250,7 @@ check_permissions(char *command,
 
 	if (dbfound)
 	{
-		dbowner = (Oid) heap_getattr(dbtup,
+		dbowner = (int4) heap_getattr(dbtup,
 									 Anum_pg_database_datdba,
 									 RelationGetTupleDescriptor(dbrel),
 									 (char *) NULL);

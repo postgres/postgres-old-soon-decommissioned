@@ -1063,7 +1063,7 @@ formrdesc(char *relationName,
 	}
 	else
 	{
-		relation->rd_rel->relowner = InvalidOid;		/* XXX incorrect */
+		relation->rd_rel->relowner = 0;
 		relation->rd_rel->relisshared = false;
 	}
 

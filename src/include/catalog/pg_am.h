@@ -36,7 +36,7 @@
 CATALOG(pg_am)
 {
 	NameData	amname;
-	Oid			amowner;
+	int4		amowner;
 	char		amkind;
 	int2		amstrategies;
 	int2		amsupport;

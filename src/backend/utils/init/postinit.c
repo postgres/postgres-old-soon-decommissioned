@@ -84,9 +84,9 @@ static void InitUserid(void);
 
 extern char *ExpandDatabasePath(char *name);
 #ifdef MULTIBYTE
-extern void GetRawDatabaseInfo(char *name, Oid *owner, Oid *db_id, char *path, int *encoding);
+extern void GetRawDatabaseInfo(char *name, int4 *owner, Oid *db_id, char *path, int *encoding);
 #else
-extern void GetRawDatabaseInfo(char *name, Oid *owner, Oid *db_id, char *path);
+extern void GetRawDatabaseInfo(char *name, int4 *owner, Oid *db_id, char *path);
 #endif
 
 static IPCKey PostgresIpcKey;
@@ -125,7 +125,7 @@ static IPCKey PostgresIpcKey;
 static void
 InitMyDatabaseInfo(char *name)
 {
-	Oid			owner;
+	int4		owner;
 	char	   *path,
 				myPath[MAXPGPATH + 1];
 #ifdef MULTIBYTE

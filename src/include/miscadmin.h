@@ -117,11 +117,11 @@ extern char *DatabasePath;
 
 /* in utils/misc/database.c */
 #ifdef MULTIBYTE
-extern void GetRawDatabaseInfo(char *name, Oid *owner, Oid *db_id, char *path, int *encoding);
+extern void GetRawDatabaseInfo(char *name, int4 *owner, Oid *db_id, char *path, int *encoding);
 #else
-extern void GetRawDatabaseInfo(char *name, Oid *owner, Oid *db_id, char *path);
+extern void GetRawDatabaseInfo(char *name, int4 *owner, Oid *db_id, char *path);
 #endif
-extern int	GetDatabaseInfo(char *name, Oid *owner, char *path);
+extern int	GetDatabaseInfo(char *name, int4 *owner, char *path);
 extern char *ExpandDatabasePath(char *path);
 
 /* now in utils/init/miscinit.c */
@@ -134,7 +134,7 @@ extern const char *getdatabaseencoding(void);
 
 extern char *getpgusername(void);
 extern void SetPgUserName(void);
-extern Oid	GetUserId(void);
+extern int	GetUserId(void);
 extern void SetUserId(void);
 extern int	ValidateBinary(char *path);
 extern int	FindExec(char *backend, char *argv0, char *binary_name);

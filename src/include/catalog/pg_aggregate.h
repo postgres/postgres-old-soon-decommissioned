@@ -45,7 +45,7 @@
 CATALOG(pg_aggregate)
 {
 	NameData	aggname;
-	Oid			aggowner;
+	int4		aggowner;
 	regproc		aggtransfn1;
 	regproc		aggtransfn2;
 	regproc		aggfinalfn;

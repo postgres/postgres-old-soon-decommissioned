@@ -35,7 +35,7 @@
  * Pull database information from pg_database.
  */
 int
-GetDatabaseInfo(char *name, Oid *owner, char *path)
+GetDatabaseInfo(char *name, int4 *owner, char *path)
 {
 	Oid			dbowner,
 				dbid;
@@ -179,7 +179,7 @@ ExpandDatabasePath(char *dbpath)
  * --------------------------------
  */
 void
-GetRawDatabaseInfo(char *name, Oid *owner, Oid *db_id, char *path)
+GetRawDatabaseInfo(char *name, int4 *owner, Oid *db_id, char *path)
 {
 	int			dbfd;
 	int			fileflags;
