@@ -11,7 +11,7 @@
 SRCDIR = ../..
 include ../../Makefile.global
 
-INCLUDE_OPT = 
+INCLUDE_OPT = -I.. \
               -I../port/$(PORTNAME) \
               -I../../include
 

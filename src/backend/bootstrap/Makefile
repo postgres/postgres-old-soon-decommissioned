@@ -23,7 +23,6 @@ include ../../Makefile.global
 
 INCLUDE_OPT = -I.. \
               -I../port/$(PORTNAME) \
-              -I../include \
               -I../../include
 
 CFLAGS += $(INCLUDE_OPT) -Wno-error
