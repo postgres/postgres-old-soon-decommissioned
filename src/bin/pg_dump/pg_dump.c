@@ -5347,8 +5347,7 @@ dumpOneTable(Archive *fout, TableInfo *tbinfo, TableInfo *g_tblinfo)
 				if (actual_atts + j > 0)
 					appendPQExpBuffer(q, ",\n    ");
 
-				if (name[0] != '$')
-					appendPQExpBuffer(q, "CONSTRAINT %s ",
+				appendPQExpBuffer(q, "CONSTRAINT %s ",
 									  fmtId(name));
 				appendPQExpBuffer(q, "%s", expr);
 			}
