@@ -19,7 +19,7 @@ TZDATA := africa antarctica asia australasia europe northamerica southamerica pa
 TZDATAFILES := $(TZDATA:%=data/%)
 
 ifeq ($(USE_PGTZ), yes)
-all: SUBSYS.o zic
+all: SUBSYS.o submake-libpgport zic
 
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
@@ -27,7 +27,7 @@ SUBSYS.o: $(OBJS)
 zic: $(ZICOBJS)
 	$(CC) $(CFLAGS) $(ZICOBJS) $(LDFLAGS) $(LIBS) -o $@$(X)
 
-install: zic
+install: all installdirs
 	./zic -d $(DESTDIR)$(datadir)/timezone $(TZDATAFILES)
 
 clean distclean maintainer-clean:
