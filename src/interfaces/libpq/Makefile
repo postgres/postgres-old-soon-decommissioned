@@ -30,7 +30,7 @@ endif
 # Add libraries that libpq depends (or might depend) on into the
 # shared library link.  (The order in which you list them here doesn't
 # matter.)
-SHLIB_LINK += $(filter -lcrypt -ldes -lkrb -lcom_err -lcrypto -lk5crypto -lkrb5 -lssl -lsocket -lnsl, $(LIBS))
+SHLIB_LINK += $(filter -lcrypt -ldes -lkrb -lcom_err -lcrypto -lk5crypto -lkrb5 -lssl -lsocket -lnsl -lresolv, $(LIBS))
 
 
 all: all-lib
