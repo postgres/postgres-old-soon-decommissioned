@@ -2049,7 +2049,7 @@ main(int argc, char *argv[])
 
 	/* process command-line options */
 
-	while ((c = getopt_long(argc, argv, "dD:E:L:nU:WA:", long_options, &option_index)) != -1)
+	while ((c = getopt_long(argc, argv, "dD:E:L:nU:WA:s", long_options, &option_index)) != -1)
 	{
 		switch (c)
 		{
@@ -2198,8 +2198,8 @@ main(int argc, char *argv[])
 
 	/*
 	 * we have to set PGDATA for postgres rather than pass it on the
-	 * commnd line to avoid dumb quoting problems on Windows, and we would
-	 * expecially need quotes otherwise on Windows because paths there are
+	 * command line to avoid dumb quoting problems on Windows, and we would
+	 * especially need quotes otherwise on Windows because paths there are
 	 * most likely to have embedded spaces.
 	 */
 	pgdenv = xmalloc(8 + strlen(pg_data));
