@@ -442,7 +442,7 @@ _PrintTocData(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt)
 
 		while (id != te->dumpId)
 		{
-			if ((TocIDRequired(AH, id, ropt) & 2) != 0)
+			if ((TocIDRequired(AH, id, ropt) & REQ_DATA) != 0)
 				die_horribly(AH, modulename,
 							 "Dumping a specific TOC data block out of order is not supported"
 				  " without ID on this input stream (fseek required)\n");

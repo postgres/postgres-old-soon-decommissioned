@@ -164,6 +164,13 @@ typedef enum
 	STAGE_FINALIZING
 } ArchiverStage;
 
+typedef enum
+{
+	REQ_SCHEMA = 1,
+	REQ_DATA = 2,
+	REQ_ALL = REQ_SCHEMA + REQ_DATA
+} teReqs;
+
 typedef struct _archiveHandle
 {
 	Archive		public;			/* Public part of archive */
@@ -321,7 +328,7 @@ extern void WriteToc(ArchiveHandle *AH);
 extern void ReadToc(ArchiveHandle *AH);
 extern void WriteDataChunks(ArchiveHandle *AH);
 
-extern int	TocIDRequired(ArchiveHandle *AH, DumpId id, RestoreOptions *ropt);
+extern teReqs TocIDRequired(ArchiveHandle *AH, DumpId id, RestoreOptions *ropt);
 extern bool checkSeek(FILE *fp);
 
 /*
