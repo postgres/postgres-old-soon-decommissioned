@@ -630,10 +630,7 @@ ProcessUtility(Node *parsetree,
 		case T_CreatedbStmt:
 			{
 				CreatedbStmt *stmt = (CreatedbStmt *) parsetree;
-
-				createdb(stmt->dbname, stmt->dbowner,
-						 stmt->dbpath, stmt->dbtemplate,
-						 stmt->encoding);
+				createdb(stmt);
 			}
 			break;
 

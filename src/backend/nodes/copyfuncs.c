@@ -2258,13 +2258,7 @@ _copyCreatedbStmt(CreatedbStmt *from)
 
 	if (from->dbname)
 		newnode->dbname = pstrdup(from->dbname);
-	if (from->dbowner)
-		newnode->dbowner = pstrdup(from->dbowner);
-	if (from->dbpath)
-		newnode->dbpath = pstrdup(from->dbpath);
-	if (from->dbtemplate)
-		newnode->dbtemplate = pstrdup(from->dbtemplate);
-	newnode->encoding = from->encoding;
+	Node_Copy(from, newnode, options);
 
 	return newnode;
 }

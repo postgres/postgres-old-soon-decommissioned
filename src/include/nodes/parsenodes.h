@@ -1350,10 +1350,7 @@ typedef struct CreatedbStmt
 {
 	NodeTag		type;
 	char	   *dbname;			/* name of database to create */
-	char	   *dbowner;		/* name of owner (NULL = default) */
-	char	   *dbpath;			/* location of database (NULL = default) */
-	char	   *dbtemplate;		/* template to use (NULL = default) */
-	int			encoding;		/* MULTIBYTE encoding (-1 = use default) */
+	List	   *options;		/* List of DefElem nodes */
 } CreatedbStmt;
 
 /* ----------------------
