@@ -60,7 +60,11 @@ pg_encname	pg_encname_tbl[] =
 	{
 		"euctw", PG_EUC_TW
 	},							/* EUC-TW; Extended Unix Code for
+
 								 * traditional Chinese */
+	{
+		"gb18030", PG_GB18030
+	},							/* GB18030;GB18030 */
 	{
 		"gbk", PG_GBK
 	},							/* GBK; Chinese Windows CodePage 936
@@ -239,7 +243,6 @@ pg_encname	pg_encname_tbl[] =
 	{
 		"windows950", PG_BIG5
 	},							/* alias for BIG5 */
-
 	{
 		NULL, 0
 	}							/* last */
@@ -353,6 +356,9 @@ pg_enc2name pg_enc2name_tbl[] =
 	},
 	{
 		"WIN1250", PG_WIN1250
+	},
+	{
+		"GB18030", PG_GB18030
 	}
 };
 
