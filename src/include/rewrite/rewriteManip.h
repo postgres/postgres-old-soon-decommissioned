@@ -25,13 +25,10 @@ void		AddQual(Query *parsetree, Node *qual);
 void		AddHavingQual(Query *parsetree, Node *havingQual);
 
 void		AddNotQual(Query *parsetree, Node *qual);
-void		FixResdomTypes(List *user_tlist);
 void		FixNew(RewriteInfo *info, Query *parsetree);
 
 void HandleRIRAttributeRule(Query *parsetree, List *rtable, List *targetlist,
 					   int rt_index, int attr_num, int *modified,
 					   int *badpostquel);
-void HandleViewRule(Query *parsetree, List *rtable, List *targetlist,
-			   int rt_index, int *modified);
 
 #endif	 /* REWRITEMANIP_H */

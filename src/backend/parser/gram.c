@@ -288,7 +288,7 @@ static char *xlateSqlFunc(char *);
 static char *xlateSqlType(char *);
 static Node *makeA_Expr(int oper, char *opname, Node *lexpr, Node *rexpr);
 static Node *makeRowExpr(char *opr, List *largs, List *rargs);
-void mapTargetColumns(List *source, List *target);
+static void mapTargetColumns(List *source, List *target);
 static List *makeConstantList( A_Const *node);
 static char *FlattenStringList(List *list);
 static char *fmtId(char *rawid);
@@ -10636,7 +10636,7 @@ makeRowExpr(char *opr, List *largs, List *rargs)
 	return expr;
 }
 
-void
+static void
 mapTargetColumns(List *src, List *dst)
 {
 	ColumnDef *s;

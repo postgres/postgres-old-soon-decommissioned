@@ -34,7 +34,7 @@
 static List *ExpandAllTables(ParseState *pstate);
 static char *FigureColname(Node *expr, Node *resval);
 
-Node *SizeTargetExpr(ParseState *pstate,
+static Node *SizeTargetExpr(ParseState *pstate,
 			   Node *expr,
 			   Oid attrtype,
 			   int32 attrtypmod);
@@ -664,7 +664,7 @@ CoerceTargetExpr(ParseState *pstate,
  * Apparently going to a fixed-length string?
  * Then explicitly size for storage...
  */
-Node *
+static Node *
 SizeTargetExpr(ParseState *pstate,
 			   Node *expr,
 			   Oid attrtype,

@@ -75,7 +75,6 @@ extern LOCKMETHOD ShortTermTableId;
  */
 extern LOCKMETHOD InitMultiLevelLocks(void);
 extern bool MultiLockReln(LockInfo lockinfo, LOCKMODE lockmode);
-extern bool MultiLockTuple(LockInfo lockinfo, ItemPointer tidPtr, LOCKMODE lockmode);
 extern bool MultiLockPage(LockInfo lockinfo, ItemPointer tidPtr, LOCKMODE lockmode);
 extern bool MultiReleaseReln(LockInfo lockinfo, LOCKMODE lockmode);
 

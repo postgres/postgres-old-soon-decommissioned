@@ -361,6 +361,7 @@ AbsoluteTimeIsBefore(AbsoluteTime time1, AbsoluteTime time2)
 	return time1 < time2;
 }
 
+#ifdef NOT_USED
 bool
 AbsoluteTimeIsAfter(AbsoluteTime time1, AbsoluteTime time2)
 {
@@ -375,7 +376,7 @@ AbsoluteTimeIsAfter(AbsoluteTime time1, AbsoluteTime time2)
 
 	return time1 > time2;
 }
-
+#endif
 
 /* abstime_finite()
  */

@@ -194,6 +194,7 @@ MultiLockReln(LockInfo lockinfo, LOCKMODE lockmode)
 	return MultiAcquire(MultiTableId, &tag, lockmode, RELN_LEVEL);
 }
 
+#ifdef NOT_USED
 /*
  * MultiLockTuple -- Lock the TID associated with a tuple
  *
@@ -220,6 +221,7 @@ MultiLockTuple(LockInfo lockinfo, ItemPointer tidPtr, LOCKMODE lockmode)
 	tag.tupleId = *tidPtr;
 	return MultiAcquire(MultiTableId, &tag, lockmode, TUPLE_LEVEL);
 }
+#endif
 
 /*
  * same as above at page level

@@ -47,8 +47,6 @@ static int	pronargs_save;
 static func_ptr user_fn_save = (func_ptr) NULL;
 static func_ptr handle_load(char *filename, char *funcname);
 
-func_ptr	trigger_dynamic(char *filename, char *funcname);
-
 func_ptr
 fmgr_dynamic(Oid procedureId, int *pronargs)
 {
@@ -279,6 +277,7 @@ load_file(char *filename)
 	handle_load(filename, (char *) NULL);
 }
 
+/* Is this used? bjm 1998/10/08 */
 func_ptr
 trigger_dynamic(char *filename, char *funcname)
 {

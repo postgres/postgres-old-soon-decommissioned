@@ -313,6 +313,7 @@ make_null(Oid type)
 	return (Node *) c;
 }
 
+#ifdef NOT_USED
 void
 FixResdomTypes(List *tlist)
 {
@@ -331,6 +332,7 @@ FixResdomTypes(List *tlist)
 		}
 	}
 }
+#endif
 
 static Node *
 FindMatchingNew(List *tlist, int attno)
@@ -793,6 +795,7 @@ nodeHandleViewRule(Node **nodePtr,
 	}
 }
 
+#ifdef NOT_USED
 void
 HandleViewRule(Query *parsetree,
 			   List *rtable,
@@ -814,3 +817,5 @@ HandleViewRule(Query *parsetree,
 	nodeHandleViewRule((Node **) (&(parsetree->groupClause)), rtable, targetlist, rt_index,
 					   modified, 0);
 }
+#endif
+

@@ -108,7 +108,6 @@ typedef enum CATEGORY
 
 
 extern bool IsPreferredType(CATEGORY category, Oid type);
-extern Oid	PreferredType(CATEGORY category, Oid type);
 extern CATEGORY TypeCategory(Oid type);
 
 extern bool can_coerce_type(int nargs, Oid *input_typeids, Oid *func_typeids);

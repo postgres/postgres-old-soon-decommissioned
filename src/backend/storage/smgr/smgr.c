@@ -72,12 +72,15 @@ static f_smgr smgrsw[] = {
  *	write-once storage managers.
  */
 
+#ifdef NOT_USED
 static bool smgrwo[] = {
 	false,						/* magnetic disk */
 #ifdef STABLE_MEMORY_STORAGE
 	false,						/* main memory */
 #endif
 };
+#endif
+
 static int	NSmgr = lengthof(smgrsw);
 
 /*
@@ -396,6 +399,7 @@ smgrabort()
 
 #endif
 
+#ifdef NOT_USED
 bool
 smgriswo(int16 smgrno)
 {
@@ -404,3 +408,4 @@ smgriswo(int16 smgrno)
 
 	return smgrwo[smgrno];
 }
+#endif

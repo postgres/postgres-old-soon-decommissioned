@@ -96,6 +96,8 @@
 #include <string.h>
 #endif
 
+static void doinsert(Relation relation, HeapTuple tup);
+
 static bool ImmediateInvalidation;
 
 /* ----------------------------------------------------------------
@@ -475,7 +477,7 @@ heapgettup(Relation relation,
 	}
 }
 
-void
+static void
 doinsert(Relation relation, HeapTuple tup)
 {
 	RelationPutHeapTupleAtEnd(relation, tup);

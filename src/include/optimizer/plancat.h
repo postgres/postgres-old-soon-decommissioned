@@ -58,6 +58,5 @@ extern Cost join_selectivity(Oid functionObjectId, Oid operatorObjectId,
 				 Oid relationObjectId2, AttrNumber attributeNumber2);
 
 extern List *find_inheritance_children(Oid inhparent);
-extern List *VersionGetParents(Oid verrelid);
 
 #endif	 /* PLANCAT_H */

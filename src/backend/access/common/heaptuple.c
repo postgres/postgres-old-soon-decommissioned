@@ -274,6 +274,7 @@ heap_sysattrbyval(AttrNumber attno)
 	return byval;
 }
 
+#ifdef NOT_USED
 /* ----------------
  *		heap_getsysattr
  * ----------------
@@ -300,6 +301,7 @@ heap_getsysattr(HeapTuple tup, Buffer b, int attnum)
 	}
 	return (Datum) NULL;
 }
+#endif
 
 /* ----------------
  *		nocachegetattr

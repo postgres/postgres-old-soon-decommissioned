@@ -28,6 +28,8 @@
 Oid			DemoteType(Oid inType);
 Oid			PromoteTypeToNext(Oid inType);
 
+static Oid PreferredType(CATEGORY category, Oid type);
+
 
 /* coerce_type()
  * Convert a function argument to a different type.
@@ -347,7 +349,7 @@ IsPreferredType(CATEGORY category, Oid type)
 /* PreferredType()
  * Return the preferred type OID for the specified category.
  */
-Oid
+static Oid
 PreferredType(CATEGORY category, Oid type)
 {
 	Oid			result;

@@ -1712,6 +1712,7 @@ DeadLockCheck(SHM_QUEUE *lockQueue, LOCK *findlock, bool skip_check)
 	return false;
 }
 
+#ifdef NOT_USED
 /*
  * Return an array with the pids of all processes owning a lock.
  * This works only for user locks because normal locks have no
@@ -1898,6 +1899,7 @@ LockOwners(LOCKMETHOD lockmethod, LOCKTAG *locktag)
 
 	return array;
 }
+#endif
 
 #ifdef DEADLOCK_DEBUG
 /*

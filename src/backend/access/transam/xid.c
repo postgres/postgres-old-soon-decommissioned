@@ -53,6 +53,7 @@ xidout(TransactionId transactionId)
 
 }
 
+#ifdef NOT_USED
 /* ----------------------------------------------------------------
  *		TransactionIdIsLessThan
  * ----------------------------------------------------------------
@@ -62,6 +63,7 @@ TransactionIdIsLessThan(TransactionId id1, TransactionId id2)
 {
 	return (bool) (id1 < id2);
 }
+#endif
 
 /* ----------------------------------------------------------------
  *		xideq

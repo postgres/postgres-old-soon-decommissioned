@@ -315,13 +315,9 @@ extern void GetCurrentTime(struct tm * tm);
 extern DateTime SetDateTime(DateTime datetime);
 extern int	tm2datetime(struct tm * tm, double fsec, int *tzp, DateTime *dt);
 extern int	datetime2tm(DateTime dt, int *tzp, struct tm * tm, double *fsec, char **tzn);
-extern int	timespan2tm(TimeSpan span, struct tm * tm, float8 *fsec);
-extern int	tm2timespan(struct tm * tm, double fsec, TimeSpan *span);
 
 extern void j2date(int jd, int *year, int *month, int *day);
 extern int	date2j(int year, int month, int day);
-
-extern double time2t(const int hour, const int min, const double sec);
 
 extern int ParseDateTime(char *timestr, char *lowstr,
 			  char **field, int *ftype, int maxfields, int *numfields);

@@ -155,11 +155,13 @@ namecat(Name n1, Name n2)
 
 #endif
 
+#ifdef NOT_USED
 int
 namecmp(Name n1, Name n2)
 {
 	return strncmp(n1->data, n2->data, NAMEDATALEN);
 }
+#endif
 
 int
 namestrcpy(Name name, char *str)

@@ -242,7 +242,6 @@ extern HeapAccessStatistics heap_access_stats;	/* in stats.c */
 /* heap_create, heap_creatr, and heap_destroy are declared in catalog/heap.h */
 
 /* heapam.c */
-extern void doinsert(Relation relation, HeapTuple tup);
 
 extern Relation heap_open(Oid relationId);
 extern Relation heap_openr(char *relationName);
@@ -268,7 +267,6 @@ extern void DataFill(char *data, TupleDesc tupleDesc,
 extern int	heap_attisnull(HeapTuple tup, int attnum);
 extern int	heap_sysattrlen(AttrNumber attno);
 extern bool heap_sysattrbyval(AttrNumber attno);
-extern Datum heap_getsysattr(HeapTuple tup, Buffer b, int attnum);
 extern Datum nocachegetattr(HeapTuple tup, int attnum,
 			   TupleDesc att, bool *isnull);
 extern HeapTuple heap_copytuple(HeapTuple tuple);

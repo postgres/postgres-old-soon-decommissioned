@@ -154,6 +154,7 @@ stringTypeString(Type tp, char *string, int32 atttypmod)
 }
 
 /* Given a type id, returns the out-conversion function of the type */
+#ifdef NOT_USED
 Oid
 typeidOutfunc(Oid type_id)
 {
@@ -171,6 +172,7 @@ typeidOutfunc(Oid type_id)
 	outfunc = type->typoutput;
 	return outfunc;
 }
+#endif
 
 Oid
 typeidTypeRelid(Oid type_id)

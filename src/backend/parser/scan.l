@@ -44,7 +44,7 @@ static char *parseCh;
 /* MAX_PARSE_BUFFER is defined in miscadmin.h */
 #define YYLMAX MAX_PARSE_BUFFER
 #define YY_NO_UNPUT
-extern int myinput(char* buf, int max);
+static int myinput(char* buf, int max);
 #undef YY_INPUT
 #define YY_INPUT(buf,result,max) {result = myinput(buf,max);}
 #else
@@ -479,7 +479,7 @@ unput(char c)
 
 #ifdef FLEX_SCANNER
 /* input routine for flex to read input from a string instead of a file */
-int
+static int
 myinput(char* buf, int max)
 {
 	int len, copylen;

@@ -420,6 +420,7 @@ ExecTee(Tee *node, Plan *parent)
 	return result;
 }
 
+#ifdef NOT_USED
 /* ----------------------------------------------------------------
  *		ExecTeeReScan(node)
  *
@@ -462,6 +463,7 @@ ExecTeeReScan(Tee *node, ExprContext *exprCtxt, Plan *parent)
 		}
 	}
 }
+#endif
 
 
 /* ---------------------------------------------------------------------

@@ -167,9 +167,6 @@ IndexScanRestart(IndexScanDesc scan,
 				scan->numberOfKeys * sizeof(ScanKeyData));
 }
 
-#endif
-
-#ifdef NOT_USED
 /* ----------------
  *	IndexScanEnd -- End and index scan.
  *
@@ -192,7 +189,6 @@ IndexScanEnd(IndexScanDesc scan)
 	pfree(scan);
 }
 
-#endif
 
 /* ----------------
  *	IndexScanMarkPosition -- Mark current position in a scan.
@@ -274,3 +270,5 @@ IndexScanRestorePosition(IndexScanDesc scan)
 
 	scan->flags = 0x0;			/* XXX should have a symbolic name */
 }
+#endif
+

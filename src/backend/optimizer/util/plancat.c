@@ -423,6 +423,7 @@ find_inheritance_children(Oid inhparent)
 	return list;
 }
 
+#ifdef NOT_USED
 /*
  * VersionGetParents--
  *
@@ -461,6 +462,8 @@ VersionGetParents(Oid verrelid)
 	heap_close(relation);
 	return list;
 }
+#endif
+
 
 /*****************************************************************************
  *

@@ -39,7 +39,6 @@ extern int smgrblindwrt(int16 which, char *dbname, char *relname, Oid dbid,
 extern int	smgrnblocks(int16 which, Relation reln);
 extern int	smgrtruncate(int16 which, Relation reln, int nblocks);
 extern int	smgrcommit(void);
-extern bool smgriswo(int16 smgrno);
 
 
 

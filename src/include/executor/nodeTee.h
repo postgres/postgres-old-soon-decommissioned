@@ -19,7 +19,6 @@
 
 extern TupleTableSlot *ExecTee(Tee *node, Plan *parent);
 extern bool ExecInitTee(Tee *node, EState *estate, Plan *parent);
-extern void ExecTeeReScan(Tee *node, ExprContext *exprCtxt, Plan *parent);
 extern void ExecEndTee(Tee *node, Plan *parent);
 extern int	ExecCountSlotsTee(Tee *node);
 

@@ -197,10 +197,7 @@ extern void InitPostgres(char *name);
 
 /* in miscinit.c */
 extern void ExitPostgres(ExitStatus status);
-extern void StatusBackendExit(int status);
-extern void StatusPostmasterExit(int status);
 
-extern bool IsNoProcessingMode(void);
 extern bool IsBootstrapProcessingMode(void);
 extern bool IsInitProcessingMode(void);
 extern bool IsNormalProcessingMode(void);

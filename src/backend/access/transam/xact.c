@@ -262,7 +262,6 @@ SetTransactionFlushEnabled(bool state)
 	TransactionFlushState = (state == true);
 }
 
-#endif
 
 /* --------------------------------
  *		IsTransactionState
@@ -297,6 +296,7 @@ IsTransactionState(void)
 	 */
 	return false;
 }
+#endif
 
 /* --------------------------------
  *		IsAbortedTransactionBlockState

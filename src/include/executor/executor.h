@@ -132,14 +132,12 @@ extern TupleTableSlot *ExecStoreTuple(HeapTuple tuple,
 			   Buffer buffer,
 			   bool shouldFree);
 extern TupleTableSlot *ExecClearTuple(TupleTableSlot *slot);
-extern bool ExecSetSlotPolicy(TupleTableSlot *slot, bool shouldFree);
 extern TupleDesc ExecSetSlotDescriptor(TupleTableSlot *slot,
 					  TupleDesc tupdesc);
 extern void ExecSetSlotDescriptorIsNew(TupleTableSlot *slot, bool isNew);
 extern void ExecInitResultTupleSlot(EState *estate, CommonState *commonstate);
 extern void ExecInitScanTupleSlot(EState *estate,
 					  CommonScanState *commonscanstate);
-extern void ExecInitMarkedTupleSlot(EState *estate, MergeJoinState *mergestate);
 extern void ExecInitOuterTupleSlot(EState *estate, HashJoinState *hashstate);
 
 extern TupleDesc ExecGetTupType(Plan *node);
