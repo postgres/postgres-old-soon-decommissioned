@@ -765,8 +765,10 @@ typedef ScanState SeqScanState;
 /* ----------------
  *	 IndexScanState information
  *
+ *		indxqualorig	   execution state for indxqualorig expressions
  *		NumIndices		   number of indices in this scan
  *		IndexPtr		   current index in use
+ *		MarkIndexPtr	   IndexPtr for marked scan point
  *		ScanKeys		   Skey structures to scan index rels
  *		NumScanKeys		   array of no of keys in each Skey struct
  *		RuntimeKeyInfo	   array of array of exprstates for Skeys
@@ -783,7 +785,6 @@ typedef ScanState SeqScanState;
 typedef struct IndexScanState
 {
 	ScanState	ss;				/* its first field is NodeTag */
-	List	   *indxqual;
 	List	   *indxqualorig;
 	int			iss_NumIndices;
 	int			iss_IndexPtr;
