@@ -17,6 +17,7 @@
 
 <!-- user's guide -->
 <!entity array      SYSTEM "array.sgml">
+<!entity rowtypes   SYSTEM "rowtypes.sgml">
 <!entity datatype   SYSTEM "datatype.sgml">
 <!entity ddl        SYSTEM "ddl.sgml">
 <!entity dml        SYSTEM "dml.sgml">

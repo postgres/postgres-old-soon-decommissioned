@@ -151,7 +151,7 @@ $PostgreSQL$
     </para>
 
     <para>
-     Domains can be created using the <acronym>SQL</> commands
+     Domains can be created using the <acronym>SQL</> command
      <command>CREATE DOMAIN</command>.  Their creation and use is not
      discussed in this chapter.
     </para>

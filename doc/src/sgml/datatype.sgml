@@ -2879,6 +2879,8 @@ SELECT * FROM test;
 
   &array;
 
+  &rowtypes;
+
   <sect1 id="datatype-oid">
    <title>Object Identifier Types</title>
 
