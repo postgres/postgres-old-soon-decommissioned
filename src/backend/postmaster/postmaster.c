@@ -1683,7 +1683,7 @@ CleanupProc(int pid,
 			{
 				checkpointed = time(NULL);
 				/* Update RedoRecPtr for future child backends */
-				GetRedoRecPtr();
+				GetSavedRedoRecPtr();
 			}
 		}
 		else

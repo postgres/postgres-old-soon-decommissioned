@@ -178,6 +178,8 @@ typedef struct XLogRecData
 extern StartUpID ThisStartUpID; /* current SUI */
 extern bool InRecovery;
 extern XLogRecPtr MyLastRecPtr;
+extern bool MyXactMadeXLogEntry;
+extern XLogRecPtr ProcLastRecEnd;
 
 /* these variables are GUC parameters related to XLOG */
 extern int	CheckPointSegments;
@@ -205,8 +207,9 @@ extern void ShutdownXLOG(void);
 extern void CreateCheckPoint(bool shutdown);
 extern void SetThisStartUpID(void);
 extern void XLogPutNextOid(Oid nextOid);
-extern void SetRedoRecPtr(void);
-extern void GetRedoRecPtr(void);
+extern void SetSavedRedoRecPtr(void);
+extern void GetSavedRedoRecPtr(void);
+extern XLogRecPtr GetRedoRecPtr(void);
 
 /* in storage/ipc/sinval.c, but don't want to declare in sinval.h because
  * we'd have to include xlog.h into that ...

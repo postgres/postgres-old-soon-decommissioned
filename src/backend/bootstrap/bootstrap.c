@@ -386,7 +386,7 @@ BootstrapMain(int argc, char *argv[])
 				InitDummyProcess();		/* needed to get LWLocks */
 			CreateDummyCaches();
 			CreateCheckPoint(false);
-			SetRedoRecPtr();
+			SetSavedRedoRecPtr(); /* pass redo ptr back to postmaster */
 			proc_exit(0);		/* done */
 
 		case BS_XLOG_STARTUP:
