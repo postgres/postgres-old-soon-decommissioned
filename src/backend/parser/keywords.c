@@ -172,6 +172,8 @@ static const ScanKeyword ScanKeywords[] = {
 	{"listen", LISTEN},
 	{"load", LOAD},
 	{"local", LOCAL},
+	{"localtime", LOCALTIME},
+	{"localtimestamp", LOCALTIMESTAMP},
 	{"location", LOCATION},
 	{"lock", LOCK_P},
 	{"match", MATCH},
