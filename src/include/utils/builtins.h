@@ -482,6 +482,7 @@ extern Datum replace_text(PG_FUNCTION_ARGS);
 extern Datum split_text(PG_FUNCTION_ARGS);
 extern Datum to_hex32(PG_FUNCTION_ARGS);
 extern Datum to_hex64(PG_FUNCTION_ARGS);
+extern Datum md5_text(PG_FUNCTION_ARGS);
 
 extern Datum unknownin(PG_FUNCTION_ARGS);
 extern Datum unknownout(PG_FUNCTION_ARGS);
