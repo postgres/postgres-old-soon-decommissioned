@@ -231,7 +231,6 @@ extern char *DatabasePath;
 
 /* in utils/misc/database.c */
 extern void GetRawDatabaseInfo(const char *name, Oid *db_id, char *path);
-extern char *ExpandDatabasePath(const char *path);
 
 /* now in utils/init/miscinit.c */
 extern void SetDatabasePath(const char *path);
