@@ -718,7 +718,6 @@ PGresult *PQexec(PGconn *conn,
 </para>
 </listitem>
 </itemizedlist>
-</para>
 
 <para>
 The <function>PGresult</function> structure encapsulates the query result
@@ -1116,11 +1115,9 @@ This function is deprecated in favor of <function>PQoidValue</function>
 and is not thread-safe.
 </para>
 </listitem>
-
-
 </itemizedlist>
+
 </sect2>
-</para>
 </sect1>
 
 <sect1 id="libpq-async">
