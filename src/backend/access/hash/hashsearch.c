@@ -221,7 +221,13 @@ _hash_first(IndexScanDesc scan, ScanDirection dir)
 	} else {
 	    ItemPointerSetInvalid(current);
 	    so->hashso_curbuf = InvalidBuffer;
-	    return ((RetrieveIndexResult) NULL);
+	    /* 
+	     * If there is no scankeys, all tuples will satisfy 
+	     * the scan - so we continue in _hash_step to get 
+	     * tuples from all buckets.	- vadim 04/29/97
+	     */
+	    if ( scan->numberOfKeys >= 1 )
+	    	return ((RetrieveIndexResult) NULL);
 	}
     }
     if (ScanDirectionIsBackward(dir)) {
