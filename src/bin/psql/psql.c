@@ -1092,7 +1092,7 @@ HandleSlashCmds(PsqlSettings * settings,
 	    char           *fs = DEFAULT_FIELD_SEP;
 	    if (optarg)
 		fs = optarg;
-	    if (settings->opt.fieldSep);
+	    if (settings->opt.fieldSep)
 	    	free(settings->opt.fieldSep);
 	    if (!(settings->opt.fieldSep = strdup(fs))) {
 		perror("malloc");
