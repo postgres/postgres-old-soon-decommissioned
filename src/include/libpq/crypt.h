@@ -15,7 +15,6 @@
 
 #include "libpq/libpq-be.h"
 
-/* Also defined in interfaces/odbc/md5.h */
 #define MD5_PASSWD_LEN	35
 
 #define isMD5(passwd)	(strncmp((passwd),"md5",3) == 0 && \
@@ -27,7 +26,6 @@ extern int md5_crypt_verify(const Port *port, const char *user,
 extern bool md5_hash(const void *buff, size_t len, char *hexsum);
 extern bool CheckMD5Pwd(char *passwd, char *storedpwd, char *seed);
 
-/* Also defined in interfaces/odbc/md5.h */
 extern bool EncryptMD5(const char *passwd, const char *salt,
 		   size_t salt_len, char *buf);
 
