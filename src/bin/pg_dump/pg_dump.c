@@ -1068,7 +1068,7 @@ getTables(int *numTables)
      ordering by oid is important so that we always process the parent
      tables before the child tables when traversing the tblinfo* 
 
-      we ignore tables that start with Xinv */
+      we ignore tables that start with xinv */
 
     res = PQexec(g_conn, "begin");
     if (!res || 
@@ -1081,7 +1081,7 @@ getTables(int *numTables)
     sprintf(query, 
             "SELECT oid, relname, relarch, relkind, relacl from pg_class "
             "where (relkind = 'r' or relkind = 'S') and relname !~ '^pg_' "
-            "and relname !~ '^Xinv' order by oid;");
+            "and relname !~ '^xinv' order by oid;");
 
     res = PQexec(g_conn, query);
     if (!res || 

@@ -109,8 +109,8 @@ inv_create(int flags)
     file_oid = newoid()+1;
     
     /* come up with some table names */
-    sprintf(objname, "Xinv%d", file_oid);
-    sprintf(indname, "Xinx%d", file_oid);
+    sprintf(objname, "xinv%d", file_oid);
+    sprintf(indname, "xinx%d", file_oid);
 
     if (SearchSysCacheTuple(RELNAME, PointerGetDatum(objname),
 			    0,0,0) != NULL) {
