@@ -884,6 +884,7 @@ typedef struct CopyStmt
 {
 	NodeTag		type;
 	RangeVar   *relation;		/* the relation to copy */
+	List *attlist;
 	bool		is_from;		/* TO or FROM */
 	char	   *filename;		/* if NULL, use stdin/stdout */
 	List	   *options;		/* List of DefElem nodes */

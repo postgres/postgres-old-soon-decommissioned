@@ -16,7 +16,7 @@
 
 #include "nodes/parsenodes.h"
 
-
 extern List *QueryRewrite(Query *parsetree);
+extern Node *build_column_default(Relation rel, int attrno);
 
 #endif   /* REWRITEHANDLER_H */

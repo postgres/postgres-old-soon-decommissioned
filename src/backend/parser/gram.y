@@ -1262,31 +1262,32 @@ opt_id: 	ColId									{ $$ = $1; }
 /*****************************************************************************
  *
  *		QUERY :
- *				COPY <relname> FROM/TO [WITH options]
+ *				COPY <relname> ['(' columnList ')'] FROM/TO [WITH options]
  *
  *				BINARY, OIDS, and DELIMITERS kept in old locations
  *				for backward compatibility.  2002-06-18
  *
  *****************************************************************************/
 
-CopyStmt:	COPY opt_binary qualified_name opt_oids copy_from
-			copy_file_name copy_delimiter opt_with copy_opt_list
+CopyStmt:	COPY opt_binary qualified_name opt_column_list opt_oids 
+			copy_from copy_file_name copy_delimiter opt_with copy_opt_list
 				{
 					CopyStmt *n = makeNode(CopyStmt);
 					n->relation = $3;
-					n->is_from = $5;
-					n->filename = $6;
+					n->attlist = $4;
+					n->is_from = $6;
+					n->filename = $7;
 
 					n->options = NIL;
 					/* Concatenate user-supplied flags */
 					if ($2)
 						n->options = lappend(n->options, $2);
-					if ($4)
-						n->options = lappend(n->options, $4);
-					if ($7)
-						n->options = lappend(n->options, $7);
-					if ($9)
-						n->options = nconc(n->options, $9);
+					if ($5)
+						n->options = lappend(n->options, $5);
+					if ($8)
+						n->options = lappend(n->options, $8);
+					if ($10)
+						n->options = nconc(n->options, $10);
 					$$ = (Node *)n;
 				}
 		;
