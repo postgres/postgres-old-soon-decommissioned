@@ -699,8 +699,10 @@ array_out(ArrayType *v, Oid element_type)
 		for (tmp = values[i]; *tmp; tmp++)
 		{
 			overall_length += 1;
+#ifndef TCL_ARRAYS
 			if (*tmp == '"')
 				overall_length += 1;
+#endif
 		}
 		overall_length += 1;
 	}
@@ -729,6 +731,7 @@ array_out(ArrayType *v, Oid element_type)
 		if (!typbyval)
 		{
 			strcat(p, "\"");
+#ifndef TCL_ARRAYS
 			l = strlen(p);
 			for (tmp = values[k]; *tmp; tmp++)
 			{
@@ -737,6 +740,9 @@ array_out(ArrayType *v, Oid element_type)
 				p[l++] = *tmp;
 			}
 			p[l] = '\0';
+#else
+			strcat(p, values[k]);
+#endif
 			strcat(p, "\"");
 		}
 		else
