@@ -4187,6 +4187,8 @@ DefineCustomIntVariable(
 						const char *short_desc,
 						const char *long_desc,
 						int *valueAddr,
+						int minValue,
+						int maxValue,
 						GucContext context,
 						GucIntAssignHook assign_hook,
 						GucShowHook show_hook)
@@ -4199,6 +4201,8 @@ DefineCustomIntVariable(
 
 	var->variable = valueAddr;
 	var->reset_val = *valueAddr;
+	var->min = minValue;
+	var->max = maxValue;
 	var->assign_hook = assign_hook;
 	var->show_hook = show_hook;
 	define_custom_variable(&var->gen);
@@ -4210,6 +4214,8 @@ DefineCustomRealVariable(
 						 const char *short_desc,
 						 const char *long_desc,
 						 double *valueAddr,
+						 double minValue,
+						 double maxValue,
 						 GucContext context,
 						 GucRealAssignHook assign_hook,
 						 GucShowHook show_hook)
@@ -4222,6 +4228,8 @@ DefineCustomRealVariable(
 
 	var->variable = valueAddr;
 	var->reset_val = *valueAddr;
+	var->min = minValue;
+	var->max = maxValue;
 	var->assign_hook = assign_hook;
 	var->show_hook = show_hook;
 	define_custom_variable(&var->gen);

@@ -151,6 +151,8 @@ extern void DefineCustomIntVariable(
 						const char *short_desc,
 						const char *long_desc,
 						int *valueAddr,
+						int minValue,
+						int maxValue,
 						GucContext context,
 						GucIntAssignHook assign_hook,
 						GucShowHook show_hook);
@@ -160,6 +162,8 @@ extern void DefineCustomRealVariable(
 						 const char *short_desc,
 						 const char *long_desc,
 						 double *valueAddr,
+						 double minValue,
+						 double maxValue,
 						 GucContext context,
 						 GucRealAssignHook assign_hook,
 						 GucShowHook show_hook);
