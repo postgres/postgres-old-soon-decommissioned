@@ -313,4 +313,4 @@ delete(l),
 execute(l),
 update(l),
 select(l),
-monitor(1).
+psql(1).
