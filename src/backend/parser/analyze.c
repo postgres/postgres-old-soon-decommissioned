@@ -185,24 +185,6 @@ transformStmt(ParseState *pstate, Node *parseTree)
 			}
 			break;
 
-		case T_VacuumStmt:
-			{
-				MemoryContext oldcontext;
-
-				/*
-				 * make sure that this Query is allocated in TopMemory
-				 * context because vacuum spans transactions and we don't
-				 * want to lose the vacuum Query due to end-of-transaction
-				 * free'ing
-				 */
-				oldcontext = MemoryContextSwitchTo(TopMemoryContext);
-				result = makeNode(Query);
-				result->commandType = CMD_UTILITY;
-				result->utilityStmt = (Node *) parseTree;
-				MemoryContextSwitchTo(oldcontext);
-			}
-			break;
-
 		case T_ExplainStmt:
 			{
 				ExplainStmt *n = (ExplainStmt *) parseTree;
