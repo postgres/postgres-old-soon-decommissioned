@@ -434,10 +434,6 @@ extern PLpgSQL_function *plpgsql_curr_compile;
  * Function declarations
  **********************************************************************/
 
-
-extern char *pstrdup(char *s);
-
-
 /* ----------
  * Functions in pl_comp.c
  * ----------
