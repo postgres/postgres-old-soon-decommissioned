@@ -173,7 +173,7 @@ main(int argc, char **argv)
      * We need to save the encoding because we want to have it
      * available even if the database connection goes bad.
      */
-    pset.encoding = PQclientencoding(pset.db);
+    pset.encoding = PQclientEncoding(pset.db);
 
 	if (options.action == ACT_LIST_DB)
 	{

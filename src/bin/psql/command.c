@@ -984,7 +984,7 @@ do_connect(const char *new_dbname, const char *new_user)
 	}
 
     PQsetNoticeProcessor(pset.db, NoticeProcessor, NULL);
-    pset.encoding = PQclientencoding(pset.db);
+    pset.encoding = PQclientEncoding(pset.db);
 
     /* Update variables */
     SetVariable(pset.vars, "DBNAME", PQdb(pset.db));
