@@ -73,6 +73,34 @@ int			vsnprintf(char *str, size_t count, const char *fmt, va_list args);
 int			printf(const char *format, ...);
 static void dopr(char *buffer, const char *format, va_list args, char *end);
 
+/*
+ *	If vsnprintf() is not before snprintf() in this file, snprintf()
+ *	will call the system vsnprintf() on MinGW.
+ */
+int
+vsnprintf(char *str, size_t count, const char *fmt, va_list args)
+{
+	char *end;
+	str[0] = '\0';
+	end = str + count - 1;
+	dopr(str, fmt, args, end);
+	if (count > 0)
+		end[0] = '\0';
+	return strlen(str);
+}
+
+int
+snprintf(char *str, size_t count, const char *fmt,...)
+{
+	int			len;
+	va_list		args;
+
+	va_start(args, fmt);
+	len = vsnprintf(str, count, fmt, args);
+	va_end(args);
+	return len;
+}
+
 int
 printf(const char *fmt,...)
 {
@@ -88,31 +116,6 @@ printf(const char *fmt,...)
 	for(;*p;p++)
 		putchar(*p);
 	return len;
-}
-
-int
-snprintf(char *str, size_t count, const char *fmt,...)
-{
-	int			len;
-	va_list		args;
-
-	va_start(args, fmt);
-	len = vsnprintf(str, count, fmt, args);
-	va_end(args);
-	return len;
-}
-
-
-int
-vsnprintf(char *str, size_t count, const char *fmt, va_list args)
-{
-	char *end;
-	str[0] = '\0';
-	end = str + count - 1;
-	dopr(str, fmt, args, end);
-	if (count > 0)
-		end[0] = '\0';
-	return strlen(str);
 }
 
 /*
