@@ -403,7 +403,7 @@ then
     if [ "$template_only" != yes ]
     then
       (
-        echo "$CMDNAME: The directory $PGDATA is exists but is not empty."
+        echo "$CMDNAME: The directory $PGDATA exists but is not empty."
         echo "If you want to create a new database system, either remove or empty"
         echo "the directory $PGDATA or run initdb with an argument"
         echo "other than $PGDATA."
