@@ -66,7 +66,7 @@ HEADERFILES += port/hpux/fixade.h
 endif
 
 
-TEMPDIR=/tmp
+TEMPDIR=obj
 
 install-headers: beforeinstall-headers
 	@for i in ${HEADERFILES}; do \
