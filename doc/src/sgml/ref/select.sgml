@@ -903,7 +903,7 @@ SELECT distributors.name
 UNION
 SELECT actors.name
     FROM   actors
-    WHERE  actors.name LIKE 'W%'
+    WHERE  actors.name LIKE 'W%';
 
       name
 ----------------
