@@ -412,10 +412,6 @@ echo
 
 PGSQL_OPT="-o /dev/null -O -F -Q -D$PGDATA"
 
-# If the COPY is first, the VACUUM generates an error, so we vacuum first
-echo "Vacuuming template1"
-echo "vacuum" | postgres $PGSQL_OPT template1 > /dev/null
-
 # Create the initial pg_pwd (flat-file copy of pg_shadow)
 echo "COPY pg_shadow TO '$PGDATA/pg_pwd' USING DELIMITERS '\\t'" | \
 	postgres $PGSQL_OPT template1 > /dev/null
