@@ -91,8 +91,8 @@ ALTER GROUP <replaceable class="PARAMETER">name</replaceable> DROP USER <replace
    Description
   </title>
   <para>
-   <command>ALTER GROUP</command> is used to change add users to a group or
-   remove them from a group. Only database superusers can use this command.
+   <command>ALTER GROUP</command> is used to add or remove users from a
+   group. Only database superusers can use this command.
    Adding a user to a group does not create the user. Similarly, removing
    a user from a group does not drop the user itself.
   </para>
