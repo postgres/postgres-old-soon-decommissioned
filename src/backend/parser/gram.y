@@ -4835,15 +4835,16 @@ static Node *makeIndexable(char *opname, Node *lexpr, Node *rexpr)
 	
 			for (pos = 0; n->val.val.str[pos]; pos++)
 			{
-				if ((n->val.val.str[pos] == '%' &&
-					 n->val.val.str[pos+1] != '%') ||
-				    (n->val.val.str[pos] == '_' &&
-		     		 n->val.val.str[pos+1] != '_'))
-		     		break;
-		     	if (n->val.val.str[pos] == '%' ||
-				    n->val.val.str[pos] == '_' ||
-				    n->val.val.str[pos] == '\\')
+				if (n->val.val.str[pos] == '%' &&
+					 n->val.val.str[pos+1] != '%')
+					break;
+				if(n->val.val.str[pos] == '_')
+			     		break;
+			     	if (n->val.val.str[pos] == '\\' ||
+				     	n->val.val.str[pos] == '%')
 					pos++;
+				if (n->val.val.str[pos] == '\0')
+					break;
 				match_least[match_pos] = n->val.val.str[pos];
 				match_most[match_pos++] = n->val.val.str[pos];
 			}
