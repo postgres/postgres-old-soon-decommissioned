@@ -28,7 +28,7 @@ static void
 pg_to_ascii(unsigned char *src, unsigned char *src_end, unsigned char *dest, int enc)
 {
 	unsigned char *x;
-	unsigned char *ascii;
+	const unsigned char *ascii;
 	int			range;
 
 	/*
@@ -51,6 +51,14 @@ pg_to_ascii(unsigned char *src, unsigned char *src_end, unsigned char *dest, int
 		 * ISO-8859-2 <range: 160 -- 255>
 		 */
 		ascii = " A L LS \"SSTZ-ZZ a,l'ls ,sstz\"zzRAAAALCCCEEEEIIDDNNOOOOxRUUUUYTBraaaalccceeeeiiddnnoooo/ruuuuyt.";
+		range = RANGE_160;
+	}
+	else if (enc == PG_LATIN9)
+	{
+		/*
+		 * ISO-8859-15 <range: 160 -- 255>
+		 */
+		ascii = "  cL YS sCa  -R     Zu .z   EeY?AAAAAAACEEEEIIII NOOOOOxOUUUUYTBaaaaaaaceeeeiiii nooooo/ouuuuyty";
 		range = RANGE_160;
 	}
 	else if (enc == PG_WIN1250)
