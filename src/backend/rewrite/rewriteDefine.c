@@ -138,7 +138,7 @@ DefineQueryRewrite(RuleStmt *stmt)
 	 * actions.  But for now, let's just grab AccessExclusiveLock all the
 	 * time.
 	 */
-	event_relation = heap_openr(event_obj->relname, AccessExclusiveLock);
+	event_relation = heap_openrv(event_obj, AccessExclusiveLock);
 	ev_relid = RelationGetRelid(event_relation);
 
 	/*

@@ -23,6 +23,6 @@
 /*
  * functions
  */
-extern void cluster(char *oldrelname, char *oldindexname);
+extern void cluster(RangeVar *oldrelation, char *oldindexname);
 
 #endif   /* CLUSTER_H */

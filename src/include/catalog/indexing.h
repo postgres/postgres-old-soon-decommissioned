@@ -58,7 +58,7 @@
 #define AttrDefaultIndex			"pg_attrdef_adrelid_adnum_index"
 #define AttributeRelidNameIndex		"pg_attribute_relid_attnam_index"
 #define AttributeRelidNumIndex		"pg_attribute_relid_attnum_index"
-#define ClassNameIndex				"pg_class_relname_index"
+#define ClassNameNspIndex			"pg_class_relname_nsp_index"
 #define ClassOidIndex				"pg_class_oid_index"
 #define DatabaseNameIndex			"pg_database_datname_index"
 #define DatabaseOidIndex			"pg_database_oid_index"
@@ -156,7 +156,7 @@ DECLARE_UNIQUE_INDEX(pg_attrdef_adrelid_adnum_index on pg_attrdef using btree(ad
 DECLARE_UNIQUE_INDEX(pg_attribute_relid_attnam_index on pg_attribute using btree(attrelid oid_ops, attname name_ops));
 DECLARE_UNIQUE_INDEX(pg_attribute_relid_attnum_index on pg_attribute using btree(attrelid oid_ops, attnum int2_ops));
 DECLARE_UNIQUE_INDEX(pg_class_oid_index on pg_class using btree(oid oid_ops));
-DECLARE_UNIQUE_INDEX(pg_class_relname_index on pg_class using btree(relname name_ops));
+DECLARE_UNIQUE_INDEX(pg_class_relname_nsp_index on pg_class using btree(relname name_ops, relnamespace oid_ops));
 DECLARE_UNIQUE_INDEX(pg_database_datname_index on pg_database using btree(datname name_ops));
 DECLARE_UNIQUE_INDEX(pg_database_oid_index on pg_database using btree(oid oid_ops));
 DECLARE_UNIQUE_INDEX(pg_description_o_c_o_index on pg_description using btree(objoid oid_ops, classoid oid_ops, objsubid int4_ops));

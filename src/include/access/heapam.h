@@ -18,6 +18,7 @@
 #include "access/relscan.h"
 #include "access/tupmacs.h"
 #include "access/xlogutils.h"
+#include "nodes/primnodes.h"
 #include "storage/block.h"
 #include "storage/lmgr.h"
 #include "utils/rel.h"
@@ -134,11 +135,13 @@ extern Datum heap_getsysattr(HeapTuple tup, int attnum, bool *isnull);
 /* heapam.c */
 
 extern Relation relation_open(Oid relationId, LOCKMODE lockmode);
-extern Relation relation_openr(const char *relationName, LOCKMODE lockmode);
+extern Relation relation_openrv(const RangeVar *relation, LOCKMODE lockmode);
+extern Relation relation_openr(const char *sysRelationName, LOCKMODE lockmode);
 extern void relation_close(Relation relation, LOCKMODE lockmode);
 
 extern Relation heap_open(Oid relationId, LOCKMODE lockmode);
-extern Relation heap_openr(const char *relationName, LOCKMODE lockmode);
+extern Relation heap_openrv(const RangeVar *relation, LOCKMODE lockmode);
+extern Relation heap_openr(const char *sysRelationName, LOCKMODE lockmode);
 
 #define heap_close(r,l)  relation_close(r,l)
 

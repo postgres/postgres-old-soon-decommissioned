@@ -656,11 +656,11 @@ do { \
 
 CatCache *
 InitCatCache(int id,
-			 char *relname,
-			 char *indname,
+			 const char *relname,
+			 const char *indname,
 			 int reloidattr,
 			 int nkeys,
-			 int *key)
+			 const int *key)
 {
 	CatCache   *cp;
 	MemoryContext oldcxt;

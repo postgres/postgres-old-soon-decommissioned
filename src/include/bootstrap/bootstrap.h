@@ -36,7 +36,7 @@ extern Form_pg_attribute attrtypes[MAXATTR];
 extern int	numattr;
 extern int	BootstrapMain(int ac, char *av[]);
 
-extern void index_register(char *heap, char *ind, IndexInfo *indexInfo);
+extern void index_register(Oid heap, Oid ind, IndexInfo *indexInfo);
 
 extern void err_out(void);
 extern void InsertOneTuple(Oid objectid);

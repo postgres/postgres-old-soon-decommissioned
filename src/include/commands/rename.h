@@ -19,7 +19,7 @@ extern void renameatt(char *relname,
 		  char *newattname,
 		  int recurse);
 
-extern void renamerel(const char *oldrelname,
+extern void renamerel(const RangeVar *relation,
 		  const char *newrelname);
 
 #endif   /* RENAME_H */

@@ -10,7 +10,7 @@ subdir = src/backend/catalog
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = catalog.o heap.o index.o indexing.o aclchk.o \
+OBJS = catalog.o heap.o index.o indexing.o namespace.o aclchk.o \
        pg_aggregate.o pg_largeobject.o pg_namespace.o \
        pg_operator.o pg_proc.o pg_type.o
 

@@ -44,7 +44,7 @@ char	   *Name_pg_attr_indices[Num_pg_attr_indices] =
 char	   *Name_pg_attrdef_indices[Num_pg_attrdef_indices] =
 {AttrDefaultIndex};
 char	   *Name_pg_class_indices[Num_pg_class_indices] =
-{ClassNameIndex, ClassOidIndex};
+{ClassNameNspIndex, ClassOidIndex};
 char	   *Name_pg_database_indices[Num_pg_database_indices] =
 {DatabaseNameIndex, DatabaseOidIndex};
 char	   *Name_pg_group_indices[Num_pg_group_indices] =

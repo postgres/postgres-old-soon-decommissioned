@@ -62,10 +62,9 @@ extern void AlterTableDropConstraint(const char *relationName,
 						 bool inh, const char *constrName,
 						 int behavior);
 
-extern void AlterTableCreateToastTable(const char *relationName,
-						   bool silent);
+extern void AlterTableCreateToastTable(Oid relOid, bool silent);
 
-extern void AlterTableOwner(const char *relationName, const char *newOwnerName);
+extern void AlterTableOwner(const RangeVar *tgtrel, const char *newOwnerName);
 
 /*
  * LOCK

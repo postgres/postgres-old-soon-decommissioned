@@ -51,7 +51,7 @@
 #define OPEROID			20
 #define PROCNAME		21
 #define PROCOID			22
-#define RELNAME			23
+#define RELNAMENSP		23
 #define RELOID			24
 #define RULENAME		25
 #define SHADOWNAME		26

@@ -136,6 +136,14 @@ for dir in $INCLUDE_DIRS; do
     fi
 done
 
+# Get PG_CATALOG_NAMESPACE from catalog/pg_namespace.h
+for dir in $INCLUDE_DIRS; do
+    if [ -f "$dir/catalog/pg_namespace.h" ]; then
+        PG_CATALOG_NAMESPACE=`grep '^#define[ 	]*PG_CATALOG_NAMESPACE' $dir/catalog/pg_namespace.h | $AWK '{ print $3 }'`
+        break
+    fi
+done
+
 # Get FirstGenBKIObjectId from access/transam.h
 for dir in $INCLUDE_DIRS; do
     if [ -f "$dir/access/transam.h" ]; then
@@ -185,6 +193,7 @@ sed -e "s/;[ 	]*$//g" \
     -e "s/(TransactionId/(xid/g" \
     -e "s/PGUID/1/g" \
     -e "s/NAMEDATALEN/$NAMEDATALEN/g" \
+    -e "s/PGNSP/$PG_CATALOG_NAMESPACE/g" \
     -e "s/DEFAULT_ATTSTATTARGET/$DEFAULTATTSTATTARGET/g" \
     -e "s/INDEX_MAX_KEYS\*2/$INDEXMAXKEYS2/g" \
     -e "s/INDEX_MAX_KEYS\*4/$INDEXMAXKEYS4/g" \

@@ -569,6 +569,15 @@
      </row>
 
      <row>
+      <entry>relnamespace</entry>
+      <entry><type>oid</type></entry>
+      <entry>pg_namespace.oid</entry>
+      <entry>
+       The OID of the namespace that contains this relation
+      </entry>
+     </row>
+
+     <row>
       <entry>reltype</entry>
       <entry><type>oid</type></entry>
       <entry>pg_type.oid</entry>

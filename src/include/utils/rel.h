@@ -282,6 +282,14 @@ typedef Relation *RelationPtr;
 		RelationGetPhysicalRelationName(relation) \
 )
 
+/*
+ * RelationGetNamespace
+ *
+ *	  Returns the rel's namespace OID.
+ */
+#define RelationGetNamespace(relation) \
+	((relation)->rd_rel->relnamespace)
+
 /* added to prevent circular dependency.  bjm 1999/11/15 */
 extern char *get_temp_rel_by_physicalname(const char *relname);
 

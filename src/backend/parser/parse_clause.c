@@ -133,7 +133,7 @@ setTargetTable(ParseState *pstate, RangeVar *relation,
 	 * analyze.c will eventually do the corresponding heap_close(), but *not*
 	 * release the lock.
 	 */
-	pstate->p_target_relation = heap_openr(relation->relname, RowExclusiveLock);
+	pstate->p_target_relation = heap_openrv(relation, RowExclusiveLock);
 
 	/*
 	 * Now build an RTE.

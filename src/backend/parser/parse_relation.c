@@ -443,7 +443,7 @@ addRangeTableEntry(ParseState *pstate,
 	 * access level depending on whether we're doing SELECT FOR UPDATE.
 	 */
 	lockmode = isForUpdate(pstate, refname) ? RowShareLock : AccessShareLock;
-	rel = heap_openr(relation->relname, lockmode);
+	rel = heap_openrv(relation, lockmode);
 	rte->relid = RelationGetRelid(rel);
 
 	eref = alias ? (Alias *) copyObject(alias) : makeAlias(refname, NIL);

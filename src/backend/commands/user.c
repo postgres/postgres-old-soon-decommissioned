@@ -919,12 +919,12 @@ DropUser(DropUserStmt *stmt)
  * check to see if there is an ACL on pg_shadow
  */
 static void
-CheckPgUserAclNotNull()
+CheckPgUserAclNotNull(void)
 {
 	HeapTuple	htup;
 
-	htup = SearchSysCache(RELNAME,
-						  PointerGetDatum(ShadowRelationName),
+	htup = SearchSysCache(RELOID,
+						  ObjectIdGetDatum(RelOid_pg_shadow),
 						  0, 0, 0);
 	if (!HeapTupleIsValid(htup))
 		elog(ERROR, "CheckPgUserAclNotNull: \"%s\" not found",
