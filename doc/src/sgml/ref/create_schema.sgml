@@ -162,7 +162,7 @@ CREATE VIEW hollywood.winners AS
   </para>
 
   <para>
-   Create a schema <literal>sales</> whose tables, indexes and sequences
+   Create a schema <literal>sales</> whose tables and indexes
    will be stored in the tablespace <literal>mirrorspace</> by default:
 
 <programlisting>
