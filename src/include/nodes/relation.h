@@ -186,7 +186,7 @@ typedef struct RelOptInfo
 	int			width;			/* estimated avg width of result tuples */
 
 	/* materialization information */
-	FastList	reltargetlist;
+	List	   *reltargetlist;	/* needed Vars */
 	List	   *pathlist;		/* Path structures */
 	struct Path *cheapest_startup_path;
 	struct Path *cheapest_total_path;

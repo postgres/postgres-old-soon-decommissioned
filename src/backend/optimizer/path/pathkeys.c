@@ -721,12 +721,11 @@ find_indexkey_var(Query *root, RelOptInfo *rel, AttrNumber varattno)
 				vartypeid;
 	int32		type_mod;
 
-	foreach(temp, FastListValue(&rel->reltargetlist))
+	foreach(temp, rel->reltargetlist)
 	{
 		Var		   *var = (Var *) lfirst(temp);
 
-		if (IsA(var, Var) &&
-			var->varattno == varattno)
+		if (var->varattno == varattno)
 			return var;
 	}
 

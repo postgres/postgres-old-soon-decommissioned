@@ -1701,7 +1701,7 @@ set_rel_width(Query *root, RelOptInfo *rel)
 	int32		tuple_width = 0;
 	ListCell   *tllist;
 
-	foreach(tllist, FastListValue(&rel->reltargetlist))
+	foreach(tllist, rel->reltargetlist)
 	{
 		Var		   *var = (Var *) lfirst(tllist);
 		int			ndx = var->varattno - rel->min_attr;

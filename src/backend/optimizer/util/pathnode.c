@@ -691,7 +691,7 @@ create_unique_path(Query *root, RelOptInfo *rel, Path *subpath)
 	else
 	{
 		pathnode->rows = rel->rows;
-		numCols = list_length(FastListValue(&rel->reltargetlist));
+		numCols = list_length(rel->reltargetlist);
 	}
 
 	/*
