@@ -278,19 +278,8 @@ void
 ExecEndTidScan(TidScanState *node)
 {
 	/*
-	 * extract information from the node
+	 * Free the exprcontext
 	 */
-	if (node && node->tss_TidList)
-		pfree(node->tss_TidList);
-
-	/*
-	 * Free the projection info and the scan attribute info
-	 *
-	 * Note: we don't ExecFreeResultType(scanstate) because the rule manager
-	 * depends on the tupType returned by ExecMain().  So for now, this is
-	 * freed at end-transaction time.  -cim 6/2/91
-	 */
-	ExecFreeProjectionInfo(&node->ss.ps);
 	ExecFreeExprContext(&node->ss.ps);
 
 	/*

@@ -301,9 +301,9 @@ ExecEndSetOp(SetOpState *node)
 	ExecClearTuple(node->ps.ps_ResultTupleSlot);
 	node->ps.ps_OuterTupleSlot = NULL;
 
-	ExecEndNode(outerPlanState(node));
-
 	MemoryContextDelete(node->tempContext);
+
+	ExecEndNode(outerPlanState(node));
 }
 
 

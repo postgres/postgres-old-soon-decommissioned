@@ -197,16 +197,16 @@ ExecEndMaterial(MaterialState *node)
 	ExecClearTuple(node->ss.ss_ScanTupleSlot);
 
 	/*
-	 * shut down the subplan
-	 */
-	ExecEndNode(outerPlanState(node));
-
-	/*
 	 * Release tuplestore resources
 	 */
 	if (node->tuplestorestate != NULL)
 		tuplestore_end((Tuplestorestate *) node->tuplestorestate);
 	node->tuplestorestate = NULL;
+
+	/*
+	 * shut down the subplan
+	 */
+	ExecEndNode(outerPlanState(node));
 }
 
 /* ----------------------------------------------------------------

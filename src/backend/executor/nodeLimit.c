@@ -349,10 +349,10 @@ ExecEndLimit(LimitState *node)
 {
 	ExecFreeExprContext(&node->ps);
 
-	ExecEndNode(outerPlanState(node));
-
 	/* clean up tuple table */
 	ExecClearTuple(node->ps.ps_ResultTupleSlot);
+
+	ExecEndNode(outerPlanState(node));
 }
 
 

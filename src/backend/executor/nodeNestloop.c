@@ -364,21 +364,20 @@ ExecEndNestLoop(NestLoopState *node)
 			   "ending node processing");
 
 	/*
-	 * Free the projection info
+	 * Free the exprcontext
 	 */
-	ExecFreeProjectionInfo(&node->js.ps);
 	ExecFreeExprContext(&node->js.ps);
+
+	/*
+	 * clean out the tuple table
+	 */
+	ExecClearTuple(node->js.ps.ps_ResultTupleSlot);
 
 	/*
 	 * close down subplans
 	 */
 	ExecEndNode(outerPlanState(node));
 	ExecEndNode(innerPlanState(node));
-
-	/*
-	 * clean out the tuple table
-	 */
-	ExecClearTuple(node->js.ps.ps_ResultTupleSlot);
 
 	NL1_printf("ExecEndNestLoop: %s\n",
 			   "node processing ended");

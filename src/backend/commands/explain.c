@@ -206,6 +206,8 @@ ExplainOneQuery(Query *query, ExplainStmt *stmt, TupOutputState *tstate)
 	gettimeofday(&starttime, NULL);
 
 	ExecutorEnd(queryDesc);
+	FreeQueryDesc(queryDesc);
+
 	CommandCounterIncrement();
 
 	totaltime += elapsed_time(&starttime);

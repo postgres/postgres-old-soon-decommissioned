@@ -179,10 +179,8 @@ ExecEndHash(HashState *node)
 	PlanState  *outerPlan;
 
 	/*
-	 * free projection info.  no need to free result type info because
-	 * that came from the outer plan...
+	 * free exprcontext
 	 */
-	ExecFreeProjectionInfo(&node->ps);
 	ExecFreeExprContext(&node->ps);
 
 	/*

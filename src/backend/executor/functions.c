@@ -284,7 +284,8 @@ postquel_end(execution_state *es)
 	if (es->qd->operation != CMD_UTILITY)
 		ExecutorEnd(es->qd);
 
-	pfree(es->qd);
+	FreeQueryDesc(es->qd);
+
 	es->qd = NULL;
 
 	es->status = F_EXEC_DONE;

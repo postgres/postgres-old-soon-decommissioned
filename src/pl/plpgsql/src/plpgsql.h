@@ -166,6 +166,7 @@ typedef struct
 	char	   *query;
 	void	   *plan;
 	ExprState  *plan_simple_expr;
+	EState	   *plan_simple_estate;
 	Oid			plan_simple_type;
 	Oid		   *plan_argtypes;
 	int			nparams;

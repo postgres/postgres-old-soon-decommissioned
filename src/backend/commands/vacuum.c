@@ -1437,6 +1437,8 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 	 * We need a ResultRelInfo and an EState so we can use the regular
 	 * executor's index-entry-making machinery.
 	 */
+	estate = CreateExecutorState();
+
 	resultRelInfo = makeNode(ResultRelInfo);
 	resultRelInfo->ri_RangeTableIndex = 1;		/* dummy */
 	resultRelInfo->ri_RelationDesc = onerel;
@@ -1444,7 +1446,6 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 
 	ExecOpenIndices(resultRelInfo);
 
-	estate = CreateExecutorState();
 	estate->es_result_relations = resultRelInfo;
 	estate->es_num_result_relations = 1;
 	estate->es_result_relation_info = resultRelInfo;
@@ -2484,6 +2485,8 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 	ExecDropTupleTable(tupleTable, true);
 
 	ExecCloseIndices(resultRelInfo);
+
+	FreeExecutorState(estate);
 }
 
 /*

@@ -248,9 +248,8 @@ void
 ExecEndResult(ResultState *node)
 {
 	/*
-	 * Free the projection info
+	 * Free the exprcontext
 	 */
-	ExecFreeProjectionInfo(&node->ps);
 	ExecFreeExprContext(&node->ps);
 
 	/*

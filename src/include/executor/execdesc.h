@@ -50,4 +50,6 @@ extern QueryDesc *CreateQueryDesc(Query *parsetree, Plan *plantree,
 								  ParamListInfo params,
 								  bool doInstrument);
 
+extern void FreeQueryDesc(QueryDesc *qdesc);
+
 #endif   /* EXECDESC_H  */

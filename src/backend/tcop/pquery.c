@@ -52,6 +52,18 @@ CreateQueryDesc(Query *parsetree,
 	return qd;
 }
 
+/*
+ * FreeQueryDesc
+ */
+void
+FreeQueryDesc(QueryDesc *qdesc)
+{
+	/* Can't be a live query */
+	Assert(qdesc->estate == NULL);
+	/* Only the QueryDesc itself need be freed */
+	pfree(qdesc);
+}
+
 /* ----------------
  *		PreparePortal
  * ----------------
@@ -152,9 +164,8 @@ ProcessQuery(Query *parsetree,
 												 * QueryDesc */
 
 		/*
-		 * We stay in portal's memory context for now, so that query desc,
-		 * exec state, and plan startup info are also allocated in the portal
-		 * context.
+		 * We stay in portal's memory context for now, so that query desc
+		 * is also allocated in the portal context.
 		 */
 	}
 
@@ -231,4 +242,6 @@ ProcessQuery(Query *parsetree,
 	 * Now, we close down all the scans and free allocated resources.
 	 */
 	ExecutorEnd(queryDesc);
+
+	FreeQueryDesc(queryDesc);
 }

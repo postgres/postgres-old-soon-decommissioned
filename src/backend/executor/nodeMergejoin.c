@@ -1551,22 +1551,21 @@ ExecEndMergeJoin(MergeJoinState *node)
 			   "ending node processing");
 
 	/*
-	 * Free the projection info and the scan attribute info
+	 * Free the exprcontext
 	 */
-	ExecFreeProjectionInfo(&node->js.ps);
 	ExecFreeExprContext(&node->js.ps);
-
-	/*
-	 * shut down the subplans
-	 */
-	ExecEndNode(innerPlanState(node));
-	ExecEndNode(outerPlanState(node));
 
 	/*
 	 * clean out the tuple table
 	 */
 	ExecClearTuple(node->js.ps.ps_ResultTupleSlot);
 	ExecClearTuple(node->mj_MarkedTupleSlot);
+
+	/*
+	 * shut down the subplans
+	 */
+	ExecEndNode(innerPlanState(node));
+	ExecEndNode(outerPlanState(node));
 
 	MJ1_printf("ExecEndMergeJoin: %s\n",
 			   "node processing ended");

@@ -1143,8 +1143,7 @@ index_register(Oid heap,
 	/* predicate will likely be null, but may as well copy it */
 	newind->il_info->ii_Predicate = (List *)
 		copyObject(indexInfo->ii_Predicate);
-	newind->il_info->ii_PredicateState = (List *)
-		ExecInitExpr((Expr *) newind->il_info->ii_Predicate, NULL);
+	newind->il_info->ii_PredicateState = NIL;
 
 	newind->il_next = ILHead;
 	ILHead = newind;

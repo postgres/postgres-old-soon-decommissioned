@@ -194,15 +194,10 @@ ExecEndUnique(UniqueState *node)
 {
 	/* clean up tuple table */
 	ExecClearTuple(node->ps.ps_ResultTupleSlot);
-	if (node->priorTuple != NULL)
-	{
-		heap_freetuple(node->priorTuple);
-		node->priorTuple = NULL;
-	}
-
-	ExecEndNode(outerPlanState(node));
 
 	MemoryContextDelete(node->tempContext);
+
+	ExecEndNode(outerPlanState(node));
 }
 
 

@@ -273,9 +273,8 @@ void
 ExecEndFunctionScan(FunctionScanState *node)
 {
 	/*
-	 * Free the projection info and the scan attribute info
+	 * Free the exprcontext
 	 */
-	ExecFreeProjectionInfo(&node->ss.ps);
 	ExecFreeExprContext(&node->ss.ps);
 
 	/*

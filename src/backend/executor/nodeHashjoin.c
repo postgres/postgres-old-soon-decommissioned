@@ -456,16 +456,9 @@ ExecEndHashJoin(HashJoinState *node)
 	}
 
 	/*
-	 * Free the projection info and the scan attribute info
+	 * Free the exprcontext
 	 */
-	ExecFreeProjectionInfo(&node->js.ps);
 	ExecFreeExprContext(&node->js.ps);
-
-	/*
-	 * clean up subtrees
-	 */
-	ExecEndNode(outerPlanState(node));
-	ExecEndNode(innerPlanState(node));
 
 	/*
 	 * clean out the tuple table
@@ -474,6 +467,11 @@ ExecEndHashJoin(HashJoinState *node)
 	ExecClearTuple(node->hj_OuterTupleSlot);
 	ExecClearTuple(node->hj_HashTupleSlot);
 
+	/*
+	 * clean up subtrees
+	 */
+	ExecEndNode(outerPlanState(node));
+	ExecEndNode(innerPlanState(node));
 }
 
 /* ----------------------------------------------------------------
