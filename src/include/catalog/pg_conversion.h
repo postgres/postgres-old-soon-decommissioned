@@ -93,6 +93,4 @@ extern void RemoveConversionById(Oid conversionOid);
 extern Oid FindConversion(const char *conname, Oid connamespace);
 extern Oid FindDefaultConversion(Oid connamespace, int4 for_encoding, int4 to_encoding);
 
-extern Datum pg_convert3(PG_FUNCTION_ARGS);
-
 #endif   /* PG_CONVERSION_H */
