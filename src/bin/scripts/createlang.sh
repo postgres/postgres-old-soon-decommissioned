@@ -19,6 +19,7 @@ dbname=
 langname=
 list=
 showsql=
+PGLIB=
 
 # Check for echo -n vs echo \c
 
