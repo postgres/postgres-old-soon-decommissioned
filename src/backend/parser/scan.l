@@ -289,7 +289,7 @@ other			.
 					if (literalbuf[strspn(literalbuf + 1, "01") + 1] != '\0')
 						elog(ERROR, "invalid bit string input: '%s'",
 							 literalbuf);
-					yylval.str = literalbuf;
+					yylval.str = pstrdup(literalbuf);
 					return BITCONST;
 				}
 <xh>{xhinside}	|
