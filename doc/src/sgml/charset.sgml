@@ -224,6 +224,15 @@ initdb --locale=sv_SE
     from being used by <literal>LIKE</>. For this reason use locales
     only if you actually need them.
    </para>
+
+   <para>
+    As a workaround to allow <productname>PostgreSQL</> to use indexes
+    with <literal>LIKE</> clauses under a non-C locale, several custom
+    operator classes exist. These allow the creation of an index that
+    performs a strict character-by-character comparison, ignoring
+    locale comparison rules. Refer to <xref linkend="indexes-opclass">
+    for more information.
+   </para>
   </sect2>
 
   <sect2>
