@@ -2155,7 +2155,7 @@ ALTER DOMAIN cities
     </para>
    </refsect3>
 
-   <refsect3 id="R3-SQL-INHERITANCE-1">
+   <refsect3 id="R3-SQL-OBJECTIDS-1">
     <title>
      Object IDs
     </title>

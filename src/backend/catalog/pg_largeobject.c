@@ -30,13 +30,10 @@
  * We do this by inserting an empty first page, so that the object will
  * appear to exist with size 0.  Note that the unique index will reject
  * an attempt to create a duplicate page.
- *
- * Return value is OID assigned to the page tuple (any use in it?)
  */
-Oid
+void
 LargeObjectCreate(Oid loid)
 {
-	Oid			retval;
 	Relation	pg_largeobject;
 	HeapTuple	ntup;
 	Relation	idescs[Num_pg_largeobject_indices];
@@ -66,7 +63,7 @@ LargeObjectCreate(Oid loid)
 	/*
 	 * Insert it
 	 */
-	retval = heap_insert(pg_largeobject, ntup);
+	heap_insert(pg_largeobject, ntup);
 
 	/*
 	 * Update indices
@@ -81,8 +78,6 @@ LargeObjectCreate(Oid loid)
 	heap_close(pg_largeobject, RowExclusiveLock);
 
 	heap_freetuple(ntup);
-
-	return retval;
 }
 
 void

@@ -1483,7 +1483,7 @@ DESCR("convert int4 to reltime");
 
 DATA(insert OID = 1215 (  obj_description	PGUID 14 f t f t 2 f	25 "26 19" 100 0 0 100  "select description from pg_description where objoid = $1 and classoid = (select oid from pg_class where relname = $2) and objsubid = 0" - ));
 DESCR("get description for object id and catalog name");
-DATA(insert OID = 1216 (  col_description	PGUID 14 f t f t 2 f	25 "26 23" 100 0 0 100  "select description from pg_description where objoid = $1 and classoid = (select oid from pg_class where relname = 'pg_class') and objsubid = $2" - ));
+DATA(insert OID = 1216 (  col_description	PGUID 14 f t f t 2 f	25 "26 23" 100 0 0 100  "select description from pg_description where objoid = $1 and classoid = (select oid from pg_class where relname = \'pg_class\') and objsubid = $2" - ));
 DESCR("get description for table column");
 
 DATA(insert OID = 1217 (  date_trunc	   PGUID 12 f t f t 2 f 1184 "25 1184" 100 0 0 100	timestamp_trunc - ));
