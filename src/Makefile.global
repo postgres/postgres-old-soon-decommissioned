@@ -409,7 +409,7 @@ ifeq ($(PRE_BSDI_2_1), false)
 # cc is gcc v1.42
 # gcc is gcc v2.7.2
   LEX= lex
-  LDADD_BE= -ltermcap -ldl
+  LDADD_BE= -ltermcap -ldl -lipc
 else
 # cc is gcc v1.42
 # gcc is gcc v2.6.3
@@ -417,7 +417,7 @@ else
 # use the regex library
   USE_REGEX= 1
   CFLAGS_BE= -DPRE_BSDI_2_1
-  LDADD_BE= -ldld -lcompat
+  LDADD_BE= -ldld -lcompat -lipc
 endif
 
 DLSUFFIX= .o
