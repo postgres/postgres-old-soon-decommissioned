@@ -39,7 +39,6 @@ extern HeapScanDesc ExecReScanR(Relation relDesc, HeapScanDesc scanDesc,
 			ScanDirection direction, int nkeys, ScanKey skeys);
 extern void ExecMarkPos(Plan *node);
 extern void ExecRestrPos(Plan *node);
-extern Relation ExecCreatR(TupleDesc tupType, Oid relationOid);
 
 /*
  * prototypes from functions in execJunk.c

@@ -11,7 +11,7 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-OBJS = logtape.o tuplesort.o
+OBJS = logtape.o tuplesort.o tuplestore.o
 
 all: SUBSYS.o
 

@@ -21,7 +21,6 @@
 #include "fmgr.h"
 #include "libpq/be-fsstubs.h"
 #include "libpq/libpq-fs.h"
-#include "optimizer/internal.h"
 #include "utils/array.h"
 #include "utils/memutils.h"
 

@@ -565,11 +565,9 @@ typedef struct HashJoinState
  *	 MaterialState information
  *
  *		materialize nodes are used to materialize the results
- *		of a subplan into a temporary relation.
+ *		of a subplan into a temporary file.
  *
- *		Flag			indicated whether subplan has been materialized
- *		TempRelation	temporary relation containing result of executing
- *						the subplan.
+ *		tuplestorestate		private state of tuplestore.c
  *
  *	 CommonScanState information
  *
@@ -590,8 +588,7 @@ typedef struct HashJoinState
 typedef struct MaterialState
 {
 	CommonScanState csstate;	/* its first field is NodeTag */
-	bool		mat_Flag;
-	Relation	mat_TempRelation;
+	void	   *tuplestorestate;
 } MaterialState;
 
 /* ---------------------

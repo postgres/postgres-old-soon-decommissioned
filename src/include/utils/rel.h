@@ -90,7 +90,6 @@ typedef struct RelationData
 	uint16		rd_refcnt;		/* reference count */
 	bool		rd_myxactonly;	/* rel uses the local buffer mgr */
 	bool		rd_isnailed;	/* rel is nailed in cache */
-	bool		rd_isnoname;	/* rel has no name */
 	bool		rd_unlinked;	/* rel already unlinked or not created yet */
 	bool		rd_indexfound;	/* true if rd_indexlist is valid */
 	Form_pg_am	rd_am;			/* AM tuple */

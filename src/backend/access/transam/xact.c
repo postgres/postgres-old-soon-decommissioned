@@ -878,14 +878,6 @@ StartTransaction()
 	AtStart_Locks();
 	AtStart_Memory();
 
-	/* --------------
-	   initialize temporary relations list
-	   the tempRelList is a list of temporary relations that
-	   are created in the course of the transactions
-	   they need to be destroyed properly at the end of the transactions
-	 */
-	InitNoNameRelList();
-
 	/* ----------------
 	 *	Tell the trigger manager to we're starting a transaction
 	 * ----------------
@@ -960,7 +952,6 @@ CommitTransaction()
 	AtCommit_Notify();
 
 	CloseSequences();
-	DropNoNameRels();
 	AtEOXact_portals();
 	RecordTransactionCommit();
 
@@ -1056,7 +1047,6 @@ AbortTransaction()
 		CommonSpecialPortalClose();
 	RecordTransactionAbort();
 	RelationPurgeLocalRelation(false);
-	DropNoNameRels();
 	invalidate_temp_relations();
 	AtEOXact_nbtree();
 	AtAbort_Cache();

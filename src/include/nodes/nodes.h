@@ -39,13 +39,13 @@ typedef enum NodeTag
 	T_NestLoop,
 	T_MergeJoin,
 	T_HashJoin,
-	T_Noname,
+	T_Noname_XXX,				/* not used anymore; this tag# is available */
 	T_Material,
 	T_Sort,
 	T_Agg,
 	T_Unique,
 	T_Hash,
-	T_Choose,
+	T_Choose_XXX,				/* not used anymore; this tag# is available */
 	T_Group,
 	T_SubPlan,
 	T_TidScan,
@@ -260,10 +260,6 @@ typedef struct Node
 #define IsA_Join(jp) \
 	(IsA(jp, Join) || IsA(jp, NestLoop) || \
 	 IsA(jp, MergeJoin) || IsA(jp, HashJoin))
-
-#define IsA_Noname(t) \
-	(IsA(t, Noname) || IsA(t, Material) || IsA(t, Sort) || \
-	 IsA(t, Unique))
 
 #define IsA_Value(t) \
 	(IsA(t, Integer) || IsA(t, Float) || IsA(t, String))

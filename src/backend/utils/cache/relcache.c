@@ -1784,21 +1784,15 @@ RelationPurgeLocalRelation(bool xactCommitted)
 
 		if (!xactCommitted)
 		{
-
 			/*
 			 * remove the file if we abort. This is so that files for
 			 * tables created inside a transaction block get removed.
 			 */
-			if (reln->rd_isnoname)
+			if (! reln->rd_unlinked)
 			{
-				if (!(reln->rd_unlinked))
-				{
-					smgrunlink(DEFAULT_SMGR, reln);
-					reln->rd_unlinked = TRUE;
-				}
-			}
-			else
 				smgrunlink(DEFAULT_SMGR, reln);
+				reln->rd_unlinked = true;
+			}
 		}
 
 		if (!IsBootstrapProcessingMode())

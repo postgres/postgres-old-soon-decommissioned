@@ -363,9 +363,7 @@ make_subplan(SubLink *slink)
 			}
 			if (use_material)
 			{
-				plan = (Plan *) make_noname(plan->targetlist,
-											NIL,
-											plan);
+				plan = (Plan *) make_material(plan->targetlist, plan);
 				node->plan = plan;
 			}
 		}

@@ -20,11 +20,8 @@ extern TupleTableSlot *ExecMaterial(Material *node);
 extern bool ExecInitMaterial(Material *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsMaterial(Material *node);
 extern void ExecEndMaterial(Material *node);
+extern void ExecMaterialMarkPos(Material *node);
+extern void ExecMaterialRestrPos(Material *node);
 extern void ExecMaterialReScan(Material *node, ExprContext *exprCtxt, Plan *parent);
 
-#ifdef NOT_USED
-extern List ExecMaterialMarkPos(Material *node);
-extern void ExecMaterialRestrPos(Material *node);
-
-#endif
 #endif	 /* NODEMATERIAL_H */

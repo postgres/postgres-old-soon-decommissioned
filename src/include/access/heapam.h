@@ -242,9 +242,11 @@ extern HeapAccessStatistics heap_access_stats;	/* in stats.c */
 
 /* ----------------
  *		function prototypes for heap access method
+ *
+ * heap_create, heap_create_with_catalog, and heap_drop_with_catalog
+ * are declared in catalog/heap.h
  * ----------------
  */
-/* heap_create, heap_creatr, and heap_destroy are declared in catalog/heap.h */
 
 /* heapam.c */
 

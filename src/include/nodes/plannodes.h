@@ -277,27 +277,13 @@ typedef struct Group
 	GroupState *grpstate;
 } Group;
 
-/*
- * ==========
- * Noname nodes
- * ==========
- */
-typedef struct Noname
-{
-	Plan		plan;
-	Oid			nonameid;
-	int			keycount;
-} Noname;
-
 /* ----------------
  *		materialization node
  * ----------------
  */
 typedef struct Material
 {
-	Plan		plan;			/* noname node flattened out */
-	Oid			nonameid;
-	int			keycount;
+	Plan		plan;
 	MaterialState *matstate;
 } Material;
 
@@ -307,8 +293,7 @@ typedef struct Material
  */
 typedef struct Sort
 {
-	Plan		plan;			/* noname node flattened out */
-	Oid			nonameid;
+	Plan		plan;
 	int			keycount;
 	SortState  *sortstate;
 } Sort;
@@ -319,9 +304,7 @@ typedef struct Sort
  */
 typedef struct Unique
 {
-	Plan		plan;			/* noname node flattened out */
-	Oid			nonameid;
-	int			keycount;
+	Plan		plan;
 	int			numCols;		/* number of columns to check for
 								 * uniqueness */
 	AttrNumber *uniqColIdx;		/* indexes into the target list */

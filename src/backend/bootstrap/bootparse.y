@@ -166,7 +166,7 @@ Boot_CreateStmt:
 							puts("creating bootstrap relation");
 						tupdesc = CreateTupleDesc(numattr,attrtypes);
 						reldesc = heap_create(LexIDStr($3), tupdesc,
-											  false, false, true);
+											  false, true);
 						if (DebugMode)
 							puts("bootstrap relation created ok");
 					}
