@@ -40,6 +40,6 @@ extern int	lowrite(int fd, struct varlena * wbuf);
 /*
  * Added for buffer leak prevention [ Pascal André <andre@via.ecp.fr> ]
  */
-extern void _lo_commit(void);
+extern void lo_commit(bool isCommit);
 
 #endif	 /* BE_FSSTUBS_H */
