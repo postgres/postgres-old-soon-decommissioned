@@ -695,6 +695,26 @@ pq_flush(void)
 }
 
 
+/*
+ * Return EOF if the connection has been broken, else 0.
+ */
+int
+pq_eof(void)
+{
+	char x;
+	int res;
+
+	res = recv(MyProcPort->sock, &x, 1, MSG_PEEK);
+
+	if (res == -1)
+		fprintf(stderr, "pq_eof: recv() failed: %s\n", strerror(errno));
+	else if (res == 0)
+		return EOF;
+	else
+		return 0;
+}
+
+
 /* --------------------------------
  * Message-level I/O routines begin here.
  *

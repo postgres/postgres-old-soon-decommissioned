@@ -65,6 +65,7 @@ extern int	pq_getstring(StringInfo s);
 extern int	pq_peekbyte(void);
 extern int	pq_putbytes(const char *s, size_t len);
 extern int	pq_flush(void);
+extern int	pq_eof(void);
 extern int	pq_putmessage(char msgtype, const char *s, size_t len);
 extern void pq_startcopyout(void);
 extern void pq_endcopyout(bool errorAbort);

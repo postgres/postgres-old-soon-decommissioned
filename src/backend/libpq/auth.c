@@ -554,7 +554,7 @@ recv_and_check_password_packet(Port *port)
 	int32		len;
 	int			result;
 
-	if (pq_getint(&len, 4) == EOF)
+	if (pq_eof() == EOF || pq_getint(&len, 4) == EOF)
 		return STATUS_ERROR;	/* client didn't want to send password */
 	initStringInfo(&buf);
 	pq_getstr(&buf);
