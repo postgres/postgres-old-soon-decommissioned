@@ -1294,6 +1294,10 @@ BootStrapXLOG()
 	checkPoint.nextOid = BootstrapObjectIdData;
 	checkPoint.ThisStartUpID = 0;
 
+	ShmemVariableCache->nextXid = checkPoint.nextXid;
+	ShmemVariableCache->nextOid = checkPoint.nextOid;
+	ShmemVariableCache->oidCount = 0;
+
 #ifdef XLOG
 
 	memset(buffer, 0, BLCKSZ);
