@@ -3977,7 +3977,7 @@ genericcostestimate(Query *root, RelOptInfo *rel,
 	 */
 	cost_qual_eval(&index_qual_cost, indexQuals);
 	*indexStartupCost = index_qual_cost.startup;
-	*indexTotalCost = numIndexPages +
+	*indexTotalCost = numIndexPages + index_qual_cost.startup +
 		(cpu_index_tuple_cost + index_qual_cost.per_tuple) * numIndexTuples;
 
 	/*
