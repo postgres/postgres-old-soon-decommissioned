@@ -124,7 +124,7 @@ free_name_value_list(struct name_value_pair * list)
  * values will be changed.
  */
 void
-ProcessConfigFile(unsigned int context)
+ProcessConfigFile(GucContext context)
 {
 	int token, parse_state;
 	char *opt_name, *opt_value;
