@@ -410,7 +410,8 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 					 * only bother with conversion if not NULL and
 					 * different type...
 					 */
-					if (wtype && (wtype != ptype))
+					if (wtype && (wtype != UNKNOWNOID)
+						&& (wtype != ptype))
 					{
 						if (can_coerce_type(1, &wtype, &ptype))
 						{
