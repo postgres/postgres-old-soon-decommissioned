@@ -171,7 +171,7 @@ get_prompt(promptStatus_t status)
 				case '7':
 				case '8':
 				case '9':
-					*buf = parse_char(&p);
+					*buf = parse_char((char **)&p);
 						break;
 
 				case 'R':

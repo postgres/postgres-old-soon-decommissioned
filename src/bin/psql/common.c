@@ -621,7 +621,7 @@ char parse_char(char **buf)
   long l;
 
   l = strtol(*buf, buf, 0);
-  (*buf)--;
+  --*buf;
   return (char)l;
 }
 
