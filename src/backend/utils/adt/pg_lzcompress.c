@@ -474,7 +474,7 @@ pglz_find_match(PGLZ_HistEntry **hstart, char *input, char *end,
  * ----------
  */
 int
-pglz_compress(char *source, int slen, PGLZ_Header *dest, PGLZ_Strategy *strategy)
+pglz_compress(char *source, int32 slen, PGLZ_Header *dest, PGLZ_Strategy *strategy)
 {
 	int            hist_next = 0;
 

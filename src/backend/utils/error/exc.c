@@ -131,7 +131,11 @@ ExcPrint(Exception *excP,
 
 	fprintf(stderr, " (%ld)", detail);
 
+#ifndef __BEOS__
 	if (errno > 0 && errno < sys_nerr)
+#else
+    if (errno > 0)
+#endif
 		fprintf(stderr, " [%s]", strerror(errno));
 	else if (errno != 0)
 		fprintf(stderr, " [Error %d]", errno);

@@ -496,7 +496,6 @@ AtCommit_Notify()
 				 */
 				if (kill(listenerPID, SIGUSR2) < 0)
 				{
-
 					/*
 					 * Get rid of pg_listener entry if it refers to a PID
 					 * that no longer exists.  Presumably, that backend

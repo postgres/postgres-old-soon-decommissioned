@@ -85,11 +85,18 @@ main(int argc, char *argv[])
 	 */
 	len = strlen(argv[0]);
 
-	if (!geteuid())
+/* OK this is going to seem weird, but BeOS is presently basically
+ * a single user system.  There is work going on, but at present it'll
+ * say that every user is uid 0, i.e. root.  We'll inhibit this check
+ * until Be get the system working with multiple users!!
+ */
+#ifndef __BEOS__
+if (!geteuid())
 	{
 		fprintf(stderr, "%s", NOROOTEXEC);
 		exit(1);
 	}
+#endif /* __BEOS__ */
 
 	if (len >= 10 && !strcmp(argv[0] + len - 10, "postmaster"))
 		exit(PostmasterMain(argc, argv));

@@ -27,7 +27,14 @@
 #include <sys/types.h>
 #ifdef HAVE_SYS_IPC_H
 #include <sys/ipc.h>			/* For IPC_PRIVATE */
-#endif
+#else
+/* BeOS doesn't have IPC_PRIVATE so we'll use the value that is set by
+ * FreeBSD (1)
+ */
+#define IPC_PRIVATE 1
+#endif /* HAVE_SYS_IPC_H */
+
+#include "config.h"
 
 #ifndef HAVE_UNION_SEMUN
 union semun

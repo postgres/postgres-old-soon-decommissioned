@@ -134,6 +134,8 @@ elog(int lev, const char *fmt, ...)
 	if (lev <= DEBUG && Debugfile < 0)
 		return;					/* ignore debug msgs if noplace to send */
 
+/* BeOS doesn't have sys_nerr and should be able to use strerror()... */
+#ifndef __BEOS__
 	/* save errno string for %m */
 	if (errno < sys_nerr && errno >= 0)
 		errorstr = strerror(errno);
@@ -180,6 +182,9 @@ elog(int lev, const char *fmt, ...)
 			prefix = prefix_buf;
 			break;
 	}
+#else
+    errorstr = strerror(errno);
+#endif /* __BEOS__ */
 
 	timestamp_size = 0;
 	if (Log_timestamp)

@@ -61,7 +61,11 @@ PacketReceiveFragment(Port *port)
 		got = SSL_read(port->ssl, pkt->ptr, pkt->nrtodo);
 	else
 #endif
+#ifndef __BEOS__
 		got = read(port->sock, pkt->ptr, pkt->nrtodo);
+#else
+        got = recv(port->sock, pkt->ptr, pkt->nrtodo, 0);
+#endif /* __BEOS__ */
 	if (got > 0)
 	{
 		pkt->nrtodo -= got;
@@ -150,8 +154,11 @@ PacketSendFragment(Port *port)
 		done = SSL_write(port->ssl, pkt->ptr, pkt->nrtodo);
 	else
 #endif
+#ifndef __BEOS__
 		done = write(port->sock, pkt->ptr, pkt->nrtodo);
-
+#else
+		done = send(port->sock, pkt->ptr, pkt->nrtodo, 0);
+#endif
 	if (done > 0)
 	{
 		pkt->nrtodo -= done;
