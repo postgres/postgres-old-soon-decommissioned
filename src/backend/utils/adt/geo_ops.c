@@ -1383,7 +1383,7 @@ path_recv(PG_FUNCTION_ARGS)
 
 	closed = pq_getmsgbyte(buf);
 	npts = pq_getmsgint(buf, sizeof(int32));
-	if (npts < 0 || npts >= (int32) (INT_MAX / sizeof(Point)))
+	if (npts < 0 || npts >= (int32) ((INT_MAX - offsetof(PATH, p[0])) / sizeof(Point)))
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_BINARY_REPRESENTATION),
 				 errmsg("invalid number of points in external \"path\" value")));
