@@ -37,4 +37,9 @@ extern int	lo_unlink(Oid lobjId);
 extern struct varlena *loread(int fd, int len);
 extern int	lowrite(int fd, struct varlena * wbuf);
 
+/*
+ * Added for buffer leak prevention [ Pascal André <andre@via.ecp.fr> ]
+ */
+extern void _lo_commit(void);
+
 #endif							/* BE_FSSTUBS_H */

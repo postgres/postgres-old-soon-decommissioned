@@ -54,4 +54,7 @@ extern int	inv_tell(LargeObjectDesc *obj_desc);
 extern int	inv_read(LargeObjectDesc *obj_desc, char *buf, int nbytes);
 extern int	inv_write(LargeObjectDesc *obj_desc, char *buf, int nbytes);
 
+/* added for buffer leak prevention [ PA ] */
+extern void inv_cleanindex(LargeObjectDesc *obj_desc);
+
 #endif							/* LARGE_OBJECT_H */
