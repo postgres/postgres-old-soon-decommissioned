@@ -287,7 +287,6 @@ BeginCommand(char *pname,
 					pq_putint(attrs[i]->attlen, 2);
 				}
 			}
-			pq_flush();
 			break;
 
 		case Local:
