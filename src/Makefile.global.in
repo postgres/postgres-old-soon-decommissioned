@@ -284,6 +284,10 @@ ELF_SYSTEM= @ELF_SYS@
 # Pull in platform-specific magic
 include $(top_builddir)/src/Makefile.port
 
+# Set up rpath if enabled.  By default it will point to our libdir,
+# but individual Makefiles can force other rpath paths if needed.
+rpathdir = $(libdir)
+
 ifeq ($(enable_rpath), yes)
 LDFLAGS += $(rpath)
 endif

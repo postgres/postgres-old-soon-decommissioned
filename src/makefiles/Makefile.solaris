@@ -4,9 +4,9 @@ AROPT = crs
 
 ifeq ($(with_gnu_ld), yes)
 export_dynamic = -Wl,-E
-rpath = -Wl,-rpath,$(libdir)
+rpath = -Wl,-rpath,$(rpathdir)
 else
-rpath = -R$(libdir)
+rpath = -R$(rpathdir)
 endif
 shlib_symbolic = -Wl,-Bsymbolic
 
