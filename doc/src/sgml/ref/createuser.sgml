@@ -276,7 +276,7 @@ PostgreSQL documentation
       <term><computeroutput>CREATE USER</computeroutput></term>
       <listitem>
        <para>
-        All is well.
+        The user was successfully created.
        </para>
       </listitem>
      </varlistentry>
