@@ -333,13 +333,13 @@ static const struct cachedesc cacheinfo[] = {
 			0,
 			0
 	}},
-	{RewriteRelationName,		/* RULENAME */
-		RewriteRulenameIndex,
+	{RewriteRelationName,		/* RULERELNAME */
+		RewriteRelRulenameIndex,
 		Anum_pg_rewrite_ev_class,
-		1,
+		2,
 		{
+			Anum_pg_rewrite_ev_class,
 			Anum_pg_rewrite_rulename,
-			0,
 			0,
 			0
 	}},

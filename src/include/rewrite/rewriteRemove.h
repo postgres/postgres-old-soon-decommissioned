@@ -14,7 +14,7 @@
 #ifndef REWRITEREMOVE_H
 #define REWRITEREMOVE_H
 
-extern void RemoveRewriteRule(List *names);
+extern void RemoveRewriteRule(Oid owningRel, const char *ruleName);
 extern void RelationRemoveRules(Oid relid);
 
 #endif   /* REWRITEREMOVE_H */

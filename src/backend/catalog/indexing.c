@@ -68,7 +68,7 @@ char	   *Name_pg_proc_indices[Num_pg_proc_indices] =
 char	   *Name_pg_relcheck_indices[Num_pg_relcheck_indices] =
 {RelCheckIndex};
 char	   *Name_pg_rewrite_indices[Num_pg_rewrite_indices] =
-{RewriteOidIndex, RewriteRulenameIndex};
+{RewriteOidIndex, RewriteRelRulenameIndex};
 char	   *Name_pg_shadow_indices[Num_pg_shadow_indices] =
 {ShadowNameIndex, ShadowSysidIndex};
 char	   *Name_pg_statistic_indices[Num_pg_statistic_indices] =

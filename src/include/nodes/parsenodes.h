@@ -940,13 +940,6 @@ typedef struct CreateTrigStmt
 	RangeVar   *constrrel;		/* opposite relation */
 } CreateTrigStmt;
 
-typedef struct DropTrigStmt
-{
-	NodeTag		type;
-	char	   *trigname;		/* TRIGGER' name */
-	RangeVar   *relation;		/* triggered relation */
-} DropTrigStmt;
-
 /* ----------------------
  *		Create/Drop PROCEDURAL LANGUAGE Statement
  * ----------------------
@@ -1060,7 +1053,7 @@ typedef struct CreateDomainStmt
 } CreateDomainStmt;
 
 /* ----------------------
- *		Drop Table|Sequence|View|Index|Rule|Type Statement
+ *		Drop Table|Sequence|View|Index|Type|Domain Statement
  * ----------------------
  */
 
@@ -1068,9 +1061,8 @@ typedef struct CreateDomainStmt
 #define DROP_SEQUENCE 2
 #define DROP_VIEW	  3
 #define DROP_INDEX	  4
-#define DROP_RULE	  5
-#define DROP_TYPE     6
-#define DROP_DOMAIN	  7
+#define DROP_TYPE     5
+#define DROP_DOMAIN	  6
 
 typedef struct DropStmt
 {
@@ -1079,6 +1071,25 @@ typedef struct DropStmt
 	int			removeType;
 	int	   		behavior;		/* CASCADE or RESTRICT drop behavior */
 } DropStmt;
+
+/* ----------------------
+ *		Drop Rule|Trigger Statement
+ *
+ * In general this may be used for dropping any property of a relation;
+ * for example, someday soon we may have DROP ATTRIBUTE.
+ * ----------------------
+ */
+
+#define DROP_RULE	  100
+#define DROP_TRIGGER  101
+
+typedef struct DropPropertyStmt
+{
+	NodeTag		type;
+	RangeVar   *relation;		/* owning relation */
+	char	   *property;		/* name of rule, trigger, etc */
+	int			removeType;
+} DropPropertyStmt;
 
 /* ----------------------
  *				Truncate Table Statement

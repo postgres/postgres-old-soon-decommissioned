@@ -29,11 +29,12 @@
  * Is there a rule by the given name?
  */
 bool
-IsDefinedRewriteRule(const char *ruleName)
+IsDefinedRewriteRule(Oid owningRel, const char *ruleName)
 {
-	return SearchSysCacheExists(RULENAME,
+	return SearchSysCacheExists(RULERELNAME,
+								ObjectIdGetDatum(owningRel),
 								PointerGetDatum(ruleName),
-								0, 0, 0);
+								0, 0);
 }
 
 /*

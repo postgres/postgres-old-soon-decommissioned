@@ -1232,11 +1232,13 @@ _equalCreateTrigStmt(CreateTrigStmt *a, CreateTrigStmt *b)
 }
 
 static bool
-_equalDropTrigStmt(DropTrigStmt *a, DropTrigStmt *b)
+_equalDropPropertyStmt(DropPropertyStmt *a, DropPropertyStmt *b)
 {
-	if (!equalstr(a->trigname, b->trigname))
-		return false;
 	if (!equal(a->relation, b->relation))
+		return false;
+	if (!equalstr(a->property, b->property))
+		return false;
+	if (a->removeType != b->removeType)
 		return false;
 
 	return true;
@@ -2080,8 +2082,8 @@ equal(void *a, void *b)
 		case T_CreateTrigStmt:
 			retval = _equalCreateTrigStmt(a, b);
 			break;
-		case T_DropTrigStmt:
-			retval = _equalDropTrigStmt(a, b);
+		case T_DropPropertyStmt:
+			retval = _equalDropPropertyStmt(a, b);
 			break;
 		case T_CreatePLangStmt:
 			retval = _equalCreatePLangStmt(a, b);

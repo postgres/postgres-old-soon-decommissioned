@@ -52,7 +52,7 @@
 #define PROCOID			21
 #define RELNAMENSP		22
 #define RELOID			23
-#define RULENAME		24
+#define RULERELNAME		24
 #define SHADOWNAME		25
 #define SHADOWSYSID		26
 #define STATRELATT		27

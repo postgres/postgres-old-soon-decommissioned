@@ -2380,14 +2380,15 @@ _copyCreateTrigStmt(CreateTrigStmt *from)
 	return newnode;
 }
 
-static DropTrigStmt *
-_copyDropTrigStmt(DropTrigStmt *from)
+static DropPropertyStmt *
+_copyDropPropertyStmt(DropPropertyStmt *from)
 {
-	DropTrigStmt *newnode = makeNode(DropTrigStmt);
+	DropPropertyStmt *newnode = makeNode(DropPropertyStmt);
 
-	if (from->trigname)
-		newnode->trigname = pstrdup(from->trigname);
 	Node_Copy(from, newnode, relation);
+	if (from->property)
+		newnode->property = pstrdup(from->property);
+	newnode->removeType = from->removeType;
 
 	return newnode;
 }
@@ -2915,8 +2916,8 @@ copyObject(void *from)
 		case T_CreateTrigStmt:
 			retval = _copyCreateTrigStmt(from);
 			break;
-		case T_DropTrigStmt:
-			retval = _copyDropTrigStmt(from);
+		case T_DropPropertyStmt:
+			retval = _copyDropPropertyStmt(from);
 			break;
 		case T_CreatePLangStmt:
 			retval = _copyCreatePLangStmt(from);

@@ -14,7 +14,7 @@
 #ifndef REWRITESUPPORT_H
 #define REWRITESUPPORT_H
 
-extern bool IsDefinedRewriteRule(const char *ruleName);
+extern bool IsDefinedRewriteRule(Oid owningRel, const char *ruleName);
 
 extern char *MakeRetrieveViewRuleName(const char *view_name);
 

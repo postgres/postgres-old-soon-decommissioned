@@ -312,11 +312,6 @@ ProcessUtility(Node *parsetree,
 							RemoveIndex(rel);
 							break;
 
-						case DROP_RULE:
-							/* RemoveRewriteRule checks permissions */
-							RemoveRewriteRule(names);
-							break;
-
 						case DROP_TYPE:
 							/* RemoveType does its own permissions checks */
 							RemoveType(names);
@@ -714,12 +709,24 @@ ProcessUtility(Node *parsetree,
 			CreateTrigger((CreateTrigStmt *) parsetree);
 			break;
 
-		case T_DropTrigStmt:
+		case T_DropPropertyStmt:
 			{
-				DropTrigStmt *stmt = (DropTrigStmt *) parsetree;
+				DropPropertyStmt *stmt = (DropPropertyStmt *) parsetree;
+				Oid		relId;
 
-				DropTrigger(RangeVarGetRelid(stmt->relation, false),
-							stmt->trigname);
+				relId = RangeVarGetRelid(stmt->relation, false);
+
+				switch (stmt->removeType)
+				{
+					case DROP_RULE:
+						/* RemoveRewriteRule checks permissions */
+						RemoveRewriteRule(relId, stmt->property);
+						break;
+					case DROP_TRIGGER:
+						/* DropTrigger checks permissions */
+						DropTrigger(relId, stmt->property);
+						break;
+				}
 			}
 			break;
 

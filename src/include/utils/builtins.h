@@ -337,6 +337,7 @@ extern Datum regproctooid(PG_FUNCTION_ARGS);
 /* ruleutils.c */
 extern Datum pg_get_ruledef(PG_FUNCTION_ARGS);
 extern Datum pg_get_viewdef(PG_FUNCTION_ARGS);
+extern Datum pg_get_viewdef_name(PG_FUNCTION_ARGS);
 extern Datum pg_get_indexdef(PG_FUNCTION_ARGS);
 extern Datum pg_get_userbyid(PG_FUNCTION_ARGS);
 extern Datum pg_get_expr(PG_FUNCTION_ARGS);

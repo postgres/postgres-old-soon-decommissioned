@@ -2150,9 +2150,11 @@ DATA(insert OID = 1639 (  oidge				   PGNSP PGUID 12 f t f t f i 2 16 "26 26" 10
 DESCR("greater-than-or-equal");
 
 /* System-view support functions */
-DATA(insert OID = 1640 (  pg_get_ruledef	   PGNSP PGUID 12 f t f t f s 1 25 "19" 100 0 0 100  pg_get_ruledef - _null_ ));
+DATA(insert OID = 1573 (  pg_get_ruledef	   PGNSP PGUID 12 f t f t f s 1 25 "26" 100 0 0 100  pg_get_ruledef - _null_ ));
 DESCR("source text of a rule");
-DATA(insert OID = 1641 (  pg_get_viewdef	   PGNSP PGUID 12 f t f t f s 1 25 "19" 100 0 0 100  pg_get_viewdef - _null_ ));
+DATA(insert OID = 1640 (  pg_get_viewdef	   PGNSP PGUID 12 f t f t f s 1 25 "25" 100 0 0 100  pg_get_viewdef_name - _null_ ));
+DESCR("select statement of a view");
+DATA(insert OID = 1641 (  pg_get_viewdef	   PGNSP PGUID 12 f t f t f s 1 25 "26" 100 0 0 100  pg_get_viewdef - _null_ ));
 DESCR("select statement of a view");
 DATA(insert OID = 1642 (  pg_get_userbyid	   PGNSP PGUID 12 f t f t f s 1 19 "23" 100 0 0 100  pg_get_userbyid - _null_ ));
 DESCR("user name by UID (with fallback)");
