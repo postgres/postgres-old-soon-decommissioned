@@ -1276,12 +1276,13 @@ PostgresMain(int argc, char *argv[], const char *username)
 							SetConfigOption("debug_print_rewritten", "true", ctx, gucsource);
 					}
 					else
-
 						/*
 						 * -d 0 allows user to prevent postmaster debug
-						 * from propagating to backend.
+						 * from propagating to backend.  It would be nice
+						 * to set it to the postgresql.conf value here.
 						 */
-						ResetPGVariable("server_min_messages");
+						SetConfigOption("server_min_messages", "notice",
+										ctx, gucsource);
 				}
 				break;
 
@@ -1697,7 +1698,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.295 $ $Date: 2002/09/26 05:17:00 $\n");
+		puts("$Revision: 1.296 $ $Date: 2002/09/27 03:34:15 $\n");
 	}
 
 	/*
