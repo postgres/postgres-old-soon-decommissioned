@@ -502,6 +502,12 @@ typedef struct
 	int			found_varno;
 	int			ndatums;
 	PLpgSQL_datum **datums;
+
+	/* temporary state for results from evaluation of query or expr */
+	SPITupleTable *eval_tuptable;
+	uint32		eval_processed;
+	Oid			eval_lastoid;
+	ExprContext *eval_econtext;
 }			PLpgSQL_execstate;
 
 
