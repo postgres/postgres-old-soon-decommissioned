@@ -147,6 +147,8 @@ SIAssignBackendId(SISeg *segInOutP, BackendTag backendTag)
 		}
 	}
 
+	Assert(stateP);
+	
 	if (stateP->tag != InvalidBackendTag)
 	{
 		if (stateP->tag == backendTag)
