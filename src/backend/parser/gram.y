@@ -5220,6 +5220,7 @@ ColId:  IDENT							{ $$ = $1; }
 		| EACH							{ $$ = "each"; }
 		| ENCODING						{ $$ = "encoding"; }
 		| EXCLUSIVE						{ $$ = "exclusive"; }
+		| FORCE							{ $$ = "force"; }
 		| FORWARD						{ $$ = "forward"; }
 		| FUNCTION						{ $$ = "function"; }
 		| HANDLER						{ $$ = "handler"; }
