@@ -55,6 +55,7 @@
 (element command ($mono-seq$))
 (element envar ($mono-seq$))
 (element lineannotation ($italic-seq$))
+(element literal ($mono-seq$))
 (element structfield ($mono-seq$))
 (element structname ($mono-seq$))
 (element symbol ($mono-seq$))
