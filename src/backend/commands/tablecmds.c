@@ -4888,8 +4888,8 @@ ATExecAlterColumnType(AlteredTableInfo *tab, Relation rel,
 		if (foundDep->deptype != DEPENDENCY_NORMAL)
 			elog(ERROR, "found unexpected dependency type '%c'",
 				 foundDep->deptype);
-		if (foundDep->classid != RelOid_pg_type ||
-			foundDep->objid != attTup->atttypid)
+		if (foundDep->refclassid != RelOid_pg_type ||
+			foundDep->refobjid != attTup->atttypid)
 			elog(ERROR, "found unexpected dependency for column");
 
 		simple_heap_delete(depRel, &depTup->t_self);
