@@ -1021,6 +1021,9 @@ btree_xlog_newroot(bool redo, XLogRecPtr lsn, XLogRecord *record)
 	md.btm_level = xlrec->level;
 	memcpy((char *) BTPageGetMeta(metapg), (char *) &md, sizeof(md));
 
+	pageop = (BTPageOpaque) PageGetSpecialPointer(metapg);
+	pageop->btpo_flags = BTP_META;
+
 	PageSetLSN(metapg, lsn);
 	PageSetSUI(metapg, ThisStartUpID);
 	UnlockAndWriteBuffer(metabuf);
