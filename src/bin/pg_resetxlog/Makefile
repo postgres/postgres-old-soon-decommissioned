@@ -12,7 +12,7 @@ subdir = src/bin/pg_resetxlog
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-override CPPFLAGS := $(CPPFLAGS) -DFRONTEND
+override CPPFLAGS += -DFRONTEND
 
 OBJS= pg_resetxlog.o pg_crc.o \
       $(filter dirmod.o, $(LIBOBJS))
