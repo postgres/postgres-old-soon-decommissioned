@@ -72,11 +72,11 @@ typedef struct GISTSTATE
 	FmgrInfo	penaltyFn[INDEX_MAX_KEYS];
 	FmgrInfo	picksplitFn[INDEX_MAX_KEYS];
 	FmgrInfo	equalFn[INDEX_MAX_KEYS];
-	bool		attbyval[INDEX_MAX_KEYS];
-	bool		haskeytype[INDEX_MAX_KEYS];
-	bool		keytypbyval[INDEX_MAX_KEYS];
+
+	TupleDesc	tupdesc;
 } GISTSTATE;
 
+#define isAttByVal( gs, anum ) (gs)->tupdesc->attrs[anum]->attbyval
 
 /*
  *	When we're doing a scan, we need to keep track of the parent stack
@@ -169,6 +169,7 @@ extern Datum gistbulkdelete(PG_FUNCTION_ARGS);
 extern void _gistdump(Relation r);
 extern void gistfreestack(GISTSTACK *s);
 extern void initGISTstate(GISTSTATE *giststate, Relation index);
+extern void freeGISTstate(GISTSTATE *giststate);
 extern void gistdentryinit(GISTSTATE *giststate, int nkey, GISTENTRY *e,
 						   Datum k, Relation r, Page pg, OffsetNumber o,
 						   int b, bool l, bool isNull);

@@ -239,7 +239,7 @@ gistindex_keytest(IndexTuple tuple,
 	{
 		datum = index_getattr(tuple,
 							  key[0].sk_attno,
-							  tupdesc,
+							  giststate->tupdesc,
 							  &isNull);
 		if (isNull)
 		{
@@ -271,7 +271,7 @@ gistindex_keytest(IndexTuple tuple,
 								 ObjectIdGetDatum(key[0].sk_procedure));
 		}
 
-		if ( de.key != datum )
+		if ( de.key != datum && ! isAttByVal( giststate, key[0].sk_attno-1 ) )
 			if ( DatumGetPointer(de.key) != NULL )
 				pfree( DatumGetPointer(de.key) );
 

@@ -234,6 +234,8 @@ gistendscan(PG_FUNCTION_ARGS)
 	{
 		gistfreestack(p->s_stack);
 		gistfreestack(p->s_markstk);
+		if ( p->giststate != NULL ) 
+			freeGISTstate( p->giststate );
 		pfree(s->opaque);
 	}
 
