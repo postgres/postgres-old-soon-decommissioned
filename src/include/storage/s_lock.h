@@ -117,8 +117,7 @@
  * Solaris 2
  */
 
-#if (defined(__i386__) && defined(__sun__)) || \
-	defined(sparc_solaris)
+#if ((defined(__i386__) || defined(__sparc__)) && defined(__sun__)
 /* for xxxxx_solaris, this is defined in port/.../tas.s */
 
 static int	tas(slock_t *lock);
