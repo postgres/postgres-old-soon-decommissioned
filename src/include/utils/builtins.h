@@ -22,6 +22,24 @@
 /*
  *		Defined in adt/
  */
+
+/* acl.c */
+extern Datum has_table_privilege_tname_tname(PG_FUNCTION_ARGS);
+extern Datum has_table_privilege_tname_name(PG_FUNCTION_ARGS);
+extern Datum has_table_privilege_name_tname(PG_FUNCTION_ARGS);
+extern Datum has_table_privilege_name_name(PG_FUNCTION_ARGS);
+extern Datum has_table_privilege_tname(PG_FUNCTION_ARGS);
+extern Datum has_table_privilege_name(PG_FUNCTION_ARGS);
+
+extern Datum has_table_privilege_tname_id(PG_FUNCTION_ARGS);
+extern Datum has_table_privilege_name_id(PG_FUNCTION_ARGS);
+extern Datum has_table_privilege_id(PG_FUNCTION_ARGS);
+
+extern Datum has_table_privilege_id_tname(PG_FUNCTION_ARGS);
+extern Datum has_table_privilege_id_name(PG_FUNCTION_ARGS);
+
+extern Datum has_table_privilege_id_id(PG_FUNCTION_ARGS);
+
 /* bool.c */
 extern Datum boolin(PG_FUNCTION_ARGS);
 extern Datum boolout(PG_FUNCTION_ARGS);
