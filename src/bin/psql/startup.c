@@ -13,7 +13,6 @@
 #include <unistd.h>
 #else							/* WIN32 */
 #include <io.h>
-#include <windows.h>
 #include <win32.h>
 #endif   /* WIN32 */
 

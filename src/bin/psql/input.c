@@ -10,10 +10,6 @@
 
 #include <errno.h>
 
-#ifdef WIN32
-#include <windows.h>
-#endif
-
 #include "pqexpbuffer.h"
 #include "settings.h"
 #include "tab-complete.h"

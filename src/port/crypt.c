@@ -52,9 +52,7 @@ __RCSID("$NetBSD$");
 #include <limits.h>
 #include <stdlib.h>
 
-#ifdef WIN32
-#include <windows.h>
-#else
+#ifndef WIN32
 #include <unistd.h>
 #endif
 

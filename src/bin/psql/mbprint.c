@@ -14,10 +14,6 @@
 
 #include "mb/pg_wchar.h"
 
-#ifdef WIN32
-#include <windows.h>
-#endif
-
 /*
  * This is an implementation of wcwidth() and wcswidth() as defined in
  * "The Single UNIX Specification, Version 2, The Open Group, 1997"

@@ -12,9 +12,9 @@
  */
 
 
-#include "windows.h"
-#include "olectl.h"
-#include "string.h"
+#include <windows.h>
+#include <olectl.h>
+#include <string.h>
 
 /* Global variables */
 HANDLE		g_module = NULL;	/* hModule of DLL */

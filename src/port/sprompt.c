@@ -30,11 +30,6 @@
 
 #ifdef HAVE_TERMIOS_H
 #include <termios.h>
-#else
-#ifdef WIN32
-#include <windows.h>
-#undef ERROR
-#endif
 #endif
 
 bool		prompt_state = false;

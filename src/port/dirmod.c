@@ -402,7 +402,6 @@ rmtree(char *path, bool rmtopdir)
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
-#include <windows.h>
 
 #define halt(str) \
 do { \
