@@ -67,10 +67,10 @@ CATALOG(pg_class) BOOTSTRAP
 	 */
 	int2		relchecks;		/* # of CHECK constraints for class */
 	int2		reltriggers;	/* # of TRIGGERs */
-	int2		relukeys;		/* # of Unique keys */
-	int2		relfkeys;		/* # of FOREIGN KEYs */
-	int2		relrefs;		/* # of references to this rel (not used!) */
-	bool		relhaspkey;		/* has PRIMARY KEY */
+	int2		relukeys;		/* # of Unique keys (not used) */
+	int2		relfkeys;		/* # of FOREIGN KEYs (not used) */
+	int2		relrefs;		/* # of references to this rel (not used) */
+	bool		relhaspkey;		/* has PRIMARY KEY (not used) */
 	bool		relhasrules;	/* has associated rules */
 	bool		relhassubclass; /* has derived classes */
 
