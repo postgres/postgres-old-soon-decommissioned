@@ -156,6 +156,9 @@ CXX=@CXX@
 CXXFLAGS=@CXXFLAGS@ @INCLUDES@
 GCC = @GCC@
 
+ifeq ($(GCC), yes)
+  CFLAGS += -Wall -Wmissing-prototypes -Wmissing-declarations
+endif
 
 ##############################################################################
 #
