@@ -190,7 +190,9 @@ GetCurrentAbsoluteTimeUsec(int *usec)
 {
 	time_t now;
 	struct timeval tp;
-//	struct timezone tpz;
+#ifdef NOT_USED
+	struct timezone tpz;
+#endif
 #if defined(HAVE_TM_ZONE) || defined(HAVE_INT_TIMEZONE)
 	struct tm  *tm;
 #else
