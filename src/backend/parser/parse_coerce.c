@@ -20,6 +20,7 @@
 #include "parser/parse_expr.h"
 
 #include "catalog/pg_type.h"
+#include "parser/parse_func.h"
 #include "parser/parse_type.h"
 #include "parser/parse_target.h"
 #include "parser/parse_coerce.h"
@@ -132,7 +133,7 @@ can_coerce_type(int nargs, Oid *input_typeids, Oid *func_typeids)
 	HeapTuple	ftup;
 	int			i;
 	Type		tp;
-	Oid			oid_array[8];
+	Oid			oid_array[MAXFARGS];
 
 	/* run through argument list... */
 	for (i = 0; i < nargs; i++)
@@ -160,7 +161,7 @@ can_coerce_type(int nargs, Oid *input_typeids, Oid *func_typeids)
 			 */
 			else if (input_typeids[i] != UNKNOWNOID)
 			{
-				MemSet(&oid_array[0], 0, 8 * sizeof(Oid));
+				MemSet(oid_array, 0, MAXFARGS * sizeof(Oid));
 				oid_array[0] = input_typeids[i];
 
 				/*

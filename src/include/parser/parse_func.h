@@ -20,6 +20,9 @@
 #include <parser/parse_func.h>
 #include <parser/parse_node.h>
 
+
+#define MAXFARGS 8				/* max # args to a c or postquel function */
+
 /*
  *	This structure is used to explore the inheritance hierarchy above
  *	nodes in the type tree in order to disambiguate among polymorphic
@@ -47,7 +50,7 @@ extern Node *ParseNestedFuncOrColumn(ParseState *pstate, Attr *attr,
 extern Node *ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 				  int *curr_resno, int precedence);
 
-extern void
-			func_error(char *caller, char *funcname, int nargs, Oid *argtypes, char *msg);
+extern void func_error(char *caller, char *funcname,
+					   int nargs, Oid *argtypes, char *msg);
 
 #endif	 /* PARSE_FUNC_H */
