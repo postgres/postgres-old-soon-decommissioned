@@ -264,27 +264,3 @@ typeidInfunc(Oid type_id)
 	infunc = type->typinput;
 	return (infunc);
 }
-
-
-#ifdef NOT_USED
-char
-FindDelimiter(char *typename)
-{
-	char		delim;
-	HeapTuple	typeTuple;
-	TypeTupleForm type;
-
-
-	if (!(typeTuple = SearchSysCacheTuple(TYPNAME,
-										  PointerGetDatum(typename),
-										  0, 0, 0)))
-	{
-		elog(ERROR, "type name lookup of %s failed", typename);
-	}
-	type = (TypeTupleForm) GETSTRUCT(typeTuple);
-
-	delim = type->typdelim;
-	return (delim);
-}
-
-#endif

@@ -319,7 +319,7 @@ IsPreferredType(CATEGORY category, Oid type)
 
 
 /* PreferredType()
- * Assign a category to the specified OID.
+ * Return the preferred type OID for the specified category.
  */
 Oid
 PreferredType(CATEGORY category, Oid type)
