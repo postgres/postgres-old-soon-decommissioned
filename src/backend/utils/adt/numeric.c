@@ -3560,7 +3560,7 @@ exp_var(NumericVar *arg, NumericVar *result)
 	set_var_from_var(&const_one, &ifac);
 	set_var_from_var(&const_one, &ni);
 
-	for (i = 2; TRUE; i++)
+	for (i = 2; ; i++)
 	{
 		add_var(&ni, &const_one, &ni);
 		mul_var(&xpow, &x, &xpow);
@@ -3644,7 +3644,7 @@ ln_var(NumericVar *arg, NumericVar *result)
 
 	set_var_from_var(&const_one, &ni);
 
-	for (i = 2; TRUE; i++)
+	for (i = 2; ; i++)
 	{
 		add_var(&ni, &const_two, &ni);
 		mul_var(&xx, &x, &xx);
