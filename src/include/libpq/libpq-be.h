@@ -70,6 +70,7 @@ typedef struct Port
 	 */
 #ifdef USE_SSL
 	SSL		   *ssl;
+	unsigned long count;
 #endif
 } Port;
 
