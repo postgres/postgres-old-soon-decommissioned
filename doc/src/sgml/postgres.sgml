@@ -235,6 +235,7 @@ $PostgreSQL$
   &geqo;
   &indexcost;
   &gist;
+  &filelayout;
   &page;
   &bki;
 
