@@ -749,7 +749,7 @@ gettape()
     
     tp = (struct tapelst *)palloc((unsigned)sizeof (struct tapelst));
     
-    sprintf(uniqueName, "%spg_psort.%d.%d", TEMPDIR, getpid(), uniqueFileId);
+    sprintf(uniqueName, "%spg_psort.%d.%d", TEMPDIR, (int)getpid(), uniqueFileId);
     uniqueFileId++;
     
     tapeinit = 1;
