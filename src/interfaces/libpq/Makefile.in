@@ -11,8 +11,8 @@
 #
 #-------------------------------------------------------------------------
 
-SO_MAJOR_VERSION=1
-SO_MINOR_VERSION=1
+SO_MAJOR_VERSION=2
+SO_MINOR_VERSION=0
 
 SRCDIR= ../..
 include $(SRCDIR)/Makefile.global
