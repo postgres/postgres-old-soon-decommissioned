@@ -39,7 +39,7 @@ install: Makefile
 	$(MAKE) -f Makefile all
 	-@if [ -w "`$(MAKE) --quiet -f Makefile echo-installdir`" ]; then \
 		$(MAKE) -f Makefile install; \
-		rm -f Makefile; \
+		$(MAKE) clean; \
 	else \
 		echo "*****" ;\
 		echo "* Skipping the installation of the Perl module for lack of permissions."; \
