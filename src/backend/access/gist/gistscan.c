@@ -24,8 +24,7 @@ static void gistregscan(IndexScanDesc s);
 static void gistdropscan(IndexScanDesc s);
 static void gistadjone(IndexScanDesc s, int op, BlockNumber blkno,
 		   OffsetNumber offnum);
-static void adjuststack(GISTSTACK *stk, BlockNumber blkno,
-			OffsetNumber offnum);
+static void adjuststack(GISTSTACK *stk, BlockNumber blkno);
 static void adjustiptr(IndexScanDesc s, ItemPointer iptr,
 		   int op, BlockNumber blkno, OffsetNumber offnum);
 
@@ -340,8 +339,8 @@ gistadjone(IndexScanDesc s,
 
 	if (op == GISTOP_SPLIT)
 	{
-		adjuststack(so->s_stack, blkno, offnum);
-		adjuststack(so->s_markstk, blkno, offnum);
+		adjuststack(so->s_stack, blkno);
+		adjuststack(so->s_markstk, blkno);
 	}
 }
 
@@ -428,8 +427,7 @@ adjustiptr(IndexScanDesc s,
 /*ARGSUSED*/
 static void
 adjuststack(GISTSTACK *stk,
-			BlockNumber blkno,
-			OffsetNumber offnum)
+			BlockNumber blkno)
 {
 	while (stk != (GISTSTACK *) NULL)
 	{

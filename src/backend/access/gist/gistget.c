@@ -24,7 +24,7 @@ static RetrieveIndexResult gistscancache(IndexScanDesc s, ScanDirection dir);
 static RetrieveIndexResult gistfirst(IndexScanDesc s, ScanDirection dir);
 static RetrieveIndexResult gistnext(IndexScanDesc s, ScanDirection dir);
 static ItemPointer gistheapptr(Relation r, ItemPointer itemp);
-static bool gistindex_keytest(IndexTuple tuple, TupleDesc tupdesc,
+static bool gistindex_keytest(IndexTuple tuple,
 				  int scanKeySize, ScanKey key, GISTSTATE *giststate,
 				  Relation r, Page p, OffsetNumber offset);
 
@@ -219,7 +219,6 @@ gistnext(IndexScanDesc s, ScanDirection dir)
 /* Similar to index_keytest, but decompresses the key in the IndexTuple */
 static bool
 gistindex_keytest(IndexTuple tuple,
-				  TupleDesc tupdesc,
 				  int scanKeySize,
 				  ScanKey key,
 				  GISTSTATE *giststate,
@@ -314,7 +313,6 @@ gistfindnext(IndexScanDesc s, Page p, OffsetNumber n, ScanDirection dir)
 	{
 		it = (IndexTuple) PageGetItem(p, PageGetItemId(p, n));
 		if (gistindex_keytest(it,
-							  RelationGetDescr(s->relation),
 							  s->numberOfKeys, s->keyData, giststate,
 							  s->relation, p, n))
 			break;

@@ -25,8 +25,7 @@ static void rtregscan(IndexScanDesc s);
 static void rtdropscan(IndexScanDesc s);
 static void rtadjone(IndexScanDesc s, int op, BlockNumber blkno,
 		 OffsetNumber offnum);
-static void adjuststack(RTSTACK *stk, BlockNumber blkno,
-			OffsetNumber offnum);
+static void adjuststack(RTSTACK *stk, BlockNumber blkno);
 static void adjustiptr(IndexScanDesc s, ItemPointer iptr,
 		   int op, BlockNumber blkno, OffsetNumber offnum);
 
@@ -337,8 +336,8 @@ rtadjone(IndexScanDesc s,
 
 	if (op == RTOP_SPLIT)
 	{
-		adjuststack(so->s_stack, blkno, offnum);
-		adjuststack(so->s_markstk, blkno, offnum);
+		adjuststack(so->s_stack, blkno);
+		adjuststack(so->s_markstk, blkno);
 	}
 }
 
@@ -425,8 +424,7 @@ adjustiptr(IndexScanDesc s,
 /*ARGSUSED*/
 static void
 adjuststack(RTSTACK *stk,
-			BlockNumber blkno,
-			OffsetNumber offnum)
+			BlockNumber blkno)
 {
 	while (stk != (RTSTACK *) NULL)
 	{
