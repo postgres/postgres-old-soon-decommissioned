@@ -209,6 +209,19 @@ PGconn *PQconnectdb(const char *conninfo)
      </para>
      </listitem>
     </varlistentry>
+
+    <varlistentry>
+     <term><literal>service</literal></term>
+     <listitem>
+     <para>
+      Service name to use for additional parameters.  It specifies a service
+      name in pg_service.conf that holds additional connection parameters.
+      This allows applications to specify only a service name so connection parameters 
+      can be centrally maintained.  See <literal>pg_service.conf.sample</> for
+      information on how to set up the file.
+     </para>
+     </listitem>
+    </varlistentry>
    </variablelist>
 
    If  any  parameter is unspecified, then the corresponding

@@ -2338,14 +2338,11 @@ parseServiceInfo(PQconninfoOption *options, PQExpBuffer errorMessage)
 			return 1;
 		}
 
-		/* As default, set the database name to the name of the service */
+		/* If not already set, set the database name to the name of the service */
 		for (i = 0; options[i].keyword; i++)
 			if (strcmp(options[i].keyword, "dbname") == 0)
-			{
-				if (options[i].val != NULL)
-					free(options[i].val);
-				options[i].val = strdup(service);
-			}
+				if (options[i].val == NULL)
+					options[i].val = strdup(service);
 
 		while ((line = fgets(buf, MAXBUFSIZE - 1, f)) != NULL)
 		{
