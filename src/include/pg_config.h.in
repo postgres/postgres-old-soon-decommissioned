@@ -667,6 +667,9 @@ extern int fdatasync(int fildes);
 /* Define if you have the optreset variable */
 #undef HAVE_INT_OPTRESET
 
+/* Define if you have the __getopt_initialized variable */
+#undef HAVE_INT___GETOPT_INITIALIZED
+
 /* Define if you have strtoll() */
 #undef HAVE_STRTOLL
 
