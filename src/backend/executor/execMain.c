@@ -35,6 +35,7 @@
 
 #include "access/heapam.h"
 #include "catalog/heap.h"
+#include "commands/command.h"
 #include "commands/trigger.h"
 #include "executor/execdebug.h"
 #include "executor/execdefs.h"
@@ -891,6 +892,11 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 				 * relation's catalog tuples will be visible to heap_open.
 				 */
 				CommandCounterIncrement();
+
+				/*
+				 * Eventually create a TOAST table for the into relation
+				 */
+				AlterTableCreateToastTable(intoName, true);
 
 				intoRelationDesc = heap_open(intoRelationId,
 											 AccessExclusiveLock);

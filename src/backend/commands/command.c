@@ -471,6 +471,13 @@ AlterTableAddColumn(const char *relationName,
 	heap_freetuple(reltup);
 
 	heap_close(rel, NoLock);
+
+	/*
+	 * Automatically create the secondary relation for TOAST
+	 * if it formerly had no such but now has toastable attributes.
+	 */
+	CommandCounterIncrement();
+	AlterTableCreateToastTable(relationName, true);
 }
 
 
@@ -1255,6 +1262,7 @@ AlterTableCreateToastTable(const char *relationName, bool silent)
 		{
 			heap_close(rel, NoLock);
 			heap_close(class_rel, NoLock);
+			heap_freetuple(reltup);
 			return;
 		}
 
@@ -1276,8 +1284,18 @@ AlterTableCreateToastTable(const char *relationName, bool silent)
 	}
 
 	if (((Form_pg_class) GETSTRUCT(reltup))->reltoastrelid != InvalidOid)
+	{
+	    if (silent)
+		{
+			heap_close(rel, NoLock);
+			heap_close(class_rel, NoLock);
+			heap_freetuple(reltup);
+			return;
+		}
+
 		elog(ERROR, "ALTER TABLE: relation \"%s\" already has a toast table",
 				relationName);
+    }
 
 	/*
 	 * Create the toast table and its index
@@ -1348,6 +1366,8 @@ AlterTableCreateToastTable(const char *relationName, bool silent)
 
 	heap_close(class_rel, NoLock);
 	heap_close(rel, NoLock);
+
+	CommandCounterIncrement();
 }
 
 
