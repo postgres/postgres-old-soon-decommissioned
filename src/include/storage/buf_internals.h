@@ -38,6 +38,7 @@ extern int Num_Descriptors;
 #define BM_FREE			(1 << 4)
 #define BM_IO_IN_PROGRESS	(1 << 5)
 #define BM_IO_ERROR		(1 << 6)
+#define BM_JUST_DIRTIED		(1 << 7)
 
 typedef bits16 BufFlags;
 
