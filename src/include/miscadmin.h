@@ -254,10 +254,6 @@ extern void SetSessionAuthorization(AclId userid, bool is_superuser);
 
 extern void SetDataDir(const char *dir);
 
-extern int FindExec(char *full_path, const char *argv0,
-		 const char *binary_name);
-extern int	CheckPathAccess(char *path, char *name, int open_mode);
-
 /* in utils/misc/superuser.c */
 extern bool superuser(void);	/* current user is superuser */
 extern bool superuser_arg(AclId userid);		/* given user is superuser */

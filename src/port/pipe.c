@@ -17,6 +17,11 @@
 
 #include "postgres.h"
 
+#include <sys/wait.h>
+
+#define _(x) gettext((x))
+
+#ifdef WIN32
 int
 pgpipe(int handles[2])
 {
@@ -62,4 +67,43 @@ int piperead(int s, char* buf, int len)
 		/* EOF on the pipe! (win32 socket based implementation) */
 		ret = 0;
 	return ret;
+}
+#endif
+
+/*
+ * pclose() plus useful error reporting
+ * Is this necessary?  bjm 2004-05-11
+ */
+int
+pclose_check(FILE *stream)
+{
+	int		exitstatus;
+
+	exitstatus = pclose(stream);
+
+	if (exitstatus == 0)
+		return 0;					/* all is well */
+
+	if (exitstatus == -1)
+	{
+		/* pclose() itself failed, and hopefully set errno */
+		perror("pclose failed");
+	}
+	else if (WIFEXITED(exitstatus))
+	{
+		fprintf(stderr, _("child process exited with exit code %d\n"),
+				WEXITSTATUS(exitstatus));
+	}
+	else if (WIFSIGNALED(exitstatus))
+	{
+		fprintf(stderr, _("child process was terminated by signal %d\n"),
+				WTERMSIG(exitstatus));
+	}
+	else
+	{
+		fprintf(stderr, _("child process exited with unrecognized status %d\n"),
+				exitstatus);
+	}
+
+	return -1;
 }

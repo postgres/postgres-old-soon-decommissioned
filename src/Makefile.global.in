@@ -339,7 +339,7 @@ endif
 #
 # substitute implementations of the C library
 
-LIBOBJS = @LIBOBJS@ noblock.o path.o pgsleep.o pgstrcasecmp.o sprompt.o thread.o
+LIBOBJS = @LIBOBJS@ exec.o noblock.o path.o pipe.o pgsleep.o pgstrcasecmp.o sprompt.o thread.o
 
 ifneq (,$(LIBOBJS))
 LIBS += -lpgport

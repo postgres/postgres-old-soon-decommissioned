@@ -121,3 +121,4 @@ get_progname(char *argv0)
 	else
 		return last_path_separator(argv0) + 1;
 }
+

@@ -892,7 +892,6 @@ case $host_os in mingw*)
 AC_LIBOBJ(copydir)
 AC_LIBOBJ(gettimeofday)
 AC_LIBOBJ(open)
-AC_LIBOBJ(pipe)
 AC_LIBOBJ(rand)
 AC_DEFINE(USE_PGTZ, 1,
 	[Define to 1 to use our own timezone library])
