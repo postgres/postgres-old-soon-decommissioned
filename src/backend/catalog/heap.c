@@ -1870,7 +1870,7 @@ AddRelationRawConstraints(Relation rel,
 	 */
 	pstate = make_parsestate(NULL);
 	makeRangeTable(pstate, NULL, NULL);
-	addRangeTableEntry(pstate, relname, relname, false, true);
+	addRangeTableEntry(pstate, relname, relname, false, true, true);
 
 	/*
 	 * Process column default expressions.
