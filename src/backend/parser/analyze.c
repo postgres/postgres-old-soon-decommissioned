@@ -1454,6 +1454,10 @@ transformRuleStmt(ParseState *pstate, RuleStmt *stmt,
 	if (length(pstate->p_rtable) != 2)	/* naughty, naughty... */
 		elog(ERROR, "Rule WHERE condition may not contain references to other relations");
 
+	/* aggregates not allowed (but subselects are okay) */
+	if (contain_agg_clause(stmt->whereClause))
+		elog(ERROR, "Rule WHERE condition may not contain aggregate functions");
+
 	/* save info about sublinks in where clause */
 	qry->hasSubLinks = pstate->p_hasSubLinks;
 
