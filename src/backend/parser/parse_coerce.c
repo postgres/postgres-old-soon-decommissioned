@@ -241,14 +241,8 @@ coerce_type(Node *node, Oid inputTypeId, Oid targetTypeId,
 			 *
 			 * Note that no folding will occur if the conversion function is
 			 * not marked 'immutable'.
-			 *
-			 * HACK: if constant is NULL, don't fold it here.  This is needed
-			 * by make_subplan(), which calls this routine on placeholder
-			 * Const nodes that mustn't be collapsed.  (It'd be a lot
-			 * cleaner to make a separate node type for that purpose...)
 			 */
-			if (IsA(node, Const) &&
-				!((Const *) node)->constisnull)
+			if (IsA(node, Const))
 				result = eval_const_expressions(result);
 		}
 		else

@@ -122,7 +122,6 @@ transformExpr(ParseState *pstate, Node *expr, ConstraintTestValue *domVal)
 				param = makeNode(Param);
 				param->paramkind = PARAM_NUM;
 				param->paramid = (AttrNumber) paramno;
-				param->paramname = "<unnamed>";
 				param->paramtype = paramtyp;
 				result = (Node *) param;
 				/* handle qualification, if any */

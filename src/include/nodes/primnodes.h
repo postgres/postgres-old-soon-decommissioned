@@ -357,7 +357,7 @@ typedef struct Aggref
  * 3. Finally, the planner converts the oper list to a list of normal Expr
  *	  nodes representing the application of the operator(s) to the lefthand
  *	  expressions and values from the inner targetlist.  The inner
- *	  targetlist items are represented by placeholder Param or Const nodes.
+ *	  targetlist items are represented by placeholder Param nodes.
  *	  The lefthand field is set to NIL, since its expressions are now in
  *	  the Expr list.  This representation is passed to the executor.
  *

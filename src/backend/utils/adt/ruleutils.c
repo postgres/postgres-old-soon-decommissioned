@@ -1921,7 +1921,6 @@ get_rule_expr(Node *node, deparse_context *context,
 	 * same expression tree.
 	 *
 	 * There might be some work left here to support additional node types.
-	 * Can we ever see Param nodes here?
 	 */
 	switch (nodeTag(node))
 	{
