@@ -938,7 +938,7 @@ CommitTransaction()
 	AtCommit_Notify();
 
 	CloseSequences();
-	DestroyNoNameRels();
+	DropNoNameRels();
 	AtEOXact_portals();
 	RecordTransactionCommit();
 
@@ -1034,7 +1034,7 @@ AbortTransaction()
 		vc_abort();
 	RecordTransactionAbort();
 	RelationPurgeLocalRelation(false);
-	DestroyNoNameRels();
+	DropNoNameRels();
 	invalidate_temp_relations();
 	AtEOXact_nbtree();
 	AtAbort_Cache();

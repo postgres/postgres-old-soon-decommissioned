@@ -29,15 +29,15 @@ extern bool heap_storage_create(Relation rel);
 extern Oid heap_create_with_catalog(char *relname, TupleDesc tupdesc, 
 				    char relkind, bool istemp);
 
-extern void heap_destroy_with_catalog(char *relname);
+extern void heap_drop_with_catalog(char *relname);
 extern void heap_truncate(char *relname);
-extern void heap_destroy(Relation rel);
+extern void heap_drop(Relation rel);
 
 extern void AddRelationRawConstraints(Relation rel,
 				      List *rawColDefaults,
 				      List *rawConstraints);
 
 extern void InitNoNameRelList(void);
-extern void DestroyNoNameRels(void);
+extern void DropNoNameRels(void);
 
 #endif	 /* HEAP_H */

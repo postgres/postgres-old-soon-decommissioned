@@ -274,7 +274,7 @@ inv_close(LargeObjectDesc *obj_desc)
  * returns -1 if failed
  */
 int
-inv_destroy(Oid lobjId)
+inv_drop(Oid lobjId)
 {
 	Relation	r;
 
@@ -282,7 +282,7 @@ inv_destroy(Oid lobjId)
 	if (!RelationIsValid(r) || r->rd_rel->relkind != RELKIND_LOBJECT)
 		return -1;
 
-	heap_destroy_with_catalog(RelationGetRelationName(r));
+	heap_drop_with_catalog(RelationGetRelationName(r));
 	return 1;
 }
 

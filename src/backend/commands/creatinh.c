@@ -214,7 +214,7 @@ void
 RemoveRelation(char *name)
 {
 	AssertArg(name);
-	heap_destroy_with_catalog(name);
+	heap_drop_with_catalog(name);
 }
 
 /*

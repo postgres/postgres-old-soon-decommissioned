@@ -470,7 +470,7 @@ ExecEndTee(Tee * node, Plan *parent)
 		bufferRel = teeState->tee_bufferRel;
 		if (bufferRel)
 		{
-			heap_destroy(bufferRel);
+			heap_drop(bufferRel);
 			teeState->tee_bufferRel = NULL;
 			if (teeState->tee_mcxt)
 			{

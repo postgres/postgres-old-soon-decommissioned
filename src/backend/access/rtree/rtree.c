@@ -240,7 +240,7 @@ rtbuild(Relation heap,
 	if (pred != NULL || oldPred != NULL)
 	{
 #ifndef OMIT_PARTIAL_INDEX
-		ExecDestroyTupleTable(tupleTable, true);
+		ExecDropTupleTable(tupleTable, true);
 		pfree(econtext);
 #endif	 /* OMIT_PARTIAL_INDEX */
 	}

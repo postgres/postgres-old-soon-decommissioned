@@ -73,7 +73,7 @@ extern void PortalSetQuery(Portal portal, QueryDesc *queryDesc,
 extern QueryDesc *PortalGetQueryDesc(Portal portal);
 extern EState *PortalGetState(Portal portal);
 extern Portal CreatePortal(char *name);
-extern void PortalDestroy(Portal *portalP);
+extern void PortalDrop(Portal *portalP);
 extern void StartPortalAllocMode(AllocMode mode, Size limit);
 extern void EndPortalAllocMode(void);
 extern void PortalResetHeapMemory(Portal portal);

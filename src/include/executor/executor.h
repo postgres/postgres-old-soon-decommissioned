@@ -107,7 +107,7 @@ extern TupleTableSlot *ExecScan(Scan *node, TupleTableSlot *(*accessMtd) ());
  * prototypes from functions in execTuples.c
  */
 extern TupleTable ExecCreateTupleTable(int initialSize);
-extern void ExecDestroyTupleTable(TupleTable table, bool shouldFree);
+extern void ExecDropTupleTable(TupleTable table, bool shouldFree);
 extern TupleTableSlot *ExecAllocTableSlot(TupleTable table);
 extern TupleTableSlot *ExecStoreTuple(HeapTuple tuple,
 			   TupleTableSlot *slot,

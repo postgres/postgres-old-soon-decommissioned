@@ -48,7 +48,7 @@ typedef struct LargeObjectDesc
 extern LargeObjectDesc *inv_create(int flags);
 extern LargeObjectDesc *inv_open(Oid lobjId, int flags);
 extern void inv_close(LargeObjectDesc *obj_desc);
-extern int	inv_destroy(Oid lobjId);
+extern int	inv_drop(Oid lobjId);
 extern int	inv_seek(LargeObjectDesc *obj_desc, int offset, int whence);
 extern int	inv_tell(LargeObjectDesc *obj_desc);
 extern int	inv_read(LargeObjectDesc *obj_desc, char *buf, int nbytes);

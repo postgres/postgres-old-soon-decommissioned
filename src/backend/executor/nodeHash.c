@@ -439,7 +439,7 @@ ExecHashTableDestroy(HashJoinTable hashtable)
 
 	/* Destroy the portal to release all working memory */
 	/* cast here is a kluge for circular includes... */
-	PortalDestroy((Portal *) &hashtable->myPortal);
+	PortalDrop((Portal *) &hashtable->myPortal);
 
 	/* And drop the control block */
 	pfree(hashtable);

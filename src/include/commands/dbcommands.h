@@ -23,6 +23,6 @@
 #define SIGKILLDAEMON1	SIGTERM
 
 extern void createdb(char *dbname, char *dbpath, int encoding, CommandDest);
-extern void destroydb(char *dbname, CommandDest);
+extern void dropdb(char *dbname, CommandDest);
 
 #endif	 /* DBCOMMANDS_H */

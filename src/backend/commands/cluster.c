@@ -151,7 +151,7 @@ cluster(char *oldrelname, char *oldindexname)
 
 
 	/* Destroy old heap (along with its index) and rename new. */
-	heap_destroy_with_catalog(oldrelname);
+	heap_drop_with_catalog(oldrelname);
 
 	CommitTransactionCommand();
 	StartTransactionCommand();

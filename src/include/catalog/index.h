@@ -39,7 +39,7 @@ extern void index_create(char *heapRelationName,
 			 bool unique,
 			 bool primary);
 
-extern void index_destroy(Oid indexId);
+extern void index_drop(Oid indexId);
 
 extern void FormIndexDatum(int numberOfAttributes,
 			   AttrNumber *attributeNumber, HeapTuple heapTuple,

@@ -269,14 +269,14 @@ int
 lo_unlink(Oid lobjId)
 {
 	/*
-	 * inv_destroy does not need a context switch, indeed it doesn't
+	 * inv_drop does not need a context switch, indeed it doesn't
 	 * touch any LO-specific data structures at all.  (Again, that's
 	 * probably more than this module ought to be assuming.)
 	 *
 	 * XXX there ought to be some code to clean up any open LOs that
 	 * reference the specified relation... as is, they remain "open".
 	 */
-	return inv_destroy(lobjId);
+	return inv_drop(lobjId);
 }
 
 /*****************************************************************************

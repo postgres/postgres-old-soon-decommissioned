@@ -242,7 +242,7 @@ PerformPortalClose(char *name, CommandDest dest)
 	 *	Note: PortalCleanup is called as a side-effect
 	 * ----------------
 	 */
-	PortalDestroy(&portal);
+	PortalDrop(&portal);
 }
 
 /* ----------------

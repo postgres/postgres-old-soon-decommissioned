@@ -778,7 +778,7 @@ EndPlan(Plan *plan, EState *estate)
 	{
 		TupleTable	tupleTable = (TupleTable) estate->es_tupleTable;
 
-		ExecDestroyTupleTable(tupleTable, true);
+		ExecDropTupleTable(tupleTable, true);
 		estate->es_tupleTable = NULL;
 	}
 

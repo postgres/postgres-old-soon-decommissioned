@@ -234,7 +234,7 @@ AttributeAndRelationRemove(Oid typeOid)
 			char	   *name;
 
 			name = NameStr(((Form_pg_class) GETSTRUCT(tup))->relname);
-			heap_destroy_with_catalog(name);
+			heap_drop_with_catalog(name);
 		}
 		heap_endscan(scan);
 	}

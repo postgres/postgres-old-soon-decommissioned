@@ -127,7 +127,7 @@ SPI_finish()
 
 	/* Restore memory context as it was before procedure call */
 	MemoryContextSwitchTo(_SPI_current->savedcxt);
-	PortalDestroy(&(_SPI_current->portal));
+	PortalDrop(&(_SPI_current->portal));
 
 	SetScanCommandId(_SPI_current->savedId);
 

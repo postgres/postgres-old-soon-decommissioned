@@ -325,12 +325,12 @@ typedef struct DefineStmt
  *		Drop Table Statement
  * ----------------------
  */
-typedef struct DestroyStmt
+typedef struct DropStmt
 {
 	NodeTag		type;
 	List	   *relNames;		/* relations to be dropped */
 	bool		sequence;
-} DestroyStmt;
+} DropStmt;
 
 /* ----------------------
  *              Truncate Table Statement
@@ -577,14 +577,14 @@ typedef struct CreatedbStmt
 } CreatedbStmt;
 
 /* ----------------------
- *		Destroydb Statement
+ *		Dropdb Statement
  * ----------------------
  */
-typedef struct DestroydbStmt
+typedef struct DropdbStmt
 {
 	NodeTag		type;
 	char	   *dbname;			/* database to drop */
-} DestroydbStmt;
+} DropdbStmt;
 
 /* ----------------------
  *		Cluster Statement (support pbrown's cluster index implementation)

@@ -564,5 +564,5 @@ RemoveIndex(char *name)
 			 ((Form_pg_class) GETSTRUCT(tuple))->relkind);
 	}
 
-	index_destroy(tuple->t_data->t_oid);
+	index_drop(tuple->t_data->t_oid);
 }

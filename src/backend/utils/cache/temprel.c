@@ -98,10 +98,10 @@ remove_all_temp_relations(void)
 
 			/* safe from deallocation */
 			strcpy(relname, temp_rel->user_relname);
-			heap_destroy_with_catalog(relname);
+			heap_drop_with_catalog(relname);
 		}
 		else
-			index_destroy(temp_rel->relid);
+			index_drop(temp_rel->relid);
 
 		l = next;
 	}
