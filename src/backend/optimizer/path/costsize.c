@@ -566,7 +566,7 @@ cost_sort(Path *path, Query *root,
 	if (nbytes > work_mem_bytes)
 	{
 		double		npages = ceil(nbytes / BLCKSZ);
-		double		nruns = nbytes / (work_mem_bytes * 2);
+		double		nruns = (nbytes / work_mem_bytes) * 0.5;
 		double		log_runs = ceil(LOG6(nruns));
 		double		npageaccesses;
 
