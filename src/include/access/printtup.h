@@ -13,8 +13,8 @@
 #ifndef	PRINTTUP_H
 #define PRINTTUP_H
 
-#include "access/htup.h"
-#include "access/tupdesc.h"
+#include <access/htup.h>
+#include <access/tupdesc.h>
 
 extern Oid typtoout(Oid type);
 extern void printtup(HeapTuple tuple, TupleDesc typeinfo);
