@@ -1804,11 +1804,7 @@ myFunctionCall2(FmgrInfo *flinfo, Datum arg1, Datum arg2)
 	FunctionCallInfoData fcinfo;
 	Datum		result;
 
-	fcinfo.flinfo = flinfo;
-	fcinfo.context = NULL;
-	fcinfo.resultinfo = NULL;
-	fcinfo.isnull = false;
-	fcinfo.nargs = 2;
+	InitFunctionCallInfoData(fcinfo, flinfo, 2, NULL, NULL);
 
 	fcinfo.arg[0] = arg1;
 	fcinfo.arg[1] = arg2;
