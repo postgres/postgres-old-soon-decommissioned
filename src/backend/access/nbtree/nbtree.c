@@ -112,10 +112,6 @@ btbuild(PG_FUNCTION_ARGS)
 		elog(ERROR, "index \"%s\" already contains data",
 			 RelationGetRelationName(index));
 
-	/* initialize the btree index metadata page */
-	/* mark it valid right away only if using slow build */
-	_bt_metapinit(index, !buildstate.usefast);
-
 	if (buildstate.usefast)
 	{
 		buildstate.spool = _bt_spoolinit(index, indexInfo->ii_Unique, false);
@@ -126,6 +122,11 @@ btbuild(PG_FUNCTION_ARGS)
 		 */
 		if (indexInfo->ii_Unique)
 			buildstate.spool2 = _bt_spoolinit(index, false, true);
+	}
+	else
+	{
+		/* if using slow build, initialize the btree index metadata page */
+		_bt_metapinit(index);
 	}
 
 	/* do the heap scan */

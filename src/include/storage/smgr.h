@@ -63,6 +63,7 @@ extern void smgrwrite(SMgrRelation reln, BlockNumber blocknum, char *buffer,
 extern BlockNumber smgrnblocks(SMgrRelation reln);
 extern BlockNumber smgrtruncate(SMgrRelation reln, BlockNumber nblocks,
 								bool isTemp);
+extern void smgrimmedsync(SMgrRelation reln);
 extern void smgrDoPendingDeletes(bool isCommit);
 extern int	smgrGetPendingDeletes(bool forCommit, RelFileNode **ptr);
 extern void smgrcommit(void);
@@ -89,6 +90,7 @@ extern bool mdwrite(SMgrRelation reln, BlockNumber blocknum, char *buffer,
 extern BlockNumber mdnblocks(SMgrRelation reln);
 extern BlockNumber mdtruncate(SMgrRelation reln, BlockNumber nblocks,
 							  bool isTemp);
+extern bool mdimmedsync(SMgrRelation reln);
 extern bool mdsync(void);
 
 extern void RememberFsyncRequest(RelFileNode rnode, BlockNumber segno);

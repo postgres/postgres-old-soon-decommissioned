@@ -662,6 +662,40 @@ mdtruncate(SMgrRelation reln, BlockNumber nblocks, bool isTemp)
 }
 
 /*
+ *	mdimmedsync() -- Immediately sync a relation to stable storage.
+ */
+bool
+mdimmedsync(SMgrRelation reln)
+{
+	MdfdVec    *v;
+	BlockNumber curnblk;
+
+	/*
+	 * NOTE: mdnblocks makes sure we have opened all existing segments, so
+	 * that fsync loop will get them all!
+	 */
+	curnblk = mdnblocks(reln);
+	if (curnblk == InvalidBlockNumber)
+		return false;			/* mdnblocks failed */
+
+	v = mdopen(reln, false);
+
+#ifndef LET_OS_MANAGE_FILESIZE
+	while (v != NULL)
+	{
+		if (FileSync(v->mdfd_vfd) < 0)
+			return false;
+		v = v->mdfd_chain;
+	}
+#else
+	if (FileSync(v->mdfd_vfd) < 0)
+		return false;
+#endif
+
+	return true;
+}
+
+/*
  *	mdsync() -- Sync previous writes to stable storage.
  *
  * This is only called during checkpoints, and checkpoints should only
