@@ -203,11 +203,11 @@ pgsymlink(const char *oldpath, const char *newpath)
 					  NULL, GetLastError(), 
 					  MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
 					  (LPSTR)&msg, 0, NULL );
-#ifdef FRONTEND
-		fprintf(stderr, "Error setting junction for %s: %s", nativeTarget, msg);
-#else
+#ifndef FRONTEND
 		ereport(ERROR, (errcode_for_file_access(),
 			errmsg("Error setting junction for %s: %s", nativeTarget, msg)));
+#else
+		fprintf(stderr, "Error setting junction for %s: %s", nativeTarget, msg);
 #endif
 		LocalFree(msg);
 	    
