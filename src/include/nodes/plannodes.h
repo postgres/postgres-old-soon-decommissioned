@@ -13,7 +13,8 @@
 #ifndef PLANNODES_H
 #define	PLANNODES_H
 
-#include "nodes/primnodes.h"
+#include <nodes/execnodes.h>
+#include <nodes/nodes.h>
 
 /* ----------------------------------------------------------------
  *  Executor State types are used in the plannode structures
@@ -49,7 +50,6 @@
  *
  * ----------------------------------------------------------------
  */
-#include "nodes/execnodes.h"		/* XXX move executor types elsewhere */
 
 
 /* ----------------------------------------------------------------

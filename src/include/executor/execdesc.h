@@ -14,9 +14,10 @@
 #ifndef EXECDESC_H
 #define EXECDESC_H
 
-#include "nodes/parsenodes.h"
-#include "nodes/plannodes.h"
-#include "tcop/dest.h"
+#include <tcop/dest.h>
+#include <nodes/plannodes.h>
+#include <nodes/parsenodes.h>
+#include <nodes/nodes.h>
 
 /* ----------------
  *	query descriptor:
