@@ -1550,7 +1550,7 @@ _copyQuery(Query *from)
 			newnode->qry_aggs[i] = _copyAggreg(from->qry_aggs[i]);
 	}
 	else
-		newnode->query_aggs = NULL;
+		newnode->qry_aggs = NULL;
 		
 	return newnode;
 }
