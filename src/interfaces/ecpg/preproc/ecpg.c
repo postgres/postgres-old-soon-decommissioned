@@ -21,7 +21,7 @@ int			ret_value = 0,
 			autocommit = false,
 			auto_create_c = false,
 			system_includes = false,
-			force_indicator = true;
+			force_indicator = true,
 			header_mode = false;
 
 enum COMPAT_MODE compat = ECPG_COMPAT_PGSQL;
