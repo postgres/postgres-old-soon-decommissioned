@@ -66,7 +66,7 @@ AC_SUBST(MEMCMP)dnl
 # If it doesn't then one could define it as
 # union semun { int val; struct semid_ds *buf; unsigned short *array; }
 AC_DEFUN([PGAC_UNION_SEMUN],
-[AC_CHECK_TYPE([union semun], [], [],
+[AC_CHECK_TYPES([union semun], [], [],
 [#include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>])])# PGAC_UNION_SEMUN
