@@ -757,6 +757,7 @@ build_subquery_pathkeys(Query *root, RelOptInfo *rel, Query *subquery)
 	List	   *retval = NIL;
 	int			retvallen = 0;
 	int			outer_query_keys = length(root->query_pathkeys);
+	List	   *sub_tlist = rel->subplan->targetlist;
 	List	   *l;
 
 	foreach(l, subquery->query_pathkeys)
@@ -789,7 +790,7 @@ build_subquery_pathkeys(Query *root, RelOptInfo *rel, Query *subquery)
 			Node	   *sub_key = sub_item->key;
 			List	   *k;
 
-			foreach(k, subquery->targetList)
+			foreach(k, sub_tlist)
 			{
 				TargetEntry *tle = (TargetEntry *) lfirst(k);
 
