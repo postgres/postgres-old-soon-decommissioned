@@ -169,7 +169,7 @@ DefineUser(CreateUserStmt *stmt, CommandDest dest)
 	snprintf(sql, SQL_LENGTH,
 			 "insert into %s (usename,usesysid,usecreatedb,usetrace,"
 			 "usesuper,usecatupd,passwd,valuntil) "
-			 "values('%s',%d,'%c','t','%c','t',%s%s%s,%s%s%s)",
+			 "values('%s',%d,'%c','f','%c','f',%s%s%s,%s%s%s)",
 			 ShadowRelationName,
 			 stmt->user,
 			 max_id + 1,

@@ -218,7 +218,7 @@ fi
 QUERY="insert into pg_shadow \
         (usename, usesysid, usecreatedb, usetrace, usesuper, usecatupd) \
        values \
-         ('$NEWUSER', $SYSID, '$CANCREATE', 't', '$CANADDUSER','t')"
+         ('$NEWUSER', $SYSID, '$CANCREATE', 'f', '$CANADDUSER','f')"
 
 RES=`$PSQL -c "$QUERY" template1`
 

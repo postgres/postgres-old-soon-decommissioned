@@ -392,6 +392,7 @@ pg_aclcheck(char *relname, char *usename, AclMode mode)
 	 */
 	if (((mode & ACL_WR) || (mode & ACL_AP)) &&
 		!allowSystemTableMods && IsSystemRelationName(relname) &&
+		strncmp(relname,"pg_temp.", strlen("pg_temp.")) != 0 &&
 		!((Form_pg_shadow) GETSTRUCT(tuple))->usecatupd)
 	{
 		elog(DEBUG, "pg_aclcheck: catalog update to \"%s\": permission denied",
