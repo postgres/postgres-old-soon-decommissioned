@@ -1587,6 +1587,8 @@ exec_stmt_raise(PLpgSQL_execstate * estate, PLpgSQL_stmt_raise * stmt)
 						if (fno == SPI_ERROR_NOATTRIBUTE)
 							elog(ERROR, "record %s has no field %s", rec->refname, recfield->fieldname);
 						extval = SPI_getvalue(rec->tup, rec->tupdesc, fno);
+						if (extval == NULL)
+							extval = "<NULL>";
 					}
 					plpgsql_dstring_append(&ds, extval);
 					break;
