@@ -148,8 +148,8 @@ extern long *LocalRefCount;
  */
 extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
 extern int	ReleaseBuffer(Buffer buffer);
-extern int	WriteBuffer(Buffer buffer);
-extern int	WriteNoReleaseBuffer(Buffer buffer);
+extern void	WriteBuffer(Buffer buffer);
+extern void	WriteNoReleaseBuffer(Buffer buffer);
 extern Buffer ReleaseAndReadBuffer(Buffer buffer, Relation relation,
 					 BlockNumber blockNum);
 extern int	FlushBuffer(Buffer buffer, bool sync, bool release);

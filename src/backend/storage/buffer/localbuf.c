@@ -155,7 +155,7 @@ LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool *foundPtr)
  * WriteLocalBuffer -
  *	  writes out a local buffer
  */
-int
+void
 WriteLocalBuffer(Buffer buffer, bool release)
 {
 	int			bufid;
@@ -174,8 +174,6 @@ WriteLocalBuffer(Buffer buffer, bool release)
 		Assert(LocalRefCount[bufid] > 0);
 		LocalRefCount[bufid]--;
 	}
-
-	return true;
 }
 
 /*

@@ -176,7 +176,7 @@ extern BufferDesc *LocalBufferDescriptors;
 
 extern BufferDesc *LocalBufferAlloc(Relation reln, BlockNumber blockNum,
 				 bool *foundPtr);
-extern int	WriteLocalBuffer(Buffer buffer, bool release);
+extern void	WriteLocalBuffer(Buffer buffer, bool release);
 extern int	FlushLocalBuffer(Buffer buffer, bool sync, bool release);
 extern void LocalBufferSync(void);
 extern void ResetLocalBufferPool(void);

@@ -468,8 +468,7 @@ nextval(PG_FUNCTION_ARGS)
 
 	LockBuffer(buf, BUFFER_LOCK_UNLOCK);
 
-	if (WriteBuffer(buf) == STATUS_ERROR)
-		elog(ERROR, "%s.nextval: WriteBuffer failed", sequence->relname);
+	WriteBuffer(buf);
 
 	relation_close(seqrel, NoLock);
 
@@ -581,8 +580,7 @@ do_setval(RangeVar *sequence, int64 next, bool iscalled)
 
 	LockBuffer(buf, BUFFER_LOCK_UNLOCK);
 
-	if (WriteBuffer(buf) == STATUS_ERROR)
-		elog(ERROR, "%s.setval: WriteBuffer failed", sequence->relname);
+	WriteBuffer(buf);
 
 	relation_close(seqrel, NoLock);
 }
