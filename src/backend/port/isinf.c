@@ -2,6 +2,8 @@
 
 #include <math.h>
 
+#include "config.h"
+
 #if HAVE_FPCLASS
 #if HAVE_IEEEFP_H
 #include <ieeefp.h>
