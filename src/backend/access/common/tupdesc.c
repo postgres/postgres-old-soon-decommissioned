@@ -481,7 +481,6 @@ BuildDescForRelation(List *schema, char *relname)
 		arry = entry->typename->arrayBounds;
 		attisset = entry->typename->setof;
 
-		strNcpy(typename, entry->typename->name, NAMEDATALEN - 1);
 		if (arry != NIL)
 		{
 			/* array of XXX is _XXX */
@@ -489,7 +488,10 @@ BuildDescForRelation(List *schema, char *relname)
 			attdim = length(arry);
 		}
 		else
+		{
+			strNcpy(typename, entry->typename->name, NAMEDATALEN - 1);
 			attdim = 0;
+		}
 
 		if (!TupleDescInitEntry(desc, attnum, attname,
 								typename, attdim, attisset))
