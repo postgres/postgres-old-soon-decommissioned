@@ -3560,7 +3560,7 @@ extern Oid ProcedureCreate(const char *procedureName,
 				const Oid *parameterTypes,
 				const char *parameterNames[]);
 
-extern void check_sql_fn_retval(Oid rettype, char fn_typtype,
+extern bool check_sql_fn_retval(Oid rettype, char fn_typtype,
 					List *queryTreeList);
 
 extern bool function_parse_error_transpose(const char *prosrc);
