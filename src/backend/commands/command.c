@@ -1215,6 +1215,7 @@ AlterTableAddConstraint(char *relationName,
 							Relation	rel;
 							Node	   *expr;
 							char	   *name;
+							Oid	myrelid;
 
 							if (constr->name)
 								name = constr->name;
@@ -1224,6 +1225,7 @@ AlterTableAddConstraint(char *relationName,
 							constlist = makeList1(constr);
 
 							rel = heap_openr(relationName, AccessExclusiveLock);
+							myrelid = RelationGetRelid(rel);
 
 							/* make sure it is not a view */
 							if (rel->rd_rel->relkind == RELKIND_VIEW)
@@ -1318,6 +1320,35 @@ AlterTableAddConstraint(char *relationName,
 							 */
 							AddRelationRawConstraints(rel, NIL, constlist);
 							heap_close(rel, NoLock);
+
+							if (inh) {
+								List	   *child,
+									   *children;
+
+								/* this routine is actually in the planner */
+								children = find_all_inheritors(myrelid);
+
+								/*
+								 * find_all_inheritors does the recursive search of the
+								 * inheritance hierarchy, so all we have to do is process all
+								 * of the relids in the list that it returns.
+								 */
+								foreach(child, children)
+								{
+									Oid			childrelid = lfirsti(child);
+									char	   *childrelname;
+	
+									if (childrelid == myrelid)
+										continue;
+									rel = heap_open(childrelid, AccessExclusiveLock);
+									childrelname = pstrdup(RelationGetRelationName(rel));
+									heap_close(rel, AccessExclusiveLock);
+
+									AlterTableAddConstraint(childrelname, false, newConstraint);
+	
+									pfree(childrelname);
+								}
+							}
 							pfree(constlist);
 
 							break;
