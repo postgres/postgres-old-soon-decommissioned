@@ -14,6 +14,7 @@
 
 #include "c.h"
 
+#include <float.h>
 #include <math.h>
 
 #if HAVE_FPCLASS				/* this is _not_ HAVE_FP_CLASS, and not
