@@ -909,6 +909,9 @@ expandNamesVars(ParseState *pstate, List *names, List *vars)
  * In particular, it will work on an RTE for a subselect, whereas
  * get_attname() only works on real relations.
  *
+ * "*" is returned if the given attnum is InvalidAttrNumber --- this case
+ * occurs when a Var represents a whole tuple of a relation.
+ *
  * XXX Actually, this is completely bogus, because refnames of RTEs are
  * not guaranteed unique, and may not even have scope across the whole
  * query.  Cleanest fix would be to add refname/attname to Var nodes and
@@ -919,6 +922,9 @@ char *
 get_rte_attribute_name(RangeTblEntry *rte, AttrNumber attnum)
 {
 	char	   *attname;
+
+	if (attnum == InvalidAttrNumber)
+		return "*";
 
 	/*
 	 * If there is an alias, use it
