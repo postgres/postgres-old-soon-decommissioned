@@ -170,7 +170,7 @@ smgrextend(int16 which, Relation reln, char *buffer)
 	status = (*(smgrsw[which].smgr_extend)) (reln, buffer);
 
 	if (status == SM_FAIL)
-		elog(ERROR, "%s: cannot extend", reln->rd_rel->relname.data);
+		elog(ERROR, "%s: cannot extend.  Check free disk space.", reln->rd_rel->relname.data);
 
 	return status;
 }

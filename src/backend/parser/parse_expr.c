@@ -518,8 +518,8 @@ transformIdent(ParseState *pstate, Node *expr, int precedence)
 		/* we add the relation name for them */
 		att->relname = rte->refname;
 		att->attrs = lcons(makeString(ident->name), NIL);
-		column_result = (Node *) ParseNestedFuncOrColumn(pstate, att, &pstate->p_last_resno,
-											 precedence);
+		column_result = (Node *) ParseNestedFuncOrColumn(pstate, att,
+									&pstate->p_last_resno, precedence);
 	}
 
 	/* try to find the ident as a relation */
