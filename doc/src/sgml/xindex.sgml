@@ -11,9 +11,9 @@ PostgreSQL documentation
 
   <para>
    The procedures described thus far let you define new types, new
-   functions, and new operators.  However, we cannot yet define a secondary
-   index (such as a B-tree, R-tree, or
-   hash access method) over a new type or its operators.
+   functions, and new operators. However, we cannot yet define a
+   secondary index (such as a B-tree, R-tree, or hash access method)
+   over a new type or its operators.
   </para>
 
   <para>
