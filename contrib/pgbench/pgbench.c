@@ -641,7 +641,7 @@ main(int argc, char **argv)
 	PGconn	   *con;
 	PGresult   *res;
 
-	while ((c = getopt(argc, argv, "ih:nvp:dc:t:s:U:P:CS")) != EOF)
+	while ((c = getopt(argc, argv, "ih:nvp:dc:t:s:U:P:CS")) != -1)
 	{
 		switch (c)
 		{

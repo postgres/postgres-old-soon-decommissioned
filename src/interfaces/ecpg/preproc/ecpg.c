@@ -7,9 +7,8 @@
 #include "postgres_fe.h"
 
 #include <unistd.h>
-
 #ifdef HAVE_GETOPT_H
-#include "getopt.h"
+#include <getopt.h>
 #endif
 
 extern int	optind;
@@ -108,7 +107,7 @@ main(int argc, char *const argv[])
 	add_include_path("/usr/local/include");
 	add_include_path(".");
 
-	while ((c = getopt(argc, argv, "vo:I:tD:d")) != EOF)
+	while ((c = getopt(argc, argv, "vo:I:tD:d")) != -1)
 	{
 		switch (c)
 		{

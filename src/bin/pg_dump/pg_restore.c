@@ -67,7 +67,6 @@
 #include <termios.h>
 #endif
 
-/* FreeBSD 4.3 seems to put getopt in unistd.h */
 #include <unistd.h>
 
 #ifdef HAVE_GETOPT_H
@@ -164,7 +163,7 @@ main(int argc, char **argv)
 	}
 
 #ifdef HAVE_GETOPT_LONG
-	while ((c = getopt_long(argc, argv, "acCd:f:F:h:i:lL:NoOp:P:rRsS:t:T:uU:vWxX:", cmdopts, NULL)) != EOF)
+	while ((c = getopt_long(argc, argv, "acCd:f:F:h:i:lL:NoOp:P:rRsS:t:T:uU:vWxX:", cmdopts, NULL)) != -1)
 #else
 	while ((c = getopt(argc, argv, "acCd:f:F:h:i:lL:NoOp:P:rRsS:t:T:uU:vWxX:")) != -1)
 #endif

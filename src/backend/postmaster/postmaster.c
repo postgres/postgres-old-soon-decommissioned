@@ -420,7 +420,7 @@ PostmasterMain(int argc, char *argv[])
 	 * with the wrong argument. Death and destruction will occur.
 	 */
 	opterr = 1;
-	while ((opt = getopt(argc, argv, "A:a:B:b:c:D:d:Fh:ik:lm:MN:no:p:Ss-:")) != EOF)
+	while ((opt = getopt(argc, argv, "A:a:B:b:c:D:d:Fh:ik:lm:MN:no:p:Ss-:")) != -1)
 	{
 		switch (opt)
 		{
@@ -458,7 +458,7 @@ PostmasterMain(int argc, char *argv[])
 	optreset = 1;				/* some systems need this too */
 #endif
 
-	while ((opt = getopt(argc, argv, "A:a:B:b:c:D:d:Fh:ik:lm:MN:no:p:Ss-:")) != EOF)
+	while ((opt = getopt(argc, argv, "A:a:B:b:c:D:d:Fh:ik:lm:MN:no:p:Ss-:")) != -1)
 	{
 		switch (opt)
 		{
