@@ -13,9 +13,7 @@
 #include "utils/builtins.h"
 #endif
 
-#if !defined(_MSC_VER) && !defined(__BORLANDC__)
 #include <unistd.h>
-#endif
 
 #include "mb/pg_wchar.h"
 #include <ctype.h>

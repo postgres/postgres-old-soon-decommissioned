@@ -33,11 +33,8 @@
 #include <errno.h>
 #include <signal.h>
 #include <time.h>
-
-#if !defined(_MSC_VER) && !defined(__BORLANDC__)
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#endif
 
 #ifdef WIN32
 #include "win32.h"

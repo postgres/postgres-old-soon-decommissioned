@@ -49,10 +49,6 @@
 #include "libpq/ip.h"
 #include "mb/pg_wchar.h"
 
-/* For FNCTL_NONBLOCK */
-#if defined(WIN32) || defined(__BEOS__)
-long ioctlsocket_ret;
-#endif
 
 #define PGPASSFILE ".pgpass"
 

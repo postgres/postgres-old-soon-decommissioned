@@ -20,8 +20,6 @@
 /* This is intended to be used in both frontend and backend, so use c.h */
 #include "c.h"
 
-#if !defined(_MSC_VER) && !defined(__BORLANDC__)
-
 #include <errno.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -34,8 +32,6 @@
 #endif
 #include <arpa/inet.h>
 #include <sys/file.h>
-
-#endif
 
 #include "libpq/ip.h"
 
