@@ -634,6 +634,7 @@ exec_command(const char *cmd,
 												   OT_NORMAL, NULL, true);
 
 		expand_tilde(&fname);
+		/* This scrolls off the screen when using /dev/tty */
 		success = saveHistory(fname ? fname : "/dev/tty");
 
 		if (success && !quiet && fname)
