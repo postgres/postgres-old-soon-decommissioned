@@ -381,7 +381,6 @@ btrim(PG_FUNCTION_ARGS)
 		m -= str_len;
 	}
 	pfree(mp);
-
 #else
 	while (m > 0)
 	{
@@ -652,7 +651,6 @@ rtrim(PG_FUNCTION_ARGS)
 		m -= str_len;
 	}
 	pfree(mp);
-
 #else
 	while (m > 0)
 	{
