@@ -28,7 +28,7 @@
  * note: total time to cycle through all 16 entries might be about .07 sec.
  */
 #define S_NSPINCYCLE	20
-#define S_MAX_BUSY		500 * S_NSPINCYCLE
+#define S_MAX_BUSY		1000 * S_NSPINCYCLE
 
 int			s_spincycle[S_NSPINCYCLE] =
 {0, 0, 0, 0, 10000, 0, 0, 0, 10000, 0,

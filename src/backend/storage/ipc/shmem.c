@@ -652,9 +652,15 @@ GetSnapshotData(bool serializable)
 
 	snapshot->xip = (TransactionId *) malloc(have * sizeof(TransactionId));
 	snapshot->xmin = cid;
-	ReadNewTransactionId(&(snapshot->xmax));
 
 	SpinAcquire(ShmemIndexLock);
+	/*
+	 * Unfortunately, we have to call ReadNewTransactionId()
+	 * after acquiring ShmemIndexLock above. It's not good because of
+	 * ReadNewTransactionId() does SpinAcquire(OidGenLockId) but
+	 * _necessary_.
+	 */
+	ReadNewTransactionId(&(snapshot->xmax));
 
 	hash_seq((HTAB *) NULL);
 	while ((result = (ShmemIndexEnt *) hash_seq(ShmemIndex)) != NULL)

@@ -942,15 +942,11 @@ CommitTransaction()
 	/*
 	 * Let others know about no transaction in progress by me.
 	 * Note that this must be done _before_ releasing locks we hold 
-	 * and SpinAcquire(ShmemIndexLock) is required - or bad (too high) 
-	 * XmaxRecent value might be used by vacuum: UPDATE with xid 0 is 
+	 * and SpinAcquire(ShmemIndexLock) is required: UPDATE with xid 0 is 
 	 * blocked by xid 1' UPDATE, xid 1 is doing commit while xid 2 
 	 * gets snapshot - if xid 2' GetSnapshotData sees xid 1 as running
-	 * then it must see xid 0 as running as well or XmaxRecent = 1
-	 * might be used by concurrent vacuum causing
-	 *         ERROR:  Child itemid marked as unused
-	 * This bug was reported by Hiroshi Inoue and I was able to reproduce
-	 * it with 3 sessions and gdb.	- vadim 06/03/99
+	 * then it must see xid 0 as running as well or it will see two
+	 * tuple versions - one deleted by xid 1 and one inserted by xid 0.
 	 */
 	if (MyProc != (PROC *) NULL)
 	{
