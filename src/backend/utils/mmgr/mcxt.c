@@ -683,4 +683,4 @@ pgport_pfree(void *pointer)
 	pfree(pointer);
 }
 
-#endif /* WIN32 */
+#endif
