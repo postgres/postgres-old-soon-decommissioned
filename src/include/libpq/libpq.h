@@ -62,6 +62,7 @@ extern void StreamClose(int sock);
 extern void pq_init(void);
 extern int	pq_getbytes(char *s, size_t len);
 extern int	pq_getstring(StringInfo s);
+extern int	pq_getbyte(void);
 extern int	pq_peekbyte(void);
 extern int	pq_putbytes(const char *s, size_t len);
 extern int	pq_flush(void);

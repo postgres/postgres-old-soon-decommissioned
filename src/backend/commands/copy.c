@@ -157,13 +157,10 @@ CopyGetChar(FILE *fp)
 {
 	if (!fp)
 	{
-		unsigned char ch;
+		int			ch = pq_getbyte();
 
-		if (pq_getbytes((char *) &ch, 1))
-		{
+		if (ch == EOF)
 			fe_eof = true;
-			return EOF;
-		}
 		return ch;
 	}
 	else
@@ -209,12 +206,9 @@ CopyDonePeek(FILE *fp, int c, int pickup)
 		if (pickup)
 		{
 			/*
-			 * We want to pick it up - just receive again into dummy
-			 * buffer
+			 * We want to pick it up
 			 */
-			char		c;
-
-			pq_getbytes(&c, 1);
+			(void) pq_getbyte();
 		}
 		/* If we didn't want to pick it up, just leave it where it sits */
 	}

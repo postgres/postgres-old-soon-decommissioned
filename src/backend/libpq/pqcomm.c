@@ -47,6 +47,7 @@
  * low-level I/O:
  *		pq_getbytes		- get a known number of bytes from connection
  *		pq_getstring	- get a null terminated string from connection
+ *		pq_getbyte		- get next byte from connection
  *		pq_peekbyte		- peek at next byte from connection
  *		pq_putbytes		- send bytes to connection (not flushed until pq_flush)
  *		pq_flush		- flush pending output
@@ -527,7 +528,7 @@ pq_recvbuf(void)
  *		pq_getbyte	- get a single byte from connection, or return EOF
  * --------------------------------
  */
-static int
+int
 pq_getbyte(void)
 {
 	while (PqRecvPointer >= PqRecvLength)
