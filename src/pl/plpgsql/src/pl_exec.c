@@ -419,6 +419,7 @@ plpgsql_exec_function(PLpgSQL_function * func, FunctionCallInfo fcinfo)
 											func->fn_rettypelem,
 											-1,
 											&fcinfo->isnull);
+
 			/*
 			 * If the functions return type isn't by value, copy the value
 			 * into upper executor memory context.

@@ -31,23 +31,23 @@ extern		"C"
  * To be able to intialize, a library may provide a dl_info structure
  * that contains functions to be called to initialize and terminate.
  */
-	struct dl_info
-	{
-		void		(*init) (void);
-		void		(*fini) (void);
-	};
+struct dl_info
+{
+	void		(*init) (void);
+	void		(*fini) (void);
+};
 
 #if __STDC__ || defined(_IBMR2)
-	void	   *dlopen(const char *path, int mode);
-	void	   *dlsym(void *handle, const char *symbol);
-	char	   *dlerror(void);
-	int			dlclose(void *handle);
+void	   *dlopen(const char *path, int mode);
+void	   *dlsym(void *handle, const char *symbol);
+char	   *dlerror(void);
+int			dlclose(void *handle);
 
 #else
-	void	   *dlopen();
-	void	   *dlsym();
-	char	   *dlerror();
-	int			dlclose();
+void	   *dlopen();
+void	   *dlsym();
+char	   *dlerror();
+int			dlclose();
 #endif
 
 #ifdef __cplusplus
