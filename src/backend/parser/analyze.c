@@ -749,7 +749,7 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 					elog(NOTICE, "CREATE TABLE will create implicit sequence '%s' for SERIAL column '%s.%s'",
 					  sequence->seqname, stmt->relname, column->colname);
 
-					blist = makeList1(sequence);
+					blist = lappend(blist, sequence);
 				}
 
 				/* Process column constraints, if any... */
