@@ -95,7 +95,7 @@ extern void ResetSystemCache(void);
 extern void SystemCacheRelationFlushed(Oid relId);
 extern void CatalogCacheIdInvalidate(int cacheId, Index hashIndex,
 									 ItemPointer pointer);
-extern void RelationInvalidateCatalogCacheTuple(Relation relation,
+extern void PrepareToInvalidateCacheTuple(Relation relation,
 								HeapTuple tuple,
 								void (*function) (int, Index, ItemPointer));
 
