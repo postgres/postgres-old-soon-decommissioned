@@ -97,8 +97,7 @@ ExecHashJoin(HashJoinState *node)
 	 * outer tuple; so we can stop scanning the inner scan if we matched
 	 * on the previous try.
 	 */
-	if (node->js.jointype == JOIN_IN &&
-		node->hj_MatchedOuter)
+	if (node->js.jointype == JOIN_IN && node->hj_MatchedOuter)
 		node->hj_NeedNewOuter = true;
 
 	/*
