@@ -405,7 +405,21 @@ replace_clause_joinvar_refs(Expr *clause,
 									   leftvar,
 									   rightvar));
 	}
+	else if (is_subplan(clause))
+	{
+		((Expr*) clause)->args =
+		replace_subclause_joinvar_refs(((Expr*) clause)->args,
+										outer_tlist,
+										inner_tlist);
+		((SubPlan*) ((Expr*) clause)->oper)->sublink->oper = 
+		replace_subclause_joinvar_refs(((SubPlan*) ((Expr*) clause)->oper)->sublink->oper,
+										outer_tlist,
+										inner_tlist);
+		return ((List*) clause);
+	}
 	/* shouldn't reach here */
+	elog (ERROR, "replace_clause_joinvar_refs: unsupported clause %d", 
+			nodeTag (clause));
 	return NULL;
 }
 

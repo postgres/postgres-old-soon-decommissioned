@@ -15,7 +15,7 @@ INCLUDE_OPT = -I../..
 
 CFLAGS+=$(INCLUDE_OPT)
 
-OBJS = createplan.o initsplan.o planmain.o planner.o setrefs.o
+OBJS = createplan.o initsplan.o planmain.o planner.o setrefs.o subselect.o
 
 # not ready yet: predmig.o xfunc.o
 
