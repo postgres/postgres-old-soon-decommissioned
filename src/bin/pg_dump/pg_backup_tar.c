@@ -699,7 +699,7 @@ _LoadBlobs(ArchiveHandle *AH, RestoreOptions *ropt)
 
 	StartRestoreBlobs(AH);
 
-	th = tarOpen(AH, NULL, 'r');		/* Open next file */
+	th = tarOpen(AH, NULL, 'r');	/* Open next file */
 	while (th != NULL)
 	{
 		ctx->FH = th;
@@ -1020,7 +1020,7 @@ static void
 _tarAddFile(ArchiveHandle *AH, TAR_MEMBER *th)
 {
 	lclContext *ctx = (lclContext *) AH->formatData;
-	FILE	   *tmp = th->tmpFH;		/* Grab it for convenience */
+	FILE	   *tmp = th->tmpFH;	/* Grab it for convenience */
 	char		buf[32768];
 	int			cnt;
 	int			len = 0;

@@ -561,4 +561,5 @@ MMShmemSize()
 
 	return size;
 }
+
 #endif	 /* STABLE_MEMORY_STORAGE */

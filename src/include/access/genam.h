@@ -63,4 +63,5 @@ extern struct FmgrInfo *index_getprocinfo(Relation irel, AttrNumber attnum,
 extern IndexScanDesc RelationGetIndexScan(Relation relation, bool scanFromEnd,
 					 uint16 numberOfKeys, ScanKey key);
 extern void IndexScanEnd(IndexScanDesc scan);
+
 #endif	 /* GENAM_H */

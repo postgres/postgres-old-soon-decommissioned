@@ -572,4 +572,5 @@ BufFileTellBlock(BufFile *file)
 	blknum += file->curFile * RELSEG_SIZE;
 	return blknum;
 }
+
 #endif

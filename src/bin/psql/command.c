@@ -56,7 +56,7 @@ static backslashResult exec_command(const char *cmd,
 
 enum option_type
 {
-				OT_NORMAL, OT_SQLID, OT_FILEPIPE
+	OT_NORMAL, OT_SQLID, OT_FILEPIPE
 };
 static char *scan_option(char **string, enum option_type type, char *quote, bool semicolon);
 static char *unescape(const unsigned char *source, size_t len);

@@ -240,4 +240,5 @@ NameComputeLength(Name name)
 		;
 	return (uint32) length;
 }
+
 #endif

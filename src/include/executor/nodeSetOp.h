@@ -21,4 +21,5 @@ extern bool ExecInitSetOp(SetOp *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsSetOp(SetOp *node);
 extern void ExecEndSetOp(SetOp *node);
 extern void ExecReScanSetOp(SetOp *node, ExprContext *exprCtxt, Plan *parent);
+
 #endif	 /* NODESETOP_H */

@@ -756,4 +756,5 @@ PrintLockQueue(LOCK *lock, const char *info)
 	printf("\n");
 	fflush(stdout);
 }
+
 #endif

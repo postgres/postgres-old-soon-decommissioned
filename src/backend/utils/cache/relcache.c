@@ -379,7 +379,7 @@ scan_pg_rel_ind(RelationBuildDescInfo buildinfo)
 
 		default:
 			elog(ERROR, "ScanPgRelation: bad buildinfo");
-			return_tuple = NULL;		/* keep compiler quiet */
+			return_tuple = NULL;	/* keep compiler quiet */
 	}
 
 	heap_close(pg_class_desc, AccessShareLock);

@@ -317,7 +317,7 @@ compare_pathkeys(List *keys1, List *keys2)
 	if (key1 == NIL && key2 == NIL)
 		return PATHKEYS_EQUAL;
 	if (key1 != NIL)
-		return PATHKEYS_BETTER1;		/* key1 is longer */
+		return PATHKEYS_BETTER1;	/* key1 is longer */
 	return PATHKEYS_BETTER2;	/* key2 is longer */
 }
 
@@ -367,7 +367,7 @@ compare_noncanonical_pathkeys(List *keys1, List *keys2)
 	if (key1 == NIL && key2 == NIL)
 		return PATHKEYS_EQUAL;
 	if (key1 != NIL)
-		return PATHKEYS_BETTER1;		/* key1 is longer */
+		return PATHKEYS_BETTER1;	/* key1 is longer */
 	return PATHKEYS_BETTER2;	/* key2 is longer */
 }
 

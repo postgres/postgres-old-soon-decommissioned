@@ -54,15 +54,15 @@ static void LockCountMyLocks(SHMEM_OFFSET lockOffset, PROC *proc,
 
 static char *lock_mode_names[] =
 {
-				"INVALID",
-				"AccessShareLock",
-				"RowShareLock",
-				"RowExclusiveLock",
-				"ShareUpdateExclusiveLock",
-				"ShareLock",
-				"ShareRowExclusiveLock",
-				"ExclusiveLock",
-				"AccessExclusiveLock"
+	"INVALID",
+		"AccessShareLock",
+		"RowShareLock",
+		"RowExclusiveLock",
+		"ShareUpdateExclusiveLock",
+		"ShareLock",
+		"ShareRowExclusiveLock",
+		"ExclusiveLock",
+		"AccessExclusiveLock"
 };
 
 
@@ -1463,4 +1463,5 @@ DumpAllLocks(void)
 			elog(DEBUG, "DumpAllLocks: holder->tag.lock = NULL");
 	}
 }
+
 #endif	 /* LOCK_DEBUG */

@@ -107,4 +107,5 @@ DATA(insert OID = 405 (  hash	PGUID	1 1 0 f f f t hashgettuple hashinsert hashbe
 DESCR("hash index access method");
 DATA(insert OID = 783 (  gist	PGUID 100 7 0 f t f f gistgettuple gistinsert gistbeginscan gistrescan gistendscan gistmarkpos gistrestrpos gistbuild gistbulkdelete gistcostestimate ));
 DESCR("GiST index access method");
+
 #endif	 /* PG_AM_H */

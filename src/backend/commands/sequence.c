@@ -766,7 +766,7 @@ init_params(CreateSeqStmt *seq, Form_pg_sequence new)
 		if (new->increment_by > 0)
 			new->max_value = SEQ_MAXVALUE;		/* ascending seq */
 		else
-			new->max_value = -1;		/* descending seq */
+			new->max_value = -1;	/* descending seq */
 	}
 	else
 		new->max_value = get_param(max_value);

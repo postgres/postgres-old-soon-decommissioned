@@ -19,4 +19,5 @@
 #define POSTGRES_FE_H
 
 #include "c.h"
+
 #endif	 /* POSTGRES_FE_H */

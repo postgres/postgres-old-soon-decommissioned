@@ -83,4 +83,5 @@ typedef FormData_pg_description *Form_pg_description;
  *	there is no initialization here.  The initial contents are extracted
  *	by genbki.sh and loaded during initdb.
  */
+
 #endif	 /* PG_DESCRIPTION_H */

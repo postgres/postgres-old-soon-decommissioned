@@ -22,4 +22,5 @@ extern bool contain_var_reference(Node *node, int varno, int varattno,
 extern bool contain_whole_tuple_var(Node *node, int varno, int levelsup);
 extern bool contain_var_clause(Node *node);
 extern List *pull_var_clause(Node *node, bool includeUpperVars);
+
 #endif	 /* VAR_H */

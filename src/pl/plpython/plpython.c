@@ -1686,7 +1686,7 @@ PyMethodDef PLy_plan_methods[] = {
 
 
 PySequenceMethods PLy_result_as_sequence = {
-	(inquiry) PLy_result_length,/* sq_length */
+	(inquiry) PLy_result_length,	/* sq_length */
 	(binaryfunc) 0,				/* sq_concat */
 	(intargfunc) 0,				/* sq_repeat */
 	(intargfunc) PLy_result_item,		/* sq_item */

@@ -572,7 +572,7 @@ PQdisplayTuples(const PGresult *res,
 				FILE *fp,		/* where to send the output */
 				int fillAlign,	/* pad the fields with spaces */
 				const char *fieldSep,	/* field separator */
-				int printHeader,/* display headers? */
+				int printHeader,	/* display headers? */
 				int quiet
 )
 {
@@ -662,7 +662,7 @@ PQdisplayTuples(const PGresult *res,
 void
 PQprintTuples(const PGresult *res,
 			  FILE *fout,		/* output stream */
-			  int PrintAttNames,/* print attribute names or not */
+			  int PrintAttNames,	/* print attribute names or not */
 			  int TerseOutput,	/* delimiter bars or not? */
 			  int colWidth		/* width of column, if 0, use variable
 								 * width */

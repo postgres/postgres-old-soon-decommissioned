@@ -124,4 +124,5 @@ px_get_random_bytes(uint8 *dst, unsigned count)
 
 	return -1;
 }
+
 #endif	 /* RAND_OPENSSL */

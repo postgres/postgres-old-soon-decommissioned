@@ -86,4 +86,5 @@ typedef struct IndexStrategyData
 } IndexStrategyData;			/* VARIABLE LENGTH STRUCTURE */
 
 typedef IndexStrategyData *IndexStrategy;
+
 #endif	 /* STRAT_H */

@@ -645,4 +645,5 @@ extern int	vsnprintf(char *str, size_t count, const char *fmt, va_list args);
  *		end of c.h
  * ----------------
  */
+
 #endif	 /* C_H */

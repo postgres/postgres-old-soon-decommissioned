@@ -279,4 +279,5 @@ typedef Relation *RelationPtr;
 
 /* added to prevent circular dependency.  bjm 1999/11/15 */
 extern char *get_temp_rel_by_physicalname(const char *relname);
+
 #endif	 /* REL_H */

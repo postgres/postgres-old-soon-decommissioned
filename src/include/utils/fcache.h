@@ -66,4 +66,5 @@ typedef struct FunctionCache
 
 extern FunctionCachePtr init_fcache(Oid foid, int nargs,
 			MemoryContext fcacheCxt);
+
 #endif	 /* FCACHE_H */

@@ -23,4 +23,5 @@ extern void ExecEndMaterial(Material *node);
 extern void ExecMaterialMarkPos(Material *node);
 extern void ExecMaterialRestrPos(Material *node);
 extern void ExecMaterialReScan(Material *node, ExprContext *exprCtxt, Plan *parent);
+
 #endif	 /* NODEMATERIAL_H */

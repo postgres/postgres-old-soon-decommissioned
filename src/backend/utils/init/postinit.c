@@ -409,7 +409,7 @@ ShutdownPostgres(void)
 	 * has to happen before bufmgr shutdown, so having smgr register a
 	 * callback for it wouldn't work.
 	 */
-	smgrDoPendingDeletes(false);		/* delete as though aborting xact */
+	smgrDoPendingDeletes(false);	/* delete as though aborting xact */
 }
 
 

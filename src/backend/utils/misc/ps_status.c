@@ -126,7 +126,7 @@ save_ps_display_args(int argc, char *argv[])
 				end_of_area = argv[i] + strlen(argv[i]);
 		}
 
-		if (end_of_area == NULL)/* probably can't happen? */
+		if (end_of_area == NULL)	/* probably can't happen? */
 		{
 			ps_buffer = NULL;
 			ps_buffer_size = 0;

@@ -11,4 +11,5 @@
 #include "postgres_fe.h"
 
 void		initialize_readline(void);
+
 #endif

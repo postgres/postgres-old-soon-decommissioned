@@ -124,9 +124,9 @@ GetNewObjectId(void)
 	/*
 	 * Check for wraparound of the OID counter.  We *must* not return 0
 	 * (InvalidOid); and as long as we have to check that, it seems a good
-	 * idea to skip over everything below BootstrapObjectIdData too.
-	 * (This basically just reduces the odds of OID collision right after
-	 * a wrap occurs.)	Note we are relying on unsigned comparison here.
+	 * idea to skip over everything below BootstrapObjectIdData too. (This
+	 * basically just reduces the odds of OID collision right after a wrap
+	 * occurs.)  Note we are relying on unsigned comparison here.
 	 */
 	if (ShmemVariableCache->nextOid < ((Oid) BootstrapObjectIdData))
 	{

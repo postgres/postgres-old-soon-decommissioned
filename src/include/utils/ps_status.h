@@ -20,4 +20,5 @@ extern void init_ps_display(const char *username, const char *dbname,
 extern void set_ps_display(const char *activity);
 
 extern const char *get_ps_display(void);
+
 #endif	 /* PS_STATUS_H */

@@ -1261,4 +1261,5 @@ GetCharSetByHost(char *TableName, int host, const char *DataDir)
 		pfree((struct CharsetItem *) ChArray[i]);
 	}
 }
+
 #endif	 /* CYR_RECODE */

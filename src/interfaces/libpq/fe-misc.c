@@ -894,4 +894,5 @@ WSSE_GOODEXIT:
 
 	return winsock_strerror_buf;
 }
+
 #endif

@@ -95,4 +95,5 @@ extern void SHMQueueInsertBefore(SHM_QUEUE *queue, SHM_QUEUE *elem);
 extern Pointer SHMQueueNext(SHM_QUEUE *queue, SHM_QUEUE *curElem,
 			 Size linkOffset);
 extern bool SHMQueueEmpty(SHM_QUEUE *queue);
+
 #endif	 /* SHMEM_H */

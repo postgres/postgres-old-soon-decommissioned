@@ -859,7 +859,7 @@ transformColumnDefinition(ParseState *pstate, CreateStmtContext *cxt,
 
 		constraint = makeNode(Constraint);
 		constraint->contype = CONSTR_UNIQUE;
-		constraint->name = NULL;		/* assign later */
+		constraint->name = NULL;	/* assign later */
 		column->constraints = lappend(column->constraints, constraint);
 
 		constraint = makeNode(Constraint);

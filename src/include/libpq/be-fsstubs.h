@@ -46,4 +46,5 @@ extern int	lo_write(int fd, char *buf, int len);
  * Cleanup LOs at xact commit/abort [ Pascal André <andre@via.ecp.fr> ]
  */
 extern void lo_commit(bool isCommit);
+
 #endif	 /* BE_FSSTUBS_H */

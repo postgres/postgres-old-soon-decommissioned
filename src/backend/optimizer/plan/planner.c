@@ -374,9 +374,9 @@ pull_up_subqueries(Query *parse, Node *jtnode)
 		 * target list entries for upper Var references wouldn't do the
 		 * right thing (the entries wouldn't go to NULL when they're
 		 * supposed to). Suppressing the pullup is an ugly,
-		 * performance-losing hack, but I see no alternative for now.
-		 * Find a better way to handle this when we redesign query trees
-		 * --- tgl 4/30/01.
+		 * performance-losing hack, but I see no alternative for now. Find
+		 * a better way to handle this when we redesign query trees ---
+		 * tgl 4/30/01.
 		 */
 		switch (j->jointype)
 		{

@@ -32,4 +32,5 @@ extern void print_slot(TupleTableSlot *slot);
 extern void print_plan_recursive(Plan *p, Query *parsetree,
 					 int indentLevel, char *label);
 extern void print_plan(Plan *p, Query *parsetree);
+
 #endif	 /* PRINT_H */

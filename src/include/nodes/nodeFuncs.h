@@ -20,4 +20,5 @@ extern bool single_node(Node *node);
 extern bool var_is_outer(Var *var);
 extern bool var_is_rel(Var *var);
 extern Oper *replace_opid(Oper *oper);
+
 #endif	 /* NODEFUNCS_H */

@@ -20,4 +20,5 @@
 
 #define INV_WRITE		0x00020000
 #define INV_READ		0x00040000
+
 #endif	 /* LIBPQ_FS_H */

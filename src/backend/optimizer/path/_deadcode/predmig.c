@@ -109,7 +109,7 @@ xfunc_do_predmig(Path root)
  ** Destructively modifies the join tree (via predicate pullup).
  */
 static void
-xfunc_predmig(JoinPath pathnode,/* root of the join tree */
+xfunc_predmig(JoinPath pathnode,	/* root of the join tree */
 			  Stream streamroot,
 			  Stream laststream,/* for recursive calls -- these are the
 								 * root of the stream under construction,
@@ -469,7 +469,7 @@ xfunc_form_groups(Query *queryInfo, Stream root, Stream bottom)
 				 get_groupup((Stream) get_downstream(temp))) &&
 				get_grouprank(parent) < get_grouprank(temp))
 			{
-				progress = true;		/* we formed a new group */
+				progress = true;	/* we formed a new group */
 				set_groupup(temp, true);
 				set_groupcost(temp,
 							  get_groupcost(temp) +
@@ -484,7 +484,7 @@ xfunc_form_groups(Query *queryInfo, Stream root, Stream bottom)
 }
 
 
-/* -------------------							   UTILITY FUNCTIONS	 ------------------------- */
+/* -------------------									 UTILITY FUNCTIONS	   ------------------------- */
 
 /*
  ** xfunc_free_stream

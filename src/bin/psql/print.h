@@ -12,12 +12,11 @@
 
 enum printFormat
 {
-				PRINT_NOTHING = 0,		/* to make sure someone
-										 * initializes this */
-				PRINT_UNALIGNED,
-				PRINT_ALIGNED,
-				PRINT_HTML,
-				PRINT_LATEX
+	PRINT_NOTHING = 0,			/* to make sure someone initializes this */
+	PRINT_UNALIGNED,
+	PRINT_ALIGNED,
+	PRINT_HTML,
+	PRINT_LATEX
 	/* add your favourite output format here ... */
 };
 

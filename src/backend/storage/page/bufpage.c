@@ -389,7 +389,7 @@ PageGetFreeSpace(Page page)
 
 	if (space < sizeof(ItemIdData))
 		return 0;
-	space -= sizeof(ItemIdData);		/* XXX not always appropriate */
+	space -= sizeof(ItemIdData);	/* XXX not always appropriate */
 
 	return space;
 }

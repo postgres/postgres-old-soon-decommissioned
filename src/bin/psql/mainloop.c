@@ -393,7 +393,7 @@ MainLoop(FILE *source)
 					line = new;
 					len = strlen(new);
 
-					goto rescan;		/* reparse the just substituted */
+					goto rescan;	/* reparse the just substituted */
 				}
 				else
 				{

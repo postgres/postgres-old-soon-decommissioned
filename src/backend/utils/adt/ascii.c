@@ -190,4 +190,5 @@ to_ascii_default(PG_FUNCTION_ARGS)
 		  )
 		);
 }
+
 #endif	 /* MULTIBYTE */

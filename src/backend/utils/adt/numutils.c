@@ -475,4 +475,5 @@ atof1(char *str, double *val)
 	*val = v;
 	return 0;
 }
+
 #endif

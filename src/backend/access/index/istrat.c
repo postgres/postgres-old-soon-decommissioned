@@ -640,4 +640,5 @@ IndexStrategyDisplay(IndexStrategy indexStrategy,
 		}
 	}
 }
+
 #endif	 /* defined(ISTRATDEBUG) */

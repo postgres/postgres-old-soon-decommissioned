@@ -179,4 +179,5 @@
 		} \
 	} while (0)
 #endif	 /* SIZEOF_DATUM == 8 */
+
 #endif

@@ -425,4 +425,5 @@ DATA(insert (	2001 1 f 1550 ));
 DATA(insert (	2004 1 f 1062 ));
 /* timestamp_ops */
 DATA(insert (	2040 1 f 2060 ));
+
 #endif	 /* PG_AMOP_H */

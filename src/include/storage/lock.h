@@ -251,4 +251,5 @@ extern void InitDeadLockChecking(void);
 extern void DumpLocks(void);
 extern void DumpAllLocks(void);
 #endif
+
 #endif	 /* LOCK_H */

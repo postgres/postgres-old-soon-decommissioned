@@ -630,7 +630,7 @@ hash_search(HTAB *hashp,
 			{
 				/* no free elements.  allocate another chunk of buckets */
 				if (!element_alloc(hashp))
-					return NULL;		/* out of memory */
+					return NULL;	/* out of memory */
 				currBucket = hctl->freeList;
 				Assert(currBucket != NULL);
 			}

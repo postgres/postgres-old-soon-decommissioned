@@ -485,4 +485,5 @@ DATA(insert ( 1259 tableoid			26 0  4  -7 0 -1 -1 t p f i f f));
  * ----------------
  */
 DATA(insert ( 376 xactlockfoo		26 0  4   1 0 -1 -1 t p f i f f));
+
 #endif	 /* PG_ATTRIBUTE_H */

@@ -32,9 +32,9 @@ struct sqlca sqlca =
 {
 	{
 		'S', 'Q', 'L', 'C', 'A', ' ', ' ', ' '
-	}		   ,
-				sizeof(struct sqlca),
-				0,
+	},
+	sizeof(struct sqlca),
+	0,
 	{
 		0,
 		{
@@ -76,7 +76,7 @@ static struct auto_mem
 {
 	void	   *pointer;
 	struct auto_mem *next;
-}		   *auto_allocs = NULL;
+} *auto_allocs = NULL;
 
 static void
 add_mem(void *ptr, int lineno)

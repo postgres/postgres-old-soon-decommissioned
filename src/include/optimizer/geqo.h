@@ -48,7 +48,7 @@
 /* If you change these, update backend/utils/misc/postgresql.sample.conf */
 extern int	Geqo_pool_size;
 
-#define DEFAULT_GEQO_POOL_SIZE 0/* = default based on no. of relations. */
+#define DEFAULT_GEQO_POOL_SIZE 0	/* = default based on no. of relations. */
 #define MIN_GEQO_POOL_SIZE 128
 #define MAX_GEQO_POOL_SIZE 1024
 
@@ -76,4 +76,5 @@ extern Cost geqo_eval(Query *root, List *initial_rels,
 extern RelOptInfo *gimme_tree(Query *root, List *initial_rels,
 		   Gene *tour, int num_gene,
 		   int rel_count, RelOptInfo *old_rel);
+
 #endif	 /* GEQO_H */

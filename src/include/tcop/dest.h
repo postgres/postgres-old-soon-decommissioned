@@ -55,12 +55,12 @@
  */
 typedef enum
 {
-				None,			/* results are discarded */
-				Debug,			/* results go to debugging output */
-				Remote,			/* results sent to frontend process */
-				RemoteInternal, /* results sent to frontend process in
+	None,						/* results are discarded */
+	Debug,						/* results go to debugging output */
+	Remote,						/* results sent to frontend process */
+	RemoteInternal,				/* results sent to frontend process in
 								 * internal (binary) form */
-				SPI				/* results sent to SPI manager */
+	SPI							/* results sent to SPI manager */
 } CommandDest;
 
 /* ----------------
@@ -97,4 +97,5 @@ extern void ReceiveCopyBegin(void);
 extern void NullCommand(CommandDest dest);
 extern void ReadyForQuery(CommandDest dest);
 extern void UpdateCommandInfo(int operation, Oid lastoid, uint32 tuples);
+
 #endif	 /* DEST_H */

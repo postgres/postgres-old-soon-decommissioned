@@ -117,4 +117,5 @@ do { \
 /* Constant table for CRC calculation */
 extern const uint64 crc_table[];
 #endif	 /* INT64_IS_BUSTED */
+
 #endif	 /* PG_CRC_H */

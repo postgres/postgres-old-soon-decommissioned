@@ -192,7 +192,7 @@ main(int argc, char *const argv[])
 				ptr2ext[4] = '\0';
 			}
 
-			if (out_option == 0)/* calculate the output name */
+			if (out_option == 0)	/* calculate the output name */
 			{
 				output_filename = strdup(input_filename);
 

@@ -297,4 +297,5 @@ extern int	NIndexTupleInserted;
 
 extern long NDirectFileRead;
 extern long NDirectFileWrite;
+
 #endif	 /* ExecDebugIncluded */

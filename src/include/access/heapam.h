@@ -245,4 +245,5 @@ extern HeapTuple heap_addheader(int natts, Size structlen, void *structure);
 /* in common/heap/stats.c */
 extern void PrintHeapAccessStatistics(HeapAccessStatistics stats);
 extern void initam(void);
+
 #endif	 /* HEAPAM_H */

@@ -76,8 +76,8 @@ ExecLimit(Limit *node)
 		 *
 		 * Similarly, when scanning backwards, we must re-fetch the last
 		 * tuple in the offset region before we can return NULL. Otherwise
-		 * we won't be correctly aligned to start going forward again.
-		 * So, although you might think we can quit when position equals
+		 * we won't be correctly aligned to start going forward again. So,
+		 * although you might think we can quit when position equals
 		 * offset + 1, we have to fetch a subplan tuple first, and then
 		 * exit when position = offset.
 		 */

@@ -2083,7 +2083,7 @@ LockTableCommand(LockStmt *lockstmt)
 
 		LockRelation(rel, lockstmt->mode);
 
-		heap_close(rel, NoLock);		/* close rel, keep lock */
+		heap_close(rel, NoLock);	/* close rel, keep lock */
 	}
 }
 

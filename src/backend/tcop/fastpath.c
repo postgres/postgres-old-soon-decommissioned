@@ -74,7 +74,7 @@
  * ----------------
  */
 static void
-SendFunctionResult(Datum retval,/* actual return value */
+SendFunctionResult(Datum retval,	/* actual return value */
 				   bool retbyval,
 				   int retlen)	/* the length according to the catalogs */
 {

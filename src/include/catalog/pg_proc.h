@@ -2888,4 +2888,5 @@ extern Oid ProcedureCreate(char *procedureName,
 				int32 percall_cpu,
 				int32 outin_ratio,
 				List *argList);
+
 #endif	 /* PG_PROC_H */

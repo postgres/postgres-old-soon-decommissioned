@@ -207,4 +207,5 @@ extern bool pg_func_ownercheck(Oid userid, char *funcname,
 				   int nargs, Oid *arglist);
 extern bool pg_aggr_ownercheck(Oid userid, char *aggname,
 				   Oid basetypeID);
+
 #endif	 /* ACL_H */

@@ -55,4 +55,5 @@ typedef struct XLogRecPtr
  * pg_clog after shutdown, in future.
  */
 typedef uint32 StartUpID;
+
 #endif	 /* XLOG_DEFS_H */

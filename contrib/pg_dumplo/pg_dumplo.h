@@ -64,11 +64,11 @@ typedef struct
 
 typedef enum
 {
-				ACTION_NONE,
-				ACTION_SHOW,
-				ACTION_EXPORT_ATTR,
-				ACTION_EXPORT_ALL,
-				ACTION_IMPORT
+	ACTION_NONE,
+	ACTION_SHOW,
+	ACTION_EXPORT_ATTR,
+	ACTION_EXPORT_ALL,
+	ACTION_IMPORT
 }			PGLODUMP_ACTIONS;
 
 extern char *progname;
@@ -78,4 +78,5 @@ extern void index_file(LODumpMaster * pgLO);
 extern void load_lolist(LODumpMaster * pgLO);
 extern void pglo_export(LODumpMaster * pgLO);
 extern void pglo_import(LODumpMaster * pgLO);
+
 #endif	 /* PG_DUMPLO_H */

@@ -45,4 +45,5 @@ Datum		pg_decrypt(PG_FUNCTION_ARGS);
 Datum		pg_encrypt_iv(PG_FUNCTION_ARGS);
 Datum		pg_decrypt_iv(PG_FUNCTION_ARGS);
 Datum		pg_cipher_exists(PG_FUNCTION_ARGS);
+
 #endif

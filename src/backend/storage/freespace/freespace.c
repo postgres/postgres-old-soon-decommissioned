@@ -1116,4 +1116,5 @@ DumpFreeSpace(void)
 		fprintf(stderr, "DumpFreeSpace: %d chunks in list, but numFreeChunks = %d\n",
 				nChunks, FreeSpaceMap->numFreeChunks);
 }
+
 #endif	 /* FREESPACE_DEBUG */

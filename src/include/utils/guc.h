@@ -39,11 +39,11 @@
  */
 typedef enum
 {
-				PGC_POSTMASTER,
-				PGC_SIGHUP,
-				PGC_BACKEND,
-				PGC_SUSET,
-				PGC_USERSET
+	PGC_POSTMASTER,
+	PGC_SIGHUP,
+	PGC_BACKEND,
+	PGC_SUSET,
+	PGC_USERSET
 } GucContext;
 
 
@@ -72,4 +72,5 @@ extern bool Show_btree_build_stats;
 
 extern bool SQL_inheritance;
 extern bool Australian_timezones;
+
 #endif	 /* GUC_H */

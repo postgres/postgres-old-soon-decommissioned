@@ -167,4 +167,5 @@ DESCR("");
 #define		  RELKIND_UNCATALOGED	  'u'		/* temporary heap */
 #define		  RELKIND_TOASTVALUE	  't'		/* moved off huge values */
 #define		  RELKIND_VIEW			  'v'		/* view */
+
 #endif	 /* PG_CLASS_H */

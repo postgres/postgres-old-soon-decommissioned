@@ -80,4 +80,5 @@ typedef struct TupleTableData
 } TupleTableData;
 
 typedef TupleTableData *TupleTable;
+
 #endif	 /* TUPTABLE_H */

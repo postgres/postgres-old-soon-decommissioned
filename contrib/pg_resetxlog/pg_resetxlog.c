@@ -491,7 +491,7 @@ ReadRecordV0(XLogRecPtr *RecPtr, char *buffer)
 		readFile = XLogFileOpen(readId, readSeg);
 		if (readFile < 0)
 			goto next_record_is_invalid;
-		readOff = (uint32) (-1);		/* force read to occur below */
+		readOff = (uint32) (-1);	/* force read to occur below */
 	}
 
 	targetPageOff = ((RecPtr->xrecoff % XLogSegSize) / BLCKSZ) * BLCKSZ;

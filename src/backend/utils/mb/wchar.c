@@ -602,4 +602,5 @@ pg_database_encoding_max_length(void)
 {
 	return pg_wchar_table[GetDatabaseEncoding()].maxmblen;
 }
+
 #endif

@@ -56,4 +56,5 @@ extern void free_attstatsslot(Oid atttype,
 extern int32 get_usesysid(const char *username);
 
 #define TypeIsToastable(typid)	(get_typstorage(typid) != 'p')
+
 #endif	 /* LSYSCACHE_H */

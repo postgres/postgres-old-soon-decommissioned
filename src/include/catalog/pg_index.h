@@ -71,4 +71,5 @@ typedef FormData_pg_index *Form_pg_index;
 #define Anum_pg_index_indisprimary		8
 #define Anum_pg_index_indreference		9
 #define Anum_pg_index_indpred			10
+
 #endif	 /* PG_INDEX_H */

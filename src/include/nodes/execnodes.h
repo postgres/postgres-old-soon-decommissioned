@@ -98,11 +98,9 @@ typedef struct ExprContext
  */
 typedef enum
 {
-				ExprSingleResult,		/* expression does not return a
-										 * set */
-				ExprMultipleResult,		/* this result is an element of a
-										 * set */
-				ExprEndResult	/* there are no more elements in the set */
+	ExprSingleResult,			/* expression does not return a set */
+	ExprMultipleResult,			/* this result is an element of a set */
+	ExprEndResult				/* there are no more elements in the set */
 } ExprDoneCond;
 
 /*
@@ -753,4 +751,5 @@ typedef struct TeeState
 				tee_rightScanDesc;
 }			TeeState;
 #endif
+
 #endif	 /* EXECNODES_H */

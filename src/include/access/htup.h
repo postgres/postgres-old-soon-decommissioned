@@ -275,4 +275,5 @@ typedef HeapTupleData *HeapTuple;
 
 #define HeapTupleHasExtended(tuple) \
 		((((HeapTuple)(tuple))->t_data->t_infomask & HEAP_HASEXTENDED) != 0)
+
 #endif	 /* HTUP_H */

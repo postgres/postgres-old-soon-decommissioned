@@ -253,4 +253,5 @@ dumpQ(SHM_QUEUE *q, char *s)
 	strcat(buf, elem);
 	elog(SHMQUEUE_DEBUG_ELOG, "%s: %s", s, buf);
 }
+
 #endif	 /* SHMQUEUE_DEBUG */

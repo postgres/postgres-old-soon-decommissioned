@@ -147,7 +147,7 @@ static const struct EnvironmentOptions
 {
 	const char *envName,
 			   *pgName;
-}			EnvironmentOptions[] =
+} EnvironmentOptions[] =
 
 {
 	/* common user-interface settings */

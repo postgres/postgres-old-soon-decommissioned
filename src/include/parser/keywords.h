@@ -21,4 +21,5 @@ typedef struct ScanKeyword
 } ScanKeyword;
 
 extern ScanKeyword *ScanKeywordLookup(char *text);
+
 #endif	 /* KEYWORDS_H */

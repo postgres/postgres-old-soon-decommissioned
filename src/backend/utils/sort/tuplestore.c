@@ -43,11 +43,11 @@
  */
 typedef enum
 {
-				TSS_INITIAL,	/* Loading tuples; still within memory
+	TSS_INITIAL,				/* Loading tuples; still within memory
 								 * limit */
-				TSS_WRITEFILE,	/* Loading tuples; writing to temp file */
-				TSS_READMEM,	/* Reading tuples; entirely in memory */
-				TSS_READFILE	/* Reading tuples from temp file */
+	TSS_WRITEFILE,				/* Loading tuples; writing to temp file */
+	TSS_READMEM,				/* Reading tuples; entirely in memory */
+	TSS_READFILE				/* Reading tuples from temp file */
 } TupStoreStatus;
 
 /*

@@ -517,7 +517,7 @@ numeric_round(PG_FUNCTION_ARGS)
 
 			if (i < 0)
 			{
-				Assert(i == -1);		/* better not have added more than 1 digit */
+				Assert(i == -1);	/* better not have added more than 1 digit */
 				Assert(arg.digits > arg.buf);
 				arg.digits--;
 				arg.ndigits++;

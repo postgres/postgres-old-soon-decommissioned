@@ -61,4 +61,5 @@ extern void UnlockPage(Relation relation, BlockNumber blkno, LOCKMODE lockmode);
 /* Lock an XID (used to wait for a transaction to finish) */
 extern void XactLockTableInsert(TransactionId xid);
 extern void XactLockTableWait(TransactionId xid);
+
 #endif	 /* LMGR_H */

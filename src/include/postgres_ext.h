@@ -41,4 +41,5 @@ typedef unsigned int Oid;
  * NOTE that databases with different NAMEDATALEN's cannot interoperate!
  */
 #define NAMEDATALEN 32
+
 #endif

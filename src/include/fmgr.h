@@ -383,4 +383,5 @@ extern void load_file(char *filename);
  * DEPRECATED, DO NOT USE IN NEW CODE
  */
 extern char *fmgr(Oid procedureId,...);
+
 #endif	 /* FMGR_H */

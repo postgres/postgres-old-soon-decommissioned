@@ -68,4 +68,5 @@
 #define ZPBITOID	 1560
 #define VARBITOID	  1562
 #define NUMERICOID		1700
+
 #endif	 /* PG_TYPE_H */

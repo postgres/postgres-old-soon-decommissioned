@@ -136,4 +136,5 @@ DATA(insert OID = 2003 (	403		varchar_ops		1043	t	0 ));
 DATA(insert OID = 2004 (	405		varchar_ops		1043	t	0 ));
 DATA(insert OID = 2039 (	403		timestamp_ops	1114	t	0 ));
 DATA(insert OID = 2040 (	405		timestamp_ops	1114	t	0 ));
+
 #endif	 /* PG_OPCLASS_H */

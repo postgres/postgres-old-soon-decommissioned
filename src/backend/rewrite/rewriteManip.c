@@ -995,4 +995,5 @@ HandleRIRAttributeRule(Query *parsetree,
 	query_tree_mutator(parsetree, HandleRIRAttributeRule_mutator,
 					   (void *) &context, true);
 }
+
 #endif	 /* NOT_USED */

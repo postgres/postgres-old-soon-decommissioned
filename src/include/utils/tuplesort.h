@@ -83,10 +83,10 @@ extern void tuplesort_restorepos(Tuplesortstate *state);
  */
 typedef enum
 {
-				SORTFUNC_LT,	/* raw "<" operator */
-				SORTFUNC_REVLT, /* raw "<" operator, but reverse NULLs */
-				SORTFUNC_CMP,	/* -1 / 0 / 1 three-way comparator */
-				SORTFUNC_REVCMP /* 1 / 0 / -1 (reversed) 3-way comparator */
+	SORTFUNC_LT,				/* raw "<" operator */
+	SORTFUNC_REVLT,				/* raw "<" operator, but reverse NULLs */
+	SORTFUNC_CMP,				/* -1 / 0 / 1 three-way comparator */
+	SORTFUNC_REVCMP				/* 1 / 0 / -1 (reversed) 3-way comparator */
 } SortFunctionKind;
 
 extern void SelectSortFunction(Oid sortOperator,
@@ -101,4 +101,5 @@ extern void SelectSortFunction(Oid sortOperator,
 extern int32 ApplySortFunction(FmgrInfo *sortFunction, SortFunctionKind kind,
 				  Datum datum1, bool isNull1,
 				  Datum datum2, bool isNull2);
+
 #endif	 /* TUPLESORT_H */

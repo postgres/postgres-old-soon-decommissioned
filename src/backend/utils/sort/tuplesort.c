@@ -104,13 +104,12 @@
  */
 typedef enum
 {
-				TSS_INITIAL,	/* Loading tuples; still within memory
+	TSS_INITIAL,				/* Loading tuples; still within memory
 								 * limit */
-				TSS_BUILDRUNS,	/* Loading tuples; writing to tape */
-				TSS_SORTEDINMEM,/* Sort completed entirely in memory */
-				TSS_SORTEDONTAPE,		/* Sort completed, final run is on
-										 * tape */
-				TSS_FINALMERGE	/* Performing final merge on-the-fly */
+	TSS_BUILDRUNS,				/* Loading tuples; writing to tape */
+	TSS_SORTEDINMEM,			/* Sort completed entirely in memory */
+	TSS_SORTEDONTAPE,			/* Sort completed, final run is on tape */
+	TSS_FINALMERGE				/* Performing final merge on-the-fly */
 } TupSortStatus;
 
 /*

@@ -56,11 +56,11 @@
 
 typedef enum _archiveFormat
 {
-				archUnknown = 0,
-				archCustom = 1,
-				archFiles = 2,
-				archTar = 3,
-				archNull = 4
+	archUnknown = 0,
+	archCustom = 1,
+	archFiles = 2,
+	archTar = 3,
+	archNull = 4
 } ArchiveFormat;
 
 /*
@@ -196,4 +196,5 @@ extern int
 archprintf(Archive *AH, const char *fmt,...)
 /* This extension allows gcc to check the format string */
 __attribute__((format(printf, 2, 3)));
+
 #endif

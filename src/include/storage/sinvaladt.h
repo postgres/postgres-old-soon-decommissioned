@@ -114,4 +114,5 @@ extern bool SIInsertDataEntry(SISeg *segP, SharedInvalidationMessage *data);
 extern int SIGetDataEntry(SISeg *segP, int backendId,
 			   SharedInvalidationMessage *data);
 extern void SIDelExpiredDataEntries(SISeg *segP);
+
 #endif	 /* SINVALADT_H */

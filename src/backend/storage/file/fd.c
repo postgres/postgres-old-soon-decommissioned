@@ -118,11 +118,11 @@ typedef struct vfd
 	unsigned short fdstate;		/* bitflags for VFD's state */
 
 /* these are the assigned bits in fdstate: */
-#define FD_DIRTY		(1 << 0)/* written to, but not yet fsync'd */
-#define FD_TEMPORARY	(1 << 1)/* should be unlinked when closed */
+#define FD_DIRTY		(1 << 0)	/* written to, but not yet fsync'd */
+#define FD_TEMPORARY	(1 << 1)	/* should be unlinked when closed */
 
 	File		nextFree;		/* link to next free VFD, if in freelist */
-	File		lruMoreRecently;		/* doubly linked recency-of-use list */
+	File		lruMoreRecently;	/* doubly linked recency-of-use list */
 	File		lruLessRecently;
 	long		seekPos;		/* current logical file position */
 	char	   *fileName;		/* name of file, or NULL for unused VFD */

@@ -63,4 +63,5 @@ extern void IndexSupportInitialize(IndexStrategy indexStrategy,
 					   StrategyNumber maxStrategyNumber,
 					   StrategyNumber maxSupportNumber,
 					   AttrNumber maxAttributeNumber);
+
 #endif	 /* ISTRAT_H */

@@ -224,11 +224,11 @@ extern void dumpSchemaIdx(Archive *fout,
 
 typedef enum _OidOptions
 {
-				zeroAsOpaque = 1,
-				zeroAsAny = 2,
-				zeroAsStar = 4,
-				zeroAsNone = 8,
-				useBaseTypeName = 1024
+	zeroAsOpaque = 1,
+	zeroAsAny = 2,
+	zeroAsStar = 4,
+	zeroAsNone = 8,
+	useBaseTypeName = 1024
 } OidOptions;
 
 extern char *findTypeByOid(TypeInfo *tinfo, int numTypes, const char *oid, OidOptions opts);
@@ -279,4 +279,5 @@ extern void dumpIndexes(Archive *fout, IndInfo *indinfo, int numIndexes,
 			TableInfo *tbinfo, int numTables, const char *tablename);
 extern const char *fmtId(const char *identifier, bool force_quotes);
 extern void exit_nicely(void);
+
 #endif	 /* PG_DUMP_H */

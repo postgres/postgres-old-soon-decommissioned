@@ -36,4 +36,5 @@ extern void handle_sigint(SIGNAL_ARGS);
 extern PGresult *PSQLexec(const char *query);
 
 extern bool SendQuery(const char *query);
+
 #endif	 /* COMMON_H */

@@ -32,4 +32,5 @@
 #define pg_dlerror		dlerror
 
 /* port.c */
+
 #endif	 /* PORT_PROTOS_H */

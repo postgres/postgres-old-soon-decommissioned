@@ -21,4 +21,5 @@ extern void renameatt(char *relname,
 
 extern void renamerel(const char *oldrelname,
 		  const char *newrelname);
+
 #endif	 /* RENAME_H */

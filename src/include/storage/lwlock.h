@@ -25,31 +25,31 @@
  */
 typedef enum LWLockId
 {
-				BufMgrLock,
-				LockMgrLock,
-				OidGenLock,
-				XidGenLock,
-				ShmemIndexLock,
-				SInvalLock,
-				FreeSpaceLock,
-				MMCacheLock,
-				WALInsertLock,
-				WALWriteLock,
-				ControlFileLock,
-				CheckpointLock,
-				CLogControlLock,
+	BufMgrLock,
+	LockMgrLock,
+	OidGenLock,
+	XidGenLock,
+	ShmemIndexLock,
+	SInvalLock,
+	FreeSpaceLock,
+	MMCacheLock,
+	WALInsertLock,
+	WALWriteLock,
+	ControlFileLock,
+	CheckpointLock,
+	CLogControlLock,
 
-				NumFixedLWLocks,/* must be last except for
+	NumFixedLWLocks,			/* must be last except for
 								 * MaxDynamicLWLock */
 
-				MaxDynamicLWLock = 1000000000
+	MaxDynamicLWLock = 1000000000
 } LWLockId;
 
 
 typedef enum LWLockMode
 {
-				LW_EXCLUSIVE,
-				LW_SHARED
+	LW_EXCLUSIVE,
+	LW_SHARED
 } LWLockMode;
 
 
@@ -66,4 +66,5 @@ extern void LWLockReleaseAll(void);
 extern int	NumLWLocks(void);
 extern int	LWLockShmemSize(void);
 extern void CreateLWLocks(void);
+
 #endif	 /* LWLOCK_H */

@@ -495,7 +495,7 @@ static struct
 {
 	const char *name;
 	struct pg_encoding enc;
-}			enclist[] =
+} enclist[] =
 
 {
 	{

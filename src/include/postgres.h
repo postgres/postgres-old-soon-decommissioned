@@ -77,7 +77,7 @@ typedef struct varattrib
 			int32		va_extsize;		/* External saved size */
 			Oid			va_valueid;		/* Unique identifier of value */
 			Oid			va_toastrelid;	/* RelID where to find chunks */
-		}			va_external;		/* External stored attribute */
+		}			va_external;	/* External stored attribute */
 
 		char		va_data[1]; /* Plain stored attribute */
 	}			va_content;

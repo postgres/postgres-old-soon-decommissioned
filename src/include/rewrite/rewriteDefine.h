@@ -19,4 +19,5 @@
 extern void DefineQueryRewrite(RuleStmt *args);
 
 extern void RenameRewriteRule(char *oldname, char *newname);
+
 #endif	 /* REWRITEDEFINE_H */

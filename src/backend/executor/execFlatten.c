@@ -239,4 +239,5 @@ FjoinBumpOuterNodes(TargetEntry *tlist,
 	}
 	return false;
 }
+
 #endif

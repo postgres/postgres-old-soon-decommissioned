@@ -37,4 +37,5 @@ extern void free_chromo(Chromosome *chromo);
 extern void spread_chromo(Chromosome *chromo, Pool *pool);
 
 extern void sort_pool(Pool *pool);
+
 #endif	 /* GEQO_POOL_H */

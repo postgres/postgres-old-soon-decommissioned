@@ -110,4 +110,5 @@ extern void appendStringInfoChar(StringInfo str, char ch);
  */
 extern void appendBinaryStringInfo(StringInfo str,
 					   const char *data, int datalen);
+
 #endif	 /* STRINGINFO_H */

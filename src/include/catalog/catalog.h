@@ -25,4 +25,5 @@ extern bool IsSystemRelationName(const char *relname);
 extern bool IsSharedSystemRelationName(const char *relname);
 
 extern Oid	newoid(void);
+
 #endif	 /* CATALOG_H */

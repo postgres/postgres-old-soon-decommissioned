@@ -93,4 +93,5 @@ typedef bits16 ItemIdFlags;
 	AssertMacro(ItemIdIsValid(itemId)), \
 	(bool) (((itemId)->lp_flags & LP_USED) != 0) \
 )
+
 #endif	 /* ITEMID_H */

@@ -33,8 +33,8 @@ typedef Oid Blob;
  */
 
 Blob	   *lo_in(char *str);	/* Create from String		*/
-char	   *lo_out(Blob * addr);		/* Output oid as String		*/
-Oid			lo_oid(Blob * addr);		/* Return oid as an oid		*/
+char	   *lo_out(Blob * addr);	/* Output oid as String		*/
+Oid			lo_oid(Blob * addr);	/* Return oid as an oid		*/
 Blob	   *lo(Oid oid);		/* Return Blob based on oid */
 Datum		lo_manage(PG_FUNCTION_ARGS);		/* Trigger handler		   */
 
@@ -139,7 +139,7 @@ lo_manage(PG_FUNCTION_ARGS)
 	TupleDesc	tupdesc;		/* Tuple Descriptor				*/
 	HeapTuple	rettuple;		/* Tuple to be returned			*/
 	bool		isdelete;		/* are we deleting?				*/
-	HeapTuple	newtuple = NULL;		/* The new value for tuple		*/
+	HeapTuple	newtuple = NULL;	/* The new value for tuple		*/
 	HeapTuple	trigtuple;		/* The original value of tuple	*/
 
 	if (!CALLED_AS_TRIGGER(fcinfo))

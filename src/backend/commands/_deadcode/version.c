@@ -342,4 +342,5 @@ VersionReplace(char *vname, char *bname, char *snapshot)
 /*	printf("%s\n",rule_buf); */
 
 }
+
 #endif

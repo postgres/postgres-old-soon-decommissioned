@@ -18,4 +18,5 @@ extern int	copy_lineno;
 
 void DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
 	   char *filename, char *delim, char *null_print);
+
 #endif	 /* COPY_H */

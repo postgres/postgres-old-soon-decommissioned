@@ -102,7 +102,7 @@ typedef struct sbufdesc
 	 * BM_PIN_COUNT_WAITER. At present, there can be only one such waiter
 	 * per buffer.
 	 */
-	BackendId	wait_backend_id;		/* backend ID of pin-count waiter */
+	BackendId	wait_backend_id;	/* backend ID of pin-count waiter */
 } BufferDesc;
 
 #define BufferDescriptorGetBuffer(bdesc) ((bdesc)->buf_id + 1)
@@ -183,4 +183,5 @@ extern int	WriteLocalBuffer(Buffer buffer, bool release);
 extern int	FlushLocalBuffer(Buffer buffer, bool sync, bool release);
 extern void LocalBufferSync(void);
 extern void ResetLocalBufferPool(void);
+
 #endif	 /* BUFMGR_INTERNALS_H */

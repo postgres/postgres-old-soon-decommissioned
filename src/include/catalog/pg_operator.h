@@ -856,4 +856,5 @@ extern void OperatorCreate(char *operatorName,
 			   bool canHash,
 			   char *leftSortName,
 			   char *rightSortName);
+
 #endif	 /* PG_OPERATOR_H */

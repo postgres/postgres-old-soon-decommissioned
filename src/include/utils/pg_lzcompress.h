@@ -227,4 +227,5 @@ int			pglz_decompress(PGLZ_Header *source, char *dest);
  */
 extern int	pglz_get_next_decomp_char_from_lzdata(PGLZ_DecompState *dstate);
 extern int	pglz_get_next_decomp_char_from_plain(PGLZ_DecompState *dstate);
+
 #endif	 /* _PG_LZCOMPRESS_H_ */

@@ -147,4 +147,5 @@ extern void freeList(List *list);
 
 /* in copyfuncs.c */
 extern List *listCopy(List *list);
+
 #endif	 /* PG_LIST_H */

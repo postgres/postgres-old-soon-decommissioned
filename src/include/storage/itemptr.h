@@ -142,4 +142,5 @@ typedef ItemPointerData *ItemPointer;
  */
 
 extern bool ItemPointerEquals(ItemPointer pointer1, ItemPointer pointer2);
+
 #endif	 /* ITEMPTR_H */

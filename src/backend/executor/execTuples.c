@@ -406,7 +406,7 @@ ExecClearTuple(TupleTableSlot *slot)	/* slot in which to store tuple */
 
 	slot->val = (HeapTuple) NULL;
 
-	slot->ttc_shouldFree = true;		/* probably useless code... */
+	slot->ttc_shouldFree = true;	/* probably useless code... */
 
 	/*
 	 * Drop the pin on the referenced buffer, if there is one.

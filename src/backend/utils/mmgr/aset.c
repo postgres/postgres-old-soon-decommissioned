@@ -1082,4 +1082,5 @@ AllocSetCheck(MemoryContext context)
 				 name, block);
 	}
 }
+
 #endif	 /* MEMORY_CONTEXT_CHECKING */

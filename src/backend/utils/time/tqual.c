@@ -324,7 +324,7 @@ HeapTupleSatisfiesUpdate(HeapTuple tuple)
 	{
 		if (th->t_infomask & HEAP_MARKED_FOR_UPDATE)
 			return HeapTupleMayBeUpdated;
-		return HeapTupleUpdated;		/* updated by other */
+		return HeapTupleUpdated;	/* updated by other */
 	}
 
 	if (TransactionIdIsCurrentTransactionId(th->t_xmax))

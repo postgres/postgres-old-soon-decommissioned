@@ -78,4 +78,5 @@ DATAMARKOID(= 2)
 #define RecoveryDb	2
 
 #undef DATAMARKOID
+
 #endif	 /* PG_DATABASE_H */

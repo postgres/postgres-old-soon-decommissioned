@@ -260,10 +260,9 @@ extern bool is_dbadmin(Oid dbid);		/* current user is owner of
 
 typedef enum ProcessingMode
 {
-				BootstrapProcessing,	/* bootstrap creation of template
-										 * database */
-				InitProcessing, /* initializing system */
-				NormalProcessing/* normal processing */
+	BootstrapProcessing,		/* bootstrap creation of template database */
+	InitProcessing,				/* initializing system */
+	NormalProcessing			/* normal processing */
 } ProcessingMode;
 
 extern ProcessingMode Mode;
@@ -305,4 +304,5 @@ extern void ValidatePgVersion(const char *path);
 extern void IgnoreSystemIndexes(bool mode);
 extern bool IsIgnoringSystemIndexes(void);
 extern bool IsCacheInitialized(void);
+
 #endif	 /* MISCADMIN_H */

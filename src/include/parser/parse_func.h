@@ -41,9 +41,9 @@ typedef struct _CandidateList
 /* Result codes for func_get_detail */
 typedef enum
 {
-				FUNCDETAIL_NOTFOUND,	/* no suitable interpretation */
-				FUNCDETAIL_NORMAL,		/* found a matching function */
-				FUNCDETAIL_COERCION		/* it's a type coercion request */
+	FUNCDETAIL_NOTFOUND,		/* no suitable interpretation */
+	FUNCDETAIL_NORMAL,			/* found a matching function */
+	FUNCDETAIL_COERCION			/* it's a type coercion request */
 } FuncDetailCode;
 
 
@@ -63,4 +63,5 @@ extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
 
 extern void func_error(char *caller, char *funcname,
 		   int nargs, Oid *argtypes, char *msg);
+
 #endif	 /* PARSE_FUNC_H */

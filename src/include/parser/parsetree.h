@@ -51,4 +51,5 @@
  * variable name or alias for that attribute of that RTE.
  */
 extern char *get_rte_attribute_name(RangeTblEntry *rte, AttrNumber attnum);
+
 #endif	 /* PARSETREE_H */

@@ -38,7 +38,7 @@ pg_encname	pg_encname_tbl[] =
 {
 	{
 		"alt", PG_ALT
-	}		   ,				/* IBM866 */
+	},							/* IBM866 */
 	{
 		"big5", PG_BIG5
 	},							/* Big5; Chinese for Taiwan Multi-byte set */
@@ -191,7 +191,7 @@ pg_enc2name pg_enc2name_tbl[] =
 {
 	{
 		"SQL_ASCII", PG_SQL_ASCII
-	}		   ,
+	},
 	{
 		"EUC_JP", PG_EUC_JP
 	},
@@ -418,4 +418,5 @@ PG_encoding_to_char(PG_FUNCTION_ARGS)
 
 	return DirectFunctionCall1(namein, CStringGetDatum(encoding_name));
 }
+
 #endif

@@ -75,4 +75,5 @@ do {				\
 	md5_pad((y));		\
 	md5_result((x), (y));	\
 } while (0)
+
 #endif	 /* ! _NETINET6_MD5_H_ */

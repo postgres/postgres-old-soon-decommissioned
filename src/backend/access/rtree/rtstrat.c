@@ -119,9 +119,9 @@ static StrategyNumber RTNegateCommute[RTNStrategies] = {
 /* if you only have "contained-by", how do you determine equality? */
 static uint16 RTContainedByTermData[] = {
 	2,							/* make two comparisons */
-	RTContainedByStrategyNumber,/* use "a contained-by b" */
+	RTContainedByStrategyNumber,	/* use "a contained-by b" */
 	0x0,						/* without any magic */
-	RTContainedByStrategyNumber,/* then use contained-by, */
+	RTContainedByStrategyNumber,	/* then use contained-by, */
 	SK_COMMUTE					/* swapping a and b */
 };
 

@@ -72,4 +72,5 @@ extern Oid GetSysCacheOid(int cacheId,
 
 extern Datum SysCacheGetAttr(int cacheId, HeapTuple tup,
 				AttrNumber attributeNumber, bool *isNull);
+
 #endif	 /* SYSCACHE_H */

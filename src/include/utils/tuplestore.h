@@ -56,4 +56,5 @@ extern void tuplestore_end(Tuplestorestate *state);
 extern void tuplestore_rescan(Tuplestorestate *state);
 extern void tuplestore_markpos(Tuplestorestate *state);
 extern void tuplestore_restorepos(Tuplestorestate *state);
+
 #endif	 /* TUPLESTORE_H */

@@ -349,4 +349,5 @@ pg_wcswidth(unsigned char *pwcs, int len)
 {
 	return len;
 }
+
 #endif

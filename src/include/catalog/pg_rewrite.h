@@ -63,4 +63,5 @@ typedef FormData_pg_rewrite *Form_pg_rewrite;
 #define Anum_pg_rewrite_is_instead		5
 #define Anum_pg_rewrite_ev_qual			6
 #define Anum_pg_rewrite_ev_action		7
+
 #endif	 /* PG_REWRITE_H */

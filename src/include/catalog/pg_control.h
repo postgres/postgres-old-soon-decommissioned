@@ -51,11 +51,11 @@ typedef struct CheckPoint
 /* System status indicator */
 typedef enum DBState
 {
-				DB_STARTUP = 0,
-				DB_SHUTDOWNED,
-				DB_SHUTDOWNING,
-				DB_IN_RECOVERY,
-				DB_IN_PRODUCTION
+	DB_STARTUP = 0,
+	DB_SHUTDOWNED,
+	DB_SHUTDOWNING,
+	DB_IN_RECOVERY,
+	DB_IN_PRODUCTION
 } DBState;
 
 #define LOCALE_NAME_BUFLEN	128
@@ -110,4 +110,5 @@ typedef struct ControlFileData
 	char		lc_collate[LOCALE_NAME_BUFLEN];
 	char		lc_ctype[LOCALE_NAME_BUFLEN];
 } ControlFileData;
+
 #endif	 /* PG_CONTROL_H */

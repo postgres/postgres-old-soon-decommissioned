@@ -240,4 +240,5 @@ IndexScanRestorePosition(IndexScanDesc scan)
 
 	scan->flags = 0x0;			/* XXX should have a symbolic name */
 }
+
 #endif

@@ -13,4 +13,5 @@ unsigned char *mbvalidate(unsigned char *pwcs);
 #endif	 /* MULTIBYTE */
 
 int			pg_wcswidth(unsigned char *pwcs, int len);
+
 #endif	 /* MBPRINT_H */

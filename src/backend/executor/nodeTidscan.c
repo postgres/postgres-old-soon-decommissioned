@@ -162,7 +162,7 @@ TidNext(TidScan *node)
 			 * with palloc() and so should not be pfree()'d.
 			 */
 			ExecStoreTuple(tuple,		/* tuple to store */
-						   slot,/* slot to store in */
+						   slot,	/* slot to store in */
 						   buffer,		/* buffer associated with tuple  */
 						   false);		/* don't pfree */
 

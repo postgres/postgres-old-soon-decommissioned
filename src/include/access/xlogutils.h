@@ -25,4 +25,5 @@ extern void XLogCloseRelationCache(void);
 
 extern Relation XLogOpenRelation(bool redo, RmgrId rmid, RelFileNode rnode);
 extern Buffer XLogReadBuffer(bool extend, Relation reln, BlockNumber blkno);
+
 #endif

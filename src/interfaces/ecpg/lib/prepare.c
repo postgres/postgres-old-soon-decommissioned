@@ -15,7 +15,7 @@ static struct prepared_statement
 	char	   *name;
 	struct statement *stmt;
 	struct prepared_statement *next;
-}		   *prep_stmts = NULL;
+} *prep_stmts = NULL;
 
 static bool
 isvarchar(unsigned char c)

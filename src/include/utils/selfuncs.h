@@ -21,13 +21,13 @@
 
 typedef enum
 {
-				Pattern_Type_Like, Pattern_Type_Like_IC,
-				Pattern_Type_Regex, Pattern_Type_Regex_IC
+	Pattern_Type_Like, Pattern_Type_Like_IC,
+	Pattern_Type_Regex, Pattern_Type_Regex_IC
 } Pattern_Type;
 
 typedef enum
 {
-				Pattern_Prefix_None, Pattern_Prefix_Partial, Pattern_Prefix_Exact
+	Pattern_Prefix_None, Pattern_Prefix_Partial, Pattern_Prefix_Exact
 } Pattern_Prefix_Status;
 
 
@@ -73,4 +73,5 @@ extern Datum btcostestimate(PG_FUNCTION_ARGS);
 extern Datum rtcostestimate(PG_FUNCTION_ARGS);
 extern Datum hashcostestimate(PG_FUNCTION_ARGS);
 extern Datum gistcostestimate(PG_FUNCTION_ARGS);
+
 #endif	 /* SELFUNCS_H */

@@ -42,6 +42,7 @@ extern		"C"
 	void	   *dlsym(void *handle, const char *symbol);
 	char	   *dlerror(void);
 	int			dlclose(void *handle);
+
 #else
 	void	   *dlopen();
 	void	   *dlsym();
@@ -60,4 +61,5 @@ extern		"C"
 #define  pg_dlsym	dlsym
 #define  pg_dlclose dlclose
 #define  pg_dlerror dlerror
+
 #endif	 /* PORT_PROTOS_H */

@@ -186,4 +186,5 @@ tas_sema(volatile slock_t *lock)
 	/* Note that TAS macros return 0 if *success* */
 	return !IpcSemaphoreTryLock(lock->semId, lock->sem);
 }
+
 #endif	 /* !HAS_TEST_AND_SET */

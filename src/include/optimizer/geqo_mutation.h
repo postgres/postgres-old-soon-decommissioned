@@ -25,4 +25,5 @@
 #include "optimizer/geqo_gene.h"
 
 extern void geqo_mutation(Gene *tour, int num_gene);
+
 #endif	 /* GEQO_MUTATION_H */

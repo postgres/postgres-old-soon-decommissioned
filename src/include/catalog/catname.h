@@ -43,4 +43,5 @@
 #define  TriggerRelationName "pg_trigger"
 
 extern char *SharedSystemRelationNames[];
+
 #endif	 /* CATNAME_H */

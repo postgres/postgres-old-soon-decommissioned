@@ -28,4 +28,5 @@ typedef IndexAttributeBitMapData *IndexAttributeBitMap;
  *		True iff attribute bit map is valid.
  */
 #define IndexAttributeBitMapIsValid(bits) PointerIsValid(bits)
+
 #endif	 /* IBIT_H */

@@ -75,7 +75,7 @@ static struct
 	unsigned	id_len;
 	char	   *(*crypt) (const char *psw, const char *salt,
 									  char *buf, unsigned len);
-}			px_crypt_list[] =
+} px_crypt_list[] =
 
 {
 	{

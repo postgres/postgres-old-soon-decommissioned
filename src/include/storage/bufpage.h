@@ -132,8 +132,8 @@ typedef PageHeaderData *PageHeader;
 
 typedef enum
 {
-				ShufflePageManagerMode,
-				OverwritePageManagerMode
+	ShufflePageManagerMode,
+	OverwritePageManagerMode
 } PageManagerMode;
 
 /* ----------------------------------------------------------------

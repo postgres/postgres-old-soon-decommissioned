@@ -61,7 +61,7 @@ static struct int_digest
 {
 	char	   *name;
 	void		(*init) (PX_MD * h);
-}			int_digest_list[] =
+} int_digest_list[] =
 
 {
 	{
@@ -520,7 +520,7 @@ static struct
 {
 	char	   *name;
 	PX_Cipher  *(*load) (void);
-}			int_ciphers[] =
+} int_ciphers[] =
 
 {
 	{

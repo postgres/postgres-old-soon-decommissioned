@@ -429,7 +429,7 @@ ExecMergeJoin(MergeJoin *node)
 		default:
 			elog(ERROR, "ExecMergeJoin: unsupported join type %d",
 				 (int) node->join.jointype);
-			doFillOuter = false;		/* keep compiler quiet */
+			doFillOuter = false;	/* keep compiler quiet */
 			doFillInner = false;
 			break;
 	}

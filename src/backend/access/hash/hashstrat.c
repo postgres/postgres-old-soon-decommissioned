@@ -80,4 +80,5 @@ _hash_invokestrat(Relation rel,
 	return (RelationInvokeStrategy(rel, &HTEvaluationData, attno, strat,
 								   left, right));
 }
+
 #endif

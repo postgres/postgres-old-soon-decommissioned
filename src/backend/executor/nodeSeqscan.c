@@ -105,7 +105,7 @@ SeqNext(SeqScan *node)
 	 * tuple table slot is cleared.
 	 */
 
-	slot = ExecStoreTuple(tuple,/* tuple to store */
+	slot = ExecStoreTuple(tuple,	/* tuple to store */
 						  slot, /* slot to store in */
 						  scandesc->rs_cbuf,	/* buffer associated with
 												 * this tuple */

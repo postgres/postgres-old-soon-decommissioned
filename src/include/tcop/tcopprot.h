@@ -48,4 +48,5 @@ extern int	PostgresMain(int argc, char *argv[], const char *username);
 extern void ResetUsage(void);
 extern void ShowUsage(void);
 extern FILE *StatFp;
+
 #endif	 /* TCOPPROT_H */

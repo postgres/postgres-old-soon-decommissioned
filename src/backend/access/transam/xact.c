@@ -994,7 +994,7 @@ CommitTransaction(void)
 	AtCommit_Memory();
 	AtEOXact_Files();
 
-	SharedBufferChanged = false;		/* safest place to do it */
+	SharedBufferChanged = false;	/* safest place to do it */
 
 	/* Count transaction commit in statistics collector */
 	pgstat_count_xact_commit();
@@ -1097,7 +1097,7 @@ AbortTransaction(void)
 	AtEOXact_Files();
 	AtAbort_Locks();
 
-	SharedBufferChanged = false;		/* safest place to do it */
+	SharedBufferChanged = false;	/* safest place to do it */
 
 	/* Count transaction abort in statistics collector */
 	pgstat_count_xact_rollback();

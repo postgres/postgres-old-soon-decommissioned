@@ -88,12 +88,10 @@ extern RelOptInfo *make_jointree_rel(Query *root, Node *jtnode);
  */
 typedef enum
 {
-				PATHKEYS_EQUAL, /* pathkeys are identical */
-				PATHKEYS_BETTER1,		/* pathkey 1 is a superset of
-										 * pathkey 2 */
-				PATHKEYS_BETTER2,		/* vice versa */
-				PATHKEYS_DIFFERENT		/* neither pathkey includes the
-										 * other */
+	PATHKEYS_EQUAL,				/* pathkeys are identical */
+	PATHKEYS_BETTER1,			/* pathkey 1 is a superset of pathkey 2 */
+	PATHKEYS_BETTER2,			/* vice versa */
+	PATHKEYS_DIFFERENT			/* neither pathkey includes the other */
 } PathKeysComparison;
 
 extern void add_equijoined_keys(Query *root, RestrictInfo *restrictinfo);
@@ -132,4 +130,5 @@ extern int	pathkeys_useful_for_ordering(Query *root, List *pathkeys);
 extern List *truncate_useless_pathkeys(Query *root,
 						  RelOptInfo *rel,
 						  List *pathkeys);
+
 #endif	 /* PATHS_H */

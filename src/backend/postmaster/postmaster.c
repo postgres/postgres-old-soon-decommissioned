@@ -1092,7 +1092,7 @@ ProcessStartupPacket(Port *port, bool SSLdone)
 		{
 			elog(DEBUG, "failed to send SSL negotiation response: %s",
 				 strerror(errno));
-			return STATUS_ERROR;		/* close the connection */
+			return STATUS_ERROR;	/* close the connection */
 		}
 
 #ifdef USE_SSL

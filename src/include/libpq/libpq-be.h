@@ -67,10 +67,10 @@ typedef struct AuthRequestPacket
 
 typedef enum
 {
-				Idle,
-				ReadingPacketLength,
-				ReadingPacket,
-				WritingPacket
+	Idle,
+	ReadingPacketLength,
+	ReadingPacket,
+	WritingPacket
 } PacketState;
 
 typedef int (*PacketDoneProc) (void *arg, PacketLen pktlen, void *pktdata);
@@ -155,4 +155,5 @@ int			PacketReceiveFragment(Port *port);
 void		PacketSendSetup(Packet *pkt, int nbytes, PacketDoneProc iodone, void *arg);
 int			PacketSendFragment(Port *port);
 void		PacketSendError(Packet *pkt, char *errormsg);
+
 #endif	 /* LIBPQ_BE_H */

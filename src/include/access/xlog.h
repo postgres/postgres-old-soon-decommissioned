@@ -215,4 +215,5 @@ extern XLogRecPtr GetUndoRecPtr(void);
 
 extern bool check_xlog_sync_method(const char *method);
 extern void assign_xlog_sync_method(const char *method);
+
 #endif	 /* XLOG_H */

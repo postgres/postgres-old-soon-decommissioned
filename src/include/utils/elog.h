@@ -40,4 +40,5 @@ elog(int lev, const char *fmt,...)
 __attribute__((format(printf, 2, 3)));
 
 extern int	DebugFileOpen(void);
+
 #endif	 /* ELOG_H */

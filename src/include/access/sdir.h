@@ -21,9 +21,9 @@
  */
 typedef enum ScanDirection
 {
-				BackwardScanDirection = -1,
-				NoMovementScanDirection = 0,
-				ForwardScanDirection = 1
+	BackwardScanDirection = -1,
+	NoMovementScanDirection = 0,
+	ForwardScanDirection = 1
 } ScanDirection;
 
 /*
@@ -54,4 +54,5 @@ typedef enum ScanDirection
  */
 #define ScanDirectionIsForward(direction) \
 	((bool) ((direction) == ForwardScanDirection))
+
 #endif	 /* SDIR_H */

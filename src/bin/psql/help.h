@@ -15,4 +15,5 @@ void		slashUsage(void);
 void		helpSQL(const char *topic);
 
 void		print_copyright(void);
+
 #endif

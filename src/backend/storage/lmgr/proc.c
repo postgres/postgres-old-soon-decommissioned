@@ -653,7 +653,7 @@ ProcSleep(LOCKMETHODTABLE *lockMethodTable,
 	MyProc->waitHolder = holder;
 	MyProc->waitLockMode = lockmode;
 
-	MyProc->errType = STATUS_OK;		/* initialize result for success */
+	MyProc->errType = STATUS_OK;	/* initialize result for success */
 
 	/*
 	 * If we detected deadlock, give up without waiting.  This must agree

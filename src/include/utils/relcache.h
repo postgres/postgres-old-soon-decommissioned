@@ -72,4 +72,5 @@ extern void DestroyDummyCaches(void);
  */
 
 #define RELCACHE_INIT_FILENAME	"pg_internal.init"
+
 #endif	 /* RELCACHE_H */

@@ -32,4 +32,5 @@
 #define  pg_dlsym(h, f) ((PGFunction) dlsym(h, f))
 #define  pg_dlclose(h)	dlclose(h)
 #define  pg_dlerror()	dlerror()
+
 #endif	 /* PORT_PROTOS_H */

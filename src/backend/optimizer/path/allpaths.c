@@ -668,4 +668,5 @@ debug_print_rel(Query *root, RelOptInfo *rel)
 	printf("\n");
 	fflush(stdout);
 }
+
 #endif	 /* OPTIMIZER_DEBUG */

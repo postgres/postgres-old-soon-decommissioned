@@ -152,4 +152,5 @@ DBG_LookupListCheck(int nlookup)
 
 	hash_stats("Shared", SharedBufHash);
 }
+
 #endif

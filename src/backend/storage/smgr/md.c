@@ -58,7 +58,7 @@ typedef struct _MdfdVec
 
 	int			mdfd_nextFree;	/* link to next freelist member, if free */
 #ifndef LET_OS_MANAGE_FILESIZE
-	struct _MdfdVec *mdfd_chain;		/* for large relations */
+	struct _MdfdVec *mdfd_chain;	/* for large relations */
 #endif
 } MdfdVec;
 

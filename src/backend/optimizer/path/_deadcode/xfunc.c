@@ -265,7 +265,7 @@ RestrictInfo
 xfunc_pullup(Query *queryInfo,
 			 Path childpath,
 			 JoinPath parentpath,
-			 RestrictInfo cinfo,/* clause to pull up */
+			 RestrictInfo cinfo,	/* clause to pull up */
 			 int whichchild,	/* whether child is INNER or OUTER of join */
 			 int clausetype)	/* whether clause to pull is join or local */
 {

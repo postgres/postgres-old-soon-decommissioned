@@ -175,7 +175,7 @@ best_or_subclause_indices(Query *root,
 
 		pathnode->indexinfo = lappend(pathnode->indexinfo, best_indexinfo);
 		pathnode->indexqual = lappend(pathnode->indexqual, best_indexqual);
-		if (slist == subclauses)/* first scan? */
+		if (slist == subclauses)	/* first scan? */
 			pathnode->path.startup_cost = best_startup_cost;
 		pathnode->path.total_cost += best_total_cost;
 

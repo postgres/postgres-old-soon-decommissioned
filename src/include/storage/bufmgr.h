@@ -191,4 +191,5 @@ extern void BufmgrCommit(void);
 extern void BufferSync(void);
 
 extern void InitLocalBuffer(void);
+
 #endif

@@ -373,10 +373,10 @@ typedef struct Unique
  */
 typedef enum SetOpCmd
 {
-				SETOPCMD_INTERSECT,
-				SETOPCMD_INTERSECT_ALL,
-				SETOPCMD_EXCEPT,
-				SETOPCMD_EXCEPT_ALL
+	SETOPCMD_INTERSECT,
+	SETOPCMD_INTERSECT_ALL,
+	SETOPCMD_EXCEPT,
+	SETOPCMD_EXCEPT_ALL
 } SetOpCmd;
 
 typedef struct SetOp
@@ -463,4 +463,5 @@ typedef struct SubPlan
 	bool		needShutdown;	/* TRUE = need to shutdown subplan */
 	HeapTuple	curTuple;		/* copy of most recent tuple from subplan */
 } SubPlan;
+
 #endif	 /* PLANNODES_H */

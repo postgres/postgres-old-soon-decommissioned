@@ -35,4 +35,5 @@ extern void Async_NotifyHandler(SIGNAL_ARGS);
  */
 extern void EnableNotifyInterrupt(void);
 extern void DisableNotifyInterrupt(void);
+
 #endif	 /* ASYNC_H */

@@ -14,4 +14,5 @@
 #define FASTPATH_H
 
 extern int	HandleFunctionRequest(void);
+
 #endif	 /* FASTPATH_H */

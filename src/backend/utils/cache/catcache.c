@@ -30,7 +30,7 @@
 #include "utils/syscache.h"
 
 
- /* #define CACHEDEBUG *//* turns DEBUG elogs on */
+ /* #define CACHEDEBUG */	/* turns DEBUG elogs on */
 
 /*
  * Constants related to size of the catcache.

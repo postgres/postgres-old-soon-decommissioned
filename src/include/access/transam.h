@@ -121,4 +121,5 @@ extern bool AMI_OVERRIDE;
 
 /* in varsup.c */
 extern VariableCache ShmemVariableCache;
+
 #endif	 /* TRAMSAM_H */

@@ -205,4 +205,5 @@ typedef FormData_pg_statistic *Form_pg_statistic;
  * their actual tuple positions.  The coefficient ranges from +1 to -1.
  */
 #define STATISTIC_KIND_CORRELATION	3
+
 #endif	 /* PG_STATISTIC_H */
