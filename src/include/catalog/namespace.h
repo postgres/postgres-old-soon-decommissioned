@@ -51,7 +51,6 @@ typedef struct _OpclassCandidateList
 extern Oid	RangeVarGetRelid(const RangeVar *relation, bool failOK);
 extern Oid	RangeVarGetCreationNamespace(const RangeVar *newRelation);
 extern Oid	RelnameGetRelid(const char *relname);
-extern Oid	RelidGetNamespaceId(Oid relid);
 extern bool RelationIsVisible(Oid relid);
 
 extern Oid	TypenameGetTypid(const char *typname);

@@ -278,29 +278,6 @@ RelnameGetRelid(const char *relname)
 	return InvalidOid;
 }
 
-/*
- * RelidGetNamespaceId
- *		Given a relation OID, return the namespace OID.
- */
-Oid
-RelidGetNamespaceId(Oid relid)
-{
-	HeapTuple	tuple;
-	Form_pg_class pg_class_form;
-	Oid			result;
-
-	tuple = SearchSysCache(RELOID,
-						   ObjectIdGetDatum(relid),
-						   0, 0, 0);
-	if (!HeapTupleIsValid(tuple))
-		elog(ERROR, "cache lookup failed for relation %u", relid);
-	pg_class_form = (Form_pg_class) GETSTRUCT(tuple);
-
-	result = pg_class_form->relnamespace;
-	ReleaseSysCache(tuple);
-	return result;
-}
-
 
 /*
  * RelationIsVisible

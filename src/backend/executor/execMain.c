@@ -419,7 +419,7 @@ ExecCheckXactReadOnly(Query *parsetree, CmdType operation)
 			if (!rte->checkForWrite)
 				continue;
 
-			if (isTempNamespace(RelidGetNamespaceId(rte->relid)))
+			if (isTempNamespace(get_rel_namespace(rte->relid)))
 				continue;
 
 			goto fail;
