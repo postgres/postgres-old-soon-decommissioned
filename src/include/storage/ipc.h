@@ -75,7 +75,7 @@ extern void proc_exit(int code);
 extern void shmem_exit(int code);
 extern int on_shmem_exit(void (*function) (), caddr_t arg);
 extern int on_proc_exit(void (*function) (), caddr_t arg);
-extern void clear_proc_exit(void);
+extern void on_exit_reset(void);
 
 extern IpcSemaphoreId
 IpcSemaphoreCreate(IpcSemaphoreKey semKey,

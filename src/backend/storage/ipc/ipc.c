@@ -215,14 +215,15 @@ on_shmem_exit(void (*function) (), caddr_t arg)
 }
 
 /* ----------------------------------------------------------------
- *		clear_proc_exit
+ *		on_exit_reset
  *
  *		this function clears all proc_exit() registered functions.
  * ----------------------------------------------------------------
  */
 void
-clear_proc_exit(void)
+on_exit_reset(void)
 {
+	on_shmem_exit_index = 0;
 	on_proc_exit_index = 0;
 }
 
