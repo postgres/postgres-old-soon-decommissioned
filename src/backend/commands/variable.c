@@ -42,7 +42,7 @@ static bool show_XactIsoLevel(void);
 static bool reset_XactIsoLevel(void);
 static bool parse_XactIsoLevel(const char *);
 
-extern Cost _cpu_page_wight_;
+extern Cost _cpu_page_weight_;
 extern Cost _cpu_index_page_wight_;
 extern bool _use_geqo_;
 extern int32 _use_geqo_rels_;
@@ -246,7 +246,7 @@ parse_cost_heap(const char *value)
 	}
 
 	res = float4in((char *) value);
-	_cpu_page_wight_ = *res;
+	_cpu_page_weight_ = *res;
 
 	return TRUE;
 }
@@ -255,14 +255,14 @@ static bool
 show_cost_heap()
 {
 
-	elog(NOTICE, "COST_HEAP is %f", _cpu_page_wight_);
+	elog(NOTICE, "COST_HEAP is %f", _cpu_page_weight_);
 	return TRUE;
 }
 
 static bool
 reset_cost_heap()
 {
-	_cpu_page_wight_ = _CPU_PAGE_WEIGHT_;
+	_cpu_page_weight_ = _CPU_PAGE_WEIGHT_;
 	return TRUE;
 }
 
