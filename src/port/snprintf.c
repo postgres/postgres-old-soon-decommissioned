@@ -269,7 +269,7 @@ dopr(char *buffer, const char *format, va_list args, char *end)
 						longflag = 1;
 						goto nextch;
 					case 'I':
-						if (*(format+1) == '6' && *(format+2) == '4')
+						if (*format == '6' && *(format+1) == '4')
 						{
 							format += 2;
 							longlongflag = 1;
