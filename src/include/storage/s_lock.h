@@ -134,7 +134,7 @@ tas(volatile slock_t *lock)
 #endif	 /* __ia64__ || __ia64 */
 
 
-#if defined(__arm__) || defined(__arm__)
+#if defined(__arm__) || defined(__arm)
 #define TAS(lock) tas(lock)
 
 static __inline__ int
