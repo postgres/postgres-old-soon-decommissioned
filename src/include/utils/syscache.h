@@ -45,18 +45,20 @@
 #define INHRELID		14
 #define LANGNAME		15
 #define LANGOID			16
-#define OPERNAME		17
-#define OPEROID			18
-#define PROCNAME		19
-#define PROCOID			20
-#define RELNAME			21
-#define RELOID			22
-#define RULENAME		23
-#define SHADOWNAME		24
-#define SHADOWSYSID		25
-#define STATRELATT		26
-#define TYPENAME		27
-#define TYPEOID			28
+#define NAMESPACENAME	17
+#define NAMESPACEOID	18
+#define OPERNAME		19
+#define OPEROID			20
+#define PROCNAME		21
+#define PROCOID			22
+#define RELNAME			23
+#define RELOID			24
+#define RULENAME		25
+#define SHADOWNAME		26
+#define SHADOWSYSID		27
+#define STATRELATT		28
+#define TYPENAME		29
+#define TYPEOID			30
 
 
 extern void InitCatalogCache(void);

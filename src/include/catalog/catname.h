@@ -15,7 +15,6 @@
 #define CATNAME_H
 
 
-
 #define  AggregateRelationName "pg_aggregate"
 #define  AccessMethodRelationName "pg_am"
 #define  AccessMethodOperatorRelationName "pg_amop"
@@ -29,6 +28,7 @@
 #define  LanguageRelationName "pg_language"
 #define  LargeObjectRelationName "pg_largeobject"
 #define  ListenerRelationName "pg_listener"
+#define  NamespaceRelationName "pg_namespace"
 #define  OperatorClassRelationName "pg_opclass"
 #define  OperatorRelationName "pg_operator"
 #define  ProcedureRelationName "pg_proc"

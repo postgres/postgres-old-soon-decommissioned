@@ -57,6 +57,8 @@ char	   *Name_pg_language_indices[Num_pg_language_indices] =
 {LanguageOidIndex, LanguageNameIndex};
 char	   *Name_pg_largeobject_indices[Num_pg_largeobject_indices] =
 {LargeObjectLOidPNIndex};
+char	   *Name_pg_namespace_indices[Num_pg_namespace_indices] =
+{NamespaceNameIndex, NamespaceOidIndex};
 char	   *Name_pg_opclass_indices[Num_pg_opclass_indices] =
 {OpclassAmNameIndex, OpclassOidIndex};
 char	   *Name_pg_operator_indices[Num_pg_operator_indices] =

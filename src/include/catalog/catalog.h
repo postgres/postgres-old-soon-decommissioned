@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * catalog.h
- *	  prototypes for functions in lib/catalog/catalog.c
+ *	  prototypes for functions in backend/catalog/catalog.c
  *
  *
  * Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
