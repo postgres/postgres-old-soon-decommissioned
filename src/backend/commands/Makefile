@@ -13,7 +13,7 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 OBJS = async.o creatinh.o command.o comment.o copy.o indexcmds.o define.o \
-       remove.o rename.o vacuum.o analyze.o view.o cluster.o \
+       remove.o rename.o vacuum.o vacuumlazy.o analyze.o view.o cluster.o \
        explain.o sequence.o trigger.o user.o proclang.o \
        dbcommands.o variable.o
 
