@@ -201,6 +201,16 @@ ERROR:  PL handler function <replaceable class="parameter">funcname</replaceable
   </para>
 
   <para>
+   In <productname>PostgreSQL</productname> versions before 7.3, it was
+   necessary to declare handler functions as returning the placeholder
+   type <type>opaque</>, rather than <type>language_handler</>.
+   To support loading 
+   of old dump files, <command>CREATE LANGUAGE</> will accept a function
+   declared as returning <type>opaque</>, but it will issue a NOTICE and
+   change the function's declared return type to <type>language_handler</>.
+  </para>
+
+  <para>
    Use the <xref linkend="sql-createfunction" endterm="sql-createfunction-title"> command to create a new
    function.
   </para>

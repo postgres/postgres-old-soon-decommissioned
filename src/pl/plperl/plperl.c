@@ -624,8 +624,7 @@ compile_plperl_function(Oid fn_oid, bool is_trigger)
 			{
 				if (procStruct->prorettype == VOIDOID)
 					 /* okay */ ;
-				else if (procStruct->prorettype == TRIGGEROID ||
-						 procStruct->prorettype == OPAQUEOID)
+				else if (procStruct->prorettype == TRIGGEROID)
 				{
 					free(prodesc->proname);
 					free(prodesc);

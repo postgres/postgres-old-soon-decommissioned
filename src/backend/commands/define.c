@@ -44,17 +44,17 @@
 /*
  * Translate the input language name to lower case.
  *
- * Output buffer should be NAMEDATALEN long.
+ * Output buffer must be NAMEDATALEN long.
  */
 void
 case_translate_language_name(const char *input, char *output)
 {
 	int			i;
 
+	MemSet(output, 0, NAMEDATALEN);	/* ensure result Name is zero-filled */
+
 	for (i = 0; i < NAMEDATALEN - 1 && input[i]; ++i)
 		output[i] = tolower((unsigned char) input[i]);
-
-	output[i] = '\0';
 }
 
 

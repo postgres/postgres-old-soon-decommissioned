@@ -217,8 +217,7 @@ plpgsql_compile(Oid fn_oid, int functype)
 				if (procStruct->prorettype == VOIDOID ||
 					procStruct->prorettype == RECORDOID)
 					 /* okay */ ;
-				else if (procStruct->prorettype == TRIGGEROID ||
-						 procStruct->prorettype == OPAQUEOID)
+				else if (procStruct->prorettype == TRIGGEROID)
 					elog(ERROR, "plpgsql functions cannot return type %s"
 						 "\n\texcept when used as triggers",
 						 format_type_be(procStruct->prorettype));
