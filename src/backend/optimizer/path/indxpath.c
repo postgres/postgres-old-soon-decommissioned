@@ -1290,9 +1290,9 @@ index_innerjoin(Query *root, RelOptInfo *rel, List *clausegroup_list,
 
 		pathnode->path.pathtype = T_IndexScan;
 		pathnode->path.parent = rel;
-		pathnode->path.path_order = makeNode(PathOrder);
-	    pathnode->path.path_order->ordtype = SORTOP_ORDER;
-	    pathnode->path.path_order->ord.sortop = index->ordering;
+		pathnode->path.pathorder = makeNode(PathOrder);
+	    pathnode->path.pathorder->ordtype = SORTOP_ORDER;
+	    pathnode->path.pathorder->ord.sortop = index->ordering;
 	    pathnode->path.pathkeys = NIL;
 
 		pathnode->indexid = index->relids;

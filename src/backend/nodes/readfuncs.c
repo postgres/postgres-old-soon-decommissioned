@@ -1522,8 +1522,8 @@ _readPath()
 	token = lsptok(NULL, &length);		/* now read it */
 	local_node->path_cost = (Cost) atof(token);
 
-	token = lsptok(NULL, &length);		/* get :path_order */
-	local_node->path_order = nodeRead(true); /* now read it */
+	token = lsptok(NULL, &length);		/* get :pathorder */
+	local_node->pathorder = nodeRead(true); /* now read it */
 
 	token = lsptok(NULL, &length);		/* get :pathkeys */
 	local_node->pathkeys = nodeRead(true);	/* now read it */
@@ -1554,8 +1554,8 @@ _readIndexPath()
 	token = lsptok(NULL, &length);		/* now read it */
 	local_node->path.path_cost = (Cost) atof(token);
 
-	token = lsptok(NULL, &length);		/* get :path_order */
- 	local_node->path.path_order = nodeRead(true);		/* now read it */
+	token = lsptok(NULL, &length);		/* get :pathorder */
+ 	local_node->path.pathorder = nodeRead(true);		/* now read it */
 
 	token = lsptok(NULL, &length);		/* get :pathkeys */
 	local_node->path.pathkeys = nodeRead(true);		/* now read it */
@@ -1593,8 +1593,8 @@ _readJoinPath()
 	token = lsptok(NULL, &length);		/* now read it */
 	local_node->path.path_cost = (Cost) atof(token);
 
-	token = lsptok(NULL, &length);		/* get :path_order */
-	local_node->path.path_order = nodeRead(true);		/* now read it */
+	token = lsptok(NULL, &length);		/* get :pathorder */
+	local_node->path.pathorder = nodeRead(true);		/* now read it */
 
 	token = lsptok(NULL, &length);		/* get :pathkeys */
 	local_node->path.pathkeys = nodeRead(true);		/* now read it */
@@ -1658,8 +1658,8 @@ _readMergePath()
 
 	local_node->jpath.path.path_cost = (Cost) atof(token);
 
-	token = lsptok(NULL, &length);		/* get :path_order */
-	local_node->jpath.path.path_order = nodeRead(true); /* now read it */
+	token = lsptok(NULL, &length);		/* get :pathorder */
+	local_node->jpath.path.pathorder = nodeRead(true); /* now read it */
 
 	token = lsptok(NULL, &length);		/* get :pathkeys */
 	local_node->jpath.path.pathkeys = nodeRead(true);		/* now read it */
@@ -1732,8 +1732,8 @@ _readHashPath()
 
 	local_node->jpath.path.path_cost = (Cost) atof(token);
 
-	token = lsptok(NULL, &length);		/* get :path_order */
-	local_node->jpath.path.path_order = nodeRead(true); /* now read it */
+	token = lsptok(NULL, &length);		/* get :pathorder */
+	local_node->jpath.path.pathorder = nodeRead(true); /* now read it */
 
 	token = lsptok(NULL, &length);		/* get :pathkeys */
 	local_node->jpath.path.pathkeys = nodeRead(true);		/* now read it */

@@ -327,7 +327,7 @@ match_unsorted_outer(RelOptInfo *joinrel,
 
 		outerpath = (Path *) lfirst(i);
 
-		outerpath_ordering = outerpath->path_order;
+		outerpath_ordering = outerpath->pathorder;
 
 		if (outerpath_ordering)
 		{
@@ -470,7 +470,7 @@ match_unsorted_inner(RelOptInfo *joinrel,
 
 		innerpath = (Path *) lfirst(i);
 
-		innerpath_ordering = innerpath->path_order;
+		innerpath_ordering = innerpath->pathorder;
 
 		if (innerpath_ordering)
 		{

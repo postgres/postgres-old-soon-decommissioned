@@ -146,7 +146,7 @@ typedef struct Path
 
 	NodeTag		pathtype;
 
-	PathOrder	*path_order;
+	PathOrder	*pathorder;
 
 	List	    *pathkeys;	/* This is a List of List of Var nodes.
 							 * It is a List of Lists because of multi-key

@@ -964,8 +964,8 @@ _outPath(StringInfo str, Path *node)
 			node->path_cost);
 	_outNode(str, node->pathkeys);
 
-	appendStringInfo(str, " :path_order ");
-	_outNode(str, node->path_order);
+	appendStringInfo(str, " :pathorder ");
+	_outNode(str, node->pathorder);
 }
 
 /*
@@ -980,8 +980,8 @@ _outIndexPath(StringInfo str, IndexPath *node)
 			node->path.path_cost);
 	_outNode(str, node->path.pathkeys);
 
-	appendStringInfo(str, " :path_order ");
-	_outNode(str, node->path.path_order);
+	appendStringInfo(str, " :pathorder ");
+	_outNode(str, node->path.pathorder);
 
 	appendStringInfo(str, " :indexid ");
 	_outIntList(str, node->indexid);
@@ -1002,8 +1002,8 @@ _outJoinPath(StringInfo str, JoinPath *node)
 			node->path.path_cost);
 	_outNode(str, node->path.pathkeys);
 
-	appendStringInfo(str, " :path_order ");
-	_outNode(str, node->path.path_order);
+	appendStringInfo(str, " :pathorder ");
+	_outNode(str, node->path.pathorder);
 	
 	appendStringInfo(str, " :pathinfo ");
 	_outNode(str, node->pathinfo);
@@ -1033,8 +1033,8 @@ _outMergePath(StringInfo str, MergePath *node)
 			node->jpath.path.path_cost);
 	_outNode(str, node->jpath.path.pathkeys);
 
-	appendStringInfo(str, " :path_order ");
-	_outNode(str, node->jpath.path.path_order);
+	appendStringInfo(str, " :pathorder ");
+	_outNode(str, node->jpath.path.pathorder);
 	
 	appendStringInfo(str, " :pathinfo ");
 	_outNode(str, node->jpath.pathinfo);
@@ -1073,8 +1073,8 @@ _outHashPath(StringInfo str, HashPath *node)
 			node->jpath.path.path_cost);
 	_outNode(str, node->jpath.path.pathkeys);
 
-	appendStringInfo(str, " :path_order ");
-	_outNode(str, node->jpath.path.path_order);
+	appendStringInfo(str, " :pathorder ");
+	_outNode(str, node->jpath.path.pathorder);
 
 	appendStringInfo(str, " :pathinfo ");
 	_outNode(str, node->jpath.pathinfo);

@@ -529,14 +529,14 @@ create_mergejoin_node(MergePath *best_path,
 												outer_tlist,
 												inner_tlist));
 
-	opcode = get_opcode((best_path->jpath.path.path_order->ord.merge)->join_operator);
+	opcode = get_opcode((best_path->jpath.path.pathorder->ord.merge)->join_operator);
 
 	outer_order = (Oid *) palloc(sizeof(Oid) * 2);
-	outer_order[0] = (best_path->jpath.path.path_order->ord.merge)->left_operator;
+	outer_order[0] = (best_path->jpath.path.pathorder->ord.merge)->left_operator;
 	outer_order[1] = 0;
 
 	inner_order = (Oid *) palloc(sizeof(Oid) * 2);
-	inner_order[0] = (best_path->jpath.path.path_order->ord.merge)->right_operator;
+	inner_order[0] = (best_path->jpath.path.pathorder->ord.merge)->right_operator;
 	inner_order[1] = 0;
 
 	/*

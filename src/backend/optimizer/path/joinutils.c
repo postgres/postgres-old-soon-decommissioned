@@ -214,10 +214,12 @@ match_paths_joinkeys(List *joinkeys,
 	foreach(i, paths)
 	{
 		Path	   *path = (Path *) lfirst(i);
-
+		int			more_sort;
+		
 		key_match = every_func(joinkeys, path->pathkeys, which_subkey);
 
-		if (equal_path_ordering(ordering, path->path_order) &&
+		if (pathorder_match(ordering, path->pathorder, &more_sort) &&
+			more_sort == 0 &&
 			length(joinkeys) == length(path->pathkeys) && key_match)
 		{
 

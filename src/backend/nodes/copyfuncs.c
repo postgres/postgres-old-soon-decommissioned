@@ -1093,26 +1093,26 @@ CopyPathFields(Path *from, Path *newnode)
 
 	newnode->path_cost = from->path_cost;
 
-	newnode->path_order = makeNode(PathOrder);
-	newnode->path_order->ordtype = from->path_order->ordtype;
-	if (from->path_order->ordtype == SORTOP_ORDER)
+	newnode->pathorder = makeNode(PathOrder);
+	newnode->pathorder->ordtype = from->pathorder->ordtype;
+	if (from->pathorder->ordtype == SORTOP_ORDER)
 	{
 		int			len,
 					i;
-		Oid		   *ordering = from->path_order->ord.sortop;
+		Oid		   *ordering = from->pathorder->ord.sortop;
 
 		if (ordering)
 		{
 			for (len = 0; ordering[len] != 0; len++)
 				;
-			newnode->path_order->ord.sortop = (Oid *) palloc(sizeof(Oid) * (len + 1));
+			newnode->pathorder->ord.sortop = (Oid *) palloc(sizeof(Oid) * (len + 1));
 			for (i = 0; i < len; i++)
-				newnode->path_order->ord.sortop[i] = ordering[i];
-			newnode->path_order->ord.sortop[len] = 0;
+				newnode->pathorder->ord.sortop[i] = ordering[i];
+			newnode->pathorder->ord.sortop[len] = 0;
 		}
 	}
 	else
-		Node_Copy(from, newnode, path_order->ord.merge);
+		Node_Copy(from, newnode, pathorder->ord.merge);
 
 	Node_Copy(from, newnode, pathkeys);
 
