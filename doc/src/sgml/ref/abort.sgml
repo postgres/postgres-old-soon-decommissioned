@@ -33,6 +33,22 @@ ABORT [ WORK | TRANSACTION ]
  </refsect1>
 
  <refsect1>
+  <title>Parameters</title>
+
+  <variablelist>
+   <varlistentry>
+    <term><literal>WORK</literal></term>
+    <term><literal>TRANSACTION</literal></term>
+    <listitem>
+     <para>
+      Optional key words. They have no effect.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </refsect1>
+
+ <refsect1>
   <title>Diagnostics</title>
 
   <variablelist>
@@ -71,7 +87,7 @@ ABORT [ WORK | TRANSACTION ]
   <para>
    To abort all changes:
 <programlisting>
-ABORT WORK;
+ABORT;
 </programlisting>
   </para>
  </refsect1>
