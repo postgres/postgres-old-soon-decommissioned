@@ -28,7 +28,7 @@ extern void AtSubStart_Inval(void);
 
 extern void AtEOXact_Inval(bool isCommit);
 
-extern void AtSubEOXact_Inval(bool isCommit);
+extern void AtEOSubXact_Inval(bool isCommit);
 
 extern void CommandEndInvalidationMessages(void);
 

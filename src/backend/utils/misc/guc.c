@@ -5436,10 +5436,15 @@ assign_log_stats(bool newval, bool doit, GucSource source)
 static bool
 assign_transaction_read_only(bool newval, bool doit, GucSource source)
 {
-	if (doit && source >= PGC_S_INTERACTIVE && IsSubTransaction())
-		ereport(ERROR,
-				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("cannot set transaction read only mode inside a subtransaction")));
+	/* Can't go to r/w mode inside a r/o transaction */
+	if (newval == false && XactReadOnly && IsSubTransaction())
+	{
+		if (source >= PGC_S_INTERACTIVE)
+			ereport(ERROR,
+					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+					 errmsg("cannot set transaction read-write mode inside a read-only transaction")));
+		return false;
+	}
 	return true;
 }
 

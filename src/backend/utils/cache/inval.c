@@ -678,7 +678,7 @@ AtEOXact_Inval(bool isCommit)
 }
 
 /*
- * AtSubEOXact_Inval
+ * AtEOSubXact_Inval
  *		Process queued-up invalidation messages at end of subtransaction.
  *
  * If isCommit, process CurrentCmdInvalidMsgs if any (there probably aren't),
@@ -695,7 +695,7 @@ AtEOXact_Inval(bool isCommit)
  * (if aborting).
  */
 void
-AtSubEOXact_Inval(bool isCommit)
+AtEOSubXact_Inval(bool isCommit)
 {
 	TransInvalidationInfo *myInfo = transInvalInfo;
 

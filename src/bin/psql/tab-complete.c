@@ -722,7 +722,7 @@ psql_completion(char *text, int start, int end)
 	else if (pg_strcasecmp(prev2_wd, "ANALYZE") == 0)
 		COMPLETE_WITH_CONST(";");
 
-/* BEGIN, COMMIT, ABORT */
+/* BEGIN, END, COMMIT, ABORT */
 	else if (pg_strcasecmp(prev_wd, "BEGIN") == 0 ||
 	         pg_strcasecmp(prev_wd, "END") == 0 ||
 	         pg_strcasecmp(prev_wd, "COMMIT") == 0 ||
