@@ -12,7 +12,7 @@
 #ifndef ANALYZE_H
 #define ANALYZE_H
 
-#include <parser/parse_node.h>
+#include "parser/parse_node.h"
 
 extern List *parse_analyze(List *pl, ParseState *parentParseState);
 

@@ -17,7 +17,7 @@
 
 #if defined(__alpha__) && !defined(linux)
 #include <sys/sysinfo.h>
-#include <machine/hal_sysinfo.h>
+#include "machine/hal_sysinfo.h"
 #define ASSEMBLER
 #include <sys/proc.h>
 #undef ASSEMBLER

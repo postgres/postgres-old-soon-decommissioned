@@ -36,7 +36,7 @@
 #include "utils/temprel.h"
 #include "utils/syscache.h"
 #include "miscadmin.h"
-#include "string.h"
+#include <string.h>
 
 /* ----------------
  *		PortalExecutorHeapMemory stuff

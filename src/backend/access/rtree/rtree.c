@@ -12,14 +12,14 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/genam.h>
-#include <catalog/index.h>
-#include <access/rtree.h>
-#include <utils/geo_decls.h>
-#include <executor/executor.h>
-#include <access/heapam.h>
+#include "access/genam.h"
+#include "catalog/index.h"
+#include "access/rtree.h"
+#include "utils/geo_decls.h"
+#include "executor/executor.h"
+#include "access/heapam.h"
 
 #ifndef HAVE_MEMMOVE
 #else

@@ -13,7 +13,7 @@
 #ifndef PG_LIST_H
 #define PG_LIST_H
 
-#include <nodes/nodes.h>
+#include "nodes/nodes.h"
 
 /* ----------------------------------------------------------------
  *						node definitions

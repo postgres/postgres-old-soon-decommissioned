@@ -16,7 +16,7 @@
 #include "fmgr.h"				/* for func_ptr */
 #include "utils/dynamic_loader.h"
 #ifdef __ELF__
-#include "dlfcn.h"
+#include <dlfcn.h>
 #endif
 
 /* dynloader.c */

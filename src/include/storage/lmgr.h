@@ -13,8 +13,8 @@
 #ifndef LMGR_H
 #define LMGR_H
 
-#include <storage/lock.h>
-#include <utils/rel.h>
+#include "storage/lock.h"
+#include "utils/rel.h"
 
 #define AccessShareLock			1		/* SELECT */
 #define RowShareLock			2		/* SELECT FOR UPDATE */

@@ -74,7 +74,7 @@
 #endif
 
 #ifdef __CYGWIN32__
-#include <getopt.h>
+#include "getopt.h"
 #endif
 
 #include "storage/ipc.h"

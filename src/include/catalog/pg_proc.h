@@ -22,7 +22,7 @@
 #ifndef PG_PROC_H
 #define PG_PROC_H
 
-#include <tcop/dest.h>
+#include "tcop/dest.h"
 
 /* ----------------
  *		postgres.h contains the system type definintions and the

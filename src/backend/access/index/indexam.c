@@ -63,11 +63,11 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/genam.h>
-#include <utils/relcache.h>
-#include <access/heapam.h>
+#include "access/genam.h"
+#include "utils/relcache.h"
+#include "access/heapam.h"
 
 /* ----------------
  *	 undefine macros we aren't going to use that would otherwise

@@ -16,14 +16,14 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/genam.h>
-#include <access/nbtree.h>
-#include <executor/executor.h>
-#include <access/heapam.h>
-#include <catalog/index.h>
-#include <miscadmin.h>
+#include "access/genam.h"
+#include "access/nbtree.h"
+#include "executor/executor.h"
+#include "access/heapam.h"
+#include "catalog/index.h"
+#include "miscadmin.h"
 
 #ifndef HAVE_MEMMOVE
 #else

@@ -13,7 +13,7 @@
 #ifndef LSYSCACHE_H
 #define LSYSCACHE_H
 
-#include <access/htup.h>
+#include "access/htup.h"
 
 extern bool op_class(Oid oprno, int32 opclass, Oid amopid);
 extern char *get_attname(Oid relid, AttrNumber attnum);

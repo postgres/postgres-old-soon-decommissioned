@@ -18,13 +18,13 @@
 
 #include <stdio.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <catalog/pg_type.h>
-#include <nodes/parsenodes.h>
-#include <parser/parse_type.h>
-#include <utils/builtins.h>
-#include <utils/syscache.h>
+#include "catalog/pg_type.h"
+#include "nodes/parsenodes.h"
+#include "parser/parse_type.h"
+#include "utils/builtins.h"
+#include "utils/syscache.h"
 
 #ifndef HAVE_MEMMOVE
 #else

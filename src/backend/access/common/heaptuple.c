@@ -17,10 +17,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/heapam.h>
-#include <catalog/pg_type.h>
+#include "access/heapam.h"
+#include "catalog/pg_type.h"
 
 #ifndef HAVE_MEMMOVE
 #else

@@ -11,16 +11,16 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/heapam.h>
-#include <utils/builtins.h>
-#include <catalog/catname.h>
-#include <utils/syscache.h>
-#include <catalog/pg_proc.h>
-#include <catalog/pg_type.h>
-#include <catalog/pg_aggregate.h>
-#include <miscadmin.h>
+#include "access/heapam.h"
+#include "utils/builtins.h"
+#include "catalog/catname.h"
+#include "utils/syscache.h"
+#include "catalog/pg_proc.h"
+#include "catalog/pg_type.h"
+#include "catalog/pg_aggregate.h"
+#include "miscadmin.h"
 #ifndef HAVE_MEMMOVE
 #else
 #include <string.h>

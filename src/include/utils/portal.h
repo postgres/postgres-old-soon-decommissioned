@@ -25,8 +25,8 @@
 #ifndef PORTAL_H
 #define PORTAL_H
 
-#include <executor/execdesc.h>
-#include <nodes/memnodes.h>
+#include "executor/execdesc.h"
+#include "nodes/memnodes.h"
 
 typedef struct PortalBlockData
 {

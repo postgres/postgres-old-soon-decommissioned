@@ -13,7 +13,7 @@
 #include <sys/types.h>
 
 #include "postgres.h"
-#include <miscadmin.h>
+#include "miscadmin.h"
 #ifdef HAVE_FLOAT_H
 #include <float.h>
 #endif

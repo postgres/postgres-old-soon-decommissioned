@@ -17,7 +17,7 @@
 #ifndef TUPTABLE_H
 #define TUPTABLE_H
 
-#include <access/htup.h>
+#include "access/htup.h"
 
 /* ----------------
  *		The executor tuple table is managed and manipulated by special

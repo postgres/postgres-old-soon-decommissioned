@@ -13,7 +13,7 @@
 #ifndef CLAUSES_H
 #define CLAUSES_H
 
-#include <nodes/relation.h>
+#include "nodes/relation.h"
 
 extern Expr *make_clause(int type, Node *oper, List *args);
 

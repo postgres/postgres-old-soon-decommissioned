@@ -73,17 +73,17 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/heapam.h>
-#include <miscadmin.h>
-#include <utils/relcache.h>
-#include <access/valid.h>
-#include <access/hio.h>
-#include <storage/smgr.h>
-#include <catalog/catalog.h>
-#include <utils/inval.h>
-#include <utils/builtins.h>
+#include "access/heapam.h"
+#include "miscadmin.h"
+#include "utils/relcache.h"
+#include "access/valid.h"
+#include "access/hio.h"
+#include "storage/smgr.h"
+#include "catalog/catalog.h"
+#include "utils/inval.h"
+#include "utils/builtins.h"
 
 #ifndef HAVE_MEMMOVE
 #else

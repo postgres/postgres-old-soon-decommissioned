@@ -51,7 +51,7 @@
 #ifndef DEST_H
 #define DEST_H
 
-#include <access/htup.h>
+#include "access/htup.h"
 
 /* ----------------
  *		CommandDest is a simplistic means of identifying the desired

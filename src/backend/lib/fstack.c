@@ -11,9 +11,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <postgres.h>
+#include "postgres.h"
 
-#include <lib/fstack.h>
+#include "lib/fstack.h"
 
 /*
  * Internal function definitions

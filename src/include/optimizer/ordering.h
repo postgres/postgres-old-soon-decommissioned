@@ -13,7 +13,7 @@
 #ifndef ORDERING_H
 #define ORDERING_H
 
-#include <nodes/relation.h>
+#include "nodes/relation.h"
 
 extern bool pathorder_match(PathOrder *path_ordering1,
 				PathOrder *path_ordering2, int *better_sort);

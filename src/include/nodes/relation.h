@@ -13,7 +13,7 @@
 #ifndef RELATION_H
 #define RELATION_H
 
-#include <nodes/parsenodes.h>
+#include "nodes/parsenodes.h"
 
 /*
  * Relids

@@ -12,11 +12,11 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/heapam.h>
-#include <catalog/catname.h>
-#include <storage/proc.h>
+#include "access/heapam.h"
+#include "catalog/catname.h"
+#include "storage/proc.h"
 
 static void GetNewObjectIdBlock(Oid *oid_return, int oid_block_size);
 static void VariableRelationGetNextOid(Oid *oid_return);

@@ -37,10 +37,10 @@
 #include "postgres.h"
 #include "version.h"
 
-#include <storage/backendid.h>
-#include <storage/smgr.h>
-#include <storage/proc.h>
-#include <utils/relcache.h>
+#include "storage/backendid.h"
+#include "storage/smgr.h"
+#include "storage/proc.h"
+#include "utils/relcache.h"
 
 #include "access/heapam.h"
 #include "utils/syscache.h"

@@ -12,10 +12,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/iqual.h>
-#include <executor/execdebug.h>
+#include "access/iqual.h"
+#include "executor/execdebug.h"
 
 /* ----------------------------------------------------------------
  *				  index scan key qualification code

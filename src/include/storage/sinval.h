@@ -13,8 +13,8 @@
 #ifndef SINVAL_H
 #define SINVAL_H
 
-#include <storage/itemptr.h>
-#include <storage/spin.h>
+#include "storage/itemptr.h"
+#include "storage/spin.h"
 
 extern SPINLOCK SInvalLock;
 

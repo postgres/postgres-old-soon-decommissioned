@@ -13,7 +13,7 @@
 #ifndef PQUERY_H
 #define PQUERY_H
 
-#include <executor/execdesc.h>
+#include "executor/execdesc.h"
 
 /* moved to execdesc.h
 extern QueryDesc *CreateQueryDesc(Query *parsetree, Plan *plantree,

@@ -142,16 +142,16 @@
  * [PA, 7/17/98]
  * [PA] is Pascal André <andre@via.ecp.fr>
  */
-#include <postgres.h>
+#include "postgres.h"
 
-#include <utils/inval.h>
-#include <utils/portal.h>
-#include <storage/proc.h>
-#include <catalog/heap.h>
-#include <utils/relcache.h>
-#include <commands/async.h>
-#include <commands/sequence.h>
-#include <libpq/be-fsstubs.h>
+#include "utils/inval.h"
+#include "utils/portal.h"
+#include "storage/proc.h"
+#include "catalog/heap.h"
+#include "utils/relcache.h"
+#include "commands/async.h"
+#include "commands/sequence.h"
+#include "libpq/be-fsstubs.h"
 
 extern bool	SharedBufferChanged;
 

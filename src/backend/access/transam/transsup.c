@@ -16,10 +16,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <utils/bit.h>
-#include <access/xact.h>
+#include "utils/bit.h"
+#include "access/xact.h"
 
 static XidStatus TransBlockGetXidStatus(Block tblock,
 					   TransactionId transactionId);

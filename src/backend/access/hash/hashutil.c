@@ -12,10 +12,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/hash.h>
-#include <access/iqual.h>
+#include "access/hash.h"
+#include "access/iqual.h"
 
 #ifndef HAVE_MEMMOVE
 #else

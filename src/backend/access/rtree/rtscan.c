@@ -12,10 +12,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/genam.h>
-#include <access/rtree.h>
+#include "access/genam.h"
+#include "access/rtree.h"
 
 #ifndef HAVE_MEMMOVE
 #else

@@ -13,7 +13,7 @@
 #ifndef PARSENODES_H
 #define PARSENODES_H
 
-#include <nodes/primnodes.h>
+#include "nodes/primnodes.h"
 
 /*****************************************************************************
  *	Query Tree

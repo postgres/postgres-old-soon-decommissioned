@@ -15,8 +15,8 @@
 
 /* #define		CACHEDEBUG		 turns DEBUG elogs on */
 
-#include <access/htup.h>
-#include <lib/dllist.h>
+#include "access/htup.h"
+#include "lib/dllist.h"
 
 /*
  *		struct catctup:			tuples in the cache.

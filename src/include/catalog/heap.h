@@ -13,7 +13,7 @@
 #ifndef HEAP_H
 #define HEAP_H
 
-#include <utils/rel.h>
+#include "utils/rel.h"
 
 extern Oid	RelnameFindRelid(char *relname);
 extern Relation heap_create(char *relname, TupleDesc att,

@@ -20,19 +20,19 @@
  */
 #include <string.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <catalog/heap.h>
-#include <access/heapam.h>
-#include <access/genam.h>
-#include <utils/syscache.h>
-#include <catalog/index.h>
-#include <catalog/pg_type.h>
-#include <commands/cluster.h>
-#include <commands/rename.h>
-#include <utils/builtins.h>
-#include <catalog/pg_proc.h>
-#include <optimizer/internal.h>
+#include "catalog/heap.h"
+#include "access/heapam.h"
+#include "access/genam.h"
+#include "utils/syscache.h"
+#include "catalog/index.h"
+#include "catalog/pg_type.h"
+#include "commands/cluster.h"
+#include "commands/rename.h"
+#include "utils/builtins.h"
+#include "catalog/pg_proc.h"
+#include "optimizer/internal.h"
 #ifndef NO_SECURITY
 #endif	 /* !NO_SECURITY */
 

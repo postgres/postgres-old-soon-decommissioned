@@ -24,7 +24,7 @@
 #include <sys/types.h>
 #include <sys/ipc.h>			/* For IPC_PRIVATE */
 
-#include <config.h>
+#include "config.h"
 
 #ifndef HAVE_UNION_SEMUN
 union semun

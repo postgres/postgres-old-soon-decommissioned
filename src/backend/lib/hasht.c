@@ -12,10 +12,10 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <postgres.h>
+#include "postgres.h"
 
-#include <utils/memutils.h>
-#include <lib/hasht.h>
+#include "utils/memutils.h"
+#include "lib/hasht.h"
 
 /* -----------------------------------
  *		HashTableWalk

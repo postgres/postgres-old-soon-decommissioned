@@ -13,8 +13,8 @@
 #ifndef ITEMPOS_H
 #define ITEMPOS_H
 
-#include <storage/itemid.h>
-#include <storage/buf.h>
+#include "storage/itemid.h"
+#include "storage/buf.h"
 
 typedef struct ItemSubpositionData
 {

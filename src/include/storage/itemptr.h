@@ -13,8 +13,8 @@
 #ifndef ITEMPTR_H
 #define ITEMPTR_H
 
-#include <storage/off.h>
-#include <storage/block.h>
+#include "storage/off.h"
+#include "storage/block.h"
 
 /*
  * ItemPointer:

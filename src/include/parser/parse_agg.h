@@ -13,7 +13,7 @@
 #ifndef PARSE_AGG_H
 #define PARSE_AGG_H
 
-#include <parser/parse_node.h>
+#include "parser/parse_node.h"
 
 extern void AddAggToParseState(ParseState *pstate, Aggref *aggref);
 extern void parseCheckAggregates(ParseState *pstate, Query *qry);

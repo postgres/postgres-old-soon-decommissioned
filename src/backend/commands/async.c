@@ -94,8 +94,8 @@
 #include "libpq/pqformat.h"
 #include "miscadmin.h"
 #include "utils/syscache.h"
-#include <utils/trace.h>
-#include <utils/ps_status.h>
+#include "utils/trace.h"
+#include "utils/ps_status.h"
 
 /* stuff that we really ought not be touching directly :-( */
 extern TransactionState CurrentTransactionState;

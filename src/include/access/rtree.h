@@ -13,10 +13,10 @@
 #ifndef RTREE_H
 #define RTREE_H
 
-#include <access/funcindex.h>
-#include <access/itup.h>
-#include <access/relscan.h>
-#include <access/sdir.h>
+#include "access/funcindex.h"
+#include "access/itup.h"
+#include "access/relscan.h"
+#include "access/sdir.h"
 
 /* see rtstrat.c for what all this is about */
 #define RTNStrategies					8

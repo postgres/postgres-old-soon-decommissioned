@@ -13,7 +13,7 @@
 #ifndef CATALOG_H
 #define CATALOG_H
 
-#include <access/tupdesc.h>
+#include "access/tupdesc.h"
 
 extern char *relpath(char *relname);
 extern bool IsSystemRelationName(char *relname);

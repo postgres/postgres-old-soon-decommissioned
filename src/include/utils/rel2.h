@@ -13,7 +13,7 @@
 #ifndef TMP_REL2_H
 #define TMP_REL2_H
 
-#include <utils/rel.h>
+#include "utils/rel.h"
 
 extern IndexStrategy RelationGetIndexStrategy(Relation relation);
 

@@ -13,7 +13,7 @@
 #ifndef PARAMS_H
 #define PARAMS_H
 
-#include <access/attnum.h>
+#include "access/attnum.h"
 
 /* ----------------------------------------------------------------
  *

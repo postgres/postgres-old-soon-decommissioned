@@ -13,7 +13,7 @@
 #ifndef _PROC_H_
 #define _PROC_H_
 
-#include <storage/lock.h>
+#include "storage/lock.h"
 
 typedef struct
 {

@@ -15,7 +15,7 @@
  */
 #include "postgres.h"
 
-#include <miscadmin.h>
+#include "miscadmin.h"
 
 #include "catalog/catalog.h"
 #include "catalog/heap.h"

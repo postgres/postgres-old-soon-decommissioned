@@ -13,7 +13,7 @@
 #ifndef IBIT_H
 #define IBIT_H
 
-#include <utils/memutils.h>
+#include "utils/memutils.h"
 
 typedef struct IndexAttributeBitMapData
 {

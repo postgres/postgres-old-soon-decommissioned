@@ -5,10 +5,10 @@
  *
  */
 
-#include <postgres.h>
-#include <miscadmin.h>
-#include <libpq/password.h>
-#include <libpq/libpq.h>
+#include "postgres.h"
+#include "miscadmin.h"
+#include "libpq/password.h"
+#include "libpq/libpq.h"
 #include <string.h>
 #include <unistd.h>
 #ifdef HAVE_CRYPT_H

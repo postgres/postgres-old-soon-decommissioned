@@ -18,7 +18,7 @@
 
 #include "postgres.h"
 
-#include <catalog/pg_operator.h>
+#include "catalog/pg_operator.h"
 #include "nodes/plannodes.h"
 #include "nodes/makefuncs.h"
 #include "nodes/nodeFuncs.h"

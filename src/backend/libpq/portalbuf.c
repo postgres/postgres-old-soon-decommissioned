@@ -50,7 +50,7 @@
 #include <string.h>
 #include <sys/types.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
 #include <libpq/libpq.h>		/* where the declarations go */
 

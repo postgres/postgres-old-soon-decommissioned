@@ -35,11 +35,11 @@
 #define _DL_HEADER_
 
 #include <stdio.h>				/* needed to declare FILE for ldfcn.h */
-#include <filehdr.h>
-#include <syms.h>
-#include <ldfcn.h>
-#include <reloc.h>
-#include <scnhdr.h>
+#include "filehdr.h"
+#include "syms.h"
+#include "ldfcn.h"
+#include "reloc.h"
+#include "scnhdr.h"
 
 
 typedef long CoreAddr;

@@ -2,11 +2,11 @@
  * testing of utf2wchar()
  * $Id$
  */
-#include <regex/regex.h>
-#include <regex/utils.h>
-#include <regex/regex2.h>
+#include "regex/regex.h"
+#include "regex/utils.h"
+#include "regex/regex2.h"
 
-#include <regex/pg_wchar.h>
+#include "regex/pg_wchar.h"
 
 main()
 {

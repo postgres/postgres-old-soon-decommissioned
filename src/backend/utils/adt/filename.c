@@ -19,7 +19,7 @@
 #include <sys/param.h>
 
 #include "postgres.h"
-#include <miscadmin.h>
+#include "miscadmin.h"
 #include "utils/builtins.h"		/* where function declarations go */
 
 char *

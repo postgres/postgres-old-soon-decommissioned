@@ -35,12 +35,12 @@
 #include <unistd.h>
 #include <string.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <libpq/libpq-fs.h>
+#include "libpq/libpq-fs.h"
 #include <catalog/pg_shadow.h>	/* for superuser() */
-#include <storage/large_object.h>
-#include <libpq/be-fsstubs.h>
+#include "storage/large_object.h"
+#include "libpq/be-fsstubs.h"
 
 /* [PA] is Pascal André <andre@via.ecp.fr> */
 

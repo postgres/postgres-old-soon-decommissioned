@@ -22,9 +22,9 @@
 
 #include <string.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <utils/builtins.h>
+#include "utils/builtins.h"
 
 int32
 btint2cmp(int16 a, int16 b)

@@ -13,8 +13,8 @@
 #ifndef XFUNC_H
 #define XFUNC_H
 
-#include <utils/rel.h>
-#include <nodes/relation.h>
+#include "utils/rel.h"
+#include "nodes/relation.h"
 
 /* command line arg flags */
 #define XFUNC_OFF -1			/* do no optimization of expensive preds */

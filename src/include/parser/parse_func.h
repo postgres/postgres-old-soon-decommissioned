@@ -13,7 +13,7 @@
 #ifndef PARSER_FUNC_H
 #define PARSER_FUNC_H
 
-#include <parser/parse_node.h>
+#include "parser/parse_node.h"
 
 
 #define MAXFARGS 8				/* max # args to a c or postquel function */

@@ -15,7 +15,7 @@
 #include <string.h>
 #include "postgres.h"
 
-#include <utils/memutils.h>
+#include "utils/memutils.h"
 #include "utils/acl.h"
 #include "utils/syscache.h"
 #include "catalog/catalog.h"

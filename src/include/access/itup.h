@@ -13,10 +13,10 @@
 #ifndef ITUP_H
 #define ITUP_H
 
-#include <access/ibit.h>
-#include <access/tupmacs.h>
-#include <access/tupdesc.h>
-#include <storage/itemptr.h>
+#include "access/ibit.h"
+#include "access/tupmacs.h"
+#include "access/tupdesc.h"
+#include "storage/itemptr.h"
 
 #define MaxIndexAttributeNumber 7
 

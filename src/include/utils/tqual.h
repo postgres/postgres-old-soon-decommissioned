@@ -14,8 +14,8 @@
 #ifndef TQUAL_H
 #define TQUAL_H
 
-#include <access/htup.h>
-#include <access/xact.h>
+#include "access/htup.h"
+#include "access/xact.h"
 
 typedef struct SnapshotData
 {

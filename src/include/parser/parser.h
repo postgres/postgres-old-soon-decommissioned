@@ -13,7 +13,7 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include <parser/parse_node.h>
+#include "parser/parse_node.h"
 
 extern List *parser(char *str, Oid *typev, int nargs);
 

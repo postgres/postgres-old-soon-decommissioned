@@ -13,10 +13,10 @@
 #ifndef NBTREE_H
 #define NBTREE_H
 
-#include <access/sdir.h>
-#include <access/relscan.h>
-#include <access/funcindex.h>
-#include <access/itup.h>
+#include "access/sdir.h"
+#include "access/relscan.h"
+#include "access/funcindex.h"
+#include "access/itup.h"
 
 /*
  *	BTPageOpaqueData -- At the end of every page, we store a pointer

@@ -23,7 +23,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
 
 #define MAX_QUERY_LEN 1024

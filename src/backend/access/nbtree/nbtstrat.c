@@ -12,10 +12,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/istrat.h>
-#include <access/nbtree.h>
+#include "access/istrat.h"
+#include "access/nbtree.h"
 
 /*
  * Note:

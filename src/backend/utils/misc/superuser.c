@@ -15,9 +15,9 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
-#include <utils/syscache.h>
-#include <catalog/pg_shadow.h>
+#include "postgres.h"
+#include "utils/syscache.h"
+#include "catalog/pg_shadow.h"
 
 bool
 superuser(void)

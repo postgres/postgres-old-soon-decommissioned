@@ -12,9 +12,9 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <utils/builtins.h>
+#include "utils/builtins.h"
 
 #ifndef HAVE_MEMMOVE
 #else

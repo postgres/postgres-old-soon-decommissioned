@@ -13,7 +13,7 @@
 #ifndef PARSE_CLAUSE_H
 #define PARSE_CLAUSE_H
 
-#include <parser/parse_node.h>
+#include "parser/parse_node.h"
 
 extern void makeRangeTable(ParseState *pstate, char *relname, List *frmList, Node **qual);
 extern Node *transformWhereClause(ParseState *pstate, Node *where, Node *using);

@@ -14,7 +14,7 @@
 #ifndef STRAT_H
 #define STRAT_H
 
-#include <access/skey.h>
+#include "access/skey.h"
 
 typedef uint16 StrategyNumber;
 

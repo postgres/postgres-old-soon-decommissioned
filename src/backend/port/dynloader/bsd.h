@@ -15,7 +15,7 @@
 
 #include <sys/types.h>
 #include <nlist.h>
-#include <link.h>
+#include "link.h"
 
 #include "postgres.h"
 

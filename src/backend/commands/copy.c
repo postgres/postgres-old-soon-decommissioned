@@ -14,24 +14,24 @@
 #include <string.h>
 #include <unistd.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/heapam.h>
-#include <miscadmin.h>
-#include <utils/builtins.h>
-#include <utils/acl.h>
+#include "access/heapam.h"
+#include "miscadmin.h"
+#include "utils/builtins.h"
+#include "utils/acl.h"
 #include <sys/stat.h>
-#include <catalog/pg_index.h>
-#include <utils/syscache.h>
-#include <executor/executor.h>
-#include <catalog/index.h>
-#include <access/genam.h>
-#include <catalog/pg_type.h>
-#include <catalog/catname.h>
-#include <catalog/pg_shadow.h>
-#include <commands/copy.h>
+#include "catalog/pg_index.h"
+#include "utils/syscache.h"
+#include "executor/executor.h"
+#include "catalog/index.h"
+#include "access/genam.h"
+#include "catalog/pg_type.h"
+#include "catalog/catname.h"
+#include "catalog/pg_shadow.h"
+#include "commands/copy.h"
 #include "commands/trigger.h"
-#include <libpq/libpq.h>
+#include "libpq/libpq.h"
 
 #ifdef MULTIBYTE
 #endif

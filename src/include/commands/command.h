@@ -13,7 +13,7 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#include <utils/portal.h>
+#include "utils/portal.h"
 
 extern MemoryContext PortalExecutorHeapMemory;
 

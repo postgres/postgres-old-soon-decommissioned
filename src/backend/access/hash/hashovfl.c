@@ -14,9 +14,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/hash.h>
+#include "access/hash.h"
 
 #ifndef HAVE_MEMMOVE
 #else

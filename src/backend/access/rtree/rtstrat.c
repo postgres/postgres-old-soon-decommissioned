@@ -12,10 +12,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/rtree.h>
-#include <access/istrat.h>
+#include "access/rtree.h"
+#include "access/istrat.h"
 
 static StrategyNumber RelationGetRTStrategy(Relation r,
 					  AttrNumber attnum, RegProcedure proc);

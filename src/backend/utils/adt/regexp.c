@@ -30,7 +30,7 @@
 #include <string.h>
 #include "postgres.h"			/* postgres system include file */
 
-#include <regex/regex.h>
+#include "regex/regex.h"
 
 #include "utils/builtins.h"		/* where the function declarations go */
 

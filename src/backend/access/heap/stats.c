@@ -18,9 +18,9 @@
 #include <stdio.h>
 #include <time.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/heapam.h>
+#include "access/heapam.h"
 
 #ifndef HAVE_MEMMOVE
 #else

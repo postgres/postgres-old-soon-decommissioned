@@ -13,7 +13,7 @@
 #ifndef PRINTTUP_H
 #define PRINTTUP_H
 
-#include <tcop/dest.h>
+#include "tcop/dest.h"
 
 extern DestReceiver *printtup_create_DR(void);
 extern void showatts(char *name, TupleDesc attinfo);

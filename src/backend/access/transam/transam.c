@@ -16,11 +16,11 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/heapam.h>
-#include <catalog/catname.h>
-#include <commands/vacuum.h>
+#include "access/heapam.h"
+#include "catalog/catname.h"
+#include "commands/vacuum.h"
 
 static int	RecoveryCheckingEnabled(void);
 static void TransRecover(Relation logRelation);

@@ -37,22 +37,22 @@
 #include <string.h>
 #include <math.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/heapam.h>
-#include <catalog/catname.h>
-#include <catalog/pg_aggregate.h>
-#include <catalog/pg_operator.h>
-#include <catalog/pg_proc.h>
-#include <catalog/pg_type.h>
-#include <catalog/pg_language.h>
-#include <utils/syscache.h>
+#include "access/heapam.h"
+#include "catalog/catname.h"
+#include "catalog/pg_aggregate.h"
+#include "catalog/pg_operator.h"
+#include "catalog/pg_proc.h"
+#include "catalog/pg_type.h"
+#include "catalog/pg_language.h"
+#include "utils/syscache.h"
 #include <fmgr.h>				/* for fmgr */
 #include <utils/builtins.h>		/* prototype for textin() */
-#include <commands/defrem.h>
-#include <tcop/dest.h>
-#include <catalog/pg_shadow.h>
-#include <optimizer/cost.h>
+#include "commands/defrem.h"
+#include "tcop/dest.h"
+#include "catalog/pg_shadow.h"
+#include "optimizer/cost.h"
 
 static char *defGetString(DefElem *def);
 static int	defGetTypeLength(DefElem *def);

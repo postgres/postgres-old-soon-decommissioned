@@ -13,7 +13,7 @@
 #ifndef PARSE_TARGET_H
 #define PARSE_TARGET_H
 
-#include <parser/parse_node.h>
+#include "parser/parse_node.h"
 
 #define EXPR_COLUMN_FIRST	1
 #define EXPR_RELATION_FIRST 2

@@ -13,7 +13,7 @@
 
 #include <sys/types.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
 
 #ifdef NOT_USED

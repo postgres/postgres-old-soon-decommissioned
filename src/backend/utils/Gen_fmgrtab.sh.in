@@ -225,7 +225,7 @@ cat > $TABCFILE <<FuNkYfMgRtAbStUfF
  */
 
 #include <string.h>
-#include <postgres.h>
+#include "postgres.h"
 #include "utils/fmgrtab.h"
 
 FuNkYfMgRtAbStUfF

@@ -13,7 +13,7 @@
 #ifndef HTUP_H
 #define HTUP_H
 
-#include <storage/bufpage.h>
+#include "storage/bufpage.h"
 
 #define MinHeapTupleBitmapSize	32		/* 8 * 4 */
 

@@ -13,9 +13,9 @@
 #ifndef SMGR_H
 #define SMGR_H
 
-#include <storage/spin.h>
-#include <storage/block.h>
-#include <utils/rel.h>
+#include "storage/spin.h"
+#include "storage/block.h"
+#include "utils/rel.h"
 
 #define SM_FAIL			0
 #define SM_SUCCESS		1

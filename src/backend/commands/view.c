@@ -12,17 +12,17 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <catalog/heap.h>
-#include <access/xact.h>
-#include <parser/parse_relation.h>
-#include <parser/parse_type.h>
-#include <rewrite/rewriteDefine.h>
-#include <rewrite/rewriteManip.h>
-#include <rewrite/rewriteRemove.h>
-#include <commands/creatinh.h>
-#include <commands/view.h>
+#include "catalog/heap.h"
+#include "access/xact.h"
+#include "parser/parse_relation.h"
+#include "parser/parse_type.h"
+#include "rewrite/rewriteDefine.h"
+#include "rewrite/rewriteManip.h"
+#include "rewrite/rewriteRemove.h"
+#include "commands/creatinh.h"
+#include "commands/view.h"
 
 /*---------------------------------------------------------------------
  * DefineVirtualRelation

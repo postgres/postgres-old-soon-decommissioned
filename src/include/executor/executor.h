@@ -14,7 +14,7 @@
 #define EXECUTOR_H
 
 #include <stdio.h>
-#include <executor/execdesc.h>
+#include "executor/execdesc.h"
 
 /* ----------------
  *		TupIsNull

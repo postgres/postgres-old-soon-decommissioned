@@ -10,15 +10,15 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <nodes/print.h>
-#include <lib/stringinfo.h>
-#include <commands/explain.h>
-#include <parser/parsetree.h>
-#include <optimizer/planner.h>
-#include <utils/relcache.h>
-#include <rewrite/rewriteHandler.h>
+#include "nodes/print.h"
+#include "lib/stringinfo.h"
+#include "commands/explain.h"
+#include "parser/parsetree.h"
+#include "optimizer/planner.h"
+#include "utils/relcache.h"
+#include "rewrite/rewriteHandler.h"
 
 typedef struct ExplainState
 {

@@ -53,7 +53,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
 #include <libpq/libpq.h>		/* where the declarations go */
 

@@ -13,7 +13,7 @@
 #ifndef ISTRAT_H
 #define ISTRAT_H
 
-#include <utils/rel.h>
+#include "utils/rel.h"
 
 /*
  * StrategyNumberIsValid

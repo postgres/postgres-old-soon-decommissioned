@@ -307,7 +307,7 @@ tas(slock_t *s_lock)
  * assembly from his NECEWS SVR4 port, but we probably ought to retain this
  * for the R3000 chips out there.
  */
-#include <mutex.h>
+#include "mutex.h"
 #define TAS(lock)	(test_and_set(lock,1))
 #define S_UNLOCK(lock)	(test_then_and(lock,0))
 #define S_INIT_LOCK(lock)	(test_then_and(lock,0))

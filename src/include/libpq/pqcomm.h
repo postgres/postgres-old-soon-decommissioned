@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #ifdef WIN32
-#include <winsock.h>
+#include "winsock.h"
 #else
 #include <sys/socket.h>
 #include <sys/un.h>

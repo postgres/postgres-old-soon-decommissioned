@@ -16,7 +16,7 @@
 
 #include "postgres.h"
 
-#include <utils/syscache.h>
+#include "utils/syscache.h"
 
 #include "nodes/nodeFuncs.h"
 

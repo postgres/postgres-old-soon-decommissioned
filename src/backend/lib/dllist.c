@@ -14,8 +14,8 @@
  *-------------------------------------------------------------------------
  */
 
-#include <postgres.h>
-#include <lib/dllist.h>
+#include "postgres.h"
+#include "lib/dllist.h"
 
 /* When this file is compiled for inclusion in libpq,
  * it can't use assert checking.  Probably this fix ought to be

@@ -13,7 +13,7 @@
 #ifndef PLANCAT_H
 #define PLANCAT_H
 
-#include <nodes/parsenodes.h>
+#include "nodes/parsenodes.h"
 
 /*
  * transient data structure to hold return value of index_info. Note that

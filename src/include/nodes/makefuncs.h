@@ -13,7 +13,7 @@
 #ifndef MAKEFUNC_H
 #define MAKEFUNC_H
 
-#include <nodes/parsenodes.h>
+#include "nodes/parsenodes.h"
 
 extern Oper *makeOper(Oid opno,
 		 Oid opid,

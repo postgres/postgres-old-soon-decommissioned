@@ -12,8 +12,8 @@
 #ifndef PARSE_NODE_H
 #define PARSE_NODE_H
 
-#include <nodes/parsenodes.h>
-#include <utils/rel.h>
+#include "nodes/parsenodes.h"
+#include "utils/rel.h"
 
 /* state information used during parse analysis */
 typedef struct ParseState

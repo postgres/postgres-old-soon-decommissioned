@@ -23,8 +23,8 @@
 #include <fcntl.h>
 #include <errno.h>
 
-#include <postgres.h>
-#include <libpq/libpq.h>
+#include "postgres.h"
+#include "libpq/libpq.h"
 
 
 /*

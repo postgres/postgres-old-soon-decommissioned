@@ -20,8 +20,8 @@
 
 #include <stdio.h>
 
-#include <postgres.h>
-#include <access/xact.h>
+#include "postgres.h"
+#include "access/xact.h"
 
 extern TransactionId NullTransactionId;
 extern TransactionId DisabledTransactionId;

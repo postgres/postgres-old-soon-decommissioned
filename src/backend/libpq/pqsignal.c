@@ -37,11 +37,11 @@
  *	is to do signal-handler reinstallation, which doesn't work well
  *	at all.
  * ------------------------------------------------------------------------*/
-#include <postgres.h>
+#include "postgres.h"
 
 #include <signal.h>
 
-#include <libpq/pqsignal.h>
+#include "libpq/pqsignal.h"
 
 pqsigfunc
 pqsignal(int signo, pqsigfunc func)

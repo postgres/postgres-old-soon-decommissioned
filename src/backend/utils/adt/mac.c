@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <postgres.h>
-#include <utils/builtins.h>
+#include "postgres.h"
+#include "utils/builtins.h"
 
 manufacturer manufacturers[] = {
 	{0x00, 0x00, 0x0C, "Cisco"},

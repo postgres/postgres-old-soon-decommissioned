@@ -13,7 +13,7 @@
 #ifndef HIO_H
 #define HIO_H
 
-#include <access/htup.h>
+#include "access/htup.h"
 
 extern void RelationPutHeapTuple(Relation relation, Buffer buffer,
 					 HeapTuple tuple);

@@ -26,7 +26,7 @@
 #include "postgres.h"
 #include "miscadmin.h"			/* where the declarations go */
 
-#include <storage/backendid.h>
+#include "storage/backendid.h"
 #include "storage/lmgr.h"
 #include "libpq/pqcomm.h"
 #include "catalog/catname.h"

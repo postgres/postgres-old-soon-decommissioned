@@ -16,8 +16,8 @@
 #ifndef SKEY_H
 #define SKEY_H
 
-#include <access/attnum.h>
-#include <fmgr.h>
+#include "access/attnum.h"
+#include "fmgr.h"
 
 typedef struct ScanKeyData
 {

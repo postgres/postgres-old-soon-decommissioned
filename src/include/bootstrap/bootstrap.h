@@ -13,9 +13,9 @@
 #ifndef BOOTSTRAP_H
 #define BOOTSTRAP_H
 
-#include <access/funcindex.h>
-#include <access/itup.h>
-#include <utils/rel.h>
+#include "access/funcindex.h"
+#include "access/itup.h"
+#include "utils/rel.h"
 
 #define MAXATTR 40				/* max. number of attributes in a relation */
 

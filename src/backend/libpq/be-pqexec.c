@@ -20,12 +20,12 @@
  * NOTES
  *		These routines are compiled into the postgres backend.
  */
-#include <postgres.h>
+#include "postgres.h"
 
-#include <tcop/fastpath.h>
-#include <tcop/tcopprot.h>
-#include <libpq/libpq.h>
-#include <utils/builtins.h>
+#include "tcop/fastpath.h"
+#include "tcop/tcopprot.h"
+#include "libpq/libpq.h"
+#include "utils/builtins.h"
 #ifndef HAVE_MEMMOVE
 #else
 #include <string.h>

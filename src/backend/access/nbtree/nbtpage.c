@@ -22,10 +22,10 @@
 #include <stdio.h>
 #include <time.h>
 
-#include <postgres.h>
+#include "postgres.h"
 
-#include <access/nbtree.h>
-#include <miscadmin.h>
+#include "access/nbtree.h"
+#include "miscadmin.h"
 
 #ifndef HAVE_MEMMOVE
 #else

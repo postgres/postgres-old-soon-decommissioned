@@ -16,7 +16,7 @@
 
 #include <sys/types.h>
 
-#include <access/relscan.h>
+#include "access/relscan.h"
 
 /*
  * This structure will eventually have lots more stuff associated with it.

@@ -13,7 +13,7 @@
 #ifndef INVAL_H
 #define INVAL_H
 
-#include <access/htup.h>
+#include "access/htup.h"
 
 extern void InitLocalInvalidateData(void);
 

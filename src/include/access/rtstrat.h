@@ -13,7 +13,7 @@
 #ifndef RTSTRAT_H
 #define RTSTRAT_H
 
-#include <utils/rel.h>
+#include "utils/rel.h"
 
 extern RegProcedure RTMapOperator(Relation r, AttrNumber attnum,
 			  RegProcedure proc);

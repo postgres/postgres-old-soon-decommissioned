@@ -15,9 +15,9 @@
 /*
  * utils/memutils.h contains declarations of the functions in this file
  */
-#include <postgres.h>
+#include "postgres.h"
 
-#include <utils/bit.h>
+#include "utils/bit.h"
 
 void
 BitArraySetBit(BitArray bitArray, BitIndex bitIndex)
