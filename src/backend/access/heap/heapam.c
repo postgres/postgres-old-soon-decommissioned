@@ -1362,7 +1362,7 @@ heap_insert(Relation relation, HeapTuple tup)
 	 * ----------
 	 */
     if (HeapTupleHasExtended(tup) ||
-				(MAXALIGN(tup->t_len) > (MaxTupleSize / 4)))
+		(MAXALIGN(tup->t_len) > TOAST_TUPLE_THRESHOLD))
 		heap_tuple_toast_attrs(relation, tup, NULL);
 #endif
 
@@ -1621,13 +1621,15 @@ l2:
 #ifdef TUPLE_TOASTER_ACTIVE
 	/* ----------
 	 * If this relation is enabled for toasting, let the toaster
-	 * delete not any longer needed entries and create new ones to
-	 * make the new tuple fit again.
+	 * delete any no-longer-needed entries and create new ones to
+	 * make the new tuple fit again.  Also, if there are already-
+	 * toasted values from some other relation, the toaster must
+	 * fix them.
 	 * ----------
 	 */
 	if (HeapTupleHasExtended(&oldtup) || 
-			HeapTupleHasExtended(newtup) ||
-			(MAXALIGN(newtup->t_len) > (MaxTupleSize / 4)))
+		HeapTupleHasExtended(newtup) ||
+		(MAXALIGN(newtup->t_len) > TOAST_TUPLE_THRESHOLD))
 		heap_tuple_toast_attrs(relation, newtup, &oldtup);
 #endif
 

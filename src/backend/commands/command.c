@@ -1503,6 +1503,14 @@ AlterTableCreateToastTable(const char *relationName, bool silent)
 					   "chunk_data",
 					   BYTEAOID,
 					   -1, 0, false);
+	/*
+	 * Ensure that the toast table doesn't itself get toasted,
+	 * or we'll be toast :-(.  This is essential for chunk_data because
+	 * type bytea is toastable; hit the other two just to be sure.
+	 */
+	tupdesc->attrs[0]->attstorage = 'p';
+	tupdesc->attrs[1]->attstorage = 'p';
+	tupdesc->attrs[2]->attstorage = 'p';
 
 	/*
 	 * Note: the toast relation is considered a "normal" relation even if
