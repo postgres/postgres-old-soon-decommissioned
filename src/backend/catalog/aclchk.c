@@ -455,6 +455,7 @@ pg_aclcheck(char *relname, char *usename, AclMode mode)
 									  RelationGetDescr(relation),
 									  (bool *) NULL);
 		acl = aclownerdefault(relname, (AclId) ownerId);
+		heap_close(relation);
 	}
 #else
 	{							/* This is why the syscache is great... */
