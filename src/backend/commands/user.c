@@ -261,7 +261,7 @@ AlterUser(AlterUserStmt *stmt, CommandDest dest)
 	pg_shadow_rel = heap_openr(ShadowRelationName, AccessExclusiveLock);
 	pg_shadow_dsc = RelationGetDescr(pg_shadow_rel);
 
-	tuple = SearchSysCacheTuple(USERNAME,
+	tuple = SearchSysCacheTuple(SHADOWNAME,
 								PointerGetDatum(stmt->user),
 								0, 0, 0);
 	if (!HeapTupleIsValid(tuple))
@@ -374,7 +374,7 @@ RemoveUser(char *user, CommandDest dest)
 	pg_shadow_rel = heap_openr(ShadowRelationName, AccessExclusiveLock);
 	pg_dsc = RelationGetDescr(pg_shadow_rel);
 
-	tuple = SearchSysCacheTuple(USERNAME,
+	tuple = SearchSysCacheTuple(SHADOWNAME,
 								PointerGetDatum(user),
 								0, 0, 0);
 	if (!HeapTupleIsValid(tuple))

@@ -66,7 +66,8 @@ typedef HeapTuple (*ScanFunc) ();
     lookups return only one row, so the index should be unique.
 
     In backend/catalog/indexing.c, initialize the relation array with
-    the index names for the relation, and create the index lookup function.
+    the index names for the relation, fixed size of relation (or marking
+    first non-fixed length field), and create the index lookup function.
     Pick one that takes similar arguments and use that one, but keep the
     function names in the same order as the cache list for clarity.
 
@@ -333,6 +334,41 @@ static struct cachedesc cacheinfo[] = {
 		offsetof(FormData_pg_rewrite, ev_qual),
 		RewriteOidIndex,
 	RewriteOidIndexScan},
+	{ShadowRelationName,		/* SHADOWNAME */
+		1,
+		{
+			Anum_pg_shadow_usename,
+			0,
+			0,
+			0
+		},
+		sizeof(FormData_pg_shadow),
+NULL,NULL
+/*		ShadowNameIndex,
+	ShadowNameIndexScan*/},
+	{ShadowRelationName,		/* SHADOWSYSID */
+		1,
+		{
+			Anum_pg_shadow_usesysid,
+			0,
+			0,
+			0
+		},
+		sizeof(FormData_pg_shadow),
+NULL,NULL
+/*		ShadowSysidIndex,
+	ShadowSysidIndexScan*/},
+	{StatisticRelationName,		/* STATRELID */
+		3,
+		{
+			Anum_pg_statistic_starelid,
+			Anum_pg_statistic_staattnum,
+			Anum_pg_statistic_staop,
+			0
+		},
+		offsetof(FormData_pg_statistic, stacommonval),
+		StatisticRelidAttnumOpIndex,
+	StatisticRelidAttnumOpIndexScan},
 	{TypeRelationName,			/* TYPENAME */
 		1,
 		{
@@ -354,31 +390,7 @@ static struct cachedesc cacheinfo[] = {
 		},
 		offsetof(FormData_pg_type, typalign) +sizeof(char),
 		TypeOidIndex,
-	TypeOidIndexScan},
-	{ShadowRelationName,		/* USERNAME */
-		1,
-		{
-			Anum_pg_shadow_usename,
-			0,
-			0,
-			0
-		},
-		sizeof(FormData_pg_shadow),
-NULL,NULL
-/*		ShadowNameIndex,
-	ShadowNameIndexScan*/},
-	{ShadowRelationName,		/* USERSYSID */
-		1,
-		{
-			Anum_pg_shadow_usesysid,
-			0,
-			0,
-			0
-		},
-		sizeof(FormData_pg_shadow),
-NULL,NULL
-/*		ShadowSysidIndex,
-	ShadowSysidIndexScan*/}
+	TypeOidIndexScan}
 };
 
 static struct catcache *SysCache[lengthof(cacheinfo)];

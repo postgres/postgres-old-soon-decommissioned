@@ -567,7 +567,7 @@ pg_get_userbyid(int32 uid)
 	 * Get the pg_shadow entry and print the result
 	 * ----------
 	 */
-	usertup = SearchSysCacheTuple(USERSYSID,
+	usertup = SearchSysCacheTuple(SHADOWSYSID,
 								  ObjectIdGetDatum(uid), 0, 0, 0);
 	if (HeapTupleIsValid(usertup))
 	{

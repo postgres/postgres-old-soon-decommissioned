@@ -53,10 +53,11 @@
 #define RELOID			20
 #define RULENAME		21
 #define RULEOID			22
-#define TYPENAME		23
-#define TYPEOID			24
-#define USERNAME		25
-#define USERSYSID		26
+#define SHADOWNAME		23
+#define SHADOWSYSID		24
+#define STATRELID		25
+#define TYPENAME		26
+#define TYPEOID			27
 
 /* ----------------
  *		struct cachedesc:		information needed for a call to InitSysCache()

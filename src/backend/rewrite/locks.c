@@ -170,7 +170,7 @@ checkLockPerms(List *locks, Query *parsetree, int rt_index)
 	 */
 	rte = (RangeTblEntry *) nth(rt_index - 1, parsetree->rtable);
 	ev_rel = heap_openr(rte->relname, AccessShareLock);
-	usertup = SearchSysCacheTuple(USERSYSID,
+	usertup = SearchSysCacheTuple(SHADOWSYSID,
 							  ObjectIdGetDatum(ev_rel->rd_rel->relowner),
 								  0, 0, 0);
 	if (!HeapTupleIsValid(usertup))
