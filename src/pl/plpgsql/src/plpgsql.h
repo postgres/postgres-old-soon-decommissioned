@@ -496,9 +496,9 @@ extern char *plpgsql_tolower(char *s);
  */
 extern PLpgSQL_expr *plpgsql_read_expression(int until, char *s);
 extern void plpgsql_yyrestart(FILE *fp);
-extern int	plpgsql_yylex();
+extern int	plpgsql_yylex(void);
 extern void plpgsql_setinput(char *s, int functype);
-extern int	plpgsql_yyparse();
-
+extern int	plpgsql_yyparse(void);
+extern void plpgsql_yyerror(const char *s);
 
 #endif	 /* PLPGSQL_H */

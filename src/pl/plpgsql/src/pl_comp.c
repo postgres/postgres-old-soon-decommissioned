@@ -90,8 +90,6 @@ PLpgSQL_function *plpgsql_curr_compile;
  * Local function declarations
  * ----------
  */
-extern void plpgsql_yyerror(const char *s);
-
 static char *xlateSqlType(char *name);
 
 
