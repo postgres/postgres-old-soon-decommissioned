@@ -13,25 +13,30 @@ subdir = src/bin/initdb
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-all: initdb
+override CPPFLAGS := -DPGBINDIR=\"$(bindir)\" -DPGDATADIR=\"$(datadir)\" -DFRONTEND -I$(libpq_srcdir) $(CPPFLAGS)
 
-initdb: initdb.sh $(top_builddir)/src/Makefile.global
-	sed -e 's/@VERSION@/$(VERSION)/g' \
-	    -e 's,@SHELL@,$(SHELL),g' \
-	    -e 's,@HAVE_IPV6@,$(HAVE_IPV6),g' \
-	    -e 's,@bindir@,$(bindir),g' \
-	    -e 's,@datadir@,$(datadir),g' \
-	  $< >$@
-	chmod a+x $@
+OBJS=	initdb.o sprompt.o
+ifeq ($(PORTNAME), win32)
+OBJS+=dirmod.o
+endif
+
+all: submake-libpq submake-libpgport initdb
+
+initdb: $(OBJS) $(libpq_builddir)/libpq.a
+	$(CC) $(CFLAGS) $(OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@
+
+dirmod.c sprompt.c: % : $(top_srcdir)/src/port/%
+	rm -f $@ && $(LN_S) $< .
 
 install: all installdirs
-	$(INSTALL_SCRIPT) initdb $(DESTDIR)$(bindir)/initdb
+	$(INSTALL_PROGRAM) initdb$(X) $(DESTDIR)$(bindir)/initdb$(X)
+	$(INSTALL_DATA) $(srcdir)/system_views.sql $(DESTDIR)$(datadir)/system_views.sql
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(DESTDIR)$(bindir)/initdb
+	rm -f $(DESTDIR)$(bindir)/initdb$(X) $(DESTDIR)$(datadir)/system_views.sql
 
-clean distclean maintainer-clean:
-	rm -f initdb
+clean distclean:
+	rm -f initdb$(X) $(OBJS)
