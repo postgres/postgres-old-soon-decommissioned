@@ -145,14 +145,14 @@ lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt)
 	vacrelstats->threshold = GetAvgFSMRequestSize(&onerel->rd_node);
 
 	/* Open all indexes of the relation */
-	vac_open_indexes(onerel, &nindexes, &Irel);
+	vac_open_indexes(onerel, ShareUpdateExclusiveLock, &nindexes, &Irel);
 	hasindex = (nindexes > 0);
 
 	/* Do the vacuuming */
 	lazy_scan_heap(onerel, vacrelstats, Irel, nindexes);
 
 	/* Done with indexes */
-	vac_close_indexes(nindexes, Irel);
+	vac_close_indexes(nindexes, Irel, NoLock);
 
 	/*
 	 * Optionally truncate the relation.
