@@ -516,6 +516,7 @@ AddHavingQual(Query *parsetree, Node *havingQual)
 		parsetree->havingQual = (Node *) make_andclause(makeList(parsetree->havingQual, copy, -1));
 }
 
+#ifdef NOT_USED
 void
 AddNotHavingQual(Query *parsetree, Node *havingQual)
 {
@@ -531,6 +532,7 @@ AddNotHavingQual(Query *parsetree, Node *havingQual)
 
 	AddHavingQual(parsetree, copy);
 }
+#endif
 
 void
 AddNotQual(Query *parsetree, Node *qual)

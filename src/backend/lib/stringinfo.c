@@ -19,6 +19,7 @@
 #include "postgres.h"
 #include "lib/stringinfo.h"
 
+#ifdef NOT_USED
 /*
  * makeStringInfo
  *
@@ -37,6 +38,7 @@ makeStringInfo(void)
 
 	return res;
 }
+#endif
 
 /*
  * initStringInfo

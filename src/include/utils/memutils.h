@@ -80,7 +80,6 @@ struct OrderedSetData
 };
 
 extern void OrderedSetInit(OrderedSet set, Offset offset);
-extern bool OrderedSetContains(OrderedSet set, OrderedElem elem);
 extern Pointer OrderedSetGetHead(OrderedSet set);
 extern Pointer OrderedElemGetPredecessor(OrderedElem elem);
 extern Pointer OrderedElemGetSuccessor(OrderedElem elem);

@@ -41,14 +41,12 @@ static TargetEntry *
 
 static void parseFromClause(ParseState *pstate, List *frmList, Node **qual);
 
-Attr	   *makeAttr(char *relname, char *attname);
-
 #ifdef ENABLE_OUTER_JOINS
 Node	   *transformUsingClause(ParseState *pstate, List *onList, char *lname, char *rname);
 
 #endif
 
-char	   *transformTableEntry(ParseState *pstate, RangeVar *r);
+static char	*transformTableEntry(ParseState *pstate, RangeVar *r);
 
 
 /*
@@ -126,7 +124,8 @@ transformWhereClause(ParseState *pstate, Node *a_expr, Node *o_expr)
 	return qual;
 }
 
-Attr *
+#ifdef NOT_USED
+static Attr *
 makeAttr(char *relname, char *attname)
 {
 	Attr	   *a = makeNode(Attr);
@@ -138,6 +137,7 @@ makeAttr(char *relname, char *attname)
 
 	return a;
 }
+#endif
 
 #ifdef ENABLE_OUTER_JOINS
 /* transformUsingClause()
@@ -206,7 +206,7 @@ transformUsingClause(ParseState *pstate, List *onList, char *lname, char *rname)
 
 #endif
 
-char *
+static char *
 transformTableEntry(ParseState *pstate, RangeVar *r)
 {
 	RelExpr    *baserel = r->relExpr;
@@ -744,7 +744,8 @@ transformSortClause(ParseState *pstate,
  * Let's just try matching in pairs for now (right to left) and see if it works.
  * - thomas 1998-05-22
  */
-List *
+#ifdef NOT_USED
+static List *
 transformUnionClause(List *unionClause, List *targetlist)
 {
 	List	   *union_list = NIL;
@@ -832,4 +833,5 @@ transformUnionClause(List *unionClause, List *targetlist)
 	}
 	else
 		return NIL;
-}	/* transformUnionClause() */
+}
+#endif

@@ -83,8 +83,6 @@ extern List *make_rels_by_clause_joins(Query *root, RelOptInfo *old_rel,
 						  List *joininfo_list, Relids only_relids);
 extern List *make_rels_by_clauseless_joins(RelOptInfo *old_rel,
 							  List *inner_rels);
-extern RelOptInfo *make_join_rel(RelOptInfo *outer_rel, RelOptInfo *inner_rel, JoinInfo *joininfo);
-extern List *new_join_tlist(List *tlist, int first_resdomno);
 extern RelOptInfo *get_cheapest_complete_rel(List *join_rel_list);
 
 /*

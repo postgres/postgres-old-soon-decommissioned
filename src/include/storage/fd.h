@@ -94,7 +94,6 @@ extern BufFile *BufFileCreate(File file);
 extern void BufFileClose(BufFile *file);
 extern size_t BufFileRead(BufFile *file, void *ptr, size_t size);
 extern size_t BufFileWrite(BufFile *file, void *ptr, size_t size);
-extern int	BufFileFlush(BufFile *file);
 extern long BufFileSeek(BufFile *file, long offset, int whence);
 
 /* Miscellaneous support routines */

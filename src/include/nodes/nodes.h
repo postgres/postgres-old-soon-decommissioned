@@ -281,11 +281,6 @@ extern void *stringToNode(char *str);
 extern void *copyObject(void *obj);
 
 /*
- * nodes/freefuncs.c
- */
-extern void freeObject(void *obj);
-
-/*
  * nodes/equalfuncs.c
  */
 extern bool equal(void *a, void *b);

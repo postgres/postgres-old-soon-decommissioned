@@ -47,6 +47,9 @@ static bool OperandIsInner(Node *opnd, int inner_relid);
 static List *pull_agg_clause(Node *clause);
 static Node *del_agg_clause(Node *clause);
 static void set_result_tlist_references(Result *resultNode);
+static void replace_vars_with_subplan_refs(Node *clause,
+							   Index subvarno,
+							   List *subplanTargetList);
 
 /*****************************************************************************
  *
@@ -603,7 +606,7 @@ replace_tlist_with_subplan_refs(List *tlist,
  * Afterwards, all Var nodes have varno = subvarno, varattno = resno
  * of corresponding subplan target.
  */
-void
+static void
 replace_vars_with_subplan_refs(Node *clause,
 							   Index subvarno,
 							   List *subplanTargetList)

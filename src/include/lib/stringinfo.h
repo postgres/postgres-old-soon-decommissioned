@@ -60,11 +60,13 @@ typedef StringInfoData *StringInfo;
  *-------------------------
  */
 
+#ifdef NOT_USED
 /*------------------------
  * makeStringInfo
  * Create an empty 'StringInfoData' & return a pointer to it.
  */
 extern StringInfo makeStringInfo(void);
+#endif
 
 /*------------------------
  * initStringInfo

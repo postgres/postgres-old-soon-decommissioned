@@ -17,7 +17,7 @@ ifdef MULTIBYTE
 CFLAGS+= $(MBFLAGS)
 endif
 
-OBJS = heaptuple.o heapvalid.o indextuple.o indexvalid.o printtup.o \
+OBJS = heaptuple.o indextuple.o indexvalid.o printtup.o \
        scankey.o tupdesc.o  
 
 all: SUBSYS.o

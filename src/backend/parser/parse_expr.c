@@ -33,6 +33,7 @@
 #include "utils/builtins.h"
 
 static Node *parser_typecast(Value *expr, TypeName *typename, int32 atttypmod);
+static Node *transformIdent(ParseState *pstate, Node *expr, int precedence);
 
 /*
  * transformExpr -
@@ -534,7 +535,7 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 	return result;
 }
 
-Node *
+static Node *
 transformIdent(ParseState *pstate, Node *expr, int precedence)
 {
 	Ident	   *ident = (Ident *) expr;

@@ -52,11 +52,13 @@ OrderedSetInit(OrderedSet set, Offset offset)
  * OrderedSetContains
  *		True iff ordered set contains given element.
  */
+#ifdef NOT_USED
 bool
 OrderedSetContains(OrderedSet set, OrderedElem elem)
 {
 	return (bool) (elem->set == set && (elem->next || elem->prev));
 }
+#endif
 
 /*
  * OrderedSetGetHead

@@ -472,6 +472,7 @@ rtrim(text *string, text *set)
  *
  ********************************************************************/
 
+#ifdef NOT_USED
 text *
 substr(text *string, int4 m, int4 n)
 {
@@ -498,7 +499,7 @@ substr(text *string, int4 m, int4 n)
 
 	return ret;
 }
-
+#endif
 
 /********************************************************************
  *

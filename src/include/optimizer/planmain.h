@@ -57,9 +57,6 @@ extern List *index_outerjoin_references(List *inner_indxqual,
 extern void replace_tlist_with_subplan_refs(List *tlist,
 								Index subvarno,
 								List *subplanTargetList);
-extern void replace_vars_with_subplan_refs(Node *clause,
-							   Index subvarno,
-							   List *subplanTargetList);
 extern bool set_agg_tlist_references(Agg *aggNode);
 extern void del_agg_tlist_references(List *tlist);
 extern void check_having_for_ungrouped_vars(Node *clause,

@@ -35,6 +35,7 @@
  *					 plannodes.h free functions
  * ****************************************************************
  */
+static void freeObject(void *obj);
 
 /* ----------------
  *		FreePlanFields
@@ -1157,7 +1158,7 @@ _freeValue(Value *node)
  *		recursively frees its items.
  * ----------------
  */
-void
+static void
 freeObject(void *node)
 {
 	if (node == NULL)

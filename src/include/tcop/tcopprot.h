@@ -43,7 +43,6 @@ extern bool InError;
 extern List *pg_parse_and_plan(char *query_string, Oid *typev, int nargs,
 				  List **queryListP, CommandDest dest,
 				  bool aclOverride);
-extern void pg_exec_query(char *query_string);
 extern void pg_exec_query_acl_override(char *query_string);
 extern void
 			pg_exec_query_dest(char *query_string, CommandDest dest, bool aclOverride);

@@ -518,7 +518,6 @@ extern text *lpad(text *string1, int4 len, text *string2);
 extern text *rpad(text *string1, int4 len, text *string2);
 extern text *ltrim(text *string, text *set);
 extern text *rtrim(text *string, text *set);
-extern text *substr(text *string, int4 m, int4 n);
 extern text *translate(text *string, char from, char to);
 
 /* acl.c */
