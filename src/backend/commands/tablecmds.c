@@ -4090,7 +4090,7 @@ AlterTableCreateToastTable(Oid relOid, bool silent)
 
 		ereport(ERROR,
 				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
-				 errmsg("tables \"%s\" already has a TOAST table",
+				 errmsg("table \"%s\" already has a TOAST table",
 						RelationGetRelationName(rel))));
 	}
 

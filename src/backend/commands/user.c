@@ -648,7 +648,7 @@ CreateUser(CreateUserStmt *stmt)
 	if (sysid_exists)
 		ereport(ERROR,
 				(errcode(ERRCODE_DUPLICATE_OBJECT),
-				 errmsg("sysid %d is already assigned", sysid)));
+				 errmsg("user ID %d is already assigned", sysid)));
 
 	/* If no sysid given, use max existing id + 1 */
 	if (!havesysid)
@@ -1354,7 +1354,7 @@ CreateGroup(CreateGroupStmt *stmt)
 	if (sysid_exists)
 		ereport(ERROR,
 				(errcode(ERRCODE_DUPLICATE_OBJECT),
-				 errmsg("sysid %d is already assigned", sysid)));
+				 errmsg("group ID %d is already assigned", sysid)));
 
 	/* If no sysid given, use max existing id + 1 */
 	if (!havesysid)
