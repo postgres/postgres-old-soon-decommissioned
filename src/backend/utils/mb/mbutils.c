@@ -471,3 +471,10 @@ getdatabaseencoding(PG_FUNCTION_ARGS)
 	Assert(DatabaseEncoding);
 	return DirectFunctionCall1(namein, CStringGetDatum(DatabaseEncoding->name));
 }
+
+Datum
+pg_client_encoding(PG_FUNCTION_ARGS)
+{
+	Assert(ClientEncoding);
+	return DirectFunctionCall1(namein, CStringGetDatum(ClientEncoding->name));
+}

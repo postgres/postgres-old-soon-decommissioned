@@ -2140,8 +2140,12 @@ DESCR("return portion of string");
 
 /* for multi-byte support */
 
-/* old encoding names - back compatibility only */
+/* return database encoding name */
 DATA(insert OID = 1039 (  getdatabaseencoding	   PGUID 12 f t f t 0 f 19 "0" 100 0 0 100  getdatabaseencoding - ));
+DESCR("encoding name of current database");
+
+/* return client encoding name i.e. session encoding */
+DATA(insert OID = 810 (  pg_client_encoding	   PGUID 12 f t f t 0 f 19 "0" 100 0 0 100  pg_client_encoding - ));
 DESCR("encoding name of current database");
 
 DATA(insert OID = 1717 (  convert		   PGUID 12 f t f t 2 f 25 "25 19" 100 0 0 100  pg_convert - ));

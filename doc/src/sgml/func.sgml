@@ -1009,6 +1009,16 @@
      </row>
 
      <row>
+      <entry><function>pg_client_encoding</function>()</entry>
+      <entry><type>name</type></entry>
+      <entry>
+       Returns current client encoding name.
+      </entry>
+      <entry><literal>pg_client_encoding()</literal></entry>
+      <entry><literal>SQL_ASCII</literal></entry>
+     </row>
+
+     <row>
       <entry><function>repeat</function>(<type>text</type>, <type>integer</type>)</entry>
       <entry><type>text</type></entry>
       <entry>Repeat text a number of times.</entry>

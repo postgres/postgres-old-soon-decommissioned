@@ -198,6 +198,12 @@ getdatabaseencoding(PG_FUNCTION_ARGS)
 }
 
 Datum
+pg_client_encoding(PG_FUNCTION_ARGS)
+{
+	return DirectFunctionCall1(namein, CStringGetDatum("SQL_ASCII"));
+}
+
+Datum
 PG_encoding_to_char(PG_FUNCTION_ARGS)
 {
 	return DirectFunctionCall1(namein, CStringGetDatum("SQL_ASCII"));
