@@ -22,8 +22,13 @@
 /* dynloader.c */
 
 #ifndef LINUX_ELF
+# ifndef HAVE_DLD_H
+#define pg_dlsym(handle, funcname)	(NULL)
+# define pg_dlclose(handle)		({})
+# else
 #define pg_dlsym(handle, funcname)	((func_ptr) dld_get_func((funcname)))
-#define pg_dlclose(handle)		({ dld_unlink_by_file(handle, 1); free(handle); })
+# define pg_dlclose(handle)		({ dld_unlink_by_file(handle, 1); free(handle); })
+# endif
 #else
 /* #define	pg_dlopen(f)	dlopen(f, 1) */
 #define	pg_dlopen(f)	dlopen(f, 2)
