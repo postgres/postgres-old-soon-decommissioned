@@ -1610,8 +1610,11 @@ ECPG = ecpg
 
    <listitem>
     <para>
-     <function>ECPGstatus()</function> returns true if you
-     are connected to a database and false if not.
+     <function>ECPGstatus(int <replaceable>lineno</replaceable>,
+     const char* <replaceable>connection_name</replaceable>)</function>
+     returns true if you are connected to a database and false if not.
+     <replaceable>connection_name</replaceable> can be <literal>NULL</> 
+     if a single connection is being used.
     </para>
    </listitem>
   </itemizedlist>
