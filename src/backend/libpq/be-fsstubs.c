@@ -375,14 +375,18 @@ lo_export(Oid lobjId, text *filename)
 void 
 _lo_commit(void)
 {
-        int i;
+	int i;
 	MemoryContext currentContext;
 
+	if (fscxt == NULL)
+		return;
+	
 	currentContext = MemoryContextSwitchTo((MemoryContext) fscxt);
 
-        for (i = 0; i < MAX_LOBJ_FDS; i++) {
-                if (cookies[i] != NULL) inv_cleanindex(cookies[i]);
-        }
+	for (i = 0; i < MAX_LOBJ_FDS; i++)
+	{
+		if (cookies[i] != NULL) inv_cleanindex(cookies[i]);
+	}
 
 	MemoryContextSwitchTo(currentContext);
 
