@@ -1016,7 +1016,7 @@ CommitTransaction(void)
 		elog(NOTICE, "CommitTransaction and not in in-progress state ");
 
 	/* Prevent cancel/die interrupt while cleaning up */
-	START_CRIT_SECTION();
+	HOLD_INTERRUPTS();
 
 	/* ----------------
 	 *	Tell the trigger manager that this transaction is about to be
@@ -1087,7 +1087,7 @@ CommitTransaction(void)
 	 */
 	s->state = TRANS_DEFAULT;
 
-	END_CRIT_SECTION();
+	RESUME_INTERRUPTS();
 }
 
 /* --------------------------------
@@ -1101,7 +1101,7 @@ AbortTransaction(void)
 	TransactionState s = CurrentTransactionState;
 
 	/* Prevent cancel/die interrupt while cleaning up */
-	START_CRIT_SECTION();
+	HOLD_INTERRUPTS();
 
 	/*
 	 * Let others to know about no transaction in progress - vadim
@@ -1133,7 +1133,7 @@ AbortTransaction(void)
 	 */
 	if (s->state == TRANS_DISABLED)
 	{
-		END_CRIT_SECTION();
+		RESUME_INTERRUPTS();
 		return;
 	}
 
@@ -1185,7 +1185,7 @@ AbortTransaction(void)
 	 *	State remains TRANS_ABORT until CleanupTransaction().
 	 * ----------------
 	 */
-	END_CRIT_SECTION();
+	RESUME_INTERRUPTS();
 }
 
 /* --------------------------------

@@ -1425,9 +1425,6 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 					ToPage = BufferGetPage(cur_buffer);
 					Cpage = BufferGetPage(Cbuf);
 
-					/* NO ELOG(ERROR) TILL CHANGES ARE LOGGED */
-					START_CRIT_SECTION();
-
 					Citemid = PageGetItemId(Cpage,
 							ItemPointerGetOffsetNumber(&(tuple.t_self)));
 					tuple.t_datamcxt = NULL;
@@ -1441,6 +1438,9 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 					heap_copytuple_with_tuple(&tuple, &newtup);
 
 					RelationInvalidateHeapTuple(onerel, &tuple);
+
+					/* NO ELOG(ERROR) TILL CHANGES ARE LOGGED */
+					START_CRIT_SECTION();
 
 					TransactionIdStore(myXID, (TransactionId *) &(tuple.t_data->t_cmin));
 					tuple.t_data->t_infomask &=
@@ -1626,6 +1626,9 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 
 			RelationInvalidateHeapTuple(onerel, &tuple);
 
+			/* NO ELOG(ERROR) TILL CHANGES ARE LOGGED */
+			START_CRIT_SECTION();
+
 			/*
 			 * Mark new tuple as moved_in by vacuum and store vacuum XID
 			 * in t_cmin !!!
@@ -1634,9 +1637,6 @@ repair_frag(VRelStats *vacrelstats, Relation onerel,
 			newtup.t_data->t_infomask &=
 				~(HEAP_XMIN_COMMITTED | HEAP_XMIN_INVALID | HEAP_MOVED_OFF);
 			newtup.t_data->t_infomask |= HEAP_MOVED_IN;
-
-			/* NO ELOG(ERROR) TILL CHANGES ARE LOGGED */
-			START_CRIT_SECTION();
 
 			/* add tuple to the page */
 			newoff = PageAddItem(ToPage, (Item) newtup.t_data, tuple_len,
@@ -2070,7 +2070,6 @@ vacuum_page(Relation onerel, Buffer buffer, VacPage vacpage)
 		PageSetSUI(page, ThisStartUpID);
 	}
 	END_CRIT_SECTION();
-
 }
 
 /*
