@@ -2091,7 +2091,7 @@ pgstat_read_statsfile(HTAB **dbhash, Oid onlydb,
 	hash_ctl.hcxt = use_mcxt;
 	*dbhash = hash_create("Databases hash", PGSTAT_DB_HASH_SIZE, &hash_ctl,
 						  HASH_ELEM | HASH_FUNCTION | mcxt_flags);
-	if (pgStatDBHash == NULL)
+	if (*dbhash == NULL)
 	{
 		if (pgStatRunningInCollector)
 		{
