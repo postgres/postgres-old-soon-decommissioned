@@ -54,6 +54,8 @@ donothing(HeapTuple tuple, TupleDesc attrdesc)
 {
 }
 
+extern void spi_printtup (HeapTuple tuple, TupleDesc tupdesc);
+
 void (*DestToFunction(CommandDest dest))(HeapTuple, TupleDesc)
 {
     switch (dest) {
@@ -72,6 +74,10 @@ void (*DestToFunction(CommandDest dest))(HeapTuple, TupleDesc)
     case Debug:
 	return debugtup;
 	break;
+    
+    case SPI:
+    	return spi_printtup;
+    	break;
 	
     case None:
     default:

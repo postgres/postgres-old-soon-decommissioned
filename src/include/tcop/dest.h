@@ -47,8 +47,9 @@ typedef enum {
     Remote,		/* results sent to frontend process */
     CopyBegin,		/* results sent to frontend process but are strings */
     CopyEnd,	        /* results sent to frontend process but are strings */
-    RemoteInternal      /* results sent to frontend process in internal
+    RemoteInternal,     /* results sent to frontend process in internal
 			   (binary) form */
+    SPI			/* results sent to SPI manager */
 } CommandDest;
 
 
