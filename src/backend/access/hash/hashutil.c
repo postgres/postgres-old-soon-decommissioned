@@ -129,13 +129,13 @@ _hash_checkpage(Page page, int flags)
     HashPageOpaque opaque;
 
     Assert(page);
-    Assert(((PageHeader)(ph))->pd_lower >= (sizeof(PageHeaderData) - sizeof(ItemIdData)));
+    Assert(((PageHeader)(page))->pd_lower >= (sizeof(PageHeaderData) - sizeof(ItemIdData)));
 #if 1
-    Assert(((PageHeader)(ph))->pd_upper <=
+    Assert(((PageHeader)(page))->pd_upper <=
 	   (BLCKSZ - DOUBLEALIGN(sizeof(HashPageOpaqueData))));
-    Assert(((PageHeader)(ph))->pd_special ==
+    Assert(((PageHeader)(page))->pd_special ==
 	   (BLCKSZ - DOUBLEALIGN(sizeof(HashPageOpaqueData))));
-    Assert(((PageHeader)(ph))->pd_opaque.od_pagesize == BLCKSZ);
+    Assert(((PageHeader)(page))->pd_opaque.od_pagesize == BLCKSZ);
 #endif
     if (flags) {
 	opaque = (HashPageOpaque) PageGetSpecialPointer(page);
