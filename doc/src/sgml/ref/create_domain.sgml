@@ -5,7 +5,7 @@ PostgreSQL documentation
 
 <refentry id="SQL-CREATEDOMAIN">
  <refmeta>
-  <refentrytitle id="sql-createdomian-title">
+  <refentrytitle id="sql-createdomain-title">
    CREATE DOMAIN
   </refentrytitle>
   <refmiscinfo>SQL - Language Statements</refmiscinfo>
@@ -204,7 +204,7 @@ CREATE TABLE countrylist (id INT4, country country_code);
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-dropdomain"></member>
+   <member><xref linkend="sql-dropdomain" endterm="sql-dropdomain-title"></member>
    <member><citetitle>PostgreSQL Programmer's Guide</citetitle></member>
   </simplelist>
  </refsect1>

@@ -140,7 +140,7 @@ DROP TYPE box;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createtype"></member>
+   <member><xref linkend="sql-createtype" endterm="sql-createtype-title"></member>
   </simplelist>
  </refsect1>
 </refentry>

@@ -166,7 +166,7 @@ DROP TRIGGER if_dist_exists ON films;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createtrigger"></member>
+   <member><xref linkend="sql-createtrigger" endterm="sql-createtrigger-title"></member>
   </simplelist>
  </refsect1>
 </refentry>

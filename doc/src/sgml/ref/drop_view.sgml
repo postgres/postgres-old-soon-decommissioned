@@ -122,7 +122,7 @@ ERROR: view <replaceable class="parameter">name</replaceable> does not exist
     Notes
    </title>
    <para>
-    Refer to <xref linkend="sql-createview">
+    Refer to <xref linkend="sql-createview" endterm="sql-createview-title">
     for information on how to create views.
    </para>
   </refsect2>

@@ -144,7 +144,7 @@ DROP DOMAIN box;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-createdomain"></member>
+   <member><xref linkend="sql-createdomain" endterm="sql-createdomain-title"></member>
   </simplelist>
  </refsect1>
 </refentry>

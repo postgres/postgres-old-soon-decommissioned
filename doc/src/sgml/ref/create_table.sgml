@@ -922,8 +922,8 @@ CREATE ASSERTION <replaceable>name</replaceable> CHECK ( <replaceable>condition<
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-altertable"></member>
-   <member><xref linkend="sql-droptable"></member>
+   <member><xref linkend="sql-altertable" endterm="sql-altertable-title"></member>
+   <member><xref linkend="sql-droptable" endterm="sql-droptable-title"></member>
   </simplelist>
  </refsect1>
 </refentry>

@@ -375,7 +375,7 @@ GRANT <replaceable class="PARAMETER">privilege</replaceable> [, ...]
   <title>See Also</title>
 
   <simpara>
-   <xref linkend="sql-revoke">
+   <xref linkend="sql-revoke" endterm="sql-revoke-title">
   </simpara>
  </refsect1>
 
