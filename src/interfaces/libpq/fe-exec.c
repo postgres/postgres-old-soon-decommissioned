@@ -2049,7 +2049,7 @@ Oid
 PQoidValue(const PGresult *res)
 {
 	char	   *endptr = NULL;
-	long int	result;
+	unsigned long result;
 
 	if (!res || !res->cmdStatus || strncmp(res->cmdStatus, "INSERT ", 7) != 0)
 		return InvalidOid;
