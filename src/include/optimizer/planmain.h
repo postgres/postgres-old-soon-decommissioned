@@ -33,6 +33,7 @@ extern Sort *make_sort(List *tlist, Oid nonameid, Plan *lefttree,
 extern Agg *make_agg(List *tlist, Plan *lefttree);
 extern Group *make_group(List *tlist, bool tuplePerGroup, int ngrp,
 		   AttrNumber *grpColIdx, Plan *lefttree);
+extern Noname *make_noname(List *tlist, List *pathkeys, Plan *subplan);
 extern Unique *make_unique(List *tlist, Plan *lefttree, char *uniqueAttr);
 extern Result *make_result(List *tlist, Node *resconstantqual, Plan *subplan);
 
