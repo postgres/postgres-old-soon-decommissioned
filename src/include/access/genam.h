@@ -45,7 +45,7 @@ typedef bool (*IndexBulkDeleteCallback) (ItemPointer itemptr, void *state);
 typedef struct IndexVacuumCleanupInfo
 {
 	bool		vacuum_full;	/* VACUUM FULL (we have exclusive lock) */
-	int			message_level;	/* elog level for progress messages */
+	int			message_level;	/* ereport level for progress messages */
 } IndexVacuumCleanupInfo;
 
 /* Struct for heap-or-index scans of system tables */

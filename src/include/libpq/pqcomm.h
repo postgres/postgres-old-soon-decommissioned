@@ -21,7 +21,7 @@
 /* workaround for clashing defines of "ERROR" */
 #ifdef ELOG_H
 #undef ERROR
-#define ERROR	(-1)
+#define ERROR	PGERROR
 #endif
 #else							/* not WIN32 */
 #include <sys/socket.h>

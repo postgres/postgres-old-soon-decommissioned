@@ -16,9 +16,7 @@
 #include "access/gist.h"
 #include "access/itup.h"
 #include "access/rtree.h"
-#include "utils/palloc.h"
 #include "utils/geo_decls.h"
-#include "utils/elog.h"
 
 typedef Datum (*RDF) (PG_FUNCTION_ARGS);
 typedef Datum (*BINARY_UNION) (Datum, Datum, int *);

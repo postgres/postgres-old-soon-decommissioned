@@ -111,7 +111,7 @@ typedef struct sbufdesc
  * Each backend has its own BufferLocks[] array holding flag bits
  * showing what locks it has set on each buffer.
  *
- * We have to free these locks in elog(ERROR)...
+ * We have to free these locks during ereport(ERROR)...
  */
 #define BL_IO_IN_PROGRESS	(1 << 0)	/* unimplemented */
 #define BL_PIN_COUNT_LOCK	(1 << 1)

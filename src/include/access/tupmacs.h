@@ -155,7 +155,7 @@
 				*(Datum *) (T) = (newdatum); \
 				break; \
 			default: \
-				elog(ERROR, "store_att_byval: unsupported byval length %d", \
+				elog(ERROR, "unsupported byval length: %d", \
 					 (int) (attlen)); \
 				break; \
 		} \
@@ -177,7 +177,7 @@
 				*(int32 *) (T) = DatumGetInt32(newdatum); \
 				break; \
 			default: \
-				elog(ERROR, "store_att_byval: unsupported byval length %d", \
+				elog(ERROR, "unsupported byval length: %d", \
 					 (int) (attlen)); \
 				break; \
 		} \
