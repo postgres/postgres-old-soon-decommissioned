@@ -339,14 +339,14 @@ set_joininfo_mergeable_hashable(List *rel_list)
 
 					if (_enable_mergejoin_)
 						sortop = mergejoinop(clause);
-					if (_enable_hashjoin_)
-						hashop = hashjoinop(clause);
-
 					if (sortop)
 					{
 						restrictinfo->mergejoinorder = sortop;
 						joininfo->mergejoinable = true;
 					}
+
+					if (_enable_hashjoin_)
+						hashop = hashjoinop(clause);
 					if (hashop)
 					{
 						restrictinfo->hashjoinoperator = hashop;

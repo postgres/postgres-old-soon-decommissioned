@@ -1420,7 +1420,7 @@ _copyMergeInfo(MergeInfo *from)
  * ----------------
  */
 static JoinInfo *
-_copyJoinInfo(JoinInfo * from)
+_copyJoinInfo(JoinInfo *from)
 {
 	JoinInfo   *newnode = makeNode(JoinInfo);
 
@@ -1433,7 +1433,7 @@ _copyJoinInfo(JoinInfo * from)
 
 	newnode->mergejoinable = from->mergejoinable;
 	newnode->hashjoinable = from->hashjoinable;
-	newnode->inactive = from->inactive;
+	newnode->bushy_inactive = from->bushy_inactive;
 
 	return newnode;
 }

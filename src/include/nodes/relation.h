@@ -250,7 +250,7 @@ typedef struct JoinInfo
 	List	   *jinfo_restrictinfo;
 	bool		mergejoinable;
 	bool		hashjoinable;
-	bool		inactive;
+	bool		bushy_inactive;
 } JoinInfo;
 
 typedef struct Iter

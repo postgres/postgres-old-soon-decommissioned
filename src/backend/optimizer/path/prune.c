@@ -106,7 +106,7 @@ rels_set_cheapest(List *rel_list)
 	}
 }
 
-
+#ifdef NOT_USED
 /*
  * merge_joinrels
  *	  Given two lists of rel nodes that are already
@@ -133,7 +133,7 @@ merge_joinrels(List *rel_list1, List *rel_list2)
 
 /*
  * prune_oldrels
- *	  If all the joininfo's in a rel node are inactive,
+ *	  If all the joininfo's in a rel node are bushy_inactive,
  *	  that means that this node has been joined into
  *	  other nodes in all possible ways, therefore
  *	  this node can be discarded.  If not, it will cause
@@ -165,7 +165,7 @@ prune_oldrels(List *old_rels)
 			{
 				JoinInfo   *joininfo = (JoinInfo *) lfirst(xjoininfo);
 
-				if (!joininfo->inactive)
+				if (!joininfo->bushy_inactive)
 				{
 					temp_list = lcons(rel, temp_list);
 					break;
@@ -175,3 +175,5 @@ prune_oldrels(List *old_rels)
 	}
 	return temp_list;
 }
+#endif
+

@@ -381,15 +381,15 @@ create_index_path(Query *root,
 /* is the statement above really true?	what about IndexScan as the
    inner of a join? */
 		pathnode->path.path_cost = cost_index(lfirsti(index->relids),
-					   index->pages,
-					   1.0,
-					   rel->pages,
-					   rel->tuples,
-					   index->pages,
-					   index->tuples,
-					   false);
-		/* add in expensive functions cost!  -- JMH, 7/7/92 */
+											   index->pages,
+											   1.0,
+											   rel->pages,
+											   rel->tuples,
+											   index->pages,
+											   index->tuples,
+											   false);
 #if 0
+		/* add in expensive functions cost!  -- JMH, 7/7/92 */
 		if (XfuncMode != XFUNC_OFF)
 		{
 			pathnode->path_cost = (pathnode->path_cost +

@@ -47,7 +47,6 @@ group_clauses_by_order(List *restrictinfo_list,
 
 		if (merge_ordering)
 		{
-
 			/*
 			 * Create a new mergeinfo node and add it to 'mergeinfo_list'
 			 * if one does not yet exist for this merge ordering.

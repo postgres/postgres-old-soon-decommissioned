@@ -1018,7 +1018,7 @@ _freeMergeInfo(MergeInfo *node)
  * ----------------
  */
 static void
-_freeJoinInfo(JoinInfo * node)
+_freeJoinInfo(JoinInfo *node)
 {
 	/* ----------------
 	 *	free remainder of node

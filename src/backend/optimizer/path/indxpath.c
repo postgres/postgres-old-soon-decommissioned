@@ -1302,13 +1302,13 @@ index_innerjoin(Query *root, RelOptInfo *rel, List *clausegroup_list,
 		pathnode->path.joinid = ((RestrictInfo *) lfirst(clausegroup))->restrictinfojoinid;
 
 		pathnode->path.path_cost = cost_index((Oid) lfirsti(index->relids),
-					   (int) temp_pages,
-					   temp_selec,
-					   rel->pages,
-					   rel->tuples,
-					   index->pages,
-					   index->tuples,
-					   true);
+											   (int) temp_pages,
+											   temp_selec,
+											   rel->pages,
+											   rel->tuples,
+											   index->pages,
+											   index->tuples,
+											   true);
 
 		/*
 		 * copy restrictinfo list into path for expensive function

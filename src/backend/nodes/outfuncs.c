@@ -1196,7 +1196,7 @@ _outHashInfo(StringInfo str, HashInfo *node)
  *	JoinInfo is a subclass of Node.
  */
 static void
-_outJoinInfo(StringInfo str, JoinInfo * node)
+_outJoinInfo(StringInfo str, JoinInfo *node)
 {
 	appendStringInfo(str, " JINFO :otherrels ");
 	_outIntList(str, node->otherrels);

@@ -78,6 +78,7 @@ update_rels_pathlist_for_joins(Query *root, List *joinrels)
 		Path	   *bestinnerjoin;
 		List	   *pathlist = NIL;
 
+		/* flatten out relids later in this function */
 		innerrelids = lsecond(joinrel->relids);
 		outerrelids = lfirst(joinrel->relids);
 

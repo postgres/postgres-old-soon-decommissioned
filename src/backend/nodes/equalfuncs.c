@@ -522,7 +522,7 @@ _equalSubPlan(SubPlan *a, SubPlan *b)
 }
 
 static bool
-_equalJoinInfo(JoinInfo * a, JoinInfo * b)
+_equalJoinInfo(JoinInfo *a, JoinInfo *b)
 {
 	Assert(IsA(a, JoinInfo));
 	Assert(IsA(b, JoinInfo));

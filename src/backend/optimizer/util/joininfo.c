@@ -74,7 +74,7 @@ find_joininfo_node(RelOptInfo *this_rel, List *join_relids)
 		joininfo->jinfo_restrictinfo = NIL;
 		joininfo->mergejoinable = false;
 		joininfo->hashjoinable = false;
-		joininfo->inactive = false;
+		joininfo->bushy_inactive = false;
 		this_rel->joininfo = lcons(joininfo, this_rel->joininfo);
 	}
 	return joininfo;

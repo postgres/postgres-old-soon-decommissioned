@@ -64,14 +64,12 @@ get_base_rel(Query *root, int relid)
 		 */
 		if (relid < 0)
 		{
-
 			/*
 			 * If the relation is a materialized relation, assume
 			 * constants for sizes.
 			 */
 			rel->pages = _NONAME_RELATION_PAGES_;
 			rel->tuples = _NONAME_RELATION_TUPLES_;
-
 		}
 		else
 		{
