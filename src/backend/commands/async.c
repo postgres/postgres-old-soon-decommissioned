@@ -521,7 +521,7 @@ AtCommit_Notify(void)
 			else if (listener->notification == 0)
 			{
 				ItemPointerData ctid;
-				int			result;
+				HTSU_Result		result;
 
 				rTuple = heap_modifytuple(lTuple, tdesc,
 										  value, nulls, repl);

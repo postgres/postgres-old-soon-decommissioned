@@ -455,7 +455,7 @@ HeapTupleSatisfiesToast(HeapTupleHeader tuple, Buffer buffer)
  *	tuples of my own xact are tested against the passed CommandId not
  *	CurrentCommandId.
  */
-int
+HTSU_Result
 HeapTupleSatisfiesUpdate(HeapTupleHeader tuple, CommandId curcid,
 						 Buffer buffer)
 {

@@ -1566,7 +1566,7 @@ GetTupleForTrigger(EState *estate, ResultRelInfo *relinfo,
 
 	if (newSlot != NULL)
 	{
-		int			test;
+		HTSU_Result	test;
 
 		/*
 		 * mark tuple for update
