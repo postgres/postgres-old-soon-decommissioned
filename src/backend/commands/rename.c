@@ -11,13 +11,12 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>
 #else
 #include <string.h>
 #endif
-
-#include "postgres.h"
 
 #include "access/heapam.h"
 #include "catalog/catname.h"

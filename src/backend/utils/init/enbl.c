@@ -12,6 +12,7 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"
+#include "utils/module.h"
 
 /*
  * BypassEnable
