@@ -202,6 +202,34 @@ pg_mbstrlen_with_len(const unsigned char *mbstr, int limit)
 }
 
 /*
+ * returns the length of a multi-byte string
+ * (not necessarily  NULL terminated)
+ * that is not longer than limit.
+ * this function does not break multi-byte word boundary.
+ */
+int
+pg_mbcliplen(const unsigned char *mbstr, int len, int limit)
+{
+	int			clen = 0;
+	int			l;
+
+	while (*mbstr &&  len > 0)
+	{
+		l = pg_mblen(mbstr);
+		if ((clen + l) > limit) {
+			break;
+		}
+		clen += l;
+		if (clen == limit) {
+			break;
+		}
+		len -= l;
+		mbstr += l;
+	}
+	return (clen);
+}
+
+/*
  * fuctions for utils/init
  */
 static int	DatabaseEncoding = MULTIBYTE;

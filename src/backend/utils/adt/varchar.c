@@ -147,7 +147,14 @@ bpchar(char *s, int32 len)
 	if ((len == -1) || (len == VARSIZE(s)))
 		return s;
 
+#ifdef MULTIBYTE
+	/* truncate multi-byte string in a way not to break
+	   multi-byte boundary */
+	rlen = pg_mbcliplen(VARDATA(s), len - VARHDRSZ, len - VARHDRSZ);
+	len = rlen + VARHDRSZ;
+#else
 	rlen = len - VARHDRSZ;
+#endif
 
 	if (rlen > 4096)
 		elog(ERROR, "bpchar: length of char() must be less than 4096");
@@ -367,7 +374,14 @@ varchar(char *s, int32 slen)
 
 	/* only reach here if we need to truncate string... */
 
+#ifdef MULTIBYTE
+	/* truncate multi-byte string in a way not to break
+	   multi-byte boundary */
+	len = pg_mbcliplen(VARDATA(s), slen - VARHDRSZ, slen - VARHDRSZ);
+	slen = len + VARHDRSZ;
+#else
 	len = slen - VARHDRSZ;
+#endif
 
 	if (len > 4096)
 		elog(ERROR, "varchar: length of varchar() must be less than 4096");
