@@ -82,7 +82,7 @@ The default is unlimited.
 sets your timezone.
 .PP
 .I TRANSACTION ISOLATION LEVEL
-sets the transaction isolation level to
+sets the current transaction's isolation level to
 .IR SERIALIZABLE
 or
 .IR READ COMMITTED .
