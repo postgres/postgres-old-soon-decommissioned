@@ -566,16 +566,6 @@ char *PQport(const PGconn *conn)
 
 <listitem>
 <para>
-<function>PQunixsocket</function>
-         Returns the directory of the Unix-domain socket of the connection.
-<synopsis>
-char *PQunixsocket(const PGconn *conn)
-</synopsis>
-</para>
-</listitem>
-
-<listitem>
-<para>
 <function>PQtty</function>
          Returns the debug tty of the connection.
 <synopsis>

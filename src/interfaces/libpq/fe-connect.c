@@ -2628,14 +2628,6 @@ PQport(const PGconn *conn)
 }
 
 char *
-PQunixsocket(const PGconn *conn)
-{
-	if (!conn)
-		return (char *) NULL;
-	return conn->pgunixsocket;
-}
-
-char *
 PQtty(const PGconn *conn)
 {
 	if (!conn)
