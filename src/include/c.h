@@ -720,6 +720,10 @@ extern int	vsnprintf(char *str, size_t count, const char *fmt, va_list args);
 #define memmove(d, s, c)		bcopy(s, d, c)
 #endif
 
+#ifndef HAVE_UNSETENV
+extern void unsetenv(const char *name);
+#endif
+
 #ifndef DLLIMPORT
 #define DLLIMPORT				/* no special DLL markers on most ports */
 #endif
