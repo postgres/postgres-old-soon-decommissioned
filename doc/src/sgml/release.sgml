@@ -116,7 +116,7 @@ $PostgreSQL$
  <literal>CC</> and <literal>YY</> fields are both used (Karel)</para></listitem>
 <listitem><para>Prevent <function>to_char(interval)</> from failing 
  when given a zero-month interval (Tom)</para></listitem>
-<listitem><para>Fix wrong week returned by <function>date_trunc('week')</para>
+<listitem><para>Fix wrong week returned by <function>date_trunc</>('week')</para>
 <para>
  This was a problem for early January dates.  <function>date_trunc('week')</>
  returned the wrong year for <literal> 2005-01-01</> and <literal>2006-01-01</> 
