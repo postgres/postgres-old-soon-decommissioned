@@ -823,7 +823,7 @@ ValidatePgVersion(const char *path)
 		else
 			ereport(FATAL,
 					(errcode_for_file_access(),
-					 errmsg("could not open \"%s\": %m", full_path)));
+					 errmsg("could not open file \"%s\": %m", full_path)));
 	}
 
 	ret = fscanf(file, "%ld.%ld", &file_major, &file_minor);

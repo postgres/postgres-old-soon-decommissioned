@@ -168,7 +168,7 @@ DefineIndex(RangeVar *heapRelation,
 		if (length(rangetable) != 1 || getrelid(1, rangetable) != relationId)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_COLUMN_REFERENCE),
-					 errmsg("index expressions and predicates may refer only to the base relation")));
+					 errmsg("index expressions and predicates may refer only to the table being indexed")));
 	}
 
 	/*

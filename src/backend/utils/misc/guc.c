@@ -1315,7 +1315,7 @@ static struct config_string ConfigureNamesString[] =
 
 	{
 		{"log_min_error_statement", PGC_USERLIMIT, LOGGING_WHEN,
-			gettext_noop("log statement generating error at or above this level"),
+			gettext_noop("log statements generating error at or above this level"),
 			gettext_noop("All SQL statements that cause an error of the "
 						 "specified level or a higher level are logged.")
 		},

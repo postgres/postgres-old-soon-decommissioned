@@ -65,7 +65,7 @@ pg_to_ascii(unsigned char *src, unsigned char *src_end, unsigned char *dest, int
 	{
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-			   errmsg("unsupported encoding conversion from %s to ASCII",
+			   errmsg("encoding conversion from %s to ASCII not supported",
 					  pg_encoding_to_char(enc))));
 		return;					/* keep compiler quiet */
 	}

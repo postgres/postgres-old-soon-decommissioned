@@ -115,7 +115,7 @@ InternalIpcSemaphoreCreate(IpcSemaphoreKey semKey, int numSems)
 		 */
 		ereport(FATAL,
 				(errmsg("could not create semaphores: %m"),
-				 errdetail("Failed syscall was semget(%d, %d, 0%o).",
+				 errdetail("Failed system call was semget(%d, %d, 0%o).",
 						   (int) semKey, numSems,
 						   IPC_CREAT | IPC_EXCL | IPCProtection),
 				 (errno == ENOSPC) ?

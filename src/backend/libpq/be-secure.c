@@ -293,7 +293,8 @@ rloop:
 			default:
 				ereport(COMMERROR,
 						(errcode(ERRCODE_PROTOCOL_VIOLATION),
-						 errmsg("unrecognized SSL error code")));
+						 errmsg("unrecognized SSL error code %d",
+							SSL_get_error(port->ssl, n))));
 				n = -1;
 				break;
 		}
@@ -377,7 +378,8 @@ wloop:
 			default:
 				ereport(COMMERROR,
 						(errcode(ERRCODE_PROTOCOL_VIOLATION),
-						 errmsg("unrecognized SSL error code")));
+						 errmsg("unrecognized SSL error code %d",
+							SSL_get_error(port->ssl, n))));
 				n = -1;
 				break;
 		}

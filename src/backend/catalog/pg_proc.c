@@ -532,7 +532,7 @@ check_sql_fn_retval(Oid rettype, char fn_typtype, List *queryTreeList)
 		/* This should already have been caught ... */
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
-				 errmsg("cannot determine result datatype"),
+				 errmsg("cannot determine result data type"),
 				 errdetail("A function returning ANYARRAY or ANYELEMENT must have at least one argument of either type.")));
 	}
 	else

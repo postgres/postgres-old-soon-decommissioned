@@ -492,7 +492,7 @@ ClientAuthentication(Port *port)
 				if (setsockopt(port->sock, 0, LOCAL_CREDS, &on, sizeof(on)) < 0)
 					ereport(FATAL,
 							(errcode_for_socket_access(),
-					 errmsg("failed to enable credential receipt: %m")));
+					 errmsg("could not enable credential reception: %m")));
 			}
 #endif
 			if (port->raddr.addr.ss_family == AF_UNIX)

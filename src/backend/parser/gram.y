@@ -2190,7 +2190,7 @@ ConstraintAttributeSpec:
 					if ($1 == 0 && $2 != 0)
 						ereport(ERROR,
 								(errcode(ERRCODE_SYNTAX_ERROR),
-								 errmsg("INITIALLY DEFERRED constraint must be DEFERRABLE")));
+								 errmsg("constraint declared INITIALLY DEFERRED must be DEFERRABLE")));
 					$$ = $1 | $2;
 				}
 			| ConstraintTimeSpec
@@ -2205,7 +2205,7 @@ ConstraintAttributeSpec:
 					if ($2 == 0 && $1 != 0)
 						ereport(ERROR,
 								(errcode(ERRCODE_SYNTAX_ERROR),
-								 errmsg("INITIALLY DEFERRED constraint must be DEFERRABLE")));
+								 errmsg("constraint declared INITIALLY DEFERRED must be DEFERRABLE")));
 					$$ = $1 | $2;
 				}
 			| /*EMPTY*/

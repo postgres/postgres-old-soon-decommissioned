@@ -977,7 +977,7 @@ usage(const char *progname)
 	printf(gettext("  -l              enable SSL connections\n"));
 #endif
 	printf(gettext("  -N MAX-CONNECT  maximum number of allowed connections\n"));
-	printf(gettext("  -o OPTIONS      pass 'OPTIONS' to each backend server\n"));
+	printf(gettext("  -o OPTIONS      pass \"OPTIONS\" to each server process\n"));
 	printf(gettext("  -p PORT         port number to listen on\n"));
 	printf(gettext("  -S              silent mode (start in background without logging output)\n"));
 	printf(gettext("  --help          show this help, then exit\n"));

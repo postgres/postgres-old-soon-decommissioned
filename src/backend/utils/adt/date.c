@@ -2241,7 +2241,7 @@ timetz_izone(PG_FUNCTION_ARGS)
 	if (zone->month != 0)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("\"interval\" time zone \"%s\" not legal",
+				 errmsg("\"interval\" time zone \"%s\" not valid",
 						DatumGetCString(DirectFunctionCall1(interval_out,
 											  PointerGetDatum(zone))))));
 

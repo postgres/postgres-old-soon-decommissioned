@@ -90,7 +90,7 @@ InternalIpcMemoryCreate(IpcMemoryKey memKey, uint32 size)
 		 */
 		ereport(FATAL,
 				(errmsg("could not create shared memory segment: %m"),
-			errdetail("Failed syscall was shmget(key=%d, size=%u, 0%o).",
+			errdetail("Failed system call was shmget(key=%d, size=%u, 0%o).",
 					  (int) memKey, size,
 					  IPC_CREAT | IPC_EXCL | IPCProtection),
 				 (errno == EINVAL) ?

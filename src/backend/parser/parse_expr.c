@@ -601,17 +601,17 @@ transformExpr(ParseState *pstate, Node *expr)
 						if (opform->oprresult != BOOLOID)
 							ereport(ERROR,
 									(errcode(ERRCODE_DATATYPE_MISMATCH),
-									 errmsg("operator %s must return boolean, not type %s",
+									 errmsg("operator %s must return type boolean, not type %s",
 											opname,
 									  format_type_be(opform->oprresult)),
-									 errhint("The operator of a quantified predicate subquery must return boolean.")));
+									 errhint("The operator of a quantified predicate subquery must return type boolean.")));
 
 						if (get_func_retset(opform->oprcode))
 							ereport(ERROR,
 									(errcode(ERRCODE_DATATYPE_MISMATCH),
 							  errmsg("operator %s must not return a set",
 									 opname),
-									 errhint("The operator of a quantified predicate subquery must return boolean.")));
+									 errhint("The operator of a quantified predicate subquery must return type boolean.")));
 
 						sublink->operOids = lappendo(sublink->operOids,
 													 oprid(optup));

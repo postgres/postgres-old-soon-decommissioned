@@ -1962,7 +1962,7 @@ got_record:;
 			{
 				ereport(emode,
 						(errcode_for_file_access(),
-						 errmsg("could not read log file %u, segment %u, offset %u: %m",
+						 errmsg("could not from read log file %u, segment %u, offset %u: %m",
 								readId, readSeg, readOff)));
 				goto next_record_is_invalid;
 			}
@@ -2197,7 +2197,7 @@ WriteControlFile(void)
 	if (pg_fsync(fd) != 0)
 		ereport(PANIC,
 				(errcode_for_file_access(),
-				 errmsg("could not fsync of control file: %m")));
+				 errmsg("could not fsync control file: %m")));
 
 	close(fd);
 }

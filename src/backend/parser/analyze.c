@@ -3029,7 +3029,7 @@ transformConstraintAttrs(List *constraintList)
 					else if (!((FkConstraint *) lastprimarynode)->deferrable)
 						ereport(ERROR,
 								(errcode(ERRCODE_SYNTAX_ERROR),
-								 errmsg("INITIALLY DEFERRED constraint must be DEFERRABLE")));
+								 errmsg("constraint declared INITIALLY DEFERRED must be DEFERRABLE")));
 					break;
 				case CONSTR_ATTR_IMMEDIATE:
 					if (lastprimarynode == NULL ||
