@@ -3193,7 +3193,7 @@ SELECT SUBSTRING(b FROM 1 FOR 2) FROM test;
 
        <row>
 	<entry><type>cstring</></entry>
-	<entry>Indicates a function takes or returns a null-terminated C string</entry>
+	<entry>Indicates that a function accepts or returns a null-terminated C string</entry>
        </row>
 
        <row>
@@ -3213,7 +3213,7 @@ SELECT SUBSTRING(b FROM 1 FOR 2) FROM test;
 
    <para>
     Functions coded in C (whether built-in or dynamically loaded) may be
-    declared to take or return any of these pseudo datatypes.  It is up to
+    declared to accept or return any of these pseudo datatypes.  It is up to
     the function author to ensure that the function will behave safely
     when a pseudo-type is used as an argument type.
    </para>
