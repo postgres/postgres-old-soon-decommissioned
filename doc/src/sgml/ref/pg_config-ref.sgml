@@ -25,6 +25,7 @@
     <arg>--includedir-server</arg>
     <arg>--libdir</arg>
     <arg>--pkglibdir</arg>
+    <arg>--pgxs</arg>
     <arg>--configure</arg>
     <arg>--version</arg>
    </group>
@@ -97,6 +98,15 @@
        architecture-dependent data files may also be installed in this
        directory.)
       </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry>
+     <term><option>--pgxs</option></>
+     <listitem>
+      <para>
+       Print the location of extension makefiles.
+     </para>
      </listitem>
     </varlistentry>
 
