@@ -868,7 +868,8 @@ SELECT name FROM distributors ORDER BY code;
    <para>
     FOR UPDATE cannot be used in contexts where returned rows can't be clearly
     identified with individual table rows; for example it can't be used with
-    aggregation.
+    aggregation.  FOR UPDATE may also appear before LIMIT for portability with
+    pre-7.3 servers.
    </para>
   </refsect2>
 
