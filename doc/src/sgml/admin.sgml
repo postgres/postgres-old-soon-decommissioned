@@ -32,8 +32,8 @@ $Header$
   &maintenance;
   &backup;
   &monitoring;
+  &diskusage;
   &wal;
-  &storage;
   &recovery;
   &regress;
   &release;
