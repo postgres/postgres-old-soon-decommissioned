@@ -45,7 +45,7 @@ $(PORTNAME)/SUBSYS.o:
 	$(MAKE) -C $(PORTNAME) SUBSYS.o
 
 clean:
-	rm -f $(OBJS)
+	rm -f SUBSYS.o $(OBJS) 
 	$(MAKE) -C $(PORTNAME) clean
 
 depend dep:
