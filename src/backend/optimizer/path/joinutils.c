@@ -27,14 +27,13 @@
 
 
 static int match_pathkey_joinkeys(List *pathkey, List *joinkeys,
-					   int which_subkey);
+						int which_subkey);
 static bool every_func(List *joinkeys, List *pathkey,
-		   int which_subkey);
-static List *new_join_pathkey(List *subkeys,
-				 List *considered_subkeys, List *join_rel_tlist,
-				 List *joinclauses);
+		   				int which_subkey);
+static List *new_join_pathkey(List *subkeys, List *considered_subkeys,
+					 	List *join_rel_tlist, List *joinclauses);
 static List *new_matching_subkeys(Var *subkey, List *considered_subkeys,
-					 List *join_rel_tlist, List *joinclauses);
+					 	List *join_rel_tlist, List *joinclauses);
 
 /****************************************************************************
  *		KEY COMPARISONS
@@ -219,8 +218,7 @@ match_paths_joinkeys(List *joinkeys,
 		key_match = every_func(joinkeys, path->pathkeys, which_subkey);
 
 		if (equal_path_ordering(ordering, path->path_order) &&
-			length(joinkeys) == length(path->pathkeys) &&
-			key_match)
+			length(joinkeys) == length(path->pathkeys) && key_match)
 		{
 
 			if (matched_path)
@@ -273,7 +271,7 @@ extract_path_keys(List *joinkeys,
 		key = (Var *) matching_tlvar(var, tlist);
 
 		/*
-		 * include it in the pathkeys list if we haven't already done so
+		 * Include it in the pathkeys list if we haven't already done so
 		 */
 		foreach(p, pathkeys)
 		{
@@ -381,7 +379,7 @@ new_join_pathkey(List *subkeys,
 		else
 			newly_considered_subkeys = matched_subkeys;
 
-		considered_subkeys = append(considered_subkeys, newly_considered_subkeys);
+		considered_subkeys =  append(considered_subkeys, newly_considered_subkeys);
 
 		t_list = nconc(t_list, newly_considered_subkeys);
 	}
