@@ -527,6 +527,16 @@ ExecHashGetBucket(HashJoinTable hashtable,
      */
     keyval = ExecEvalVar(hashkey, econtext, &isNull);
     
+    /*
+     * keyval could be null, so we better point it to something
+     * valid before trying to run hashFunc on it. --djm 8/17/96
+     */
+    if(isNull) {
+	execConstByVal = 0;
+	execConstLen = 0;
+	keyval = (Datum)"";
+    }
+
     /* ------------------
      *  compute the hash function
      * ------------------
