@@ -585,4 +585,8 @@ extern Datum format_type(PG_FUNCTION_ARGS);
 extern Datum oidvectortypes(PG_FUNCTION_ARGS);
 extern int32 type_maximum_size(Oid type_oid, int32 typemod);
 
+/* quote.c */
+extern Datum quote_ident(PG_FUNCTION_ARGS);
+extern Datum quote_literal(PG_FUNCTION_ARGS);
+
 #endif	 /* BUILTINS_H */

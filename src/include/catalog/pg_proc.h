@@ -2409,6 +2409,11 @@ DESCR("convert text to timestamp");
 DATA(insert OID = 1780 ( to_date			PGUID 12 f t f t 2 f	1082 "25 25" 100 0 0 100  to_date - ));
 DESCR("convert text to date");
 
+DATA(insert OID =  1282 ( quote_ident	   PGUID 12 f t t t 1 f 25 "25" 100 0 0 100 quote_ident - ));
+DESCR("quote an identifier for usage in a querystring");
+DATA(insert OID =  1283 ( quote_literal	   PGUID 12 f t t t 1 f 25 "25" 100 0 0 100 quote_literal - ));
+DESCR("quote a literal for usage in a querystring");
+
 DATA(insert OID = 1798 (  oidin			   PGUID 12 f t t t 1 f 26 "0" 100 0 0 100  oidin - ));
 DESCR("(internal)");
 DATA(insert OID = 1799 (  oidout		   PGUID 12 f t t t 1 f 23 "0" 100 0 0 100  oidout - ));
