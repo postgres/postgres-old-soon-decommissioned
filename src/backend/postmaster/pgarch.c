@@ -64,8 +64,8 @@
  * ----------
  */
 #define MIN_XFN_CHARS	16
-#define MAX_XFN_CHARS	24
-#define VALID_XFN_CHARS	"0123456789ABCDEF.history"
+#define MAX_XFN_CHARS	40
+#define VALID_XFN_CHARS	"0123456789ABCDEF.history.backup"
 
 #define NUM_ARCHIVE_RETRIES 3
 

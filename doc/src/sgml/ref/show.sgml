@@ -130,7 +130,7 @@ SHOW ALL
 
   <para>
    The function <function>current_setting</function> produces
-   equivalent output. See <xref linkend="functions-misc">.
+   equivalent output. See <xref linkend="functions-admin">.
   </para>
  </refsect1>
 

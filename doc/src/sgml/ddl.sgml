@@ -1723,7 +1723,7 @@ SET search_path TO myschema;
    </para>
 
    <para>
-    See also <xref linkend="functions-misc"> for other ways to access
+    See also <xref linkend="functions-info"> for other ways to access
     the schema search path.
    </para>
 
