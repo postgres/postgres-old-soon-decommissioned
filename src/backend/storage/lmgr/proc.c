@@ -580,7 +580,7 @@ ProcWakeup(PROC *proc, int errType)
  *		released.
  */
 int
-ProcLockWakeup(PROC_QUEUE *queue, char *ltable, char *lock)
+ProcLockWakeup(PROC_QUEUE *queue, LOCKMETHOD lockmethod, LOCK *lock)
 {
 	PROC	   *proc;
 	int			count;
@@ -590,8 +590,8 @@ ProcLockWakeup(PROC_QUEUE *queue, char *ltable, char *lock)
 
 	proc = (PROC *) MAKE_PTR(queue->links.prev);
 	count = 0;
-	while ((LockResolveConflicts((LOCKTAB *) ltable,
-								 (LOCK *) lock,
+	while ((LockResolveConflicts(lockmethod,
+								 lock,
 								 proc->token,
 								 proc->xid) == STATUS_OK))
 	{
@@ -602,7 +602,7 @@ ProcLockWakeup(PROC_QUEUE *queue, char *ltable, char *lock)
 		 * between the time we release the lock master (spinlock) and the
 		 * time that the awoken process begins executing again.
 		 */
-		GrantLock((LOCK *) lock, proc->token);
+		GrantLock(lock, proc->token);
 		queue->size--;
 
 		/*

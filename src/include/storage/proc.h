@@ -100,7 +100,7 @@ extern void ProcQueueInit(PROC_QUEUE *queue);
 extern int
 ProcSleep(PROC_QUEUE *queue, SPINLOCK spinlock, int token,
 		  int prio, LOCK *lock);
-extern int	ProcLockWakeup(PROC_QUEUE *queue, char *ltable, char *lock);
+extern int	ProcLockWakeup(PROC_QUEUE *queue, LOCKMETHOD lockmethod, LOCK *lock);
 extern void ProcAddLock(SHM_QUEUE *elem);
 extern void ProcReleaseSpins(PROC *proc);
 extern void ProcFreeAllSemaphores(void);
