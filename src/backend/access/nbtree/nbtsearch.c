@@ -317,7 +317,7 @@ _bt_skeycmp(Relation rel,
 		/* see comments about NULLs handling in btbuild */
 		if (entry->sk_flags & SK_ISNULL)		/* key is NULL */
 		{
-			Assert(entry->sk_procedure == NullValueRegProcedure);
+			Assert(entry->sk_procedure == F_NULLVALUE);
 			keyNull = true;
 			if (isNull)
 				compare = (strat == BTEqualStrategyNumber) ? true : false;
@@ -665,7 +665,7 @@ _bt_compare(Relation rel,
 		/* see comments about NULLs handling in btbuild */
 		if (entry->sk_flags & SK_ISNULL)		/* key is NULL */
 		{
-			Assert(entry->sk_procedure == NullValueRegProcedure);
+			Assert(entry->sk_procedure == F_NULLVALUE);
 			if (null)
 				tmpres = (long) 0;		/* NULL "=" NULL */
 			else

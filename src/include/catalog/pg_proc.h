@@ -1225,7 +1225,6 @@ DESCR("equals");
 
 DATA(insert OID = 1029 (  nullvalue		   PGUID 11 f t f 1 f 16 "0" 100 0 0 100  foo bar ));
 DESCR("(internal)");
-#define NullValueRegProcedure 1029
 DATA(insert OID = 1030 (  nonnullvalue	   PGUID 11 f t f 1 f 16 "0" 100 0 0 100  foo bar ));
 DESCR("(internal)");
 DATA(insert OID = 1031 (  aclitemin		   PGUID 11 f t f 1 f 1033 "0" 100 0 0 100	foo bar ));
