@@ -15,7 +15,6 @@
 #define TABLECMDS_H
 
 #include "nodes/parsenodes.h"
-#include "utils/inval.h"
 
 extern void AlterTableAddColumn(Oid myrelid, bool inherits,
 								ColumnDef *colDef);
