@@ -101,8 +101,8 @@ $Header$
    the notation for
    flagging commands is not universally consistant throughout the
    documentation set.
-   Please report problems to
-   <ulink url="mailto:docs@postgresql.org">the Documentation Mailing List</ulink>.
+   Please report problems to the documentation mailing list
+   <email>pgsql-docs@postgresql.org</email>.
   </para>
  </note>
 

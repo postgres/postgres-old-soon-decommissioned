@@ -9,8 +9,7 @@ $Header$
    <title>Author</title>
 
    <para>
-    Written by <ulink url="mailto:tgl@sss.pgh.pa.us">Tom Lane</ulink>
-    on 2000-01-24.
+    Written by Tom Lane (<email>tgl@sss.pgh.pa.us</email>) on 2000-01-24
    </para>
   </note>
 

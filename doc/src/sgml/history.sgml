@@ -96,10 +96,7 @@ $Header$
   <title><productname>Postgres95</productname></title>
 
   <para>
-   In 1994,
-   <ulink url="mailto:ayu@informix.com">Andrew Yu</ulink>
-   and
-   <ulink url="http://http.cs.berkeley.edu/~jolly/">Jolly Chen</ulink>
+   In 1994, Andrew Yu and Jolly Chen
    added a SQL language interpreter to <productname>Postgres</productname>.
    <productname>Postgres95</productname> was subsequently released to
    the Web to find its own way in the world as an

@@ -11,7 +11,7 @@ $Header$
     (MVCC)
     is an advanced technique for improving database performance in a
     multi-user environment. 
-    <ulink url="mailto:vadim@krs.ru">Vadim Mikheev</ulink> provided
+    Vadim Mikheev (<email>vadim@krs.ru</email>) provided
     the implementation for <productname>Postgres</productname>.
    </para>
   </abstract>
