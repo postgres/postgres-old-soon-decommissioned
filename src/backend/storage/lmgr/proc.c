@@ -461,9 +461,7 @@ ProcKill(int code, Datum arg)
 	 * shutdown callback registered by the bufmgr ... but we must do this
 	 * *after* LWLockReleaseAll and *before* zapping MyProc.
 	 */
-	AbortBufferIO();
-	UnlockBuffers();
-	AtEOXact_Buffers(false);
+	AtProcExit_Buffers();
 
 	/* Get off any wait queue I might be on */
 	LockWaitCancel();
@@ -509,9 +507,7 @@ DummyProcKill(int code, Datum arg)
 	LWLockReleaseAll();
 
 	/* Release buffer locks and pins, too */
-	AbortBufferIO();
-	UnlockBuffers();
-	AtEOXact_Buffers(false);
+	AtProcExit_Buffers();
 
 	/* I can't be on regular lock queues, so needn't check */
 

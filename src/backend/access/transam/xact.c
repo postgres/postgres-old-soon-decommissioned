@@ -1528,6 +1528,9 @@ CommitTransaction(void)
 						 RESOURCE_RELEASE_BEFORE_LOCKS,
 						 true, true);
 
+	/* Check we've released all buffer pins */
+	AtEOXact_Buffers(true);
+
 	/*
 	 * Make catalog changes visible to all backends.  This has to happen
 	 * after relcache references are dropped (see comments for
@@ -1684,6 +1687,7 @@ AbortTransaction(void)
 	ResourceOwnerRelease(TopTransactionResourceOwner,
 						 RESOURCE_RELEASE_BEFORE_LOCKS,
 						 false, true);
+	AtEOXact_Buffers(false);
 	AtEOXact_Inval(false);
 	smgrDoPendingDeletes(false);
 	ResourceOwnerRelease(TopTransactionResourceOwner,

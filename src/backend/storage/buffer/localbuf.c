@@ -232,23 +232,12 @@ InitLocalBuffer(void)
 void
 AtEOXact_LocalBuffers(bool isCommit)
 {
+#ifdef USE_ASSERT_CHECKING
 	int			i;
 
 	for (i = 0; i < NLocBuffer; i++)
 	{
-		if (LocalRefCount[i] != 0)
-		{
-			BufferDesc *buf = &(LocalBufferDescriptors[i]);
-
-			if (isCommit)
-				elog(WARNING,
-					 "local buffer leak: [%03d] (rel=%u/%u/%u, blockNum=%u, flags=0x%x, refcount=%u %d)",
-					 i,
-					 buf->tag.rnode.spcNode, buf->tag.rnode.dbNode,
-				   buf->tag.rnode.relNode, buf->tag.blockNum, buf->flags,
-					 buf->refcount, LocalRefCount[i]);
-
-			LocalRefCount[i] = 0;
-		}
+		Assert(LocalRefCount[i] == 0);
 	}
+#endif
 }
