@@ -1,4 +1,12 @@
-# $Header$
+#-------------------------------------------------------------------------
+#
+# Makefile--
+#    Makefile for port/sunos4
+#
+# IDENTIFICATION
+#    $Header$
+#
+#-------------------------------------------------------------------------
 
 subdir = src/backend/port/sunos4
 top_builddir = ../../../..

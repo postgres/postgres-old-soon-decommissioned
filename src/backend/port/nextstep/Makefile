@@ -1,8 +1,10 @@
 #-------------------------------------------------------------------------
 #
-# Makefile for NeXTStep 3.3 specific stuff
+# Makefile--
+#    Makefile for port/nextstep
 #
-# $Header$
+# IDENTIFICATION
+#    $Header$
 #
 #-------------------------------------------------------------------------
 

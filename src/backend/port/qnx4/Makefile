@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------
 #
 # Makefile--
-#    Makefile for port/sparc
+#    Makefile for port/qnx4
 #
 # IDENTIFICATION
 #    $Header$
