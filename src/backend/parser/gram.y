@@ -1724,9 +1724,7 @@ columnList:
 
 columnElem: ColId
 				{
-					Ident *id = makeNode(Ident);
-					id->name = $1;
-					$$ = (Node *)id;
+					$$ = (Node *) makeString($1);
 				}
 		;
 

@@ -501,9 +501,6 @@ FigureColnameInternal(Node *node, char **name)
 
 	switch (nodeTag(node))
 	{
-		case T_Ident:
-			*name = ((Ident *) node)->name;
-			return 2;
 		case T_ColumnRef:
 			{
 				char	 *cname = strVal(llast(((ColumnRef *) node)->fields));

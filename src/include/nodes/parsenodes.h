@@ -288,17 +288,6 @@ typedef struct ColumnDef
 } ColumnDef;
 
 /*
- * Ident -
- *	  an unqualified identifier.  This is currently used only in the context
- *	  of column name lists.
- */
-typedef struct Ident
-{
-	NodeTag		type;
-	char	   *name;			/* its name */
-} Ident;
-
-/*
  * FuncCall - a function or aggregate invocation
  *
  * agg_star indicates we saw a 'foo(*)' construct, while agg_distinct
@@ -869,7 +858,8 @@ typedef struct CopyStmt
 {
 	NodeTag		type;
 	RangeVar   *relation;		/* the relation to copy */
-	List	   *attlist;		/* List of Ident nodes, or NIL for all */
+	List	   *attlist;		/* List of column names (as Strings),
+								 * or NIL for all columns */
 	bool		is_from;		/* TO or FROM */
 	char	   *filename;		/* if NULL, use stdin/stdout */
 	List	   *options;		/* List of DefElem nodes */
@@ -936,7 +926,7 @@ typedef struct Constraint
 	char	   *name;			/* name, or NULL if unnamed */
 	Node	   *raw_expr;		/* expr, as untransformed parse tree */
 	char	   *cooked_expr;	/* expr, as nodeToString representation */
-	List	   *keys;			/* Ident nodes naming referenced column(s) */
+	List	   *keys;			/* String nodes naming referenced column(s) */
 } Constraint;
 
 /* ----------

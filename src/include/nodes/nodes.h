@@ -85,7 +85,6 @@ typedef enum NodeTag
 	T_PathKeyItem,
 	T_RestrictInfo,
 	T_JoinInfo,
-	T_Stream,
 	T_IndexOptInfo,
 
 	/*
@@ -93,13 +92,11 @@ typedef enum NodeTag
 	 */
 	T_IndexInfo = 300,
 	T_ResultRelInfo,
-	T_TupleCount,
 	T_TupleTableSlot,
 	T_ExprContext,
 	T_ProjectionInfo,
 	T_JunkFilter,
 	T_EState,
-	T_BaseNode,
 	T_CommonState,
 	T_ResultState,
 	T_AppendState,
@@ -207,7 +204,6 @@ typedef enum NodeTag
 	T_A_Expr = 700,
 	T_ColumnRef,
 	T_ParamRef,
-	T_Ident,
 	T_A_Const,
 	T_FuncCall,
 	T_A_Indices,
