@@ -31,7 +31,7 @@ ifndef PORTNAME
 	@false
 else
 
-OBJS = $(PORTNAME)/SUBSYS.o @INET_ATON@
+OBJS = $(PORTNAME)/SUBSYS.o @INET_ATON@ @STRERROR@
 
 all: submake SUBSYS.o
 
