@@ -1479,9 +1479,6 @@ DESCR("date difference preserving months and years");
 
 /* OIDS 1200 - 1299 */
 
-DATA(insert OID = 1200 (  reltime		   PGNSP PGUID 12 f f t f i 1  703 "23"  int4reltime - _null_ ));
-DESCR("convert int4 to reltime");
-
 DATA(insert OID = 1215 (  obj_description	PGNSP PGUID 14 f f t f s 2	25 "26 19"	"select description from pg_description where objoid = $1 and classoid = (select oid from pg_class where relname = $2 and relnamespace = PGNSP) and objsubid = 0" - _null_ ));
 DESCR("get description for object id and catalog name");
 DATA(insert OID = 1216 (  col_description	PGNSP PGUID 14 f f t f s 2	25 "26 23"	"select description from pg_description where objoid = $1 and classoid = \'pg_catalog.pg_class\'::regclass and objsubid = $2" - _null_ ));

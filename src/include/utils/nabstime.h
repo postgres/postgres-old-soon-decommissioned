@@ -152,7 +152,6 @@ extern Datum tintervalct(PG_FUNCTION_ARGS);
 extern Datum tintervalov(PG_FUNCTION_ARGS);
 extern Datum tintervalstart(PG_FUNCTION_ARGS);
 extern Datum tintervalend(PG_FUNCTION_ARGS);
-extern Datum int4reltime(PG_FUNCTION_ARGS);
 extern Datum timeofday(PG_FUNCTION_ARGS);
 
 /* non-fmgr-callable support routines */

@@ -1735,15 +1735,6 @@ istinterval(char *i_string,
  *
  *****************************************************************************/
 
-Datum
-int4reltime(PG_FUNCTION_ARGS)
-{
-	int32		timevalue = PG_GETARG_INT32(0);
-
-	/* Just coerce it directly to RelativeTime ... */
-	PG_RETURN_RELATIVETIME((RelativeTime) timevalue);
-}
-
 /*
  * timeofday -
  *	   returns the current time as a text. similar to timenow() but returns
