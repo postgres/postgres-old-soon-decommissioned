@@ -50,7 +50,7 @@ endif
 
 ifdef PGXS
 # We assume that we are in src/makefiles/, so top is ...
-top_builddir := $(dir $(PGXS))/../..
+top_builddir := $(dir $(PGXS))../..
 include $(top_builddir)/src/Makefile.global
 
 top_srcdir = $(top_builddir)

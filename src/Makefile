@@ -33,10 +33,6 @@ install-local: installdirs-local
 	$(INSTALL_DATA) $(srcdir)/Makefile.shlib $(DESTDIR)$(pgxsdir)/$(subdir)/Makefile.shlib
 	$(INSTALL_DATA) $(srcdir)/nls-global.mk $(DESTDIR)$(pgxsdir)/$(subdir)/nls-global.mk
 
-install-all-headers:
-	$(MAKE) -C include $@
-	$(MAKE) -C port $@
-
 installdirs: installdirs-local
 
 installdirs-local:

@@ -1035,18 +1035,9 @@ All of PostgreSQL is successfully made. Ready to install.
    </para>
 
    <para>
-    The standard installation provides only the header files needed for client
-    application development.  If you plan to do any server-side program
-    development (such as custom functions or data types written in C),
-    then you may want to install the entire <productname>PostgreSQL</>
-    include tree into your target include directory.  To do that, enter
-<screen>
-<userinput>gmake install-all-headers</userinput>
-</screen>
-    This adds a megabyte or two to the installation footprint, and is only
-    useful if you don't plan to keep the whole source tree around for
-    reference.  (If you do, you can just use the source's include
-    directory when building server-side software.)
+    The standard installation provides all the header files needed for client
+    application development as well as for any server-side program
+    development (such as custom functions or data types written in C).
    </para>
 
    <formalpara>
