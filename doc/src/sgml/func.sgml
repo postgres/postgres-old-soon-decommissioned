@@ -743,7 +743,7 @@ PostgreSQL documentation
        <entry><function>atan2</function>(<replaceable>x</replaceable>,
         <replaceable>y</replaceable>)</entry>
        <entry>inverse tangent of
-        <replaceable>a</replaceable>/<replaceable>x</replaceable></entry>
+        <replaceable>x</replaceable>/<replaceable>y</replaceable></entry>
       </row>
 
       <row>
