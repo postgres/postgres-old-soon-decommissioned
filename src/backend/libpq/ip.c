@@ -212,17 +212,10 @@ int
 SockAddr_pton(SockAddr *sa, const char *src)
 {
 	int			family = AF_INET;
-#ifdef HAVE_IPV6
-	const char		*ch;
 
-	for (ch = src; *ch != '\0'; ch++)
-	{
-		if (*ch == ':')
-		{
-			family = AF_INET6;
-			break;
-		}
-	}
+#ifdef HAVE_IPV6
+	if (strchr(src, ':'))
+		family = AF_INET6;
 #endif
 
 	sa->sa.sa_family = family;
