@@ -450,7 +450,6 @@ writefile(char *path, char **lines)
 	FILE	   *out_file;
 	char	  **line;
 
-	;
 	if ((out_file = fopen(path, PG_BINARY_W)) == NULL)
 	{
 		fprintf(stderr, _("%s: could not open file \"%s\" for writing: %s\n"),
