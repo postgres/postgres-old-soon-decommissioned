@@ -17,7 +17,8 @@
 #include "access/itup.h"
 #include "nodes/execnodes.h"
 
-extern Form_pg_am AccessMethodObjectIdGetForm(Oid accessMethodObjectId);
+extern Form_pg_am AccessMethodObjectIdGetForm(Oid accessMethodObjectId,
+											  MemoryContext resultCxt);
 
 extern void UpdateIndexPredicate(Oid indexoid, Node *oldPred, Node *predicate);
 
