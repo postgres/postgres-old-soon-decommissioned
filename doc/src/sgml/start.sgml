@@ -255,6 +255,12 @@ createdb: database creation failed
     cannot be undone, so this should only be done with a great deal of
     forethought.
    </para>
+
+   <para>
+    More about <command>createdb</command> and <command>dropdb</command> may
+    be found in <xref linkend="APP-CREATEDB"> and <xref linkend="APP-DROPDB">
+    respectively.
+   </para>
   </sect1>
 
 
