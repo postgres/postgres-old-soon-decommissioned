@@ -1563,10 +1563,12 @@ do_shell(const char *command)
 
 		sys = pg_malloc(strlen(shellName) + 16);
 		sprintf(sys,
+		/* See EDITOR handling comment for an explaination */
 #ifndef WIN32
-				"exec "
-#endif
+				"exec %s", shellName);
+#else
 				"%s\"%s\"%s", SYSTEMQUOTE, shellName, SYSTEMQUOTE);
+#endif
 		result = system(sys);
 		free(sys);
 	}
