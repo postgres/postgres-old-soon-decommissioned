@@ -977,7 +977,7 @@ NUMDesc_prepare(NUMDesc *num, FormatNode *n)
 			if (IS_DECIMAL(num))
 			{
 				NUM_cache_remove(last_NUMCacheEntry);
-				elog(ERROR, "to_char/to_number(): not unique decimal poit.");
+				elog(ERROR, "to_char/to_number(): not unique decimal point.");
 			}
 			if (IS_MULTI(num))
 			{
