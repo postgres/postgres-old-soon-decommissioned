@@ -15,15 +15,10 @@
 
 #include "postgres.h"
 
-#include "nodes/nodeFuncs.h"
-#include "optimizer/clauses.h"
 #include "optimizer/cost.h"
-#include "optimizer/internal.h"
 #include "optimizer/pathnode.h"
 #include "optimizer/paths.h"
-#include "optimizer/plancat.h"
 #include "optimizer/restrictinfo.h"
-#include "parser/parsetree.h"
 
 
 static void best_or_subclause_indices(Query *root, RelOptInfo *rel,

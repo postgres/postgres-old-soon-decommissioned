@@ -27,7 +27,6 @@
 
 #include "postgres.h"
 
-#include "catalog/pg_index.h"
 #include "nodes/plannodes.h"
 #include "nodes/readfuncs.h"
 #include "nodes/relation.h"

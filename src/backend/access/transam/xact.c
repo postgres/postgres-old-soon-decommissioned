@@ -150,7 +150,6 @@
 #include "catalog/index.h"
 #include "commands/async.h"
 #include "commands/sequence.h"
-#include "commands/vacuum.h"
 #include "commands/trigger.h"
 #include "libpq/be-fsstubs.h"
 #include "storage/proc.h"

@@ -29,7 +29,6 @@
 #include "catalog/pg_proc.h"
 #include "commands/cluster.h"
 #include "commands/rename.h"
-#include "optimizer/internal.h"
 #include "utils/builtins.h"
 #include "utils/syscache.h"
 

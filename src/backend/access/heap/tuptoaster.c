@@ -21,10 +21,6 @@
 
 #include "postgres.h"
 
-#include "access/heapam.h"
-#include "access/tuptoaster.h"
-#include "catalog/catalog.h"
-#include "utils/rel.h"
 
 
 #ifdef TUPLE_TOASTER_ACTIVE

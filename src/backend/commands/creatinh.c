@@ -22,7 +22,6 @@
 #include "catalog/pg_inherits.h"
 #include "catalog/pg_ipl.h"
 #include "catalog/pg_type.h"
-#include "catalog/pg_description.h"
 #include "commands/creatinh.h"
 #include "utils/syscache.h"
 

@@ -19,11 +19,9 @@
 
 #include "miscadmin.h"
 #include "storage/backendid.h"
-#include "storage/lmgr.h"
 #include "storage/proc.h"
 #include "storage/sinval.h"
 #include "storage/sinvaladt.h"
-#include "utils/trace.h"
 
 SISeg	   *shmInvalBuffer;
 

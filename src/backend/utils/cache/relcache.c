@@ -55,7 +55,6 @@
 #include "commands/trigger.h"
 #include "lib/hasht.h"
 #include "miscadmin.h"
-#include "storage/bufmgr.h"
 #include "storage/smgr.h"
 #include "utils/catcache.h"
 #include "utils/fmgroids.h"

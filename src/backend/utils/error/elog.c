@@ -31,10 +31,8 @@
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
 #include "miscadmin.h"
-#include "storage/ipc.h"
 #include "storage/proc.h"
 #include "tcop/tcopprot.h"
-#include "utils/trace.h"
 #include "commands/copy.h"
 
 extern int	errno;

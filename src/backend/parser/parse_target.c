@@ -20,9 +20,6 @@
 #include "parser/parse_func.h"
 #include "parser/parse_relation.h"
 #include "parser/parse_target.h"
-#include "utils/builtins.h"
-#include "utils/lsyscache.h"
-#include "utils/syscache.h"
 
 
 static List *ExpandAllTables(ParseState *pstate);

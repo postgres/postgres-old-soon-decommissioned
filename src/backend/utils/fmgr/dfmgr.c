@@ -17,7 +17,6 @@
 
 #include "postgres.h"
 
-#include "access/heapam.h"
 #include "catalog/pg_proc.h"
 #include "dynloader.h"
 #include "utils/builtins.h"

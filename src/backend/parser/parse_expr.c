@@ -19,7 +19,6 @@
 #include "catalog/pg_proc.h"
 #include "nodes/makefuncs.h"
 #include "nodes/params.h"
-#include "nodes/relation.h"
 #include "parser/analyze.h"
 #include "parser/gramparse.h"
 #include "parser/parse.h"

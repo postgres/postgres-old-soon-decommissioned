@@ -18,7 +18,6 @@
 
 #include "optimizer/clauses.h"
 #include "optimizer/plancat.h"
-#include "optimizer/planmain.h"
 #include "optimizer/planner.h"
 #include "optimizer/prep.h"
 #include "optimizer/tlist.h"

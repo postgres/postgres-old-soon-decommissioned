@@ -24,8 +24,6 @@
 #include <sys/types.h>
 
 #include "postgres.h"
-#include "access/heapam.h"
-#include "access/xact.h"
 #include "catalog/heap.h"
 #include "catalog/index.h"
 #include "utils/catcache.h"

@@ -31,7 +31,6 @@
 #include "storage/sinval.h"
 #include "storage/smgr.h"
 #include "utils/fmgroids.h"
-#include "utils/inval.h"
 #include "utils/portal.h"
 #include "utils/relcache.h"
 #include "utils/syscache.h"

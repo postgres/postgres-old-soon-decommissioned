@@ -14,11 +14,8 @@
  */
 #include "postgres.h"
 
-#include "optimizer/cost.h"
-#include "optimizer/joininfo.h"
 #include "optimizer/pathnode.h"
 #include "optimizer/paths.h"
-#include "optimizer/tlist.h"
 
 
 static RelOptInfo *make_join_rel(Query *root, RelOptInfo *rel1,

@@ -21,7 +21,6 @@
 #include "catalog/index.h"
 #include "executor/executor.h"
 #include "miscadmin.h"
-#include "utils/geo_decls.h"
 
 
 typedef struct SPLITVEC

@@ -30,7 +30,6 @@
 #include "utils/fmgroids.h"
 #include "utils/inval.h"
 #include "utils/syscache.h"
-#include "utils/tqual.h"
 
 
 static void DescribeTrigger(TriggerDesc *trigdesc, Trigger *trigger);

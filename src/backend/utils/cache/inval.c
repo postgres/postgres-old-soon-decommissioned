@@ -17,9 +17,6 @@
 #include "postgres.h"
 
 #include "catalog/catalog.h"
-#include "catalog/catname.h"
-#include "catalog/heap.h"
-#include "catalog/pg_class.h"
 #include "miscadmin.h"
 #include "storage/sinval.h"
 #include "utils/catcache.h"

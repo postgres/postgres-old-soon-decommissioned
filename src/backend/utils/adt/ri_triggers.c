@@ -21,17 +21,9 @@
 
 #include "postgres.h"
 
-#include "access/heapam.h"
 #include "catalog/pg_operator.h"
-#include "catalog/catname.h"
 #include "commands/trigger.h"
-#include "executor/spi.h"
 #include "executor/spi_priv.h"
-#include "fmgr.h"
-#include "lib/hasht.h"
-#include "utils/builtins.h"
-#include "utils/mcxt.h"
-#include "utils/syscache.h"
 
 
 /* ----------

@@ -30,7 +30,6 @@
 #endif
 #endif
 
-#include "optimizer/cost.h"
 #include "optimizer/geqo.h"
 #include "optimizer/pathnode.h"
 #include "optimizer/paths.h"

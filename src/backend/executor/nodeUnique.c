@@ -27,7 +27,6 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "access/printtup.h"
 #include "executor/executor.h"
 #include "executor/nodeGroup.h"
 #include "executor/nodeUnique.h"

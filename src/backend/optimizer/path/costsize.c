@@ -53,11 +53,9 @@
 
 #include "executor/nodeHash.h"
 #include "miscadmin.h"
-#include "nodes/plannodes.h"
 #include "optimizer/clauses.h"
 #include "optimizer/cost.h"
 #include "optimizer/internal.h"
-#include "optimizer/tlist.h"
 #include "utils/lsyscache.h"
 
 

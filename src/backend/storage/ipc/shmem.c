@@ -60,7 +60,6 @@
  */
 
 #include "postgres.h"
-#include "storage/proc.h"
 #include "utils/tqual.h"
 
 /* shared memory global variables */

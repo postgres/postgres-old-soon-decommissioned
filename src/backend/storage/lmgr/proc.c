@@ -61,16 +61,12 @@
 
 #include "postgres.h"
 #include "miscadmin.h"
-#include "libpq/pqsignal.h"
 
 
-#include "storage/ipc.h"
 /* In Ultrix and QNX, sem.h must be included after ipc.h */
 #include <sys/sem.h>
 
-#include "storage/lmgr.h"
 #include "storage/proc.h"
-#include "utils/trace.h"
 
 void		HandleDeadLock(SIGNAL_ARGS);
 static void ProcFreeAllSemaphores(void);

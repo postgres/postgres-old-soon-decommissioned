@@ -24,23 +24,14 @@
 #include <sys/types.h>
 
 #include "access/heapam.h"
-#include "access/htup.h"
-#include "access/skey.h"
-#include "access/xact.h"
 #include "catalog/catname.h"
-#include "catalog/indexing.h"
 #include "catalog/pg_database.h"
 #include "catalog/pg_shadow.h"
 #include "commands/comment.h"
 #include "miscadmin.h"
-#include "storage/bufmgr.h"		/* for DropBuffers */
-#include "storage/fd.h"			/* for closeAllVfds */
 #include "storage/sinval.h"		/* for DatabaseHasActiveBackends */
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"
-#include "utils/elog.h"
-#include "utils/palloc.h"
-#include "utils/rel.h"
 #include "utils/syscache.h"
 
 

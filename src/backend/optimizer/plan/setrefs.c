@@ -17,12 +17,10 @@
 
 #include "postgres.h"
 
-#include "nodes/makefuncs.h"
 #include "nodes/nodeFuncs.h"
 #include "optimizer/clauses.h"
 #include "optimizer/planmain.h"
 #include "optimizer/tlist.h"
-#include "optimizer/var.h"
 
 typedef struct
 {

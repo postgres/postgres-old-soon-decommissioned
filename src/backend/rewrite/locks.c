@@ -18,7 +18,6 @@
 #include "optimizer/clauses.h"
 #include "rewrite/locks.h"
 #include "utils/acl.h"
-#include "utils/builtins.h"
 #include "utils/syscache.h"
 #include "utils/syscache.h"
 

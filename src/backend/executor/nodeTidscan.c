@@ -28,7 +28,6 @@
 #include "executor/executor.h"
 #include "executor/execdebug.h"
 #include "executor/nodeTidscan.h"
-#include "optimizer/clauses.h"	/* for get_op, get_leftop, get_rightop */
 #include "access/heapam.h"
 #include "parser/parsetree.h"
 

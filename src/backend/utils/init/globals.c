@@ -29,7 +29,6 @@
 #include "libpq/pqcomm.h"
 #include "miscadmin.h"
 #include "storage/backendid.h"
-#include "storage/lmgr.h"
 
 ProtocolVersion FrontendProtocol = PG_PROTOCOL_LATEST;
 

@@ -15,9 +15,7 @@
 #include "postgres.h"
 
 
-#include "nodes/nodeFuncs.h"
 #include "optimizer/clauses.h"
-#include "optimizer/internal.h"
 #include "optimizer/restrictinfo.h"
 
 /*

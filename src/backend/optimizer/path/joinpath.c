@@ -17,13 +17,10 @@
 
 #include "postgres.h"
 
-#include "access/htup.h"
-#include "catalog/pg_attribute.h"
 #include "optimizer/clauses.h"
 #include "optimizer/cost.h"
 #include "optimizer/pathnode.h"
 #include "optimizer/paths.h"
-#include "optimizer/restrictinfo.h"
 #include "parser/parsetree.h"
 #include "utils/lsyscache.h"
 

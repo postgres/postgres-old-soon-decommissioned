@@ -18,7 +18,6 @@
 #include "access/gistscan.h"
 #include "access/heapam.h"
 #include "catalog/index.h"
-#include "catalog/pg_index.h"
 #include "executor/executor.h"
 #include "miscadmin.h"
 #include "utils/syscache.h"

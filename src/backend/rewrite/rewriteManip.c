@@ -18,7 +18,6 @@
 #include "parser/parsetree.h"
 #include "parser/parse_clause.h"
 #include "rewrite/rewriteManip.h"
-#include "utils/builtins.h"
 #include "utils/lsyscache.h"
 
 

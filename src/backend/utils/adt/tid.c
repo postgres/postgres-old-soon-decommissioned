@@ -158,7 +158,6 @@ text_tid(const text *string)
  *	Maybe these implementations is moved
  *	to another place
 */
-#include <utils/relcache.h>
 ItemPointer
 currtid_byreloid(Oid reloid, ItemPointer tid)
 {

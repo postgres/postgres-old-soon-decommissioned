@@ -47,7 +47,6 @@
 #include "optimizer/clauses.h"
 #include "parser/parse_expr.h"
 #include "parser/parse_oper.h"
-#include "parser/parse_type.h"
 #include "utils/syscache.h"
 #include "utils/tuplesort.h"
 

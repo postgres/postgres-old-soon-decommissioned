@@ -19,8 +19,6 @@
 
 #include "postgres.h"
 #include "utils/builtins.h"
-#include "utils/palloc.h"
-#include "utils/pg_lzcompress.h"
 #ifdef MULTIBYTE
 #include "mb/pg_wchar.h"
 #endif

@@ -124,7 +124,6 @@
 #include <errno.h>
 
 #include "postgres.h"
-#include "utils/palloc.h"
 #include "utils/pg_lzcompress.h"
 
 

@@ -16,7 +16,6 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "miscadmin.h"
 #include "optimizer/tlist.h"
 #include "nodes/makefuncs.h"
 #include "parser/parse.h"

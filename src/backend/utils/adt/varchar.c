@@ -14,7 +14,6 @@
  */
 
 #include "postgres.h"
-#include "access/htup.h"
 #include "catalog/pg_type.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"

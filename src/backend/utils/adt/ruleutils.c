@@ -43,7 +43,6 @@
 #include "catalog/pg_index.h"
 #include "catalog/pg_operator.h"
 #include "catalog/pg_shadow.h"
-#include "catalog/pg_type.h"
 #include "executor/spi.h"
 #include "lib/stringinfo.h"
 #include "optimizer/clauses.h"
@@ -51,7 +50,6 @@
 #include "parser/keywords.h"
 #include "parser/parse_expr.h"
 #include "parser/parsetree.h"
-#include "utils/builtins.h"
 #include "utils/lsyscache.h"
 
 

@@ -43,8 +43,6 @@
 #include "optimizer/var.h"
 #include "parser/parsetree.h"
 #include "utils/acl.h"
-#include "utils/builtins.h"
-#include "utils/syscache.h"
 
 
 /* decls for local routines only used within this module */

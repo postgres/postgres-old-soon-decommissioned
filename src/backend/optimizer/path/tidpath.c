@@ -17,23 +17,12 @@
 
 #include "postgres.h"
 
-#include "access/heapam.h"
-#include "catalog/catname.h"
-#include "catalog/pg_amop.h"
 #include "catalog/pg_operator.h"
-#include "executor/executor.h"
-#include "nodes/makefuncs.h"
-#include "nodes/nodeFuncs.h"
 #include "optimizer/clauses.h"
 #include "optimizer/cost.h"
 #include "optimizer/pathnode.h"
 #include "optimizer/paths.h"
-#include "optimizer/plancat.h"
-#include "optimizer/restrictinfo.h"
 #include "parser/parse_coerce.h"
-#include "parser/parse_expr.h"
-#include "parser/parse_oper.h"
-#include "parser/parsetree.h"
 #include "utils/lsyscache.h"
 
 static void create_tidscan_joinpaths(RelOptInfo *rel);
