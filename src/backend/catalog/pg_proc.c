@@ -11,29 +11,29 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <string.h>
-#include "postgres.h"
+#include <postgres.h>
+
 #include <utils/syscache.h>
 #include <catalog/pg_proc.h>
-
-#include "access/heapam.h"
-#include "access/relscan.h"
-#include "access/skey.h"
-#include "fmgr.h"
-#include "utils/builtins.h"
-#include "utils/sets.h"
-
-#include "catalog/catname.h"
-#include "catalog/indexing.h"
-#include "parser/parse_query.h"
-#include "tcop/tcopprot.h"
-#include "parser/catalog_utils.h"
-#include "optimizer/internal.h"
-#include "optimizer/planner.h"
-
-#include "utils/lsyscache.h"
-
-#include "miscadmin.h"
+#include <access/heapam.h>
+#include <access/relscan.h>
+#include <fmgr.h>
+#include <utils/builtins.h>
+#include <utils/sets.h>
+#include <catalog/catname.h>
+#include <catalog/indexing.h>
+#include <parser/parse_query.h>
+#include <tcop/tcopprot.h>
+#include <parser/catalog_utils.h>
+#include <optimizer/internal.h>
+#include <optimizer/planner.h>
+#include <utils/lsyscache.h>
+#include <miscadmin.h>
+#ifndef HAVE_MEMMOVE
+# include <regex/utils.h>
+#else
+# include <string.h>
+#endif
 
 /* ----------------------------------------------------------------
  *	ProcedureDefine

@@ -14,25 +14,22 @@
  *	
  *-------------------------------------------------------------------------
  */
-#include <string.h>
-#include "postgres.h"
+#include <postgres.h>
 
 #include <catalog/pg_proc.h>
 #include <utils/syscache.h>
-
-#include "access/heapam.h"
-#include "access/skey.h"
-#include "access/htup.h"
-#include "utils/palloc.h"
-#include "parser/catalog_utils.h"
-
-#include "catalog/catname.h"
-#include "catalog/pg_operator.h"
-#include "storage/bufmgr.h"
-
-#include "fmgr.h"
-
-#include "miscadmin.h"
+#include <access/heapam.h>
+#include <parser/catalog_utils.h>
+#include <catalog/catname.h>
+#include <catalog/pg_operator.h>
+#include <storage/bufmgr.h>
+#include <fmgr.h>
+#include <miscadmin.h>
+#ifndef HAVE_MEMMOVE
+# include <regex/utils.h>
+#else
+# include <string.h>
+#endif
 
 static Oid OperatorGetWithOpenRelation(Relation pg_operator_desc,
 				       const char *operatorName,

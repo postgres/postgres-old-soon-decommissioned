@@ -23,47 +23,33 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"
+#include <postgres.h>
 
 #include <catalog/pg_proc.h>
 #include <storage/bufmgr.h>
 #include <fmgr.h>
+#include <access/genam.h>
+#include <access/heapam.h>
+#include <utils/builtins.h>
+#include <access/xact.h>
+#include <parser/catalog_utils.h>
+#include <storage/smgr.h>
+#include <storage/lmgr.h>
+#include <miscadmin.h>
+#include <utils/mcxt.h>
+#include <utils/relcache.h>
+#include <bootstrap/bootstrap.h>
+#include <catalog/catname.h>
+#include <catalog/catalog.h>
+#include <utils/syscache.h>
+#include <catalog/indexing.h>
+#include <catalog/heap.h>
+#include <catalog/index.h>
+#include <executor/executor.h>
+#include <optimizer/clauses.h>
+#include <optimizer/prep.h>
+#include <access/istrat.h>
 
-#include "access/genam.h"
-#include "access/heapam.h"
-#include "utils/builtins.h"
-#include "access/xact.h"
-#include "parser/catalog_utils.h"
-
-#include "storage/smgr.h"
-#include "storage/lmgr.h"
-#include "miscadmin.h"
-#include "utils/mcxt.h"
-#include "utils/palloc.h"
-#include "utils/relcache.h"
-
-#include "bootstrap/bootstrap.h"
-
-#include "catalog/catname.h"
-#include "catalog/catalog.h"
-#include "utils/syscache.h"
-#include "catalog/pg_attribute.h"
-#include "catalog/pg_class.h"
-#include "catalog/indexing.h"
-
-#include "catalog/heap.h"
-
-#include "nodes/plannodes.h"
-
-#include "catalog/index.h"
-
-#include "executor/executor.h"
-#include "executor/tuptable.h"
-
-#include "optimizer/clauses.h"
-#include "optimizer/prep.h"
-
-#include "access/istrat.h"
 #ifndef HAVE_MEMMOVE
 # include <regex/utils.h>
 #else
