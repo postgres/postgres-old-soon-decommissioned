@@ -1122,6 +1122,11 @@ PQinSend(void)
 	return (pthread_getspecific(thread_in_send) /* has it been set? */ &&
 			*(char *)pthread_getspecific(thread_in_send) == 't') ? true : false;
 #else
-	return false;	/* No threading, so we can't be in send() */
+	/*
+	 *	No threading: our code ignores SIGPIPE around send().
+	 *	Therefore, we can't be in send() if we are checking
+	 *	from a SIGPIPE signal handler.
+	 */
+	return false;	
 #endif
 }
