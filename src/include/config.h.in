@@ -511,6 +511,9 @@ extern long random(void);
 extern void srandom(unsigned int seed);
 #endif
 
+/* Set to 1 if you have libz.a */
+#undef HAVE_LIBZ
+
 /* Set to 1 if you have libreadline.a */
 #undef HAVE_LIBREADLINE
 
