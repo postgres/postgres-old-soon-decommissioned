@@ -103,9 +103,10 @@ add_preprocessor_define(char *define)
 	else
 	{
 		defines->old = define_copy;
-		defines->new = mm_strdup("");
+		defines->new = mm_strdup("1");
 	}
 	defines->pertinent = true;
+	defines->used = NULL;
 	defines->next = pd;
 }
 
