@@ -788,7 +788,7 @@ make_viewdef(HeapTuple ruletup, TupleDesc rulettc)
 
 	query = (Query *) lfirst(actions);
 
-	if (ev_type != '1' || ev_attr >= 0 || !is_instead || strcmp(ev_qual, ""))
+	if (ev_type != '1' || ev_attr >= 0 || !is_instead || strcmp(ev_qual, "<>"))
 		return "Not a view";
 
 	strcpy(buf, get_query_def(query, NULL));
