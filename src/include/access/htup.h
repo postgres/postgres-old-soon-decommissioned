@@ -13,8 +13,6 @@
 #ifndef	HTUP_H
 #define HTUP_H
 
-#include "access/attnum.h"
-#include "storage/bufpage.h"  		/* just to reduce levels of #include */
 #include "storage/itemptr.h"
 #include "utils/nabstime.h"
 
