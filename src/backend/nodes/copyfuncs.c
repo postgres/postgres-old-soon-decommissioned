@@ -969,6 +969,20 @@ _copyCaseWhen(CaseWhen *from)
 }
 
 /*
+ * _copyCaseTestExpr
+ */
+static CaseTestExpr *
+_copyCaseTestExpr(CaseTestExpr *from)
+{
+	CaseTestExpr *newnode = makeNode(CaseTestExpr);
+
+	COPY_SCALAR_FIELD(typeId);
+	COPY_SCALAR_FIELD(typeMod);
+
+	return newnode;
+}
+
+/*
  * _copyArrayExpr
  */
 static ArrayExpr *
@@ -2642,6 +2656,9 @@ copyObject(void *from)
 			break;
 		case T_CaseWhen:
 			retval = _copyCaseWhen(from);
+			break;
+		case T_CaseTestExpr:
+			retval = _copyCaseTestExpr(from);
 			break;
 		case T_ArrayExpr:
 			retval = _copyArrayExpr(from);

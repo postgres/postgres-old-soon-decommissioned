@@ -404,6 +404,15 @@ _equalCaseWhen(CaseWhen *a, CaseWhen *b)
 }
 
 static bool
+_equalCaseTestExpr(CaseTestExpr *a, CaseTestExpr *b)
+{
+	COMPARE_SCALAR_FIELD(typeId);
+	COMPARE_SCALAR_FIELD(typeMod);
+
+	return true;
+}
+
+static bool
 _equalArrayExpr(ArrayExpr *a, ArrayExpr *b)
 {
 	COMPARE_SCALAR_FIELD(array_typeid);
@@ -1723,6 +1732,9 @@ equal(void *a, void *b)
 			break;
 		case T_CaseWhen:
 			retval = _equalCaseWhen(a, b);
+			break;
+		case T_CaseTestExpr:
+			retval = _equalCaseTestExpr(a, b);
 			break;
 		case T_ArrayExpr:
 			retval = _equalArrayExpr(a, b);

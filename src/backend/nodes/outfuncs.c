@@ -806,6 +806,15 @@ _outCaseWhen(StringInfo str, CaseWhen *node)
 }
 
 static void
+_outCaseTestExpr(StringInfo str, CaseTestExpr *node)
+{
+	WRITE_NODE_TYPE("CASETESTEXPR");
+
+	WRITE_OID_FIELD(typeId);
+	WRITE_INT_FIELD(typeMod);
+}
+
+static void
 _outArrayExpr(StringInfo str, ArrayExpr *node)
 {
 	WRITE_NODE_TYPE("ARRAY");
@@ -1700,6 +1709,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_CaseWhen:
 				_outCaseWhen(str, obj);
+				break;
+			case T_CaseTestExpr:
+				_outCaseTestExpr(str, obj);
 				break;
 			case T_ArrayExpr:
 				_outArrayExpr(str, obj);

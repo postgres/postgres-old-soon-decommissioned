@@ -113,6 +113,7 @@ typedef enum NodeTag
 	T_RelabelType,
 	T_CaseExpr,
 	T_CaseWhen,
+	T_CaseTestExpr,
 	T_ArrayExpr,
 	T_CoalesceExpr,
 	T_NullIfExpr,

@@ -113,6 +113,10 @@ typedef struct ExprContext
 	Datum	   *ecxt_aggvalues; /* precomputed values for Aggref nodes */
 	bool	   *ecxt_aggnulls;	/* null flags for Aggref nodes */
 
+	/* Value to substitute for CaseTestExpr nodes in expression */
+	Datum		caseValue_datum;
+	bool		caseValue_isNull;
+
 	/* Value to substitute for CoerceToDomainValue nodes in expression */
 	Datum		domainValue_datum;
 	bool		domainValue_isNull;
@@ -566,6 +570,7 @@ typedef struct SubPlanState
 typedef struct CaseExprState
 {
 	ExprState	xprstate;
+	ExprState  *arg;			/* implicit equality comparison argument */
 	List	   *args;			/* the arguments (list of WHEN clauses) */
 	ExprState  *defresult;		/* the default result (ELSE clause) */
 } CaseExprState;
