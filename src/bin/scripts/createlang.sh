@@ -209,9 +209,15 @@ case "$langname" in
 		handler="plperl_call_handler"
 		object="plperl"
 		;;
+	plpython)
+		lancomp="PL/Python"
+		trusted="TRUSTED "
+		handler="plpython_call_handler"
+		object="plpython"
+		;;
 	*)
 		echo "$CMDNAME: unsupported language '$langname'" 1>&2
-		echo "Supported languages are 'plpgsql', 'pltcl', 'pltclu', and 'plperl'." 1>&2
+		echo "Supported languages are 'plpgsql', 'pltcl', 'pltclu', 'plperl', and 'plpython'." 1>&2
 		exit 1
         ;;
 esac

@@ -1,5 +1,6 @@
-/*                                               -*- C -*-
- *
+/* $Header$ */
+
+/*
  * plpython.c - python as a procedural language for PostgreSQL
  *
  * IDENTIFICATION
@@ -32,6 +33,8 @@
  * MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
  *
  **********************************************************************/
+
+#include "postgres.h"
 
 /* system stuff
  */

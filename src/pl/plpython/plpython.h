@@ -1,5 +1,7 @@
-#ifndef PLPYTHON_NEW_H
-#define PLPYTHON_NEW_H
+/* $Header$ */
+
+#ifndef PLPYTHON_H
+#define PLPYTHON_H
 
 #define DEBUG_EXC 0
 #define DEBUG_LEVEL 0
@@ -63,4 +65,4 @@
 # define refc(O)
 #endif
 
-#endif
+#endif /* PLPYTHON_H */
