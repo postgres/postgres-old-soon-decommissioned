@@ -903,7 +903,7 @@ case $host_os in solaris*)
 AC_LIBOBJ(qsort) ;;
 esac
 
-# Win32 can't to rename or unlink on an open file
+# Win32 support
 case $host_os in mingw*)
 AC_LIBOBJ(copydir)
 AC_LIBOBJ(gettimeofday)
@@ -911,6 +911,7 @@ AC_LIBOBJ(pipe)
 AC_LIBOBJ(rand) ;;
 esac
 
+# Win32 can't to rename or unlink on an open file
 case $host_os in mingw*|cygwin*)
 AC_LIBOBJ(dirmod) ;;
 esac
