@@ -89,7 +89,7 @@ shmget(int memKey, int size, int flag)
 	DWORD		dwRet;
 
 	s_segsize = size;
-	sprintf(szShareMem, "sharemem.%d", memKey);
+	sprintf(szShareMem, "PostgreSQL.%d", memKey);
 
 	if (flag & IPC_CREAT)
 	{
