@@ -2481,11 +2481,26 @@ dumpTables(FILE *fout, TableInfo *tblinfo, int numTables,
 			
 			if (acls) {
 				ACLlist = ParseACL(tblinfo[i].relacl, &l);
+				if (ACLlist == (ACL *)NULL)
+					if (l == 0)
+						continue;
+					else {
+						fprintf(stderr,"Could not parse ACL list for %s...Exiting!\n",
+							tblinfo[i].relname);
+						exit_nicely(g_conn);
+						}
+
+				/* Revoke Default permissions for PUBLIC */
+				fprintf(fout,
+					"REVOKE ALL on %s from PUBLIC;\n",
+						tblinfo[i].relname);
+
 				for(k = 0; k < l; k++) {
-					fprintf(fout,
-							"GRANT %s on %s to %s;\n",
-							ACLlist[k].privledges, tblinfo[i].relname,
-							ACLlist[k].user);
+					if (ACLlist[k].privledges != (char *)NULL)
+						fprintf(fout,
+								"GRANT %s on %s to %s;\n",
+								ACLlist[k].privledges, tblinfo[i].relname,
+								ACLlist[k].user);
 				}
 			}
 		}
