@@ -989,11 +989,13 @@ _LIBS="$LIBS"
 CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
 LIBS="$LIBS $PTHREAD_LIBS"
 AC_CHECK_FUNCS([strerror_r getpwuid_r gethostbyname_r])
-CFLAGS="$_CFLAGS"
-LIBS="$_LIBS"
 
+# Do test here with thread flags
 PGAC_FUNC_GETPWUID_R_5ARG
 PGAC_FUNC_STRERROR_R_INT
+
+CFLAGS="$_CFLAGS"
+LIBS="$_LIBS"
 
 else
 # do not use values from template file
