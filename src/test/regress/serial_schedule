@@ -82,4 +82,4 @@ test: limit
 test: plpgsql
 test: temp
 test: domain
-
+test: rangefuncs
