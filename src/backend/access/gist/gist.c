@@ -98,9 +98,9 @@ gistbuild(Relation heap,
 
 	/* no locking is needed */
 
-	setheapoverride(true);		/* so we can see the new pg_index tuple */
+	CommandCounterIncrement();		/* so we can see the new pg_index tuple */
+
 	initGISTstate(&giststate, index);
-	setheapoverride(false);
 
 	pred = predInfo->pred;
 	oldPred = predInfo->oldPred;

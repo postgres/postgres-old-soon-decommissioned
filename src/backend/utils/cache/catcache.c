@@ -1047,8 +1047,7 @@ SearchSysCache(struct catcache * cache,
 	 *	if this isn't bootstrap (initdb) time, use the index.
 	 * ----------------
 	 */
-	CACHE2_elog(DEBUG, "SearchSysCache: performing scan (override==%d)",
-				heapisoverride());
+	CACHE1_elog(DEBUG, "SearchSysCache: performing scan");
 
 	if ((RelationGetForm(relation))->relhasindex
 		&& !IsBootstrapProcessingMode())

@@ -904,18 +904,15 @@ InitIndexStrategy(int numatts,
 
 	/* ----------------
 	 *	fill in the index strategy structure with information
-	 *	from the catalogs.	Note: we use heap override mode
-	 *	in order to be allowed to see the correct information in the
-	 *	catalogs, even though our transaction has not yet committed.
+	 *	from the catalogs.	First we must advance the command counter
+	 *	so that we will see the newly-entered index catalog tuples.
 	 * ----------------
 	 */
-	setheapoverride(true);
+	CommandCounterIncrement();
 
 	IndexSupportInitialize(strategy, support,
 						   attrelid, accessMethodObjectId,
 						   amstrategies, amsupport, numatts);
-
-	setheapoverride(false);
 
 	/* ----------------
 	 *	store the strategy information in the index reldesc

@@ -149,10 +149,8 @@ ChangeAcl(char *relname,
 	replaces[Anum_pg_class_relacl - 1] = 'r';
 	values[Anum_pg_class_relacl - 1] = (Datum) new_acl;
 	tuple = heap_modifytuple(tuple, relation, values, nulls, replaces);
-	/* XXX handle index on pg_class? */
-	setheapoverride(true);
+
 	heap_update(relation, &tuple->t_self, tuple, NULL);
-	setheapoverride(false);
 
 	/* keep the catalog indices up to date */
 	CatalogOpenIndices(Num_pg_class_indices, Name_pg_class_indices,

@@ -26,31 +26,6 @@ Snapshot	SerializableSnapshot = NULL;
 
 bool		ReferentialIntegritySnapshotOverride = false;
 
-/*
- * XXX Transaction system override hacks start here
- */
-#ifndef GOODAMI
-
-TransactionId HeapSpecialTransactionId = InvalidTransactionId;
-CommandId	HeapSpecialCommandId = FirstCommandId;
-
-void
-setheapoverride(bool on)
-{
-	if (on)
-	{
-		TransactionIdStore(GetCurrentTransactionId(),
-						   &HeapSpecialTransactionId);
-		HeapSpecialCommandId = GetCurrentCommandId();
-	}
-	else
-		HeapSpecialTransactionId = InvalidTransactionId;
-}
-
-#endif	 /* !defined(GOODAMI) */
-/*
- * XXX Transaction system override hacks end here
- */
 
 /*
  * HeapTupleSatisfiesItself
@@ -311,7 +286,7 @@ HeapTupleSatisfiesUpdate(HeapTuple tuple)
 		}
 		else if (TransactionIdIsCurrentTransactionId(th->t_xmin))
 		{
-			if (CommandIdGEScanCommandId(th->t_cmin) && !heapisoverride())
+			if (CommandIdGEScanCommandId(th->t_cmin))
 				return HeapTupleInvisible;		/* inserted after scan
 												 * started */
 

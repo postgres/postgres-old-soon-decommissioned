@@ -113,9 +113,7 @@ SetDefine(char *querystr, char *typename)
 									  replNull,
 									  repl);
 
-			setheapoverride(true);
 			heap_update(procrel, &tup->t_self, newtup, NULL);
-			setheapoverride(false);
 
 			setoid = newtup->t_data->t_oid;
 		}

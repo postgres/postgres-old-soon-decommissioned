@@ -723,18 +723,13 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 				FreeTupleDesc(tupdesc);
 
 				/*
-				 * XXX rather than having to call setheapoverride(true)
-				 * and then back to false, we should change the arguments
-				 * to heap_open() instead..
-				 *
-				 * XXX no, we should use commandCounterIncrement...
+				 * Advance command counter so that the newly-created
+				 * relation's catalog tuples will be visible to heap_open.
 				 */
-				setheapoverride(true);
+				CommandCounterIncrement();
 
 				intoRelationDesc = heap_open(intoRelationId,
 											 AccessExclusiveLock);
-
-				setheapoverride(false);
 			}
 		}
 	}
