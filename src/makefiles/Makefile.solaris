@@ -1,4 +1,8 @@
 # $Header$
 
+ifeq ($(with_gnu_ld), yes)
+export_dynamic = -Wl,-E
+endif
+
 %.so: %.o
 	$(LD) -G -Bdynamic -o $@ $<

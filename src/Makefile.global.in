@@ -160,6 +160,8 @@ FLEXFLAGS = @FLEXFLAGS@ $(LFLAGS)
 
 AROPT = @AROPT@
 LIBS = @LIBS@
+LD = @LD@
+with_gnu_ld = @with_gnu_ld@
 LDFLAGS = @LDFLAGS@ $(LIBS)
 KRB_LIBS = @KRB_LIBS@
 LDREL = -r
