@@ -73,26 +73,34 @@ getaddrinfo2(const char *hostname, const char *servname,
 
 /*
  *	freeaddrinfo2 - free addrinfo structures for IPv4, IPv6, or Unix
+ *
+ * Note: the ai_family field of the original hint structure must be passed
+ * so that we can tell whether the addrinfo struct was built by the system's
+ * getaddrinfo() routine or our own getaddrinfo_unix() routine.  Some versions
+ * of getaddrinfo() might be willing to return AF_UNIX addresses, so it's
+ * not safe to look at ai_family in the addrinfo itself.
  */
 void
-freeaddrinfo2(struct addrinfo *ai)
+freeaddrinfo2(int hint_ai_family, struct addrinfo *ai)
 {
-	if (ai != NULL)
-	{
 #ifdef HAVE_UNIX_SOCKETS
-		if (ai->ai_family == AF_UNIX)
+	if (hint_ai_family == AF_UNIX)
+	{
+		/* struct was built by getaddrinfo_unix (see getaddrinfo2) */
+		while (ai != NULL)
 		{
-			while (ai != NULL)
-			{
-				struct addrinfo *p = ai;
+			struct addrinfo *p = ai;
 
-				ai = ai->ai_next;
-				free(p->ai_addr);
-				free(p);
-			}
+			ai = ai->ai_next;
+			free(p->ai_addr);
+			free(p);
 		}
-		else
+	}
+	else
 #endif   /* HAVE_UNIX_SOCKETS */
+	{
+		/* struct was built by getaddrinfo() */
+		if (ai != NULL)
 			freeaddrinfo(ai);
 	}
 }
@@ -114,6 +122,8 @@ getaddrinfo_unix(const char *path, const struct addrinfo *hintsp,
 	struct addrinfo hints;
 	struct addrinfo *aip;
 	struct sockaddr_un *unp;
+
+	*result = NULL;
 
 	MemSet(&hints, 0, sizeof(hints));
 
@@ -138,16 +148,19 @@ getaddrinfo_unix(const char *path, const struct addrinfo *hintsp,
 	if (aip == NULL)
 		return EAI_MEMORY;
 
+	unp = calloc(1, sizeof(struct sockaddr_un));
+	if (unp == NULL)
+	{
+		free(aip);
+		return EAI_MEMORY;
+	}
+
 	aip->ai_family = AF_UNIX;
 	aip->ai_socktype = hints.ai_socktype;
 	aip->ai_protocol = hints.ai_protocol;
 	aip->ai_next = NULL;
 	aip->ai_canonname = NULL;
 	*result = aip;
-
-	unp = calloc(1, sizeof(struct sockaddr_un));
-	if (aip == NULL)
-		return EAI_MEMORY;
 
 	unp->sun_family = AF_UNIX;
 	aip->ai_addr = (struct sockaddr *) unp;

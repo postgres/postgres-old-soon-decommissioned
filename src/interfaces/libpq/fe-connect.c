@@ -848,7 +848,7 @@ connectDBStart(PGconn *conn)
 		printfPQExpBuffer(&conn->errorMessage,
 						  libpq_gettext("getaddrinfo() failed: %s\n"),
 						  gai_strerror(ret));
-		freeaddrinfo2(addrs);
+		freeaddrinfo2(hint.ai_family, addrs);
 		goto connect_errReturn;
 	}
 
@@ -857,6 +857,7 @@ connectDBStart(PGconn *conn)
 	 */
 	conn->addrlist = addrs;
 	conn->addr_cur = addrs;
+	conn->addrlist_family = hint.ai_family;
 	conn->pversion = PG_PROTOCOL(3,0);
 	conn->status = CONNECTION_NEEDED;
 
@@ -1686,7 +1687,7 @@ retry_ssl_read:
 				}
 
 				/* We can release the address list now. */
-				freeaddrinfo2(conn->addrlist);
+				freeaddrinfo2(conn->addrlist_family, conn->addrlist);
 				conn->addrlist = NULL;
 				conn->addr_cur = NULL;
 
@@ -1858,7 +1859,7 @@ freePGconn(PGconn *conn)
 	/* Note that conn->Pfdebug is not ours to close or free */
 	if (conn->notifyList)
 		DLFreeList(conn->notifyList);
-	freeaddrinfo2(conn->addrlist);
+	freeaddrinfo2(conn->addrlist_family, conn->addrlist);
 	if (conn->lobjfuncs)
 		free(conn->lobjfuncs);
 	if (conn->inBuffer)

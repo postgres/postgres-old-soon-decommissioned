@@ -270,6 +270,7 @@ struct pg_conn
 	/* Transient state needed while establishing connection */
 	struct addrinfo *addrlist;	/* list of possible backend addresses */
 	struct addrinfo *addr_cur;	/* the one currently being tried */
+	int			addrlist_family; /* needed to know how to free addrlist */
 	PGSetenvStatusType setenv_state; /* for 2.0 protocol only */
 	const PQEnvironmentOption *next_eo;
 

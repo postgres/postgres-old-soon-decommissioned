@@ -242,7 +242,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 	{
 		elog(LOG, "server socket failure: getaddrinfo2(): %s",
 			 gai_strerror(ret));
-		freeaddrinfo2(addrs);
+		freeaddrinfo2(hint.ai_family, addrs);
 		return STATUS_ERROR;
 	}
 
@@ -250,7 +250,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 	{
 		elog(LOG, "server socket failure: socket(): %s",
 			 strerror(errno));
-		freeaddrinfo2(addrs);
+		freeaddrinfo2(hint.ai_family, addrs);
 		return STATUS_ERROR;
 	}
 
@@ -261,7 +261,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 		{
 			elog(LOG, "server socket failure: setsockopt(SO_REUSEADDR): %s",
 				 strerror(errno));
-			freeaddrinfo2(addrs);
+			freeaddrinfo2(hint.ai_family, addrs);
 			return STATUS_ERROR;
 		}
 	}
@@ -278,7 +278,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 				 sock_path);
 		else
 			elog(LOG, "\tIf not, wait a few seconds and retry.");
-		freeaddrinfo2(addrs);
+		freeaddrinfo2(hint.ai_family, addrs);
 		return STATUS_ERROR;
 	}
 
@@ -287,7 +287,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 	{
 		if (Setup_AF_UNIX() != STATUS_OK)
 		{
-			freeaddrinfo2(addrs);
+			freeaddrinfo2(hint.ai_family, addrs);
 			return STATUS_ERROR;
 		}
 	}
@@ -307,14 +307,13 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 	{
 		elog(LOG, "server socket failure: listen(): %s",
 			 strerror(errno));
-		freeaddrinfo2(addrs);
+		freeaddrinfo2(hint.ai_family, addrs);
 		return STATUS_ERROR;
 	}
 
 	*fdP = fd;
-	freeaddrinfo2(addrs);
+	freeaddrinfo2(hint.ai_family, addrs);
 	return STATUS_OK;
-
 }
 
 
