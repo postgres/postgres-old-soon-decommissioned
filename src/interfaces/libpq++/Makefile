@@ -56,6 +56,20 @@ ifeq ($(PORTNAME), solaris)
   CFLAGS += $(CFLAGS_SL)
 endif
 
+ifeq ($(PORTNAME), unixware)
+  install-shlib-dep := install-shlib
+  shlib := libpq.so.1
+  LDFLAGS_SL = -G -z text
+  CFLAGS += $(CFLAGS_SL)
+endif
+
+ifeq ($(PORTNAME), univel)
+  install-shlib-dep := install-shlib
+  shlib := libpq.so.1
+  LDFLAGS_SL = -G -z text
+  CFLAGS += $(CFLAGS_SL)
+endif
+
 ifeq ($(PORTNAME), hpux)
   install-shlib-dep := install-shlib
   shlib := libpq.sl

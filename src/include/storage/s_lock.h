@@ -188,7 +188,7 @@ tas(volatile slock_t *lock)
 #if defined(NEED_I386_TAS_ASM)
 /* non gcc i386 based things */
 
-#if defined(USE_UNIVEL_CC) || defined(UNIXWARE)
+#if defined(USE_UNIVEL_CC)
 #define TAS(lock)	tas(lock)
 
 asm int 
@@ -203,7 +203,7 @@ tas(slock_t *s_lock)
 	popl	%ebx
 }
 
-#endif /* USE_UNIVEL_CC || UNIXWARE */
+#endif /* USE_UNIVEL_CC */
 
 #endif /* NEED_I386_TAS_ASM */
 
