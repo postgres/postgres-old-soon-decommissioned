@@ -285,7 +285,9 @@ parseFromClause(ParseState *pstate, List *frmList, Node **qual)
 		else if (IsA(n, JoinExpr))
 		{
 			JoinExpr   *j = (JoinExpr *)n;
+#ifdef ENABLE_OUTER_JOINS
 			char	   *lname = transformTableEntry(pstate, (RangeVar *)j->larg);
+#endif
 			char	   *rname;
 
 			if (IsA((Node *)j->rarg, RangeVar))
