@@ -439,10 +439,16 @@ ClientAuthentication(Port *port)
 								NULL, 0,
 								NI_NUMERICHOST);
 
+#ifdef USE_SSL
+#define EREPORT_SSL_STATUS	(port->ssl ? "on" : "off")
+#else
+#define EREPORT_SSL_STATUS	"off"
+#endif
+
 				ereport(FATAL,
 						(errcode(ERRCODE_INVALID_AUTHORIZATION_SPECIFICATION),
-						 errmsg("no pg_hba.conf entry for host \"%s\", user \"%s\", database \"%s\"",
-								hostinfo, port->user_name, port->database_name)));
+						 errmsg("no pg_hba.conf entry for host \"%s\", user \"%s\", database \"%s\", SSL \"%s\"",
+								hostinfo, port->user_name, port->database_name, EREPORT_SSL_STATUS)));
 				break;
 			}
 
