@@ -311,6 +311,25 @@ other			.
 					return (PARAM);
 				}
 
+{identifier}/{space}*-{number}	{
+					int i;
+					ScanKeyword		*keyword;
+
+					BEGIN(xm);
+					for(i = 0; yytext[i]; i++)
+						if (isupper(yytext[i]))
+							yytext[i] = tolower(yytext[i]);
+
+					keyword = ScanKeywordLookup((char*)yytext);
+					if (keyword != NULL) {
+						return (keyword->value);
+					}
+					else
+					{
+						yylval.str = pstrdup((char*)yytext);
+						return (IDENT);
+					}
+				}
 {integer}/{space}*-{number}	{
 					char* endptr;
 
