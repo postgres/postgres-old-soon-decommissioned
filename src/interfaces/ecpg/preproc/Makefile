@@ -19,12 +19,16 @@ endif
 override CFLAGS += $(PTHREAD_CFLAGS)
 
 OBJS=	preproc.o type.o ecpg.o ecpg_keywords.o output.o\
-	keywords.o c_keywords.o ../ecpglib/typename.o descriptor.o variable.o
+	keywords.o c_keywords.o ../ecpglib/typename.o descriptor.o variable.o \
+	$(filter exec.o, $(LIBOBJS))
 
 all: submake-libpgport ecpg
 
 ecpg: $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) $(PTHREAD_LIBS) -o $@$(X)
+
+exec.c: % : $(top_srcdir)/src/port/%
+	rm -f $@ && $(LN_S) $< .
 
 # pgc is compiled as part of preproc
 preproc.o: $(srcdir)/pgc.c
@@ -62,7 +66,7 @@ uninstall:
 	rm -f $(DESTDIR)$(bindir)/ecpg$(X)
 
 clean distclean:
-	rm -f *.o ecpg$(X)
+	rm -f *.o ecpg$(X) exec.c
 # garbage from partial builds
 	@rm -f y.tab.c y.tab.h
 # garbage from development
