@@ -407,15 +407,15 @@ extern ItemPointer tidin(char *str);
 extern char *tidout(ItemPointer itemPtr);
 
 /* timestamp.c */
-extern int4 timestamp_in(char *timestamp_str);
-extern char *timestamp_out(int4 timestamp);
-extern int4 now(void);
-int4 timestampeq(int4 t1, int4 t2);
-int4 timestampne(int4 t1, int4 t2);
-int4 timestamplt(int4 t1, int4 t2);
-int4 timestampgt(int4 t1, int4 t2);
-int4 timestample(int4 t1, int4 t2);
-int4 timestampge(int4 t1, int4 t2);
+extern time_t timestamp_in(const char *timestamp_str);
+extern char *timestamp_out(time_t timestamp);
+extern time_t now(void);
+bool timestampeq(time_t t1, time_t t2);
+bool timestampne(time_t t1, time_t t2);
+bool timestamplt(time_t t1, time_t t2);
+bool timestampgt(time_t t1, time_t t2);
+bool timestample(time_t t1, time_t t2);
+bool timestampge(time_t t1, time_t t2);
 
 /* varchar.c */
 extern char *bpcharin(char *s, int dummy, int typlen);
