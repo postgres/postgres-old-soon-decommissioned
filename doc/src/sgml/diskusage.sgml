@@ -22,10 +22,12 @@ $Header$
   </para>
 
   <para>
-   You can monitor disk space from two places; from inside
-   <application>psql</> and from the command line using
-   <application>contrib/oid2name</>. Using <application>psql</> you can
-   issue queries to see the disk usage for any table:
+   You can monitor disk space from three places: from
+   <application>psql</> using <command>VACUUM</> information, from
+   <application>psql</> using <application>contrib/dbsize</>, and from
+   the command line using <application>contrib/oid2name</>. Using
+   <application>psql</> on a recently vacuumed (or analyzed) database,
+   you can issue queries to see the disk usage of any table:
 <programlisting>
 play=# SELECT relfilenode, relpages
 play-# FROM pg_class
@@ -38,10 +40,10 @@ play-# WHERE relname = 'customer';
   </para>
 
   <para>   
-   Each page is typically 8 kilobytes. <literal>relpages</> is only
-   updated by <command>VACUUM</> and <command>ANALYZE</>. To show the
-   space used by <acronym>TOAST</> tables, use a query based on the heap
-   relfilenode:
+   Each page is typically 8 kilobytes. (Remember, <literal>relpages</>
+   is only updated by <command>VACUUM</> and <command>ANALYZE</>.) To
+   show the space used by <acronym>TOAST</> tables, use a query based on
+   the heap relfilenode shown above:
 <programlisting>
 play=# SELECT relname, relpages
 play-# FROM pg_class
