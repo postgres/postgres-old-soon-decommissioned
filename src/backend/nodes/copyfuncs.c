@@ -589,7 +589,7 @@ _copyResdom(Resdom *from)
 static Fjoin *
 _copyFjoin(Fjoin *from)
 {
-    Fjoin	*newnode;
+    Fjoin	*newnode = makeNode(Fjoin);
     
     /* ----------------
      *	copy node superclass fields
