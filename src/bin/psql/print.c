@@ -1073,7 +1073,8 @@ printTable(const char *title,
 		if (cells)
 			for (ptr = cells; *ptr; ptr++)
 				row_count++;
-		row_count /= col_count;
+		if (col_count > 0)
+			row_count /= col_count;
 
 		if (opt->expanded)
 			lines = (col_count + 1) * row_count;
