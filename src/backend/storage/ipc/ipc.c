@@ -126,6 +126,14 @@ proc_exit(int code)
 	 */
 	proc_exit_inprogress = true;
 
+	/*
+	 * Forget any pending cancel or die requests; we're doing our best
+	 * to close up shop already.  Note that the signal handlers will not
+	 * set these flags again, now that proc_exit_inprogress is set.
+	 */
+	QueryCancel = false;
+	ProcDiePending = false;
+
 	if (DebugLvl > 1)
 		elog(DEBUG, "proc_exit(%d)", code);
 
