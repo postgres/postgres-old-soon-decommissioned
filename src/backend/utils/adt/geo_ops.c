@@ -2555,6 +2555,9 @@ point_div(Point *p1, Point *p2)
 
     div = (p2->x*p2->x) + (p2->y*p2->y);
 
+    if (div == 0.0)
+        elog(WARN,"point_div:  divide by 0.0 error");
+
     result->x = ((p1->x*p2->x) + (p1->y*p2->y)) / div;
     result->y = ((p2->x*p1->y) - (p2->y*p1->x)) / div;
 

@@ -92,12 +92,14 @@ DATA(insert OID = 0 ( avg   PGUID int2pl   int2inc   int2div     21   21   21   
 DATA(insert OID = 0 ( avg   PGUID float4pl float4inc float4div  700  700  700  700 _null_ 0.0 ));
 DATA(insert OID = 0 ( avg   PGUID float8pl float8inc float8div  701  701  701  701 _null_ 0.0 ));
 DATA(insert OID = 0 ( avg   PGUID cash_pl  float8inc cash_div   790  790  701  790 _null_ 0.0 ));
+DATA(insert OID = 0 ( avg   PGUID timespan_pl  float8inc timespan_div   1186  1186  701  1186 _null_ 0.0 ));
 
 DATA(insert OID = 0 ( sum   PGUID int4pl        - -   23   23 0   23 _null_ _null_ ));
 DATA(insert OID = 0 ( sum   PGUID int2pl        - -   21   21 0   21 _null_ _null_ ));
 DATA(insert OID = 0 ( sum   PGUID float4pl      - -  700  700 0  700 _null_ _null_ ));
 DATA(insert OID = 0 ( sum   PGUID float8pl      - -  701  701 0  701 _null_ _null_ ));
 DATA(insert OID = 0 ( sum   PGUID cash_pl       - -  790  790 0  790 _null_ _null_ ));
+DATA(insert OID = 0 ( sum   PGUID timespan_pl   - -  1186 1186 0 1186 _null_ _null_ ));
 
 DATA(insert OID = 0 ( max   PGUID int4larger      - -   23   23 0   23 _null_ _null_ ));
 DATA(insert OID = 0 ( max   PGUID int2larger      - -   21   21 0   21 _null_ _null_ ));

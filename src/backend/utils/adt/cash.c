@@ -371,6 +371,9 @@ cash_div(Cash *c, float8 *f)
     if (!PointerIsValid(result = PALLOCTYPE(Cash)))
         elog(WARN,"Memory allocation failed, can't divide cash",NULL);
 
+    if (*f == 0.0)
+        elog(WARN,"cash_div:  divide by 0.0 error");
+
     *result = rint(*c / *f);
 
     return(result);

@@ -283,12 +283,13 @@ extern float64 timespan_part(text *units, TimeSpan *timespan);
 extern text *datetime_zone(text *zone, DateTime *datetime);
 
 extern TimeSpan *timespan_um(TimeSpan *span);
-extern TimeSpan *timespan_add(TimeSpan *span1, TimeSpan *span2);
-extern TimeSpan *timespan_sub(TimeSpan *span1, TimeSpan *span2);
+extern TimeSpan *timespan_pl(TimeSpan *span1, TimeSpan *span2);
+extern TimeSpan *timespan_mi(TimeSpan *span1, TimeSpan *span2);
+extern TimeSpan *timespan_div(TimeSpan *span1, float8 *arg2);
 
-extern TimeSpan *datetime_sub(DateTime *dt1, DateTime *dt2);
-extern DateTime *datetime_add_span(DateTime *dt, TimeSpan *span);
-extern DateTime *datetime_sub_span(DateTime *dt, TimeSpan *span);
+extern TimeSpan *datetime_mi(DateTime *dt1, DateTime *dt2);
+extern DateTime *datetime_pl_span(DateTime *dt, TimeSpan *span);
+extern DateTime *datetime_mi_span(DateTime *dt, TimeSpan *span);
 extern TimeSpan *datetime_age(DateTime *dt1, DateTime *dt2);
 
 extern void GetCurrentTime(struct tm *tm);
