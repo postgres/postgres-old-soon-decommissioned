@@ -20,7 +20,8 @@ extern char *optarg;
 int			ret_value = 0,
 			autocommit = false,
 			auto_create_c = false,
-			system_includes = false;
+			system_includes = false,
+			force_indicator = true;
 
 enum COMPAT_MODE	compat = ECPG_COMPAT_PGSQL;
 
@@ -44,8 +45,9 @@ help(const char *progname)
 	printf("  -d             generate parser debug output\n");
 #endif
 	printf("  -C <mode>      set compatibility mode\n"
-		   "                 mode may be INFORMIX only at the moment\n"
-		   "                 INFORMIX mode implies '-i'\n");
+		   "                 mode may be \"INFORMIX\" only at the moment\n");
+	printf("  -r <option>    specify runtime behaviour\n"
+	           "		     option may be only \"no_indicator\" at the moment\n");	
 	printf("  -D SYMBOL      define SYMBOL\n");
 	printf("  -I DIRECTORY   search DIRECTORY for include files\n");
 	printf("  -o OUTFILE     write result to OUTFILE\n");
@@ -132,7 +134,7 @@ main(int argc, char *const argv[])
 		}
 	}
 
-	while ((c = getopt(argc, argv, "vcio:I:tD:dC:")) != -1)
+	while ((c = getopt(argc, argv, "vcio:I:tD:dC:r:")) != -1)
 	{
 		switch (c)
 		{
@@ -176,6 +178,15 @@ main(int argc, char *const argv[])
 					fprintf(stderr, "Try '%s --help' for more information.\n", argv[0]);
 					return ILLEGAL_OPTION;
 				}				
+				break;
+			case 'r':
+				if (strcmp(optarg, "no_indicator") == 0)
+					force_indicator = false;
+				else
+				{
+					fprintf(stderr, "Try '%s --help' for more information.\n", argv[0]);
+					return ILLEGAL_OPTION;
+				}
 				break;
 			case 'D':
 				add_preprocessor_define(optarg);
