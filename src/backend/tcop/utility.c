@@ -608,10 +608,11 @@ ProcessUtility(Node *parsetree,
 					case 'L':	/* CLUSTER ON */
 						AlterTableClusterOn(relid, stmt->name);
 						break;
-					case 'o':	/* ADD OIDS */
+					case 'o':	/* SET WITHOUT OIDS */
 						AlterTableAlterOids(relid,
+											false,
 							  interpretInhOption(stmt->relation->inhOpt),
-											false);
+											DROP_RESTRICT);
 						break;
 					default:	/* oops */
 						elog(ERROR, "unrecognized alter table type: %d",

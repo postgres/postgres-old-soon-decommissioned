@@ -41,6 +41,8 @@ extern Oid heap_create_with_catalog(const char *relname,
 						 TupleDesc tupdesc,
 						 char relkind,
 						 bool shared_relation,
+						 bool oidislocal,
+						 int oidinhcount,
 						 OnCommitAction oncommit,
 						 bool allow_system_table_mods);
 

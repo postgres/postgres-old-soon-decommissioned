@@ -797,6 +797,8 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 												  tupdesc,
 												  RELKIND_RELATION,
 												  false,
+												  true,
+												  0,
 												  ONCOMMIT_NOOP,
 												  allowSystemTableMods);
 

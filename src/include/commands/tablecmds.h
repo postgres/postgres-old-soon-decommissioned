@@ -49,7 +49,8 @@ extern void AlterTableCreateToastTable(Oid relOid, bool silent);
 
 extern void AlterTableOwner(Oid relationOid, int32 newOwnerSysId);
 
-extern void AlterTableAlterOids(Oid myrelid, bool recurse, bool setOid);
+extern void AlterTableAlterOids(Oid myrelid, bool setOid, bool recurse,
+								DropBehavior behavior);
 
 extern Oid	DefineRelation(CreateStmt *stmt, char relkind);
 

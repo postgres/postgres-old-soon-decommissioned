@@ -197,6 +197,8 @@ Boot_CreateStmt:
 													  tupdesc,
 													  RELKIND_RELATION,
 													  $3,
+													  true,
+													  0,
 													  ONCOMMIT_NOOP,
 													  true);
 						elog(DEBUG4, "relation created with oid %u", id);

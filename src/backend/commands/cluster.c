@@ -501,6 +501,8 @@ make_new_heap(Oid OIDOldHeap, const char *NewName)
 										  tupdesc,
 										  OldHeap->rd_rel->relkind,
 										  OldHeap->rd_rel->relisshared,
+										  true,
+										  0,
 										  ONCOMMIT_NOOP,
 										  allowSystemTableMods);
 
