@@ -1778,8 +1778,9 @@ void
 XLOGPathInit(void)
 {
 	/* Init XLOG file paths */
-	snprintf(XLogDir, MAXPGPATH, "%s/pg_xlog", DataDir);
-	snprintf(ControlFilePath, MAXPGPATH, "%s/global/pg_control", DataDir);
+	snprintf(XLogDir, MAXPGPATH, "%s%cpg_xlog", DataDir, SEP_CHAR);
+	snprintf(ControlFilePath, MAXPGPATH, "%s%cglobal%cpg_control",
+			 DataDir, SEP_CHAR, SEP_CHAR);
 }
 
 static void
