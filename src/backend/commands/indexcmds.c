@@ -502,6 +502,9 @@ NormIndexAttrs(List *attList,	/* list of IndexElem's */
 			/* we just set the type name because that is all we need */
 			attribute->typename = makeNode(TypeName);
 			attribute->typename->name = nameout(&((Form_pg_type) GETSTRUCT(tuple))->typname);
+			
+			/* we all need the typmod for the char and varchar types. */
+			attribute->typename->typmod = attform->atttypmod;
 		}
 
 		if (attribute->class == NULL)
