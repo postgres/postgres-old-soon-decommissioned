@@ -524,7 +524,6 @@ ExecHashGetBucket(HashJoinTable hashtable,
 	int			bucketno;
 	Datum		keyval;
 	bool		isNull;
-	bool		isDone;
 
 	/* ----------------
 	 *	Get the join attribute value of the tuple
@@ -535,8 +534,7 @@ ExecHashGetBucket(HashJoinTable hashtable,
 	 */
 	ResetExprContext(econtext);
 
-	keyval = ExecEvalExprSwitchContext(hashkey, econtext,
-									   &isNull, &isDone);
+	keyval = ExecEvalExprSwitchContext(hashkey, econtext, &isNull, NULL);
 
 	/* ------------------
 	 *	compute the hash function

@@ -120,6 +120,31 @@ typedef struct ExprContext
 	List	   *ecxt_range_table;
 } ExprContext;
 
+/*
+ * Set-result status returned by ExecEvalExpr()
+ */
+typedef enum
+{
+	ExprSingleResult,			/* expression does not return a set */
+	ExprMultipleResult,			/* this result is an element of a set */
+	ExprEndResult				/* there are no more elements in the set */
+} ExprDoneCond;
+
+/*
+ * When calling a function that might return a set (multiple rows),
+ * a node of this type is passed as fcinfo->resultinfo to allow
+ * return status to be passed back.  A function returning set should
+ * raise an error if no such resultinfo is provided.
+ *
+ * XXX this mechanism is a quick hack and probably needs to be redesigned.
+ */
+typedef struct ReturnSetInfo
+{
+	NodeTag		type;
+	ExprDoneCond isDone;
+} ReturnSetInfo;
+
+
 /* ----------------
  *		ProjectionInfo node information
  *

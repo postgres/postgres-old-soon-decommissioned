@@ -73,7 +73,6 @@ ExecGroupEveryTuple(Group *node)
 	TupleTableSlot *outerslot;
 	ProjectionInfo *projInfo;
 	TupleTableSlot *resultSlot;
-	bool		isDone;
 
 	/* ---------------------
 	 *	get state info from node
@@ -163,7 +162,7 @@ ExecGroupEveryTuple(Group *node)
 	projInfo = grpstate->csstate.cstate.cs_ProjInfo;
 
 	econtext->ecxt_scantuple = grpstate->csstate.css_ScanTupleSlot;
-	resultSlot = ExecProject(projInfo, &isDone);
+	resultSlot = ExecProject(projInfo, NULL);
 
 	return resultSlot;
 }
@@ -185,7 +184,6 @@ ExecGroupOneTuple(Group *node)
 	TupleTableSlot *outerslot;
 	ProjectionInfo *projInfo;
 	TupleTableSlot *resultSlot;
-	bool		isDone;
 
 	/* ---------------------
 	 *	get state info from node
@@ -258,7 +256,7 @@ ExecGroupOneTuple(Group *node)
 				   grpstate->csstate.css_ScanTupleSlot,
 				   InvalidBuffer, false);
 	econtext->ecxt_scantuple = grpstate->csstate.css_ScanTupleSlot;
-	resultSlot = ExecProject(projInfo, &isDone);
+	resultSlot = ExecProject(projInfo, NULL);
 
 	/* save outerTuple if we are not done yet */
 	if (!grpstate->grp_done)

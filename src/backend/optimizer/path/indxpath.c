@@ -1380,9 +1380,8 @@ clause_pred_clause_test(Expr *predicate, Node *clause)
 							  copyObject(clause_const),
 							  copyObject(pred_const));
 
-#ifndef OMIT_PARTIAL_INDEX
 	test_result = ExecEvalExpr((Node *) test_expr, NULL, &isNull, NULL);
-#endif	 /* OMIT_PARTIAL_INDEX */
+
 	if (isNull)
 	{
 		elog(DEBUG, "clause_pred_clause_test: null test result");

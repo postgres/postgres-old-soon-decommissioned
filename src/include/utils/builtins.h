@@ -14,6 +14,7 @@
 #ifndef BUILTINS_H
 #define BUILTINS_H
 
+#include "fmgr.h"
 #include "nodes/relation.h"		/* for amcostestimate parameters */
 #include "storage/itemptr.h"
 #include "utils/numeric.h"

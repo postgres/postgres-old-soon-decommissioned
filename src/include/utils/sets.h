@@ -17,10 +17,11 @@
 #include "fmgr.h"
 
 
-/* Temporary name of set, before SetDefine changes it. */
-#define GENERICSETNAME "zyxset"
+/* Temporary name of a set function, before SetDefine changes it. */
+#define GENERICSETNAME "ZYX#Set#ZYX"
 
 extern Oid	SetDefine(char *querystr, char *typename);
+
 extern Datum seteval(PG_FUNCTION_ARGS);
 
 #endif	 /* SETS_H */

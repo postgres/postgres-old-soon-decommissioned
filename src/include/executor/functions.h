@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * functions.h
- *
+ *		Declarations for execution of SQL-language functions.
  *
  *
  * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
@@ -14,11 +14,8 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-#include "nodes/parsenodes.h"
-#include "utils/syscache.h"
+#include "fmgr.h"
 
-extern Datum postquel_function(FunctionCallInfo fcinfo,
-							   FunctionCachePtr fcache,
-							   bool *isDone);
+extern Datum fmgr_sql(PG_FUNCTION_ARGS);
 
 #endif	 /* FUNCTIONS_H */

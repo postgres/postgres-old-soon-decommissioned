@@ -334,7 +334,6 @@ ExecIndexReScan(IndexScan *node, ExprContext *exprCtxt, Plan *parent)
 	Node	   *scanexpr;
 	Datum		scanvalue;
 	bool		isNull;
-	bool		isDone;
 
 	estate = node->scan.plan.state;
 	indexstate = node->indxstate;
@@ -411,14 +410,10 @@ ExecIndexReScan(IndexScan *node, ExprContext *exprCtxt, Plan *parent)
 						(Node *) get_rightop(clause) :
 						(Node *) get_leftop(clause);
 
-					/*
-					 * pass in isDone but ignore it.  We don't iterate in
-					 * quals
-					 */
 					scanvalue = ExecEvalExprSwitchContext(scanexpr,
 														  econtext,
 														  &isNull,
-														  &isDone);
+														  NULL);
 					scan_keys[j].sk_argument = scanvalue;
 					if (isNull)
 						scan_keys[j].sk_flags |= SK_ISNULL;

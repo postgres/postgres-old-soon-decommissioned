@@ -451,7 +451,6 @@ ExecAgg(Agg *node)
 	TupleTableSlot *resultSlot;
 	HeapTuple	inputTuple;
 	int			aggno;
-	bool		isDone;
 	bool		isNull;
 
 	/* ---------------------
@@ -523,7 +522,7 @@ ExecAgg(Agg *node)
 				Datum		newVal;
 
 				newVal = ExecEvalExpr(aggref->target, econtext,
-									  &isNull, &isDone);
+									  &isNull, NULL);
 
 				if (aggref->aggdistinct)
 				{
@@ -677,8 +676,9 @@ ExecAgg(Agg *node)
 		/*
 		 * Form a projection tuple using the aggregate results and the
 		 * representative input tuple.	Store it in the result tuple slot.
+		 * Note we do not support aggregates returning sets ...
 		 */
-		resultSlot = ExecProject(projInfo, &isDone);
+		resultSlot = ExecProject(projInfo, NULL);
 
 		/*
 		 * If the completed tuple does not match the qualifications, it is

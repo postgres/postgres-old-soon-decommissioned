@@ -16,7 +16,10 @@
 
 #include "access/attnum.h"
 #include "nodes/pg_list.h"
-#include "utils/fcache.h"
+
+/* FunctionCache is declared in utils/fcache.h */
+typedef struct FunctionCache *FunctionCachePtr;
+
 
 /* ----------------------------------------------------------------
  *						node definitions

@@ -38,7 +38,6 @@ TidListCreate(List *evalList, ExprContext *econtext, ItemPointer *tidList)
 	List	   *lst;
 	ItemPointer itemptr;
 	bool		isNull;
-	bool		isDone;
 	int			numTids = 0;
 
 	foreach(lst, evalList)
@@ -47,8 +46,8 @@ TidListCreate(List *evalList, ExprContext *econtext, ItemPointer *tidList)
 			DatumGetPointer(ExecEvalExprSwitchContext(lfirst(lst),
 													  econtext,
 													  &isNull,
-													  &isDone));
-		if (itemptr && ItemPointerIsValid(itemptr))
+													  NULL));
+		if (!isNull && itemptr && ItemPointerIsValid(itemptr))
 		{
 			tidList[numTids] = itemptr;
 			numTids++;

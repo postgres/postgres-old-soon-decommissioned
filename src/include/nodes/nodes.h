@@ -227,7 +227,9 @@ typedef enum NodeTag
 	 * TAGS FOR FUNCTION-CALL CONTEXT AND RESULTINFO NODES (cf. fmgr.h)
 	 *---------------------
 	 */
-	T_TriggerData = 800			/* in commands/trigger.h */
+	T_TriggerData = 800,		/* in commands/trigger.h */
+	T_ReturnSetInfo				/* in nodes/execnodes.h */
+
 } NodeTag;
 
 /*

@@ -78,14 +78,20 @@ extern char *GetAttributeByNum(TupleTableSlot *slot, AttrNumber attrno,
 				  bool *isNull);
 extern char *GetAttributeByName(TupleTableSlot *slot, char *attname,
 								bool *isNull);
+extern Datum ExecMakeFunctionResult(FunctionCachePtr fcache,
+									List *arguments,
+									ExprContext *econtext,
+									bool *isNull,
+									ExprDoneCond *isDone);
 extern Datum ExecEvalExpr(Node *expression, ExprContext *econtext,
-						  bool *isNull, bool *isDone);
+						  bool *isNull, ExprDoneCond *isDone);
 extern Datum ExecEvalExprSwitchContext(Node *expression, ExprContext *econtext,
-									   bool *isNull, bool *isDone);
+									   bool *isNull, ExprDoneCond *isDone);
 extern bool ExecQual(List *qual, ExprContext *econtext, bool resultForNull);
 extern int	ExecTargetListLength(List *targetlist);
 extern int	ExecCleanTargetListLength(List *targetlist);
-extern TupleTableSlot *ExecProject(ProjectionInfo *projInfo, bool *isDone);
+extern TupleTableSlot *ExecProject(ProjectionInfo *projInfo,
+								   ExprDoneCond *isDone);
 
 /*
  * prototypes from functions in execScan.c

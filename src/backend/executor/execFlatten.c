@@ -36,11 +36,12 @@ static bool FjoinBumpOuterNodes(TargetEntry *tlist, ExprContext *econtext,
 
 #endif
 
+
 Datum
 ExecEvalIter(Iter *iterNode,
 			 ExprContext *econtext,
-			 bool *resultIsNull,
-			 bool *iterIsDone)
+			 bool *isNull,
+			 ExprDoneCond *isDone)
 {
 	Node	   *expression;
 
@@ -52,14 +53,14 @@ ExecEvalIter(Iter *iterNode,
 	 * only worrying about postquel functions, c functions will come
 	 * later.
 	 */
-	return ExecEvalExpr(expression, econtext, resultIsNull, iterIsDone);
+	return ExecEvalExpr(expression, econtext, isNull, isDone);
 }
 
 void
 ExecEvalFjoin(TargetEntry *tlist,
 			  ExprContext *econtext,
 			  bool *isNullVect,
-			  bool *fj_isDone)
+			  ExprDoneCond *fj_isDone)
 {
 
 #ifdef SETS_FIXED
@@ -72,7 +73,7 @@ ExecEvalFjoin(TargetEntry *tlist,
 	BoolPtr		alwaysDone = fjNode->fj_alwaysDone;
 
 	if (fj_isDone)
-		*fj_isDone = false;
+		*fj_isDone = ExprMultipleResult;
 
 	/*
 	 * For the next tuple produced by the plan, we need to re-initialize

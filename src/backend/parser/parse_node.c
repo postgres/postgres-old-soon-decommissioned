@@ -34,7 +34,6 @@
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
 
-static void disallow_setop(char *op, Type optype, Node *operand);
 static bool fitsInFloat(Value *value);
 
 
@@ -71,7 +70,6 @@ make_operand(char *opname,
 
 	if (tree != NULL)
 	{
-		disallow_setop(opname, target_type, tree);
 		/* must coerce? */
 		if (target_typeId != orig_typeId)
 			result = coerce_type(NULL, tree, orig_typeId, target_typeId, -1);
@@ -94,21 +92,6 @@ make_operand(char *opname,
 
 	return result;
 }	/* make_operand() */
-
-
-static void
-disallow_setop(char *op, Type optype, Node *operand)
-{
-	if (operand == NULL)
-		return;
-
-	if (nodeTag(operand) == T_Iter)
-	{
-		elog(ERROR, "An operand to the '%s' operator returns a set of %s,"
-			 "\n\tbut '%s' takes single values, not sets.",
-			 op, typeTypeName(optype), op);
-	}
-}
 
 
 /* make_op()

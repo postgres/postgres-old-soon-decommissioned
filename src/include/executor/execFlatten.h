@@ -15,11 +15,14 @@
 #define EXECFLATTEN_H
 
 #include "nodes/execnodes.h"
-#include "nodes/relation.h"
+#include "nodes/parsenodes.h"
 
-extern Datum ExecEvalIter(Iter *iterNode, ExprContext *econtext, bool *resultIsNull, bool *iterIsDone);
 
-extern void ExecEvalFjoin(TargetEntry *tlist, ExprContext *econtext, bool *isNullVect, bool *fj_isDone);
+extern Datum ExecEvalIter(Iter *iterNode, ExprContext *econtext,
+						  bool *isNull, ExprDoneCond *isDone);
+
+extern void ExecEvalFjoin(TargetEntry *tlist, ExprContext *econtext,
+						  bool *isNullVect, ExprDoneCond *fj_isDone);
 
 
 #endif	 /* EXECFLATTEN_H */

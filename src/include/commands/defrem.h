@@ -44,7 +44,6 @@ extern void CreateFunction(ProcedureStmt *stmt, CommandDest dest);
 extern void DefineOperator(char *name, List *parameters);
 extern void DefineAggregate(char *name, List *parameters);
 extern void DefineType(char *name, List *parameters);
-extern void CreateFunction(ProcedureStmt *stmt, CommandDest dest);
 
 /*
  * prototypes in remove.c
