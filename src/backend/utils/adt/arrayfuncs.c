@@ -1287,7 +1287,7 @@ array_assgn(ArrayType *array,
 ArrayType *
 array_map(ArrayType *v,
 		  Oid type,
-		  char *(fn)(char *p, ...),
+		  char * (*fn)(),
 		  Oid retType,
 		  int nargs,
 		  ...)
