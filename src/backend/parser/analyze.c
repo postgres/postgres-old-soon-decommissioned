@@ -660,23 +660,9 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt,
 		col = (ResTarget *) lfirst(icolumns);
 		Assert(IsA(col, ResTarget));
 
-		/*
-		 * When the value is to be set to the column default we can simply
-		 * drop the TLE now and handle it later on using methods for missing
-		 * columns.
-		 */
-		if (IsA(tle, InsertDefault))
-		{
-			qry->targetList = lremove(tle, qry->targetList);
-			/* Note: the stmt->cols list is not adjusted to match */
-		}
-		else
-		{
-			/* Normal case */
-			Assert(!tle->resdom->resjunk);
-			updateTargetListEntry(pstate, tle, col->name, lfirsti(attnos),
-								  col->indirection);
-		}
+		Assert(!tle->resdom->resjunk);
+		updateTargetListEntry(pstate, tle, col->name, lfirsti(attnos),
+							  col->indirection);
 
 		icolumns = lnext(icolumns);
 		attnos = lnext(attnos);
@@ -2431,10 +2417,12 @@ transformUpdateStmt(ParseState *pstate, UpdateStmt *stmt)
 		if (origTargetList == NIL)
 			elog(ERROR, "UPDATE target count mismatch --- internal error");
 		origTarget = (ResTarget *) lfirst(origTargetList);
+
 		updateTargetListEntry(pstate, tle, origTarget->name,
 							  attnameAttNum(pstate->p_target_relation,
 											origTarget->name, true),
 							  origTarget->indirection);
+
 		origTargetList = lnext(origTargetList);
 	}
 	if (origTargetList != NIL)

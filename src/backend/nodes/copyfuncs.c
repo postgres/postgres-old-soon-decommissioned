@@ -1661,10 +1661,10 @@ _copyFuncWithArgs(FuncWithArgs *from)
 	return newnode;
 }
 
-static InsertDefault *
-_copyInsertDefault(InsertDefault *from)
+static SetToDefault *
+_copySetToDefault(SetToDefault *from)
 {
-	InsertDefault *newnode = makeNode(InsertDefault);
+	SetToDefault *newnode = makeNode(SetToDefault);
 
 	return newnode;
 }
@@ -2942,8 +2942,8 @@ copyObject(void *from)
 		case T_FuncWithArgs:
 			retval = _copyFuncWithArgs(from);
 			break;
-		case T_InsertDefault:
-			retval = _copyInsertDefault(from);
+		case T_SetToDefault:
+			retval = _copySetToDefault(from);
 			break;
 
 		default:

@@ -6945,6 +6945,15 @@ update_target_el:
 					$$->indirection = $2;
 					$$->val = (Node *)$4;
 				}
+			| ColId opt_indirection '=' DEFAULT
+				{
+					SetToDefault *def = makeNode(SetToDefault);
+					$$ = makeNode(ResTarget);
+					$$->name = $1;
+					$$->indirection = NULL;
+					$$->val = (Node *)def;
+				}
+
 		;
 
 insert_target_list:
@@ -6956,7 +6965,7 @@ insert_target_el:
 			target_el								{ $$ = $1; }
 			| DEFAULT
 				{
-					InsertDefault *def = makeNode(InsertDefault);
+					SetToDefault *def = makeNode(SetToDefault);
 					$$ = makeNode(ResTarget);
 					$$->name = NULL;
 					$$->indirection = NULL;

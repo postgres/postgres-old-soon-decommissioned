@@ -277,7 +277,7 @@ typedef enum NodeTag
 	T_PrivGrantee,
 	T_FuncWithArgs,
 	T_PrivTarget,
-	T_InsertDefault,
+	T_SetToDefault,
 	T_CreateOpClassItem,
 	T_CompositeTypeStmt,
 	T_InhRelation,
