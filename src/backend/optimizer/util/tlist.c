@@ -429,11 +429,9 @@ flatten_tlist_vars(List *full_tlist, List *flat_tlist)
 	{
 		TargetEntry *tle = lfirst(x);
 
-		result =
-			lappend(result,
-					makeTargetEntry(tle->resdom,
-							   flatten_tlistentry((Node *) get_expr(tle),
-												  flat_tlist)));
+		result = lappend(result, makeTargetEntry(tle->resdom,
+							   		flatten_tlistentry((Node *) get_expr(tle),
+												  		flat_tlist)));
 	}
 
 	return result;
