@@ -382,7 +382,7 @@ CREATE VIEW columns AS
                OR has_table_privilege(c.oid, 'SELECT')
                OR has_table_privilege(c.oid, 'INSERT')
                OR has_table_privilege(c.oid, 'UPDATE')
-               OR has_table_privilege(c.oid, 'RERERENCES') );
+               OR has_table_privilege(c.oid, 'REFERENCES') );
 
 GRANT SELECT ON columns TO PUBLIC;
 
@@ -1370,7 +1370,7 @@ CREATE VIEW tables AS
                OR has_table_privilege(c.oid, 'UPDATE')
                OR has_table_privilege(c.oid, 'DELETE')
                OR has_table_privilege(c.oid, 'RULE')
-               OR has_table_privilege(c.oid, 'RERERENCES')
+               OR has_table_privilege(c.oid, 'REFERENCES')
                OR has_table_privilege(c.oid, 'TRIGGER') );
 
 GRANT SELECT ON tables TO PUBLIC;
@@ -1574,7 +1574,7 @@ CREATE VIEW views AS
                OR has_table_privilege(c.oid, 'UPDATE')
                OR has_table_privilege(c.oid, 'DELETE')
                OR has_table_privilege(c.oid, 'RULE')
-               OR has_table_privilege(c.oid, 'RERERENCES')
+               OR has_table_privilege(c.oid, 'REFERENCES')
                OR has_table_privilege(c.oid, 'TRIGGER') );
 
 GRANT SELECT ON views TO PUBLIC;
