@@ -60,7 +60,9 @@
 #include "common.h"
 #include "settings.h"
 
-extern char *filename_completion_function();
+#ifdef HAVE_RL_FILENAME_COMPLETION_FUNCTION
+#define filename_completion_function rl_filename_completion_function
+#endif
 
 #ifdef HAVE_RL_COMPLETION_MATCHES
 #define completion_matches(x, y) rl_completion_matches((x), ((rl_compentry_func_t *)(y)))
