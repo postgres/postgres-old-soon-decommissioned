@@ -228,7 +228,7 @@ success:						\n\
 
 #endif	 /* __powerpc__ */
 
-#if defined(__mips__)
+#if defined(__mips__) || !defined(__sgi)
 static void
 tas_dummy()
 {
@@ -251,9 +251,9 @@ fail:							\n\
 ");
 }
 
-#endif	 /* __mips__ */
+#endif	 /* __mips__ && !__sgi */
 
-#else							/* defined(__GNUC__) */
+#else /* not __GNUC__ */
 /***************************************************************************
  * All non gcc
  */
