@@ -60,24 +60,24 @@ coerce_type(ParseState *pstate, Node *node, Oid inputTypeId, Oid targetTypeId,
 		 * whereas float-to-int type conversion will round to integer.
 		 */
 		Const	   *con = (Const *) node;
+		Const	   *newcon = makeNode(Const);
 		Type		targetType = typeidType(targetTypeId);
-		char	   *val;
 
-		/* We know the source constant is really of type 'text' */
-		val = textout((text *) con->constvalue);
+		newcon->consttype = targetTypeId;
+		newcon->constlen = typeLen(targetType);
+		newcon->constbyval = typeByVal(targetType);
+		newcon->constisnull = con->constisnull;
+		newcon->constisset = false;
 
-		/* now make a new const node */
-		con = makeNode(Const);
-		con->consttype = targetTypeId;
-		con->constlen = typeLen(targetType);
-		con->constvalue = stringTypeDatum(targetType, val, atttypmod);
-		con->constisnull = false;
-		con->constbyval = typeByVal(targetType);
-		con->constisset = false;
+		if (! con->constisnull)
+		{
+			/* We know the source constant is really of type 'text' */
+			char	   *val = textout((text *) con->constvalue);
+			newcon->constvalue = stringTypeDatum(targetType, val, atttypmod);
+			pfree(val);
+		}
 
-		pfree(val);
-
-		result = (Node *) con;
+		result = (Node *) newcon;
 	}
 	else
 	{
@@ -105,7 +105,7 @@ coerce_type(ParseState *pstate, Node *node, Oid inputTypeId, Oid targetTypeId,
 		 * such as coercing text 'now' to datetime?  Need a way to
 		 * know whether type conversion function is cacheable...
 		 */
-		if (IsA(node, Const))
+		if (IsA(node, Const) && ! ((Const *) node)->constisnull)
 		{
 			Const	   *con = (Const *) node;
 			Oid			convertFuncid;
@@ -122,9 +122,9 @@ coerce_type(ParseState *pstate, Node *node, Oid inputTypeId, Oid targetTypeId,
 			con = makeNode(Const);
 			con->consttype = targetTypeId;
 			con->constlen = typeLen(targetType);
+			con->constbyval = typeByVal(targetType);
 			con->constvalue = val;
 			con->constisnull = false;
-			con->constbyval = typeByVal(targetType);
 			con->constisset = false;
 
 			result = (Node *) con;
