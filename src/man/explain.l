@@ -11,7 +11,8 @@ explain - explains statement execution details
 .SH DESCRIPTION
 This command outputs details about the supplied query.  The default
 output is the computed query cost.  \f2verbose\f1 displays the full query
-plan and cost.
+plan and cost to your screen, and pretty-prints the plan to the postmaster
+log file.
 
 .SH EXAMPLES
 In the examples, the table has a single column of float4.
