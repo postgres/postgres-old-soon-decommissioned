@@ -44,7 +44,7 @@ $PostgreSQL$
 <listitem><para>Fix a zero-column bug (Tom)</para></listitem>
 <listitem><para>Improve handling of non-qualitified identifiers in GROUP BY clauses (Tom)</para></listitem>
 <listitem><para>Do not allow NATURAL CROSS JOIN (Tom)</para></listitem>
-<listitem><para>Add missing check for invalid protocol packet length in binary COPY (Tom)</para></listitem>
+<listitem><para>Add missing check for invalid protocol packet length in binary COPY (Tom)</para>
 <para>
   This fixes a difficult-to-exploit security hole.
 </para></listitem>
