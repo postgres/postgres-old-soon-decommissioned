@@ -10,6 +10,10 @@
 #include "extern.h"
 #include "sqlca.h"
 
+/* This should hold the back-end error message from 
+ * the last back-end operation. */
+char *ECPGerr;
+
 void
 ECPGraise(int line, int code, const char *str)
 {
@@ -162,6 +166,29 @@ ECPGraise(int line, int code, const char *str)
 	ECPGfree_auto_mem();
 }
 
+/* Set the error message string from the backend */
+void
+set_backend_err(const char *err, int lineno)
+{
+	if (ECPGerr)
+		ECPGfree(ECPGerr);
+
+	if (!err)
+	{
+		ECPGerr = NULL;
+		return;
+	}
+
+	ECPGerr = ECPGstrdup(err, lineno);
+}
+
+/* Retrieve the error message from the backend. */
+char *
+ECPGerrmsg(void)
+{
+	return ECPGerr;
+}
+	
 /* print out an error message */
 void
 sqlprint(void)
