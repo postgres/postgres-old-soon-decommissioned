@@ -309,7 +309,7 @@ extern void InitArchiveFmt_Files(ArchiveHandle *AH);
 extern void InitArchiveFmt_Null(ArchiveHandle *AH);
 extern void InitArchiveFmt_Tar(ArchiveHandle *AH);
 
-extern int	isValidTarHeader(char *header);
+extern bool isValidTarHeader(char *header);
 
 extern OutputContext SetOutput(ArchiveHandle *AH, char *filename, int compression);
 extern void ResetOutput(ArchiveHandle *AH, OutputContext savedContext);
