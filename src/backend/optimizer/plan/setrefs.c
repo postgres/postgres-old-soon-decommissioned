@@ -255,8 +255,8 @@ index_outerjoin_references(List *inner_indxqual,
 					    outer_tlist,
 					    NIL);
 	    temp = make_opclause(replace_opid((Oper*)((Expr*)clause)->oper),
-				 joinvar,
-				 get_leftop(clause));
+	    			 get_leftop(clause),
+				 joinvar);
 	    t_list = lappend(t_list,temp);
 	} 
 	
