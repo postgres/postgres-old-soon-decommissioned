@@ -144,7 +144,11 @@ void
 pq_close(void)
 {
 	if (MyProcPort != NULL)
+	{
 		close(MyProcPort->sock);
+		/* make sure any subsequent attempts to do I/O fail cleanly */
+		MyProcPort->sock = -1;
+	}
 }
 
 
