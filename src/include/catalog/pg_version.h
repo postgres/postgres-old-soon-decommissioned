@@ -4,6 +4,13 @@
  *	  definition of the system "version" relation (pg_version)
  *	  along with the relation's initial contents.
  *
+ * NOTE: this table has nothing to do with the overall Postgres system
+ * version or anything like that.  It is for defining individual relations
+ * that have multiple concurrently-existing versions.  Yes, there used to
+ * be such a feature in Postgres, but it's been broken for a long time
+ * (see src/backend/commands/_deadcode/version.c).  The pg_version table
+ * isn't even created at present.
+ *
  *
  * Copyright (c) 1994, Regents of the University of California
  *
