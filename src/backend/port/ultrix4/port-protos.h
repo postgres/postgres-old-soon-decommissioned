@@ -40,15 +40,4 @@ extern int	syscall();
 
 extern void init_address_fixup(void);
 
-/* strdup.c: strdup() is not part of libc on Ultrix */
-extern char *strdup(char const *);
-
-/* inet_aton() is not part of libc on Ultrix.  The following is from
-   backend/port/inet_aton.h
-*/
-
-struct in_addr;
-int
-			inet_aton(const char *cp, struct in_addr * addr);
-
 #endif							/* PORT_PORTOS_H */

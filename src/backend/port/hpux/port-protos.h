@@ -27,8 +27,5 @@
 extern int	init_address_fixup(void);
 extern double rint(double x);
 extern double cbrt(double x);
-extern long random(void);
-extern void srandom(unsigned seed);
-extern int	getrusage(int who, struct rusage * ru);
 
 #endif							/* PORT_PROTOS_H */
