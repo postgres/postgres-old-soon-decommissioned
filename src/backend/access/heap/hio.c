@@ -162,9 +162,12 @@ RelationPutHeapTupleAtEnd(Relation relation, HeapTuple tuple)
 		pageHeader = (Page) BufferGetPage(buffer);
 		PageInit(pageHeader, BufferGetPageSize(buffer), 0);
 
-		if (len > PageGetFreeSpace(pageHeader) && len <= MaxTupleSize)
+		if (len > PageGetFreeSpace(pageHeader))
 			elog(ERROR, "Tuple is too big: size %d", len);
 	}
+
+	if (len > MaxTupleSize)
+		elog(ERROR, "Tuple is too big: size %d, max size %d", len, MaxTupleSize);
 
 	if (!relation->rd_myxactonly)
 		UnlockPage(relation, 0, ExclusiveLock);
