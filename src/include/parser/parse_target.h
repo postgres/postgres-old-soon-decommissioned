@@ -20,7 +20,7 @@
 extern List *transformTargetList(ParseState *pstate, List *targetlist);
 extern TargetEntry *transformTargetEntry(ParseState *pstate,
 					 Node *node, Node *expr,
-					 char *colname, bool resjunk, bool *retset);
+					 char *colname, bool resjunk);
 extern void updateTargetListEntry(ParseState *pstate, TargetEntry *tle,
 					  char *colname, int attrno,
 					  List *indirection);
