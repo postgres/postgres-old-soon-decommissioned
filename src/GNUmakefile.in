@@ -43,9 +43,6 @@ install:
 	$(MAKE) -C pl install
 	cat ../register.txt
 
-install-man:
-	$(MAKE) -C man install
-
 lexverify:
 	$(MAKE) -C lextest all
 	@if test ! -f lextest/lextest; then \
