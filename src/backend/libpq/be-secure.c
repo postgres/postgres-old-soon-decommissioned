@@ -643,7 +643,7 @@ initialize_SSL(void)
 	SSL_CTX_set_options(SSL_context, SSL_OP_SINGLE_DH_USE | SSL_OP_NO_SSLv2);
 
 	/* setup the allowed cipher list */
-	if (SSL_CTX_set_cipher_list(SSL_context, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGH") != 1)
+	if (SSL_CTX_set_cipher_list(SSL_context, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH") != 1)
 	{
 		postmaster_error("unable to set the cipher list (no valid ciphers available)");
 		ExitPostmaster(1);
