@@ -80,7 +80,7 @@ initlocation <replaceable class="parameter">directory</replaceable>
   </para>
   <para>
    In order to use this command you must be logged in (using 'su', for example)
-   the database superuser.
+   as the database superuser.
   </para>
  </refsect1>
 

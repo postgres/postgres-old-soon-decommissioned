@@ -119,7 +119,7 @@ CREATE
    operation is attempted on a tuple (before constraints
    are checked and the <command>INSERT</command>, <command>UPDATE</command> or
    <command>DELETE</command> is attempted)  or
-   AFTER  the  operation  has been attempted (e.g. after constraints
+   AFTER  the  operation  has been attempted (e.g., after constraints
    are checked and the <command>INSERT</command>,
    <command>UPDATE</command> or <command>DELETE</command> has
    completed). If the

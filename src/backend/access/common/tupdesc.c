@@ -239,7 +239,7 @@ equalTupleDescs(TupleDesc tupdesc1, TupleDesc tupdesc2)
 
 		/*
 		 * We do not need to check every single field here, and in fact
-		 * some fields such as attdisbursion probably shouldn't be
+		 * some fields such as attdispersion probably shouldn't be
 		 * compared.
 		 */
 		if (strcmp(NameStr(attr1->attname), NameStr(attr2->attname)) != 0)
@@ -348,7 +348,7 @@ TupleDescInitEntry(TupleDesc desc,
 		MemSet(NameStr(att->attname), 0, NAMEDATALEN);
 
 
-	att->attdisbursion = 0;		/* dummy value */
+	att->attdispersion = 0;		/* dummy value */
 	att->attcacheoff = -1;
 	att->atttypmod = typmod;
 

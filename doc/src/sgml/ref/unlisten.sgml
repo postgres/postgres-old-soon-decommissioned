@@ -72,7 +72,7 @@ UNLISTEN { <replaceable class="PARAMETER">notifyname</replaceable> | * }
        </computeroutput></term>
       <listitem>
        <para>
-	Acknowledgement that statement has executed.
+	Acknowledgment that statement has executed.
        </para>
       </listitem>
      </varlistentry>
@@ -115,7 +115,7 @@ UNLISTEN { <replaceable class="PARAMETER">notifyname</replaceable> | * }
    </title>
    <para>
     <replaceable class="PARAMETER">classname</replaceable>
-    needs not to be a valid class name but can be any string valid
+    need not be a valid class name but can be any string valid
     as a name up to 32 characters long.
    </para>
    <para>

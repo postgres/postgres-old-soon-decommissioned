@@ -2124,10 +2124,10 @@ tid_reaped(ItemPointer itemptr, VacPageList vacpagelist)
  *
  *		Statistics are stored in several places: the pg_class row for the
  *		relation has stats about the whole relation, the pg_attribute rows
- *		for each attribute store "disbursion", and there is a pg_statistic
- *		row for each (non-system) attribute.  (Disbursion probably ought to
+ *		for each attribute store "dispersion", and there is a pg_statistic
+ *		row for each (non-system) attribute.  (Dispersion probably ought to
  *		be moved to pg_statistic, but it's not worth doing unless there's
- *		another reason to have to change pg_attribute.)  Disbursion and
+ *		another reason to have to change pg_attribute.)  Dispersion and
  *		pg_statistic values are only updated by VACUUM ANALYZE, but we
  *		always update the stats in pg_class.
  *

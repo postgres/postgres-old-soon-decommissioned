@@ -230,11 +230,11 @@ eqsel(PG_FUNCTION_ARGS)
 
 			/*
 			 * No VACUUM ANALYZE stats available, so make a guess using
-			 * the disbursion stat (if we have that, which is unlikely for
+			 * the dispersion stat (if we have that, which is unlikely for
 			 * a normal attribute; but for a system attribute we may be
 			 * able to estimate it).
 			 */
-			selec = get_attdisbursion(relid, attno, 0.01);
+			selec = get_attdispersion(relid, attno, 0.01);
 		}
 
 		result = (float8) selec;
@@ -655,8 +655,8 @@ eqjoinsel(PG_FUNCTION_ARGS)
 		result = DEFAULT_EQ_SEL;
 	else
 	{
-		num1 = unknown1 ? 1.0 : get_attdisbursion(relid1, attno1, 0.01);
-		num2 = unknown2 ? 1.0 : get_attdisbursion(relid2, attno2, 0.01);
+		num1 = unknown1 ? 1.0 : get_attdispersion(relid1, attno1, 0.01);
+		num2 = unknown2 ? 1.0 : get_attdispersion(relid2, attno2, 0.01);
 
 		/*
 		 * The join selectivity cannot be more than num2, since each tuple
@@ -666,7 +666,7 @@ eqjoinsel(PG_FUNCTION_ARGS)
 		 * reasoning it is not more than num1. The min is therefore an
 		 * upper bound.
 		 *
-		 * If we know the disbursion of only one side, use it; the reasoning
+		 * If we know the dispersion of only one side, use it; the reasoning
 		 * above still works.
 		 *
 		 * XXX can we make a better estimate here?	Using the nullfrac

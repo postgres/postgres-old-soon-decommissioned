@@ -159,7 +159,7 @@ NOTICE:  Index <replaceable class="PARAMETER">index</replaceable>: Pages 28;
 
   <para>
    <command>VACUUM ANALYZE</command> collects statistics representing the
-   disbursion of the data in each column.
+   dispersion of the data in each column.
    This information is valuable when several query execution paths are possible.
   </para>
 

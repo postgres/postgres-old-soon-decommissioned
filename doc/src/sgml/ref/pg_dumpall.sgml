@@ -106,7 +106,7 @@ pg_dumpall [ -h <replaceable class="parameter">host</replaceable> ] [ -p <replac
       <term>-v</term>
       <listitem>
        <para>
-	Specifies verbose mode
+	Specifies verbose mode.
        </para>
       </listitem>
      </varlistentry>

@@ -109,7 +109,7 @@ CREATE SEQUENCE <replaceable class="parameter">seqname</replaceable> [ INCREMENT
 	The <option>CACHE <replaceable class="parameter">cache</replaceable></option> option
 	enables sequence numbers to be preallocated
 	and stored in memory for faster access. The  minimum
-	value is 1 (only one value can be generated at a time, i.e. no cache)
+	value is 1 (only one value can be generated at a time, i.e., no cache)
 	and this is also the default.
        </para>
       </listitem>

@@ -325,7 +325,7 @@ postgres [ -B <replaceable class="parameter">nBuffers</replaceable> ] [ -C ] [ -
        <para>
 	Indicates to the backend server that it has been started by a 
 	<application>postmaster</application>
-	and make different assumptions about buffer pool management, file
+	and makes different assumptions about buffer pool management, file
 	descriptors, etc.  Switches following -p are restricted to those
 	considered "secure".
        </para>

@@ -91,7 +91,7 @@ DROP DATABASE <replaceable class="PARAMETER">name</replaceable>
       <term><computeroutput>ERROR:  dropdb: cannot be executed on an open database</computeroutput></term>
       <listitem>
        <para>
-        You cannot be connected to the the database your are about to remove.
+        You cannot be connected to the database your are about to remove.
         Instead, you could connect to <literal>template1</literal> or any other
         database and run this command again.
        </para>

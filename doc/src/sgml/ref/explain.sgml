@@ -104,8 +104,8 @@ EXPLAIN
   <para>
    This command displays the execution plan that the Postgres planner
    generates for the supplied query.  The execution plan shows how
-   the table(s) referenced by the query will be scanned --- by plain
-   sequential scan, index scan etc --- and if multiple tables are
+   the table(s) referenced by the query will be scanned---by plain
+   sequential scan, index scan, etc.---and if multiple tables are
    referenced, what join algorithms will be used to bring together
    the required tuples from each input table.
   </para>

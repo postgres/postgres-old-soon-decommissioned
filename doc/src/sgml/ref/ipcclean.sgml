@@ -80,7 +80,7 @@ semget: No space left on device
    is running, the shared memory and semaphores allocated by the
    <application>postmaster</application>
    will be deleted.  This will result in a general failure of the
-   backends servers started by that
+   backend servers started by that
    <application>postmaster</application>.
   </para>
 

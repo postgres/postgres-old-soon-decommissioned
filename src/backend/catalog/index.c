@@ -305,7 +305,7 @@ ConstructTupleDescriptor(Oid heapoid,
 		 */
 		((Form_pg_attribute) to)->attnum = i + 1;
 
-		((Form_pg_attribute) to)->attdisbursion = 0.0;
+		((Form_pg_attribute) to)->attdispersion = 0.0;
 		((Form_pg_attribute) to)->attnotnull = false;
 		((Form_pg_attribute) to)->atthasdef = false;
 		((Form_pg_attribute) to)->attcacheoff = -1;

@@ -63,7 +63,7 @@ extern void cost_mergejoin(Path *path, Path *outer_path, Path *inner_path,
 			   List *restrictlist,
 			   List *outersortkeys, List *innersortkeys);
 extern void cost_hashjoin(Path *path, Path *outer_path, Path *inner_path,
-			  List *restrictlist, Selectivity innerdisbursion);
+			  List *restrictlist, Selectivity innerdispersion);
 extern Cost cost_qual_eval(List *quals);
 extern void set_baserel_size_estimates(Query *root, RelOptInfo *rel);
 extern void set_joinrel_size_estimates(Query *root, RelOptInfo *rel,

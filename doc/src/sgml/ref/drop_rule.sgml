@@ -62,7 +62,7 @@ DROP
        </computeroutput></term>
       <listitem>
        <para>
-	Message returned if successfully.
+	Message returned if successful.
        </para>
       </listitem>
      </varlistentry>

@@ -21,7 +21,7 @@ extern AttrNumber get_attnum(Oid relid, char *attname);
 extern Oid	get_atttype(Oid relid, AttrNumber attnum);
 extern bool get_attisset(Oid relid, char *attname);
 extern int32 get_atttypmod(Oid relid, AttrNumber attnum);
-extern double get_attdisbursion(Oid relid, AttrNumber attnum,
+extern double get_attdispersion(Oid relid, AttrNumber attnum,
 				  double min_estimate);
 extern RegProcedure get_opcode(Oid opno);
 extern char *get_opname(Oid opno);
