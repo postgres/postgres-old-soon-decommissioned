@@ -1059,8 +1059,14 @@ XidCacheRemoveRunningXids(TransactionId xid, int nxids, TransactionId *xids)
 				break;
 			}
 		}
-		/* We should have found it, unless the cache has overflowed */
-		Assert(j >= 0 || MyProc->subxids.overflowed);
+		/*
+		 * Ordinarily we should have found it, unless the cache has overflowed.
+		 * However it's also possible for this routine to be invoked multiple
+		 * times for the same subtransaction, in case of an error during
+		 * AbortSubTransaction.  So instead of Assert, emit a debug warning.
+		 */
+		if (j < 0 && !MyProc->subxids.overflowed)
+			elog(WARNING, "did not find subXID %u in MyProc", anxid);
 	}
 
 	for (j = MyProc->subxids.nxids - 1; j >= 0; j--)
@@ -1071,8 +1077,9 @@ XidCacheRemoveRunningXids(TransactionId xid, int nxids, TransactionId *xids)
 			break;
 		}
 	}
-	/* We should have found it, unless the cache has overflowed */
-	Assert(j >= 0 || MyProc->subxids.overflowed);
+	/* Ordinarily we should have found it, unless the cache has overflowed */
+	if (j < 0 && !MyProc->subxids.overflowed)
+		elog(WARNING, "did not find subXID %u in MyProc", xid);
 
 	LWLockRelease(SInvalLock);
 }
