@@ -440,6 +440,18 @@ transformStmt(ParseState *pstate, Node *parseTree,
 	result->querySource = QSRC_ORIGINAL;
 	result->canSetTag = true;
 
+	/*
+	 * Check that we did not produce too many resnos; at the very
+	 * least we cannot allow more than 2^16, since that would exceed
+	 * the range of a AttrNumber. It seems safest to use
+	 * MaxTupleAttributeNumber.
+	 */
+	if (pstate->p_next_resno - 1 > MaxTupleAttributeNumber)
+		ereport(ERROR,
+				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
+				 errmsg("target lists can have at most %d entries",
+						MaxTupleAttributeNumber)));
+
 	return result;
 }
 
