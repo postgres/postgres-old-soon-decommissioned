@@ -284,13 +284,23 @@ mdopen(Relation reln)
 	fd = FileNameOpenFile(path, O_RDWR | O_BINARY, 0600);
 #endif
 
-	/* this should only happen during bootstrap processing */
 	if (fd < 0)
+	{
+		/* in bootstrap mode, accept mdopen as substitute for mdcreate */
+		if (IsBootstrapProcessingMode())
+		{
 #ifndef __CYGWIN32__
-		fd = FileNameOpenFile(path, O_RDWR | O_CREAT | O_EXCL, 0600);
+			fd = FileNameOpenFile(path, O_RDWR | O_CREAT | O_EXCL, 0600);
 #else
-		fd = FileNameOpenFile(path, O_RDWR | O_CREAT | O_EXCL | O_BINARY, 0600);
+			fd = FileNameOpenFile(path, O_RDWR | O_CREAT | O_EXCL | O_BINARY, 0600);
 #endif
+		}
+		if (fd < 0)
+		{
+			elog(ERROR, "mdopen: couldn't open %s: %m", path);
+			return -1;
+		}
+	}
 
 	vfd = _fdvec_alloc();
 	if (vfd < 0)
