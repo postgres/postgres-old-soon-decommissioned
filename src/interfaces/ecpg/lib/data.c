@@ -14,7 +14,7 @@
 bool
 ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 		 enum ECPGttype type, enum ECPGttype ind_type,
-		 void *var, void *ind, long varcharsize, long offset,
+		 char *var, char *ind, long varcharsize, long offset,
 		 long ind_offset, bool isarray)
 {
 	char	   *pval = (char *) PQgetvalue(results, act_tuple, act_field);
