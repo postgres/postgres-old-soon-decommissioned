@@ -1032,7 +1032,7 @@ CleanupProc(int pid,
 		if (DebugLvl)
 			fprintf(stderr, "%s: CleanupProc: reinitializing shared memory and semaphores\n",
 					progname);
-		shmem_exit();
+		shmem_exit(0);
 		reset_shared(PostPortName);
 	}
 }
