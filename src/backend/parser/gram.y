@@ -1893,11 +1893,15 @@ OptSeqElem: CACHE NumericOnly
 				}
 			| CYCLE
 				{
-					$$ = makeDefElem("cycle", (Node *)NULL);
+					$$ = makeDefElem("cycle", (Node *)true);
 				}
-			| INCREMENT NumericOnly
+			| NO CYCLE
 				{
-					$$ = makeDefElem("increment", (Node *)$2);
+					$$ = makeDefElem("cycle", (Node *)false);
+				}
+			| INCREMENT opt_by NumericOnly
+				{
+					$$ = makeDefElem("increment", (Node *)$3);
 				}
 			| MAXVALUE NumericOnly
 				{
@@ -1907,11 +1911,15 @@ OptSeqElem: CACHE NumericOnly
 				{
 					$$ = makeDefElem("minvalue", (Node *)$2);
 				}
-			| START NumericOnly
+			| START opt_with NumericOnly
 				{
-					$$ = makeDefElem("start", (Node *)$2);
+					$$ = makeDefElem("start", (Node *)$3);
 				}
 		;
+
+opt_by:		BY				{}
+			| /* empty */	{}
+	  ;
 
 NumericOnly:
 			FloatOnly								{ $$ = $1; }
