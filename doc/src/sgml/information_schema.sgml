@@ -1011,7 +1011,7 @@
   </para>
 
   <table>
-   <title><literal>domain_constraints</literal> Columns</title>
+   <title><literal>data_type_privileges</literal> Columns</title>
 
    <tgroup cols="3">
     <thead>
