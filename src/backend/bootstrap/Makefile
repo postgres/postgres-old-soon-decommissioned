@@ -32,7 +32,12 @@ endif
 
 BOOTYACCS= bootstrap_tokens.h bootparse.c
 
+ifneq ($(PORTNAME), qnx4)
 OBJS= bootparse.o bootscanner.o bootstrap.o 
+else
+# wlink crashes with bootstrap.o
+OBJS= bootparse.o bootscanner.o
+endif
 
 all: SUBSYS.o
 

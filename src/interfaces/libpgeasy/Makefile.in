@@ -41,7 +41,7 @@ include $(SRCDIR)/Makefile.shlib
 install: install-headers install-lib $(install-shlib-dep)
 
 install-headers: libpgeasy.h
-	@if [ ! -d $(HEADERDIR) ]; then mkdir $(HEADERDIR); fi
+	-@if [ ! -d $(HEADERDIR) ]; then mkdir $(HEADERDIR); fi
 	$(INSTALL) $(INSTLOPTS) libpgeasy.h $(HEADERDIR)/libpgeasy.h
 
 .PHONY: clean

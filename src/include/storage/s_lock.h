@@ -197,6 +197,18 @@ tas(volatile slock_t *lock)
  * All non gcc
  */
 
+#if defined(__QNX__)
+/*
+ * QNX 4
+ *
+ * Note that slock_t under QNX is sem_t instead of char
+ */
+#define TAS(lock)       (sem_trywait((lock)) < 0)
+#define S_UNLOCK(lock)  sem_post((lock))
+#define S_INIT_LOCK(lock)       sem_init((lock), 1, 1)
+#define S_LOCK_FREE(lock)       (lock)->value
+#endif   /* __QNX__ */
+
 
 #if defined(NEED_I386_TAS_ASM)
 /* non gcc i386 based things */

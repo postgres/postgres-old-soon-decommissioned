@@ -77,7 +77,7 @@ $(SRCDIR)/backend/fmgr.h:
 install: install-headers install-lib $(install-shlib-dep)
 
 install-headers: libpq-fe.h libpq-int.h
-	@if [ ! -d $(HEADERDIR) ]; then mkdir $(HEADERDIR); fi
+	-@if [ ! -d $(HEADERDIR) ]; then mkdir $(HEADERDIR); fi
 	$(INSTALL) $(INSTLOPTS) libpq-fe.h $(HEADERDIR)/libpq-fe.h
 	$(INSTALL) $(INSTLOPTS) libpq-int.h $(HEADERDIR)/libpq-int.h
 	$(INSTALL) $(INSTLOPTS) pqexpbuffer.h $(HEADERDIR)/pqexpbuffer.h

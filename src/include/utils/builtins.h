@@ -155,6 +155,11 @@ extern int	namestrcmp(Name name, char *str);
 #define ltoa pg_ltoa
 #endif	 /* hpux */
 extern int32 pg_atoi(char *s, int size, int c);
+/* XXX hack.  QNX has itoa and ltoa (with different arguments) already. */
+#ifdef __QNX__
+#define itoa pg_itoa
+#define ltoa pg_ltoa
+#endif   /* QNX */
 extern void itoa(int i, char *a);
 extern void ltoa(int32 l, char *a);
 

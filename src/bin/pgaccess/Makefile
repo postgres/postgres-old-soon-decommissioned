@@ -22,15 +22,15 @@ pgaccess: pgaccess.sh
 
 install:
 	$(INSTALL) $(INSTL_EXE_OPTS) pgaccess $(BINDIR)/pgaccess
-	@if [ ! -d $(POSTGRESDIR)/pgaccess ]; then mkdir $(POSTGRESDIR)/pgaccess; fi
+	-@if [ ! -d $(POSTGRESDIR)/pgaccess ]; then mkdir $(POSTGRESDIR)/pgaccess; fi
 	$(INSTALL) $(INSTL_EXE_OPTS) main.tcl $(POSTGRESDIR)/pgaccess
-	@if [ ! -d $(POSTGRESDIR)/pgaccess/lib ]; then mkdir $(POSTGRESDIR)/pgaccess/lib; fi
+	-@if [ ! -d $(POSTGRESDIR)/pgaccess/lib ]; then mkdir $(POSTGRESDIR)/pgaccess/lib; fi
 	$(INSTALL) $(INSTLOPTS) lib/*.tcl $(POSTGRESDIR)/pgaccess/lib
-	@if [ ! -d $(POSTGRESDIR)/pgaccess/lib/help ]; then mkdir $(POSTGRESDIR)/pgaccess/lib/help; fi
+	-@if [ ! -d $(POSTGRESDIR)/pgaccess/lib/help ]; then mkdir $(POSTGRESDIR)/pgaccess/lib/help; fi
 	$(INSTALL) $(INSTLOPTS) lib/help/*.hlp $(POSTGRESDIR)/pgaccess/lib/help
-	@if [ ! -d $(POSTGRESDIR)/pgaccess/lib/languages ]; then mkdir $(POSTGRESDIR)/pgaccess/lib/languages; fi
+	-@if [ ! -d $(POSTGRESDIR)/pgaccess/lib/languages ]; then mkdir $(POSTGRESDIR)/pgaccess/lib/languages; fi
 	$(INSTALL) $(INSTLOPTS) lib/languages/[a-z]* $(POSTGRESDIR)/pgaccess/lib/languages
-	@if [ ! -d $(POSTGRESDIR)/pgaccess/images ]; then mkdir $(POSTGRESDIR)/pgaccess/images; fi
+	-@if [ ! -d $(POSTGRESDIR)/pgaccess/images ]; then mkdir $(POSTGRESDIR)/pgaccess/images; fi
 	$(INSTALL) $(INSTLOPTS) images/*.gif $(POSTGRESDIR)/pgaccess/images
 
 clean:
