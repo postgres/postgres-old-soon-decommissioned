@@ -46,8 +46,6 @@
  * ----------------------------------------------------------------
  */
 
-typedef int4 aclitem;
-
 #define InvalidOid		((Oid) 0)
 #define OidIsValid(objectId)  ((bool) ((objectId) != InvalidOid))
 
@@ -56,6 +54,8 @@ typedef Oid regproc;
 typedef Oid RegProcedure;
 
 #define RegProcedureIsValid(p)	OidIsValid(p)
+
+typedef int4 aclitem;			/* PHONY definition for catalog use only */
 
 /* ----------------------------------------------------------------
  *				Section 2:	variable length and array types

@@ -273,7 +273,7 @@ toast_insert_or_update(Relation rel, HeapTuple newtup, HeapTuple oldtup)
 
 			/* ----------
 			 * If the old value is an external stored one, check if it
-			 * has changed so we have to detele it later.
+			 * has changed so we have to delete it later.
 			 * ----------
 			 */
 			if (!old_isnull && att[i]->attlen == -1 && 
@@ -336,17 +336,16 @@ toast_insert_or_update(Relation rel, HeapTuple newtup, HeapTuple oldtup)
 		if (att[i]->attlen == -1)
 		{
 			/* ----------
-			 * If the tables attribute say's PLAIN allways, we
-			 * do so below.
+			 * If the table's attribute says PLAIN always, force it so.
 			 * ----------
 			 */
 			if (att[i]->attstorage == 'p')
 				toast_action[i] = 'p';
 
 			/* ----------
-			 * We're running for UPDATE, so any TOASTed value we find
-			 * still in the tuple must be someone elses we cannot reuse.
-			 * Expand it to plain and eventually toast it again below.
+			 * We took care of UPDATE above, so any TOASTed value we find
+			 * still in the tuple must be someone else's we cannot reuse.
+			 * Expand it to plain (and, probably, toast it again below).
 			 * ----------
 			 */
 			if (VARATT_IS_EXTENDED(DatumGetPointer(toast_values[i])))
@@ -367,7 +366,7 @@ toast_insert_or_update(Relation rel, HeapTuple newtup, HeapTuple oldtup)
 		else
 		{
 			/* ----------
-			 * Not a variable size attribute, plain storage allways
+			 * Not a variable size attribute, plain storage always
 			 * ----------
 			 */
 			toast_action[i] = 'p';
