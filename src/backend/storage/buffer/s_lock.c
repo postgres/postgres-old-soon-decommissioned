@@ -124,7 +124,28 @@ success:			\n\
 
 #endif	 /* PPC */
 
-
+#if defined(__mips)
+static void
+tas_dummy()
+{
+	__asm__("		\n\
+.global	tas			\n\
+tas:				\n\
+	.frame	$sp, 0, $31	\n\
+	ll	$14, 0($4)	\n\
+	or	$15, $14, 1	\n\
+	sc	$15, 0($4)	\n\
+	beq	$15, 0, fail	\n\
+	bne	$14, 0, fail	\n\
+	li	$2, 0		\n\
+	.livereg 0x2000FF0E,0x00000FFF	\n\
+	j       $31		\n\
+fail:				\n\
+	li	$2, 1		\n\
+	j       $31		\n\
+	");
+}
+#endif	/* __mips */
 
 #else							/* defined(__GNUC__) */
 /***************************************************************************
