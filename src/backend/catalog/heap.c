@@ -729,8 +729,8 @@ addNewRelationType(char *typeName, Oid new_rel_oid)
 							  ',',		/* default array delimiter */
 							  "int4in", /* input procedure */
 							  "int4out",/* output procedure */
-							  "int4out",/* send procedure */
 							  "int4in",	/* receive procedure */
+							  "int4out",/* send procedure */
 							  NULL,		/* array element type - irrelevent */
 							  "-",		/* default type value */
 							  (bool) 1, /* passed by value */

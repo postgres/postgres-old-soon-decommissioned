@@ -730,8 +730,8 @@ DefineType(char *typeName, List *parameters)
 			   delimiter,		/* array element delimiter */
 			   inputName,		/* input procedure */
 			   outputName,		/* output procedure */
-			   sendName,		/* send procedure */
 			   receiveName,		/* receive procedure */
+			   sendName,		/* send procedure */
 			   elemName,		/* element type name */
 			   defaultValue,	/* default type value */
 			   byValue,			/* passed by value */
@@ -752,8 +752,8 @@ DefineType(char *typeName, List *parameters)
 			   DEFAULT_TYPDELIM,/* array element delimiter */
 			   "array_in",		/* input procedure */
 			   "array_out",		/* output procedure */
-			   "array_out",		/* send procedure */
 			   "array_in",		/* receive procedure */
+			   "array_out",		/* send procedure */
 			   typeName,		/* element type name */
 			   defaultValue,	/* default type value */
 			   false,			/* never passed by value */
