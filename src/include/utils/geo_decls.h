@@ -84,7 +84,7 @@ typedef	struct {
 	int32	npts;
 	int32	closed;	/* is this a closed polygon? */
 	int32	dummy;	/* padding to make it double align */
-	Point	p[0];	/* variable length array of POINTs */
+	Point	p[1];	/* variable length array of POINTs */
 } PATH;
 
 
@@ -119,7 +119,7 @@ typedef struct {
 	int32 size;	/* XXX varlena */
 	int32 npts;
 	BOX boundbox;
-	Point p[0];	/* variable length array of POINTs */
+	Point p[1];	/* variable length array of POINTs */
 } POLYGON;
 
 /*---------------------------------------------------------------------
