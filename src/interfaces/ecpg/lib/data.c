@@ -154,15 +154,15 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 				{
 					case ECPGt_unsigned_short:
 /*						((unsigned short *) var)[act_tuple] = (unsigned short) ures;*/
-						*((unsigned short *) (var + offset*act_tuple)) = (unsigned short) res;
+						*((unsigned short *) (var + offset*act_tuple)) = (unsigned short) ures;
 						break;
 					case ECPGt_unsigned_int:
 /*						((unsigned int *) var)[act_tuple] = (unsigned int) ures;*/
-						*((unsigned int *) (var + offset*act_tuple)) = (unsigned int) res;
+						*((unsigned int *) (var + offset*act_tuple)) = (unsigned int) ures;
 						break;
 					case ECPGt_unsigned_long:
 /*						((unsigned long *) var)[act_tuple] = ures;*/
-						*((unsigned long *) (var + offset*act_tuple)) = (unsigned long) res;
+						*((unsigned long *) (var + offset*act_tuple)) = (unsigned long) ures;
 						break;
 					default:
 						/* Cannot happen */
