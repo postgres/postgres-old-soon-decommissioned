@@ -45,7 +45,6 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <ctype.h>
-#include "inet_aton.h"
 
 /*
  * Check whether "cp" is a valid ascii representation
