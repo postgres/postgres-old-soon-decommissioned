@@ -72,6 +72,7 @@
 
 #include "storage/pg_sema.h"
 
+#ifdef HAVE_SPINLOCKS	/* skip spinlocks if requested */
 
 #if defined(__GNUC__) || defined(__ICC)
 /*************************************************************************
@@ -438,7 +439,7 @@ typedef unsigned char slock_t;
  * Uses non-gcc inline assembly:
  */
 
-#if !defined(HAS_TEST_AND_SET)
+#if !defined(HAS_TEST_AND_SET)	/* We didn't trigger above, let's try here */
 
 #if defined(USE_UNIVEL_CC)
 typedef unsigned char slock_t;
@@ -604,6 +605,7 @@ typedef unsigned char slock_t;
 
 #endif	/* !defined(HAS_TEST_AND_SET */
 
+#endif	/* HAVE_SPINLOCKS */
 
 
 #ifndef HAS_TEST_AND_SET
