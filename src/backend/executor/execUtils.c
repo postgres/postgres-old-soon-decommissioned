@@ -178,6 +178,7 @@ CreateExecutorState(void)
 	 */
 	estate->es_direction = ForwardScanDirection;
 	estate->es_snapshot = SnapshotNow;
+	estate->es_snapshot_cid = FirstCommandId;
 	estate->es_range_table = NIL;
 
 	estate->es_result_relations = NULL;

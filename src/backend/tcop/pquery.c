@@ -131,7 +131,7 @@ ProcessQuery(Query *parsetree,
 	/*
 	 * Call ExecStart to prepare the plan for execution
 	 */
-	ExecutorStart(queryDesc, false);
+	ExecutorStart(queryDesc, false, false);
 
 	/*
 	 * Run the plan to completion.
@@ -269,7 +269,7 @@ PortalStart(Portal portal, ParamListInfo params)
 			/*
 			 * Call ExecStart to prepare the plan for execution
 			 */
-			ExecutorStart(queryDesc, false);
+			ExecutorStart(queryDesc, false, false);
 
 			/*
 			 * This tells PortalCleanup to shut down the executor

@@ -93,7 +93,7 @@ do \
 						   relation, \
 						   buffer, \
 						   disk_page, \
-						   seeself, \
+						   snapshot, \
 						   nKeys, \
 						   key, \
 						   res) \
@@ -112,7 +112,7 @@ do \
 		{ \
 			uint16	_infomask = (tuple)->t_data->t_infomask; \
 			\
-			(res) = HeapTupleSatisfiesVisibility((tuple), (seeself)); \
+			(res) = HeapTupleSatisfiesVisibility((tuple), (snapshot)); \
 			if ((tuple)->t_data->t_infomask != _infomask) \
 				SetBufferCommitInfoNeedsSave(buffer); \
 		} \

@@ -207,7 +207,7 @@ ExplainOnePlan(QueryDesc *queryDesc, ExplainStmt *stmt,
 	gettimeofday(&starttime, NULL);
 
 	/* call ExecutorStart to prepare the plan for execution */
-	ExecutorStart(queryDesc, !stmt->analyze);
+	ExecutorStart(queryDesc, false, !stmt->analyze);
 
 	/* Execute the plan for statistics if asked for */
 	if (stmt->analyze)

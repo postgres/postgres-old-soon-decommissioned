@@ -1863,12 +1863,6 @@ DeferredTriggerExecute(DeferredTriggerEvent event, int itemno,
 		heap_freetuple(rettuple);
 
 	/*
-	 * Might have been a referential integrity constraint trigger. Reset
-	 * the snapshot overriding flag.
-	 */
-	ReferentialIntegritySnapshotOverride = false;
-
-	/*
 	 * Release buffers
 	 */
 	if (ItemPointerIsValid(&(event->dte_oldctid)))

@@ -39,8 +39,6 @@ Snapshot	SerializableSnapshot = NULL;
 TransactionId RecentXmin = InvalidTransactionId;
 TransactionId RecentGlobalXmin = InvalidTransactionId;
 
-bool		ReferentialIntegritySnapshotOverride = false;
-
 
 /*
  * HeapTupleSatisfiesItself
@@ -665,10 +663,6 @@ HeapTupleSatisfiesDirty(HeapTupleHeader tuple)
 bool
 HeapTupleSatisfiesSnapshot(HeapTupleHeader tuple, Snapshot snapshot)
 {
-	/* XXX this is horribly ugly: */
-	if (ReferentialIntegritySnapshotOverride)
-		return HeapTupleSatisfiesNow(tuple);
-
 	if (!(tuple->t_infomask & HEAP_XMIN_COMMITTED))
 	{
 		if (tuple->t_infomask & HEAP_XMIN_INVALID)
@@ -978,9 +972,6 @@ HeapTupleSatisfiesVacuum(HeapTupleHeader tuple, TransactionId OldestXmin)
 void
 SetQuerySnapshot(void)
 {
-	/* Initialize snapshot overriding to false */
-	ReferentialIntegritySnapshotOverride = false;
-
 	/* 1st call in xaction? */
 	if (SerializableSnapshot == NULL)
 	{

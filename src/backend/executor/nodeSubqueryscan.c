@@ -177,6 +177,7 @@ ExecInitSubqueryScan(SubqueryScan *node, EState *estate)
 	sp_estate->es_tupleTable =
 		ExecCreateTupleTable(ExecCountSlotsNode(node->subplan) + 10);
 	sp_estate->es_snapshot = estate->es_snapshot;
+	sp_estate->es_snapshot_cid = estate->es_snapshot_cid;
 	sp_estate->es_instrument = estate->es_instrument;
 
 	/*

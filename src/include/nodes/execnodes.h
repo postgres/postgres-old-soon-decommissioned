@@ -286,6 +286,7 @@ typedef struct EState
 	/* Basic state for all query types: */
 	ScanDirection es_direction; /* current scan direction */
 	Snapshot	es_snapshot;	/* time qual to use */
+	CommandId	es_snapshot_cid;	/* CommandId component of time qual */
 	List	   *es_range_table; /* List of RangeTableEntrys */
 
 	/* Info about target table for insert/update/delete queries: */
