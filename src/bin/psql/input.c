@@ -99,15 +99,6 @@ gets_interactive(const char *prompt)
 	else
 		s = gets_basic(prompt);
 
-#ifdef WIN32
-	 /*
-	  * translate DOS console character set into ANSI, needed e.g. for German
-	  * umlauts
-	  */
-	if (GetVariableBool(pset.vars, "WIN32_CONSOLE"))
-		OemToChar(s, s);
-#endif
-
 	if (useHistory && s && s[0])
 	{
 		enum histcontrol HC;

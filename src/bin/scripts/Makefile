@@ -15,7 +15,7 @@ include $(top_builddir)/src/Makefile.global
 
 PROGRAMS = createdb createlang createuser dropdb droplang dropuser clusterdb vacuumdb
 
-override CPPFLAGS := -DPGSCRIPTS -I$(top_srcdir)/src/bin/pg_dump -I$(top_srcdir)/src/bin/psql -I$(libpq_srcdir) $(CPPFLAGS)
+override CPPFLAGS := -I$(top_srcdir)/src/bin/pg_dump -I$(top_srcdir)/src/bin/psql -I$(libpq_srcdir) $(CPPFLAGS)
 
 all: submake-libpq submake-backend $(PROGRAMS)
 

@@ -2073,19 +2073,6 @@ bar
 	</listitem>
       </varlistentry>
 
-      <varlistentry>
-        <term><varname>WIN32_CONSOLE</varname></term>
-	<listitem>
-	<para>
-        This variable is only useful when working under the Win32 command
-        console. As the Win32 command console uses a different encoding than
-        the rest of the Windows system.  Eight-bit characters (e.g. German Umlauts)
-        are corrupted. When this variable is set the command console encoding will
-        be translated into ASCII encoding for input and output. 
-	</para>
-	</listitem>
-      </varlistentry>
-
     </variablelist>
 
    </refsect3>

@@ -337,15 +337,6 @@ mbvalidate(unsigned char *pwcs, int encoding)
 		return mb_utf_validate(pwcs);
 	else
 	{
-#if defined(WIN32) && !defined(PGSCRIPTS)
-		/*
-		 * translate characters to DOS console encoding, e.g. needed for
-		 * German umlauts
-		 */
-		if (GetVariableBool(pset.vars, "WIN32_CONSOLE"))
-			CharToOem(pwcs, pwcs);
-#endif
-
 		/*
 		 * other encodings needing validation should add their own
 		 * routines here
