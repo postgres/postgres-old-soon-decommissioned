@@ -583,11 +583,13 @@ SendQuery(bool * success_p, PsqlSettings * settings, const char *query,
 	    break;
 	case PGRES_EMPTY_QUERY:
 	    *success_p = true;
+	    PQclear(results);
 	    break;
 	case PGRES_COMMAND_OK:
 	    *success_p = true;
 	    if (!settings->quiet)
 		fprintf(stdout, "%s\n", PQcmdStatus(results));
+	    PQclear(results);
 	    break;
 	case PGRES_COPY_OUT:
 	    *success_p = true;
@@ -599,6 +601,7 @@ SendQuery(bool * success_p, PsqlSettings * settings, const char *query,
 
 		handleCopyOut(results, settings->quiet, stdout);
 	    }
+	    PQclear(results);
 	    break;
 	case PGRES_COPY_IN:
 	    *success_p = true;
@@ -606,6 +609,7 @@ SendQuery(bool * success_p, PsqlSettings * settings, const char *query,
 		handleCopyIn(results, false, copystream);
 	    else
 		handleCopyIn(results, !settings->quiet, stdin);
+	    PQclear(results);
 	    break;
 	case PGRES_NONFATAL_ERROR:
 	case PGRES_FATAL_ERROR:
@@ -630,7 +634,6 @@ SendQuery(bool * success_p, PsqlSettings * settings, const char *query,
 		    notify->relname, notify->be_pid);
 	    free(notify);
 	}
-	PQclear(results);
     }
 }
 
