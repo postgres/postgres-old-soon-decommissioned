@@ -30,7 +30,7 @@ fi
 PGTZ="PST8PDT"; export PGTZ
 PGDATESTYLE="Postgres,US"; export PGDATESTYLE
 
-FRONTEND="psql $HOSTLOC -n -e -q"
+FRONTEND="psql $HOSTLOC -a -q"
 
 # ----------
 # Scan resultmap file to find which platform-specific expected files to use.

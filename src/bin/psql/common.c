@@ -382,7 +382,7 @@ SendQuery(const char *query)
     else
     {
         const char * var = GetVariable(pset.vars, "ECHO");
-        if (var && strcmp(var, "brief")==0)
+        if (var && strncmp(var, "queries", strlen(var))==0)
             puts(query);
     }
 

@@ -112,6 +112,14 @@ SetVariable(VariableSpace space, const char *name, const char *value)
 
 
 bool
+SetVariableBool(VariableSpace space, const char *name)
+{
+    return SetVariable(space, name, "");
+}
+
+
+
+bool
 DeleteVariable(VariableSpace space, const char *name)
 {
 	struct _variable *current,

@@ -72,7 +72,7 @@ usage(void)
 	puts(  "Usage:");
     puts(  "  psql [options] [dbname [username]]\n");
     puts(  "Options:");
-/*	puts(  "  -a              Echo all input from script");*/
+	puts(  "  -a              Echo all input from script");
 	puts(  "  -A              Unaligned table output mode (-P format=unaligned)");
 	puts(  "  -c <query>      Run only single query (or slash command) and exit");
 

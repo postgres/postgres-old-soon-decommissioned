@@ -217,7 +217,7 @@ MainLoop(FILE *source)
 
 		/* echo back if flag is set */
         var = GetVariable(pset.vars, "ECHO");
-        if (var && strcmp(var, "full")==0)
+        if (var && strcmp(var, "all")==0)
             puts(line);
         fflush(stdout);
 
