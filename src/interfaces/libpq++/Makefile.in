@@ -14,7 +14,7 @@ NAME= pq++
 SO_MAJOR_VERSION= 3
 SO_MINOR_VERSION= 1
 
-SRCDIR= @top_srcdir@
+SRCDIR= ../..
 include $(SRCDIR)/Makefile.global
 
 CXX=@CXX@

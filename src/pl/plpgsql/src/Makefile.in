@@ -12,7 +12,7 @@ NAME= plpgsql
 SO_MAJOR_VERSION= 1
 SO_MINOR_VERSION= 0
 
-SRCDIR= @top_srcdir@
+SRCDIR= ../../..
 include $(SRCDIR)/Makefile.global
 
 # If using flex, ask for a case-insensitive, lex-compatible lexer.
