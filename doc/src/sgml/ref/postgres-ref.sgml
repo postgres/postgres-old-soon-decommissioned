@@ -65,7 +65,7 @@ postgres [ -B <replaceable class="parameter">nBuffers</replaceable> ] [ -C ] [ -
 	is the number of shared-memory buffers that the
 	<application>postmaster</application>
 	has allocated for the backend server processes that it starts.  If the
-	backend is running standalone, this specifies the number of buffers to
+	backend is running stand-alone, this specifies the number of buffers to
 	allocate.  This value defaults to 64 buffers, where each buffer is 8k bytes
 	(or whatever BLCKSZ is set to in config.h).
        </para>
