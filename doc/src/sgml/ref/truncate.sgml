@@ -54,6 +54,10 @@ TRUNCATE [ TABLE ] <replaceable class="PARAMETER">name</replaceable>
   <title>Notes</title>
 
   <para>
+   Only the owner of a table may <command>TRUNCATE</> it.
+  </para>
+
+  <para>
    <command>TRUNCATE</> cannot be used if there are foreign-key references
    to the table from other tables.  Checking validity in such cases would
    require table scans, and the whole point is not to do one.
