@@ -168,7 +168,8 @@ $PostgreSQL$
     with <productname>PostgreSQL</>.  Each of these chapters can be
     read independently.  Note that there are many other programming
     interfaces for client programs that are distributed separately and
-    contain their own documentation.  Readers of this part should be
+    contain their own documentation (<xref linkend="external-projects">
+    lists some of the more popular ones).  Readers of this part should be
     familiar with using <acronym>SQL</acronym> commands to manipulate
     and query the database (see <xref linkend="sql">) and of course
     with the programming language that the interface uses.
@@ -179,7 +180,6 @@ $PostgreSQL$
   &lobj;
   &ecpg;
   &infoschema;
-  &external-projects;
 
  </part>
 
@@ -252,6 +252,7 @@ $PostgreSQL$
   &release;
   &cvs;
   &docguide;
+  &external-projects;
 
  </part>
 
