@@ -46,6 +46,13 @@ extern bool execTuplesMatch(HeapTuple tuple1,
 				AttrNumber *matchColIdx,
 				FmgrInfo *eqfunctions,
 				MemoryContext evalContext);
+extern bool execTuplesUnequal(HeapTuple tuple1,
+				HeapTuple tuple2,
+				TupleDesc tupdesc,
+				int numCols,
+				AttrNumber *matchColIdx,
+				FmgrInfo *eqfunctions,
+				MemoryContext evalContext);
 extern FmgrInfo *execTuplesMatchPrepare(TupleDesc tupdesc,
 					   int numCols,
 					   AttrNumber *matchColIdx);
@@ -214,6 +221,9 @@ extern void ExecAssignResultType(PlanState *planstate,
 extern void ExecAssignResultTypeFromOuterPlan(PlanState *planstate);
 extern void ExecAssignResultTypeFromTL(PlanState *planstate);
 extern TupleDesc ExecGetResultType(PlanState *planstate);
+extern ProjectionInfo *ExecBuildProjectionInfo(List *targetList,
+											   ExprContext *econtext,
+											   TupleTableSlot *slot);
 extern void ExecAssignProjectionInfo(PlanState *planstate);
 extern void ExecFreeExprContext(PlanState *planstate);
 extern TupleDesc ExecGetScanType(ScanState *scanstate);
