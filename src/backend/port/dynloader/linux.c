@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * dynloader.c
+ * linux.c
  *	  Dynamic Loader for Postgres for Linux, generated from those for
  *	  Ultrix.
  *
@@ -17,12 +17,16 @@
  */
 
 #include "postgres.h"
+
 #ifdef HAVE_DLD_H
-#include "dld.h"
+#include <dld.h>
 #endif
 
-#ifdef NOT_USED
-extern char pg_pathname[];
+#include "dynloader.h"
+#include "miscadmin.h"
+
+
+#ifndef HAVE_DLOPEN
 
 void *
 pg_dlopen(char *filename)
@@ -98,8 +102,28 @@ pg_dlopen(char *filename)
 #endif
 }
 
+PGFunction
+pg_dlsym(void *handle, char *funcname)
+{
+#ifndef HAVE_DLD_H
+	return NULL;
+#else
+	return (PGFunction) dld_get_func((funcname));
+#endif
+}
+
+void
+pg_dlclose(void *handle)
+{
+#ifndef HAVE_DLD_H
+#else
+	dld_unlink_by_file(handle, 1);
+	free(handle);
+#endif
+}
+
 char *
-pg_dlerror()
+pg_dlerror(void)
 {
 #ifndef HAVE_DLD_H
 	return "dynaloader unspported";
@@ -108,4 +132,4 @@ pg_dlerror()
 #endif
 }
 
-#endif
+#endif /* !HAVE_DLOPEN */

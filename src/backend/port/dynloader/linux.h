@@ -20,21 +20,7 @@
 #endif
 
 
-#ifndef HAVE_DLOPEN
-
-#ifndef HAVE_DLD_H
-#define pg_dlsym(handle, funcname)		(NULL)
-#define pg_dlclose(handle)			   {}
-#else
-#define pg_dlsym(handle, funcname)		((PGFunction) dld_get_func((funcname)))
-#define pg_dlclose(handle) \
-do { \
-	dld_unlink_by_file(handle, 1); \
-	free(handle); \
-} while (0)
-#endif
-
-#else							/* HAVE_DLOPEN */
+#ifdef HAVE_DLOPEN
 
 /*
  * In some older systems, the RTLD_NOW flag isn't defined and the mode
@@ -53,6 +39,7 @@ do { \
 #define pg_dlsym		dlsym
 #define pg_dlclose		dlclose
 #define pg_dlerror		dlerror
+
 #endif   /* HAVE_DLOPEN */
 
 #endif   /* PORT_PROTOS_H */
