@@ -269,7 +269,8 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt)
 	else
 	{
 		attr_cnt = onerel->rd_att->natts;
-		vacattrstats = (VacAttrStats **) palloc(attr_cnt *
+		/* +1 here is just to avoid palloc(0) with zero-column table */
+		vacattrstats = (VacAttrStats **) palloc((attr_cnt + 1) *
 												sizeof(VacAttrStats *));
 		tcnt = 0;
 		for (i = 1; i <= attr_cnt; i++)
