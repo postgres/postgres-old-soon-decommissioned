@@ -3774,7 +3774,7 @@ dynamic_library_path = 'C:\tools\postgresql;H:\my_project\lib;$libdir'
        <para>
         Shows the maximum number of function arguments. It is determined by
         the value of <literal>FUNC_MAX_ARGS</> when building the server. The
-        default value is 32.
+        default value is 100.
        </para>
       </listitem>
      </varlistentry>

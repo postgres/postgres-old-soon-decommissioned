@@ -391,7 +391,7 @@ OperatorCreate(const char *operatorName,
 				restOid,
 				joinOid;
 	bool		selfCommutator = false;
-	Oid			typeId[FUNC_MAX_ARGS];
+	Oid			typeId[4];		/* only need up to 4 args here */
 	int			nargs;
 	NameData	oname;
 	TupleDesc	tupDesc;
@@ -454,7 +454,6 @@ OperatorCreate(const char *operatorName,
 	 * procedureName to place in "result" field. Do this before shells are
 	 * created so we don't have to worry about deleting them later.
 	 */
-	MemSet(typeId, 0, FUNC_MAX_ARGS * sizeof(Oid));
 	if (!OidIsValid(leftTypeId))
 	{
 		typeId[0] = rightTypeId;
@@ -479,7 +478,6 @@ OperatorCreate(const char *operatorName,
 	 */
 	if (restrictionName)
 	{
-		MemSet(typeId, 0, FUNC_MAX_ARGS * sizeof(Oid));
 		typeId[0] = INTERNALOID;	/* Query */
 		typeId[1] = OIDOID;		/* operator OID */
 		typeId[2] = INTERNALOID;	/* args list */
@@ -495,7 +493,6 @@ OperatorCreate(const char *operatorName,
 	 */
 	if (joinName)
 	{
-		MemSet(typeId, 0, FUNC_MAX_ARGS * sizeof(Oid));
 		typeId[0] = INTERNALOID;	/* Query */
 		typeId[1] = OIDOID;		/* operator OID */
 		typeId[2] = INTERNALOID;	/* args list */

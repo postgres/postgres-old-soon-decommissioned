@@ -1179,10 +1179,7 @@ ExecCallTriggerFunc(TriggerData *trigdata,
 	/*
 	 * Call the function, passing no arguments but setting a context.
 	 */
-	MemSet(&fcinfo, 0, sizeof(fcinfo));
-
-	fcinfo.flinfo = finfo;
-	fcinfo.context = (Node *) trigdata;
+	InitFunctionCallInfoData(fcinfo, finfo, 0, (Node *) trigdata, NULL);
 
 	result = FunctionCallInvoke(&fcinfo);
 

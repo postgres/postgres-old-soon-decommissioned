@@ -3120,7 +3120,7 @@ WriteControlFile(void)
 	ControlFile->xlog_seg_size = XLOG_SEG_SIZE;
 
 	ControlFile->nameDataLen = NAMEDATALEN;
-	ControlFile->funcMaxArgs = FUNC_MAX_ARGS;
+	ControlFile->indexMaxKeys = INDEX_MAX_KEYS;
 
 #ifdef HAVE_INT64_TIMESTAMP
 	ControlFile->enableIntTimes = TRUE;
@@ -3285,12 +3285,12 @@ ReadControlFile(void)
 					 " but the server was compiled with NAMEDATALEN %d.",
 						   ControlFile->nameDataLen, NAMEDATALEN),
 			 errhint("It looks like you need to recompile or initdb.")));
-	if (ControlFile->funcMaxArgs != FUNC_MAX_ARGS)
+	if (ControlFile->indexMaxKeys != INDEX_MAX_KEYS)
 		ereport(FATAL,
 				(errmsg("database files are incompatible with server"),
-				 errdetail("The database cluster was initialized with FUNC_MAX_ARGS %d,"
-				   " but the server was compiled with FUNC_MAX_ARGS %d.",
-						   ControlFile->funcMaxArgs, FUNC_MAX_ARGS),
+				 errdetail("The database cluster was initialized with INDEX_MAX_KEYS %d,"
+				   " but the server was compiled with INDEX_MAX_KEYS %d.",
+						   ControlFile->indexMaxKeys, INDEX_MAX_KEYS),
 			 errhint("It looks like you need to recompile or initdb.")));
 
 #ifdef HAVE_INT64_TIMESTAMP

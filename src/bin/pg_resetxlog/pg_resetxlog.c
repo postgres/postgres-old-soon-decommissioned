@@ -417,7 +417,7 @@ GuessControlValues(void)
 	ControlFile.relseg_size = RELSEG_SIZE;
 	ControlFile.xlog_seg_size = XLOG_SEG_SIZE;
 	ControlFile.nameDataLen = NAMEDATALEN;
-	ControlFile.funcMaxArgs = FUNC_MAX_ARGS;
+	ControlFile.indexMaxKeys = INDEX_MAX_KEYS;
 #ifdef HAVE_INT64_TIMESTAMP
 	ControlFile.enableIntTimes = TRUE;
 #else
@@ -481,7 +481,7 @@ PrintControlValues(bool guessed)
 	printf(_("Database block size:                  %u\n"), ControlFile.blcksz);
 	printf(_("Blocks per segment of large relation: %u\n"), ControlFile.relseg_size);
 	printf(_("Maximum length of identifiers:        %u\n"), ControlFile.nameDataLen);
-	printf(_("Maximum number of function arguments: %u\n"), ControlFile.funcMaxArgs);
+	printf(_("Maximum columns in an index:          %u\n"), ControlFile.indexMaxKeys);
 	printf(_("Date/time type storage:               %s\n"),
 		   (ControlFile.enableIntTimes ? _("64-bit integers") : _("floating-point numbers")));
 	printf(_("Maximum length of locale name:        %u\n"), ControlFile.localeBuflen);

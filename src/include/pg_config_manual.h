@@ -52,17 +52,27 @@
 #define XLOG_SEG_SIZE	(16*1024*1024)
 
 /*
- * Maximum number of columns in an index and maximum number of
- * arguments to a function. They must be the same value.
+ * Maximum number of arguments to a function.
  *
  * The minimum value is 8 (index creation uses 8-argument functions).
- * There is no specific upper limit, although large values will waste
- * system-table space and processing time.
+ * The maximum possible value is around 600 (limited by index tuple size in
+ * pg_proc's index; BLCKSZ larger than 8K would allow more).  Values larger
+ * than needed will waste memory and processing time, but do not directly
+ * cost disk space.
  *
- * Changing these requires an initdb.
+ * Changing this does not require an initdb, but it does require a full
+ * backend recompile (including any user-defined C functions).
+ */
+#define FUNC_MAX_ARGS		100
+
+/*
+ * Maximum number of columns in an index.  There is little point in making
+ * this anything but a multiple of 32, because the main cost is associated
+ * with index tuple header size (see access/itup.h).
+ *
+ * Changing this requires an initdb.
  */
 #define INDEX_MAX_KEYS		32
-#define FUNC_MAX_ARGS		INDEX_MAX_KEYS
 
 /*
  * Define this to make libpgtcl's "pg_result -assign" command process

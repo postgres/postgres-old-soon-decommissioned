@@ -116,7 +116,7 @@ typedef struct ControlFileData
 	uint32		xlog_seg_size;	/* size of each WAL segment */
 
 	uint32		nameDataLen;	/* catalog name field width */
-	uint32		funcMaxArgs;	/* maximum number of function arguments */
+	uint32		indexMaxKeys;	/* max number of columns in an index */
 
 	/* flag indicating internal format of timestamp, interval, time */
 	uint32		enableIntTimes; /* int64 storage enabled? */
