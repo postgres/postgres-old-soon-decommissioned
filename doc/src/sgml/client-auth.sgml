@@ -53,6 +53,7 @@
    <synopsis>
 local <replaceable>database</replaceable> <replaceable>authentication-method</replaceable> [ <replaceable>authentication-option</replaceable> ]
 host <replaceable>database</replaceable> <replaceable>IP-address</replaceable> <replaceable>IP-mask</replaceable> <replaceable>authentication-method</replaceable> [ <replaceable>authentication-option</replaceable> ]
+hostssl <replaceable>database</replaceable> <replaceable>IP-address</replaceable> <replaceable>IP-mask</replaceable> <replaceable>authentication-method</replaceable> [ <replaceable>authentication-option</replaceable> ]
     </synopsis>
    The meaning of the fields is as follows:
 
@@ -75,6 +76,20 @@ host <replaceable>database</replaceable> <replaceable>IP-address</replaceable> <
        networks. Note that TCP/IP connections are completely disabled
        unless the server is started with the <option>-i</option> or
        the equivalent configuration parameter is set.
+      </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry>
+     <term><literal>hostssl</literal></term>
+     <listitem>
+      <para>
+       This record pertains to connection attemps with SSL over
+       TCP/IP. Note that SSL connections are completely disabled
+       unless the server is started with the <option>-i</option>,
+       and also require ordinary TCP/IP connections to be enabled.
+       SSL connections also require SSL support to be enabled in
+       the backend at compile time.
       </para>
      </listitem>
     </varlistentry>
