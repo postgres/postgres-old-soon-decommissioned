@@ -13,6 +13,8 @@
 #ifndef FASTPATH_H
 #define FASTPATH_H
 
-extern int	HandleFunctionRequest(void);
+#include "lib/stringinfo.h"
+
+extern int	HandleFunctionRequest(StringInfo msgBuf);
 
 #endif   /* FASTPATH_H */

@@ -110,13 +110,6 @@
 extern void ExitPostmaster(int);
 extern void postmaster_error(const char *fmt,...);
 
-int			secure_initialize(void);
-void		secure_destroy(void);
-int			secure_open_server(Port *);
-void		secure_close(Port *);
-ssize_t		secure_read(Port *, void *ptr, size_t len);
-ssize_t		secure_write(Port *, void *ptr, size_t len);
-
 #ifdef USE_SSL
 static DH  *load_dh_file(int keylength);
 static DH  *load_dh_buffer(const char *, size_t);

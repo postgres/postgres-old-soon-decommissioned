@@ -284,7 +284,6 @@ extern int	PQisnonblocking(const PGconn *conn);
 
 /* Force the write buffer to be written (or at least try) */
 extern int	PQflush(PGconn *conn);
-extern int	PQsendSome(PGconn *conn);
 
 /*
  * "Fast path" interface --- not really recommended for application
