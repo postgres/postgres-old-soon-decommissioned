@@ -19,10 +19,12 @@
 
 extern void cluster(ClusterStmt *stmt);
 
+extern void check_index_is_clusterable(Relation OldHeap, Oid indexOid);
 extern void rebuild_relation(Relation OldHeap, Oid indexOid);
 extern Oid	make_new_heap(Oid OIDOldHeap, const char *NewName);
-extern List *get_indexattr_list(Relation OldHeap, Oid OldIndex);
-extern void rebuild_indexes(Oid OIDOldHeap, List *indexes);
+extern List *get_indexattr_list(Relation OldHeap, Oid *OldClusterIndex);
+extern void rebuild_indexes(Oid OIDOldHeap, List *indexes,
+							Oid OIDClusterIndex);
 extern void swap_relfilenodes(Oid r1, Oid r2);
 
 #endif   /* CLUSTER_H */

@@ -32,6 +32,8 @@ extern void CacheInvalidateRelcache(Relation relation);
 
 extern void CacheInvalidateRelcacheByTuple(HeapTuple classTuple);
 
+extern void CacheInvalidateRelcacheByRelid(Oid relid);
+
 extern void CacheRegisterSyscacheCallback(int cacheid,
 							  CacheCallbackFunction func,
 							  Datum arg);
