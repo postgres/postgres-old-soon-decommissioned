@@ -569,20 +569,37 @@ pq_getbytes(char *s, size_t len)
 int
 pq_getstring(StringInfo s)
 {
-	int			c;
+	int			i;
 
 	/* Reset string to empty */
 	s->len = 0;
 	s->data[0] = '\0';
 
 	/* Read until we get the terminating '\0' */
-	while ((c = pq_getbyte()) != EOF && c != '\0')
-		appendStringInfoCharMacro(s, c);
+	for(;;)
+	{
+		while (PqRecvPointer >= PqRecvLength)
+		{
+			if (pq_recvbuf())		/* If nothing in buffer, then recv some */
+				return EOF;			/* Failed to recv data */
+		}
 
-	if (c == EOF)
-		return EOF;
+		for (i = PqRecvPointer; i < PqRecvLength; i++)
+			if (PqRecvBuffer[i] == '\0')
+			{
+				/* does not copy the \0 */
+				appendBinaryStringInfo(s, PqRecvBuffer + PqRecvPointer,
+									   i - PqRecvPointer);
+				PqRecvPointer += i + 1;
+				return 0;
+			}
 
-	return 0;
+		/* If we're here we haven't got the \0 in the buffer yet. */
+
+		appendBinaryStringInfo(s, PqRecvBuffer + PqRecvPointer,
+							   PqRecvLength - PqRecvPointer);
+		PqRecvPointer = PqRecvLength;
+	}
 }
 
 
