@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/sh -x
 # $Header$
 
 me=`basename $0`
@@ -328,6 +328,12 @@ then
         (exit 2); exit
     fi
 
+    # fix conversion shared objs path
+    conv=$datadir/conversion_create.sql
+    backup=$conv.bak
+    mv $conv $backup
+    sed -e "s@\$libdir@$pkglibdir@g" $backup > $conv
+    rm $backup
 
     message "initializing database system"
     [ "$debug" = yes ] && initdb_options='--debug'
