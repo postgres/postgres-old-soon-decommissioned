@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Tue Jun 24 19:05:15 EDT 2003
+Last updated:		Tue Jun 24 22:43:52 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -466,6 +466,8 @@ Source Code
 * Rename /scripts directory because they are all C programs now
 * Allow the regression tests to start postmaster with -i so the tests
   can be run on systems that don't support unix-domain sockets
+* Allow creation of a libpq-only tarball
+
 
 * Wire Protocol Changes
 	o Show transaction status in psql
