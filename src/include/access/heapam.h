@@ -216,6 +216,8 @@ extern HeapAccessStatistics heap_access_stats;	/* in stats.c */
 
 extern Relation heap_open(Oid relationId, LOCKMODE lockmode);
 extern Relation heap_openr(const char *relationName, LOCKMODE lockmode);
+extern Relation heap_open_nofail(Oid relationId);
+extern Relation heap_openr_nofail(const char *relationName);
 extern void heap_close(Relation relation, LOCKMODE lockmode);
 extern HeapScanDesc heap_beginscan(Relation relation, int atend,
 			   Snapshot snapshot, unsigned nkeys, ScanKey key);

@@ -481,8 +481,6 @@ ExecInitTidScan(TidScan *node, EState *estate, Plan *parent)
 	reloid = rtentry->relid;
 
 	currentRelation = heap_open(reloid, AccessShareLock);
-	if (currentRelation == NULL)
-		elog(ERROR, "ExecInitTidScan heap_open failed.");
 	scanstate->css_currentRelation = currentRelation;
 	scanstate->css_currentScanDesc = 0;
 

@@ -1614,8 +1614,6 @@ LockTableCommand(LockStmt *lockstmt)
 	int			aclresult;
 
 	rel = heap_openr(lockstmt->relname, NoLock);
-	if (!RelationIsValid(rel))
-		elog(ERROR, "Relation '%s' does not exist", lockstmt->relname);
 
 	if (lockstmt->mode == AccessShareLock)
 		aclresult = pg_aclcheck(lockstmt->relname, GetPgUserName(), ACL_RD);

@@ -92,9 +92,6 @@ CreateTrigger(CreateTrigStmt *stmt)
 			 * interested in getting the relation's OID...
 			 */
 			rel = heap_openr(stmt->constrrelname, NoLock);
-			if (rel == NULL)
-				elog(ERROR, "table \"%s\" does not exist",
-					 stmt->constrrelname);
 			constrrelid = rel->rd_id;
 			heap_close(rel, NoLock);
 		}
@@ -440,12 +437,12 @@ RelationRemoveTriggers(Relation rel)
 		pg_trigger = (Form_pg_trigger) GETSTRUCT(tup);
 
 		refrel = heap_open(pg_trigger->tgrelid, NoLock);
-
 		stmt.relname = pstrdup(RelationGetRelationName(refrel));
+		heap_close(refrel, NoLock);
+
 		stmt.trigname = DatumGetCString(DirectFunctionCall1(nameout,
 						NameGetDatum(&pg_trigger->tgname)));
 
-		heap_close(refrel, NoLock);
 
 		elog(NOTICE, "DROP TABLE implicitly drops referential integrity trigger from table \"%s\"", stmt.relname);
 

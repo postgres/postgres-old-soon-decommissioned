@@ -1134,7 +1134,6 @@ RelationTruncateIndexes(Relation heapRelation)
 		 * by heap_truncate.
 		 */
 		heapRelation = heap_open(heapId, NoLock);
-		Assert(heapRelation != NULL);
 	}
 
 	/* Complete the scan and close pg_index */

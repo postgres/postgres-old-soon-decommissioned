@@ -408,9 +408,7 @@ InitializeTransactionLog(void)
 	 * ----------------
 	 */
 	logRelation = heap_openr(LogRelationName, NoLock);
-	Assert(logRelation != NULL);
 	VariableRelation = heap_openr(VariableRelationName, NoLock);
-	Assert(VariableRelation != NULL);
 
 	/* ----------------
 	 *	 XXX TransactionLogUpdate requires that LogRelation
