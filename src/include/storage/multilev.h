@@ -49,7 +49,7 @@ extern LockTableId ShortTermTableId;
 /*
  * function prototypes
  */
-extern LockTableId InitMultiLevelLockm(void);
+extern LockTableId InitMultiLevelLocks(void);
 extern bool MultiLockReln(LockInfo linfo, LOCKT lockt);
 extern bool MultiLockTuple(LockInfo linfo, ItemPointer tidPtr, LOCKT lockt);
 extern bool MultiLockPage(LockInfo linfo, ItemPointer tidPtr, LOCKT lockt);
