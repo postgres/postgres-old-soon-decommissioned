@@ -24,6 +24,7 @@
 #include "catalog/pg_operator.h"
 #include "catalog/pg_rewrite.h"
 #include "catalog/pg_trigger.h"
+#include "catalog/pg_type.h"
 #include "commands/comment.h"
 #include "commands/dbcommands.h"
 #include "miscadmin.h"
@@ -628,7 +629,7 @@ CommentAggregate(List *aggregate, List *arguments, char *comment)
 	if (aggtype)
 		baseoid = typenameTypeId(aggtype);
 	else
-		baseoid = InvalidOid;
+		baseoid = ANYOID;
 
 	/* Now, attempt to find the actual tuple in pg_proc */
 
@@ -661,7 +662,7 @@ CommentProc(List *function, List *arguments, char *comment)
 	/* Look up the procedure */
 
 	oid = LookupFuncNameTypeNames(function, arguments,
-								  true, "CommentProc");
+								  "CommentProc");
 
 	/* Now, validate the user's ability to comment on this function */
 

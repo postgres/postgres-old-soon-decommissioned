@@ -58,6 +58,6 @@ extern Oid	find_aggregate_func(const char *caller, List *aggname,
 
 extern Oid	LookupFuncName(List *funcname, int nargs, const Oid *argtypes);
 extern Oid	LookupFuncNameTypeNames(List *funcname, List *argtypes,
-									bool opaqueOK, const char *caller);
+									const char *caller);
 
 #endif   /* PARSE_FUNC_H */

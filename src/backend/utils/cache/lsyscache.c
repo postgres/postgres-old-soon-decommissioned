@@ -1166,6 +1166,34 @@ get_typtype(Oid typid)
 		return '\0';
 }
 
+/*
+ * getTypeOutputInfo
+ *
+ *		Get info needed for printing values of a type
+ *
+ * Returns true if data valid (a false result probably means it's a shell type)
+ */
+bool
+getTypeOutputInfo(Oid type, Oid *typOutput, Oid *typElem,
+				  bool *typIsVarlena)
+{
+	HeapTuple	typeTuple;
+	Form_pg_type pt;
+
+	typeTuple = SearchSysCache(TYPEOID,
+							   ObjectIdGetDatum(type),
+							   0, 0, 0);
+	if (!HeapTupleIsValid(typeTuple))
+		elog(ERROR, "getTypeOutputInfo: Cache lookup of type %u failed", type);
+	pt = (Form_pg_type) GETSTRUCT(typeTuple);
+
+	*typOutput = pt->typoutput;
+	*typElem = pt->typelem;
+	*typIsVarlena = (!pt->typbyval) && (pt->typlen == -1);
+	ReleaseSysCache(typeTuple);
+	return OidIsValid(*typOutput);
+}
+
 
 /*				---------- STATISTICS CACHE ----------					 */
 

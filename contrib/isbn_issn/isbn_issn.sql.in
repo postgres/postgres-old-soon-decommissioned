@@ -12,13 +12,13 @@ SET search_path = public;
 --	Input and output functions and the type itself:
 --
 
-create function issn_in(opaque)
-	returns opaque
+create function issn_in(cstring)
+	returns issn
 	as 'MODULE_PATHNAME'
 	language 'c';
 
-create function issn_out(opaque)
-	returns opaque
+create function issn_out(issn)
+	returns cstring
 	as 'MODULE_PATHNAME'
 	language 'c';
 
@@ -129,13 +129,13 @@ create operator <> (
 --	Input and output functions and the type itself:
 --
 
-create function isbn_in(opaque)
-	returns opaque
+create function isbn_in(cstring)
+	returns isbn
 	as 'MODULE_PATHNAME'
 	language 'c';
 
-create function isbn_out(opaque)
-	returns opaque
+create function isbn_out(isbn)
+	returns cstring
 	as 'MODULE_PATHNAME'
 	language 'c';
 

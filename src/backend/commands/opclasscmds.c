@@ -177,7 +177,7 @@ DefineOpClass(CreateOpClassStmt *stmt)
 					elog(ERROR, "DefineOpClass: procedure number %d appears more than once",
 						 item->number);
 				funcOid = LookupFuncNameTypeNames(item->name, item->args,
-												  true, "DefineOpClass");
+												  "DefineOpClass");
 				/* Caller must have execute permission on functions */
 				aclresult = pg_proc_aclcheck(funcOid, GetUserId(),
 											 ACL_EXECUTE);

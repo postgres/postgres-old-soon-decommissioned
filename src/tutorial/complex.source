@@ -28,7 +28,7 @@
 -- (in memory) representation. You will get a message telling you 'complex'
 -- does not exist yet but that's okay.
 
-CREATE FUNCTION complex_in(opaque)
+CREATE FUNCTION complex_in(cstring)
    RETURNS complex
    AS '_OBJWD_/complex'
    LANGUAGE 'c';
@@ -36,8 +36,8 @@ CREATE FUNCTION complex_in(opaque)
 -- the output function 'complex_out' takes the internal representation and
 -- converts it into the textual representation.
 
-CREATE FUNCTION complex_out(opaque)
-   RETURNS opaque
+CREATE FUNCTION complex_out(complex)
+   RETURNS cstring
    AS '_OBJWD_/complex'
    LANGUAGE 'c';
 
@@ -195,4 +195,3 @@ SELECT * from test_complex where a > '(56.0,-22.5)';
 -- clean up the example
 DROP TABLE test_complex;
 DROP TYPE complex CASCADE;
-DROP FUNCTION complex_out(opaque);

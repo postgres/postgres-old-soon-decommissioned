@@ -52,6 +52,8 @@ extern void get_typlenbyval(Oid typid, int16 *typlen, bool *typbyval);
 extern char get_typstorage(Oid typid);
 extern Node *get_typdefault(Oid typid);
 extern char get_typtype(Oid typid);
+extern bool getTypeOutputInfo(Oid type, Oid *typOutput, Oid *typElem,
+							  bool *typIsVarlena);
 extern Oid getBaseType(Oid typid);
 extern Oid getBaseTypeTypeMod(Oid typid, int32 *typmod);
 extern int32 get_typavgwidth(Oid typid, int32 typmod);

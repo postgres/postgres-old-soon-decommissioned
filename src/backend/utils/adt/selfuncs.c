@@ -53,7 +53,7 @@
  *
  * This is represented at the SQL level (in pg_proc) as
  *
- *		float8 oprrest (opaque, oid, opaque, int4);
+ *		float8 oprrest (internal, oid, internal, int4);
  *
  * The call convention for a join estimator (oprjoin function) is similar
  * except that varRelid is not needed:
@@ -62,7 +62,7 @@
  *							 Oid operator,
  *							 List *args);
  *
- *		float8 oprjoin (opaque, oid, opaque);
+ *		float8 oprjoin (internal, oid, internal);
  *----------
  */
 

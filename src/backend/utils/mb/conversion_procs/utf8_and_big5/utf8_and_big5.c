@@ -27,10 +27,10 @@ extern Datum utf8_to_big5(PG_FUNCTION_ARGS);
  * conv_proc(
  *		INTEGER,	-- source encoding id
  *		INTEGER,	-- destination encoding id
- *		OPAQUE,		-- source string (null terminated C string)
- *		OPAQUE,		-- destination string (null terminated C string)
+ *		CSTRING,	-- source string (null terminated C string)
+ *		CSTRING,	-- destination string (null terminated C string)
  *		INTEGER		-- source string length
- * ) returns INTEGER;	-- dummy. returns nothing, actually.
+ * ) returns VOID;
  * ----------
  */
 Datum

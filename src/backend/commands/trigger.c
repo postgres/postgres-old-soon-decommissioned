@@ -23,6 +23,7 @@
 #include "catalog/pg_language.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_trigger.h"
+#include "catalog/pg_type.h"
 #include "commands/trigger.h"
 #include "executor/executor.h"
 #include "miscadmin.h"
@@ -222,9 +223,15 @@ CreateTrigger(CreateTrigStmt *stmt, bool forConstraint)
 	if (!HeapTupleIsValid(tuple))
 		elog(ERROR, "CreateTrigger: function %s() does not exist",
 			 NameListToString(stmt->funcname));
-	if (((Form_pg_proc) GETSTRUCT(tuple))->prorettype != 0)
-		elog(ERROR, "CreateTrigger: function %s() must return OPAQUE",
-			 NameListToString(stmt->funcname));
+	if (((Form_pg_proc) GETSTRUCT(tuple))->prorettype != TRIGGEROID)
+	{
+		/* OPAQUE is deprecated, but allowed for backwards compatibility */
+		if (((Form_pg_proc) GETSTRUCT(tuple))->prorettype == OPAQUEOID)
+			elog(NOTICE, "CreateTrigger: OPAQUE is deprecated, use type TRIGGER instead to define trigger functions");
+		else
+			elog(ERROR, "CreateTrigger: function %s() must return TRIGGER",
+				 NameListToString(stmt->funcname));
+	}
 	ReleaseSysCache(tuple);
 
 	/*

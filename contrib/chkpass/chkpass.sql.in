@@ -13,13 +13,13 @@
 --	Input and output functions and the type itself:
 --
 
-create function chkpass_in(opaque)
-	returns opaque
+create function chkpass_in(cstring)
+	returns chkpass
 	as 'MODULE_PATHNAME'
 	language 'c';
 
-create function chkpass_out(opaque)
-	returns opaque
+create function chkpass_out(chkpass)
+	returns cstring
 	as 'MODULE_PATHNAME'
 	language 'c';
 

@@ -376,7 +376,7 @@ ExecuteGrantStmt_Function(GrantStmt *stmt)
 		char		replaces[Natts_pg_proc];
 
 		oid = LookupFuncNameTypeNames(func->funcname, func->funcargs,
-									  true, stmt->is_grant ? "GRANT" : "REVOKE");
+									  stmt->is_grant ? "GRANT" : "REVOKE");
 
 		relation = heap_openr(ProcedureRelationName, RowExclusiveLock);
 		tuple = SearchSysCache(PROCOID,

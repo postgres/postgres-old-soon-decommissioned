@@ -74,6 +74,7 @@ typedef struct _aggInfo
 	NamespaceInfo *aggnamespace;	/* link to containing namespace */
 	char	   *usename;
 	char	   *aggacl;
+	bool		anybasetype;	/* is the basetype "any"? */
 	char	   *fmtbasetype;	/* formatted type name */
 } AggInfo;
 

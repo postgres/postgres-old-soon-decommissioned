@@ -270,7 +270,7 @@ fi
 # Create the call handler and the language
 # ----------
 if [ "$handlerexists" = no ]; then
-	sqlcmd="CREATE FUNCTION \"$handler\" () RETURNS OPAQUE AS '$PGLIB/${object}' LANGUAGE C;"
+	sqlcmd="CREATE FUNCTION \"$handler\" () RETURNS LANGUAGE_HANDLER AS '$PGLIB/${object}' LANGUAGE C;"
 	if [ "$showsql" = yes ]; then
 		echo "$sqlcmd"
 	fi
