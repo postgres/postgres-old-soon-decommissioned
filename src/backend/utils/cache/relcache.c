@@ -56,6 +56,7 @@
 #include "utils/builtins.h"
 #include "utils/catcache.h"
 #include "utils/relcache.h"
+#include "utils/temprel.h"
 
 
 static void RelationFlushRelation(Relation *relationPtr,
@@ -1182,6 +1183,7 @@ RelationIdGetRelation(Oid relationId)
 Relation
 RelationNameGetRelation(char *relationName)
 {
+	char	   *temprelname;
 	Relation	rd;
 	RelationBuildDescInfo buildinfo;
 
@@ -1191,6 +1193,15 @@ RelationNameGetRelation(char *relationName)
 	 */
 	IncrHeapAccessStat(local_RelationNameGetRelation);
 	IncrHeapAccessStat(global_RelationNameGetRelation);
+
+	/* ----------------
+	 *	if caller is looking for a temp relation, substitute its real name;
+	 *	we only index temp rels by their real names.
+	 * ----------------
+	 */
+	temprelname = get_temp_rel_by_name(relationName);
+	if (temprelname)
+		relationName = temprelname;
 
 	/* ----------------
 	 *	first try and get a reldesc from the cache
@@ -1211,26 +1222,6 @@ RelationNameGetRelation(char *relationName)
 	rd = RelationBuildDesc(buildinfo, NULL);
 	return rd;
 }
-
-/* ----------------
- *		old "getreldesc" interface.
- * ----------------
- */
-#ifdef NOT_USED
-Relation
-getreldesc(char *relationName)
-{
-	/* ----------------
-	 *	increment access statistics
-	 * ----------------
-	 */
-	IncrHeapAccessStat(local_getreldesc);
-	IncrHeapAccessStat(global_getreldesc);
-
-	return RelationNameGetRelation(relationName);
-}
-
-#endif
 
 /* ----------------------------------------------------------------
  *				cache invalidation support routines
