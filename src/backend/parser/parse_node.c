@@ -450,7 +450,10 @@ make_const(Value *value)
 			}
 			else
 			{
-				val = PointerGetDatum(numeric_in(strVal(value), 0, -1));
+				val = DirectFunctionCall3(numeric_in,
+										  CStringGetDatum(strVal(value)),
+										  ObjectIdGetDatum(InvalidOid),
+										  Int32GetDatum(-1));
 
 				typeid = NUMERICOID;
 				typelen = -1;	/* variable len */

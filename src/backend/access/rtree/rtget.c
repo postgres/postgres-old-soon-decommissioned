@@ -28,21 +28,23 @@ static RetrieveIndexResult rtnext(IndexScanDesc s, ScanDirection dir);
 static ItemPointer rtheapptr(Relation r, ItemPointer itemp);
 
 
-RetrieveIndexResult
-rtgettuple(IndexScanDesc s, ScanDirection dir)
+Datum
+rtgettuple(PG_FUNCTION_ARGS)
 {
+	IndexScanDesc		s = (IndexScanDesc) PG_GETARG_POINTER(0);
+	ScanDirection		dir = (ScanDirection) PG_GETARG_INT32(1);
 	RetrieveIndexResult res;
 
 	/* if we have it cached in the scan desc, just return the value */
 	if ((res = rtscancache(s, dir)) != (RetrieveIndexResult) NULL)
-		return res;
+		PG_RETURN_POINTER(res);
 
 	/* not cached, so we'll have to do some work */
 	if (ItemPointerIsValid(&(s->currentItemData)))
 		res = rtnext(s, dir);
 	else
 		res = rtfirst(s, dir);
-	return res;
+	PG_RETURN_POINTER(res);
 }
 
 static RetrieveIndexResult

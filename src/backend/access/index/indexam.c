@@ -195,13 +195,12 @@ index_insert(Relation relation,
 	 * ----------------
 	 */
 	specificResult = (InsertIndexResult)
-		DatumGetPointer(OidFunctionCall6(procedure,
+		DatumGetPointer(OidFunctionCall5(procedure,
 										 PointerGetDatum(relation),
 										 PointerGetDatum(datum),
 										 PointerGetDatum(nulls),
 										 PointerGetDatum(heap_t_ctid),
-										 PointerGetDatum(heapRel),
-										 PointerGetDatum(NULL)));
+										 PointerGetDatum(heapRel)));
 
 	/* must be pfree'ed */
 	return specificResult;

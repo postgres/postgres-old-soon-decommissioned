@@ -122,11 +122,11 @@ extern unsigned char *pg_client_to_server(unsigned char *, int);
 extern unsigned char *pg_server_to_client(unsigned char *, int);
 extern int	pg_valid_client_encoding(const char *);
 
-/* moved to miscadmin.h
- * pg_proc.h now have them.
+/* internally-used versions of functions.  The PG_xxx forms of these
+ * functions have fmgr-compatible interfaves.
+ */
 extern const char *pg_encoding_to_char(int);
 extern int	pg_char_to_encoding(const char *);
-*/
 
 extern int	GetDatabaseEncoding(void);
 extern void SetDatabaseEncoding(int);

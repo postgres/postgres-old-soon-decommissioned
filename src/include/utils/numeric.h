@@ -71,4 +71,13 @@ typedef NumericData *Numeric;
 #define NUMERIC_HDRSZ	(sizeof(int32) + sizeof(uint16) * 3)
 
 
+/*
+ * fmgr interface macros
+ */
+
+#define DatumGetNumeric(X)    ((Numeric) PG_DETOAST_DATUM(X))
+#define NumericGetDatum(X)    PointerGetDatum(X)
+#define PG_GETARG_NUMERIC(n)  DatumGetNumeric(PG_GETARG_DATUM(n))
+#define PG_RETURN_NUMERIC(x)  return NumericGetDatum(x)
+
 #endif	 /* _PG_NUMERIC_H_ */

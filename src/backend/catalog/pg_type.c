@@ -409,8 +409,8 @@ TypeCreate(char *typeName,
 			/*
 			 * For array types, the input procedures may take 3 args (data
 			 * value, element OID, atttypmod); the pg_proc argtype
-			 * signature is 0,0,INT4OID.  The output procedures may take 2
-			 * args (data value, element OID).
+			 * signature is 0,OIDOID,INT4OID.  The output procedures may
+			 * take 2 args (data value, element OID).
 			 */
 			if (OidIsValid(elementObjectId))
 			{
@@ -420,11 +420,13 @@ TypeCreate(char *typeName,
 				{
 					/* output proc */
 					nargs = 2;
+					argList[1] = OIDOID;
 				}
 				else
 				{
 					/* input proc */
 					nargs = 3;
+					argList[1] = OIDOID;
 					argList[2] = INT4OID;
 				}
 				tup = SearchSysCacheTuple(PROCNAME,

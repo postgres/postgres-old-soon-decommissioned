@@ -102,13 +102,15 @@ rt_poly_union(POLYGON *a, POLYGON *b)
 	return p;
 }
 
-void
-rt_poly_size(POLYGON *a, float *size)
+Datum
+rt_poly_size(PG_FUNCTION_ARGS)
 {
+	POLYGON	   *a = PG_GETARG_POLYGON_P(0);
+	/* NB: size is an output argument */
+	float	   *size = (float *) PG_GETARG_POINTER(1);
 	double		xdim,
 				ydim;
 
-	size = (float *) palloc(sizeof(float));
 	if (a == (POLYGON *) NULL ||
 		a->boundbox.high.x <= a->boundbox.low.x ||
 		a->boundbox.high.y <= a->boundbox.low.y)
@@ -121,7 +123,7 @@ rt_poly_size(POLYGON *a, float *size)
 		*size = (float) (xdim * ydim);
 	}
 
-	return;
+	PG_RETURN_POINTER(NULL);	/* no real return value */
 }
 
 POLYGON    *
