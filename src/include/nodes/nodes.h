@@ -238,6 +238,7 @@ typedef enum NodeTag
 	T_PrivTarget,
 	T_InsertDefault,
 	T_CreateOpClassItem,
+	T_CompositeTypeStmt,
 
 	/*
 	 * TAGS FOR FUNCTION-CALL CONTEXT AND RESULTINFO NODES (see fmgr.h)

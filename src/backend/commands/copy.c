@@ -398,6 +398,9 @@ DoCopy(const CopyStmt *stmt)
 			if (rel->rd_rel->relkind == RELKIND_VIEW)
 				elog(ERROR, "You cannot copy view %s",
 					 RelationGetRelationName(rel));
+			else if (rel->rd_rel->relkind == RELKIND_COMPOSITE_TYPE)
+				elog(ERROR, "You cannot copy type relation %s",
+					 RelationGetRelationName(rel));
 			else if (rel->rd_rel->relkind == RELKIND_SEQUENCE)
 				elog(ERROR, "You cannot change sequence relation %s",
 					 RelationGetRelationName(rel));
@@ -442,6 +445,9 @@ DoCopy(const CopyStmt *stmt)
 		{
 			if (rel->rd_rel->relkind == RELKIND_VIEW)
 				elog(ERROR, "You cannot copy view %s",
+					 RelationGetRelationName(rel));
+			else if (rel->rd_rel->relkind == RELKIND_COMPOSITE_TYPE)
+				elog(ERROR, "You cannot copy type relation %s",
 					 RelationGetRelationName(rel));
 			else if (rel->rd_rel->relkind == RELKIND_SEQUENCE)
 				elog(ERROR, "You cannot copy sequence %s",

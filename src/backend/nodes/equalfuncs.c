@@ -1062,6 +1062,17 @@ _equalTransactionStmt(TransactionStmt *a, TransactionStmt *b)
 }
 
 static bool
+_equalCompositeTypeStmt(CompositeTypeStmt *a, CompositeTypeStmt *b)
+{
+	if (!equal(a->typevar, b->typevar))
+		return false;
+	if (!equal(a->coldeflist, b->coldeflist))
+		return false;
+
+	return true;
+}
+
+static bool
 _equalViewStmt(ViewStmt *a, ViewStmt *b)
 {
 	if (!equal(a->view, b->view))
@@ -2110,6 +2121,9 @@ equal(void *a, void *b)
 			break;
 		case T_TransactionStmt:
 			retval = _equalTransactionStmt(a, b);
+			break;
+		case T_CompositeTypeStmt:
+			retval = _equalCompositeTypeStmt(a, b);
 			break;
 		case T_ViewStmt:
 			retval = _equalViewStmt(a, b);

@@ -210,9 +210,12 @@ describeTypes(const char *pattern, bool verbose)
 
 	/*
 	 * do not include array types (start with underscore), do not include
-	 * user relations (typrelid!=0)
+	 * user relations (typrelid!=0) unless they are type relations
 	 */
-	appendPQExpBuffer(&buf, "WHERE t.typrelid = 0 AND t.typname !~ '^_'\n");
+	appendPQExpBuffer(&buf, "WHERE (t.typrelid = 0 ");
+	appendPQExpBuffer(&buf, "OR (SELECT c.relkind = 'c' FROM pg_class c "
+							  "where c.oid = t.typrelid)) ");
+	appendPQExpBuffer(&buf, "AND t.typname !~ '^_'\n");
 
 	/* Match name pattern against either internal or external name */
 	processNamePattern(&buf, pattern, true, false,

@@ -786,6 +786,10 @@ initResultRelInfo(ResultRelInfo *resultRelInfo,
 			elog(ERROR, "You can't change view relation %s",
 				 RelationGetRelationName(resultRelationDesc));
 			break;
+		case RELKIND_COMPOSITE_TYPE:
+			elog(ERROR, "You can't change type relation %s",
+				 RelationGetRelationName(resultRelationDesc));
+			break;
 	}
 
 	MemSet(resultRelInfo, 0, sizeof(ResultRelInfo));

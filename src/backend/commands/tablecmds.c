@@ -345,6 +345,10 @@ TruncateRelation(const RangeVar *relation)
 		elog(ERROR, "TRUNCATE cannot be used on views. '%s' is a view",
 			 RelationGetRelationName(rel));
 
+	if (rel->rd_rel->relkind == RELKIND_COMPOSITE_TYPE)
+		elog(ERROR, "TRUNCATE cannot be used on type relations. '%s' is a type",
+			 RelationGetRelationName(rel));
+
 	if (!allowSystemTableMods && IsSystemRelation(rel))
 		elog(ERROR, "TRUNCATE cannot be used on system tables. '%s' is a system table",
 			 RelationGetRelationName(rel));
@@ -3210,12 +3214,13 @@ CheckTupleType(Form_pg_class tuple_class)
 		case RELKIND_RELATION:
 		case RELKIND_INDEX:
 		case RELKIND_VIEW:
+		case RELKIND_COMPOSITE_TYPE:
 		case RELKIND_SEQUENCE:
 		case RELKIND_TOASTVALUE:
 			/* ok to change owner */
 			break;
 		default:
-			elog(ERROR, "ALTER TABLE: relation \"%s\" is not a table, TOAST table, index, view, or sequence",
+			elog(ERROR, "ALTER TABLE: relation \"%s\" is not a table, TOAST table, index, view, type, or sequence",
 				 NameStr(tuple_class->relname));
 	}
 }

@@ -263,6 +263,8 @@ smgropen(int16 which, Relation reln, bool failOK)
 
 	if (reln->rd_rel->relkind == RELKIND_VIEW)
 		return -1;
+	if (reln->rd_rel->relkind == RELKIND_COMPOSITE_TYPE)
+		return -1;
 	if ((fd = (*(smgrsw[which].smgr_open)) (reln)) < 0)
 		if (!failOK)
 			elog(ERROR, "cannot open %s: %m", RelationGetRelationName(reln));

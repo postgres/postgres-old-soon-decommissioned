@@ -1051,6 +1051,8 @@ RelationGetNumberOfBlocks(Relation relation)
 	 */
 	if (relation->rd_rel->relkind == RELKIND_VIEW)
 		relation->rd_nblocks = 0;
+	else if (relation->rd_rel->relkind == RELKIND_COMPOSITE_TYPE)
+		relation->rd_nblocks = 0;
 	else if (!relation->rd_isnew && !relation->rd_istemp)
 		relation->rd_nblocks = smgrnblocks(DEFAULT_SMGR, relation);
 	return relation->rd_nblocks;
@@ -1068,6 +1070,8 @@ void
 RelationUpdateNumberOfBlocks(Relation relation)
 {
 	if (relation->rd_rel->relkind == RELKIND_VIEW)
+		relation->rd_nblocks = 0;
+	else if (relation->rd_rel->relkind == RELKIND_COMPOSITE_TYPE)
 		relation->rd_nblocks = 0;
 	else
 		relation->rd_nblocks = smgrnblocks(DEFAULT_SMGR, relation);

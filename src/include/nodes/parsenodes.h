@@ -1402,6 +1402,18 @@ typedef struct TransactionStmt
 } TransactionStmt;
 
 /* ----------------------
+ *		Create Type Statement, composite types
+ * ----------------------
+ */
+typedef struct CompositeTypeStmt
+{
+	NodeTag		type;
+	RangeVar   *typevar;		/* the composite type to be created */
+	List	   *coldeflist;		/* list of ColumnDef nodes */
+} CompositeTypeStmt;
+
+
+/* ----------------------
  *		Create View Statement
  * ----------------------
  */

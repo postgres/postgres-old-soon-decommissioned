@@ -58,6 +58,7 @@ extern void RemoveType(List *names, DropBehavior behavior);
 extern void RemoveTypeById(Oid typeOid);
 extern void DefineDomain(CreateDomainStmt *stmt);
 extern void RemoveDomain(List *names, DropBehavior behavior);
+extern Oid DefineCompositeType(const RangeVar *typevar, List *coldeflist);
 
 extern void DefineOpClass(CreateOpClassStmt *stmt);
 extern void RemoveOpClass(RemoveOpClassStmt *stmt);

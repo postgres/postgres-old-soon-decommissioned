@@ -1585,6 +1585,7 @@ RemoveTempRelations(Oid tempNamespaceId)
 			case RELKIND_RELATION:
 			case RELKIND_SEQUENCE:
 			case RELKIND_VIEW:
+			case RELKIND_COMPOSITE_TYPE:
 				AssertTupleDescHasOid(pgclass->rd_att);
 				object.classId = RelOid_pg_class;
 				object.objectId = HeapTupleGetOid(tuple);

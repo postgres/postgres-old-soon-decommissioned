@@ -47,6 +47,7 @@ typedef struct _typeInfo
 	char	   *usename;		/* name of owner, or empty string */
 	char	   *typelem;		/* OID */
 	char	   *typrelid;		/* OID */
+	char		typrelkind;		/* 'r', 'v', 'c', etc */
 	char		typtype;		/* 'b', 'c', etc */
 	bool		isArray;		/* true if user-defined array type */
 	bool		isDefined;		/* true if typisdefined */
