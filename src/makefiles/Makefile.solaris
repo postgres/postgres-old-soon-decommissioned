@@ -1,7 +1,16 @@
 # $Header$
 
+AROPT = crs
+
 ifeq ($(with_gnu_ld), yes)
 export_dynamic = -Wl,-E
+endif
+
+DLSUFFIX = .so
+ifeq ($(GCC), yes)
+CFLAGS_SL = -fPIC
+else
+CFLAGS_SL = -KPIC
 endif
 
 %.so: %.o
