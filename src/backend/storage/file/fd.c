@@ -344,14 +344,14 @@ _dump_lru(void)
 	Vfd		   *vfdP = &VfdCache[mru];
 	char		buf[2048];
 
-	sprintf(buf, "LRU: MOST %d ", mru);
+	snprintf(buf, sizeof(buf), "LRU: MOST %d ", mru);
 	while (mru != 0)
 	{
 		mru = vfdP->lruLessRecently;
 		vfdP = &VfdCache[mru];
-		sprintf(buf + strlen(buf), "%d ", mru);
+		snprintf(buf + strlen(buf), sizeof(buf) - strlen(buf), "%d ", mru);
 	}
-	sprintf(buf + strlen(buf), "LEAST");
+	snprintf(buf + strlen(buf), sizeof(buf) - strlen(buf), "LEAST");
 	elog(LOG, buf);
 }
 #endif   /* FDDEBUG */

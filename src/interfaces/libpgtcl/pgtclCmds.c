@@ -1579,7 +1579,8 @@ Pg_lo_import(ClientData cData, Tcl_Interp *interp, int argc, char *argv[])
 	lobjId = lo_import(conn, filename);
 	if (lobjId == InvalidOid)
 	{
-		sprintf(interp->result, "Pg_lo_import of '%s' failed", filename);
+		/* What is the maximum size of this? FIXME if this is not a good quess */
+		snprintf(interp->result, 128, "Pg_lo_import of '%s' failed", filename);
 		return TCL_ERROR;
 	}
 	sprintf(interp->result, "%u", lobjId);

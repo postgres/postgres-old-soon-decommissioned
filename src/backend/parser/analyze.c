@@ -2153,7 +2153,7 @@ transformSetOperationTree(ParseState *pstate, SelectStmt *stmt)
 		/*
 		 * Make the leaf query be a subquery in the top-level rangetable.
 		 */
-		snprintf(selectName, 32, "*SELECT* %d", length(pstate->p_rtable) + 1);
+		snprintf(selectName, sizeof(selectName), "*SELECT* %d", length(pstate->p_rtable) + 1);
 		rte = addRangeTableEntryForSubquery(pstate,
 											selectQuery,
 											makeAlias(selectName, NIL),

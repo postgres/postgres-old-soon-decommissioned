@@ -5706,7 +5706,7 @@ setMaxOid(Archive *fout)
 	PQclear(res);
 	if (g_verbose)
 		write_msg(NULL, "maximum system oid is %u\n", max_oid);
-	snprintf(sql, 1024,
+	snprintf(sql, sizeof(sql),
 			 "CREATE TEMPORARY TABLE pgdump_oid (dummy integer);\n"
 			 "COPY pgdump_oid WITH OIDS FROM stdin;\n"
 			 "%u\t0\n"

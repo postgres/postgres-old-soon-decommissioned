@@ -3815,7 +3815,7 @@ execq(text *sql, int cnt)
             HeapTuple tuple = tuptable->vals[j];
             
             for (i = 1, buf[0] = 0; i <= tupdesc->natts; i++)
-                sprintf(buf + strlen (buf), " %s%s",
+                snprintf(buf + strlen (buf), sizeof(buf) - strlen(buf)," %s%s",
                         SPI_getvalue(tuple, tupdesc, i),
                         (i == tupdesc->natts) ? " " : " |");
             elog (INFO, "EXECQ: %s", buf);

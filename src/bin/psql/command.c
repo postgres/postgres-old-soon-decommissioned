@@ -1549,7 +1549,7 @@ do_edit(const char *filename_arg, PQExpBuffer query_buf)
 #ifndef WIN32
 		const char *tmpdirenv = getenv("TMPDIR");
 
-		sprintf(fnametmp, "%s/psql.edit.%ld.%ld",
+		snprintf(fnametmp, sizeof(fnametmp), "%s/psql.edit.%ld.%ld",
 				tmpdirenv ? tmpdirenv : "/tmp",
 				(long) geteuid(), (long) getpid());
 #else
