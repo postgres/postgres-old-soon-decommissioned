@@ -3871,6 +3871,11 @@ substring('foobar' from 'o(.)b')   <lineannotation>o</lineannotation>
     </table>
 
    <para>
+    Warning. <literal><function>to_char</function>(<type>interval</type>, <type>text</type>)</literal> 
+    is deprecated and should not be used in newly-written code. Will be removed in the next version.
+   </para>
+
+   <para>
     In an output template string (for <function>to_char</>), there are certain patterns that are
     recognized and replaced with appropriately-formatted data from the value
     to be formatted.  Any text that is not a template pattern is simply
