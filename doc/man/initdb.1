@@ -7,13 +7,22 @@ initdb \(em initalize the database templates and primary directories
 .SH SYNOPSIS
 .BR "initdb"
 [\c
-.BR "-v"
-]
-[\c
 .BR "-d"
 ]
 [\c
 .BR "-n"
+]
+[\c
+.BR "-r directory"
+]
+[\c
+.BR "-t"
+]
+[\c
+.BR "-u username"
+]
+[\c
+.BR "-v"
 ]
 .SH DESCRIPTION
 .IR Initdb
@@ -32,10 +41,6 @@ must be executed by the Postgres super-user.
 .IR Initdb
 understands the following command-line options:
 .TP
-.BR "-v"
-Produce verbose output, printing messages stating where the
-directories are being created, etc.
-.TP
 .BR "-d"
 Print debugging output from the backend server.  This option generates
 a tremendous amount of information.  This option also turns off the
@@ -47,6 +52,19 @@ Run in \*(lqnoclean\*(rq mode.  By default,
 cleans up (recursively unlinks) the data directory if any error
 occurs, which also removes any core files left by the backend server.
 This option inhibits any tidying-up.
+.TP
+.BR "-r directory"
+Use the specified data directory.
+.TP
+.BR "-t"
+Update template database only.
+.TP
+.BR "-u username"
+Run as the specified username.
+.TP
+.BR "-v"
+Produce verbose output, printing messages stating where the
+directories are being created, etc.
 .SH FILES
 .TP
 \&$PGDATA/base
