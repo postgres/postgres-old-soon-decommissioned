@@ -66,6 +66,7 @@ pqStrerror(int errnum, char *strerrbuf, size_t buflen)
  * Wrapper around getpwuid() or getpwuid_r() to mimic POSIX getpwuid_r()
  * behaviour, if it is not available or required.
  */
+#ifndef WIN32
 int
 pqGetpwuid(uid_t uid, struct passwd *resultbuf, char *buffer,
 		   size_t buflen, struct passwd **result)
@@ -84,6 +85,7 @@ pqGetpwuid(uid_t uid, struct passwd *resultbuf, char *buffer,
 #endif
 	return (*result == NULL) ? -1 : 0;
 }
+#endif
 
 /*
  * Wrapper around gethostbyname() or gethostbyname_r() to mimic
