@@ -160,6 +160,7 @@ ConfigureNamesBool[] =
 	{"geqo",                    PGC_USERSET,    &enable_geqo,           true},
 
 	{"tcpip_socket",            PGC_POSTMASTER, &NetServer,             false},
+	{"ssl",                     PGC_POSTMASTER, &EnableSSL,             false},
 	{"fsync",                   PGC_USERSET,    &enableFsync,           true},
 
 	{"log_connections",         PGC_SIGHUP,     &Log_connections,       false},

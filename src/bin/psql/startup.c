@@ -264,12 +264,13 @@ main(int argc, char *argv[])
 				   "Type:  \\copyright for distribution terms\n"
 				   "       \\h for help with SQL commands\n"
 				   "       \\? for help on internal slash commands\n"
-			  "       \\g or terminate with semicolon to execute query\n"
+				   "       \\g or terminate with semicolon to execute query\n"
 				   "       \\q to quit\n\n", pset.progname);
-		}
 #ifdef USE_SSL
-		printSSLInfo();
+			printSSLInfo();
 #endif
+		}
+
 		SetVariable(pset.vars, "PROMPT1", DEFAULT_PROMPT1);
 		SetVariable(pset.vars, "PROMPT2", DEFAULT_PROMPT2);
 		SetVariable(pset.vars, "PROMPT3", DEFAULT_PROMPT3);

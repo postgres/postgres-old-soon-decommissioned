@@ -107,6 +107,7 @@ extern int	SortMem;
    configuration file processor has access to them */
 
 extern bool NetServer;
+extern bool EnableSSL;
 extern int MaxBackends;
 extern int NBuffers;
 extern int PostPortName;
