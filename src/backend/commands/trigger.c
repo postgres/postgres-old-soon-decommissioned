@@ -87,7 +87,14 @@ CreateTrigger(CreateTrigStmt *stmt, bool forConstraint)
 	ObjectAddress myself,
 				referenced;
 
-	rel = heap_openrv(stmt->relation, AccessExclusiveLock);
+    /*
+     * We need to prevent concurrent CREATE TRIGGER commands, as well
+     * as concurrent table modifications (INSERT, DELETE, UPDATE), so
+     * acquire an ExclusiveLock -- it should be fine to allow SELECTs
+     * to proceed. We could perhaps acquire ShareRowExclusiveLock, but
+     * there seems little gain in allowing SELECT FOR UPDATE.
+     */
+	rel = heap_openrv(stmt->relation, ExclusiveLock);
 
 	if (stmt->constrrel != NULL)
 		constrrelid = RangeVarGetRelid(stmt->constrrel, false);
