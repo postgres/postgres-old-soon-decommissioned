@@ -1,4 +1,3 @@
-
 /* -----------------------------------------------------------------------
  * ascii.c
  *
@@ -20,7 +19,7 @@
 #include "utils/ascii.h"
 
 /* ----------
- * even if MULTIBYTE is not enabled, these functions are necessary
+ * even if MULTIBYTE is not enabled, these functions must exist
  * since pg_proc.h has references to them.
  * ----------
  */
@@ -29,9 +28,9 @@
 static void multibyte_error(void);
 
 static void
-multibyte_error()
+multibyte_error(void)
 {
-	elog(ERROR, "multibyte not supported.");
+	elog(ERROR, "Multi-byte support is not enabled");
 }
 
 Datum 
@@ -59,11 +58,6 @@ to_ascii_default(PG_FUNCTION_ARGS)
 #else /* with MULTIBYTE */
 
 
-/* ----------
- * even if MULTIBYTE is enabled
- * ----------
- */
- 
 static text *encode_to_ascii(text *data, int enc);
 
 /* ----------
