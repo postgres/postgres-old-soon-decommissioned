@@ -284,6 +284,19 @@ PQunescapeBytea(const unsigned char *strtext, size_t *retbuflen)
 	return buffer;
 }
 
+
+/*
+ *		PQfreemem - safely frees memory allocated
+ *
+ * Needed mostly by Win32, unless multithreaded DLL (/MD in VC6)
+ * Used for freeing memory from PQescapeByte()a/PQunescapeBytea()
+ */
+void PQfreemem(void *ptr)
+{
+	free(ptr);
+}
+
+
 /* ----------------
  * Space management for PGresult.
  *

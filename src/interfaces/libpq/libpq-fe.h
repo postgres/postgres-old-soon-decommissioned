@@ -254,6 +254,7 @@ extern unsigned char *PQescapeBytea(const unsigned char *bintext, size_t binlen,
 			  size_t *bytealen);
 extern unsigned char *PQunescapeBytea(const unsigned char *strtext,
 				size_t *retbuflen);
+extern void PQfreemem(void *ptr);
 
 
 /* Simple synchronous query */

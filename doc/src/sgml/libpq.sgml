@@ -1151,6 +1151,25 @@ unsigned char *PQunescapeBytea(const unsigned char *from, size_t *to_length);
   </para>
   </listitem>
   </varlistentry>
+
+  <varlistentry>
+  <term><function>PQfreemem</function></term>
+  <listitem>
+  <para>
+   Frees memory allocated by <application>libpq</>
+<synopsis>
+void PQfreemem(void *ptr);
+</synopsis>
+</para>
+
+<para>
+   Frees memory allocated by <application>libpq</>, particularly
+   <function>PQescapeBytea</function> and <function>PQunescapeBytea</function>.
+   It is needed by Win32, which can not free memory across
+   DLL's, unless multithreaded DLL's (/MD in VC6) are used.
+  </para>
+  </listitem>
+  </varlistentry>
   </variablelist>
    
  </sect2>
