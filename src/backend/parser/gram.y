@@ -50,6 +50,7 @@
 #include "utils/numeric.h"
 
 #ifdef MULTIBYTE
+#include "miscadmin.h"
 #include "mb/pg_wchar.h"
 #endif
 
@@ -2668,7 +2669,7 @@ createdb_opt_encoding:
                 elog(ERROR, "%s is not a valid encoding name.", $3);
             $$ = i;
 #else
-            elog(ERROR, "WITH ENCODING is not supported.");
+            elog(ERROR, "Multi-byte support is not enabled");
 #endif
         }
         | ENCODING '=' Iconst
@@ -2678,7 +2679,7 @@ createdb_opt_encoding:
                 elog(ERROR, "%d is not a valid encoding code.", $3);
             $$ = $3;
 #else
-            elog(ERROR, "WITH ENCODING is not supported.");
+            elog(ERROR, "Multi-byte support is not enabled");
 #endif
         }
         | ENCODING '=' DEFAULT
