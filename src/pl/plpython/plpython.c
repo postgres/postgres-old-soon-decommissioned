@@ -34,6 +34,7 @@
  *********************************************************************
  */
 
+#include <Python.h>
 #include "postgres.h"
 
 /* system stuff */
@@ -54,7 +55,6 @@
 #include "utils/syscache.h"
 #include "utils/typcache.h"
 
-#include <Python.h>
 #include <compile.h>
 #include <eval.h>
 
