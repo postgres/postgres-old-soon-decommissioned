@@ -182,6 +182,7 @@ GRANT { { CREATE | USAGE } [,...] | ALL [ PRIVILEGES ] }
        Allows the use of the specified function and the use of any
        operators that are implemented on top of the function.  This is
        the only type of privilege that is applicable to functions.
+       (This syntax works for aggregate functions, as well.)
       </para>
      </listitem>
     </varlistentry>
