@@ -59,7 +59,7 @@ SHLIB_LINK += -lwsock32 -lws2_32 $(filter -leay32 -lssleay32, $(LIBS))
 endif
 
 
-all: $(PTHREAD_H_WIN32) def-files all-lib
+all: $(PTHREAD_H_WIN32) def-files $(srcdir)/libpq.rc all-lib
 
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib
@@ -118,6 +118,9 @@ $(srcdir)/blibpqdll.def: exports.txt
 	echo '; Aliases for MS compatible names' >> $@
 	sed -e '/^#/d' -e 's/^\(.* \)\([0-9][0-9]*\)/    \1= _\1/' < $< | sed 's/ *$$//' >> $@
 
+# depend on Makefile.global to force rebuild on re-run of configure
+$(srcdir)/libpq.rc: libpq.rc.in $(top_builddir)/src/Makefile.global
+	sed -e 's/\(VERSION.*\),0 *$$/\1,'`date '+%y%j' | sed 's/^0*//'`'/' < $< > $@
 
 ifneq ($(PTHREAD_H_WIN32), "")
 pthread.h: $(top_srcdir)/src/interfaces/libpq/pthread.h.win
