@@ -90,7 +90,7 @@ DataFill(char *data,
 		bitmask = CSIGNBIT;
 	}
 
-	*infomask = 0;
+	*infomask &= HEAP_XACT_MASK;
 
 	for (i = 0; i < numberOfAttributes; i++)
 	{
