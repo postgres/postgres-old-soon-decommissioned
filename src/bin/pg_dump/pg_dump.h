@@ -156,11 +156,6 @@ extern char g_comment_end[10];
 
 extern char g_opaque_type[10];	/* name for the opaque type */
 
-/* pg_dump is really two programs in one
-	one version works with postgres v4r2
-	and the other works with postgreSQL
-	the common routines are declared here
-*/
 /*
  *	common utility functions
  */

@@ -2371,7 +2371,7 @@ _SortToc(ArchiveHandle *AH, TocSortCompareFn fn)
 	/* Sort it, but ignore the header entries */
 	qsort(&(tea[1]), AH->tocCount, sizeof(TocEntry *), fn);
 
-	/* Rebuild list: this works becuase we have headers at each end */
+	/* Rebuild list: this works because we have headers at each end */
 	for (i = 1; i <= AH->tocCount; i++)
 	{
 		tea[i]->next = tea[i + 1];
