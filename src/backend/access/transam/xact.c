@@ -182,8 +182,6 @@
 #include "pgstat.h"
 
 
-extern bool SharedBufferChanged;
-
 static void AbortTransaction(void);
 static void AtAbort_Cache(void);
 static void AtAbort_Locks(void);
@@ -991,8 +989,6 @@ CommitTransaction(void)
 	AtCommit_Memory();
 	AtEOXact_Files();
 
-	SharedBufferChanged = false;	/* safest place to do it */
-
 	/* Count transaction commit in statistics collector */
 	pgstat_count_xact_commit();
 
@@ -1093,8 +1089,6 @@ AbortTransaction(void)
 	AtAbort_Memory();
 	AtEOXact_Files();
 	AtAbort_Locks();
-
-	SharedBufferChanged = false;	/* safest place to do it */
 
 	/* Count transaction abort in statistics collector */
 	pgstat_count_xact_rollback();

@@ -170,9 +170,6 @@ extern bool BufTableInsert(BufferDesc *buf);
 /* bufmgr.c */
 extern BufferDesc *BufferDescriptors;
 extern bits8 *BufferLocks;
-extern BufferTag *BufferTagLastDirtied;
-extern LockRelId *BufferRelidLastDirtied;
-extern bool *BufferDirtiedByMe;
 
 /* localbuf.c */
 extern BufferDesc *LocalBufferDescriptors;
