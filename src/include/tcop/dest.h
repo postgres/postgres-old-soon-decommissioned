@@ -92,10 +92,12 @@ struct _DestReceiver
 {
 	/* Called for each tuple to be output: */
 	void		(*receiveTuple) (HeapTuple tuple, TupleDesc typeinfo,
-											 DestReceiver *self);
+								 DestReceiver *self);
 	/* Initialization and teardown: */
 	void		(*setup) (DestReceiver *self, int operation,
-							 const char *portalName, TupleDesc typeinfo);
+						  const char *portalName,
+						  TupleDesc typeinfo,
+						  List *targetlist);
 	void		(*cleanup) (DestReceiver *self);
 	/* Private fields might appear beyond this point... */
 };

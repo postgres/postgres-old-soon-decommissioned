@@ -118,32 +118,6 @@ create_tl_element(Var *var, int resdomno)
  *****************************************************************************/
 
 /*
- * new_unsorted_tlist
- *	  Creates a copy of a target list by creating new resdom nodes
- *	  without sort information.
- *
- * 'targetlist' is the target list to be copied.
- *
- * Returns the resulting target list.
- *
- */
-List *
-new_unsorted_tlist(List *targetlist)
-{
-	List	   *new_targetlist = (List *) copyObject((Node *) targetlist);
-	List	   *x;
-
-	foreach(x, new_targetlist)
-	{
-		TargetEntry *tle = (TargetEntry *) lfirst(x);
-
-		tle->resdom->reskey = 0;
-		tle->resdom->reskeyop = (Oid) 0;
-	}
-	return new_targetlist;
-}
-
-/*
  * flatten_tlist
  *	  Create a target list that only contains unique variables.
  *

@@ -447,8 +447,8 @@ print_tl(List *tlist, List *rtable)
 		TargetEntry *tle = lfirst(tl);
 
 		printf("\t%d %s\t", tle->resdom->resno, tle->resdom->resname);
-		if (tle->resdom->reskey != 0)
-			printf("(%d):\t", tle->resdom->reskey);
+		if (tle->resdom->ressortgroupref != 0)
+			printf("(%u):\t", tle->resdom->ressortgroupref);
 		else
 			printf("    :\t");
 		print_expr((Node *) tle->expr, rtable);

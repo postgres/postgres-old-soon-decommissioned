@@ -310,8 +310,8 @@ _readResdom(void)
 	READ_INT_FIELD(restypmod);
 	READ_STRING_FIELD(resname);
 	READ_UINT_FIELD(ressortgroupref);
-	READ_UINT_FIELD(reskey);
-	READ_OID_FIELD(reskeyop);
+	READ_OID_FIELD(resorigtbl);
+	READ_INT_FIELD(resorigcol);
 	READ_BOOL_FIELD(resjunk);
 
 	READ_DONE();

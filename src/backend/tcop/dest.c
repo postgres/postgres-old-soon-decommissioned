@@ -46,7 +46,7 @@ donothingReceive(HeapTuple tuple, TupleDesc typeinfo, DestReceiver *self)
 
 static void
 donothingSetup(DestReceiver *self, int operation,
-			   const char *portalName, TupleDesc typeinfo)
+			   const char *portalName, TupleDesc typeinfo, List *targetlist)
 {
 }
 

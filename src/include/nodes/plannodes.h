@@ -278,7 +278,9 @@ typedef struct Material
 typedef struct Sort
 {
 	Plan		plan;
-	int			keycount;
+	int			numCols;		/* number of sort-key columns */
+	AttrNumber *sortColIdx;		/* their indexes in the target list */
+	Oid		   *sortOperators;	/* OIDs of operators to sort them by */
 } Sort;
 
 /* ---------------

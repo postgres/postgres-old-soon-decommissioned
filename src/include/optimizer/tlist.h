@@ -22,7 +22,6 @@ extern Resdom *tlist_member(Node *node, List *targetlist);
 extern void add_var_to_tlist(RelOptInfo *rel, Var *var);
 extern TargetEntry *create_tl_element(Var *var, int resdomno);
 
-extern List *new_unsorted_tlist(List *targetlist);
 extern List *flatten_tlist(List *tlist);
 extern List *add_to_flat_tlist(List *tlist, List *vars);
 

@@ -40,7 +40,8 @@ typedef struct
  */
 static void
 tstoreSetupReceiver(DestReceiver *self, int operation,
-					const char *portalname, TupleDesc typeinfo)
+					const char *portalname,
+					TupleDesc typeinfo, List *targetlist)
 {
 	TStoreState *myState = (TStoreState *) self;
 

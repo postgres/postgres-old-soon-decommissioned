@@ -723,7 +723,7 @@ begin_tup_output_tupdesc(CommandDest dest, TupleDesc tupdesc)
 	tstate->destfunc = DestToFunction(dest);
 
 	(*tstate->destfunc->setup) (tstate->destfunc, (int) CMD_SELECT,
-								NULL, tupdesc);
+								NULL, tupdesc, NIL);
 
 	return tstate;
 }

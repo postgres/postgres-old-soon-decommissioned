@@ -18,6 +18,7 @@
 
 
 extern List *transformTargetList(ParseState *pstate, List *targetlist);
+extern void markTargetListOrigins(ParseState *pstate, List *targetlist);
 extern TargetEntry *transformTargetEntry(ParseState *pstate,
 					 Node *node, Node *expr,
 					 char *colname, bool resjunk);

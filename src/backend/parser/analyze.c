@@ -1747,6 +1747,9 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 	if (stmt->intoColNames)
 		applyColumnNames(qry->targetList, stmt->intoColNames);
 
+	/* mark column origins */
+	markTargetListOrigins(pstate, qry->targetList);
+
 	/* transform WHERE */
 	qual = transformWhereClause(pstate, stmt->whereClause);
 

@@ -18,16 +18,16 @@
 
 extern DestReceiver *printtup_create_DR(bool isBinary, bool sendDescrip);
 
-extern void SendRowDescriptionMessage(TupleDesc typeinfo);
+extern void SendRowDescriptionMessage(TupleDesc typeinfo, List *targetlist);
 
 extern void debugSetup(DestReceiver *self, int operation,
-		   const char *portalName, TupleDesc typeinfo);
+		   const char *portalName, TupleDesc typeinfo, List *targetlist);
 extern void debugtup(HeapTuple tuple, TupleDesc typeinfo,
 		 DestReceiver *self);
 
 /* XXX these are really in executor/spi.c */
 extern void spi_dest_setup(DestReceiver *self, int operation,
-		   const char *portalName, TupleDesc typeinfo);
+		   const char *portalName, TupleDesc typeinfo, List *targetlist);
 extern void spi_printtup(HeapTuple tuple, TupleDesc tupdesc,
 			 DestReceiver *self);
 

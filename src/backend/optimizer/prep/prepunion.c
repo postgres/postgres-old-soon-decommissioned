@@ -238,7 +238,7 @@ generate_union_plan(SetOperationStmt *op, Query *parse,
 	{
 		List	   *sortList;
 
-		tlist = new_unsorted_tlist(tlist);
+		tlist = copyObject(tlist);
 		sortList = addAllTargetsToSortList(NIL, tlist);
 		plan = (Plan *) make_sort_from_sortclauses(parse, tlist,
 												   plan, sortList);
@@ -292,7 +292,7 @@ generate_nonunion_plan(SetOperationStmt *op, Query *parse,
 	 * Sort the child results, then add a SetOp plan node to generate the
 	 * correct output.
 	 */
-	tlist = new_unsorted_tlist(tlist);
+	tlist = copyObject(tlist);
 	sortList = addAllTargetsToSortList(NIL, tlist);
 	plan = (Plan *) make_sort_from_sortclauses(parse, tlist, plan, sortList);
 	switch (op->op)

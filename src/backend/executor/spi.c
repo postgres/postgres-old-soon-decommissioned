@@ -880,7 +880,7 @@ SPI_cursor_close(Portal portal)
  */
 void
 spi_dest_setup(DestReceiver *self, int operation,
-			   const char *portalName, TupleDesc typeinfo)
+			   const char *portalName, TupleDesc typeinfo, List *targetlist)
 {
 	SPITupleTable *tuptable;
 	MemoryContext oldcxt;
@@ -1209,7 +1209,7 @@ _SPI_pquery(QueryDesc *queryDesc, bool runit, int tcount)
 		ResetUsage();
 #endif
 
-	ExecutorStart(queryDesc);
+	ExecutorStart(queryDesc, false);
 
 	ExecutorRun(queryDesc, ForwardScanDirection, (long) tcount);
 

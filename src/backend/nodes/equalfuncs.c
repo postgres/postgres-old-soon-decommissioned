@@ -104,8 +104,8 @@ _equalResdom(Resdom *a, Resdom *b)
 	COMPARE_SCALAR_FIELD(restypmod);
 	COMPARE_STRING_FIELD(resname);
 	COMPARE_SCALAR_FIELD(ressortgroupref);
-	COMPARE_SCALAR_FIELD(reskey);
-	COMPARE_SCALAR_FIELD(reskeyop);
+	COMPARE_SCALAR_FIELD(resorigtbl);
+	COMPARE_SCALAR_FIELD(resorigcol);
 	COMPARE_SCALAR_FIELD(resjunk);
 
 	return true;

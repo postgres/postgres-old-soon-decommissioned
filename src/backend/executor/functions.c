@@ -250,7 +250,7 @@ postquel_start(execution_state *es, SQLFunctionCachePtr fcache)
 
 	/* Utility commands don't need Executor. */
 	if (es->qd->operation != CMD_UTILITY)
-		ExecutorStart(es->qd);
+		ExecutorStart(es->qd, false);
 
 	es->status = F_EXEC_RUN;
 }

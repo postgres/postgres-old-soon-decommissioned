@@ -448,7 +448,9 @@ _copySort(Sort *from)
 	 */
 	CopyPlanFields((Plan *) from, (Plan *) newnode);
 
-	COPY_SCALAR_FIELD(keycount);
+	COPY_SCALAR_FIELD(numCols);
+	COPY_POINTER_FIELD(sortColIdx, from->numCols * sizeof(AttrNumber));
+	COPY_POINTER_FIELD(sortOperators, from->numCols * sizeof(Oid));
 
 	return newnode;
 }
@@ -596,8 +598,8 @@ _copyResdom(Resdom *from)
 	COPY_SCALAR_FIELD(restypmod);
 	COPY_STRING_FIELD(resname);
 	COPY_SCALAR_FIELD(ressortgroupref);
-	COPY_SCALAR_FIELD(reskey);
-	COPY_SCALAR_FIELD(reskeyop);
+	COPY_SCALAR_FIELD(resorigtbl);
+	COPY_SCALAR_FIELD(resorigcol);
 	COPY_SCALAR_FIELD(resjunk);
 
 	return newnode;
