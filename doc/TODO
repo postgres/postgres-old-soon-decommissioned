@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Mon Jun 23 21:08:17 EDT 2003
+Last updated:		Mon Jun 23 21:54:53 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -168,7 +168,7 @@ Commands
 * Allow command blocks to ignore certain types of errors
 * Allow backslash handling in quoted strings to be disabled for portability
 * Return proper effected tuple count from complex commands [return]
-* Allow DELETE to handle table aliases for self-joins [delete]
+* Allow UPDATE, DELETE to handle table aliases for self-joins [delete]
 * Add CORRESPONDING BY to UNION/INTERSECT/EXCEPT
 * Allow REINDEX to rebuild all indexes, remove /contrib/reindex
 * -Make a transaction-safe TRUNCATE (Rod)
