@@ -274,7 +274,7 @@ InitFreeSpaceMap(void)
 				(errcode(ERRCODE_OUT_OF_MEMORY),
 			   errmsg("insufficient shared memory for free space map")));
 	if (!found)
-	MemSet(FreeSpaceMap, 0, sizeof(FSMHeader));
+		MemSet(FreeSpaceMap, 0, sizeof(FSMHeader));
 
 	/* Create hashtable for FSMRelations */
 	info.keysize = sizeof(RelFileNode);

@@ -49,7 +49,7 @@ PMSignalInit(void)
 		ShmemInitStruct("PMSignalFlags",NUM_PMSIGNALS * sizeof(sig_atomic_t),&found);
 
 	if (!found)
-	MemSet(PMSignalFlags, 0, NUM_PMSIGNALS * sizeof(sig_atomic_t));
+		MemSet(PMSignalFlags, 0, NUM_PMSIGNALS * sizeof(sig_atomic_t));
 }
 
 /*

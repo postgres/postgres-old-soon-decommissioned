@@ -87,6 +87,19 @@ main(int argc, char *argv[])
 #endif
 #endif   /* NOFIXADE || NOPRINTADE */
 
+#if defined(WIN32)
+	{
+		WSADATA wsaData;
+		int err = WSAStartup(MAKEWORD(2,2), &wsaData);
+		if (err != 0)
+		{
+			fprintf(stderr, "%s: WSAStartup failed: %d\n",
+					argv[0], err);
+			exit(1);
+		}
+	}
+#endif
+
 #ifdef __BEOS__
 	/* BeOS-specific actions on startup */
 	beos_startup(argc, argv);
