@@ -96,13 +96,6 @@ extern void ProcessInterrupts(void);
 		CritSectionCount--; \
 	} while(0)
 
-#define PG_DELAY(_msec) \
-{ \
-	struct timeval delay; \
-	delay.tv_sec = (_msec) / 1000; \
-	delay.tv_usec = ((_msec) % 1000) * 1000; \
-	(void) select(0, NULL, NULL, NULL, &delay); \
-}
 
 /*****************************************************************************
  *	  globals.h --															 *
