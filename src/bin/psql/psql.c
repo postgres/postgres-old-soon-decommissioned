@@ -1988,6 +1988,8 @@ HandleSlashCmds(PsqlSettings *pset,
 
 				if (optarg)
 					fs = optarg;
+				if (optarg && !*optarg && strlen(cmd) > 2)
+					fs = cmd + 2;
 				if (pset->opt.fieldSep)
 					free(pset->opt.fieldSep);
 				if (!(pset->opt.fieldSep = strdup(fs)))
