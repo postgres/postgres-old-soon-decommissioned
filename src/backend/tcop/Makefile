@@ -27,7 +27,7 @@ SUBSYS.o: $(OBJS)
 utility.o: ../parse.h
 
 ../parse.h: 
-	gmake -C .. parse.h
+	$(MAKE) -C .. parse.h
 
 dep: ../parse.h
 	$(CC) -MM $(INCLUDE_OPT) *.c >depend
