@@ -637,7 +637,7 @@ ECPGexecute(struct statement * stmt)
 						if (var->offset==sizeof(char))
 							for (element = 0; element < var->arrsize; element++)
 								sprintf(mallocedval + strlen(mallocedval), "%c,", (((char *) var->value)[element]) ? 't' : 'f');
-						// this is necessary since sizeof(C++'s bool)==sizeof(int)
+						/* this is necessary since sizeof(C++'s bool)==sizeof(int) */
 						else if (var->offset==sizeof(int))
 							for (element = 0; element < var->arrsize; element++)
 								sprintf(mallocedval + strlen(mallocedval), "%c,", (((int *) var->value)[element]) ? 't' : 'f');
