@@ -415,7 +415,6 @@ DATA(insert OID = 1700 ( numeric	   PGUID -1  -1 f b t \054 0  0 numeric_in nume
 DESCR("numeric(precision, decimal), arbitrary precision number");
 #define NUMERICOID		1700
 
-#define VARLENA_FIXED_SIZE(attr)	((attr)->atttypid == BPCHAROID && (attr)->atttypmod > 0)
 
 /*
  * prototypes for functions in pg_type.c

@@ -535,18 +535,11 @@ fastgetattr(HeapTuple tup, int attnum, TupleDesc tupleDesc,
 			 ((isnull) ? (*(isnull) = false) : (dummyret) NULL),
 			 HeapTupleNoNulls(tup) ?
 			 (
-			  ((tupleDesc)->attrs[(attnum) - 1]->attcacheoff != -1 ||
-			   (attnum) == 1) ?
+			  (tupleDesc)->attrs[(attnum) - 1]->attcacheoff >= 0 ?
 			  (
 			   (Datum) fetchatt(&((tupleDesc)->attrs[(attnum) - 1]),
 						 (char *) (tup)->t_data + (tup)->t_data->t_hoff +
-								(
-								 ((attnum) != 1) ?
-							(tupleDesc)->attrs[(attnum) - 1]->attcacheoff
-								 :
-								 0
-								 )
-								)
+							(tupleDesc)->attrs[(attnum) - 1]->attcacheoff)
 			   )
 			  :
 			  nocachegetattr((tup), (attnum), (tupleDesc), (isnull))

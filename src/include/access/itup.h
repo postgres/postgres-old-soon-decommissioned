@@ -109,24 +109,17 @@ typedef RetrieveIndexResultData *RetrieveIndexResult;
 	*(isnull) = false, \
 	IndexTupleNoNulls(tup) ? \
 	( \
-		((tupleDesc)->attrs[(attnum)-1]->attcacheoff != -1 || \
-		 (attnum) == 1) ? \
+		(tupleDesc)->attrs[(attnum)-1]->attcacheoff >= 0 ? \
 		( \
-			(Datum)fetchatt(&((tupleDesc)->attrs[(attnum)-1]), \
+			(Datum) fetchatt(&((tupleDesc)->attrs[(attnum)-1]), \
 			(char *) (tup) + \
 			( \
 				IndexTupleHasMinHeader(tup) ? \
 						sizeof (*(tup)) \
 					: \
 						IndexInfoFindDataOffset((tup)->t_info) \
-				) + \
-				( \
-					((attnum) != 1) ? \
-						(tupleDesc)->attrs[(attnum)-1]->attcacheoff \
-					: \
-						0 \
-				) \
 			) \
+			+ (tupleDesc)->attrs[(attnum)-1]->attcacheoff) \
 		) \
 		: \
 			nocache_index_getattr((tup), (attnum), (tupleDesc), (isnull)) \
