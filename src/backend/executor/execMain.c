@@ -530,7 +530,8 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 		JunkFilter *j = (JunkFilter *) ExecInitJunkFilter(targetList);
 		estate->es_junkFilter = j;
 
-		tupType = j->jf_cleanTupType;       /*  Added by daveh@insightdist.com  5/20/98   */
+		if (operation == CMD_SELECT)
+			tupType = j->jf_cleanTupType;
 	}
 	else
 		estate->es_junkFilter = NULL;
