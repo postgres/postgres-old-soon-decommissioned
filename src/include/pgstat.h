@@ -335,20 +335,13 @@ extern bool pgstat_collect_querystring;
 extern bool pgstat_collect_tuplelevel;
 extern bool pgstat_collect_blocklevel;
 
-/* ----------
- * Other global variables
- * ----------
- */
-extern bool pgstat_is_running;
-
 
 /* ----------
  * Functions called from postmaster
  * ----------
  */
 extern void pgstat_init(void);
-extern void pgstat_start(void);
-extern bool pgstat_ispgstat(int pid);
+extern int	pgstat_start(void);
 extern void pgstat_beterm(int pid);
 
 #ifdef EXEC_BACKEND
