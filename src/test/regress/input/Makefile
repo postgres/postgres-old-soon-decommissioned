@@ -18,8 +18,9 @@ include ../../../Makefile.global
 # ... plus test query inputs
 #
 # INFILES is the files the regression test uses for input.
-INFILES= create_misc.sql \
-         create_function.sql 
+INFILES= copy.sql \
+         create_function_1.sql \
+         create_function_2.sql 
 
 all: $(INFILES)
 
