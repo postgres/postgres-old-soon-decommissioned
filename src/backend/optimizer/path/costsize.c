@@ -1704,11 +1704,18 @@ set_rel_width(Query *root, RelOptInfo *rel)
 	foreach(tllist, rel->reltargetlist)
 	{
 		Var		   *var = (Var *) lfirst(tllist);
-		int			ndx = var->varattno - rel->min_attr;
+		int			ndx;
 		Oid			relid;
 		int32		item_width;
 
-		Assert(IsA(var, Var));
+		/* For now, punt on whole-row child Vars */
+		if (!IsA(var, Var))
+		{
+			tuple_width += 32;	/* arbitrary */
+			continue;
+		}
+
+		ndx = var->varattno - rel->min_attr;
 
 		/*
 		 * The width probably hasn't been cached yet, but may as well

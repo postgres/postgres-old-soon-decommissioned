@@ -302,11 +302,15 @@ set_inherited_rel_pathlist(Query *root, RelOptInfo *rel,
 		{
 			Var		   *parentvar = (Var *) lfirst(parentvars);
 			Var		   *childvar = (Var *) lfirst(childvars);
-			int			parentndx = parentvar->varattno - rel->min_attr;
-			int			childndx = childvar->varattno - childrel->min_attr;
 
-			if (childrel->attr_widths[childndx] > rel->attr_widths[parentndx])
-				rel->attr_widths[parentndx] = childrel->attr_widths[childndx];
+			if (IsA(parentvar, Var) && IsA(childvar, Var))
+			{
+				int			pndx = parentvar->varattno - rel->min_attr;
+				int			cndx = childvar->varattno - childrel->min_attr;
+
+				if (childrel->attr_widths[cndx] > rel->attr_widths[pndx])
+					rel->attr_widths[pndx] = childrel->attr_widths[cndx];
+			}
 		}
 	}
 

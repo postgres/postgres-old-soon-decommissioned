@@ -725,7 +725,8 @@ find_indexkey_var(Query *root, RelOptInfo *rel, AttrNumber varattno)
 	{
 		Var		   *var = (Var *) lfirst(temp);
 
-		if (var->varattno == varattno)
+		if (IsA(var, Var) &&
+			var->varattno == varattno)
 			return var;
 	}
 

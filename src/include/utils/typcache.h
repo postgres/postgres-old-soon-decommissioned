@@ -76,6 +76,9 @@ extern TypeCacheEntry *lookup_type_cache(Oid type_id, int flags);
 
 extern TupleDesc lookup_rowtype_tupdesc(Oid type_id, int32 typmod);
 
+extern TupleDesc lookup_rowtype_tupdesc_noerror(Oid type_id, int32 typmod,
+												bool noError);
+
 extern void assign_record_type_typmod(TupleDesc tupDesc);
 
 extern void flush_rowtype_cache(Oid type_id);

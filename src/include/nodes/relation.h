@@ -91,6 +91,7 @@ typedef struct QualCost
  *				appropriate projections have been done (ie, output width)
  *		reltargetlist - List of Var nodes for the attributes we need to
  *						output from this relation (in no particular order)
+ *						NOTE: in a child relation, may contain RowExprs
  *		pathlist - List of Path nodes, one for each potentially useful
  *				   method of generating the relation
  *		cheapest_startup_path - the pathlist member with lowest startup cost

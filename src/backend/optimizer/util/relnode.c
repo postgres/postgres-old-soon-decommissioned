@@ -381,6 +381,9 @@ build_joinrel_tlist(Query *root, RelOptInfo *joinrel)
 			Var		   *var = (Var *) lfirst(vars);
 			int			ndx = var->varattno - baserel->min_attr;
 
+			/* We can't run into any child RowExprs here */
+			Assert(IsA(var, Var));
+
 			if (bms_nonempty_difference(baserel->attr_needed[ndx], relids))
 			{
 				joinrel->reltargetlist = lappend(joinrel->reltargetlist, var);
