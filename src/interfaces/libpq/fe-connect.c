@@ -710,7 +710,7 @@ connectMakeNonblocking(PGconn *conn)
 #endif
 	{
 		printfPQExpBuffer(&conn->errorMessage,
-						  libpq_gettext("could not socket to non-blocking mode: %s\n"),
+						  libpq_gettext("could not set socket to non-blocking mode: %s\n"),
 						  strerror(errno));
 		return 0;
 	}
