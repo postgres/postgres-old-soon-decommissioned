@@ -51,6 +51,7 @@
 #endif
 
 #include "postgres.h"
+#include "access/htup.h"
 #include "libpq-fe.h"
 
 #include "pg_dump.h"
@@ -1309,7 +1310,10 @@ dumpIndices(FILE* fout, IndInfo* indinfo, int numIndices,
 	tableInd = findTableByName(tblinfo, numTables,
 				   indinfo[i].indrelname);
 	indkey = atoi(indinfo[i].indkey) - 1; 
-	attname = tblinfo[tableInd].attnames[indkey];
+	if (indkey == ObjectIdAttributeNumber - 1)
+	    attname = "oid";
+	else
+	    attname = tblinfo[tableInd].attnames[indkey];
 	if (strcmp(indinfo[i].indproc,"0") == 0) {
 	    funcname = NULL;
 	} else {
