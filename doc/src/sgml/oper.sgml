@@ -493,6 +493,36 @@ logical union
 	<ENTRY>Cube root</ENTRY>
 	<ENTRY>||/ 27.0</ENTRY>
        </ROW>
+       <ROW>
+	<ENTRY> & </ENTRY>
+	<ENTRY>Binary AND</ENTRY>
+	<ENTRY>91 & 15</ENTRY>
+       </ROW>
+       <ROW>
+	<ENTRY> | </ENTRY>
+	<ENTRY>Binary OR</ENTRY>
+	<ENTRY>32 | 3</ENTRY>
+       </ROW>
+       <ROW>
+	<ENTRY> # </ENTRY>
+	<ENTRY>Binary XOR</ENTRY>
+	<ENTRY>15 # 4</ENTRY>
+       </ROW>
+       <ROW>
+	<ENTRY> ~ </ENTRY>
+	<ENTRY>Binary NOT</ENTRY>
+	<ENTRY>~1</ENTRY>
+       </ROW>
+       <ROW>
+	<ENTRY> &lt;&lt; </ENTRY>
+	<ENTRY>Binary shift left</ENTRY>
+	<ENTRY>1 &lt;&lt; 4</ENTRY>
+       </ROW>
+       <ROW>
+	<ENTRY> &gt;&gt; </ENTRY>
+	<ENTRY>Binary shift right</ENTRY>
+	<ENTRY>8 &gt;&gt; 2</ENTRY>
+       </ROW>
       </TBODY>
      </TGROUP>
     </TABLE>

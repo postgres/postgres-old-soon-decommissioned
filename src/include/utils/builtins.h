@@ -127,6 +127,19 @@ extern Datum int2smaller(PG_FUNCTION_ARGS);
 extern Datum int4larger(PG_FUNCTION_ARGS);
 extern Datum int4smaller(PG_FUNCTION_ARGS);
 
+extern Datum int4and(PG_FUNCTION_ARGS);
+extern Datum int4or(PG_FUNCTION_ARGS);
+extern Datum int4xor(PG_FUNCTION_ARGS);
+extern Datum int4not(PG_FUNCTION_ARGS);
+extern Datum int4shl(PG_FUNCTION_ARGS);
+extern Datum int4shr(PG_FUNCTION_ARGS);
+extern Datum int2and(PG_FUNCTION_ARGS);
+extern Datum int2or(PG_FUNCTION_ARGS);
+extern Datum int2xor(PG_FUNCTION_ARGS);
+extern Datum int2not(PG_FUNCTION_ARGS);
+extern Datum int2shl(PG_FUNCTION_ARGS);
+extern Datum int2shr(PG_FUNCTION_ARGS);
+
 /* name.c */
 extern Datum namein(PG_FUNCTION_ARGS);
 extern Datum nameout(PG_FUNCTION_ARGS);
