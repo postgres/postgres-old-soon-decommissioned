@@ -53,7 +53,7 @@ PostgreSQL documentation
   </para>
 
   <para>
-   Passwords can only be added later, changed, or removed using the
+   Passwords can only be added later or changed using the
    <acronym>SQL</acronym> command <xref linkend="SQL-ALTERUSER" 
    endterm="SQL-ALTERUSER-title">.
   </para>
