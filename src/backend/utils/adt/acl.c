@@ -491,9 +491,9 @@ acldefault(GrantObjectType objtype, AclId ownerid)
 Acl *
 aclinsert3(const Acl *old_acl, const AclItem *mod_aip, unsigned modechg, DropBehavior behavior)
 {
-	Acl		   *new_acl;
+	Acl		   *new_acl = NULL;
 	AclItem    *old_aip,
-			   *new_aip;
+			   *new_aip = NULL;
 	int			dst,
 				num;
 
