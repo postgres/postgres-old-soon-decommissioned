@@ -27,7 +27,9 @@
  *
  */
 
+#ifndef WIN32
 #include "postgres.h"
+#endif
 #include "libpq-fe.h"
 #include "libpq-int.h"
 #include "fe-auth.h"

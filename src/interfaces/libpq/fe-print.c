@@ -30,7 +30,9 @@
 #ifdef HAVE_TERMIOS_H
 #include <termios.h>
 #else
+#ifndef WIN32
 #include <sys/termios.h>
+#endif
 #endif
 
 #ifdef MULTIBYTE

@@ -24,6 +24,12 @@
 #include "postgres.h"
 #include "pqexpbuffer.h"
 
+#ifdef WIN32
+#include <stdarg.h>
+#include <stdio.h>
+#include "win32.h"
+#endif
+
 /*
  * createPQExpBuffer
  *
