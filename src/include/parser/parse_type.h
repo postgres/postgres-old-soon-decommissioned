@@ -31,6 +31,7 @@ extern Type typeidType(Oid id);
 extern Oid	typeTypeId(Type tp);
 extern int16 typeLen(Type t);
 extern bool typeByVal(Type t);
+extern char typeTypType(Type t);
 extern char *typeTypeName(Type t);
 extern char typeTypeFlag(Type t);
 extern Oid	typeTypeRelid(Type typ);

@@ -44,6 +44,8 @@ extern Node *coerce_type(ParseState *pstate, Node *node, Oid inputTypeId,
 			Oid targetTypeId, int32 atttypmod, bool isExplicit);
 extern Node *coerce_type_typmod(ParseState *pstate, Node *node,
 				   Oid targetTypeId, int32 atttypmod);
+extern Node *coerce_type_constraints(ParseState *pstate, Node *arg,
+									 Oid typeId, bool applyTypmod);
 
 extern Node *coerce_to_boolean(Node *node, const char *constructName);
 

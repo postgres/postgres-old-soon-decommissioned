@@ -2187,6 +2187,18 @@ get_rule_expr(Node *node, deparse_context *context)
 			}
 			break;
 
+		case T_ConstraintTest:
+			{
+				ConstraintTest *ctest = (ConstraintTest *) node;
+
+				/*
+				 * We assume that the operations of the constraint node
+				 * need not be explicitly represented in the output.
+				 */
+				get_rule_expr(ctest->arg, context);
+			}
+			break;
+
 		case T_SubLink:
 			get_sublink_expr(node, context);
 			break;
