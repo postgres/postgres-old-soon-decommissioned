@@ -451,12 +451,6 @@ vc_vacone (Oid relid)
 	    stats->cmpgt = pgopform->oprcode;
 	}
 	else	stats->cmpgt = InvalidOid;
-        func_operator = oper(">",stats->attr->atttypid,stats->attr->atttypid,true);
-	if (func_operator != NULL) {
-	    pgopform = (OperatorTupleForm) GETSTRUCT(func_operator);
-	    stats->cmpgt = pgopform->oprcode;
-	}
-	else	stats->cmpgt = InvalidOid;
 	pgttup = SearchSysCacheTuple(TYPOID,
                                     ObjectIdGetDatum(stats->attr->atttypid),
                                     0,0,0);
@@ -1572,18 +1566,20 @@ vc_attrstats(Relation onerel, VacAttrStats *vacattrstats, HeapTuple htup)
 		}
 		stats->initialized = true;
 	    }
-	    if (VacAttrStatsLtGtValid(stats) && fmgr(stats->cmplt,value,stats->min)) {
-		vc_bucketcpy(stats->attr, value, &stats->min, &stats->min_len);
-		stats->min_cnt = 0;
+	    if (VacAttrStatsLtGtValid(stats) {
+		if (fmgr(stats->cmplt,value,stats->min)) {
+		    vc_bucketcpy(stats->attr, value, &stats->min, &stats->min_len);
+		    stats->min_cnt = 0;
+	    	}
+		if (fmgr(stats->cmpgt,value,stats->max)) {
+		    vc_bucketcpy(stats->attr, value, &stats->max, &stats->max_len);
+		    stats->max_cnt = 0;
+	    	}
+	    	if (fmgr(stats->cmpeq,value,stats->min))
+		    stats->min_cnt++;
+		else if (fmgr(stats->cmpeq,value,stats->max))
+		    stats->max_cnt++;
 	    }
-	    if (VacAttrStatsLtGtValid(stats) && fmgr(stats->cmpgt,value,stats->max)) {
-		vc_bucketcpy(stats->attr, value, &stats->max, &stats->max_len);
-		stats->max_cnt = 0;
-	    }
-	    if (VacAttrStatsLtGtValid(stats) && fmgr(stats->cmpeq,value,stats->min))
-		stats->min_cnt++;
-	    else if (VacAttrStatsLtGtValid(stats) && fmgr(stats->cmpeq,value,stats->max))
-		stats->	max_cnt++;
 	    if (fmgr(stats->cmpeq,value,stats->best))
 		stats->	best_cnt++;
 	    else if (fmgr(stats->cmpeq,value,stats->guess1)) {
