@@ -384,7 +384,7 @@ transformUnionClause(List *unionClause, List *targetlist)
 	List *union_list = NIL;
 	QueryTreeList *qlist;
 	int i;
-TargetEntry
+
 	if (unionClause)
 	{
 		qlist = parse_analyze(unionClause);
