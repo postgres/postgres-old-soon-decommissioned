@@ -17,20 +17,13 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-
-
 #include "postgres.h"
-#include "storage/bufmgr.h"		/* for BLCKSZ */
-#include "storage/fd.h"			/* for SEEK_ */
-#include "executor/executor.h"
+
 #include "executor/execdebug.h"
+#include "executor/executor.h"
 #include "executor/nodeHash.h"
 #include "executor/nodeHashjoin.h"
-
 #include "optimizer/clauses.h"	/* for get_leftop */
-
-
-#include "utils/palloc.h"
 
 static TupleTableSlot *
 			ExecHashJoinOuterGetTuple(Plan *node, Plan *parent, HashJoinState *hjstate);

@@ -26,11 +26,15 @@
  * in theory this could be anything, but in practice this is actually
  * limited to 2^13 bytes because we have limited ItemIdData.lp_off and
  * ItemIdData.lp_len to 13 bits (see itemid.h).
+ *
+ * limit is now 2^15.  Took four bits from ItemIdData.lp_flags and gave
+ * two apiece to ItemIdData.lp_len and lp_off. darrenk 01/06/98
+ *
  */
-#define MAXBLCKSZ		8192
+
+#define MAXBLCKSZ		32768
 
 typedef void *Block;
-
 
 /* special pageno for bget */
 #define P_NEW	InvalidBlockNumber		/* grow the file to get a new page */

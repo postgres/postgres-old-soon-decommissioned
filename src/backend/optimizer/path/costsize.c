@@ -13,9 +13,9 @@
  */
 
 #include "postgres.h"
-#include "config.h"
 
 #include <math.h>
+
 #ifdef HAVE_LIMITS_H
 #include <limits.h>
 #ifndef MAXINT
@@ -27,15 +27,12 @@
 #endif
 #endif
 
-#include <utils/lsyscache.h>
 #include "nodes/relation.h"
-
 #include "optimizer/cost.h"
 #include "optimizer/internal.h"
 #include "optimizer/keys.h"
 #include "optimizer/tlist.h"
-
-#include "storage/bufmgr.h"		/* for BLCKSZ */
+#include "utils/lsyscache.h"
 
 extern int	NBuffers;
 

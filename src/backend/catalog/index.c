@@ -23,34 +23,33 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <postgres.h>
+#include "postgres.h"
+#include "fmgr.h"
 
-#include <catalog/pg_proc.h>
-#include <storage/bufmgr.h>
-#include <fmgr.h>
-#include <access/genam.h>
-#include <access/heapam.h>
-#include <access/istrat.h>
-#include <access/xact.h>
-#include <bootstrap/bootstrap.h>
-#include <catalog/catname.h>
-#include <catalog/catalog.h>
-#include <catalog/indexing.h>
-#include <catalog/heap.h>
-#include <catalog/index.h>
-#include <catalog/pg_type.h>
-#include <executor/executor.h>
-#include <miscadmin.h>
-#include <optimizer/clauses.h>
-#include <optimizer/prep.h>
-#include <parser/parse_func.h>
-#include <storage/lmgr.h>
-#include <storage/smgr.h>
-#include <utils/builtins.h>
-#include <utils/mcxt.h>
-#include <utils/relcache.h>
-#include <utils/syscache.h>
-#include <utils/tqual.h>
+#include "access/genam.h"
+#include "access/heapam.h"
+#include "access/istrat.h"
+#include "access/xact.h"
+#include "bootstrap/bootstrap.h"
+#include "catalog/catalog.h"
+#include "catalog/catname.h"
+#include "catalog/heap.h"
+#include "catalog/index.h"
+#include "catalog/indexing.h"
+#include "catalog/pg_proc.h"
+#include "catalog/pg_type.h"
+#include "executor/executor.h"
+#include "miscadmin.h"
+#include "optimizer/clauses.h"
+#include "optimizer/prep.h"
+#include "parser/parse_func.h"
+#include "storage/lmgr.h"
+#include "storage/smgr.h"
+#include "utils/builtins.h"
+#include "utils/mcxt.h"
+#include "utils/relcache.h"
+#include "utils/syscache.h"
+#include "utils/tqual.h"
 
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>

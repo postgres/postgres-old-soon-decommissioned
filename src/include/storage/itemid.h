@@ -22,10 +22,10 @@ typedef bits16 ItemIdFlags;
 
 typedef struct ItemIdData
 {								/* line pointers */
-	unsigned	lp_off:13,		/* offset to find tup */
+	unsigned	lp_off:15,		/* offset to find tup */
 	/* can be reduced by 2 if necc. */
-				lp_flags:6,		/* flags on tuple */
-				lp_len:13;		/* length of tuple */
+				lp_flags:2,		/* flags on tuple */
+				lp_len:15;		/* length of tuple */
 } ItemIdData;
 
 typedef struct ItemIdData *ItemId;

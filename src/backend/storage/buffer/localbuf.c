@@ -39,7 +39,6 @@
 #include "storage/spin.h"
 #include "storage/smgr.h"
 #include "storage/lmgr.h"
-#include "storage/buf_internals.h"
 #include "miscadmin.h"
 #include "utils/builtins.h"
 #include "utils/hsearch.h"
