@@ -296,6 +296,15 @@ then
     fi
     export LD_LIBRARY_PATH
 
+    # ----------
+    # Windows needs shared libraries in PATH. (Only those linked into
+    # executables, not dlopen'ed ones)
+    # ----------
+    case $host_platform in *-*-cygwin*)
+        PATH=$libdir:$PATH
+        export PATH
+        ;;
+    esac
 
     if [ -d "$temp_install" ]; then
         message "removing existing temp installation"
