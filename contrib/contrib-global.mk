@@ -127,7 +127,7 @@ endif
 
 uninstall:
 ifneq (,$(DATA)$(DATA_built))
-	rm -f $(addprefix $(DESTDIR)$(datadir)/contrib/, $(DATA) $(DATA_built))
+	rm -f $(addprefix $(DESTDIR)$(datadir)/contrib/, $(notdir $(DATA) $(DATA_built)))
 endif
 ifdef MODULES
 	rm -f $(addprefix $(DESTDIR)$(pkglibdir)/, $(addsuffix $(DLSUFFIX), $(MODULES)))
