@@ -249,6 +249,8 @@ install-headers: prebuildheaders $(SRCDIR)/include/config.h
           $(HEADERDIR)/postgres.h
 	$(INSTALL) $(INSTLOPTS) $(SRCDIR)/include/postgres_ext.h \
           $(HEADERDIR)/postgres_ext.h
+	$(INSTALL) $(INSTLOPTS) $(SRCDIR)/include/fmgr.h \
+          $(HEADERDIR)/fmgr.h
 	$(INSTALL) $(INSTLOPTS) $(SRCDIR)/include/libpq/pqcomm.h \
           $(HEADERDIR)/libpq/pqcomm.h
 	$(INSTALL) $(INSTLOPTS) $(SRCDIR)/include/libpq/libpq-fs.h \
