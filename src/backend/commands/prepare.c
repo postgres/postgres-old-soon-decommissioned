@@ -91,7 +91,7 @@ PrepareQuery(PrepareStmt *stmt)
 	query_list = QueryRewrite(stmt->query);
 
 	/* Generate plans for queries.	Snapshot is already set. */
-	plan_list = pg_plan_queries(query_list, false);
+	plan_list = pg_plan_queries(query_list, NULL, false);
 
 	/* Save the results. */
 	StorePreparedStatement(stmt->name,

@@ -176,7 +176,7 @@ ExplainOneQuery(Query *query, ExplainStmt *stmt, TupOutputState *tstate)
 	}
 
 	/* plan the query */
-	plan = planner(query, isCursor, cursorOptions);
+	plan = planner(query, isCursor, cursorOptions, NULL);
 
 	/* Create a QueryDesc requesting no output */
 	queryDesc = CreateQueryDesc(query, plan, None_Receiver, NULL,

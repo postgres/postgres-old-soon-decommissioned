@@ -67,6 +67,8 @@ extern void set_coercionform_dontcare(Node *node);
 
 extern Node *eval_const_expressions(Node *node);
 
+extern Node *estimate_expression_value(Node *node);
+
 extern bool expression_tree_walker(Node *node, bool (*walker) (),
 											   void *context);
 extern Node *expression_tree_mutator(Node *node, Node *(*mutator) (),

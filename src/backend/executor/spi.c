@@ -1125,7 +1125,7 @@ _SPI_execute(const char *src, int tcount, _SPI_plan *plan)
 			QueryDesc  *qdesc;
 			DestReceiver *dest;
 
-			planTree = pg_plan_query(queryTree);
+			planTree = pg_plan_query(queryTree, NULL);
 			plan_list = lappend(plan_list, planTree);
 
 			dest = CreateDestReceiver(queryTree->canSetTag ? SPI : None, NULL);

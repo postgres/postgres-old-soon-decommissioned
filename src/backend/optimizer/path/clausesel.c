@@ -487,15 +487,26 @@ clause_selectivity(Query *root,
 			}
 		}
 	}
-	else if (IsA(clause, Param))
-	{
-		/* XXX any way to do better? */
-		s1 = 1.0;
-	}
 	else if (IsA(clause, Const))
 	{
 		/* bool constant is pretty easy... */
 		s1 = ((bool) ((Const *) clause)->constvalue) ? 1.0 : 0.0;
+	}
+	else if (IsA(clause, Param))
+	{
+		/* see if we can replace the Param */
+		Node	*subst = estimate_expression_value(clause);
+
+		if (IsA(subst, Const))
+		{
+			/* bool constant is pretty easy... */
+			s1 = ((bool) ((Const *) subst)->constvalue) ? 1.0 : 0.0;
+		}
+		else
+		{
+			/* XXX any way to do better? */
+			s1 = (Selectivity) 0.5;
+		}
 	}
 	else if (not_clause(clause))
 	{

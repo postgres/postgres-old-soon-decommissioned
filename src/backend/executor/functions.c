@@ -100,7 +100,7 @@ init_execution_state(List *queryTree_list)
 		Plan	   *planTree;
 		execution_state *newes;
 
-		planTree = pg_plan_query(queryTree);
+		planTree = pg_plan_query(queryTree, NULL);
 
 		newes = (execution_state *) palloc(sizeof(execution_state));
 		if (preves)
