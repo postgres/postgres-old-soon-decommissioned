@@ -1060,7 +1060,6 @@ setRelhasindex(Oid relid, bool hasindex, bool isprimary, Oid reltoastidxid)
 		/* Send out shared cache inval if necessary */
 		if (!IsBootstrapProcessingMode())
 			CacheInvalidateHeapTuple(pg_class, tuple);
-		BufferSync(-1, -1);
 	}
 	else if (dirty)
 	{

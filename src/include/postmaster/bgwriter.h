@@ -18,8 +18,6 @@
 
 /* GUC options */
 extern int	BgWriterDelay;
-extern int	BgWriterPercent;
-extern int	BgWriterMaxPages;
 extern int	CheckPointTimeout;
 extern int	CheckPointWarning;
 

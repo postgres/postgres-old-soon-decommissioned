@@ -25,7 +25,8 @@
  */
 typedef enum LWLockId
 {
-	BufMgrLock,
+	BufMappingLock,
+	BufFreelistLock,
 	LockMgrLock,
 	OidGenLock,
 	XidGenLock,
