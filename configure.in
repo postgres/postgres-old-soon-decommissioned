@@ -867,22 +867,6 @@ AC_LIBOBJ(dirmod)
 AC_LIBOBJ(opendir) ;;
 esac
 
-# Now that rint() is /port, I am not sure this still works, bjm 2003-05-09
-# On HPUX 9, rint() is not in regular libm.a but in /lib/pa1.1/libm.a;
-# this hackery with HPUXMATHLIB allows us to cope.
-HPUXMATHLIB=""
-case $host_cpu in
-  hppa1.1)
-	if test -r /lib/pa1.1/libm.a ; then
-	    HPUXMATHLIB="-L /lib/pa1.1 -lm"
-	fi ;;
-esac
-AC_SUBST(HPUXMATHLIB)
-
-AC_CHECK_FUNCS(rint, [],
-               [AC_CHECK_LIB(m, rint, AC_DEFINE(HAVE_RINT), , $HPUXMATHLIB)])
-
-
 if test "$with_readline" = yes; then
   PGAC_VAR_RL_COMPLETION_APPEND_CHARACTER
   AC_CHECK_FUNCS([rl_completion_matches rl_filename_completion_function])
