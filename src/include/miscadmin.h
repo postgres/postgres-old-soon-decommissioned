@@ -241,6 +241,7 @@ extern void InitializeSessionUserIdStandalone(void);
 extern void SetSessionAuthorization(AclId userid, bool is_superuser);
 
 extern void SetDataDir(const char *dir);
+extern char *make_absolute_path(const char *path);
 
 /* in utils/misc/superuser.c */
 extern bool superuser(void);	/* current user is superuser */

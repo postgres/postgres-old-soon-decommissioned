@@ -135,11 +135,10 @@ extern int	log_min_messages;
 extern int	client_min_messages;
 extern int	log_min_duration_statement;
 
-extern char *ConfigDir;
 extern char *ConfigFileName;
-extern char *guc_hbafile;
-extern char *guc_identfile;
-extern char *external_pidfile;
+extern char *HbaFileName;
+extern char *IdentFileName;
+extern char *external_pid_file;
 
 
 extern void SetConfigOption(const char *name, const char *value,
