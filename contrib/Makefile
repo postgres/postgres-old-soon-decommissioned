@@ -14,7 +14,6 @@ WANTED_DIRS = \
 		dbmirror	\
 		dbsize		\
 		earthdistance	\
-#		findoidjoins	\
 		fulltextindex	\
 		fuzzystrmatch	\
 		intagg		\
@@ -37,9 +36,11 @@ WANTED_DIRS = \
 		string		\
 		tablefunc	\
 		tips		\
-		tsearch		\
 		userlock	\
 		vacuumlo
+
+#		findoidjoins	\
+		tsearch		\
 
 ifeq ($(with_java),yes)
 WANTED_DIRS += retep
