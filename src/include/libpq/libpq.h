@@ -19,21 +19,6 @@
 #ifndef LIBPQ_H
 #define LIBPQ_H
 
-#include <stdio.h>
-#include <string.h>
-#include <sys/types.h>
-#ifdef WIN32
-#include <winsock.h>
-#else
-#include <netinet/in.h>
-#endif /* WIN32 */
-
-#include "lib/dllist.h"
-#include "utils/exc.h"
-#include "postgres.h"
-
-#include "libpq/pqcomm.h"
-
 /* ----------------
  * PQArgBlock --
  *	Information (pointer to array of this structure) required
