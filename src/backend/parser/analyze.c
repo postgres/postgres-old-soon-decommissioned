@@ -373,7 +373,7 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 										  qry->uniqueFlag);
 
 	qry->hasAggs = pstate->p_hasAggs;
-	if (pstate->p_hasAggs)
+	if (pstate->p_hasAggs || qry->groupClause)
 		parseCheckAggregates(pstate, qry);
 
 	/*
@@ -997,7 +997,7 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 	qry->rtable = pstate->p_rtable;
 
 	qry->hasAggs = pstate->p_hasAggs;
-	if (pstate->p_hasAggs)
+	if (pstate->p_hasAggs || qry->groupClause)
 		parseCheckAggregates(pstate, qry);
 
 	/*
