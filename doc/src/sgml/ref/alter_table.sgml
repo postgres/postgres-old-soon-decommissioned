@@ -149,6 +149,12 @@ ALTER TABLE <replaceable class="PARAMETER">name</replaceable>
       of the OID are kept indefinitely.  This is semantically similar
       to the <literal>DROP COLUMN</literal> process.
      </para>
+
+     <para>
+      Note that there is no variant of <command>ALTER TABLE</command>
+      that allows OIDs to be restored to a table once they have been
+      removed.
+     </para>
     </listitem>
    </varlistentry>
 

@@ -63,6 +63,7 @@
 #include "utils/numeric.h"
 #include "utils/datetime.h"
 #include "utils/date.h"
+#include "utils/guc.h"
 
 extern List *parsetree;			/* final parse result is delivered here */
 
@@ -1822,7 +1823,12 @@ OptInherit: INHERITS '(' qualified_name_list ')'	{ $$ = $3; }
 OptWithOids:
 			WITH OIDS								{ $$ = TRUE; }
 			| WITHOUT OIDS							{ $$ = FALSE; }
-			| /*EMPTY*/								{ $$ = TRUE; }
+			/*
+			 * If the user didn't explicitely specify WITH or WITHOUT
+			 * OIDS, decide whether to include OIDs based on the
+			 * "default_with_oids" GUC var
+			 */
+			| /*EMPTY*/								{ $$ = default_with_oids; }
 		;
 
 OnCommitOption:  ON COMMIT DROP				{ $$ = ONCOMMIT_DROP; }

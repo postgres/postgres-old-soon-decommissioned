@@ -5627,8 +5627,7 @@ dumpOneTable(Archive *fout, TableInfo *tbinfo, TableInfo *g_tblinfo)
 			appendPQExpBuffer(q, ")");
 		}
 
-		if (!tbinfo->hasoids)
-			appendPQExpBuffer(q, " WITHOUT OIDS");
+		appendPQExpBuffer(q, tbinfo->hasoids ? " WITH OIDS" : " WITHOUT OIDS");
 
 		appendPQExpBuffer(q, ";\n");
 

@@ -109,6 +109,8 @@ extern bool log_btree_build_stats;
 extern bool SQL_inheritance;
 extern bool Australian_timezones;
 
+extern bool default_with_oids;
+
 extern int	log_min_error_statement;
 extern int	log_min_messages;
 extern int	client_min_messages;

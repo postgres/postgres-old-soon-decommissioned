@@ -320,7 +320,7 @@ typedef struct
      <listitem>
       <para>
        if a <command>SELECT</command> (but not <command>SELECT
-       ... INTO</>) was executed
+       INTO</>) was executed
       </para>
      </listitem>
     </varlistentry>
@@ -329,7 +329,7 @@ typedef struct
      <term><symbol>SPI_OK_SELINTO</symbol></term>
      <listitem>
       <para>
-       if a <command>SELECT ... INTO</command> was executed
+       if a <command>SELECT INTO</command> was executed
       </para>
      </listitem>
     </varlistentry>

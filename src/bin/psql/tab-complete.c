@@ -499,6 +499,7 @@ psql_completion(char *text, int start, int end)
 		"default_statistics_target",
 		"default_transaction_isolation",
 		"default_transaction_read_only",
+		"default_with_oids",
 		"dynamic_library_path",
 		"effective_cache_size",
 		"enable_hashagg",
