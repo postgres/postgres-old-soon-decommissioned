@@ -33,6 +33,7 @@ PostgreSQL documentation
   </para>
 
   <para>
+   This utility may only be run by the user who installed the server.
    You can specify the data directory on the command line, or use 
    the environment variable <envar>PGDATA</>.
   </para>
