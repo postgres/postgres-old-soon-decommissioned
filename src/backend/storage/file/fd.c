@@ -670,7 +670,7 @@ OpenTemporaryFile(void)
 	 * transaction
 	 */
 	snprintf(tempfilename, sizeof(tempfilename),
-			 "pg_temp%d.%ld", (int) getpid(), tempFileCounter++);
+			 "pg_sorttemp%d.%ld", MyProcPid, tempFileCounter++);
 
 	/* Open the file */
 #ifndef __CYGWIN32__

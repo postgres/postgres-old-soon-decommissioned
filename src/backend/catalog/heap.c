@@ -254,7 +254,7 @@ heap_create(char *relname,
 	{
 		/* replace relname of caller */
 		snprintf(relname, NAMEDATALEN, "pg_temp.%d.%u",
-				 (int) MyProcPid, uniqueId++);
+				 MyProcPid, uniqueId++);
 	}
 
 	/* ----------------
