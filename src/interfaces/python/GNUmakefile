@@ -22,7 +22,7 @@ libpq-all:
 Makefile: Setup.in Makefile.pre.in
 	$(MAKE) -f Makefile.pre.in boot srcdir=$(srcdir) VPATH=$(srcdir)
 
-Makefile.pre.in: $(python_extmakefile)
+Makefile.pre.in: $(python_makefile_pre_in)
 	cp $< $@
 
 Setup.in: Setup.in.raw

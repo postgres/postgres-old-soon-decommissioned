@@ -75,6 +75,7 @@
 <!entity xoper      SYSTEM "xoper.sgml">
 <!entity xtypes     SYSTEM "xtypes.sgml">
 <!entity plperl     SYSTEM "plperl.sgml">
+<!entity plpython   SYSTEM "plpython.sgml">
 <!entity plsql      SYSTEM "plsql.sgml">
 <!entity pltcl      SYSTEM "pltcl.sgml">
 

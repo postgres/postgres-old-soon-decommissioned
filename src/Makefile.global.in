@@ -118,8 +118,12 @@ MULTIBYTE	= @MULTIBYTE@
 enable_shared	= @enable_shared@
 enable_rpath	= @enable_rpath@
 
-python_extmakefile = @python_extmakefile@
-python_moduledir = @python_moduledir@
+python_version		= @python_version@
+python_includedir	= @python_includedir@
+python_makefile_pre_in	= @python_makefile_pre_in@
+python_moduledir	= @python_moduledir@
+python_libspec		= @python_libspec@
+python_dynlibdir	= @python_dynlibdir@
 
 krb_srvtab = @krb_srvtab@
 
