@@ -2197,7 +2197,7 @@ main(int argc, char *argv[])
 	if (authmethod == NULL || !strlen(authmethod))
 	{
 		authwarning = _("\nWARNING: enabling \"trust\" authentication for local connections\n"
-						"You can change this by editing pg_hba.conf or using the -A flag the\n"
+						"You can change this by editing pg_hba.conf or using the -A option the\n"
 						"next time you run initdb.\n");
 		authmethod = "trust";
 	}
