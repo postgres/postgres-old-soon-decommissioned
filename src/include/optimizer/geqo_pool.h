@@ -23,14 +23,13 @@
 #ifndef GEQO_POOL_H
 #define GEQO_POOL_H
 
-#include "optimizer/geqo_gene.h"
-#include "nodes/parsenodes.h"
+#include "optimizer/geqo.h"
+
 
 extern Pool *alloc_pool(int pool_size, int string_length);
 extern void free_pool(Pool *pool);
 
-extern void random_init_pool(Query *root, List *initial_rels,
-				 Pool *pool, int strt, int stop);
+extern void random_init_pool(Pool *pool, GeqoEvalData *evaldata);
 extern Chromosome *alloc_chromo(int string_length);
 extern void free_chromo(Chromosome *chromo);
 
