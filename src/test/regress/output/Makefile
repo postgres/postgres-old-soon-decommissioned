@@ -32,8 +32,9 @@ all: $(INFILES)
 	rm -f $@; \
 	PWD=`pwd`; \
 	OBJ=`pwd`; \
-	sed -e "s:_CWD_:$(PWD):g" \
+	sed -e "s:_CWD_:$$PWD:g" \
 	    -e "s:_OBJWD_:$$OBJ/\.\.:g" \
 	    -e "s:_DLSUFFIX_:$(DLSUFFIX):g" \
-	    -e "s/_USER_/$$USER/g" < $< > ../expected/$@
+	    -e "s/_USER_/$$USER/g" < $< | \
+	sed -e "s:output/\.\.:input/\.\.:g" > ../expected/$@
 
