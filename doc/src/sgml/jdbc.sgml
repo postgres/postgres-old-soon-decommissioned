@@ -573,7 +573,7 @@ st.close();
   <para>
     <application>PostgreSQL</application> provides two distinct way to 
     store binary data.  Binary data can be stored in a table using 
-    <applicaiton>PostgreSQL's</application> binary datatype 
+    <application>PostgreSQL's</application> binary datatype 
     <type>bytea</type>, or by using the <firstterm>Large Object</firstterm>
     feature which stores the binary data in a separate table in a special 
     format, and refers to from your own tables by an <type>OID</type> value.
