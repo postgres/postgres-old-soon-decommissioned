@@ -34,7 +34,7 @@ bool		copy_in_state;
  * parse_slash_copy
  * -- parses \copy command line
  *
- * Accepted syntax: \copy [binary] table|"table" [with oids] from|to filename|'filename' using delimiters ['<char>'] [ with null as 'string' ]
+ * Accepted syntax: \copy [binary] table|"table" [with oids] from|to filename|'filename' [ using delimiters '<char>'] [ with null as 'string' ]
  * (binary is not here yet)
  *
  * returns a malloc'ed structure with the options, or NULL on parsing error
@@ -74,7 +74,13 @@ parse_slash_copy(const char *args)
 	bool		error = false;
 	char		quote;
 
-	line = xstrdup(args);
+	if (args)
+		line = xstrdup(args);
+	else
+	{
+		psql_error("\\copy: arguments required\n");
+		return NULL;
+	}		
 
 	if (!(result = calloc(1, sizeof(struct copy_options))))
 	{
@@ -191,6 +197,8 @@ parse_slash_copy(const char *args)
 						}
 					}
 				}
+				else
+					error = true;
 			}
 		}
 	}
