@@ -23,7 +23,7 @@ extern "C" {
  *	include stuff common to fe and be
  * ----------------
  */
-/* #include "libpq/libpq.h" */
+#include "postgres_ext.h"
 #include "libpq/pqcomm.h"
 #include "lib/dllist.h"
 
@@ -76,7 +76,7 @@ typedef struct {
 typedef struct pgresAttDesc {
   char* name; /* type name */
   Oid adtid;  /* type id */
-  int2 adtsize; /* type size */
+  short adtsize; /* type size */
 } PGresAttDesc;
 
 /* use char* for Attribute values,
@@ -214,7 +214,7 @@ extern int PQnfields(PGresult *res);
 extern char* PQfname(PGresult *res, int field_num);
 extern int PQfnumber(PGresult *res, const char* field_name);
 extern Oid PQftype(PGresult *res, int field_num);
-extern int2 PQfsize(PGresult *res, int field_num);
+extern short PQfsize(PGresult *res, int field_num);
 extern char* PQcmdStatus(PGresult *res);
 extern const char* PQoidStatus(PGresult *res);
 extern char* PQgetvalue(PGresult *res, int tup_num, int field_num);
