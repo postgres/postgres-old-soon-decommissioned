@@ -41,7 +41,6 @@
 #include "libpq/libpq.h"
 #include "miscadmin.h"
 #include "storage/backendid.h"
-#include "storage/bufpage.h"
 #include "storage/proc.h"
 #include "storage/sinval.h"
 #include "storage/smgr.h"
