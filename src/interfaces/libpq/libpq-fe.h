@@ -78,7 +78,7 @@ extern		"C"
 		char	   *name;		/* type name */
 		Oid			adtid;		/* type id */
 		short		adtsize;	/* type size */
-		int			adtmod;		/* type-specific modifier info */
+		int			atttypmod;	/* type-specific modifier info */
 	} PGresAttDesc;
 
 /* use char* for Attribute values,
