@@ -3788,14 +3788,9 @@ get_from_clause_item(Node *jtnode, Query *query, deparse_context *context)
 			switch (j->jointype)
 			{
 				case JOIN_INNER:
-					if (j->quals)
-						appendContextKeyword(context, "NATURAL JOIN ",
-											 -PRETTYINDENT_JOIN,
-											 PRETTYINDENT_JOIN, 0);
-					else
-						appendContextKeyword(context, "NATURAL CROSS JOIN ",
-											 -PRETTYINDENT_JOIN,
-											 PRETTYINDENT_JOIN, 0);
+					appendContextKeyword(context, "NATURAL JOIN ",
+										 -PRETTYINDENT_JOIN,
+										 PRETTYINDENT_JOIN, 0);
 					break;
 				case JOIN_LEFT:
 					appendContextKeyword(context, "NATURAL LEFT JOIN ",
