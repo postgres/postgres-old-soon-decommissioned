@@ -185,10 +185,10 @@ installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(datadir) $(DESTDIR)$(pkglibdir)
 
 uninstall:
-
-dep depend distprep:
+	rm -f $(DESTDIR)$(datadir)/$(SQLSCRIPT)
+	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
 
 clean distclean maintainer-clean:
-	$(RM) $(SQLSCRIPT)
+	rm -f $(SQLSCRIPT)
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@; done
 
