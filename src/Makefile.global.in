@@ -53,11 +53,11 @@ BSD_SHLIB= true
 # systems now.  May be applicable to other systems to?
 ELF_SYSTEM= @ELF_SYS@
 
-LIBPQDIR:= $(SRCDIR)/interfaces/libpq
-LIBPGTCLDIR:= $(SRCDIR)/interfaces/libpgtcl
+LIBPQDIR= $(SRCDIR)/interfaces/libpq
+LIBPGTCLDIR= $(SRCDIR)/interfaces/libpgtcl
 
-LIBPQ:= -L$(LIBPQDIR) -lpq
-LIBPGTCL:= -L$(LIBPGTCLDIR) -lpgtcl
+LIBPQ= -L$(LIBPQDIR) -lpq
+LIBPGTCL= -L$(LIBPGTCLDIR) -lpgtcl
 
 # For convenience, POSTGRESDIR is where BINDIR, and LIBDIR
 # and other target destinations are rooted.  Of course, each of these is

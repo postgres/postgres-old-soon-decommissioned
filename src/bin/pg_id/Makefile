@@ -26,7 +26,7 @@ depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean:
-	rm -f pg_id $(OBJS)
+	rm -f pg_id$(X) $(OBJS)
 
 ifeq (depend,$(wildcard depend))
 include depend

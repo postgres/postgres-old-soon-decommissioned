@@ -10,11 +10,14 @@ hostname=$1
 shift
 extratests="$*"
 
-if [ "x$hostname" = "xwin" -o "x$hostname" = "xi386-qnx-qnx4" ]; then
-	HOSTLOC="-h localhost"
-else
-	HOSTLOC=""
-fi
+case $hostname in
+	i*86-pc-cygwin* | i386-qnx-qnx4)
+ 		HOSTLOC="-h localhost"
+		;;
+ 	*)
+		HOSTLOC=""
+		;;
+esac
 
 if echo '\c' | grep -s c >/dev/null 2>&1
 then

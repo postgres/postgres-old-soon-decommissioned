@@ -36,7 +36,7 @@ depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 
-	rm -f pg_encoding pg_encoding.o
+	rm -f pg_encoding$(X) pg_encoding.o
 
 ifeq (depend,$(wildcard depend))
 include depend
