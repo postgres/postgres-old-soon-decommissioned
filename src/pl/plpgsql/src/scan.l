@@ -180,9 +180,9 @@ dump			{ return O_DUMP;			}
 <IN_COMMENT>\*\/	{ BEGIN INITIAL;			}
 <IN_COMMENT>\n		;
 <IN_COMMENT>.		;
-<IN_COMMENT><<EOF>>	{ plpgsql_comperrinfo();
-			  elog(ERROR, "unterminated comment starting on line %d",
-				start_lineno);
+<IN_COMMENT><<EOF>>	{
+				plpgsql_error_lineno = start_lineno;
+				elog(ERROR, "unterminated comment");
 			}
 
     /* ----------
@@ -198,9 +198,9 @@ dump			{ return O_DUMP;			}
 <IN_STRING>'		{ BEGIN INITIAL;
 			  return T_STRING;
 			}
-<IN_STRING><<EOF>>	{ plpgsql_comperrinfo();
-			  elog(ERROR, "unterminated string starting on line %d", 
-				start_lineno);
+<IN_STRING><<EOF>>	{
+				plpgsql_error_lineno = start_lineno;
+				elog(ERROR, "unterminated string");
 			}
 <IN_STRING>[^'\\]*	{ yymore();				}
 

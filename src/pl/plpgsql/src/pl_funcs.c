@@ -324,6 +324,7 @@ plpgsql_ns_rename(char *oldname, char *newname)
 char *
 plpgsql_tolower(char *s)
 {
+	char	   *sstart = s;
 	char	   *ret;
 	char	   *cp;
 
@@ -342,10 +343,7 @@ plpgsql_tolower(char *s)
 				*cp++ = *s++;
 			}
 			if (*s != '"')
-			{
-				plpgsql_comperrinfo();
-				elog(ERROR, "unterminated \"");
-			}
+				elog(ERROR, "unterminated \" in name %s", sstart);
 			s++;
 		}
 		else
