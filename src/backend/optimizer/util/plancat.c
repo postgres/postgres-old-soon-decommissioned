@@ -579,7 +579,7 @@ IndexSelectivity(Oid indexrelid,
 
 		amopTuple = SearchSysCacheTuple(AMOPOPID,
 										ObjectIdGetDatum(indclass),
-								  ObjectIdGetDatum(operatorObjectIds[n]),
+								  		ObjectIdGetDatum(operatorObjectIds[n]),
 										ObjectIdGetDatum(relam),
 										0);
 		if (!HeapTupleIsValid(amopTuple))

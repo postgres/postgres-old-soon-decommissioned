@@ -597,7 +597,6 @@ match_clause_to_indexkey(RelOptInfo *rel,
 	 */
 	if (!join)
 	{
-
 		/*
 		 * Check for standard s-argable clause
 		 */
@@ -736,7 +735,6 @@ match_clause_to_indexkey(RelOptInfo *rel,
 		if (rightop
 		&& match_index_to_operand(indexkey, (Expr *) rightop, rel, index))
 		{
-
 			join_op = get_commutator(((Oper *) ((Expr *) clause)->oper)->opno);
 
 		}
