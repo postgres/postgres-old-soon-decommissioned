@@ -1514,14 +1514,14 @@
      </row>
 
      <row>
-      <entry>properbyte_pct</entry>
+      <entry>properbyte_cpu</entry>
       <entry><type>int4</type></entry>
       <entry></entry>
       <entry>dead code</entry>
      </row>
 
      <row>
-      <entry>propercall_pct</entry>
+      <entry>propercall_cpu</entry>
       <entry><type>int4</type></entry>
       <entry></entry>
       <entry>dead code</entry>
