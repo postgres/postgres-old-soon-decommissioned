@@ -2000,7 +2000,7 @@ SHOW ERRORS;
 <programlisting>
 DROP FUNCTION cs_fmt_browser_version(varchar, varchar);
 CREATE FUNCTION cs_fmt_browser_version(varchar, varchar)
-RETRUNS varchar AS '
+RETURNS varchar AS '
 DECLARE
     v_name ALIAS FOR $1;
     v_version ALIAS FOR $2;
