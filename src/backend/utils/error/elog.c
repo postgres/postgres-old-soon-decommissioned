@@ -37,6 +37,10 @@
 #include "tcop/tcopprot.h"
 #include "commands/copy.h"
 
+#ifdef MULTIBYTE
+#include "mb/pg_wchar.h"
+#endif
+
 extern int	errno;
 
 #ifdef __CYGWIN__
