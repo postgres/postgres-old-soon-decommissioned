@@ -42,10 +42,14 @@ endef
 
 
 $(srcdir)/bootparse.c $(srcdir)/bootstrap_tokens.h: bootparse.y Makefile
+ifdef YACC
 	$(YACC) -d $(YFLAGS) $<
 	$(sed-magic) < y.tab.c > $(srcdir)/bootparse.c
 	$(sed-magic) < y.tab.h > $(srcdir)/bootstrap_tokens.h
 	rm -f y.tab.c y.tab.h
+else
+	@$(missing) bison $< $@
+endif
 
 $(srcdir)/bootscanner.c: bootscanner.l Makefile
 ifdef FLEX

@@ -25,9 +25,13 @@ include $(top_srcdir)/src/Makefile.shlib
 
 
 cubeparse.c cubeparse.h: cubeparse.y
+ifdef YACC
 	$(YACC) -d $(YFLAGS) -p cube_yy $<
 	mv -f y.tab.c cubeparse.c
 	mv -f y.tab.h cubeparse.h
+else
+	@$(missing) bison $< $@
+endif
 
 cubescan.c: cubescan.l
 ifdef FLEX

@@ -25,9 +25,13 @@ include $(top_srcdir)/src/Makefile.shlib
 
 
 segparse.c segparse.h: segparse.y
+ifdef YACC
 	$(YACC) -d $(YFLAGS) -p seg_yy $<
 	mv -f y.tab.c segparse.c
 	mv -f y.tab.h segparse.h
+else
+	@$(missing) bison $< $@
+endif
 
 segscan.c: segscan.l
 ifdef FLEX

@@ -25,9 +25,13 @@ SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) $@ $^
 
 $(srcdir)/gram.c $(srcdir)/parse.h: gram.y
+ifdef YACC
 	$(YACC) -d $(YFLAGS) $<
 	mv y.tab.c $(srcdir)/gram.c
 	mv y.tab.h $(srcdir)/parse.h
+else
+	@$(missing) bison $< $@
+endif
 
 $(srcdir)/scan.c: scan.l
 ifdef FLEX
