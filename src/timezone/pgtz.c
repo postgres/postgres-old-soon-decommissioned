@@ -41,7 +41,6 @@ pg_TZDIR(void)
 #endif
 
 	strcat(tzdir, "/timezone");
-	puts(tzdir);
 
 	done_tzdir = 1;
 	return tzdir;
