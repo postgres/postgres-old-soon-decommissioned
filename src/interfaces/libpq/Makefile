@@ -49,10 +49,6 @@ backend_src = $(top_srcdir)/src/backend
 crypt.c getaddrinfo.c inet_aton.c snprintf.c strerror.c path.c thread.c: %.c : $(top_srcdir)/src/port/%.c
 	rm -f $@ && $(LN_S) $< .
 
-# compile this with thread flags
-thread.o: thread.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(THREAD_CFLAGS) -c thread.c
-
 dllist.c: $(backend_src)/lib/dllist.c
 	rm -f $@ && $(LN_S) $< .
 
