@@ -2043,8 +2043,8 @@ lseg_center(PG_FUNCTION_ARGS)
 
 	result = (Point *) palloc(sizeof(Point));
 
-	result->x = (lseg->p[0].x - lseg->p[1].x) / 2.0;
-	result->y = (lseg->p[0].y - lseg->p[1].y) / 2.0;
+	result->x = (lseg->p[0].x + lseg->p[1].x) / 2.0;
+	result->y = (lseg->p[0].y + lseg->p[1].y) / 2.0;
 
 	PG_RETURN_POINT_P(result);
 }
