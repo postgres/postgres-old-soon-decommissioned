@@ -556,7 +556,7 @@ int PQendcopy(PGconn *conn);
 .fi
 As an example:
 .nf
-PQexec(conn, "create table foo (a int4, b name, d float8)");
+PQexec(conn, "create table foo (a int4, b char16, d float8)");
 PQexec(conn, "copy foo from stdin");
 PQputline(conn, "3<TAB>hello world<TAB>4.5\en");
 PQputline(conn,"4<TAB>goodbye world<TAB>7.11\en");

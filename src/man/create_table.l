@@ -78,14 +78,14 @@ name as a system catalog class.
 --
 -- Create class emp with attributes name, sal and bdate
 --
-create table emp (name name, salary float4, bdate abstime)
+create table emp (name char16, salary float4, bdate abstime)
 .fi
 .nf
 --
 --Create class permemp with pension information that
 --inherits all fields of emp 
 --
-create table permemp (plan name) inherits (emp)
+create table permemp (plan char16) inherits (emp)
 .fi
 .nf
 --

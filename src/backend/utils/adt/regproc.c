@@ -52,7 +52,7 @@ regprocin(char *proname)
 	ScanKeyEntryInitialize(&key,
 						   (bits16) 0,
 						   (AttrNumber) 1,
-						   (RegProcedure) F_NAMEEQ,
+						   (RegProcedure) F_CHAR16EQ,
 						   (Datum) proname);
 
 	procscan = heap_beginscan(proc, 0, false, 1, &key);

@@ -106,7 +106,7 @@ IsDefinedRewriteRule(char *ruleName)
 	 * Scan the RuleRelation ('pg_rewrite') until we find a tuple
 	 */
 	ScanKeyEntryInitialize(&scanKey, 0, Anum_pg_rewrite_rulename,
-					   F_NAMEEQ, PointerGetDatum(ruleName));
+					   NameEqualRegProcedure, PointerGetDatum(ruleName));
 	scanDesc = heap_beginscan(RewriteRelation,
 							  0, false, 1, &scanKey);
 

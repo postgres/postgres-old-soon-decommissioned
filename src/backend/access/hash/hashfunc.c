@@ -133,8 +133,6 @@ hashoid(Oid key)
 	return ((uint32) ~key);
 }
 
-#define PRIME1			37
-#define PRIME2			1048583
 
 uint32
 hashchar(char key)
@@ -142,8 +140,12 @@ hashchar(char key)
 	int			len;
 	uint32		h;
 
-	h = 0;
 	len = sizeof(char);
+
+#define PRIME1			37
+#define PRIME2			1048583
+
+	h = 0;
 	/* Convert char to integer */
 	h = h * PRIME1 ^ (key - ' ');
 	h %= PRIME2;
@@ -151,6 +153,55 @@ hashchar(char key)
 	return (h);
 }
 
+uint32
+hashchar2(uint16 intkey)
+{
+	uint32		h;
+	int			len;
+	char	   *key = (char *) &intkey;
+
+	h = 0;
+	len = sizeof(uint16);
+	/* Convert string to integer */
+	while (len--)
+		h = h * PRIME1 ^ (*key++ - ' ');
+	h %= PRIME2;
+
+	return (h);
+}
+
+uint32
+hashchar4(uint32 intkey)
+{
+	uint32		h;
+	int			len;
+	char	   *key = (char *) &intkey;
+
+	h = 0;
+	len = sizeof(uint32);
+	/* Convert string to integer */
+	while (len--)
+		h = h * PRIME1 ^ (*key++ - ' ');
+	h %= PRIME2;
+
+	return (h);
+}
+
+uint32
+hashchar8(char *key)
+{
+	uint32		h;
+	int			len;
+
+	h = 0;
+	len = sizeof(char8);
+	/* Convert string to integer */
+	while (len--)
+		h = h * PRIME1 ^ (*key++ - ' ');
+	h %= PRIME2;
+
+	return (h);
+}
 
 uint32
 hashname(NameData *n)
@@ -171,6 +222,22 @@ hashname(NameData *n)
 	return (h);
 }
 
+
+uint32
+hashchar16(char *key)
+{
+	uint32		h;
+	int			len;
+
+	h = 0;
+	len = sizeof(char16);
+	/* Convert string to integer */
+	while (len--)
+		h = h * PRIME1 ^ (*key++ - ' ');
+	h %= PRIME2;
+
+	return (h);
+}
 
 
 /*

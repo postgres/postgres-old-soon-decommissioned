@@ -183,7 +183,7 @@ create rule example_3 is
 --
 --Create a view of the employees working in the toy department.
 --
-create TOYEMP(name = name, salary = int4)
+create TOYEMP(name = char16, salary = int4)
 
 create rule example_4 is
     on select to TOYEMP

@@ -138,6 +138,7 @@ bool	bool	include/c.h
 box	(BOX *) 	utils/geo-decls.h
 bytea	(bytea *)	include/postgres.h
 char	char	N/A
+char16	Char16 or (char16 *)	include/postgres.h
 cid	CID	include/postgres.h
 int2	int2	include/postgres.h
 int28	(int28 *)	include/postgres.h

@@ -88,7 +88,7 @@ createdb(char *dbname, char *dbpath)
 
 #if FALSE
 	sprintf(buf, "insert into pg_database (datname, datdba, datpath) \
-                  values (\'%s\'::name, \'%d\'::oid, \'%s\'::text);",
+                  values (\'%s\'::char16, \'%d\'::oid, \'%s\'::text);",
 			dbname, user_id, dbname);
 #endif
 

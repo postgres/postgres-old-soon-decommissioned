@@ -30,14 +30,14 @@ extern TransactionId DisabledTransactionId;
 extern TransactionId AmiTransactionId;
 extern TransactionId FirstTransactionId;
 
-/* XXX name for catalogs */
+/* XXX char16 name for catalogs */
 TransactionId
 xidin(char *representation)
 {
 	return (atol(representation));
 }
 
-/* XXX name for catalogs */
+/* XXX char16 name for catalogs */
 char *
 xidout(TransactionId transactionId)
 {

@@ -219,7 +219,7 @@ parameter is:
 .fi
 For example, consider the definition of a function, DEPT, as
 .nf
-create function DEPT (name) 
+create function DEPT (char16) 
 	returns dept
 	as 'select * from 
 	    dept where name=$1'
