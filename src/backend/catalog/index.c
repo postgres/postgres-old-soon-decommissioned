@@ -372,7 +372,7 @@ AccessMethodObjectIdGetForm(Oid accessMethodObjectId)
 	HeapScanDesc pg_am_scan;
 	HeapTuple	pg_am_tuple;
 	ScanKeyData key;
-	Form_pg_am	form;
+	Form_pg_am	aform;
 
 	/* ----------------
 	 *	form a scan key for the pg_am relation
@@ -406,13 +406,13 @@ AccessMethodObjectIdGetForm(Oid accessMethodObjectId)
 	 *	if found am tuple, then copy the form and return the copy
 	 * ----------------
 	 */
-	form = (Form_pg_am) palloc(sizeof *form);
-	memcpy(form, GETSTRUCT(pg_am_tuple), sizeof *form);
+	aform = (Form_pg_am) palloc(sizeof *aform);
+	memcpy(aform, GETSTRUCT(pg_am_tuple), sizeof *aform);
 
 	heap_endscan(pg_am_scan);
 	heap_close(pg_am_desc);
 
-	return form;
+	return aform;
 }
 
 /* ----------------------------------------------------------------
