@@ -91,10 +91,6 @@
 #include "utils/syscache.h"
 
 
-/* stuff that we really ought not be touching directly :-( */
-extern TransactionState CurrentTransactionState;
-
-
 /*
  * State for outbound notifies consists of a list of all relnames NOTIFYed
  * in the current transaction.	We do not actually perform a NOTIFY until
@@ -717,7 +713,7 @@ Async_NotifyHandler(SIGNAL_ARGS)
 void
 EnableNotifyInterrupt(void)
 {
-	if (CurrentTransactionState->blockState != TRANS_DEFAULT)
+	if (IsTransactionOrTransactionBlock())
 		return;					/* not really idle */
 
 	/*

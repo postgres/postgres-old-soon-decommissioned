@@ -2660,7 +2660,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.372 $ $Date: 2003/10/09 02:40:18 $\n");
+		puts("$Revision: 1.373 $ $Date: 2003/10/16 16:50:41 $\n");
 	}
 
 	/*
@@ -2796,7 +2796,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 		{
 			pgstat_report_tabstat();
 
-			if (IsTransactionBlock())
+			if (IsTransactionOrTransactionBlock())
 			{
 				set_ps_display("idle in transaction");
 				pgstat_report_activity("<IDLE> in transaction");
