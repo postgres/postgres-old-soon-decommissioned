@@ -140,6 +140,8 @@ ExecInitHash(Hash *node, EState *estate, Plan *parent)
 	 */
 	ExecAssignExprContext(estate, &hashstate->cstate);
 
+#define HASH_NSLOTS 1
+
 	/*
 	 * initialize our result slot
 	 */
@@ -164,7 +166,6 @@ ExecInitHash(Hash *node, EState *estate, Plan *parent)
 int
 ExecCountSlotsHash(Hash *node)
 {
-#define HASH_NSLOTS 1
 	return ExecCountSlotsNode(outerPlan(node)) +
 	ExecCountSlotsNode(innerPlan(node)) +
 	HASH_NSLOTS;

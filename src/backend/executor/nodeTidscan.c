@@ -411,7 +411,7 @@ ExecInitTidScan(TidScan *node, EState *estate, Plan *parent)
 	 */
 	ExecAssignExprContext(estate, &scanstate->cstate);
 
-#define TIDSCAN_NSLOTS 3
+#define TIDSCAN_NSLOTS 2
 
 	/*
 	 * tuple table initialization

@@ -154,7 +154,7 @@ ExecInitMaterial(Material *node, EState *estate, Plan *parent)
 	 * ExecQual or ExecProject.
 	 */
 
-#define MATERIAL_NSLOTS 1
+#define MATERIAL_NSLOTS 2
 
 	/*
 	 * tuple table initialization

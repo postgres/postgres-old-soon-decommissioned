@@ -134,7 +134,7 @@ ExecInitSubqueryScan(SubqueryScan *node, EState *estate, Plan *parent)
 	 */
 	ExecAssignExprContext(estate, &subquerystate->csstate.cstate);
 
-#define SUBQUERYSCAN_NSLOTS 2
+#define SUBQUERYSCAN_NSLOTS 1
 
 	/*
 	 * tuple table initialization
@@ -177,7 +177,6 @@ ExecInitSubqueryScan(SubqueryScan *node, EState *estate, Plan *parent)
 int
 ExecCountSlotsSubqueryScan(SubqueryScan *node)
 {
-
 	/*
 	 * The subplan has its own tuple table and must not be counted here!
 	 */

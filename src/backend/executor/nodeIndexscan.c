@@ -615,7 +615,7 @@ ExecInitIndexScan(IndexScan *node, EState *estate, Plan *parent)
 	 */
 	ExecAssignExprContext(estate, &scanstate->cstate);
 
-#define INDEXSCAN_NSLOTS 3
+#define INDEXSCAN_NSLOTS 2
 
 	/*
 	 * tuple table initialization

@@ -241,7 +241,7 @@ ExecInitSort(Sort *node, EState *estate, Plan *parent)
 	 * ExecQual or ExecProject.
 	 */
 
-#define SORT_NSLOTS 1
+#define SORT_NSLOTS 2
 
 	/*
 	 * tuple table initialization

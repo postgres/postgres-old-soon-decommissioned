@@ -217,7 +217,7 @@ ExecInitSeqScan(SeqScan *node, EState *estate, Plan *parent)
 	 */
 	ExecAssignExprContext(estate, &scanstate->cstate);
 
-#define SEQSCAN_NSLOTS 3
+#define SEQSCAN_NSLOTS 2
 
 	/*
 	 * tuple table initialization
