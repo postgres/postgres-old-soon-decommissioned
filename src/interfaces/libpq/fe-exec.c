@@ -374,7 +374,7 @@ process_response_from_backend(FILE *pfin, FILE *pfout, FILE *pfdebug,
                               PGconn *conn, 
                               PGresult **result_p, char * const reason) {
   
-  char id;
+  int id;
     /* The protocol character received from the backend.  The protocol
        character is the first character in the backend's response to our
        query.  It defines the nature of the response.
