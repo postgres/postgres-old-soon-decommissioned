@@ -5080,8 +5080,16 @@ dumpCast(Archive *fout, CastInfo *cast)
 	if (!OidIsValid(cast->castfunc))
 		appendPQExpBuffer(defqry, "WITHOUT FUNCTION");
 	else
-		appendPQExpBuffer(defqry, "WITH FUNCTION %s",
+	{
+		/*
+		 * Always qualify the function name, in case it is not in pg_catalog
+		 * schema (format_function_signature won't qualify it).
+		 */
+		appendPQExpBuffer(defqry, "WITH FUNCTION %s.",
+						  fmtId(funcInfo->pronamespace->nspname));
+		appendPQExpBuffer(defqry, "%s",
 						  format_function_signature(funcInfo, NULL, true));
+	}
 
 	if (cast->castcontext == 'a')
 		appendPQExpBuffer(defqry, " AS ASSIGNMENT");
