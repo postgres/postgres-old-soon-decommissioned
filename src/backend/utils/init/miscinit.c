@@ -476,6 +476,20 @@ InitializeSessionUserId(const char *username)
 }
 
 
+void
+InitializeSessionUserIdStandalone(void)
+{
+	/* This function should only be called in a single-user backend. */
+	AssertState(!IsUnderPostmaster);
+
+	/* call only once */
+	AssertState(!OidIsValid(SessionUserId));
+
+	SetSessionUserId(BOOTSTRAP_USESYSID);
+	AuthenticatedUserIsSuperuser = true;
+}
+
+
 /*
  * Change session auth ID while running
  */

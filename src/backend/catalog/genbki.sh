@@ -183,6 +183,7 @@ sed -e "s/;[ 	]*$//g" \
     -e "s/[ 	]TransactionId/ xid/g" \
     -e "s/^TransactionId/xid/g" \
     -e "s/(TransactionId/(xid/g" \
+    -e "s/PGUID/1/g" \
     -e "s/NAMEDATALEN/$NAMEDATALEN/g" \
     -e "s/DEFAULT_ATTSTATTARGET/$DEFAULTATTSTATTARGET/g" \
     -e "s/INDEX_MAX_KEYS\*2/$INDEXMAXKEYS2/g" \

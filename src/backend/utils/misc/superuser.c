@@ -34,6 +34,10 @@ superuser(void)
 	bool		result = false;
 	HeapTuple	utup;
 
+	/* Special escape path in case you deleted all your users. */
+	if (!IsUnderPostmaster && GetUserId() == BOOTSTRAP_USESYSID)
+		return true;
+
 	utup = SearchSysCache(SHADOWSYSID,
 						  ObjectIdGetDatum(GetUserId()),
 						  0, 0, 0);
