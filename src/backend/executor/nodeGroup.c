@@ -428,7 +428,13 @@ sameGroup(TupleTableSlot *oldslot,
 			 * strcmp for comparison
 			 */
 			if (strcmp(val1, val2) != 0)
+			{
+				pfree (val1);
+				pfree (val2);
 				return FALSE;
+			}
+			pfree (val1);
+			pfree (val2);
 		}
 		else
 		{
