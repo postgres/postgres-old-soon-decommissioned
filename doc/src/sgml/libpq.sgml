@@ -2483,7 +2483,7 @@ main()
  */
 #include &lt;stdio.h&gt;
 #include "libpq-fe.h"
-#include "utils/geo-decls.h"    /* for the POLYGON type */
+#include "utils/geo_decls.h"    /* for the POLYGON type */
 
 void
 exit_nicely(PGconn *conn)
