@@ -3335,7 +3335,7 @@ Numeric:  FLOAT opt_float
 				{
 					$$ = makeNode(TypeName);
 					$$->name = xlateSqlType("numeric");
-					$$->typmod = -1;
+					$$->typmod = $2;
 				}
 		| NUMERIC opt_numeric
 				{
