@@ -129,7 +129,7 @@ get_prompt(promptStatus_t status)
 							if (*p == 'm')
 								buf[strcspn(buf, ".")] = '\0';
 						}
-#ifndef HAVE_UNIX_SOCKETS
+#ifdef HAVE_UNIX_SOCKETS
 						/* UNIX socket */
 						else
 						{
