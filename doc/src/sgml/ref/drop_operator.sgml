@@ -108,9 +108,9 @@ DROP OPERATOR ~ (none, bit);
 
   <para>
    Remove the right unary factorial operator <literal>x!</literal>
-   for type <type>integer</type>:
+   for type <type>bigint</type>:
 <programlisting>
-DROP OPERATOR ! (integer, none);
+DROP OPERATOR ! (bigint, none);
 </programlisting>
   </para>
  </refsect1>
