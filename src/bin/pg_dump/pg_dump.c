@@ -3994,7 +3994,7 @@ dumpRules(Archive *fout, const char *tablename,
 		if (!res ||
 			PQresultStatus(res) != PGRES_TUPLES_OK)
 		{
-			fprintf(stderr, "dumpRules(): SELECT failed for table %s.  Explanation from backend: '%s'.\n",
+			fprintf(stderr, "dumpRules(): SELECT failed for rules associated with table \"%s\".\n\tExplanation from backend: '%s'.\n",
 					tblinfo[t].relname, PQerrorMessage(g_conn));
 			exit_nicely(g_conn);
 		}
