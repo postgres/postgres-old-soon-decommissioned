@@ -1151,7 +1151,11 @@ DecodeTimeOnly(char **field, int *ftype, int nf,
 							case DTK_NOW:
 								tmask = DTK_TIME_M;
 								*dtype = DTK_TIME;
+#if NOT_USED
 								GetCurrentTime(tm);
+#else
+								GetCurrentTimeUsec(tm, fsec);
+#endif
 								break;
 
 							case DTK_ZULU:
