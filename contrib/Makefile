@@ -6,18 +6,19 @@ include $(top_builddir)/src/Makefile.global
 
 WANTED_DIRS = \
 		array		\
+		btree_gist	\
 		cube		\
 		dbase		\
 		dblink		\
 		earthdistance	\
 		findoidjoins	\
 		fulltextindex	\
+		fuzzystrmatch	\
 		intarray	\
 		isbn_issn	\
 		lo		\
 		mSQL-interface	\
 		mac		\
-		metaphone	\
 		miscutil	\
 		noupdate	\
 		oid2name	\
@@ -30,7 +31,6 @@ WANTED_DIRS = \
 		rserv		\
 		rtree_gist	\
 		seg		\
-		soundex		\
 		spi		\
 		string		\
 		tips		\
