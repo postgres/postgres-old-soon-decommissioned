@@ -16,7 +16,7 @@
 -- Built-in: ASCII, BIT_LENGTH, CHAR_LENGTH, CHARACTER_LENGTH, LTRIM,
 --           OCTET_LENGTH, POSITION, REPEAT, RTRIM, SUBSTRING
 -- Missing: DIFFERENCE, REPLACE, SOUNDEX, LENGTH (ODBC sense)
--- Keyword problems: CHAR, LEFT, RIGHT
+-- Keyword problems: CHAR
 
 
 -- CHAR(code)
@@ -44,7 +44,7 @@ CREATE OR REPLACE FUNCTION lcase(text) RETURNS text AS '
 
 
 -- LEFT(string, count)
-CREATE OR REPLACE FUNCTION "left"(text, integer) RETURNS text AS '
+CREATE OR REPLACE FUNCTION left(text, integer) RETURNS text AS '
     SELECT substring($1 for $2);
 ' LANGUAGE SQL;
 
@@ -59,7 +59,7 @@ CREATE OR REPLACE FUNCTION locate(text, text, integer) RETURNS integer AS '
 
 
 -- RIGHT(string, count)
-CREATE OR REPLACE FUNCTION "right"(text, integer) RETURNS text AS '
+CREATE OR REPLACE FUNCTION right(text, integer) RETURNS text AS '
     SELECT substring($1 from char_length($1) - $2 + 1);
 ' LANGUAGE SQL;
 
