@@ -322,6 +322,7 @@ objdir=		obj
 # when you upgrade the source) so you have to create at least an
 # empty one.  Run "touch Makefile.custom" in the source directory
 # to create an empty customization file.  Make your local changes.
-
-# include $(MKDIR)/../Makefile.custom
+ifneq ($(wildcard $(MKDIR)/../Makefile.custom), )
+include $(MKDIR)/../Makefile.custom
+endif
 
