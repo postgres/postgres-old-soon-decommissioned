@@ -97,26 +97,23 @@ init_execution_state(FunctionCachePtr fcache,
 	execution_state *newes;
 	execution_state *nextes;
 	execution_state *preves;
-	QueryTreeList *queryTree_list;
-	int			i;
-	List	   *planTree_list;
-	int			nargs;
-
-	nargs = fcache->nargs;
+	List	   *queryTree_list,
+			   *planTree_list,
+			   *qtl_item;
+	int			nargs = fcache->nargs;
 
 	newes = (execution_state *) palloc(sizeof(execution_state));
 	nextes = newes;
 	preves = (execution_state *) NULL;
 
+	planTree_list = pg_parse_and_plan(fcache->src, fcache->argOidVect,
+									  nargs, &queryTree_list, None, FALSE);
 
-	planTree_list = (List *)
-		pg_parse_and_plan(fcache->src, fcache->argOidVect, nargs, &queryTree_list, None, FALSE);
-
-	for (i = 0; i < queryTree_list->len; i++)
+	foreach (qtl_item, queryTree_list)
 	{
-		EState	   *estate;
-		Query	   *queryTree = (Query *) (queryTree_list->qtrees[i]);
+		Query	   *queryTree = lfirst(qtl_item);
 		Plan	   *planTree = lfirst(planTree_list);
+		EState	   *estate;
 
 		if (!nextes)
 			nextes = (execution_state *) palloc(sizeof(execution_state));

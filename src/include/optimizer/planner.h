@@ -22,6 +22,6 @@
 
 extern Plan *planner(Query *parse);
 extern Plan *union_planner(Query *parse);
-extern void pg_checkretval(Oid rettype, QueryTreeList *querytree_list);
+extern void pg_checkretval(Oid rettype, List *querytree_list);
 
 #endif	 /* PLANNER_H */

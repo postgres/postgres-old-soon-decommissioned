@@ -15,7 +15,7 @@
 
 typedef struct
 {
-	QueryTreeList *qtlist;		/* malloced */
+	List	   *qtlist;
 	uint32		processed;		/* by Executor */
 	SPITupleTable *tuptable;
 	Portal		portal;			/* portal per procedure */
@@ -25,7 +25,7 @@ typedef struct
 
 typedef struct
 {
-	QueryTreeList *qtlist;
+	List	   *qtlist;
 	List	   *ptlist;
 	int			nargs;
 	Oid		   *argtypes;

@@ -274,16 +274,19 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 		case T_SubLink:
 			{
 				SubLink    *sublink = (SubLink *) expr;
-				QueryTreeList *qtree;
+				List	   *qtrees;
+				Query	   *qtree;
 				List	   *llist;
 
 				pstate->p_hasSubLinks = true;
-				qtree = parse_analyze(lcons(sublink->subselect, NIL), pstate);
-				if (qtree->len != 1 ||
-					qtree->qtrees[0]->commandType != CMD_SELECT ||
-					qtree->qtrees[0]->resultRelation != 0)
+				qtrees = parse_analyze(lcons(sublink->subselect, NIL), pstate);
+				if (length(qtrees) != 1)
 					elog(ERROR, "parser: bad query in subselect");
-				sublink->subselect = (Node *) qtree->qtrees[0];
+				qtree = (Query *) lfirst(qtrees);
+				if (qtree->commandType != CMD_SELECT ||
+					qtree->resultRelation != 0)
+					elog(ERROR, "parser: bad query in subselect");
+				sublink->subselect = (Node *) qtree;
 
 				if (sublink->subLinkType != EXISTS_SUBLINK)
 				{

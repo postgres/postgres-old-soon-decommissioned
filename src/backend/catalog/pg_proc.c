@@ -67,7 +67,7 @@ ProcedureCreate(char *procedureName,
 	Oid			languageObjectId;
 	Oid			typeObjectId;
 	List	   *x;
-	QueryTreeList *querytree_list;
+	List	   *querytree_list;
 	List	   *plan_list;
 	Oid			typev[8];
 	Oid			relid;

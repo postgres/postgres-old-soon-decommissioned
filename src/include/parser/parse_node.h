@@ -19,12 +19,6 @@
 #include <parser/parse_type.h>
 #include <utils/rel.h>
 
-typedef struct QueryTreeList
-{
-	int			len;			/* number of queries */
-	Query	  **qtrees;
-} QueryTreeList;
-
 /* state information used during parse analysis */
 typedef struct ParseState
 {

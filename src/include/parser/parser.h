@@ -15,6 +15,6 @@
 
 #include <parser/parse_node.h>
 
-extern QueryTreeList *parser(char *str, Oid *typev, int nargs);
+extern List *parser(char *str, Oid *typev, int nargs);
 
 #endif	 /* PARSER_H */

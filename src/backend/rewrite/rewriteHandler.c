@@ -3107,25 +3107,25 @@ void create_list(Node *ptr, List **intersect_list)
  * instead. */
 Node *intersect_tree_analyze(Node *tree, Node *first_select, Node *parsetree)
 {
-  Node *result = (Node *)NIL;
-  List *arg;
-  
-  if(IsA(tree, SelectStmt))
+	Node *result = (Node *) NIL;
+	List *arg;
+
+	if (IsA(tree, SelectStmt))
     {
-      QueryTreeList *qtree;
-      
-      /* If we get to the tree given in first_select return
-       * parsetree instead of performing parse_analyze() */
-      if(tree == first_select){
-	result = parsetree;
-      }
-      else {	
-	/* transform the 'raw' nodes to 'cooked' Query nodes */ 
-	qtree = parse_analyze(lcons(tree, NIL), NULL);
-	result = (Node *)qtree->qtrees[0];	
-      }
-      
+		/* If we get to the tree given in first_select return
+		 * parsetree instead of performing parse_analyze() */
+		if (tree == first_select)
+		{
+			result = parsetree;
+		}
+		else
+		{	
+			/* transform the 'raw' nodes to 'cooked' Query nodes */ 
+			List *qtree = parse_analyze(lcons(tree, NIL), NULL);
+			result = (Node *) lfirst(qtree);
+		}
     }  
+
   if(IsA(tree,Expr))
     {
       /* Call recursively for every argument of the node */
