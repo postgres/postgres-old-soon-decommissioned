@@ -229,7 +229,7 @@ fi
 # ----------
 # Drop the language
 # ----------
-sqlcmd="DROP LANGUAGE \"$langname\";"
+sqlcmd="SET autocommit = 'on';DROP LANGUAGE \"$langname\";"
 if [ "$showsql" = yes ]; then
 	echo "$sqlcmd"
 fi
@@ -256,7 +256,7 @@ if [ "$?" -ne 0 ]; then
 	exit 1
 fi
 
-sqlcmd="DROP FUNCTION \"$handler\" ();"
+sqlcmd="SET autocommit = 'on';DROP FUNCTION \"$handler\" ();"
 if [ "$showsql" = yes ]; then
 	echo "$sqlcmd"
 fi

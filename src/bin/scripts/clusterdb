@@ -176,7 +176,7 @@ do
 		idx=`echo $tabs | cut -d: -f3`
 		query="$query CLUSTER $idx ON $nspc.$tab;"
 	done
-	${PATHNAME}psql $PSQLOPT $ECHOOPT -c "$query" -d $db
+	${PATHNAME}psql $PSQLOPT $ECHOOPT -c "SET autocommit = 'on';$query" -d $db
 	if [ "$?" -ne 0 ]
 	then
 		echo "$CMDNAME: While clustering $db, the following failed: $query" 1>&2

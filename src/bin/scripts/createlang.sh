@@ -270,7 +270,7 @@ fi
 # Create the call handler and the language
 # ----------
 if [ "$handlerexists" = no ]; then
-	sqlcmd="CREATE FUNCTION \"$handler\" () RETURNS LANGUAGE_HANDLER AS '$PGLIB/${object}' LANGUAGE C;"
+	sqlcmd="SET autocommit = 'on';CREATE FUNCTION \"$handler\" () RETURNS LANGUAGE_HANDLER AS '$PGLIB/${object}' LANGUAGE C;"
 	if [ "$showsql" = yes ]; then
 		echo "$sqlcmd"
 	fi
@@ -281,7 +281,7 @@ if [ "$handlerexists" = no ]; then
 	fi
 fi
 
-sqlcmd="CREATE ${trusted}LANGUAGE \"$langname\" HANDLER \"$handler\";"
+sqlcmd="SET autocommit = 'on';CREATE ${trusted}LANGUAGE \"$langname\" HANDLER \"$handler\";"
 if [ "$showsql" = yes ]; then
 	echo "$sqlcmd"
 fi
@@ -297,7 +297,7 @@ fi
 # seems best to disable public USAGE for an untrusted one.
 # ----------
 if test -z "$trusted"; then
-    sqlcmd="REVOKE ALL ON LANGUAGE \"$langname\" FROM PUBLIC;"
+    sqlcmd="SET autocommit = 'on';REVOKE ALL ON LANGUAGE \"$langname\" FROM PUBLIC;"
     if [ "$showsql" = yes ]; then
         echo "$sqlcmd"
     fi

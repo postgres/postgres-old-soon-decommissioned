@@ -148,7 +148,7 @@ fi
 
 DelUser=`echo "$DelUser" | sed 's/\"/\\\"/g'`
 
-${PATHNAME}psql $PSQLOPT -d template1 -c "DROP USER \"$DelUser\""
+${PATHNAME}psql $PSQLOPT -d template1 -c "SET autocommit = 'on';DROP USER \"$DelUser\""
 
 if [ "$?" -ne 0 ]; then
 	echo "$CMDNAME: deletion of user \"$DelUser\" failed" 1>&2
