@@ -612,6 +612,10 @@ _bt_split(Relation rel, Buffer buf, OffsetNumber firstright,
 	OffsetNumber maxoff;
 	OffsetNumber i;
 
+#ifdef XLOG
+	BTItem		lhikey;
+#endif
+
 	rbuf = _bt_getbuf(rel, P_NEW, BT_WRITE);
 	origpage = BufferGetPage(buf);
 	leftpage = PageGetTempPage(origpage, sizeof(BTPageOpaqueData));
@@ -680,6 +684,9 @@ _bt_split(Relation rel, Buffer buf, OffsetNumber firstright,
 		itemsz = ItemIdGetLength(itemid);
 		item = (BTItem) PageGetItem(origpage, itemid);
 	}
+#ifdef XLOG
+	lhikey = item;
+#endif
 	if (PageAddItem(leftpage, (Item) item, itemsz, leftoff,
 					LP_USED) == InvalidOffsetNumber)
 		elog(STOP, "btree: failed to add hikey to the left sibling");
@@ -793,12 +800,19 @@ _bt_split(Relation rel, Buffer buf, OffsetNumber firstright,
 			memcpy(xlbuf + hsize, &(_xlheapRel->rd_node), sizeof(RelFileNode));
 			hsize += sizeof(RelFileNode);
 		}
+		else
+		{
+			Size	itemsz = IndexTupleDSize(lhikey->bti_itup) + 
+						(sizeof(BTItemData) - sizeof(IndexTupleData));
+			memcpy(xlbuf + hsize, (char*) lhikey, itemsz);
+			hsize += itemsz;
+		}
 		if (newitemonleft)
 		{
 			/*
 			 * Read comments in _bt_pgaddtup.
 			 * Actually, seems that in non-leaf splits newitem shouldn't
-			 * go to first data key position.
+			 * go to first data key position on left page.
 			 */
 			if (! P_ISLEAF(lopaque) && itup_off == P_FIRSTDATAKEY(lopaque))
 			{

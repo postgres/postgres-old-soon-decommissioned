@@ -12,7 +12,7 @@ subdir = src/backend/access/transam
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = transam.o transsup.o varsup.o xact.o xid.o xlog.o rmgr.o
+OBJS = transam.o transsup.o varsup.o xact.o xid.o xlog.o xlogutils.o rmgr.o
 
 all: SUBSYS.o
 
