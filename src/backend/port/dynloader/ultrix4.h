@@ -34,7 +34,7 @@
 #ifndef _DL_HEADER_
 #define _DL_HEADER_
 
-#include <stdio.h>				/* needed to declare FILE for ldfcn.h */
+#include <stdio.h>
 #include "filehdr.h"
 #include "syms.h"
 #include "ldfcn.h"

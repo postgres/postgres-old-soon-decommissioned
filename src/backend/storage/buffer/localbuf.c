@@ -32,7 +32,7 @@
 
 #include "storage/smgr.h"
 #include "utils/relcache.h"
-#include "executor/execdebug.h" /* for NDirectFileRead */
+#include "executor/execdebug.h"
 
 extern long int LocalBufferFlushCount;
 

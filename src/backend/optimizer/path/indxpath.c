@@ -31,10 +31,10 @@
 #include "optimizer/paths.h"
 #include "optimizer/plancat.h"
 #include "optimizer/pathnode.h"
-#include "parser/parsetree.h"	/* for getrelid() */
-#include "parser/parse_expr.h"	/* for exprType() */
-#include "parser/parse_oper.h"	/* for oprid() and oper() */
-#include "parser/parse_coerce.h"/* for IS_BINARY_COMPATIBLE() */
+#include "parser/parsetree.h"
+#include "parser/parse_expr.h"
+#include "parser/parse_oper.h"
+#include "parser/parse_coerce.h"
 #include "utils/lsyscache.h"
 
 

@@ -1,7 +1,7 @@
 /* $Id$ */
 
 #include <stdlib.h>
-#include <math.h>				/* for pow() prototype */
+#include <math.h>
 #include <errno.h>
 
 void

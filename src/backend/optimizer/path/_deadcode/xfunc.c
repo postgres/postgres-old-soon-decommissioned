@@ -13,9 +13,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <math.h>				/* for MAXFLOAT on most systems */
+#include <math.h>
 
-#include <values.h>				/* for MAXFLOAT on SunOS */
+#include <values.h>
 #include <string.h>
 
 #include "postgres.h"
@@ -35,8 +35,8 @@
 #include "optimizer/internal.h"
 #include "optimizer/keys.h"
 #include "optimizer/pathnode.h"
-#include "optimizer/tlist.h"	/* for get_expr */
-#include "storage/buf_internals.h"		/* for NBuffers */
+#include "optimizer/tlist.h"
+#include "storage/buf_internals.h"
 #include "tcop/dest.h"
 #include "utils/syscache.h"
 

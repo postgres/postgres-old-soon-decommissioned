@@ -19,7 +19,7 @@
 #include <unistd.h>
 
 #include "postgres.h"
-#include "miscadmin.h"			/* for DebugLvl */
+#include "miscadmin.h"
 
 #ifndef S_IRUSR					/* XXX [TRH] should be in a header */
 #define S_IRUSR		 S_IREAD

@@ -26,7 +26,7 @@
 #include "catalog/pg_type.h"
 #include "catalog/pg_opclass.h"
 #include "commands/defrem.h"
-#include <parser/parsetree.h>	/* for getrelid() */
+#include "parser/parsetree.h"
 #include "optimizer/prep.h"
 #include "optimizer/clauses.h"
 

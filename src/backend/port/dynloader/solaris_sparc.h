@@ -18,7 +18,7 @@
 
 #include <dlfcn.h>
 
-#include "fmgr.h"				/* for func_ptr */
+#include "fmgr.h"
 #include "utils/dynamic_loader.h"
 
 /* dynloader.c */

@@ -12,7 +12,7 @@
  */
 #include <string.h>
 #include "postgres.h"
-#include "parser/parsetree.h"	/* for getrelid() */
+#include "parser/parsetree.h"
 #include "utils/lsyscache.h"
 #include "utils/builtins.h"
 #include "rewrite/rewriteManip.h"

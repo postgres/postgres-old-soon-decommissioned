@@ -10,11 +10,11 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"			/* for oid defs */
-#include "utils/syscache.h"		/* for SearchSysCache */
-#include "rewrite/locks.h"		/* for rewrite specific lock defns */
+#include "postgres.h"
+#include "utils/syscache.h"
+#include "rewrite/locks.h"
 
-#include "access/heapam.h"		/* for ACL checking */
+#include "access/heapam.h"
 #include "utils/syscache.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"

@@ -14,7 +14,7 @@
 
 #include "postgres.h"
 
-#include "utils/exc.h"			/* where function declarations go */
+#include "utils/exc.h"
 
 void
 ExcAbort(const Exception *excP,

@@ -52,7 +52,7 @@
 
 #include "postgres.h"
 
-#include <libpq/libpq.h>		/* where the declarations go */
+#include "libpq/libpq.h"
 
 PortalEntry **portals = (PortalEntry **) NULL;
 size_t		portals_array_size = 0;

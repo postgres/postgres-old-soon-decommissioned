@@ -20,7 +20,7 @@
 #include "postgres.h"
 #include "tioga/tgRecipe.h"
 
-#include "catalog/catalog.h"	/* for newoid() */
+#include "catalog/catalog.h"
 
 static Arr_TgString *TextArray2ArrTgString(char *str);
 

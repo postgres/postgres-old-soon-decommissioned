@@ -11,7 +11,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>				/* XXX for printf debugging */
+#include <stdio.h>
 
 #include "postgres.h"
 

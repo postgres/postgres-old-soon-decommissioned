@@ -19,7 +19,7 @@
 #include "optimizer/cost.h"
 #include "optimizer/internal.h"
 #include "optimizer/plancat.h"
-#include "parser/parsetree.h"	/* for getrelid() */
+#include "parser/parsetree.h"
 #include "utils/lsyscache.h"
 
 

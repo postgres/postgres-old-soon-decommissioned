@@ -11,7 +11,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>				/* for sprintf() */
+#include <stdio.h>
 #include <string.h>
 #include "postgres.h"
 #include "access/htup.h"

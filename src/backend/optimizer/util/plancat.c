@@ -23,7 +23,7 @@
 #include "catalog/pg_amop.h"
 #include "catalog/pg_inherits.h"
 
-#include "parser/parsetree.h"	/* for getrelid() */
+#include "parser/parsetree.h"
 
 #include "optimizer/internal.h"
 #include "optimizer/plancat.h"

@@ -40,7 +40,7 @@
 #include "utils/builtins.h"
 #include "utils/acl.h"
 #include "utils/syscache.h"
-#include "parser/parsetree.h"	/* rt_fetch() */
+#include "parser/parsetree.h"
 /* #include "access/localam.h" */
 #include "optimizer/var.h"
 #include "access/heapam.h"

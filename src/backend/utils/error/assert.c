@@ -17,7 +17,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "postgres.h"			/* where the declaration goes */
+#include "postgres.h"
 
 #include "utils/exc.h"
 #include "utils/trace.h"

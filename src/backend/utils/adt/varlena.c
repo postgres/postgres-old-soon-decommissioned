@@ -15,7 +15,7 @@
 #include <string.h>
 
 #include "postgres.h"
-#include "utils/builtins.h"		/* where function declarations go */
+#include "utils/builtins.h"
 
 #include "mb/pg_wchar.h"
 

@@ -12,19 +12,19 @@
  *-------------------------------------------------------------------------
  */
 #include <string.h>
-#include <sys/param.h>			/* for MAXPATHLEN */
+#include <sys/param.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/file.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <grp.h>				/* for getgrgid */
-#include <pwd.h>				/* for getpwuid */
+#include <grp.h>
+#include <pwd.h>
 
 #include "postgres.h"
 
 
-#include "miscadmin.h"			/* where the declarations go */
+#include "miscadmin.h"
 
 #include "catalog/catname.h"
 #include "catalog/pg_shadow.h"

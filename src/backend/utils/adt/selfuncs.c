@@ -22,12 +22,11 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "utils/builtins.h"		/* for textout() prototype and where the
-								 * declarations go */
+#include "utils/builtins.h"
 
 #include "catalog/catname.h"
 #include "utils/syscache.h"
-#include "utils/lsyscache.h"	/* for get_oprrest() */
+#include "utils/lsyscache.h"
 #include "catalog/pg_statistic.h"
 
 /* N is not a valid var/constant or relation id */

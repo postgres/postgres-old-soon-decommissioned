@@ -13,8 +13,8 @@
 #ifndef PORT_PROTOS_H
 #define PORT_PROTOS_H
 
-#include <sys/resource.h>		/* for struct rusage */
-#include <dl.h>					/* for shl_t */
+#include <sys/resource.h>
+#include "dl.h"
 
 #include "utils/dynamic_loader.h"
 

@@ -17,7 +17,7 @@
 #include <string.h>
 #include "postgres.h"
 
-#include "utils/acl.h"			/* where declarations for this file go */
+#include "utils/acl.h"
 #include "access/heapam.h"
 #include "catalog/indexing.h"
 #include "catalog/catalog.h"

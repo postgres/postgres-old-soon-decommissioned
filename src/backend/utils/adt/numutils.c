@@ -14,14 +14,14 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>				/* for sprintf() */
+#include <stdio.h>
 #include <errno.h>
 #include <math.h>
 #ifdef HAVE_LIMITS_H
 #include <limits.h>
 #endif
 #include "postgres.h"
-#include "utils/builtins.h"		/* where the declarations go */
+#include "utils/builtins.h"
 #ifndef HAVE_MEMMOVE
 #else
 #include <string.h>

@@ -15,7 +15,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>				/* XXX use own I/O routines */
+#include <stdio.h>
 #include <errno.h>
 #include <string.h>
 

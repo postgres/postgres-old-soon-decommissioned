@@ -47,8 +47,8 @@
 #include "catalog/pg_type.h"
 #include "catalog/pg_language.h"
 #include "utils/syscache.h"
-#include <fmgr.h>				/* for fmgr */
-#include <utils/builtins.h>		/* prototype for textin() */
+#include "fmgr.h"
+#include "utils/builtins.h"
 #include "commands/defrem.h"
 #include "tcop/dest.h"
 #include "catalog/pg_shadow.h"

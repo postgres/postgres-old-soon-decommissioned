@@ -60,7 +60,7 @@
 #include "executor/executor.h"
 #include "executor/execdebug.h"
 #include "executor/nodeAppend.h"
-#include "parser/parsetree.h"	/* for rt_store() macro */
+#include "parser/parsetree.h"
 
 static bool exec_append_initialize_next(Append *node);
 

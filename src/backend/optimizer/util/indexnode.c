@@ -17,7 +17,7 @@
 
 
 #include "optimizer/plancat.h"
-#include "optimizer/pathnode.h" /* where the decls go */
+#include "optimizer/pathnode.h"
 
 
 static List *find_secondary_index(Query *root, Oid relid);

@@ -27,7 +27,7 @@
 
 #include "catalog/catalog.h"
 
-#include "access/transam.h"		/* for AmiTransactionId */
+#include "access/transam.h"
 
 extern Oid	MyDatabaseId;
 

@@ -80,7 +80,7 @@
 #include <signal.h>
 #include <string.h>
 #include <errno.h>
-#include <sys/types.h>			/* Needed by in.h on Ultrix */
+#include <sys/types.h>
 #include <netinet/in.h>
 
 #include "postgres.h"

@@ -46,7 +46,7 @@
 #include "executor/nodeAppend.h"
 #include "executor/nodeSubplan.h"
 #include "executor/execdebug.h"
-#include "optimizer/internal.h" /* for _NONAME_RELATION_ID_ */
+#include "optimizer/internal.h"
 #include "access/genam.h"
 #include "access/heapam.h"
 #include "catalog/heap.h"

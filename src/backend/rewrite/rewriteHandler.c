@@ -14,7 +14,7 @@
 #include "postgres.h"
 #include "miscadmin.h"
 #include "parser/parse_type.h"
-#include "parser/parsetree.h"	/* for parsetree manipulation */
+#include "parser/parsetree.h"
 #include "parser/parse_relation.h"
 
 #include "parser/parse_target.h"

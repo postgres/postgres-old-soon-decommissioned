@@ -22,7 +22,7 @@
 #include "libpq/libpq-be.h"
 #include "parser/parse_node.h"
 #include "utils/builtins.h"
-#include <utils/relcache.h>		/* for RelationNameGetRelation */
+#include "utils/relcache.h"
 #include "rewrite/rewriteHandler.h"
 #include "rewrite/rewriteManip.h"
 #include "tcop/pquery.h"

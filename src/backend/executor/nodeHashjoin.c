@@ -19,7 +19,7 @@
 #include "executor/executor.h"
 #include "executor/nodeHash.h"
 #include "executor/nodeHashjoin.h"
-#include "optimizer/clauses.h"	/* for get_leftop */
+#include "optimizer/clauses.h"
 
 static TupleTableSlot *ExecHashJoinOuterGetTuple(Plan *node, Plan *parent,
 						  HashJoinState *hjstate);

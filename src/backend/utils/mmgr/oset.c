@@ -17,7 +17,7 @@
  */
 #include "postgres.h"
 
-#include "utils/memutils.h"		/* where declarations of this file goes */
+#include "utils/memutils.h"
 
 static Pointer OrderedElemGetBase(OrderedElem elem);
 static void OrderedElemPush(OrderedElem elem);

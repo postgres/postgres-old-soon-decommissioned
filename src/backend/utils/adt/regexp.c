@@ -28,11 +28,11 @@
  *-------------------------------------------------------------------------
  */
 #include <string.h>
-#include "postgres.h"			/* postgres system include file */
+#include "postgres.h"
 
 #include "regex/regex.h"
 
-#include "utils/builtins.h"		/* where the function declarations go */
+#include "utils/builtins.h"
 
 #if defined(DISABLE_XOPEN_NLS)
 #undef _XOPEN_SOURCE

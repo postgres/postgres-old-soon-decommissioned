@@ -15,9 +15,9 @@
 
 #include "postgres.h"
 
-#include <miscadmin.h>			/* for DataDir */
+#include "miscadmin.h"
 #include "utils/syscache.h"
-#include <catalog/catname.h>	/* NameIs{,Shared}SystemRelationName */
+#include "catalog/catname.h"
 #include "catalog/pg_type.h"
 #include "catalog/catalog.h"
 #include "access/transam.h"

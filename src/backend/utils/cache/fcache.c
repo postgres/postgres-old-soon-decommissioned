@@ -18,7 +18,7 @@
 #include "catalog/pg_type.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_language.h"
-#include "parser/parsetree.h"	/* for getrelname() */
+#include "parser/parsetree.h"
 #include "utils/builtins.h"
 #include "utils/fcache2.h"
 #ifndef HAVE_MEMMOVE

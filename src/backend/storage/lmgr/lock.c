@@ -29,7 +29,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>				/* for sprintf() */
+#include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>

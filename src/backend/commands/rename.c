@@ -21,7 +21,7 @@
 #include "catalog/catalog.h"
 #include "commands/rename.h"
 #include "miscadmin.h"
-#include <optimizer/prep.h>		/* for find_all_inheritors */
+#include "optimizer/prep.h"
 #ifndef NO_SECURITY
 #include "utils/acl.h"
 #endif	 /* !NO_SECURITY */

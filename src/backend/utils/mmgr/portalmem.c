@@ -73,8 +73,8 @@
  * PortalHeapMemory				y				y				y *
  *
  */
-#include <stdio.h>				/* for sprintf() */
-#include <string.h>				/* for strlen, strncpy */
+#include <stdio.h>
+#include <string.h>
 
 #include "postgres.h"
 

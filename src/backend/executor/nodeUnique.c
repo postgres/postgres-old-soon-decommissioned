@@ -29,7 +29,7 @@
 #include "executor/executor.h"
 #include "executor/nodeUnique.h"
 #include "access/heapam.h"
-#include "access/printtup.h"	/* for getTypeOutAndElem() */
+#include "access/printtup.h"
 
 /* ----------------------------------------------------------------
  *		ExecIdenticalTuples

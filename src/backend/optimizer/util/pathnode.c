@@ -23,7 +23,7 @@
 #include "optimizer/keys.h"
 #include "optimizer/ordering.h"
 
-#include "parser/parsetree.h"	/* for getrelid() */
+#include "parser/parsetree.h"
 
 static Path *better_path(Path *new_path, List *unique_paths, bool *is_new);
 

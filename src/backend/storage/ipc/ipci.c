@@ -18,7 +18,7 @@
 
 #include "storage/sinval.h"
 #include "storage/bufmgr.h"
-#include "miscadmin.h"			/* for DebugLvl */
+#include "miscadmin.h"
 
 /*
  * SystemPortAddressCreateMemoryKey

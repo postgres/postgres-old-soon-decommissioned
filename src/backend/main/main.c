@@ -27,8 +27,8 @@
 #include <locale.h>
 #endif
 #include "miscadmin.h"
-#include "bootstrap/bootstrap.h"/* for BootstrapMain() */
-#include "tcop/tcopprot.h"		/* for PostgresMain() */
+#include "bootstrap/bootstrap.h"
+#include "tcop/tcopprot.h"
 
 #define NOROOTEXEC "\
 \n\"root\" execution of the PostgreSQL backend is not permitted.\n\n\

@@ -24,7 +24,7 @@
 #include <unistd.h>
 
 #include "postgres.h"
-#include "miscadmin.h"			/* where the declarations go */
+#include "miscadmin.h"
 
 #include "storage/backendid.h"
 #include "storage/lmgr.h"

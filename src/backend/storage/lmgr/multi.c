@@ -27,7 +27,7 @@
 #include "storage/multilev.h"
 
 #include "utils/rel.h"
-#include "miscadmin.h"			/* MyDatabaseId */
+#include "miscadmin.h"
 
 static bool MultiAcquire(LOCKMETHOD lockmethod, LOCKTAG *tag,
 			 LOCKMODE lockmode, PG_LOCK_LEVEL level);

@@ -34,8 +34,8 @@
 #include "executor/execdebug.h"
 #include "executor/nodeIndexscan.h"
 
-#include "optimizer/clauses.h"	/* for get_op, get_leftop, get_rightop */
-#include "parser/parsetree.h"	/* for rt_fetch() */
+#include "optimizer/clauses.h"
+#include "parser/parsetree.h"
 
 #include "access/heapam.h"
 #include "access/genam.h"

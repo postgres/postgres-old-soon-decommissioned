@@ -35,7 +35,7 @@
 #include "utils/builtins.h"
 #include "utils/hsearch.h"
 #include "utils/memutils.h"
-#include "executor/execdebug.h" /* for NDirectFileRead */
+#include "executor/execdebug.h"
 #include "catalog/catalog.h"
 
 /*

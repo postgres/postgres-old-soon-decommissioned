@@ -12,16 +12,16 @@
  *-------------------------------------------------------------------------
  */
 #include <unistd.h>
-#include <stdio.h>				/* for sprintf() */
+#include <stdio.h>
 #include <string.h>
-#include <fcntl.h>				/* for open() flags */
+#include <fcntl.h>
 #include <sys/file.h>
 
 #include "postgres.h"
-#include "miscadmin.h"			/* for DataDir */
+#include "miscadmin.h"
 
 #include "catalog/catalog.h"
-#include "storage/smgr.h"		/* where the declarations go */
+#include "storage/smgr.h"
 
 #undef DIAGNOSTIC
 

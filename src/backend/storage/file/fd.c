@@ -48,7 +48,7 @@
 #include <fcntl.h>
 
 #include "postgres.h"
-#include "miscadmin.h"			/* for DataDir */
+#include "miscadmin.h"
 #include "storage/fd.h"
 
 /*

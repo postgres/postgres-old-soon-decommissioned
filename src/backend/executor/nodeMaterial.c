@@ -24,7 +24,7 @@
 #include "executor/executor.h"
 #include "executor/nodeMaterial.h"
 #include "catalog/heap.h"
-#include "optimizer/internal.h" /* for _NONAME_RELATION_ID_ */
+#include "optimizer/internal.h"
 #include "access/heapam.h"
 
 /* ----------------------------------------------------------------

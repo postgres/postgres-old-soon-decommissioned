@@ -23,7 +23,7 @@
 #include "utils/catcache.h"
 #include "utils/inval.h"
 #include "utils/relcache.h"
-#include "catalog/catname.h"	/* XXX to support hacks below */
+#include "catalog/catname.h"
 
 static InvalidationEntry InvalidationEntryAllocate(uint16 size);
 static void LocalInvalidInvalidate(LocalInvalid invalid, void (*function) ());

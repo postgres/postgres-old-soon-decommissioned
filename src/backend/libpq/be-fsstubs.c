@@ -38,7 +38,7 @@
 #include "postgres.h"
 
 #include "libpq/libpq-fs.h"
-#include <catalog/pg_shadow.h>	/* for superuser() */
+#include "catalog/pg_shadow.h"
 #include "storage/large_object.h"
 #include "libpq/be-fsstubs.h"
 

@@ -22,9 +22,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <stdio.h>				/* for sprintf() */
+#include <stdio.h>
 #include "postgres.h"
-#include "storage/shmem.h"		/* where the declarations go */
+#include "storage/shmem.h"
 
 /*#define SHMQUEUE_DEBUG*/
 #ifdef SHMQUEUE_DEBUG

@@ -39,7 +39,7 @@
 #include <limits.h>
 #endif
 #include "access/xact.h"
-#include "utils/builtins.h"		/* where function declarations go */
+#include "utils/builtins.h"
 #include "utils/dt.h"
 
 #define INVALID_RELTIME_STR		"Undefined RelTime"

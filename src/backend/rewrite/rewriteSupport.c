@@ -16,8 +16,8 @@
 #include "access/heapam.h"
 #include "catalog/catname.h"
 #include "catalog/indexing.h"
-#include "utils/catcache.h"		/* for CacheContext */
-#include "utils/syscache.h"		/* for SearchSysCache */
+#include "utils/catcache.h"
+#include "utils/syscache.h"
 
 #include "rewrite/rewriteSupport.h"
 

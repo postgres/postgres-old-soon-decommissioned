@@ -21,7 +21,7 @@
 #include "utils/syscache.h"
 #include "utils/lsyscache.h"
 
-#include "parser/parsetree.h"	/* for getrelid() */
+#include "parser/parsetree.h"
 
 #include "optimizer/prep.h"
 #include "optimizer/clauses.h"

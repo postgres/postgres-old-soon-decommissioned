@@ -26,7 +26,7 @@
 #include <string.h>
 #include "postgres.h"
 #include "access/heapam.h"
-#include "utils/builtins.h"		/* where function decls go */
+#include "utils/builtins.h"
 
 static int	my_varattno(Relation rd, char *a);
 

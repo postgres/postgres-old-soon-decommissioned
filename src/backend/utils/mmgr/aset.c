@@ -23,7 +23,7 @@
  */
 #include <stdio.h>
 #include "postgres.h"
-#include "utils/memutils.h"		/* where funnction declarations go */
+#include "utils/memutils.h"
 #ifndef HAVE_MEMMOVE
 #else
 #include <string.h>

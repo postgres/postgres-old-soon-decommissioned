@@ -15,7 +15,7 @@
 
 
 #include "optimizer/internal.h"
-#include "optimizer/pathnode.h" /* where the decls go */
+#include "optimizer/pathnode.h"
 #include "optimizer/plancat.h"
 
 

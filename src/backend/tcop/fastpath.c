@@ -62,12 +62,12 @@
 #include "postgres.h"
 
 
-#include "utils/builtins.h"		/* for oideq */
+#include "utils/builtins.h"
 #include "tcop/fastpath.h"
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
 
-#include "access/xact.h"		/* for TransactionId/CommandId protos */
+#include "access/xact.h"
 
 #include "utils/syscache.h"
 #include "catalog/pg_proc.h"

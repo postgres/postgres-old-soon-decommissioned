@@ -20,7 +20,7 @@
 
 #include "postgres.h"
 #include "miscadmin.h"
-#include "utils/builtins.h"		/* where function declarations go */
+#include "utils/builtins.h"
 
 char *
 filename_in(char *file)

@@ -44,12 +44,11 @@
 
 #include "access/heapam.h"
 #include "utils/syscache.h"
-#include "storage/bufpage.h"	/* for page layout, for
-								 * InitMyDatabaseInfo() */
+#include "storage/bufpage.h"
 #include "storage/sinval.h"
 
-#include "miscadmin.h"			/* for global decls */
-#include "utils/portal.h"		/* for EnablePortalManager, etc. */
+#include "miscadmin.h"
+#include "utils/portal.h"
 
 #include "utils/inval.h"
 

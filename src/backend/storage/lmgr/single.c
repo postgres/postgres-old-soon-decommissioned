@@ -21,7 +21,7 @@
 
 #include "postgres.h"
 
-#include "storage/lmgr.h"		/* where the declarations go */
+#include "storage/lmgr.h"
 #include "storage/lock.h"
 #include "storage/multilev.h"
 #include "utils/rel.h"

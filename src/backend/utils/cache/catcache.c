@@ -19,7 +19,7 @@
 #include "utils/catcache.h"
 #include "access/valid.h"
 #include "miscadmin.h"
-#include "catalog/pg_type.h"	/* for OID of int28 type */
+#include "catalog/pg_type.h"
 
 static void CatCacheRemoveCTup(CatCache *cache, Dlelem *e);
 static Index CatalogCacheComputeHashIndex(struct catcache * cacheInP);
