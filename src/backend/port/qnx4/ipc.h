@@ -26,5 +26,6 @@
 
 /* Control Commands. */
 #define IPC_RMID	0			/* remove identifier */
+#define IPC_STAT	1			/* get shm status */
 
 #endif	 /* _SYS_IPC_H */

@@ -28,6 +28,7 @@ extern		"C"
 	struct shmid_ds
 	{
 		int			dummy;
+		int			shm_nattch;
 	};
 
 	extern void *shmat(int shmid, const void *shmaddr, int shmflg);
