@@ -464,13 +464,6 @@ pg_local_sendauth(char *PQerrormsg, PGconn *conn)
 	/* Point to start of first structure */
 	struct cmsghdr *cmsg = (struct cmsghdr *) cmsgmem;
 #endif
-#ifdef HAVE_STRUCT_SOCKCRED
-	/* Prevent padding */
-	char		cmsgmem[sizeof(struct cmsghdr) + sizeof(struct sockcred)];
-
-	/* Point to start of first structure */
-	struct cmsghdr *cmsg = (struct cmsghdr *) cmsgmem;
-#endif
 
 	/*
 	 * The backend doesn't care what we send here, but it wants exactly
