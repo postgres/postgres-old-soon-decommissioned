@@ -353,16 +353,19 @@ RemoveFromWaitQueue(PROC *proc)
 /*
  * Cancel any pending wait for lock, when aborting a transaction.
  *
+ * Returns true if we had been waiting for a lock, else false.
+ *
  * (Normally, this would only happen if we accept a cancel/die
  * interrupt while waiting; but an elog(ERROR) while waiting is
  * within the realm of possibility, too.)
  */
-void
+bool
 LockWaitCancel(void)
 {
 	/* Nothing to do if we weren't waiting for a lock */
 	if (!waitingForLock)
-		return;
+		return false;
+
 	waitingForLock = false;
 
 	/* Turn off the deadlock timer, if it's still running (see ProcSleep) */
@@ -395,6 +398,12 @@ LockWaitCancel(void)
 	 * prematurely.
 	 */
 	ZeroProcSemaphore(MyProc);
+
+	/*
+	 * Return true even if we were kicked off the lock before we were
+	 * able to remove ourselves.
+	 */
+	return true;
 }
 
 

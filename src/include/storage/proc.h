@@ -140,7 +140,7 @@ extern PROC *ProcWakeup(PROC *proc, int errType);
 extern int ProcLockWakeup(LOCKMETHOD lockmethod, LOCK *lock);
 extern void ProcAddLock(SHM_QUEUE *elem);
 extern void ProcReleaseSpins(PROC *proc);
-extern void LockWaitCancel(void);
+extern bool LockWaitCancel(void);
 extern void HandleDeadLock(SIGNAL_ARGS);
 
 #endif	 /* PROC_H */
