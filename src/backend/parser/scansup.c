@@ -137,11 +137,7 @@ scanstr(char *s)
 			}
 		    }
 		default:
-#ifdef ESCAPE_PATCH
                     newStr[j] = s[i];
-#else
-                    elog (WARN, "Bad escape sequence, s[i] = %d", s[i]);
-#endif
 		} /* switch */
 	    } /* s[i] == '\\' */
 	    else

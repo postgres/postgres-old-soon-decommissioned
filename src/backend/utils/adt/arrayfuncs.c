@@ -227,14 +227,12 @@ _ArrayCount(char *str, int dim[], int typdelim)
         bool done = false;
         while (!done) {
             switch (*q) {
-#ifdef ESCAPE_PATCH
             case '\\':
                 /* skip escaped characters (\ and ") inside strings */
                 if (scanning_string && *(q+1)) {
                     q++;
                 }
                 break;
-#endif
 	    case '\0':
 		/* Signal a premature end of the string.  DZ - 2-9-1996 */
 		elog(WARN, "malformed array constant: %s", str);
