@@ -15,23 +15,6 @@
 #define EXECDEFS_H
 
 /* ----------------
- *		ExecutePlan() tuplecount definitions
- * ----------------
- */
-#define ALL_TUPLES				0		/* return all tuples */
-#define ONE_TUPLE				1		/* return only one tuple */
-
-/* ----------------
- *		constants used by ExecMain
- * ----------------
- */
-#define EXEC_RUN						3
-#define EXEC_FOR						4
-#define EXEC_BACK						5
-#define EXEC_RETONE						6
-#define EXEC_RESULT						7
-
-/* ----------------
  *		Merge Join states
  * ----------------
  */

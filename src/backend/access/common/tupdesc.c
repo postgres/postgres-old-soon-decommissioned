@@ -432,7 +432,7 @@ TupleDescInitEntry(TupleDesc desc,
 	 *
 	 * (Why not just make the atttypid point to the OID type, instead of the
 	 * type the query returns?	Because the executor uses the atttypid to
-	 * tell the front end what type will be returned (in BeginCommand),
+	 * tell the front end what type will be returned,
 	 * and in the end the type returned will be the result of the query,
 	 * not an OID.)
 	 *

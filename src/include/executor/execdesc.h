@@ -19,6 +19,7 @@
 #include "nodes/plannodes.h"
 #include "tcop/dest.h"
 
+
 /* ----------------
  *		query descriptor:
  *	a QueryDesc encapsulates everything that the executor
@@ -31,10 +32,14 @@ typedef struct QueryDesc
 	Query	   *parsetree;
 	Plan	   *plantree;
 	CommandDest dest;			/* the destination output of the execution */
+	const char *portalName;		/* name of portal, or NULL */
+
+	TupleDesc	tupDesc;		/* set by ExecutorStart */
 } QueryDesc;
 
 /* in pquery.c */
 extern QueryDesc *CreateQueryDesc(Query *parsetree, Plan *plantree,
-				CommandDest dest);
+								  CommandDest dest, const char *portalName);
+
 
 #endif   /* EXECDESC_H  */
