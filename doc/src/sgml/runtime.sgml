@@ -605,6 +605,7 @@ env PGOPTIONS='-c geqo=off' psql
       </row>
      </tbody>
     </tgroup>
+    </table>
 
    </sect2>
 
