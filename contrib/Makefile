@@ -25,6 +25,7 @@ WANTED_DIRS = \
 		miscutil	\
 		noupdate	\
 		oid2name	\
+		pg_autovacuum	\
 		pg_dumplo	\
 		pg_logger	\
 		pgbench		\
