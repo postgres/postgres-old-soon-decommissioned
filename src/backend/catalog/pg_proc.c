@@ -53,8 +53,7 @@ ProcedureCreate(char *procedureName,
 				int32 perbyte_cpu,
 				int32 percall_cpu,
 				int32 outin_ratio,
-				List *argList,
-				CommandDest dest)
+				List *argList)
 {
 	int			i;
 	Relation	rel;

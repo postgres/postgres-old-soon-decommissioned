@@ -15,7 +15,6 @@
 #define DEFREM_H
 
 #include "nodes/parsenodes.h"
-#include "tcop/dest.h"
 
 /*
  * prototypes in indexcmds.c
@@ -36,7 +35,7 @@ extern void ReindexDatabase(const char *databaseName, bool force, bool all);
 /*
  * prototypes in define.c
  */
-extern void CreateFunction(ProcedureStmt *stmt, CommandDest dest);
+extern void CreateFunction(ProcedureStmt *stmt);
 extern void DefineOperator(char *name, List *parameters);
 extern void DefineAggregate(char *name, List *parameters);
 extern void DefineType(char *name, List *parameters);

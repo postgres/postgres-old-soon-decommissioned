@@ -85,7 +85,6 @@
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
 #include "miscadmin.h"
-#include "tcop/dest.h"
 #include "tcop/tcopprot.h"
 #include "utils/fmgroids.h"
 #include "utils/ps_status.h"
@@ -94,7 +93,7 @@
 
 /* stuff that we really ought not be touching directly :-( */
 extern TransactionState CurrentTransactionState;
-extern CommandDest whereToSendOutput;
+
 
 /*
  * State for outbound notifies consists of a list of all relnames NOTIFYed

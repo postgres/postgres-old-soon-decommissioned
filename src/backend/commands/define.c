@@ -50,7 +50,6 @@
 #include "miscadmin.h"
 #include "optimizer/cost.h"
 #include "parser/parse_expr.h"
-#include "tcop/dest.h"
 #include "utils/builtins.h"
 #include "utils/syscache.h"
 
@@ -212,10 +211,9 @@ interpret_AS_clause(const char *languageName, const List *as,
 /*
  * CreateFunction
  *	 Execute a CREATE FUNCTION utility statement.
- *
  */
 void
-CreateFunction(ProcedureStmt *stmt, CommandDest dest)
+CreateFunction(ProcedureStmt *stmt)
 {
 	char	   *probin_str;
 
@@ -338,8 +336,7 @@ CreateFunction(ProcedureStmt *stmt, CommandDest dest)
 					perbyte_cpu,
 					percall_cpu,
 					outin_ratio,
-					stmt->argTypes,
-					dest);
+					stmt->argTypes);
 }
 
 

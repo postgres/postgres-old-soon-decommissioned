@@ -525,7 +525,7 @@ ProcessUtility(Node *parsetree,
 		case T_ProcedureStmt:	/* CREATE FUNCTION */
 			set_ps_display(commandTag = "CREATE");
 
-			CreateFunction((ProcedureStmt *) parsetree, dest);	/* everything */
+			CreateFunction((ProcedureStmt *) parsetree);
 			break;
 
 		case T_IndexStmt:		/* CREATE INDEX */

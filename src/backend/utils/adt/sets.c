@@ -26,8 +26,6 @@
 #include "utils/sets.h"
 #include "utils/syscache.h"
 
-extern CommandDest whereToSendOutput;	/* defined in tcop/postgres.c */
-
 
 /*
  *	  SetDefine		   - converts query string defining set to an oid
@@ -65,8 +63,7 @@ SetDefine(char *querystr, char *typename)
 							 0, /* perbyte_cpu */
 							 0, /* percall_cpu */
 							 100,		/* outin_ratio */
-							 NIL,		/* argList */
-							 whereToSendOutput);
+							 NIL);		/* argList */
 
 	/*
 	 * Since we're still inside this command of the transaction, we can't

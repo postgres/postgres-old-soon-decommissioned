@@ -23,7 +23,7 @@
 #ifndef PG_PROC_H
 #define PG_PROC_H
 
-#include "tcop/dest.h"
+#include "nodes/pg_list.h"
 
 /* ----------------
  *		postgres.h contains the system type definintions and the
@@ -2757,8 +2757,6 @@ extern Oid ProcedureCreate(char *procedureName,
 				int32 perbyte_cpu,
 				int32 percall_cpu,
 				int32 outin_ratio,
-				List *argList,
-				CommandDest dest);
-
+				List *argList);
 
 #endif	 /* PG_PROC_H */
