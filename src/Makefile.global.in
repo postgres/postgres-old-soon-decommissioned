@@ -153,6 +153,7 @@ TCLSH		= @TCLSH@
 
 have_docbook	= @have_docbook@
 DOCBOOKSTYLE	= @DOCBOOKSTYLE@
+COLLATEINDEX	= @COLLATEINDEX@
 
 
 ##########################################################################
