@@ -443,7 +443,7 @@
         ;; partintro is a special case...
 	(partintro (node-list-first
 		    (node-list-filter-by-gi elements (list (normalize "partintro"))))))
-    (if (reference-titlepage-content? elements side)
+    (if (part-titlepage-content? elements side)
 	(make simple-page-sequence
 	  page-n-columns: %titlepage-n-columns%
 	  ;; Make sure that page number format is correct.
@@ -470,19 +470,19 @@
 		  (if (or (node-list-empty? lastnode)
 			  (not (equal? (gi (node-list-first nl))
 				       (gi lastnode))))
-		      (reference-titlepage-before (node-list-first nl) side)
+		      (part-titlepage-before (node-list-first nl) side)
 		      (empty-sosofo))
 		  (cond
 		   ((equal? (gi (node-list-first nl)) (normalize "subtitle"))
-		    (reference-titlepage-subtitle (node-list-first nl) side))
+		    (part-titlepage-subtitle (node-list-first nl) side))
 		   ((equal? (gi (node-list-first nl)) (normalize "title"))
-		    (reference-titlepage-title (node-list-first nl) side))
+		    (part-titlepage-title (node-list-first nl) side))
 		   (else
-		    (reference-titlepage-default (node-list-first nl) side)))
+		    (part-titlepage-default (node-list-first nl) side)))
 		  (loop (node-list-rest nl) (node-list-first nl)))))
 
-	  (if (and %generate-reference-toc%
-		   %generate-reference-toc-on-titlepage%
+	  (if (and %generate-part-toc%
+		   %generate-part-toc-on-titlepage%
 		   (equal? side 'recto))
 	      (make display-group
 		(build-toc (current-node)
