@@ -858,9 +858,11 @@ runPgDump(const char *dbname)
 #ifndef WIN32
 		if (*p == '\'')
 			appendPQExpBuffer(cmd, "'\"'\"'");
-		else
+#else
+		if (*p == '"')
+			appendPQExpBuffer(cmd, "\\\"");
 #endif
-		/* not needed on Win32 */
+		else
 			appendPQExpBufferChar(cmd, *p);
 	}
 
@@ -868,10 +870,8 @@ runPgDump(const char *dbname)
 	appendPQExpBufferChar(cmd, '\'');
 #else
 	appendPQExpBufferChar(cmd, '"');
+	appendPQExpBuffer(cmd, SYSTEMQUOTE);
 #endif
-
-	if (strlen(SYSTEMQUOTE) > 0)
-		appendPQExpBuffer(cmd, SYSTEMQUOTE);
 	
 	if (verbose)
 		fprintf(stderr, _("%s: running \"%s\"\n"), progname, cmd->data);
