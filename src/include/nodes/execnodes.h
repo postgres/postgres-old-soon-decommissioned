@@ -13,14 +13,14 @@
 #ifndef EXECNODES_H
 #define EXECNODES_H
 
-#include "executor/hashjoin.h"
-#include "nodes/primnodes.h"
-#include "access/funcindex.h"
-#include "access/relscan.h"
-#include "executor/tuptable.h"
-#include "nodes/params.h"
-#include "access/sdir.h"
-#include "nodes/memnodes.h"
+#include <nodes/memnodes.h>
+#include <nodes/primnodes.h>
+#include <executor/hashjoin.h>
+#include <access/relscan.h>
+#include <access/sdir.h>
+#include <nodes/params.h>
+#include <executor/tuptable.h>
+#include <access/funcindex.h>
 
 /* ----------------
  *    IndexInfo information

@@ -13,7 +13,7 @@
 #ifndef	HASHJOIN_H
 #define HASHJOIN_H
 
-#include "storage/ipc.h"
+#include <storage/ipc.h>
 
 /* -----------------
  *  have to use relative address as pointers in the hashtable

@@ -17,8 +17,9 @@
 #ifndef TUPTABLE_H
 #define TUPTABLE_H
 
-#include "access/htup.h"
-#include "storage/buf.h"
+#include <storage/buf.h>
+#include <access/tupdesc.h>
+#include <access/htup.h>
 
 /* ----------------
  *	Note:  the executor tuple table is managed and manipulated by special
