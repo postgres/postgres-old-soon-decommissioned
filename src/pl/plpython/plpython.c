@@ -2733,7 +2733,7 @@ PLy_output(volatile int level, PyObject * self, PyObject * args)
 		RERAISE_EXC();
 	}
 
-	elog(level, sv);
+	elog(level, "%s", sv);
 
 	RESTORE_EXC();
 
