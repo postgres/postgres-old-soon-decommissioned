@@ -18,6 +18,7 @@
 #include <ctype.h>
 #include <sys/stat.h>
 #ifdef WIN32
+#define _WIN32_IE 0x0400
 #include <shlobj.h>
 #else
 #include <unistd.h>
