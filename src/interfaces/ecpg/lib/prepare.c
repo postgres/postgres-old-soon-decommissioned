@@ -125,7 +125,6 @@ ECPGdeallocate(int lineno, char *name)
 		free(this);
 		return true;
 	}
-	ECPGlog("deallocate_prepare: invalid statement name %s\n", name);
 	ECPGraise(lineno, ECPG_INVALID_STMT, name);
 	return false;
 }

@@ -14,7 +14,6 @@ ecpg_alloc(long size, int lineno)
 
 	if (!new)
 	{
-		ECPGlog("out of memory\n");
 		ECPGraise(lineno, ECPG_OUT_OF_MEMORY, NULL);
 		return NULL;
 	}
@@ -30,7 +29,6 @@ ecpg_strdup(const char *string, int lineno)
 
 	if (!new)
 	{
-		ECPGlog("out of memory\n");
 		ECPGraise(lineno, ECPG_OUT_OF_MEMORY, NULL);
 		return NULL;
 	}

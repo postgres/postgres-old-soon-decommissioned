@@ -27,7 +27,6 @@ get_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 	{
 		if (*pval != '{')
 		{
-			ECPGlog("get_data: data entry does not look like an array in line %d\n", lineno);
 			ECPGraise(lineno, ECPG_DATA_NOT_ARRAY, NULL);
 			return (false);
 		}

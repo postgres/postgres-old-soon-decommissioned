@@ -54,8 +54,7 @@ ECPGstatus(int lineno, const char *connection_name)
 	/* are we connected? */
 	if (con->connection == NULL)
 	{
-		ECPGlog("ECPGdo: not connected to %s\n", con->name);
-		ECPGraise(lineno, ECPG_NOT_CONN, NULL);
+		ECPGraise(lineno, ECPG_NOT_CONN, con->name);
 		return false;
 	}
 
