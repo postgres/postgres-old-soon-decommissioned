@@ -859,7 +859,7 @@ CREATE TABLE emp (
     last_date datetime,
     last_user name);
 
-CREATE FUNCTION emp_stamp () RETURNS OPAQUE AS
+CREATE FUNCTION emp_stamp () RETURNS OPAQUE AS '
     BEGIN
         -- Check that empname and salary are given
         IF NEW.empname ISNULL THEN
