@@ -190,7 +190,7 @@ $Header$
   <bookinfo>
    <abstract>
     <para>
-     Information on extending Postgres
+     Information on client and server programming
     </para>
    </abstract>
   </bookinfo>
@@ -201,6 +201,8 @@ $Header$
   included twice.
    &intro-pg;
 -->
+  <part>
+   <title>Server Programming</title>
   &arch-pg;
   &extend;
   &xfunc;
@@ -215,19 +217,10 @@ $Header$
   &trigger;
   &spi;
   &xplang;
- </book>
+  </part>
 
- <book id="interfaces">
-  <title>Interfaces</title>
-
-  <bookinfo>
-   <abstract>
-    <para>
-     Information on Postgres language interfaces
-    </para>
-   </abstract>
-  </bookinfo>
-
+  <part>
+   <title>Client Interfaces</title>
    &func-ref;
    &lobj;
    &ecpg;
@@ -238,6 +231,7 @@ $Header$
    &odbc;
    &jdbc;
    &lisp;
+  </part>
  </book>
  
  <book id="developer">
