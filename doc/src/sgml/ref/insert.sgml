@@ -168,7 +168,7 @@ INSERT INTO films VALUES
   </para>
 
   <para>
-   In this second example the column <literal>date_prod</literal> is
+   In this second example the last column <literal>len</literal> is
    omitted and therefore it will have the default value of NULL:
 
    <programlisting>
