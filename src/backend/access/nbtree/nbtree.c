@@ -423,6 +423,7 @@ btrescan(IndexScanDesc scan, bool fromEnd, ScanKey scankey)
     
     /* reset the scan key */
     so->numberOfKeys = scan->numberOfKeys;
+    so->numberOfFirstKeys = 0;
     so->qual_ok = 1;			/* may be changed by _bt_orderkeys */
     if (scan->numberOfKeys > 0) {
 	memmove(scan->keyData,
@@ -433,7 +434,9 @@ btrescan(IndexScanDesc scan, bool fromEnd, ScanKey scankey)
 		so->numberOfKeys * sizeof(ScanKeyData));
 	/* order the keys in the qualification */
 	if (so->numberOfKeys > 1)
-		_bt_orderkeys(scan->relation, &so->numberOfKeys, so->keyData, &so->qual_ok);
+	    _bt_orderkeys(scan->relation, so);
+	else
+	    so->numberOfFirstKeys = 1;
     }
     
     /* finally, be sure that the scan exploits the tree order */

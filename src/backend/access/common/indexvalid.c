@@ -48,7 +48,7 @@ index_keytest(IndexTuple tuple,
     
     while (scanKeySize > 0) {
 	datum = index_getattr(tuple,
-			      1,
+			      key[0].sk_attno,
 			      tupdesc,
 			      &isNull);
 	

@@ -248,10 +248,11 @@ create_index_path(Query *root,
     
     pathnode->path.pathtype = T_IndexScan;
     pathnode->path.parent = rel;
-    pathnode->indexid = index->relids;
-
     pathnode->path.p_ordering.ordtype = SORTOP_ORDER;
     pathnode->path.p_ordering.ord.sortop = index->ordering;
+
+    pathnode->indexid = index->relids;
+    pathnode->indexkeys = index->indexkeys;
     pathnode->indexqual = NIL;
 
     /* copy clauseinfo list into path for expensive function processing 

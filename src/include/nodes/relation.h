@@ -150,6 +150,7 @@ typedef struct IndexPath {
     Path	path;
     List	*indexid;
     List	*indexqual;
+    int		*indexkeys;	/* to transform heap attnos into index ones */
 } IndexPath;
 
 typedef struct JoinPath {
