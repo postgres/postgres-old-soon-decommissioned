@@ -460,6 +460,7 @@ then
 
     cp "$PG_HBA_SAMPLE" "$PGDATA"/pg_hba.conf     || exit_nicely
     cp "$POSTGRESQL_CONF_SAMPLE" "$PGDATA"/postgresql.conf || exit_nicely
+    chmod 0600 "$PGDATA"/pg_hba.conf "$PGDATA"/postgresql.conf
 
     echo "Adding template1 database to pg_database"
 

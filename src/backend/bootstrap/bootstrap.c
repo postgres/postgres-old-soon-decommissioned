@@ -35,6 +35,7 @@
 #include "tcop/tcopprot.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"
+#include "utils/guc.h"
 #include "utils/lsyscache.h"
 #include "utils/portal.h"
 
@@ -248,8 +249,11 @@ BootstrapMain(int argc, char *argv[])
 	Quiet = false;
 	Noversion = false;
 	dbName = NULL;
-	DataDir = getenv("PGDATA"); /* Null if no PGDATA variable */
-	IsUnderPostmaster = false;
+	if (!IsUnderPostmaster)
+	{
+		ResetAllOptions();
+		DataDir = getenv("PGDATA"); /* Null if no PGDATA variable */
+	}
 
 	while ((flag = getopt(argc, argv, "D:dCQxpB:F")) != EOF)
 	{
@@ -275,7 +279,7 @@ BootstrapMain(int argc, char *argv[])
 				xloginit = true;
 				break;
 			case 'p':
-				IsUnderPostmaster = true;
+				/* indicates fork from postmaster */
 				break;
 			case 'B':
 				NBuffers = atoi(optarg);

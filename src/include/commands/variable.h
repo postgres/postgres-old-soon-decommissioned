@@ -13,6 +13,5 @@ extern void GetPGVariable(const char *name);
 extern void ResetPGVariable(const char *name);
 
 extern void set_default_datestyle(void);
-extern bool examine_subclass;
 
 #endif	 /* VARIABLE_H */

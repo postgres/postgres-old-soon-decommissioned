@@ -914,6 +914,23 @@ env PGOPTIONS='--geqo=off' psql
        </para>
       </listitem>
      </varlistentry>
+
+     <varlistentry>
+      <term>SQL_INHERITANCE (<type>bool</type>)</term>
+      <listitem>
+       <para>
+        This controls the inheritance semantics, in particular whether
+        subtables are included into the consideration of various
+        commands by default. This was not the case in versions prior
+        to 7.1. If you need this behaviour you can set this variable
+        to off, but in the long run you are encouraged to change your
+        applications to use the <literal>ONLY</literal> keyword to
+        exclude subtables. See the SQL language reference and the
+        <citetitle>User's Guide</citetitle> for more information about
+        inheritance.
+       </para>
+      </listitem>
+     </varlistentry>
     </variablelist>
    </para>
    </sect2>
