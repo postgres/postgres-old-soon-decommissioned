@@ -1613,7 +1613,7 @@ pltcl_SPI_prepare(ClientData cdata, Tcl_Interp * interp,
 									  0, 0, 0);
 		if (!HeapTupleIsValid(typeTup))
 			elog(ERROR, "pltcl: Cache lookup of type %s failed", args[i]);
-		qdesc->argtypes[i] = typeTup->t_oid;
+		qdesc->argtypes[i] = typeTup->t_data->t_oid;
 		fmgr_info(((Form_pg_type) GETSTRUCT(typeTup))->typinput,
 				  &(qdesc->arginfuncs[i]));
 		qdesc->argtypelems[i] = ((Form_pg_type) GETSTRUCT(typeTup))->typelem;
