@@ -88,6 +88,13 @@ ifeq ($(PORTNAME), solaris_i386)
   CFLAGS		+= $(CFLAGS_SL)
 endif
 
+ifeq ($(PORTNAME), svr4)
+  install-shlib-dep	:= install-shlib
+  shlib			:= libpq.so.$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
+  LDFLAGS_SL		:= -G
+  CFLAGS		+= $(CFLAGS_SL)
+endif
+
 ifeq ($(PORTNAME), unixware)
   install-shlib-dep	:= install-shlib
   shlib			:= libpq.so.$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)

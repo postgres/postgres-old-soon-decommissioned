@@ -64,6 +64,11 @@ ifeq ($(PORTNAME), solaris_i386)
   CFLAGS		+= $(CFLAGS_SL)
 endif
 
+ifeq ($(PORTNAME), svr4)
+  LDFLAGS_SL		:= -G
+  CFLAGS		+= $(CFLAGS_SL)
+endif
+
 ifeq ($(PORTNAME), unixware)
   LDFLAGS_SL		:= -G -z text
   CFLAGS		+= $(CFLAGS_SL)
