@@ -845,7 +845,7 @@ picksplit(Relation r,
 			pfree(datum_r);
 			pfree(union_dl);
 			datum_r = union_dr;
-			size_r = size_alpha;
+			size_r = size_beta;
 			*right++ = i;
 			v->spl_nright++;
 		}
