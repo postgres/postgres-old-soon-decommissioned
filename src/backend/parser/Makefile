@@ -25,12 +25,12 @@ SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 gram.c parse.h: gram.y
-	$(YACC) $(YFLAGS) $<
+	$(YACC) -d $(YFLAGS) $<
 	mv y.tab.c gram.c
 	mv y.tab.h parse.h
 
 scan.c:	scan.l
-	$(LEX) $<
+	$(LEX) $(LFLAGS) $<
 	mv lex.yy.c scan.c
 
 # The following dependencies on parse.h are computed by

@@ -48,14 +48,14 @@ SUBSYS.o: $(OBJS)
 bootstrap.o: bootstrap_tokens.h
 
 bootstrap_tokens.h bootparse.c: bootparse.y
-	$(YACC) $(YFLAGS) $<
+	$(YACC) -d $(YFLAGS) $<
 	grep -v "^#" boot.sed > sedfile
 	sed -f sedfile < y.tab.c > bootparse.c
 	mv y.tab.h bootstrap_tokens.h
 	rm -f y.tab.c sedfile
 
 bootscanner.c: bootscanner.l
-	$(LEX) $<
+	$(LEX) $(LFLAGS) $<
 	grep -v "^#" boot.sed > sedfile
 	sed -f sedfile < lex.yy.c > bootscanner.c
 	rm -f lex.yy.c sedfile
