@@ -54,10 +54,12 @@ BSD_SHLIB= true
 ELF_SYSTEM= @ELF_SYS@
 
 LIBPQDIR= $(SRCDIR)/interfaces/libpq
+LIBPGEASYDIR= $(SRCDIR)/interfaces/libpgeasy
 LIBPGTCLDIR= $(SRCDIR)/interfaces/libpgtcl
 
 LIBPQ= -L$(LIBPQDIR) -lpq
 LIBPGTCL= -L$(LIBPGTCLDIR) -lpgtcl
+LIBPGEASY= -L$(LIBPGEASYDIR) -lpgeasy
 
 # For convenience, POSTGRESDIR is where BINDIR, and LIBDIR
 # and other target destinations are rooted.  Of course, each of these is

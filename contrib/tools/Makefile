@@ -1,21 +1,21 @@
-#-------------------------------------------------------------------------
 #
-# Makefile --
+# $Header$
 #
-#    Makefile for contrib tools.
-#
-#-------------------------------------------------------------------------
 
-PGDIR = ../..
-SRCDIR = $(PGDIR)/src
+TOPDIR=../..
 
-include $(SRCDIR)/Makefile.global
+include ../Makefile.global
 
-all:		
+NAME	= 
 
-install:	
+PROGRAM	= 
+OBJS	= 
+DOCS	= 
+SQLS	= 
+BINS	=
+EXAMPLES=
+MODS	= 
 
 clean:
-		rm -f *~
+	$(RM) *~ 
 
-distclean:	clean
