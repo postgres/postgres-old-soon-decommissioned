@@ -56,9 +56,11 @@ verify_password(const Port *port, const char *user, const char *password)
 				   *test_user,
 				   *test_pw;
 
-		fgets(pw_file_line, sizeof(pw_file_line), pw_file);
+		if (fgets(pw_file_line, sizeof(pw_file_line), pw_file) == NULL)
+			pw_file_line[0] = '\0';
 		/* kill the newline */
-		if (pw_file_line[strlen(pw_file_line) - 1] == '\n')
+		if (strlen(pw_file_line) > 0 &&
+			pw_file_line[strlen(pw_file_line) - 1] == '\n')
 			pw_file_line[strlen(pw_file_line) - 1] = '\0';
 
 		p = pw_file_line;
