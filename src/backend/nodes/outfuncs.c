@@ -102,7 +102,7 @@ _outIndexStmt(StringInfo str, IndexStmt *node)
 	appendStringInfo(str, " :rangetable ");
 	_outNode(str, node->rangetable);
 	appendStringInfo(str, " :lossy ");
-	appendStringInfo(str, (*node->lossy ? "true": "false"));
+	appendStringInfo(str, (node->lossy ? "true": "false"));
 	appendStringInfo(str, " :unique ");
 	appendStringInfo(str, (node->unique ? "true": "false"));
 }
