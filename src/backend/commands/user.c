@@ -146,13 +146,13 @@ write_password_file(Relation rel)
 	/*
 	 * Create a flag file the postmaster will detect the next time it
 	 * tries to authenticate a user.  The postmaster will know to reload
-	 * the pg_pwd file contents.  Note: we used to elog(ERROR) if the
-	 * creat() call failed, but it's a little silly to abort the transaction
+	 * the pg_pwd file contents.  Note: we used to elog(ERROR) if the file
+	 * creation failed, but it's a little silly to abort the transaction
 	 * at this point, so let's just make it a NOTICE.
 	 */
 	filename = crypt_getpwdreloadfilename();
-	flagfd = creat(filename, S_IRUSR | S_IWUSR);
-	if (flagfd == -1)
+	flagfd = BasicOpenFile(filename, O_WRONLY | O_CREAT, 0600);
+	if (flagfd < 0)
 		elog(NOTICE, "%s: %m", filename);
 	else
 		close(flagfd);

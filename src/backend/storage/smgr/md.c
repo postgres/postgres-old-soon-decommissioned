@@ -1129,10 +1129,11 @@ _mdfd_blind_getseg(char *dbname, char *relname, Oid dbid, Oid relid,
 	}
 #endif
 
+	/* call fd.c to allow other FDs to be closed if needed */
 #ifndef __CYGWIN32__
-	fd = open(path, O_RDWR, 0600);
+	fd = BasicOpenFile(path, O_RDWR, 0600);
 #else
-	fd = open(path, O_RDWR | O_BINARY, 0600);
+	fd = BasicOpenFile(path, O_RDWR | O_BINARY, 0600);
 #endif
 
 	if (fd < 0)

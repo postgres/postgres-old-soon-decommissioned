@@ -22,7 +22,7 @@
  * Use them for all file activity...
  *
  *	File fd;
- *	fd = FilePathOpenFile("foo", O_RDONLY);
+ *	fd = FilePathOpenFile("foo", O_RDONLY, 0600);
  *
  *	AllocateFile();
  *	FreeFile();
@@ -64,8 +64,10 @@ extern void FileMarkDirty(File file);
 extern FILE *AllocateFile(char *name, char *mode);
 extern void FreeFile(FILE *);
 
+/* If you've really really gotta have a plain kernel FD, use this */
+extern int	BasicOpenFile(FileName fileName, int fileFlags, int fileMode);
+
 /* Miscellaneous support routines */
-extern bool ReleaseDataFile(void);
 extern void closeAllVfds(void);
 extern void AtEOXact_Files(void);
 extern int	pg_fsync(int fd);
