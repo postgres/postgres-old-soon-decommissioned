@@ -119,7 +119,6 @@ fixupsets(Query *parse)
     define_sets(parse);
 }
 
-#ifdef SETS_FIXED
 /* Recursively find all of the Consts in the parsetree.  Some of
  * these may represent a set.  The value of the Const will be the
  * query (a string) which defines the set.  Call SetDefine to define
