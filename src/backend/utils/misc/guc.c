@@ -1048,6 +1048,51 @@ static struct config_int ConfigureNamesInt[] =
 	},
 
 	{
+		{"vacuum_cost_page_hit", PGC_USERSET, RESOURCES,
+			gettext_noop("Vacuum cost for a page found in the buffer cache."),
+			NULL
+		},
+		&VacuumCostPageHit,
+		1, 0, 10000, NULL, NULL
+	},
+
+	{
+		{"vacuum_cost_page_miss", PGC_USERSET, RESOURCES,
+			gettext_noop("Vacuum cost for a page not found in the buffer cache."),
+			NULL
+		},
+		&VacuumCostPageMiss,
+		10, 0, 10000, NULL, NULL
+	},
+
+	{
+		{"vacuum_cost_page_dirty", PGC_USERSET, RESOURCES,
+			gettext_noop("Vacuum cost for a page dirtied by vacuum."),
+			NULL
+		},
+		&VacuumCostPageDirty,
+		20, 0, 10000, NULL, NULL
+	},
+
+	{
+		{"vacuum_cost_limit", PGC_USERSET, RESOURCES,
+			gettext_noop("Vacuum cost amount available before napping."),
+			NULL
+		},
+		&VacuumCostLimit,
+		200, 1, 10000, NULL, NULL
+	},
+
+	{
+		{"vacuum_cost_naptime", PGC_USERSET, RESOURCES,
+			gettext_noop("Vacuum cost naptime in milliseconds."),
+			NULL
+		},
+		&VacuumCostNaptime,
+		0, 0, 1000, NULL, NULL
+	},
+
+	{
 		{"max_files_per_process", PGC_BACKEND, RESOURCES_KERNEL,
 			gettext_noop("Sets the maximum number of simultaneously open files for each server process."),
 			NULL

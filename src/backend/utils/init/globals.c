@@ -81,3 +81,11 @@ bool		allowSystemTableMods = false;
 int			work_mem = 1024;
 int			maintenance_work_mem = 16384;
 int			NBuffers = 1000;
+
+int			VacuumCostPageHit = 1;
+int			VacuumCostPageMiss = 10;
+int			VacuumCostPageDirty = 20;
+int			VacuumCostLimit = 200;
+int			VacuumCostBalance = 0;
+int			VacuumCostNaptime = 0;
+bool		VacuumCostActive = false;

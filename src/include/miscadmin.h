@@ -106,11 +106,19 @@ do { \
 	delay.tv_usec = ((_usec) % 1000000); \
 	(void) select(0, NULL, NULL, NULL, &delay); \
 } while(0)
+#define PG_MSLEEP(_msec) \
+do { \
+	struct timeval _delay; \
+	_delay.tv_sec = (_msec) / 1000; \
+	_delay.tv_usec = ((_msec) % 1000) * 1000; \
+	(void) select (0, NULL, NULL, NULL, &_delay); \
+} while(0)
 #else
 #define PG_USLEEP(_usec) \
 do { \
 	SleepEx(((_usec) < 500 ? 1 : ((_usec) + 500) / 1000), TRUE); \
 } while(0)
+#define PG_MSLEEP(_msec) PG_USLEEP((_msec) * 1000)
 #endif
 
 #ifdef WIN32
@@ -209,6 +217,15 @@ extern bool enableFsync;
 extern bool allowSystemTableMods;
 extern DLLIMPORT int work_mem;
 extern DLLIMPORT int maintenance_work_mem;
+extern int	VacuumMem;
+
+extern int	VacuumCostPageHit;
+extern int	VacuumCostPageMiss;
+extern int	VacuumCostPageDirty;
+extern int	VacuumCostLimit;
+extern int	VacuumCostBalance;
+extern int	VacuumCostNaptime;
+extern bool	VacuumCostActive;
 
 /*
  *	A few postmaster startup options are exported here so the

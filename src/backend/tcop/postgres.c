@@ -2708,6 +2708,11 @@ PostgresMain(int argc, char *argv[], const char *username)
 		xact_started = false;
 
 		/*
+		 * Clear flag that causes accounting for cost based vacuum.
+		 */
+		VacuumCostActive = false;
+
+		/*
 		 * If we were handling an extended-query-protocol message,
 		 * initiate skip till next Sync.  This also causes us not to issue
 		 * ReadyForQuery (until we get Sync).

@@ -576,6 +576,12 @@ write_buffer(Buffer buffer, bool release)
 	LWLockAcquire(BufMgrLock, LW_EXCLUSIVE);
 	Assert(bufHdr->refcount > 0);
 
+	/*
+	 * If the buffer is not dirty yet, do vacuum cost accounting.
+	 */
+	if (!(bufHdr->flags & BM_DIRTY) && VacuumCostActive)
+		VacuumCostBalance += VacuumCostPageDirty;
+
 	bufHdr->flags |= (BM_DIRTY | BM_JUST_DIRTIED);
 
 	if (release)
