@@ -2797,7 +2797,7 @@ SelectStmt:	  select_w_o_sort sort_clause for_update_clause
 				  first_select->forUpdate = $3;
 				  $$ = (Node *)first_select;
 				}		
-				if ((SelectStmt *)$$)->forUpdate != NULL)
+				if (((SelectStmt *)$$)->forUpdate != NULL)
 				{
 					SelectStmt *n = (SelectStmt *)$1;
 
