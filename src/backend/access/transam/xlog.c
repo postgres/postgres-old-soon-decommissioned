@@ -35,6 +35,7 @@
 #include "catalog/pg_control.h"
 #include "storage/bufpage.h"
 #include "storage/lwlock.h"
+#include "storage/pmsignal.h"
 #include "storage/proc.h"
 #include "storage/sinval.h"
 #include "storage/spin.h"
@@ -1048,7 +1049,7 @@ XLogWrite(XLogwrtRqst WriteRqst)
 				{
 					if (XLOG_DEBUG)
 						elog(DEBUG, "XLogWrite: time for a checkpoint, signaling postmaster");
-					kill(getppid(), SIGUSR1);
+					SendPostmasterSignal(PMSIGNAL_DO_CHECKPOINT);
 				}
 			}
 			LWLockRelease(ControlFileLock);

@@ -14,11 +14,9 @@
  */
 #include "postgres.h"
 
-#include <signal.h>
-#include <unistd.h>
-
 #include "miscadmin.h"
 #include "storage/backendid.h"
+#include "storage/pmsignal.h"
 #include "storage/proc.h"
 #include "storage/sinvaladt.h"
 
@@ -205,11 +203,11 @@ SIInsertDataEntry(SISeg *segP, SharedInvalidationMessage *data)
 
 	/*
 	 * Try to prevent table overflow.  When the table is 70% full send a
-	 * SIGUSR2 (ordinarily a NOTIFY signal) to the postmaster, which will
-	 * send it back to all the backends.  This will force idle backends to
-	 * execute a transaction to look through pg_listener for NOTIFY
-	 * messages, and as a byproduct of the transaction start they will
-	 * read SI entries.
+	 * WAKEN_CHILDREN request to the postmaster.  The postmaster will send
+	 * a SIGUSR2 signal (ordinarily a NOTIFY signal) to all the backends.
+	 * This will force idle backends to execute a transaction to look through
+	 * pg_listener for NOTIFY messages, and as a byproduct of the transaction
+	 * start they will read SI entries.
 	 *
 	 * This should never happen if all the backends are actively executing
 	 * queries, but if a backend is sitting idle then it won't be starting
@@ -222,7 +220,7 @@ SIInsertDataEntry(SISeg *segP, SharedInvalidationMessage *data)
 	{
 		if (DebugLvl >= 1)
 			elog(DEBUG, "SIInsertDataEntry: table is 70%% full, signaling postmaster");
-		kill(getppid(), SIGUSR2);
+		SendPostmasterSignal(PMSIGNAL_WAKEN_CHILDREN);
 	}
 
 	/*
