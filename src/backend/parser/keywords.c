@@ -225,6 +225,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"trigger", TRIGGER},
 	{"trim", TRIM},
 	{"true", TRUE_P},
+	{"truncate", TRUNCATE},
 	{"trusted", TRUSTED},
 	{"type", TYPE_P},
 	{"union", UNION},

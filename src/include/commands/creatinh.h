@@ -17,5 +17,6 @@
 
 extern void DefineRelation(CreateStmt *stmt, char relkind);
 extern void RemoveRelation(char *name);
+extern void TruncateRelation(char *name);
 
 #endif	 /* CREATINH_H */

@@ -157,6 +157,26 @@ RemoveRelation(char *name)
 	heap_destroy_with_catalog(name);
 }
 
+/*
+ * TruncateRelation --
+ *                Removes all the rows from a relation
+ *
+ * Exceptions:
+ *                BadArg if name is invalid
+ *
+ *
+ * Note:
+ *                Rows are removed, indices are truncated and reconstructed.
+ */
+
+void
+TruncateRelation(char *name)
+{
+
+  AssertArg(name);
+  heap_truncate(name);
+
+}
 
 /*
  * MergeAttributes

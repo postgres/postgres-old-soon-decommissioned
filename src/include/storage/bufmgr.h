@@ -161,6 +161,7 @@ extern void BufferRefCountReset(int *refcountsave);
 extern void BufferRefCountRestore(int *refcountsave);
 extern int	SetBufferWriteMode(int mode);
 extern void SetBufferCommitInfoNeedsSave(Buffer buffer);
+extern int BlowawayRelationBuffers(Relation rel, BlockNumber block);
 
 extern void UnlockBuffers(void);
 extern void LockBuffer(Buffer buffer, int mode);

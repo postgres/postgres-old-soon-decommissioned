@@ -283,6 +283,16 @@ typedef struct DestroyStmt
 } DestroyStmt;
 
 /* ----------------------
+ *              Truncate Table Statement
+ * ----------------------
+ */
+typedef struct TruncateStmt
+{
+        NodeTag         type;
+        char	   *relName;            /* relation to be truncated */
+} TruncateStmt;
+      
+/* ----------------------
  *		Extend Index Statement
  * ----------------------
  */

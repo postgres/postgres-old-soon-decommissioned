@@ -23,6 +23,7 @@ extern Oid heap_create_with_catalog(char *relname,
 						 TupleDesc tupdesc, char relkind, bool istemp);
 
 extern void heap_destroy_with_catalog(char *relname);
+extern void heap_truncate(char *relname);
 extern void heap_destroy(Relation rel);
 
 extern void InitNoNameRelList(void);
