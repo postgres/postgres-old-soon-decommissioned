@@ -18,6 +18,7 @@
 
 extern void RelationPutHeapTuple(Relation relation, Buffer buffer,
 					 HeapTuple tuple);
-extern Buffer RelationGetBufferForTuple(Relation relation, Size len);
+extern Buffer RelationGetBufferForTuple(Relation relation, Size len,
+										BlockNumber minblocknum);
 
 #endif	 /* HIO_H */
