@@ -108,7 +108,7 @@ CreateSharedMemoryAndSemaphores(IPCKey key, int maxBackends)
 	 */
 	InitProcGlobal(key, maxBackends);
 
-	CreateSharedInvalidationState(key);
+	CreateSharedInvalidationState(key, maxBackends);
 }
 
 
