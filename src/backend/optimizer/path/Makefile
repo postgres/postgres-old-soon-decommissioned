@@ -14,10 +14,7 @@ include ../../../Makefile.global
 CFLAGS += -I../..
 
 OBJS = allpaths.o clausesel.o costsize.o hashutils.o indxpath.o \
-       joinpath.o joinrels.o joinutils.o mergeutils.o orindxpath.o \
-       prune.o
-
-# not ready yet: predmig.o xfunc.o
+       joinpath.o joinrels.o mergeutils.o orindxpath.o pathkey.o prune.o
 
 all: SUBSYS.o
 

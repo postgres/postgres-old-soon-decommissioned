@@ -203,7 +203,7 @@ sort_inner_and_outer(RelOptInfo *joinrel,
 					 List *mergeinfo_list)
 {
 	List	   *ms_list = NIL;
-	MergeInfo	   *xmergeinfo = (MergeInfo *) NULL;
+	MergeInfo  *xmergeinfo = (MergeInfo *) NULL;
 	MergePath  *temp_node = (MergePath *) NULL;
 	List	   *i;
 	List	   *outerkeys = NIL;
