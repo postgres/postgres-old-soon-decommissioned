@@ -35,6 +35,10 @@
  *   - Added single. quote to twin single quote expansion for 'insert' string
  *     mode.
  *
+ * Modifications - 7/26/96 - asussman@vidya.com
+ *
+ *   - Fixed ouput lengths for char and varchar type where the length is variable (-1)
+ *
  *-------------------------------------------------------------------------
  */
 
@@ -1210,20 +1214,30 @@ void dumpTables(FILE* fout, TableInfo *tblinfo, int numTables,
 	        
 	            /* Show lengths on bpchar and varchar */
 	            if (!strcmp(tblinfo[i].typnames[j],"bpchar")) {
-		        sprintf(q, "%s%s%s char(%d)",
+		        sprintf(q, "%s%s%s char",
 		   	        q,
 			        (actual_atts > 0) ? ", " : "",
-			        tblinfo[i].attnames[j],
-			        tblinfo[i].attlen[j]);
+			        tblinfo[i].attnames[j]);
+
+			/* stored length can be -1 (variable) */
+			if (tblinfo[i].attlen[j] > 0)
+				sprintf(q, "%s(%d)",
+					q,
+				        tblinfo[i].attlen[j]);
 		        actual_atts++;
 	            }
 	            else if (!strcmp(tblinfo[i].typnames[j],"varchar")) {
-		        sprintf(q, "%s%s%s %s(%d)",
+		        sprintf(q, "%s%s%s %s",
 		   	        q,
 			        (actual_atts > 0) ? ", " : "",
 			        tblinfo[i].attnames[j],
-			        tblinfo[i].typnames[j],
-			        tblinfo[i].attlen[j]);
+			        tblinfo[i].typnames[j]);
+
+			/* stored length can be -1 (variable) */
+			if (tblinfo[i].attlen[j] > 0)
+				sprintf(q, "%s(%d)",
+					q,
+				        tblinfo[i].attlen[j]);
 		        actual_atts++;
 	            }
 	            else {    
