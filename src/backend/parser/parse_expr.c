@@ -312,6 +312,10 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 		case T_Expr:
 		case T_Var:
 		case T_Const:
+/* T_Param comes from implicit function calls in INSERT/VALUE statements.
+ * - thomas 1998-06-11
+ */
+		case T_Param:
 			{
 				result = (Node *) expr;
 				break;

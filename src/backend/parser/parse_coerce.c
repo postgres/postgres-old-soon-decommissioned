@@ -273,6 +273,7 @@ TypeCategory(Oid inType)
 
 		case (INT2OID):
 		case (INT4OID):
+		case (INT8OID):
 		case (FLOAT4OID):
 		case (FLOAT8OID):
 		case (CASHOID):
@@ -387,6 +388,7 @@ PromoteTypeToNext(Oid inType)
 			break;
 
 		case (INT4OID):
+		case (INT8OID):
 		case (FLOAT4OID):
 			result = FLOAT8OID;
 			break;
