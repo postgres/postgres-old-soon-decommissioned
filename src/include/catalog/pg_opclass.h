@@ -117,7 +117,7 @@ DATA(insert OID = 652  (	cidr_ops        650	  ));
 DESCR("");
 DATA(insert OID = 1768 (	numeric_ops    1700	  ));
 DESCR("");
-DATA(insert OID = 1663 (	lztext_ops    1625	));
+DATA(insert OID = 1663 (	lztext_ops     1625	  ));
 DESCR("");
 
 #endif	 /* PG_OPCLASS_H */
