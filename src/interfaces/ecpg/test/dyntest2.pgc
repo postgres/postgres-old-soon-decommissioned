@@ -72,8 +72,8 @@ exec sql end declare section;
      		:PRECISION = precision, :SCALE=scale,
      		:NULLABLE=nullable, :NAME=name,
      		:INDICATOR=indicator;
-     	printf("%2d\t%s (type: %d length: %d precision: %d scale: %d
-		\toctet_length: %d returned_octet_length: %d nullable: %d)\n\t= "
+     	printf("%2d\t%s (type: %d length: %d precision: %d scale: %d\n"
+		"\toctet_length: %d returned_octet_length: %d nullable: %d)\n\t= "
      			,INDEX,NAME,TYPE,LENGTH,PRECISION,SCALE
      			,OCTET_LENGTH,RETURNED_OCTET_LENGTH,NULLABLE);
      	if (INDICATOR==-1) printf("NULL\n");
