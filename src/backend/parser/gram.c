@@ -287,7 +287,7 @@ typedef union
 	char				chr;
 	char				*str;
 	bool				boolean;
-	bool*				pboolean;	/* for pg_user privileges */
+	bool*				pboolean;	/* for pg_shadow privileges */
 	List				*list;
 	Node				*node;
 	Value				*value;
