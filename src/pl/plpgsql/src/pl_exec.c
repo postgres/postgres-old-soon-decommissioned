@@ -1069,8 +1069,7 @@ exec_stmt_getdiag(PLpgSQL_execstate * estate, PLpgSQL_stmt_getdiag * stmt)
 {
 	int		i;
 	PLpgSQL_datum 	*var;
-	HeapTuple	typeTup;
-        bool            isnull = false;
+	bool            isnull = false;
 
 	for ( i=0 ; i < stmt->nitems ; i++) 
 	{
