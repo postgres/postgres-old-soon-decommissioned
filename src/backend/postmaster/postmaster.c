@@ -2575,8 +2575,6 @@ static int
 BackendRun(Port *port)
 {
 	int			status;
-	struct timeval now;
-	struct timezone tz;
 	char		remote_host[NI_MAXHOST];
 	char		remote_port[NI_MAXSERV];
 	char		remote_ps_data[NI_MAXHOST];
@@ -2754,9 +2752,7 @@ BackendRun(Port *port)
 	 * start a new random sequence in the random() library function.
 	 */
 	random_seed = 0;
-	gettimeofday(&now, &tz);
-	srandom((unsigned int) now.tv_usec);
-
+	srandom((unsigned int) (MyProcPid ^ port->session_start.tv_usec));
 
 	/* ----------------
 	 * Now, build the argv vector that will be given to PostgresMain.
