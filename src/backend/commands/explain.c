@@ -30,7 +30,7 @@ typedef struct ExplainState
 {
 	/* options */
 	bool		printCost;		/* print cost */
-	bool		printNodes;		/* do nodeToString() instead */
+	bool		printNodes;		/* do pprint() instead */
 	/* other states */
 	List	   *rtable;			/* range table */
 } ExplainState;
@@ -81,7 +81,7 @@ ExplainQuery(Query *query, bool verbose, CommandDest dest)
 	es->rtable = query->rtable;
 
 	if (es->printNodes)
-		s = nodeToString(plan);
+		s = pprint(plan);
 
 	if (es->printCost)
 	{
