@@ -103,7 +103,7 @@ NOTICE:  BEGIN: already a transaction in progress
    and a commit is implicitly performed at the end of the statement
    (if execution was successful, otherwise a rollback is done).
    <command>BEGIN</command> initiates a user transaction in chained mode,
-   i.e. all user statements after <command>BEGIN</command> command will
+   i.e., all user statements after <command>BEGIN</command> command will
    be executed in a single transaction until an explicit 
    <xref linkend="sql-commit-title" endterm="sql-commit-title">,
    <xref linkend="sql-rollback-title" endterm="sql-rollback-title">,
