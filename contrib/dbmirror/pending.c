@@ -701,7 +701,7 @@ nextval(PG_FUNCTION_ARGS)
 
   debug_msg("dbmirror:nextval Set resTuple");
 
-  nextSequenceValue =*(DatumGetPointer(SPI_getbinval(resTuple,
+  nextSequenceValue =* (unsigned int *)(DatumGetPointer(SPI_getbinval(resTuple,
 						     SPI_tuptable->tupdesc,
 						     1,&isNull)));
 
