@@ -1591,10 +1591,12 @@ getTables(int *numTables, FuncInfo *finfo, int numFuncs)
 					findx++;
 				}
 				if (TRIGGER_FOR_UPDATE(tgtype))
+				{
 					if (findx > 0)
 						strcat(query, " OR UPDATE");
 					else
 						strcat(query, " UPDATE");
+				}
 				sprintf(query, "%s ON %s FOR EACH ROW EXECUTE PROCEDURE %s (",
 						query, tblinfo[i].relname, tgfunc);
 				for (findx = 0; findx < tgnargs; findx++)
@@ -2508,6 +2510,7 @@ dumpTables(FILE *fout, TableInfo *tblinfo, int numTables,
 			{
 				ACLlist = ParseACL(tblinfo[i].relacl, &l);
 				if (ACLlist == (ACL *) NULL)
+				{
 					if (l == 0)
 						continue;
 					else
@@ -2516,6 +2519,7 @@ dumpTables(FILE *fout, TableInfo *tblinfo, int numTables,
 								tblinfo[i].relname);
 						exit_nicely(g_conn);
 					}
+				}
 
 				/* Revoke Default permissions for PUBLIC */
 				fprintf(fout,

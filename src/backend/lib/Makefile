@@ -15,7 +15,7 @@ INCLUDE_OPT = -I..
 
 CFLAGS+=$(INCLUDE_OPT)
 
-OBJS = bit.o fstack.o hasht.o lispsort.o qsort.o stringinfo.o dllist.o
+OBJS = bit.o fstack.o hasht.o lispsort.o stringinfo.o dllist.o
 
 all: SUBSYS.o
 

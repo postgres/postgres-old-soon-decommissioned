@@ -444,13 +444,15 @@ parse_timezone(const char *value)
 	{
 		/* Not yet tried to save original value from environment? */
 		if (defaultTZ == NULL)
+		{
 			/* found something? then save it for later */
 			if ((defaultTZ = getenv("TZ")) != NULL)
 				strcpy(TZvalue, defaultTZ);
 
-		/* found nothing so mark with an invalid pointer */
+			/* found nothing so mark with an invalid pointer */
 			else
 				defaultTZ = (char *) -1;
+		}
 
 		strcpy(tzbuf, "TZ=");
 		strcat(tzbuf, tok);

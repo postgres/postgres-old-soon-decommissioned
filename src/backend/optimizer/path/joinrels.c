@@ -70,10 +70,12 @@ find_join_rels(Query *root, List *outer_rels)
 		Rel		   *outer_rel = (Rel *) lfirst(r);
 
 		if (!(joins = find_clause_joins(root, outer_rel, outer_rel->joininfo)))
+		{
 			if (BushyPlanFlag)
 				joins = find_clauseless_joins(outer_rel, outer_rels);
 			else
 				joins = find_clauseless_joins(outer_rel, root->base_relation_list_);
+		}
 
 		join_list = nconc(join_list, joins);
 	}

@@ -305,10 +305,12 @@ be_printtup(HeapTuple tuple, TupleDesc typeinfo)
 		lengths[i] = typeinfo->attrs[i]->attlen;
 
 		if (lengths[i] == -1)	/* variable length attribute */
+		{
 			if (!isnull)
 				lengths[i] = VARSIZE(attr) - VARHDRSZ;
 			else
 				lengths[i] = 0;
+		}
 
 		if (!isnull && OidIsValid(typoutput))
 		{

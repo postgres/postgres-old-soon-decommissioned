@@ -583,11 +583,13 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 			elog(ERROR, "parser: internal error; unrecognized deferred node", NULL);
 
 		if (constraint->contype == CONSTR_PRIMARY)
+		{
 			if (have_pkey)
 				elog(ERROR, "CREATE TABLE/PRIMARY KEY multiple primary keys"
 					 " for table %s are not legal", stmt->relname);
 			else
 				have_pkey = TRUE;
+		}
 		else if (constraint->contype != CONSTR_UNIQUE)
 			elog(ERROR, "parser: internal error; unrecognized deferred constraint", NULL);
 

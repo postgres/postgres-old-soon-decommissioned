@@ -24,8 +24,6 @@
 #include "utils/memutils.h"
 #include "storage/bufpage.h"
 
-#include "lib/qsort.h"
-
 static void
 PageIndexTupleDeleteAdjustLinePointers(PageHeader phdr,
 									   char *location, Size size);
@@ -330,7 +328,7 @@ PageRepairFragmentation(Page page)
 		}
 
 		/* sort itemIdSortData array... */
-		pg_qsort((char *) itemidbase, nused, sizeof(struct itemIdSortData),
+		qsort((char *) itemidbase, nused, sizeof(struct itemIdSortData),
 				 itemidcompare);
 
 		/* compactify page */

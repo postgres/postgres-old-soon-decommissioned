@@ -60,7 +60,6 @@
 #include <sys/socket.h>
 #ifdef HAVE_LIMITS_H
 #include <limits.h>
-#define MAXINT		   INT_MAX
 #else
 #include <values.h>
 #endif
@@ -100,6 +99,10 @@
 #else
 #define FORK() vfork()
 #endif
+#endif
+
+#if !defined(MAXINT)
+#define MAXINT		   INT_MAX
 #endif
 
 #define INVALID_SOCK	(-1)

@@ -35,8 +35,6 @@
 #include "optimizer/clauses.h"
 #include "optimizer/cost.h"
 
-#include "lib/qsort.h"
-
 #include "optimizer/geqo_gene.h"
 #include "optimizer/geqo.h"
 #include "optimizer/geqo_pool.h"
@@ -127,8 +125,7 @@ random_init_pool(Query *root, Pool *pool, int strt, int stp)
 void
 sort_pool(Pool *pool)
 {
-	pg_qsort(pool->data, pool->size, sizeof(Chromosome), compare);
-
+	qsort(pool->data, pool->size, sizeof(Chromosome), compare);
 }
 
 /*

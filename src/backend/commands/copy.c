@@ -1160,6 +1160,7 @@ CopyAttributeOut(FILE *fp, char *string, char *delim)
 			(c == '\\' && !is_array))
 			fputc('\\', fp);
 		else if (c == '\\' && is_array)
+		{
 			if (*(string + 1) == '\\')
 			{
 				/* translate \\ to \\\\ */
@@ -1174,6 +1175,7 @@ CopyAttributeOut(FILE *fp, char *string, char *delim)
 				fputc('\\', fp);
 				fputc('\\', fp);
 			}
+		}
 		fputc(*string, fp);
 	}
 }

@@ -128,8 +128,7 @@ ExecSeqScan(SeqScan *node)
 	 * else, scan the relation
 	 * ----------------
 	 */
-	outerPlan = outerPlan((Plan *) node);
-	if (outerPlan)
+	if ((outerPlan = outerPlan((Plan *) node)) != NULL)
 	{
 		slot = ExecProcNode(outerPlan, (Plan *) node);
 	}
@@ -375,8 +374,7 @@ ExecSeqReScan(SeqScan *node, ExprContext *exprCtxt, Plan *parent)
 	scanstate = node->scanstate;
 	estate = node->plan.state;
 
-	outerPlan = outerPlan((Plan *) node);
-	if (outerPlan)
+	if ((outerPlan = outerPlan((Plan *) node)) != NULL)
 	{
 		/* we are scanning a subplan */
 		outerPlan = outerPlan((Plan *) node);

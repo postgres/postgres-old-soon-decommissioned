@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <version.h>			/* interface to SetPgVersion */
+#include "version.h"			/* interface to SetPgVersion */
 
 
 
