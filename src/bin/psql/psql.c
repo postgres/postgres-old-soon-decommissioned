@@ -144,7 +144,7 @@ slashUsage(PsqlSettings * ps)
     fprintf(stderr, " \\a           -- toggle field-alignment (currenty %s)\n", on(ps->opt.align));
     fprintf(stderr, " \\C [<captn>] -- set html3 caption (currently '%s')\n", ps->opt.caption ? ps->opt.caption : "");
     fprintf(stderr, " \\connect <dbname>  -- connect to new database (currently '%s')\n", PQdb(ps->db));
-    fprintf(stderr, " \\copy <dbname>     -- copy table to/from a file\n");
+    fprintf(stderr, " \\copy {<table> to <file> | <file> from <table>}\n");
     fprintf(stderr, " \\d [<table>] -- list tables in database or columns in <table>, * for all\n");
     fprintf(stderr, " \\e [<fname>] -- edit the current query buffer or <fname>, \\E execute too\n");
     fprintf(stderr, " \\f [<sep>]   -- change field separater (currently '%s')\n", ps->opt.fieldSep);
