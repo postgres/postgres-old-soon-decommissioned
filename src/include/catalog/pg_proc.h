@@ -2633,6 +2633,20 @@ DESCR("unary plus");
 DATA(insert OID = 1915 (  numeric_uplus	   PGUID 12 f t t t 1 f 1700 "1700" 100 0 0 100  numeric_uplus - ));
 DESCR("unary plus");
 
+DATA(insert OID = 1922 (  has_table_privilege		   PGUID 12 f t f t 3 f 16 "19 19 25" 100 0 0 100	has_table_privilege_name_name - ));
+DESCR("user privilege on relation by username, relname");
+DATA(insert OID = 1923 (  has_table_privilege		   PGUID 12 f t f t 3 f 16 "19 26 25" 100 0 0 100	has_table_privilege_name_id - ));
+DESCR("user privilege on relation by username, rel oid");
+DATA(insert OID = 1924 (  has_table_privilege		   PGUID 12 f t f t 3 f 16 "23 19 25" 100 0 0 100	has_table_privilege_id_name - ));
+DESCR("user privilege on relation by usesysid, relname");
+DATA(insert OID = 1925 (  has_table_privilege		   PGUID 12 f t f t 3 f 16 "23 26 25" 100 0 0 100	has_table_privilege_id_id - ));
+DESCR("user privilege on relation by usesysid, rel oid");
+DATA(insert OID = 1926 (  has_table_privilege		   PGUID 12 f t f t 2 f 16 "19 25" 100 0 0 100	has_table_privilege_name - ));
+DESCR("current user privilege on relation by relname");
+DATA(insert OID = 1927 (  has_table_privilege		   PGUID 12 f t f t 2 f 16 "26 25" 100 0 0 100	has_table_privilege_id - ));
+DESCR("current user privilege on relation by rel oid");
+
+
 /*
  * prototypes for functions pg_proc.c
  */
