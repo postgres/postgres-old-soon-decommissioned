@@ -53,7 +53,7 @@
  *
  * A related, but conceptually distinct, mechanism is the "critical section"
  * mechanism.  A critical section not only holds off cancel/die interrupts,
- * but causes any elog(ERROR) or elog(FATAL) to become elog(STOP) --- that is,
+ * but causes any elog(ERROR) or elog(FATAL) to become elog(PANIC) --- that is,
  * a system-wide reset is forced.  Needless to say, only really *critical*
  * code should be marked as a critical section!  Currently, this mechanism
  * is only used for XLOG-related code.
