@@ -27,7 +27,6 @@ extern void NoticeProcessor(void *arg, const char *message);
 extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
 
 extern volatile bool cancel_pressed;
-extern PGconn *cancelConn;
 
 extern void ResetCancelConn(void);
 
