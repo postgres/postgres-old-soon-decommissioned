@@ -349,12 +349,12 @@ toast_insert_or_update(Relation rel, HeapTuple newtup, HeapTuple oldtup)
 				toast_action[i] = 'p';
 
 			/* ----------
-			 * We took care of UPDATE above, so any TOASTed value we find
+			 * We took care of UPDATE above, so any external value we find
 			 * still in the tuple must be someone else's we cannot reuse.
 			 * Expand it to plain (and, probably, toast it again below).
 			 * ----------
 			 */
-			if (VARATT_IS_EXTENDED(DatumGetPointer(toast_values[i])))
+			if (VARATT_IS_EXTERNAL(DatumGetPointer(toast_values[i])))
 			{
 				toast_values[i] = PointerGetDatum(heap_tuple_untoast_attr(
 					(varattrib *)DatumGetPointer(toast_values[i])));
