@@ -20,7 +20,7 @@
  * for transmitted ints, whereas the backend modules (as of this writing)
  * still handle either network or little-endian byte order.
  *
- * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  *

@@ -6,7 +6,7 @@
  *
  * $Id$
  *
- *	 Portions Copyright (c) 1999-2000, PostgreSQL, Inc
+ *	 Portions Copyright (c) 1999-2000, PostgreSQL Global Development Group
  *
  *	Karel Zak - Zakkr
  *

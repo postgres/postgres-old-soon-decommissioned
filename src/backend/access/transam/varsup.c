@@ -3,7 +3,7 @@
  * varsup.c
  *	  postgres OID & XID variables support routines
  *
- * Copyright (c) 2000, PostgreSQL, Inc
+ * Copyright (c) 2000, PostgreSQL Global Development Group
  *
  * IDENTIFICATION
  *	  $Header$

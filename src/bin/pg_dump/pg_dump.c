@@ -17,7 +17,7 @@
  *
  * the output script is SQL that is understood by PostgreSQL
  *
- * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  *
@@ -264,7 +264,7 @@ static void
 version(void)
 {
 	puts("pg_dump (PostgreSQL) " PG_VERSION);
-	puts("Portions Copyright (c) 1996-2000, PostgreSQL, Inc");
+	puts("Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group");
 	puts("Portions Copyright (c) 1996 Regents of the University of California");
 	puts("Read the file COPYRIGHT to see the usage and distribution terms.");
 }

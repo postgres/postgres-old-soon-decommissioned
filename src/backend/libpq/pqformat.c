@@ -13,7 +13,7 @@
  * Incoming messages are read directly off the wire, as it were, but there
  * are still data-conversion tasks to be performed.
  *
- * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  *	$Id$

@@ -3,7 +3,7 @@
  * quote.c
  *	  Functions for quoting identifiers and literals
  *
- * Portions Copyright (c) 2000, PostgreSQL, Inc
+ * Portions Copyright (c) 2000, PostgreSQL Global Development Group
  *
  *
  * IDENTIFICATION

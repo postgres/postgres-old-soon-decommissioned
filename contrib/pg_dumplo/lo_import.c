@@ -1,8 +1,6 @@
 /* -------------------------------------------------------------------------
  * pg_dumplo
  *
- *	Portions Copyright (c) 1999-2000, PostgreSQL, Inc
- *
  * $Header$
  *
  *					Karel Zak 1999-2000
