@@ -1056,6 +1056,10 @@ pg_get_constraintdef_worker(Oid constraintId, int prettyFlags)
 				 */
 				appendStringInfo(&buf, "CHECK ");
 
+				/* If we're pretty-printing we need to add brackets */
+				if (prettyFlags != 0)
+					appendStringInfo(&buf, "(");
+
 				/* Fetch constraint source */
 				val = heap_getattr(tup, Anum_pg_constraint_conbin,
 								   RelationGetDescr(conDesc), &isnull);
@@ -1093,6 +1097,10 @@ pg_get_constraintdef_worker(Oid constraintId, int prettyFlags)
 
 				/* Append the constraint source */
 				appendStringInfoString(&buf, consrc);
+
+				/* If we're pretty-printing we need to add brackets */
+				if (prettyFlags != 0)
+					appendStringInfo(&buf, ")");
 
 				break;
 			}
