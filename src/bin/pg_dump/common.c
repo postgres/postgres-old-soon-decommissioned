@@ -309,7 +309,7 @@ dumpSchema(Archive *fout,
 
 	if (g_verbose)
 		write_msg(NULL, "reading user-defined tables\n");
-	tblinfo = getTables(&numTables, finfo, numFuncs);
+	tblinfo = getTables(&numTables, finfo, numFuncs, tablename);
 
 	if (g_verbose)
 		write_msg(NULL, "reading index information\n");

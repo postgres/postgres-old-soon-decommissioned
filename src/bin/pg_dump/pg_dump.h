@@ -96,7 +96,9 @@ typedef struct _tableInfo
 								 * constructed manually from rules, and
 								 * rule may ref things created after the
 								 * base table was created. */
-	bool		sequence;
+	char		relkind;
+	bool		sequence;		/* this is redundant with relkind... */
+	bool		hasindex;		/* does it have any indexes? */
 	bool		hasoids;		/* does it have OIDs? */
 	int			numatts;		/* number of attributes */
 	int		   *inhAttrs;		/* an array of flags, one for each
@@ -254,7 +256,8 @@ extern void clearOprInfo(OprInfo *, int);
 extern void clearTypeInfo(TypeInfo *, int);
 
 extern OprInfo *getOperators(int *numOperators);
-extern TableInfo *getTables(int *numTables, FuncInfo *finfo, int numFuncs);
+extern TableInfo *getTables(int *numTables, FuncInfo *finfo, int numFuncs,
+							const char* tablename);
 extern InhInfo *getInherits(int *numInherits);
 extern void getTableAttrs(TableInfo *tbinfo, int numTables);
 extern IndInfo *getIndexes(int *numIndexes);
