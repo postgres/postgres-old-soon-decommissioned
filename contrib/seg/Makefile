@@ -11,7 +11,9 @@ DOCS = README.seg
 REGRESS = seg
 
 
-segparse.c segparse.h: segparse.y
+segparse.c: segparse.h ;
+
+segparse.h: segparse.y
 ifdef YACC
 	$(YACC) -d $(YFLAGS) -p seg_yy $<
 	mv -f y.tab.c segparse.c

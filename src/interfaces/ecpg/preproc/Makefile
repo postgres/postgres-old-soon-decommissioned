@@ -35,11 +35,13 @@ endif
 ecpg: $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
 
-$(srcdir)/preproc.c $(srcdir)/preproc.h: preproc.y
+$(srcdir)/preproc.c: $(srcdir)/preproc.h ;
+
+$(srcdir)/preproc.h: preproc.y
 ifdef YACC
 	$(YACC) -d $(YFLAGS) $<
-	mv y.tab.c $(srcdir)/preproc.c
-	mv y.tab.h $(srcdir)/preproc.h
+	mv -f y.tab.c $(srcdir)/preproc.c
+	mv -f y.tab.h $(srcdir)/preproc.h
 else
 	@$(missing) bison $< $@
 endif

@@ -12,7 +12,9 @@ DOCS = README.cube
 REGRESS = cube
 
 
-cubeparse.c cubeparse.h: cubeparse.y
+cubeparse.c: cubeparse.h ;
+
+cubeparse.h: cubeparse.y
 ifdef YACC
 	$(YACC) -d $(YFLAGS) -p cube_yy $<
 	mv -f y.tab.c cubeparse.c
