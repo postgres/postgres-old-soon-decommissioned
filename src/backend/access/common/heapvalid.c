@@ -12,14 +12,14 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "fmgr.h"
-#include "access/heaptuple.h"
-#include "access/xact.h"
-#include "storage/bufpage.h"
-#include "utils/rel.h"
-#include "utils/tqual.h"
+#include <fmgr.h>
+#include <access/heaptuple.h>
+#include <access/xact.h>
+#include <storage/bufpage.h>
+#include <utils/rel.h>
+#include <utils/tqual.h>
 
 /* ----------------
  *	heap_keytest

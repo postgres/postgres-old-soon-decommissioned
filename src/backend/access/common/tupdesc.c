@@ -18,17 +18,17 @@
 
 #include <stdio.h>
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "parser/catalog_utils.h"
-#include "nodes/parsenodes.h"
-#include "utils/builtins.h"
-#include "utils/fcache.h"
-#include "utils/tqual.h"
-#include "utils/syscache.h"
+#include <parser/catalog_utils.h>
+#include <nodes/parsenodes.h>
+#include <utils/builtins.h>
+#include <utils/fcache.h>
+#include <utils/tqual.h>
+#include <utils/syscache.h>
 
 #ifndef HAVE_MEMMOVE
-# include "regex/utils.h"
+# include <regex/utils.h>
 #else
 # include <string.h>
 #endif

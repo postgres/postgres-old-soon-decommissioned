@@ -12,10 +12,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "fmgr.h"
-#include "access/skey.h"
+#include <fmgr.h>
+#include <access/skey.h>
 
 /*
  * ScanKeyEntryIsLegal --

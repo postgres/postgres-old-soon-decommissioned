@@ -17,16 +17,16 @@
  *-------------------------------------------------------------------------
  */
 
-#include "postgres.h"
+#include <postgres.h>
 
-#include "access/htup.h"
-#include "access/transam.h"
-#include "access/tupmacs.h"
-#include "storage/bufpage.h"
-#include "utils/memutils.h"
+#include <access/htup.h>
+#include <access/transam.h>
+#include <access/tupmacs.h>
+#include <storage/bufpage.h>
+#include <utils/memutils.h>
 
 #ifndef HAVE_MEMMOVE
-# include "regex/utils.h"
+# include <regex/utils.h>
 #else
 # include <string.h>
 #endif
