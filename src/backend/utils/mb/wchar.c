@@ -246,7 +246,7 @@ pg_euctw_mblen(const unsigned char *s)
 }
 
 /*
- * convert UTF-8 to pg_wchar (UCS-2)
+ * convert UTF-8 string to pg_wchar (UCS-2)
  * caller should allocate enough space for "to"
  * len: length of from.
  * "from" not necessarily null terminated.
@@ -296,7 +296,10 @@ pg_utf2wchar_with_len(const unsigned char *from, pg_wchar * to, int len)
 	return(cnt);
 }
 
-static int
+/*
+ * returns the byte length of a UTF-8 word pointed to by s
+ */
+int
 pg_utf_mblen(const unsigned char *s)
 {
 	int			len = 1;
