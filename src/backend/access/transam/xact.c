@@ -977,7 +977,7 @@ CommitTransaction(void)
 
 	CallEOXactCallbacks(true);
 	AtEOXact_GUC(true);
-	AtEOXact_SPI();
+	AtEOXact_SPI(true);
 	AtEOXact_gist();
 	AtEOXact_hash();
 	AtEOXact_nbtree();
@@ -1087,7 +1087,7 @@ AbortTransaction(void)
 
 	CallEOXactCallbacks(false);
 	AtEOXact_GUC(false);
-	AtEOXact_SPI();
+	AtEOXact_SPI(false);
 	AtEOXact_gist();
 	AtEOXact_hash();
 	AtEOXact_nbtree();
