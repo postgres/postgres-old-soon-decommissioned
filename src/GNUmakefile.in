@@ -87,6 +87,7 @@ distclean: clean
 		backend/utils/Gen_fmgrtab.sh \
 		interfaces/ecpg/lib/Makefile \
 		interfaces/libpq/Makefile \
+		interfaces/libpq++/Makefile \
 		interfaces/libpgtcl/Makefile \
 		Makefile.port
 
