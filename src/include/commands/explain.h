@@ -18,7 +18,10 @@
 #include "tcop/dest.h"
 
 
-extern void ExplainQuery(ExplainStmt *stmt, CommandDest dest);
+extern void ExplainQuery(ExplainStmt *stmt, DestReceiver *dest);
+
+extern TupleDesc ExplainResultDesc(ExplainStmt *stmt);
+
 extern void ExplainOnePlan(QueryDesc *queryDesc, ExplainStmt *stmt,
 						   TupOutputState *tstate);
 

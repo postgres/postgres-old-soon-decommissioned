@@ -21,18 +21,20 @@ extern void ProcessQuery(Query *parsetree,
 						 Plan *plan,
 						 ParamListInfo params,
 						 const char *portalName,
-						 CommandDest dest,
+						 DestReceiver *dest,
 						 char *completionTag);
+
+extern PortalStrategy ChoosePortalStrategy(List *parseTrees);
 
 extern void PortalStart(Portal portal, ParamListInfo params);
 
 extern bool PortalRun(Portal portal, long count,
-					  CommandDest dest, CommandDest altdest,
+					  DestReceiver *dest, DestReceiver *altdest,
 					  char *completionTag);
 
 extern long PortalRunFetch(Portal portal,
 						   FetchDirection fdirection,
 						   long count,
-						   CommandDest dest);
+						   DestReceiver *dest);
 
 #endif   /* PQUERY_H */

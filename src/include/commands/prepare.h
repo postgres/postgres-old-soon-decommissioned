@@ -42,7 +42,7 @@ typedef struct
 
 /* Utility statements PREPARE, EXECUTE, DEALLOCATE, EXPLAIN EXECUTE */
 extern void PrepareQuery(PrepareStmt *stmt);
-extern void ExecuteQuery(ExecuteStmt *stmt, CommandDest outputDest);
+extern void ExecuteQuery(ExecuteStmt *stmt, DestReceiver *dest);
 extern void DeallocateQuery(DeallocateStmt *stmt);
 extern void ExplainExecuteQuery(ExplainStmt *stmt, TupOutputState *tstate);
 

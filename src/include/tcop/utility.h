@@ -16,8 +16,12 @@
 
 #include "executor/execdesc.h"
 
-extern void ProcessUtility(Node *parsetree, CommandDest dest,
+extern void ProcessUtility(Node *parsetree, DestReceiver *dest,
 			   char *completionTag);
+
+extern bool UtilityReturnsTuples(Node *parsetree);
+
+extern TupleDesc UtilityTupleDescriptor(Node *parsetree);
 
 extern const char *CreateCommandTag(Node *parsetree);
 

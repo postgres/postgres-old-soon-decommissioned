@@ -161,16 +161,18 @@ extern TupleTableSlot *ExecInitExtraTupleSlot(EState *estate);
 extern TupleTableSlot *ExecInitNullTupleSlot(EState *estate,
 					  TupleDesc tupType);
 extern TupleDesc ExecTypeFromTL(List *targetList, bool hasoid);
+extern TupleDesc ExecCleanTypeFromTL(List *targetList, bool hasoid);
 extern void UpdateChangedParamSet(PlanState *node, Bitmapset *newchg);
 
 typedef struct TupOutputState
 {
 	/* use "struct" here to allow forward reference */
 	struct AttInMetadata *metadata;
-	DestReceiver *destfunc;
+	DestReceiver *dest;
 } TupOutputState;
 
-extern TupOutputState *begin_tup_output_tupdesc(CommandDest dest, TupleDesc tupdesc);
+extern TupOutputState *begin_tup_output_tupdesc(DestReceiver *dest,
+												TupleDesc tupdesc);
 extern void do_tup_output(TupOutputState *tstate, char **values);
 extern void do_text_output_multiline(TupOutputState *tstate, char *text);
 extern void end_tup_output(TupOutputState *tstate);

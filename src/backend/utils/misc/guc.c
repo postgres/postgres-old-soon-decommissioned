@@ -2438,12 +2438,41 @@ set_config_by_name(PG_FUNCTION_ARGS)
  * SHOW command
  */
 void
-GetPGVariable(const char *name)
+GetPGVariable(const char *name, DestReceiver *dest)
 {
 	if (strcasecmp(name, "all") == 0)
-		ShowAllGUCConfig();
+		ShowAllGUCConfig(dest);
 	else
-		ShowGUCConfigOption(name);
+		ShowGUCConfigOption(name, dest);
+}
+
+TupleDesc
+GetPGVariableResultDesc(const char *name)
+{
+	TupleDesc	tupdesc;
+
+	if (strcasecmp(name, "all") == 0)
+	{
+		/* need a tuple descriptor representing two TEXT columns */
+		tupdesc = CreateTemplateTupleDesc(2, false);
+		TupleDescInitEntry(tupdesc, (AttrNumber) 1, "name",
+						   TEXTOID, -1, 0, false);
+		TupleDescInitEntry(tupdesc, (AttrNumber) 2, "setting",
+						   TEXTOID, -1, 0, false);
+	}
+	else
+	{
+		const char *varname;
+
+		/* Get the canonical spelling of name */
+		(void) GetConfigOptionByName(name, &varname);
+
+		/* need a tuple descriptor representing a single TEXT column */
+		tupdesc = CreateTemplateTupleDesc(1, false);
+		TupleDescInitEntry(tupdesc, (AttrNumber) 1, (char *) varname,
+						   TEXTOID, -1, 0, false);
+	}
+	return tupdesc;
 }
 
 /*
@@ -2468,11 +2497,10 @@ ResetPGVariable(const char *name)
  * SHOW command
  */
 void
-ShowGUCConfigOption(const char *name)
+ShowGUCConfigOption(const char *name, DestReceiver *dest)
 {
 	TupOutputState *tstate;
 	TupleDesc	tupdesc;
-	CommandDest dest = whereToSendOutput;
 	const char *varname;
 	char	   *value;
 
@@ -2497,12 +2525,11 @@ ShowGUCConfigOption(const char *name)
  * SHOW ALL command
  */
 void
-ShowAllGUCConfig(void)
+ShowAllGUCConfig(DestReceiver *dest)
 {
 	int			i;
 	TupOutputState *tstate;
 	TupleDesc	tupdesc;
-	CommandDest dest = whereToSendOutput;
 	char	   *values[2];
 
 	/* need a tuple descriptor representing two TEXT columns */

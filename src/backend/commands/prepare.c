@@ -102,7 +102,7 @@ PrepareQuery(PrepareStmt *stmt)
  * Implements the 'EXECUTE' utility statement.
  */
 void
-ExecuteQuery(ExecuteStmt *stmt, CommandDest outputDest)
+ExecuteQuery(ExecuteStmt *stmt, DestReceiver *dest)
 {
 	PreparedStatement *entry;
 	char	   *query_string;
@@ -180,7 +180,7 @@ ExecuteQuery(ExecuteStmt *stmt, CommandDest outputDest)
 	 */
 	PortalStart(portal, paramLI);
 
-	(void) PortalRun(portal, FETCH_ALL, outputDest, outputDest, NULL);
+	(void) PortalRun(portal, FETCH_ALL, dest, dest, NULL);
 
 	PortalDrop(portal, false);
 
@@ -488,18 +488,20 @@ ExplainExecuteQuery(ExplainStmt *stmt, TupOutputState *tstate)
 		{
 			QueryDesc  *qdesc;
 
-			/* Create a QueryDesc requesting no output */
-			qdesc = CreateQueryDesc(query, plan, None, NULL,
-									paramLI, stmt->analyze);
-
 			if (execstmt->into)
 			{
-				if (qdesc->operation != CMD_SELECT)
+				if (query->commandType != CMD_SELECT)
 					elog(ERROR, "INTO clause specified for non-SELECT query");
 
+				/* Copy the query so we can modify it */
+				query = copyObject(query);
+
 				query->into = execstmt->into;
-				qdesc->dest = None;
 			}
+
+			/* Create a QueryDesc requesting no output */
+			qdesc = CreateQueryDesc(query, plan, None_Receiver, NULL,
+									paramLI, stmt->analyze);
 
 			ExplainOnePlan(qdesc, stmt, tstate);
 		}
