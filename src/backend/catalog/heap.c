@@ -1668,12 +1668,12 @@ AddRelationRawConstraints(Relation rel,
 			{
 				if (CoerceTargetExpr(NULL, expr, type_id,
 								  atp->atttypid, atp->atttypmod) == NULL)
-					elog(ERROR, "Attribute '%s' is of type '%s'"
-						 " but default expression is of type '%s'"
+					elog(ERROR, "Column \"%s\" is of type %s"
+						 " but default expression is of type %s"
 					"\n\tYou will need to rewrite or cast the expression",
 						 NameStr(atp->attname),
-						 typeidTypeName(atp->atttypid),
-						 typeidTypeName(type_id));
+						 format_type_be(atp->atttypid),
+						 format_type_be(type_id));
 			}
 		}
 

@@ -373,8 +373,8 @@ transformArraySubscripts(ParseState *pstate,
 					elog(ERROR, "Array assignment requires type '%s'"
 						 " but expression is of type '%s'"
 					"\n\tYou will need to rewrite or cast the expression",
-						 typeidTypeName(typeneeded),
-						 typeidTypeName(typesource));
+						 format_type_be(typeneeded),
+						 format_type_be(typesource));
 			}
 		}
 	}

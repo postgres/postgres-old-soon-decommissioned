@@ -22,6 +22,7 @@
 #include "parser/parse_relation.h"
 #include "parser/parse_target.h"
 #include "parser/parse_type.h"
+#include "utils/builtins.h"
 
 
 static List *ExpandAllTables(ParseState *pstate);
@@ -265,12 +266,12 @@ updateTargetListEntry(ParseState *pstate,
 				tle->expr = CoerceTargetExpr(pstate, tle->expr, type_id,
 											 attrtype, attrtypmod);
 				if (tle->expr == NULL)
-					elog(ERROR, "Attribute '%s' is of type '%s'"
+					elog(ERROR, "column \"%s\" is of type '%s'"
 						 " but expression is of type '%s'"
 					"\n\tYou will need to rewrite or cast the expression",
 						 colname,
-						 typeidTypeName(attrtype),
-						 typeidTypeName(type_id));
+						 format_type_be(attrtype),
+						 format_type_be(type_id));
 			}
 
 			/*

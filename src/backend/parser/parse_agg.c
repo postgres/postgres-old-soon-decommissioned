@@ -22,6 +22,7 @@
 #include "parser/parse_expr.h"
 #include "parser/parsetree.h"
 #include "parser/parse_type.h"
+#include "utils/builtins.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
 
@@ -249,6 +250,6 @@ agg_error(char *caller, char *aggname, Oid basetypeID)
 		elog(ERROR, "%s: aggregate '%s' for all types does not exist",
 			 caller, aggname);
 	else
-		elog(ERROR, "%s: aggregate '%s' for '%s' does not exist",
-			 caller, aggname, typeidTypeName(basetypeID));
+		elog(ERROR, "%s: aggregate '%s' for type %s does not exist",
+			 caller, aggname, format_type_be(basetypeID));
 }

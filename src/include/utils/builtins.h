@@ -572,6 +572,7 @@ extern Datum PG_char_to_encoding(PG_FUNCTION_ARGS);
 
 /* format_type.c */
 extern Datum format_type(PG_FUNCTION_ARGS);
+extern char * format_type_be(Oid type_oid);
 extern Datum oidvectortypes(PG_FUNCTION_ARGS);
 extern int32 type_maximum_size(Oid type_oid, int32 typemod);
 
