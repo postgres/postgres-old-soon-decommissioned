@@ -730,6 +730,9 @@ SPI_cursor_open(char *name, void *plan, Datum *Values, char *Nulls)
 	else if (queryTree->into != NULL)
 		elog(ERROR, "plan in SPI_cursor_open() must NOT be a SELECT INTO");
 
+	/* Increment CommandCounter to see changes made by now */
+	CommandCounterIncrement();
+
 	/* Reset SPI result */
 	SPI_processed = 0;
 	SPI_tuptable = NULL;
