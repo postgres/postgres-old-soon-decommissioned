@@ -27,7 +27,7 @@ clean:
 	rm -f SUBSYS.o $(OBJS) s_lock_test
 
 s_lock_test: s_lock.c
-	$(CC) $(CFLAGS) -DS_LOCK_TEST=1 -g s_lock.c -o s_lock_test
+	$(CC) $(CFLAGS) -DS_LOCK_TEST=1 s_lock.c -o s_lock_test
 	./s_lock_test
 
 ifeq (depend,$(wildcard depend))
