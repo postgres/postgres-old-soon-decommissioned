@@ -69,6 +69,12 @@ typedef FormData_pg_namespace *Form_pg_namespace;
 DATA(insert OID = 11 ( "pg_catalog" PGUID "{=r}" ));
 DESCR("System catalog namespace");
 #define PG_CATALOG_NAMESPACE 11
+DATA(insert OID = 99 ( "pg_toast" PGUID "{=r}" ));
+DESCR("Reserved namespace for TOAST tables");
+#define PG_TOAST_NAMESPACE 99
+DATA(insert OID = 2071 ( "pg_public" PGUID "{=rw}" ));
+DESCR("Standard public namespace");
+#define PG_PUBLIC_NAMESPACE 2071
 
 
 /*

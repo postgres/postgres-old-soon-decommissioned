@@ -19,6 +19,7 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
+#include "catalog/namespace.h"
 #include "utils/builtins.h"
 
 #define DatumGetItemPointer(X)	 ((ItemPointer) DatumGetPointer(X))
@@ -146,14 +147,13 @@ currtid_byreloid(PG_FUNCTION_ARGS)
 		*result = Current_last_tid;
 		PG_RETURN_ITEMPOINTER(result);
 	}
+
+	rel = heap_open(reloid, AccessShareLock);
+
 	ItemPointerCopy(tid, result);
-	if ((rel = heap_open(reloid, AccessShareLock)) != NULL)
-	{
-		heap_get_latest_tid(rel, SnapshotNow, result);
-		heap_close(rel, AccessShareLock);
-	}
-	else
-		elog(ERROR, "Relation %u not found", reloid);
+	heap_get_latest_tid(rel, SnapshotNow, result);
+
+	heap_close(rel, AccessShareLock);
 
 	PG_RETURN_ITEMPOINTER(result);
 }
@@ -164,23 +164,19 @@ currtid_byrelname(PG_FUNCTION_ARGS)
 	text	   *relname = PG_GETARG_TEXT_P(0);
 	ItemPointer tid = PG_GETARG_ITEMPOINTER(1);
 	ItemPointer result;
-	char	   *str;
+	RangeVar   *relrv;
 	Relation	rel;
 
-	str = DatumGetCString(DirectFunctionCall1(textout,
-											  PointerGetDatum(relname)));
+	relrv = makeRangeVarFromNameList(textToQualifiedNameList(relname,
+														"currtid_byrelname"));
+	rel = heap_openrv(relrv, AccessShareLock);
 
 	result = (ItemPointer) palloc(sizeof(ItemPointerData));
 	ItemPointerCopy(tid, result);
-	if ((rel = heap_openr(str, AccessShareLock)) != NULL)
-	{
-		heap_get_latest_tid(rel, SnapshotNow, result);
-		heap_close(rel, AccessShareLock);
-	}
-	else
-		elog(ERROR, "Relation %s not found", str);
 
-	pfree(str);
+	heap_get_latest_tid(rel, SnapshotNow, result);
+
+	heap_close(rel, AccessShareLock);
 
 	PG_RETURN_ITEMPOINTER(result);
 }

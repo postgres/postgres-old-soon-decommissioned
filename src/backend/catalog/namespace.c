@@ -81,6 +81,10 @@ RangeVarGetRelid(const RangeVar *relation, bool failOK)
  * RangeVarGetCreationNamespace
  *		Given a RangeVar describing a to-be-created relation,
  *		choose which namespace to create it in.
+ *
+ * Note: calling this may result in a CommandCounterIncrement operation.
+ * That will happen on the first request for a temp table in any particular
+ * backend run; we will need to either create or clean out the temp schema.
  */
 Oid
 RangeVarGetCreationNamespace(const RangeVar *newRelation)
@@ -124,6 +128,21 @@ RelnameGetRelid(const char *relname)
 {
 	/* XXX Wrong!  must search search path */
 	return get_relname_relid(relname, PG_CATALOG_NAMESPACE);
+}
+
+/*
+ * TypenameGetTypid
+ *		Try to resolve an unqualified datatype name.
+ *		Returns OID if type found in search path, else InvalidOid.
+ */
+Oid
+TypenameGetTypid(const char *typname)
+{
+	/* XXX wrong, should use namespace search */
+	return GetSysCacheOid(TYPENAMENSP,
+						  PointerGetDatum(typname),
+						  ObjectIdGetDatum(PG_CATALOG_NAMESPACE),
+						  0, 0);
 }
 
 /*

@@ -15,7 +15,6 @@
 #include "postgres.h"
 
 #include "catalog/namespace.h"
-#include "catalog/pg_namespace.h"
 #include "catalog/pg_type.h"
 #include "lib/stringinfo.h"
 #include "miscadmin.h"
@@ -132,6 +131,7 @@ LookupTypeName(const TypeName *typename)
 
 		if (schemaname)
 		{
+			/* Look in specific schema only */
 			Oid		namespaceId;
 
 			namespaceId = GetSysCacheOid(NAMESPACENAME,
@@ -147,11 +147,8 @@ LookupTypeName(const TypeName *typename)
 		}
 		else
 		{
-			/* XXX wrong, should use namespace search */
-			restype = GetSysCacheOid(TYPENAMENSP,
-									 PointerGetDatum(typname),
-									 ObjectIdGetDatum(PG_CATALOG_NAMESPACE),
-									 0, 0);
+			/* Unqualified type name, so search the search path */
+			restype = TypenameGetTypid(typname);
 		}
 	}
 
