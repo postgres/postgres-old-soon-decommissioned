@@ -16,6 +16,7 @@ include Makefile.global
 all install installdirs uninstall dep depend distprep:
 	$(MAKE) -C port $@
 	$(MAKE) -C backend $@
+	$(MAKE) -C backend/utils/mb/conversion_procs $@
 	$(MAKE) -C include $@
 	$(MAKE) -C interfaces $@
 	$(MAKE) -C bin $@

@@ -15,7 +15,9 @@ include $(top_builddir)/src/Makefile.global
 OBJS = encnames.o conv.o mbutils.o wchar.o wstrcmp.o wstrncmp.o
 DIRS = conversion_procs
 
-all install installdirs uninstal distprep: SUBSYS.o
+all install installdirs: SUBSYS.o
+
+uninstall distprep:
 
 clean distclean maintainer-clean:
 	rm -f SUBSYS.o $(OBJS)

@@ -143,6 +143,9 @@ CONVERSIONS = \
 		utf_8_to_win874  UNICODE WIN874 utf_to_win874 utf8_and_win874 \
 		win874_to_utf_8  WIN874 UNICODE win874_to_utf utf8_and_win874
 
+all: $(SQLSCRIPT)
+	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
+
 $(SQLSCRIPT): Makefile
 	@set $(CONVERSIONS) ; \
 	while [ "$$#" -gt 0 ] ; \
@@ -174,21 +177,18 @@ $(REGRESSION_SCRIPT): Makefile
 	done >> $@; \
 	cat regress_epilogue >> $@;
 
-install: all installdirs
+install: $(SQLSCRIPT) installdirs
 	$(INSTALL_DATA) $(SQLSCRIPT) $(DESTDIR)$(datadir)
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(pkglibdir)
+	$(mkinstalldirs) $(DESTDIR)$(datadir) $(DESTDIR)$(pkglibdir)
 
-all: $(SQLSCRIPT)
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
+uninstall:
 
-clean:
-	$(RM) $(SQLSCRIPT)
-	@for dir in $(DIRS); do $(MAKE) -C $$dir $@; done
+dep depend distprep:
 
-distclean maintainer-clean:
+clean distclean maintainer-clean:
 	$(RM) $(SQLSCRIPT)
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@; done
 

@@ -276,8 +276,13 @@ endif # enable_shared
 ## BUILD
 ##
 
-.PHONY: all-lib
-all-lib: lib$(NAME).a $(shlib)
+.PHONY: all-lib all-static-lib all-shared-lib
+
+all-lib: all-static-lib all-shared-lib
+
+all-static-lib: lib$(NAME).a
+
+all-shared-lib: $(shlib)
 
 ifneq ($(PORTNAME), win)
 
