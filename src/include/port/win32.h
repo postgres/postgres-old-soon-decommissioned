@@ -104,8 +104,11 @@ int			semop(int semId, struct sembuf * sops, int flag);
 
 
 /* In backend/port/win32/signal.c */
-void		pgwin32_signal_initialize(void);
 extern DLLIMPORT HANDLE pgwin32_signal_event;
+extern HANDLE pgwin32_initial_signal_pipe;
+
+void		pgwin32_signal_initialize(void);
+HANDLE		pgwin32_create_signal_listener(pid_t pid);
 void		pgwin32_dispatch_queued_signals(void);
 void		pg_queue_signal(int signum);
 
