@@ -67,4 +67,4 @@ do
     eval "echo $thing"
 done
 
-# end of pg-config
+# end of pg_config

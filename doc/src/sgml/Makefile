@@ -78,7 +78,7 @@ APPLICATIONS= createdb.sgml createlang.sgml createuser.sgml \
 	pg_upgrade.sgml \
 	pgaccess-ref.sgml \
 	pgadmin-ref.sgml \
-	pg-config-ref.sgml \
+	pg_config-ref.sgml \
 	pg_ctl-ref.sgml \
 	pgtclsh.sgml \
 	pgtksh.sgml \

@@ -1,12 +1,12 @@
 # $Header$
 
-subdir = src/bin/pg-config
+subdir = src/bin/pg_config
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-all: pg-config
+all: pg_config
 
-pg-config: pg-config.sh $(top_builddir)/config.status $(top_builddir)/src/Makefile.global Makefile
+pg_config: pg_config.sh $(top_builddir)/config.status $(top_builddir)/src/Makefile.global Makefile
 	configure=`sed -n '7s,^# [^ ]*configure *,,p' $(top_builddir)/config.status` && \
 	sed -e 's,@bindir@,$(bindir),g' \
 	    -e 's,@includedir@,$(includedir),g' \
@@ -17,13 +17,13 @@ pg-config: pg-config.sh $(top_builddir)/config.status $(top_builddir)/src/Makefi
 	chmod a+x $@
 
 install: all installdirs
-	$(INSTALL_SCRIPT) pg-config $(DESTDIR)$(bindir)/pg-config
+	$(INSTALL_SCRIPT) pg_config $(DESTDIR)$(bindir)/pg_config
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(DESTDIR)$(bindir)/pg-config
+	rm -f $(DESTDIR)$(bindir)/pg_config
 
 clean distclean maintainer-clean:
-	rm -f pg-config
+	rm -f pg_config
