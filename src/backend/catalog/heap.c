@@ -812,13 +812,7 @@ heap_create_with_catalog(char *relname,
 
 		if (relid != InvalidOid)
 		{
-
-			/*
-			 * This is heavy-handed, but appears necessary bjm 1999/02/01
-			 * SystemCacheRelationFlushed(relid) is not enough either.
-			 */
 			RelationForgetRelation(relid);
-			ResetSystemCache();
 		}
 	}
 
