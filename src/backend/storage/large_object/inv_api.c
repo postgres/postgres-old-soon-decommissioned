@@ -153,7 +153,7 @@ inv_create(int flags)
 	 * be located on whatever storage manager the user requested.
 	 */
 
-	heap_create_with_catalog(objname, tupdesc);
+	heap_create_with_catalog(objname, tupdesc, RELKIND_LOBJECT);
 
 	/* make the relation visible in this transaction */
 	CommandCounterIncrement();

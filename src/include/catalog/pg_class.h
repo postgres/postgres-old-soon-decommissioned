@@ -157,6 +157,7 @@ DESCR("");
 #define RelOid_pg_trigger		1219
 
 #define		  RELKIND_INDEX			  'i'		/* secondary index */
+#define		  RELKIND_LOBJECT		  'l'		/* large objects */
 #define		  RELKIND_RELATION		  'r'		/* cataloged heap */
 #define		  RELKIND_SPECIAL		  's'		/* special (non-heap) */
 #define		  RELKIND_SEQUENCE		  'S'		/* SEQUENCE relation */

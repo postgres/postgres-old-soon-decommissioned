@@ -177,10 +177,10 @@ Boot_CreateStmt:
 					{
 						Oid id;
 						TupleDesc tupdesc;
-						/* extern Oid heap_create_with_catalog();*/
 
 						tupdesc = CreateTupleDesc(numattr,attrtypes);
-						id = heap_create_with_catalog(LexIDStr($3), tupdesc);
+						id = heap_create_with_catalog(LexIDStr($3),
+												tupdesc, RELKIND_RELATION);
 						if (!Quiet)
 							printf("CREATED relation %s with OID %d\n",
 								   LexIDStr($3), id);

@@ -173,7 +173,7 @@ ProcessUtility(Node *parsetree,
 			*ps_status = commandTag = "CREATE";
 			CHECK_IF_ABORTED();
 
-			DefineRelation((CreateStmt *) parsetree);
+			DefineRelation((CreateStmt *) parsetree, RELKIND_RELATION);
 			break;
 
 		case T_DestroyStmt:

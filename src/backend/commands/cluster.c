@@ -218,7 +218,7 @@ copy_heap(Oid OIDOldHeap)
 
 	tupdesc = CreateTupleDescCopy(OldHeapDesc);
 
-	OIDNewHeap = heap_create_with_catalog(NewName, tupdesc);
+	OIDNewHeap = heap_create_with_catalog(NewName, tupdesc, RELKIND_RELATION);
 
 	if (!OidIsValid(OIDNewHeap))
 		elog(ERROR, "clusterheap: cannot create temporary heap relation\n");

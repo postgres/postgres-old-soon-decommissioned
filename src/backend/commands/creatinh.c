@@ -45,7 +45,7 @@ static void StoreCatalogInheritance(Oid relationId, List *supers);
  * ----------------------------------------------------------------
  */
 void
-DefineRelation(CreateStmt *stmt)
+DefineRelation(CreateStmt *stmt, char relkind)
 {
 	char	   *relname = palloc(NAMEDATALEN);
 	List	   *schema = stmt->tableElts;
@@ -137,7 +137,8 @@ DefineRelation(CreateStmt *stmt)
 		}
 	}
 
-	relationId = heap_create_with_catalog(relname, descriptor);
+	relationId = heap_create_with_catalog(relname,
+										  descriptor, relkind);
 
 	StoreCatalogInheritance(relationId, inheritList);
 }

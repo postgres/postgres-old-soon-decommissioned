@@ -105,7 +105,7 @@ DefineVirtualRelation(char *relname, List *tlist)
 	/*
 	 * finally create the relation...
 	 */
-	DefineRelation(&createStmt);
+	DefineRelation(&createStmt, RELKIND_RELATION);
 }
 
 /*------------------------------------------------------------------
