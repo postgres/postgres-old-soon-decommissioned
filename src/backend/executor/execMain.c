@@ -1406,7 +1406,8 @@ ExecDelete(TupleTableSlot *slot,
 ldelete:;
 	result = heap_delete(resultRelationDesc, tupleid,
 						 &ctid,
-						 estate->es_snapshot->curcid);
+						 estate->es_snapshot->curcid,
+						 true /* wait for commit */);
 	switch (result)
 	{
 		case HeapTupleSelfUpdated:
@@ -1540,7 +1541,8 @@ lreplace:;
 	 */
 	result = heap_update(resultRelationDesc, tupleid, tuple,
 						 &ctid,
-						 estate->es_snapshot->curcid);
+						 estate->es_snapshot->curcid,
+						 true /* wait for commit */);
 	switch (result)
 	{
 		case HeapTupleSelfUpdated:
