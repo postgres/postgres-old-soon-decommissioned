@@ -25,7 +25,6 @@ Postgres documentation
   <synopsis>
 MOVE [ <replaceable class="PARAMETER">selector</replaceable> ] [ <replaceable class="PARAMETER">count</replaceable> ] 
     { IN | FROM } <replaceable class="PARAMETER">cursor</replaceable>
-    FETCH [ RELATIVE ] [ { [ <replaceable class="PARAMETER">#</replaceable> | ALL | NEXT | PRIOR ] } ] FROM ] <replaceable class="PARAMETER">cursor</replaceable>
   </synopsis>
  </refsynopsisdiv>
 
