@@ -45,13 +45,13 @@ do
             INCLUDE_DIR="$2"
             shift;;
         -I*)
-            INCLUDE_DIR=`echo $1 | sed s/^-I//`
+            INCLUDE_DIR=`echo $1 | sed -e 's/^-I//'`
             ;;
         -o)
             OUTPUT_PREFIX="$2"
             shift;;
         -o*)
-            OUTPUT_PREFIX=`echo $1 | sed s/^-o//`
+            OUTPUT_PREFIX=`echo $1 | sed -e 's/^-o//'`
             ;;
         --help)
             echo "$CMDNAME generates system catalog bootstrapping files."
