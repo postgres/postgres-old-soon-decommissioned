@@ -576,8 +576,8 @@ _bt_split(Relation rel, Buffer buf, OffsetNumber firstright,
 	BTPageOpaque ropaque,
 				lopaque,
 				oopaque;
-	Buffer		sbuf;
-	Page		spage;
+	Buffer		sbuf = 0;
+	Page		spage = 0;
 	BTPageOpaque sopaque;
 	Size		itemsz;
 	ItemId		itemid;
