@@ -434,11 +434,10 @@ ClientAuthentication(Port *port)
 			{
 				char	hostinfo[NI_MAXHOST];
 
-				getnameinfo((struct sockaddr *) &port->raddr.addr,
-							port->raddr.salen,
-							hostinfo, sizeof(hostinfo),
-							NULL, 0,
-							NI_NUMERICHOST);
+				getnameinfo_all(&port->raddr.addr, port->raddr.salen,
+								hostinfo, sizeof(hostinfo),
+								NULL, 0,
+								NI_NUMERICHOST);
 
 				ereport(FATAL,
 						(errcode(ERRCODE_INVALID_AUTHORIZATION_SPECIFICATION),

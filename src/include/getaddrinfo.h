@@ -3,7 +3,6 @@
  * getaddrinfo.h
  *	  Support getaddrinfo() on platforms that don't have it.
  *
- *
  * Note: we use our own routines on platforms that don't HAVE_STRUCT_ADDRINFO,
  * whether or not the library routine getaddrinfo() can be found.  This
  * policy is needed because on some platforms a manually installed libbind.a

@@ -147,7 +147,7 @@ void
 pgstat_init(void)
 {
 	ACCEPT_TYPE_ARG3	alen;
-	struct	addrinfo	*addr = NULL, hints;
+	struct	addrinfo	*addrs = NULL, *addr, hints;
 	int			ret;
 
 	/*
@@ -189,17 +189,27 @@ pgstat_init(void)
 	hints.ai_addr = NULL;
 	hints.ai_canonname = NULL;
 	hints.ai_next = NULL;
-	ret = getaddrinfo2("localhost", NULL, &hints, &addr);
-	if (ret || !addr)
+	ret = getaddrinfo_all("localhost", NULL, &hints, &addrs);
+	if (ret || !addrs)
 	{
 		ereport(LOG,
-				(errmsg("getaddrinfo2(\"localhost\") failed: %s",
+				(errmsg("could not resolve \"localhost\": %s",
 						gai_strerror(ret))));
 		goto startup_failed;
 	}
 	
-	if ((pgStatSock = socket(addr->ai_family,
-							 addr->ai_socktype, addr->ai_protocol)) < 0)
+	for (addr = addrs; addr; addr = addr->ai_next)
+	{
+#ifdef HAVE_UNIX_SOCKETS
+		/* Ignore AF_UNIX sockets, if any are returned. */
+		if (addr->ai_family == AF_UNIX)
+			continue;
+#endif
+		if ((pgStatSock = socket(addr->ai_family, SOCK_DGRAM, 0)) >= 0)
+			break;
+	}
+
+	if (!addr || pgStatSock < 0)
 	{
 		ereport(LOG,
 				(errcode_for_socket_access(),
@@ -218,8 +228,9 @@ pgstat_init(void)
 				 errmsg("could not bind socket for statistics: %m")));
 		goto startup_failed;
 	}
-	freeaddrinfo2(hints.ai_family, addr);
-	addr = NULL;
+
+	freeaddrinfo_all(hints.ai_family, addrs);
+	addrs = NULL;
 
 	alen = sizeof(pgStatAddr);
 	if (getsockname(pgStatSock, (struct sockaddr *)&pgStatAddr, &alen) < 0)
@@ -272,8 +283,8 @@ pgstat_init(void)
 	return;
 
 startup_failed:
-	if (addr)
-		freeaddrinfo2(hints.ai_family, addr);
+	if (addrs)
+		freeaddrinfo_all(hints.ai_family, addrs);
 
 	if (pgStatSock >= 0)
 		closesocket(pgStatSock);
