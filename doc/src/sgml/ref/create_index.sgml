@@ -339,7 +339,7 @@ ERROR: Cannot create index: 'index_name' already exists.
 
    <para>
     Currently, only the B-tree and gist access methods support multicolumn
-    indexes. Up to 16 keys may be specified by default (this limit
+    indexes. Up to 32 keys may be specified by default (this limit
     can be altered when building
     <application>PostgreSQL</application>).  Only B-tree currently supports
     unique indexes.

@@ -77,7 +77,7 @@ The name of the current user.
     Notes
    </TITLE>
    <PARA>
-    Data type "name" is a non-standard 31-character type for storing
+    Data type "name" is a non-standard 63-character type for storing
     system identifiers.
    </PARA>
   </REFSECT2>

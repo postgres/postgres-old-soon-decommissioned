@@ -70,7 +70,7 @@ ERROR:  CREATE DATABASE: Permission denied.
     You  automatically  become  the
     database  administrator  of  the database you just created.  
     Database names must  have  an  alphabetic  first
-    character and are limited to 31 characters in length.
+    character and are limited to 63 characters in length.
     <ProductName>PostgreSQL</ProductName>  allows  you to create any number of
     databases at a  given  site.  
    </Para>

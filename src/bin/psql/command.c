@@ -1513,7 +1513,7 @@ editFile(const char *fname)
 	sys = malloc(strlen(editorName) + strlen(fname) + 32 + 1);
 	if (!sys)
 		return false;
-	sprintf(sys, "exec %s %s", editorName, fname);
+	snprintf(sys, 32, "exec %s %s", editorName, fname);
 	result = system(sys);
 	if (result == -1)
 		psql_error("could not start editor %s\n", editorName);

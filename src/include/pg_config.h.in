@@ -162,7 +162,7 @@
  * switch statement in fmgr_oldstyle() in src/backend/utils/fmgr/fmgr.c.
  * But consider converting such functions to new-style instead...
  */
-#define INDEX_MAX_KEYS		16
+#define INDEX_MAX_KEYS		32
 #define FUNC_MAX_ARGS		INDEX_MAX_KEYS
 
 /*
