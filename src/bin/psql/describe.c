@@ -631,6 +631,9 @@ describeTableDetails(const char *name, bool desc)
 		case 's':
 			snprintf(title, 32 + NAMEDATALEN, _("Special relation \"%s\""), name);
 			break;
+		case 't':
+			snprintf(title, 32 + NAMEDATALEN, _("TOAST table \"%s\""), name);
+			break;
 		default:
 			snprintf(title, 32 + NAMEDATALEN, _("?%c? \"%s\""), tableinfo.relkind, name);
 			break;
