@@ -4,7 +4,6 @@
 
 #include <errno.h>
 #include "rusagestub.h"
-#include "port-protos.h"
 
 long
 random()

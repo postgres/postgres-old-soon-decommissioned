@@ -4,7 +4,6 @@
 
 #include <errno.h>
 #include "rusagestub.h"
-#include "port-protos.h"
 
 #if 0 /* this is from univel port ... how does compiler define? */
       /* same for i386_solaris port ... how does compiler define? */
