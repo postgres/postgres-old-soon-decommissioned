@@ -2206,7 +2206,9 @@ pqPacketSend(PGconn *conn, const char *buf, size_t len)
 
 #define MAXBUFSIZE 256
 
-int parseServiceInfo(PQconninfoOption *options, PQExpBuffer errorMessage) {
+static int
+parseServiceInfo(PQconninfoOption *options, PQExpBuffer errorMessage)
+{
   char *service = conninfo_getval(options, "service");
   char *serviceFile = SYSCONFDIR "/pg_service.conf";
   int  group_found = 0;
