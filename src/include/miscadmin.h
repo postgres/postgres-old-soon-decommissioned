@@ -85,7 +85,7 @@ extern int	DebugLvl;
  * CTZName is the timezone label.
  */
 
-#define MAXTZLEN		7
+#define MAXTZLEN		10		/* max TZ name len, not counting tr. null */
 
 #define USE_POSTGRES_DATES		0
 #define USE_ISO_DATES			1
