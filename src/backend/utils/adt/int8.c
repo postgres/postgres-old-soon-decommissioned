@@ -515,7 +515,9 @@ int8fac(PG_FUNCTION_ARGS)
 	int64		result;
 	int64		i;
 
-	if (arg1 < 1)
+	if (arg1 == 0)
+		result = 1;
+	else if (arg1 < 1)
 		result = 0;
 	else
 		for (i = arg1, result = 1; i > 0; --i)
