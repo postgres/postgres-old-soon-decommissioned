@@ -474,6 +474,10 @@ int
 fe_sendauth(AuthRequest areq, PGconn *conn, const char *hostname,
 			const char *password, char *PQerrormsg)
 {
+#if !defined(KRB4) && !defined(KRB5)
+    (void)hostname; /*not used*/
+#endif
+
 	switch (areq)
 	{
 			case AUTH_REQ_OK:

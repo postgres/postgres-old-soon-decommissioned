@@ -13,7 +13,7 @@
 extern char *strtokx(const char *s,
 		const char *delim,
 		const char *quote,
-		char escape,
+		int escape,
 		char *was_quoted,
 		unsigned int *token_pos,
 		int encoding);

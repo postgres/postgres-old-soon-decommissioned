@@ -47,10 +47,10 @@ MainLoop(FILE *source)
 	bool        xcomment;		/* in extended comment */
 	int			paren_level;
 	unsigned int query_start;
-    int         count_eof;
+    int         count_eof = 0;
     const char *var;
     bool         was_bslash;
-    unsigned int bslash_count;
+    unsigned int bslash_count = 0;
 
 	int			i,
 				prevlen,
@@ -123,6 +123,8 @@ MainLoop(FILE *source)
 					prompt_status = PROMPT_DOUBLEQUOTE;
 				else if (xcomment)
 					prompt_status = PROMPT_COMMENT;
+                else if (paren_level)
+                    prompt_status = PROMPT_PAREN;
 				else if (query_buf->len > 0)
 					prompt_status = PROMPT_CONTINUE;
 				else
@@ -251,7 +253,7 @@ MainLoop(FILE *source)
 			}
 
 			/* start of quote */
-			else if (line[i] == '\'' || line[i] == '"')
+			else if (!was_bslash && (line[i] == '\'' || line[i] == '"'))
 				in_quote = line[i];
 
 			/* in extended comment? */

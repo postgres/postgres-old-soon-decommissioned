@@ -37,11 +37,11 @@
 # endif
 #endif
 
-char * gets_interactive(const char *prompt);
+char * gets_interactive(char *prompt);
 char * gets_fromFile(FILE *source);
 
 void initializeInput(int flags);
-bool saveHistory(const char *fname);
+bool saveHistory(char *fname);
 void finishInput(void);
 
 #endif /* INPUT_H */

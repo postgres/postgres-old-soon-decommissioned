@@ -113,7 +113,7 @@ do_lo_export(const char *loid_arg, const char *filename_arg)
 		PQclear(res);
 	}
 
-	status = lo_export(pset.db, atol(loid_arg), (char *) filename_arg);
+	status = lo_export(pset.db, atol(loid_arg), filename_arg);
 	if (status != 1)
 	{							/* of course this status is documented
 								 * nowhere :( */
@@ -182,7 +182,7 @@ do_lo_import(const char *filename_arg, const char *comment_arg)
 		PQclear(res);
 	}
 
-	loid = lo_import(pset.db, (char *) filename_arg);
+	loid = lo_import(pset.db, filename_arg);
 	if (loid == InvalidOid)
 	{
 		fputs(PQerrorMessage(pset.db), stderr);

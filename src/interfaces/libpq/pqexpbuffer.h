@@ -40,8 +40,8 @@
 typedef struct PQExpBufferData
 {
 	char	   *data;
-	int			len;
-	int			maxlen;
+	size_t		len;
+	size_t		maxlen;
 } PQExpBufferData;
 
 typedef PQExpBufferData *PQExpBuffer;
@@ -113,7 +113,7 @@ extern void resetPQExpBuffer(PQExpBuffer str);
  *
  * Returns 1 if OK, 0 if failed to enlarge buffer.
  */
-extern int enlargePQExpBuffer(PQExpBuffer str, int needed);
+extern int enlargePQExpBuffer(PQExpBuffer str, size_t needed);
 
 /*------------------------
  * printfPQExpBuffer
@@ -153,6 +153,6 @@ extern void appendPQExpBufferChar(PQExpBuffer str, char ch);
  * if necessary.
  */
 extern void appendBinaryPQExpBuffer(PQExpBuffer str,
-					   const char *data, int datalen);
+					   const char *data, size_t datalen);
 
 #endif	 /* PQEXPBUFFER_H */

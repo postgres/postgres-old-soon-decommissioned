@@ -782,6 +782,8 @@ PQenv2encoding(void)
 int
 PQmblen(const unsigned char *s, int encoding)
 {
+    (void)s;
+    (void)encoding;
 	return 1;
 }
 int

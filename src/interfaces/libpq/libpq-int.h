@@ -244,6 +244,11 @@ struct pg_conn
 	int client_encoding;		/* encoding id */
 };
 
+/* String descriptions of the ExecStatusTypes.
+ * direct use of this array is deprecated; call PQresStatus() instead.
+ */
+extern char *const pgresStatus[];
+
 /* ----------------
  * Internal functions of libpq
  * Functions declared here need to be visible across files of libpq,

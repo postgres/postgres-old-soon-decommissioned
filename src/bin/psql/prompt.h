@@ -17,9 +17,10 @@ typedef enum _promptStatus
 	PROMPT_COMMENT,
 	PROMPT_SINGLEQUOTE,
 	PROMPT_DOUBLEQUOTE,
+    PROMPT_PAREN,
 	PROMPT_COPY
 }			promptStatus_t;
 
-const char *get_prompt(promptStatus_t status);
+char *get_prompt(promptStatus_t status);
 
 #endif	 /* PROMPT_H */

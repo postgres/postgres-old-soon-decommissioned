@@ -266,7 +266,9 @@ print_aligned_text(const char *title, const char * const * headers,
 		for (i = 0; i < col_count; i++)
 		{
 			/* centered */
-			fprintf(fout, "%-*s%s%-*s", (int) floor((widths[i] - strlen(headers[i])) / 2.0), "", headers[i], (int) ceil((widths[i] - strlen(headers[i])) / 2.0), "");
+			fprintf(fout, "%-*s%s%-*s",
+                    (int) floor((widths[i] - strlen(headers[i])) / 2.0), "",
+                    headers[i], (int) ceil((widths[i] - strlen(headers[i])) / 2.0), "");
 
 			if (i < col_count - 1)
 			{

@@ -124,9 +124,9 @@ resetPQExpBuffer(PQExpBuffer str)
  * Returns 1 if OK, 0 if failed to enlarge buffer.
  */
 int
-enlargePQExpBuffer(PQExpBuffer str, int needed)
+enlargePQExpBuffer(PQExpBuffer str, size_t needed)
 {
-	int			newlen;
+	size_t		newlen;
 	char	   *newdata;
 
 	needed += str->len + 1;		/* total space required now */
@@ -164,8 +164,8 @@ void
 printfPQExpBuffer(PQExpBuffer str, const char *fmt,...)
 {
 	va_list		args;
-	int			avail,
-				nprinted;
+	size_t		avail;
+    int         nprinted;
 
 	resetPQExpBuffer(str);
 
@@ -214,8 +214,8 @@ void
 appendPQExpBuffer(PQExpBuffer str, const char *fmt,...)
 {
 	va_list		args;
-	int			avail,
-				nprinted;
+	size_t		avail;
+    int			nprinted;
 
 	for (;;)
 	{
@@ -286,7 +286,7 @@ appendPQExpBufferChar(PQExpBuffer str, char ch)
  * if necessary.
  */
 void
-appendBinaryPQExpBuffer(PQExpBuffer str, const char *data, int datalen)
+appendBinaryPQExpBuffer(PQExpBuffer str, const char *data, size_t datalen)
 {
 	/* Make more room if needed */
 	if (! enlargePQExpBuffer(str, datalen))

@@ -56,6 +56,8 @@ struct _helpStruct
 static struct _helpStruct QL_HELP[] = {
 ";
 
+$count = 0;
+
 foreach $file (sort readdir DIR) {
     my ($cmdname, $cmddesc, $cmdsynopsis);
     $file =~ /\.sgml$/ || next;
@@ -84,6 +86,7 @@ foreach $file (sort readdir DIR) {
         $cmdsynopsis =~ s/\"/\\"/g;
 
 	print OUT "    { \"$cmdname\",\n      \"$cmddesc\",\n      \"$cmdsynopsis\" },\n\n";
+        $count++;
     }
     else {
 	print STDERR "$0: parsing file '$file' failed at or near line $. (N='$cmdname' D='$cmddesc')\n";
@@ -93,6 +96,10 @@ foreach $file (sort readdir DIR) {
 print OUT "
     { NULL, NULL, NULL }    /* End of list marker */
 };
+
+
+#define QL_HELP_COUNT $count
+
 
 #endif /* $define */
 ";

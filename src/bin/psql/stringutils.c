@@ -12,19 +12,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-
 #include <stdio.h>
 
-#include <postgres.h>
-#ifndef HAVE_STRDUP
-#include <strdup.h>
-#endif
 #include <libpq-fe.h>
 
 
 
-static void
-			unescape_quotes(char *source, char quote, char escape);
+static void unescape_quotes(char *source, int quote, int escape);
 
 
 /*
@@ -45,7 +39,7 @@ char *
 strtokx(const char *s,
 		const char *delim,
 		const char *quote,
-		char escape,
+		int escape,
 		char *was_quoted,
 		unsigned int *token_pos,
 		int encoding)
@@ -59,6 +53,10 @@ strtokx(const char *s,
 	unsigned int offset;
 	char	   *start;
 	char	   *cp = NULL;
+
+#ifndef MULTIBYTE
+    (void)encoding; /*not used*/
+#endif
 
 	if (s)
 	{
@@ -160,7 +158,7 @@ strtokx(const char *s,
  * Resolves escaped quotes. Used by strtokx above.
  */
 static void
-unescape_quotes(char *source, char quote, char escape)
+unescape_quotes(char *source, int quote, int escape)
 {
 	char	   *p;
 	char	   *destination,
@@ -170,7 +168,7 @@ unescape_quotes(char *source, char quote, char escape)
 	assert(source);
 #endif
 
-	destination = (char *) calloc(1, strlen(source) + 1);
+	destination = calloc(1, strlen(source) + 1);
 	if (!destination)
 	{
 		perror("calloc");
