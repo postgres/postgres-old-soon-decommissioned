@@ -33,6 +33,11 @@
 #include "settings.h"
 #include "variables.h"
 
+#ifdef MULTIBYTE
+#include "miscadmin.h"
+#include "mb/pg_wchar.h"
+#endif
+
 
 /* functions for use in this file */
 
@@ -346,6 +351,30 @@ exec_command(const char *cmd,
             fputs("\n", fout);
 	}
 
+#ifdef MULTIBYTE
+	/* \eset -- set client side encoding */
+	else if (strcmp(cmd, "eset") == 0)
+	{
+		char *encoding = scan_option(&string, OT_NORMAL, NULL);
+		if (PQsetClientEncoding(pset.db, encoding) == -1)
+		{
+			psql_error("\\%s: invalid encoding\n", cmd);
+		}
+		/* save encoding info into psql internal data */
+		pset.encoding = PQclientEncoding(pset.db);
+		free(encoding);
+	}
+	/* \eshow -- show encoding info */
+	else if (strcmp(cmd, "eshow") == 0)
+	{
+		int encoding = PQclientEncoding(pset.db);
+		if (encoding == -1)
+		{
+			psql_error("\\%s: there is no connection\n", cmd);
+		}
+		printf("%s\n", pg_encoding_to_char(encoding));
+	}
+#endif
 	/* \f -- change field separator */
 	else if (strcmp(cmd, "f") == 0)
     {
