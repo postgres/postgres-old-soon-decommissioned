@@ -283,9 +283,6 @@
 /* Define if you have the ANSI C header files.  */
 #undef STDC_HEADERS
 
-/* default path for the location of the odbcinst.ini file */
-#undef ODBCINST
-
 /* Define if you have the setproctitle function.  */
 #undef HAVE_SETPROCTITLE
 
@@ -304,9 +301,6 @@
 /*
  * Block of parameters for the ODBC code.
  */
-
-/* are we building against a libodbcinst */
-#undef HAVE_SQLGETPRIVATEPROFILESTRING
 
 /* Set to 1 if you have <pwd.h> */
 #undef HAVE_PWD_H
