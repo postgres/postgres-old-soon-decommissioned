@@ -689,20 +689,6 @@ typedef NameData *Name;
 #define PG_BINARY_W "w"
 #endif
 
-#if !defined(WIN32) && !defined(__BEOS__)
-#define FCNTL_NONBLOCK(sock)	fcntl(sock, F_SETFL, O_NONBLOCK)
-#else
-extern long ioctlsocket_ret;
-
-/* Returns non-0 on failure, while fcntl() returns -1 on failure */
-#ifdef WIN32
-#define FCNTL_NONBLOCK(sock)	((ioctlsocket(sock, FIONBIO, &ioctlsocket_ret) == 0) ? 0 : -1)
-#endif
-#ifdef __BEOS__
-#define FCNTL_NONBLOCK(sock)	((ioctl(sock, FIONBIO, &ioctlsocket_ret) == 0) ? 0 : -1)
-#endif
-#endif
-
 #if defined(sun) && defined(__sparc__) && !defined(__SVR4)
 #include <unistd.h>
 #endif

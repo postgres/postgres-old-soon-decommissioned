@@ -17,6 +17,9 @@
 #include <netdb.h>
 #endif
 
+/* non-blocking */
+bool set_noblock(int sock);
+
 /* Portable path handling for Unix/Win32 */
 extern bool is_absolute_path(const char *filename);
 extern char *first_path_separator(const char *filename);

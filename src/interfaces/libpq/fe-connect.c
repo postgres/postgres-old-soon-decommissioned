@@ -50,11 +50,6 @@
 #include "libpq/ip.h"
 #include "mb/pg_wchar.h"
 
-/* For FNCTL_NONBLOCK */
-#if defined(WIN32) || defined(__BEOS__)
-long		ioctlsocket_ret=1;
-#endif
-
 #define PGPASSFILE ".pgpass"
 
 /* fall back options if they are not specified by arguments or defined
@@ -779,7 +774,7 @@ update_db_info(PGconn *conn)
 static int
 connectMakeNonblocking(PGconn *conn)
 {
-	if (FCNTL_NONBLOCK(conn->sock) < 0)
+	if (!set_noblock(conn->sock))
 	{
 		char		sebuf[256];
 
