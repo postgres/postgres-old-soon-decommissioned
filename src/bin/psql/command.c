@@ -814,7 +814,6 @@ scan_option(char **string, enum option_type type, char *quote)
 
 	switch (options_string[pos])
 	{
-
 			/*
 			 * Double quoted string
 			 */
