@@ -56,7 +56,7 @@ DROP TYPE <replaceable class="PARAMETER">typename</replaceable> [, ...]
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-DROP
+DROP TYPE
        </computeroutput></term>
       <listitem>
        <para>

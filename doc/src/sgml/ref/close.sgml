@@ -58,7 +58,7 @@ CLOSE <replaceable class="PARAMETER">cursor</replaceable>
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-CLOSE
+CLOSE CURSOR
        </computeroutput></term>
       <listitem>
        <para>

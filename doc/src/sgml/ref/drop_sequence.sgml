@@ -57,7 +57,7 @@ DROP SEQUENCE <replaceable class="PARAMETER">name</replaceable> [, ...]
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-DROP
+DROP SEQUENCE
        </computeroutput></term>
       <listitem>
        <para>

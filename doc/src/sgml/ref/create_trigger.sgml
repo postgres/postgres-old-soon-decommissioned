@@ -98,7 +98,7 @@ CREATE TRIGGER <replaceable class="PARAMETER">name</replaceable> { BEFORE | AFTE
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-CREATE
+CREATE TRIGGER
        </computeroutput></term>
       <listitem>
        <para>

@@ -121,7 +121,7 @@ NOTHING
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-CREATE
+CREATE RULE
        </computeroutput></term>
       <listitem>
        <para>

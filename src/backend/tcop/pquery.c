@@ -227,7 +227,7 @@ ProcessQuery(Query *parsetree,
 
 		/* Set completion tag.  SQL calls this operation DECLARE CURSOR */
 		if (completionTag)
-			strcpy(completionTag, "DECLARE");
+			strcpy(completionTag, "DECLARE CURSOR");
 
 		return;
 	}

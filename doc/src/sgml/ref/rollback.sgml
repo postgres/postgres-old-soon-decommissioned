@@ -48,7 +48,7 @@ ROLLBACK [ WORK | TRANSACTION ]
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-ABORT
+ROLLBACK
        </computeroutput></term>
       <listitem>
        <para>

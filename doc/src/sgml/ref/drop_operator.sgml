@@ -76,7 +76,7 @@ DROP OPERATOR <replaceable class="PARAMETER">id</replaceable> ( <replaceable cla
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-DROP
+DROP OPERATOR
        </computeroutput></term>
       <listitem>
        <para>

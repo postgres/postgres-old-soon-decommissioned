@@ -75,7 +75,7 @@ CREATE SCHEMA AUTHORIZATION <replaceable class="parameter">username</replaceable
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-CREATE
+CREATE SCHEMA
        </computeroutput></term>
       <listitem>
        <para>

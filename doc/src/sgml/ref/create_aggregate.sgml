@@ -134,7 +134,7 @@ CREATE AGGREGATE <replaceable class="PARAMETER">name</replaceable> ( BASETYPE = 
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-CREATE
+CREATE AGGREGATE
        </computeroutput></term>
       <listitem>
        <para>

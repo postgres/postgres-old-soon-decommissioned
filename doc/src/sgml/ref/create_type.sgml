@@ -186,7 +186,7 @@ CREATE TYPE <replaceable class="parameter">typename</replaceable> ( INPUT = <rep
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-CREATE
+CREATE TYPE
        </computeroutput></term>
       <listitem>
        <para>

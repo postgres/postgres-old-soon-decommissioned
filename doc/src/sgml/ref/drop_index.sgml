@@ -56,7 +56,7 @@ DROP INDEX <replaceable class="PARAMETER">index_name</replaceable> [, ...]
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-DROP
+DROP INDEX
        </computeroutput></term>
       <listitem>
        <para>

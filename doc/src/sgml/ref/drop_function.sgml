@@ -65,7 +65,7 @@ DROP FUNCTION <replaceable class="parameter">name</replaceable> ( [ <replaceable
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-DROP
+DROP FUNCTION
        </computeroutput></term>
       <listitem>
        <para>

@@ -503,7 +503,7 @@ and <replaceable class="PARAMETER">table_constraint</replaceable> is:
     <msg>
      <msgmain>
       <msgtext>
-       <simpara><computeroutput>CREATE</computeroutput></simpara>
+       <simpara><computeroutput>CREATE TABLE</computeroutput></simpara>
       </msgtext>
      </msgmain>
     </msg>

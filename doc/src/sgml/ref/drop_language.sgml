@@ -58,7 +58,7 @@ DROP [ PROCEDURAL ] LANGUAGE <replaceable class="PARAMETER">name</replaceable>
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-DROP
+DROP LANGUAGE
        </computeroutput></term>
       <listitem>
        <para>

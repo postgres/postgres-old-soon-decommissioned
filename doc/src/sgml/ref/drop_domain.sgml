@@ -77,7 +77,7 @@ DROP DOMAIN <replaceable class="PARAMETER">domainname</replaceable> [, ...]  [ C
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-DROP
+DROP DOMAIN
        </computeroutput></term>
       <listitem>
        <para>

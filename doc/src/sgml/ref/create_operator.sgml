@@ -176,7 +176,7 @@ CREATE OPERATOR <replaceable>name</replaceable> ( PROCEDURE = <replaceable class
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-CREATE
+CREATE OPERATOR
        </computeroutput></term>
       <listitem>
        <para>

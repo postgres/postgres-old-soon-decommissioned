@@ -174,7 +174,7 @@ CREATE [ UNIQUE ] INDEX <replaceable class="parameter">index_name</replaceable> 
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-CREATE
+CREATE INDEX
        </computeroutput></term>
       <listitem>
        <para>

@@ -101,7 +101,7 @@ CREATE CONSTRAINT TRIGGER <replaceable class="parameter">name</replaceable>
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-CREATE CONSTRAINT
+CREATE TRIGGER
        </computeroutput></term>
       <listitem>
        <para>

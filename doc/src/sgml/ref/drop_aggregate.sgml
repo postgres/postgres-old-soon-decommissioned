@@ -69,7 +69,7 @@ DROP AGGREGATE <replaceable class="PARAMETER">name</replaceable> ( <replaceable 
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-DROP
+DROP AGGREGATE
        </computeroutput></term>
       <listitem>
        <para>

@@ -65,7 +65,7 @@ DROP RULE <replaceable class="PARAMETER">name</replaceable> ON <replaceable clas
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-DROP
+DROP RULE
        </computeroutput></term>
       <listitem>
        <para>
