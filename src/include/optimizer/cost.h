@@ -18,6 +18,7 @@
 
 /* defaults for costsize.c's Cost parameters */
 /* NB: cost-estimation code should use the variables, not these constants! */
+/* If you change these, update backend/utils/misc/postgresql.sample.conf */
 #define DEFAULT_EFFECTIVE_CACHE_SIZE  1000.0	/* measured in pages */
 #define DEFAULT_RANDOM_PAGE_COST  4.0
 #define DEFAULT_CPU_TUPLE_COST	0.01

@@ -18,6 +18,7 @@
 #include "nodes/relation.h"
 
 /* default GEQO threshold (default value for geqo_rels) */
+/* If you change this, update backend/utils/misc/postgresql.sample.conf */
 #define DEFAULT_GEQO_RELS 11
 
 

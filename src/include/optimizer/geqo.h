@@ -45,6 +45,7 @@
 /*
  * Configuration options
  */
+/* If you change these, update backend/utils/misc/postgresql.sample.conf */
 extern int  	    Geqo_pool_size;
 #define DEFAULT_GEQO_POOL_SIZE 0 /* = default based on no. of relations. */
 #define MIN_GEQO_POOL_SIZE 128
@@ -54,6 +55,7 @@ extern int          Geqo_effort; /* 1 .. inf, only used to calculate generations
 extern int  	    Geqo_generations; /* 1 .. inf, or 0 to use default based on pool size */
 
 extern double 		Geqo_selection_bias;
+/* If you change these, update backend/utils/misc/postgresql.sample.conf */
 #define DEFAULT_GEQO_SELECTION_BIAS 2.0
 #define MIN_GEQO_SELECTION_BIAS 1.5
 #define MAX_GEQO_SELECTION_BIAS 2.0
