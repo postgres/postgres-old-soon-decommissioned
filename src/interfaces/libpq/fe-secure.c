@@ -270,7 +270,8 @@ pqsecure_read(PGconn *conn, void *ptr, size_t len)
 			case SSL_ERROR_WANT_READ:
 				break;
 			case SSL_ERROR_SYSCALL:
-				printfPQExpBuffer(&conn->errorMessage,
+				if (n == -1)
+					printfPQExpBuffer(&conn->errorMessage,
 								libpq_gettext("SSL SYSCALL error: %s\n"),
 								  SOCK_STRERROR(SOCK_ERRNO));
 				break;
@@ -315,7 +316,8 @@ pqsecure_write(PGconn *conn, const void *ptr, size_t len)
 			case SSL_ERROR_WANT_WRITE:
 				break;
 			case SSL_ERROR_SYSCALL:
-				printfPQExpBuffer(&conn->errorMessage,
+				if (n == -1)
+					printfPQExpBuffer(&conn->errorMessage,
 								libpq_gettext("SSL SYSCALL error: %s\n"),
 								  SOCK_STRERROR(SOCK_ERRNO));
 				break;
