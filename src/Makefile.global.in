@@ -95,8 +95,8 @@ localstatedir = @localstatedir@
 libdir = @libdir@
 includedir = @includedir@
 mandir = @mandir@
+docdir = @docdir@
 
-docdir = ${prefix}/doc
 odbcinst_ini_dir = @odbcinst_ini_dir@
 
 # old variable names for installation directories
