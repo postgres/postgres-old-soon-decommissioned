@@ -259,7 +259,7 @@ extern void heap_fetch(Relation relation, Snapshot snapshot, HeapTuple tup, Buff
 extern ItemPointer heap_get_latest_tid(Relation relation, Snapshot snapshot, ItemPointer tid);
 extern Oid	heap_insert(Relation relation, HeapTuple tup);
 extern int	heap_delete(Relation relation, ItemPointer tid, ItemPointer ctid);
-extern int heap_replace(Relation relation, ItemPointer otid, HeapTuple tup,
+extern int heap_update(Relation relation, ItemPointer otid, HeapTuple tup,
 			 ItemPointer ctid);
 extern int	heap_mark4update(Relation relation, HeapTuple tup, Buffer *userbuf);
 extern void heap_markpos(HeapScanDesc scan);

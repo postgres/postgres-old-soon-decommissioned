@@ -482,7 +482,7 @@ TypeCreate(char *typeName,
 							   replaces);
 
 		setheapoverride(true);
-		heap_replace(pg_type_desc, &tup->t_self, tup, NULL);
+		heap_update(pg_type_desc, &tup->t_self, tup, NULL);
 		setheapoverride(false);
 
 		typeObjectId = tup->t_data->t_oid;
@@ -559,7 +559,7 @@ TypeRename(char *oldTypeName, char *newTypeName)
 	namestrcpy(&(((Form_pg_type) GETSTRUCT(oldtup))->typname), newTypeName);
 
 	setheapoverride(true);
-	heap_replace(pg_type_desc, &oldtup->t_self, oldtup, NULL);
+	heap_update(pg_type_desc, &oldtup->t_self, oldtup, NULL);
 	setheapoverride(false);
 
 	/* update the system catalog indices */

@@ -791,7 +791,7 @@ OperatorDef(char *operatorName,
 								   replaces);
 
 			setheapoverride(true);
-			heap_replace(pg_operator_desc, &tup->t_self, tup, NULL);
+			heap_update(pg_operator_desc, &tup->t_self, tup, NULL);
 			setheapoverride(false);
 		}
 		else
@@ -921,7 +921,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 									   replaces);
 
 				setheapoverride(true);
-				heap_replace(pg_operator_desc, &tup->t_self, tup, NULL);
+				heap_update(pg_operator_desc, &tup->t_self, tup, NULL);
 				setheapoverride(false);
 		
 				if (RelationGetForm(pg_operator_desc)->relhasindex)
@@ -955,7 +955,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 							   replaces);
 
 		setheapoverride(true);
-		heap_replace(pg_operator_desc, &tup->t_self, tup, NULL);
+		heap_update(pg_operator_desc, &tup->t_self, tup, NULL);
 		setheapoverride(false);
 
 		if (RelationGetForm(pg_operator_desc)->relhasindex)
@@ -995,7 +995,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 							   replaces);
 
 		setheapoverride(true);
-		heap_replace(pg_operator_desc, &tup->t_self, tup, NULL);
+		heap_update(pg_operator_desc, &tup->t_self, tup, NULL);
 		setheapoverride(false);
 
 		if (RelationGetForm(pg_operator_desc)->relhasindex)

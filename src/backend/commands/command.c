@@ -474,7 +474,7 @@ PerformAddAttribute(char *relationName,
 	heap_close(attrdesc, RowExclusiveLock);
 
 	((Form_pg_class) GETSTRUCT(reltup))->relnatts = maxatts;
-	heap_replace(rel, &reltup->t_self, reltup, NULL);
+	heap_update(rel, &reltup->t_self, reltup, NULL);
 
 	/* keep catalog indices current */
 	CatalogOpenIndices(Num_pg_class_indices, Name_pg_class_indices, ridescs);
