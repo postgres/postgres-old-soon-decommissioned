@@ -19,6 +19,8 @@ all: pgaccess
 pgaccess: pgaccess.sh $(top_builddir)/src/Makefile.global
 	sed -e 's,@WISH@,$(WISH),g' \
 	    -e 's,@PGACCESSHOME@,$(pgaccessdir),g' \
+	    -e 's,@PGLIB@,$(libdir),g' \
+	    -e 's,@DEF_PGPORT@,$(DEF_PGPORT),g' \
 	  $< >$@
 	chmod a+x $@
 
