@@ -339,7 +339,7 @@ nodeHandleRIRAttributeRule(Node **nodePtr,
 				int			this_varno = (int) ((Var *) node)->varno;
 				NameData	name_to_look_for;
 
-				memset(name_to_look_for.data, 0, NAMEDATALEN);
+				MemSet(name_to_look_for.data, 0, NAMEDATALEN);
 
 				if (this_varno == rt_index &&
 					((Var *) node)->varattno == attr_num)

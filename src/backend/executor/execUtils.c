@@ -516,7 +516,7 @@ ExecSetTypeInfo(int index,
 	if (attName != (char *) NULL)
 		strNcpy(att->attname.data, attName, NAMEDATALEN - 1);
 	else
-		memset(att->attname.data, 0, NAMEDATALEN);
+		MemSet(att->attname.data, 0, NAMEDATALEN);
 
 	att->atttypid = typeID;
 	att->attdefrel = 0;			/* dummy value */

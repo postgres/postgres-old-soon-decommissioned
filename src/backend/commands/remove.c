@@ -347,7 +347,7 @@ RemoveFunction(char *functionName,		/* function name to be removed */
 	char	   *typename;
 	int			i;
 
-	memset(argList, 0, 8 * sizeof(Oid));
+	MemSet(argList, 0, 8 * sizeof(Oid));
 	for (i = 0; i < nargs; i++)
 	{
 /*		typename = ((TypeName*)(lfirst(argNameList)))->name; */

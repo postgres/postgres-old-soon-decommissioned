@@ -175,7 +175,7 @@ InitBufferPool(IPCKey key)
 							(BMT_LIMIT * sizeof(bmtrace)) + sizeof(long),
 										   &foundDescs);
 	if (!foundDescs)
-		memset(CurTraceBuf, 0, (BMT_LIMIT * sizeof(bmtrace)) + sizeof(long));
+		MemSet(CurTraceBuf, 0, (BMT_LIMIT * sizeof(bmtrace)) + sizeof(long));
 
 	TraceBuf = (bmtrace *) & (CurTraceBuf[1]);
 #endif

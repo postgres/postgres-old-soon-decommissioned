@@ -894,7 +894,7 @@ AllocateAttribute()
 	{
 		elog(FATAL, "AllocateAttribute: malloc failed");
 	}
-	memset(attribute, 0, ATTRIBUTE_TUPLE_SIZE);
+	MemSet(attribute, 0, ATTRIBUTE_TUPLE_SIZE);
 
 	return (attribute);
 }

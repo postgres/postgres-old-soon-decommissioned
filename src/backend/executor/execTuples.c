@@ -174,7 +174,7 @@ ExecCreateTupleTable(int initialSize)	/* initial number of slots in
 	 *	clean out the slots we just allocated
 	 * ----------------
 	 */
-	memset(array, 0, initialSize * sizeof(TupleTableSlot));
+	MemSet(array, 0, initialSize * sizeof(TupleTableSlot));
 
 	/* ----------------
 	 *	initialize the new table and return it to the caller.

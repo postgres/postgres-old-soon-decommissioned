@@ -70,7 +70,7 @@ ExplainQuery(Query *query, bool verbose, CommandDest dest)
 		return;
 
 	es = (ExplainState *) malloc(sizeof(ExplainState));
-	memset(es, 0, sizeof(ExplainState));
+	MemSet(es, 0, sizeof(ExplainState));
 
 	es->printCost = true;		/* default */
 

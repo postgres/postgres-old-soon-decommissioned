@@ -418,7 +418,7 @@ _bt_pageinit(Page page, Size size)
 	 * good when I know they're empty.
 	 */
 
-	memset(page, 0, size);
+	MemSet(page, 0, size);
 
 	PageInit(page, size, sizeof(BTPageOpaqueData));
 }

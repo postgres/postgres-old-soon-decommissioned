@@ -507,7 +507,7 @@ lo_initialize(PGconn *conn)
 			   "FATAL: malloc() failed in lo_initialize()\n");
 		return -1;
 	}
-	memset((char *) lobjfuncs, 0, sizeof(PGlobjfuncs));
+	MemSet((char *) lobjfuncs, 0, sizeof(PGlobjfuncs));
 
 	/* ----------------
 	 * Execute the query to get all the functions at once

@@ -61,7 +61,7 @@ CreateTemplateTupleDesc(int natts)
 	desc = (TupleDesc) palloc(sizeof(struct tupleDesc));
 	desc->attrs = (AttributeTupleForm *) palloc(size);
 	desc->constr = NULL;
-	memset(desc->attrs, 0, size);
+	MemSet(desc->attrs, 0, size);
 
 	desc->natts = natts;
 
@@ -296,7 +296,7 @@ TupleDescInitEntry(TupleDesc desc,
 	if (attributeName != NULL)
 		namestrcpy(&(att->attname), attributeName);
 	else
-		memset(att->attname.data, 0, NAMEDATALEN);
+		MemSet(att->attname.data, 0, NAMEDATALEN);
 
 
 	att->attdisbursion = 0;		/* dummy value */

@@ -28,7 +28,7 @@ oidnamein(char *inStr)
 
 	oc = (OidName) palloc(sizeof(OidNameData));
 
-	memset(oc, 0, sizeof(OidNameData));
+	MemSet(oc, 0, sizeof(OidNameData));
 	for (inptr = inStr; *inptr && *inptr != ','; inptr++)
 		;
 

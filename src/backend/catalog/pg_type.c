@@ -399,7 +399,7 @@ TypeCreate(char *typeName,
 	/*
 	 * arguments to type input and output functions must be 0
 	 */
-	memset(argList, 0, 8 * sizeof(Oid));
+	MemSet(argList, 0, 8 * sizeof(Oid));
 
 	procs[0] = inputProcedure;
 	procs[1] = outputProcedure;

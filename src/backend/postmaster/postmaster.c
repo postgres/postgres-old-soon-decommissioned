@@ -1051,7 +1051,7 @@ BackendStartup(StartupInfo *packet,		/* client's startup packet */
 
 	for (i = 0; i < 4; ++i)
 	{
-		memset(envEntry[i], 0, 2 * ARGV_SIZE);
+		MemSet(envEntry[i], 0, 2 * ARGV_SIZE);
 	}
 
 	/*

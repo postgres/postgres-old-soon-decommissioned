@@ -80,7 +80,7 @@ AggregateCreate(char *aggName,
 	Oid			fnArgs[8];
 	TupleDesc	tupDesc;
 
-	memset(fnArgs, 0, 8 * sizeof(Oid));
+	MemSet(fnArgs, 0, 8 * sizeof(Oid));
 
 	/* sanity checks */
 	if (!aggName)

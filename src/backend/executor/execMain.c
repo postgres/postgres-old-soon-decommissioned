@@ -1286,7 +1286,7 @@ ExecAttrDefault(Relation rel, HeapTuple tuple)
 			repl = (char *) palloc(rel->rd_att->natts * sizeof(char));
 			replNull = (char *) palloc(rel->rd_att->natts * sizeof(char));
 			replValue = (Datum *) palloc(rel->rd_att->natts * sizeof(Datum));
-			memset(repl, ' ', rel->rd_att->natts * sizeof(char));
+			MemSet(repl, ' ', rel->rd_att->natts * sizeof(char));
 		}
 
 		repl[attrdef[i].adnum - 1] = 'r';

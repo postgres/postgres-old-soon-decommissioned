@@ -122,8 +122,8 @@ _hash_metapinit(Relation rel)
 	lg2nelem = 1;				/* _hash_log2(MAX(nelem, 2)) */
 	nbuckets = 2;				/* 1 << lg2nelem */
 
-	memset((char *) metap->hashm_spares, 0, sizeof(metap->hashm_spares));
-	memset((char *) metap->hashm_mapp, 0, sizeof(metap->hashm_mapp));
+	MemSet((char *) metap->hashm_spares, 0, sizeof(metap->hashm_spares));
+	MemSet((char *) metap->hashm_mapp, 0, sizeof(metap->hashm_mapp));
 
 	metap->hashm_spares[lg2nelem] = 2;	/* lg2nelem + 1 */
 	metap->hashm_spares[lg2nelem + 1] = 2;		/* lg2nelem + 1 */
@@ -310,7 +310,7 @@ _hash_pageinit(Page page, Size size)
 	 * creating new pages is an infrequent occurrence and it makes me feel
 	 * good when I know they're empty.
 	 */
-	memset(page, 0, size);
+	MemSet(page, 0, size);
 
 	PageInit(page, size, sizeof(HashPageOpaqueData));
 }

@@ -96,7 +96,7 @@ rt_poly_union(POLYGON *a, POLYGON *b)
 	if (!PointerIsValid(p))
 		elog(WARN, "Cannot allocate polygon for union");
 
-	memset((char *) p, 0, sizeof(POLYGON));		/* zero any holes */
+	MemSet((char *) p, 0, sizeof(POLYGON));		/* zero any holes */
 	p->size = sizeof(POLYGON);
 	p->npts = 0;
 	p->boundbox.high.x = Max(a->boundbox.high.x, b->boundbox.high.x);
@@ -138,7 +138,7 @@ rt_poly_inter(POLYGON *a, POLYGON *b)
 	if (!PointerIsValid(p))
 		elog(WARN, "Cannot allocate polygon for intersection");
 
-	memset((char *) p, 0, sizeof(POLYGON));		/* zero any holes */
+	MemSet((char *) p, 0, sizeof(POLYGON));		/* zero any holes */
 	p->size = sizeof(POLYGON);
 	p->npts = 0;
 	p->boundbox.high.x = Min(a->boundbox.high.x, b->boundbox.high.x);

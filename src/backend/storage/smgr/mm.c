@@ -141,7 +141,7 @@ mminit()
 
 	if (IsPostmaster)
 	{
-		memset(mmcacheblk, 0, mmsize);
+		MemSet(mmcacheblk, 0, mmsize);
 		SpinRelease(MMCacheLock);
 		return (SM_SUCCESS);
 	}
@@ -407,7 +407,7 @@ mmread(Relation reln, BlockNumber blocknum, char *buffer)
 	{
 		/* reading nonexistent pages is defined to fill them with zeroes */
 		SpinRelease(MMCacheLock);
-		memset(buffer, 0, BLCKSZ);
+		MemSet(buffer, 0, BLCKSZ);
 		return (SM_SUCCESS);
 	}
 

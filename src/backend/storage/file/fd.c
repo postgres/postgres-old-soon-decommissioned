@@ -423,7 +423,7 @@ AllocateVfd()
 
 		for (i = SizeVfdCache; i < 2 * SizeVfdCache; i++)
 		{
-			memset((char *) &(VfdCache[i]), 0, sizeof(VfdCache[0]));
+			MemSet((char *) &(VfdCache[i]), 0, sizeof(VfdCache[0]));
 			VfdCache[i].nextFree = i + 1;
 			VfdCache[i].fd = VFD_CLOSED;
 		}

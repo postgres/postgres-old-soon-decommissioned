@@ -202,7 +202,7 @@ update_fp_info(Oid func_id, struct fp_info * fip)
 	 * fp_info, since we can be interrupted (i.e., with an elog(WARN,
 	 * ...)) at any time.
 	 */
-	memset((char *) fip, 0, (int) sizeof(struct fp_info));
+	MemSet((char *) fip, 0, (int) sizeof(struct fp_info));
 	fip->funcid = InvalidOid;
 
 	func_htp = SearchSysCacheTuple(PROOID, ObjectIdGetDatum(func_id),

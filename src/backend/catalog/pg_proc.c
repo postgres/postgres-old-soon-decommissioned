@@ -81,7 +81,7 @@ ProcedureCreate(char *procedureName,
 	Assert(PointerIsValid(probin));
 
 	parameterCount = 0;
-	memset(typev, 0, 8 * sizeof(Oid));
+	MemSet(typev, 0, 8 * sizeof(Oid));
 	foreach(x, argList)
 	{
 		Value	   *t = lfirst(x);

@@ -139,7 +139,7 @@ _bt_orderkeys(Relation relation, BTScanOpaque so)
 	nbytes = BTMaxStrategyNumber * sizeof(ScanKeyData);
 	xform = (ScanKey) palloc(nbytes);
 
-	memset(xform, 0, nbytes);
+	MemSet(xform, 0, nbytes);
 	map = IndexStrategyGetStrategyMap(RelationGetIndexStrategy(relation),
 									  BTMaxStrategyNumber,
 									  attno);
@@ -243,7 +243,7 @@ _bt_orderkeys(Relation relation, BTScanOpaque so)
 
 			/* initialization for new attno */
 			attno = cur->sk_attno;
-			memset(xform, 0, nbytes);
+			MemSet(xform, 0, nbytes);
 			map = IndexStrategyGetStrategyMap(RelationGetIndexStrategy(relation),
 											  BTMaxStrategyNumber,
 											  attno);

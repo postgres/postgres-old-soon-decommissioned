@@ -96,7 +96,7 @@ mdinit()
 	if (Md_fdvec == (MdfdVec *) NULL)
 		return (SM_FAIL);
 
-	memset(Md_fdvec, 0, Nfds * sizeof(MdfdVec));
+	MemSet(Md_fdvec, 0, Nfds * sizeof(MdfdVec));
 
 	/* Set free list */
 	for (i = 0; i < Nfds; i++)
@@ -362,7 +362,7 @@ mdread(Relation reln, BlockNumber blocknum, char *buffer)
 	{
 		if (nbytes == 0)
 		{
-			memset(buffer, 0, BLCKSZ);
+			MemSet(buffer, 0, BLCKSZ);
 		}
 		else
 		{
@@ -695,7 +695,7 @@ _fdvec_alloc()
 	oldcxt = MemoryContextSwitchTo(MdCxt);
 
 	nvec = (MdfdVec *) palloc(Nfds * sizeof(MdfdVec));
-	memset(nvec, 0, Nfds * sizeof(MdfdVec));
+	MemSet(nvec, 0, Nfds * sizeof(MdfdVec));
 	memmove(nvec, (char *) Md_fdvec, CurFd * sizeof(MdfdVec));
 	pfree(Md_fdvec);
 

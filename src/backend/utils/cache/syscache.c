@@ -332,7 +332,7 @@ static int32 SysCacheSize = lengthof(cacheinfo);
 void
 zerocaches()
 {
-	memset((char *) SysCache, 0, SysCacheSize * sizeof(struct catcache *));
+	MemSet((char *) SysCache, 0, SysCacheSize * sizeof(struct catcache *));
 }
 
 /*

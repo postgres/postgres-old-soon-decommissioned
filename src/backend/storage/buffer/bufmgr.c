@@ -271,7 +271,7 @@ ReadBufferWithBufferLock(Relation reln,
 		if (extend)
 		{
 			/* new buffers are zero-filled */
-			memset((char *) MAKE_PTR(bufHdr->data), 0, BLCKSZ);
+			MemSet((char *) MAKE_PTR(bufHdr->data), 0, BLCKSZ);
 			smgrextend(bufHdr->bufsmgr, reln,
 					   (char *) MAKE_PTR(bufHdr->data));
 		}
@@ -286,7 +286,7 @@ ReadBufferWithBufferLock(Relation reln,
 	if (extend)
 	{
 		/* new buffers are zero-filled */
-		memset((char *) MAKE_PTR(bufHdr->data), 0, BLCKSZ);
+		MemSet((char *) MAKE_PTR(bufHdr->data), 0, BLCKSZ);
 		status = smgrextend(bufHdr->bufsmgr, reln,
 							(char *) MAKE_PTR(bufHdr->data));
 	}

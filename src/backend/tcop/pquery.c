@@ -97,7 +97,7 @@ CreateExecutorState(void)
 	state->es_junkFilter = NULL;
 
 	refcount = (long *) palloc(NBuffers * sizeof(long));
-	memset((char *) refcount, 0, NBuffers * sizeof(long));
+	MemSet((char *) refcount, 0, NBuffers * sizeof(long));
 	state->es_refcount = (int *) refcount;
 
 	/* ----------------

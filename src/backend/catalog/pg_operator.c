@@ -519,7 +519,7 @@ OperatorDef(char *operatorName,
 	 * have to worry about deleting them later.
 	 * ----------------
 	 */
-	memset(typeId, 0, 8 * sizeof(Oid));
+	MemSet(typeId, 0, 8 * sizeof(Oid));
 	if (!leftTypeName)
 	{
 		typeId[0] = rightTypeId;
@@ -556,7 +556,7 @@ OperatorDef(char *operatorName,
 	 */
 	if (restrictionName)
 	{							/* optional */
-		memset(typeId, 0, 8 * sizeof(Oid));
+		MemSet(typeId, 0, 8 * sizeof(Oid));
 		typeId[0] = OIDOID;		/* operator OID */
 		typeId[1] = OIDOID;		/* relation OID */
 		typeId[2] = INT2OID;	/* attribute number */
@@ -581,7 +581,7 @@ OperatorDef(char *operatorName,
 	 */
 	if (joinName)
 	{							/* optional */
-		memset(typeId, 0, 8 * sizeof(Oid));
+		MemSet(typeId, 0, 8 * sizeof(Oid));
 		typeId[0] = OIDOID;		/* operator OID */
 		typeId[1] = OIDOID;		/* relation OID 1 */
 		typeId[2] = INT2OID;	/* attribute number 1 */

@@ -129,7 +129,7 @@ MakeRetrieveViewRuleName(char *viewName)
 /*
 	char buf[100];
 
-	memset(buf, 0, sizeof(buf));
+	MemSet(buf, 0, sizeof(buf));
 	sprintf(buf, "_RET%.*s", NAMEDATALEN, viewName->data);
 	buf[15] = '\0';
 	namestrcpy(rule_name, buf);

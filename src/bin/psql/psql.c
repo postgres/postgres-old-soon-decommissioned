@@ -1973,7 +1973,7 @@ main(int argc, char **argv)
 	bool		singleSlashCmd = 0;
 	int			c;
 
-	memset(&settings, 0, sizeof settings);
+	MemSet(&settings, 0, sizeof settings);
 	settings.opt.align = 1;
 	settings.opt.header = 1;
 	settings.queryFout = stdout;

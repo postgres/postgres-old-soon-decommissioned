@@ -676,7 +676,7 @@ InitSysCache(char *relname,
 	 * ----------------
 	 */
 	cp = (CatCache *) palloc(sizeof(CatCache));
-	memset((char *) cp, 0, sizeof(CatCache));
+	MemSet((char *) cp, 0, sizeof(CatCache));
 
 	/* ----------------
 	 *	initialize the cache buckets (each bucket is a list header)

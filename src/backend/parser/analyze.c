@@ -2325,7 +2325,7 @@ ParseFunc(ParseState *pstate, char *funcname, List *fargs, int *curr_resno)
 	 * transform relation name arguments into * varnodes of the
 	 * appropriate form.
 	 */
-	memset(&oid_array[0], 0, 8 * sizeof(Oid));
+	MemSet(&oid_array[0], 0, 8 * sizeof(Oid));
 
 	nargs = 0;
 	foreach(i, fargs)

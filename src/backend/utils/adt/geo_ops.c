@@ -2549,7 +2549,7 @@ poly_in(char *str)
 	size = offsetof(POLYGON, p[0]) +(sizeof(poly->p[0]) * npts);
 	poly = PALLOC(size);
 
-	memset((char *) poly, 0, size);		/* zero any holes */
+	MemSet((char *) poly, 0, size);		/* zero any holes */
 	poly->size = size;
 	poly->npts = npts;
 
@@ -3191,7 +3191,7 @@ upgradepath(PATH *path)
 	npts = (path->npts - 1);
 	size = offsetof(PATH, p[0]) +(sizeof(path->p[0]) * npts);
 	result = PALLOC(size);
-	memset((char *) result, 0, size);
+	MemSet((char *) result, 0, size);
 
 	result->size = size;
 	result->npts = npts;
@@ -3351,7 +3351,7 @@ upgradepoly(POLYGON *poly)
 
 	size = offsetof(POLYGON, p[0]) +(sizeof(poly->p[0]) * poly->npts);
 	result = PALLOC(size);
-	memset((char *) result, 0, size);
+	MemSet((char *) result, 0, size);
 
 	result->size = size;
 	result->npts = poly->npts;
@@ -3398,7 +3398,7 @@ revertpoly(POLYGON *poly)
 
 	size = offsetof(POLYGON, p[0]) +(sizeof(poly->p[0]) * poly->npts);
 	result = PALLOC(size);
-	memset((char *) result, 0, size);
+	MemSet((char *) result, 0, size);
 
 	result->size = size;
 	result->npts = poly->npts;
@@ -3996,7 +3996,7 @@ circle_poly(int npts, CIRCLE *circle)
 	size = offsetof(POLYGON, p[0]) +(sizeof(poly->p[0]) * npts);
 	poly = PALLOC(size);
 
-	memset((char *) poly, 0, size);		/* zero any holes */
+	MemSet((char *) poly, 0, size);		/* zero any holes */
 	poly->size = size;
 	poly->npts = npts;
 

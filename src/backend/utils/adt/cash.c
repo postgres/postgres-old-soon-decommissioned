@@ -226,7 +226,7 @@ cash_out(Cash *in_value)
 	}
 
 	/* allow for trailing negative strings */
-	memset(buf, ' ', CASH_BUFSZ);
+	MemSet(buf, ' ', CASH_BUFSZ);
 	buf[TERMINATOR] = buf[LAST_PAREN] = '\0';
 
 	while (value || count > (point_pos - 2))

@@ -154,7 +154,7 @@ ftoa(double value, char *ascii, int width, int prec1, char format)
 	sprintf(out, fmt, value);
 	if ((ret = strlen(out)) > width)
 	{
-		memset(ascii, '*', width - 2);
+		MemSet(ascii, '*', width - 2);
 		ascii[width] = 0;
 		return (0);
 	}

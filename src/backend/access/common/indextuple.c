@@ -77,7 +77,7 @@ index_formtuple(TupleDesc tupleDescriptor,
 
 	tp = (char *) palloc(size);
 	tuple = (IndexTuple) tp;
-	memset(tp, 0, (int) size);
+	MemSet(tp, 0, (int) size);
 
 	DataFill((char *) tp + hoff,
 			 tupleDescriptor,

@@ -120,7 +120,7 @@ index_info(Query *root, bool first, int relid, IdxInfoRetval *info)
 	/* find the oid of the indexed relation */
 	indrelid = getrelid(relid, root->rtable);
 
-	memset(info, 0, sizeof(IdxInfoRetval));
+	MemSet(info, 0, sizeof(IdxInfoRetval));
 
 	/*
 	 * the maximum number of elements in each of the following arrays is
@@ -128,11 +128,11 @@ index_info(Query *root, bool first, int relid, IdxInfoRetval *info)
 	 * the array.
 	 */
 	info->indexkeys = (int *) palloc(sizeof(int) * 9);
-	memset(info->indexkeys, 0, sizeof(int) * 9);
+	MemSet(info->indexkeys, 0, sizeof(int) * 9);
 	info->orderOprs = (Oid *) palloc(sizeof(Oid) * 9);
-	memset(info->orderOprs, 0, sizeof(Oid) * 9);
+	MemSet(info->orderOprs, 0, sizeof(Oid) * 9);
 	info->classlist = (Oid *) palloc(sizeof(Oid) * 9);
-	memset(info->classlist, 0, sizeof(Oid) * 9);
+	MemSet(info->classlist, 0, sizeof(Oid) * 9);
 
 	/* Find an index on the given relation */
 	if (first)

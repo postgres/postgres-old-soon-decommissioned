@@ -142,7 +142,7 @@ init_execution_state(FunctionCachePtr fcache,
 			paramLI =
 				(ParamListInfo) palloc((nargs + 1) * sizeof(ParamListInfoData));
 
-			memset(paramLI, 0, nargs * sizeof(ParamListInfoData));
+			MemSet(paramLI, 0, nargs * sizeof(ParamListInfoData));
 
 			estate->es_param_list_info = paramLI;
 

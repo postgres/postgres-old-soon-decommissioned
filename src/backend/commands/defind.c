@@ -442,7 +442,7 @@ FuncIndexArgs(IndexElem *funcIndex,
 	}
 	*opOidP = tuple->t_oid;
 
-	memset(argTypes, 0, 8 * sizeof(Oid));
+	MemSet(argTypes, 0, 8 * sizeof(Oid));
 
 	/*
 	 * process the function arguments
