@@ -695,7 +695,7 @@ func_get_candidates(char *funcname, int nargs)
 						   (bits16) 0x0,
 						   (AttrNumber) Anum_pg_proc_proname,
 						   (RegProcedure) F_NAMEEQ,
-						   (Datum) funcname);
+						   PointerGetDatum(funcname));
 
 	idesc = index_openr(ProcedureNameIndex);
 
