@@ -273,7 +273,10 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 
 			rte = refnameRangeTableEntry(pstate, refname);
 			if (rte == NULL)
-				rte = addRangeTableEntry(pstate, refname, refname, FALSE, FALSE);
+			{
+				rte = addRangeTableEntry(pstate, refname, refname,FALSE, FALSE);
+				elog(NOTICE,"Auto-creating query reference to table %s", refname);
+			}
 
 			relname = rte->relname;
 			relid = rte->relid;
@@ -429,8 +432,11 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 
 			rte = refnameRangeTableEntry(pstate, refname);
 			if (rte == NULL)
-				rte = addRangeTableEntry(pstate, refname, refname,
-										 FALSE, FALSE);
+			{
+				rte = addRangeTableEntry(pstate, refname, refname,FALSE, FALSE);
+				elog(NOTICE,"Auto-creating query reference to table %s", refname);
+			}
+										 
 			relname = rte->relname;
 
 			vnum = refnameRangeTablePosn(pstate, rte->refname, NULL);

@@ -239,7 +239,10 @@ expandAll(ParseState *pstate, char *relname, char *refname, int *this_resno)
 
 	rte = refnameRangeTableEntry(pstate, refname);
 	if (rte == NULL)
+	{
 		rte = addRangeTableEntry(pstate, relname, refname, FALSE, FALSE);
+		elog(NOTICE,"Auto-creating query reference to table %s", refname);
+	}
 
 	rel = heap_open(rte->relid, AccessShareLock);
 
