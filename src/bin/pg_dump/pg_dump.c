@@ -113,7 +113,7 @@ usage(const char *progname)
 	fprintf(stderr,
 			"\t -f filename \t\t script output filename\n");
 	fprintf(stderr,
-			"\t -H hostname \t\t server host name\n");
+			"\t -h hostname \t\t server host name\n");
 	fprintf(stderr,
 			"\t -p port     \t\t server port number\n");
 	fprintf(stderr,
@@ -483,14 +483,14 @@ main(int argc, char **argv)
 
 	progname = *argv;
 
-	while ((c = getopt(argc, argv, "f:H:p:t:vSDdDaoz")) != EOF)
+	while ((c = getopt(argc, argv, "f:h:p:t:vSDdDaoz")) != EOF)
 	{
 		switch (c)
 		{
 			case 'f':			/* output file name */
 				filename = optarg;
 				break;
-			case 'H':			/* server host */
+			case 'h':			/* server host */
 				pghost = optarg;
 				break;
 			case 'p':			/* server port */
