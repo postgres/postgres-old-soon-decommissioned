@@ -527,7 +527,7 @@ pg_password_sendauth(PGconn *conn, const char *password, AuthRequest areq)
 				if (!(crypt_pwd = malloc(MD5_PASSWD_LEN + 1)) ||
 					!(crypt_pwd2 = malloc(MD5_PASSWD_LEN + 1)))
 				{
-					perror("malloc");
+					fprintf(stderr, libpq_gettext("out of memory\n"));
 					return STATUS_ERROR;
 				}
 				if (!EncryptMD5(password, conn->pguser,

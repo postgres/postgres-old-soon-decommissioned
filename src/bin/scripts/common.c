@@ -30,7 +30,8 @@ get_user_name(const char *progname)
 	pw = getpwuid(getuid());
 	if (!pw)
 	{
-		perror(progname);
+		fprintf(stderr, _("%s: could not obtain information about current user: %s"),
+				progname, strerror(errno));
 		exit(1);
 	}
 	return pw->pw_name;
@@ -40,7 +41,8 @@ get_user_name(const char *progname)
 
 	if (!GetUserName(username, &len))
 	{
-		perror(progname);
+		fprintf(stderr, _("%s: could not get current user name: %s"),
+				progname, strerror(errno));
 		exit(1);
 	}
 	return username;

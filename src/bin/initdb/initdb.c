@@ -2472,7 +2472,8 @@ main(int argc, char *argv[])
 
 			if (chmod(pg_data, 0700) != 0)
 			{
-				perror(pg_data);
+				fprintf(stderr, _("%s: could not change permissions of directory »%s«: %s\n"),
+						progname, pg_data, strerror(errno));
 				exit_nicely();
 			}
 			else
@@ -2493,7 +2494,8 @@ main(int argc, char *argv[])
 
 		default:
 			/* Trouble accessing directory */
-			perror(pg_data);
+			fprintf(stderr, _("%s: could not access directory »%s«: %s\n"),
+					progname, pg_data, strerror(errno));
 			exit_nicely();
 	}
 
