@@ -335,7 +335,7 @@ SELECT datname, age(datfrozenxid) FROM pg_database;
     <informalexample>
 <programlisting>
 play=# vacuum;
-NOTICE:  Some databases have not been vacuumed in 1613770184 transactions.
+WARNING:  Some databases have not been vacuumed in 1613770184 transactions.
         Better vacuum them within 533713463 transactions,
         or you may have a wraparound failure.
 VACUUM
