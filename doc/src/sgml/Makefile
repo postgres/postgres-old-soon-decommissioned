@@ -243,3 +243,5 @@ clean distclean maintainer-clean:
 	rm -f HTML.index $(GENERATED_SGML)
 # text
 	rm -f INSTALL HISTORY regress_README
+# XML
+	rm -f postgres.xml htmlhelp.hhp toc.hhc index.hhk
