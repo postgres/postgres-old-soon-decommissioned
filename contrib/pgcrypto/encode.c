@@ -349,7 +349,8 @@ hex_dec_len(uint srclen)
 uint
 b64_enc_len(uint srclen)
 {
-	return srclen + (srclen + 2 / 3) + (srclen / (76 / 2)) + 2;
+	/* 3 bytes will be converted to 4, linefeed after 76 chars */
+	return (srclen + 2) * 4 / 3 + srclen / (76 * 3 / 4);
 }
 
 uint
