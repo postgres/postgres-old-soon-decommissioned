@@ -463,8 +463,8 @@ typedef struct NestLoopState
 /* ----------------
  *	 MergeJoinState information
  *
- *		OSortopI		   outerKey1 sortOp innerKey1 ...
- *		ISortopO		   innerkey1 sortOp outerkey1 ...
+ *		OuterSkipQual	   outerKey1 < innerKey1 ...
+ *		InnerSkipQual	   outerKey1 > innerKey1 ...
  *		JoinState		   current "state" of join. see executor.h
  *		MarkedTupleSlot    pointer to slot in tuple table for marked tuple
  *
@@ -483,8 +483,8 @@ typedef struct NestLoopState
 typedef struct MergeJoinState
 {
 	JoinState	jstate;			/* its first field is NodeTag */
-	List	   *mj_OSortopI;
-	List	   *mj_ISortopO;
+	List	   *mj_OuterSkipQual;
+	List	   *mj_InnerSkipQual;
 	int			mj_JoinState;
 	TupleTableSlot *mj_MarkedTupleSlot;
 } MergeJoinState;
