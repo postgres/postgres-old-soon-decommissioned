@@ -164,22 +164,7 @@ other		.
 			if (keyword != NULL) {
 				return (keyword->value);
 			} else {
-				if (tolower(((char *)yytext)[0]) == 'a' &&
-				    strcasecmp((char *)yytext,"avg") == 0)
-				    yylval.str = pstrdup("avg");
-				else if (tolower(((char *)yytext)[0]) == 'c' &&
-				    strcasecmp((char *)yytext,"count") == 0)
-				    yylval.str = pstrdup("count");
-				else if (tolower(((char *)yytext)[0]) == 'm' &&
-				    strcasecmp((char *)yytext,"max") == 0)
-				    yylval.str = pstrdup("max");
-				else if (tolower(((char *)yytext)[0]) == 'm' &&
-				    strcasecmp((char *)yytext,"min") == 0)
-				    yylval.str = pstrdup("min");
-				else if (tolower(((char *)yytext)[0]) == 's' &&
-				    strcasecmp((char *)yytext,"sum") == 0)
-				    yylval.str = pstrdup("sum");
-				else	yylval.str = pstrdup((char*)yytext);
+				yylval.str = pstrdup((char*)yytext);
 				return (IDENT);
 			}
 		}

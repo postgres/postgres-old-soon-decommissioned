@@ -70,9 +70,6 @@ Aggregates also require two initial conditions, one for each
 transition function.  These are specified and stored in the database
 as fields of type
 .IR text .
-.PP
-For compatability, aggregates named "avg", "count", "max", "min",
-and "sum" are lowercased on input.
 .SH EXAMPLE
 This
 .IR avg
