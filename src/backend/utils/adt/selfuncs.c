@@ -22,6 +22,8 @@
 
 #include "postgres.h"
 
+#include <math.h>
+
 #include "access/heapam.h"
 #include "catalog/catname.h"
 #include "catalog/pg_operator.h"
@@ -900,10 +902,10 @@ genericcostestimate(Query *root, RelOptInfo *rel,
 											   lfirsti(rel->relids));
 
 	/* Estimate the number of index tuples that will be visited */
-	numIndexTuples = *indexSelectivity * index->tuples;
+	numIndexTuples = ceil(*indexSelectivity * index->tuples);
 
 	/* Estimate the number of index pages that will be retrieved */
-	numIndexPages = *indexSelectivity * index->pages;
+	numIndexPages = ceil(*indexSelectivity * index->pages);
 
 	/*
 	 * Compute the index access cost.
