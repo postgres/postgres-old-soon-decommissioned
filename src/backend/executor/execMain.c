@@ -542,7 +542,7 @@ InitPlan(QueryDesc *queryDesc, bool explainOnly)
 	}
 
 	/*
-	 * Detect whether we're doing SELECT INTO.  If so, set the force_oids
+	 * Detect whether we're doing SELECT INTO.  If so, set the es_into_oids
 	 * flag appropriately so that the plan tree will be initialized with
 	 * the correct tuple descriptors.
 	 */
