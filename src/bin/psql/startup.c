@@ -223,10 +223,6 @@ main(int argc, char *argv[])
 	SetVariable(pset.vars, "PORT", PQport(pset.db));
 	SetVariable(pset.vars, "ENCODING", pg_encoding_to_char(pset.encoding));
 
-#ifndef WIN32
-	pqsignal(SIGINT, handle_sigint);	/* control-C => cancel */
-#endif
-
 	/*
 	 * Now find something to do
 	 */
