@@ -59,6 +59,7 @@
 #include <pwd.h>
 #include <ctype.h>		        /* isspace() declaration */
 
+#include <sys/types.h>    /* needed by in.h on Ultrix */
 #include <netinet/in.h>
 #include <arpa/inet.h>
 

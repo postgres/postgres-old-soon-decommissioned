@@ -17,12 +17,10 @@
 #include <pwd.h>
 #include <sys/stat.h>
 #include <sys/socket.h>
+#include <sys/types.h>    /* needed by in.h on Ultrix */
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-#if defined(sparc_solaris)
-#include <inet_aton.h> /* after I copied it into port/sparc_solaris */
-#endif
 
 #include <postgres.h>
 #include <miscadmin.h>
