@@ -22,7 +22,7 @@ extern void PerformCursorOpen(DeclareCursorStmt *stmt, CommandDest dest);
 extern void PerformPortalFetch(FetchStmt *stmt, CommandDest dest,
 							   char *completionTag);
 
-extern void PerformPortalClose(char *name);
+extern void PerformPortalClose(const char *name);
 
 extern void PortalCleanup(Portal portal, bool isError);
 

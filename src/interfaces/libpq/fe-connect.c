@@ -376,6 +376,17 @@ static bool
 connectOptions2(PGconn *conn)
 {
 	/*
+	 * If database name was not given, default it to equal user name
+	 */
+	if ((conn->dbName == NULL || conn->dbName[0] == '\0')
+		&& conn->pguser != NULL)
+	{
+		if (conn->dbName)
+			free(conn->dbName);
+		conn->dbName = strdup(conn->pguser);
+	}
+
+	/*
 	 * Supply default password if none given
 	 */
 	if (conn->pgpass == NULL || conn->pgpass[0] == '\0')

@@ -16,7 +16,9 @@
 
 #include "tcop/dest.h"
 
-extern DestReceiver *printtup_create_DR(bool isBinary);
+extern DestReceiver *printtup_create_DR(bool isBinary, bool sendDescrip);
+
+extern void SendRowDescriptionMessage(TupleDesc typeinfo);
 
 extern void debugSetup(DestReceiver *self, int operation,
 		   const char *portalName, TupleDesc typeinfo);
