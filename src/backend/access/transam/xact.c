@@ -863,7 +863,6 @@ static void
 AtAbort_Cache(void)
 {
 	RelationCacheAbort();
-	SystemCacheAbort();
 	RegisterInvalid(false);
 }
 
