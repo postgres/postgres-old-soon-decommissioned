@@ -13,6 +13,7 @@
  */
 #include <stdio.h>		/* for sprintf() */
 #include <string.h>
+#include <limits.h>
 
 #include "postgres.h"
 #ifdef HAVE_FLOAT_H
