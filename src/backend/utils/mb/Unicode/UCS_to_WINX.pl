@@ -42,7 +42,7 @@ foreach $charset (@charsets) {
 		if( $code >= 0x80){
 			$utf = &ucs2utf($ucs);
 			if( $array{ $utf } ne "" ){
-				printf STDERR "Warning: duplicate unicode: %04x\n",$ucs;
+				printf STDERR "Warning: duplicate UTF8: %04x\n",$ucs;
 				next;
 			}
 			$count++;
@@ -86,7 +86,7 @@ foreach $charset (@charsets) {
 		if($code >= 0x80){
 			$utf = &ucs2utf($ucs);
 			if( $array{ $utf } ne "" ){
-				printf STDERR "Warning: duplicate unicode: %04x\n",$ucs;
+				printf STDERR "Warning: duplicate UTF8: %04x\n",$ucs;
 				next;
 			}
 			$count++;

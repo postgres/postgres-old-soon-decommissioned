@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- *	  EUC_CN <--> UTF-8
+ *	  EUC_CN <--> UTF8
  *
  * Portions Copyright (c) 1996-2005, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California

@@ -136,10 +136,10 @@ conv_proc(
   <title>Examples</title>
 
   <para>
-   To create a conversion from encoding <literal>UNICODE</literal> to
+   To create a conversion from encoding <literal>UTF8</literal> to
    <literal>LATIN1</literal> using <function>myfunc</>:
 <programlisting>
-CREATE CONVERSION myconv FOR 'UNICODE' TO 'LATIN1' FROM myfunc;
+CREATE CONVERSION myconv FOR 'UTF8' TO 'LATIN1' FROM myfunc;
 </programlisting>
   </para>
  </refsect1>

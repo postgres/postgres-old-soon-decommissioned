@@ -15,10 +15,10 @@ if [ ! -d results ];then
 fi
 
 dropdb unitest
-createdb -E UNICODE unitest
+createdb -E UTF8 unitest
 
 PSQL="psql -n -e -q"
-tests="euc_jp sjis euc_kr euc_cn euc_tw big5 unicode mule_internal"
+tests="euc_jp sjis euc_kr euc_cn euc_tw big5 utf8 mule_internal"
 unset PGCLIENTENCODING
 for i in $tests
 do

@@ -17,8 +17,8 @@
 require "ucs2utf.pl";
 %filename = ('KOI8R'=>'koi8-r.txt',
              'WIN1251'=>'cp1251.txt',
-             'ALT'=>'cp866.txt');
-@charsets = ('KOI8R','ALT','WIN1251');
+             'WIN866'=>'cp866.txt');
+@charsets = ('KOI8R','WIN866','WIN1251');
 foreach $charset (@charsets) {
 
 #
@@ -41,7 +41,7 @@ foreach $charset (@charsets) {
 		if( $code >= 0x80){
 			$utf = &ucs2utf($ucs);
 			if( $array{ $utf } ne "" ){
-				printf STDERR "Warning: duplicate unicode: %04x\n",$ucs;
+				printf STDERR "Warning: duplicate UTF8: %04x\n",$ucs;
 				next;
 			}
 			$count++;
@@ -85,7 +85,7 @@ foreach $charset (@charsets) {
 		if($code >= 0x80){
 			$utf = &ucs2utf($ucs);
 			if( $array{ $utf } ne "" ){
-				printf STDERR "Warning: duplicate unicode: %04x\n",$ucs;
+				printf STDERR "Warning: duplicate UTF8: %04x\n",$ucs;
 				next;
 			}
 			$count++;

@@ -4035,7 +4035,7 @@ pattern_selectivity(Const *patt, Pattern_Type ptype)
  *
  * NOTE: at present this assumes we are in the C locale, so that simple
  * bytewise comparison applies.  However, we might be in a multibyte
- * encoding such as UTF-8, so we do have to watch out for generating
+ * encoding such as UTF8, so we do have to watch out for generating
  * invalid encoding sequences.
  */
 Const *

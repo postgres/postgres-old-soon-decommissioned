@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- *	  ISO8859_1 <--> UTF-8
+ *	  ISO8859_1 <--> UTF8
  *
  * Portions Copyright (c) 1996-2005, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
@@ -84,7 +84,7 @@ utf8_to_iso8859_1(PG_FUNCTION_ARGS)
 			len -= 2;
 		}
 		else if ((c & 0xe0) == 0xe0)
-			elog(ERROR, "could not convert UTF-8 character 0x%04x to ISO8859-1",
+			elog(ERROR, "could not convert UTF8 character 0x%04x to ISO8859-1",
 				 c);
 		else
 		{

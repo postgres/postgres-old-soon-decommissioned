@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- *	  WIN874 and UTF-8
+ *	  WIN874 and UTF8
  *
  * Portions Copyright (c) 1996-2005, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California

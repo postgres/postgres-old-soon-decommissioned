@@ -222,7 +222,7 @@ pg_get_client_encoding_name(void)
  *
  * XXX We assume that storage for converted result is 4-to-1 growth in
  * the worst case. The rate for currently supported encoding pares are within 3
- * (SJIS JIS X0201 half width kanna -> UTF-8 is the worst case).
+ * (SJIS JIS X0201 half width kanna -> UTF8 is the worst case).
  * So "4" should be enough for the moment.
  */
 unsigned char *
