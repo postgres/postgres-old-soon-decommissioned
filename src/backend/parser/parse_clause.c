@@ -313,7 +313,13 @@ transformSortClause(ParseState *pstate,
 				{
 					SortClause *sortcl = lfirst(s);
 
-					if (sortcl->resdom == tlelt->resdom)
+					/*
+					 *	We use equal() here because we are called for UNION
+					 *	from the optimizer, and at that point, the sort clause
+					 *	resdom pointers don't match the target list resdom
+					 *	pointers
+					 */
+					if (equal(sortcl->resdom, tlelt->resdom))
 						break;
 					s = lnext(s);
 				}
