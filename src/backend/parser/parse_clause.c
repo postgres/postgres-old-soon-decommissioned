@@ -59,9 +59,6 @@ static Node *buildMergedJoinVar(ParseState *pstate, JoinType jointype,
 				   Var *l_colvar, Var *r_colvar);
 static TargetEntry *findTargetlistEntry(ParseState *pstate, Node *node,
 					List *tlist, int clause);
-static List *addTargetToSortList(ParseState *pstate, TargetEntry *tle,
-					List *sortlist, List *targetlist,
-					List *opname, bool resolveUnknown);
 
 
 /*
@@ -1478,7 +1475,7 @@ addAllTargetsToSortList(ParseState *pstate, List *sortlist,
  *
  * Returns the updated ORDER BY list.
  */
-static List *
+List *
 addTargetToSortList(ParseState *pstate, TargetEntry *tle,
 					List *sortlist, List *targetlist,
 					List *opname, bool resolveUnknown)
