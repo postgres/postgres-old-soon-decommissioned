@@ -10,6 +10,9 @@ pg_dump - dumps out a Postgres database into a script file
 .BR "-a"
 ]
 [\c
+.BR "-c"
+]
+[\c
 .BR "-d"
 ]
 [\c
@@ -73,6 +76,9 @@ pg_dump understands the following options:
 .TP
 .BR "-a" ""
 Dump out only the data, no schema
+.TP
+.BR "-c" ""
+Clean(drop) schema prior to create
 .TP
 .BR "-d" ""
 Dump data as proper insert strings
