@@ -8,7 +8,6 @@
 
 #include <ctype.h>
 #include "postgres.h"
-#include "utils/mcxt.h"
 
 text	   *lower(text *string);
 text	   *upper(text *string);

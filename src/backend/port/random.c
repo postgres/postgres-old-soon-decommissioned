@@ -4,9 +4,6 @@
 #include <math.h>				/* for pow() prototype */
 #include <errno.h>
 
-#include "config.h"
-#include "rusagestub.h"
-
 long
 random()
 {

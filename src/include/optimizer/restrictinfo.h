@@ -13,7 +13,6 @@
 #ifndef RESTRICTINFO_H
 #define RESTRICTINFO_H
 
-#include "nodes/pg_list.h"
 #include "nodes/relation.h"
 
 extern bool valid_or_clause(RestrictInfo *restrictinfo);

@@ -20,7 +20,6 @@
 #include "type.h"
 #include "preproc.h"
 #include "parser/keywords.h"
-#include "utils/elog.h"
 
 /*
  * List of (keyword-name, keyword-token-value) pairs.

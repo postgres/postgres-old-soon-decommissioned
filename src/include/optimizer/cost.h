@@ -13,10 +13,13 @@
 #ifndef COST_H
 #define COST_H
 
-#include "nodes/nodes.h"
-#include "nodes/parsenodes.h"
-#include "nodes/pg_list.h"
 #include "nodes/relation.h"
+
+/* defaults for function attributes used for expensive function calculations */
+#define BYTE_PCT 100
+#define PERBYTE_CPU 0
+#define PERCALL_CPU 0
+#define OUTIN_RATIO 100
 
 /*
  * prototypes for costsize.c

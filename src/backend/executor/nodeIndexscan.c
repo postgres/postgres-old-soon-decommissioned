@@ -40,8 +40,6 @@
 #include "access/skey.h"
 #include "access/heapam.h"
 #include "access/genam.h"
-#include "utils/palloc.h"
-#include "utils/mcxt.h"
 #include "catalog/index.h"
 #include "storage/bufmgr.h"
 #include "storage/lmgr.h"

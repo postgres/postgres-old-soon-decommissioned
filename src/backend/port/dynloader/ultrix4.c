@@ -20,7 +20,6 @@
 #include "postgres.h"
 #include "fmgr.h"
 #include "port-protos.h"
-#include "utils/elog.h"
 
 extern char *pg_pathname;
 

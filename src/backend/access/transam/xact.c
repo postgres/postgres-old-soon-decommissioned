@@ -150,7 +150,6 @@
 #include <access/transam.h>
 #include <storage/fd.h>
 #include <storage/proc.h>
-#include <utils/mcxt.h>
 #include <catalog/heap.h>
 #include <utils/relcache.h>
 #include <miscadmin.h>

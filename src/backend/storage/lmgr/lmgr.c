@@ -35,8 +35,6 @@
 #include "storage/multilev.h"
 #include "storage/lmgr.h"
 
-#include "utils/palloc.h"
-#include "utils/mcxt.h"
 #include "utils/rel.h"
 
 #include "catalog/catname.h"

@@ -41,7 +41,6 @@
 #include <commands/command.h>
 #include <utils/builtins.h>
 #include <utils/excid.h>
-#include <utils/mcxt.h>
 #include <catalog/pg_proc.h>
 #include <catalog/pg_class.h>
 #include <optimizer/internal.h>

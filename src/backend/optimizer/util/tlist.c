@@ -17,7 +17,6 @@
 #include "nodes/primnodes.h"
 #include "nodes/pg_list.h"
 #include "nodes/nodeFuncs.h"
-#include "utils/elog.h"
 #include "utils/lsyscache.h"
 
 #include "optimizer/internal.h"

@@ -15,7 +15,6 @@
 #include "nodes/pg_list.h"
 #include "nodes/nodes.h"
 #include "nodes/relation.h"
-#include "utils/elog.h"
 
 #include "optimizer/internal.h"
 #include "optimizer/keys.h"

@@ -34,8 +34,6 @@
 #include "nodes/relation.h"
 #include "nodes/primnodes.h"
 
-#include "utils/palloc.h"
-#include "utils/elog.h"
 #include "utils/portal.h"
 
 #include "optimizer/internal.h"

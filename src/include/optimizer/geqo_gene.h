@@ -23,8 +23,6 @@
 #define GEQO_GENE_H
 
 #include "nodes/nodes.h"
-#include "nodes/relation.h"
-#include "optimizer/geqo_gene.h"
 
 /* we presume that int instead of Relid
    is o.k. for Gene; so don't change it! */

@@ -13,8 +13,6 @@
 #ifndef NODEGROUP_H
 #define NODEGROUP_H
 
-#include "executor/tuptable.h"
-#include "nodes/execnodes.h"
 #include "nodes/plannodes.h"
 
 extern TupleTableSlot *ExecGroup(Group *node);

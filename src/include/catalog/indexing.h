@@ -15,7 +15,6 @@
 #define INDEXING_H
 
 #include <access/htup.h>
-#include <utils/rel.h>
 
 /*
  * Some definitions for indices on pg_attribute

@@ -16,8 +16,6 @@
 
 #include "postgres.h"
 
-#include "utils/array.h"
-
 int
 GetOffset(int n, int *dim, int *lb, int *indx)
 {

@@ -18,6 +18,7 @@
 #include <storage/item.h>
 #include <storage/buf.h>
 #include <storage/page.h>
+#include <storage/bufmgr.h>
 
 /*
  * a postgres disk page is an abstraction layered on top of a postgres

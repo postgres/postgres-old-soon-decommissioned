@@ -13,7 +13,6 @@
 #ifndef EXECNODES_H
 #define EXECNODES_H
 
-#include <nodes/memnodes.h>
 #include <nodes/primnodes.h>
 #include <executor/hashjoin.h>
 #include <access/relscan.h>

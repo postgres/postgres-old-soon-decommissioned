@@ -20,6 +20,7 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
+#include "access/transam.h"
 #include "access/xact.h"
 #include "catalog/catname.h"
 #include "catalog/pg_database.h"

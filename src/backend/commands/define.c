@@ -50,9 +50,9 @@
 #include <fmgr.h>				/* for fmgr */
 #include <utils/builtins.h>		/* prototype for textin() */
 #include <commands/defrem.h>
-#include <optimizer/xfunc.h>
 #include <tcop/dest.h>
 #include <catalog/pg_shadow.h>
+#include <optimizer/cost.h>
 
 static char *defGetString(DefElem *def);
 static int	defGetTypeLength(DefElem *def);

@@ -67,6 +67,8 @@
 #include "catalog/pg_language.h"
 #include "catalog/pg_index.h"
 #include "catalog/pg_trigger.h"
+#include "access/attnum.h"
+
 #include "libpq-fe.h"
 #ifndef HAVE_STRDUP
 #include "strdup.h"

@@ -13,8 +13,6 @@
 #ifndef NODEINDEXSCAN_H
 #define NODEINDEXSCAN_H
 
-#include "executor/tuptable.h"
-#include "nodes/execnodes.h"
 #include "nodes/plannodes.h"
 
 extern TupleTableSlot *ExecIndexScan(IndexScan *node);

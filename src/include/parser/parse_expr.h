@@ -13,10 +13,8 @@
 #ifndef PARSE_EXPR_H
 #define PARSE_EXPR_H
 
-#include <nodes/nodes.h>
-#include <nodes/parsenodes.h>
-#include <nodes/primnodes.h>
 #include <parser/parse_node.h>
+#include "parser/parse_type.h"
 
 extern Node *transformExpr(ParseState *pstate, Node *expr, int precedence);
 extern Oid	exprType(Node *expr);

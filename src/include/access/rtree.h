@@ -17,10 +17,6 @@
 #include <access/itup.h>
 #include <access/relscan.h>
 #include <access/sdir.h>
-#include <access/skey.h>
-#include <access/strat.h>
-#include <storage/block.h>
-#include <storage/off.h>
 
 /* see rtstrat.c for what all this is about */
 #define RTNStrategies					8

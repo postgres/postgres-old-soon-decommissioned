@@ -28,8 +28,6 @@
 #include "fmgr.h"
 #include "utils/fcache.h"
 #include "utils/datum.h"
-#include "utils/elog.h"
-#include "utils/palloc.h"
 #include "utils/syscache.h"
 #include "catalog/pg_language.h"
 #include "access/heapam.h"

@@ -13,7 +13,6 @@
 #ifndef KEYS_H
 #define KEYS_H
 
-#include "nodes/nodes.h"
 #include "nodes/relation.h"
 
 extern bool match_indexkey_operand(int indexkey, Var *operand, RelOptInfo *rel);

@@ -17,10 +17,7 @@
  */
 #include <string.h>
 #include "postgres.h"
-#include "utils/palloc.h"
-#include "utils/elog.h"
 #include "nodes/nodes.h"
-#include "utils/mcxt.h"
 
 /*
  * newNode -

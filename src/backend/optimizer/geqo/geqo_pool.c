@@ -26,8 +26,6 @@
 #include "nodes/relation.h"
 #include "nodes/primnodes.h"
 
-#include "utils/palloc.h"
-#include "utils/elog.h"
 
 #include "optimizer/internal.h"
 #include "optimizer/paths.h"
@@ -41,7 +39,6 @@
 #include "optimizer/geqo_copy.h"
 #include "optimizer/geqo_recombination.h"
 
-#include "utils/mcxt.h"
 
 static int	compare(const void *arg1, const void *arg2);
 

@@ -89,9 +89,7 @@
 #include "tcop/tcopprot.h"
 #include "commands/async.h"
 #include "nodes/nodes.h"
-#include "utils/mcxt.h"
 #include "storage/proc.h"
-#include "utils/elog.h"
 #ifndef HAVE_GETHOSTNAME
 #include "port-protos.h"		/* For gethostname() */
 #endif

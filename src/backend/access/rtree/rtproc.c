@@ -16,7 +16,6 @@
 
 #include <utils/builtins.h>
 #include <utils/geo_decls.h>
-#include <utils/mcxt.h>
 
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>

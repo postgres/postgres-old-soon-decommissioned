@@ -12,7 +12,6 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"
-#include "utils/module.h"		/* where the declarations go */
 
 /*
  * BypassEnable

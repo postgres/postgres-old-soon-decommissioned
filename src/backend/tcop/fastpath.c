@@ -63,7 +63,6 @@
 
 #include "tcop/tcopdebug.h"
 
-#include "utils/palloc.h"
 #include "fmgr.h"
 #include "utils/builtins.h"		/* for oideq */
 #include "tcop/fastpath.h"

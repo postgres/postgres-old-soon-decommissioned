@@ -44,7 +44,6 @@
 
 #include "executor/spi.h"
 #include "commands/trigger.h"
-#include "utils/elog.h"
 #include "utils/builtins.h"
 #include "nodes/nodes.h"
 #include "optimizer/clauses.h"

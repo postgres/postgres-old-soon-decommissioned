@@ -31,14 +31,10 @@
 #include "optimizer/keys.h"
 #include "optimizer/tlist.h"
 #include "optimizer/var.h"
-#include "optimizer/xfunc.h"
 #include "optimizer/cost.h"
 
 #include "tcop/dest.h"
-#include "utils/elog.h"
-#include "utils/palloc.h"
 #include "nodes/memnodes.h"
-#include "utils/mcxt.h"
 #include "utils/lsyscache.h"
 
 static Plan *subplanner(Query *root, List *flat_tlist, List *qual);

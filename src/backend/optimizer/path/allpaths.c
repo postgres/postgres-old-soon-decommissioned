@@ -25,7 +25,6 @@
 #include "optimizer/paths.h"
 #include "optimizer/pathnode.h"
 #include "optimizer/clauses.h"
-#include "optimizer/xfunc.h"
 #include "optimizer/cost.h"
 
 #include "commands/creatinh.h"

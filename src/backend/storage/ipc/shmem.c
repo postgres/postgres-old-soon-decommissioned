@@ -69,6 +69,7 @@
 #include "utils/memutils.h"
 #include "access/xact.h"
 #include "utils/tqual.h"
+#include "access/transam.h"
 
 /* shared memory global variables */
 

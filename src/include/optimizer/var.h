@@ -13,7 +13,6 @@
 #ifndef VAR_H
 #define VAR_H
 
-#include "nodes/nodes.h"
 #include "nodes/primnodes.h"
 
 extern List *pull_varnos(Node *me);

@@ -11,7 +11,6 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"			/* for oid defs */
-#include "utils/elog.h"			/* for elog */
 #include "nodes/pg_list.h"		/* lisp support package */
 #include "nodes/parsenodes.h"
 #include "nodes/primnodes.h"	/* Var node def */

@@ -13,12 +13,7 @@
 #ifndef PARSE_QUERY_H
 #define PARSE_RANGE_H
 
-#include <nodes/nodes.h>
-#include <nodes/parsenodes.h>
-#include <nodes/pg_list.h>
-#include <nodes/primnodes.h>
 #include <parser/parse_node.h>
-#include <utils/rel.h>
 
 extern RangeTblEntry *refnameRangeTableEntry(ParseState *pstate, char *refname);
 extern int refnameRangeTablePosn(ParseState *pstate,

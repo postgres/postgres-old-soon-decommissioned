@@ -25,8 +25,6 @@
 
 #include "utils/syscache.h"
 #include "utils/builtins.h"		/* for namecpy */
-#include "utils/elog.h"
-#include "utils/palloc.h"
 #include "catalog/pg_type.h"
 #include "storage/lmgr.h"
 #include "optimizer/planmain.h"

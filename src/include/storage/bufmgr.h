@@ -54,17 +54,6 @@ typedef bits16 BufferLock;
  */
 #define BufferDescriptorGetBuffer(bdesc) ((bdesc)->buf_id + 1)
 
-/*
- * BufferIsPinned
- *		True iff the buffer is pinned (and therefore valid)
- *
- * Note:
- *		Smenatics are identical to BufferIsValid
- *		XXX - need to remove either one eventually.
- */
-#define BufferIsPinned BufferIsValid
-
-
 extern int	ShowPinTrace;
 
 /*
@@ -100,6 +89,17 @@ extern int	ShowPinTrace;
 			(PrivateRefCount[(bufnum) - 1] > 0) \
 	) \
 )
+
+/*
+ * BufferIsPinned
+ *		True iff the buffer is pinned (and therefore valid)
+ *
+ * Note:
+ *		Smenatics are identical to BufferIsValid
+ *		XXX - need to remove either one eventually.
+ */
+#define BufferIsPinned BufferIsValid
+
 
 #define IncrBufferRefCount(buffer) \
 ( \

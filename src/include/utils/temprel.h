@@ -14,7 +14,6 @@
 #define TEMPREL_H
 
 #include "access/htup.h"
-#include "access/attnum.h"
 
 void		create_temp_relation(char *relname, HeapTuple pg_class_tuple);
 void		remove_all_temp_relations(void);

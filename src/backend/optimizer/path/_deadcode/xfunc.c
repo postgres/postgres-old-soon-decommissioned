@@ -36,7 +36,6 @@
 #include "optimizer/keys.h"
 #include "optimizer/pathnode.h"
 #include "optimizer/tlist.h"	/* for get_expr */
-#include "optimizer/xfunc.h"
 #include "storage/buf_internals.h"		/* for NBuffers */
 #include "tcop/dest.h"
 #include "utils/syscache.h"

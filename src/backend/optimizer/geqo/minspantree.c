@@ -20,7 +20,6 @@
 #include "nodes/relation.h"
 #include "nodes/primnodes.h"
 
-#include "utils/palloc.h"
 
 #include "optimizer/cost.h"
 

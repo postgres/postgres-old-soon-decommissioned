@@ -81,7 +81,6 @@
 #include "lib/hasht.h"
 #include "utils/module.h"
 #include "utils/excid.h"		/* for Unimplemented */
-#include "utils/mcxt.h"
 #include "utils/hsearch.h"
 
 #include "nodes/memnodes.h"

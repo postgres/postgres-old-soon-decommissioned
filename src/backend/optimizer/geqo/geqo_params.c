@@ -31,8 +31,6 @@
 #include "nodes/relation.h"
 #include "nodes/primnodes.h"
 
-#include "utils/palloc.h"
-#include "utils/elog.h"
 
 #include "optimizer/internal.h"
 #include "optimizer/paths.h"
@@ -45,7 +43,6 @@
 
 #include "storage/fd.h"
 
-#include "utils/mcxt.h"
 
 /*
  * Parameter values read from the config file (or defaulted) are stored here

@@ -13,13 +13,11 @@
 #include <string.h>
 #include "postgres.h"
 #include "miscadmin.h"
-#include "utils/palloc.h"
-#include "utils/elog.h"
 #include "utils/rel.h"
 #include "nodes/pg_list.h"
 #include "nodes/primnodes.h"
 #include "nodes/relation.h"
-
+#include "parser/parse_type.h"
 #include "parser/parsetree.h"	/* for parsetree manipulation */
 #include "parser/parse_relation.h"
 #include "nodes/parsenodes.h"

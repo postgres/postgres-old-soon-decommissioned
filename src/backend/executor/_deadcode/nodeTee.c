@@ -23,9 +23,7 @@
 #include <sys/file.h>
 #include "postgres.h"
 
-#include "utils/palloc.h"
 #include "utils/relcache.h"
-#include "utils/mcxt.h"
 #include "storage/bufmgr.h"
 #include "storage/smgr.h"
 #include "optimizer/internal.h"

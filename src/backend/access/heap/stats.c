@@ -21,7 +21,6 @@
 #include <postgres.h>
 
 #include <access/heapam.h>
-#include <utils/mcxt.h>
 
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>

@@ -19,8 +19,9 @@
 #include <access/nbtree.h>
 #include <access/heapam.h>
 #include <access/xact.h>
+#include <storage/bufmgr.h>
+#include <access/transam.h>
 #include <fmgr.h>
-#include <utils/mcxt.h>
 
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>

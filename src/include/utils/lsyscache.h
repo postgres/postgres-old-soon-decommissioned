@@ -13,7 +13,6 @@
 #ifndef LSYSCACHE_H
 #define LSYSCACHE_H
 
-#include <access/attnum.h>
 #include <access/htup.h>
 
 extern bool op_class(Oid oprno, int32 opclass, Oid amopid);

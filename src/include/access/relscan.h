@@ -13,9 +13,6 @@
 #ifndef RELSCAN_H
 #define RELSCAN_H
 
-#include <storage/buf.h>
-#include <utils/rel.h>
-#include <access/htup.h>
 #include <utils/tqual.h>
 
 typedef ItemPointerData MarkData;

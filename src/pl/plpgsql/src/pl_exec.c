@@ -50,7 +50,6 @@
 #include "executor/spi.h"
 #include "executor/spi_priv.h"
 #include "commands/trigger.h"
-#include "utils/elog.h"
 #include "utils/builtins.h"
 #include "fmgr.h"
 #include "access/heapam.h"

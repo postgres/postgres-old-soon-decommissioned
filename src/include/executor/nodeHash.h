@@ -13,12 +13,7 @@
 #ifndef NODEHASH_H
 #define NODEHASH_H
 
-#include "executor/hashjoin.h"
-#include "executor/tuptable.h"
-#include "nodes/execnodes.h"
-#include "nodes/pg_list.h"
 #include "nodes/plannodes.h"
-#include "utils/syscache.h"
 
 extern TupleTableSlot *ExecHash(Hash *node);
 extern bool ExecInitHash(Hash *node, EState *estate, Plan *parent);

@@ -44,7 +44,6 @@
 #include "storage/lock.h"
 #include "utils/hsearch.h"
 #include "utils/memutils.h"
-#include "utils/palloc.h"
 #include "access/xact.h"
 #include "access/transam.h"
 #include "utils/trace.h"

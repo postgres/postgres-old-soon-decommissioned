@@ -73,7 +73,6 @@
 #include "utils/builtins.h"
 #include "utils/catcache.h"
 #include "utils/hsearch.h"
-#include "utils/mcxt.h"
 #include "utils/memutils.h"
 #include "utils/rel.h"
 #include "utils/relcache.h"

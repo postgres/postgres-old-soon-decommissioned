@@ -13,6 +13,7 @@
 #ifndef OFF_H
 #define OFF_H
 
+#include "storage/itemid.h"
 /*
  * OffsetNumber:
  *

@@ -40,7 +40,6 @@
 #include "../backend/parser/parse.h"
 #include "utils/builtins.h"
 #include "utils/acl.h"
-#include "utils/palloc.h"
 #include "rewrite/rewriteRemove.h"
 #include "rewrite/rewriteDefine.h"
 #include "tcop/tcopdebug.h"

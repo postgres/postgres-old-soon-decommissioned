@@ -36,7 +36,6 @@
 #include "utils/acl.h"
 #include "utils/array.h"
 #include "utils/builtins.h"
-#include "utils/mcxt.h"
 #include "utils/portal.h"
 #include "utils/relcache.h"
 #include "utils/temprel.h"

@@ -13,9 +13,6 @@
 #ifndef PARSE_AGG_H
 #define PARSE_AGG_H
 
-#include <nodes/nodes.h>
-#include <nodes/parsenodes.h>
-#include <nodes/primnodes.h>
 #include <parser/parse_node.h>
 
 extern void AddAggToParseState(ParseState *pstate, Aggref *aggref);

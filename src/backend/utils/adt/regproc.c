@@ -20,7 +20,6 @@
 #include "access/relscan.h"
 #include "storage/bufmgr.h"
 #include "fmgr.h"
-#include "utils/palloc.h"
 #include "utils/syscache.h"
 
 #include "catalog/catname.h"

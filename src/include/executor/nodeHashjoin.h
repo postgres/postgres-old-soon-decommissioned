@@ -14,8 +14,6 @@
 #define NODEHASHJOIN_H
 
 #include "nodes/plannodes.h"
-#include "nodes/execnodes.h"
-#include "utils/syscache.h"
 
 extern TupleTableSlot *ExecHashJoin(HashJoin *node);
 extern bool ExecInitHashJoin(HashJoin *node, EState *estate, Plan *parent);

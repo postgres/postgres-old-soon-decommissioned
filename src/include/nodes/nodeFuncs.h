@@ -13,7 +13,6 @@
 #ifndef NODEFUNCS_H
 #define NODEFUNCS_H
 
-#include <nodes/nodes.h>
 #include <nodes/primnodes.h>
 
 extern bool single_node(Node *node);

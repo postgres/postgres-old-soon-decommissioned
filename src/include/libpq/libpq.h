@@ -19,7 +19,7 @@
 
 #include "libpq/libpq-be.h"
 #include "tcop/dest.h"
-
+#include "utils/exc.h"
 
 /* ----------------
  * PQArgBlock

@@ -17,7 +17,6 @@
 #include <access/tupmacs.h>
 #include <access/tupdesc.h>
 #include <storage/itemptr.h>
-#include <utils/memutils.h>
 
 #define MaxIndexAttributeNumber 7
 

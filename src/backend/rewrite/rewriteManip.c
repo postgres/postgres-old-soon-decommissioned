@@ -13,7 +13,6 @@
 #include <string.h>
 #include "postgres.h"
 #include "nodes/pg_list.h"
-#include "utils/elog.h"
 #include "nodes/nodes.h"
 #include "nodes/relation.h"
 #include "nodes/primnodes.h"

@@ -15,9 +15,6 @@
 
 #include <stdio.h>
 
-#include "access/skey.h"
-#include "access/tupdesc.h"
-#include "access/htup.h"
 #include "utils/syscache.h"
 
 struct leftist

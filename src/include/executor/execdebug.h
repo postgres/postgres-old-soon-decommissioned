@@ -13,6 +13,8 @@
 #ifndef EXECDEBUG_H
 #define EXECDEBUG_H
 
+#include <nodes/print.h>
+
 /* ----------------------------------------------------------------
  *		debugging defines.
  *

@@ -53,8 +53,8 @@
 
 #include "access/nbtree.h"
 #include "storage/bufpage.h"
+#include "storage/bufmgr.h"
 #include "utils/memutils.h"
-#include "utils/mcxt.h"
 
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>

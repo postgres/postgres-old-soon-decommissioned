@@ -16,7 +16,6 @@
 #include "postgres.h"
 
 #include "nodes/relation.h"
-#include "utils/elog.h"
 
 #include "optimizer/internal.h"
 #include "optimizer/pathnode.h"
@@ -24,7 +23,6 @@
 #include "optimizer/plancat.h"
 #include "optimizer/cost.h"
 #include "optimizer/keys.h"
-#include "optimizer/xfunc.h"
 #include "optimizer/ordering.h"
 
 #include "parser/parsetree.h"	/* for getrelid() */

@@ -33,7 +33,6 @@
 #include <regex/regex.h>
 
 #include "utils/builtins.h"		/* where the function declarations go */
-#include "utils/mcxt.h"
 
 #if defined(DISABLE_XOPEN_NLS)
 #undef _XOPEN_SOURCE

@@ -27,7 +27,7 @@
 #include "parser/parse_target.h"
 #include "parser/parse_coerce.h"
 #include "nodes/print.h"
-
+#include "nodes/relation.h"
 #include "parse.h"
 
 

@@ -70,7 +70,6 @@ Following is a template for a PL handler written in 'C':
 
 #include "executor/spi.h"
 #include "commands/trigger.h"
-#include "utils/elog.h"
 #include "fmgr.h"		/* for FmgrValues struct */
 #include "access/heapam.h"
 #include "utils/syscache.h"

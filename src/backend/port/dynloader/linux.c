@@ -22,7 +22,6 @@
 #include <dld.h>
 #endif
 #include "dynloader.h"
-#include "utils/elog.h"
 #include "fmgr.h"
 
 #ifdef NOT_USED

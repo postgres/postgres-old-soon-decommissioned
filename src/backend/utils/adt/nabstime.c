@@ -25,7 +25,6 @@
 #endif
 #include "utils/builtins.h"
 #include "access/xact.h"
-#include "utils/mcxt.h"
 
 static AbsoluteTime tm2abstime(struct tm * tm, int tz);
 

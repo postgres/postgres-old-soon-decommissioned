@@ -13,9 +13,7 @@
 #ifndef PLANMAIN_H
 #define PLANMAIN_H
 
-#include "nodes/nodes.h"
 #include "nodes/plannodes.h"
-#include "nodes/parsenodes.h"
 #include "nodes/relation.h"
 
 /*

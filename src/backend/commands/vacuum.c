@@ -44,7 +44,6 @@
 #include "storage/lmgr.h"
 #include "utils/builtins.h"
 #include "utils/inval.h"
-#include "utils/mcxt.h"
 #include "utils/portal.h"
 #include "utils/relcache.h"
 #include "utils/syscache.h"

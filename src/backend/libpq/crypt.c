@@ -24,7 +24,6 @@
 #include "utils/nabstime.h"
 #include "storage/fd.h"
 #include "libpq/crypt.h"
-#include "utils/mcxt.h"
 
 #ifdef HAVE_CRYPT_H
 #include <crypt.h>

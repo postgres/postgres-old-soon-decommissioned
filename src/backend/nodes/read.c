@@ -22,7 +22,6 @@
 #include "postgres.h"
 #include "nodes/pg_list.h"
 #include "nodes/readfuncs.h"
-#include "utils/elog.h"
 
 /*
  * stringToNode -

@@ -22,7 +22,6 @@
 #include "storage/sinvaladt.h"
 #include "storage/lmgr.h"
 #include "utils/memutils.h"
-#include "utils/palloc.h"
 #include "utils/trace.h"
 
 /* ----------------

@@ -25,7 +25,6 @@
 #include "storage/bufmgr.h"
 #include "utils/builtins.h"		/* for textout */
 #include "utils/catcache.h"		/* for CacheContext */
-#include "utils/mcxt.h"			/* MemoryContext stuff */
 #include "utils/rel.h"			/* for Relation, RelationData ... */
 #include "utils/syscache.h"		/* for SearchSysCache */
 

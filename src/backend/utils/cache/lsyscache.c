@@ -21,8 +21,6 @@
 #include "utils/lsyscache.h"
 #include "access/tupmacs.h"
 #include "utils/rel.h"
-#include "utils/palloc.h"
-#include "utils/elog.h"
 #include "access/attnum.h"
 #include "access/heapam.h"
 

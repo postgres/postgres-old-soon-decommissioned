@@ -13,8 +13,6 @@
 #ifndef TLIST_H
 #define TLIST_H
 
-#include "nodes/nodes.h"
-#include "nodes/parsenodes.h"
 #include "nodes/relation.h"
 
 extern TargetEntry *tlistentry_member(Var *var, List *targetlist);

@@ -31,8 +31,6 @@
 #include "postgres.h"
 #include "utils/datum.h"
 #include "catalog/pg_type.h"
-#include "utils/palloc.h"
-#include "utils/mcxt.h"
 
 /*-------------------------------------------------------------------------
  * datumGetSize

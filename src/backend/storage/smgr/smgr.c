@@ -21,8 +21,6 @@
 #include "storage/block.h"
 #include "storage/smgr.h"
 #include "utils/rel.h"
-#include "utils/palloc.h"
-#include "utils/mcxt.h"
 
 static void smgrshutdown(int dummy);
 

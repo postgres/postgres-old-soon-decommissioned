@@ -61,8 +61,6 @@
 #include "executor/execdebug.h"
 #include "executor/nodeAppend.h"
 #include "executor/nodeIndexscan.h"
-#include "utils/palloc.h"
-#include "utils/mcxt.h"
 #include "parser/parsetree.h"	/* for rt_store() macro */
 
 static bool exec_append_initialize_next(Append *node);

@@ -13,9 +13,6 @@
 #ifndef EXECUTOR_H
 #define EXECUTOR_H
 
-#include <catalog/pg_index.h>
-#include <storage/bufmgr.h>
-#include <access/itup.h>
 #include <stdio.h>
 #include <executor/execdesc.h>
 

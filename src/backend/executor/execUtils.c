@@ -55,7 +55,7 @@
 #include "optimizer/clauses.h"
 #include "parser/parsetree.h"
 #include "utils/lsyscache.h"
-#include "utils/mcxt.h"
+#include "catalog/pg_index.h"
 
 static void ExecGetIndexKeyInfo(Form_pg_index indexTuple, int *numAttsOutP,
 					AttrNumber **attsOutP, FuncIndexInfoPtr fInfoP);

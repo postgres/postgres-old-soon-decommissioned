@@ -22,7 +22,6 @@
 
 #include <postgres.h>
 #include <access/xact.h>
-#include <utils/mcxt.h>
 
 extern TransactionId NullTransactionId;
 extern TransactionId DisabledTransactionId;

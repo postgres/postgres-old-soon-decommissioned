@@ -13,7 +13,6 @@
 #ifndef LOCKS_H
 #define LOCKS_H
 
-#include "nodes/nodes.h"
 #include "nodes/parsenodes.h"
 #include "rewrite/prs2lock.h"
 

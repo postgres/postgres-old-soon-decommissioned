@@ -21,7 +21,6 @@
 #include "optimizer/paths.h"
 #include "optimizer/pathnode.h"
 
-#include "utils/elog.h"
 
 
 static List *merge_rel_with_same_relids(RelOptInfo *rel, Relids unjoined_relids);

@@ -23,7 +23,6 @@
 
 #include "utils/builtins.h"		/* for namestrcmp() */
 #include "utils/datum.h"
-#include "utils/elog.h"
 #include "storage/itemptr.h"
 
 static bool equali(List *a, List *b);

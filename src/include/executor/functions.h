@@ -13,9 +13,7 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-#include "access/tupdesc.h"
 #include "nodes/parsenodes.h"
-#include "nodes/primnodes.h"
 #include "utils/syscache.h"
 
 extern Datum ProjectAttribute(TupleDesc TD, TargetEntry *tlist,

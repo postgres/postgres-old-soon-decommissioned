@@ -17,8 +17,6 @@
 #ifndef TUPTABLE_H
 #define TUPTABLE_H
 
-#include <storage/buf.h>
-#include <access/tupdesc.h>
 #include <access/htup.h>
 
 /* ----------------

@@ -24,7 +24,6 @@
 #include "catalog/pg_type.h"
 #include "parser/parse_expr.h"
 
-#include "utils/elog.h"
 #include "utils/lsyscache.h"
 #include "access/heapam.h"
 

@@ -46,9 +46,7 @@
 #include	   "utils/dynahash.h"
 #include	   "utils/hsearch.h"
 #ifndef FRONTEND
-#include	   "utils/mcxt.h"
 #endif	 /* !FRONTEND */
-#include	   "utils/palloc.h"
 #include	   "utils/memutils.h"
 
 /*

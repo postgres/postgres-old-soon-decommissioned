@@ -30,7 +30,6 @@
 #include <postgres.h>
 
 #include <access/hash.h>
-#include <utils/mcxt.h>
 
 static void _hash_scandel(IndexScanDesc scan, BlockNumber blkno, OffsetNumber offno);
 static bool _hash_scantouched(IndexScanDesc scan, BlockNumber blkno, OffsetNumber offno);

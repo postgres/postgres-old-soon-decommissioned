@@ -13,7 +13,6 @@
 #ifndef REWRITEHANDLER_H
 #define REWRITEHANDLER_H
 
-#include "nodes/nodes.h"
 #include "nodes/parsenodes.h"
 
 struct _rewrite_meta_knowledge

@@ -262,13 +262,7 @@ typedef struct Node
  */
 extern Node *newNode(Size size, NodeTag tag);
 
-/*
- * nodes/{outfuncs.c,print.c}
- */
-#define nodeDisplay		pprint
-
 extern char *nodeToString(void *obj);
-extern void print(void *obj);
 
 /*
  * nodes/{readfuncs.c,read.c}

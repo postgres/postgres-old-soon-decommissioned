@@ -18,7 +18,6 @@
 
 #include "nodes/parsenodes.h"
 #include "nodes/plannodes.h"
-#include "parser/parse_node.h"
 
 extern Plan *planner(Query *parse);
 extern Plan *union_planner(Query *parse);

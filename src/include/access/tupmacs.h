@@ -13,6 +13,8 @@
 #ifndef TUPMACS_H
 #define TUPMACS_H
 
+#include "utils/memutils.h"
+
 /*
  * check to see if the ATT'th bit of an array of 8-bit bytes is set.
  */

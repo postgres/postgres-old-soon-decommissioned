@@ -32,8 +32,6 @@
 #include "access/htup.h"
 #include "fmgr.h"
 #include "utils/builtins.h"
-#include "utils/elog.h"
-#include "utils/palloc.h"
 
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"

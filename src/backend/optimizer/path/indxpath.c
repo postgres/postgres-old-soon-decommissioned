@@ -37,7 +37,6 @@
 #include "optimizer/paths.h"
 #include "optimizer/plancat.h"
 #include "optimizer/pathnode.h"
-#include "optimizer/xfunc.h"
 #include "parser/parsetree.h"	/* for getrelid() */
 #include "parser/parse_expr.h"	/* for exprType() */
 #include "parser/parse_oper.h"	/* for oprid() and oper() */

@@ -18,10 +18,11 @@
 #include "utils/array.h"
 #include "utils/builtins.h"
 #include "catalog/pg_type.h"
+#include "storage/bufpage.h"
+#include "utils/memutils.h"
 
 #ifdef CYR_RECODE
 char	   *convertstr(char *, int, int);
-
 #endif
 
 #include "mb/pg_wchar.h"

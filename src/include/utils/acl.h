@@ -24,6 +24,7 @@
 
 #include <nodes/parsenodes.h>
 #include <utils/array.h>
+#include "utils/memutils.h"
 
 /*
  * AclId		system identifier for the user, group, etc.

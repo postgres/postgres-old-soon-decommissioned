@@ -57,7 +57,6 @@
 #include "tcop/tcopprot.h"
 #include "utils/catcache.h"
 #include "utils/builtins.h"
-#include "utils/mcxt.h"
 #include "utils/relcache.h"
 #include "utils/syscache.h"
 #include "utils/tqual.h"

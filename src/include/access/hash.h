@@ -18,7 +18,6 @@
 
 #include <access/sdir.h>
 #include <access/funcindex.h>
-#include <storage/bufpage.h>
 #include <access/relscan.h>
 #include <access/itup.h>
 #include <utils/int8.h>

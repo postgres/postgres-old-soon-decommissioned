@@ -52,7 +52,6 @@
 #define DEST_H
 
 #include <access/htup.h>
-#include <access/tupdesc.h>
 
 /* ----------------
  *		CommandDest is a simplistic means of identifying the desired

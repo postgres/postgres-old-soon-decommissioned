@@ -12,11 +12,7 @@
 #ifndef PARSE_NODE_H
 #define PARSE_NODE_H
 
-#include <nodes/nodes.h>
-#include <nodes/pg_list.h>
-#include <nodes/primnodes.h>
 #include <nodes/parsenodes.h>
-#include <parser/parse_type.h>
 #include <utils/rel.h>
 
 /* state information used during parse analysis */

@@ -18,7 +18,6 @@
 #include "executor/execdebug.h"
 #include "executor/nodeSort.h"
 #include "access/heapam.h"
-#include "utils/palloc.h"
 #include "utils/psort.h"
 #include "catalog/catalog.h"
 #include "catalog/heap.h"

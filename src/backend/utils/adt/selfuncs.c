@@ -25,7 +25,6 @@
 #include "fmgr.h"
 #include "utils/builtins.h"		/* for textout() prototype and where the
 								 * declarations go */
-#include "utils/palloc.h"
 
 #include "catalog/catname.h"
 #include "utils/syscache.h"

@@ -30,7 +30,6 @@
 
 #include "executor/executor.h"
 #include "storage/smgr.h"
-#include "utils/mcxt.h"
 #include "executor/nodeSeqscan.h"
 #include "executor/nodeIndexscan.h"
 #include "executor/nodeSort.h"

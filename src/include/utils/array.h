@@ -23,6 +23,7 @@
 #define ARRAY_H
 
 #include <stdio.h>
+#include "utils/memutils.h"
 
 typedef struct
 {
@@ -97,11 +98,7 @@ typedef struct
  *------------------------------------------------------------------------
  */
 
-/* #if defined(irix5) */
-/* #define RETURN_NULL {*isNull = true; return(0); }*/
- /* #else *//* irix5 */
 #define RETURN_NULL {*isNull = true; return(0); }
- /* #endif *//* irix5 */
 #define NAME_LEN	30
 #define MAX_BUFF_SIZE BLCKSZ
 

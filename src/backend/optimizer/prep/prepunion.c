@@ -25,7 +25,6 @@
 #include "parser/parsetree.h"
 #include "parser/parse_clause.h"
 
-#include "utils/elog.h"
 #include "utils/lsyscache.h"
 
 #include "optimizer/internal.h"

@@ -13,8 +13,6 @@
 #ifndef NODEMATERIAL_H
 #define NODEMATERIAL_H
 
-#include "executor/tuptable.h"
-#include "nodes/execnodes.h"
 #include "nodes/plannodes.h"
 
 extern TupleTableSlot *ExecMaterial(Material *node);

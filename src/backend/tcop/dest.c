@@ -42,14 +42,12 @@
 #include "libpq/pqformat.h"
 #include "access/printtup.h"
 #include "utils/portal.h"
-#include "utils/palloc.h"
 
 #include "executor/executor.h"
 
 #include "tcop/dest.h"
 
 #include "catalog/pg_type.h"
-#include "utils/mcxt.h"
 
 #include "commands/async.h"
 

@@ -22,10 +22,7 @@
 #include "nodes/memnodes.h"
 #include "nodes/nodes.h"
 
-#include "utils/mcxt.h"
-#include "utils/elog.h"
 
-#include "utils/palloc.h"
 
 #undef MemoryContextAlloc
 #undef MemoryContextFree

@@ -19,7 +19,6 @@
 #include "libpq/libpq.h"
 #ifndef TIOGA_FRONTEND
 #include "libpq/libpq-be.h"
-#include "utils/elog.h"
 #include "utils/geo-decls.h"
 #else
 #include "libpq-fe.h"

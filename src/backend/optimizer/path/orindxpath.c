@@ -26,7 +26,6 @@
 #include "optimizer/paths.h"
 #include "optimizer/cost.h"
 #include "optimizer/plancat.h"
-#include "optimizer/xfunc.h"
 
 #include "parser/parsetree.h"
 

@@ -21,7 +21,6 @@
 #include "executor/execdebug.h"
 #include "fmgr.h"
 #include "storage/bufpage.h"
-#include "utils/mcxt.h"
 
 extern int	NIndexTupleProcessed;
 

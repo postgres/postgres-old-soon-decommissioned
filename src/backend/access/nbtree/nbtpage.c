@@ -28,7 +28,7 @@
 #include <access/nbtree.h>
 #include <miscadmin.h>
 #include <storage/lmgr.h>
-#include <utils/mcxt.h>
+#include <storage/bufmgr.h>
 
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>

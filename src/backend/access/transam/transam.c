@@ -21,7 +21,6 @@
 #include <access/transam.h>
 #include <access/xact.h>
 #include <access/heapam.h>
-#include <utils/mcxt.h>
 #include <catalog/catname.h>
 #include <storage/spin.h>
 #include <commands/vacuum.h>

@@ -26,7 +26,6 @@
 #include "catalog/pg_type.h"
 
 #include "utils/lsyscache.h"
-#include "utils/palloc.h"
 
 #include "optimizer/internal.h"
 #include "optimizer/planmain.h"

@@ -12,7 +12,6 @@
 #ifndef PQFORMAT_H
 #define PQFORMAT_H
 
-#include "postgres.h"
 #include "lib/stringinfo.h"
 
 #define pq_beginmessage(buf)  initStringInfo(buf)

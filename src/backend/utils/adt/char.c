@@ -15,9 +15,7 @@
 #include <stdio.h>				/* for sprintf() */
 #include <string.h>
 #include "postgres.h"
-#include "utils/palloc.h"
 #include "utils/builtins.h"		/* where the declarations go */
-#include "utils/mcxt.h"
 
 /*****************************************************************************
  *	 USER I/O ROUTINES														 *

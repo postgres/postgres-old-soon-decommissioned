@@ -8,10 +8,8 @@
 #include <string.h>
 
 #include <postgres.h>
-#include <utils/palloc.h>
 #include <utils/builtins.h>
 #include <utils/inet.h>
-#include "utils/mcxt.h"
 
 manufacturer manufacturers[] = {
 	{0x00, 0x00, 0x0C, "Cisco"},

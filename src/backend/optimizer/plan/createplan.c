@@ -28,7 +28,6 @@
 #include "nodes/makefuncs.h"
 
 #include "utils/lsyscache.h"
-#include "utils/palloc.h"
 #include "utils/builtins.h"
 
 #include "optimizer/restrictinfo.h"
@@ -37,7 +36,6 @@
 #include "optimizer/planmain.h"
 #include "optimizer/tlist.h"
 #include "optimizer/planner.h"
-#include "optimizer/xfunc.h"
 #include "optimizer/internal.h"
 
 

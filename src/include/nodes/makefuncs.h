@@ -13,9 +13,7 @@
 #ifndef MAKEFUNC_H
 #define MAKEFUNC_H
 
-#include <nodes/primnodes.h>
 #include <nodes/parsenodes.h>
-#include <utils/fcache.h>
 
 extern Oper *makeOper(Oid opno,
 		 Oid opid,

@@ -19,9 +19,7 @@
 #include "postgres.h"
 #include "storage/bufpage.h"
 
-#include "utils/palloc.h"
 #include "utils/builtins.h"		/* where function declarations go */
-#include "utils/mcxt.h"
 
 #define LDELIM			'('
 #define RDELIM			')'

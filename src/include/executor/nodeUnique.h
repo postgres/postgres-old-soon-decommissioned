@@ -13,8 +13,6 @@
 #ifndef NODEUNIQUE_H
 #define NODEUNIQUE_H
 
-#include "executor/tuptable.h"
-#include "nodes/execnodes.h"
 #include "nodes/plannodes.h"
 
 extern TupleTableSlot *ExecUnique(Unique *node);

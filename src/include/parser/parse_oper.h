@@ -13,8 +13,7 @@
 #ifndef PARSE_OPER_H
 #define PARSE_OPER_H
 
-#include <parser/parse_func.h>
-#include <parser/parse_node.h>
+#include "access/htup.h"
 
 typedef HeapTuple Operator;
 

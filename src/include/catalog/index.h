@@ -14,9 +14,7 @@
 #define INDEX_H
 
 #include <nodes/execnodes.h>
-#include <nodes/parsenodes.h>
 #include <access/itup.h>
-#include <access/funcindex.h>
 
 extern Form_pg_am AccessMethodObjectIdGetForm(Oid accessMethodObjectId);
 

@@ -20,7 +20,6 @@
 #include "nodes/primnodes.h"
 #include "nodes/relation.h"
 
-#include "utils/elog.h"
 #include "nodes/nodeFuncs.h"
 #include "nodes/makefuncs.h"
 

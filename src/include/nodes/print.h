@@ -13,11 +13,13 @@
 #ifndef PRINT_H
 #define PRINT_H
 
-#include "nodes/nodes.h"
-#include "nodes/plannodes.h"
 #include "nodes/parsenodes.h"
-#include "nodes/relation.h"
-#include "executor/tuptable.h"
+#include "nodes/plannodes.h"
+
+/*
+ * nodes/{outfuncs.c,print.c}
+ */
+#define nodeDisplay		pprint
 
 extern void print(void *obj);
 extern void pprint(void *obj);

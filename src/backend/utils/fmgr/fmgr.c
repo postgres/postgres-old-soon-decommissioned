@@ -28,7 +28,6 @@
 #include "nodes/params.h"
 
 #include "utils/builtins.h"
-#include "utils/elog.h"
 
 #include "nodes/parsenodes.h"
 #include "commands/trigger.h"

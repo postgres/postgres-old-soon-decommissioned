@@ -13,10 +13,7 @@
 #ifndef SYSCACHE_H
 #define SYSCACHE_H
 
-#include <access/attnum.h>
 #include <access/htup.h>
-#include <storage/buf.h>
-#include <utils/rel.h>
 
  /* #define CACHEDEBUG *//* turns DEBUG elogs on */
 

@@ -14,8 +14,6 @@
 #ifndef PATHS_H
 #define PATHS_H
 
-#include "nodes/nodes.h"
-#include "nodes/parsenodes.h"
 #include "nodes/relation.h"
 
 /*

@@ -38,7 +38,6 @@
 #include <storage/buf.h>
 #include <utils/memutils.h>
 #include <fmgr.h>
-#include <utils/mcxt.h>
 #include <utils/exc.h>
 #include <utils/syscache.h>
 #include <catalog/pg_type.h>

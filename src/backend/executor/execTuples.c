@@ -128,7 +128,6 @@
 #include "catalog/pg_type.h"
 #include "parser/parse_type.h"
 #include "storage/bufmgr.h"
-#include "utils/palloc.h"
 #include "utils/lsyscache.h"
 
 static TupleTableSlot *NodeGetResultTupleSlot(Plan *node);

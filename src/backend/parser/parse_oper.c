@@ -26,6 +26,7 @@
 #include "parser/parse_coerce.h"
 #include "storage/bufmgr.h"
 #include "utils/syscache.h"
+#include "parser/parse_func.h"
 
 static Oid *oper_select_candidate(int nargs, Oid *input_typeids,
 					  CandidateList candidates);

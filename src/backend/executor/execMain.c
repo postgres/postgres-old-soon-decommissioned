@@ -39,7 +39,6 @@
 #include "executor/execdebug.h"
 #include "executor/nodeIndexscan.h"
 #include "utils/builtins.h"
-#include "utils/palloc.h"
 #include "utils/acl.h"
 #include "utils/syscache.h"
 #include "utils/tqual.h"
@@ -54,6 +53,7 @@
 #include "access/xact.h"
 #include "catalog/heap.h"
 #include "commands/trigger.h"
+#include "access/transam.h"
 
 void ExecCheckPerms(CmdType operation, int resultRelation, List *rangeTable,
 			   Query *parseTree);

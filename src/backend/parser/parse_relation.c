@@ -24,6 +24,7 @@
 #include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"
+#include "parser/parse_type.h"
 
 static void checkTargetTypes(ParseState *pstate, char *target_colname,
 				 char *refname, char *colname);

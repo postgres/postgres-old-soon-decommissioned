@@ -13,11 +13,6 @@
 #ifndef PARSER_FUNC_H
 #define PARSER_FUNC_H
 
-#include <nodes/nodes.h>
-#include <nodes/pg_list.h>
-#include <nodes/parsenodes.h>
-#include <nodes/primnodes.h>
-#include <parser/parse_func.h>
 #include <parser/parse_node.h>
 
 

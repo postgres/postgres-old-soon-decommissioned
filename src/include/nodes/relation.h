@@ -14,7 +14,6 @@
 #define RELATION_H
 
 #include <nodes/parsenodes.h>
-#include <nodes/primnodes.h>
 
 /*
  * Relids

@@ -75,7 +75,6 @@
 #include "utils/geo_decls.h"
 #include "utils/hsearch.h"
 #include "utils/lsyscache.h"
-#include "utils/mcxt.h"
 #include "utils/nabstime.h"
 #include "utils/portal.h"
 #include "utils/rel.h"

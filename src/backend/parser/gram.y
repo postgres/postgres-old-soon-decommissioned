@@ -42,14 +42,13 @@
 #include "parser/gramparse.h"
 #include "parser/parse_type.h"
 #include "utils/acl.h"
-#include "utils/palloc.h"
 #include "catalog/catname.h"
-#include "utils/elog.h"
 #include "access/xact.h"
 #include "storage/lmgr.h"
 #include "utils/numeric.h"
 #include "parser/analyze.h"
 #include "catalog/pg_type.h"
+#include "storage/bufpage.h"
 
 #ifdef MULTIBYTE
 #include "mb/pg_wchar.h"

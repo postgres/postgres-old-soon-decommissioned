@@ -16,6 +16,7 @@
 #include <sys/types.h>
 #include <sys/param.h>			/* For MAXPATHLEN */
 
+/* we need this include because port files use them */
 #include <postgres.h>
 
 #ifdef MIN

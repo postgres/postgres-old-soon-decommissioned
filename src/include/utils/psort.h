@@ -66,7 +66,6 @@ typedef struct Psortstate
 } Psortstate;
 
 #ifdef	EBUG
-#include "utils/elog.h"
 #include "storage/buf.h"
 #include "storage/bufmgr.h"
 

@@ -16,9 +16,6 @@
 
 #include "postgres.h"
 
-#include "utils/mcxt.h"
-#include "utils/elog.h"
-#include "utils/palloc.h"
 
 #include "nodes/memnodes.h"
 

@@ -31,7 +31,6 @@
 #include "storage/sinval.h"
 #include "storage/sinvaladt.h"
 #include "storage/lmgr.h"
-#include "utils/elog.h"
 #include "libpq/pqcomm.h"
 #include "catalog/catname.h"
 

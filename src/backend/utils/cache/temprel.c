@@ -28,7 +28,6 @@
 #include "postgres.h"
 #include "miscadmin.h"
 #include "nodes/pg_list.h"
-#include "utils/mcxt.h"
 #include "utils/temprel.h"
 #include "access/xact.h"
 #include "access/htup.h"

@@ -21,7 +21,6 @@
 #include "postgres.h"
 #include "miscadmin.h"
 #include "parser/scansup.h"
-#include "utils/elog.h"
 
 /* ----------------
  *		scanstr

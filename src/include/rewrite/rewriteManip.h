@@ -13,8 +13,6 @@
 #ifndef REWRITEMANIP_H
 #define REWRITEMANIP_H
 
-#include "nodes/nodes.h"
-#include "nodes/parsenodes.h"
 #include "rewrite/rewriteHandler.h"
 
 /* RewriteManip.c */

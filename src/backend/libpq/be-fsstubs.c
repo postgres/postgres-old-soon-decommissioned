@@ -43,7 +43,6 @@
 #include <nodes/nodes.h>
 #include <utils/memutils.h>
 #include <lib/fstack.h>
-#include <utils/mcxt.h>
 #include <catalog/pg_shadow.h>	/* for superuser() */
 #include <storage/fd.h>			/* for O_ */
 #include <storage/large_object.h>

@@ -16,7 +16,6 @@
 
 #include "postgres.h"
 
-#include "utils/palloc.h"
 #include "access/heapam.h"
 #include "executor/executor.h"
 #include "nodes/relation.h"

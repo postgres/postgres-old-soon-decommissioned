@@ -25,7 +25,6 @@
 #include "utils/builtins.h"
 #include "utils/syscache.h"
 #include "utils/lsyscache.h"
-#include "utils/palloc.h"
 #include "parser/parse_type.h"
 
 #include "parser/parsetree.h"	/* for getrelid() */

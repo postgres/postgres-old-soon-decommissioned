@@ -13,10 +13,6 @@
 #ifndef PARSE_TARGET_H
 #define PARSE_TARGET_H
 
-#include <nodes/pg_list.h>
-#include <nodes/nodes.h>
-#include <nodes/parsenodes.h>
-#include <nodes/primnodes.h>
 #include <parser/parse_node.h>
 
 #define EXPR_COLUMN_FIRST	1

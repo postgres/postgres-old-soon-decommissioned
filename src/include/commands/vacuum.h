@@ -18,9 +18,7 @@
 #include "catalog/pg_index.h"
 #include "catalog/pg_attribute.h"
 #include "nodes/pg_list.h"
-#include "storage/block.h"
 #include "storage/itemptr.h"
-#include "storage/off.h"
 
 
 typedef struct VAttListData

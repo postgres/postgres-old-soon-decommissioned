@@ -13,13 +13,13 @@
 #ifndef HEAPAM_H
 #define HEAPAM_H
 
+#include <time.h>
 #include "access/tupmacs.h"
 #include "access/htup.h"
 #include "access/relscan.h"
 #include "storage/block.h"
 #include "utils/rel.h"
 #include "utils/tqual.h"
-#include <time.h>
 
 /* ----------------------------------------------------------------
  *				heap access method statistics

@@ -25,8 +25,6 @@
 
 #include "utils/portal.h"		/* for EnablePortalManager, etc. */
 #include "utils/exc.h"			/* for EnableExceptionHandling, etc. */
-#include "utils/mcxt.h"			/* for EnableMemoryContext, etc. */
-#include "utils/elog.h"
 #include "utils/builtins.h"
 
 #include "miscadmin.h"			/* where the declarations go */

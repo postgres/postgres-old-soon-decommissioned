@@ -17,9 +17,9 @@
 #include <access/genam.h>
 #include <fmgr.h>
 #include <storage/bufpage.h>
+#include <storage/bufmgr.h>
 #include <access/nbtree.h>
 #include <catalog/pg_proc.h>
-#include <utils/mcxt.h>
 
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>

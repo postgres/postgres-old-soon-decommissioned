@@ -31,7 +31,6 @@
 #include "parse.h"
 
 #include "utils/builtins.h"
-#include "utils/mcxt.h"
 
 static Query *transformStmt(ParseState *pstate, Node *stmt);
 static Query *transformDeleteStmt(ParseState *pstate, DeleteStmt *stmt);

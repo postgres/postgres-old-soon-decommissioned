@@ -20,8 +20,6 @@
 #include "access/xact.h"
 #include "storage/bufmgr.h"
 #include "access/transam.h"
-#include "utils/elog.h"
-#include "utils/palloc.h"
 #include "utils/tqual.h"
 
 extern bool PostgresIsInitialized;

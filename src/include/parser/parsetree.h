@@ -14,6 +14,9 @@
 #ifndef PARSETREE_H
 #define PARSETREE_H				/* include once only */
 
+#include "nodes/parsenodes.h"
+#include "nodes/pg_list.h"
+
 /* ----------------
  *		need pg_list.h for definitions of CAR(), etc. macros
  * ----------------

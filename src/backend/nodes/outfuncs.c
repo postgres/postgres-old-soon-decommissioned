@@ -27,9 +27,7 @@
 #include "utils/syscache.h"
 #include "utils/lsyscache.h"
 #include "fmgr.h"
-#include "utils/elog.h"
 #include "utils/datum.h"
-#include "utils/palloc.h"
 
 #include "nodes/nodes.h"
 #include "nodes/execnodes.h"

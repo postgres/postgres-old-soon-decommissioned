@@ -17,7 +17,6 @@
 #include <stdio.h>
 #include <sys/types.h>
 
-#include "libpq/pqcomm.h"
 #include "libpq/hba.h"
 
 

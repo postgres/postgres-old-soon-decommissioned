@@ -30,6 +30,7 @@
 #include "utils/lsyscache.h"
 #include "utils/sets.h"
 #include "utils/syscache.h"
+#include "parser/parse_type.h"
 
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>

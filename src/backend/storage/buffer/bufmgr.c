@@ -64,7 +64,6 @@
 #include "miscadmin.h"
 #include "utils/builtins.h"
 #include "utils/hsearch.h"
-#include "utils/palloc.h"
 #include "utils/memutils.h"
 #include "utils/relcache.h"
 #include "executor/execdebug.h" /* for NDirectFileRead */

@@ -21,8 +21,6 @@
 #ifndef GEQO_H
 #define GEQO_H
 
-#include "nodes/nodes.h"
-#include "nodes/parsenodes.h"
 #include "nodes/relation.h"
 #include "optimizer/geqo_gene.h"
 

@@ -60,9 +60,6 @@
 
 #include "utils/exc.h"			/* for EnableExceptionHandling, etc. */
 #include "fmgr.h"				/* for EnableDynamicFunctionManager, etc. */
-#include "utils/elog.h"
-#include "utils/palloc.h"
-#include "utils/mcxt.h"			/* for EnableMemoryContext, etc. */
 #include "utils/inval.h"
 
 #include "catalog/catname.h"

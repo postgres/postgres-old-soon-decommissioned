@@ -70,7 +70,6 @@
 #include <fmgr.h>
 #include <storage/lmgr.h>
 #include <access/heapam.h>
-#include <utils/mcxt.h>
 
 /* ----------------
  *	 undefine macros we aren't going to use that would otherwise

@@ -17,7 +17,6 @@
 
 #include "postgres.h"
 #include "utils/builtins.h"		/* where function declarations go */
-#include "utils/mcxt.h"
 
 /*****************************************************************************
  *	 USER I/O ROUTINES														 *

@@ -17,6 +17,7 @@
 
 #include <time.h>
 #include <math.h>
+#include <limits.h>
 
 /*
  * DateTime represents absolute time.

@@ -23,9 +23,8 @@
 
 #include <stdio.h>
 
-#include "nodes/parsenodes.h"
-#include "optimizer/geqo_gene.h"
 #include "optimizer/geqo_recombination.h"
+#include "nodes/relation.h"
 
 extern void print_pool(FILE *fp, Pool *pool, int start, int stop);
 extern void print_gen(FILE *fp, Pool *pool, int generation);

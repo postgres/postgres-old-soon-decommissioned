@@ -17,9 +17,6 @@
 
 #include <access/htup.h>
 #include <lib/dllist.h>
-#include <nodes/memnodes.h>
-#include <utils/rel.h>
-#include <utils/mcxt.h>
 
 /*
  *		struct catctup:			tuples in the cache.

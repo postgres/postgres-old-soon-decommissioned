@@ -30,8 +30,8 @@
 #include <postgres.h>
 
 #include <storage/bufpage.h>
+#include <storage/bufmgr.h>
 #include <access/nbtree.h>
-#include <utils/mcxt.h>
 
 typedef struct BTScanListData
 {

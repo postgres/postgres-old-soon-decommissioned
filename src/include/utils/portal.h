@@ -26,9 +26,7 @@
 #define PORTAL_H
 
 #include <executor/execdesc.h>
-#include <lib/fstack.h>
 #include <nodes/memnodes.h>
-#include <utils/memutils.h>
 
 typedef struct PortalBlockData
 {

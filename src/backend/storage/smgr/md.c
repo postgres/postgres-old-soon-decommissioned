@@ -24,7 +24,6 @@
 #include "storage/block.h"
 #include "storage/fd.h"
 #include "storage/smgr.h"		/* where the declarations go */
-#include "utils/mcxt.h"
 #include "utils/rel.h"
 
 #undef DIAGNOSTIC

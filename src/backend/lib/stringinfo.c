@@ -18,7 +18,6 @@
 
 #include "postgres.h"
 #include "lib/stringinfo.h"
-#include "utils/mcxt.h"
 
 #ifdef NOT_USED
 /*
