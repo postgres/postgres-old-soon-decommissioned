@@ -27,16 +27,19 @@ in order to find out the name of the class to which a given
 notification corresponds.  If this code is not included in 
 the application, the event notification will be queued and 
 never be processed.
+.PP
+Note that
+.IR class_name
+needs not to be a valid class name but can be any ascii string up to 32
+characters long. It must however be eclosed in double-quotes if it is
+not valid as class name.
 .SH "SEE ALSO"
 create_rule(l),
 notify(l),
 select(l),
+unlisten(l),
 libpq.
 .SH BUGS
-There is no way to un-\c
-.BR listen
-except to drop the connection (i.e., restart the backend server).
-.PP
 The
 .IR psql(1)
 command does not poll for asynchronous events.

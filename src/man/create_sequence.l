@@ -82,6 +82,14 @@ given sequence in the current backend session.  Also beware that it
 does not give the last number ever allocated, only the last one allocated
 by this backend.
 .PP
+The function
+.BR setval
+('sequence_name', value)
+may be used to set the current value of the specified sequence.
+The next call to
+.BR nextval
+will return the given value + the sequence increment.
+.PP
 Use a query like
 .nf
 SELECT * FROM <sequence_name>;
@@ -134,6 +142,15 @@ select nextval ('seq');
 -- Use sequence in insert
 --
 insert into table _table_ values (nextval ('seq'),...);
+.nf
+--
+-- Set the sequence value after a copy in
+--
+create function table_id_max() returns int4
+    as 'select max(id) from _table_' 
+    language 'sql';
+copy _table_ from 'input_file';
+select setval('seq', table_id_max());
 .fi
 .SH "SEE ALSO"
 drop_sequence(l).
