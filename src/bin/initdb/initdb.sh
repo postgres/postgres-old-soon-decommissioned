@@ -1044,6 +1044,12 @@ echo "ok"
 
 $ECHO_N "creating information schema... "$ECHO_C
 "$PGPATH"/postgres $PGSQL_OPT -N template1 > /dev/null < "$datadir"/information_schema.sql || exit_nicely
+(
+  echo "COPY information_schema.sql_features (feature_id, feature_name, sub_feature_id, sub_feature_name, is_supported, comments) FROM STDIN;"
+  cat "$datadir"/sql_features.txt
+  echo "\."
+) \
+	| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
 echo "ok"
 
 $ECHO_N "vacuuming database template1... "$ECHO_C

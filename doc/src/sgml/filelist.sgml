@@ -34,6 +34,9 @@
 <!entity syntax     SYSTEM "syntax.sgml">
 <!entity typeconv   SYSTEM "typeconv.sgml">
 
+<!entity features-supported   SYSTEM "features-supported.sgml">
+<!entity features-unsupported SYSTEM "features-unsupported.sgml">
+
 <!-- reference pages -->
 <!entity % allfiles   SYSTEM "ref/allfiles.sgml">
 %allfiles;

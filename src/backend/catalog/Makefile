@@ -46,13 +46,14 @@ install-data: $(BKIFILES) installdirs
 	$(INSTALL_DATA) postgres.bki         $(DESTDIR)$(datadir)/postgres.bki
 	$(INSTALL_DATA) postgres.description $(DESTDIR)$(datadir)/postgres.description
 	$(INSTALL_DATA) $(srcdir)/information_schema.sql $(DESTDIR)$(datadir)/information_schema.sql
+	$(INSTALL_DATA) $(srcdir)/sql_features.txt $(DESTDIR)$(datadir)/sql_features.txt
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(datadir)
 
 .PHONY: uninstall-data
 uninstall-data:
-	rm -f $(addprefix $(DESTDIR)$(datadir)/, $(BKIFILES) information_schema.sql)
+	rm -f $(addprefix $(DESTDIR)$(datadir)/, $(BKIFILES) information_schema.sql sql_features.txt)
 
 
 clean: 
