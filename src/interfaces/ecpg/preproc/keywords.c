@@ -28,7 +28,7 @@
  */
 static ScanKeyword ScanKeywords[] = {
 	/* name, value */
-	{"abort", ABORT_TRANS},
+	{"abort", ABORT_P},
 	{"absolute", ABSOLUTE},
 	{"access", ACCESS},
 	{"action", ACTION},
@@ -49,7 +49,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"authorization", AUTHORIZATION},
 	{"backward", BACKWARD},
 	{"before", BEFORE},
-	{"begin", BEGIN_TRANS},
+	{"begin", BEGIN_P},
 	{"between", BETWEEN},
 	{"bigint", BIGINT},
 	{"binary", BINARY},
@@ -115,7 +115,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"else", ELSE},
 	{"encoding", ENCODING},
 	{"encrypted", ENCRYPTED},
-	{"end", END_TRANS},
+	{"end", END_P},
 	{"escape", ESCAPE},
 	{"except", EXCEPT},
 	{"exclusive", EXCLUSIVE},
@@ -226,6 +226,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"position", POSITION},
 	{"precision", PRECISION},
 	{"prepare", PREPARE},
+	{"preserve", PRESERVE},
 	{"primary", PRIMARY},
 	{"prior", PRIOR},
 	{"privileges", PRIVILEGES},
@@ -246,6 +247,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"right", RIGHT},
 	{"rollback", ROLLBACK},
 	{"row", ROW},
+	{"rows", ROWS},
 	{"rule", RULE},
 	{"schema", SCHEMA},
 	{"scroll", SCROLL},

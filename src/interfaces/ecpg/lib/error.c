@@ -14,7 +14,6 @@
  * the last back-end operation. */
 static char *ECPGerr;
 
-
 void
 ECPGraise(int line, int code, const char *str)
 {
