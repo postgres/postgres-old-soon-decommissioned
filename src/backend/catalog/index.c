@@ -228,7 +228,6 @@ ConstructTupleDescriptor(Relation heapRelation,
 
 		if (!AttrNumberIsForUserDefinedAttr(atnum))
 		{
-
 			/*
 			 * here we are indexing on a system attribute (-1...-n)
 			 */
@@ -236,7 +235,6 @@ ConstructTupleDescriptor(Relation heapRelation,
 		}
 		else
 		{
-
 			/*
 			 * here we are indexing on a normal attribute (1...n)
 			 */
