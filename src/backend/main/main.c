@@ -17,7 +17,7 @@
 
 #include "postgres.h"
 #ifdef USE_LOCALE  
-  #include <locale.h>
+#  include <locale.h>
 #endif
 #include "miscadmin.h"
 #include "bootstrap/bootstrap.h"	/* for BootstrapMain() */

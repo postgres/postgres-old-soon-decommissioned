@@ -60,7 +60,7 @@ cash_in(const char *str)
     char dsymbol, ssymbol, psymbol, nsymbol, csymbol;
 
 #ifdef USE_LOCALE
-    if (lconv == NULL) *lconv = localeconv();
+    if (lconv == NULL) lconv = localeconv();
 
     /* frac_digits in the C locale seems to return CHAR_MAX */
     /* best guess is 2 in this case I think */
@@ -158,7 +158,7 @@ cash_out(Cash *value)
     char convention;
 
 #ifdef USE_LOCALE
-    if (lconv == NULL) *lconv = localeconv();
+    if (lconv == NULL) lconv = localeconv();
 
     mon_group = *lconv->mon_grouping;
     comma = *lconv->mon_thousands_sep;
