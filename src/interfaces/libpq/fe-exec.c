@@ -1469,7 +1469,7 @@ PQputCopyEnd(PGconn *conn, const char *errormsg)
 		{
 			/* Send old-style end-of-data marker */
 			if (pqPutMsgStart(0, false, conn) < 0 ||
-				pqPuts("\\.\n", conn) < 0 ||
+				pqPutnchar("\\.\n", 3, conn) < 0 ||
 				pqPutMsgEnd(conn) < 0)
 				return -1;
 		}
