@@ -569,17 +569,13 @@ extern int	assertTest(int val);
  *				Section 4: genbki macros used by catalog/pg_xxx.h files
  * ----------------------------------------------------------------
  */
-#define CATALOG(x) \
-	typedef struct CppConcat(FormData_,x)
+#define CATALOG(x)  typedef struct CppConcat(FormData_,x)
 
-/* Huh? */
-#define DATA(x) extern int errno
-#define DESCR(x) extern int errno
-#define DECLARE_INDEX(x) extern int errno
-#define DECLARE_UNIQUE_INDEX(x) extern int errno
-
-#define BUILD_INDICES
 #define BOOTSTRAP
+
+/* these need to expand into some harmless, repeatable declaration */
+#define DATA(x)   extern int errno
+#define DESCR(x)  extern int errno
 
 #define BKI_BEGIN
 #define BKI_END

@@ -30,6 +30,7 @@
 #include "miscadmin.h"
 #include "storage/backendid.h"
 
+
 ProtocolVersion FrontendProtocol = PG_PROTOCOL_LATEST;
 
 bool		Noversion = false;
@@ -84,36 +85,26 @@ int			SortMem = 512;
 int			NBuffers = DEF_NBUFFERS;
 
 
-char	   *IndexedCatalogNames[] = {
-	AttributeRelationName,
-	ProcedureRelationName,
-	TypeRelationName,
-	RelationRelationName,
-	0
-};
-
-
 /* ----------------
- * we just do a linear search now so there's no requirement that the list
+ * List of relations that are shared across all databases in an installation.
+ *
+ * This used to be binary-searched, requiring that it be kept in sorted order.
+ * We just do a linear search now so there's no requirement that the list
  * be ordered.	The list is so small it shouldn't make much difference.
  * make sure the list is null-terminated
  *				- jolly 8/19/95
- *
- * OLD COMMENT
- *		WARNING  WARNING  WARNING  WARNING	WARNING  WARNING
- *
- *		keep SharedSystemRelationNames[] in SORTED order!  A binary search
- *		is done on it in catalog.c!
- *
- *		XXX this is a serious hack which should be fixed -cim 1/26/90
  * ----------------
  */
 char	   *SharedSystemRelationNames[] = {
 	DatabaseRelationName,
+	DatabaseNameIndex,
+	DatabaseOidIndex,
 	GroupRelationName,
 	GroupNameIndex,
 	GroupSysidIndex,
 	LogRelationName,
 	ShadowRelationName,
-	0
+	ShadowNameIndex,
+	ShadowSysidIndex,
+	NULL
 };

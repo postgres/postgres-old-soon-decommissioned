@@ -40,6 +40,13 @@ CATALOG(pg_listener)
 } FormData_pg_listener;
 
 /* ----------------
+ *		Form_pg_listener corresponds to a pointer to a tuple with
+ *		the format of pg_listener relation.
+ * ----------------
+ */
+typedef FormData_pg_listener *Form_pg_listener;
+
+/* ----------------
  *		compiler constants for pg_listener
  * ----------------
  */

@@ -42,20 +42,18 @@
 #define INHRELID		11
 #define LANGNAME		12
 #define LANGOID			13
-#define LISTENREL		14
-#define OPERNAME		15
-#define OPEROID			16
-#define PROCNAME		17
-#define PROCOID			18
-#define RELNAME			19
-#define RELOID			20
-#define RULENAME		21
-#define RULEOID			22
-#define SHADOWNAME		23
-#define SHADOWSYSID		24
-#define STATRELATT		25
-#define TYPENAME		26
-#define TYPEOID			27
+#define OPERNAME		14
+#define OPEROID			15
+#define PROCNAME		16
+#define PROCOID			17
+#define RELNAME			18
+#define RELOID			19
+#define RULENAME		20
+#define SHADOWNAME		21
+#define SHADOWSYSID		22
+#define STATRELATT		23
+#define TYPENAME		24
+#define TYPEOID			25
 
 extern void InitCatalogCache(void);
 

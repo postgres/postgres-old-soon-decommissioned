@@ -645,7 +645,8 @@
       <entry>relisshared</entry>
       <entry><type>bool</type></entry>
       <entry></entry>
-      <entry>XXX (This is not what it seems to be.)</entry>
+      <entry>True if this table is shared across all databases in the
+      cluster.</entry>
      </row>
 
      <row>

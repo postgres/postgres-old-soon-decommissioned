@@ -107,16 +107,12 @@ InitLockTable(int maxBackends)
 void
 RelationInitLockInfo(Relation relation)
 {
-	char	   *relname;
-
 	Assert(RelationIsValid(relation));
 	Assert(OidIsValid(RelationGetRelid(relation)));
 
-	relname = (char *) RelationGetPhysicalRelationName(relation);
-
 	relation->rd_lockInfo.lockRelId.relId = RelationGetRelid(relation);
 
-	if (IsSharedSystemRelationName(relname))
+	if (relation->rd_rel->relisshared)
 		relation->rd_lockInfo.lockRelId.dbId = InvalidOid;
 	else
 		relation->rd_lockInfo.lockRelId.dbId = MyDatabaseId;

@@ -243,10 +243,6 @@ DATA(insert OID = 99 (	pg_log		 PGUID 4 4 t c t \054 1269 0 int4in int4out int4i
 
 /* OIDS 100 - 199 */
 
-DATA(insert OID = 109 (  pg_attrdef  PGUID 4 4 t c t \054 1215 0 int4in int4out int4in int4out i p _null_));
-DATA(insert OID = 110 (  pg_relcheck PGUID 4 4 t c t \054 1216 0 int4in int4out int4in int4out i p _null_));
-DATA(insert OID = 111 (  pg_trigger  PGUID 4 4 t c t \054 1219 0 int4in int4out int4in int4out i p _null_));
-
 /* OIDS 200 - 299 */
 
 DATA(insert OID = 210 (  smgr	   PGUID 2	12 t b t \054 0 0 smgrin smgrout smgrin smgrout s p _null_ ));
