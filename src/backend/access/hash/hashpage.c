@@ -96,8 +96,8 @@ _hash_metapinit(Relation rel)
 	for (i = metap->hashm_bshift; i > 0; --i)
 	{
 		if ((1 << i) < (metap->hashm_bsize -
-						(DOUBLEALIGN(sizeof(PageHeaderData)) +
-						 DOUBLEALIGN(sizeof(HashPageOpaqueData)))))
+						(MAXALIGN(sizeof(PageHeaderData)) +
+						 MAXALIGN(sizeof(HashPageOpaqueData)))))
 			break;
 	}
 	Assert(i);
@@ -605,7 +605,7 @@ _hash_splitpage(Relation rel,
 			itemsz = IndexTupleDSize(hitem->hash_itup)
 				+ (sizeof(HashItemData) - sizeof(IndexTupleData));
 
-			itemsz = DOUBLEALIGN(itemsz);
+			itemsz = MAXALIGN(itemsz);
 
 			if (PageGetFreeSpace(npage) < itemsz)
 			{

@@ -108,8 +108,9 @@ InsertRule(char *rulname,
 (rulename, ev_type, ev_class, ev_attr, ev_action, ev_qual, is_instead) VALUES \
 ('%s', %d::char, %u::oid, %d::int2, '%s'::text, '%s'::text, \
  '%s'::bool);";
-	if (sizeof(FormData_pg_rewrite) + strlen(actionbuf) +
-		strlen(qualbuf) > MaxAttrSize)
+	if (MAXALIGN(sizeof(FormData_pg_rewrite)) +
+		MAXALIGN(strlen(actionbuf)) +
+		MAXALIGN(strlen(qualbuf)) > MaxAttrSize)
 		elog(ERROR, "DefineQueryRewrite: rule plan string too big.");
 	sprintf(rulebuf, template,
 			rulname, evtype, eventrel_oid, evslot_index, actionbuf,

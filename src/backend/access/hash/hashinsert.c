@@ -128,7 +128,7 @@ _hash_insertonpg(Relation rel,
 
 	itemsz = IndexTupleDSize(hitem->hash_itup)
 		+ (sizeof(HashItemData) - sizeof(IndexTupleData));
-	itemsz = DOUBLEALIGN(itemsz);
+	itemsz = MAXALIGN(itemsz);
 
 	while (PageGetFreeSpace(page) < itemsz)
 	{

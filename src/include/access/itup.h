@@ -103,7 +103,7 @@ typedef struct PredInfo
 	) \
 	: \
 	( \
-		(Size)DOUBLEALIGN(sizeof(IndexTupleData) + sizeof(IndexAttributeBitMapData)) \
+		(Size)MAXALIGN(sizeof(IndexTupleData) + sizeof(IndexAttributeBitMapData)) \
 	) \
 )
 

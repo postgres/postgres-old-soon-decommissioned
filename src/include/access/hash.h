@@ -202,7 +202,7 @@ typedef HashItemData *HashItem;
 #define BMPGSZ_BYTE(metap)		((metap)->hashm_bmsize)
 #define BMPGSZ_BIT(metap)		((metap)->hashm_bmsize << BYTE_TO_BIT)
 #define HashPageGetBitmap(pg) \
-	((uint32 *) (((char *) (pg)) + DOUBLEALIGN(sizeof(PageHeaderData))))
+	((uint32 *) (((char *) (pg)) + MAXALIGN(sizeof(PageHeaderData))))
 
 /*
  * The number of bits in an ovflpage bitmap which

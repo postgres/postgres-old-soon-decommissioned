@@ -531,7 +531,7 @@ _hash_squeezebucket(Relation rel,
 		hitem = (HashItem) PageGetItem(rpage, PageGetItemId(rpage, roffnum));
 		itemsz = IndexTupleDSize(hitem->hash_itup)
 			+ (sizeof(HashItemData) - sizeof(IndexTupleData));
-		itemsz = DOUBLEALIGN(itemsz);
+		itemsz = MAXALIGN(itemsz);
 
 		/*
 		 * walk up the bucket chain, looking for a page big enough for

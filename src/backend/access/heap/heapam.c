@@ -1280,7 +1280,7 @@ l2:
 							 HEAP_XMAX_INVALID | HEAP_MARKED_FOR_UPDATE);
 
 	/* insert new item */
-	if ((unsigned) DOUBLEALIGN(newtup->t_len) <= PageGetFreeSpace((Page) dp))
+	if ((unsigned) MAXALIGN(newtup->t_len) <= PageGetFreeSpace((Page) dp))
 		RelationPutHeapTuple(relation, buffer, newtup);
 	else
 	{

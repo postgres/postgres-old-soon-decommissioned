@@ -472,7 +472,7 @@ _ReadArrayStr(char *arrayStr,
 			if (values[i])
 			{
 				if (typalign == 'd')
-					*nbytes += DOUBLEALIGN(*(int32 *) values[i]);
+					*nbytes += MAXALIGN(*(int32 *) values[i]);
 				else
 					*nbytes += INTALIGN(*(int32 *) values[i]);
 			}

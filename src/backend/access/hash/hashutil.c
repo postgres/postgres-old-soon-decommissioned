@@ -127,9 +127,9 @@ _hash_checkpage(Page page, int flags)
 	Assert(((PageHeader) (page))->pd_lower >= (sizeof(PageHeaderData) - sizeof(ItemIdData)));
 #if 1
 	Assert(((PageHeader) (page))->pd_upper <=
-		   (BLCKSZ - DOUBLEALIGN(sizeof(HashPageOpaqueData))));
+		   (BLCKSZ - MAXALIGN(sizeof(HashPageOpaqueData))));
 	Assert(((PageHeader) (page))->pd_special ==
-		   (BLCKSZ - DOUBLEALIGN(sizeof(HashPageOpaqueData))));
+		   (BLCKSZ - MAXALIGN(sizeof(HashPageOpaqueData))));
 	Assert(((PageHeader) (page))->pd_opaque.od_pagesize == BLCKSZ);
 #endif
 	if (flags)

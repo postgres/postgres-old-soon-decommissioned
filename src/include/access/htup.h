@@ -88,7 +88,7 @@ typedef struct HeapTupleData
 
 typedef HeapTupleData *HeapTuple;
 
-#define HEAPTUPLESIZE	DOUBLEALIGN(sizeof(HeapTupleData))
+#define HEAPTUPLESIZE	MAXALIGN(sizeof(HeapTupleData))
 
 
 /* ----------------

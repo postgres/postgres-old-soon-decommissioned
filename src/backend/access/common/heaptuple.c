@@ -677,7 +677,7 @@ heap_formtuple(TupleDesc tupleDescriptor,
 		len += bitmaplen;
 	}
 
-	hoff = len = DOUBLEALIGN(len);		/* be conservative here */
+	hoff = len = MAXALIGN(len);		/* be conservative here */
 
 	len += ComputeDataSize(tupleDescriptor, value, nulls);
 
@@ -811,7 +811,7 @@ heap_addheader(uint32 natts,	/* max domain index */
 
 	len = offsetof(HeapTupleHeaderData, t_bits);
 
-	hoff = len = DOUBLEALIGN(len);		/* be conservative */
+	hoff = len = MAXALIGN(len);		/* be conservative */
 	len += structlen;
 	tuple = (HeapTuple) palloc(HEAPTUPLESIZE + len);
 	td = tuple->t_data = (HeapTupleHeader) ((char *) tuple + HEAPTUPLESIZE);

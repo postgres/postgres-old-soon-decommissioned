@@ -84,13 +84,13 @@ typedef struct
  */
 #define ARR_DATA_PTR(a) \
 		(((char *) a) + \
-		 DOUBLEALIGN(sizeof(ArrayType) + 2 * (sizeof(int) * (a)->ndim)))
+		 MAXALIGN(sizeof(ArrayType) + 2 * (sizeof(int) * (a)->ndim)))
 
 /*
  * The total array header size for an array of dimension n (in bytes).
  */
 #define ARR_OVERHEAD(n) \
-		(DOUBLEALIGN(sizeof(ArrayType) + 2 * (n) * sizeof(int)))
+		(MAXALIGN(sizeof(ArrayType) + 2 * (n) * sizeof(int)))
 
 /*------------------------------------------------------------------------
  * Miscellaneous helper definitions and routines for arrayfuncs.c

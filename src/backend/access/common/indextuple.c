@@ -60,7 +60,7 @@ index_formtuple(TupleDesc tupleDescriptor,
 
 	hoff = IndexInfoFindDataOffset(infomask);
 	size = hoff + ComputeDataSize(tupleDescriptor, value, null);
-	size = DOUBLEALIGN(size);	/* be conservative */
+	size = MAXALIGN(size);	/* be conservative */
 
 	tp = (char *) palloc(size);
 	tuple = (IndexTuple) tp;
