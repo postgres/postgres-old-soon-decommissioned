@@ -459,6 +459,8 @@ DATA(insert OID = 1230 (  "~*"       PGUID 0 b t f  20  25  16 0 1231  0 0 char1
 DATA(insert OID = 1231 (  "!~*"      PGUID 0 b t f  20  25  16 0 1230  0 0 char16icregexne neqsel neqjoinsel ));
 DATA(insert OID = 1232 (  "~*"      PGUID 0 b t f  1043  25  16 0 1233  0 0 texticregexeq eqsel eqjoinsel ));
 DATA(insert OID = 1233 ( "!~*"      PGUID 0 b t f  1043  25  16 0 1232  0 0 texticregexne neqsel neqjoinsel ));
+DATA(insert OID = 1234 (  "~*"      PGUID 0 b t f  1042  25  16 0 1235  0 0 texticregexeq eqsel eqjoinsel ));
+DATA(insert OID = 1235 ( "!~*"      PGUID 0 b t f  1042  25  16 0 1234  0 0 texticregexne neqsel neqjoinsel ));
 
 
 
