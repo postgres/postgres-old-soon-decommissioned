@@ -18,6 +18,7 @@
 
 #include "postgres.h"
 
+#include "storage/backendid.h"
 #include "storage/sinval.h"
 #include "storage/sinvaladt.h"
 #include "storage/spin.h"

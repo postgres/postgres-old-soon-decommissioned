@@ -11,12 +11,19 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <string.h>
 #include <sys/file.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+
 
 #include "postgres.h"
 #include "storage/bufmgr.h"	/* for BLCKSZ */
 #include "storage/fd.h"		/* for SEEK_ */
 #include "executor/executor.h"
+#include "executor/execdebug.h"
 #include "executor/nodeHash.h"
 #include "executor/nodeHashjoin.h"
 

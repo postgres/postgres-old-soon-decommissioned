@@ -15,7 +15,6 @@
 #include <string.h>
 
 #include "postgres.h"
-#include "utils/elog.h"
 #include "utils/palloc.h"
 #include "utils/builtins.h"	/* where function declarations go */
 

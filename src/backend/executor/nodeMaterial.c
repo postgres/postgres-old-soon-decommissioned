@@ -24,7 +24,9 @@
 #include "executor/executor.h"
 #include "executor/nodeMaterial.h"
 #include "catalog/catalog.h"
+#include "catalog/heap.h"
 #include "optimizer/internal.h" /* for _TEMP_RELATION_ID_ */
+#include "access/heapam.h"
 
 /* ----------------------------------------------------------------
  *   	ExecMaterial

@@ -29,7 +29,6 @@
  */
 #include <string.h>
 #include "postgres.h"		/* postgres system include file */
-#include "utils/elog.h"		/* for logging postgres errors */
 #include "utils/palloc.h"
 #include "utils/builtins.h"	/* where the function declarations go */
 

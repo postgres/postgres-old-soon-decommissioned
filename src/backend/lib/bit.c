@@ -17,6 +17,7 @@
  */
 #include "postgres.h"
 
+#include "utils/bit.h"
 #include "utils/memutils.h"	
 
 void

@@ -11,20 +11,14 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <string.h>	/* XXX */
+#include <postgres.h>
 
-#include "postgres.h"
-#include "miscadmin.h"  /* for DataDir */
-
-#include "utils/syscache.h"
-#include "storage/buf.h"
-#include "utils/palloc.h"
-
-#include "catalog/catname.h"	/* NameIs{,Shared}SystemRelationName */
-#include "catalog/pg_attribute.h"
-#include "catalog/pg_type.h"
-#include "catalog/catalog.h"
-#include "access/transam.h"
+#include <miscadmin.h>  /* for DataDir */
+#include <utils/syscache.h>
+#include <catalog/catname.h>	/* NameIs{,Shared}SystemRelationName */
+#include <catalog/pg_type.h>
+#include <catalog/catalog.h>
+#include <access/transam.h>
 
 /*
  * relpath		- path to the relation

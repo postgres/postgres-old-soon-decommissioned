@@ -17,9 +17,6 @@
 #include <stdio.h>		/* for sprintf() */
 #include <string.h>
 #include "postgres.h"
-#include "storage/block.h"
-#include "storage/off.h"
-#include "storage/itemptr.h"
 #include "storage/bufpage.h"
 
 #include "utils/palloc.h"

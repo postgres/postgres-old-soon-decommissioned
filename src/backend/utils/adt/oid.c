@@ -14,7 +14,6 @@
 #include "postgres.h"
 #include "utils/palloc.h"
 #include "utils/builtins.h"	/* where function declarations go */
-#include "utils/elog.h"
 
 /***************************************************************************** 
  *   USER I/O ROUTINES                                                       *

@@ -27,6 +27,8 @@
 
 #include <utils/builtins.h>
 
+#include <utils/acl.h>
+
 #include <sys/stat.h>
 
 #include <catalog/pg_index.h>

@@ -26,10 +26,7 @@
 #include <string.h>
 #include "postgres.h"
 #include "access/heapam.h"
-#include "access/htup.h"
 #include "access/relscan.h"
-#include "utils/rel.h"
-#include "utils/elog.h"
 #include "utils/builtins.h"	/* where function decls go */
 
 /* ----------------------------------------------------------------

@@ -18,7 +18,6 @@
 #include "postgres.h"
 #include "utils/oidcompos.h"	/* where function declarations go */
 #include "utils/builtins.h"	/* for pg_atoi() */
-#include "utils/elog.h"
 #include "utils/palloc.h"
 
 OidName

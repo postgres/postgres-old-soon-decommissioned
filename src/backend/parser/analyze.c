@@ -22,11 +22,13 @@
 #include "nodes/relation.h"
 #include "parse.h"		/* for AND, OR, etc. */
 #include "catalog/pg_type.h"	/* for INT4OID, etc. */
+#include "catalog/pg_proc.h"
 #include "utils/elog.h"
 #include "utils/builtins.h"	/* namecmp(), textout() */
 #include "utils/lsyscache.h"
 #include "utils/palloc.h"
 #include "utils/mcxt.h"
+#include "utils/syscache.h"
 #include "parser/parse_query.h"
 #include "parser/parse_state.h"
 #include "nodes/makefuncs.h"	/* for makeResdom(), etc. */

@@ -18,6 +18,7 @@
 #include "access/heapam.h"
 #include "utils/builtins.h"
 #include "utils/tqual.h"	/* for NowTimeQual */
+#include "utils/syscache.h"
 #include "catalog/catname.h"
 #include "commands/defrem.h"
 
@@ -26,6 +27,7 @@
 #include "catalog/pg_aggregate.h"
 #include "catalog/pg_language.h"
 #include "catalog/pg_operator.h"
+#include "catalog/pg_proc.h"
 #include "parser/catalog_utils.h"
 #include "storage/bufmgr.h"
 #include "fmgr.h"

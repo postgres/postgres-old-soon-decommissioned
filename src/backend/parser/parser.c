@@ -23,6 +23,7 @@
 #include "utils/exc.h"
 #include "utils/excid.h"
 #include "utils/palloc.h"
+#include "utils/syscache.h"
 #include "catalog/pg_aggregate.h"
 #include "catalog/pg_type.h"
 #include "nodes/primnodes.h"

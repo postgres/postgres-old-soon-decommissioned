@@ -12,8 +12,6 @@
  *-------------------------------------------------------------------------
  */
 
-#include "config.h"
-
 #include <ctype.h>
 #include <stdio.h>
 
@@ -27,7 +25,6 @@
 #include "utils/memutils.h"
 #include "storage/fd.h"		/* for SEEK_ */
 #include "fmgr.h"
-#include "utils/elog.h"
 #include "utils/array.h"
 
 #include "libpq/libpq-fs.h"

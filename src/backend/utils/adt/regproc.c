@@ -15,10 +15,7 @@
 #include "postgres.h"
 #include "access/heapam.h"
 #include "access/relscan.h"
-#include "access/skey.h"
-#include "utils/tqual.h"	/* for NowTimeQual */
 #include "fmgr.h"
-#include "utils/elog.h"
 #include "utils/palloc.h"
 
 #include "catalog/catname.h"

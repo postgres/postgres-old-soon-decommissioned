@@ -316,7 +316,7 @@ tas_dummy()
  * SPARC (SunOS 4)
  */
 
-#if defined(sparc)
+#if defined(sparc) && !defined(sparc_solaris)
 
 /* if we're using -ansi w/ gcc, use __asm__ instead of asm */
 #if defined(__STRICT_ANSI__)

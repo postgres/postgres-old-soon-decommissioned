@@ -21,7 +21,14 @@
 
 #include <stdio.h>	/* for sprintf() */
 #include <math.h>
+#include <string.h>
 #include <sys/file.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+#include <unistd.h>
+
 #include "postgres.h"
 
 
@@ -31,6 +38,7 @@
 #include "executor/executor.h"
 #include "executor/nodeHash.h"
 #include "executor/nodeHashjoin.h"
+#include "executor/execdebug.h"
 #include "utils/palloc.h"
 #include "utils/hsearch.h"
 
@@ -845,7 +853,7 @@ static int hjtmpcnt = 0;
 static void
 mk_hj_temp(char *tempname)
 {
-    sprintf(tempname, "HJ%d.%d", getpid(), hjtmpcnt);
+    sprintf(tempname, "HJ%d.%d", (int)getpid(), hjtmpcnt);
     hjtmpcnt = (hjtmpcnt + 1) % 1000;
 }
 

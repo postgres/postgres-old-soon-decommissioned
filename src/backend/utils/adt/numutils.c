@@ -19,7 +19,6 @@
 #include <math.h>
 #include "postgres.h"
 #include "utils/builtins.h"		/* where the declarations go */
-#include "utils/elog.h"
 
 int32
 pg_atoi(char *s, int size, int c)

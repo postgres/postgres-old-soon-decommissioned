@@ -15,7 +15,6 @@
 #include <string.h>
 #include "postgres.h"
 #include "utils/palloc.h"
-#include "utils/elog.h"
 
 /*
  * CHAR() and VARCHAR() types are part of the ANSI SQL standard. CHAR()

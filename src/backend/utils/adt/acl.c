@@ -15,7 +15,6 @@
 #include <string.h>
 #include "postgres.h"
 #include "utils/acl.h"
-#include "access/htup.h"
 #include "catalog/pg_user.h"
 #include "utils/syscache.h"
 #include "utils/palloc.h"

@@ -21,7 +21,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #if defined(sparc_solaris)
-#include "port/inet_aton.h"
+#include "inet_aton.h" /* after I copied it into port/sparc_solaris */
 #endif
 
 #include "postgres.h"

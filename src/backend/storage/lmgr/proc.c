@@ -55,7 +55,13 @@
 #include <string.h>
 #include <sys/types.h>
 
+#if defined(sparc_solaris)
+#include <sys/ipc.h>
+#include <sys/sem.h>
+#endif
+
 #include "postgres.h"
+#include "miscadmin.h"
 #include "libpq/pqsignal.h"	/* substitute for <signal.h> */
 
 #include "access/xact.h"

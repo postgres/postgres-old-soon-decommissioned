@@ -37,6 +37,7 @@
 #include "optimizer/prep.h"
 #include "optimizer/clauses.h"
 #include "storage/lmgr.h"
+#include "fmgr.h"
 
 #define IsFuncIndex(ATTR_LIST) (((IndexElem*)lfirst(ATTR_LIST))->args!=NULL)
 

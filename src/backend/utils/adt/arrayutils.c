@@ -14,7 +14,7 @@
 
 #define WEAK_C_OPTIMIZER
 
-#include "c.h"
+#include "postgres.h"
 
 int
 GetOffset(int n, int dim[], int lb[], int indx[])

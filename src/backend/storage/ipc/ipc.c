@@ -41,6 +41,11 @@
 #include "storage/ipc.h"
 #include "utils/memutils.h"
 
+#if defined(sparc_solaris)
+#include <string.h>
+#include <sys/ipc.h>
+#endif
+
 #if defined(bsd44)
 int UsePrivateMemory = 1;
 #else

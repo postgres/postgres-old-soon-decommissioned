@@ -14,10 +14,8 @@
 #include <stdio.h>		/* for sprintf() */
 #include <string.h>
 
-#include <config.h>
 #include <postgres.h>
 #include <utils/palloc.h>
-#include <utils/elog.h>
 
 /* these things look like structs, but we pass them by value so be careful
    For example, passing an int -> DateADT is not portable! */

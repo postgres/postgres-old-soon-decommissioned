@@ -34,9 +34,7 @@
 #include "miscadmin.h"
 #include "access/xact.h"
 #include "utils/builtins.h"	/* where function declarations go */
-#include "utils/elog.h"
 #include "utils/palloc.h"
-#include "utils/nabstime.h"
 
 #define	TM_YEAR_BASE	1900		/* compatible to UNIX time */
 #define	EPOCH_YEAR	1970		/* compatible to UNIX time */

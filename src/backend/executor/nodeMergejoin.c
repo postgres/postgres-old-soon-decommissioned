@@ -78,6 +78,7 @@
 #include "postgres.h"
 
 #include "executor/executor.h"
+#include "executor/execdefs.h"
 #include "executor/nodeMergejoin.h"
 #include "utils/lsyscache.h"
 

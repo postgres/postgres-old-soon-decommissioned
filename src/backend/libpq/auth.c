@@ -63,6 +63,7 @@
 #include <arpa/inet.h>
 
 #include "postgres.h"
+#include "miscadmin.h"
 
 #include "libpq/auth.h"
 #include "libpq/libpq.h"

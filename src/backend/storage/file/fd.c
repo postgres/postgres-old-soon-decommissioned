@@ -44,6 +44,8 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <fcntl.h>
 
 #include "c.h"
 #include "miscadmin.h"	/* for DataDir */
@@ -197,6 +199,7 @@ static int FileAccess(File file);
 static File fileNameOpenFile(FileName fileName, int fileFlags, int fileMode);
 static char *filepath(char *filename);
 
+int
 pg_fsync(fd)
 {
     extern int fsyncOff;

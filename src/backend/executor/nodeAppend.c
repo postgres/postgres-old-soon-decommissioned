@@ -55,10 +55,13 @@
 #include "postgres.h"
 
 
+#include "access/heapam.h"
 #include "executor/executor.h"
+#include "executor/execdebug.h"
 #include "executor/nodeAppend.h"
 #include "executor/nodeIndexscan.h"
 #include "utils/palloc.h"
+#include "utils/mcxt.h"
 #include "parser/parsetree.h"		/* for rt_store() macro */
 
 /* ----------------------------------------------------------------

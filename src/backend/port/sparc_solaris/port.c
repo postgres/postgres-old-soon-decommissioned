@@ -12,6 +12,7 @@
  *-------------------------------------------------------------------------
  */
 #include <math.h>		/* for pow() prototype */
+#include <stdlib.h>
 
 #include <errno.h>
 #include "rusagestub.h"

@@ -22,6 +22,11 @@
 #include "storage/lock.h"
 #include "miscadmin.h"		/* for DebugLvl */
 
+#if defined(sparc_solaris)
+#include <string.h>
+#include <sys/ipc.h>
+#endif
+
 /*
  * SystemPortAddressCreateMemoryKey --
  *	Returns a memory key given a port address.

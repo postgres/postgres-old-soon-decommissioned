@@ -14,11 +14,9 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
-#include <time.h>
 #include <sys/types.h>
 #include "postgres.h"
 #include "access/xact.h"
-#include "utils/nabstime.h"
 #include "utils/palloc.h"
 
 #define MAXDATEFIELDS 25

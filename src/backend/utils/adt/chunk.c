@@ -21,7 +21,6 @@
 
 #include "utils/palloc.h"
 #include "fmgr.h"
-#include "utils/elog.h"
 #include "utils/array.h"
 
 #include "optimizer/internal.h"

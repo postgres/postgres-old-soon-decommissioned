@@ -15,9 +15,6 @@
  */
 #include <stdio.h>		/* for sprintf() */
 #include "postgres.h"
-#include "utils/elog.h"
-#include "nodes/pg_list.h"          /* for LispValue and List */
-#include "access/htup.h"            /* for HeapTuple */
 #include "access/heapam.h"
 #include "access/relscan.h"
 #include "access/xact.h"

@@ -15,6 +15,7 @@
 #include <stdio.h>		/* for sprintf() */
 #include <sys/file.h>
 #include "postgres.h"
+#include "miscadmin.h"
 #include "libpq/libpq-fs.h"
 #include "access/genam.h"
 #include "access/heapam.h"

@@ -12,6 +12,7 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <string.h>
 #include "postgres.h"
 
 #include "nodes/primnodes.h"
@@ -35,6 +36,7 @@
 #include "access/heapam.h"
 #include "access/xact.h"
 #include "executor/executor.h"
+#include "executor/execdefs.h"
 #include "executor/functions.h"
 
 #undef new
