@@ -176,7 +176,7 @@ createlang [ <replaceable class="parameter">connection options</replaceable> ] -
   <para>
    To install <literal>pltcl</literal>:
 <programlisting>
-$ createlang pltcl
+$ createlang pltcl dbname
 </programlisting>
   </para>
  </refsect1>
