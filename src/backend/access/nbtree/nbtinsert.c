@@ -982,7 +982,7 @@ _bt_updateitem(Relation rel,
     maxoff = PageGetMaxOffsetNumber(page);
     
     /* locate item on the page */
-    first = P_RIGHTMOST((BTPageOpaque) PageGetSpecialPointer(page)) \
+    first = P_RIGHTMOST((BTPageOpaque) PageGetSpecialPointer(page))
         ? P_HIKEY : P_FIRSTKEY;
     i = first;
     do {
