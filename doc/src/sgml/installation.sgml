@@ -1025,7 +1025,7 @@ PATH=$PATH:/usr/local/pgsql/bin
 </programlisting>
     If you are using csh or tcsh, then use this command:
 <programlisting>
-set path = ( /usr/local/pgsql/bin path )
+set path = ( /usr/local/pgsql/bin $path )
 </programlisting>
    </para>
 
