@@ -26,7 +26,9 @@ include $(top_builddir)/src/Makefile.global
 .NOTPARALLEL:
 
 ifneq ($(wildcard $(srcdir)/postgres.tar.gz),)
+ifneq (,$(docdir))
 found_html := yes
+endif
 endif
 
 ifneq ($(wildcard $(srcdir)/man.tar.gz),)
