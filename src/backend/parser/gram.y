@@ -4254,6 +4254,7 @@ cursor_options: /*EMPTY*/					{ $$ = 0; }
 opt_hold: /* EMPTY */						{ $$ = FALSE; }
 			| WITH HOLD						{ $$ = TRUE; }
 			| WITHOUT HOLD					{ $$ = FALSE; }
+		;
 
 /*****************************************************************************
  *
