@@ -111,7 +111,7 @@ static FormData_pg_attribute a2 = {
 
 static FormData_pg_attribute a3 = {
 	0xffffffff, {"xmin"}, XIDOID, 0, sizeof(TransactionId),
-	MinTransactionIdAttributeNumber, 0, -1, -1, '\0', '\0', 'i', '\0', '\0'
+	MinTransactionIdAttributeNumber, 0, -1, -1, '\001', '\0', 'i', '\0', '\0'
 };
 
 static FormData_pg_attribute a4 = {
@@ -121,7 +121,7 @@ static FormData_pg_attribute a4 = {
 
 static FormData_pg_attribute a5 = {
 	0xffffffff, {"xmax"}, XIDOID, 0, sizeof(TransactionId),
-	MaxTransactionIdAttributeNumber, 0, -1, -1, '\0', '\0', 'i', '\0', '\0'
+	MaxTransactionIdAttributeNumber, 0, -1, -1, '\001', '\0', 'i', '\0', '\0'
 };
 
 static FormData_pg_attribute a6 = {
