@@ -356,6 +356,16 @@ _outIndexScan(StringInfo str, IndexScan *node)
 			_outOidList(str, lfirst(tmp));
 		}
 	}
+	/* this can become WRITE_NODE_FIELD when intlists are normal objects: */
+	{
+		List    *tmp;
+
+		appendStringInfo(str, " :indxlossy ");
+		foreach(tmp, node->indxlossy)
+		{
+			_outIntList(str, lfirst(tmp));
+		}
+	}
 	WRITE_ENUM_FIELD(indxorderdir, ScanDirection);
 }
 

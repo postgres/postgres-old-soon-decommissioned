@@ -776,6 +776,7 @@ typedef ScanState SeqScanState;
  *		RuntimeKeysReady   true if runtime Skeys have been computed
  *		RelationDescs	   ptr to array of relation descriptors
  *		ScanDescs		   ptr to array of scan descriptors
+ *		LossyQuals		   ptr to array of qual lists for lossy operators
  *		DupHash			   hashtable for recognizing dups in multiple scan
  *		MaxHash			   max # entries we will allow in hashtable
  * ----------------
@@ -795,6 +796,7 @@ typedef struct IndexScanState
 	bool		iss_RuntimeKeysReady;
 	RelationPtr iss_RelationDescs;
 	IndexScanDescPtr iss_ScanDescs;
+	List	  **iss_LossyQuals;
 	HTAB	   *iss_DupHash;
 	long		iss_MaxHash;
 } IndexScanState;
