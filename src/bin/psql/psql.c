@@ -2705,7 +2705,8 @@ MainLoop(PsqlSettings *pset, char *query, FILE *source)
 					char		hold_char = line[i + thislen];
 
 					line[i + thislen] = '\0';
-					if (query_start[0] != '\0')
+					if ((query_start[0] != '\0') &&
+						(strlen(query) + strlen(query_start) <= MAX_QUERY_BUFFER))
 					{
 						if (query[0] != '\0')
 						{
