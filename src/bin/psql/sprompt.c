@@ -6,6 +6,10 @@
  * $Header$
  */
 
+
+/* This file is shared by psql and pg_dump. */
+
+ 
 /*
  * simple_prompt
  *
