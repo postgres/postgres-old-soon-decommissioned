@@ -37,6 +37,7 @@ typedef enum LWLockId
 	WALWriteLock,
 	ControlFileLock,
 	CheckpointLock,
+	CheckpointStartLock,
 	RelCacheInitLock,
 
 	NumFixedLWLocks,			/* must be last except for
