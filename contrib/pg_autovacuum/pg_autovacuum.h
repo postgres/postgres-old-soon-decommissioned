@@ -46,6 +46,16 @@ typedef struct cmdargs
 				analyze_base_threshold,
 				sleep_base_value,
 				debug,
+				
+				/*
+				 * Cost-Based Vacuum Delay Settings for pg_autovacuum
+				 */
+				av_vacuum_cost_delay,
+				av_vacuum_cost_page_hit,
+				av_vacuum_cost_page_miss,
+				av_vacuum_cost_page_dirty,
+				av_vacuum_cost_limit,
+				
 #ifndef WIN32
 				daemonize;
 #else
