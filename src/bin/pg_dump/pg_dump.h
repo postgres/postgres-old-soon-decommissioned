@@ -93,6 +93,8 @@ typedef struct _tableInfo
 	int		   *inhAttrs;		/* an array of flags, one for each
 								 * attribute if the value is 1, then this
 								 * attribute is an inherited attribute */
+	int		   *inhAttrDef;		/* Flags indicating if attrdef is inherited */
+	int		   *inhNotNull;		/* Flags indicating if NOT NULL in inherited */
 	char	  **attnames;		/* the attribute names */
 	char	  **attoids;		/* oids of the various attributes */
 	char	  **atttypedefns;	/* formatted column type definitions */
