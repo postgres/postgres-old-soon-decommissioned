@@ -21,7 +21,7 @@
  */
 
 
-#ifdef USE_THREADS
+#ifdef ENABLE_THREAD_SAFETY
 #include <pthread.h>
 #endif
 #include <unistd.h>
