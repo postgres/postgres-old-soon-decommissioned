@@ -95,7 +95,7 @@ array_push(PG_FUNCTION_ARGS)
 		indx = 1;
 	else
 		ereport(ERROR,
-				(errcode(ERRCODE_SYNTAX_ERROR),
+				(errcode(ERRCODE_DATA_EXCEPTION),
 				 errmsg("argument must be empty or one-dimensional array")));
 
 	/*

@@ -776,8 +776,8 @@ aclremove(PG_FUNCTION_ARGS)
 		if (dst == 0)
 		{						/* start */
 			ereport(ERROR,
-					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("cannot remove the world ACL")));
+					(errcode(ERRCODE_DATA_EXCEPTION),
+					 errmsg("aclitem for public may not be removed")));
 		}
 		else if (dst == old_num - 1)
 		{						/* end */
@@ -846,7 +846,7 @@ makeaclitem(PG_FUNCTION_ARGS)
 	else if (u_grantee != 0 && g_grantee != 0)
 	{
 		ereport(ERROR,
-				(errcode(ERRCODE_SYNTAX_ERROR),
+				(errcode(ERRCODE_DATA_EXCEPTION),
 				 errmsg("cannot specify both user and group")));
 	}
 	else if (u_grantee != 0)

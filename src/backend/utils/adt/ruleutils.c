@@ -1097,10 +1097,7 @@ pg_get_constraintdef_worker(Oid constraintId, int prettyFlags)
 				break;
 			}
 		default:
-			ereport(ERROR,
-					(errcode(ERRCODE_INTERNAL_ERROR),
-					 errmsg("invalid constraint type \"%c\"",
-							conForm->contype)));
+			elog(ERROR, "invalid constraint type \"%c\"", conForm->contype);
 			break;
 	}
 
