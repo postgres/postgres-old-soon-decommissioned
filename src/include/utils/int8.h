@@ -29,7 +29,7 @@ typedef long int int64;
 
 #define INT64_FORMAT "%ld"
 #else
-#ifdef HAVE_LONG_LONG_INT_64_lld
+#ifdef HAVE_LONG_LONG_INT_64
 /* We have working support for "long long int", use that */
 typedef long long int int64;
 
