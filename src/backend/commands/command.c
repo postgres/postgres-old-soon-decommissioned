@@ -444,7 +444,10 @@ PerformAddAttribute(char *relationName,
 	}
 	namestrcpy(&(attribute->attname), (char*) key[1].sk_argument);
 	attribute->atttypid = typeTuple->t_oid;
-	attribute->attlen = form->typlen;
+	if (form->typlen > 0)
+	    attribute->attlen = form->typlen;
+	else	/* bpchar and varchar */
+	    attribute->attlen = colDef->typename->typlen;
 	attribute->attnum = i;
 	attribute->attbyval = form->typbyval;
 	attribute->attnelems = attnelems;
