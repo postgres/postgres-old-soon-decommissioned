@@ -59,7 +59,7 @@ extern void process_implied_equality(Query *root, Node *item1, Node *item2,
 extern void set_plan_references(Query *root, Plan *plan);
 extern List *join_references(List *clauses, Query *root,
 							 List *outer_tlist, List *inner_tlist,
-							 Index acceptable_rel, Index join_rti);
+							 Index acceptable_rel);
 extern void fix_opids(Node *node);
 
 /*

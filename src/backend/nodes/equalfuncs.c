@@ -1680,13 +1680,7 @@ _equalRangeTblEntry(RangeTblEntry *a, RangeTblEntry *b)
 		return false;
 	if (a->jointype != b->jointype)
 		return false;
-	if (!equali(a->joincoltypes, b->joincoltypes))
-		return false;
-	if (!equali(a->joincoltypmods, b->joincoltypmods))
-		return false;
-	if (!equali(a->joinleftcols, b->joinleftcols))
-		return false;
-	if (!equali(a->joinrightcols, b->joinrightcols))
+	if (!equal(a->joinaliasvars, b->joinaliasvars))
 		return false;
 	if (!equal(a->alias, b->alias))
 		return false;

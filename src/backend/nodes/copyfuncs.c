@@ -323,7 +323,6 @@ CopyJoinFields(Join *from, Join *newnode)
 {
 	newnode->jointype = from->jointype;
 	Node_Copy(from, newnode, joinqual);
-	newnode->joinrti = from->joinrti;
 	/* subPlan list must point to subplans in the new subtree, not the old */
 	if (from->plan.subPlan != NIL)
 		newnode->plan.subPlan = nconc(newnode->plan.subPlan,
@@ -1475,10 +1474,7 @@ _copyRangeTblEntry(RangeTblEntry *from)
 	newnode->relid = from->relid;
 	Node_Copy(from, newnode, subquery);
 	newnode->jointype = from->jointype;
-	newnode->joincoltypes = listCopy(from->joincoltypes);
-	newnode->joincoltypmods = listCopy(from->joincoltypmods);
-	newnode->joinleftcols = listCopy(from->joinleftcols);
-	newnode->joinrightcols = listCopy(from->joinrightcols);
+	Node_Copy(from, newnode, joinaliasvars);
 	Node_Copy(from, newnode, alias);
 	Node_Copy(from, newnode, eref);
 	newnode->inh = from->inh;

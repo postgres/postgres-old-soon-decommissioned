@@ -2075,7 +2075,7 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 	Node	   *node;
 	List	   *lefttl,
 			   *dtlist,
-			   *colMods,
+			   *targetvars,
 			   *targetnames,
 			   *sv_namespace,
 			   *sv_rtable;
@@ -2145,14 +2145,12 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 	/*
 	 * Generate dummy targetlist for outer query using column names of
 	 * leftmost select and common datatypes of topmost set operation. Also
-	 * make a list of the column names for use in parsing ORDER BY.
-	 *
-	 * XXX colMods is a hack to provide a dummy typmod list below.  We
-	 * should probably keep track of common typmod instead.
+	 * make lists of the dummy vars and their names for use in parsing
+	 * ORDER BY.
 	 */
 	qry->targetList = NIL;
+	targetvars = NIL;
 	targetnames = NIL;
-	colMods = NIL;
 	lefttl = leftmostQuery->targetList;
 	foreach(dtlist, sostmt->colTypes)
 	{
@@ -2174,8 +2172,8 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 								0);
 		qry->targetList = lappend(qry->targetList,
 								  makeTargetEntry(resdom, expr));
+		targetvars = lappend(targetvars, expr);
 		targetnames = lappend(targetnames, makeString(colName));
-		colMods = lappendi(colMods, -1);
 		lefttl = lnext(lefttl);
 	}
 
@@ -2232,10 +2230,7 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 	jrte = addRangeTableEntryForJoin(NULL,
 									 targetnames,
 									 JOIN_INNER,
-									 sostmt->colTypes,
-									 colMods,
-									 NIL,
-									 NIL,
+									 targetvars,
 									 NULL,
 									 true);
 	jrtr = makeNode(RangeTblRef);
