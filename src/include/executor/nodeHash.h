@@ -22,7 +22,7 @@ extern TupleTableSlot *ExecHash(HashState *node);
 extern void ExecEndHash(HashState *node);
 extern void ExecReScanHash(HashState *node, ExprContext *exprCtxt);
 
-extern HashJoinTable ExecHashTableCreate(Hash *node);
+extern HashJoinTable ExecHashTableCreate(Hash *node, List *hashOperators);
 extern void ExecHashTableDestroy(HashJoinTable hashtable);
 extern void ExecHashTableInsert(HashJoinTable hashtable,
 					ExprContext *econtext,

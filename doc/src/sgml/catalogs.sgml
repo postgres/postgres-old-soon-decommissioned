@@ -2525,7 +2525,7 @@
       <entry><structfield>oprcanhash</structfield></entry>
       <entry><type>bool</type></entry>
       <entry></entry>
-      <entry>This operator supports hash joins.</entry>
+      <entry>This operator supports hash joins</entry>
      </row>
 
      <row>

@@ -704,6 +704,8 @@ bpcharcmp(PG_FUNCTION_ARGS)
 /*
  * bpchar needs a specialized hash function because we want to ignore
  * trailing blanks in comparisons.
+ *
+ * XXX is there any need for locale-specific behavior here?
  */
 Datum
 hashbpchar(PG_FUNCTION_ARGS)

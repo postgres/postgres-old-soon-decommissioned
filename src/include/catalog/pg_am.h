@@ -107,6 +107,7 @@ DESCR("b-tree index access method");
 #define BTREE_AM_OID 403
 DATA(insert OID = 405 (  hash	PGUID	1 1 0 f f f t hashgettuple hashinsert hashbeginscan hashrescan hashendscan hashmarkpos hashrestrpos hashbuild hashbulkdelete - hashcostestimate ));
 DESCR("hash index access method");
+#define HASH_AM_OID 405
 DATA(insert OID = 783 (  gist	PGUID 100 7 0 f t f f gistgettuple gistinsert gistbeginscan gistrescan gistendscan gistmarkpos gistrestrpos gistbuild gistbulkdelete - gistcostestimate ));
 DESCR("GiST index access method");
 #define GIST_AM_OID 783

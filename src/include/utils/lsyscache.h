@@ -18,6 +18,7 @@
 extern bool op_in_opclass(Oid opno, Oid opclass);
 extern bool op_requires_recheck(Oid opno, Oid opclass);
 extern Oid	get_opclass_member(Oid opclass, int16 strategy);
+extern Oid	get_op_hash_function(Oid opno);
 extern char *get_attname(Oid relid, AttrNumber attnum);
 extern AttrNumber get_attnum(Oid relid, const char *attname);
 extern Oid	get_atttype(Oid relid, AttrNumber attnum);
@@ -25,6 +26,7 @@ extern int32 get_atttypmod(Oid relid, AttrNumber attnum);
 extern void get_atttypetypmod(Oid relid, AttrNumber attnum,
 				  Oid *typid, int32 *typmod);
 extern bool opclass_is_btree(Oid opclass);
+extern bool opclass_is_hash(Oid opclass);
 extern RegProcedure get_opcode(Oid opno);
 extern char *get_opname(Oid opno);
 extern bool op_mergejoinable(Oid opno, Oid *leftOp, Oid *rightOp);
