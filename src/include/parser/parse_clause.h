@@ -26,6 +26,7 @@ extern List *transformGroupClause(ParseState *pstate, List *grouplist,
 extern List *transformSortClause(ParseState *pstate,
 					List *orderlist, List *targetlist,
 					char *uniqueFlag);
+extern List *transformUnionClause(List *unionClause, List *targetlist);
 
 #endif							/* PARSE_CLAUSE_H */
 
