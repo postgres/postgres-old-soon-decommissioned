@@ -161,8 +161,8 @@ dumpClasses_nodumpData(FILE *fout, const char *classname, const bool oids) {
         } else {
             copydone = false;
             while (!copydone) {
-                ret = PQgetline(res->conn, copybuf, COPYBUFSIZ);
-                
+                ret = PQgetline(res->conn, copybuf, COPYBUFSIZ); 
+               
                 if (copybuf[0] == '\\' &&
                     copybuf[1] == '.' &&
                     copybuf[2] == '\0') {
@@ -184,7 +184,16 @@ dumpClasses_nodumpData(FILE *fout, const char *classname, const bool oids) {
             fprintf(fout, "\\.\n");
         }
         PQclear(res);
-        PQendcopy(res->conn);
+        ret = PQendcopy(res->conn);
+        if (ret != 0) {
+            fprintf(stderr, "SQL query to dump the contents of Table %s "
+                    "did not execute correctly.  After we read all the "
+                    "table contents from the backend, PQendcopy() failed.  "
+                    "Explanation from backend: '%s'.\n"
+                    "The query was: '%s'.\n",
+                    classname, PQerrorMessage(g_conn), query);
+            exit_nicely(g_conn);
+        }
     }
 }
 
@@ -287,8 +296,7 @@ dumpClasses(const TableInfo tblinfo[], const int numTables, FILE *fout,
     int i;
     char *all_only;
 
-    if (onlytable == NULL)
-	all_only = "all";
+    if (onlytable == NULL) all_only = "all";
     else all_only = "one";
     
     if (g_verbose)
@@ -297,7 +305,7 @@ dumpClasses(const TableInfo tblinfo[], const int numTables, FILE *fout,
     
     for(i = 0; i < numTables; i++) {
         const char *classname = tblinfo[i].relname;
-        
+
         if (!onlytable || (!strcmp(classname,onlytable))) {
             if (g_verbose)
               fprintf(stderr, "%s dumping out the contents of Table %s %s\n",
