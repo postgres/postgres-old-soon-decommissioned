@@ -30,11 +30,11 @@
  */
 /* bool.c */
 extern bool boolin(char *b);
-extern char *boolout(long b);
-extern bool booleq(int8 arg1, int8 arg2);
-extern bool boolne(int8 arg1, int8 arg2);
-extern bool boollt(int8 arg1, int8 arg2);
-extern bool boolgt(int8 arg1, int8 arg2);
+extern char *boolout(bool b);
+extern bool booleq(bool arg1, bool arg2);
+extern bool boolne(bool arg1, bool arg2);
+extern bool boollt(bool arg1, bool arg2);
+extern bool boolgt(bool arg1, bool arg2);
 
 /* char.c */
 extern int32 charin(char *ch);
