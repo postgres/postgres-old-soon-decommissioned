@@ -87,6 +87,7 @@ typedef struct _indInfo {
     char *indproc;       /* oid of the function to compute the index, 0 if none*/
     char *indkey;        /* attribute number of the key attribute */
     char *indclassname;  /* name of the opclass of the key */
+    char *indisunique;   /* is this index unique? */
 } IndInfo;
 
 typedef struct _aggInfo {
@@ -161,6 +162,7 @@ extern void check_conn_and_db(void);
 extern int strInArray(const char* pattern, char** arr, int arr_size);
 extern void parseArgTypes(char **argtypes, const char* str);
 extern int isArchiveName(const char*);
+extern bool isViewRule(char *relname);
 
 /*
  * version specific routines 
