@@ -5760,6 +5760,8 @@ needs_toast_table(Relation rel)
 
 	for (i = 0; i < tupdesc->natts; i++)
 	{
+		if (att[i]->attisdropped)
+			continue;
 		data_length = att_align(data_length, att[i]->attalign);
 		if (att[i]->attlen > 0)
 		{
