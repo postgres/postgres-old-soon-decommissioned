@@ -5,6 +5,7 @@ top_builddir = ..
 include $(top_builddir)/src/Makefile.global
 
 WANTED_DIRS =	array		\
+		cube		\
 		earthdistance	\
 		findoidjoins	\
 		fulltextindex	\
@@ -18,6 +19,7 @@ WANTED_DIRS =	array		\
 		pg_dumplo	\
 		pgbench		\
 		pgcrypto	\
+		seg		\
 		soundex		\
 		spi		\
 		string		\
