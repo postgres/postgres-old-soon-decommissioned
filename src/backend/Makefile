@@ -12,8 +12,8 @@ subdir = src/backend
 top_builddir = ../..
 include ../Makefile.global
 
-DIRS := access bootstrap catalog commands executor lib libpq \
-	main parser nodes optimizer port postmaster regex rewrite \
+DIRS := access bootstrap catalog parser commands executor lib libpq \
+	main nodes optimizer port postmaster regex rewrite \
 	storage tcop utils
 
 ifdef TIOGA
