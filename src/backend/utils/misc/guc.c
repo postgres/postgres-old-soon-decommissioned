@@ -1015,8 +1015,8 @@ InitializeGUCOptions(void)
 
 				if (conf->assign_hook)
 					if (!(*conf->assign_hook) (conf->reset_val, true, false))
-						fprintf(stderr, "Failed to initialize %s",
-								conf->gen.name);
+						fprintf(stderr, "Failed to initialize %s to %d\n",
+								conf->gen.name, (int) conf->reset_val);
 				*conf->variable = conf->reset_val;
 				conf->session_val = conf->reset_val;
 				break;
@@ -1029,8 +1029,8 @@ InitializeGUCOptions(void)
 				Assert(conf->reset_val <= conf->max);
 				if (conf->assign_hook)
 					if (!(*conf->assign_hook) (conf->reset_val, true, false))
-						fprintf(stderr, "Failed to initialize %s",
-								conf->gen.name);
+						fprintf(stderr, "Failed to initialize %s to %d\n",
+								conf->gen.name, conf->reset_val);
 				*conf->variable = conf->reset_val;
 				conf->session_val = conf->reset_val;
 				break;
@@ -1043,8 +1043,8 @@ InitializeGUCOptions(void)
 				Assert(conf->reset_val <= conf->max);
 				if (conf->assign_hook)
 					if (!(*conf->assign_hook) (conf->reset_val, true, false))
-						fprintf(stderr, "Failed to initialize %s",
-								conf->gen.name);
+						fprintf(stderr, "Failed to initialize %s to %g\n",
+								conf->gen.name, conf->reset_val);
 				*conf->variable = conf->reset_val;
 				conf->session_val = conf->reset_val;
 				break;
@@ -1077,8 +1077,8 @@ InitializeGUCOptions(void)
 					newstr = (*conf->assign_hook) (str, true, false);
 					if (newstr == NULL)
 					{
-						fprintf(stderr, "Failed to initialize %s",
-								conf->gen.name);
+						fprintf(stderr, "Failed to initialize %s to '%s'\n",
+								conf->gen.name, str);
 					}
 					else if (newstr != str)
 					{
