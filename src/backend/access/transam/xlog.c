@@ -940,7 +940,6 @@ MoveOfflineLogs(char *archdir, uint32 _logId, uint32 _logSeg)
 			continue;
 		if (strcmp(xlde->d_name, lastoff) > 0)
 		{
-			elog(DEBUG, "MoveOfflineLogs: skip %s", xlde->d_name);
 			errno = 0;
 			continue;
 		}
