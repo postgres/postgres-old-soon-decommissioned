@@ -61,7 +61,7 @@ InitBufTable()
 	hash_flags = (HASH_ELEM | HASH_FUNCTION);
 
 
-	SharedBufHash = (HTAB *) ShmemInitHash("Shared Buf Lookup Table",
+	SharedBufHash = (HTAB *) ShmemInitHash("Shared Buffer Lookup Table",
 										   NBuffers, NBuffers,
 										   &info, hash_flags);
 
