@@ -43,7 +43,7 @@ extern PG_LocaleCategories *PGLC_setlocale( PG_LocaleCategories *lc );
  * on current locale catogories setting - in contrast to standard localeconv().
  *------
  */
-extern struct lconv *PGLC_localeconv();
+extern struct lconv *PGLC_localeconv(void);
 
  
 #endif /* USE_LOCALE */

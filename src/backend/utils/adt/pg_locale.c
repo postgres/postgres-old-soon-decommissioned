@@ -109,7 +109,7 @@ PGLC_setlocale( PG_LocaleCategories *lc )
  *------
  */
 struct lconv *
-PGLC_localeconv()
+PGLC_localeconv(void)
 {
 	PG_LocaleCategories	lc;
 	struct lconv		*lconv;
