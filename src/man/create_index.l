@@ -8,7 +8,7 @@ create index \(em construct a secondary index
 .nf
 \fBcreate\fR [\fBunique\fR] \fBindex\fR index-name
 	\fBon\fR classname [\fBusing\fR am-name]
-	\fB(\fR attname, ... [type_class\fB] )\fR
+	\fB(\fR attname [type_class], ...\fB )\fR
 
 \fBcreate\fR [\fBunique\fR] \fBindex\fR index-name
 	\fBon\fR classname [\fBusing\fR am-name]
@@ -33,6 +33,11 @@ class; this operator class includes comparison functions for four-byte
 integers.
 The default operator class is the appropriate operator class for
 that field type.
+.PP
+\fBNote:\fR currently, only 
+.IR btree
+access method supports multi-attribute indices.
+Up to 7 keys may be specified.
 .PP
 In the second syntax shown above, an index can be defined on the
 result of a user-defined function
