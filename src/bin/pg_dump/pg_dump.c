@@ -1104,7 +1104,7 @@ dumpBlobs(Archive *AH, char* junkOid, void *junkVal)
 		fprintf(stderr, "%s saving BLOBs\n", g_comment_start);
 
 	/* Cursor to get all BLOB tables */
-    appendPQExpBuffer(oidQry, "Declare blobOid Cursor for SELECT loid from pg_largeobject");
+    appendPQExpBuffer(oidQry, "Declare blobOid Cursor for SELECT oid from pg_class where relkind = '%c'", RELKIND_LOBJECT);
 
 	res = PQexec(g_conn, oidQry->data);
 	if (!res || PQresultStatus(res) != PGRES_COMMAND_OK)
