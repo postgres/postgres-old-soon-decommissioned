@@ -1369,8 +1369,7 @@ reset_shared(unsigned short port)
 
 
 /*
- * Set flag if SIGHUP was detected so config file can be reread in
- * main loop
+ * SIGHUP -- reread config files, and tell children to do same
  */
 static void
 SIGHUP_handler(SIGNAL_ARGS)
