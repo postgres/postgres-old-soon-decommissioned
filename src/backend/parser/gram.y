@@ -51,18 +51,15 @@
 #include <ctype.h>
 #include <limits.h>
 
-#include "access/htup.h"
 #include "catalog/index.h"
 #include "catalog/namespace.h"
-#include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
-#include "nodes/params.h"
-#include "nodes/parsenodes.h"
 #include "parser/gramparse.h"
 #include "storage/lmgr.h"
-#include "utils/numeric.h"
-#include "utils/datetime.h"
 #include "utils/date.h"
+#include "utils/datetime.h"
+#include "utils/numeric.h"
+
 
 extern List *parsetree;			/* final parse result is delivered here */
 

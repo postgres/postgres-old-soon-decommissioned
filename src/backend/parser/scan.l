@@ -18,18 +18,14 @@
 
 #include <ctype.h>
 #include <unistd.h>
-#include <errno.h>
 
-#include "miscadmin.h"
-#include "nodes/parsenodes.h"
-#include "nodes/pg_list.h"
 #include "parser/gramparse.h"
 #include "parser/keywords.h"
 /* Not needed now that this file is compiled as part of gram.y */
 /* #include "parser/parse.h" */
 #include "parser/scansup.h"
-#include "utils/builtins.h"
 #include "mb/pg_wchar.h"
+
 
 /* Avoid exit() on fatal scanner errors (a bit ugly -- see yy_fatal_error) */
 #define fprintf(file, fmt, msg)  ereport(ERROR, (errmsg_internal("%s", msg)))
