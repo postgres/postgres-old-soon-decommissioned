@@ -64,7 +64,7 @@ char	   *Name_pg_opclass_indices[Num_pg_opclass_indices] =
 char	   *Name_pg_operator_indices[Num_pg_operator_indices] =
 {OperatorOidIndex, OperatorNameIndex};
 char	   *Name_pg_proc_indices[Num_pg_proc_indices] =
-{ProcedureOidIndex, ProcedureNameIndex};
+{ProcedureOidIndex, ProcedureNameNspIndex};
 char	   *Name_pg_relcheck_indices[Num_pg_relcheck_indices] =
 {RelCheckIndex};
 char	   *Name_pg_rewrite_indices[Num_pg_rewrite_indices] =

@@ -470,19 +470,19 @@ op_hashjoinable(Oid opno, Oid ltype, Oid rtype)
 }
 
 /*
- * op_iscachable
+ * op_volatile
  *
- * Get the proiscachable flag for the operator's underlying function.
+ * Get the provolatile flag for the operator's underlying function.
  */
-bool
-op_iscachable(Oid opno)
+char
+op_volatile(Oid opno)
 {
 	RegProcedure funcid = get_opcode(opno);
 
 	if (funcid == (RegProcedure) InvalidOid)
 		elog(ERROR, "Operator OID %u does not exist", opno);
 
-	return func_iscachable((Oid) funcid);
+	return func_volatile((Oid) funcid);
 }
 
 /*
@@ -613,14 +613,14 @@ get_func_rettype(Oid funcid)
 }
 
 /*
- * func_iscachable
- *		Given procedure id, return the function's proiscachable flag.
+ * func_volatile
+ *		Given procedure id, return the function's provolatile flag.
  */
-bool
-func_iscachable(Oid funcid)
+char
+func_volatile(Oid funcid)
 {
 	HeapTuple	tp;
-	bool		result;
+	char		result;
 
 	tp = SearchSysCache(PROCOID,
 						ObjectIdGetDatum(funcid),
@@ -628,7 +628,7 @@ func_iscachable(Oid funcid)
 	if (!HeapTupleIsValid(tp))
 		elog(ERROR, "Function OID %u does not exist", funcid);
 
-	result = ((Form_pg_proc) GETSTRUCT(tp))->proiscachable;
+	result = ((Form_pg_proc) GETSTRUCT(tp))->provolatile;
 	ReleaseSysCache(tp);
 	return result;
 }

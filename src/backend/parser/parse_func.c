@@ -525,7 +525,7 @@ func_get_candidates(char *funcname, int nargs)
 						   (RegProcedure) F_INT2EQ,
 						   Int16GetDatum(nargs));
 
-	funcscan = systable_beginscan(heapRelation, ProcedureNameIndex, true,
+	funcscan = systable_beginscan(heapRelation, ProcedureNameNspIndex, true,
 								  SnapshotNow, 2, skey);
 
 	while (HeapTupleIsValid(tuple = systable_getnext(funcscan)))

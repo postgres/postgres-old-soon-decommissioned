@@ -304,7 +304,7 @@ static const struct cachedesc cacheinfo[] = {
 			0
 	}},
 	{ProcedureRelationName,		/* PROCNAME */
-		ProcedureNameIndex,
+		ProcedureNameNspIndex,	/* XXX very temporary */
 		0,
 		3,
 		{

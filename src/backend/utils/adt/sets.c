@@ -61,8 +61,8 @@ SetDefine(char *querystr, Oid elemType)
 							 querystr,	/* sourceCode */
 							 fileName,	/* fileName */
 							 true,		/* trusted */
-							 false,		/* canCache (assume unsafe) */
 							 false,		/* isStrict (irrelevant, no args) */
+							 PROVOLATILE_VOLATILE,	/* assume unsafe */
 							 100,		/* byte_pct */
 							 0, /* perbyte_cpu */
 							 0, /* percall_cpu */

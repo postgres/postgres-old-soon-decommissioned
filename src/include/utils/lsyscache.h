@@ -32,13 +32,13 @@ extern bool op_mergejoinable(Oid opno, Oid ltype, Oid rtype,
 extern void op_mergejoin_crossops(Oid opno, Oid *ltop, Oid *gtop,
 				 RegProcedure *ltproc, RegProcedure *gtproc);
 extern Oid	op_hashjoinable(Oid opno, Oid ltype, Oid rtype);
-extern bool op_iscachable(Oid opno);
+extern char op_volatile(Oid opno);
 extern Oid	get_commutator(Oid opno);
 extern Oid	get_negator(Oid opno);
 extern RegProcedure get_oprrest(Oid opno);
 extern RegProcedure get_oprjoin(Oid opno);
 extern Oid	get_func_rettype(Oid funcid);
-extern bool func_iscachable(Oid funcid);
+extern char func_volatile(Oid funcid);
 extern Oid	get_relname_relid(const char *relname, Oid relnamespace);
 extern char *get_rel_name(Oid relid);
 extern Oid	get_rel_type_id(Oid relid);
