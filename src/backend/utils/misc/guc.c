@@ -641,11 +641,6 @@ static struct config_int
 	},
 
 	{
-		{ "wal_files", PGC_SIGHUP }, &XLOGfiles,
-		0, 0, 64, NULL, NULL
-	},
-
-	{
 		{ "wal_debug", PGC_SUSET }, &XLOG_DEBUG,
 		0, 0, 16, NULL, NULL
 	},

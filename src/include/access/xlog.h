@@ -185,7 +185,6 @@ extern XLogRecPtr ProcLastRecEnd;
 /* these variables are GUC parameters related to XLOG */
 extern int	CheckPointSegments;
 extern int	XLOGbuffers;
-extern int	XLOGfiles;
 extern int	XLOG_DEBUG;
 extern char *XLOG_sync_method;
 extern const char XLOG_sync_method_default[];
