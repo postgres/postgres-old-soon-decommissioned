@@ -48,11 +48,11 @@ install:
 	$(MAKE) -C lextest install
 	$(MAKE) -C utils install
 	$(MAKE) -C backend install
-	$(MAKE) -C interfaces install
 	$(MAKE) -C bin install
 ifneq ($(wildcard man), )
 	$(MAKE) -C man install
 endif
+	$(MAKE) -C interfaces install
 	cat ../register.txt
 
 clean:
