@@ -273,7 +273,7 @@ if [ "$usage" ]; then
     echo " [-D, --pgdata] DATADIR       Location for this database cluster"
     echo "  -W, --pwprompt              Prompt for a password for the new superuser"
     if [ -n "$MULTIBYTE" ] ; then 
-        echo "  -E, --encoding ENCODING     Sets default multibyte encoding for new databases"
+        echo "  -E, --encoding ENCODING     Set default encoding for new databases"
     fi
     echo "  -U, --username NAME         Database superuser name"
     echo "Less commonly used options: "
