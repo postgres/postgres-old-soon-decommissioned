@@ -139,7 +139,7 @@ main(int argc, char *argv[])
 		printf("thread-safe.\n");
 	else
 	{
-		printf("not thread-safe.\n");
+		printf("not thread-safe. **\n");
 		platform_is_threadsafe = false;
 	}
 #endif
@@ -152,7 +152,7 @@ main(int argc, char *argv[])
 		printf("thread-safe.\n");
 	else
 	{
-		printf("not thread-safe.\n");
+		printf("not thread-safe. **\n");
 		platform_is_threadsafe = false;
 	}
 #endif
@@ -169,7 +169,7 @@ main(int argc, char *argv[])
 		printf("thread-safe.\n");
 	else
 	{
-		printf("not thread-safe.\n");
+		printf("not thread-safe. **\n");
 		platform_is_threadsafe = false;
 	}
 #endif
