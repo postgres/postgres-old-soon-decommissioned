@@ -7,9 +7,9 @@ create table \(em create a new class
 .SH SYNOPSIS
 .nf
 \fBcreate table\fR classname \fB(\fPattname type [\fBdefault\fP value]
-	[\fB,\fP attname type \fBdefault\fP value]\fB )\fP
+	[\fB,\fP attname type [\fBdefault\fP value] ]\fB )\fP
 	[\fBinherits\fR \fB(\fR classname [\fB,\fR classname] \fB)\fR]
-	[\fBconstraint\fR cname \fBcheck\fR \fB(\fR test \fB)\fR [\fB,\fR \fBcheck\fR test]
+	[\fBconstraint\fR cname \fBcheck\fR \fB(\fR test \fB)\fR [, \fBcheck\fR \fB(\fR test \fB)\fR ] ]
 	[\fBarchive\fR \fB=\fR archive_mode]
 	[\fBstore\fR \fB=\fR \*(lqsmgr_name\*(rq]
 	[\fBarch_store\fR \fB=\fR \*(lqsmgr_name\*(rq]
