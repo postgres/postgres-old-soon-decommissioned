@@ -487,7 +487,7 @@ BgWriterShmemInit(void)
 	if (BgWriterShmem == NULL)
 		ereport(FATAL,
 				(errcode(ERRCODE_OUT_OF_MEMORY),
-				 errmsg("insufficient shared memory for bgwriter")));
+				 errmsg("not enough shared memory for background writer")));
 	if (found)
 		return;					/* already initialized */
 

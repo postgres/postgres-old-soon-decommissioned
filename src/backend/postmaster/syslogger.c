@@ -402,7 +402,7 @@ SysLogger_Start(void)
 		if (pgpipe(syslogPipe) < 0)
 			ereport(FATAL,
 					(errcode_for_socket_access(),
-				  (errmsg("could not create pipe for syslogging: %m"))));
+				  (errmsg("could not create pipe for syslog: %m"))));
 	}
 #else
 	if (!syslogPipe[0])
@@ -444,7 +444,7 @@ SysLogger_Start(void)
 	if (!syslogFile)
 		ereport(FATAL,
 				(errcode_for_file_access(),
-				 (errmsg("could not create logfile \"%s\": %m",
+				 (errmsg("could not create log file \"%s\": %m",
 						 filename))));
 
 	setvbuf(syslogFile, NULL, LBF_MODE, 0);
@@ -700,7 +700,7 @@ write_syslogger_file_binary(const char *buffer, int count)
 	if (rc != count)
 		ereport(LOG,
 				(errcode_for_file_access(),
-				 errmsg("could not write to logfile: %m")));
+				 errmsg("could not write to log file: %m")));
 }
 
 #ifdef WIN32
@@ -787,7 +787,7 @@ logfile_rotate(bool time_based_rotation)
 
 		ereport(LOG,
 				(errcode_for_file_access(),
-				 errmsg("could not open new logfile \"%s\": %m",
+				 errmsg("could not open new log file \"%s\": %m",
 						filename)));
 
 		/*
@@ -799,7 +799,7 @@ logfile_rotate(bool time_based_rotation)
 		if (saveerrno != ENFILE && saveerrno != EMFILE)
 		{
 			ereport(LOG,
-			(errmsg("disabling auto rotation (use SIGHUP to reenable)")));
+			(errmsg("disabling automatic rotation (use SIGHUP to reenable)")));
 			Log_RotationAge = 0;
 			Log_RotationSize = 0;
 		}

@@ -1623,7 +1623,7 @@ getObjectDescription(const ObjectAddress *object)
 				else
 					nspname = get_namespace_name(opcForm->opcnamespace);
 
-				appendStringInfo(&buffer, gettext("operator class %s for %s"),
+				appendStringInfo(&buffer, gettext("operator class %s for access method %s"),
 								 quote_qualified_identifier(nspname,
 											  NameStr(opcForm->opcname)),
 								 NameStr(amForm->amname));

@@ -224,7 +224,7 @@ pg_signal_thread(LPVOID param)
 						   PIPE_UNLIMITED_INSTANCES, 16, 16, 1000, NULL);
 		if (pipe == INVALID_HANDLE_VALUE)
 		{
-			write_stderr("failed to create signal listener pipe: %d. Retrying.\n", (int) GetLastError());
+			write_stderr("could not create signal listener pipe: %d; retrying\n", (int) GetLastError());
 			SleepEx(500, FALSE);
 			continue;
 		}
@@ -236,7 +236,7 @@ pg_signal_thread(LPVOID param)
 					  (LPTHREAD_START_ROUTINE) pg_signal_dispatch_thread,
 								   (LPVOID) pipe, 0, NULL);
 			if (hThread == INVALID_HANDLE_VALUE)
-				write_stderr("failed to create signal dispatch thread: %d\n",
+				write_stderr("could not create signal dispatch thread: %d\n",
 							 (int) GetLastError());
 			else
 				CloseHandle(hThread);

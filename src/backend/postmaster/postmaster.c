@@ -796,7 +796,7 @@ PostmasterMain(int argc, char *argv[])
 			/* Should we remove the pid file on postmaster exit? */
 		}
 		else
-			write_stderr("%s: could not write external pid file \"%s\": %s\n",
+			write_stderr("%s: could not write external PID file \"%s\": %s\n",
 						 progname, external_pid_file, strerror(errno));
 	}
 
@@ -3759,7 +3759,7 @@ win32_sigchld_waiter(LPVOID param)
 	if (r == WAIT_OBJECT_0)
 		pg_queue_signal(SIGCHLD);
 	else
-		write_stderr("ERROR: failed to wait on child process handle: %d\n",
+		write_stderr("could not wait on child process handle: %d\n",
 					 (int) GetLastError());
 	CloseHandle(procHandle);
 	return 0;

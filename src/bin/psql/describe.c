@@ -114,7 +114,7 @@ describeTablespaces(const char *pattern, bool verbose)
 
 	if (pset.sversion < 70500)
 	{
-		fprintf(stderr, _("This server version (%d) does not support tablespaces.\n"),
+		fprintf(stderr, _("The server version (%d) does not support tablespaces.\n"),
 				pset.sversion);
 		return true;
 	}
@@ -922,9 +922,9 @@ describeOneTableDetails(const char *schemaname,
 			int			count_footers = 0;
 
 			if (strcmp(indisprimary, "t") == 0)
-				printfPQExpBuffer(&tmpbuf, _("PRIMARY KEY, "));
+				printfPQExpBuffer(&tmpbuf, _("primary key, "));
 			else if (strcmp(indisunique, "t") == 0)
-				printfPQExpBuffer(&tmpbuf, _("UNIQUE, "));
+				printfPQExpBuffer(&tmpbuf, _("unique, "));
 			else
 				resetPQExpBuffer(&tmpbuf);
 			appendPQExpBuffer(&tmpbuf, "%s, ", indamname);
@@ -937,7 +937,7 @@ describeOneTableDetails(const char *schemaname,
 				appendPQExpBuffer(&tmpbuf, _(", predicate (%s)"), indpred);
 
 			if (strcmp(indisclustered, "t") == 0)
-				appendPQExpBuffer(&tmpbuf, _(", CLUSTER"));
+				appendPQExpBuffer(&tmpbuf, _(", clustered"));
 
 			footers = pg_malloc_zero(4 * sizeof(*footers));
 			footers[count_footers++] = pg_strdup(tmpbuf.data);
@@ -1256,7 +1256,7 @@ describeOneTableDetails(const char *schemaname,
 
 		if (verbose)
 		{
-			char	   *s = _("Contains OIDs");
+			char	   *s = _("Has OIDs");
 
 			printfPQExpBuffer(&buf, "%s: %s", s,
 							  (tableinfo.hasoids ? _("yes") : _("no")));

@@ -210,7 +210,7 @@ saveHistory(char *fname)
 		psql_error("could not save history to file \"%s\": %s\n", fname, strerror(errno));
 	}
 #else
-		psql_error("history is not supported\n");
+		psql_error("history is not supported by this installation\n");
 #endif
 
 	return false;

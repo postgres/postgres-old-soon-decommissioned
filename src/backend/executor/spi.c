@@ -188,7 +188,7 @@ AtEOXact_SPI(bool isCommit)
 		ereport(WARNING,
 				(errcode(ERRCODE_WARNING),
 				 errmsg("transaction left non-empty SPI stack"),
-				 errhint("Check for missing \"SPI_finish\" calls")));
+				 errhint("Check for missing \"SPI_finish\" calls.")));
 
 	_SPI_current = _SPI_stack = NULL;
 	_SPI_stack_depth = 0;
@@ -1571,7 +1571,7 @@ _SPI_error_callback(void *arg)
 		internalerrquery(query);
 	}
 	else
-		errcontext("SQL query \"%s\"", query);
+		errcontext("SQL statement \"%s\"", query);
 }
 
 /*

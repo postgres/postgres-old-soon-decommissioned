@@ -492,7 +492,7 @@ conditional_relation_open(Oid relationId, LOCKMODE lockmode, bool nowait)
 			if (!ConditionalLockRelation(r, lockmode))
 				ereport(ERROR,
 						(errcode(ERRCODE_LOCK_NOT_AVAILABLE),
-						 errmsg("could not obtain lock on \"%s\"",
+						 errmsg("could not obtain lock on relation \"%s\"",
 								RelationGetRelationName(r))));
 		}
 		else

@@ -2127,7 +2127,7 @@ usage(const char *progname)
 	printf(gettext("  -o FILENAME     send stdout and stderr to given file\n"));
 	printf(gettext("  -P              disable system indexes\n"));
 	printf(gettext("  -s              show statistics after each query\n"));
-	printf(gettext("  -S WORK-MEM     set amount of memory for sorts (in kbytes)\n"));
+	printf(gettext("  -S WORK-MEM     set amount of memory for sorts (in kB)\n"));
 	printf(gettext("  --describe-config  describe configuration parameters, then exit\n"));
 	printf(gettext("  --help          show this help, then exit\n"));
 	printf(gettext("  --version       output version information, then exit\n"));
