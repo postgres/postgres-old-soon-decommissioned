@@ -25,6 +25,9 @@
 #include "lib/dllist.h"
 #include "libpq/libpq.h"
 #include "libpq/libpq-fs.h"
+#include "nodes/nodes.h"
+#include "utils/memutils.h"
+#include "lib/fstack.h"
 #include "utils/mcxt.h"
 #include "utils/palloc.h"
 

@@ -61,10 +61,13 @@
 
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include <libpq/auth.h>
-#include <libpq/libpq.h>
-#include <libpq/libpq-be.h>
-#include <libpq/hba.h>
+
+#include "postgres.h"
+
+#include "libpq/auth.h"
+#include "libpq/libpq.h"
+#include "libpq/libpq-be.h"
+#include "libpq/hba.h"
 
 /*----------------------------------------------------------------
  * common definitions for generic fe/be routines

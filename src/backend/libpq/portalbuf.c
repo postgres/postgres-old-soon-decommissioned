@@ -48,7 +48,7 @@
  *
  */
 #include <sys/types.h>
-#include "c.h"
+#include "postgres.h"
 
 #include "libpq/libpq.h"		/* where the declarations go */
 #include "utils/exc.h"
