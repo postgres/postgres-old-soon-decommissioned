@@ -146,8 +146,31 @@ struct _PQprintOpt {
 
 typedef struct _PQprintOpt PQprintOpt;
 
+/* ----------------
+ * Structure for the conninfo parameter definitions of PQconnectdb()
+ * ----------------
+ */
+struct _PQconninfoOption {
+    char	*keyword;	/* The keyword of the option		*/
+    char	*environ;	/* Fallback environment variable name	*/
+    char	*compiled;	/* Fallback compiled in default value	*/
+    char	*val;		/* Options value			*/
+    char	*label;		/* Label for field in connect dialog	*/
+    char	*dispchar;	/* Character to display for this field	*/
+				/* in a connect dialog. Values are:	*/
+    				/*    ""   Display entered value as is	*/
+				/*    "*"  Password field - hide value	*/
+				/*    "D"  Debug options - don't 	*/
+				/*         create a field by default	*/
+    int		dispsize;	/* Field size in characters for dialog	*/
+};
+
+typedef struct _PQconninfoOption PQconninfoOption;
+
 /* ===  in fe-connect.c === */
   /* make a new client connection to the backend */
+extern PGconn* PQconnectdb(const char* conninfo);
+extern PQconninfoOption *PQconndefaults();
 extern PGconn* PQsetdb(const char* pghost, const char* pgport, const char* pgoptions, 
 		       const char* pgtty, const char* dbName);
   /* close the current connection and free the PGconn data structure */
@@ -157,6 +180,7 @@ extern void PQfinish(PGconn* conn);
 extern void PQreset(PGconn* conn);
 
 extern char* PQdb(PGconn* conn);
+extern char* PQuser(PGconn* conn);
 extern char* PQhost(PGconn* conn);
 extern char* PQoptions(PGconn* conn);
 extern char* PQport(PGconn* conn);

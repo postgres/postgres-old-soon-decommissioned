@@ -43,6 +43,8 @@ typedef struct Pg_ResultId_s {
 /* **************************/
 /* registered Tcl functions */
 /* **************************/
+extern int Pg_conndefaults(
+    ClientData cData, Tcl_Interp *interp, int argc, char* argv[]);
 extern int Pg_connect(
     ClientData cData, Tcl_Interp *interp, int argc, char* argv[]);
 extern int Pg_disconnect(

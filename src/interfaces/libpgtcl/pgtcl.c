@@ -76,6 +76,11 @@ Pgtcl_Init (Tcl_Interp *interp)
 
   /* register all pgtcl commands */
   Tcl_CreateCommand(interp,
+		    "pg_conndefaults",
+		    Pg_conndefaults,
+		    (ClientData)cd, (Tcl_CmdDeleteProc*)NULL);
+
+  Tcl_CreateCommand(interp,
 		    "pg_connect",
 		    Pg_connect,
 		    (ClientData)cd, (Tcl_CmdDeleteProc*)NULL);
