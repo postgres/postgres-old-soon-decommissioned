@@ -44,8 +44,8 @@ bool
 op_in_opclass(Oid opno, Oid opclass)
 {
 	return SearchSysCacheExists(AMOPOPID,
-								ObjectIdGetDatum(opclass),
 								ObjectIdGetDatum(opno),
+								ObjectIdGetDatum(opclass),
 								0, 0);
 }
 
@@ -67,8 +67,8 @@ op_requires_recheck(Oid opno, Oid opclass)
 	bool		result;
 
 	tp = SearchSysCache(AMOPOPID,
-						ObjectIdGetDatum(opclass),
 						ObjectIdGetDatum(opno),
+						ObjectIdGetDatum(opclass),
 						0, 0);
 	if (!HeapTupleIsValid(tp))
 		elog(ERROR, "op_requires_recheck: op %u is not a member of opclass %u",

@@ -23,7 +23,7 @@
  * References to specific system indexes in the C code should use these
  * macros rather than hardwiring the actual index name.
  */
-#define AccessMethodOperatorIndex	"pg_amop_opc_opr_index"
+#define AccessMethodOperatorIndex	"pg_amop_opr_opc_index"
 #define AccessMethodStrategyIndex	"pg_amop_opc_strategy_index"
 #define AccessMethodProcedureIndex	"pg_amproc_opc_procnum_index"
 #define AggregateFnoidIndex			"pg_aggregate_fnoid_index"
@@ -115,7 +115,7 @@ extern void CatalogUpdateIndexes(Relation heapRel, HeapTuple heapTuple);
 DECLARE_UNIQUE_INDEX(pg_aggregate_fnoid_index on pg_aggregate using btree(aggfnoid oid_ops));
 DECLARE_UNIQUE_INDEX(pg_am_name_index on pg_am using btree(amname name_ops));
 DECLARE_UNIQUE_INDEX(pg_am_oid_index on pg_am using btree(oid oid_ops));
-DECLARE_UNIQUE_INDEX(pg_amop_opc_opr_index on pg_amop using btree(amopclaid oid_ops, amopopr oid_ops));
+DECLARE_UNIQUE_INDEX(pg_amop_opr_opc_index on pg_amop using btree(amopopr oid_ops, amopclaid oid_ops));
 DECLARE_UNIQUE_INDEX(pg_amop_opc_strategy_index on pg_amop using btree(amopclaid oid_ops, amopstrategy int2_ops));
 DECLARE_UNIQUE_INDEX(pg_amproc_opc_procnum_index on pg_amproc using btree(amopclaid oid_ops, amprocnum int2_ops));
 DECLARE_UNIQUE_INDEX(pg_attrdef_adrelid_adnum_index on pg_attrdef using btree(adrelid oid_ops, adnum int2_ops));

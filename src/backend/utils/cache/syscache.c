@@ -128,8 +128,8 @@ static const struct cachedesc cacheinfo[] = {
 		0,
 		2,
 		{
-			Anum_pg_amop_amopclaid,
 			Anum_pg_amop_amopopr,
+			Anum_pg_amop_amopclaid,
 			0,
 			0
 	}},
