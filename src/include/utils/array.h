@@ -22,8 +22,7 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
-#include <stdio.h>	/* for FILE (XXX should use File) */
-#include "utils/memutils.h"
+#include <stdio.h>
 
 typedef struct {
     int	size;		/* total array size (in bytes) */ 

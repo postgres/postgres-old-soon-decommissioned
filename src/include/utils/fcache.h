@@ -13,7 +13,6 @@
 #ifndef	FCACHE_H
 #define	FCACHE_H
 
-#include "fmgr.h"
 
 typedef struct
 {

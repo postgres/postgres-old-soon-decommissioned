@@ -17,7 +17,7 @@
 #ifndef	TQUAL_H
 #define TQUAL_H
 
-#include "access/htup.h"
+#include <access/htup.h>
 
 typedef struct TimeQualSpace {
     char	data[12];

@@ -13,8 +13,8 @@
 #ifndef	PARSENODES_H
 #define	PARSENODES_H
 
-#include "utils/tqual.h" 
-#include "nodes/primnodes.h" 
+#include <utils/tqual.h>
+#include <nodes/primnodes.h>
 
 /*****************************************************************************
  *  Query Tree 

@@ -43,7 +43,6 @@ typedef TimeIntervalData *TimeInterval;
  * these integer constants depending on whether the constant is signed 
  * or not!
  */
-#include <values.h>
 /*#define NOSTART_ABSTIME	((AbsoluteTime) HIBITI)	*/	/* - 2^31 */
 #define NOSTART_ABSTIME      ((AbsoluteTime) INT_MIN)
 #else

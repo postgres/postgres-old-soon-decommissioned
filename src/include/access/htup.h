@@ -13,8 +13,8 @@
 #ifndef	HTUP_H
 #define HTUP_H
 
-#include "storage/itemptr.h"
-#include "utils/nabstime.h"
+#include <utils/nabstime.h>
+#include <storage/itemptr.h>
 
 #define MinHeapTupleBitmapSize	32		/* 8 * 4 */
 

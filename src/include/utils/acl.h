@@ -22,8 +22,8 @@
 #ifndef ACL_H
 #define ACL_H
 
-#include "utils/array.h"
-#include "nodes/parsenodes.h" /* for ChangeACLStmt */
+#include <nodes/parsenodes.h>
+#include <utils/array.h>
 
 /*
  * AclId	system identifier for the user, group, etc.
