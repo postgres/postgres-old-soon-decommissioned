@@ -46,9 +46,9 @@ extern void FormIndexDatum(IndexInfo *indexInfo,
 						   Datum *datum,
 						   char *nullv);
 
-extern void UpdateStats(Oid relid, long reltuples, bool inplace);
+extern void UpdateStats(Oid relid, long reltuples);
 extern bool IndexesAreActive(Oid relid, bool comfirmCommitted);
-extern void setRelhasindexInplace(Oid relid, bool hasindex, bool immediate);
+extern void setRelhasindex(Oid relid, bool hasindex);
 extern bool SetReindexProcessing(bool processing);
 extern bool IsReindexProcessing(void);
 

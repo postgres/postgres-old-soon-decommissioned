@@ -26,6 +26,7 @@ typedef struct ParseState
 	List	   *p_joinlist;		/* join items so far (will become
 								 * FromExpr node's fromlist) */
 	int			p_last_resno;	/* last targetlist resno assigned */
+	List	   *p_forUpdate;	/* FOR UPDATE clause, if any (see gram.y) */
 	bool		p_hasAggs;
 	bool		p_hasSubLinks;
 	bool		p_is_insert;

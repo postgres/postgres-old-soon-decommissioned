@@ -23,7 +23,7 @@ extern bool rename_temp_relation(const char *oldname,
 								 const char *newname);
 
 extern void remove_all_temp_relations(void);
-extern void remove_temp_rel_in_myxid(void);
+extern void AtEOXact_temp_relations(bool isCommit);
 
 extern char *get_temp_rel_by_username(const char *user_relname);
 extern char *get_temp_rel_by_physicalname(const char *relname);

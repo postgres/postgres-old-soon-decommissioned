@@ -130,7 +130,7 @@ VariableRelationPutNextXid(TransactionId xid)
 
 	TransactionIdStore(xid, &(var->nextXidData));
 
-	FlushBuffer(buf, TRUE);
+	FlushBuffer(buf, true, true);
 }
 
 /* --------------------------------

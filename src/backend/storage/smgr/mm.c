@@ -204,9 +204,11 @@ mmcreate(Relation reln)
 
 /*
  *	mmunlink() -- Unlink a relation.
+ *
+ * XXX currently broken: needs to accept RelFileNode, not Relation
  */
 int
-mmunlink(Relation reln)
+mmunlink(RelFileNode rnode)
 {
 	int			i;
 	Oid			reldbid;

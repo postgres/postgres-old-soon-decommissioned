@@ -29,7 +29,7 @@ extern Relation heap_create(char *relname, TupleDesc tupDesc,
 							bool istemp, bool storage_create,
 							bool allow_system_table_mods);
 
-extern bool heap_storage_create(Relation rel);
+extern void heap_storage_create(Relation rel);
 
 extern Oid heap_create_with_catalog(char *relname, TupleDesc tupdesc,
 									char relkind, bool istemp,

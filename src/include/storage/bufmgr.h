@@ -14,8 +14,9 @@
 #ifndef BUFMGR_H
 #define BUFMGR_H
 
-#include "storage/buf_internals.h"
 #include "access/xlogdefs.h"
+#include "storage/buf_internals.h"
+#include "storage/relfilenode.h"
 
 typedef void *Block;
 
@@ -151,7 +152,7 @@ extern int	WriteBuffer(Buffer buffer);
 extern int	WriteNoReleaseBuffer(Buffer buffer);
 extern Buffer ReleaseAndReadBuffer(Buffer buffer, Relation relation,
 					 BlockNumber blockNum);
-extern int	FlushBuffer(Buffer buffer, bool release);
+extern int	FlushBuffer(Buffer buffer, bool sync, bool release);
 
 extern void InitBufferPool(IPCKey key);
 extern void PrintBufferUsage(FILE *statfp);
@@ -162,7 +163,8 @@ extern void FlushBufferPool(void);
 extern BlockNumber BufferGetBlockNumber(Buffer buffer);
 extern BlockNumber RelationGetNumberOfBlocks(Relation relation);
 extern int	FlushRelationBuffers(Relation rel, BlockNumber firstDelBlock);
-extern void ReleaseRelationBuffers(Relation rel);
+extern void DropRelationBuffers(Relation rel);
+extern void DropRelFileNodeBuffers(RelFileNode rnode);
 extern void DropBuffers(Oid dbid);
 extern void PrintPinnedBufs(void);
 extern int	BufferShmemSize(void);

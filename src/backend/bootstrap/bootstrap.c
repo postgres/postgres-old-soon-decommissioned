@@ -1151,7 +1151,7 @@ build_indices()
 		 * -mer
 		 */
 		if (!BootstrapAlreadySeen(RelationGetRelid(heap)))
-			UpdateStats(RelationGetRelid(heap), 0, true);
+			UpdateStats(RelationGetRelid(heap), 0);
 
 		/* XXX Probably we ought to close the heap and index here? */
 	}

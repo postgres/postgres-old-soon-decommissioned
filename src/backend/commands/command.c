@@ -1661,9 +1661,13 @@ AlterTableCreateToastTable(const char *relationName, bool silent)
 
 	/*
 	 * Update toast rel's pg_class entry to show that it has an index.
-	 * NOTE this also does CommandCounterIncrement() to make index visible.
 	 */
-	setRelhasindexInplace(toast_relid, true, false);
+	setRelhasindex(toast_relid, true);
+
+	/*
+	 * Make index visible
+	 */
+	CommandCounterIncrement();
 
 	/*
 	 * Get the OID of the newly created index
