@@ -37,9 +37,7 @@ gram.c parse.h: gram.y
 
 scan.c:	scan.l
 	$(LEX) $<
-	sed -e 's/#define YY_BUF_SIZE .*/#define YY_BUF_SIZE 65536/' \
-		<lex.yy.c >scan.c
-	rm -f lex.yy.c
+	mv lex.yy.c scan.c
 
 # The following dependencies on parse.h are computed by
 # make depend, but we state them here explicitly anyway because 
