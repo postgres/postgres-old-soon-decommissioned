@@ -173,7 +173,7 @@ GetDatabasePath(Oid tblNode)
 bool
 IsSystemRelationName(const char *relname)
 {
-	if (relname[0] && relname[1] && relname[2])
+	if (relname && relname[0] && relname[1] && relname[2])
 		return (relname[0] == 'p' &&
 				relname[1] == 'g' &&
 				relname[2] == '_');
