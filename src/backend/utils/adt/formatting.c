@@ -1,4 +1,3 @@
-
 /* -----------------------------------------------------------------------
  * formatting.c
  *
@@ -61,6 +60,7 @@
 #include <unistd.h>
 #include <locale.h>
 #include <math.h>
+#include <float.h>
 
 #include "postgres.h"
 #include "utils/builtins.h"
