@@ -23,6 +23,7 @@
 #include "optimizer/clauses.h"
 #include "optimizer/internal.h"
 #include "optimizer/paths.h"
+#include "optimizer/plancat.h"
 #include "optimizer/planmain.h"
 #include "optimizer/planner.h"
 #include "optimizer/prep.h"

@@ -24,6 +24,8 @@ extern List *find_secondary_indexes(Query *root, Index relid);
 
 extern List *find_inheritance_children(Oid inhparent);
 
+extern bool has_subclass(Oid relationId);
+
 extern Selectivity restriction_selectivity(Oid functionObjectId,
 						Oid operatorObjectId,
 						Oid relationObjectId,
