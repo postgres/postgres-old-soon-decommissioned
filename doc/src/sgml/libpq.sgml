@@ -1210,7 +1210,7 @@ function is no longer actively supported.
           Returns the command status string from the SQL command that
 	  generated the <structname>PGresult</structname>.
 <synopsis>
-char * PQcmdStatus(const PGresult *res);
+char * PQcmdStatus(PGresult *res);
 </synopsis>
 </para>
 </listitem>
@@ -1220,7 +1220,7 @@ char * PQcmdStatus(const PGresult *res);
 <function>PQcmdTuples</function>
 	  Returns the number of rows affected by the SQL command.
 <synopsis>
-char * PQcmdTuples(const PGresult *res);
+char * PQcmdTuples(PGresult *res);
 </synopsis>
           If the <acronym>SQL</acronym> command that generated the
 	  <structname>PGresult</structname> was INSERT, UPDATE or DELETE, this returns a
