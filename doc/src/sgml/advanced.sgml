@@ -123,7 +123,8 @@ INSERT INTO weather VALUES ('Berkeley', 45, 53, 0.0, '1994-11-28');
 </programlisting>
 
 <screen>
-ERROR:  &lt;unnamed&gt; referential integrity violation - key referenced from weather not found in cities
+ERROR:  insert or update on "weather" violates foreign key constraint "$1"
+DETAIL:  Key (city)=(Berkeley) is not present in "cities".
 </screen>
    </para>
 

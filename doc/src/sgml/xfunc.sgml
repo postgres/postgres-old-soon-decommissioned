@@ -272,7 +272,14 @@ SELECT name, double_salary(emp) AS dream
      Notice the use of the syntax <literal>$1.salary</literal>
      to select one field of the argument row value.  Also notice
      how the calling <command>SELECT</> command uses a table name to denote
-     the entire current row of that table as a composite value.
+     the entire current row of that table as a composite value.  The table
+     row can alternatively be referenced like this:
+<screen>
+SELECT name, double_salary(emp.*) AS dream
+    FROM emp
+    WHERE emp.cubicle ~= point '(2,1)';
+</screen>
+     which emphasizes its row nature.
     </para>
 
     <para>

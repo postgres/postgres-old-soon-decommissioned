@@ -63,7 +63,7 @@ def __plpython_procedure_myfunc_23456():
         return args[0]
 </programlisting>
 
-   where 23456 is the OID of the function.
+   assuming that 23456 is the OID of the function.
   </para>
 
   <para>

@@ -28,13 +28,13 @@ $Header$
 
   <partintro>
    <para>
-    Welcome to <productname>PostgreSQL</productname> Tutorial.  The
+    Welcome to the <productname>PostgreSQL</productname> Tutorial.  The
     following few chapters are intended to give a simple introduction
     to <productname>PostgreSQL</productname>, relational database
     concepts, and the SQL language to those who are new to any one of
     these aspects.  We only assume some general knowledge about how to
     use computers.  No particular Unix or programming experience is
-    required.  This part is mainly intended to give you a hands-on
+    required.  This part is mainly intended to give you some hands-on
     experience with important aspects of the
     <productname>PostgreSQL</productname> system.  It makes no attempt
     to be a complete or thorough treatment of the topics it covers.
