@@ -231,7 +231,7 @@ CopyTo(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
 	{
 		out_functions = (FmgrInfo *) palloc(attr_count * sizeof(FmgrInfo));
 		elements = (Oid *) palloc(attr_count * sizeof(Oid));
-		typmod = (int32 *) palloc(attr_count * sizeof(int16));
+		typmod = (int32 *) palloc(attr_count * sizeof(int32));
 		for (i = 0; i < attr_count; i++)
 		{
 			out_func_oid = (Oid) GetOutputFunction(attr[i]->atttypid);
@@ -499,7 +499,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
 	{
 		in_functions = (FmgrInfo *) palloc(attr_count * sizeof(FmgrInfo));
 		elements = (Oid *) palloc(attr_count * sizeof(Oid));
-		typmod = (int32 *) palloc(attr_count * sizeof(int16));
+		typmod = (int32 *) palloc(attr_count * sizeof(int32));
 		for (i = 0; i < attr_count; i++)
 		{
 			in_func_oid = (Oid) GetInputFunction(attr[i]->atttypid);
