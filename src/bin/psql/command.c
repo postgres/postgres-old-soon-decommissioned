@@ -1899,11 +1899,11 @@ do_pset(const char *param, const char *value, printQueryOpt *popt, bool quiet)
 		if (!quiet)
 		{
 			if (popt->topt.pager == 1)
-				puts(gettext("Using pager is on."));
+				puts(gettext("Pager is on (for long output)."));
 			else if (popt->topt.pager == 2)
-				puts(gettext("Using pager is always."));
+				puts(gettext("Pager is always (used)."));
 			else
-				puts(gettext("Using pager is off."));
+				puts(gettext("Pager is off."));
 		}
 	}
 

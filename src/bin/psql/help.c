@@ -173,7 +173,7 @@ slashUsage(unsigned short int pager)
 	 */
 	fprintf(output, _("General\n"));
 	fprintf(output, _("  \\c[onnect] [DBNAME|- [USER]]\n"
-					  "                connect to new database (currently \"%s\")\n"),
+					  "                 connect to new database (currently \"%s\")\n"),
 			PQdb(pset.db));
 	fprintf(output, _("  \\cd [DIR]      change the current working directory\n"));
 	fprintf(output, _("  \\copyright     show PostgreSQL usage and distribution terms\n"));
