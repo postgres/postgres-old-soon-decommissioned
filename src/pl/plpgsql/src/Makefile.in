@@ -37,7 +37,11 @@ include $(SRCDIR)/Makefile.shlib
 # instead:
 
 install: $(shlib)
+ifneq ($(shlib),)
 	$(INSTALL) $(INSTL_SHLIB_OPTS) $(shlib) $(LIBDIR)/plpgsql$(DLSUFFIX)
+else
+	@echo "plpgsql not installed due to lack of shared library support."
+endif
 
 
 pl_handler.o:	pl_handler.c plpgsql.h pl.tab.h
@@ -65,7 +69,7 @@ scan.c:		scan.l
 pl.tab.h:	pl_gram.c
 
 
-.PHONY: clean
+.PHONY: install clean
 
 clean:
 	rm -f lib$(NAME).a $(shlib)
