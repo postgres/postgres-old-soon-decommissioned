@@ -221,7 +221,7 @@ int			XactIsoLevel;
 
 #include "access/xlogutils.h"
 
-int			CommitDelay = 5;	/* 1/200000 sec */
+int			CommitDelay = 0;	/* in microseconds */
 
 static void (*_RollbackFunc)(void*) = NULL;
 static void *_RollbackData = NULL;
@@ -667,7 +667,6 @@ RecordTransactionCommit()
 	{
 		XLogRecData		rdata;
 		xl_xact_commit	xlrec;
-		struct timeval	delay;
 		XLogRecPtr		recptr;
 
 		BufmgrCommit();
@@ -686,11 +685,20 @@ RecordTransactionCommit()
 
 		/* 
 		 * Sleep before commit! So we can flush more than one
-		 * commit records per single fsync.
+		 * commit records per single fsync.  (The idea is some other
+		 * backend may do the XLogFlush while we're sleeping.  This
+		 * needs work however, because on most Unixen, the minimum
+		 * select() delay is 10msec or more, which is way too long.)
 		 */
-		delay.tv_sec = 0;
-		delay.tv_usec = CommitDelay;
-		(void) select(0, NULL, NULL, NULL, &delay);
+		if (CommitDelay > 0)
+		{
+			struct timeval	delay;
+
+			delay.tv_sec = 0;
+			delay.tv_usec = CommitDelay;
+			(void) select(0, NULL, NULL, NULL, &delay);
+		}
+
 		XLogFlush(recptr);
 		MyLastRecPtr.xrecoff = 0;
 

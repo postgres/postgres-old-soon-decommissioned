@@ -290,15 +290,15 @@
   </para>
 
   <para>
-   The <varname>COMMIT_DELAY</varname> parameter defines for how long
-   the backend will be forced to sleep after writing a commit record
-   to the log with <function>LogInsert</function> call but before
+   The <varname>COMMIT_DELAY</varname> parameter defines for how many
+   microseconds the backend will sleep after writing a commit
+   record to the log with <function>LogInsert</function> but before
    performing a <function>LogFlush</function>. This delay allows other
    backends to add their commit records to the log so as to have all
    of them flushed with a single log sync. Unfortunately, this
    mechanism is not fully implemented at release 7.1, so there is at
-   present no point in changing this parameter from its default value
-   of 5 microseconds.
+   present usually no benefit to be gained from increasing this parameter
+   above its default value of zero.
   </para>
  </sect1>
 </chapter>

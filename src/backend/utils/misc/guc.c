@@ -291,7 +291,7 @@ ConfigureNamesInt[] =
 	 0, 0, 16},
 
 	{"commit_delay",		PGC_USERSET,			&CommitDelay,
-	 5, 0, 1000},
+	 0, 0, 100000},
 
 	{NULL, 0, NULL, 0, 0, 0}
 };
