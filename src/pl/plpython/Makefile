@@ -5,7 +5,7 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 
-override CPPFLAGS := -I$(srcdir) -I$(python_includedir) $(CPPFLAGS)
+override CPPFLAGS := -I$(srcdir) $(python_includespec) $(CPPFLAGS)
 
 override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
 
