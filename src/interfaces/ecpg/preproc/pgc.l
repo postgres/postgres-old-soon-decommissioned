@@ -25,7 +25,6 @@
 #include "miscadmin.h"
 #include "nodes/parsenodes.h"
 #include "nodes/pg_list.h"
-#include "parser/gramparse.h"
 #include "parser/scansup.h"
 #include "extern.h"
 #include "preproc.h"
