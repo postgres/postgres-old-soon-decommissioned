@@ -28,9 +28,8 @@ DLOBJS= regress$(DLSUFFIX)
 # ... plus test query inputs
 #
 # INFILES is the files the regression test uses for input.
-INFILES= $(DLOBJS) \
-         queries.sql errors.sql destroy.sql security.sql \
-         expected.out
+INFILES= $(DLOBJS) 
+
 #
 # plus exports files
 #
