@@ -943,6 +943,7 @@ ExecutePlan(EState *estate,
 			break;
 		default:
 			/* do nothing */
+			break;
 	}
 
 	/*
@@ -1158,6 +1159,7 @@ lnext:	;
 			break;
 		default:
 			/* do nothing */
+			break;
 	}
 
 	/*
