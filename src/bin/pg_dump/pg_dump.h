@@ -73,6 +73,7 @@ typedef struct _funcInfo
 	char	   *probin;
 	char	   *usename;
 	char		provolatile;	/* Attr */
+	bool		isimplicit;		/* Attr */
 	bool		isstrict;		/* Attr */
 	int			dumped;			/* 1 if already dumped */
 } FuncInfo;

@@ -38,9 +38,10 @@ extern bool IsBinaryCompatible(Oid type1, Oid type2);
 extern bool IsPreferredType(CATEGORY category, Oid type);
 extern CATEGORY TypeCategory(Oid type);
 
-extern bool can_coerce_type(int nargs, Oid *input_typeids, Oid *func_typeids);
+extern bool can_coerce_type(int nargs, Oid *input_typeids, Oid *func_typeids,
+							bool isExplicit);
 extern Node *coerce_type(ParseState *pstate, Node *node, Oid inputTypeId,
-			Oid targetTypeId, int32 atttypmod);
+			Oid targetTypeId, int32 atttypmod, bool isExplicit);
 extern Node *coerce_type_typmod(ParseState *pstate, Node *node,
 				   Oid targetTypeId, int32 atttypmod);
 

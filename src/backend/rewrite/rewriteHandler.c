@@ -476,7 +476,7 @@ build_column_default(Relation rel, int attrno)
 	if (exprtype != atttype)
 	{
 		expr = CoerceTargetExpr(NULL, expr, exprtype,
-								atttype, atttypmod);
+								atttype, atttypmod, false);
 
 		/*
 		 * This really shouldn't fail; should have checked the

@@ -363,7 +363,6 @@ extern Datum bpcharout(PG_FUNCTION_ARGS);
 extern Datum bpchar(PG_FUNCTION_ARGS);
 extern Datum _bpchar(PG_FUNCTION_ARGS);
 extern Datum char_bpchar(PG_FUNCTION_ARGS);
-extern Datum bpchar_char(PG_FUNCTION_ARGS);
 extern Datum name_bpchar(PG_FUNCTION_ARGS);
 extern Datum bpchar_name(PG_FUNCTION_ARGS);
 extern Datum bpchareq(PG_FUNCTION_ARGS);

@@ -303,7 +303,9 @@ FuncIndexArgs(IndexInfo *indexInfo,
 							   &true_typeids);
 	if (fdresult != FUNCDETAIL_NORMAL)
 	{
-		if (fdresult == FUNCDETAIL_COERCION)
+		if (fdresult == FUNCDETAIL_AGGREGATE)
+			elog(ERROR, "DefineIndex: functional index may not use an aggregate function");
+		else if (fdresult == FUNCDETAIL_COERCION)
 			elog(ERROR, "DefineIndex: functional index must use a real function, not a type coercion"
 				 "\n\tTry specifying the index opclass you want to use, instead");
 		else

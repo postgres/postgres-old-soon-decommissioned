@@ -785,10 +785,8 @@ _outConst(StringInfo str, Const *node)
 static void
 _outAggref(StringInfo str, Aggref *node)
 {
-	appendStringInfo(str, " AGGREG :aggname ");
-	_outToken(str, node->aggname);
-	appendStringInfo(str, " :basetype %u :aggtype %u :target ",
-					 node->basetype, node->aggtype);
+	appendStringInfo(str, " AGGREG :aggfnoid %u :aggtype %u :target ",
+					 node->aggfnoid, node->aggtype);
 	_outNode(str, node->target);
 
 	appendStringInfo(str, " :aggstar %s :aggdistinct %s ",

@@ -307,19 +307,6 @@ _bpchar(PG_FUNCTION_ARGS)
 }
 
 
-/* bpchar_char()
- * Convert bpchar(1) to char.
- *
- * If input is multiple chars, only the first is returned.
- */
-Datum
-bpchar_char(PG_FUNCTION_ARGS)
-{
-	BpChar	   *s = PG_GETARG_BPCHAR_P(0);
-
-	PG_RETURN_CHAR(*VARDATA(s));
-}
-
 /* char_bpchar()
  * Convert char to bpchar(1).
  */

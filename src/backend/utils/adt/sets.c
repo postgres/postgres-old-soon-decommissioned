@@ -58,16 +58,19 @@ SetDefine(char *querystr, Oid elemType)
 							 true,		/* returnsSet */
 							 elemType,	/* returnType */
 							 SQLlanguageId,	/* language */
-							 querystr,	/* sourceCode */
-							 fileName,	/* fileName */
+							 querystr,	/* prosrc */
+							 fileName,	/* probin */
+							 false,		/* not aggregate */
 							 true,		/* trusted */
+							 false,		/* not implicit coercion */
 							 false,		/* isStrict (irrelevant, no args) */
 							 PROVOLATILE_VOLATILE,	/* assume unsafe */
 							 100,		/* byte_pct */
 							 0, /* perbyte_cpu */
 							 0, /* percall_cpu */
 							 100,		/* outin_ratio */
-							 NIL);		/* argList */
+							 0,			/* parameterCount */
+							 NULL);		/* parameterTypes */
 
 	/*
 	 * Since we're still inside this command of the transaction, we can't

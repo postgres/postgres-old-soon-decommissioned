@@ -1791,7 +1791,7 @@ cookDefault(ParseState *pstate,
 		if (type_id != atttypid)
 		{
 			if (CoerceTargetExpr(pstate, expr, type_id,
-								 atttypid, atttypmod) == NULL)
+								 atttypid, atttypmod, false) == NULL)
 				elog(ERROR, "Column \"%s\" is of type %s"
 					 " but default expression is of type %s"
 					 "\n\tYou will need to rewrite or cast the expression",

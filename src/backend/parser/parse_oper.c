@@ -265,7 +265,8 @@ oper_select_candidate(int nargs,
 		 current_candidate != NULL;
 		 current_candidate = current_candidate->next)
 	{
-		if (can_coerce_type(nargs, input_typeids, current_candidate->args))
+		if (can_coerce_type(nargs, input_typeids, current_candidate->args,
+							false))
 		{
 			if (last_candidate == NULL)
 			{

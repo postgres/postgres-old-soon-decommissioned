@@ -220,9 +220,7 @@ _equalFunc(Func *a, Func *b)
 static bool
 _equalAggref(Aggref *a, Aggref *b)
 {
-	if (strcmp(a->aggname, b->aggname) != 0)
-		return false;
-	if (a->basetype != b->basetype)
+	if (a->aggfnoid != b->aggfnoid)
 		return false;
 	if (a->aggtype != b->aggtype)
 		return false;

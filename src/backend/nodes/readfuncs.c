@@ -1159,13 +1159,9 @@ _readAggref(void)
 
 	local_node = makeNode(Aggref);
 
-	token = pg_strtok(&length); /* eat :aggname */
-	token = pg_strtok(&length); /* get aggname */
-	local_node->aggname = debackslash(token, length);
-
-	token = pg_strtok(&length); /* eat :basetype */
-	token = pg_strtok(&length); /* get basetype */
-	local_node->basetype = atooid(token);
+	token = pg_strtok(&length); /* eat :aggfnoid */
+	token = pg_strtok(&length); /* get aggfnoid */
+	local_node->aggfnoid = atooid(token);
 
 	token = pg_strtok(&length); /* eat :aggtype */
 	token = pg_strtok(&length); /* get aggtype */

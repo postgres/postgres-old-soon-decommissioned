@@ -42,7 +42,8 @@ typedef struct _CandidateList
 typedef enum
 {
 	FUNCDETAIL_NOTFOUND,		/* no suitable interpretation */
-	FUNCDETAIL_NORMAL,			/* found a matching function */
+	FUNCDETAIL_NORMAL,			/* found a matching regular function */
+	FUNCDETAIL_AGGREGATE,		/* found a matching aggregate function */
 	FUNCDETAIL_COERCION			/* it's a type coercion request */
 } FuncDetailCode;
 
@@ -61,6 +62,9 @@ extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
 extern void func_error(const char *caller, List *funcname,
 					   int nargs, const Oid *argtypes,
 					   const char *msg);
+
+extern Oid	find_aggregate_func(const char *caller, List *aggname,
+								Oid basetype);
 
 extern Oid	LookupFuncName(List *funcname, int nargs, const Oid *argtypes);
 extern Oid	LookupFuncNameTypeNames(List *funcname, List *argtypes,

@@ -852,11 +852,7 @@ _copyAggref(Aggref *from)
 {
 	Aggref	   *newnode = makeNode(Aggref);
 
-	/*
-	 * copy remainder of node
-	 */
-	newnode->aggname = pstrdup(from->aggname);
-	newnode->basetype = from->basetype;
+	newnode->aggfnoid = from->aggfnoid;
 	newnode->aggtype = from->aggtype;
 	Node_Copy(from, newnode, target);
 	newnode->aggstar = from->aggstar;

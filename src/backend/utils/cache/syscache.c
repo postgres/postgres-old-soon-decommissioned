@@ -93,22 +93,12 @@ struct cachedesc
 };
 
 static const struct cachedesc cacheinfo[] = {
-	{AggregateRelationName,		/* AGGNAME */
-		AggregateNameTypeIndex,
-		0,
-		2,
-		{
-			Anum_pg_aggregate_aggname,
-			Anum_pg_aggregate_aggbasetype,
-			0,
-			0
-	}},
-	{AggregateRelationName,		/* AGGOID */
-		AggregateOidIndex,
+	{AggregateRelationName,		/* AGGFNOID */
+		AggregateFnoidIndex,
 		0,
 		1,
 		{
-			ObjectIdAttributeNumber,
+			Anum_pg_aggregate_aggfnoid,
 			0,
 			0,
 			0
