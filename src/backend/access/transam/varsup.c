@@ -60,8 +60,16 @@ GetNewTransactionId(TransactionId *xid)
 	 * XXX by storing xid into MyProc without acquiring SInvalLock, we are
 	 * relying on fetch/store of an xid to be atomic, else other backends
 	 * might see a partially-set xid here.  But holding both locks at once
-	 * would be a nasty concurrency hit (and at this writing, could cause a
-	 * deadlock against GetSnapshotData).  So for now, assume atomicity.
+	 * would be a nasty concurrency hit (and in fact could cause a deadlock
+	 * against GetSnapshotData).  So for now, assume atomicity.  Note that
+	 * readers of PROC xid field should be careful to fetch the value only
+	 * once, rather than assume they can read it multiple times and get the
+	 * same answer each time.
+	 *
+	 * A solution to the atomic-store problem would be to give each PROC
+	 * its own spinlock used only for fetching/storing that PROC's xid.
+	 * (SInvalLock would then mean primarily that PROCs couldn't be added/
+	 * removed while holding the lock.)
 	 */
 	if (MyProc != (PROC *) NULL)
 		MyProc->xid = *xid;
