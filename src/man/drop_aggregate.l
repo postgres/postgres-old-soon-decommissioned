@@ -6,7 +6,7 @@
 drop aggregate \(em remove the definition of an aggregate
 .SH SYNOPSIS
 .nf
-\fBdrop aggregate\fR aggname
+\fBdrop aggregate\fR aggname aggtype
 .fi
 .SH DESCRIPTION
 .BR "drop aggregate"
@@ -16,9 +16,9 @@ aggregate.
 .SH EXAMPLE
 .nf
 --
---Remove the average aggregate
+--Remove the average aggregate for type int4
 --
-drop aggregate avg
+drop aggregate avg int4
 .fi
 .SH "SEE ALSO"
 create aggregate(l).

@@ -272,6 +272,16 @@ typedef struct PurgeStmt {
 } PurgeStmt;
 
 /* ----------------------
+ *	Drop Aggregate Statement
+ * ----------------------
+ */
+typedef struct RemoveAggrStmt {
+    NodeTag		type;
+    char		*aggname;	/* aggregate to drop */
+    char		*aggtype;	/* for this type */
+} RemoveAggrStmt;
+
+/* ----------------------
  *	Drop Function Statement
  * ----------------------
  */
@@ -292,12 +302,12 @@ typedef struct RemoveOperStmt {
 } RemoveOperStmt;
 
 /* ----------------------
- *	Drop {Aggregate|Type|Index|Rule|View} Statement
+ *	Drop {Type|Index|Rule|View} Statement
  * ----------------------
  */
 typedef struct RemoveStmt {
     NodeTag		type;
-    int 		removeType;	/* AGGREGATE|P_TYPE|INDEX|RULE|VIEW */
+    int 		removeType;	/* P_TYPE|INDEX|RULE|VIEW */
     char		*name;		/* name to drop */
 } RemoveStmt;
 

@@ -161,6 +161,8 @@ extern int32 pg_aclcheck(char *relname, char *usename, AclMode mode);
 extern int32 pg_ownercheck(char *usename, char *value, int cacheid);
 extern int32 pg_func_ownercheck(char *usename, char *funcname,
 			 int nargs, Oid *arglist);
+extern int32 pg_aggr_ownercheck(char *usename, char *aggname,
+			 Oid basetypeID);
 
 #endif	/* ACL_H */
 

@@ -74,11 +74,11 @@ DROP TYPE widget;
 --
 -- AGGREGATE REMOVAL
 --
-DROP AGGREGATE newavg;
+DROP AGGREGATE newavg int4;
 
-DROP AGGREGATE newsum;
+DROP AGGREGATE newsum int4;
 
-DROP AGGREGATE newcnt;
+DROP AGGREGATE newcnt int4;
 
 
 --

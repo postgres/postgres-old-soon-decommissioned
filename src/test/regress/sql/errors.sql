@@ -182,6 +182,15 @@ drop aggregate 314159;
 -- no such aggregate 
 drop aggregate nonesuch;
 
+-- missing aggregate type
+drop aggregate newcnt1;
+
+-- bad aggregate type
+drop aggregate newcnt nonesuch;
+
+-- no such aggregate for type
+drop aggregate newcnt float4;
+
 
 --
 -- REMOVE FUNCTION

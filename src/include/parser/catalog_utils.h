@@ -53,5 +53,6 @@ extern Oid get_typelem(Oid type_id);
 extern char FindDelimiter(char *typename);
 extern void op_error(char *op, Oid arg1, Oid arg2);
 extern void func_error(char *caller, char *funcname, int nargs, Oid *argtypes);
+extern void agg_error(char *caller, char *aggname, Oid basetypeID);
 
 #endif	/* CATALOG_UTILS_H */
