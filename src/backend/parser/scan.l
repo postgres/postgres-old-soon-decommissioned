@@ -132,7 +132,6 @@ other		.
 
 {comment}	{ /* ignore */	}
 
-    /* allow extended comments using C-style delimiters - tgl 1997-07-12 */
 {xcline}	{ /* ignore */ }
 
 <xc>{xcstar}	|
