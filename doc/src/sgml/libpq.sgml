@@ -172,6 +172,15 @@ PGconn *PQconnectdb(const char *conninfo)
     </varlistentry>
 
     <varlistentry>
+     <term><literal>connect_timeout</literal></term>
+     <listitem>
+     <para>
+      Time space in seconds given to connect routine. Zero or not set means infinite.
+     </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry>
      <term><literal>options</literal></term>
      <listitem>
       <para>

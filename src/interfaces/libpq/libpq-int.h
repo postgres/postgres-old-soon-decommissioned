@@ -286,6 +286,8 @@ struct pg_conn
 	PQExpBufferData workBuffer; /* expansible string */
 
 	int			client_encoding;	/* encoding id */
+
+      char *connect_timeout;
 };
 
 /* String descriptions of the ExecStatusTypes.
@@ -332,6 +334,7 @@ extern int	pqReadData(PGconn *conn);
 extern int	pqFlush(PGconn *conn);
 extern int	pqSendSome(PGconn *conn);
 extern int	pqWait(int forRead, int forWrite, PGconn *conn);
+extern int    pqWaitTimed(int forRead, int forWrite, PGconn *conn, const struct timeval* timeout);
 extern int	pqReadReady(PGconn *conn);
 extern int	pqWriteReady(PGconn *conn);
 
