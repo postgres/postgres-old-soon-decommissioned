@@ -812,6 +812,7 @@ array_ref(ArrayType *array,
 
 	retptr = array_seek(arraydataptr, elmlen, offset);
 
+	*isNull = false;
 	return ArrayCast(retptr, elmbyval, elmlen);
 }
 
