@@ -2346,13 +2346,13 @@ DESCR("I/O");
 DATA(insert OID = 911 (  inet_out			PGNSP PGUID 12 f f t f i 1 2275 "869" _null_  inet_out - _null_ ));
 DESCR("I/O");
 
-DATA(insert OID = 912 (  inet_client_addr		PGNSP PGUID 12 f f f f s 0 869 "" _null_  inet_client_addr - _null_ ));
+DATA(insert OID = 2196 (  inet_client_addr		PGNSP PGUID 12 f f f f s 0 869 "" _null_  inet_client_addr - _null_ ));
 DESCR("Returns the INET address of the client connected to the backend");
-DATA(insert OID = 913 (  inet_client_port		PGNSP PGUID 12 f f f f s 0 23 "" _null_  inet_client_port - _null_ ));
+DATA(insert OID = 2197 (  inet_client_port		PGNSP PGUID 12 f f f f s 0 23 "" _null_  inet_client_port - _null_ ));
 DESCR("Returns the client's port number for this connection");
-DATA(insert OID = 914 (  inet_server_addr		PGNSP PGUID 12 f f f f s 0 869 "" _null_  inet_server_addr - _null_ ));
+DATA(insert OID = 2198 (  inet_server_addr		PGNSP PGUID 12 f f f f s 0 869 "" _null_  inet_server_addr - _null_ ));
 DESCR("Returns the INET address that the backend is using to service the connection");
-DATA(insert OID = 915 (  inet_server_port		PGNSP PGUID 12 f f f f s 0 23 "" _null_  inet_server_port - _null_ ));
+DATA(insert OID = 2199 (  inet_server_port		PGNSP PGUID 12 f f f f s 0 23 "" _null_  inet_server_port - _null_ ));
 DESCR("Returns the servers's port number for this connection");
 
 /* for cidr type support */
