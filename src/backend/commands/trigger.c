@@ -2346,11 +2346,6 @@ DeferredTriggerSaveEvent(ResultRelInfo *relinfo, int event, bool row_trigger,
 	else
 		ItemPointerSetInvalid(&(newctid));
 
-	/*
-	 * Create a new event
-	 */
-	oldcxt = MemoryContextSwitchTo(deftrig_cxt);
-
 	if (row_trigger)
 	{
 		ntriggers = trigdesc->n_after_row[event];
@@ -2381,6 +2376,11 @@ DeferredTriggerSaveEvent(ResultRelInfo *relinfo, int event, bool row_trigger,
 	 */
 	if (n_enabled_triggers == 0)
 		return;
+
+	/*
+	 * Create a new event
+	 */
+	oldcxt = MemoryContextSwitchTo(deftrig_cxt);
 
 	new_size = offsetof(DeferredTriggerEventData, dte_item[0]) +
 		n_enabled_triggers * sizeof(DeferredTriggerEventItem);
