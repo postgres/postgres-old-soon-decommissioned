@@ -616,7 +616,7 @@ SetSessionAuthorization(AclId userid)
 
 	if (userid != AuthenticatedUserId &&
 		!AuthenticatedUserIsSuperuser)
-		elog(ERROR, "permission denied");
+		elog(ERROR, "SET SESSION AUTHORIZATION: permission denied");
 
 	SetSessionUserId(userid);
 	SetUserId(userid);

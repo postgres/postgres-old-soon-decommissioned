@@ -973,7 +973,7 @@ ProcessUtility(Node *parsetree,
 
 		case T_CheckPointStmt:
 			if (!superuser())
-				elog(ERROR, "permission denied");
+				elog(ERROR, "CHECKPOINT: permission denied");
 			CreateCheckPoint(false, false);
 			break;
 

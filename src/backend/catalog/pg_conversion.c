@@ -143,7 +143,7 @@ ConversionDrop(Oid conversionOid, DropBehavior behavior)
 
 	if (!superuser() &&
 		((Form_pg_conversion) GETSTRUCT(tuple))->conowner != GetUserId())
-		elog(ERROR, "permission denied");
+		elog(ERROR, "DROP CONVERSION: permission denied");
 
 	ReleaseSysCache(tuple);
 

@@ -532,7 +532,7 @@ AlterDatabaseSet(AlterDatabaseSetStmt *stmt)
 
 	if (!(superuser()
 		|| ((Form_pg_database) GETSTRUCT(tuple))->datdba == GetUserId()))
-		elog(ERROR, "permission denied");
+		elog(ERROR, "ALTER DATABASE SET: permission denied");
 
 	MemSet(repl_repl, ' ', sizeof(repl_repl));
 	repl_repl[Anum_pg_database_datconfig - 1] = 'r';

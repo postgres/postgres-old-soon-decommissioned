@@ -908,7 +908,7 @@ AlterUserSet(AlterUserSetStmt *stmt)
 
 	if (!(superuser()
 	 || ((Form_pg_shadow) GETSTRUCT(oldtuple))->usesysid == GetUserId()))
-		elog(ERROR, "permission denied");
+		elog(ERROR, "ALTER USER SET: permission denied");
 
 	for (i = 0; i < Natts_pg_shadow; i++)
 		repl_repl[i] = ' ';
