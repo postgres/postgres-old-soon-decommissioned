@@ -82,4 +82,7 @@ extern int BushyPlanFlag;
 /* #define deactivate_joininfo(joininfo)	joininfo->inactive=true*/
 /*#define joininfo_inactive(joininfo)	joininfo->inactive */
 
+/* GEQO switch according to number of relations in a query */
+#define GEQO_RELS 7
+
 #endif	/* INTERNAL_H */

@@ -38,9 +38,6 @@
  */
 #define ERX
 
-/* GEQO switch according to number of relations in a query */
-#define GEQO_RELS 7
-
 /* genetic algorithm parameters */
 
 #define GEQO_FILE "pg_geqo"      /* Name of the ga config file */
