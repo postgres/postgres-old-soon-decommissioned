@@ -598,8 +598,12 @@ RewriteQuery(Query *parsetree, bool *instead_flag, List **qual_products)
 		 */
 		Query	   *other;
 
-		other = copyObject(parsetree);	/* ApplyRetrieveRule changes the
-										 * range table */
+		/*
+		 *	ApplyRetrieveRule changes the range table
+		 *	XXX Unions are copied again.
+		 */
+		other = copyObject(parsetree);
+
 		return
 			ProcessRetrieveQuery(other, parsetree->rtable,
 								 instead_flag, FALSE);
