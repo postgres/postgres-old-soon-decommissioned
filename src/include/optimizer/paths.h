@@ -41,8 +41,9 @@ extern Path *best_inner_indexscan(Query *root, RelOptInfo *rel,
 extern List *group_clauses_by_indexkey_for_or(RelOptInfo *rel,
 								 IndexOptInfo *index,
 								 Expr *orsubclause);
-extern List *expand_indexqual_conditions(IndexOptInfo *index,
-							List *clausegroups);
+extern List *expand_indexqual_conditions(RelOptInfo *rel,
+										 IndexOptInfo *index,
+										 List *clausegroups);
 extern void check_partial_indexes(Query *root, RelOptInfo *rel);
 extern bool pred_test(List *predicate_list, List *restrictinfo_list);
 extern List *flatten_clausegroups_list(List *clausegroups);

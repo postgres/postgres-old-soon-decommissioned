@@ -398,7 +398,7 @@ best_or_subclause_index(Query *root,
 			continue;
 
 		/* Convert clauses to indexquals the executor can handle */
-		indexquals = expand_indexqual_conditions(index, indexclauses);
+		indexquals = expand_indexqual_conditions(rel, index, indexclauses);
 
 		cost_index(&subclause_path, root, rel, index, indexquals, false);
 

@@ -444,7 +444,7 @@ create_index_path(Query *root,
 	pathnode->path.pathkeys = pathkeys;
 
 	/* Convert clauses to indexquals the executor can handle */
-	indexquals = expand_indexqual_conditions(index, restriction_clauses);
+	indexquals = expand_indexqual_conditions(rel, index, restriction_clauses);
 
 	/* Flatten the clause-groups list to produce indexclauses list */
 	restriction_clauses = flatten_clausegroups_list(restriction_clauses);
