@@ -992,6 +992,7 @@ All of PostgreSQL is successfully made. Ready to install.
      interface libraries, then you can use these commands:
 <screen>
 <userinput>gmake -C src/bin install</>
+<userinput>gmake -C src/include install</>
 <userinput>gmake -C src/interfaces install</>
 <userinput>gmake -C doc install</>
 </screen>
