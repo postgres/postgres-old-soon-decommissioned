@@ -13,10 +13,14 @@
 # because the strdup.c in this directory may conflict with the strdup()
 # prototype from the system library and cause a compile error.
 #
+# getopt.o is likewise built only on request.
+#
+# dllinit.o is only built on Win32 platform.
+#
 #-------------------------------------------------------------------------
 
 SRCDIR = ..
-include ../Makefile.global
+include $(SRCDIR)/Makefile.global
 
 all: version.o
 
@@ -26,10 +30,11 @@ depend dep:
 	$(CC) $(CFLAGS) -MM *.c >depend
 
 clean: 
-	rm -f version.o
-ifeq ($(PORTNAME), win)
-	rm -f dllinit.o
-endif
+	rm -f dllinit.o getopt.o strdup.o version.o
+
+# Make sure version.o has proper dependency on version.h,
+# even if we didn't do make depend.
+version.o: version.c $(SRCDIR)/include/version.h
 
 ifeq (depend,$(wildcard depend))
 include depend
