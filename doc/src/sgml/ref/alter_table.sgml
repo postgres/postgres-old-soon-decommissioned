@@ -53,6 +53,7 @@ ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
    </title>
    <para>
     <variablelist>
+
      <varlistentry>
       <term><replaceable class="PARAMETER"> table </replaceable></term>
       <listitem>
