@@ -24,7 +24,9 @@
 #include "libpq-fe.h"
 #include "stringutils.h"
 #include "psqlHelp.h"
-#include <port-protos.h> /* for strdup() */
+#ifdef NEED_STRDUP
+#include "strdup.h"
+#endif
 
 #ifdef NOREADLINE
 #include "rlstubs.h"

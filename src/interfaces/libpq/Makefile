@@ -15,7 +15,7 @@ SRCDIR= ..
 include ../Makefile.global
 
 # We need the backend directory here for its fmgr.h
-INCLUDE_OPT= -I../include -I../backend -I../backend/port/$(PORTNAME)
+INCLUDE_OPT= -I../include -I../backend
 
 CFLAGS+= $(INCLUDE_OPT) 
 

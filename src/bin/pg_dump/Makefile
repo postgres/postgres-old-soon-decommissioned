@@ -15,14 +15,19 @@ SRCDIR= ../..
 include ../Makefile.global
 include ../../Makefile.global
 
-CFLAGS+= -I../../backend/port/${PORTNAME}
-
 OBJS= pg_dump.o common.o
+
+ifeq ($(PORTNAME), ultrix4)
+OBJS+= ../../utils/strdup.o
+endif
 
 all: submake pg_dump
 
 pg_dump: $(OBJS) $(LIBPQDIR)/libpq.a
 	$(CC) $(LDFLAGS) -o pg_dump -L$(LIBPQDIR) $(OBJS) -lpq $(LD_ADD)
+
+../../utils/strdup.o:
+	$(MAKE) -C ../../utils/strdup.o
 
 .PHONY: submake
 submake:

@@ -27,8 +27,7 @@ endif
 
 INCLUDE_OPT := \
                -I$(LIBPQDIR) \
-               -I$(SRCDIR)/include \
-               -I$(SRCDIR)/src/backend/port/$(PORTNAME)
+               -I$(SRCDIR)/include 
 
 CFLAGS += $(INCLUDE_OPT) 
 

@@ -16,7 +16,9 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-#include <port-protos.h> /* for strdup() */
+#ifdef NEED_STRDUP
+#include "strdup.h"
+#endif
 
 #include "stringutils.h"
 

@@ -16,8 +16,7 @@ include ../../Makefile.global
 
 INCLUDE_OPT:= \
                -I$(LIBPQDIR) \
-               -I../../include \
-               -I../../backend/port/$(PORTNAME)
+               -I../../include 
 
 CFLAGS+= $(INCLUDE_OPT)
 #
@@ -63,10 +62,17 @@ ifneq ($(USE_READLINE), true)
 OBJS+= rlstubs.o
 endif
 
+ifeq ($(PORTNAME), ultrix4)
+OBJS+= ../../utils/strdup.o
+endif
+
 all: submake psql
 
 psql: $(OBJS) $(LIBPQDIR)/libpq.a
 	$(CC) $(LDFLAGS) -o psql -L$(LIBPQDIR) $(OBJS) -lpq $(LD_ADD)
+
+../../utils/strdup.o:
+	$(MAKE) -C ../../utils strdup.o
 
 .PHONY: submake
 submake:
