@@ -2715,6 +2715,14 @@ AFTER INSERT OR UPDATE OR DELETE ON emp
        into groups.
       </para>
      </listitem>
+
+     <listitem>
+      <para>
+       Since there are no packages, there are no package-level variables
+       either. This is somewhat annoying.  You may be able to keep per-session
+       state in temporary tables, instead.
+      </para>
+     </listitem>
     </itemizedlist>
    </para>
 

@@ -161,7 +161,15 @@ SELECT clean_emp();
     refers to the first argument, <literal>$2</> to the second, and so on.
     If an argument is of a composite type, then the dot notation,
     e.g., <literal>$1.name</literal>, may be used to access attributes
-    of the argument.
+    of the argument.  The arguments can only be used as data values,
+    not as identifiers.  Thus for example this is reasonable:
+<programlisting>
+INSERT INTO mytable VALUES ($1);
+</programlisting>
+but this will not work:
+<programlisting>
+INSERT INTO $1 VALUES (42);
+</programlisting>
    </para>
 
    <sect2>

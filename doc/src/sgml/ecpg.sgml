@@ -1106,7 +1106,8 @@ struct
     the error message that is stored in
     <literal>sqlca.sqlerrm.sqlerrmc</literal> (the result of
     <function>strlen()</function>, not really interesting for a C
-    programmer).
+    programmer).  Note that some messages are too long to fit in the
+    fixed-size <literal>sqlerrmc</literal> array; they will be truncated.
    </para>
 
    <para>

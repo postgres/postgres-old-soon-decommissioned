@@ -1264,6 +1264,7 @@ statement, instead of giving a query string.
 This feature allows commands
 that will be used repeatedly to be parsed and planned just once, rather
 than each time they are executed.
+The statement must have been prepared previously in the current session.
 <function>PQexecPrepared</> is supported only in protocol 3.0 and later
 connections; it will fail when using protocol 2.0.
 </para>

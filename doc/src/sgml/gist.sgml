@@ -2,13 +2,21 @@
 $PostgreSQL$
 -->
 
-<chapter Id="GiST">
+<chapter id="GiST">
 <title>GiST Indexes</title>
 
 <sect1 id="intro">
  <title>Introduction</title>
 
  <para>
+   <indexterm>
+    <primary>index</primary>
+    <secondary>GiST</secondary>
+   </indexterm>
+   <indexterm>
+    <primary>GiST</primary>
+    <see>index</see>
+   </indexterm>
    <acronym>GiST</acronym> stands for Generalized Search Tree.  It is a
    balanced, tree-structured access method, that acts as a base template in
    which to implement arbitrary indexing schemes. B+-trees, R-trees and many

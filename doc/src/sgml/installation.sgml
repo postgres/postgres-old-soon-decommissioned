@@ -12,7 +12,11 @@
   This <![%standalone-include;[document]]>
   <![%standalone-ignore;[chapter]]> describes the installation of
   <productname>PostgreSQL</productname> from the source code
-  distribution.
+  distribution.  (If you are installing a pre-packaged distribution,
+  such as an RPM or Debian package, ignore this
+  <![%standalone-include;[document]]>
+  <![%standalone-ignore;[chapter]]>
+  and read the packager's instructions instead.)
  </para>
 
  <sect1 id="install-short">
