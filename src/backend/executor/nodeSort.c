@@ -186,7 +186,7 @@ ExecSort(Sort *node)
 		 * finally set the sorted flag to true
 		 */
 		sortstate->sort_Done = true;
-		SO1_printf(stderr, "ExecSort: sorting done.\n");
+		SO1_printf("ExecSort: %s\n", "sorting done");
 	}
 
 	SO1_printf("ExecSort: %s\n",

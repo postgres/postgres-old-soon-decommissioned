@@ -1206,13 +1206,12 @@ XLogFlush(XLogRecPtr record)
 
 	if (XLOG_DEBUG)
 	{
-		elog(LOG, "XLogFlush%s%s: request %X/%X; write %X/%X; flush %X/%X\n",
+		elog(LOG, "XLogFlush%s%s: request %X/%X; write %X/%X; flush %X/%X",
 			 (IsBootstrapProcessingMode()) ? "(bootstrap)" : "",
 			 (InRedo) ? "(redo)" : "",
 			 record.xlogid, record.xrecoff,
 			 LogwrtResult.Write.xlogid, LogwrtResult.Write.xrecoff,
 			 LogwrtResult.Flush.xlogid, LogwrtResult.Flush.xrecoff);
-		fflush(stderr);
 	}
 
 	/* Disabled during REDO */
