@@ -223,7 +223,7 @@ print_pathkeys(List *pathkeys, List *rtable)
 	printf("(");
 	foreach(i, pathkeys)
 	{
-		List pathkey = lfirst(i));
+		List pathkey = lfirst(i);
 
 		printf("(");
 		foreach(k, pathkey)

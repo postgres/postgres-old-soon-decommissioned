@@ -54,9 +54,10 @@ extern List *group_clauses_by_hashop(List *restrictinfo_list,
  * joinutils.h
  *	  generic join method key/clause routines
  */
-extern List *order_joinkeys_by_pathkeys(List *pathkeys,
+extern bool order_joinkeys_by_pathkeys(List *pathkeys,
 					 List *joinkeys, List *joinclauses, int outer_or_inner,
-						List **matchedJoinClausesPtr);
+					 List **matchedJoinKeysPtr,
+					 List **matchedJoinClausesPtr);
 extern List *extract_path_keys(List *joinkeys, List *tlist,
 				  int outer_or_inner);
 extern Path *get_cheapest_path_for_joinkeys(List *joinkeys,
