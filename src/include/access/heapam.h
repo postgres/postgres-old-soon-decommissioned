@@ -88,7 +88,7 @@ typedef HeapAccessStatisticsData *HeapAccessStatistics;
  *
  * ----------------
  */
-#if !defined(USE_UNIVEL_CC)
+#if !defined(DISABLE_COMPLEX_MACRO)
 
 #define fastgetattr(tup, attnum, tupleDesc, isnull) \
 ( \
@@ -132,7 +132,7 @@ typedef HeapAccessStatisticsData *HeapAccessStatistics;
 	) \
 )
 
-#else /* !defined(USE_UNIVEL_CC) */
+#else /* !defined(DISABLE_COMPLEX_MACRO) */
 
 extern Datum nocachegetattr(HeapTuple tup, int attnum,
 						 TupleDesc att, bool *isnull);
