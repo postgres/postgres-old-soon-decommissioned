@@ -16,6 +16,11 @@ include ../../Makefile.global
 
 CFLAGS+=  -I$(TCL_INCDIR) -I$(TK_INCDIR) -I$(X11_INCDIR) -I$(SRCDIR)/interfaces/libpgtcl
 
+ifdef KRBVERS
+LDFLAGS+= $(KRBLIBS)
+CFLAGS+= $(KRBFLAGS)
+endif
+
 # try to find libpgtcl.a in either directory
 LIBPGTCL= -L$(SRCDIR)/interfaces/libpgtcl -L$(LIBDIR) -lpgtcl
 LIBPQ= -L$(LIBPQDIR) -L$(LIBDIR) -lpq

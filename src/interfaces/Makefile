@@ -24,8 +24,7 @@ endif
 ifeq ($(USE_TCL), true)
 	$(MAKE) -C libpgtcl $@
 endif
-
 ifeq ($(USE_PERL), true)
-      cd perl5 && perl Makefile.PL
-      $(MAKE) -C perl5 $@
+	cd perl5 && perl Makefile.PL
+	$(MAKE) -C perl5 $@
 endif
