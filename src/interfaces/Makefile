@@ -23,7 +23,7 @@ endif
 
 .DEFAULT all install clean dep depend distclean: $(perl-makefile-dep)
 	$(MAKE) -C libpq $@
-#	$(MAKE) -C ecpg $@
+	$(MAKE) -C ecpg $@
 ifeq ($(HAVE_Cplusplus), true)
 	$(MAKE) -C libpq++ $@
 else
