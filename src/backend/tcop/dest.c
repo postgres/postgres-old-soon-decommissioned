@@ -104,6 +104,7 @@ EndCommand(char *commandTag, CommandDest dest)
 	 */
 	pq_putnchar("C", 1);
 	sprintf(buf, "%s%s", commandTag, CommandInfo);
+	CommandInfo[0] = 0;
 	pq_putstr(buf);
 	pq_flush();
 	break;
