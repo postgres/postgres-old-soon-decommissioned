@@ -60,7 +60,7 @@ remove-old-headers:
 	for file in fmgr.h postgres.h access/attnum.h commands/trigger.h \
 		executor/spi.h utils/elog.h utils/geo_decls.h utils/mcxt.h \
 		utils/palloc.h; do \
-		if cmp -s $(srcdir)/$$file $(DESTDIR)$(includedir)/$$file; \
+		if cmp -s $(srcdir)/$$file $(DESTDIR)$(includedir)/$$file 2>/dev/null; \
 		then \
 			: ; \
 		else \
