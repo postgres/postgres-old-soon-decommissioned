@@ -141,7 +141,7 @@ printatt(unsigned attributeId,
 		 AttributeTupleForm attributeP,
 		 char *value)
 {
-	printf("\t%2d: %s%s%s%s\t(typeid = %u, len = %d, byval = %c)\n",
+	printf("\t%2d: %s%s%s%s\t(typeid = %u, len = %d, typmod = %d, byval = %c)\n",
 		   attributeId,
 		   attributeP->attname.data,
 		   value != NULL ? " = \"" : "",
@@ -149,6 +149,7 @@ printatt(unsigned attributeId,
 		   value != NULL ? "\"" : "",
 		   (unsigned int) (attributeP->atttypid),
 		   attributeP->attlen,
+		   attributeP->atttypmod,
 		   attributeP->attbyval ? 't' : 'f');
 }
 

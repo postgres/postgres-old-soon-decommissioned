@@ -492,11 +492,8 @@ getRowDescriptions(PGconn *conn)
 
 		if (pqGets(typName, MAX_MESSAGE_LEN, conn) ||
 			pqGetInt(&adtid, 4, conn) ||
-			pqGetInt(&adtsize, 2, conn)
-#if 0							/* backend support not there yet */
-			|| pqGetInt(&adtmod, 2, conn)
-#endif
-)
+			pqGetInt(&adtsize, 2, conn) ||
+			pqGetInt(&adtmod, 2, conn))
 		{
 			PQclear(result);
 			return EOF;
