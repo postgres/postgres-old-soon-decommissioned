@@ -742,7 +742,6 @@ static int pgwin32_SSL_accept(SSL *ssl)
 		int rc;
 		int waitfor;
 
-		printf("uhh\n");fflush(stdout);
 		r = SSL_accept(ssl);
 		if (r == 1)
 			return 1;
