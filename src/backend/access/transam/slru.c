@@ -944,7 +944,7 @@ SlruScanDirectory(SlruCtl ctl, int cutoffPage, bool doDeletions)
 				if (doDeletions)
 				{
 					snprintf(path, MAXPGPATH, "%s/%s", ctl->Dir, clde->d_name);
-					ereport(LOG,
+					ereport(DEBUG1,
 							(errmsg("removing file \"%s\"", path)));
 					unlink(path);
 				}

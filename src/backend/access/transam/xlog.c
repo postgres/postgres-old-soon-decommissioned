@@ -2154,14 +2154,14 @@ MoveOfflineLogs(uint32 log, uint32 seg, XLogRecPtr endptr)
 										   true, XLOGfileslop,
 										   true))
 				{
-					ereport(LOG,
+					ereport(DEBUG1,
 						  (errmsg("recycled transaction log file \"%s\"",
 								  xlde->d_name)));
 				}
 				else
 				{
 					/* No need for any more future segments... */
-					ereport(LOG,
+					ereport(DEBUG1,
 						  (errmsg("removing transaction log file \"%s\"",
 								  xlde->d_name)));
 					unlink(path);
