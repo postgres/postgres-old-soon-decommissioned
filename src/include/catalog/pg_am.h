@@ -116,5 +116,6 @@ DESCR("");
 #define HASH_AM_OID 405
 DATA(insert OID = 783 (  gist PGUID 100 7 0 gistgettuple gistinsert gistdelete - - - - gistbeginscan gistrescan gistendscan gistmarkpos gistrestrpos - - gistbuild - - gistcostestimate ));
 DESCR("");
+#define GIST_AM_OID 783
 
 #endif	 /* PG_AM_H */
