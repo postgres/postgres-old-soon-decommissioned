@@ -4,7 +4,7 @@
 
 subdir = contrib/soundex
 top_builddir = ../..
-include ../../src/Makefile.global
+include $(top_builddir)/src/Makefile.global
 
 NAME	:= soundex
 SONAME	:= $(NAME)$(DLSUFFIX)
@@ -14,7 +14,7 @@ CFLAGS += -I. $(CFLAGS_SL)
 all: $(SONAME) $(NAME).sql
 
 $(NAME).sql: $(NAME).sql.in
-	sed -e 's:MODULE_PATHNAME:$(datadir)/contrib/$(SONAME):g' < $< > $@
+	sed 's,@MODULE_FILENAME@,$(libdir)/contrib/$(SONAME),g' $< >$@
 
 install: all installdirs
 	$(INSTALL_SHLIB) $(SONAME)	$(libdir)/contrib
@@ -28,7 +28,7 @@ uninstall:
 	rm -f $(libdir)/contrib/$(SONAME) $(datadir)/contrib/$(NAME).sql $(docdir)/contrib/README.$(NAME)
 
 clean distclean maintainer-clean:
-	rm -f $(SONAME) $(NAME).sql
+	rm -f $(SONAME) $(NAME).o $(NAME).sql
 
 depend dep:
 	$(CC) -MM -MG $(CFLAGS) *.c > depend
