@@ -371,10 +371,10 @@ AC_MSG_RESULT([$enable_thread_safety])
 AC_SUBST(enable_thread_safety)
 
 #
-# Tcl/Tk
+# Optionally build Tcl modules (PL/Tcl)
 #
 AC_MSG_CHECKING([whether to build with Tcl])
-PGAC_ARG_BOOL(with, tcl, no, [  --with-tcl              build Tcl and Tk interfaces])
+PGAC_ARG_BOOL(with, tcl, no, [  --with-tcl              build Tcl modules (PL/Tcl)])
 AC_MSG_RESULT([$with_tcl])
 AC_SUBST([with_tcl])
 

@@ -402,7 +402,8 @@ CREATE FUNCTION add(integer, integer) RETURNS integer
   </para>
 
   <para>
-   Increment an integer, making use of an argument name, in PL/PgSQL:
+   Increment an integer, making use of an argument name, in
+   <application>PL/pgSQL</application>:
 
 <programlisting>
 CREATE OR REPLACE FUNCTION increment(i integer) RETURNS integer AS '
