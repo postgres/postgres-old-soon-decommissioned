@@ -29,6 +29,7 @@ TIMDIR="$CHKDIR/timestamp"
 PGPORT="65432"
 PGLIB="$LIBDIR"
 PMPID=""
+PMOPTIONS=${PMOPTIONS:-"-o -F"}
 
 export CHKDIR
 export PGDATA
@@ -191,7 +192,7 @@ fi
 # him some time to pass the WAL recovery code. 
 #----------
 echo "=============== Starting regression postmaster         ================"
-postmaster -D $PGDATA -p $PGPORT -o -F >$LOGDIR/postmaster.log 2>&1 &
+postmaster -D $PGDATA -p $PGPORT $PMOPTIONS >$LOGDIR/postmaster.log 2>&1 &
 PMPID=$!
 sleep 2
 
