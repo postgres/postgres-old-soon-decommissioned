@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sun Aug 17 01:23:08 EDT 2003
+Last updated:		Sun Aug 17 22:52:44 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -149,7 +149,7 @@ Indexes
   INSERT INTO inherit_table (unique_index_col) VALUES (dup) should fail
   [inheritance]
 * Add UNIQUE capability to non-btree indexes
-* Add btree index support for reltime, tinterval, regproc
+* -Add btree index support for reltime, tinterval, regproc (Tom)
 * Add rtree index support for line, lseg, path, point
 * -Certain indexes will not shrink, e.g. indexes on ever-increasing
   columns and indexes with many duplicate keys
