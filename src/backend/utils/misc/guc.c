@@ -247,12 +247,10 @@ static struct config_bool
 	{"show_source_port", PGC_SIGHUP, &ShowPortNumber, false, NULL},
 
 	{"sql_inheritance", PGC_USERSET, &SQL_inheritance, true, NULL},
-
 	{"australian_timezones", PGC_USERSET, &Australian_timezones, false, ClearDateCache},
-
 	{"fixbtree", PGC_POSTMASTER, &FixBTree, true, NULL},
-
 	{"password_encryption", PGC_USERSET, &Password_encryption, false, NULL},
+	{"transform_null_equals", PGC_USERSET, &Transform_null_equals, false, NULL},
 
 	{NULL, 0, NULL, false, NULL}
 };

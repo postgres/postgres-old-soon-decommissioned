@@ -20,6 +20,7 @@
 #define EXPR_RELATION_FIRST 2
 
 extern int	max_expr_depth;
+extern bool Transform_null_equals;
 
 extern Node *transformExpr(ParseState *pstate, Node *expr, int precedence);
 extern Oid	exprType(Node *expr);

@@ -29,5 +29,6 @@ extern Oid	param_type(int t);
 extern int	yyparse(void);
 extern char *xlateSqlFunc(char *name);
 extern char *xlateSqlType(char *name);
+bool exprIsNullConstant(Node *arg);
 
 #endif	 /* GRAMPARSE_H */
