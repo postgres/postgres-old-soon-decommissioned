@@ -1643,10 +1643,14 @@ DeferredTriggerSetState(ConstraintsSetStmt *stmt)
 
 			/* ----------
 			 * If we found some, check that they fit the deferrability
+			 * but skip ON <event> RESTRICT ones, since they are silently
+			 * never deferrable.
 			 * ----------
 			 */
 			pg_trigger = (Form_pg_trigger) GETSTRUCT(htup);
-			if (stmt->deferred & !pg_trigger->tgdeferrable)
+			if (stmt->deferred && !pg_trigger->tgdeferrable &&
+					pg_trigger->tgfoid != F_RI_FKEY_RESTRICT_UPD &&
+					pg_trigger->tgfoid != F_RI_FKEY_RESTRICT_DEL)
 				elog(ERROR, "Constraint '%s' is not deferrable",
 									(char *)lfirst(l));
 
