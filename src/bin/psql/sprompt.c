@@ -44,7 +44,7 @@ simple_prompt(const char *prompt, int maxlen, bool echo)
 				t;
 #endif
 
-	destination = (char *) malloc(maxlen + 2);
+	destination = (char *) malloc(maxlen + 1);
 	if (!destination)
 		return NULL;
 
@@ -82,7 +82,7 @@ simple_prompt(const char *prompt, int maxlen, bool echo)
 		fflush(termout);
 	}
 
-	if (fgets(destination, maxlen, termin) == NULL)
+	if (fgets(destination, maxlen + 1, termin) == NULL)
 		destination[0] = '\0';
 
 	length = strlen(destination);
