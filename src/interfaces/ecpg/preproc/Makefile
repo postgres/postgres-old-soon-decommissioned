@@ -20,7 +20,7 @@ override CFLAGS += $(PTHREAD_CFLAGS)
 
 OBJS=	preproc.o type.o ecpg.o ecpg_keywords.o output.o\
 	keywords.o c_keywords.o ../ecpglib/typename.o descriptor.o variable.o \
-	$(filter exec.o, $(LIBOBJS))
+	exec.o
 
 all: submake-libpgport ecpg
 

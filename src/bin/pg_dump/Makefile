@@ -18,7 +18,7 @@ override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS) -DFRONTEND
 OBJS=	pg_backup_archiver.o pg_backup_db.o pg_backup_custom.o \
 	pg_backup_files.o pg_backup_null.o pg_backup_tar.o \
 	dumputils.o
-PG_DUMPALL_OBJS = $(filter exec.o, $(LIBOBJS))
+PG_DUMPALL_OBJS = exec.o
 
 EXTRA_OBJS = $(top_builddir)/src/backend/parser/keywords.o
 

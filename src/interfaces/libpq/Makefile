@@ -23,8 +23,8 @@ override CFLAGS += $(PTHREAD_CFLAGS)
 
 OBJS=	fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
 	fe-protocol2.o fe-protocol3.o pqexpbuffer.o pqsignal.o fe-secure.o \
-	dllist.o md5.o ip.o wchar.o encnames.o \
-	$(filter crypt.o getaddrinfo.o inet_aton.o noblock.o pgstrcasecmp.o snprintf.o strerror.o open.o thread.o, $(LIBOBJS))
+	dllist.o md5.o ip.o wchar.o encnames.o noblock.o pgstrcasecmp.o thread.o \
+	$(filter crypt.o getaddrinfo.o inet_aton.o open.o snprintf.o strerror.o, $(LIBOBJS))
 ifeq ($(PORTNAME), win32)
 OBJS+=win32.o
 endif

@@ -19,8 +19,7 @@ override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS) -DFRONTEND
 
 OBJS=	command.o common.o help.o input.o stringutils.o mainloop.o copy.o \
 	startup.o prompt.o variables.o large_obj.o print.o describe.o \
-	psqlscan.o tab-complete.o mbprint.o \
-	$(filter exec.o, $(LIBOBJS))
+	psqlscan.o tab-complete.o mbprint.o exec.o
 
 FLEXFLAGS = -Cfe
 

@@ -14,8 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS += -DFRONTEND
 
-OBJS= pg_resetxlog.o pg_crc.o \
-      $(filter dirmod.o, $(LIBOBJS))
+OBJS= pg_resetxlog.o pg_crc.o dirmod.o
 
 all: submake-libpgport pg_resetxlog
 
