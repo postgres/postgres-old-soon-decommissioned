@@ -735,9 +735,11 @@ extern char *form(char *fmt, ...);
  * ----------------------------------------------------------------
  */
 
+#ifdef FIXADE
 #if defined(hpux) 
 #include "port/hpux/fixade.h"		/* for unaligned access fixup */
 #endif /* hpux */
+#endif
 
 #if defined(sunos4)
 #define	memmove(d, s, l)	bcopy(s, d, l)
