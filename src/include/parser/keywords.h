@@ -1,8 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * keywords.h
- *	  string,atom lookup thingy, reduces strcmp traffic greatly
- *	  in the bowels of the system.	Look for actual defs in lib/C/atoms.c
+ *	  lexical token lookup for reserved words in postgres SQL
  *
  *
  * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
@@ -22,6 +21,5 @@ typedef struct ScanKeyword
 } ScanKeyword;
 
 extern ScanKeyword *ScanKeywordLookup(char *text);
-extern char *AtomValueGetString(int atomval);
 
 #endif	 /* KEYWORDS_H */
