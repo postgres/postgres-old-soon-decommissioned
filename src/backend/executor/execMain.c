@@ -46,9 +46,6 @@
 #include "utils/builtins.h"
 #include "utils/syscache.h"
 
-/* XXX no points for style */
-extern TupleTableSlot *EvalPlanQual(EState *estate, Index rti,
-			 ItemPointer tid);
 
 /* decls for local routines only used within this module */
 static TupleDesc InitPlan(CmdType operation,
@@ -1974,7 +1971,7 @@ EvalPlanQual(EState *estate, Index rti, ItemPointer tid)
 	 */
 	*tid = tuple.t_self;
 
-	return (EvalPlanQualNext(estate));
+	return EvalPlanQualNext(estate);
 }
 
 static TupleTableSlot *

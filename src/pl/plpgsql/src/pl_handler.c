@@ -69,20 +69,9 @@ static PLpgSQL_function *compiled_functions = NULL;
 Datum
 plpgsql_call_handler(PG_FUNCTION_ARGS)
 {
-	TriggerData *trigdata;
-	bool		isTrigger;
+	bool		isTrigger = CALLED_AS_TRIGGER(fcinfo);
 	PLpgSQL_function *func;
 	Datum		retval;
-
-	/* ----------
-	 * Save the current trigger data local
-	 *
-	 * XXX this should go away in favor of using fcinfo->context
-	 * ----------
-	 */
-	trigdata = CurrentTriggerData;
-	CurrentTriggerData = NULL;
-	isTrigger = (trigdata != NULL);
 
 	/* ----------
 	 * Connect to SPI manager
@@ -136,7 +125,8 @@ plpgsql_call_handler(PG_FUNCTION_ARGS)
 	 * ----------
 	 */
 	if (isTrigger)
-		retval = PointerGetDatum(plpgsql_exec_trigger(func, trigdata));
+		retval = PointerGetDatum(plpgsql_exec_trigger(func,
+										(TriggerData *) fcinfo->context));
 	else
 		retval = plpgsql_exec_function(func, fcinfo);
 

@@ -59,6 +59,8 @@ extern TupleTableSlot *ExecutorRun(QueryDesc *queryDesc, EState *estate,
 extern void ExecutorEnd(QueryDesc *queryDesc, EState *estate);
 extern void ExecConstraints(char *caller, Relation rel, HeapTuple tuple,
 				EState *estate);
+extern TupleTableSlot *EvalPlanQual(EState *estate, Index rti,
+									ItemPointer tid);
 
 /*
  * prototypes from functions in execProcnode.c

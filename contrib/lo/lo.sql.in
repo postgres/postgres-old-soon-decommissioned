@@ -47,7 +47,7 @@ create function lo(oid)
 create function lo_manage()
 	returns opaque
 	as '_OBJWD_/lo_DLSUFFIX_'
-	language 'c';
+	language 'newC';
 
 -- This allows us to map lo to oid
 --

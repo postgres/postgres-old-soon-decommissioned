@@ -17,6 +17,8 @@
  */
 
 #include "postgres.h"
+
+#include "access/heapam.h"
 #include "utils/builtins.h"
 
 #define LDELIM			'('

@@ -107,6 +107,7 @@ extern void fmgr_info(Oid functionId, FmgrInfo *finfo);
 #define PG_GETARG_BOOL(n)    DatumGetBool(fcinfo->arg[n])
 #define PG_GETARG_OID(n)     DatumGetObjectId(fcinfo->arg[n])
 #define PG_GETARG_POINTER(n) DatumGetPointer(fcinfo->arg[n])
+#define PG_GETARG_NAME(n)    DatumGetName(fcinfo->arg[n])
 /* these macros hide the pass-by-reference-ness of the datatype: */
 #define PG_GETARG_FLOAT4(n)  DatumGetFloat4(fcinfo->arg[n])
 #define PG_GETARG_FLOAT8(n)  DatumGetFloat8(fcinfo->arg[n])
@@ -133,6 +134,7 @@ extern void fmgr_info(Oid functionId, FmgrInfo *finfo);
 #define PG_RETURN_BOOL(x)    return BoolGetDatum(x)
 #define PG_RETURN_OID(x)     return ObjectIdGetDatum(x)
 #define PG_RETURN_POINTER(x) return PointerGetDatum(x)
+#define PG_RETURN_NAME(x)    return NameGetDatum(x)
 /* these macros hide the pass-by-reference-ness of the datatype: */
 #define PG_RETURN_FLOAT4(x)  return Float4GetDatum(x)
 #define PG_RETURN_FLOAT8(x)  return Float8GetDatum(x)

@@ -390,10 +390,10 @@ pltcl_call_handler(PG_FUNCTION_ARGS)
 	 * Determine if called as function or trigger and
 	 * call appropriate subhandler
 	 ************************************************************/
-	if (CurrentTriggerData == NULL)
-		retval = pltcl_func_handler(fcinfo);
+	if (CALLED_AS_TRIGGER(fcinfo))
+		retval = PointerGetDatum(pltcl_trigger_handler(fcinfo));
 	else
-		retval = (Datum) pltcl_trigger_handler(fcinfo);
+		retval = pltcl_func_handler(fcinfo);
 
 	pltcl_call_level--;
 
@@ -734,7 +734,7 @@ pltcl_func_handler(PG_FUNCTION_ARGS)
 static HeapTuple
 pltcl_trigger_handler(PG_FUNCTION_ARGS)
 {
-	TriggerData *trigdata;
+	TriggerData *trigdata = (TriggerData *) fcinfo->context;
 	char		internal_proname[512];
 	char	   *stroid;
 	Tcl_HashEntry *hashent;
@@ -756,12 +756,6 @@ pltcl_trigger_handler(PG_FUNCTION_ARGS)
 	char	  **ret_values;
 
 	sigjmp_buf	save_restart;
-
-	/************************************************************
-	 * Save the current trigger data local
-	 ************************************************************/
-	trigdata = CurrentTriggerData;
-	CurrentTriggerData = NULL;
 
 	/************************************************************
 	 * Build our internal proc name from the functions Oid

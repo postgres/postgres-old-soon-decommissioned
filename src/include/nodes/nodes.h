@@ -223,7 +223,13 @@ typedef enum NodeTag
 	T_CaseExpr,
 	T_CaseWhen,
 	T_RowMark,
-	T_FkConstraint
+	T_FkConstraint,
+
+	/*---------------------
+	 * TAGS FOR FUNCTION-CALL CONTEXT AND RESULTINFO NODES (cf. fmgr.h)
+	 *---------------------
+	 */
+	T_TriggerData = 800			/* in commands/trigger.h */
 } NodeTag;
 
 /*

@@ -17,7 +17,6 @@
 
 #include "catalog/pg_language.h"
 #include "catalog/pg_proc.h"
-#include "commands/trigger.h"	/* TEMPORARY: for CurrentTriggerData */
 #include "utils/builtins.h"
 #include "utils/fmgrtab.h"
 #include "utils/syscache.h"

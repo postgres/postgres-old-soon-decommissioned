@@ -9,21 +9,12 @@
  *
  * $Id$
  *
- * NOTES
- *	  This should normally only be included by fmgr.h.
- *	  Under no circumstances should it ever be included before
- *	  including fmgr.h!
- * fmgr.h does not seem to include this file, so don't know where this
- *	comment came from. Backend code must include this stuff explicitly
- *	as far as I can tell...
- * - thomas 1998-06-08
- *
  *-------------------------------------------------------------------------
  */
 #ifndef BUILTINS_H
 #define BUILTINS_H
 
-#include "access/heapam.h"		/* for HeapTuple */
+#include "fmgr.h"
 #include "nodes/relation.h"		/* for amcostestimate parameters */
 #include "storage/itemptr.h"
 #include "utils/array.h"
@@ -648,17 +639,17 @@ bool		lztext_lt(lztext *lz1, lztext *lz2);
 bool		lztext_le(lztext *lz1, lztext *lz2);
 
 /* ri_triggers.c */
-extern HeapTuple RI_FKey_check_ins(FmgrInfo *proinfo);
-extern HeapTuple RI_FKey_check_upd(FmgrInfo *proinfo);
-extern HeapTuple RI_FKey_noaction_del(FmgrInfo *proinfo);
-extern HeapTuple RI_FKey_noaction_upd(FmgrInfo *proinfo);
-extern HeapTuple RI_FKey_cascade_del(FmgrInfo *proinfo);
-extern HeapTuple RI_FKey_cascade_upd(FmgrInfo *proinfo);
-extern HeapTuple RI_FKey_restrict_del(FmgrInfo *proinfo);
-extern HeapTuple RI_FKey_restrict_upd(FmgrInfo *proinfo);
-extern HeapTuple RI_FKey_setnull_del(FmgrInfo *proinfo);
-extern HeapTuple RI_FKey_setnull_upd(FmgrInfo *proinfo);
-extern HeapTuple RI_FKey_setdefault_del(FmgrInfo *proinfo);
-extern HeapTuple RI_FKey_setdefault_upd(FmgrInfo *proinfo);
+extern Datum RI_FKey_check_ins(PG_FUNCTION_ARGS);
+extern Datum RI_FKey_check_upd(PG_FUNCTION_ARGS);
+extern Datum RI_FKey_noaction_del(PG_FUNCTION_ARGS);
+extern Datum RI_FKey_noaction_upd(PG_FUNCTION_ARGS);
+extern Datum RI_FKey_cascade_del(PG_FUNCTION_ARGS);
+extern Datum RI_FKey_cascade_upd(PG_FUNCTION_ARGS);
+extern Datum RI_FKey_restrict_del(PG_FUNCTION_ARGS);
+extern Datum RI_FKey_restrict_upd(PG_FUNCTION_ARGS);
+extern Datum RI_FKey_setnull_del(PG_FUNCTION_ARGS);
+extern Datum RI_FKey_setnull_upd(PG_FUNCTION_ARGS);
+extern Datum RI_FKey_setdefault_del(PG_FUNCTION_ARGS);
+extern Datum RI_FKey_setdefault_upd(PG_FUNCTION_ARGS);
 
 #endif	 /* BUILTINS_H */
