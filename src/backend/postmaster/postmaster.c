@@ -2760,7 +2760,7 @@ BackendRun(Port *port)
 	 */
 	ereport(DEBUG3,
 			(errmsg_internal("%s child[%d]: starting with (",
-							 progname, getpid())));
+							 progname, (int)getpid())));
 	for (i = 0; i < ac; ++i)
 		ereport(DEBUG3,
 				(errmsg_internal("\t%s", av[i])));

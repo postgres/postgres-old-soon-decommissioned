@@ -1505,7 +1505,7 @@ PgstatCollectorMain(int argc, char *argv[])
 	snprintf(pgStat_fname, MAXPGPATH, PGSTAT_STAT_FILENAME, DataDir);
 	/* tmpfname need only be set correctly in this process */
 	snprintf(pgStat_tmpfname, MAXPGPATH, PGSTAT_STAT_TMPFILE,
-			 DataDir, getpid());
+			 DataDir, (int)getpid());
 
 	/*
 	 * Arrange to write the initial status file right away
