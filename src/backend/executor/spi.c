@@ -427,7 +427,6 @@ SPI_modifytuple(Relation rel, HeapTuple tuple, int natts, int *attnum,
 	int			numberOfAttributes;
 	Datum	   *v;
 	char	   *n;
-	bool		isnull;
 	int			i;
 
 	if (rel == NULL || tuple == NULL || natts < 0 || attnum == NULL || Values == NULL)
@@ -448,11 +447,7 @@ SPI_modifytuple(Relation rel, HeapTuple tuple, int natts, int *attnum,
 	n = (char *) palloc(numberOfAttributes * sizeof(char));
 
 	/* fetch old values and nulls */
-	for (i = 0; i < numberOfAttributes; i++)
-	{
-		v[i] = heap_getattr(tuple, i + 1, rel->rd_att, &isnull);
-		n[i] = (isnull) ? 'n' : ' ';
-	}
+	heap_deformtuple(tuple, rel->rd_att, v, n);
 
 	/* replace values and nulls */
 	for (i = 0; i < natts; i++)
@@ -474,7 +469,7 @@ SPI_modifytuple(Relation rel, HeapTuple tuple, int natts, int *attnum,
 		mtuple->t_data->t_ctid = tuple->t_data->t_ctid;
 		mtuple->t_self = tuple->t_self;
 		mtuple->t_tableOid = tuple->t_tableOid;
-		if (rel->rd_rel->relhasoids)
+		if (rel->rd_att->tdhasoid)
 			HeapTupleSetOid(mtuple, HeapTupleGetOid(tuple));
 	}
 	else

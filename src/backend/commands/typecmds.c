@@ -1329,12 +1329,8 @@ AlterDomainNotNull(List *names, bool notNull)
 				for (i = 0; i < rtc->natts; i++)
 				{
 					int			attnum = rtc->atts[i];
-					Datum		d;
-					bool		isNull;
 
-					d = heap_getattr(tuple, attnum, tupdesc, &isNull);
-
-					if (isNull)
+					if (heap_attisnull(tuple, attnum))
 						ereport(ERROR,
 								(errcode(ERRCODE_NOT_NULL_VIOLATION),
 								 errmsg("column \"%s\" of table \"%s\" contains null values",
