@@ -3371,9 +3371,9 @@ log_var(NumericVar *base, NumericVar *num, NumericVar *result)
 
 
 /* ----------
- * log_var() -
+ * power_var() -
  *
- *	Compute the logarithm of x in a given base
+ *	Raise base to the power of exp
  * ----------
  */
 static void
@@ -3384,7 +3384,7 @@ power_var(NumericVar *base, NumericVar *exp, NumericVar *result)
 	int			save_global_rscale;
 
 	save_global_rscale = global_rscale;
-	global_rscale += 8 + MAX(0, exp->weight);
+	global_rscale += global_rscale / 3 + 8;
 
 	init_var(&ln_base);
 	init_var(&ln_num);
