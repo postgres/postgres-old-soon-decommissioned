@@ -68,6 +68,7 @@ planner(Query *parse)
 	PlannerInitPlan = NULL;
 	PlannerPlanId = 0;
 
+	transformKeySetQuery(parse);
 	result_plan = union_planner(parse);
 
 	Assert(PlannerQueryLevel == 1);

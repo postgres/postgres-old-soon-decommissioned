@@ -61,5 +61,6 @@ extern void del_agg_tlist_references(List *tlist);
 extern List *check_having_qual_for_aggs(Node *clause,
 						   List *subplanTargetList, List *groupClause);
 extern List *check_having_qual_for_vars(Node *clause, List *targetlist_so_far);
+extern void transformKeySetQuery(Query *origNode);
 
 #endif	 /* PLANMAIN_H */

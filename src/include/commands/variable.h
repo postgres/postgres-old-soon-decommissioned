@@ -54,5 +54,8 @@ extern bool set_geqo(void);
 extern bool show_geqo(void);
 extern bool reset_geqo(void);
 extern bool parse_geqo(const char *);
+extern bool show_ksqo(void);
+extern bool reset_ksqo(void);
+extern bool parse_ksqo(const char *);
 
 #endif	 /* VARIABLE_H */
