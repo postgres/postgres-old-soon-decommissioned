@@ -43,17 +43,20 @@ admin.tar developer.tar reference.tar user.tar:
 programmer.tar:
 	$(MAKE) -C sgml clean
 	$(MAKE) -C sgml programmer.html
-	cd sgml && $(TAR) -cf ../$@ $(TAREXCLUDE) *.html -C `cd $(srcdir) && pwd`/graphics catalogs.gif connections.gif
+	abssrcdir=`cd $(srcdir) && pwd`; \
+	cd sgml && $(TAR) -cf ../$@ $(TAREXCLUDE) *.html -C $$abssrcdir/graphics catalogs.gif connections.gif
 
 tutorial.tar:
 	$(MAKE) -C sgml clean
 	$(MAKE) -C sgml tutorial.html
-	cd sgml && $(TAR) -cf ../$@ $(TAREXCLUDE) *.html -C `cd $(srcdir) && pwd`/graphics clientserver.gif
+	abssrcdir=`cd $(srcdir) && pwd`; \
+	cd sgml && $(TAR) -cf ../$@ $(TAREXCLUDE) *.html -C $$abssrcdir/graphics clientserver.gif
 
 postgres.tar:
 	$(MAKE) -C sgml clean
 	$(MAKE) -C sgml postgres.html
-	cd sgml && $(TAR) -cf ../$@ $(TAREXCLUDE) *.html -C `cd $(srcdir) && pwd`/graphics catalogs.gif clientserver.gif connections.gif
+	abssrcdir=`cd $(srcdir) && pwd`; \
+	cd sgml && $(TAR) -cf ../$@ $(TAREXCLUDE) *.html -C $$abssrcdir/graphics catalogs.gif clientserver.gif connections.gif
 
 man.tar:
 	$(MAKE) -C sgml man
