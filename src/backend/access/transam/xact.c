@@ -167,6 +167,7 @@
 #include "utils/inval.h"
 #include "utils/memutils.h"
 #include "utils/portal.h"
+#include "utils/catcache.h"
 #include "utils/relcache.h"
 #include "utils/temprel.h"
 
@@ -797,6 +798,7 @@ static void
 AtAbort_Cache()
 {
 	RelationCacheAbort();
+	SystemCacheAbort();
 	RegisterInvalid(false);
 }
 

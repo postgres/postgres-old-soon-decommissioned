@@ -83,6 +83,7 @@ extern void CatalogCacheIdInvalidate(int cacheId, Index hashIndex,
 						 ItemPointer pointer);
 extern void ResetSystemCache(void);
 extern void SystemCacheRelationFlushed(Oid relId);
+extern void SystemCacheAbort(void);
 extern CatCache *InitSysCache(char *relname, char *indname, int id,
 							  int nkeys, int *key,
 							  ScanFunc iScanfuncP);
