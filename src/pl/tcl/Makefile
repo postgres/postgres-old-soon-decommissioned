@@ -11,7 +11,7 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 
-override CPPFLAGS += $(TCL_INCLUDE_SPEC)
+override CPPFLAGS := $(TCL_INCLUDE_SPEC) $(CPPFLAGS)
 
 
 # Find out whether Tcl was built as a shared library --- if not, we
