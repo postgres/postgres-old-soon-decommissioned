@@ -461,6 +461,8 @@ parseTypeString(const char *str, Oid *type_id, int32 *typmod)
 		elog(ERROR, "parseTypeString: Invalid type name '%s'", str);
 	typecast = (TypeCast *) restarget->val;
 	if (typecast == NULL ||
+		!IsA(typecast, TypeCast) ||
+		typecast->arg == NULL ||
 		!IsA(typecast->arg, A_Const))
 		elog(ERROR, "parseTypeString: Invalid type name '%s'", str);
 	typename = typecast->typename;
