@@ -58,7 +58,9 @@
 #ifdef HAVE_LIMITS_H
 #include <limits.h>
 #else
+#ifdef HAVE_VALUES_H
 #include <values.h>
+#endif
 #endif
 
 #ifdef HAVE_SYS_SELECT_H

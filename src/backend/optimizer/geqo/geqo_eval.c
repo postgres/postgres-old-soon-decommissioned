@@ -24,7 +24,9 @@
 #ifdef HAVE_LIMITS_H
 #include <limits.h>
 #else
+#ifdef HAVE_VALUES_H
 #include <values.h>
+#endif
 #endif
 
 #include "optimizer/cost.h"

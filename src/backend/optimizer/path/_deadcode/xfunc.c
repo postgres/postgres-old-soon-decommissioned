@@ -15,7 +15,9 @@
  */
 #include <math.h>
 
+#ifdef HAVE_VALUES_H
 #include <values.h>
+#endif
 
 #include "postgres.h"
 
