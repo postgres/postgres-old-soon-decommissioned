@@ -726,23 +726,19 @@ parser_typecast_constant(Value *expr, TypeName *typename)
 
 	switch (nodeTag(expr))
 	{
-		case T_String:
-			const_string = DatumGetPointer(expr->val.str);
-			break;
 		case T_Integer:
 			string_palloced = true;
 			const_string = int4out(expr->val.ival);
 			break;
 		case T_Float:
-			string_palloced = true;
-			const_string = float8out(&expr->val.dval);
+		case T_String:
+			const_string = expr->val.str;
 			break;
 		case T_Null:
 			isNull = true;
 			break;
 		default:
-			elog(ERROR,
-				 "Cannot cast this expression to type '%s'",
+			elog(ERROR, "Cannot cast this expression to type '%s'",
 				 typename->name);
 	}
 

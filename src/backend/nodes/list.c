@@ -73,19 +73,23 @@ makeInteger(long i)
 
 /*
  *	makeFloat
+ *
+ * Caller is responsible for passing a palloc'd string.
  */
 Value *
-makeFloat(double d)
+makeFloat(char *numericStr)
 {
 	Value	   *v = makeNode(Value);
 
 	v->type = T_Float;
-	v->val.dval = d;
+	v->val.str = numericStr;
 	return v;
 }
 
 /*
  *	makeString
+ *
+ * Caller is responsible for passing a palloc'd string.
  */
 Value *
 makeString(char *str)

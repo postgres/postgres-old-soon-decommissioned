@@ -1130,7 +1130,8 @@ _freeValue(Value *node)
 {
 	switch (node->type)
 	{
-			case T_String:
+		case T_Float:
+		case T_String:
 			pfree(node->val.str);
 			break;
 		default:
@@ -1345,8 +1346,8 @@ freeObject(void *node)
 			 * VALUE NODES
 			 */
 		case T_Integer:
-		case T_String:
 		case T_Float:
+		case T_String:
 			_freeValue(node);
 			break;
 		case T_List:

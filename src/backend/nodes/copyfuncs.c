@@ -1501,14 +1501,12 @@ _copyValue(Value *from)
 	newnode->type = from->type;
 	switch (from->type)
 	{
-		case T_String:
-			newnode->val.str = pstrdup(from->val.str);
-			break;
 		case T_Integer:
 			newnode->val.ival = from->val.ival;
 			break;
 		case T_Float:
-			newnode->val.dval = from->val.dval;
+		case T_String:
+			newnode->val.str = pstrdup(from->val.str);
 			break;
 		default:
 			break;
@@ -1722,8 +1720,8 @@ copyObject(void *from)
 			 * VALUE NODES
 			 */
 		case T_Integer:
-		case T_String:
 		case T_Float:
+		case T_String:
 			retval = _copyValue(from);
 			break;
 		case T_List:

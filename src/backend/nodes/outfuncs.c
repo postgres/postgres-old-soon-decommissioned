@@ -1265,16 +1265,19 @@ _outValue(StringInfo str, Value *value)
 {
 	switch (value->type)
 	{
-		case T_String:
-			appendStringInfo(str, " \"");
-			_outToken(str, value->val.str);
-			appendStringInfo(str, "\" ");
-			break;
 		case T_Integer:
 			appendStringInfo(str, " %ld ", value->val.ival);
 			break;
 		case T_Float:
-			appendStringInfo(str, " %.17g ", value->val.dval);
+			/* We assume the value is a valid numeric literal
+			 * and so does not need quoting.
+			 */
+			appendStringInfo(str, " %s ", value->val.str);
+			break;
+		case T_String:
+			appendStringInfo(str, " \"");
+			_outToken(str, value->val.str);
+			appendStringInfo(str, "\" ");
 			break;
 		default:
 			elog(NOTICE, "_outValue: don't know how to print type %d ",
