@@ -263,6 +263,8 @@ ExecEndResult(Result *node)
 	 *		  is freed at end-transaction time.  -cim 6/2/91
 	 * ----------------
 	 */
+	ExecFreeExprContext(&resstate->cstate); /* XXX - new for us - er1p */
+	ExecFreeTypeInfo(&resstate->cstate); /* XXX - new for us - er1p */
 	ExecFreeProjectionInfo(&resstate->cstate);
 
 	/* ----------------
@@ -276,6 +278,7 @@ ExecEndResult(Result *node)
 	 * ----------------
 	 */
 	ExecClearTuple(resstate->cstate.cs_ResultTupleSlot);
+	pfree(resstate); node->resstate = NULL; /* XXX - new for us - er1p */
 }
 
 void
