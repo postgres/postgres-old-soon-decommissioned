@@ -208,18 +208,14 @@ GetLocksMethodTable(LOCK *lock)
 static void
 LockMethodInit(LOCKMETHODTABLE *lockMethodTable,
 			   LOCKMASK *conflictsP,
-			   int *prioP,
 			   int numModes)
 {
 	int			i;
 
 	lockMethodTable->numLockModes = numModes;
 	numModes++;
-	for (i = 0; i < numModes; i++, prioP++, conflictsP++)
-	{
+	for (i = 0; i < numModes; i++, conflictsP++)
 		lockMethodTable->conflictTab[i] = *conflictsP;
-		lockMethodTable->prio[i] = *prioP;
-	}
 }
 
 /*
@@ -234,7 +230,6 @@ LockMethodInit(LOCKMETHODTABLE *lockMethodTable,
 LOCKMETHOD
 LockMethodTableInit(char *tabName,
 					LOCKMASK *conflictsP,
-					int *prioP,
 					int numModes,
 					int maxBackends)
 {
@@ -335,7 +330,7 @@ LockMethodTableInit(char *tabName,
 		elog(FATAL, "LockMethodTableInit: couldn't initialize %s", tabName);
 
 	/* init data structures */
-	LockMethodInit(lockMethodTable, conflictsP, prioP, numModes);
+	LockMethodInit(lockMethodTable, conflictsP, numModes);
 
 	LWLockRelease(LockMgrLock);
 
