@@ -56,11 +56,14 @@
 (element envar ($mono-seq$))
 (element lineannotation ($italic-seq$))
 (element literal ($mono-seq$))
+(element option ($mono-seq$))
+(element parameter ($mono-seq$))
 (element structfield ($mono-seq$))
 (element structname ($mono-seq$))
 (element symbol ($mono-seq$))
 (element token ($mono-seq$))
 (element type ($mono-seq$))
+(element varname ($mono-seq$))
 (element (programlisting emphasis) ($bold-seq$)) ;; to highlight sections of code
 
 ;; Special support for Tcl synopses
