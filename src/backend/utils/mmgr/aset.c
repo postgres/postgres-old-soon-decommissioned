@@ -38,17 +38,8 @@
 #undef realloc
 
 
-/*
 #define	ALLOC_BLOCK_SIZE	8192
 #define	ALLOC_CHUNK_LIMIT	512
- *
- * The above settings for block size and chunk limit gain better
- * performance. But the ones below force a bug that I didn't found
- * up to now letting the portals_p2 regression test fail.
- *
- */
-#define	ALLOC_BLOCK_SIZE	16384
-#define	ALLOC_CHUNK_LIMIT	256
 
 #define ALLOC_BLOCKHDRSZ	MAXALIGN(sizeof(AllocBlockData))
 #define ALLOC_CHUNKHDRSZ	MAXALIGN(sizeof(AllocChunkData))
