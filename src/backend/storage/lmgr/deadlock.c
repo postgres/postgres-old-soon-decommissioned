@@ -207,6 +207,9 @@ DeadLockCheck(PROC *proc)
 #ifdef DEBUG_DEADLOCK
 		PrintLockQueue(lock, "rearranged to:");
 #endif
+
+		/* See if any waiters for the lock can be woken up now */
+		ProcLockWakeup(GetLocksMethodTable(lock), lock);
 	}
 	return false;
 }
