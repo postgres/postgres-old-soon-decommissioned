@@ -187,9 +187,9 @@ ExecUnique(Unique *node)
 			char	   *val1,
 					   *val2;
 
-			attr1 = heap_getattr(slot->val, InvalidBuffer,
+			attr1 = heap_getattr(slot->val, 
 								 uniqueAttrNum, tupDesc, &isNull1);
-			attr2 = heap_getattr(resultTupleSlot->val, InvalidBuffer,
+			attr2 = heap_getattr(resultTupleSlot->val,
 								 uniqueAttrNum, tupDesc, &isNull2);
 
 			if (isNull1 == isNull2)

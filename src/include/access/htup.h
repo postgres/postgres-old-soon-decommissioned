@@ -63,6 +63,8 @@ typedef HeapTupleData *HeapTuple;
 #define MaxCommandIdAttributeNumber				(-6)
 #define FirstLowInvalidHeapAttributeNumber		(-7)
 
+/* If you make any changes above, the order off offsets in this must change */
+extern long heap_sysoffset[];
 
 /* ----------------
  *		support macros

@@ -198,12 +198,12 @@ tuplecmp(HeapTuple ltup, HeapTuple rtup, LeftistContext context)
 		return (1);
 	while (nkey < context->nKeys && !result)
 	{
-		lattr = heap_getattr(ltup, InvalidBuffer,
+		lattr = heap_getattr(ltup,
 							 context->scanKeys[nkey].sk_attno,
 							 context->tupDesc, &isnull);
 		if (isnull)
 			return (0);
-		rattr = heap_getattr(rtup, InvalidBuffer,
+		rattr = heap_getattr(rtup,
 							 context->scanKeys[nkey].sk_attno,
 							 context->tupDesc,
 							 &isnull);

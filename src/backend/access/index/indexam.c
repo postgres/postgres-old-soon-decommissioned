@@ -386,7 +386,6 @@ GetIndexValue(HeapTuple tuple,
 		for (i = 0; i < FIgetnArgs(fInfo); i++)
 		{
 			attData[i] = heap_getattr(tuple,
-									  buffer,
 									  attrNums[i],
 									  hTupDesc,
 									  attNull);
@@ -400,7 +399,7 @@ GetIndexValue(HeapTuple tuple,
 	}
 	else
 	{
-		returnVal = heap_getattr(tuple, buffer, attrNums[attOff],
+		returnVal = heap_getattr(tuple, attrNums[attOff],
 								 hTupDesc, attNull);
 	}
 	return returnVal;

@@ -299,7 +299,7 @@ be_printtup(HeapTuple tuple, TupleDesc typeinfo)
 
 	for (i = 0; i < tuple->t_natts; i++)
 	{
-		attr = heap_getattr(tuple, InvalidBuffer, i + 1, typeinfo, &isnull);
+		attr = heap_getattr(tuple, i + 1, typeinfo, &isnull);
 		typoutput = typtoout((Oid) typeinfo->attrs[i]->atttypid);
 
 		lengths[i] = typeinfo->attrs[i]->attlen;

@@ -301,7 +301,6 @@ ExecEvalVar(Var *variable, ExprContext *econtext, bool *isNull)
 	}
 
 	result = heap_getattr(heapTuple, /* tuple containing attribute */
-						  buffer,	/* buffer associated with tuple */
 						  attnum,	/* attribute number of desired attribute */
 					 	  tuple_type,/* tuple descriptor of tuple */
 						  isNull);	/* return: is attribute null? */
@@ -525,7 +524,6 @@ GetAttributeByNum(TupleTableSlot *slot,
 	}
 
 	retval = heap_getattr(slot->val,
-						  slot->ttc_buffer,
 						  attrno,
 						  slot->ttc_tupleDescriptor,
 						  isNull);
@@ -587,7 +585,6 @@ GetAttributeByName(TupleTableSlot *slot, char *attname, bool *isNull)
 		elog(ERROR, "GetAttributeByName: attribute %s not found", attname);
 
 	retval = heap_getattr(slot->val,
-						  slot->ttc_buffer,
 						  attrno,
 						  tupdesc,
 						  isNull);

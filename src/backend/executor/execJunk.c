@@ -315,7 +315,7 @@ ExecGetJunkAttribute(JunkFilter *junkfilter,
 	tuple = slot->val;
 	tupType = (TupleDesc) junkfilter->jf_tupType;
 
-	*value = heap_getattr(tuple, InvalidBuffer, resno, tupType, isNull);
+	*value = heap_getattr(tuple, resno, tupType, isNull);
 
 	return true;
 }
@@ -391,7 +391,7 @@ ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot)
 	for (i = 0; i < cleanLength; i++)
 	{
 		values[i] =
-			heap_getattr(tuple, InvalidBuffer, cleanMap[i], tupType, &isNull);
+			heap_getattr(tuple, cleanMap[i], tupType, &isNull);
 
 		if (isNull)
 			nulls[i] = 'n';

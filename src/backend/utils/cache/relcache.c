@@ -744,24 +744,24 @@ RelationBuildRuleLock(Relation relation)
 		rule->ruleId = pg_rewrite_tuple->t_oid;
 
 		rule->event =
-			(int) heap_getattr(pg_rewrite_tuple, InvalidBuffer,
+			(int) heap_getattr(pg_rewrite_tuple,
 							 Anum_pg_rewrite_ev_type, pg_rewrite_tupdesc,
 							   &isnull) - 48;
 		rule->attrno =
-			(int) heap_getattr(pg_rewrite_tuple, InvalidBuffer,
+			(int) heap_getattr(pg_rewrite_tuple,
 							 Anum_pg_rewrite_ev_attr, pg_rewrite_tupdesc,
 							   &isnull);
 		rule->isInstead =
-			!!heap_getattr(pg_rewrite_tuple, InvalidBuffer,
+			!!heap_getattr(pg_rewrite_tuple,
 						   Anum_pg_rewrite_is_instead, pg_rewrite_tupdesc,
 						   &isnull);
 
 		ruleaction =
-			heap_getattr(pg_rewrite_tuple, InvalidBuffer,
+			heap_getattr(pg_rewrite_tuple,
 						 Anum_pg_rewrite_ev_action, pg_rewrite_tupdesc,
 						 &isnull);
 		rule_evqual_string =
-			heap_getattr(pg_rewrite_tuple, InvalidBuffer,
+			heap_getattr(pg_rewrite_tuple,
 						 Anum_pg_rewrite_ev_qual, pg_rewrite_tupdesc,
 						 &isnull);
 

@@ -266,7 +266,7 @@ CopyTo(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
 
 		for (i = 0; i < attr_count; i++)
 		{
-			value = heap_getattr(tuple, InvalidBuffer, i + 1, tupDesc, &isnull);
+			value = heap_getattr(tuple, i + 1, tupDesc, &isnull);
 			if (!binary)
 			{
 				if (!isnull)
@@ -921,12 +921,12 @@ GetIndexRelations(Oid main_relation_oid,
 	{
 
 		index_relation_oid =
-			(Oid) DatumGetInt32(heap_getattr(tuple, InvalidBuffer, 2,
+			(Oid) DatumGetInt32(heap_getattr(tuple, 2,
 											 tupDesc, &isnull));
 		if (index_relation_oid == main_relation_oid)
 		{
 			scan->index_rel_oid =
-				(Oid) DatumGetInt32(heap_getattr(tuple, InvalidBuffer,
+				(Oid) DatumGetInt32(heap_getattr(tuple,
 												 Anum_pg_index_indexrelid,
 												 tupDesc, &isnull));
 			(*n_indices)++;

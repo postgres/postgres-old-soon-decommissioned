@@ -1096,11 +1096,11 @@ _psort_cmp (HeapTuple *ltup, HeapTuple *rtup)
     
     for (nkey = 0; nkey < PsortNkeys && !result; nkey++ )
     {
-		lattr = heap_getattr(*ltup, InvalidBuffer,
+		lattr = heap_getattr(*ltup,
 				     PsortKeys[nkey].sk_attno, 
 				     PsortTupDesc,
 			    	 &isnull1);
-		rattr = heap_getattr(*rtup, InvalidBuffer,
+		rattr = heap_getattr(*rtup,
 				     PsortKeys[nkey].sk_attno, 
 				     PsortTupDesc,
 				     &isnull2);

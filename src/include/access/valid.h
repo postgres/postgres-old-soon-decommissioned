@@ -53,7 +53,7 @@ do \
 	(result) = true; /* may change */ \
 	for (; __cur_nkeys--; __cur_keys++) \
 	{ \
-		__atp = heap_getattr((tuple), InvalidBuffer, \
+		__atp = heap_getattr((tuple), \
 						   __cur_keys->sk_attno, \
 						   (tupdesc), \
 						   &__isnull); \

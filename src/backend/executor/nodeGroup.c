@@ -402,13 +402,11 @@ sameGroup(TupleTableSlot *oldslot,
 		typoutput = typtoout((Oid) tupdesc->attrs[att - 1]->atttypid);
 
 		attr1 = heap_getattr(oldslot->val,
-							 InvalidBuffer,
 							 att,
 							 tupdesc,
 							 &isNull1);
 
 		attr2 = heap_getattr(newslot->val,
-							 InvalidBuffer,
 							 att,
 							 tupdesc,
 							 &isNull2);

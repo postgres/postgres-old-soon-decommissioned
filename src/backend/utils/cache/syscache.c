@@ -544,7 +544,6 @@ SearchSysCacheGetAttribute(int cacheId,
 	}
 
 	attributeValue = heap_getattr(tp,
-								  (Buffer) 0,
 								  attributeNumber,
 								  RelationGetTupleDescriptor(relation),
 								  &isNull);

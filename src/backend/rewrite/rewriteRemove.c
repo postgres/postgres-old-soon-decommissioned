@@ -75,7 +75,6 @@ RemoveRewriteRule(char *ruleName)
 	Oid			ruleId = (Oid) 0;
 	Oid			eventRelationOid = (Oid) NULL;
 	Datum		eventRelationOidDatum = (Datum) NULL;
-	Buffer		buffer = (Buffer) NULL;
 	bool		isNull = false;
 
 	/*
@@ -109,7 +108,6 @@ RemoveRewriteRule(char *ruleName)
 	ruleId = tuple->t_oid;
 	eventRelationOidDatum =
 		heap_getattr(tuple,
-					 buffer,
 					 Anum_pg_rewrite_ev_class,
 					 RelationGetTupleDescriptor(RewriteRelation),
 					 &isNull);

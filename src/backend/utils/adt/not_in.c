@@ -83,7 +83,6 @@ int4notin(int16 not_in_arg, char *relation_and_attr)
 		 current_tuple = heap_getnext(scan_descriptor, 0, NULL))
 	{
 		value = heap_getattr(current_tuple,
-							 InvalidBuffer,
 							 (AttrNumber) attrid,
 							 RelationGetTupleDescriptor(relation_to_scan),
 							 &dummy);

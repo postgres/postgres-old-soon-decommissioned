@@ -258,12 +258,12 @@ check_permissions(char *command,
 
 	if (dbfound)
 	{
-		dbowner = (Oid) heap_getattr(dbtup, InvalidBuffer,
+		dbowner = (Oid) heap_getattr(dbtup,
 									 Anum_pg_database_datdba,
 									 RelationGetTupleDescriptor(dbrel),
 									 (char *) NULL);
 		*dbIdP = dbtup->t_oid;
-		dbtext = (text *) heap_getattr(dbtup, InvalidBuffer,
+		dbtext = (text *) heap_getattr(dbtup,
 								 Anum_pg_database_datpath,
 								 RelationGetTupleDescriptor(dbrel),
 								 (char *) NULL);

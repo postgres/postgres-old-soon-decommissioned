@@ -99,7 +99,7 @@ fmgr_dynamic(Oid procedureId, int *pronargs)
 			 ProcedureRelationName);
 		return ((func_ptr) NULL);
 	}
-	probinattr = heap_getattr(procedureTuple, (Buffer) 0,
+	probinattr = heap_getattr(procedureTuple,
 							  Anum_pg_proc_probin,
 							  RelationGetTupleDescriptor(rdesc), &isnull);
 	if (!PointerIsValid(probinattr) /* || isnull */ )

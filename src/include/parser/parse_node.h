@@ -28,7 +28,6 @@ typedef struct QueryTreeList
 /* state information used during parse analysis */
 typedef struct ParseState
 {
-	struct 		ParseState;
 	int			p_last_resno;
 	List	   *p_rtable;
 	List	   *p_insert_columns;

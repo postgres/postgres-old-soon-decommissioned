@@ -364,7 +364,6 @@ gethilokey(Oid relid,
 	}
 	*high = textout((struct varlena *)
 					heap_getattr(tuple,
-								 InvalidBuffer,
 								 Anum_pg_statistic_stahikey,
 								 RelationGetTupleDescriptor(rdesc),
 								 &isnull));
@@ -372,7 +371,6 @@ gethilokey(Oid relid,
 		elog(DEBUG, "gethilokey: high key is null");
 	*low = textout((struct varlena *)
 				   heap_getattr(tuple,
-								InvalidBuffer,
 								Anum_pg_statistic_stalokey,
 								RelationGetTupleDescriptor(rdesc),
 								&isnull));
