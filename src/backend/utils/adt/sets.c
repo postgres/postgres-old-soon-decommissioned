@@ -65,8 +65,9 @@ SetDefine(char *querystr, Oid elemType)
 							 false,		/* security invoker */
 							 false,		/* isStrict (irrelevant, no args) */
 							 PROVOLATILE_VOLATILE,		/* assume unsafe */
-							 0, /* parameterCount */
-							 NULL);		/* parameterTypes */
+							 0,			/* parameterCount */
+							 NULL,		/* parameterTypes */
+							 NULL);		/* parameterNames */
 
 	/*
 	 * Since we're still inside this command of the transaction, we can't

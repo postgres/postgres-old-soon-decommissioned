@@ -884,10 +884,19 @@ _equalCreateFunctionStmt(CreateFunctionStmt *a, CreateFunctionStmt *b)
 {
 	COMPARE_SCALAR_FIELD(replace);
 	COMPARE_NODE_FIELD(funcname);
-	COMPARE_NODE_FIELD(argTypes);
+	COMPARE_NODE_FIELD(parameters);
 	COMPARE_NODE_FIELD(returnType);
 	COMPARE_NODE_FIELD(options);
 	COMPARE_NODE_FIELD(withClause);
+
+	return true;
+}
+
+static bool
+_equalFunctionParameter(FunctionParameter *a, FunctionParameter *b)
+{
+	COMPARE_STRING_FIELD(name);
+	COMPARE_NODE_FIELD(argType);
 
 	return true;
 }
@@ -1867,6 +1876,9 @@ equal(void *a, void *b)
 			break;
 		case T_CreateFunctionStmt:
 			retval = _equalCreateFunctionStmt(a, b);
+			break;
+		case T_FunctionParameter:
+			retval = _equalFunctionParameter(a, b);
 			break;
 		case T_RemoveAggrStmt:
 			retval = _equalRemoveAggrStmt(a, b);

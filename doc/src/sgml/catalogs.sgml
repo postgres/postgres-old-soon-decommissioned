@@ -2799,6 +2799,17 @@
      </row>
 
      <row>
+      <entry><structfield>proargnames</structfield></entry>
+      <entry><type>text[]</type></entry>
+      <entry></entry>
+      <entry>
+        An array with the names of the function arguments.
+        Arguments without a name are set to empty strings in the array.
+        If none of the arguments have a name, this field may be null.
+      </entry>
+     </row>
+
+     <row>
       <entry><structfield>prosrc</structfield></entry>
       <entry><type>text</type></entry>
       <entry></entry>

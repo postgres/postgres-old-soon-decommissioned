@@ -190,7 +190,8 @@ AggregateCreate(const char *aggName,
 							  PROVOLATILE_IMMUTABLE,	/* volatility (not
 														 * needed for agg) */
 							  1,	/* parameterCount */
-							  fnArgs);	/* parameterTypes */
+							  fnArgs, /* parameterTypes */
+							  NULL); /* parameterNames */
 
 	/*
 	 * Okay to create the pg_aggregate entry.

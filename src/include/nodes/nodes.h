@@ -283,6 +283,7 @@ typedef enum NodeTag
 	T_CreateOpClassItem,
 	T_CompositeTypeStmt,
 	T_InhRelation,
+	T_FunctionParameter,
 
 	/*
 	 * TAGS FOR FUNCTION-CALL CONTEXT AND RESULTINFO NODES (see fmgr.h)

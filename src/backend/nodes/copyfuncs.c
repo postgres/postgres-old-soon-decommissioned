@@ -1878,10 +1878,21 @@ _copyCreateFunctionStmt(CreateFunctionStmt *from)
 
 	COPY_SCALAR_FIELD(replace);
 	COPY_NODE_FIELD(funcname);
-	COPY_NODE_FIELD(argTypes);
+	COPY_NODE_FIELD(parameters);
 	COPY_NODE_FIELD(returnType);
 	COPY_NODE_FIELD(options);
 	COPY_NODE_FIELD(withClause);
+
+	return newnode;
+}
+
+static FunctionParameter *
+_copyFunctionParameter(FunctionParameter *from)
+{
+	FunctionParameter *newnode = makeNode(FunctionParameter);
+
+	COPY_STRING_FIELD(name);
+	COPY_NODE_FIELD(argType);
 
 	return newnode;
 }
@@ -2787,6 +2798,9 @@ copyObject(void *from)
 			break;
 		case T_CreateFunctionStmt:
 			retval = _copyCreateFunctionStmt(from);
+			break;
+		case T_FunctionParameter:
+			retval = _copyFunctionParameter(from);
 			break;
 		case T_RemoveAggrStmt:
 			retval = _copyRemoveAggrStmt(from);
