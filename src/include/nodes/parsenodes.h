@@ -136,6 +136,7 @@ typedef struct CreateStmt {
     ArchType		archiveType;	/* archive mode (ARCH_NONE if none */
     int			location;	/* smgrid (-1 if none) */
     int			archiveLoc;	/* smgrid (-1 if none) */
+    List		*check;		/* list of CHECK constr */
 } CreateStmt;
 
 /* ----------------------
@@ -607,7 +608,8 @@ typedef struct ColumnDef {
     NodeTag		type;
     char		*colname;	/* name of column */
     TypeName		*typename;	/* type of column */
-    bool                is_not_null;    /* flag to NOT NULL constraint */
+    bool		is_not_null;	/* flag to NOT NULL constraint */
+    char		*defval;	/* default value of column */
 } ColumnDef;
 
 /*
