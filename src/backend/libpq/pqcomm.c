@@ -152,7 +152,7 @@ static char sock_path[MAXPGPATH];
  * If a Unix socket is used for communication, explicitly close it.
  */
 static void
-StreamDoUnlink()
+StreamDoUnlink(void)
 {
 	Assert(sock_path[0]);
 	unlink(sock_path);

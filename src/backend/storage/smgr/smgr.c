@@ -19,7 +19,7 @@
 
 #include "storage/smgr.h"
 
-static void smgrshutdown(int dummy);
+static void smgrshutdown(void);
 
 typedef struct f_smgr
 {
@@ -118,7 +118,7 @@ smgrinit()
 }
 
 static void
-smgrshutdown(int dummy)
+smgrshutdown(void)
 {
 	int			i;
 
