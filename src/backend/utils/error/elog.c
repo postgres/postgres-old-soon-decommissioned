@@ -221,7 +221,11 @@ elog(int lev, const char *fmt,...)
 		ProcReleaseSpins(NULL); /* get rid of spinlocks we hold */
 		if (!InError)
 		{
-			kill(MyProcPid, SIGQUIT);	/* abort to traffic cop */
+			if (MyProcPid == 0) {
+				kill(getpid(), SIGQUIT);
+			} else {
+				kill(MyProcPid, SIGQUIT);	/* abort to traffic cop */
+			}
 			pause();
 		}
 
