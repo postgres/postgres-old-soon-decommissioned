@@ -494,8 +494,7 @@ ClientAuthentication(Port *port)
 			break;
 
 		case uaIdent:
-			status = authident(&port->raddr.in, &port->laddr.in,
-							   port->user, port->auth_arg);
+			status = authident(port);
 			break;
 
 		case uaPassword:
@@ -654,8 +653,7 @@ map_old_to_new(Port *port, UserAuth old, int status)
 			break;
 
 		case uaIdent:
-			status = authident(&port->raddr.in, &port->laddr.in,
-							   port->user, port->auth_arg);
+			status = authident(port);
 			break;
 
 		case uaPassword:

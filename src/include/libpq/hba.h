@@ -41,8 +41,7 @@ typedef enum UserAuth
 typedef struct Port hbaPort;
 
 extern int hba_getauthmethod(hbaPort *port);
-extern int authident(struct sockaddr_in *raddr, struct sockaddr_in *laddr,
-					 const char *postgres_username, const char *auth_arg);
+extern int authident(hbaPort *port);
 extern void load_hba_and_ident(void);
 
 #endif
