@@ -21,7 +21,7 @@ override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include -I$(libpq_srcdi
 OBJS= execute.o typename.o descriptor.o data.o error.o prepare.o memory.o \
 	connect.o misc.o
 
-SHLIB_LINK= $(libpq)
+SHLIB_LINK = -L../pgtypeslib -lpgtypes $(libpq)
 
 all: all-lib
 

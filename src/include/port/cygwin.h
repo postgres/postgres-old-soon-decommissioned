@@ -1,7 +1,5 @@
 /* $Header$ */
 
-#include <port/win32defs.h>
-
 #define HAS_TEST_AND_SET
 typedef unsigned char slock_t;
 

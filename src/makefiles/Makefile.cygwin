@@ -23,7 +23,7 @@ override CPPFLAGS+= -DBUILDING_DLL
 endif
 endif
 
-ifneq (,$(findstring ecpg/lib,$(subdir)))
+ifneq (,$(findstring ecpg/ecpglib,$(subdir)))
 override CPPFLAGS+= -DBUILDING_DLL
 endif
 

@@ -264,7 +264,7 @@ typedef struct ErrorContextCallback
 	void *arg;
 } ErrorContextCallback;
 
-extern ErrorContextCallback *error_context_stack;
+extern DLLIMPORT ErrorContextCallback *error_context_stack;
 
 
 /* GUC-configurable parameters */
