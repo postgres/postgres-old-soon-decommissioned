@@ -1496,7 +1496,7 @@ CREATE VIEW element_types AS
           AND at.typelem = bt.oid
           AND nbt.oid = bt.typnamespace
 
-          AND (x.objschema, x.objname, x.objtype, x.objtypeid) IN
+          AND (n.nspname, x.objname, x.objtype, x.objtypeid) IN
               ( SELECT object_schema, object_name, object_type, dtd_identifier
                     FROM data_type_privileges );
 
