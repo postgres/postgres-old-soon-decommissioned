@@ -104,7 +104,7 @@ extern char *scheck(const char *string, const char *format);
 	((TYPE_BIT(type) - TYPE_SIGNED(type)) * 302 / 1000 + 1 + TYPE_SIGNED(type))
 #endif   /* !defined INT_STRLEN_MAXIMUM */
 
-#undef _(x)
+#undef _
 #define _(msgid) (msgid)
 
 /*
