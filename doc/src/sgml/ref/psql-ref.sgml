@@ -1070,13 +1070,6 @@ Tue Oct 26 21:40:57 CEST 1999
         Sets the client character set encoding.  Without an argument, this command
         shows the current encoding.
         </para>
-	<note>
-	<para>
-	This command will not notice changes made directly by <command>SET
-        client_encoding</>.  If you use <command>\encoding</command>,
-	be sure to use it to set as well as examine the encoding.
-	</para>
-	</note>	
         </listitem>
       </varlistentry>
 
