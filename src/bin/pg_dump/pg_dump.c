@@ -244,10 +244,7 @@ main(int argc, char **argv)
 
 	dataOnly = schemaOnly = dumpData = attrNames = false;
 
-	if (!strrchr(argv[0], '/'))
-		progname = argv[0];
-	else
-		progname = strrchr(argv[0], '/') + 1;
+	progname = get_progname(argv[0]);
 
 	/* Set default options based on progname */
 	if (strcmp(progname, "pg_backup") == 0)

@@ -607,7 +607,7 @@ filepath(const char *filename)
 	char	   *buf;
 
 	/* Not an absolute path name? Then fill in with database path... */
-	if (*filename != '/')
+	if (!is_absolute_path(filename))
 	{
 		buf = (char *) palloc(strlen(DatabasePath) + strlen(filename) + 2);
 		sprintf(buf, "%s/%s", DatabasePath, filename);

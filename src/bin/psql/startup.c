@@ -110,10 +110,7 @@ main(int argc, char *argv[])
 	textdomain("psql");
 #endif
 
-	if (!strrchr(argv[0], '/'))
-		pset.progname = argv[0];
-	else
-		pset.progname = strrchr(argv[0], '/') + 1;
+	pset.progname = get_progname(argv[0]);
 
 	if (argc > 1)
 	{

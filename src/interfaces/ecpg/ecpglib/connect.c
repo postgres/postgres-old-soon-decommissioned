@@ -326,7 +326,7 @@ ECPGconnect(int lineno, const char *name, const char *user, const char *passwd, 
 				*tmp = '\0';
 			}
 
-			tmp = strrchr(dbname + offset, '/');
+			tmp = last_path_separator(dbname + offset);
 			if (tmp != NULL)	/* database name given */
 			{
 				realname = strdup(tmp + 1);

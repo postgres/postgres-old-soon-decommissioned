@@ -476,7 +476,7 @@ DoCopy(const CopyStmt *stmt)
 			 * Prevent write to relative path ... too easy to shoot
 			 * oneself in the foot by overwriting a database file ...
 			 */
-			if (filename[0] != '/')
+			if (!is_absolute_path(filename))
 				elog(ERROR, "Relative path not allowed for server side"
 					 " COPY command");
 

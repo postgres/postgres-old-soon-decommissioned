@@ -36,19 +36,6 @@ get_user_name(const char *progname)
 
 
 /*
- * Extracts the actual name of the program as called.
- */
-char *
-get_progname(char *argv0)
-{
-	if (!strrchr(argv0, '/'))
-		return argv0;
-	else
-		return strrchr(argv0, '/') + 1;
-}
-
-
-/*
  * Initialized NLS if enabled.
  */
 void

@@ -130,7 +130,7 @@ get_prompt(promptStatus_t status)
 						const char *host = PQhost(pset.db);
 
 						/* INET socket */
-						if (host && host[0] && host[0] != '/')
+						if (host && host[0] && !is_absolute_path(host))
 						{
 							strncpy(buf, host, MAX_PROMPT_SIZE);
 							if (*p == 'm')

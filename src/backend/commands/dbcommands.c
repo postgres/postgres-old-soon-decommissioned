@@ -698,9 +698,9 @@ resolve_alt_dbpath(const char *dbpath, Oid dboid)
 	if (dbpath == NULL || dbpath[0] == '\0')
 		return NULL;
 
-	if (strchr(dbpath, '/'))
+	if (first_path_separator(dbpath))
 	{
-		if (dbpath[0] != '/')
+		if (!is_absolute_path(dbpath))
 			elog(ERROR, "Relative paths are not allowed as database locations");
 #ifndef ALLOW_ABSOLUTE_DBPATHS
 		elog(ERROR, "Absolute paths are not allowed as database locations");
@@ -714,7 +714,7 @@ resolve_alt_dbpath(const char *dbpath, Oid dboid)
 
 		if (!var)
 			elog(ERROR, "Postmaster environment variable '%s' not set", dbpath);
-		if (var[0] != '/')
+		if (!is_absolute_path(var))
 			elog(ERROR, "Postmaster environment variable '%s' must be absolute path", dbpath);
 		prefix = var;
 	}

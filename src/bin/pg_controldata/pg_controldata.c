@@ -82,10 +82,7 @@ main(int argc, char *argv[])
 	textdomain("pg_controldata");
 #endif
 
-	if (!strrchr(argv[0], '/'))
-		progname = argv[0];
-	else
-		progname = strrchr(argv[0], '/') + 1;
+	progname = get_progname(argv[0]);
 
 	if (argc > 1)
 	{

@@ -692,6 +692,12 @@ typedef NameData *Name;
 #include <unistd.h>
 #endif
 
+/* Portable path handling for Unix/Win32 */
+bool is_absolute_path(const char *filename);
+char *first_path_separator(const char *filename);
+char *last_path_separator(const char *filename);
+char *get_progname(char *argv0);
+
 #if defined(bsdi) || defined(netbsd)
 int fseeko(FILE *stream, off_t offset, int whence);
 off_t ftello(FILE *stream);
