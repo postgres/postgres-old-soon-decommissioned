@@ -453,4 +453,37 @@ S_INIT_LOCK(slock_t *lock)
 
 #endif
 
+#if defined(linux) && defined(sparc)
+ 
+int 
+tas(slock_t *m)
+{
+  slock_t res;
+  __asm__("ldstub [%1], %0"
+	  : "=&r" (res)
+	  : "r" (m));
+  return (res != 0);
+}
+
+void
+S_LOCK(slock_t *lock)
+{
+    while (tas(lock))
+	;
+}
+
+void
+S_UNLOCK(slock_t *lock)
+{
+    *lock = 0;
+}
+
+void
+S_INIT_LOCK(slock_t *lock)
+{
+    S_UNLOCK(lock);
+}
+
+#endif /* defined(linux) && defined(sparc) */
+
 #endif /* HAS_TEST_AND_SET */
