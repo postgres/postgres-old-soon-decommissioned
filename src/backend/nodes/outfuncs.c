@@ -194,7 +194,7 @@ _outQuery(StringInfo str, Query *node)
 	sprintf(buf, " :qual ");
 	appendStringInfo(str, buf);
 	_outNode(str, node->qual);
-
+	/* how are we handling aggregates, sort, and group by? bjm 1997/12/26 */
 }
 
 /*

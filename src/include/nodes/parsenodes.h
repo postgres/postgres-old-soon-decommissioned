@@ -43,7 +43,8 @@ typedef struct Query
 	char	   *into;			/* portal (cursor) name */
 	bool		isPortal;		/* is this a retrieve into portal? */
 	bool		isBinary;		/* binary portal? */
-
+	bool		unionall;		/* union without unique sort */
+	
 	char	   *uniqueFlag;		/* NULL, '*', or Unique attribute name */
 	List	   *sortClause;		/* a list of SortClause's */
 
@@ -636,7 +637,7 @@ typedef struct RetrieveStmt
 	Node	   *havingClause;	/* having conditional-expression */
 	List	   *unionClause;	/* union subselect parameters */
 	List	   *sortClause;		/* sort clause (a list of SortGroupBy's) */
-	int			unionall;		/* union without unique sort */
+	bool		unionall;		/* union without unique sort */
 } RetrieveStmt;
 
 

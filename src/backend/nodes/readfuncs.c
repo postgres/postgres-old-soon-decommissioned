@@ -119,6 +119,7 @@ _readQuery()
 
 	token = lsptok(NULL, &length);		/* skip :qual */
 	local_node->qual = nodeRead(true);
+	/* how are we handling aggregates, sort, and group by? bjm 1997/12/26 */
 
 	return (local_node);
 }

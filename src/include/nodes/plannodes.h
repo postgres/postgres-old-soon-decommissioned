@@ -119,6 +119,7 @@ typedef struct Append
 {
 	Plan		plan;
 	List	   *unionplans;
+	List	   *unionrts;
 	Index		unionrelid;
 	List	   *unionrtentries;
 	AppendState *unionstate;
