@@ -45,12 +45,14 @@
 #include <sys/ipc.h>
 #endif
 
+#ifdef NOT_USED
 #if defined(bsd44)
 int			UsePrivateMemory = 1;
 
 #else
 int			UsePrivateMemory = 0;
 
+#endif
 #endif
 
 static void IpcMemoryDetach(int status, char *shmaddr);
