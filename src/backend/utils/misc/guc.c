@@ -944,7 +944,7 @@ static struct config_int ConfigureNamesInt[] =
 			NULL
 		},
 		&MaxBackends,
-		DEF_MAXBACKENDS, 1, INT_MAX, NULL, NULL
+		100, 1, INT_MAX, NULL, NULL
 	},
 
 	{
@@ -962,7 +962,7 @@ static struct config_int ConfigureNamesInt[] =
 			NULL
 		},
 		&NBuffers,
-		DEF_NBUFFERS, 16, INT_MAX, NULL, NULL
+		1000, 16, INT_MAX, NULL, NULL
 	},
 
 	{

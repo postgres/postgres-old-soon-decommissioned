@@ -50,8 +50,8 @@ const bool	ExecBackend = false;
 
 bool		IsUnderPostmaster = false;
 
-int			MaxBackends = DEF_MAXBACKENDS;
-int			NBuffers = DEF_NBUFFERS;
+int			MaxBackends = 32;
+int			NBuffers = 64;
 
 #ifndef assert_enabled
 bool		assert_enabled = true;
