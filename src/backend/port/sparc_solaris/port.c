@@ -15,6 +15,9 @@
 #include <stdlib.h>
 
 #include <errno.h>
+
+#include "postgres.h"
+#include "port-protos.h"
 #include "rusagestub.h"
 
 long

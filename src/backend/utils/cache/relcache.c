@@ -32,6 +32,7 @@
 #include <stdio.h>		/* for sprintf() */
 #include <errno.h>
 #include <sys/file.h>
+#include <fcntl.h>
 #include <string.h>
  
 #include "postgres.h"

@@ -13,6 +13,13 @@
 #ifndef PORT_PORTOS_H
 #define PORT_PORTOS_H
 
+/*
+ * Externals in libc that need prototypes (or at least declarations)
+ */
+
+extern char *ecvt(double, int, int*, int*);
+extern char *fcvt(double, int, int*, int*);
+
 /* dynloader.c */
 /*
  * New dynamic loader.

@@ -22,6 +22,7 @@
 #endif
 
 #include <sys/types.h>
+#include <sys/ipc.h>   /* For IPC_PRIVATE */
 
 /*
  * Many architectures have support for user-level spinlocks (i.e., an

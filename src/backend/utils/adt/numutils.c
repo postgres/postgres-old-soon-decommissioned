@@ -24,6 +24,7 @@
 #else
 # include <string.h>
 #endif
+#include <port-protos.h> /* ecvt(), fcvt() */
 
 int32
 pg_atoi(char *s, int size, int c)

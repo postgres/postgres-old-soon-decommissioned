@@ -80,6 +80,7 @@
 #include "utils/mcxt.h"
 #include "storage/proc.h"
 #include "utils/elog.h"
+#include "port-protos.h"   /* For gethostname() */
 
 #if defined(DBX_VERSION)
 # define FORK() (0)

@@ -27,6 +27,7 @@
 #include <libpq/libpq.h>
 #include <libpq/pqcomm.h>
 #include <libpq/hba.h>
+#include <port-protos.h>    /* For inet_aton() */
 
 
 #define CONF_FILE "pg_hba.conf"             

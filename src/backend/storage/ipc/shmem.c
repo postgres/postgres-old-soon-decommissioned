@@ -59,7 +59,7 @@
  */
 #include <stdio.h>
 #include <string.h>
-#include <sys/ipc.h>
+
 #include "postgres.h"
 #include "storage/ipc.h"
 #include "storage/shmem.h"

@@ -15,17 +15,15 @@
 
 #include <setjmp.h>
 
+#include "config.h"
+
 extern char *ExcFileName;
 extern Index ExcLineNumber;
 
 /*
  * ExcMessage and Exception are now defined in c.h
  */
-
-#if defined(hpux) || \
-    defined(linux) || \
-    defined(next) || \
-    defined(WIN32)
+#if !defined(SIGJMP_BUF)
 typedef jmp_buf		ExcContext;
 #else
 typedef sigjmp_buf	ExcContext;

@@ -606,7 +606,7 @@ ifeq ($(PORTNAME), sparc_solaris)
 # cc won't work!
 CC= gcc
 
-LDADD_BE= -ll -ldl
+LDADD_BE= -lsocket -lnsl -ll -ldl
 
 # RANLIB is not used on solaris
 RANLIB= touch
