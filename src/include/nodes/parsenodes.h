@@ -422,8 +422,7 @@ typedef struct AppendStmt {
     NodeTag		type;
     char		*relname;	/* relation to insert into */
     List		*cols;		/* names of the columns */
-    List		*exprs;		/* the expressions (same order as
-					   the columns) */
+    List		*targetList;	/* the target list (of ResTarget) */
     List		*fromClause;	/* the from clause */
     Node		*whereClause;	/* qualifications */
 } AppendStmt;

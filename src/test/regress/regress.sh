@@ -5,6 +5,8 @@ if [ -d ./obj ]; then
 	cd ./obj
 fi
 
+TZ="PST8PDT"; export TZ
+
 #FRONTEND=monitor
 FRONTEND="psql -n -e -q"
 

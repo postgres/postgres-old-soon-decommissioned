@@ -721,7 +721,7 @@ SELECT '' AS three, f.f1, f.f1 * '-10' AS x FROM FLOAT4_TBL f
    WHERE f.f1 > '0.0';
 
 SELECT '' AS three, f.f1, f.f1 + '-10' AS x FROM FLOAT4_TBL f
-   WHERE f.f1 > '0.0'
+   WHERE f.f1 > '0.0';
 
 SELECT '' AS three, f.f1, f.f1 / '-10' AS x FROM FLOAT4_TBL f
    WHERE f.f1 > '0.0';
@@ -2195,7 +2195,8 @@ END;
 -- miss deleting a bunch of index tuples, which caused big problems when
 -- you dereferenced the tids and found garbage..
 --
-PURGE hash_f8_heap BEFORE 'now';		-- absolute time
+-- absolute time
+PURGE hash_f8_heap BEFORE 'now';
 
 SELECT count(*) AS has_10002 FROM hash_f8_heap[,] h;
 
@@ -2203,7 +2204,8 @@ VACUUM hash_f8_heap;
 
 SELECT count(*) AS has_10000 FROM hash_f8_heap[,] h;
 
-PURGE hash_i4_heap AFTER '@ 1 second ago';	-- relative time
+-- relative time
+PURGE hash_i4_heap AFTER '@ 1 second ago';
 
 SELECT count(*) AS has_10002 FROM hash_i4_heap[,] h;
 

@@ -14,13 +14,16 @@
 
 /* state information used during parse analysis */
 typedef struct ParseState {
-    int 	p_last_resno; 
-    List 	*p_target_resnos;
-    Relation 	p_current_rel;
+    int 	p_last_resno;
     List 	*p_rtable;
-    int 	p_query_is_rule;
     int		p_numAgg;
     List	*p_aggs;
+    bool	p_is_insert;
+    List	*p_insert_columns;
+    bool	p_is_update;
+    bool	p_is_rule;
+    Relation	p_target_relation;
+    RangeTblEntry *p_target_rangetblentry;
 } ParseState;
 
 

@@ -690,10 +690,12 @@ tg_parseTeeNode(TgRecipe *r,
        same Tee. */
     if (rt_ind == 0) {
 	orig->rtable = lappend(orig->rtable,
-			       makeRangeTableEntry(tt,
+			       addRangeTableEntry(NULL,
+						   tt,
+						   tt,
 						   FALSE,
-						   NULL,
-						   tt));
+						   FALSE,
+						   NULL));
 	rt_ind = length(orig->rtable);
     }
 			
