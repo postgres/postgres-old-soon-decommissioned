@@ -49,6 +49,7 @@ PostgreSQL Reference Manual
    &alterDatabase;
    &alterGroup;
    &alterTable;
+   &alterTrigger;
    &alterUser;
    &analyze;
    &begin;

@@ -40,6 +40,7 @@ Complete list of usable sgml source files in this directory.
 <!entity alterDatabase      system "alter_database.sgml">
 <!entity alterGroup         system "alter_group.sgml">
 <!entity alterTable         system "alter_table.sgml">
+<!entity alterTrigger       system "alter_trigger.sgml">
 <!entity alterUser          system "alter_user.sgml">
 <!entity analyze            system "analyze.sgml">
 <!entity begin              system "begin.sgml">

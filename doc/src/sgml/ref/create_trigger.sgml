@@ -294,6 +294,7 @@ CREATE TABLE distributors (
 
   <simplelist type="inline">
    <member><xref linkend="sql-createfunction"></member>
+   <member><xref linkend="sql-altertrigger"></member>
    <member><xref linkend="sql-droptrigger"></member>
    <member><citetitle>PostgreSQL Programmer's Guide</citetitle></member>
   </simplelist>
