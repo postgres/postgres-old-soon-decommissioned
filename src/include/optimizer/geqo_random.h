@@ -25,9 +25,9 @@
 
 #include <math.h>
 
-#define MASK 2147483647
+#define GEQOMASK 2147483647
 
-#define geqo_rand() ((double)random()/MASK)
+#define geqo_rand() ((double)random()/GEQOMASK)
 
 /* geqo_randint returns integer value
    between lower and upper inclusive */

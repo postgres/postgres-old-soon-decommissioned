@@ -47,7 +47,7 @@
 
 extern Oid	MyDatabaseId;
 
-static MASK LockConflicts[] = {
+static LOCKMASK LockConflicts[] = {
 	(int) NULL,
 
 /* AccessShareLock */

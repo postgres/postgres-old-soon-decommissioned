@@ -19,7 +19,7 @@
 #include <utils/array.h>
 
 extern SPINLOCK LockMgrLock;
-typedef int MASK;
+typedef int LOCKMASK;
 
 #define INIT_TABLE_SIZE			100
 #define MAX_TABLE_SIZE			1000
@@ -41,7 +41,7 @@ typedef int MASK;
 typedef int LOCKMODE;
 typedef int LOCKMETHOD;
 
-/* MAX_LOCKMODES cannot be larger than the bits in MASK */
+/* MAX_LOCKMODES cannot be larger than the bits in LOCKMASK */
 #define MAX_LOCKMODES	8
 
 /*
@@ -241,7 +241,7 @@ extern SPINLOCK LockMgrLock;
  */
 extern void InitLocks(void);
 extern void LockDisable(int status);
-extern LOCKMETHOD LockMethodTableInit(char *tabName, MASK *conflictsP,
+extern LOCKMETHOD LockMethodTableInit(char *tabName, LOCKMASK *conflictsP,
 					int *prioP, int numModes);
 extern LOCKMETHOD LockMethodTableRename(LOCKMETHOD lockmethod);
 extern bool LockAcquire(LOCKMETHOD lockmethod, LOCKTAG *locktag,

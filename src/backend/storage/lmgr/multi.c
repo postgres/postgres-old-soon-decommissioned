@@ -41,7 +41,7 @@ static bool MultiRelease(LOCKMETHOD lockmethod, LOCKTAG *tag,
  * WRITE conflict between the tuple's intent lock and the relation's
  * write lock.
  */
-static MASK MultiConflicts[] = {
+static LOCKMASK MultiConflicts[] = {
 	(int) NULL,
 	/* All reads and writes at any level conflict with a write lock */
 	(1 << WRITE_LOCK) | (1 << WRITE_INTENT) | (1 << READ_LOCK) | (1 << READ_INTENT),

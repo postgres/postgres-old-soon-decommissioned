@@ -162,8 +162,8 @@ SPINLOCK	LockMgrLock;		/* in Shmem or created in
 
 /* This is to simplify/speed up some bit arithmetic */
 
-static MASK BITS_OFF[MAX_LOCKMODES];
-static MASK BITS_ON[MAX_LOCKMODES];
+static LOCKMASK BITS_OFF[MAX_LOCKMODES];
+static LOCKMASK BITS_ON[MAX_LOCKMODES];
 
 /* -----------------
  * XXX Want to move this to this file
@@ -231,7 +231,7 @@ LockDisable(int status)
  */
 static void
 LockMethodInit(LOCKMETHODTABLE *lockMethodTable,
-			   MASK *conflictsP,
+			   LOCKMASK *conflictsP,
 			   int *prioP,
 			   int numModes)
 {
@@ -258,7 +258,7 @@ LockMethodInit(LOCKMETHODTABLE *lockMethodTable,
  */
 LOCKMETHOD
 LockMethodTableInit(char *tabName,
-					MASK *conflictsP,
+					LOCKMASK *conflictsP,
 					int *prioP,
 					int numModes)
 {
