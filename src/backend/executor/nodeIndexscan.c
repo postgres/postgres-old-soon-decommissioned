@@ -470,10 +470,13 @@ ExecIndexMarkPos(IndexScanState *node)
 	int			indexPtr;
 
 	indexPtr = node->iss_MarkIndexPtr = node->iss_IndexPtr;
-	indexScanDescs = node->iss_ScanDescs;
-	scanDesc = indexScanDescs[indexPtr];
+	if (indexPtr >= 0 && indexPtr < node->iss_NumIndices)
+	{
+		indexScanDescs = node->iss_ScanDescs;
+		scanDesc = indexScanDescs[indexPtr];
 
-	index_markpos(scanDesc);
+		index_markpos(scanDesc);
+	}
 }
 
 /* ----------------------------------------------------------------
@@ -482,8 +485,6 @@ ExecIndexMarkPos(IndexScanState *node)
  * old comments
  *		Restores scan position by restoring the current index.
  *		Returns nothing.
- *
- *		XXX Assumes previously marked scan position belongs to current index
  * ----------------------------------------------------------------
  */
 void
@@ -494,10 +495,13 @@ ExecIndexRestrPos(IndexScanState *node)
 	int			indexPtr;
 
 	indexPtr = node->iss_IndexPtr = node->iss_MarkIndexPtr;
-	indexScanDescs = node->iss_ScanDescs;
-	scanDesc = indexScanDescs[indexPtr];
+	if (indexPtr >= 0 && indexPtr < node->iss_NumIndices)
+	{
+		indexScanDescs = node->iss_ScanDescs;
+		scanDesc = indexScanDescs[indexPtr];
 
-	index_restrpos(scanDesc);
+		index_restrpos(scanDesc);
+	}
 }
 
 /* ----------------------------------------------------------------
