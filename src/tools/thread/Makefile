@@ -14,12 +14,11 @@ include $(top_builddir)/src/Makefile.global
 
 override CFLAGS += $(PTHREAD_CFLAGS)
 
-LDFLAGS += $(PTHREAD_LIBS)
-
 all: thread_test
 
 thread_test: thread_test.o
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
+# no need for $LIBS, might not be compiled yet
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(PTHREAD_LIBS) -o $@
 
 clean distclean maintainer-clean:
 	rm -f thread_test$(X) thread_test.o
