@@ -76,6 +76,14 @@ typedef int LOCKMETHOD;
 #define USER_LOCKMETHOD		2
 #define MIN_LOCKMETHOD		DEFAULT_LOCKMETHOD
 
+/* There is normally only one lock method, the default one.
+ * If user locks are enabled, an additional lock method is present
+ *
+ * LOCKMETHODCTL and LOCKMETHODTABLE are split because the first lives
+ * in shared memory.  This is because it contains a spinlock.
+ * LOCKMETHODTABLE exists in private memory.  Both are created by the
+ * postmaster and should be the same in all backends
+ */
 
 /*
  * This is the control structure for a lock table.	It
