@@ -1633,8 +1633,8 @@ vc_bucketcpy(AttributeTupleForm attr, Datum value, Datum *bucket, int16 *bucket_
 	    if (*bucket_len != 0)
 	    	pfree(DatumGetPointer(*bucket));
 	    *bucket = PointerGetDatum(palloc(len));
-	    *bucket_len = len;
 	}
+	*bucket_len = len;
     	memmove(DatumGetPointer(*bucket), DatumGetPointer(value), len);
     }
 }
