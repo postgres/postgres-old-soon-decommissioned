@@ -58,7 +58,7 @@ do
 		EXPECTED="expected/${i}.out"
 	fi
   
-	if [ `diff ${EXPECTED} results/${i}.out | wc -l` -ne 0 ]
+	if [ `diff -w ${EXPECTED} results/${i}.out | wc -l` -ne 0 ]
 	then
 		( diff -wC3 ${EXPECTED} results/${i}.out; \
 		echo "";  \
