@@ -2551,7 +2551,7 @@ $endif
       first argument of a single-letter backslash command to start
       directly after the command, without intervening whitespace. For
       compatibility this is still supported to some extent,
-      but were are not going to explain the details here as this use is
+      but we are not going to explain the details here as this use is
       discouraged.  If you get strange messages, keep this in mind.
       For example
 <programlisting>
