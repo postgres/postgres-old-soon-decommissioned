@@ -1394,7 +1394,9 @@ dumpClasses(TableInfo *tblinfo, int numTables, FILE *fout, char *onlytable)
 	        while (!copydone) {
 	            ret = PQgetline(res->conn, copybuf, COPYBUFSIZ);
 	
-	            if (copybuf[0] == '.' && copybuf[1] =='\0') {
+	            if (copybuf[0] == '\\' &&
+			copybuf[1] == '.' &&
+			copybuf[2] == '\0') {
 	  	        copydone = true;	/* don't print this... */
 	            } else {
 	    	        fputs(copybuf, stdout);
@@ -1410,7 +1412,7 @@ dumpClasses(TableInfo *tblinfo, int numTables, FILE *fout, char *onlytable)
 	    	        }
 	            }
 	        }
-	        fprintf(fout, ".\n");
+	        fprintf(fout, "\\.\n");
 	        PQclear(res);
 	        PQendcopy(res->conn);
             } else {
