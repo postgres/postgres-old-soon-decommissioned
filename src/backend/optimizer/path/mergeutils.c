@@ -61,8 +61,7 @@ group_clauses_by_order(List *clauseinfo_list,
 
 			p_ordering.ordtype = MERGE_ORDER;
 			p_ordering.ord.merge = merge_ordering;
-			xmergeinfo =
-				match_order_mergeinfo(&p_ordering, mergeinfo_list);
+			xmergeinfo = match_order_mergeinfo(&p_ordering, mergeinfo_list);
 			if (inner_relid == leftop->varno)
 			{
 				keys = makeNode(JoinKey);
