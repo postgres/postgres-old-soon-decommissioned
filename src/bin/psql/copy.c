@@ -11,6 +11,7 @@
 #include <errno.h>
 #include <assert.h>
 #include <signal.h>
+#include <sys/stat.h>
 #ifndef WIN32
 #include <unistd.h>				/* for isatty */
 #else
@@ -233,6 +234,7 @@ do_copy(const char *args)
 	struct copy_options *options;
 	PGresult   *result;
 	bool		success;
+  struct stat st;
 
 	/* parse options */
 	options = parse_slash_copy(args);
@@ -292,7 +294,16 @@ do_copy(const char *args)
 		free_copy_options(options);
 		return false;
 	}
-
+  /* make sure the specified file is not a directory */
+  fstat(fileno(copystream),&st);
+  if( S_ISDIR(st.st_mode) ){
+    fclose(copystream);
+		psql_error("%s: cannot COPY TO/FROM a directory\n",
+				   options->file);
+		free_copy_options(options);
+		return false;
+  }
+  
 	result = PSQLexec(query);
 
 	switch (PQresultStatus(result))
