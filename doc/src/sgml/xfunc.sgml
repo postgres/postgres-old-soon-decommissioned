@@ -1012,7 +1012,7 @@ LANGUAGE 'c';
 
      <para>
       For functions written in C, the SQL name declared in
-      <command>CREATE FUNC TION</command>
+      <command>CREATE FUNCTION</command>
       must be exactly the same as the actual name of the function in the
       C code (hence it must be a legal C function name).
      </para>
