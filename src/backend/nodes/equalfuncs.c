@@ -144,6 +144,13 @@ _equalConst(Const *a, Const *b)
 	if (a->constbyval != b->constbyval)
 		return false;
 	/* XXX What about constisset and constiscast? */
+	/*
+	 * We treat all NULL constants of the same type as equal.
+	 * Someday this might need to change?  But datumIsEqual
+	 * doesn't work on nulls, so...
+	 */
+	if (a->constisnull)
+		return true;
 	return (datumIsEqual(a->constvalue, b->constvalue,
 						 a->consttype, a->constbyval, a->constlen));
 }
