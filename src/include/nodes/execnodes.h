@@ -199,6 +199,7 @@ typedef struct EState
 	Snapshot		es_snapshot;
 	List		   *es_range_table;
 	RelationInfo   *es_result_relation_info;
+	List		  **es_result_relation_constraints;
 	Relation		es_into_relation_descriptor;
 	ParamListInfo	es_param_list_info;
 	ParamExecData  *es_param_exec_vals;	/* this is for subselects */

@@ -505,6 +505,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
 	Node	  **indexPred = NULL;
 	TupleDesc	rtupdesc;
 	ExprContext *econtext = NULL;
+	EState		*estate = makeNode(EState);	/* for ExecConstraints() */
 
 #ifndef OMIT_PARTIAL_INDEX
 	TupleTable	tupleTable;
@@ -805,7 +806,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
 			 */
 
 			if (rel->rd_att->constr)
-				ExecConstraints("CopyFrom", rel, tuple);
+				ExecConstraints("CopyFrom", rel, tuple, estate);
 
 			heap_insert(rel, tuple);
 
