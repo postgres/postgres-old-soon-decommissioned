@@ -2660,6 +2660,10 @@ get_opclass_name(Oid opclass, Oid actual_datatype,
 	char	   *opcname;
 	char	   *nspname;
 
+	/* Domains use their base type's default opclass */
+	if (OidIsValid(actual_datatype))
+		actual_datatype = getBaseType(actual_datatype);
+
 	ht_opc = SearchSysCache(CLAOID,
 							ObjectIdGetDatum(opclass),
 							0, 0, 0);
