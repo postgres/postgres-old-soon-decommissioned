@@ -69,7 +69,7 @@
 #ifndef WIN32
 #define PGPASSFILE ".pgpass"
 #else
-#define PGPASSFILE "pgpass.txt"
+#define PGPASSFILE "pgpass.conf"
 #endif
 
 /* fall back options if they are not specified by arguments or defined

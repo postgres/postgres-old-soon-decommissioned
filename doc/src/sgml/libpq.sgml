@@ -3883,7 +3883,7 @@ The file <filename>.pgpass</filename> in a user's home directory is a file
 that can contain passwords to be used if the connection requires a
 password (and no password has been specified otherwise).
 On Microsoft Windows the file is named
-<filename>%APPDATA%\postgresql\pgpass.txt</> (where <filename>%APPDATA%</>
+<filename>%APPDATA%\postgresql\pgpass.conf</> (where <filename>%APPDATA%</>
 refers to the Application Data subdirectory in the user's profile).
 </para>
 

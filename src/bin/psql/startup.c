@@ -48,7 +48,7 @@ PsqlSettings pset;
 #define PSQLRC		".psqlrc"
 #else
 #define SYSPSQLRC	"psqlrc"
-#define PSQLRC		"psqlrc.txt"
+#define PSQLRC		"psqlrc.conf"
 #endif
 
 /*
