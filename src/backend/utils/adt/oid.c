@@ -232,6 +232,24 @@ oidgt(PG_FUNCTION_ARGS)
 }
 
 Datum
+oidlarger(PG_FUNCTION_ARGS)
+{
+	Oid			arg1 = PG_GETARG_OID(0);
+	Oid			arg2 = PG_GETARG_OID(1);
+
+	PG_RETURN_OID((arg1 > arg2) ? arg1 : arg2);
+}
+
+Datum
+oidsmaller(PG_FUNCTION_ARGS)
+{
+	Oid			arg1 = PG_GETARG_OID(0);
+	Oid			arg2 = PG_GETARG_OID(1);
+
+	PG_RETURN_OID((arg1 < arg2) ? arg1 : arg2);
+}
+
+Datum
 oidvectoreq(PG_FUNCTION_ARGS)
 {
 	Oid		   *arg1 = (Oid *) PG_GETARG_POINTER(0);

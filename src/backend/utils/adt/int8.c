@@ -504,6 +504,14 @@ int8fac(PG_FUNCTION_ARGS)
 }
 
 Datum
+int8inc(PG_FUNCTION_ARGS)
+{
+	int64		arg = PG_GETARG_INT64(0);
+
+	PG_RETURN_INT64(arg + 1);
+}
+
+Datum
 int8larger(PG_FUNCTION_ARGS)
 {
 	int64		val1 = PG_GETARG_INT64(0);
