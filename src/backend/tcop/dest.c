@@ -336,7 +336,7 @@ NullCommand(CommandDest dest)
 			 *		tell the fe that we saw an empty query string
 			 * ----------------
 			 */
-			pq_putbytes("I", 1);
+			pq_putbytes("I", 2); /* note we send I and \0 */
 			break;
 
 		case Local:
