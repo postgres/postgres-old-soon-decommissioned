@@ -1319,19 +1319,19 @@ and process it with Norman Walsh's DSSSL style sheets to create <acronym>HTML</a
 and <acronym>RTF</acronym>.
 </para>
 
-<para>
+<para> 
 The easiest way is to fetch the SGML and DocBook tools is to get
 <application>sgmltools</application> from <ulink
 url="http://www.sgmltools.org/"><productname>sgmltools</productname></u
 link>. <productname>sgmltools</productname> requires the GNU version of
-<productname>m4</productname>.
-<programlisting>gnum4 --version</programlisting> will show you if your
-m4 is the GNU version.  After the install, you will have
-<productname>sgmltools</productname>,
+<productname>m4</productname>. <programlisting>gnum4
+--version</programlisting> will show you if your m4 is the GNU version. 
+If you install GNU m4, install it with the name gnum4 and
+<productname>sgmltools</productname> will it.  After the install, you will
+have <productname>sgmltools</productname>,
 <productname>jade</productname>, and <productname>DocBook</productname>
 style sheets. The instructions below are for installing these tools
-separately.
-</para>
+separately. </para>
 
 <sect3><title>Prerequisites</title>
 
