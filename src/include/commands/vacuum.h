@@ -67,22 +67,23 @@ typedef struct
 				guess2,
 				max,
 				min;
-	int16		best_len,
+	int			best_len,
 				guess1_len,
 				guess2_len,
 				max_len,
 				min_len;
-	int32		best_cnt,
+	long		best_cnt,
 				guess1_cnt,
 				guess1_hits,
 				guess2_hits,
 				null_cnt,
-				nonnull_cnt;
-	int32		max_cnt,
+				nonnull_cnt,
+				max_cnt,
 				min_cnt;
 	FmgrInfo	f_cmpeq,
 				f_cmplt,
 				f_cmpgt;
+	Oid			op_cmplt;
 	regproc		outfunc;
 	bool		initialized;
 } VacAttrStats;

@@ -372,10 +372,10 @@ extern Oid	regproctooid(RegProcedure rp);
 #define RegprocToOid(rp) regproctooid(rp)
 
 /* selfuncs.c */
-extern float64 eqsel(Oid opid, Oid relid, AttrNumber attno, char *value, int32 flag);
-extern float64 neqsel(Oid opid, Oid relid, AttrNumber attno, char *value, int32 flag);
-extern float64 intltsel(Oid opid, Oid relid, AttrNumber attno, int32 value, int32 flag);
-extern float64 intgtsel(Oid opid, Oid relid, AttrNumber attno, int32 value, int32 flag);
+extern float64 eqsel(Oid opid, Oid relid, AttrNumber attno, Datum value, int32 flag);
+extern float64 neqsel(Oid opid, Oid relid, AttrNumber attno, Datum value, int32 flag);
+extern float64 intltsel(Oid opid, Oid relid, AttrNumber attno, Datum value, int32 flag);
+extern float64 intgtsel(Oid opid, Oid relid, AttrNumber attno, Datum value, int32 flag);
 extern float64 eqjoinsel(Oid opid, Oid relid1, AttrNumber attno1, Oid relid2, AttrNumber attno2);
 extern float64 neqjoinsel(Oid opid, Oid relid1, AttrNumber attno1, Oid relid2, AttrNumber attno2);
 extern float64 intltjoinsel(Oid opid, Oid relid1, AttrNumber attno1, Oid relid2, AttrNumber attno2);
