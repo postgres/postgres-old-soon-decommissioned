@@ -180,4 +180,4 @@ const char *px_resolve_alias(const PX_Alias * aliases, const char *name);
 					(c)->decrypt(c, data, dlen, res, rlen)
 #define px_combo_free(c)		(c)->free(c)
 
-#endif	 /* __PX_H */
+#endif   /* __PX_H */

@@ -73,4 +73,4 @@ extern bool Show_btree_build_stats;
 extern bool SQL_inheritance;
 extern bool Australian_timezones;
 
-#endif	 /* GUC_H */
+#endif   /* GUC_H */

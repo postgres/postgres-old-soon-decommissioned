@@ -26,4 +26,4 @@
 
 extern void geqo_mutation(Gene *tour, int num_gene);
 
-#endif	 /* GEQO_MUTATION_H */
+#endif   /* GEQO_MUTATION_H */

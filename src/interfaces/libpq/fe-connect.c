@@ -147,7 +147,7 @@ static const struct EnvironmentOptions
 {
 	const char *envName,
 			   *pgName;
-} EnvironmentOptions[] =
+}	EnvironmentOptions[] =
 
 {
 	/* common user-interface settings */
@@ -672,7 +672,7 @@ update_db_info(PGconn *conn)
 
 	return 0;
 }
-#endif	 /* NOT_USED */
+#endif   /* NOT_USED */
 
 
 /* ----------
@@ -1822,7 +1822,7 @@ PQsetenv(PGconn *conn)
 		flag = PQsetenvPoll(conn);
 	}
 }
-#endif	 /* NOT_USED */
+#endif   /* NOT_USED */
 
 
 /*

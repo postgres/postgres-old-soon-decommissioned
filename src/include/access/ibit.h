@@ -29,4 +29,4 @@ typedef IndexAttributeBitMapData *IndexAttributeBitMap;
  */
 #define IndexAttributeBitMapIsValid(bits) PointerIsValid(bits)
 
-#endif	 /* IBIT_H */
+#endif   /* IBIT_H */

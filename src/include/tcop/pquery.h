@@ -24,4 +24,4 @@ extern EState *CreateExecutorState(void);
 
 extern Portal PreparePortal(char *portalName);
 
-#endif	 /* PQUERY_H */
+#endif   /* PQUERY_H */

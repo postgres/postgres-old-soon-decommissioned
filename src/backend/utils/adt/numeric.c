@@ -2268,7 +2268,7 @@ dump_var(char *str, NumericVar *var)
 
 	printf("\n");
 }
-#endif	 /* NUMERIC_DEBUG */
+#endif   /* NUMERIC_DEBUG */
 
 
 /* ----------

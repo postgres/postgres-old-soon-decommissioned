@@ -72,4 +72,4 @@ extern void query_tree_mutator(Query *query, Node *(*mutator) (),
 							 IsA(clause, Expr) && \
 							 ((Expr *) (clause))->opType == SUBPLAN_EXPR)
 
-#endif	 /* CLAUSES_H */
+#endif   /* CLAUSES_H */

@@ -74,4 +74,4 @@
 
 extern void CreateSpinlocks(void);
 
-#endif	 /* SPIN_H */
+#endif   /* SPIN_H */

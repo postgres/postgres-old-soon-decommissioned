@@ -306,7 +306,7 @@ handle_sigint(SIGNAL_ARGS)
 	}
 	errno = save_errno;			/* just in case the write changed it */
 }
-#endif	 /* not WIN32 */
+#endif   /* not WIN32 */
 
 
 /*

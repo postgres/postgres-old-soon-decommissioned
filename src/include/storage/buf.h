@@ -44,4 +44,4 @@ typedef int Buffer;
  */
 #undef NO_BUFFERISVALID
 
-#endif	 /* BUF_H */
+#endif   /* BUF_H */

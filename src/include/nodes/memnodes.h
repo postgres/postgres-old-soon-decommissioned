@@ -72,4 +72,4 @@ typedef struct MemoryContextData
 	((context) != NULL && \
 	 (IsA((context), AllocSetContext)))
 
-#endif	 /* MEMNODES_H */
+#endif   /* MEMNODES_H */

@@ -98,4 +98,4 @@ extern void NullCommand(CommandDest dest);
 extern void ReadyForQuery(CommandDest dest);
 extern void UpdateCommandInfo(int operation, Oid lastoid, uint32 tuples);
 
-#endif	 /* DEST_H */
+#endif   /* DEST_H */

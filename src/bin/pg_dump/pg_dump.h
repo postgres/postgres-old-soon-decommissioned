@@ -280,4 +280,4 @@ extern void dumpIndexes(Archive *fout, IndInfo *indinfo, int numIndexes,
 extern const char *fmtId(const char *identifier, bool force_quotes);
 extern void exit_nicely(void);
 
-#endif	 /* PG_DUMP_H */
+#endif   /* PG_DUMP_H */

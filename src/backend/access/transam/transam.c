@@ -197,7 +197,7 @@ TransactionIdIsInProgress(TransactionId transactionId)
 
 	return TransactionLogTest(transactionId, TRANSACTION_STATUS_IN_PROGRESS);
 }
-#endif	 /* NOT_USED */
+#endif   /* NOT_USED */
 
 /* --------------------------------
  *		TransactionId Commit

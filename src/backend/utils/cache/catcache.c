@@ -917,7 +917,7 @@ SearchCatCache(CatCache *cache,
 #ifdef CACHEDEBUG
 		CACHE3_elog(DEBUG, "SearchCatCache(%s): found in bucket %d",
 					cache->cc_relname, hash);
-#endif	 /* CACHEDEBUG */
+#endif   /* CACHEDEBUG */
 
 		return &ct->tuple;
 	}

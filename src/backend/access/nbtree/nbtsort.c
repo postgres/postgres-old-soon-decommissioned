@@ -164,7 +164,7 @@ _bt_leafbuild(BTSpool *btspool, BTSpool *btspool2)
 		ShowUsage();
 		ResetUsage();
 	}
-#endif	 /* BTREE_BUILD_STATS */
+#endif   /* BTREE_BUILD_STATS */
 	tuplesort_performsort(btspool->sortstate);
 
 	if (btspool2)

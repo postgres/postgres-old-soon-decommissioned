@@ -160,4 +160,4 @@ extern AbsoluteTime GetCurrentAbsoluteTime(void);
 extern AbsoluteTime GetCurrentAbsoluteTimeUsec(int *usec);
 extern void abstime2tm(AbsoluteTime time, int *tzp, struct tm * tm, char **tzn);
 
-#endif	 /* NABSTIME_H */
+#endif   /* NABSTIME_H */

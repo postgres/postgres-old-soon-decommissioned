@@ -1051,7 +1051,7 @@ DetermineLocalTimeZone(struct tm * tm)
 			tz = 0;				/* assume GMT if mktime failed */
 #elif defined(HAVE_INT_TIMEZONE)
 		tz = ((tmp->tm_isdst > 0) ? (TIMEZONE_GLOBAL - 3600) : TIMEZONE_GLOBAL);
-#endif	 /* HAVE_INT_TIMEZONE */
+#endif   /* HAVE_INT_TIMEZONE */
 
 #else							/* not (HAVE_TM_ZONE || HAVE_INT_TIMEZONE) */
 		tm->tm_isdst = 0;

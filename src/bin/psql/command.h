@@ -41,4 +41,4 @@ bool do_pset(const char *param,
 		printQueryOpt *popt,
 		bool quiet);
 
-#endif	 /* COMMAND_H */
+#endif   /* COMMAND_H */

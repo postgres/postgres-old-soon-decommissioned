@@ -68,4 +68,4 @@ extern bool _use_keyset_query_optimizer;
 
 extern void transformKeySetQuery(Query *origNode);
 
-#endif	 /* PLANMAIN_H */
+#endif   /* PLANMAIN_H */

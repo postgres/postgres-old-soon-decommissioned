@@ -28,4 +28,4 @@ extern void *nodeRead(bool read_car_only);
  */
 extern Node *parsePlanString(void);
 
-#endif	 /* READFUNCS_H */
+#endif   /* READFUNCS_H */

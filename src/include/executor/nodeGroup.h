@@ -33,4 +33,4 @@ extern FmgrInfo *execTuplesMatchPrepare(TupleDesc tupdesc,
 					   int numCols,
 					   AttrNumber *matchColIdx);
 
-#endif	 /* NODEGROUP_H */
+#endif   /* NODEGROUP_H */

@@ -63,4 +63,4 @@ extern ArrayRef *transformArraySubscripts(ParseState *pstate,
 						 Node *assignFrom);
 extern Const *make_const(Value *value);
 
-#endif	 /* PARSE_NODE_H */
+#endif   /* PARSE_NODE_H */

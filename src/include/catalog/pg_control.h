@@ -111,4 +111,4 @@ typedef struct ControlFileData
 	char		lc_ctype[LOCALE_NAME_BUFLEN];
 } ControlFileData;
 
-#endif	 /* PG_CONTROL_H */
+#endif   /* PG_CONTROL_H */

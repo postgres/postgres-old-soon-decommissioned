@@ -74,7 +74,7 @@ PRINT_LWDEBUG(const char *where, LWLockId lockid, const LWLock *lock)
 
 #else							/* not LOCK_DEBUG */
 #define PRINT_LWDEBUG(a,b,c)
-#endif	 /* LOCK_DEBUG */
+#endif   /* LOCK_DEBUG */
 
 
 /*

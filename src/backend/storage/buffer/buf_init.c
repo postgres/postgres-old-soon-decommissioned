@@ -47,7 +47,7 @@ bmtrace    *TraceBuf;
 long	   *CurTraceBuf;
 
 #define BMT_LIMIT		200
-#endif	 /* BMTRACE */
+#endif   /* BMTRACE */
 int			ShowPinTrace = 0;
 
 int			Data_Descriptors;

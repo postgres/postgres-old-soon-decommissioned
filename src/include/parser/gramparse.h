@@ -31,4 +31,4 @@ extern char *xlateSqlFunc(char *name);
 extern char *xlateSqlType(char *name);
 bool		exprIsNullConstant(Node *arg);
 
-#endif	 /* GRAMPARSE_H */
+#endif   /* GRAMPARSE_H */

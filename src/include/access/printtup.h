@@ -29,4 +29,4 @@ extern void spi_printtup(HeapTuple tuple, TupleDesc tupdesc,
 extern bool getTypeOutputInfo(Oid type, Oid *typOutput, Oid *typElem,
 				  bool *typIsVarlena);
 
-#endif	 /* PRINTTUP_H */
+#endif   /* PRINTTUP_H */

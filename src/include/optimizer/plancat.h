@@ -37,4 +37,4 @@ extern Selectivity join_selectivity(Query *root,
 				 Oid operator,
 				 List *args);
 
-#endif	 /* PLANCAT_H */
+#endif   /* PLANCAT_H */

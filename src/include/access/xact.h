@@ -135,4 +135,4 @@ extern Datum xidout(PG_FUNCTION_ARGS);
 extern Datum xideq(PG_FUNCTION_ARGS);
 extern Datum xid_age(PG_FUNCTION_ARGS);
 
-#endif	 /* XACT_H */
+#endif   /* XACT_H */

@@ -29,4 +29,4 @@ struct rusage
 
 extern int	getrusage(int who, struct rusage * rusage);
 
-#endif	 /* RUSAGESTUB_H */
+#endif   /* RUSAGESTUB_H */

@@ -227,7 +227,7 @@ AttributeAndRelationRemove(Oid typeOid)
 	}
 	heap_close(rel, RowExclusiveLock);
 }
-#endif	 /* NOTYET */
+#endif   /* NOTYET */
 
 /*
  *	TypeRemove

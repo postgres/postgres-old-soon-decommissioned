@@ -38,7 +38,7 @@ extern bool Trace_locks;
 extern bool Trace_userlocks;
 extern int	Trace_lock_table;
 extern bool Debug_deadlocks;
-#endif	 /* LOCK_DEBUG */
+#endif   /* LOCK_DEBUG */
 
 
 typedef int LOCKMASK;
@@ -252,4 +252,4 @@ extern void DumpLocks(void);
 extern void DumpAllLocks(void);
 #endif
 
-#endif	 /* LOCK_H */
+#endif   /* LOCK_H */

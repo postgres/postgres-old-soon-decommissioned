@@ -67,4 +67,4 @@ extern void PortalSetQuery(Portal portal, QueryDesc *queryDesc,
 			   TupleDesc attinfo, EState *state,
 			   void (*cleanup) (Portal portal));
 
-#endif	 /* PORTAL_H */
+#endif   /* PORTAL_H */

@@ -71,4 +71,4 @@ extern		"C"
 }
 #endif
 
-#endif	 /* _SYS_SEM_H */
+#endif   /* _SYS_SEM_H */

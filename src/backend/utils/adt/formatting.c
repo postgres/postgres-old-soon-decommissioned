@@ -1360,7 +1360,7 @@ dump_node(FormatNode *node, int max)
 
 	}
 }
-#endif	 /* DEBUG */
+#endif   /* DEBUG */
 
 /*****************************************************************************
  *			Private utils
@@ -1566,7 +1566,7 @@ dump_index(KeyWord *k, int *index)
 	elog(DEBUG_elog_output, "\n\t\tUsed positions: %d,\n\t\tFree positions: %d",
 		 count, free_i);
 }
-#endif	 /* DEBUG */
+#endif   /* DEBUG */
 
 /* ----------
  * Skip TM / th in FROM_CHAR

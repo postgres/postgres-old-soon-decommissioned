@@ -124,4 +124,4 @@ extern Datum timetz_izone(PG_FUNCTION_ARGS);
 extern Datum timetz_pl_interval(PG_FUNCTION_ARGS);
 extern Datum timetz_mi_interval(PG_FUNCTION_ARGS);
 
-#endif	 /* DATE_H */
+#endif   /* DATE_H */

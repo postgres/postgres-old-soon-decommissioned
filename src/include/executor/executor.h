@@ -178,4 +178,4 @@ extern void ExecCloseIndices(ResultRelInfo *resultRelInfo);
 extern void ExecInsertIndexTuples(TupleTableSlot *slot, ItemPointer tupleid,
 					  EState *estate, bool is_update);
 
-#endif	 /* EXECUTOR_H	*/
+#endif   /* EXECUTOR_H  */

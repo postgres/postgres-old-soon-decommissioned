@@ -608,4 +608,4 @@ extern int32 type_maximum_size(Oid type_oid, int32 typemod);
 extern Datum quote_ident(PG_FUNCTION_ARGS);
 extern Datum quote_literal(PG_FUNCTION_ARGS);
 
-#endif	 /* BUILTINS_H */
+#endif   /* BUILTINS_H */

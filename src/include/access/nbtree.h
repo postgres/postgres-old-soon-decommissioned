@@ -399,4 +399,4 @@ extern void _bt_spooldestroy(BTSpool *btspool);
 extern void _bt_spool(BTItem btitem, BTSpool *btspool);
 extern void _bt_leafbuild(BTSpool *btspool, BTSpool *spool2);
 
-#endif	 /* NBTREE_H */
+#endif   /* NBTREE_H */

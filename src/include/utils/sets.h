@@ -24,4 +24,4 @@ extern Oid	SetDefine(char *querystr, char *typename);
 
 extern Datum seteval(PG_FUNCTION_ARGS);
 
-#endif	 /* SETS_H */
+#endif   /* SETS_H */

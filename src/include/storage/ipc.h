@@ -21,7 +21,7 @@
 #include <sys/types.h>
 #ifdef HAVE_SYS_IPC_H
 #include <sys/ipc.h>
-#endif	 /* HAVE_SYS_IPC_H */
+#endif   /* HAVE_SYS_IPC_H */
 
 #ifndef HAVE_UNION_SEMUN
 union semun
@@ -90,4 +90,4 @@ extern bool SharedMemoryIsInUse(IpcMemoryKey shmKey, IpcMemoryId shmId);
 extern void CreateSharedMemoryAndSemaphores(bool makePrivate,
 								int maxBackends);
 
-#endif	 /* IPC_H */
+#endif   /* IPC_H */

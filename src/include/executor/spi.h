@@ -113,4 +113,4 @@ extern void SPI_cursor_close(Portal portal);
 
 extern void AtEOXact_SPI(void);
 
-#endif	 /* SPI_H */
+#endif   /* SPI_H */

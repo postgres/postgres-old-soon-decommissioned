@@ -28,4 +28,4 @@ extern DLLIMPORT Exception SemanticError;		/* XXX inconsistent naming
 												 * style */
 extern DLLIMPORT Exception SystemError; /* XXX inconsistent naming style */
 
-#endif	 /* EXCID_H */
+#endif   /* EXCID_H */

@@ -141,7 +141,7 @@ MainLoop(FILE *source)
 		 * ready
 		 */
 		pqsignal(SIGINT, handle_sigint);		/* control-C => cancel */
-#endif	 /* not WIN32 */
+#endif   /* not WIN32 */
 
 		if (slashCmdStatus == CMD_NEWEDIT)
 		{

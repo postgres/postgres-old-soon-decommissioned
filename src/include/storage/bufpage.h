@@ -320,4 +320,4 @@ extern Size PageGetFreeSpace(Page page);
 extern void PageIndexTupleDelete(Page page, OffsetNumber offset);
 extern void IndexPageCleanup(Buffer buffer);
 
-#endif	 /* BUFPAGE_H */
+#endif   /* BUFPAGE_H */

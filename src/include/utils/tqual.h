@@ -111,4 +111,4 @@ extern Snapshot GetSnapshotData(bool serializable);
 extern void SetQuerySnapshot(void);
 extern void FreeXactSnapshot(void);
 
-#endif	 /* TQUAL_H */
+#endif   /* TQUAL_H */

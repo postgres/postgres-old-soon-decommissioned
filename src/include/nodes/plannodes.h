@@ -432,7 +432,7 @@ typedef struct Tee
 	List	   *rtentries;		/* the range table for the plan below the
 								 * Tee may be different than the parent
 								 * plans */
-}			Tee;
+}	Tee;
 #endif
 
 /* ---------------------
@@ -464,4 +464,4 @@ typedef struct SubPlan
 	HeapTuple	curTuple;		/* copy of most recent tuple from subplan */
 } SubPlan;
 
-#endif	 /* PLANNODES_H */
+#endif   /* PLANNODES_H */

@@ -131,4 +131,4 @@ extern List *truncate_useless_pathkeys(Query *root,
 						  RelOptInfo *rel,
 						  List *pathkeys);
 
-#endif	 /* PATHS_H */
+#endif   /* PATHS_H */

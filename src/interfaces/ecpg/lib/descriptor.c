@@ -86,7 +86,7 @@ get_int_item(int lineno, void *var, enum ECPGttype vartype, int value)
 		case ECPGt_unsigned_long_long:
 			*(unsigned long long int *) var = (unsigned long long int) value;
 			break;
-#endif	 /* HAVE_LONG_LONG_INT_64 */
+#endif   /* HAVE_LONG_LONG_INT_64 */
 		case ECPGt_float:
 			*(float *) var = (float) value;
 			break;

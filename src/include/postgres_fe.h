@@ -20,4 +20,4 @@
 
 #include "c.h"
 
-#endif	 /* POSTGRES_FE_H */
+#endif   /* POSTGRES_FE_H */

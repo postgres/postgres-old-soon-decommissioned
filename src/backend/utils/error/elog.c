@@ -329,7 +329,7 @@ elog(int lev, const char *fmt,...)
 
 		write_syslog(syslog_level, msg_buf + timestamp_size);
 	}
-#endif	 /* ENABLE_SYSLOG */
+#endif   /* ENABLE_SYSLOG */
 
 	/* syslog doesn't want a trailing newline, but other destinations do */
 	strcat(msg_buf, "\n");
@@ -665,7 +665,7 @@ write_syslog(int level, const char *line)
 		syslog(level, "[%lu] %s", seq, line);
 	}
 }
-#endif	 /* ENABLE_SYSLOG */
+#endif   /* ENABLE_SYSLOG */
 
 
 static void

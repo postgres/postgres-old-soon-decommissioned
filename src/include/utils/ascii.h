@@ -22,6 +22,6 @@ extern Datum to_ascii_default(PG_FUNCTION_ARGS);
 
 extern char *pg_to_ascii(unsigned char *src, unsigned char *src_end,
 			unsigned char *desc, int enc);
-#endif	 /* MULTIBYTE */
+#endif   /* MULTIBYTE */
 
-#endif	 /* _ASCII_H_ */
+#endif   /* _ASCII_H_ */

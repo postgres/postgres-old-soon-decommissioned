@@ -1340,7 +1340,7 @@ _rtdump(Relation r)
 		ReleaseBuffer(buf);
 	}
 }
-#endif	 /* defined RTDEBUG */
+#endif   /* defined RTDEBUG */
 
 void
 rtree_redo(XLogRecPtr lsn, XLogRecord *record)

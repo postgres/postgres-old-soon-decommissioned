@@ -15,7 +15,7 @@
 #include <io.h>
 #include <windows.h>
 #include <win32.h>
-#endif	 /* WIN32 */
+#endif   /* WIN32 */
 
 #ifdef HAVE_GETOPT_H
 #include <getopt.h>
@@ -364,7 +364,7 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 	};
 
 	int			optindex;
-#endif	 /* HAVE_GETOPT_LONG */
+#endif   /* HAVE_GETOPT_LONG */
 
 	extern char *optarg;
 	extern int	optind;
@@ -382,7 +382,7 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 	 * options.
 	 */
 	while ((c = getopt(argc, argv, "aAc:d:eEf:F:h:Hlno:p:P:qR:sStT:uU:v:VWxX?-")) != -1)
-#endif	 /* not HAVE_GETOPT_LONG */
+#endif   /* not HAVE_GETOPT_LONG */
 	{
 		switch (c)
 		{

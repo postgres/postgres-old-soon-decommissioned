@@ -31,4 +31,4 @@ extern List *transformDistinctClause(ParseState *pstate, List *distinctlist,
 extern List *addAllTargetsToSortList(List *sortlist, List *targetlist);
 extern Index assignSortGroupRef(TargetEntry *tle, List *tlist);
 
-#endif	 /* PARSE_CLAUSE_H */
+#endif   /* PARSE_CLAUSE_H */

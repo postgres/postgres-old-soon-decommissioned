@@ -30,7 +30,7 @@
 
 #if defined(FLEX_SCANNER)
 extern void DeleteBuffer(void);
-#endif	 /* FLEX_SCANNER */
+#endif   /* FLEX_SCANNER */
 
 char	   *parseString;		/* the char* which holds the string to be
 								 * parsed */
@@ -64,7 +64,7 @@ parser(char *str, Oid *typev, int nargs)
 
 #if defined(FLEX_SCANNER)
 	DeleteBuffer();
-#endif	 /* FLEX_SCANNER */
+#endif   /* FLEX_SCANNER */
 
 	clearerr(stdin);
 

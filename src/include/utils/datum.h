@@ -46,4 +46,4 @@ extern void datumFree(Datum value, bool typByVal, int typLen);
 extern bool datumIsEqual(Datum value1, Datum value2,
 			 bool typByVal, int typLen);
 
-#endif	 /* DATUM_H */
+#endif   /* DATUM_H */

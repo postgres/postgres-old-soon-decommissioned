@@ -550,4 +550,4 @@ typedef struct FromExpr
 	Node	   *quals;			/* qualifiers on join, if any */
 } FromExpr;
 
-#endif	 /* PRIMNODES_H */
+#endif   /* PRIMNODES_H */

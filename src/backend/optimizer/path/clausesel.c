@@ -520,7 +520,7 @@ clause_selectivity(Query *root,
 
 #ifdef SELECTIVITY_DEBUG
 	elog(NOTICE, "clause_selectivity: s1 %f", s1);
-#endif	 /* SELECTIVITY_DEBUG */
+#endif   /* SELECTIVITY_DEBUG */
 
 	return s1;
 }

@@ -190,7 +190,7 @@ typedef struct
 	char	   *token;
 #else
 	char		token[TOKMAXLEN];
-#endif	 /* _AIX */
+#endif   /* _AIX */
 	char		type;
 	char		value;			/* this may be unsigned, alas */
 } datetkn;
@@ -282,4 +282,4 @@ extern void ClearDateCache(bool);
 
 extern int	j2day(int jd);
 
-#endif	 /* DATETIME_H */
+#endif   /* DATETIME_H */

@@ -37,4 +37,4 @@ extern void ExecChooseHashTableSize(double ntuples, int tupwidth,
 						int *physicalbuckets,
 						int *numbatches);
 
-#endif	 /* NODEHASH_H */
+#endif   /* NODEHASH_H */

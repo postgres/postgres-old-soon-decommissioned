@@ -135,4 +135,4 @@ extern void AtEOXact_rtree(void);
 extern RegProcedure RTMapOperator(Relation r, AttrNumber attnum,
 			  RegProcedure proc);
 
-#endif	 /* RTREE_H */
+#endif   /* RTREE_H */

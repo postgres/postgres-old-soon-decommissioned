@@ -25,4 +25,4 @@ typedef int BackendId;			/* unique currently active backend
 
 extern BackendId MyBackendId;	/* backend id of this backend */
 
-#endif	 /* BACKENDID_H */
+#endif   /* BACKENDID_H */

@@ -38,7 +38,7 @@
 #endif
 #else							/* INT64_IS_BUSTED */
 #define SEQ_MAXVALUE	((int64) 0x7FFFFFFF)
-#endif	 /* INT64_IS_BUSTED */
+#endif   /* INT64_IS_BUSTED */
 
 #define SEQ_MINVALUE	(-SEQ_MAXVALUE)
 

@@ -41,4 +41,4 @@ __attribute__((format(printf, 2, 3)));
 
 extern int	DebugFileOpen(void);
 
-#endif	 /* ELOG_H */
+#endif   /* ELOG_H */

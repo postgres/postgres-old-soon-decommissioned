@@ -641,4 +641,4 @@ IndexStrategyDisplay(IndexStrategy indexStrategy,
 	}
 }
 
-#endif	 /* defined(ISTRATDEBUG) */
+#endif   /* defined(ISTRATDEBUG) */

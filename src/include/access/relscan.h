@@ -76,4 +76,4 @@ typedef IndexScanDesc *IndexScanDescPtr;
  */
 #define IndexScanIsValid(scan) PointerIsValid(scan)
 
-#endif	 /* RELSCAN_H */
+#endif   /* RELSCAN_H */

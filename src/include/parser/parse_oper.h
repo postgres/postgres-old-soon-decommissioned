@@ -42,4 +42,4 @@ extern Oid	any_ordering_op(Oid argtype);
 extern Oid	oprid(Operator op);
 extern Oid	oprfuncid(Operator op);
 
-#endif	 /* PARSE_OPER_H */
+#endif   /* PARSE_OPER_H */

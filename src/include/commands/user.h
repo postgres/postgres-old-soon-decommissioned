@@ -22,4 +22,4 @@ extern void DropGroup(DropGroupStmt *stmt);
 
 extern Datum update_pg_pwd(PG_FUNCTION_ARGS);
 
-#endif	 /* USER_H */
+#endif   /* USER_H */

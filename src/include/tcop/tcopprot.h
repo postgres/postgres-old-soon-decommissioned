@@ -39,7 +39,7 @@ extern Plan *pg_plan_query(Query *querytree);
 extern void pg_exec_query_string(char *query_string,
 					 CommandDest dest,
 					 MemoryContext parse_context);
-#endif	 /* BOOTSTRAP_INCLUDE */
+#endif   /* BOOTSTRAP_INCLUDE */
 
 extern void die(SIGNAL_ARGS);
 extern void quickdie(SIGNAL_ARGS);
@@ -49,4 +49,4 @@ extern void ResetUsage(void);
 extern void ShowUsage(void);
 extern FILE *StatFp;
 
-#endif	 /* TCOPPROT_H */
+#endif   /* TCOPPROT_H */

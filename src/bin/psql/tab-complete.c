@@ -1112,6 +1112,6 @@ dequote_file_name(char *text, char quote_char)
 
 	return s;
 }
-#endif	 /* 0 */
+#endif   /* 0 */
 
-#endif	 /* USE_READLINE */
+#endif   /* USE_READLINE */

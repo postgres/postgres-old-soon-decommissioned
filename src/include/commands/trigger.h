@@ -161,4 +161,4 @@ extern void DeferredTriggerSetState(ConstraintsSetStmt *stmt);
  */
 extern bool RI_FKey_keyequal_upd(TriggerData *trigdata);
 
-#endif	 /* TRIGGER_H */
+#endif   /* TRIGGER_H */

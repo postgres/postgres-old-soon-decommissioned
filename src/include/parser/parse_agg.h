@@ -23,4 +23,4 @@ extern Aggref *ParseAgg(ParseState *pstate, char *aggname, Oid basetype,
 		 int precedence);
 extern void agg_error(char *caller, char *aggname, Oid basetypeID);
 
-#endif	 /* PARSE_AGG_H */
+#endif   /* PARSE_AGG_H */

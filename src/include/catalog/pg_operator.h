@@ -857,4 +857,4 @@ extern void OperatorCreate(char *operatorName,
 			   char *leftSortName,
 			   char *rightSortName);
 
-#endif	 /* PG_OPERATOR_H */
+#endif   /* PG_OPERATOR_H */

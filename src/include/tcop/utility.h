@@ -18,4 +18,4 @@
 
 extern void ProcessUtility(Node *parsetree, CommandDest dest);
 
-#endif	 /* UTILITY_H */
+#endif   /* UTILITY_H */

@@ -57,4 +57,4 @@ extern void lazy_vacuum_rel(Relation onerel, VacuumStmt *vacstmt);
 /* in commands/analyze.c */
 extern void analyze_rel(Oid relid, VacuumStmt *vacstmt);
 
-#endif	 /* VACUUM_H */
+#endif   /* VACUUM_H */

@@ -258,8 +258,8 @@ renamerel(const char *oldrelname, const char *newrelname)
 		return;					/* all done... */
 
 	/*
-	 * Grab an exclusive lock on the target table or index, which we will NOT
-	 * release until end of transaction.
+	 * Grab an exclusive lock on the target table or index, which we will
+	 * NOT release until end of transaction.
 	 */
 	targetrelation = relation_openr(oldrelname, AccessExclusiveLock);
 

@@ -48,4 +48,4 @@ extern void FreeSpaceMapForgetDatabase(Oid dbid);
 extern void DumpFreeSpace(void);
 #endif
 
-#endif	 /* FREESPACE_H */
+#endif   /* FREESPACE_H */

@@ -82,4 +82,4 @@ extern void DLMoveToFront(Dlelem *e);	/* move node to front of its list */
 
 #define DLE_VAL(elem)	((elem)->dle_val)
 
-#endif	 /* DLLIST_H */
+#endif   /* DLLIST_H */

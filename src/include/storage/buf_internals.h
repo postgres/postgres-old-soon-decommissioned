@@ -145,8 +145,8 @@ typedef struct _bmtrace
 #define BMT_ALLOCNOTFND 2
 #define BMT_DEALLOC		3
 
-}			bmtrace;
-#endif	 /* BMTRACE */
+}	bmtrace;
+#endif   /* BMTRACE */
 
 
 /*
@@ -184,4 +184,4 @@ extern int	FlushLocalBuffer(Buffer buffer, bool sync, bool release);
 extern void LocalBufferSync(void);
 extern void ResetLocalBufferPool(void);
 
-#endif	 /* BUFMGR_INTERNALS_H */
+#endif   /* BUFMGR_INTERNALS_H */

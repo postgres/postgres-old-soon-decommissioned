@@ -167,4 +167,4 @@ extern long hash_select_dirsize(long num_entries);
 extern long string_hash(void *key, int keysize);
 extern long tag_hash(void *key, int keysize);
 
-#endif	 /* HSEARCH_H */
+#endif   /* HSEARCH_H */

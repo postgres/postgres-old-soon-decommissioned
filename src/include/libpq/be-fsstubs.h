@@ -47,4 +47,4 @@ extern int	lo_write(int fd, char *buf, int len);
  */
 extern void lo_commit(bool isCommit);
 
-#endif	 /* BE_FSSTUBS_H */
+#endif   /* BE_FSSTUBS_H */

@@ -107,4 +107,4 @@ extern Datum dtoi8(PG_FUNCTION_ARGS);
 extern Datum int8_text(PG_FUNCTION_ARGS);
 extern Datum text_int8(PG_FUNCTION_ARGS);
 
-#endif	 /* INT8_H */
+#endif   /* INT8_H */

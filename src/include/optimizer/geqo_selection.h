@@ -27,4 +27,4 @@
 
 extern void geqo_selection(Chromosome *momma, Chromosome *daddy, Pool *pool, double bias);
 
-#endif	 /* GEQO_SELECTION_H */
+#endif   /* GEQO_SELECTION_H */

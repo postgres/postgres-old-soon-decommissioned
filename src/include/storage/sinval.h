@@ -79,4 +79,4 @@ extern int	CountActiveBackends(void);
 /* Use "struct PROC", not PROC, to avoid including proc.h here */
 extern struct PROC *BackendIdGetProc(BackendId procId);
 
-#endif	 /* SINVAL_H */
+#endif   /* SINVAL_H */

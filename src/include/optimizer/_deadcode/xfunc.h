@@ -80,4 +80,4 @@ extern bool xfunc_copyrel(RelOptInfo *from, RelOptInfo **to);
  */
 extern bool xfunc_do_predmig(Path root);
 
-#endif	 /* XFUNC_H */
+#endif   /* XFUNC_H */

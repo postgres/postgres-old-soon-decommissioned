@@ -108,4 +108,4 @@ extern Datum smgrin(PG_FUNCTION_ARGS);
 extern Datum smgreq(PG_FUNCTION_ARGS);
 extern Datum smgrne(PG_FUNCTION_ARGS);
 
-#endif	 /* SMGR_H */
+#endif   /* SMGR_H */

@@ -588,4 +588,4 @@ typedef struct Stream
 	Selectivity groupsel;
 } Stream;
 
-#endif	 /* RELATION_H */
+#endif   /* RELATION_H */

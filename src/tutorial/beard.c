@@ -16,7 +16,7 @@
 typedef struct ImageHdr
 {
 	int			size;
-}			ImageHdr;
+}	ImageHdr;
 
 #define BUFSIZE 10
 

@@ -223,7 +223,7 @@ tcl_value(char *value)
 #endif
 	return value;
 }
-#endif	 /* TCL_ARRAYS */
+#endif   /* TCL_ARRAYS */
 
 
 /**********************************

@@ -384,4 +384,4 @@ extern void load_file(char *filename);
  */
 extern char *fmgr(Oid procedureId,...);
 
-#endif	 /* FMGR_H */
+#endif   /* FMGR_H */

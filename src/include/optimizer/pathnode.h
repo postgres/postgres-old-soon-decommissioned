@@ -76,4 +76,4 @@ extern RelOptInfo *build_join_rel(Query *root,
 			   JoinType jointype,
 			   List **restrictlist_ptr);
 
-#endif	 /* PATHNODE_H */
+#endif   /* PATHNODE_H */

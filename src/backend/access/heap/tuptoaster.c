@@ -1085,4 +1085,4 @@ toast_fetch_datum(varattrib *attr)
 	return result;
 }
 
-#endif	 /* TUPLE_TOASTER_ACTIVE */
+#endif   /* TUPLE_TOASTER_ACTIVE */

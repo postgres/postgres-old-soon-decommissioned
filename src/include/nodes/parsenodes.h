@@ -1355,4 +1355,4 @@ typedef struct SortClause
  */
 typedef SortClause GroupClause;
 
-#endif	 /* PARSENODES_H */
+#endif   /* PARSENODES_H */

@@ -65,4 +65,4 @@
 #define refc(O)
 #endif
 
-#endif	 /* PLPYTHON_H */
+#endif   /* PLPYTHON_H */

@@ -1117,4 +1117,4 @@ DumpFreeSpace(void)
 				nChunks, FreeSpaceMap->numFreeChunks);
 }
 
-#endif	 /* FREESPACE_DEBUG */
+#endif   /* FREESPACE_DEBUG */

@@ -63,4 +63,4 @@ extern char *MemoryContextStrdup(MemoryContext context, const char *string);
 
 #define pstrdup(str)  MemoryContextStrdup(CurrentMemoryContext, (str))
 
-#endif	 /* PALLOC_H */
+#endif   /* PALLOC_H */

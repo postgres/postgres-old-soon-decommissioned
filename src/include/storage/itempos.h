@@ -23,7 +23,7 @@ typedef struct ItemSubpositionData
 	ItemId		op_lpp;
 	char	   *op_cp;			/* XXX */
 	uint32		op_len;
-}			ItemSubpositionData;
+}	ItemSubpositionData;
 
 typedef ItemSubpositionData *ItemSubposition;
 
@@ -42,4 +42,4 @@ typedef ItemSubpositionData *ItemSubposition;
 #define PSKIP(OBJP, LEN)\
 		do { (OBJP)->op_cp += (LEN); (OBJP)->op_len -= (LEN); } while (0)
 
-#endif	 /* ITEMPOS_H */
+#endif   /* ITEMPOS_H */

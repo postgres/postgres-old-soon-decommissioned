@@ -93,7 +93,7 @@ utf_e2u(unsigned char *src)
 #define  UTF_END
 #define  UTF_U2E(x)  (x)
 #define  UTF_E2U(x)  (x)
-#endif	 /* PLTCL_UTF */
+#endif   /* PLTCL_UTF */
 
 /**********************************************************************
  * The information we cache about loaded procedures
@@ -110,7 +110,7 @@ typedef struct pltcl_proc_desc
 	FmgrInfo	arg_out_func[FUNC_MAX_ARGS];
 	Oid			arg_out_elem[FUNC_MAX_ARGS];
 	int			arg_is_rel[FUNC_MAX_ARGS];
-}			pltcl_proc_desc;
+}	pltcl_proc_desc;
 
 
 /**********************************************************************
@@ -126,7 +126,7 @@ typedef struct pltcl_query_desc
 	Oid		   *argtypelems;
 	bool	   *argbyvals;
 	Datum	   *argvalues;
-}			pltcl_query_desc;
+}	pltcl_query_desc;
 
 
 /**********************************************************************

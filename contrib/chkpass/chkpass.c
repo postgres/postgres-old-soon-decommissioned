@@ -32,7 +32,7 @@
 typedef struct chkpass
 {
 	char		password[16];
-}			chkpass;
+}	chkpass;
 
 /*
  * Various forward declarations:

@@ -197,4 +197,4 @@ PGLC_localeconv(void)
 	return &CurrentLocaleConv;
 }
 
-#endif	 /* USE_LOCALE */
+#endif   /* USE_LOCALE */

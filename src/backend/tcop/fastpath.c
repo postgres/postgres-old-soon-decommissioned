@@ -340,7 +340,7 @@ HandleFunctionRequest(void)
 	fcinfo.isnull = true;
 #else
 	retval = FunctionCallInvoke(&fcinfo);
-#endif	 /* NO_FASTPATH */
+#endif   /* NO_FASTPATH */
 
 	if (fcinfo.isnull)
 		SendFunctionResult(retval, fip->retbyval, 0);

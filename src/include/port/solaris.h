@@ -56,6 +56,6 @@ typedef unsigned char slock_t;
 /* not GNUC and i386 */
 
 #define NAN (0.0/0.0)
-#endif	 /* GCC.  */
+#endif   /* GCC.  */
 
-#endif	 /* not NAN */
+#endif   /* not NAN */

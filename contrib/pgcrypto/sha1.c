@@ -346,4 +346,4 @@ sha1_result(struct sha1_ctxt * ctxt, uint8 *digest0)
 #endif
 }
 
-#endif	 /* unsupported */
+#endif   /* unsupported */

@@ -2926,7 +2926,7 @@ locale_is_like_safe(void)
 	return (bool) result;
 #else							/* not USE_LOCALE */
 	return true;				/* We must be in C locale, which is OK */
-#endif	 /* USE_LOCALE */
+#endif   /* USE_LOCALE */
 }
 
 /*

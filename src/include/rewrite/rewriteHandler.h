@@ -19,4 +19,4 @@
 
 extern List *QueryRewrite(Query *parsetree);
 
-#endif	 /* REWRITEHANDLER_H */
+#endif   /* REWRITEHANDLER_H */

@@ -21,4 +21,4 @@ extern void RelationPutHeapTuple(Relation relation, Buffer buffer,
 extern Buffer RelationGetBufferForTuple(Relation relation, Size len,
 						  Buffer otherBuffer);
 
-#endif	 /* HIO_H */
+#endif   /* HIO_H */

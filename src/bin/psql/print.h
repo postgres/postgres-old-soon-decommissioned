@@ -75,4 +75,4 @@ typedef struct _printQueryOpt
 void
 			printQuery(const PGresult *result, const printQueryOpt *opt, FILE *fout);
 
-#endif	 /* PRINT_H */
+#endif   /* PRINT_H */

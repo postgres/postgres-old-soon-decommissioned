@@ -77,4 +77,4 @@ extern RelOptInfo *gimme_tree(Query *root, List *initial_rels,
 		   Gene *tour, int num_gene,
 		   int rel_count, RelOptInfo *old_rel);
 
-#endif	 /* GEQO_H */
+#endif   /* GEQO_H */

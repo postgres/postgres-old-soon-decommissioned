@@ -28,4 +28,4 @@ void		ClientAuthentication(Port *port);
 
 extern char *pg_krb_server_keyfile;
 
-#endif	 /* AUTH_H */
+#endif   /* AUTH_H */

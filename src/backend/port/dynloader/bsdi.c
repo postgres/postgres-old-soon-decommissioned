@@ -95,4 +95,4 @@ pg_dlerror()
 	return dld_strerror(dld_errno);
 }
 
-#endif	 /* not HAVE_DLOPEN */
+#endif   /* not HAVE_DLOPEN */

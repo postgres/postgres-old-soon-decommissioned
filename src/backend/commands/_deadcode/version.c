@@ -287,7 +287,7 @@ VersionDelete(char *vname, char *bname, char *snapshot)
 			vname, vname, vname, bname, bname, snapshot, bname);
 
 	eval_as_new_xact(rule_buf);
-#endif	 /* OLD_REWRITE */
+#endif   /* OLD_REWRITE */
 }
 #endif
 
@@ -338,7 +338,7 @@ VersionReplace(char *vname, char *bname, char *snapshot)
 	vname, vname, vname, attr_list, bname, bname, snapshot, vname, bname);
 
 	eval_as_new_xact(rule_buf);
-#endif	 /* OLD_REWRITE */
+#endif   /* OLD_REWRITE */
 /*	printf("%s\n",rule_buf); */
 
 }

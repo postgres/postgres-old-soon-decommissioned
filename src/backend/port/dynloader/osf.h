@@ -33,4 +33,4 @@
 #define  pg_dlclose(h)	dlclose(h)
 #define  pg_dlerror()	dlerror()
 
-#endif	 /* PORT_PROTOS_H */
+#endif   /* PORT_PROTOS_H */

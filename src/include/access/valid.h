@@ -131,4 +131,4 @@ do \
 	} \
 } while (0)
 
-#endif	 /* VALID_H */
+#endif   /* VALID_H */

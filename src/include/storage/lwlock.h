@@ -67,4 +67,4 @@ extern int	NumLWLocks(void);
 extern int	LWLockShmemSize(void);
 extern void CreateLWLocks(void);
 
-#endif	 /* LWLOCK_H */
+#endif   /* LWLOCK_H */

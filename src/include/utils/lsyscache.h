@@ -57,4 +57,4 @@ extern int32 get_usesysid(const char *username);
 
 #define TypeIsToastable(typid)	(get_typstorage(typid) != 'p')
 
-#endif	 /* LSYSCACHE_H */
+#endif   /* LSYSCACHE_H */

@@ -37,4 +37,4 @@ typedef struct QueryDesc
 extern QueryDesc *CreateQueryDesc(Query *parsetree, Plan *plantree,
 				CommandDest dest);
 
-#endif	 /* EXECDESC_H	*/
+#endif   /* EXECDESC_H  */

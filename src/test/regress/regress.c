@@ -214,7 +214,7 @@ typedef struct
 {
 	Point		center;
 	double		radius;
-}			WIDGET;
+}	WIDGET;
 
 WIDGET	   *widget_in(char *str);
 char	   *widget_out(WIDGET * widget);

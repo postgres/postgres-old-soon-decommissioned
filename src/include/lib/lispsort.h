@@ -14,4 +14,4 @@
 #ifndef LISPSORT_H
 #define LISPSORT_H
 
-#endif	 /* LISPSORT_H */
+#endif   /* LISPSORT_H */

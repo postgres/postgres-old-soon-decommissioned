@@ -1262,4 +1262,4 @@ GetCharSetByHost(char *TableName, int host, const char *DataDir)
 	}
 }
 
-#endif	 /* CYR_RECODE */
+#endif   /* CYR_RECODE */

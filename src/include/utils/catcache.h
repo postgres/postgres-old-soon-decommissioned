@@ -103,4 +103,4 @@ extern void PrepareToInvalidateCacheTuple(Relation relation,
 							  HeapTuple tuple,
 						void (*function) (int, Index, ItemPointer, Oid));
 
-#endif	 /* CATCACHE_H */
+#endif   /* CATCACHE_H */

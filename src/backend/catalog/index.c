@@ -2027,7 +2027,7 @@ reindex_relation(Oid relid, bool force)
 		else
 			elog(ERROR, "the target relation %u is nailed", relid);
 	}
-#endif	 /* ENABLE_REINDEX_NAILED_RELATIONS */
+#endif   /* ENABLE_REINDEX_NAILED_RELATIONS */
 
 	/*
 	 * Shared system indexes must be overwritten because it's impossible

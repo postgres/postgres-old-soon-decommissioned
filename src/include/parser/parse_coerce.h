@@ -82,4 +82,4 @@ extern Node *coerce_to_common_type(ParseState *pstate, Node *node,
 					  Oid targetTypeId,
 					  const char *context);
 
-#endif	 /* PARSE_COERCE_H */
+#endif   /* PARSE_COERCE_H */

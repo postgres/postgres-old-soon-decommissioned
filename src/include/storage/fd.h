@@ -79,4 +79,4 @@ extern void RemovePgTempFiles(void);
 extern int	pg_fsync(int fd);
 extern int	pg_fdatasync(int fd);
 
-#endif	 /* FD_H */
+#endif   /* FD_H */

@@ -65,7 +65,7 @@ PacketReceiveFragment(Port *port)
 		got = read(port->sock, pkt->ptr, pkt->nrtodo);
 #else
 		got = recv(port->sock, pkt->ptr, pkt->nrtodo, 0);
-#endif	 /* __BEOS__ */
+#endif   /* __BEOS__ */
 	if (got > 0)
 	{
 		pkt->nrtodo -= got;

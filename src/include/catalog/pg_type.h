@@ -466,4 +466,4 @@ extern Oid TypeCreate(char *typeName,
 extern void TypeRename(const char *oldTypeName, const char *newTypeName);
 extern char *makeArrayTypeName(char *typeName);
 
-#endif	 /* PG_TYPE_H */
+#endif   /* PG_TYPE_H */

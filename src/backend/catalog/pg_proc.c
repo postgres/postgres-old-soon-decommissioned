@@ -157,7 +157,7 @@ ProcedureCreate(char *procedureName,
 				return retval;
 #else
 			elog(ERROR, "lookup for procedure by source needs fix (Jan)");
-#endif	 /* SETS_FIXED */
+#endif   /* SETS_FIXED */
 		}
 	}
 

@@ -22,4 +22,4 @@ extern int	ExecCountSlotsAgg(Agg *node);
 extern void ExecEndAgg(Agg *node);
 extern void ExecReScanAgg(Agg *node, ExprContext *exprCtxt, Plan *parent);
 
-#endif	 /* NODEAGG_H */
+#endif   /* NODEAGG_H */

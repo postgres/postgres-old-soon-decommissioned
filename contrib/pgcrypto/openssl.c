@@ -110,7 +110,7 @@ typedef struct
 	uint8		iv[EVP_MAX_IV_LENGTH];
 	uint		klen;
 	uint		init;
-}			ossldata;
+}	ossldata;
 
 /* generic EVP */
 
@@ -324,35 +324,35 @@ struct
 {
 	char	   *name;
 	PX_Cipher	cf;
-}			spec_types[] =
+}	spec_types[] =
 
 {
 	{
 		"bf-cbc",
 		{
 			gen_evp_block_size, gen_evp_key_size, gen_evp_iv_size,
-				bf_init, bf_cbc_encrypt, bf_cbc_decrypt, gen_evp_free
+			bf_init, bf_cbc_encrypt, bf_cbc_decrypt, gen_evp_free
 		}
 	},
 	{
 		"bf-ecb",
 		{
 			gen_evp_block_size, gen_evp_key_size, gen_evp_iv_size,
-				bf_init, bf_ecb_encrypt, bf_ecb_decrypt, gen_evp_free
+			bf_init, bf_ecb_encrypt, bf_ecb_decrypt, gen_evp_free
 		}
 	},
 	{
 		"bf-cfb",
 		{
 			gen_evp_block_size, gen_evp_key_size, gen_evp_iv_size,
-				bf_init, bf_cfb64_encrypt, bf_cfb64_decrypt, gen_evp_free
+			bf_init, bf_cfb64_encrypt, bf_cfb64_decrypt, gen_evp_free
 		}
 	},
 	{
 		"bf-ofb",
 		{
 			gen_evp_block_size, gen_evp_key_size, gen_evp_iv_size,
-				bf_init, bf_ofb64_encrypt, bf_ofb64_decrypt, gen_evp_free
+			bf_init, bf_ofb64_encrypt, bf_ofb64_decrypt, gen_evp_free
 		}
 	},
 	{

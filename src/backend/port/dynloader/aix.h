@@ -53,7 +53,7 @@ extern		"C"
 #ifdef __cplusplus
 }
 #endif
-#endif	 /* HAVE_DLOPEN */
+#endif   /* HAVE_DLOPEN */
 
 #include "utils/dynamic_loader.h"
 
@@ -62,4 +62,4 @@ extern		"C"
 #define  pg_dlclose dlclose
 #define  pg_dlerror dlerror
 
-#endif	 /* PORT_PROTOS_H */
+#endif   /* PORT_PROTOS_H */

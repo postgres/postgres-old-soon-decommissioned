@@ -40,4 +40,4 @@ extern		"C"
 }
 #endif
 
-#endif	 /* _SYS_SHM_H */
+#endif   /* _SYS_SHM_H */

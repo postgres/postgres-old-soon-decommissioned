@@ -153,4 +153,4 @@ extern void ProcSendSignal(BackendId procId);
 extern bool enable_sigalrm_interrupt(int delayms);
 extern bool disable_sigalrm_interrupt(void);
 
-#endif	 /* PROC_H */
+#endif   /* PROC_H */

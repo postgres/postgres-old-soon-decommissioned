@@ -102,4 +102,4 @@ extern int32 ApplySortFunction(FmgrInfo *sortFunction, SortFunctionKind kind,
 				  Datum datum1, bool isNull1,
 				  Datum datum2, bool isNull2);
 
-#endif	 /* TUPLESORT_H */
+#endif   /* TUPLESORT_H */

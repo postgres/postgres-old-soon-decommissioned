@@ -53,4 +53,4 @@ extern Form_pg_attribute SystemAttributeDefinition(AttrNumber attno,
 extern Form_pg_attribute SystemAttributeByName(const char *attname,
 					  bool relhasoids);
 
-#endif	 /* HEAP_H */
+#endif   /* HEAP_H */

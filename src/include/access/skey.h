@@ -48,4 +48,4 @@ extern void ScanKeyEntryInitializeWithInfo(ScanKey entry, bits16 flags,
 							 AttrNumber attributeNumber, FmgrInfo *finfo,
 							   MemoryContext mcxt, Datum argument);
 
-#endif	 /* SKEY_H */
+#endif   /* SKEY_H */

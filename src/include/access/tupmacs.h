@@ -90,7 +90,7 @@
 	: \
 	PointerGetDatum((char *) (T)) \
 )
-#endif	 /* SIZEOF_DATUM == 8 */
+#endif   /* SIZEOF_DATUM == 8 */
 
 /*
  * att_align aligns the given offset as needed for a datum of length attlen
@@ -178,6 +178,6 @@
 				break; \
 		} \
 	} while (0)
-#endif	 /* SIZEOF_DATUM == 8 */
+#endif   /* SIZEOF_DATUM == 8 */
 
 #endif

@@ -884,7 +884,7 @@ typedef struct
 	int		   *modified;
 	int		   *badsql;
 	int			sublevels_up;
-}			HandleRIRAttributeRule_context;
+}	HandleRIRAttributeRule_context;
 
 static Node *
 HandleRIRAttributeRule_mutator(Node *node,
@@ -996,4 +996,4 @@ HandleRIRAttributeRule(Query *parsetree,
 					   (void *) &context, true);
 }
 
-#endif	 /* NOT_USED */
+#endif   /* NOT_USED */

@@ -30,7 +30,7 @@
 #include <sys/un.h>
 #endif
 #include <netinet/in.h>
-#endif	 /* not WIN32 */
+#endif   /* not WIN32 */
 
 
 #ifndef HAVE_STRUCT_SOCKADDR_UN
@@ -178,4 +178,4 @@ typedef struct CancelRequestPacket
  */
 #define NEGOTIATE_SSL_CODE PG_PROTOCOL(1234,5679)
 
-#endif	 /* PQCOMM_H */
+#endif   /* PQCOMM_H */

@@ -195,7 +195,7 @@ typedef FormData_pg_attribute *Form_pg_attribute;
 	(attribute)->atttypid = (Oid) -1; \
 	(attribute)->attnotnull = false; \
 	(attribute)->atthasdef = false;
-#endif	 /* _DROP_COLUMN_HACK__ */
+#endif   /* _DROP_COLUMN_HACK__ */
 
 /* ----------------
  *		SCHEMA_ macros for declaring hardcoded tuple descriptors.
@@ -486,4 +486,4 @@ DATA(insert ( 1259 tableoid			26 0  4  -7 0 -1 -1 t p f i f f));
  */
 DATA(insert ( 376 xactlockfoo		26 0  4   1 0 -1 -1 t p f i f f));
 
-#endif	 /* PG_ATTRIBUTE_H */
+#endif   /* PG_ATTRIBUTE_H */

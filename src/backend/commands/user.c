@@ -101,12 +101,13 @@ write_password_file(Relation rel)
 		str_n = DatumGetCString(DirectFunctionCall1(nameout, datum_n));
 
 		datum_p = heap_getattr(tuple, Anum_pg_shadow_passwd, dsc, &null_p);
+
 		/*
 		 * It can be argued that people having a null password shouldn't
 		 * be allowed to connect under password authentication, because
-		 * they need to have a password set up first. If you think assuming an
-		 * empty password in that case is better, change this logic to look
-		 * something like the code for valuntil.
+		 * they need to have a password set up first. If you think
+		 * assuming an empty password in that case is better, change this
+		 * logic to look something like the code for valuntil.
 		 */
 		if (null_p)
 		{
@@ -132,9 +133,9 @@ write_password_file(Relation rel)
 			elog(ERROR, "Invalid user password '%s'", str_p);
 
 		/*
-		 * The extra columns we emit here are not really necessary. To remove
-		 * them, the parser in backend/libpq/crypt.c would need to be
-		 * adjusted.
+		 * The extra columns we emit here are not really necessary. To
+		 * remove them, the parser in backend/libpq/crypt.c would need to
+		 * be adjusted.
 		 */
 		fprintf(fp,
 				"%s"
@@ -168,8 +169,8 @@ write_password_file(Relation rel)
 	FreeFile(fp);
 
 	/*
-	 * Rename the temp file to its final name, deleting the old pg_pwd.
-	 * We expect that rename(2) is an atomic action.
+	 * Rename the temp file to its final name, deleting the old pg_pwd. We
+	 * expect that rename(2) is an atomic action.
 	 */
 	if (rename(tempname, filename))
 		elog(ERROR, "rename %s to %s: %m", tempname, filename);

@@ -115,4 +115,4 @@ extern Datum toast_compress_datum(Datum value);
  */
 extern Size toast_raw_datum_size(Datum value);
 
-#endif	 /* TUPTOASTER_H */
+#endif   /* TUPTOASTER_H */

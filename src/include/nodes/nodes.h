@@ -365,4 +365,4 @@ typedef enum JoinType
 	 (jointype) == JOIN_FULL || \
 	 (jointype) == JOIN_RIGHT)
 
-#endif	 /* NODES_H */
+#endif   /* NODES_H */

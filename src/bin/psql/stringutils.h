@@ -18,4 +18,4 @@ extern char *strtokx(const char *s,
 		unsigned int *token_pos,
 		int encoding);
 
-#endif	 /* STRINGUTILS_H */
+#endif   /* STRINGUTILS_H */

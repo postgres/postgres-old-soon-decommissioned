@@ -156,4 +156,4 @@ void		PacketSendSetup(Packet *pkt, int nbytes, PacketDoneProc iodone, void *arg)
 int			PacketSendFragment(Port *port);
 void		PacketSendError(Packet *pkt, char *errormsg);
 
-#endif	 /* LIBPQ_BE_H */
+#endif   /* LIBPQ_BE_H */

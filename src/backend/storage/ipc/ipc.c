@@ -94,7 +94,7 @@ static struct ONEXIT
 {
 	void		(*function) ();
 	Datum		arg;
-} on_proc_exit_list[MAX_ON_EXITS], on_shmem_exit_list[MAX_ON_EXITS];
+}	on_proc_exit_list[MAX_ON_EXITS], on_shmem_exit_list[MAX_ON_EXITS];
 
 static int	on_proc_exit_index,
 			on_shmem_exit_index;

@@ -28,4 +28,4 @@ extern Node *CoerceTargetExpr(ParseState *pstate, Node *expr,
 extern List *checkInsertTargets(ParseState *pstate, List *cols,
 				   List **attrnos);
 
-#endif	 /* PARSE_TARGET_H */
+#endif   /* PARSE_TARGET_H */

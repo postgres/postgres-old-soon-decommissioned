@@ -41,7 +41,7 @@ typedef enum UserAuth
 	uaMD5
 #ifdef USE_PAM
 	,uaPAM
-#endif	 /* USE_PAM */
+#endif   /* USE_PAM */
 } UserAuth;
 
 typedef struct Port hbaPort;

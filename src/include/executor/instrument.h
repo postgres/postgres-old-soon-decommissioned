@@ -36,4 +36,4 @@ extern void InstrStartNode(Instrumentation *instr);
 extern void InstrStopNode(Instrumentation *instr, bool returnedTuple);
 extern void InstrEndLoop(Instrumentation *instr);
 
-#endif	 /* INSTRUMENT_H */
+#endif   /* INSTRUMENT_H */

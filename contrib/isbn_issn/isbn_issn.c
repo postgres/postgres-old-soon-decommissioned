@@ -16,7 +16,7 @@ typedef struct isbn
 {
 	char		num[13];
 	char		pad[3];
-}			isbn;
+}	isbn;
 
 /*
  *	Various forward declarations:
@@ -204,7 +204,7 @@ typedef struct issn
 {
 	char		num[9];
 	char		pad[7];
-}			issn;
+}	issn;
 
 /*
  *	Various forward declarations:

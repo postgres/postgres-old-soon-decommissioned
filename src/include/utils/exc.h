@@ -85,4 +85,4 @@ extern void ExcRaise(Exception *excP,
 extern void ExcAbort(const Exception *excP, ExcDetail detail, ExcData data,
 		 ExcMessage message);
 
-#endif	 /* EXC_H */
+#endif   /* EXC_H */

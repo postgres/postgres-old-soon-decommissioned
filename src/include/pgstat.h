@@ -449,4 +449,4 @@ extern PgStat_StatTabEntry *pgstat_fetch_stat_tabentry(Oid relid);
 extern PgStat_StatBeEntry *pgstat_fetch_stat_beentry(int beid);
 extern int	pgstat_fetch_stat_numbackends(void);
 
-#endif	 /* PGSTAT_H */
+#endif   /* PGSTAT_H */

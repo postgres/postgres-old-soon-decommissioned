@@ -95,4 +95,4 @@ extern Selectivity clause_selectivity(Query *root,
 				   Node *clause,
 				   int varRelid);
 
-#endif	 /* COST_H */
+#endif   /* COST_H */

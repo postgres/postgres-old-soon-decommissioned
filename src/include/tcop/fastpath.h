@@ -15,4 +15,4 @@
 
 extern int	HandleFunctionRequest(void);
 
-#endif	 /* FASTPATH_H */
+#endif   /* FASTPATH_H */

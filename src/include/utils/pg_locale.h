@@ -51,6 +51,6 @@ extern void PGLC_free_categories(PG_LocaleCategories *lc);
  *------
  */
 extern struct lconv *PGLC_localeconv(void);
-#endif	 /* USE_LOCALE */
+#endif   /* USE_LOCALE */
 
-#endif	 /* _PG_LOCALE_ */
+#endif   /* _PG_LOCALE_ */

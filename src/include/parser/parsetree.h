@@ -52,4 +52,4 @@
  */
 extern char *get_rte_attribute_name(RangeTblEntry *rte, AttrNumber attnum);
 
-#endif	 /* PARSETREE_H */
+#endif   /* PARSETREE_H */

@@ -33,4 +33,4 @@ extern TargetEntry *get_sortgroupclause_tle(SortClause *sortClause,
 extern Node *get_sortgroupclause_expr(SortClause *sortClause,
 						 List *targetList);
 
-#endif	 /* TLIST_H */
+#endif   /* TLIST_H */

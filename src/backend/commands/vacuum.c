@@ -860,7 +860,7 @@ full_vacuum_rel(Relation onerel, VacuumStmt *vacstmt)
 		Irel = (Relation *) NULL;
 		activate_indexes_of_a_table(RelationGetRelid(onerel), false);
 	}
-#endif	 /* NOT_USED */
+#endif   /* NOT_USED */
 
 	/* Clean/scan index relation(s) */
 	if (Irel != (Relation *) NULL)
@@ -912,7 +912,7 @@ full_vacuum_rel(Relation onerel, VacuumStmt *vacstmt)
 #ifdef NOT_USED
 	if (reindex)
 		activate_indexes_of_a_table(RelationGetRelid(onerel), true);
-#endif	 /* NOT_USED */
+#endif   /* NOT_USED */
 
 	/* update shared free space map with final free space info */
 	vac_update_fsm(onerel, &fraged_pages, vacrelstats->rel_pages);

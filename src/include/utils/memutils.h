@@ -116,4 +116,4 @@ extern MemoryContext AllocSetContextCreate(MemoryContext parent,
 #define ALLOCSET_DEFAULT_INITSIZE  (8 * 1024)
 #define ALLOCSET_DEFAULT_MAXSIZE   (8 * 1024 * 1024)
 
-#endif	 /* MEMUTILS_H */
+#endif   /* MEMUTILS_H */

@@ -15,4 +15,4 @@ extern void ResetPGVariable(const char *name);
 extern void set_default_datestyle(void);
 extern void set_default_client_encoding(void);
 
-#endif	 /* VARIABLE_H */
+#endif   /* VARIABLE_H */

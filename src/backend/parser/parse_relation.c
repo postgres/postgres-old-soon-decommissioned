@@ -737,7 +737,7 @@ expandRTE(ParseState *pstate, RangeTblEntry *rte,
 #ifdef	_DROP_COLUMN_HACK__
 			if (COLUMN_IS_DROPPED(attr))
 				continue;
-#endif	 /* _DROP_COLUMN_HACK__ */
+#endif   /* _DROP_COLUMN_HACK__ */
 
 			if (colnames)
 			{

@@ -176,7 +176,7 @@ subquery_planner(Query *parse, double tuple_fraction)
 	/*
 	 * Check for ungrouped variables passed to subplans in targetlist and
 	 * HAVING clause (but not in WHERE or JOIN/ON clauses, since those are
-	 * evaluated before grouping).  We can't do this any earlier because
+	 * evaluated before grouping).	We can't do this any earlier because
 	 * we must use the preprocessed targetlist for comparisons of grouped
 	 * expressions.
 	 */

@@ -1934,7 +1934,7 @@ gist_dumptree(Relation r, int level, BlockNumber blk, OffsetNumber coff)
 	ReleaseBuffer(buffer);
 	pfree(pred);
 }
-#endif	 /* defined GISTDEBUG */
+#endif   /* defined GISTDEBUG */
 
 void
 gist_redo(XLogRecPtr lsn, XLogRecord *record)

@@ -497,7 +497,7 @@ typedef struct
 	Tcl_Event	header;			/* Standard Tcl event info */
 	PGnotify	info;			/* Notify name from SQL server */
 	Pg_ConnectionId *connid;	/* Connection for server */
-}			NotifyEvent;
+}	NotifyEvent;
 
 /* Dispatch a NotifyEvent that has reached the front of the event queue */
 

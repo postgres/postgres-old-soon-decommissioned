@@ -49,4 +49,4 @@ extern void RemoveOperator(char *operatorName,
 extern void RemoveType(char *typeName);
 extern void RemoveAggregate(char *aggName, char *aggType);
 
-#endif	 /* DEFREM_H */
+#endif   /* DEFREM_H */

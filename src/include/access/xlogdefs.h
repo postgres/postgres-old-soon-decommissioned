@@ -56,4 +56,4 @@ typedef struct XLogRecPtr
  */
 typedef uint32 StartUpID;
 
-#endif	 /* XLOG_DEFS_H */
+#endif   /* XLOG_DEFS_H */

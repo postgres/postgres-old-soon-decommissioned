@@ -39,7 +39,7 @@
 
 /* for getrlimit */
 #include <sys/resource.h>
-#endif	 /* WIN32 */
+#endif   /* WIN32 */
 
 /********************************************************************
  * some configurable parameters */
@@ -90,7 +90,7 @@ typedef struct
 	int			tid;			/* teller id for this transaction */
 	int			delta;
 	int			abalance;
-}			CState;
+}	CState;
 
 static void
 usage()
@@ -680,7 +680,7 @@ main(int argc, char **argv)
 #else							/* but BSD doesn't ... */
 				if (getrlimit(RLIMIT_OFILE, &rlim) == -1)
 				{
-#endif	 /* HAVE_RLIMIT_NOFILE */
+#endif   /* HAVE_RLIMIT_NOFILE */
 					fprintf(stderr, "getrlimit failed. reason: %s\n", strerror(errno));
 					exit(1);
 				}
@@ -690,7 +690,7 @@ main(int argc, char **argv)
 					fprintf(stderr, "Use limit/ulimt to increase the limit before using pgbench.\n");
 					exit(1);
 				}
-#endif	 /* #ifndef __CYGWIN__ */
+#endif   /* #ifndef __CYGWIN__ */
 				break;
 			case 'C':
 				is_connect = 1;

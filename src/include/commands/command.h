@@ -72,4 +72,4 @@ extern void AlterTableOwner(const char *relationName, const char *newOwnerName);
  */
 extern void LockTableCommand(LockStmt *lockstmt);
 
-#endif	 /* COMMAND_H */
+#endif   /* COMMAND_H */

@@ -74,4 +74,4 @@ extern Datum rtcostestimate(PG_FUNCTION_ARGS);
 extern Datum hashcostestimate(PG_FUNCTION_ARGS);
 extern Datum gistcostestimate(PG_FUNCTION_ARGS);
 
-#endif	 /* SELFUNCS_H */
+#endif   /* SELFUNCS_H */

@@ -18,4 +18,4 @@
 
 extern JoinInfo *find_joininfo_node(RelOptInfo *this_rel, List *join_relids);
 
-#endif	 /* JOININFO_H */
+#endif   /* JOININFO_H */

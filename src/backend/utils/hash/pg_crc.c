@@ -414,4 +414,4 @@ const uint64 crc_table[256] = {
 	INT64CONST(0xD80C07CD676F8394), INT64CONST(0x9AFCE626CE85B507)
 };
 
-#endif	 /* INT64_IS_BUSTED */
+#endif   /* INT64_IS_BUSTED */

@@ -21,4 +21,4 @@ typedef enum _promptStatus
 
 char	   *get_prompt(promptStatus_t status);
 
-#endif	 /* PROMPT_H */
+#endif   /* PROMPT_H */

@@ -51,4 +51,4 @@
 #define EXEC_MJ_ENDOUTER				14
 #define EXEC_MJ_ENDINNER				15
 
-#endif	 /* EXECDEFS_H */
+#endif   /* EXECDEFS_H */

@@ -309,7 +309,7 @@ set_uppernode_references(Plan *plan, Index subvarno)
 	{
 		TargetEntry *tle = (TargetEntry *) lfirst(l);
 
-		if (tle->expr && ! IsA(tle->expr, Var))
+		if (tle->expr && !IsA(tle->expr, Var))
 		{
 			tlist_has_non_vars = true;
 			break;
@@ -327,7 +327,7 @@ set_uppernode_references(Plan *plan, Index subvarno)
 												 subplan_targetlist,
 												 tlist_has_non_vars);
 		output_targetlist = lappend(output_targetlist,
-									makeTargetEntry(tle->resdom, newexpr));
+								  makeTargetEntry(tle->resdom, newexpr));
 	}
 	plan->targetlist = output_targetlist;
 
@@ -493,7 +493,7 @@ replace_vars_with_subplan_refs_mutator(Node *node,
 							 resdom->restype,
 							 resdom->restypmod,
 							 0);
-			newvar->varnoold = 0; /* wasn't ever a plain Var */
+			newvar->varnoold = 0;		/* wasn't ever a plain Var */
 			newvar->varoattno = 0;
 			return (Node *) newvar;
 		}

@@ -36,7 +36,7 @@ typedef struct _CandidateList
 {
 	Oid		   *args;
 	struct _CandidateList *next;
-}		   *CandidateList;
+}	*CandidateList;
 
 /* Result codes for func_get_detail */
 typedef enum
@@ -64,4 +64,4 @@ extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
 extern void func_error(char *caller, char *funcname,
 		   int nargs, Oid *argtypes, char *msg);
 
-#endif	 /* PARSE_FUNC_H */
+#endif   /* PARSE_FUNC_H */

@@ -119,7 +119,7 @@ btbuild(PG_FUNCTION_ARGS)
 #ifdef BTREE_BUILD_STATS
 	if (Show_btree_build_stats)
 		ResetUsage();
-#endif	 /* BTREE_BUILD_STATS */
+#endif   /* BTREE_BUILD_STATS */
 
 	/*
 	 * We expect to be called exactly once for any index relation. If
@@ -175,7 +175,7 @@ btbuild(PG_FUNCTION_ARGS)
 		ShowUsage();
 		ResetUsage();
 	}
-#endif	 /* BTREE_BUILD_STATS */
+#endif   /* BTREE_BUILD_STATS */
 
 	/* all done */
 	BuildingBtree = false;

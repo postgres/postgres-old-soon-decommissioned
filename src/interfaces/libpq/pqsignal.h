@@ -24,4 +24,4 @@ typedef void (*pqsigfunc) (int);
 
 extern pqsigfunc pqsignal(int signo, pqsigfunc func);
 
-#endif	 /* PQSIGNAL_H */
+#endif   /* PQSIGNAL_H */

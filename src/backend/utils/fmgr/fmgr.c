@@ -1470,7 +1470,7 @@ Int64GetDatum(int64 X)
 	MemSet(retval, 0, Max(sizeof(int64), 8));
 	*retval = X;
 	return PointerGetDatum(retval);
-#endif	 /* INT64_IS_BUSTED */
+#endif   /* INT64_IS_BUSTED */
 }
 
 Datum

@@ -17,4 +17,4 @@
 
 extern void beginRecipe(RecipeStmt *stmt);
 
-#endif	 /* RECIPE_H */
+#endif   /* RECIPE_H */

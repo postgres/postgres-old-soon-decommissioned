@@ -313,7 +313,7 @@ pg_nofile(void)
 #else
 		no_files = (long) max_files_per_process;
 #endif
-#endif	 /* HAVE_SYSCONF */
+#endif   /* HAVE_SYSCONF */
 
 		/*
 		 * Some platforms return hopelessly optimistic values.	Apply a
@@ -355,7 +355,7 @@ _dump_lru(void)
 	sprintf(buf + strlen(buf), "LEAST");
 	elog(DEBUG, buf);
 }
-#endif	 /* FDDEBUG */
+#endif   /* FDDEBUG */
 
 static void
 Delete(File file)

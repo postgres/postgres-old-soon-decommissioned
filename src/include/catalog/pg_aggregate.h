@@ -165,4 +165,4 @@ extern void AggregateCreate(char *aggName,
 extern Datum AggNameGetInitVal(char *aggName, Oid basetype,
 				  bool *isNull);
 
-#endif	 /* PG_AGGREGATE_H */
+#endif   /* PG_AGGREGATE_H */

@@ -288,7 +288,7 @@ exec_command(const char *cmd,
 			 * directory, so if someone wants to code this here instead...
 			 */
 			dir = "/";
-#endif	 /* WIN32 */
+#endif   /* WIN32 */
 		}
 
 		if (chdir(dir) == -1)

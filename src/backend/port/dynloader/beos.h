@@ -14,4 +14,4 @@
 #ifndef PORT_PROTOS_H
 #define PORT_PROTOS_H
 
-#endif	 /* PORT_PROTOS_H */
+#endif   /* PORT_PROTOS_H */

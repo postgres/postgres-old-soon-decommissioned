@@ -44,4 +44,4 @@
 
 extern char *SharedSystemRelationNames[];
 
-#endif	 /* CATNAME_H */
+#endif   /* CATNAME_H */

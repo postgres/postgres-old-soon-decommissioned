@@ -79,4 +79,4 @@ DATAMARKOID(= 2)
 
 #undef DATAMARKOID
 
-#endif	 /* PG_DATABASE_H */
+#endif   /* PG_DATABASE_H */

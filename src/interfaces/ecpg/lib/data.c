@@ -70,7 +70,7 @@ get_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 		case ECPGt_unsigned_long_long:
 			((unsigned long long int *) ind)[act_tuple] = -PQgetisnull(results, act_tuple, act_field);
 			break;
-#endif	 /* HAVE_LONG_LONG_INT_64 */
+#endif   /* HAVE_LONG_LONG_INT_64 */
 		case ECPGt_NO_INDICATOR:
 			if (PQgetisnull(results, act_tuple, act_field))
 			{
@@ -176,7 +176,7 @@ get_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 					((long long int *) var)[act_tuple] = (long long) 0;
 
 				break;
-#endif	 /* HAVE_STRTOLL */
+#endif   /* HAVE_STRTOLL */
 #ifdef HAVE_STRTOULL
 			case ECPGt_unsigned_long_long:
 				if (pval)
@@ -193,8 +193,8 @@ get_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 					((unsigned long long int *) var)[act_tuple] = (long long) 0;
 
 				break;
-#endif	 /* HAVE_STRTOULL */
-#endif	 /* HAVE_LONG_LONG_INT_64 */
+#endif   /* HAVE_STRTOULL */
+#endif   /* HAVE_LONG_LONG_INT_64 */
 
 			case ECPGt_float:
 			case ECPGt_double:

@@ -86,17 +86,17 @@ static const struct authsvc authsvcs[] = {
 #ifdef KRB4
 	{"krb4", STARTUP_KRB4_MSG, 1},
 	{"kerberos", STARTUP_KRB4_MSG, 1},
-#endif	 /* KRB4 */
+#endif   /* KRB4 */
 #ifdef KRB5
 	{"krb5", STARTUP_KRB5_MSG, 1},
 	{"kerberos", STARTUP_KRB5_MSG, 1},
-#endif	 /* KRB5 */
+#endif   /* KRB5 */
 	{UNAUTHNAME, STARTUP_MSG,
 #if defined(KRB4) || defined(KRB5)
 		0
 #else							/* !(KRB4 || KRB5) */
 		1
-#endif	 /* !(KRB4 || KRB5) */
+#endif   /* !(KRB4 || KRB5) */
 	},
 	{"password", STARTUP_PASSWORD_MSG, 0}
 };
@@ -231,7 +231,7 @@ pg_krb4_sendauth(char *PQerrormsg, int sock,
 	}
 	return STATUS_OK;
 }
-#endif	 /* KRB4 */
+#endif   /* KRB4 */
 
 #ifdef KRB5
 /*
@@ -431,7 +431,7 @@ pg_krb5_sendauth(char *PQerrormsg, int sock,
 
 	return ret;
 }
-#endif	 /* KRB5 */
+#endif   /* KRB5 */
 
 static int
 pg_local_sendauth(char *PQerrormsg, PGconn *conn)

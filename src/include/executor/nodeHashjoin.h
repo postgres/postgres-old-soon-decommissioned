@@ -23,4 +23,4 @@ extern void ExecEndHashJoin(HashJoin *node);
 extern void ExecHashJoinSaveTuple(HeapTuple heapTuple, BufFile *file);
 extern void ExecReScanHashJoin(HashJoin *node, ExprContext *exprCtxt, Plan *parent);
 
-#endif	 /* NODEHASHJOIN_H */
+#endif   /* NODEHASHJOIN_H */

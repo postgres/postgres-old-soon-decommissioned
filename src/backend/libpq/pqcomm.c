@@ -232,7 +232,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 		 */
 		unlink(sock_path);
 	}
-#endif	 /* HAVE_UNIX_SOCKETS */
+#endif   /* HAVE_UNIX_SOCKETS */
 
 	if (family == AF_INET)
 	{
@@ -344,7 +344,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 			return STATUS_ERROR;
 		}
 	}
-#endif	 /* HAVE_UNIX_SOCKETS */
+#endif   /* HAVE_UNIX_SOCKETS */
 
 	/*
 	 * Select appropriate accept-queue length limit.  PG_SOMAXCONN is only

@@ -18,4 +18,4 @@ extern sigjmp_buf main_loop_jmp;
 
 int			MainLoop(FILE *source);
 
-#endif	 /* MAINLOOP_H */
+#endif   /* MAINLOOP_H */

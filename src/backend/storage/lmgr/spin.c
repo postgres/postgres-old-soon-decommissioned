@@ -187,4 +187,4 @@ tas_sema(volatile slock_t *lock)
 	return !IpcSemaphoreTryLock(lock->semId, lock->sem);
 }
 
-#endif	 /* !HAS_TEST_AND_SET */
+#endif   /* !HAS_TEST_AND_SET */

@@ -133,7 +133,7 @@ main(int argc, char **argv)
 		{"use-set-session-authorization", no_argument, &use_setsessauth, 1},
 		{NULL, 0, NULL, 0}
 	};
-#endif	 /* HAVE_GETOPT_LONG */
+#endif   /* HAVE_GETOPT_LONG */
 
 
 #ifdef ENABLE_NLS

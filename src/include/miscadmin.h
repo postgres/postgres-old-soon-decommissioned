@@ -305,4 +305,4 @@ extern void IgnoreSystemIndexes(bool mode);
 extern bool IsIgnoringSystemIndexes(void);
 extern bool IsCacheInitialized(void);
 
-#endif	 /* MISCADMIN_H */
+#endif   /* MISCADMIN_H */

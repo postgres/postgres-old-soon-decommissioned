@@ -31,10 +31,10 @@ extern PGconn *cancelConn;
 
 #ifndef WIN32
 extern void handle_sigint(SIGNAL_ARGS);
-#endif	 /* not WIN32 */
+#endif   /* not WIN32 */
 
 extern PGresult *PSQLexec(const char *query);
 
 extern bool SendQuery(const char *query);
 
-#endif	 /* COMMON_H */
+#endif   /* COMMON_H */

@@ -749,7 +749,7 @@ typedef struct TeeState
 	MemoryContext tee_mcxt;
 	HeapScanDesc tee_leftScanDesc,
 				tee_rightScanDesc;
-}			TeeState;
+}	TeeState;
 #endif
 
-#endif	 /* EXECNODES_H */
+#endif   /* EXECNODES_H */

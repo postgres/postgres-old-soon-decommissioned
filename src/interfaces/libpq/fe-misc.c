@@ -830,7 +830,7 @@ PQenv2encoding(void)
 {
 	return 0;
 }
-#endif	 /* MULTIBYTE */
+#endif   /* MULTIBYTE */
 
 
 #ifdef ENABLE_NLS
@@ -847,7 +847,7 @@ libpq_gettext(const char *msgid)
 
 	return dgettext("libpq", msgid);
 }
-#endif	 /* ENABLE_NLS */
+#endif   /* ENABLE_NLS */
 
 #ifdef WIN32
 /*

@@ -24,4 +24,4 @@ extern bool ExecInitTidScan(TidScan *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsTidScan(TidScan *node);
 extern void ExecTidReScan(TidScan *node, ExprContext *exprCtxt, Plan *parent);
 
-#endif	 /* NODETIDSCAN_H */
+#endif   /* NODETIDSCAN_H */
