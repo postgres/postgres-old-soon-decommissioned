@@ -3330,7 +3330,8 @@ write_relcache_init_file(void)
 		MemoryContextSwitchTo(oldcxt);
 	}
 
-	FreeFile(fp);
+	if (FreeFile(fp))
+		elog(FATAL, "could not write init file");
 
 	/*
 	 * Now we have to check whether the data we've so painstakingly

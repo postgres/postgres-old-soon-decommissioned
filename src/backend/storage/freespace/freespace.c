@@ -793,7 +793,12 @@ DumpFreeSpaceMap(int code, Datum arg)
 	/* Clean up */
 	LWLockRelease(FreeSpaceLock);
 
-	FreeFile(fp);
+	if (FreeFile(fp))
+	{
+		elog(LOG, "could not write \"%s\": %m", cachefilename);
+		/* Remove busted cache file */
+		unlink(cachefilename);
+	}
 
 	return;
 

@@ -397,7 +397,7 @@ LruDelete(File file)
 
 	/* close the file */
 	if (close(vfdP->fd))
-		elog(LOG, "failed to close \"%s\": %m",
+		elog(ERROR, "failed to close \"%s\": %m",
 			 vfdP->fileName);
 
 	--nfile;
@@ -842,7 +842,7 @@ FileClose(File file)
 
 		/* close the file */
 		if (close(vfdP->fd))
-			elog(LOG, "failed to close \"%s\": %m",
+			elog(ERROR, "failed to close \"%s\": %m",
 				 vfdP->fileName);
 
 		--nfile;
@@ -1069,7 +1069,13 @@ TryAgain:
 	return NULL;
 }
 
-void
+/*
+ * Close a file returned by AllocateFile.
+ *
+ * Note we do not check fclose's return value --- it is up to the caller
+ * to handle close errors.
+ */
+int
 FreeFile(FILE *file)
 {
 	int			i;
@@ -1089,7 +1095,7 @@ FreeFile(FILE *file)
 	if (i < 0)
 		elog(WARNING, "file passed to FreeFile was not obtained from AllocateFile");
 
-	fclose(file);
+	return fclose(file);
 }
 
 /*

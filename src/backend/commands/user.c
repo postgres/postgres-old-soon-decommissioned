@@ -241,12 +241,11 @@ write_group_file(Relation grel)
 	}
 	heap_endscan(scan);
 
-	fflush(fp);
-	if (ferror(fp))
+	if (FreeFile(fp))
 		ereport(ERROR,
 				(errcode_for_file_access(),
-			  errmsg("could not write to temporary file \"%s\": %m", tempname)));
-	FreeFile(fp);
+				 errmsg("could not write to temporary file \"%s\": %m",
+						tempname)));
 
 	/*
 	 * Rename the temp file to its final name, deleting the old pg_pwd. We
@@ -372,12 +371,11 @@ write_user_file(Relation urel)
 	}
 	heap_endscan(scan);
 
-	fflush(fp);
-	if (ferror(fp))
+	if (FreeFile(fp))
 		ereport(ERROR,
 				(errcode_for_file_access(),
-			  errmsg("could not write to temporary file \"%s\": %m", tempname)));
-	FreeFile(fp);
+				 errmsg("could not write to temporary file \"%s\": %m",
+						tempname)));
 
 	/*
 	 * Rename the temp file to its final name, deleting the old pg_pwd. We

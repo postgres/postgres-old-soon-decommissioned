@@ -491,7 +491,7 @@ lo_export(PGconn *conn, Oid lobjId, const char *filename)
 	}
 
 	/*
-	 * read in from the Unix file and write to the inversion file
+	 * read in from the inversion file and write to the Unix file
 	 */
 	while ((nbytes = lo_read(conn, lobj, buf, LO_BUFSIZE)) > 0)
 	{
@@ -508,7 +508,14 @@ lo_export(PGconn *conn, Oid lobjId, const char *filename)
 	}
 
 	(void) lo_close(conn, lobj);
-	(void) close(fd);
+
+	if (close(fd))
+	{
+		printfPQExpBuffer(&conn->errorMessage,
+						  libpq_gettext("error while writing to file \"%s\"\n"),
+						  filename);
+		return -1;
+	}
 
 	return 1;
 }

@@ -1052,8 +1052,11 @@ set_short_version(char *short_version, char *extrapath)
 		sprintf(path, "%s/%s/PG_VERSION", pg_data, extrapath);
 	}
 	version_file = fopen(path, PG_BINARY_W);
+	if (version_file == NULL)
+		exit_nicely();
 	fprintf(version_file, "%s\n", short_version);
-	fclose(version_file);
+	if (fclose(version_file))
+		exit_nicely();
 }
 
 /*
@@ -1068,7 +1071,8 @@ set_null_conf(void)
 	path = xmalloc(strlen(pg_data) + 17);
 	sprintf(path, "%s/postgresql.conf", pg_data);
 	conf_file = fopen(path, PG_BINARY_W);
-	fclose(conf_file);
+	if (conf_file == NULL || fclose(conf_file))
+		exit_nicely();
 }
 
 /*

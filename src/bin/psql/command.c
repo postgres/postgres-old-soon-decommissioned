@@ -1601,8 +1601,12 @@ do_edit(const char *filename_arg, PQExpBuffer query_buf)
 				remove(fname);
 				error = true;
 			}
-			else
-				fclose(stream);
+			else if (fclose(stream) != 0)
+			{
+				psql_error("%s: %s\n", fname, strerror(errno));
+				remove(fname);
+				error = true;
+			}
 		}
 	}
 

@@ -65,7 +65,7 @@ extern int	FileTruncate(File file, long offset);
 
 /* Operations that allow use of regular stdio --- USE WITH CAUTION */
 extern FILE *AllocateFile(char *name, char *mode);
-extern void FreeFile(FILE *);
+extern int	FreeFile(FILE *);
 
 /* If you've really really gotta have a plain kernel FD, use this */
 extern int	BasicOpenFile(FileName fileName, int fileFlags, int fileMode);

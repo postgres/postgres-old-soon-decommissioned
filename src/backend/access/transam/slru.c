@@ -144,7 +144,8 @@ typedef enum
 	SLRU_CREATE_FAILED,
 	SLRU_SEEK_FAILED,
 	SLRU_READ_FAILED,
-	SLRU_WRITE_FAILED
+	SLRU_WRITE_FAILED,
+	SLRU_CLOSE_FAILED
 } SlruErrorCause;
 static SlruErrorCause slru_errcause;
 static int	slru_errno;
@@ -510,7 +511,13 @@ SlruPhysicalReadPage(SlruCtl ctl, int pageno, int slotno)
 		return false;
 	}
 
-	close(fd);
+	if (close(fd))
+	{
+		slru_errcause = SLRU_CLOSE_FAILED;
+		slru_errno = errno;
+		return false;
+	}
+
 	return true;
 }
 
@@ -587,7 +594,13 @@ SlruPhysicalWritePage(SlruCtl ctl, int pageno, int slotno)
 		return false;
 	}
 
-	close(fd);
+	if (close(fd))
+	{
+		slru_errcause = SLRU_CLOSE_FAILED;
+		slru_errno = errno;
+		return false;
+	}
+
 	return true;
 }
 
@@ -641,6 +654,13 @@ SlruReportIOError(SlruCtl ctl, int pageno, TransactionId xid)
 				errmsg("could not access status of transaction %u", xid),
 				  errdetail("could not write to file \"%s\" at offset %u: %m",
 							path, offset)));
+			break;
+		case SLRU_CLOSE_FAILED:
+			ereport(ERROR,
+					(errcode_for_file_access(),
+				errmsg("could not access status of transaction %u", xid),
+				  errdetail("could not close file \"%s\": %m",
+							path)));
 			break;
 		default:
 			/* can't get here, we trust */

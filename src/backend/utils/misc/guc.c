@@ -3971,7 +3971,16 @@ write_nondefault_variables(GucContext context)
 		}
 	}
 
-	FreeFile(fp);
+	if (FreeFile(fp))
+	{
+		free(new_filename);
+		free(filename);
+		ereport(elevel,
+				(errcode_for_file_access(),
+				 errmsg("could not write to file \"%s\": %m", CONFIG_EXEC_PARAMS)));
+		return;
+	}
+
 	/* Put new file in place, this could delay on Win32 */
 	rename(new_filename, filename);
 	free(new_filename);

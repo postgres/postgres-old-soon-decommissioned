@@ -3171,15 +3171,12 @@ CreateOptsFile(int argc, char *argv[])
 		fprintf(fp, " '%s'", argv[i]);
 	fputs("\n", fp);
 
-	fflush(fp);
-	if (ferror(fp))
+	if (fclose(fp))
 	{
 		elog(LOG, "could not write file \"%s\": %m", filename);
-		fclose(fp);
 		return false;
 	}
 
-	fclose(fp);
 	return true;
 }
 
@@ -3290,7 +3287,14 @@ write_backend_variables(Port *port)
 	write_var(debug_flag,fp);
 
 	/* Release file */
-	FreeFile(fp);
+	if (FreeFile(fp))
+	{
+		ereport(ERROR,
+				(errcode_for_file_access(),
+				 errmsg("could not write to file \"%s\": %m", filename)));
+		return false;
+	}
+
 	return true;
 }
 
