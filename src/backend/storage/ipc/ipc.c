@@ -663,7 +663,7 @@ IpcInitKeyAssignment(int port)
  * but we do not fail upon collision with non-Postgres shmem segments.
  */
 PGShmemHeader *
-IpcMemoryCreate(uint32 size, bool private, int permission)
+IpcMemoryCreate(uint32 size, bool makePrivate, int permission)
 {
 	void   *memAddress;
 	PGShmemHeader *hdr;
@@ -677,7 +677,7 @@ IpcMemoryCreate(uint32 size, bool private, int permission)
 		IpcMemoryId shmid;
 
 		/* Special case if creating a private segment --- just malloc() it */
-		if (private)
+		if (makePrivate)
 		{
 			memAddress = PrivateMemoryCreate(size);
 			break;

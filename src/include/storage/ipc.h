@@ -104,10 +104,11 @@ extern void IpcSemaphoreUnlock(IpcSemaphoreId semId, int sem);
 extern bool IpcSemaphoreTryLock(IpcSemaphoreId semId, int sem);
 extern int	IpcSemaphoreGetValue(IpcSemaphoreId semId, int sem);
 
-extern PGShmemHeader *IpcMemoryCreate(uint32 size, bool private,
+extern PGShmemHeader *IpcMemoryCreate(uint32 size, bool makePrivate,
 									  int permission);
 
 /* ipci.c */
-extern void CreateSharedMemoryAndSemaphores(bool private, int maxBackends);
+extern void CreateSharedMemoryAndSemaphores(bool makePrivate,
+											int maxBackends);
 
 #endif	 /* IPC_H */
