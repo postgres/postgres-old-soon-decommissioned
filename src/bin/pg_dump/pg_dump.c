@@ -287,7 +287,8 @@ dumpClasses(const TableInfo tblinfo[], const int numTables, FILE *fout,
     int i;
     char *all_only;
 
-    if (onlytable = NULL) all_only = "all";
+    if (onlytable == NULL)
+	all_only = "all";
     else all_only = "one";
     
     if (g_verbose)
