@@ -205,6 +205,28 @@ ProcessUtility(Node *parsetree,
 						BeginTransactionBlock();
 						break;
 
+					/*
+					 * START TRANSACTION, as defined by SQL99: Identical to BEGIN,
+					 * except that it takes a few additional options.
+					 */
+					case START:
+						{
+							BeginTransactionBlock();
+
+							/*
+							 * Currently, the only option that can be set is
+							 * the transaction isolation level by START
+							 * TRANSACTION.
+							 */
+							if (stmt->options)
+							{
+								SetPGVariable("TRANSACTION ISOLATION LEVEL",
+											  stmt->options,
+											  false);
+							}
+						}
+						break;
+
 					case COMMIT:
 						EndTransactionBlock();
 						break;

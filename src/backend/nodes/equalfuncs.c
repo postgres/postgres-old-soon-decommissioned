@@ -1055,6 +1055,8 @@ _equalTransactionStmt(TransactionStmt *a, TransactionStmt *b)
 {
 	if (a->command != b->command)
 		return false;
+	if (!equal(a->options, b->options))
+		return false;
 
 	return true;
 }

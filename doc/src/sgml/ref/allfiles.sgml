@@ -113,6 +113,7 @@ Complete list of usable sgml source files in this directory.
 <!entity setSessionAuth     system "set_session_auth.sgml">
 <!entity setTransaction     system "set_transaction.sgml">
 <!entity show               system "show.sgml">
+<!entity startTransaction	system "start_transaction.sgml">
 <!entity truncate           system "truncate.sgml">
 <!entity unlisten           system "unlisten.sgml">
 <!entity update             system "update.sgml">

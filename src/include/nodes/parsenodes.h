@@ -1387,13 +1387,14 @@ typedef struct UnlistenStmt
 } UnlistenStmt;
 
 /* ----------------------
- *		{Begin|Abort|End} Transaction Statement
+ *		{Begin|Commit|Rollback} Transaction Statement
  * ----------------------
  */
 typedef struct TransactionStmt
 {
 	NodeTag		type;
-	int			command;		/* BEGIN|END|ABORT */
+	int			command;		/* BEGIN_TRANS|START|COMMIT|ROLLBACK */
+	List	   *options;
 } TransactionStmt;
 
 /* ----------------------

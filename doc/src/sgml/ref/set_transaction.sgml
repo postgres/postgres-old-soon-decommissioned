@@ -97,11 +97,11 @@ SET default_transaction_isolation = '<replaceable>value</replaceable>'
    <title>SQL92, SQL99</title>
 
    <para>
-    SERIALIZABLE is the default level in <acronym>SQL</acronym>.
-    <productname>PostgreSQL</productname> does not provide the
-    isolation levels <option>READ UNCOMMITTED</option> 
-    and <option>REPEATABLE READ</option>. Because
-    of multiversion concurrency control, the serializable level is not
+    <option>SERIALIZABLE</option> is the default level in
+    <acronym>SQL</acronym>.  <productname>PostgreSQL</productname> does
+    not provide the isolation levels <option>READ UNCOMMITTED</option> 
+    and <option>REPEATABLE READ</option>. Because of multiversion
+    concurrency control, the <option>SERIALIZABLE</option> level is not
     truly serializable. See the <citetitle>User's Guide</citetitle> for
     details.
    </para>

@@ -2226,6 +2226,7 @@ _copyTransactionStmt(TransactionStmt *from)
 	TransactionStmt *newnode = makeNode(TransactionStmt);
 
 	newnode->command = from->command;
+	Node_Copy(from, newnode, options);
 
 	return newnode;
 }

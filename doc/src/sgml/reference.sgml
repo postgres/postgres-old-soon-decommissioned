@@ -122,6 +122,7 @@ PostgreSQL Reference Manual
    &setSessionAuth;
    &setTransaction;
    &show;
+   &startTransaction;
    &truncate;
    &unlisten;
    &update;

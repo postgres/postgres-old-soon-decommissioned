@@ -21,7 +21,7 @@ PostgreSQL documentation
   <refsynopsisdivinfo>
    <date>1999-07-20</date>
   </refsynopsisdivinfo>
-  <synopsis>  
+  <synopsis>
 BEGIN [ WORK | TRANSACTION ]
   </synopsis>
   
