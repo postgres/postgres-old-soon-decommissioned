@@ -249,6 +249,8 @@ get_attdisbursion(Oid relid, AttrNumber attnum, double min_estimate)
 	if (attnum == ObjectIdAttributeNumber ||
 		attnum == SelfItemPointerAttributeNumber)
 		return 1.0 / (double) ntuples;
+	if (attnum == TableOidAttributeNumber)
+		return 1.0;
 
 	/*
 	 * VACUUM ANALYZE has not been run for this table. Produce an estimate

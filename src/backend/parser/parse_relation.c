@@ -57,6 +57,9 @@ static struct
 	{
 		"cmax", MaxCommandIdAttributeNumber, CIDOID
 	},
+	{
+		"tableoid", TableOidAttributeNumber, OIDOID
+	}
 };
 
 #define SPECIALS ((int) (sizeof(special_attr)/sizeof(special_attr[0])))
