@@ -4,7 +4,7 @@ subdir = src/interfaces/ecpg/test
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-override CPPFLAGS := -I$(srcdir)/../include $(CPPFLAGS) -g
+override CPPFLAGS := -I$(srcdir)/../include $(CPPFLAGS)
 
 ECPG = ../preproc/ecpg -I$(srcdir)/../include
 
