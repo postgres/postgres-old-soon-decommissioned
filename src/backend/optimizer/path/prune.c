@@ -101,6 +101,7 @@ prune_rel_paths(List *rel_list)
     
     foreach(x, rel_list) {
 	rel = (Rel*)lfirst(x);
+	rel->size = 0;
 	foreach(y, rel->pathlist) {
 	    path = (Path*)lfirst(y);
 
