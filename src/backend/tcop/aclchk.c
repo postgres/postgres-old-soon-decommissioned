@@ -33,6 +33,7 @@
 #include "catalog/pg_proc.h"
 #include "catalog/pg_user.h"
 #include "utils/syscache.h"
+#include "utils/tqual.h"
 #include "parser/catalog_utils.h"
 #include "fmgr.h"
 

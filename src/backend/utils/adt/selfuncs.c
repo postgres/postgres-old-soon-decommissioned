@@ -22,7 +22,6 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "utils/tqual.h"		/* for NowTimeQual */
 #include "fmgr.h"
 #include "utils/builtins.h"		/* for textout() prototype and where the
 								 * declarations go */

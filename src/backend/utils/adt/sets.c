@@ -26,6 +26,7 @@
 #include "catalog/indexing.h"	/* for Num_pg_proc_indices */
 #include "storage/lmgr.h"
 #include "utils/sets.h"			/* for GENERICSETNAME	   */
+#include "utils/tqual.h"
 #include "tcop/dest.h"
 #include "fmgr.h"
 

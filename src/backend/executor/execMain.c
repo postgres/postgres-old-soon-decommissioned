@@ -42,6 +42,7 @@
 #include "utils/palloc.h"
 #include "utils/acl.h"
 #include "utils/syscache.h"
+#include "utils/tqual.h"
 #include "parser/parsetree.h"	/* rt_fetch() */
 #include "storage/bufmgr.h"
 #include "storage/lmgr.h"

@@ -28,7 +28,6 @@
 
 #include <storage/backendid.h>
 #include "access/heapam.h"
-#include "utils/tqual.h"
 #include "storage/sinval.h"
 #include "storage/sinvaladt.h"
 #include "storage/lmgr.h"

@@ -39,7 +39,6 @@
 #include "nodes/primnodes.h"
 #include "utils/nabstime.h"
 #include "access/htup.h"
-#include "utils/tqual.h"
 #include "nodes/parsenodes.h"
 
 #include "parser/scansup.h"

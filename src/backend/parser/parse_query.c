@@ -18,7 +18,6 @@
 
 #include "fmgr.h"
 #include "access/heapam.h"
-#include "utils/tqual.h"
 #include "access/tupmacs.h"
 #include "utils/builtins.h"
 #include "utils/elog.h"

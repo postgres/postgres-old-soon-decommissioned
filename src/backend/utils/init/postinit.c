@@ -48,7 +48,6 @@
 #include "access/xact.h"
 #include "storage/bufmgr.h"
 #include "access/transam.h"		/* XXX dependency problem */
-#include "utils/tqual.h"
 #include "utils/syscache.h"
 #include "storage/bufpage.h"	/* for page layout, for InitMyDatabaseInfo() */
 #include "storage/sinval.h"

@@ -51,6 +51,7 @@
 #include <utils/builtins.h>
 #include <utils/mcxt.h>
 #include <utils/relcache.h>
+#include <utils/tqual.h>
 #include <nodes/plannodes.h>
 #ifndef HAVE_MEMMOVE
 #include <regex/utils.h>

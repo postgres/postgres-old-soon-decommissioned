@@ -35,7 +35,6 @@
 #include "storage/off.h"
 #include "storage/itemptr.h"
 #include "access/htup.h"
-#include "utils/tqual.h"
 #include "nodes/parsenodes.h"
 
 #include "access/xact.h"

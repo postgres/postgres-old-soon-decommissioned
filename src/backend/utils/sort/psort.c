@@ -46,8 +46,6 @@
 #include "access/htup.h"
 #include "access/relscan.h"
 #include "access/skey.h"
-#include "utils/tqual.h"		/* for NowTimeQual */
-
 #include "storage/buf.h"
 #include "storage/bufmgr.h"		/* for BLCKSZ */
 #include "utils/portal.h"		/* for {Start,End}PortalAllocMode */

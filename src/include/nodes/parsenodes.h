@@ -13,7 +13,6 @@
 #ifndef PARSENODES_H
 #define PARSENODES_H
 
-#include <utils/tqual.h>
 #include <nodes/primnodes.h>
 
 /*****************************************************************************

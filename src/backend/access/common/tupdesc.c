@@ -24,7 +24,6 @@
 #include <nodes/parsenodes.h>
 #include <utils/builtins.h>
 #include <utils/fcache.h>
-#include <utils/tqual.h>
 #include <utils/syscache.h>
 
 #ifndef HAVE_MEMMOVE

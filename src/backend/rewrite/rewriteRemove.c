@@ -20,7 +20,6 @@
 #include "utils/syscache.h"
 #include "utils/elog.h"			/* for elog stuff */
 #include "utils/palloc.h"
-#include "utils/tqual.h"		/* 'NowTimeQual' defined here.. */
 #include "access/heapam.h"		/* heap AM calls defined here */
 #include "fmgr.h"				/* for CHAR_16_EQ */
 

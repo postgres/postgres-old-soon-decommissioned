@@ -26,7 +26,6 @@
 #include "access/htup.h"
 #include "access/relscan.h"
 #include "access/skey.h"
-#include "utils/tqual.h"
 #include "access/xact.h"
 
 #include "storage/block.h"

@@ -18,6 +18,7 @@
 
 #include <catalog/pg_proc.h>
 #include <utils/syscache.h>
+#include <utils/tqual.h>
 #include <access/heapam.h>
 #include <parser/catalog_utils.h>
 #include <catalog/catname.h>

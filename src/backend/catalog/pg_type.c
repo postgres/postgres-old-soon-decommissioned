@@ -18,6 +18,7 @@
 #include <access/heapam.h>
 #include <access/relscan.h>
 #include <utils/builtins.h>
+#include <utils/tqual.h>
 #include <fmgr.h>
 #include <parser/catalog_utils.h>
 #include <catalog/catname.h>
