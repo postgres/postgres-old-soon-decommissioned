@@ -33,7 +33,7 @@ $(LIBPQDIR)/libpq.a:
 	$(MAKE) -C $(LIBPQDIR) libpq.a
 
 install: pg_id
-	$(INSTALL) $(INSTL_EXE_OPTS) pg_id $(DESTDIR)$(BINDIR)/pg_id
+	$(INSTALL) $(INSTL_EXE_OPTS) pg_id $(BINDIR)/pg_id
 
 depend dep:
 	$(CC) -MM $(INCLUDE_OPT) *.c >depend

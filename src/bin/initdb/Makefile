@@ -24,7 +24,7 @@ initdb: initdb.sh
 	sed $(SEDSCRIPT) <initdb.sh >initdb
 
 install: initdb
-	$(INSTALL) $(INSTL_EXE_OPTS) $< $(DESTDIR)$(BINDIR)/$<
+	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$<
 
 clean:
 	rm -f initdb

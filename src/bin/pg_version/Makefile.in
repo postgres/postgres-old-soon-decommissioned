@@ -28,7 +28,7 @@ submake:
 	$(MAKE) -C ../../utils version.o
 
 install: pg_version
-	$(INSTALL) $(INSTL_EXE_OPTS) pg_version $(DESTDIR)$(BINDIR)/pg_version
+	$(INSTALL) $(INSTL_EXE_OPTS) pg_version $(BINDIR)/pg_version
 
 depend dep:
 	$(CC) -MM $(INCLUDE_OPT) *.c >depend

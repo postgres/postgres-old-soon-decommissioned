@@ -87,5 +87,5 @@ clean:
 	rm -f Makefile.tcldefs
 
 install: all
-	$(INSTALL) $(INSTL_LIB_OPTS) $(DLOBJS) $(DESTDIR)$(LIBDIR)/$(DLOBJS)
+	$(INSTALL) $(INSTL_LIB_OPTS) $(DLOBJS) $(LIBDIR)/$(DLOBJS)
 
