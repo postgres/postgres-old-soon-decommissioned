@@ -5379,6 +5379,7 @@ ECPGGetDescHeaderItem: cvariable '=' desc_header_item
 
 ECPGSetDescriptorHeader: SET SQL_DESCRIPTOR quoted_ident_stringvar ECPGSetDescHeaderItems
 			{ $$ = $3; }
+		;
 
 ECPGSetDescHeaderItems: ECPGSetDescHeaderItem
 		| ECPGSetDescHeaderItems ',' ECPGSetDescHeaderItem
