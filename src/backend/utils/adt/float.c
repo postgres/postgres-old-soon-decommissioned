@@ -71,6 +71,10 @@
 #define SHRT_MIN (-32768)
 #endif
 
+#ifndef NAN
+#define NAN		(0.0/0.0)
+#endif
+
 #define FORMAT			'g'		/* use "g" output format as standard
 								 * format */
 /* not sure what the following should be, but better to make it over-sufficient */
