@@ -18,6 +18,9 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+
+#include "postgres.h"
+
 #include "libpq-fe.h"
 
 /* pqGetc:

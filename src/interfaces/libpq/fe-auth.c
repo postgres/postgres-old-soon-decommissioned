@@ -33,6 +33,9 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <pwd.h>
+
+#include "postgres.h"
+
 #include "libpq/pqcomm.h"
 
 #include "libpq-fe.h"

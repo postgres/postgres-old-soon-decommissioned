@@ -14,10 +14,7 @@
 SRCDIR= ..
 include ../Makefile.global
 
-INCLUDE_OPT= \
-             -I. \
-             -I../include \
-             -I../backend \
+INCLUDE_OPT= -I../include -I.
 
 CFLAGS+= $(INCLUDE_OPT) -DPOSTPORT='"$(POSTPORT)"'
 
