@@ -594,13 +594,13 @@ make_const(Value *value)
 	
     case T_Float:
 	{
-	    float32 dummy;
-	    tp = type("float4");
+	    float64 dummy;
+	    tp = type("float8");
 	    
-	    dummy = (float32)palloc(sizeof(float32data));
+	    dummy = (float64)palloc(sizeof(float64data));
 	    *dummy = floatVal(value);
 	    
-	    val = Float32GetDatum(dummy);
+	    val = Float64GetDatum(dummy);
 	}
 	break;
 	

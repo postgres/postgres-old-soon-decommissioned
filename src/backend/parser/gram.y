@@ -2112,7 +2112,7 @@ xlateSqlType(char *name)
 	return "int2";
     else if (!strcasecmp(name, "float") ||
 	     !strcasecmp(name, "real"))
-	return "float4";
+	return "float8";
     else
 	return name;
 }
