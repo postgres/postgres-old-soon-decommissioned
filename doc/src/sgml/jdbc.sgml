@@ -764,7 +764,7 @@ ps.executeUpdate();
 ps.close();
 fis.close();
 </programlisting>
-
+</para>
    <para>
     Retrieving the image from the Large Object:
 
