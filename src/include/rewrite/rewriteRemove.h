@@ -14,7 +14,11 @@
 #ifndef REWRITEREMOVE_H
 #define REWRITEREMOVE_H
 
-extern void RemoveRewriteRule(Oid owningRel, const char *ruleName);
-extern void RelationRemoveRules(Oid relid);
+#include "nodes/parsenodes.h"
+
+
+extern void RemoveRewriteRule(Oid owningRel, const char *ruleName,
+							  DropBehavior behavior);
+extern void RemoveRewriteRuleById(Oid ruleOid);
 
 #endif   /* REWRITEREMOVE_H */

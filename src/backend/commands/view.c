@@ -13,6 +13,7 @@
 #include "postgres.h"
 
 #include "access/xact.h"
+#include "catalog/dependency.h"
 #include "catalog/heap.h"
 #include "catalog/namespace.h"
 #include "commands/tablecmds.h"
@@ -252,16 +253,21 @@ DefineView(const RangeVar *view, Query *viewParse)
  * RemoveView
  *
  * Remove a view given its name
+ *
+ * We just have to drop the relation; the associated rules will be
+ * cleaned up automatically.
  */
 void
 RemoveView(const RangeVar *view, DropBehavior behavior)
 {
 	Oid			viewOid;
+	ObjectAddress object;
 
 	viewOid = RangeVarGetRelid(view, false);
-	/*
-	 * We just have to drop the relation; the associated rules will be
-	 * cleaned up automatically.
-	 */
-	heap_drop_with_catalog(viewOid, allowSystemTableMods);
+
+	object.classId = RelOid_pg_class;
+	object.objectId = viewOid;
+	object.objectSubId = 0;
+
+	performDeletion(&object, behavior);
 }

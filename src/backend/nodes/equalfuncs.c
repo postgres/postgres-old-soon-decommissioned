@@ -912,6 +912,8 @@ _equalIndexStmt(IndexStmt *a, IndexStmt *b)
 		return false;
 	if (a->primary != b->primary)
 		return false;
+	if (a->isconstraint != b->isconstraint)
+		return false;
 
 	return true;
 }
@@ -1734,13 +1736,17 @@ _equalFkConstraint(FkConstraint *a, FkConstraint *b)
 		return false;
 	if (!equal(a->pk_attrs, b->pk_attrs))
 		return false;
-	if (!equalstr(a->match_type, b->match_type))
+	if (a->fk_matchtype != b->fk_matchtype)
 		return false;
-	if (a->actions != b->actions)
+	if (a->fk_upd_action != b->fk_upd_action)
+		return false;
+	if (a->fk_del_action != b->fk_del_action)
 		return false;
 	if (a->deferrable != b->deferrable)
 		return false;
 	if (a->initdeferred != b->initdeferred)
+		return false;
+	if (a->skip_validation != b->skip_validation)
 		return false;
 
 	return true;

@@ -101,9 +101,11 @@ typedef struct TriggerData
 #define RI_MAX_ARGUMENTS		(RI_FIRST_ATTNAME_ARGNO + (RI_MAX_NUMKEYS * 2))
 
 
-extern void CreateTrigger(CreateTrigStmt *stmt);
-extern void DropTrigger(Oid relid, const char *trigname);
-extern void RelationRemoveTriggers(Relation rel);
+extern Oid	CreateTrigger(CreateTrigStmt *stmt, bool forConstraint);
+
+extern void DropTrigger(Oid relid, const char *trigname,
+						DropBehavior behavior);
+extern void RemoveTriggerById(Oid trigOid);
 
 extern void renametrig(Oid relid, const char *oldname, const char *newname);
 

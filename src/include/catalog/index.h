@@ -35,6 +35,7 @@ extern Oid index_create(Oid heapRelationId,
 			 Oid accessMethodObjectId,
 			 Oid *classObjectId,
 			 bool primary,
+			 bool isconstraint,
 			 bool allow_system_table_mods);
 
 extern void index_drop(Oid indexId);

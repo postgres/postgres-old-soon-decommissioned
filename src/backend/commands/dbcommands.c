@@ -456,8 +456,13 @@ dropdb(const char *dbname)
 
 	heap_endscan(pgdbscan);
 
-	/* Delete any comments associated with the database */
-	DeleteComments(db_id, RelationGetRelid(pgdbrel));
+	/*
+	 * Delete any comments associated with the database
+	 *
+	 * NOTE: this is probably dead code since any such comments should have
+	 * been in that database, not mine.
+	 */
+	DeleteComments(db_id, RelationGetRelid(pgdbrel), 0);
 
 	/*
 	 * Close pg_database, but keep exclusive lock till commit to ensure

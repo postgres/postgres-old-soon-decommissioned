@@ -20,8 +20,10 @@
 #define  AccessMethodOperatorRelationName "pg_amop"
 #define  AccessMethodProcedureRelationName "pg_amproc"
 #define  AttributeRelationName "pg_attribute"
+#define  ConstraintRelationName "pg_constraint"
 #define  ConversionRelationName "pg_conversion"
 #define  DatabaseRelationName "pg_database"
+#define  DependRelationName "pg_depend"
 #define  DescriptionRelationName "pg_description"
 #define  GroupRelationName "pg_group"
 #define  IndexRelationName "pg_index"
@@ -40,7 +42,6 @@
 #define  TypeRelationName "pg_type"
 #define  VersionRelationName "pg_version"
 #define  AttrDefaultRelationName "pg_attrdef"
-#define  RelCheckRelationName "pg_relcheck"
 #define  TriggerRelationName "pg_trigger"
 
 #endif   /* CATNAME_H */

@@ -1505,11 +1505,12 @@ _copyFkConstraint(FkConstraint *from)
 	Node_Copy(from, newnode, pktable);
 	Node_Copy(from, newnode, fk_attrs);
 	Node_Copy(from, newnode, pk_attrs);
-	if (from->match_type)
-		newnode->match_type = pstrdup(from->match_type);
-	newnode->actions = from->actions;
+	newnode->fk_matchtype = from->fk_matchtype;
+	newnode->fk_upd_action = from->fk_upd_action;
+	newnode->fk_del_action = from->fk_del_action;
 	newnode->deferrable = from->deferrable;
 	newnode->initdeferred = from->initdeferred;
+	newnode->skip_validation = from->skip_validation;
 
 	return newnode;
 }
@@ -2089,6 +2090,7 @@ _copyIndexStmt(IndexStmt *from)
 	Node_Copy(from, newnode, rangetable);
 	newnode->unique = from->unique;
 	newnode->primary = from->primary;
+	newnode->isconstraint = from->isconstraint;
 
 	return newnode;
 }

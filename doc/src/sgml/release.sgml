@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+Most forms of DROP now support RESTRICT and CASCADE options
 Recursive SQL functions can be defined
 User-defined procedural languages can register a validator function to check new functions as they are created
 Functions can be executed with the privileges of the owner

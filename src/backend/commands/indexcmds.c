@@ -18,6 +18,7 @@
 #include "access/heapam.h"
 #include "catalog/catalog.h"
 #include "catalog/catname.h"
+#include "catalog/dependency.h"
 #include "catalog/index.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_opclass.h"
@@ -68,6 +69,7 @@ DefineIndex(RangeVar *heapRelation,
 			List *attributeList,
 			bool unique,
 			bool primary,
+			bool isconstraint,
 			Expr *predicate,
 			List *rangetable)
 {
@@ -208,7 +210,7 @@ DefineIndex(RangeVar *heapRelation,
 
 	index_create(relationId, indexRelationName,
 				 indexInfo, accessMethodId, classObjectId,
-				 primary, allowSystemTableMods);
+				 primary, isconstraint, allowSystemTableMods);
 
 	/*
 	 * We update the relation's pg_class tuple even if it already has
@@ -566,6 +568,7 @@ RemoveIndex(RangeVar *relation, DropBehavior behavior)
 {
 	Oid			indOid;
 	HeapTuple	tuple;
+	ObjectAddress object;
 
 	indOid = RangeVarGetRelid(relation, false);
 	tuple = SearchSysCache(RELOID,
@@ -580,7 +583,11 @@ RemoveIndex(RangeVar *relation, DropBehavior behavior)
 
 	ReleaseSysCache(tuple);
 
-	index_drop(indOid);
+	object.classId = RelOid_pg_class;
+	object.objectId = indOid;
+	object.objectSubId = 0;
+
+	performDeletion(&object, behavior);
 }
 
 /*
