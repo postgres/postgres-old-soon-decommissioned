@@ -237,7 +237,7 @@ amcostestimate (Query *root,
      * Also, we charge for evaluation of the indexquals at each index tuple.
      * All the costs are assumed to be paid incrementally during the scan.
      */
-    cost_qual_eval(&index_qual_cost, indexQuals);
+    cost_qual_eval(&amp;index_qual_cost, indexQuals);
     *indexStartupCost = index_qual_cost.startup;
     *indexTotalCost = numIndexPages +
         (cpu_index_tuple_cost + index_qual_cost.per_tuple) * numIndexTuples;
