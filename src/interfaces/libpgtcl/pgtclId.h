@@ -44,8 +44,9 @@ extern PGresult *PgGetResultId(Tcl_Interp *interp, char *id);
 extern void PgDelResultId(Tcl_Interp *interp, char *id);
 extern int	PgGetConnByResultId(Tcl_Interp *interp, char *resid);
 extern void PgStartNotifyEventSource(Pg_ConnectionId * connid);
-extern void PgStopNotifyEventSource(Pg_ConnectionId * connid);
+extern void PgStopNotifyEventSource(Pg_ConnectionId * connid, bool allevents);
 extern void PgNotifyTransferEvents(Pg_ConnectionId * connid);
+extern void PgConnLossTransferEvents(Pg_ConnectionId * connid);
 extern void PgNotifyInterpDelete(ClientData clientData, Tcl_Interp *interp);
 
 /* GetFileProc is needed in Tcl 7.6 *only* ... it went away again in 8.0 */

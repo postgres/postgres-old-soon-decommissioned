@@ -151,8 +151,13 @@ Pgtcl_Init(Tcl_Interp *interp)
 					  "pg_listen",
 					  Pg_listen,
 					  (ClientData) NULL, (Tcl_CmdDeleteProc *) NULL);
+	
+	Tcl_CreateCommand(interp,
+					  "pg_on_connection_loss",
+					  Pg_on_connection_loss,
+					  (ClientData) NULL, (Tcl_CmdDeleteProc *) NULL);
 
-	Tcl_PkgProvide(interp, "Pgtcl", "1.3");
+	Tcl_PkgProvide(interp, "Pgtcl", "1.4");
 
 	return TCL_OK;
 }
