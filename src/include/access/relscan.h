@@ -54,6 +54,7 @@ typedef struct IndexScanDescData
 	bool		scanFromEnd;	/* restart scan at end? */
 	uint16		numberOfKeys;	/* number of key attributes */
 	ScanKey		keyData;		/* key descriptor */
+	FmgrInfo	fn_getnext;		/* cached lookup info for am's getnext fn */
 } IndexScanDescData;
 
 typedef IndexScanDescData *IndexScanDesc;

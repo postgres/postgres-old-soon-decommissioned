@@ -114,6 +114,9 @@ RelationGetIndexScan(Relation relation,
 	ItemPointerSetInvalid(&scan->currentMarkData);
 	ItemPointerSetInvalid(&scan->nextMarkData);
 
+	/* mark cached function lookup data invalid; it will be set on first use */
+	scan->fn_getnext.fn_oid = InvalidOid;
+
 	if (numberOfKeys > 0)
 		scan->keyData = (ScanKey) palloc(sizeof(ScanKeyData) * numberOfKeys);
 	else

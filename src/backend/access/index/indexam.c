@@ -329,17 +329,28 @@ RetrieveIndexResult
 index_getnext(IndexScanDesc scan,
 			  ScanDirection direction)
 {
-	RegProcedure procedure;
 	RetrieveIndexResult result;
 
 	SCAN_CHECKS;
-	GET_SCAN_PROCEDURE(getnext, amgettuple);
+
+	/* ----------------
+	 *	Look up the access procedure only once per scan.
+	 * ----------------
+	 */
+	if (scan->fn_getnext.fn_oid == InvalidOid)
+	{
+		RegProcedure procedure;
+
+		GET_SCAN_PROCEDURE(getnext, amgettuple);
+		fmgr_info(procedure, &scan->fn_getnext);
+	}
 
 	/* ----------------
 	 *	have the am's gettuple proc do all the work.
 	 * ----------------
 	 */
-	result = (RetrieveIndexResult) fmgr(procedure, scan, direction);
+	result = (RetrieveIndexResult)
+		(*fmgr_faddr(&scan->fn_getnext)) (scan, direction);
 
 	return result;
 }
