@@ -72,8 +72,6 @@ $PostgreSQL$
         release had no such capability; there was no way to recover from
         a statement failure in a transation. This feature is valuable
         for application writers that required complex transaction control.
-        Future releases will add similar exception handling to server-side
-        languages.
        </para>
       </listitem>
      </varlistentry>
