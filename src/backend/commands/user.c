@@ -1090,7 +1090,6 @@ DropGroup(DropGroupStmt *stmt)
     if (!gro_exists)
     {
         heap_close(pg_group_rel, AccessExclusiveLock);
-		UserAbortTransactionBlock();
 		elog(ERROR, "DROP GROUP: group \"%s\" does not exist", stmt->name);
     }
 
