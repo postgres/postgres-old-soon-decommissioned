@@ -19,4 +19,6 @@
 extern void ProcessUtility(Node *parsetree, CommandDest dest,
 			   char *completionTag);
 
+extern const char *CreateCommandTag(Node *parsetree);
+
 #endif   /* UTILITY_H */

@@ -68,9 +68,11 @@ extern DLLIMPORT MemoryContext TopMemoryContext;
 extern DLLIMPORT MemoryContext ErrorContext;
 extern DLLIMPORT MemoryContext PostmasterContext;
 extern DLLIMPORT MemoryContext CacheMemoryContext;
-extern DLLIMPORT MemoryContext QueryContext;
+extern DLLIMPORT MemoryContext MessageContext;
 extern DLLIMPORT MemoryContext TopTransactionContext;
-extern DLLIMPORT MemoryContext TransactionCommandContext;
+/* These two are transient links to contexts owned by other objects: */
+extern DLLIMPORT MemoryContext QueryContext;
+extern DLLIMPORT MemoryContext PortalContext;
 
 
 /*

@@ -22,13 +22,10 @@ extern void PerformCursorOpen(DeclareCursorStmt *stmt, CommandDest dest);
 extern void PerformPortalFetch(FetchStmt *stmt, CommandDest dest,
 							   char *completionTag);
 
-extern long DoPortalFetch(Portal portal,
-						  FetchDirection fdirection,
-						  long count,
-						  CommandDest dest);
-
 extern void PerformPortalClose(char *name);
 
 extern void PortalCleanup(Portal portal, bool isError);
+
+extern void PersistHoldablePortal(Portal portal);
 
 #endif   /* PORTALCMDS_H */

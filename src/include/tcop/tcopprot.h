@@ -41,6 +41,7 @@ extern List *pg_analyze_and_rewrite(Node *parsetree,
 extern List *pg_parse_and_rewrite(const char *query_string,
 					 Oid *paramTypes, int numParams);
 extern Plan *pg_plan_query(Query *querytree);
+extern List *pg_plan_queries(List *querytrees, bool needSnapshot);
 
 #endif   /* BOOTSTRAP_INCLUDE */
 

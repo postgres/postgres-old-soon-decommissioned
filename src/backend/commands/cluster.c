@@ -189,10 +189,10 @@ cluster(ClusterStmt *stmt)
 		/*
 		 * Create special memory context for cross-transaction storage.
 		 *
-		 * Since it is a child of QueryContext, it will go away even in case
+		 * Since it is a child of PortalContext, it will go away even in case
 		 * of error.
 		 */
-		cluster_context = AllocSetContextCreate(QueryContext,
+		cluster_context = AllocSetContextCreate(PortalContext,
 												"Cluster",
 												ALLOCSET_DEFAULT_MINSIZE,
 												ALLOCSET_DEFAULT_INITSIZE,

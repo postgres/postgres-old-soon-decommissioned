@@ -65,10 +65,10 @@ geqo_eval(Query *root, List *initial_rels, Gene *tour, int num_gene)
 	 *
 	 * Since geqo_eval() will be called many times, we can't afford to let
 	 * all that memory go unreclaimed until end of statement.  Note we
-	 * make the temp context a child of TransactionCommandContext, so that
+	 * make the temp context a child of the planner's normal context, so that
 	 * it will be freed even if we abort via elog(ERROR).
 	 */
-	mycontext = AllocSetContextCreate(TransactionCommandContext,
+	mycontext = AllocSetContextCreate(CurrentMemoryContext,
 									  "GEQO",
 									  ALLOCSET_DEFAULT_MINSIZE,
 									  ALLOCSET_DEFAULT_INITSIZE,

@@ -255,7 +255,7 @@ fetch_fp_info(Oid func_id, struct fp_info * fip)
  *
  * Note: palloc()s done here and in the called function do not need to be
  * cleaned up explicitly.  We are called from PostgresMain() in the
- * QueryContext memory context, which will be automatically reset when
+ * MessageContext memory context, which will be automatically reset when
  * control returns to PostgresMain.
  */
 int

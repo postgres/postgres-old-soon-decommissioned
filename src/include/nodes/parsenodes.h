@@ -47,6 +47,8 @@ typedef struct Query
 
 	QuerySource	querySource;	/* where did I come from? */
 
+	bool		canSetTag;		/* do I set the command result tag? */
+
 	Node	   *utilityStmt;	/* non-null if this is a non-optimizable
 								 * statement */
 

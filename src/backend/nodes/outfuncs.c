@@ -1177,6 +1177,7 @@ _outQuery(StringInfo str, Query *node)
 
 	WRITE_ENUM_FIELD(commandType, CmdType);
 	WRITE_ENUM_FIELD(querySource, QuerySource);
+	WRITE_BOOL_FIELD(canSetTag);
 
 	/*
 	 * Hack to work around missing outfuncs routines for a lot of the

@@ -189,11 +189,11 @@ vacuum(VacuumStmt *vacstmt)
 	/*
 	 * Create special memory context for cross-transaction storage.
 	 *
-	 * Since it is a child of QueryContext, it will go away eventually even
+	 * Since it is a child of PortalContext, it will go away eventually even
 	 * if we suffer an error; there's no need for special abort cleanup
 	 * logic.
 	 */
-	vac_context = AllocSetContextCreate(QueryContext,
+	vac_context = AllocSetContextCreate(PortalContext,
 										"Vacuum",
 										ALLOCSET_DEFAULT_MINSIZE,
 										ALLOCSET_DEFAULT_INITSIZE,
@@ -205,7 +205,7 @@ vacuum(VacuumStmt *vacstmt)
 	 * lifetime.
 	 */
 	if (vacstmt->analyze && !vacstmt->vacuum)
-		anl_context = AllocSetContextCreate(QueryContext,
+		anl_context = AllocSetContextCreate(PortalContext,
 											"Analyze",
 											ALLOCSET_DEFAULT_MINSIZE,
 											ALLOCSET_DEFAULT_INITSIZE,

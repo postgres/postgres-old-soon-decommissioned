@@ -36,8 +36,6 @@ typedef struct
 	/* Argument types, if a prepared plan */
 	int			nargs;
 	Oid		   *argtypes;
-	/* Command type of last original parsetree */
-	CmdType		origCmdType;
 } _SPI_plan;
 
 
