@@ -650,7 +650,7 @@ heap_beginscan(Relation relation,
 	 */
 	sdesc = (HeapScanDesc) palloc(sizeof(HeapScanDescData));
 
-	relation->rd_nblocks = smgrnblocks(relation->rd_rel->relsmgr, relation);
+	relation->rd_nblocks = smgrnblocks(DEFAULT_SMGR, relation);
 	sdesc->rs_rd = relation;
 
 	if (nkeys)
