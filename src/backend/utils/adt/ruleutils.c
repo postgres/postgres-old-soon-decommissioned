@@ -2054,11 +2054,9 @@ get_func_expr(Expr *expr, deparse_context *context)
 		/*
 		 * Show typename with appropriate length decoration. Note that
 		 * since exprIsLengthCoercion succeeded, the function's output
-		 * type is the right thing to use.
-		 *
-		 * XXX In general it is incorrect to quote the result of
-		 * format_type_with_typemod, but are there any special cases where
-		 * we should do so?
+		 * type is the right thing to report.  Also note we don't need
+		 * to quote the result of format_type_with_typemod: it takes
+		 * care of double-quoting any identifier that needs it.
 		 */
 		typdesc = format_type_with_typemod(procStruct->prorettype,
 										   coercedTypmod);
