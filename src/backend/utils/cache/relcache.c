@@ -183,7 +183,7 @@ do { \
 		elog(ERROR, "out of memory for relation descriptor cache"); \
 	/* used to give notice if found -- now just keep quiet */ \
 	nodentry->reldesc = RELATION; \
-	if (RelationGetNamespace(RELATION) == PG_CATALOG_NAMESPACE) \
+	if (IsSystemNamespace(RelationGetNamespace(RELATION))) \
 	{ \
 		char *relname = RelationGetRelationName(RELATION); \
 		RelNameCacheEnt *namehentry; \
@@ -244,7 +244,7 @@ do { \
 										   HASH_REMOVE, NULL); \
 	if (nodentry == NULL) \
 		elog(WARNING, "trying to delete a reldesc that does not exist."); \
-	if (RelationGetNamespace(RELATION) == PG_CATALOG_NAMESPACE) \
+	if (IsSystemNamespace(RelationGetNamespace(RELATION))) \
 	{ \
 		char *relname = RelationGetRelationName(RELATION); \
 		RelNameCacheEnt *namehentry; \

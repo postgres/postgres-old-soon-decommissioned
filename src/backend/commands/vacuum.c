@@ -806,7 +806,7 @@ full_vacuum_rel(Relation onerel, VacuumStmt *vacstmt)
 	bool		reindex = false;
 
 	if (IsIgnoringSystemIndexes() &&
-		IsSystemRelationName(RelationGetRelationName(onerel)))
+		IsSystemRelation(onerel))
 		reindex = true;
 
 	vacuum_set_xid_limits(vacstmt, onerel->rd_rel->relisshared,

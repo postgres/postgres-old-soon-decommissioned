@@ -21,6 +21,7 @@
 
 #include "access/heapam.h"
 #include "access/xact.h"
+#include "catalog/catalog.h"
 #include "catalog/catname.h"
 #include "catalog/heap.h"
 #include "catalog/namespace.h"
@@ -391,7 +392,7 @@ FuncnameGetCandidates(List *names, int nargs)
 		{
 			/* Consider only procs that are in the search path */
 			if (pathContainsSystemNamespace ||
-				procform->pronamespace != PG_CATALOG_NAMESPACE)
+				!IsSystemNamespace(procform->pronamespace))
 			{
 				List	   *nsp;
 

@@ -58,8 +58,7 @@ get_relation_info(Oid relationObjectId,
 			 relationObjectId);
 	relation = (Form_pg_class) GETSTRUCT(relationTuple);
 
-	if (IsIgnoringSystemIndexes() &&
-		IsSystemRelationName(NameStr(relation->relname)))
+	if (IsIgnoringSystemIndexes() && IsSystemClass(relation))
 		*hasindex = false;
 	else
 		*hasindex = relation->relhasindex;

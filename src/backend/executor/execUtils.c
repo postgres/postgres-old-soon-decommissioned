@@ -467,7 +467,7 @@ ExecOpenIndices(ResultRelInfo *resultRelInfo)
 	if (!RelationGetForm(resultRelation)->relhasindex)
 		return;
 	if (IsIgnoringSystemIndexes() &&
-		IsSystemRelationName(RelationGetRelationName(resultRelation)))
+		IsSystemRelation(resultRelation))
 		return;
 
 	/*

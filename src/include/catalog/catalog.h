@@ -14,15 +14,22 @@
 #ifndef CATALOG_H
 #define CATALOG_H
 
-#include "access/tupdesc.h"
+#include "utils/rel.h"
 
-#include "storage/relfilenode.h"
 
 extern char *relpath(RelFileNode rnode);
 extern char *GetDatabasePath(Oid tblNode);
 
-extern bool IsSystemRelationName(const char *relname);
-extern bool IsToastRelationName(const char *relname);
+extern bool IsSystemRelation(Relation relation);
+extern bool IsToastRelation(Relation relation);
+
+extern bool IsSystemClass(Form_pg_class reltuple);
+extern bool IsToastClass(Form_pg_class reltuple);
+
+extern bool IsSystemNamespace(Oid namespaceId);
+extern bool IsToastNamespace(Oid namespaceId);
+
+extern bool IsReservedName(const char *name);
 extern bool IsSharedSystemRelationName(const char *relname);
 
 extern Oid	newoid(void);

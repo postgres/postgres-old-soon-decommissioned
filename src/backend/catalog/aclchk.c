@@ -726,7 +726,6 @@ pg_class_aclcheck(Oid table_oid, Oid userid, AclMode mode)
 	int32		result;
 	bool		usesuper,
 				usecatupd;
-	char	   *relname;
 	HeapTuple	tuple;
 	Datum		aclDatum;
 	bool		isNull;
@@ -761,9 +760,9 @@ pg_class_aclcheck(Oid table_oid, Oid userid, AclMode mode)
 	 * pg_shadow.usecatupd is set.	(This is to let superusers protect
 	 * themselves from themselves.)
 	 */
-	relname = NameStr(((Form_pg_class) GETSTRUCT(tuple))->relname);
 	if ((mode & (ACL_INSERT | ACL_UPDATE | ACL_DELETE)) &&
-		!allowSystemTableMods && IsSystemRelationName(relname) &&
+		!allowSystemTableMods &&
+		IsSystemClass((Form_pg_class) GETSTRUCT(tuple)) &&
 		!usecatupd)
 	{
 #ifdef ACLDEBUG
