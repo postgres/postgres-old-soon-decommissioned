@@ -376,7 +376,7 @@ static	struct sockaddr_storage	sock;
 	return 0;
 }
 
-int
+static int
 rangeSockAddrAF_INET(const struct sockaddr_in *addr, const struct sockaddr_in *netaddr,
 					 const struct sockaddr_in *netmask)
 {
@@ -389,7 +389,7 @@ rangeSockAddrAF_INET(const struct sockaddr_in *addr, const struct sockaddr_in *n
 
 
 #ifdef HAVE_IPV6
-int
+static int
 rangeSockAddrAF_INET6(const struct sockaddr_in6 *addr,
 		const struct sockaddr_in6 *netaddr,
 		const struct sockaddr_in6 *netmask)
