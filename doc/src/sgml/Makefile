@@ -20,7 +20,7 @@ include $(top_builddir)/src/Makefile.global
 .NOTPARALLEL:
 
 ifndef DOCBOOKSTYLE
-DOCBOOKSTYLE = /home/projects/pgsql/developers/thomas/db143.d/docbook
+DOCBOOKSTYLE = /home/projects/pgsql/developers/thomas/db162.d/docbook
 endif
 
 ifndef JADE

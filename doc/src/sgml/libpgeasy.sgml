@@ -3,7 +3,7 @@ $Header$
 -->
 
  <chapter id="pgeasy-chapter">
-  <title id="pgeasy">libpgeasy - Simplified C Binding Library</title>
+  <title id="pgeasy">libpgeasy - Simplified C Library</title>
 
   <note>
    <title>Author</title>

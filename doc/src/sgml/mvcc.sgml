@@ -101,6 +101,7 @@ $Header$
       <thead>
        <row>
 	<entry>
+         Isolation Level
 	</entry>
 	<entry>
 	 Dirty Read
