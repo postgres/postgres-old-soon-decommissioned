@@ -821,7 +821,7 @@ Pg_lo_read(ClientData cData, Tcl_Interp *interp, int argc, char* argv[])
 	sprintf(interp->result,"%d",nbytes);
 	return TCL_OK;
     }
-    buf = ckalloc(sizeof(len+1));
+    buf = ckalloc(len+1);
 
     nbytes = lo_read(conn,fd,buf,len);
 
