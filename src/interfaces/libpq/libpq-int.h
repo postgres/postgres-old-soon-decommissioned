@@ -56,7 +56,7 @@ typedef int ssize_t;			/* ssize_t doesn't exist in VC (atleast
  * pqcomm.h describe what the backend knows, not what libpq knows.
  */
 
-#define PG_PROTOCOL_LIBPQ	PG_PROTOCOL(3,104) /* XXX temporary value */
+#define PG_PROTOCOL_LIBPQ	PG_PROTOCOL(3,105) /* XXX temporary value */
 
 /*
  * POSTGRES backend dependent Constants.
@@ -241,6 +241,7 @@ struct pg_conn
 	/* Status indicators */
 	ConnStatusType status;
 	PGAsyncStatusType asyncStatus;
+	char		xact_status;	/* status flag from latest ReadyForQuery */
 	char		copy_is_binary;	/* 1 = copy binary, 0 = copy text */
 	int			copy_already_done; /* # bytes already returned in COPY OUT */
 	int			nonblocking;	/* whether this connection is using a

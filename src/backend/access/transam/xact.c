@@ -1705,17 +1705,44 @@ AbortOutOfAnyTransaction(void)
 	s->blockState = TBLOCK_DEFAULT;
 }
 
+/*
+ * IsTransactionBlock --- are we within a transaction block?
+ */
 bool
 IsTransactionBlock(void)
 {
 	TransactionState s = CurrentTransactionState;
 
-	if (s->blockState == TBLOCK_INPROGRESS
-		|| s->blockState == TBLOCK_ABORT
-		|| s->blockState == TBLOCK_ENDABORT)
-		return true;
+	if (s->blockState == TBLOCK_DEFAULT)
+		return false;
 
-	return false;
+	return true;
+}
+
+/*
+ * TransactionBlockStatusCode - return status code to send in ReadyForQuery
+ */
+char
+TransactionBlockStatusCode(void)
+{
+	TransactionState s = CurrentTransactionState;
+
+	switch (s->blockState)
+	{
+		case TBLOCK_DEFAULT:
+			return 'I';			/* idle --- not in transaction */
+		case TBLOCK_BEGIN:
+		case TBLOCK_INPROGRESS:
+		case TBLOCK_END:
+			return 'T';			/* in transaction */
+		case TBLOCK_ABORT:
+		case TBLOCK_ENDABORT:
+			return 'E';			/* in failed transaction */
+	}
+
+	/* should never get here */
+	elog(ERROR, "bogus transaction block state");
+	return 0;					/* keep compiler quiet */
 }
 
 
