@@ -148,6 +148,9 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
     case T_Sort:
 	pname = "Sort";
 	break;
+    case T_Group:
+	pname = "Group";
+	break;
     case T_Agg:
 	pname = "Aggregate";
 	break;
