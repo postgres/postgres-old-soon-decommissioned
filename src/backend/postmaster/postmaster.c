@@ -2861,11 +2861,11 @@ sigusr1_handler(SIGNAL_ARGS)
 	if (CheckPostmasterSignal(PMSIGNAL_WAKEN_CHILDREN))
 	{
 		/*
-		 * Send SIGUSR2 to all children (triggers AsyncNotifyHandler). See
-		 * storage/ipc/sinvaladt.c for the use of this.
+		 * Send SIGUSR1 to all children (triggers CatchupInterruptHandler).
+		 * See storage/ipc/sinval[adt].c for the use of this.
 		 */
 		if (Shutdown == NoShutdown)
-			SignalChildren(SIGUSR2);
+			SignalChildren(SIGUSR1);
 	}
 
 	PG_SETMASK(&UnBlockSig);
