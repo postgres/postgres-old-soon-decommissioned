@@ -440,6 +440,12 @@ else
         mkdir "$PGDATA"/pg_xlog || exit_nicely
 	echo "ok"
     fi
+    if [ ! -d "$PGDATA"/pg_clog ]
+    then
+        $ECHO_N "creating directory $PGDATA/pg_clog... "$ECHO_C
+        mkdir "$PGDATA"/pg_clog || exit_nicely
+	echo "ok"
+    fi
 fi
 
 

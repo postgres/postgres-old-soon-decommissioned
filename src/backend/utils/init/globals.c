@@ -102,7 +102,6 @@ char	   *SharedSystemRelationNames[] = {
 	GroupRelationName,
 	GroupNameIndex,
 	GroupSysidIndex,
-	LogRelationName,
 	ShadowRelationName,
 	ShadowNameIndex,
 	ShadowSysidIndex,

@@ -52,7 +52,7 @@ typedef struct XLogRecPtr
 
 /*
  * StartUpID (SUI) - system startups counter. It's to allow removing
- * pg_log after shutdown, in future.
+ * pg_clog after shutdown, in future.
  */
 typedef uint32 StartUpID;
 

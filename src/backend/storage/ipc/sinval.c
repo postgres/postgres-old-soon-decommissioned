@@ -327,7 +327,7 @@ GetSnapshotData(bool serializable)
 	 *--------------------
 	 */
 
-	ReadNewTransactionId(&(snapshot->xmax));
+	snapshot->xmax = ReadNewTransactionId();
 
 	for (index = 0; index < segP->lastBackend; index++)
 	{

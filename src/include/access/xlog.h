@@ -14,6 +14,7 @@
 #include "access/rmgr.h"
 #include "access/transam.h"
 #include "access/xlogdefs.h"
+#include "storage/bufmgr.h"
 #include "utils/pg_crc.h"
 
 

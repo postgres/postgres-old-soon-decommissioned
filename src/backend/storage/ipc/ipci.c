@@ -17,6 +17,7 @@
 #include <sys/types.h>
 
 #include "miscadmin.h"
+#include "access/clog.h"
 #include "access/xlog.h"
 #include "storage/bufmgr.h"
 #include "storage/freespace.h"
@@ -51,6 +52,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int maxBackends)
 	size = BufferShmemSize();
 	size += LockShmemSize(maxBackends);
 	size += XLOGShmemSize();
+	size += CLOGShmemSize();
 	size += SLockShmemSize();
 	size += SInvalShmemSize(maxBackends);
 	size += FreeSpaceShmemSize();
@@ -80,9 +82,10 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int maxBackends)
 	InitShmemAllocation(seghdr);
 
 	/*
-	 * Set up xlog and buffers
+	 * Set up xlog, clog, and buffers
 	 */
 	XLOGShmemInit();
+	CLOGShmemInit();
 	InitBufferPool();
 
 	/*

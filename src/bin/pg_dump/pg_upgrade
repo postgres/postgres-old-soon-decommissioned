@@ -127,9 +127,9 @@ fi
 echo "Input script $INPUT complete, fixing row commit statuses..."
 
 # Now vacuum each result database to mark all system-table rows as committed,
-# because when pg_log is replaced with the saved version, the transaction
+# because when pg_clog is replaced with the saved version, the transaction
 # statuses will no longer match the data.  VACUUM will force the on-row
-# status flags to the right value so that pg_log will not matter anymore.
+# status flags to the right value so that pg_clog will not matter anymore.
 # Note: we used to try to do this as part of the previous step, but that
 # risks permissions problems if VACUUM is run as the wrong user.
 # Note: the initial VACUUM does template1, then we do everything else.
@@ -171,7 +171,7 @@ do
 	fi
 done
 
-mv -f $OLDDIR/pg_log data
+mv -f $OLDDIR/pg_clog data
 mv -f $OLDDIR/pg_variable data
 
 echo "You must stop/start the postmaster before doing anything else."

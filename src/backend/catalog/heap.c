@@ -252,11 +252,6 @@ heap_create(char *relname,
 			tblNode = InvalidOid;
 			relid = RelOid_pg_database;
 		}
-		else if (strcmp(LogRelationName, relname) == 0)
-		{
-			tblNode = InvalidOid;
-			relid = RelOid_pg_log;
-		}
 		else
 		{
 			relid = newoid();

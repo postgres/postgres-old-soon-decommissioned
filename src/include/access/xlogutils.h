@@ -12,13 +12,13 @@
 #define XLOG_UTILS_H
 
 #include "access/rmgr.h"
+#include "storage/buf.h"
+#include "storage/itemptr.h"
 #include "utils/rel.h"
 
 extern int XLogIsOwnerOfTuple(RelFileNode hnode, ItemPointer iptr,
 				   TransactionId xid, CommandId cid);
 extern bool XLogIsValidTuple(RelFileNode hnode, ItemPointer iptr);
-
-extern void XLogOpenLogRelation(void);
 
 extern void XLogInitRelationCache(void);
 extern void XLogCloseRelationCache(void);

@@ -54,10 +54,6 @@
  * obviously, a page is not formatted before it is initialized with by
  * a call to PageInit.
  *
- * The contents of the special pg_log tables are raw disk blocks with
- * special formats.  these are the only "access methods" that need not
- * write disk pages.
- *
  * NOTES:
  *
  * linp1..N form an ItemId array.  ItemPointers point into this array

@@ -373,7 +373,7 @@ XactLockTableWait(TransactionId xid)
 
 	/*
 	 * Transaction was committed/aborted/crashed - we have to update
-	 * pg_log if transaction is still marked as running.
+	 * pg_clog if transaction is still marked as running.
 	 */
 	if (!TransactionIdDidCommit(xid) && !TransactionIdDidAbort(xid))
 		TransactionIdAbort(xid);

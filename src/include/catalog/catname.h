@@ -29,7 +29,6 @@
 #define  LanguageRelationName "pg_language"
 #define  LargeObjectRelationName "pg_largeobject"
 #define  ListenerRelationName "pg_listener"
-#define  LogRelationName "pg_log"
 #define  OperatorClassRelationName "pg_opclass"
 #define  OperatorRelationName "pg_operator"
 #define  ProcedureRelationName "pg_proc"

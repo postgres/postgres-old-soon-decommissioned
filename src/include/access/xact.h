@@ -54,7 +54,6 @@ typedef TransactionStateData *TransactionState;
 #define TRANS_INPROGRESS		2
 #define TRANS_COMMIT			3
 #define TRANS_ABORT				4
-#define TRANS_DISABLED			5
 
 /* ----------------
  *		transaction block states
@@ -100,7 +99,6 @@ extern int	TransactionFlushEnabled(void);
 extern void SetTransactionFlushEnabled(bool state);
 
 extern bool IsAbortedTransactionBlockState(void);
-extern void OverrideTransactionSystem(bool flag);
 extern TransactionId GetCurrentTransactionId(void);
 extern CommandId GetCurrentCommandId(void);
 extern CommandId GetScanCommandId(void);
@@ -110,7 +108,6 @@ extern bool TransactionIdIsCurrentTransactionId(TransactionId xid);
 extern bool CommandIdIsCurrentCommandId(CommandId cid);
 extern bool CommandIdGEScanCommandId(CommandId cid);
 extern void CommandCounterIncrement(void);
-extern void InitializeTransactionSystem(void);
 extern void StartTransactionCommand(void);
 extern void CommitTransactionCommand(void);
 extern void AbortCurrentTransaction(void);

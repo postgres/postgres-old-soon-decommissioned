@@ -474,25 +474,13 @@ DATA(insert ( 1259 cmax				29 0  4  -6 0 -1 -1 t p f i f f));
 DATA(insert ( 1259 tableoid			26 0  4  -7 0 -1 -1 t p f i f f));
 
 /* ----------------
- *		pg_log - this relation is modified by special purpose access
- *				  method code.	The following is garbage but is needed
- *				  so that the reldesc code works properly.
+ *		pg_xactlock - this is not a real relation, but is a placeholder
+ *				  to allow a relation OID to be used for transaction
+ *				  waits.  We need a pg_xactlock entry in pg_class only to
+ *				  ensure that that OID can never be allocated to a real
+ *				  table; and this entry is just to link to that one.
  * ----------------
  */
-#define Schema_pg_log \
-{ 1269, {"logfoo"},  26, 0, 4, 1, 0, -1, -1, true, 'p', false, 'i', false, false }
-
-DATA(insert ( 1269 logfoo			26 0  4   1 0 -1 -1 t p f i f f));
-
-/* ----------------
- *		pg_xactlock - this relation is modified by special purpose access
- *				  method code.	The following is garbage but is needed
- *				  so that the reldesc code works properly.
- * ----------------
- */
-#define Schema_pg_xactlock \
-{ 376, {"xactlockfoo"},  26, 0, 4, 1, 0, -1, -1, true, 'p', false, 'i', false, false }
-
 DATA(insert ( 376 xactlockfoo		26 0  4   1 0 -1 -1 t p f i f f));
 
 #endif	 /* PG_ATTRIBUTE_H */
