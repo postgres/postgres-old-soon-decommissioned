@@ -3,6 +3,9 @@ $Header$
 Genetic Optimizer
 
 $Log: geqo.sgml,v $
+Revision 1.6  1999/02/18 05:26:17  momjian
+Enable bushy plans by default.
+
 Revision 1.5  1998/12/29 02:24:15  thomas
 Clean up to ensure tag completion as required by the newest versions
  of Norm's Modular Style Sheets and jade/docbook.
@@ -305,8 +308,6 @@ Suggestions are welcome :-(
 </sect3>
 </sect2>
 
-<Sect2>
-<Title>Further Improvements</Title>
 
 <BIBLIOGRAPHY Id="geqo-biblio">
 <TITLE>
@@ -389,6 +390,5 @@ The Benjamin/Cummings Pub., Inc.
 </BIBLIOENTRY>
 </BIBLIOGRAPHY>
 
-</sect2>
 </sect1>
 </Chapter>
