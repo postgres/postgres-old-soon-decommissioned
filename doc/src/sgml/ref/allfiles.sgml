@@ -134,7 +134,6 @@ Complete list of usable sgml source files in this directory.
 <!entity initdb             system "initdb.sgml">
 <!entity initlocation       system "initlocation.sgml">
 <!entity ipcclean           system "ipcclean.sgml">
-<!entity pgAccess           system "pgaccess-ref.sgml">
 <!entity pgConfig           system "pg_config-ref.sgml">
 <!entity pgControldata      system "pg_controldata.sgml">
 <!entity pgCtl              system "pg_ctl-ref.sgml">
