@@ -36,12 +36,19 @@ NameData   *
 namein(char *s)
 {
 	NameData   *result;
+	int			len;
 
 	if (s == NULL)
 		return (NULL);
 	result = (NameData *) palloc(NAMEDATALEN);
 	/* always keep it null-padded */
 	StrNCpy(result->data, s, NAMEDATALEN);
+	len = strlen(result->data);
+	while (len < NAMEDATALEN)
+	{
+		*(result->data + len) = '\0';
+		len++;
+	}
 	return (result);
 }
 
