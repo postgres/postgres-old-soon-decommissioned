@@ -41,10 +41,6 @@ than as ASCII text.  It is somewhat faster than the normal
 command, but is not generally portable, and the files generated are
 somewhat larger, although this factor is highly dependent on the data
 itself.
-When copying in, the
-.BR "with oids"
-keyword should only be used on an empty database because
-the loaded oids could conflict with existing oids.
 By default, a ASCII
 .BR copy
 uses a tab (\\t) character as a delimiter.  The delimiter may also be changed
@@ -169,9 +165,3 @@ yield unexpected results for the naive user.  In this case,
 .SM $PGDATA\c
 /foo.  In general, the full pathname should be used when specifying
 files to be copied.
-.PP
-.BR Copy
-has virtually no error checking, and a malformed input file will
-likely cause the backend to crash.  You should avoid using 
-.BR copy
-for input whenever possible.
