@@ -836,7 +836,7 @@ do_connect(const char *new_dbname,
 	fprintf(stderr, "\\connect must be followed by a database name\n");
     else {
 	PGconn          *olddb = settings->db;
-	char		*userenv;
+	static char	*userenv = NULL;
 
 	printf("closing connection to database: %s\n", dbname);
 	if (new_user != NULL) {
@@ -844,10 +844,11 @@ do_connect(const char *new_dbname,
 		   PQsetdb() does not allow us to specify the user,
 		   so we have to do it via PGUSER
 		*/
+	    if (userenv != NULL)
+	    	free(userenv);
 	    userenv = malloc(strlen("PGUSER=") + strlen(new_user) + 1);
 	    sprintf(userenv,"PGUSER=%s",new_user);
-	    putenv(userenv);
-	    free(userenv);
+	    putenv(userenv); /* putenv() continues to use memory in env. */
 	}
 	settings->db = PQsetdb(PQhost(olddb), PQport(olddb),
 			       NULL, NULL, new_dbname);
