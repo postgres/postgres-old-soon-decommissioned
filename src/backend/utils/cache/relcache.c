@@ -1657,7 +1657,7 @@ RelationClearRelation(Relation relation, bool rebuildIt)
 	MemoryContextSwitchTo(oldcxt);
 
 	/* Clear out catcache's entries for this relation */
-	SystemCacheRelationFlushed(RelationGetRelid(relation));
+	CatalogCacheFlushRelation(RelationGetRelid(relation));
 
 	/*
 	 * Free all the subsidiary data structures of the relcache entry. We

@@ -478,16 +478,20 @@ CacheIdInvalidate(Index cacheId,
 }
 
 /*
- *		ResetSystemCaches
+ *		InvalidateSystemCaches
  *
  *		This blows away all tuples in the system catalog caches and
  *		all the cached relation descriptors (and closes their files too).
  *		Relation descriptors that have positive refcounts are then rebuilt.
+ *
+ *		We call this when we see a shared-inval-queue overflow signal,
+ *		since that tells us we've lost some shared-inval messages and hence
+ *		don't know what needs to be invalidated.
  */
 static void
-ResetSystemCaches(void)
+InvalidateSystemCaches(void)
 {
-	ResetSystemCache();
+	ResetCatalogCaches();
 	RelationCacheInvalidate();
 }
 
@@ -643,7 +647,7 @@ DiscardInvalid(void)
 	elog(DEBUG, "DiscardInvalid called");
 #endif	 /* defined(INVALIDDEBUG) */
 
-	InvalidateSharedInvalid(CacheIdInvalidate, ResetSystemCaches);
+	InvalidateSharedInvalid(CacheIdInvalidate, InvalidateSystemCaches);
 }
 
 /*
