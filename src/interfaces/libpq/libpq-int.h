@@ -33,7 +33,7 @@
 #include <pthread.h>
 #endif
 
-#if defined(WIN32) && (!defined(ssize_t))
+#ifdef WIN32_CLIENT_ONLY
 typedef int ssize_t;			/* ssize_t doesn't exist in VC (at least
 								 * not VC6) */
 #endif
