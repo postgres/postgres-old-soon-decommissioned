@@ -46,7 +46,7 @@ extern int	lo_write(int fd, char *buf, int len);
  * Cleanup LOs at xact commit/abort
  */
 extern void AtEOXact_LargeObject(bool isCommit);
-extern void AtEOSubXact_LargeObject(bool isCommit, TransactionId myXid,
-						TransactionId parentXid);
+extern void AtEOSubXact_LargeObject(bool isCommit, SubTransactionId mySubid,
+									SubTransactionId parentSubid);
 
 #endif   /* BE_FSSTUBS_H */

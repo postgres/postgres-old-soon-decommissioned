@@ -85,8 +85,8 @@ extern int	BasicOpenFile(FileName fileName, int fileFlags, int fileMode);
 extern void set_max_safe_fds(void);
 extern void closeAllVfds(void);
 extern void AtEOXact_Files(void);
-extern void AtEOSubXact_Files(bool isCommit, TransactionId myXid,
-				  TransactionId parentXid);
+extern void AtEOSubXact_Files(bool isCommit, SubTransactionId mySubid,
+							  SubTransactionId parentSubid);
 extern void RemovePgTempFiles(void);
 extern int	pg_fsync(int fd);
 extern int	pg_fdatasync(int fd);

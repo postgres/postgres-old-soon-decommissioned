@@ -351,7 +351,7 @@ typedef float float4;
 typedef double float8;
 
 /*
- * Oid, RegProcedure, TransactionId, CommandId, AclId
+ * Oid, RegProcedure, TransactionId, SubTransactionId, CommandId, AclId
  */
 
 /* typedef Oid is in postgres_ext.h */
@@ -364,6 +364,11 @@ typedef Oid regproc;
 typedef regproc RegProcedure;
 
 typedef uint32 TransactionId;
+
+typedef uint32 SubTransactionId;
+
+#define InvalidSubTransactionId		((SubTransactionId) 0)
+#define TopSubTransactionId			((SubTransactionId) 1)
 
 typedef uint32 CommandId;
 

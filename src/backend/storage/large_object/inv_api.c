@@ -167,7 +167,7 @@ inv_create(int flags)
 	retval = (LargeObjectDesc *) palloc(sizeof(LargeObjectDesc));
 
 	retval->id = file_oid;
-	retval->xid = GetCurrentTransactionId();
+	retval->subid = GetCurrentSubTransactionId();
 	retval->offset = 0;
 
 	if (flags & INV_WRITE)
@@ -199,7 +199,7 @@ inv_open(Oid lobjId, int flags)
 	retval = (LargeObjectDesc *) palloc(sizeof(LargeObjectDesc));
 
 	retval->id = lobjId;
-	retval->xid = GetCurrentTransactionId();
+	retval->subid = GetCurrentSubTransactionId();
 	retval->offset = 0;
 
 	if (flags & INV_WRITE)

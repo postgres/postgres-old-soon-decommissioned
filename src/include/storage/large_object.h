@@ -20,7 +20,7 @@
  * Data about a currently-open large object.
  *
  * id is the logical OID of the large object
- * xid is the transaction Id that opened the LO (or currently owns it)
+ * subid is the subtransaction that opened the LO (or currently owns it)
  * offset is the current seek offset within the LO
  * flags contains some flag bits
  *
@@ -32,7 +32,7 @@
 typedef struct LargeObjectDesc
 {
 	Oid			id;				/* LO's identifier */
-	TransactionId xid;			/* owning XID */
+	SubTransactionId subid;		/* owning subtransaction ID */
 	uint32		offset;			/* current seek pointer */
 	int			flags;			/* locking info, etc */
 

@@ -708,7 +708,7 @@ extern Datum plpgsql_exec_function(PLpgSQL_function *func,
 					  FunctionCallInfo fcinfo);
 extern HeapTuple plpgsql_exec_trigger(PLpgSQL_function *func,
 					 TriggerData *trigdata);
-extern void plpgsql_xact_cb(XactEvent event, TransactionId parentXid, void *arg);
+extern void plpgsql_xact_cb(XactEvent event, void *arg);
 
 /* ----------
  * Functions for the dynamic string handling in pl_funcs.c

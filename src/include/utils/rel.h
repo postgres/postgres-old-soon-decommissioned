@@ -115,12 +115,12 @@ typedef struct RelationData
 	bool		rd_isvalid;		/* relcache entry is valid */
 	char		rd_indexvalid;	/* state of rd_indexlist: 0 = not valid, 1
 								 * = valid, 2 = temporarily forced */
-	TransactionId rd_createxact;	/* rel was created in current xact */
+	SubTransactionId rd_createSubid;	/* rel was created in current xact */
 
 	/*
-	 * rd_createxact is the XID of the highest subtransaction the rel has
+	 * rd_createSubid is the ID of the highest subtransaction the rel has
 	 * survived into; or zero if the rel was not created in the current
-	 * transaction.  This should be relied on only for optimization
+	 * top transaction.  This should be relied on only for optimization
 	 * purposes; it is possible for new-ness to be "forgotten" (eg, after
 	 * CLUSTER).
 	 */
@@ -241,7 +241,8 @@ typedef Relation *RelationPtr;
  * Beware of multiple eval of argument
  */
 #define RELATION_IS_LOCAL(relation) \
-	((relation)->rd_istemp || TransactionIdIsValid((relation)->rd_createxact))
+	((relation)->rd_istemp || \
+	 (relation)->rd_createSubid != InvalidSubTransactionId)
 
 /* routines in utils/cache/relcache.c */
 extern void RelationIncrementReferenceCount(Relation rel);

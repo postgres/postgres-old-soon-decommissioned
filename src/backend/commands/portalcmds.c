@@ -309,7 +309,7 @@ PersistHoldablePortal(Portal portal)
 	 * If we're preserving a holdable portal, we had better be inside the
 	 * transaction that originally created it.
 	 */
-	Assert(portal->createXact == GetCurrentTransactionId());
+	Assert(portal->createSubid != InvalidSubTransactionId);
 	Assert(queryDesc != NULL);
 
 	/*

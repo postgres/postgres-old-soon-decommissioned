@@ -747,7 +747,7 @@ begin:;
 	/* Insert record header */
 
 	record->xl_prev = Insert->PrevRecord;
-	record->xl_xid = GetCurrentTransactionId();
+	record->xl_xid = GetCurrentTransactionIdIfAny();
 	record->xl_len = len;		/* doesn't include backup blocks */
 	record->xl_info = info;
 	record->xl_rmid = rmid;
