@@ -16,10 +16,14 @@
 #include <math.h>
 #include <string.h>
 #include <sys/types.h>
+#include <errno.h>
 #ifdef HAVE_VALUES_H
-#include <values.h>
+# include <values.h>
 #else
-#include <limits.h>
+# include <float.h>
+# ifndef MINDOUBLE
+#  define MINDOUBLE DBL_MIN
+# endif
 #endif
 
 #include "postgres.h"
