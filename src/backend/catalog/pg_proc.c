@@ -371,7 +371,7 @@ check_sql_fn_retval(Oid rettype, char fn_typtype, List *queryTreeList)
 	}
 
 	/* find the final query */
-	parse = (Query *) nth(length(queryTreeList) - 1, queryTreeList);
+	parse = (Query *) llast(queryTreeList);
 
 	cmd = parse->commandType;
 	tlist = parse->targetList;

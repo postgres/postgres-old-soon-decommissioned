@@ -726,8 +726,7 @@ qual_is_pushdown_safe(Query *subquery, Index rti, Node *qual,
 	foreach(vl, vars)
 	{
 		Var		   *var = (Var *) lfirst(vl);
-		List	   *tl;
-		TargetEntry *tle = NULL;
+		TargetEntry *tle;
 
 		Assert(var->varno == rti);
 
@@ -748,13 +747,8 @@ qual_is_pushdown_safe(Query *subquery, Index rti, Node *qual,
 		}
 
 		/* Must find the tlist element referenced by the Var */
-		foreach(tl, subquery->targetList)
-		{
-			tle = (TargetEntry *) lfirst(tl);
-			if (tle->resdom->resno == var->varattno)
-				break;
-		}
-		Assert(tl != NIL);
+		tle = get_tle_by_resno(subquery->targetList, var->varattno);
+		Assert(tle != NULL);
 		Assert(!tle->resdom->resjunk);
 
 		/* If subquery uses DISTINCT or DISTINCT ON, check point 3 */

@@ -63,7 +63,7 @@ int4notin(PG_FUNCTION_ARGS)
 				(errcode(ERRCODE_INVALID_NAME),
 				 errmsg("invalid name syntax"),
 			   errhint("Must provide \"relationname.attributename\".")));
-	attribute = strVal(nth(nnames - 1, names));
+	attribute = strVal(llast(names));
 	names = ltruncate(nnames - 1, names);
 	relrv = makeRangeVarFromNameList(names);
 

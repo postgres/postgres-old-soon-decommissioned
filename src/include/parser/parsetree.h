@@ -20,7 +20,7 @@
 
 
 /* ----------------
- *		range table macros
+ *		range table operations
  * ----------------
  */
 
@@ -54,5 +54,13 @@ extern char *get_rte_attribute_name(RangeTblEntry *rte, AttrNumber attnum);
  */
 extern void get_rte_attribute_type(RangeTblEntry *rte, AttrNumber attnum,
 					   Oid *vartype, int32 *vartypmod);
+
+
+/* ----------------
+ *		target list operations
+ * ----------------
+ */
+
+extern TargetEntry *get_tle_by_resno(List *tlist, AttrNumber resno);
 
 #endif   /* PARSETREE_H */
