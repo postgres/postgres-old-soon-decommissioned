@@ -55,8 +55,8 @@
  *
  *	One thread-safe solution for gethostbyname() might be to use getaddrinfo().
  *
- *	Compile and run src/tools/test_thread_funcs.c to see if your operating
- *	system has thread-safe non-*_r functions.
+ *	See src/tools/thread to see if your operating system has thread-safe
+ *	non-*_r functions.
  */
  
 
