@@ -50,7 +50,7 @@ CMDNAME=`basename $0`
 
 # The x=x below is to satisfy export if postconfig returns nothing.
 
-export x=x $(postconfig 2>/dev/null)
+export x=x $(exec postconfig 2>/dev/null)
 
 # Set defaults:
 debug=0
