@@ -60,11 +60,6 @@ static void btbuildCallback(Relation index,
 
 /*
  *	btbuild() -- build a new btree index.
- *
- *		We use a global variable to record the fact that we're creating
- *		a new index.  This is used to avoid high-concurrency locking,
- *		since the index won't be visible until this transaction commits
- *		and since building is guaranteed to be single-threaded.
  */
 Datum
 btbuild(PG_FUNCTION_ARGS)

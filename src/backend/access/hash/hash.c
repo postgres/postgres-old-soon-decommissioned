@@ -44,11 +44,6 @@ static void hashbuildCallback(Relation index,
 
 /*
  *	hashbuild() -- build a new hash index.
- *
- *		We use a global variable to record the fact that we're creating
- *		a new index.  This is used to avoid high-concurrency locking,
- *		since the index won't be visible until this transaction commits
- *		and since building is guaranteed to be single-threaded.
  */
 Datum
 hashbuild(PG_FUNCTION_ARGS)
