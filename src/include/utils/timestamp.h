@@ -49,7 +49,7 @@ typedef struct
  * Therefore Timestamp is pass-by-reference if and only if float8 is!
  */
 #define DatumGetTimestamp(X)  ((Timestamp) DatumGetFloat8(X))
-#define DatumGetTimestampTz(X)  ((Timestamp) DatumGetFloat8(X))
+#define DatumGetTimestampTz(X)  ((TimestampTz) DatumGetFloat8(X))
 #define DatumGetIntervalP(X)  ((Interval *) DatumGetPointer(X))
 
 #define TimestampGetDatum(X) Float8GetDatum(X)
