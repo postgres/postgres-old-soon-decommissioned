@@ -549,6 +549,8 @@ RANLIB= touch
 #it installs to root.
 INSTALL= /usr/bin/X11/bsdinst
 
+IPCSDIR= /usr/sbin
+
 INSTLOPTS=      -m 444
 INSTL_EXE_OPTS= -m 555
 INSTL_LIB_OPTS= -m 664
