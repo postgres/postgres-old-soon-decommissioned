@@ -158,7 +158,7 @@ static struct generator gen_list[] = {
 	{NULL, NULL, 0, 0, 0}
 };
 
-uint
+unsigned
 px_gen_salt(const char *salt_type, char *buf, int rounds)
 {
 	int			i,

@@ -37,13 +37,13 @@
 #define HMAC_IPAD 0x36
 #define HMAC_OPAD 0x5C
 
-static uint
+static unsigned
 hmac_result_size(PX_HMAC * h)
 {
 	return px_md_result_size(h->md);
 }
 
-static uint
+static unsigned
 hmac_block_size(PX_HMAC * h)
 {
 	return px_md_block_size(h->md);

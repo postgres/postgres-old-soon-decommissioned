@@ -50,13 +50,13 @@ px_resolve_alias(const PX_Alias * list, const char *name)
  * combo - cipher + padding (+ checksum)
  */
 
-static uint
+static unsigned
 combo_encrypt_len(PX_Combo * cx, unsigned dlen)
 {
 	return dlen + 512;
 }
 
-static uint
+static unsigned
 combo_decrypt_len(PX_Combo * cx, unsigned dlen)
 {
 	return dlen;
