@@ -137,9 +137,6 @@ static struct EnvironmentOptions
 		"PGCOSTINDEX", "cost_index"
 	},
 	{
-		"PGRPLANS", "r_plans"
-	},
-	{
 		"PGGEQO", "geqo"
 	},
 	{

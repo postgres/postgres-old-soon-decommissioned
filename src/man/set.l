@@ -61,24 +61,6 @@ for more information.
 	off	- do not use the genetic optimizer
 .fi
 .PP
-.IR R_PLANS
-enables or disables right-hand evaluation of plans. It may be useful
-when joining big relations with small ones. This algorithm is
-.IR off
-by default. It's not used by GEQO anyway.
-
-.if n .ta 5 +15 +40
-.if t .ta 0.5i +1.5i +3.0i
-.in 0
-.nf
-.ce 1
-\fBR_PLANS Values\fR
-
-	on	- turn right-hand plan evaluation 'on'
-	off	- do not use right-hand plan evaluation
-.fi
-
-.PP
 .IR QUERY_LIMIT
 restricts the number of rows returned by a query.
 The default is unlimited.

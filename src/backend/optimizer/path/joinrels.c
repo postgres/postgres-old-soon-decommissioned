@@ -23,14 +23,6 @@
 #include "optimizer/joininfo.h"
 #include "optimizer/pathnode.h"
 
-#ifdef USE_RIGHT_SIDED_PLANS
-bool		_use_right_sided_plans_ = true;
-
-#else
-bool		_use_right_sided_plans_ = false;
-
-#endif
-
 static List *new_joininfo_list(List *joininfo_list, Relids join_relids);
 static bool nonoverlap_sets(List *s1, List *s2);
 static bool is_subset(List *s1, List *s2);
@@ -122,8 +114,7 @@ make_rels_by_clause_joins(Query *root, RelOptInfo *old_rel,
 				join_list = lappend(join_list, joined_rel);
 
 				/* Right-sided plan */
-				if (_use_right_sided_plans_ &&
-					length(old_rel->relids) > 1)
+				if (length(old_rel->relids) > 1)
 				{
 					joined_rel = make_join_rel(
 								get_base_rel(root, lfirsti(unjoined_relids)),
@@ -133,7 +124,7 @@ make_rels_by_clause_joins(Query *root, RelOptInfo *old_rel,
 				}
 			}
 
-			if (BushyPlanFlag && only_relids == NIL) /* no bushy from geqo */
+			if (only_relids == NIL) /* no bushy from geqo */
 			{
 				List *r;
 
