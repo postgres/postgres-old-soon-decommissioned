@@ -371,6 +371,27 @@ set_pglocale_pgservice(const char *argv0, const char *app)
 
 
 /*
+ *	get_include_path
+ */
+bool
+get_home_path(char *ret_path)
+{
+	if (getenv(HOMEDIR) == NULL)
+	{
+		*ret_path = '\0';
+		return false;
+	}
+	else
+	{
+		StrNCpy(ret_path, getenv(HOMEDIR), MAXPGPATH);
+		canonicalize_path(ret_path);
+		return true;
+	}
+}
+
+
+
+/*
  *	make_relative - adjust path to be relative to bin/
  */
 static void

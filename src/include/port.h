@@ -50,6 +50,7 @@ extern void get_lib_path(const char *my_exec_path, char *ret_path);
 extern void get_pkglib_path(const char *my_exec_path, char *ret_path);
 extern void get_locale_path(const char *my_exec_path, char *ret_path);
 extern void set_pglocale_pgservice(const char *argv0, const char *app);
+extern bool get_home_path(char *ret_path);
 
 /*
  *	is_absolute_path
@@ -72,9 +73,6 @@ extern void set_pglocale_pgservice(const char *argv0, const char *app);
 	((filename)[2] == '\\' || (filename)[2] == '/')) \
 )
 #endif
-
-
-
 
 
 /* Portable way to find binaries */
@@ -102,6 +100,12 @@ extern int find_other_exec(const char *argv0, const char *target,
 #define SYSTEMQUOTE "\""
 #else
 #define SYSTEMQUOTE ""
+#endif
+
+#ifdef WIN32
+#define HOMEDIR	"USERPROFILE"
+#else
+#define HOMEDIR	"HOME"
 #endif
 
 /* Portable delay handling */

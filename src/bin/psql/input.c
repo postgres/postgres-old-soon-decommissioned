@@ -171,7 +171,7 @@ initializeInput(int flags)
 #ifdef USE_READLINE
 	if (flags & 1)
 	{
-		const char *home;
+		char home[MAXPGPATH];
 
 		useReadline = true;
 		initialize_readline();
@@ -180,8 +180,7 @@ initializeInput(int flags)
 		if (GetVariable(pset.vars, "HISTSIZE") == NULL)
 			SetVariable(pset.vars, "HISTSIZE", "500");
 		using_history();
-		home = getenv("HOME");
-		if (home)
+		if (get_home_path(home))
 		{
 			char *psql_history;
 
@@ -231,10 +230,9 @@ finishInput(int exitstatus, void *arg)
 #ifdef USE_READLINE
 	if (useHistory)
 	{
-		char	   *home;
+		char	   home[MAXPGPATH];
 
-		home = getenv("HOME");
-		if (home)
+		if (get_home_path(home))
 		{
 			char	*psql_history;
 			int		 hist_size;

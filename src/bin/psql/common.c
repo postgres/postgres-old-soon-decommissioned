@@ -1078,13 +1078,13 @@ expand_tilde(char **filename)
 	if (**filename == '~')
 	{
 		char	   *fn;
-		char	   *home;
 		char		oldp,
 				   *p;
 		struct passwd *pw;
+		char		home[MAXPGPATH];
 
 		fn = *filename;
-		home = NULL;
+		*home = '\0';
 
 		p = fn + 1;
 		while (*p != '/' && *p != '\0')
@@ -1094,12 +1094,12 @@ expand_tilde(char **filename)
 		*p = '\0';
 
 		if (*(fn + 1) == '\0')
-			home = getenv("HOME");
+			get_home_path(home);
 		else if ((pw = getpwnam(fn + 1)) != NULL)
-			home = pw->pw_dir;
+			StrNCpy(home, pw->pw_dir, MAXPGPATH);
 
 		*p = oldp;
-		if (home)
+		if (strlen(home) != 0)
 		{
 			char	   *newfn;
 
