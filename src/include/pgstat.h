@@ -326,6 +326,18 @@ typedef union PgStat_Msg
 } PgStat_Msg;
 
 
+#ifdef EXEC_BACKEND
+typedef enum STATS_PROCESS_TYPE
+{
+	STAT_PROC_BUFFER,
+	STAT_PROC_COLLECTOR
+} STATS_PROCESS_TYPE;
+#define PGSTAT_FORK_ARGS int argc, char *argv[]
+#else
+#define PGSTAT_FORK_ARGS void
+#endif
+
+
 /* ----------
  * GUC parameters
  * ----------
@@ -341,6 +353,17 @@ extern bool pgstat_collect_blocklevel;
  * ----------
  */
 extern bool pgstat_is_running;
+
+
+/* ----------
+ * Functions called from main
+ * ----------
+ */
+#ifdef EXEC_BACKEND
+extern void pgstat_main(PGSTAT_FORK_ARGS);
+extern void pgstat_mainChild(PGSTAT_FORK_ARGS);
+#endif
+
 
 /* ----------
  * Functions called from postmaster

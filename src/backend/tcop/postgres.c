@@ -2063,7 +2063,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	 *
 	 * If we are running under the postmaster, this is done already.
 	 */
-	if (!IsUnderPostmaster /* when exec || ExecBackend */)
+	if (!IsUnderPostmaster || ExecBackend)
 		MemoryContextInit();
 
 	set_ps_display("startup");
@@ -2076,7 +2076,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	Noversion = false;
 	EchoQuery = false;
 
-	if (!IsUnderPostmaster /* when exec || ExecBackend */ )
+	if (!IsUnderPostmaster)
 	{
 		InitializeGUCOptions();
 		potential_DataDir = getenv("PGDATA");
