@@ -78,8 +78,13 @@
 
 /*
  * Fields for time decoding.
+ *
  * Can't have more of these than there are bits in an unsigned int
- *	since these are turned into bit masks during parsing and decoding.
+ * since these are turned into bit masks during parsing and decoding.
+ *
+ * Furthermore, the values for YEAR, MONTH, DAY, HOUR, MINUTE, SECOND
+ * must be in the range 0..14 so that the associated bitmasks can fit
+ * into the left half of an INTERVAL's typmod value.
  */
 
 #define RESERV	0
