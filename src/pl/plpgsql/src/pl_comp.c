@@ -1466,7 +1466,7 @@ plpgsql_build_rowtype(Oid classOid)
 	/*
 	 * Open the relation to get info.
 	 */
-	rel = heap_open(classOid, AccessShareLock);
+	rel = relation_open(classOid, AccessShareLock);
 	classStruct = RelationGetForm(rel);
 	relname = RelationGetRelationName(rel);
 
@@ -1568,7 +1568,7 @@ plpgsql_build_rowtype(Oid classOid)
 		}
 	}
 
-	heap_close(rel, AccessShareLock);
+	relation_close(rel, AccessShareLock);
 
 	return row;
 }
