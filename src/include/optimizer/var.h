@@ -24,6 +24,7 @@ extern bool contain_whole_tuple_var(Node *node, int varno, int levelsup);
 extern bool contain_var_clause(Node *node);
 extern bool contain_vars_of_level(Node *node, int levelsup);
 extern bool contain_vars_above_level(Node *node, int levelsup);
+extern int	find_minimum_var_level(Node *node);
 extern List *pull_var_clause(Node *node, bool includeUpperVars);
 extern Node *flatten_join_alias_vars(Query *root, Node *node);
 

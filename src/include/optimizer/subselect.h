@@ -12,11 +12,12 @@
 #ifndef SUBSELECT_H
 #define SUBSELECT_H
 
+#include "nodes/parsenodes.h"
 #include "nodes/plannodes.h"
 
 extern Index PlannerQueryLevel; /* level of current query */
 extern List *PlannerInitPlan;	/* init subplans for current query */
-extern List *PlannerParamVar;	/* to get Var from Param->paramid */
+extern List *PlannerParamList;	/* to keep track of cross-level Params */
 extern int	PlannerPlanId;		/* to assign unique ID to subquery plans */
 
 extern Node *convert_IN_to_join(Query *parse, SubLink *sublink);

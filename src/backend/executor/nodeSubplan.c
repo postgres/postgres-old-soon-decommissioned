@@ -240,7 +240,9 @@ ExecScanSubPlan(SubPlanState *node,
 	oldcontext = MemoryContextSwitchTo(node->sub_estate->es_query_cxt);
 
 	/*
-	 * Set Params of this plan from parent plan correlation Vars
+	 * Set Params of this plan from parent plan correlation values.
+	 * (Any calculation we have to do is done in the parent econtext,
+	 * since the Param values don't need to have per-query lifetime.)
 	 */
 	pvar = node->args;
 	foreach(lst, subplan->parParam)

@@ -1179,6 +1179,9 @@ ExecInitAgg(Agg *node, EState *estate)
 		Datum		textInitVal;
 		int			i;
 
+		/* Planner should have assigned aggregate to correct level */
+		Assert(aggref->agglevelsup == 0);
+
 		/* Look for a previous duplicate aggregate */
 		for (i = 0; i <= aggno; i++)
 		{

@@ -1593,7 +1593,7 @@ transformRuleStmt(ParseState *pstate, RuleStmt *stmt,
 		elog(ERROR, "Rule WHERE condition may not contain references to other relations");
 
 	/* aggregates not allowed (but subselects are okay) */
-	if (contain_agg_clause(stmt->whereClause))
+	if (pstate->p_hasAggs)
 		elog(ERROR, "Rule WHERE condition may not contain aggregate functions");
 
 	/* save info about sublinks in where clause */
@@ -1808,7 +1808,7 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 
 	qry->hasSubLinks = pstate->p_hasSubLinks;
 	qry->hasAggs = pstate->p_hasAggs;
-	if (pstate->p_hasAggs || qry->groupClause || qry->havingQual)
+	if (pstate->p_hasAggs || qry->groupClause)
 		parseCheckAggregates(pstate, qry);
 
 	if (stmt->forUpdate != NIL)
@@ -2013,7 +2013,7 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 
 	qry->hasSubLinks = pstate->p_hasSubLinks;
 	qry->hasAggs = pstate->p_hasAggs;
-	if (pstate->p_hasAggs || qry->groupClause || qry->havingQual)
+	if (pstate->p_hasAggs || qry->groupClause)
 		parseCheckAggregates(pstate, qry);
 
 	if (forUpdate != NIL)
@@ -2536,9 +2536,9 @@ transformExecuteStmt(ParseState *pstate, ExecuteStmt *stmt)
 			expr = transformExpr(pstate, expr);
 
 			/* Cannot contain subselects or aggregates */
-			if (contain_subplans(expr))
+			if (pstate->p_hasSubLinks)
 				elog(ERROR, "Cannot use subselects in EXECUTE parameters");
-			if (contain_agg_clause(expr))
+			if (pstate->p_hasAggs)
 				elog(ERROR, "Cannot use aggregates in EXECUTE parameters");
 
 			given_type_id = exprType(expr);

@@ -2870,9 +2870,9 @@ AlterTableAddCheckConstraint(Relation rel, Constraint *constr)
 	/*
 	 * No subplans or aggregates, either...
 	 */
-	if (contain_subplans(expr))
+	if (pstate->p_hasSubLinks)
 		elog(ERROR, "cannot use subselect in CHECK constraint expression");
-	if (contain_agg_clause(expr))
+	if (pstate->p_hasAggs)
 		elog(ERROR, "cannot use aggregate function in CHECK constraint expression");
 
 	/*
