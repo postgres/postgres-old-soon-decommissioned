@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Mon Dec 15 20:08:46 EST 2003
+Last updated:		Mon Dec 15 20:35:38 EST 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -284,7 +284,7 @@ Clients
 	o Implement SQLDA
 	o Fix nested C comments
 	o sqlwarn[6] should be 'W' if the PRECISION or SCALE value specified
-	o Make SET CONNECTION thread-aware
+	o Make SET CONNECTION thread-aware, non-standard?
 
 * Python
 	o Allow users to register their own types with pg_
