@@ -2513,16 +2513,6 @@ _copyReindexStmt(ReindexStmt *from)
 	return newnode;
 }
 
-static SetSessionStmt *
-_copySetSessionStmt(SetSessionStmt *from)
-{
-	SetSessionStmt   *newnode = makeNode(SetSessionStmt);
-
-	Node_Copy(from, newnode, args);
-
-	return newnode;
-}
-
 
 /* ****************************************************************
  *					pg_list.h copy functions
@@ -2921,9 +2911,6 @@ copyObject(void *from)
 			break;
 		case T_ReindexStmt:
 			retval = _copyReindexStmt(from);
-			break;
-		case T_SetSessionStmt:
-			retval = _copySetSessionStmt(from);
 			break;
 		case T_CheckPointStmt:
 			retval = (void*)makeNode(CheckPointStmt);

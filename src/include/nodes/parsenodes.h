@@ -697,15 +697,9 @@ typedef struct ExplainStmt
 } ExplainStmt;
 
 /* ----------------------
- *		Set Session Statement
+ * Checkpoint Statement
  * ----------------------
  */
-typedef struct SetSessionStmt
-{
-	NodeTag		type;
-	List	   *args;
-} SetSessionStmt;
-
 typedef struct CheckPointStmt
 {
 	NodeTag		type;

@@ -202,7 +202,6 @@ typedef enum NodeTag
 	T_AlterGroupStmt,
 	T_DropGroupStmt,
 	T_ReindexStmt,
-	T_SetSessionStmt,
 	T_CheckPointStmt,
 
 	T_A_Expr = 700,
