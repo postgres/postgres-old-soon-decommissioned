@@ -311,7 +311,7 @@ SELECT last_value FROM <replaceable>seqname</replaceable>;
 CREATE SEQUENCE serial START 101;
   </programlisting>
   <para>
-   Select the next number from this sequence
+   Select the next number from this sequence:
    <programlisting>
 SELECT NEXTVAL ('serial');
     

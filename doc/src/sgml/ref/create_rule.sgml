@@ -302,7 +302,7 @@ CREATE RULE example_3 AS
    </programlisting>
   </para>
   <para>
-   Create a view of the employees working in the toy department.
+   Create a view of the employees working in the toy department:
    <programlisting>
 CREATE toyemp(name = char16, salary = int4);
 
@@ -315,7 +315,7 @@ CREATE RULE example_4 AS
    </programlisting>
   </para>
   <para>
-   All new employees must make 5,000 or less
+   All new employees must make 5,000 or less:
    <programlisting>
 CREATE RULE example_5 AS
     ON INERT TO emp WHERE new.salary > 5000
