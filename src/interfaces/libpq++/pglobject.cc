@@ -14,12 +14,12 @@
  *
  *-------------------------------------------------------------------------
  */
+
+#include "pglobject.h"
  
 extern "C" {
 #include "libpq/libpq-fs.h"
 }
-
-#include "pglobject.h"
 
 // ****************************************************************
 //
@@ -33,8 +33,10 @@ PgLargeObject::PgLargeObject(const char* conninfo)
 	: PgConnection(conninfo)
 {
   Init();
-  Create();
-  Open();
+  if (! ConnectionBad()) {
+	  Create();
+	  Open();
+  }
 }
 
 // constructor
@@ -43,12 +45,12 @@ PgLargeObject::PgLargeObject(const char* conninfo)
 PgLargeObject::PgLargeObject(Oid lobjId, const char* conninfo) 
 	: PgConnection(conninfo)
 {
-
   Init(lobjId);
-  if ( !pgObject ) {
-	Create();
+  if (! ConnectionBad()) {
+	  if ( !pgObject )
+		  Create();
+	  Open();
   }
-  Open();
 }
 
 // destructor -- closes large object
@@ -83,6 +85,8 @@ void PgLargeObject::Create()
 // open large object and check for errors
 void PgLargeObject::Open()
 {
+  // Close any prior object
+  Close();
   // Open the object
   pgFd = lo_open(pgConn, pgObject, INV_READ|INV_WRITE);
   
@@ -115,7 +119,8 @@ int PgLargeObject::Unlink()
 
 void PgLargeObject::Close()
 { 
-  if (pgFd >= 0) lo_close(pgConn, pgFd); 
+  if (pgFd >= 0) lo_close(pgConn, pgFd);
+  pgFd = -1;
 }
 
 
@@ -159,4 +164,3 @@ string PgLargeObject::Status()
 { 
   return loStatus; 
 }
-

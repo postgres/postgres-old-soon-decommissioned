@@ -19,11 +19,12 @@
  *-------------------------------------------------------------------------
  */
  
-#ifndef PGCURSOR_H
-#define PGCURSOR_H
+#ifndef PGCURSORDB_H
+#define PGCURSORDB_H
 
+#ifndef PGTRANSDB_H
 #include "pgtransdb.h"
-
+#endif
 
 
 // ****************************************************************
@@ -60,6 +61,12 @@ protected:
   
 protected:
   PgCursor() : PgTransaction() {}	// Do not connect
+
+private:
+// We don't support copying of PgCursor objects,
+// so make copy constructor and assignment op private.
+   PgCursor(const PgCursor&);
+   PgCursor& operator= (const PgCursor&);
 }; // End PgCursor Class Declaration
 
-#endif	// PGCURSOR_H
+#endif	// PGCURSORDB_H

@@ -27,8 +27,6 @@ CXXFLAGS+=   -I$(SRCDIR)/backend \
              -I$(SRCHEADERDIR) \
              -I$(LIBPQDIR)
 
-#CXXFLAGS+= -DDEBUGFILE
-
 ifdef KRBVERS
 CXXFLAGS+= $(KRBFLAGS)
 endif

@@ -22,8 +22,9 @@
 #ifndef PGDATABASE_H
 #define PGDATABASE_H
  
+#ifndef PGCONNECTION_H
 #include "pgconnection.h"
-
+#endif
 
 // ****************************************************************
 //
@@ -35,8 +36,10 @@
 // results are being received.
 class PgDatabase : public PgConnection {
 public:
-  PgDatabase(const char* conninfo) : PgConnection(conninfo) {} // use reasonable defaults
-  ~PgDatabase() {} ; // close connection and clean up
+  // connect to the database with conninfo
+  PgDatabase(const char* conninfo) : PgConnection(conninfo) {}
+
+  ~PgDatabase() {}				// close connection and clean up
   
   // query result access
   int Tuples();
@@ -67,6 +70,12 @@ public:
     
 protected:
   PgDatabase() : PgConnection() {}	// Do not connect
+
+private:
+// We don't support copying of PgDatabase objects,
+// so make copy constructor and assignment op private.
+   PgDatabase(const PgDatabase&);
+   PgDatabase& operator= (const PgDatabase&);
 };
 
 #endif	// PGDATABASE_H

@@ -18,8 +18,8 @@
  *-------------------------------------------------------------------------
  */
  
-#ifndef PGCONN_H
-#define PGCONN_H
+#ifndef PGCONNECTION_H
+#define PGCONNECTION_H
 
 extern "C" {
 #include "config.h"
@@ -57,13 +57,13 @@ using namespace std;
 // derived from this class to obtain the connection interface.
 class PgConnection {
 protected:
-  PGconn* pgConn;	// Connection Structures
-  PGresult* pgResult;	// Query Result
-  int pgCloseConnection; // Flag indicating whether the connection should be closed or not
+  PGconn* pgConn;				// Connection Structure
+  PGresult* pgResult;			// Current Query Result
+  int pgCloseConnection; // TRUE if connection should be closed by destructor
   
 public:
    PgConnection(const char* conninfo); 	// use reasonable & environment defaults
-   ~PgConnection(); 			// close connection and clean up
+   virtual ~PgConnection(); 			// close connection and clean up
    
    // Connection status and error messages
    ConnStatusType Status();
@@ -82,9 +82,14 @@ public:
 protected:
    ConnStatusType Connect(const char* conninfo);
    string IntToString(int);
-   
-protected:
+   // Default constructor is only available to subclasses
    PgConnection();
+
+private:
+// We don't support copying of PgConnection objects,
+// so make copy constructor and assignment op private.
+   PgConnection(const PgConnection&);
+   PgConnection& operator= (const PgConnection&);
 };
 
-#endif	// PGCONN_H
+#endif	// PGCONNECTION_H

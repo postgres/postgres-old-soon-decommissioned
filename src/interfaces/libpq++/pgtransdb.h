@@ -22,7 +22,9 @@
 #ifndef PGTRANSDB_H
 #define PGTRANSDB_H
 
+#ifndef PGDATABASE_H
 #include "pgdatabase.h"
+#endif
 
 // ****************************************************************
 //
@@ -45,6 +47,12 @@ protected:
   
 protected:
   PgTransaction() : PgDatabase() {}	// Do not connect
+
+private:
+// We don't support copying of PgTransaction objects,
+// so make copy constructor and assignment op private.
+   PgTransaction(const PgTransaction&);
+   PgTransaction& operator= (const PgTransaction&);
 }; // End PgTransaction Class Declaration
 
 #endif	// PGTRANSDB_H
