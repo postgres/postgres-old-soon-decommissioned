@@ -4128,7 +4128,7 @@ ORDER BY c.ordinal_position;
       <entry><literal>table_catalog</literal></entry>
       <entry><type>sql_identifier</type></entry>
       <entry>
-       Name of the database that contains the table the table that is
+       Name of the database that contains the table that is
        used by the view (always the current database)
       </entry>
      </row>
