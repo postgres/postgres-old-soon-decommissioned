@@ -27,6 +27,9 @@
 extern int Use_syslog;
 #endif
 
+extern bool Log_timestamp;
+extern bool Log_pid;
+
 #ifndef __GNUC__
 extern void elog(int lev, const char *fmt,...);
 

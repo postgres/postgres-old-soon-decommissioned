@@ -139,9 +139,11 @@ ConfigureNamesBool[] =
 	{"geqo",                    PGC_USERSET,    &enable_geqo,           true},
 
 	{"net_server",              PGC_POSTMASTER, &NetServer,             false},
-	{"fsync",                   PGC_POSTMASTER, &enableFsync,           true},
+	{"fsync",                   PGC_BACKEND,    &enableFsync,           true},
 
 	{"log_connections",         PGC_POSTMASTER, &Log_connections,       false},
+	{"log_timestamp",           PGC_BACKEND,    &Log_timestamp,         false},
+	{"log_pid",                 PGC_BACKEND,    &Log_pid,               false},
 
 	{"debug_print_query",       PGC_SUSET,      &Debug_print_query,     false},
 	{"debug_print_parse",       PGC_SUSET,      &Debug_print_parse,     false},

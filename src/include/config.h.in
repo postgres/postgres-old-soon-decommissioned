@@ -140,11 +140,6 @@
  */
 #define TBL_FREE_CMD_MEMORY
 
-/*
- * ELOG_TIMESTAMPS: adds a timestamp with the following format to elog
- * messages:  yymmdd.hh:mm:ss.mmm [pid] message
- */
-/* #define ELOG_TIMESTAMPS */
 
 #undef ENABLE_SYSLOG
 
