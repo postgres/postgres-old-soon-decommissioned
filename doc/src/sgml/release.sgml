@@ -258,6 +258,13 @@ $PostgreSQL$
 
      <listitem>
       <para>
+       Overflow in integer arithmetic operations is now detected and
+       reported as an error.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
        The server now warns of empty strings passed to
        <type>oid</type>/<type>float4</type>/<type>float8</type> data
        types. In the next major release, doing this will generate an
@@ -1227,6 +1234,12 @@ $PostgreSQL$
       surprising result.
      </para>
     </listitem>
+
+     <listitem>
+      <para>
+       Overflow in integer arithmetic operations is now detected (Tom)
+      </para>
+     </listitem>
 
     <listitem>
       <para>

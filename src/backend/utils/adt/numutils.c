@@ -114,7 +114,7 @@ pg_atoi(char *s, int size, int c)
 			if (errno == ERANGE || l < SHRT_MIN || l > SHRT_MAX)
 				ereport(ERROR,
 						(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
-						 errmsg("value \"%s\" is out of range for type shortint", s)));
+						 errmsg("value \"%s\" is out of range for type smallint", s)));
 			break;
 		case sizeof(int8):
 			if (errno == ERANGE || l < SCHAR_MIN || l > SCHAR_MAX)

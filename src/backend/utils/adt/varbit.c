@@ -1310,7 +1310,7 @@ bittoint8(PG_FUNCTION_ARGS)
 	if (VARBITLEN(arg) > sizeof(result) * BITS_PER_BYTE)
 		ereport(ERROR,
 				(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
-				 errmsg("integer out of range")));
+				 errmsg("bigint out of range")));
 
 	result = 0;
 	for (r = VARBITS(arg); r < VARBITEND(arg); r++)
