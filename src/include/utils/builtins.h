@@ -572,6 +572,7 @@ Numeric		numeric_round(Numeric num, int32 scale);
 Numeric		numeric_trunc(Numeric num, int32 scale);
 Numeric		numeric_ceil(Numeric num);
 Numeric		numeric_floor(Numeric num);
+int32		numeric_cmp(Numeric num1, Numeric num2);
 bool		numeric_eq(Numeric num1, Numeric num2);
 bool		numeric_ne(Numeric num1, Numeric num2);
 bool		numeric_gt(Numeric num1, Numeric num2);

@@ -690,6 +690,34 @@ numeric_floor(Numeric num)
  */
 
 
+int32
+numeric_cmp(Numeric num1, Numeric num2)
+{
+	int			result;
+	NumericVar	arg1;
+	NumericVar	arg2;
+
+	if (num1 == NULL || num2 == NULL)
+		return (int32)0;
+
+	if (NUMERIC_IS_NAN(num1) || NUMERIC_IS_NAN(num2))
+		return (int32)0;
+
+	init_var(&arg1);
+	init_var(&arg2);
+
+	set_var_from_num(num1, &arg1);
+	set_var_from_num(num2, &arg2);
+
+	result = cmp_var(&arg1, &arg2);
+
+	free_var(&arg1);
+	free_var(&arg2);
+
+	return (int32)((result == 0) ? 0 : ((result < 0) ? -1 : 1));
+}
+
+
 bool
 numeric_eq(Numeric num1, Numeric num2)
 {
