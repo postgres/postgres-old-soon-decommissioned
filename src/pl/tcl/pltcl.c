@@ -789,7 +789,11 @@ pltcl_func_handler(PG_FUNCTION_ARGS)
 			pltcl_restart_in_progress = 1;
 			if (--pltcl_call_level == 0)
 				pltcl_restart_in_progress = 0;
-			elog(ERROR, "pltcl: %s", interp->result);
+			UTF_BEGIN;
+			elog(ERROR, "pltcl: %s\n%s", interp->result,
+				UTF_U2E(Tcl_GetVar(interp,"errorInfo",
+					TCL_GLOBAL_ONLY)));
+			UTF_END;
 		}
 		if (--pltcl_call_level == 0)
 			pltcl_restart_in_progress = 0;
@@ -1162,7 +1166,11 @@ pltcl_trigger_handler(PG_FUNCTION_ARGS)
 			pltcl_restart_in_progress = 1;
 			if (--pltcl_call_level == 0)
 				pltcl_restart_in_progress = 0;
-			elog(ERROR, "pltcl: %s", interp->result);
+			UTF_BEGIN;
+			elog(ERROR, "pltcl: %s\n%s", interp->result,
+				UTF_U2E(Tcl_GetVar(interp,"errorInfo",
+					TCL_GLOBAL_ONLY)));
+			UTF_END;
 		}
 		if (--pltcl_call_level == 0)
 			pltcl_restart_in_progress = 0;
