@@ -14,8 +14,6 @@
 #ifndef ELOG_H
 #define ELOG_H
 
-#include "miscadmin.h"
-
 #define NOTICE	0				/* random info - no special action */
 #define ERROR	(-1)			/* user error - return to known state */
 #define FATAL	1				/* fatal error - abort process */
@@ -30,23 +28,29 @@ extern int Use_syslog;
 #endif
 
 /*
- * If StopIfError > 0 signal handlers don't do
- * elog(ERROR|FATAL) but remember what action was
- * required with QueryCancel & ExitAfterAbort
+ * If StopIfError > 0 signal handlers mustn't do
+ * elog(ERROR|FATAL), instead remember what action is
+ * required with QueryCancel & ExitAfterAbort.
  */
+extern uint32 StopIfError;		/* duplicates access/xlog.h */
+extern bool QueryCancel;		/* duplicates miscadmin.h */
 extern bool	ExitAfterAbort;
-#define	START_CRIT_CODE		StopIfError++
-#define END_CRIT_CODE		\
-	if (!StopIfError)\
-		elog(STOP, "Not in critical section");\
-	StopIfError--;\
-	if (!StopIfError && QueryCancel)\
-	{\
-		if (ExitAfterAbort)\
-			elog(FATAL, "The system is shutting down");\
-		else\
-			elog(ERROR, "Query was cancelled.");\
-	}
+
+#define	START_CRIT_CODE		(StopIfError++)
+
+#define END_CRIT_CODE	\
+	do { \
+		if (!StopIfError) \
+			elog(STOP, "Not in critical section"); \
+		StopIfError--; \
+		if (!StopIfError && QueryCancel) \
+		{ \
+			if (ExitAfterAbort) \
+				elog(FATAL, "The system is shutting down"); \
+			else \
+				elog(ERROR, "Query was cancelled."); \
+		} \
+	} while(0)
 
 extern bool Log_timestamp;
 extern bool Log_pid;
