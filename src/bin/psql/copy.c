@@ -516,7 +516,7 @@ do_copy(const char *args)
 	if (options->from)
 	{
 		if (options->file)
-			copystream = fopen(options->file, R_TEXTFILE);
+			copystream = fopen(options->file, PG_BINARY_R);
 		else if (!options->psql_inout)
  			copystream = pset.cur_cmd_source;
 		else
