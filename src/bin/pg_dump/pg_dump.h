@@ -190,7 +190,8 @@ extern void dumpTables(FILE* fout, TableInfo* tbinfo, int numTables,
 extern void dumpIndices(FILE* fout, IndInfo* indinfo, int numIndices,
 			TableInfo* tbinfo, int numTables, char *tablename);
 
-extern void dumpClasses(TableInfo *tbinfo, int numTables, FILE *fout, char *tablename);
+extern void dumpClasses(TableInfo *tbinfo, int numTables, FILE *fout, 
+                        char *tablename, int oids);
 extern void dumpTuples(PGresult *res, FILE *fout, int *attrmap);
 extern char* checkForQuote(char* s);
 extern int findLastBuiltinOid();
