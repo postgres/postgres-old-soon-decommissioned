@@ -40,6 +40,10 @@ sig_handler(int sig_no)
 		printf("semval = %d\n", i);
 }
 
+void on_proc_exit( void (*function)(), Datum arg )
+{
+  atexit( function ); 
+}
 int
 main(int argc, char **argv)
 {

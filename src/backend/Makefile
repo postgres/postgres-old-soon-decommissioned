@@ -25,7 +25,8 @@ OBJS := $(DIRS:%=%/SUBSYS.o)
 ifeq ($(PORTNAME), qnx4)
 # This file crashes qnx4's wlink and is therefore not in
 # bootstrap/SUBSYS.o on that platform. (Wotta hack ... is it still
-# necessary?)
+# necessary?) [ Yes, until the Watcom compiler goes open source it's
+# effectively unsupported ]
 OBJS+= bootstrap/bootstrap.o
 endif
 
