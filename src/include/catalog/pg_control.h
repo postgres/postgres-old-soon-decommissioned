@@ -15,9 +15,8 @@
 #ifndef PG_CONTROL_H
 #define PG_CONTROL_H
 
-#include <time.h>
-
 #include "access/xlogdefs.h"
+#include "pgtime.h"
 #include "utils/pg_crc.h"
 
 

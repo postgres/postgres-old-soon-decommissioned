@@ -24,7 +24,6 @@
 
 #include "postgres.h"
 
-#include <time.h>
 #include <math.h>
 
 #include "optimizer/geqo.h"
@@ -32,6 +31,7 @@
 #include "optimizer/geqo_mutation.h"
 #include "optimizer/geqo_pool.h"
 #include "optimizer/geqo_selection.h"
+#include "pgtime.h"
 
 
 /*

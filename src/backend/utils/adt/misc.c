@@ -15,7 +15,6 @@
 #include "postgres.h"
 
 #include <sys/file.h>
-#include <time.h>
 
 #include "commands/dbcommands.h"
 #include "miscadmin.h"

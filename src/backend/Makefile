@@ -14,11 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 DIRS := access bootstrap catalog parser commands executor lib libpq \
 	main nodes optimizer port postmaster regex rewrite \
-	storage tcop utils
-
-ifeq ($(USE_PGTZ), yes)
-DIRS+= $(top_builddir)/src/timezone
-endif
+	storage tcop utils $(top_builddir)/src/timezone
 
 OBJS := $(DIRS:%=%/SUBSYS.o)
 

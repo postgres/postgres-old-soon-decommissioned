@@ -14,9 +14,6 @@
 #ifndef VACUUM_H
 #define VACUUM_H
 
-#include <time.h>
-#include <sys/time.h>
-
 #ifdef HAVE_GETRUSAGE
 #include <sys/resource.h>
 #else
@@ -28,6 +25,7 @@
 #include "catalog/pg_statistic.h"
 #include "catalog/pg_type.h"
 #include "nodes/parsenodes.h"
+#include "pgtime.h"
 #include "utils/rel.h"
 
 

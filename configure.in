@@ -6,7 +6,7 @@ dnl
 dnl 0. Initialization and options processing
 dnl 1. Programs
 dnl 2. Libraries
-dnl 3. Header files 
+dnl 3. Header files
 dnl 4. Types
 dnl 5. Structures
 dnl 6. Compiler characteristics
@@ -895,7 +895,7 @@ AC_LIBOBJ(open)
 AC_LIBOBJ(rand) ;;
 esac
 
-# Win32 can't to rename or unlink on an open file
+# Win32 can't do rename or unlink on an open file
 case $host_os in mingw*|cygwin*)
 AC_LIBOBJ(dirmod) ;;
 esac

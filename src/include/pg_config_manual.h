@@ -153,14 +153,6 @@
 #endif
 
 /*
- * Define this if your operating system has _timezone rather than timezone
- */
-#if defined(__CYGWIN__) || defined(WIN32)
-#define HAVE_INT_TIMEZONE		/* has int _timezone */
-#define HAVE_UNDERSCORE_TIMEZONE 1
-#endif
-
-/*
  * This is the default directory in which AF_UNIX socket files are
  * placed.	Caution: changing this risks breaking your existing client
  * applications, which are likely to continue to look in the old

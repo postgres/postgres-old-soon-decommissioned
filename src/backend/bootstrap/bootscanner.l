@@ -15,8 +15,6 @@
  */
 #include "postgres.h"
 
-#include <time.h>
-
 #include "access/attnum.h"
 #include "access/htup.h"
 #include "access/itup.h"
@@ -31,6 +29,7 @@
 #include "nodes/pg_list.h"
 #include "nodes/primnodes.h"
 #include "parser/scansup.h"
+#include "pgtime.h"
 #include "rewrite/prs2lock.h"
 #include "storage/block.h"
 #include "storage/fd.h"

@@ -15,9 +15,9 @@
 #define NABSTIME_H
 
 #include <limits.h>
-#include <time.h>
 
 #include "fmgr.h"
+#include "pgtime.h"
 #include "utils/timestamp.h"
 #include "utils/datetime.h"
 
@@ -164,6 +164,6 @@ extern Datum timeofday(PG_FUNCTION_ARGS);
 extern AbsoluteTime GetCurrentAbsoluteTime(void);
 extern AbsoluteTime GetCurrentAbsoluteTimeUsec(int *usec);
 extern TimestampTz AbsoluteTimeUsecToTimestampTz(AbsoluteTime sec, int usec);
-extern void abstime2tm(AbsoluteTime time, int *tzp, struct tm * tm, char **tzn);
+extern void abstime2tm(AbsoluteTime time, int *tzp, struct pg_tm * tm, char **tzn);
 
 #endif   /* NABSTIME_H */

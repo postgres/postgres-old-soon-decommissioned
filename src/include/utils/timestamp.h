@@ -13,12 +13,12 @@
 #ifndef TIMESTAMP_H
 #define TIMESTAMP_H
 
-#include <time.h>
 #include <math.h>
 #include <limits.h>
 #include <float.h>
 
 #include "fmgr.h"
+#include "pgtime.h"
 #ifdef HAVE_INT64_TIMESTAMP
 #include "utils/int8.h"
 #endif
@@ -251,16 +251,16 @@ extern Datum now(PG_FUNCTION_ARGS);
 
 /* Internal routines (not fmgr-callable) */
 
-extern int	tm2timestamp(struct tm * tm, fsec_t fsec, int *tzp, Timestamp *dt);
-extern int	timestamp2tm(Timestamp dt, int *tzp, struct tm * tm,
+extern int	tm2timestamp(struct pg_tm * tm, fsec_t fsec, int *tzp, Timestamp *dt);
+extern int	timestamp2tm(Timestamp dt, int *tzp, struct pg_tm * tm,
 			 fsec_t *fsec, char **tzn);
 extern void dt2time(Timestamp dt, int *hour, int *min, int *sec, fsec_t *fsec);
 
-extern int	interval2tm(Interval span, struct tm * tm, fsec_t *fsec);
-extern int	tm2interval(struct tm * tm, fsec_t fsec, Interval *span);
+extern int	interval2tm(Interval span, struct pg_tm * tm, fsec_t *fsec);
+extern int	tm2interval(struct pg_tm * tm, fsec_t fsec, Interval *span);
 
 extern Timestamp SetEpochTimestamp(void);
-extern void GetEpochTime(struct tm * tm);
+extern void GetEpochTime(struct pg_tm * tm);
 
 extern int	timestamp_cmp_internal(Timestamp dt1, Timestamp dt2);
 /* timestamp comparison works for timestamptz also */

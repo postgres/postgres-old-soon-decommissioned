@@ -309,18 +309,6 @@ typedef unsigned long int uint64;
 #define HAVE_INT64_TIMESTAMP
 #endif
 
-/* Global variable holding time zone information. */
-#if defined(USE_PGTZ) && !defined(FRONTEND)
-#define TIMEZONE_GLOBAL pg_timezone
-#else
-#ifndef HAVE_UNDERSCORE_TIMEZONE
-#define TIMEZONE_GLOBAL timezone
-#else
-#define TIMEZONE_GLOBAL _timezone
-#define tzname _tzname			/* should be in time.h? */
-#endif
-#endif
-
 /* sig_atomic_t is required by ANSI C, but may be missing on old platforms */
 #ifndef HAVE_SIG_ATOMIC_T
 typedef int sig_atomic_t;

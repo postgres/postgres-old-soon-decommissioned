@@ -2094,10 +2094,6 @@ InitializeGUCOptions(void)
 	if (env != NULL)
 		SetConfigOption("datestyle", env, PGC_POSTMASTER, PGC_S_ENV_VAR);
 
-	env = getenv("TZ");
-	if (env != NULL)
-		SetConfigOption("timezone", env, PGC_POSTMASTER, PGC_S_ENV_VAR);
-
 	env = getenv("PGCLIENTENCODING");
 	if (env != NULL)
 		SetConfigOption("client_encoding", env, PGC_POSTMASTER, PGC_S_ENV_VAR);
