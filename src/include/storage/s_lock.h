@@ -124,7 +124,7 @@ __asm__("lock; xchgb %0,%1": "=q"(_res), "=m"(*lock):"0"(_res));
 
 
 
-#if defined(__arm32__)
+#if defined(__arm32__) || defined(__arm__)
 #define TAS(lock) tas(lock)
 
 static __inline__ int
