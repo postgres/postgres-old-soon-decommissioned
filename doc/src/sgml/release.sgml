@@ -24,6 +24,8 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+COPY accepts a list of columns to copy
+ALTER TABLE DROP COLUMN
 CREATE OPERATOR CLASS/DROP OPERATOR CLASS
 CREATE CAST/DROP CAST
 Sequences created by SERIAL column definitions now auto-drop with the column

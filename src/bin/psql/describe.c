@@ -536,7 +536,7 @@ describeTableDetails(const char *name, bool desc)
 	appendPQExpBuffer(&buf, "\nFROM pg_class c, pg_attribute a");
 	if (tableinfo.relkind == 'i')
 		appendPQExpBuffer(&buf, ", pg_index i");
-	appendPQExpBuffer(&buf, "\nWHERE c.relname = '%s'\n  AND a.attnum > 0 AND a.attrelid = c.oid", name);
+	appendPQExpBuffer(&buf, "\nWHERE c.relname = '%s'\n  AND a.attnum > 0 AND NOT a.attisdropped AND a.attrelid = c.oid", name);
 	if (tableinfo.relkind == 'i')
 		appendPQExpBuffer(&buf, " AND a.attrelid = i.indexrelid");
 	appendPQExpBuffer(&buf, "\nORDER BY a.attnum");

@@ -159,7 +159,6 @@ extern void ExecAssignScanType(CommonScanState *csstate,
 				   TupleDesc tupDesc, bool shouldFree);
 extern void ExecAssignScanTypeFromOuterPlan(Plan *node,
 								CommonScanState *csstate);
-extern Form_pg_attribute ExecGetTypeInfo(Relation relDesc);
 
 extern ExprContext *MakeExprContext(TupleTableSlot *slot,
 				MemoryContext queryContext);

@@ -63,6 +63,7 @@ extern int	RemoveRelConstraints(Relation rel, const char *constrName,
 
 extern void DeleteRelationTuple(Oid relid);
 extern void DeleteAttributeTuples(Oid relid);
+extern void RemoveAttributeById(Oid relid, AttrNumber attnum);
 extern void RemoveAttrDefault(Oid relid, AttrNumber attnum,
 							  DropBehavior behavior, bool complain);
 extern void RemoveAttrDefaultById(Oid attrdefId);

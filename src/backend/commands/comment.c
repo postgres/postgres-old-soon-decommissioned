@@ -382,8 +382,8 @@ CommentAttribute(List *qualname, char *comment)
 
 	attnum = get_attnum(RelationGetRelid(relation), attrname);
 	if (attnum == InvalidAttrNumber)
-		elog(ERROR, "\"%s\" is not an attribute of class \"%s\"",
-			 attrname, RelationGetRelationName(relation));
+		elog(ERROR, "Relation \"%s\" has no column \"%s\"",
+			 RelationGetRelationName(relation), attrname);
 
 	/* Create the comment using the relation's oid */
 

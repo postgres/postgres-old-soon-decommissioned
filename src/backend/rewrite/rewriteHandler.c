@@ -264,6 +264,10 @@ rewriteTargetList(Query *parsetree, Relation target_relation)
 		Form_pg_attribute att_tup = target_relation->rd_att->attrs[attrno-1];
 		TargetEntry *new_tle = NULL;
 
+		/* We can ignore deleted attributes */
+		if (att_tup->attisdropped)
+			continue;
+
 		/*
 		 * Look for targetlist entries matching this attr.  We match by
 		 * resno, but the resname should match too.

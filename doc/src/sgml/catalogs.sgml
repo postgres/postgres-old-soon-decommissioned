@@ -810,6 +810,17 @@
       </entry>
      </row>
 
+     <row>
+      <entry>attisdropped</entry>
+      <entry><type>bool</type></entry>
+      <entry></entry>
+      <entry>
+       This column has been dropped and is no longer valid.  A dropped
+       column is still physically present in the table, but is
+       ignored by the parser and so cannot be accessed via SQL.
+      </entry>
+     </row>
+
     </tbody>
    </tgroup>
   </table>

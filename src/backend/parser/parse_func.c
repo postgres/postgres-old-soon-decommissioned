@@ -1150,6 +1150,9 @@ setup_field_select(Node *input, char *attname, Oid relid)
 	AttrNumber	attno;
 
 	attno = get_attnum(relid, attname);
+	if (attno == InvalidAttrNumber)
+		elog(ERROR, "Relation \"%s\" has no column \"%s\"",
+			 get_rel_name(relid), attname);
 
 	fselect->arg = input;
 	fselect->fieldnum = attno;

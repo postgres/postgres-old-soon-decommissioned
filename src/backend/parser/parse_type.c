@@ -85,8 +85,8 @@ LookupTypeName(const TypeName *typename)
 		relid = RangeVarGetRelid(rel, false);
 		attnum = get_attnum(relid, field);
 		if (attnum == InvalidAttrNumber)
-			elog(ERROR, "'%s' is not an attribute of class '%s'",
-				 field, rel->relname);
+			elog(ERROR, "Relation \"%s\" has no column \"%s\"",
+				 rel->relname, field);
 		restype = get_atttype(relid, attnum);
 
 		/* this construct should never have an array indicator */

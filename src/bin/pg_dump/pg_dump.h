@@ -128,6 +128,7 @@ typedef struct _tableInfo
 	 * all interesting tables so that we can tell which constraints were
 	 * inherited.
 	 */
+	bool	   *attisdropped;	/* true if attr is dropped; don't dump it */
 	bool	   *notnull;		/* Not null constraints on attributes */
 	char	  **adef_expr;		/* DEFAULT expressions */
 	bool	   *inhAttrs;		/* true if each attribute is inherited */

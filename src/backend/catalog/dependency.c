@@ -567,7 +567,8 @@ doDeletion(const ObjectAddress *object)
 			else
 			{
 				if (object->objectSubId != 0)
-					elog(ERROR, "DROP COLUMN not implemented yet");
+					RemoveAttributeById(object->objectId,
+										object->objectSubId);
 				else
 					heap_drop_with_catalog(object->objectId);
 			}

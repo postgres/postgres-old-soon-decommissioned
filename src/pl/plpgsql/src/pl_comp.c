@@ -1037,10 +1037,7 @@ plpgsql_parse_dblwordtype(char *string)
 	/*
 	 * Fetch the named table field and it's type
 	 */
-	attrtup = SearchSysCache(ATTNAME,
-							 ObjectIdGetDatum(classOid),
-							 PointerGetDatum(word2),
-							 0, 0);
+	attrtup = SearchSysCacheAttName(classOid, word2);
 	if (!HeapTupleIsValid(attrtup))
 	{
 		ReleaseSysCache(classtup);
