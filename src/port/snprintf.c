@@ -467,15 +467,15 @@ performpr:
 			fmtparptr[i]->charvalue = va_arg(args, int);
 			break;
 		case FMTLEN:
-			if (i + 1 < fmtpos && fmtpar[i + 1].func != FMTWIDTH)
-				fmtpar[i + 1].len = va_arg(args, int);
+			if (i + 1 < fmtpos && fmtparptr[i + 1]->func != FMTWIDTH)
+				fmtparptr[i + 1]->len = va_arg(args, int);
 			/* For "%*.*f", use the second arg */
-			if (i + 2 < fmtpos && fmtpar[i + 1].func == FMTWIDTH)
-				fmtpar[i + 2].len = va_arg(args, int);
+			if (i + 2 < fmtpos && fmtparptr[i + 1]->func == FMTWIDTH)
+				fmtparptr[i + 2]->len = va_arg(args, int);
 			break;
 		case FMTWIDTH:
 			if (i + 1 < fmtpos)
-				fmtpar[i + 1].maxwidth = fmtpar[i + 1].precision =
+				fmtparptr[i + 1]->maxwidth = fmtparptr[i + 1]->precision =
 														va_arg(args, int);
 			break;
 		}
