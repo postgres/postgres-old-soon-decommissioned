@@ -714,7 +714,7 @@ random_fract(void)
 	do
 	{
 		z = random();
-	} while (!(z > 0 && z < MAX_RANDOM_VALUE));
+	} while (z <= 0 || z >= MAX_RANDOM_VALUE);
 	return (double) z / (double) MAX_RANDOM_VALUE;
 }
 
