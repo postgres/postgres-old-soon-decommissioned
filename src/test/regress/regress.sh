@@ -47,7 +47,7 @@ echo "   ports@postgresql.org"
 echo "See regress/README for more information."
 echo ""
 
-echo "=============== dropping old regression database... ================="
+echo "=============== dropping old regression database...   ================="
 dropdb $HOST regression
 
 echo "=============== creating new regression database...   ================="
@@ -136,7 +136,7 @@ if [ $? -ne 0 ]; then
 fi
 
 exit 0
-echo "=============== dropping regression database...     ================="
+echo "=============== dropping regression database...       ================="
 dropdb regression
 if [ $? -ne 0 ]; then
      echo dropdb failed
