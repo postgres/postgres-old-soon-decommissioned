@@ -56,4 +56,7 @@ extern char *CleanUpStr(char *s);
 extern int	EnterString(char *str);
 extern void build_indices(void);
 
+extern int	Int_yylex(void);
+extern void Int_yyerror(const char *str);
+
 #endif	 /* BOOTSTRAP_H */
