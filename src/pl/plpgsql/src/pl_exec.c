@@ -1991,7 +1991,7 @@ exec_prepare_plan(PLpgSQL_execstate * estate,
 	 *
 	 * +1 is just to avoid palloc(0) error.
 	 */
-	argtypes = palloc(sizeof(Oid *) * (expr->nparams + 1));
+	argtypes = (Oid *) palloc(sizeof(Oid) * (expr->nparams + 1));
 
 	for (i = 0; i < expr->nparams; i++)
 	{
