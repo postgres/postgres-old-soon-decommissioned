@@ -2,7 +2,7 @@ typedef union {
     int				tagname;
     struct ECPGtemp_type	type;
     char *			symbolname;
-    int				indexsize;
+    long			indexsize;
     enum ECPGttype		type_enum;
     struct when			action;
 } YYSTYPE;
@@ -31,27 +31,28 @@ typedef union {
 #define	SQL_DO	280
 #define	SQL_GOTO	281
 #define	SQL_SQLPRINT	282
-#define	S_SYMBOL	283
-#define	S_LENGTH	284
-#define	S_ANYTHING	285
-#define	S_LABEL	286
-#define	S_VARCHAR	287
-#define	S_VARCHAR2	288
-#define	S_EXTERN	289
-#define	S_STATIC	290
-#define	S_AUTO	291
-#define	S_CONST	292
-#define	S_REGISTER	293
-#define	S_STRUCT	294
-#define	S_SIGNED	295
+#define	SQL_STOP	283
+#define	S_SYMBOL	284
+#define	S_LENGTH	285
+#define	S_ANYTHING	286
+#define	S_LABEL	287
+#define	S_VARCHAR	288
+#define	S_VARCHAR2	289
+#define	S_EXTERN	290
+#define	S_STATIC	291
+#define	S_AUTO	292
+#define	S_CONST	293
+#define	S_REGISTER	294
+#define	S_STRUCT	295
 #define	S_UNSIGNED	296
-#define	S_LONG	297
-#define	S_SHORT	298
-#define	S_INT	299
-#define	S_CHAR	300
-#define	S_FLOAT	301
-#define	S_DOUBLE	302
-#define	S_BOOL	303
+#define	S_SIGNED	297
+#define	S_LONG	298
+#define	S_SHORT	299
+#define	S_INT	300
+#define	S_CHAR	301
+#define	S_FLOAT	302
+#define	S_DOUBLE	303
+#define	S_BOOL	304
 
 
 extern YYSTYPE yylval;
