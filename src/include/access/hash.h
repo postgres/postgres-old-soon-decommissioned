@@ -272,10 +272,6 @@ extern uint32 hashfloat4(float32 keyp);
 extern uint32 hashfloat8(float64 keyp);
 extern uint32 hashoid(Oid key);
 extern uint32 hashchar(char key);
-extern uint32 hashchar2(uint16 intkey);
-extern uint32 hashchar4(uint32 intkey);
-extern uint32 hashchar8(char *key);
-extern uint32 hashchar16(char *key);
 extern uint32 hashtext(struct varlena * key);
 extern uint32 hashname(NameData *n);
 

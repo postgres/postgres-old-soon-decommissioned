@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * oidcompos.h--
- *	  prototype file for the oid {char16,int4} composite type functions.
+ *	  prototype file for the oid {name,int4} composite type functions.
  *
  *
  * Copyright (c) 1994, Regents of the University of California
