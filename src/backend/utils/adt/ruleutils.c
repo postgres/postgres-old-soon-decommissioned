@@ -4030,6 +4030,7 @@ get_opclass_name(Oid opclass, Oid actual_datatype,
 	Form_pg_opclass opcrec;
 	char	   *opcname;
 	char	   *nspname;
+	bool		isvisible;
 
 	/* Domains use their base type's default opclass */
 	if (OidIsValid(actual_datatype))
@@ -4049,12 +4050,16 @@ get_opclass_name(Oid opclass, Oid actual_datatype,
 			OidIsValid(get_element_type(actual_datatype)))
 			actual_datatype = opcrec->opcintype;
 	}
+
+	/* Must force use of opclass name if not in search path */
+	isvisible = OpclassIsVisible(opclass);
 	
-	if (actual_datatype != opcrec->opcintype || !opcrec->opcdefault)
+	if (actual_datatype != opcrec->opcintype || !opcrec->opcdefault ||
+		!isvisible)
 	{
 		/* Okay, we need the opclass name.	Do we need to qualify it? */
 		opcname = NameStr(opcrec->opcname);
-		if (OpclassIsVisible(opclass))
+		if (isvisible)
 			appendStringInfo(buf, " %s", quote_identifier(opcname));
 		else
 		{
