@@ -49,6 +49,7 @@ extern void ResetCancelConn(void);
 #ifndef WIN32
 extern void handle_sigint(SIGNAL_ARGS);
 #else
+extern void setup_win32_locks(void);
 extern void setup_cancel_handler(void);
 #endif
 

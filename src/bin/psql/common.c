@@ -307,9 +307,14 @@ consoleHandler(DWORD dwCtrlType)
 }
 
 void
-setup_cancel_handler(void)
+setup_win32_locks(void)
 {
 	InitializeCriticalSection(&cancelConnLock);
+}
+
+void
+setup_cancel_handler(void)
+{
 	SetConsoleCtrlHandler(consoleHandler, TRUE);
 }
 

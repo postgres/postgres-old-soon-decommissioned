@@ -121,6 +121,7 @@ main(int argc, char *argv[])
 
 #ifdef WIN32
 	setvbuf(stderr, NULL, _IONBF, 0);
+	setup_win32_locks();
 #endif
 	pset.cur_cmd_source = stdin;
 	pset.cur_cmd_interactive = false;
