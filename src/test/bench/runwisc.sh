@@ -4,7 +4,7 @@
 # Note that in our published benchmark numbers, we executed the command in the
 # following fashion:
 #
-# time $POSTGRES -texecutor -tplanner -f hashjoin -Q bench
+# time $POSTGRES -texecutor -tplanner -f hashjoin bench
 #
 if [ ! -d $1 ]; then
         echo " you must specify a valid data directory " >&2
