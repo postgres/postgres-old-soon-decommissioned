@@ -1525,7 +1525,7 @@ gunzip -c user.ps.gz \
 	<entry><systemitem class="osname">FreeBSD</></entry>
 	<entry><systemitem>Alpha</></entry>
 	<entry>7.2</entry>
-	<entry>2001-12-18,
+	<entry>2002-11-13,
 	 Chris Kings-Lynne (<email>chriskl@familyhealth.com.au</email>)</entry>
         <entry></entry>
        </row>
