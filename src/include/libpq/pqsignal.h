@@ -17,7 +17,6 @@
 #ifndef PQSIGNAL_H
 #define PQSIGNAL_H
 
-#include <signal.h>
 
 
 typedef void (*pqsigfunc)(int);

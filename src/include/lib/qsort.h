@@ -13,7 +13,6 @@
 #ifndef	QSORT_H
 #define	QSORT_H
 
-#include <sys/types.h>
 
 extern void pg_qsort(void *bot,
 		     size_t nmemb,

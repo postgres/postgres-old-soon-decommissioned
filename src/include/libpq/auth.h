@@ -13,7 +13,7 @@
 #ifndef AUTH_H
 #define	AUTH_H
 
-#include "libpq/pqcomm.h"
+#include <libpq/pqcomm.h>
 
 /*----------------------------------------------------------------
  * Common routines and definitions

@@ -13,16 +13,10 @@
 #ifndef LIBPQ_FS_H
 #define LIBPQ_FS_H
 
-#include "lib/dllist.h"
-#include <sys/file.h>
-#include <sys/stat.h>
 
-#include <fcntl.h>		/* for O_ on some */
 #ifndef WIN32
-#include <unistd.h>		/* for SEEK_ on most */
 #endif /* WIN32 */
 #ifndef SEEK_SET
-#include <stdio.h>		/* for SEEK_ on others */
 #endif /* SEEK_SET */
 
 /* UNIX compatibility junk.  This should be in all systems' include files,

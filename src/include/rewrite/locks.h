@@ -13,7 +13,6 @@
 #ifndef	LOCKS_H
 #define	LOCKS_H
 
-#include "rewrite/prs2lock.h"
 
 extern List *matchLocks(CmdType event, RuleLock *rulelocks, int varno,
 			Query *parsetree);

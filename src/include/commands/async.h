@@ -13,7 +13,6 @@
 #ifndef	ASYNC_H
 #define	ASYNC_H
 
-#include "nodes/memnodes.h"
 
 extern void Async_NotifyHandler(SIGNAL_ARGS);
 extern void Async_Notify(char *relname);

@@ -14,8 +14,6 @@
 #define PLANNER_H
 
 /*
-#include "optimizer/internal.h"
-#include "parser/parse_query.h"
 */
 
 extern Plan *planner(Query *parse);

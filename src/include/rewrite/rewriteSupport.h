@@ -13,7 +13,6 @@
 #ifndef	REWRITESUPPORT_H
 #define	REWRITESUPPORT_H
 
-#include "nodes/pg_list.h"
 
 extern int IsDefinedRewriteRule(char *ruleName);
 

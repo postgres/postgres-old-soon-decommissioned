@@ -27,10 +27,6 @@
  *    globals.h --                                                           *
  *****************************************************************************/
 
-#include "postgres.h"
-
-/* #include "storage/sinval.h" */
-
 /*
  * from postmaster/postmaster.c
  */

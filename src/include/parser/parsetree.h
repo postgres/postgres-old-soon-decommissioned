@@ -18,8 +18,6 @@
  *	need pg_list.h for definitions of CAR(), etc. macros
  * ----------------
  */
-#include "nodes/pg_list.h"
-#include "nodes/parsenodes.h"
 
 /* ----------------
  *	range table macros

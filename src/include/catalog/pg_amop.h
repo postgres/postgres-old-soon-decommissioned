@@ -24,7 +24,6 @@
  *	can be read by both genbki.sh and the C compiler.
  * ----------------
  */
-#include "access/istrat.h"
 
 /* ----------------
  *	pg_amop definition.  cpp turns this into

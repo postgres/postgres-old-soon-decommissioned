@@ -13,7 +13,6 @@
 #ifndef VERSION_H
 #define VERSION_H
 
-#include "nodes/pg_list.h"
 
 extern void DefineVersion(char *name, char *fromRelname, char *date);
 extern void VersionCreate(char *vname, char *bname);

@@ -24,7 +24,6 @@
  *	can be read by both genbki.sh and the C compiler.
  * ----------------
  */
-#include "utils/nabstime.h"
 
 /* ----------------
  *	pg_version definition.  cpp turns this into
