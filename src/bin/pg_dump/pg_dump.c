@@ -4633,10 +4633,11 @@ dumpProcLang(Archive *fout, ProcLangInfo *plang)
 				NULL, "",
 				plang->dobj.catId, 0, plang->dobj.dumpId);
 
-	dumpACL(fout, plang->dobj.catId, plang->dobj.dumpId, "LANGUAGE",
-			qlanname, plang->lanname,
-			funcInfo->pronamespace->nspname,
-			NULL, plang->lanacl);
+	if (plang->lanpltrusted)
+		dumpACL(fout, plang->dobj.catId, plang->dobj.dumpId, "LANGUAGE",
+				qlanname, plang->lanname,
+				funcInfo->pronamespace->nspname,
+				NULL, plang->lanacl);
 
 	free(qlanname);
 

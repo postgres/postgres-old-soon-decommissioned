@@ -594,7 +594,7 @@ ExecuteGrantStmt_Language(GrantStmt *stmt)
 			aclcheck_error(ACLCHECK_NO_PRIV, ACL_KIND_LANGUAGE,
 						   NameStr(pg_language_tuple->lanname));
 
-		if (!pg_language_tuple->lanpltrusted && stmt->is_grant)
+		if (!pg_language_tuple->lanpltrusted)
 			ereport(ERROR,
 					(errcode(ERRCODE_WRONG_OBJECT_TYPE),
 					 errmsg("language \"%s\" is not trusted", langname)));
