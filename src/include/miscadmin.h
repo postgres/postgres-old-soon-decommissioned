@@ -41,7 +41,7 @@ extern bool	QueryCancel;
 extern char *DataDir;
 
 extern int	MyProcPid;
-
+extern struct Port	*MyProcPort;
 extern long	MyCancelKey;
 
 extern char OutputFileName[];

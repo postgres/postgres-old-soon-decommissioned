@@ -43,7 +43,7 @@ bool		Quiet = false;
 bool		QueryCancel = false;
 
 int			MyProcPid;
-
+struct Port *MyProcPort;
 long		MyCancelKey;
 
 char	   *DataDir;

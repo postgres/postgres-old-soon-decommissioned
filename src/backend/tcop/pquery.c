@@ -35,13 +35,12 @@
 #include "executor/execdesc.h"
 #include "executor/executor.h"
 #include "tcop/pquery.h"
+#include "utils/ps_status.h"
 
 #include "commands/command.h"
 
 static char *CreateOperationTag(int operationType);
 static void ProcessQueryDesc(QueryDesc *queryDesc);
-
-extern const char **ps_status;	/* from postgres.c */
 
 
 /* ----------------------------------------------------------------
@@ -228,7 +227,7 @@ ProcessQueryDesc(QueryDesc *queryDesc)
 	plan = queryDesc->plantree;
 
 	operation = queryDesc->operation;
-	*ps_status = tag = CreateOperationTag(operation);
+	PS_SET_STATUS( tag = CreateOperationTag(operation) );
 	dest = queryDesc->dest;
 
 	/* ----------------
