@@ -233,6 +233,28 @@ ProcessUtility(Node *parsetree,
 			}
 			break;
 
+	case T_CommentStmt:
+	  {
+	    
+	    CommentStmt *statement;
+	    
+	    statement = ((CommentStmt *) parsetree);
+	    
+	    PS_SET_STATUS(commandTag = "COMMENT");
+	    CHECK_IF_ABORTED();
+
+#ifndef NO_SECURITY
+	    if (!pg_ownercheck(userName, statement->relname, RELNAME))
+	      elog(ERROR, "you do not own class \"%s\"", statement->relname);
+#endif
+
+	    CommentRelation(statement->relname, statement->attrname, 
+			    statement->comment);
+	  }
+	  break;
+	    
+
+
 		case T_CopyStmt:
 			{
 				CopyStmt   *stmt = (CopyStmt *) parsetree;

@@ -152,6 +152,7 @@ typedef enum NodeTag
 	T_DefineStmt,
 	T_DestroyStmt,
 	T_TruncateStmt,
+	T_CommentStmt,
 	T_ExtendStmt,
 	T_FetchStmt,
 	T_IndexStmt,

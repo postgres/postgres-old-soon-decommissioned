@@ -55,6 +55,9 @@ char	   *Name_pg_trigger_indices[Num_pg_trigger_indices] = {TriggerRelidIndex,
 	TriggerConstrNameIndex,
 	TriggerConstrRelidIndex};
 
+char       *Name_pg_description_indices[Num_pg_description_indices] = {DescriptionObjIndex};
+
+
 
 static HeapTuple CatalogIndexFetchTuple(Relation heapRelation,
 					   Relation idesc,

@@ -32,6 +32,9 @@ extern void heap_destroy_with_catalog(char *relname);
 extern void heap_truncate(char *relname);
 extern void heap_destroy(Relation rel);
 
+extern void CreateComments(Oid object, char *comments);
+extern void DeleteComments(Oid object);
+
 extern void AddRelationRawConstraints(Relation rel,
 									  List *rawColDefaults,
 									  List *rawConstraints);

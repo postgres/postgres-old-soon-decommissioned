@@ -309,6 +309,18 @@ typedef struct TruncateStmt
         NodeTag         type;
         char	   *relName;            /* relation to be truncated */
 } TruncateStmt;
+
+/* ----------------------
+ *              Comment On Statement
+ * ----------------------
+ */
+typedef struct CommentStmt
+{
+  NodeTag         type;
+  char *relname;                       /* relation to create/drop comment */
+  char *attrname;                      /* attribute to comment on */
+  char *comment;                       /* the actual comment */
+} CommentStmt;
       
 /* ----------------------
  *		Extend Index Statement
