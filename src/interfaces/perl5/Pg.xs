@@ -215,7 +215,8 @@ PQconnectdb(conninfo)
 				}
 			} else {
 				while (*ptr && *ptr != ' ' && *ptr != '\t') {
-					*ptr++ = tolower(*ptr);
+				      *ptr = tolower(*ptr);
+				      ptr++;
 				}
 			}
 		}
@@ -732,7 +733,8 @@ connectdb(conninfo)
 				}
 			} else {
 				while (*ptr && *ptr != ' ' && *ptr != '\t') {
-					*ptr++ = tolower(*ptr);
+					*ptr = tolower(*ptr);
+					ptr++;
 				}
 			}
 		}
