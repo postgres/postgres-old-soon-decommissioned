@@ -20,7 +20,7 @@
 #define SIGKILLDAEMON1	SIGINT
 #define SIGKILLDAEMON2	SIGTERM
 
-extern void createdb(char *dbname);
+extern void createdb(char *dbname, char *dbpath);
 extern void destroydb(char *dbname);
 
 #endif							/* DBCOMMANDS_H */

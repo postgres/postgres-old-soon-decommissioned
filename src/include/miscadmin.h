@@ -107,6 +107,11 @@ extern Oid	LastOidProcessed;	/* for query rewrite */
  *			POSTGRES directory path definitions.							 *
  *****************************************************************************/
 
+/* in utils/misc/database.c */
+extern void GetRawDatabaseInfo(char *name, Oid *owner, Oid *db_id, char *path);
+extern int GetDatabaseInfo(char *name, Oid *owner, char *path);
+extern char *ExpandDatabasePath(char *path);
+
 /* now in utils/init/miscinit.c */
 extern char *GetDatabasePath(void);
 extern char *GetDatabaseName(void);

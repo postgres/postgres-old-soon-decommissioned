@@ -125,8 +125,6 @@ static Size SizeVfdCache = 0;
  */
 static int	nfile = 0;
 
-static char Sep_char = '/';
-
 /*
  * Private Routines
  *
@@ -458,29 +456,35 @@ FreeVfd(File file)
 	VfdCache[0].nextFree = file;
 }
 
+/* filepath()
+ * Open specified file name.
+ * Fill in absolute path fields if necessary.
+ *
+ * Modify to use GetDatabasePath() rather than hardcoded paths.
+ * - thomas 1997-11-02
+ */
 static char *
 filepath(char *filename)
 {
 	char	   *buf;
-	char		basename[16];
 	int			len;
 
-	if (*filename != Sep_char)
+	/* Not an absolute path name? Then fill in with database path... */
+	if (*filename != SEP_CHAR)
 	{
-		/* Either /base/ or \base\ */
-		sprintf(basename, "%cbase%c", Sep_char, Sep_char);
-
-		len = strlen(DataDir) + strlen(basename) + strlen(GetDatabaseName())
-			+ strlen(filename) + 2;
+		len = strlen(GetDatabasePath()) + strlen(filename) + 2;
 		buf = (char *) palloc(len);
-		sprintf(buf, "%s%s%s%c%s",
-				DataDir, basename, GetDatabaseName(), Sep_char, filename);
+		sprintf(buf, "%s%c%s", GetDatabasePath(), SEP_CHAR, filename);
 	}
 	else
 	{
 		buf = (char *) palloc(strlen(filename) + 1);
 		strcpy(buf, filename);
 	}
+
+#ifdef FILEDEBUG
+printf("filepath: path is %s\n", buf);
+#endif
 
 	return (buf);
 }

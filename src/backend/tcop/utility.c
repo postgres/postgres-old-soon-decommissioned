@@ -569,7 +569,7 @@ ProcessUtility(Node * parsetree,
 
 				commandTag = "CREATEDB";
 				CHECK_IF_ABORTED();
-				createdb(stmt->dbname);
+				createdb(stmt->dbname, stmt->dbpath);
 			}
 			break;
 

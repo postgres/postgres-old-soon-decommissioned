@@ -473,6 +473,7 @@ typedef struct CreatedbStmt
 {
 	NodeTag		type;
 	char	   *dbname;			/* database to create */
+	char	   *dbpath;			/* location of database */
 }			CreatedbStmt;
 
 /* ----------------------
