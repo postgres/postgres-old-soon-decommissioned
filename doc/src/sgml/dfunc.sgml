@@ -190,6 +190,20 @@ ld -Bshareable -o foo.so foo.o
    </varlistentry>
 
    <varlistentry>
+    <term><productname>OS X</productname></term>
+    <indexterm><primary>OS X</></>
+    <listitem>
+     <para>
+      Here is a sample.  It assumes the developer tools are installed.
+<programlisting>
+cc -c foo.c 
+cc -bundle -flat_namespace -undefined suppress -o foo.so foo.o
+</programlisting>
+     </para>
+    </listitem>
+   </varlistentry>
+
+   <varlistentry>
     <term><productname>Solaris</productname></term>
     <indexterm><primary>Solaris</></>
     <listitem>
