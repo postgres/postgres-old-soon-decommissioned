@@ -621,7 +621,7 @@ StreamServerPort(char *hostName, short portName, int *fdP)
 		pqdebug("%s", PQerrormsg);
 		strcat(PQerrormsg, "\tIs another postmaster already running on that port?\n");
 		if (family == AF_UNIX)
-			strcat(PQerrormsg, "\tIf not, remove socket node (/tmp/.s.PGSQL.<portnr>)and retry.\n");
+			strcat(PQerrormsg, "\tIf not, remove socket node (/tmp/.s.PGSQL.<portnumber>)and retry.\n");
 		else
 			strcat(PQerrormsg, "\tIf not, wait a few seconds and retry.\n");
 		fputs(PQerrormsg, stderr);
