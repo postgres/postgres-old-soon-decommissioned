@@ -216,7 +216,8 @@ typedef enum NodeTag
 	T_SubSelect,
 	T_JoinUsing,
 	T_CaseExpr,
-	T_CaseWhen
+	T_CaseWhen,
+	T_RowMark
 } NodeTag;
 
 /*

@@ -111,9 +111,6 @@ catalog/global1.description catalog/local1_template1.description:
 postgres.o: $(OBJS)
 	$(CC) -r -o postgres.o $(OBJS) $(LDFLAGS)
 
-fast:
-	$(CC) -r -o postgres.o $(OBJS) $(LDFLAGS)
-
 ############################################################################
 # The following targets are specified in make commands that appear in the
 # make files in our subdirectories.

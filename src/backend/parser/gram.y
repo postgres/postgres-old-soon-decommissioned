@@ -2496,6 +2496,7 @@ insert_rest:  VALUES '(' res_target_list2 ')'
 					$$->havingClause = n->havingClause;
 					$$->unionClause = n->unionClause;
 					$$->intersectClause = n->intersectClause;
+					$$->forUpdate = n->forUpdate;
 				}
 		| '(' columnList ')' VALUES '(' res_target_list2 ')'
 				{

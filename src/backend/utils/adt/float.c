@@ -63,6 +63,9 @@
 #include "utils/builtins.h"		/* for ftod() prototype */
 #include "utils/palloc.h"
 
+#ifndef NAN
+#define NAN		(0.0/0.0)
+#endif
 
 #ifndef SHRT_MAX
 #define SHRT_MAX 32767
