@@ -11,8 +11,7 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR=..
-include ../Makefile.global
+#include ../Makefile.global
 
 .DEFAULT all:
 #

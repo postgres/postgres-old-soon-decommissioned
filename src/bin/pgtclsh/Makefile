@@ -13,7 +13,6 @@
 
 SRCDIR= ../..
 include ../../Makefile.global
-include ../Makefile.global
 
 CFLAGS+=  -I$(TCL_INCDIR) -I$(TK_INCDIR) -I$(X11_INCDIR) -I$(SRCDIR)/libpgtcl
 

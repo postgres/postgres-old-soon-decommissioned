@@ -14,10 +14,7 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-INCLUDE_OPT:= -I$(LIBPQDIR) \
-              -I../../include 
-
-CFLAGS+= $(INCLUDE_OPT)
+CFLAGS+= -I$(LIBPQDIR)
 
 OBJS= psql.o stringutils.o @STRDUP@ 
 

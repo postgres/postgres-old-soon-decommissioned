@@ -13,7 +13,6 @@
 
 SRCDIR= ../..
 include ../../Makefile.global
-include ../Makefile.global
 
 OBJS= pg_id.o
 

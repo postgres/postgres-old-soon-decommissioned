@@ -13,9 +13,10 @@
 
 SRCDIR= ../..
 include ../../Makefile.global
-include ../Makefile.global
 
 OBJS= pg_version.o ../../utils/version.o
+
+CFLAGS+= -I$(SRCDIR)/include
 
 all: pg_version
 
