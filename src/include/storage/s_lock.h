@@ -540,7 +540,7 @@ extern slock_t wc_tas(volatile slock_t *lock);
 #else	 /* HAS_TEST_AND_SET */
 
 #ifdef HAVE_SPINLOCKS
-#error This platform does not support native spinlocks.  To continue the compile, rerun configure using --disable-spinlocks.  However, performance will be poor.  Please report this to pgsql-bugs@postgresql.org.
+#error PostgreSQL does not have native spinlock support on this platform.  To continue the compilation, rerun configure using --disable-spinlocks.  However, performance will be poor.  Please report this to pgsql-bugs@postgresql.org.
 #endif
 
 /*
