@@ -69,7 +69,7 @@
 #include <utils/relcache.h>
 #include <fmgr.h>
 #include <storage/lmgr.h>
-#include <access/heaptuple.h>
+#include <access/heapam.h>
 
 /* ----------------
  *   undefine macros we aren't going to use that would otherwise

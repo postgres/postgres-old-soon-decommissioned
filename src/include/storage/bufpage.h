@@ -221,7 +221,7 @@ typedef enum {
  *	Assumes page is locked.
  */
 #define PageGetSpecialSize(page) \
-    ((uint16) (PageGetPageSize(page) - ((PageHeader)page)->pd_special))
+    ((uint16) (PageGetPageSize(page) - ((PageHeader)(page))->pd_special))
 
 /*
  * PageGetSpecialPointer --
@@ -245,8 +245,8 @@ typedef enum {
  */
 #define PageGetItem(page, itemId) \
     (AssertMacro(PageIsValid(page)) ? \
-     AssertMacro(itemId->lp_flags & LP_USED) ? \
-    (Item)(((char *)page) + itemId->lp_off) : false : false)
+     AssertMacro((itemId)->lp_flags & LP_USED) ? \
+    (Item)(((char *)(page)) + (itemId)->lp_off) : false : false)
 
 /*
  * BufferGetPageSize --

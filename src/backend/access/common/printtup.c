@@ -17,7 +17,7 @@
 #include <postgres.h>
 
 #include <fmgr.h> 
-#include <access/heaptuple.h> 
+#include <access/heapam.h> 
 #include <access/printtup.h> 
 #include <catalog/pg_type.h>
 #include <libpq/libpq.h>
@@ -91,7 +91,8 @@ printtup(HeapTuple tuple, TupleDesc typeinfo)
     j = 0;
     k = 1 << 7;
     for (i = 0; i < tuple->t_natts; ) {
-	attr = heap_getattr(tuple, InvalidBuffer, ++i, typeinfo, &isnull);
+    	i++; /* heap_getattr is a macro, so no increment */
+	attr = heap_getattr(tuple, InvalidBuffer, i, typeinfo, &isnull);
 	if (!isnull)
 	    j |= k;
 	k >>= 1;
@@ -214,7 +215,8 @@ printtup_internal(HeapTuple tuple, TupleDesc typeinfo)
     j = 0;
     k = 1 << 7;
     for (i = 0; i < tuple->t_natts; ) {
-	attr = heap_getattr(tuple, InvalidBuffer, ++i, typeinfo, &isnull);
+    	i++; /* heap_getattr is a macro, so no increment */
+	attr = heap_getattr(tuple, InvalidBuffer, i, typeinfo, &isnull);
 	if (!isnull)
 	    j |= k;
 	k >>= 1;

@@ -15,7 +15,7 @@
 #include <postgres.h>
 
 #include <fmgr.h>
-#include <access/heaptuple.h>
+#include <access/heapam.h>
 #include <access/valid.h>
 #include <access/xact.h>
 #include <storage/bufpage.h>

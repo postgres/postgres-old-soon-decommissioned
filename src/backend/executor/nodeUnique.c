@@ -31,7 +31,6 @@
 #include "executor/nodeUnique.h"
 #include "optimizer/clauses.h"
 #include "access/heapam.h"
-#include "access/heaptuple.h"
 #include "access/printtup.h" /* for typtoout() */
 #include "utils/builtins.h"  /* for namecpy()*/
 
