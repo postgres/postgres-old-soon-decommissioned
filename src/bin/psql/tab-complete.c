@@ -726,7 +726,7 @@ PGresult * exec_query(char * query)
 
     if (result != NULL && PQresultStatus(result) != PGRES_TUPLES_OK) {
 #if 0
-        psql_error("tab completion: %s failed - %s", 
+        psql_error("tab completion: %s failed - %s\n", 
                    query, PQresStatus(PQresultStatus(result)));
 #endif
         PQclear(result);

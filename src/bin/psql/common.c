@@ -301,7 +301,7 @@ PSQLexec(const char *query)
 	{
         if (!pset.cur_cmd_interactive)
         {
-            psql_error("connection to server was lost");
+            psql_error("connection to server was lost\n");
             exit(EXIT_BADCONN);
         }
 		fputs("The connection to the server was lost. Attempting reset: ", stderr);
@@ -479,7 +479,7 @@ SendQuery(const char *query)
 		{
             if (!pset.cur_cmd_interactive)
             {
-                psql_error("connection to server was lost");
+                psql_error("connection to server was lost\n");
                 exit(EXIT_BADCONN);
             }
 			fputs("The connection to the server was lost. Attempting reset: ", stderr);

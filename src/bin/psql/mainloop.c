@@ -73,7 +73,7 @@ MainLoop(FILE *source)
     previous_buf = createPQExpBuffer();
 	if (!query_buf || !previous_buf)
 	{
-        psql_error("out of memory");
+        psql_error("out of memory\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -311,7 +311,7 @@ MainLoop(FILE *source)
                     new = malloc(len + out_length - (1 + in_length) + 1);
                     if (!new)
                     {
-                        psql_error("out of memory");
+                        psql_error("out of memory\n");
                         exit(EXIT_FAILURE);
                     }
 

@@ -57,7 +57,7 @@ usage(void)
 			user = pw->pw_name;
 		else
 		{
-			psql_error("could not get current user name: %s", strerror(errno));
+			psql_error("could not get current user name: %s\n", strerror(errno));
 			exit(EXIT_FAILURE);
 		}
 #else
