@@ -14,8 +14,8 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
-#include <sys/timeb.h>
 #include <sys/types.h>
+#include <sys/timeb.h>
 #include "postgres.h"
 #include "access/xact.h"
 #include "utils/palloc.h"
