@@ -114,6 +114,24 @@ typedef struct VariableRelationContentsData
 
 typedef VariableRelationContentsData *VariableRelationContents;
 
+/*
+ * VariableCache is placed in shmem and used by backends to
+ * get next available XID & OID without access to
+ * variable relation. Actually, I would like to have two
+ * different on-disk storages for next XID and OID...
+ * But hoping that someday we will use per database OID
+ * generator I leaved this as is.	- vadim 07/21/98
+ */
+typedef struct VariableCacheData
+{
+	uint32			xid_count;
+	TransactionId	nextXid;
+	uint32			oid_count;		/* not implemented, yet */
+	Oid				nextOid;
+} VariableCacheData;
+
+typedef VariableCacheData	   *VariableCache;
+
 /* ----------------
  *		extern declarations
  * ----------------

@@ -67,12 +67,16 @@
 #include "storage/proc.h"
 #include "utils/dynahash.h"
 #include "utils/hsearch.h"
+#include "utils/memutils.h"
+#include "access/transam.h"
 
 /* shared memory global variables */
 
 unsigned long ShmemBase = 0;	/* start and end address of shared memory */
 static unsigned long ShmemEnd = 0;
 static unsigned long ShmemSize = 0;		/* current size (and default) */
+
+extern	VariableCache	ShmemVariableCache;	/* varsup.c */
 
 SPINLOCK	ShmemLock;			/* lock for shared memory allocation */
 
@@ -151,7 +155,6 @@ InitShmem(unsigned int key, unsigned int size)
 				item;
 	bool		found;
 	IpcMemoryId shmid;
-
 	/* if zero key, use default memory size */
 	if (size)
 		ShmemSize = size;
@@ -180,9 +183,12 @@ InitShmem(unsigned int key, unsigned int size)
 	ShmemFreeStart = (unsigned long *) ShmemBase;
 	/* next is a shmem pointer to the shmem index */
 	ShmemIndexOffset = ShmemFreeStart + 1;
+	/* next is ShmemVariableCache */
+	ShmemVariableCache = (VariableCache) (ShmemIndexOffset + 1);
 
 	currFreeSpace +=
-		sizeof(ShmemFreeStart) + sizeof(ShmemIndexOffset);
+		sizeof(ShmemFreeStart) + sizeof(ShmemIndexOffset) +
+		LONGALIGN(sizeof(VariableCacheData));
 
 	/*
 	 * bootstrap initialize spin locks so we can start to use the
@@ -196,7 +202,10 @@ InitShmem(unsigned int key, unsigned int size)
 	 * setup the global free space count
 	 */
 	if (ShmemBootstrap)
+	{
 		*ShmemFreeStart = currFreeSpace;
+		memset (ShmemVariableCache, 0, sizeof(*ShmemVariableCache));
+	}
 
 	/* if ShmemFreeStart is NULL, then the allocator won't work */
 	Assert(*ShmemFreeStart);
