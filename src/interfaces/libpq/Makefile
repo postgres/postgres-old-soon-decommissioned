@@ -15,8 +15,8 @@ include $(top_builddir)/src/Makefile.global
 
 # shared library parameters
 NAME= pq
-SO_MAJOR_VERSION= 2
-SO_MINOR_VERSION= 4
+SO_MAJOR_VERSION= 3
+SO_MINOR_VERSION= 1
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -DFRONTEND -DSYSCONFDIR='"$(sysconfdir)"'
 
