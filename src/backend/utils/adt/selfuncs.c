@@ -609,7 +609,7 @@ getattstatistics(Oid relid, AttrNumber attnum, Oid opid, Oid typid,
 	tuple = SearchSysCacheTuple(STATRELID,
 								ObjectIdGetDatum(relid),
 								Int16GetDatum((int16) attnum),
-								opid,
+								0,
 								0);
 	if (!HeapTupleIsValid(tuple))
 	{
