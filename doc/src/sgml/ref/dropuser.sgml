@@ -60,7 +60,7 @@ PostgreSQL documentation
       <term>-e, --echo</term>
       <listitem>
        <para>
-        Echo the queries that <application>createdb</application> generates
+        Echo the queries that <application>dropuser</application> generates
 	and sends to the server.
        </para>
       </listitem>
