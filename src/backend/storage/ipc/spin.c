@@ -99,20 +99,6 @@ SpinRelease(SPINLOCK lock)
 static bool AttachSpinLocks(IPCKey key);
 static bool SpinIsLocked(SPINLOCK lock);
 
-
-static bool
-AttachSpinLocks(IPCKey key)
-{
-    /* the spin lock shared memory must have been attached by now */
-    return(TRUE);
-}
-
-static bool
-SpinIsLocked(SPINLOCK lock)
-{
-    return(!LockIsFree(lock));
-}
-
 /*
  * SpinAcquire -- try to grab a spinlock
  *
