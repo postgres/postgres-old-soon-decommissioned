@@ -13,11 +13,9 @@
 #ifndef	IQUAL_H
 #define IQUAL_H
 
+#include <access/skey.h>
+#include <access/itup.h>
 
-#include "storage/itemid.h"
-#include "utils/rel.h"
-#include "access/skey.h"
-#include "access/itup.h"
 
 /* ----------------
  *	index tuple qualification support

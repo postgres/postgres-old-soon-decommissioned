@@ -16,13 +16,11 @@
 #ifndef HASH_H
 #define HASH_H
 
-#include "access/htup.h"
-#include "access/itup.h"
-#include "storage/bufpage.h"
-#include "access/sdir.h"
-#include "access/funcindex.h"
-#include "storage/block.h"
-#include "access/relscan.h"
+#include <access/sdir.h>
+#include <access/funcindex.h>
+#include <storage/bufpage.h>
+#include <access/relscan.h>
+#include <access/itup.h>
 
 /* 
  * An overflow page is a spare page allocated for storing data whose 

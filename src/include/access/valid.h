@@ -13,12 +13,9 @@
 #ifndef	VALID_H
 #define VALID_H
 
-#include "access/skey.h"
-#include "storage/buf.h"
-#include "utils/tqual.h"
-#include "access/tupdesc.h"
-#include "utils/rel.h"
-#include "storage/bufpage.h"
+#include <utils/tqual.h>
+#include <storage/bufpage.h>
+#include <utils/rel.h>
 
 /* ----------------
  *	extern decl's

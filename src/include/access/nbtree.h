@@ -13,20 +13,14 @@
 #ifndef	NBTREE_H
 #define	NBTREE_H
 
-#include "access/attnum.h"
-#include "access/itup.h"
-#include "access/htup.h"
-#include "access/tupdesc.h"
-
-#include "access/istrat.h"
-#include "access/funcindex.h"
-#include "access/relscan.h"
-#include "access/sdir.h"
-#include "nodes/pg_list.h"
-#include "storage/page.h"
-#include "storage/bufpage.h"
-#include "storage/item.h"
-#include "utils/memutils.h"
+#include <access/sdir.h>
+#include <access/relscan.h>
+#include <storage/itemid.h>
+#include <storage/page.h>
+#include <access/funcindex.h>
+#include <access/itup.h>
+#include <storage/buf.h>
+#include <storage/itemptr.h>
 
 /*
  *  BTPageOpaqueData -- At the end of every page, we store a pointer

@@ -13,10 +13,9 @@
 #ifndef	HIO_H
 #define HIO_H
 
+#include <access/htup.h>
+#include <utils/rel.h>
 
-#include "storage/block.h"
-#include "access/htup.h"
-#include "utils/rel.h"
 
 extern void RelationPutHeapTuple(Relation relation, BlockNumber blockIndex,
 				 HeapTuple tuple);

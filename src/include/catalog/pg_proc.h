@@ -22,14 +22,14 @@
 #ifndef PG_PROC_H
 #define PG_PROC_H
 
+#include <tcop/dest.h>
+
 /* ----------------
  *	postgres.h contains the system type definintions and the
  *	CATALOG(), BOOTSTRAP and DATA() sugar words so this file
  *	can be read by both genbki.sh and the C compiler.
  * ----------------
  */
-#include "nodes/pg_list.h"
-#include "tcop/dest.h"
 
 /* ----------------
  *	pg_proc definition.  cpp turns this into
