@@ -36,6 +36,7 @@
 #include "utils/nabstime.h"
 #include "utils/date.h"
 #include "utils/lztext.h"
+#include "utils/varbit.h"
 
 /*
  *		Defined in adt/
