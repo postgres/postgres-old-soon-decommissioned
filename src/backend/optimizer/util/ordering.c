@@ -38,14 +38,11 @@ equal_path_path_ordering(PathOrder *path_ordering1,
 	if (path_ordering1->ordtype == MERGE_ORDER &&
 		path_ordering2->ordtype == MERGE_ORDER)
 	{
-
 		return equal(path_ordering1->ord.merge, path_ordering2->ord.merge);
-
 	}
 	else if (path_ordering1->ordtype == SORTOP_ORDER &&
 			 path_ordering2->ordtype == SORTOP_ORDER)
 	{
-
 		return
 			(equal_sortops_order(path_ordering1->ord.sortop,
 								 path_ordering2->ord.sortop));
@@ -53,14 +50,12 @@ equal_path_path_ordering(PathOrder *path_ordering1,
 	else if (path_ordering1->ordtype == MERGE_ORDER &&
 			 path_ordering2->ordtype == SORTOP_ORDER)
 	{
-
 		return (path_ordering2->ord.sortop &&
 				(path_ordering1->ord.merge->left_operator ==
 				 path_ordering2->ord.sortop[0]));
 	}
 	else
 	{
-
 		return (path_ordering1->ord.sortop &&
 				(path_ordering1->ord.sortop[0] ==
 				 path_ordering2->ord.merge->left_operator));
