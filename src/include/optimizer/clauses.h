@@ -44,7 +44,7 @@ extern List *pull_agg_clause(Node *clause);
 
 extern bool contain_subplans(Node *clause);
 extern List *pull_subplans(Node *clause);
-extern void check_subplans_for_ungrouped_vars(Node *clause, Query *query);
+extern void check_subplans_for_ungrouped_vars(Query *query);
 
 extern bool contain_noncachable_functions(Node *clause);
 
