@@ -727,6 +727,7 @@ _equalAlterTableStmt(AlterTableStmt *a, AlterTableStmt *b)
 {
 	COMPARE_NODE_FIELD(relation);
 	COMPARE_NODE_FIELD(cmds);
+	COMPARE_SCALAR_FIELD(relkind);
 
 	return true;
 }

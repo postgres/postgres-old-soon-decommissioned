@@ -1421,6 +1421,7 @@ transformFKConstraints(ParseState *pstate, CreateStmtContext *cxt,
 
 		alterstmt->relation = cxt->relation;
 		alterstmt->cmds = NIL;
+		alterstmt->relkind = OBJECT_TABLE;
 
 		foreach(fkclist, cxt->fkconstraints)
 		{

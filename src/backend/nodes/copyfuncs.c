@@ -1626,6 +1626,7 @@ _copyAlterTableStmt(AlterTableStmt *from)
 
 	COPY_NODE_FIELD(relation);
 	COPY_NODE_FIELD(cmds);
+	COPY_SCALAR_FIELD(relkind);
 
 	return newnode;
 }

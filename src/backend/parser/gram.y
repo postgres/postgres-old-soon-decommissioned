@@ -1166,6 +1166,7 @@ alter_table_cmds:
 			| alter_table_cmds ',' alter_table_cmd	{ $$ = lappend($1, $3); }
 		;
 
+/* Subcommands that are for ALTER TABLE only */
 alter_table_cmd:
 			/* ALTER TABLE <relation> ADD [COLUMN] <coldef> */
 			ADD opt_column columnDef
@@ -1293,13 +1294,14 @@ alter_table_cmd:
 				}
 		;
 
-alter_rel_cmds: alter_rel_cmd                         { $$ = list_make1($1); }
-            | alter_rel_cmds ',' alter_rel_cmd  { $$ = lappend($1, $3); }
-        ;
+alter_rel_cmds:
+			alter_rel_cmd							{ $$ = list_make1($1); }
+			| alter_rel_cmds ',' alter_rel_cmd		{ $$ = lappend($1, $3); }
+		;
 
-
+/* Subcommands that are for ALTER TABLE or ALTER INDEX */
 alter_rel_cmd:
-			/* ALTER [ TABLE | INDEX ] <name> OWNER TO UserId */
+			/* ALTER [TABLE|INDEX] <name> OWNER TO UserId */
 			OWNER TO UserId
 				{
 					AlterTableCmd *n = makeNode(AlterTableCmd);
@@ -1307,7 +1309,7 @@ alter_rel_cmd:
 					n->name = $3;
 					$$ = (Node *)n;
 				}
-			/* ALTER [ TABLE | INDEX ] <name> SET TABLESPACE <tablespacename> */
+			/* ALTER [TABLE|INDEX] <name> SET TABLESPACE <tablespacename> */
 			| SET TABLESPACE name
 				{
 					AlterTableCmd *n = makeNode(AlterTableCmd);

@@ -89,6 +89,7 @@ ExecRenameStmt(RenameStmt *stmt)
 			break;
 
 		case OBJECT_TABLE:
+		case OBJECT_INDEX:
 		case OBJECT_COLUMN:
 		case OBJECT_TRIGGER:
 			{
@@ -101,6 +102,7 @@ ExecRenameStmt(RenameStmt *stmt)
 				switch (stmt->renameType)
 				{
 					case OBJECT_TABLE:
+					case OBJECT_INDEX:
 						{
 							/*
 							 * RENAME TABLE requires that we (still) hold
