@@ -393,7 +393,7 @@ MYBOXES.description === box '((0,0),(1,1))'
    Usage
   </title>
   <para>The following command defines a new operator,
-   area-equality, for the BOX data type.
+   area-equality, for the BOX data type:
   </para>
   <programlisting>
 CREATE OPERATOR === (
