@@ -2,7 +2,7 @@
 --	A quick test of the IP address code
 --
 --	$Id$
---
+--      This is original test (it was written before my changes in this class). alex.
 
 -- temporary table:
 create table addresses (address ipaddr);

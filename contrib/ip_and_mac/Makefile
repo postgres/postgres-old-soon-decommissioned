@@ -18,7 +18,7 @@ mac.o: mac.c mac.h
 	cc -g -O -fPIC -I/usr/local/pgsql/include -c mac.c
 
 install: ip.so mac.so
-	install -c ip.so mac.so /usr/local/pgsql/modules
+	install -c ip.so mac.so /usr/local/pgsql/contrib/ip_and_macs
 
 clean:
 	rm -f *.o *.so *.b
