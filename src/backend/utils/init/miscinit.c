@@ -587,12 +587,12 @@ CreateLockFile(const char *filename, bool amPostmaster,
 					fprintf(stderr,
 							"Is another %s (pid %d) running in \"%s\"?\n",
 							(encoded_pid < 0 ? "postgres" : "postmaster"),
-							other_pid, refName);
+							(int) other_pid, refName);
 				else
 					fprintf(stderr,
 							"Is another %s (pid %d) using \"%s\"?\n",
 							(encoded_pid < 0 ? "postgres" : "postmaster"),
-							other_pid, refName);
+							(int) other_pid, refName);
 				return false;
 			}
 		}
