@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Fri Jan 23 10:13:31 EST 2004
+Last updated:		Sat Jan 24 23:50:15 EST 2004
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -500,6 +500,7 @@ Developers who have claimed items are:
 * Hiroshi is Hiroshi Inoue <Inoue@tpf.co.jp>
 * Karel is Karel Zak <zakkr@zf.jcu.cz>
 * Jan is Jan Wieck <JanWieck@Yahoo.com> of Afilias, Inc.
+* Joe is Joe Conway <mail@joeconway.com>
 * Liam is Liam Stewart <liams@redhat.com> of Red Hat
 * Marc is Marc Fournier <scrappy@hub.org> of PostgreSQL, Inc.
 * Mark is Mark Hollomon <mhh@mindspring.com>
