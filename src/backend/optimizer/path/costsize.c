@@ -1969,7 +1969,7 @@ set_rel_width(Query *root, RelOptInfo *rel)
 static double
 relation_byte_size(double tuples, int width)
 {
-	return tuples * (MAXALIGN(width) + MAXALIGN(sizeof(HeapTupleData)));
+	return tuples * (MAXALIGN(width) + MAXALIGN(sizeof(HeapTupleHeaderData)));
 }
 
 /*
