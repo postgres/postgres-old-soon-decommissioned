@@ -1545,12 +1545,26 @@ PQfn(PGconn *conn,
 	}
 	pqFlush(pfout, pfdebug);
 
-	id = pqGetc(pfin, pfdebug);
-	if (id != 'V')
+	while ((id = pqGetc(pfin, pfdebug)) != 'V')
 	{
 		if (id == 'E')
 		{
 			pqGets(conn->errorMessage, ERROR_MSG_LENGTH, pfin, pfdebug);
+		}
+		else if (id == 'N')
+	        {
+	               /* print notice and go back to processing return 
+			   values */
+	               if (pqGets(conn->errorMessage, ERROR_MSG_LENGTH, 
+				pfin, pfdebug) == 1)
+			{
+				sprintf(conn->errorMessage,
+				"Notice return detected from backend, but "
+				"message cannot be read");
+			}
+			else
+				fprintf(stderr, "%s\n", conn->errorMessage);
+			continue;
 		}
 		else
 			sprintf(conn->errorMessage,
