@@ -179,14 +179,14 @@ bool char16lt(char *arg1, char *arg2)
 {
     if (arg1 == NULL || arg2 == NULL)
 	return((bool) 0);
-    return((bool) (strncmp(arg1, arg2, 16) < 0));
+    return(strncmp(arg1, arg2, 16) < 0);
 }
 
 bool char16le(char *arg1, char *arg2)
 {
     if (arg1 == NULL || arg2 == NULL)
 	return((bool) 0);
-    return((bool) (strncmp(arg1, arg2, 16) <= 0));
+    return(strncmp(arg1, arg2, 16) <= 0);
 }
 
 bool char16gt(char *arg1, char *arg2)
@@ -194,7 +194,7 @@ bool char16gt(char *arg1, char *arg2)
     if (arg1 == NULL || arg2 == NULL)
 	return((bool) 0);
     
-    return((bool) (strncmp(arg1, arg2, 16) > 0));
+    return(strncmp(arg1, arg2, 16) > 0);
 }
 
 bool char16ge(char *arg1, char *arg2)
@@ -202,7 +202,7 @@ bool char16ge(char *arg1, char *arg2)
     if (arg1 == NULL || arg2 == NULL)
 	return((bool) 0);
     
-    return((bool) (strncmp(arg1, arg2, 16) >= 0));
+    return(strncmp(arg1, arg2, 16) >= 0);
 }
 
 
@@ -355,42 +355,42 @@ bool char8eq(char *arg1, char *arg2)
 {
     if (arg1 == NULL || arg2 == NULL)
 	return((bool) 0);
-    return((bool) strncmp(arg1, arg2, 8) == 0);
+    return(strncmp(arg1, arg2, 8) == 0);
 }
 
 bool char8ne(char *arg1, char *arg2)
 {
     if (arg1 == NULL || arg2 == NULL)
 	return((bool) 0);
-    return((bool) strncmp(arg1, arg2, 8) != 0);
+    return(strncmp(arg1, arg2, 8) != 0);
 }
 
 bool char8lt(char *arg1, char *arg2)
 {
     if (arg1 == NULL || arg2 == NULL)
 	return((bool) 0);
-    return((bool) strncmp(arg1, arg2, 8) < 0);
+    return(strncmp(arg1, arg2, 8) < 0);
 }
 
 bool char8le(char *arg1, char *arg2)
 {
     if (arg1 == NULL || arg2 == NULL)
 	return((bool) 0);
-    return((bool) strncmp(arg1, arg2, 8) <= 0);
+    return(strncmp(arg1, arg2, 8) <= 0);
 }
 
 bool char8gt(char *arg1, char *arg2)
 {
     if (arg1 == NULL || arg2 == NULL)
 	return((bool) 0);
-    return((bool) strncmp(arg1, arg2, 8) > 0);
+    return(strncmp(arg1, arg2, 8) > 0);
 }
 
 bool char8ge(char *arg1, char *arg2)
 {
     if (arg1 == NULL || arg2 == NULL)
 	return((bool) 0);
-    return((bool) strncmp(arg1, arg2, 8) >= 0);
+    return(strncmp(arg1, arg2, 8) >= 0);
 }
 
 int32 char8cmp(char *arg1, char *arg2)
