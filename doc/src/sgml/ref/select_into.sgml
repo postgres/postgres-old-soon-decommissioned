@@ -103,7 +103,7 @@ SELECT [ ALL | DISTINCT [ ON ( <replaceable class="PARAMETER">expression</replac
    rapidly incremented. As of <productname>PostgreSQL</> 7.5, the
    inclusion of OIDs in the table created by <command>SELECT
    INTO</command> is controlled by the
-   <varname>default_with_oids</varname> configuration variable. This
+   <xref linkend="guc-default-with-oids"> configuration variable. This
    variable currently defaults to true, but will likely default to
    false in a future release of <productname>PostgreSQL</>.
   </para>

@@ -100,8 +100,8 @@ ROLLBACK;
       than just a summary.  Usually this option is only useful for
       debugging <productname>PostgreSQL</productname>.  The
       <literal>VERBOSE</literal> output is either pretty-printed or
-      not, depending on the setting of the
-      <varname>explain_pretty_print</varname> configuration parameter.
+      not, depending on the setting of the <xref
+      linkend="guc-explain-pretty-print"> configuration parameter.
      </para>
     </listitem>
    </varlistentry>

@@ -795,23 +795,23 @@ RESET client_encoding;
 
       <listitem>
        <para>
-	Using <envar>PGCLIENTENCODING</envar>.
-
-	If environment variable <envar>PGCLIENTENCODING</envar> is defined
-	in the client's environment, that client encoding is automatically
-	selected when a connection to the server is made.  (This can subsequently
-	be overridden using any of the other methods mentioned above.)
+        Using <envar>PGCLIENTENCODING</envar>. If environment variable
+        <envar>PGCLIENTENCODING</envar> is defined in the client's
+        environment, that client encoding is automatically selected
+        when a connection to the server is made.  (This can
+        subsequently be overridden using any of the other methods
+        mentioned above.)
        </para>
       </listitem>
 
       <listitem>
       <para>
-       Using the configuration variable <varname>client_encoding</varname>.
-
-      If the <varname>client_encoding</> variable in <filename>postgresql.conf</> is set, that
-      client encoding is automatically selected when a connection to the
-      server is made.  (This can subsequently be overridden using any of the
-      other methods mentioned above.)
+       Using the configuration variable <xref
+       linkend="guc-client-encoding">. If the
+       <varname>client_encoding</> variable is set, that client
+       encoding is automatically selected when a connection to the
+       server is made.  (This can subsequently be overridden using any
+       of the other methods mentioned above.)
        </para>
       </listitem>
 
