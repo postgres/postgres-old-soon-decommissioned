@@ -60,7 +60,7 @@ relpath(RelFileNode rnode)
 		/* All other tablespaces are accessed via symlinks */
 		pathlen = strlen(DataDir) + 16 + OIDCHARS + 1 + OIDCHARS + 1 + OIDCHARS + 1;
 		path = (char *) palloc(pathlen);
-		snprintf(path, pathlen, "%s/pg_tablespaces/%u/%u/%u",
+		snprintf(path, pathlen, "%s/pg_tblspc/%u/%u/%u",
 				 DataDir, rnode.spcNode, rnode.dbNode, rnode.relNode);
 	}
 	return path;
@@ -101,7 +101,7 @@ GetDatabasePath(Oid dbNode, Oid spcNode)
 		/* All other tablespaces are accessed via symlinks */
 		pathlen = strlen(DataDir) + 16 + OIDCHARS + 1 + OIDCHARS + 1;
 		path = (char *) palloc(pathlen);
-		snprintf(path, pathlen, "%s/pg_tablespaces/%u/%u",
+		snprintf(path, pathlen, "%s/pg_tblspc/%u/%u",
 				 DataDir, spcNode, dbNode);
 	}
 	return path;
