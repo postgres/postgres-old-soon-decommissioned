@@ -509,12 +509,13 @@ flatten_tlistentry(Node *tlistentry, List *flat_tlist)
 	else if (case_clause(tlistentry))
 	{
 		CaseExpr   *cexpr = (CaseExpr *) tlistentry;
-		CaseWhen   *cwhen;
 		List	   *elt = NIL;
 
 		foreach(elt, cexpr->args)
-			cwhen = (CaseWhen *)lfirst(elt);
+		{
+			CaseWhen *cwhen = (CaseWhen *)lfirst(elt);
 			cwhen->result = flatten_tlistentry(cwhen->result, flat_tlist);
+		}
 		cexpr->defresult = flatten_tlistentry(cexpr->defresult, flat_tlist);
 
 		return ((Node *) cexpr);
