@@ -949,6 +949,7 @@ _equalFunctionParameter(FunctionParameter *a, FunctionParameter *b)
 {
 	COMPARE_STRING_FIELD(name);
 	COMPARE_NODE_FIELD(argType);
+	COMPARE_SCALAR_FIELD(mode);
 
 	return true;
 }

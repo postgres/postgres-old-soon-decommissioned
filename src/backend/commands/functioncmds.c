@@ -154,6 +154,15 @@ examine_parameter_list(List *parameter, Oid languageOid,
 				   errmsg("functions cannot have more than %d arguments",
 						  FUNC_MAX_ARGS)));
 
+		if (fp->mode == FUNC_PARAM_OUT)
+			ereport(ERROR,
+					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+					 errmsg("CREATE FUNCTION / OUT parameters are not implemented")));
+		if (fp->mode == FUNC_PARAM_INOUT)
+			ereport(ERROR,
+					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+					 errmsg("CREATE FUNCTION / INOUT parameters are not implemented")));
+
 		toid = LookupTypeName(t);
 		if (OidIsValid(toid))
 		{
