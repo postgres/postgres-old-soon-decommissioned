@@ -34,6 +34,7 @@ enum {
 	GUC_REAL = 4,
 	GUC_EQUALS = 5,
 	GUC_UNQUOTED_STRING = 6,
+	GUC_QUALIFIED_ID = 7,
 	GUC_EOL = 99,
 	GUC_ERROR = 100
 };
@@ -65,6 +66,7 @@ LETTER          [A-Za-z_\200-\377]
 LETTER_OR_DIGIT [A-Za-z_0-9\200-\377]
 
 ID              {LETTER}{LETTER_OR_DIGIT}*
+QUALIFIED_ID    {ID}"."{ID}
 
 UNQUOTED_STRING {LETTER}({LETTER_OR_DIGIT}|[-._:/])*
 STRING          \'([^'\n]|\\.)*\'
@@ -76,6 +78,7 @@ STRING          \'([^'\n]|\\.)*\'
 #.*$            /* eat comment */
 
 {ID}            return GUC_ID;
+{QUALIFIED_ID}  return GUC_QUALIFIED_ID;
 {STRING}        return GUC_STRING;
 {UNQUOTED_STRING} return GUC_UNQUOTED_STRING;
 {INTEGER}       return GUC_INTEGER;
@@ -180,7 +183,7 @@ ProcessConfigFile(GucContext context)
             case 0: /* no previous input */
                 if (token == GUC_EOL) /* empty line */
                     continue;
-                if (token != GUC_ID)
+                if (token != GUC_ID && token != GUC_QUALIFIED_ID)
                     goto parse_error;
                 opt_name = strdup(yytext);
 				if (opt_name == NULL)
@@ -216,6 +219,24 @@ ProcessConfigFile(GucContext context)
             case 2: /* now we'd like an end of line */
 				if (token != GUC_EOL)
 					goto parse_error;
+
+				if (strcmp(opt_name, "custom_variable_classes") == 0)
+				{
+					/* This variable must be added first as it controls the validity
+					 * of other variables
+					 */
+					if (!set_config_option(opt_name, opt_value, context,
+										   PGC_S_FILE, false, true))
+					{
+						FreeFile(fp);
+						free(filename);
+						goto cleanup_exit;
+					}
+
+					/* Don't include in list */
+					parse_state = 0;
+					break;
+				}
 
 				/* append to list */
 				item = malloc(sizeof *item);

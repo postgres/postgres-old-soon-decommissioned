@@ -47,13 +47,15 @@ int
 GucInfoMain(void)
 {
 	int			i;
+	struct config_generic **guc_vars = get_guc_variables();
+	int numOpts = GetNumConfigOptions();
 
 	/* Initialize the guc_variables[] array */
 	build_guc_variables();
 
-	for (i = 0; i < num_guc_variables; i++)
+	for (i = 0; i < numOpts; i++)
 	{
-		mixedStruct *var = (mixedStruct *) guc_variables[i];
+		mixedStruct *var = (mixedStruct *) guc_vars[i];
 
 		if (displayStruct(var))
 			printMixedStruct(var);
