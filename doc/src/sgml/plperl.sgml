@@ -543,15 +543,6 @@ $$ LANGUAGE plperl;
     </varlistentry>
 
     <varlistentry>
-     <term><literal>@{$_TD-&gt;{argv}}</literal></term>
-     <listitem>
-      <para>
-       Arguments of the trigger function
-      </para>
-     </listitem>
-    </varlistentry>
-
-    <varlistentry>
      <term><literal>$_TD-&gt;{argc}</literal></term>
      <listitem>
       <para>
@@ -559,6 +550,16 @@ $$ LANGUAGE plperl;
       </para>
      </listitem>
     </varlistentry>
+
+    <varlistentry>
+     <term><literal>@{$_TD-&gt;{args}}</literal></term>
+     <listitem>
+      <para>
+       Arguments of the trigger function.  Does not exist if $_TD-&gt;{argc} is 0.
+      </para>
+     </listitem>
+    </varlistentry>
+
    </variablelist>
   </para>
 
