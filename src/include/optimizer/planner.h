@@ -21,6 +21,7 @@
 #include "nodes/plannodes.h"
 
 extern Plan *planner(Query *parse);
+extern Plan *subquery_planner(Query *parse, double tuple_fraction);
 extern Plan *union_planner(Query *parse, double tuple_fraction);
 extern void pg_checkretval(Oid rettype, List *querytree_list);
 

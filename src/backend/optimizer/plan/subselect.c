@@ -163,7 +163,7 @@ make_subplan(SubLink *slink)
 	else
 		tuple_fraction = -1.0;	/* default behavior */
 
-	node->plan = plan = union_planner(subquery, tuple_fraction);
+	node->plan = plan = subquery_planner(subquery, tuple_fraction);
 
 	/*
 	 * Assign subPlan, extParam and locParam to plan nodes. At the moment,
