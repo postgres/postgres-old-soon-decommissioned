@@ -16,6 +16,14 @@ include ../../Makefile.global
 
 OBJS= pg_id.o
 
+#
+# And where libpq goes, so goes the authentication stuff...
+#
+ifdef KRBVERS
+LDFLAGS+= $(KRBLIBS)
+CFLAGS+= $(KRBFLAGS)
+endif
+
 all: pg_id
 
 pg_id: $(OBJS) $(LIBPQDIR)/libpq.a

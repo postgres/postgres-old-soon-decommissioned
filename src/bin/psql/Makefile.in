@@ -16,6 +16,14 @@ include ../../Makefile.global
 
 CFLAGS+= -I$(LIBPQDIR)
 
+#
+# And where libpq goes, so goes the authentication stuff...
+#
+ifdef KRBVERS
+LDFLAGS+= $(KRBLIBS)
+CFLAGS+= $(KRBFLAGS)
+endif
+
 OBJS= psql.o stringutils.o @STRDUP@ 
 
 all: submake psql

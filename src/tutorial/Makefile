@@ -14,6 +14,14 @@ include ../Makefile.global
 CFLAGS+= -I$(LIBPQDIR) -I../../include
 
 #
+# And where libpq goes, so goes the authentication stuff...
+#
+ifdef KRBVERS
+LDFLAGS+= $(KRBLIBS)
+CFLAGS+= $(KRBFLAGS)
+endif
+
+#
 # DLOBJS is the dynamically-loaded object files.  The "funcs" queries
 # include CREATE FUNCTIONs that load routines from these files.
 #

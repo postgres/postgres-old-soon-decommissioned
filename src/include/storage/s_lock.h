@@ -241,12 +241,11 @@ tas_dummy()
 
 static int	tas(slock_t *lock);
 
-static int
+static void
 tas_dummy()
 {
 	asm(".seg \"data\"");
 	asm(".seg \"text\"");
-	asm(".global _tas");
 	asm("_tas:");
 
 	/*
@@ -321,7 +320,7 @@ void S_LOCK(slock_t* lock);
 
 #endif							/* defined(__alpha__) && defined(linux) */
 
-#if (defined(linux) || defined(__NetBSD__)) && defined(sparc)
+#if defined(linux) && defined(sparc)
 
 #define S_LOCK(lock)	do \
 						{ \

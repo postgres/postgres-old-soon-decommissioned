@@ -51,6 +51,14 @@ endif
 
 OBJS = $(DIRS:%=%/SUBSYS.o)
 
+# kerberos flags
+
+ifdef KRBVERS
+CFLAGS+= $(KRBFLAGS)
+LDFLAGS+= $(KRBLIBS)
+endif
+
+
 all: postgres $(POSTGRES_IMP) global1.bki.source local1_template1.bki.source \
 				global1.description local1_template1.description
 
@@ -121,7 +129,6 @@ install: $(LIBDIR) $(BINDIR) $(HEADERDIR) postgres $(POSTGRES_IMP) fmgr.h\
          global1.bki.source local1_template1.bki.source \
          global1.description local1_template1.description \
          libpq/pg_hba.conf.sample optimizer/geqo/pg_geqo.sample
-	
 	$(INSTALL) $(INSTL_EXE_OPTS) postgres $(BINDIR)/postgres
 ifeq ($(MAKE_EXPORTS), true)
 	$(INSTALL) $(INSTLOPTS) $(POSTGRES_IMP) $(LIBDIR)/$(POSTGRES_IMP)
