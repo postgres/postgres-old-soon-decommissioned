@@ -2335,7 +2335,7 @@ DATA(insert OID = 1706 ( sign					PGUID 12 f t t t 1 f 1700 "1700" 100 0 0 100	n
 DESCR("sign of value");
 DATA(insert OID = 1707 ( round					PGUID 12 f t t t 2 f 1700 "1700 23" 100 0 0 100  numeric_round - ));
 DESCR("value rounded to 'scale'");
-DATA(insert OID = 1708 ( round					PGUID 14 f t t t 1 f 1700 "1700" 100 0 0 100	"select numeric_round($1,0)" - ));
+DATA(insert OID = 1708 ( round					PGUID 14 f t t t 1 f 1700 "1700" 100 0 0 100	"select round($1,0)" - ));
 DESCR("value rounded to 'scale' of zero");
 DATA(insert OID = 1709 ( trunc					PGUID 12 f t t t 2 f 1700 "1700 23" 100 0 0 100  numeric_trunc - ));
 DESCR("value truncated to 'scale'");
