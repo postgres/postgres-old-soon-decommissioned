@@ -215,7 +215,7 @@ FjoinBumpOuterNodes(TargetEntry *tlist,
 
 	/*
 	 * If every function is done, then we are done flattening. Mark the
-	 * Fjoin node unitialized, it is time to get the next tuple from the
+	 * Fjoin node uninitialized, it is time to get the next tuple from the
 	 * plan and redo all of the flattening.
 	 */
 	if (funcIsDone)
