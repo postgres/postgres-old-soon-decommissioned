@@ -44,6 +44,28 @@ static BTScanList BTScans = (BTScanList) NULL;
 static void _bt_scandel(IndexScanDesc scan, BlockNumber blkno, OffsetNumber offno);
 
 /*
+ * AtEOXact_nbtree() --- clean up nbtree subsystem at xact abort or commit.
+ *
+ * This is here because it needs to touch this module's static var BTScans.
+ */
+void
+AtEOXact_nbtree(void)
+{
+	/* Note: these actions should only be necessary during xact abort;
+	 * but they can't hurt during a commit.
+	 */
+
+	/* Reset the active-scans list to empty.
+	 * We do not need to free the list elements, because they're all
+	 * palloc()'d, so they'll go away at end of transaction anyway.
+	 */
+	BTScans = NULL;
+
+	/* If we were building a btree, we ain't anymore. */
+	BuildingBtree = false;
+}
+
+/*
  *	_bt_regscan() -- register a new scan.
  */
 void

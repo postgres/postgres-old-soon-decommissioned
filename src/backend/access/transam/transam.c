@@ -20,7 +20,6 @@
 
 #include "access/heapam.h"
 #include "catalog/catname.h"
-#include "commands/vacuum.h"
 
 static int	RecoveryCheckingEnabled(void);
 static void TransRecover(Relation logRelation);
@@ -82,12 +81,6 @@ int			RecoveryCheckingEnableState = 0;
  * -----------------
  */
 extern int	OidGenLockId;
-
-/* ----------------
- *		globals that must be reset at abort
- * ----------------
- */
-extern bool BuildingBtree;
 
 
 /* ----------------
@@ -568,11 +561,6 @@ TransactionIdCommit(TransactionId transactionId)
 void
 TransactionIdAbort(TransactionId transactionId)
 {
-	BuildingBtree = false;
-
-	if (VacuumRunning)
-		vc_abort();
-
 	if (AMI_OVERRIDE)
 		return;
 

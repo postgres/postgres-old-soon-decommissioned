@@ -42,7 +42,6 @@ typedef struct BTMetaPageData
 #define BTPageGetMeta(p) \
 	((BTMetaPageData *) &((PageHeader) p)->pd_linp[0])
 
-extern bool BuildingBtree;
 
 /*
  *	We use high-concurrency locking on btrees.	There are two cases in

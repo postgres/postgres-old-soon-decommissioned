@@ -250,6 +250,7 @@ extern void btdelete(Relation rel, ItemPointer tid);
 extern void _bt_regscan(IndexScanDesc scan);
 extern void _bt_dropscan(IndexScanDesc scan);
 extern void _bt_adjscans(Relation rel, ItemPointer tid);
+extern void AtEOXact_nbtree(void);
 
 /*
  * prototypes for functions in nbtsearch.c
