@@ -1911,13 +1911,13 @@ timeofday(PG_FUNCTION_ARGS)
 {
 	struct timeval tp;
 	struct timezone tpz;
-	char		templ[500];
-	char		buf[500];
+	char		templ[100];
+	char		buf[100];
 	text	   *result;
-	int			len = 0;
+	int			len;
 
 	gettimeofday(&tp, &tpz);
-	strftime(templ, sizeof(templ), "%a %b %d %H:%M:%S.%%d %Y %Z",
+	strftime(templ, sizeof(templ), "%a %b %d %H:%M:%S.%%06d %Y %Z",
 			 localtime((time_t *) &tp.tv_sec));
 	snprintf(buf, sizeof(buf), templ, tp.tv_usec);
 
