@@ -277,7 +277,7 @@ typedef uint32 word32;			/* >= 32 bits */
  * Size --
  *		Size of any memory resident object, as returned by sizeof.
  */
-typedef unsigned int Size;
+typedef size_t Size;
 
 /*
  * Index --
