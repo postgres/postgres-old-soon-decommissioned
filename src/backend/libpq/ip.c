@@ -252,7 +252,7 @@ getnameinfo_unix(const struct sockaddr_un * sa, int salen,
 
 	if (node)
 	{
-		ret = snprintf(node, nodelen, "%s", "localhost");
+		ret = snprintf(node, nodelen, "%s", "[local]");
 		if (ret == -1 || ret > nodelen)
 			return EAI_MEMORY;
 	}
