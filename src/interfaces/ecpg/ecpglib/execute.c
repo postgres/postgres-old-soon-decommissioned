@@ -857,7 +857,7 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 							else
 								PGTYPESnumeric_from_decimal((decimal *) ((var + var->offset * element)->value), nval);
 
-							str = PGTYPESnumeric_to_asc(nval, 0);
+							str = PGTYPESnumeric_to_asc(nval, nval->dscale);
 							PGTYPESnumeric_free(nval);
 							slen = strlen(str);
 
@@ -879,7 +879,7 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 						else
 							PGTYPESnumeric_from_decimal((decimal *) (var->value), nval);
 
-						str = PGTYPESnumeric_to_asc(nval, 0);
+						str = PGTYPESnumeric_to_asc(nval, nval->dscale);
 
 						PGTYPESnumeric_free(nval);
 						slen = strlen(str);
