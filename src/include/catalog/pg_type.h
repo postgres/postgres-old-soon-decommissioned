@@ -413,6 +413,11 @@ DATA(insert OID = 1700 ( numeric	   PGUID -1  -1 f b t \054 0  0 numeric_in nume
 DESCR("numeric(precision, decimal), arbitrary precision number");
 #define NUMERICOID		1700
 
+/* OID 1790 */
+DATA(insert OID = 1790 ( refcursor	   PGUID -1  -1 f b t \054 0  0 textin textout textin textout i x _null_ ));
+DESCR("reference cursor (portal name)");
+#define REFCURSOROID	1790
+
 
 /*
  * prototypes for functions in pg_type.c

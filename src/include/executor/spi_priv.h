@@ -25,6 +25,7 @@ typedef struct
 
 typedef struct
 {
+	MemoryContext plancxt;
 	List	   *qtlist;
 	List	   *ptlist;
 	int			nargs;

@@ -55,7 +55,7 @@ typedef struct PortalData
  * estimate of the maximum number of open portals a user would have,
  * used in initially sizing the PortalHashTable in EnablePortalManager()
  */
-#define PORTALS_PER_USER	   10
+#define PORTALS_PER_USER	   64
 
 
 extern void EnablePortalManager(void);
