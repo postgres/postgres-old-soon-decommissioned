@@ -61,6 +61,6 @@ extern void XactLockTableDelete(TransactionId xid);
 extern void XactLockTableWait(TransactionId xid);
 
 /* proc.c */
-extern void InitProcGlobal(IPCKey key);
+extern void InitProcGlobal(IPCKey key, int maxBackends);
 
 #endif	 /* LMGR_H */

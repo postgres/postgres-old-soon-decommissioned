@@ -31,7 +31,7 @@ A------------- Header info --------------
 	endEntryChain		(offset relative to B)
 	numEntries
 	maxNumEntries
-	procState[MaxBackendId] --> limit
+	procState[MAXBACKENDS] --> limit
 								resetState (bool)
 a								tag (POSTID)
 B------------- Start entry section -------
@@ -44,7 +44,6 @@ C----------------End shared segment -------
 */
 
 /* Parameters (configurable)  *******************************************/
-#define MaxBackendId 64			/* maximum number of backends		*/
 #define MAXNUMMESSAGES 4000		/* maximum number of messages in seg */
 
 
@@ -71,7 +70,7 @@ typedef struct SISeg
 	Offset		endEntryChain;	/* (offset relative to B)		*/
 	int			numEntries;
 	int			maxNumEntries;
-	ProcState	procState[MaxBackendId];		/* reflects the
+	ProcState	procState[MAXBACKENDS];			/* reflects the
 												 * invalidation state */
 	/* here starts the entry section, controlled by offsets */
 } SISeg;

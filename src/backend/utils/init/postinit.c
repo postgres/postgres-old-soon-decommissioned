@@ -571,7 +571,7 @@ InitPostgres(char *name)		/* database name */
 	 */
 	InitProcess(PostgresIpcKey);
 
-	if (MyBackendId > MaxBackendId || MyBackendId <= 0)
+	if (MyBackendId > MAXBACKENDS || MyBackendId <= 0)
 	{
 		elog(FATAL, "cinit2: bad backend id %d (%d)",
 			 MyBackendTag,

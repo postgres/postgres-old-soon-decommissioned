@@ -201,7 +201,7 @@ typedef enum _LockId_
 
 /* ipci.c */
 extern IPCKey SystemPortAddressCreateIPCKey(SystemPortAddress address);
-extern void CreateSharedMemoryAndSemaphores(IPCKey key);
+extern void CreateSharedMemoryAndSemaphores(IPCKey key, int maxBackends);
 extern void AttachSharedMemoryAndSemaphores(IPCKey key);
 
 #endif	 /* IPC_H */
