@@ -58,3 +58,4 @@ clean:
 	$(MAKE) -C sql clean
 	$(MAKE) -C expected clean
 	$(MAKE) -C results clean
+	$(MAKE) -C ../../../contrib/spi clean
