@@ -17,13 +17,13 @@
 typedef struct
 {
 	Oid			proid;
-	uint16		nargs;
+	int			nargs;
 	func_ptr	func;
-	char	   *funcName;
+	int			dummy;			/* pad struct to 4 words for fast indexing */
 } FmgrCall;
 
 extern FmgrCall *fmgr_isbuiltin(Oid id);
-extern func_ptr fmgr_lookupByName(char *name);
+
 extern void load_file(char *filename);
 
 #endif	 /* FMGRTAB_H */
