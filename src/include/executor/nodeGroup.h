@@ -22,15 +22,4 @@ extern TupleTableSlot *ExecGroup(GroupState *node);
 extern void ExecEndGroup(GroupState *node);
 extern void ExecReScanGroup(GroupState *node, ExprContext *exprCtxt);
 
-extern bool execTuplesMatch(HeapTuple tuple1,
-				HeapTuple tuple2,
-				TupleDesc tupdesc,
-				int numCols,
-				AttrNumber *matchColIdx,
-				FmgrInfo *eqfunctions,
-				MemoryContext evalContext);
-extern FmgrInfo *execTuplesMatchPrepare(TupleDesc tupdesc,
-					   int numCols,
-					   AttrNumber *matchColIdx);
-
 #endif   /* NODEGROUP_H */

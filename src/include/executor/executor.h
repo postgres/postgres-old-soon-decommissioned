@@ -37,6 +37,31 @@ extern void ExecRestrPos(PlanState *node);
 extern bool ExecSupportsMarkRestore(NodeTag plantype);
 
 /*
+ * prototypes from functions in execGrouping.c
+ */
+extern bool execTuplesMatch(HeapTuple tuple1,
+				HeapTuple tuple2,
+				TupleDesc tupdesc,
+				int numCols,
+				AttrNumber *matchColIdx,
+				FmgrInfo *eqfunctions,
+				MemoryContext evalContext);
+extern FmgrInfo *execTuplesMatchPrepare(TupleDesc tupdesc,
+					   int numCols,
+					   AttrNumber *matchColIdx);
+extern uint32 ComputeHashFunc(Datum key, int typLen, bool byVal);
+extern TupleHashTable BuildTupleHashTable(int numCols, AttrNumber *keyColIdx,
+										  FmgrInfo *eqfunctions,
+										  int nbuckets, Size entrysize,
+										  MemoryContext tablecxt,
+										  MemoryContext tempcxt);
+extern TupleHashEntry LookupTupleHashEntry(TupleHashTable hashtable,
+										   TupleTableSlot *slot,
+										   bool *isnew);
+extern TupleHashEntry ScanTupleHashTable(TupleHashTable hashtable,
+										 TupleHashIterator *state);
+
+/*
  * prototypes from functions in execJunk.c
  */
 extern JunkFilter *ExecInitJunkFilter(List *targetList, TupleDesc tupType,

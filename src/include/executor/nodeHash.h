@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * nodeHash.h
- *
+ *	  prototypes for nodeHash.c
  *
  *
  * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
@@ -38,6 +38,5 @@ extern void ExecChooseHashTableSize(double ntuples, int tupwidth,
 						int *virtualbuckets,
 						int *physicalbuckets,
 						int *numbatches);
-extern uint32 ComputeHashFunc(Datum key, int typLen, bool byVal);
 
 #endif   /* NODEHASH_H */

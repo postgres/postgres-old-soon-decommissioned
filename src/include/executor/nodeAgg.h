@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * nodeAgg.h
- *
+ *	  prototypes for nodeAgg.c
  *
  *
  * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group

@@ -36,8 +36,8 @@
 
 #include "access/heapam.h"
 #include "executor/executor.h"
-#include "executor/nodeGroup.h"
 #include "executor/nodeSetOp.h"
+
 
 /* ----------------------------------------------------------------
  *		ExecSetOp

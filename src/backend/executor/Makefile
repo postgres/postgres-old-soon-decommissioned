@@ -12,7 +12,7 @@ subdir = src/backend/executor
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = execAmi.o execJunk.o execMain.o \
+OBJS = execAmi.o execGrouping.o execJunk.o execMain.o \
        execProcnode.o execQual.o execScan.o execTuples.o \
        execUtils.o functions.o instrument.o nodeAppend.o nodeAgg.o nodeHash.o \
        nodeHashjoin.o nodeIndexscan.o nodeMaterial.o nodeMergejoin.o \
