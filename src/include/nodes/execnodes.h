@@ -15,7 +15,6 @@
 #define EXECNODES_H
 
 #include "access/relscan.h"
-#include "executor/hashjoin.h"
 #include "executor/tuptable.h"
 #include "fmgr.h"
 #include "nodes/bitmapset.h"
@@ -985,11 +984,13 @@ typedef struct MergeJoinState
  *	 HashJoinState information
  *
  *		hj_HashTable			hash table for the hashjoin
+ *								(NULL if table not built yet)
+ *		hj_CurHashValue			hash value for current outer tuple
  *		hj_CurBucketNo			bucket# for current outer tuple
  *		hj_CurTuple				last inner tuple matched to current outer
  *								tuple, or NULL if starting search
- *								(CurBucketNo and CurTuple are meaningless
- *								 unless OuterTupleSlot is nonempty!)
+ *								(CurHashValue, CurBucketNo and CurTuple are
+ *								 undefined if OuterTupleSlot is empty!)
  *		hj_OuterHashKeys		the outer hash keys in the hashjoin condition
  *		hj_InnerHashKeys		the inner hash keys in the hashjoin condition
  *		hj_HashOperators		the join operators in the hashjoin condition
@@ -998,14 +999,19 @@ typedef struct MergeJoinState
  *		hj_NullInnerTupleSlot	prepared null tuple for left outer joins
  *		hj_NeedNewOuter			true if need new outer tuple on next call
  *		hj_MatchedOuter			true if found a join match for current outer
- *		hj_hashdone				true if hash-table-build phase is done
  * ----------------
  */
+
+/* these structs are defined in executor/hashjoin.h: */
+typedef struct HashJoinTupleData *HashJoinTuple;
+typedef struct HashJoinTableData *HashJoinTable;
+
 typedef struct HashJoinState
 {
 	JoinState	js;				/* its first field is NodeTag */
 	List	   *hashclauses;	/* list of ExprState nodes */
 	HashJoinTable hj_HashTable;
+	uint32		hj_CurHashValue;
 	int			hj_CurBucketNo;
 	HashJoinTuple hj_CurTuple;
 	List	   *hj_OuterHashKeys;		/* list of ExprState nodes */
@@ -1016,7 +1022,6 @@ typedef struct HashJoinState
 	TupleTableSlot *hj_NullInnerTupleSlot;
 	bool		hj_NeedNewOuter;
 	bool		hj_MatchedOuter;
-	bool		hj_hashdone;
 } HashJoinState;
 
 

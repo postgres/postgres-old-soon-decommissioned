@@ -2154,7 +2154,7 @@ estimate_num_groups(Query *root, List *groupExprs, double input_rows)
  * inner rel is well-dispersed (or the alternatives seem much worse).
  */
 Selectivity
-estimate_hash_bucketsize(Query *root, Node *hashkey, int nbuckets)
+estimate_hash_bucketsize(Query *root, Node *hashkey, double nbuckets)
 {
 	VariableStatData vardata;
 	double		estfract,
@@ -2212,8 +2212,8 @@ estimate_hash_bucketsize(Query *root, Node *hashkey, int nbuckets)
 	 * the number of buckets is less than the expected number of distinct
 	 * values; otherwise it is 1/ndistinct.
 	 */
-	if (ndistinct > (double) nbuckets)
-		estfract = 1.0 / (double) nbuckets;
+	if (ndistinct > nbuckets)
+		estfract = 1.0 / nbuckets;
 	else
 		estfract = 1.0 / ndistinct;
 
