@@ -199,6 +199,11 @@ lpad(PG_FUNCTION_ARGS)
 
 #ifdef MULTIBYTE
 	bytelen = pg_database_encoding_max_length() * len;
+
+	/* check for integer overflow */
+	if (len != 0 && bytelen / pg_database_encoding_max_length() != len)
+		elog(ERROR, "Requested length too large");
+
 	ret = (text *) palloc(VARHDRSZ + bytelen);
 #else
 	ret = (text *) palloc(VARHDRSZ + len);
@@ -310,6 +315,11 @@ rpad(PG_FUNCTION_ARGS)
 
 #ifdef MULTIBYTE
 	bytelen = pg_database_encoding_max_length() * len;
+
+	/* Check for integer overflow */
+	if (len != 0 && bytelen / pg_database_encoding_max_length() != len)
+		elog(ERROR, "Requested length too large");
+
 	ret = (text *) palloc(VARHDRSZ + bytelen);
 #else
 	ret = (text *) palloc(VARHDRSZ + len);
