@@ -26,40 +26,43 @@ extern int compare_fractional_path_costs(Path *path1, Path *path2,
 extern void set_cheapest(RelOptInfo *parent_rel);
 extern void add_path(RelOptInfo *parent_rel, Path *new_path);
 
-extern Path *create_seqscan_path(RelOptInfo *rel);
+extern Path *create_seqscan_path(Query *root, RelOptInfo *rel);
 extern IndexPath *create_index_path(Query *root, RelOptInfo *rel,
 				  IndexOptInfo *index,
 				  List *restriction_clauses,
 				  List *pathkeys,
 				  ScanDirection indexscandir);
-extern TidPath *create_tidscan_path(RelOptInfo *rel, List *tideval);
+extern TidPath *create_tidscan_path(Query *root, RelOptInfo *rel,
+									List *tideval);
 extern AppendPath *create_append_path(RelOptInfo *rel, List *subpaths);
 extern Path *create_subqueryscan_path(RelOptInfo *rel);
 
-extern NestPath *create_nestloop_path(RelOptInfo *joinrel,
-					 JoinType jointype,
-					 Path *outer_path,
-					 Path *inner_path,
-					 List *restrict_clauses,
-					 List *pathkeys);
+extern NestPath *create_nestloop_path(Query *root,
+									  RelOptInfo *joinrel,
+									  JoinType jointype,
+									  Path *outer_path,
+									  Path *inner_path,
+									  List *restrict_clauses,
+									  List *pathkeys);
 
-extern MergePath *create_mergejoin_path(RelOptInfo *joinrel,
-					  JoinType jointype,
-					  Path *outer_path,
-					  Path *inner_path,
-					  List *restrict_clauses,
-					  List *pathkeys,
-					  List *mergeclauses,
-					  List *outersortkeys,
-					  List *innersortkeys);
+extern MergePath *create_mergejoin_path(Query *root,
+										RelOptInfo *joinrel,
+										JoinType jointype,
+										Path *outer_path,
+										Path *inner_path,
+										List *restrict_clauses,
+										List *pathkeys,
+										List *mergeclauses,
+										List *outersortkeys,
+										List *innersortkeys);
 
-extern HashPath *create_hashjoin_path(RelOptInfo *joinrel,
-					 JoinType jointype,
-					 Path *outer_path,
-					 Path *inner_path,
-					 List *restrict_clauses,
-					 List *hashclauses,
-					 Selectivity innerbucketsize);
+extern HashPath *create_hashjoin_path(Query *root,
+									  RelOptInfo *joinrel,
+									  JoinType jointype,
+									  Path *outer_path,
+									  Path *inner_path,
+									  List *restrict_clauses,
+									  List *hashclauses);
 
 /*
  * prototypes for relnode.c

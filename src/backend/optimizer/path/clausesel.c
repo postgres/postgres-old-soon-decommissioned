@@ -48,9 +48,6 @@ typedef struct RangeQueryClause
 
 static void addRangeClause(RangeQueryClause **rqlist, Node *clause,
 						   bool varonleft, bool isLTsel, Selectivity s2);
-static Selectivity clause_selectivity(Query *root,
-				   Node *clause,
-				   int varRelid);
 
 
 /****************************************************************************
@@ -364,7 +361,7 @@ addRangeClause(RangeQueryClause **rqlist, Node *clause,
  * When varRelid is 0, all variables are treated as variables.	This
  * is appropriate for ordinary join clauses and restriction clauses.
  */
-static Selectivity
+Selectivity
 clause_selectivity(Query *root,
 				   Node *clause,
 				   int varRelid)

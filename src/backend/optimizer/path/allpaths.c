@@ -223,7 +223,7 @@ set_plain_rel_pathlist(Query *root, RelOptInfo *rel, RangeTblEntry *rte)
 	 */
 
 	/* Consider sequential scan */
-	add_path(rel, create_seqscan_path(rel));
+	add_path(rel, create_seqscan_path(root, rel));
 
 	/* Consider TID scans */
 	create_tidscan_paths(root, rel);

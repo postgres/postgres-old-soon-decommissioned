@@ -29,9 +29,10 @@ extern Plan *create_plan(Query *root, Path *best_path);
 extern SubqueryScan *make_subqueryscan(List *qptlist, List *qpqual,
 				  Index scanrelid, Plan *subplan);
 extern Append *make_append(List *appendplans, bool isTarget, List *tlist);
-extern Sort *make_sort(List *tlist, Plan *lefttree, int keycount);
-extern Sort *make_sort_from_pathkeys(List *tlist, Plan *lefttree,
-						List *pathkeys);
+extern Sort *make_sort(Query *root, List *tlist,
+					   Plan *lefttree, int keycount);
+extern Sort *make_sort_from_pathkeys(Query *root, List *tlist,
+									 Plan *lefttree, List *pathkeys);
 extern Agg *make_agg(List *tlist, List *qual, Plan *lefttree);
 extern Group *make_group(List *tlist, bool tuplePerGroup, int ngrp,
 		   AttrNumber *grpColIdx, Plan *lefttree);
