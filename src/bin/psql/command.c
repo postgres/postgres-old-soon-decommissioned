@@ -733,12 +733,9 @@ exec_command(const char *cmd,
 		if (!quiet)
 		{
 			if (pset.timing)
-				puts(gettext(("Timing is on.")));
+				puts(gettext("Timing is on."));
 			else
-			{
-				puts(gettext(("Timing is off.")));
-
-			}
+				puts(gettext("Timing is off."));
 		}
 	}
 
