@@ -134,10 +134,10 @@ typedef struct _inhInfo
 
 typedef struct _indInfo
 {
-	char	   *oid;			/* Oid of the pg_index entry */
-	char	   *indoid;			/* oid of the pg_class entry for the index */
-	char	   *indexrelname;	/* name of the secondary index class */
-	char	   *indrelname;		/* name of the indexed heap class */
+	char	   *indexreloid;	/* oid of the index itself */
+	char	   *indreloid;		/* oid of the table the index is on */
+	char	   *indexrelname;	/* name of the index itself */
+	char	   *indrelname;		/* name of the indexed table */
 	char	   *indamname;		/* name of the access method (e.g. btree,
 								 * rtree, etc.) */
 	char	   *indproc;		/* oid of the function to compute the
@@ -147,7 +147,7 @@ typedef struct _indInfo
 	char	   *indclass[INDEX_MAX_KEYS];		/* opclass of the keys */
 	char	   *indisunique;	/* is this index unique? */
 	char	   *indisprimary;	/* is this a PK index? */
-	char	   *indpred;		/* index predicate */
+	char	   *indhaspred;		/* does this index have a predicate? */
 } IndInfo;
 
 typedef struct _aggInfo
