@@ -6,7 +6,6 @@
 <!entity legal      SYSTEM "legal.sgml">
 <!entity notation   SYSTEM "notation.sgml">
 <!entity problems   SYSTEM "problems.sgml">
-<!entity y2k        SYSTEM "y2k.sgml">
 
 <!entity bookindex  SYSTEM "bookindex.sgml">
 <!entity setindex   SYSTEM "setindex.sgml">

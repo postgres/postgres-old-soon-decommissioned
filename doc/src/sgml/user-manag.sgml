@@ -16,7 +16,7 @@ $Header$
  <para>
   This chapter describes how to create and manage users and introduces
   the privilege system.  More information about the various types of
-  database objects and the effects of privileges can be found in
+  database objects and the effects of privileges can be found in the
   &cite-user;.
  </para>
 

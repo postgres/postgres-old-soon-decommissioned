@@ -2,9 +2,6 @@
 $Header$
 -->
 
- <preface id="preface">
-  <title>Preface</title>
-
   <sect1 id="intro-whatis">
    <title> What is <productname>PostgreSQL</productname>?</title>
 
@@ -94,14 +91,6 @@ $Header$
    </para>
 
   </sect1>
-
-   &history;
-   &info;
-   &notation;
-   &problems;
-   &y2k;
-
- </preface>
 
 <!-- Keep this comment at the end of the file
 Local variables:

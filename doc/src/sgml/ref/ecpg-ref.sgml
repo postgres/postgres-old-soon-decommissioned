@@ -49,7 +49,7 @@ PostgreSQL documentation
 
   <para>
    This reference page does not describe the embedded SQL language.
-   See &cite-programmer; for that.
+   See the &cite-programmer; for that.
   </para>
  </refsect1>
 

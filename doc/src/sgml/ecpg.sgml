@@ -798,7 +798,7 @@ ECPG = ecpg
 
   <para>
    The complete syntax of the <command>ecpg</command> command is
-   detailed in &cite-reference;.
+   detailed in the &cite-reference;.
   </para>
  </sect1>
 
