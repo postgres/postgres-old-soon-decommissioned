@@ -111,7 +111,8 @@ LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool *foundPtr)
 		/* And write... */
 		smgrwrite(reln,
 				  bufHdr->tag.blockNum,
-				  (char *) MAKE_PTR(bufHdr->data));
+				  (char *) MAKE_PTR(bufHdr->data),
+				  true);
 
 		LocalBufferFlushCount++;
 	}
