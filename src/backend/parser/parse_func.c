@@ -1221,7 +1221,8 @@ unknown_attribute(ParseState *pstate, Node *relref, char *attname)
 {
 	RangeTblEntry *rte;
 
-	if (IsA(relref, Var))
+	if (IsA(relref, Var) &&
+		((Var *) relref)->varattno == InvalidAttrNumber)
 	{
 		/* Reference the RTE by alias not by actual table name */
 		rte = GetRTEByRangeTablePosn(pstate,
