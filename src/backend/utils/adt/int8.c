@@ -113,8 +113,11 @@ scanint8(const char *str, bool errorOK, int64 *result)
 		tmp = newtmp;
 	}
 
-	/* trailing junk? */
-	if (*ptr)
+	/* allow trailing whitespace, but not other trailing chars */
+	while (*ptr != '\0' && isspace(*ptr))
+		ptr++;
+
+	if (*ptr != '\0')
 	{
 		if (errorOK)
 			return false;
