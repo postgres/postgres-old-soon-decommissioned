@@ -54,6 +54,9 @@
 #ifdef HAVE_ENDIAN_H
 #include "endian.h"
 #endif
+#ifdef HAVE_SYS_PARAM_H
+#include <sys/param.h>
+#endif
 
 #ifndef BYTE_ORDER
 #error BYTE_ORDER must be defined as LITTLE_ENDIAN, BIG_ENDIAN or PDP_ENDIAN
