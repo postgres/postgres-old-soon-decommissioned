@@ -179,6 +179,20 @@ while read GRONAME GROSYSID GROLIST ; do
 done
 
 
+# First we dump the template in case there are local extensions.
+
+echo
+echo "--"
+echo "-- Database template1"
+echo "--"
+echo "${BS}connect template1"
+$PGDUMP "template1"
+if [ "$?" -ne 0 ] ; then
+    echo "pg_dump failed on template1, exiting" 1>&2
+    exit 1
+fi
+
+
 # For each database, run pg_dump to dump the contents of that database.
 
 $PSQL -d template1 -At -F ' ' \
