@@ -214,7 +214,7 @@ extern void GrantLock(LOCK *lock, LOCKT lockt);
 extern bool LockReleaseAll(LockTableId tableId, SHM_QUEUE *lockQueue);
 extern int	LockShmemSize(void);
 extern bool LockingDisabled(void);
-
+extern bool DeadLockCheck(SHM_QUEUE *lockQueue, LOCK *findlock, bool skip_check);
 #ifdef DEADLOCK_DEBUG
 extern void DumpLocks(void);
 
