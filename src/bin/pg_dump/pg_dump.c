@@ -1193,7 +1193,7 @@ dumpAggs(FILE* fout, AggInfo* agginfo, int numAggs,
 
 void dumpTables(FILE* fout, TableInfo *tblinfo, int numTables,
 	   InhInfo *inhinfo, int numInherits,
-	   TypeInfo *tinfo, int numTypes, char *tablename)
+	   TypeInfo *tinfo, int numTypes, const char *tablename)
 {
     int i,j,k;
     char q[MAXQUERYLEN];
@@ -1305,7 +1305,7 @@ dumpIndices(FILE* fout, IndInfo* indinfo, int numIndices,
     int i;
     int tableInd;
     const char *attname;  /* the name of the indexed attribute  */
-    const char *funcname; /* the name of the function to comput the index key from*/
+    char *funcname; /* the name of the function to comput the index key from*/
     int indkey;
 
     char q[MAXQUERYLEN];
