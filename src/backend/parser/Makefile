@@ -11,7 +11,7 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-CFLAGS += -I..
+CFLAGS += -I.. -DPARSEDEBUG
 
 ifeq ($(CC), gcc)
 CFLAGS+= -Wno-error
@@ -20,7 +20,7 @@ endif
 
 OBJS= analyze.o gram.o keywords.o parser.o parse_agg.o parse_clause.o \
       parse_expr.o parse_func.o parse_node.o parse_oper.o parse_relation.o \
-      parse_type.o parse_target.o scan.o scansup.o
+      parse_type.o parse_coerce.o parse_target.o scan.o scansup.o
 
 all: SUBSYS.o
 
