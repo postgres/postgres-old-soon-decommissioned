@@ -1081,7 +1081,7 @@ getTables(int *numTables)
     sprintf(query, 
             "SELECT oid, relname, relarch, relkind, relacl from pg_class "
             "where (relkind = 'r' or relkind = 'S') and relname !~ '^pg_' "
-            "and relname !~ '^xinv' order by oid;");
+            "and relname !~ '^xinv[0-9]' order by oid;");
 
     res = PQexec(g_conn, query);
     if (!res || 
