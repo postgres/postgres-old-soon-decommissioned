@@ -15,14 +15,9 @@
 #include "postgres.h"
 
 #include "access/htup.h"
-#include "access/tupdesc.h"
-
-#include "executor/execdebug.h"
-
-#include "access/skey.h"
-
 #include "access/itup.h"
-
+#include "access/skey.h"
+#include "executor/execdebug.h"
 
 /* ----------------------------------------------------------------
  *		  index scan key qualification code

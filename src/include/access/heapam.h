@@ -13,17 +13,8 @@
 #ifndef	HEAPAM_H
 #define HEAPAM_H
 
-#include <sys/types.h>
-
-
-#include "access/attnum.h"
-#include "access/htup.h"
 #include "access/relscan.h"
-#include "access/skey.h"
-#include "utils/tqual.h"
-#include "access/tupdesc.h"
-#include "storage/smgr.h"
-#include "utils/rel.h"
+#include "storage/buf.h"
 
 /* ----------------------------------------------------------------
  *		heap access method statistics

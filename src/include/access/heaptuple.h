@@ -13,6 +13,10 @@
 #ifndef	HEAPTUPLE_H
 #define HEAPTUPLE_H
 
+#include "access/htup.h"
+#include "storage/buf.h"
+#include "access/tupdesc.h"
+
 extern char *heap_getattr(HeapTuple tup,
                           Buffer b,
                           int attnum,

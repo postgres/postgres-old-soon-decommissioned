@@ -13,13 +13,6 @@
 #ifndef XACT_H
 #define XACT_H
 
-#include <signal.h>
-
-#include "storage/ipc.h"
-#include "miscadmin.h"
-#include "utils/portal.h"
-#include "utils/elog.h"
-#include "utils/mcxt.h"
 #include "utils/nabstime.h"
 
 /* ----------------

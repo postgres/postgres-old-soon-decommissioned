@@ -17,7 +17,6 @@
 #ifndef	TQUAL_H
 #define TQUAL_H
 
-#include "utils/nabstime.h"
 #include "access/htup.h"
 
 typedef struct TimeQualSpace {

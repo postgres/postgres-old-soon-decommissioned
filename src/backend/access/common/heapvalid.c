@@ -14,21 +14,11 @@
 
 #include "postgres.h"
 
-#include "access/htup.h"
-#include "utils/rel.h"
-#include "access/tupdesc.h"
-
 #include "fmgr.h"
-#include "catalog/pg_attribute.h"
-#include "storage/buf.h"
-#include "storage/item.h"
-#include "storage/itemid.h"
-#include "storage/page.h"
-
+#include "access/heaptuple.h"
 #include "access/xact.h"
 #include "storage/bufpage.h"
-
-#include "access/heaptuple.h"
+#include "utils/rel.h"
 #include "utils/tqual.h"
 
 /* ----------------

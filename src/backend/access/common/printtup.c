@@ -13,26 +13,19 @@
  *-------------------------------------------------------------------------
  */
 
-#include <stdio.h>
-#include <sys/types.h>
-#include <netinet/in.h>
-
 #include "postgres.h"
 
-#include "access/htup.h"
+#include "access/heaptuple.h" 
 #include "utils/rel.h"
-#include "access/tupdesc.h"
+#include "utils/palloc.h"
 
 #include "fmgr.h" 
 #include "libpq/pqcomm.h"
-#include "storage/buf.h"
-#include "utils/palloc.h"
 
 #include "libpq/libpq.h"
 
 #include "catalog/pg_type.h"
 #include "utils/syscache.h"
-#include "access/heaptuple.h" 
 
 /* ----------------------------------------------------------------
  *	printtup / debugtup support

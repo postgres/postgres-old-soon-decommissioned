@@ -13,9 +13,7 @@
 #ifndef	MCXT_H
 #define MCXT_H
 
-
 #include "nodes/memnodes.h"
-#include "nodes/nodes.h"
 
 extern MemoryContext	CurrentMemoryContext;
 extern MemoryContext	TopMemoryContext;

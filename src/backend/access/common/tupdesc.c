@@ -16,15 +16,10 @@
  *-------------------------------------------------------------------------
  */
 
-#include <string.h>
-#include <stdio.h>
-#include <time.h>
-
 #include "postgres.h"
 
 #include "access/htup.h"
 #include "utils/rel.h"
-#include "access/tupdesc.h"
 
 #include "utils/fcache.h"
 #include "utils/geo-decls.h"
