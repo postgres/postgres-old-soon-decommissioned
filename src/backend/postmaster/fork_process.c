@@ -12,6 +12,8 @@
 #include "postgres.h"
 #include "postmaster/fork_process.h"
 
+#include <time.h>
+#include <sys/time.h>
 #include <unistd.h>
 
 /*
