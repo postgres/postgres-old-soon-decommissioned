@@ -824,6 +824,18 @@ CREATE TABLE distributors (
 </programlisting>
   </para>
 
+  <para>
+   Create table <structname>cinemas</> in tablespace <structname>diskvol1</>:
+
+<programlisting>
+CREATE TABLE cinemas (
+	id serial,
+	name text,
+	location text
+) TABLESPACE diskvol1;
+</programlisting>
+  </para>
+
  </refsect1>
 
  <refsect1 id="SQL-CREATETABLE-compatibility">

@@ -254,6 +254,15 @@ CREATE UNIQUE INDEX title_idx ON films (title);
 </programlisting>
   </para>
 
+  <para>
+   To create an index on the column <literal>code</> in the table
+   <literal>films</> and have the index reside in the tablespace
+   <literal>indexspace</>:
+<programlisting>
+CREATE INDEX code_idx ON films(code) TABLESPACE indexspace;
+</programlisting>
+  </para>
+
 <!--
 <comment>
 Is this example correct?
