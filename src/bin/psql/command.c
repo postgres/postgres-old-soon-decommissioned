@@ -350,14 +350,26 @@ exec_command(const char *cmd,
 			case 'a':
 				success = describeAggregates(pattern, show_verbose);
 				break;
+			case 'c':
+				success = listConversions(pattern);
+				break;
+			case 'C':
+				success = listCasts(pattern);
+				break;
 			case 'd':
 				success = objectDescription(pattern);
+				break;
+			case 'D':
+				success = listDomains(pattern);
 				break;
 			case 'f':
 				success = describeFunctions(pattern, show_verbose);
 				break;
 			case 'l':
 				success = do_lo_list();
+				break;
+			case 'n':
+				success = listSchemas(pattern);
 				break;
 			case 'o':
 				success = describeOperators(pattern);
@@ -378,16 +390,7 @@ exec_command(const char *cmd,
 			case 'u':
 				success = describeUsers(pattern);
 				break;
-			case 'D':
-				success = listDomains(pattern);
-				break;
-			case 'c':
-				success = listConversions(pattern);
-				break;
-			case 'C':
-				success = listCasts(pattern);
-				break;
-				
+
 			default:
 				status = CMD_UNKNOWN;
 		}

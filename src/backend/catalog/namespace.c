@@ -145,6 +145,7 @@ Datum		pg_operator_is_visible(PG_FUNCTION_ARGS);
 Datum		pg_opclass_is_visible(PG_FUNCTION_ARGS);
 Datum		pg_conversion_is_visible(PG_FUNCTION_ARGS);
 
+
 /*
  * RangeVarGetRelid
  *		Given a RangeVar describing an existing relation,
@@ -1084,7 +1085,7 @@ ConversionIsVisible(Oid conid)
 							ObjectIdGetDatum(conid),
 							0, 0, 0);
 	if (!HeapTupleIsValid(contup))
-		elog(ERROR, "Cache lookup failed for converions %u", conid);
+		elog(ERROR, "Cache lookup failed for conversion %u", conid);
 	conform = (Form_pg_conversion) GETSTRUCT(contup);
 
 	recomputeNamespacePath();
@@ -1104,7 +1105,7 @@ ConversionIsVisible(Oid conid)
 		 * If it is in the path, it might still not be visible; it could
 		 * be hidden by another conversion of the same name earlier in the
 		 * path. So we must do a slow check to see if this conversion would
-		 * be found by ConvnameGetConid.
+		 * be found by ConversionGetConid.
 		 */
 		char	   *conname = NameStr(conform->conname);
 		

@@ -49,5 +49,8 @@ bool		listConversions(const char *pattern);
 /* \dC */
 bool		listCasts(const char *pattern);
 
+/* \dn */
+bool		listSchemas(const char *pattern);
+
 
 #endif   /* DESCRIBE_H */

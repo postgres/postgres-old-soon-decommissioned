@@ -211,6 +211,7 @@ slashUsage(unsigned short int pager)
 	fprintf(output, _("  \\dd [PATTERN]  show comment for object\n"));
 	fprintf(output, _("  \\dD [PATTERN]  list domains\n"));
 	fprintf(output, _("  \\df [PATTERN]  list functions (add \"+\" for more detail)\n"));
+	fprintf(output, _("  \\dn [PATTERN]  list schemas\n"));
 	fprintf(output, _("  \\do [NAME]     list operators\n"));
 	fprintf(output, _("  \\dl            list large objects, same as \\lo_list\n"));
 	fprintf(output, _("  \\dp [PATTERN]  list table access privileges\n"));
