@@ -9,6 +9,7 @@
 #
 #-------------------------------------------------------------------------
 
+PGFILEDESC = "PostgreSQL utility"
 subdir = src/bin/scripts
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
@@ -19,7 +20,7 @@ override CPPFLAGS := -DFRONTEND -I$(top_srcdir)/src/bin/pg_dump -I$(top_srcdir)/
 
 all: submake-libpq submake-backend $(PROGRAMS)
 
-%: %.o
+%: %.o $(WIN32RES)
 	$(CC) $(CFLAGS) $^ $(libpq) $(LDFLAGS) $(LIBS) -o $@$(X)
 
 createdb: createdb.o common.o dumputils.o $(top_builddir)/src/backend/parser/keywords.o
@@ -61,5 +62,5 @@ uninstall:
 
 clean distclean maintainer-clean:
 	rm -f $(addsuffix $(X), $(PROGRAMS)) $(addsuffix .o, $(PROGRAMS))
-	rm -f common.o dumputils.o print.o mbprint.o
+	rm -f common.o dumputils.o print.o mbprint.o $(WIN32RES)
 	rm -f dumputils.c print.c mbprint.c

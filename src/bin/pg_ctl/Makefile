@@ -9,13 +9,14 @@
 #
 #-------------------------------------------------------------------------
 
+PGFILEDESC = "pg_ctl - starts/stops/restarts the PostgreSQL server"
 subdir = src/bin/pg_ctl
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS := -DFRONTEND -DDEF_PGPORT=$(DEF_PGPORT) -I$(libpq_srcdir) $(CPPFLAGS)
 
-OBJS=	pg_ctl.o
+OBJS=	pg_ctl.o $(WIN32RES)
 
 all: submake-libpq submake-libpgport pg_ctl
 

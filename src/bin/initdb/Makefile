@@ -9,13 +9,14 @@
 #
 #-------------------------------------------------------------------------
 
+PGFILEDESC = "initdb - initialize a new database cluster"
 subdir = src/bin/initdb
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS := -DFRONTEND -I$(libpq_srcdir) $(CPPFLAGS)
 
-OBJS=	initdb.o
+OBJS=	initdb.o $(WIN32RES)
 
 all: submake-libpq submake-libpgport initdb
 

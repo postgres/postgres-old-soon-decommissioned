@@ -8,13 +8,14 @@
 #
 #-------------------------------------------------------------------------
 
+PGFILEDESC = "pg_controldata - reads the data from pg_control"
 subdir = src/bin/pg_controldata
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS += -DFRONTEND
 
-OBJS= pg_controldata.o pg_crc.o
+OBJS= pg_controldata.o pg_crc.o $(WIN32RES)
 
 all: submake-libpgport pg_controldata
 

@@ -8,6 +8,7 @@
 #
 #-------------------------------------------------------------------------
 
+PGFILEDESC = "ecpg - embedded SQL precompiler for C"
 subdir = src/interfaces/ecpg/preproc
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
@@ -25,8 +26,9 @@ override CFLAGS += -Wno-error
 endif
 override CFLAGS += $(PTHREAD_CFLAGS)
 
-OBJS=	preproc.o type.o ecpg.o ecpg_keywords.o output.o\
-	keywords.o c_keywords.o ../ecpglib/typename.o descriptor.o variable.o
+OBJS=	preproc.o type.o ecpg.o ecpg_keywords.o output.o \
+	keywords.o c_keywords.o ../ecpglib/typename.o descriptor.o variable.o \
+	$(WIN32RES)
 
 all: submake-libpgport ecpg
 

@@ -8,6 +8,7 @@
 #
 #-------------------------------------------------------------------------
 
+PGFILEDESC = "PostgreSQL Database Backend"
 subdir = src/backend
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
@@ -60,11 +61,11 @@ endif # cygwin
 
 ifeq ($(PORTNAME), win32)
 
-postgres: $(OBJS) $(DLLINIT) postgres.def libpostgres.a
+postgres: $(OBJS) $(DLLINIT) postgres.def libpostgres.a $(WIN32RES)
 	$(DLLTOOL) --dllname $@$(X) --output-exp $@.exp --def postgres.def
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@$(X) -Wl,--base-file,$@.base $@.exp $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@$(X) -Wl,--base-file,$@.base $@.exp $(OBJS) $(WIN32RES) $(LIBS)
 	$(DLLTOOL) --dllname $@$(X) --base-file $@.base --output-exp $@.exp --def postgres.def
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@$(X) $@.exp $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@$(X) $@.exp $(OBJS) $(WIN32RES) $(LIBS)
 	rm -f $@.exp $@.base
 
 postgres.def: $(OBJS)

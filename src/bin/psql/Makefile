@@ -9,6 +9,8 @@
 #
 #-------------------------------------------------------------------------
 
+PGFILEDESC = "psql - the PostgreSQL interactive terminal"
+PGAPPICON=win32
 subdir = src/bin/psql
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
@@ -19,7 +21,7 @@ override CPPFLAGS := -DFRONTEND -I$(libpq_srcdir) $(CPPFLAGS)
 
 OBJS=	command.o common.o help.o input.o stringutils.o mainloop.o copy.o \
 	startup.o prompt.o variables.o large_obj.o print.o describe.o \
-	psqlscan.o tab-complete.o mbprint.o
+	psqlscan.o tab-complete.o mbprint.o $(WIN32RES)
 
 FLEXFLAGS = -Cfe
 
