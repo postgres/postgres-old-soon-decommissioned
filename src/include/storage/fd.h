@@ -71,6 +71,7 @@ extern int	FreeFile(FILE *);
 extern int	BasicOpenFile(FileName fileName, int fileFlags, int fileMode);
 
 /* Miscellaneous support routines */
+extern void set_max_safe_fds(void);
 extern void closeAllVfds(void);
 extern void AtEOXact_Files(void);
 extern void RemovePgTempFiles(void);

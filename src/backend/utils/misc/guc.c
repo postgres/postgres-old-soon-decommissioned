@@ -1102,7 +1102,7 @@ static struct config_int ConfigureNamesInt[] =
 	},
 
 	{
-		{"max_files_per_process", PGC_BACKEND, RESOURCES_KERNEL,
+		{"max_files_per_process", PGC_POSTMASTER, RESOURCES_KERNEL,
 			gettext_noop("Sets the maximum number of simultaneously open files for each server process."),
 			NULL
 		},
