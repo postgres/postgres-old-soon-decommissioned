@@ -502,13 +502,12 @@ explain_outNode(StringInfo str,
 			i = 0;
 			foreach(l, ((IndexScan *) plan)->indxid)
 			{
-				Relation	relation;
+				char	   *indname;
 
-				relation = index_open(lfirst_oid(l));
+				indname = get_rel_name(lfirst_oid(l));
 				appendStringInfo(str, "%s%s",
 								 (++i > 1) ? ", " : "",
-					quote_identifier(RelationGetRelationName(relation)));
-				index_close(relation);
+								 quote_identifier(indname));
 			}
 			/* FALL THRU */
 		case T_SeqScan:
