@@ -63,6 +63,13 @@ if [ $? -ne 0 ]; then
      exit 1
 fi
 
+echo "=============== installing PL/pgSQL...                ================="
+createlang $HOST plpgsql regression
+if [ $? -ne 0 ]; then
+     echo createlang failed
+     exit 1
+fi
+
 echo "=============== running regression queries...         ================="
 echo "" > regression.diffs
 for i in `cat sql/tests` $mbtests

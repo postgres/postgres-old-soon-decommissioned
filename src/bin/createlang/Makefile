@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------
 #
 # Makefile.inc--
-#    Makefile for bin/initdb
+#    Makefile for bin/createlang
 #
 # Copyright (c) 1994, Regents of the University of California
 #
@@ -14,16 +14,16 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-all: initdb
+all: createlang
 
-initdb: initdb.sh
-	sed -e 's/__MULTIBYTE__/$(MULTIBYTE)/' 			\
-			initdb.sh > initdb
+createlang: createlang.sh
+	sed -e 's/__DLSUFFIX__/$(DLSUFFIX)/'			\
+			createlang.sh > createlang
 
-install: initdb
+install: createlang
 	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$<
 
 clean:
-	rm -f initdb
+	rm -f createlang
 
 dep depend:

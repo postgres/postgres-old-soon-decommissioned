@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------
 #
 # Makefile.inc--
-#    Makefile for bin/initdb
+#    Makefile for bin/destroylang
 #
 # Copyright (c) 1994, Regents of the University of California
 #
@@ -14,16 +14,15 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-all: initdb
+all: destroylang
 
-initdb: initdb.sh
-	sed -e 's/__MULTIBYTE__/$(MULTIBYTE)/' 			\
-			initdb.sh > initdb
+destroylang: destroylang.sh
+	cp destroylang.sh destroylang
 
-install: initdb
+install: destroylang
 	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$<
 
 clean:
-	rm -f initdb
+	rm -f destroylang
 
 dep depend:

@@ -491,26 +491,6 @@ echo "CREATE RULE \"_RETpg_indexes\" AS ON SELECT TO pg_indexes DO INSTEAD	\
 	           AND I.oid = X.indexrelid;" | \
 	postgres $PGSQL_OPT template1 > /dev/null
 
-if [ -f $PGLIB/plpgsql__DLSUFFIX__ ] ; then
-	echo "Installing PL/pgSQL as trusted procedural language"
-	echo "CREATE FUNCTION plpgsql_call_handler () RETURNS opaque	\
-			AS '$PGLIB/plpgsql__DLSUFFIX__' LANGUAGE 'C';" |		\
-		postgres $PGSQL_OPT template1 > /dev/null
-	echo "CREATE TRUSTED PROCEDURAL LANGUAGE 'plpgsql'				\
-			HANDLER plpgsql_call_handler LANCOMPILER 'PL/pgSQL';" |	\
-		postgres $PGSQL_OPT template1 > /dev/null
-fi
-
-if [ -f $PGLIB/pltcl__DLSUFFIX__ ] ; then
-	echo "Installing PL/Tcl as trusted procedural language"
-	echo "CREATE FUNCTION pltcl_call_handler () RETURNS opaque		\
-			AS '$PGLIB/pltcl__DLSUFFIX__' LANGUAGE 'C';" |		\
-		postgres $PGSQL_OPT template1 > /dev/null
-	echo "CREATE TRUSTED PROCEDURAL LANGUAGE 'pltcl'				\
-			HANDLER pltcl_call_handler LANCOMPILER 'PL/Tcl';" |	\
-		postgres $PGSQL_OPT template1 > /dev/null
-fi
-
 echo "Loading pg_description"
 echo "copy pg_description from '$TEMPLATE_DESCR'" | \
 	postgres $PGSQL_OPT template1 > /dev/null
