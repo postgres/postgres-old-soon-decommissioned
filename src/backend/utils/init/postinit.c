@@ -546,6 +546,9 @@ InitPostgres(char *name)		/* database name */
 	 */
 	InitCatalogCache();
 
+	/* start a new transaction here before access to db */
+	if (!bootstrap)
+		StartTransactionCommand();
 	/*
 	 * Set ourselves to the proper user id and figure out our postgres
 	 * user id.  If we ever add security so that we check for valid
