@@ -56,9 +56,12 @@ fi
 echo "=============== running regression queries...         ================="
 echo "" > regression.diffs
 if [ -n "$MULTIBYTE" ];then
-	mbtests=`echo $MULTIBYTE|tr "[A-Z]" "[a-z]"`
+	mbtests=`echo $MULTIBYTE | tr "[A-Z]" "[a-z]"`
+	PGCLIENTENCODING="$MULTIBYTE"
+	export PGCLIENTENCODING
 else
 	mbtests=""
+	unset PGCLIENTENCODING
 fi
 for i in `cat sql/tests` $mbtests
 do
