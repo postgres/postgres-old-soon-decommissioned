@@ -13,8 +13,8 @@
 
 VPATH:= $(VPATH):$(CURDIR)/parser
 
-#PARSEYACCS= gram.c parse.h
-PARSEYACCS= gram.c
+PARSEYACCS= gram.c parse.h
+#PARSEYACCS= gram.c
 
 $(PARSEYACCS): gram.y
 	$(YACC) $(YFLAGS) $<

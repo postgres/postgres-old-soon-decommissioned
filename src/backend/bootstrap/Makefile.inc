@@ -21,8 +21,8 @@
 bootdir= $(CURDIR)/bootstrap
 VPATH:= $(VPATH):$(bootdir)
 
-#BOOTYACCS= bootstrap_tokens.h bootparse.c
-BOOTYACCS= bootparse.c
+BOOTYACCS= bootstrap_tokens.h bootparse.c
+#BOOTYACCS= bootparse.c
 
 SRCS_BOOTSTRAP= bootparse.c bootscanner.c bootstrap.c 
 

@@ -228,7 +228,7 @@ IDLDFLAGS+= -Aa -D_HPUX_SOURCE
 endif
 endif
 
-CLEANFILES+= postgres
+CLEANFILES+= postgres pg_id fmgr.h
 
 
 #############################################################################
