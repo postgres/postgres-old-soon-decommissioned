@@ -16,6 +16,7 @@
 #include "postgres.h"
 
 #include <sys/types.h>
+#include <sys/param.h>
 #include <sys/socket.h>			/* for SCM_CREDS */
 #ifdef SCM_CREDS
 #include <sys/uio.h>			/* for struct iovec */
