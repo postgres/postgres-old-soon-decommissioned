@@ -714,7 +714,7 @@ off_t ftello(FILE *stream);
 /*
  * Win32 doesn't have reliable rename/unlink during concurrent access
  */
-#ifdef WIN32
+#if defined(WIN32) && !defined(FRONTEND)
 int pgrename(const char *from, const char *to);
 int pgunlink(const char *path);      
 #define rename(path)		pgrename(path)
