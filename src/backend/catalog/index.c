@@ -587,6 +587,7 @@ UpdateIndexRelation(Oid indexoid,
 	indexForm->indexrelid = indexoid;
 	indexForm->indrelid = heapoid;
 	indexForm->indproc = indexInfo->ii_FuncOid;
+	indexForm->indisclustered = false;			/* not used */
 	indexForm->indislossy = islossy;
 	indexForm->indisunique = indexInfo->ii_Unique;
 	indexForm->indisprimary = primary;
