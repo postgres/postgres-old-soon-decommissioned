@@ -139,7 +139,7 @@ InitBufferPool(IPCKey key)
     /* we need both checks because a sbufdesc_padded > PADDED_SBUFDESC_SIZE
        will shrink sbufdesc to the required size, which is bad */
     if (sizeof(struct sbufdesc) != PADDED_SBUFDESC_SIZE ||
-	sizeof(struct sbufdesc_padded) > PADDED_SBUFDESC_SIZE)
+	sizeof(struct sbufdesc_unpadded) > PADDED_SBUFDESC_SIZE)
     	elog(WARN,"Internal error:  sbufdesc does not have the proper size, "
 				"contact the Postgres developers");
     if (sizeof(struct sbufdesc_unpadded) <= PADDED_SBUFDESC_SIZE/2)
