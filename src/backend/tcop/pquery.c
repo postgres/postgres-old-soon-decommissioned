@@ -54,7 +54,6 @@ EState *
 CreateExecutorState(void)
 {
 	EState	   *state;
-	extern int	NBuffers;
 
 	/* ----------------
 	 *	create a new executor state
