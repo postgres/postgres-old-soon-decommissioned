@@ -31,5 +31,5 @@ elog() {}
 
 GetDataHome()
 {
-	return(NULL);
+	return(0);
 }

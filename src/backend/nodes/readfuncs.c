@@ -1185,8 +1185,8 @@ _readRangeTblEntry()
 	token++;
 	token[length - 2] = '\0';
 	
-	local_node->relname = (Name) palloc(NAMEDATALEN);
-	namestrcpy(local_node->relname, token);
+	local_node->relname = (char *) palloc(NAMEDATALEN);
+	strcpy(local_node->relname, token);
 	token[length - 2] = '\"';
     }
 

@@ -96,7 +96,7 @@ static void ProcKill(int exitStatus, int pid);
 static void ProcGetNewSemKeyAndNum(IPCKey *key, int *semNum);
 static void ProcFreeSem(IpcSemaphoreKey semKey, int semNum);
 #if defined(PORTNAME_linux)
-extern int HandleDeadLock(int);
+extern void HandleDeadLock(int);
 #else
 extern int HandleDeadLock(void);
 #endif
@@ -628,10 +628,11 @@ ProcAddLock(SHM_QUEUE *elem)
  * up my semaphore.
  * --------------------
  */
-int
 #if defined(PORTNAME_linux)
+void 
 HandleDeadLock(int i)
 #else
+int 
 HandleDeadLock()
 #endif
 {
