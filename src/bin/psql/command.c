@@ -326,7 +326,7 @@ exec_command(const char *cmd,
 				success = do_lo_list();
 				break;
 			case 'n':
-				success = listSchemas(pattern);
+				success = listSchemas(pattern, show_verbose);
 				break;
 			case 'o':
 				success = describeOperators(pattern);
