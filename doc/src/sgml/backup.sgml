@@ -365,7 +365,7 @@ tar -cf backup.tar /usr/local/pgsql/data
 
   <para>
    If your database is spread across multiple volumes (for example,
-   data files and WAL log on different disks) there may not be any way
+   if you are using tablespaces) there may not be any way
    to obtain exactly-simultaneous frozen snapshots of all the volumes.
    Read your file system documentation very carefully before trusting
    to the consistent-snapshot technique in such situations.  The safest
