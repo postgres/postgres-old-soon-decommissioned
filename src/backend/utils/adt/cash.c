@@ -64,6 +64,10 @@ cash_in(const char *str)
 				csymbol;
 
 #ifdef USE_LOCALE
+#ifdef CASHDEBUG
+	setlocale(LC_ALL, "");
+	lconvert = localeconv();
+#endif
 	if (lconvert == NULL)
 		lconvert = localeconv();
 
@@ -83,6 +87,11 @@ cash_in(const char *str)
 	csymbol = '$';
 	psymbol = '+';
 	nsymbol = '-';
+#endif
+
+#ifdef CASHDEBUG
+printf( "cashin- precision %d; decimal %c; thousands %c; currency %c; positive %c; negative %c\n",
+ fpoint, dsymbol, ssymbol, csymbol, psymbol, nsymbol);
 #endif
 
 	/* we need to add all sorts of checking here.  For now just */
