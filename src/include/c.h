@@ -697,8 +697,8 @@ typedef struct Exception
 #define INT_ALIGN_MASK (sizeof(int32) - 1)
 
 /* This function gets call too often, so we inline it if we can */
-#define MemSet(start, val, len)	do \
-								{   /* are we aligned for int32? */ \
+#define MemSet(start, val, len) do \
+								{	/* are we aligned for int32? */ \
 									/* We have to cast the pointer to int \
 									   so we can do the AND */ \
 									if (((int)(start) & INT_ALIGN_MASK) == 0 && \
@@ -707,7 +707,7 @@ typedef struct Exception
 									/* \
 									 * We got this number by testing this \
 									 * against the stock memset() on \
-									 * bsd/os 3.0.  Larger values were \
+									 * bsd/os 3.0.	Larger values were \
 									 * slower. \
 									 */ \
 										(len) <= 64) \
