@@ -114,7 +114,7 @@ DataFill(char *data,
 	 Datum value[],
 	 char nulls[],
 	 char *infomask,
-	 bits8 bit[])
+	 bits8 *bit)
 {
     bits8	*bitP;
     int		bitmask;
