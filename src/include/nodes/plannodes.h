@@ -165,6 +165,7 @@ typedef struct IndexScan
 	List	   *indxqual;		/* list of sublists of index quals */
 	List	   *indxqualorig;	/* the same in original form */
 	List	   *indxstrategy;	/* list of sublists of strategy numbers */
+	List	   *indxsubtype;	/* list of sublists of strategy subtypes */
 	ScanDirection indxorderdir;	/* forward or backward or don't care */
 } IndexScan;
 

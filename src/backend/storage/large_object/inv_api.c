@@ -202,10 +202,10 @@ inv_getsize(LargeObjectDesc *obj_desc)
 
 	Assert(PointerIsValid(obj_desc));
 
-	ScanKeyEntryInitialize(&skey[0], 0,
-						   Anum_pg_largeobject_loid,
-						   BTEqualStrategyNumber, F_OIDEQ,
-						   ObjectIdGetDatum(obj_desc->id), OIDOID);
+	ScanKeyInit(&skey[0],
+				Anum_pg_largeobject_loid,
+				BTEqualStrategyNumber, F_OIDEQ,
+				ObjectIdGetDatum(obj_desc->id));
 
 	sd = index_beginscan(obj_desc->heap_r, obj_desc->index_r,
 						 SnapshotNow, 1, skey);
@@ -306,15 +306,15 @@ inv_read(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 	if (nbytes <= 0)
 		return 0;
 
-	ScanKeyEntryInitialize(&skey[0], 0,
-						   Anum_pg_largeobject_loid,
-						   BTEqualStrategyNumber, F_OIDEQ,
-						   ObjectIdGetDatum(obj_desc->id), OIDOID);
+	ScanKeyInit(&skey[0],
+				Anum_pg_largeobject_loid,
+				BTEqualStrategyNumber, F_OIDEQ,
+				ObjectIdGetDatum(obj_desc->id));
 
-	ScanKeyEntryInitialize(&skey[1], 0,
-						   Anum_pg_largeobject_pageno,
-						   BTGreaterEqualStrategyNumber, F_INT4GE,
-						   Int32GetDatum(pageno), INT4OID);
+	ScanKeyInit(&skey[1],
+				Anum_pg_largeobject_pageno,
+				BTGreaterEqualStrategyNumber, F_INT4GE,
+				Int32GetDatum(pageno));
 
 	sd = index_beginscan(obj_desc->heap_r, obj_desc->index_r,
 						 SnapshotNow, 2, skey);
@@ -413,15 +413,15 @@ inv_write(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 
 	indstate = CatalogOpenIndexes(obj_desc->heap_r);
 
-	ScanKeyEntryInitialize(&skey[0], 0,
-						   Anum_pg_largeobject_loid,
-						   BTEqualStrategyNumber, F_OIDEQ,
-						   ObjectIdGetDatum(obj_desc->id), OIDOID);
+	ScanKeyInit(&skey[0],
+				Anum_pg_largeobject_loid,
+				BTEqualStrategyNumber, F_OIDEQ,
+				ObjectIdGetDatum(obj_desc->id));
 
-	ScanKeyEntryInitialize(&skey[1], 0,
-						   Anum_pg_largeobject_pageno,
-						   BTGreaterEqualStrategyNumber, F_INT4GE,
-						   Int32GetDatum(pageno), INT4OID);
+	ScanKeyInit(&skey[1],
+				Anum_pg_largeobject_pageno,
+				BTGreaterEqualStrategyNumber, F_INT4GE,
+				Int32GetDatum(pageno));
 
 	sd = index_beginscan(obj_desc->heap_r, obj_desc->index_r,
 						 SnapshotNow, 2, skey);

@@ -42,9 +42,9 @@ typedef struct _OpclassCandidateList
 	char	   *opcname_tmp;	/* for internal use of namespace lookup */
 	int			pathpos;		/* for internal use of namespace lookup */
 	Oid			oid;			/* the opclass's OID */
-	Oid			opcintype;		/* type of input data for opclass */
+	Oid			opcintype;		/* type of data indexed by opclass */
 	bool		opcdefault;		/* T if opclass is default for opcintype */
-	Oid			opckeytype;		/* type of index data, or InvalidOid */
+	Oid			opckeytype;		/* type of data in index, or InvalidOid */
 }	*OpclassCandidateList;
 
 

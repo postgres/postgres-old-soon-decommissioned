@@ -399,7 +399,6 @@ extern Datum circle_area(PG_FUNCTION_ARGS);
 extern Datum rt_box_union(PG_FUNCTION_ARGS);
 extern Datum rt_box_inter(PG_FUNCTION_ARGS);
 extern Datum rt_box_size(PG_FUNCTION_ARGS);
-extern Datum rt_bigbox_size(PG_FUNCTION_ARGS);
 extern Datum rt_poly_size(PG_FUNCTION_ARGS);
 extern Datum rt_poly_union(PG_FUNCTION_ARGS);
 extern Datum rt_poly_inter(PG_FUNCTION_ARGS);

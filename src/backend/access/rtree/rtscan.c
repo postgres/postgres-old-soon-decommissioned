@@ -123,15 +123,17 @@ rtrescan(PG_FUNCTION_ARGS)
 
 			opclass = s->indexRelation->rd_index->indclass[attno-1];
 			int_strategy = RTMapToInternalOperator(s->keyData[i].sk_strategy);
-			int_oper = get_opclass_member(opclass, int_strategy);
+			int_oper = get_opclass_member(opclass,
+										  s->keyData[i].sk_subtype,
+										  int_strategy);
 			int_proc = get_opcode(int_oper);
 			ScanKeyEntryInitialize(&(p->s_internalKey[i]),
 								   s->keyData[i].sk_flags,
 								   attno,
 								   int_strategy,
+								   s->keyData[i].sk_subtype,
 								   int_proc,
-								   s->keyData[i].sk_argument,
-								   s->keyData[i].sk_argtype);
+								   s->keyData[i].sk_argument);
 		}
 	}
 

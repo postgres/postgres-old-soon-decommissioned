@@ -839,6 +839,26 @@ btfloat8cmp(PG_FUNCTION_ARGS)
 	PG_RETURN_INT32(float8_cmp_internal(arg1, arg2));
 }
 
+Datum
+btfloat48cmp(PG_FUNCTION_ARGS)
+{
+	float4		arg1 = PG_GETARG_FLOAT4(0);
+	float8		arg2 = PG_GETARG_FLOAT8(1);
+
+	/* widen float4 to float8 and then compare */
+	PG_RETURN_INT32(float8_cmp_internal(arg1, arg2));
+}
+
+Datum
+btfloat84cmp(PG_FUNCTION_ARGS)
+{
+	float8		arg1 = PG_GETARG_FLOAT8(0);
+	float4		arg2 = PG_GETARG_FLOAT4(1);
+
+	/* widen float4 to float8 and then compare */
+	PG_RETURN_INT32(float8_cmp_internal(arg1, arg2));
+}
+
 
 /*
  *		===================

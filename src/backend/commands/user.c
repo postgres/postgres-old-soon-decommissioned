@@ -1074,10 +1074,10 @@ DropUser(DropUserStmt *stmt)
 		pg_rel = heap_openr(DatabaseRelationName, AccessShareLock);
 		pg_dsc = RelationGetDescr(pg_rel);
 
-		ScanKeyEntryInitialize(&scankey, 0,
-							   Anum_pg_database_datdba,
-							   BTEqualStrategyNumber, F_INT4EQ,
-							   Int32GetDatum(usesysid), INT4OID);
+		ScanKeyInit(&scankey,
+					Anum_pg_database_datdba,
+					BTEqualStrategyNumber, F_INT4EQ,
+					Int32GetDatum(usesysid));
 
 		scan = heap_beginscan(pg_rel, SnapshotNow, 1, &scankey);
 

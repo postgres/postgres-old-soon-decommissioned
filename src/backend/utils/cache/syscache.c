@@ -136,21 +136,21 @@ static const struct cachedesc cacheinfo[] = {
 	{AccessMethodOperatorRelationName,	/* AMOPSTRATEGY */
 		AccessMethodStrategyIndex,
 		0,
-		2,
+		3,
 		{
 			Anum_pg_amop_amopclaid,
+			Anum_pg_amop_amopsubtype,
 			Anum_pg_amop_amopstrategy,
-			0,
 			0
 	}},
 	{AccessMethodProcedureRelationName, /* AMPROCNUM */
 		AccessMethodProcedureIndex,
 		0,
-		2,
+		3,
 		{
 			Anum_pg_amproc_amopclaid,
+			Anum_pg_amproc_amprocsubtype,
 			Anum_pg_amproc_amprocnum,
-			0,
 			0
 	}},
 	{AttributeRelationName,		/* ATTNAME */

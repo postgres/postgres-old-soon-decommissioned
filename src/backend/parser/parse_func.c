@@ -1039,10 +1039,10 @@ find_inheritors(Oid relid, Oid **supervec)
 	{
 		/* find all types this relid inherits from, and add them to queue */
 
-		ScanKeyEntryInitialize(&skey, 0,
-							   Anum_pg_inherits_inhrelid,
-							   BTEqualStrategyNumber, F_OIDEQ,
-							   ObjectIdGetDatum(relid), OIDOID);
+		ScanKeyInit(&skey,
+					Anum_pg_inherits_inhrelid,
+					BTEqualStrategyNumber, F_OIDEQ,
+					ObjectIdGetDatum(relid));
 
 		inhscan = heap_beginscan(inhrel, SnapshotNow, 1, &skey);
 

@@ -26,7 +26,6 @@
 #include "catalog/namespace.h"
 #include "catalog/pg_database.h"
 #include "catalog/pg_shadow.h"
-#include "catalog/pg_type.h"
 #include "commands/trigger.h"
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
@@ -92,10 +91,10 @@ ReverifyMyDatabase(const char *name)
 	 */
 	pgdbrel = heap_openr(DatabaseRelationName, AccessShareLock);
 
-	ScanKeyEntryInitialize(&key, 0,
-						   Anum_pg_database_datname,
-						   BTEqualStrategyNumber, F_NAMEEQ,
-						   NameGetDatum(name), NAMEOID);
+	ScanKeyInit(&key,
+				Anum_pg_database_datname,
+				BTEqualStrategyNumber, F_NAMEEQ,
+				NameGetDatum(name));
 
 	pgdbscan = heap_beginscan(pgdbrel, SnapshotNow, 1, &key);
 

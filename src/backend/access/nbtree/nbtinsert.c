@@ -1577,26 +1577,27 @@ _bt_isequal(TupleDesc itupdesc, Page page, OffsetNumber offnum,
 
 	for (i = 1; i <= keysz; i++)
 	{
-		ScanKey		entry = &scankey[i - 1];
 		AttrNumber	attno;
 		Datum		datum;
 		bool		isNull;
 		int32		result;
 
-		attno = entry->sk_attno;
+		attno = scankey->sk_attno;
 		Assert(attno == i);
 		datum = index_getattr(itup, attno, itupdesc, &isNull);
 
 		/* NULLs are never equal to anything */
-		if ((entry->sk_flags & SK_ISNULL) || isNull)
+		if (isNull || (scankey->sk_flags & SK_ISNULL))
 			return false;
 
-		result = DatumGetInt32(FunctionCall2(&entry->sk_func,
-											 entry->sk_argument,
-											 datum));
+		result = DatumGetInt32(FunctionCall2(&scankey->sk_func,
+											 datum,
+											 scankey->sk_argument));
 
 		if (result != 0)
 			return false;
+
+		scankey++;
 	}
 
 	/* if we get here, the keys are equal */

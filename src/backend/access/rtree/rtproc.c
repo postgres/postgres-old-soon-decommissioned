@@ -82,20 +82,6 @@ rt_box_size(PG_FUNCTION_ARGS)
 	PG_RETURN_VOID();
 }
 
-/*
- *	rt_bigbox_size() -- Compute a size for big boxes.
- *
- *		In an earlier release of the system, this routine did something
- *		different from rt_box_size.  We now use floats, rather than ints,
- *		as the return type for the size routine, so we no longer need to
- *		have a special return type for big boxes.
- */
-Datum
-rt_bigbox_size(PG_FUNCTION_ARGS)
-{
-	return rt_box_size(fcinfo);
-}
-
 Datum
 rt_poly_union(PG_FUNCTION_ARGS)
 {

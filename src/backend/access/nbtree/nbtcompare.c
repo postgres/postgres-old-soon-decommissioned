@@ -98,6 +98,90 @@ btint8cmp(PG_FUNCTION_ARGS)
 }
 
 Datum
+btint48cmp(PG_FUNCTION_ARGS)
+{
+	int32		a = PG_GETARG_INT32(0);
+	int64		b = PG_GETARG_INT64(1);
+
+	if (a > b)
+		PG_RETURN_INT32(1);
+	else if (a == b)
+		PG_RETURN_INT32(0);
+	else
+		PG_RETURN_INT32(-1);
+}
+
+Datum
+btint84cmp(PG_FUNCTION_ARGS)
+{
+	int64		a = PG_GETARG_INT64(0);
+	int32		b = PG_GETARG_INT32(1);
+
+	if (a > b)
+		PG_RETURN_INT32(1);
+	else if (a == b)
+		PG_RETURN_INT32(0);
+	else
+		PG_RETURN_INT32(-1);
+}
+
+Datum
+btint24cmp(PG_FUNCTION_ARGS)
+{
+	int16		a = PG_GETARG_INT16(0);
+	int32		b = PG_GETARG_INT32(1);
+
+	if (a > b)
+		PG_RETURN_INT32(1);
+	else if (a == b)
+		PG_RETURN_INT32(0);
+	else
+		PG_RETURN_INT32(-1);
+}
+
+Datum
+btint42cmp(PG_FUNCTION_ARGS)
+{
+	int32		a = PG_GETARG_INT32(0);
+	int16		b = PG_GETARG_INT16(1);
+
+	if (a > b)
+		PG_RETURN_INT32(1);
+	else if (a == b)
+		PG_RETURN_INT32(0);
+	else
+		PG_RETURN_INT32(-1);
+}
+
+Datum
+btint28cmp(PG_FUNCTION_ARGS)
+{
+	int16		a = PG_GETARG_INT16(0);
+	int64		b = PG_GETARG_INT64(1);
+
+	if (a > b)
+		PG_RETURN_INT32(1);
+	else if (a == b)
+		PG_RETURN_INT32(0);
+	else
+		PG_RETURN_INT32(-1);
+}
+
+Datum
+btint82cmp(PG_FUNCTION_ARGS)
+{
+	int64		a = PG_GETARG_INT64(0);
+	int16		b = PG_GETARG_INT16(1);
+
+	if (a > b)
+		PG_RETURN_INT32(1);
+	else if (a == b)
+		PG_RETURN_INT32(0);
+	else
+		PG_RETURN_INT32(-1);
+}
+
+Datum
 btoidcmp(PG_FUNCTION_ARGS)
 {
 	Oid			a = PG_GETARG_OID(0);

@@ -416,6 +416,9 @@ GetIndexOpClass(List *opclass, Oid attrType,
 	 * Release 7.2 renames timestamp_ops to timestamptz_ops, so suppress that
 	 * too for awhile.	I'm starting to think we need a better approach.
 	 * tgl 2000/10/01
+	 *
+	 * Release 7.5 removes bigbox_ops (which was dead code for a long while
+	 * anyway).  tgl 2003/11/11
 	 */
 	if (length(opclass) == 1)
 	{
@@ -425,7 +428,8 @@ GetIndexOpClass(List *opclass, Oid attrType,
 			strcmp(claname, "timespan_ops") == 0 ||
 			strcmp(claname, "datetime_ops") == 0 ||
 			strcmp(claname, "lztext_ops") == 0 ||
-			strcmp(claname, "timestamp_ops") == 0)
+			strcmp(claname, "timestamp_ops") == 0 ||
+			strcmp(claname, "bigbox_ops") == 0)
 			opclass = NIL;
 	}
 

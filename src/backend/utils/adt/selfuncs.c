@@ -952,7 +952,8 @@ patternsel(PG_FUNCTION_ARGS, Pattern_Type ptype)
 		/*
 		 * Pattern specifies an exact match, so pretend operator is '='
 		 */
-		Oid			eqopr = get_opclass_member(opclass, BTEqualStrategyNumber);
+		Oid			eqopr = get_opclass_member(opclass, InvalidOid,
+											   BTEqualStrategyNumber);
 		List	   *eqargs;
 
 		if (eqopr == InvalidOid)
@@ -3382,7 +3383,8 @@ prefix_selectivity(Query *root, Var *var, Oid opclass, Const *prefixcon)
 	List	   *cmpargs;
 	Const	   *greaterstrcon;
 
-	cmpopr = get_opclass_member(opclass, BTGreaterEqualStrategyNumber);
+	cmpopr = get_opclass_member(opclass, InvalidOid,
+								BTGreaterEqualStrategyNumber);
 	if (cmpopr == InvalidOid)
 		elog(ERROR, "no >= operator for opclass %u", opclass);
 	cmpargs = makeList2(var, prefixcon);
@@ -3403,7 +3405,8 @@ prefix_selectivity(Query *root, Var *var, Oid opclass, Const *prefixcon)
 	{
 		Selectivity topsel;
 
-		cmpopr = get_opclass_member(opclass, BTLessStrategyNumber);
+		cmpopr = get_opclass_member(opclass, InvalidOid,
+									BTLessStrategyNumber);
 		if (cmpopr == InvalidOid)
 			elog(ERROR, "no < operator for opclass %u", opclass);
 		cmpargs = makeList2(var, greaterstrcon);

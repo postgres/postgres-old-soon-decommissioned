@@ -109,7 +109,8 @@ gistrescan(PG_FUNCTION_ARGS)
 		 * Modify the scan key so that the Consistent function is called
 		 * for all comparisons.  The original operator is passed to the
 		 * Consistent function in the form of its strategy number, which
-		 * is available from the sk_strategy field.
+		 * is available from the sk_strategy field, and its subtype from
+		 * the sk_subtype field.
 		 */
 		for (i = 0; i < s->numberOfKeys; i++)
 		{

@@ -139,8 +139,8 @@ typedef struct RelationData
 	/*
 	 * index access support info (used only for an index relation)
 	 *
-	 * Note: only operators and support procs for the index's own datatype
-	 * are cached, not any cross-type operators.  The arrays are indexed by
+	 * Note: only default operators and support procs for each opclass are
+	 * cached, namely those with subtype zero.  The arrays are indexed by
 	 * strategy or support number, which is a sufficient identifier given
 	 * that restriction.
 	 */

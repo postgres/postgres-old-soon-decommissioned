@@ -397,7 +397,6 @@ btrescan(PG_FUNCTION_ARGS)
 			so->keyData = (ScanKey) palloc(scan->numberOfKeys * sizeof(ScanKeyData));
 		else
 			so->keyData = (ScanKey) NULL;
-		so->numberOfKeys = scan->numberOfKeys;
 		scan->opaque = so;
 	}
 
@@ -423,36 +422,12 @@ btrescan(PG_FUNCTION_ARGS)
 	 * _bt_first.	   - vadim 05/05/97
 	 */
 	if (scankey && scan->numberOfKeys > 0)
-	{
 		memmove(scan->keyData,
 				scankey,
 				scan->numberOfKeys * sizeof(ScanKeyData));
-		so->numberOfKeys = scan->numberOfKeys;
-		memmove(so->keyData,
-				scankey,
-				so->numberOfKeys * sizeof(ScanKeyData));
-	}
+	so->numberOfKeys = 0;		/* until _bt_preprocess_keys sets it */
 
 	PG_RETURN_VOID();
-}
-
-void
-btmovescan(IndexScanDesc scan, Datum v)
-{
-	ItemPointer iptr;
-	BTScanOpaque so;
-
-	so = (BTScanOpaque) scan->opaque;
-
-	/* we aren't holding any read locks, but gotta drop the pin */
-	if (ItemPointerIsValid(iptr = &(scan->currentItemData)))
-	{
-		ReleaseBuffer(so->btso_curbuf);
-		so->btso_curbuf = InvalidBuffer;
-		ItemPointerSetInvalid(iptr);
-	}
-
-	so->keyData[0].sk_argument = v;
 }
 
 /*
