@@ -173,7 +173,7 @@ find_join_paths(Query *root, List *outer_rels, int levels_left)
      *    <utesch@aut.tu-freiberg.de>          *
      *******************************************/
 
-    if ( _use_geqo_ )
+    if ( (_use_geqo_) || length(root->base_relation_list_) >= GEQO_RELS )
     	return lcons(geqo(root), NIL); /* returns *one* Rel, so lcons it */
 
      /*******************************************
