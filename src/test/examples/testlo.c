@@ -235,7 +235,7 @@ main(int argc, char **argv)
 	lobjOid = lo_import(conn, in_filename);
 	if (lobjOid == 0)
 		fprintf(stderr, "%s\n", PQerrorMessage(conn));
-/*
+
 	printf("\tas large object %u.\n", lobjOid);
 
 	printf("picking out bytes 1000-2000 of the large object\n");
@@ -243,7 +243,7 @@ main(int argc, char **argv)
 
 	printf("overwriting bytes 1000-2000 of the large object with X's\n");
 	overwrite(conn, lobjOid, 1000, 1000);
-*/
+
 
 	printf("exporting large object to file \"%s\" ...\n", out_filename);
 /*	  exportFile(conn, lobjOid, out_filename); */
