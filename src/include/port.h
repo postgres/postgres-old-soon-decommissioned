@@ -34,6 +34,7 @@ int pgunlink(const char *path);
 #endif
 
 extern int copydir(char *fromdir,char *todir);
+/* Last parameter not used */
 extern int gettimeofday(struct timeval *tp, struct timezone *tzp);
 
 #else

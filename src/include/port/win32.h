@@ -164,15 +164,3 @@ struct timezone
 #define ECONNRESET WSAECONNRESET
 #define EINPROGRESS WSAEINPROGRESS
 
-/*
- * Supplement to <math.h>.
- */
-#define isnan _isnan
-#define finite _finite
-extern double rint(double x);
-
-/*
- * Supplement to <stdio.h>.
- */
-#define snprintf _snprintf
-#define vsnprintf _vsnprintf
