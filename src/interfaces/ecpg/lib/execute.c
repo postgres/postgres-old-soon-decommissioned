@@ -700,7 +700,7 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 				break;
 #endif   /* HAVE_LONG_LONG_INT_64 */
 			case ECPGt_float:
-				if (!(mallocedval = ECPGalloc(var->arrsize * 20, stmt->lineno)))
+				if (!(mallocedval = ECPGalloc(var->arrsize * 21, stmt->lineno)))
 					return false;
 
 				if (var->arrsize > 1)
@@ -720,7 +720,7 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 				break;
 
 			case ECPGt_double:
-				if (!(mallocedval = ECPGalloc(var->arrsize * 20, stmt->lineno)))
+				if (!(mallocedval = ECPGalloc(var->arrsize * 21, stmt->lineno)))
 					return false;
 
 				if (var->arrsize > 1)
@@ -740,7 +740,7 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 				break;
 
 			case ECPGt_bool:
-				if (!(mallocedval = ECPGalloc(var->arrsize * 20, stmt->lineno)))
+				if (!(mallocedval = ECPGalloc(var->arrsize * 2, stmt->lineno)))
 					return false;
 
 				if (var->arrsize > 1)
