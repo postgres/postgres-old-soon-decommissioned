@@ -107,13 +107,8 @@ char	   *IndexedCatalogNames[] = {
  */
 char	   *SharedSystemRelationNames[] = {
 	DatabaseRelationName,
-	DefaultsRelationName,
-	DemonRelationName,
 	GroupRelationName,
-	HostsRelationName,
 	LogRelationName,
-	MagicRelationName,
-	ServerRelationName,
 	UserRelationName,
 	VariableRelationName,
 	0

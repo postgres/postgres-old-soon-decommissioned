@@ -3366,10 +3366,9 @@ relation_name:	SpecialRuleRelation
 				}
 		| ColId
 				{
-					/* disallow refs to magic system tables */
+					/* disallow refs to variable system tables */
 					if (strcmp(LogRelationName, $1) == 0
-					   || strcmp(VariableRelationName, $1) == 0
-					   || strcmp(MagicRelationName, $1) == 0)
+					   || strcmp(VariableRelationName, $1) == 0)
 						elog(WARN,"%s cannot be accessed by users",$1);
 					else
 						$$ = $1;

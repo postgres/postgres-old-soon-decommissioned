@@ -29,8 +29,7 @@ SUBSYS.o: $(OBJS)
 GENBKI= ./genbki.sh
 
 GLOBALBKI_SRCS= $(addprefix ../../include/catalog/, \
-                  pg_database.h pg_demon.h pg_magic.h pg_defaults.h \
-                  pg_variable.h pg_server.h pg_user.h pg_hosts.h \
+                  pg_database.h pg_variable.h pg_user.h \
                   pg_group.h pg_log.h \
                  )
 
