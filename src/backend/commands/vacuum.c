@@ -1069,8 +1069,8 @@ scan_heap(VRelStats *vacrelstats, Relation onerel,
 											  FreezeLimit))
 					{
 						tuple.t_data->t_xmin = FrozenTransactionId;
-						tuple.t_data->t_infomask &= ~HEAP_XMIN_INVALID;
-						tuple.t_data->t_infomask |= HEAP_XMIN_COMMITTED;
+						/* infomask should be okay already */
+						Assert(tuple.t_data->t_infomask & HEAP_XMIN_COMMITTED);
 						pgchanged = true;
 					}
 					break;
