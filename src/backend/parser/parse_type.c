@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------
  *
- * parse_type.h
+ * parse_type.c
  *		handle type operations for parser
  *
  * Copyright (c) 1994, Regents of the University of California
@@ -15,10 +15,16 @@
 #include "postgres.h"
 #include "fmgr.h"
 
+#include "nodes/nodes.h"
+#include "nodes/parsenodes.h"
+#include "nodes/primnodes.h"
+#include "parser/parse_node.h"
+
 #include "catalog/pg_type.h"
 #include "parser/parse_target.h"
 #include "parser/parse_type.h"
 #include "utils/syscache.h"
+
 
 /* check to see if a type id is valid,
  * returns true if it is. By using this call before calling
