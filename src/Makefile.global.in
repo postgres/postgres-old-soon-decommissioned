@@ -160,9 +160,6 @@ X11_LIBS= -lX11 @X_EXTRA_LIBS@
 
 # flag whether multibyte is on/off
 MULTIBYTE=@MULTIBYTE@
-ifdef MULTIBYTE
-MBFLAGS = -DMULTIBYTE
-endif
 
 ##############################################################################
 #
