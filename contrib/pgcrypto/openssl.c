@@ -112,7 +112,7 @@ px_find_digest(const char *name, PX_MD ** res)
 
 	md = EVP_get_digestbyname(name);
 	if (md == NULL)
-		return -1;
+		return PXE_NO_HASH;
 
 	ctx = px_alloc(sizeof(*ctx));
 	EVP_DigestInit(ctx, md);
@@ -504,7 +504,7 @@ px_find_cipher(const char *name, PX_Cipher ** res)
 		if (!strcmp(i->name, name))
 			break;
 	if (i->name == NULL)
-		return -1;
+		return PXE_NO_CIPHER;
 
 	od = px_alloc(sizeof(*od));
 	memset(od, 0, sizeof(*od));

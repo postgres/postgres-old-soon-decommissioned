@@ -33,6 +33,41 @@
 
 #include "px.h"
 
+struct error_desc {
+	int err;
+	const char *desc;
+};
+
+static const struct error_desc px_err_list[] = {
+	{PXE_OK, "Everything ok"},
+	{PXE_ERR_GENERIC, "Some PX error (not specified)"},
+	{PXE_NO_HASH, "No such hash algorithm"},
+	{PXE_NO_CIPHER, "No such cipher algorithm"},
+	{PXE_NOTBLOCKSIZE, "Data not a multiple of block size"},
+	{PXE_BAD_OPTION, "Unknown option"},
+	{PXE_BAD_FORMAT, "Badly formatted type"},
+	{PXE_KEY_TOO_BIG, "Key was too big"},
+	{PXE_CIPHER_INIT, "Cipher cannot be initalized ?"},
+	{PXE_HASH_UNUSABLE_FOR_HMAC, "This hash algorithm is unusable for HMAC"},
+	{PXE_DEV_READ_ERROR, "Error reading from random device"},
+	{PXE_OSSL_RAND_ERROR, "OpenSSL PRNG error"},
+	{PXE_BUG, "pgcrypto bug"},
+	{PXE_ARGUMENT_ERROR, "Illegal argument to function"},
+	{PXE_UNKNOWN_SALT_ALGO, "Unknown salt algorithm"},
+	{PXE_BAD_SALT_ROUNDS, "Incorrect number of rounds"},
+	{PXE_MCRYPT_INTERNAL, "mcrypt internal error"},
+	{0, NULL},
+};
+
+const char *px_strerror(int err)
+{
+	const struct error_desc *e;
+	for (e = px_err_list; e->desc; e++)
+		if (e->err == err)
+			return e->desc;
+	return "Bad error code";
+}
+
 
 const char *
 px_resolve_alias(const PX_Alias * list, const char *name)
@@ -215,10 +250,8 @@ combo_decrypt(PX_Combo * cx, const uint8 *data, unsigned dlen,
 
 	return 0;
 
-	/* error reporting should be done in pgcrypto.c */
 block_error:
-	elog(WARNING, "Data not a multiple of block size");
-	return -1;
+	return PXE_NOTBLOCKSIZE;
 }
 
 static void
@@ -262,10 +295,10 @@ parse_cipher_name(char *full, char **cipher, char **pad)
 			if (!strcmp(p, "pad"))
 				*pad = p2;
 			else
-				return -1;
+				return PXE_BAD_OPTION;
 		}
 		else
-			return -1;
+			return PXE_BAD_FORMAT;
 
 		p = q;
 	}
@@ -332,5 +365,5 @@ err1:
 		px_cipher_free(cx->cipher);
 	px_free(cx);
 	px_free(buf);
-	return -1;
+	return PXE_NO_CIPHER;
 }

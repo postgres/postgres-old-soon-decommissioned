@@ -55,7 +55,7 @@ safe_read(int fd, void *buf, size_t count)
 		{
 			if (errno == EINTR)
 				continue;
-			return -1;
+			return PXE_DEV_READ_ERROR;
 		}
 		p += res;
 		done += res;
@@ -72,7 +72,7 @@ px_get_random_bytes(uint8 *dst, unsigned count)
 
 	fd = open(RAND_DEV, O_RDONLY);
 	if (fd == -1)
-		return -1;
+		return PXE_DEV_READ_ERROR;
 	res = safe_read(fd, dst, count);
 	close(fd);
 	return res;
@@ -117,10 +117,10 @@ px_get_random_bytes(uint8 *dst, unsigned count)
 	 */
 
 	res = RAND_bytes(dst, count);
-	if (res > 0)
+	if (res == 1)
 		return count;
 
-	return -1;
+	return PXE_OSSL_RAND_ERROR;
 }
 
 #else

@@ -49,7 +49,7 @@
  * main interface
  */
 char	   *px_crypt(const char *psw, const char *salt, char *buf, unsigned buflen);
-unsigned	px_gen_salt(const char *salt_type, char *dst, int rounds);
+int			px_gen_salt(const char *salt_type, char *dst, int rounds);
 
 /*
  * internal functions

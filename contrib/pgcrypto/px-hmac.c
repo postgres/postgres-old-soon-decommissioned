@@ -158,7 +158,7 @@ px_find_hmac(const char *name, PX_HMAC ** res)
 	if (bs < 2)
 	{
 		px_md_free(md);
-		return -1;
+		return PXE_HASH_UNUSABLE_FOR_HMAC;
 	}
 
 	h = px_alloc(sizeof(*h));
