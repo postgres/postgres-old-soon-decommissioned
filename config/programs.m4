@@ -22,7 +22,7 @@ else
     for pgac_prog in flex lex; do
       pgac_candidate="$pgac_dir/$pgac_prog"
       if test -f "$pgac_candidate" \
-        && $pgac_candidate --version >/dev/null 2>&1
+        && $pgac_candidate --version </dev/null >/dev/null 2>&1
       then
         echo '%%'  > conftest.l
         if $pgac_candidate -t conftest.l 2>/dev/null | grep FLEX_SCANNER >/dev/null 2>&1; then
