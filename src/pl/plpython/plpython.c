@@ -1534,7 +1534,7 @@ static PyObject *PLy_spi_execute_fetch_result(SPITupleTable *, int, int);
 
 
 PyTypeObject PLy_PlanType = {
-  PyObject_HEAD_INIT(&PyType_Type)
+  PyObject_HEAD_INIT(NULL)
   0,                               /*ob_size*/
   "PLyPlan",                       /*tp_name*/
   sizeof(PLyPlanObject),           /*tp_size*/
@@ -1577,7 +1577,7 @@ PySequenceMethods PLy_result_as_sequence = {
 };
 
 PyTypeObject PLy_ResultType = {
-  PyObject_HEAD_INIT(&PyType_Type)
+  PyObject_HEAD_INIT(NULL)
   0,                                 /*ob_size*/
   "PLyResult",                       /*tp_name*/
   sizeof(PLyResultObject),           /*tp_size*/
@@ -2287,6 +2287,7 @@ PLy_init_plpy(void)
 
   /* initialize plpy module
    */
+  PLy_PlanType.ob_type = PLy_ResultType.ob_type = &PyType_Type;
   plpy = Py_InitModule("plpy", PLy_methods);
   plpy_dict = PyModule_GetDict(plpy);
 

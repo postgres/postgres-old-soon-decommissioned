@@ -7,6 +7,8 @@ include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS := -I$(srcdir) -I$(python_includedir) $(CPPFLAGS)
 
+override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
+
 NAME = plpython
 SO_MAJOR_VERSION = 0
 SO_MINOR_VERSION = 0
