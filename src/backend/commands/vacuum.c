@@ -40,7 +40,7 @@
 #include <commands/vacuum.h>
 #include <storage/bufpage.h>
 #include "storage/shmem.h"
-#ifndef HAVE_RUSAGE
+#ifndef HAVE_GETRUSAGE
 # include <rusagestub.h>
 #else 
 # include <sys/time.h>
