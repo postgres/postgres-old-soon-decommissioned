@@ -11,7 +11,7 @@
 #
 #-------------------------------------------------------------------------
 
-CLFILES=	create_function_1.sql create_function_2.sql copy.sql
+CLFILES=	create_function_1.sql create_function_2.sql copy.sql misc.sql
 
 clean:
 	rm -f $(CLFILES)
