@@ -12,4 +12,6 @@ SHLIB_LINK = $(libpq)
 DATA_built = dblink.sql 
 DOCS = README.dblink
 
+EXTRA_CLEAN = dblink.test.out dblink.test.diff
+
 include $(top_srcdir)/contrib/contrib-global.mk
