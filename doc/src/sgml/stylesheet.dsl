@@ -44,6 +44,7 @@
 (define %section-autolabel% #t)
 (define %generate-legalnotice-link% #t)
 (define %html-ext%              ".html")
+(define %root-filename%         "index")
 (define %link-mailto-url%       (string-append "mailto:" pgsql-docs-list))
 (define %use-id-as-filename%    #t)
 (define %stylesheet%            "stylesheet.css")
