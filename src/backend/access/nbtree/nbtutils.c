@@ -297,7 +297,9 @@ _bt_formitem(IndexTuple itup)
     btitem = (BTItem) palloc(nbytes_btitem);
     memmove((char *) &(btitem->bti_itup), (char *) itup, tuplen);
     
+#ifndef BTREE_VERSION_1
     btitem->bti_oid = newoid();
+#endif
     return (btitem);
 }
 
