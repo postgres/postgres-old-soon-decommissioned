@@ -14,7 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 NAME= pgtypes
 SO_MAJOR_VERSION= 1
-SO_MINOR_VERSION= 0
+SO_MINOR_VERSION= 1
 
 override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include -I$(top_srcdir)/src/include/utils -I$(libpq_srcdir) $(CPPFLAGS) $(THREAD_CPPFLAGS)
 SHLIB_LINK += -lm
