@@ -36,7 +36,7 @@ CATALOG(pg_database) BOOTSTRAP
 	NameData	datname;
 	int4		datdba;
 	int4		encoding;
-	int4		datlastsysoid;
+	Oid			datlastsysoid;
 	text		datpath;		/* VARIABLE LENGTH FIELD */
 } FormData_pg_database;
 
