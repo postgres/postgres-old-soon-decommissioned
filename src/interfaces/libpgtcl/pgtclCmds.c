@@ -1109,11 +1109,11 @@ Pg_lo_open(ClientData cData, Tcl_Interp *interp, int argc, char *argv[])
 			break;
 		case 'r':
 		case 'R':
-			mode = mode & INV_READ;
+			mode |= INV_READ;
 			break;
 		case 'w':
 		case 'W':
-			mode = mode & INV_WRITE;
+			mode |= INV_WRITE;
 			break;
 		default:
 			Tcl_AppendResult(interp, "mode argument must be 'r', 'w', or 'rw'", 0);
