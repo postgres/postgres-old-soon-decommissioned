@@ -196,7 +196,7 @@ do_lo_import(const char *filename_arg, const char *comment_arg)
 	{
 		char	   *cmdbuf;
 		char	   *bufptr;
-		int			slen = strlen(comment_arg);
+		size_t		slen = strlen(comment_arg);
 
 		cmdbuf = malloc(slen * 2 + 256);
 		if (!cmdbuf)

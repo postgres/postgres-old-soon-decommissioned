@@ -26,10 +26,19 @@
  *	can be compiled stand-alone.
  */
 
-#ifndef MD5_ODBC
+#if ! defined(MD5_ODBC) && ! defined(FRONTEND)
 #include "postgres.h"
 #include "libpq/crypt.h"
-#else
+#endif
+
+#ifdef FRONTEND
+#include "postgres_fe.h"
+#ifndef WIN32
+#include "libpq/crypt.h"
+#endif /* WIN32 */
+#endif /* FRONTEND */
+
+#ifdef MD5_ODBC
 #include "md5.h"
 #endif
 

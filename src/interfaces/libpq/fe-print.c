@@ -299,7 +299,7 @@ PQprint(FILE *fout,
 					(PQntuples(res) == 1) ? "" : "s");
 		free(fieldMax);
 		free(fieldNotNum);
-		free(fieldNames);
+		free((void *) fieldNames);
 		if (usePipe)
 		{
 #ifdef WIN32

@@ -28,6 +28,8 @@
 
 #ifdef WIN32
 #define strcasecmp(x,y) stricmp(x,y)
+#define	__S_ISTYPE(mode, mask)	(((mode) & S_IFMT) == (mask))
+#define	S_ISDIR(mode)	 __S_ISTYPE((mode), S_IFDIR)
 #endif
 
 bool		copy_in_state;

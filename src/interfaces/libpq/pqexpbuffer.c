@@ -192,7 +192,7 @@ printfPQExpBuffer(PQExpBuffer str, const char *fmt,...)
 			 * actually stored, but at least one returns -1 on failure. Be
 			 * conservative about believing whether the print worked.
 			 */
-			if (nprinted >= 0 && nprinted < avail - 1)
+			if (nprinted >= 0 && nprinted < (int) avail - 1)
 			{
 				/* Success.  Note nprinted does not include trailing null. */
 				str->len += nprinted;
@@ -240,7 +240,7 @@ appendPQExpBuffer(PQExpBuffer str, const char *fmt,...)
 			 * actually stored, but at least one returns -1 on failure. Be
 			 * conservative about believing whether the print worked.
 			 */
-			if (nprinted >= 0 && nprinted < avail - 1)
+			if (nprinted >= 0 && nprinted < (int) avail - 1)
 			{
 				/* Success.  Note nprinted does not include trailing null. */
 				str->len += nprinted;

@@ -202,7 +202,7 @@ mb_utf_wcswidth(unsigned char *pwcs, size_t len)
 	for (; *pwcs && len > 0; pwcs += l)
 	{
 		l = pg_utf_mblen(pwcs);
-		if ((len < l) || ((w = ucs_wcwidth(utf2ucs(pwcs))) < 0))
+		if ((len < (size_t) l) || ((w = ucs_wcwidth(utf2ucs(pwcs))) < 0))
 			return width;
 		len -= l;
 		width += w;

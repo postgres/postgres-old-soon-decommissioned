@@ -282,7 +282,7 @@ print_aligned_text(const char *title, const char *const * headers,
 	{
 		int			tlen;
 
-		if ((tlen = pg_wcswidth((unsigned char *) title, strlen(title))) >= total_w)
+		if ((unsigned int) (tlen = pg_wcswidth((unsigned char *) title, strlen(title))) >= total_w)
 			fprintf(fout, "%s\n", title);
 		else
 			fprintf(fout, "%-*s%s\n", (int) (total_w - tlen) / 2, "", title);
@@ -1184,8 +1184,8 @@ printQuery(const PGresult *result, const printQueryOpt *opt, FILE *fout)
 			   footers ? (const char *const *) footers : (const char *const *) (opt->footers),
 			   align, &opt->topt, fout);
 
-	free(headers);
-	free(cells);
+	free((void *) headers);
+	free((void *) cells);
 	if (footers)
 	{
 		free(footers[0]);
