@@ -126,7 +126,7 @@ DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
                 fp = fopen(filename, "r");
                 if (fp == NULL) 
                     elog(WARN, "COPY command, running in backend with "
-                         "effective uid %d, could not open file '%s' for ",
+                         "effective uid %d, could not open file '%s' for "
                          "reading.  Errno = %s (%d).", 
                          geteuid(), filename, strerror(errno), errno);
                     /* Above should not return */
@@ -145,7 +145,7 @@ DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
                 umask(oumask);
                 if (fp == NULL) 
                     elog(WARN, "COPY command, running in backend with "
-                         "effective uid %d, could not open file '%s' for ",
+                         "effective uid %d, could not open file '%s' for "
                          "writing.  Errno = %s (%d).", 
                          geteuid(), filename, strerror(errno), errno);
                     /* Above should not return */
