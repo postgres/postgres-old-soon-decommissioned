@@ -44,12 +44,10 @@ help(const char *progname)
 #ifdef YYDEBUG
 	printf("  -d             generate parser debug output\n");
 #endif
-	printf("  -C <mode>      set compatibility mode\n"
-		   "                 mode may be one of\n"
-		   "                 \"INFORMIX\"\n"
-		   "                 \"INFORMIX_SE\"\n");
-	printf("  -r <option>    specify runtime behaviour\n"
-		   "		     option may be only \"no_indicator\" at the moment\n");
+	printf("  -C MODE        set compatibility mode;\n"
+		   "                 MODE may be one of \"INFORMIX\", \"INFORMIX_SE\"\n");
+	printf("  -r OPTION      specify runtime behaviour;\n"
+		   "                 OPTION may only be \"no_indicator\"\n");
 	printf("  -D SYMBOL      define SYMBOL\n");
 	printf("  -I DIRECTORY   search DIRECTORY for include files\n");
 	printf("  -o OUTFILE     write result to OUTFILE\n");
