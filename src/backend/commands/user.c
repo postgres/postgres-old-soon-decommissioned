@@ -282,8 +282,8 @@ write_group_file(Relation grel)
 				 errmsg("could not rename file \"%s\" to \"%s\": %m",
 						tempname, filename)));
 
-	pfree((void *) tempname);
-	pfree((void *) filename);
+	pfree(tempname);
+	pfree(filename);
 }
 
 
@@ -412,8 +412,8 @@ write_user_file(Relation urel)
 				 errmsg("could not rename file \"%s\" to \"%s\": %m",
 						tempname, filename)));
 
-	pfree((void *) tempname);
-	pfree((void *) filename);
+	pfree(tempname);
+	pfree(filename);
 }
 
 
