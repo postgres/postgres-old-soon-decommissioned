@@ -2542,7 +2542,8 @@ groupby:  ColId
 
 having_clause:  HAVING a_expr
 				{
-					$$ = $2;
+					elog(ERROR,"HAVING clause not yet implemented");
+/*					$$ = $2; use this line instead to enable HAVING */
 				}
 		| /*EMPTY*/								{ $$ = NULL; }
 		;
