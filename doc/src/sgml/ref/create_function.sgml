@@ -384,10 +384,7 @@ Point * complex_to_point (Complex *z)
     <note>
      <para>
       PSM stands for Persistent Stored Modules. It is a procedural
-      language and it was originally hoped that PSM would be ratified
-      as an official standard by late 1996. As of mid-1998, this
-      has not yet happened, but it is hoped that PSM will
-      eventually become a standard.
+      language.  SQL/PSM is a standard to enable function extensibility.
      </para>
     </note>
 

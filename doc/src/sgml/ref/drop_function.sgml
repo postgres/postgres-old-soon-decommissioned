@@ -168,7 +168,7 @@ DROP FUNCTION sqrt(int4);
     SQL/PSM
    </title>
    <para>
-    SQL/PSM is a proposed standard to enable function extensibility.
+    SQL/PSM is a standard to enable function extensibility.
     The SQL/PSM DROP FUNCTION statement has the following syntax:
 
     <synopsis>
