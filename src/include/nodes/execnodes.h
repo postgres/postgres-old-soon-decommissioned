@@ -302,7 +302,7 @@ typedef struct EState
  *|
  *|			  As a result, many classes have extra slots which they
  *|			  don't use.  These slots are denoted (unused) in the
- *|			  comment preceeding the class definition.	If you
+ *|			  comment preceding the class definition.	If you
  *|			  comes up with a better idea of a way of doing things
  *|			  along these lines, then feel free to make your idea
  *|			  known to me.. -cim 10/15/89

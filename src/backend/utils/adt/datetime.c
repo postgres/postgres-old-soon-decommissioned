@@ -2070,7 +2070,7 @@ DecodeSpecial(int field, char *lowtoken, int *val)
  *	an unsigned floating point number. - thomas 1997-11-16
  *
  * Allow ISO-style time span, with implicit units on number of days
- *	preceeding an hh:mm:ss field. - thomas 1998-04-30
+ *	preceding an hh:mm:ss field. - thomas 1998-04-30
  */
 int
 DecodeDateDelta(char **field, int *ftype, int nf, int *dtype, struct tm * tm, double *fsec)

@@ -50,7 +50,7 @@ $Header$
    of a number of tokens, depending on the syntax of the command.
    Tokens are usually separated by whitespace, but need not be if
    there is no ambiguity.  There is no special command separator; the
-   next token that syntactically cannot belong to the preceeding
+   next token that syntactically cannot belong to the preceding
    command starts a new one.  (Usually you would put a new command on
    a new line, for clarity.)  Tokens can be certain key words, special
    characters (parentheses, commas, etc.), numbers, or double-quoted

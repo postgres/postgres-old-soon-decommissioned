@@ -922,7 +922,7 @@ strings overlap.
    characters MAY be escaped) when used as part of a <type>BYTEA</type>
    string literal in an <acronym>SQL</acronym> statement. In general, to
    escape a character, it is converted into the three digit octal number
-   equal to the decimal <acronym>ASCII</acronym> value, and preceeded by
+   equal to the decimal <acronym>ASCII</acronym> value, and preceded by
    two backslashes. The single quote (') and backslash (\) characters have
    special alternate escape sequences. See the Binary String data type
    in the User's Guide for more information. <function>PQescapeBytea

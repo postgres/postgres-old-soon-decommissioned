@@ -130,7 +130,7 @@ quote_postgres(char *arg, int lineno)
 
 /*
  * create a list of variables
- * The variables are listed with input variables preceeding outputvariables
+ * The variables are listed with input variables preceding outputvariables
  * The end of each group is marked by an end marker.
  * per variable we list:
  * type - as defined in ecpgtype.h
