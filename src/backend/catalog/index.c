@@ -479,13 +479,13 @@ UpdateRelationRelation(Relation indexRelation, char *temp_relname)
 
 	/* XXX Natts_pg_class_fixed is a hack - see pg_class.h */
 	tuple = heap_addheader(Natts_pg_class_fixed,
-						   sizeof(*indexRelation->rd_rel),
+						   CLASS_TUPLE_SIZE,
 						   (char *) indexRelation->rd_rel);
 
 	/* ----------------
 	 *	the new tuple must have the same oid as the relcache entry for the
-	 *	index.	sure would be embarassing to do this sort of thing in polite
-	 *	company.
+	 *	index.	sure would be embarrassing to do this sort of thing in
+	 *	polite company.
 	 * ----------------
 	 */
 	tuple->t_data->t_oid = RelationGetRelid(indexRelation);
