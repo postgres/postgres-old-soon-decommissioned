@@ -18,6 +18,8 @@
 #ifndef PQSIGNAL_H
 #define PQSIGNAL_H
 
+#include <signal.h>
+
 #ifdef HAVE_SIGPROCMASK
 extern sigset_t UnBlockSig,
 			BlockSig;

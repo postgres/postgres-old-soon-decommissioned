@@ -16,6 +16,7 @@
 #include <time.h>
 #include <math.h>
 #include <limits.h>
+#include <float.h>
 
 #include "fmgr.h"
 

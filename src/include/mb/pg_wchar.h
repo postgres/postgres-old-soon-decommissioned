@@ -32,7 +32,6 @@
 
 #ifdef MULTIBYTE
 typedef unsigned int pg_wchar;
-
 #else
 #define pg_wchar char
 #endif

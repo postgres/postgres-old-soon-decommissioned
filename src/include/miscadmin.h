@@ -26,7 +26,7 @@
 #include <sys/types.h>			/* For pid_t */
 
 #include "postgres.h"
-
+#include "storage/ipc.h"
 
 /*****************************************************************************
  *	  globals.h --															 *
