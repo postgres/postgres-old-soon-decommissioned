@@ -48,7 +48,7 @@ table]
 .BR "-v"
 ]
 [\c
-.BR "-z"
+.BR "-x"
 ]
 dbname
 .in -5n
@@ -113,8 +113,8 @@ Use password authentication. Prompts for username and password
 .BR "-v" ""
 Specifies verbose mode
 .TP
-.BR "-z" ""
-Include ACLs (grant/revoke commands) and table ownership information
+.BR "-x" ""
+Prevent dumping of ACLs (grant/revoke commands) and table ownership information
 .PP
 If dbname is not supplied, then the DATABASE environment variable value is used.
 .SH "CAVEATS AND LIMITATIONS"

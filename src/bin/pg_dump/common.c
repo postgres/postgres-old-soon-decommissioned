@@ -232,7 +232,7 @@ TableInfo  *
 dumpSchema(FILE *fout,
 		   int *numTablesPtr,
 		   const char *tablename,
-		   const bool acls)
+		   const bool aclsSkip)
 {
 	int			numTypes;
 	int			numFuncs;
@@ -301,7 +301,7 @@ dumpSchema(FILE *fout,
 			fprintf(stderr, "%s dumping out tables %s\n",
 					g_comment_start, g_comment_end);
 		dumpTables(fout, tblinfo, numTables, inhinfo, numInherits,
-				   tinfo, numTypes, tablename, acls);
+				   tinfo, numTypes, tablename, aclsSkip);
 	}
 
 	if (!tablename && fout)
