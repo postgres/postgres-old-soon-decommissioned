@@ -2338,12 +2338,17 @@ sigusr1_handler(SIGNAL_ARGS)
 			 *	segment files.  Other checkpoints could reduce
 			 *	the frequency of forced checkpoints.
 			 */
-			time_t now = time(NULL);
+			time_t	now = time(NULL);
 
-			if (now - LastSignalledCheckpoint < CheckPointWarning)
-				elog(LOG, "Checkpoint segments are being created too frequently (%d secs)\n
-				Consider increasing CHECKPOINT_SEGMENTS",
-				now - LastSignalledCheckpoint);
+			if (LastSignalledCheckpoint != 0)
+			{
+				int		elapsed_secs = now - LastSignalledCheckpoint;
+
+				if (elapsed_secs < CheckPointWarning)
+					elog(LOG, "Checkpoint segments are being created too frequently (%d secs)"
+						 "\n\tConsider increasing CHECKPOINT_SEGMENTS",
+						 elapsed_secs);
+			}
 			LastSignalledCheckpoint = now;
 		}
 
