@@ -306,8 +306,16 @@ network_cmp(inet *a1, inet *a2)
 {
 	if (ntohl(ip_v4addr(a1)) < ntohl(ip_v4addr(a2)))
 		return (-1);
-	else if (ntohl(ip_v4addr(a1)) > ntohl(ip_v4addr(a2)))
+
+	if (ntohl(ip_v4addr(a1)) > ntohl(ip_v4addr(a2)))
 		return (1);
+
+	if (ip_bits(a1) < ip_bits(a2))
+		return (-1);
+
+	if (ip_bits(a1) > ip_bits(a2))
+		return (1);
+
 	return 0;
 }
 
