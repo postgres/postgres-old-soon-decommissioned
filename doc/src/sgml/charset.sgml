@@ -325,7 +325,7 @@ initdb --locale=sv_SE
         </row>
         <row>
          <entry><literal>EUC_JP</literal></entry>
-         <entry>Extended UNIX Code-JP (Japanese)</></entry>
+         <entry>Extended UNIX Code-JP (Japanese)</entry>
         </row>
         <row>
          <entry><literal>EUC_KR</literal></entry>
