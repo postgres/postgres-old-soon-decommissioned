@@ -56,7 +56,7 @@
 #define DYEAR			"year"
 #define DDECADE			"decade"
 #define DCENTURY		"century"
-#define DMILLENIUM		"millenium"
+#define DMILLENNIUM		"millennium"
 #define DA_D			"ad"
 #define DB_C			"bc"
 #define DTIMEZONE		"timezone"
@@ -65,7 +65,7 @@
  * Fundamental time field definitions for parsing.
  *
  *	Meridian:  am, pm, or 24-hour style.
- *	Millenium: ad, bc
+ *	Millennium: ad, bc
  */
 
 #define AM		0
@@ -145,7 +145,7 @@
 #define DTK_YEAR		25
 #define DTK_DECADE		26
 #define DTK_CENTURY		27
-#define DTK_MILLENIUM	28
+#define DTK_MILLENNIUM	28
 #define DTK_MILLISEC	29
 #define DTK_MICROSEC	30
 
