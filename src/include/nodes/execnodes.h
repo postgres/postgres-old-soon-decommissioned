@@ -261,6 +261,7 @@ typedef struct JunkFilter
  *		IndexRelationInfo		array of key/attr info for indices
  *		TrigDesc				triggers to be fired, if any
  *		TrigFunctions			cached lookup info for trigger functions
+ *		TrigInstrument			optional runtime measurements for triggers
  *		ConstraintExprs			array of constraint-checking expr states
  *		junkFilter				for removing junk attributes from tuples
  * ----------------
@@ -275,6 +276,7 @@ typedef struct ResultRelInfo
 	IndexInfo **ri_IndexRelationInfo;
 	TriggerDesc *ri_TrigDesc;
 	FmgrInfo   *ri_TrigFunctions;
+	struct Instrumentation *ri_TrigInstrument;
 	List	  **ri_ConstraintExprs;
 	JunkFilter *ri_junkFilter;
 } ResultRelInfo;

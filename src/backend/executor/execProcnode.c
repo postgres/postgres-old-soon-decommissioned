@@ -252,7 +252,7 @@ ExecInitNode(Plan *node, EState *estate)
 
 	/* Set up instrumentation for this node if requested */
 	if (estate->es_instrument)
-		result->instrument = InstrAlloc();
+		result->instrument = InstrAlloc(1);
 
 	return result;
 }

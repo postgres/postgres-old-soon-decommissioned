@@ -1546,10 +1546,10 @@ _SPI_pquery(QueryDesc *queryDesc, int tcount)
 			elog(ERROR, "consistency check on SPI tuple count failed");
 	}
 
-	ExecutorEnd(queryDesc);
-
 	/* Take care of any queued AFTER triggers */
-	AfterTriggerEndQuery();
+	AfterTriggerEndQuery(queryDesc->estate);
+
+	ExecutorEnd(queryDesc);
 
 	if (queryDesc->dest->mydest == SPI)
 	{

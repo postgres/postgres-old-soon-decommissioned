@@ -399,8 +399,8 @@ postquel_end(execution_state *es, SQLFunctionCachePtr fcache)
 		{
 			ActiveSnapshot = es->qd->snapshot;
 
+			AfterTriggerEndQuery(es->qd->estate);
 			ExecutorEnd(es->qd);
-			AfterTriggerEndQuery();
 		}
 		PG_CATCH();
 		{

@@ -156,7 +156,7 @@ extern void ExecARUpdateTriggers(EState *estate,
 
 extern void AfterTriggerBeginXact(void);
 extern void AfterTriggerBeginQuery(void);
-extern void AfterTriggerEndQuery(void);
+extern void AfterTriggerEndQuery(EState *estate);
 extern void AfterTriggerEndXact(void);
 extern void AfterTriggerAbortXact(void);
 extern void AfterTriggerBeginSubXact(void);

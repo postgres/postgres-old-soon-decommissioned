@@ -70,7 +70,7 @@ typedef struct Instrumentation
 	double		nloops;			/* # of run cycles for this node */
 } Instrumentation;
 
-extern Instrumentation *InstrAlloc(void);
+extern Instrumentation *InstrAlloc(int n);
 extern void InstrStartNode(Instrumentation *instr);
 extern void InstrStopNode(Instrumentation *instr, bool returnedTuple);
 extern void InstrEndLoop(Instrumentation *instr);

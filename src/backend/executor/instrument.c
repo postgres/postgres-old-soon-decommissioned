@@ -18,13 +18,13 @@
 #include "executor/instrument.h"
 
 
-/* Allocate new instrumentation structure */
+/* Allocate new instrumentation structure(s) */
 Instrumentation *
-InstrAlloc(void)
+InstrAlloc(int n)
 {
-	Instrumentation *instr = palloc(sizeof(Instrumentation));
+	Instrumentation *instr = palloc0(n * sizeof(Instrumentation));
 
-	memset(instr, 0, sizeof(Instrumentation));
+	/* we don't need to do any initialization except zero 'em */
 
 	return instr;
 }

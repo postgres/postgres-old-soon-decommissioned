@@ -181,4 +181,6 @@ extern char *ChooseConstraintName(const char *name1, const char *name2,
 					 const char *label, Oid namespace,
 					 List *others);
 
+extern char *GetConstraintNameForTrigger(Oid triggerId);
+
 #endif   /* PG_CONSTRAINT_H */

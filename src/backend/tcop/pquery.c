@@ -206,13 +206,13 @@ ProcessQuery(Query *parsetree,
 		}
 	}
 
+	/* Now take care of any queued AFTER triggers */
+	AfterTriggerEndQuery(queryDesc->estate);
+
 	/*
 	 * Now, we close down all the scans and free allocated resources.
 	 */
 	ExecutorEnd(queryDesc);
-
-	/* And take care of any queued AFTER triggers */
-	AfterTriggerEndQuery();
 
 	FreeQueryDesc(queryDesc);
 

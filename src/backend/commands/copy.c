@@ -1510,6 +1510,10 @@ CopyFrom(Relation rel, List *attnumlist, bool binary, bool oids,
 	resultRelInfo->ri_RangeTableIndex = 1;		/* dummy */
 	resultRelInfo->ri_RelationDesc = rel;
 	resultRelInfo->ri_TrigDesc = CopyTriggerDesc(rel->trigdesc);
+	if (resultRelInfo->ri_TrigDesc)
+		resultRelInfo->ri_TrigFunctions = (FmgrInfo *)
+			palloc0(resultRelInfo->ri_TrigDesc->numtriggers * sizeof(FmgrInfo));
+	resultRelInfo->ri_TrigInstrument = NULL;
 
 	ExecOpenIndices(resultRelInfo);
 
@@ -1974,7 +1978,7 @@ CopyFrom(Relation rel, List *attnumlist, bool binary, bool oids,
 	/*
 	 * Handle queued AFTER triggers
 	 */
-	AfterTriggerEndQuery();
+	AfterTriggerEndQuery(estate);
 
 	pfree(values);
 	pfree(nulls);
