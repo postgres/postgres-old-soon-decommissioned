@@ -259,7 +259,7 @@ static void doNegateFloat(Value *v);
 
 %type <ival>	Iconst
 %type <str>		Sconst, comment_text
-%type <str>		UserId, opt_boolean, var_value, zone_value, Ident_or_Sconst
+%type <str>		UserId, opt_boolean, var_value, zone_value, ColId_or_Sconst
 %type <str>		ColId, ColLabel, TokenId
 
 %type <node>	TableConstraint
@@ -761,7 +761,7 @@ VariableSetStmt:  SET ColId TO var_value
 					n->value = $3;
 					$$ = (Node *) n;
 				}
-		| SET SESSION AUTHORIZATION Ident_or_Sconst
+		| SET SESSION AUTHORIZATION ColId_or_Sconst
 				{
 					VariableSetStmt *n = makeNode(VariableSetStmt);
 					n->name = "session_authorization";
@@ -844,7 +844,7 @@ opt_encoding:  Sconst						{ $$ = $1; }
         | /*EMPTY*/							{ $$ = NULL; }
         ;
 
-Ident_or_Sconst: IDENT						{ $$ = $1; }
+ColId_or_Sconst: ColId						{ $$ = $1; }
 		| SCONST							{ $$ = $1; }
 
 
