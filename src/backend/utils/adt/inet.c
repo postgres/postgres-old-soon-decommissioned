@@ -355,10 +355,22 @@ inet_host(inet *ip)
 	return (ret);
 }
 
+text *
+cidr_host(inet *ip)
+{
+		inet_host(ip);
+}
+
 int4
 inet_netmasklen(inet *ip)
 {
 	return ip_bits(ip);
+}
+
+int4
+cidr_netmasklen(inet *ip)
+{
+	return inet_netmasklen(ip);
 }
 
 text *
@@ -403,6 +415,12 @@ inet_broadcast(inet *ip)
 }
 
 text *
+cidr_broadcast(inet *ip)
+{
+	inet_broadcast(ip);
+}
+	
+text *
 inet_netmask(inet *ip)
 {
 	text	   *ret;
@@ -439,6 +457,12 @@ inet_netmask(inet *ip)
 	VARSIZE(ret) = len;
 	strcpy(VARDATA(ret), tmp);
 	return (ret);
+}
+
+text *
+cidr_netmask(inet *ip)
+{
+	inet_netmask(ip);
 }
 
 /*

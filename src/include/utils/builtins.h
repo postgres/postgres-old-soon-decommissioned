@@ -542,6 +542,11 @@ int4		inet_netmasklen(inet * addr);
 text	   *inet_broadcast(inet * addr);
 text	   *inet_host(inet * addr);
 
+text	   *cidr_netmask(inet * addr);
+int4		cidr_netmasklen(inet * addr);
+text	   *cidr_broadcast(inet * addr);
+text	   *cidr_host(inet * addr);
+
 
 /* mac.c */
 macaddr    *macaddr_in(char *str);
