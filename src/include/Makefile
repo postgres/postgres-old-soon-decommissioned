@@ -18,7 +18,8 @@ all: pg_config.h pg_config_os.h
 
 # Subdirectories containing headers for server-side dev
 SUBDIRS = access bootstrap catalog commands executor lib libpq mb \
-	nodes optimizer parser port regex rewrite storage tcop utils
+	nodes optimizer parser port regex rewrite storage tcop utils \
+	port port/win32 port/win32/arpa port/win32/netinet port/win32/sys
 
 # Install all headers
 install: all installdirs

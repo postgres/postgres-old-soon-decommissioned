@@ -35,3 +35,14 @@ endif
 ifneq (,$(findstring src/pl/plpython,$(subdir)))
 override CPPFLAGS+= -DUSE_DL_IMPORT
 endif
+
+# special win32 headers are provided here
+ifdef PGXS
+override CPPFLAGS+= -I$(includedir_server)/port/win32
+endif
+
+# it is better to install shared-libraries anyway?
+# may be overriden with make MAKE_DLL=false install
+ifndef MAKE_DLL
+MAKE_DLL	= true
+endif
