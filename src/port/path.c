@@ -32,7 +32,7 @@
 #define IS_PATH_SEP(ch) ((ch) == ';')
 #endif
 
-const static char *relative_path(const char *bin_path, const char *other_path);
+static const char *relative_path(const char *bin_path, const char *other_path);
 static void make_relative(const char *my_exec_path, const char *p, char *ret_path);
 static void trim_directory(char *path);
 static void trim_trailing_separator(char *path);
