@@ -447,7 +447,7 @@ PageIndexTupleDelete(Page page, OffsetNumber offnum)
 	if (offset < phdr->pd_upper || (offset + size) > phdr->pd_special ||
 		offset != MAXALIGN(offset) || size != MAXALIGN(size))
 		elog(ERROR, "PageIndexTupleDelete: corrupted item pointer: offset = %u size = %u",
-			 offset, size);
+			 offset, (unsigned int) size);
 
 	/*
 	 * First, we want to get rid of the pd_linp entry for the index tuple.
