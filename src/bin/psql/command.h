@@ -8,10 +8,9 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#include "pqexpbuffer.h"
-
 #include "settings.h"
 #include "print.h"
+#include "psqlscan.h"
 
 
 typedef enum _backslashResult
@@ -26,10 +25,8 @@ typedef enum _backslashResult
 } backslashResult;
 
 
-extern backslashResult HandleSlashCmds(const char *line,
-				PQExpBuffer query_buf,
-				const char **end_of_cmd,
-				volatile int *paren_level);
+extern backslashResult HandleSlashCmds(PsqlScanState scan_state,
+									   PQExpBuffer query_buf);
 
 extern int	process_file(char *filename);
 
