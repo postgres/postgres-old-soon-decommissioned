@@ -16,7 +16,8 @@ NAME= ecpg_compat
 SO_MAJOR_VERSION= 1
 SO_MINOR_VERSION= 1
 
-override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include -I$(libpq_srcdir) -I$(top_srcdir)/src/include/utils $(CPPFLAGS)
+override CPPFLAGS := -I$(top_srcdir)/src/interfaces/ecpg/include -I$(libpq_srcdir) \
+	-I$(top_srcdir)/src/include/utils $(CPPFLAGS)
 override CFLAGS += $(PTHREAD_CFLAGS)
 SHLIB_LINK = -L../ecpglib -lecpg -L../pgtypeslib -lpgtypes $(libpq) \
 	$(filter -lintl -lssl -lcrypto -lkrb5 -lcrypt -lm, $(LIBS)) $(PTHREAD_LIBS)

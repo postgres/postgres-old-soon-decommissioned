@@ -177,3 +177,37 @@ extern int pqGethostbyname(const char *name,
 #define WIFSIGNALED(w)  (((w) & 0x7f) > 0 && (((w) & 0x7f) < 0x7f))
 #define WTERMSIG(w)     ((w) & 0x7f)
 #endif
+
+/*
+ * Internal timezone library 
+ */
+#ifdef USE_PGTZ
+#ifndef FRONTEND
+#undef localtime
+#undef gmtime
+#undef asctime
+#undef ctime
+#undef difftime
+#undef mktime
+#undef tzset
+
+#define localtime(timep) pg_localtime(timep)
+#define gmtime(timep) pg_gmtime(timep)
+#define asctime(timep) pg_asctime(timep)
+#define ctime(timep) pg_ctime(timep)
+#define difftime(t1,t2) pg_difftime(t1,t2)
+#define mktime(tm) pg_mktime(tm)
+#define tzset pg_tzset
+
+
+extern struct tm *pg_localtime(const time_t *);
+extern struct tm *gg_gmtime(const time_t *);
+extern char *pg_asctime(const struct tm *);
+extern char *pg_ctime(const time_t *);
+extern double pg_difftime(const time_t, const time_t);
+extern time_t pg_mktime(struct tm *);
+extern void pg_tzset(void);
+extern time_t pg_timezone;
+
+#endif
+#endif

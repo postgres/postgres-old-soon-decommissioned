@@ -12,7 +12,8 @@ override CPPFLAGS := -I$(srcdir)/../include -I$(srcdir) $(CPPFLAGS) \
 	-DMAJOR_VERSION=$(MAJOR_VERSION) \
 	-DMINOR_VERSION=$(MINOR_VERSION) -DPATCHLEVEL=$(PATCHLEVEL) \
 	-DINCLUDEDIR=\"$(includedir)\" \
-	-DPKGINCLUDEDIR=\"$(pkgincludedir)\" 
+	-DPKGINCLUDEDIR=\"$(pkgincludedir)\" \
+	-DFRONTEND
 
 ifeq ($(GCC), yes)
 override CFLAGS += -Wno-error
