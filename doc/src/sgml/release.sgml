@@ -1811,7 +1811,7 @@ New install commands for plpgsql(Jan)
 
    <note>
    <title>Release date</title>
-   <simpara>1999-12-20</simpara>
+   <simpara>1998-12-20</simpara>
    </note>
 
 <!--
@@ -1857,7 +1857,7 @@ Fix for datetime constant problem on some platforms(Thomas)
 
    <note>
    <title>Release date</title>
-   <simpara>1999-12-18</simpara>
+   <simpara>1998-12-18</simpara>
    </note>
 
 <!--
