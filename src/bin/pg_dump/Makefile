@@ -12,8 +12,8 @@ subdir = src/bin/pg_dump
 top_builddir = ../../..
 include ../../Makefile.global
 
-OBJS= pg_backup_archiver.o pg_backup_custom.o pg_backup_files.o \
-       pg_backup_plain_text.o $(STRDUP)
+OBJS= pg_backup_archiver.o pg_backup_db.o pg_backup_custom.o pg_backup_files.o \
+       pg_backup_null.o pg_backup_tar.o $(STRDUP)
 
 CFLAGS+= -I$(LIBPQDIR)
 LIBS+= -lz
