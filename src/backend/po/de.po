@@ -5786,7 +5786,7 @@ msgstr ""
 #: ../parser/analyze.c:957
 #, c-format
 msgid ""
-"CREATE TABLE/PRIMARY KEY multiple primary keys for table '%s' are not allowed"
+"CREATE TABLE / PRIMARY KEY multiple primary keys for table '%s' are not allowed"
 msgstr ""
 
 #: ../parser/analyze.c:1013 ../parser/analyze.c:1233 ../parser/analyze.c:1370
