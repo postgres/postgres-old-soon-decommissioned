@@ -666,38 +666,39 @@ get_rels_atts(Node *clause,
  *--------------------
  */
 void
-CommuteClause(Node *clause)
+CommuteClause(Expr *clause)
 {
-	Node	   *temp;
-	Oper	   *commu;
-	Form_pg_operator commuTup;
 	HeapTuple	heapTup;
+	Form_pg_operator commuTup;
+	Oper	   *commu;
+	Node	   *temp;
 
-	if (!is_opclause(clause))
-		elog(ERROR, "CommuteClause: applied to non-operator clause");
+	if (!is_opclause((Node *) clause) ||
+		length(clause->args) != 2)
+		elog(ERROR, "CommuteClause: applied to non-binary-operator clause");
 
 	heapTup = (HeapTuple)
-		get_operator_tuple(get_commutator(((Oper *) ((Expr *) clause)->oper)->opno));
+		get_operator_tuple(get_commutator(((Oper *) clause->oper)->opno));
 
 	if (heapTup == (HeapTuple) NULL)
 		elog(ERROR, "CommuteClause: no commutator for operator %u",
-			 ((Oper *) ((Expr *) clause)->oper)->opno);
+			 ((Oper *) clause->oper)->opno);
 
 	commuTup = (Form_pg_operator) GETSTRUCT(heapTup);
 
 	commu = makeOper(heapTup->t_data->t_oid,
 					 commuTup->oprcode,
 					 commuTup->oprresult,
-					 ((Oper *) ((Expr *) clause)->oper)->opsize,
+					 ((Oper *) clause->oper)->opsize,
 					 NULL);
 
 	/*
 	 * re-form the clause in-place!
 	 */
-	((Expr *) clause)->oper = (Node *) commu;
-	temp = lfirst(((Expr *) clause)->args);
-	lfirst(((Expr *) clause)->args) = lsecond(((Expr *) clause)->args);
-	lsecond(((Expr *) clause)->args) = temp;
+	clause->oper = (Node *) commu;
+	temp = lfirst(clause->args);
+	lfirst(clause->args) = lsecond(clause->args);
+	lsecond(clause->args) = temp;
 }
 
 
