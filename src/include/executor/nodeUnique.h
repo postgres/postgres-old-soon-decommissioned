@@ -14,12 +14,12 @@
 #ifndef NODEUNIQUE_H
 #define NODEUNIQUE_H
 
-#include "nodes/plannodes.h"
+#include "nodes/execnodes.h"
 
-extern TupleTableSlot *ExecUnique(Unique *node);
-extern bool ExecInitUnique(Unique *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsUnique(Unique *node);
-extern void ExecEndUnique(Unique *node);
-extern void ExecReScanUnique(Unique *node, ExprContext *exprCtxt, Plan *parent);
+extern UniqueState *ExecInitUnique(Unique *node, EState *estate);
+extern TupleTableSlot *ExecUnique(UniqueState *node);
+extern void ExecEndUnique(UniqueState *node);
+extern void ExecReScanUnique(UniqueState *node, ExprContext *exprCtxt);
 
 #endif   /* NODEUNIQUE_H */

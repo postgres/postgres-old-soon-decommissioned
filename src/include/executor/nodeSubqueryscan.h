@@ -14,12 +14,12 @@
 #ifndef NODESUBQUERYSCAN_H
 #define NODESUBQUERYSCAN_H
 
-#include "nodes/plannodes.h"
+#include "nodes/execnodes.h"
 
-extern TupleTableSlot *ExecSubqueryScan(SubqueryScan *node);
-extern void ExecEndSubqueryScan(SubqueryScan *node);
-extern bool ExecInitSubqueryScan(SubqueryScan *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsSubqueryScan(SubqueryScan *node);
-extern void ExecSubqueryReScan(SubqueryScan *node, ExprContext *exprCtxt, Plan *parent);
+extern SubqueryScanState *ExecInitSubqueryScan(SubqueryScan *node, EState *estate);
+extern TupleTableSlot *ExecSubqueryScan(SubqueryScanState *node);
+extern void ExecEndSubqueryScan(SubqueryScanState *node);
+extern void ExecSubqueryReScan(SubqueryScanState *node, ExprContext *exprCtxt);
 
 #endif   /* NODESUBQUERYSCAN_H */

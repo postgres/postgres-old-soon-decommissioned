@@ -14,15 +14,16 @@
 #ifndef NODEINDEXSCAN_H
 #define NODEINDEXSCAN_H
 
-#include "nodes/plannodes.h"
+#include "nodes/execnodes.h"
 
-extern TupleTableSlot *ExecIndexScan(IndexScan *node);
-extern void ExecIndexReScan(IndexScan *node, ExprContext *exprCtxt, Plan *parent);
-extern void ExecEndIndexScan(IndexScan *node);
-extern void ExecIndexMarkPos(IndexScan *node);
-extern void ExecIndexRestrPos(IndexScan *node);
-extern void ExecUpdateIndexScanKeys(IndexScan *node, ExprContext *econtext);
-extern bool ExecInitIndexScan(IndexScan *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsIndexScan(IndexScan *node);
+extern IndexScanState *ExecInitIndexScan(IndexScan *node, EState *estate);
+extern TupleTableSlot *ExecIndexScan(IndexScanState *node);
+extern void ExecEndIndexScan(IndexScanState *node);
+extern void ExecIndexMarkPos(IndexScanState *node);
+extern void ExecIndexRestrPos(IndexScanState *node);
+extern void ExecIndexReScan(IndexScanState *node, ExprContext *exprCtxt);
+
+extern void ExecUpdateIndexScanKeys(IndexScanState *node, ExprContext *econtext);
 
 #endif   /* NODEINDEXSCAN_H */

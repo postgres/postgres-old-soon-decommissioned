@@ -14,14 +14,14 @@
 #ifndef NODESORT_H
 #define NODESORT_H
 
-#include "nodes/plannodes.h"
+#include "nodes/execnodes.h"
 
-extern TupleTableSlot *ExecSort(Sort *node);
-extern bool ExecInitSort(Sort *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsSort(Sort *node);
-extern void ExecEndSort(Sort *node);
-extern void ExecSortMarkPos(Sort *node);
-extern void ExecSortRestrPos(Sort *node);
-extern void ExecReScanSort(Sort *node, ExprContext *exprCtxt, Plan *parent);
+extern SortState *ExecInitSort(Sort *node, EState *estate);
+extern TupleTableSlot *ExecSort(SortState *node);
+extern void ExecEndSort(SortState *node);
+extern void ExecSortMarkPos(SortState *node);
+extern void ExecSortRestrPos(SortState *node);
+extern void ExecReScanSort(SortState *node, ExprContext *exprCtxt);
 
 #endif   /* NODESORT_H */

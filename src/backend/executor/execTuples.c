@@ -483,11 +483,11 @@ ExecSetSlotDescriptorIsNew(TupleTableSlot *slot,		/* slot to change */
  * ----------------
  */
 void
-ExecInitResultTupleSlot(EState *estate, CommonState *commonstate)
+ExecInitResultTupleSlot(EState *estate, PlanState *planstate)
 {
 	INIT_SLOT_DEFS;
 	INIT_SLOT_ALLOC;
-	commonstate->cs_ResultTupleSlot = slot;
+	planstate->ps_ResultTupleSlot = slot;
 }
 
 /* ----------------
@@ -495,11 +495,11 @@ ExecInitResultTupleSlot(EState *estate, CommonState *commonstate)
  * ----------------
  */
 void
-ExecInitScanTupleSlot(EState *estate, CommonScanState *commonscanstate)
+ExecInitScanTupleSlot(EState *estate, ScanState *scanstate)
 {
 	INIT_SLOT_DEFS;
 	INIT_SLOT_ALLOC;
-	commonscanstate->css_ScanTupleSlot = slot;
+	scanstate->ss_ScanTupleSlot = slot;
 }
 
 /* ----------------

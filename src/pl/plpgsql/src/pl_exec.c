@@ -3583,7 +3583,6 @@ exec_simple_check_plan(PLpgSQL_expr * expr)
 	if (plan->lefttree != NULL ||
 		plan->righttree != NULL ||
 		plan->initPlan != NULL ||
-		plan->subPlan != NULL ||
 		plan->qual != NULL ||
 		((Result *) plan)->resconstantqual != NULL)
 		return;

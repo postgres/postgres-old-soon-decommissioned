@@ -14,15 +14,14 @@
 #ifndef NODETIDSCAN_H
 #define NODETIDSCAN_H
 
-#include "nodes/plannodes.h"
+#include "nodes/execnodes.h"
 
-extern TupleTableSlot *ExecTidScan(TidScan *node);
-extern void ExecTidReScan(TidScan *node, ExprContext *exprCtxt, Plan *parent);
-extern void ExecEndTidScan(TidScan *node);
-extern void ExecTidMarkPos(TidScan *node);
-extern void ExecTidRestrPos(TidScan *node);
-extern bool ExecInitTidScan(TidScan *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsTidScan(TidScan *node);
-extern void ExecTidReScan(TidScan *node, ExprContext *exprCtxt, Plan *parent);
+extern TidScanState *ExecInitTidScan(TidScan *node, EState *estate);
+extern TupleTableSlot *ExecTidScan(TidScanState *node);
+extern void ExecEndTidScan(TidScanState *node);
+extern void ExecTidMarkPos(TidScanState *node);
+extern void ExecTidRestrPos(TidScanState *node);
+extern void ExecTidReScan(TidScanState *node, ExprContext *exprCtxt);
 
 #endif   /* NODETIDSCAN_H */

@@ -14,12 +14,12 @@
 #ifndef NODEAPPEND_H
 #define NODEAPPEND_H
 
-#include "nodes/plannodes.h"
+#include "nodes/execnodes.h"
 
-extern bool ExecInitAppend(Append *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsAppend(Append *node);
-extern TupleTableSlot *ExecProcAppend(Append *node);
-extern void ExecEndAppend(Append *node);
-extern void ExecReScanAppend(Append *node, ExprContext *exprCtxt, Plan *parent);
+extern AppendState *ExecInitAppend(Append *node, EState *estate);
+extern TupleTableSlot *ExecProcAppend(AppendState *node);
+extern void ExecEndAppend(AppendState *node);
+extern void ExecReScanAppend(AppendState *node, ExprContext *exprCtxt);
 
 #endif   /* NODEAPPEND_H */

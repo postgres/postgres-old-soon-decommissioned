@@ -377,8 +377,7 @@ typedef struct IndexPath
 typedef struct TidPath
 {
 	Path		path;
-	List	   *tideval;			/* qual(s) involving CTID = something */
-	Relids		unjoined_relids;	/* some rels not yet part of my Path */
+	List	   *tideval;		/* qual(s) involving CTID = something */
 } TidPath;
 
 /*

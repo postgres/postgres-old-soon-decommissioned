@@ -14,12 +14,12 @@
 #ifndef NODELIMIT_H
 #define NODELIMIT_H
 
-#include "nodes/plannodes.h"
+#include "nodes/execnodes.h"
 
-extern TupleTableSlot *ExecLimit(Limit *node);
-extern bool ExecInitLimit(Limit *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsLimit(Limit *node);
-extern void ExecEndLimit(Limit *node);
-extern void ExecReScanLimit(Limit *node, ExprContext *exprCtxt, Plan *parent);
+extern LimitState *ExecInitLimit(Limit *node, EState *estate);
+extern TupleTableSlot *ExecLimit(LimitState *node);
+extern void ExecEndLimit(LimitState *node);
+extern void ExecReScanLimit(LimitState *node, ExprContext *exprCtxt);
 
 #endif   /* NODELIMIT_H */

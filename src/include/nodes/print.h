@@ -15,10 +15,10 @@
 #define PRINT_H
 
 #include "nodes/parsenodes.h"
-#include "nodes/plannodes.h"
+#include "nodes/execnodes.h"
 
 
-#define nodeDisplay		pprint
+#define nodeDisplay(x)		pprint(x)
 
 extern void print(void *obj);
 extern void pprint(void *obj);

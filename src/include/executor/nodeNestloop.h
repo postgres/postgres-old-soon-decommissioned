@@ -14,13 +14,12 @@
 #ifndef NODENESTLOOP_H
 #define NODENESTLOOP_H
 
-#include "nodes/plannodes.h"
+#include "nodes/execnodes.h"
 
-extern TupleTableSlot *ExecNestLoop(NestLoop *node);
-extern bool ExecInitNestLoop(NestLoop *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsNestLoop(NestLoop *node);
-extern void ExecEndNestLoop(NestLoop *node);
-extern void ExecReScanNestLoop(NestLoop *node, ExprContext *exprCtxt,
-				   Plan *parent);
+extern NestLoopState *ExecInitNestLoop(NestLoop *node, EState *estate);
+extern TupleTableSlot *ExecNestLoop(NestLoopState *node);
+extern void ExecEndNestLoop(NestLoopState *node);
+extern void ExecReScanNestLoop(NestLoopState *node, ExprContext *exprCtxt);
 
 #endif   /* NODENESTLOOP_H */

@@ -16,30 +16,38 @@
 #define EXECDESC_H
 
 #include "nodes/parsenodes.h"
-#include "nodes/plannodes.h"
+#include "nodes/execnodes.h"
 #include "tcop/dest.h"
 
 
 /* ----------------
  *		query descriptor:
+ *
  *	a QueryDesc encapsulates everything that the executor
  *	needs to execute the query
  * ---------------------
  */
 typedef struct QueryDesc
 {
+	/* These fields are provided by CreateQueryDesc */
 	CmdType		operation;		/* CMD_SELECT, CMD_UPDATE, etc. */
-	Query	   *parsetree;
-	Plan	   *plantree;
+	Query	   *parsetree;		/* rewritten parsetree */
+	Plan	   *plantree;		/* planner's output */
 	CommandDest dest;			/* the destination output of the execution */
 	const char *portalName;		/* name of portal, or NULL */
+	ParamListInfo params;		/* param values being passed in */
+	bool		doInstrument;	/* TRUE requests runtime instrumentation */
 
-	TupleDesc	tupDesc;		/* set by ExecutorStart */
+	/* These fields are set by ExecutorStart */
+	TupleDesc	tupDesc;		/* descriptor for result tuples */
+	EState	   *estate;			/* executor's query-wide state */
+	PlanState  *planstate;		/* tree of per-plan-node state */
 } QueryDesc;
 
 /* in pquery.c */
 extern QueryDesc *CreateQueryDesc(Query *parsetree, Plan *plantree,
-				CommandDest dest, const char *portalName);
-
+								  CommandDest dest, const char *portalName,
+								  ParamListInfo params,
+								  bool doInstrument);
 
 #endif   /* EXECDESC_H  */

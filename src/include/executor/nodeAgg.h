@@ -15,13 +15,13 @@
 #define NODEAGG_H
 
 #include "fmgr.h"
-#include "nodes/plannodes.h"
+#include "nodes/execnodes.h"
 
-extern TupleTableSlot *ExecAgg(Agg *node);
-extern bool ExecInitAgg(Agg *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsAgg(Agg *node);
-extern void ExecEndAgg(Agg *node);
-extern void ExecReScanAgg(Agg *node, ExprContext *exprCtxt, Plan *parent);
+extern AggState *ExecInitAgg(Agg *node, EState *estate);
+extern TupleTableSlot *ExecAgg(AggState *node);
+extern void ExecEndAgg(AggState *node);
+extern void ExecReScanAgg(AggState *node, ExprContext *exprCtxt);
 
 extern Datum aggregate_dummy(PG_FUNCTION_ARGS);
 

@@ -14,14 +14,14 @@
 #ifndef NODEFUNCTIONSCAN_H
 #define NODEFUNCTIONSCAN_H
 
-#include "nodes/plannodes.h"
+#include "nodes/execnodes.h"
 
-extern TupleTableSlot *ExecFunctionScan(FunctionScan *node);
-extern void ExecEndFunctionScan(FunctionScan *node);
-extern bool ExecInitFunctionScan(FunctionScan *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsFunctionScan(FunctionScan *node);
-extern void ExecFunctionMarkPos(FunctionScan *node);
-extern void ExecFunctionRestrPos(FunctionScan *node);
-extern void ExecFunctionReScan(FunctionScan *node, ExprContext *exprCtxt, Plan *parent);
+extern FunctionScanState *ExecInitFunctionScan(FunctionScan *node, EState *estate);
+extern TupleTableSlot *ExecFunctionScan(FunctionScanState *node);
+extern void ExecEndFunctionScan(FunctionScanState *node);
+extern void ExecFunctionMarkPos(FunctionScanState *node);
+extern void ExecFunctionRestrPos(FunctionScanState *node);
+extern void ExecFunctionReScan(FunctionScanState *node, ExprContext *exprCtxt);
 
 #endif   /* NODEFUNCTIONSCAN_H */

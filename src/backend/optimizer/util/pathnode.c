@@ -385,9 +385,7 @@ create_tidscan_path(Query *root, RelOptInfo *rel, List *tideval)
 	pathnode->path.pathtype = T_TidScan;
 	pathnode->path.parent = rel;
 	pathnode->path.pathkeys = NIL;
-	pathnode->tideval = copyObject(tideval);	/* is copy really
-												 * necessary? */
-	pathnode->unjoined_relids = NIL;
+	pathnode->tideval = tideval;
 
 	cost_tidscan(&pathnode->path, root, rel, tideval);
 
