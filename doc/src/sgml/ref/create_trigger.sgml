@@ -63,7 +63,7 @@ CREATE TRIGGER <replaceable class="PARAMETER">name</replaceable> { BEFORE | AFTE
       </listitem>
      </varlistentry>
      <varlistentry>
-      <term><replaceable class="parameter">funcname</replaceable></term>
+      <term><replaceable class="parameter">func</replaceable></term>
       <listitem>
        <para>
 	A user-supplied function.
@@ -110,8 +110,8 @@ CREATE
   <para>
    <command>CREATE TRIGGER</command> will enter a new trigger into the current
    data base.  The trigger will be associated with the relation
-   <replaceable class="parameter">relname</replaceable> and will execute
-   the specified function <replaceable class="parameter">funcname</replaceable>.
+   <replaceable class="parameter">table</replaceable> and will execute
+   the specified function <replaceable class="parameter">func</replaceable>.
   </para>
 
   <para>
