@@ -1489,9 +1489,9 @@ _SPI_copy_plan(_SPI_plan *plan, int location)
 	 */
 	plancxt = AllocSetContextCreate(parentcxt,
 									"SPI Plan",
-									1024,
-									1024,
-									ALLOCSET_DEFAULT_MAXSIZE);
+									ALLOCSET_SMALL_MINSIZE,
+									ALLOCSET_SMALL_INITSIZE,
+									ALLOCSET_SMALL_MAXSIZE);
 	oldcxt = MemoryContextSwitchTo(plancxt);
 
 	/* Copy the SPI plan into its own context */

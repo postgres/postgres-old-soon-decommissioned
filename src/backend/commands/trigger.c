@@ -2008,13 +2008,9 @@ deferredTriggerInvokeEvents(bool immediate_only)
 void
 DeferredTriggerInit(void)
 {
-	/*
-	 * Since this context will never be reset, give it a minsize of 0.
-	 * This avoids using any memory if the session never stores anything.
-	 */
 	deftrig_gcxt = AllocSetContextCreate(TopMemoryContext,
 										 "DeferredTriggerSession",
-										 0,
+										 ALLOCSET_DEFAULT_MINSIZE,
 										 ALLOCSET_DEFAULT_INITSIZE,
 										 ALLOCSET_DEFAULT_MAXSIZE);
 }
@@ -2041,12 +2037,11 @@ DeferredTriggerBeginXact(void)
 
 	/*
 	 * Create the per transaction memory context and copy all states from
-	 * the per session context to here.  Set the minsize to 0 to avoid
-	 * wasting memory if there is no deferred trigger data.
+	 * the per session context to here.
 	 */
 	deftrig_cxt = AllocSetContextCreate(TopTransactionContext,
 										"DeferredTriggerXact",
-										0,
+										ALLOCSET_DEFAULT_MINSIZE,
 										ALLOCSET_DEFAULT_INITSIZE,
 										ALLOCSET_DEFAULT_MAXSIZE);
 	oldcxt = MemoryContextSwitchTo(deftrig_cxt);

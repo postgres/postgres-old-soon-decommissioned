@@ -80,7 +80,7 @@ MemoryContextInit(void)
 	 */
 	TopMemoryContext = AllocSetContextCreate((MemoryContext) NULL,
 											 "TopMemoryContext",
-											 8 * 1024,
+											 0,
 											 8 * 1024,
 											 8 * 1024);
 

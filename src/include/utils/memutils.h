@@ -116,8 +116,16 @@ extern MemoryContext AllocSetContextCreate(MemoryContext parent,
  * Recommended default alloc parameters, suitable for "ordinary" contexts
  * that might hold quite a lot of data.
  */
-#define ALLOCSET_DEFAULT_MINSIZE   (8 * 1024)
+#define ALLOCSET_DEFAULT_MINSIZE   0
 #define ALLOCSET_DEFAULT_INITSIZE  (8 * 1024)
 #define ALLOCSET_DEFAULT_MAXSIZE   (8 * 1024 * 1024)
+
+/*
+ * Recommended alloc parameters for "small" contexts that are not expected
+ * to contain much data (for example, a context to contain a query plan).
+ */
+#define ALLOCSET_SMALL_MINSIZE   0
+#define ALLOCSET_SMALL_INITSIZE  (1 * 1024)
+#define ALLOCSET_SMALL_MAXSIZE   (8 * 1024)
 
 #endif   /* MEMUTILS_H */

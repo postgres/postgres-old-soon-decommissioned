@@ -41,7 +41,6 @@ extern bool ExecSupportsMarkRestore(NodeTag plantype);
  */
 extern JunkFilter *ExecInitJunkFilter(List *targetList, TupleDesc tupType,
 				   TupleTableSlot *slot);
-extern void ExecFreeJunkFilter(JunkFilter *junkfilter);
 extern bool ExecGetJunkAttribute(JunkFilter *junkfilter, TupleTableSlot *slot,
 					 char *attrName, Datum *value, bool *isNull);
 extern HeapTuple ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot);
