@@ -178,9 +178,6 @@ pg_encname	pg_encname_tbl[] =
 		"unicode", PG_UTF8
 	},							/* alias for UTF8 */
 	{
-		"utf-8", PG_UTF8
-	},							/* UTF8; RFC2279 */
-	{
 		"utf8", PG_UTF8
 	},							/* alias for UTF8 */
 	{
