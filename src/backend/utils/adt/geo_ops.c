@@ -18,7 +18,7 @@
 
 #include "postgres.h"
 
-#include "utils/geo-decls.h"
+#include "utils/geo_decls.h"
 #include "utils/palloc.h"
 
 #define LDELIM		'('

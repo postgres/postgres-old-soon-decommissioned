@@ -89,7 +89,7 @@
 
 #include "catalog/catname.h"
 
-#include "utils/geo-decls.h"
+#include "utils/geo_decls.h"
 #include "utils/builtins.h"
 
 #include "catalog/index.h"

@@ -20,7 +20,7 @@
 #include <storage/lmgr.h>
 #include <access/rtree.h>
 #include <storage/bufmgr.h>
-#include <utils/geo-decls.h>
+#include <utils/geo_decls.h>
 #include <executor/executor.h>
 #include <access/heapam.h>
 #include <fmgr.h>
