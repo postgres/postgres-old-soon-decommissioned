@@ -851,6 +851,8 @@ DATA(insert OID = 398 (  hashint2vector    PGNSP PGUID 12 f f t f i 1 23 "22" _n
 DESCR("hash");
 DATA(insert OID = 399 (  hashmacaddr	   PGNSP PGUID 12 f f t f i 1 23 "829" _null_	hashmacaddr - _null_ ));
 DESCR("hash");
+DATA(insert OID = 422 (  hashinet		   PGNSP PGUID 12 f f t f i 1 23 "869" _null_	hashinet - _null_ ));
+DESCR("hash");
 DATA(insert OID = 458 (  text_larger	   PGNSP PGUID 12 f f t f i 2 25 "25 25" _null_	text_larger - _null_ ));
 DESCR("larger of two");
 DATA(insert OID = 459 (  text_smaller	   PGNSP PGUID 12 f f t f i 2 25 "25 25" _null_	text_smaller - _null_ ));

@@ -20,10 +20,10 @@
  */
 typedef struct
 {
-	unsigned char family;
-	unsigned char bits;
-	unsigned char type;
-	unsigned char ip_addr[16];	/* 128 bits of address */
+	unsigned char family;		/* PGSQL_AF_INET or PGSQL_AF_INET6 */
+	unsigned char bits;			/* number of bits in netmask */
+	unsigned char type;			/* 0 = inet, 1 = cidr */
+	unsigned char ipaddr[16];	/* up to 128 bits of address */
 } inet_struct;
 
 /*

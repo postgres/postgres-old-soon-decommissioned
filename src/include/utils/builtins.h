@@ -664,6 +664,7 @@ extern Datum network_eq(PG_FUNCTION_ARGS);
 extern Datum network_ge(PG_FUNCTION_ARGS);
 extern Datum network_gt(PG_FUNCTION_ARGS);
 extern Datum network_ne(PG_FUNCTION_ARGS);
+extern Datum hashinet(PG_FUNCTION_ARGS);
 extern Datum network_sub(PG_FUNCTION_ARGS);
 extern Datum network_subeq(PG_FUNCTION_ARGS);
 extern Datum network_sup(PG_FUNCTION_ARGS);

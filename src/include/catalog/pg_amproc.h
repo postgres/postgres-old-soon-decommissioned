@@ -136,11 +136,11 @@ DATA(insert (	2234    0 1  381 ));
 /* hash */
 DATA(insert (	 427    0 1 1080 ));
 DATA(insert (	 431    0 1	454 ));
-DATA(insert (	 433    0 1	456 ));
+DATA(insert (	 433    0 1	422 ));
 DATA(insert (	 435    0 1	450 ));
 DATA(insert (	1971    0 1	451 ));
 DATA(insert (	1973    0 1	452 ));
-DATA(insert (	1975    0 1	456 ));
+DATA(insert (	1975    0 1	422 ));
 DATA(insert (	1977    0 1	449 ));
 DATA(insert (	1979    0 1	450 ));
 DATA(insert (	1981    0 1	949 ));
