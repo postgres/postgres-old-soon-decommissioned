@@ -384,7 +384,7 @@ big52mic(unsigned char *big5, unsigned char *p, int len)
 
 	while (len > 0 && (c1 = *big5++))
 	{
-		if (c1 <= (unsigned) 0x7f)
+		if (c1 <= 0x7fU)
 		{						/* ASCII */
 			len--;
 			*p++ = c1;
