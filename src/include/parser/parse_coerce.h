@@ -39,8 +39,9 @@ typedef enum CATEGORY {
 		|| ((t) == VARCHAROID) \
 		|| ((t) == TEXTOID) \
 		|| ((t) == INT4OID) \
-		|| ((t) == DATETIMEOID) \
+		|| ((t) == INT8OID) \
 		|| ((t) == FLOAT8OID) \
+		|| ((t) == DATETIMEOID) \
 		|| ((t) == TIMESTAMPOID) \
 		|| ((t) == ABSTIMEOID) \
 		|| ((t) == RELTIMEOID) \
