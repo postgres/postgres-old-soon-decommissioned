@@ -81,13 +81,13 @@ The default is unlimited.
 .IR TIMEZONE
 sets your timezone.
 .PP
-.IR XACTISOLEVEL
+.I XACTISOLEVEL|TRANSACTION ISOLATION LEVEL
 sets the transaction isolation level to
 .IR SERIALIZABLE
 or
 .IR COMMITTED .
 .PP
-.IR CLIENT_ENCODING
+.IR CLIENT_ENCODING|NAMES
 sets the character set encoding of the client.  Only available if multi-byte
 is enabled at configure time.
 .PP
