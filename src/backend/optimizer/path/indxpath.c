@@ -144,7 +144,7 @@ find_index_paths(Query *root,
 		 * restriction clauses, then create pathnodes corresponding to
 		 * each group of usable clauses.
 		 */
-		scanclausegroups = group_clauses_by_indexkey(rel,
+ 		scanclausegroups = group_clauses_by_indexkey(rel,
 													 index,
 													 index->indexkeys,
 													 index->classlist,
@@ -1293,7 +1293,7 @@ index_innerjoin(Query *root, RelOptInfo * rel, List *clausegroup_list,
 		pathnode->path.path_order = makeNode(PathOrder);
 	    pathnode->path.path_order->ordtype = SORTOP_ORDER;
 	    pathnode->path.path_order->ord.sortop = index->ordering;
-	    pathnode->path.keys = NIL;	/* not sure about this, bjm 1998/09/21 */
+	    pathnode->path.pathkeys = NIL;
 
 		pathnode->indexid = index->relids;
 		pathnode->indexkeys = index->indexkeys;

@@ -366,7 +366,7 @@ _equalPath(Path *a, Path *b)
 		if (!equal(a->path_order->ord.merge, b->path_order->ord.merge))
 			return false;
 	}
-	if (!equal(a->keys, b->keys))
+	if (!equal(a->pathkeys, b->pathkeys))
 		return false;
 
 	/*

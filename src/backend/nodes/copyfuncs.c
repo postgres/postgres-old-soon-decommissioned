@@ -1114,7 +1114,7 @@ CopyPathFields(Path *from, Path *newnode)
 	else
 		Node_Copy(from, newnode, path_order->ord.merge);
 
-	Node_Copy(from, newnode, keys);
+	Node_Copy(from, newnode, pathkeys);
 
 	newnode->outerjoincost = from->outerjoincost;
 

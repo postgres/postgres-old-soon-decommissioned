@@ -1525,8 +1525,8 @@ _readPath()
 	token = lsptok(NULL, &length);		/* get :path_order */
 	local_node->path_order = nodeRead(true); /* now read it */
 
-	token = lsptok(NULL, &length);		/* get :keys */
-	local_node->keys = nodeRead(true);	/* now read it */
+	token = lsptok(NULL, &length);		/* get :pathkeys */
+	local_node->pathkeys = nodeRead(true);	/* now read it */
 
 	return local_node;
 }
@@ -1557,8 +1557,8 @@ _readIndexPath()
 	token = lsptok(NULL, &length);		/* get :path_order */
  	local_node->path.path_order = nodeRead(true);		/* now read it */
 
-	token = lsptok(NULL, &length);		/* get :keys */
-	local_node->path.keys = nodeRead(true);		/* now read it */
+	token = lsptok(NULL, &length);		/* get :pathkeys */
+	local_node->path.pathkeys = nodeRead(true);		/* now read it */
 
 	token = lsptok(NULL, &length);		/* get :indexid */
 	local_node->indexid = toIntList(nodeRead(true));
@@ -1596,8 +1596,8 @@ _readJoinPath()
 	token = lsptok(NULL, &length);		/* get :path_order */
 	local_node->path.path_order = nodeRead(true);		/* now read it */
 
-	token = lsptok(NULL, &length);		/* get :keys */
-	local_node->path.keys = nodeRead(true);		/* now read it */
+	token = lsptok(NULL, &length);		/* get :pathkeys */
+	local_node->path.pathkeys = nodeRead(true);		/* now read it */
 
 	token = lsptok(NULL, &length);		/* get :pathinfo */
 	local_node->pathinfo = nodeRead(true);		/* now read it */
@@ -1661,8 +1661,8 @@ _readMergePath()
 	token = lsptok(NULL, &length);		/* get :path_order */
 	local_node->jpath.path.path_order = nodeRead(true); /* now read it */
 
-	token = lsptok(NULL, &length);		/* get :keys */
-	local_node->jpath.path.keys = nodeRead(true);		/* now read it */
+	token = lsptok(NULL, &length);		/* get :pathkeys */
+	local_node->jpath.path.pathkeys = nodeRead(true);		/* now read it */
 
 	token = lsptok(NULL, &length);		/* get :pathinfo */
 	local_node->jpath.pathinfo = nodeRead(true);	/* now read it */
@@ -1735,8 +1735,8 @@ _readHashPath()
 	token = lsptok(NULL, &length);		/* get :path_order */
 	local_node->jpath.path.path_order = nodeRead(true); /* now read it */
 
-	token = lsptok(NULL, &length);		/* get :keys */
-	local_node->jpath.path.keys = nodeRead(true);		/* now read it */
+	token = lsptok(NULL, &length);		/* get :pathkeys */
+	local_node->jpath.path.pathkeys = nodeRead(true);		/* now read it */
 
 	token = lsptok(NULL, &length);		/* get :pathinfo */
 	local_node->jpath.pathinfo = nodeRead(true);	/* now read it */

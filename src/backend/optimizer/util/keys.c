@@ -207,8 +207,7 @@ collect_index_pathkeys(int *index_keys, List *tlist)
 							   tlist,
 							   equal_indexkey_var);
 		if (mvar)
-			retval = nconc(retval, lcons(lcons(mvar, NIL),
-										 NIL));
+			retval = lappend(retval, lcons(mvar, NIL));
 		index_keys++;
 	}
 	return retval;

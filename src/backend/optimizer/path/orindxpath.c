@@ -112,7 +112,7 @@ create_or_index_paths(Query *root,
 				 *	not in any order, so the sortop is NULL.
 				 */
 			    pathnode->path.path_order->ord.sortop = NULL;
-			    pathnode->path.keys = NIL;	/* not sure about this, bjm 1998/09/21 */
+			    pathnode->path.pathkeys = NIL;
 
 				pathnode->indexqual = lcons(clausenode, NIL);
 				pathnode->indexid = indexids;

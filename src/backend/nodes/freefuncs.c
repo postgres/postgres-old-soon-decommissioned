@@ -767,7 +767,7 @@ FreePathFields(Path *node)
 	pfree(node->path_order);	/* is it an object, but we don't have
 								   separate free for it */
 
-	freeObject(node->keys);
+	freeObject(node->pathkeys);
 
 	freeList(node->joinid);
 	freeObject(node->loc_restrictinfo);

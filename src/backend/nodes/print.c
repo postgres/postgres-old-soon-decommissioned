@@ -212,16 +212,16 @@ print_expr(Node *expr, List *rtable)
 }
 
 /*
- * print_keys -
- *	  temporary here. where is keys list of list??
+ * print_pathkeys -
+ *	  temporary here. where is keys list of lists
  */
 void
-print_keys(List *keys, List *rtable)
+print_pathkeys(List *pathkeys, List *rtable)
 {
 	List	   *k;
 
 	printf("(");
-	foreach(k, keys)
+	foreach(k, pathkeys)
 	{
 		Node	   *var = lfirst((List *) lfirst(k));
 

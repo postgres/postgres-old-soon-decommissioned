@@ -240,8 +240,8 @@ geqo_print_path(Query *root, Path *path, int indent)
 			List	   *k,
 					   *l;
 
-			printf(" keys=");
-			foreach(k, path->keys)
+			printf(" pathkeys=");
+			foreach(k, path->pathkeys)
 			{
 				printf("(");
 				foreach(l, lfirst(k))
