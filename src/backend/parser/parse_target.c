@@ -373,10 +373,6 @@ checkInsertTargets(ParseState *pstate, List *cols, List **attrnos)
 		{
 			ResTarget	   *col = makeNode(ResTarget);
 
-#ifdef	_DROP_COLUMN_HACK__
-			if (COLUMN_IS_DROPPED(attr[i]))
-				continue;
-#endif   /* _DROP_COLUMN_HACK__ */
 			col->name = pstrdup(NameStr(attr[i]->attname));
 			col->indirection = NIL;
 			col->val = NULL;

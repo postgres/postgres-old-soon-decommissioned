@@ -198,11 +198,6 @@ expand_targetlist(List *tlist, int command_type,
 					new_expr = build_column_default(rel, attrno);
 					break;
 				case CMD_UPDATE:
-#ifdef	_DROP_COLUMN_HACK__
-					if (COLUMN_IS_DROPPED(att_tup))
-						new_expr = (Node *) makeNullConst(atttype);
-					else
-#endif   /* _DROP_COLUMN_HACK__ */
 						new_expr = (Node *) makeVar(result_relation,
 													attrno,
 													atttype,

@@ -855,11 +855,6 @@ expandRTE(ParseState *pstate, RangeTblEntry *rte,
 		{
 			Form_pg_attribute attr = rel->rd_att->attrs[varattno];
 
-#ifdef	_DROP_COLUMN_HACK__
-			if (COLUMN_IS_DROPPED(attr))
-				continue;
-#endif   /* _DROP_COLUMN_HACK__ */
-
 			if (colnames)
 			{
 				char	   *label;
