@@ -435,16 +435,15 @@ ServerLoop()
 	    fprintf(stderr, "%s: ServerLoop: select failed\n",
 		    progname);
 	    return(STATUS_ERROR);
-	    /* [TRH]
-	     * To avoid race conditions, block SIGCHLD signals while we are
-	     * handling the request. (both reaper() and ConnCreate()
-	     * manipulate the BackEnd list, and reaper() calls free() which is
-	     * usually non-reentrant.)
-	     */
-	    sigprocmask(SIG_BLOCK, &newsigmask, &oldsigmask);
-/*	    sigblock(sigmask(SIGCHLD));	*/	/* XXX[TRH] portability */
-	    
 	}
+	/* [TRH]
+	 * To avoid race conditions, block SIGCHLD signals while we are
+	 * handling the request. (both reaper() and ConnCreate()
+	 * manipulate the BackEnd list, and reaper() calls free() which is
+	 * usually non-reentrant.)
+	 */
+	sigprocmask(SIG_BLOCK, &newsigmask, &oldsigmask);
+/*	sigblock(sigmask(SIGCHLD));	*/	/* XXX[TRH] portability */
 	if (DebugLvl > 1) {
 	    fprintf(stderr, "%s: ServerLoop: %d sockets pending\n",
 		    progname, nSelected);
