@@ -349,7 +349,7 @@ DATA(insert OID = 0 (  405	423  670 1 hashsel hashnpage ));
 /* int4_ops */
 DATA(insert OID = 0 (  405	426   96 1 hashsel hashnpage ));
 /* int8_ops */
-DATA(insert OID = 0 (  405	426   96 1 hashsel hashnpage ));
+DATA(insert OID = 0 (  405	754   96 1 hashsel hashnpage ));
 /* oid_ops */
 DATA(insert OID = 0 (  405	427  607 1 hashsel hashnpage ));
 /* oid8_ops */

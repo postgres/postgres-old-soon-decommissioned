@@ -85,7 +85,7 @@ DATA(insert OID =  431 (	text_ops		 25   ));
 DESCR("");
 DATA(insert OID =  432 (	abstime_ops		702   ));
 DESCR("");
-DATA(insert OID =  433 (	bigbox_ops		  0   ));
+DATA(insert OID =  433 (	bigbox_ops		603   ));
 DESCR("");
 DATA(insert OID =  434 (	poly_ops		604   ));
 DESCR("");

@@ -471,4 +471,15 @@ DATA(insert OID = 0 ( 1264 varfoo			26 0  4   1 0 -1 -1 t f i f f));
 
 DATA(insert OID = 0 ( 1269 logfoo			26 0  4   1 0 -1 -1 t f i f f));
 
+/* ----------------
+ *		pg_xactlock - this relation is modified by special purpose access
+ *				  method code.	The following is garbage but is needed
+ *				  so that the reldesc code works properly.
+ * ----------------
+ */
+#define Schema_pg_xactlock \
+{ 376, {"xactlockfoo"},  26, 0, 4, 1, 0, -1, -1, '\001', '\0', 'i', '\0', '\0' }
+
+DATA(insert OID = 0 ( 376 xactlockfoo		26 0  4   1 0 -1 -1 t f i f f));
+
 #endif	 /* PG_ATTRIBUTE_H */
