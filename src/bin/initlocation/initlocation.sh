@@ -91,7 +91,7 @@ fi
 # You can call initlocation $ENVAR, which will of course be resolved
 # by the shell, or initlocation some/path (containing at least one slash).
 # Then you just take that path.
-# This should appease users who are confused by the above behaviour.
+# This should appease users who are confused by the above behavour.
 #
 
 echo "$Location" | grep '/' >/dev/null 2>&1
