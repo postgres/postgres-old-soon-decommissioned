@@ -2721,6 +2721,9 @@ SubPostmasterMain(int argc, char* argv[])
 	read_nondefault_variables();
 	read_backend_variables(backendID,&port);
 
+	/* Remaining initialization */
+	pgstat_init_forkexec_backend();
+
 	/* FIXME: [fork/exec] Ugh */
 	load_hba();
 	load_ident();

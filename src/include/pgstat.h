@@ -368,6 +368,9 @@ extern void pgstat_mainChild(PGSTAT_FORK_ARGS);
  * Functions called from postmaster
  * ----------
  */
+#ifdef EXEC_BACKEND
+extern void pgstat_init_forkexec_backend(void);
+#endif
 extern void pgstat_init(void);
 extern void pgstat_start(void);
 extern bool pgstat_ispgstat(int pid);
