@@ -593,6 +593,10 @@ Async_NotifyHandler(SIGNAL_ARGS)
 	 * ever turned on.
 	 */
 
+	/* Don't joggle the elbow of proc_exit */
+	if (proc_exit_inprogress)
+		return;
+
 	if (notifyInterruptEnabled)
 	{
 		/*
