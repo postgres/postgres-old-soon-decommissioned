@@ -1787,6 +1787,7 @@ apply_RIR_view(Node **nodePtr, int rt_index, RangeTblEntry *rte, List *tlist, in
 	}
 }
 
+extern	void CheckSelectForUpdate(Query *rule_action);	/* in analyze.c */
 
 static void
 ApplyRetrieveRule(Query *parsetree,
@@ -1847,6 +1848,7 @@ ApplyRetrieveRule(Query *parsetree,
 		Index		rti = 1;
 		List	   *l2;
 
+		CheckSelectForUpdate(rule_action);
 		/* 
 		 * We believe that rt_index is VIEW - nothing should be
 		 * marked for VIEW, but ACL check must be done.

@@ -2798,19 +2798,8 @@ SelectStmt:	  select_w_o_sort sort_clause for_update_clause
 				  first_select->forUpdate = $3;
 				  $$ = (Node *)first_select;
 				}		
-				if (((SelectStmt *)$$)->forUpdate != NULL)
-				{
-					SelectStmt *n = (SelectStmt *)$$;
-
-					if (n->unionClause != NULL)
-						elog(ERROR, "SELECT FOR UPDATE is not allowed with UNION/INTERSECT/EXCEPT clause");
-					if (n->unique != NULL)
-						elog(ERROR, "SELECT FOR UPDATE is not allowed with DISTINCT clause");
-					if (n->groupClause != NULL)
-						elog(ERROR, "SELECT FOR UPDATE is not allowed with GROUP BY clause");
-					if (n->havingClause != NULL)
-						elog(ERROR, "SELECT FOR UPDATE is not allowed with HAVING clause");
-				}
+				if (((SelectStmt *)$$)->forUpdate != NULL && QueryIsRule)
+					elog(ERROR, "SELECT FOR UPDATE is not allowed in RULES");
 			}
 		;
 

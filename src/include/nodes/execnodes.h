@@ -208,6 +208,7 @@ typedef struct EState
 	int		   *es_refcount;
 	uint32		es_processed;	/* # of tuples processed */
 	Oid			es_lastoid;		/* last oid processed (by INSERT) */
+	List	   *es_rowMark;		/* not good place, but there is no other */
 } EState;
 
 /* ----------------
