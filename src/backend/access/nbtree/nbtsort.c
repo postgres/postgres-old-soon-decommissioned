@@ -983,6 +983,12 @@ _bt_buildadd(Relation index, void *pstate, BTItem bti, int flags)
 	    oopaque->btpo_next = BufferGetBlockNumber(nbuf);
 	    nopaque->btpo_prev = BufferGetBlockNumber(obuf);
 	    nopaque->btpo_next = P_NONE;
+
+    	    if ( _bt_itemcmp(index, _bt_nattr, 
+    		   (BTItem) PageGetItem(opage, PageGetItemId(opage, P_HIKEY)), 
+    		   (BTItem) PageGetItem(opage, PageGetItemId(opage, P_FIRSTKEY)), 
+    			BTEqualStrategyNumber) )
+    		oopaque->btpo_flags |= BTP_CHAIN;
 	}
 
 	/*
