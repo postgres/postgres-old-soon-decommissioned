@@ -168,7 +168,7 @@ JADE.text = $(JADE) $(JADEFLAGS) $(SGMLINCLUDE) $(CATALOG) -d stylesheet.dsl -i 
 LYNX = lynx
 
 INSTALL HISTORY regress_README: % : %.html
-	$(PERL) -p -e 's/<H(1|2)$$/<H\1 align=center/g' $< | $(LYNX) -force_html -dump -nolist /dev/stdin >$@
+	$(PERL) -p -e 's/<H(1|2)$$/<H\1 align=center/g' $< | $(LYNX) -force_html -dump -nolist -stdin >$@
 
 INSTALL.html: standalone-install.sgml installation.sgml version.sgml
 	$(JADE.text) -V nochunks standalone-install.sgml installation.sgml >$@
