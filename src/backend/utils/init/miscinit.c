@@ -915,12 +915,7 @@ ValidatePgVersion(const char *path)
  *-------------------------------------------------------------------------
  */
 
-#if defined(__mc68000__) && defined(__ELF__)
-typedef int32 ((*func_ptr) ());
-
-#else
-typedef char *((*func_ptr) ());
-#endif
+typedef void (*func_ptr) ();
 
 /*
  * process any libraries that should be preloaded and
