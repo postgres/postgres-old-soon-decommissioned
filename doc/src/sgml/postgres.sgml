@@ -6,6 +6,10 @@ Other subset docs should be copied and shrunk from here.
 thomas 1998-02-23
 
 $Log: postgres.sgml,v $
+Revision 1.18  1999/02/13 03:52:46  thomas
+Include chapter on SQL language elements (keywords, etc).
+Should merge with or complement Stefan's Master's Thesis intro to SQL.
+
 Revision 1.17  1999/01/19 16:06:25  thomas
 Merge current.sgml into release.sgml so all release notes are in the same
  file. Per Bruce's preference. Go to it Bruce!
@@ -114,6 +118,7 @@ Move SQL reference pages up into the User's Guide.
 <!entity spi      SYSTEM "spi.sgml">
 <!entity func-ref SYSTEM "func-ref.sgml">
 <!entity libpq    SYSTEM "libpq.sgml">
+<!entity libpqpp  SYSTEM "libpq++.sgml">
 <!entity libpgtcl SYSTEM "libpgtcl.sgml">
 <!entity ecpg     SYSTEM "ecpg.sgml">
 <!entity odbc     SYSTEM "odbc.sgml">
@@ -295,6 +300,7 @@ Your name here...
    &lobj;
    &ecpg;
    &libpq;
+   &libpqpp;
    &libpgtcl;
    &odbc;
    &jdbc;
