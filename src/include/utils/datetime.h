@@ -16,9 +16,9 @@
 #ifndef DATETIME_H
 #define DATETIME_H
 
-#include <time.h>
-#include <math.h>
 #include <limits.h>
+#include <math.h>
+#include <time.h>
 
 #include "utils/timestamp.h"
 
@@ -292,5 +292,7 @@ extern int	DecodeUnits(int field, char *lowtoken, int *val);
 extern bool ClearDateCache(bool, bool, bool);
 
 extern int	j2day(int jd);
+
+extern bool CheckDateTokenTables(void);
 
 #endif   /* DATETIME_H */

@@ -595,6 +595,15 @@ PostmasterMain(int argc, char *argv[])
 	}
 
 	/*
+	 * Other one-time internal sanity checks can go here.
+	 */
+	if (!CheckDateTokenTables())
+	{
+		postmaster_error("Invalid datetoken tables, please fix.");
+		ExitPostmaster(1);
+	}
+
+	/*
 	 * Now that we are done processing the postmaster arguments, reset
 	 * getopt(3) library so that it will work correctly in subprocesses.
 	 */
