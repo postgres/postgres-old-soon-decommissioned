@@ -424,11 +424,6 @@ else
     fi
 fi
 
-# Be sure that PGDATA is an absolute path, otherwise backend croaks.
-
-unset CDPATH
-PGDATA=`cd $PGDATA && pwd`
-
 
 ##########################################################################
 #
