@@ -642,9 +642,12 @@ parser_typecast(Value *expr, TypeName *typename, int32 atttypmod)
 			const_string = DatumGetPointer(expr->val.str);
 			break;
 		case T_Integer:
-			const_string = (char *) palloc(256);
 			string_palloced = true;
-			sprintf(const_string, "%ld", expr->val.ival);
+			const_string = int4out(expr->val.ival);
+			break;
+		case T_Float:
+			string_palloced = true;
+			const_string = float8out(&expr->val.dval);
 			break;
 		default:
 			elog(ERROR,
