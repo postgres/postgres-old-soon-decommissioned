@@ -94,7 +94,7 @@ btoidcmp(Oid a, Oid b)
 }
 
 int32
-btoid8cmp(Oid *a, Oid *b)
+btoidvectorcmp(Oid *a, Oid *b)
 {
 	int			i;
 

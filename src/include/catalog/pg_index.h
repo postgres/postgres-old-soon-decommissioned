@@ -45,8 +45,8 @@ CATALOG(pg_index)
 	Oid			indrelid;
 	Oid			indproc;		/* registered procedure for functional
 								 * index */
-	int28		indkey;
-	oid8		indclass;
+	int2vector	indkey;
+	oidvector	indclass;
 	bool		indisclustered;
 	bool		indislossy;		/* do we fetch false tuples (lossy
 								 * compression)? */

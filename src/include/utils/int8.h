@@ -92,7 +92,7 @@ extern int64 *int48(int32 val);
 extern int32 int84(int64 *val);
 
 #if NOT_USED
-extern int64 *int28 (int16 val);
+extern int64 *int2vector (int16 val);
 extern int16 int82(int64 *val);
 
 #endif

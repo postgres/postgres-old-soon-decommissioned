@@ -763,7 +763,7 @@ ProcedureNameIndexScan(Relation heapRelation,
 	ScanKeyEntryInitialize(&skey[2],
 						   (bits16) 0x0,
 						   (AttrNumber) 3,
-						   (RegProcedure) F_OID8EQ,
+						   (RegProcedure) F_OIDVECTOREQ,
 						   PointerGetDatum(argTypes));
 
 	idesc = index_openr(ProcedureNameIndex);

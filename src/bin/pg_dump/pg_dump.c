@@ -1770,7 +1770,6 @@ getTables(int *numTables, FuncInfo *finfo, int numFuncs)
 				for (findx = 0; findx < tgnargs; findx++)
 				{
 					const char	   *s;
-                    char           *d;
 
 					for (p = tgargs;;)
 					{

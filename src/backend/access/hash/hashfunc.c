@@ -140,7 +140,7 @@ hashoid(Oid key)
 }
 
 uint32
-hashoid8(Oid *key)
+hashoidvector(Oid *key)
 {
 	int			i;
 	uint32		result = 0;

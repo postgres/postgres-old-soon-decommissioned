@@ -181,7 +181,7 @@ valid_fp_info(Oid func_id, struct fp_info * fip)
 static void
 update_fp_info(Oid func_id, struct fp_info * fip)
 {
-	Oid		   *argtypes;		/* an oid8 */
+	Oid		   *argtypes;		/* an oidvector */
 	Oid			rettype;
 	HeapTuple	func_htp,
 				type_htp;
