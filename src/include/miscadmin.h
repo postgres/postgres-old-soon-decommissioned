@@ -111,6 +111,11 @@ extern bool SilentMode;
 extern int MaxBackends;
 extern int NBuffers;
 extern int PostPortNumber;
+extern int Unix_socket_permissions;
+extern char *Unix_socket_group;
+extern char *UnixSocketDir;
+extern char *Virtual_host;
+
 
 /*****************************************************************************
  *	  pdir.h --																 *
