@@ -599,11 +599,11 @@ select_common_type(List *typeids, const char *context)
 	List	   *l;
 
 	Assert(typeids != NIL);
-	ptype = lfirsto(typeids);
+	ptype = getBaseType(lfirsto(typeids));
 	pcategory = TypeCategory(ptype);
 	foreach(l, lnext(typeids))
 	{
-		Oid			ntype = lfirsto(l);
+		Oid			ntype = getBaseType(lfirsto(l));
 
 		/* move on to next one if no new information... */
 		if ((ntype != InvalidOid) && (ntype != UNKNOWNOID) && (ntype != ptype))
