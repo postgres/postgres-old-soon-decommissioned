@@ -361,6 +361,10 @@ ProcKill(int exitStatus, int pid)
     ProcReleaseSpins(proc);
     LockReleaseAll(1,&proc->lockQueue);
     
+#ifdef USER_LOCKS
+    LockReleaseAll(0,&proc->lockQueue);
+#endif
+
     /* ----------------
      * get off the wait queue
      * ----------------
