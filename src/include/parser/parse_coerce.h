@@ -121,6 +121,7 @@ extern bool IsPreferredType(CATEGORY category, Oid type);
 extern CATEGORY TypeCategory(Oid type);
 
 extern bool can_coerce_type(int nargs, Oid *input_typeids, Oid *func_typeids);
-extern Node *coerce_type(ParseState *pstate, Node *node, Oid inputTypeId, Oid targetTypeId);
+extern Node *coerce_type(ParseState *pstate, Node *node, Oid inputTypeId,
+						 Oid targetTypeId, int32 atttypmod);
 
 #endif	 /* PARSE_COERCE_H */

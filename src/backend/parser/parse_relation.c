@@ -445,7 +445,9 @@ checkTargetTypes(ParseState *pstate, char *target_colname,
 	{
 		if (can_coerce_type(1, &attrtype_id, &attrtype_target))
 		{
-			Node	   *expr = coerce_type(pstate, expr, attrtype_id, attrtype_target);
+			Node	   *expr = coerce_type(pstate, expr, attrtype_id,
+											attrtype_target,
+			get_atttypmod(pstate->p_target_relation->rd_id, resdomno_target));
 
 			elog(ERROR, "Type %s(%d) can be coerced to match target column %s(%d)",
 				 colname, get_atttypmod(rte->relid, resdomno_id),

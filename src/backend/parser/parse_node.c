@@ -75,9 +75,7 @@ make_operand(char *opname,
 
 		/* must coerce? */
 		if (true_typeId != orig_typeId)
-		{
-			result = coerce_type(NULL, tree, orig_typeId, true_typeId);
-		}
+			result = coerce_type(NULL, tree, orig_typeId, true_typeId, -1);
 	}
 	/* otherwise, this is a NULL value */
 	else
