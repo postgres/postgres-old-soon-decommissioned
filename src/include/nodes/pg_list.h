@@ -13,8 +13,6 @@
 #ifndef	PG_LIST_H
 #define	PG_LIST_H
 
-#include <stdio.h>
-#include "c.h"
 #include "nodes/nodes.h"
 
 /* ----------------------------------------------------------------

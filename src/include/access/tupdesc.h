@@ -13,11 +13,9 @@
 #ifndef	TUPDESC_H
 #define TUPDESC_H
 
-#include "postgres.h"
-#include "access/attnum.h"
-#include "nodes/pg_list.h"	/* for List */
 #include "catalog/pg_attribute.h"
-
+#include "access/attnum.h"
+#include "nodes/pg_list.h"
 
 typedef struct tupleDesc {
 /*------------------------------------------------------------------------ 
