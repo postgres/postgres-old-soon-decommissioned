@@ -168,8 +168,7 @@ Notes about data representation:
 
 Notes to operator class implementors:
 
-+  With this implementation, we require the user to supply us with
-   a procedure for pg_amproc.  This procedure should take two keys
-   A and B and return < 0, 0, or > 0 if A < B, A = B, or A > B,
-   respectively.  See the contents of that relation for the btree
-   access method for some samples.
++  With this implementation, we require each supported datatype to supply
+   us with a comparison procedure via pg_amproc.  This procedure must take
+   two nonnull values A and B and return an int32 < 0, 0, or > 0 if A < B,
+   A = B, or A > B, respectively.  See nbtcompare.c for examples.
