@@ -86,7 +86,7 @@
 #if defined(DBX_VERSION)
 # define FORK() (0)
 #else
-# if defined(NO_VFORK)
+# ifndef HAVE_VFORK)
 #  define FORK() fork()
 # else
 #  define FORK() vfork()
