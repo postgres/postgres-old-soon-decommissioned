@@ -34,8 +34,13 @@ WANTED_DIRS = \
 		spi		\
 		string		\
 		tips		\
+		tsearch		\
 		userlock	\
 		vacuumlo
+
+ifeq ($(with_java),yes)
+WANTED_DIRS += retep
+endif
 
 # Missing:
 #		ipc_check	\ (does not have a makefile)
@@ -46,10 +51,6 @@ WANTED_DIRS = \
 #		start-scripts	\ (does not have a makefile)
 #		tools		\ (does not have a makefile)
 #		xml		\ (non-standard makefile)
-
-ifeq ($(with_java),yes)
-WANTED_DIRS += retep
-endif
 
 
 all install installdirs uninstall clean distclean maintainer-clean check installcheck:
