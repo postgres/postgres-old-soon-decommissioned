@@ -736,11 +736,11 @@ $Header$
 PgDatabase data;
 data.Exec("create table foo (a int4, b char(16), d float8)");
 data.Exec("copy foo from stdin");
-data.putline("3\etHello World\et4.5\en");
-data.putline("4\etGoodbye World\et7.11\en");
+data.PutLine("3\tHello World\t4.5\n");
+data.PutLine("4\tGoodbye World\t7.11\n");
 &amp;...
-data.putline(".\en");
-data.endcopy();
+data.PutLine("\\.\n");
+data.EndCopy();
     </programlisting>
    </para>
   </sect1>
