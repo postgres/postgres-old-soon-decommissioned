@@ -291,6 +291,12 @@ aclcheck(Acl *acl, AclId id, AclIdType idtype, AclMode mode)
 	     i < num && aip->ai_idtype == ACL_IDTYPE_GID;
 	     ++i, ++aip) {
 	    if (in_group(id, aip->ai_id)) {
+#ifdef ACLGROUP_PATCH
+		if (aip->ai_mode & mode) {
+		    found_group = 1;
+                    break;
+		}
+#else
 		if (aip->ai_mode & mode)
 		    ++found_group;
 		else {
@@ -300,6 +306,7 @@ aclcheck(Acl *acl, AclId id, AclIdType idtype, AclMode mode)
 #endif
 		    return(0);
 		}
+#endif
 	    }
 	}
 	if (found_group) {
