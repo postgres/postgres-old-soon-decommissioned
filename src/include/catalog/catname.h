@@ -29,6 +29,7 @@
 #define  InheritsRelationName "pg_inherits"
 #define  InheritancePrecidenceListRelationName "pg_ipl"
 #define  LanguageRelationName "pg_language"
+#define  LargeObjectRelationName "pg_largeobject"
 #define  ListenerRelationName "pg_listener"
 #define  LogRelationName "pg_log"
 #define  OperatorClassRelationName "pg_opclass"

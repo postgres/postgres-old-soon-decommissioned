@@ -1020,10 +1020,6 @@ listTables(const char *infotype, const char *name, bool desc)
 			strcat(buf, "'S'");
 		strcat(buf, ")\n");
 
-		/* ignore large-obj indices */
-		if (showIndices)
-			strcat(buf, "  AND (c.relkind != 'i' OR c.relname !~ '^xinx')\n");
-
 		strcat(buf, showSystem ? "  AND c.relname ~ '^pg_'\n" : "  AND c.relname !~ '^pg_'\n");
 		if (name)
 		{
@@ -1049,10 +1045,6 @@ listTables(const char *infotype, const char *name, bool desc)
 		else
 			strcat(buf, "'S'");
 		strcat(buf, ")\n");
-
-		/* ignore large-obj indices */
-		if (showIndices)
-			strcat(buf, "  AND (c.relkind != 'i' OR c.relname !~ '^xinx')\n");
 
 		strcat(buf, showSystem ? "  AND c.relname ~ '^pg_'\n" : "  AND c.relname !~ '^pg_'\n");
 		if (name)

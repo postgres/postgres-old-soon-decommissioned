@@ -59,10 +59,9 @@ vacuumlo(char *database, int verbose)
 	 * First we create and populate the lo temp table
 	 */
 	buf[0] = '\0';
-	strcat(buf, "SELECT oid AS lo ");
+	strcat(buf, "SELECT DISTINCT loid AS lo ");
 	strcat(buf, "INTO TEMP TABLE vacuum_l ");
-	strcat(buf, "FROM pg_class ");
-	strcat(buf, "WHERE relkind='l'");
+	strcat(buf, "FROM pg_largeobject ");
 	if (!(res = PQexec(conn, buf)))
 	{
 		fprintf(stderr, "Failed to create temp table.\n");

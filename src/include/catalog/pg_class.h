@@ -174,7 +174,6 @@ DESCR("");
 #define XactLockTableId			376
 
 #define		  RELKIND_INDEX			  'i'		/* secondary index */
-#define		  RELKIND_LOBJECT		  'l'		/* large objects */
 #define		  RELKIND_RELATION		  'r'		/* ordinary cataloged heap */
 #define		  RELKIND_SPECIAL		  's'		/* special (non-heap) */
 #define		  RELKIND_SEQUENCE		  'S'		/* SEQUENCE relation */
