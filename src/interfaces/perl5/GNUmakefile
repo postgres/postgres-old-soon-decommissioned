@@ -12,7 +12,7 @@ perl_installsitelib	= $(pkglibdir)
 perl_installman3dir	= $(mandir)/man3
 endif
 
-override CPPFLAGS := -I$(libpq_srcdir) -I$(top_srcdir)/src/include $(CPPFLAGS) -I$(perl_archlibexp)/CORE
+override CPPFLAGS := -I$(libpq_srcdir) -I$(top_srcdir)/src/include $(CPPFLAGS) -I$(perl_archlibexp)/CORE -I$(top_srcdir)/$(subdir)
 override CFLAGS += $(CFLAGS_SL)
 override CPPFLAGS += -DXS_VERSION=\"$(shell sed -n "s/\$$.*::VERSION.*=.*'\(.*\)';/\1/p" $(srcdir)/Pg.pm)\"
 
@@ -74,7 +74,7 @@ install: all installdirs
 	  $(INSTALL_DATA) Pg.bs $(DESTDIR)$(perl_installsitearch)/auto/Pg; \
 	  $(INSTALL_SHLIB) $(shlib) $(DESTDIR)$(perl_installsitearch)/auto/Pg/Pg$(DLSUFFIX); \
 	  $(INSTALL_DATA) auto/Pg/autosplit.ix $(DESTDIR)$(perl_installsitearch)/auto/Pg; \
-	  $(INSTALL_DATA) $(srcdir)/Pg.$(perl_man3ext) $(DESTDIR)$(perl_installman3dir); \
+	  $(INSTALL_DATA) Pg.$(perl_man3ext) $(DESTDIR)$(perl_installman3dir); \
 	else \
 	  $(install-warning-msg); \
 	fi
