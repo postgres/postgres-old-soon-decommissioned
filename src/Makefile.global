@@ -701,7 +701,7 @@ DLSUFFIX= .o
 endif
 
 
-ifneq ($(PORTNAME), nextstep)
+ifeq ($(PORTNAME), nextstep)
 LDADD_BE+= -lipc -lm
 AROPT= rc
 DLSUFFIX= .o
