@@ -237,6 +237,7 @@ typedef struct CreateUserStmt
 	NodeTag		type;
 	char	   *user;			/* PostgreSQL user login			  */
 	char	   *password;		/* PostgreSQL user password			  */
+    int         sysid;          /* PgSQL system id (-1 if don't care) */
 	bool	   *createdb;		/* Can the user create databases?	  */
 	bool	   *createuser;		/* Can this user create users?		  */
 	List	   *groupElts;		/* The groups the user is a member of */
