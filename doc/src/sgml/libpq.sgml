@@ -3691,7 +3691,7 @@ sets the user name used to connect to the database.
 </indexterm>
 <envar>PGPASSWORD</envar>
 sets the password used if the server demands password
-authentication.  This environment variable is deprecated for security
+authentication.  This environment variable is not recommended for security
 reasons; instead consider using the <filename>~/.pgpass</>
 file (see <xref linkend="libpq-pgpass">).
 </para>
