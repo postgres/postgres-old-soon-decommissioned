@@ -51,7 +51,7 @@ extern void AlterTableDropColumn(const char *relationName,
 					 bool inh, const char *colName,
 					 int behavior);
 
-extern void AlterTableAddConstraint(const char *relationName,
+extern void AlterTableAddConstraint(char *relationName,
 						bool inh, Node *newConstraint);
 
 extern void AlterTableDropConstraint(const char *relationName,

@@ -1076,7 +1076,7 @@ AlterTableDropColumn(const char *relationName,
  * ALTER TABLE ADD CONSTRAINT
  */
 void
-AlterTableAddConstraint(const char *relationName,
+AlterTableAddConstraint(char *relationName,
 						bool inh, Node *newConstraint)
 {
 	char rulequery[41+NAMEDATALEN]; 
