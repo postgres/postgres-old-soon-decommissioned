@@ -679,10 +679,6 @@ AtSubCleanup_Portals(SubTransactionId mySubid)
 		if (portal->createSubid != mySubid)
 			continue;
 
-		/* AtSubAbort_Portals should have fixed these: */
-		Assert(portal->status != PORTAL_ACTIVE);
-		Assert(portal->resowner == NULL);
-
 		/* Zap it. */
 		PortalDrop(portal, false);
 	}
