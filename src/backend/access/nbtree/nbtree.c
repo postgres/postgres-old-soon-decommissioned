@@ -35,8 +35,8 @@
 
 #ifdef BTREE_BUILD_STATS
 #include <tcop/tcopprot.h>
-extern int	ShowExecutorStats;
-
+#include <utils/trace.h>
+#define ShowExecutorStats pg_options[TRACE_EXECUTORSTATS]
 #endif
 
 

@@ -17,7 +17,7 @@ ifdef MULTIBYTE
 CFLAGS+= $(MBFLAGS)
 endif
 
-OBJS = database.o superuser.o 
+OBJS = database.o superuser.o trace.o 
 
 all: SUBSYS.o
 
