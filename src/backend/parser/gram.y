@@ -7727,6 +7727,7 @@ unreserved_keyword:
 			| NOCREATEUSER
 			| NOTHING
 			| NOTIFY
+			| NOWAIT
 			| OBJECT_P
 			| OF
 			| OIDS
@@ -7944,7 +7945,6 @@ reserved_keyword:
 			| LOCALTIMESTAMP
 			| NEW
 			| NOT
-			| NOWAIT
 			| NULL_P
 			| OFF
 			| OFFSET

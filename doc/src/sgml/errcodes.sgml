@@ -1099,6 +1099,11 @@
 <entry>CANT CHANGE RUNTIME PARAM</entry>
 </row>
 
+<row>
+<entry><literal>55P03</literal></entry>
+<entry>LOCK NOT AVAILABLE</entry>
+</row>
+
 
 <row>
 <entry>Class 57</entry>

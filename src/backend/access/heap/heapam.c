@@ -465,6 +465,13 @@ relation_open(Oid relationId, LOCKMODE lockmode)
 	return r;
 }
 
+/* ----------------
+ *		conditional_relation_open - open with option not to wait
+ *
+ *		As above, but if nowait is true, then throw an error rather than
+ *		waiting when the lock is not immediately obtainable.
+ * ----------------
+ */
 Relation
 conditional_relation_open(Oid relationId, LOCKMODE lockmode, bool nowait)
 {
@@ -483,7 +490,10 @@ conditional_relation_open(Oid relationId, LOCKMODE lockmode, bool nowait)
 		if (nowait)
 		{
 			if (!ConditionalLockRelation(r, lockmode))
-				elog(ERROR, "could not acquire relation lock");
+				ereport(ERROR,
+						(errcode(ERRCODE_LOCK_NOT_AVAILABLE),
+						 errmsg("could not obtain lock on \"%s\"",
+								RelationGetRelationName(r))));
 		}
 		else
 			LockRelation(r, lockmode);

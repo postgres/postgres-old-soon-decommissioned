@@ -660,6 +660,10 @@
 },
 
 {
+	"lock_not_available", ERRCODE_LOCK_NOT_AVAILABLE
+},
+
+{
 	"operator_intervention", ERRCODE_OPERATOR_INTERVENTION
 },
 
