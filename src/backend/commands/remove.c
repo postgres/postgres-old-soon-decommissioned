@@ -81,9 +81,7 @@ RemoveOperator(char *operatorName,		/* operator name */
 
 	if (HeapTupleIsValid(tup))
 	{
-		if (!pg_ownercheck(GetUserId(),
-						   (char *) ObjectIdGetDatum(tup->t_data->t_oid),
-						   OPEROID))
+		if (!pg_oper_ownercheck(GetUserId(), tup->t_data->t_oid))
 			elog(ERROR, "RemoveOperator: operator '%s': permission denied",
 				 operatorName);
 
