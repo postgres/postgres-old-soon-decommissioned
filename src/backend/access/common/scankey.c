@@ -17,6 +17,8 @@
 #include "access/attnum.h"
 #include "access/skey.h"
 
+#include "fmgr.h"
+
 /*
  * ScanKeyEntryIsLegal --
  *	True iff the scan key entry is legal.

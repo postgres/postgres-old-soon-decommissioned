@@ -43,6 +43,16 @@
 #include "access/heaptuple.h" /* Prototypes */
 #include "fmgr.h" /* Prototypes */
 
+#include <stdio.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include "libpq/pqcomm.h"
+#include "libpq/libpq.h"
+
+#include <stdio.h>
+
+#include "utils/palloc.h"
+
 /* ----------------------------------------------------------------
  *	printtup / debugtup support
  * ----------------------------------------------------------------

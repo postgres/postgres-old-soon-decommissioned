@@ -45,6 +45,23 @@
 #include "access/strat.h"
 #include "utils/rel.h"
 
+#include "utils/memutils.h"
+
+#ifndef HAVE_MEMMOVE
+# include "regex/utils.h"
+#else
+# include <string.h>
+#endif
+
+#include "access/tupmacs.h"
+
+#include "utils/palloc.h"
+
+#include <stdio.h>
+#include "storage/ipc.h"
+#include "storage/bufmgr.h"
+#include "access/transam.h"
+
 /* this is so the sparcstation debugger works */
 
 #if !defined(NO_ASSERT_CHECKING) && defined(sparc)

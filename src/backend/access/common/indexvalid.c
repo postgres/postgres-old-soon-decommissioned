@@ -29,6 +29,8 @@
 #include "utils/nabstime.h"
 #include "access/htup.h"
 
+#include "executor/execdebug.h"
+
 /* ----------------------------------------------------------------
  *		  index scan key qualification code
  * ----------------------------------------------------------------

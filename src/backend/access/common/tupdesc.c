@@ -50,6 +50,16 @@
 
 #include "utils/palloc.h"
 
+#include <string.h>
+#ifndef HAVE_MEMMOVE
+# include "regex/utils.h"
+#endif
+
+#include "utils/geo-decls.h"
+#include "utils/builtins.h"
+
+#include <stdio.h>
+
 /* ----------------------------------------------------------------
  *	CreateTemplateTupleDesc
  *

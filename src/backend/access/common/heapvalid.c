@@ -45,6 +45,12 @@
 
 #include "utils/tqual.h"
 
+#include "access/xact.h"
+
+#include "fmgr.h"
+
+#include "access/heaptuple.h"
+
 /* ----------------
  *	heap_keytest
  *
