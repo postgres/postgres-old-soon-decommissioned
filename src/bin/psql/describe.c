@@ -714,11 +714,7 @@ describeOneTableDetails(const char *schemaname,
 		printfPQExpBuffer(&buf, "SELECT pg_catalog.pg_get_viewdef('%s'::pg_catalog.oid)", oid);
 		result = PSQLexec(buf.data);
 		if (!result)
-		{
-			PQclear(res);
-			PQclear(result);
 			goto error_return;
-		}
 
 		if (PQntuples(result) > 0)
 			view_def = xstrdup(PQgetvalue(result, 0, 0));
