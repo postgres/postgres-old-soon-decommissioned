@@ -127,6 +127,8 @@ typedef enum OrderType
 
 typedef struct PathOrder
 {
+	NodeTag		type;
+
 	OrderType	ordtype;
 	union
 	{
@@ -144,9 +146,9 @@ typedef struct Path
 
 	NodeTag		pathtype;
 
-	PathOrder	path_order;
+	PathOrder	*path_order;
 
-	List	   *keys;
+	List	   *keys;		/* this is a List of List of keys */
 	Cost		outerjoincost;
 	Relid		joinid;
 	List	   *loc_restrictinfo;

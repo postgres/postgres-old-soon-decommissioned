@@ -218,8 +218,7 @@ match_paths_joinkeys(List *joinkeys,
 
 		key_match = every_func(joinkeys, path->keys, which_subkey);
 
-		if (equal_path_ordering(ordering,
-								&path->path_order) &&
+		if (equal_path_ordering(ordering, path->path_order) &&
 			length(joinkeys) == length(path->keys) &&
 			key_match)
 		{

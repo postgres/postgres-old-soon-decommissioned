@@ -113,7 +113,7 @@ geqo_rel_paths(RelOptInfo * rel)
 	{
 		path = (Path *) lfirst(y);
 
-		if (!path->path_order.ord.sortop)
+		if (!path->path_order->ord.sortop)
 			break;
 	}
 

@@ -368,8 +368,8 @@ member(void *l1, List *l2)
 	List	   *i;
 
 	foreach(i, l2)
-		if (equal((Node *) (lfirst(i)), (Node *) l1))
-		return true;
+		if (equal((Node *) l1, (Node *) lfirst(i)))
+			return true;
 	return false;
 }
 

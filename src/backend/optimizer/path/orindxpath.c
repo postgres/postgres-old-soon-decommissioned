@@ -104,13 +104,14 @@ create_or_index_paths(Query *root,
 
 				pathnode->path.pathtype = T_IndexScan;
 				pathnode->path.parent = rel;
-			    pathnode->path.path_order.ordtype = SORTOP_ORDER;
+				pathnode->path.path_order = makeNode(PathOrder);
+			    pathnode->path.path_order->ordtype = SORTOP_ORDER;
 			    /*
 				 *	This is an IndexScan, but it does index lookups based
 				 *	on the order of the fields specified in the WHERE clause,
 				 *	not in any order, so the sortop is NULL.
 				 */
-			    pathnode->path.path_order.ord.sortop = NULL;
+			    pathnode->path.path_order->ord.sortop = NULL;
 			    pathnode->path.keys = NIL;	/* not sure about this, bjm 1998/09/21 */
 
 				pathnode->indexqual = lcons(clausenode, NIL);

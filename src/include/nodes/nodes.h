@@ -71,6 +71,7 @@ typedef enum NodeTag
 	 *---------------------
 	 */
 	T_RelOptInfo = 200,
+	T_PathOrder,
 	T_Path,
 	T_IndexPath,
 	T_JoinPath,
