@@ -173,9 +173,12 @@ tas_dummy()
 .global	tas						\n\
 tas:							\n\
 			.frame	$sp, 0, $31	\n\
+			.set push		\n\
+			.set mips2		\n\n
 			ll		$14, 0($4)	\n\
 			or		$15, $14, 1	\n\
 			sc		$15, 0($4)	\n\
+			.set pop			\n\
 			beq		$15, 0, fail\n\
 			bne		$14, 0, fail\n\
 			li		$2, 0		\n\
