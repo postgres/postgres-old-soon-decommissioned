@@ -277,13 +277,16 @@ typedef double float8;
 #ifdef HAVE_LONG_INT_64
 /* Plain "long int" fits, use it */
 typedef long int int64;
+typedef unsigned long int uint64;
 #else
 #ifdef HAVE_LONG_LONG_INT_64
 /* We have working support for "long long int", use that */
 typedef long long int int64;
+typedef unsigned long long int uint64;
 #else
 /* Won't actually work, but fall back to long int so that code compiles */
 typedef long int int64;
+typedef unsigned long int uint64;
 #define INT64_IS_BUSTED
 #endif
 #endif

@@ -32,8 +32,6 @@
 #ifndef _PG_CRYPTO_H
 #define _PG_CRYPTO_H
 
-#include <sys/types.h>
-
 typedef struct _pg_digest pg_digest;
 struct _pg_digest {
 	char *name;
