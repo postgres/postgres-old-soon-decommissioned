@@ -669,11 +669,6 @@ EOF
         echo "The password file wasn't generated. Please report this problem." 1>&2
         exit_nicely
     fi
-    if [ ! -f "$PGDATA"/global/pg_group ]; then
-        echo
-        echo "The group file wasn't generated. Please report this problem." 1>&2
-        exit_nicely
-    fi
     echo "ok"
 fi
 
