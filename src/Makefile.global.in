@@ -80,11 +80,6 @@ LIBPQDIR:= $(SRCDIR)/libpq
 # changable separately.
 POSTGRESDIR= /usr/local/pgsql
 
-# DATADIR specifies where the postmaster expects to find its database.
-# This may be overridden by command line options or the PGDATA environment
-# variable.
-DATADIR= $(POSTGRESDIR)/data
-
 # Where the postgres executables live (changeable by just putting them
 # somewhere else and putting that directory in your shell PATH)
 BINDIR= $(POSTGRESDIR)/bin
