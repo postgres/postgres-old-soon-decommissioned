@@ -6,7 +6,7 @@
  *
  *
  * IDENTIFICATION
- *
+ *	  $Header$
  *
  *-------------------------------------------------------------------------
  */
@@ -51,7 +51,9 @@ void		gistdelete(Relation r, ItemPointer tid);
 static IndexTuple gist_tuple_replacekey(Relation r, GISTENTRY entry, IndexTuple t);
 static void gistcentryinit(GISTSTATE *giststate, GISTENTRY *e, char *pr,
 			   Relation r, Page pg, OffsetNumber o, int b, bool l);
+#ifdef GISTDEBUG
 static char *int_range_out(INTRANGE *r);
+#endif
 
 /*
 ** routine to build an index.  Basically calls insert over and over
