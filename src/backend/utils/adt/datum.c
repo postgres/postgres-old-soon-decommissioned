@@ -54,7 +54,7 @@ datumGetSize(Datum value, Oid type, bool byVal, Size len)
     Size size = 0;
     
     if (byVal) {
-	if (len >= 0 && len <= sizeof(Datum)) {
+	if (len <= sizeof(Datum)) {
 	    size = len;
 	} else {
 	    elog(WARN,
