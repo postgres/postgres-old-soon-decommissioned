@@ -37,7 +37,6 @@
  **********************************************************************/
 
 #include "plpgsql.h"
-#include "pl.tab.h"
 
 
 static char	*plpgsql_source;

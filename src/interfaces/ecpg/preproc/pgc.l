@@ -24,7 +24,6 @@
 #include <errno.h>
 
 #include "extern.h"
-#include "preproc.h"
 
 
 extern YYSTYPE yylval;
