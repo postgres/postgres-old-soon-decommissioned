@@ -110,18 +110,17 @@ vacuum(char *vacrel, bool verbose)
 	MESSAGE_LEVEL = DEBUG;
 
     /* vacrel gets de-allocated on transaction commit */
+    if (vacrel)
+    	strcpy(VacRel.data,vacrel);
     	
     /* initialize vacuum cleaner */
     vc_init();
 
     /* vacuum the database */
     if (vacrel)
-    {
-	strcpy(VacRel.data,vacrel);
-	vc_vacuum(&VacRel);
-    }
+    	vc_vacuum(&VacRel);
     else
-	vc_vacuum(NULL);
+    	vc_vacuum(NULL);
 
     /* clean up */
     vc_shutdown();
