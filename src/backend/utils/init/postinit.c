@@ -330,7 +330,7 @@ InitPostgres(const char *dbname, const char *username)
 
 	/* start a new transaction here before access to db */
 	if (!bootstrap)
-		StartTransactionCommand();
+		StartTransactionCommand(true);
 
 	/*
 	 * It's now possible to do real access to the system catalogs.
@@ -394,7 +394,7 @@ InitPostgres(const char *dbname, const char *username)
 
 	/* close the transaction we started above */
 	if (!bootstrap)
-		CommitTransactionCommand();
+		CommitTransactionCommand(true);
 
 	/*
 	 * Check a normal user hasn't connected to a superuser reserved slot.

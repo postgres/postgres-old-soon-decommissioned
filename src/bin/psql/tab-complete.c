@@ -246,6 +246,7 @@ psql_completion(char *text, int start, int end)
 		"australian_timezones",
 		"password_encryption",
 		"transform_null_equals",
+		"autocommit",
 
 		"default_statistics_target",
 		"geqo_threshold",

@@ -400,9 +400,9 @@ Async_UnlistenOnExit(void)
 	 */
 	AbortOutOfAnyTransaction();
 	/* Now we can do the unlisten */
-	StartTransactionCommand();
+	StartTransactionCommand(true);
 	Async_UnlistenAll();
-	CommitTransactionCommand();
+	CommitTransactionCommand(true);
 }
 
 /*
@@ -749,7 +749,7 @@ ProcessIncomingNotify(void)
 
 	notifyInterruptOccurred = 0;
 
-	StartTransactionCommand();
+	StartTransactionCommand(true);
 
 	lRel = heap_openr(ListenerRelationName, AccessExclusiveLock);
 	tdesc = RelationGetDescr(lRel);
@@ -803,7 +803,7 @@ ProcessIncomingNotify(void)
 	 */
 	heap_close(lRel, NoLock);
 
-	CommitTransactionCommand();
+	CommitTransactionCommand(true);
 
 	/*
 	 * Must flush the notify messages to ensure frontend gets them

@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+No-autocommit mode is available (set autocommit to off)
 Substantial improvements in functionality for functions returning sets
 Client libraries older than 6.3 no longer supported (version 0 protocol removed)
 PREPARE statement allows caching query plans for interactive statements

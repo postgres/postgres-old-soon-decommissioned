@@ -58,6 +58,7 @@ extern int	PreAuthDelay;
 extern int	AuthenticationTimeout;
 extern int	StatementTimeout;
 extern int	CheckPointTimeout;
+extern bool autocommit;
 extern int	CommitDelay;
 extern int	CommitSiblings;
 extern bool FixBTree;
@@ -486,6 +487,10 @@ static struct config_bool
 	{
 		{ "db_user_namespace", PGC_SIGHUP }, &Db_user_namespace,
 		false, NULL, NULL
+	},
+	{
+		{ "autocommit", PGC_USERSET }, &autocommit, 
+		true, NULL, NULL
 	},
 
 	{
