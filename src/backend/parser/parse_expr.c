@@ -20,6 +20,7 @@
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
 #include "nodes/params.h"
+#include "nodes/plannodes.h"
 #include "parser/analyze.h"
 #include "parser/gramparse.h"
 #include "parser/parse.h"
@@ -962,11 +963,38 @@ exprType(Node *expr)
 						elog(ERROR, "exprType: Cannot get type for untransformed sublink");
 					tent = (TargetEntry *) lfirst(qtree->targetList);
 					Assert(IsA(tent, TargetEntry));
+					Assert(!tent->resdom->resjunk);
 					type = tent->resdom->restype;
 				}
 				else
 				{
 					/* for all other sublink types, result is boolean */
+					type = BOOLOID;
+				}
+			}
+			break;
+		case T_SubPlan:
+			{
+				/*
+				 * Although the parser does not ever deal with already-planned
+				 * expression trees, we support SubPlan nodes in this routine
+				 * for the convenience of ruleutils.c.
+				 */
+				SubPlan    *subplan = (SubPlan *) expr;
+
+				if (subplan->subLinkType == EXPR_SUBLINK)
+				{
+					/* get the type of the subselect's first target column */
+					TargetEntry *tent;
+
+					tent = (TargetEntry *) lfirst(subplan->plan->targetlist);
+					Assert(IsA(tent, TargetEntry));
+					Assert(!tent->resdom->resjunk);
+					type = tent->resdom->restype;
+				}
+				else
+				{
+					/* for all other subplan types, result is boolean */
 					type = BOOLOID;
 				}
 			}
