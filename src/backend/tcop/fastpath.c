@@ -119,8 +119,7 @@ SendFunctionResult(Datum retval, bool retbyval, int retlen)
 {
 	StringInfoData buf;
 
-	pq_beginmessage(&buf);
-	pq_sendbyte(&buf, 'V');
+	pq_beginmessage(&buf, 'V');
 
 	if (retlen != 0)
 	{

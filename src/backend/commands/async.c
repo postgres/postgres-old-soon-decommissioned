@@ -847,10 +847,14 @@ NotifyMyFrontEnd(char *relname, int32 listenerPID)
 	{
 		StringInfoData buf;
 
-		pq_beginmessage(&buf);
-		pq_sendbyte(&buf, 'A');
+		pq_beginmessage(&buf, 'A');
 		pq_sendint(&buf, listenerPID, sizeof(int32));
 		pq_sendstring(&buf, relname);
+		if (PG_PROTOCOL_MAJOR(FrontendProtocol) >= 3)
+		{
+			/* XXX Add parameter string here later */
+			pq_sendstring(&buf, "");
+		}
 		pq_endmessage(&buf);
 
 		/*

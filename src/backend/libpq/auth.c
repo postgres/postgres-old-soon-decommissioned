@@ -512,8 +512,7 @@ sendAuthRequest(Port *port, AuthRequest areq)
 {
 	StringInfoData buf;
 
-	pq_beginmessage(&buf);
-	pq_sendbyte(&buf, 'R');
+	pq_beginmessage(&buf, 'R');
 	pq_sendint(&buf, (int32) areq, sizeof(int32));
 
 	/* Add the salt for encrypted passwords. */
