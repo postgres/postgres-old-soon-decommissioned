@@ -74,6 +74,7 @@
 #include "executor/nodeMergejoin.h"
 #include "utils/lsyscache.h"
 #include "utils/psort.h"
+#include "utils/syscache.h"
 
 
 static bool MergeCompare(List *eqQual, List *compareQual, ExprContext *econtext);
