@@ -43,7 +43,7 @@ export PGPORT
 # otherwise feel free to cover your platform here as well.
 if [ "$LD_LIBRARY_PATH" ]; then
 	old_LD_LIBRARY_PATH="$LD_LIBRARY_PATH"
-	LD_LIBRARY_PATH="$LIBDIR:$old_LD_LIBARY_PATH"
+	LD_LIBRARY_PATH="$LIBDIR:$old_LD_LIBRARY_PATH"
 else
 	LD_LIBRARY_PATH="$LIBDIR"
 fi
