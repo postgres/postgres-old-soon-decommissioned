@@ -8,6 +8,7 @@ WANTED_DIRS = \
 		array		\
 		cube		\
 		dbase		\
+		dblink		\
 		earthdistance	\
 		findoidjoins	\
 		fulltextindex	\
