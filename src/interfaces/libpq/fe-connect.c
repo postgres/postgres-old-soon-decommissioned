@@ -861,7 +861,11 @@ connectDBStart(PGconn *conn)
 	conn->raddr.sa.sa_family = family;
 
 	/* Set port number */
-	portno = atoi(conn->pgport);
+	if (conn->pgport != NULL && conn->pgport[0] != '\0')
+		portno = atoi(conn->pgport);
+	else
+		portno = DEF_PGPORT;
+
 	if (family == AF_INET)
 	{
 		conn->raddr.in.sin_port = htons((unsigned short) (portno));
@@ -874,7 +878,6 @@ connectDBStart(PGconn *conn)
 		conn->raddr_len = UNIXSOCK_LEN(conn->raddr.un);
 	}
 #endif
-
 
 	/* Open a socket */
 	if ((conn->sock = socket(family, SOCK_STREAM, 0)) < 0)
