@@ -705,7 +705,7 @@ CREATE DATABASE foo WITH TEMPLATE template0;
    The <application>pg_dump</application> utility first appeared in
    <application>Postgres95</application> release 0.02.  The
    non-plain-text output formats were introduced in
-   <application>PostgreSQL</application> release 7.1.
+   <productname>PostgreSQL</productname> release 7.1.
   </para>
  </refsect1>
 

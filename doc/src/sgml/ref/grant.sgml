@@ -375,8 +375,8 @@ GRANT <replaceable class="PARAMETER">privileges</replaceable>
 
    <para>
     The <literal>RULE</literal> privilege, and privileges on
-    databases, schemas, languages, and sequences are PostgreSQL
-    extensions.
+    databases, schemas, languages, and sequences are
+    <productname>PostgreSQL</productname> extensions.
    </para>
  </refsect1>
 

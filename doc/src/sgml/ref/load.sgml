@@ -50,7 +50,7 @@ LOAD '<replaceable class="PARAMETER">filename</replaceable>'
   <title>Compatibility</title>
 
   <para>
-   <command>LOAD</command> is a <application>PostgreSQL</application>
+   <command>LOAD</command> is a <productname>PostgreSQL</productname>
    extension.
   </para>
  </refsect1>

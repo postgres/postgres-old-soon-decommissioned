@@ -10,8 +10,8 @@ $Header$
 
   <para>
    Below is a subset of the changes that have gone into the
-   development branch of PostgreSQL since version 7.3.  For a complete
-   list of changes, consult the CVS logs.
+   development branch of <productname>PostgreSQL</productname> since
+   version 7.3.  For a complete list of changes, consult the CVS logs.
   </para>
 
 <!--

@@ -63,11 +63,12 @@ $Header$
   In the following two sections, we provide a list of those features
   that <productname>PostgreSQL</productname> supports, followed by a
   list of the features defined in SQL99 which are not yet supported in
-  PostgreSQL.  Both of these lists are approximate: There may be minor
-  details that are nonconforming for a feature that is listed as
-  supported, and large parts of an unsupported feature may in fact be
-  implemented.  The main body of the documentation always contains the
-  most accurate information about what does and does not work.
+  <productname>PostgreSQL</productname>.  Both of these lists are
+  approximate: There may be minor details that are nonconforming for a
+  feature that is listed as supported, and large parts of an
+  unsupported feature may in fact be implemented.  The main body of
+  the documentation always contains the most accurate information
+  about what does and does not work.
  </para>
 
  <note>

@@ -206,8 +206,8 @@ $Header$
   </para>
 
   <para>
-   Details about what has happened in PostgreSQL since then can be
-   found in <xref linkend="release">.
+   Details about what has happened in <productname>PostgreSQL</> since
+   then can be found in <xref linkend="release">.
   </para>
  </sect2>
 </sect1>

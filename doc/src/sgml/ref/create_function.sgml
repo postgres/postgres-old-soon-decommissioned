@@ -382,7 +382,7 @@ CREATE FUNCTION add(integer, integer) RETURNS integer
 
   <para>
    A <command>CREATE FUNCTION</command> command is defined in SQL99.
-   The <application>PostgreSQL</application> version is similar but
+   The <productname>PostgreSQL</productname> version is similar but
    not fully compatible.  The attributes are not portable, neither are the
    different available languages.
   </para>
