@@ -1064,10 +1064,14 @@ MainLoop(PsqlSettings *settings, FILE *source)
 	  slashCmdStatus = HandleSlashCmds(settings,
 					   line, 
 					   query);
-	if (slashCmdStatus == 1)
+	if (slashCmdStatus == 1) {
+	  free(line);
 	  continue;
-	if (slashCmdStatus == 2)
+	}
+	if (slashCmdStatus == 2) {
+	  free(line);
 	  break;
+	}
 	if (slashCmdStatus == 0)
 	  sendQuery = 1;
       }
