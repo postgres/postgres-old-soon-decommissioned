@@ -2331,12 +2331,15 @@ PQunescapeBytea(const unsigned char *strtext, size_t *retbuflen)
 	}
 	buflen = j;					/* buflen is the length of the unquoted
 								 * data */
+
+	/* Shrink the buffer to be no larger than necessary */
 	tmpbuf = realloc(buffer, buflen);
 
+	/* It would only be a very brain-dead realloc that could fail, but... */
 	if (!tmpbuf)
 	{
 		free(buffer);
-		return 0;
+		return NULL;
 	}
 
 	*retbuflen = buflen;
