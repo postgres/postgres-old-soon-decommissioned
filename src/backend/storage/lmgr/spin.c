@@ -23,6 +23,7 @@
 
 #include <errno.h>
 #ifdef HAVE_SYS_SEM_H
+#include <sys/types.h>
 #include <sys/sem.h>
 #endif
 
