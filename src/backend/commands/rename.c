@@ -53,7 +53,6 @@ void
 renameatt(char *relname,
 		  char *oldattname,
 		  char *newattname,
-		  char *userName,
 		  int recurse)
 {
 	Relation	targetrelation;
@@ -74,7 +73,7 @@ renameatt(char *relname,
 			 relname);
 #ifndef NO_SECURITY
 	if (!IsBootstrapProcessingMode() &&
-		!pg_ownercheck(userName, relname, RELNAME))
+		!pg_ownercheck(GetUserId(), relname, RELNAME))
 		elog(ERROR, "renameatt: you do not own class \"%s\"",
 			 relname);
 #endif
@@ -129,7 +128,7 @@ renameatt(char *relname,
 					NameStr(((Form_pg_class) GETSTRUCT(reltup))->relname),
 					NAMEDATALEN);
 			/* note we need not recurse again! */
-			renameatt(childname, oldattname, newattname, userName, 0);
+			renameatt(childname, oldattname, newattname, 0);
 		}
 	}
 

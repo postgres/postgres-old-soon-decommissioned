@@ -54,7 +54,6 @@ char		OutputFileName[MAXPGPATH] = "";
 BackendId	MyBackendId;
 BackendTag	MyBackendTag;
 
-char	   *UserName = NULL;
 char	   *DatabaseName = NULL;
 char	   *DatabasePath = NULL;
 

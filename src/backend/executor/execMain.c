@@ -571,8 +571,8 @@ ExecCheckRTEPerms(RangeTblEntry *rte, CmdType operation,
 				  bool isResultRelation, bool resultIsScanned)
 {
 	char	   *relName;
-	char	   *userName;
 	int32		aclcheck_result;
+	Oid		userid;
 
 	if (rte->skipAcl)
 	{
@@ -588,14 +588,14 @@ ExecCheckRTEPerms(RangeTblEntry *rte, CmdType operation,
 	relName = rte->relname;
 
 	/*
-	 * Note: GetPgUserName is presently fast enough that there's no harm
+	 * Note: GetUserId() is presently fast enough that there's no harm
 	 * in calling it separately for each RTE.  If that stops being true,
-	 * we could call it once in ExecCheckQueryPerms and pass the userName
+	 * we could call it once in ExecCheckQueryPerms and pass the userid
 	 * down from there.  But for now, no need for the extra clutter.
 	 */
-	userName = GetPgUserName();
+	userid = GetUserId();
 
-#define CHECK(MODE)		pg_aclcheck(relName, userName, MODE)
+#define CHECK(MODE)		pg_aclcheck(relName, userid, MODE)
 
 	if (isResultRelation)
 	{

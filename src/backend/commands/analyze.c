@@ -99,7 +99,7 @@ analyze_rel(Oid relid, List *anal_cols2, int MESSAGE_LEVEL)
 	onerel = heap_open(relid, AccessShareLock);
 
 #ifndef NO_SECURITY
-	if (!pg_ownercheck(GetPgUserName(), RelationGetRelationName(onerel),
+	if (!pg_ownercheck(GetUserId(), RelationGetRelationName(onerel),
 					   RELNAME))
 	{
 		/* we already did an elog during vacuum

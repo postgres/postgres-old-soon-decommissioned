@@ -17,7 +17,7 @@
 extern void renameatt(char *relname,
 		  char *oldattname,
 		  char *newattname,
-		  char *userName, int recurse);
+		  int recurse);
 
 extern void renamerel(const char *oldrelname,
 		  const char *newrelname);

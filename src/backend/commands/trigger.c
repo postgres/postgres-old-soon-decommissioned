@@ -69,7 +69,7 @@ CreateTrigger(CreateTrigStmt *stmt)
 		elog(ERROR, "CreateTrigger: can't create trigger for system relation %s", stmt->relname);
 
 #ifndef NO_SECURITY
-	if (!pg_ownercheck(GetPgUserName(), stmt->relname, RELNAME))
+	if (!pg_ownercheck(GetUserId(), stmt->relname, RELNAME))
 		elog(ERROR, "%s: %s", stmt->relname, aclcheck_error_strings[ACLCHECK_NOT_OWNER]);
 #endif
 
@@ -309,7 +309,7 @@ DropTrigger(DropTrigStmt *stmt)
 	int			tgfound = 0;
 
 #ifndef NO_SECURITY
-	if (!pg_ownercheck(GetPgUserName(), stmt->relname, RELNAME))
+	if (!pg_ownercheck(GetUserId(), stmt->relname, RELNAME))
 		elog(ERROR, "%s: %s", stmt->relname, aclcheck_error_strings[ACLCHECK_NOT_OWNER]);
 #endif
 

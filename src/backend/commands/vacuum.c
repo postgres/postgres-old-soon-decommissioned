@@ -404,7 +404,7 @@ vacuum_rel(Oid relid, bool analyze, bool is_toastrel)
 	toast_relid = onerel->rd_rel->reltoastrelid;
 
 #ifndef NO_SECURITY
-	if (!pg_ownercheck(GetPgUserName(), RelationGetRelationName(onerel),
+	if (!pg_ownercheck(GetUserId(), RelationGetRelationName(onerel),
 					   RELNAME))
 	{
 		elog(NOTICE, "Skipping \"%s\" --- only table owner can VACUUM it",

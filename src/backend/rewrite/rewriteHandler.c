@@ -1137,7 +1137,7 @@ fireRules(Query *parsetree,
 			if (!rte->skipAcl)
 			{
 				acl_rc = pg_aclcheck(rte->relname,
-									 GetPgUserName(), reqperm);
+									 GetUserId(), reqperm);
 				if (acl_rc != ACLCHECK_OK)
 				{
 					elog(ERROR, "%s: %s",

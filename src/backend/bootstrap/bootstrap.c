@@ -355,7 +355,7 @@ BootstrapMain(int argc, char *argv[])
 	/*
 	 * backend initialization
 	 */
-	InitPostgres(dbName);
+	InitPostgres(dbName, NULL);
 	LockDisable(true);
 
 	if (IsUnderPostmaster && !xloginit)

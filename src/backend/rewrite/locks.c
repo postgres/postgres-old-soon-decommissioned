@@ -175,7 +175,7 @@ matchLocks(CmdType event,
 
 typedef struct
 {
-	char	   *evowner;
+	Oid	evowner;
 } checkLockPerms_context;
 
 static bool
@@ -289,7 +289,7 @@ checkLockPerms(List *locks, Query *parsetree, int rt_index)
 		elog(ERROR, "cache lookup for userid %d failed",
 			 ev_rel->rd_rel->relowner);
 	userform = (Form_pg_shadow) GETSTRUCT(usertup);
-	context.evowner = pstrdup(NameStr(userform->usename));
+	context.evowner = userform->usesysid;
 	heap_close(ev_rel, AccessShareLock);
 
 	/*
