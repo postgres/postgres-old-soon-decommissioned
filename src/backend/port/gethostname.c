@@ -5,6 +5,8 @@
 
 #include <sys/utsname.h>
 
+#include "config.h"
+
 int
 gethostname(char *name, int namelen)
 {
