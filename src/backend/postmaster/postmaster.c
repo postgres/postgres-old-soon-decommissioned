@@ -194,6 +194,8 @@ extern char *optarg;
 extern int	optind,
 			opterr;
 
+extern void GetRedoRecPtr(void);
+
 /*
  * postmaster.c - function prototypes
  */
@@ -1533,6 +1535,7 @@ reaper(SIGNAL_ARGS)
 
 			/*
 			 * Startup succeeded - remember its ID
+			 * and RedoRecPtr
 			 */
 			SetThisStartUpID();
 
@@ -1633,7 +1636,10 @@ CleanupProc(int pid,
 		{
 			CheckPointPID = 0;
 			if (!FatalError)
+			{
 				checkpointed = time(NULL);
+				GetRedoRecPtr();
+			}
 		}
 		else
 		{

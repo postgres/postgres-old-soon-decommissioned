@@ -2208,3 +2208,16 @@ MarkBufferForCleanup(Buffer buffer, void (*CleanupFunc)(Buffer))
 	SpinRelease(BufMgrLock);
 	return;
 }
+
+RelFileNode
+BufferGetFileNode(Buffer buffer)
+{
+	BufferDesc *bufHdr;
+
+	if (BufferIsLocal(buffer))
+		bufHdr = &(LocalBufferDescriptors[-buffer - 1]);
+	else
+		bufHdr = &BufferDescriptors[buffer - 1];
+
+	return(bufHdr->tag.rnode);
+}

@@ -147,6 +147,8 @@ static MemoryContext nogc = NULL; /* special no-gc mem context */
 extern int	optind;
 extern char *optarg;
 
+extern void SetRedoRecPtr(void);
+
 /*
  *	At bootstrap time, we first declare all the indices to be built, and
  *	then build them.  The IndexList structure stores enough information
@@ -349,6 +351,7 @@ BootstrapMain(int argc, char *argv[])
 		{
 			CreateDummyCaches();
 			CreateCheckPoint(false);
+			SetRedoRecPtr();
 		}
 		else if (xlogop == BS_XLOG_STARTUP)
 			StartupXLOG();

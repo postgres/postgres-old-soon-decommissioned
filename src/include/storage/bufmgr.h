@@ -183,6 +183,7 @@ extern void DropBuffers(Oid dbid);
 extern void PrintPinnedBufs(void);
 extern int	BufferShmemSize(void);
 extern int	ReleaseBuffer(Buffer buffer);
+extern RelFileNode BufferGetFileNode(Buffer buffer);
 
 extern void SetBufferCommitInfoNeedsSave(Buffer buffer);
 
