@@ -128,7 +128,7 @@ sub Main() {
     
   my $setQuery;
   $setQuery = "SET search_path = public";
-  $setResult = $masterConn->exec($setQuery);
+  my $setResult = $masterConn->exec($setQuery);
   if($setResult->resultStatus!=PGRES_COMMAND_OK) { 
     logErrorMessage($masterConn->errorMessage . "\n" . 
 		    $setQuery);
@@ -137,7 +137,7 @@ sub Main() {
     
   my $setQuery2;
   $setQuery2 = "SET autocommit TO 'on'";
-  $setResult2 = $masterConn->exec($setQuery2);
+  my $setResult2 = $masterConn->exec($setQuery2);
   if($setResult2->resultStatus!=PGRES_COMMAND_OK) { 
     logErrorMessage($masterConn->errorMessage . "\n" . 
 		    $setQuery2);
