@@ -16,6 +16,7 @@ include $(SRCDIR)/Makefile.global
 
 .DEFAULT all:
 	$(MAKE) -C libpq $@
+	$(MAKE) -C ecpg $@
 ifeq ($(HAVE_Cplusplus), true)
 	$(MAKE) -C libpq++ $@
 else
