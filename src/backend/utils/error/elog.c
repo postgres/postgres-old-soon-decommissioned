@@ -69,7 +69,7 @@ ErrorContextCallback *error_context_stack = NULL;
 /* GUC parameters */
 PGErrorVerbosity Log_error_verbosity = PGERROR_VERBOSE;
 char       *Log_line_prefix = NULL; /* format for extra log line info */
-unsigned int Log_destination;
+unsigned int Log_destination = LOG_DESTINATION_STDERR;
 
 bool in_fatal_exit = false;
 
