@@ -629,6 +629,21 @@ _readArrayExpr(void)
 }
 
 /*
+ * _readRowExpr
+ */
+static RowExpr *
+_readRowExpr(void)
+{
+	READ_LOCALS(RowExpr);
+
+	READ_NODE_FIELD(args);
+	READ_OID_FIELD(row_typeid);
+	READ_ENUM_FIELD(row_format, CoercionForm);
+
+	READ_DONE();
+}
+
+/*
  * _readCoalesceExpr
  */
 static CoalesceExpr *
@@ -978,6 +993,8 @@ parseNodeString(void)
 		return_value = _readCaseTestExpr();
 	else if (MATCH("ARRAY", 5))
 		return_value = _readArrayExpr();
+	else if (MATCH("ROW", 3))
+		return_value = _readRowExpr();
 	else if (MATCH("COALESCE", 8))
 		return_value = _readCoalesceExpr();
 	else if (MATCH("NULLIFEXPR", 10))

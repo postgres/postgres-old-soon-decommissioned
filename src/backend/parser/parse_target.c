@@ -643,6 +643,10 @@ FigureColnameInternal(Node *node, char **name)
 			/* make ARRAY[] act like a function */
 			*name = "array";
 			return 2;
+		case T_RowExpr:
+			/* make ROW() act like a function */
+			*name = "row";
+			return 2;
 		case T_CoalesceExpr:
 			/* make coalesce() act like a regular function */
 			*name = "coalesce";

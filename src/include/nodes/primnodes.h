@@ -633,6 +633,23 @@ typedef struct ArrayExpr
 } ArrayExpr;
 
 /*
+ * RowExpr - a ROW() expression
+ */
+typedef struct RowExpr
+{
+	Expr		xpr;
+	List	   *args;			/* the fields */
+	Oid			row_typeid;		/* RECORDOID or a composite type's ID */
+	/*
+	 * Note: we deliberately do NOT store a typmod.  Although a typmod
+	 * will be associated with specific RECORD types at runtime, it will
+	 * differ for different backends, and so cannot safely be stored in
+	 * stored parsetrees.  We must assume typmod -1 for a RowExpr node.
+	 */
+	CoercionForm row_format;	/* how to display this node */
+} RowExpr;
+
+/*
  * CoalesceExpr - a COALESCE expression
  */
 typedef struct CoalesceExpr

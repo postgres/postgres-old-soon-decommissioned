@@ -45,6 +45,8 @@ extern Const *makeConst(Oid consttype,
 
 extern Const *makeNullConst(Oid consttype);
 
+extern Node *makeBoolConst(bool value, bool isnull);
+
 extern Expr *makeBoolExpr(BoolExprType boolop, List *args);
 
 extern Alias *makeAlias(const char *aliasname, List *colnames);

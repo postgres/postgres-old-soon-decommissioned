@@ -3752,6 +3752,16 @@ exec_simple_check_node(Node *node)
 				return TRUE;
 			}
 
+		case T_RowExpr:
+			{
+				RowExpr  *expr = (RowExpr *) node;
+
+				if (!exec_simple_check_node((Node *) expr->args))
+					return FALSE;
+
+				return TRUE;
+			}
+
 		case T_CoalesceExpr:
 			{
 				CoalesceExpr *expr = (CoalesceExpr *) node;

@@ -15,6 +15,7 @@
  */
 #include "postgres.h"
 
+#include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
 #include "utils/lsyscache.h"
 
@@ -168,6 +169,17 @@ makeNullConst(Oid consttype)
 					 (Datum) 0,
 					 true,
 					 typByVal);
+}
+
+/*
+ * makeBoolConst -
+ *	  creates a Const node representing a boolean value (can be NULL too)
+ */
+Node *
+makeBoolConst(bool value, bool isnull)
+{
+	/* note that pg_type.h hardwires size of bool as 1 ... duplicate it */
+	return (Node *) makeConst(BOOLOID, 1, BoolGetDatum(value), isnull, true);
 }
 
 /*

@@ -424,6 +424,24 @@ _equalArrayExpr(ArrayExpr *a, ArrayExpr *b)
 }
 
 static bool
+_equalRowExpr(RowExpr *a, RowExpr *b)
+{
+	COMPARE_NODE_FIELD(args);
+	COMPARE_SCALAR_FIELD(row_typeid);
+
+	/*
+	 * Special-case COERCE_DONTCARE, so that planner can build coercion
+	 * nodes that are equal() to both explicit and implicit coercions.
+	 */
+	if (a->row_format != b->row_format &&
+		a->row_format != COERCE_DONTCARE &&
+		b->row_format != COERCE_DONTCARE)
+		return false;
+
+	return true;
+}
+
+static bool
 _equalCoalesceExpr(CoalesceExpr *a, CoalesceExpr *b)
 {
 	COMPARE_SCALAR_FIELD(coalescetype);
@@ -1747,6 +1765,9 @@ equal(void *a, void *b)
 			break;
 		case T_ArrayExpr:
 			retval = _equalArrayExpr(a, b);
+			break;
+		case T_RowExpr:
+			retval = _equalRowExpr(a, b);
 			break;
 		case T_CoalesceExpr:
 			retval = _equalCoalesceExpr(a, b);

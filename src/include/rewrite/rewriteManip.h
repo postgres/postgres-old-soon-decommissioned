@@ -38,6 +38,7 @@ extern bool checkExprHasAggs(Node *node);
 extern bool checkExprHasSubLink(Node *node);
 
 extern Node *ResolveNew(Node *node, int target_varno, int sublevels_up,
-		   List *targetlist, int event, int update_varno);
+						RangeTblEntry *target_rte,
+						List *targetlist, int event, int update_varno);
 
 #endif   /* REWRITEMANIP_H */

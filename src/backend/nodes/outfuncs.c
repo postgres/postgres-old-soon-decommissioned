@@ -829,6 +829,16 @@ _outArrayExpr(StringInfo str, ArrayExpr *node)
 }
 
 static void
+_outRowExpr(StringInfo str, RowExpr *node)
+{
+	WRITE_NODE_TYPE("ROW");
+
+	WRITE_NODE_FIELD(args);
+	WRITE_OID_FIELD(row_typeid);
+	WRITE_ENUM_FIELD(row_format, CoercionForm);
+}
+
+static void
 _outCoalesceExpr(StringInfo str, CoalesceExpr *node)
 {
 	WRITE_NODE_TYPE("COALESCE");
@@ -1718,6 +1728,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_ArrayExpr:
 				_outArrayExpr(str, obj);
+				break;
+			case T_RowExpr:
+				_outRowExpr(str, obj);
 				break;
 			case T_CoalesceExpr:
 				_outCoalesceExpr(str, obj);

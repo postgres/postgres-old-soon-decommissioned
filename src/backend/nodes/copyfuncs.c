@@ -999,6 +999,21 @@ _copyArrayExpr(ArrayExpr *from)
 }
 
 /*
+ * _copyRowExpr
+ */
+static RowExpr *
+_copyRowExpr(RowExpr *from)
+{
+	RowExpr  *newnode = makeNode(RowExpr);
+
+	COPY_NODE_FIELD(args);
+	COPY_SCALAR_FIELD(row_typeid);
+	COPY_SCALAR_FIELD(row_format);
+
+	return newnode;
+}
+
+/*
  * _copyCoalesceExpr
  */
 static CoalesceExpr *
@@ -2673,6 +2688,9 @@ copyObject(void *from)
 			break;
 		case T_ArrayExpr:
 			retval = _copyArrayExpr(from);
+			break;
+		case T_RowExpr:
+			retval = _copyRowExpr(from);
 			break;
 		case T_CoalesceExpr:
 			retval = _copyCoalesceExpr(from);

@@ -614,6 +614,17 @@ typedef struct ArrayExprState
 } ArrayExprState;
 
 /* ----------------
+ *		RowExprState node
+ * ----------------
+ */
+typedef struct RowExprState
+{
+	ExprState	xprstate;
+	List	   *args;			/* the arguments */
+	TupleDesc	tupdesc;		/* descriptor for result tuples */
+} RowExprState;
+
+/* ----------------
  *		CoalesceExprState node
  * ----------------
  */

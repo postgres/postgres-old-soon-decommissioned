@@ -27,11 +27,6 @@
 #include "utils/selfuncs.h"
 
 
-/* note that pg_type.h hardwires size of bool as 1 ... duplicate it */
-#define MAKEBOOLCONST(val,isnull) \
-	((Node *) makeConst(BOOLOID, 1, (Datum) (val), (isnull), true))
-
-
 /*
  * Data structure for accumulating info about possible range-query
  * clause pairs in clauselist_selectivity.
@@ -486,7 +481,7 @@ clause_selectivity(Query *root,
 				s1 = restriction_selectivity(root,
 											 BooleanEqualOperator,
 											 makeList2(var,
-													   MAKEBOOLCONST(true,
+													   makeBoolConst(true,
 																 false)),
 											 varRelid);
 			}
