@@ -26,6 +26,10 @@ create type issn (
 	output = issn_out
 );
 
+comment on type issn
+  is 'International Standard Serial Number';
+
+
 --
 --	The various boolean tests:
 --
@@ -138,6 +142,10 @@ create type isbn (
 	input = isbn_in,
 	output = isbn_out
 );
+
+comment on type isbn
+  is 'International Standard Book Number';
+
 
 --
 --	The various boolean tests:
