@@ -37,8 +37,8 @@ static void notice_processor(void *arg, const char *message);
 static char *_sendSQLLine(ArchiveHandle *AH, char *qry, char *eos);
 static char *_sendCopyLine(ArchiveHandle *AH, char *qry, char *eos);
 
-static int _isIdentChar(char c);
-static int _isDQChar(char c, int atStart);
+static int _isIdentChar(unsigned char c);
+static int _isDQChar(unsigned char c, int atStart);
 
 #define DB_MAX_ERR_STMT 128
 
@@ -864,14 +864,14 @@ CommitTransactionXref(ArchiveHandle *AH)
 	destroyPQExpBuffer(qry);
 }
 
-static int _isIdentChar(char c)
+static int _isIdentChar(unsigned char c)
 {
 	if (		(c >= 'a' && c <= 'z')
 		||	(c >= 'A' && c <= 'Z')
 		||	(c >= '0' && c <= '9')
 		||	(c == '_')
 		||	(c == '$')
-		||	(c >= '\200' && c <= '\377')
+		||	(c >= (unsigned char)'\200') /* no need to check <= \377 */
 	   )
 	{
 		return 1;
@@ -882,13 +882,13 @@ static int _isIdentChar(char c)
 	}
 }
 
-static int _isDQChar(char c, int atStart)
-{	
+static int _isDQChar(unsigned char c, int atStart)
+{
 	if (		(c >= 'a' && c <= 'z')
 		||	(c >= 'A' && c <= 'Z')
 		||	(c == '_')
 		||	(atStart == 0 && c >= '0' && c <= '9')
-		||	(c >= '\200' && c <= '\377')
+		||	(c >= (unsigned char)'\200') /* no need to check <= \377 */
 	   )
 	{
 		return 1;
