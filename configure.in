@@ -1009,13 +1009,14 @@ For details, compile and run src/bin/pg_thread_test.
 ])
 fi
 
-AC_CHECK_HEADER(pthread.h, [], [AC_MSG_ERROR([pthread.h not found, required for --enable-thread-safety])])
-
 # Check for *_r functions
 _CFLAGS="$CFLAGS"
 _LIBS="$LIBS"
 CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
 LIBS="$LIBS $PTHREAD_LIBS"
+
+AC_CHECK_HEADER(pthread.h, [], [AC_MSG_ERROR([pthread.h not found, required for --enable-thread-safety])])
+
 AC_CHECK_FUNCS([strerror_r getpwuid_r gethostbyname_r])
 
 # Do test here with the proper thread flags
