@@ -1699,6 +1699,16 @@ read_sql_construct(int until,
 		}
 		if (plpgsql_SpaceScanned)
 			plpgsql_dstring_append(&ds, " ");
+
+		/* Check for array overflow */
+		if (nparams >= 1024)
+		{
+			plpgsql_error_lineno = lno;
+			ereport(ERROR,
+					(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
+					 errmsg("too many variables specified in SQL statement")));
+		}
+
 		switch (tok)
 		{
 			case T_VARIABLE:
@@ -1710,15 +1720,6 @@ read_sql_construct(int until,
 			default:
 				plpgsql_dstring_append(&ds, yytext);
 				break;
-		}
-
-		/* Check for array overflow */
-		if (nparams >= 1024)
-		{
-			plpgsql_error_lineno = lno;
-			ereport(ERROR,
-					(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
-					 errmsg("too many variables specified in SQL statement")));
 		}
 	}
 
@@ -1924,6 +1925,16 @@ make_select_stmt(void)
 
 		if (plpgsql_SpaceScanned)
 			plpgsql_dstring_append(&ds, " ");
+
+		/* Check for array overflow */
+		if (nparams >= 1024)
+		{
+			plpgsql_error_lineno = plpgsql_scanner_lineno();
+			ereport(ERROR,
+					(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
+					 errmsg("too many variables specified in SQL statement")));
+		}
+
 		switch (tok)
 		{
 			case T_VARIABLE:
@@ -1935,15 +1946,6 @@ make_select_stmt(void)
 			default:
 				plpgsql_dstring_append(&ds, yytext);
 				break;
-		}
-
-		/* Check for array overflow */
-		if (nparams >= 1024)
-		{
-			plpgsql_error_lineno = plpgsql_scanner_lineno();
-			ereport(ERROR,
-					(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
-					 errmsg("too many variables specified in SQL statement")));
 		}
 	}
 
