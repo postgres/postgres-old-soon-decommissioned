@@ -19,11 +19,11 @@ endif
 SO_MAJOR_VERSION = 0
 SO_MINOR_VERSION = 27
 
-override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
+override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -DFRONTEND -DMD5_ODBC
 
 
 OBJS = info.o bind.o columninfo.o connection.o convert.o drvconn.o \
-        environ.o execute.o lobj.o misc.o options.o \
+        environ.o execute.o lobj.o md5.o misc.o options.o \
         pgtypes.o psqlodbc.o qresult.o results.o socket.o parse.o statement.o \
         tuple.o tuplelist.o dlg_specific.o odbcapi.o
 
