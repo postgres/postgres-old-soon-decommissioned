@@ -445,7 +445,7 @@ cat /dev/null >"$diff_file"
 lno=0
 (
     [ "$enable_shared" != yes ] && echo "ignore: plpgsql"
-    cat $schedule
+    cat $schedule </dev/null
     for x in $extra_tests; do
         echo "test: $x"
     done
