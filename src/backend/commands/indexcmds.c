@@ -110,7 +110,7 @@ DefineIndex(RangeVar *heapRelation,
 
 	if (!IsBootstrapProcessingMode() &&
 		IsSystemRelation(rel) &&
-		!IndexesAreActive(relationId, false))
+		!IndexesAreActive(rel))
 		elog(ERROR, "Existing indexes are inactive. REINDEX first");
 
 	heap_close(rel, NoLock);
