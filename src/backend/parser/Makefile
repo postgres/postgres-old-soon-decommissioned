@@ -41,7 +41,9 @@ else
 endif
 
 
-analyze.o keywords.o parse_clause.o parse_expr.o scan.o: $(srcdir)/parse.h
+# Force these dependencies to be known even without dependency info built:
+
+analyze.o keywords.o parse_clause.o parse_expr.o parser.o scan.o: $(srcdir)/parse.h
 
 
 # gram.c, parse.h, and scan.c are in the distribution tarball, so they
