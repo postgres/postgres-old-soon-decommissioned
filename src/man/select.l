@@ -123,9 +123,6 @@ create table(l),
 fetch(l),
 update(l).
 .SH BUGS
-.BR "Select into"
-does not delete duplicates.
-.PP
 If the backend crashes in the course of executing a 
 .BR "select into" ,
 the class file will remain on disk.  It can be safely removed by the
