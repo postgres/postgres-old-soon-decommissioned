@@ -145,7 +145,7 @@ install-$(LIBNAME): $(LIBNAME).a beforeinstall-lib
 install-shlib: $(SHLIBNAME) beforeinstall-lib
 	$(INSTALL) $(INSTL_SHLIB_OPTS) $(SHLIB) $(LIBDIR)/$(SHLIB)
 	rm -f $(LIBDIR)/libpq++.so
-	ln -sf $(SHLIB) $(LIBDIR)/libpq++.so
+	$(LN_S) -f $(SHLIB) $(LIBDIR)/libpq++.so
 
 
 doc:
