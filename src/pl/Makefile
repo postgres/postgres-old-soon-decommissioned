@@ -22,10 +22,9 @@ ifeq ($(with_perl), yes)
 DIRS += plperl
 endif
 
-# Doesn't build portably yet.
-#ifeq ($(with_python), yes)
-#DIRS += plpython
-#endif
+ifeq ($(with_python), yes)
+DIRS += plpython
+endif
 
 all install installdirs uninstall depend distprep:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
