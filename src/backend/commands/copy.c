@@ -386,6 +386,7 @@ CopyGetData(void *databuf, int datasize)
 					/* Try to receive another message */
 					int			mtype;
 
+				readmessage:
 					mtype = pq_getbyte();
 					if (mtype == EOF)
 						ereport(ERROR,
@@ -409,6 +410,15 @@ CopyGetData(void *databuf, int datasize)
 									 errmsg("COPY from stdin failed: %s",
 										 pq_getmsgstring(copy_msgbuf))));
 							break;
+						case 'H':		/* Flush */
+						case 'S':		/* Sync */
+							/*
+							 * Ignore Flush/Sync for the convenience of
+							 * client libraries (such as libpq) that may
+							 * send those without noticing that the command
+							 * they just sent was COPY.
+							 */
+							goto readmessage;
 						default:
 							ereport(ERROR,
 									(errcode(ERRCODE_PROTOCOL_VIOLATION),

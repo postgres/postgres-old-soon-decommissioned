@@ -262,8 +262,10 @@ struct pg_conn
 	PGAsyncStatusType asyncStatus;
 	PGTransactionStatusType xactStatus;
 	/* note: xactStatus never changes to ACTIVE */
-	int			nonblocking;	/* whether this connection is using a
-								 * blocking socket to the backend or not */
+	bool		nonblocking;	/* whether this connection is using
+								 * nonblock sending semantics */
+	bool		ext_query;		/* was our last query sent with extended
+								 * query protocol? */
 	char		copy_is_binary; /* 1 = copy binary, 0 = copy text */
 	int			copy_already_done;		/* # bytes already returned in
 										 * COPY OUT */

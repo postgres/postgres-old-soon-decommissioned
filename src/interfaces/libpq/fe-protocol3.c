@@ -1086,6 +1086,16 @@ pqEndcopy3(PGconn *conn)
 		if (pqPutMsgStart('c', false, conn) < 0 ||
 			pqPutMsgEnd(conn) < 0)
 			return 1;
+		/*
+		 * If we sent the COPY command in extended-query mode, we must
+		 * issue a Sync as well.
+		 */
+		if (conn->ext_query)
+		{
+			if (pqPutMsgStart('S', false, conn) < 0 ||
+				pqPutMsgEnd(conn) < 0)
+				return 1;
+		}
 	}
 
 	/*
