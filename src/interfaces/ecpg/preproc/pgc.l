@@ -315,7 +315,7 @@ cppline			{space}*#(.*\\{line_end})*.*
 				}
 
 {xqstart}			{
-					state_before == YYSTATE;
+					state_before = YYSTATE;
 					BEGIN(xq);
 					startlit();
 				}
