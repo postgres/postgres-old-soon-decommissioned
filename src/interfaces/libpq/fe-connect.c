@@ -881,9 +881,9 @@ connectDBStart(PGconn *conn)
 	 * for the *last* alternative, which may not be what users expect
 	 * :-().
 	 *
-	 * In either case, we never actually fall out of the loop; the
-	 * only exits are via "break" or "goto connect_errReturn".  Thus,
-	 * there is no exit test in the for().
+	 * Notice we never actually fall out of the loop; the only exits are
+	 * via "break" or "goto connect_errReturn".  Thus, there is no exit
+	 * test in the for().
 	 */
 	for (addr_cur = addrs; ; addr_cur = addr_cur->ai_next)
 	{

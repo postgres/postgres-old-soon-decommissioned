@@ -62,6 +62,16 @@ AC_DEFUN([PGAC_STRUCT_SOCKADDR_UN],
 ])])# PGAC_STRUCT_SOCKADDR_UN
 
 
+# PGAC_STRUCT_ADDRINFO
+# -----------------------
+# If `struct addrinfo' exists, define HAVE_STRUCT_ADDRINFO.
+AC_DEFUN([PGAC_STRUCT_ADDRINFO],
+[AC_CHECK_TYPES([struct addrinfo], [], [],
+[#include <sys/socket.h>
+#include <netdb.h>
+])])# PGAC_STRUCT_ADDRINFO
+
+
 # PGAC_FUNC_POSIX_SIGNALS
 # -----------------------
 # Check to see if the machine has the POSIX signal interface. Define

@@ -35,6 +35,8 @@
 #include <errno.h>
 #include <signal.h>
 #include <time.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
 #ifdef WIN32
 #include "win32.h"

@@ -49,13 +49,15 @@
 
 #include <errno.h>
 #include <sys/param.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#ifdef HAVE_ENDIAN_H
+#include <endian.h>
+#endif
 
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
 #include "mb/pg_wchar.h"
-#ifdef HAVE_ENDIAN_H
-#include <endian.h>
-#endif
 
 
 /* --------------------------------
