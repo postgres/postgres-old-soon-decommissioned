@@ -60,6 +60,7 @@
 #ifdef HAVE_STRINGS_H
 #include <strings.h>
 #endif
+#include <sys/types.h>
 
 #ifdef __CYGWIN__
 #include <errno.h>
