@@ -466,6 +466,8 @@ PostmasterMain(int argc, char *argv[])
 				gettext("%s: could not locate my own executable path"),
 						argv[0]);
 	
+	get_pkglib_path(my_exec_path, pkglib_path);
+
 	/*
 	 * Options setup
 	 */
