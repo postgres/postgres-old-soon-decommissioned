@@ -137,7 +137,7 @@ renameatt(char *relname,
 										PointerGetDatum(oldattname),
 										0, 0);
 	if (!HeapTupleIsValid(oldatttup))
-		elog(ERROR, "renameatt: attribute \"%s\" nonexistent", oldattname);
+		elog(ERROR, "renameatt: attribute \"%s\" does not exist", oldattname);
 
 	if (((Form_pg_attribute) GETSTRUCT(oldatttup))->attnum < 0)
 		elog(ERROR, "renameatt: system attribute \"%s\" not renamed", oldattname);

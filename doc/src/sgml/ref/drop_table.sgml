@@ -68,7 +68,7 @@ DROP
      </varlistentry>
      <varlistentry>
       <term><computeroutput>
-ERROR: table "<replaceable class="parameter">name</replaceable>" is nonexistent
+ERROR: table "<replaceable class="parameter">name</replaceable>" does not exist
        </computeroutput></term>
       <listitem>
        <para>

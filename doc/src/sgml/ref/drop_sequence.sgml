@@ -15,7 +15,7 @@ Postgres documentation
    DROP SEQUENCE
   </refname>
   <refpurpose>
-   Removes an existing sequence
+   Removes existing sequences from a database
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>
@@ -69,7 +69,7 @@ DROP
      </varlistentry>
      <varlistentry>
       <term><computeroutput>
-NOTICE: Relation "<replaceable class="parameter">name</replaceable>" does not exist.
+ERROR: sequence "<replaceable class="parameter">name</replaceable>" does not exist
        </computeroutput></term>
       <listitem>
        <para>

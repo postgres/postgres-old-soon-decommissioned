@@ -181,7 +181,7 @@ OperatorGet(char *operatorName,
 		leftObjectId = TypeGet(leftTypeName, &leftDefined);
 
 		if (!OidIsValid(leftObjectId) || !leftDefined)
-			elog(ERROR, "OperatorGet: left type '%s' nonexistent",
+			elog(ERROR, "OperatorGet: left type \"%s\" does not exist",
 				 leftTypeName);
 	}
 
@@ -190,7 +190,7 @@ OperatorGet(char *operatorName,
 		rightObjectId = TypeGet(rightTypeName, &rightDefined);
 
 		if (!OidIsValid(rightObjectId) || !rightDefined)
-			elog(ERROR, "OperatorGet: right type '%s' nonexistent",
+			elog(ERROR, "OperatorGet: right type \"%s\" does not exist",
 				 rightTypeName);
 	}
 
@@ -527,7 +527,7 @@ OperatorDef(char *operatorName,
 		leftTypeId = TypeGet(leftTypeName, &leftDefined);
 
 		if (!OidIsValid(leftTypeId) || !leftDefined)
-			elog(ERROR, "OperatorDef: left type '%s' nonexistent",
+			elog(ERROR, "OperatorDef: left type \"%s\" does not exist",
 				 leftTypeName);
 	}
 
@@ -536,7 +536,7 @@ OperatorDef(char *operatorName,
 		rightTypeId = TypeGet(rightTypeName, &rightDefined);
 
 		if (!OidIsValid(rightTypeId) || !rightDefined)
-			elog(ERROR, "OperatorDef: right type '%s' nonexistent",
+			elog(ERROR, "OperatorDef: right type \"%s\" does not exist",
 				 rightTypeName);
 	}
 
@@ -739,7 +739,7 @@ OperatorDef(char *operatorName,
 											  otherRightTypeName);
 				if (!OidIsValid(other_oid))
 					elog(ERROR,
-						 "OperatorDef: can't create operator shell '%s'",
+						 "OperatorDef: can't create operator shell \"%s\"",
 						 name[j]);
 				values[i++] = ObjectIdGetDatum(other_oid);
 			}

@@ -169,7 +169,7 @@ typedef enum NodeTag
 	T_RemoveAggrStmt,
 	T_RemoveFuncStmt,
 	T_RemoveOperStmt,
-	T_RemoveStmt,
+	T_RemoveStmt_XXX,			/* not used anymore; this tag# is available */
 	T_RenameStmt,
 	T_RuleStmt,
 	T_NotifyStmt,

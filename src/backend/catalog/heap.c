@@ -1091,7 +1091,7 @@ DeleteRelationTuple(Relation rel)
 	if (!HeapTupleIsValid(tup))
 	{
 		heap_close(pg_class_desc, RowExclusiveLock);
-		elog(ERROR, "Relation '%s' does not exist",
+		elog(ERROR, "Relation \"%s\" does not exist",
 			 RelationGetRelationName(rel));
 	}
 
@@ -1342,7 +1342,7 @@ DeleteTypeTuple(Relation rel)
 	{
 		heap_endscan(pg_type_scan);
 		heap_close(pg_type_desc, RowExclusiveLock);
-		elog(ERROR, "DeleteTypeTuple: %s type nonexistent",
+		elog(ERROR, "DeleteTypeTuple: type \"%s\" does not exist",
 			 RelationGetRelationName(rel));
 	}
 
