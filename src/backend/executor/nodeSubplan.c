@@ -336,7 +336,7 @@ ExecSetParamPlan(SubPlan *node)
 		if (found &&
 			(sublink->subLinkType == EXPR_SUBLINK ||
 			 sublink->subLinkType == MULTIEXPR_SUBLINK))
-			elog(ERROR, "More than one tuple returned a subselect used as an expression.");
+			elog(ERROR, "More than one tuple returned by a subselect used as an expression.");
 
 		found = true;
 
