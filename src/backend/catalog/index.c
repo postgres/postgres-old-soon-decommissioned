@@ -693,6 +693,7 @@ index_create(Oid heapRelationId,
 										   ' ',
 										   ' ',
 										   ' ',
+										   InvalidOid, /* no associated index */
 										   NULL,		/* no check constraint */
 										   NULL,
 										   NULL);

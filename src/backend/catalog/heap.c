@@ -1342,6 +1342,7 @@ StoreRelCheck(Relation rel, char *ccname, char *ccbin)
 						  ' ',
 						  ' ',
 						  ' ',
+						  InvalidOid, /* no associated index */
 						  expr, /* Tree form check constraint */
 						  ccbin,	/* Binary form check constraint */
 						  ccsrc);		/* Source form check constraint */
