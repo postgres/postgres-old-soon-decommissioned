@@ -768,6 +768,16 @@ _outRelabelType(StringInfo str, RelabelType *node)
 }
 
 static void
+_outConvertRowtypeExpr(StringInfo str, ConvertRowtypeExpr *node)
+{
+	WRITE_NODE_TYPE("CONVERTROWTYPEEXPR");
+
+	WRITE_NODE_FIELD(arg);
+	WRITE_OID_FIELD(resulttype);
+	WRITE_ENUM_FIELD(convertformat, CoercionForm);
+}
+
+static void
 _outCaseExpr(StringInfo str, CaseExpr *node)
 {
 	WRITE_NODE_TYPE("CASE");
@@ -1727,6 +1737,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_RelabelType:
 				_outRelabelType(str, obj);
+				break;
+			case T_ConvertRowtypeExpr:
+				_outConvertRowtypeExpr(str, obj);
 				break;
 			case T_CaseExpr:
 				_outCaseExpr(str, obj);

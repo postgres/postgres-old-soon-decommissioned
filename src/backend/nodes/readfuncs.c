@@ -576,6 +576,21 @@ _readRelabelType(void)
 }
 
 /*
+ * _readConvertRowtypeExpr
+ */
+static ConvertRowtypeExpr *
+_readConvertRowtypeExpr(void)
+{
+	READ_LOCALS(ConvertRowtypeExpr);
+
+	READ_NODE_FIELD(arg);
+	READ_OID_FIELD(resulttype);
+	READ_ENUM_FIELD(convertformat, CoercionForm);
+
+	READ_DONE();
+}
+
+/*
  * _readCaseExpr
  */
 static CaseExpr *
@@ -971,6 +986,8 @@ parseNodeString(void)
 		return_value = _readFieldStore();
 	else if (MATCH("RELABELTYPE", 11))
 		return_value = _readRelabelType();
+	else if (MATCH("CONVERTROWTYPEEXPR", 18))
+		return_value = _readConvertRowtypeExpr();
 	else if (MATCH("CASE", 4))
 		return_value = _readCaseExpr();
 	else if (MATCH("WHEN", 4))

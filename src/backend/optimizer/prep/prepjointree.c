@@ -839,6 +839,13 @@ find_nonnullable_rels(Node *node, bool top_level)
 
 		result = find_nonnullable_rels((Node *) expr->arg, top_level);
 	}
+	else if (IsA(node, ConvertRowtypeExpr))
+	{
+		/* not clear this is useful, but it can't hurt */
+		ConvertRowtypeExpr *expr = (ConvertRowtypeExpr *) node;
+
+		result = find_nonnullable_rels((Node *) expr->arg, top_level);
+	}
 	else if (IsA(node, NullTest))
 	{
 		NullTest   *expr = (NullTest *) node;

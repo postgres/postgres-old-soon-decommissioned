@@ -381,6 +381,24 @@ _equalRelabelType(RelabelType *a, RelabelType *b)
 }
 
 static bool
+_equalConvertRowtypeExpr(ConvertRowtypeExpr *a, ConvertRowtypeExpr *b)
+{
+	COMPARE_NODE_FIELD(arg);
+	COMPARE_SCALAR_FIELD(resulttype);
+
+	/*
+	 * Special-case COERCE_DONTCARE, so that planner can build coercion
+	 * nodes that are equal() to both explicit and implicit coercions.
+	 */
+	if (a->convertformat != b->convertformat &&
+		a->convertformat != COERCE_DONTCARE &&
+		b->convertformat != COERCE_DONTCARE)
+		return false;
+
+	return true;
+}
+
+static bool
 _equalCaseExpr(CaseExpr *a, CaseExpr *b)
 {
 	COMPARE_SCALAR_FIELD(casetype);
@@ -1843,6 +1861,9 @@ equal(void *a, void *b)
 			break;
 		case T_RelabelType:
 			retval = _equalRelabelType(a, b);
+			break;
+		case T_ConvertRowtypeExpr:
+			retval = _equalConvertRowtypeExpr(a, b);
 			break;
 		case T_CaseExpr:
 			retval = _equalCaseExpr(a, b);

@@ -877,6 +877,21 @@ _copyRelabelType(RelabelType *from)
 }
 
 /*
+ * _copyConvertRowtypeExpr
+ */
+static ConvertRowtypeExpr *
+_copyConvertRowtypeExpr(ConvertRowtypeExpr *from)
+{
+	ConvertRowtypeExpr *newnode = makeNode(ConvertRowtypeExpr);
+
+	COPY_NODE_FIELD(arg);
+	COPY_SCALAR_FIELD(resulttype);
+	COPY_SCALAR_FIELD(convertformat);
+
+	return newnode;
+}
+
+/*
  * _copyCaseExpr
  */
 static CaseExpr *
@@ -2695,6 +2710,9 @@ copyObject(void *from)
 			break;
 		case T_RelabelType:
 			retval = _copyRelabelType(from);
+			break;
+		case T_ConvertRowtypeExpr:
+			retval = _copyConvertRowtypeExpr(from);
 			break;
 		case T_CaseExpr:
 			retval = _copyCaseExpr(from);

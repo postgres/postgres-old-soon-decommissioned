@@ -4024,6 +4024,9 @@ exec_simple_check_node(Node *node)
 		case T_RelabelType:
 			return exec_simple_check_node((Node *) ((RelabelType *) node)->arg);
 
+		case T_ConvertRowtypeExpr:
+			return exec_simple_check_node((Node *) ((ConvertRowtypeExpr *) node)->arg);
+
 		case T_CaseExpr:
 			{
 				CaseExpr   *expr = (CaseExpr *) node;

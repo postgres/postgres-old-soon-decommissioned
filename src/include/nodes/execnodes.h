@@ -579,6 +579,23 @@ typedef struct FieldStoreState
 } FieldStoreState;
 
 /* ----------------
+ *		ConvertRowtypeExprState node
+ * ----------------
+ */
+typedef struct ConvertRowtypeExprState
+{
+	ExprState	xprstate;
+	ExprState  *arg;			/* input tuple value */
+	TupleDesc	indesc;			/* tupdesc for source rowtype */
+	TupleDesc	outdesc;		/* tupdesc for result rowtype */
+	AttrNumber *attrMap;		/* indexes of input fields, or 0 for null */
+	Datum	   *invalues;		/* workspace for deconstructing source */
+	char	   *innulls;
+	Datum	   *outvalues;		/* workspace for constructing result */
+	char	   *outnulls;
+} ConvertRowtypeExprState;
+
+/* ----------------
  *		CaseExprState node
  * ----------------
  */
