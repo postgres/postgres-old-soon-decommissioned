@@ -146,7 +146,7 @@ static int	tas(slock_t *lock);
 
 #define	S_LOCK(lock)	do \
 						{ \
-							while (cs((int *) (lock), 0, 1)) \ 
+							while (cs((int *) (lock), 0, 1)) \
 								; \
 						} while (0)
 
@@ -381,7 +381,7 @@ success:		\n\
 	");
 }
 
-#define	S_LOCK(lock)	do \ 
+#define	S_LOCK(lock)	do \
 						{ \
 							while (tas(lock)) \
 								; \
