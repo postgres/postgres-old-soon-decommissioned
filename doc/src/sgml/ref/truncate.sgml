@@ -84,12 +84,6 @@ TRUNCATE TABLE
    <command>DELETE</command> but since it does not actually scan the
    table it is faster. This is most useful on large tables.
   </para>
-
-  <para>
-   <command>TRUNCATE</command> cannot be executed inside a transaction
-   block (<command>BEGIN</>/<command>COMMIT</> pair), because there is
-   no way to roll it back.
-  </para>
  </refsect1>
 
  <refsect1 id="R1-SQL-TRUNCATE-2">
