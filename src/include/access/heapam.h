@@ -192,6 +192,8 @@ extern HeapTuple heap_formtuple(TupleDesc tupleDescriptor,
 			   Datum *value, char *nulls);
 extern HeapTuple heap_modifytuple(HeapTuple tuple,
 		Relation relation, Datum *replValue, char *replNull, char *repl);
+extern void heap_deformtuple(HeapTuple tuple, TupleDesc tupleDesc,
+							 Datum *values, char *nulls);
 extern void heap_freetuple(HeapTuple tuple);
 extern HeapTuple heap_addheader(int natts, bool withoid, Size structlen, void *structure);
 
