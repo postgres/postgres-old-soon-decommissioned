@@ -130,7 +130,7 @@ S_LOCK_FREE(slock_t *lock)
  * (see storage/ipc.h).
  */
 
-#if defined(__alpha__)
+#if defined(__alpha__) || defined(__alpha)
 
 void
 S_LOCK(slock_t *lock)
