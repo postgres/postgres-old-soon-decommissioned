@@ -114,7 +114,10 @@ ALTER TABLE <replaceable class="PARAMETER">name</replaceable>
       sets the per-column statistics-gathering target for subsequent
       <xref linkend="sql-analyze" endterm="sql-analyze-title"> operations.
       The target can be set in the range 0 to 1000; alternatively, set it
-      to -1 to revert to using the system default statistics target.
+      to -1 to revert to using the system default statistics
+      target. For more information on the use of statistics by the
+      <productname>PostgreSQL</productname> query planner, refer to
+      <xref linkend="planner-stats">.
      </para>
     </listitem>
    </varlistentry>

@@ -151,7 +151,10 @@ and <replaceable class="PARAMETER">table_constraint</replaceable> is:
     <term><replaceable class="PARAMETER">data_type</replaceable></term>
     <listitem>
      <para>
-      The data type of the column. This may include array specifiers.
+      The data type of the column. This may include array
+      specifiers. For more information on the data types included with
+      <productname>PostgreSQL</productname>, refer to <xref
+      linkend="datatype">.
      </para>
     </listitem>
    </varlistentry>
