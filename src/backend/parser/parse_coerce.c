@@ -333,7 +333,6 @@ TypeCategory(Oid inType)
 		case (BPCHAROID):
 		case (VARCHAROID):
 		case (TEXTOID):
-		case (LZTEXTOID):
 			result = STRING_TYPE;
 			break;
 

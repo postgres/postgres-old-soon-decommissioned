@@ -38,8 +38,9 @@ CATALOG(pg_rewrite)
 	Oid			ev_class;
 	int2		ev_attr;
 	bool		is_instead;
-	lztext		ev_qual;
-	lztext		ev_action;
+	/* NB: remaining fields must be accessed via heap_getattr */
+	text		ev_qual;
+	text		ev_action;
 } FormData_pg_rewrite;
 
 /* ----------------

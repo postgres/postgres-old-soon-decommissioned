@@ -18,7 +18,6 @@
 #include "storage/itemptr.h"
 #include "utils/inet.h"
 #include "utils/numeric.h"
-#include "utils/lztext.h"
 
 /*
  *		Defined in adt/
@@ -561,21 +560,6 @@ extern Datum numeric_stddev(PG_FUNCTION_ARGS);
 extern Datum int2_sum(PG_FUNCTION_ARGS);
 extern Datum int4_sum(PG_FUNCTION_ARGS);
 extern Datum int8_sum(PG_FUNCTION_ARGS);
-
-/* lztext.c */
-extern lztext  *lztextin(char *str);
-extern char	   *lztextout(lztext *lz);
-extern text	   *lztext_text(lztext *lz);
-extern Datum	text_lztext(PG_FUNCTION_ARGS);
-extern int32	lztextlen(lztext *lz);
-extern int32	lztextoctetlen(lztext *lz);
-extern int32	lztext_cmp(lztext *lz1, lztext *lz2);
-extern bool		lztext_eq(lztext *lz1, lztext *lz2);
-extern bool		lztext_ne(lztext *lz1, lztext *lz2);
-extern bool		lztext_gt(lztext *lz1, lztext *lz2);
-extern bool		lztext_ge(lztext *lz1, lztext *lz2);
-extern bool		lztext_lt(lztext *lz1, lztext *lz2);
-extern bool		lztext_le(lztext *lz1, lztext *lz2);
 
 /* ri_triggers.c */
 extern Datum RI_FKey_check_ins(PG_FUNCTION_ARGS);

@@ -65,8 +65,8 @@ InsertRule(char *rulname,
 	values[i++] = ObjectIdGetDatum(eventrel_oid);
 	values[i++] = Int16GetDatum(evslot_index);
 	values[i++] = BoolGetDatum(evinstead);
-	values[i++] = PointerGetDatum(lztextin(evqual));
-	values[i++] = PointerGetDatum(lztextin(actiontree));
+	values[i++] = DirectFunctionCall1(textin, CStringGetDatum(evqual));
+	values[i++] = DirectFunctionCall1(textin, CStringGetDatum(actiontree));
 
 	/* ----------------
 	 *	create a new pg_rewrite tuple
