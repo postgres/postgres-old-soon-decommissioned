@@ -1649,7 +1649,12 @@ do_edit(const char *filename_arg, PQExpBuffer query_buf)
 			}
 
 #ifdef USE_READLINE
+#ifdef HAVE_REPLACE_HISTORY_ENTRY
+
 			replace_history_entry(where_history(),query_buf->data,NULL);
+#else
+			add_history(query_buf->data);
+#endif
 #endif
 			fclose(stream);
 		}

@@ -18,11 +18,15 @@
 #define USE_READLINE 1
 #if defined(HAVE_READLINE_READLINE_H)
 #include <readline/readline.h>
+#elif defined(HAVE_EDITLINE_READLINE_H)
+#include <editline/readline.h>
 #elif defined(HAVE_READLINE_H)
 #include <readline.h>
 #endif
 #if defined(HAVE_READLINE_HISTORY_H)
 #include <readline/history.h>
+#elif defined(HAVE_EDITLINE_HISTORY_H)
+#include <editline/history.h>
 #elif defined(HAVE_HISTORY_H)
 #include <history.h>
 #endif
