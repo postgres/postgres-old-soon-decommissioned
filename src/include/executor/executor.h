@@ -201,6 +201,7 @@ extern EState *CreateExecutorState(void);
 extern void FreeExecutorState(EState *estate);
 extern ExprContext *CreateExprContext(EState *estate);
 extern void FreeExprContext(ExprContext *econtext);
+extern void ReScanExprContext(ExprContext *econtext);
 
 #define ResetExprContext(econtext) \
 	MemoryContextReset((econtext)->ecxt_per_tuple_memory)
