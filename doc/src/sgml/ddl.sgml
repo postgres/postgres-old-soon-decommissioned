@@ -987,6 +987,15 @@ DROP TABLE products CASCADE;
     the defaults might be different.
    </para>
   </note>
+
+  <note>
+   <para>
+    Foreign Key constraint dependencies and SERIAL dependencies from
+    <productname>PostgreSQL</productname> versions prior to 7.3 are
+    <emphasis>not</emphasis> maintained or created during the upgrade
+    process.  However, all other dependency types are created successfully.
+   </para>
+  </note>
  </sect1>
 
 </chapter>
