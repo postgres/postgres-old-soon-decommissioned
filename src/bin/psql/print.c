@@ -1017,8 +1017,9 @@ printTable(const char *title,
 			lines = (col_count + 1) * row_count;
 		else
 			lines = row_count + 1;
-		if (!opt->tuples_only)
-			lines += 5;
+		if (footers && !opt->tuples_only)
+			for (ptr = footers; *ptr; ptr++)
+				lines++;
 
 		result = ioctl(fileno(stdout), TIOCGWINSZ, &screen_size);
 		if (result == -1 || lines > screen_size.ws_row)
