@@ -1322,7 +1322,7 @@ PostgreSQL documentation
        <entry><type>text</type></entry>
 
        <entry>
-       Convert text to <acronym>ASCII</acronym> from other encoding
+       Convert <parameter>text</parameter> to <acronym>ASCII</acronym> from another encoding
        <footnote>
         <para>
          The <function>to_ascii</function> function supports conversion from
