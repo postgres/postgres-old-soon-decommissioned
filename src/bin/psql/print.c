@@ -251,11 +251,18 @@ print_aligned_text(const char *title, const char *const * headers,
 	for (ptr = cells; *ptr; ptr++)
 		cell_count++;
 
-	cell_w = calloc(cell_count, sizeof(*cell_w));
-	if (!cell_w)
+	if (cell_count > 0)
 	{
-		perror("calloc");
-		exit(EXIT_FAILURE);
+		cell_w = calloc(cell_count, sizeof(*cell_w));
+		if (!cell_w)
+		{
+			perror("calloc");
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		cell_w = 0;
 	}
 #endif
 
@@ -462,11 +469,18 @@ print_aligned_vertical(const char *title, const char *const * headers,
 	for (ptr = cells; *ptr; ptr++)
 		cell_count++;
 
-	cell_w = calloc(cell_count, sizeof(*cell_w));
-	if (!cell_w)
+	if (cell_count > 0)
 	{
-		perror("calloc");
-		exit(EXIT_FAILURE);
+		cell_w = calloc(cell_count, sizeof(*cell_w));
+		if (!cell_w)
+		{
+			perror("calloc");
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		cell_w = 0;
 	}
 
 	/* find longest data cell */
