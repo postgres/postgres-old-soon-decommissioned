@@ -53,7 +53,7 @@ endif # win
 
 
 # Parallel make trickery
-$(OBJS): $(DIRS:%=%-recursive)
+$(OBJS): $(DIRS:%=%-recursive) ;
 
 .PHONY: $(DIRS:%=%-recursive)
 # Update the commonly used headers before building the subdirectories

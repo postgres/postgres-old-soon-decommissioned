@@ -20,7 +20,7 @@ all: SUBSYS.o fmgroids.h
 SUBSYS.o: fmgrtab.o $(SUBDIROBJS)
 	$(LD) $(LDREL) $(LDOUT) $@ $^
 
-$(SUBDIROBJS): $(SUBDIRS:%=%-recursive)
+$(SUBDIROBJS): $(SUBDIRS:%=%-recursive) ;
 
 .PHONY: $(SUBDIRS:%=%-recursive)
 $(SUBDIRS:%=%-recursive): fmgroids.h
