@@ -66,7 +66,7 @@
 /* XXX these should appear in other modules' header files */
 extern bool Log_connections;
 extern bool Log_disconnections;
-extern bool check_function_bodies;
+extern DLLIMPORT bool check_function_bodies;
 extern int	PreAuthDelay;
 extern int	AuthenticationTimeout;
 extern int	CheckPointTimeout;

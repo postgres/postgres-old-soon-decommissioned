@@ -45,7 +45,7 @@
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
 
-extern bool check_function_bodies;
+extern DLLIMPORT bool check_function_bodies;
 
 static int	plpgsql_firstcall = 1;
 
