@@ -250,7 +250,7 @@ PGSharedMemoryCreate(uint32 size, bool makePrivate, int port)
 
 #ifdef EXEC_BACKEND
 	/* If Exec case, just attach and return the pointer */
-	if (UsedShmemSegAddr != NULL && !makePrivate)
+	if (UsedShmemSegAddr != NULL && !makePrivate && IsUnderPostmaster)
 	{
 		void* origUsedShmemSegAddr = UsedShmemSegAddr;
 

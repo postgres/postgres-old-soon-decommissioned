@@ -485,11 +485,10 @@ pgstat_forkexec(STATS_PROCESS_TYPE procType)
 	snprintf(pgstatBuf[bufc++],MAXPGPATH,"%d",MaxBackends);
 
 	/* + the pstat file names, and postgres pathname */
-	/* FIXME: [fork/exec] whitespaces in directories? */
-	snprintf(pgstatBuf[bufc++],MAXPGPATH,"%s",pgStat_tmpfname);
-	snprintf(pgstatBuf[bufc++],MAXPGPATH,"%s",pgStat_fname);
-	snprintf(pgstatBuf[bufc++],MAXPGPATH,"%s",pg_pathname);
-	snprintf(pgstatBuf[bufc++],MAXPGPATH,"%s",DataDir);
+	snprintf(pgstatBuf[bufc++],MAXPGPATH,"\"%s\"",pgStat_tmpfname);
+	snprintf(pgstatBuf[bufc++],MAXPGPATH,"\"%s\"",pgStat_fname);
+	snprintf(pgstatBuf[bufc++],MAXPGPATH,"\"%s\"",pg_pathname);
+	snprintf(pgstatBuf[bufc++],MAXPGPATH,"\"%s\"",DataDir);
 
 	/* Add to the arg list */
 	Assert(bufc <= lengthof(pgstatBuf));
