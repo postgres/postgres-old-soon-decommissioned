@@ -767,20 +767,20 @@ do_status(void)
 	pid = get_pgpid();
 	if (pid == 0)				/* no pid file */
 	{
-		write_stderr(_("%s: neither postmaster nor postgres running\n"), progname);
+		printf(_("%s: neither postmaster nor postgres running\n"), progname);
 		exit(1);
 	}
 	else if (pid < 0)			/* standalone backend */
 	{
 		pid = -pid;
-		fprintf(stdout, _("%s: a standalone backend \"postgres\" is running (PID: %ld)\n"), progname, pid);
+		printf(_("%s: a standalone backend \"postgres\" is running (PID: %ld)\n"), progname, pid);
 	}
 	else
 	/* postmaster */
 	{
 		char	  **optlines;
 
-		fprintf(stdout, _("%s: postmaster is running (PID: %ld)\n"), progname, pid);
+		printf(_("%s: postmaster is running (PID: %ld)\n"), progname, pid);
 
 		optlines = readfile(postopts_file);
 		if (optlines != NULL)
