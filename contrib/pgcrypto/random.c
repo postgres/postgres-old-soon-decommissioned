@@ -35,7 +35,7 @@
 #include "px.h"
 
 
-#ifdef RAND_DEV
+#if defined(RAND_DEV)
 
 #include <errno.h>
 #include <fcntl.h>
@@ -77,9 +77,8 @@ px_get_random_bytes(uint8 *dst, unsigned count)
 	close(fd);
 	return res;
 }
-#endif   /* RAND_DEV */
 
-#ifdef RAND_SILLY
+#elif defined(RAND_SILLY)
 
 int
 px_get_random_bytes(uint8 *dst, unsigned count)
@@ -90,9 +89,8 @@ px_get_random_bytes(uint8 *dst, unsigned count)
 		*dst++ = random();
 	return i;
 }
-#endif   /* RAND_SILLY */
 
-#ifdef RAND_OPENSSL
+#elif defined(RAND_OPENSSL)
 
 #include <openssl/evp.h>
 #include <openssl/blowfish.h>
@@ -125,4 +123,6 @@ px_get_random_bytes(uint8 *dst, unsigned count)
 	return -1;
 }
 
-#endif   /* RAND_OPENSSL */
+#else
+#error "Invalid random source"
+#endif
