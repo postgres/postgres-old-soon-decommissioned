@@ -129,6 +129,7 @@ typedef struct _tableInfo
 	int		   *atttypmod;		/* type-specific type modifiers */
 	int		   *attstattarget;	/* attribute statistics targets */
 	bool	   *attisdropped;	/* true if attr is dropped; don't dump it */
+	bool	   *attislocal;		/* true if attr has local definition */
 	bool	   *attisserial;	/* true if attr is serial or bigserial */
 
 	/*
