@@ -38,13 +38,6 @@
 #undef _XOPEN_SOURCE
 #endif /* DISABLE_XOPEN_NLS */
 
-#ifndef WIN32
-
-#include <sys/types.h>
-#include <regex.h>
-
-#endif /* WIN32 why is this necessary? */
-
 /* this is the number of cached regular expressions held. */
 #ifndef MAX_CACHED_RES
 #define MAX_CACHED_RES	32
