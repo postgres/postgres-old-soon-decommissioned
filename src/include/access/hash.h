@@ -265,7 +265,7 @@ extern Datum hashoidvector(PG_FUNCTION_ARGS);
 extern Datum hashint2vector(PG_FUNCTION_ARGS);
 extern Datum hashname(PG_FUNCTION_ARGS);
 extern Datum hashvarlena(PG_FUNCTION_ARGS);
-extern Datum hash_any(char *keydata, int keylen);
+extern Datum hash_any(const char *keydata, int keylen);
 
 
 /* private routines */

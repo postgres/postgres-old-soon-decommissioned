@@ -95,7 +95,7 @@ hashname(PG_FUNCTION_ARGS)
 {
 	char	   *key = NameStr(*PG_GETARG_NAME(0));
 
-	return hash_any((char *) key, NAMEDATALEN);
+	return hash_any(key, strlen(key));
 }
 
 /*
@@ -125,7 +125,7 @@ hashvarlena(PG_FUNCTION_ARGS)
  *
  * (Comment from the original db3 hashing code: )
  *
- * "This is INCREDIBLY ugly, but fast.  We break the string up into 8 byte
+ * This is INCREDIBLY ugly, but fast.  We break the string up into 8 byte
  * units.  On the first time through the loop we get the 'leftover bytes'
  * (strlen % 8).  On every later iteration, we perform 8 HASHC's so we handle
  * all 8 bytes.  Essentially, this saves us 7 cmp & branch instructions.  If
@@ -134,7 +134,7 @@ hashvarlena(PG_FUNCTION_ARGS)
  * "OZ's original sdbm hash"
  */
 Datum
-hash_any(char *keydata, int keylen)
+hash_any(const char *keydata, int keylen)
 {
 	uint32		n;
 	int			loop;
