@@ -23,13 +23,13 @@ PostgreSQL documentation
   <cmdsynopsis>
    <command>vacuumdb</command>
    <arg rep="repeat"><replaceable>connection-options</replaceable></arg>
-   <arg><arg>-d</arg> <replaceable>dbname</replaceable></arg>
    <group><arg>--full</arg><arg>-f</arg></group>
    <group><arg>--verbose</arg><arg>-v</arg></group>
    <group><arg>--analyze</arg><arg>-z</arg></group>
-   <arg>--table '<replaceable>table</replaceable>
+   <arg>--table | -t '<replaceable>table</replaceable>
     <arg>( <replaceable class="parameter">column</replaceable> [,...] )</arg>'
    </arg>
+   <arg><replaceable>dbname</replaceable></arg>
    <sbr>
    <command>vacuumdb</command>
    <arg rep="repeat"><replaceable>connection-options</replaceable></arg>

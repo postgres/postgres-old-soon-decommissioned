@@ -116,6 +116,11 @@ do
 			fi
 		else	dbname="$1"
 		fi
+		if [ "$#" -ne 1 ]; then
+			echo "$CMDNAME: invalid option: $2" 1>&2
+	                echo "Try '$CMDNAME --help' for more information." 1>&2
+			exit 1
+		fi
                 ;;
     esac
     shift
