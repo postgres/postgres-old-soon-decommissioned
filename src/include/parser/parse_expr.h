@@ -23,5 +23,6 @@
 extern Node *transformExpr(ParseState *pstate, Node *expr, int precedence);
 extern Oid	exprType(Node *expr);
 extern int32 exprTypmod(Node *expr);
+extern bool exprIsLengthCoercion(Node *expr, int32 *coercedTypmod);
 
 #endif	 /* PARSE_EXPR_H */
