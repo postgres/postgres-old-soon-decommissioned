@@ -565,6 +565,7 @@ ident(const struct in_addr remote_ip_addr, const struct in_addr local_ip_addr,
 	else
 	{
 		struct sockaddr_in ident_server;
+		struct sockaddr_in la;
 
 		/*
 		 * Socket address of Ident server on the system from which client
@@ -573,8 +574,22 @@ ident(const struct in_addr remote_ip_addr, const struct in_addr local_ip_addr,
 		ident_server.sin_family = AF_INET;
 		ident_server.sin_port = htons(IDENT_PORT);
 		ident_server.sin_addr = remote_ip_addr;
-		rc = connect(sock_fd,
-			   (struct sockaddr *) & ident_server, sizeof(ident_server));
+
+		/*
+		 * Bind to the address which the client originally contacted,
+		 * otherwise the ident server won't be able to match up the
+		 * right connection. This is necessary if the PostgreSQL
+		 * server is running on an IP alias.
+		 */
+		memset(&la, 0, sizeof(la));
+		la.sin_family = AF_INET;
+		la.sin_addr = local_ip_addr;
+		rc = bind(sock_fd, (struct sockaddr *) &la, sizeof(la));
+		if (rc == 0)
+		{
+			rc = connect(sock_fd,
+				     (struct sockaddr *) & ident_server, sizeof(ident_server));
+		}
 		if (rc != 0)
 		{
 			sprintf(PQerrormsg,
