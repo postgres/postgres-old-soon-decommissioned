@@ -22,7 +22,7 @@
 
 typedef struct IndexTupleData
 {
-	ItemPointerData t_tid;		/* reference TID to base tuple */
+	ItemPointerData t_tid;		/* reference TID to heap tuple */
 
 	/*
 	 * t_info is layed out in the following fashion:

@@ -23,7 +23,7 @@
 #include "access/xlog.h"
 
 /*
- * a postgres disk page is an abstraction layered on top of a postgres
+ * A postgres disk page is an abstraction layered on top of a postgres
  * disk block (which is simply a unit of i/o, see block.h).
  *
  * specifically, while a disk block can be unformatted, a postgres
