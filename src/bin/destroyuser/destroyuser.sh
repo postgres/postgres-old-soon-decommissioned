@@ -79,9 +79,10 @@ then
     exit 1
 fi
 
-if [ $ADDUSER != "t" ]
+if [ x$ADDUSER != xt ]
 then
     echo "$CMDNAME: $USER cannot delete users."
+    exit 1
 fi
 
 #
@@ -152,7 +153,7 @@ then
 #
 
     yn=f
-    while [ $yn != y -a $yn != n ]
+    while [ "$yn" != y -a "$yn" != n ]
     do
         echo PG_OPT_DASH_N_PARAM "Deleting user $DELUSER will destroy them. Continue (y/n)? PG_OPT_BACKSLASH_C_PARAM"
         read yn
