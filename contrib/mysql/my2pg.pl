@@ -35,20 +35,24 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #
-# $My2pg: my2pg.pl,v 1.24 2001/12/06 19:32:20 fonin Exp $
+# $My2pg: my2pg.pl,v 1.27 2001/12/06 19:32:20 fonin Exp $
 # $Id$
-
-# TODO:
-# + Handle SETs
-#   - LIKE implementation
-#   - memory use optimisation in SET_output function
-#   - raw integer values as input values must be OK
-# - Use autoconf & automake to auto-build makefiles
 
 #
 # $Log: my2pg.pl,v $
-# Revision 1.8  2002/04/24 01:42:29  momjian
-# Update to my2pg 1.24.
+# Revision 1.27  2002/07/16 14:54:07  fonin
+# Bugfix - didn't quote the fields inside PRIMARY KEY with -d option.
+# Fix by Milan P. Stanic <mps@rns-nis.co.yu>.
+#
+# Revision 1.26  2002/07/14 10:30:27  fonin
+# Bugfix - MySQL keywords inside data (INSERT INTO sentence) were replaced
+# with Postgres keywords and therefore messed up the data.
+#
+# Revision 1.25  2002/07/05 09:20:25  fonin
+# - fixed data that contains two consecutive timestamps - thanks to
+#   Ben Darnell <bdarnell@google.com>
+# - word 'default' was converted to upper case inside the data - fixed.
+#   Thanks to Madsen Wikholm <madsen@iki.fi>
 #
 # Revision 1.24  2002/04/20 14:15:43  fonin
 # Patch by Felipe Nievinski <fnievinski@terra.com.br>.
@@ -171,7 +175,7 @@ if($opts{d} ne '') {
 $|=1;
 
 print("------------------------------------------------------------------");
-print("\n-- My2Pg 1.24 translated dump");
+print("\n-- My2Pg 1.27 translated dump");
 print("\n--");
 print("\n------------------------------------------------------------------");
 
@@ -193,7 +197,7 @@ $libtypename.='/libtypes.so';
 # push header to libtypes.c
 open(LIBTYPES,">$libtypesource");
 print LIBTYPES "/******************************************************";
-print LIBTYPES "\n * My2Pg \$Revision: 1.9 $ \translated dump";
+print LIBTYPES "\n * My2Pg 1.27 \translated dump";
 print LIBTYPES "\n * User types definitions";
 print LIBTYPES "\n ******************************************************/";
 print LIBTYPES "\n\n#include <postgres.h>\n";
@@ -205,7 +209,7 @@ while (<>) {
 
 	if(!$tabledef && /^CREATE TABLE \S+/i){
 		$tabledef=1;
-	}elsif($tabledef && /^\);/i){ # /^\w/i
+	} elsif($tabledef && /^\) type=\w*;/i){ # /^\w/i
 		$tabledef=0;
 	}
 	
@@ -247,7 +251,9 @@ while (<>) {
 
 # small hack - convert "default" to uppercase, because below we 
 # enclose all lowercase words in double quotes
-    s/default/DEFAULT/;
+    if(!/^INSERT/) {
+	s/default/DEFAULT/;
+    }
 
 # Change all AUTO_INCREMENT fields to SERIAL ones with a pre-defined sequence
     if(/([\w\d]+)\sint.*auto_increment/i) {
@@ -308,11 +314,11 @@ int2* $typename"."_in (char *str) {
 	print LIBTYPES "\n * Types for table ".uc($table_name);
 	print LIBTYPES "\n */\n";
 
-	$types.="\nCREATE FUNCTION $typename"."_in (cstring)
+	$types.="\nCREATE FUNCTION $typename"."_in (opaque)
 	RETURNS $typename
 	AS '$libtypename'
 	LANGUAGE 'c'
-	WITH (ISSTRICT, ISCACHABLE);\n";
+	WITH (ISCACHABLE);\n";
 
 # creating output function
 	my $func_out="
@@ -362,11 +368,11 @@ bool $typename"."_ge(int2* a, int2* b) {
     return (*a>=*b);
 }\n";
 
-	$types.="\nCREATE FUNCTION $typename"."_out ($typename)
-	RETURNS cstring
+	$types.="\nCREATE FUNCTION $typename"."_out (opaque)
+	RETURNS opaque
 	AS '$libtypename'
 	LANGUAGE 'c'
-	WITH (ISSTRICT, ISCACHABLE);\n";
+	WITH (ISCACHABLE);\n";
 
 	$types.="\nCREATE TYPE $typename (
 	internallength = 2,
@@ -509,7 +515,7 @@ $typesize* $typename"."_in (char *str) {
 	print LIBTYPES "\n * Types for table ".uc($table_name);
 	print LIBTYPES "\n */\n";
 
-	$types.="\nCREATE FUNCTION $typename"."_in (cstring)
+	$types.="\nCREATE FUNCTION $typename"."_in (opaque)
 	RETURNS $typename
 	AS '$libtypename'
 	LANGUAGE 'c';\n";
@@ -561,8 +567,8 @@ $typesize find_in_set($typesize *a, $typesize *b) {
 
 \n";
 
-	$types.="\nCREATE FUNCTION $typename"."_out ($typename)
-	RETURNS cstring
+	$types.="\nCREATE FUNCTION $typename"."_out (opaque)
+	RETURNS opaque
 	AS '$libtypename'
 	LANGUAGE 'c';\n";
 
@@ -645,11 +651,11 @@ CREATE OPERATOR <> (
     }
 
 # output CHECK constraints instead UNSIGNED modifiers
-    if(/PRIMARY KEY \((.*)\)/i) {
+    if(/PRIMARY KEY\s+\((.*)\)/i) {
 	my $tmpfld=$1;
 	$tmpfld=~s/,/","/g if $dq;
 	$tmpfld=~s/ //g;
-	s/PRIMARY KEY (\(.*\))/PRIMARY KEY \($dq$tmpfld$dq\)/i;
+	s/PRIMARY KEY\s+(\(.*\))/PRIMARY KEY \($dq$tmpfld$dq\)/i;
 	s/(PRIMARY KEY \(.*\)).*/$1$check\n/i;
     }
     
@@ -679,9 +685,9 @@ CREATE OPERATOR <> (
 # Fix timestamps
     s/'0000-00-00/'0001-01-01/g;
 # may work wrong !!!
-    s/([,(])00000000000000([,)])/$1'00010101 000000'$2/g;
-    s/([,(])(\d{8})(\d{6})([,)])/$1'$2 $3'$4/g;
-    s/([,(])(\d{4})(\d{2})(\d{2})([,)])/$1'$2-$3-$4 00:00:00'$5/g;
+    s/([,(])00000000000000(?=[,)])/$1'00010101 000000'/g;
+    s/([,(])(\d{8})(\d{6})(?=[,)])/$1'$2 $3'/g;
+    s/([,(])(\d{4})(\d{2})(\d{2})(?=[,)])/$1'$2-$3-$4 00:00:00'/g;
 #<Hackzone> ---------------------------------------------------
 #</Hackzone> --------------------------------------------------
     $dump.=$_;
@@ -725,7 +731,7 @@ close(LIBTYPES);
 
 open(MAKE,">Makefile");
 print MAKE "#
-# My2Pg \$Revision: 1.9 $ \translated dump
+# My2Pg \$Revision: 1.10 $ \translated dump
 # Makefile
 #
 
