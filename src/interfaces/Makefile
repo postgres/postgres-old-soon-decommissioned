@@ -25,4 +25,7 @@ ifeq ($(USE_TCL), true)
 	$(MAKE) -C libpgtcl $@
 endif
 
-#	$(MAKE) -C perl5 $@
+ifeq ($(USE_PERL), true)
+      cd perl5 && perl Makefile.PL
+      $(MAKE) -C perl5 $@
+endif
