@@ -1370,8 +1370,10 @@ gistchoose(Relation r, Page p, IndexTuple it,	/* it has compressed entry */
 	for (i = FirstOffsetNumber; i <= maxoff && sum_grow; i = OffsetNumberNext(i))
 	{
 		sum_grow=0;
-		for( j=0; j<r->rd_att->natts; j++ ) {
-			datum = index_getattr( (IndexTuple)PageGetItem(p, PageGetItemId(p, i)), j+1, r->rd_att, &IsNull);
+		for (j=0; j<r->rd_att->natts; j++) {
+			IndexTuple itup = (IndexTuple) PageGetItem(p, PageGetItemId(p, i));
+
+			datum = index_getattr(itup, j+1, r->rd_att, &IsNull);
 			gistdentryinit(giststate, j, &entry, datum, r, p, i, ATTSIZE( datum, r, j+1, IsNull ), FALSE);
 			FunctionCall3(&giststate->penaltyFn[j],
 						  PointerGetDatum(&entry),
