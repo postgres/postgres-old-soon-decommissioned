@@ -559,7 +559,6 @@ CommentRule(List *qualname, char *comment)
 	}
 
 	/* Check object security */
-
 	aclcheck = pg_class_aclcheck(reloid, GetUserId(), ACL_RULE);
 	if (aclcheck != ACLCHECK_OK)
 		aclcheck_error(aclcheck, rulename);
@@ -568,8 +567,9 @@ CommentRule(List *qualname, char *comment)
 	classoid = get_system_catalog_relid(RewriteRelationName);
 
 	/* Call CreateComments() to create/drop the comments */
-
 	CreateComments(ruleoid, classoid, 0, comment);
+
+	heap_close(relation, NoLock);
 }
 
 /*
