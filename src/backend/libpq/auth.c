@@ -71,6 +71,7 @@
 #include <libpq/libpq-be.h>
 #include <libpq/hba.h>
 #include <libpq/password.h>
+#include <libpq/crypt.h>
 
 static int	be_getauthsvc(MsgType msgtype);
 
@@ -122,7 +123,8 @@ static struct authsvc authsvcs[] = {
 #else
 	{"kerberos", STARTUP_KRB4_MSG, 1},
 #endif
-	{"password", STARTUP_PASSWORD_MSG, 1}
+	{"password", STARTUP_PASSWORD_MSG, 1},
+	{"crypt", STARTUP_CRYPT_MSG, 1}
 };
 
 static n_authsvcs = sizeof(authsvcs) / sizeof(struct authsvc);
@@ -445,6 +447,28 @@ pg_password_recvauth(Port *port, char *database, char *DataDir)
 	return verify_password(user, password, port, database, DataDir);
 }
 
+static int
+crypt_recvauth(Port *port)
+{
+      PacketBuf       buf;
+      char       *user,
+                         *password;
+
+      if (PacketReceive(port, &buf, BLOCKING) != STATUS_OK)
+      {
+              sprintf(PQerrormsg,
+                              "crypt_recvauth: failed to receive authentication packet.\n");
+              fputs(PQerrormsg, stderr);
+              pqdebug("%s", PQerrormsg);
+              return STATUS_ERROR;
+      }
+
+      user = buf.data;
+      password = buf.data + strlen(user) + 1;
+
+      return crypt_verify(port, user, password);
+}
+
 /*
  * be_recvauth -- server demux routine for incoming authentication information
  */
@@ -571,6 +595,10 @@ be_recvauth(MsgType msgtype_arg, Port *port, char *username, StartupInfo *sp)
 				return (STATUS_ERROR);
 			}
 			break;
+		case STARTUP_CRYPT_MSG:
+			if (crypt_recvauth(port) != STATUS_OK)
+                          return STATUS_ERROR;
+                        break;
 		default:
 			sprintf(PQerrormsg,
 					"be_recvauth: unrecognized message type: %d\n",

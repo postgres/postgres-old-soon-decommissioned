@@ -19,7 +19,7 @@ CFLAGS+=$(INCLUDE_OPT)
 
 OBJS = async.o creatinh.o command.o copy.o defind.o define.o \
        remove.o rename.o vacuum.o version.o view.o cluster.o \
-       recipe.o explain.o sequence.o trigger.o proclang.o dbcommands.o
+       recipe.o explain.o sequence.o trigger.o user.o proclang.o dbcommands.o
 
 all: SUBSYS.o
 

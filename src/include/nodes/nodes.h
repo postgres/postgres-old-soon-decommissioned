@@ -186,6 +186,9 @@ typedef enum NodeTag
 	T_DropTrigStmt,
 	T_CreatePLangStmt,
 	T_DropPLangStmt,
+	T_CreateUserStmt,
+	T_AlterUserStmt,
+	T_DropUserStmt,
 
 	T_A_Expr = 700,
 	T_Attr,

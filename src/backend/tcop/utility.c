@@ -721,6 +721,32 @@ ProcessUtility(Node * parsetree,
 			DropProceduralLanguage((DropPLangStmt *) parsetree);
 			break;
 
+                      /*
+                       * ******************************** USER statements ****
+                       *
+                       */
+                case T_CreateUserStmt:
+                        commandTag = "CREATE USER";
+                        CHECK_IF_ABORTED();
+
+                        DefineUser((CreateUserStmt*)parsetree);
+                        break;
+
+                case T_AlterUserStmt:
+                        commandTag = "ALTER USER";
+                        CHECK_IF_ABORTED();
+
+                        AlterUser((AlterUserStmt*)parsetree);
+                        break;
+
+                case T_DropUserStmt:
+                        commandTag = "DROP USER";
+                        CHECK_IF_ABORTED();
+
+                        RemoveUser(((DropUserStmt*)parsetree)->user);
+                        break;
+
+
 			/*
 			 * ******************************** default ********************************
 			 *

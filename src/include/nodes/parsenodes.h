@@ -198,6 +198,30 @@ typedef struct DropPLangStmt
 
 
 /* ----------------------
+ *              Create/Alter/Drop User Statements
+ * ----------------------
+ */
+typedef struct CreateUserStmt
+{
+        NodeTag         type;
+        char*           user;           /* PostgreSQL user login              */
+        char*           password;       /* PostgreSQL user password           */
+        bool*           createdb;       /* Can the user create databases?     */
+        bool*           createuser;     /* Can this user create users?        */
+        List*           groupElts;      /* The groups the user is a member of */
+        char*           validUntil;     /* The time the login is valid until  */
+} CreateUserStmt;
+
+typedef CreateUserStmt        AlterUserStmt;
+
+typedef struct DropUserStmt
+{
+        NodeTag         type;
+        char*           user;           /* PostgreSQL user login              */
+} DropUserStmt;
+
+
+/* ----------------------
  *		Create SEQUENCE Statement
  * ----------------------
  */

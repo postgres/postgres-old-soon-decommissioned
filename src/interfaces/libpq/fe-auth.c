@@ -511,6 +511,7 @@ fe_sendauth(MsgType msgtype, Port *port, const char *hostname,
 		case STARTUP_MSG:
 			break;
 		case STARTUP_PASSWORD_MSG:
+		case STARTUP_CRYPT_MSG:
 			pg_password_sendauth(port, user, password);
 		default:
 			break;

@@ -221,8 +221,9 @@ extern		"C"
 	/* make a new client connection to the backend */
 	extern PGconn *PQconnectdb(const char *conninfo);
 	extern PQconninfoOption *PQconndefaults(void);
-	extern PGconn *PQsetdb(const char *pghost, const char *pgport, const char *pgoptions,
-								  const char *pgtty, const char *dbName);
+	extern PGconn *PQsetdbLogin(const char *pghost, const char *pgport, const char *pgoptions,
+					  const char *pgtty, const char *dbName, const char *login, const char *pwd);
+#define PQsetdb(M_PGHOST,M_PGPORT,M_PGOPT,M_PGTTY,M_DBNAME)   PQsetdbLogin(M_PGHOST, M_PGPORT, M_PGOPT, M_PGTTY, M_DBNAME, NULL, NULL)
 	/* close the current connection and free the PGconn data structure */
 	extern void PQfinish(PGconn *conn);
 
