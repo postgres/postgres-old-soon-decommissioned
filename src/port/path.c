@@ -251,7 +251,10 @@ set_pglocale(const char *argv0, const char *app)
 	char path[MAXPGPATH];
 	char my_exec_path[MAXPGPATH];
 
-	setlocale(LC_ALL, "");
+	/* don't set LC_ALL in the backend */
+	if (strcmp(app, "postgres") != 0)
+		setlocale(LC_ALL, "");
+
 	if (find_my_exec(argv0, my_exec_path) < 0)
 		return;
 		
