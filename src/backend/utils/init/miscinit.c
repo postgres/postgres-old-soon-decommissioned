@@ -102,21 +102,18 @@ SetDatabaseName(const char *name)
 const char *
 getdatabaseencoding()
 {
-	elog(ERROR, "MultiByte support must be enabled to use this function");
-	return ("");
+	return ("SQL_ASCII");
 }
 
 const char *
 pg_encoding_to_char(int encoding)
 {
-	elog(ERROR, "MultiByte support must be enabled to use this function");
-	return ("");
+	return ("SQL_ASCII");
 }
 
 int
 pg_char_to_encoding(const char *encoding_string)
 {
-	elog(ERROR, "MultiByte support must be enabled to use this function");
 	return (0);
 }
 
