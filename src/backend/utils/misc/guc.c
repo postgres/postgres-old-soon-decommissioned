@@ -54,7 +54,7 @@ extern int	CommitDelay;
 extern int	CommitSiblings;
 extern bool FixBTree;
 
-#ifdef ENABLE_SYSLOG
+#ifdef HAVE_SYSLOG
 extern char *Syslog_facility;
 extern char *Syslog_ident;
 static bool check_facility(const char *facility);
@@ -394,7 +394,7 @@ static struct config_int
 		1000, 0, INT_MAX, NULL, NULL
 	},
 
-#ifdef ENABLE_SYSLOG
+#ifdef HAVE_SYSLOG
 	{
 		"syslog", PGC_SIGHUP, PGC_S_DEFAULT, &Use_syslog,
 		0, 0, 2, NULL, NULL
@@ -612,7 +612,7 @@ static struct config_string
 		assign_server_min_messages
 	},
 
-#ifdef ENABLE_SYSLOG
+#ifdef HAVE_SYSLOG
 	{
 		"syslog_facility", PGC_POSTMASTER, PGC_S_DEFAULT, &Syslog_facility,
 		"LOCAL0", check_facility, NULL
@@ -1364,7 +1364,7 @@ ParseLongOption(const char *string, char **name, char **value)
 
 
 
-#ifdef ENABLE_SYSLOG
+#ifdef HAVE_SYSLOG
 
 static bool
 check_facility(const char *facility)

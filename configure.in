@@ -975,13 +975,7 @@ AC_TRY_LINK([#include <setjmp.h>],
 AC_MSG_RESULT(yes)],
             [AC_MSG_RESULT(no)])
 
-
-PGAC_ARG_BOOL(enable, syslog, no, [  --enable-syslog         enable logging to syslog],
-              [AC_CHECK_FUNC(syslog,
-                             [AC_DEFINE([ENABLE_SYSLOG], 1,
-                                        [Define to 1 if to enable the syslogging code])],
-                             [AC_MSG_ERROR([no syslog interface found])])])
-
+AC_CHECK_FUNCS([syslog])
 
 AC_CACHE_CHECK([for optreset], pgac_cv_var_int_optreset,
 [AC_TRY_LINK([#include <unistd.h>],

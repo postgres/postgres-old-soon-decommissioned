@@ -41,7 +41,7 @@
 /*#define DEBUG	DEBUG1*/		/* Backward compatibility with pre-7.3 */
 
 /* Configurable parameters */
-#ifdef ENABLE_SYSLOG
+#ifdef HAVE_SYSLOG
 extern int	Use_syslog;
 #endif
 extern bool Log_timestamp;

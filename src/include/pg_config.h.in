@@ -47,9 +47,6 @@
 /* Set to 1 if you want ASSERT checking (--enable-cassert) */
 #undef USE_ASSERT_CHECKING
 
-/* Set to 1 to use syslog() to write postmaster log (--enable-syslog) */
-#undef ENABLE_SYSLOG
-
 /* Define to build with Kerberos 4 support (--with-krb4[=DIR]) */
 #undef KRB4
 
@@ -708,6 +705,8 @@ extern int fdatasync(int fildes);
 #undef HAVE_UINT64
 #undef HAVE_SIG_ATOMIC_T
 
+/* Define if you have syslog() */
+#undef HAVE_SYSLOG
 
 /*
  *------------------------------------------------------------------------
