@@ -12,7 +12,7 @@ subdir = src/backend/port/win32
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = sema.o shmem.o
+OBJS = sema.o shmem.o timer.o
 
 all: SUBSYS.o
 

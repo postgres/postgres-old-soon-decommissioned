@@ -429,8 +429,6 @@ pg_signal_thread(LPVOID param)
 /* Console control handler will execute on a thread created 
    by the OS at the time of invocation */
 static BOOL WINAPI pg_console_handler(DWORD dwCtrlType) {
-	printf("Console handler being called!\n");
-	fflush(stdout);
 	if (dwCtrlType == CTRL_C_EVENT ||
 		dwCtrlType == CTRL_BREAK_EVENT ||
 		dwCtrlType == CTRL_CLOSE_EVENT ||
