@@ -147,6 +147,7 @@
 
 #include "access/nbtree.h"
 #include "catalog/heap.h"
+#include "catalog/index.h"
 #include "commands/async.h"
 #include "commands/sequence.h"
 #include "commands/vacuum.h"
@@ -850,6 +851,7 @@ StartTransaction()
 	 */
 	s->state = TRANS_START;
 
+	SetReindexProcessing(false);
 	/* ----------------
 	 *	generate a new transaction id
 	 * ----------------
@@ -1046,8 +1048,8 @@ AbortTransaction()
 	AtAbort_Notify();
 	CloseSequences();
 	AtEOXact_portals();
-	if (VacuumRunning)
-		vc_abort();
+	if (CommonSpecialPortalIsOpen())
+		CommonSpecialPortalClose();
 	RecordTransactionAbort();
 	RelationPurgeLocalRelation(false);
 	DropNoNameRels();

@@ -430,6 +430,7 @@ PostmasterMain(int argc, char *argv[])
 	DataDir = getenv("PGDATA"); /* default value */
 
 	opterr = 0;
+	IgnoreSystemIndexes(false);
 	while ((opt = getopt(nonblank_argc, argv, "A:a:B:b:D:d:ilm:MN:no:p:Ss")) != EOF)
 	{
 		switch (opt)

@@ -48,8 +48,10 @@
 #include "catalog/catname.h"
 #include "catalog/index.h"
 #include "catalog/pg_index.h"
+#include "catalog/catalog.h"
 #include "executor/execdebug.h"
 #include "executor/executor.h"
+#include "miscadmin.h"
 
 static void ExecGetIndexKeyInfo(Form_pg_index indexTuple, int *numAttsOutP,
 					AttrNumber **attsOutP, FuncIndexInfoPtr fInfoP);
@@ -770,6 +772,12 @@ ExecOpenIndices(Oid resultRelationOid,
 	PredInfo   *predicate;
 	int			i;
 
+	resultRelationInfo->ri_NumIndices = 0;
+	if (!RelationGetForm(resultRelationInfo->ri_RelationDesc)->relhasindex)
+		return;
+	if (IsIgnoringSystemIndexes() &&
+	    IsSystemRelationName(RelationGetRelationName(resultRelationInfo->ri_RelationDesc)))
+		return;
 	/* ----------------
 	 *	open pg_index
 	 * ----------------

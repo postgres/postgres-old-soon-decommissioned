@@ -33,6 +33,9 @@ extern void ExtendIndex(char *indexRelationName,
 			Expr *predicate,
 			List *rangetable);
 extern void RemoveIndex(char *name);
+extern void ReindexIndex(const char *indexRelationName, bool force);
+extern void ReindexTable(const char *relationName, bool force);
+extern void ReindexDatabase(const char *databaseName, bool force, bool all);
 
 /*
  * prototypes in define.c

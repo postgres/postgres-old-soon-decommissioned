@@ -292,6 +292,7 @@ BootstrapMain(int argc, char *argv[])
 		dbName = argv[optind];
 
 	SetProcessingMode(BootstrapProcessing);
+	IgnoreSystemIndexes(true);
 
 	if (!DataDir)
 	{

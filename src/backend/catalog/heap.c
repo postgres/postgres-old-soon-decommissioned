@@ -713,7 +713,7 @@ AddNewRelationTuple(Relation pg_class_desc,
 	if (temp_relname)
 		create_temp_relation(temp_relname, tup);
 
-	if (!IsBootstrapProcessingMode())
+	if (!IsIgnoringSystemIndexes())
 	{
 		/*
 		 * First, open the catalog indices and insert index tuples for the
@@ -1263,8 +1263,7 @@ heap_truncate(char *relname)
 	rel->rd_nblocks = 0;
 
 	/* If this relation has indexes, truncate the indexes too */
-	if (rel->rd_rel->relhasindex)
-		RelationTruncateIndexes(rel);
+	RelationTruncateIndexes(rel);
 
 	/*
 	 * Close the relation, but keep exclusive lock on it until commit.
@@ -1491,8 +1490,8 @@ heap_drop_with_catalog(const char *relname)
 	 *	remove indexes if necessary
 	 * ----------------
 	 */
-	if (rel->rd_rel->relhasindex)
-		RelationRemoveIndexes(rel);
+	/* should ignore relhasindex */
+	RelationRemoveIndexes(rel);
 
 	/* ----------------
 	 *	remove rules if necessary

@@ -211,6 +211,9 @@ extern ProcessingMode Mode;
 
 #define GetProcessingMode() Mode
 
+extern void IgnoreSystemIndexes(bool mode);
+extern bool IsIgnoringSystemIndexes(void);
+extern bool IsCacheInitialized(void);
 
 /* 
  * "postmaster.pid" is a file containing postmaster's pid, being

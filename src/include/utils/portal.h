@@ -80,6 +80,10 @@ extern void EndPortalAllocMode(void);
 extern void PortalResetHeapMemory(Portal portal);
 extern PortalVariableMemory PortalGetVariableMemory(Portal portal);
 extern PortalHeapMemory PortalGetHeapMemory(Portal portal);
+extern void CommonSpecialPortalOpen(void);
+extern void CommonSpecialPortalClose(void);
+extern PortalVariableMemory CommonSpecialPortalGetMemory(void);
+extern bool CommonSpecialPortalIsOpen(void);
 
 /* estimate of the maximum number of open portals a user would have,
  * used in initially sizing the PortalHashTable in	EnablePortalManager()

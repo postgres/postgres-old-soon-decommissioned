@@ -722,6 +722,19 @@ typedef struct ConstraintsSetStmt
 	bool		deferred;
 } ConstraintsSetStmt;
 
+/* ----------------------
+ *		REINDEX Statement
+ * ----------------------
+ */
+typedef struct ReindexStmt
+{
+	NodeTag		type;
+	int		reindexType;		/* INDEX|TABLE|DATABASE */
+	const	char   *name;			/* name to reindex */
+	bool		force;
+	bool		all;
+} ReindexStmt;
+
 
 /*****************************************************************************
  *		Optimizable Statements

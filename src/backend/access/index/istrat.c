@@ -477,8 +477,9 @@ OperatorRelationFillScanKeyEntry(Relation operatorRelation,
 {
 	HeapTuple	tuple;
 	HeapScanDesc scan = NULL;
+	bool	cachesearch = (!IsBootstrapProcessingMode()) && IsCacheInitialized();
 
-	if (!IsBootstrapProcessingMode())
+	if (cachesearch)
 	{
 		tuple = SearchSysCacheTuple(OPEROID,
 									ObjectIdGetDatum(operatorObjectId),
@@ -501,7 +502,7 @@ OperatorRelationFillScanKeyEntry(Relation operatorRelation,
 
 	if (!HeapTupleIsValid(tuple))
 	{
-		if (IsBootstrapProcessingMode())
+		if (!cachesearch)
 			heap_endscan(scan);
 		elog(ERROR, "OperatorObjectIdFillScanKeyEntry: unknown operator %u",
 			 operatorObjectId);
@@ -512,7 +513,7 @@ OperatorRelationFillScanKeyEntry(Relation operatorRelation,
 	fmgr_info(entry->sk_procedure, &entry->sk_func);
 	entry->sk_nargs = entry->sk_func.fn_nargs;
 
-	if (IsBootstrapProcessingMode())
+	if (!cachesearch)
 		heap_endscan(scan);
 
 	if (!RegProcedureIsValid(entry->sk_procedure))
@@ -546,8 +547,9 @@ IndexSupportInitialize(IndexStrategy indexStrategy,
 	AttrNumber	attributeNumber;
 	int			attributeIndex;
 	Oid			operatorClassObjectId[INDEX_MAX_KEYS];
+	bool	cachesearch = (!IsBootstrapProcessingMode()) && IsCacheInitialized();
 
-	if (!IsBootstrapProcessingMode())
+	if (cachesearch)
 	{
 		tuple = SearchSysCacheTuple(INDEXRELID,
 									ObjectIdGetDatum(indexObjectId),
@@ -589,7 +591,7 @@ IndexSupportInitialize(IndexStrategy indexStrategy,
 		operatorClassObjectId[attributeIndex] = iform->indclass[attributeIndex];
 	}
 
-	if (IsBootstrapProcessingMode())
+	if (!cachesearch)
 	{
 		heap_endscan(scan);
 		heap_close(relation, AccessShareLock);

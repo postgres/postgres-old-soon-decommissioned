@@ -38,6 +38,33 @@ unsigned char RecodeBackTable[128];
 
 ProcessingMode Mode = InitProcessing;
 
+/* ----------------------------------------------------------------
+ *		ignoring system indexes support stuff
+ * ----------------------------------------------------------------
+ */
+
+static bool	isIgnoringSystemIndexes = false;
+
+/*
+ * IsIgnoringSystemIndexes
+ *		True if ignoring system indexes.
+ */
+bool
+IsIgnoringSystemIndexes()
+{
+	return isIgnoringSystemIndexes;
+}
+
+/*
+ * IgnoreSystemIndexes
+ *	Set true or false whether PostgreSQL ignores system indexes.
+ *
+ */
+void
+IgnoreSystemIndexes(bool mode)
+{
+	isIgnoringSystemIndexes = mode;
+}
 
 /* ----------------------------------------------------------------
  *				database path / name support stuff

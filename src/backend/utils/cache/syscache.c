@@ -39,6 +39,7 @@
 #include "catalog/pg_type.h"
 #include "utils/catcache.h"
 #include "utils/temprel.h"
+#include "miscadmin.h"
 
 extern bool AMI_OVERRIDE;		/* XXX style */
 
@@ -395,6 +396,11 @@ static struct cachedesc cacheinfo[] = {
 
 static struct catcache *SysCache[lengthof(cacheinfo)];
 static int32 SysCacheSize = lengthof(cacheinfo);
+static bool  CacheInitialized = false;
+extern bool  IsCacheInitialized(void)
+{
+	return CacheInitialized;
+}
 
 
 /*
@@ -442,6 +448,7 @@ InitCatalogCache()
 
 		}
 	}
+	CacheInitialized = true;
 }
 
 /*

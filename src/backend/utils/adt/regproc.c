@@ -45,7 +45,7 @@ regprocin(char *pro_name_or_oid)
 	if (pro_name_or_oid[0] == '-' && pro_name_or_oid[1] == '\0')
 		return InvalidOid;
 
-	if (!IsBootstrapProcessingMode())
+	if (!IsIgnoringSystemIndexes())
 	{
 
 		/*

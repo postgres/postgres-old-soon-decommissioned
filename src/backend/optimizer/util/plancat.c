@@ -29,6 +29,8 @@
 #include "optimizer/plancat.h"
 #include "parser/parsetree.h"
 #include "utils/syscache.h"
+#include "catalog/catalog.h"
+#include "miscadmin.h"
 
 
 /*
@@ -55,7 +57,10 @@ relation_info(Query *root, Index relid,
 			 relationObjectId);
 	relation = (Form_pg_class) GETSTRUCT(relationTuple);
 
-	*hasindex = (relation->relhasindex) ? true : false;
+	if (IsIgnoringSystemIndexes() && IsSystemRelationName(NameStr(relation->relname)))
+		*hasindex = false;
+	else
+		*hasindex = (relation->relhasindex) ? true : false;
 	*pages = relation->relpages;
 	*tuples = relation->reltuples;
 }

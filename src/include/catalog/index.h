@@ -47,7 +47,11 @@ extern void FormIndexDatum(int numberOfAttributes,
 			   TupleDesc heapDescriptor, Datum *datum,
 			   char *nullv, FuncIndexInfoPtr fInfo);
 
-extern void UpdateStats(Oid relid, long reltuples, bool hasindex);
+extern void UpdateStats(Oid relid, long reltuples, bool inplace);
+extern bool IndexesAreActive(Oid relid, bool comfirmCommitted);
+extern void setRelhasindexInplace(Oid relid, bool hasindex, bool immediate);
+extern bool SetReindexProcessing(bool processing);
+extern bool IsReindexProcessing(void);
 
 extern void FillDummyExprContext(ExprContext *econtext, TupleTableSlot *slot,
 					 TupleDesc tupdesc, Buffer buffer);
@@ -60,4 +64,8 @@ extern void index_build(Relation heapRelation, Relation indexRelation,
 extern bool IndexIsUnique(Oid indexId);
 extern bool IndexIsUniqueNoCache(Oid indexId);
 
+extern bool activate_index(Oid indexId, bool activate);
+extern bool reindex_index(Oid indexId, bool force);
+extern bool activate_indexes_of_a_table(Oid relid, bool activate);
+extern bool reindex_relation(Oid relid, bool force);
 #endif	 /* INDEX_H */
