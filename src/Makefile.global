@@ -342,15 +342,20 @@ CFLAGS_BE= -qchars=signed -qmaxmem=4000
 
 EXPSUFF= .exp
 
+POSTGRES_EXP= $(SRCDIR)/backend/postgres$(EXPSUFF)
+
 MKLDEXPORT=$(SRCDIR)/backend/port/aix/mkldexport.sh
 
 %$(EXPSUFF):  %.o
 	$(MKLDEXPORT) $< `pwd` > $@
 
-%.so: %.o %$(EXPSUFF)
-	@echo The link stage here:
+$(POSTGRES_EXP): 
+	$(MAKE) -C $(SRCDIR)/backend postgres.exp
+
+%.so: %.o %$(EXPSUFF) $(POSTGRES_EXP)
+	@echo Making share library $@ from $*.o, $*$(EXPSUFF), and postgres.exp
 	$(LD) -H512 -T512 -o $@ -e _nostart \
-	  -bI:$(LIBDIR)/postgres$(EXPSUFF) -bE:$*$(EXPSUFF) \
+	  -bI:$(POSTGRES_EXP) -bE:$*$(EXPSUFF) \
 	  $*.o -lm -lc 2>/dev/null
 endif
 
