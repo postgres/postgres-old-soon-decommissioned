@@ -24,7 +24,7 @@ ETAGS = @etags@
 XARGS = @xargs@
 
 all:
-	@if test $(PORTNAME) = UNDEFINED; then \
+	@if test "$(PORTNAME)" = UNDEFINED; then \
 	  echo You must set the PORTNAME value in Makefile.global before \
 	       you can build Postgres. ;\
 	  false ;\
@@ -51,7 +51,7 @@ endif
         fi
 
 install:
-	@if test $(PORTNAME) = UNDEFINED; then \
+	@if test "$(PORTNAME)" = UNDEFINED; then \
 		echo You must set the PORTNAME value in Makefile.global before \
 			you can build Postgres. ;\
 		false ;\
@@ -68,7 +68,7 @@ endif
 	cat ../register.txt
 
 clean:
-	@if test $(PORTNAME) = UNDEFINED; then \
+	@if test "$(PORTNAME)" = UNDEFINED; then \
 		echo You must set the PORTNAME value in Makefile.global before \
 			you can build Postgres. ;\
 		false ;\
@@ -101,7 +101,7 @@ distclean: clean
 
 
 .DEFAULT:
-	@if test $(PORTNAME) = UNDEFINED; then \
+	@if test "$(PORTNAME)" = UNDEFINED; then \
 	  echo You must set the PORTNAME value in Makefile.global before \
 	       you can build Postgres. ;\
 	  false ;\
