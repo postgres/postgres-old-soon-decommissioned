@@ -20,6 +20,13 @@ LIBS += $(PTHREAD_LIBS)
 
 all: libpgport.a
 
+# libpgport is needed by some contrib
+install-all-headers: 
+	$(INSTALL_STLIB) libpgport.a $(DESTDIR)$(pkglibdir)
+
+uninstall:
+	$(RM) $(DESTDIR)$(pkglibdir)/libpgport.a
+
 libpgport.a: $(LIBOBJS)
 	$(AR) $(AROPT) $@ $^
 

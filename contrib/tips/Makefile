@@ -1,9 +1,13 @@
 # $PostgreSQL$
 
+DOCS = README.apachelog
+
+ifdef USE_PGXS
+PGXS = $(shell pg_config --pgxs)
+include $(PGXS)
+else
 subdir = contrib/tips
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
-
-DOCS = README.apachelog
-
 include $(top_srcdir)/contrib/contrib-global.mk
+endif

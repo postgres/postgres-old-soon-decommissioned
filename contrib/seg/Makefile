@@ -1,15 +1,22 @@
 # $PostgreSQL$
 
-subdir = contrib/seg
-top_builddir = ../..
-include $(top_builddir)/src/Makefile.global
-
 MODULE_big = seg
 OBJS = seg.o segparse.o
 DATA_built = seg.sql
 DOCS = README.seg
 REGRESS = seg
 
+EXTRA_CLEAN = segparse.c segparse.h segscan.c y.tab.c y.tab.h
+
+ifdef USE_PGXS
+PGXS = $(shell pg_config --pgxs)
+include $(PGXS)
+else
+subdir = contrib/seg
+top_builddir = ../..
+include $(top_builddir)/src/Makefile.global
+include $(top_srcdir)/contrib/contrib-global.mk
+endif
 
 # segscan is compiled as part of segparse
 segparse.o: segscan.c
@@ -31,8 +38,3 @@ ifdef FLEX
 else
 	@$(missing) flex $< $@
 endif
-
-EXTRA_CLEAN = segparse.c segparse.h segscan.c y.tab.c y.tab.h
-
-
-include $(top_srcdir)/contrib/contrib-global.mk

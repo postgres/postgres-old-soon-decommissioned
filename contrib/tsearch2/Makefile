@@ -1,10 +1,5 @@
 # $PostgreSQL$
 
-subdir = contrib/tsearch2
-top_builddir = ../..
-include $(top_builddir)/src/Makefile.global
-
-
 MODULE_big = tsearch2
 OBJS = dict_ex.o dict.o snmap.o stopword.o common.o prs_dcfg.o \
        dict_snowball.o dict_ispell.o dict_syn.o \
@@ -15,12 +10,7 @@ OBJS = dict_ex.o dict.o snmap.o stopword.o common.o prs_dcfg.o \
 SUBDIRS     := snowball ispell wordparser
 SUBDIROBJS  := $(SUBDIRS:%=%/SUBSYS.o)
 
-OBJS:= $(OBJS) $(SUBDIROBJS)
-
-$(SUBDIROBJS): $(SUBDIRS:%=%-recursive) ;
-
-$(SUBDIRS:%=%-recursive):
-	$(MAKE) -C $(subst -recursive,,$@) SUBSYS.o
+OBJS	+= $(SUBDIROBJS)
 
 PG_CPPFLAGS = -I$(srcdir)/snowball -I$(srcdir)/ispell -I$(srcdir)/wordparser
 
@@ -30,6 +20,23 @@ DOCS = README.tsearch2
 REGRESS = tsearch2
 
 SHLIB_LINK := -lm
+
+
+ifdef USE_PGXS
+PGXS = $(shell pg_config --pgxs)
+include $(PGXS)
+else
+subdir = contrib/tsearch2
+top_builddir = ../..
+include $(top_builddir)/src/Makefile.global
+include $(top_srcdir)/contrib/contrib-global.mk
+endif
+
+
+$(SUBDIROBJS): $(SUBDIRS:%=%-recursive) ;
+
+$(SUBDIRS:%=%-recursive):
+	$(MAKE) -C $(subst -recursive,,$@) SUBSYS.o
 
 tsearch2.sql: tsearch.sql.in
 	sed -e 's,MODULE_PATHNAME,$$libdir/$(MODULE_big),g' \
@@ -43,5 +50,3 @@ clean: subclean
 
 subclean:
 	for dir in $(SUBDIRS); do $(MAKE) -C $$dir clean || exit; done
- 
-include $(top_srcdir)/contrib/contrib-global.mk

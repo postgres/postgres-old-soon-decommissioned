@@ -1,9 +1,5 @@
 # $PostgreSQL$
 
-subdir = contrib/findoidjoins
-top_builddir = ../..
-include $(top_builddir)/src/Makefile.global
-
 PROGRAM = findoidjoins
 OBJS	= findoidjoins.o
 
@@ -13,4 +9,12 @@ PG_LIBS = $(libpq)
 SCRIPTS = make_oidjoins_check
 DOCS = README.findoidjoins
 
+ifdef USE_PGXS
+PGXS = $(shell pg_config --pgxs)
+include $(PGXS)
+else
+subdir = contrib/findoidjoins
+top_builddir = ../..
+include $(top_builddir)/src/Makefile.global
 include $(top_srcdir)/contrib/contrib-global.mk
+endif

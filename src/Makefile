@@ -35,6 +35,7 @@ install-local: installdirs-local
 
 install-all-headers:
 	$(MAKE) -C include $@
+	$(MAKE) -C port $@
 
 installdirs: installdirs-local
 

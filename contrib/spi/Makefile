@@ -1,9 +1,5 @@
 # $PostgreSQL$
 
-subdir = contrib/spi
-top_builddir = ../..
-include $(top_builddir)/src/Makefile.global
-
 MODULES = autoinc insert_username moddatetime refint timetravel
 DATA_built = $(addsuffix .sql, $(MODULES))
 DOCS	= README.spi $(addsuffix .example, $(MODULES))
@@ -12,4 +8,12 @@ DOCS	= README.spi $(addsuffix .example, $(MODULES))
 # comment out if you want a quieter refint package for other uses
 PG_CPPFLAGS = -DREFINT_VERBOSE
 
+ifdef USE_PGXS
+PGXS = $(shell pg_config --pgxs)
+include $(PGXS)
+else
+subdir = contrib/spi
+top_builddir = ../..
+include $(top_builddir)/src/Makefile.global
 include $(top_srcdir)/contrib/contrib-global.mk
+endif

@@ -2,18 +2,22 @@
 # $PostgreSQL$
 #
 
+NAME	= mpgsql
+SO_MAJOR_VERSION = 0
+SO_MINOR_VERSION = 0
+OBJS	= mpgsql.o
+
+PG_CPPFLAGS = -I$(libpq_srcdir)
+
+ifdef USE_PGXS
+PGXS = $(shell pg_config --pgxs)
+include $(PGXS)
+else
 subdir = contrib/mSQL-interface
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
-
-NAME	:= mpgsql
-SO_MAJOR_VERSION := 0
-SO_MINOR_VERSION := 0
-OBJS	:= mpgsql.o
-
-override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
-
-include $(top_srcdir)/src/Makefile.shlib
+include $(top_srcdir)/contrib/contrib-global.mk
+endif
 
 all: all-lib
 

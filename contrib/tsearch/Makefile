@@ -1,10 +1,6 @@
 # $PostgreSQL$
 
-subdir = contrib/tsearch
-top_builddir = ../..
-include $(top_builddir)/src/Makefile.global
-
-override CPPFLAGS := -I. $(CPPFLAGS)
+PG_CPPFLAGS = -I.
 
 MODULE_big = tsearch
 OBJS = crc32.o morph.o txtidx.o query.o gistidx.o rewrite.o
@@ -12,6 +8,19 @@ OBJS = crc32.o morph.o txtidx.o query.o gistidx.o rewrite.o
 DATA_built = tsearch.sql
 DOCS = README.tsearch
 REGRESS = tsearch
+
+EXTRA_CLEAN = parser.c
+
+ifdef USE_PGXS
+PGXS = $(shell pg_config --pgxs)
+include $(PGXS)
+else
+subdir = contrib/tsearch
+top_builddir = ../..
+include $(top_builddir)/src/Makefile.global
+include $(top_srcdir)/contrib/contrib-global.mk
+endif
+
 
 # parser is compiled as part of query
 query.o: parser.c
@@ -23,7 +32,4 @@ else
 	@$(missing) flex $< $@
 endif
 
-EXTRA_CLEAN = parser.c
-
-include $(top_srcdir)/contrib/contrib-global.mk
 # DO NOT DELETE
