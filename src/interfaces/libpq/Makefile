@@ -99,6 +99,8 @@ install-headers: beforeinstall-headers c.h \
                  ../include/config.h ../include/libpq/pqcomm.h \
                  ../include/libpq/libpq-fs.h ../include/lib/dllist.h \
                  ../include/utils/geo_decls.h libpq-fe.h
+	$(INSTALL) $(INSTLOPTS) ../include/os.h \
+          $(HEADERDIR)/os.h
 	$(INSTALL) $(INSTLOPTS) ../include/config.h \
           $(HEADERDIR)/config.h
 	$(INSTALL) $(INSTLOPTS) ../include/postgres.h \
