@@ -176,6 +176,7 @@ typedef uint32 CommandId;
 	typedef struct CppConcat(FormData_,x)
 
 #define DATA(x) extern int errno
+#define DESCR(x) extern int errno
 #define DECLARE_INDEX(x) extern int errno
 
 #define BUILD_INDICES
