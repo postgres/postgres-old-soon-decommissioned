@@ -20,9 +20,7 @@ $Header$
    -->
 
    <para>
-    Release date 2000-xx-xx.
-
-   <para>
+    Release date 2000-09-01.
     Major changes in this release:
 
     <variablelist>
@@ -36,6 +34,7 @@ $Header$
        </para>
       </listitem>
      </varlistentry>
+    </variablelist>
    </para>
 
    <sect2>
