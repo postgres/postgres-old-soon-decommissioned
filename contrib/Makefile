@@ -20,6 +20,7 @@ WANTED_DIRS = \
 		intarray	\
 		isbn_issn	\
 		lo		\
+		ltree		\
 		miscutil	\
 		noupdate	\
 		oid2name	\
