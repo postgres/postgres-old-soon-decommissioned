@@ -441,7 +441,11 @@ HeapTupleSatisfiesDirty(HeapTupleHeader tuple)
 	}
 
 	if (TransactionIdIsCurrentTransactionId(tuple->t_xmax))
+	{
+		if (tuple->t_infomask & HEAP_MARKED_FOR_UPDATE)
+			return true;
 		return false;
+	}
 
 	if (!TransactionIdDidCommit(tuple->t_xmax))
 	{
