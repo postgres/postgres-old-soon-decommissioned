@@ -1827,6 +1827,41 @@ make_material(List *tlist, Plan *lefttree)
 	return node;
 }
 
+/*
+ * materialize_finished_plan: stick a Material node atop a completed plan
+ *
+ * There are a couple of places where we want to attach a Material node
+ * after completion of subquery_planner().  This currently requires hackery.
+ * Since subquery_planner has already run SS_finalize_plan on the subplan
+ * tree, we have to kluge up parameter lists for the Material node.
+ * Possibly this could be fixed by postponing SS_finalize_plan processing
+ * until setrefs.c is run?
+ */
+Plan *
+materialize_finished_plan(Plan *subplan)
+{
+	Plan	   *matplan;
+	Path		matpath;		/* dummy for result of cost_material */
+
+	matplan = (Plan *) make_material(subplan->targetlist, subplan);
+
+	/* Set cost data */
+	cost_material(&matpath,
+				  subplan->total_cost,
+				  subplan->plan_rows,
+				  subplan->plan_width);
+	matplan->startup_cost = matpath.startup_cost;
+	matplan->total_cost = matpath.total_cost;
+	matplan->plan_rows = subplan->plan_rows;
+	matplan->plan_width = subplan->plan_width;
+
+	/* parameter kluge --- see comments above */
+	matplan->extParam = bms_copy(subplan->extParam);
+	matplan->allParam = bms_copy(subplan->allParam);
+
+	return matplan;
+}
+
 Agg *
 make_agg(Query *root, List *tlist, List *qual,
 		 AggStrategy aggstrategy,

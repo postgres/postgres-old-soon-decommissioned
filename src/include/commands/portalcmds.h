@@ -16,23 +16,16 @@
 
 #include "utils/portal.h"
 
-/*
- * PerformPortalFetch
- *		Performs the POSTQUEL function FETCH.  Fetches count
- * tuples in portal with name in the forward direction iff goForward.
- *
- * Exceptions:
- *		BadArg if forward invalid.
- *		"ERROR" if portal not found.
- */
+
+extern void PerformCursorOpen(DeclareCursorStmt *stmt, CommandDest dest);
+
 extern void PerformPortalFetch(char *name, bool forward, long count,
 				   CommandDest dest, char *completionTag);
 
-/*
- * PerformPortalClose
- *		Performs the POSTQUEL function CLOSE.
- */
-extern void PerformPortalClose(char *name, CommandDest dest);
+extern long DoPortalFetch(Portal portal, bool forward, long count,
+						  CommandDest dest);
+
+extern void PerformPortalClose(char *name);
 
 extern void PortalCleanup(Portal portal);
 

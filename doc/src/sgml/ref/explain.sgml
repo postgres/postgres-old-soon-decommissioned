@@ -56,7 +56,8 @@ EXPLAIN [ ANALYZE ] [ VERBOSE ] <replaceable class="PARAMETER">query</replaceabl
       <listitem>
        <para>
 	Any <command>SELECT</>, <command>INSERT</>, <command>UPDATE</>,
-	<command>DELETE</>, or <command>EXECUTE</> query.
+	<command>DELETE</>, <command>EXECUTE</>,
+	or <command>DECLARE CURSOR</> query.
        </para>
       </listitem>
      </varlistentry>

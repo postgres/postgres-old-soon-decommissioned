@@ -27,8 +27,9 @@ typedef struct PortalData
 	char	   *name;			/* Portal's name */
 	MemoryContext heap;			/* subsidiary memory */
 	QueryDesc  *queryDesc;		/* Info about query associated with portal */
-	bool		atStart;		/* T => fetch backwards is not allowed */
-	bool		atEnd;			/* T => fetch forwards is not allowed */
+	bool		backwardOK;		/* is fetch backwards allowed at all? */
+	bool		atStart;		/* T => fetch backwards is not allowed now */
+	bool		atEnd;			/* T => fetch forwards is not allowed now */
 	void		(*cleanup) (Portal);	/* Cleanup routine (optional) */
 } PortalData;
 
@@ -43,12 +44,6 @@ typedef struct PortalData
  */
 #define PortalGetQueryDesc(portal)	((portal)->queryDesc)
 #define PortalGetHeapMemory(portal) ((portal)->heap)
-
-/*
- * estimate of the maximum number of open portals a user would have,
- * used in initially sizing the PortalHashTable in EnablePortalManager()
- */
-#define PORTALS_PER_USER	   64
 
 
 extern void EnablePortalManager(void);

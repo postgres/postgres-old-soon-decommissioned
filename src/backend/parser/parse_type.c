@@ -455,7 +455,6 @@ parseTypeString(const char *str, Oid *type_id, int32 *typmod)
 		stmt->groupClause != NIL ||
 		stmt->havingClause != NULL ||
 		stmt->sortClause != NIL ||
-		stmt->portalname != NULL ||
 		stmt->limitOffset != NULL ||
 		stmt->limitCount != NULL ||
 		stmt->forUpdate != NIL ||

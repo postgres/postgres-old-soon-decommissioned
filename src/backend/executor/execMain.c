@@ -537,9 +537,7 @@ InitPlan(QueryDesc *queryDesc)
 	 */
 	do_select_into = false;
 
-	if (operation == CMD_SELECT &&
-		!parseTree->isPortal &&
-		parseTree->into != NULL)
+	if (operation == CMD_SELECT && parseTree->into != NULL)
 	{
 		do_select_into = true;
 		/*

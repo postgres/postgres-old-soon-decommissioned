@@ -35,6 +35,7 @@ extern void ExecReScan(PlanState *node, ExprContext *exprCtxt);
 extern void ExecMarkPos(PlanState *node);
 extern void ExecRestrPos(PlanState *node);
 extern bool ExecSupportsMarkRestore(NodeTag plantype);
+extern bool ExecSupportsBackwardScan(Plan *node);
 
 /*
  * prototypes from functions in execGrouping.c

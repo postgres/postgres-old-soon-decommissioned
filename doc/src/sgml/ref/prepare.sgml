@@ -54,6 +54,15 @@ PostgreSQL documentation
        </para>
       </listitem>
      </varlistentry>
+     <varlistentry>
+      <term><replaceable class="PARAMETER">query</replaceable></term>
+      <listitem>
+       <para>
+	Any <command>SELECT</>, <command>INSERT</>, <command>UPDATE</>,
+	or <command>DELETE</> query.
+       </para>
+      </listitem>
+     </varlistentry>
     </variablelist>
    </para>
   </refsect2>

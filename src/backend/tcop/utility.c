@@ -306,13 +306,17 @@ ProcessUtility(Node *parsetree,
 			break;
 
 			/*
-			 * ************************* portal manipulation ***************************
+			 * Portal (cursor) manipulation
 			 */
+		case T_DeclareCursorStmt:
+			PerformCursorOpen((DeclareCursorStmt *) parsetree, dest);
+			break;
+
 		case T_ClosePortalStmt:
 			{
 				ClosePortalStmt *stmt = (ClosePortalStmt *) parsetree;
 
-				PerformPortalClose(stmt->portalname, dest);
+				PerformPortalClose(stmt->portalname);
 			}
 			break;
 

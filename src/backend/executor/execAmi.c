@@ -281,3 +281,61 @@ ExecSupportsMarkRestore(NodeTag plantype)
 
 	return false;
 }
+
+/*
+ * ExecSupportsBackwardScan - does a plan type support backwards scanning?
+ *
+ * Ideally, all plan types would support backwards scan, but that seems
+ * unlikely to happen soon.  In some cases, a plan node passes the backwards
+ * scan down to its children, and so supports backwards scan only if its
+ * children do.  Therefore, this routine must be passed a complete plan tree.
+ */
+bool
+ExecSupportsBackwardScan(Plan *node)
+{
+	if (node == NULL)
+		return false;
+
+	switch (nodeTag(node))
+	{
+		case T_Result:
+			if (outerPlan(node) != NULL)
+				return ExecSupportsBackwardScan(outerPlan(node));
+			else
+				return false;
+
+		case T_Append:
+		{
+			List   *l;
+
+			foreach(l, ((Append *) node)->appendplans)
+			{
+				if (!ExecSupportsBackwardScan((Plan *) lfirst(l)))
+					return false;
+			}
+			return true;
+		}
+
+		case T_SeqScan:
+		case T_IndexScan:
+		case T_TidScan:
+		case T_FunctionScan:
+			return true;
+
+		case T_SubqueryScan:
+			return ExecSupportsBackwardScan(((SubqueryScan *) node)->subplan);
+
+		case T_Material:
+		case T_Sort:
+			return true;
+
+		case T_Unique:
+			return ExecSupportsBackwardScan(outerPlan(node));
+
+		case T_Limit:
+			return ExecSupportsBackwardScan(outerPlan(node));
+
+		default:
+			return false;
+	}
+}

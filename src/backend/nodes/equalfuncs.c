@@ -560,8 +560,6 @@ _equalQuery(Query *a, Query *b)
 	COMPARE_NODE_FIELD(utilityStmt);
 	COMPARE_SCALAR_FIELD(resultRelation);
 	COMPARE_NODE_FIELD(into);
-	COMPARE_SCALAR_FIELD(isPortal);
-	COMPARE_SCALAR_FIELD(isBinary);
 	COMPARE_SCALAR_FIELD(hasAggs);
 	COMPARE_SCALAR_FIELD(hasSubLinks);
 	COMPARE_NODE_FIELD(rtable);
@@ -631,8 +629,6 @@ _equalSelectStmt(SelectStmt *a, SelectStmt *b)
 	COMPARE_NODE_FIELD(groupClause);
 	COMPARE_NODE_FIELD(havingClause);
 	COMPARE_NODE_FIELD(sortClause);
-	COMPARE_STRING_FIELD(portalname);
-	COMPARE_SCALAR_FIELD(binary);
 	COMPARE_NODE_FIELD(limitOffset);
 	COMPARE_NODE_FIELD(limitCount);
 	COMPARE_NODE_FIELD(forUpdate);
@@ -715,6 +711,16 @@ _equalFuncWithArgs(FuncWithArgs *a, FuncWithArgs *b)
 static bool
 _equalInsertDefault(InsertDefault *a, InsertDefault *b)
 {
+	return true;
+}
+
+static bool
+_equalDeclareCursorStmt(DeclareCursorStmt *a, DeclareCursorStmt *b)
+{
+	COMPARE_STRING_FIELD(portalname);
+	COMPARE_SCALAR_FIELD(options);
+	COMPARE_NODE_FIELD(query);
+
 	return true;
 }
 
@@ -1755,6 +1761,9 @@ equal(void *a, void *b)
 			break;
 		case T_GrantStmt:
 			retval = _equalGrantStmt(a, b);
+			break;
+		case T_DeclareCursorStmt:
+			retval = _equalDeclareCursorStmt(a, b);
 			break;
 		case T_ClosePortalStmt:
 			retval = _equalClosePortalStmt(a, b);

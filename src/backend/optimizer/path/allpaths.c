@@ -343,8 +343,7 @@ set_subquery_pathlist(Query *root, RelOptInfo *rel,
 	}
 
 	/* Generate the plan for the subquery */
-	rel->subplan = subquery_planner(subquery,
-									-1.0 /* default case */ );
+	rel->subplan = subquery_planner(subquery, 0.0 /* default case */ );
 
 	/* Copy number of output rows from subplan */
 	rel->tuples = rel->subplan->plan_rows;

@@ -248,6 +248,7 @@ typedef enum NodeTag
 	T_PrepareStmt,
 	T_ExecuteStmt,
 	T_DeallocateStmt,
+	T_DeclareCursorStmt,
 
 	T_A_Expr = 800,
 	T_ColumnRef,

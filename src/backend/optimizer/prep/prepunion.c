@@ -134,8 +134,7 @@ recurse_set_operations(Node *setOp, Query *parse,
 		/*
 		 * Generate plan for primitive subquery
 		 */
-		subplan = subquery_planner(subquery,
-								   -1.0 /* default case */ );
+		subplan = subquery_planner(subquery, 0.0 /* default case */ );
 
 		/*
 		 * Add a SubqueryScan with the caller-requested targetlist

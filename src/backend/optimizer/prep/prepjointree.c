@@ -362,8 +362,7 @@ is_simple_subquery(Query *subquery)
 	if (!IsA(subquery, Query) ||
 		subquery->commandType != CMD_SELECT ||
 		subquery->resultRelation != 0 ||
-		subquery->into != NULL ||
-		subquery->isPortal)
+		subquery->into != NULL)
 		elog(ERROR, "is_simple_subquery: subquery is bogus");
 
 	/*

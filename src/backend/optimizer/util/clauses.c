@@ -1787,7 +1787,6 @@ inline_function(Oid funcid, List *args, HeapTuple func_tuple,
 		querytree->commandType != CMD_SELECT ||
 		querytree->resultRelation != 0 ||
 		querytree->into ||
-		querytree->isPortal ||
 		querytree->hasAggs ||
 		querytree->hasSubLinks ||
 		querytree->rtable ||

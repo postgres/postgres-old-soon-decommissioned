@@ -18,7 +18,7 @@
 #include "nodes/plannodes.h"
 
 
-extern Plan *planner(Query *parse);
+extern Plan *planner(Query *parse, bool isCursor, int cursorOptions);
 extern Plan *subquery_planner(Query *parse, double tuple_fraction);
 
 #endif   /* PLANNER_H */

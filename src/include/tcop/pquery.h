@@ -15,12 +15,9 @@
 #define PQUERY_H
 
 #include "executor/execdesc.h"
-#include "utils/portal.h"
 
 
 extern void ProcessQuery(Query *parsetree, Plan *plan, CommandDest dest,
 			 char *completionTag);
-
-extern Portal PreparePortal(char *portalName);
 
 #endif   /* PQUERY_H */

@@ -44,6 +44,7 @@ extern Group *make_group(Query *root, List *tlist,
 						 double numGroups,
 						 Plan *lefttree);
 extern Material *make_material(List *tlist, Plan *lefttree);
+extern Plan *materialize_finished_plan(Plan *subplan);
 extern Unique *make_unique(List *tlist, Plan *lefttree, List *distinctList);
 extern Limit *make_limit(List *tlist, Plan *lefttree,
 		   Node *limitOffset, Node *limitCount);
