@@ -714,15 +714,14 @@ vacuum_rel(Oid relid, VacuumStmt *vacstmt)
 	 *
 	 * We allow the user to vacuum a table if he is superuser, the table
 	 * owner, or the database owner (but in the latter case, only if it's
-	 * not a shared relation).	pg_ownercheck includes the superuser case.
+	 * not a shared relation).	pg_class_ownercheck includes the superuser case.
 	 *
 	 * Note we choose to treat permissions failure as a WARNING and keep
 	 * trying to vacuum the rest of the DB --- is this appropriate?
 	 */
 	onerel = heap_open(relid, lmode);
 
-	if (!(pg_ownercheck(GetUserId(), RelationGetRelationName(onerel),
-						RELNAME) ||
+	if (!(pg_class_ownercheck(RelationGetRelid(onerel), GetUserId()) ||
 		  (is_dbadmin(MyDatabaseId) && !onerel->rd_rel->relisshared)))
 	{
 		elog(WARNING, "Skipping \"%s\" --- only table or database owner can VACUUM it",

@@ -82,6 +82,13 @@ renameatt(char *relname,
 	List	   *indexoidscan;
 
 	/*
+	 * Grab an exclusive lock on the target table, which we will NOT
+	 * release until end of transaction.
+	 */
+	targetrelation = heap_openr(relname, AccessExclusiveLock);
+	relid = RelationGetRelid(targetrelation);
+
+	/*
 	 * permissions checking.  this would normally be done in utility.c,
 	 * but this particular routine is recursive.
 	 *
@@ -90,17 +97,9 @@ renameatt(char *relname,
 	if (!allowSystemTableMods && IsSystemRelationName(relname))
 		elog(ERROR, "renameatt: class \"%s\" is a system catalog",
 			 relname);
-	if (!IsBootstrapProcessingMode() &&
-		!pg_ownercheck(GetUserId(), relname, RELNAME))
+	if (!pg_class_ownercheck(relid, GetUserId()))
 		elog(ERROR, "renameatt: you do not own class \"%s\"",
 			 relname);
-
-	/*
-	 * Grab an exclusive lock on the target table, which we will NOT
-	 * release until end of transaction.
-	 */
-	targetrelation = heap_openr(relname, AccessExclusiveLock);
-	relid = RelationGetRelid(targetrelation);
 
 	/*
 	 * if the 'recurse' flag is set then we are supposed to rename this

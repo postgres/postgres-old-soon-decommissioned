@@ -200,8 +200,7 @@ analyze_rel(Oid relid, VacuumStmt *vacstmt)
 	 */
 	onerel = heap_open(relid, AccessShareLock);
 
-	if (!(pg_ownercheck(GetUserId(), RelationGetRelationName(onerel),
-						RELNAME) ||
+	if (!(pg_class_ownercheck(RelationGetRelid(onerel), GetUserId()) ||
 		  (is_dbadmin(MyDatabaseId) && !onerel->rd_rel->relisshared)))
 	{
 		/* No need for a WARNING if we already complained during VACUUM */

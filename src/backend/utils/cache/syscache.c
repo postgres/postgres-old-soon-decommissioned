@@ -103,6 +103,16 @@ static struct cachedesc cacheinfo[] = {
 			0,
 			0
 	}},
+	{AggregateRelationName,		/* AGGOID */
+		AggregateOidIndex,
+		0,
+		1,
+		{
+			ObjectIdAttributeNumber,
+			0,
+			0,
+			0
+	}},
 	{AccessMethodRelationName,	/* AMNAME */
 		AmNameIndex,
 		0,
