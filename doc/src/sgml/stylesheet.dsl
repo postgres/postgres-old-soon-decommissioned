@@ -23,6 +23,7 @@
 
 (define %refentry-xref-manvolnum% #f)
 
+(element lineannotation ($italic-seq$))
 (element structfield ($mono-seq$))
 (element structname ($mono-seq$))
 (element type ($mono-seq$))
@@ -52,8 +53,8 @@
 
 (define %default-quadding%      'justify)
 (define bop-footnotes           #t)
-(if tex-backend
-    (define %hyphenation%       #t))
+(define %hyphenation%
+  (if tex-backend #t #f))
 
 ]]> <!-- %output-print -->
 
