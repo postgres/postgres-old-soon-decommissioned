@@ -13,7 +13,7 @@ all: Makefile
 Makefile: Makefile.PL
 	@plperl_installdir='$(plperl_installdir)' \
 	  EXTRA_INCLUDES='-I$(top_srcdir)/src/include $(INCLUDES)' \
-	  $(PERL) $< POLLUTE=1
+	  $(PERL) $<
 
 install: all installdirs
 	$(MAKE) -f Makefile install

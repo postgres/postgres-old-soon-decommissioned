@@ -15,7 +15,7 @@ all: Makefile libpq-all
 	$(MAKE) -f $< all
 
 Makefile: Makefile.PL
-	$(PERL) $< POLLUTE=1
+	$(PERL) $<
 
 .PHONY: libpq-all
 libpq-all:
@@ -35,7 +35,7 @@ install: Makefile
 	$(MAKE) -f Makefile clean
 	POSTGRES_LIB="$(libdir)" \
 	  POSTGRES_INCLUDE="$(includedir)" \
-	  $(PERL) $(srcdir)/Makefile.PL POLLUTE=1
+	  $(PERL) $(srcdir)/Makefile.PL
 	$(MAKE) -f Makefile all
 	-@if [ -w "`$(MAKE) --quiet -f Makefile echo-installdir`" ]; then \
 		$(MAKE) -f Makefile install; \
