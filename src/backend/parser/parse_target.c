@@ -355,6 +355,12 @@ checkInsertTargets(ParseState *pstate, List *cols, List **attrnos)
 		{
 			Ident	   *id = makeNode(Ident);
 
+#ifdef	_DROP_COLUMN_HACK__
+			if (COLUMN_IS_DROPPED(attr[i]))
+			{
+				continue;
+			}
+#endif	/* _DROP_COLUMN_HACK__ */
 			id->name = palloc(NAMEDATALEN);
 			StrNCpy(id->name, NameStr(attr[i]->attname), NAMEDATALEN);
 			id->indirection = NIL;

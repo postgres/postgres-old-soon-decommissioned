@@ -2240,6 +2240,10 @@ vc_attrstats(Relation onerel, VRelStats *vacrelstats, HeapTuple tuple)
 		VacAttrStats *stats = &vacattrstats[i];
 		bool		value_hit = true;
 
+#ifdef	_DROP_COLUMN_HACK__
+		if (COLUMN_IS_DROPPED(stats->attr))
+			continue;
+#endif	/* _DROP_COLUMN_HACK__ */
 		value = heap_getattr(tuple,
 							 stats->attr->attnum, tupDesc, &isnull);
 

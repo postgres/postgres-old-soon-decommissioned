@@ -568,6 +568,9 @@ build_tupdesc_ind(RelationBuildDescInfo buildinfo,
 	AttrDefault *attrdef = NULL;
 	int			ndef = 0;
 	int			i;
+#ifdef	_DROP_COLUMN_HACK__
+	bool			columnDropped;
+#endif	/* _DROP_COLUMN_HACK__ */
 
 	constr->has_not_null = false;
 
@@ -575,12 +578,25 @@ build_tupdesc_ind(RelationBuildDescInfo buildinfo,
 
 	for (i = 1; i <= relation->rd_rel->relnatts; i++)
 	{
+#ifdef	_DROP_COLUMN_HACK__
+		columnDropped = false;
+#endif	/* _DROP_COLUMN_HACK__ */
 		atttup = (HeapTuple) AttributeRelidNumIndexScan(attrel,
 										  RelationGetRelid(relation), i);
 
 		if (!HeapTupleIsValid(atttup))
+#ifdef	_DROP_COLUMN_HACK__
+		{
+			atttup = (HeapTuple) AttributeRelidNumIndexScan(attrel,
+										  			RelationGetRelid(relation), DROPPED_COLUMN_INDEX(i));
+			if (!HeapTupleIsValid(atttup))
+#endif	/* _DROP_COLUMN_HACK__ */
 			elog(ERROR, "cannot find attribute %d of relation %s", i,
 				 RelationGetRelationName(relation));
+#ifdef	_DROP_COLUMN_HACK__
+			columnDropped = true;
+		}
+#endif	/* _DROP_COLUMN_HACK__ */
 		attp = (Form_pg_attribute) GETSTRUCT(atttup);
 
 		relation->rd_att->attrs[i - 1] =
@@ -590,6 +606,10 @@ build_tupdesc_ind(RelationBuildDescInfo buildinfo,
 				(char *) attp,
 				ATTRIBUTE_TUPLE_SIZE);
 
+#ifdef	_DROP_COLUMN_HACK__
+		if (columnDropped)
+			continue;
+#endif	/* _DROP_COLUMN_HACK__ */
 		/* Update if this attribute have a constraint */
 		if (attp->attnotnull)
 			constr->has_not_null = true;

@@ -178,6 +178,20 @@ typedef FormData_pg_attribute *Form_pg_attribute;
 #define Anum_pg_attribute_atthasdef		15
 
 
+#ifdef	_DROP_COLUMN_HACK__
+/*
+ *	CONSTANT and MACROS for DROP COLUMN implementation
+ */
+#define	DROP_COLUMN_OFFSET	-20
+#define	COLUMN_IS_DROPPED(attribute)	((attribute)->attnum <= DROP_COLUMN_OFFSET)
+#define	DROPPED_COLUMN_INDEX(attidx)	(DROP_COLUMN_OFFSET - attidx)
+#define	ATTRIBUTE_DROP_COLUMN(attribute) \
+	Assert((attribute)->attnum > 0); \
+	(attribute)->attnum = DROPPED_COLUMN_INDEX((attribute)->attnum); \
+	(attribute)->atttypid = (Oid) -1; \
+	(attribute)->attnotnull = false; \
+	(attribute)->atthasdef = false; 
+#endif	/* _DROP_COLUMN_HACK__ */
 /* ----------------
  *		SCHEMA_ macros for declaring hardcoded tuple descriptors.
  *		these are used in utils/cache/relcache.c
