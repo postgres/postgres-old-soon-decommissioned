@@ -300,6 +300,9 @@ helpSQL(const char *topic)
 					   "Description: %s\n"
 					   "Syntax:\n%s\n\n",
 					 QL_HELP[i].cmd, QL_HELP[i].help, QL_HELP[i].syntax);
+				/* If we have an exact match, exit.  Fixes \h SELECT */
+				if (strcasecmp(topic, QL_HELP[i].cmd) == 0)
+					break;
 			}
 		}
 
