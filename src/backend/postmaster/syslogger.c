@@ -495,7 +495,8 @@ SysLogger_Start(void)
 				syslogPipe[1] = -1;
 #else
 				fflush(stderr);
-				if (dup2(_open_osfhandle((long)syslogPipe[1], _O_APPEND),
+				if (dup2(_open_osfhandle((long)syslogPipe[1],
+										 _O_APPEND | _O_TEXT),
 						 _fileno(stderr)) < 0)
 					ereport(FATAL,
 							(errcode_for_file_access(),
