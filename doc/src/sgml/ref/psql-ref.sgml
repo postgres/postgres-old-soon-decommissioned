@@ -96,7 +96,7 @@ PostgreSQL documentation
        processed in a single transaction, unless there are explicit
        BEGIN/COMMIT commands included in the string to divide it into
        multiple transactions.  This is different from the behavior when
-       the same string is fed to psql's standard input.
+       the same string is fed to <application>psql</application>'s standard input.
       </para>
       </listitem>
     </varlistentry>
