@@ -17,6 +17,9 @@
 
 #include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
+#ifdef OPTIMIZER_DEBUG
+#include "nodes/print.h"
+#endif
 #include "optimizer/clauses.h"
 #include "optimizer/paths.h"
 #include "optimizer/planmain.h"

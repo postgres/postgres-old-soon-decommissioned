@@ -374,6 +374,10 @@ make_jointree_rel(Query *root, Node *jtnode)
 		 */
 		set_cheapest(rel);
 
+#ifdef OPTIMIZER_DEBUG
+		debug_print_rel(root, rel);
+#endif
+
 		return rel;
 	}
 	else

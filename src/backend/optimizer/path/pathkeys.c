@@ -705,7 +705,7 @@ make_pathkeys_for_sortclauses(List *sortclauses,
  * This is a worthwhile savings because these routines will be invoked
  * many times when dealing with a many-relation query.
  */
-static void
+void
 cache_mergeclause_pathkeys(Query *root, RestrictInfo *restrictinfo)
 {
 	Node	   *key;
