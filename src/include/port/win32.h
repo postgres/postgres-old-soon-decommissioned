@@ -202,8 +202,8 @@ typedef int uid_t;
 typedef int gid_t;
 #else
 /* These are redefined by perl. */
-#define int uid_t;
-#define int gid_t;
+#define uid_t int
+#define gid_t int
 #endif
 typedef long key_t;
 
