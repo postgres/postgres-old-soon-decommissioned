@@ -378,12 +378,13 @@ elog(int lev, const char *fmt, ...)
 		}
 		InError = true;
 		ProcReleaseSpins(NULL); /* get rid of spinlocks we hold */
-		if (lev == FATAL)
+		if (! Warn_restart_ready)
 		{
-			if (IsInitProcessingMode())
-				ExitPostgres(0);
-			ExitAfterAbort = true;
+			/* error reported before there is a main loop to return to */
+			elog(REALLYFATAL, "elog: error in postmaster or backend startup, giving up!");
 		}
+		if (lev == FATAL)
+			ExitAfterAbort = true;
 		/* exit to main loop */
 		siglongjmp(Warn_restart, 1);
 	}
@@ -393,6 +394,9 @@ elog(int lev, const char *fmt, ...)
 		/*
 		 * Serious crash time. Postmaster will observe nonzero
 		 * process exit status and kill the other backends too.
+		 *
+		 * XXX: what if we are *in* the postmaster?  proc_exit()
+		 * won't kill our children...
 		 */
 		fflush(stdout);
 		fflush(stderr);

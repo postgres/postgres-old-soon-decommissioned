@@ -37,6 +37,7 @@
 #define siglongjmp longjmp
 #endif
 extern DLLIMPORT sigjmp_buf Warn_restart;
+extern bool Warn_restart_ready;
 extern bool InError;
 extern bool	ExitAfterAbort;
 
