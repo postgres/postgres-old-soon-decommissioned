@@ -3520,6 +3520,16 @@ exec_simple_check_node(Node *node)
 				return TRUE;
 			}
 
+		case T_ScalarArrayOpExpr:
+			{
+				ScalarArrayOpExpr *expr = (ScalarArrayOpExpr *) node;
+
+				if (!exec_simple_check_node((Node *) expr->args))
+					return FALSE;
+
+				return TRUE;
+			}
+
 		case T_BoolExpr:
 			{
 				BoolExpr   *expr = (BoolExpr *) node;

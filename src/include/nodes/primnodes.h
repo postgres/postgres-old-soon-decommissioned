@@ -335,6 +335,25 @@ typedef struct OpExpr
 typedef OpExpr DistinctExpr;
 
 /*
+ * ScalarArrayOpExpr - expression node for "scalar op ANY/ALL (array)"
+ *
+ * The operator must yield boolean.  It is applied to the left operand
+ * and each element of the righthand array, and the results are combined
+ * with OR or AND (for ANY or ALL respectively).  The node representation
+ * is almost the same as for the underlying operator, but we need a useOr
+ * flag to remember whether it's ANY or ALL, and we don't have to store
+ * the result type because it must be boolean.
+ */
+typedef struct ScalarArrayOpExpr
+{
+	Expr		xpr;
+	Oid			opno;			/* PG_OPERATOR OID of the operator */
+	Oid			opfuncid;		/* PG_PROC OID of underlying function */
+	bool		useOr;			/* true for ANY, false for ALL */
+	List	   *args;			/* the scalar and array operands */
+} ScalarArrayOpExpr;
+
+/*
  * BoolExpr - expression node for the basic Boolean operators AND, OR, NOT
  *
  * Notice the arguments are given as a List.  For NOT, of course the list

@@ -515,6 +515,12 @@ clause_selectivity(Query *root,
 		 */
 		s1 = (Selectivity) 0.5;
 	}
+	else if (IsA(clause, DistinctExpr) ||
+			 IsA(clause, ScalarArrayOpExpr))
+	{
+		/* can we do better? */
+		s1 = (Selectivity) 0.5;
+	}
 	else if (IsA(clause, NullTest))
 	{
 		/* Use node specific selectivity calculation function */

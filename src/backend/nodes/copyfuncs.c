@@ -803,6 +803,22 @@ _copyDistinctExpr(DistinctExpr *from)
 }
 
 /*
+ * _copyScalarArrayOpExpr
+ */
+static ScalarArrayOpExpr *
+_copyScalarArrayOpExpr(ScalarArrayOpExpr *from)
+{
+	ScalarArrayOpExpr	   *newnode = makeNode(ScalarArrayOpExpr);
+
+	COPY_SCALAR_FIELD(opno);
+	COPY_SCALAR_FIELD(opfuncid);
+	COPY_SCALAR_FIELD(useOr);
+	COPY_NODE_FIELD(args);
+
+	return newnode;
+}
+
+/*
  * _copyBoolExpr
  */
 static BoolExpr *
@@ -2545,6 +2561,9 @@ copyObject(void *from)
 			break;
 		case T_DistinctExpr:
 			retval = _copyDistinctExpr(from);
+			break;
+		case T_ScalarArrayOpExpr:
+			retval = _copyScalarArrayOpExpr(from);
 			break;
 		case T_BoolExpr:
 			retval = _copyBoolExpr(from);

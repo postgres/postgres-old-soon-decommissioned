@@ -288,6 +288,27 @@ _equalDistinctExpr(DistinctExpr *a, DistinctExpr *b)
 }
 
 static bool
+_equalScalarArrayOpExpr(ScalarArrayOpExpr *a, ScalarArrayOpExpr *b)
+{
+	COMPARE_SCALAR_FIELD(opno);
+	/*
+	 * Special-case opfuncid: it is allowable for it to differ if one
+	 * node contains zero and the other doesn't.  This just means that the
+	 * one node isn't as far along in the parse/plan pipeline and hasn't
+	 * had the opfuncid cache filled yet.
+	 */
+	if (a->opfuncid != b->opfuncid &&
+		a->opfuncid != 0 &&
+		b->opfuncid != 0)
+		return false;
+
+	COMPARE_SCALAR_FIELD(useOr);
+	COMPARE_NODE_FIELD(args);
+
+	return true;
+}
+
+static bool
 _equalBoolExpr(BoolExpr *a, BoolExpr *b)
 {
 	COMPARE_SCALAR_FIELD(boolop);
@@ -1660,6 +1681,9 @@ equal(void *a, void *b)
 			break;
 		case T_DistinctExpr:
 			retval = _equalDistinctExpr(a, b);
+			break;
+		case T_ScalarArrayOpExpr:
+			retval = _equalScalarArrayOpExpr(a, b);
 			break;
 		case T_BoolExpr:
 			retval = _equalBoolExpr(a, b);

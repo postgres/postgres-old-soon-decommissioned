@@ -300,6 +300,34 @@ transformExpr(ParseState *pstate, Node *expr)
 														   makeList1(rexpr));
 						}
 						break;
+					case AEXPR_OP_ANY:
+						{
+							Node	   *lexpr = transformExpr(pstate,
+															  a->lexpr);
+							Node	   *rexpr = transformExpr(pstate,
+															  a->rexpr);
+
+							result = (Node *) make_scalar_array_op(pstate,
+																   a->name,
+																   true,
+																   lexpr,
+																   rexpr);
+						}
+						break;
+					case AEXPR_OP_ALL:
+						{
+							Node	   *lexpr = transformExpr(pstate,
+															  a->lexpr);
+							Node	   *rexpr = transformExpr(pstate,
+															  a->rexpr);
+
+							result = (Node *) make_scalar_array_op(pstate,
+																   a->name,
+																   false,
+																   lexpr,
+																   rexpr);
+						}
+						break;
 					case AEXPR_DISTINCT:
 						{
 							Node	   *lexpr = transformExpr(pstate,
@@ -879,6 +907,7 @@ transformExpr(ParseState *pstate, Node *expr)
 		case T_FuncExpr:
 		case T_OpExpr:
 		case T_DistinctExpr:
+		case T_ScalarArrayOpExpr:
 		case T_NullIfExpr:
 		case T_BoolExpr:
 		case T_FieldSelect:
@@ -1154,6 +1183,9 @@ exprType(Node *expr)
 			break;
 		case T_DistinctExpr:
 			type = ((DistinctExpr *) expr)->opresulttype;
+			break;
+		case T_ScalarArrayOpExpr:
+			type = BOOLOID;
 			break;
 		case T_BoolExpr:
 			type = BOOLOID;

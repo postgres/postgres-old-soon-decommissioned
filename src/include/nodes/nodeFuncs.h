@@ -19,6 +19,5 @@
 extern bool single_node(Node *node);
 extern bool var_is_outer(Var *var);
 extern bool var_is_rel(Var *var);
-extern void set_opfuncid(OpExpr *opexpr);
 
 #endif   /* NODEFUNCS_H */

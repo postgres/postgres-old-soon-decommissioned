@@ -669,6 +669,17 @@ _outDistinctExpr(StringInfo str, DistinctExpr *node)
 }
 
 static void
+_outScalarArrayOpExpr(StringInfo str, ScalarArrayOpExpr *node)
+{
+	WRITE_NODE_TYPE("SCALARARRAYOPEXPR");
+
+	WRITE_OID_FIELD(opno);
+	WRITE_OID_FIELD(opfuncid);
+	WRITE_BOOL_FIELD(useOr);
+	WRITE_NODE_FIELD(args);
+}
+
+static void
 _outBoolExpr(StringInfo str, BoolExpr *node)
 {
 	char	   *opstr = NULL;
@@ -1333,6 +1344,16 @@ _outAExpr(StringInfo str, A_Expr *node)
 		case AEXPR_NOT:
 			appendStringInfo(str, " NOT");
 			break;
+		case AEXPR_OP_ANY:
+			appendStringInfo(str, " ");
+			WRITE_NODE_FIELD(name);
+			appendStringInfo(str, " ANY ");
+			break;
+		case AEXPR_OP_ALL:
+			appendStringInfo(str, " ");
+			WRITE_NODE_FIELD(name);
+			appendStringInfo(str, " ALL ");
+			break;
 		case AEXPR_DISTINCT:
 			appendStringInfo(str, " DISTINCT ");
 			WRITE_NODE_FIELD(name);
@@ -1618,6 +1639,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_DistinctExpr:
 				_outDistinctExpr(str, obj);
+				break;
+			case T_ScalarArrayOpExpr:
+				_outScalarArrayOpExpr(str, obj);
 				break;
 			case T_BoolExpr:
 				_outBoolExpr(str, obj);

@@ -1473,6 +1473,11 @@ cost_qual_eval_walker(Node *node, QualCost *total)
 	{
 		total->per_tuple += cpu_operator_cost;
 	}
+	else if (IsA(node, ScalarArrayOpExpr))
+	{
+		/* should charge more than 1 op cost, but how many? */
+		total->per_tuple += cpu_operator_cost * 10;
+	}
 	else if (IsA(node, SubLink))
 	{
 		/* This routine should not be applied to un-planned expressions */

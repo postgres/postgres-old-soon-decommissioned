@@ -489,6 +489,22 @@ typedef struct FuncExprState
 } FuncExprState;
 
 /* ----------------
+ *		ScalarArrayOpExprState node
+ *
+ * This is a FuncExprState plus some additional data.
+ * ----------------
+ */
+typedef struct ScalarArrayOpExprState
+{
+	FuncExprState	fxprstate;
+	/* Cached info about array element type */
+	Oid				element_type;
+	int16			typlen;
+	bool			typbyval;
+	char			typalign;
+} ScalarArrayOpExprState;
+
+/* ----------------
  *		BoolExprState node
  * ----------------
  */

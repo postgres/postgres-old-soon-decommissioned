@@ -6051,6 +6051,13 @@ a_expr:		c_expr									{ $$ = $1; }
 					n->subselect = $4;
 					$$ = (Node *)n;
 				}
+			| a_expr qual_all_Op sub_type '(' a_expr ')' %prec Op
+				{
+					if ($3 == ANY_SUBLINK)
+						$$ = (Node *) makeA_Expr(AEXPR_OP_ANY, $2, $1, $5);
+					else
+						$$ = (Node *) makeA_Expr(AEXPR_OP_ALL, $2, $1, $5);
+				}
 			| UNIQUE select_with_parens %prec Op
 				{
 					/* Not sure how to get rid of the parentheses
