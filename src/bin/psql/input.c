@@ -86,7 +86,8 @@ gets_interactive(const char *prompt)
 	static char *prev_hist = NULL;
 
 	if (useReadline)
-		s = readline(prompt);
+		/* On some platforms, readline is declared as readline(char *) */
+		s = readline((char *) prompt);
 	else
 		s = gets_basic(prompt);
 
