@@ -206,6 +206,13 @@ LDFLAGS= @LDFLAGS@ @LIBS@
 DLSUFFIX= @DLSUFFIX@
 LN_S= @LN_S@
 
+##############################################################################
+#
+# Additional platform-specific settings
+#
+
+PORTNAME= @PORTNAME@
+
 include $(SRCDIR)/Makefile.port
 
 ##############################################################################

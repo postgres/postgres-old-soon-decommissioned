@@ -131,6 +131,13 @@ LDFLAGS= @LDFLAGS@ @LIBS@
 DLSUFFIX= @DLSUFFIX@
 LN_S = @LN_S@
 
+##############################################################################
+#
+# Additional platform-specific settings
+#
+
+PORTNAME= @PORTNAME@
+
 ifneq ($(wildcard $(SRCDIR)/Makefile.port), )
   include $(SRCDIR)/Makefile.port
 endif
