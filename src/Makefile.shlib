@@ -154,9 +154,15 @@ ifeq ($(PORTNAME), hpux)
     SHLIB_LINK		+= `$(CC) $(LDFLAGS) -print-libgcc-file-name`
   endif
   ifeq ($(with_gnu_ld), yes)
-    LINK.shared		= $(CC) $(LDFLAGS) -shared -Wl,-h -Wl,$(soname) -Wl,+b -Wl,$(libdir)
+    LINK.shared		= $(CC) $(LDFLAGS) -shared -Wl,-h -Wl,$(soname)
   else
-    LINK.shared		= $(LD) +h $(soname) -b +b $(libdir)
+    # can't use the CC-syntax rpath pattern here
+    rpath =
+    ifeq ($(enable_rpath), yes)
+      LINK.shared	= $(LD) +h $(soname) -b +b $(rpathdir)
+    else
+      LINK.shared	= $(LD) +h $(soname) -b
+    endif
   endif
 endif
 
