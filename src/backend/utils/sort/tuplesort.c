@@ -1233,6 +1233,7 @@ mergeonerun(Tuplesortstate *state)
 	 */
 	while (state->memtupcount > 0)
 	{
+		CHECK_FOR_INTERRUPTS();
 		/* write the tuple to destTape */
 		priorAvail = state->availMem;
 		srcTape = state->memtupindex[0];

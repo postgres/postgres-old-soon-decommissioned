@@ -16,13 +16,13 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
 
 #include <sys/types.h>
 #include <sys/file.h>
 
-#include "postgres.h"
-
 #include "executor/executor.h"
+#include "miscadmin.h"
 #include "utils/memutils.h"
 
 
@@ -91,6 +91,8 @@ ExecScan(Scan *node,
 	for (;;)
 	{
 		TupleTableSlot *slot;
+
+		CHECK_FOR_INTERRUPTS();
 
 		slot = (*accessMtd) (node);
 

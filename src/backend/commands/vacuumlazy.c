@@ -230,6 +230,8 @@ lazy_scan_heap(Relation onerel, LVRelStats *vacrelstats,
 					hastup;
 		int			prev_dead_count;
 
+		CHECK_FOR_INTERRUPTS();
+
 		/*
 		 * If we are close to overrunning the available space for
 		 * dead-tuple TIDs, pause and do a cycle of vacuuming before we
@@ -463,6 +465,8 @@ lazy_vacuum_heap(Relation onerel, LVRelStats *vacrelstats)
 		BlockNumber tblk;
 		Buffer		buf;
 		Page		page;
+
+		CHECK_FOR_INTERRUPTS();
 
 		tblk = ItemPointerGetBlockNumber(&vacrelstats->dead_tuples[tupindex]);
 		buf = ReadBuffer(onerel, tblk);
@@ -769,6 +773,8 @@ count_nondeletable_pages(Relation onerel, LVRelStats *vacrelstats)
 		bool		pgchanged,
 					tupgone,
 					hastup;
+
+		CHECK_FOR_INTERRUPTS();
 
 		blkno--;
 

@@ -263,6 +263,8 @@ rebuildheap(Oid OIDNewHeap, Oid OIDOldHeap, Oid OIDOldIndex)
 		HeapTupleData LocalHeapTuple;
 		Buffer		LocalBuffer;
 
+		CHECK_FOR_INTERRUPTS();
+
 		LocalHeapTuple.t_self = ScanResult->heap_iptr;
 		LocalHeapTuple.t_datamcxt = NULL;
 		LocalHeapTuple.t_data = NULL;

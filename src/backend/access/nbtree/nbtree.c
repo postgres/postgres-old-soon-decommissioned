@@ -596,6 +596,8 @@ btbulkdelete(PG_FUNCTION_ARGS)
 			IndexTuple	itup;
 			ItemPointer htup;
 
+			CHECK_FOR_INTERRUPTS();
+
 			/* current is the next index tuple */
 			blkno = ItemPointerGetBlockNumber(current);
 			offnum = ItemPointerGetOffsetNumber(current);

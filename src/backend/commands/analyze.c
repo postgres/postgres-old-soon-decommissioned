@@ -516,6 +516,7 @@ acquire_sample_rows(Relation onerel, HeapTuple *rows, int targrows,
 		rows[numrows++] = heap_copytuple(tuple);
 		if (numrows >= targrows)
 			break;
+		CHECK_FOR_INTERRUPTS();
 	}
 	heap_endscan(scan);
 
@@ -583,6 +584,8 @@ acquire_sample_rows(Relation onerel, HeapTuple *rows, int targrows,
 		Page		targpage;
 		OffsetNumber targoffset,
 					maxoffset;
+
+		CHECK_FOR_INTERRUPTS();
 
 		t = select_next_random_record(t, targrows, &rstate);
 		/* Try to read the t'th record in the table */
@@ -881,6 +884,8 @@ compute_minimal_stats(VacAttrStats *stats,
 		int			firstcount1,
 					j;
 
+		CHECK_FOR_INTERRUPTS();
+
 		value = heap_getattr(tuple, stats->attnum, tupDesc, &isnull);
 
 		/* Check for null/nonnull */
@@ -1157,6 +1162,8 @@ compute_scalar_stats(VacAttrStats *stats,
 		HeapTuple	tuple = rows[i];
 		Datum		value;
 		bool		isnull;
+
+		CHECK_FOR_INTERRUPTS();
 
 		value = heap_getattr(tuple, stats->attnum, tupDesc, &isnull);
 

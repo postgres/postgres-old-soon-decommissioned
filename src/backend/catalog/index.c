@@ -1679,6 +1679,8 @@ IndexBuildHeapScan(Relation heapRelation,
 	{
 		bool		tupleIsAlive;
 
+		CHECK_FOR_INTERRUPTS();
+
 		if (snapshot == SnapshotAny)
 		{
 			/* do our own time qual check */
