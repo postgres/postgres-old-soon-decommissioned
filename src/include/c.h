@@ -711,6 +711,17 @@ int fseeko(FILE *stream, off_t offset, int whence);
 off_t ftello(FILE *stream);
 #endif
 
+/*
+ * Win32 doesn't have reliable rename/unlink during concurrent access
+ */
+#ifdef WIN32
+int pgrename(const char *from, const char *to);
+int pgunlink(const char *path);      
+#define rename(path)		pgrename(path)
+#define unlink(from, to)	pgunlink(from, to)
+#endif
+
+  
 /* These are for things that are one way on Unix and another on NT */
 #define NULL_DEV		"/dev/null"
 
