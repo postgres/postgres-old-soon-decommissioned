@@ -116,7 +116,7 @@ ECPGdeallocate(int lineno, int c, char *name)
 	{
 		/*
 		 * Just ignore all errors since we do not know the list of cursors
-		 * we are allowed to free. We have to trust that the software.
+		 * we are allowed to free. We have to trust the software.
 		 */
 		return true;
 	}
