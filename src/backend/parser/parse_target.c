@@ -498,12 +498,14 @@ printf("transformTargetList: decode T_Attr\n");
 	resname = (res->name) ? res->name : strVal(lfirst(attrs));
 	if (pstate->p_is_insert || pstate->p_is_update)
 	{
+		Relation rd;
 		/*
 		 * insert or update query -- insert, update work only on one
 		 * relation, so multiple occurence of same resdomno is bogus
 		 */
-		relid = refnameRangeTableEntry(pstate, att->relname)->relid;
-		resdomno = get_attnum(relid, attrname);
+		rd = pstate->p_target_relation;
+		Assert(rd != NULL);
+		resdomno = attnameAttNum(rd, res->name);
 	}
 	else
 		resdomno  = pstate->p_last_resno++;
