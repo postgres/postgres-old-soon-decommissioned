@@ -184,9 +184,13 @@ case "$langname" in
 		lancomp="PL/Tcl"
 		trusted="TRUSTED "
 		handler="pltcl_call_handler";;
+	plperl)
+		lancomp="PL/Perl"
+		trusted="TRUSTED "
+		handler="plperl_call_handler";;
 	*)
 		echo "$CMDNAME: unsupported language '$langname'"
-		echo "Supported languages are 'plpgsql' and 'pltcl'."
+		echo "Supported languages are 'plpgsql', 'pltcl', and 'plperl'."
 		exit 1
         ;;
 esac
