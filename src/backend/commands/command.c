@@ -1287,26 +1287,33 @@ AlterTableAddConstraint(char *relationName,
 				{
 					List	   *attrl;
 
-					/* go through the fkconstraint->pk_attrs list */
-					foreach(attrl, fkconstraint->pk_attrs)
-					{
-						Ident *attr=lfirst(attrl);
-						found = false;
-						for (i = 0; i < INDEX_MAX_KEYS && indexStruct->indkey[i] != 0; i++)
+					/* Make sure this index has the same number of keys -- It obviously
+					 * won't match otherwise. */
+					for (i = 0; i < INDEX_MAX_KEYS && indexStruct->indkey[i] != 0; i++);
+					if (i!=length(fkconstraint->pk_attrs))
+						found=false;
+					else {
+						/* go through the fkconstraint->pk_attrs list */
+						foreach(attrl, fkconstraint->pk_attrs)
 						{
-							int pkattno = indexStruct->indkey[i];
-							if (pkattno>0)
+							Ident *attr=lfirst(attrl);
+							found = false;
+							for (i = 0; i < INDEX_MAX_KEYS && indexStruct->indkey[i] != 0; i++)
 							{
-								char *name = NameStr(rel_attrs[pkattno-1]->attname);
-								if (strcmp(name, attr->name)==0)
+								int pkattno = indexStruct->indkey[i];
+								if (pkattno>0)
 								{
-									found = true;
-									break;
+									char *name = NameStr(rel_attrs[pkattno-1]->attname);
+									if (strcmp(name, attr->name)==0)
+									{
+										found = true;
+										break;
+									}
 								}
 							}
+							if (!found)
+								break;
 						}
-						if (!found)
-							break;
 					}
 				}
 				ReleaseSysCache(indexTuple);
