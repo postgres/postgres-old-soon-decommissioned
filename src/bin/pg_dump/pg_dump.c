@@ -1410,13 +1410,13 @@ dumpClasses(TableInfo *tblinfo, int numTables, FILE *fout, char *onlytable, int 
 			copybuf[2] == '\0') {
 	  	        copydone = true;	/* don't print this... */
 	            } else {
-	    	        fputs(copybuf, stdout);
+	    	        fputs(copybuf, fout);
 		        switch (ret) {
 		        case EOF:
 		            copydone = true;
 		            /*FALLTHROUGH*/
 		        case 0:
-		            fputc('\n', stdout);
+		            fputc('\n', fout);
 		            break;
 		        case 1:
 		            break;
