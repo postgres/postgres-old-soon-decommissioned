@@ -289,12 +289,9 @@ printtup_internal(HeapTuple tuple, TupleDesc typeinfo)
 				/* variable length, assume a varlena structure */
 				len = VARSIZE(attr) - VARHDRSZ;
 
-#ifdef MULTIBYTE
-				pq_putncharlen(VARDATA(attr), len);
-#else
 				pq_putint(len, VARHDRSZ);
 				pq_putnchar(VARDATA(attr), len);
-#endif
+
 #ifdef IPORTAL_DEBUG
 				{
 					char	   *d = VARDATA(attr);
