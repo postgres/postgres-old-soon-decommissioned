@@ -260,7 +260,8 @@ extern void PQfreemem(void *ptr);
 /* Simple synchronous query */
 extern PGresult *PQexec(PGconn *conn, const char *query);
 extern PGnotify *PQnotifies(PGconn *conn);
-extern void PQfreeNotify(PGnotify *notify);
+/* Exists for backward compatibility.  bjm 2003-03-24 */
+#define PQfreeNotify(ptr) PQfreemem(ptr)
 
 /* Interface for multiple-result or asynchronous queries */
 extern int	PQsendQuery(PGconn *conn, const char *query);

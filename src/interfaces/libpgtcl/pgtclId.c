@@ -554,7 +554,7 @@ Pg_Notify_EventProc(Tcl_Event *evPtr, int flags)
 	if (event->connid == NULL)
 	{
 		if (event->notify)
-			PQfreeNotify(event->notify);
+			PQfreemem(event->notify);
 		return 1;
 	}
 
@@ -634,7 +634,7 @@ Pg_Notify_EventProc(Tcl_Event *evPtr, int flags)
 	Tcl_Release((ClientData) event->connid);
 
 	if (event->notify)
-		PQfreeNotify(event->notify);
+		PQfreemem(event->notify);
 
 	return 1;
 }

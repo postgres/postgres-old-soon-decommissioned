@@ -441,7 +441,7 @@ PrintNotifications(void)
 	{
 		fprintf(pset.queryFout, gettext("Asynchronous NOTIFY '%s' from backend with pid %d received.\n"),
 				notify->relname, notify->be_pid);
-		free(notify);
+		PQfreemem(notify);
 		fflush(pset.queryFout);
 	}
 }
