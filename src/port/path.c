@@ -258,7 +258,7 @@ set_pglocale(const char *argv0, const char *app)
 	if (find_my_exec(argv0, my_exec_path) < 0)
 		return;
 		
-	get_locale_path(argv0, path);
+	get_locale_path(my_exec_path, path);
 	bindtextdomain(app, path);
 	textdomain(app);
 #endif
