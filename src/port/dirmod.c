@@ -36,10 +36,9 @@
 #undef rename
 #undef unlink
 
-#ifdef __WIN32__
+#ifndef __CYGWIN__
 #include <winioctl.h>
 #else
-/* __CYGWIN__ */
 #include <windows.h>
 #include <w32api/winioctl.h>
 #endif
