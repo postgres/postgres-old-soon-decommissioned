@@ -1,28 +1,10 @@
 /*
- * Routines for handling of SET var TO statements
+ * Routines for handling of 'SET var TO', 'SHOW var' and 'RESET var'
+ * statements.
  *
  * $Id$
  *
- * $Log: variable.c,v $
- * Revision 1.3  1997/04/17 13:50:30  scrappy
- * From: "Martin J. Laubach" <mjl@CSlab.tuwien.ac.at>
- * Subject: [HACKERS] Patch: set date to euro/us postgres/iso/sql
- *
- *   Here a patch that implements a SET date for use by the datetime
- * stuff. The syntax is
- *
- *         SET date TO 'val[,val,...]'
- *
- *   where val is us (us dates), euro (european dates), postgres,
- * iso or sql.
- *
- *   Thomas is working on the integration in his datetime module.
- * I just needed to get the patch out before it went stale :)
- *
- * Revision 1.1  1997/04/10 16:52:07  mjl
- * Initial revision
  */
-/*-----------------------------------------------------------------------*/
 
 #include <stdio.h>
 #include <string.h>
