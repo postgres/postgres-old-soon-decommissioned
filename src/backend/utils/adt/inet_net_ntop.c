@@ -270,9 +270,9 @@ inet_cidr_ntop_ipv6(const u_char *src, int bits, char *dst, size_t size)
 
 	if (!double_colon) {
 		if (bits < 128 - 32)
-			cp += SPRINTF((cp, "::", bits));
+			cp += SPRINTF((cp, "::%d", bits));
 		else if (bits < 128 - 16)
-			cp += SPRINTF((cp, ":0", bits));
+			cp += SPRINTF((cp, ":0%d", bits));
 	}
 
 	/* Format CIDR /width. */
