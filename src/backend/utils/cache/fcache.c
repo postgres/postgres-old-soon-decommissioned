@@ -50,9 +50,6 @@ GetDynamicFuncArgType(Var *arg, ExprContext *econtext)
 		elog(ERROR, "Lookup failed on type tuple for class %s",
 			 relname);
 
-	/* TEST: I bet this routine is unnecessary ... */
-	Assert(arg->vartype == tup->t_data->t_oid);
-
 	return tup->t_data->t_oid;
 }
 
