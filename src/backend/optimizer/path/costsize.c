@@ -238,6 +238,9 @@ cost_nonsequential_access(double relpages)
  * Any additional quals evaluated as qpquals may reduce the number of returned
  * tuples, but they won't reduce the number of tuples we have to fetch from
  * the table, so they don't reduce the scan cost.
+ *
+ * NOTE: as of 7.5, indexQuals is a list of RestrictInfo nodes, where formerly
+ * it was a list of bare clause expressions.
  */
 void
 cost_index(Path *path, Query *root,

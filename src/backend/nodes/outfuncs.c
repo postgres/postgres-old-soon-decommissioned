@@ -968,8 +968,9 @@ _outIndexPath(StringInfo str, IndexPath *node)
 	_outPathInfo(str, (Path *) node);
 
 	WRITE_NODE_FIELD(indexinfo);
-	WRITE_NODE_FIELD(indexqual);
-	WRITE_NODE_FIELD(indexjoinclauses);
+	WRITE_NODE_FIELD(indexclauses);
+	WRITE_NODE_FIELD(indexquals);
+	WRITE_BOOL_FIELD(isjoininner);
 	WRITE_ENUM_FIELD(indexscandir, ScanDirection);
 	WRITE_FLOAT_FIELD(rows, "%.0f");
 }

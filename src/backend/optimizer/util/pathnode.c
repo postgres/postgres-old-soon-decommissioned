@@ -354,18 +354,22 @@ create_index_path(Query *root,
 	pathnode->path.parent = rel;
 	pathnode->path.pathkeys = pathkeys;
 
-	/* Convert RestrictInfo nodes to indexquals the executor can handle */
+	/* Convert clauses to indexquals the executor can handle */
 	indexquals = expand_indexqual_conditions(index, restriction_clauses);
+
+	/* Flatten the clause-groups list to produce indexclauses list */
+	restriction_clauses = flatten_clausegroups_list(restriction_clauses);
 
 	/*
 	 * We are making a pathnode for a single-scan indexscan; therefore,
-	 * both indexinfo and indexqual should be single-element lists.
+	 * indexinfo etc should be single-element lists.
 	 */
 	pathnode->indexinfo = makeList1(index);
-	pathnode->indexqual = makeList1(indexquals);
+	pathnode->indexclauses = makeList1(restriction_clauses);
+	pathnode->indexquals = makeList1(indexquals);
 
 	/* It's not an innerjoin path. */
-	pathnode->indexjoinclauses = NIL;
+	pathnode->isjoininner = false;
 
 	pathnode->indexscandir = indexscandir;
 

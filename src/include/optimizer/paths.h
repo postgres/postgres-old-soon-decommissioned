@@ -44,6 +44,8 @@ extern List *group_clauses_by_indexkey_for_or(RelOptInfo *rel,
 extern List *expand_indexqual_conditions(IndexOptInfo *index,
 							List *clausegroups);
 extern void check_partial_indexes(Query *root, RelOptInfo *rel);
+extern List *flatten_clausegroups_list(List *clausegroups);
+extern Expr *make_expr_from_indexclauses(List *indexclauses);
 
 /*
  * orindxpath.c
