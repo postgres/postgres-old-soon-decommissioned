@@ -241,14 +241,14 @@ static struct cachedesc cacheinfo[] = {
 	{ListenerRelationName,		/* LISTENREL */
 		2,
 		{
-			Anum_pg_listener_relname,
 			Anum_pg_listener_pid,
+			Anum_pg_listener_relname,
 			0,
 			0
 		},
 		sizeof(FormData_pg_listener),
-		ListenerRelnamePidIndex,
-	ListenerRelnamePidIndexScan},
+		ListenerPidRelnameIndex,
+	ListenerPidRelnameIndexScan},
 	{OperatorRelationName,		/* OPERNAME */
 		4,
 		{
