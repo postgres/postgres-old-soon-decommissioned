@@ -96,6 +96,8 @@ cat > $HFILE <<FuNkYfMgRsTuFf
 #ifndef	FMGR_H
 #define FMGR_H
 
+#include "postgres.h"
+
 /*
  *	Maximum number of arguments for a built-in function.
  *
