@@ -4009,6 +4009,18 @@ StartupXLOG(void)
 	expectedTLIs = readTimeLineHistory(recoveryTargetTLI);
 
 	/*
+	 * If pg_control's timeline is not in expectedTLIs, then we cannot
+	 * proceed: the backup is not part of the history of the requested
+	 * timeline.
+	 */
+	if (!list_member_int(expectedTLIs,
+						 (int) ControlFile->checkPointCopy.ThisTimeLineID))
+		ereport(FATAL,
+				(errmsg("requested timeline %u is not a child of database system timeline %u",
+						recoveryTargetTLI,
+						ControlFile->checkPointCopy.ThisTimeLineID)));
+
+	/*
 	 * Get the last valid checkpoint record.  If the latest one according
 	 * to pg_control is broken, try the next-to-last one.
 	 */
