@@ -620,7 +620,7 @@ connectDatabase(const char *dbname, const char *pghost, const char *pgport,
 
 		if (!conn)
 		{
-			fprintf(stderr, _("%s: could not connection to database %s\n"),
+			fprintf(stderr, _("%s: could not connect to database %s\n"),
 					progname, dbname);
 			exit(0);
 		}
@@ -643,7 +643,7 @@ connectDatabase(const char *dbname, const char *pghost, const char *pgport,
 	/* check to see that the backend connection was successfully made */
 	if (PQstatus(conn) == CONNECTION_BAD)
 	{
-		fprintf(stderr, _("%s: could not connection to database %s: %s\n"),
+		fprintf(stderr, _("%s: could not connect to database %s: %s\n"),
 					progname, dbname, PQerrorMessage(conn));
 		exit(0);
 	}
