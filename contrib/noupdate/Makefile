@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 subdir = contrib/noupdate
 top_builddir = ../..

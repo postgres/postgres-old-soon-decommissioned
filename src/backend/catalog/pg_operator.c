@@ -8,7 +8,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  * NOTES
  *	  these routines moved here from commands/define.c and somewhat cleaned up.

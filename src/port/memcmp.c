@@ -8,7 +8,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  * This file was taken from NetBSD and is used by SunOS because memcmp
  * on that platform does not properly compare negative bytes.

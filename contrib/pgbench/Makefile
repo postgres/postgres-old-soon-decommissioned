@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 subdir = contrib/pgbench
 top_builddir = ../..

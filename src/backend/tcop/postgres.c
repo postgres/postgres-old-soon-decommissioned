@@ -8,7 +8,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  * NOTES
  *	  this is the "main" module of the postgres backend and
@@ -2659,7 +2659,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.376 $ $Date: 2003/11/24 14:49:51 $\n");
+		puts("$Revision: 1.377 $ $Date: 2003/11/29 19:51:57 $\n");
 	}
 
 	/*

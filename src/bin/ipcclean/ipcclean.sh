@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $Header$
+# $PostgreSQL$
 #
 
 CMDNAME=`basename $0`

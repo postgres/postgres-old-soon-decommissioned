@@ -4,7 +4,7 @@
 #    Makefile for utils/time
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

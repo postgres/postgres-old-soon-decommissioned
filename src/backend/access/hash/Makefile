@@ -4,7 +4,7 @@
 #    Makefile for access/hash
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

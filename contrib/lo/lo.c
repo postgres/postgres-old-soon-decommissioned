@@ -1,7 +1,7 @@
 /*
  *	PostgreSQL type definitions for managed LargeObjects.
  *
- *	$Header$
+ *	$PostgreSQL$
  *
  */
 

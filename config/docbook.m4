@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 # PGAC_PROG_JADE
 # --------------

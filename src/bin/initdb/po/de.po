@@ -3,7 +3,7 @@
 #
 # Use these quotes: »%s«
 #
-# $Header$
+# $PostgreSQL$
 #
 msgid ""
 msgstr ""

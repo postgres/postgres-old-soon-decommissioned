@@ -4,7 +4,7 @@
  *						  procedural language
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  *	  This software is copyrighted by Jan Wieck - Hamburg.
  *

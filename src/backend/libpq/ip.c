@@ -8,7 +8,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  * This file and the IPV6 implementation were initially provided by
  * Nigel Kukard <nkukard@lbsd.net>, Linux Based Systems Design

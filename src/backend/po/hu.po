@@ -2,7 +2,7 @@
 # Zoltan Kovacs <kovzol@math.u-szeged.hu>, 2001.
 # Robert Zana <zerobert@freemail.hu>, 2001.
 #
-# $Header$
+# $PostgreSQL$
 #
 msgid ""
 msgstr ""

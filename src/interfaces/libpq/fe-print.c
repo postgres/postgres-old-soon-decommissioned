@@ -10,7 +10,7 @@
  * didn't really belong there.
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  *-------------------------------------------------------------------------
  */

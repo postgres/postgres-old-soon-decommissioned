@@ -4,7 +4,7 @@
  * (currently mule internal code (mic) is used)
  * Tatsuo Ishii
  *
- * $Header$
+ * $PostgreSQL$
  */
 #include "postgres.h"
 

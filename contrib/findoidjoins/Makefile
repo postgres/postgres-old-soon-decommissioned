@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 subdir = contrib/findoidjoins
 top_builddir = ../..

@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 subdir = src/backend/utils/misc
 top_builddir = ../../../..

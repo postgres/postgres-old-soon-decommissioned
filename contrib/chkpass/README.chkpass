@@ -1,4 +1,4 @@
-$Header$
+$PostgreSQL$
 
 Chkpass is a password type that is automatically checked and converted upon
 entry.  It is stored encrypted.  To compare, simply compare agains a clear

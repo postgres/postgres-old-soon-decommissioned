@@ -4,7 +4,7 @@
 #    Makefile for utils/mb/conversion_procs
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

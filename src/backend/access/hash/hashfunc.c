@@ -8,7 +8,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  * NOTES
  *	  These functions are stored in pg_amproc.	For each operator class

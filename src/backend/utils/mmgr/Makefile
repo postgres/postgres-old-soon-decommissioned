@@ -4,7 +4,7 @@
 #    Makefile for utils/mmgr
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

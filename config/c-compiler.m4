@@ -1,5 +1,5 @@
 # Macros to detect C compiler features
-# $Header$
+# $PostgreSQL$
 
 
 # PGAC_C_SIGNED

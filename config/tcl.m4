@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 # Autoconf macros to check for Tcl related things
 

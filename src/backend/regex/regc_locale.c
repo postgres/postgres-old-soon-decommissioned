@@ -47,7 +47,7 @@
  * permission to use and distribute the software in accordance with the
  * terms specified in this license.
  *
- * $Header$
+ * $PostgreSQL$
  */
 
 /* ASCII character-name table */

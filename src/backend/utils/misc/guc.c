@@ -10,7 +10,7 @@
  * Written by Peter Eisentraut <peter_e@gmx.net>.
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  *--------------------------------------------------------------------
  */

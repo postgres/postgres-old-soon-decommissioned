@@ -4,7 +4,7 @@
 #    Makefile for optimizer/util
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

@@ -1,7 +1,7 @@
 # Hungarian message translation file for PostgreSQL utility pg_controldata.
 # Krisztian Szekely <szekelyk@different.hu>, 2002.
 #
-# $Header$
+# $PostgreSQL$
 #
 msgid ""
 msgstr ""

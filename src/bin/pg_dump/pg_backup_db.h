@@ -2,7 +2,7 @@
  *	Definitions for pg_backup_db.c
  *
  *	IDENTIFICATION
- *		$Header$
+ *		$PostgreSQL$
  */
 
 #define BLOB_XREF_TABLE "pg_dump_blob_xref"		/* MUST be lower case */

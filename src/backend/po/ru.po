@@ -1,7 +1,7 @@
 # ru.po
 # POSTGRES Translated Messages into the Russian Language (KOI8-R)
 #
-# $Header$
+# $PostgreSQL$
 #
 # ChangeLog:
 #   - July - August 23, 2003: updates for 7.4.x; <mokhov@cs.concordia.ca>

@@ -1,4 +1,4 @@
-/* $Header$ */
+/* $PostgreSQL$ */
 
 /* undefine and redefine after #include */
 #undef mkdir

@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 subdir = contrib/pg_dumplo
 top_builddir = ../..

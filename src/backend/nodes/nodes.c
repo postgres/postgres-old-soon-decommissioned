@@ -9,7 +9,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  * HISTORY
  *	  Andrew Yu			Oct 20, 1994	file creation

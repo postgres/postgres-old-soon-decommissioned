@@ -1,4 +1,4 @@
-<!-- $Header$ -->
+<!-- $PostgreSQL$ -->
 
  <chapter id="regress">
   <title id="regress-title">Regression Tests</title>

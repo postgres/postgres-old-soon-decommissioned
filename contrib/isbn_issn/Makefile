@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 subdir = contrib/isbn_issn
 top_builddir = ../..

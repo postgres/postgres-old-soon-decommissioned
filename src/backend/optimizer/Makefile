@@ -1,7 +1,7 @@
 #
 # Makefile for optimizer
 #
-# $Header$
+# $PostgreSQL$
 #
 
 subdir = src/backend/optimizer

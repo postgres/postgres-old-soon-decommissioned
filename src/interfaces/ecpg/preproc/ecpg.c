@@ -1,4 +1,4 @@
-/* $Header$ */
+/* $PostgreSQL$ */
 
 /* New main for ecpg, the PostgreSQL embedded SQL precompiler. */
 /* (C) Michael Meskes <meskes@postgresql.org> Feb 5th, 1998 */

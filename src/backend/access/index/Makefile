@@ -4,7 +4,7 @@
 #    Makefile for access/index
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

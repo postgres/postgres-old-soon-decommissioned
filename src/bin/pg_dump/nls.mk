@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 CATALOG_NAME	:= pg_dump
 AVAIL_LANGUAGES	:= cs de es it nb pt_BR ru sv zh_CN zh_TW
 GETTEXT_FILES	:= pg_dump.c common.c pg_backup_archiver.c pg_backup_custom.c \

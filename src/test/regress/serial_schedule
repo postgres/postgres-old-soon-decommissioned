@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 # This should probably be in an order similar to parallel_schedule.
 test: boolean
 test: char

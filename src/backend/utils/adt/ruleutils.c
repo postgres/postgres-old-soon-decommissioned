@@ -3,7 +3,7 @@
  *				back to source text
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  *	  This software is copyrighted by Jan Wieck - Hamburg.
  *

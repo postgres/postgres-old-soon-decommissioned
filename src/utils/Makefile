@@ -2,7 +2,7 @@
 #
 # Makefile for utils
 #
-# $Header$
+# $PostgreSQL$
 #
 # dllinit.o is only built on Win32 platform.
 #

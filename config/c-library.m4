@@ -1,5 +1,5 @@
 # Macros that test various C library quirks
-# $Header$
+# $PostgreSQL$
 
 
 # PGAC_VAR_INT_TIMEZONE

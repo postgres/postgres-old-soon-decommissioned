@@ -8,7 +8,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  * NOTES
  *	  Path and Plan nodes do not have any readfuncs support, because we

@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 subdir = contrib/tsearch2/ispell
 top_builddir = ../../..

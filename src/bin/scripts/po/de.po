@@ -1,7 +1,7 @@
 # German message translation file for "scripts".
 # Peter Eisentraut <peter_e@gmx.net>, 2003.
 #
-# $Header$
+# $PostgreSQL$
 #
 # Use these quotes: »%s«
 #

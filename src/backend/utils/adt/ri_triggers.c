@@ -17,7 +17,7 @@
  *
  * Portions Copyright (c) 1996-2003, PostgreSQL Global Development Group
  *
- * $Header$
+ * $PostgreSQL$
  *
  * ----------
  */

@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 subdir = contrib/tsearch2/snowball
 top_builddir = ../../..

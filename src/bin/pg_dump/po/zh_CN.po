@@ -1,6 +1,6 @@
 # simplified Chinese translation file for pg_dump and friends
 # Weiping He <laser@zhengmai.com.cn>, 2001.
-# $Header$
+# $PostgreSQL$
 #
 msgid ""
 msgstr ""

@@ -1,5 +1,5 @@
 # Makefile for PL/Perl
-# $Header$
+# $PostgreSQL$
 
 subdir = src/pl/plperl
 top_builddir = ../../..

@@ -1,7 +1,7 @@
 #
 # Makefile for the storage manager subsystem
 #
-# $Header$
+# $PostgreSQL$
 #
 
 subdir = src/backend/storage

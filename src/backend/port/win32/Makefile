@@ -4,7 +4,7 @@
 #    Makefile for port/win32
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 subdir = src/pl/tcl/modules
 top_builddir = ../../../..

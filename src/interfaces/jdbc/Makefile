@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2001, PostgreSQL Global Development Group
 #
-# $Header$
+# $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

@@ -4,7 +4,7 @@
 #    Makefile for storage/file
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

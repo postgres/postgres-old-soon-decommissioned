@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 CATALOG_NAME	:= psql
 AVAIL_LANGUAGES	:= cs de es fr hu it nb pt_BR ru sl sv zh_CN zh_TW
 GETTEXT_FILES	:= command.c common.c copy.c help.c input.c large_obj.c \

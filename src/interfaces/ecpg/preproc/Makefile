@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 subdir = src/interfaces/ecpg/preproc
 top_builddir = ../../../..

@@ -7,7 +7,7 @@ import org.postgresql.PGRefCursorResultSet;
 import org.postgresql.core.BaseResultSet;
 import org.postgresql.core.Field;
 
-/* $Header$
+/* $PostgreSQL$
  * This class implements the java.sql.Statement interface for JDBC3.
  * However most of the implementation is really done in
  * org.postgresql.jdbc3.AbstractJdbc3Statement or one of it's parents

@@ -1,7 +1,7 @@
 # ru.po
 # PG_DUMP Translated Messages into the Russian Language (KOI8-R)
 #
-# $Header$
+# $PostgreSQL$
 #
 # ChangeLog:
 #   - July 24 - October 5, 2003: Updates for 7.4.x; <mokhov@cs.concordia.ca>

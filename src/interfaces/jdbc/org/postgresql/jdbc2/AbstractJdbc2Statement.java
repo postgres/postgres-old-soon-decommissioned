@@ -10,7 +10,7 @@ import org.postgresql.largeobject.*;
 import org.postgresql.util.PSQLException;
 import org.postgresql.util.PSQLState;
 
-/* $Header$
+/* $PostgreSQL$
  * This class defines methods of the jdbc2 specification.  This class extends
  * org.postgresql.jdbc1.AbstractJdbc1Statement which provides the jdbc1
  * methods.  The real Statement class (for jdbc2) is org.postgresql.jdbc2.Jdbc2Statement

@@ -7,7 +7,7 @@
 # Author:  Peter Eisentraut <peter_e@gmx.net> 
 # Public domain
 
-# $Header$
+# $PostgreSQL$
 
 me=`basename $0`
 

@@ -9,7 +9,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  *	NOTES
  *	   Postgres btree pages look like ordinary relation pages.	The opaque

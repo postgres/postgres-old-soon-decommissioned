@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.sql.*;
 import java.util.Calendar;
 
-/* $Header$
+/* $PostgreSQL$
  * This class defines methods of the jdbc3 specification.  This class extends
  * org.postgresql.jdbc2.AbstractJdbc2Statement which provides the jdbc2
  * methods.  The real Statement class (for jdbc2) is org.postgresql.jdbc3.Jdbc3Statement

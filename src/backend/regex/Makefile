@@ -4,7 +4,7 @@
 #    Makefile for backend/regex
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

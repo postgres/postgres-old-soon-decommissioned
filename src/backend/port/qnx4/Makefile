@@ -4,7 +4,7 @@
 #    Makefile for port/qnx4
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

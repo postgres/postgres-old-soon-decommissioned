@@ -1,7 +1,7 @@
 # Czech message translation file for psql
 # Karel Zak <zakkr@zf.jcu.cz>, 2001-2003.
 #
-# $Header$
+# $PostgreSQL$
 #
 msgid ""
 msgstr ""

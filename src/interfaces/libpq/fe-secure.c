@@ -11,7 +11,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  * NOTES
  *	  The client *requires* a valid server certificate.  Since

@@ -1,6 +1,6 @@
 <!--
  Documentation of the system catalogs, directed toward PostgreSQL developers
- $Header$
+ $PostgreSQL$
  -->
 
 <chapter id="catalogs">

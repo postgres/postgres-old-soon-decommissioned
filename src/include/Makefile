@@ -6,7 +6,7 @@
 # programming.  'make install-all-headers' installs the whole contents
 # of src/include.
 #
-# $Header$
+# $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

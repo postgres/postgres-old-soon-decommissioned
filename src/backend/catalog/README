@@ -1,4 +1,4 @@
-$Header$
+$PostgreSQL$
 
 This directory contains .c files that manipulate the system catalogs;
 src/include/catalog contains the .h files that define the structure

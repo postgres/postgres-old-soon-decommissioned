@@ -5,7 +5,7 @@
  *	 Portions Copyright (c) 1999-2003, PostgreSQL Global Development Group
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  *-----------------------------------------------------------------------
  */

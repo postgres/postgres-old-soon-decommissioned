@@ -1,4 +1,4 @@
-$Header$
+$PostgreSQL$
 Mon Jul 18 11:09:22 PDT 1988  W.KLAS
 
 Cache invalidation synchronization routines:

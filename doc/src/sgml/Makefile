@@ -2,7 +2,7 @@
 #
 # PostgreSQL documentation makefile
 #
-# $Header$
+# $PostgreSQL$
 #
 #----------------------------------------------------------------------------
 

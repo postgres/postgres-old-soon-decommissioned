@@ -9,7 +9,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  * NOTES
  *	  XXX a few of the following functions are duplicated to handle

@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 # Makefile for Microsoft Visual C++ 5.0 (or compat)
 # Top-file makefile for Win32 parts of postgresql.

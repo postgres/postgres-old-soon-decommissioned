@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Header$
+# $PostgreSQL$
 # 
 if [ ! -d $1 ]; then
 	echo " you must specify a valid data directory "

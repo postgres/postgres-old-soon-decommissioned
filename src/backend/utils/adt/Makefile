@@ -1,7 +1,7 @@
 #
 # Makefile for utils/adt
 #
-# $Header$
+# $PostgreSQL$
 #
 
 subdir = src/backend/utils/adt

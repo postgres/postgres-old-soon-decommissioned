@@ -3,7 +3,7 @@
  *	Add do ... while() macro fix
  *	Remove __inline, _DIAGASSERTs, __P
  *
- *	$Header$
+ *	$PostgreSQL$
  */
 
 /*	$NetBSD$ */

@@ -1,4 +1,4 @@
-$Header$
+$PostgreSQL$
 
 This directory contains a set of tests for locales.  I provided one C
 program test-ctype.c to test CTYPE support in libc and the installed

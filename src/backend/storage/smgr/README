@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 This directory contains the code that supports the Postgres storage manager
 switch and all of the installed storage managers.  In released systems,

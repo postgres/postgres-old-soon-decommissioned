@@ -1,7 +1,7 @@
 #
 # Makefile for storage/ipc
 #
-# $Header$
+# $PostgreSQL$
 #
 
 subdir = src/backend/storage/ipc

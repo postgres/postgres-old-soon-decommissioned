@@ -9,7 +9,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  * DESCRIPTION
  *	  The "DefineFoo" routines take the parse tree and pick out the

@@ -1,4 +1,4 @@
-$Header$
+$PostgreSQL$
 
 This is a simple utility that will remove any orphaned large objects out of a
 PostgreSQL database.  An orphaned LO is considered to be any LO whose OID

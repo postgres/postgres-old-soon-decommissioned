@@ -5,7 +5,7 @@
  *
  * Copyright (c) 2000, Christof Petig <christof.petig@wtal.de>
  *
- * $Header$
+ * $PostgreSQL$
  */
 
 /* chapter 13.1 table 2: Codes used for SQL data types in Dynamic SQL */

@@ -1,4 +1,4 @@
-<!-- $Header$ -->
+<!-- $PostgreSQL$ -->
 <refentry id="SQL-SET-SESSION-AUTHORIZATION">
  <refmeta>
   <refentrytitle id="sql-set-session-authorization-title">SET SESSION AUTHORIZATION</refentrytitle>

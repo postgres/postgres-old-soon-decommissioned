@@ -1,7 +1,7 @@
 # simplified Chinese translation file for PostgreSQL server
 # Weiping He <laser@zhengmai.com.cn>, 2001.
 #
-# $Header$
+# $PostgreSQL$
 #
 msgid ""
 msgstr ""

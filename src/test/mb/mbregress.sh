@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Header$
+# $PostgreSQL$
 
 if echo '\c' | grep -s c >/dev/null 2>&1
 then

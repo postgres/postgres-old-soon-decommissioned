@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 # Makefile for Borland C++ 5.5 (or compat)
 # Top-file makefile for Win32 parts of postgresql.

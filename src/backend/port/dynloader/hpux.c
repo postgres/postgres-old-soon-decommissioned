@@ -8,7 +8,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  *	NOTES
  *		all functions are defined here -- it's impossible to trace the

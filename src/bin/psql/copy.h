@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2000-2003, PostgreSQL Global Development Group
  *
- * $Header$
+ * $PostgreSQL$
  */
 #ifndef COPY_H
 #define COPY_H

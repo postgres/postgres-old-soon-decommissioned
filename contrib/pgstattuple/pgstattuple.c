@@ -1,5 +1,5 @@
 /*
- * $Header$
+ * $PostgreSQL$
  *
  * Copyright (c) 2001,2002	Tatsuo Ishii
  *

@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 CATALOG_NAME	:= postgres
 AVAIL_LANGUAGES	:= cs de es hr hu it nb pt_BR ru sv tr zh_CN zh_TW
 GETTEXT_FILES	:= + gettext-files

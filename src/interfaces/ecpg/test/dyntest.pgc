@@ -2,7 +2,7 @@
  *
  * Copyright (c) 2000, Christof Petig <christof.petig@wtal.de>
  *
- * $Header$
+ * $PostgreSQL$
  */
 
 #include <stdio.h>

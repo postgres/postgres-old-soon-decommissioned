@@ -3,7 +3,7 @@
  *
  * Resource managers definition
  *
- * $Header$
+ * $PostgreSQL$
  */
 #include "postgres.h"
 

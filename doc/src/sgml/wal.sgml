@@ -1,4 +1,4 @@
-<!-- $Header$ -->
+<!-- $PostgreSQL$ -->
 
 <chapter id="wal">
  <title>Write-Ahead Logging (<acronym>WAL</acronym>)</title>

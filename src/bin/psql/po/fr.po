@@ -1,6 +1,6 @@
 # French message translation file for psql
 #
-# $Header$
+# $PostgreSQL$
 #
 # Use these quotes: «%s»
 # Peter Eisentraut <peter_e@gmx.net>, 2001.

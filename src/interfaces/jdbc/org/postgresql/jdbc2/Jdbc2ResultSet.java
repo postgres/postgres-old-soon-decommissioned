@@ -6,7 +6,7 @@ import java.util.Vector;
 import org.postgresql.core.BaseStatement;
 import org.postgresql.core.Field;
 
-/* $Header$
+/* $PostgreSQL$
  * This class implements the java.sql.ResultSet interface for JDBC2.
  * However most of the implementation is really done in
  * org.postgresql.jdbc2.AbstractJdbc2ResultSet or one of it's parents

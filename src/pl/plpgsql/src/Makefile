@@ -2,7 +2,7 @@
 #
 # Makefile for the plpgsql shared object
 #
-# $Header$
+# $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

@@ -9,7 +9,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  *	XXX These are totally bogus.  Perhaps someone will make them do
  *	something reasonable, someday.

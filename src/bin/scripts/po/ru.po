@@ -1,6 +1,6 @@
 # PGSCRIPTS Translated Messages into the Russian Language (KOI8-R)
 #
-# $Header$
+# $PostgreSQL$
 #
 # To the new translator:
 #   PG Russian Translation Discussion Group: <http://groups.yahoo.com/group/pgsql-rus/>

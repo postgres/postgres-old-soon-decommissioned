@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Header$
+# $PostgreSQL$
 
 me=`basename $0`
 : ${TMPDIR=/tmp}

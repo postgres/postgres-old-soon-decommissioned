@@ -6,7 +6,7 @@
 # Created through merger of the Linux start script by Ryan Kirkpatrick
 # and the script in the FreeBSD ports collection.
 
-# $Header$
+# $PostgreSQL$
 
 ## EDIT FROM HERE
 

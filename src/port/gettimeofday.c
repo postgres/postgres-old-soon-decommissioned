@@ -1,5 +1,5 @@
 /*
- * $Header$
+ * $PostgreSQL$
  *
  * Copyright (c) 2003 SRA, Inc.
  * Copyright (c) 2003 SKC, Inc.

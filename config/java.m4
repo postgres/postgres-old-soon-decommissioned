@@ -1,7 +1,7 @@
 #
 # Autoconf macros for configuring the build of Java JDBC Tools
 #
-# $Header$
+# $PostgreSQL$
 #
 
 

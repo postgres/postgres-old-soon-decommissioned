@@ -1,6 +1,6 @@
 # PSQL Translated Messages into the Russian Language (KOI8-R)
 #
-# $Header$
+# $PostgreSQL$
 #
 # ChangeLog:
 #   - July 26 - October 12, 2003: Update for 7.4.x; <mokhov@cs.concordia.ca>

@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 subdir = src/interfaces/ecpg/test
 top_builddir = ../../../..

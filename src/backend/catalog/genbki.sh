@@ -10,7 +10,7 @@
 #
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 # NOTES
 #    non-essential whitespace is removed from the generated file.

@@ -1,5 +1,5 @@
 #
-# $Header$
+# $PostgreSQL$
 #
 
 subdir = contrib/pgcrypto

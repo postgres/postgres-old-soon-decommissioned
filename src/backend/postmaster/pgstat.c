@@ -13,7 +13,7 @@
  *
  *	Copyright (c) 2001-2003, PostgreSQL Global Development Group
  *
- *	$Header$
+ *	$PostgreSQL$
  * ----------
  */
 #include "postgres.h"

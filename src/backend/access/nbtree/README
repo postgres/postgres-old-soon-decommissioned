@@ -1,4 +1,4 @@
-$Header$
+$PostgreSQL$
 
 This directory contains a correct implementation of Lehman and Yao's
 high-concurrency B-tree management algorithm (P. Lehman and S. Yao,

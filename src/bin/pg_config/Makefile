@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 subdir = src/bin/pg_config
 top_builddir = ../../..

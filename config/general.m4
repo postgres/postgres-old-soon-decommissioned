@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 # This file defines new macros to process configure command line
 # arguments, to replace the brain-dead AC_ARG_WITH and AC_ARG_ENABLE.

@@ -10,7 +10,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  * DESCRIPTION
  *	  These routines take the parse tree and pick out the

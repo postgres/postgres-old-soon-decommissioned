@@ -1,4 +1,4 @@
-/* $Header$ */
+/* $PostgreSQL$ */
 
 #ifndef PLPYTHON_H
 #define PLPYTHON_H

@@ -1,7 +1,7 @@
 # Croatian translation of PostgreSQL backend messages.
 # Finteh d.o.o. Daruvar <finteh@finteh.hr>, 2002.
 #
-# $Header$
+# $PostgreSQL$
 #
 msgid ""
 msgstr ""

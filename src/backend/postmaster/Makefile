@@ -4,7 +4,7 @@
 #    Makefile for postmaster
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

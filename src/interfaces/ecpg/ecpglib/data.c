@@ -1,4 +1,4 @@
-/* $Header$ */
+/* $PostgreSQL$ */
 
 #define POSTGRES_ECPG_INTERNAL
 #include "postgres_fe.h"

@@ -1,5 +1,5 @@
 # Postgres documentation makefile
-# $Header$
+# $PostgreSQL$
 
 subdir = doc/src
 top_builddir = ../..

@@ -1,7 +1,7 @@
 /*
  *	PostgreSQL type definitions for MAC addresses.
  *
- *	$Header$
+ *	$PostgreSQL$
  */
 
 #include "postgres.h"

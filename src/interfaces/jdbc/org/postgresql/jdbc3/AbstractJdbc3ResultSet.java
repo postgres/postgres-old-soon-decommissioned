@@ -7,7 +7,7 @@ import org.postgresql.core.BaseStatement;
 import org.postgresql.core.Field;
 
 
-/* $Header$
+/* $PostgreSQL$
  * This class defines methods of the jdbc3 specification.  This class extends
  * org.postgresql.jdbc2.AbstractJdbc2ResultSet which provides the jdbc2
  * methods.  The real Statement class (for jdbc3) is org.postgresql.jdbc3.Jdbc3ResultSet

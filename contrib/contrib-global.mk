@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 # This file contains generic rules to build many kinds of simple
 # contrib modules.  You only need to set a few variables and include

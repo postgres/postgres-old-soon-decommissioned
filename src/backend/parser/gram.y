@@ -11,7 +11,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  * HISTORY
  *	  AUTHOR			DATE			MAJOR EVENT

@@ -3,7 +3,7 @@
  * available with a PostgreSQL-compatible license.	Kudos Wilfredo
  * Sánchez <wsanchez@apple.com>.
  *
- * $Header$
+ * $PostgreSQL$
  */
 #include "postgres.h"
 

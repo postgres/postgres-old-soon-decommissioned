@@ -6,7 +6,7 @@ import java.util.Vector;
 import org.postgresql.core.BaseStatement;
 import org.postgresql.core.Field;
 
-/* $Header$
+/* $PostgreSQL$
  * This class implements the java.sql.ResultSet interface for JDBC1.
  * However most of the implementation is really done in
  * org.postgresql.jdbc1.AbstractJdbc1ResultSet

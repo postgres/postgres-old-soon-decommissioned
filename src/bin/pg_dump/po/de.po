@@ -1,7 +1,7 @@
 # German message translation file for pg_dump and friends
 # Peter Eisentraut <peter_e@gmx.net>, 2001, 2002, 2003.
 #
-# $Header$
+# $PostgreSQL$
 #
 # Use these quotes: »%s«
 #

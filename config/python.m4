@@ -1,7 +1,7 @@
 #
 # Autoconf macros for configuring the build of Python extension modules
 #
-# $Header$
+# $PostgreSQL$
 #
 
 # PGAC_PATH_PYTHON

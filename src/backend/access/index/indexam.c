@@ -8,7 +8,7 @@
  *
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  * INTERFACE ROUTINES
  *		index_open		- open an index relation by relation OID

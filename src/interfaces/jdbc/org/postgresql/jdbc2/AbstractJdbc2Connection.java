@@ -7,7 +7,7 @@ import java.sql.SQLData;
 import java.sql.SQLException;
 import java.sql.Types;
 
-/* $Header$
+/* $PostgreSQL$
  * This class defines methods of the jdbc2 specification.  This class extends
  * org.postgresql.jdbc1.AbstractJdbc1Connection which provides the jdbc1
  * methods.  The real Connection class (for jdbc2) is org.postgresql.jdbc2.Jdbc2Connection

@@ -4,7 +4,7 @@
  *
  * Portions Copyright (c) 2003, PostgreSQL Global Development Group
  *
- * $Header$
+ * $PostgreSQL$
  */
 #ifndef GETOPT_LONG_H
 #define GETOPT_LONG_H

@@ -31,7 +31,7 @@
  *	  ENHANCEMENTS, OR MODIFICATIONS.
  *
  * IDENTIFICATION
- *	  $Header$
+ *	  $PostgreSQL$
  *
  **********************************************************************/
 

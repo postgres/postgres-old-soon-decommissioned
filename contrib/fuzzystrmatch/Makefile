@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 subdir = contrib/fuzzystrmatch
 top_builddir = ../..

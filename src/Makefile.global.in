@@ -1,5 +1,5 @@
 # -*-makefile-*-
-# $Header$
+# $PostgreSQL$
 
 #------------------------------------------------------------------------------
 # All PostgreSQL makefiles include this file and use the variables it sets,

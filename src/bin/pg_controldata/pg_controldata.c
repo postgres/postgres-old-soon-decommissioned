@@ -6,7 +6,7 @@
  * copyright (c) Oliver Elphick <olly@lfix.co.uk>, 2001;
  * licence: BSD
  *
- * $Header$
+ * $PostgreSQL$
  */
 #include "postgres.h"
 

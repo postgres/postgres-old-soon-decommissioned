@@ -4,7 +4,7 @@
 #    Makefile for port/beos
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

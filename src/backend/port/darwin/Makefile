@@ -4,7 +4,7 @@
 #    Makefile for port/darwin
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 
 # PGAC_PATH_PERL

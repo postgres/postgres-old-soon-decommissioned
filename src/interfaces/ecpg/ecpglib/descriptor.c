@@ -1,6 +1,6 @@
 /* dynamic SQL support routines
  *
- * $Header$
+ * $PostgreSQL$
  */
 
 #define POSTGRES_ECPG_INTERNAL

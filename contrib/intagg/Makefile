@@ -2,7 +2,7 @@
 # Makefile for integer aggregator
 # Copyright (C) 2001 Digital Music Network.
 # by Mark L. Woodward
-# $Header$
+# $PostgreSQL$
 
 subdir = contrib/intagg
 top_builddir = ../..

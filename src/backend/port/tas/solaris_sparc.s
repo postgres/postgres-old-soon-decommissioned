@@ -1,5 +1,5 @@
 	!!
-	!! $Header$
+	!! $PostgreSQL$
 	!!
 	!! this would be a piece of inlined assembler but it appears
 	!! to be easier to just write the assembler than to try to 

@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 
 # Common rules for Native Language Support (NLS)
 #

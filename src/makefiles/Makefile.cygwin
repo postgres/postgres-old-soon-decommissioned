@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 DLLTOOL= dlltool
 DLLWRAP= dllwrap
 BE_DLLLIBS= -L$(top_builddir)/src/backend -lpostgres

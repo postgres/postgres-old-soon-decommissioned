@@ -1,7 +1,7 @@
 /* ----------
  * pg_lzcompress.h -
  *
- * $Header$
+ * $PostgreSQL$
  *
  *	Definitions for the builtin LZ compressor
  * ----------

@@ -4,7 +4,7 @@
 #    Makefile for main
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

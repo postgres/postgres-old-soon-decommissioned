@@ -4,7 +4,7 @@
 #    Makefile for port/sunos4
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

@@ -1,4 +1,4 @@
-# $Header$
+# $PostgreSQL$
 # This comes from the official Autoconf macro archive at
 # <http://research.cys.de/autoconf-archive/>
 # (I removed the $ before the Id CVS keyword below.)

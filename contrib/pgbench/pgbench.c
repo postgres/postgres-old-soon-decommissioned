@@ -1,5 +1,5 @@
 /*
- * $Header$
+ * $PostgreSQL$
  *
  * pgbench: a simple TPC-B like benchmark program for PostgreSQL
  * written by Tatsuo Ishii

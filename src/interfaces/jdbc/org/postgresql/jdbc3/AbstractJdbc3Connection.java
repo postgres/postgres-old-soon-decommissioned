@@ -2,7 +2,7 @@ package org.postgresql.jdbc3;
 
 import java.sql.*;
 
-/* $Header$
+/* $PostgreSQL$
  * This class defines methods of the jdbc3 specification.  This class extends
  * org.postgresql.jdbc2.AbstractJdbc2Connection which provides the jdbc2
  * methods.  The real Connection class (for jdbc3) is org.postgresql.jdbc3.Jdbc3Connection

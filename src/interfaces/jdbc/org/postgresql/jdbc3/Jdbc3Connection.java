@@ -3,7 +3,7 @@ package org.postgresql.jdbc3;
 
 import java.sql.SQLException;
 
-/* $Header$
+/* $PostgreSQL$
  * This class implements the java.sql.Connection interface for JDBC3.
  * However most of the implementation is really done in
  * org.postgresql.jdbc3.AbstractJdbc3Connection or one of it's parents

@@ -1,7 +1,7 @@
 #
 # Makefile for utils
 #
-# $Header$
+# $PostgreSQL$
 #
 
 subdir = src/backend/utils/

@@ -4,7 +4,7 @@
 #    Makefile for access/rtree
 #
 # IDENTIFICATION
-#    $Header$
+#    $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

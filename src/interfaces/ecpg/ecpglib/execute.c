@@ -1,4 +1,4 @@
-/* $Header$ */
+/* $PostgreSQL$ */
 
 /*
  * The aim is to get a simpler inteface to the database routines.

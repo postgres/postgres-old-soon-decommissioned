@@ -2,7 +2,7 @@
 #
 # Makefile for the pltcl shared object
 #
-# $Header$
+# $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Header$
+# $PostgreSQL$
 # 
 # Note that in our published benchmark numbers, we executed the command in the
 # following fashion:

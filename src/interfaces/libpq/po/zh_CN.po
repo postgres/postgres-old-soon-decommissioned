@@ -1,7 +1,7 @@
 # simplified Chinese translation file for libpq
 # Bao Wei <weibao@forevertek.com>, 2002
 #
-# $Header$
+# $PostgreSQL$
 #
 msgid ""
 msgstr ""

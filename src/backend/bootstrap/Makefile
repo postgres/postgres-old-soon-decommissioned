@@ -2,7 +2,7 @@
 #
 # Makefile for the bootstrap module
 #
-# $Header$
+# $PostgreSQL$
 #
 #-------------------------------------------------------------------------
 
