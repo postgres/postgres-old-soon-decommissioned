@@ -581,6 +581,9 @@ extern void srandom(unsigned int seed);
 /* Define if C++ compiler accepts "#include <string>" */
 #undef HAVE_CXX_STRING_HEADER
 
+/* Define if a system lib (-ldl) has dlopen() (needed for AIX) */
+#undef HAVE_DLOPEN
+
 
 /*
  *------------------------------------------------------------------------
