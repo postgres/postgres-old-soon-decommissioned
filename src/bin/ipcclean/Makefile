@@ -1,7 +1,6 @@
 #-------------------------------------------------------------------------
 #
-# Makefile.inc--
-#    Makefile for bin/initdb
+# Makefile for bin/ipcclean
 #
 # Copyright (c) 1994, Regents of the University of California
 #
@@ -14,16 +13,13 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-SEDSCRIPT= \
-    -e "s^PG_OPT_IPCCLEANPATH_PARAM^$(IPCSDIR)^g" 
-
 all: ipcclean
 
-ipcclean:
-	sed $(SEDSCRIPT) <ipcclean.sh >ipcclean
+ipcclean: ipcclean.sh
+	cp $< $@
 
 install: ipcclean
-	$(INSTALL) $(INSTL_EXE_OPTS) $+ $(BINDIR)
+	$(INSTALL) $(INSTL_EXE_OPTS) $^ $(BINDIR)
 
 clean:
 	rm -f ipcclean

@@ -65,6 +65,7 @@ sql_help.h: $(wildcard $(SRCDIR)/../doc/src/sgml/ref/*.sgml) create_help.pl
 	$(PERL) create_help.pl sql_help.h 
 else
 sql_help.h:
+	@echo "*** Perl is needed to build psql help."
 endif
 
 .PHONY: submake

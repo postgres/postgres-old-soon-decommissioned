@@ -156,7 +156,7 @@ USE_TK= @USE_TK@
 WISH= @WISH@
 
 USE_PERL= @USE_PERL@
-PERL= perl
+PERL= @PERL@
 
 #
 # enable native odbc driver support

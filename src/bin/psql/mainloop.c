@@ -397,7 +397,7 @@ MainLoop(FILE *source)
 			{
 				line[i] = '\0';
 				/* is there anything else on the line? */
-				if (line[query_start + strspn(line + query_start, " \t")] != '\0')
+				if (line[query_start + strspn(line + query_start, " \t\n\r")] != '\0')
 				{
 
 					/*
@@ -441,7 +441,7 @@ MainLoop(FILE *source)
 				line[i - prevlen] = '\0';		/* overwrites backslash */
 
 				/* is there anything else on the line for the command? */
-				if (line[query_start + strspn(line + query_start, " \t")] != '\0')
+				if (line[query_start + strspn(line + query_start, " \t\n\r")] != '\0')
 				{
 
 					/*
@@ -499,7 +499,7 @@ MainLoop(FILE *source)
 
 
 		/* Put the rest of the line in the query buffer. */
-		if (line[query_start + strspn(line + query_start, " \t\n")] != '\0')
+		if (line[query_start + strspn(line + query_start, " \t\n\r")] != '\0')
 		{
 			if (query_buf->len > 0)
 				appendPQExpBufferChar(query_buf, '\n');
