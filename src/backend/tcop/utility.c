@@ -36,7 +36,6 @@
 #include "commands/sequence.h"
 #include "commands/tablecmds.h"
 #include "commands/trigger.h"
-#include "commands/typecmds.h"
 #include "commands/user.h"
 #include "commands/vacuum.h"
 #include "commands/view.h"
@@ -556,49 +555,6 @@ ProcessUtility(Node *parsetree,
 						break;
 					default:	/* oops */
 						elog(ERROR, "T_AlterTableStmt: unknown subtype");
-						break;
-				}
-			}
-			break;
-
-		case T_AlterDomainStmt:
-			{
-				AlterDomainStmt *stmt = (AlterDomainStmt *) parsetree;
-
-				/*
-				 * Some or all of these functions are recursive to cover
-				 * inherited things, so permission checks are done there.
-				 */
-				switch (stmt->subtype)
-				{
-					case 'T':	/* ALTER COLUMN DEFAULT */
-
-						/*
-						 * Recursively alter column default for table and,
-						 * if requested, for descendants
-						 */
-						AlterDomainDefault(stmt->typename,
-										   stmt->def);
-						break;
-					case 'N':	/* ALTER COLUMN DROP NOT NULL */
-						AlterDomainNotNull(stmt->typename,
-										   false);
-						break;
-					case 'O':	/* ALTER COLUMN SET NOT NULL */
-						AlterDomainNotNull(stmt->typename,
-										   true);
-						break;
-					case 'C':	/* ADD CONSTRAINT */
-						AlterDomainAddConstraint(stmt->typename,
-												 stmt->def);
-						break;
-					case 'X':	/* DROP CONSTRAINT */
-						AlterDomainDropConstraint(stmt->typename,
-												  stmt->name,
-												  stmt->behavior);
-						break;
-					default:	/* oops */
-						elog(ERROR, "T_AlterDomainStmt: unknown subtype");
 						break;
 				}
 			}

@@ -526,18 +526,6 @@ _equalAlterTableStmt(AlterTableStmt *a, AlterTableStmt *b)
 }
 
 static bool
-_equalAlterDomainStmt(AlterDomainStmt *a, AlterDomainStmt *b)
-{
-	COMPARE_SCALAR_FIELD(subtype);
-	COMPARE_NODE_FIELD(typename);
-	COMPARE_STRING_FIELD(name);
-	COMPARE_NODE_FIELD(def);
-	COMPARE_SCALAR_FIELD(behavior);
-
-	return true;
-}
-
-static bool
 _equalGrantStmt(GrantStmt *a, GrantStmt *b)
 {
 	COMPARE_SCALAR_FIELD(is_grant);
@@ -1632,9 +1620,6 @@ equal(void *a, void *b)
 			break;
 		case T_AlterTableStmt:
 			retval = _equalAlterTableStmt(a, b);
-			break;
-		case T_AlterDomainStmt:
-			retval = _equalAlterDomainStmt(a, b);
 			break;
 		case T_GrantStmt:
 			retval = _equalGrantStmt(a, b);

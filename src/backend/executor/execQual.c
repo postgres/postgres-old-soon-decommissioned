@@ -1610,8 +1610,8 @@ ExecEvalConstraintTest(ConstraintTest *constraint, ExprContext *econtext,
 				conResult = ExecEvalExpr(constraint->check_expr, econtext, isNull, isDone);
 
 				if (!DatumGetBool(conResult))
-					elog(ERROR, "ExecEvalConstraintTest: Domain %s constraint %s failed",
-						 constraint->domname, constraint->name);
+					elog(ERROR, "Domain %s constraint %s failed",
+						 constraint->name, constraint->domname);
 			}
 			break;
 		default:

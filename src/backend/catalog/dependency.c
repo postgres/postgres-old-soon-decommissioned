@@ -36,7 +36,6 @@
 #include "commands/proclang.h"
 #include "commands/schemacmds.h"
 #include "commands/trigger.h"
-#include "commands/typecmds.h"
 #include "lib/stringinfo.h"
 #include "miscadmin.h"
 #include "optimizer/clauses.h"
