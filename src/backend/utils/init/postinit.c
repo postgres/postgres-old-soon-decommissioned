@@ -32,13 +32,13 @@
 #include <sys/file.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <sys/ipc.h>
 #include <math.h>
 #include <unistd.h>
 
 #include "postgres.h"
 #include "version.h"
 
+#include <storage/ipc.h>
 #include <storage/backendid.h>
 #include <storage/buf_internals.h>
 #include <storage/smgr.h>

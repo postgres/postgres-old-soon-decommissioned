@@ -30,16 +30,12 @@
 #include <string.h>
 #include <errno.h>
 
-/* XXX - the following  dependency should be moved into the defaults.mk file */
-#ifndef	_IPC_
-#define _IPC_
-#include <sys/ipc.h>
-#include <sys/sem.h>
-#include <sys/shm.h>
-#endif
 
 #include "postgres.h"
 #include "storage/ipc.h"
+/* In Ultrix, sem.h and shm.h must be included AFTER ipc.h */
+#include <sys/sem.h>
+#include <sys/shm.h>
 #include "utils/memutils.h"
 
 #if defined(sparc_solaris)

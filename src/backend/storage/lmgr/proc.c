@@ -55,8 +55,6 @@
 #include <string.h>
 #include <signal.h>
 #include <sys/types.h>
-#include <sys/ipc.h>
-#include <sys/sem.h>
 
 #if defined(sparc_solaris)
 #include <sys/ipc.h>
@@ -70,6 +68,9 @@
 #include "access/xact.h"
 #include "utils/hsearch.h"
 
+#include "storage/ipc.h"
+/* In Ultrix, sem.h must be included after ipc.h */
+#include <sys/sem.h>
 #include "storage/buf.h"	
 #include "storage/lock.h"
 #include "storage/lmgr.h"
