@@ -105,14 +105,7 @@ extern double rint(double x);
 
 #endif
 
-#ifndef HAVE_ISINF
-#define isinf my_isinf
-static int	isinf(double x);
-
-#else
 extern int	isinf(double x);
-
-#endif
 
 #endif
 /* ========== USER I/O ROUTINES ========== */

@@ -117,7 +117,7 @@
  * Solaris 2
  */
 
-#if defined(i386_solaris) || \
+#if (defined(__i386__) && defined(__sun__)) || \
 	defined(sparc_solaris)
 /* for xxxxx_solaris, this is defined in port/.../tas.s */
 
