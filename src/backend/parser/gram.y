@@ -2918,7 +2918,7 @@ createdb_opt_item:  LOCATION '=' Sconst
 				}
 		| LOCATION '=' DEFAULT
 				{
-					$$ = lconsi(1, makeList1((char *) NULL));
+					$$ = lconsi(1, makeList1(NULL));
 				}
 		| TEMPLATE '=' name
 				{
@@ -2926,7 +2926,7 @@ createdb_opt_item:  LOCATION '=' Sconst
 				}
 		| TEMPLATE '=' DEFAULT
 				{
-					$$ = lconsi(2, makeList1((char *) NULL));
+					$$ = lconsi(2, makeList1(NULL));
 				}
 		| ENCODING '=' Sconst
 				{
@@ -3383,7 +3383,7 @@ simple_select: SELECT opt_distinct target_list
 
 		/* easy way to return two values. Can someone improve this?  bjm */
 into_clause:  INTO OptTempTableName		{ $$ = $2; }
-		| /*EMPTY*/						{ $$ = lcons(makeInteger(FALSE), NIL); }
+		| /*EMPTY*/						{ $$ = makeList1(makeInteger(FALSE)); }
 		;
 
 /*

@@ -122,7 +122,7 @@ gimme_tree(Query *root, List *initial_rels,
 		else
 		{
 			/* tree main part */
-			List	   *acceptable_rels = lcons(inner_rel, NIL);
+			List	   *acceptable_rels = makeList1(inner_rel);
 			List	   *new_rels;
 			RelOptInfo *new_rel;
 

@@ -300,7 +300,7 @@ xfunc_pullup(Query *queryInfo,
 										get_clause(cinfo), LispNil);
 	xfunc_copyrel(get_parent(newkid), &newrel);
 	set_parent(newkid, newrel);
-	set_pathlist(newrel, lcons(newkid, NIL));
+	set_pathlist(newrel, makeList1(newkid));
 	set_unorderedpath(newrel, (PathPtr) newkid);
 	set_cheapestpath(newrel, (PathPtr) newkid);
 	set_size(newrel,

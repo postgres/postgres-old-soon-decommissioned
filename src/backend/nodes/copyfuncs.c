@@ -58,11 +58,11 @@ listCopy(List *list)
 	if (list == NIL)
 		return NIL;
 
-	newlist = nl = lcons(lfirst(list), NIL);
+	newlist = nl = makeList1(lfirst(list));
 
 	foreach(l, lnext(list))
 	{
-		lnext(nl) = lcons(lfirst(l), NIL);
+		lnext(nl) = makeList1(lfirst(l));
 		nl = lnext(nl);
 	}
 	return newlist;
@@ -2745,12 +2745,12 @@ copyObject(void *from)
 
 				/* rather ugly coding for speed... */
 				/* Note the input list cannot be NIL if we got here. */
-				nl = lcons(copyObject(lfirst(list)), NIL);
+				nl = makeList1(copyObject(lfirst(list)));
 				retval = nl;
 
 				foreach(l, lnext(list))
 				{
-					lnext(nl) = lcons(copyObject(lfirst(l)), NIL);
+					lnext(nl) = makeList1(copyObject(lfirst(l)));
 					nl = lnext(nl);
 				}
 			}

@@ -124,7 +124,7 @@ ExecInitJunkFilter(List *targetList, TupleDesc tupType)
 			Fjoin	   *fjNode = (Fjoin *) tl_node(fjList);
 
 			cleanFjoin = (Fjoin) copyObject((Node) fjNode);
-			cleanFjList = lcons(cleanFjoin, NIL);
+			cleanFjList = makeList1(cleanFjoin);
 
 			resdom = (Resdom) lfirst(get_fj_innerNode(fjNode));
 			expr = lsecond(get_fj_innerNode(fjNode));

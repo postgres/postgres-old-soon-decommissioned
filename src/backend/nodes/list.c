@@ -127,7 +127,7 @@ lconsi(int datum, List *list)
 List *
 lappend(List *list, void *obj)
 {
-	return nconc(list, lcons(obj, NIL));
+	return nconc(list, makeList1(obj));
 }
 
 /*
@@ -138,7 +138,7 @@ lappend(List *list, void *obj)
 List *
 lappendi(List *list, int datum)
 {
-	return nconc(list, lconsi(datum, NIL));
+	return nconc(list, makeListi1(datum));
 }
 
 /*

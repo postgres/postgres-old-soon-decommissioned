@@ -467,7 +467,7 @@ List *
 find_all_inheritors(Oid parentrel)
 {
 	List	   *examined_relids = NIL;
-	List	   *unexamined_relids = lconsi(parentrel, NIL);
+	List	   *unexamined_relids = makeListi1(parentrel);
 
 	/*
 	 * While the queue of unexamined relids is nonempty, remove the first

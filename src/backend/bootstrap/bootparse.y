@@ -254,7 +254,7 @@ Boot_BuildIndsStmt:
 
 boot_index_params:
 		boot_index_params COMMA boot_index_param	{ $$ = lappend($1, $3); }
-		| boot_index_param							{ $$ = lcons($1, NIL); }
+		| boot_index_param							{ $$ = makeList1($1); }
 		;
 
 boot_index_param:

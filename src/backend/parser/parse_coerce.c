@@ -128,7 +128,7 @@ coerce_type(ParseState *pstate, Node *node, Oid inputTypeId,
 		FuncCall   *n = makeNode(FuncCall);
 
 		n->funcname = typeidTypeName(targetTypeId);
-		n->args = lcons(node, NIL);
+		n->args = makeList1(node);
 		n->agg_star = false;
 		n->agg_distinct = false;
 
@@ -304,7 +304,7 @@ coerce_type_typmod(ParseState *pstate, Node *node,
 		cons->val.val.ival = atttypmod;
 
 		func->funcname = funcname;
-		func->args = lappend(lcons(node, NIL), cons);
+		func->args = makeList2(node, cons);
 		func->agg_star = false;
 		func->agg_distinct = false;
 

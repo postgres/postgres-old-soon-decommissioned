@@ -178,7 +178,7 @@ makeAttr(char *relname, char *attname)
 	a->relname = pstrdup(relname);
 	a->paramNo = NULL;
 	if (attname != NULL)
-		a->attrs = lcons(makeString(pstrdup(attname)), NIL);
+		a->attrs = makeList1(makeString(pstrdup(attname)));
 	a->indirection = NULL;
 
 	return a;
