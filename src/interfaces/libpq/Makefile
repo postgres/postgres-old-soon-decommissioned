@@ -42,6 +42,12 @@ ifeq ($(PORTNAME), BSD44_derived)
   LDFLAGS_SL = -x -Bshareable -Bforcearchive
   CFLAGS += -fpic -DPIC
 endif
+ifeq ($(PORTNAME), i386_solaris)
+  install-shlib-dep := install-shlib
+  shlib := libpq.so.1
+  LDFLAGS_SL = -G -z text
+  CFLAGS += -fPIC
+endif
 
 all: libpq.a $(shlib) c.h
 
@@ -71,6 +77,8 @@ pqcomprim.c:	    ../backend/libpq/pqcomprim.c
 
 $(shlib): $(OBJS)
 	$(LD) $(LDFLAGS) $(LDFLAGS_SL) -o $@ $(OBJS)
+	ln -sf $@ libpq.so
+
 
 c.h: ../include/c.h
 	rm -f c.h

@@ -30,24 +30,26 @@ ifeq ($(CC), gcc)
 endif
 
 
+shlib             := 
+install-shlib-dep :=
+
 ifeq ($(PORTNAME), linux)
   ifdef LINUX_ELF
     ifeq ($(CC), gcc)
       CFLAGS += -fpic -fPIC
     endif
+    shlib             := libpgtcl.so.1
+    install-shlib-dep := install-shlib
+    LDFLAGS           += -L ../libpq -lpq
   endif
+endif
+
+ifeq ($(PORTNAME), i386_solaris)
+  CFLAGS+= -fPIC
 endif
 
 OBJS= pgtcl.o pgtclCmds.o pgtclId.o
 
-ifdef LINUX_ELF
-  shlib             := libpgtcl.so.1
-  install-shlib-dep := install-shlib
-  LDFLAGS           += -L ../libpq -lpq
-else
-  shlib             := 
-  install-shlib-dep :=
-endif
 
 all: libpgtcl.a $(shlib)
 
