@@ -616,7 +616,7 @@ typedef struct Exception
 
 #ifndef USE_ASSERT_CHECKING
 #define Assert(condition)
-#define AssertMacro(condition)	true
+#define AssertMacro(condition)	(void)true
 #define AssertArg(condition)
 #define AssertState(condition)
 #else
