@@ -2291,10 +2291,8 @@ getTables(int *numTables, FuncInfo *finfo, int numFuncs, const char *tablename)
 								  "oid as view_oid"
 								  " from pg_rewrite where"
 								  " ev_class = '%s'::oid and"
-								  " rulename = ('_RET' || ",
+								  " rulename = '_RETURN';",
 								  tblinfo[i].oid);
-				formatStringLiteral(query, tblinfo[i].relname, CONV_ALL);
-				appendPQExpBuffer(query, ")::name;");
 			}
 
 			res2 = PQexec(g_conn, query->data);
@@ -5006,7 +5004,7 @@ dumpRules(Archive *fout, const char *tablename,
 			continue;
 
 		/*
-		 * Get all rules defined for this table
+		 * Get all rules defined for this table, except view select rules
 		 */
 		resetPQExpBuffer(query);
 
@@ -5036,7 +5034,7 @@ dumpRules(Archive *fout, const char *tablename,
 							  "FROM pg_rewrite, pg_class "
 							  "WHERE pg_class.oid = '%s'::oid "
 							  " AND pg_rewrite.ev_class = pg_class.oid "
-							  " AND pg_rewrite.rulename !~ '^_RET' "
+							  " AND pg_rewrite.rulename != '_RETURN' "
 							  "ORDER BY pg_rewrite.oid",
 							  tblinfo[t].oid);
 		}

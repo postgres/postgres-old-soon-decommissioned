@@ -268,12 +268,12 @@ CREATE
     report an error because the query cycled too many times:
 
 <programlisting>
-CREATE RULE "_RETemp" AS
+CREATE RULE "_RETURN" AS
     ON SELECT TO emp
     DO INSTEAD 
 	SELECT * FROM toyemp;
 
-CREATE RULE "_RETtoyemp" AS
+CREATE RULE "_RETURN" AS
     ON SELECT TO toyemp
     DO INSTEAD 
 	SELECT * FROM emp;

@@ -283,7 +283,6 @@ pg_do_getviewdef(Oid viewoid)
 	StringInfoData buf;
 	int			len;
 	char	   *viewname;
-	char	   *name;
 
 	/*
 	 * Connect to SPI manager
@@ -313,9 +312,8 @@ pg_do_getviewdef(Oid viewoid)
 	 * Get the pg_rewrite tuple for the view's SELECT rule
 	 */
 	viewname = get_rel_name(viewoid);
-	name = MakeRetrieveViewRuleName(viewname);
 	args[0] = ObjectIdGetDatum(viewoid);
-	args[1] = PointerGetDatum(name);
+	args[1] = PointerGetDatum(ViewSelectRuleName);
 	nulls[0] = ' ';
 	nulls[1] = ' ';
 	spirc = SPI_execp(plan_getviewrule, args, nulls, 2);
@@ -338,7 +336,6 @@ pg_do_getviewdef(Oid viewoid)
 	VARATT_SIZEP(ruledef) = len;
 	memcpy(VARDATA(ruledef), buf.data, buf.len);
 	pfree(buf.data);
-	pfree(name);
 
 	/*
 	 * Disconnect from SPI manager

@@ -695,7 +695,7 @@ CREATE VIEW pg_rules AS \
         pg_get_ruledef(R.oid) AS definition \
     FROM (pg_rewrite R JOIN pg_class C ON (C.oid = R.ev_class)) \
         LEFT JOIN pg_namespace N ON (N.oid = C.relnamespace) \
-    WHERE R.rulename !~ '^_RET';
+    WHERE R.rulename != '_RETURN';
 
 CREATE VIEW pg_views AS \
     SELECT \
