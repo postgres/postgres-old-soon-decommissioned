@@ -66,12 +66,9 @@
  * Variables in the parser that shouldn't go into plpgsql.h
  * ----------
  */
-extern PLPGSQL_YYSTYPE plpgsql_yylval;
-extern char plpgsql_yytext[];
-
-/* We have to define this as non-extern somewhere for bsdi  bjm  1999/09/19 */
-int	plpgsql_yylineno;
-
+PLPGSQL_YYSTYPE plpgsql_yylval;
+char 		plpgsql_yytext[];
+int			plpgsql_yylineno;
 void		plpgsql_yyerror(const char *s);
 
 /* ----------
