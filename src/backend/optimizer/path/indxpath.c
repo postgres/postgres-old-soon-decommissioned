@@ -642,7 +642,10 @@ match_clause_to_indexkey(RelOptInfo *rel,
 					Operator  newop;
 
 					opname = get_opname(restrict_op);
-					newop = oper(opname, ltype, ltype, TRUE);
+					if (opname != NULL)
+						newop = oper(opname, ltype, ltype, TRUE);
+					else
+						newop = NULL;
 
 					/* actually have a different operator to try? */
 					if (HeapTupleIsValid(newop) && (oprid(newop) != restrict_op))
@@ -698,7 +701,10 @@ match_clause_to_indexkey(RelOptInfo *rel,
 					restrict_op = ((Oper *) ((Expr *) clause)->oper)->opno;
 
 					opname = get_opname(restrict_op);
-					newop = oper(opname, rtype, rtype, TRUE);
+					if (opname != NULL)
+						newop = oper(opname, rtype, rtype, TRUE);
+					else
+						newop = NULL;
 
 					if (HeapTupleIsValid(newop) && (oprid(newop) != restrict_op))
 					{
