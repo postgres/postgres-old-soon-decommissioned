@@ -8,13 +8,17 @@
  * best viewed with tabs set to 4
  */
 
+#include "postgres.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#ifdef HAVE_CRYPT_H
+#include <crypt.h>
+#endif
 
-#include <postgres.h>
-#include <fmgr.h>
+#include "fmgr.h"
 
 /*
  * This type encrypts it's input unless the first character is a colon.
