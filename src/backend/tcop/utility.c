@@ -472,13 +472,13 @@ ProcessUtility(Node *parsetree,
 			break;
 
 
-		case T_ChangeACLStmt:
+		case T_GrantStmt:
 			{
-				ChangeACLStmt *stmt = (ChangeACLStmt *) parsetree;
+				GrantStmt *stmt = (GrantStmt *) parsetree;
+				commandTag = stmt->is_grant ? "GRANT" : "REVOKE";
+				set_ps_display(commandTag);
 
-				set_ps_display(commandTag = "CHANGE");
-
-				ExecuteChangeACLStmt(stmt);
+				ExecuteGrantStmt(stmt);
 			}
 			break;
 

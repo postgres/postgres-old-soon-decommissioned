@@ -137,15 +137,27 @@ typedef struct AlterTableStmt
 } AlterTableStmt;
 
 /* ----------------------
- *		Change ACL Statement
+ *		Grant Statement
  * ----------------------
  */
-typedef struct ChangeACLStmt
+
+typedef struct GrantStmt
 {
 	NodeTag		type;
-	List	   *relNames;
-	char	   *aclString;
-} ChangeACLStmt;
+	bool		is_grant;		/* not revoke */
+	List	   *relnames;
+	char	   *privileges;
+	List	   *grantees;
+} GrantStmt;
+
+
+typedef struct PrivGrantee
+{
+	NodeTag		type;
+	char	   *username;		/* if both are NULL then PUBLIC */
+	char	   *groupname;
+} PrivGrantee;
+
 
 /* ----------------------
  *		Close Portal Statement

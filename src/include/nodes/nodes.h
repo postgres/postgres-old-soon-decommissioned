@@ -148,7 +148,7 @@ typedef enum NodeTag
 	T_SelectStmt,
 	T_AlterTableStmt,
 	T_SetOperationStmt,
-	T_ChangeACLStmt,
+	T_GrantStmt,
 	T_ClosePortalStmt,
 	T_ClusterStmt,
 	T_CopyStmt,
@@ -224,6 +224,7 @@ typedef enum NodeTag
 	T_CaseWhen,
 	T_RowMarkXXX,				/* not used anymore; tag# available */
 	T_FkConstraint,
+	T_PrivGrantee,
 
 	/*
 	 * TAGS FOR FUNCTION-CALL CONTEXT AND RESULTINFO NODES (see fmgr.h)
