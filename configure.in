@@ -863,7 +863,8 @@ esac
 
 # Win32 can't to rename or unlink on an open file
 case $host_os in win32*) 
-AC_LIBOBJ(dirmod) ;;
+AC_LIBOBJ(dirmod)
+AC_LIBOBJ(opendir) ;;
 esac
 
 # On HPUX 9, rint() is not in regular libm.a but in /lib/pa1.1/libm.a;
