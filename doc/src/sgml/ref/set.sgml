@@ -784,7 +784,6 @@ SET TRANSACTION ISOLATION LEVEL { READ COMMITTED | SERIALIZABLE }
 	<variablelist>
 	 <varlistentry>
 	  <term><replaceable class="parameter">integer</replaceable></term>
-	  <term>ON</term>
 	  <listitem>
 	   <para>
 	    Maximum depth.
