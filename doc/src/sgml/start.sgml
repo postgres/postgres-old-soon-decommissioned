@@ -218,7 +218,7 @@ createdb: database creation failed: ERROR:  permission denied to create database
       operating system account.  As it happens, there will always be a
       <productname>PostgreSQL</productname> user account that has the
       same name as the operating system user that started the server,
-      and it also happens that that user always has permission to
+      and it also happens that the user always has permission to
       create databases.  Instead of logging in as that user you can
       also specify the <option>-U</option> option everywhere to select
       a <productname>PostgreSQL</productname> user name to connect as.
