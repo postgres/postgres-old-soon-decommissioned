@@ -182,6 +182,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"only", ONLY},
 	{"operator", OPERATOR},
 	{"option", OPTION},
+	{"overlaps", OVERLAPS},
 	{"or", OR},
 	{"order", ORDER},
 	{"outer", OUTER_P},
