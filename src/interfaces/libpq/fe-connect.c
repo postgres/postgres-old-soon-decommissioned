@@ -2095,9 +2095,15 @@ pqPacketSend(PGconn *conn, const char *buf, size_t len)
 	return STATUS_OK;
 }
 
+
+
+#ifndef SYSCONFDIR
+# error "You must compile this file with SYSCONFDIR defined."
+#endif
+
 int parseServiceInfo(PQconninfoOption *options, PQExpBuffer errorMessage) {
   char *service = conninfo_getval(options, "service");
-  char *serviceFile = "/etc/pg_service.conf";
+  char *serviceFile = SYSCONFDIR "/pg_service.conf";
   int  MAXBUFSIZE = 256;
   int  group_found = 0;
   int  linenr=0, i;
