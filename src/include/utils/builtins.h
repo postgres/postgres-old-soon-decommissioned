@@ -520,6 +520,7 @@ int inet_cidr_pton(int af, const void *src, void *dst, size_t size, int *used);
 
 /* cidr.c */
 inet	   *cidr_in(char *str);
+char	   *cidr_out(inet *addr);
 
 /* inet.c */
 inet	   *inet_in(char *str);

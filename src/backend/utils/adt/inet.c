@@ -148,6 +148,13 @@ cidr_in(char *src)
 	return (dst);
 }
 
+/* just a stub */
+char *
+cidr_out(inet *src)
+{
+	return inet_out(src);
+}
+
 /*
  *	Boolean tests for magnitude.  Add V4/V6 testing!
  */
