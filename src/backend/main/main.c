@@ -38,6 +38,7 @@ main(int argc, char *argv[])
 #ifdef USE_LOCALE
     setlocale(LC_CTYPE,""); /* take locale information from an environment */
     setlocale(LC_COLLATE,"");
+    setlocale(LC_MONETARY,"");
 #endif
 #if defined(NOFIXADE) || defined(NOPRINTADE)
     /*

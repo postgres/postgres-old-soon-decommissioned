@@ -22,6 +22,7 @@
 #include <utils/geo_decls.h>
 #include <utils/datetime.h>
 #include <utils/nabstime.h>
+#include <utils/cash.h>
 #include <utils/rel.h>
 
 /*
