@@ -15,7 +15,7 @@
  */
 
 #include <iostream.h>
-#include <libpq++.H>
+#include <libpq++.h>
 
 int main()
 {
