@@ -24,10 +24,10 @@ Postgres documentation
   </refsynopsisdivinfo>
   <synopsis>
 ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
-    [ * ] ADD [ COLUMN ] <replaceable class="PARAMETER">ER">co</replaceable>BLE> <replaceable
+    [ * ] ADD [ COLUMN ] <replaceable class="PARAMETER">column</replaceable> <replaceable
     class="PARAMETER">type</replaceable>
 ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
-    [ * ] RENAME [ COLUMN ] <replaceable class="PARAMETER">ER">co</replaceable>BLE> TO <replaceable
+    [ * ] RENAME [ COLUMN ] <replaceable class="PARAMETER">column</replaceable> TO <replaceable
     class="PARAMETER">newcolumn</replaceable>
 ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
     RENAME TO <replaceable class="PARAMETER">newtable</replaceable>
