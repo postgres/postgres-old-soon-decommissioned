@@ -93,7 +93,8 @@ enum
 	PLPGSQL_STMT_RAISE,
 	PLPGSQL_STMT_EXECSQL,
 	PLPGSQL_STMT_DYNEXECUTE,
-	PLPGSQL_STMT_DYNFORS
+	PLPGSQL_STMT_DYNFORS,
+	PLPGSQL_STMT_GETDIAG
 };
 
 
@@ -107,6 +108,17 @@ enum
 	PLPGSQL_RC_EXIT,
 	PLPGSQL_RC_RETURN
 };
+
+/* ----------
+ * GET DIAGNOSTICS system attrs
+ * ----------
+ */
+enum
+{
+        PLPGSQL_GETDIAG_PROCESSED,
+        PLPGSQL_GETDIAG_RESULT
+};
+
 
 /**********************************************************************
  * Node and structure definitions
@@ -264,6 +276,16 @@ typedef struct
 	int			varno;
 	PLpgSQL_expr *expr;
 }			PLpgSQL_stmt_assign;
+
+typedef struct
+{								/* Get Disgnostics statement		*/
+	int			cmd_type;
+	int			lineno;
+	int			nitems;
+	int			*items;
+	int			ntargets;
+	int			*targets;
+}			PLpgSQL_stmt_getdiag;
 
 
 typedef struct
