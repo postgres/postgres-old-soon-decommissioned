@@ -2484,9 +2484,9 @@ got_record:;
 	/*
 	 * Allocate or enlarge readRecordBuf as needed.  To avoid useless
 	 * small increases, round its size to a multiple of BLCKSZ, and make
-	 * sure it's at least 4*BLCKSZ to start with.  (That is enough for
-	 * all "normal" records, but very large commit or abort records might
-	 * need more space.)
+	 * sure it's at least 4*BLCKSZ to start with.  (That is enough for all
+	 * "normal" records, but very large commit or abort records might need
+	 * more space.)
 	 */
 	if (total_len > readRecordBufSize)
 	{

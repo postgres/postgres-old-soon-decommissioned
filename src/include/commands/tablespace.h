@@ -25,12 +25,12 @@ typedef struct xl_tblspc_create_rec
 {
 	Oid			ts_id;
 	char		ts_path[1];		/* VARIABLE LENGTH STRING */
-} xl_tblspc_create_rec;
+}	xl_tblspc_create_rec;
 
 typedef struct xl_tblspc_drop_rec
 {
 	Oid			ts_id;
-} xl_tblspc_drop_rec;
+}	xl_tblspc_drop_rec;
 
 extern void CreateTableSpace(CreateTableSpaceStmt *stmt);
 extern void DropTableSpace(DropTableSpaceStmt *stmt);

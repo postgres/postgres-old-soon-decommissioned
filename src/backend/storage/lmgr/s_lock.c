@@ -237,7 +237,6 @@ tas_dummy()						/* really means: extern int tas(slock_t
 	asm("nop");
 }
 #endif   /* __sparc || __sparc__ */
-
 #endif   /* not __GNUC__ */
 #endif   /* HAVE_SPINLOCKS */
 

@@ -65,7 +65,7 @@ typedef struct
 	pg_utf_to_local *map2;		/* from UTF-8 map name */
 	int			size1;			/* size of map1 */
 	int			size2;			/* size of map2 */
-}	pg_conv_map;
+} pg_conv_map;
 
 static pg_conv_map maps[] = {
 	{PG_SQL_ASCII},				/* SQL/ASCII */

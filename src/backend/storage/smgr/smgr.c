@@ -339,8 +339,8 @@ smgrcreate(SMgrRelation reln, bool isTemp, bool isRedo)
 		return;
 
 	/*
-	 * Make a non-transactional XLOG entry showing the file creation.
-	 * It's non-transactional because we should replay it whether the
+	 * Make a non-transactional XLOG entry showing the file creation. It's
+	 * non-transactional because we should replay it whether the
 	 * transaction commits or not; if not, the file will be dropped at
 	 * abort time.
 	 */

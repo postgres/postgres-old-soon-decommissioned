@@ -3861,13 +3861,13 @@ flatten_set_variable_args(const char *name, List *args)
 					 * Coerce to interval and back to normalize the value
 					 * and account for any typmod.
 					 */
-					Datum		interval;
+					Datum interval;
 					char	   *intervalout;
 
 					interval =
-						DirectFunctionCall3(interval_in,
-											CStringGetDatum(val),
-											ObjectIdGetDatum(InvalidOid),
+					DirectFunctionCall3(interval_in,
+										CStringGetDatum(val),
+										ObjectIdGetDatum(InvalidOid),
 								   Int32GetDatum(arg->typename->typmod));
 
 					intervalout =

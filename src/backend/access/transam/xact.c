@@ -1704,7 +1704,7 @@ CommitTransactionCommand(void)
 			AbortOutOfAnyTransaction();
 			s = CurrentTransactionState;		/* changed by
 												 * AbortOutOfAnyTransaction
-												 *	*/
+												 * */
 			/* AbortOutOfAnyTransaction sets the blockState */
 			break;
 

@@ -737,9 +737,9 @@ mdsync(void)
 			 * may seem a bit unclean -- md calling smgr?  But it's really
 			 * the best solution.  It ensures that the open file reference
 			 * isn't permanently leaked if we get an error here. (You may
-			 * say "but an unreferenced SMgrRelation is still a leak!"
-			 * Not really, because the only case in which a checkpoint is
-			 * done by a process that isn't about to shut down is in the
+			 * say "but an unreferenced SMgrRelation is still a leak!" Not
+			 * really, because the only case in which a checkpoint is done
+			 * by a process that isn't about to shut down is in the
 			 * bgwriter, and it will periodically do smgrcloseall().  This
 			 * fact justifies our not closing the reln in the success path
 			 * either, which is a good thing since in non-bgwriter cases

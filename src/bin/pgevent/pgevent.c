@@ -107,7 +107,7 @@ DllUnregisterServer(void)
  * DllMain --- is an optional entry point into a DLL.
  */
 
-BOOL WINAPI
+BOOL		WINAPI
 DllMain(HANDLE hModule,
 		DWORD ul_reason_for_call,
 		LPVOID lpReserved
