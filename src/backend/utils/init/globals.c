@@ -25,6 +25,7 @@
 #include "postgres.h"
 
 #include "catalog/catname.h"
+#include "catalog/indexing.h"
 #include "libpq/pqcomm.h"
 #include "miscadmin.h"
 #include "storage/backendid.h"
@@ -115,6 +116,8 @@ char		Ps_status_buffer[1024];
 char	   *SharedSystemRelationNames[] = {
 	DatabaseRelationName,
 	GroupRelationName,
+	GroupNameIndex,
+	GroupSysidIndex,
 	LogRelationName,
 	ShadowRelationName,
 	VariableRelationName,
