@@ -2993,7 +2993,7 @@ main(int argc, char **argv)
 	if (!settings.quiet && !settings.notty && !singleQuery && !qfilename)
 	{
 		printf("Welcome to the PostgreSQL interactive terminal.\n");
-		printf("(Please read the copyright file for legal issues.)\n");
+		printf("(Please read the copyright file for legal information.)\n");
 
 		if ((version = selectVersion(&settings)) != NULL)
 			printf("[%s]\n", version);
