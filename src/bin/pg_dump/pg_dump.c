@@ -468,6 +468,12 @@ main(int argc, char **argv)
 		exit(1);
 	}
 
+	if (dataOnly && outputClean)
+	{
+		write_msg(NULL, "The options \"clean\" (-c) and \"data only\" (-a) cannot be used together.\n");
+		exit(1);
+	}
+
 	if (outputBlobs && selectTablename != NULL && strlen(selectTablename) > 0)
 	{
 		write_msg(NULL, "Large object output is not supported for a single table.\n");
