@@ -70,10 +70,11 @@ typedef struct _aggInfo
 {
 	char	   *oid;
 	char	   *aggname;
-	char	   *aggbasetype;
+	char	   *aggbasetype;	/* OID */
 	NamespaceInfo *aggnamespace;	/* link to containing namespace */
 	char	   *usename;
 	char	   *aggacl;
+	char	   *fmtbasetype;	/* formatted type name */
 } AggInfo;
 
 typedef struct _oprInfo
