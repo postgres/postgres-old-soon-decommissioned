@@ -27,6 +27,11 @@ $Header$
  <sect1 id="monitoring-ps">
   <title>Standard Unix Tools</Title>
 
+  <indexterm zone="monitoring-ps">
+   <primary>ps</primary>
+   <secondary>to monitor activity</secondary>
+  </indexterm>
+
   <para>
    On most platforms, <productname>PostgreSQL</productname> modifies its
    command title as reported by <command>ps</>, so that individual server
@@ -71,6 +76,10 @@ postgres: <replaceable>user</> <replaceable>database</> <replaceable>host</> <re
 
  <sect1 id="monitoring-stats">
   <title>Statistics Collector</Title>
+
+  <indexterm zone="monitoring-stats">
+   <primary>statistics</primary>
+  </indexterm>
 
   <para>
    <productname>PostgreSQL</productname>'s <firstterm>statistics collector</>

@@ -2,6 +2,8 @@
 <chapter id="backup">
  <title>Backup and Restore</title>
 
+ <indexterm zone="backup"><primary>backup</></>
+
  <para>
   As everything that contains valuable data, <productname>Postgres</>
   databases should be backed up regularly. While the procedure is
@@ -363,6 +365,7 @@ tar -cf backup.tar /usr/local/pgsql/data
 
  <sect1 id="migration">
   <title>Migration between releases</title>
+  <indexterm zone="migration"><primary>upgrading</></>
 
   <para>
    As a general rule, the internal data storage format is subject to

@@ -52,6 +52,10 @@ $Header$
  <sect1 id="routine-vacuuming">
   <title>Routine Vacuuming</title>
 
+  <indexterm zone="routine-vacuuming">
+   <primary>vacuum</primary>
+  </indexterm>
+
   <para>
    <productname>PostgreSQL</productname>'s <command>VACUUM</> command must be
    run on a regular basis for several reasons:
@@ -92,6 +96,10 @@ $Header$
 
   <sect2 id="vacuum-for-space-recovery">
    <title>Recovering disk space</title>
+
+   <indexterm zone="vacuum-for-space-recovery">
+    <primary>disk space</primary>
+   </indexterm>
 
    <para>
     In normal <productname>PostgreSQL</productname> operation, an UPDATE or
@@ -218,6 +226,11 @@ $Header$
 
   <sect2 id="vacuum-for-wraparound">
    <title>Preventing transaction ID wraparound failures</title>
+
+   <indexterm zone="vacuum-for-wraparound">
+    <primary>transaction ID</primary>
+    <secondary>wraparound</secondary>
+   </indexterm>
 
    <para>
     <productname>PostgreSQL</productname>'s MVCC transaction semantics
