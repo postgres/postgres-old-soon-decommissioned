@@ -2123,15 +2123,19 @@ flatten_set_variable_args(const char *name, List *args)
 	StringInfoData buf;
 	List	   *l;
 
-	/* Fast path if just DEFAULT */
+	/*
+	 * Fast path if just DEFAULT.  We do not check the variable name in
+	 * this case --- necessary for RESET ALL to work correctly.
+	 */
 	if (args == NIL)
 		return NULL;
 
+	/* Else get flags for the variable */
 	record = find_option(name);
 	if (record == NULL)
-		flags = 0;				/* default assumptions */
-	else
-		flags = record->flags;
+		elog(ERROR, "'%s' is not a valid option name", name);
+
+	flags = record->flags;
 
 	/* Complain if list input and non-list variable */
 	if ((flags & GUC_LIST_INPUT) == 0 &&
