@@ -643,10 +643,23 @@ $Header$
         <entry></entry>
        </row>
        <row>
+        <entry>E152</entry>
+        <entry>Core</entry>
+        <entry>Basic SET TRANSACTION statement</entry>
+        <entry></entry>
+       </row>
+       <row>
         <entry>E152-01</entry>
         <entry>Core</entry>
         <entry>SET TRANSACTION statement: ISOLATION LEVEL SERIALIZABLE
          clause</entry> 
+        <entry></entry>
+       </row>
+       <row>
+        <entry>E152-02</entry>
+        <entry>Core</entry>
+        <entry>SET TRANSACTION statement: READ ONLY and READ WRITE
+         clauses</entry> 
         <entry></entry>
        </row>
        <row>
@@ -1597,19 +1610,6 @@ $Header$
         <entry>Core</entry>
         <entry>WITH HOLD cursors</entry>
         <entry>Cursor to stay open across transactions</entry>
-       </row>
-       <row>
-        <entry>E152</entry>
-        <entry>Core</entry>
-        <entry>Basic SET TRANSACTION statement</entry>
-        <entry></entry>
-       </row>
-       <row>
-        <entry>E152-02</entry>
-        <entry>Core</entry>
-        <entry>SET TRANSACTION statement: READ ONLY and READ WRITE
-         clauses</entry> 
-        <entry>Syntax accepted; READ ONLY not supported</entry>
        </row>
        <row>
         <entry>E153</entry>

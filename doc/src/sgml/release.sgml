@@ -36,6 +36,7 @@ System can use either hash- or sort-based strategy for grouped aggregation
 ON COMMIT options for temp tables
 extra_float_digits option allows pg_dump to dump float data accurately
 Long options for psql and pg_dump are now available on all platforms
+Read-only transactions
 ]]></literallayout>
 
  </sect1>

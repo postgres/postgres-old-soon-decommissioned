@@ -208,6 +208,9 @@ TransactionState CurrentTransactionState = &CurrentTransactionStateData;
 int			DefaultXactIsoLevel = XACT_READ_COMMITTED;
 int			XactIsoLevel;
 
+bool		DefaultXactReadOnly = false;
+bool		XactReadOnly;
+
 bool		autocommit = true;
 
 int			CommitDelay = 0;	/* precommit delay in microseconds */
@@ -848,6 +851,7 @@ StartTransaction(void)
 
 	FreeXactSnapshot();
 	XactIsoLevel = DefaultXactIsoLevel;
+	XactReadOnly = DefaultXactReadOnly;
 
 	/*
 	 * Check the current transaction state.  If the transaction system is

@@ -29,6 +29,9 @@
 
 extern int	DefaultXactIsoLevel;
 extern int	XactIsoLevel;
+extern bool	DefaultXactReadOnly;
+extern bool	XactReadOnly;
+
 
 /* ----------------
  *		transaction state structure

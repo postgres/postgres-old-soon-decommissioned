@@ -348,6 +348,10 @@ DoCopy(const CopyStmt *stmt)
 	 */
 	rel = heap_openrv(relation, (is_from ? RowExclusiveLock : AccessShareLock));
 
+	/* check read-only transaction */
+	if (XactReadOnly && !is_from && !isTempNamespace(RelationGetNamespace(rel)))
+		elog(ERROR, "transaction is read-only");
+
 	/* Check permissions. */
 	aclresult = pg_class_aclcheck(RelationGetRelid(rel), GetUserId(),
 								  required_access);
