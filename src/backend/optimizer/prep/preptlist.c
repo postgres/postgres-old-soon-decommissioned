@@ -105,14 +105,14 @@ preprocess_targetlist(List *tlist,
 		Var		   *var;
 
 		resdom = makeResdom(length(t_list) + 1,
-							27,
+							TIDOID,
 							-1,
 							"ctid",
 							0,
 							0,
 							1);
 
-		var = makeVar(result_relation, -1, 27, -1, 0, result_relation, -1);
+		var = makeVar(result_relation, -1, TIDOID, -1, 0, result_relation, -1);
 
 		ctid = makeNode(TargetEntry);
 		ctid->resdom = resdom;
