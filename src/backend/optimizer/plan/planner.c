@@ -777,7 +777,7 @@ preprocess_expression(Query *parse, Node *expr, int kind)
 
 	/* Expand SubLinks to SubPlans */
 	if (parse->hasSubLinks)
-		expr = SS_process_sublinks(expr);
+		expr = SS_process_sublinks(expr, (kind != EXPRKIND_TARGET));
 
 	/* Replace uplevel vars with Param nodes */
 	if (PlannerQueryLevel > 1)
