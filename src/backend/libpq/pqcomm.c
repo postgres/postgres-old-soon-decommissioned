@@ -175,7 +175,7 @@ StreamDoUnlink(void)
  */
 
 int
-StreamServerPort(int family, char *hostName, unsigned short portName,
+StreamServerPort(int family, char *hostName, unsigned short portNumber,
 				 char *unixSocketName, int *fdP)
 {
 	SockAddr	saddr;
@@ -219,7 +219,7 @@ StreamServerPort(int family, char *hostName, unsigned short portName,
 #ifdef HAVE_UNIX_SOCKETS
 	if (family == AF_UNIX)
 	{
-		UNIXSOCK_PATH(saddr.un, portName, unixSocketName);
+		UNIXSOCK_PATH(saddr.un, portNumber, unixSocketName);
 		len = UNIXSOCK_LEN(saddr.un);
 		strcpy(sock_path, saddr.un.sun_path);
 		/*
@@ -265,7 +265,7 @@ StreamServerPort(int family, char *hostName, unsigned short portName,
 					hp->h_length);
 		}
 	
-		saddr.in.sin_port = htons(portName);
+		saddr.in.sin_port = htons(portNumber);
 		len = sizeof(struct sockaddr_in);
 	}
 

@@ -245,7 +245,7 @@ ConfigureNamesInt[] =
 	 DEF_MAXBACKENDS, 1, MAXBACKENDS},
 	{"shared_buffers",          PGC_POSTMASTER,         &NBuffers,
 	 DEF_NBUFFERS, 16, INT_MAX},
-	{"port",                    PGC_POSTMASTER,         &PostPortName,
+	{"port",                    PGC_POSTMASTER,         &PostPortNumber,
 	 DEF_PGPORT, 1, 65535},
 
 	{"sort_mem",                PGC_USERSET,            &SortMem,
@@ -409,7 +409,7 @@ ResetAllOptions(void)
 	}
 
 	if (getenv("PGPORT"))
-		PostPortName = atoi(getenv("PGPORT"));
+		PostPortNumber = atoi(getenv("PGPORT"));
 }
 
 

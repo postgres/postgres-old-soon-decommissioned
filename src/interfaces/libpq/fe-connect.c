@@ -342,13 +342,6 @@ PQconnectStart(const char *conninfo)
 		conn->pgunixsocket = conn->pghost;
 		conn->pghost = NULL;
 	}
-	if (conn->pghostaddr && conn->pghostaddr[0] == '/')
-	{
-		if (conn->pgunixsocket)
-			free(conn->pgunixsocket);
-		conn->pgunixsocket = conn->pghostaddr;
-		conn->pghostaddr = NULL;
-	}
 
 	/* ----------
 	 * Connect to the database
@@ -473,13 +466,6 @@ PQsetdbLogin(const char *pghost, const char *pgport, const char *pgoptions,
 			free(conn->pgunixsocket);
 		conn->pgunixsocket = conn->pghost;
 		conn->pghost = NULL;
-	}
-	if (conn->pghostaddr && conn->pghostaddr[0] == '/')
-	{
-		if (conn->pgunixsocket)
-			free(conn->pgunixsocket);
-		conn->pgunixsocket = conn->pghostaddr;
-		conn->pghostaddr = NULL;
 	}
 
 	if (pgtty == NULL)
