@@ -65,11 +65,12 @@ bool		IsPostmaster = false;
 
 short		DebugLvl = 0;
 
+int		DateStyle = USE_ISO_DATES;
 bool		EuroDates = false;
 bool		HasCTZSet = false;
 bool		CDayLight = false;
 int		CTimeZone = 0;
-char		CTZName[8] = "";
+char		CTZName[MAXTZLEN+1] = "";
 
 char DateFormat[20] 	= "%d-%m-%Y";	/* mjl: sizes! or better malloc? XXX */
 char FloatFormat[20] = "%f";

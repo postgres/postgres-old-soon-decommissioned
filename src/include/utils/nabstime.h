@@ -115,8 +115,6 @@ extern AbsoluteTime GetCurrentAbsoluteTime(void);
 extern AbsoluteTime nabstimein(char *timestr);
 extern char *nabstimeout(AbsoluteTime time);
 
-extern bool AbsoluteTimeIsBefore(AbsoluteTime time1, AbsoluteTime time2);
-extern bool AbsoluteTimeIsAfter(AbsoluteTime time1, AbsoluteTime time2);
 extern bool abstimeeq(AbsoluteTime t1, AbsoluteTime t2);
 extern bool abstimene(AbsoluteTime t1, AbsoluteTime t2);
 extern bool abstimelt(AbsoluteTime t1, AbsoluteTime t2);
@@ -124,6 +122,10 @@ extern bool abstimegt(AbsoluteTime t1, AbsoluteTime t2);
 extern bool abstimele(AbsoluteTime t1, AbsoluteTime t2);
 extern bool abstimege(AbsoluteTime t1, AbsoluteTime t2);
 
+extern AbsoluteTime datetime_abstime(DateTime *datetime);
+
+extern bool AbsoluteTimeIsBefore(AbsoluteTime time1, AbsoluteTime time2);
+extern bool AbsoluteTimeIsAfter(AbsoluteTime time1, AbsoluteTime time2);
 extern AbsoluteTime dateconv(struct tm *tm, int zone);
 extern time_t qmktime(struct tm *tp);
 

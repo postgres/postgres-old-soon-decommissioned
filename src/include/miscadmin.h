@@ -58,12 +58,28 @@ extern bool	    IsPostmaster;
 extern short	    DebugLvl;
 
 /* Date/Time Configuration
- * HasCTZSet if client timezone is specified by client.
+ *
+ * Constants to pass info from runtime environment:
+ *  USE_POSTGRES_DATES specifies traditional postgres format for output.
+ *  USE_ISO_DATES specifies ISO-compliant format for output.
+ *  USE_SQL_DATES specified Oracle/Ingres-compliant format for output.
+ *
+ * DateStyle specifies preference for date formatting for output.
  * EuroDates if client prefers dates interpreted and written w/European conventions.
+ *
+ * HasCTZSet if client timezone is specified by client.
+ * CDayLight is the apparent daylight savings time status.
  * CTimeZone is the timezone offset in seconds.
  * CTZName is the timezone label.
  */
 
+#define MAXTZLEN	7
+
+#define USE_POSTGRES_DATES	0
+#define USE_ISO_DATES		1
+#define USE_SQL_DATES		2
+
+extern int	    DateStyle;
 extern bool	    EuroDates;
 extern bool	    HasCTZSet;
 extern bool	    CDayLight;
