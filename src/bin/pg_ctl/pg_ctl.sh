@@ -316,7 +316,8 @@ if [ $op = "start" -o $op = "restart" ];then
         eval set X "$POSTOPTS"; shift
     fi
 
-    set X -D "$PGDATA" ${1+"$@"}; shift
+    # pass environment into new postmaster
+    export PGDATA
 
     if [ -n "$logfile" ]; then
         "$po_path" "$@" </dev/null >>$logfile 2>&1 &
