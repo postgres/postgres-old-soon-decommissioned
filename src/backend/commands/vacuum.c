@@ -876,7 +876,7 @@ vc_scanheap(VRelStats *vacrelstats, Relation onerel,
 				 * If tuple is recently deleted then we must not remove it
 				 * from relation.
 				 */
-				if (tupgone && tuple.t_data->t_xmax >= XmaxRecent)
+				if (tupgone && (tuple.t_data->t_infomask & HEAP_XMIN_INVALID) == 0 && tuple.t_data->t_xmax >= XmaxRecent)
 				{
 					tupgone = false;
 					nkeep++;
