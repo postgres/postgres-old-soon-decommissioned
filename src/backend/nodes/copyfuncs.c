@@ -725,7 +725,7 @@ _copyConst(Const *from)
 	 *	puts in the right values here.
 	 * ----------------
 	 */
-	if (!from->constisnull && cached_type != from->consttype) {
+	if (!from->constisnull && cached_type != from->consttype)
 	{
 		HeapTuple	typeTuple;
 		TypeTupleForm typeStruct;
