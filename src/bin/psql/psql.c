@@ -405,6 +405,10 @@ tableDesc(PsqlSettings * ps, char *table)
 
     /* Build the query */
 
+    for(i = strlen(table); i >= 0; i--)
+	if (isupper(table[i]))
+	    table[i] = tolower(table[i]);
+
     descbuf[0] = '\0';
     strcat(descbuf, "SELECT a.attnum, a.attname, t.typname, a.attlen");
     strcat(descbuf, "  FROM pg_class c, pg_attribute a, pg_type t ");
@@ -1112,6 +1116,9 @@ HandleSlashCmds(PsqlSettings * settings,
 
     unescape(cmd, line + 1);	/* sets cmd string */
 
+    if (strlen(cmd) >= 1 && cmd[strlen(cmd)-1] == ';') /* strip trailing ; */
+    	cmd[strlen(cmd)-1] = '\0';
+
     /*
      * Originally, there were just single character commands.  Now, we define
      * some longer, friendly commands, but we have to keep the old single
@@ -1543,7 +1550,6 @@ MainLoop(PsqlSettings * settings, FILE * source)
 	    }
 
 	    slashCmdStatus = -1;
-	    /* slash commands have to be on their own line */
 	    if (!in_quote && query_start[0] == '\\') {
 		slashCmdStatus = HandleSlashCmds(settings,
 						 query_start,

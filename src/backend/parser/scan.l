@@ -167,7 +167,7 @@ other		.
 			int i;
 			ScanKeyword	*keyword;
 
-			for(i = 0; i < strlen(yytext); i++)
+			for(i = strlen(yytext); i >= 0; i--)
 				if (isupper(yytext[i]))
 					yytext[i] = tolower(yytext[i]);
 			
