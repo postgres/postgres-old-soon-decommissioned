@@ -184,16 +184,6 @@ NOTICE:  Index <replaceable class="PARAMETER">index</replaceable>: Pages 28;
     recent changes, and allow the <productname>Postgres</productname> 
     query optimizer to make better choices in planning user queries.
    </para>
-   <para>
-    If the server crashes during a <command>VACUUM</command> command, 
-    chances are it will leave a lock file hanging around.  
-    Attempts to re-run the <command>VACUUM</command> command
-    result in an error message about the creation of a lock file.  If you
-    are sure <command>VACUUM</command> is not running, 
-    remove the <filename>pg_vlock</filename> file in your
-    database directory 
-    (i.e. <filename><envar>PGDATA</envar>/base/dbname/pg_vlock</filename>).
-   </para>
   </refsect2>
  </refsect1>
 
