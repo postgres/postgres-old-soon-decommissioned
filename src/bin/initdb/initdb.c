@@ -1990,7 +1990,7 @@ setlocales(void)
 	if (strlen(lc_monetary) == 0 || !chklocale(lc_monetary))
 		lc_monetary = xstrdup(setlocale(LC_MONETARY, NULL));
 	if (strlen(lc_messages) == 0 || !chklocale(lc_messages))
-#ifdef LC_MESSAGES
+#if defined(LC_MESSAGES) && !defined(WIN32)
 	{
 		/* when available get the current locale setting */
 		lc_messages = xstrdup(setlocale(LC_MESSAGES, NULL));
