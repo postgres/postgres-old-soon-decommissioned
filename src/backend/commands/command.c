@@ -340,13 +340,17 @@ AlterTableAddColumn(const char *relationName,
 			foreach(child, children)
 			{
 				Oid			childrelid = lfirsti(child);
+				char	   *childrelname;
 
 				if (childrelid == myrelid)
 					continue;
 				rel = heap_open(childrelid, AccessExclusiveLock);
-				AlterTableAddColumn(RelationGetRelationName(rel),
-									false, colDef);
+				childrelname = pstrdup(RelationGetRelationName(rel));
 				heap_close(rel, AccessExclusiveLock);
+
+				AlterTableAddColumn(childrelname, false, colDef);
+
+				pfree(childrelname);
 			}
 		}
 	}
