@@ -24,7 +24,7 @@ destroyuser: destroyuser.sh
 	sed $(SEDSCRIPT) <destroyuser.sh >destroyuser
 
 install: destroyuser
-	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$<
+	$(INSTALL) $(INSTL_EXE_OPTS) $< $(DESTDIR)$(BINDIR)/$<
 
 clean:
 	rm -f destroyuser

@@ -24,7 +24,7 @@ initlocation: initlocation.sh
 	cp -p initlocation.sh initlocation
 
 install: initlocation
-	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$<
+	$(INSTALL) $(INSTL_EXE_OPTS) $< $(DESTDIR)$(BINDIR)/$<
 
 clean:
 	rm -f initlocation

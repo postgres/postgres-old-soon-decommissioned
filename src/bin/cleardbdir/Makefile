@@ -20,7 +20,7 @@ cleardbdir:
 	cp cleardbdir.sh cleardbdir
 
 install: cleardbdir
-	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$<
+	$(INSTALL) $(INSTL_EXE_OPTS) $< $(DESTDIR)$(BINDIR)/$<
 
 clean: 
 	rm -f cleardbdir

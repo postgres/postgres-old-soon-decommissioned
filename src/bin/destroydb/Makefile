@@ -20,7 +20,7 @@ destroydb: destroydb.sh
 	cp destroydb.sh destroydb
 
 install: destroydb
-	$(INSTALL) $(INSTL_EXE_OPTS) $< $(BINDIR)/$<
+	$(INSTALL) $(INSTL_EXE_OPTS) $< $(DESTDIR)$(BINDIR)/$<
 
 clean:
 	rm -f destroydb
