@@ -130,7 +130,7 @@ to try out the examples in this manual.
 
      You will be greeted with the following message:
 <ProgramListing>
-Welcome to psql, the PostgreSQL interactive terminal.
+Welcome to psql &version;, the PostgreSQL interactive terminal.
  
 Type:  \copyright for distribution terms
        \h for help with SQL commands

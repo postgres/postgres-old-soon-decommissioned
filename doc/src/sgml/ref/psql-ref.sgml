@@ -488,7 +488,7 @@ PostgreSQL documentation
     the string <literal>=&gt;</literal>. For example,
 <programlisting>
 $ <userinput>psql testdb</userinput>
-Welcome to psql, the PostgreSQL interactive terminal.
+Welcome to psql &version;, the PostgreSQL interactive terminal.
 
 Type:  \copyright for distribution terms
        \h for help with SQL commands
@@ -1582,7 +1582,7 @@ lo_import 152801
        <term><literal>\timing</literal></term>
         <listitem>
         <para>
-         Toggles a display of how long each query takes in seconds.
+         Toggles a display of how long each query takes, in milliseconds.
         </para>
        </listitem>
       </varlistentry>

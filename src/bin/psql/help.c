@@ -80,7 +80,8 @@ usage(void)
 	}
 
 /* If this " is the start of the string then it ought to end there to fit in 80 columns >> " */
-	puts(_("This is psql, the PostgreSQL interactive terminal.\n"));
+	printf(_("This is psql %s, the PostgreSQL interactive terminal.\n"),
+		   PG_VERSION);
 	puts(_("Usage:"));
 	puts(_("  psql [options] [dbname [username]]\n"));
 	puts(_("Options:"));
