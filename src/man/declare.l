@@ -35,5 +35,5 @@ For an example, see the fetch(l) manual page.
 .SH "SEE ALSO"
 fetch(l),
 begin(l),
-end(l),
+commit(l),
 select(l).

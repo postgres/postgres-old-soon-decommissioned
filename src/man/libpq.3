@@ -735,8 +735,8 @@ main()
   res = PQexec(conn, "CLOSE mycursor");
   PQclear(res);
 
-  /* end the transaction */
-  res = PQexec(conn, "END");
+  /* commit the transaction */
+  res = PQexec(conn, "COMMIT");
   PQclear(res);
 
   /* close the connection to the database and cleanup */
@@ -985,8 +985,8 @@ main()
   res = PQexec(conn, "CLOSE mycursor");
   PQclear(res);
 
-  /* end the transaction */
-  res = PQexec(conn, "END");
+  /* commit the transaction */
+  res = PQexec(conn, "COMMIT");
   PQclear(res);
 
   /* close the connection to the database and cleanup */

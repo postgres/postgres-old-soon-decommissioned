@@ -34,8 +34,8 @@ begin work;
 lock table mytable;
 select * from mytable;
 update mytable set (x = 100);
-end work;
+commit;
 .SH "SEE ALSO"
 begin(l),
-end(l),
+commit(l),
 select(l).

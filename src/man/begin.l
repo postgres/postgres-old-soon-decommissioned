@@ -17,4 +17,4 @@ them are done.  Transactions have the standard ACID (atomic,
 consistent, isolatable, and durable) property.
 .SH "SEE ALSO"
 abort(l),
-end(l).
+commit(l).

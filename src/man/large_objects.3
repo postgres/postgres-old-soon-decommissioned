@@ -458,7 +458,7 @@ main(int argc, char **argv)
 	exit_nicely(conn);
     }
 	
-    res = PQexec(conn, "begin");
+    res = PQexec(conn, "begin work;");
     PQclear(res);
     printf("importing file \\"%s\\" ...\\n", in_filename);
 /*  lobjOid = importFile(conn, in_filename); */
@@ -477,7 +477,7 @@ main(int argc, char **argv)
 /*    exportFile(conn, lobjOid, out_filename); */
     lo_export(conn, lobjOid,out_filename);
 
-    res = PQexec(conn, "end");
+    res = PQexec(conn, "commit;");
     PQclear(res);
     PQfinish(conn);
     exit(0);

@@ -19,5 +19,5 @@ command
 .SH "SEE ALSO"
 abort(l),
 begin(l),
-end(l),
+commit(l),
 rollback(l).

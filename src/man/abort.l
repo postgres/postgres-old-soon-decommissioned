@@ -19,5 +19,5 @@ is functionally equivalent to
 .IR "rollback".
 .SH "SEE ALSO"
 begin(l),
-end(l),
+commit(l),
 rollback(l).
