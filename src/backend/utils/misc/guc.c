@@ -324,6 +324,10 @@ static struct config_bool
 		true, NULL, NULL
 	},
 	{
+		{"enable_hashagg", PGC_USERSET}, &enable_hashagg,
+		true, NULL, NULL
+	},
+	{
 		{"enable_nestloop", PGC_USERSET}, &enable_nestloop,
 		true, NULL, NULL
 	},

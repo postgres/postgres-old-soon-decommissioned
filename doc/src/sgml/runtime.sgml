@@ -671,6 +671,17 @@ env PGOPTIONS='-c geqo=off' psql
      </varlistentry>
 
      <varlistentry>
+      <term><varname>ENABLE_HASHAGG</varname> (<type>boolean</type>)</term>
+      <listitem>
+       <para>
+        Enables or disables the query planner's use of hashed aggregation
+	plan types. The default is on. This is used for debugging the query
+	planner.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term><varname>ENABLE_HASHJOIN</varname> (<type>boolean</type>)</term>
       <listitem>
        <para>

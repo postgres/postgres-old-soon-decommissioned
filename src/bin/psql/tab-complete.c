@@ -251,6 +251,7 @@ psql_completion(char *text, int start, int end)
 		"enable_nestloop",
 		"enable_seqscan",
 		"enable_sort",
+		"enable_hashagg",
 		"enable_tidscan",
 		"explain_pretty_print",
 		"extra_float_digits",
