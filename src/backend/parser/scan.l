@@ -323,6 +323,8 @@ other			.
 						if (isascii((unsigned char)yytext[i]) &&
 							isupper(yytext[i]))
 							yytext[i] = tolower(yytext[i]);
+					if (i > NAMEDATALEN)
+						yytext[NAMEDATALEN] = '\0';
 
 					keyword = ScanKeywordLookup((char*)yytext);
 					if (keyword != NULL) {
@@ -400,6 +402,8 @@ other			.
 						if (isascii((unsigned char)yytext[i]) &&
 							isupper(yytext[i]))
 							yytext[i] = tolower(yytext[i]);
+					if (i > NAMEDATALEN)
+						yytext[NAMEDATALEN] = '\0';
 
 					keyword = ScanKeywordLookup((char*)yytext);
 					if (keyword != NULL) {
