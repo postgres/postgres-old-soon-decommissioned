@@ -570,8 +570,7 @@ coerce_type_typmod(Node *node, Oid targetTypeId, int32 targetTypMod,
 		 *
 		 * See the comments for the similar case in coerce_type.
 		 */
-		if (node && IsA(node, Const) &&
-			!((Const *) node)->constisnull)
+		if (node && IsA(node, Const))
 			node = eval_const_expressions(fcall);
 		else
 			node = fcall;
