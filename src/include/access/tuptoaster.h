@@ -20,6 +20,14 @@
 #include "access/tupmacs.h"
 #include "utils/rel.h"
 
+/*
+ * DO NOT ENABLE THIS
+ * until we have crash safe file versioning and you've
+ * changed VACUUM to recreate indices that use possibly
+ * toasted values. 2000/07/20 Jan
+ */
+#undef TOAST_INDICES
+
 
 #define	TOAST_MAX_CHUNK_SIZE	((MaxTupleSize -							\
 				MAXALIGN(												\
@@ -29,8 +37,14 @@
 					MAXALIGN(VARHDRSZ))) / 4)
 
 
+#ifdef TOAST_INDICES
 extern void heap_tuple_toast_attrs(Relation rel,
 				HeapTuple newtup, HeapTuple oldtup);
+#else
+extern void heap_tuple_toast_attrs(Relation rel,
+				HeapTuple newtup, HeapTuple oldtup, 
+				HeapTupleHeader *plaintdata, int32 *plaintlen);
+#endif
 
 extern varattrib *heap_tuple_untoast_attr(varattrib * attr);
 
