@@ -127,14 +127,14 @@ where <replaceable class="PARAMETER">option</replaceable> can be:
   <para>
    Create an empty group:
 <programlisting>
-CREATE GROUP staff
+CREATE GROUP staff;
 </programlisting>
   </para>
 
   <para>
    Create a group with members:
 <programlisting>
-CREATE GROUP marketing WITH USER jonathan, david
+CREATE GROUP marketing WITH USER jonathan, david;
 </programlisting>
   </para>
  </refsect1>
