@@ -39,6 +39,7 @@
 #include "access/xlogutils.h"
 #include "utils/builtins.h"
 #include "utils/relcache.h"
+#include "utils/selfuncs.h"
 #include "miscadmin.h"
 
 
