@@ -34,7 +34,8 @@ typedef struct IndexBulkDeleteResult
 	BlockNumber num_pages;		/* pages remaining in index */
 	double		num_index_tuples;		/* tuples remaining */
 	double		tuples_removed; /* # removed by bulk-delete operation */
-	BlockNumber	pages_free;		/* # unused pages in index */
+	BlockNumber	pages_deleted;	/* # unused pages in index */
+	BlockNumber	pages_free;		/* # pages available for reuse */
 } IndexBulkDeleteResult;
 
 /* Typedef for callback function to determine if a tuple is bulk-deletable */
