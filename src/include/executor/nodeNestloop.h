@@ -21,6 +21,7 @@ extern TupleTableSlot *ExecNestLoop(NestLoop *node, Plan *parent);
 extern bool ExecInitNestLoop(NestLoop *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsNestLoop(NestLoop *node);
 extern void ExecEndNestLoop(NestLoop *node);
-extern void ExecReScanNestLoop(NestLoop *node, ExprContext *exprCtxt, Plan *parent);
+extern void ExecReScanNestLoop(NestLoop *node, ExprContext *exprCtxt,
+								Plan *parent);
 
 #endif	 /* NODENESTLOOP_H */

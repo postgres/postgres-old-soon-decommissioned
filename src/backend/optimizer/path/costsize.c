@@ -435,7 +435,7 @@ compute_attribute_width(TargetEntry *tlistentry)
  * Returns a fixnum.
  */
 int
-compute_joinrel_size(NestPath *joinpath)
+compute_joinrel_size(JoinPath *joinpath)
 {
 	Cost		temp = 1.0;
 	int			temp1 = 0;

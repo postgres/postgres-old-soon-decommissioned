@@ -372,6 +372,7 @@ match_unsorted_outer(RelOptInfo *joinrel,
 								 innerrel->pathlist,
 								 INNER);
 
+			/* Should we use the mergeinner, or sort the cheapest inner? */
 			path_is_cheaper_than_sort = (bool) (mergeinnerpath &&
 						(mergeinnerpath->path_cost <
 						 (cheapest_inner->path_cost +
