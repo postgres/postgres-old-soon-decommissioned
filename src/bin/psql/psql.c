@@ -1285,8 +1285,9 @@ MainLoop(PsqlSettings * settings, FILE * source)
 
 	query_start = line;
 
-	if (line == NULL && !settings->quiet) {	/* No more input.  Time to quit */
-	    printf("EOF\n");	/* Goes on prompt line */
+	if (line == NULL) {	/* No more input.  Time to quit */
+	    if (!settings->quiet)
+		printf("EOF\n");	/* Goes on prompt line */
 	    eof = true;
 	} else {
 	    /* remove whitespaces on the right, incl. \n's */
