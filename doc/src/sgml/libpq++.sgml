@@ -120,6 +120,8 @@ $Header$
         <envar>PGPASSWORD</envar>
         sets the password used if the backend demands password
         authentication.  This is deprecated; use <envar>PGPASSWORDFILE</envar> instead.
+       </para>
+      </listitem>
       <listitem>
        <para>
 	<envar>PGPASSWORDFILE</envar>
