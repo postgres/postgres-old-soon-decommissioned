@@ -716,7 +716,7 @@ _readResdom()
 	else
 	{
 		local_node->resname = (char *) palloc(length + 1);
-		StrNCpy(local_node->resname, token, length + 1);
+		StrNCpy(local_node->resname, token+1, length + 1 - 2);/* strip quotes */
 	}
 
 	token = lsptok(NULL, &length);		/* eat :reskey */
