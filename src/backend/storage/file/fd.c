@@ -62,6 +62,11 @@
 #define NOFILE NOFILE_IN_U
 #endif /* PORTNAME_sparc */
 
+#ifdef PORTNAME_sparc_solaris
+#include <sys/user.h>
+#undef NOFILE
+#define NOFILE 64
+#endif /* PORTNAME_sparc_solaris */
 /*
  * Problem: Postgres does a system(ld...) to do dynamic loading.  This
  * will open several extra files in addition to those used by
