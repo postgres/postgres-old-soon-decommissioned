@@ -16,5 +16,5 @@ is committed, Postgres will ensure that all updates are done or none of
 them are done.  Transactions have the standard ACID (atomic,
 consistent, isolatable, and durable) property.
 .SH "SEE ALSO"
-abort(l),
+rollback(l),
 commit(l).

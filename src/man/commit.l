@@ -17,7 +17,7 @@ is functionally equivalent to the
 .IR "end"
 command
 .SH "SEE ALSO"
-abort(l),
+rollback(l),
 begin(l),
 commit(l),
 rollback(l).

@@ -12,7 +12,7 @@ vacuum - vacuum a database
 .SH DESCRIPTION
 .BR Vacuum
 is the Postgres vacuum cleaner.  It opens every class in the database,
-cleans out records from aborted transactions, and updates statistics in the
+cleans out records from rolled back transactions, and updates statistics in the
 system catalogs.  The statistics maintained include the number of
 tuples and number of pages stored in all classes.  Running
 .BR vacuum

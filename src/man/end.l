@@ -13,5 +13,5 @@ This commands commits the current transaction.  All changes made by
 the transaction become visible to others and are guaranteed to be
 durable if a crash occurs.
 .SH "SEE ALSO"
-abort(l),
+rollback(l),
 begin(l).
