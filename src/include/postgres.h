@@ -214,4 +214,12 @@ typedef uint32 CommandId;
 #define STATUS_BAD_PACKET		(-7)
 #define STATUS_FOUND			(1)
 
+/* ---------------
+ * Cyrillic on the fly charsets recode
+ * ---------------
+ */
+#ifdef CYR_RECODE
+void SetCharSet();
+#endif /* CYR_RECODE */
+
 #endif							/* POSTGRES_H */
