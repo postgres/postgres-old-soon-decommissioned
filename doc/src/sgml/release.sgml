@@ -1938,7 +1938,7 @@ DROP SCHEMA information_schema CASCADE;
 
     <listitem>
      <para>
-      Improve performance of function <function>PGunescapeBytea</function> (Ben Lamb)
+      Improve performance of function <function>PQunescapeBytea</function> (Ben Lamb)
      </para>
     </listitem>
 
