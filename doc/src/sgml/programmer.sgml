@@ -5,6 +5,11 @@ Postgres Programmer's Guide.
 - thomas 1998-10-27
 
 $Log: programmer.sgml,v $
+Revision 1.10  1998/10/31 09:36:36  thomas
+Cleanup for v6.4 release.
+Make new file current.sgml to hold release info for the current release.
+ Should be moved to release.sgml before filling with next release info.
+
 Revision 1.9  1998/10/30 19:37:11  thomas
 Minor editing and markup changes as a result of preparing the Postscript
  documentation for v6.4.
@@ -22,7 +27,6 @@ Bigger updates to the installation instructions (install and config).
 <!entity y2k      SYSTEM "y2k.sgml">
 
 <!entity arch     SYSTEM "arch.sgml">
-<!entity start    SYSTEM "start.sgml">
 <!entity query    SYSTEM "query.sgml">
 
 <!entity advanced SYSTEM "advanced.sgml">
@@ -36,7 +40,6 @@ Bigger updates to the installation instructions (install and config).
 <!entity psql     SYSTEM "psql.sgml">
 <!entity pgaccess SYSTEM "pgaccess.sgml">
 
-<!entity start-ag SYSTEM "start-ag.sgml">
 <!entity install  SYSTEM "install.sgml">
 <!entity recovery SYSTEM "recovery.sgml">
 <!entity regress  SYSTEM "regress.sgml">
