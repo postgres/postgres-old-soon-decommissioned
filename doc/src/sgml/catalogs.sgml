@@ -1311,7 +1311,7 @@
       <entry>pg_operator.oid</entry>
       <entry>
        If this operator supports merge joins, the operator that sorts
-       the type of the left-hand operand
+       the type of the right-hand operand
       </entry>
      </row>
 
