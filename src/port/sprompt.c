@@ -26,7 +26,7 @@
  *
  * Returns a malloc()'ed string with the input (w/o trailing newline).
  */
-#include "postgres.h"
+#include "c.h"
 
 #ifdef HAVE_TERMIOS_H
 #include <termios.h>

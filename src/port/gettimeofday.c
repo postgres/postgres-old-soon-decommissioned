@@ -23,7 +23,7 @@
  * SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
  */
 
-#include "postgres.h"
+#include "c.h"
 
 #include <sys/time.h>
 

@@ -10,7 +10,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"
+#include "c.h"
 
 #include <unistd.h>
 #include <sys/time.h>
