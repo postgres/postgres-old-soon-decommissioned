@@ -444,11 +444,13 @@ _hash_initbitmap(Relation rel, HashMetaPage metap, BlockNumber blkno)
  *	first page in the bucket chain.  The read page works backward and
  *	the write page works forward; the procedure terminates when the
  *	read page and write page are the same page.
+ *
+ *	Caller must hold exclusive lock on the target bucket.
  */
 void
 _hash_squeezebucket(Relation rel,
-					HashMetaPage metap,
-					Bucket bucket)
+					Bucket bucket,
+					BlockNumber bucket_blkno)
 {
 	Buffer		wbuf;
 	Buffer		rbuf = 0;
@@ -466,7 +468,7 @@ _hash_squeezebucket(Relation rel,
 	/*
 	 * start squeezing into the base bucket page.
 	 */
-	wblkno = BUCKET_TO_BLKNO(bucket);
+	wblkno = bucket_blkno;
 	wbuf = _hash_getbuf(rel, wblkno, HASH_WRITE);
 	wpage = BufferGetPage(wbuf);
 	_hash_checkpage(wpage, LH_BUCKET_PAGE);
@@ -484,11 +486,6 @@ _hash_squeezebucket(Relation rel,
 	/*
 	 * find the last page in the bucket chain by starting at the base
 	 * bucket page and working forward.
-	 *
-	 * XXX if chains tend to be long, we should probably move forward using
-	 * HASH_READ and then _hash_chgbufaccess to HASH_WRITE when we reach
-	 * the end.  if they are short we probably don't care very much.  if
-	 * the hash function is working at all, they had better be short..
 	 */
 	ropaque = wopaque;
 	do

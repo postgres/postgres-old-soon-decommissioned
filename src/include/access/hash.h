@@ -25,13 +25,12 @@
 
 /*
  * Mapping from hash bucket number to physical block number of bucket's
- * starting page.  Beware of multiple evaluations of argument!  Also notice
- * macro's implicit dependency on "metap".
+ * starting page.  Beware of multiple evaluations of argument!
  */
 typedef uint32 Bucket;
 
-#define BUCKET_TO_BLKNO(B) \
-		((BlockNumber) ((B) + ((B) ? metap->hashm_spares[_hash_log2((B)+1)-1] : 0)) + 1)
+#define BUCKET_TO_BLKNO(metap,B) \
+		((BlockNumber) ((B) + ((B) ? (metap)->hashm_spares[_hash_log2((B)+1)-1] : 0)) + 1)
 
 /*
  * Special space for hash index pages.
@@ -243,8 +242,8 @@ extern Buffer _hash_addovflpage(Relation rel, Buffer metabuf, Buffer buf);
 extern BlockNumber _hash_freeovflpage(Relation rel, Buffer ovflbuf);
 extern void _hash_initbitmap(Relation rel, HashMetaPage metap,
 							 BlockNumber blkno);
-extern void _hash_squeezebucket(Relation rel, HashMetaPage metap,
-					Bucket bucket);
+extern void _hash_squeezebucket(Relation rel,
+								Bucket bucket, BlockNumber bucket_blkno);
 
 /* hashpage.c */
 extern void _hash_metapinit(Relation rel);
