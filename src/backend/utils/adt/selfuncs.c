@@ -1250,7 +1250,7 @@ getattstatistics(Oid relid,
 	 * have at hand!  (For example, we might have a '>' operator rather
 	 * than the '<' operator that will appear in staop.)
 	 */
-	tuple = SearchSysCacheTuple(STATRELID,
+	tuple = SearchSysCacheTupleCopy(STATRELID,
 								ObjectIdGetDatum(relid),
 								Int16GetDatum((int16) attnum),
 								0,
@@ -1351,6 +1351,7 @@ getattstatistics(Oid relid,
 			pfree(strval);
 		}
 	}
+	heap_freetuple(tuple);
 
 	return true;
 }
