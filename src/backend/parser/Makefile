@@ -9,7 +9,7 @@
 #-------------------------------------------------------------------------
 
 SRCDIR= ../..
-include ../../Makefile.global
+include $(SRCDIR)/Makefile.global
 
 ifeq ($(CC), gcc)
 CFLAGS+= -Wno-error
@@ -19,10 +19,13 @@ OBJS= analyze.o gram.o keywords.o parser.o parse_agg.o parse_clause.o \
       parse_expr.o parse_func.o parse_node.o parse_oper.o parse_relation.o \
       parse_type.o parse_coerce.o parse_target.o scan.o scansup.o
 
-all: SUBSYS.o
+all: $(SRCDIR)/include/parser/parse.h SUBSYS.o
 
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
+
+$(SRCDIR)/include/parser/parse.h: parse.h
+	cp $< $@
 
 gram.c parse.h: gram.y
 	$(YACC) -d $(YFLAGS) $<
