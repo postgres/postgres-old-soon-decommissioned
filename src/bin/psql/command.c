@@ -359,6 +359,9 @@ exec_command(const char *cmd,
 			case 'f':
 				success = describeFunctions(pattern, show_verbose);
 				break;
+			case 'g':
+				success = describeGroups(pattern);
+				break;
 			case 'l':
 				success = do_lo_list();
 				break;

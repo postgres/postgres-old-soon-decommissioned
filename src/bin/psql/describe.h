@@ -25,6 +25,9 @@ bool		describeOperators(const char *pattern);
 /* \du */
 bool		describeUsers(const char *pattern);
 
+/* \dg */
+bool		describeGroups(const char *pattern);
+
 /* \z (or \dp) */
 bool		permissionsList(const char *pattern);
 

@@ -905,6 +905,17 @@ testdb=>
 
 
       <varlistentry>
+        <term><literal>\dg [ <replaceable class="parameter">pattern</replaceable> ]</literal></term>
+        <listitem>
+        <para>
+        Lists all database groups or only those that match <replaceable
+        class="parameter">pattern</replaceable>.
+        </para>
+        </listitem>
+      </varlistentry>
+
+
+      <varlistentry>
         <term><literal>\distvS [ <replaceable class="parameter">pattern</replaceable> ]</literal></term>
 
 	<listitem>
