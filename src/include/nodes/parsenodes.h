@@ -114,9 +114,8 @@ typedef struct AlterTableStmt
 typedef struct ChangeACLStmt
 {
 	NodeTag		type;
-	struct AclItem *aclitem;
-	unsigned	modechg;
 	List	   *relNames;
+	char	   *aclString;
 } ChangeACLStmt;
 
 /* ----------------------
@@ -488,10 +487,8 @@ typedef struct ProcedureStmt
 {
 	NodeTag		type;
 	char	   *funcname;		/* name of function to create */
-	List	   *defArgs;		/* list of definitions a list of strings
-								 * (as Value *) */
-	Node	   *returnType;		/* the return type (as a string or a
-								 * TypeName (ie.setof) */
+	List	   *argTypes;		/* list of argument types (TypeName nodes) */
+	Node	   *returnType;		/* the return type (a TypeName node) */
 	List	   *withClause;		/* a list of DefElem */
 	List	   *as;				/* definition of function body */
 	char	   *language;		/* C, SQL, etc */
@@ -505,7 +502,7 @@ typedef struct RemoveAggrStmt
 {
 	NodeTag		type;
 	char	   *aggname;		/* aggregate to drop */
-	char	   *aggtype;		/* for this type */
+	Node	   *aggtype;		/* TypeName for input datatype, or NULL */
 } RemoveAggrStmt;
 
 /* ----------------------

@@ -375,7 +375,7 @@ transformRangeSubselect(ParseState *pstate, RangeSubselect *r)
 	save_joinlist = pstate->p_joinlist;
 	pstate->p_rtable = NIL;
 	pstate->p_joinlist = NIL;
-	parsetrees = parse_analyze(makeList1(r->subquery), pstate);
+	parsetrees = parse_analyze(r->subquery, pstate);
 	pstate->p_rtable = save_rtable;
 	pstate->p_joinlist = save_joinlist;
 

@@ -26,5 +26,6 @@ extern Oid	exprType(Node *expr);
 extern int32 exprTypmod(Node *expr);
 extern bool exprIsLengthCoercion(Node *expr, int32 *coercedTypmod);
 extern void parse_expr_init(void);
+extern char *TypeNameToInternalName(TypeName *typename);
 
 #endif	 /* PARSE_EXPR_H */

@@ -15,6 +15,6 @@
 
 #include "parser/parse_node.h"
 
-extern List *parse_analyze(List *pl, ParseState *parentParseState);
+extern List *parse_analyze(Node *parseTree, ParseState *parentParseState);
 
 #endif	 /* ANALYZE_H */

@@ -35,9 +35,9 @@ extern bool ShowPortNumber;
 extern List *pg_parse_and_rewrite(char *query_string,
 								  Oid *typev, int nargs);
 extern Plan *pg_plan_query(Query *querytree);
-extern void pg_exec_query_dest(char *query_string,
-							   CommandDest dest,
-							   MemoryContext parse_context);
+extern void pg_exec_query_string(char *query_string,
+								 CommandDest dest,
+								 MemoryContext parse_context);
 
 #endif	 /* BOOTSTRAP_INCLUDE */
 

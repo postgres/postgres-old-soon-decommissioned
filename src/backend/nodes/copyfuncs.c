@@ -1854,13 +1854,9 @@ _copyChangeACLStmt(ChangeACLStmt *from)
 {
 	ChangeACLStmt *newnode = makeNode(ChangeACLStmt);
 	
-	if (from->aclitem)
-	{
-		newnode->aclitem = (struct AclItem *) palloc(sizeof(struct AclItem));
-		memcpy(newnode->aclitem, from->aclitem, sizeof(struct AclItem));
-	}
-	newnode->modechg = from->modechg;
 	Node_Copy(from, newnode, relNames);
+	if (from->aclString)
+		newnode->aclString = pstrdup(from->aclString);
 
 	return newnode;
 }
@@ -2033,7 +2029,7 @@ _copyProcedureStmt(ProcedureStmt *from)
 	ProcedureStmt *newnode = makeNode(ProcedureStmt);
 	
 	newnode->funcname = pstrdup(from->funcname);
-	Node_Copy(from, newnode, defArgs);
+	Node_Copy(from, newnode, argTypes);
 	Node_Copy(from, newnode, returnType);
 	Node_Copy(from, newnode, withClause);
 	Node_Copy(from, newnode, as);
@@ -2048,7 +2044,7 @@ _copyRemoveAggrStmt(RemoveAggrStmt *from)
 	RemoveAggrStmt *newnode = makeNode(RemoveAggrStmt);
 	
 	newnode->aggname = pstrdup(from->aggname);
-	newnode->aggtype = pstrdup(from->aggtype);
+	Node_Copy(from, newnode, aggtype);
 
 	return newnode;
 }
