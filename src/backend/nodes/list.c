@@ -234,6 +234,36 @@ length(List *l)
 }
 
 /*
+ *	llast
+ *
+ *	Get the last element of l ... error if empty list
+ */
+void *
+llast(List *l)
+{
+	if (l == NIL)
+		elog(ERROR, "llast: empty list");
+	while (lnext(l) != NIL)
+		l = lnext(l);
+	return lfirst(l);
+}
+
+/*
+ *	llasti
+ *
+ *	As above, but for integer lists
+ */
+int
+llasti(List *l)
+{
+	if (l == NIL)
+		elog(ERROR, "llasti: empty list");
+	while (lnext(l) != NIL)
+		l = lnext(l);
+	return lfirsti(l);
+}
+
+/*
  *	freeList
  *
  *	Free the List nodes of a list

@@ -109,6 +109,8 @@ typedef struct List
  * function prototypes in nodes/list.c
  */
 extern int	length(List *list);
+extern void *llast(List *list);
+extern int	llasti(List *list);
 extern List *nconc(List *list1, List *list2);
 extern List *lcons(void *datum, List *list);
 extern List *lconsi(int datum, List *list);

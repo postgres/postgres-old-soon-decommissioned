@@ -160,7 +160,7 @@ static void
 _outFuncCall(StringInfo str, FuncCall *node)
 {
 	appendStringInfo(str, "FUNCTION ");
-	_outToken(str, node->funcname);
+	_outNode(str, node->funcname);
 	appendStringInfo(str, " :args ");
 	_outNode(str, node->args);
 	appendStringInfo(str, " :agg_star %s :agg_distinct %s ",
@@ -213,6 +213,8 @@ _outIndexElem(StringInfo str, IndexElem *node)
 {
 	appendStringInfo(str, " INDEXELEM :name ");
 	_outToken(str, node->name);
+	appendStringInfo(str, " :funcname ");
+	_outNode(str, node->funcname);
 	appendStringInfo(str, " :args ");
 	_outNode(str, node->args);
 	appendStringInfo(str, " :class ");

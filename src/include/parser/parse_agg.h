@@ -18,8 +18,8 @@
 
 extern void AddAggToParseState(ParseState *pstate, Aggref *aggref);
 extern void parseCheckAggregates(ParseState *pstate, Query *qry, Node *qual);
-extern Aggref *ParseAgg(ParseState *pstate, char *aggname, Oid basetype,
+extern Aggref *ParseAgg(ParseState *pstate, List *aggname, Oid basetype,
 		 List *args, bool agg_star, bool agg_distinct);
-extern void agg_error(char *caller, char *aggname, Oid basetypeID);
+extern void agg_error(const char *caller, List *aggname, Oid basetypeID);
 
 #endif   /* PARSE_AGG_H */

@@ -47,6 +47,8 @@ extern Oid	QualifiedNameGetCreationNamespace(List *names, char **objname_p);
 
 extern RangeVar *makeRangeVarFromNameList(List *names);
 
+extern char *NameListToString(List *names);
+
 extern bool isTempNamespace(Oid namespaceId);
 
 /* stuff for search_path GUC variable */

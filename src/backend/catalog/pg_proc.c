@@ -271,11 +271,11 @@ ProcedureCreate(const char *procedureName,
 	tupDesc = rel->rd_att;
 
 	/* Check for pre-existing definition */
-	oldtup = SearchSysCache(PROCNAME,
+	oldtup = SearchSysCache(PROCNAMENSP,
 							PointerGetDatum(procedureName),
 							UInt16GetDatum(parameterCount),
 							PointerGetDatum(typev),
-							0);
+							ObjectIdGetDatum(procNamespace));
 
 	if (HeapTupleIsValid(oldtup))
 	{

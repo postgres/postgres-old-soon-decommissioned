@@ -345,12 +345,7 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_CommentStmt:
-			{
-				CommentStmt *stmt = (CommentStmt *) parsetree;
-
-				CommentObject(stmt->objtype, stmt->objschema, stmt->objname,
-							  stmt->objproperty, stmt->objlist, stmt->comment);
-			}
+			CommentObject((CommentStmt *) parsetree);
 			break;
 
 		case T_CopyStmt:

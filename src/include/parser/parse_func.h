@@ -48,18 +48,22 @@ typedef enum
 
 
 extern Node *ParseFuncOrColumn(ParseState *pstate,
-				  char *funcname, List *fargs,
+				  List *funcname, List *fargs,
 				  bool agg_star, bool agg_distinct, bool is_column);
 
-extern FuncDetailCode func_get_detail(char *funcname, List *fargs,
+extern FuncDetailCode func_get_detail(List *funcname, List *fargs,
 				int nargs, Oid *argtypes,
 				Oid *funcid, Oid *rettype,
 				bool *retset, Oid **true_typeids);
 
 extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
 
-extern void func_error(const char *caller, const char *funcname,
+extern void func_error(const char *caller, List *funcname,
 					   int nargs, const Oid *argtypes,
 					   const char *msg);
+
+extern Oid	LookupFuncName(List *funcname, int nargs, const Oid *argtypes);
+extern Oid	LookupFuncNameTypeNames(List *funcname, List *argtypes,
+									bool opaqueOK, const char *caller);
 
 #endif   /* PARSE_FUNC_H */

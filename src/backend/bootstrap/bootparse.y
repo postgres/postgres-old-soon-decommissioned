@@ -272,6 +272,7 @@ boot_index_param:
 				{
 					IndexElem *n = makeNode(IndexElem);
 					n->name = LexIDStr($1);
+					n->funcname = n->args = NIL; /* no func indexes */
 					n->class = LexIDStr($2);
 					$$ = n;
 				}

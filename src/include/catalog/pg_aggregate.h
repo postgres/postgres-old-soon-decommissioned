@@ -157,8 +157,8 @@ DATA(insert OID = 0 ( stddev	PGUID numeric_accum  numeric_stddev		1700 1231 1700
  */
 extern void AggregateCreate(const char *aggName,
 							Oid aggNamespace,
-							char *aggtransfnName,
-							char *aggfinalfnName,
+							List *aggtransfnName,
+							List *aggfinalfnName,
 							Oid aggBaseType,
 							Oid aggTransType,
 							const char *agginitval);

@@ -49,7 +49,7 @@
 #define NAMESPACEOID	18
 #define OPERNAME		19
 #define OPEROID			20
-#define PROCNAME		21
+#define PROCNAMENSP		21
 #define PROCOID			22
 #define RELNAMENSP		23
 #define RELOID			24

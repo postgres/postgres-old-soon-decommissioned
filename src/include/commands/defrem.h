@@ -45,10 +45,10 @@ extern void DefineDomain(CreateDomainStmt *stmt);
  * prototypes in remove.c
  */
 extern void RemoveDomain(List *names, int behavior);
-extern void RemoveFunction(char *functionName, List *argTypes);
+extern void RemoveFunction(List *functionName, List *argTypes);
 extern void RemoveOperator(char *operatorName,
 			   TypeName *typeName1, TypeName *typeName2);
 extern void RemoveType(List *names);
-extern void RemoveAggregate(char *aggName, TypeName *aggType);
+extern void RemoveAggregate(List *aggName, TypeName *aggType);
 
 #endif   /* DEFREM_H */
