@@ -70,6 +70,8 @@ typedef struct
 /* date.c */
 extern Datum date_in(PG_FUNCTION_ARGS);
 extern Datum date_out(PG_FUNCTION_ARGS);
+extern Datum date_recv(PG_FUNCTION_ARGS);
+extern Datum date_send(PG_FUNCTION_ARGS);
 extern Datum date_eq(PG_FUNCTION_ARGS);
 extern Datum date_ne(PG_FUNCTION_ARGS);
 extern Datum date_lt(PG_FUNCTION_ARGS);
@@ -93,6 +95,8 @@ extern Datum date_text(PG_FUNCTION_ARGS);
 
 extern Datum time_in(PG_FUNCTION_ARGS);
 extern Datum time_out(PG_FUNCTION_ARGS);
+extern Datum time_recv(PG_FUNCTION_ARGS);
+extern Datum time_send(PG_FUNCTION_ARGS);
 extern Datum time_scale(PG_FUNCTION_ARGS);
 extern Datum time_eq(PG_FUNCTION_ARGS);
 extern Datum time_ne(PG_FUNCTION_ARGS);
@@ -118,6 +122,8 @@ extern Datum time_part(PG_FUNCTION_ARGS);
 
 extern Datum timetz_in(PG_FUNCTION_ARGS);
 extern Datum timetz_out(PG_FUNCTION_ARGS);
+extern Datum timetz_recv(PG_FUNCTION_ARGS);
+extern Datum timetz_send(PG_FUNCTION_ARGS);
 extern Datum timetz_scale(PG_FUNCTION_ARGS);
 extern Datum timetz_eq(PG_FUNCTION_ARGS);
 extern Datum timetz_ne(PG_FUNCTION_ARGS);

@@ -163,6 +163,26 @@ bpcharout(PG_FUNCTION_ARGS)
 	PG_RETURN_CSTRING(result);
 }
 
+/*
+ *		bpcharrecv			- converts external binary format to bpchar
+ */
+Datum
+bpcharrecv(PG_FUNCTION_ARGS)
+{
+	/* Exactly the same as textrecv, so share code */
+	return textrecv(fcinfo);
+}
+
+/*
+ *		bpcharsend			- converts bpchar to binary format
+ */
+Datum
+bpcharsend(PG_FUNCTION_ARGS)
+{
+	/* Exactly the same as textsend, so share code */
+	return textsend(fcinfo);
+}
+
 
 /*
  * Converts a CHARACTER type to the specified size.
@@ -403,6 +423,26 @@ varcharout(PG_FUNCTION_ARGS)
 #endif
 
 	PG_RETURN_CSTRING(result);
+}
+
+/*
+ *		varcharrecv			- converts external binary format to varchar
+ */
+Datum
+varcharrecv(PG_FUNCTION_ARGS)
+{
+	/* Exactly the same as textrecv, so share code */
+	return textrecv(fcinfo);
+}
+
+/*
+ *		varcharsend			- converts varchar to binary format
+ */
+Datum
+varcharsend(PG_FUNCTION_ARGS)
+{
+	/* Exactly the same as textsend, so share code */
+	return textsend(fcinfo);
 }
 
 

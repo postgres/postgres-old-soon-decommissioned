@@ -324,7 +324,7 @@ write_user_file(Relation urel)
 		if (isnull)
 			valuntil = pstrdup("");
 		else
-			valuntil = DatumGetCString(DirectFunctionCall1(nabstimeout, datum));
+			valuntil = DatumGetCString(DirectFunctionCall1(abstimeout, datum));
 
 		/*
 		 * Check for illegal characters in the username and password.
@@ -649,7 +649,7 @@ CreateUser(CreateUserStmt *stmt)
 
 	if (validUntil)
 		new_record[Anum_pg_shadow_valuntil - 1] =
-			DirectFunctionCall1(nabstimein, CStringGetDatum(validUntil));
+			DirectFunctionCall1(abstimein, CStringGetDatum(validUntil));
 	else
 		new_record_nulls[Anum_pg_shadow_valuntil - 1] = 'n';
 
@@ -851,7 +851,7 @@ AlterUser(AlterUserStmt *stmt)
 	if (validUntil)
 	{
 		new_record[Anum_pg_shadow_valuntil - 1] =
-			DirectFunctionCall1(nabstimein, CStringGetDatum(validUntil));
+			DirectFunctionCall1(abstimein, CStringGetDatum(validUntil));
 		new_record_repl[Anum_pg_shadow_valuntil - 1] = 'r';
 	}
 

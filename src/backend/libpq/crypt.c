@@ -145,7 +145,7 @@ md5_crypt_verify(const Port *port, const char *user, char *client_pass)
 		if (!valuntil)
 			vuntil = INVALID_ABSTIME;
 		else
-			vuntil = DatumGetAbsoluteTime(DirectFunctionCall1(nabstimein,
+			vuntil = DatumGetAbsoluteTime(DirectFunctionCall1(abstimein,
 											 CStringGetDatum(valuntil)));
 		current = GetCurrentAbsoluteTime();
 		if (vuntil != INVALID_ABSTIME && vuntil < current)

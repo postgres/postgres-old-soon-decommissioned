@@ -63,8 +63,12 @@ typedef struct
 
 extern Datum bit_in(PG_FUNCTION_ARGS);
 extern Datum bit_out(PG_FUNCTION_ARGS);
+extern Datum bit_recv(PG_FUNCTION_ARGS);
+extern Datum bit_send(PG_FUNCTION_ARGS);
 extern Datum varbit_in(PG_FUNCTION_ARGS);
 extern Datum varbit_out(PG_FUNCTION_ARGS);
+extern Datum varbit_recv(PG_FUNCTION_ARGS);
+extern Datum varbit_send(PG_FUNCTION_ARGS);
 extern Datum bit(PG_FUNCTION_ARGS);
 extern Datum varbit(PG_FUNCTION_ARGS);
 extern Datum biteq(PG_FUNCTION_ARGS);

@@ -140,10 +140,4 @@ extern void xact_redo(XLogRecPtr lsn, XLogRecord *record);
 extern void xact_undo(XLogRecPtr lsn, XLogRecord *record);
 extern void xact_desc(char *buf, uint8 xl_info, char *rec);
 
-/* defined in xid.c */
-extern Datum xidin(PG_FUNCTION_ARGS);
-extern Datum xidout(PG_FUNCTION_ARGS);
-extern Datum xideq(PG_FUNCTION_ARGS);
-extern Datum xid_age(PG_FUNCTION_ARGS);
-
 #endif   /* XACT_H */
