@@ -546,9 +546,7 @@ PGSQL_OPT="-F -D$PGDATA"
 
 if [ "$debug" = yes ]
 then
-    BACKEND_TALK_ARG="-d 5"
-else
-    PGSQL_OPT="$PGSQL_OPT -o /dev/null"
+    BOOTSTRAP_TALK_ARG="-d 5"
 fi
 
 
@@ -570,7 +568,7 @@ cat "$POSTGRES_BKI" \
   export LC_COLLATE
   export LC_CTYPE
   unset LC_ALL
-  "$PGPATH"/postgres -boot -x1 $PGSQL_OPT $BACKEND_TALK_ARG template1
+  "$PGPATH"/postgres -boot -x1 $PGSQL_OPT $BOOTSTRAP_TALK_ARG template1
 ) \
 || exit_nicely
 

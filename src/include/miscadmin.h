@@ -104,6 +104,7 @@ extern void ProcessInterrupts(void);
 /*
  * from postmaster/postmaster.c
  */
+extern bool IsPostmasterEnvironment;
 extern bool IsUnderPostmaster;
 extern bool ClientAuthInProgress;
 extern const bool ExecBackend;

@@ -379,6 +379,8 @@ PostmasterMain(int argc, char *argv[])
 
 	progname = argv[0];
 
+	IsPostmasterEnvironment = true;
+
 	/*
 	 * Catch standard options before doing much else.  This even works on
 	 * systems without getopt_long.

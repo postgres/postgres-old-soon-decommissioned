@@ -57,6 +57,8 @@ char	   *DatabasePath = NULL;
 
 Oid			MyDatabaseId = InvalidOid;
 
+/* these are initialized for the bootstrap/standalone case: */
+bool		IsPostmasterEnvironment = false;
 bool		IsUnderPostmaster = false;
 
 int			DateStyle = USE_ISO_DATES;
