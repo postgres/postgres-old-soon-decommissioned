@@ -1915,7 +1915,6 @@ query_tree_walker(Query *query,
 		{
 			case RTE_RELATION:
 			case RTE_SPECIAL:
-			case RTE_FUNCTION:
 				/* nothing to do */
 				break;
 			case RTE_SUBQUERY:
@@ -1925,6 +1924,10 @@ query_tree_walker(Query *query,
 				break;
 			case RTE_JOIN:
 				if (walker(rte->joinaliasvars, context))
+					return true;
+				break;
+			case RTE_FUNCTION:
+				if (walker(rte->funcexpr, context))
 					return true;
 				break;
 		}
@@ -2293,7 +2296,6 @@ query_tree_mutator(Query *query,
 		{
 			case RTE_RELATION:
 			case RTE_SPECIAL:
-			case RTE_FUNCTION:
 				/* nothing to do, don't bother to make a copy */
 				break;
 			case RTE_SUBQUERY:
@@ -2308,6 +2310,11 @@ query_tree_mutator(Query *query,
 			case RTE_JOIN:
 				FLATCOPY(newrte, rte, RangeTblEntry);
 				MUTATE(newrte->joinaliasvars, rte->joinaliasvars, List *);
+				rte = newrte;
+				break;
+			case RTE_FUNCTION:
+				FLATCOPY(newrte, rte, RangeTblEntry);
+				MUTATE(newrte->funcexpr, rte->funcexpr, Node *);
 				rte = newrte;
 				break;
 		}

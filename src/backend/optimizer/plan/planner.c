@@ -246,7 +246,7 @@ subquery_planner(Query *parse, double tuple_fraction)
 	 */
 	if (PlannerPlanId != saved_planid || PlannerQueryLevel > 1)
 	{
-		(void) SS_finalize_plan(plan);
+		(void) SS_finalize_plan(plan, parse->rtable);
 
 		/*
 		 * At the moment, SS_finalize_plan doesn't handle initPlans and so
