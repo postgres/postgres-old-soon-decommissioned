@@ -137,7 +137,7 @@ AttributeTupleForm attrtypes[MAXATTR];  /* points to attribute info */
 static char	*values[MAXATTR];	/* cooresponding attribute values */
 int		numattr;		/* number of attributes for cur. rel */
 #ifdef OPENLINK_PATCHES
-extern int	fsyncOff;		/* do not fsync the database */
+extern int    fsyncOff;                 /* do not fsync the database */
 #endif
 
 #if defined(WIN32) || defined(PORTNAME_next)
@@ -187,7 +187,9 @@ typedef void (*sig_func)();
  *	error handling / abort routines
  * ----------------
  */
-#if !defined(PORTNAME_bsdi) && !defined(PORTNAME_bsdi_2_1)
+# if !defined(PORTNAME_BSD44_derived) && \
+     !defined(PORTNAME_bsdi) && \
+     !defined(PORTNAME_bsdi_2_1)
 void err()
 {
     Warnings++;
@@ -266,7 +268,7 @@ BootstrapMain(int argc, char *argv[])
     Quiet = 0;
     Noversion = 0;
     dbName = NULL;
-
+    
 #ifdef OPENLINK_PATCHES
     while ((flag = getopt(argc, argv, "dCOQP:F")) != EOF) {
 #else
@@ -279,6 +281,11 @@ BootstrapMain(int argc, char *argv[])
 	case 'C':
 	    Noversion = 1; 
 	    break;
+#ifdef OPENLINK_PATCHES
+        case 'F':
+            fsyncOff = 1;
+            break;
+#endif
 	case 'O':
 	    override = true;
 	    break;
@@ -287,12 +294,6 @@ BootstrapMain(int argc, char *argv[])
 	    break;
 	case 'P':/* specify port */
 	    portFd = atoi(optarg);
-	    break; 
-#ifdef OPENLINK_PATCHES
-	case 'F':
-	    fsyncOff = 1;
-	    break;
-#endif
 	    break; 
 	default:
 	    usage();

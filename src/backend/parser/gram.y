@@ -515,7 +515,7 @@ fetch_how_many:  Iconst
 	       { $$ = $1;
 		 if ($1 <= 0) elog(WARN,"Please specify nonnegative count for fetch"); }
 	|  ALL				{ $$ = 0; /* 0 means fetch all tuples*/}
-	|  /*EMPTY*/			{ $$ = 0; /*default*/ }
+	|  /*EMPTY*/			{ $$ = 1; /*default*/ }
 	;
 
 /*****************************************************************************

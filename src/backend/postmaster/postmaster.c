@@ -49,7 +49,9 @@
 #define MAXINT        INT_MAX
 #else
 #include <netdb.h>		/* for MAXHOSTNAMELEN on some */
-# if defined(PORTNAME_BSD44_derived) || defined(PORTNAME_bsdi) || defined(PORTNAME_bsdi_2_1)
+# if defined(PORTNAME_BSD44_derived) || \
+     defined(PORTNAME_bsdi) || \
+     defined(PORTNAME_bsdi_2_1)
 # include <machine/limits.h>
 # define MAXINT		INT_MAX
 # else

@@ -319,7 +319,7 @@ nodeHandleRIRAttributeRule(Node **nodePtr,
 	    if (name_to_look_for.data[0]) {
 		Node *n;
 		
-		n = FindMatchingTLEntry(targetlist, &name_to_look_for);
+		n = FindMatchingTLEntry(targetlist, (char *)&name_to_look_for);
 		if (n == NULL) {
 		    *nodePtr = make_null(((Var*) node)->vartype);
 		} else {

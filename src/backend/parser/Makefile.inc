@@ -34,13 +34,13 @@ $(objdir)/scan.o: scan.c
 
 
 SRCS_PARSER+= analyze.c catalog_utils.c dbcommands.c gram.c \
-	keywords.c parser.c parse_query.c scan.c scansup.c 
+	keywords.c parser.c parse_query.c scan.c scansup.c sysfunc.c
 
 CLEANFILES+= scan.c ${PARSEYACCS}
 
 POSTGRES_DEPEND+= scan.c $(PARSEYACCS)
 
 HEADERS+= catalog_utils.h io.h parse_query.h parsetree.h \
-	dbcommands.h keywords.h
+	dbcommands.h keywords.h sysfunc.c
 
 
