@@ -684,6 +684,17 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
+       <term>--enable-pltcl-utf</term>
+       <listitem>
+        <para>
+         Enables enables PL/Tcl Tcl_UtfToExternal and Tcl_ExternalToUtf
+         conversion support. These functions needed for Tcl versions 8.1
+         and above for proper handling of 8-bit characters.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term>--enable-odbc</term>
        <listitem>
         <para>
