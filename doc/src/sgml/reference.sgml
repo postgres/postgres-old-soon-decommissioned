@@ -128,7 +128,7 @@ Disable this chapter until we have more functions documented.
    <para>
     This part provides reference information for the
     <acronym>SQL</acronym> functions supported by
-    <productname>Postgres</productname>.
+    <productname>PostgreSQL</productname>.
    </para>
 
    &currentDate;

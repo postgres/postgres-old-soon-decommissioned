@@ -339,7 +339,8 @@
 
   <para>
    The <varname>WAL_SYNC_METHOD</varname> parameter determines how
-   Postgres will ask the kernel to force WAL updates out to disk.
+   <productname>PostgreSQL</productname> will ask the kernel to force
+    WAL updates out to disk. 
    All the options should be the same as far as reliability goes,
    but it's quite platform-specific which one will be the fastest.
    Note that this parameter is irrelevant if <varname>FSYNC</varname>
