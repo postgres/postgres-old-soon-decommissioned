@@ -30,6 +30,10 @@ int main(int argc,char **argv)
   char QUERY[1024];
   exec sql end declare section;
   int done=0;
+  FILE *dbgs;
+
+  if ((dbgs = fopen("log", "w")) != NULL)
+	ECPGdebug(1, dbgs);
   
   snprintf(QUERY,sizeof QUERY,"select * from %s",argc>1?argv[1]:"pg_tables");
 
@@ -123,5 +127,9 @@ int main(int argc,char **argv)
   exec sql close MYCURS;
   
   exec sql deallocate descriptor MYDESC;
+
+  if (dbgs != NULL)
+	fclose(dbgs);
+
   return 0;
 }
