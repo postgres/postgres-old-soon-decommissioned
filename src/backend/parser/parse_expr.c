@@ -266,7 +266,11 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 					if (length(left_expr) !=
 						length(right_expr))
 						elog(ERROR, "parser: Subselect has too many or too few fields.");
-
+					
+					if (length(left_expr) > 1 && 
+						strcmp (op, "=") != 0 && strcmp (op, "<>") != 0)
+						elog(ERROR, "parser: '%s' is not relational operator", op);
+					
 					sublink->oper = NIL;
 					foreach(elist, left_expr)
 					{
