@@ -691,13 +691,13 @@ msgstr ""
 
 #: common.c:33
 #, c-format
-msgid "%s: could not obtain information about current user: %s"
-msgstr "%s: не удалось получить информацию о текущем пользователе: %s"
+msgid "%s: could not obtain information about current user: %s\n"
+msgstr "%s: не удалось получить информацию о текущем пользователе: %s\n"
 
 #: common.c:44
 #, c-format
-msgid "%s: could not get current user name: %s"
-msgstr "%s: не удалось получить имя текущего пользователя: %s"
+msgid "%s: could not get current user name: %s\n"
+msgstr "%s: не удалось получить имя текущего пользователя: %s\n"
 
 #: common.c:89
 #: common.c:115
