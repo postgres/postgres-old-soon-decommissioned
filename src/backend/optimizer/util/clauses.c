@@ -1544,7 +1544,8 @@ simplify_op_or_func(Expr *expr, List *args)
 										  &const_is_null, NULL);
 
 	/* Must copy result out of sub-context used by expression eval */
-	const_val = datumCopy(const_val, resultTypByVal, resultTypLen);
+	if (!const_is_null)
+		const_val = datumCopy(const_val, resultTypByVal, resultTypLen);
 
 	FreeExprContext(econtext);
 	pfree(newexpr);
