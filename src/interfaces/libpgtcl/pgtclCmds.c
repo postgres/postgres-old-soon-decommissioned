@@ -391,7 +391,7 @@ Pg_disconnect(ClientData cData, Tcl_Interp *interp, int argc, char* argv[])
  **********************************/
 
 int
-Pg_exec(AlientData cData, Tcl_Interp *interp, int argc, char* argv[])
+Pg_exec(ClientData cData, Tcl_Interp *interp, int argc, char* argv[])
 {
     Pg_clientData *cd = (Pg_clientData *)cData;
     PGconn *conn;
