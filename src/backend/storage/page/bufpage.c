@@ -112,12 +112,15 @@ PageAddItem(Page page,
 				elog(NOTICE, "PageAddItem: tried overwrite after maxoff");
 				return InvalidOffsetNumber;
 			}
-			itemId = &((PageHeader) page)->pd_linp[offsetNumber - 1];
-			if (((*itemId).lp_flags & LP_USED) ||
-				((*itemId).lp_len != 0))
+			if (offsetNumber < limit)
 			{
-				elog(NOTICE, "PageAddItem: tried overwrite of used ItemId");
-				return InvalidOffsetNumber;
+				itemId = &((PageHeader) page)->pd_linp[offsetNumber - 1];
+				if (((*itemId).lp_flags & LP_USED) ||
+					((*itemId).lp_len != 0))
+				{
+					elog(NOTICE, "PageAddItem: tried overwrite of used ItemId");
+					return InvalidOffsetNumber;
+				}
 			}
 		}
 		else
