@@ -76,14 +76,7 @@ PrepareQuery(PrepareStmt *stmt)
 		Query	   *query = (Query *) lfirst(query_list_item);
 		Plan	   *plan;
 
-		/* We can't generate plans for utility statements. */
-		if (query->commandType == CMD_UTILITY)
-			plan = NULL;
-		else
-		{
-			/* Call the query planner to generate a plan. */
-			plan = planner(query);
-		}
+		plan = pg_plan_query(query);
 
 		plan_list = lappend(plan_list, plan);
 	}
