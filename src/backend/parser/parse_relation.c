@@ -241,7 +241,7 @@ expandAll(ParseState *pstate, char *relname, char *refname, int *this_resno)
 	if (rte == NULL)
 	{
 		rte = addRangeTableEntry(pstate, relname, refname, FALSE, FALSE);
-		elog(NOTICE,"Auto-creating query reference to table %s", refname);
+		elog(NOTICE,"Adding missing FROM-clause entry for table %s", refname);
 	}
 
 	rel = heap_open(rte->relid, AccessShareLock);

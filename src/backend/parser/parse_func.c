@@ -275,7 +275,7 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 			if (rte == NULL)
 			{
 				rte = addRangeTableEntry(pstate, refname, refname,FALSE, FALSE);
-				elog(NOTICE,"Auto-creating query reference to table %s", refname);
+				elog(NOTICE,"Adding missing FROM-clause entry for table %s", refname);
 			}
 
 			relname = rte->relname;
@@ -434,7 +434,7 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 			if (rte == NULL)
 			{
 				rte = addRangeTableEntry(pstate, refname, refname,FALSE, FALSE);
-				elog(NOTICE,"Auto-creating query reference to table %s", refname);
+				elog(NOTICE,"Adding missing FROM-clause entry for table %s", refname);
 			}
 										 
 			relname = rte->relname;

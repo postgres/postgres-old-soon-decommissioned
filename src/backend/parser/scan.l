@@ -151,7 +151,7 @@ typecast		"::"
 
 self			[,()\[\].;$\:\+\-\*\/\%\^\<\>\=\|]
 op_and_self		[\~\!\@\#\^\&\|\`\?\$\:\+\-\*\/\%\<\>\=]
-operator	{op_and_self}|({op_and_self}+[\~\!\@\#\^\&\|\`\?\$\:\+\*\/\%\<\>\=])
+operator		{op_and_self}+
 
 /* we do not allow unary minus in numbers. 
  * instead we pass it verbatim to parser. there it gets
