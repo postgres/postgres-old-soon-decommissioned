@@ -273,6 +273,7 @@ LocalBufferSync(void)
     }
 
     memset(LocalRefCount, 0, sizeof(long) * NLocBuffer);
+    nextFreeLocalBuf = 0;
 }
 
 void
@@ -280,15 +281,15 @@ ResetLocalBufferPool(void)
 {
     int i;
 
-    memset(LocalBufferDescriptors, 0, sizeof(BufferDesc) * NLocBuffer);
-    nextFreeLocalBuf = 0;
-
-    for (i = 0; i < NLocBuffer; i++) {
+    for (i = 0; i < NLocBuffer; i++)
+    {
 	BufferDesc *buf = &LocalBufferDescriptors[i];
 
-	/* just like InitLocalBuffer() */
+	buf->tag.relId.relId = InvalidOid;
+	buf->flags &= ~BM_DIRTY;
 	buf->buf_id = - i - 2;	
     }
 
     memset(LocalRefCount, 0, sizeof(long) * NLocBuffer);
+    nextFreeLocalBuf = 0;
 }
