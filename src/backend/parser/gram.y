@@ -716,6 +716,13 @@ def_elem:  def_name '=' def_arg
 		    $$->defname = $1;
 		    $$->arg = (Node *)NULL;
 		}
+	|  DEFAULT '=' def_arg
+		{
+		    $$ = makeNode(DefElem);
+		    $$->defname = (char*) palloc (8);
+		    strcpy ($$->defname, "default");
+		    $$->arg = (Node *)$3;
+		}
 	;
 
 def_arg:  Id			{  $$ = (Node *)makeString($1); }
