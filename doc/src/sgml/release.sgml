@@ -467,6 +467,15 @@ typedefs (Michael)</para></listitem>
       </para>
      </listitem>
 
+     <listitem>
+      <para>
+       The API for user-defined GiST indexes has been changed. The
+       Union and PickSplit methods are now passed a pointer to a
+       special <structname>GistEntryVector</structname> structure,
+       rather than a <type>bytea</type>.
+      </para>
+     </listitem>
+
     </itemizedlist>
    </para>
   </sect2>
