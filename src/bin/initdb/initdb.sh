@@ -622,6 +622,8 @@ then
     BOOTSTRAP_TALK_ARG="-d 5"
 fi
 
+unset PGCLIENTENCODING
+
 $ECHO_N "creating template1 database in $PGDATA/base/1... "$ECHO_C
 
 rm -rf "$PGDATA"/base/1 || exit_nicely
