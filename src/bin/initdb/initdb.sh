@@ -344,7 +344,7 @@ pg_version $PGDATA/base/template1
 #----------------------------------------------------------------------------
 
 if [ $template_only -eq 0 ]; then
-    echo "Creating global classes in $PG_DATA/base"
+    echo "Creating global classes in $PGDATA/base"
     [ "$debug" -ne 0 ] && echo "Running: postgres $BACKENDARGS template1"
 
     cat $GLOBAL \

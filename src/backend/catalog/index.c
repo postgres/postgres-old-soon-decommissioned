@@ -1276,7 +1276,7 @@ FormIndexDatum(int numberOfAttributes,
 	 * ----------------
 	 */
 
-	for (i = 1; i <= numberOfAttributes; i += 1)
+	for (i = 1; i <= numberOfAttributes; i++)
 	{
 		offset = AttrNumberGetAttrOffset(i);
 
