@@ -16,7 +16,7 @@
 typedef struct
 {
 	int			nargs;
-	Oid			arglist[8];
+	Oid			arglist[FUNC_MAX_ARGS];
 	Oid			procOid;
 	NameData	funcName;
 } FuncIndexInfo;

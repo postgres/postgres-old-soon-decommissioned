@@ -61,7 +61,7 @@ typedef struct _funcInfo
 	char	   *proowner;
 	int			lang;
 	int			nargs;
-	char	   *argtypes[8];	/* should be derived from obj/fmgr.h
+	char	   *argtypes[FUNC_MAX_ARGS];	/* should be derived from obj/fmgr.h
 								 * instead of hardwired */
 	char	   *prorettype;
 	int			retset;			/* 1 if the function returns a set, 0

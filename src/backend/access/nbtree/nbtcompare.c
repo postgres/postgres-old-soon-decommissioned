@@ -98,7 +98,7 @@ btoidvectorcmp(Oid *a, Oid *b)
 {
 	int			i;
 
-	for (i = 0; i < 8; i++)
+	for (i = 0; i < INDEX_MAX_KEYS; i++)
 		/* we use this because we need the int4gt, etc */
 		if (!int4eq(a[i], b[i]))
 		{

@@ -71,11 +71,11 @@ AggregateCreate(char *aggName,
 	Oid			xret1 = InvalidOid;
 	Oid			xret2 = InvalidOid;
 	Oid			fret = InvalidOid;
-	Oid			fnArgs[8];
+	Oid			fnArgs[FUNC_MAX_ARGS];
 	NameData	aname;
 	TupleDesc	tupDesc;
 
-	MemSet(fnArgs, 0, 8 * sizeof(Oid));
+	MemSet(fnArgs, 0, FUNC_MAX_ARGS * sizeof(Oid));
 
 	/* sanity checks */
 	if (!aggName)

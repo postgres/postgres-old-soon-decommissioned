@@ -377,7 +377,7 @@ typedef struct PLpgSQL_function
 	bool		fn_retset;
 
 	int			fn_nargs;
-	int			fn_argvarnos[MAXFMGRARGS];
+	int			fn_argvarnos[FUNC_MAX_ARGS];
 	int			found_varno;
 	int			new_varno;
 	int			old_varno;

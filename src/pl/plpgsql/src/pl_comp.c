@@ -114,7 +114,7 @@ plpgsql_compile(Oid fn_oid, int functype)
 	PLpgSQL_row *row;
 	PLpgSQL_rec *rec;
 	int			i;
-	int			arg_varnos[MAXFMGRARGS];
+	int			arg_varnos[FUNC_MAX_ARGS];
 
 	/* ----------
 	 * Initialize the compiler

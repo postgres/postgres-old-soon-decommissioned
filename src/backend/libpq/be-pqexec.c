@@ -57,7 +57,7 @@ PQfn(int fnid,
 	 int nargs)
 {
 	char	   *retval;			/* XXX - should be datum, maybe ? */
-	char	   *arg[8];
+	char	   *arg[FUNC_MAX_ARGS];
 	int			i;
 
 	/* ----------------
@@ -304,8 +304,8 @@ pqtest_PQfn(char *q)
 				v,
 				f,
 				offsets;
-	char	   *fields[8];
-	PQArgBlock	pqargs[7];
+	char	   *fields[FUNC_MAX_ARGS];
+	PQArgBlock	pqargs[FUNC_MAX_ARGS];
 	int			res;
 	char	   *pqres;
 
@@ -313,7 +313,7 @@ pqtest_PQfn(char *q)
 	 *	parse q into fields
 	 * ----------------
 	 */
-	i = strparse(q, fields, &offsets, 8);
+	i = strparse(q, fields, &offsets, FUNC_MAX_ARGS);
 	printf("pqtest_PQfn: strparse returns %d fields\n", i);		/* debug */
 	if (i == 0)
 		return -1;
@@ -331,7 +331,7 @@ pqtest_PQfn(char *q)
 	 *	build a PQArgBlock
 	 * ----------------
 	 */
-	for (j = 1; j < i && j < 8; j++)
+	for (j = 1; j < i && j < FUNC_MAX_ARGS; j++)
 	{
 		k = j - 1;
 		v = atoi(fields[j]);

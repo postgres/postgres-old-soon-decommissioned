@@ -15,9 +15,6 @@
 
 #include "parser/parse_node.h"
 
-
-#define MAXFARGS 8				/* max # args to a c or postquel function */
-
 /*
  *	This structure is used to explore the inheritance hierarchy above
  *	nodes in the type tree in order to disambiguate among polymorphic

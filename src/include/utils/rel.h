@@ -51,7 +51,7 @@ typedef struct Trigger
 	bool		tgdeferrable;
 	bool		tginitdeferred;
 	int16		tgnargs;
-	int16		tgattr[8];
+	int16		tgattr[FUNC_MAX_ARGS];
 	char	  **tgargs;
 } Trigger;
 

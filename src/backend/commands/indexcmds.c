@@ -414,7 +414,7 @@ FuncIndexArgs(IndexElem *funcIndex,
 	}
 	*opOidP = tuple->t_data->t_oid;
 
-	MemSet(argTypes, 0, 8 * sizeof(Oid));
+	MemSet(argTypes, 0, FUNC_MAX_ARGS * sizeof(Oid));
 
 	/*
 	 * process the function arguments

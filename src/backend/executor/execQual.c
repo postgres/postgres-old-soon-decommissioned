@@ -656,7 +656,7 @@ ExecMakeFunctionResult(Node *node,
 					   bool *isNull,
 					   bool *isDone)
 {
-	Datum		argV[MAXFMGRARGS];
+	Datum		argV[FUNC_MAX_ARGS];
 	FunctionCachePtr fcache;
 	Func	   *funcNode = NULL;
 	Oper	   *operNode = NULL;
@@ -690,7 +690,7 @@ ExecMakeFunctionResult(Node *node,
 	{
 		bool		argDone;
 
-		if (fcache->nargs > MAXFMGRARGS)
+		if (fcache->nargs > FUNC_MAX_ARGS)
 			elog(ERROR, "ExecMakeFunctionResult: too many arguments");
 
 		/*

@@ -318,14 +318,14 @@ SizeTargetExpr(ParseState *pstate,
 			   int32 attrtypmod)
 {
 	char	   *funcname;
-	Oid			oid_array[MAXFARGS];
+	Oid			oid_array[FUNC_MAX_ARGS];
 	HeapTuple	ftup;
 	int			i;
 
 	funcname = typeidTypeName(attrtype);
 	oid_array[0] = attrtype;
 	oid_array[1] = INT4OID;
-	for (i = 2; i < MAXFARGS; i++)
+	for (i = 2; i < FUNC_MAX_ARGS; i++)
 		oid_array[i] = InvalidOid;
 
 	/* attempt to find with arguments exactly as specified... */
