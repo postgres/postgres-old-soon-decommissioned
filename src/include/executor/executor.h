@@ -137,6 +137,7 @@ extern TupleTableSlot *ExecProject(ProjectionInfo *projInfo,
 typedef TupleTableSlot *(*ExecScanAccessMtd) (ScanState *node);
 
 extern TupleTableSlot *ExecScan(ScanState *node, ExecScanAccessMtd accessMtd);
+extern void ExecAssignScanProjectionInfo(ScanState *node);
 
 /*
  * prototypes from functions in execTuples.c

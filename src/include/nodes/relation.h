@@ -105,6 +105,7 @@ typedef struct QualCost
  * If the relation is a base relation it will have these fields set:
  *
  *		rtekind - distinguishes plain relation, subquery, or function RTE
+ *		varlist - list of Vars for physical columns (only if table)
  *		indexlist - list of IndexOptInfo nodes for relation's indexes
  *					(always NIL if it's not a table)
  *		pages - number of disk pages in relation (zero if not a table)
@@ -190,6 +191,7 @@ typedef struct RelOptInfo
 
 	/* information about a base rel (not set for join rels!) */
 	RTEKind		rtekind;		/* RELATION, SUBQUERY, or FUNCTION */
+	List	   *varlist;
 	List	   *indexlist;
 	long		pages;
 	double		tuples;

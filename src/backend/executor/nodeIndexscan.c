@@ -583,12 +583,6 @@ ExecInitIndexScan(IndexScan *node, EState *estate)
 	ExecInitScanTupleSlot(estate, &indexstate->ss);
 
 	/*
-	 * Initialize result tuple type and projection info.
-	 */
-	ExecAssignResultTypeFromTL(&indexstate->ss.ps);
-	ExecAssignProjectionInfo(&indexstate->ss.ps);
-
-	/*
 	 * Initialize index-specific scan state
 	 */
 	indexstate->iss_NumIndices = 0;
@@ -916,6 +910,12 @@ ExecInitIndexScan(IndexScan *node, EState *estate)
 
 	indexstate->iss_RelationDescs = indexDescs;
 	indexstate->iss_ScanDescs = scanDescs;
+
+	/*
+	 * Initialize result tuple type and projection info.
+	 */
+	ExecAssignResultTypeFromTL(&indexstate->ss.ps);
+	ExecAssignScanProjectionInfo(&indexstate->ss);
 
 	/*
 	 * all done.

@@ -232,7 +232,7 @@ ExecInitSeqScan(SeqScan *node, EState *estate)
 	 * Initialize result tuple type and projection info.
 	 */
 	ExecAssignResultTypeFromTL(&scanstate->ps);
-	ExecAssignProjectionInfo(&scanstate->ps);
+	ExecAssignScanProjectionInfo(scanstate);
 
 	return scanstate;
 }

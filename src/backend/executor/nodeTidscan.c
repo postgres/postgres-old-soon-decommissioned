@@ -384,12 +384,6 @@ ExecInitTidScan(TidScan *node, EState *estate)
 	ExecInitScanTupleSlot(estate, &tidstate->ss);
 
 	/*
-	 * Initialize result tuple type and projection info.
-	 */
-	ExecAssignResultTypeFromTL(&tidstate->ss.ps);
-	ExecAssignProjectionInfo(&tidstate->ss.ps);
-
-	/*
 	 * get the tid node information
 	 */
 	tidList = (ItemPointerData *) palloc(length(node->tideval) * sizeof(ItemPointerData));
@@ -437,6 +431,12 @@ ExecInitTidScan(TidScan *node, EState *estate)
 	 * first scan.
 	 */
 	tidstate->ss.ps.chgParam = execParam;
+
+	/*
+	 * Initialize result tuple type and projection info.
+	 */
+	ExecAssignResultTypeFromTL(&tidstate->ss.ps);
+	ExecAssignScanProjectionInfo(&tidstate->ss);
 
 	/*
 	 * all done.
