@@ -760,6 +760,12 @@ SPI_getrelname(Relation rel)
 	return pstrdup(RelationGetRelationName(rel));
 }
 
+char *
+SPI_getnspname(Relation rel)
+{
+    return get_namespace_name(RelationGetNamespace(rel));
+}
+
 void *
 SPI_palloc(Size size)
 {
