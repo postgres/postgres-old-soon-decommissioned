@@ -69,7 +69,7 @@ dist:
 $(distdir).tar: distdir
 	$(TAR) chf $@ $(distdir)
 
-opt_files := contrib/retep \
+opt_files := \
 	src/tools src/corba src/data src/tutorial \
 	src/bin/pgtclsh \
 	$(addprefix src/interfaces/, libpgtcl python jdbc) \

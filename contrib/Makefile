@@ -41,10 +41,6 @@ WANTED_DIRS = \
 		userlock	\
 		vacuumlo
 
-ifeq ($(with_java),yes)
-WANTED_DIRS += retep
-endif
-
 # Missing:
 #		ipc_check	\ (does not have a makefile)
 #		mSQL-interface	\ (requires msql installed)
