@@ -738,7 +738,7 @@ connectDBStart(PGconn *conn)
 		conn->raddr.in.sin_port = htons((unsigned short) (portno));
 		conn->raddr_len = sizeof(struct sockaddr_in);
 	}
-#if !defined(WIN32) && !defined(__CYGWIN32__)
+#ifdef HAVE_UNIX_SOCKETS
 	else
 		conn->raddr_len = UNIXSOCK_PATH(conn->raddr.un, portno);
 #endif

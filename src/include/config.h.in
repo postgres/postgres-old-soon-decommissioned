@@ -224,6 +224,14 @@
 #define BITSPERBYTE		8
 
 /*
+ * Define this is your operating system kernel supports AF_UNIX family
+ * sockets.
+ */
+#if !defined(__CYGWIN32__) && !defined(__QNX__)
+# define HAVE_UNIX_SOCKETS 1
+#endif
+
+/*
  *------------------------------------------------------------------------
  * These hand-configurable symbols are for enabling debugging code,
  * not for controlling user-visible features or resource limits.
