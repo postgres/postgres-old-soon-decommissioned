@@ -481,6 +481,7 @@ PerformAddAttribute(char *relationName,
 		attribute->attisset = (bool) (form->typtype == 'c');
 		attribute->attalign = form->typalign;
 		attribute->attnotnull = false;
+		attribute->atthasdef = (colDef->defval != NULL);
 
 		heap_insert(attrdesc, attributeTuple);
 		if (hasindex)
