@@ -326,10 +326,19 @@ fnames(char *path)
 
 	dir = opendir(path);
 	if (dir == NULL)
+	{
+#ifndef FRONTEND
+		elog(WARNING, "could not open directory \"%s\": %m", path);
+#else
+		fprintf(stderr, _("could not open directory \"%s\": %s\n"),
+				path, strerror(errno));
+#endif
 		return NULL;
+	}
 
 	filenames = (char **) palloc(fnsize * sizeof(char *));
 
+	errno = 0;
 	while ((file = readdir(dir)) != NULL)
 	{
 		if (strcmp(file->d_name, ".") != 0 && strcmp(file->d_name, "..") != 0)
@@ -342,6 +351,25 @@ fnames(char *path)
 			}
 			filenames[numnames++] = pstrdup(file->d_name);
 		}
+		errno = 0;
+	}
+#ifdef WIN32
+
+	/*
+	 * This fix is in mingw cvs (runtime/mingwex/dirent.c rev 1.4), but
+	 * not in released version
+	 */
+	if (GetLastError() == ERROR_NO_MORE_FILES)
+		errno = 0;
+#endif
+	if (errno)
+	{
+#ifndef FRONTEND
+		elog(WARNING, "could not read directory \"%s\": %m", path);
+#else
+		fprintf(stderr, _("could not read directory \"%s\": %s\n"),
+				path, strerror(errno));
+#endif
 	}
 
 	filenames[numnames] = NULL;
@@ -434,7 +462,8 @@ report_and_fail:
 #ifndef FRONTEND
 	elog(WARNING, "could not remove file or directory \"%s\": %m", filepath);
 #else
-	fprintf(stderr, _("could not remove file or directory \"%s\": %s\n"), filepath, strerror(errno));
+	fprintf(stderr, _("could not remove file or directory \"%s\": %s\n"),
+			filepath, strerror(errno));
 #endif
 	fnames_cleanup(filenames);
 	return false;
