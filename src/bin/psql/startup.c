@@ -670,9 +670,9 @@ checkWin32Codepage(void)
 	concp = GetConsoleCP();
 	if (wincp != concp)
 	{
-		printf("Warning: Console codepage (%u) differs from windows codepage (%u)\n"
-			   "         8-bit characters will not work correctly. See PostgreSQL\n"
-			   "         documentation \"Installation on Windows\" for details.\n\n",
+		printf(gettext("Warning: Console code page (%u) differs from Windows code page (%u)\n"
+					   "         8-bit characters may not work correctly. See psql reference\n"
+					   "         page \"Notes for Windows users\" for details.\n\n"),
 			   concp, wincp);
 	}
 }
