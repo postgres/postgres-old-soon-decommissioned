@@ -12,7 +12,7 @@
 #-------------------------------------------------------------------------
 
 SRCDIR=..
-include $(SRCDIR)/Makefile.global
+include ../Makefile.global
 
 .DEFAULT all:
 #

@@ -9,13 +9,10 @@
 # IDENTIFICATION
 #    $Header$
 #
-# NOTES
-#	objdir	- location of the objects and generated files (eg. obj)
-#
 #-------------------------------------------------------------------------
 
-MKDIR=./mk
--include $(MKDIR)/../Makefile.global
+SRCDIR= .
+include Makefile.global
 
 FIND = find
 # assuming gnu tar and split here
@@ -41,7 +38,7 @@ ifeq ($(USE_TCL), true)
 	$(MAKE) -C libpgtcl $@
 endif
 	$(MAKE) -C bin $@
-ifneq ($(wildcard $(MKDIR)/../../doc), )
+ifneq ($(wildcard ../doc), )
 	$(MAKE) -C ../doc $@
 endif
 	@if test $@. = all. -o $@. = .; then \

@@ -12,7 +12,6 @@
 #-------------------------------------------------------------------------
 
 SRCDIR= ../..
-LIBPQDIR= $(SRCDIR)/libpq
 include ../../Makefile.global
 
 CFLAGS+= -I$(LIBPQDIR) -I../../include

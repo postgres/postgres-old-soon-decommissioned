@@ -12,7 +12,6 @@
 #-------------------------------------------------------------------------
 
 SRCDIR= ../..
-LIBPQDIR= $(SRCDIR)/libpq
 include ../../Makefile.global
 
 CREATEFILES= create.sql bench.sql
