@@ -141,6 +141,15 @@ PGAC_ARG_REQ(with, libs,      [  --with-libs=DIRS        alternative spelling of
 
 
 #
+# 64-bit integer date/time storage (--enable-integer-datetimes)
+#
+AC_MSG_CHECKING([whether to build with 64-bit integer date/time support])
+PGAC_ARG_BOOL(enable, integer-datetimes, no, [  --enable-integer-datetimes  enable 64-bit integer date/time support],
+              [AC_DEFINE([USE_INTEGER_DATETIMES], 1,
+                         [Set to 1 if you want integer date/time support (--enable-integer-datetimes)])])
+AC_MSG_RESULT([$enable_integer_datetimes])
+
+
 # Character set recode (--enable-recode)
 #
 AC_MSG_CHECKING([whether to build with recode support])
