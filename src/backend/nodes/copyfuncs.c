@@ -1558,7 +1558,8 @@ _copyQuery(Query *from)
 	Node_Copy(from, newnode, groupClause);
 	Node_Copy(from, newnode, havingQual); /* currently ignored */
 
-	Node_Copy(from, newnode, Aggreg);
+	newnode->qry_numAgg = from->qry_numAgg;
+	Node_Copy(from, newnode, qry_aggs);
 
 	return newnode;
 }
