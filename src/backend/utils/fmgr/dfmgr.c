@@ -326,13 +326,11 @@ substitute_libpath_macro(const char *name)
 	if (name[0] != '$')
 		return pstrdup(name);
 
-	macroname_len = strcspn(name + 1,
 #ifndef WIN32
-		"/"
+	macroname_len = strcspn(name + 1, "/") + 1;
 #else
-		"/\\"
+	macroname_len = strcspn(name + 1, "/\\") + 1;
 #endif
-		) + 1;
 
 	if (strncmp(name, "$libdir", macroname_len) == 0)
 		replacement = PKGLIBDIR;
