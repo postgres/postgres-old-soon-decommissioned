@@ -24,8 +24,11 @@ SUBSYS.o: $(OBJS)
 
 regexec.o: regexec.c engine.c
 
-retest: retest.o SUBSYS.o $(DEBUGOBJ)
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
+# retest will not compile because multibyte is now enabled by default
+# and the multibyte calls require /mmgr, /adt, and other calls that
+# are complex for linkage,  bjm 2002-09-16
+#retest: retest.o SUBSYS.o $(DEBUGOBJ)
+#	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
 
 clean: 
 	rm -f SUBSYS.o $(OBJS) retest retest.o
