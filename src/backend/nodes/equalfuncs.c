@@ -593,6 +593,7 @@ _equalQuery(Query *a, Query *b)
 		return false;
 	if (a->hasSubLinks != b->hasSubLinks)
 		return false;
+	/* we deliberately ignore originalQuery */
 	if (!equal(a->rtable, b->rtable))
 		return false;
 	if (!equal(a->jointree, b->jointree))

@@ -1011,7 +1011,7 @@ _SPI_execute(char *src, int tcount, _SPI_plan *plan)
 			res = SPI_OK_UTILITY;
 			if (plan == NULL)
 			{
-				ProcessUtility(queryTree->utilityStmt, None);
+				ProcessUtility(queryTree->utilityStmt, None, NULL);
 				if (!islastquery)
 					CommandCounterIncrement();
 				else
@@ -1085,7 +1085,7 @@ _SPI_execute_plan(_SPI_plan *plan, Datum *Values, char *Nulls, int tcount)
 
 		if (queryTree->commandType == CMD_UTILITY)
 		{
-			ProcessUtility(queryTree->utilityStmt, None);
+			ProcessUtility(queryTree->utilityStmt, None, NULL);
 			if (!islastquery)
 				CommandCounterIncrement();
 			else

@@ -120,7 +120,7 @@ ExplainOneQuery(Query *query, bool verbose, bool analyze, CommandDest dest)
 		plan->instrument = InstrAlloc();
 
 		gettimeofday(&starttime, NULL);
-		ProcessQuery(query, plan, None);
+		ProcessQuery(query, plan, None, NULL);
 		CommandCounterIncrement();
 		gettimeofday(&endtime, NULL);
 

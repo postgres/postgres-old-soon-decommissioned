@@ -48,6 +48,11 @@
 
 #include "access/htup.h"
 
+
+/* buffer size to use for command completion tags */
+#define COMPLETION_TAG_BUFSIZE	64
+
+
 /* ----------------
  *		CommandDest is a simplistic means of identifying the desired
  *		destination.  Someday this will probably need to be improved.
@@ -88,7 +93,7 @@ extern void BeginCommand(char *pname, int operation, TupleDesc attinfo,
 			 bool isIntoRel, bool isIntoPortal, char *tag,
 			 CommandDest dest);
 extern DestReceiver *DestToFunction(CommandDest dest);
-extern void EndCommand(char *commandTag, CommandDest dest);
+extern void EndCommand(const char *commandTag, CommandDest dest);
 
 /* Additional functions that go with destination management, more or less. */
 
@@ -96,6 +101,5 @@ extern void SendCopyBegin(void);
 extern void ReceiveCopyBegin(void);
 extern void NullCommand(CommandDest dest);
 extern void ReadyForQuery(CommandDest dest);
-extern void UpdateCommandInfo(int operation, Oid lastoid, uint32 tuples);
 
 #endif   /* DEST_H */

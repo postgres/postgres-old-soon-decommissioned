@@ -168,6 +168,9 @@ _readQuery(void)
 	token = pg_strtok(&length); /* get hasSubLinks */
 	local_node->hasSubLinks = strtobool(token);
 
+	/* we always want originalQuery to be false in a read-in query */
+	local_node->originalQuery = false;
+
 	token = pg_strtok(&length); /* skip :rtable */
 	local_node->rtable = nodeRead(true);
 

@@ -18,7 +18,8 @@
 #include "utils/portal.h"
 
 
-extern void ProcessQuery(Query *parsetree, Plan *plan, CommandDest dest);
+extern void ProcessQuery(Query *parsetree, Plan *plan, CommandDest dest,
+						 char *completionTag);
 
 extern EState *CreateExecutorState(void);
 

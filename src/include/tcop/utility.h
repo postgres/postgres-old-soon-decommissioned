@@ -16,6 +16,7 @@
 
 #include "executor/execdesc.h"
 
-extern void ProcessUtility(Node *parsetree, CommandDest dest);
+extern void ProcessUtility(Node *parsetree, CommandDest dest,
+						   char *completionTag);
 
 #endif   /* UTILITY_H */

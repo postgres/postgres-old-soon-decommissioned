@@ -275,7 +275,7 @@ postquel_getnext(execution_state *es)
 		/*
 		 * Process a utility command. (create, destroy...)	DZ - 30-8-1996
 		 */
-		ProcessUtility(es->qd->parsetree->utilityStmt, es->qd->dest);
+		ProcessUtility(es->qd->parsetree->utilityStmt, es->qd->dest, NULL);
 		if (!LAST_POSTQUEL_COMMAND(es))
 			CommandCounterIncrement();
 		return (TupleTableSlot *) NULL;

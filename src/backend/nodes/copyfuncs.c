@@ -1755,6 +1755,7 @@ _copyQuery(Query *from)
 	newnode->isTemp = from->isTemp;
 	newnode->hasAggs = from->hasAggs;
 	newnode->hasSubLinks = from->hasSubLinks;
+	newnode->originalQuery = from->originalQuery;
 
 	Node_Copy(from, newnode, rtable);
 	Node_Copy(from, newnode, jointree);

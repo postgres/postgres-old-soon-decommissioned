@@ -48,6 +48,8 @@ typedef struct Query
 	bool		hasAggs;		/* has aggregates in tlist or havingQual */
 	bool		hasSubLinks;	/* has subquery SubLink */
 
+	bool		originalQuery;	/* marks original query through rewriting */
+
 	List	   *rtable;			/* list of range table entries */
 	FromExpr   *jointree;		/* table join tree (FROM and WHERE
 								 * clauses) */
