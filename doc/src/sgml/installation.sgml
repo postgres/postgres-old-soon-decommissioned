@@ -726,10 +726,7 @@ su - postgres
        <term><option>--with-tcl</option></term>
        <listitem>
         <para>
-         Build components that require Tcl/Tk, which are
-         <application>libpgtcl</>, <application>pgtclsh</>,
-         <application>pgtksh</application>,
-         and <application>PL/Tcl</>.  But see below about
+         Build <application>PL/Tcl</>, which requires Tcl/Tk
          <option>--without-tk</>.
         </para>
        </listitem>

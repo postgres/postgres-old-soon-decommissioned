@@ -177,7 +177,6 @@ $PostgreSQL$
 
   &libpq;
   &lobj;
-  &libpgtcl;
   &ecpg;
   &infoschema;
 
