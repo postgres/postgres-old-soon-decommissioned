@@ -360,7 +360,9 @@ pqtest_PQfn(char *q)
 		else
 		{
 			pqargs[k].len = VAR_LENGTH_ARG;
-			pqargs[k].u.ptr = (int *) textin(fields[j]);
+			pqargs[k].u.ptr = (int *)
+				DatumGetTextP(DirectFunctionCall1(textin,
+												  CStringGetDatum(fields[j])));
 			printf("pqtest_PQfn: arg %d is text %s\n", k, fields[j]);	/* debug */
 		}
 	}
@@ -405,9 +407,8 @@ pqtest(struct varlena * vlena)
 	 *	get the query
 	 * ----------------
 	 */
-	q = textout(vlena);
-	if (q == NULL)
-		return -1;
+	q = DatumGetCString(DirectFunctionCall1(textout,
+											PointerGetDatum(vlena)));
 
 	switch (q[0])
 	{

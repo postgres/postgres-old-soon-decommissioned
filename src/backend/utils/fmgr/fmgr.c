@@ -164,7 +164,8 @@ fmgr_info(Oid functionId, FmgrInfo *finfo)
 			 * stored in prosrc (it doesn't have to be the same as the
 			 * name of the alias!)
 			 */
-			prosrc = textout(&(procedureStruct->prosrc));
+			prosrc = DatumGetCString(DirectFunctionCall1(textout,
+								PointerGetDatum(&procedureStruct->prosrc)));
 			fbp = fmgr_lookupByName(prosrc);
 			if (fbp == NULL)
 				elog(ERROR, "fmgr_info: function %s not in internal table",

@@ -304,7 +304,8 @@ ExtendIndex(char *indexRelationName, Expr *predicate, List *rangetable)
 	{
 		char	   *predString;
 
-		predString = textout(&index->indpred);
+		predString = DatumGetCString(DirectFunctionCall1(textout,
+											PointerGetDatum(&index->indpred)));
 		oldPred = stringToNode(predString);
 		pfree(predString);
 	}

@@ -850,7 +850,8 @@ ExecOpenIndices(RelationInfo *resultRelationInfo)
 		{
 			char	   *predString;
 
-			predString = textout(&indexStruct->indpred);
+			predString = DatumGetCString(DirectFunctionCall1(textout,
+									PointerGetDatum(&indexStruct->indpred)));
 			predicate = (PredInfo *) stringToNode(predString);
 			pfree(predString);
 		}

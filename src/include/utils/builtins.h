@@ -436,8 +436,8 @@ extern int32 varcharlen(char *arg);
 extern int32 varcharoctetlen(char *arg);
 
 /* varlena.c */
-extern text *textin(char *inputText);
-extern char *textout(text *vlena);
+extern Datum textin(PG_FUNCTION_ARGS);
+extern Datum textout(PG_FUNCTION_ARGS);
 extern text *textcat(text *arg1, text *arg2);
 extern bool texteq(text *arg1, text *arg2);
 extern bool textne(text *arg1, text *arg2);

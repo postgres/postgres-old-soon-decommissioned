@@ -77,7 +77,8 @@ coerce_type(ParseState *pstate, Node *node, Oid inputTypeId,
 		if (!con->constisnull)
 		{
 			/* We know the source constant is really of type 'text' */
-			char	   *val = textout((text *) con->constvalue);
+			char	   *val = DatumGetCString(DirectFunctionCall1(textout,
+														con->constvalue));
 
 			newcon->constvalue = stringTypeDatum(targetType, val, atttypmod);
 			pfree(val);

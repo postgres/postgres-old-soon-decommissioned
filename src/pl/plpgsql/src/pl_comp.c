@@ -142,7 +142,8 @@ plpgsql_compile(Oid fn_oid, int functype)
 	 * ----------
 	 */
 	procStruct = (Form_pg_proc) GETSTRUCT(procTup);
-	proc_source = textout(&(procStruct->prosrc));
+	proc_source = DatumGetCString(DirectFunctionCall1(textout,
+									PointerGetDatum(&procStruct->prosrc)));
 	plpgsql_setinput(proc_source, functype);
 	plpgsql_error_funcname = nameout(&(procStruct->proname));
 	plpgsql_error_lineno = 0;

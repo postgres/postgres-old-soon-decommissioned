@@ -126,38 +126,6 @@ tidne(ItemPointer arg1, ItemPointer arg2)
 }
 #endif
 
-#ifdef NOT_USED
-text *
-tid_text(ItemPointer tid)
-{
-	char	   *str;
-
-	if (!tid)
-		return (text *) NULL;
-	str = tidout(tid);
-
-	return textin(str);
-}	/* tid_text() */
-#endif
-
-#ifdef NOT_USED
-ItemPointer
-text_tid(const text *string)
-{
-	ItemPointer result;
-	char	   *str;
-
-	if (!string)
-		return (ItemPointer) 0;
-
-	str = textout((text *) string);
-	result = tidin(str);
-	pfree(str);
-
-	return result;
-}	/* text_tid() */
-#endif
-
 /*
  *	Functions to get latest tid of a specified tuple.
  *
@@ -197,7 +165,8 @@ currtid_byrelname(PG_FUNCTION_ARGS)
 	char		   *str;
 	Relation		rel;
 
-	str = textout(relname);
+	str = DatumGetCString(DirectFunctionCall1(textout,
+											  PointerGetDatum(relname)));
 
 	result = (ItemPointer) palloc(sizeof(ItemPointerData));
 	ItemPointerSetInvalid(result);

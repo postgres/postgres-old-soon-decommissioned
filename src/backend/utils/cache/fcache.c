@@ -70,7 +70,7 @@ init_fcache(Oid foid,
 	Form_pg_type typeStruct;
 	FunctionCachePtr retval;
 	int			nargs;
-	text	   *tmp;
+	Datum		tmp;
 	bool		isNull;
 
 	retval = (FunctionCachePtr) palloc(sizeof(FunctionCache));
@@ -212,14 +212,14 @@ init_fcache(Oid foid,
 
 	if (procedureStruct->prolang == SQLlanguageId)
 	{
-		tmp = (text *) SysCacheGetAttr(PROCOID,
-									   procedureTuple,
-									   Anum_pg_proc_prosrc,
-									   &isNull);
+		tmp = SysCacheGetAttr(PROCOID,
+							  procedureTuple,
+							  Anum_pg_proc_prosrc,
+							  &isNull);
 		if (isNull)
 			elog(ERROR, "init_fcache: null prosrc for procedure %u",
 				 foid);
-		retval->src = textout(tmp);
+		retval->src = DatumGetCString(DirectFunctionCall1(textout, tmp));
 		retval->bin = (char *) NULL;
 	}
 	else
@@ -229,14 +229,14 @@ init_fcache(Oid foid,
 			retval->bin = (char *) NULL;
 		else
 		{
-			tmp = (text *) SysCacheGetAttr(PROCOID,
-										   procedureTuple,
-										   Anum_pg_proc_probin,
-										   &isNull);
+			tmp = SysCacheGetAttr(PROCOID,
+								  procedureTuple,
+								  Anum_pg_proc_probin,
+								  &isNull);
 			if (isNull)
 				elog(ERROR, "init_fcache: null probin for procedure %u",
 					 foid);
-			retval->bin = textout(tmp);
+			retval->bin = DatumGetCString(DirectFunctionCall1(textout, tmp));
 		}
 	}
 

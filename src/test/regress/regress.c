@@ -524,7 +524,8 @@ ttdummy(PG_FUNCTION_ARGS)
 	}
 
 	{
-		text   *seqname = textin("ttdummy_seq");
+		text   *seqname = DatumGetTextP(DirectFunctionCall1(textin,
+											CStringGetDatum("ttdummy_seq")));
 
 		newoff = DirectFunctionCall1(nextval,
 									 PointerGetDatum(seqname));

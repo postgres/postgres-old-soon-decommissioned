@@ -68,7 +68,8 @@ RE_compile_and_execute(struct varlena * text_re, char *text, int cflags)
 	char	   *re;
 	int			regcomp_result;
 
-	re = textout(text_re);
+	re = DatumGetCString(DirectFunctionCall1(textout,
+											 PointerGetDatum(text_re)));
 	/* find a previously compiled regular expression */
 	for (i = 0; i < rec; i++)
 	{
