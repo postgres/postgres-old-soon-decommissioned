@@ -168,8 +168,8 @@ $Header$
       </row>
 
       <row>
-       <entry><type>numeric(<replaceable>p</replaceable>, <replaceable>s</replaceable>)</type></entry>
-       <entry><type>decimal(<replaceable>p</replaceable>, <replaceable>s</replaceable>)</type></entry>
+       <entry><type>numeric(<replaceable>p</replaceable>,<replaceable>s</replaceable>)</type></entry>
+       <entry><type>decimal(<replaceable>p</replaceable>,<replaceable>s</replaceable>)</type></entry>
        <entry>exact numeric with selectable precision</entry>
       </row>
 
