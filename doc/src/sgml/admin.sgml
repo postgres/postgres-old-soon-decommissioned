@@ -98,9 +98,9 @@ Derived from postgres.sgml.
   &intro-ag;
   &installation;
   &installw;
-  &charset;
   &runtime;
   &client-auth;
+  &charset;
   &manage-ag;
   &user-manag;
   &backup;
