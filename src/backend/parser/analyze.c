@@ -2467,13 +2467,18 @@ ParseFunc(ParseState *pstate, char *funcname, List *fargs, int *curr_resno)
 	{
 		Const	   *seq;
 		char	   *seqrel;
+		text	   *seqname;
 		int32		aclcheck_result = -1;
+		extern text *lower (text *string);
 
 		Assert(length(fargs) == 1);
 		seq = (Const *) lfirst(fargs);
 		if (!IsA((Node *) seq, Const))
 			elog(WARN, "%s: only constant sequence names are acceptable", funcname);
-		seqrel = textout((struct varlena *) (seq->constvalue));
+		seqname = lower ((text*)DatumGetPointer(seq->constvalue));
+		pfree (DatumGetPointer(seq->constvalue));
+		seq->constvalue = PointerGetDatum (seqname);
+		seqrel = textout(seqname);
 
 		if ((aclcheck_result = pg_aclcheck(seqrel, GetPgUserName(),
 			   ((funcid == SeqNextValueRegProcedure) ? ACL_WR : ACL_RD)))
