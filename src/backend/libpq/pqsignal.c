@@ -53,7 +53,7 @@
  * signals that should never be turned off.
  *
  * AuthBlockSig is the set of signals to block during authentication;
- * it's essentially BlockSig minus SIGTERM and SIGQUIT.
+ * it's essentially BlockSig minus SIGTERM, SIGQUIT, SIGALRM.
  *
  * UnBlockSig is the set of signals to block when we don't want to block
  * signals (is this ever nonzero??)
@@ -109,6 +109,9 @@ pqinitmask(void)
 #ifdef SIGQUIT
 	sigdelset(&AuthBlockSig, SIGQUIT);
 #endif
+#ifdef SIGALRM
+	sigdelset(&AuthBlockSig, SIGALRM);
+#endif
 #else
 	UnBlockSig = 0;
 	BlockSig = sigmask(SIGHUP) | sigmask(SIGQUIT) |
@@ -116,7 +119,7 @@ pqinitmask(void)
 		sigmask(SIGINT) | sigmask(SIGUSR1) |
 		sigmask(SIGUSR2) | sigmask(SIGCHLD) |
 		sigmask(SIGWINCH) | sigmask(SIGFPE);
-	AuthBlockSig = sigmask(SIGHUP) | sigmask(SIGALRM) |
+	AuthBlockSig = sigmask(SIGHUP) |
 		sigmask(SIGINT) | sigmask(SIGUSR1) |
 		sigmask(SIGUSR2) | sigmask(SIGCHLD) |
 		sigmask(SIGWINCH) | sigmask(SIGFPE);
