@@ -17,16 +17,10 @@
 #ifndef PQSIGNAL_H
 #define PQSIGNAL_H
 
-#include <signal.h>
-
 #include "c.h"
 
 typedef void (*pqsigfunc)(int);
 
 extern pqsigfunc pqsignal(int signo, pqsigfunc func);
-
-#if defined(USE_POSIX_SIGNALS)
-#define	signal(signo, handler)	pqsignal(signo, (pqsigfunc)(handler))
-#endif /* USE_POSIX_SIGNALS */
 
 #endif	/* PQSIGNAL_H */

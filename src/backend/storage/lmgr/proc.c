@@ -65,7 +65,7 @@
 
 #include "postgres.h"
 #include "miscadmin.h"
-#include "libpq/pqsignal.h"	/* substitute for <signal.h> */
+#include "libpq/pqsignal.h"
 
 #include "access/xact.h"
 #include "utils/hsearch.h"
@@ -157,7 +157,7 @@ InitProcess(IPCKey key)
      * ------------------
      */
 #ifndef WIN32
-    signal(SIGALRM, HandleDeadLock);
+    pqsignal(SIGALRM, HandleDeadLock);
 #endif /* WIN32 we'll have to figure out how to handle this later */
 
     SpinAcquire(ProcStructLock);
