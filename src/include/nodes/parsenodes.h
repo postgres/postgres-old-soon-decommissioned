@@ -1200,17 +1200,16 @@ typedef struct IndexStmt
  *		Create Function Statement
  * ----------------------
  */
-typedef struct ProcedureStmt
+typedef struct CreateFunctionStmt
 {
 	NodeTag		type;
 	bool		replace;		/* T => replace if already exists */
 	List	   *funcname;		/* qualified name of function to create */
 	List	   *argTypes;		/* list of argument types (TypeName nodes) */
 	TypeName   *returnType;		/* the return type */
+	List	   *options;		/* a list of DefElem */
 	List	   *withClause;		/* a list of DefElem */
-	List	   *as;				/* definition of function body */
-	char	   *language;		/* C, SQL, etc */
-} ProcedureStmt;
+} CreateFunctionStmt;
 
 /* ----------------------
  *		Drop Aggregate Statement

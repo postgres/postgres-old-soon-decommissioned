@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+Syntax of CREATE FUNCTION has been extended to resemble SQL99
 Effects of SET within a transaction block now roll back if transaction aborts
 New SET LOCAL syntax sets a parameter for the life of the current transaction
 Datestyle, timezone, client_encoding can be set in postgresql.conf

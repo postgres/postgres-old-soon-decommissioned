@@ -38,7 +38,7 @@ extern void ReindexDatabase(const char *databaseName, bool force, bool all);
  * DefineFoo and RemoveFoo are now both in foocmds.c
  */
 
-extern void CreateFunction(ProcedureStmt *stmt);
+extern void CreateFunction(CreateFunctionStmt *stmt);
 extern void RemoveFunction(List *functionName, List *argTypes);
 
 extern void DefineOperator(List *names, List *parameters);

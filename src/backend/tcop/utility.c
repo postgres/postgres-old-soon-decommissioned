@@ -574,8 +574,8 @@ ProcessUtility(Node *parsetree,
 			}
 			break;
 
-		case T_ProcedureStmt:	/* CREATE FUNCTION */
-			CreateFunction((ProcedureStmt *) parsetree);
+		case T_CreateFunctionStmt:	/* CREATE FUNCTION */
+			CreateFunction((CreateFunctionStmt *) parsetree);
 			break;
 
 		case T_IndexStmt:		/* CREATE INDEX */
