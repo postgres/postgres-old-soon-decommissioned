@@ -21,7 +21,8 @@
 extern Node *transformExpr(ParseState *pstate, Node *expr, int precedence);
 extern Node *transformIdent(ParseState *pstate, Node *expr, int precedence);
 extern Oid exprType(Node *expr);
-extern Node *handleNestedDots(ParseState *pstate, Attr *attr, int *curr_resno);
+extern Node *handleNestedDots(ParseState *pstate, Attr *attr,
+		int *curr_resno, int precedence);
 extern Node *parser_typecast2(Node *expr, Oid exprType, Type tp, int typlen);
 
 #endif							/* PARSE_EXPR_H */

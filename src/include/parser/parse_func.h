@@ -43,7 +43,7 @@ typedef struct _CandidateList
 }		   *CandidateList;
 
 extern Node *ParseFunc(ParseState *pstate, char *funcname, List *fargs,
-	int *curr_resno);
+	int *curr_resno, int precedence);
 
 extern void func_error(char *caller, char *funcname, int nargs, Oid *argtypes);
 

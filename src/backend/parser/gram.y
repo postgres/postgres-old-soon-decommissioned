@@ -2381,8 +2381,6 @@ OptUseOp:  USING Op								{ $$ = $2; }
  *
  *	...however, recursive addattr and rename supported.  make special
  *	cases for these.
- *
- *	XXX i believe '*' should be the default behavior, but...
  */
 opt_inh_star:  '*'								{ $$ = TRUE; }
 		| /*EMPTY*/								{ $$ = FALSE; }
@@ -2978,11 +2976,12 @@ a_expr:  attr opt_indirection
 				}
 		| name '(' '*' ')'
 				{
-					FuncCall *n = makeNode(FuncCall);
-					Ident *star = makeNode(Ident);
-
 					/* cheap hack for aggregate (eg. count) */
-					star->name = "oid";
+					FuncCall *n = makeNode(FuncCall);
+					A_Const *star = makeNode(A_Const);
+
+					star->val.type = T_String;
+					star->val.val.str = "";
 					n->funcname = $1;
 					n->args = lcons(star, NIL);
 					$$ = (Node *)n;

@@ -255,7 +255,7 @@ transformTargetList(ParseState *pstate, List *targetlist)
 					 * Target item is fully specified: ie.
 					 * relation.attribute
 					 */
-					result = handleNestedDots(pstate, att, &pstate->p_last_resno);
+					result = handleNestedDots(pstate, att, &pstate->p_last_resno,EXPR_COLUMN_FIRST);
 					handleTargetColname(pstate, &res->name, att->relname, attrname);
 					if (att->indirection != NIL)
 					{
@@ -467,7 +467,8 @@ make_targetlist_expr(ParseState *pstate,
 			att->relname = pstrdup(RelationGetRelationName(rd)->data);
 			att->attrs = lcons(makeString(colname), NIL);
 			target_expr = (Expr *) handleNestedDots(pstate, att,
-												  &pstate->p_last_resno);
+												  &pstate->p_last_resno,
+												  EXPR_COLUMN_FIRST);
 			while (ar != NIL)
 			{
 				A_Indices  *ind = lfirst(ar);

@@ -899,6 +899,7 @@ _copyAggreg(Aggreg *from)
 	newnode->aggname = pstrdup(from->aggname);
 	newnode->basetype = from->basetype;
 	newnode->aggtype = from->aggtype;
+	newnode->usenulls = from->usenulls;
 
 	Node_Copy(from, newnode, target);
 

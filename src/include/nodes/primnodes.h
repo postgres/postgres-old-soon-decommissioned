@@ -255,18 +255,19 @@ typedef struct Func
  *		aggname			- name of the aggregate
  *		basetype		- base type Oid of the aggregate
  *		aggtype			- type Oid of final result of the aggregate
- *		query			- XXX comment me
- *		target			- XXX comment me
+ *		target			- attribute or expression we are aggregating on
+ *		aggno			- index to ecxt_values
  * ----------------
  */
 typedef struct Aggreg
 {
 	NodeTag		type;
 	char	   *aggname;
-	Oid			basetype;		/* base type of the aggregate */
-	Oid			aggtype;		/* type of final result */
-	Node	   *target;			/* attribute to aggreg on */
-	int			aggno;			/* index to ecxt_values */
+	Oid			basetype;
+	Oid			aggtype;
+	Node	   *target;	
+	int			aggno;
+	bool		usenulls;
 } Aggreg;
 
 /* ----------------

@@ -225,6 +225,7 @@ FireRetrieveRulesAtQuery(Query *parsetree,
 			{
 				*instead_flag = TRUE;
 				FixResdomTypes(parsetree->targetList);
+
 				return lcons(parsetree, NIL);
 			}
 		}

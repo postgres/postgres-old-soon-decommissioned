@@ -34,7 +34,6 @@ extern int attnameAttNum(Relation rd, char *a);
 extern bool attnameIsSet(Relation rd, char *name);
 extern char *attnumAttName(Relation rd, int attrno);
 extern int attnumAttNelems(Relation rd, int attid);
-extern Oid attnameTypeId(Oid relid, char *attrname);
 extern Oid attnumTypeId(Relation rd, int attid);
 extern void handleTargetColname(ParseState *pstate, char **resname,
 					char *refname, char *colname);
