@@ -1490,15 +1490,13 @@ ParseComplexProjection(ParseState *pstate,
 						newexpr->typeOid = funcnode->functype;
 						newexpr->opType = FUNC_EXPR;
 						newexpr->oper = (Node *) funcnode;
-						newexpr->args = lcons(first_arg, NIL);
+						newexpr->args = expr->args;
 
 						return (Node *) newexpr;
 					}
 
 				}
 
-				elog(ERROR, "Function '%s' has bad return type %d",
-					 funcname, argtype);
 				break;
 			}
 		case T_Param:
