@@ -582,14 +582,15 @@ static void do_unlink()
 int
 StreamServerPort(char *hostName, short portName, int *fdP)
 {
-	struct sockaddr_in sin;
-	struct sockaddr_un sun;
+        union {
+	  struct sockaddr_in in;
+	  struct sockaddr_un un;
+	} saddr;
 	int			fd, err, family;
+	size_t                  len;
 	int			one = 1;
 
 	family = hostName != NULL ? AF_INET : AF_UNIX;
-
-	MemSet((char *) &sin, 0, sizeof sin);
 
 	if ((fd = socket(family, SOCK_STREAM, 0)) < 0)
 	{
@@ -611,23 +612,21 @@ StreamServerPort(char *hostName, short portName, int *fdP)
 		pqdebug("%s", PQerrormsg);
 		return (STATUS_ERROR);
 	}
+	bzero(&saddr, sizeof(saddr));
 	if (family == AF_UNIX)
 	  {
-	    size_t len;
-	    bzero(&sun, sizeof(sun));
-	    sun.sun_family = family;
-	    len = UNIXSOCK_PATH(sun,portName);
-	    strcpy(sock_path, sun.sun_path);
-	    err = bind(fd, (struct sockaddr *) &sun, len);
+	    saddr.un.sun_family = family;
+	    len = UNIXSOCK_PATH(saddr.un,portName);
+	    strcpy(sock_path, saddr.un.sun_path);
 	  }
 	else
 	  {
-	    bzero(&sin, sizeof(sin));
-	    sin.sin_family = family;
-	    sin.sin_addr.s_addr = htonl(INADDR_ANY);
-	    sin.sin_port = htons(portName);
-	    err = bind(fd, (struct sockaddr *) &sin, sizeof sin);
+	    saddr.in.sin_family = family;
+	    saddr.in.sin_addr.s_addr = htonl(INADDR_ANY);
+	    saddr.in.sin_port = htons(portName);
+	    len = sizeof saddr.in;
 	  }
+	err = bind(fd, (struct sockaddr *) &saddr, len);
 	if (err < 0)
 	{
 		sprintf(PQerrormsg,
