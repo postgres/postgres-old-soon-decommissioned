@@ -1882,7 +1882,7 @@ MainLoop(PsqlSettings *pset, FILE *source)
 					}
 				}
 			}
-puts(line);
+
 			/* nothing on line after trimming? then ignore */
 			if (line[0] == '\0')
 			{
