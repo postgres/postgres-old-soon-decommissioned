@@ -983,7 +983,7 @@ _mdfd_getrelnfd(Relation reln)
 	if (fd < 0)
 	{
 		if ((fd = mdopen(reln)) < 0)
-			elog(ERROR, "cannot open relation %s",
+			elog(ERROR, "_mdfd_getrelnfd: cannot open relation %s: %m",
 				 RelationGetRelationName(reln));
 		reln->rd_fd = fd;
 	}
