@@ -50,7 +50,7 @@
 int32
 pg_atoi(char *s, int size, int c)
 {
-	long		l;
+	long		l = 0;
 	char	   *badp = (char *) NULL;
 
 	Assert(s);
