@@ -2022,15 +2022,21 @@ EndEvalPlanQual(EState *estate)
 	EState	   *epqstate = &(epq->estate);
 	evalPlanQual *oldepq;
 
-	if (epq->rti == 0)			/* still live? */
+	if (epq->rti == 0)			/* plans already shutdowned */
+	{
+		Assert(epq->estate.es_evalPlanQual == NULL);
 		return;
+	}
 
 	for (;;)
 	{
 		ExecEndNode(epq->plan, epq->plan);
 	    epqstate->es_tupleTable->next = 0;
-		heap_freetuple(epqstate->es_evTuple[epq->rti - 1]);
-		epqstate->es_evTuple[epq->rti - 1] = NULL;
+		if (epqstate->es_evTuple[epq->rti - 1] != NULL)
+		{
+			heap_freetuple(epqstate->es_evTuple[epq->rti - 1]);
+			epqstate->es_evTuple[epq->rti - 1] = NULL;
+		}
 		/* pop old PQ from the stack */
 		oldepq = (evalPlanQual *) epqstate->es_evalPlanQual;
 		if (oldepq == (evalPlanQual *) NULL)
