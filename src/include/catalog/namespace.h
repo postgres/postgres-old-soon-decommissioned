@@ -72,13 +72,19 @@ extern char *NameListToString(List *names);
 
 extern bool isTempNamespace(Oid namespaceId);
 
+extern void PushSpecialNamespace(Oid namespaceId);
+extern void PopSpecialNamespace(Oid namespaceId);
+
+/* initialization & transaction cleanup code */
+extern void InitializeSearchPath(void);
+extern void AtEOXact_Namespace(bool isCommit);
+
 /* stuff for search_path GUC variable */
 extern char *namespace_search_path;
 
 extern const char *assign_search_path(const char *newval,
 									  bool doit, bool interactive);
-extern void InitializeSearchPath(void);
 
-extern List *fetch_search_path(void);
+extern List *fetch_search_path(bool includeImplicit);
 
 #endif   /* NAMESPACE_H */

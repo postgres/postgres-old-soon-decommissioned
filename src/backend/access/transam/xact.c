@@ -164,6 +164,7 @@
 #include "access/xact.h"
 #include "catalog/heap.h"
 #include "catalog/index.h"
+#include "catalog/namespace.h"
 #include "commands/async.h"
 #include "commands/sequence.h"
 #include "commands/trigger.h"
@@ -1009,6 +1010,7 @@ CommitTransaction(void)
 	AtEOXact_hash();
 	AtEOXact_nbtree();
 	AtEOXact_rtree();
+	AtEOXact_Namespace(true);
 	AtCommit_Cache();
 	AtCommit_Locks();
 	AtEOXact_CatCache(true);
@@ -1112,6 +1114,7 @@ AbortTransaction(void)
 	AtEOXact_hash();
 	AtEOXact_nbtree();
 	AtEOXact_rtree();
+	AtEOXact_Namespace(false);
 	AtAbort_Cache();
 	AtEOXact_CatCache(false);
 	AtAbort_Memory();

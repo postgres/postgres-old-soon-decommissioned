@@ -235,7 +235,7 @@ session_user(PG_FUNCTION_ARGS)
 Datum
 current_schema(PG_FUNCTION_ARGS)
 {
-	List   *search_path = fetch_search_path();
+	List   *search_path = fetch_search_path(false);
 	char   *nspname;
 
 	if (search_path == NIL)
@@ -247,7 +247,7 @@ current_schema(PG_FUNCTION_ARGS)
 Datum
 current_schemas(PG_FUNCTION_ARGS)
 {
-	List   *search_path = fetch_search_path();
+	List   *search_path = fetch_search_path(false);
 	int		nnames = length(search_path);
 	Datum  *names;
 	int		i;
