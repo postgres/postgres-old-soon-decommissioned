@@ -615,6 +615,7 @@ These operations are cast in terms of SQL types and so are
 directly usable as C function prototypes.
 
 .nf
+.eo
 result   |left_type |right_type|operatr|func_name          
 ---------+----------+----------+-------+-------------------
 _aclitem |_aclitem  |aclitem   |+      |aclinsert          
@@ -1055,9 +1056,9 @@ point    |point     |point     |+      |point_add
 point    |point     |point     |-      |point_sub          
 point    |point     |point     |/      |point_div          
 polygon  |point     |circle    |<->    |dist_pc            
-text     |bpchar    |bpchar    |\|\|   |textcat            
-text     |text      |text      |\|\|   |textcat            
-text     |varchar   |varchar   |\|\|   |textcat            
+text     |bpchar    |bpchar    |||     |textcat            
+text     |text      |text      |||     |textcat            
+text     |varchar   |varchar   |||     |textcat            
 timespan |datetime  |datetime  |-      |datetime_mi        
 timespan |timespan  |timespan  |+      |timespan_pl        
 timespan |timespan  |timespan  |-      |timespan_mi        
@@ -1065,6 +1066,7 @@ timespan |timespan  |timespan  |/      |timespan_div
 tinterval|abstime   |abstime   |<#>    |mktinterval        
 (446 rows)
 
+.ec
 .fi
 .SH "LEFT UNARY OPERATORS"
 The table below gives the left unary operators that are
