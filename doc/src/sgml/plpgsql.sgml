@@ -2120,7 +2120,7 @@ RAISE <replaceable class="parameter">level</replaceable> '<replaceable class="pa
 </synopsis>
 
     Possible levels are <literal>DEBUG</literal>,
-    <literal>LOG</literal>, <literal>INFO</literal>,
+    <literal>LOG</literal>,
     <literal>NOTICE</literal>, <literal>WARNING</literal>,
     and <literal>EXCEPTION</literal>.
     <literal>EXCEPTION</literal> raises an error and aborts the current

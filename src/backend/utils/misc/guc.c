@@ -5210,6 +5210,10 @@ assign_msglvl(int *var, const char *newval, bool doit, GucSource source)
 		if (doit)
 			(*var) = LOG;
 	}
+	/*
+	 *	Client_min_messages always prints 'info', but
+	 *	we allow it as a value anyway.
+	 */
 	else if (pg_strcasecmp(newval, "info") == 0)
 	{
 		if (doit)
