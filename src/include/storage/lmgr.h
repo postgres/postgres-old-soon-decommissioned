@@ -33,6 +33,12 @@
 #define AccessExclusiveLock		7		/* ALTER TABLE, DROP TABLE,
 										 * VACUUM, and unqualified LOCK
 										 * TABLE */
+
+/*
+ * Note: all lock mode numbers must be less than lock.h's MAX_LOCKMODES,
+ * so increase that if you want to add more modes.
+ */
+
 extern LOCKMETHOD LockTableId;
 
 
@@ -41,6 +47,7 @@ extern void RelationInitLockInfo(Relation relation);
 
 /* Lock a relation */
 extern void LockRelation(Relation relation, LOCKMODE lockmode);
+extern bool ConditionalLockRelation(Relation relation, LOCKMODE lockmode);
 extern void UnlockRelation(Relation relation, LOCKMODE lockmode);
 
 extern void LockRelationForSession(LockRelId *relid, LOCKMODE lockmode);
