@@ -75,7 +75,7 @@ install: install-headers install-lib $(install-shlib-dep)
 
 LIBPGXXDIR = libpq++
 LIBPGXXHEADERDIR = $(HEADERDIR)/$(LIBPGXXDIR)
-MAINHEADER = libpq++.H
+MAINHEADER = libpq++.h
 LIBPGXXHEADERS = pgconnection.h \
 		 pgdatabase.h \
 		 pgtransdb.h \
