@@ -11,6 +11,9 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 
+override CPPFLAGS := $(CPPFLAGS) $(TCL_INCLUDE_SPEC)
+
+
 # Find out whether Tcl was built as a shared library --- if not, we
 # can't link a shared library that depends on it, and have to forget
 # about building pltcl. In Tcl 8, tclConfig.sh sets TCL_SHARED_BUILD

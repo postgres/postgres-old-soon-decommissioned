@@ -16,7 +16,7 @@ NAME= pgtcl
 SO_MAJOR_VERSION= 2
 SO_MINOR_VERSION= 4
 
-override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
+override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS) $(TCL_INCLUDE_SPEC)
 
 OBJS= pgtcl.o pgtclCmds.o pgtclId.o
 
