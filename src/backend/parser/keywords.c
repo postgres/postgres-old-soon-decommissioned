@@ -188,6 +188,8 @@ static ScanKeyword ScanKeywords[] = {
 	{"substring", SUBSTRING},
 	{"table", TABLE},
 	{"time", TIME},
+	{"timezone_hour", TIMEZONE_HOUR},
+	{"timezone_minute", TIMEZONE_MINUTE},
 	{"to", TO},
 	{"trailing", TRAILING},
 	{"transaction", TRANSACTION},
