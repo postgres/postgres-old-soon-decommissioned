@@ -120,7 +120,7 @@ ECPGdeallocate(int lineno, int c, char *name)
 	}
 	
 	if (!ret) 
-		ECPGraise(lineno, ECPG_INVALID_STMT, name, ECPG_COMPAT_PGSQL);
+		ECPGraise(lineno, ECPG_INVALID_STMT, ECPG_SQLSTATE_INVALID_SQL_STATEMENT_NAME, name);
 
 	return ret;
 }

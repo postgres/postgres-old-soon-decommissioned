@@ -169,8 +169,7 @@ PerformPortalFetch(FetchStmt *stmt,
 		/* FIXME: shouldn't this be an ERROR? */
 		ereport(WARNING,
 				(errcode(ERRCODE_UNDEFINED_CURSOR),
-				 errmsg("portal \"%s\" does not exist", stmt->portalname),
-				 errfunction("PerformPortalFetch"))); /* for ecpg */
+				 errmsg("portal \"%s\" does not exist", stmt->portalname)));
 		if (completionTag)
 			strcpy(completionTag, stmt->ismove ? "MOVE 0" : "FETCH 0");
 		return;
