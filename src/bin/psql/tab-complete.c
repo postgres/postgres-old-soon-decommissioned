@@ -232,7 +232,7 @@ initialize_readline(void)
 "   FROM pg_catalog.pg_namespace "\
 "  WHERE substring(pg_catalog.quote_ident(nspname) || '.',1,%d)='%s' "\
 "        UNION "\
-" SELECT pg_catalog.quote_ident(nspname) || '.' || pg_catalog.quote_ident(proname) || '()' "\
+" SELECT pg_catalog.quote_ident(nspname) || '.' || pg_catalog.quote_ident(proname) "\
 "   FROM pg_catalog.pg_proc p, pg_catalog.pg_namespace n "\
 "  WHERE substring(pg_catalog.quote_ident(nspname) || '.' || pg_catalog.quote_ident(proname),1,%d)='%s' "\
 "    AND pronamespace = n.oid "\
