@@ -144,9 +144,10 @@ postgres$ <userinput>initdb -D /usr/local/pgsql/data</userinput>
    that can be found in <xref linkend="locale">.  The sort order used
    within a particular database cluster is set by
    <command>initdb</command> and cannot be changed later, short of
-   dumping all data, rerunning <command>initdb</command>, and
-   reloading the data. So it's important to make this choice correctly
-   the first time.
+   dumping all data, rerunning <command>initdb</command>, and reloading
+   the data. There is also a performance impact for using locales
+   other than <literal>C</> or <literal>POSIX</>. Therefore, it is
+   important to make this choice correctly the first time.
   </para>
  </sect1>
 
