@@ -78,12 +78,6 @@ GetCurrentAbsoluteTime(void)
 		 * tzname? - tgl 97/03/18
 		 */
 		strftime(CTZName, MAXTZLEN, "%Z", tm);
-
-		/*
-		 * XXX FreeBSD man pages indicate that this should work - tgl
-		 * 97/04/23
-		 */
-		strcpy(CTZName, tm->tm_zone);
 #endif
 #else							/* ! USE_POSIX_TIME */
 		CTimeZone = tb.timezone * 60;
