@@ -125,7 +125,7 @@ main(int argc, char *argv[])
 	 * and COLLATE will be overridden later from pg_control if we are
 	 * in an already-initialized database.  We set them here so that
 	 * they will be available to fill pg_control during initdb.  The
-	 * other ones will get reset later in ResetAllOptions, but we set
+	 * other ones will get reset later in InitializeGUCOptions, but we set
 	 * them here to get already localized behavior during startup
 	 * (e.g., error messages).
 	 */

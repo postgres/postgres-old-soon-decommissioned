@@ -249,7 +249,7 @@ BootstrapMain(int argc, char *argv[])
 	dbName = NULL;
 	if (!IsUnderPostmaster)
 	{
-		ResetAllOptions(true);
+		InitializeGUCOptions();
 		potential_DataDir = getenv("PGDATA");	/* Null if no PGDATA
 												 * variable */
 	}
@@ -263,12 +263,13 @@ BootstrapMain(int argc, char *argv[])
 				break;
 			case 'd':
 			{
-				/* Turn on debugging for the postmaster. */
+				/* Turn on debugging for the bootstrap process. */
 				char *debugstr = palloc(strlen("debug") + strlen(optarg) + 1);
 				sprintf(debugstr, "debug%s", optarg);
-				/* We use PGC_S_SESSION because we will reset in backend */
-				SetConfigOption("server_min_messages", debugstr, PGC_POSTMASTER, PGC_S_ARGV);
-				SetConfigOption("client_min_messages", debugstr, PGC_POSTMASTER, PGC_S_ARGV);
+				SetConfigOption("server_min_messages", debugstr,
+								PGC_POSTMASTER, PGC_S_ARGV);
+				SetConfigOption("client_min_messages", debugstr,
+								PGC_POSTMASTER, PGC_S_ARGV);
 				pfree(debugstr);
 				break;
 			}

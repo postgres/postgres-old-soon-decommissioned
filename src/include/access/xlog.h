@@ -216,7 +216,7 @@ extern XLogRecPtr GetRedoRecPtr(void);
  */
 extern XLogRecPtr GetUndoRecPtr(void);
 
-extern bool check_xlog_sync_method(const char *method);
-extern void assign_xlog_sync_method(const char *method);
+extern const char *assign_xlog_sync_method(const char *method,
+										   bool doit, bool interactive);
 
 #endif   /* XLOG_H */

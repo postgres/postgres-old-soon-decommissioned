@@ -173,6 +173,7 @@
 #include "storage/proc.h"
 #include "storage/sinval.h"
 #include "storage/smgr.h"
+#include "utils/guc.h"
 #include "utils/inval.h"
 #include "utils/memutils.h"
 #include "utils/portal.h"
@@ -1002,6 +1003,7 @@ CommitTransaction(void)
 	RelationPurgeLocalRelation(true);
 	smgrDoPendingDeletes(true);
 
+	AtEOXact_GUC(true);
 	AtEOXact_SPI();
 	AtEOXact_gist();
 	AtEOXact_hash();
@@ -1104,6 +1106,7 @@ AbortTransaction(void)
 	RelationPurgeLocalRelation(false);
 	smgrDoPendingDeletes(false);
 
+	AtEOXact_GUC(false);
 	AtEOXact_SPI();
 	AtEOXact_gist();
 	AtEOXact_hash();

@@ -1439,6 +1439,7 @@ typedef struct VariableSetStmt
 	NodeTag		type;
 	char	   *name;
 	List	   *args;
+	bool		is_local;		/* SET LOCAL */
 } VariableSetStmt;
 
 /* ----------------------

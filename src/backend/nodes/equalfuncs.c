@@ -1173,6 +1173,8 @@ _equalVariableSetStmt(VariableSetStmt *a, VariableSetStmt *b)
 		return false;
 	if (!equal(a->args, b->args))
 		return false;
+	if (a->is_local != b->is_local)
+		return false;
 
 	return true;
 }

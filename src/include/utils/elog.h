@@ -60,9 +60,9 @@ __attribute__((format(printf, 2, 3)));
 
 extern int	DebugFileOpen(void);
 
-extern bool check_server_min_messages(const char *lev);
-extern void assign_server_min_messages(const char *lev);
-extern bool check_client_min_messages(const char *lev);
-extern void assign_client_min_messages(const char *lev);
+extern const char *assign_server_min_messages(const char *newval,
+											  bool doit, bool interactive);
+extern const char *assign_client_min_messages(const char *newval,
+											  bool doit, bool interactive);
 
 #endif   /* ELOG_H */

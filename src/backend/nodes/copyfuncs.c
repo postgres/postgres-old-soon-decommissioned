@@ -2342,6 +2342,7 @@ _copyVariableSetStmt(VariableSetStmt *from)
 	if (from->name)
 		newnode->name = pstrdup(from->name);
 	Node_Copy(from, newnode, args);
+	newnode->is_local = from->is_local;
 
 	return newnode;
 }

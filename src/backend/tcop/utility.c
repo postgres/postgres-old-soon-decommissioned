@@ -36,7 +36,6 @@
 #include "commands/trigger.h"
 #include "commands/user.h"
 #include "commands/vacuum.h"
-#include "commands/variable.h"
 #include "commands/view.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
@@ -48,6 +47,7 @@
 #include "rewrite/rewriteRemove.h"
 #include "tcop/utility.h"
 #include "utils/acl.h"
+#include "utils/guc.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
 #include "access/xlog.h"
@@ -718,7 +718,7 @@ ProcessUtility(Node *parsetree,
 			{
 				VariableSetStmt *n = (VariableSetStmt *) parsetree;
 
-				SetPGVariable(n->name, n->args);
+				SetPGVariable(n->name, n->args, n->is_local);
 			}
 			break;
 

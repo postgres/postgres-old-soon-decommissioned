@@ -16,8 +16,8 @@
 
  <refsynopsisdiv>
 <synopsis>
-SET SESSION AUTHORIZATION <parameter>username</parameter>
-SET SESSION AUTHORIZATION DEFAULT
+SET [ SESSION | LOCAL ] SESSION AUTHORIZATION <parameter>username</parameter>
+SET [ SESSION | LOCAL ] SESSION AUTHORIZATION DEFAULT
 RESET SESSION AUTHORIZATION
 </synopsis>
  </refsynopsisdiv>
@@ -49,6 +49,12 @@ RESET SESSION AUTHORIZATION
    user (the <firstterm>authenticated user</firstterm>) had the
    superuser privilege.  Otherwise, the command is accepted only if it
    specifies the authenticated username.
+  </para>
+
+  <para>
+   The <option>SESSION</> and <option>LOCAL</> modifiers act the same
+   as for the regular <xref linkend="SQL-SET" endterm="SQL-SET-title">
+   command.
   </para>
 
   <para>

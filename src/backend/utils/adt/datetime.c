@@ -3571,11 +3571,17 @@ EncodeInterval(struct tm * tm, fsec_t fsec, int style, char *str)
 }	/* EncodeInterval() */
 
 
-void
-ClearDateCache(bool dummy)
+/* GUC assign_hook for australian_timezones */
+bool
+ClearDateCache(bool newval, bool doit, bool interactive)
 {
 	int			i;
 
-	for (i = 0; i < MAXDATEFIELDS; i++)
-		datecache[i] = NULL;
+	if (doit)
+	{
+		for (i = 0; i < MAXDATEFIELDS; i++)
+			datecache[i] = NULL;
+	}
+
+	return true;
 }

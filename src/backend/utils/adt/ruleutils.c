@@ -2576,27 +2576,33 @@ quote_identifier(const char *ident)
 	 * and contains only lowercase letters, digits, and underscores, *and* is
 	 * not any SQL keyword.  Otherwise, supply quotes.
 	 */
+	int			nquotes = 0;
 	bool		safe;
+	const char *ptr;
 	char	   *result;
+	char	   *optr;
 
 	/*
 	 * would like to use <ctype.h> macros here, but they might yield
 	 * unwanted locale-specific results...
 	 */
 	safe = ((ident[0] >= 'a' && ident[0] <= 'z') || ident[0] == '_');
-	if (safe)
+
+	for (ptr = ident; *ptr; ptr++)
 	{
-		const char *ptr;
+		char		ch = *ptr;
 
-		for (ptr = ident + 1; *ptr; ptr++)
+		if ((ch >= 'a' && ch <= 'z') ||
+			(ch >= '0' && ch <= '9') ||
+			(ch == '_'))
 		{
-			char		ch = *ptr;
-
-			safe = ((ch >= 'a' && ch <= 'z') ||
-					(ch >= '0' && ch <= '9') ||
-					(ch == '_'));
-			if (!safe)
-				break;
+			/* okay */
+		}
+		else
+		{
+			safe = false;
+			if (ch == '"')
+				nquotes++;
 		}
 	}
 
@@ -2618,8 +2624,21 @@ quote_identifier(const char *ident)
 	if (safe)
 		return ident;			/* no change needed */
 
-	result = (char *) palloc(strlen(ident) + 2 + 1);
-	sprintf(result, "\"%s\"", ident);
+	result = (char *) palloc(strlen(ident) + nquotes + 2 + 1);
+
+	optr = result;
+	*optr++ = '"';
+	for (ptr = ident; *ptr; ptr++)
+	{
+		char		ch = *ptr;
+
+		if (ch == '"')
+			*optr++ = '"';
+		*optr++ = ch;
+	}
+	*optr++ = '"';
+	*optr = '\0';
+
 	return result;
 }
 

@@ -75,8 +75,8 @@ extern bool isTempNamespace(Oid namespaceId);
 /* stuff for search_path GUC variable */
 extern char *namespace_search_path;
 
-extern bool check_search_path(const char *proposed);
-extern void assign_search_path(const char *newval);
+extern const char *assign_search_path(const char *newval,
+									  bool doit, bool interactive);
 extern void InitializeSearchPath(void);
 
 extern List *fetch_search_path(void);
