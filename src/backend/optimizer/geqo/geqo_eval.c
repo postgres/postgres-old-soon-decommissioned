@@ -157,9 +157,8 @@ gimme_tree (Query *root, Gene *tour, int rel_count, int num_gene, Rel *outer_rel
 		geqo_rel_paths(new_rel);
 
 		/* processing of other new_rel attributes */
-#if 0		/* compute_joinrel_size already called by geqo_rel_paths */
-		new_rel->size = compute_rel_size(new_rel);
-#endif
+		if ( new_rel->size <= 0 )
+		    new_rel->size = compute_rel_size(new_rel);
 		new_rel->width = compute_rel_width(new_rel);
 
 		root->join_relation_list_ = lcons(new_rel, NIL);

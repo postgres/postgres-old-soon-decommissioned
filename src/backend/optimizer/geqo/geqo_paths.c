@@ -102,16 +102,17 @@ geqo_rel_paths(Rel *rel)
     Path *path = (Path*)NULL;
     JoinPath *cheapest = (JoinPath*)NULL;
     
-	foreach(y, rel->pathlist) {
-		path = (Path*)lfirst(y);
+    rel->size = 0;
+    foreach(y, rel->pathlist)
+    {
+	path = (Path*)lfirst(y);
 
-	   if(!path->p_ordering.ord.sortop) {
+	if(!path->p_ordering.ord.sortop)
 			break;
-		    }	    
-		}
+    }
 
-	cheapest = (JoinPath*)set_paths(rel, path);
-	rel->size = compute_joinrel_size(cheapest);
+    cheapest = (JoinPath*)set_paths(rel, path);
+    rel->size = compute_joinrel_size(cheapest);
 }
 
 
