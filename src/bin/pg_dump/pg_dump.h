@@ -62,6 +62,7 @@ typedef struct _funcInfo
 	int			nargs;
 	char	   **argtypes;		/* OIDs */
 	char	   *prorettype;		/* OID */
+	char	   *proacl;
 	bool		dumped;			/* true if already dumped */
 } FuncInfo;
 
@@ -69,8 +70,10 @@ typedef struct _aggInfo
 {
 	char	   *oid;
 	char	   *aggname;
+	char	   *aggbasetype;
 	NamespaceInfo *aggnamespace;	/* link to containing namespace */
 	char	   *usename;
+	char	   *aggacl;
 } AggInfo;
 
 typedef struct _oprInfo
@@ -201,11 +204,11 @@ extern void dumpNamespaces(Archive *fout,
 						   NamespaceInfo *nsinfo, int numNamespaces);
 extern void dumpTypes(Archive *fout, FuncInfo *finfo, int numFuncs,
 		  TypeInfo *tinfo, int numTypes);
-extern void dumpProcLangs(Archive *fout, FuncInfo *finfo, int numFuncs);
-extern void dumpFuncs(Archive *fout, FuncInfo *finfo, int numFuncs);
-extern void dumpAggs(Archive *fout, AggInfo *agginfo, int numAggregates);
+extern void dumpProcLangs(Archive *fout, FuncInfo finfo[], int numFuncs);
+extern void dumpFuncs(Archive *fout, FuncInfo finfo[], int numFuncs);
+extern void dumpAggs(Archive *fout, AggInfo agginfo[], int numAggregates);
 extern void dumpOprs(Archive *fout, OprInfo *oprinfo, int numOperators);
-extern void dumpTables(Archive *fout, TableInfo *tblinfo, int numTables,
+extern void dumpTables(Archive *fout, TableInfo tblinfo[], int numTables,
 					   const bool aclsSkip,
 					   const bool schemaOnly, const bool dataOnly);
 extern void dumpIndexes(Archive *fout, TableInfo *tbinfo, int numTables);
