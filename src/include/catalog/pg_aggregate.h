@@ -19,6 +19,8 @@
 #ifndef PG_AGGREGATE_H
 #define PG_AGGREGATE_H
 
+#include "nodes/pg_list.h"
+
 /* ----------------
  *		postgres.h contains the system type definitions and the
  *		CATALOG(), BOOTSTRAP and DATA() sugar words so this file
