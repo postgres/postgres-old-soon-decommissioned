@@ -28,6 +28,10 @@ ifeq ($(findstring ecpg/lib,$(subdir)), ecpg/lib)
 override CPPFLAGS+= -DBUILDING_DLL=1
 endif
 
+ifeq ($(findstring interfaces/libpq++,$(subdir)), interfaces/libpq++)
+override CPPFLAGS+= -DBUILDING_DLL=1
+endif
+
 ifeq ($(findstring src/pl/plpython,$(subdir)), src/pl/plpython)
 override CPPFLAGS+= -DUSE_DL_IMPORT
 endif
