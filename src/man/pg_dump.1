@@ -7,18 +7,7 @@ pg_dump \(em dumps out a Postgres database into a script file
 .SH SYNOPSIS
 .BR pg_dump
 [\c
-.BR "-f"
-filename
-]
-[\c
-.BR "-h"
-hostname
-]
-[\c
-.BR "-p"
-port]
-[\c
-.BR "-v"
+.BR "-a"
 ]
 [\c
 .BR "-d"
@@ -27,16 +16,27 @@ port]
 .BR "-D"
 ]
 [\c
-.BR "-S"
-help]
+.BR "-f"
+filename
+]
 [\c
-.BR "-a"
+.BR "-h"
+hostname
+]
+[\c
+.BR "-o"
+]
+[\c
+.BR "-p"
+port]
+[\c
+.BR "-s"
 ]
 [\c
 .BR "-t"
 table]
 [\c
-.BR "-o"
+.BR "-v"
 ]
 dbname
 .in -5n
@@ -62,17 +62,8 @@ in light of the limitations listed below.
 .PP
 pg_dump understands the following options:
 .TP
-.BR "-f" " filename"
-Specifies the output file
-.TP
-.BR "-h" " hostname"
-Specifies the server host name
-.TP
-.BR "-p" " port"
-Specifies the server port number
-.TP
-.BR "-v" ""
-Specifies verbose mode
+.BR "-a" ""
+Dump out only the data, no schema
 .TP
 .BR "-d" ""
 Dump data as proper insert strings
@@ -80,17 +71,26 @@ Dump data as proper insert strings
 .BR "-D" ""
 Dump data as inserts with attribute names
 .TP
-.BR "-S" ""
-Dump out only the schema, no data
+.BR "-f" " filename"
+Specifies the output file
 .TP
-.BR "-a" ""
-Dump out only the data, no schema
+.BR "-h" " hostname"
+Specifies the server host name
+.TP
+.BR "-o" ""
+Dump object id's (oids)
+.TP
+.BR "-p" " port"
+Specifies the server port number
+.TP
+.BR "-s" ""
+Dump out only the schema, no data
 .TP
 .BR "-t" " table"
 Dump for this table only
 .TP
-.BR "-o" ""
-Dump object id's (oids)
+.BR "-v" ""
+Specifies verbose mode
 .PP
 If dbname is not supplied, then the DATABASE environment variable value is used.
 .SH "CAVEATS AND LIMITATIONS"

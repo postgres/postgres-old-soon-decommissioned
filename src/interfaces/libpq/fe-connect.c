@@ -430,7 +430,7 @@ PQsetdb(const char *pghost, const char *pgport, const char *pgoptions, const cha
 				*(conn->dbName + strlen(conn->dbName) - 1) = '\0';
 			}
 			else
-				for (i = 0; conn->dbName[i]; i++)
+				for (i = strlen(conn->dbName[i]); i >= 0; i--)
 					if (isupper(conn->dbName[i]))
 						conn->dbName[i] = tolower(conn->dbName[i]);
 		}
