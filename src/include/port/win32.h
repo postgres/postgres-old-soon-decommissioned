@@ -206,7 +206,7 @@ int			setitimer(int which, const struct itimerval * value, struct itimerval * ov
 /*
  * Supplement to <sys/stat.h>.
  */
-#define lstat stat
+#define lstat(path, sb)	stat((path), (sb))
 
 /*
  * Supplement to <errno.h>.
