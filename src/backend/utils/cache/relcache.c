@@ -1982,10 +1982,11 @@ init_irels(void)
 #define SMD(i)	strat[0].strategyMapData[i].entry[0]
 
 		/* have to reinit the function pointers in the strategy maps */
-		for (i = 0; i < am->amstrategies; i++)
+		for (i = 0; i < am->amstrategies * relform->relnatts; i++) {
 			fmgr_info(SMD(i).sk_procedure,
 					  &(SMD(i).sk_func));
-		SMD(i).sk_nargs = SMD(i).sk_func.fn_nargs;
+			SMD(i).sk_nargs = SMD(i).sk_func.fn_nargs;
+		}
 
 
 		/*

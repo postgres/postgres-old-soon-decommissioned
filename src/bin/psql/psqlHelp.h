@@ -353,7 +353,7 @@ set R_PLANS TO 'ON'| 'OFF'"},
 		"update tuples",
 	"\
 \tUPDATE class_name SET attr1 = expr1, ...attrN = exprN\n\
-\t [FROM from_clause]\n\
+\t[FROM from_clause]\n\
 \t[WHERE qual];"},
 	{"vacuum",
 		"vacuum the database, i.e. cleans out deleted records, updates statistics",

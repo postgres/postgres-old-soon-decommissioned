@@ -1143,16 +1143,14 @@ failed to add item with len = %u to page %u (free space %u, nusd %u, noff %u)",
 			{
 				for (i = 0, idcur = Idesc; i < nindices; i++, idcur++)
 				{
-					FormIndexDatum(
-								   idcur->natts,
-							   (AttrNumber *) &(idcur->tform->indkey[0]),
+					FormIndexDatum(idcur->natts,
+								   (AttrNumber *) &(idcur->tform->indkey[0]),
 								   newtup,
 								   tupdesc,
 								   idatum,
 								   inulls,
 								   idcur->finfoP);
-					iresult = index_insert(
-										   Irel[i],
+					iresult = index_insert(Irel[i],
 										   idatum,
 										   inulls,
 										   &(newtup->t_ctid),
