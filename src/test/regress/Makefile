@@ -15,7 +15,7 @@ MKDIR=	../../mk
 include $(MKDIR)/postgres.mk
 include $(MKDIR)/postgres.user.mk
 
-CFLAGS+=-I$(HEADERDIR)
+CFLAGS+=-I../../include
 
 #
 # try locating libpq.a in the following places
