@@ -584,7 +584,6 @@ typedef NameData *Name;
 
 #if defined(sun) && defined(__sparc__) && !defined(__SVR4)
 #include <unistd.h>
-#include <varargs.h>
 #endif
 
 /* These are for things that are one way on Unix and another on NT */
