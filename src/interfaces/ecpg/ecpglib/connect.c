@@ -264,8 +264,9 @@ ECPGconnect_informix(int lineno, const char *name, const char *user, const char 
 	char *informix_name = (char *)name, *envname;
 	
 	/* Informix uses an environment variable DBPATH that overrides
-	 * the connection parameters given here */
-	envname = getenv("DBPATH");
+	 * the connection parameters given here.
+	 * We do the same with PG_DBPATH as the syntax is different. */
+	envname = getenv("PG_DBPATH");
 	if (envname)
 		informix_name = envname;
 	return (ECPGconnect(lineno, informix_name, user, passwd, connection_name, autocommit));

@@ -905,7 +905,7 @@ cppline			{space}*#(.*\\{space})+.*
 
 <xskip>{other}		{ /* ignore */ }
 
-<xcond>{identifier}{space}* {
+<xcond>{identifier}{space}*';' {
 						if ( preproc_tos >= MAX_NESTED_IF-1 ) {
 							mmerror(PARSE_ERROR, ET_FATAL, "Too many nested 'EXEC SQL IFDEF' conditions");
 						}
