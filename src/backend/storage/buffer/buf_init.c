@@ -64,6 +64,8 @@ extern IpcSemaphoreId      WaitIOSemId;
 
 long	*PrivateRefCount;	/* also used in freelist.c */
 long	*LastRefCount;  /* refcounts of last ExecMain level */
+long    *CommitInfoNeedsSave;  /* to write buffers where we have filled in */
+                               /* t_tmin (or t_tmax)                       */
 
 /*
  * Data Structures:
@@ -236,6 +238,7 @@ InitBufferPool(IPCKey key)
 #endif
     PrivateRefCount = (long *) calloc(NBuffers, sizeof(long));
     LastRefCount = (long *) calloc(NBuffers, sizeof(long));
+    CommitInfoNeedsSave = (long *) calloc(NBuffers, sizeof(long));
 }
 
 /* -----------------------------------------------------

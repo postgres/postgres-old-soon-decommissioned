@@ -114,6 +114,7 @@ extern int ReleaseAndReadBuffer_Debug(char *file,
 extern void BufferRefCountReset(int *refcountsave);
 extern void BufferRefCountRestore(int *refcountsave);
 extern int SetBufferWriteMode (int mode);
+extern void SetBufferCommitInfoNeedsSave(Buffer buffer);
 
 #endif	/* !defined(BufMgrIncluded) */
 

@@ -26,7 +26,9 @@ extern bool heap_keytest(HeapTuple t, TupleDesc tupdesc,
 			 int nkeys, ScanKey keys);
 
 extern HeapTuple heap_tuple_satisfies(ItemId itemId, Relation relation,
-       PageHeader disk_page, TimeQual qual, int nKeys, ScanKey key);
+				      Buffer buffer, PageHeader disk_page, 
+				      TimeQual qual, int nKeys, 
+				      ScanKey key);
 
 extern bool TupleUpdatedByCurXactAndCmd(HeapTuple t);
 

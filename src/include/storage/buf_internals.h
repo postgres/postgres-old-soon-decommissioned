@@ -216,6 +216,7 @@ extern BufferDesc 	*BufferDescriptors;
 extern BufferBlock 	BufferBlocks;
 extern long		*PrivateRefCount;
 extern long		*LastRefCount;
+extern long             *CommitInfoNeedsSave;
 extern SPINLOCK		BufMgrLock;
 
 /* localbuf.c */
