@@ -1100,27 +1100,27 @@ xfunc_expense_per_tuple(JoinPath joinnode, int whichchild)
 	if (IsA(joinnode, HashPath))
 	{
 		if (whichchild == INNER)
-			return (1 + _CPU_PAGE_WEIGHT_) * outers_per_page / NBuffers;
+			return (1 + cpu_page_weight) * outers_per_page / NBuffers;
 		else
-			return (((1 + _CPU_PAGE_WEIGHT_) * outers_per_page / NBuffers)
-					+ _CPU_PAGE_WEIGHT_
+			return (((1 + cpu_page_weight) * outers_per_page / NBuffers)
+					+ cpu_page_weight
 					/ xfunc_card_product(get_relids(innerrel)));
 	}
 	else if (IsA(joinnode, MergePath))
 	{
 		/* assumes sort exists, and costs one (I/O + CPU) per tuple */
 		if (whichchild == INNER)
-			return ((2 * _CPU_PAGE_WEIGHT_ + 1)
+			return ((2 * cpu_page_weight + 1)
 					/ xfunc_card_product(get_relids(outerrel)));
 		else
-			return ((2 * _CPU_PAGE_WEIGHT_ + 1)
+			return ((2 * cpu_page_weight + 1)
 					/ xfunc_card_product(get_relids(innerrel)));
 	}
 	else
 /* nestloop */
 	{
 		Assert(IsA(joinnode, JoinPath));
-		return _CPU_PAGE_WEIGHT_;
+		return cpu_page_weight;
 	}
 }
 

@@ -26,14 +26,6 @@
 
 
 /*
- *		System-dependent tuning constants
- *
- */
-#define _CPU_PAGE_WEIGHT_  0.033  /* CPU-heap-to-page cost weighting factor */
-#define _CPU_INDEX_PAGE_WEIGHT_ 0.017	/* CPU-index-to-page cost
-										 * weighting factor */
-
-/*
  *		Size estimates
  *
  */
@@ -59,8 +51,5 @@
 /*	   Identifier for (sort) temp relations   */
 /* used to be -1 */
 #define _NONAME_RELATION_ID_	 InvalidOid
-
-/* GEQO switch according to number of relations in a query */
-#define GEQO_RELS 11
 
 #endif	 /* INTERNAL_H */

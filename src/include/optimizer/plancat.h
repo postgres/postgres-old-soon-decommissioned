@@ -30,10 +30,6 @@ extern Selectivity restriction_selectivity(Oid functionObjectId,
 						Datum constValue,
 						int constFlag);
 
-extern void index_selectivity(Query *root, RelOptInfo *rel,
-							  IndexOptInfo *index, List *indexquals,
-							  long *idxPages, Selectivity *idxSelec);
-
 extern Selectivity join_selectivity(Oid functionObjectId, Oid operatorObjectId,
 				 Oid relationObjectId1, AttrNumber attributeNumber1,
 				 Oid relationObjectId2, AttrNumber attributeNumber2);

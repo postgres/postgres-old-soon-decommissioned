@@ -22,6 +22,8 @@
 #ifndef BUILTINS_H
 #define BUILTINS_H
 
+#include "access/heapam.h"		/* for HeapTuple */
+#include "nodes/relation.h"		/* for amcostestimate parameters */
 #include "storage/itemptr.h"
 #include "utils/array.h"
 #include "utils/datetime.h"
@@ -30,7 +32,6 @@
 #include "utils/int8.h"
 #include "utils/nabstime.h"
 #include "utils/numeric.h"
-#include "access/heapam.h"		/* for HeapTuple */
 
 /*
  *		Defined in adt/
@@ -394,14 +395,23 @@ extern float64 eqjoinsel(Oid opid, Oid relid1, AttrNumber attno1, Oid relid2, At
 extern float64 neqjoinsel(Oid opid, Oid relid1, AttrNumber attno1, Oid relid2, AttrNumber attno2);
 extern float64 intltjoinsel(Oid opid, Oid relid1, AttrNumber attno1, Oid relid2, AttrNumber attno2);
 extern float64 intgtjoinsel(Oid opid, Oid relid1, AttrNumber attno1, Oid relid2, AttrNumber attno2);
-extern float64 btreesel(Oid operatorOid, Oid indrelid, AttrNumber attributeNumber, char *constValue, int32 constFlag, int32 nIndexKeys, Oid indexrelid);
-extern float64 btreenpage(Oid operatorOid, Oid indrelid, AttrNumber attributeNumber, char *constValue, int32 constFlag, int32 nIndexKeys, Oid indexrelid);
-extern float64 hashsel(Oid operatorOid, Oid indrelid, AttrNumber attributeNumber, char *constValue, int32 constFlag, int32 nIndexKeys, Oid indexrelid);
-extern float64 hashnpage(Oid operatorOid, Oid indrelid, AttrNumber attributeNumber, char *constValue, int32 constFlag, int32 nIndexKeys, Oid indexrelid);
-extern float64 rtsel(Oid operatorOid, Oid indrelid, AttrNumber attributeNumber, char *constValue, int32 constFlag, int32 nIndexKeys, Oid indexrelid);
-extern float64 rtnpage(Oid operatorOid, Oid indrelid, AttrNumber attributeNumber, char *constValue, int32 constFlag, int32 nIndexKeys, Oid indexrelid);
-extern float64 gistsel(Oid operatorObjectId, Oid indrelid, AttrNumber attributeNumber, char *constValue, int32 constFlag, int32 nIndexKeys, Oid indexrelid);
-extern float64 gistnpage(Oid operatorObjectId, Oid indrelid, AttrNumber attributeNumber, char *constValue, int32 constFlag, int32 nIndexKeys, Oid indexrelid);
+
+extern void btcostestimate(Query *root, RelOptInfo *rel,
+						   IndexOptInfo *index, List *indexQuals,
+						   Cost *indexAccessCost,
+						   Selectivity *indexSelectivity);
+extern void rtcostestimate(Query *root, RelOptInfo *rel,
+						   IndexOptInfo *index, List *indexQuals,
+						   Cost *indexAccessCost,
+						   Selectivity *indexSelectivity);
+extern void hashcostestimate(Query *root, RelOptInfo *rel,
+							 IndexOptInfo *index, List *indexQuals,
+							 Cost *indexAccessCost,
+							 Selectivity *indexSelectivity);
+extern void gistcostestimate(Query *root, RelOptInfo *rel,
+							 IndexOptInfo *index, List *indexQuals,
+							 Cost *indexAccessCost,
+							 Selectivity *indexSelectivity);
 
 /* tid.c */
 extern ItemPointer tidin(const char *str);

@@ -138,6 +138,8 @@ pg_am
     regproc     ambuild	/* "build new index" function */
     regproc     amcreate 	/* - deprecated */
     regproc     amdestroy	/* - deprecated */
+    regproc     amcostestimate	/* estimate cost of an indexscan */
+	
 .fi
 .nf M
 pg_amop
@@ -148,10 +150,6 @@ pg_amop
     oid         amopopr	/* the operator */
     int2        amopstrategy	/* traversal/search strategy number
 				   to which this operator applies */
-    regproc     amopselect	/* function to calculate the operator
-				   selectivity */
-    regproc     amopnpages	/* function to calculate the number of
-				   pages that will be examined */
 .fi
 .nf M
 pg_amproc

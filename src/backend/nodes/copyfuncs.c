@@ -1031,6 +1031,7 @@ _copyIndexOptInfo(IndexOptInfo *from)
 	}
 
 	newnode->relam = from->relam;
+	newnode->amcostestimate = from->amcostestimate;
 	newnode->indproc = from->indproc;
 	Node_Copy(from, newnode, indpred);
 

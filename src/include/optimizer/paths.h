@@ -16,9 +16,16 @@
 
 #include "nodes/relation.h"
 
+/* default GEQO threshold (default value for geqo_rels) */
+#define GEQO_RELS 11
+
+
 /*
  * allpaths.c
  */
+extern bool enable_geqo;
+extern int	geqo_rels;
+
 extern RelOptInfo *make_one_rel(Query *root, List *rels);
 
 /*

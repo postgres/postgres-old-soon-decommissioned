@@ -215,21 +215,11 @@ best_or_subclause_index(Query *root,
 	foreach(ilist, indices)
 	{
 		IndexOptInfo *index = (IndexOptInfo *) lfirst(ilist);
-		long		npages;
-		Selectivity	selec;
 		Cost		subcost;
 
 		Assert(IsA(index, IndexOptInfo));
 
-		index_selectivity(root,
-						  rel,
-						  index,
-						  indexqual,
-						  &npages,
-						  &selec);
-
-		subcost = cost_index(rel, index,
-							 npages, selec,
+		subcost = cost_index(root, rel, index, indexqual,
 							 false);
 
 		if (first_run || subcost < *retCost)

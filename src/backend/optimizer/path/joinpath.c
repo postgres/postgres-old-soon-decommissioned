@@ -102,7 +102,7 @@ update_rels_pathlist_for_joins(Query *root, List *joinrels)
 		/*
 		 * Find potential mergejoin clauses.
 		 */
-		if (_enable_mergejoin_)
+		if (enable_mergejoin)
 			mergeclause_list = select_mergejoin_clauses(joinrel->restrictinfo);
 
 		/*
@@ -141,7 +141,7 @@ update_rels_pathlist_for_joins(Query *root, List *joinrels)
 		 * 4. Consider paths where both outer and inner relations must be
 		 * hashed before being joined.
 		 */
-		if (_enable_hashjoin_)
+		if (enable_hashjoin)
 			pathlist = add_pathlist(joinrel, pathlist,
 									hash_inner_and_outer(root, joinrel,
 														 outerrel,

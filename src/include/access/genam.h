@@ -38,6 +38,7 @@ extern void index_markpos(IndexScanDesc scan);
 extern void index_restrpos(IndexScanDesc scan);
 extern RetrieveIndexResult index_getnext(IndexScanDesc scan,
 			  ScanDirection direction);
+extern RegProcedure index_cost_estimator(Relation relation);
 extern RegProcedure index_getprocid(Relation irel, AttrNumber attnum,
 				uint16 procnum);
 extern Datum GetIndexValue(HeapTuple tuple, TupleDesc hTupDesc,

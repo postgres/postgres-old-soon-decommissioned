@@ -257,9 +257,9 @@ add_join_info_to_rels(Query *root, RestrictInfo *restrictinfo,
 static void
 set_restrictinfo_joininfo(RestrictInfo *restrictinfo)
 {
-	if (_enable_mergejoin_)
+	if (enable_mergejoin)
 		check_mergejoinable(restrictinfo);
-	if (_enable_hashjoin_)
+	if (enable_hashjoin)
 		check_hashjoinable(restrictinfo);
 }
 

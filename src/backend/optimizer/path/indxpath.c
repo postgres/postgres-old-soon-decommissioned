@@ -1393,25 +1393,16 @@ index_innerjoin(Query *root, RelOptInfo *rel, IndexOptInfo *index,
 		List	   *clausegroup = lfirst(i);
 		IndexPath  *pathnode = makeNode(IndexPath);
 		List	   *indexquals;
-		long		npages;
-		Selectivity	selec;
-
-		indexquals = get_actual_clauses(clausegroup);
-		/* expand special operators to indexquals the executor can handle */
-		indexquals = expand_indexqual_conditions(indexquals);
-
-		index_selectivity(root,
-						  rel,
-						  index,
-						  indexquals,
-						  &npages,
-						  &selec);
 
 		/* XXX this code ought to be merged with create_index_path? */
 
 		pathnode->path.pathtype = T_IndexScan;
 		pathnode->path.parent = rel;
 		pathnode->path.pathkeys = build_index_pathkeys(root, rel, index);
+
+		indexquals = get_actual_clauses(clausegroup);
+		/* expand special operators to indexquals the executor can handle */
+		indexquals = expand_indexqual_conditions(indexquals);
 
 		/* Note that we are making a pathnode for a single-scan indexscan;
 		 * therefore, both indexid and indexqual should be single-element
@@ -1423,8 +1414,7 @@ index_innerjoin(Query *root, RelOptInfo *rel, IndexOptInfo *index,
 		/* joinrelids saves the rels needed on the outer side of the join */
 		pathnode->joinrelids = lfirst(outerrelids_list);
 
-		pathnode->path.path_cost = cost_index(rel, index,
-											  npages, selec,
+		pathnode->path.path_cost = cost_index(root, rel, index, indexquals,
 											  true);
 
 		path_list = lappend(path_list, pathnode);
