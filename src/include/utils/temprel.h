@@ -16,11 +16,6 @@
 
 #include "access/htup.h"
 
-#define PG_TEMP_REL_PREFIX "pg_temp"
-
-#define is_temp_relname(relname) \
-		(strncmp(relname, PG_TEMP_REL_PREFIX, strlen(PG_TEMP_REL_PREFIX)) == 0)
-
 extern void create_temp_relation(const char *relname,
 					 HeapTuple pg_class_tuple);
 extern void remove_temp_rel_by_relid(Oid relid);
