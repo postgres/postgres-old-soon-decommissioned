@@ -27,6 +27,7 @@ WANTED_DIRS = \
 		pg_resetxlog	\
 		pgbench		\
 		pgcrypto	\
+		pgstattuple	\
 		rserv		\
 		rtree_gist	\
 		seg		\
