@@ -1807,8 +1807,10 @@ xact_desc(char *buf, uint8 xl_info, char* rec)
 void
 XactPushRollback(void (*func) (void *), void* data)
 {
+#ifdef XLOG_II
 	if (_RollbackFunc != NULL)
 		elog(STOP, "XactPushRollback: already installed");
+#endif
 
 	_RollbackFunc = func;
 	_RollbackData = data;
