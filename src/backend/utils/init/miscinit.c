@@ -226,7 +226,7 @@ GetProcessingMode()
 char	   *
 GetDatabasePath()
 {
-	return DatabasePath;
+	return strdup(DatabasePath);
 }
 
 /*
@@ -236,7 +236,7 @@ GetDatabasePath()
 char	   *
 GetDatabaseName()
 {
-	return DatabaseName;
+	return strdup(DatabaseName);
 }
 
 void
