@@ -177,7 +177,7 @@ add_vars_to_targetlist(Query *root, List *vars)
 			List   *varsused;
 
 			expansion = flatten_join_alias_vars((Node *) var,
-												root, true);
+												root->rtable, true);
 			varsused = pull_var_clause(expansion, false);
 			add_vars_to_targetlist(root, varsused);
 			freeList(varsused);
