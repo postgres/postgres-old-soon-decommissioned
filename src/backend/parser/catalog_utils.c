@@ -48,6 +48,8 @@
 #include "utils/lsyscache.h"
 #include "storage/lmgr.h"
 
+#include "port-protos.h"              /* strdup() */
+
 struct {
     char *field;
     int code;

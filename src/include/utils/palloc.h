@@ -13,6 +13,8 @@
 #ifndef	PALLOC_H
 #define PALLOC_H
 
+#include <c.h>
+
 extern void*   palloc(Size size);
 extern void    pfree(void *pointer); 
 extern void *repalloc(void *pointer, Size size);

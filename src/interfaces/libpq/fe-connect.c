@@ -30,11 +30,12 @@
 #include "fe-auth.h"
 #include "libpq-fe.h"
 
+#include <port-protos.h>  /* for strdup() */
+
 #if defined(ultrix4) || defined(next)
   /* ultrix is lame and doesn't have strdup in libc for some reason */
  /* [TRH] So doesn't NEXTSTEP.  But whaddaya expect for a non-ANSI  
 standard function? (My, my. Touchy today, are we?) */
-static
 char *
 strdup(const char *string)
 {

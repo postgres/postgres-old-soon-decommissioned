@@ -54,6 +54,7 @@
 #include "postgres.h"
 #include "access/htup.h"
 #include "libpq-fe.h"
+#include <port-protos.h> /* for strdup() */
 
 #include "pg_dump.h"
 

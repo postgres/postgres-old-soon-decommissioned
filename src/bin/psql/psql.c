@@ -23,8 +23,8 @@
 #include "postgres.h"
 #include "libpq-fe.h"
 #include "stringutils.h"
-
 #include "psqlHelp.h"
+#include <port-protos.h> /* for strdup() */
 
 #ifdef NOREADLINE
 #include "rlstubs.h"

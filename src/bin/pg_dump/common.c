@@ -29,6 +29,7 @@
 
 #include "postgres.h"
 #include "libpq-fe.h"
+#include <port-protos.h> /* for strdup() */
 
 #include "pg_dump.h"
 

@@ -15,6 +15,8 @@
 
 #include <sys/types.h>
 
+#include <postgres.h>
+
 #ifdef MIN
 #undef MIN
 #undef MAX

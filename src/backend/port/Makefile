@@ -36,6 +36,11 @@ ifeq ($(PORTNAME), sparc_solaris)
 OBJS += inet_aton.o
 endif
 
+ifeq ($(PORTNAME), ultrix4)
+# Other ports get the inet_aton() function from their standard C libraries.
+OBJS += inet_aton.o
+endif
+
 all: submake SUBSYS.o
 
 SUBSYS.o: $(OBJS)

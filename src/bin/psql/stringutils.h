@@ -31,11 +31,6 @@ extern char *leftTrim(char *s);
 extern char *rightTrim(char *s);
 extern char *doubleTrim(char *s);
 
-/* dupstr : copies a string, while making room for it */
-/* the CALLER is responsible for freeing the space */
-/* returns NULL if the argument is NULL */
-extern char *dupstr(char *s);
-
 #ifdef STRINGUTILS_TEST
 extern void testStringUtils();
 #endif

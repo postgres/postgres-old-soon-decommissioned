@@ -15,7 +15,7 @@ SRCDIR= ..
 include ../Makefile.global
 
 # We need the backend directory here for its fmgr.h
-INCLUDE_OPT= -I../include -I../backend
+INCLUDE_OPT= -I../include -I../backend -I../backend/port/$(PORTNAME)
 
 CFLAGS+= $(INCLUDE_OPT) 
 
@@ -73,7 +73,7 @@ postgres.h: ../include/postgres.h
 	echo "#define NAMEDATALEN $(NAMEDATALEN)" >> postgres.h
 	echo "#define OIDNAMELEN $(OIDNAMELEN)" >> postgres.h
 	cat ../include/postgres.h >> postgres.h
-	
+
 c.h: ../include/c.h
 	rm -f c.h
 	echo "#undef PORTNAME" >  c.h

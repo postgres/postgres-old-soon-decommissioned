@@ -16,7 +16,8 @@ include ../../Makefile.global
 
 INCLUDE_OPT:= \
                -I$(LIBPQDIR) \
-               -I../../include
+               -I../../include \
+               -I../../backend/port/$(PORTNAME)
 
 CFLAGS+= $(INCLUDE_OPT)
 #

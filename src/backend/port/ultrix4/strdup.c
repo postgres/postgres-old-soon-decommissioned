@@ -13,8 +13,12 @@
  */
 #include <string.h>
 
+#include <utils/palloc.h>
+
+#include "port-protos.h"
+
 char *
-strdup(char *string)
+strdup(char const *string)
 {
     char *nstr;
 

@@ -13,9 +13,6 @@
 #ifndef PORT_PORTOS_H
 #define PORT_PORTOS_H
 
-#include "utils/dynamic_loader.h"
-#include "dl.h"
-
 /* dynloader.c */
 /*
  * New dynamic loader.
@@ -32,5 +29,8 @@
 /* port.c */
 
 extern void init_address_fixup(void);
+
+/* strdup.c: strdup() is not part of libc on Ultrix */
+extern char* strdup(char const*);
 
 #endif 	/* PORT_PORTOS_H */

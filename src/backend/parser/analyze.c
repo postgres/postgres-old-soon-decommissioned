@@ -37,6 +37,8 @@
 #include "optimizer/clauses.h"
 #include "access/heapam.h"
 
+#include "port-protos.h"        /* strdup() */
+
 /* convert the parse tree into a query tree */
 static Query *transformStmt(ParseState *pstate, Node *stmt);
 

@@ -158,7 +158,6 @@ extern void flagInhAttrs(TableInfo* tbinfo, int numTables,
 			   InhInfo* inhinfo, int numInherits);
 
 extern void check_conn_and_db(void);
-extern char* dupstr(const char *s);
 extern int strInArray(const char* pattern, char** arr, int arr_size);
 extern void parseArgTypes(char **argtypes, const char* str);
 extern int isArchiveName(const char*);

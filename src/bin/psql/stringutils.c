@@ -15,6 +15,9 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+
+#include <port-protos.h> /* for strdup() */
+
 #include "stringutils.h"
 
 /* all routines assume null-terminated strings! */

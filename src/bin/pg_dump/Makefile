@@ -15,6 +15,8 @@ SRCDIR= ../..
 include ../Makefile.global
 include ../../Makefile.global
 
+CFLAGS+= -I../../backend/port/${PORTNAME}
+
 OBJS= pg_dump.o common.o
 
 all: submake pg_dump
