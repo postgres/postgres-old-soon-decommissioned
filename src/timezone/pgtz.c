@@ -33,14 +33,16 @@ pg_TZDIR(void)
 #endif
 
 	canonicalize_path(tzdir);
-#if 0
+#ifdef WIN32
+	/* trim off binary name, then go up a directory */
 	if ((p = last_path_separator(tzdir)) == NULL)
 		return NULL;
 	else
 		*p = '\0';
+	strcat(tzdir, "/../share/timezone");
 #endif
-
 	strcat(tzdir, "/timezone");
+
 
 	done_tzdir = 1;
 	return tzdir;
