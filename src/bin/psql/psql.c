@@ -1641,7 +1641,7 @@ main(int argc, char **argv)
 	    fe_setauthsvc(optarg, errbuf);
 	    break;
 	case 'c':
-	    singleQuery = optarg;
+	    singleQuery = strdup(optarg);
 	    if (singleQuery[0] == '\\') {
 		singleSlashCmd = 1;
 	    }
@@ -1656,7 +1656,7 @@ main(int argc, char **argv)
 	    qfilename = optarg;
 	    break;
 	case 'F':
-	    settings.opt.fieldSep = optarg;
+	    settings.opt.fieldSep = strdup(optarg);
 	    break;
 	case 'l':
 	    listDatabases = 1;
@@ -1689,7 +1689,7 @@ main(int argc, char **argv)
 	    settings.opt.header = 0;
 	    break;
 	case 'T':
-	    settings.opt.tableOpt = optarg;
+	    settings.opt.tableOpt = strdup(optarg);
 	    break;
 	case 'u':
 	    settings.getPassword = 1;
@@ -1759,8 +1759,7 @@ main(int argc, char **argv)
 	    sprintf(line, "\\i %s", qfilename);
 	}
 	HandleSlashCmds(&settings, line, "");
-        if (!singleSlashCmd) free (line);	/* PURIFY */
-	
+        free (line);	/* PURIFY */
     } else {
 	if (singleQuery) {
 	    bool            success;	/* The query succeeded at the backend */
