@@ -162,7 +162,7 @@ static int	tas(slock_t *lock);
  * (see storage/ipc.h).
  */
 
-#if defined(hpux)
+#if defined(__hpux)
 
 /*
 * a "set" slock_t has a single word cleared.  a "clear" slock_t has
@@ -184,7 +184,7 @@ static int	tas(slock_t *lock);
 
 #define	S_LOCK_FREE(lock)	( *(int *) (((long) (lock) + 15) & ~15) != 0)
 
-#endif							/* hpux */
+#endif							/* __hpux */
 
 /*
  * sun3
