@@ -360,25 +360,20 @@ Oid	param_type(int t); /* used in parse_expr.c */
 %left		UNION INTERSECT EXCEPT
 %%
 
-stmtblock:  stmtmulti
+stmtblock:  stmtmulti opt_semi
 				{ parsetree = $1; }
-		| stmt
-				{ parsetree = lcons($1,NIL); }
 		;
 
-stmtmulti:  stmtmulti stmt ';'
-				{ $$ = lappend($1, $2); }
-/***S*I***/
-/* We comment the next rule because it seems to be redundant
- * and produces 16 shift/reduce conflicts with the new SelectStmt rule
- * needed for EXCEPT and INTERSECTS. So far I did not notice any
- * violations by removing the rule! */
-/* 		| stmtmulti stmt
-				{ $$ = lappend($1, $2); } */
-		| stmt ';'
+stmtmulti:  stmtmulti ';' stmt
+				{ $$ = lappend($1, $3); }
+		| stmt
 				{ $$ = lcons($1,NIL); }
 		;
 
+opt_semi:	';'
+		|	/*EMPTY*/
+		;
+		
 stmt :	  AddAttrStmt
 		| AlterUserStmt
 		| ClosePortalStmt
