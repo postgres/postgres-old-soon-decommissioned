@@ -23,14 +23,12 @@
 #include "libpq++.H"
 
 #define DefaultAuth DEFAULT_CLIENT_AUTHSVC 
-#define DefaultPort POSTPORT
+#define DefaultPort "5432"
 
 // default constructor for PGenv
 // checks the environment variables
 PGenv::PGenv()
 {
-  char* temp;
-
   pgauth = NULL;
   pghost = NULL;
   pgport = NULL;
