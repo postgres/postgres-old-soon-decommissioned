@@ -547,6 +547,7 @@ main(int argc, char **argv)
 	int			use_password = 0;
 
 	g_verbose = false;
+	g_force_quotes = true;
 
 	strcpy(g_comment_start, "-- ");
 	g_comment_end[0] = '\0';
