@@ -42,6 +42,9 @@
 /* Set to 1 if you want to use multibyte characters (--enable-multibyte) */
 #undef MULTIBYTE
 
+/* Set to 1 if you want Unicode conversion support (--enable-uniconv) */
+#undef UNICODE_CONVERSION
+
 /* Set to 1 if you want ASSERT checking (--enable-cassert) */
 #undef USE_ASSERT_CHECKING
 
