@@ -63,7 +63,7 @@
 
 
 
-#if defined(irix5)
+#if defined(__sgi)
 /*
  * SGI IRIX 5
  * slock_t is defined as a struct abilock_t, which has a single unsigned long
@@ -87,7 +87,7 @@
 
 #define	S_LOCK_FREE(lock)	(stat_lock(lock) == UNLOCKED)
 
-#endif							/* irix5 */
+#endif							/* __sgi */
 
 
 /*
