@@ -167,8 +167,6 @@ extern int	pclose_check(FILE *stream);
  */
 extern int	pgrename(const char *from, const char *to);
 extern int	pgunlink(const char *path);
-extern int	pgsymlink(const char *oldpath, const char *newpath);
-
 /* Include this first so later includes don't see these defines */
 #ifdef WIN32_CLIENT_ONLY
 #include <io.h>
@@ -176,7 +174,17 @@ extern int	pgsymlink(const char *oldpath, const char *newpath);
 
 #define rename(from, to)		pgrename(from, to)
 #define unlink(path)			pgunlink(path)
+
+/*
+ *	Cygwin has its own symlinks which work on Win95/98/ME where
+ *	junction points don't, so use it instead.  We have no way of
+ *	knowing what type of system Cygwin binaries will be run on.
+ */
+#ifdef WIN32	
+extern int	pgsymlink(const char *oldpath, const char *newpath);
 #define symlink(oldpath, newpath)	pgsymlink(oldpath, newpath)
+#endif
+
 #endif
 
 extern bool rmtree(char *path, bool rmtopdir);

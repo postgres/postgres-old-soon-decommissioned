@@ -142,6 +142,7 @@ pgunlink(const char *path)
 }
 
 
+#ifdef WIN32	/* Cygwin has its own symlinks */
 /*
  *	pgsymlink support:
  *
@@ -160,9 +161,7 @@ typedef struct
 	WORD		PrintNameOffset;
 	WORD		PrintNameLength;
 	WCHAR		PathBuffer[1];
-}
-
-			REPARSE_JUNCTION_DATA_BUFFER;
+}	REPARSE_JUNCTION_DATA_BUFFER;
 
 #define REPARSE_JUNCTION_DATA_BUFFER_HEADER_SIZE   \
 		FIELD_OFFSET(REPARSE_JUNCTION_DATA_BUFFER, SubstituteNameOffset)
@@ -245,6 +244,7 @@ pgsymlink(const char *oldpath, const char *newpath)
 
 	return 0;
 }
+#endif
 #endif
 
 
