@@ -16,7 +16,7 @@ PostgreSQL documentation
 
  <refsynopsisdiv>
 <synopsis>
-CREATE [ [ LOCAL ] { TEMPORARY | TEMP } ] TABLE <replaceable>table_name</replaceable> [ (<replaceable>column_name</replaceable> [, ...] ) ]
+CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } ] TABLE <replaceable>table_name</replaceable> [ (<replaceable>column_name</replaceable> [, ...] ) ]
     AS <replaceable>query</replaceable>
 </synopsis>
  </refsynopsisdiv>
@@ -49,7 +49,7 @@ CREATE [ [ LOCAL ] { TEMPORARY | TEMP } ] TABLE <replaceable>table_name</replace
    
   <variablelist>
    <varlistentry>
-    <term><literal>[LOCAL] TEMPORARY</> or <literal>[LOCAL] TEMP</></term>
+    <term><literal>TEMPORARY</> or <literal>TEMP</></term>
     <listitem>
      <para>
       If specified, the table is created as a temporary table.
