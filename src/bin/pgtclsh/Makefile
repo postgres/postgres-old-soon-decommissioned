@@ -42,7 +42,7 @@ pgtclsh: pgtclAppInit.o
 pgtksh: pgtkAppInit.o
 	$(CC) $(CFLAGS) $(TK_DEFS) -o $@ pgtkAppInit.o \
 	  $(LIBPGTCL) $(LIBPQ) $(X_LIBS) $(TK_LIB_SPEC) $(TK_LIBS) \
-	  $(TCL_LIB_SPEC) $(TCL_LIB) $(X11_LIBS) $(LDFLAGS)
+	  $(TCL_LIB_SPEC) $(X11_LIBS) $(LDFLAGS)
 
 install: pgtclsh pgtksh
 	$(INSTALL) $(INSTL_EXE_OPTS) pgtclsh $(BINDIR)/pgtclsh

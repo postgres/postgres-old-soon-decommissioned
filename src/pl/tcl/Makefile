@@ -20,15 +20,6 @@ include $(SRCDIR)/Makefile.global
 #
 include Makefile.tcldefs
 
-
-#
-# Uncomment the following to force a specific version of the
-# Tcl shared library to be used.
-#
-#TCL_LIB_SPEC=-L/usr/lib -ltcl8.0
-
-
-#
 # Change following to how shared library that contain
 # correct references to libtcl must get built on your system.
 # Since these definitions come from the tclConfig.sh script,

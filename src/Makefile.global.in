@@ -136,15 +136,7 @@ KRBLIBS+= -lkrb5 -lcrypto -lcom_err -lisode
    endif
 endif
 
-#
-# location of Tcl/Tk headers and libraries
-#
-# Uncomment this to build the tcl utilities.
 USE_TCL= @USE_TCL@
-# customize these to your site's needs
-#
-#TCL_LIB= @TCL_LIB@
-#TK_LIB= @TK_LIB@
 
 USE_PERL= @USE_PERL@
 
