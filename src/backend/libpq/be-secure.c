@@ -714,6 +714,9 @@ destroy_SSL(void)
 static int
 open_server_SSL(Port *port)
 {
+	Assert(!port->ssl);
+	Assert(!port->peer);
+
 	if (!(port->ssl = SSL_new(SSL_context)) ||
 		!SSL_set_fd(port->ssl, port->sock) ||
 		SSL_accept(port->ssl) <= 0)
@@ -763,6 +766,12 @@ close_SSL(Port *port)
 		SSL_shutdown(port->ssl);
 		SSL_free(port->ssl);
 		port->ssl = NULL;
+	}
+
+	if (port->peer)
+	{
+		X509_free(port->peer);
+		port->peer = NULL;
 	}
 }
 

@@ -1004,6 +1004,12 @@ close_SSL(PGconn *conn)
 		SSL_free(conn->ssl);
 		conn->ssl = NULL;
 	}
+
+	if (conn->peer)
+	{
+		X509_free(conn->peer);
+		conn->peer = NULL;
+	}
 }
 
 /*
