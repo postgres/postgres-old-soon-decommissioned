@@ -82,7 +82,9 @@
 #include <commands/async.h>
 #include <libpq/libpq.h>
 
-#include <port-protos.h>		/* for strdup() */
+#ifndef HAVE_STRDUP
+#  include <port-protos.h>		/* for strdup() */
+#endif
 
 #include <storage/lmgr.h>
 

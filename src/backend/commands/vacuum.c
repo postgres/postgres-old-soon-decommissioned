@@ -54,7 +54,7 @@
 #include <sys/resource.h>
 #endif
 
-#include <port-protos.h>
+/* #include <port-protos.h> */
 
 extern int BlowawayRelationBuffers(Relation rdesc, BlockNumber block);
 
