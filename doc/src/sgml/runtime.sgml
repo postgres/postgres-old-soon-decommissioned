@@ -1863,8 +1863,8 @@ SET ENABLE_SEQSCAN TO OFF;
         Prefixes each message in the server log file with the process ID of
         the server process. This is useful to sort out which messages
         pertain to which connection. The default is off.  This parameter
-        does not affect messages logged via <application>syslog</>, which always contain
-        the process ID.
+        does not affect messages logged via <application>syslog</>, which 
+        always contain the process ID.
        </para>
       </listitem>
      </varlistentry>
