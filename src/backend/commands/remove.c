@@ -43,7 +43,7 @@
  * Exceptions:
  *	BadArg if name is invalid.
  *	BadArg if type1 is invalid.
- *	"WARN" if operator nonexistant.
+ *	"WARN" if operator nonexistent.
  *	...
  */
 void
@@ -307,7 +307,7 @@ RemoveType(char *typeName)    /* type name to be removed */
  *
  * Exceptions:
  *	BadArg if name is invalid.
- *	"WARN" if function nonexistant.
+ *	"WARN" if function nonexistent.
  *	...
  */
 void
