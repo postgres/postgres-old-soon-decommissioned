@@ -108,9 +108,7 @@ where <replaceable class="PARAMETER">constraint</replaceable> is:
       <term><literal>NOT NULL</></term>
       <listitem>
        <para>
-        Values of this domain are not allowed to be NULL.  This is
-        equivalent to the column constraint <literal>CHECK (<replaceable
-        class="PARAMETER">column</replaceable> NOT NULL)</literal>.
+        Values of this domain are not allowed to be NULL.  
        </para>
       </listitem>
      </varlistentry>
