@@ -67,7 +67,7 @@ PSQL="psql $PARGS"
 # see if user $USER is allowed to create new users
 #
 
-QUERY="select usesuper from pg_user where usename = '$USER'"
+QUERY="select usesuper from pg_user where usename = '$USER' "
 #echo $QUERY
 
 ADDUSER=`$PSQL -c "$QUERY" template1`
@@ -98,7 +98,7 @@ then
     read NEWUSER
 fi
 
-QUERY="select usesysid from pg_user where usename = '$NEWUSER'"
+QUERY="select usesysid from pg_user where usename = '$NEWUSER' "
 
 RES=`$PSQL -c "$QUERY" template1`
 
