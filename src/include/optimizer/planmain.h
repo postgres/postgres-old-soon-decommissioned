@@ -24,7 +24,7 @@ extern Plan *query_planner(Query *root, List *tlist, List *qual);
 /*
  * prototypes for plan/createplan.c
  */
-extern Plan *create_plan(Path *best_path);
+extern Plan *create_plan(Query *root, Path *best_path);
 extern SeqScan *make_seqscan(List *qptlist, List *qpqual, Index scanrelid);
 extern Sort *make_sort(List *tlist, Oid nonameid, Plan *lefttree,
 		  int keycount);
@@ -41,7 +41,6 @@ extern Result *make_result(List *tlist, Node *resconstantqual, Plan *subplan);
 extern void make_var_only_tlist(Query *root, List *tlist);
 extern void add_restrict_and_join_to_rels(Query *root, List *clauses);
 extern void add_missing_rels_to_query(Query *root);
-extern void set_joininfo_mergeable_hashable(List *rel_list);
 
 /*
  * prototypes for plan/setrefs.c

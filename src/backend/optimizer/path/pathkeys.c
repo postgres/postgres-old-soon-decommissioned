@@ -261,7 +261,7 @@ get_cheapest_path_for_pathkeys(List *paths, List *pathkeys,
  * ordering of that key is not interesting.
  */
 List *
-build_index_pathkeys(Query *root, RelOptInfo *rel, RelOptInfo *index)
+build_index_pathkeys(Query *root, RelOptInfo *rel, IndexOptInfo *index)
 {
 	List	   *retval = NIL;
 	int		   *indexkeys = index->indexkeys;

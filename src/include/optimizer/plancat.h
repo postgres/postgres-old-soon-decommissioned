@@ -13,29 +13,29 @@
 #ifndef PLANCAT_H
 #define PLANCAT_H
 
-#include "nodes/parsenodes.h"
+#include "nodes/relation.h"
 
 
 extern void relation_info(Query *root, Index relid,
-						  bool *hasindex, int *pages, int *tuples);
+						  bool *hasindex, long *pages, double *tuples);
 
 extern List *find_secondary_indexes(Query *root, Index relid);
 
-extern Cost restriction_selectivity(Oid functionObjectId,
+extern List *find_inheritance_children(Oid inhparent);
+
+extern Selectivity restriction_selectivity(Oid functionObjectId,
 						Oid operatorObjectId,
 						Oid relationObjectId,
 						AttrNumber attributeNumber,
 						Datum constValue,
 						int constFlag);
 
-extern void index_selectivity(Query *root, int relid, Oid indexid,
-							  List *indexquals,
-							  float *idxPages, float *idxSelec);
+extern void index_selectivity(Query *root, RelOptInfo *rel,
+							  IndexOptInfo *index, List *indexquals,
+							  long *idxPages, Selectivity *idxSelec);
 
-extern Cost join_selectivity(Oid functionObjectId, Oid operatorObjectId,
+extern Selectivity join_selectivity(Oid functionObjectId, Oid operatorObjectId,
 				 Oid relationObjectId1, AttrNumber attributeNumber1,
 				 Oid relationObjectId2, AttrNumber attributeNumber2);
-
-extern List *find_inheritance_children(Oid inhparent);
 
 #endif	 /* PLANCAT_H */

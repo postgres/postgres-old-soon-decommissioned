@@ -63,10 +63,12 @@
 typedef struct Plan
 {
 	NodeTag		type;
+
+	/* planner's estimates of cost and result size */
 	Cost		cost;
-	int			plan_size;
+	double		plan_rows;
 	int			plan_width;
-	int			plan_tupperpage;
+
 	EState	   *state;			/* at execution time, state's of
 								 * individual nodes point to one EState
 								 * for the whole top-level plan */
@@ -185,10 +187,10 @@ typedef struct IndexScan
  */
 typedef struct TidScan
 {
-        Scan            scan;
+	Scan		scan;
 	bool		needRescan;
-        List            *tideval;
-        TidScanState    *tidstate;
+	List	   *tideval;
+	TidScanState *tidstate;
 } TidScan;
 
 /* 

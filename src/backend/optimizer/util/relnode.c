@@ -37,21 +37,15 @@ get_base_rel(Query *root, int relid)
 	{
 		rel = makeNode(RelOptInfo);
 		rel->relids = relids;
-		rel->indexed = false;
-		rel->pages = 0;
-		rel->tuples = 0;
-		rel->size = 0;
+		rel->rows = 0;
 		rel->width = 0;
 		rel->targetlist = NIL;
 		rel->pathlist = NIL;
 		rel->cheapestpath = (Path *) NULL;
 		rel->pruneable = true;
-		rel->classlist = NULL;
-		rel->indexkeys = NULL;
-		rel->ordering = NULL;
-		rel->relam = InvalidOid;
-		rel->indproc = InvalidOid;
-		rel->indpred = NIL;
+		rel->indexed = false;
+		rel->pages = 0;
+		rel->tuples = 0;
 		rel->restrictinfo = NIL;
 		rel->joininfo = NIL;
 		rel->innerjoin = NIL;

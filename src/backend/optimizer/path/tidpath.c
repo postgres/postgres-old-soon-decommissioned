@@ -241,30 +241,27 @@ List *TidqualFromRestrictinfo(List *relids, List * restrictinfo)
 List *
 create_tidscan_joinpaths(RelOptInfo *rel)
 {
-	List		*rlst = NIL, *lst;
-	TidPath		*pathnode = (TidPath *)0;
-	List		*restinfo, *tideval;
+	List		*rlst = NIL,
+				*lst;
+	TidPath		*pathnode = (TidPath *) NULL;
+	List		*restinfo,
+				*tideval;
 
 	foreach (lst, rel->joininfo)
 	{
-		JoinInfo *joininfo = (JoinInfo *)lfirst(lst);
+		JoinInfo   *joininfo = (JoinInfo *)lfirst(lst);
+
 		restinfo = joininfo->jinfo_restrictinfo;
 		tideval = TidqualFromRestrictinfo(rel->relids, restinfo);
-		if (tideval && length(tideval) == 1)
+		if (length(tideval) == 1)
 		{
 			pathnode = makeNode(TidPath);
 
 			pathnode->path.pathtype = T_TidScan;
 			pathnode->path.parent = rel;
-			pathnode->path.path_cost = 0.0;
 			pathnode->path.pathkeys = NIL;
-
-			pathnode->path.path_cost = cost_tidscan(tideval);
+			pathnode->path.path_cost = cost_tidscan(rel, tideval);
 			pathnode->tideval = tideval;
-			/*
-			pathnode->tideval = copyObject(tideval);
-			freeList(tideval);
-			*/
 			pathnode->unjoined_relids = joininfo->unjoined_relids;
 			rlst = lappend(rlst, pathnode);
 		}

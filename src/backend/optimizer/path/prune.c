@@ -90,7 +90,7 @@ merge_rel_with_same_relids(RelOptInfo *rel, List *unmerged_rels)
  *	  relations), set pointers to the cheapest path and compute rel size.
  */
 void
-rels_set_cheapest(List *rel_list)
+rels_set_cheapest(Query *root, List *rel_list)
 {
 	List	   *x;
 
@@ -101,7 +101,7 @@ rels_set_cheapest(List *rel_list)
 
 		cheapest = (JoinPath *) set_cheapest(rel, rel->pathlist);
 		if (IsA_JoinPath(cheapest))
-			rel->size = compute_joinrel_size(cheapest);
+			set_joinrel_rows_width(root, rel, cheapest);
 		else
 			elog(ERROR, "rels_set_cheapest: non JoinPath found");
 	}
