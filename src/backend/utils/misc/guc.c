@@ -767,6 +767,8 @@ static struct config_string
 		PG_KRB_SRVTAB, NULL, NULL
 	},
 
+	/* See main.c about why defaults for LC_foo are not all alike */
+
 	{
 		{"lc_messages", PGC_SUSET}, &locale_messages,
 		"", locale_messages_assign, NULL
@@ -774,17 +776,17 @@ static struct config_string
 
 	{
 		{"lc_monetary", PGC_USERSET}, &locale_monetary,
-		"", locale_monetary_assign, NULL
+		"C", locale_monetary_assign, NULL
 	},
 
 	{
 		{"lc_numeric", PGC_USERSET}, &locale_numeric,
-		"", locale_numeric_assign, NULL
+		"C", locale_numeric_assign, NULL
 	},
 
 	{
 		{"lc_time", PGC_USERSET}, &locale_time,
-		"", locale_time_assign, NULL
+		"C", locale_time_assign, NULL
 	},
 
 	{
