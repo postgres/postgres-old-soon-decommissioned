@@ -26,7 +26,7 @@ OBJS=preproc.o type.o ecpg.o ecpg_keywords.o output.o\
 all: submake-libpgport ecpg
 
 ecpg: $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) $(PTHREAD_LIBS) -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) $(PTHREAD_LIBS) -o $@$(X)
 
 # pgc is compiled as part of preproc
 preproc.o: $(srcdir)/pgc.c
