@@ -118,6 +118,17 @@ success:			\n\
 #endif	 /* PPC */
 
 
+#if defined(__ns32k__)
+int
+tas(volatile slock_t *lock)
+{
+  int res;
+  __asm__("sbitb 0, %0" : "=m"(*lock));
+  __asm__("sprb us, %0" : "=r"(res));
+  res = (res >> 5) & 1;
+  return res;
+}
+#endif
 
 #else							/* defined(__GNUC__) */
 /***************************************************************************
