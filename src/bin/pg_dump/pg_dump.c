@@ -2264,7 +2264,9 @@ dumpTables(FILE *fout, TableInfo *tblinfo, int numTables,
 							tblinfo[i].check_expr[k]);
 				}
 			}
-
+			strcat(q, ";\n");
+			fputs(q, fout);
+			
 			if (acls)
 				fprintf(fout,
 				 "UPDATE pg_class SET relacl='%s' where relname='%s';\n",
