@@ -1024,7 +1024,8 @@ heap_get_latest_tid(Relation relation,
 	{
 		if (linkend)
 			return NULL;
-		return heap_get_latest_tid(relation, snapshot, &ctid);
+		heap_get_latest_tid(relation, snapshot, &ctid);
+		*tid = ctid;
 	}
 
 	return tid;
