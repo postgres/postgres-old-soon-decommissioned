@@ -39,6 +39,10 @@
 #undef unlink
 
 #ifndef FRONTEND
+/*
+ *	Call non-macro versions of palloc, can't reference CurrentMemoryContext
+ *	because of DLLIMPORT.
+ */
 #define palloc(sz)		pgport_palloc(sz)
 #define pstrdup(str)	pgport_pstrdup(str)
 #define pfree(pointer)	pgport_pfree(pointer)
