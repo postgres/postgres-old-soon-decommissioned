@@ -24,7 +24,8 @@
 #include "nodes/pg_list.h"
 #include "parser/gramparse.h"
 #include "parser/keywords.h"
-#include "parser/parse.h"
+/* Not needed now that this file is compiled as part of gram.y */
+/* #include "parser/parse.h" */
 #include "utils/builtins.h"
 #include "mb/pg_wchar.h"
 
