@@ -728,14 +728,13 @@ proc_stmt		: pl_block ';'
 
 stmt_perform	: K_PERFORM lno expr_until_semi
 					{
-						PLpgSQL_stmt_assign *new;
+						PLpgSQL_stmt_perform *new;
 
-						new = malloc(sizeof(PLpgSQL_stmt_assign));
-						memset(new, 0, sizeof(PLpgSQL_stmt_assign));
+						new = malloc(sizeof(PLpgSQL_stmt_perform));
+						memset(new, 0, sizeof(PLpgSQL_stmt_perform));
 
-						new->cmd_type = PLPGSQL_STMT_ASSIGN;
+						new->cmd_type = PLPGSQL_STMT_PERFORM;
 						new->lineno   = $2;
-						new->varno = -1;
 						new->expr  = $3;
 
 						$$ = (PLpgSQL_stmt *)new;

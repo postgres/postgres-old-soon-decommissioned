@@ -100,7 +100,8 @@ enum
 	PLPGSQL_STMT_GETDIAG,
 	PLPGSQL_STMT_OPEN,
 	PLPGSQL_STMT_FETCH,
-	PLPGSQL_STMT_CLOSE
+	PLPGSQL_STMT_CLOSE,
+	PLPGSQL_STMT_PERFORM
 };
 
 
@@ -288,6 +289,12 @@ typedef struct
 	PLpgSQL_expr *expr;
 }	PLpgSQL_stmt_assign;
 
+typedef struct
+{								/* PERFORM statement		*/
+	int			cmd_type;
+	int			lineno;
+	PLpgSQL_expr *expr;
+}   PLpgSQL_stmt_perform;
 
 typedef struct
 {								/* Get Diagnostics item		*/
