@@ -112,7 +112,7 @@ extern void s_lock_sleep(unsigned spins, int microsec,
  */
 
 
-#if defined(__i386__)
+#if defined(__i386__) && !defined(__QNX__)
 #define TAS(lock) tas(lock)
 
 static __inline__ int

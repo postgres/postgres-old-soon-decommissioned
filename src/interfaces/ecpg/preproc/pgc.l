@@ -35,6 +35,11 @@
 #undef yywrap
 #endif /* yywrap */
 
+#ifdef __QNX__
+/* For some reason, QNX needs this, bjm 2001-02-02 */
+#define ECHO (void) fwrite( yytext, yyleng, 1, yyout )
+#endif
+
 #define YY_NO_UNPUT
 
 extern YYSTYPE yylval;
