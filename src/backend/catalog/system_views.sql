@@ -1,5 +1,10 @@
-
-
+/*
+ * PostgreSQL System Views
+ *
+ * Copyright 1996-2003, PostgreSQL Global Development Group
+ *
+ * $Id$
+ */
 
 CREATE VIEW pg_user AS 
     SELECT 
@@ -266,5 +271,3 @@ CREATE RULE pg_settings_u AS
 CREATE RULE pg_settings_n AS 
     ON UPDATE TO pg_settings 
     DO INSTEAD NOTHING;
-
-
