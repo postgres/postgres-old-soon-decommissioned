@@ -85,7 +85,7 @@ static void _bt_uppershutdown(Relation index, BTPageState *state);
 
 #define MAXTAPES		(7)
 #define TAPEBLCKSZ		(BLCKSZ << 2)
-#define TAPETEMP		"pg_btsortXXXXXX"
+#define TAPETEMP		"pg_btsortXXXXXXX"
 
 extern int	NDirectFileRead;
 extern int	NDirectFileWrite;
