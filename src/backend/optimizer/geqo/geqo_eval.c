@@ -18,15 +18,15 @@
    =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  */
 
+#include "postgres.h"
+
 #include <math.h>
-#if HAVE_LIMITS_H
+#ifdef HAVE_LIMITS_H
 # include <machine/limits.h>
 # define MAXINT	INT_MAX
 #else
 # include <values.h>
 #endif 
-
-#include "postgres.h"
 
 #include "nodes/pg_list.h"
 #include "nodes/relation.h"
