@@ -55,7 +55,7 @@ done
 AUTHOPT="-a $AUTHSYS"
 [ -z "$AUTHSYS" ] && AUTHOPT=""
 
-PARGS="-Tq $AUTHOPT -p $PGPORT -H $PGHOST"
+PARGS="-tq $AUTHOPT -p $PGPORT -h $PGHOST"
 
 #
 # generate the first part of the actual monitor command
