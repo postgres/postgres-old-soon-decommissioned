@@ -1322,6 +1322,10 @@ estimate_hash_bucketsize(Query *root, Var *var, int nbuckets)
 	float4	   *numbers;
 	int			nnumbers;
 
+	/* Ignore any binary-compatible relabeling */
+	if (var && IsA(var, RelabelType))
+		var = (Var *) ((RelabelType *) var)->arg;
+
 	/*
 	 * Lookup info about var's relation and attribute; if none available,
 	 * return default estimate.
