@@ -182,6 +182,7 @@ typedef struct
 	char		value;			/* this may be unsigned, alas */
 } datetkn;
 
+extern datetkn datetktbl[];
 
 /* TMODULO()
  * Macro to replace modf(), which is broken on some platforms.
@@ -264,6 +265,7 @@ extern int	EncodeTimeSpan(struct tm * tm, double fsec, int style, char *str);
 
 extern int	DecodeSpecial(int field, char *lowtoken, int *val);
 extern int	DecodeUnits(int field, char *lowtoken, int *val);
+extern void ClearDateCache(bool);
 
 extern int	j2day(int jd);
 

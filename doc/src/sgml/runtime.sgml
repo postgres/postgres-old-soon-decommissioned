@@ -1201,6 +1201,17 @@ dynamic_library_path = '/usr/local/lib:/home/my_project/lib:$libdir:$libdir/cont
       </listitem>
      </varlistentry>
 
+      <term>AUSTRALIAN_TIMEZONES (<type>bool</type>)</term>
+      <listitem>
+       <para>
+        If set to true, <literal>CST</literal>, <literal>EST</literal>,
+        and <literal>SAT</literal> are interpreted as Australian
+        timezones rather than as North American Central/Eastern
+        Timezones and Saturday. The default is false.
+       </para>
+      </listitem>
+     </varlistentry>
+
      <varlistentry>
       <indexterm>
        <primary>SSL</primary>

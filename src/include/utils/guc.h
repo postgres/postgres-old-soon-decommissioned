@@ -70,5 +70,6 @@ extern bool Show_query_stats;
 extern bool Show_btree_build_stats;
 
 extern bool SQL_inheritance;
+extern bool Australian_timezones;
 
 #endif	 /* GUC_H */
