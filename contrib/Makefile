@@ -31,7 +31,6 @@ WANTED_DIRS = \
 		pgbench		\
 		pgcrypto	\
 		pgstattuple	\
-		rserv		\
 		rtree_gist	\
 		seg		\
 		spi		\
