@@ -144,7 +144,7 @@ its TOAST table, if any.
 </para>
 
 <para>
-Tablespaces make the scenario more complicated.  Each non-default tablespace
+Tablespaces make the scenario more complicated.  Each user-defined tablespace
 has a symbolic link inside the <varname>PGDATA</><filename>/pg_tblspc</>
 directory, which points to the physical tablespace directory (as specified in
 its <command>CREATE TABLESPACE</> command).  The symbolic link is named after
