@@ -35,7 +35,7 @@ pg_dumpall: pg_dumpall.o $(libpq_builddir)/libpq.a
 
 .PHONY: submake-backend
 submake-backend:
-	$(MAKE) -C $(top_builddir)/src/backend/parser
+	$(MAKE) -C $(top_builddir)/src/backend/parser keywords.o
 
 
 install: all installdirs
