@@ -44,12 +44,22 @@
  * I would eliminate attbyval altogether, but I don't know how.  -BRYANH.
  */
 #define fetchatt(A, T) \
- ((*(A))->attbyval && (*(A))->attlen != -1 \
-  ? ((*(A))->attlen > sizeof(int16) \
-	 ? (char *) (long) *((int32 *)(T)) \
-	 : ((*(A))->attlen < sizeof(int16) \
-		? (char *) (long) *((char *)(T)) \
-		: (char *) (long) *((int16 *)(T)))) \
-  : (char *) (T))
+( \
+	(*(A))->attbyval && (*(A))->attlen != -1 ? \
+	( \
+		(*(A))->attlen > sizeof(int16) ? \
+		( \
+			(char *) (long) *((int32 *)(T)) \
+		) \
+	 	: \
+		( \
+			(*(A))->attlen < sizeof(int16) ? \
+				(char *) (long) *((char *)(T)) \
+			: \
+				(char *) (long) *((int16 *)(T))) \
+		) \
+	: \
+	(char *) (T) \
+)
 
 #endif

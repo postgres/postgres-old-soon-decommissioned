@@ -95,22 +95,21 @@ typedef HeapAccessStatisticsData *HeapAccessStatistics;
 		((isnull) ? (*(isnull) = false) : (dummyret)NULL), \
 		HeapTupleNoNulls(tup) ? \
 		( \
-			((tupleDesc)->attrs[(attnum)-1]->attcacheoff > 0) ? \
+			((tupleDesc)->attrs[(attnum)-1]->attcacheoff > 0 || \
+			 (attnum) == 1) ? \
 			( \
 				(Datum)fetchatt(&((tupleDesc)->attrs[(attnum)-1]), \
-			  	  (char *) (tup) + (tup)->t_hoff + (tupleDesc)->attrs[(attnum)-1]->attcacheoff) \
+			  		(char *) (tup) + (tup)->t_hoff + \
+					( \
+						((attnum) != 1) ? \
+							(tupleDesc)->attrs[(attnum)-1]->attcacheoff \
+						: \
+							0 \
+					) \
+				) \
 			) \
 			: \
-			( \
-				((attnum)-1 == 0) ? \
-				( \
-					(Datum)fetchatt(&((tupleDesc)->attrs[0]), (char *) (tup) + (tup)->t_hoff) \
-				) \
-				: \
-				( \
-					nocachegetattr((tup), (attnum), (tupleDesc), (isnull)) \
-				) \
-			) \
+				nocachegetattr((tup), (attnum), (tupleDesc), (isnull)) \
 		) \
 		: \
 		( \
