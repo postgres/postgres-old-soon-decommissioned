@@ -22,7 +22,12 @@ all: SUBSYS.o
 SUBSYS.o: $(OBJS)
 	$(LD) -r -o SUBSYS.o $(OBJS)
 
-depend dep:
+outfuncs.o: ../parse.h
+
+../parse.h:
+	$(MAKE) -C .. parse.h
+
+depend dep: ../parse.h
 	$(CC) -MM $(CFLAGS) *.c >depend
 
 clean: 

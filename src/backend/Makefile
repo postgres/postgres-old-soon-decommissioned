@@ -42,7 +42,7 @@ SRCDIR = ..
 include ../Makefile.global
 
 DIRS = access bootstrap catalog commands executor lib libpq \
-	main nodes optimizer parser port postmaster regex rewrite \
+	main parser nodes optimizer port postmaster regex rewrite \
 	storage tcop utils
 
 ifdef TIOGA
@@ -115,7 +115,7 @@ postgres.o: $(OBJS)
 # The following targets are specified in make commands that appear in the
 # make files in our subdirectories.
 
-parse.h: 
+parse.h: parser/parse.h
 	$(MAKE) -C parser parse.h
 	cp parser/parse.h .
 
@@ -154,7 +154,7 @@ endif
 # and (2) the parameters of a database system should be set at initdb time,
 # not at postgres build time.
 
-install: $(LIBDIR) $(BINDIR) $(HEADERDIR) postgres $(POSTGRES_IMP) fmgr.h\
+install: $(LIBDIR) $(BINDIR) $(HEADERDIR) postgres $(POSTGRES_IMP) fmgr.h \
          global1.bki.source local1_template1.bki.source \
          global1.description local1_template1.description \
          libpq/pg_hba.conf.sample optimizer/geqo/pg_geqo.sample
