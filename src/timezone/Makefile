@@ -12,7 +12,7 @@ subdir = src/timezone
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
-override CPPFLAGS += -DPKGLIBDIR=\"$(pkglibdir)\"
+override CPPFLAGS += -DPGDATADIR=\"$(datadir)\"
 
 OBJS= asctime.o difftime.o localtime.o pgtz.o
 ZICOBJS= zic.o ialloc.o scheck.o localtime.o asctime.o pgtz.o
@@ -30,7 +30,7 @@ zic: $(ZICOBJS)
 	$(CC) $(CFLAGS) $(ZICOBJS) $(LDFLAGS) $(LIBS) -o $@$(X)
 
 install: zic
-	./zic -d $(pkglibdir)/../timezone $(TZDATAFILES)
+	./zic -d $(DESTDIR)$(datadir)/timezone $(TZDATAFILES)
 
 clean distclean maintainer-clean:
 	rm -f SUBSYS.o $(OBJS) $(ZICOBJS)

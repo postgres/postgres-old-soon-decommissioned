@@ -23,7 +23,7 @@ char *pgwin32_TZDIR(void) {
 		return tzdir;
 
 #ifndef WIN32
-	StrNCpy(tzdir,PKGLIBDIR, MAXPGPATH);
+	StrNCpy(tzdir, PGDATADIR, MAXPGPATH);
 #else
 	if (GetModuleFileName(NULL,tzdir,MAXPGPATH) == 0)
 		return NULL;
@@ -35,7 +35,7 @@ char *pgwin32_TZDIR(void) {
 	else
 		*p = '\0';
 	
-	strcat(tzdir,"/../timezone");
+	strcat(tzdir,"/timezone");
 
 	done_tzdir=1;
 	return tzdir;
