@@ -159,7 +159,7 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 	pname = "Tee";
 	break;
     default:
-	pname = NULL;
+	pname = "";
 	break;
     }
 
