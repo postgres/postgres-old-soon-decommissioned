@@ -104,8 +104,6 @@ TidNext(TidScan *node)
 	if (estate->es_evTuple != NULL &&
 		estate->es_evTuple[node->scan.scanrelid - 1] != NULL)
 	{
-		int	iptr, numQuals;
-
 		ExecClearTuple(slot);
 		if (estate->es_evTupleNull[node->scan.scanrelid - 1])
 			return slot;		/* return empty slot */

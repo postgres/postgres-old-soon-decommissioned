@@ -13,6 +13,7 @@
  */
 #include <signal.h>
 #include <sys/stat.h>
+#include <unistd.h>
 
 #include "postgres.h"
 
