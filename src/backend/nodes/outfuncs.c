@@ -544,6 +544,20 @@ _outNoname(StringInfo str, Noname *node)
 }
 
 /*
+ *	Material is a subclass of Noname
+ */
+static void
+_outMaterial(StringInfo str, Material *node)
+{
+	appendStringInfo(str, " MATERIAL ");
+	_outPlanInfo(str, (Plan *) node);
+
+	appendStringInfo(str, " :nonameid %u :keycount %d ",
+					 node->nonameid,
+					 node->keycount);
+}
+
+/*
  *	Sort is a subclass of Noname
  */
 static void
@@ -1475,6 +1489,9 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_Noname:
 				_outNoname(str, obj);
+				break;
+			case T_Material:
+				_outMaterial(str, obj);
 				break;
 			case T_Sort:
 				_outSort(str, obj);
