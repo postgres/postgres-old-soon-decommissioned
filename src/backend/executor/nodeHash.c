@@ -709,7 +709,8 @@ ExecHashGetBucketAndBatch(HashJoinTable hashtable,
 	if (nbatch > 1)
 	{
 		*bucketno = hashvalue % nbuckets;
-		*batchno = (hashvalue / nbuckets) % nbatch;
+		/* since nbatch is a power of 2, can do MOD by masking */
+		*batchno = (hashvalue / nbuckets) & (nbatch - 1);
 	}
 	else
 	{
