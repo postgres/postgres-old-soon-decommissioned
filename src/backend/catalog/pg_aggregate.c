@@ -286,7 +286,7 @@ AggNameGetInitVal(char *aggName, Oid basetype, int xfuncno, bool *isNull)
 	transtype = ((Form_pg_aggregate) GETSTRUCT(tup))->aggtranstype1;
 	initValAttno = Anum_pg_aggregate_agginitval1;
     }
-    else if (xfuncno == 2) {
+    else /* can only be 1 or 2 */ {
 	transtype = ((Form_pg_aggregate) GETSTRUCT(tup))->aggtranstype2;
 	initValAttno = Anum_pg_aggregate_agginitval2;
     }

@@ -80,6 +80,7 @@
 #include "executor/executor.h"
 #include "executor/execdefs.h"
 #include "executor/nodeMergejoin.h"
+#include "executor/execdebug.h"
 #include "utils/lsyscache.h"
 
 /* ----------------------------------------------------------------

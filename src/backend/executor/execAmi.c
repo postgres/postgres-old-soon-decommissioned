@@ -37,7 +37,11 @@
 #include "executor/nodeIndexscan.h"
 #include "executor/nodeSort.h"
 #include "executor/nodeTee.h"
+#include "executor/execdebug.h"
 #include "optimizer/internal.h" /* for _TEMP_RELATION_ID_ */
+#include "access/genam.h"
+#include "access/heapam.h"
+#include "catalog/heap.h"
 
 /* ----------------------------------------------------------------
  *   	ExecOpenScanR
@@ -401,7 +405,7 @@ ExecCreatR(TupleDesc tupType,
 {
     Relation 	relDesc;
 
-    EU4_printf("ExecCreatR: %s type=%d oid=%d\n",
+    EU3_printf("ExecCreatR: %s type=%d oid=%d\n",
 	       "entering: ", tupType, relationOid);
     CXT1_printf("ExecCreatR: context is %d\n", CurrentMemoryContext);
     

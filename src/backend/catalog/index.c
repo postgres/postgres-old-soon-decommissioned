@@ -1514,6 +1514,12 @@ DefaultBuild(Relation heapRelation,
 	econtext = makeNode(ExprContext);
 	FillDummyExprContext(econtext, slot, heapDescriptor, buffer);
     }
+	else
+	{
+		econtext = NULL;
+		tupleTable = 0;
+		slot = NULL;
+	}
 #endif /* OMIT_PARTIAL_INDEX */        
 
     /* ----------------

@@ -452,7 +452,7 @@ OperatorDef(char *operatorName,
     char	nulls[ Natts_pg_operator ];
     char	replaces[ Natts_pg_operator ];
     Datum       values[ Natts_pg_operator ];
-    Oid 	other_oid;
+    Oid 	other_oid = 0;
     Oid		operatorObjectId;
     Oid		leftTypeId = InvalidOid;
     Oid		rightTypeId = InvalidOid;
@@ -958,21 +958,25 @@ OperatorCreate(char *operatorName,
 	commObjectId = OperatorGet(commutatorName,  /* commute type order */
 				   rightTypeName,
 				   leftTypeName);
+    else commObjectId = 0;
     
     if (negatorName)
 	negObjectId  = OperatorGet(negatorName,
 				   leftTypeName,
 				   rightTypeName);
+    else negObjectId = 0;
     
     if (leftSortName)
 	leftSortObjectId = OperatorGet(leftSortName,
 				       leftTypeName,
 				       rightTypeName);
+    else leftSortObjectId = 0;
     
     if (rightSortName)
 	rightSortObjectId = OperatorGet(rightSortName,
 					rightTypeName,
 					leftTypeName);
+    else rightSortObjectId = 0;
     
     /* ----------------
      *  Use OperatorDef() to define the specified operator and

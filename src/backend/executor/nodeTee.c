@@ -32,7 +32,9 @@
 #include "executor/executor.h"
 #include "executor/nodeTee.h"
 #include "catalog/catalog.h"
+#include "catalog/heap.h"
 #include "tcop/pquery.h"
+#include "access/heapam.h"
 
 /* ------------------------------------------------------------------
  *	ExecInitTee
@@ -484,6 +486,8 @@ ExecEndTee(Tee* node, Plan* parent)
 	    orig = CurrentMemoryContext;
 	    MemoryContextSwitchTo(teeState->tee_mcxt);
 	  }
+	  else
+		orig = 0;
 
 	  if (teeState->tee_leftScanDesc)
 	    {

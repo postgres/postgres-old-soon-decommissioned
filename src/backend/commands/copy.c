@@ -130,9 +130,9 @@ DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
                 } else fp = stdout;
             } else {
                 mode_t oumask;  /* Pre-existing umask value */
-                (void) umask((mode_t) 0);
+                oumask =  umask((mode_t) 0);
                 fp = fopen(filename, "w");
-                (void) umask(oumask);
+                umask(oumask);
                 if (fp == NULL) 
                     elog(WARN, "COPY command, running in backend with "
                          "effective uid %d, could not open file '%s' for ",

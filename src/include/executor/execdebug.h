@@ -13,6 +13,8 @@
 #ifndef EXECDEBUG_H
 #define EXECDEBUG_H
 
+#include "access/printtup.h"
+
 /* ----------------------------------------------------------------
  *	debugging defines.
  *
@@ -221,11 +223,15 @@ extern int     NIndexTupleInserted;
 #define EU_nodeDisplay(l)		nodeDisplay(l, 0)
 #define EU_printf(s)			printf(s)
 #define EU1_printf(s, a)		printf(s, a)
+#define EU2_printf(s, a)		printf(s, a, b)
+#define EU3_printf(s, a)		printf(s, a, b, c)
 #define EU4_printf(s, a, b, c, d)	printf(s, a, b, c, d)
 #else
 #define EU_nodeDisplay(l)		
 #define EU_printf(s)			
 #define EU1_printf(s, a)		
+#define EU2_printf(s, a, b)
+#define EU3_printf(s, a, b, c)
 #define EU4_printf(s, a, b, c, d)	
 #endif /* EXEC_UTILSDEBUG */
 

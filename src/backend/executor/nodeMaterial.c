@@ -190,7 +190,7 @@ ExecInitMaterial(Material *node, EState *estate, Plan *parent)
     Plan		*outerPlan;
     TupleDesc		tupType;
     Relation		tempDesc;
-    int			len;
+    /* int			len; */
     
     /* ----------------
      *  assign the node's execution state
