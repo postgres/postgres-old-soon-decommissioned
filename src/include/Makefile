@@ -18,7 +18,7 @@ include $(top_builddir)/src/Makefile.global
 srcdir_headers := c.h postgres_ext.h postgres_fe.h \
 	libpq/pqcomm.h libpq/libpq-fs.h lib/dllist.h
 
-builddir_headers := os.h config.h
+builddir_headers := pg_config_os.h pg_config.h
 
 HEADERS = $(srcdir_headers) $(builddir_headers)
 
@@ -91,4 +91,4 @@ clean:
 	rm -f utils/fmgroids.h parser/parse.h
 
 distclean maintainer-clean: clean
-	rm -f config.h dynloader.h os.h stamp-h
+	rm -f pg_config.h dynloader.h pg_config_os.h stamp-h

@@ -1,8 +1,8 @@
 /* $Id$ */
 
-#include <math.h>
+#include "c.h"
 
-#include "config.h"
+#include <math.h>
 
 #if HAVE_FPCLASS				/* this is _not_ HAVE_FP_CLASS, and not
 								 * typo */

@@ -17,7 +17,6 @@ endif
 
 include $(top_srcdir)/src/Makefile.shlib
 
-# (Python also has a config.h file.  Be sure to use ours.)
 override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS) $(python_includespec)
 
 all: all-lib

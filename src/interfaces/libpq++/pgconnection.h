@@ -22,11 +22,11 @@
 #define PGCONNECTION_H
 
 extern "C" {
-#include "config.h"
+#include "pg_config.h"
 }
 
 /* We assume that the C++ compiler will have these keywords, even though
- * config.h may have #define'd them to empty because C compiler doesn't.
+ * pg_config.h may have #define'd them to empty because C compiler doesn't.
  */
 #undef const
 #undef inline

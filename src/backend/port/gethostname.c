@@ -1,11 +1,11 @@
 /* $Id$ */
 
+#include "c.h"
+
 #include <sys/types.h>
 #include <string.h>
 
 #include <sys/utsname.h>
-
-#include "config.h"
 
 int
 gethostname(char *name, int namelen)

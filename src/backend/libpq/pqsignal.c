@@ -17,7 +17,7 @@
  *
  *	A NOTE ABOUT SIGNAL HANDLING ACROSS THE VARIOUS PLATFORMS.
  *
- *	config.h defines the macro HAVE_POSIX_SIGNALS for some platforms and
+ *	pg_config.h defines the macro HAVE_POSIX_SIGNALS for some platforms and
  *	not for others.  This file and pqsignal.h use that macro to decide
  *	how to handle signalling.
  *

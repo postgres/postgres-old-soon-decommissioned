@@ -36,7 +36,7 @@
  *	to support relations larger than the OS' file size limit (often 2GBytes).
  *	In order to do that, we break relations up into chunks of < 2GBytes
  *	and store one chunk in each of several files that represent the relation.
- *	See the BLCKSZ and RELSEG_SIZE configuration constants in include/config.h.
+ *	See the BLCKSZ and RELSEG_SIZE configuration constants in include/pg_config.h.
  *
  *	The file descriptor stored in the relation cache (see RelationGetFile())
  *	is actually an index into the Md_fdvec array.  -1 indicates not open.

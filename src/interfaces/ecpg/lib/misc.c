@@ -1,3 +1,7 @@
+/* $Header$ */
+
+#include "postgres_fe.h"
+
 #include <unistd.h>
 #include "ecpgtype.h"
 #include "ecpglib.h"

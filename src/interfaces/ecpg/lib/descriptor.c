@@ -1,4 +1,6 @@
-#include "config.h"
+/* $Header$ */
+
+#include "postgres_fe.h"
 
 #include "ecpgtype.h"
 #include "ecpglib.h"

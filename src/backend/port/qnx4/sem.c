@@ -12,6 +12,8 @@
  *-------------------------------------------------------------------------
  */
 
+#include "postgres.h"
+
 #include <errno.h>
 #include <semaphore.h>
 #include <string.h>
@@ -19,7 +21,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/mman.h>
-#include "postgres.h"
 #include "storage/ipc.h"
 #include "storage/proc.h"
 #include <sys/sem.h>

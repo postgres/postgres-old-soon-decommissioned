@@ -12,12 +12,12 @@
  *-------------------------------------------------------------------------
  */
 
+#include "postgres.h"
 
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "postgres.h"
 #include "storage/ipc.h"
 #include <sys/mman.h>
 #include <sys/sem.h>

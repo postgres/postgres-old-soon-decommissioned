@@ -1,4 +1,5 @@
-/* Copyright comment */
+/* $Header$ */
+
 /*
  * The aim is to get a simpler inteface to the database routines.
  * All the tidieous messing around with tuples is supposed to be hidden
@@ -12,7 +13,7 @@
 /* Taken over as part of PostgreSQL by Michael Meskes <meskes@postgresql.org>
    on Feb. 5th, 1998 */
 
-#include "config.h"
+#include "postgres_fe.h"
 
 #include <stdio.h>
 #include <locale.h>

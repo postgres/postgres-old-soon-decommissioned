@@ -21,7 +21,7 @@
 
 #include "utils/int8.h"
 
-/* this should be set in config.h, but just in case it wasn't: */
+/* this should be set in pg_config.h, but just in case it wasn't: */
 #ifndef INT64_FORMAT
 #define INT64_FORMAT "%ld"
 #endif

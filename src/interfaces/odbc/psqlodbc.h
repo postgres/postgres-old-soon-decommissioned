@@ -13,7 +13,7 @@
 #define __PSQLODBC_H__
 
 #ifdef HAVE_CONFIG_H
-#include "config.h"
+#include "pg_config.h"
 #endif
 
 #include <stdio.h>				/* for FILE* pointers: see GLOBAL_VALUES */

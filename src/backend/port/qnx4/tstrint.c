@@ -12,10 +12,11 @@
  *-------------------------------------------------------------------------
  */
 
+#include "c.h"
+
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "os.h"
 
 
 int

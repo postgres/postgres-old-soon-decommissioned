@@ -12,8 +12,8 @@
  *-------------------------------------------------------------------------
  */
 
+#include "c.h"
 #include <math.h>
-#include "os.h"
 
 double
 rint(double x)
