@@ -201,7 +201,7 @@ print_expr(Node *expr, List *rtable)
 
 			print_expr((Node *) get_leftop(e), rtable);
 			opname = get_opname(((Oper *) e->oper)->opno);
-			printf(" %s ", opname);
+			printf(" %s ", ((opname != NULL)? opname: "(invalid operator)"));
 			print_expr((Node *) get_rightop(e), rtable);
 		}
 		else
