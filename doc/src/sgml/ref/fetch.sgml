@@ -257,11 +257,6 @@ FETCH RELATIVE 0 FROM <replaceable class="PARAMETER">cursor</replaceable>
    </para>
 
    <para>
-    Once all rows are fetched, every other fetch access returns
-    no rows.
-   </para>
-
-   <para>
     Updating data in a cursor is not supported by 
     <productname>Postgres</productname>,
     because mapping cursor updates back to base tables is
