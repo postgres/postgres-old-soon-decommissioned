@@ -46,7 +46,7 @@ int32
 pg_atoi(char *s, int size, int c)
 {
 	long		l = 0;
-	char	   *badp = (char *) NULL;
+	char	   *badp;
 
 	Assert(s);
 
@@ -71,7 +71,7 @@ pg_atoi(char *s, int size, int c)
 	 */
 	if (errno && errno != EINVAL)
 		elog(ERROR, "pg_atoi: error reading \"%s\": %m", s);
-	if (badp && *badp && (*badp != c))
+	if (*badp && *badp != c)
 		elog(ERROR, "pg_atoi: error in \"%s\": can\'t parse \"%s\"", s, badp);
 
 	switch (size)
