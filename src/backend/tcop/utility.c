@@ -31,10 +31,12 @@
 #include "commands/rename.h"
 #include "commands/sequence.h"
 #include "commands/trigger.h"
+#include "commands/user.h"
 #include "commands/vacuum.h"
 #include "commands/variable.h"
 #include "commands/view.h"
 #include "miscadmin.h"
+#include "parser/parse.h"
 #include "rewrite/rewriteDefine.h"
 #include "rewrite/rewriteRemove.h"
 #include "tcop/utility.h"
@@ -42,11 +44,6 @@
 #include "utils/ps_status.h"
 #include "utils/syscache.h"
 
-#include "../backend/parser/parse.h"
-
-void		DefineUser(CreateUserStmt *stmt, CommandDest);
-void		AlterUser(AlterUserStmt *stmt, CommandDest);
-void		RemoveUser(char *username, CommandDest);
 
 /* ----------------
  *		CHECK_IF_ABORTED() is used to avoid doing unnecessary
