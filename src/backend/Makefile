@@ -97,7 +97,7 @@ utils/fmgroids.h: utils/Gen_fmgrtab.sh $(top_srcdir)/src/include/catalog/pg_proc
 # up to date when we update the base file.
 
 $(top_builddir)/src/include/parser/parse.h: $(srcdir)/parser/parse.h
-	prereqdir=`cd $(dir $<) && pwd` && \
+	prereqdir=`cd $(dir $<) >/dev/null && pwd` && \
 	  cd $(dir $@) && rm -f $(notdir $@) && \
 	  $(LN_S) $$prereqdir/$(notdir $<) .
 
