@@ -548,15 +548,16 @@ CacheIdInvalidate(Index cacheId,
 /* --------------------------------
  *		ResetSystemCaches
  *
- *		this blows away all tuples in the system catalog caches and
- *		all the cached relation descriptors (and closes the files too).
+ *		This blows away all tuples in the system catalog caches and
+ *		all the cached relation descriptors (and closes their files too).
+ *		Relation descriptors that have positive refcounts are then rebuilt.
  * --------------------------------
  */
 static void
 ResetSystemCaches()
 {
 	ResetSystemCache();
-	RelationCacheInvalidate(false);
+	RelationCacheInvalidate(true);
 }
 
 /* --------------------------------
