@@ -193,6 +193,7 @@ extern void dumpIndices(FILE* fout, IndInfo* indinfo, int numIndices,
 extern void dumpClasses(TableInfo *tbinfo, int numTables, FILE *fout, 
                         char *tablename, int oids);
 extern void dumpTuples(PGresult *res, FILE *fout, int *attrmap);
+extern void setMaxOid(FILE *fout);
 extern char* checkForQuote(char* s);
 extern int findLastBuiltinOid();
 
