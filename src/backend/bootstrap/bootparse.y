@@ -175,7 +175,7 @@ InsertStmt:
 		        elog(WARN,"incorrect number of values for tuple");
 		    if (reldesc == (Relation)NULL) {
 		        elog(WARN,"must OPEN RELATION before INSERT\n");
-		        err();
+		        err_out();
 		    }
 		    if (DebugMode)
 			puts("Insert Begin");

@@ -187,15 +187,11 @@ typedef void (*sig_func)();
  *	error handling / abort routines
  * ----------------
  */
-# if !defined(PORTNAME_BSD44_derived) && \
-     !defined(PORTNAME_bsdi) && \
-     !defined(PORTNAME_bsdi_2_1)
-void err()
+void err_out()
 {
     Warnings++;
     cleanup();
 }
-#endif
 
 /* usage:
    usage help for the bootstrap backen

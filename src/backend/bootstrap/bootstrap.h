@@ -54,7 +54,7 @@ extern void index_register(char *heap,
 			   FuncIndexInfo *finfo,
 			   PredInfo *predInfo);
 
-extern void err(void);
+extern void err_out(void);
 extern void InsertOneTuple(Oid objectid);
 extern void closerel(char *name);
 extern void boot_openrel(char *name);
