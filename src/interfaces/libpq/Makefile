@@ -38,6 +38,11 @@ ifdef LINUX_ELF
 ifeq ($(PORTNAME), linux)
 shlib := libpq.so.1
 endif
+ifeq ($(PORTNAME), BSD44_derived)
+shlib := libpq.so.1.0
+CFLAGS+= -fpic -DPIC
+LDFLAGS=-Bshareable -Bforcearchive
+endif
 endif
 
 all: libpq.a $(shlib) c.h
@@ -62,7 +67,7 @@ fe-lobj.o: ../backend/fmgr.h
 	$(MAKE) -C ../backend/lib dllist.o
 
 libpq.so.1: $(OBJS)
-	$(CC) $(LDFLAGS) -shared $(OBJS) -o libpq.so.1
+	$(LD) $(LDFLAGS) -shared $(OBJS) -o $(shlib)
 
 c.h: ../include/c.h
 	rm -f c.h
@@ -136,7 +141,7 @@ install-libpq: libpq.a
 	$(INSTALL) $(INSTL_LIB_OPTS) libpq.a $(DESTDIR)$(LIBDIR)/libpq.a
 
 install-shlib: libpq.so.1
-	$(INSTALL) $(INSTL_LIB_OPTS) libpq.so.1 $(DESTDIR)$(LIBDIR)/libpq.so.1
+	$(INSTALL) $(INSTL_LIB_OPTS) $(shlib) $(DESTDIR)$(LIBDIR)/$(shlib)
 
 depend dep:
 	$(CC) -MM $(INCLUDE_OPT) *.c >depend
