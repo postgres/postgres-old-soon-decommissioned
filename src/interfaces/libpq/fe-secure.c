@@ -761,7 +761,6 @@ client_cert_cb(SSL *ssl, X509 **x509, EVP_PKEY **pkey)
 	int			(*cb) () = NULL;	/* how to read user password */
 	char		sebuf[256];
 
-
 	if (pqGetpwuid(getuid(), &pwdstr, pwdbuf, sizeof(pwdbuf), &pwd) != 0)
 	{
 		printfPQExpBuffer(&conn->errorMessage,
@@ -772,8 +771,6 @@ client_cert_cb(SSL *ssl, X509 **x509, EVP_PKEY **pkey)
 	/* read the user certificate */
 	snprintf(fnbuf, sizeof(fnbuf), "%s/.postgresql/postgresql.crt",
 			 pwd->pw_dir);
-	if (stat(fnbuf, &buf) == -1)
-		return 0;
 	if ((fp = fopen(fnbuf, "r")) == NULL)
 	{
 		printfPQExpBuffer(&conn->errorMessage,
