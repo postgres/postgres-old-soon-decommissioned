@@ -252,8 +252,8 @@ PSQLexec(const char *query, bool ignore_command_ok)
 			}
 			PQclear(res);
 			res = newres;
-			if (rstatus == PGRES_COPY_IN ||
-				rstatus == PGRES_COPY_OUT)
+			if (rstatus != PGRES_COPY_IN &&
+				rstatus != PGRES_COPY_OUT)
 				break;
 		}
 	}
