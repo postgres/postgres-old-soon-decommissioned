@@ -35,7 +35,7 @@ typedef union SockAddr {
 
 #define	UNIXSOCK_PATH(sun,port) \
 	(sprintf((sun).sun_path, "/tmp/.s.PGSQL.%d", (port)) + \
-		sizeof ((sun).sun_family))
+		sizeof ((sun).sun_len) + sizeof ((sun).sun_family))
 
 
 /*
