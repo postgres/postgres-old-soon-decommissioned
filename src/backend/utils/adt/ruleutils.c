@@ -688,6 +688,11 @@ pg_get_constraintdef(PG_FUNCTION_ARGS)
 				}
 				appendStringInfo(&buf, " ON DELETE %s", string);
 
+				if (conForm->condeferrable)
+					appendStringInfo(&buf, " DEFERRABLE");
+				if (conForm->condeferred)
+					appendStringInfo(&buf, " INITIALLY DEFERRED");
+
 				break;
 			}
 
