@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------
 #
 # Makefile--
-#    Makefile for regress (the regression test)
+#    Makefile for regress/output (the regression test)
 #
 # Copyright (c) 1994, Regents of the University of California
 #
@@ -22,8 +22,7 @@ INFILES= copy.out \
          create_function_1.out \
          create_function_2.out \
          misc.out \
-	 constraints.out \
-	 install_plpgsql.out
+	 constraints.out
 
 all: $(INFILES)
 

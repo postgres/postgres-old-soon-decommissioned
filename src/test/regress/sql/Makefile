@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------
 #
 # Makefile--
-#    Makefile for regress (the regression test)
+#    Makefile for regress/sql (the regression test)
 #
 # Copyright (c) 1994, Regents of the University of California
 #
@@ -11,7 +11,7 @@
 #
 #-------------------------------------------------------------------------
 
-CLFILES=	create_function_1.sql create_function_2.sql copy.sql misc.sql constraints.sql install_plpgsql.sql
+CLFILES=	create_function_1.sql create_function_2.sql copy.sql misc.sql constraints.sql
 
 clean:
 	rm -f $(CLFILES)
