@@ -461,6 +461,11 @@ PostmasterMain(int argc, char *argv[])
 
 	IgnoreSystemIndexes(false);
 
+	if (find_my_exec(argv[0], my_exec_path) < 0)
+		elog(FATAL,
+				gettext("%s: could not locate my own executable path"),
+						argv[0]);
+	
 	/*
 	 * Options setup
 	 */

@@ -241,16 +241,6 @@ main(int argc, char *argv[])
 #endif   /* !WIN32 */
 	}
 
-	if (find_my_exec(argv[0], my_exec_path) < 0)
-	{
-		fprintf(stderr,
-				gettext("%s: could not locate my own executable path"),
-						argv[0]);
-		exit(1);
-	}
-	
-	get_pkglib_path(my_exec_path, pkglib_path);
-
 	/*
 	 * Now dispatch to one of PostmasterMain, PostgresMain, GucInfoMain,
 	 * SubPostmasterMain, pgstat_main, pgstat_mainChild or BootstrapMain
