@@ -119,5 +119,5 @@ distclean::
 # Graphics
 
 %.gif:
-	cp -p ../graphics/%.gif .
+	cp -p ../graphics/$@ .
 
