@@ -297,6 +297,7 @@ MainLoop(FILE *source)
 			else
 				bslash_count = 0;
 
+		rescan:
 			/* in quote? */
 			if (in_quote)
 			{
@@ -382,7 +383,8 @@ MainLoop(FILE *source)
 					free(line);
 					line = new;
 					len = strlen(new);
-					continue;	/* reparse the just substituted */
+
+					goto rescan;	/* reparse the just substituted */
 				}
 				else
 				{
