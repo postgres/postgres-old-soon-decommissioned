@@ -411,7 +411,7 @@ ExecRestrPos(Plan *node)
  *		  accessMtd -- access methods used to access the created relation.
  *		  relation	-- optional. Either an index to the range table or
  *					   negative number indicating a temporary relation.
- *					   A temporary relation is assume is this field is absent.
+ *					   A temporary relation is assume if this field is absent.
  * ----------------------------------------------------------------
  */
 
