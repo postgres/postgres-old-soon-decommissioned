@@ -20,6 +20,7 @@
 #include "utils/syscache.h"
 #include "catalog/catalog.h"
 #include "catalog/pg_shadow.h"
+#include "catalog/pg_type.h"
 #include "miscadmin.h"
 
 static char *getid(char *s, char *n);
@@ -681,6 +682,9 @@ makeAclStmt(char *privileges, List *rel_list, char *grantee,
 {
 	ChangeACLStmt *n = makeNode(ChangeACLStmt);
 	char		str[MAX_PARSE_BUFFER];
+
+	/* see comment in pg_type.h */
+	Assert(ACLITEMSIZE == sizeof(AclItem));
 
 	n->aclitem = (AclItem *) palloc(sizeof(AclItem));
 
