@@ -3647,6 +3647,8 @@ NUM_numpart_from_char(NUMProc *Np, int id, int plen)
 static void
 NUM_numpart_to_char(NUMProc *Np, int id)
 {
+	int end;
+	
 	if (IS_ROMAN(Np->Num))
 		return;
 
@@ -3804,7 +3806,7 @@ NUM_numpart_to_char(NUMProc *Np, int id)
 			++Np->number_p;
 		}
 
-		int end = Np->num_count + (Np->num_pre ? 1 : 0) + (IS_DECIMAL(Np->Num) ? 1 : 0);
+		end = Np->num_count + (Np->num_pre ? 1 : 0) + (IS_DECIMAL(Np->Num) ? 1 : 0);
 		
 		if (Np->last_relevant && Np->last_relevant == Np->number_p)
 			end = Np->num_curr;
