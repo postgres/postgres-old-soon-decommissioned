@@ -222,8 +222,9 @@ tas(volatile slock_t *lock)
 	register int rv;
 
 	__asm__	__volatile__(
-		"	tas	%1		\n"
-		"	sne	%0		\n"
+		"	clrl	%0		\n"
+		"	tas		%1		\n"
+		"	sne		%0		\n"
 :		"=d"(rv), "=m"(*lock)
 :		"1"(*lock)
 :		"cc");
