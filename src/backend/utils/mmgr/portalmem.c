@@ -26,10 +26,13 @@
 #include "utils/portal.h"
 
 /*
- * estimate of the maximum number of open portals a user would have,
- * used in initially sizing the PortalHashTable in EnablePortalManager()
+ * Estimate of the maximum number of open portals a user would have,
+ * used in initially sizing the PortalHashTable in EnablePortalManager().
+ * Since the hash table can expand, there's no need to make this overly
+ * generous, and keeping it small avoids unnecessary overhead in the
+ * hash_seq_search() calls executed during transaction end.
  */
-#define PORTALS_PER_USER	   64
+#define PORTALS_PER_USER	   16
 
 
 /* ----------------
