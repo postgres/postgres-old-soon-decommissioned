@@ -288,6 +288,18 @@ tas_dummy()
 #endif							/* NEED_SPARC_TAS_ASM */
 
 /*
+ * VAXen -- even multiprocessor ones
+ */
+
+#if defined(NEED_VAX_TAS_ASM)
+
+#define S_LOCK(addr)		__asm__("1: bbssi $0,(%0),1b": :"r"(addr))
+#define S_UNLOCK(addr)		(*(addr) = 0)
+#define S_INIT_LOCK(addr)	(*(addr) = 0)
+
+#endif							/* NEED_VAX_TAS_ASM */
+
+/*
  * i386 based things
  */
 
