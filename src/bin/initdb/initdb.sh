@@ -311,6 +311,10 @@ then
 	then
 		echo "$CMDNAME: $MULTIBYTE is not a valid encoding name" 1>&2
 		exit 1
+	elif [ $MULTIBYTEID -gt 31 ]
+	then
+		echo "$CMDNAME: $MULTIBYTE cannot be used as a database encoding" 1>&2
+		exit 1
 	fi
 fi
 
