@@ -256,6 +256,8 @@ typedef struct TriggerData
     HeapTuple     tg_trigtuple;
     HeapTuple     tg_newtuple;
     Trigger      *tg_trigger;
+    Buffer        tg_trigtuplebuf;
+    Buffer        tg_newtuplebuf;
 } TriggerData;
 </programlisting>
 
@@ -427,6 +429,27 @@ typedef struct Trigger
        </para>
       </listitem>
      </varlistentry>
+
+     <varlistentry>
+      <term><structfield>tg_trigtuplebuf</></term>
+      <listitem>
+       <para>
+        The buffer containing tg_trigtuple, or InvalidBuffer if there
+        is no such tuple or it is not stored in a disk buffer.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term><structfield>tg_newtuplebuf</></term>
+      <listitem>
+       <para>
+        The buffer containing tg_newtuple, or InvalidBuffer if there
+        is no such tuple or it is not stored in a disk buffer.
+       </para>
+      </listitem>
+     </varlistentry>
+
     </variablelist>
    </para>
 

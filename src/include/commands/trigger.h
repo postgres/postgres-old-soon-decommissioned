@@ -34,6 +34,8 @@ typedef struct TriggerData
 	HeapTuple	tg_trigtuple;
 	HeapTuple	tg_newtuple;
 	Trigger    *tg_trigger;
+	Buffer		tg_trigtuplebuf;
+	Buffer		tg_newtuplebuf;
 } TriggerData;
 
 /* TriggerEvent bit flags */

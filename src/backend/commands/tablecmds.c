@@ -4256,6 +4256,8 @@ validateForeignKeyConstraint(FkConstraint *fkconstraint,
 		trigdata.tg_trigtuple = tuple;
 		trigdata.tg_newtuple = NULL;
 		trigdata.tg_trigger = &trig;
+		trigdata.tg_trigtuplebuf = scan->rs_cbuf;
+		trigdata.tg_newtuplebuf = InvalidBuffer;
 
 		fcinfo.context = (Node *) &trigdata;
 
