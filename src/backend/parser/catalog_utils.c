@@ -471,6 +471,11 @@ oper(char *op, int arg1, int arg2)
     CandidateList candidates;
     int ncandidates;
 
+#ifdef NULL_PATCH
+    if (!arg2) arg2=arg1;
+    if (!arg1) arg1=arg2;
+#endif
+
     if (!(tup = SearchSysCacheTuple(OPRNAME,
 				    PointerGetDatum(op),
 				    ObjectIdGetDatum(arg1),

@@ -302,6 +302,10 @@ parser_typecast2(Node *expr, int exprType, Type tp, int typlen)
     Assert(IsA(expr,Const));
     
     switch (exprType) {
+#ifdef NULL_PATCH
+      case 0: /* NULL */
+	break;
+#endif
     case 23: /* int4 */
 	const_string = (char *) palloc(256);
 	string_palloced = true;
@@ -352,6 +356,18 @@ parser_typecast2(Node *expr, int exprType, Type tp, int typlen)
 	elog(WARN,"unknown type%d ",exprType);
     }
     
+#ifdef NULL_PATCH
+    if (!exprType) {
+	adt = makeConst((Oid)typeid(tp),
+			(Size) 0,
+			(Datum) NULL,
+			true, 	/* isnull */
+			0 	/* was omitted */,
+			0 	/* not a set */);
+	return ((Node*) adt);
+    }
+#endif
+
     cp = instr2 (tp, const_string, typlen);
     
     

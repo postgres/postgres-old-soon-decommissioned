@@ -617,7 +617,11 @@ make_const(Value *value)
 
 	    /* null const */
 	    con = makeConst(0, 0, (Datum)NULL, TRUE, 0, FALSE);
+#ifdef NULL_PATCH
+	    return con;
+#else
 	    return NULL /*con*/;
+#endif
 	}
     }
 
