@@ -386,7 +386,7 @@ static void
 _StartBlob(ArchiveHandle *AH, TocEntry *te, Oid oid)
 {
 	if (oid == 0)
-		die_horribly(AH, modulename, "invalid OID for BLOB\n");
+		die_horribly(AH, modulename, "invalid OID for large object\n");
 
 	WriteInt(AH, oid);
 	_StartDataCompressor(AH, te);
@@ -503,7 +503,7 @@ _PrintTocData(ArchiveHandle *AH, TocEntry *te, RestoreOptions *ropt)
 		case BLK_BLOBS:
 
 			if (!AH->connection)
-				die_horribly(AH, modulename, "BLOBs cannot be loaded without a database connection\n");
+				die_horribly(AH, modulename, "large objects cannot be loaded without a database connection\n");
 
 			_LoadBlobs(AH);
 			break;
