@@ -538,6 +538,7 @@ psql_completion(char *text, int start, int end)
 		"lc_time",
 		"log_duration",
 		"log_executor_stats",
+		"log_min_duration_statement",
 		"log_min_error_statement",
 		"log_min_messages",
 		"log_parser_stats",

@@ -142,4 +142,6 @@ void write_nondefault_variables(GucContext context);
 void read_nondefault_variables(void);
 #endif
 
+extern int	log_min_duration_statement;
+
 #endif   /* GUC_H */
