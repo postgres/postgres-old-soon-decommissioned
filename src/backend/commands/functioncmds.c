@@ -764,14 +764,14 @@ DropCast(DropCastStmt *stmt)
 			elog(ERROR, "permission denied");
 	}
 
-	ReleaseSysCache(tuple);
-
 	/*
 	 * Do the deletion
 	 */
 	object.classId = get_system_catalog_relid(CastRelationName);
 	object.objectId = HeapTupleGetOid(tuple);
 	object.objectSubId = 0;
+
+	ReleaseSysCache(tuple);
 
 	performDeletion(&object, stmt->behavior);
 }
