@@ -6,7 +6,7 @@ ifeq ($(with_gnu_ld), yes)
 export_dynamic = -Wl,-E
 rpath = -Wl,-rpath,$(libdir)
 else
-rpath = -Wl,-R$(libdir)
+rpath = -R$(libdir)
 endif
 shlib_symbolic = -Wl,-Bsymbolic
 
