@@ -291,7 +291,7 @@ EXEC SQL WHENEVER not found sqlprint;
     One connects to a database using the following:
 
     <programlisting>
-EXEC SQL CONNECT <replaceable>dbname</replaceable>;
+EXEC SQL CONNECT TO <replaceable>dbname</replaceable>;
     </programlisting>
 
     where the database name is not quoted. Prior to version 2.1.0, the 
