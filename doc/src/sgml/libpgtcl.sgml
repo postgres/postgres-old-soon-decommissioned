@@ -205,7 +205,7 @@ load libpgtcl[info sharedlibextension]
  <refsynopsisdiv>
 <synopsis>
 pg_connect -conninfo <parameter>connectOptions</parameter>
-pg_connect <parameter>dbName</parameter> <optional role="tcl">-host <parameter>hostName</parameter></optional> <optional role="tcl">-port <parameter>portNumber</parameter></optional> <optional role="tcl">-tty <parameter>tty</parameter</optional> <optional role="tcl">-options <parameter>serverOptions</parameter></optional>
+pg_connect <parameter>dbName</parameter> <optional role="tcl">-host <parameter>hostName</parameter></optional> <optional role="tcl">-port <parameter>portNumber</parameter></optional> <optional role="tcl">-tty <parameter>tty</parameter></optional> <optional role="tcl">-options <parameter>serverOptions</parameter></optional>
 </synopsis>
  </refsynopsisdiv>
 
@@ -481,7 +481,7 @@ pg_exec <parameter>conn</parameter> <parameter>commandString</parameter>
    <function>pg_result</function> to obtain the results of the
    command.
   </para>
- </refsect1
+ </refsect1>
 </refentry>
 
 
