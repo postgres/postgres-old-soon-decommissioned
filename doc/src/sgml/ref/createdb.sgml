@@ -3,7 +3,7 @@ $Header$
 Postgres documentation
 -->
 
-<refentry id="APP-CREATEDB" xreflabel="createdb">
+<refentry id="APP-CREATEDB">
  <docinfo>
   <date>2000-11-11</date>
  </docinfo>
