@@ -17,12 +17,10 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "catalog/catname.h"
-#include "catalog/pg_database.h"
 #include "catalog/pg_shadow.h"
+#include "commands/dbcommands.h"
 #include "utils/syscache.h"
 #include "miscadmin.h"
-#include "utils/fmgroids.h"
 
 
 /*
@@ -69,25 +67,9 @@ superuser_arg(Oid userid)
 bool
 is_dbadmin(Oid dbid)
 {
-	Relation	pg_database;
-	ScanKeyData entry[1];
-	HeapScanDesc scan;
-	HeapTuple	dbtuple;
-	int32		dba;
+	Oid			dba;
 
-	/* There's no syscache for pg_database, so must look the hard way */
-	pg_database = heap_openr(DatabaseRelationName, AccessShareLock);
-	ScanKeyEntryInitialize(&entry[0], 0x0,
-						   ObjectIdAttributeNumber, F_OIDEQ,
-						   ObjectIdGetDatum(dbid));
-	scan = heap_beginscan(pg_database, SnapshotNow, 1, entry);
-	dbtuple = heap_getnext(scan, ForwardScanDirection);
-	if (!HeapTupleIsValid(dbtuple))
-		elog(ERROR, "database %u does not exist", dbid);
-	dba = ((Form_pg_database) GETSTRUCT(dbtuple))->datdba;
-	heap_endscan(scan);
-	heap_close(pg_database, AccessShareLock);
+	dba = get_database_owner(dbid);
 
-	/* XXX some confusion about whether userids are OID or int4 ... */
-	return (GetUserId() == (Oid) dba);
+	return (GetUserId() == dba);
 }

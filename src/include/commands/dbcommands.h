@@ -20,4 +20,7 @@ extern void createdb(const CreatedbStmt *stmt);
 extern void dropdb(const char *dbname);
 extern void AlterDatabaseSet(AlterDatabaseSetStmt *stmt);
 
+extern Oid	get_database_oid(const char *dbname);
+extern Oid	get_database_owner(Oid dbid);
+
 #endif   /* DBCOMMANDS_H */

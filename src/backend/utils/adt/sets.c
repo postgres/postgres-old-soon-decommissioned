@@ -25,6 +25,7 @@
 #include "catalog/pg_proc.h"
 #include "executor/executor.h"
 #include "utils/fcache.h"
+#include "utils/fmgroids.h"
 #include "utils/sets.h"
 #include "utils/syscache.h"
 
@@ -58,7 +59,7 @@ SetDefine(char *querystr, Oid elemType)
 							 true,		/* returnsSet */
 							 elemType,	/* returnType */
 							 SQLlanguageId,	/* language */
-							 SQLvalidatorId,
+							 F_FMGR_SQL_VALIDATOR,
 							 querystr,	/* prosrc */
 							 fileName,	/* probin */
 							 false,		/* not aggregate */
