@@ -287,6 +287,8 @@ CFLAGS+= $(CFLAGS_BE)
 LDADD+= $(LDADD_BE)
 LDFLAGS+= $(LDFLAGS_BE)
 
+# enable patches to array update code
+CFLAGS += -DARRAY_PATCH
 
 ##############################################################################
 #
