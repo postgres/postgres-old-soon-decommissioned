@@ -604,6 +604,8 @@ extern void srandom(unsigned int seed);
 /* Define if a system lib (-ldl) has dlopen() (needed for AIX) */
 #undef HAVE_DLOPEN
 
+/* Define if you have the optreset variable */
+#undef HAVE_INT_OPTRESET
 
 /*
  *------------------------------------------------------------------------

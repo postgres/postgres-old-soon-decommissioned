@@ -109,11 +109,11 @@ fi
 
 if [ x"$self_path" != x"" ] \
   && [ -x "$self_path/postgres" ] \
-  && [ x"`$self_path/postgres --version 2>/dev/null`" = x"postgres (PostgreSQL) $VERSION" ]
+  && [ x"`$self_path/postgres -V 2>/dev/null`" = x"postgres (PostgreSQL) $VERSION" ]
 then
     PGPATH=$self_path
 elif [ -x "$bindir/postgres" ]; then
-    if [ x"`$bindir/postgres --version 2>/dev/null`" = x"postgres (PostgreSQL) $VERSION" ]
+    if [ x"`$bindir/postgres -V 2>/dev/null`" = x"postgres (PostgreSQL) $VERSION" ]
     then
         PGPATH=$bindir
     else
@@ -186,7 +186,7 @@ do
                 usage=t
                 break
                 ;;
-        --version)
+        --version|-V)
                 echo "initdb (PostgreSQL) $VERSION"
                 exit 0
                 ;;
