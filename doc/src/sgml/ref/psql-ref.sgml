@@ -771,7 +771,7 @@ testdb=>
         <listitem>
         <para>
         Shows the copyright and distribution terms of
-        <application>PostgreSQL</application>.
+        <productname>PostgreSQL</productname>.
         </para>
         </listitem>
       </varlistentry>

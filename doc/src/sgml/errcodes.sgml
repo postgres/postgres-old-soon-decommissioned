@@ -1133,7 +1133,7 @@
 
 <row>
 <entry>Class 58</entry>
-<entry>System Error (errors external to PostgreSQL itself)</entry>
+<entry>System Error (errors external to <productname>PostgreSQL</> itself)</entry>
 </row>
 
 <row>

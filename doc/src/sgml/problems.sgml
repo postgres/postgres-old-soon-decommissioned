@@ -11,8 +11,7 @@ $PostgreSQL$
   <productname>PostgreSQL</productname> more reliable because even the utmost
   care cannot guarantee that every part of
   <productname>PostgreSQL</productname> 
-  will work on every 
-  platform under every circumstance.
+  will work on every platform under every circumstance.
  </para>
 
  <para>
@@ -241,9 +240,9 @@ $PostgreSQL$
       in each new release, so it is quite possible that a bug you have
       encountered in an older release of <productname>PostgreSQL</>
       has already been fixed. We can only provide limited support for
-      sites using older releases of PostgreSQL; if you require more
-      than we can provide, consider acquiring a commercial support
-      contract.
+      sites using older releases of <productname>PostgreSQL</>; if you
+      require more than we can provide, consider acquiring a
+      commercial support contract.
      </para>
      <para>
      </para>

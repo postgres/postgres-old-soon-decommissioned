@@ -167,7 +167,8 @@ ALTER INDEX distributors SET TABLESPACE fasttablespace;
   <title>Compatibility</title>
 
   <para>
-	<literal>ALTER INDEX</> is a PostgreSQL extension.
+   <command>ALTER INDEX</> is a <productname>PostgreSQL</productname>
+   extension.
   </para>
  </refsect1>
 </refentry>
