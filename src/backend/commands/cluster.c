@@ -475,6 +475,20 @@ swap_relfilenodes(Oid r1, Oid r2)
 
 	/* we should not swap reltoastidxid */
 
+	/* swap size statistics too, since new rel has freshly-updated stats */
+	{
+		int4	swap_pages;
+		float4	swap_tuples;
+
+		swap_pages = relform1->relpages;
+		relform1->relpages = relform2->relpages;
+		relform2->relpages = swap_pages;
+
+		swap_tuples = relform1->reltuples;
+		relform1->reltuples = relform2->reltuples;
+		relform2->reltuples = swap_tuples;
+	}
+
 	/* Update the tuples in pg_class */
 	simple_heap_update(relRelation, &reltup1->t_self, reltup1);
 	simple_heap_update(relRelation, &reltup2->t_self, reltup2);
