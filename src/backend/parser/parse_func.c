@@ -1070,8 +1070,7 @@ gen_cross_product(InhPaths *arginh, int nargs)
 	/* compute the cross product from right to left */
 	for (;;)
 	{
-		oneres = (Oid *) palloc(FUNC_MAX_ARGS * sizeof(Oid));
-		MemSet(oneres, 0, FUNC_MAX_ARGS * sizeof(Oid));
+		oneres = (Oid *) palloc0(FUNC_MAX_ARGS * sizeof(Oid));
 
 		for (i = nargs - 1; i >= 0 && cur[i] > arginh[i].nsupers; i--)
 			continue;

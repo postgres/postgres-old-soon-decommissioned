@@ -107,9 +107,8 @@ bit_in(PG_FUNCTION_ARGS)
 			 bitlen, atttypmod);
 
 	len = VARBITTOTALLEN(atttypmod);
-	result = (VarBit *) palloc(len);
 	/* set to 0 so that *r is always initialised and string is zero-padded */
-	MemSet(result, 0, len);
+	result = (VarBit *) palloc0(len);
 	VARATT_SIZEP(result) = len;
 	VARBITLEN(result) = atttypmod;
 
@@ -232,9 +231,8 @@ bit(PG_FUNCTION_ARGS)
 			 VARBITLEN(arg), len);
 
 	rlen = VARBITTOTALLEN(len);
-	result = (VarBit *) palloc(rlen);
 	/* set to 0 so that string is zero-padded */
-	MemSet(result, 0, rlen);
+	result = (VarBit *) palloc0(rlen);
 	VARATT_SIZEP(result) = rlen;
 	VARBITLEN(result) = len;
 
@@ -316,9 +314,8 @@ varbit_in(PG_FUNCTION_ARGS)
 			 atttypmod);
 
 	len = VARBITTOTALLEN(bitlen);
-	result = (VarBit *) palloc(len);
 	/* set to 0 so that *r is always initialised and string is zero-padded */
-	MemSet(result, 0, len);
+	result = (VarBit *) palloc0(len);
 	VARATT_SIZEP(result) = len;
 	VARBITLEN(result) = Min(bitlen, atttypmod);
 

@@ -60,8 +60,7 @@ CreateTemplateTupleDesc(int natts, bool hasoid)
 	{
 		uint32		size = natts * sizeof(Form_pg_attribute);
 
-		desc->attrs = (Form_pg_attribute *) palloc(size);
-		MemSet(desc->attrs, 0, size);
+		desc->attrs = (Form_pg_attribute *) palloc0(size);
 	}
 	else
 		desc->attrs = NULL;

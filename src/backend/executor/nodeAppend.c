@@ -166,8 +166,7 @@ ExecInitAppend(Append *node, EState *estate, Plan *parent)
 	appendplans = node->appendplans;
 	nplans = length(appendplans);
 
-	initialized = (bool *) palloc(nplans * sizeof(bool));
-	MemSet(initialized, 0, nplans * sizeof(bool));
+	initialized = (bool *) palloc0(nplans * sizeof(bool));
 
 	/*
 	 * create new AppendState for our append node
