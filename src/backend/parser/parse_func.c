@@ -495,6 +495,7 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 		{
 			RangeTblEntry *rte;
 			int			vnum;
+			int			sublevels_up;
 
 			/*
 			 * a relation
@@ -516,7 +517,8 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 
 			relname = rte->relname;
 
-			vnum = refnameRangeTablePosn(pstate, rte->eref->relname, NULL);
+			vnum = refnameRangeTablePosn(pstate, rte->eref->relname,
+										 &sublevels_up);
 
 			/*
 			 * for func(relname), the param to the function is the tuple
@@ -527,7 +529,7 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 			 */
 			toid = typeTypeId(typenameType(relname));
 			/* replace it in the arg list */
-			lfirst(i) = makeVar(vnum, 0, toid, -1, 0);
+			lfirst(i) = makeVar(vnum, 0, toid, -1, sublevels_up);
 		}
 		else if (!attisset)
 		{

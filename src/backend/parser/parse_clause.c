@@ -74,10 +74,9 @@ void
 setTargetTable(ParseState *pstate, char *relname)
 {
 	RangeTblEntry *rte;
-	int			sublevels_up;
 
-	if ((refnameRangeTablePosn(pstate, relname, &sublevels_up) == 0)
-		|| (sublevels_up != 0))
+	/* look for relname only at current nesting level... */
+	if (refnameRangeTablePosn(pstate, relname, NULL) == 0)
 		rte = addRangeTableEntry(pstate, relname,
 								 makeAttr(relname, NULL),
 								 FALSE, FALSE, FALSE);
