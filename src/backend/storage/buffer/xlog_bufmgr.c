@@ -1158,7 +1158,8 @@ BlockNumber
 RelationGetNumberOfBlocks(Relation relation)
 {
 	return ((relation->rd_myxactonly) ? relation->rd_nblocks :
-			smgrnblocks(DEFAULT_SMGR, relation));
+		((relation->rd_rel->relkind == RELKIND_VIEW) ? 0 :
+			smgrnblocks(DEFAULT_SMGR, relation)));
 }
 
 /* ---------------------------------------------------------------------
