@@ -500,7 +500,7 @@ fe_getauthsvc(char* PQerrormsg)
 }
 
 /*
- * fe_getauthname -- returns a pointer to static space containing whatever
+ * fe_getauthname -- returns a pointer to dynamic space containing whatever
  *		     name the user has authenticated to the system
  * if there is an error, return the error message in PQerrormsg
  */
@@ -508,6 +508,7 @@ char*
 fe_getauthname(char* PQerrormsg)
 {
     char *name = (char *) NULL;
+    char *authn = (char *) NULL;
     MsgType authsvc;
     
     authsvc = fe_getauthsvc(PQerrormsg);
@@ -525,11 +526,7 @@ fe_getauthname(char* PQerrormsg)
     case STARTUP_MSG:
 	{
 	    struct passwd *pw = getpwuid(geteuid());
-	    if (pw &&
-		pw->pw_name &&
-		(name = (char *) malloc(strlen(pw->pw_name) + 1))) {
-		(void) strcpy(name, pw->pw_name);
-	    }
+	    if (pw) name = pw->pw_name;
 	}
 	break;
     default:
@@ -538,7 +535,10 @@ fe_getauthname(char* PQerrormsg)
 		       authsvc);
 	break;
     }
-    return(name);
+
+    if(name && (authn = (char *) malloc(strlen(name) + 1)))
+      (void) strcpy(authn, name);
+    return(authn);
 }
 
 
