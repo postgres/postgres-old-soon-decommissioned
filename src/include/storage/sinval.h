@@ -76,7 +76,7 @@ extern void ReceiveSharedInvalidMessages(
 
 extern bool DatabaseHasActiveBackends(Oid databaseId, bool ignoreMyself);
 extern bool TransactionIdIsInProgress(TransactionId xid);
-extern void GetXmaxRecent(TransactionId *XmaxRecent);
+extern TransactionId GetOldestXmin(bool allDbs);
 extern int	CountActiveBackends(void);
 /* Use "struct proc", not PROC, to avoid including proc.h here */
 extern struct proc *BackendIdGetProc(BackendId procId);

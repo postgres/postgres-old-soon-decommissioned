@@ -694,6 +694,7 @@ typedef struct VacuumStmt
 	bool		vacuum;			/* do VACUUM step */
 	bool		full;			/* do FULL (non-concurrent) vacuum */
 	bool		analyze;		/* do ANALYZE step */
+	bool		freeze;			/* early-freeze option */
 	bool		verbose;		/* print progress info */
 	char	   *vacrel;			/* name of single table to process, or NULL */
 	List	   *va_cols;		/* list of column names, or NIL for all */

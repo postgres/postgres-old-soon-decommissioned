@@ -1116,6 +1116,8 @@ _equalVacuumStmt(VacuumStmt *a, VacuumStmt *b)
 		return false;
 	if (a->analyze != b->analyze)
 		return false;
+	if (a->freeze != b->freeze)
+		return false;
 	if (a->verbose != b->verbose)
 		return false;
 	if (!equalstr(a->vacrel, b->vacrel))

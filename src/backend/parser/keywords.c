@@ -118,6 +118,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"force", FORCE},
 	{"foreign", FOREIGN},
 	{"forward", FORWARD},
+	{"freeze", FREEZE},
 	{"from", FROM},
 	{"full", FULL},
 	{"function", FUNCTION},

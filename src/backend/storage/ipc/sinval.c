@@ -20,6 +20,8 @@
 #include "storage/sinval.h"
 #include "storage/sinvaladt.h"
 #include "utils/tqual.h"
+#include "miscadmin.h"
+
 
 SPINLOCK	SInvalLock = (SPINLOCK) NULL;
 
@@ -210,17 +212,23 @@ TransactionIdIsInProgress(TransactionId xid)
 }
 
 /*
- * GetXmaxRecent -- returns oldest transaction that was running
- *					when all current transaction were started.
- *					It's used by vacuum to decide what deleted
- *					tuples must be preserved in a table.
+ * GetOldestXmin -- returns oldest transaction that was running
+ *					when any current transaction was started.
  *
- * Note: we include all currently running xids in the set of considered xids.
+ * If allDbs is TRUE then all backends are considered; if allDbs is FALSE
+ * then only backends running in my own database are considered.
+ *
+ * This is used by VACUUM to decide which deleted tuples must be preserved
+ * in a table.  allDbs = TRUE is needed for shared relations, but allDbs =
+ * FALSE is sufficient for non-shared relations, since only backends in my
+ * own database could ever see the tuples in them.
+ *
+ * Note: we include the currently running xids in the set of considered xids.
  * This ensures that if a just-started xact has not yet set its snapshot,
  * when it does set the snapshot it cannot set xmin less than what we compute.
  */
-void
-GetXmaxRecent(TransactionId *XmaxRecent)
+TransactionId
+GetOldestXmin(bool allDbs)
 {
 	SISeg	   *segP = shmInvalBuffer;
 	ProcState  *stateP = segP->procState;
@@ -238,24 +246,28 @@ GetXmaxRecent(TransactionId *XmaxRecent)
 		if (pOffset != INVALID_OFFSET)
 		{
 			PROC	   *proc = (PROC *) MAKE_PTR(pOffset);
-			/* Fetch xid just once - see GetNewTransactionId */
-			TransactionId xid = proc->xid;
 
-			if (TransactionIdIsNormal(xid))
+			if (allDbs || proc->databaseId == MyDatabaseId)
 			{
-				if (TransactionIdPrecedes(xid, result))
-					result = xid;
-				xid = proc->xmin;
+				/* Fetch xid just once - see GetNewTransactionId */
+				TransactionId xid = proc->xid;
+
 				if (TransactionIdIsNormal(xid))
+				{
 					if (TransactionIdPrecedes(xid, result))
 						result = xid;
+					xid = proc->xmin;
+					if (TransactionIdIsNormal(xid))
+						if (TransactionIdPrecedes(xid, result))
+							result = xid;
+				}
 			}
 		}
 	}
 
 	SpinRelease(SInvalLock);
 
-	*XmaxRecent = result;
+	return result;
 }
 
 /*----------

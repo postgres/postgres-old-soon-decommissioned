@@ -104,7 +104,7 @@ extern bool HeapTupleSatisfiesSnapshot(HeapTupleHeader tuple,
 						   Snapshot snapshot);
 extern int	HeapTupleSatisfiesUpdate(HeapTuple tuple);
 extern HTSV_Result HeapTupleSatisfiesVacuum(HeapTupleHeader tuple,
-											TransactionId XmaxRecent);
+											TransactionId OldestXmin);
 
 extern Snapshot GetSnapshotData(bool serializable);
 extern void SetQuerySnapshot(void);

@@ -2246,6 +2246,7 @@ _copyVacuumStmt(VacuumStmt *from)
 	newnode->vacuum = from->vacuum;
 	newnode->full = from->full;
 	newnode->analyze = from->analyze;
+	newnode->freeze = from->freeze;
 	newnode->verbose = from->verbose;
 	if (from->vacrel)
 		newnode->vacrel = pstrdup(from->vacrel);
