@@ -1497,7 +1497,7 @@ LANGUAGE C;
      either base (scalar) data types, or composite (multi-column) data types.
      The API is split into two main components: support for returning
      composite data types, and support for returning multiple rows
-     (set returning functions or <acronym>SRF</>s).
+     (set-returning functions or <acronym>SRF</>s).
     </para>
 
     <para>
