@@ -71,6 +71,8 @@ typedef int IpcMemoryId;
 
 
 /* ipc.c */
+extern bool proc_exit_inprogress;
+
 extern void proc_exit(int code);
 extern void shmem_exit(int code);
 extern int	on_shmem_exit(void (*function) (), caddr_t arg);
