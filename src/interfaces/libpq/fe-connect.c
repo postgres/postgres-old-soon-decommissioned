@@ -338,7 +338,7 @@ freePGconn(PGconn *conn)
 static void
 closePGconn(PGconn *conn)
 {
-    const struct sigaction ignore_action = {SIG_IGN, 0, 0, NULL};
+    const struct sigaction ignore_action = {SIG_IGN, 0, 0};
     struct sigaction oldaction;
 
     /* If connection is already gone, that's cool.  No reason for kernel
