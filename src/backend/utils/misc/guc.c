@@ -231,7 +231,7 @@ ConfigureNamesInt[] =
 	 */
 	{"max_connections",         PGC_POSTMASTER,         &MaxBackends,
 	 DEF_MAXBACKENDS, 1, MAXBACKENDS},
-	{"shmem_buffers",           PGC_POSTMASTER,         &NBuffers,
+	{"shared_buffers",          PGC_POSTMASTER,         &NBuffers,
 	 DEF_NBUFFERS, 16, INT_MAX},
 	{"port",                    PGC_POSTMASTER,         &PostPortName,
 	 DEF_PGPORT, 1, 65535},

@@ -964,7 +964,7 @@ env PGOPTIONS='--geqo=off' psql
      </varlistentry>
 
      <varlistentry>
-      <term>SHMEM_BUFFERS (<type>integer</type>)</term>
+      <term>SHARED_BUFFERS (<type>integer</type>)</term>
       <listitem>
        <para>
         Sets the number of shared memory buffers the database server
@@ -1030,7 +1030,7 @@ env PGOPTIONS='--geqo=off' psql
       <tbody>
        <row>
         <entry>-B <replaceable>x</replaceable></entry>
-        <entry>shmem_buffers = <replaceable>x</replaceable></entry>
+        <entry>shared_buffers = <replaceable>x</replaceable></entry>
         <entry></entry>
        </row>
        <row>
