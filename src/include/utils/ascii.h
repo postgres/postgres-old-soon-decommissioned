@@ -1,12 +1,11 @@
-
-/* -----------------------------------------------------------------------
+/*-----------------------------------------------------------------------
  * ascii.h
+ *
+ *	 Portions Copyright (c) 1999-2002, PostgreSQL Global Development Group
  *
  * $Id$
  *
- *	 Portions Copyright (c) 1999-2000, PostgreSQL Global Development Group
- *
- * -----------------------------------------------------------------------
+ *-----------------------------------------------------------------------
  */
 
 #ifndef _ASCII_H_
@@ -17,8 +16,5 @@
 extern Datum to_ascii_encname(PG_FUNCTION_ARGS);
 extern Datum to_ascii_enc(PG_FUNCTION_ARGS);
 extern Datum to_ascii_default(PG_FUNCTION_ARGS);
-
-extern char *pg_to_ascii(unsigned char *src, unsigned char *src_end,
-			unsigned char *desc, int enc);
 
 #endif   /* _ASCII_H_ */
