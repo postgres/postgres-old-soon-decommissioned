@@ -17,5 +17,5 @@ include $(SRCDIR)/Makefile.global
 all clean: 
 
 .PHONY: install
-install: pgaccess.tcl
-	$(INSTALL) $(INSTL_EXE_OPTS) pgaccess.tcl $(BINDIR)/pgaccess
+install:
+	$(INSTALL) $(INSTL_EXE_OPTS) pgaccess $(BINDIR)/pgaccess
