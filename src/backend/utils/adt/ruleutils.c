@@ -642,7 +642,7 @@ pg_get_constraintdef(PG_FUNCTION_ARGS)
 				switch (conForm->confupdtype)
 				{
 					case FKCONSTR_ACTION_NOACTION:
-						string = "NO ACTION";
+						string = "";
 						break;
 					case FKCONSTR_ACTION_RESTRICT:
 						string = "RESTRICT";
@@ -662,12 +662,13 @@ pg_get_constraintdef(PG_FUNCTION_ARGS)
 						string = "";	/* keep compiler quiet */
 						break;
 				}
-				appendStringInfo(&buf, " ON UPDATE %s", string);
+				if (strlen(string) != 0)
+					appendStringInfo(&buf, " ON UPDATE %s", string);
 
 				switch (conForm->confdeltype)
 				{
 					case FKCONSTR_ACTION_NOACTION:
-						string = "NO ACTION";
+						string = "";
 						break;
 					case FKCONSTR_ACTION_RESTRICT:
 						string = "RESTRICT";
@@ -687,7 +688,8 @@ pg_get_constraintdef(PG_FUNCTION_ARGS)
 						string = "";	/* keep compiler quiet */
 						break;
 				}
-				appendStringInfo(&buf, " ON DELETE %s", string);
+				if (strlen(string) != 0)
+					appendStringInfo(&buf, " ON DELETE %s", string);
 
 				if (conForm->condeferrable)
 					appendStringInfo(&buf, " DEFERRABLE");
