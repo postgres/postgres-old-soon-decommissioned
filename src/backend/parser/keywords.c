@@ -38,6 +38,7 @@ static ScanKeyword ScanKeywords[] = {
 	{ "aggregate",          AGGREGATE       },
 	{ "all",		ALL		},
 	{ "alter",		ALTER		},
+	{ "analyze",		ANALYZE		},
 	{ "and",		AND		},
 	{ "append",		APPEND		},
 	{ "archIve",		ARCHIVE		},   /* XXX crooked: I < _ */
