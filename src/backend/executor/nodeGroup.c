@@ -417,3 +417,12 @@ sameGroup(HeapTuple oldtuple,
 
 	return TRUE;
 }
+
+void
+ExecReScanGroup(Group *node, ExprContext *exprCtxt, Plan *parent)
+{
+	GroupState *grpstate = node->grpstate;
+
+	grpstate->grp_useFirstTuple = FALSE;
+	grpstate->grp_done = FALSE;
+}
