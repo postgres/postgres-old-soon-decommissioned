@@ -190,23 +190,7 @@ index_insert(Relation relation,
 	specificResult = (InsertIndexResult)
 		fmgr(procedure, relation, datum, nulls, heap_t_ctid, heapRel, NULL);
 
-	/* ----------------
-	 *	the insert proc is supposed to return a "specific result" and
-	 *	this routine has to return a "general result" so after we get
-	 *	something back from the insert proc, we allocate a
-	 *	"general result" and copy some crap between the two.
-	 *
-	 *	As far as I'm concerned all this result shit is needlessly c
-	 *	omplicated and should be eliminated.  -cim 1/19/91
-	 *
-	 *	mao concurs.  regardless of how we feel here, however, it is
-	 *	important to free memory we don't intend to return to anyone.
-	 *	2/28/91
-	 *
-	 *	this "general result" crap is now gone. -ay 3/6/95
-	 * ----------------
-	 */
-
+	/* must be pfree'ed */
 	return specificResult;
 }
 

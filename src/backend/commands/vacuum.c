@@ -1156,7 +1156,7 @@ failed to add item with len = %u to page %u (free space %u, nusd %u, noff %u)",
 					iresult = index_insert(Irel[i],
 										   idatum,
 										   inulls,
-										   &(newtup->t_ctid),
+										   &newtup->t_ctid,
 										   onerel);
 					if (iresult)
 						pfree(iresult);

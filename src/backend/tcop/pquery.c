@@ -210,7 +210,7 @@ ProcessQueryDesc(QueryDesc *queryDesc)
 	Query	   *parseTree;
 	Plan	   *plan;
 	int			operation;
-	char	   *tag;
+	char	   *tag = NULL;
 	EState	   *state;
 	TupleDesc	attinfo;
 

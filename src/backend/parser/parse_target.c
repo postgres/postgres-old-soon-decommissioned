@@ -467,7 +467,6 @@ MakeTargetEntryAttr(ParseState *pstate,
 	int			resdomno;
 	List	   *attrs = att->attrs;
 	TargetEntry *tent;
-	Oid			relid;
 
 	attrname = strVal(lfirst(att->attrs));
 
