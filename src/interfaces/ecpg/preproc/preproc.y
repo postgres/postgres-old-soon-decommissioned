@@ -1953,7 +1953,7 @@ GrantStmt:	GRANT privileges ON privilege_target TO grantee_list opt_grant_grant_
 
 RevokeStmt:  REVOKE opt_revoke_grant_option privileges ON privilege_target FROM grantee_list opt_drop_behavior
 			{
-			  $$ = cat_str(9, make_str("revoke"), $2, $3, make_str("on"), $5, make_str("from"), $7, $8);
+			  $$ = cat_str(8, make_str("revoke"), $2, $3, make_str("on"), $5, make_str("from"), $7, $8);
 			}
 			  
 		;
