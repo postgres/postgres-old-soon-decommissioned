@@ -38,6 +38,7 @@
 #include "postgres_fe.h"
 
 #include <time.h>
+#include <errno.h>
 
 #include "pqexpbuffer.h"
 
@@ -271,7 +272,9 @@ typedef struct _tocEntry
 } TocEntry;
 
 /* Used everywhere */
-extern void die_horribly(ArchiveHandle *AH, const char *fmt,...);
+extern const char *progname;
+extern void die_horribly(ArchiveHandle *AH, const char *modulename, const char *fmt, ...) __attribute__((format(printf,3,4)));
+extern void write_msg(const char *modulename, const char *fmt, ...) __attribute__((format(printf,2,3)));
 
 extern void WriteTOC(ArchiveHandle *AH);
 extern void ReadTOC(ArchiveHandle *AH);

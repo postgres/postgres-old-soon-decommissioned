@@ -254,7 +254,7 @@ extern OprInfo *getOperators(int *numOperators);
 extern TableInfo *getTables(int *numTables, FuncInfo *finfo, int numFuncs);
 extern InhInfo *getInherits(int *numInherits);
 extern void getTableAttrs(TableInfo *tbinfo, int numTables);
-extern IndInfo *getIndices(int *numIndices);
+extern IndInfo *getIndexes(int *numIndexes);
 extern void dumpDBComment(Archive *outfile);
 extern void dumpTypes(Archive *fout, FuncInfo *finfo, int numFuncs,
 		  TypeInfo *tinfo, int numTypes);
@@ -267,12 +267,12 @@ extern void dumpAggs(Archive *fout, AggInfo *agginfo, int numAggregates,
 extern void dumpOprs(Archive *fout, OprInfo *agginfo, int numOperators,
 		 TypeInfo *tinfo, int numTypes);
 extern void dumpTables(Archive *fout, TableInfo *tbinfo, int numTables,
-		   IndInfo *indinfo, int numIndices,
+		   IndInfo *indinfo, int numIndexes,
 		   InhInfo *inhinfo, int numInherits,
 		   TypeInfo *tinfo, int numTypes, const char *tablename,
 		   const bool acls, const bool oids,
 		   const bool schemaOnly, const bool dataOnly);
-extern void dumpIndices(Archive *fout, IndInfo *indinfo, int numIndices,
+extern void dumpIndexes(Archive *fout, IndInfo *indinfo, int numIndexes,
 			TableInfo *tbinfo, int numTables, const char *tablename);
 extern const char *fmtId(const char *identifier, bool force_quotes);
 

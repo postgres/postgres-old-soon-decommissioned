@@ -129,7 +129,7 @@ typedef struct _restoreOptions
  * Main archiver interface.
  */
 
-extern void exit_horribly(Archive *AH, const char *fmt,...);
+extern void exit_horribly(Archive *AH, const char *modulename, const char *fmt, ...) __attribute__((format(printf,3,4)));
 
 extern char *
 simple_prompt(const char *prompt, int maxlen, bool echo);
