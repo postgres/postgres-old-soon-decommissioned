@@ -685,6 +685,10 @@ HandleDeadLock(int sig)
     lock = MyProc->waitLock;
     size = lock->waitProcs.size; /* so we can look at this in the core */
     
+#ifdef DEADLOCK_DEBUG
+    DumpLocks();
+#endif
+
     /* ------------------------
      * Get this process off the lock's wait queue
      * ------------------------

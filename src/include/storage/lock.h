@@ -211,4 +211,8 @@ extern bool LockReleaseAll(LockTableId tableId, SHM_QUEUE *lockQueue);
 extern int LockShmemSize(void);
 extern bool LockingDisabled(void);
 
+#ifdef DEADLOCK_DEBUG
+extern void DumpLocks(void);
+#endif
+
 #endif /* LOCK_H */
