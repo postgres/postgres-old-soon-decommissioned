@@ -809,11 +809,13 @@ FileWrite(File file, char *buffer, int amount)
 
 	FileAccess(file);
 	returnCode = write(VfdCache[file].fd, buffer, amount);
-	if (returnCode > 0) {
+	if (returnCode > 0)
+	{
 		VfdCache[file].seekPos += returnCode;
-	/* mark the file as needing fsync */
-	VfdCache[file].fdstate |= FD_DIRTY;
-	} else
+		/* mark the file as needing fsync */
+		VfdCache[file].fdstate |= FD_DIRTY;
+	}
+	else
 		VfdCache[file].seekPos = FileUnknownPos;
 
 	return returnCode;
@@ -832,6 +834,8 @@ FileSeek(File file, long offset, int whence)
 		switch (whence)
 		{
 			case SEEK_SET:
+				if (offset < 0)
+					elog(ERROR, "FileSeek: invalid offset: %ld", offset);
 				VfdCache[file].seekPos = offset;
 				break;
 			case SEEK_CUR:
@@ -844,9 +848,12 @@ FileSeek(File file, long offset, int whence)
 			default:
 				elog(ERROR, "FileSeek: invalid whence: %d", whence);
 				break;
+		}
 	}
-	} else
-		switch (whence) {
+	else
+	{
+		switch (whence)
+		{
 			case SEEK_SET:
 				if (offset < 0)
 					elog(ERROR, "FileSeek: invalid offset: %ld", offset);
@@ -854,8 +861,8 @@ FileSeek(File file, long offset, int whence)
 					VfdCache[file].seekPos = lseek(VfdCache[file].fd, offset, whence);
 				break;
 			case SEEK_CUR:
-				if ((offset != 0) || (VfdCache[file].seekPos == FileUnknownPos));
-		VfdCache[file].seekPos = lseek(VfdCache[file].fd, offset, whence);
+				if (offset != 0 || VfdCache[file].seekPos == FileUnknownPos)
+					VfdCache[file].seekPos = lseek(VfdCache[file].fd, offset, whence);
 				break;
 			case SEEK_END:
 				VfdCache[file].seekPos = lseek(VfdCache[file].fd, offset, whence);
@@ -864,6 +871,7 @@ FileSeek(File file, long offset, int whence)
 				elog(ERROR, "FileSeek: invalid whence: %d", whence);
 				break;
 		}
+	}
 	return VfdCache[file].seekPos;
 }
 
