@@ -75,7 +75,7 @@ LINUX_ELF= true
 
 LIBPQDIR:= $(SRCDIR)/libpq
 
-# For convenience, POSTGRESDIR is where DATADIR, BINDIR, and LIBDIR 
+# For convenience, POSTGRESDIR is where BINDIR, and LIBDIR 
 # and other target destinations are rooted.  Of course, each of these is 
 # changable separately.
 POSTGRESDIR= /usr/local/pgsql
