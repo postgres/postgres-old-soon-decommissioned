@@ -374,7 +374,7 @@ tas(volatile slock_t *s_lock)
  */
 
 
-#if defined(__alpha)
+#if defined(__alpha) || defined(__alpha__)
 
 /*
  * Correct multi-processor locking methods are explained in section 5.5.3
@@ -435,7 +435,7 @@ tas(volatile slock_t *lock)
 
 #endif	 /* defined(__GNUC__) */
 
-#endif	 /* __alpha */
+#endif	 /* __alpha || __alpha__ */
 
 
 #if defined(__hppa)
