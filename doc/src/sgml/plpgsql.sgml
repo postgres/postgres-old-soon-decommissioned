@@ -1669,6 +1669,11 @@ FOR i IN REVERSE 10..1 LOOP
 END LOOP;
 </programlisting>
        </para>
+
+       <para>
+        If the lower bound is greater than the upper bound, the loop body is not
+        executed at all, but no error is raised.
+       </para>
      </sect3>
    </sect2>
 
