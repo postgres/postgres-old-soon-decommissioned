@@ -14,6 +14,7 @@
 #define DYNAMIC_LOADER_H
 
 #include <sys/types.h>
+#include <sys/param.h>	/* For MAXPATHLEN */
 
 #include <postgres.h>
 
@@ -21,13 +22,6 @@
 #undef MIN
 #undef MAX
 #endif /* MIN */
-
-#ifdef WIN32
-#define MAXPATHLEN    250
-#endif
-
-#ifdef WIN32
-#endif
 
 /*
  * List of dynamically loaded files.

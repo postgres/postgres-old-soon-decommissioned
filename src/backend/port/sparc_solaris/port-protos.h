@@ -13,9 +13,11 @@
 #ifndef PORT_PROTOS_H
 #define PORT_PROTOS_H
 
+#include <netinet/in.h>        /* For struct in_addr */
+#include <arpa/inet.h>
+
 #include <dlfcn.h>
 
-#include "config.h"   /* For MAXPATHLEN */
 #include "fmgr.h"			/* for func_ptr */
 #include "utils/dynamic_loader.h"
 

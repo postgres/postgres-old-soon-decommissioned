@@ -21,10 +21,6 @@
 #include "libpq-fe.h"
 #include "libpq/libpq-fs.h"
 
-#ifndef MAXPATHLEN
-#define MAXPATHLEN 1024
-#endif
-
 #define LO_BUFSIZE        1024
 
 static int lo_initialize(PGconn *conn);

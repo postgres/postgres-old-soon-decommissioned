@@ -156,9 +156,9 @@ ftoa(double value, char *ascii, int width, int prec1, char format)
 #else
     auto int	expon;
     auto int	sign;
-    register int	avail;
-    register char	*a;
-    register char	*p;
+    register int	avail = 0;
+    register char	*a = NULL;
+    register char	*p = NULL;
     char		mode;
     int		lowercase;
     int		prec;

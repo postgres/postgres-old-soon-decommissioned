@@ -16,6 +16,7 @@
 #include <signal.h>
 #include <errno.h>
 #include <sys/types.h>
+#include <sys/param.h>	/* for MAXPATHLEN */
 #include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
