@@ -235,8 +235,8 @@ renamerel(char oldrelname[], char newrelname[])
     }
     
     /* rename the directory first, so if this fails the rename's not done */
-    (void) strcpy(oldpath, relpath(oldrelname));
-    (void) strcpy(newpath, relpath(newrelname));
+    strcpy(oldpath, relpath(oldrelname));
+    strcpy(newpath, relpath(newrelname));
     if (rename(oldpath, newpath) < 0)
 	elog(WARN, "renamerel: unable to rename file: %m");
     

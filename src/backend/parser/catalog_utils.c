@@ -1488,7 +1488,7 @@ func_error(char *caller, char *funcname, int nargs, Oid *argtypes)
 	    *ptr++ = ' ';
 	}
 	if (argtypes[i] != 0) {
-	    (void) strcpy(ptr, tname(get_id_type(argtypes[i])));
+	    strcpy(ptr, tname(get_id_type(argtypes[i])));
 	    *(ptr + NAMEDATALEN) = '\0';
 	} else
 	    strcpy(ptr, "opaque");

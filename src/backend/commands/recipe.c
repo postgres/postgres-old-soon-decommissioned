@@ -1149,8 +1149,7 @@ replaceTeeScans(Plan* plan, Query* parsetree, TeeInfo *teeInfo)
 	if  ((strlen(rte->refname) < 4) ||
 	     (strcmp (rte->relname, rte->refname) != 0))
 	    continue;
-	strncpy(prefix,rte->refname,4);
-	prefix[4] = '\0';
+	strNcpy(prefix,rte->refname,4);
 	if (strcmp(prefix,"tee_") == 0) {
 	    /* okay, we found a tee node entry in the range table */
 

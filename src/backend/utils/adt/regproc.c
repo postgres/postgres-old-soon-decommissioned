@@ -122,14 +122,14 @@ char *regprocout(RegProcedure proid)
 	s = (char *) heap_getattr(proctup, InvalidBuffer, 1,
 				  RelationGetTupleDescriptor(proc), &isnull);
 	if (!isnull) {
-	    strncpy(result, s, 16);
+	    strNcpy(result, s, 16);
 	    break;
 	}
 	elog(FATAL, "regprocout: null procedure %d", proid);
 	/*FALLTHROUGH*/
     case 0:
-	memset(result, 0, 16);
 	result[0] = '-';
+	result[1] = '\0';
 #ifdef	EBUG
 	elog(DEBUG, "regprocout: no such procedure %d", proid);
 #endif	/* defined(EBUG) */

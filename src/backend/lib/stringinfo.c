@@ -111,6 +111,6 @@ appendStringInfo(StringInfo str, char *buffer)
      * NOTE: this is a text string (i.e. printable characters)
      * so 'strcat' will do the job (no need to use 'bcopy' et all...)
      */
-    (void) strcat(str->data, buffer);
+    strcat(str->data, buffer);
     str->len += buflen;
 }

@@ -349,15 +349,13 @@ print_plan_recursive (Plan* p, Query *parsetree, int indentLevel, char* label)
     if (IsA(p,Scan) || IsA(p,SeqScan)) {
 	RangeTblEntry *rte;
 	rte = rt_fetch(((Scan*)p)->scanrelid, parsetree->rtable);
-	strncpy(extraInfo, rte->relname, NAMEDATALEN);
-	extraInfo[NAMEDATALEN-1] = '\0';
+	strNcpy(extraInfo, rte->relname, NAMEDATALEN-1);
     } else 
 	if (IsA(p,IndexScan)) {
-	    strncpy(extraInfo,
+	    strNcpy(extraInfo,
 		    ((RangeTblEntry*)(nth(((IndexScan*)p)->scan.scanrelid - 1,
 					  parsetree->rtable)))->relname,
-		    NAMEDATALEN);
-	extraInfo[NAMEDATALEN-1] = '\0';
+		    NAMEDATALEN-1);
     } else
 	extraInfo[0] = '\0';
     if (extraInfo[0] != '\0')

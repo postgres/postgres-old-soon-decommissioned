@@ -106,12 +106,12 @@ DefineVersion(char *name, char *fromRelname, char *date)
     if (date == NULL) {
 	/* no time ranges */
 	bname = fromRelname;
-	(void) strcpy(saved_basename, (char *) bname);
+	strcpy(saved_basename, (char *) bname);
 	*saved_snapshot = (char)NULL;
     } else {
 	/* version is a snapshot */
 	bname = fromRelname;
-	(void) strcpy(saved_basename, (char *) bname);
+	strcpy(saved_basename, (char *) bname);
 	sprintf(saved_snapshot, "['%s']", date);
     }
     

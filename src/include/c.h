@@ -29,7 +29,7 @@
  *	5)	IsValid macros for system types
  *	6)	offsetof, lengthof, endof 
  *	7)	exception handling definitions, Assert, Trap, etc macros
- *	8)	Min, Max, Abs macros
+ *	8)	Min, Max, Abs, strNcpy macros
  *	9)	externs
  *      10)      Berkeley-specific defs
  *	11)	system-specific hacks
@@ -680,6 +680,14 @@ typedef struct Exception {
  *	Return the absolute value of the argument.
  */
 #define Abs(x)		((x) >= 0 ? (x) : -(x))
+
+/*
+ * strNcpy --
+ *	Does string copy, and forces terminating NULL
+ */
+/* we do this so if the macro is used in an if action, it will work */
+#define strNcpy(dest,src,len)	do \
+		{strncpy((dest),(src),(len));*((dest) + (len)) = '\0';} while (0)
 
 /* ----------------------------------------------------------------
  *		Section 9: externs

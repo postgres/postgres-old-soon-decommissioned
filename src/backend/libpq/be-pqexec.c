@@ -223,7 +223,7 @@ strmake(char *str, int len)
     if (len <= 0) len = strlen(str);
     
     newstr = (char *) palloc((unsigned) len+1);
-    (void) strncpy(newstr, str, len);
+    strNcpy(newstr, str, len);
     newstr[len] = (char) 0;
     return newstr;
 }

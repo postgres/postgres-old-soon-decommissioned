@@ -302,10 +302,10 @@ pg_krb5_recvauth(int sock,
      * easy, we construct our own name and parse it.  See note on
      * canonicalization above.
      */
-    (void) strcpy(servbuf, PG_KRB_SRVNAM);
+    strcpy(servbuf, PG_KRB_SRVNAM);
     *(hostp = servbuf + (sizeof(PG_KRB_SRVNAM) - 1)) = '/';
     if (gethostname(++hostp, MAXHOSTNAMELEN) < 0)
-	(void) strcpy(hostp, "localhost");
+	strcpy(hostp, "localhost");
     if (hostp = strchr(hostp, '.'))
 	*hostp = '\0';
     if (code = krb5_parse_name(servbuf, &server)) {

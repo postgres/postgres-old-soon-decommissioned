@@ -113,7 +113,7 @@ pq_getc(FILE* fin)
 void
 pq_gettty(char *tp)
 {	
-    (void) strncpy(tp, ttyname(0), 19);
+    strncpy(tp, ttyname(0), 19);
 }
 
 /* --------------------------------
@@ -585,8 +585,8 @@ StreamServerPort(char *hostName, short portName, int *fdP)
 		       "FATAL: StreamServerPort: bind() failed: errno=%d\n",
 		       errno);
 	pqdebug("%s", PQerrormsg);
-	(void) strcat(PQerrormsg, "\tIs another postmaster already running on that port?\n");
-	(void) strcat(PQerrormsg, "\tIf not, wait a few seconds and retry.\n");
+	strcat(PQerrormsg, "\tIs another postmaster already running on that port?\n");
+	strcat(PQerrormsg, "\tIf not, wait a few seconds and retry.\n");
 	fputs(PQerrormsg, stderr);
 	return(STATUS_ERROR);
     }

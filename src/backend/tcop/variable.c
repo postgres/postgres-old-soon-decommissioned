@@ -70,8 +70,7 @@ static const char *get_token(char **tok, char **val, const char *str)
     }
     
     *tok = (char*) PALLOC(len + 1);
-    strncpy (*tok, start, len);
-    (*tok)[len] = '\0';
+    strNcpy (*tok, start, len);
 
     /* skip white spaces */
     while ( isspace(*str)) str++;
@@ -110,8 +109,7 @@ static const char *get_token(char **tok, char **val, const char *str)
     }
     
     *val = (char*) PALLOC(len + 1);
-    strncpy (*val, start, len);
-    (*val)[len] = '\0';
+    strNcpy (*val, start, len);
 
     /* skip white spaces */
     while ( isspace(*str)) str++;

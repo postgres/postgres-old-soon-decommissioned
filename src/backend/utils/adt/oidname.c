@@ -35,8 +35,8 @@ oidnamein(char *inStr)
     if (*inptr) {
 	oc->id = (Oid) pg_atoi(inStr, sizeof(Oid), ',');
 	/* copy one less to ensure null-padding */
-	strncpy(oc->name.data,++inptr,NAMEDATALEN);
-	/* namestrcpy(&oc->name, ++inptr); */
+	++inptr;
+	strNcpy(oc->name.data,inptr,NAMEDATALEN-1);
     }else
 	elog(WARN, "Bad input data for type oidname");
     

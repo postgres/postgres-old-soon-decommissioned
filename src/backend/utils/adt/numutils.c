@@ -149,7 +149,7 @@ ftoa(double value, char *ascii, int width, int prec1, char format)
 		ascii[width] = 0;
 		return(0);
 	}
-	(void) strcpy(ascii, out);
+	strcpy(ascii, out);
 	return(ret);
 #else
     auto int	expon;

@@ -377,8 +377,7 @@ void
 pbuf_setportalinfo(PortalEntry *entry, char *pname)
 {
     if (entry)
-	strncpy(entry->name, pname, PortalNameLength-1);
-    entry->name[PortalNameLength-1] = '\0';
+	strNcpy(entry->name, pname, PortalNameLength-1);
 }
 
 /* --------------------------------
