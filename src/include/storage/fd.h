@@ -45,7 +45,7 @@ typedef int File;
 
 
 /* GUC parameter */
-extern int max_files_per_process;
+extern int	max_files_per_process;
 
 
 /*
@@ -78,5 +78,4 @@ extern void AtEOXact_Files(void);
 extern void RemovePgTempFiles(void);
 extern int	pg_fsync(int fd);
 extern int	pg_fdatasync(int fd);
-
 #endif	 /* FD_H */

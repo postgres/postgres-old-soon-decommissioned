@@ -57,7 +57,6 @@ extern void PgNotifyInterpDelete(ClientData clientData, Tcl_Interp *interp);
 
 #if HAVE_TCL_GETFILEPROC
 extern Tcl_File PgGetFileProc(ClientData cData, int direction);
-
 #endif
 
 extern Tcl_ChannelType Pg_ConnType;

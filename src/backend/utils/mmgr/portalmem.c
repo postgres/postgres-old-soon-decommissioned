@@ -257,7 +257,7 @@ PortalDrop(Portal portal)
  *
  * XXX This assumes that portals can be deleted in a random order, ie,
  * no portal has a reference to any other (at least not one that will be
- * exercised during deletion).  I think this is okay at the moment, but
+ * exercised during deletion).	I think this is okay at the moment, but
  * we've had bugs of that ilk in the past.  Keep a close eye on cursor
  * references...
  */
@@ -270,7 +270,5 @@ AtEOXact_portals(void)
 	hash_seq_init(&status, PortalHashTable);
 
 	while ((hentry = (PortalHashEnt *) hash_seq_search(&status)) != NULL)
-	{
 		PortalDrop(hentry->portal);
-	}
 }

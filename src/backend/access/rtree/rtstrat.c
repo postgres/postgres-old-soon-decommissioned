@@ -163,7 +163,7 @@ static StrategyExpression RTEvaluationExpressions[RTNStrategies] = {
 	NULL,						/* express overlap */
 	NULL,						/* express overright */
 	NULL,						/* express right */
-	(StrategyExpression) RTEqualExpressionData,	/* express same */
+	(StrategyExpression) RTEqualExpressionData, /* express same */
 	NULL,						/* express contains */
 	NULL						/* express contained-by */
 };
@@ -221,7 +221,6 @@ RelationInvokeRTStrategy(Relation r,
 	return (RelationInvokeStrategy(r, &RTEvaluationData, attnum, s,
 								   left, right));
 }
-
 #endif
 
 RegProcedure

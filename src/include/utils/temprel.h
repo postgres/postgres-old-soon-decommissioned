@@ -29,5 +29,4 @@ extern char *get_temp_rel_by_username(const char *user_relname);
 extern char *get_temp_rel_by_physicalname(const char *relname);
 
 #define is_temp_rel_name(relname) (get_temp_rel_by_username(relname) != NULL)
-
 #endif	 /* TEMPREL_H */

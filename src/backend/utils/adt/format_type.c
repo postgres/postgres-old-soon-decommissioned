@@ -216,8 +216,8 @@ format_type_internal(Oid type_oid, int32 typemod, bool allow_invalid)
 		case INTERVALOID:
 			if (with_typemod)
 			{
-				int	fields = typemod >> 16;
-				int precision = typemod & 0xFFFF;
+				int			fields = typemod >> 16;
+				int			precision = typemod & 0xFFFF;
 				const char *fieldstr;
 
 				switch (fields)

@@ -67,7 +67,7 @@ int8in(PG_FUNCTION_ARGS)
 	 * Do our own scan, rather than relying on sscanf which might be
 	 * broken for long long.
 	 */
-	while (*ptr && isspace((unsigned char) *ptr)) /* skip leading spaces */
+	while (*ptr && isspace((unsigned char) *ptr))		/* skip leading spaces */
 		ptr++;
 	if (*ptr == '-')			/* handle sign */
 		sign = -1, ptr++;

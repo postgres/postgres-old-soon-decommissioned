@@ -20,5 +20,4 @@ extern char *MakeRetrieveViewRuleName(const char *view_name);
 
 extern void SetRelationRuleStatus(Oid relationId, bool relHasRules,
 					  bool relIsBecomingView);
-
 #endif	 /* REWRITESUPPORT_H */

@@ -313,7 +313,7 @@ ECPGconnect(int lineno, const char *name, const char *user, const char *passwd, 
 
 			/*------
 			 * new style:
-			 * 	<tcp|unix>:postgresql://server[:port|:/unixsocket/path:]
+			 *	<tcp|unix>:postgresql://server[:port|:/unixsocket/path:]
 			 *	[/db name][?options]
 			 *------
 			 */

@@ -240,7 +240,6 @@ ParseAgg(ParseState *pstate, char *aggname, Oid basetype,
 void
 agg_error(char *caller, char *aggname, Oid basetypeID)
 {
-
 	/*
 	 * basetypeID that is Invalid (zero) means aggregate over all types.
 	 * (count)

@@ -89,5 +89,4 @@ extern void CloseSequences(void);
 extern void seq_redo(XLogRecPtr lsn, XLogRecord *rptr);
 extern void seq_undo(XLogRecPtr lsn, XLogRecord *rptr);
 extern void seq_desc(char *buf, uint8 xl_info, char *rec);
-
 #endif	 /* SEQUENCE_H */

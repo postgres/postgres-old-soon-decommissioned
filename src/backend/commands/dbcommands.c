@@ -37,7 +37,7 @@
 #include "utils/syscache.h"
 
 #ifdef MULTIBYTE
-#include "mb/pg_wchar.h"	/* encoding check */
+#include "mb/pg_wchar.h"		/* encoding check */
 #endif
 
 
@@ -148,11 +148,12 @@ createdb(const char *dbname, const char *dbpath,
 
 #ifdef MULTIBYTE
 	/* Some encodings are client only */
-	if (!PG_VALID_BE_ENCODING( encoding ))
+	if (!PG_VALID_BE_ENCODING(encoding))
 		elog(ERROR, "CREATE DATABASE: invalid backend encoding");
 #else
 	Assert(encoding == 0);		/* zero is PG_SQL_ASCII */
 #endif
+
 	/*
 	 * Preassign OID for pg_database tuple, so that we can compute db
 	 * path.

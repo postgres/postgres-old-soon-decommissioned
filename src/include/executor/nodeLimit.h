@@ -21,5 +21,4 @@ extern bool ExecInitLimit(Limit *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsLimit(Limit *node);
 extern void ExecEndLimit(Limit *node);
 extern void ExecReScanLimit(Limit *node, ExprContext *exprCtxt, Plan *parent);
-
 #endif	 /* NODELIMIT_H */

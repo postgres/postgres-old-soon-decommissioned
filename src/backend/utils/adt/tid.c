@@ -116,7 +116,6 @@ tidne(PG_FUNCTION_ARGS)
 				   BlockIdGetBlockNumber(&(arg2->ip_blkid)) ||
 				   arg1->ip_posid != arg2->ip_posid);
 }
-
 #endif
 
 /*
@@ -125,7 +124,7 @@ tidne(PG_FUNCTION_ARGS)
  *	Maybe these implementations should be moved to another place
  */
 
-static	ItemPointerData	Current_last_tid = { {0, 0}, 0};
+static ItemPointerData Current_last_tid = {{0, 0}, 0};
 
 void
 setLastTid(const ItemPointer tid)
@@ -142,11 +141,11 @@ currtid_byreloid(PG_FUNCTION_ARGS)
 	Relation	rel;
 
 	result = (ItemPointer) palloc(sizeof(ItemPointerData));
-	if (!reloid) 
-	{ 
-		*result = Current_last_tid; 
-		PG_RETURN_ITEMPOINTER(result); 
-	} 
+	if (!reloid)
+	{
+		*result = Current_last_tid;
+		PG_RETURN_ITEMPOINTER(result);
+	}
 	ItemPointerCopy(tid, result);
 	if ((rel = heap_open(reloid, AccessShareLock)) != NULL)
 	{

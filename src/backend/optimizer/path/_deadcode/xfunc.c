@@ -237,7 +237,6 @@ xfunc_shouldpull(Query *queryInfo,
 		}
 		else if (maxrank != -(MAXFLOAT))
 		{
-
 			/*
 			 * * we've left an expensive restriction below a join.  Since *
 			 * we may pullup this restriction in predmig.c, we'd best *
@@ -656,7 +655,6 @@ xfunc_width(LispValue clause)
 	}
 	else if (IsA(clause, Iter))
 	{
-
 		/*
 		 * * An Iter returns a setof things, so return the width of a
 		 * single * thing. * Note:	THIS MAY NOT WORK RIGHT WHEN AGGS GET
@@ -668,7 +666,6 @@ xfunc_width(LispValue clause)
 	}
 	else if (fast_is_clause(clause))
 	{
-
 		/*
 		 * * get function associated with this Oper, and treat this as * a
 		 * Func
@@ -689,7 +686,6 @@ xfunc_width(LispValue clause)
 
 		if (get_func_tlist(func) != LispNil)
 		{
-
 			/*
 			 * this function has a projection on it.  Get the length of
 			 * the projected attribute
@@ -1150,7 +1146,6 @@ xfunc_fixvars(LispValue clause, /* clause being pulled up */
 		tle = tlistentry_member((Var) clause, get_targetlist(rel));
 		if (tle == LispNil)
 		{
-
 			/*
 			 * * The attribute we need is not in the target list, * so we
 			 * have to add it. *

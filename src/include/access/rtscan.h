@@ -19,5 +19,4 @@
 #include "utils/rel.h"
 
 void		rtadjscans(Relation r, int op, BlockNumber blkno, OffsetNumber offnum);
-
 #endif	 /* RTSCAN_H */

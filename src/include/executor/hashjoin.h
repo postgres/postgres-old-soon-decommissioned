@@ -92,5 +92,4 @@ typedef struct HashTableData
 } HashTableData;
 
 typedef HashTableData *HashJoinTable;
-
 #endif	 /* HASHJOIN_H */

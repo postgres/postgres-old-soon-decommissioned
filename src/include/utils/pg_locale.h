@@ -31,16 +31,17 @@ typedef struct PG_LocaleCategories
 			   *lc_collate,
 			   *lc_monetary,
 			   *lc_messages;
-}			PG_LocaleCategories;
+} PG_LocaleCategories;
 
 /*
- * Save locale category settings into PG memory  
+ * Save locale category settings into PG memory
  */
-extern void PGLC_current(PG_LocaleCategories * lc);
+extern void PGLC_current(PG_LocaleCategories *lc);
+
 /*
  * Free memory allocated in PGLC_current()
  */
-extern void PGLC_free_categories(PG_LocaleCategories * lc);
+extern void PGLC_free_categories(PG_LocaleCategories *lc);
 
 /*------
  * Return the POSIX lconv struct (contains number/money formatting information)
@@ -51,7 +52,5 @@ extern void PGLC_free_categories(PG_LocaleCategories * lc);
  */
 extern struct lconv *PGLC_localeconv(void);
 
-
 #endif	 /* USE_LOCALE */
-
 #endif	 /* _PG_LOCALE_ */

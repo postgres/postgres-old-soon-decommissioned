@@ -281,7 +281,6 @@ extern int	NIndexTupleInserted;
 #define MJ_DEBUG_QUAL(clause, res)
 #define MJ_DEBUG_MERGE_COMPARE(qual, res)
 #define MJ_DEBUG_PROC_NODE(slot)
-
 #endif	 /* EXEC_MERGEJOINDEBUG */
 
 /* ----------------------------------------------------------------
@@ -298,5 +297,4 @@ extern int	NIndexTupleInserted;
 
 extern long NDirectFileRead;
 extern long NDirectFileWrite;
-
 #endif	 /* ExecDebugIncluded */

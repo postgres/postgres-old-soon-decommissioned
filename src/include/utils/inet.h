@@ -67,5 +67,4 @@ typedef struct macaddr
 #define PG_GETARG_MACADDR_P(n) DatumGetMacaddrP(PG_GETARG_DATUM(n))
 #define PG_RETURN_MACADDR_P(x) return MacaddrPGetDatum(x)
 
-
 #endif	 /* INET_H */

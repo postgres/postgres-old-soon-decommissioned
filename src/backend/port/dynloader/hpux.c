@@ -28,7 +28,6 @@
 void *
 pg_dlopen(char *filename)
 {
-
 	/*
 	 * Use BIND_IMMEDIATE so that undefined symbols cause a failure return
 	 * from shl_load(), rather than an abort() later on when we attempt to

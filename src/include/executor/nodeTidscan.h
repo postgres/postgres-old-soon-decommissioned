@@ -23,5 +23,4 @@ extern void ExecTidMarkPos(TidScan *node);
 extern bool ExecInitTidScan(TidScan *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsTidScan(TidScan *node);
 extern void ExecTidReScan(TidScan *node, ExprContext *exprCtxt, Plan *parent);
-
 #endif	 /* NODETIDSCAN_H */

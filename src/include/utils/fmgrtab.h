@@ -35,6 +35,5 @@ typedef struct
 
 extern const FmgrBuiltin fmgr_builtins[];
 
-extern const int fmgr_nbuiltins;/* number of entries in table */
-
+extern const int fmgr_nbuiltins;		/* number of entries in table */
 #endif	 /* FMGRTAB_H */

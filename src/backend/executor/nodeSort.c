@@ -275,8 +275,8 @@ int
 ExecCountSlotsSort(Sort *node)
 {
 	return ExecCountSlotsNode(outerPlan((Plan *) node)) +
-	ExecCountSlotsNode(innerPlan((Plan *) node)) +
-	SORT_NSLOTS;
+		ExecCountSlotsNode(innerPlan((Plan *) node)) +
+		SORT_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

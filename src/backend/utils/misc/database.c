@@ -89,7 +89,6 @@ ExpandDatabasePath(const char *dbpath)
 	 */
 	for (cp = buf; *cp; cp++)
 	{
-
 		/*
 		 * The following characters will not be allowed anywhere in the
 		 * database path. (Do not include the slash  or '.' here.)

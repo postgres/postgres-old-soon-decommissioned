@@ -31,23 +31,22 @@
 
 typedef enum UserAuth
 {
-	uaReject,
-	uaKrb4,
-	uaKrb5,
-	uaTrust,
-	uaIdent,
-	uaPassword,
-	uaCrypt,
-	uaMD5
+				uaReject,
+				uaKrb4,
+				uaKrb5,
+				uaTrust,
+				uaIdent,
+				uaPassword,
+				uaCrypt,
+				uaMD5
 #ifdef USE_PAM
-	,uaPAM
-#endif /* USE_PAM */
+			   ,uaPAM
+#endif	 /* USE_PAM */
 } UserAuth;
 
 typedef struct Port hbaPort;
 
-extern int hba_getauthmethod(hbaPort *port);
-extern int authident(hbaPort *port);
+extern int	hba_getauthmethod(hbaPort *port);
+extern int	authident(hbaPort *port);
 extern void load_hba_and_ident(void);
-
 #endif

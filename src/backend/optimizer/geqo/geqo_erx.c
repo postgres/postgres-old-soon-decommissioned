@@ -110,7 +110,6 @@ gimme_edge_table(Gene *tour1, Gene *tour2, int num_gene, Edge *edge_table)
 
 	for (index1 = 0; index1 < num_gene; index1++)
 	{
-
 		/*
 		 * presume the tour is circular, i.e. 1->2, 2->3, 3->1 this
 		 * operaton maps n back to 1
@@ -201,7 +200,6 @@ gimme_tour(Edge *edge_table, Gene *new_gene, int num_gene)
 
 	for (i = 1; i < num_gene; i++)
 	{
-
 		/*
 		 * as each point is entered into the tour, remove it from the edge
 		 * table

@@ -224,7 +224,6 @@ ExecCloseR(Plan *node)
 
 		for (i = 0; i < numIndices; i++)
 		{
-
 			/*
 			 * shut down each of the index scans and close each of the
 			 * index relations
@@ -410,7 +409,7 @@ ExecMarkPos(Plan *node)
 {
 	switch (nodeTag(node))
 	{
-			case T_SeqScan:
+		case T_SeqScan:
 			ExecSeqMarkPos((SeqScan *) node);
 			break;
 
@@ -452,7 +451,7 @@ ExecRestrPos(Plan *node)
 {
 	switch (nodeTag(node))
 	{
-			case T_SeqScan:
+		case T_SeqScan:
 			ExecSeqRestrPos((SeqScan *) node);
 			break;
 

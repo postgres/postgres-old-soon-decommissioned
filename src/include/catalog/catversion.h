@@ -54,5 +54,4 @@
 
 /*							yyyymmddN */
 #define CATALOG_VERSION_NO	200110181
-
 #endif

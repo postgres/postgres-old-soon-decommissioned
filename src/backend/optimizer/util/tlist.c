@@ -60,7 +60,6 @@ matching_tlist_expr(Node *node, List *targetlist)
 
 	return (Node *) NULL;
 }
-
 #endif
 
 /*

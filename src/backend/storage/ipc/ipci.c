@@ -83,8 +83,8 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int maxBackends)
 	InitShmemAllocation(seghdr);
 
 	/*
-	 * Now initialize LWLocks, which do shared memory allocation and
-	 * are needed for InitShmemIndex.
+	 * Now initialize LWLocks, which do shared memory allocation and are
+	 * needed for InitShmemIndex.
 	 */
 	CreateLWLocks();
 

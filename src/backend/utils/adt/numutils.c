@@ -345,7 +345,6 @@ frac_out:
 	return avail;
 #endif
 }
-
 #endif
 
 /*
@@ -476,5 +475,4 @@ atof1(char *str, double *val)
 	*val = v;
 	return 0;
 }
-
 #endif

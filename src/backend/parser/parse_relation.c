@@ -967,7 +967,7 @@ specialAttNum(char *a)
 {
 	Form_pg_attribute sysatt;
 
-	sysatt = SystemAttributeByName(a, true /* "oid" will be accepted */);
+	sysatt = SystemAttributeByName(a, true /* "oid" will be accepted */ );
 	if (sysatt != NULL)
 		return sysatt->attnum;
 	return InvalidAttrNumber;

@@ -27,11 +27,11 @@
  * We store the fmgr lookup info to avoid recomputing it on each call.
  *
  * We also need to store argument values across calls when evaluating a
- * function-returning-set.  This is pretty ugly (and not re-entrant);
+ * function-returning-set.	This is pretty ugly (and not re-entrant);
  * current-evaluation info should be somewhere in the econtext, not in
  * the querytree.  As it stands, a function-returning-set can't safely be
  * recursive, at least not if it's in plpgsql which will try to re-use
- * the querytree at multiple execution nesting levels.  FIXME someday.
+ * the querytree at multiple execution nesting levels.	FIXME someday.
  */
 
 typedef struct FunctionCache
@@ -66,5 +66,4 @@ typedef struct FunctionCache
 
 extern FunctionCachePtr init_fcache(Oid foid, int nargs,
 			MemoryContext fcacheCxt);
-
 #endif	 /* FCACHE_H */

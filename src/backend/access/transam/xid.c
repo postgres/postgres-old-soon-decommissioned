@@ -34,6 +34,7 @@ Datum
 xidout(PG_FUNCTION_ARGS)
 {
 	TransactionId transactionId = PG_GETARG_TRANSACTIONID(0);
+
 	/* maximum 32 bit unsigned integer representation takes 10 chars */
 	char	   *str = palloc(11);
 
@@ -64,7 +65,7 @@ xid_age(PG_FUNCTION_ARGS)
 	TransactionId now = GetCurrentTransactionId();
 
 	/* Permanent XIDs are always infinitely old */
-	if (! TransactionIdIsNormal(xid))
+	if (!TransactionIdIsNormal(xid))
 		PG_RETURN_INT32(INT_MAX);
 
 	PG_RETURN_INT32((int32) (now - xid));

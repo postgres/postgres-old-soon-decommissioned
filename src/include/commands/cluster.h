@@ -24,5 +24,4 @@
  * functions
  */
 extern void cluster(char *oldrelname, char *oldindexname);
-
 #endif	 /* CLUSTER_H */

@@ -78,9 +78,9 @@ verify_password(const Port *port, const char *user, const char *password)
 			/*
 			 * If the password is empty or "+" then we use the regular
 			 * pg_shadow passwords. If we use crypt then we have to use
-			 * pg_shadow passwords no matter what.  This is because
-			 * the current code needs non-encrypted passwords to
-			 * encrypt with a random salt.
+			 * pg_shadow passwords no matter what.	This is because the
+			 * current code needs non-encrypted passwords to encrypt with
+			 * a random salt.
 			 */
 			if (port->auth_method == uaMD5 ||
 				port->auth_method == uaCrypt ||

@@ -332,9 +332,9 @@ void
 XactLockTableWait(TransactionId xid)
 {
 	LOCKTAG		tag;
-	TransactionId	myxid = GetCurrentTransactionId();
+	TransactionId myxid = GetCurrentTransactionId();
 
-	Assert(! TransactionIdEquals(xid, myxid));
+	Assert(!TransactionIdEquals(xid, myxid));
 
 	MemSet(&tag, 0, sizeof(tag));
 	tag.relId = XactLockTableId;

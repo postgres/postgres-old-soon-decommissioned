@@ -289,5 +289,4 @@ do_quote_literal(text *lptr)
 
 	return result;
 }
-
 #endif

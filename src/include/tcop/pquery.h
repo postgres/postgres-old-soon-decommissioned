@@ -23,5 +23,4 @@ extern void ProcessQuery(Query *parsetree, Plan *plan, CommandDest dest);
 extern EState *CreateExecutorState(void);
 
 extern Portal PreparePortal(char *portalName);
-
 #endif	 /* PQUERY_H */

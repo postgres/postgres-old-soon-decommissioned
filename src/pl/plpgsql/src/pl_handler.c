@@ -58,7 +58,7 @@
 static PLpgSQL_function *compiled_functions = NULL;
 
 
-static bool func_up_to_date(PLpgSQL_function *func);
+static bool func_up_to_date(PLpgSQL_function * func);
 
 
 /* ----------
@@ -93,10 +93,11 @@ plpgsql_call_handler(PG_FUNCTION_ARGS)
 	if (func != NULL)
 	{
 		Assert(func->fn_oid == funcOid);
+
 		/*
 		 * But is the function still up to date?
 		 */
-		if (! func_up_to_date(func))
+		if (!func_up_to_date(func))
 			func = NULL;
 	}
 
@@ -154,7 +155,7 @@ plpgsql_call_handler(PG_FUNCTION_ARGS)
  * function's pg_proc entry without changing its OID.
  */
 static bool
-func_up_to_date(PLpgSQL_function *func)
+func_up_to_date(PLpgSQL_function * func)
 {
 	HeapTuple	procTup;
 	bool		result;

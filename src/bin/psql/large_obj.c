@@ -194,9 +194,9 @@ do_lo_import(const char *filename_arg, const char *comment_arg)
 	/* XXX ought to replace this with some kind of COMMENT command */
 	if (comment_arg && pset.issuper)
 	{
-		char	*cmdbuf;
-		char	*bufptr;
-		int		slen = strlen(comment_arg);
+		char	   *cmdbuf;
+		char	   *bufptr;
+		int			slen = strlen(comment_arg);
 
 		cmdbuf = malloc(slen * 2 + 256);
 		if (!cmdbuf)
@@ -210,7 +210,7 @@ do_lo_import(const char *filename_arg, const char *comment_arg)
 		}
 		sprintf(cmdbuf,
 				"INSERT INTO pg_description VALUES ('%u', "
-				"(SELECT oid FROM pg_class WHERE relname = 'pg_largeobject'),"
+		   "(SELECT oid FROM pg_class WHERE relname = 'pg_largeobject'),"
 				" 0, '", loid);
 		bufptr = cmdbuf + strlen(cmdbuf);
 		for (i = 0; i < slen; i++)

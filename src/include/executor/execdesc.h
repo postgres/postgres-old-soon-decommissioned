@@ -36,5 +36,4 @@ typedef struct QueryDesc
 /* in pquery.c */
 extern QueryDesc *CreateQueryDesc(Query *parsetree, Plan *plantree,
 				CommandDest dest);
-
 #endif	 /* EXECDESC_H	*/

@@ -41,5 +41,4 @@ typedef ItemSubpositionData *ItemSubposition;
  */
 #define PSKIP(OBJP, LEN)\
 		do { (OBJP)->op_cp += (LEN); (OBJP)->op_len -= (LEN); } while (0)
-
 #endif	 /* ITEMPOS_H */

@@ -220,17 +220,17 @@ nodeTokenType(char *token, int length)
 		 * us. We know the token will end at a character that strtol will
 		 * stop at, so we do not need to modify the string.
 		 */
-		long	val;
-		char   *endptr;
+		long		val;
+		char	   *endptr;
 
 		errno = 0;
 		val = strtol(token, &endptr, 10);
 		if (endptr != token + length || errno == ERANGE
 #ifdef HAVE_LONG_INT_64
-			/* if long > 32 bits, check for overflow of int4 */
+		/* if long > 32 bits, check for overflow of int4 */
 			|| val != (long) ((int32) val)
 #endif
-		   )
+			)
 			return T_Float;
 		return T_Integer;
 	}

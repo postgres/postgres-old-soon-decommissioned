@@ -159,7 +159,7 @@ extern int	ReleaseBuffer(Buffer buffer);
 extern int	WriteBuffer(Buffer buffer);
 extern int	WriteNoReleaseBuffer(Buffer buffer);
 extern Buffer ReleaseAndReadBuffer(Buffer buffer, Relation relation,
-								   BlockNumber blockNum);
+					 BlockNumber blockNum);
 extern int	FlushBuffer(Buffer buffer, bool sync, bool release);
 
 extern void InitBufferPool(void);
@@ -191,5 +191,4 @@ extern void BufmgrCommit(void);
 extern void BufferSync(void);
 
 extern void InitLocalBuffer(void);
-
 #endif

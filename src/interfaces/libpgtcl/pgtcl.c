@@ -29,7 +29,7 @@
 int
 Pgtcl_Init(Tcl_Interp *interp)
 {
-	double tclversion;
+	double		tclversion;
 
 	/*
 	 * finish off the ChannelType struct.  Much easier to do it here then
@@ -41,8 +41,9 @@ Pgtcl_Init(Tcl_Interp *interp)
 #endif
 
 	/*
-	 * Tcl versions >= 8.1 use UTF-8 for their internal string representation.
-	 * Therefore PGCLIENTENCODING must be set to UNICODE for these versions.
+	 * Tcl versions >= 8.1 use UTF-8 for their internal string
+	 * representation. Therefore PGCLIENTENCODING must be set to UNICODE
+	 * for these versions.
 	 */
 	Tcl_GetDouble(interp, Tcl_GetVar(interp, "tcl_version", TCL_GLOBAL_ONLY), &tclversion);
 	if (tclversion >= 8.1)

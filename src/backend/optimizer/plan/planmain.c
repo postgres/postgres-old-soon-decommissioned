@@ -137,7 +137,6 @@ query_planner(Query *root,
 	 */
 	if (constant_quals || IsA(subplan, Append))
 	{
-
 		/*
 		 * The result node will also be responsible for evaluating the
 		 * originally requested tlist.
@@ -148,7 +147,6 @@ query_planner(Query *root,
 	}
 	else
 	{
-
 		/*
 		 * Replace the toplevel plan node's flattened target list with the
 		 * targetlist given by my caller, so that expressions are

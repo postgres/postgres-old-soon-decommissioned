@@ -60,5 +60,4 @@ typedef FormData_pg_listener *Form_pg_listener;
  * ----------------
  */
 
-
 #endif	 /* PG_LISTENER_H */

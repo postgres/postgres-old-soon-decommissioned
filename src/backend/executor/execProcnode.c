@@ -267,9 +267,9 @@ ExecProcNode(Plan *node, Plan *parent)
 
 	switch (nodeTag(node))
 	{
-		/*
-		 * control nodes
-		 */
+			/*
+			 * control nodes
+			 */
 		case T_Result:
 			result = ExecResult((Result *) node);
 			break;
@@ -473,9 +473,9 @@ ExecEndNode(Plan *node, Plan *parent)
 
 	switch (nodeTag(node))
 	{
-		/*
-		 * control nodes
-		 */
+			/*
+			 * control nodes
+			 */
 		case T_Result:
 			ExecEndResult((Result *) node);
 			break;

@@ -89,5 +89,4 @@ extern Datum bitoctetlength(PG_FUNCTION_ARGS);
 extern Datum bitfromint4(PG_FUNCTION_ARGS);
 extern Datum bittoint4(PG_FUNCTION_ARGS);
 extern Datum bitposition(PG_FUNCTION_ARGS);
-
 #endif

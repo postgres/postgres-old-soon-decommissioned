@@ -134,5 +134,4 @@ _bt_invokestrat(Relation rel,
 	return (RelationInvokeStrategy(rel, &BTEvaluationData, attno, strat,
 								   left, right));
 }
-
 #endif

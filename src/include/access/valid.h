@@ -130,5 +130,4 @@ do \
 		(tuple)->t_data = NULL; \
 	} \
 } while (0)
-
 #endif	 /* VALID_H */

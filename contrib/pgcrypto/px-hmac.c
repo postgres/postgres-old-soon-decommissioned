@@ -50,7 +50,7 @@ hmac_block_size(PX_HMAC * h)
 }
 
 static void
-hmac_init(PX_HMAC * h, const uint8 * key, uint klen)
+hmac_init(PX_HMAC * h, const uint8 *key, uint klen)
 {
 	uint		bs,
 				hlen,
@@ -95,13 +95,13 @@ hmac_reset(PX_HMAC * h)
 }
 
 static void
-hmac_update(PX_HMAC * h, const uint8 * data, uint dlen)
+hmac_update(PX_HMAC * h, const uint8 *data, uint dlen)
 {
 	px_md_update(h->md, data, dlen);
 }
 
 static void
-hmac_finish(PX_HMAC * h, uint8 * dst)
+hmac_finish(PX_HMAC * h, uint8 *dst)
 {
 	PX_MD	   *md = h->md;
 	uint		bs,

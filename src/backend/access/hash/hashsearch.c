@@ -36,7 +36,6 @@ _hash_search(Relation rel,
 	if (scankey == (ScanKey) NULL ||
 		(keyDatum = scankey[0].sk_argument) == (Datum) NULL)
 	{
-
 		/*
 		 * If the scankey argument is NULL, all tuples will satisfy the
 		 * scan so we start the scan at the first bucket (bucket 0).

@@ -50,5 +50,4 @@
 #define EXEC_MJ_SKIPINNER_ADVANCE		13
 #define EXEC_MJ_ENDOUTER				14
 #define EXEC_MJ_ENDINNER				15
-
 #endif	 /* EXECDEFS_H */

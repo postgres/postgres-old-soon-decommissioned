@@ -58,5 +58,4 @@ typedef FormData_pg_largeobject *Form_pg_largeobject;
 extern void LargeObjectCreate(Oid loid);
 extern void LargeObjectDrop(Oid loid);
 extern bool LargeObjectExists(Oid loid);
-
 #endif	 /* PG_LARGEOBJECT_H */

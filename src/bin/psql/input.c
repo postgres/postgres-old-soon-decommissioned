@@ -19,18 +19,17 @@
 /* (of course there is no runtime command for doing that :) */
 #ifdef USE_READLINE
 static bool useReadline;
-
 #endif
 #ifdef USE_HISTORY
 static bool useHistory;
-
 #endif
 
 #ifdef HAVE_ATEXIT
-static void	finishInput(void);
+static void finishInput(void);
+
 #else
 /* designed for use with on_exit() */
-static void	finishInput(int, void*);
+static void finishInput(int, void *);
 #endif
 
 
@@ -48,7 +47,6 @@ gets_interactive(char *prompt)
 #ifdef USE_HISTORY
 	const char *var;
 	static char *prev_hist = NULL;
-
 #endif
 
 #ifdef USE_READLINE

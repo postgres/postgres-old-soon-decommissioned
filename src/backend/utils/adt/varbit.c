@@ -51,7 +51,6 @@ bit_in(PG_FUNCTION_ARGS)
 
 #ifdef NOT_USED
 	Oid			typelem = PG_GETARG_OID(1);
-
 #endif
 	int32		atttypmod = PG_GETARG_INT32(2);
 	VarBit	   *result;			/* The resulting bit string			  */
@@ -77,7 +76,6 @@ bit_in(PG_FUNCTION_ARGS)
 	}
 	else
 	{
-
 		/*
 		 * Otherwise it's binary.  This allows things like cast('1001' as
 		 * bit) to work transparently.
@@ -233,8 +231,8 @@ _bit(PG_FUNCTION_ARGS)
 	FunctionCallInfoData locfcinfo;
 
 	/*
-	 * Since bit() is a built-in function, we should only need to look
-	 * it up once per run.
+	 * Since bit() is a built-in function, we should only need to look it
+	 * up once per run.
 	 */
 	static FmgrInfo bit_finfo;
 
@@ -264,7 +262,6 @@ varbit_in(PG_FUNCTION_ARGS)
 
 #ifdef NOT_USED
 	Oid			typelem = PG_GETARG_OID(1);
-
 #endif
 	int32		atttypmod = PG_GETARG_INT32(2);
 	VarBit	   *result;			/* The resulting bit string			  */
@@ -733,7 +730,6 @@ bitsubstr(PG_FUNCTION_ARGS)
 	}
 	else
 	{
-
 		/*
 		 * OK, we've got a true substring starting at position s1-1 and
 		 * ending at position e1-1

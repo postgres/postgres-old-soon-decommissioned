@@ -41,5 +41,4 @@ extern char *fe_getauthname(char *PQerrormsg);
 
 #define PG_KRB4_VERSION "PGVER4.1"		/* at most KRB_SENDAUTH_VLEN chars */
 #define PG_KRB5_VERSION "PGVER5.1"
-
 #endif	 /* FE_AUTH_H */

@@ -113,7 +113,6 @@ oidnotin(PG_FUNCTION_ARGS)
 
 #ifdef NOT_USED
 	text	   *relation_and_attr = PG_GETARG_TEXT_P(1);
-
 #endif
 
 	if (the_oid == InvalidOid)

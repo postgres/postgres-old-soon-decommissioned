@@ -185,8 +185,8 @@ int
 ExecCountSlotsMaterial(Material *node)
 {
 	return ExecCountSlotsNode(outerPlan((Plan *) node)) +
-	ExecCountSlotsNode(innerPlan((Plan *) node)) +
-	MATERIAL_NSLOTS;
+		ExecCountSlotsNode(innerPlan((Plan *) node)) +
+		MATERIAL_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

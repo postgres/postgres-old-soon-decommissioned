@@ -72,5 +72,4 @@ typedef FormData_pg_shadow *Form_pg_shadow;
 DATA(insert ( "POSTGRES" PGUID t t t t _null_ _null_ ));
 
 #define BOOTSTRAP_USESYSID 1
-
 #endif	 /* PG_SHADOW_H */

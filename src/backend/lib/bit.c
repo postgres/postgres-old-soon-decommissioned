@@ -22,14 +22,14 @@ void
 BitArraySetBit(BitArray bitArray, BitIndex bitIndex)
 {
 	bitArray[bitIndex / BITS_PER_BYTE] |=
-	(1 << (BITS_PER_BYTE - 1 - (bitIndex % BITS_PER_BYTE)));
+		(1 << (BITS_PER_BYTE - 1 - (bitIndex % BITS_PER_BYTE)));
 }
 
 void
 BitArrayClearBit(BitArray bitArray, BitIndex bitIndex)
 {
 	bitArray[bitIndex / BITS_PER_BYTE] &=
-	~(1 << (BITS_PER_BYTE - 1 - (bitIndex % BITS_PER_BYTE)));
+		~(1 << (BITS_PER_BYTE - 1 - (bitIndex % BITS_PER_BYTE)));
 }
 
 bool

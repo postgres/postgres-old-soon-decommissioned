@@ -18,5 +18,4 @@
 
 extern void DefineView(char *view_name, Query *view_parse);
 extern void RemoveView(char *view_name);
-
 #endif	 /* VIEW_H */

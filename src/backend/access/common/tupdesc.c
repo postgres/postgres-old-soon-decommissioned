@@ -238,9 +238,9 @@ equalTupleDescs(TupleDesc tupdesc1, TupleDesc tupdesc2)
 		Form_pg_attribute attr2 = tupdesc2->attrs[i];
 
 		/*
-		 * We do not need to check every single field here: we can disregard
-		 * attrelid, attnum (it was used to place the row in the attrs array)
-		 * and everything derived from the column datatype.
+		 * We do not need to check every single field here: we can
+		 * disregard attrelid, attnum (it was used to place the row in the
+		 * attrs array) and everything derived from the column datatype.
 		 */
 		if (strcmp(NameStr(attr1->attname), NameStr(attr2->attname)) != 0)
 			return false;
@@ -399,7 +399,6 @@ TupleDescInitEntry(TupleDesc desc,
 						   0, 0, 0);
 	if (!HeapTupleIsValid(tuple))
 	{
-
 		/*
 		 * here type info does not exist yet so we just fill the attribute
 		 * with dummy information and return false.
@@ -585,7 +584,6 @@ BuildDescForRelation(List *schema, char *relname)
 								typenameTypeId(typename),
 								atttypmod, attdim, attisset))
 		{
-
 			/*
 			 * if TupleDescInitEntry() fails, it means there is no type in
 			 * the system catalogs.  So now we check if the type name

@@ -57,7 +57,8 @@ Relation	reldesc;			/* current relation descriptor */
 
 char		OutputFileName[MAXPGPATH];
 
-char		pg_pathname[MAXPGPATH];	/* full path to postgres executable */
+char		pg_pathname[MAXPGPATH];		/* full path to postgres
+										 * executable */
 
 BackendId	MyBackendId;
 

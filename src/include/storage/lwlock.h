@@ -18,37 +18,38 @@
  * We have a number of predefined LWLocks, plus a bunch of LWLocks that are
  * dynamically assigned (for shared buffers).  The LWLock structures live
  * in shared memory (since they contain shared data) and are identified by
- * values of this enumerated type.  We abuse the notion of an enum somewhat
+ * values of this enumerated type.	We abuse the notion of an enum somewhat
  * by allowing values not listed in the enum declaration to be assigned.
  * The extra value MaxDynamicLWLock is there to keep the compiler from
  * deciding that the enum can be represented as char or short ...
  */
 typedef enum LWLockId
 {
-	BufMgrLock,
-	LockMgrLock,
-	OidGenLock,
-	XidGenLock,
-	ShmemIndexLock,
-	SInvalLock,
-	FreeSpaceLock,
-	MMCacheLock,
-	WALInsertLock,
-	WALWriteLock,
-	ControlFileLock,
-	CheckpointLock,
-	CLogControlLock,
+				BufMgrLock,
+				LockMgrLock,
+				OidGenLock,
+				XidGenLock,
+				ShmemIndexLock,
+				SInvalLock,
+				FreeSpaceLock,
+				MMCacheLock,
+				WALInsertLock,
+				WALWriteLock,
+				ControlFileLock,
+				CheckpointLock,
+				CLogControlLock,
 
-	NumFixedLWLocks,		/* must be last except for MaxDynamicLWLock */
+				NumFixedLWLocks,/* must be last except for
+								 * MaxDynamicLWLock */
 
-	MaxDynamicLWLock = 1000000000
+				MaxDynamicLWLock = 1000000000
 } LWLockId;
 
 
 typedef enum LWLockMode
 {
-	LW_EXCLUSIVE,
-	LW_SHARED
+				LW_EXCLUSIVE,
+				LW_SHARED
 } LWLockMode;
 
 
@@ -65,5 +66,4 @@ extern void LWLockReleaseAll(void);
 extern int	NumLWLocks(void);
 extern int	LWLockShmemSize(void);
 extern void CreateLWLocks(void);
-
 #endif	 /* LWLOCK_H */

@@ -35,7 +35,7 @@ typedef struct PortalData
 	bool		atStart;		/* T => fetch backwards is not allowed */
 	bool		atEnd;			/* T => fetch forwards is not allowed */
 	void		(*cleanup) (Portal);	/* Cleanup routine (optional) */
-}			PortalData;
+} PortalData;
 
 /*
  * PortalIsValid
@@ -66,6 +66,5 @@ extern Portal GetPortalByName(char *name);
 extern void PortalSetQuery(Portal portal, QueryDesc *queryDesc,
 			   TupleDesc attinfo, EState *state,
 			   void (*cleanup) (Portal portal));
-
 
 #endif	 /* PORTAL_H */

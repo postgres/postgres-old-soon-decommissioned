@@ -131,7 +131,6 @@ DefineViewRules(char *viewName, Query *viewParse)
 	RuleStmt   *replace_rule;
 	RuleStmt   *append_rule;
 	RuleStmt   *delete_rule;
-
 #endif
 
 	retrieve_rule = FormViewRetrieveRule(viewName, viewParse);
@@ -141,7 +140,6 @@ DefineViewRules(char *viewName, Query *viewParse)
 	replace_rule = FormViewReplaceRule(viewName, viewParse);
 	append_rule = FormViewAppendRule(viewName, viewParse);
 	delete_rule = FormViewDeleteRule(viewName, viewParse);
-
 #endif
 
 	DefineQueryRewrite(retrieve_rule);
@@ -229,7 +227,6 @@ UpdateRangeTableOfViewParse(char *viewName, Query *viewParse)
 void
 DefineView(char *viewName, Query *viewParse)
 {
-
 	/*
 	 * Create the "view" relation NOTE: if it already exists, the xact
 	 * will be aborted.
@@ -264,7 +261,6 @@ DefineView(char *viewName, Query *viewParse)
 void
 RemoveView(char *viewName)
 {
-
 	/*
 	 * We just have to drop the relation; the associated rules will be
 	 * cleaned up automatically.

@@ -218,7 +218,6 @@ _outQuery(StringInfo str, Query *node)
 
 	if (node->utilityStmt)
 	{
-
 		/*
 		 * Hack to make up for lack of outfuncs for utility-stmt nodes
 		 */
@@ -1271,7 +1270,7 @@ _outValue(StringInfo str, Value *value)
 {
 	switch (value->type)
 	{
-			case T_Integer:
+		case T_Integer:
 			appendStringInfo(str, " %ld ", value->val.ival);
 			break;
 		case T_Float:

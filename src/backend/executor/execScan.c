@@ -122,7 +122,6 @@ ExecScan(Scan *node,
 		 */
 		if (!qual || ExecQual(qual, econtext, false))
 		{
-
 			/*
 			 * Found a satisfactory scan tuple.
 			 *

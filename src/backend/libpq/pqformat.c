@@ -90,7 +90,6 @@
 #else
 
 #error BYTE_ORDER not defined as anything understood
-
 #endif
 #endif
 #endif
@@ -309,7 +308,6 @@ pq_getstr(StringInfo s)
 
 #ifdef MULTIBYTE
 	char	   *p;
-
 #endif
 
 	result = pq_getstring(s);

@@ -40,7 +40,7 @@ typedef StrategyOperatorData *StrategyOperator;
 typedef struct StrategyTermData
 {								/* conjunctive term */
 	uint16		degree;
-	StrategyOperatorData operatorData[1];	/* VARIABLE LENGTH ARRAY */
+	StrategyOperatorData operatorData[1];		/* VARIABLE LENGTH ARRAY */
 } StrategyTermData;				/* VARIABLE LENGTH STRUCTURE */
 
 typedef StrategyTermData *StrategyTerm;
@@ -86,5 +86,4 @@ typedef struct IndexStrategyData
 } IndexStrategyData;			/* VARIABLE LENGTH STRUCTURE */
 
 typedef IndexStrategyData *IndexStrategy;
-
 #endif	 /* STRAT_H */

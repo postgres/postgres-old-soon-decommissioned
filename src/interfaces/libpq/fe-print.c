@@ -102,7 +102,6 @@ PQprint(FILE *fout,
 			int			ws_row;
 			int			ws_col;
 		}			screen_size;
-
 #endif
 
 		nTups = PQntuples(res);
@@ -152,7 +151,6 @@ PQprint(FILE *fout,
 #endif
 			)
 		{
-
 			/*
 			 * If we think there'll be more than one screen of output, try
 			 * to pipe to the pager program.

@@ -164,7 +164,6 @@ ResetHeapAccessStatistics()
 	time(&stats->local_reset_timestamp);
 	time(&stats->last_request_timestamp);
 }
-
 #endif
 
 #ifdef NOT_USED
@@ -200,7 +199,6 @@ GetHeapAccessStatistics()
 
 	return stats;
 }
-
 #endif
 
 #ifdef NOT_USED
@@ -211,7 +209,6 @@ GetHeapAccessStatistics()
 void
 PrintHeapAccessStatistics(HeapAccessStatistics stats)
 {
-
 	/*
 	 * return nothing if stats aren't valid
 	 */
@@ -302,7 +299,6 @@ PrintHeapAccessStatistics(HeapAccessStatistics stats)
 
 	printf("\n");
 }
-
 #endif
 
 #ifdef NOT_USED
@@ -317,7 +313,6 @@ PrintAndFreeHeapAccessStatistics(HeapAccessStatistics stats)
 	if (stats != NULL)
 		pfree(stats);
 }
-
 #endif
 
 /* ----------------------------------------------------------------
@@ -331,7 +326,6 @@ PrintAndFreeHeapAccessStatistics(HeapAccessStatistics stats)
 void
 initam(void)
 {
-
 	/*
 	 * initialize heap statistics.
 	 */

@@ -196,5 +196,4 @@ DECLARE_UNIQUE_INDEX(pg_type_typname_index on pg_type using btree(typname name_o
 
 /* last step of initialization script: build the indices declared above */
 BUILD_INDICES
-
 #endif	 /* INDEXING_H */

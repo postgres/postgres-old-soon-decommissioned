@@ -151,5 +151,4 @@ extern RetrieveIndexResult FormRetrieveIndexResult(ItemPointer indexItemPointer,
 						ItemPointer heapItemPointer);
 extern void CopyIndexTuple(IndexTuple source, IndexTuple *target);
 
-
 #endif	 /* ITUP_H */

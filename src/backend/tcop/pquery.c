@@ -30,7 +30,7 @@ static char *CreateOperationTag(int operationType);
  *		CreateQueryDesc
  * ----------------------------------------------------------------
  */
-QueryDesc  *
+QueryDesc *
 CreateQueryDesc(Query *parsetree,
 				Plan *plantree,
 				CommandDest dest)
@@ -140,7 +140,6 @@ PreparePortal(char *portalName)
 	portal = GetPortalByName(portalName);
 	if (PortalIsValid(portal))
 	{
-
 		/*
 		 * XXX Should we raise an error rather than closing the old
 		 * portal?
@@ -197,7 +196,6 @@ ProcessQuery(Query *parsetree,
 			intoName = parsetree->into;
 			if (parsetree->isBinary)
 			{
-
 				/*
 				 * For internal format portals, we change Remote
 				 * (externalized form) to RemoteInternal (internalized

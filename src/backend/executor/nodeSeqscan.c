@@ -127,7 +127,6 @@ SeqNext(SeqScan *node)
 TupleTableSlot *
 ExecSeqScan(SeqScan *node)
 {
-
 	/*
 	 * use SeqNext as access method
 	 */
@@ -246,8 +245,8 @@ int
 ExecCountSlotsSeqScan(SeqScan *node)
 {
 	return ExecCountSlotsNode(outerPlan(node)) +
-	ExecCountSlotsNode(innerPlan(node)) +
-	SEQSCAN_NSLOTS;
+		ExecCountSlotsNode(innerPlan(node)) +
+		SEQSCAN_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

@@ -24,7 +24,7 @@ dbState(DBState state)
 {
 	switch (state)
 	{
-			case DB_STARTUP:
+		case DB_STARTUP:
 			return "STARTUP";
 		case DB_SHUTDOWNED:
 			return "SHUTDOWNED";

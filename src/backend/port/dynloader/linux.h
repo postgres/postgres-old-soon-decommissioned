@@ -31,16 +31,13 @@ do { \
 	dld_unlink_by_file(handle, 1); \
 	free(handle); \
 } while (0)
-
 #endif
 
-#else /* HAVE_DLOPEN */
+#else							/* HAVE_DLOPEN */
 
 #define pg_dlopen(f)	dlopen((f), RTLD_LAZY | RTLD_GLOBAL)
 #define pg_dlsym		dlsym
 #define pg_dlclose		dlclose
 #define pg_dlerror		dlerror
-
-#endif /* HAVE_DLOPEN */
-
+#endif	 /* HAVE_DLOPEN */
 #endif	 /* PORT_PROTOS_H */

@@ -20,9 +20,11 @@ extern DLLIMPORT Exception BadState;
 extern DLLIMPORT Exception BadArg;
 extern DLLIMPORT Exception Unimplemented;
 
-extern DLLIMPORT Exception CatalogFailure;/* XXX inconsistent naming style */
-extern DLLIMPORT Exception InternalError; /* XXX inconsistent naming style */
-extern DLLIMPORT Exception SemanticError; /* XXX inconsistent naming style */
-extern DLLIMPORT Exception SystemError;	/* XXX inconsistent naming style */
-
+extern DLLIMPORT Exception CatalogFailure;		/* XXX inconsistent naming
+												 * style */
+extern DLLIMPORT Exception InternalError;		/* XXX inconsistent naming
+												 * style */
+extern DLLIMPORT Exception SemanticError;		/* XXX inconsistent naming
+												 * style */
+extern DLLIMPORT Exception SystemError; /* XXX inconsistent naming style */
 #endif	 /* EXCID_H */

@@ -15,5 +15,4 @@
 #define ITEM_H
 
 typedef Pointer Item;
-
 #endif	 /* ITEM_H */

@@ -59,7 +59,7 @@ joininfo_member(List *join_relids, List *joininfo_list)
  * Returns a joininfo node.
  *
  */
-JoinInfo   *
+JoinInfo *
 find_joininfo_node(RelOptInfo *this_rel, Relids join_relids)
 {
 	JoinInfo   *joininfo = joininfo_member(join_relids,

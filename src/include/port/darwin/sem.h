@@ -69,7 +69,5 @@ extern		"C"
 
 #ifdef __cplusplus
 }
-
 #endif
-
 #endif	 /* _SYS_SEM_H */

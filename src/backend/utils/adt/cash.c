@@ -85,7 +85,6 @@ cash_in(PG_FUNCTION_ARGS)
 
 #ifdef USE_LOCALE
 	struct lconv *lconvert = PGLC_localeconv();
-
 #endif
 
 #ifdef USE_LOCALE
@@ -244,7 +243,6 @@ cash_out(PG_FUNCTION_ARGS)
 
 #ifdef USE_LOCALE
 	struct lconv *lconvert = PGLC_localeconv();
-
 #endif
 
 #ifdef USE_LOCALE

@@ -111,7 +111,6 @@ ExecInitJunkFilter(List *targetList, TupleDesc tupType,
 			resjunk = resdom->resjunk;
 			if (!resjunk)
 			{
-
 				/*
 				 * make a copy of the resdom node, changing its resno.
 				 */

@@ -34,5 +34,4 @@ extern void BitArrayClearBit(BitArray bitArray, BitIndex bitIndex);
  *		True iff the bit is set (1) in a bit array.
  */
 extern bool BitArrayBitIsSet(BitArray bitArray, BitIndex bitIndex);
-
 #endif	 /* BIT_H */

@@ -38,14 +38,15 @@ CATALOG(pg_index) BKI_WITHOUT_OIDS
 	regproc		indproc;		/* OID of function for functional index */
 	int2vector	indkey;			/* column numbers of indexed attributes */
 	oidvector	indclass;		/* opclass identifiers */
-	bool		indisclustered;	/* presently unused */
+	bool		indisclustered; /* presently unused */
 	bool		indisunique;	/* is this a unique index? */
 	bool		indisprimary;	/* is this index for primary key? */
 	Oid			indreference;	/* oid of index of referenced relation (ie
 								 * - this index for foreign key) */
+
 	/* VARIABLE LENGTH FIELD: */
-	text		indpred;		/* expression tree for predicate,
-								 * if a partial index */
+	text		indpred;		/* expression tree for predicate, if a
+								 * partial index */
 } FormData_pg_index;
 
 /* ----------------
@@ -70,5 +71,4 @@ typedef FormData_pg_index *Form_pg_index;
 #define Anum_pg_index_indisprimary		8
 #define Anum_pg_index_indreference		9
 #define Anum_pg_index_indpred			10
-
 #endif	 /* PG_INDEX_H */

@@ -33,36 +33,36 @@ extern IndexPath *create_index_path(Query *root, RelOptInfo *rel,
 				  List *pathkeys,
 				  ScanDirection indexscandir);
 extern TidPath *create_tidscan_path(Query *root, RelOptInfo *rel,
-									List *tideval);
+					List *tideval);
 extern AppendPath *create_append_path(RelOptInfo *rel, List *subpaths);
 extern Path *create_subqueryscan_path(RelOptInfo *rel);
 
 extern NestPath *create_nestloop_path(Query *root,
-									  RelOptInfo *joinrel,
-									  JoinType jointype,
-									  Path *outer_path,
-									  Path *inner_path,
-									  List *restrict_clauses,
-									  List *pathkeys);
+					 RelOptInfo *joinrel,
+					 JoinType jointype,
+					 Path *outer_path,
+					 Path *inner_path,
+					 List *restrict_clauses,
+					 List *pathkeys);
 
 extern MergePath *create_mergejoin_path(Query *root,
-										RelOptInfo *joinrel,
-										JoinType jointype,
-										Path *outer_path,
-										Path *inner_path,
-										List *restrict_clauses,
-										List *pathkeys,
-										List *mergeclauses,
-										List *outersortkeys,
-										List *innersortkeys);
+					  RelOptInfo *joinrel,
+					  JoinType jointype,
+					  Path *outer_path,
+					  Path *inner_path,
+					  List *restrict_clauses,
+					  List *pathkeys,
+					  List *mergeclauses,
+					  List *outersortkeys,
+					  List *innersortkeys);
 
 extern HashPath *create_hashjoin_path(Query *root,
-									  RelOptInfo *joinrel,
-									  JoinType jointype,
-									  Path *outer_path,
-									  Path *inner_path,
-									  List *restrict_clauses,
-									  List *hashclauses);
+					 RelOptInfo *joinrel,
+					 JoinType jointype,
+					 Path *outer_path,
+					 Path *inner_path,
+					 List *restrict_clauses,
+					 List *hashclauses);
 
 /*
  * prototypes for relnode.c
@@ -71,9 +71,8 @@ extern RelOptInfo *build_base_rel(Query *root, int relid);
 extern RelOptInfo *build_other_rel(Query *root, int relid);
 extern RelOptInfo *find_base_rel(Query *root, int relid);
 extern RelOptInfo *build_join_rel(Query *root,
-			 RelOptInfo *outer_rel,
-			 RelOptInfo *inner_rel,
-			 JoinType jointype,
-			 List **restrictlist_ptr);
-
+			   RelOptInfo *outer_rel,
+			   RelOptInfo *inner_rel,
+			   JoinType jointype,
+			   List **restrictlist_ptr);
 #endif	 /* PATHNODE_H */

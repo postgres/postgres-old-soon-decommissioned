@@ -118,7 +118,6 @@ ExecNestLoop(NestLoop *node)
 
 	for (;;)
 	{
-
 		/*
 		 * If we don't have an outer tuple, get the next one and reset the
 		 * inner scan.
@@ -174,7 +173,6 @@ ExecNestLoop(NestLoop *node)
 			if (!nlstate->nl_MatchedOuter &&
 				node->join.jointype == JOIN_LEFT)
 			{
-
 				/*
 				 * We are doing an outer join and there were no join
 				 * matches for this outer tuple.  Generate a fake join
@@ -187,7 +185,6 @@ ExecNestLoop(NestLoop *node)
 
 				if (ExecQual(otherqual, econtext, false))
 				{
-
 					/*
 					 * qualification was satisfied so we project and
 					 * return the slot containing the result tuple using
@@ -231,7 +228,6 @@ ExecNestLoop(NestLoop *node)
 
 			if (otherqual == NIL || ExecQual(otherqual, econtext, false))
 			{
-
 				/*
 				 * qualification was satisfied so we project and return
 				 * the slot containing the result tuple using
@@ -346,8 +342,8 @@ int
 ExecCountSlotsNestLoop(NestLoop *node)
 {
 	return ExecCountSlotsNode(outerPlan(node)) +
-	ExecCountSlotsNode(innerPlan(node)) +
-	NESTLOOP_NSLOTS;
+		ExecCountSlotsNode(innerPlan(node)) +
+		NESTLOOP_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

@@ -183,8 +183,8 @@ InitBufferPool(void)
 
 		/*
 		 * link the buffers into a circular, doubly-linked list to
-		 * initialize free list, and initialize the buffer headers.
-		 * Still don't know anything about replacement strategy in this file.
+		 * initialize free list, and initialize the buffer headers. Still
+		 * don't know anything about replacement strategy in this file.
 		 */
 		for (i = 0; i < Data_Descriptors; block += BLCKSZ, buf++, i++)
 		{

@@ -42,7 +42,6 @@ double		x;
 
 #else
 	int			fpclass = fp_class_d(x);
-
 #endif
 
 	if (fpclass == FP_POS_INF)
@@ -64,7 +63,6 @@ isinf(double x)
 		return -1;
 	return 0;
 }
-
 #endif
 #endif
 
@@ -80,5 +78,4 @@ isinf(double x)
 		return -1;
 	return 0;
 }
-
 #endif

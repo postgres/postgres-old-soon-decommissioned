@@ -99,5 +99,4 @@ typedef struct ParamExecData
 	Datum		value;
 	bool		isnull;
 } ParamExecData;
-
 #endif	 /* PARAMS_H */

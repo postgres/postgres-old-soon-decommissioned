@@ -132,8 +132,8 @@ typedef PageHeaderData *PageHeader;
 
 typedef enum
 {
-	ShufflePageManagerMode,
-	OverwritePageManagerMode
+				ShufflePageManagerMode,
+				OverwritePageManagerMode
 } PageManagerMode;
 
 /* ----------------------------------------------------------------
@@ -319,6 +319,5 @@ extern int	PageRepairFragmentation(Page page, OffsetNumber *unused);
 extern Size PageGetFreeSpace(Page page);
 extern void PageIndexTupleDelete(Page page, OffsetNumber offset);
 extern void IndexPageCleanup(Buffer buffer);
-
 
 #endif	 /* BUFPAGE_H */

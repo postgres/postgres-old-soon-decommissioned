@@ -332,9 +332,10 @@ CommentRelation(int reltype, char *relname, char *comment)
 		elog(ERROR, "you are not permitted to comment on class '%s'", relname);
 
 	/*
-	 * Open the relation.  We do this mainly to acquire a lock that ensures
-	 * no one else drops the relation before we commit.  (If they did, they'd
-	 * fail to remove the entry we are about to make in pg_description.)
+	 * Open the relation.  We do this mainly to acquire a lock that
+	 * ensures no one else drops the relation before we commit.  (If they
+	 * did, they'd fail to remove the entry we are about to make in
+	 * pg_description.)
 	 *
 	 * heap_openr will complain if it's an index, so we must do this:
 	 */

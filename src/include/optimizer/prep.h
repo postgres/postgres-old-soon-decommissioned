@@ -37,10 +37,9 @@ extern Plan *plan_set_operations(Query *parse);
 extern List *find_all_inheritors(Oid parentrel);
 
 extern List *expand_inherted_rtentry(Query *parse, Index rti,
-									 bool dup_parent);
+						bool dup_parent);
 
 extern Node *adjust_inherited_attrs(Node *node,
 					   Index old_rt_index, Oid old_relid,
 					   Index new_rt_index, Oid new_relid);
-
 #endif	 /* PREP_H */

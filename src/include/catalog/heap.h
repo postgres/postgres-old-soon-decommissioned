@@ -45,12 +45,11 @@ extern void AddRelationRawConstraints(Relation rel,
 						  List *rawColDefaults,
 						  List *rawConstraints);
 
-extern int RemoveCheckConstraint(Relation rel, const char *constrName, bool inh);
+extern int	RemoveCheckConstraint(Relation rel, const char *constrName, bool inh);
 
 extern Form_pg_attribute SystemAttributeDefinition(AttrNumber attno,
-												   bool relhasoids);
+						  bool relhasoids);
 
 extern Form_pg_attribute SystemAttributeByName(const char *attname,
-											   bool relhasoids);
-
+					  bool relhasoids);
 #endif	 /* HEAP_H */

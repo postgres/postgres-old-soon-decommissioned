@@ -42,5 +42,4 @@ typedef struct RuleLock
 	int			numLocks;
 	RewriteRule **rules;
 } RuleLock;
-
 #endif	 /* REWRITE_H */

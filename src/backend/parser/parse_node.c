@@ -235,7 +235,7 @@ make_var(ParseState *pstate, RangeTblEntry *rte, int attrno)
  * forceSlice	If true, treat subscript as array slice in all cases
  * assignFrom	NULL for array fetch, else transformed expression for source.
  */
-ArrayRef   *
+ArrayRef *
 transformArraySubscripts(ParseState *pstate,
 						 Node *arrayBase,
 						 Oid arrayType,
@@ -467,7 +467,7 @@ make_const(Value *value)
 		case T_String:
 			val = DirectFunctionCall1(textin, CStringGetDatum(strVal(value)));
 
-			typeid = UNKNOWNOID;/* will be coerced later */
+			typeid = UNKNOWNOID;		/* will be coerced later */
 			typelen = -1;		/* variable len */
 			typebyval = false;
 			break;

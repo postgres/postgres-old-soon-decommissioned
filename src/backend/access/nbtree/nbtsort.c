@@ -108,7 +108,7 @@ static void _bt_load(Relation index, BTSpool *btspool, BTSpool *btspool2);
 /*
  * create and initialize a spool structure
  */
-BTSpool    *
+BTSpool *
 _bt_spoolinit(Relation index, bool isunique)
 {
 	BTSpool    *btspool = (BTSpool *) palloc(sizeof(BTSpool));
@@ -354,7 +354,6 @@ _bt_buildadd(Relation index, BTPageState *state, BTItem bti)
 
 	if (pgspc < btisz || pgspc < state->btps_full)
 	{
-
 		/*
 		 * Item won't fit on this page, or we feel the page is full enough
 		 * already.  Finish off the page and write it out.
@@ -544,7 +543,6 @@ _bt_load(Relation index, BTSpool *btspool, BTSpool *btspool2)
 
 	if (merge)
 	{
-
 		/*
 		 * Another BTSpool for dead tuples exists. Now we have to merge
 		 * btspool and btspool2.

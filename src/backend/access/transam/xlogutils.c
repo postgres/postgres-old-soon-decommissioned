@@ -247,7 +247,7 @@ _xl_remove_hash_entry(XLogRelDesc *rdesc)
 	rdesc->moreRecently->lessRecently = rdesc->lessRecently;
 
 	hentry = (XLogRelCacheEntry *) hash_search(_xlrelcache,
-				(void *) &(rdesc->reldata.rd_node), HASH_REMOVE, NULL);
+				  (void *) &(rdesc->reldata.rd_node), HASH_REMOVE, NULL);
 	if (hentry == NULL)
 		elog(STOP, "_xl_remove_hash_entry: file was not found in cache");
 
@@ -304,9 +304,7 @@ XLogCloseRelationCache(void)
 	hash_seq_init(&status, _xlrelcache);
 
 	while ((hentry = (XLogRelCacheEntry *) hash_seq_search(&status)) != NULL)
-	{
 		_xl_remove_hash_entry(hentry->rdesc);
-	}
 
 	hash_destroy(_xlrelcache);
 

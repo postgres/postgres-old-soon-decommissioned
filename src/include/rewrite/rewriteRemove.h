@@ -17,5 +17,4 @@
 extern char *RewriteGetRuleEventRel(char *rulename);
 extern void RemoveRewriteRule(char *ruleName);
 extern void RelationRemoveRules(Oid relid);
-
 #endif	 /* REWRITEREMOVE_H */

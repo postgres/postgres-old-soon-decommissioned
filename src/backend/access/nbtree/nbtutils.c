@@ -221,7 +221,6 @@ _bt_orderkeys(Relation relation, BTScanOpaque so)
 	/* We can short-circuit most of the work if there's just one key */
 	if (numberOfKeys == 1)
 	{
-
 		/*
 		 * We don't use indices for 'A is null' and 'A is not null'
 		 * currently and 'A < = > <> NULL' will always fail - so qual is
@@ -317,7 +316,6 @@ _bt_orderkeys(Relation relation, BTScanOpaque so)
 			}
 			else
 			{
-
 				/*
 				 * No "=" for this key, so we're done with required keys
 				 */

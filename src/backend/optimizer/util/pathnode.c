@@ -325,7 +325,7 @@ create_seqscan_path(Query *root, RelOptInfo *rel)
  *
  * Returns the new path node.
  */
-IndexPath  *
+IndexPath *
 create_index_path(Query *root,
 				  RelOptInfo *rel,
 				  IndexOptInfo *index,
@@ -363,8 +363,8 @@ create_index_path(Query *root,
 	pathnode->rows = rel->rows;
 
 	/*
-	 * Not sure if this is necessary, but it should help if the
-	 * statistics are too far off
+	 * Not sure if this is necessary, but it should help if the statistics
+	 * are too far off
 	 */
 	if (index->indpred && index->tuples < pathnode->rows)
 		pathnode->rows = index->tuples;

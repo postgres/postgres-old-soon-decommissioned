@@ -112,7 +112,7 @@ gistrescan(PG_FUNCTION_ARGS)
 			s->keyData[i].sk_procedure
 				= RelationGetGISTStrategy(s->relation, s->keyData[i].sk_attno,
 										  s->keyData[i].sk_procedure);
-			s->keyData[i].sk_func = p->giststate->consistentFn[s->keyData[i].sk_attno-1];
+			s->keyData[i].sk_func = p->giststate->consistentFn[s->keyData[i].sk_attno - 1];
 		}
 	}
 	else
@@ -137,13 +137,13 @@ gistrescan(PG_FUNCTION_ARGS)
 
 				/*----------
 				 * s->keyData[i].sk_procedure =
-				 * 		index_getprocid(s->relation, 1, GIST_CONSISTENT_PROC);
+				 *		index_getprocid(s->relation, 1, GIST_CONSISTENT_PROC);
 				 *----------
 				 */
 				s->keyData[i].sk_procedure
 					= RelationGetGISTStrategy(s->relation, s->keyData[i].sk_attno,
 											  s->keyData[i].sk_procedure);
-				s->keyData[i].sk_func = p->giststate->consistentFn[s->keyData[i].sk_attno-1];
+				s->keyData[i].sk_func = p->giststate->consistentFn[s->keyData[i].sk_attno - 1];
 			}
 	}
 
@@ -234,8 +234,8 @@ gistendscan(PG_FUNCTION_ARGS)
 	{
 		gistfreestack(p->s_stack);
 		gistfreestack(p->s_markstk);
-		if ( p->giststate != NULL ) 
-			freeGISTstate( p->giststate );
+		if (p->giststate != NULL)
+			freeGISTstate(p->giststate);
 		pfree(s->opaque);
 	}
 
@@ -383,7 +383,6 @@ adjustiptr(IndexScanDesc s,
 						}
 						else
 						{
-
 							/*
 							 * remember that we're before the current
 							 * tuple

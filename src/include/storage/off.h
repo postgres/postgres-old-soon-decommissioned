@@ -54,5 +54,4 @@ typedef uint16 OffsetNumber;
 	((OffsetNumber) (1 + (offsetNumber)))
 #define OffsetNumberPrev(offsetNumber) \
 	((OffsetNumber) (-1 + (offsetNumber)))
-
 #endif	 /* OFF_H */

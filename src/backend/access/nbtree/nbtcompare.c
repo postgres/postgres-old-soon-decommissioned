@@ -25,7 +25,7 @@
  *	NOTE: although any negative int32 is acceptable for reporting "<",
  *	and any positive int32 is acceptable for reporting ">", routines
  *	that work on 32-bit or wider datatypes can't just return "a - b".
- *	That could overflow and give the wrong answer.  Also, one should not
+ *	That could overflow and give the wrong answer.	Also, one should not
  *	return INT_MIN to report "<", since some callers will negate the result.
  *
  *	NOTE: it is critical that the comparison function impose a total order

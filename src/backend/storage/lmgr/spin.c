@@ -5,8 +5,8 @@
  *
  *
  * For machines that have test-and-set (TAS) instructions, s_lock.h/.c
- * define the spinlock implementation.  This file contains only a stub
- * implementation for spinlocks using SysV semaphores.  The semaphore method
+ * define the spinlock implementation.	This file contains only a stub
+ * implementation for spinlocks using SysV semaphores.	The semaphore method
  * is too slow to be very useful :-(
  *
  *
@@ -92,8 +92,8 @@ CreateSpinlocks(void)
 	{
 		/*
 		 * Compute number of spinlocks needed.	It would be cleaner to
-		 * distribute this logic into the affected modules,
-		 * similar to the way shmem space estimation is handled.
+		 * distribute this logic into the affected modules, similar to the
+		 * way shmem space estimation is handled.
 		 *
 		 * For now, though, we just need a few spinlocks (10 should be
 		 * plenty) plus one for each LWLock.
@@ -186,5 +186,4 @@ tas_sema(volatile slock_t *lock)
 	/* Note that TAS macros return 0 if *success* */
 	return !IpcSemaphoreTryLock(lock->semId, lock->sem);
 }
-
 #endif	 /* !HAS_TEST_AND_SET */

@@ -129,7 +129,6 @@ _readQuery(void)
 		local_node->utilityStmt = NULL;
 	else
 	{
-
 		/*
 		 * Hack to make up for lack of readfuncs for utility-stmt nodes
 		 *
@@ -868,8 +867,8 @@ _readCaseWhen(void)
 static NullTest *
 _readNullTest(void)
 {
-	NullTest	*local_node;
-	char		*token;
+	NullTest   *local_node;
+	char	   *token;
 	int			length;
 
 	local_node = makeNode(NullTest);
@@ -893,8 +892,8 @@ _readNullTest(void)
 static BooleanTest *
 _readBooleanTest(void)
 {
-	BooleanTest	*local_node;
-	char		*token;
+	BooleanTest *local_node;
+	char	   *token;
 	int			length;
 
 	local_node = makeNode(BooleanTest);

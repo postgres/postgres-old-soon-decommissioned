@@ -76,5 +76,4 @@ extern void pq_endcopyout(bool errorAbort);
 extern void pqdebug(char *fmt, char *msg);
 extern void PQtrace(void);
 extern void PQuntrace(void);
-
 #endif	 /* LIBPQ_H */

@@ -33,11 +33,11 @@ extern bool Log_timestamp;
 extern bool Log_pid;
 
 
-extern void elog(int lev, const char *fmt,...)
+extern void
+elog(int lev, const char *fmt,...)
 /* This extension allows gcc to check the format string for consistency with
    the supplied arguments. */
 __attribute__((format(printf, 2, 3)));
 
 extern int	DebugFileOpen(void);
-
 #endif	 /* ELOG_H */

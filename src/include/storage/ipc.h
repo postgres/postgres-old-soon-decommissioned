@@ -89,5 +89,4 @@ extern bool SharedMemoryIsInUse(IpcMemoryKey shmKey, IpcMemoryId shmId);
 /* ipci.c */
 extern void CreateSharedMemoryAndSemaphores(bool makePrivate,
 								int maxBackends);
-
 #endif	 /* IPC_H */

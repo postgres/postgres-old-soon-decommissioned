@@ -82,16 +82,13 @@ geqo(Query *root, int number_of_rels, List *initial_rels)
 	Edge	   *edge_table;		/* list of edges */
 	int			edge_failures = 0;
 	float		difference;
-
 #endif
 #if defined(CX) || defined(PX) || defined(OX1) || defined(OX2)
 	City	   *city_table;		/* list of cities */
-
 #endif
 #if defined(CX)
 	int			cycle_diffs = 0;
 	int			mutations = 0;
-
 #endif
 
 /* set GA parameters */

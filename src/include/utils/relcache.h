@@ -45,9 +45,9 @@ extern void RelationCacheInitializePhase2(void);
  * Routine to create a relcache entry for an about-to-be-created relation
  */
 extern Relation RelationBuildLocalRelation(const char *relname,
-										   TupleDesc tupDesc,
-										   Oid relid, Oid dbid,
-										   bool nailit);
+						   TupleDesc tupDesc,
+						   Oid relid, Oid dbid,
+						   bool nailit);
 
 /*
  * Routines for flushing/rebuilding relcache entries in various scenarios
@@ -72,5 +72,4 @@ extern void DestroyDummyCaches(void);
  */
 
 #define RELCACHE_INIT_FILENAME	"pg_internal.init"
-
 #endif	 /* RELCACHE_H */

@@ -53,9 +53,9 @@ regprocin(PG_FUNCTION_ARGS)
 		Oid			searchOid;
 
 		searchOid = DatumGetObjectId(DirectFunctionCall1(oidin,
-									 CStringGetDatum(pro_name_or_oid)));
+									  CStringGetDatum(pro_name_or_oid)));
 		result = (RegProcedure) GetSysCacheOid(PROCOID,
-											   ObjectIdGetDatum(searchOid),
+											 ObjectIdGetDatum(searchOid),
 											   0, 0, 0);
 		if (!RegProcedureIsValid(result))
 			elog(ERROR, "No procedure with oid %s", pro_name_or_oid);

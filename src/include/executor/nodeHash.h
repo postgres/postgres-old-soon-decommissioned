@@ -33,8 +33,7 @@ extern HeapTuple ExecScanHashBucket(HashJoinState *hjstate, List *hjclauses,
 extern void ExecHashTableReset(HashJoinTable hashtable, long ntuples);
 extern void ExecReScanHash(Hash *node, ExprContext *exprCtxt, Plan *parent);
 extern void ExecChooseHashTableSize(double ntuples, int tupwidth,
-									int *virtualbuckets,
-									int *physicalbuckets,
-									int *numbatches);
-
+						int *virtualbuckets,
+						int *physicalbuckets,
+						int *numbatches);
 #endif	 /* NODEHASH_H */

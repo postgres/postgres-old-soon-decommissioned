@@ -67,7 +67,6 @@ inet_aton(const char *cp, struct in_addr * addr)
 
 	for (;;)
 	{
-
 		/*
 		 * Collect number up to ``.''. Values are specified as for C:
 		 * 0x=hex, 0=octal, other=decimal.
@@ -100,7 +99,6 @@ inet_aton(const char *cp, struct in_addr * addr)
 		}
 		if (*cp == '.')
 		{
-
 			/*
 			 * Internet format: a.b.c.d a.b.c	(with c treated as
 			 * 16-bits) a.b		(with b treated as 24 bits)

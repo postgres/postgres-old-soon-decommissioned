@@ -73,5 +73,4 @@ DATA(insert OID = 14 ( "sql" f f 0 "postgres"));
 DESCR("SQL-language functions");
 #define SQLlanguageId 14
 
-
 #endif	 /* PG_LANGUAGE_H */

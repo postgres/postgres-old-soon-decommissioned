@@ -100,7 +100,6 @@ ExecSetOp(SetOp *node)
 
 		if (TupIsNull(resultTupleSlot))
 		{
-
 			/*
 			 * First of group: save a copy in result slot, and reset
 			 * duplicate-counters for new group.
@@ -118,7 +117,6 @@ ExecSetOp(SetOp *node)
 		}
 		else if (setopstate->subplan_done)
 		{
-
 			/*
 			 * Reached end of input, so finish processing final group
 			 */
@@ -126,7 +124,6 @@ ExecSetOp(SetOp *node)
 		}
 		else
 		{
-
 			/*
 			 * Else test if the new tuple and the previously saved tuple
 			 * match.
@@ -144,7 +141,6 @@ ExecSetOp(SetOp *node)
 
 		if (endOfGroup)
 		{
-
 			/*
 			 * We've reached the end of the group containing resultTuple.
 			 * Decide how many copies (if any) to emit.  This logic is
@@ -187,7 +183,6 @@ ExecSetOp(SetOp *node)
 		}
 		else
 		{
-
 			/*
 			 * Current tuple is member of same group as resultTuple. Count
 			 * it in the appropriate counter.
@@ -294,8 +289,8 @@ int
 ExecCountSlotsSetOp(SetOp *node)
 {
 	return ExecCountSlotsNode(outerPlan(node)) +
-	ExecCountSlotsNode(innerPlan(node)) +
-	SETOP_NSLOTS;
+		ExecCountSlotsNode(innerPlan(node)) +
+		SETOP_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

@@ -24,5 +24,4 @@ typedef int BackendId;			/* unique currently active backend
 #define InvalidBackendId		(-1)
 
 extern BackendId MyBackendId;	/* backend id of this backend */
-
 #endif	 /* BACKENDID_H */

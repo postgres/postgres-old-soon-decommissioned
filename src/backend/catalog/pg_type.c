@@ -318,13 +318,13 @@ TypeCreate(char *typeName,
 	}
 
 	/*
-	 * validate size specifications: either positive (fixed-length) or
-	 * -1 (variable-length).
+	 * validate size specifications: either positive (fixed-length) or -1
+	 * (variable-length).
 	 */
-	if (! (internalSize > 0 || internalSize == -1))
+	if (!(internalSize > 0 || internalSize == -1))
 		elog(ERROR, "TypeCreate: invalid type internal size %d",
 			 internalSize);
-	if (! (externalSize > 0 || externalSize == -1))
+	if (!(externalSize > 0 || externalSize == -1))
 		elog(ERROR, "TypeCreate: invalid type external size %d",
 			 externalSize);
 
@@ -382,7 +382,6 @@ TypeCreate(char *typeName,
 
 		if (!OidIsValid(procOid))
 		{
-
 			/*
 			 * For array types, the input procedures may take 3 args (data
 			 * value, element OID, atttypmod); the pg_proc argtype
@@ -434,7 +433,7 @@ TypeCreate(char *typeName,
 	 */
 	if (defaultTypeValue)
 		values[i] = DirectFunctionCall1(textin,
-										CStringGetDatum(defaultTypeValue));
+									  CStringGetDatum(defaultTypeValue));
 	else
 		nulls[i] = 'n';
 	i++;						/* 17 */

@@ -30,22 +30,21 @@ extern int	FreeSpaceShmemSize(void);
 
 extern BlockNumber GetPageWithFreeSpace(RelFileNode *rel, Size spaceNeeded);
 extern void RecordFreeSpace(RelFileNode *rel, BlockNumber page,
-							Size spaceAvail);
+				Size spaceAvail);
 extern BlockNumber RecordAndGetPageWithFreeSpace(RelFileNode *rel,
-												 BlockNumber oldPage,
-												 Size oldSpaceAvail,
-												 Size spaceNeeded);
+							  BlockNumber oldPage,
+							  Size oldSpaceAvail,
+							  Size spaceNeeded);
 extern void MultiRecordFreeSpace(RelFileNode *rel,
-								 BlockNumber minPage,
-								 BlockNumber maxPage,
-								 int nPages,
-								 BlockNumber *pages,
-								 Size *spaceAvail);
+					 BlockNumber minPage,
+					 BlockNumber maxPage,
+					 int nPages,
+					 BlockNumber *pages,
+					 Size *spaceAvail);
 extern void FreeSpaceMapForgetRel(RelFileNode *rel);
 extern void FreeSpaceMapForgetDatabase(Oid dbid);
 
 #ifdef FREESPACE_DEBUG
 extern void DumpFreeSpace(void);
 #endif
-
 #endif	 /* FREESPACE_H */

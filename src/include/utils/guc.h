@@ -39,22 +39,22 @@
  */
 typedef enum
 {
-	PGC_POSTMASTER,
-	PGC_SIGHUP,
-	PGC_BACKEND,
-	PGC_SUSET,
-	PGC_USERSET
+				PGC_POSTMASTER,
+				PGC_SIGHUP,
+				PGC_BACKEND,
+				PGC_SUSET,
+				PGC_USERSET
 } GucContext;
 
 
 extern void SetConfigOption(const char *name, const char *value,
-							GucContext context, bool makeDefault);
+				GucContext context, bool makeDefault);
 extern const char *GetConfigOption(const char *name);
 extern void ProcessConfigFile(GucContext context);
 extern void ResetAllOptions(bool isStartup);
 extern void ParseLongOption(const char *string, char **name, char **value);
 extern bool set_config_option(const char *name, const char *value,
-							  GucContext context, bool DoIt, bool makeDefault);
+				  GucContext context, bool DoIt, bool makeDefault);
 extern void ShowAllGUCConfig(void);
 
 
@@ -72,5 +72,4 @@ extern bool Show_btree_build_stats;
 
 extern bool SQL_inheritance;
 extern bool Australian_timezones;
-
 #endif	 /* GUC_H */

@@ -42,31 +42,31 @@ typedef struct
 								 *
 								 *
 								 *
+								 *
 								 * geo-decls.h */
-
 #endif	 /* TIOGA_FRONTEND */
 
 typedef enum
 {
-	TG_INGRED,
-	TG_EYE,
-	TG_RECIPE
+				TG_INGRED,
+				TG_EYE,
+				TG_RECIPE
 }			TgElemType;
 
 typedef enum
 {
-	TG_SQL,
-	TG_C,
-	TG_RECIPE_GRAPH,
-	TG_COMPILED
+				TG_SQL,
+				TG_C,
+				TG_RECIPE_GRAPH,
+				TG_COMPILED
 }			TgSrcLangType;
 
 typedef enum
 {
-	TG_INGRED_NODE,
-	TG_EYE_NODE,
-	TG_RECIPE_NODE,
-	TG_TEE_NODE					/* tee nodes are not stored in the db we
+				TG_INGRED_NODE,
+				TG_EYE_NODE,
+				TG_RECIPE_NODE,
+				TG_TEE_NODE		/* tee nodes are not stored in the db we
 								 * create them when we read the recipe
 								 * back */
 }			TgNodeType;

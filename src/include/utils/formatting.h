@@ -32,5 +32,4 @@ extern Datum int4_to_char(PG_FUNCTION_ARGS);
 extern Datum int8_to_char(PG_FUNCTION_ARGS);
 extern Datum float4_to_char(PG_FUNCTION_ARGS);
 extern Datum float8_to_char(PG_FUNCTION_ARGS);
-
 #endif

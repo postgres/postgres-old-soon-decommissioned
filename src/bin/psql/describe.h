@@ -23,7 +23,7 @@ bool		describeTypes(const char *name, bool verbose);
 bool		describeOperators(const char *name);
 
 /* \du */
-bool 		describeUsers(const char *name);
+bool		describeUsers(const char *name);
 
 /* \z (or \dp) */
 bool		permissionsList(const char *name);
@@ -39,5 +39,4 @@ bool		listAllDbs(bool desc);
 
 /* \dt, \di, \ds, \dS, etc. */
 bool		listTables(const char *infotype, const char *name, bool desc);
-
 #endif	 /* DESCRIBE_H */

@@ -244,7 +244,6 @@ xfunc_llel_chains(Stream root, Stream bottom)
 		if (is_clause(tmpstream)
 			&& get_pathptr(pathstream) != get_pathptr(tmpstream))
 		{
-
 			/*
 			 * * If restriction moved above a Join after sort, we pull it *
 			 * up in the join plan. *	 If restriction moved down, we
@@ -470,7 +469,7 @@ xfunc_form_groups(Query *queryInfo, Stream root, Stream bottom)
 				 get_groupup((Stream) get_downstream(temp))) &&
 				get_grouprank(parent) < get_grouprank(temp))
 			{
-				progress = true;/* we formed a new group */
+				progress = true;		/* we formed a new group */
 				set_groupup(temp, true);
 				set_groupcost(temp,
 							  get_groupcost(temp) +
@@ -485,7 +484,7 @@ xfunc_form_groups(Query *queryInfo, Stream root, Stream bottom)
 }
 
 
-/* -------------------							 UTILITY FUNCTIONS	   ------------------------- */
+/* -------------------							   UTILITY FUNCTIONS	 ------------------------- */
 
 /*
  ** xfunc_free_stream

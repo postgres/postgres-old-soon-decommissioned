@@ -55,9 +55,9 @@ typedef struct ScnInfo
 
 typedef enum
 {
-	DL_NEEDRELOC,				/* still need relocation */
-	DL_RELOCATED,				/* no relocation necessary */
-	DL_INPROG					/* relocation in progress */
+				DL_NEEDRELOC,	/* still need relocation */
+				DL_RELOCATED,	/* no relocation necessary */
+				DL_INPROG		/* relocation in progress */
 }			dlRStatus;
 
 typedef struct JmpTbl
@@ -120,5 +120,4 @@ extern char *dl_error( /* void */ );
 extern char **dl_undefinedSymbols( /* int *count */ );
 extern void dl_printAllSymbols( /* void *handle */ );
 extern void dl_setLibraries( /* char *libs */ );
-
 #endif	 /* _DL_HEADER_ */

@@ -241,10 +241,10 @@ ExecAllocTableSlot(TupleTable table)
 	Assert(table != NULL);
 
 	/*
-	 * if our table is full we have to allocate a larger size table.
-	 * Since ExecAllocTableSlot() is only called before the table is ever
-	 * used to store tuples, we don't have to worry about the contents of
-	 * the old table. If this changes, then we will have to preserve the
+	 * if our table is full we have to allocate a larger size table. Since
+	 * ExecAllocTableSlot() is only called before the table is ever used
+	 * to store tuples, we don't have to worry about the contents of the
+	 * old table. If this changes, then we will have to preserve the
 	 * contents. -cim 6/23/90
 	 *
 	 * Unfortunately, we *cannot* do this.	All of the nodes in the plan that
@@ -347,7 +347,6 @@ ExecStoreTuple(HeapTuple tuple,
 			   Buffer buffer,
 			   bool shouldFree)
 {
-
 	/*
 	 * sanity checks
 	 */
@@ -407,7 +406,7 @@ ExecClearTuple(TupleTableSlot *slot)	/* slot in which to store tuple */
 
 	slot->val = (HeapTuple) NULL;
 
-	slot->ttc_shouldFree = true;/* probably useless code... */
+	slot->ttc_shouldFree = true;		/* probably useless code... */
 
 	/*
 	 * Drop the pin on the referenced buffer, if there is one.

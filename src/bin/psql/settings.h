@@ -69,5 +69,4 @@ extern PsqlSettings pset;
 #define EXIT_BADCONN 2
 
 #define EXIT_USER 3
-
 #endif

@@ -208,7 +208,6 @@ _hash_getovfladdr(Relation rel, Buffer *metabufp)
 	}
 	else
 	{
-
 		/*
 		 * Free_bit addresses the last used bit.  Bump it to address the
 		 * first available bit.

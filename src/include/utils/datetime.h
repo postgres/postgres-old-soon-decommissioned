@@ -281,5 +281,4 @@ extern int	DecodeUnits(int field, char *lowtoken, int *val);
 extern void ClearDateCache(bool);
 
 extern int	j2day(int jd);
-
 #endif	 /* DATETIME_H */

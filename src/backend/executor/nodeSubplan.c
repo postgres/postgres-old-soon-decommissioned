@@ -257,7 +257,6 @@ ExecSubPlan(SubPlan *node, List *pvar, ExprContext *econtext, bool *isNull)
 
 	if (!found)
 	{
-
 		/*
 		 * deal with empty subplan result.	result/isNull were previously
 		 * initialized correctly for all sublink types except EXPR and

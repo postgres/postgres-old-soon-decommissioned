@@ -21,5 +21,4 @@ extern bool ExecInitMergeJoin(MergeJoin *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsMergeJoin(MergeJoin *node);
 extern void ExecEndMergeJoin(MergeJoin *node);
 extern void ExecReScanMergeJoin(MergeJoin *node, ExprContext *exprCtxt, Plan *parent);
-
 #endif	 /* NODEMERGEJOIN_H; */

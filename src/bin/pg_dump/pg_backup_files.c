@@ -550,4 +550,3 @@ _EndBlobs(ArchiveHandle *AH, TocEntry *te)
 		die_horribly(AH, modulename, "could not close large object TOC file: %s\n", strerror(errno));
 
 }
-

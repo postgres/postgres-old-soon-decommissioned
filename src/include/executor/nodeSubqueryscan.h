@@ -21,5 +21,4 @@ extern void ExecEndSubqueryScan(SubqueryScan *node);
 extern bool ExecInitSubqueryScan(SubqueryScan *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsSubqueryScan(SubqueryScan *node);
 extern void ExecSubqueryReScan(SubqueryScan *node, ExprContext *exprCtxt, Plan *parent);
-
 #endif	 /* NODESUBQUERYSCAN_H */

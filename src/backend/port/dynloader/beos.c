@@ -49,7 +49,7 @@ pg_dlsym(void *handle, char *funcname)
 	/* Checking that "Handle" is valid */
 	if ((handle) && ((*(int *) (handle)) >= 0))
 	{
-		beos_dl_sym(*((int *) (handle)),funcname,(void **) &fpt);
+		beos_dl_sym(*((int *) (handle)), funcname, (void **) &fpt);
 		return fpt;
 	}
 	elog(NOTICE, "add-on not loaded correctly");

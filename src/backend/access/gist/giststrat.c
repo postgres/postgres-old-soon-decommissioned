@@ -121,5 +121,4 @@ RelationInvokeGISTStrategy(Relation r,
 	return (RelationInvokeStrategy(r, &GISTEvaluationData, attnum, s,
 								   left, right));
 }
-
 #endif

@@ -215,7 +215,7 @@ print_expr(Node *expr, List *rtable)
 
 		outputstr = DatumGetCString(OidFunctionCall3(typoutput,
 													 c->constvalue,
-													 ObjectIdGetDatum(typelem),
+											   ObjectIdGetDatum(typelem),
 													 Int32GetDatum(-1)));
 		printf("%s", outputstr);
 		pfree(outputstr);
@@ -322,7 +322,7 @@ plannode_type(Plan *p)
 {
 	switch (nodeTag(p))
 	{
-			case T_Plan:
+		case T_Plan:
 			return "PLAN";
 		case T_Result:
 			return "RESULT";

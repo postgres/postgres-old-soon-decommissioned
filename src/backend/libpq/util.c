@@ -50,7 +50,6 @@ pqdebug(char *fmt, char *msg)
 
 	if (PQtracep)
 	{
-
 		/*
 		 * if nothing else was suggested default to stderr
 		 */

@@ -22,17 +22,17 @@ static void usage(void);
 int
 main(int argc, char **argv)
 {
-	char	*p;
-	int	enc;
-	bool	be_only = FALSE;
+	char	   *p;
+	int			enc;
+	bool		be_only = FALSE;
 
 	if (argc < 2)
 	{
 		usage();
 		exit(1);
 	}
-	
-	if (strcmp(argv[1], "-b")==0)
+
+	if (strcmp(argv[1], "-b") == 0)
 	{
 		if (argc < 3)
 		{
@@ -44,14 +44,14 @@ main(int argc, char **argv)
 	}
 	else
 		p = argv[1];
-	
+
 	if (p && *p && isdigit((unsigned char) *p))
 	{
 		/*
 		 * Encoding number to name
 		 */
-		char	*name;
-		
+		char	   *name;
+
 		enc = atoi(p);
 
 		if ((name = (char *) pg_encoding_to_char(enc)))
@@ -74,16 +74,16 @@ main(int argc, char **argv)
 			printf("%d\n", enc);
 		}
 		exit(0);
-	}	
+	}
 	exit(1);
 }
 
 static void
 usage()
 {
-	fprintf(stderr, 
-	    "\nUsage: pg_encoding [options] encoding_name | encoding_number\n\n"
-	    "options:"
-	    "         -b        check if encoding is valid for backend\n\n"
-	);
+	fprintf(stderr,
+	 "\nUsage: pg_encoding [options] encoding_name | encoding_number\n\n"
+			"options:"
+		  "         -b        check if encoding is valid for backend\n\n"
+		);
 }

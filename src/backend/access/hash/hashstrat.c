@@ -46,7 +46,6 @@ static StrategyEvaluationData HTEvaluationData = {
 	(StrategyTransformMap) HTNegateCommute,
 	HTEvaluationExpressions
 };
-
 #endif
 
 /* ----------------------------------------------------------------
@@ -68,7 +67,6 @@ _hash_getstrat(Relation rel,
 
 	return strat;
 }
-
 #endif
 
 #ifdef NOT_USED
@@ -82,5 +80,4 @@ _hash_invokestrat(Relation rel,
 	return (RelationInvokeStrategy(rel, &HTEvaluationData, attno, strat,
 								   left, right));
 }
-
 #endif

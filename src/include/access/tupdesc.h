@@ -74,5 +74,4 @@ extern bool TupleDescInitEntry(TupleDesc desc,
 				   bool attisset);
 
 extern TupleDesc BuildDescForRelation(List *schema, char *relname);
-
 #endif	 /* TUPDESC_H */

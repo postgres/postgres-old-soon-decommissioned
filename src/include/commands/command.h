@@ -44,12 +44,12 @@ extern void AlterTableAddColumn(const char *relationName,
 					bool inh, ColumnDef *colDef);
 
 extern void AlterTableAlterColumnDefault(const char *relationName,
-										 bool inh, const char *colName,
-										 Node *newDefault);
+							 bool inh, const char *colName,
+							 Node *newDefault);
 
 extern void AlterTableAlterColumnStatistics(const char *relationName,
-											bool inh, const char *colName,
-											Node *statsTarget);
+								bool inh, const char *colName,
+								Node *statsTarget);
 
 extern void AlterTableDropColumn(const char *relationName,
 					 bool inh, const char *colName,
@@ -71,5 +71,4 @@ extern void AlterTableOwner(const char *relationName, const char *newOwnerName);
  * LOCK
  */
 extern void LockTableCommand(LockStmt *lockstmt);
-
 #endif	 /* COMMAND_H */

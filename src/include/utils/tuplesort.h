@@ -37,9 +37,9 @@ typedef struct Tuplesortstate Tuplesortstate;
  */
 
 extern Tuplesortstate *tuplesort_begin_heap(TupleDesc tupDesc,
-					  int nkeys,
-					  Oid *sortOperators, AttrNumber *attNums,
-					  bool randomAccess);
+					 int nkeys,
+					 Oid *sortOperators, AttrNumber *attNums,
+					 bool randomAccess);
 extern Tuplesortstate *tuplesort_begin_index(Relation indexRel,
 					  bool enforceUnique,
 					  bool randomAccess);
@@ -83,15 +83,15 @@ extern void tuplesort_restorepos(Tuplesortstate *state);
  */
 typedef enum
 {
-	SORTFUNC_LT,				/* raw "<" operator */
-	SORTFUNC_REVLT,				/* raw "<" operator, but reverse NULLs */
-	SORTFUNC_CMP,				/* -1 / 0 / 1 three-way comparator */
-	SORTFUNC_REVCMP				/* 1 / 0 / -1 (reversed) 3-way comparator */
+				SORTFUNC_LT,	/* raw "<" operator */
+				SORTFUNC_REVLT, /* raw "<" operator, but reverse NULLs */
+				SORTFUNC_CMP,	/* -1 / 0 / 1 three-way comparator */
+				SORTFUNC_REVCMP /* 1 / 0 / -1 (reversed) 3-way comparator */
 } SortFunctionKind;
 
 extern void SelectSortFunction(Oid sortOperator,
-							   RegProcedure *sortFunction,
-							   SortFunctionKind *kind);
+				   RegProcedure *sortFunction,
+				   SortFunctionKind *kind);
 
 /*
  * Apply a sort function (by now converted to fmgr lookup form)
@@ -99,7 +99,6 @@ extern void SelectSortFunction(Oid sortOperator,
  * NULLs and sort ordering direction properly.
  */
 extern int32 ApplySortFunction(FmgrInfo *sortFunction, SortFunctionKind kind,
-							   Datum datum1, bool isNull1,
-							   Datum datum2, bool isNull2);
-
+				  Datum datum1, bool isNull1,
+				  Datum datum2, bool isNull2);
 #endif	 /* TUPLESORT_H */

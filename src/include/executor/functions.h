@@ -17,5 +17,4 @@
 #include "fmgr.h"
 
 extern Datum fmgr_sql(PG_FUNCTION_ARGS);
-
 #endif	 /* FUNCTIONS_H */

@@ -90,7 +90,6 @@
 	: \
 	PointerGetDatum((char *) (T)) \
 )
-
 #endif	 /* SIZEOF_DATUM == 8 */
 
 /*
@@ -179,7 +178,5 @@
 				break; \
 		} \
 	} while (0)
-
 #endif	 /* SIZEOF_DATUM == 8 */
-
 #endif

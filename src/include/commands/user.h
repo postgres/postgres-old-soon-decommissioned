@@ -21,5 +21,4 @@ extern void AlterGroup(AlterGroupStmt *stmt, const char *tag);
 extern void DropGroup(DropGroupStmt *stmt);
 
 extern Datum update_pg_pwd(PG_FUNCTION_ARGS);
-
 #endif	 /* USER_H */

@@ -481,7 +481,7 @@ mmnblocks(Relation reln)
 {
 	MMRelTag	rtag;
 	MMRelHashEntry *rentry;
-	BlockNumber	nblocks;
+	BlockNumber nblocks;
 
 	if (reln->rd_rel->relisshared)
 		rtag.mmrt_dbid = (Oid) 0;
@@ -561,5 +561,4 @@ MMShmemSize()
 
 	return size;
 }
-
 #endif	 /* STABLE_MEMORY_STORAGE */

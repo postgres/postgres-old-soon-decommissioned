@@ -59,7 +59,7 @@
 		S_LOCK(lock); \
 	} while (0)
 
-#define SpinLockAcquire_NoHoldoff(lock)	S_LOCK(lock)
+#define SpinLockAcquire_NoHoldoff(lock) S_LOCK(lock)
 
 #define SpinLockRelease(lock) \
 	do { \
@@ -67,11 +67,10 @@
 		RESUME_INTERRUPTS(); \
 	} while (0)
 
-#define SpinLockRelease_NoHoldoff(lock)	S_UNLOCK(lock)
+#define SpinLockRelease_NoHoldoff(lock) S_UNLOCK(lock)
 
 #define SpinLockFree(lock)	S_LOCK_FREE(lock)
 
 
 extern void CreateSpinlocks(void);
-
 #endif	 /* SPIN_H */

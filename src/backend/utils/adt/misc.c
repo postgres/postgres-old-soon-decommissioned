@@ -66,7 +66,6 @@ oidrand(PG_FUNCTION_ARGS)
 {
 #ifdef NOT_USED
 	Oid			o = PG_GETARG_OID(0);
-
 #endif
 	int32		X = PG_GETARG_INT32(1);
 	bool		result;

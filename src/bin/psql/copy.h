@@ -19,5 +19,4 @@ bool		do_copy(const char *args);
 
 bool		handleCopyOut(PGconn *conn, FILE *copystream);
 bool		handleCopyIn(PGconn *conn, FILE *copystream, const char *prompt);
-
 #endif

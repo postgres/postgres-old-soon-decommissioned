@@ -41,5 +41,4 @@ extern Oid	any_ordering_op(Oid argtype);
 /* Extract operator OID or underlying-function OID from an Operator tuple */
 extern Oid	oprid(Operator op);
 extern Oid	oprfuncid(Operator op);
-
 #endif	 /* PARSE_OPER_H */

@@ -38,5 +38,4 @@ typedef void (*pqsigfunc) (int);
 extern void pqinitmask(void);
 
 extern pqsigfunc pqsignal(int signo, pqsigfunc func);
-
 #endif	 /* PQSIGNAL_H */

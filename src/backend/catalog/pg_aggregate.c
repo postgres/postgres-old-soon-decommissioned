@@ -167,7 +167,6 @@ AggregateCreate(char *aggName,
 	}
 	else
 	{
-
 		/*
 		 * If no finalfn, aggregate result type is type of the state value
 		 */

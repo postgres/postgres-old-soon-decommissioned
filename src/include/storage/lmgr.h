@@ -31,8 +31,8 @@
 										 * ROW SHARE */
 #define ExclusiveLock			7		/* blocks ROW SHARE/SELECT...FOR
 										 * UPDATE */
-#define AccessExclusiveLock		8		/* ALTER TABLE, DROP TABLE,
-										 * VACUUM FULL, and unqualified LOCK
+#define AccessExclusiveLock		8		/* ALTER TABLE, DROP TABLE, VACUUM
+										 * FULL, and unqualified LOCK
 										 * TABLE */
 
 /*
@@ -61,5 +61,4 @@ extern void UnlockPage(Relation relation, BlockNumber blkno, LOCKMODE lockmode);
 /* Lock an XID (used to wait for a transaction to finish) */
 extern void XactLockTableInsert(TransactionId xid);
 extern void XactLockTableWait(TransactionId xid);
-
 #endif	 /* LMGR_H */

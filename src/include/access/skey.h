@@ -45,7 +45,6 @@ extern void ScanKeyEntrySetIllegal(ScanKey entry);
 extern void ScanKeyEntryInitialize(ScanKey entry, bits16 flags,
 	 AttrNumber attributeNumber, RegProcedure procedure, Datum argument);
 extern void ScanKeyEntryInitializeWithInfo(ScanKey entry, bits16 flags,
-	 AttrNumber attributeNumber, FmgrInfo *finfo,
-	 MemoryContext mcxt, Datum argument);
-
+							 AttrNumber attributeNumber, FmgrInfo *finfo,
+							   MemoryContext mcxt, Datum argument);
 #endif	 /* SKEY_H */

@@ -36,5 +36,4 @@ bool		SetVariableBool(VariableSpace space, const char *name);
 bool		DeleteVariable(VariableSpace space, const char *name);
 void		DestroyVariableSpace(VariableSpace space);
 
-
 #endif	 /* VARIABLES_H */

@@ -16,5 +16,4 @@
 #include "nodes/parsenodes.h"
 
 extern void beginRecipe(RecipeStmt *stmt);
-
 #endif	 /* RECIPE_H */

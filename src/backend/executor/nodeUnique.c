@@ -61,7 +61,6 @@ ExecUnique(Unique *node)
 	 */
 	for (;;)
 	{
-
 		/*
 		 * fetch a tuple from the outer subplan
 		 */
@@ -186,8 +185,8 @@ int
 ExecCountSlotsUnique(Unique *node)
 {
 	return ExecCountSlotsNode(outerPlan(node)) +
-	ExecCountSlotsNode(innerPlan(node)) +
-	UNIQUE_NSLOTS;
+		ExecCountSlotsNode(innerPlan(node)) +
+		UNIQUE_NSLOTS;
 }
 
 /* ----------------------------------------------------------------

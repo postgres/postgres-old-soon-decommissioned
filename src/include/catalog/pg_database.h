@@ -39,8 +39,8 @@ CATALOG(pg_database) BOOTSTRAP
 	bool		datistemplate;	/* allowed as CREATE DATABASE template? */
 	bool		datallowconn;	/* new connections allowed? */
 	Oid			datlastsysoid;	/* highest OID to consider a system OID */
-	TransactionId datvacuumxid;	/* all XIDs before this are vacuumed */
-	TransactionId datfrozenxid;	/* all XIDs before this are frozen */
+	TransactionId datvacuumxid; /* all XIDs before this are vacuumed */
+	TransactionId datfrozenxid; /* all XIDs before this are frozen */
 	text		datpath;		/* VARIABLE LENGTH FIELD */
 } FormData_pg_database;
 
@@ -78,5 +78,4 @@ DATAMARKOID(= 2)
 #define RecoveryDb	2
 
 #undef DATAMARKOID
-
 #endif	 /* PG_DATABASE_H */

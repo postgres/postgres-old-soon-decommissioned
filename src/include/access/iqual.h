@@ -27,5 +27,4 @@ extern int	NIndexTupleProcessed;
 
 extern bool index_keytest(IndexTuple tuple, TupleDesc tupdesc,
 			  int scanKeySize, ScanKey key);
-
 #endif	 /* IQUAL_H */

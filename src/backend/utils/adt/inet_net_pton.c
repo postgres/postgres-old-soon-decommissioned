@@ -17,7 +17,6 @@
 
 #if defined(LIBC_SCCS) && !defined(lint)
 static const char rcsid[] = "$Id$";
-
 #endif
 
 #include <sys/types.h>
@@ -64,10 +63,10 @@ inet_net_pton(int af, const char *src, void *dst, size_t size)
 {
 	switch (af)
 	{
-			case AF_INET:
+		case AF_INET:
 			return size == -1 ?
-			inet_net_pton_ipv4(src, dst) :
-			inet_cidr_pton_ipv4(src, dst, size);
+				inet_net_pton_ipv4(src, dst) :
+				inet_cidr_pton_ipv4(src, dst, size);
 		default:
 			errno = EAFNOSUPPORT;
 			return (-1);

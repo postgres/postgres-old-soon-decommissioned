@@ -50,7 +50,6 @@ typedef unsigned long long ulong_long;
 #else
 typedef long long_long;
 typedef unsigned long ulong_long;
-
 #endif
 
 /*

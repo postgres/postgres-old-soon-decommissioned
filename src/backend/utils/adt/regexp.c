@@ -121,7 +121,6 @@ RE_compile_and_execute(text *text_re, char *text, int cflags)
 	regcomp_result = pg95_regcomp(&rev[oldest].cre_re, re, cflags);
 	if (regcomp_result == 0)
 	{
-
 		/*
 		 * use malloc/free for the cre_s field because the storage has to
 		 * persist across transactions

@@ -27,5 +27,4 @@ void		ClientAuthentication(Port *port);
 #define PG_KRB5_VERSION "PGVER5.1"
 
 extern char *pg_krb_server_keyfile;
-
 #endif	 /* AUTH_H */

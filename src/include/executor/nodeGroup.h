@@ -32,5 +32,4 @@ extern bool execTuplesMatch(HeapTuple tuple1,
 extern FmgrInfo *execTuplesMatchPrepare(TupleDesc tupdesc,
 					   int numCols,
 					   AttrNumber *matchColIdx);
-
 #endif	 /* NODEGROUP_H */

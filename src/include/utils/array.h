@@ -127,5 +127,4 @@ extern void mda_get_prod(int n, int *range, int *prod);
 extern void mda_get_offset_values(int n, int *dist, int *prod, int *span);
 extern int	mda_next_tuple(int n, int *curr, int *span);
 
-
 #endif	 /* ARRAY_H */

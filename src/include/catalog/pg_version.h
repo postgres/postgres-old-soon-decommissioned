@@ -61,5 +61,4 @@ typedef FormData_pg_version *Form_pg_version;
 #define Anum_pg_version_verbaseid		2
 #define Anum_pg_version_vertime			3
 
-
 #endif	 /* PG_VERSION_H */

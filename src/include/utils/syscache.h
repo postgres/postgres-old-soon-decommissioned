@@ -66,11 +66,10 @@ extern void ReleaseSysCache(HeapTuple tuple);
 extern HeapTuple SearchSysCacheCopy(int cacheId,
 				   Datum key1, Datum key2, Datum key3, Datum key4);
 extern bool SearchSysCacheExists(int cacheId,
-			   Datum key1, Datum key2, Datum key3, Datum key4);
+					 Datum key1, Datum key2, Datum key3, Datum key4);
 extern Oid GetSysCacheOid(int cacheId,
 			   Datum key1, Datum key2, Datum key3, Datum key4);
 
 extern Datum SysCacheGetAttr(int cacheId, HeapTuple tup,
 				AttrNumber attributeNumber, bool *isNull);
-
 #endif	 /* SYSCACHE_H */

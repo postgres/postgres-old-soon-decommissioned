@@ -133,7 +133,7 @@ static struct cachedesc cacheinfo[] = {
 			0,
 			0
 	}},
-	{AccessMethodProcedureRelationName,	/* AMPROCNUM */
+	{AccessMethodProcedureRelationName, /* AMPROCNUM */
 		AccessMethodProcedureIndex,
 		0,
 		2,
@@ -365,7 +365,8 @@ static struct cachedesc cacheinfo[] = {
 	}}
 };
 
-static CatCache *SysCache[lengthof(cacheinfo)];
+static CatCache *SysCache[
+						  lengthof(cacheinfo)];
 static int	SysCacheSize = lengthof(cacheinfo);
 static bool CacheInitialized = false;
 
@@ -564,7 +565,6 @@ SysCacheGetAttr(int cacheId, HeapTuple tup,
 				AttrNumber attributeNumber,
 				bool *isNull)
 {
-
 	/*
 	 * We just need to get the TupleDesc out of the cache entry, and then
 	 * we can apply heap_getattr().  We expect that the cache control data

@@ -39,15 +39,13 @@ extern Plan *pg_plan_query(Query *querytree);
 extern void pg_exec_query_string(char *query_string,
 					 CommandDest dest,
 					 MemoryContext parse_context);
-
 #endif	 /* BOOTSTRAP_INCLUDE */
 
 extern void die(SIGNAL_ARGS);
 extern void quickdie(SIGNAL_ARGS);
 extern void authdie(SIGNAL_ARGS);
-extern int PostgresMain(int argc, char *argv[], const char *username);
+extern int	PostgresMain(int argc, char *argv[], const char *username);
 extern void ResetUsage(void);
 extern void ShowUsage(void);
 extern FILE *StatFp;
-
 #endif	 /* TCOPPROT_H */

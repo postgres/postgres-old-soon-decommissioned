@@ -138,16 +138,15 @@ ExcPrint(Exception *excP,
 }
 
 #ifdef NOT_USED
-ExcProc    *
+ExcProc *
 ExcGetUnCaught(void)
 {
 	return ExcUnCaughtP;
 }
-
 #endif
 
 #ifdef NOT_USED
-ExcProc    *
+ExcProc *
 ExcSetUnCaught(ExcProc *newP)
 {
 	ExcProc    *oldP = ExcUnCaughtP;
@@ -156,7 +155,6 @@ ExcSetUnCaught(ExcProc *newP)
 
 	return oldP;
 }
-
 #endif
 
 static void

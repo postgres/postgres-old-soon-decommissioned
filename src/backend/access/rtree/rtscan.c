@@ -380,7 +380,6 @@ adjustiptr(IndexScanDesc s,
 						}
 						else
 						{
-
 							/*
 							 * remember that we're before the current
 							 * tuple

@@ -144,7 +144,6 @@ ProcessUtility(Node *parsetree,
 
 	switch (nodeTag(parsetree))
 	{
-
 			/*
 			 * ******************************** transactions ********************************
 			 *
@@ -386,7 +385,6 @@ ProcessUtility(Node *parsetree,
 				 */
 				if (stmt->column == NULL)
 				{
-
 					/*
 					 * rename relation
 					 *
@@ -398,7 +396,6 @@ ProcessUtility(Node *parsetree,
 				}
 				else
 				{
-
 					/*
 					 * rename attribute
 					 */
@@ -476,7 +473,8 @@ ProcessUtility(Node *parsetree,
 
 		case T_GrantStmt:
 			{
-				GrantStmt *stmt = (GrantStmt *) parsetree;
+				GrantStmt  *stmt = (GrantStmt *) parsetree;
+
 				commandTag = stmt->is_grant ? "GRANT" : "REVOKE";
 				set_ps_display(commandTag);
 

@@ -61,5 +61,4 @@ typedef PositionIdData *PositionId;
  */
 #define PositionIdGetOffsetNumber(positionId) \
 	((OffsetNumber) *(positionId))
-
 #endif	 /* POS_H */

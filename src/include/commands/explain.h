@@ -17,5 +17,4 @@
 #include "tcop/dest.h"
 
 extern void ExplainQuery(Query *query, bool verbose, bool analyze, CommandDest dest);
-
 #endif	 /* EXPLAIN_H */

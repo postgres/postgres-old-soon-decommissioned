@@ -125,7 +125,6 @@ ExecResult(Result *node)
 
 		if (outerPlan != NULL)
 		{
-
 			/*
 			 * retrieve tuples from the outer plan until there are no
 			 * more.
@@ -146,7 +145,6 @@ ExecResult(Result *node)
 		}
 		else
 		{
-
 			/*
 			 * if we don't have an outer plan, then we are just generating
 			 * the results from a constant target list.  Do it only once.

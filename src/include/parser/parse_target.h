@@ -27,5 +27,4 @@ extern Node *CoerceTargetExpr(ParseState *pstate, Node *expr,
 				 Oid type_id, Oid attrtype, int32 attrtypmod);
 extern List *checkInsertTargets(ParseState *pstate, List *cols,
 				   List **attrnos);
-
 #endif	 /* PARSE_TARGET_H */
