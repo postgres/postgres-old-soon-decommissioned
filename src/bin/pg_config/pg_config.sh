@@ -15,7 +15,7 @@ me=`basename $0`
 val_bindir='@bindir@'
 val_includedir='@includedir@'
 val_libdir='@libdir@'
-val_configure='@configure@'
+val_configure="@configure@"
 val_version='@version@'
 
 help="\
