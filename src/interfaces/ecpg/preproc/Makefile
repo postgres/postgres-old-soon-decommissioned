@@ -11,7 +11,8 @@ PATCHLEVEL=0
 override CPPFLAGS := -I$(srcdir)/../include -I$(srcdir) $(CPPFLAGS) $(THREAD_CPPFLAGS) \
 	-DMAJOR_VERSION=$(MAJOR_VERSION) \
 	-DMINOR_VERSION=$(MINOR_VERSION) -DPATCHLEVEL=$(PATCHLEVEL) \
-	-DINCLUDE_PATH=\"$(includedir)\" 
+	-DINCLUDEDIR=\"$(includedir)\" \
+	-DPKGINCLUDEDIR=\"$(pkgincludedir)\" 
 
 ifeq ($(GCC), yes)
 override CFLAGS += -Wno-error

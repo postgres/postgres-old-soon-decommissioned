@@ -174,6 +174,7 @@ main(int argc, char *const argv[])
 					add_preprocessor_define("dec_t=decimal");
 					add_preprocessor_define("intrvl_t=interval");
 					add_preprocessor_define("dtime_t=timestamp");
+					add_include_path(PKGINCLUDEDIR "/informix/esql");
 				}
 				else
 				{
@@ -209,7 +210,7 @@ main(int argc, char *const argv[])
 
 	add_include_path(".");
 	add_include_path("/usr/local/include");
-	add_include_path(INCLUDE_PATH);
+	add_include_path(INCLUDEDIR);
 	add_include_path("/usr/include");
 
 	if (verbose)
