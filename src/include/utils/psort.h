@@ -104,5 +104,6 @@ extern HeapTuple psort_grabtuple(Sort *node, bool *should_free);
 extern void psort_markpos(Sort *node);
 extern void psort_restorepos(Sort *node);
 extern void psort_end(Sort *node);
+extern void psort_rescan(Sort *node);
 
 #endif							/* PSORT_H */

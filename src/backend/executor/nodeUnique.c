@@ -355,3 +355,19 @@ ExecEndUnique(Unique *node)
 	ExecEndNode(outerPlan((Plan *) node), (Plan *) node);
 	ExecClearTuple(uniquestate->cs_ResultTupleSlot);
 }
+
+
+void
+ExecReScanUnique(Unique *node, ExprContext *exprCtxt, Plan *parent)
+{
+	UniqueState *uniquestate = node->uniquestate;
+	
+	ExecClearTuple(uniquestate->cs_ResultTupleSlot);
+	/* 
+	 * if chgParam of subnode is not null then plan
+	 * will be re-scanned by first ExecProcNode.
+	 */
+	if (((Plan*) node)->lefttree->chgParam == NULL)
+		ExecReScan (((Plan*) node)->lefttree, exprCtxt, (Plan *) node);
+	
+}

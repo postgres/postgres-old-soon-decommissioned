@@ -23,5 +23,6 @@ extern int	ExecCountSlotsSort(Sort *node);
 extern void ExecEndSort(Sort *node);
 extern void ExecSortMarkPos(Sort *node);
 extern void ExecSortRestrPos(Sort *node);
+extern void ExecReScanSort(Sort *node, ExprContext *exprCtxt, Plan *parent);
 
 #endif							/* NODESORT_H */
