@@ -175,15 +175,19 @@ typedef enum NodeTag
 	T_AllocSetContext,
 
 	/*
-	 * TAGS FOR VALUE NODES (pg_list.h)
+	 * TAGS FOR VALUE NODES (value.h)
 	 */
 	T_Value = 650,
-	T_List,
 	T_Integer,
 	T_Float,
 	T_String,
 	T_BitString,
 	T_Null,
+
+	/*
+	 * TAGS FOR LIST NODES (pg_list.h)
+	 */
+	T_List,
 
 	/*
 	 * TAGS FOR PARSE TREE NODES (parsenodes.h)

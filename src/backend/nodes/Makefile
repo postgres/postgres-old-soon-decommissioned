@@ -14,7 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 OBJS = nodeFuncs.o nodes.o list.o bitmapset.o \
        copyfuncs.o equalfuncs.o makefuncs.o \
-       outfuncs.o readfuncs.o print.o read.o
+       outfuncs.o readfuncs.o print.o read.o value.o
 
 all: SUBSYS.o
 
