@@ -1327,7 +1327,9 @@ hash_safe_grouping(Query *parse)
 		Operator	optup;
 		bool		oprcanhash;
 
-		optup = equality_oper(tle->resdom->restype, false);
+		optup = equality_oper(tle->resdom->restype, true);
+		if (!optup)
+			return false;
 		oprcanhash = ((Form_pg_operator) GETSTRUCT(optup))->oprcanhash;
 		ReleaseSysCache(optup);
 		if (!oprcanhash)

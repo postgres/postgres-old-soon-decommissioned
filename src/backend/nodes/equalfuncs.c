@@ -1480,8 +1480,9 @@ _equalTypeCast(TypeCast *a, TypeCast *b)
 }
 
 static bool
-_equalSortGroupBy(SortGroupBy *a, SortGroupBy *b)
+_equalSortBy(SortBy *a, SortBy *b)
 {
+	COMPARE_SCALAR_FIELD(sortby_kind);
 	COMPARE_NODE_FIELD(useOp);
 	COMPARE_NODE_FIELD(node);
 
@@ -2045,8 +2046,8 @@ equal(void *a, void *b)
 		case T_TypeCast:
 			retval = _equalTypeCast(a, b);
 			break;
-		case T_SortGroupBy:
-			retval = _equalSortGroupBy(a, b);
+		case T_SortBy:
+			retval = _equalSortBy(a, b);
 			break;
 		case T_RangeSubselect:
 			retval = _equalRangeSubselect(a, b);

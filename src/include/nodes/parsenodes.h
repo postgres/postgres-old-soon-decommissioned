@@ -279,14 +279,19 @@ typedef struct ResTarget
 } ResTarget;
 
 /*
- * SortGroupBy - for ORDER BY clause
+ * SortBy - for ORDER BY clause
  */
-typedef struct SortGroupBy
+#define SORTBY_ASC		1
+#define SORTBY_DESC		2
+#define SORTBY_USING	3
+
+typedef struct SortBy
 {
 	NodeTag		type;
-	List	   *useOp;			/* operator to use */
-	Node	   *node;			/* Expression  */
-} SortGroupBy;
+	int			sortby_kind;	/* see codes above */
+	List	   *useOp;			/* name of op to use, if SORTBY_USING */
+	Node	   *node;			/* expression to sort on */
+} SortBy;
 
 /*
  * RangeSubselect - subquery appearing in a FROM clause
@@ -614,7 +619,7 @@ typedef struct SelectStmt
 	 * These fields are used in both "leaf" SelectStmts and upper-level
 	 * SelectStmts.
 	 */
-	List	   *sortClause;		/* sort clause (a list of SortGroupBy's) */
+	List	   *sortClause;		/* sort clause (a list of SortBy's) */
 	Node	   *limitOffset;	/* # of result tuples to skip */
 	Node	   *limitCount;		/* # of result tuples to return */
 	List	   *forUpdate;		/* FOR UPDATE clause */

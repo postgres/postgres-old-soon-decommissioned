@@ -261,7 +261,9 @@ DefineOpClass(CreateOpClassStmt *stmt)
 
 	/*
 	 * If we are creating a default opclass, check there isn't one
-	 * already. (XXX should we restrict this test to visible opclasses?)
+	 * already.  (Note we do not restrict this test to visible opclasses;
+	 * this ensures that typcache.c can find unique solutions to its
+	 * questions.)
 	 */
 	if (stmt->isDefault)
 	{

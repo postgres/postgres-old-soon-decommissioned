@@ -110,6 +110,9 @@ DATA(insert (	2095 1 2166 ));
 DATA(insert (	2096 1 2166 ));
 DATA(insert (	2097 1 2180 ));
 DATA(insert (	2098 1 2187 ));
+DATA(insert (	2099 1  377 ));
+DATA(insert (	2233 1  380 ));
+DATA(insert (	2234 1  381 ));
 
 
 /* hash */
@@ -145,5 +148,6 @@ DATA(insert (	2229 1	456 ));
 DATA(insert (	2230 1	456 ));
 DATA(insert (	2231 1	456 ));
 DATA(insert (	2232 1	455 ));
+DATA(insert (	2235 1	329 ));
 
 #endif   /* PG_AMPROC_H */

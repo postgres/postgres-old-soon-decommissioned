@@ -222,6 +222,8 @@ extern Datum btfloat8cmp(PG_FUNCTION_ARGS);
 extern Datum btoidcmp(PG_FUNCTION_ARGS);
 extern Datum btoidvectorcmp(PG_FUNCTION_ARGS);
 extern Datum btabstimecmp(PG_FUNCTION_ARGS);
+extern Datum btreltimecmp(PG_FUNCTION_ARGS);
+extern Datum bttintervalcmp(PG_FUNCTION_ARGS);
 extern Datum btcharcmp(PG_FUNCTION_ARGS);
 extern Datum btnamecmp(PG_FUNCTION_ARGS);
 extern Datum bttextcmp(PG_FUNCTION_ARGS);

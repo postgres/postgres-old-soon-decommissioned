@@ -265,7 +265,7 @@ typedef enum NodeTag
 	T_ExprFieldSelect,
 	T_ResTarget,
 	T_TypeCast,
-	T_SortGroupBy,
+	T_SortBy,
 	T_RangeSubselect,
 	T_RangeFunction,
 	T_TypeName,

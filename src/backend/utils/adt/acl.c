@@ -481,6 +481,23 @@ aclitem_eq(PG_FUNCTION_ARGS)
 }
 
 /*
+ * aclitem hash function
+ *
+ * We make aclitems hashable not so much because anyone is likely to hash
+ * them, as because we want array equality to work on aclitem arrays, and
+ * with the typcache mechanism we must have a hash or btree opclass.
+ */
+Datum
+hash_aclitem(PG_FUNCTION_ARGS)
+{
+	AclItem    *a = PG_GETARG_ACLITEM_P(0);
+
+	/* not very bright, but avoids any issue of padding in struct */
+	PG_RETURN_UINT32((uint32) (a->ai_privs + a->ai_grantee + a->ai_grantor));
+}
+
+
+/*
  * acldefault()  --- create an ACL describing default access permissions
  *
  * Change this routine if you want to alter the default access policy for

@@ -37,7 +37,8 @@ extern List *addAllTargetsToSortList(ParseState *pstate,
 						bool resolveUnknown);
 extern List *addTargetToSortList(ParseState *pstate, TargetEntry *tle,
 					List *sortlist, List *targetlist,
-					List *opname, bool resolveUnknown);
+					int sortby_kind, List *sortby_opname,
+					bool resolveUnknown);
 extern Index assignSortGroupRef(TargetEntry *tle, List *tlist);
 extern bool targetIsInSortList(TargetEntry *tle, List *sortList);
 

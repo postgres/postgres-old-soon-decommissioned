@@ -342,6 +342,9 @@ cash_send(PG_FUNCTION_ARGS)
 	PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
 }
 
+/*
+ * Comparison functions
+ */
 
 Datum
 cash_eq(PG_FUNCTION_ARGS)
@@ -395,6 +398,20 @@ cash_ge(PG_FUNCTION_ARGS)
 	Cash		c2 = PG_GETARG_CASH(1);
 
 	PG_RETURN_BOOL(c1 >= c2);
+}
+
+Datum
+cash_cmp(PG_FUNCTION_ARGS)
+{
+	Cash		c1 = PG_GETARG_CASH(0);
+	Cash		c2 = PG_GETARG_CASH(1);
+
+	if (c1 > c2)
+		PG_RETURN_INT32(1);
+	else if (c1 == c2)
+		PG_RETURN_INT32(0);
+	else
+		PG_RETURN_INT32(-1);
 }
 
 

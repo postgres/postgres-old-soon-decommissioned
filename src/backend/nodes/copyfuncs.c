@@ -1402,11 +1402,12 @@ _copyTypeName(TypeName *from)
 	return newnode;
 }
 
-static SortGroupBy *
-_copySortGroupBy(SortGroupBy *from)
+static SortBy *
+_copySortBy(SortBy *from)
 {
-	SortGroupBy *newnode = makeNode(SortGroupBy);
+	SortBy *newnode = makeNode(SortBy);
 
+	COPY_SCALAR_FIELD(sortby_kind);
 	COPY_NODE_FIELD(useOp);
 	COPY_NODE_FIELD(node);
 
@@ -2924,8 +2925,8 @@ copyObject(void *from)
 		case T_TypeCast:
 			retval = _copyTypeCast(from);
 			break;
-		case T_SortGroupBy:
-			retval = _copySortGroupBy(from);
+		case T_SortBy:
+			retval = _copySortBy(from);
 			break;
 		case T_RangeSubselect:
 			retval = _copyRangeSubselect(from);

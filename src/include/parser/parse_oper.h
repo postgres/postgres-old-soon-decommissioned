@@ -38,15 +38,16 @@ extern Operator compatible_oper(List *op, Oid arg1, Oid arg2, bool noError);
 
 /* currently no need for compatible_left_oper/compatible_right_oper */
 
-/* Routines for identifying "=" and "<" operators for a type */
+/* Routines for identifying "=", "<", ">" operators for a type */
 extern Operator equality_oper(Oid argtype, bool noError);
 extern Operator ordering_oper(Oid argtype, bool noError);
+extern Operator reverse_ordering_oper(Oid argtype, bool noError);
 
 /* Convenience routines for common calls on the above */
 extern Oid	compatible_oper_opid(List *op, Oid arg1, Oid arg2, bool noError);
 extern Oid	equality_oper_funcid(Oid argtype);
 extern Oid	ordering_oper_opid(Oid argtype);
-extern Oid	ordering_oper_funcid(Oid argtype);
+extern Oid	reverse_ordering_oper_opid(Oid argtype);
 
 /* Extract operator OID or underlying-function OID from an Operator tuple */
 extern Oid	oprid(Operator op);
