@@ -235,8 +235,8 @@ D_{1}, v_{2} \in D_{2}, \ldots, v_{k} \in D_{k}$}.
     such that
     <parameter>v<subscript>1</subscript></parameter> &isin; 
     <parameter>D<subscript>1</subscript></parameter>,
-    <parameter>v<subscript>1</subscript></parameter> &isin; 
-    <parameter>D<subscript>1</subscript></parameter>,
+    <parameter>v<subscript>2</subscript></parameter> &isin; 
+    <parameter>D<subscript>2</subscript></parameter>,
     ...
     <parameter>v<subscript>k</subscript></parameter> &isin; 
     <parameter>D<subscript>k</subscript></parameter>.
