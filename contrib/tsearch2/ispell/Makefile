@@ -8,7 +8,7 @@ include $(top_builddir)/src/Makefile.global
 PG_CPPFLAGS = -I$(srcdir)/.. $(CPPFLAGS)
 override CFLAGS += $(CFLAGS_SL)
 
-SUBOBJS = spell.o 
+SUBOBJS = spell.o regis.o 
 
 all: SUBSYS.o
 
