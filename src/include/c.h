@@ -705,16 +705,11 @@ typedef struct Exception
 #define StrNCpy(dst,src,len)	\
 	(strncpy((dst),(src),(len)),(len > 0) ? *((dst)+(len)-1)='\0' : (dummyret)NULL,(void)(dst))
 
-/* Get a bit mask of the bits set in non-int32 aligned addresses */
-#define INT_ALIGN_MASK (sizeof(int32) - 1)
-
 /* This function gets call too often, so we inline it if we can */
 #define MemSet(start, val, len) do \
 								{	/* are we aligned for int32? */ \
-									/* We have to cast the pointer to int \
-									   so we can do the AND */ \
-									if (((int)(start) & INT_ALIGN_MASK) == 0 && \
-										((len) & INT_ALIGN_MASK) == 0 && \
+									if ((start) == INTALIGN(start) && \
+										(len) % sizeof(int32) == 0 && \
 										(val) == 0 && \
 									/* \
 									 * We got this number by testing this \
