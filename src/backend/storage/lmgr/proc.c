@@ -1013,7 +1013,7 @@ enable_sig_alarm(int delayms, bool is_statement_timeout)
 
 	/* If we reach here, okay to set the timer interrupt */
 #ifndef __BEOS__
-	MemSet(&timeval, 0, sizeof(struct itimerval));
+	MemSet((void *)&timeval, 0, sizeof(struct itimerval));
 	timeval.it_value.tv_sec = delayms / 1000;
 	timeval.it_value.tv_usec = (delayms % 1000) * 1000;
 	if (setitimer(ITIMER_REAL, &timeval, NULL))
@@ -1054,7 +1054,7 @@ disable_sig_alarm(bool is_statement_timeout)
 #ifndef __BEOS__
 		struct itimerval timeval;
 
-		MemSet(&timeval, 0, sizeof(struct itimerval));
+		MemSet((void *)&timeval, 0, sizeof(struct itimerval));
 		if (setitimer(ITIMER_REAL, &timeval, NULL))
 		{
 			statement_timeout_active = deadlock_timeout_active = false;
@@ -1120,7 +1120,7 @@ CheckStatementTimeout(void)
 #ifndef __BEOS__
 		struct itimerval timeval;
 
-		MemSet(&timeval, 0, sizeof(struct itimerval));
+		MemSet((void *)&timeval, 0, sizeof(struct itimerval));
 		timeval.it_value.tv_sec = statement_fin_time.tv_sec - now.tv_sec;
 		timeval.it_value.tv_usec = statement_fin_time.tv_usec - now.tv_usec;
 		if (timeval.it_value.tv_usec < 0)

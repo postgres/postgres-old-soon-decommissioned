@@ -746,7 +746,7 @@ ExecMakeFunctionResult(FuncExprState *fcache,
 	 */
 	if (fcache->func.fn_retset)
 	{
-		fcinfo.resultinfo = (Node *) &rsinfo;
+		fcinfo.resultinfo = (void *) &rsinfo;
 		rsinfo.type = T_ReturnSetInfo;
 		rsinfo.econtext = econtext;
 		rsinfo.expectedDesc = NULL;
@@ -992,7 +992,7 @@ ExecMakeTableFunctionResult(ExprState *funcexpr,
 	 * doesn't actually get to see the resultinfo, but set it up anyway
 	 * because we use some of the fields as our own state variables.
 	 */
-	fcinfo.resultinfo = (Node *) &rsinfo;
+	fcinfo.resultinfo = (void *) &rsinfo;
 	rsinfo.type = T_ReturnSetInfo;
 	rsinfo.econtext = econtext;
 	rsinfo.expectedDesc = expectedDesc;
