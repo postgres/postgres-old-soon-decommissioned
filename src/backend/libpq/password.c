@@ -66,9 +66,9 @@ verify_password(const Port *port, const char *user, const char *password)
 		p = pw_file_line;
 
 		test_user = strtok(p, ":");
-		test_pw = strtok(NULL, ":");
 		if (!test_user || test_user[0] == '\0')
 			continue;
+		test_pw = strtok(NULL, ":");
 
 		if (strcmp(user, test_user) == 0)
 		{
