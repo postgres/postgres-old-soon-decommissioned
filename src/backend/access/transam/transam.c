@@ -594,12 +594,14 @@ TransactionIdDidAbort(TransactionId transactionId)
 	TransactionLogTest(transactionId, XID_ABORT);
 }
 
-#ifdef 0
 /* 
  * Now this func in shmem.c and gives quality answer by scanning
  * PROC structures of all running backend. - vadim 11/26/96
- */
-bool	/* true if given transaction neither committed nor aborted */
+ *
+ * Old comments:
+ * true if given transaction neither committed nor aborted 
+ 
+bool
 TransactionIdIsInProgress(TransactionId transactionId)
 {
     if (AMI_OVERRIDE)
@@ -608,7 +610,7 @@ TransactionIdIsInProgress(TransactionId transactionId)
     return
 	TransactionLogTest(transactionId, XID_INPROGRESS);
 }
-#endif
+ */
 
 /* --------------------------------
  *	TransactionId Commit
