@@ -1988,8 +1988,16 @@ HandleSlashCmds(PsqlSettings *pset,
 
 				if (optarg)
 					fs = optarg;
-				if (optarg && !*optarg && strlen(cmd) > 2)
-					fs = cmd + 2;
+				/* handle \f \{space} */
+				if (optarg && !*optarg && strlen(cmd) > 1)
+				{
+					int			i;
+					
+					/* line and cmd match until the first blank space */
+					for (i=2; isspace(line[i]); i++)
+						;
+					fs = cmd + i - 1;
+				}
 				if (pset->opt.fieldSep)
 					free(pset->opt.fieldSep);
 				if (!(pset->opt.fieldSep = strdup(fs)))
