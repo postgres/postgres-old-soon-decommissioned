@@ -13,13 +13,8 @@
 #ifndef	BUFPAGE_H
 #define BUFPAGE_H
 
-#include "c.h"
-#include "machine.h"		/* for BLCKSZ */
-
-#include "storage/buf.h"
-#include "storage/item.h"
 #include "storage/itemid.h"
-#include "storage/itemptr.h"
+#include "storage/item.h"
 
 /*
  * a postgres disk page is an abstraction layered on top of a postgres
