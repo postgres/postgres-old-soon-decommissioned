@@ -1165,7 +1165,8 @@ func_get_detail(char *funcname,
 			targetType = GetSysCacheOid(TYPENAME,
 										PointerGetDatum(funcname),
 										0, 0, 0);
-			if (OidIsValid(targetType))
+			if (OidIsValid(targetType) &&
+				!ISCOMPLEX(targetType))
 			{
 				Oid			sourceType = argtypes[0];
 				Node	   *arg1 = lfirst(fargs);
