@@ -176,11 +176,12 @@ typedef enum
 
 extern PGErrorVerbosity Log_error_verbosity;
 extern char *Log_line_prefix;
+extern unsigned int Log_destination;
 
-#ifdef HAVE_SYSLOG
-extern int	Use_syslog;
-#endif
-
+/* Log destination bitmap */
+#define LOG_DESTINATION_STDERR   1
+#define LOG_DESTINATION_SYSLOG   2
+#define LOG_DESTINATION_EVENTLOG 4
 
 /* Other exported functions */
 extern void DebugFileOpen(void);
