@@ -23,6 +23,10 @@ override CPPFLAGS+= -DBUILDING_DLL
 endif
 endif
 
+ifneq (,$(findstring timezone,$(subdir)))
+override CPPFLAGS+= -DBUILDING_DLL
+endif
+
 ifneq (,$(findstring ecpg/ecpglib,$(subdir)))
 override CPPFLAGS+= -DBUILDING_DLL
 endif
