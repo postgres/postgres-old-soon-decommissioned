@@ -2706,6 +2706,8 @@ ATPrepAddColumn(List **wqueue, Relation rel, bool recurse,
 		/* Child should see column as singly inherited */
 		colDefChild->inhcount = 1;
 		colDefChild->is_local = false;
+		/* and don't make a support dependency on the child */
+		colDefChild->support = NULL;
 
 		ATOneLevelRecursion(wqueue, rel, childCmd);
 	}
