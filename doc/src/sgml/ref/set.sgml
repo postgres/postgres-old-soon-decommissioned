@@ -870,7 +870,7 @@ SET DATESTYLE TO 'ISO';
    Enable GEQO for queries with 4 or more tables:
 
    <programlisting> 
-SET GEQO ON=4;
+SET GEQO = 'ON=4';
    </programlisting>
 
    Set GEQO to default:
