@@ -555,7 +555,8 @@ Pg_result(ClientData cData, Tcl_Interp *interp, int argc, char *argv[])
 	result = PgGetResultId(interp, argv[1]);
 	if (result == (PGresult *) NULL)
 	{
-		Tcl_AppendResult(interp, argv[1], " is not a valid query result", 0);
+		Tcl_AppendResult(interp, "\n",
+						 argv[1], " is not a valid query result", 0);
 		return TCL_ERROR;
 	}
 
