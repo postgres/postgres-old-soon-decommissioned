@@ -168,10 +168,10 @@ ExecInitGroup(Group *node, EState *estate)
 	 * initialize child expressions
 	 */
 	grpstate->ss.ps.targetlist = (List *)
-		ExecInitExpr((Node *) node->plan.targetlist,
+		ExecInitExpr((Expr *) node->plan.targetlist,
 					 (PlanState *) grpstate);
 	grpstate->ss.ps.qual = (List *)
-		ExecInitExpr((Node *) node->plan.qual,
+		ExecInitExpr((Expr *) node->plan.qual,
 					 (PlanState *) grpstate);
 
 	/*

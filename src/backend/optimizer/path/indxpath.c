@@ -1124,6 +1124,7 @@ pred_test_simple_clause(Expr *predicate, Node *clause)
 				clause_strategy,
 				test_strategy;
 	Expr	   *test_expr;
+	ExprState  *test_exprstate;
 	Datum		test_result;
 	bool		isNull;
 	Relation	relation;
@@ -1274,9 +1275,10 @@ pred_test_simple_clause(Expr *predicate, Node *clause)
 							  (Expr *) clause_const,
 							  (Expr *) pred_const);
 	set_opfuncid((OpExpr *) test_expr);
+	test_exprstate = ExecInitExpr(test_expr, NULL);
 
-	econtext = MakeExprContext(NULL, TransactionCommandContext);
-	test_result = ExecEvalExprSwitchContext((Node *) test_expr, econtext,
+	econtext = MakeExprContext(NULL, CurrentMemoryContext);
+	test_result = ExecEvalExprSwitchContext(test_exprstate, econtext,
 											&isNull, NULL);
 	FreeExprContext(econtext);
 

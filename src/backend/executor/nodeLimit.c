@@ -301,9 +301,9 @@ ExecInitLimit(Limit *node, EState *estate)
 	/*
 	 * initialize child expressions
 	 */
-	limitstate->limitOffset = ExecInitExpr(node->limitOffset,
+	limitstate->limitOffset = ExecInitExpr((Expr *) node->limitOffset,
 										   (PlanState *) limitstate);
-	limitstate->limitCount = ExecInitExpr(node->limitCount,
+	limitstate->limitCount = ExecInitExpr((Expr *) node->limitCount,
 										  (PlanState *) limitstate);
 
 #define LIMIT_NSLOTS 1

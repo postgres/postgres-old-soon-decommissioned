@@ -172,10 +172,10 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate)
 	 * initialize child expressions
 	 */
 	scanstate->ss.ps.targetlist = (List *)
-		ExecInitExpr((Node *) node->scan.plan.targetlist,
+		ExecInitExpr((Expr *) node->scan.plan.targetlist,
 					 (PlanState *) scanstate);
 	scanstate->ss.ps.qual = (List *)
-		ExecInitExpr((Node *) node->scan.plan.qual,
+		ExecInitExpr((Expr *) node->scan.plan.qual,
 					 (PlanState *) scanstate);
 
 	/*
@@ -241,7 +241,8 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate)
 	 * Other node-specific setup
 	 */
 	scanstate->tuplestorestate = NULL;
-	scanstate->funcexpr = rte->funcexpr;
+	scanstate->funcexpr = ExecInitExpr((Expr *) rte->funcexpr,
+									   (PlanState *) scanstate);
 
 	scanstate->ss.ps.ps_TupFromTlist = false;
 

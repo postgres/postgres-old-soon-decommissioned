@@ -214,8 +214,6 @@ _outDatum(StringInfo str, Datum value, int typlen, bool typbyval)
 
 /*
  * print the basic stuff of all nodes that inherit from Plan
- *
- * NOTE: we deliberately omit the execution state (EState)
  */
 static void
 _outPlanInfo(StringInfo str, Plan *node)

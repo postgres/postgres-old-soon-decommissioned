@@ -380,10 +380,10 @@ ExecInitTidScan(TidScan *node, EState *estate)
 	 * initialize child expressions
 	 */
 	tidstate->ss.ps.targetlist = (List *)
-		ExecInitExpr((Node *) node->scan.plan.targetlist,
+		ExecInitExpr((Expr *) node->scan.plan.targetlist,
 					 (PlanState *) tidstate);
 	tidstate->ss.ps.qual = (List *)
-		ExecInitExpr((Node *) node->scan.plan.qual,
+		ExecInitExpr((Expr *) node->scan.plan.qual,
 					 (PlanState *) tidstate);
 
 #define TIDSCAN_NSLOTS 2
@@ -404,7 +404,10 @@ ExecInitTidScan(TidScan *node, EState *estate)
 	 * get the tid node information
 	 */
 	tidList = (ItemPointerData *) palloc(length(node->tideval) * sizeof(ItemPointerData));
-	numTids = TidListCreate(node->tideval,
+	tidstate->tss_tideval = (List *)
+		ExecInitExpr((Expr *) node->tideval,
+					 (PlanState *) tidstate);
+	numTids = TidListCreate(tidstate->tss_tideval,
 							tidstate->ss.ps.ps_ExprContext,
 							tidList);
 	tidPtr = -1;

@@ -550,6 +550,7 @@ ExecInitNullTupleSlot(EState *estate, TupleDesc tupType)
  *		ExecTypeFromTL
  *
  *		Generate a tuple descriptor for the result tuple of a targetlist.
+ *		(A parse/plan tlist must be passed, not an ExprState tlist.)
  *		Note that resjunk columns, if any, are included in the result.
  *
  *		Currently there are about 4 different places where we create

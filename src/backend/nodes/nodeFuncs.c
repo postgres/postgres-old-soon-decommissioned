@@ -88,5 +88,4 @@ set_opfuncid(OpExpr *opexpr)
 {
 	if (opexpr->opfuncid == InvalidOid)
 		opexpr->opfuncid = get_opcode(opexpr->opno);
-	opexpr->op_fcache = NULL;		/* XXX will go away soon */
 }

@@ -205,12 +205,12 @@ ExecInitResult(Result *node, EState *estate)
 	 * initialize child expressions
 	 */
 	resstate->ps.targetlist = (List *)
-		ExecInitExpr((Node *) node->plan.targetlist,
+		ExecInitExpr((Expr *) node->plan.targetlist,
 					 (PlanState *) resstate);
 	resstate->ps.qual = (List *)
-		ExecInitExpr((Node *) node->plan.qual,
+		ExecInitExpr((Expr *) node->plan.qual,
 					 (PlanState *) resstate);
-	resstate->resconstantqual = ExecInitExpr(node->resconstantqual,
+	resstate->resconstantqual = ExecInitExpr((Expr *) node->resconstantqual,
 											 (PlanState *) resstate);
 
 	/*

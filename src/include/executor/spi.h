@@ -30,7 +30,6 @@
 #include "tcop/utility.h"
 #include "tcop/dest.h"
 #include "nodes/params.h"
-#include "utils/fcache.h"
 #include "utils/datum.h"
 #include "utils/syscache.h"
 #include "utils/builtins.h"

@@ -207,10 +207,10 @@ ExecInitSeqScan(SeqScan *node, EState *estate)
 	 * initialize child expressions
 	 */
 	scanstate->ps.targetlist = (List *)
-		ExecInitExpr((Node *) node->plan.targetlist,
+		ExecInitExpr((Expr *) node->plan.targetlist,
 					 (PlanState *) scanstate);
 	scanstate->ps.qual = (List *)
-		ExecInitExpr((Node *) node->plan.qual,
+		ExecInitExpr((Expr *) node->plan.qual,
 					 (PlanState *) scanstate);
 
 #define SEQSCAN_NSLOTS 2

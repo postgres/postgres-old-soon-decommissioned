@@ -23,7 +23,6 @@
 #include "commands/prepare.h"
 #include "nodes/makefuncs.h"
 #include "optimizer/clauses.h"
-#include "optimizer/planmain.h"
 #include "parser/analyze.h"
 #include "parser/gramparse.h"
 #include "parser/parsetree.h"
@@ -2423,8 +2422,6 @@ transformExecuteStmt(ParseState *pstate, ExecuteStmt *stmt)
 					 i,
 					 format_type_be(given_type_id),
 					 format_type_be(expected_type_id));
-
-			fix_opfuncids(expr);
 
 			lfirst(l) = expr;
 

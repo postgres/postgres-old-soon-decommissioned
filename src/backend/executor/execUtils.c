@@ -321,9 +321,9 @@ ExecAssignResultTypeFromTL(PlanState *planstate)
 	}
 
 	/*
-	 * XXX Some plan nodes don't bother to set up planstate->targetlist,
-	 * so use the underlying plan's targetlist instead.  This will probably
-	 * need to be fixed later.
+	 * ExecTypeFromTL needs the parse-time representation of the tlist, not
+	 * a list of ExprStates.  This is good because some plan nodes don't
+	 * bother to set up planstate->targetlist ...
 	 */
 	tupDesc = ExecTypeFromTL(planstate->plan->targetlist, hasoid);
 	ExecAssignResultType(planstate, tupDesc, true);
@@ -681,7 +681,7 @@ ExecInsertIndexTuples(TupleTableSlot *slot,
 			continue;
 
 		indexInfo = indexInfoArray[i];
-		predicate = indexInfo->ii_Predicate;
+		predicate = indexInfo->ii_PredicateState;
 		if (predicate != NIL)
 		{
 			/* Skip this index-update if the predicate isn't satisfied */

@@ -131,10 +131,10 @@ ExecInitSubqueryScan(SubqueryScan *node, EState *estate)
 	 * initialize child expressions
 	 */
 	subquerystate->ss.ps.targetlist = (List *)
-		ExecInitExpr((Node *) node->scan.plan.targetlist,
+		ExecInitExpr((Expr *) node->scan.plan.targetlist,
 					 (PlanState *) subquerystate);
 	subquerystate->ss.ps.qual = (List *)
-		ExecInitExpr((Node *) node->scan.plan.qual,
+		ExecInitExpr((Expr *) node->scan.plan.qual,
 					 (PlanState *) subquerystate);
 
 #define SUBQUERYSCAN_NSLOTS 1

@@ -61,17 +61,19 @@ ExecReScan(PlanState *node, ExprContext *exprCtxt)
 
 		foreach(lst, node->initPlan)
 		{
-			PlanState  *splan = ((SubPlanState *) lfirst(lst))->planstate;
+			SubPlanExprState  *sstate = (SubPlanExprState *) lfirst(lst);
+			PlanState  *splan = sstate->planstate;
 
 			if (splan->plan->extParam != NIL)	/* don't care about child
 												 * locParam */
 				SetChangedParamList(splan, node->chgParam);
 			if (splan->chgParam != NIL)
-				ExecReScanSetParamPlan((SubPlanState *) lfirst(lst), node);
+				ExecReScanSetParamPlan(sstate, node);
 		}
 		foreach(lst, node->subPlan)
 		{
-			PlanState  *splan = ((SubPlanState *) lfirst(lst))->planstate;
+			SubPlanExprState  *sstate = (SubPlanExprState *) lfirst(lst);
+			PlanState  *splan = sstate->planstate;
 
 			if (splan->plan->extParam != NIL)
 				SetChangedParamList(splan, node->chgParam);

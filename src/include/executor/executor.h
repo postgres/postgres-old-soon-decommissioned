@@ -73,26 +73,27 @@ extern TupleDesc ExecGetTupType(PlanState *node);
 /*
  * prototypes from functions in execQual.c
  */
-extern Datum ExecEvalParam(Param *expression, ExprContext *econtext,
-			  bool *isNull);
 extern Datum GetAttributeByNum(TupleTableSlot *slot, AttrNumber attrno,
 				  bool *isNull);
 extern Datum GetAttributeByName(TupleTableSlot *slot, char *attname,
 				   bool *isNull);
-extern Datum ExecMakeFunctionResult(FunctionCachePtr fcache,
-					   List *arguments,
+extern void init_fcache(Oid foid, FuncExprState *fcache,
+						MemoryContext fcacheCxt);
+extern Datum ExecMakeFunctionResult(FuncExprState *fcache,
 					   ExprContext *econtext,
 					   bool *isNull,
 					   ExprDoneCond *isDone);
-extern Tuplestorestate *ExecMakeTableFunctionResult(Node *funcexpr,
+extern Tuplestorestate *ExecMakeTableFunctionResult(ExprState *funcexpr,
 							ExprContext *econtext,
 							TupleDesc expectedDesc,
 							TupleDesc *returnDesc);
-extern Datum ExecEvalExpr(Node *expression, ExprContext *econtext,
+extern Datum ExecEvalExpr(ExprState *expression, ExprContext *econtext,
 			 bool *isNull, ExprDoneCond *isDone);
-extern Datum ExecEvalExprSwitchContext(Node *expression, ExprContext *econtext,
+extern Datum ExecEvalExprSwitchContext(ExprState *expression, ExprContext *econtext,
 						  bool *isNull, ExprDoneCond *isDone);
-extern Node *ExecInitExpr(Node *node, PlanState *parent);
+extern ExprState *ExecInitExpr(Expr *node, PlanState *parent);
+extern SubPlanExprState *ExecInitExprInitPlan(SubPlanExpr *node,
+											  PlanState *parent);
 extern bool ExecQual(List *qual, ExprContext *econtext, bool resultForNull);
 extern int	ExecTargetListLength(List *targetlist);
 extern int	ExecCleanTargetListLength(List *targetlist);

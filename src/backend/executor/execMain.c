@@ -1543,7 +1543,8 @@ ExecRelCheck(ResultRelInfo *resultRelInfo,
 		{
 			qual = (List *) stringToNode(check[i].ccbin);
 			fix_opfuncids((Node *) qual);
-			resultRelInfo->ri_ConstraintExprs[i] = qual;
+			resultRelInfo->ri_ConstraintExprs[i] = (List *)
+				ExecInitExpr((Expr *) qual, NULL);
 		}
 		MemoryContextSwitchTo(oldContext);
 	}
