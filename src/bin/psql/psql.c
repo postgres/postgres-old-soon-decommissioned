@@ -1213,7 +1213,7 @@ main(int argc, char **argv)
       settings.opt.tableOpt = optarg;
       break;
     case 'x':
-      settings.opt.expanded = 0;
+      settings.opt.expanded = 1;
       break;
     default:
       usage(argv[0]);
