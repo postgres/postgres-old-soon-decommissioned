@@ -118,8 +118,10 @@ typedef OpaqueData *Opaque;
 typedef struct PageHeaderData
 {
 #ifdef XLOG
-	XLogRecPtr	pd_lsn;			/* XLOG: next byte after last byte of xlog */
+	XLogRecPtr	pd_lsn;			/* LSN: next byte after last byte of xlog */
 								/* record for last change of this page */
+	StartUpID	pd_sui;			/* SUI of last changes (currently it's */
+								/* used by heap AM only) */
 #endif
 	LocationIndex pd_lower;		/* offset to start of free space */
 	LocationIndex pd_upper;		/* offset to end of free space */
