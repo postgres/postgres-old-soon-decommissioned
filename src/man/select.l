@@ -14,8 +14,10 @@ select - retrieve instances from a class
     [\fBwhere\fR where-clause]    
     [\fBgroup by\fR attr_name1 {, attr_name-i....}]
     [\fBhaving\fR having-clause]
-    [\fBorder by\fR attr_name1 [\fBasc\fR | \fBdesc\fR] [\fBusing op1\fR] {, attr_namei...}]
 [ { \fBunion {all}\fR | \fBintersect\fR | \fBexcept\fR } \fBselect\fR ...]
+    [\fBorder by\fR attr_name1 [\fBasc\fR | \fBdesc\fR] [\fBusing op1\fR] {, attr_namei...}]
+    [\fBfor update\fR [\fBof\fR class_name...]]
+    [\fBlimit\fR count [\fBoffset\fR|, count]]
 
 .fi
 .SH DESCRIPTION
@@ -37,6 +39,12 @@ clause allows a user to specify that he wishes the instances sorted
 according to the corresponding operator.  This operator must be a
 binary one returning a boolean.  Multiple sort fields are allowed and
 are applied from left to right.
+The
+.BR "for update"
+allows the select statement to perform exclusive locking of selected rows.
+The
+.BR "limit/offset"
+allows control over which rows are returned by the query.
 .PP
 The target list specifies the fields to be retrieved.  Each 
 .IR attr_name
