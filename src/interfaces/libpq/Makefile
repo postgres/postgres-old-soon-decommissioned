@@ -71,8 +71,6 @@ c.h: ../include/c.h
 	rm -f c.h
 	echo "#undef PORTNAME" >  c.h
 	echo "#define PORTNAME $(PORTNAME)" >> c.h
-	echo "#undef PORTNAME_$(PORTNAME)" >>  c.h
-	echo "#define PORTNAME_$(PORTNAME)" >> c.h
 	cat ../include/c.h >> c.h
 
 .PHONY: beforeinstall-headers install-headers

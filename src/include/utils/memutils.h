@@ -67,7 +67,7 @@ s...)
  */
 #if defined(sun) && ! defined(sparc)
 #define	LONGALIGN(LEN)	SHORTALIGN(LEN)
-#elif defined (PORTNAME_alpha)
+#elif defined (alpha)
 #define	LONGALIGN(LEN)\
 	(((long)(LEN) + (sizeof (int) - 1)) & ~(sizeof (int) -1))
 #else

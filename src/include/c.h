@@ -737,11 +737,11 @@ extern char *form(char *fmt, ...);
  * ----------------------------------------------------------------
  */
 
-#if defined(PORTNAME_hpux) 
+#if defined(hpux) 
 #include "port/hpux/fixade.h"		/* for 8.07 unaligned access fixup */
-#endif /* PORTNAME_hpux */
+#endif /* hpux */
 
-#if defined(PORTNAME_sparc)
+#if defined(sparc)
 #define	memmove(d, s, l)	bcopy(s, d, l)
 #endif
 

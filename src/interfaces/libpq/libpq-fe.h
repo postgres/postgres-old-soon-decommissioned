@@ -261,10 +261,10 @@ typedef void *TUPLE;
 #define palloc malloc
 #define pfree free
 
-#if defined(PORTNAME_sparc)
+#if defined(sparc)
 extern char *sys_errlist[];
 #define strerror(A) (sys_errlist[(A)])
-#endif /* PORTNAME_sparc */
+#endif /* sparc */
 
 #ifdef __cplusplus
 };

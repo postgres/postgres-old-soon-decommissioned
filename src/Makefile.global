@@ -888,7 +888,7 @@ ifdef PROFILE
 endif
 
 # Globally pass PORTNAME
-CFLAGS+= -DPORTNAME_$(PORTNAME) -D$(PORTNAME)
+CFLAGS+= -D$(PORTNAME)
 
 # include port-specific flags
 CFLAGS+= $(CFLAGS_BE)

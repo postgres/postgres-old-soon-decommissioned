@@ -170,9 +170,9 @@ extern uint32 NameComputeLength(Name name);
 
 /* numutils.c */
 /* XXX hack.  HP-UX has a ltoa (with different arguments) already. */
-#ifdef PORTNAME_hpux
+#ifdef hpux
 #define ltoa pg_ltoa
-#endif /* PORTNAME_hpux */
+#endif /* hpux */
 extern int32 pg_atoi(char *s, int size, int c);
 extern void itoa(int i, char *a);
 extern void ltoa(int32 l, char *a);

@@ -97,11 +97,11 @@ typedef struct {
  *------------------------------------------------------------------------
  */
 
-/* #if defined(PORTNAME_irix5) */
+/* #if defined(irix5) */
 /* #define RETURN_NULL {*isNull = true; return(0); }*/
-/* #else*/ /* PORTNAME_irix5 */
+/* #else*/ /* irix5 */
 #define RETURN_NULL {*isNull = true; return(0); }
-/* #endif */ /* PORTNAME_irix5 */ 
+/* #endif */ /* irix5 */ 
 #define NAME_LEN    30
 #define MAX_BUFF_SIZE (1 << 13)
 
