@@ -574,8 +574,12 @@ pq_async_notify()
  * RETURNS: STATUS_OK or STATUS_ERROR
  */
 
-static char sock_path[100] = "";
+static char sock_path[MAXPGPATH+1] = "";
 
+/* do_unlink()
+ * Shutdown routine for backend connection
+ * If a Unix socket is used for communication, explicitly close it.
+ */
 static void
 do_unlink()
 {
