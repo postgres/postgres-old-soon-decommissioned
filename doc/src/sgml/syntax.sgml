@@ -747,7 +747,7 @@ sqrt(emp.salary)
    </sect2>
 
    <sect2>
-    <title>Aggregate Expressions</title>
+    <title id="aggregates-syntax">Aggregate Expressions</title>
 
     <para>
      An <firstterm>aggregate expression</firstterm> represents the application
