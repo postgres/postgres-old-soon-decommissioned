@@ -257,6 +257,7 @@ check_parent:;
 				/* handle concurrent fix of root page */
 				if (rootopaque->btpo_parent == BTREE_METAPAGE)	/* unupdated! */
 				{
+					elog(NOTICE, "bt_getroot: fixing root page");
 					newrootbuf = _bt_fixroot(rel, rootbuf, true);
 					LockBuffer(newrootbuf, BUFFER_LOCK_UNLOCK);
 					LockBuffer(newrootbuf, BT_READ);
