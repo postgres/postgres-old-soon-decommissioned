@@ -14,7 +14,8 @@ include $(top_builddir)/src/Makefile.global
 
 # be-fsstubs is here for historical reasons, probably belongs elsewhere
 
-OBJS = be-fsstubs.o auth.o crypt.o hba.o md5.o pqcomm.o pqformat.o pqsignal.o
+OBJS = be-fsstubs.o be-ssl.o auth.o crypt.o hba.o md5.o pqcomm.o \
+       pqformat.o pqsignal.o
 
 
 all: SUBSYS.o

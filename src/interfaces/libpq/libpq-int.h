@@ -270,6 +270,7 @@ struct pg_conn
 	bool		allow_ssl_try;	/* Allowed to try SSL negotiation */
 	bool		require_ssl;	/* Require SSL to make connection */
 	SSL		   *ssl;			/* SSL status, if have SSL connection */
+	X509	   *peer;			/* server certificate */
 #endif
 
 	/* Buffer for current error message */
