@@ -115,8 +115,12 @@ ReverifyMyDatabase(const char *name)
 	 */
 	dbform = (Form_pg_database) GETSTRUCT(tup);
 	if (! dbform->datallowconn)
+	{
+		heap_endscan(pgdbscan);
+		heap_close(pgdbrel, AccessShareLock);
 		elog(FATAL, "Database \"%s\" is not currently accepting connections",
 			 name);
+	}
 
 	/*
 	 * OK, we're golden.  Only other to-do item is to save the MULTIBYTE
