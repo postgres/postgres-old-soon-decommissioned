@@ -5378,6 +5378,8 @@ dumpIndexes(Archive *fout, TableInfo *tblinfo, int numTables)
 							 q->data, "",
 							 NULL, NULL, NULL);
 
+				for (k = 0; k < indnkeys; k++)
+					free(indkeys[k]);
 				free(indkeys);
 			}
 			else
