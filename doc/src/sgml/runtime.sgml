@@ -223,7 +223,7 @@ pg_ctl start -l logfile
    you probably always want to form your command lines along the lines
    of <literal>su -c '...' postgres</literal>, for example:
 <programlisting>
-su -c 'pg_ctl -D /usr/local/pgsql/data -l serverlog' postgres
+su -c 'pg_ctl start -D /usr/local/pgsql/data -l serverlog' postgres
 </programlisting>
   </para>
 
@@ -1888,6 +1888,8 @@ options         SEMMNS=512
 options         SEMMNU=256
 options         SEMMAP=256
 </programlisting>
+        (On NetBSD and OpenBSD the key word is actually
+        <literal>option</literal> singular.)
        </para>
       </listitem>
      </varlistentry>
