@@ -632,7 +632,7 @@ typedef struct RetrieveStmt
 	Node	   *whereClause;	/* qualifications */
 	List	   *groupClause;	/* group by clause */
 	Node	   *havingClause;	/* having conditional-expression */
-	List	   *selectClause;	/* subselect parameters */
+	List	   *unionClause;	/* union subselect parameters */
 	List	   *sortClause;		/* sort clause (a list of SortGroupBy's) */
 } RetrieveStmt;
 
@@ -648,6 +648,7 @@ typedef struct SubSelect
 {
 	NodeTag		type;
 	char	   *unique;			/* NULL, '*', or unique attribute name */
+	int			unionall;		/* union without unique sort */
 	List	   *targetList;		/* the target list (of ResTarget) */
 	List	   *fromClause;		/* the from clause */
 	Node	   *whereClause;	/* qualifications */
