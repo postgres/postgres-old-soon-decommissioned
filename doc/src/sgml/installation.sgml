@@ -1161,6 +1161,13 @@ gunzip -c user.ps.gz \
         <entry>See also <filename>doc/FAQ_HPUX</></>
        </row>
        <row>
+	<entry>IBM</entry>
+	<entry>S/390</entry>
+	<entry>7.1</entry>
+	<entry>2000-11-17, Neale Ferguson (<email>Neale.Ferguson@softwareAG-usa.com</>)</entry>
+	<entry></>
+       </row>
+       <row>
 	<entry>IRIX 6.5.6f</entry>
 	<entry>MIPS</entry>
 	<entry>6.5.3</entry>
