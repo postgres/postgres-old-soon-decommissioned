@@ -594,8 +594,7 @@ ExecHashOverflowInsert(HashJoinTable hashtable,
        *  - Chris Dunlop, <chris@onthe.net.au>
        * ------------------
        */
-      elog(WARN, "hash table out of memory. Use -B parameter to increase buffe
-rs.");
+      elog(WARN, "hash table out of memory. Use -B parameter to increase buffers.");
 #endif
 
     }
