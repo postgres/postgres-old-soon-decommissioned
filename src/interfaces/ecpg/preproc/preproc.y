@@ -528,7 +528,10 @@ stmt:  AlterDatabaseSetStmt { output_statement($1, 0, connection); }
 			if (connection)
 				mmerror(PARSE_ERROR, ET_ERROR, "no at option for connect statement.\n");
 
-			fprintf(yyout, "{ ECPGconnect(__LINE__, %s, %d); ", $1, autocommit);
+			if (compat == ECPG_COMPAT_INFORMIX)
+				fprintf(yyout, "{ ECPGconnect_informix(__LINE__, %s, %d); ", $1, autocommit);
+			else
+				fprintf(yyout, "{ ECPGconnect(__LINE__, %s, %d); ", $1, autocommit);
 			reset_variables();
 			whenever_action(2);
 			free($1);

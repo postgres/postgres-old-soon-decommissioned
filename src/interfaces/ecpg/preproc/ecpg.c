@@ -339,7 +339,7 @@ main(int argc, char *const argv[])
 				lex_init();
 
 				/* we need several includes */
-				fprintf(yyout, "/* Processed by ecpg (%d.%d.%d) */\n/* These four include files are added by the preprocessor */\n#include <ecpgtype.h>\n#include <ecpglib.h>\n#include <ecpgerrno.h>\n#include <sqlca.h>\n#line 1 \"%s\"\nenum COMPAT_MODE ecpg_compat_mode=%d;\n", MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL, input_filename, compat);
+				fprintf(yyout, "/* Processed by ecpg (%d.%d.%d) */\n/* These four include files are added by the preprocessor */\n#include <ecpgtype.h>\n#include <ecpglib.h>\n#include <ecpgerrno.h>\n#include <sqlca.h>\n#line 1 \"%s\"\n", MAJOR_VERSION, MINOR_VERSION, PATCHLEVEL, input_filename);
 
 				/* add some compatibility headers */
 				if (compat == ECPG_COMPAT_INFORMIX)
