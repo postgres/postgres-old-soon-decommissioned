@@ -959,7 +959,7 @@ DecodeDateTime(char **field, int *ftype, int nf,
 					if (tzp == NULL)
 						return -1;
 
-					if ((isdigit(*field[i]) || (ptype != 0))
+					if (isdigit(*field[i]) || ptype != 0)
 					{
 						char *cp;
 
