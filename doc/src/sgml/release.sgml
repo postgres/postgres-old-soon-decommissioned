@@ -1862,7 +1862,7 @@ $PostgreSQL$
 
     <listitem>
      <para>
-      Allow <application>g_restore</> to ignore some SQL errors (Fabien Coelho)
+      Allow <application>pg_restore</> to ignore some SQL errors (Fabien Coelho)
      </para>
      <para>
       This makes <application>pg_restore</>'s behavior similar to the
