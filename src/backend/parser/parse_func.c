@@ -225,7 +225,7 @@ agg_select_candidate(Oid typeid, CandidateList candidates)
 			}
 		}
 		/* otherwise, don't bother keeping this one around... */
-		else
+		else if (last_candidate != NULL)
 		{
 			last_candidate->next = NULL;
 		}
@@ -399,8 +399,8 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 				}
 				else
 				{
-					elog(ERROR,"Unable to select an aggregate function for type '%s'",
-						 typeidTypeName(basetype));
+					elog(ERROR,"Unable to select an aggregate function %s(%s)",
+						 funcname, typeidTypeName(basetype));
 				}
 			}
 
