@@ -69,4 +69,4 @@ pl.tab.h:	pl_gram.c
 
 clean:
 	rm -f lib$(NAME).a $(shlib)
-	rm -f *.o y.tab.h pl.tab.h pl_gram.c gram.c pl_scan.c scan.c
+	rm -f *.o pl.tab.h pl_gram.c pl_scan.c
