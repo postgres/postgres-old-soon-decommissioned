@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------
 #
 # Makefile--
-#    Makefile for nodes
+#    Makefile for backend/nodes
 #
 # IDENTIFICATION
 #    $Header$
@@ -12,8 +12,8 @@ SRCDIR = ../..
 include $(SRCDIR)/Makefile.global
 
 OBJS = nodeFuncs.o nodes.o list.o \
-       copyfuncs.o equalfuncs.o freefuncs.o makefuncs.o outfuncs.o \
-       readfuncs.o print.o read.o
+       copyfuncs.o equalfuncs.o makefuncs.o \
+       outfuncs.o readfuncs.o print.o read.o
 
 all: SUBSYS.o
 
@@ -29,4 +29,3 @@ clean:
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-
