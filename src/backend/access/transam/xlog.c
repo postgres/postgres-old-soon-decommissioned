@@ -1057,10 +1057,6 @@ XLogWrite(XLogwrtRqst WriteRqst)
 									   &use_existent, true);
 			openLogOff = 0;
 
-			if (!use_existent)	/* there was no precreated file */
-				elog(LOG, "XLogWrite: new log file created - "
-					 "consider increasing 'wal_files' in postgresql.conf.");
-
 			/* update pg_control, unless someone else already did */
 			LWLockAcquire(ControlFileLock, LW_EXCLUSIVE);
 			if (ControlFile->logId < openLogId ||
