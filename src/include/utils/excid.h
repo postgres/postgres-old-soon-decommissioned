@@ -13,7 +13,6 @@
 #ifndef	EXCID_H
 #define EXCID_H
 
-#include "utils/exc.h"	/* for Exception */
 
 extern Exception FailedAssertion;
 extern Exception BadState;

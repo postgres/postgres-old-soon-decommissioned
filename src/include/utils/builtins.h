@@ -19,9 +19,9 @@
 #define BUILTINS_H
 
 #include <storage/itemptr.h>
-#include <utils/rel.h>
-#include <utils/nabstime.h>
 #include <utils/geo-decls.h>
+#include <utils/nabstime.h>
+#include <utils/rel.h>
 
 /*
  *	Defined in adt/

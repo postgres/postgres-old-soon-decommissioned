@@ -25,13 +25,10 @@
 #ifndef	PORTAL_H
 #define PORTAL_H
 
-
-#include "nodes/execnodes.h"		/* for EState */
-#include "nodes/memnodes.h"
-#include "nodes/nodes.h"
-#include "nodes/pg_list.h"
-#include "nodes/plannodes.h"		/* for Plan */
-#include "executor/execdesc.h"
+#include <executor/execdesc.h>
+#include <lib/fstack.h>
+#include <nodes/memnodes.h>
+#include <utils/memutils.h>
 
 typedef struct PortalBlockData {
     AllocSetData	setData;

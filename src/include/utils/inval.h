@@ -13,8 +13,8 @@
 #ifndef	INVAL_H
 #define INVAL_H
 
-#include "access/htup.h"
-#include "utils/rel.h"
+#include <access/htup.h>
+#include <utils/rel.h>
 
 extern void DiscardInvalid(void);
 

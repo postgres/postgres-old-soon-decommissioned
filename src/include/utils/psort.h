@@ -13,6 +13,9 @@
 #ifndef	PSORT_H
 #define	PSORT_H
 
+#include <stdio.h>
+#include <access/relscan.h>
+
 #define	SORTMEM		(1 << 18)		/* 1/4 M - any static memory */
 #define	MAXTAPES	7			/* 7--See Fig. 70, p273 */
 #define	TAPEEXT		"pg_psort.XXXXXX"	/* TEMPDIR/TAPEEXT */
@@ -39,10 +42,6 @@ extern	Relation	SortRdesc;
 extern	struct leftist	*Tuples;
 
 #ifdef	EBUG
-#include <stdio.h>
-#include "utils/elog.h"
-#include "storage/buf.h"
-#include "storage/bufmgr.h"
 
 #define	PDEBUG(PROC, S1)\
 elog(DEBUG, "%s:%d>> PROC: %s.", __FILE__, __LINE__, S1)

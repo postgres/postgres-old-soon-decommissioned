@@ -13,7 +13,7 @@
 #ifndef	TMP_REL2_H
 #define	TMP_REL2_H
 
-#include "access/istrat.h"
+#include <utils/rel.h>
 
 extern IndexStrategy RelationGetIndexStrategy(Relation relation);
 

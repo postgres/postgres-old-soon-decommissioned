@@ -13,7 +13,8 @@
 #ifndef	LSELECT_H
 #define	LSELECT_H
 
-#include "access/htup.h"
+#include <stdio.h>
+#include <access/htup.h>
 
 struct	leftist {
     short	lt_dist; 	/* distance to leaf/empty node */

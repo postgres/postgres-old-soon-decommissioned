@@ -13,9 +13,7 @@
 #ifndef	RELCACHE_H
 #define RELCACHE_H
 
-#include <sys/types.h>
-
-#include "utils/rel.h"
+#include <utils/rel.h>
 
 /*
  * relation lookup routines
