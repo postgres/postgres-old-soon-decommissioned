@@ -2490,9 +2490,15 @@ PostgresMain(int argc, char *argv[], const char *username)
 	}
 	Assert(DataDir);
 
+	/* Acquire configuration parameters */
+	if (IsUnderPostmaster)
+	{
 #ifdef EXEC_BACKEND
-	read_nondefault_variables();
+		read_nondefault_variables();
 #endif
+	}
+	else
+		ProcessConfigFile(PGC_POSTMASTER);
 
 	/*
 	 * Set up signal handlers and masks.
@@ -2651,7 +2657,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.361 $ $Date: 2003/08/26 15:38:24 $\n");
+		puts("$Revision: 1.362 $ $Date: 2003/09/02 19:04:12 $\n");
 	}
 
 	/*
