@@ -2609,7 +2609,7 @@ sigusr1_handler(SIGNAL_ARGS)
 					ereport(LOG,
 							(errmsg("checkpoints are occurring too frequently (%d seconds apart)",
 									elapsed_secs),
-					errhint("Consider increasing 'checkpoint_segments'.")));
+					errhint("Consider increasing CHECKPOINT_SEGMENTS.")));
 			}
 			LastSignalledCheckpoint = now;
 		}
