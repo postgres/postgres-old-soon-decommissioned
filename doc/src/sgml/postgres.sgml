@@ -117,7 +117,7 @@ $PostgreSQL$
     <productname>PostgreSQL</> database administrator.  This includes
     installation of the software, set up and configuration of the
     server, management of users and databases, and maintenance tasks.
-    Anyone who runs a <productname>PostgreSQL</> server, either for
+    Anyone who runs a <productname>PostgreSQL</> server, even for
     personal use, but especially in production, should be familiar
     with the topics covered in this part.
    </para>
@@ -135,8 +135,8 @@ $PostgreSQL$
     The first few chapters are written so that they can be understood
     without prerequisite knowledge, so that new users who need to set
     up their own server can begin their exploration with this part.
-    The rest of this part which is about tuning and management
-    presupposes that the reader is familiar with the general use of
+    The rest of this part is about tuning and management; that material
+    assumes that the reader is familiar with the general use of
     the <productname>PostgreSQL</> database system.  Readers are
     encouraged to look at <xref linkend="tutorial"> and <xref
     linkend="sql"> for additional information.
