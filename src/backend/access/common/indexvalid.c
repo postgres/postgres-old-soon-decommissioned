@@ -13,6 +13,7 @@
  */
 
 #include <postgres.h>
+#include <fmgr.h>
 
 #include <access/htup.h>
 #include <access/iqual.h>
