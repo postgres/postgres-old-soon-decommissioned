@@ -458,15 +458,7 @@ exec_command(const char *cmd,
 
 		if (!encoding)
 		{
-			/* show encoding --- first check for change sent from server */
-			if (pset.encoding != PQclientEncoding(pset.db) &&
-				PQclientEncoding(pset.db) >= 0)
-			{
-				pset.encoding = PQclientEncoding(pset.db);
-				pset.popt.topt.encoding = pset.encoding;
-				SetVariable(pset.vars, "ENCODING",
-							pg_encoding_to_char(pset.encoding));
-			}
+			/* show encoding */
 			puts(pg_encoding_to_char(pset.encoding));
 		}
 		else
