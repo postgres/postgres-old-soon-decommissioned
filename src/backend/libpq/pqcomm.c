@@ -181,7 +181,7 @@ StreamDoUnlink()
  */
 
 int
-StreamServerPort(char *hostName, short portName, int *fdP)
+StreamServerPort(char *hostName, unsigned short portName, int *fdP)
 {
 	SockAddr	saddr;
 	int			fd,

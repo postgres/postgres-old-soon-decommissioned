@@ -234,7 +234,7 @@ extern int32 pqtest(struct varlena * vlena);
 /*
  * prototypes for functions in pqcomm.c
  */
-extern int	StreamServerPort(char *hostName, short portName, int *fdP);
+extern int	StreamServerPort(char *hostName, unsigned short portName, int *fdP);
 extern int	StreamConnection(int server_fd, Port *port);
 extern void StreamClose(int sock);
 extern void pq_init(void);
