@@ -739,7 +739,7 @@ do_copy(const char *args, PsqlSettings * settings)
 	} else {
 	    copystream = fopen(file, "w");
 	}
-	if (copystream < 0)
+	if (copystream == NULL)
 	    fprintf(stderr,
 		    "Unable to open file %s which to copy, errno = %s (%d).",
 		    from ? "from" : "to", strerror(errno), errno);

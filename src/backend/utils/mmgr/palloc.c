@@ -109,9 +109,8 @@ pstrdup(char* string)
 {
     char *nstr;
 
-    nstr = strcpy((char *)palloc(strlen(string)+1), string);
+    nstr = (char *)palloc(strlen(string)+1);
+    strcpy(nstr, string);
+
     return nstr;
 }
-
-
-

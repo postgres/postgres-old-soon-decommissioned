@@ -204,7 +204,7 @@ handle_load(char *filename, char *funcname)
 	    return((func_ptr) NULL);
     }
     
-    retval = pg_dlsym(file_scanner->handle, funcname);
+    retval = (func_ptr) pg_dlsym(file_scanner->handle, funcname);
     
     if (retval == (func_ptr) NULL) {
 	elog(WARN, "Can't find function %s in file %s", funcname, filename);
