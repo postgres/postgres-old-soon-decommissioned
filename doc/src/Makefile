@@ -36,8 +36,8 @@ $(addsuffix .tar, $(BOOKS)):
 	$(MAKE) -C sgml clean
 	$(MAKE) -C sgml $(basename $@).html
 	$(MAKE) -C sgml $(basename $@).html JADEFLAGS='-V html-manifest'
-	cd sgml && $(TAR) -c -f ../$@ -T HTML.manifest `echo *.gif | grep -v '\*'` *.css
+	cd sgml && $(TAR) -cf ../$@ -T HTML.manifest `echo *.gif | grep -v '\*'` *.css
 
 man.tar:
 	$(MAKE) -C sgml man
-	$(TAR) -c -f $@ -C sgml man1 man$(sqlmansect_dummy)
+	$(TAR) -cf $@ -C sgml man1 man$(sqlmansect_dummy)
