@@ -38,6 +38,9 @@ qnx4/SUBSYS.o: qnx4.dir
 qnx4.dir:
 	$(MAKE) -C qnx4 all
 
+tas.o: tas.s
+	$(CC) $(CFLAGS) -c tas.o tas.s $(LDFLAGS)
+
 .PHONY: clean dep
 
 distclean clean:
