@@ -49,8 +49,10 @@ CATALOG(pg_index)
 	int2vector	indkey;
 	oidvector	indclass;
 	bool		indisclustered;	/* unused */
-	bool		indislossy;		/* do we fetch false tuples (lossy
-								 * compression)? */
+	bool		indislossy;		/* index hit must be reevaluated against heap
+								 * value to make sure it really is match;
+								 * typically used by hash.
+								 */
 	bool		indhaskeytype;	/* not used, originally added by GIST */
 	bool		indisunique;	/* is this a unique index? */
 	bool		indisprimary;	/* is this index for primary key */
