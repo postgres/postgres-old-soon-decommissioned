@@ -107,15 +107,13 @@ typedef struct SISeg
 } SISeg;
 
 
-extern SISeg *shmInvalBuffer;	/* pointer to the shared buffer segment,
-								 * set by SISegmentAttach() */
+extern SISeg *shmInvalBuffer;	/* pointer to the shared inval buffer */
 
 
 /*
  * prototypes for functions in sinvaladt.c
  */
-extern int SISegmentInit(bool createNewSegment, IPCKey key,
-			  int maxBackends);
+extern void SIBufferInit(int maxBackends);
 extern int	SIBackendInit(SISeg *segP);
 
 extern bool SIInsertDataEntry(SISeg *segP, SharedInvalidData *data);

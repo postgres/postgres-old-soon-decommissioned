@@ -19,11 +19,10 @@
 /*
  * two implementations of spin locks
  *
- * sequent, sparc, sun3: real spin locks. uses a TAS instruction; see
- * src/storage/ipc/s_lock.c for details.
+ * Where TAS instruction is available: real spin locks.
+ * See src/storage/ipc/s_lock.c for details.
  *
- * default: fake spin locks using semaphores.  see spin.c
- *
+ * Otherwise: fake spin locks using semaphores.  see spin.c
  */
 
 typedef int SPINLOCK;
@@ -32,8 +31,10 @@ typedef int SPINLOCK;
 extern bool Trace_spinlocks;
 #endif
 
-extern void CreateSpinlocks(IPCKey key);
-extern void InitSpinLocks(void);
+
+extern int	SLockShmemSize(void);
+extern void CreateSpinlocks(PGShmemHeader *seghdr);
+
 extern void SpinAcquire(SPINLOCK lockid);
 extern void SpinRelease(SPINLOCK lockid);
 

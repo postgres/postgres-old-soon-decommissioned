@@ -18,17 +18,23 @@
 #include "utils/hsearch.h"
 
 
-/* The shared memory region can start at a different address
+/*
+ * The shared memory region can start at a different address
  * in every process.  Shared memory "pointers" are actually
  * offsets relative to the start of the shared memory region(s).
+ *
+ * In current usage, this is not actually a problem, but we keep
+ * the code that used to handle it...
  */
 typedef unsigned long SHMEM_OFFSET;
 
 #define INVALID_OFFSET (-1)
 #define BAD_LOCATION (-1)
 
-/* start of the lowest shared memory region.  For now, assume that
- * there is only one shared memory region
+/*
+ * Start of the primary shared memory region, in this process' address space.
+ * The macros in this header file can only cope with offsets into this
+ * shared memory region!
  */
 extern SHMEM_OFFSET ShmemBase;
 
@@ -39,14 +45,14 @@ extern SHMEM_OFFSET ShmemBase;
 
 /* coerce a pointer into a shmem offset */
 #define MAKE_OFFSET(xx_ptr)\
-  (SHMEM_OFFSET) (((unsigned long)(xx_ptr))-ShmemBase)
+  ((SHMEM_OFFSET) (((unsigned long)(xx_ptr))-ShmemBase))
 
 #define SHM_PTR_VALID(xx_ptr)\
-  (((unsigned long)xx_ptr) > ShmemBase)
+  (((unsigned long)(xx_ptr)) > ShmemBase)
 
 /* cannot have an offset to ShmemFreeStart (offset 0) */
 #define SHM_OFFSET_VALID(xx_offs)\
-  ((xx_offs != 0) && (xx_offs != INVALID_OFFSET))
+  (((xx_offs) != 0) && ((xx_offs) != INVALID_OFFSET))
 
 
 extern SPINLOCK ShmemLock;
@@ -60,11 +66,9 @@ typedef struct SHM_QUEUE
 } SHM_QUEUE;
 
 /* shmem.c */
-extern void ShmemIndexReset(void);
-extern void ShmemCreate(unsigned int key, unsigned int size);
-extern int	InitShmem(unsigned int key, unsigned int size);
+extern void InitShmemAllocation(PGShmemHeader *seghdr);
 extern void *ShmemAlloc(Size size);
-extern int	ShmemIsValid(unsigned long addr);
+extern bool ShmemIsValid(unsigned long addr);
 extern HTAB *ShmemInitHash(char *name, long init_size, long max_size,
 			  HASHCTL *infoP, int hash_flags);
 extern bool ShmemPIDLookup(int pid, SHMEM_OFFSET *locationPtr);

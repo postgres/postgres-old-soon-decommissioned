@@ -16,6 +16,7 @@
 
 #include "storage/buf.h"
 #include "storage/lmgr.h"
+#include "storage/s_lock.h"
 
 /* Buf Mgr constants */
 /* in bufmgr.c */
@@ -100,11 +101,9 @@ typedef struct sbufdesc
 	BufFlags	flags;			/* see bit definitions above */
 	unsigned	refcount;		/* # of times buffer is pinned */
 
-#ifdef HAS_TEST_AND_SET
-	/* can afford a dedicated lock if test-and-set locks are available */
-	slock_t		io_in_progress_lock;
+	slock_t		io_in_progress_lock; /* to block for I/O to complete */
 	slock_t		cntx_lock;		/* to lock access to page context */
-#endif	 /* HAS_TEST_AND_SET */
+
 	unsigned	r_locks;		/* # of shared locks */
 	bool		ri_lock;		/* read-intent lock */
 	bool		w_lock;			/* context exclusively locked */

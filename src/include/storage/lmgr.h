@@ -47,7 +47,4 @@ extern void UnlockPage(Relation relation, BlockNumber blkno, LOCKMODE lockmode);
 extern void XactLockTableInsert(TransactionId xid);
 extern void XactLockTableWait(TransactionId xid);
 
-/* proc.c */
-extern void InitProcGlobal(IPCKey key, int maxBackends);
-
 #endif	 /* LMGR_H */

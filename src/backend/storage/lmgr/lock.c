@@ -56,6 +56,7 @@ static char *lock_types[] =
 	"AccessExclusiveLock"
 };
 
+static char *DeadLockMessage = "Deadlock detected.\n\tSee the lock(l) manual page for a possible cause.";
 
 
 #ifdef LOCK_DEBUG
@@ -943,8 +944,7 @@ WaitOnLock(LOCKMETHOD lockmethod, LOCK *lock, LOCKMODE lockmode)
 				  lock) != NO_ERROR)
 	{
 		/* -------------------
-		 * This could have happend as a result of a deadlock,
-		 * see HandleDeadLock().
+		 * We failed as a result of a deadlock, see HandleDeadLock().
 		 * Decrement the lock nHolding and holders fields as
 		 * we are no longer waiting on this lock.
 		 * -------------------
@@ -957,8 +957,7 @@ WaitOnLock(LOCKMETHOD lockmethod, LOCK *lock, LOCKMODE lockmode)
 		if (lock->activeHolders[lockmode] == lock->holders[lockmode])
 			lock->waitMask &= BITS_OFF[lockmode];
 		SpinRelease(lockMethodTable->ctl->masterLock);
-		elog(ERROR, "WaitOnLock: error on wakeup - Aborting this transaction");
-
+		elog(ERROR, DeadLockMessage);
 		/* not reached */
 	}
 

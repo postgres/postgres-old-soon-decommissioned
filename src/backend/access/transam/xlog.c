@@ -85,12 +85,6 @@ typedef struct XLogCtlWrite
 } XLogCtlWrite;
 
 
-#ifndef HAS_TEST_AND_SET
-#define TAS(lck)		0
-#define S_UNLOCK(lck)
-#define S_INIT_LOCK(lck)
-#endif
-
 typedef struct XLogCtlData
 {
 	XLogCtlInsert	Insert;
@@ -102,12 +96,10 @@ typedef struct XLogCtlData
 	uint32			XLogCacheByte;
 	uint32			XLogCacheBlck;
 	StartUpID		ThisStartUpID;
-#ifdef HAS_TEST_AND_SET
 	slock_t			insert_lck;
 	slock_t			info_lck;
 	slock_t			lgwr_lck;
 	slock_t			chkp_lck;		/* checkpoint lock */
-#endif
 } XLogCtlData;
 
 static XLogCtlData *XLogCtl = NULL;

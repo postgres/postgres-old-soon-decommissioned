@@ -19,9 +19,9 @@
 
 extern SPINLOCK SInvalLock;
 
-extern void CreateSharedInvalidationState(IPCKey key, int maxBackends);
-extern void AttachSharedInvalidationState(IPCKey key);
-extern void InitSharedInvalidationState(void);
+extern int	SInvalShmemSize(int maxBackends);
+extern void CreateSharedInvalidationState(int maxBackends);
+extern void InitBackendSharedInvalidationState(void);
 extern void RegisterSharedInvalid(int cacheId, Index hashIndex,
 					  ItemPointer pointer);
 extern void InvalidateSharedInvalid(void (*invalFunction) (),

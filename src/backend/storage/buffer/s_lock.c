@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * s_lock.c
- *	  buffer manager interface routines
+ *	  Spinlock support routines
  *
  * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
  * Portions Copyright (c) 1994, Regents of the University of California
@@ -12,11 +12,11 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
 
 #include <sys/time.h>
 #include <unistd.h>
 
-#include "postgres.h"
 #include "storage/s_lock.h"
 
 
