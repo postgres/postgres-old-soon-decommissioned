@@ -11,6 +11,10 @@
 
 #include "mb/pg_wchar.h"
 
+#ifdef WIN32
+#include <windows.h>
+#endif
+
 /*
  * This is an implementation of wcwidth() and wcswidth() as defined in
  * "The Single UNIX Specification, Version 2, The Open Group, 1997"
@@ -330,6 +334,14 @@ mbvalidate(unsigned char *pwcs, int encoding)
 		return mb_utf_validate(pwcs);
 	else
 	{
+#ifdef WIN32
+		/*
+		 * translate characters to DOS console encoding, e.g. needed
+		 * for German umlauts
+		 */
+		if (GetVariableBool(pset.vars, "WIN32_CONSOLE"))
+			CharToOem(pwcs, pwcs);
+#endif
 		/*
 		 * other encodings needing validation should add their own
 		 * routines here

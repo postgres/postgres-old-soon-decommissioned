@@ -10,6 +10,10 @@
 
 #include <errno.h>
 
+#ifdef WIN32
+#include <windows.h>
+#endif
+
 #include "pqexpbuffer.h"
 #include "settings.h"
 #include "tab-complete.h"
@@ -41,6 +45,15 @@ static void finishInput(int, void *);
 
 #define PSQLHISTORY	".psql_history"
 
+
+#ifdef WIN32
+	/*
+	 * translate DOS console character set into ANSI, needed e.g. for
+	 * German umlauts
+	 */
+	if (GetVariableBool(pset.vars, "WIN32_CONSOLE"))
+		OemToChar(s, s);
+#endif
 
 #ifdef USE_READLINE
 static enum histcontrol

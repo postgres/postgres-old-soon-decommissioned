@@ -18,6 +18,16 @@
 
 #include <ctype.h>
 
+#ifdef WIN32
+/*
+ * mbvalidate() is used in function describeOneTableDetails() to make sure
+ * all characters of the cells will be printed to the DOS console in a
+ * correct way
+ */
+#include "mbprint.h"
+#endif
+
+
 #define _(x) gettext((x))
 
 static bool describeOneTableDetails(const char *schemaname,
@@ -754,11 +764,20 @@ describeOneTableDetails(const char *schemaname,
 	for (i = 0; i < numrows; i++)
 	{
 		/* Name */
+#ifdef WIN32
+		cells[i * cols + 0] = mbvalidate(PQgetvalue(res, i, 0)); 
+#else
 		cells[i * cols + 0] = PQgetvalue(res, i, 0);	/* don't free this
 														 * afterwards */
+#endif
+
 		/* Type */
+#ifdef WIN32
+		cells[i * cols + 1] = mbvalidate(PQgetvalue(res, i, 1));
+#else
 		cells[i * cols + 1] = PQgetvalue(res, i, 1);	/* don't free this
 														 * either */
+#endif
 
 		/* Extra: not null and default */
 		if (show_modifiers)
@@ -777,12 +796,20 @@ describeOneTableDetails(const char *schemaname,
 								  PQgetvalue(res, i, 2));
 			}
 
+#ifdef WIN32
+			cells[i * cols + 2] = xstrdup(mbvalidate(tmpbuf.data));
+#else
 			cells[i * cols + 2] = xstrdup(tmpbuf.data);
+#endif
 		}
 
 		/* Description */
 		if (verbose)
+#ifdef WIN32
+			cells[i * cols + cols - 1] = mbvalidate(PQgetvalue(res, i, 5));
+#else
 			cells[i * cols + cols - 1] = PQgetvalue(res, i, 5);
+#endif
 	}
 
 	/* Make title */
