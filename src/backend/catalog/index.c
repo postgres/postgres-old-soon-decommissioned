@@ -1492,7 +1492,7 @@ UpdateStats(Oid relid, double reltuples)
 			reltuples = 1000;
 		}
 		else
-			reltuples = (double) relpages *NTUPLES_PER_PAGE(whichRel->rd_rel->relnatts);
+			reltuples = ((double) relpages) * NTUPLES_PER_PAGE(whichRel->rd_rel->relnatts);
 	}
 
 	/*
