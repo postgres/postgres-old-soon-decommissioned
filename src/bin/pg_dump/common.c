@@ -486,6 +486,9 @@ findFuncByName(FuncInfo *finfo, int numFuncs, const char *name)
  *
  *	checks input string for non-lowercase characters
  *	returns pointer to input string or string surrounded by double quotes
+ *
+ *  Note that the returned string should be used immediately since it
+ *  uses a static buffer to hold the string. Non-reentrant but fast.
  */
 const char *
 fmtId(const char *rawid)
@@ -493,11 +496,12 @@ fmtId(const char *rawid)
 	const char *cp;
 	static char id[MAXQUERYLEN];
 
-	for (cp = rawid; *cp != '\0'; cp++)
-		if (!(islower(*cp) || isdigit(*cp) || (*cp == '_')))
-			break;
+	if (! g_force_quotes)
+		for (cp = rawid; *cp != '\0'; cp++)
+			if (!(islower(*cp) || isdigit(*cp) || (*cp == '_')))
+				break;
 
-	if (*cp != '\0')
+	if (g_force_quotes || (*cp != '\0'))
 	{
 		strcpy(id, "\"");
 		strcat(id, rawid);
