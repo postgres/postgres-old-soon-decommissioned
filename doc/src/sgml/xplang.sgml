@@ -112,7 +112,7 @@ CREATE <optional>TRUSTED</optional> <optional>PROCEDURAL</optional> LANGUAGE <re
       <application>PL/Python</application> are known to be trusted;
       the languages <application>PL/TclU</application> and
       <application>PL/PerlU</application> are designed to provide
-      unlimited functionality should <emphasis>not</emphasis> be
+      unlimited functionality and should <emphasis>not</emphasis> be
       marked trusted.
      </para>
     </step>
