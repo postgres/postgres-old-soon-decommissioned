@@ -40,7 +40,8 @@ $Header$
    </para>
 
    <para>
-    The syntax for creating triggers is described in <xref linkend="reference">.
+    The syntax for creating triggers is described in
+    <xref linkend="sql-createtrigger" endterm="sql-createtrigger-title">.
    </para>
 
    <para>

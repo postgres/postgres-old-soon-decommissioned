@@ -818,8 +818,8 @@ CREATE TABLE order_items (
     columns that are either a primary key or form a unique constraint.
     If the foreign key references a unique constraint, there are some
     additional possibilities regarding how null values are matched.
-    These are explained in the <literal>CREATE TABLE</literal> entry
-    in <xref linkend="reference">.
+    These are explained in the reference documentation for
+    <xref linkend="sql-createtable" endterm="sql-createtable-title">.
    </para>
   </sect2>
  </sect1>

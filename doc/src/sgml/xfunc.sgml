@@ -2185,7 +2185,7 @@ CREATE FUNCTION test(smallint, double precision) RETURNS ...
 </programlisting>
     it is not immediately clear which function would be called with
     some trivial input like <literal>test(1, 1.5)</literal>.  The
-    currently implemented resolution rules are described in the
+    currently implemented resolution rules are described in
     <xref linkend="typeconv">, but it is unwise to design a system that subtly
     relies on this behavior.
    </para>

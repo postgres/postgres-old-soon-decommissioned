@@ -168,8 +168,8 @@ CREATE TYPE complex (
  </para>
 
  <para>
-  For further details see the description of the <command>CREATE
-  TYPE</command> command in <xref linkend="reference">.
+  For further details see the description of the
+  <xref linkend="sql-createtype" endterm="sql-createtype-title"> command.
  </para>
 </sect1>
 

@@ -88,9 +88,9 @@ INSERT INTO products DEFAULT VALUES;
   <tip>
    <para>
     To do <quote>bulk loads</quote>, that is, inserting a lot of data,
-    take a look at the <command>COPY</command> command (see
-    <xref linkend="reference">).  It is not as flexible as the
-    <command>INSERT</command> command, but more efficient.
+    take a look at the <xref linkend="sql-copy"
+    endterm="sql-copy-title"> command.  It is not as flexible as the
+    <command>INSERT</command> command, but is more efficient.
    </para>
   </tip>
  </sect1>
