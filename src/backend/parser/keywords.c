@@ -97,7 +97,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"desc", DESC},
 	{"distinct", DISTINCT},
 	{"do", DO},
-	{"domain", DOMAIN_P},
 	{"double", DOUBLE},
 	{"drop", DROP},
 	{"each", EACH},

@@ -15,8 +15,6 @@
 #define HEAP_H
 
 #include "catalog/pg_attribute.h"
-#include "nodes/parsenodes.h"
-#include "parser/parse_node.h"
 #include "utils/rel.h"
 
 typedef struct RawColumnDefault
@@ -46,12 +44,6 @@ extern void heap_truncate(char *relname);
 extern void AddRelationRawConstraints(Relation rel,
 						  List *rawColDefaults,
 						  List *rawConstraints);
-
-extern Node *cookDefault(ParseState *pstate
-						, Node *raw_default
-						, Oid atttypid
-						, int32 atttypmod
-						, char *attname);
 
 extern int	RemoveCheckConstraint(Relation rel, const char *constrName, bool inh);
 

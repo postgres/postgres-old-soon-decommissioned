@@ -81,6 +81,5 @@ extern Oid	select_common_type(List *typeids, const char *context);
 extern Node *coerce_to_common_type(ParseState *pstate, Node *node,
 					  Oid targetTypeId,
 					  const char *context);
-extern Oid getBaseType(Oid inType);
 
 #endif   /* PARSE_COERCE_H */
