@@ -3,6 +3,7 @@
 #define POSTGRES_ECPG_INTERNAL
 #include "postgres_fe.h"
 
+#include <limits.h>
 #include <unistd.h>
 #ifdef USE_THREADS
 #include <pthread.h>
