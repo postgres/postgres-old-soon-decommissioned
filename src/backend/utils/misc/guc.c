@@ -276,7 +276,7 @@ static struct config_int
 	DEF_PGPORT, 1, 65535, NULL, NULL},
 
 	{"sort_mem", PGC_USERSET, &SortMem,
-	512, 4*BLCKSZ/1024, INT_MAX, NULL, NULL},
+	512, 1, INT_MAX, NULL, NULL},
 
 	{"debug_level", PGC_USERSET, &DebugLvl,
 	0, 0, 16, NULL, NULL},
