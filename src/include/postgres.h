@@ -37,7 +37,9 @@
 #define POSTGRES_H
 
 #include "postgres_ext.h"
+#ifndef WIN32
 #include "config.h"
+#endif
 #include "c.h"
 #include "utils/elog.h"
 #include "utils/palloc.h"

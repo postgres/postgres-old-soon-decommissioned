@@ -11,6 +11,9 @@
  *
  *-------------------------------------------------------------------------
  */
+#ifdef WIN32
+#include "win32.h"
+#endif
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
