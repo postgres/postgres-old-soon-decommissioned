@@ -743,7 +743,7 @@ gettype(char *type)
         return(gettype(type));
     }
     elog(WARN, "Error: unknown type '%s'.\n", type);
-    err();
+    err_out();
     /* not reached, here to make compiler happy */
     return 0;
 }
