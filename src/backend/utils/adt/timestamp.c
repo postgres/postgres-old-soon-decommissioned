@@ -3534,7 +3534,11 @@ timestamptz_part(PG_FUNCTION_ARGS)
 				break;
 
 			case DTK_YEAR:
-				result = tm->tm_year;
+				if (tm->tm_year > 0)
+					result = tm->tm_year;
+				else
+					/* there is no year 0, just 1 BC and 1 AD */
+					result = tm->tm_year - 1;
 				break;
 
 			case DTK_DECADE:
