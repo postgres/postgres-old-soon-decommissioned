@@ -28,7 +28,7 @@ ALTER INDEX <replaceable class="PARAMETER">name</replaceable>
 where <replaceable class="PARAMETER">action</replaceable> is one of:
 
     OWNER TO <replaceable class="PARAMETER">new_owner</replaceable>
-    SET INDEXSPACE <replaceable class="PARAMETER">indexspace_name</replaceable>
+    SET TABLESPACE <replaceable class="PARAMETER">indexspace_name</replaceable>
 </synopsis>
  </refsynopsisdiv>
 
