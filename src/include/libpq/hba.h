@@ -19,7 +19,7 @@
 #define CONF_FILE "pg_hba.conf"
  /* Name of the config file  */
 
-#define MAP_FILE "pg_ident.conf"
+#define USERMAP_FILE "pg_ident.conf"
  /* Name of the usermap file */
 
 #define OLD_CONF_FILE "pg_hba"
