@@ -46,7 +46,7 @@ OBJS:
 help.o: sql_help.h
 
 ifneq ($(strip $(PERL)),) 
-sql_help.h: ../../../doc/src/sgml/ref/*.sgml create_help.pl
+sql_help.h: $(wildcard ../../../doc/src/sgml/ref/*.sgml) create_help.pl
 	$(PERL) create_help.pl sql_help.h 
 else
 sql_help.h:
