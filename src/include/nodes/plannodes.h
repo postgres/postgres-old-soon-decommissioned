@@ -211,7 +211,7 @@ typedef struct MergeJoin
 {
 	Join		join;
 	List	   *mergeclauses;
-	Oid			mergesortop;
+	Oid			mergejoinop;
 	Oid		   *mergerightorder;/* inner sort operator */
 	Oid		   *mergeleftorder; /* outer sort operator */
 	MergeJoinState *mergestate;

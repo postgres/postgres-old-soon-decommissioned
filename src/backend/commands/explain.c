@@ -17,6 +17,7 @@
 #include <postgres.h>
 
 #include <nodes/plannodes.h>
+#include <nodes/print.h>
 #include <tcop/tcopprot.h>
 #include <lib/stringinfo.h>
 #include <commands/explain.h>
@@ -81,10 +82,7 @@ ExplainQuery(Query *query, bool verbose, CommandDest dest)
 	es->rtable = query->rtable;
 
 	if (es->printNodes)
-	{
-		pprint(plan); /* display in postmaster log file */
 		s = nodeToString(plan);
-	}
 	
 	if (es->printCost)
 	{
@@ -108,6 +106,9 @@ ExplainQuery(Query *query, bool verbose, CommandDest dest)
 		elog(NOTICE, "%.*s", ELOG_MAXLEN - 64, s);
 		len -= ELOG_MAXLEN - 64;
 	}
+	if (es->printNodes)
+		pprint(plan); /* display in postmaster log file */
+
 	pfree(es);
 }
 

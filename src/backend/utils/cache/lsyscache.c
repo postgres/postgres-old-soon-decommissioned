@@ -226,14 +226,14 @@ get_opname(Oid opno)
 }
 
 /*
- * op_mergesortable -
+ * op_mergejoinable -
  *
  *		Returns the left and right sort operators and types corresponding to a
- *		mergesortable operator, or nil if the operator is not mergesortable.
+ *		mergejoinable operator, or nil if the operator is not mergejoinable.
  *
  */
 bool
-op_mergesortable(Oid opno, Oid ltype, Oid rtype, Oid *leftOp, Oid *rightOp)
+op_mergejoinable(Oid opno, Oid ltype, Oid rtype, Oid *leftOp, Oid *rightOp)
 {
 	FormData_pg_operator optup;
 

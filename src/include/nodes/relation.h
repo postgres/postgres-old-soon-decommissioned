@@ -215,8 +215,8 @@ typedef struct CInfo
 	bool		notclause;
 	List	   *indexids;
 
-	/* mergesort only */
-	MergeOrder *mergesortorder;
+	/* mergejoin only */
+	MergeOrder *mergejoinorder;
 
 	/* hashjoin only */
 	Oid			hashjoinoperator;
@@ -247,7 +247,7 @@ typedef struct JInfo
 	NodeTag		type;
 	List	   *otherrels;
 	List	   *jinfoclauseinfo;
-	bool		mergesortable;
+	bool		mergejoinable;
 	bool		hashjoinable;
 	bool		inactive;
 } JInfo;

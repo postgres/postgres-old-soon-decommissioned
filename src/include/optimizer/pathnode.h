@@ -33,7 +33,7 @@ extern JoinPath *
 create_nestloop_path(RelOptInfo *joinrel, RelOptInfo *outer_rel,
 					 Path *outer_path, Path *inner_path, List *keys);
 extern MergePath *
-create_mergesort_path(RelOptInfo *joinrel, int outersize,
+create_mergejoin_path(RelOptInfo *joinrel, int outersize,
 		 int innersize, int outerwidth, int innerwidth, Path *outer_path,
 					  Path *inner_path, List *keys, MergeOrder *order,
 		   List *mergeclauses, List *outersortkeys, List *innersortkeys);

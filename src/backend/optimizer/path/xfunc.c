@@ -1022,7 +1022,7 @@ xfunc_total_path_cost(JoinPath pathnode)
 	{
 		MergePath	mrgnode = (MergePath) pathnode;
 
-		cost += cost_mergesort(get_path_cost((Path) get_outerjoinpath(mrgnode)),
+		cost += cost_mergejoin(get_path_cost((Path) get_outerjoinpath(mrgnode)),
 						get_path_cost((Path) get_innerjoinpath(mrgnode)),
 							   get_outersortkeys(mrgnode),
 							   get_innersortkeys(mrgnode),
