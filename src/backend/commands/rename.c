@@ -177,17 +177,19 @@ renameatt(char *relname,
 void
 renamerel(const char *oldrelname, const char *newrelname)
 {
-	int			i;
 	Relation	targetrelation;
 	Relation	relrelation;	/* for RELATION relation */
 	HeapTuple	oldreltup;
 	Oid			reloid;
 	char		relkind;
+	Relation	irelations[Num_pg_class_indices];
+#ifdef OLD_FILE_NAMING
+	int			i;
 	char		oldpath[MAXPGPATH],
 				newpath[MAXPGPATH],
 				toldpath[MAXPGPATH + 10],
 				tnewpath[MAXPGPATH + 10];
-	Relation	irelations[Num_pg_class_indices];
+#endif
 
 	if (!allowSystemTableMods && IsSystemRelationName(oldrelname))
 		elog(ERROR, "renamerel: system relation \"%s\" not renamed",
