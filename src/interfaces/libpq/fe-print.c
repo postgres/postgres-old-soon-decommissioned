@@ -679,7 +679,7 @@ do_header(FILE *fout, PQprintOpt *po, const int nFields, int *fieldMax,
 		p = border;
 		if (po->standard)
 		{
-			char	   *fs = po->fieldSep;
+			const char	   *fs = po->fieldSep;
 
 			while (*fs++)
 				*p++ = '+';
@@ -691,7 +691,7 @@ do_header(FILE *fout, PQprintOpt *po, const int nFields, int *fieldMax,
 			for (len = fieldMax[j] + (po->standard ? 2 : 0); len--; *p++ = '-');
 			if (po->standard || (j + 1) < nFields)
 			{
-				char	   *fs = po->fieldSep;
+				const char	   *fs = po->fieldSep;
 
 				while (*fs++)
 					*p++ = '+';
