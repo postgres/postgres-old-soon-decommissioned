@@ -378,7 +378,8 @@ make_op(char *opname, Node *ltree, Node *rtree)
 				(t) == INT4OID || \
 				(t) == OIDOID || \
 				(t) == FLOAT4OID || \
-				(t) == FLOAT8OID)
+				(t) == FLOAT8OID || \
+				(t) == CASHOID)
 	
 	/* binary operator */
 	ltypeId = (ltree==NULL) ? UNKNOWNOID : exprType(ltree);
