@@ -183,8 +183,8 @@ other			.
 <xq>{xqliteral} {
 					if ((llen+yyleng-1) > (MAX_PARSE_BUFFER - 1))
 						elog(WARN,"quoted string parse buffer of %d chars exceeded",MAX_PARSE_BUFFER);
-					memcpy(literal+llen, yytext+1, yyleng);
-					llen += yyleng-1;
+					memcpy(literal+llen, yytext, yyleng+1);
+					llen += yyleng;
 				}
 
 <xm>{space}*	{ /* ignore */ }
