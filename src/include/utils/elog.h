@@ -35,9 +35,7 @@
 #define WARNING		19			/* Warnings */
 #define ERROR		20			/* user error - abort transaction; return
 								 * to known state */
-#define ERROR		20			/* user error - abort transaction; return
-								 * to known state */
-/* Save ERROR value in PGERROR so it can bve restored when Win32 includes
+/* Save ERROR value in PGERROR so it can be restored when Win32 includes
  * modify it.  We have to use a constant rather than ERROR because macros
  * are expanded only when referenced outside macros.
  */
