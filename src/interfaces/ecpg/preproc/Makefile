@@ -25,6 +25,12 @@ $(top_builddir)/src/backend/port/snprintf.o:
 	$(MAKE) -C $(top_builddir)/src/backend/port snprintf.o
 endif
 
+ifdef STRDUP
+OBJS+=$(top_builddir)/src/utils/strdup.o
+
+$(top_builddir)/src/utils/strdup.o:
+	$(MAKE) -C $(top_builddir)/src/utils strdup.o
+endif
 
 ecpg: $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
