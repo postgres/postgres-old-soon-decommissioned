@@ -1778,6 +1778,7 @@ _copyQuery(Query *from)
 	Query	   *newnode = makeNode(Query);
 
 	newnode->commandType = from->commandType;
+	newnode->querySource = from->querySource;
 	Node_Copy(from, newnode, utilityStmt);
 	newnode->resultRelation = from->resultRelation;
 	Node_Copy(from, newnode, into);
@@ -1785,7 +1786,6 @@ _copyQuery(Query *from)
 	newnode->isBinary = from->isBinary;
 	newnode->hasAggs = from->hasAggs;
 	newnode->hasSubLinks = from->hasSubLinks;
-	newnode->originalQuery = from->originalQuery;
 
 	Node_Copy(from, newnode, rtable);
 	Node_Copy(from, newnode, jointree);

@@ -17,6 +17,17 @@
 #include "nodes/primnodes.h"
 
 
+/* Possible sources of a Query */
+typedef enum QuerySource
+{
+	QSRC_ORIGINAL,				/* original parsetree (explicit query) */
+	QSRC_PARSER,				/* added by parse analysis */
+	QSRC_INSTEAD_RULE,			/* added by unconditional INSTEAD rule */
+	QSRC_QUAL_INSTEAD_RULE,		/* added by conditional INSTEAD rule */
+	QSRC_NON_INSTEAD_RULE		/* added by non-INSTEAD rule */
+} QuerySource;
+
+
 /*****************************************************************************
  *	Query Tree
  *****************************************************************************/
@@ -37,6 +48,8 @@ typedef struct Query
 
 	CmdType		commandType;	/* select|insert|update|delete|utility */
 
+	QuerySource	querySource;	/* where did I come from? */
+
 	Node	   *utilityStmt;	/* non-null if this is a non-optimizable
 								 * statement */
 
@@ -48,8 +61,6 @@ typedef struct Query
 
 	bool		hasAggs;		/* has aggregates in tlist or havingQual */
 	bool		hasSubLinks;	/* has subquery SubLink */
-
-	bool		originalQuery;	/* marks original query through rewriting */
 
 	List	   *rtable;			/* list of range table entries */
 	FromExpr   *jointree;		/* table join tree (FROM and WHERE

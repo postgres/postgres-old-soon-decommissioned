@@ -164,13 +164,13 @@ parse_analyze(Node *parseTree, ParseState *parentParseState)
 	/*
 	 * Make sure that only the original query is marked original. We have
 	 * to do this explicitly since recursive calls of parse_analyze will
-	 * have set originalQuery in some of the added-on queries.
+	 * have marked some of the added-on queries as "original".
 	 */
 	foreach(listscan, result)
 	{
 		Query	   *q = lfirst(listscan);
 
-		q->originalQuery = (q == query);
+		q->querySource = (q == query ? QSRC_ORIGINAL : QSRC_PARSER);
 	}
 
 	pfree(pstate);

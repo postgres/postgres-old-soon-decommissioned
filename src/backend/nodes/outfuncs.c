@@ -229,7 +229,8 @@ _outIndexElem(StringInfo str, IndexElem *node)
 static void
 _outQuery(StringInfo str, Query *node)
 {
-	appendStringInfo(str, " QUERY :command %d :utility ", node->commandType);
+	appendStringInfo(str, " QUERY :command %d :source %d :utility ",
+					 (int) node->commandType, (int) node->querySource);
 
 	/*
 	 * Hack to work around missing outfuncs routines for a lot of the
@@ -299,6 +300,8 @@ _outQuery(StringInfo str, Query *node)
 
 	appendStringInfo(str, " :resultRelations ");
 	_outIntList(str, node->resultRelations);
+
+	/* planner-internal fields are not written out */
 }
 
 static void
