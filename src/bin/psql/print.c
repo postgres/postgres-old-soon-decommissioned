@@ -1116,6 +1116,7 @@ printQuery(const PGresult *result, const printQueryOpt *opt, FILE *fout)
 		free(footers[0]);
 		free(footers);
 	}
+	free(align);
 }
 
 
