@@ -659,8 +659,7 @@ runPgDump(const char *dbname)
 	const char *p;
 	int			ret;
 
-	appendPQExpBuffer(cmd, "%s %s -X use-set-session-authorization -Fp '",
-					  pgdumploc, pgdumpopts->data);
+	appendPQExpBuffer(cmd, "%s %s -Fp '", pgdumploc, pgdumpopts->data);
 
 	/* Shell quoting is not quite like SQL quoting, so can't use fmtId */
 	for (p = dbname; *p; p++)
