@@ -1818,7 +1818,7 @@ reindex_index(Oid indexId, bool force, bool inplace)
 	indexInfo = BuildIndexInfo(iRel->rd_index);
 
 	/* Open the parent heap relation */
-	heapRelation = heap_open(heapId, ExclusiveLock);
+	heapRelation = heap_open(heapId, AccessExclusiveLock);
 	if (heapRelation == NULL)
 		elog(ERROR, "reindex_index: can't open heap relation");
 
@@ -1919,8 +1919,8 @@ reindex_relation(Oid relid, bool force)
 
 	/*
 	 * Ensure to hold an exclusive lock throughout the transaction. The
-	 * lock could be less intensive but now it's AccessExclusiveLock for
-	 * simplicity.
+	 * lock could be less intensive (in the non-overwrite path) but now
+	 * it's AccessExclusiveLock for simplicity.
 	 */
 	rel = heap_open(relid, AccessExclusiveLock);
 
