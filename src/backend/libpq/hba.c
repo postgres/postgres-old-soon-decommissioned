@@ -845,16 +845,13 @@ load_hba(void)
 	file = AllocateFile(conf_file, "r");
 	if (file == NULL)
 	{
-		/* The open of the config file failed.	*/
-		elog(LOG, "load_hba: Unable to open authentication config file \"%s\": %m",
+		elog(FATAL,
+			 "load_hba: Unable to open authentication config file \"%s\": %m",
 			 conf_file);
-		pfree(conf_file);
 	}
-	else
-	{
-		hba_lines = tokenize_file(file);
-		FreeFile(file);
-	}
+
+	hba_lines = tokenize_file(file);
+	FreeFile(file);
 	pfree(conf_file);
 }
 
