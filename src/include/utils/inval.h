@@ -17,6 +17,9 @@
 #include "access/htup.h"
 
 
+typedef void (*CacheCallbackFunction) (Datum arg, Oid relid);
+
+
 extern void AcceptInvalidationMessages(void);
 
 extern void AtEOXactInvalidationMessages(bool isCommit);
@@ -26,5 +29,12 @@ extern void CommandEndInvalidationMessages(bool isCommit);
 extern void CacheInvalidateHeapTuple(Relation relation, HeapTuple tuple);
 
 extern void CacheInvalidateRelcache(Oid relationId);
+
+extern void CacheRegisterSyscacheCallback(int cacheid,
+										  CacheCallbackFunction func,
+										  Datum arg);
+
+extern void CacheRegisterRelcacheCallback(CacheCallbackFunction func,
+										  Datum arg);
 
 #endif   /* INVAL_H */
