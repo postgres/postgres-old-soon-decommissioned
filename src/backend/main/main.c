@@ -74,6 +74,10 @@ main(int argc, char *argv[])
 #endif   /* NOPRINTADE */
 #endif   /* __alpha */
 
+#ifdef WIN32
+	char *env_locale;
+#endif
+
 #if defined(NOFIXADE) || defined(NOPRINTADE)
 
 #if defined(ultrix4)
@@ -143,8 +147,30 @@ main(int argc, char *argv[])
 	 * set later during GUC option processing, but we set it here to allow
 	 * startup error messages to be localized.
 	 */
+
+#ifdef WIN32
+	/* 
+	 * Windows uses codepages rather than the environment, so we work around
+	 * that by querying the environment explicitly first for LC_COLLATE
+	 * and LC_CTYPE. We have to do this because initdb passes those values
+	 * in the environment. If there is nothing there we fall back on the
+	 * codepage.
+	 */
+
+	if ((env_locale = getenv("LC_COLLATE")) != NULL)
+	    setlocale(LC_COLLATE,env_locale);
+	else
+	  setlocale(LC_COLLATE, "");
+
+	if ((env_locale = getenv("LC_CTYPE")) != NULL)
+	    setlocale(LC_CTYPE,env_locale);
+	else
+	  setlocale(LC_CTYPE, "");
+#else
 	setlocale(LC_COLLATE, "");
 	setlocale(LC_CTYPE, "");
+#endif
+
 #ifdef LC_MESSAGES
 	setlocale(LC_MESSAGES, "");
 #endif
