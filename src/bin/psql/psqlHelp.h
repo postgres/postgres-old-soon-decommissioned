@@ -284,7 +284,7 @@ static struct _helpStruct QL_HELP[] = {
 		"exclusive lock a table inside a transaction",
 	"\
 \tLOCK [TABLE] class_name \n\
-\t[[IN] [ROW|ACCESS] [SHARE|EXCLUSIVE] MODE];"},
+\t[IN [ROW|ACCESS] [SHARE|EXCLUSIVE] | [SHARE ROW EXCLUSIVE] MODE];"},
 	{"move",
 		"move an cursor position",
 	"\
