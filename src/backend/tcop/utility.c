@@ -124,9 +124,10 @@ CheckDropPermissions(RangeVar *rel, char rightkind)
 	if (classform->relkind != rightkind)
 		DropErrorMsg(rel->relname, classform->relkind, rightkind);
 
-	if (!pg_class_ownercheck(relOid, GetUserId()))
-		elog(ERROR, "you do not own %s \"%s\"",
-			 rentry->name, rel->relname);
+	/* Allow DROP to either table owner or schema owner */
+	if (!pg_class_ownercheck(relOid, GetUserId()) &&
+		!pg_namespace_ownercheck(classform->relnamespace, GetUserId()))
+		aclcheck_error(ACLCHECK_NOT_OWNER, rel->relname);
 
 	if (!allowSystemTableMods && IsSystemClass(classform))
 		elog(ERROR, "%s \"%s\" is a system %s",
@@ -149,8 +150,7 @@ CheckOwnership(RangeVar *rel, bool noCatalogs)
 		elog(ERROR, "Relation \"%s\" does not exist", rel->relname);
 
 	if (!pg_class_ownercheck(relOid, GetUserId()))
-		elog(ERROR, "%s: %s", rel->relname,
-			 aclcheck_error_strings[ACLCHECK_NOT_OWNER]);
+		aclcheck_error(ACLCHECK_NOT_OWNER, rel->relname);
 
 	if (noCatalogs)
 	{

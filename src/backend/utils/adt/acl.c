@@ -664,7 +664,7 @@ has_table_privilege_name_name(PG_FUNCTION_ARGS)
 	int32		usesysid;
 	Oid			reloid;
 	AclMode		mode;
-	int32		aclresult;
+	AclResult	aclresult;
 
 	/*
 	 * Lookup userid based on username
@@ -709,7 +709,7 @@ has_table_privilege_name(PG_FUNCTION_ARGS)
 	int32		usesysid;
 	Oid			reloid;
 	AclMode		mode;
-	int32		aclresult;
+	AclResult	aclresult;
 
 	usesysid = GetUserId();
 
@@ -750,7 +750,7 @@ has_table_privilege_name_id(PG_FUNCTION_ARGS)
 	text	   *priv_type_text = PG_GETARG_TEXT_P(2);
 	int32		usesysid;
 	AclMode		mode;
-	int32		aclresult;
+	AclResult	aclresult;
 
 	/*
 	 * Lookup userid based on username
@@ -789,7 +789,7 @@ has_table_privilege_id(PG_FUNCTION_ARGS)
 	text	   *priv_type_text = PG_GETARG_TEXT_P(1);
 	int32		usesysid;
 	AclMode		mode;
-	int32		aclresult;
+	AclResult	aclresult;
 
 	usesysid = GetUserId();
 
@@ -825,7 +825,7 @@ has_table_privilege_id_name(PG_FUNCTION_ARGS)
 	text	   *priv_type_text = PG_GETARG_TEXT_P(2);
 	Oid			reloid;
 	AclMode		mode;
-	int32		aclresult;
+	AclResult	aclresult;
 
 	/*
 	 * Lookup rel OID based on relname
@@ -863,7 +863,7 @@ has_table_privilege_id_id(PG_FUNCTION_ARGS)
 	Oid			reloid = PG_GETARG_OID(1);
 	text	   *priv_type_text = PG_GETARG_TEXT_P(2);
 	AclMode		mode;
-	int32		aclresult;
+	AclResult	aclresult;
 
 	/*
 	 * Convert priv_type_text to an AclMode

@@ -127,7 +127,7 @@ DefineQueryRewrite(RuleStmt *stmt)
 			   *event_qualP;
 	List	   *l;
 	Query	   *query;
-	int32		aclcheck_result;
+	AclResult	aclresult;
 	bool		RelisBecomingView = false;
 
 	/*
@@ -144,11 +144,9 @@ DefineQueryRewrite(RuleStmt *stmt)
 	/*
 	 * Check user has permission to apply rules to this relation.
 	 */
-	aclcheck_result = pg_class_aclcheck(ev_relid, GetUserId(), ACL_RULE);
-	if (aclcheck_result != ACLCHECK_OK)
-		elog(ERROR, "%s: %s",
-			 RelationGetRelationName(event_relation),
-			 aclcheck_error_strings[aclcheck_result]);
+	aclresult = pg_class_aclcheck(ev_relid, GetUserId(), ACL_RULE);
+	if (aclresult != ACLCHECK_OK)
+		aclcheck_error(aclresult, RelationGetRelationName(event_relation));
 
 	/*
 	 * No rule actions that modify OLD or NEW

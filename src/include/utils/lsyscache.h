@@ -37,6 +37,7 @@ extern Oid	get_commutator(Oid opno);
 extern Oid	get_negator(Oid opno);
 extern RegProcedure get_oprrest(Oid opno);
 extern RegProcedure get_oprjoin(Oid opno);
+extern char *get_func_name(Oid funcid);
 extern Oid	get_func_rettype(Oid funcid);
 extern char func_volatile(Oid funcid);
 extern Oid	get_relname_relid(const char *relname, Oid relnamespace);

@@ -35,6 +35,7 @@
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
 #include "storage/backendid.h"
+#include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"
 #include "utils/guc.h"
@@ -973,6 +974,16 @@ GetTempTableNamespace(void)
 {
 	char		namespaceName[NAMEDATALEN];
 	Oid			namespaceId;
+
+	/*
+	 * First, do permission check to see if we are authorized to make
+	 * temp tables.  We use a nonstandard error message here since
+	 * "databasename: permission denied" might be a tad cryptic.
+	 */
+	if (pg_database_aclcheck(MyDatabaseId, GetUserId(),
+							 ACL_CREATE_TEMP) != ACLCHECK_OK)
+		elog(ERROR, "%s: not authorized to create temp tables",
+			 DatabaseName);
 
 	snprintf(namespaceName, NAMEDATALEN, "pg_temp_%d", MyBackendId);
 

@@ -658,9 +658,6 @@ ExecMakeFunctionResult(FunctionCachePtr fcache,
 	bool		hasSetArg;
 	int			i;
 
-	if (!fcache->permission_ok)
-		elog(ERROR, "permission denied");
-
 	/*
 	 * arguments is a list of expressions to evaluate before passing to
 	 * the function manager.  We skip the evaluation if it was already
