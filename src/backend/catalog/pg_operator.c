@@ -485,10 +485,11 @@ OperatorCreate(const char *operatorName,
 		typeId[0] = INTERNALOID;	/* Query */
 		typeId[1] = OIDOID;		/* operator OID */
 		typeId[2] = INTERNALOID;	/* args list */
+		typeId[3] = INT2OID;	/* jointype */
 
-		joinOid = LookupFuncName(joinName, 3, typeId);
+		joinOid = LookupFuncName(joinName, 4, typeId);
 		if (!OidIsValid(joinOid))
-			func_error("OperatorDef", joinName, 3, typeId, NULL);
+			func_error("OperatorDef", joinName, 4, typeId, NULL);
 	}
 	else
 		joinOid = InvalidOid;

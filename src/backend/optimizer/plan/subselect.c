@@ -351,7 +351,7 @@ make_subplan(SubLink *slink, List *lefthand, bool isTopQual)
 
 						qualsel = clauselist_selectivity(subquery,
 														 plan->qual,
-														 0);
+														 0, JOIN_INNER);
 						/* Is 10% selectivity a good threshold?? */
 						use_material = qualsel < 0.10;
 					}

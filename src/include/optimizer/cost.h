@@ -88,13 +88,16 @@ extern void set_function_size_estimates(Query *root, RelOptInfo *rel);
  *	  routines to compute clause selectivities
  */
 extern Selectivity restrictlist_selectivity(Query *root,
-						 List *restrictinfo_list,
-						 int varRelid);
+											List *restrictinfo_list,
+											int varRelid,
+											JoinType jointype);
 extern Selectivity clauselist_selectivity(Query *root,
-					   List *clauses,
-					   int varRelid);
+										  List *clauses,
+										  int varRelid,
+										  JoinType jointype);
 extern Selectivity clause_selectivity(Query *root,
-				   Node *clause,
-				   int varRelid);
+									  Node *clause,
+									  int varRelid,
+									  JoinType jointype);
 
 #endif   /* COST_H */

@@ -67,7 +67,7 @@ extern Datum nlikejoinsel(PG_FUNCTION_ARGS);
 extern Datum icnlikejoinsel(PG_FUNCTION_ARGS);
 
 extern Selectivity booltestsel(Query *root, BoolTestType booltesttype,
-							   Node *arg, int varRelid);
+							   Node *arg, int varRelid, JoinType jointype);
 extern Selectivity nulltestsel(Query *root, NullTestType nulltesttype,
 							   Node *arg, int varRelid);
 
