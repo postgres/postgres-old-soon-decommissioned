@@ -23,7 +23,7 @@ SUBSYS.o: $(OBJS)
 
 
 GLOBAL_BKI_SRCS := $(addprefix $(top_srcdir)/src/include/catalog/,\
-	pg_database.h pg_variable.h pg_shadow.h pg_group.h pg_log.h \
+	pg_database.h pg_shadow.h pg_group.h pg_log.h \
     )
 
 TEMPLATE1_BKI_SRCS := $(addprefix $(top_srcdir)/src/include/catalog/,\

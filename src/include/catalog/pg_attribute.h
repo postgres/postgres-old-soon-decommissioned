@@ -528,17 +528,6 @@ DATA(insert OID = 0 ( 1219 cmax				29 0  4  -6 0 -1 -1 t p f i f f));
 DATA(insert OID = 0 ( 1219 tableoid			26 0  4  -7 0 -1 -1 t p f i f f));
 
 /* ----------------
- *		pg_variable - this relation is modified by special purpose access
- *				  method code.	The following is garbage but is needed
- *				  so that the reldesc code works properly.
- * ----------------
- */
-#define Schema_pg_variable \
-{ 1264, {"varfoo"},  26, 0, 4, 1, 0, -1, -1, true, 'p', false, 'i', false, false }
-
-DATA(insert OID = 0 ( 1264 varfoo			26 0  4   1 0 -1 -1 t p f i f f));
-
-/* ----------------
  *		pg_log - this relation is modified by special purpose access
  *				  method code.	The following is garbage but is needed
  *				  so that the reldesc code works properly.
