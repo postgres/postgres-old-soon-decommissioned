@@ -1,2 +1,4 @@
+# $Header$
+
 %.so: %.o
 	$(LD) -G -Bdynamic -o $@ $<

@@ -92,12 +92,12 @@ first character\n", ARRAY_LEFT_DELIM);
 			return result;
 		}
 
-		if ((beginQuote = index(str, ARRAY_ELEM_LEFT)) == NULL)
+		if ((beginQuote = strchr(str, ARRAY_ELEM_LEFT)) == NULL)
 		{
 			elog(NOTICE, "textArray2ArrTgString:  missing a begin quote\n");
 			return result;
 		}
-		if ((endQuote = index(beginQuote + 1, '"')) == NULL)
+		if ((endQuote = strchr(beginQuote + 1, '"')) == NULL)
 		{
 			elog(NOTICE, "textArray2ArrTgString:  missing an end quote\n");
 			return result;

@@ -157,6 +157,7 @@ LDREL = -r
 LDOUT = -o
 DLSUFFIX = @DLSUFFIX@
 RANLIB = @RANLIB@
+LORDER = @LORDER@
 X = @EXEEXT@
 
 # Miscellaneous
