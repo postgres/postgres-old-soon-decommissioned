@@ -297,8 +297,7 @@ _bt_formitem(IndexTuple itup)
 
 	/* make a copy of the index tuple with room for the sequence number */
 	tuplen = IndexTupleSize(itup);
-	nbytes_btitem = tuplen +
-		(sizeof(BTItemData) - sizeof(IndexTupleData));
+	nbytes_btitem = tuplen + (sizeof(BTItemData) - sizeof(IndexTupleData));
 
 	btitem = (BTItem) palloc(nbytes_btitem);
 	memmove((char *) &(btitem->bti_itup), (char *) itup, tuplen);

@@ -37,8 +37,7 @@ tending
    GCC (at least v2.5.8 and up) has an __alignof__ keyword.
    However, we cannot use it here since on some architectures it reports
    just a _recommended_ alignment instead of the actual alignment used in
-   padding structures (or at least, this is how I understand gcc's
-s...)
+   padding structures (or at least, this is how I understand gcc).
    So define a macro that gives us the _actual_ alignment inside a struct.
    {{note: assumes that alignment size is always a power of 2.}}
  */

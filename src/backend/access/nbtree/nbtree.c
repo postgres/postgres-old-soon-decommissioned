@@ -367,7 +367,7 @@ btinsert(Relation rel, Datum *datum, char *nulls, ItemPointer ht_ctid, Relation 
 	btitem = _bt_formitem(itup);
 
 	res = _bt_doinsert(rel, btitem,
-					   IndexIsUnique(RelationGetRelid(rel)), heapRel);
+							 IndexIsUnique(RelationGetRelid(rel)), heapRel);
 
 	pfree(btitem);
 	pfree(itup);

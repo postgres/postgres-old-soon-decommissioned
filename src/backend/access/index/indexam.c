@@ -384,9 +384,7 @@ GetIndexValue(HeapTuple tuple,
 		*attNull = FALSE;
 	}
 	else
-	{
-		returnVal = heap_getattr(tuple, attrNums[attOff],
-								 hTupDesc, attNull);
-	}
+		returnVal = heap_getattr(tuple, attrNums[attOff], hTupDesc, attNull);
+
 	return returnVal;
 }
