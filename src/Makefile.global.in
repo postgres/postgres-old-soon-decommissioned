@@ -359,8 +359,9 @@ STRDUP      = @STRDUP@
 STRERROR    = @STRERROR@
 STRTOL      = @STRTOL@
 STRTOUL     = @STRTOUL@
-DLLINIT     = @DLLINIT@
 
+# Used by the backend
+DLLINIT     = @DLLINIT@
 TAS         = @TAS@
 
 
