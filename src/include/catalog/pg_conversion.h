@@ -37,7 +37,7 @@
  *	conforencoding		FOR encoding id
  *	contoencoding		TO encoding id
  *	conproc				OID of the conversion proc
- *	condefault			TRUE is this is a default conversion
+ *	condefault			TRUE if this is a default conversion
  * ----------------------------------------------------------------
  */
 CATALOG(pg_conversion)
