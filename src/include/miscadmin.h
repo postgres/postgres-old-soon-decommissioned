@@ -57,7 +57,18 @@ extern bool	    IsPostmaster;
 
 extern short	    DebugLvl;
 
-extern int          EuroDates;
+/* Date/Time Configuration
+ * HasCTZSet if client timezone is specified by client.
+ * EuroDates if client prefers dates interpreted and written w/European conventions.
+ * CTimeZone is the timezone offset in seconds.
+ * CTZName is the timezone label.
+ */
+
+extern bool	    EuroDates;
+extern bool	    HasCTZSet;
+extern bool	    CDayLight;
+extern int	    CTimeZone;
+extern char	    CTZName[];
 
 extern Oid	    LastOidProcessed;	/* for query rewrite */
 

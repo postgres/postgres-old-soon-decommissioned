@@ -65,7 +65,11 @@ bool		IsPostmaster = false;
 
 short		DebugLvl = 0;
 
-int             EuroDates = 0;
+bool		EuroDates = false;
+bool		HasCTZSet = false;
+bool		CDayLight = false;
+int		CTimeZone = 0;
+char		CTZName[8] = "";
 
 char *IndexedCatalogNames[] = {
     AttributeRelationName,

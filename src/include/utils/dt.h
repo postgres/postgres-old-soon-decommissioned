@@ -174,8 +174,6 @@ typedef struct {
     char value;		/* this may be unsigned, alas */
 } datetkn;
 
-
-extern int EuroDates;
 extern void GetCurrentTime(struct tm *tm);
 
 /*
