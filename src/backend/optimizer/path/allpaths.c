@@ -169,7 +169,7 @@ find_join_paths(Query *root, List *outer_rels, int levels_needed)
 	 * genetic query optimizer entry point	   *
 	 *	  <utesch@aut.tu-freiberg.de>		   *
 	 *******************************************/
-	if ((_use_geqo_) && length(root->base_relation_list_) >= _use_geqo_rels_)
+	if ((_use_geqo_) && length(root->base_rel_list) >= _use_geqo_rels_)
 		return lcons(geqo(root), NIL);  /* returns *one* Rel, so lcons it */
 	
 	/*******************************************
