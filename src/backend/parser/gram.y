@@ -349,7 +349,8 @@ Oid	param_type(int t); /* used in parse_expr.c */
 %nonassoc	NULL_P
 %nonassoc	IS
 %left		'+' '-'
-%left		'*' '/' '%' '^'
+%left		'*' '/' '%'
+%left		'^'
 %left		'|'				/* this is the relation union op, not logical or */
 /* Unary Operators */
 %right		':'
