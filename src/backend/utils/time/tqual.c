@@ -18,8 +18,6 @@
 
 #include "utils/tqual.h"
 
-extern bool PostgresIsInitialized;
-
 SnapshotData SnapshotDirtyData;
 Snapshot	SnapshotDirty = &SnapshotDirtyData;
 
@@ -193,17 +191,6 @@ HeapTupleSatisfiesNow(HeapTupleHeader tuple)
 {
 	if (AMI_OVERRIDE)
 		return true;
-
-	/*
-	 * If the transaction system isn't yet initialized, then we assume
-	 * that transactions committed.  We only look at system catalogs
-	 * during startup, so this is less awful than it seems, but it's still
-	 * pretty awful.
-	 */
-
-	if (!PostgresIsInitialized)
-		return ((bool) (TransactionIdIsValid(tuple->t_xmin) &&
-						!TransactionIdIsValid(tuple->t_xmax)));
 
 	if (!(tuple->t_infomask & HEAP_XMIN_COMMITTED))
 	{

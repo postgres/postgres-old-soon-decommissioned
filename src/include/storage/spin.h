@@ -27,8 +27,8 @@
 
 typedef int SPINLOCK;
 
-extern bool CreateSpinlocks(IPCKey key);
-extern bool InitSpinLocks(int init, IPCKey key);
+extern void CreateSpinlocks(IPCKey key);
+extern void InitSpinLocks(void);
 extern void SpinAcquire(SPINLOCK lockid);
 extern void SpinRelease(SPINLOCK lockid);
 

@@ -187,8 +187,7 @@ InitShmem(unsigned int key, unsigned int size)
 	 * bootstrap initialize spin locks so we can start to use the
 	 * allocator and shmem index.
 	 */
-	if (!InitSpinLocks(ShmemBootstrap, IPCKeyGetSpinLockSemaphoreKey(key)))
-		return FALSE;
+	InitSpinLocks();
 
 	/*
 	 * We have just allocated additional space for two spinlocks. Now

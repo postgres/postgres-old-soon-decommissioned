@@ -300,6 +300,12 @@ else
         mkdir $PGDATA/base
         if [ $? -ne 0 ]; then exit 5; fi
     fi
+    if [ ! -d $PGDATA/pg_xlog ]; then
+        echo "Creating Postgres database XLOG directory $PGDATA/pg_xlog"
+        echo
+        mkdir $PGDATA/pg_xlog
+        if [ $? -ne 0 ]; then exit 5; fi
+    fi
 fi
 
 #----------------------------------------------------------------------------
@@ -316,6 +322,7 @@ else
 fi
 
 BACKENDARGS="-boot -C -F -D$PGDATA $BACKEND_TALK_ARG"
+FIRSTRUN="-boot -x -C -F -D$PGDATA $BACKEND_TALK_ARG"
 
 echo "Creating template database in $PGDATA/base/template1"
 [ "$debug" -ne 0 ] && echo "Running: postgres $BACKENDARGS template1"
@@ -323,7 +330,7 @@ echo "Creating template database in $PGDATA/base/template1"
 cat $TEMPLATE \
 | sed -e "s/postgres PGUID/$POSTGRES_SUPERUSERNAME $POSTGRES_SUPERUID/" \
       -e "s/PGUID/$POSTGRES_SUPERUID/" \
-| postgres $BACKENDARGS template1
+| postgres $FIRSTRUN template1
 
 if [ $? -ne 0 ]; then
     echo "$CMDNAME: could not create template database"

@@ -38,6 +38,7 @@
 #endif
 extern DLLIMPORT sigjmp_buf Warn_restart;
 extern bool InError;
+extern bool	ExitAfterAbort;
 
 #ifndef BOOTSTRAP_INCLUDE
 extern List *pg_parse_and_plan(char *query_string, Oid *typev, int nargs,
