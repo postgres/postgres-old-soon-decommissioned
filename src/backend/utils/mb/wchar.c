@@ -166,11 +166,7 @@ pg_euccn_mblen(const unsigned char *s)
 {
 	int			len;
 
-	if (*s == SS2)
-		len = 3;
-	else if (*s == SS3)
-		len = 3;
-	else if (*s & 0x80)
+	if (*s & 0x80)
 		len = 2;
 	else
 		len = 1;
