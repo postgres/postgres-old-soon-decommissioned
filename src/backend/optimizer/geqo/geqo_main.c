@@ -7,7 +7,7 @@
  * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
- * $Id$
+ * $Header$
  *
  *-------------------------------------------------------------------------
  */
@@ -235,8 +235,7 @@ geqo(Query *root, int number_of_rels, List *initial_rels)
 
 /* root->join_rel_list will be modified during this ! */
 	best_rel = gimme_tree(root, initial_rels,
-						  best_tour, pool->string_length,
-						  0, NULL);
+						  best_tour, pool->string_length);
 
 /* DBG: show the query plan
 print_plan(best_plan, root);

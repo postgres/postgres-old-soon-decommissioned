@@ -74,7 +74,6 @@ extern RelOptInfo *geqo(Query *root, int number_of_rels, List *initial_rels);
 extern Cost geqo_eval(Query *root, List *initial_rels,
 		  Gene *tour, int num_gene);
 extern RelOptInfo *gimme_tree(Query *root, List *initial_rels,
-		   Gene *tour, int num_gene,
-		   int rel_count, RelOptInfo *old_rel);
+		   Gene *tour, int num_gene);
 
 #endif   /* GEQO_H */
