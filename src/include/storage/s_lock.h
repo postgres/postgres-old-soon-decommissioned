@@ -124,6 +124,22 @@ __asm__("lock; xchgb %0,%1": "=q"(_res), "=m"(*lock):"0"(_res));
 
 
 
+#if defined(__arm32__)
+#define TAS(lock) tas(lock)
+
+static __inline__ int
+tas(volatile slock_t *lock)
+{
+        register slock_t _res = 1;
+
+__asm__("swpb %0, %0, [%3]": "=r"(_res), "=m"(*lock):"0"(_res), "r" (lock));
+        return (int) _res;
+}
+
+#endif   /* __arm32__ */
+
+
+
 #if defined(sparc)
 #define TAS(lock) tas(lock)
 
