@@ -783,7 +783,7 @@ RecordTransactionAbort(void)
 {
 	TransactionId xid = GetCurrentTransactionId();
 
-	if (MyLastRecPtr.xrecoff != 0)
+	if (MyLastRecPtr.xrecoff != 0 && !TransactionIdDidCommit(xid))
 	{
 		xl_xact_abort	xlrec;
 		XLogRecPtr		recptr;
