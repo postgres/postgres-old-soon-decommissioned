@@ -44,7 +44,6 @@
 #include <math.h>
 #include <signal.h>
 #include <sys/file.h>
-#include <sys/time.h>
 #include <unistd.h>
 
 #include "lib/stringinfo.h"
@@ -972,7 +971,7 @@ BufferBackgroundWriter(void)
 		 * Nap for the configured time or sleep for 10 seconds if
 		 * there was nothing to do at all.
 		 */
-		PG_USLEEP((n > 0) ? BgWriterDelay * 1000 : 10000000);
+		pg_usleep((n > 0) ? BgWriterDelay * 1000L : 10000000L);
 	}
 }
 

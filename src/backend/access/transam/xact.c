@@ -142,7 +142,6 @@
 #include "postgres.h"
 
 #include <unistd.h>
-#include <sys/time.h>
 
 #include "access/gistscan.h"
 #include "access/hash.h"
@@ -562,7 +561,7 @@ RecordTransactionCommit(void)
 			 */
 			if (CommitDelay > 0 && enableFsync &&
 				CountActiveBackends() >= CommitSiblings)
-				PG_USLEEP(CommitDelay);
+				pg_usleep(CommitDelay);
 
 			XLogFlush(recptr);
 		}

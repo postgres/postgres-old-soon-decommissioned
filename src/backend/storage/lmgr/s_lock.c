@@ -15,7 +15,6 @@
  */
 #include "postgres.h"
 
-#include <sys/time.h>
 #include <unistd.h>
 
 #include "storage/s_lock.h"
@@ -96,7 +95,7 @@ s_lock(volatile slock_t *lock, const char *file, int line)
 			if (++delays > NUM_DELAYS)
 				s_lock_stuck(lock, file, line);
 
-			PG_USLEEP(cur_delay * 10000);
+			pg_usleep(cur_delay * 10000L);
 
 #if defined(S_LOCK_TEST)
 			fprintf(stdout, "*");

@@ -22,6 +22,7 @@
 #include "access/heapam.h"
 #include "access/nbtree.h"
 #include "catalog/index.h"
+#include "commands/vacuum.h"
 #include "miscadmin.h"
 #include "storage/freespace.h"
 #include "storage/smgr.h"
@@ -584,27 +585,7 @@ btbulkdelete(PG_FUNCTION_ARGS)
 						maxoff;
 			BlockNumber nextpage;
 
-			CHECK_FOR_INTERRUPTS();
-
-			/*
-			 * If we're called by a cost based vacuum, do the
-			 * napping in case the balance exceeded the limit.
-			 */
-			if (VacuumCostActive && !InterruptPending &&
-					VacuumCostBalance >= VacuumCostLimit)
-			{
-				int		msec;
-
-				msec = VacuumCostNaptime * VacuumCostBalance / VacuumCostLimit;
-				if (msec < VacuumCostNaptime * 4)
-					PG_MSLEEP(msec);
-				else
-					PG_MSLEEP(VacuumCostNaptime * 4);
-
-				VacuumCostBalance = 0;
-
-				CHECK_FOR_INTERRUPTS();
-			}
+			vacuum_delay_point();
 
 			ndeletable = 0;
 			page = BufferGetPage(buf);

@@ -19,6 +19,7 @@
 #include "access/gistscan.h"
 #include "access/heapam.h"
 #include "catalog/index.h"
+#include "commands/vacuum.h"
 #include "miscadmin.h"
 
 
@@ -1614,6 +1615,8 @@ gistbulkdelete(PG_FUNCTION_ARGS)
 
 	while (index_getnext_indexitem(iscan, ForwardScanDirection))
 	{
+		vacuum_delay_point();
+
 		if (callback(&iscan->xs_ctup.t_self, callback_state))
 		{
 			ItemPointerData indextup = iscan->currentItemData;

@@ -23,6 +23,10 @@ extern char *first_path_separator(const char *filename);
 extern char *last_path_separator(const char *filename);
 extern char *get_progname(char *argv0);
 
+/* Portable delay handling */
+extern void pg_usleep(long microsec);
+
+/* Portable prompt handling */
 extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
 
 #if defined(bsdi) || defined(netbsd)
@@ -138,6 +142,7 @@ extern int pqGethostbyname(const char *name,
 #ifdef WIN32
 #define fsync(a)	_commit(a)
 #define sync()		_flushall()
+#define ftruncate(a,b)	chsize(a,b)
 #define WEXITSTATUS(w)  (((w) >> 8) & 0xff)
 #define WIFEXITED(w)    (((w) & 0xff) == 0)
 #define WIFSIGNALED(w)  (((w) & 0x7f) > 0 && (((w) & 0x7f) < 0x7f))

@@ -23,6 +23,7 @@
 #include "access/heapam.h"
 #include "access/xlogutils.h"
 #include "catalog/index.h"
+#include "commands/vacuum.h"
 #include "executor/executor.h"
 #include "miscadmin.h"
 
@@ -513,6 +514,8 @@ loop_top:
 			OffsetNumber offno;
 			OffsetNumber maxoffno;
 			bool		page_dirty = false;
+
+			vacuum_delay_point();
 
 			buf = _hash_getbuf(rel, blkno, HASH_WRITE);
 			page = BufferGetPage(buf);
