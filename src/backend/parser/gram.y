@@ -5644,22 +5644,40 @@ a_expr:		c_expr									{ $$ = $1; }
 				}
 
 			| a_expr SIMILAR TO a_expr				%prec SIMILAR
-				{ $$ = (Node *) makeSimpleA_Expr(OP, "~", $1, $4); }
+				{
+					A_Const *c = makeNode(A_Const);
+					FuncCall *n = makeNode(FuncCall);
+					c->val.type = T_Null;
+					n->funcname = SystemFuncName("similar_escape");
+					n->args = makeList2($4, (Node *) c);
+					n->agg_star = FALSE;
+					n->agg_distinct = FALSE;
+					$$ = (Node *) makeSimpleA_Expr(OP, "~", $1, (Node *) n);
+				}
 			| a_expr SIMILAR TO a_expr ESCAPE a_expr
 				{
 					FuncCall *n = makeNode(FuncCall);
-					n->funcname = SystemFuncName("like_escape");
+					n->funcname = SystemFuncName("similar_escape");
 					n->args = makeList2($4, $6);
 					n->agg_star = FALSE;
 					n->agg_distinct = FALSE;
 					$$ = (Node *) makeSimpleA_Expr(OP, "~", $1, (Node *) n);
 				}
 			| a_expr NOT SIMILAR TO a_expr			%prec SIMILAR
-				{ $$ = (Node *) makeSimpleA_Expr(OP, "!~", $1, $5); }
+				{
+					A_Const *c = makeNode(A_Const);
+					FuncCall *n = makeNode(FuncCall);
+					c->val.type = T_Null;
+					n->funcname = SystemFuncName("similar_escape");
+					n->args = makeList2($5, (Node *) c);
+					n->agg_star = FALSE;
+					n->agg_distinct = FALSE;
+					$$ = (Node *) makeSimpleA_Expr(OP, "!~", $1, (Node *) n);
+				}
 			| a_expr NOT SIMILAR TO a_expr ESCAPE a_expr
 				{
 					FuncCall *n = makeNode(FuncCall);
-					n->funcname = SystemFuncName("like_escape");
+					n->funcname = SystemFuncName("similar_escape");
 					n->args = makeList2($5, $7);
 					n->agg_star = FALSE;
 					n->agg_distinct = FALSE;
