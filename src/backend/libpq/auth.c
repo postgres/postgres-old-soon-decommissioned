@@ -805,8 +805,8 @@ recv_and_check_password_packet(Port *port)
 		return STATUS_EOF;
 	}
 
-	elog(DEBUG5, "received password packet with len=%d, pw=%s",
-		 len, buf.data);
+	/* Do not echo failed password to logs, for security. */
+	elog(DEBUG5, "received password packet");
 
 	result = checkPassword(port, port->user, buf.data);
 	pfree(buf.data);
