@@ -728,7 +728,7 @@ cluster(ClusterStmt *stmt)
 						*rvs;
 
 		/*
-		 * We cannot run CLUSTER ALL inside a user transaction block; if we were inside
+		 * We cannot run CLUSTER inside a user transaction block; if we were inside
 		 * a transaction, then our commit- and start-transaction-command calls
 		 * would not have the intended effect!
 		 */

@@ -3762,7 +3762,7 @@ CreateConversionStmt:
  *		QUERY:
  *				cluster <index_name> on <qualified_name>
  *				cluster <qualified_name>
- *				cluster ALL
+ *				cluster
  *
  *****************************************************************************/
 
@@ -3781,7 +3781,7 @@ ClusterStmt:
 				   n->indexname = NULL;
 				   $$ = (Node*)n;
 				}
-			| CLUSTER ALL
+			| CLUSTER
 			    {
 				   ClusterStmt *n = makeNode(ClusterStmt);
 				   n->relation = NULL;
