@@ -294,7 +294,7 @@ Oid	param_type(int t); /* used in parse_expr.c */
 		LANCOMPILER, LISTEN, LOAD, LOCK_P, LOCATION, MAXVALUE, MINVALUE, MOVE,
 		NEW, NONE, NOTHING, NOTNULL, OIDS, OPERATOR, PROCEDURAL,
 		RECIPE, RENAME, RESET, RETURNS, ROW, RULE,
-		SEQUENCE, SETOF, SHOW, START, STATEMENT, STDIN, STDOUT, TRUSTED, 
+		SEQUENCE, SERIAL, SETOF, SHOW, START, STATEMENT, STDIN, STDOUT, TRUSTED, 
 		VACUUM, VERBOSE, VERSION, ENCODING
 
 /* Keywords (obsolete; retain through next version for parser - thomas 1997-12-04) */
@@ -747,6 +747,19 @@ columnDef:  ColId Typename ColQualifier
 					n->defval = NULL;
 					n->is_not_null = FALSE;
 					n->constraints = $3;
+					$$ = (Node *)n;
+				}
+			| ColId SERIAL
+				{
+					ColumnDef *n = makeNode(ColumnDef);
+					n->colname = $1;
+					n->typename = makeNode(TypeName);
+					n->typename->name = xlateSqlType("integer");
+					n->defval = NULL;
+					n->is_not_null = TRUE;
+					n->is_sequence = TRUE;
+					n->constraints = NULL;
+
 					$$ = (Node *)n;
 				}
 		;
@@ -4541,6 +4554,7 @@ ColId:  IDENT							{ $$ = $1; }
 		| PRIVILEGES					{ $$ = "privileges"; }
 		| RECIPE						{ $$ = "recipe"; }
 		| ROW							{ $$ = "row"; }
+		| SERIAL						{ $$ = "serial"; }
 		| START							{ $$ = "start"; }
 		| STATEMENT						{ $$ = "statement"; }
 		| TIME							{ $$ = "time"; }

@@ -186,6 +186,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"second", SECOND_P},
 	{"select", SELECT},
 	{"sequence", SEQUENCE},
+	{"serial", SERIAL},
 	{"set", SET},
 	{"setof", SETOF},
 	{"show", SHOW},
