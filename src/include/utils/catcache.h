@@ -155,7 +155,7 @@ typedef struct catcacheheader
 
 
 /* this extern duplicates utils/memutils.h... */
-extern MemoryContext CacheMemoryContext;
+extern DLLIMPORT MemoryContext CacheMemoryContext;
 
 extern void CreateCacheMemoryContext(void);
 extern void AtEOXact_CatCache(bool isCommit);
