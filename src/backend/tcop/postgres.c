@@ -751,7 +751,7 @@ pg_exec_query_string(StringInfo query_string,		/* string to execute */
 				{
 					elog(DEBUG2, "ProcessQuery");
 
-					if (querytree->originalQuery)
+					if (querytree->originalQuery || length(querytree_list) == 1)
 					{
 						/* original stmt can override default tag string */
 						ProcessQuery(querytree, plan, dest, completionTag);
@@ -1664,7 +1664,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.285 $ $Date: 2002/08/29 07:22:23 $\n");
+		puts("$Revision: 1.286 $ $Date: 2002/08/29 23:39:05 $\n");
 	}
 
 	/*
