@@ -268,6 +268,11 @@ pg_utf2wchar_with_len(const unsigned char *from, pg_wchar * to, int len)
 			*to |= c2 << 6;
 			*to |= c3;
 		}
+		else
+		{
+			*to = *from++;
+			len--;
+		}
 		to++;
 	}
 	*to = 0;
