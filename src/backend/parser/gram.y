@@ -32,10 +32,13 @@
  */
 #include <string.h>
 #include <ctype.h>
+
 #include "postgres.h"
 #include "nodes/parsenodes.h"
+#include "parser/gramparse.h"
 #include "parser/catalog_utils.h"
 #include "parser/parse_query.h"
+#include "storage/smgr.h"
 #include "utils/acl.h"
 #include "catalog/catname.h"
 #include "utils/elog.h"

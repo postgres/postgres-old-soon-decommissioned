@@ -194,8 +194,7 @@ cat > $TABCFILE <<FuNkYfMgRtAbStUfF
 #include <limits.h>
 #else
 # if defined(BSD44_derived) || \
-     defined(bsdi) || \
-     defined(bsdi_2_1)
+     defined(bsdi)
 # include <machine/limits.h>
 # define MAXINT	INT_MAX
 # else
@@ -226,7 +225,7 @@ static int fmgr_nbuiltins = (sizeof(fmgr_builtins) / sizeof(FmgrCall)) - 1;
 
 FmgrCall *fmgr_isbuiltin(Oid id)
 {
-    register int i;
+    register int i = 0;
     int	low = 0;
     int	high = fmgr_nbuiltins;
 

@@ -23,6 +23,7 @@
  *
  */
 #include "postgres.h"
+#include "fmgr.h"
 
 #include "executor/executor.h"
 #include "executor/nodeUnique.h"

@@ -27,12 +27,11 @@
 #include "miscadmin.h"
 #include "nodes/pg_list.h"
 #include "nodes/parsenodes.h"
+#include "parser/gramparse.h"
 #include "parser/keywords.h"
 #include "parser/scansup.h"
 #include "parser/sysfunc.h"
 #include "parse.h"
-#include "utils/elog.h"
-#include "utils/palloc.h"
 
 extern char *parseString;
 extern char *parseCh;

@@ -64,6 +64,7 @@
 #include "storage/ipc.h"
 #include "storage/shmem.h"
 #include "storage/spin.h"
+#include "utils/dynahash.h"
 #include "utils/hsearch.h"
 
 /* shared memory global variables */

@@ -70,7 +70,6 @@ static uint32 call_hash(HTAB *hashp, char *k, int len);
 static SEG_OFFSET seg_alloc(HTAB *hashp);
 static int bucket_alloc(HTAB *hashp);
 static int dir_realloc(HTAB *hashp);
-static int my_log2(long num);
 
 typedef long * ((*dhalloc_ptr)());
 

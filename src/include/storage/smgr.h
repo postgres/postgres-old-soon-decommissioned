@@ -83,6 +83,7 @@ extern int mmabort(void);
 extern int MMShmemSize(void);
 
 /* smgrtype.c */
-char *smgrout(int2 i);
+extern char *smgrout(int2 i);
+extern int2 smgrin(char *s);
 
 #endif	/* SMGR_H */
