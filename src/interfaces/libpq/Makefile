@@ -31,6 +31,10 @@ OBJS=	fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
 	md5.o ip.o wchar.o encnames.o noblock.o pgstrcasecmp.o thread.o \
 	$(filter crypt.o getaddrinfo.o inet_aton.o open.o snprintf.o strerror.o, $(LIBOBJS))
 
+ifeq ($(PORTNAME), cygwin)
+override shlib = cyg$(NAME)$(DLSUFFIX)
+endif
+
 ifeq ($(PORTNAME), win32)
 OBJS += win32.o libpqrc.o
 libpqrc.o : libpq.rc

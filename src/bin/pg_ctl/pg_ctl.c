@@ -22,6 +22,7 @@
 #include "getopt_long.h"
 
 #if defined(__CYGWIN__)
+#include <sys/cygwin.h>
 #include <windows.h>
 /* Cygwin defines WIN32 in windows.h, but we don't want it. */
 #undef WIN32
@@ -820,6 +821,9 @@ pgwin32_CommandLine(bool registration)
 {
 	static char cmdLine[MAXPGPATH];
 	int			ret;
+#ifdef __CYGWIN__
+	char		buf[MAXPGPATH];
+#endif
 
 	if (registration)
 	{
@@ -839,6 +843,12 @@ pgwin32_CommandLine(bool registration)
 			exit(1);
 		}
 	}
+
+#ifdef __CYGWIN__
+	/* need to convert to windows path */
+	cygwin_conv_to_full_win32_path(cmdLine, buf);
+	strcpy(cmdLine, buf);
+#endif
 
 	if (registration)
 	{
