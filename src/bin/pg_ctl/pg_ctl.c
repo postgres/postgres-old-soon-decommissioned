@@ -1308,10 +1308,7 @@ main(int argc, char **argv)
 	/* Note we put any -D switch into the env var above */
 	pg_data = getenv("PGDATA");
 	if (pg_data)
-	{
-		/* XXX modifies environment var in-place ... ugly ... */
-		canonicalize_path(pg_data);
-	}
+		canonicalize_path(pg_data = xstrdup(pg_data));
 
 	if (pg_data == NULL &&
 		ctl_command != KILL_COMMAND && ctl_command != UNREGISTER_COMMAND)

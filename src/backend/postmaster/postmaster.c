@@ -526,10 +526,7 @@ PostmasterMain(int argc, char *argv[])
 	}
 
 	if (userPGDATA)
-	{
-		userPGDATA = strdup(userPGDATA);
-		canonicalize_path(userPGDATA);
-	}
+		canonicalize_path(userPGDATA = strdup(userPGDATA));
 
 	if (onlyConfigSpecified(userPGDATA))
 	{
