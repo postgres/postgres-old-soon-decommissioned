@@ -41,20 +41,13 @@ static char *_sendCopyLine(ArchiveHandle *AH, char *qry, char *eos);
 static int
 _parse_version(ArchiveHandle *AH, const char *versionString)
 {
-	int			cnt;
-	int			vmaj,
-				vmin,
-				vrev;
+	int			v;
 
-	cnt = sscanf(versionString, "%d.%d.%d", &vmaj, &vmin, &vrev);
-
-	if (cnt < 2)
+	v = parse_version(versionString);
+	if (v < 0)
 		die_horribly(AH, modulename, "unable to parse version string \"%s\"\n", versionString);
 
-	if (cnt == 2)
-		vrev = 0;
-
-	return (100 * vmaj + vmin) * 100 + vrev;
+	return v;
 }
 
 static void

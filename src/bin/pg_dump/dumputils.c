@@ -131,3 +131,24 @@ appendStringLiteral(PQExpBuffer buf, const char *str, bool escapeAll)
 	}
 	appendPQExpBufferChar(buf, '\'');
 }
+
+
+
+int
+parse_version(const char *versionString)
+{
+	int			cnt;
+	int			vmaj,
+				vmin,
+				vrev;
+
+	cnt = sscanf(versionString, "%d.%d.%d", &vmaj, &vmin, &vrev);
+
+	if (cnt < 2)
+		return -1;
+
+	if (cnt == 2)
+		vrev = 0;
+
+	return (100 * vmaj + vmin) * 100 + vrev;
+}
