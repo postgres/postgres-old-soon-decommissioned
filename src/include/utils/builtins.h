@@ -52,6 +52,12 @@ extern Datum has_schema_privilege_id_name(PG_FUNCTION_ARGS);
 extern Datum has_schema_privilege_id_id(PG_FUNCTION_ARGS);
 extern Datum has_schema_privilege_name(PG_FUNCTION_ARGS);
 extern Datum has_schema_privilege_id(PG_FUNCTION_ARGS);
+extern Datum has_tablespace_privilege_name_name(PG_FUNCTION_ARGS);
+extern Datum has_tablespace_privilege_name_id(PG_FUNCTION_ARGS);
+extern Datum has_tablespace_privilege_id_name(PG_FUNCTION_ARGS);
+extern Datum has_tablespace_privilege_id_id(PG_FUNCTION_ARGS);
+extern Datum has_tablespace_privilege_name(PG_FUNCTION_ARGS);
+extern Datum has_tablespace_privilege_id(PG_FUNCTION_ARGS);
 
 /* bool.c */
 extern Datum boolin(PG_FUNCTION_ARGS);

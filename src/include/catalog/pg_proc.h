@@ -3181,6 +3181,18 @@ DESCR("current user privilege on schema by schema name");
 DATA(insert OID = 2273 (  has_schema_privilege		   PGNSP PGUID 12 f f t f s 2 16 "26 25" _null_	has_schema_privilege_id - _null_ ));
 DESCR("current user privilege on schema by schema oid");
 
+DATA(insert OID = 2390 (  has_tablespace_privilege		   PGNSP PGUID 12 f f t f s 3 16 "19 25 25" _null_  has_tablespace_privilege_name_name - _null_ ));
+DESCR("user privilege on tablespace by username, tablespace name");
+DATA(insert OID = 2391 (  has_tablespace_privilege		   PGNSP PGUID 12 f f t f s 3 16 "19 26 25" _null_  has_tablespace_privilege_name_id - _null_ ));
+DESCR("user privilege on tablespace by username, tablespace oid");
+DATA(insert OID = 2392 (  has_tablespace_privilege		   PGNSP PGUID 12 f f t f s 3 16 "23 25 25" _null_  has_tablespace_privilege_id_name - _null_ ));
+DESCR("user privilege on tablespace by usesysid, tablespace name");
+DATA(insert OID = 2393 (  has_tablespace_privilege		   PGNSP PGUID 12 f f t f s 3 16 "23 26 25" _null_  has_tablespace_privilege_id_id - _null_ ));
+DESCR("user privilege on tablespace by usesysid, tablespace oid");
+DATA(insert OID = 2394 (  has_tablespace_privilege		   PGNSP PGUID 12 f f t f s 2 16 "25 25" _null_	has_tablespace_privilege_name - _null_ ));
+DESCR("current user privilege on tablespace by tablespace name");
+DATA(insert OID = 2395 (  has_tablespace_privilege		   PGNSP PGUID 12 f f t f s 2 16 "26 25" _null_	has_tablespace_privilege_id - _null_ ));
+DESCR("current user privilege on tablespace by tablespace oid");
 
 DATA(insert OID = 2290 (  record_in			PGNSP PGUID 12 f f t f v 2 2249 "2275 26" _null_	record_in - _null_ ));
 DESCR("I/O");
