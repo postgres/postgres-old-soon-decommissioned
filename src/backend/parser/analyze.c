@@ -624,6 +624,8 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 					funccallnode = makeNode(FuncCall);
 					funccallnode->funcname = "nextval";
 					funccallnode->args = lcons(snamenode, NIL);
+					funccallnode->agg_star = false;
+					funccallnode->agg_distinct = false;
 
 					constraint = makeNode(Constraint);
 					constraint->contype = CONSTR_DEFAULT;

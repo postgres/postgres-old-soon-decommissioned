@@ -99,6 +99,8 @@ coerce_type(ParseState *pstate, Node *node, Oid inputTypeId, Oid targetTypeId,
 
 		n->funcname = typeTypeName(targetType);
 		n->args = lcons(node, NIL);
+		n->agg_star = false;
+		n->agg_distinct = false;
 
 		result = transformExpr(pstate, (Node *) n, EXPR_COLUMN_FIRST);
 

@@ -42,8 +42,10 @@ typedef struct _CandidateList
 
 extern Node *ParseNestedFuncOrColumn(ParseState *pstate, Attr *attr,
 						int *curr_resno, int precedence);
-extern Node *ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
-				  int *curr_resno, int precedence);
+extern Node *ParseFuncOrColumn(ParseState *pstate,
+							   char *funcname, List *fargs,
+							   bool agg_star, bool agg_distinct,
+							   int *curr_resno, int precedence);
 
 extern List *setup_base_tlist(Oid typeid);
 

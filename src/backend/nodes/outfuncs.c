@@ -114,8 +114,12 @@ _outSelectStmt(StringInfo str, SelectStmt *node)
 static void
 _outFuncCall(StringInfo str, FuncCall *node)
 {
-	appendStringInfo(str, "FUNCTION %s :args ", stringStringInfo(node->funcname));
+	appendStringInfo(str, "FUNCTION %s :args ",
+					 stringStringInfo(node->funcname));
 	_outNode(str, node->args);
+	appendStringInfo(str, " :agg_star %s :agg_distinct %s ",
+					 node->agg_star ? "true" : "false",
+					 node->agg_distinct ? "true" : "false");
 }
 
 static void

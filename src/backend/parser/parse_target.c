@@ -337,16 +337,16 @@ SizeTargetExpr(ParseState *pstate,
 
 	if (HeapTupleIsValid(ftup))
 	{
-		FuncCall   *func;
-		A_Const    *cons;
+		A_Const    *cons = makeNode(A_Const);
+		FuncCall   *func = makeNode(FuncCall);
 
-		func = makeNode(FuncCall);
-		func->funcname = funcname;
-
-		cons = makeNode(A_Const);
 		cons->val.type = T_Integer;
 		cons->val.val.ival = attrtypmod;
+
+		func->funcname = funcname;
 		func->args = lappend(lcons(expr, NIL), cons);
+		func->agg_star = false;
+		func->agg_distinct = false;
 
 		expr = transformExpr(pstate, (Node *) func, EXPR_COLUMN_FIRST);
 	}

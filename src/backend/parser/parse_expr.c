@@ -106,8 +106,10 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 							Node	   *lexpr = transformExpr(pstate, a->lexpr, precedence);
 
 							result = ParseFuncOrColumn(pstate,
-										  "nullvalue", lcons(lexpr, NIL),
-												   &pstate->p_last_resno,
+													   "nullvalue",
+													   lcons(lexpr, NIL),
+													   false, false,
+													   &pstate->p_last_resno,
 													   precedence);
 						}
 						break;
@@ -116,8 +118,10 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 							Node	   *lexpr = transformExpr(pstate, a->lexpr, precedence);
 
 							result = ParseFuncOrColumn(pstate,
-									   "nonnullvalue", lcons(lexpr, NIL),
-												   &pstate->p_last_resno,
+													   "nonnullvalue",
+													   lcons(lexpr, NIL),
+													   false, false,
+													   &pstate->p_last_resno,
 													   precedence);
 						}
 						break;
@@ -192,6 +196,8 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 				result = ParseFuncOrColumn(pstate,
 										   fn->funcname,
 										   fn->args,
+										   fn->agg_star,
+										   fn->agg_distinct,
 										   &pstate->p_last_resno,
 										   precedence);
 				break;
