@@ -108,6 +108,7 @@ extern void ProcessInterrupts(void);
  * from postmaster/postmaster.c
  */
 extern int	PostmasterMain(int argc, char *argv[]);
+extern void ClosePostmasterPorts(bool pgstat_too);
 
 /*
  * from utils/init/globals.c
