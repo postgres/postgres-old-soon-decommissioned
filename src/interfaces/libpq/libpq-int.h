@@ -331,6 +331,15 @@ extern int	pqWait(int forRead, int forWrite, PGconn *conn);
 extern int	pqReadReady(PGconn *conn);
 extern int	pqWriteReady(PGconn *conn);
 
+/* === in fe-secure.c === */
+
+extern int pqsecure_initialize(PGconn *);
+extern void pqsecure_destroy(void);
+extern int pqsecure_open_client(PGconn *);
+extern void pqsecure_close(PGconn *);
+extern ssize_t pqsecure_read(PGconn *, void *ptr, size_t len);
+extern ssize_t pqsecure_write(PGconn *, const void *ptr, size_t len);
+
 /* bits in a byte */
 #define BYTELEN 8
 
