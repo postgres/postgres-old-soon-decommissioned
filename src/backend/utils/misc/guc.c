@@ -1338,13 +1338,13 @@ static struct config_string ConfigureNamesString[] =
 
 	{
 		{"DateStyle", PGC_USERSET, CLIENT_CONN_LOCALE,
-			gettext_noop("The display format for date and time values"),
-			gettext_noop("As well as the rules for interpreting ambiguous date "
-						 "input values"),
+			gettext_noop("The display format for date and time values, "),
+			gettext_noop("as well as the rules for interpreting ambiguous "
+						 "date input values"),
 			GUC_LIST_INPUT | GUC_REPORT
 		},
 		&datestyle_string,
-		"ISO, US", assign_datestyle, NULL
+		"ISO, MDY", assign_datestyle, NULL
 	},
 
 	{

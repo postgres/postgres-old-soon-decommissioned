@@ -26,6 +26,8 @@ worries about funny characters.
 <literallayout><![CDATA[
 EXTRACT(TIMEZONE) and SET/SHOW TIMEZONE now follow SQL sign convention
   (positive = east of UTC)
+DATESTYLE can now be set to DMY, YMD, or MDY to specify input field order
+Input date order must now be YYYY-MM-DD (with 4-digit year) or match DATESTYLE
 Output of SHOW DATESTYLE is now in the same format accepted by SET DATESTYLE
 PL/Python is now an untrusted language, and is renamed to 'plpythonu'
 Dollar sign ($) is no longer allowed in operator names

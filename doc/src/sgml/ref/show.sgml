@@ -158,7 +158,7 @@ SHOW ALL
 SHOW DateStyle;
  DateStyle
 -----------
- ISO, US
+ ISO, MDY
 (1 row)
 </programlisting>
   </para>

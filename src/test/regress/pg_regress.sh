@@ -191,7 +191,7 @@ esac
 # ----------
 
 PGTZ='PST8PDT'; export PGTZ
-PGDATESTYLE='ISO,US'; export PGDATESTYLE
+PGDATESTYLE='ISO, MDY'; export PGDATESTYLE
 
 
 # ----------
@@ -432,7 +432,7 @@ PSQL="$bindir/psql -q -X $psql_options"
 # ----------
 
 PGTZ='PST8PDT'; export PGTZ
-PGDATESTYLE='Postgres,US'; export PGDATESTYLE
+PGDATESTYLE='Postgres, MDY'; export PGDATESTYLE
 
 
 # ----------

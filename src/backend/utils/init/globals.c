@@ -62,7 +62,7 @@ bool		IsUnderPostmaster = false;
 bool		ExitOnAnyError = false;
 
 int			DateStyle = USE_ISO_DATES;
-bool		EuroDates = false;
+int			DateOrder = DATEORDER_MDY;
 bool		HasCTZSet = false;
 int			CTimeZone = 0;
 

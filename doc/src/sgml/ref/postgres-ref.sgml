@@ -147,11 +147,10 @@ PostgreSQL documentation
       <term><option>-e</option></term>
       <listitem>
        <para>
-        Sets the default date style to <quote>European</quote>, which
-	means that the <quote>day before month</quote> (rather than
-	month before day) rule is used to interpret ambiguous date
-	input, and that the day is printed before the month in certain
-	date output formats.  See <xref linkend="datatype-datetime"> for more information.
+        Sets the default date style to <quote>European</quote>, that is
+	<literal>DMY</> ordering of input date fields.  This also causes
+	the day to be printed before the month in certain date output formats.
+	See <xref linkend="datatype-datetime"> for more information.
        </para>
       </listitem>
      </varlistentry>

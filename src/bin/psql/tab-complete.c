@@ -1187,8 +1187,10 @@ psql_completion(char *text, int start, int end)
 	{
 		if (strcasecmp(prev2_wd, "DateStyle") == 0)
 		{
-			char	   *my_list[] = {"'ISO'", "'SQL'", "'Postgres'",
-			"'European'", "'NonEuropean'", "'German'", "DEFAULT", NULL};
+			char	   *my_list[] = {"ISO", "SQL", "Postgres", "German",
+									 "YMD", "DMY", "MDY",
+									 "US", "European", "NonEuropean",
+									 "DEFAULT", NULL};
 
 			COMPLETE_WITH_LIST(my_list);
 		}

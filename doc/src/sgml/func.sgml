@@ -6503,7 +6503,7 @@ SELECT current_setting('datestyle');
 
  current_setting
 -----------------
- ISO, US
+ ISO, MDY
 (1 row)
 </programlisting>
    </para>
