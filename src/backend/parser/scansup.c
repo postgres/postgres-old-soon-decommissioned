@@ -12,6 +12,9 @@
  *
  *-------------------------------------------------------------------------
  */
+
+#include "config.h"
+
 #include <ctype.h>
 #include <string.h>
 #include "c.h"

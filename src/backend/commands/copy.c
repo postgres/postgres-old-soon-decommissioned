@@ -10,6 +10,9 @@
  *
  *-------------------------------------------------------------------------
  */
+
+#include "config.h"
+
 #include <stdio.h>
 #include <sys/types.h>	/* for mode_t */
 #include <sys/stat.h>	/* for umask(2) prototype */

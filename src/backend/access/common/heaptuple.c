@@ -38,11 +38,9 @@
 
 /* this is so the sparcstation debugger works */
 
-#ifndef NO_ASSERT_CHECKING
-#ifdef sparc
+#if !defined(NO_ASSERT_CHECKING) && defined(sparc)
 #define register
-#endif /* sparc */
-#endif /* NO_ASSERT_CHECKING */
+#endif /* !NO_ASSERT_CHECKING && sparc */
 
 /* ----------------------------------------------------------------
  *			misc support routines
