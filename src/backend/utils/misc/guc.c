@@ -237,8 +237,6 @@ ConfigureNamesInt[] =
 	 DEF_NBUFFERS, 16, INT_MAX},
 	{"port",                    PGC_POSTMASTER,         &PostPortName,
 	 DEF_PGPORT, 1, 65535},
-	{"unixsocket",              PGC_POSTMASTER,         &UnixSocketName,
-	 DEF_PGSOCKETFILE, 1, 65535},
 
 	{"sort_mem",                PGC_USERSET,            &SortMem,
 	 512, 1, INT_MAX},
@@ -374,10 +372,7 @@ ResetAllOptions(void)
 	}
 
 	if (getenv("PGPORT"))
-		PostPortNumber = atoi(getenv("PGPORT"));
-
-	if (UnixSocketName == NULL)
-		UnixSocketName = getenv("PGUNIXSOCKET");
+		PostPortName = atoi(getenv("PGPORT"));
 }
 
 
