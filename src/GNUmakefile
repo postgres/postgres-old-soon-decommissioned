@@ -26,6 +26,7 @@ XARGS = xargs
 	  echo You must set the PORTNAME value in Makefile.global before \
 	       you can build Postgres. ;\
 	  false ;\
+        else true;\
 	fi
 	$(MAKE) -C utils $@
 	$(MAKE) -C backend $@
