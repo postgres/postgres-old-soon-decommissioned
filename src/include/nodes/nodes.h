@@ -226,7 +226,6 @@ typedef enum NodeTag
 	T_GroupClause,
 	T_NullTest,
 	T_BooleanTest,
-	T_BetweenExpr,
 	T_CaseExpr,
 	T_CaseWhen,
 	T_FkConstraint,

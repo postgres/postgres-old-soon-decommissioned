@@ -1000,32 +1000,6 @@ _copyCaseExpr(CaseExpr *from)
 }
 
 /* ----------------
- * 		_copyBetweenExpr
- * ----------------
- */
-static BetweenExpr *
-_copyBetweenExpr(BetweenExpr *from)
-{
-	BetweenExpr *newnode = makeNode(BetweenExpr);
-
-	/*
-	 * copy remainder of node
-	 */
-	Node_Copy(from, newnode, expr);
-	Node_Copy(from, newnode, lexpr);
-	Node_Copy(from, newnode, rexpr);
-	Node_Copy(from, newnode, lthan);
-	Node_Copy(from, newnode, gthan);
-	newnode->symmetric = from->symmetric;
-	newnode->not = from->not;
-	newnode->typeId = from->typeId;
-	newnode->typeLen = from->typeLen;
-	newnode->typeByVal = from->typeByVal;
-
-	return newnode;
-}
-
-/* ----------------
  *		_copyCaseWhen
  * ----------------
  */
@@ -3077,9 +3051,6 @@ copyObject(void *from)
 			break;
 		case T_CaseExpr:
 			retval = _copyCaseExpr(from);
-			break;
-		case T_BetweenExpr:
-			retval = _copyBetweenExpr(from);
 			break;
 		case T_CaseWhen:
 			retval = _copyCaseWhen(from);

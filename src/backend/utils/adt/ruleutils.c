@@ -1879,32 +1879,7 @@ get_rule_expr(Node *node, deparse_context *context)
 				}
 			}
 			break;
-		case T_BetweenExpr:
-			{
-				BetweenExpr *btwn = (BetweenExpr *) node;
 
-				get_rule_expr(btwn->expr, context);
-
-				if (btwn->not)
-					appendStringInfo(buf, " NOT");
-
-				appendStringInfo(buf, " BETWEEN");
-
-				/*
-				 * Output both symmetric and asymmetric, even though
-				 * asymmetric is default
-				 */
-				if (btwn->symmetric)
-					appendStringInfo(buf, " SYMMETRIC ");
-				else
-					appendStringInfo(buf, " ASYMMETRIC ");
-
-				get_rule_expr(btwn->lexpr, context);
-
-				appendStringInfo(buf, " AND ");
-				get_rule_expr(btwn->rexpr, context);
-			}
-			break;
 		default:
 			elog(ERROR, "get_rule_expr: unknown node type %d", nodeTag(node));
 			break;

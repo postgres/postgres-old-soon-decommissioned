@@ -174,25 +174,6 @@ typedef struct A_Const
 } A_Const;
 
 /*
- * BetweenExpr - an SQL99 BETWEEN expression
- */
-
-typedef struct BetweenExpr
-{
-	NodeTag		type;
-	Node	   *expr;			/* Expression to check */
-	Node	   *lexpr;			/* First bound */
-	Node	   *rexpr;			/* Second bound */
-	bool		not;			/* Do we want inverse? */
-	bool		symmetric;		/* True if SYMMETRIC, false if ASYMMETRIC */
-	Oid			typeId;			/* Information about common type */
-	int16		typeLen;
-	bool		typeByVal;
-	Expr	   *gthan;
-	Expr	   *lthan;
-} BetweenExpr;
-
-/*
  * TypeCast - a CAST expression
  *
  * NOTE: for mostly historical reasons, A_Const parsenodes contain

@@ -1484,38 +1484,6 @@ _outCaseWhen(StringInfo str, CaseWhen *node)
 }
 
 /*
- * 	BetweenExpr
- */
-static void
-_outBetweenExpr(StringInfo str, BetweenExpr *node)
-{
-	appendStringInfo(str, " BETWEENEXPR :expr ");
-	_outNode(str, node->expr);
-
-	appendStringInfo(str, " :not %s",
-					 booltostr(node->not));
-
-	appendStringInfo(str, " :symmetric %s",
-					 booltostr(node->symmetric));
-
-	appendStringInfo(str, " :lexpr ");
-	_outNode(str, node->lexpr);
-
-	appendStringInfo(str, " :rexpr ");
-	_outNode(str, node->rexpr);
-
-	appendStringInfo(str, " :gthan ");
-	_outNode(str, node->gthan);
-
-	appendStringInfo(str, " :lthan ");
-	_outNode(str, node->lthan);
-
-	appendStringInfo(str, " :typeid %u :typelen %d :typebyval %s",
-					 node->typeId, node->typeLen,
-					 booltostr(node->typeByVal));
-}
-
-/*
  *	NullTest
  */
 static void
@@ -1798,9 +1766,6 @@ _outNode(StringInfo str, void *obj)
 				break;
 			case T_CaseExpr:
 				_outCaseExpr(str, obj);
-				break;
-			case T_BetweenExpr:
-				_outBetweenExpr(str, obj);
 				break;
 			case T_CaseWhen:
 				_outCaseWhen(str, obj);
