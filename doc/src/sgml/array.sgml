@@ -195,7 +195,9 @@ SELECT array_dims(schedule) FROM sal_emp WHERE name = 'Carol';
 
   <function>array_dims</function> produces a <type>text</type> result,
   which is convenient for people to read but perhaps not so convenient
-  for programs.
+  for programs.  <function>array_upper</function> and <function>
+  array_lower</function> return the upper/lower bound of the
+  given array dimension, respectively.
  </para>
 
  <para>
