@@ -51,7 +51,7 @@ crypt.c getaddrinfo.c inet_aton.c snprintf.c strerror.c path.c thread.c: %.c : $
 
 # compile this with thread flags
 thread.o: thread.c
-	$(CC) $(CFLAGS) $(THREAD_CFLAGS) -c thread.c
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(THREAD_CFLAGS) -c thread.c
 
 dllist.c: $(backend_src)/lib/dllist.c
 	rm -f $@ && $(LN_S) $< .
