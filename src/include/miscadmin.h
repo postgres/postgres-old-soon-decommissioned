@@ -286,8 +286,8 @@ extern void InitPostgres(const char *dbname, const char *username);
 extern void BaseInit(void);
 
 /* in utils/init/miscinit.c */
-extern bool CreateDataDirLockFile(const char *datadir, bool amPostmaster);
-extern bool CreateSocketLockFile(const char *socketfile, bool amPostmaster);
+extern void CreateDataDirLockFile(const char *datadir, bool amPostmaster);
+extern void CreateSocketLockFile(const char *socketfile, bool amPostmaster);
 extern void TouchSocketLockFile(void);
 extern void RecordSharedMemoryInLockFile(unsigned long id1,
 							 unsigned long id2);

@@ -297,6 +297,7 @@
 
 /* Class F0 - Configuration File Error (PostgreSQL-specific error class) */
 #define ERRCODE_CONFIG_FILE_ERROR			MAKE_SQLSTATE('F','0', '0','0','0')
+#define ERRCODE_LOCK_FILE_EXISTS			MAKE_SQLSTATE('F','0', '0','0','1')
 
 /* Class XX - Internal Error (PostgreSQL-specific error class) */
 /* (this is for "can't-happen" conditions and software bugs) */

@@ -755,7 +755,7 @@ plpgsql_parse_word(char *word)
 			trigarg->dtype = PLPGSQL_DTYPE_TRIGARG;
 
 			if (plpgsql_yylex() != '[')
-				plpgsql_yyerror("expected [");
+				plpgsql_yyerror("expected \"[\"");
 
 			trigarg->argnum = plpgsql_read_expression(']', "]");
 

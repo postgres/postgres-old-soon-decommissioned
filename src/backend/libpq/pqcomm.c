@@ -389,8 +389,7 @@ Lock_AF_UNIX(unsigned short portNumber, char *unixSocketName)
 	/*
 	 * Grab an interlock file associated with the socket file.
 	 */
-	if (!CreateSocketLockFile(sock_path, true))
-		return STATUS_ERROR;
+	CreateSocketLockFile(sock_path, true);
 
 	/*
 	 * Once we have the interlock, we can safely delete any pre-existing
