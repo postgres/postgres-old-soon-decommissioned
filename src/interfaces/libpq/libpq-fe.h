@@ -252,6 +252,9 @@ extern PQnoticeProcessor PQsetNoticeProcessor(PGconn *conn,
 extern size_t PQescapeString(char *to, const char *from, size_t length);
 extern unsigned char *PQescapeBytea(unsigned char *bintext, size_t binlen,
 			  size_t *bytealen);
+extern unsigned char *PQunescapeBytea(unsigned char *strtext,
+			  size_t *retbuflen);
+
 
 /* Simple synchronous query */
 extern PGresult *PQexec(PGconn *conn, const char *query);

@@ -15,27 +15,28 @@
 #define ELOG_H
 
 /* Error level codes */
-#define DEBUG5	10				/* Debugging messages, in categories
-								 * of decreasing detail. */
-#define DEBUG4	11
-#define DEBUG3	12				
-#define DEBUG2	13				
-#define DEBUG1	14				
-#define LOG		15				/* Server operational history messages;
-								 * sent only to server log by default. */
-#define COMMERROR 16			/* Client communication problems; same as
-								 * LOG for server reporting, but never ever
-								 * try to send to client. */
-#define INFO	17				/* Informative messages that are part of
-								 * normal query operation; sent only to
-								 * client by default. */
-#define NOTICE	18				/* Important messages, for unusual cases that
-								 * should be reported but are not serious 
-								 * enough to abort the query.  Sent to client
-								 * and server log by default. */
-#define ERROR	19				/* user error - return to known state */
-#define FATAL	20				/* fatal error - abort process */
-#define PANIC	21				/* take down the other backends with me */
+#define DEBUG5		10		/* Debugging messages, in categories
+							 * of decreasing detail. */
+#define DEBUG4		11
+#define DEBUG3		12				
+#define DEBUG2		13				
+#define DEBUG1		14				
+#define LOG			15		/* Server operational history messages;
+							 * sent only to server log by default. */
+#define COMMERROR 	16		/* Client communication problems; same as
+							 * LOG for server reporting, but never ever
+							 * try to send to client. */
+#define INFO		17		/* Informative messages that are part of
+							 * normal query operation; sent only to
+							 * client by default. */
+#define INFOALWAYS	18		/* Like INFO, but always prints to client */	
+#define NOTICE		19		/* Important messages, for unusual cases that
+							 * should be reported but are not serious 
+							 * enough to abort the query.  Sent to client
+							 * and server log by default. */
+#define ERROR		20		/* user error - return to known state */
+#define FATAL		21		/* fatal error - abort process */
+#define PANIC		22		/* take down the other backends with me */
 
 /*#define DEBUG	DEBUG1*/		/* Backward compatibility with pre-7.3 */
 
