@@ -9,6 +9,12 @@
  * IDENTIFICATION
  *    $Header$
  *
+ * Modifications - 6/12/96 - dave@bensoft.com - version 1.13.dhb.2
+ *
+ *   - Fixed dumpTable output to output lengths for char and varchar types!
+ *   - Added single. quote to twin single quote expansion for 'insert' string
+ *     mode.
+ *
  *-------------------------------------------------------------------------
  */
 
@@ -40,7 +46,6 @@ dupstr(char *s)
   strcpy(result, s);
   return result;
 }
-
 
 /*
  * findTypeByOid 
