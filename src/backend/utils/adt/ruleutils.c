@@ -2274,17 +2274,14 @@ static void
 get_names_for_var(Var *var, deparse_context *context,
 				  char **schemaname, char **refname, char **attname)
 {
-	ListCell   *nslist_item = list_head(context->namespaces);
-	int			sup = var->varlevelsup;
 	deparse_namespace *dpns;
 	RangeTblEntry *rte;
 
 	/* Find appropriate nesting depth */
-	while (sup-- > 0 && nslist_item != NULL)
-		nslist_item = lnext(nslist_item);
-	if (nslist_item == NULL)
+	if (var->varlevelsup >= list_length(context->namespaces))
 		elog(ERROR, "bogus varlevelsup: %d", var->varlevelsup);
-	dpns = (deparse_namespace *) lfirst(nslist_item);
+	dpns = (deparse_namespace *) list_nth(context->namespaces,
+										  var->varlevelsup);
 
 	/* Find the relevant RTE */
 	if (var->varno >= 1 && var->varno <= length(dpns->rtable))

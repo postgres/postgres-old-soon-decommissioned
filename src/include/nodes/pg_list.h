@@ -49,8 +49,6 @@
  * always be so; try to be careful to maintain the distinction.)
  */
 
-#define LIST_CELL_TYPE ListCell
-
 typedef struct ListCell ListCell;
 typedef struct List List;
 
