@@ -531,9 +531,11 @@ typedef struct Exception
  *
  */
 #define Trap(condition, exception) \
-		{ if ((assert_enabled) && (condition)) \
+		do { \
+			if ((assert_enabled) && (condition)) \
 				ExceptionalCondition(CppAsString(condition), &(exception), \
-						(char*)NULL, __FILE__, __LINE__); }
+						(char*)NULL, __FILE__, __LINE__); \
+		} while (0)
 
 /*
  *	TrapMacro is the same as Trap but it's intended for use in macros:
@@ -577,9 +579,11 @@ extern int	assert_enabled;
  *
  */
 #define LogTrap(condition, exception, printArgs) \
-		{ if ((assert_enabled) && (condition)) \
+		do { \
+			if ((assert_enabled) && (condition)) \
 				ExceptionalCondition(CppAsString(condition), &(exception), \
-						vararg_format printArgs, __FILE__, __LINE__); }
+						vararg_format printArgs, __FILE__, __LINE__); \
+		} while (0)
 
 /*
  *	LogTrapMacro is the same as LogTrap but it's intended for use in macros:
