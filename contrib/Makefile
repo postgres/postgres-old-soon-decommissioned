@@ -5,7 +5,6 @@ top_builddir = ..
 include $(top_builddir)/src/Makefile.global
 
 WANTED_DIRS = \
-		array		\
 		btree_gist	\
 		chkpass		\
 		cube		\
@@ -44,6 +43,7 @@ WANTED_DIRS = \
 		vacuumlo
 
 # Missing:
+#		array		\ (removed all but the README)
 #		adddepend	\ (does not have a makefile)
 #		ipc_check	\ (does not have a makefile)
 #		mSQL-interface	\ (requires msql installed)
