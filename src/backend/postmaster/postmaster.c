@@ -65,9 +65,9 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-#if defined(NEED_SYS_SELECT_H)
+#ifdef HAVE_SYS_SELECT_H
 # include <sys/select.h>
-#endif /* NEED_SYS_SELECT_H */
+#endif 
 
 #include "storage/ipc.h"
 #include "libpq/libpq.h"
