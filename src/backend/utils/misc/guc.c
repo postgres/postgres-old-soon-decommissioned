@@ -139,7 +139,7 @@ bool		Australian_timezones = false;
 
 bool		Password_encryption = true;
 
-bool		default_with_oids = true;
+bool		default_with_oids = false;
 
 int			log_min_error_statement = PANIC;
 int			log_min_messages = NOTICE;
@@ -801,11 +801,11 @@ static struct config_bool ConfigureNamesBool[] =
 	},
 	{
 		{"default_with_oids", PGC_USERSET, COMPAT_OPTIONS_PREVIOUS,
-			gettext_noop("By default, newly-created tables should have OIDs."),
+			gettext_noop("Create new tables with OIDs by default."),
 			NULL
 		},
 		&default_with_oids,
-		true, NULL, NULL
+		false, NULL, NULL
 	},
 	{
 		{"redirect_stderr", PGC_POSTMASTER, LOGGING_WHERE,
