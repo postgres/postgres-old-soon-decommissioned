@@ -1102,7 +1102,7 @@ gist_tuple_replacekey(Relation r, GISTENTRY entry, IndexTuple t)
 	{
 		memcpy(datum, entry.pred, entry.bytes);
 		/* clear out old size */
-		t->t_info &= 0xe000;
+		t->t_info &= ~INDEX_SIZE_MASK;
 		/* or in new size */
 		t->t_info |= MAXALIGN(entry.bytes + sizeof(IndexTupleData));
 

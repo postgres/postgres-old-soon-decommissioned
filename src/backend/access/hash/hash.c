@@ -170,7 +170,7 @@ hashbuild(PG_FUNCTION_ARGS)
 		 * of the way nulls are handled here.
 		 */
 
-		if (itup->t_info & INDEX_NULL_MASK)
+		if (IndexTupleHasNulls(itup))
 		{
 			pfree(itup);
 			continue;
@@ -256,7 +256,7 @@ hashinsert(PG_FUNCTION_ARGS)
 	itup = index_formtuple(RelationGetDescr(rel), datum, nulls);
 	itup->t_tid = *ht_ctid;
 
-	if (itup->t_info & INDEX_NULL_MASK)
+	if (IndexTupleHasNulls(itup))
 		PG_RETURN_POINTER((InsertIndexResult) NULL);
 
 	hitem = _hash_formitem(itup);

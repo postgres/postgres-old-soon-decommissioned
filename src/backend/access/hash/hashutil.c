@@ -72,7 +72,7 @@ _hash_formitem(IndexTuple itup)
 	Size		tuplen;
 
 	/* disallow nulls in hash keys */
-	if (itup->t_info & INDEX_NULL_MASK)
+	if (IndexTupleHasNulls(itup))
 		elog(ERROR, "hash indices cannot include null keys");
 
 	/* make a copy of the index tuple with room for the sequence number */
