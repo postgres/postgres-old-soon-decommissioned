@@ -66,4 +66,3 @@ isinf(double x)
 
 #endif
 #endif
-#endif
