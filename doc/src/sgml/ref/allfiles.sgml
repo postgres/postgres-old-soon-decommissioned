@@ -98,6 +98,8 @@ Complete list of usable sgml source files in this directory.
 <!entity select             system "select.sgml">
 <!entity selectInto         system "select_into.sgml">
 <!entity set                system "set.sgml">
+<!entity setConstraints     system "set_constraints.sgml">
+<!entity setTransaction     system "set_transaction.sgml">
 <!entity show               system "show.sgml">
 <!entity truncate           system "truncate.sgml">
 <!entity unlisten           system "unlisten.sgml">

@@ -104,7 +104,7 @@ COMMANDS= abort.sgml alter_group.sgml alter_table.sgml alter_user.sgml \
 	insert.sgml listen.sgml load.sgml lock.sgml move.sgml \
 	notify.sgml \
 	reindex.sgml reset.sgml revoke.sgml rollback.sgml \
-	select.sgml select_into.sgml set.sgml show.sgml \
+	select.sgml select_into.sgml set.sgml set_constraints.sgml set_transaction.sgml show.sgml \
 	truncate.sgml unlisten.sgml update.sgml vacuum.sgml
 
 FUNCTIONS= current_date.sgml current_time.sgml current_timestamp.sgml current_user.sgml

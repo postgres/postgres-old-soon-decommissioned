@@ -72,6 +72,8 @@ Postgres documentation
    &select;
    &selectInto;
    &set;
+   &setConstraints;
+   &setTransaction;
    &show;
    &truncate;
    &unlisten;

@@ -5,24 +5,6 @@ $Header$
 -	- thomas 1998-02-24
 -->
 
- <chapter id="newuser">
-  <title>Adding and Deleting Users</title>
-
-  <para>
-   <application>createuser</application> enables specific users to access
-   <productname>Postgres</productname>.  
-   <application>dropuser</application> removes  users  and
-   prevents them from accessing <productname>Postgres</productname>.
-  </para>
-
-  <para>
-   These commands only affect users with  respect  to  
-   <productname>Postgres</productname>;
-   they  have  no effect on a user's other privileges or status with regards
-   to the underlying  operating system.
-  </para>
- </chapter>
-
  <chapter id="disk">
   <title>Disk Management</title>
 
