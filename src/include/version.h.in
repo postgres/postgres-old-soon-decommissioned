@@ -20,6 +20,6 @@ void SetPgVersion(const char *path, char **reason_p);
 
 #define PG_VERFILE		"PG_VERSION"
 
-#define PG_VERSION_STR  "PostgreSQL " ## PG_RELEASE ## "." ## PG_VERSION ## "." ## PG_SUBVERSION ## " on @host@, compiled by @CC@ @CC_VERSION@"
+#define PG_VERSION_STR  "PostgreSQL " PG_RELEASE "." PG_VERSION "." PG_SUBVERSION " on @host@, compiled by @CC@ @CC_VERSION@"
 
 #endif
