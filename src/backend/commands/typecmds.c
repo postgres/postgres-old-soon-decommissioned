@@ -514,7 +514,7 @@ DefineDomain(CreateDomainStmt *stmt)
 				defaultValue = deparse_expression(defaultExpr,
 										  deparse_context_for(domainName,
 															  InvalidOid),
-												  false);
+												  false, false);
 				defaultValueBin = nodeToString(defaultExpr);
 				break;
 

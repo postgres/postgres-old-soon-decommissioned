@@ -682,7 +682,7 @@ show_scan_qual(List *qual, bool is_or_qual, const char *qlabel,
 									   NIL);
 
 	/* Deparse the expression */
-	exprstr = deparse_expression(node, context, (outercontext != NULL));
+	exprstr = deparse_expression(node, context, (outercontext != NULL), false);
 
 	/* And add to str */
 	for (i = 0; i < indent; i++)
@@ -729,7 +729,7 @@ show_upper_qual(List *qual, const char *qlabel,
 
 	/* Deparse the expression */
 	node = (Node *) make_ands_explicit(qual);
-	exprstr = deparse_expression(node, context, (inner_plan != NULL));
+	exprstr = deparse_expression(node, context, (inner_plan != NULL), false);
 
 	/* And add to str */
 	for (i = 0; i < indent; i++)
@@ -795,8 +795,9 @@ show_sort_keys(List *tlist, int nkeys, const char *qlabel,
 
 			if (target->resdom->reskey == keyno)
 			{
-				/* Deparse the expression */
-				exprstr = deparse_expression(target->expr, context, useprefix);
+				/* Deparse the expression, showing any top-level cast */
+				exprstr = deparse_expression(target->expr, context,
+											 useprefix, true);
 				/* And add to str */
 				if (keyno > 1)
 					appendStringInfo(str, ", ");
