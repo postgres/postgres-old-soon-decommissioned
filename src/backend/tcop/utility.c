@@ -183,6 +183,7 @@ check_xact_readonly(Node *parsetree)
 		case T_AlterDatabaseSetStmt:
 		case T_AlterDomainStmt:
 		case T_AlterGroupStmt:
+		case T_AlterSeqStmt:
 		case T_AlterTableStmt:
 		case T_RenameStmt:
 		case T_AlterUserStmt:
@@ -746,6 +747,10 @@ ProcessUtility(Node *parsetree,
 
 		case T_CreateSeqStmt:
 			DefineSequence((CreateSeqStmt *) parsetree);
+			break;
+
+		case T_AlterSeqStmt:
+			AlterSequence((AlterSeqStmt *) parsetree);
 			break;
 
 		case T_RemoveAggrStmt:

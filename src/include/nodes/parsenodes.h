@@ -1043,7 +1043,7 @@ typedef struct DropGroupStmt
 } DropGroupStmt;
 
 /* ----------------------
- *		Create SEQUENCE Statement
+ *		{Create|Alter} SEQUENCE Statement
  * ----------------------
  */
 
@@ -1053,6 +1053,13 @@ typedef struct CreateSeqStmt
 	RangeVar   *sequence;		/* the sequence to create */
 	List	   *options;
 } CreateSeqStmt;
+
+typedef struct AlterSeqStmt
+{
+	NodeTag		type;
+	RangeVar   *sequence;		/* the sequence to alter */
+	List	   *options;
+} AlterSeqStmt;
 
 /* ----------------------
  *		Create {Aggregate|Operator|Type} Statement

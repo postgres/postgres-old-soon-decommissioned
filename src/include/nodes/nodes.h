@@ -220,6 +220,7 @@ typedef enum NodeTag
 	T_VacuumStmt,
 	T_ExplainStmt,
 	T_CreateSeqStmt,
+	T_AlterSeqStmt,
 	T_VariableSetStmt,
 	T_VariableShowStmt,
 	T_VariableResetStmt,

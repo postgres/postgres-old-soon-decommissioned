@@ -2064,6 +2064,17 @@ _copyCreateSeqStmt(CreateSeqStmt *from)
 	return newnode;
 }
 
+static AlterSeqStmt *
+_copyAlterSeqStmt(AlterSeqStmt *from)
+{
+	AlterSeqStmt *newnode = makeNode(AlterSeqStmt);
+
+	COPY_NODE_FIELD(sequence);
+	COPY_NODE_FIELD(options);
+
+	return newnode;
+}
+
 static VariableSetStmt *
 _copyVariableSetStmt(VariableSetStmt *from)
 {
@@ -2740,6 +2751,9 @@ copyObject(void *from)
 			break;
 		case T_CreateSeqStmt:
 			retval = _copyCreateSeqStmt(from);
+			break;
+		case T_AlterSeqStmt:
+			retval = _copyAlterSeqStmt(from);
 			break;
 		case T_VariableSetStmt:
 			retval = _copyVariableSetStmt(from);

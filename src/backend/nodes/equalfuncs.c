@@ -1067,6 +1067,15 @@ _equalCreateSeqStmt(CreateSeqStmt *a, CreateSeqStmt *b)
 }
 
 static bool
+_equalAlterSeqStmt(AlterSeqStmt *a, AlterSeqStmt *b)
+{
+	COMPARE_NODE_FIELD(sequence);
+	COMPARE_NODE_FIELD(options);
+
+	return true;
+}
+
+static bool
 _equalVariableSetStmt(VariableSetStmt *a, VariableSetStmt *b)
 {
 	COMPARE_STRING_FIELD(name);
@@ -1863,6 +1872,9 @@ equal(void *a, void *b)
 			break;
 		case T_CreateSeqStmt:
 			retval = _equalCreateSeqStmt(a, b);
+			break;
+		case T_AlterSeqStmt:
+			retval = _equalAlterSeqStmt(a, b);
 			break;
 		case T_VariableSetStmt:
 			retval = _equalVariableSetStmt(a, b);

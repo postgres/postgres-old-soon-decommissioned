@@ -49,6 +49,7 @@ PostgreSQL Reference Manual
    &alterDatabase;
    &alterDomain;
    &alterGroup;
+   &alterSequence;
    &alterTable;
    &alterTrigger;
    &alterUser;

@@ -1789,7 +1789,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.317 $ $Date: 2003/03/10 03:53:51 $\n");
+		puts("$Revision: 1.318 $ $Date: 2003/03/20 07:02:10 $\n");
 	}
 
 	/*
@@ -2379,6 +2379,10 @@ CreateCommandTag(Node *parsetree)
 
 		case T_CreateSeqStmt:
 			tag = "CREATE SEQUENCE";
+			break;
+
+		case T_AlterSeqStmt:
+			tag = "ALTER SEQUENCE";
 			break;
 
 		case T_RemoveAggrStmt:
