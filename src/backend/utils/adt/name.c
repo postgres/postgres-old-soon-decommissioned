@@ -87,7 +87,7 @@ nameeq(NameData *arg1, NameData *arg2)
 	if (!arg1 || !arg2)
 		return 0;
 	else
-		return (bool) strncmp(NameStr(*arg1), NameStr(*arg2), NAMEDATALEN) == 0;
+		return (bool) (strncmp(NameStr(*arg1), NameStr(*arg2), NAMEDATALEN) == 0);
 }
 
 bool
