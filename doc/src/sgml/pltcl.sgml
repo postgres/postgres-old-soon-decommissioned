@@ -437,6 +437,7 @@ SELECT 'doesn''t' AS ret
      <varlistentry>
       <indexterm>
        <primary>elog</primary>
+       <secondary>PL/Tcl</secondary>
       </indexterm>
       <term><function>elog</> <replaceable>level</replaceable> <replaceable>msg</replaceable></term>
       <listitem>
