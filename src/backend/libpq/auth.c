@@ -501,16 +501,13 @@ ClientAuthentication(Port *port)
 			status = recv_and_check_password_packet(port);
 			break;
 
-		case uaMD5:
-			sendAuthRequest(port, AUTH_REQ_MD5);
-			if ((status = recv_and_check_password_packet(port)) == STATUS_OK)
-				break;
-			port->auth_method = uaCrypt;
-			/* Try crypt() for old client */
-			/* FALL THROUGH */
-			
 		case uaCrypt:
 			sendAuthRequest(port, AUTH_REQ_CRYPT);
+			status = recv_and_check_password_packet(port);
+			break;
+
+		case uaMD5:
+			sendAuthRequest(port, AUTH_REQ_MD5);
 			status = recv_and_check_password_packet(port);
 			break;
 

@@ -36,8 +36,7 @@ typedef enum UserAuth
 	uaIdent,
 	uaPassword,
 	uaCrypt,
-	uaMD5		/* 	This starts as uaCrypt from pg_hba.conf, but gets 
-					overridden if the client supports MD5 */
+	uaMD5
 } UserAuth;
 
 typedef struct Port hbaPort;
