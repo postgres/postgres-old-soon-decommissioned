@@ -1920,7 +1920,8 @@ _copyCommentStmt(CommentStmt *from)
 	
 	newnode->objtype = from->objtype;
 	newnode->objname = pstrdup(from->objname);
-	newnode->objproperty = pstrdup(from->objproperty);
+	if (from->objproperty)
+	  newnode->objproperty = pstrdup(from->objproperty);
 	Node_Copy(from, newnode, objlist);
 	newnode->comment = pstrdup(from->comment);
 
