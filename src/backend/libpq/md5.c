@@ -271,7 +271,7 @@ calculateDigestFromBuffer(uint8 *b, uint32 len, uint8 sum[16])
 static void
 bytesToHex(uint8 b[16], char *s)
 {
-	static char *hex = "0123456789abcdef";
+	static const char *hex = "0123456789abcdef";
 	int			q,
 				w;
 

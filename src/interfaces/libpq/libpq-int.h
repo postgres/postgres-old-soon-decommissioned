@@ -359,6 +359,16 @@ extern char *const pgresStatus[];
 extern int pqPacketSend(PGconn *conn, char pack_type,
 			 const void *buf, size_t buf_len);
 
+#ifdef ENABLE_THREAD_SAFETY
+extern pgthreadlock_t *g_threadlock;
+#define pglock_thread() g_threadlock(true);
+#define pgunlock_thread() g_threadlock(false);
+#else
+#define pglock_thread() ((void)0)
+#define pgunlock_thread() ((void)0)
+#endif
+	 
+
 /* === in fe-exec.c === */
 
 extern void pqSetResultError(PGresult *res, const char *msg);
@@ -448,6 +458,7 @@ extern ssize_t pqsecure_write(PGconn *, const void *ptr, size_t len);
 #ifdef ENABLE_THREAD_SAFETY
 extern void check_sigpipe_handler(void);
 extern pthread_key_t thread_in_send;
+extern bool pq_initssllib;
 #endif
 
 /*

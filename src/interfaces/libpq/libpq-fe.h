@@ -274,6 +274,20 @@ extern PQnoticeProcessor PQsetNoticeProcessor(PGconn *conn,
 					 PQnoticeProcessor proc,
 					 void *arg);
 
+/*
+ *     Used to set callback that prevents concurrent access to
+ *     non-thread safe functions that libpq needs.
+ *     The default implementation uses a libpq internal mutex.
+ *     Only required for multithreaded apps that use kerberos
+ *     both within their app and for postgresql connections.
+ */
+typedef void (pgthreadlock_t)(int acquire);
+
+extern pgthreadlock_t * PQregisterThreadLock(pgthreadlock_t *newhandler);
+
+void
+PQinitSSL(int do_init);
+
 /* === in fe-exec.c === */
 
 /* Simple synchronous query */
