@@ -458,7 +458,7 @@ TypeCategory(Oid inType)
 			 */
 		case (ZPBITOID):
 		case (VARBITOID):
-			result = STRING_TYPE;
+			result = BITSTRING_TYPE;
 			break;
 
 		case (OIDOID):
@@ -541,6 +541,10 @@ PreferredType(CATEGORY category, Oid type)
 
 		case (STRING_TYPE):
 			result = TEXTOID;
+			break;
+
+		case (BITSTRING_TYPE):
+			result = VARBITOID;
 			break;
 
 		case (NUMERIC_TYPE):
