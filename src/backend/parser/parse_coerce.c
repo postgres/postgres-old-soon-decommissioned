@@ -225,6 +225,12 @@ can_coerce_type(int nargs, Oid *input_typeids, Oid *func_typeids)
 		if (typeInheritsFrom(inputTypeId, targetTypeId))
 			continue;
 
+		/* don't choke on references to no-longer-existing types */
+		if (!typeidIsValid(inputTypeId))
+ 		    return false;
+ 		if (!typeidIsValid(targetTypeId))
+ 		    return false;
+
 		/*
 		 * Else, try for explicit conversion using functions: look for a
 		 * single-argument function named with the target type name and
