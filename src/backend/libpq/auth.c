@@ -442,8 +442,9 @@ ClientAuthentication(Port *port)
 #ifdef USE_SSL
 				ereport(FATAL,
 						(errcode(ERRCODE_INVALID_AUTHORIZATION_SPECIFICATION),
-						 errmsg("no pg_hba.conf entry for host \"%s\", user \"%s\", database \"%s\", SSL \"%s\"",
-								hostinfo, port->user_name, port->database_name, port->ssl ? "on" : "off")));
+						 errmsg("no pg_hba.conf entry for host \"%s\", user \"%s\", database \"%s\", %s",
+								hostinfo, port->user_name, port->database_name,
+								port->ssl ? gettext("SSL on") : gettext("SSL off"))));
 #else
 				ereport(FATAL,
 						(errcode(ERRCODE_INVALID_AUTHORIZATION_SPECIFICATION),
