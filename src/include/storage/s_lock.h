@@ -510,7 +510,7 @@ typedef unsigned long slock_t;
 #endif	 /* __alpha || __alpha__ */
 
 
-#if defined(__hppa)
+#if defined(__hppa) || defined(__hppa__)
 /*
  * HP's PA-RISC
  *
@@ -560,7 +560,7 @@ tas(volatile slock_t *lock)
 
 #define S_LOCK_FREE(lock)	(*TAS_ACTIVE_WORD(lock) != 0)
 
-#endif	 /* __hppa */
+#endif	 /* __hppa || __hppa__ */
 
 
 #if defined(__QNX__) && defined(__WATCOMC__)
