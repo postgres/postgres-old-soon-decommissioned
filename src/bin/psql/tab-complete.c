@@ -223,7 +223,7 @@ initialize_readline(void)
 "  WHERE substring(pg_catalog.pg_encoding_to_char(conforencoding),1,%d)=UPPER('%s')"
 
 #define Query_for_list_of_functions \
-" SELECT pg_catalog.quote_ident(proname) || '()' "\
+" SELECT pg_catalog.quote_ident(proname) "\
 "   FROM pg_catalog.pg_proc p "\
 "  WHERE substring(pg_catalog.quote_ident(proname),1,%d)='%s'"\
 "    AND pg_catalog.pg_function_is_visible(p.oid) "\
