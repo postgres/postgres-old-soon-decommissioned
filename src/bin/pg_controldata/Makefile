@@ -14,7 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS += -DFRONTEND
 
-OBJS= pg_controldata.o pg_crc.o exec.o
+OBJS= pg_controldata.o pg_crc.o
 
 all: submake-libpgport pg_controldata
 
@@ -22,9 +22,6 @@ pg_controldata: $(OBJS)
 	$(CC) $(CFLAGS) $^ $(LDFLAGS) $(LIBS) -o $@$(X)
 
 pg_crc.c: $(top_srcdir)/src/backend/utils/hash/pg_crc.c
-	rm -f $@ && $(LN_S) $< .
-
-exec.c: % : $(top_srcdir)/src/port/%
 	rm -f $@ && $(LN_S) $< .
 
 install: all installdirs
@@ -37,4 +34,4 @@ uninstall:
 	rm -f $(DESTDIR)$(bindir)/pg_controldata$(X)
 
 clean distclean maintainer-clean:
-	rm -f pg_controldata$(X) $(OBJS) pg_crc.c exec.c
+	rm -f pg_controldata$(X) $(OBJS) pg_crc.c

@@ -15,26 +15,23 @@ include $(top_builddir)/src/Makefile.global
 
 PROGRAMS = createdb createlang createuser dropdb droplang dropuser clusterdb vacuumdb
 
-override CPPFLAGS := -DFRONTEND -I$(top_srcdir)/src/bin/pg_dump -I$(top_srcdir)/src/bin/psql -I$(libpq_srcdir) $(CPPFLAGS)
+override CPPFLAGS := -I$(top_srcdir)/src/bin/pg_dump -I$(top_srcdir)/src/bin/psql -I$(libpq_srcdir) $(CPPFLAGS)
 
 all: submake-libpq submake-backend $(PROGRAMS)
 
 %: %.o
 	$(CC) $(CFLAGS) $^ $(libpq) $(LDFLAGS) $(LIBS) -o $@$(X)
 
-createdb: createdb.o common.o exec.o dumputils.o $(top_builddir)/src/backend/parser/keywords.o
-createlang: createlang.o common.o exec.o print.o mbprint.o
-createuser: createuser.o common.o exec.o dumputils.o $(top_builddir)/src/backend/parser/keywords.o
-dropdb: dropdb.o common.o exec.o dumputils.o $(top_builddir)/src/backend/parser/keywords.o
-droplang: droplang.o common.o exec.o print.o mbprint.o
-dropuser: dropuser.o common.o exec.o dumputils.o $(top_builddir)/src/backend/parser/keywords.o
-clusterdb: clusterdb.o common.o exec.o dumputils.o $(top_builddir)/src/backend/parser/keywords.o
-vacuumdb: vacuumdb.o common.o exec.o
+createdb: createdb.o common.o dumputils.o $(top_builddir)/src/backend/parser/keywords.o
+createlang: createlang.o common.o print.o mbprint.o
+createuser: createuser.o common.o dumputils.o $(top_builddir)/src/backend/parser/keywords.o
+dropdb: dropdb.o common.o dumputils.o $(top_builddir)/src/backend/parser/keywords.o
+droplang: droplang.o common.o print.o mbprint.o
+dropuser: dropuser.o common.o dumputils.o $(top_builddir)/src/backend/parser/keywords.o
+clusterdb: clusterdb.o common.o dumputils.o $(top_builddir)/src/backend/parser/keywords.o
+vacuumdb: vacuumdb.o common.o
 
 dumputils.c: % : $(top_srcdir)/src/bin/pg_dump/%
-	rm -f $@ && $(LN_S) $< .
-
-exec.c: % : $(top_srcdir)/src/port/%
 	rm -f $@ && $(LN_S) $< .
 
 print.c mbprint.c : % : $(top_srcdir)/src/bin/psql/%
@@ -64,5 +61,5 @@ uninstall:
 
 clean distclean maintainer-clean:
 	rm -f $(addsuffix $(X), $(PROGRAMS)) $(addsuffix .o, $(PROGRAMS))
-	rm -f common.o dumputils.o exec.o print.o mbprint.o
-	rm -f dumputils.c exec.c print.c mbprint.c
+	rm -f common.o dumputils.o print.o mbprint.o
+	rm -f dumputils.c print.c mbprint.c

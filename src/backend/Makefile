@@ -26,6 +26,8 @@ ifeq ($(PORTNAME), qnx4)
 OBJS+= bootstrap/bootstrap.o
 endif
 
+# Use server version of port library
+LIBS := $(patsubst -lpgport,-lpgport_srv, $(LIBS))
 
 ##########################################################################
 

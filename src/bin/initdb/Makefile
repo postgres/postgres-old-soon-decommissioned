@@ -13,20 +13,14 @@ subdir = src/bin/initdb
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-override CPPFLAGS := -DFRONTEND -I$(libpq_srcdir) $(CPPFLAGS)
+override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 
-OBJS=	initdb.o dirmod.o exec.o
+OBJS=	initdb.o
 
 all: submake-libpq submake-libpgport initdb
 
 initdb: $(OBJS) $(libpq_builddir)/libpq.a
 	$(CC) $(CFLAGS) $(OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@$(X)
-
-dirmod.c: % : $(top_srcdir)/src/port/%
-	rm -f $@ && $(LN_S) $< .
-
-exec.c: % : $(top_srcdir)/src/port/%
-	rm -f $@ && $(LN_S) $< .
 
 install: all installdirs
 	$(INSTALL_PROGRAM) initdb$(X) $(DESTDIR)$(bindir)/initdb$(X)
@@ -38,7 +32,7 @@ uninstall:
 	rm -f $(DESTDIR)$(bindir)/initdb$(X)
 
 clean distclean maintainer-clean:
-	rm -f initdb$(X) $(OBJS) dirmod.c exec.c
+	rm -f initdb$(X) $(OBJS)
 
 
 # ensure that changes in datadir propagate into object file
