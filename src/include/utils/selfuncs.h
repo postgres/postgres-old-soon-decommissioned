@@ -19,6 +19,49 @@
 #include "nodes/parsenodes.h"
 
 
+/*
+ * Note: the default selectivity estimates are not chosen entirely at random.
+ * We want them to be small enough to ensure that indexscans will be used if
+ * available, for typical table densities of ~100 tuples/page.	Thus, for
+ * example, 0.01 is not quite small enough, since that makes it appear that
+ * nearly all pages will be hit anyway.  Also, since we sometimes estimate
+ * eqsel as 1/num_distinct, we probably want DEFAULT_NUM_DISTINCT to equal
+ * 1/DEFAULT_EQ_SEL.
+ */
+
+/* default selectivity estimate for equalities such as "A = b" */
+#define DEFAULT_EQ_SEL	0.005
+
+/* default selectivity estimate for inequalities such as "A < b" */
+#define DEFAULT_INEQ_SEL  0.3333333333333333
+
+/* default selectivity estimate for range inequalities "A > b AND A < c" */
+#define DEFAULT_RANGE_INEQ_SEL  0.005
+
+/* default selectivity estimate for pattern-match operators such as LIKE */
+#define DEFAULT_MATCH_SEL	0.005
+
+/* default number of distinct values in a table */
+#define DEFAULT_NUM_DISTINCT  200
+
+/* default selectivity estimate for boolean and null test nodes */
+#define DEFAULT_UNK_SEL			0.005
+#define DEFAULT_NOT_UNK_SEL		(1.0 - DEFAULT_UNK_SEL)
+
+
+/*
+ * Clamp a computed probability estimate (which may suffer from roundoff or
+ * estimation errors) to valid range.  Argument must be a float variable.
+ */
+#define CLAMP_PROBABILITY(p) \
+	do { \
+		if (p < 0.0) \
+			p = 0.0; \
+		else if (p > 1.0) \
+			p = 1.0; \
+	} while (0)
+
+
 typedef enum
 {
 	Pattern_Type_Like, Pattern_Type_Like_IC,
