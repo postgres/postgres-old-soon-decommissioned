@@ -1286,7 +1286,6 @@ ParseComplexProjection(ParseState *pstate,
 {
 	Oid			argtype;
 	Oid			argrelid;
-	Name		relname;
 	Relation	rd;
 	Oid			relid;
 	int			attnum;
@@ -1317,7 +1316,6 @@ ParseComplexProjection(ParseState *pstate,
 					if (RelationIsValid(rd))
 					{
 						relid = RelationGetRelationId(rd);
-						relname = RelationGetRelationName(rd);
 						heap_close(rd);
 					}
 					if (RelationIsValid(rd))
@@ -1376,7 +1374,6 @@ ParseComplexProjection(ParseState *pstate,
 					if (RelationIsValid(rd))
 					{
 						relid = RelationGetRelationId(rd);
-						relname = RelationGetRelationName(rd);
 						heap_close(rd);
 					}
 					if (RelationIsValid(rd))
@@ -1414,17 +1411,14 @@ ParseComplexProjection(ParseState *pstate,
 				if (RelationIsValid(rd))
 				{
 					relid = RelationGetRelationId(rd);
-					relname = RelationGetRelationName(rd);
 					heap_close(rd);
-				}
-				if (RelationIsValid(rd) &&
-					(attnum = get_attnum(relid, funcname))
-					!= InvalidAttrNumber)
-				{
-
-					param->paramtype = attnumTypeId(rd, attnum);
-					param->param_tlist = setup_tlist(funcname, relid);
-					return ((Node *) param);
+					if ((attnum = get_attnum(relid, funcname))
+						!= InvalidAttrNumber)
+					{
+						param->paramtype = attnumTypeId(rd, attnum);
+						param->param_tlist = setup_tlist(funcname, relid);
+						return ((Node *) param);
+					}
 				}
 				break;
 			}

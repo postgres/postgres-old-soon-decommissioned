@@ -234,7 +234,7 @@ GetArrayElementType(Oid typearray)
 	if (type_struct_array->typelem == InvalidOid)
 	{
 		elog(ERROR, "GetArrayElementType: type %s is not an array",
-			 (Name) &(type_struct_array->typname.data[0]));
+			 type_struct_array->typname);
 	}
 
 	return (type_struct_array->typelem);

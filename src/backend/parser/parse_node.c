@@ -280,7 +280,7 @@ make_array_ref(Node *expr,
 
 	if (type_struct_array->typelem == InvalidOid)
 		elog(ERROR, "make_array_ref: type %s is not an array",
-			 (Name) &(type_struct_array->typname.data[0]));
+			 type_struct_array->typname);
 
 	/* get the type tuple for the element type */
 	type_tuple = SearchSysCacheTuple(TYPOID,
@@ -362,7 +362,7 @@ make_array_set(Expr *target_expr,
 
 	if (type_struct_array->typelem == InvalidOid)
 		elog(ERROR, "make_array_ref: type %s is not an array",
-			 (Name) &(type_struct_array->typname.data[0]));
+			 type_struct_array->typname);
 	/* get the type tuple for the element type */
 	type_tuple = SearchSysCacheTuple(TYPOID,
 							ObjectIdGetDatum(type_struct_array->typelem),
