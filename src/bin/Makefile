@@ -14,8 +14,7 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
 DIRS := initdb initlocation ipcclean pg_ctl pg_dump \
-	psql scripts pg_config pg_controldata pg_resetxlog \
-	pg_encoding
+	psql scripts pg_config pg_controldata pg_resetxlog
 
 all install installdirs uninstall depend distprep:
 	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
