@@ -118,10 +118,10 @@ where <replaceable class="parameter">transaction_mode</replaceable> is one of:
   </para>
 
   <para>
-   It is possible to dispense with <command>SET TRANSACTION</command> by
-   instead specifying the desired <replaceable
+   It is possible to dispense with <command>SET TRANSACTION</command>
+   by instead specifying the desired <replaceable
    class="parameter">transaction_modes</replaceable> in
-   <command>START TRANSACTION</command>.
+   <command>BEGIN</command> or <command>START TRANSACTION</command>.
   </para>
 
   <para>
