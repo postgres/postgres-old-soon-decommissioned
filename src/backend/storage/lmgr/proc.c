@@ -516,8 +516,7 @@ ProcSleep(PROC_QUEUE *waitQueue,/* lock->waitProcs */
 	 * In a full queue, we would have a reader holding a lock, then a writer
 	 * gets the lock, then a bunch of readers, made up of readers who
 	 * could not share the first readlock because a writer was waiting,
-	 * and new readers arriving while the writer had the lock.
-	 *
+	 * and new readers arriving while the writer had the lock.  bjm
 	 */
 	proc = (PROC *) MAKE_PTR(waitQueue->links.prev);
 
