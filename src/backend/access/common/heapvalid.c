@@ -145,7 +145,7 @@ TupleUpdatedByCurXactAndCmd(HeapTuple t)
 {
     if (TransactionIdEquals(t->t_xmax,
 			    GetCurrentTransactionId()) &&
-	t->t_cmax == GetCurrentCommandId())
+	CommandIdGEScanCommandId (t->t_cmax))
 	return true;
     
     return false;
