@@ -29,7 +29,6 @@
  *	can be read by both genbki.sh and the C compiler.
  * ----------------
  */
-#include "access/attnum.h"
 
 /* ----------------
  *	pg_attribute definition.  cpp turns this into
