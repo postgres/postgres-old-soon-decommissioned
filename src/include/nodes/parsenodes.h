@@ -408,7 +408,7 @@ typedef struct VacuumStmt {
 typedef struct ExplainStmt {
     NodeTag		type;
     Query		*query;		/* the query */
-    List		*options;
+    bool		verbose;	/* print plan info */
 } ExplainStmt;
 
 

@@ -591,7 +591,7 @@ ProcessUtility(Node *parsetree,
 	    commandTag = "EXPLAIN";
 	    CHECK_IF_ABORTED();
 
-	    ExplainQuery(stmt->query, stmt->options, dest);
+	    ExplainQuery(stmt->query, stmt->verbose, dest);
 	}
 	break;
 	

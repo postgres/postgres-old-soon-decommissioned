@@ -131,7 +131,7 @@ static Node *makeA_Expr(int oper, char *opname, Node *lexpr, Node *rexpr);
 	sort_clause, sortby_list, index_params, 
 	name_list, from_clause, from_list, opt_array_bounds, nest_array_bounds,
 	expr_list, attrs, res_target_list, res_target_list2,
-	def_list, opt_indirection, group_clause, groupby_list, explain_options
+	def_list, opt_indirection, group_clause, groupby_list
 
 %type <boolean>	opt_inh_star, opt_binary, opt_instead, opt_with_copy,
 		index_opt_unique, opt_verbose
@@ -1227,19 +1227,13 @@ opt_verbose:  VERBOSE			{ $$ = TRUE; }
  *
  *****************************************************************************/
 
-ExplainStmt:  EXPLAIN explain_options OptimizableStmt
+ExplainStmt:  EXPLAIN opt_verbose OptimizableStmt
 		{
 		    ExplainStmt *n = makeNode(ExplainStmt);
+		    n->verbose = $2;
 		    n->query = (Query*)$3;
-		    n->options = $2;
 		    $$ = (Node *)n;
 		}
-	;
-
-explain_options: WITH name_list
-		{ $$ = $2; }
-	|  /*EMPTY*/
-		{ $$ = NIL; }
 	;
 
 /*****************************************************************************
