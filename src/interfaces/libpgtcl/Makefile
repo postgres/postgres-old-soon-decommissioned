@@ -12,7 +12,7 @@
 #-------------------------------------------------------------------------
 
 SRCDIR= ../..
-:nclude $(SRCDIR)/Makefile.global
+include $(SRCDIR)/Makefile.global
 
 INCLUDE_OPT= \
              -I$(SRCDIR)/backend \
