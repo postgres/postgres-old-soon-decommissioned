@@ -808,9 +808,7 @@ PQreset(PGconn *conn)
  * SIDE_EFFECTS: may block.
 */
 int
-packetSend(PGconn *conn,
-		   char *buf,
-		   size_t len)
+packetSend(PGconn *conn, const char *buf, size_t len)
 {
 	/* Send the total packet size. */
 

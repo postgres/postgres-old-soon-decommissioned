@@ -173,7 +173,7 @@ get_atttypmod(Oid relid, AttrNumber attnum)
 							 0, 0))
 		return att_tup.atttypmod;
 	else
-		return NULL;
+		return -1;
 }
 
 /*				---------- INDEX CACHE ----------						 */

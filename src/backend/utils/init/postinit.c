@@ -66,7 +66,7 @@
 #include "catalog/catname.h"
 #include "catalog/pg_database.h"
 
-#include "libpq/libpq-be.h"
+#include "libpq/libpq.h"
 
 static void VerifySystemDatabase(void);
 static void VerifyMyDatabase(void);

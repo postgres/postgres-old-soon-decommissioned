@@ -23,6 +23,6 @@
  *----------------------------------------------------------------
  */
 
-int packetSend(PGconn *conn, char *buf, size_t len);
+int packetSend(PGconn *conn, const char *buf, size_t len);
 
 #endif							/* FE_CONNECT_H */

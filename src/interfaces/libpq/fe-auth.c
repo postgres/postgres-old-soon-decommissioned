@@ -477,7 +477,7 @@ pg_password_sendauth(PGconn *conn, const char *password, AuthRequest areq)
  */
 int
 fe_sendauth(AuthRequest areq, PGconn *conn, const char *hostname,
-		  const char *password, const char *PQerrormsg)
+		  const char *password, char *PQerrormsg)
 {
 	switch (areq)
 	{
