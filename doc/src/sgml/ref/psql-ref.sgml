@@ -87,6 +87,11 @@ PostgreSQL documentation
       <application>psql</application>, like this: <literal>echo "\x \\
       select * from foo;" | psql</literal>.
       </para>
+      <para>
+      If <quote>autocommit</quote> is on, multiple queries in a single
+      string are processed in a single transaction.
+
+      </para>
       </listitem>
     </varlistentry>
 
