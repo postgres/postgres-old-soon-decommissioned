@@ -22,7 +22,7 @@
 #include "access/heapam.h"
 #include "access/xact.h"
 #include "catalog/catname.h"
-#ifdef MB
+#ifdef MULTIBYTE
 #include "catalog/pg_database_mb.h"
 #include "mb/pg_wchar.h"
 #else
@@ -184,7 +184,7 @@ ExpandDatabasePath(char *dbpath)
  * --------------------------------
  */
 void
-#ifdef MB
+#ifdef MULTIBYTE
 GetRawDatabaseInfo(char *name, Oid *owner, Oid *db_id, char *path, int *encoding)
 #else
 GetRawDatabaseInfo(char *name, Oid *owner, Oid *db_id, char *path)
@@ -275,14 +275,23 @@ GetRawDatabaseInfo(char *name, Oid *owner, Oid *db_id, char *path)
 			 * means of getting at sys cat attrs.
 			 */
 			tup_db = (Form_pg_database) GETSTRUCT(tup);
-
+#ifdef MULTIBYTE
+			/* get encoding from template database.
+			   This is the "default for default" for
+			   create database command.
+			   */
+			if (strcmp("template1",tup_db->datname.data) == 0)
+			{
+				SetTemplateEncoding(tup_db->encoding);
+			}
+#endif
 			if (strcmp(name, tup_db->datname.data) == 0)
 			{
 				*db_id = tup->t_oid;
 				strncpy(path, VARDATA(&(tup_db->datpath)),
 						(VARSIZE(&(tup_db->datpath)) - VARHDRSZ));
 				*(path + VARSIZE(&(tup_db->datpath)) - VARHDRSZ) = '\0';
-#ifdef MB
+#ifdef MULTIBYTE
 				*encoding = tup_db->encoding;
 #endif
 				goto done;

@@ -17,8 +17,8 @@ ifeq ($(CC), gcc)
 CFLAGS+= -Wno-error
 endif
 
-ifdef MB
-CFLAGS+= -DMB=$(MB)
+ifdef MULTIBYTE
+CFLAGS+= $(MBFLAGS)
 endif
 
 OBJS= analyze.o gram.o keywords.o parser.o parse_agg.o parse_clause.o \

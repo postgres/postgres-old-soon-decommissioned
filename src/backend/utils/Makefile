@@ -23,7 +23,7 @@ OBJS = fmgrtab.o adt/SUBSYS.o cache/SUBSYS.o error/SUBSYS.o \
 
 DIRS = adt cache error fmgr hash init misc mmgr sort time
 
-ifdef MB
+ifdef MULTIBYTE
 OBJS += mb/SUBSYS.o
 DIRS += mb
 endif

@@ -22,7 +22,7 @@
 #include "catalog/pg_type.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_language.h"
-#ifdef MB
+#ifdef MULTIBYTE
 #include "catalog/pg_class_mb.h"
 #else
 #include "catalog/pg_class.h"

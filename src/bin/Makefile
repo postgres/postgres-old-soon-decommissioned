@@ -17,7 +17,7 @@ include ../Makefile.global
 DIRS = pg_id pg_version psql pg_dump pg_passwd cleardbdir createdb \
 	createuser destroydb destroyuser initdb initlocation ipcclean
 
-ifdef MB
+ifdef MULTIBYTE
 DIRS += pg_encoding
 endif
 

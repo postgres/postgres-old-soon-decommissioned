@@ -22,8 +22,8 @@ SRCDIR= ../..
 include ../../Makefile.global
 
 CFLAGS += -I..
-ifdef MB
-CFLAGS += -DMB=$(MB)
+ifdef MULTIBYTE
+CFLAGS+= $(MBFLAGS)
 endif
 
 ifeq ($(CC), gcc)

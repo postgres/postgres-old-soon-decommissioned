@@ -10,6 +10,10 @@ else
 	ECHO_C='\c'
 fi
 
+if [ ! -d results ];then
+    mkdir results
+fi
+
 PSQL="psql -n -e -q"
 tests="euc_jp sjis euc_kr euc_cn unicode mule_internal"
 unset PGCLIENTENCODING

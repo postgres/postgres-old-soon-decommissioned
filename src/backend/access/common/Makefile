@@ -13,8 +13,8 @@ include ../../../Makefile.global
 
 CFLAGS+=-I../..
 
-ifdef MB
-CFLAGS+= -DMB=$(MB)
+ifdef MULTIBYTE
+CFLAGS+= $(MBFLAGS)
 endif
 
 OBJS = heaptuple.o heapvalid.o indextuple.o indexvalid.o printtup.o \

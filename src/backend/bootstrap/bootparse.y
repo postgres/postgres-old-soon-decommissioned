@@ -31,7 +31,7 @@
 #include "bootstrap/bootstrap.h"
 #include "catalog/heap.h"
 #include "catalog/pg_am.h"
-#ifdef MB
+#ifdef MULTIBYTE
 #include "catalog/pg_attribute_mb.h"
 #include "catalog/pg_class_mb.h"
 #else

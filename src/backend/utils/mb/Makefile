@@ -12,8 +12,8 @@ SRCDIR = ../../..
 include ../../../Makefile.global
 
 CFLAGS += -I../..
-ifdef MB
-CFLAGS += -DMB=$(MB)
+ifdef MULTIBYTE
+CFLAGS+= $(MBFLAGS)
 endif
 
 OBJS = common.o conv.o mbutils.o wchar.o wstrcmp.o wstrncmp.o variable.o

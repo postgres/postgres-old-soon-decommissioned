@@ -15,7 +15,7 @@ include ../../Makefile.global
 
 OBJS= pg_encoding.o
 
-CFLAGS+= -DMB=$(MB) -I$(SRCDIR)/include
+CFLAGS+= $(MBFLAGS) -I$(SRCDIR)/include
 
 all: pg_encoding
 

@@ -24,7 +24,7 @@ SUBSYS.o: $(OBJS)
 
 GENBKI= ./genbki.sh
 
-ifdef MB
+ifdef MULTIBYTE
 GLOBALBKI_SRCS= $(addprefix ../../include/catalog/, \
                   pg_database_mb.h pg_variable.h pg_shadow.h \
                   pg_group.h pg_log.h \
@@ -36,7 +36,7 @@ GLOBALBKI_SRCS= $(addprefix ../../include/catalog/, \
                  )
 endif
 
-ifdef MB
+ifdef MULTIBYTE
 LOCALBKI_SRCS= $(addprefix ../../include/catalog/, \
                  pg_proc.h pg_type.h pg_attribute_mb.h pg_class_mb.h \
                  pg_inherits.h pg_index.h pg_version.h pg_statistic.h \

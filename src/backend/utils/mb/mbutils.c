@@ -183,7 +183,7 @@ int pg_mbstrlen_with_len(const unsigned char *mbstr, int limit)
 /*
  * fuctions for utils/init
  */
-static int DatabaseEncoding = MB;
+static int DatabaseEncoding = MULTIBYTE;
 void
 SetDatabaseEncoding(int encoding)
 {

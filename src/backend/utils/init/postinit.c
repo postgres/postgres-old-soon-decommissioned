@@ -66,7 +66,7 @@
 #include "utils/inval.h"
 
 #include "catalog/catname.h"
-#ifdef MB
+#ifdef MULTIBYTE
 #include "catalog/pg_database_mb.h"
 #include "mb/pg_wchar.h"
 #else
@@ -83,7 +83,7 @@ static void InitStdio(void);
 static void InitUserid(void);
 
 extern char *ExpandDatabasePath(char *name);
-#ifdef MB
+#ifdef MULTIBYTE
 extern void GetRawDatabaseInfo(char *name, Oid *owner, Oid *db_id, char *path, int *encoding);
 #else
 extern void GetRawDatabaseInfo(char *name, Oid *owner, Oid *db_id, char *path);
@@ -128,12 +128,12 @@ InitMyDatabaseInfo(char *name)
 	Oid			owner;
 	char	   *path,
 				myPath[MAXPGPATH + 1];
-#ifdef MB
+#ifdef MULTIBYTE
 	int encoding;
 #endif
 
 	SetDatabaseName(name);
-#ifdef MB
+#ifdef MULTIBYTE
 	GetRawDatabaseInfo(name, &owner, &MyDatabaseId, myPath, &encoding);
 #else
 	GetRawDatabaseInfo(name, &owner, &MyDatabaseId, myPath);
@@ -147,7 +147,7 @@ InitMyDatabaseInfo(char *name)
 
 	path = ExpandDatabasePath(myPath);
 	SetDatabasePath(path);
-#ifdef MB
+#ifdef MULTIBYTE
 	SetDatabaseEncoding(encoding);
 #endif
 

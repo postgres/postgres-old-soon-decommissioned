@@ -234,8 +234,8 @@ SetDatabaseName(char *name)
 	strcpy(DatabaseName, name);
 }
 
-#ifndef MB
-/* even if MB is not enabled, this function is neccesary
+#ifndef MULTIBYTE
+/* even if MULTIBYTE is not enabled, this function is neccesary
  * since pg_proc.h does have.
  */
 const char *

@@ -50,7 +50,7 @@ all: $(INFILES)
 # run the test
 #
 runtest: $(INFILES) 
-	MB=$(MB);export MB; \
+	MULTIBYTE=$(MULTIBYTE);export MULTIBYTE; \
 	$(SHELL) ./regress.sh 2>&1 | tee regress.out
 	@echo "ACTUAL RESULTS OF REGRESSION TEST ARE NOW IN FILE regress.out"
 

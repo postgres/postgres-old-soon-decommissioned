@@ -68,7 +68,7 @@
 #include "libpq/libpq.h"		/* where the declarations go */
 #include "storage/ipc.h"
 #ifdef MULTIBYTE
-#include "commands/variable.h"
+#include "mb/pg_wchar.h"
 #endif
 
 /* ----------------

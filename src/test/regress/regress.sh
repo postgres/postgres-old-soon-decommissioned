@@ -42,8 +42,8 @@ fi
 
 echo "=============== running regression queries...         ================="
 echo "" > regression.diffs
-if [ a$MB != a ];then
-	mbtests=`echo $MB|tr "[A-Z]" "[a-z]"`
+if [ -n "$MULTIBYTE" ];then
+	mbtests=`echo $MULTIBYTE|tr "[A-Z]" "[a-z]"`
 else
 	mbtests=""
 fi

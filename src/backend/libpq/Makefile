@@ -19,8 +19,8 @@ CFLAGS+= $(KRBFLAGS)
 LDFLAGS+= $(KRBLIBS)
 endif
 
-ifdef MB
-CFLAGS+= -DMB=$(MB)
+ifdef MULTIBYTE
+CFLAGS+= $(MBFLAGS)
 endif
 
 OBJS = be-dumpdata.o be-fsstubs.o be-pqexec.o pqcomprim.o\

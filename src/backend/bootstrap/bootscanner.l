@@ -20,7 +20,7 @@
 #include "storage/block.h"
 #include "storage/off.h"
 #include "storage/itemptr.h"
-#ifdef MB
+#ifdef MULTIBYTE
 #include "catalog/pg_attribute_mb.h"
 #else
 #include "catalog/pg_attribute.h"
@@ -32,7 +32,7 @@
 #include "access/funcindex.h"
 #include "storage/fd.h"
 #include "catalog/pg_am.h"
-#ifdef MB
+#ifdef MULTIBYTE
 #include "catalog/pg_class_mb.h"
 #else
 #include "catalog/pg_class.h"

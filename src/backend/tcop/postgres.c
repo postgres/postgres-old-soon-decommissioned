@@ -84,7 +84,7 @@
 #endif
 
 #ifdef MULTIBYTE
-#include "commands/variable.h"
+#include "mb/pg_wchar.h"
 #endif
 
 /* ----------------
@@ -1339,7 +1339,7 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[])
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface");
-		puts("$Revision: 1.80 $ $Date: 1998/07/18 18:34:09 $");
+		puts("$Revision: 1.81 $ $Date: 1998/07/26 04:30:46 $");
 	}
 
 	/* ----------------

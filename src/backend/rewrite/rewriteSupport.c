@@ -16,7 +16,7 @@
 #include "access/heapam.h"
 #include "catalog/catname.h"
 #include "catalog/indexing.h"
-#ifdef MB
+#ifdef MULTIBYTE
 #include "catalog/pg_class_mb.h"
 #else
 #include "catalog/pg_class.h"

@@ -24,7 +24,7 @@
 #include <utils/syscache.h>
 
 #ifdef MULTIBYTE
-#include <commands/variable.h>
+#include <mb/pg_wchar.h>
 #endif
 
 /* ----------------------------------------------------------------

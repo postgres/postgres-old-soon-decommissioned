@@ -17,7 +17,7 @@
 
 CMDNAME=`basename $0`
 
-MBENABLED=__MB__
+MBENABLED=__MULTIBYTE__
 MB=
 
 if [ -z "$USER" ]; then

@@ -36,8 +36,7 @@
 #endif /* WIN32 */
 
 #ifdef MULTIBYTE
-#include "regex/pg_wchar.h"
-#include "commands/variable.h"
+#include "mb/pg_wchar.h"
 #endif
 
 #ifdef TIOCGWINSZ

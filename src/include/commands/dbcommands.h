@@ -19,7 +19,7 @@
  */
 #define SIGKILLDAEMON1	SIGTERM
 
-#ifdef MB
+#ifdef MULTIBYTE
 extern void createdb(char *dbname, char *dbpath, int encoding);
 #else
 extern void createdb(char *dbname, char *dbpath);

@@ -568,11 +568,11 @@ mdblindwrt(char *dbstr,
 		Oid			owner,
 					id;
 		char	   *tmpPath;
-#ifdef MB
+#ifdef MULTIBYTE
 		int	   tmpEncoding;
 #endif
 
-#ifdef MB
+#ifdef MULTIBYTE
 		GetRawDatabaseInfo(dbstr, &owner, &id, dbpath, &tmpEncoding);
 #else
 		GetRawDatabaseInfo(dbstr, &owner, &id, dbpath);
@@ -614,11 +614,11 @@ mdblindwrt(char *dbstr,
 					id;
 		char	   *tmpPath;
 
-#ifdef MB
+#ifdef MULTIBYTE
 		int	   tmpEncoding;
 #endif
 
-#ifdef MB
+#ifdef MULTIBYTE
 		GetRawDatabaseInfo(dbstr, &owner, &id, dbpath, &tmpEncoding);
 #else
 		GetRawDatabaseInfo(dbstr, &owner, &id, dbpath);

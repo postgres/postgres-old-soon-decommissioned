@@ -41,7 +41,7 @@
 #include "catalog/catname.h"
 #include "catalog/index.h"
 #include "catalog/pg_am.h"
-#ifdef MB
+#ifdef MULTIBYTE
 #include "catalog/pg_attribute_mb.h"
 #include "catalog/pg_class_mb.h"
 #else

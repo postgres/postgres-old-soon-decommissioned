@@ -13,8 +13,8 @@ include ../../Makefile.global
 
 CFLAGS += -I..
 
-ifdef MB
-CFLAGS += -DMB=$(MB)
+ifdef MULTIBYTE
+CFLAGS+= $(MBFLAGS)
 endif
 
 OBJS = async.o creatinh.o command.o copy.o defind.o define.o \

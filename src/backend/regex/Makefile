@@ -15,8 +15,8 @@ CFLAGS += -I..
 CFLAGS += -DPOSIX_MISTAKE 
 
 OBJS = regcomp.o regerror.o regexec.o regfree.o
-ifdef MB
-CFLAGS += -DMB=$(MB)
+ifdef MULTIBYTE
+CFLAGS+= $(MBFLAGS)
 endif
 
 all: SUBSYS.o
