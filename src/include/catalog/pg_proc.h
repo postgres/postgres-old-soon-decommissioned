@@ -710,6 +710,8 @@ DATA(insert OID = 338 (  btbuild		   PGNSP PGUID 12 f f t f v 3 2278 "2281 2281 
 DESCR("btree(internal)");
 DATA(insert OID = 332 (  btbulkdelete	   PGNSP PGUID 12 f f t f v 3 2281 "2281 2281 2281" btbulkdelete - _null_ ));
 DESCR("btree(internal)");
+DATA(insert OID = 972 (  btvacuumcleanup   PGNSP PGUID 12 f f t f v 3 2281 "2281 2281 2281" btvacuumcleanup - _null_ ));
+DESCR("btree(internal)");
 DATA(insert OID = 1268 (  btcostestimate   PGNSP PGUID 12 f f t f v 8 2278 "2281 2281 2281 2281 2281 2281 2281 2281"  btcostestimate - _null_ ));
 DESCR("btree(internal)");
 

@@ -491,8 +491,9 @@ hashbulkdelete(PG_FUNCTION_ARGS)
 
 	result = (IndexBulkDeleteResult *) palloc(sizeof(IndexBulkDeleteResult));
 	result->num_pages = num_pages;
-	result->tuples_removed = tuples_removed;
 	result->num_index_tuples = num_index_tuples;
+	result->tuples_removed = tuples_removed;
+	result->pages_free = 0;
 
 	PG_RETURN_POINTER(result);
 }

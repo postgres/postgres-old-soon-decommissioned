@@ -447,6 +447,13 @@
      </row>
 
      <row>
+      <entry>amvacuumcleanup</entry>
+      <entry><type>regproc</type></entry>
+      <entry>pg_proc.oid</entry>
+      <entry>post-VACUUM cleanup function</entry>
+     </row>
+
+     <row>
       <entry>amcostestimate</entry>
       <entry><type>regproc</type></entry>
       <entry>pg_proc.oid</entry>
