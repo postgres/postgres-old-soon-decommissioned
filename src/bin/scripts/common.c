@@ -153,3 +153,24 @@ executeQuery(PGconn *conn, const char *query, const char *progname, bool echo)
 
 	return res;
 }
+
+
+/*
+ * Check yes/no answer in a localized way.  1=yes, 0=no, -1=neither.
+ */
+
+/* translator: Make sure the (y/n) prompts match the translation of this. */
+#define PG_YESLETTER gettext_noop("y")
+/* translator: Make sure the (y/n) prompts match the translation of this. */
+#define PG_NOLETTER gettext_noop("n")
+
+int
+check_yesno_response(const char *string)
+{
+	if (strcmp(string, gettext(PG_YESLETTER)) == 0)
+		return 1;
+	else if (strcmp(string, gettext(PG_NOLETTER)) == 0)
+		return 0;
+	else
+		return -1;
+}

@@ -166,7 +166,7 @@ main(int argc, char *argv[])
 		char	   *reply;
 
 		reply = simple_prompt("Shall the new user be allowed to create databases? (y/n) ", 1, true);
-		if (reply[0] == 'y' || reply[0] == 'Y')
+		if (check_yesno_response(reply) == 1)
 			createdb = +1;
 		else
 			createdb = -1;
@@ -177,7 +177,7 @@ main(int argc, char *argv[])
 		char	   *reply;
 
 		reply = simple_prompt("Shall the new user be allowed to create more new users? (y/n) ", 1, true);
-		if (reply[0] == 'y' || reply[0] == 'Y')
+		if (check_yesno_response(reply) == 1)
 			adduser = +1;
 		else
 			adduser = -1;

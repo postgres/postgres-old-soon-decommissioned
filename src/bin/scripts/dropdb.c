@@ -107,7 +107,7 @@ main(int argc, char *argv[])
 
 		printf(_("Database \"%s\" will be permanently deleted.\n"), dbname);
 		reply = simple_prompt("Are you sure? (y/n) ", 1, true);
-		if (reply[0] != 'y' && reply[0] != 'Y')
+		if (check_yesno_response(reply) != 1)
 			exit(0);
 	}
 
