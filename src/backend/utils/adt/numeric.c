@@ -193,10 +193,8 @@ Datum
 numeric_in(PG_FUNCTION_ARGS)
 {
 	char	   *str = PG_GETARG_CSTRING(0);
-
 #ifdef NOT_USED
 	Oid			typelem = PG_GETARG_OID(1);
-
 #endif
 	int32		typmod = PG_GETARG_INT32(2);
 	NumericVar	value;

@@ -510,11 +510,10 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 			 * No user-supplied value, so add a targetentry with DEFAULT
 			 * expr and correct data for the target column.
 			 */
-			te = makeTargetEntry(
-								 makeResdom(attrno,
+			te = makeTargetEntry(makeResdom(attrno,
 											thisatt->atttypid,
 											thisatt->atttypmod,
-									  pstrdup(NameStr(thisatt->attname)),
+											pstrdup(NameStr(thisatt->attname)),
 											false),
 								 stringToNode(defval[ndef].adbin));
 			qry->targetList = lappend(qry->targetList, te);

@@ -91,6 +91,7 @@ typedef struct
 
 extern Datum timestamp_in(PG_FUNCTION_ARGS);
 extern Datum timestamp_out(PG_FUNCTION_ARGS);
+extern Datum timestamp_scale(PG_FUNCTION_ARGS);
 extern Datum timestamp_eq(PG_FUNCTION_ARGS);
 extern Datum timestamp_ne(PG_FUNCTION_ARGS);
 extern Datum timestamp_lt(PG_FUNCTION_ARGS);
@@ -130,6 +131,7 @@ extern Datum timestamp_timestamptz(PG_FUNCTION_ARGS);
 
 extern Datum timestamptz_in(PG_FUNCTION_ARGS);
 extern Datum timestamptz_out(PG_FUNCTION_ARGS);
+extern Datum timestamptz_scale(PG_FUNCTION_ARGS);
 extern Datum timestamptz_timestamp(PG_FUNCTION_ARGS);
 extern Datum timestamptz_zone(PG_FUNCTION_ARGS);
 extern Datum timestamptz_izone(PG_FUNCTION_ARGS);
