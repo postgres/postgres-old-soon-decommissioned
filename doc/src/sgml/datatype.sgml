@@ -2642,7 +2642,7 @@ SELECT * FROM test1 WHERE a;
    </para>
 
    <para>
-    IP v6 is not supported, yet.
+    IP v6 is not yet supported.
    </para>
 
 
