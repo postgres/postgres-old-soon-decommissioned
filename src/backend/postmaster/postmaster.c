@@ -1248,10 +1248,11 @@ ServerLoop(void)
 		/*
 		 * Touch the socket and lock file at least every hour, to
 		 * ensure that they are not removed by overzealous /tmp-cleaning
-		 * tasks.
+		 * tasks.  Set to 58 minutes so a cleaner never sees the
+		 * file as an hour old.
 		 */
 		now = time(NULL);
-		if (now - last_touch_time >= 60 * 60)
+		if (now - last_touch_time >= 58 * 60)
 		{
 			TouchSocketFile();
 			TouchSocketLockFile();
