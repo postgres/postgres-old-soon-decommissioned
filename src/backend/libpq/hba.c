@@ -923,7 +923,7 @@ ident_unix(int sock, char *ident_user)
 	Cred *cred;
 
 	/* Compute size without padding */
-	char cmsgmem[sizeof(struct cmsghdr) + sizeof(Cred)];
+	char cmsgmem[sizeof(struct cmsghdr) + ALIGN(sizeof(Cred))]; /*for NetBSD*/
 	/* Point to start of first structure */
 	struct cmsghdr *cmsg = (struct cmsghdr *)cmsgmem;
 
