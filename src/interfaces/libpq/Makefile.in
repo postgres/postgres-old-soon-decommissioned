@@ -21,6 +21,7 @@ CFLAGS+= -DFRONTEND
 
 ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)
+SHLIB_LINK += $(KRBLIBS)
 endif
 
 OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
