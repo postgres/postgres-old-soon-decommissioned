@@ -210,7 +210,7 @@ plperl_init_interp(void)
 		 */
 		"require Safe; SPI::bootstrap();"
 		"sub ::mksafefunc { my $x = new Safe; $x->permit_only(':default');$x->permit(':base_math');"
-		"$x->share(qw[&elog &DEBUG &NOTICE &ERROR]);"
+		"$x->share(qw[&elog &DEBUG &LOG &INFO &NOTICE &WARNING &ERROR]);"
 		" return $x->reval(qq[sub { $_[0] }]); }"
 		"sub ::mkunsafefunc {return eval(qq[ sub { $_[0] } ]); }"
 	};

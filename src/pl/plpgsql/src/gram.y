@@ -161,8 +161,10 @@ static	PLpgSQL_expr	*make_tupret_expr(PLpgSQL_row *row);
 %token	K_GET
 %token	K_IF
 %token	K_IN
+%token	K_INFO
 %token	K_INTO
 %token	K_IS
+%token	K_LOG
 %token	K_LOOP
 %token	K_NOT
 %token	K_NOTICE
@@ -180,6 +182,7 @@ static	PLpgSQL_expr	*make_tupret_expr(PLpgSQL_row *row);
 %token	K_THEN
 %token	K_TO
 %token	K_TYPE
+%token	K_WARNING
 %token	K_WHEN
 %token	K_WHILE
 
@@ -1201,9 +1204,21 @@ raise_level		: K_EXCEPTION
 					{
 						$$ = ERROR;
 					}
+				| K_WARNING
+					{
+						$$ = WARNING;
+					}
 				| K_NOTICE
 					{
 						$$ = NOTICE;
+					}
+				| K_INFO
+					{
+						$$ = INFO;
+					}
+				| K_LOG
+					{
+						$$ = LOG;
 					}
 				| K_DEBUG
 					{
