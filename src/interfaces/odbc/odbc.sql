@@ -210,18 +210,6 @@ CREATE OR REPLACE FUNCTION year(timestamp) RETURNS integer AS '
 
 
 -- System Functions
-
-CREATE OR REPLACE FUNCTION odbc_user() RETURNS text AS '
-    SELECT CAST(current_user AS TEXT);
-' LANGUAGE SQL;
-
-CREATE OR REPLACE FUNCTION odbc_current_user() RETURNS text AS '
-    SELECT CAST(current_user AS TEXT);
-' LANGUAGE SQL;
-
-CREATE OR REPLACE FUNCTION odbc_session_user() RETURNS text AS '
-    SELECT CAST(session_user AS TEXT);
-' LANGUAGE SQL;
 -- ++++++++++++++++
 --
 -- Built-in: USER
