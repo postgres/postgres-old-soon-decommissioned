@@ -303,7 +303,7 @@ typedef unsigned long int uint64;
 /* Decide if we need to decorate 64-bit constants */
 #ifdef HAVE_LL_CONSTANTS
 #define INT64CONST(x)  ((int64) x##LL)
-#define UINT64CONST(x) ((uint64) x##LL)
+#define UINT64CONST(x) ((uint64) x##ULL)
 #else
 #define INT64CONST(x)  ((int64) x)
 #define UINT64CONST(x) ((uint64) x)
