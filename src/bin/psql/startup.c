@@ -217,6 +217,9 @@ main(int argc, char *argv[])
 
 	SyncVariables();
 
+	/* Grab the backend server version */
+	pset.sversion = PQserverVersion(pset.db);
+
 	if (options.action == ACT_LIST_DB)
 	{
 		int			success = listAllDbs(false);
