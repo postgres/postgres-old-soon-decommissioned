@@ -1289,10 +1289,14 @@ BackendStartup(Port *port)
 	}
 
 	/*
-	 * Flush all stdio channels just before fork, to avoid double-output
-	 * problems.
+	 * Flush stdio channels just before fork, to avoid double-output problems.
+	 * Ideally we'd use fflush(NULL) here, but there are still a few non-ANSI
+	 * stdio libraries out there (like SunOS 4.1.x) that coredump if we do.
+	 * Presently stdout and stderr are the only stdio output channels used
+	 * by the postmaster, so fflush'ing them should be sufficient.
 	 */
-	fflush(NULL);
+	fflush(stdout);
+	fflush(stderr);
 
 	if ((pid = fork()) == 0)
 	{							/* child */
