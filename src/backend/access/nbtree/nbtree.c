@@ -785,6 +785,10 @@ btvacuumcleanup(PG_FUNCTION_ARGS)
 			 * Do the physical truncation.
 			 */
 			RelationTruncate(rel, new_pages);
+
+			/* update statistics */
+			stats->pages_removed = num_pages - new_pages;
+
 			num_pages = new_pages;
 		}
 	}

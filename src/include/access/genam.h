@@ -28,10 +28,15 @@
  * an index AM could choose to have bulk-delete return a larger struct
  * of which this is just the first field; this provides a way for bulk-delete
  * to communicate additional private data to vacuum-cleanup.
+ *
+ * Note: pages_removed is the amount by which the index physically shrank,
+ * if any (ie the change in its total size on disk).  pages_deleted and
+ * pages_free refer to free space within the index file.
  */
 typedef struct IndexBulkDeleteResult
 {
 	BlockNumber num_pages;		/* pages remaining in index */
+	BlockNumber pages_removed;	/* # removed by bulk-delete operation */
 	double		num_index_tuples;		/* tuples remaining */
 	double		tuples_removed; /* # removed by bulk-delete operation */
 	BlockNumber pages_deleted;	/* # unused pages in index */

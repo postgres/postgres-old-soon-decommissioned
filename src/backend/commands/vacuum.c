@@ -646,7 +646,7 @@ vac_update_relstats(Oid relid, BlockNumber num_pages, double num_tuples,
 	/* overwrite the existing statistics in the tuple */
 	pgcform = (Form_pg_class) GETSTRUCT(&rtup);
 	pgcform->relpages = (int32) num_pages;
-	pgcform->reltuples = num_tuples;
+	pgcform->reltuples = (float4) num_tuples;
 	pgcform->relhasindex = hasindex;
 
 	/*

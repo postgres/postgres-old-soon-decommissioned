@@ -255,7 +255,7 @@ typedef struct IndexOptInfo
 	Oid			indexoid;		/* OID of the index relation */
 
 	/* statistics from pg_class */
-	long		pages;			/* number of disk pages in index */
+	BlockNumber	pages;			/* number of disk pages in index */
 	double		tuples;			/* number of index tuples in index */
 
 	/* index descriptor information */
