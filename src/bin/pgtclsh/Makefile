@@ -14,7 +14,7 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-CFLAGS+=  -I$(TCL_INCDIR) -I$(TK_INCDIR) -I$(X11_INCDIR) -I$(SRCDIR)/interfaces/libpgtcl
+CFLAGS+=  $(X_CFLAGS) -I$(TCL_INCDIR) -I$(TK_INCDIR) -I$(SRCDIR)/interfaces/libpgtcl
 
 ifdef KRBVERS
 LDFLAGS+= $(KRBLIBS)
@@ -33,8 +33,8 @@ pgtclsh: pgtclAppInit.o
 
 pgtksh: pgtkAppInit.o
 	$(CC) $(CFLAGS) -o $@ pgtkAppInit.o \
-	  $(LIBPGTCL) $(LIBPQ) -L$(TCL_LIBDIR) -L$(TK_LIBDIR) -L$(X11_LIBDIR) \
-	  $(TK_LIB) $(TCL_LIB) -lX11 -lm $(LDFLAGS)
+	  $(LIBPGTCL) $(LIBPQ) -L$(TCL_LIBDIR) -L$(TK_LIBDIR) $(X_LIBS) \
+	  $(TK_LIB) $(TCL_LIB) $(X11_LIBS) -lm $(LDFLAGS)
 
 install: pgtclsh pgtksh
 	$(INSTALL) $(INSTL_EXE_OPTS) pgtclsh $(DESTDIR)$(BINDIR)/pgtclsh
