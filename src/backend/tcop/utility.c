@@ -139,7 +139,7 @@ ProcessUtility(Node *parsetree,
 				bool		forward;
 				int			count;
 
-				commandTag = "FETCH";
+				commandTag = (stmt->ismove) ? "MOVE" : "FETCH";
 				CHECK_IF_ABORTED();
 
 				forward = (bool) (stmt->direction == FORWARD);
@@ -149,7 +149,8 @@ ProcessUtility(Node *parsetree,
 				 */
 
 				count = stmt->howMany;
-				PerformPortalFetch(portalName, forward, count, commandTag, dest);
+				PerformPortalFetch(portalName, forward, count, commandTag, 
+					(stmt->ismove) ? None : dest);	/* /dev/null for MOVE */
 			}
 			break;
 
