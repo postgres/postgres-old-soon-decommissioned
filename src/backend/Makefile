@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------
 #
 # Makefile--
-#    Makefile for the postgres backend (and the postmaster)
+#   Makefile for the postgres backend (and the postmaster)
 #
 # Copyright (c) 1994, Regents of the University of California
 #
