@@ -81,19 +81,14 @@ The default is unlimited.
 .IR TIMEZONE
 sets your timezone.
 .PP
-.I TRANSACTION ISOLATION LEVEL
-sets the current transaction's isolation level to
-.IR SERIALIZABLE
-or
-.IR READ COMMITTED .
-.IR SERIALIZABLE
-means that the current transaction will place a lock on every row read,
-so later reads in that transaction see the rows unmodified by
-other transactions.
-.IR READ COMMITTED
-means that the current transaction reads only committed rows.
-.IR READ COMMITTED
-is the default.
+\fITRANSACTION ISOLATION LEVEL\fR sets the current transaction's isolation
+level to \fI SERIALIZABLE\fR or \fIREAD COMMITTED\fR. \fISERIALIZABLE\fR
+means that the current transaction queries will read only rows committed
+before first DML statement (SELECT/INSERT/DELETE/UPDATE/FETCH/COPY_TO) was
+executed in this transaction. \fIREAD COMMITTED\fR means that the current
+transaction queries will read only rows committed before a query began.
+\fIREAD COMMITTED\fR is the default. \fBNote\fR: SQL92 standard requires
+\fISERIALIZABLE\fR to be the default isolation level.
 .PP
 .IR CLIENT_ENCODING|NAMES
 sets the character set encoding of the client.  Only available if multi-byte
