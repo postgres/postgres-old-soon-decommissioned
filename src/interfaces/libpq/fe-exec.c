@@ -887,7 +887,9 @@ PQprint(FILE *fout,
 	if (po->pager && fout == stdout && isatty(fileno(stdout))) {
 		/* try to pipe to the pager program if possible */
 #ifdef TIOCGWINSZ
-		if (ioctl(fileno(stdout),TIOCGWINSZ,&screen_size) == -1)
+		if (ioctl(fileno(stdout),TIOCGWINSZ,&screen_size) == -1 ||
+		    screen_size.ws_col == 0 ||
+		    screen_size.ws_row == 0)
 		{
 #endif
 			screen_size.ws_row = 24;
@@ -897,6 +899,7 @@ PQprint(FILE *fout,
 #endif
 		pagerenv=getenv("PAGER");
 		if (pagerenv != NULL &&
+		    pagerenv[0] != '\0' && 
 		   !po->html3 &&
 		   ((po->expanded &&
 			nTups * (nFields+1) >= screen_size.ws_row) ||
