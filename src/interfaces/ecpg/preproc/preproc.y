@@ -4265,7 +4265,7 @@ user_name: UserId
 		{
 			if ($1[0] == '\"')
 				$$ = $1;
-			else if (strcmp($1, "?") == 0) /* variable */
+			else if (strcmp($1, " ?") == 0) /* variable */
 			{
 				enum ECPGttype type = argsinsert->variable->type->type;
 
