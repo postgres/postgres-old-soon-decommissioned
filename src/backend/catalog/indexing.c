@@ -143,7 +143,7 @@ CatalogIndexInsert(Relation *idescs,
 	char		nullv[INDEX_MAX_KEYS];
 	int			i;
 
-	if (IsIgnoringSystemIndexes())
+	if (IsIgnoringSystemIndexes() || (!heapRelation->rd_rel->relhasindex))
 		return;
 	heapDescriptor = RelationGetDescr(heapRelation);
 
