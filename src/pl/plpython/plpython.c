@@ -630,7 +630,7 @@ PLy_modify_tuple(PLyProcedure * proc, PyObject * pltd, TriggerData *tdata,
 			modvalues[j] = FunctionCall3(&proc->result.out.r.atts[atti].typfunc,
 										 CStringGetDatum(src),
 				 ObjectIdGetDatum(proc->result.out.r.atts[atti].typelem),
-							Int32GetDatum(tupdesc->attrs[j]->atttypmod));
+							Int32GetDatum(tupdesc->attrs[atti]->atttypmod));
 			modnulls[j] = ' ';
 
 			Py_DECREF(plstr);
