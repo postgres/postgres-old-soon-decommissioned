@@ -220,6 +220,15 @@ pqParseInput3(PGconn *conn)
 					conn->asyncStatus = PGASYNC_READY;
 					break;
 				case '1':		/* Parse Complete */
+					/* If we're doing PQprepare, we're done; else ignore */
+					if (conn->queryclass == PGQUERY_PREPARE)
+					{
+						if (conn->result == NULL)
+							conn->result = PQmakeEmptyPGresult(conn,
+															   PGRES_COMMAND_OK);
+						conn->asyncStatus = PGASYNC_READY;
+					}
+					break;
 				case '2':		/* Bind Complete */
 				case '3':		/* Close Complete */
 					/* Nothing to do for these message types */
@@ -1118,7 +1127,7 @@ pqEndcopy3(PGconn *conn)
 		 * If we sent the COPY command in extended-query mode, we must
 		 * issue a Sync as well.
 		 */
-		if (conn->ext_query)
+		if (conn->queryclass != PGQUERY_SIMPLE)
 		{
 			if (pqPutMsgStart('S', false, conn) < 0 ||
 				pqPutMsgEnd(conn) < 0)

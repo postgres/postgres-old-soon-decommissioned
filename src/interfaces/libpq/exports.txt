@@ -1,3 +1,4 @@
+# $PostgreSQL$
 # Functions to be exported by libpq DLLs
 PQconnectdb               1
 PQsetdbLogin              2
@@ -116,3 +117,5 @@ PQgetssl                  114
 pg_char_to_encoding       115
 pg_valid_server_encoding  116
 pqsignal                  117
+PQprepare                 118
+PQsendPrepare             119

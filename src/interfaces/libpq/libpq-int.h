@@ -185,6 +185,14 @@ typedef enum
 	PGASYNC_COPY_OUT			/* Copy Out data transfer in progress */
 } PGAsyncStatusType;
 
+/* PGQueryClass tracks which query protocol we are now executing */
+typedef enum
+{
+	PGQUERY_SIMPLE,				/* simple Query protocol (PQexec) */
+	PGQUERY_EXTENDED,			/* full Extended protocol (PQexecParams) */
+	PGQUERY_PREPARE				/* Parse only (PQprepare) */
+} PGQueryClass;
+
 /* PGSetenvStatusType defines the state of the PQSetenv state machine */
 /* (this is used only for 2.0-protocol connections) */
 typedef enum
@@ -264,10 +272,9 @@ struct pg_conn
 	PGAsyncStatusType asyncStatus;
 	PGTransactionStatusType xactStatus;
 	/* note: xactStatus never changes to ACTIVE */
+	PGQueryClass queryclass;
 	bool		nonblocking;	/* whether this connection is using
 								 * nonblock sending semantics */
-	bool		ext_query;		/* was our last query sent with extended
-								 * query protocol? */
 	char		copy_is_binary; /* 1 = copy binary, 0 = copy text */
 	int			copy_already_done;		/* # bytes already returned in
 										 * COPY OUT */
