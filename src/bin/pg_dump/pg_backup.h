@@ -73,6 +73,7 @@ typedef struct _restoreOptions
 	int			noOwner;		/* Don't try to match original object owner */
 	int			disable_triggers;		/* disable triggers during
 										 * data-only restore */
+	int			use_setsessauth;	/* Use SET SESSION AUTHORIZATION commands instead of OWNER TO */
 	char	   *superuser;		/* Username to use as superuser */
 	int			dataOnly;
 	int			dropSchema;
