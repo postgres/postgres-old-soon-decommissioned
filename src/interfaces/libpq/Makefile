@@ -32,16 +32,11 @@ OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-lobj.o \
 
 shlib := 
 install-shlib-dep :=
-ifdef LINUX_ELF
-install-shlib-dep := install-shlib
 ifeq ($(PORTNAME), linux)
-shlib := libpq.so.1
-endif
-ifeq ($(PORTNAME), BSD44_derived)
-shlib := libpq.so.1.0
-CFLAGS+= -fpic -DPIC
-LDFLAGS=-Bshareable -Bforcearchive
-endif
+  ifdef LINUX_ELF
+    install-shlib-dep := install-shlib
+    shlib := libpq.so.1
+  endif
 endif
 
 all: libpq.a $(shlib) c.h

@@ -71,7 +71,7 @@ PORTNAME= UNDEFINED
 # Ignore LINUX_ELF if you're not using Linux.  But if you are, and you're
 # compiling to a.out (which means you're using the dld dynamic loading 
 # library), set LINUX_ELF to null in Makefile.custom.
-LINUX_ELF= 1
+LINUX_ELF= true
 
 LIBPQDIR:= $(SRCDIR)/libpq
 

@@ -25,8 +25,12 @@ ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)
 endif
 
-ifdef LINUX_ELF
-CFLAGS += -fPIC
+ifeq ($(PORTNAME), linux)
+  ifdef LINUX_ELF
+    ifeq ($(CC), gcc)
+      CFLAGS += -fpic -fPIC
+    endif
+  endif
 endif
 
 OBJS= pgtcl.o pgtclCmds.o pgtclId.o

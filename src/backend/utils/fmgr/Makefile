@@ -20,9 +20,9 @@ CFLAGS+=$(INCLUDE_OPT)
 ifeq ($(PORTNAME), linux)
 # LINUX_ELF tells us to use the ELF dynamic load facilities that come with
 # Linux.
-ifdef LINUX_ELF
-CFLAGS+=-DLINUX_ELF
-endif
+  ifdef LINUX_ELF
+    CFLAGS+=-DLINUX_ELF
+  endif
 endif
 
 OBJS = dfmgr.o fmgr.o
