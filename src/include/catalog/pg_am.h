@@ -109,13 +109,4 @@ DESCR("");
 DATA(insert OID = 783 (  gist PGUID "o" 100 7 gistgettuple gistinsert gistdelete - - - - gistbeginscan gistrescan gistendscan gistmarkpos gistrestrpos - - gistbuild - - ));
 DESCR("");
 
-BKI_BEGIN
-#ifdef NOBTREE
-BKI_END
-DATA(insert OID = 404 (  nobtree PGUID "o" 5 1 nobtgettuple nobtinsert nobtdelete - - - - nobtbeginscan nobtrescan nobtendscan nobtmarkpos nobtrestrpos - - nobtbuild - - ));
-DESCR("");
-BKI_BEGIN
-#endif							/* NOBTREE */
-BKI_END
-
 #endif							/* PG_AM_H */

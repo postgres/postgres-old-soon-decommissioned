@@ -96,28 +96,6 @@ DATA(insert OID = 0 (403 1115 1107 1));
 DATA(insert OID = 0 (403 1312 1314 1));
 DATA(insert OID = 0 (403 1313 1315 1));
 
-BKI_BEGIN
-#ifdef NOBTREE
-BKI_END
-DATA(insert OID = 0 (404  421  350 1));
-DATA(insert OID = 0 (404  423  355 1));
-DATA(insert OID = 0 (404  424  353 1));
-DATA(insert OID = 0 (404  425  352 1));
-DATA(insert OID = 0 (404  426  351 1));
-DATA(insert OID = 0 (404  427  356 1));
-DATA(insert OID = 0 (404  428  354 1));
-DATA(insert OID = 0 (404  429  358 1));
-DATA(insert OID = 0 (404  406  689 1));
-DATA(insert OID = 0 (404  407  690 1));
-DATA(insert OID = 0 (404  408  691 1));
-DATA(insert OID = 0 (404 1181  359 1));
-DATA(insert OID = 0 (404  430 1274 1));
-DATA(insert OID = 0 (404  431  360 1));
-DATA(insert OID = 0 (404  432  357 1));
-BKI_BEGIN
-#endif							/* NOBTREE */
-BKI_END
-
 DATA(insert OID = 0 (405  421  449 1));
 DATA(insert OID = 0 (405  423  452 1));
 DATA(insert OID = 0 (405  426  450 1));
