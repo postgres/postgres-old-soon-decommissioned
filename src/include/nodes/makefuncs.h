@@ -13,10 +13,8 @@
 #ifndef MAKEFUNC_H
 #define MAKEFUNC_H
 
-#include "access/attnum.h"
-#include "catalog/pg_operator.h"
-#include "utils/fcache.h"
-#include "nodes/primnodes.h"
+#include <nodes/primnodes.h>
+#include <utils/fcache.h>
 
 extern Oper *makeOper(Oid opno,
 		      Oid opid,
