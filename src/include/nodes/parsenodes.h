@@ -1628,7 +1628,7 @@ typedef struct CreateConversionStmt
 	NodeTag		type;
 	List	   *conversion_name;	/* Name of the conversion */
 	char	   *for_encoding_name;		/* source encoding name */
-	char	   *to_encoding_name;		/* destiname encoding name */
+	char	   *to_encoding_name;		/* destination encoding name */
 	List	   *func_name;		/* qualified conversion function name */
 	bool		def;			/* is this a default conversion? */
 } CreateConversionStmt;
