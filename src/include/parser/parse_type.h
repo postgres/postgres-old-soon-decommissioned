@@ -29,8 +29,8 @@ extern char typeTypeFlag(Type t);
 extern char *stringTypeString(Type tp, char *string, int32 atttypmod);
 extern Oid	typeidTypeRelid(Oid type_id);
 extern Oid	typeTypeRelid(Type typ);
-extern Oid	typeidTypElem(Oid type_id);
+extern Oid	typeTypElem(Type typ);
 extern Oid	GetArrayElementType(Oid typearray);
-extern Oid	typeidInfunc(Oid type_id);
+extern Oid	typeInfunc(Type typ);
 
 #endif	 /* PARSE_TYPE_H */

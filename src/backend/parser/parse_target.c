@@ -241,7 +241,7 @@ MakeTargetEntryExpr(ParseState *pstate,
 				Oid			typelem;
 
 				if (arrayRef && !(((A_Indices *) lfirst(arrayRef))->lidx))
-					typelem = typeidTypElem(attrtype);
+					typelem = typeTypElem(typeidType(attrtype));
 				else
 					typelem = attrtype;
 
