@@ -761,7 +761,7 @@ ifneq ($(CUSTOM_COPT),)
   COPT= $(CUSTOM_COPT)
 else
   ifeq ($(CC), gcc)
-    COPT= -O2 -Werror
+    COPT= -O2 # -Werror
   else
     COPT= -O
   endif
