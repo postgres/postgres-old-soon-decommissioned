@@ -238,6 +238,21 @@ int lo_close(PGconn *conn, int fd)
       returns zero.  On error, the return value is negative.
 </para>
 </sect2>
+
+   <sect2>
+    <title>Removing a Large Object</title>
+
+    <para>
+     To remove a large object from the database, call
+<synopsis>
+Oid lo_unlink(PGconn *<replaceable class="parameter">conn</replaceable>, Oid lobjId)
+</synopsis>
+     The lobjId argument specifies  the  Oid  of  the  large
+     object  to  remove.
+    </para>
+   </sect2>
+
+
 </sect1>
 
 <sect1>
