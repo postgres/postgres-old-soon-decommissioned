@@ -251,7 +251,7 @@ current_schema(PG_FUNCTION_ARGS)
 Datum
 current_schemas(PG_FUNCTION_ARGS)
 {
-	List   *search_path = fetch_search_path(false);
+	List   *search_path = fetch_search_path(PG_GETARG_BOOL(0));
 	int		nnames = length(search_path);
 	Datum  *names;
 	int		i;

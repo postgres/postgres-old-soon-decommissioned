@@ -1761,7 +1761,7 @@ DESCR("convert name to varchar");
 
 DATA(insert OID = 1402 (  current_schema	PGNSP PGUID 12 f f f t f s 0    19 "0" 100 0 0 100	current_schema - _null_ ));
 DESCR("current schema name");
-DATA(insert OID = 1403 (  current_schemas	PGNSP PGUID 12 f f f t f s 0  1003 "0" 100 0 0 100	current_schemas - _null_ ));
+DATA(insert OID = 1403 (  current_schemas	PGNSP PGUID 12 f f f t f s 1  1003 "16" 100 0 0 100	current_schemas - _null_ ));
 DESCR("current schema search list");
 
 DATA(insert OID = 1404 (  overlay			PGNSP PGUID 14 f f f t f i 4 25 "25 25 23 23" 100 0 0 100  "select substring($1, 1, ($3 - 1)) || $2 || substring($1, ($3 + $4))" - _null_ ));
