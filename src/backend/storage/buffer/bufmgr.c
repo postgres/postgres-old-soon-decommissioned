@@ -231,7 +231,13 @@ ReadBufferInternal(Relation reln, BlockNumber blockNum,
 		if (status == SM_SUCCESS &&
 			!PageHeaderIsValid((PageHeader) MAKE_PTR(bufHdr->data)))
 		{
-			if (zero_damaged_pages)
+			/*
+			 * During WAL recovery, the first access to any data page should
+			 * overwrite the whole page from the WAL; so a clobbered page
+			 * header is not reason to fail.  Hence, when InRecovery we may
+			 * always act as though zero_damaged_pages is ON.
+			 */
+			if (zero_damaged_pages || InRecovery)
 			{
 				ereport(WARNING,
 						(errcode(ERRCODE_DATA_CORRUPTED),
