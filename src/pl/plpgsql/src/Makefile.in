@@ -24,6 +24,10 @@ CFLAGS+= -I$(SRCDIR)/backend
 ifneq (,$(findstring flex,$(LEX)))
 LFLAGS+= -i -l
 endif
+# bsdi calls flex lex
+ifeq ($(PORTNAME), bsdi)
+LFLAGS+= -i -l
+endif
 
 OBJS=	pl_parse.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
 
