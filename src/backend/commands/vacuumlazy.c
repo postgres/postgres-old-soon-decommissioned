@@ -45,6 +45,7 @@
 #include "storage/freespace.h"
 #include "storage/sinval.h"
 #include "storage/smgr.h"
+#include "utils/lsyscache.h"
 
 
 /*
@@ -207,7 +208,9 @@ lazy_scan_heap(Relation onerel, LVRelStats *vacrelstats,
 	vac_init_rusage(&ru0);
 
 	relname = RelationGetRelationName(onerel);
-	elog(elevel, "--Relation %s--", relname);
+	elog(elevel, "--Relation %s.%s--",
+		 get_namespace_name(RelationGetNamespace(onerel)),
+		 relname);
 
 	empty_pages = changed_pages = 0;
 	num_tuples = tups_vacuumed = nkeep = nunused = 0;

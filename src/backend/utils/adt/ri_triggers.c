@@ -33,11 +33,10 @@
 
 #include "postgres.h"
 
-#include "catalog/pg_namespace.h"
 #include "catalog/pg_operator.h"
 #include "commands/trigger.h"
 #include "executor/spi_priv.h"
-#include "nodes/makefuncs.h"
+#include "utils/lsyscache.h"
 #include "miscadmin.h"
 
 
@@ -2954,18 +2953,7 @@ quoteOneName(char *buffer, const char *name)
 static void
 quoteRelationName(char *buffer, Relation rel)
 {
-	HeapTuple	tuple;
-	char	   *nsname;
-
-	tuple = SearchSysCache(NAMESPACEOID,
-						   ObjectIdGetDatum(RelationGetNamespace(rel)),
-						   0, 0, 0);
-	if (!HeapTupleIsValid(tuple))
-		elog(ERROR, "Failed to lookup namespace %u of relation %s",
-			 RelationGetNamespace(rel), RelationGetRelationName(rel));
-	nsname = NameStr(((Form_pg_namespace) GETSTRUCT(tuple))->nspname);
-	quoteOneName(buffer, nsname);
-	ReleaseSysCache(tuple);
+	quoteOneName(buffer, get_namespace_name(RelationGetNamespace(rel)));
 	buffer += strlen(buffer);
 	*buffer++ = '.';
 	quoteOneName(buffer, RelationGetRelationName(rel));

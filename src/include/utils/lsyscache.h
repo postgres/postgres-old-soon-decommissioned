@@ -59,6 +59,7 @@ extern bool get_attstatsslot(HeapTuple statstuple,
 extern void free_attstatsslot(Oid atttype,
 				  Datum *values, int nvalues,
 				  float4 *numbers, int nnumbers);
+extern char *get_namespace_name(Oid nspid);
 extern int32 get_usesysid(const char *username);
 
 #define TypeIsToastable(typid)	(get_typstorage(typid) != 'p')
