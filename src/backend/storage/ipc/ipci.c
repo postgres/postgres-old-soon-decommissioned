@@ -83,7 +83,7 @@ CreateSharedMemoryAndSemaphores(IPCKey key)
 				IPCKeyGetBufferMemoryKey(key), size);
 	}
 	ShmemCreate(IPCKeyGetBufferMemoryKey(key), size);
-	ShmemBindingTabReset();
+	ShmemBindingTableReset();
 	InitShmem(key, size);
 	InitBufferPool(key);
 
