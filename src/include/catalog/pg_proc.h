@@ -2174,6 +2174,8 @@ DATA(insert OID = 1642 (  pg_get_userbyid	   PGNSP PGUID 12 f f t f s 1 19 "23" 
 DESCR("user name by UID (with fallback)");
 DATA(insert OID = 1643 (  pg_get_indexdef	   PGNSP PGUID 12 f f t f s 1 25 "26"  pg_get_indexdef - _null_ ));
 DESCR("index description");
+DATA(insert OID = 1387 (  pg_get_constraintdef PGNSP PGUID 12 f f t f s 1 25 "26"  pg_get_constraintdef - _null_ ));
+DESCR("constraint description");
 DATA(insert OID = 1716 (  pg_get_expr		   PGNSP PGUID 12 f f t f s 2 25 "25 26"	pg_get_expr - _null_ ));
 DESCR("deparse an encoded expression");
 
