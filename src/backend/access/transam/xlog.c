@@ -1503,7 +1503,7 @@ InstallXLogFileSegment(uint32 log, uint32 seg, char *tmppath,
 	 * overwrite an existing logfile.  However, there shouldn't be one, so
 	 * rename() is an acceptable substitute except for the truly paranoid.
 	 */
-#if !defined(__BEOS__) && !defined(N_PLAT_NLM)
+#if !defined(__BEOS__) && !defined(N_PLAT_NLM) && !defined(__CYGWIN__)
 	if (link(tmppath, path) < 0)
 		elog(PANIC, "link from %s to %s (initialization of log file %u, segment %u) failed: %m",
 			 tmppath, path, log, seg);
