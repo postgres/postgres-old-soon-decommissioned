@@ -39,6 +39,9 @@ extern char *get_rel_name(Oid relid);
 extern int16 get_typlen(Oid typid);
 extern bool get_typbyval(Oid typid);
 extern void get_typlenbyval(Oid typid, int16 *typlen, bool *typbyval);
+extern char get_typstorage(Oid typid);
 extern Datum get_typdefault(Oid typid);
+
+#define TypeIsToastable(typid)  (get_typstorage(typid) != 'p')
 
 #endif	 /* LSYSCACHE_H */

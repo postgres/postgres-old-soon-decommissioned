@@ -44,7 +44,7 @@ create function lo(oid)
 create function lo_manage()
 	returns opaque
 	as 'MODULE_PATHNAME'
-	language 'newC';
+	language 'C';
 
 -- This allows us to map lo to oid
 --

@@ -119,8 +119,7 @@ CREATE FUNCTION <replaceable class="parameter">name</replaceable> ( [ <replaceab
       <listitem>
        <para>
 	May be '<literal>sql</literal>',
-	'<literal>C</literal>', '<literal>newC</literal>',
-	'<literal>internal</literal>', '<literal>newinternal</literal>',
+	'<literal>C</literal>', '<literal>internal</literal>',
 	or '<replaceable class="parameter">plname</replaceable>',
 	where '<replaceable class="parameter">plname</replaceable>'
 	is the name of a created procedural language. See
@@ -258,7 +257,7 @@ CREATE
    </para>
 
    <para>
-    Two <literal>internal</literal> or <literal>newinternal</literal>
+    Two <literal>internal</literal>
     functions cannot have the same C name without causing
     errors at link time.  To get around that, give them different C names
     (for example, use the argument types as part of the C names), then

@@ -63,18 +63,12 @@ typedef FormData_pg_language *Form_pg_language;
  * ----------------
  */
 
-DATA(insert OID = 11 ( internal f f 0 "n/a" ));
-DESCR("old-style built-in functions");
-#define INTERNALlanguageId 11
-DATA(insert OID = 12 ( newinternal f f 0 "n/a" ));
-DESCR("new-style built-in functions");
-#define NEWINTERNALlanguageId 12
+DATA(insert OID = 12 ( internal f f 0 "n/a" ));
+DESCR("Built-in functions");
+#define INTERNALlanguageId 12
 DATA(insert OID = 13 ( "C" f f 0 "/bin/cc" ));
-DESCR("Dynamically-loaded old-style C functions");
+DESCR("Dynamically-loaded C functions");
 #define ClanguageId 13
-DATA(insert OID = 10 ( "newC" f f 0 "/bin/cc" ));
-DESCR("Dynamically-loaded new-style C functions");
-#define NEWClanguageId 10
 DATA(insert OID = 14 ( "sql" f f 0 "postgres"));
 DESCR("SQL-language functions");
 #define SQLlanguageId 14

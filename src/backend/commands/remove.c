@@ -344,8 +344,7 @@ RemoveFunction(char *functionName,		/* function name to be removed */
 	if (!HeapTupleIsValid(tup))
 		func_error("RemoveFunction", functionName, nargs, argList, NULL);
 
-	if (((Form_pg_proc) GETSTRUCT(tup))->prolang == INTERNALlanguageId ||
-		((Form_pg_proc) GETSTRUCT(tup))->prolang == NEWINTERNALlanguageId)
+	if (((Form_pg_proc) GETSTRUCT(tup))->prolang == INTERNALlanguageId)
 	{
 		/* "Helpful" notice when removing a builtin function ... */
 		elog(NOTICE, "Removing built-in function \"%s\"", functionName);

@@ -66,6 +66,8 @@ static PLpgSQL_function *compiled_functions = NULL;
  * call this function for execution of PL/pgSQL procedures.
  * ----------
  */
+PG_FUNCTION_INFO_V1(plpgsql_call_handler);
+
 Datum
 plpgsql_call_handler(PG_FUNCTION_ARGS)
 {

@@ -28,7 +28,7 @@ typedef struct
 	const char *funcName;		/* C name of the function */
     short       nargs;			/* 0..FUNC_MAX_ARGS, or -1 if variable count */
     bool        strict;			/* T if function is "strict" */
-	bool		oldstyle;		/* T if function uses old fmgr interface */
+	bool		retset;			/* T if function returns a set */
     PGFunction  func;			/* pointer to compiled function */
 } FmgrBuiltin;
 

@@ -259,7 +259,7 @@ fi
 # ----------
 # Create the call handler and the language
 # ----------
-$PSQL "CREATE FUNCTION $handler () RETURNS OPAQUE AS '$PGLIB/${object}$DLSUFFIX' LANGUAGE 'newC'"
+$PSQL "CREATE FUNCTION $handler () RETURNS OPAQUE AS '$PGLIB/${object}$DLSUFFIX' LANGUAGE 'C'"
 if [ $? -ne 0 ]; then
 	echo "$CMDNAME: language installation failed" 1>&2
 	exit 1

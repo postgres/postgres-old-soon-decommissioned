@@ -140,6 +140,8 @@ lo(Oid oid)
 /*
  * This handles the trigger that protects us from orphaned large objects
  */
+PG_FUNCTION_INFO_V1(lo_manage);
+
 Datum
 lo_manage(PG_FUNCTION_ARGS)
 {

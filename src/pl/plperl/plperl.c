@@ -258,6 +258,7 @@ plperl_init_safe_interp(void)
  *				  call this function for execution of
  *				  perl procedures.
  **********************************************************************/
+PG_FUNCTION_INFO_V1(plperl_call_handler);
 
 /* keep non-static */
 Datum

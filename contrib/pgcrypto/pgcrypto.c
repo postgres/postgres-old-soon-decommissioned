@@ -59,6 +59,8 @@ find_digest(pg_digest *hbuf, text *name, int silent);
 
 
 /* SQL function: hash(text, text) returns text */
+PG_FUNCTION_INFO_V1(digest);
+
 Datum
 digest(PG_FUNCTION_ARGS)
 {
@@ -95,6 +97,8 @@ digest(PG_FUNCTION_ARGS)
 }
 
 /* check if given hash exists */
+PG_FUNCTION_INFO_V1(digest_exists);
+
 Datum
 digest_exists(PG_FUNCTION_ARGS)
 {

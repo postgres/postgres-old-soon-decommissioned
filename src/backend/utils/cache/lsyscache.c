@@ -731,6 +731,27 @@ get_typalign(Oid typid)
 
 #endif
 
+char
+get_typstorage(Oid typid)
+{
+	HeapTuple	tp;
+
+	tp = SearchSysCache(TYPEOID,
+						ObjectIdGetDatum(typid),
+						0, 0, 0);
+	if (HeapTupleIsValid(tp))
+	{
+		Form_pg_type typtup = (Form_pg_type) GETSTRUCT(tp);
+		char	result;
+
+		result = typtup->typstorage;
+		ReleaseSysCache(tp);
+		return result;
+	}
+	else
+		return 'p';
+}
+
 /*
  * get_typdefault
  *

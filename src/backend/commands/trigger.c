@@ -169,10 +169,7 @@ CreateTrigger(CreateTrigStmt *stmt)
 	funclang = ((Form_pg_proc) GETSTRUCT(tuple))->prolang;
 	ReleaseSysCache(tuple);
 
-	if (funclang != ClanguageId &&
-		funclang != NEWClanguageId &&
-		funclang != INTERNALlanguageId &&
-		funclang != NEWINTERNALlanguageId)
+	if (funclang != ClanguageId && funclang != INTERNALlanguageId)
 	{
 		HeapTuple	langTup;
 
@@ -180,10 +177,10 @@ CreateTrigger(CreateTrigStmt *stmt)
 								 ObjectIdGetDatum(funclang),
 								 0, 0, 0);
 		if (!HeapTupleIsValid(langTup))
-			elog(ERROR, "CreateTrigger: cache lookup for PL %u failed",
+			elog(ERROR, "CreateTrigger: cache lookup for language %u failed",
 				 funclang);
 		if (((Form_pg_language) GETSTRUCT(langTup))->lanispl == false)
-			elog(ERROR, "CreateTrigger: only builtin, C and PL functions are supported");
+			elog(ERROR, "CreateTrigger: only internal, C and PL functions are supported");
 		ReleaseSysCache(langTup);
 	}
 
