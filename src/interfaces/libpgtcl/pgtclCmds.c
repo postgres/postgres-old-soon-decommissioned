@@ -419,8 +419,11 @@ Pg_disconnect(ClientData cData, Tcl_Interp *interp, int argc, char *argv[])
 
 #if TCL_MAJOR_VERSION >= 8
 	conn = PgGetConnectionId(interp, argv[1], &connid);
-	if (connid->notifier_channel != NULL)
+	if (connid->notifier_channel != NULL) {
+		/* stop listening for NOTIFY events on that channel */
+		PgStopNotifyEventSource(connid,1);
 		Tcl_UnregisterChannel(interp, connid->notifier_channel);
+	}
 #endif
 
 	return Tcl_UnregisterChannel(interp, conn_chan);

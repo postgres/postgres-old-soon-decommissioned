@@ -44,7 +44,7 @@ extern PGresult *PgGetResultId(Tcl_Interp *interp, char *id);
 extern void PgDelResultId(Tcl_Interp *interp, char *id);
 extern int	PgGetConnByResultId(Tcl_Interp *interp, char *resid);
 extern void PgStartNotifyEventSource(Pg_ConnectionId * connid);
-extern void PgStopNotifyEventSource(Pg_ConnectionId * connid);
+extern void PgStopNotifyEventSource(Pg_ConnectionId * connid, int remove_pend);
 extern void PgNotifyTransferEvents(Pg_ConnectionId * connid);
 extern void PgNotifyInterpDelete(ClientData clientData, Tcl_Interp *interp);
 
