@@ -49,13 +49,10 @@ backend_src = $(top_srcdir)/src/backend
 crypt.c getaddrinfo.c inet_aton.c snprintf.c strerror.c path.c thread.c: % : $(top_srcdir)/src/port/%
 	rm -f $@ && $(LN_S) $< .
 
+md5.c ip.c: % : $(backend_src)/libpq/%
+	rm -f $@ && $(LN_S) $< .
+
 dllist.c: $(backend_src)/lib/dllist.c
-	rm -f $@ && $(LN_S) $< .
-
-md5.c: $(backend_src)/libpq/md5.c
-	rm -f $@ && $(LN_S) $< .
-
-ip.c: $(backend_src)/libpq/ip.c
 	rm -f $@ && $(LN_S) $< .
 
 encnames.c wchar.c : % : $(backend_src)/utils/mb/%
