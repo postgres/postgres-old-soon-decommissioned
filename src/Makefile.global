@@ -305,7 +305,7 @@ endif
 # Shared libraries.
 # This is overridden for many PORTNAMEs below.
 
-SLSUFF= .so
+SLSUFF= .o
 
 #----------------------------------------------------------------------
 ifeq ($(PORTNAME), BSD44_derived)
