@@ -1025,7 +1025,7 @@ AlterDomainDefault(List *names, Node *defaultRaw)
 	/* Clean up */
 	heap_close(rel, NoLock);
 	heap_freetuple(newtuple);
-};
+}
 
 /*
  * AlterDomainNotNull
@@ -1219,7 +1219,7 @@ AlterDomainDropConstraint(List *names, const char *constrName, DropBehavior beha
 	heap_close(conrel, RowExclusiveLock);
 
 	heap_close(rel, NoLock);
-};
+}
 
 /*
  * AlterDomainAddConstraint
