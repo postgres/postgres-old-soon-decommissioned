@@ -695,7 +695,7 @@ Oid SPI_getargtypeid(void * <parameter>plan</parameter>, int <parameter>argIndex
 
 <!-- *********************************************** -->
 
-<refentry id="spi-spi-is_cursor_plan">
+<refentry id="spi-spi-is-cursor-plan">
  <refmeta>
   <refentrytitle>SPI_is_cursor_plan</refentrytitle>
  </refmeta>
