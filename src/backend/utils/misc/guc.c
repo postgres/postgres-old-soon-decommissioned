@@ -56,7 +56,6 @@
 extern bool Log_connections;
 extern int	PreAuthDelay;
 extern int	AuthenticationTimeout;
-extern int	StatementTimeout;
 extern int	CheckPointTimeout;
 extern bool autocommit;
 extern int	CommitDelay;

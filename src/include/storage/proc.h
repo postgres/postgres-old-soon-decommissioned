@@ -86,8 +86,9 @@ typedef struct PROC_HDR
 } PROC_HDR;
 
 
-/* configurable option */
+/* configurable options */
 extern int	DeadlockTimeout;
+extern int	StatementTimeout;
 
 
 /*
@@ -105,7 +106,6 @@ extern int ProcSleep(LOCKMETHODTABLE *lockMethodTable, LOCKMODE lockmode,
 extern PGPROC *ProcWakeup(PGPROC *proc, int errType);
 extern void ProcLockWakeup(LOCKMETHODTABLE *lockMethodTable, LOCK *lock);
 extern bool LockWaitCancel(void);
-extern void CheckDeadLock(void);
 
 extern void ProcWaitForSignal(void);
 extern void ProcCancelWaitForSignal(void);
