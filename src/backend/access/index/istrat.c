@@ -26,7 +26,7 @@
 #include <access/istrat.h>
 #include <fmgr.h>
 
-#ifndef NO_ASSERT_CHECKING
+#ifdef USE_ASSERT_CHECKING
 static bool StrategyEvaluationIsValid(StrategyEvaluation evaluation);
 static bool
 StrategyExpressionIsValid(StrategyExpression expression,
@@ -113,7 +113,7 @@ AttributeNumberGetIndexStrategySize(AttrNumber maxAttributeNumber,
 		maxAttributeNumber * maxStrategyNumber * sizeof(ScanKeyData);
 }
 
-#ifndef NO_ASSERT_CHECKING
+#ifdef USE_ASSERT_CHECKING
 /*
  * StrategyTransformMapIsValid is now a macro in istrat.h -cim 4/27/91
  */

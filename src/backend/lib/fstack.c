@@ -84,7 +84,7 @@ FixedStackPush(FixedStack stack, Pointer pointer)
 	stack->top = item;
 }
 
-#ifndef NO_ASSERT_CHECKING
+#ifdef USE_ASSERT_CHECKING
 /*
  * FixedStackContains --
  *		True iff ordered stack contains given element.

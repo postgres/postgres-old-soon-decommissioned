@@ -511,7 +511,7 @@ ShmemInitStruct(char *name, unsigned long size, bool *foundPtr)
 	if (!BindingTable)
 	{
 		/* Assert() is a macro now. substitutes inside quotes. */
-#ifndef NO_ASSERT_CHECKING
+#ifdef USE_ASSERT_CHECKING
 		char	   *strname = "BindingTable";
 
 #endif
