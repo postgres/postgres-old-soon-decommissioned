@@ -94,7 +94,7 @@
  */
 
 
-#if defined(__i386__) || defined(__x86_64__) 
+#if defined(__i386__) || defined(__x86_64__) /* AMD Opteron */
 #define TAS(lock) tas(lock)
 
 static __inline__ int
@@ -113,6 +113,7 @@ tas(volatile slock_t *lock)
 #endif	 /* __i386__ || __x86_64__ */
 
 
+/* Intel Itanium */
 #ifdef __ia64__
 #define TAS(lock) tas(lock)
 
