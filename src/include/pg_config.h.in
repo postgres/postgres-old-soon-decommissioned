@@ -86,9 +86,6 @@
  */
 #undef DEF_MAXBACKENDS
 
-/* --enable-pltcl-unknown */
-#undef ENABLE_PLTCL_UNKNOWN
-
 /* --enable-nls */
 #undef ENABLE_NLS
 
