@@ -235,7 +235,7 @@ $PostgreSQL$
   &nls;
   &plhandler;
   &geqo;
-  &indexcost;
+  &indexam;
   &gist;
   &storage;
   &bki;
