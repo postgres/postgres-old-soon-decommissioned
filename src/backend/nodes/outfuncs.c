@@ -385,14 +385,11 @@ _outHashJoin(StringInfo str, HashJoin *node)
 	_outNode(str, node->hashclauses);
 
 	appendStringInfo(str, 
-			" :hashjoinop %u :hashjointable 0x%x :hashjointablekey %d ",
-			node->hashjoinop,
-			(int) node->hashjointable,
-			node->hashjointablekey);
+			" :hashjoinop %u ",
+			node->hashjoinop);
 
 	appendStringInfo(str, 
-			" :hashjointablesize %d :hashdone %d ",
-			node->hashjointablesize,
+			" :hashdone %d ",
 			node->hashdone);
 }
 
@@ -536,11 +533,6 @@ _outHash(StringInfo str, Hash *node)
 
 	appendStringInfo(str, " :hashkey ");
 	_outNode(str, node->hashkey);
-
-	appendStringInfo(str, " :hashtable 0x%x :hashtablekey %d :hashtablesize %d ",
-			(int) node->hashtable,
-			node->hashtablekey,
-			node->hashtablesize);
 }
 
 /*****************************************************************************

@@ -221,9 +221,6 @@ typedef struct HashJoin
 	List	   *hashclauses;
 	Oid			hashjoinop;
 	HashJoinState *hashjoinstate;
-	HashJoinTable hashjointable;
-	IpcMemoryKey hashjointablekey;
-	int			hashjointablesize;
 	bool		hashdone;
 } HashJoin;
 
@@ -320,9 +317,6 @@ typedef struct Hash
 	Plan		plan;
 	Var		   *hashkey;
 	HashState  *hashstate;
-	HashJoinTable hashtable;
-	IpcMemoryKey hashtablekey;
-	int			hashtablesize;
 } Hash;
 
 #ifdef NOT_USED

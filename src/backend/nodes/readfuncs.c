@@ -454,18 +454,6 @@ _readHashJoin()
 	token = lsptok(NULL, &length);		/* get hashjoinop */
 	local_node->hashjoinop = strtoul(token, NULL, 10);
 
-	token = lsptok(NULL, &length);		/* eat :hashjointable */
-	token = lsptok(NULL, &length);		/* eat hashjointable */
-	local_node->hashjointable = NULL;
-
-	token = lsptok(NULL, &length);		/* eat :hashjointablekey */
-	token = lsptok(NULL, &length);		/* eat hashjointablekey */
-	local_node->hashjointablekey = 0;
-
-	token = lsptok(NULL, &length);		/* eat :hashjointablesize */
-	token = lsptok(NULL, &length);		/* eat hashjointablesize */
-	local_node->hashjointablesize = 0;
-
 	token = lsptok(NULL, &length);		/* eat :hashdone */
 	token = lsptok(NULL, &length);		/* eat hashdone */
 	local_node->hashdone = false;
@@ -679,18 +667,6 @@ _readHash()
 
 	token = lsptok(NULL, &length);		/* eat :hashkey */
 	local_node->hashkey = (Var *) nodeRead(true);
-
-	token = lsptok(NULL, &length);		/* eat :hashtable */
-	token = lsptok(NULL, &length);		/* eat hashtable address */
-	local_node->hashtable = NULL;
-
-	token = lsptok(NULL, &length);		/* eat :hashtablekey */
-	token = lsptok(NULL, &length);		/* get hashtablekey */
-	local_node->hashtablekey = 0;
-
-	token = lsptok(NULL, &length);		/* eat :hashtablesize */
-	token = lsptok(NULL, &length);		/* get hashtablesize */
-	local_node->hashtablesize = 0;
 
 	return local_node;
 }

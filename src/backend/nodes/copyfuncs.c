@@ -357,10 +357,6 @@ _copyHashJoin(HashJoin *from)
 
 	newnode->hashjoinop = from->hashjoinop;
 
-	/* both are unused !.. */
-	newnode->hashjointablekey = from->hashjointablekey;
-	newnode->hashjointablesize = from->hashjointablesize;
-
 	return newnode;
 }
 
@@ -544,10 +540,6 @@ _copyHash(Hash *from)
 	 * ----------------
 	 */
 	Node_Copy(from, newnode, hashkey);
-
-	/* both are unused !.. */
-	newnode->hashtablekey = from->hashtablekey;
-	newnode->hashtablesize = from->hashtablesize;
 
 	return newnode;
 }

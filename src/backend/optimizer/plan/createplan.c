@@ -1050,9 +1050,6 @@ make_hashjoin(List *tlist,
 	plan->lefttree = lefttree;
 	plan->righttree = righttree;
 	node->hashclauses = hashclauses;
-	node->hashjointable = NULL;
-	node->hashjointablekey = 0;
-	node->hashjointablesize = 0;
 	node->hashdone = false;
 
 	return node;
@@ -1071,9 +1068,6 @@ make_hash(List *tlist, Var *hashkey, Plan *lefttree)
 	plan->lefttree = lefttree;
 	plan->righttree = NULL;
 	node->hashkey = hashkey;
-	node->hashtable = NULL;
-	node->hashtablekey = 0;
-	node->hashtablesize = 0;
 
 	return node;
 }
