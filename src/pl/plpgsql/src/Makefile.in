@@ -79,7 +79,9 @@ endif
 #
 DLOBJ= plpgsql$(DLSUFFIX)
 
-OBJS=	pl_parse.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
+OBJS=	plpgsql.o
+
+PLOBJS=	pl_parse.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
 
 ALL=	$(DLOBJ)
 
@@ -87,6 +89,9 @@ ALL=	$(DLOBJ)
 # Build the shared object
 #
 all: $(ALL)
+
+$(OBJS):	$(PLOBJS)
+	$(LD) -r -o $(OBJS) $(PLOBJS)
 
 $(DLOBJ):	$(OBJS)
 
