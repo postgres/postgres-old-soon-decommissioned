@@ -1057,14 +1057,21 @@ _outRangeTblEntry(StringInfo str, RangeTblEntry *node)
 	appendStringInfo(str, " :relname ");
 	appendStringInfo(str, node->relname);
 
-	appendStringInfo(str, " :inh ");
-	appendStringInfo(str, node->inh ? "true" : "false");
-
 	appendStringInfo(str, " :refname ");
 	appendStringInfo(str, node->refname);
 
 	sprintf(buf, " :relid %u ", node->relid);
 	appendStringInfo(str, buf);
+
+	appendStringInfo(str, " :inh ");
+	appendStringInfo(str, node->inh ? "true" : "false");
+
+	appendStringInfo(str, " :inFromCl ");
+	appendStringInfo(str, node->inFromCl ? "true" : "false");
+
+	appendStringInfo(str, " :skipAcl ");
+	appendStringInfo(str, node->skipAcl ? "true" : "false");
+
 }
 
 /*
