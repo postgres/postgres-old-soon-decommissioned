@@ -3134,7 +3134,10 @@ substring('foobar' from 'o(.)b')   <lineannotation>o</lineannotation>
    <note>
     <para>
      Keep in mind that an escape's leading <literal>\</> will need to be
-     doubled when entering the pattern as an SQL string constant.
+     doubled when entering the pattern as an SQL string constant.  For example:
+<programlisting>
+'123' ~ '^\\d{3}' <lineannotation>true</lineannotation>
+</programlisting>
     </para>
    </note>
 
