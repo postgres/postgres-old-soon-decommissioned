@@ -492,6 +492,14 @@ typedef struct PLpgSQL_func_hashkey
 	Oid			funcOid;
 
 	/*
+	 * For a trigger function, the OID of the relation triggered on is part
+	 * of the hashkey --- we want to compile the trigger separately for each
+	 * relation it is used with, in case the rowtype is different.  Zero if
+	 * not called as a trigger.
+	 */
+	Oid			trigrelOid;
+
+	/*
 	 * We include actual argument types in the hash key to support
 	 * polymorphic PLpgSQL functions.  Be careful that extra positions are
 	 * zeroed!
