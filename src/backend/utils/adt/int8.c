@@ -413,6 +413,14 @@ int8um(PG_FUNCTION_ARGS)
 }
 
 Datum
+int8up(PG_FUNCTION_ARGS)
+{
+	int64		val = PG_GETARG_INT64(0);
+
+	PG_RETURN_INT64(val);
+}
+
+Datum
 int8pl(PG_FUNCTION_ARGS)
 {
 	int64		val1 = PG_GETARG_INT64(0);

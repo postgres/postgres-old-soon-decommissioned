@@ -564,6 +564,14 @@ int4um(PG_FUNCTION_ARGS)
 }
 
 Datum
+int4up(PG_FUNCTION_ARGS)
+{
+	int32		arg = PG_GETARG_INT32(0);
+
+	PG_RETURN_INT32(arg);
+}
+
+Datum
 int4pl(PG_FUNCTION_ARGS)
 {
 	int32		arg1 = PG_GETARG_INT32(0);
@@ -613,6 +621,14 @@ int2um(PG_FUNCTION_ARGS)
 	int16		arg = PG_GETARG_INT16(0);
 
 	PG_RETURN_INT16(-arg);
+}
+
+Datum
+int2up(PG_FUNCTION_ARGS)
+{
+	int16		arg = PG_GETARG_INT16(0);
+
+	PG_RETURN_INT16(arg);
 }
 
 Datum

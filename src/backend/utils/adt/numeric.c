@@ -406,6 +406,19 @@ numeric_uminus(PG_FUNCTION_ARGS)
 
 
 Datum
+numeric_uplus(PG_FUNCTION_ARGS)
+{
+	Numeric		num = PG_GETARG_NUMERIC(0);
+	Numeric		res;
+
+	res = (Numeric) palloc(num->varlen);
+	memcpy(res, num, num->varlen);
+
+	PG_RETURN_NUMERIC(res);
+}
+
+
+Datum
 numeric_sign(PG_FUNCTION_ARGS)
 {
 	Numeric		num = PG_GETARG_NUMERIC(0);

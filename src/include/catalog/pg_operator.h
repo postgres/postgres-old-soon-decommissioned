@@ -794,6 +794,13 @@ DATA(insert OID = 1889 ( "~"	   PGUID 0 l t f   0  20  20	 0	  0   0  0 int8not 
 DATA(insert OID = 1890 ( "<<"	   PGUID 0 b t f  20  23  20	 0	  0   0  0 int8shl - - ));
 DATA(insert OID = 1891 ( ">>"	   PGUID 0 b t f  20  23  20	 0	  0   0  0 int8shr - - ));
 
+DATA(insert OID = 1916 (  "+"	   PGUID 0 l t f   0  20  20	0   0   0   0 int8up - - ));
+DATA(insert OID = 1917 (  "+"	   PGUID 0 l t f   0  21  21	0   0   0   0 int2up - - ));
+DATA(insert OID = 1918 (  "+"	   PGUID 0 l t f   0  23  23	0   0   0   0 int4up - - ));
+DATA(insert OID = 1919 (  "+"	   PGUID 0 l t f   0  700 700	0   0   0   0 float4up - - ));
+DATA(insert OID = 1920 (  "+"	   PGUID 0 l t f   0  701 701	0   0   0   0 float8up - - ));
+DATA(insert OID = 1921 (  "+"	   PGUID 0 l t f   0 1700 1700  0   0	0	0 numeric_uplus - - ));
+
 /*
  * function prototypes
  */

@@ -66,6 +66,7 @@ extern Datum int28le(PG_FUNCTION_ARGS);
 extern Datum int28ge(PG_FUNCTION_ARGS);
 
 extern Datum int8um(PG_FUNCTION_ARGS);
+extern Datum int8up(PG_FUNCTION_ARGS);
 extern Datum int8pl(PG_FUNCTION_ARGS);
 extern Datum int8mi(PG_FUNCTION_ARGS);
 extern Datum int8mul(PG_FUNCTION_ARGS);
