@@ -16,7 +16,7 @@
 
 #include "access/printtup.h"
 #include "catalog/heap.h"
-#include "commands/command.h"
+#include "commands/portalcmds.h"
 #include "executor/spi_priv.h"
 #include "tcop/tcopprot.h"
 #include "utils/lsyscache.h"

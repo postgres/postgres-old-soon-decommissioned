@@ -17,7 +17,7 @@
 #include "access/heapam.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_type.h"
-#include "commands/creatinh.h"
+#include "commands/tablecmds.h"
 #include "commands/sequence.h"
 #include "miscadmin.h"
 #include "utils/acl.h"

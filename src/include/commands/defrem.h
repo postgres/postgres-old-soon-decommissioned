@@ -16,6 +16,8 @@
 
 #include "nodes/parsenodes.h"
 
+#define DEFAULT_TYPDELIM		','
+
 /*
  * prototypes in indexcmds.c
  */
@@ -33,22 +35,33 @@ extern void ReindexTable(RangeVar *relation, bool force);
 extern void ReindexDatabase(const char *databaseName, bool force, bool all);
 
 /*
- * prototypes in define.c
+ * DefineFoo and RemoveFoo are now both in foocmds.c
  */
-extern void CreateFunction(ProcedureStmt *stmt);
-extern void DefineOperator(List *names, List *parameters);
-extern void DefineAggregate(List *names, List *parameters);
-extern void DefineType(List *names, List *parameters);
-extern void DefineDomain(CreateDomainStmt *stmt);
 
-/*
- * prototypes in remove.c
- */
-extern void RemoveDomain(List *names, int behavior);
+extern void CreateFunction(ProcedureStmt *stmt);
 extern void RemoveFunction(List *functionName, List *argTypes);
+
+extern void DefineOperator(List *names, List *parameters);
 extern void RemoveOperator(char *operatorName,
-			   TypeName *typeName1, TypeName *typeName2);
-extern void RemoveType(List *names);
+						   TypeName *typeName1, TypeName *typeName2);
+
+extern void DefineAggregate(List *names, List *parameters);
 extern void RemoveAggregate(List *aggName, TypeName *aggType);
+
+extern void DefineType(List *names, List *parameters);
+extern void RemoveType(List *names);
+extern void DefineDomain(CreateDomainStmt *stmt);
+extern void RemoveDomain(List *names, int behavior);
+
+
+/* support routines in define.c */
+
+extern void case_translate_language_name(const char *input, char *output);
+
+extern char *defGetString(DefElem *def);
+extern double defGetNumeric(DefElem *def);
+extern List *defGetQualifiedName(DefElem *def);
+extern TypeName *defGetTypeName(DefElem *def);
+extern int	defGetTypeLength(DefElem *def);
 
 #endif   /* DEFREM_H */

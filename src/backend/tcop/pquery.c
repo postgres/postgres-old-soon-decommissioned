@@ -15,7 +15,7 @@
 
 #include "postgres.h"
 
-#include "commands/command.h"
+#include "commands/portalcmds.h"
 #include "executor/execdefs.h"
 #include "executor/executor.h"
 #include "tcop/pquery.h"

@@ -36,7 +36,7 @@
 #include "access/heapam.h"
 #include "catalog/heap.h"
 #include "catalog/namespace.h"
-#include "commands/command.h"
+#include "commands/tablecmds.h"
 #include "commands/trigger.h"
 #include "executor/execdebug.h"
 #include "executor/execdefs.h"

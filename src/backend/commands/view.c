@@ -15,7 +15,7 @@
 #include "access/xact.h"
 #include "catalog/heap.h"
 #include "catalog/namespace.h"
-#include "commands/creatinh.h"
+#include "commands/tablecmds.h"
 #include "commands/view.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
