@@ -349,6 +349,7 @@ typedef struct Agg
 	AggStrategy	aggstrategy;
 	int			numCols;		/* number of grouping columns */
 	AttrNumber *grpColIdx;		/* their indexes in the target list */
+	long		numGroups;		/* estimated number of groups in input */
 	AggState   *aggstate;
 } Agg;
 

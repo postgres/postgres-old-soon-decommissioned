@@ -1675,6 +1675,7 @@ make_agg(List *tlist, List *qual, AggStrategy aggstrategy,
 		plan->plan_rows *= 0.1;
 		if (plan->plan_rows < 1)
 			plan->plan_rows = 1;
+		node->numGroups = (long) plan->plan_rows;
 	}
 
 	plan->state = (EState *) NULL;

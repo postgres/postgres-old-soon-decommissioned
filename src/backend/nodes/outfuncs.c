@@ -597,8 +597,8 @@ _outAgg(StringInfo str, Agg *node)
 {
 	appendStringInfo(str, " AGG ");
 	_outPlanInfo(str, (Plan *) node);
-	appendStringInfo(str, " :aggstrategy %d :numCols %d ",
-					 (int) node->aggstrategy, node->numCols);
+	appendStringInfo(str, " :aggstrategy %d :numCols %d :numGroups %ld ",
+					 (int) node->aggstrategy, node->numCols, node->numGroups);
 }
 
 static void

@@ -36,5 +36,6 @@ extern void ExecChooseHashTableSize(double ntuples, int tupwidth,
 						int *virtualbuckets,
 						int *physicalbuckets,
 						int *numbatches);
+extern uint32 ComputeHashFunc(Datum key, int typLen, bool byVal);
 
 #endif   /* NODEHASH_H */

@@ -524,6 +524,7 @@ _copyAgg(Agg *from)
 		memcpy(newnode->grpColIdx, from->grpColIdx,
 			   from->numCols * sizeof(AttrNumber));
 	}
+	newnode->numGroups = from->numGroups;
 
 	return newnode;
 }

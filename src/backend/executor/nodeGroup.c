@@ -151,9 +151,8 @@ ExecInitGroup(Group *node, EState *estate, Plan *parent)
 	 */
 	grpstate = makeNode(GroupState);
 	node->grpstate = grpstate;
-	grpstate->grp_useFirstTuple = FALSE;
-	grpstate->grp_done = FALSE;
 	grpstate->grp_firstTuple = NULL;
+	grpstate->grp_done = FALSE;
 
 	/*
 	 * create expression context
@@ -236,7 +235,6 @@ ExecReScanGroup(Group *node, ExprContext *exprCtxt, Plan *parent)
 {
 	GroupState *grpstate = node->grpstate;
 
-	grpstate->grp_useFirstTuple = FALSE;
 	grpstate->grp_done = FALSE;
 	if (grpstate->grp_firstTuple != NULL)
 	{
