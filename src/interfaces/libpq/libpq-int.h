@@ -490,7 +490,7 @@ __attribute__((format_arg(1)));
 #else
 #define SOCK_ERRNO errno
 #define SOCK_STRERROR pqStrerror
-#define SOCK_ERRNO_SET(e) errno=e
+#define SOCK_ERRNO_SET(e) (errno = (e))
 #endif
 
 #endif   /* LIBPQ_INT_H */
