@@ -1648,7 +1648,7 @@ Pg_select(ClientData cData, Tcl_Interp *interp, int argc, char **argv)
 	PGresult   *result;
 	int			r,
 				retval;
-	size_t		tupno,
+	int			tupno,
 				column,
 				ncols;
 	Tcl_DString headers;
