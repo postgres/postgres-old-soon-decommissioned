@@ -11,8 +11,6 @@
 #
 #-------------------------------------------------------------------------
 
-CFLAGS+= -DUSE_POSIX_TIME -DDISABLE_XOPEN_NLS -DNEED_ISINF -DHAS_LONG_LONG
-
 LDADD+= -lln
 
 #

@@ -18,6 +18,4 @@
 
 BIGOBJS= false
 
-CFLAGS+= -DLINUX_ELF
-
 HEADERS+= machine.h port-protos.h

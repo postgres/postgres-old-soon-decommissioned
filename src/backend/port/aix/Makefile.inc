@@ -16,8 +16,6 @@
 #
 BIGOBJS=false
 
-CFLAGS+= -DCLASS_CONFLICT -DDISABLE_XOPEN_NLS -DNEED_ISINF
-
 LDFLAGS+= -bE:$(objdir)/$(PROG).exp
 
 LDADD+= -ll -lld

@@ -11,8 +11,6 @@
 #
 #-------------------------------------------------------------------------
 
-CFLAGS+= -DUSE_POSIX_TIME
-
 #
 # 4.4-lite BSD-derived OSs require that the lex library be included,
 # in case yywrap is defined
