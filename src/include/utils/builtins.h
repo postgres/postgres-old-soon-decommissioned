@@ -371,15 +371,47 @@ extern char *deparse_expression(Node *expr, List *rangetables,
 				   bool forceprefix);
 
 /* selfuncs.c */
-extern float64 eqsel(Oid opid, Oid relid, AttrNumber attno, Datum value, int32 flag);
-extern float64 neqsel(Oid opid, Oid relid, AttrNumber attno, Datum value, int32 flag);
-extern float64 scalarltsel(Oid opid, Oid relid, AttrNumber attno, Datum value, int32 flag);
-extern float64 scalargtsel(Oid opid, Oid relid, AttrNumber attno, Datum value, int32 flag);
-extern float64 eqjoinsel(Oid opid, Oid relid1, AttrNumber attno1, Oid relid2, AttrNumber attno2);
-extern float64 neqjoinsel(Oid opid, Oid relid1, AttrNumber attno1, Oid relid2, AttrNumber attno2);
-extern float64 scalarltjoinsel(Oid opid, Oid relid1, AttrNumber attno1, Oid relid2, AttrNumber attno2);
-extern float64 scalargtjoinsel(Oid opid, Oid relid1, AttrNumber attno1, Oid relid2, AttrNumber attno2);
-extern bool convert_to_scalar(Datum value, Oid typid, double *scaleval);
+extern float64 eqsel(Oid opid, Oid relid, AttrNumber attno,
+					 Datum value, int32 flag);
+extern float64 neqsel(Oid opid, Oid relid, AttrNumber attno,
+					  Datum value, int32 flag);
+extern float64 scalarltsel(Oid opid, Oid relid, AttrNumber attno,
+						   Datum value, int32 flag);
+extern float64 scalargtsel(Oid opid, Oid relid, AttrNumber attno,
+						   Datum value, int32 flag);
+extern float64 regexeqsel(Oid opid, Oid relid, AttrNumber attno,
+						  Datum value, int32 flag);
+extern float64 likesel(Oid opid, Oid relid, AttrNumber attno,
+					   Datum value, int32 flag);
+extern float64 icregexeqsel(Oid opid, Oid relid, AttrNumber attno,
+							Datum value, int32 flag);
+extern float64 regexnesel(Oid opid, Oid relid, AttrNumber attno,
+						  Datum value, int32 flag);
+extern float64 nlikesel(Oid opid, Oid relid, AttrNumber attno,
+						Datum value, int32 flag);
+extern float64 icregexnesel(Oid opid, Oid relid, AttrNumber attno,
+							Datum value, int32 flag);
+
+extern float64 eqjoinsel(Oid opid, Oid relid1, AttrNumber attno1,
+						 Oid relid2, AttrNumber attno2);
+extern float64 neqjoinsel(Oid opid, Oid relid1, AttrNumber attno1,
+						  Oid relid2, AttrNumber attno2);
+extern float64 scalarltjoinsel(Oid opid, Oid relid1, AttrNumber attno1,
+							   Oid relid2, AttrNumber attno2);
+extern float64 scalargtjoinsel(Oid opid, Oid relid1, AttrNumber attno1,
+							   Oid relid2, AttrNumber attno2);
+extern float64 regexeqjoinsel(Oid opid, Oid relid1, AttrNumber attno1,
+							  Oid relid2, AttrNumber attno2);
+extern float64 likejoinsel(Oid opid, Oid relid1, AttrNumber attno1,
+						   Oid relid2, AttrNumber attno2);
+extern float64 icregexeqjoinsel(Oid opid, Oid relid1, AttrNumber attno1,
+								Oid relid2, AttrNumber attno2);
+extern float64 regexnejoinsel(Oid opid, Oid relid1, AttrNumber attno1,
+							  Oid relid2, AttrNumber attno2);
+extern float64 nlikejoinsel(Oid opid, Oid relid1, AttrNumber attno1,
+							Oid relid2, AttrNumber attno2);
+extern float64 icregexnejoinsel(Oid opid, Oid relid1, AttrNumber attno1,
+								Oid relid2, AttrNumber attno2);
 
 extern void btcostestimate(Query *root, RelOptInfo *rel,
 			   IndexOptInfo *index, List *indexQuals,
@@ -401,6 +433,22 @@ extern void gistcostestimate(Query *root, RelOptInfo *rel,
 				 Cost *indexStartupCost,
 				 Cost *indexTotalCost,
 				 Selectivity *indexSelectivity);
+
+typedef enum
+{
+	Pattern_Type_Like, Pattern_Type_Regex, Pattern_Type_Regex_IC
+} Pattern_Type;
+
+typedef enum
+{
+	Pattern_Prefix_None, Pattern_Prefix_Partial, Pattern_Prefix_Exact
+} Pattern_Prefix_Status;
+
+extern Pattern_Prefix_Status pattern_fixed_prefix(char *patt,
+												  Pattern_Type ptype,
+												  char **prefix,
+												  char **rest);
+extern char *make_greater_string(const char *str, Oid datatype);
 
 /* tid.c */
 extern ItemPointer tidin(const char *str);
