@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sat Oct  4 14:19:54 EDT 2003
+Last updated:		Wed Oct  8 15:33:48 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -477,6 +477,7 @@ Miscellaneous
 * Improve caching of attribute offsets when NULLs exist in the row
 * Add a script to ask system configuration questions and tune postgresql.conf
 * Allow partitioning of table into multiple subtables
+* Use background process to write dirty shared buffers to disk
 
 
 Source Code
