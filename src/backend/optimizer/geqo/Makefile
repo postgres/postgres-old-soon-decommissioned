@@ -16,7 +16,12 @@ INCLUDE_OPT = -I../.. \
               -I../../port/$(PORTNAME) \
               -I../../../include
 
-CFLAGS+=$(INCLUDE_OPT)  -Wno-error
+CFLAGS+=$(INCLUDE_OPT)
+
+ifeq ($CC), gcc)
+CFLAGS+= -Wno-error
+endif
+
 
 OBJS =	geqo_copy.o geqo_eval.o geqo_main.o geqo_misc.o \
 	geqo_params.o geqo_paths.o geqo_pool.o geqo_recombination.o \

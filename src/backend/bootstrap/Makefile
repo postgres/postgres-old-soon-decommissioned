@@ -25,7 +25,11 @@ INCLUDE_OPT= -I.. \
              -I../port/$(PORTNAME) \
              -I../../include
 
-CFLAGS+= $(INCLUDE_OPT)  -Wno-error
+CFLAGS+= $(INCLUDE_OPT)  
+
+ifeq ($CC), gcc)
+CFLAGS+= -Wno-error
+endif
 
 BOOTYACCS= bootstrap_tokens.h bootparse.c
 
