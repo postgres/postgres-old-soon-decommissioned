@@ -15,6 +15,7 @@ WANTED_DIRS = \
 		lo		\
 		mSQL-interface	\
 		mac		\
+		metaphone	\
 		miscutil	\
 		noupdate	\
 		oid2name	\
