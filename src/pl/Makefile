@@ -20,10 +20,11 @@ include $(SRCDIR)/Makefile.global
 ifeq ($(USE_TCL), true)
 	$(MAKE) -C tcl $@
 endif
-ifeq ($(USE_PERL), true)
-	-$(MAKE) $(MFLAGS) plperl/Makefile
-	-$(MAKE) $(MFLAGS) -C plperl $@
-endif
+# does't work bjm 2000-04-11
+#ifeq ($(USE_PERL), true)
+#	-$(MAKE) $(MFLAGS) plperl/Makefile
+#	-$(MAKE) $(MFLAGS) -C plperl $@
+#endif
 
 plperl/Makefile: plperl/Makefile.PL
 	cd plperl && $(PERL) Makefile.PL POLLUTE=1
