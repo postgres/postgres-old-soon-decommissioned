@@ -42,4 +42,10 @@ extern FILE *PageOutput(int lines, bool pager);
 /* sprompt.h */
 extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
 
+/* Used for all Win32 popen/pclose calls */
+#ifdef WIN32
+#define popen(x,y) _popen(x,y)
+#define pclose(x) _pclose(x)
+#endif
+
 #endif   /* COMMON_H */
