@@ -143,6 +143,8 @@ typedef struct
 	int			exprno;
 	char	   *query;
 	void	   *plan;
+	Node	   *plan_simple_expr;
+	Oid			plan_simple_type;
 	Oid		   *plan_argtypes;
 	int			nparams;
 	int			params[1];
