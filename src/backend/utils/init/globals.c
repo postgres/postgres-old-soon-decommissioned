@@ -53,7 +53,7 @@ char		postgres_exec_path[MAXPGPATH];	/* full path to backend */
 /* note: currently this is not valid in backend processes */
 #endif
 
-BackendId	MyBackendId;
+BackendId	MyBackendId = InvalidBackendId;
 
 char	   *DatabasePath = NULL;
 Oid			MyDatabaseId = InvalidOid;
