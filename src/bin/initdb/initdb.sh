@@ -31,7 +31,7 @@
 #-------------------------------------------------------------------------
 
 exit_nicely(){
-    stty echo >& /dev/null
+    stty echo > /dev/null 2>&1
     echo
     echo "$CMDNAME failed."
     if [ "$noclean" -eq 0 ]; then
@@ -499,14 +499,14 @@ echo "REVOKE ALL on pg_shadow FROM public" \
 # set up password
 if [ "$PwPrompt" ]; then
     $ECHO_N "Enter new superuser password: "$ECHO_C
-    stty -echo >& /dev/null
+    stty -echo > /dev/null 2>&1
     read FirstPw
-    stty echo >& /dev/null
+    stty echo > /dev/null 2>&1
     echo
     $ECHO_N "Enter it again: "$ECHO_C
-    stty -echo >& /dev/null
+    stty -echo > /dev/null 2>&1
     read SecondPw
-    stty echo >& /dev/null
+    stty echo > /dev/null 2>&1
     echo
     if [ "$FirstPw" != "$SecondPw" ]; then
         echo "Passwords didn't match."
