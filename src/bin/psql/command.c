@@ -1287,7 +1287,8 @@ do_connect(const char *new_dbname, const char *new_user)
 	 * Use old password if no new one given (if you didn't have an old
 	 * one, fine)
 	 */
-	if (!pwparam && oldconn)
+	if (!pwparam && oldconn && PQuser(oldconn) && userparam &&
+		strcmp(PQuser(oldconn), userparam) == 0)
 		pwparam = PQpass(oldconn);
 
 	do
