@@ -15,8 +15,8 @@ MKDIR=	../mk
 include $(MKDIR)/postgres.mk
 
 CFLAGS+= -I../backend/include \
-	-I$../include \
-	-I$../backend \
+	-I../include \
+	-I../backend \
 	-I. \
 
 ifdef KRBVERS
