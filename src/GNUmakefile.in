@@ -54,7 +54,6 @@ distclean maintainer-clean:
 	-$(MAKE) -C utils clean
 	-$(MAKE) -C backend clean
 	rm -f backend/port/Makefile backend/catalog/genbki.sh \
-		backend/utils/Gen_fmgrtab.sh \
 		backend/port/tas.s backend/port/dynloader.c
 	-$(MAKE) -C interfaces $@
 	-$(MAKE) -C bin $@

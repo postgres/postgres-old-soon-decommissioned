@@ -34,7 +34,7 @@ submake:
 
 
 fmgroids.h fmgrtab.c: Gen_fmgrtab.sh $(SRCDIR)/include/catalog/pg_proc.h
-	$(SHELL) $(SHOPTS) Gen_fmgrtab.sh $(SRCDIR)/include/catalog/pg_proc.h
+	CPP='$(CPP)' AWK='$(AWK)' $(SHELL) $< $(SRCDIR)/include/catalog/pg_proc.h
 
 
 clean:
