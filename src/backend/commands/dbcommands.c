@@ -241,7 +241,7 @@ check_permissions(char *command,
 	char		path[MAXPGPATH];
 
 	userName = GetPgUserName();
-	utup = SearchSysCacheTuple(USENAME,
+	utup = SearchSysCacheTuple(USERNAME,
 							   PointerGetDatum(userName),
 							   0, 0, 0);
 	Assert(utup);

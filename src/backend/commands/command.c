@@ -438,7 +438,7 @@ PerformAddAttribute(char *relationName,
 		else
 			attnelems = 0;
 
-		typeTuple = SearchSysCacheTuple(TYPNAME,
+		typeTuple = SearchSysCacheTuple(TYPENAME,
 										PointerGetDatum(typename),
 										0, 0, 0);
 		tform = (Form_pg_type) GETSTRUCT(typeTuple);

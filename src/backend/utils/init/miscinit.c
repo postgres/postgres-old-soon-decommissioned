@@ -453,7 +453,7 @@ SetUserId()
 	}
 
 	userName = GetPgUserName();
-	userTup = SearchSysCacheTuple(USENAME,
+	userTup = SearchSysCacheTuple(USERNAME,
 								  PointerGetDatum(userName),
 								  0, 0, 0);
 	if (!HeapTupleIsValid(userTup))

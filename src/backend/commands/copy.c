@@ -938,7 +938,7 @@ GetOutputFunction(Oid type)
 {
 	HeapTuple	typeTuple;
 
-	typeTuple = SearchSysCacheTuple(TYPOID,
+	typeTuple = SearchSysCacheTuple(TYPEOID,
 									ObjectIdGetDatum(type),
 									0, 0, 0);
 
@@ -954,7 +954,7 @@ GetTypeElement(Oid type)
 {
 	HeapTuple	typeTuple;
 
-	typeTuple = SearchSysCacheTuple(TYPOID,
+	typeTuple = SearchSysCacheTuple(TYPEOID,
 									ObjectIdGetDatum(type),
 									0, 0, 0);
 
@@ -970,7 +970,7 @@ GetInputFunction(Oid type)
 {
 	HeapTuple	typeTuple;
 
-	typeTuple = SearchSysCacheTuple(TYPOID,
+	typeTuple = SearchSysCacheTuple(TYPEOID,
 									ObjectIdGetDatum(type),
 									0, 0, 0);
 
@@ -986,7 +986,7 @@ IsTypeByVal(Oid type)
 {
 	HeapTuple	typeTuple;
 
-	typeTuple = SearchSysCacheTuple(TYPOID,
+	typeTuple = SearchSysCacheTuple(TYPEOID,
 									ObjectIdGetDatum(type),
 									0, 0, 0);
 

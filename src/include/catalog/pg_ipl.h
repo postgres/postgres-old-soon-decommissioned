@@ -32,7 +32,7 @@
  */
 CATALOG(pg_ipl)
 {
-	Oid			iplrel;
+	Oid			iplrelid;
 	Oid			iplipl;
 	int4		iplseqno;
 } FormData_pg_ipl;
@@ -49,7 +49,7 @@ typedef FormData_pg_ipl *Form_pg_ipl;
  * ----------------
  */
 #define Natts_pg_ipl			3
-#define Anum_pg_ipl_iplrel		1
+#define Anum_pg_ipl_iplrelid	1
 #define Anum_pg_ipl_iplipl		2
 #define Anum_pg_ipl_iplseqno	3
 

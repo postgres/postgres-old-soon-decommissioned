@@ -34,7 +34,7 @@ RewriteGetRuleEventRel(char *rulename)
 	HeapTuple	htup;
 	Oid			eventrel;
 
-	htup = SearchSysCacheTuple(REWRITENAME,
+	htup = SearchSysCacheTuple(RULENAME,
 							   PointerGetDatum(rulename),
 							   0, 0, 0);
 	if (!HeapTupleIsValid(htup))
@@ -83,7 +83,7 @@ RemoveRewriteRule(char *ruleName)
 	/*
 	 * Scan the RuleRelation ('pg_rewrite') until we find a tuple
 	 */
-	tuple = SearchSysCacheTupleCopy(REWRITENAME,
+	tuple = SearchSysCacheTupleCopy(RULENAME,
 									PointerGetDatum(ruleName),
 									0, 0, 0);
 

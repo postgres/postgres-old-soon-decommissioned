@@ -1073,7 +1073,7 @@ ri_AttributesEqual(Oid typeid, Datum oldvalue, Datum newvalue)
 		elog(FATAL, "error in RI operator cache");
 
 	/* ----------
-	 * If not found, lookup the OPRNAME system cache for it
+	 * If not found, lookup the OPERNAME system cache for it
 	 * and remember that info.
 	 * ----------
 	 */
@@ -1082,7 +1082,7 @@ ri_AttributesEqual(Oid typeid, Datum oldvalue, Datum newvalue)
 		HeapTuple			opr_tup;
 		Form_pg_operator	opr_struct;
 
-		opr_tup = SearchSysCacheTuple(OPRNAME,
+		opr_tup = SearchSysCacheTuple(OPERNAME,
 							PointerGetDatum("="),
 							ObjectIdGetDatum(typeid),
 							ObjectIdGetDatum(typeid),

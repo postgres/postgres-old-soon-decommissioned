@@ -44,7 +44,7 @@ getTypeOutAndElem(Oid type, Oid *typOutput, Oid *typElem)
 {
 	HeapTuple	typeTuple;
 
-	typeTuple = SearchSysCacheTuple(TYPOID,
+	typeTuple = SearchSysCacheTuple(TYPEOID,
 									ObjectIdGetDatum(type),
 									0, 0, 0);
 

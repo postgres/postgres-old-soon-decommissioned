@@ -105,7 +105,7 @@ typedef struct _tableInfo
 
 typedef struct _inhInfo
 {
-	char	   *inhrel;
+	char	   *inhrelid;
 	char	   *inhparent;
 } InhInfo;
 

@@ -270,7 +270,7 @@ copy_index(Oid OIDOldIndex, Oid OIDNewHeap)
 		FIgetnArgs(finfo) = natts;
 		FIgetProcOid(finfo) = Old_pg_index_Form->indproc;
 
-		pg_proc_Tuple = SearchSysCacheTuple(PROOID,
+		pg_proc_Tuple = SearchSysCacheTuple(PROCOID,
 							ObjectIdGetDatum(Old_pg_index_Form->indproc),
 											0, 0, 0);
 

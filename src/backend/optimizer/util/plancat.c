@@ -372,7 +372,7 @@ find_inheritance_children(Oid inhparent)
 	scan = heap_beginscan(relation, 0, SnapshotNow, 1, key);
 	while (HeapTupleIsValid(inheritsTuple = heap_getnext(scan, 0)))
 	{
-		inhrelid = ((Form_pg_inherits) GETSTRUCT(inheritsTuple))->inhrel;
+		inhrelid = ((Form_pg_inherits) GETSTRUCT(inheritsTuple))->inhrelid;
 		list = lappendi(list, inhrelid);
 	}
 	heap_endscan(scan);

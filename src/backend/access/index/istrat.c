@@ -479,7 +479,7 @@ OperatorRelationFillScanKeyEntry(Relation operatorRelation,
 
 	if (!IsBootstrapProcessingMode())
 	{
-		tuple = SearchSysCacheTuple(OPROID,
+		tuple = SearchSysCacheTuple(OPEROID,
 									ObjectIdGetDatum(operatorObjectId),
 									0, 0, 0);
 	}

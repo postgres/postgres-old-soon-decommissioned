@@ -67,7 +67,7 @@ fmgr_dynamic(Oid procedureId, int *pronargs)
 	 */
 	rel = heap_openr(ProcedureRelationName, AccessShareLock);
 
-	procedureTuple = SearchSysCacheTuple(PROOID,
+	procedureTuple = SearchSysCacheTuple(PROCOID,
 										 ObjectIdGetDatum(procedureId),
 										 0, 0, 0);
 	if (!HeapTupleIsValid(procedureTuple))

@@ -38,7 +38,8 @@ LOCALBKI_SRCS= $(addprefix ../../include/catalog/, \
                  pg_rewrite.h pg_listener.h pg_description.h indexing.h \
                 )
 
-global1.bki.source: $(GENBKI) $(GLOBALBKI_SRCS)
+global1.bki.source: $(GENBKI) $(GLOBALBKI_SRCS) \
+		$(addprefix ../../include/catalog/, indexing.h)
 ifneq ($(PORTNAME), win)
 	sh $(SHOPTS) $(GENBKI) $(BKIOPTS) $(GLOBALBKI_SRCS) > $@ 2>global1.description
 else

@@ -54,7 +54,7 @@ regprocin(char *pro_name_or_oid)
 		if (pro_name_or_oid[0] >= '0' &&
 			pro_name_or_oid[0] <= '9')
 		{
-			proctup = SearchSysCacheTuple(PROOID,
+			proctup = SearchSysCacheTuple(PROCOID,
 								ObjectIdGetDatum(oidin(pro_name_or_oid)),
 										  0, 0, 0);
 			if (HeapTupleIsValid(proctup))
@@ -165,7 +165,7 @@ regprocout(RegProcedure proid)
 
 	if (!IsBootstrapProcessingMode())
 	{
-		proctup = SearchSysCacheTuple(PROOID,
+		proctup = SearchSysCacheTuple(PROCOID,
 									  ObjectIdGetDatum(proid),
 									  0, 0, 0);
 
@@ -254,7 +254,7 @@ oid8types(Oid *oidArray)
 	{
 		if (*sp != InvalidOid)
 		{
-			typetup = SearchSysCacheTuple(TYPOID,
+			typetup = SearchSysCacheTuple(TYPEOID,
 										  ObjectIdGetDatum(*sp),
 										  0, 0, 0);
 			if (HeapTupleIsValid(typetup))

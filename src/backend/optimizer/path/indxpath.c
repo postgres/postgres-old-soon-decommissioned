@@ -1893,7 +1893,7 @@ prefix_quals(Var *leftop, Oid expr_op,
 	 */
 	if (pstatus == Prefix_Exact)
 	{
-		optup = SearchSysCacheTuple(OPRNAME,
+		optup = SearchSysCacheTuple(OPERNAME,
 									PointerGetDatum("="),
 									ObjectIdGetDatum(datatype),
 									ObjectIdGetDatum(datatype),
@@ -1919,7 +1919,7 @@ prefix_quals(Var *leftop, Oid expr_op,
 	 *
 	 * We can always say "x >= prefix".
 	 */
-	optup = SearchSysCacheTuple(OPRNAME,
+	optup = SearchSysCacheTuple(OPERNAME,
 								PointerGetDatum(">="),
 								ObjectIdGetDatum(datatype),
 								ObjectIdGetDatum(datatype),
@@ -1947,7 +1947,7 @@ prefix_quals(Var *leftop, Oid expr_op,
 	prefix[prefixlen] = '\377';
 	prefix[prefixlen+1] = '\0';
 
-	optup = SearchSysCacheTuple(OPRNAME,
+	optup = SearchSysCacheTuple(OPERNAME,
 								PointerGetDatum("<="),
 								ObjectIdGetDatum(datatype),
 								ObjectIdGetDatum(datatype),

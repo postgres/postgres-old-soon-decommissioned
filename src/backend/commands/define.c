@@ -269,7 +269,7 @@ CreateFunction(ProcedureStmt *stmt, CommandDest dest)
 		Form_pg_language languageStruct;
 
 		/* Lookup the language in the system cache */
-		languageTuple = SearchSysCacheTuple(LANNAME,
+		languageTuple = SearchSysCacheTuple(LANGNAME,
 											PointerGetDatum(languageName),
 											0, 0, 0);
 

@@ -159,7 +159,7 @@ MJFormSkipQual(List *qualList, char *replaceopname)
 		 *	 whoever marked the "=" operator mergejoinable was a loser.
 		 * ----------------
 		 */
-		optup = SearchSysCacheTuple(OPRNAME,
+		optup = SearchSysCacheTuple(OPERNAME,
 									PointerGetDatum(replaceopname),
 									ObjectIdGetDatum(oprleft),
 									ObjectIdGetDatum(oprright),

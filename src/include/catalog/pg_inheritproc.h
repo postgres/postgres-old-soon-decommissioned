@@ -33,8 +33,8 @@
 CATALOG(pg_inheritproc)
 {
 	NameData	inhproname;
-	Oid			inhargrel;
-	Oid			inhdefrel;
+	Oid			inhargrelid;
+	Oid			inhdefrelid;
 	Oid			inhproc;
 } FormData_pg_inheritproc;
 
@@ -51,8 +51,8 @@ typedef FormData_pg_inheritproc *Form_pg_inheritproc;
  */
 #define Natts_pg_inheritproc			4
 #define Anum_pg_inheritproc_inhproname	1
-#define Anum_pg_inheritproc_inhargrel	2
-#define Anum_pg_inheritproc_inhdefrel	3
+#define Anum_pg_inheritproc_inhargrelid	2
+#define Anum_pg_inheritproc_inhdefrelid	3
 #define Anum_pg_inheritproc_inhproc		4
 
 

@@ -309,7 +309,7 @@ TupleDescInitEntry(TupleDesc desc,
 	 *	-cim 6/14/90
 	 * ----------------
 	 */
-	tuple = SearchSysCacheTuple(TYPOID,
+	tuple = SearchSysCacheTuple(TYPEOID,
 								ObjectIdGetDatum(typeid),
 								0, 0, 0);
 	if (!HeapTupleIsValid(tuple))

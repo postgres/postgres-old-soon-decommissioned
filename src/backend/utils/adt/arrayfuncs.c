@@ -1470,7 +1470,7 @@ system_cache_lookup(Oid element_type,
 	HeapTuple	typeTuple;
 	Form_pg_type typeStruct;
 
-	typeTuple = SearchSysCacheTuple(TYPOID,
+	typeTuple = SearchSysCacheTuple(TYPEOID,
 									ObjectIdGetDatum(element_type),
 									0, 0, 0);
 

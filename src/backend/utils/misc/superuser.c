@@ -30,7 +30,7 @@ superuser(void)
 
 	HeapTuple	utup;
 
-	utup = SearchSysCacheTuple(USENAME,
+	utup = SearchSysCacheTuple(USERNAME,
 							   PointerGetDatum(UserName),
 							   0, 0, 0);
 	Assert(utup != NULL);

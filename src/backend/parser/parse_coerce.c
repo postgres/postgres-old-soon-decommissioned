@@ -175,7 +175,7 @@ can_coerce_type(int nargs, Oid *input_typeids, Oid *func_typeids)
 				 * look for a single-argument function named with the
 				 * target type name
 				 */
-				ftup = SearchSysCacheTuple(PRONAME,
+				ftup = SearchSysCacheTuple(PROCNAME,
 						PointerGetDatum(typeidTypeName(func_typeids[i])),
 										   Int32GetDatum(1),
 										   PointerGetDatum(oid_array),

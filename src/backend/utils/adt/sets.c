@@ -72,7 +72,7 @@ SetDefine(char *querystr, char *typename)
 	 * until you start the next command.)
 	 */
 	CommandCounterIncrement();
-	tup = SearchSysCacheTuple(PROOID,
+	tup = SearchSysCacheTuple(PROCOID,
 							  ObjectIdGetDatum(setoid),
 							  0, 0, 0);
 	if (!HeapTupleIsValid(tup))
@@ -102,7 +102,7 @@ SetDefine(char *querystr, char *typename)
 		/* change the pg_proc tuple */
 		procrel = heap_openr(ProcedureRelationName, RowExclusiveLock);
 
-		tup = SearchSysCacheTuple(PROOID,
+		tup = SearchSysCacheTuple(PROCOID,
 								  ObjectIdGetDatum(setoid),
 								  0, 0, 0);
 		if (HeapTupleIsValid(tup))

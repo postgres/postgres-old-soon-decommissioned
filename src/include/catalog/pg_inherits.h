@@ -32,7 +32,7 @@
  */
 CATALOG(pg_inherits)
 {
-	Oid			inhrel;
+	Oid			inhrelid;
 	Oid			inhparent;
 	int4		inhseqno;
 } FormData_pg_inherits;
@@ -49,7 +49,7 @@ typedef FormData_pg_inherits *Form_pg_inherits;
  * ----------------
  */
 #define Natts_pg_inherits				3
-#define Anum_pg_inherits_inhrel			1
+#define Anum_pg_inherits_inhrelid		1
 #define Anum_pg_inherits_inhparent		2
 #define Anum_pg_inherits_inhseqno		3
 

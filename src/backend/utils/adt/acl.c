@@ -170,7 +170,7 @@ aclparse(char *s, AclItem *aip, unsigned *modechg)
 	switch (aip->ai_idtype)
 	{
 		case ACL_IDTYPE_UID:
-			htup = SearchSysCacheTuple(USENAME,
+			htup = SearchSysCacheTuple(USERNAME,
 									   PointerGetDatum(name),
 									   0, 0, 0);
 			if (!HeapTupleIsValid(htup))
@@ -281,7 +281,7 @@ aclitemout(AclItem *aip)
 	switch (aip->ai_idtype)
 	{
 		case ACL_IDTYPE_UID:
-			htup = SearchSysCacheTuple(USESYSID,
+			htup = SearchSysCacheTuple(USERSYSID,
 									   ObjectIdGetDatum(aip->ai_id),
 									   0, 0, 0);
 			if (!HeapTupleIsValid(htup))

@@ -329,7 +329,7 @@ SizeTargetExpr(ParseState *pstate,
 		oid_array[i] = InvalidOid;
 
 	/* attempt to find with arguments exactly as specified... */
-	ftup = SearchSysCacheTuple(PRONAME,
+	ftup = SearchSysCacheTuple(PROCNAME,
 							   PointerGetDatum(funcname),
 							   Int32GetDatum(2),
 							   PointerGetDatum(oid_array),

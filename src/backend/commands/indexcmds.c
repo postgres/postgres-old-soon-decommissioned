@@ -310,7 +310,7 @@ ExtendIndex(char *indexRelationName, Expr *predicate, List *rangetable)
 /*		FIgetnArgs(funcInfo) = numberOfAttributes; */
 		FIsetnArgs(funcInfo, numberOfAttributes);
 
-		tuple = SearchSysCacheTuple(PROOID,
+		tuple = SearchSysCacheTuple(PROCOID,
 									ObjectIdGetDatum(indproc),
 									0, 0, 0);
 		if (!HeapTupleIsValid(tuple))
@@ -482,7 +482,7 @@ NormIndexAttrs(List *attList,	/* list of IndexElem's */
 		/* we want the type so we can set the proper alignment, etc. */
 		if (attribute->typename == NULL)
 		{
-			tuple = SearchSysCacheTuple(TYPOID,
+			tuple = SearchSysCacheTuple(TYPEOID,
 									 ObjectIdGetDatum(attform->atttypid),
 										0, 0, 0);
 			if (!HeapTupleIsValid(tuple))

@@ -217,7 +217,7 @@ fmgr_info(Oid procedureId, FmgrInfo *finfo)
 	}
 	else
 	{
-		procedureTuple = SearchSysCacheTuple(PROOID,
+		procedureTuple = SearchSysCacheTuple(PROCOID,
 										   ObjectIdGetDatum(procedureId),
 											 0, 0, 0);
 		if (!HeapTupleIsValid(procedureTuple))
@@ -270,7 +270,7 @@ fmgr_info(Oid procedureId, FmgrInfo *finfo)
 				 * this is the case, we return a NULL function pointer and
 				 * the number of arguments from the procedure.
 				 */
-				languageTuple = SearchSysCacheTuple(LANOID,
+				languageTuple = SearchSysCacheTuple(LANGOID,
 							  ObjectIdGetDatum(procedureStruct->prolang),
 													0, 0, 0);
 				if (!HeapTupleIsValid(languageTuple))

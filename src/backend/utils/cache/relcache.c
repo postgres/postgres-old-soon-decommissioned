@@ -524,7 +524,7 @@ build_tupdesc_ind(RelationBuildDescInfo buildinfo,
 
 	for (i = 1; i <= relation->rd_rel->relnatts; i++)
 	{
-		atttup = (HeapTuple) AttributeNumIndexScan(attrel,
+		atttup = (HeapTuple) AttributeRelidNumIndexScan(attrel,
 										  RelationGetRelid(relation), i);
 
 		if (!HeapTupleIsValid(atttup))
@@ -2085,7 +2085,7 @@ write_irels(void)
 	SetProcessingMode(BootstrapProcessing);
 
 	bi.infotype = INFO_RELNAME;
-	bi.i.info_name = AttributeNumIndex;
+	bi.i.info_name = AttributeRelidNumIndex;
 	irel[0] = RelationBuildDesc(bi, NULL);
 	irel[0]->rd_isnailed = true;
 

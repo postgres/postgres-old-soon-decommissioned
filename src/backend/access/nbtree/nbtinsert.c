@@ -149,7 +149,7 @@ l1:
 						buf = _bt_getbuf(rel, blkno, BT_WRITE);
 						goto l1;/* continue from the begin */
 					}
-					elog(ERROR, "Cannot insert a duplicate key into a unique index");
+					elog(ERROR, "Cannot insert a duplicate key into unique index %s", RelationGetRelationName(rel));
 				}
 				/* htup null so no buffer to release */
 				/* get next offnum */

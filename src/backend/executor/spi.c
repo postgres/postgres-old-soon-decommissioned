@@ -449,7 +449,7 @@ SPI_gettype(TupleDesc tupdesc, int fnumber)
 		return NULL;
 	}
 
-	typeTuple = SearchSysCacheTuple(TYPOID,
+	typeTuple = SearchSysCacheTuple(TYPEOID,
 				 ObjectIdGetDatum(tupdesc->attrs[fnumber - 1]->atttypid),
 									0, 0, 0);
 

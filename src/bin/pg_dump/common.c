@@ -118,7 +118,7 @@ findParentsByOid(TableInfo *tblinfo, int numTables,
 	numParents = 0;
 	for (i = 0; i < numInherits; i++)
 	{
-		if (strcmp(inhinfo[i].inhrel, oid) == 0)
+		if (strcmp(inhinfo[i].inhrelid, oid) == 0)
 			numParents++;
 	}
 
@@ -130,7 +130,7 @@ findParentsByOid(TableInfo *tblinfo, int numTables,
 		j = 0;
 		for (i = 0; i < numInherits; i++)
 		{
-			if (strcmp(inhinfo[i].inhrel, oid) == 0)
+			if (strcmp(inhinfo[i].inhrelid, oid) == 0)
 			{
 				parentInd = findTableByOid(tblinfo, numTables,
 										   inhinfo[i].inhparent);

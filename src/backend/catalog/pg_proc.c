@@ -109,7 +109,7 @@ ProcedureCreate(char *procedureName,
 		typev[parameterCount++] = toid;
 	}
 
-	tup = SearchSysCacheTuple(PRONAME,
+	tup = SearchSysCacheTuple(PROCNAME,
 							  PointerGetDatum(procedureName),
 							  UInt16GetDatum(parameterCount),
 							  PointerGetDatum(typev),
@@ -157,7 +157,7 @@ ProcedureCreate(char *procedureName,
 		}
 	}
 
-	tup = SearchSysCacheTuple(LANNAME,
+	tup = SearchSysCacheTuple(LANGNAME,
 							  PointerGetDatum(languageName),
 							  0, 0, 0);
 
