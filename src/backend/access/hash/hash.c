@@ -440,9 +440,7 @@ hashendscan(IndexScanDesc scan)
     _hash_dropscan(scan);
     
     /* be tidy */
-#ifdef PERFECT_MMGR
     pfree (scan->opaque);
-#endif /* PERFECT_MMGR */
 }
 
 /*

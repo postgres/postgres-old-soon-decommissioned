@@ -503,11 +503,9 @@ btendscan(IndexScanDesc scan)
     _bt_dropscan(scan);
     
     /* be tidy */
-#ifdef PERFECT_MMGR
     if ( so->keyData != (ScanKey) NULL )
     	pfree (so->keyData);
     pfree (scan->opaque);
-#endif /* PERFECT_MMGR */
 }
 
 /*
