@@ -37,5 +37,5 @@ BEGIN {
 	last = $1;
 }
 END {
-	print last + 1, "-";
+	print last + 1, "-", 2^14-1; /* current BootstrapObjectIdData value */
 }'
