@@ -3259,7 +3259,7 @@ flatten_set_variable_args(const char *name, List *args)
 				break;
 			case T_Float:
 				/* represented as a string, so just copy it */
-				appendStringInfo(&buf, "%s", strVal(&arg->val));
+				appendStringInfoString(&buf, strVal(&arg->val));
 				break;
 			case T_String:
 				val = strVal(&arg->val);
@@ -3293,9 +3293,9 @@ flatten_set_variable_args(const char *name, List *args)
 					 * mode, quote it if it's not a vanilla identifier.
 					 */
 					if (flags & GUC_LIST_QUOTE)
-						appendStringInfo(&buf, "%s", quote_identifier(val));
+						appendStringInfoString(&buf, quote_identifier(val));
 					else
-						appendStringInfo(&buf, "%s", val);
+						appendStringInfoString(&buf, val);
 				}
 				break;
 			default:

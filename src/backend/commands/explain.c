@@ -1002,7 +1002,7 @@ show_sort_keys(List *tlist, int nkeys, AttrNumber *keycols,
 		/* And add to str */
 		if (keyno > 0)
 			appendStringInfo(str, ", ");
-		appendStringInfo(str, "%s", exprstr);
+		appendStringInfoString(str, exprstr);
 	}
 
 	appendStringInfo(str, "\n");

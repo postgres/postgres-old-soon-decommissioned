@@ -2232,7 +2232,7 @@ array_to_text(PG_FUNCTION_ARGS)
 		if (i > 0)
 			appendStringInfo(result_str, "%s%s", fldsep, value);
 		else
-			appendStringInfo(result_str, "%s", value);
+			appendStringInfoString(result_str, value);
 
 		p = att_addlength(p, typlen, PointerGetDatum(p));
 		p = (char *) att_align(p, typalign);

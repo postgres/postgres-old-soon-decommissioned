@@ -340,7 +340,7 @@ format_procedure(Oid procedure_oid)
 
 			if (i > 0)
 				appendStringInfoChar(&buf, ',');
-			appendStringInfo(&buf, "%s", format_type_be(thisargtype));
+			appendStringInfoString(&buf, format_type_be(thisargtype));
 		}
 		appendStringInfoChar(&buf, ')');
 
