@@ -28,15 +28,11 @@ all: $(INFILES)
 	if [ -z "$$USER" ]; then USER=$$LOGNAME; fi; \
 	if [ -z "$$USER" ]; then USER=`whoami`; fi; \
 	if [ -z "$$USER" ]; then echo 'Cannot deduce $$USER.'; exit 1; fi; \
-	rm -f expected.out; \
-	MYTZ=`date | cut -c21`; \
-	C="`pwd`"; \
-	sed -e "s:_CWD_:$(PWD)/\.\.:g" \
-	    -e "s:\.\./output:\.\./input:g" \
-	    -e "s:_OBJWD_:$(PWD):g" \
-            -e "s:_DLSUFFIX_:$(DLSUFFIX):g" \
-	    -e "s;\([A-Z][a-z][a-z][^ ]* [A-Z][a-z][a-z] [0-9 ][0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] [0-9][0-9][0-9][0-9] \)[A-Z]\([A-Z][A-Z]\);\1$$MYTZ\2;g" \
-	    -e "s;\([A-Z][a-z][a-z][^ ]* [A-Z][a-z][a-z] [0-9 ][0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] \)[A-Z]\([A-Z][A-Z] [0-9][0-9][0-9][0-9]\);\1$$MYTZ\2;g" \
-	    -e "s:_USER_:$$USER:g" < $< | \
-	sed -e "s:/output/\.\./:/input/\.\./:g"> ../expected/$@
-	@echo "YOUR EXPECTED RESULTS ARE NOW IN FILE expected.out."
+	rm -f $@; \
+	PWD=`pwd`; \
+	OBJ=`pwd`; \
+	sed -e "s:_CWD_:$(PWD):g" \
+	    -e "s:_OBJWD_:$$OBJ/\.\.:g" \
+	    -e "s:_DLSUFFIX_:$(DLSUFFIX):g" \
+	    -e "s/_USER_/$$USER/g" < $< > ../expected/$@
+
