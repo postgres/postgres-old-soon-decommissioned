@@ -405,7 +405,7 @@ rebuild_relation(Relation OldHeap, Oid indexOid)
 	 * namespace from the old, or we will have problems with the TEMP
 	 * status of temp tables.
 	 */
-	snprintf(NewHeapName, NAMEDATALEN, "pg_temp_%u", tableOid);
+	snprintf(NewHeapName, sizeof(NewHeapName), "pg_temp_%u", tableOid);
 
 	OIDNewHeap = make_new_heap(tableOid, NewHeapName);
 	/*
@@ -625,7 +625,8 @@ rebuild_indexes(Oid OIDOldHeap, List *indexes)
 		Relation	pg_index;
 
 		/* Create the new index under a temporary name */
-		snprintf(newIndexName, NAMEDATALEN, "pg_temp_%u", attrs->indexOID);
+		snprintf(newIndexName, sizeof(newIndexName),
+				 "pg_temp_%u", attrs->indexOID);
 
 		/*
 		 * The new index will have primary and constraint status set to

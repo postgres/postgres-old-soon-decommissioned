@@ -82,10 +82,13 @@ static int istinterval(char *i_string,
 			AbsoluteTime *i_end);
 
 
-/* GetCurrentAbsoluteTime()
- * Get the current system time.
+/* 
+ * GetCurrentAbsoluteTime()
  *
- * Returns the number of seconds since epoch (January 1 1970 GMT).
+ * Get the current system time. Set timezone parameters if not specified
+ * elsewhere.  Define HasCTZSet to allow clients to specify the default
+ * timezone.
+ *
  */
 AbsoluteTime
 GetCurrentAbsoluteTime(void)
@@ -127,9 +130,14 @@ GetCurrentDateTime(struct tm * tm)
 	abstime2tm(GetCurrentTransactionStartTime(), &tz, tm, NULL);
 }
 
-/* GetCurrentTimeUsec()
- * Get the transaction start time ("now()") broken down as a struct tm,
- * plus fractional-second and timezone info.
+/* 
+ * GetCurrentAbsoluteTimeUsec()
+ *
+ * Get the current system time. Set timezone parameters if not specified
+ * elsewhere.  Define HasCTZSet to allow clients to specify the default
+ * timezone.
+ *
+ * Returns the number of seconds since epoch (January 1 1970 GMT)
  */
 void
 GetCurrentTimeUsec(struct tm * tm, fsec_t *fsec, int *tzp)

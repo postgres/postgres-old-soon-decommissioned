@@ -1598,7 +1598,7 @@ InitTempTableNamespace(void)
 		elog(ERROR, "%s: not authorized to create temp tables",
 			 DatabaseName);
 
-	snprintf(namespaceName, NAMEDATALEN, "pg_temp_%d", MyBackendId);
+	snprintf(namespaceName, sizeof(namespaceName), "pg_temp_%d", MyBackendId);
 
 	namespaceId = GetSysCacheOid(NAMESPACENAME,
 								 CStringGetDatum(namespaceName),

@@ -11,6 +11,8 @@
 #ifndef PGSTAT_H
 #define PGSTAT_H
 
+#include "utils/nabstime.h"
+
 /* ----------
  * Paths for the statistics files. The %s is replaced with the
  * installations $PGDATA.
@@ -111,6 +113,8 @@ typedef struct PgStat_StatBeEntry
 	Oid			userid;
 	int			procpid;
 	char		activity[PGSTAT_ACTIVITY_SIZE];
+	AbsoluteTime activity_start_sec;
+	int			activity_start_usec;
 } PgStat_StatBeEntry;
 
 

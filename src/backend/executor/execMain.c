@@ -603,7 +603,7 @@ InitPlan(QueryDesc *queryDesc)
 			erm = (execRowMark *) palloc(sizeof(execRowMark));
 			erm->relation = relation;
 			erm->rti = rti;
-			snprintf(erm->resname, 32, "ctid%u", rti);
+			snprintf(erm->resname, sizeof(erm->resname), "ctid%u", rti);
 			estate->es_rowMark = lappend(estate->es_rowMark, erm);
 		}
 	}

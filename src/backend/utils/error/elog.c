@@ -215,7 +215,8 @@ elog(int lev, const char *fmt,...)
 		 * Prints the failure line of the COPY.  Wow, what a hack!	bjm
 		 * Translator:	Error message will be truncated at 31 characters.
 		 */
-		snprintf(copylineno_buf, 32, gettext("copy: line %d, "), copy_lineno);
+		snprintf(copylineno_buf, sizeof(copylineno_buf),
+				 gettext("copy: line %d, "), copy_lineno);
 		space_needed += strlen(copylineno_buf);
 	}
 
@@ -787,8 +788,8 @@ useful_strerror(int errnum)
 		 * translator: This string will be truncated at 47 characters
 		 * expanded.
 		 */
-		snprintf(errorstr_buf, 48, gettext("operating system error %d"),
-				 errnum);
+		snprintf(errorstr_buf, sizeof(errorstr_buf),
+				 gettext("operating system error %d"), errnum);
 		str = errorstr_buf;
 	}
 

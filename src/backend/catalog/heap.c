@@ -961,7 +961,8 @@ RemoveAttributeById(Oid relid, AttrNumber attnum)
 	attStruct->attstattarget = 0;
 
 	/* Change the column name to something that isn't likely to conflict */
-	snprintf(newattname, NAMEDATALEN, "........pg.dropped.%d........", attnum);
+	snprintf(newattname, sizeof(newattname),
+			 "........pg.dropped.%d........", attnum);
 	namestrcpy(&(attStruct->attname), newattname);
 
 	simple_heap_update(attr_rel, &tuple->t_self, tuple);

@@ -1162,7 +1162,7 @@ ident_inet(const struct in_addr remote_ip_addr,
 			char		ident_query[80];
 
 			/* The query we send to the Ident server */
-			snprintf(ident_query, 80, "%d,%d\n",
+			snprintf(ident_query, sizeof(ident_query), "%d,%d\n",
 					 ntohs(remote_port), ntohs(local_port));
 			/* loop in case send is interrupted */
 			do
