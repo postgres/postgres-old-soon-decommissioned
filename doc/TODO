@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Thu Jul 31 11:06:51 EDT 2003
+Last updated:		Fri Aug  1 17:44:04 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -255,7 +255,7 @@ Commands
 	o Allow PL/PgSQL to support array element assignment
 	o Add PL/PHP (Joe, Jan)
 	o Allow PL/pgSQL to name columns by ordinal position, e.g. rec.(3)
-
+	o Allow PL/pgSQL EXECUTE query_var INTO record_var;
 
 
 Clients
