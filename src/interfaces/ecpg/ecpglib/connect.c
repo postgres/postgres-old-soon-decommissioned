@@ -68,7 +68,6 @@ ecpg_finish(struct connection * act)
 		struct ECPGtype_information_cache *cache,
 				   *ptr;
 
-		ECPGlog("ecpg_finish: finishing %s.\n", act->name);
 		PQfinish(act->connection);
 
 		/* no need to lock connections_mutex - we're always called
@@ -89,6 +88,8 @@ ecpg_finish(struct connection * act)
 
 		if (actual_connection == act)
 			actual_connection = all_connections;
+
+		ECPGlog("ecpg_finish: Connection %s closed.\n", act->name);
 
 		for (cache = act->cache_head; cache; ptr = cache, cache = cache->next, ECPGfree(ptr));
 		ECPGfree(act->name);
@@ -481,10 +482,9 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 
 	if (PQstatus(this->connection) == CONNECTION_BAD)
 	{
-        const char *errmsg = PQerrorMessage(this->connection);
-        char *db = realname ? realname : "<DEFAULT>";
+         	const char *errmsg = PQerrorMessage(this->connection);
+	        char *db = realname ? realname : "<DEFAULT>";
 
-        set_backend_err(errmsg, lineno);
 		ecpg_finish(this);
 #ifdef USE_THREADS
 		pthread_mutex_unlock(&connections_mutex);

@@ -1131,7 +1131,6 @@ ECPGexecute(struct statement * stmt)
 		errmsg = PQerrorMessage(stmt->connection->connection);
 		ECPGlog("ECPGexecute line %d: error: %s", stmt->lineno, errmsg);
 		ECPGraise(stmt->lineno, ECPG_PGSQL, errmsg);
-		set_backend_err(errmsg, stmt->lineno);
 	}
 	else
 
@@ -1144,7 +1143,6 @@ ECPGexecute(struct statement * stmt)
 		struct sqlca_t *sqlca = ECPGget_sqlca();
 
 		errmsg = PQresultErrorMessage(results);
-		set_backend_err(errmsg, stmt->lineno);
 		
 		var = stmt->outlist;
 		switch (PQresultStatus(results))
