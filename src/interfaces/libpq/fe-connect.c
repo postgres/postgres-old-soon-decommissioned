@@ -937,7 +937,7 @@ connectDBStart(PGconn *conn)
 	if (ret || addrs == NULL)
 	{
 		printfPQExpBuffer(&conn->errorMessage,
-						  libpq_gettext("failed to getaddrinfo(): %s\n"),
+						  libpq_gettext("getaddrinfo() failed: %s\n"),
 						  gai_strerror(ret));
 		goto connect_errReturn;
 	}
