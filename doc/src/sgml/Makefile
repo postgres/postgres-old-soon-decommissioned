@@ -26,7 +26,7 @@ endif
 ifndef JADE
 JADE = jade
 endif
-SGMLINCLUDE = -D ref -D ../graphics
+SGMLINCLUDE = -D $(srcdir) -D $(srcdir)/ref -D $(srcdir)/../graphics
 
 ifndef NSGMLS
 NSGMLS = nsgmls
