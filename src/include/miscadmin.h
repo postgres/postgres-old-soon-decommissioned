@@ -161,9 +161,6 @@ extern bool CDayLight;
 extern int	CTimeZone;
 extern char CTZName[];
 
-extern char FloatFormat[];
-extern char DateFormat[];
-
 extern bool enableFsync;
 extern bool allowSystemTableMods;
 extern DLLIMPORT int SortMem;
