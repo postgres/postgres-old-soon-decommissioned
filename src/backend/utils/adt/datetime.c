@@ -260,15 +260,14 @@ static datetkn deltatktbl[] = {
 	{"hours", UNITS, DTK_HOUR}, /* "hours" relative time units */
 	{"hr", UNITS, DTK_HOUR},	/* "hour" relative time units */
 	{"hrs", UNITS, DTK_HOUR},	/* "hours" relative time units */
-	{INVALID, RESERV, DTK_INVALID},		/* "invalid" reserved for invalid
-										 * time */
+	{INVALID, RESERV, DTK_INVALID},		/* reserved for invalid time */
 	{"m", UNITS, DTK_MINUTE},	/* "minute" relative time units */
 	{"microsecon", UNITS, DTK_MICROSEC},		/* "microsecond" relative
 												 * time units */
-	{"mil", UNITS, DTK_MILLENIUM},		/* "millenium" relative time units */
-	{"mils", UNITS, DTK_MILLENIUM},		/* "millenia" relative time units */
-	{"millenia", UNITS, DTK_MILLENIUM}, /* "millenia" relative time units */
-	{DMILLENIUM, UNITS, DTK_MILLENIUM}, /* "millenium" relative time units */
+	{"mil", UNITS, DTK_MILLENNIUM},		/* "millennium" relative time units */
+	{"mils", UNITS, DTK_MILLENNIUM},	  /* "millennia" relative time units */
+	{"millennia", UNITS, DTK_MILLENNIUM}, /* "millennia" relative time units */
+	{DMILLENNIUM, UNITS, DTK_MILLENNIUM}, /* "millennium" relative time units */
 	{"millisecon", UNITS, DTK_MILLISEC},		/* relative time units */
 	{"min", UNITS, DTK_MINUTE}, /* "minute" relative time units */
 	{"mins", UNITS, DTK_MINUTE},/* "minutes" relative time units */
@@ -1794,7 +1793,7 @@ DecodeDateDelta(char **field, int *ftype, int nf, int *dtype, struct tm * tm, do
 						tmask = ((fmask & DTK_M(YEAR)) ? 0 : DTK_M(YEAR));
 						break;
 
-					case DTK_MILLENIUM:
+					case DTK_MILLENNIUM:
 						tm->tm_year += val * 1000;
 						if (fval != 0)
 							tm->tm_mon += (fval * 12000);
