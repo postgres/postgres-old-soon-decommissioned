@@ -141,7 +141,7 @@ main (int argc, char ** argv)
 		else if (strcmp(argv[i],"--pgxs") == 0)
 		{
 			get_pkglib_path(mypath,otherpath);
-			strncat(otherpath, "/pgxs", MAXPGPATH-1);
+			strncat(otherpath, "/pgxs/src/makefiles/pgxs.mk", MAXPGPATH-1);
 		}
 
 		printf("%s\n",otherpath);
