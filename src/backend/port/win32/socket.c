@@ -102,7 +102,7 @@ pgwin32_poll_signals(void)
 	return 0;
 }
 
-static int
+int
 pgwin32_waitforsinglesocket(SOCKET s, int what)
 {
 	static HANDLE waitevent = INVALID_HANDLE_VALUE;
