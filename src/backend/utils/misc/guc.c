@@ -2347,12 +2347,20 @@ GetConfigOptionByName(const char *name, const char **varname)
  * form of name.  Return value is palloc'd.
  */
 char *
-GetConfigOptionByNum(int varnum, const char **varname)
+GetConfigOptionByNum(int varnum, const char **varname, bool *noshow)
 {
-	struct config_generic *conf = guc_variables[varnum];
+	struct config_generic *conf;
+
+	/* check requested variable number valid */
+	Assert((varnum >= 0) && (varnum < num_guc_variables));
+
+	conf = guc_variables[varnum];
 
 	if (varname)
 		*varname = conf->name;
+
+	if (noshow)
+		*noshow = (conf->flags & GUC_NO_SHOW_ALL) ? true : false;
 
 	return _ShowOption(conf);
 }

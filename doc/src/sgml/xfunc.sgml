@@ -1557,6 +1557,14 @@ HeapTuple BuildTupleFromCStrings(AttInMetadata *attinmeta, char **values)
     </para>
 
     <para>
+     In order to get an attribute "in" function and typelem value given the
+     typeid, use
+<programlisting>
+void get_type_metadata(Oid typeid, Oid *attinfuncid, Oid *attelem)
+</programlisting>
+    </para>
+
+    <para>
      Finally, in order to return a tuple using the SRF portion of the API
      (described below), the tuple must be converted into a Datum. Use
 <programlisting>
