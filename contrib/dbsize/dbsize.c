@@ -4,10 +4,8 @@
  *
  * Copyright (c) 2004, PostgreSQL Global Development Group
  *
- * Author: Andreas Pflug <pgadmin@pse-consulting.de>
- *
  * IDENTIFICATION
- *	  $PostgreSQL: $
+ *	  $PostgreSQL$
  *
  */
 
