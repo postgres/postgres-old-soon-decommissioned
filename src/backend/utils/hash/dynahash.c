@@ -659,7 +659,7 @@ hash_search(HTAB *hashp,
 			return (void *) ELEMENTKEY(currBucket);
 	}
 
-	elog(ERROR, "hash_search: bogus action %d", (int) action);
+	elog(ERROR, "unrecognized hash action code: %d", (int) action);
 
 	return NULL;				/* keep compiler quiet */
 }
@@ -932,9 +932,9 @@ hash_corrupted(HTAB *hashp)
 	 * systemwide restart.	Otherwise, just shut down this one backend.
 	 */
 	if (hashp->isshared)
-		elog(PANIC, "Hash table '%s' corrupted", hashp->tabname);
+		elog(PANIC, "hash table \"%s\" corrupted", hashp->tabname);
 	else
-		elog(FATAL, "Hash table '%s' corrupted", hashp->tabname);
+		elog(FATAL, "hash table \"%s\" corrupted", hashp->tabname);
 }
 
 /* calculate ceil(log base 2) of num */

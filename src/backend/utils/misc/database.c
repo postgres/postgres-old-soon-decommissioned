@@ -144,7 +144,9 @@ GetRawDatabaseInfo(const char *name, Oid *db_id, char *path)
 	dbfname = relpath(rnode);
 
 	if ((dbfd = open(dbfname, O_RDONLY | PG_BINARY, 0)) < 0)
-		elog(FATAL, "cannot open %s: %m", dbfname);
+		ereport(FATAL,
+				(errcode_for_file_access(),
+				 errmsg("could not open file \"%s\": %m", dbfname)));
 
 	pfree(dbfname);
 

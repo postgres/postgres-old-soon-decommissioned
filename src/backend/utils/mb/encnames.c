@@ -437,10 +437,12 @@ pg_char_to_encname_struct(const char *name)
 	if (strlen(name) > NAMEDATALEN)
 	{
 #ifdef FRONTEND
-		fprintf(stderr, "pg_char_to_encname_struct(): encoding name too long");
+		fprintf(stderr, "encoding name too long\n");
 		return NULL;
 #else
-		elog(ERROR, "pg_char_to_encname_struct(): encoding name too long");
+		ereport(ERROR,
+				(errcode(ERRCODE_NAME_TOO_LONG),
+				 errmsg("encoding name too long")));
 #endif
 	}
 	key = clean_encoding_name((char *) name, buff);

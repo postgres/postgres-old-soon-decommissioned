@@ -450,8 +450,7 @@ LocalExecuteInvalidationMessage(SharedInvalidationMessage *msg)
 	}
 	else
 	{
-		elog(FATAL, "ExecuteInvalidationMessage: bogus message id %d",
-			 msg->id);
+		elog(FATAL, "unrecognized SI message id: %d", msg->id);
 	}
 }
 
@@ -705,7 +704,7 @@ CacheRegisterSyscacheCallback(int cacheid,
 							  Datum arg)
 {
 	if (cache_callback_count >= MAX_CACHE_CALLBACKS)
-		elog(FATAL, "Out of cache_callback_list slots");
+		elog(FATAL, "out of cache_callback_list slots");
 
 	cache_callback_list[cache_callback_count].id = cacheid;
 	cache_callback_list[cache_callback_count].function = func;
@@ -728,7 +727,7 @@ CacheRegisterRelcacheCallback(CacheCallbackFunction func,
 							  Datum arg)
 {
 	if (cache_callback_count >= MAX_CACHE_CALLBACKS)
-		elog(FATAL, "Out of cache_callback_list slots");
+		elog(FATAL, "out of cache_callback_list slots");
 
 	cache_callback_list[cache_callback_count].id = SHAREDINVALRELCACHE_ID;
 	cache_callback_list[cache_callback_count].function = func;

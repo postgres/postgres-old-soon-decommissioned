@@ -2162,7 +2162,6 @@ CREATE FUNCTION test(int, int) RETURNS int
 #include "postgres.h"
 #include "executor/spi.h"
 #include "commands/trigger.h"
-#include "utils/elog.h"
 #include "fmgr.h"
 #include "access/heapam.h"
 #include "utils/syscache.h"
