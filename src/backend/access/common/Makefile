@@ -14,7 +14,7 @@ include ../../../Makefile.global
 INCLUDE_OPT = -I../../port/$(PORTNAME) \
               -I../../../include
 
-CFLAGS+=$(INCLUDE_OPT)
+CFLAGS+=$(INCLUDE_OPT) -Wall -Werror
 
 OBJS = heaptuple.o heapvalid.o indextuple.o indexvalid.o printtup.o \
        scankey.o tupdesc.o  

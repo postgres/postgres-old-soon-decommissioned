@@ -12,23 +12,15 @@
  *-------------------------------------------------------------------------
  */
 
-#include <time.h>
-
 #include "postgres.h"
-#include "access/attnum.h"
-#include "catalog/pg_attribute.h"
-#include "executor/execdebug.h"
-#include "nodes/nodes.h"
-#include "nodes/pg_list.h"
-#include "storage/off.h"
-#include "storage/block.h"
-#include "utils/nabstime.h"
-
-#include "access/skey.h"
-#include "access/tupdesc.h"
-#include "storage/itemptr.h"
 
 #include "access/htup.h"
+#include "access/tupdesc.h"
+
+#include "executor/execdebug.h"
+
+#include "access/skey.h"
+
 #include "access/itup.h"
 
 

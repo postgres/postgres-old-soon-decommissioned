@@ -15,35 +15,20 @@
 
 #include <stdio.h>
 #include <sys/types.h>
-#include <time.h>
 #include <netinet/in.h>
 
 #include "postgres.h"
-#include "fmgr.h" 
-#include "access/attnum.h"
-#include "catalog/pg_am.h"
-#include "catalog/pg_attribute.h"
-#include "catalog/pg_class.h"
-#include "libpq/pqcomm.h"
-#include "nodes/nodes.h"
-#include "nodes/pg_list.h"
-#include "storage/block.h"
-#include "storage/buf.h"
-#include "storage/fd.h"
-#include "storage/off.h"
-#include "utils/nabstime.h"
-#include "utils/palloc.h"
-
-#include "libpq/libpq.h"
-#include "storage/itemptr.h"
-#include "access/tupdesc.h"
-#include "rewrite/prs2lock.h"
-#include "access/skey.h"
-
-#include "access/strat.h"
 
 #include "access/htup.h"
 #include "utils/rel.h"
+#include "access/tupdesc.h"
+
+#include "fmgr.h" 
+#include "libpq/pqcomm.h"
+#include "storage/buf.h"
+#include "utils/palloc.h"
+
+#include "libpq/libpq.h"
 
 #include "catalog/pg_type.h"
 #include "utils/syscache.h"

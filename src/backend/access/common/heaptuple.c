@@ -19,14 +19,14 @@
 
 #include "postgres.h"
 
-#include "utils/palloc.h"
-#include "storage/bufpage.h"
-#include "access/transam.h"
-#include "storage/buf.h"
-#include "access/tupmacs.h"
-#include "access/tupdesc.h"
-#include "utils/memutils.h"
 #include "access/htup.h"
+#include "access/transam.h"
+#include "access/tupdesc.h"
+#include "access/tupmacs.h"
+#include "storage/buf.h"
+#include "storage/bufpage.h"
+#include "utils/memutils.h"
+#include "utils/palloc.h"
 
 #ifndef HAVE_MEMMOVE
 # include "regex/utils.h"

@@ -19,7 +19,6 @@
 
 #include "access/skey.h"
 
-
 /*
  * ScanKeyEntryIsLegal --
  *	True iff the scan key entry is legal.

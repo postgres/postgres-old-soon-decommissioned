@@ -21,30 +21,16 @@
 #include <time.h>
 
 #include "postgres.h"
-#include "utils/fcache.h"
-#include "access/attnum.h"
-#include "catalog/pg_am.h"
-#include "catalog/pg_attribute.h"
-#include "catalog/pg_class.h"
-#include "nodes/nodes.h"
-#include "nodes/pg_list.h"
-#include "storage/block.h"
-#include "storage/fd.h"
-#include "storage/off.h"
-#include "utils/geo-decls.h"
-#include "utils/nabstime.h"
-#include "utils/palloc.h"
-
-#include "nodes/primnodes.h"
-#include "access/tupdesc.h"
-#include "rewrite/prs2lock.h"
-#include "storage/itemptr.h"
-#include "access/skey.h"
-
-#include "access/strat.h"
 
 #include "access/htup.h"
 #include "utils/rel.h"
+#include "access/tupdesc.h"
+
+#include "utils/fcache.h"
+#include "utils/geo-decls.h"
+#include "utils/palloc.h"
+
+#include "nodes/primnodes.h"
 
 #include "catalog/pg_type.h"
 #include "utils/builtins.h"
