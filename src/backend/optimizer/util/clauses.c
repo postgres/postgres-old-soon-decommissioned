@@ -595,6 +595,14 @@ get_relattval(Node *clause,
 	    *flag = (_SELEC_CONSTANT_RIGHT_ | _SELEC_NOT_CONSTANT_);
 	
 	} 
+#ifdef INDEXSCAN_PATCH
+    } else if (is_opclause(clause) && IsA(left,Var) && IsA(right,Param)) {
+	/* Function parameter used as index scan arg.  DZ - 27-8-1996 */ 
+	*relid = left->varno;
+	*attno = left->varattno;
+	*constval = 0;
+	*flag = (_SELEC_NOT_CONSTANT_);
+#endif
     }else if (is_opclause(clause) &&
 	      is_funcclause((Node*)left) &&
 	      IsA(right,Const)) {

@@ -626,6 +626,11 @@ fix_indxqual_references(Node *clause, Path *index_path)
 	}
     } else if(IsA(clause,Const)) {
 	    return(clause);
+#ifdef INDEXSCAN_PATCH
+    } else if(IsA(clause,Param)) {
+	    /* Function parameter used as index scan arg.  DZ - 27-8-1996 */ 
+	    return(clause);
+#endif
     } else if(is_opclause(clause) && 
 	      is_funcclause((Node*)get_leftop((Expr*)clause)) && 
 	      ((Func*)((Expr*)get_leftop((Expr*)clause))->oper)->funcisindex){

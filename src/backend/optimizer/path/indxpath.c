@@ -493,7 +493,13 @@ match_clause_to_indexkey(Rel *rel,
 	    /*
 	     * Check for standard s-argable clause
 	     */
+#ifdef INDEXSCAN_PATCH
+	    /* Handle also function parameters.  DZ - 27-8-1996 */ 
+	    if ((rightop && IsA(rightop,Const)) ||
+		(rightop && IsA(rightop,Param)))
+#else
 	    if (rightop && IsA(rightop,Const))
+#endif
 		{
 		    restrict_op = ((Oper*)((Expr*)clause)->oper)->opno;
 		    isIndexable =

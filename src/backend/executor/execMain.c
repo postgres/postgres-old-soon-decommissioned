@@ -145,6 +145,20 @@ ExecutorRun(QueryDesc *queryDesc, EState *estate, int feature, int count)
     dest =	  queryDesc->dest;
     destination = (void (*)()) DestToFunction(dest);
 
+#ifdef INDEXSCAN_PATCH
+    /*
+     * If the plan is an index scan and some of the scan key are
+     * function arguments rescan the indices after the parameter
+     * values have been stored in the execution state.  DZ - 27-8-1996
+     */
+    if ((nodeTag(plan) == T_IndexScan) &&
+	(((IndexScan *)plan)->indxstate->iss_RuntimeKeyInfo != NULL)) {
+	ExprContext *econtext;
+	econtext = ((IndexScan *)plan)->scan.scanstate->cstate.cs_ExprContext;
+	ExecIndexReScan((IndexScan *)plan, econtext, plan);
+    }
+#endif
+
     switch(feature) {
 
     case EXEC_RUN:
