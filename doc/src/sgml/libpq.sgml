@@ -1487,7 +1487,7 @@ Note that error fields are only available from
           Every command result should be freed via <function>PQclear</function> when
           it  is  no  longer needed.
 <synopsis>
-void PQclear(PQresult *res);
+void PQclear(PGresult *res);
 </synopsis>
 </para>
 
