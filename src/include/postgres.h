@@ -262,6 +262,34 @@ typedef Datum *DatumPtr;
 #define ObjectIdGetDatum(X) ((Datum) SET_4_BYTES(X))
 
 /*
+ * DatumGetTransactionId
+ *		Returns transaction identifier value of a datum.
+ */
+
+#define DatumGetTransactionId(X) ((TransactionId) GET_4_BYTES(X))
+
+/*
+ * TransactionIdGetDatum
+ *		Returns datum representation for a transaction identifier.
+ */
+
+#define TransactionIdGetDatum(X) ((Datum) SET_4_BYTES((X)))
+
+/*
+ * DatumGetCommandId
+ *		Returns command identifier value of a datum.
+ */
+
+#define DatumGetCommandId(X) ((CommandId) GET_4_BYTES(X))
+
+/*
+ * CommandIdGetDatum
+ *		Returns datum representation for a command identifier.
+ */
+
+#define CommandIdGetDatum(X) ((Datum) SET_4_BYTES(X))
+
+/*
  * DatumGetPointer
  *		Returns pointer value of a datum.
  */

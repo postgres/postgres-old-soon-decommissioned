@@ -1277,7 +1277,7 @@ LockReleaseAll(LOCKMETHOD lockmethod, PROC *proc,
 			goto next_item;
 
 		/* If not allxids, ignore items that are of the wrong xid */
-		if (!allxids && xid != holder->tag.xid)
+		if (!allxids && !TransactionIdEquals(xid, holder->tag.xid))
 			goto next_item;
 
 		HOLDER_PRINT("LockReleaseAll", holder);

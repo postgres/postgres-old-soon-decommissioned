@@ -531,15 +531,15 @@ HeapTupleSatisfiesSnapshot(HeapTupleHeader tuple, Snapshot snapshot)
 	 * when...
 	 */
 
-	if (tuple->t_xmin >= snapshot->xmax)
+	if (TransactionIdFollowsOrEquals(tuple->t_xmin, snapshot->xmax))
 		return false;
-	if (tuple->t_xmin >= snapshot->xmin)
+	if (TransactionIdFollowsOrEquals(tuple->t_xmin, snapshot->xmin))
 	{
 		uint32		i;
 
 		for (i = 0; i < snapshot->xcnt; i++)
 		{
-			if (tuple->t_xmin == snapshot->xip[i])
+			if (TransactionIdEquals(tuple->t_xmin, snapshot->xip[i]))
 				return false;
 		}
 	}
@@ -571,15 +571,15 @@ HeapTupleSatisfiesSnapshot(HeapTupleHeader tuple, Snapshot snapshot)
 		tuple->t_infomask |= HEAP_XMAX_COMMITTED;
 	}
 
-	if (tuple->t_xmax >= snapshot->xmax)
+	if (TransactionIdFollowsOrEquals(tuple->t_xmax, snapshot->xmax))
 		return true;
-	if (tuple->t_xmax >= snapshot->xmin)
+	if (TransactionIdFollowsOrEquals(tuple->t_xmax, snapshot->xmin))
 	{
 		uint32		i;
 
 		for (i = 0; i < snapshot->xcnt; i++)
 		{
-			if (tuple->t_xmax == snapshot->xip[i])
+			if (TransactionIdEquals(tuple->t_xmax, snapshot->xip[i]))
 				return true;
 		}
 	}

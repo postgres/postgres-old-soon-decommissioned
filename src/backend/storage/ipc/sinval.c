@@ -241,12 +241,12 @@ GetXmaxRecent(TransactionId *XmaxRecent)
 			/* Fetch xid just once - see GetNewTransactionId */
 			TransactionId xid = proc->xid;
 
-			if (! TransactionIdIsSpecial(xid))
+			if (TransactionIdIsNormal(xid))
 			{
 				if (TransactionIdPrecedes(xid, result))
 					result = xid;
 				xid = proc->xmin;
-				if (! TransactionIdIsSpecial(xid))
+				if (TransactionIdIsNormal(xid))
 					if (TransactionIdPrecedes(xid, result))
 						result = xid;
 			}
@@ -347,8 +347,8 @@ GetSnapshotData(bool serializable)
 			 * treat them as running anyway.
 			 */
 			if (proc == MyProc ||
-				TransactionIdIsSpecial(xid) ||
-				! TransactionIdPrecedes(xid, snapshot->xmax))
+				! TransactionIdIsNormal(xid) ||
+				TransactionIdFollowsOrEquals(xid, snapshot->xmax))
 				continue;
 
 			if (TransactionIdPrecedes(xid, snapshot->xmin))
@@ -364,7 +364,7 @@ GetSnapshotData(bool serializable)
 	SpinRelease(SInvalLock);
 
 	/* Serializable snapshot must be computed before any other... */
-	Assert(MyProc->xmin != InvalidTransactionId);
+	Assert(TransactionIdIsValid(MyProc->xmin));
 
 	snapshot->xcnt = count;
 	return snapshot;

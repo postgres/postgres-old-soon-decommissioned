@@ -330,11 +330,9 @@ typedef Oid RegProcedure;
 
 typedef uint32 TransactionId;
 
-#define InvalidTransactionId	0
-
 typedef uint32 CommandId;
 
-#define FirstCommandId	0
+#define FirstCommandId	((CommandId) 0)
 
 /*
  * Array indexing support

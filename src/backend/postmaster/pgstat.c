@@ -500,10 +500,10 @@ pgstat_vacuum_tabstat(void)
 	 * If not done for this transaction, read the statistics collector
 	 * stats file into some hash tables.
 	 */
-	if (pgStatDBHashXact != GetCurrentTransactionId())
+	if (!TransactionIdEquals(pgStatDBHashXact, GetCurrentTransactionId()))
 	{
 		pgstat_read_statsfile(&pgStatDBHash, MyDatabaseId, 
-						&pgStatBeTable, &pgStatNumBackends);
+							  &pgStatBeTable, &pgStatNumBackends);
 		pgStatDBHashXact = GetCurrentTransactionId();
 	}
 
@@ -916,10 +916,10 @@ pgstat_fetch_stat_dbentry(Oid dbid)
 	 * stats file into some hash tables. Be careful with the read_statsfile()
 	 * call below!
 	 */
-	if (pgStatDBHashXact != GetCurrentTransactionId())
+	if (!TransactionIdEquals(pgStatDBHashXact, GetCurrentTransactionId()))
 	{
 		pgstat_read_statsfile(&pgStatDBHash, MyDatabaseId, 
-						&pgStatBeTable, &pgStatNumBackends);
+							  &pgStatBeTable, &pgStatNumBackends);
 		pgStatDBHashXact = GetCurrentTransactionId();
 	}
 
@@ -956,10 +956,10 @@ pgstat_fetch_stat_tabentry(Oid relid)
 	 * stats file into some hash tables. Be careful with the read_statsfile()
 	 * call below!
 	 */
-	if (pgStatDBHashXact != GetCurrentTransactionId())
+	if (!TransactionIdEquals(pgStatDBHashXact, GetCurrentTransactionId()))
 	{
 		pgstat_read_statsfile(&pgStatDBHash, MyDatabaseId, 
-						&pgStatBeTable, &pgStatNumBackends);
+							  &pgStatBeTable, &pgStatNumBackends);
 		pgStatDBHashXact = GetCurrentTransactionId();
 	}
 
@@ -997,10 +997,10 @@ pgstat_fetch_stat_tabentry(Oid relid)
 PgStat_StatBeEntry *
 pgstat_fetch_stat_beentry(int beid)
 {
-	if (pgStatDBHashXact != GetCurrentTransactionId())
+	if (!TransactionIdEquals(pgStatDBHashXact, GetCurrentTransactionId()))
 	{
 		pgstat_read_statsfile(&pgStatDBHash, MyDatabaseId, 
-						&pgStatBeTable, &pgStatNumBackends);
+							  &pgStatBeTable, &pgStatNumBackends);
 		pgStatDBHashXact = GetCurrentTransactionId();
 	}
 
@@ -1021,10 +1021,10 @@ pgstat_fetch_stat_beentry(int beid)
 int
 pgstat_fetch_stat_numbackends(void)
 {
-	if (pgStatDBHashXact != GetCurrentTransactionId())
+	if (!TransactionIdEquals(pgStatDBHashXact, GetCurrentTransactionId()))
 	{
 		pgstat_read_statsfile(&pgStatDBHash, MyDatabaseId, 
-						&pgStatBeTable, &pgStatNumBackends);
+							  &pgStatBeTable, &pgStatNumBackends);
 		pgStatDBHashXact = GetCurrentTransactionId();
 	}
 

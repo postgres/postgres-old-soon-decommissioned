@@ -2078,7 +2078,8 @@ DeferredTriggerSaveEvent(ResultRelInfo *relinfo, int event,
 			 * foreign referenced key value that's changing now has been
 			 * updated once before in this transaction.
 			 */
-			if (oldtup->t_data->t_xmin != GetCurrentTransactionId())
+			if (!TransactionIdEquals(oldtup->t_data->t_xmin,
+									 GetCurrentTransactionId()))
 				prev_event = NULL;
 			else
 				prev_event =
@@ -2212,7 +2213,8 @@ DeferredTriggerSaveEvent(ResultRelInfo *relinfo, int event,
 			 * possibly referenced key value has changed in this
 			 * transaction.
 			 */
-			if (oldtup->t_data->t_xmin != GetCurrentTransactionId())
+			if (!TransactionIdEquals(oldtup->t_data->t_xmin,
+									 GetCurrentTransactionId()))
 				break;
 
 			/*

@@ -76,7 +76,7 @@ XLogIsOwnerOfTuple(RelFileNode hnode, ItemPointer iptr,
 	htup = (HeapTupleHeader) PageGetItem(page, lp);
 
 	Assert(PageGetSUI(page) == ThisStartUpID);
-	if (htup->t_xmin != xid || htup->t_cmin != cid)
+	if (!TransactionIdEquals(htup->t_xmin, xid) || htup->t_cmin != cid)
 	{
 		UnlockAndReleaseBuffer(buffer);
 		return (-1);

@@ -41,7 +41,7 @@ GetNewTransactionId(TransactionId *xid)
 	 */
 	if (AMI_OVERRIDE)
 	{
-		*xid = AmiTransactionId;
+		*xid = BootstrapTransactionId;
 		return;
 	}
 
@@ -49,7 +49,7 @@ GetNewTransactionId(TransactionId *xid)
 
 	*xid = ShmemVariableCache->nextXid;
 
-	(ShmemVariableCache->nextXid)++;
+	TransactionIdAdvance(ShmemVariableCache->nextXid);
 
 	/*
 	 * Must set MyProc->xid before releasing XidGenLock.  This ensures that
@@ -89,7 +89,7 @@ ReadNewTransactionId(TransactionId *xid)
 	 */
 	if (AMI_OVERRIDE)
 	{
-		*xid = AmiTransactionId;
+		*xid = BootstrapTransactionId;
 		return;
 	}
 

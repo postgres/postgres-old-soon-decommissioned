@@ -441,20 +441,16 @@ heap_getsysattr(HeapTuple tup, int attnum, bool *isnull)
 			result = ObjectIdGetDatum(tup->t_data->t_oid);
 			break;
 		case MinTransactionIdAttributeNumber:
-			/* XXX should have a TransactionIdGetDatum macro */
-			result = (Datum) (tup->t_data->t_xmin);
+			result = TransactionIdGetDatum(tup->t_data->t_xmin);
 			break;
 		case MinCommandIdAttributeNumber:
-			/* XXX should have a CommandIdGetDatum macro */
-			result = (Datum) (tup->t_data->t_cmin);
+			result = CommandIdGetDatum(tup->t_data->t_cmin);
 			break;
 		case MaxTransactionIdAttributeNumber:
-			/* XXX should have a TransactionIdGetDatum macro */
-			result = (Datum) (tup->t_data->t_xmax);
+			result = TransactionIdGetDatum(tup->t_data->t_xmax);
 			break;
 		case MaxCommandIdAttributeNumber:
-			/* XXX should have a CommandIdGetDatum macro */
-			result = (Datum) (tup->t_data->t_cmax);
+			result = CommandIdGetDatum(tup->t_data->t_cmax);
 			break;
 		case TableOidAttributeNumber:
 			result = ObjectIdGetDatum(tup->t_tableOid);

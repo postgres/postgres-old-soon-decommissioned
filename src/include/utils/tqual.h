@@ -57,7 +57,7 @@ extern bool ReferentialIntegritySnapshotOverride;
  */
 #define HeapTupleSatisfiesVisibility(tuple, snapshot) \
 ( \
-	TransactionIdEquals((tuple)->t_data->t_xmax, AmiTransactionId) ? \
+	TransactionIdEquals((tuple)->t_data->t_xmax, BootstrapTransactionId) ? \
 		false \
 	: \
 	( \
