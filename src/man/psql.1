@@ -298,7 +298,8 @@ Establish a connection to a new database. The previous connection is closed.
 Perform a frontend copy.  This is an operation that runs a SQL COPY command,
 but instead of the backend reading or writing a specified file, and 
 consequently requiring special user privilege, psql reads or writes the 
-file and routes the data to or from the backend.
+file and routes the data to or from the backend.  The default TAB
+delimiter is used.
 .IP "\ed [\fItable\fR]"
 List tables in the database, or if
 .IR table

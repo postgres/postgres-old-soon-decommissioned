@@ -31,11 +31,10 @@
 #include "tcop/tcopprot.h"		/* for PostgresMain() */
 
 #define NOROOTEXEC "\
-\n\"root\" execution of the PostgreSQL backend is not permitted\n\n\
-It is highly recommended that the backend be started under it's own userid\n\
-to prevent possible system security compromise. This can be accomplished\n\
-by placing the following command in the PostgreSQL startup script.\n\n\
-echo \"postmaster >/var/log/pglog 2>&1 &\" | su - postgres\n\n"
+\n\"root\" execution of the PostgreSQL backend is not permitted.\n\n\
+The backend must be started under it's own userid to prevent\n\
+a possible system security compromise. See the INSTALL file for\n\
+more information on how to properly start the postmaster.\n\n"
 
 int
 main(int argc, char *argv[])

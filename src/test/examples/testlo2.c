@@ -164,7 +164,7 @@ exportFile(PGconn *conn, Oid lobjId, char *filename)
 	/*
 	 * open the file to be written to
 	 */
-	fd = open(filename, O_CREAT | O_WRONLY, 0666);
+	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0666);
 	if (fd < 0)
 	{							/* error */
 		fprintf(stderr, "can't open unix file\"%s\"",

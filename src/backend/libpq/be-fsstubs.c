@@ -344,7 +344,7 @@ lo_export(Oid lobjId, text *filename)
 	 */
 	oumask = umask((mode_t) 0);
 	StrNCpy(fnamebuf, VARDATA(filename), VARSIZE(filename) - VARHDRSZ + 1);
-	fd = open(fnamebuf, O_CREAT | O_WRONLY, 0666);
+	fd = open(fnamebuf, O_CREAT | O_WRONLY | O_TRUNC, 0666);
 	umask(oumask);
 	if (fd < 0)
 	{							/* error */
