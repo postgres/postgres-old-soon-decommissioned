@@ -794,6 +794,7 @@ PGAC_STRUCT_ADDRINFO
 
 AC_CHECK_TYPES([struct cmsgcred, struct fcred, struct sockcred], [], [],
 [#include <sys/param.h>
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/ucred.h>])
 

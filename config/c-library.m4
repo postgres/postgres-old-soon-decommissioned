@@ -104,7 +104,8 @@ AC_DEFUN([PGAC_STRUCT_SOCKADDR_UN],
 # it is missing then one could define it.
 AC_DEFUN([PGAC_STRUCT_SOCKADDR_STORAGE],
 [AC_CHECK_TYPES([struct sockaddr_storage], [], [],
-[#ifdef HAVE_SYS_SOCKET_H
+[#include <sys/types.h>
+#ifdef HAVE_SYS_SOCKET_H
 #include <sys/socket.h>
 #endif
 ])])# PGAC_STRUCT_SOCKADDR_STORAGE
