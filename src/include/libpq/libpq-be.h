@@ -131,8 +131,6 @@ typedef struct Port
 } Port;
 
 
-extern FILE *Pfout,
-		   *Pfin;
 extern ProtocolVersion FrontendProtocol;
 
 

@@ -67,11 +67,6 @@ elog(int lev, const char *fmt,...)
 	extern int	errno,
 				sys_nerr;
 
-#ifndef PG_STANDALONE
-	extern FILE *Pfout;
-
-#endif
-
 #ifdef USE_SYSLOG
 	int			log_level;
 
@@ -190,7 +185,7 @@ elog(int lev, const char *fmt,...)
 
 #ifndef PG_STANDALONE
 	/* Send IPC message to the front-end program */
-	if (Pfout != NULL && lev > DEBUG)
+	if (IsUnderPostmaster && lev > DEBUG)
 	{
 		/* notices are not exactly errors, handle it differently */
 		if (lev == NOTICE)
@@ -201,7 +196,7 @@ elog(int lev, const char *fmt,...)
 		pq_putstr(line + TIMESTAMP_SIZE);		/* don't show timestamps */
 		pq_flush();
 	}
-	if (Pfout == NULL)
+	if (!IsUnderPostmaster)
 	{
 
 		/*

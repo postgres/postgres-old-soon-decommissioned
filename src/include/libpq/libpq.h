@@ -258,6 +258,8 @@ extern void pq_flush(void);
 extern int	pq_getstr(char *s, int maxlen);
 extern int	PQgetline(char *s, int maxlen);
 extern int	PQputline(char *s);
+extern int      pq_getchar(void);
+extern int      pq_peekchar(void);
 extern int	pq_getnchar(char *s, int off, int maxlen);
 extern int	pq_getint(int b);
 extern void pq_putstr(char *s);
