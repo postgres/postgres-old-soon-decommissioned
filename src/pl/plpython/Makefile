@@ -12,25 +12,7 @@ SO_MAJOR_VERSION = 0
 SO_MINOR_VERSION = 0
 OBJS = plpython.o
 
-
 SHLIB_LINK += $(python_libspec)
-
-# If you have not patched the dynamic loader files as described in the
-# README you will have to link these in manually.  You may have to add
-# more modules.  If you have patched the loader, override
-# EXTRA_MODULES to be empty.
-
-# version 2.x
-ifneq (,$(findstring 2.,$(python_version)))
-EXTRA_MODULES = array cmath errno math md5 operator pcre sha time
-endif
-
-# version 1.x
-ifneq (,$(findstring 1.,$(python_version)))
-EXTRA_MODULES = arraymodule cmathmodule errnomodule mathmodule md5module operator shamodule timemodule
-endif
-
-SHLIB_LINK += $(addprefix $(python_dynlibdir)/, $(addsuffix $(DLSUFFIX), $(EXTRA_MODULES)))
 
 include $(top_srcdir)/src/Makefile.shlib
 
