@@ -48,6 +48,7 @@ void
 PrepareQuery(PrepareStmt *stmt)
 {
 	const char *commandTag;
+	Query	   *query;
 	List	   *query_list,
 			   *plan_list;
 
@@ -87,8 +88,18 @@ PrepareQuery(PrepareStmt *stmt)
 	 * the query.
 	 */
 
+	/*
+	 * Because the planner is not cool about not scribbling on its input,
+	 * we make a preliminary copy of the source querytree.  This prevents
+	 * problems in the case that the PREPARE is in a portal or plpgsql
+	 * function and is executed repeatedly.  (See also the same hack in
+	 * DECLARE CURSOR and EXPLAIN.)  XXX the planner really shouldn't
+	 * modify its input ... FIXME someday.
+	 */
+	query = copyObject(stmt->query);
+
 	/* Rewrite the query. The result could be 0, 1, or many queries. */
-	query_list = QueryRewrite(stmt->query);
+	query_list = QueryRewrite(query);
 
 	/* Generate plans for queries.	Snapshot is already set. */
 	plan_list = pg_plan_queries(query_list, false);
