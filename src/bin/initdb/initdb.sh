@@ -346,12 +346,15 @@ fi
 
 echo
 
+echo "vacuuming template1"
+echo "vacuum analyze" | postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
+	grep -v "^DEBUG:"
+
 echo "loading pg_description"
 echo "copy pg_description from '$TEMPLATE_DESCR'" | postgres -F -Q -D$PGDATA template1 > /dev/null
 echo "copy pg_description from '$GLOBAL_DESCR'" | postgres -F -Q -D$PGDATA template1 > /dev/null
-
-echo "vacuuming template1"
-echo "vacuum" | postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
+echo "vacuum analyze pg_description" | postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
 	grep -v "^DEBUG:"
+
 
 
