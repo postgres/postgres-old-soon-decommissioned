@@ -34,6 +34,7 @@ extern bool log_hostname;
 extern DLLIMPORT const char *debug_query_string;
 extern char *rendezvous_name;
 extern int	max_stack_depth;
+extern bool in_fatal_exit;
 
 /* GUC-configurable parameters */
 
