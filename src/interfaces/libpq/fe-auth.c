@@ -449,7 +449,9 @@ pg_krb5_sendauth(char *PQerrormsg, int sock,
 static int
 pg_local_sendauth(char *PQerrormsg, PGconn *conn)
 {
-#if defined(HAVE_STRUCT_CMSGCRED) || defined(HAVE_STRUCT_FCRED) || (defined(HAVE_STRUCT_SOCKCRED) && defined(LOCAL_CREDS))
+#if defined(HAVE_STRUCT_CMSGCRED) || defined(HAVE_STRUCT_FCRED) || \
+	(defined(HAVE_STRUCT_SOCKCRED) && defined(LOCAL_CREDS)) && \
+	!defined(HAVE_GETPEEREID) && !defined(SO_PEERCRED)
 	char		buf;
 	struct iovec iov;
 	struct msghdr msg;
