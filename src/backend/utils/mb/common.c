@@ -4,7 +4,16 @@
  * Tatsuo Ishii
  * $Id$ */
 
-#include <stdio.h>
+#include <stdlib.h>
+
+#ifdef WIN32
+#include "win32.h"
+#else
+#if !defined(NO_UNISTD_H)
+#include <unistd.h>
+#endif
+#endif
+
 #include <string.h>
 
 #include "mb/pg_wchar.h"

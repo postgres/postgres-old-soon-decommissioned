@@ -513,7 +513,17 @@ PQmblen(unsigned char *s)
 	return (pg_encoding_mblen(encoding, s));
 }
 
-#endif
+#else
+
+#ifdef WIN32
+int
+PQmblen(unsigned char *s)
+{
+}
+#endif	/* WIN32 */
+
+
+#endif	/* MULTIBYTE */
 
 static void
 do_field(PQprintOpt *po, PGresult *res,

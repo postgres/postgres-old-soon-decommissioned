@@ -163,7 +163,11 @@ bpchar(char *s, int32 len)
 #ifdef MULTIBYTE
 	/* truncate multi-byte string in a way not to break
 	   multi-byte boundary */
-	slen = pg_mbcliplen(VARDATA(s), rlen, rlen);
+	if (VARSIZE(s) > len) {
+		slen = pg_mbcliplen(VARDATA(s), VARSIZE(s)-VARHDRSZ, rlen);
+        } else {
+		slen = VARSIZE(s) - VARHDRSZ;
+        }
 #else
 	slen = VARSIZE(s) - VARHDRSZ;
 #endif
