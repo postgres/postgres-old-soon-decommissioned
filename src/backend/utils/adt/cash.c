@@ -125,7 +125,7 @@ cash_in(const char *str)
 	}
     }
 
-    while (isspace(*s) || *s == ')') s++;
+    while (isspace(*s) || *s == '0' || *s == ')') s++;
 
     if (*s != '\0')
 	elog(WARN,"Bad money external representation %s",str);
