@@ -20,9 +20,7 @@
 
 BufferDesc *BufferDescriptors;
 Block	   *BufferBlockPointers;
-
-int32	   *PrivateRefCount;	/* also used in freelist.c */
-bits8	   *BufferLocks;		/* flag bits showing locks I have set */
+int32	   *PrivateRefCount;
 
 /* statistics counters */
 long int	ReadBufferCount;
@@ -177,7 +175,6 @@ InitBufferPoolAccess(void)
 										   sizeof(*BufferBlockPointers));
 	PrivateRefCount = (int32 *) calloc(NBuffers,
 									   sizeof(*PrivateRefCount));
-	BufferLocks = (bits8 *) calloc(NBuffers, sizeof(*BufferLocks));
 
 	/*
 	 * Convert shmem offsets into addresses as seen by this process. This
