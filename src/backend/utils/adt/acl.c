@@ -50,7 +50,7 @@ getid(char *s, char *n)
     
     while (isspace(*s))
 	++s;
-    for (id = s, len = 0; isalnum(*s); ++len, ++s)
+    for (id = s, len = 0; isalnum(*s) || *s == '_'; ++len, ++s)
 	;
     if (len > sizeof(NameData))
 	elog(WARN, "getid: identifier cannot be >%d characters",
