@@ -55,6 +55,7 @@ WANTED_DIRS = \
 #		start-scripts	\ (does not have a makefile)
 #		tools		\ (does not have a makefile)
 #		xml		\ (non-standard makefile)
+#		xml2		\ (non-standard makefile)
 
 
 all install installdirs uninstall clean distclean maintainer-clean check installcheck:
