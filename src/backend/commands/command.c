@@ -283,7 +283,9 @@ PerformAddAttribute(char *relationName,
      * we can't add a not null attribute
      */
     if (colDef->is_not_null)
-        elog(WARN,"Can't add a not null attribute to a existent relation");
+    	elog(WARN,"Can't add a not null attribute to a existent relation");
+    if (colDef->defval)
+    	elog(WARN,"ADD ATTRIBUTE: DEFAULT is not implemented, yet");
     /*
      * if the first element in the 'schema' list is a "*" then we are
      * supposed to add this attribute to all classes that inherit from

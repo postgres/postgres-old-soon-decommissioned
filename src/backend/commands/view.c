@@ -77,6 +77,9 @@ DefineVirtualRelation(char *relname, List *tlist)
 	    def->colname = pstrdup(resname);
 
 	    def->typename = typename;
+	    
+	    def->is_not_null = false;
+	    def->defval = (char*) NULL;
 
 	    attrList = lappend(attrList, def);
 	}
@@ -95,6 +98,7 @@ DefineVirtualRelation(char *relname, List *tlist)
     createStmt.archiveType = ARCH_NONE;
     createStmt.location = -1;
     createStmt.archiveLoc = -1;
+    createStmt.constraints = NIL;
 
     /*
      * finally create the relation...
