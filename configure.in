@@ -835,7 +835,7 @@ else
   AC_CHECK_FUNCS([fpclass fp_class fp_class_d class], [break])
 fi
 
-AC_REPLACE_FUNCS([gethostname getrusage inet_aton random srandom strcasecmp strdup strerror strtol strtoul])
+AC_REPLACE_FUNCS([fseeko gethostname getrusage inet_aton random srandom strcasecmp strdup strerror strtol strtoul])
 
 # Solaris has a very slow qsort in certain cases.
 case $host_os in 
@@ -903,6 +903,9 @@ AC_CHECK_FUNCS(atexit, [],
                [AC_CHECK_FUNCS(on_exit, [],
                                [AC_MSG_ERROR([neither atexit() nor on_exit() found])])])
 
+case $host_os in bsdi*)
+ac_cv_func_fseeko=yes
+esac
 AC_FUNC_FSEEKO
 
 
