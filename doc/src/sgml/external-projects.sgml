@@ -186,15 +186,6 @@ $PostgreSQL$
    that is developed independently from the main projects.
   </para>
 
- </sect1>
-
- <sect1 id="administration-tools">
- <title>Administration Tools</title>
-
-  <indexterm>
-   <primary>administration tools</primary>
-  </indexterm>
-
   <para>
    There are several administration tools available for
    <productname>PostgreSQL</>. The most popular is
