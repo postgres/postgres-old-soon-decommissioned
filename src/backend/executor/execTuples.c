@@ -116,6 +116,8 @@
  *	and the TupleTableSlot node in execnodes.h.
  *
  */
+#include <string.h>
+
 #include "postgres.h"
 
 

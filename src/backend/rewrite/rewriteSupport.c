@@ -36,6 +36,7 @@
  *     given a rule oid, look it up and return the rule-event-qual and
  *     list of parsetrees for the rule (in parseTrees)
  */
+#ifdef NOT_USED
 static Node *
 RuleIdGetActionInfo(Oid ruleoid, bool *instead_flag, Query **parseTrees)
 {
@@ -84,6 +85,7 @@ RuleIdGetActionInfo(Oid ruleoid, bool *instead_flag, Query **parseTrees)
     *parseTrees = ruleparse;
     return rule_evqual;
 }
+#endif
 
 int
 IsDefinedRewriteRule(char *ruleName)

@@ -325,7 +325,7 @@ InitCommunication()
     char *getenv();	/* XXX style */
     char *postid;
     char *postport;
-    IPCKey	key;
+    IPCKey	key = 0;
     
     /* ----------------
      *	try and get the backend tag from POSTID

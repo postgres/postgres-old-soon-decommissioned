@@ -12,7 +12,7 @@
  *-------------------------------------------------------------------------
  */
 #include <string.h>
-#include "c.h"
+#include "postgres.h"
 #include "miscadmin.h"
 #include "bootstrap/bootstrap.h"	/* for BootstrapMain() */
 #include "tcop/tcopprot.h"		/* for PostgresMain() */

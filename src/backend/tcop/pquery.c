@@ -11,6 +11,8 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <string.h>
+
 #include "postgres.h"
 
 #include "tcop/tcopdebug.h"
@@ -209,7 +211,7 @@ ProcessQueryDesc(QueryDesc *queryDesc)
     
     bool	isRetrieveIntoPortal;
     bool	isRetrieveIntoRelation;
-    char*	intoName;
+    char*	intoName = NULL;
     CommandDest dest;
     
     /* ----------------

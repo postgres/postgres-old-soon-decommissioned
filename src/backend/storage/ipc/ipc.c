@@ -27,6 +27,7 @@
 #include <sys/types.h>
 #include <sys/file.h>
 #include <stdio.h>
+#include <string.h>
 #include <errno.h>
 
 /* XXX - the following  dependency should be moved into the defaults.mk file */

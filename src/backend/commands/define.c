@@ -136,8 +136,9 @@ compute_full_attributes(const List *parameters, int32 *byte_pct_p,
             */
             *byte_pct_p = atoi(param->val);
         } else if (strcasecmp(param->name, "perbyte_cpu") == 0) {
+			count = 0;
             if (sscanf(param->val, "%d", perbyte_cpu_p) == 0) {
-                for (count = 0, ptr = param->val; *ptr != '\0'; ptr++) 
+                for (ptr = param->val; *ptr != '\0'; ptr++) 
                     if (*ptr == '!') count++;
             }
             *perbyte_cpu_p = (int) pow(10.0, (double) count);

@@ -465,6 +465,7 @@ AtEOXact_portals()
  *	PortalDump
  * ----------------
  */
+#ifdef NOT_USED
 static void
 PortalDump(Portal *thisP)
 {
@@ -473,11 +474,13 @@ PortalDump(Portal *thisP)
     PortalVariableMemoryDump(PortalGetVariableMemory(*thisP));
     PortalHeapMemoryDump(PortalGetHeapMemory(*thisP));
 }
+#endif
 
 /* ----------------
  *	DumpPortals
  * ----------------
  */
+#ifdef NOT_USED
 static void
 DumpPortals()
 {
@@ -485,7 +488,8 @@ DumpPortals()
     
     HashTableWalk(PortalHashTable, PortalDump, 0);
 }
-
+#endif
+ 
 /* ----------------------------------------------------------------
  *		   public portal interface functions
  * ----------------------------------------------------------------

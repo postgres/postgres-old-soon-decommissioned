@@ -153,7 +153,7 @@ check_permissions(char *command,
 {
     Relation dbrel;
     HeapTuple dbtup, utup;
-    Oid dbowner;
+    Oid dbowner = (Oid)0;
     char use_createdb;
     bool dbfound;
     bool use_super;

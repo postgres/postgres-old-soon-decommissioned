@@ -113,7 +113,7 @@ fmgr_c(func_ptr user_fn,
 void
 fmgr_info(Oid procedureId, func_ptr *function, int *nargs)
 {
-    func_ptr		user_fn;
+    func_ptr		user_fn = NULL;
     FmgrCall		*fcp;
     HeapTuple		procedureTuple;
     FormData_pg_proc	*procedureStruct;

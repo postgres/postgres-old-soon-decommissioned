@@ -85,5 +85,6 @@ extern void AllocateFile(void);
 extern void FreeFile(void);
 extern void closeAllVfds(void);
 extern void closeOneVfd(void);
+extern int pg_fsync(int fd);
 
 #endif	/* FD_H */

@@ -26,7 +26,7 @@ INCLUDE_OPT = -I.. \
               -I../include \
               -I../../include
 
-CFLAGS += $(INCLUDE_OPT)
+CFLAGS += $(INCLUDE_OPT) -Wno-error
 
 BOOTYACCS = bootstrap_tokens.h bootparse.c
 

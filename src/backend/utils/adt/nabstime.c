@@ -589,8 +589,9 @@ qmktime(struct tm *tp)
      * correction
      */
     if (day > nmdays[mon])
-	if (mon != 2 || year % 4 == 0 &&
-	    (year % 100 != 0 || year % 400 == 0) && day > 29)
+	if (mon != 2 ||
+	    (year % 4 == 0 &&
+	    ((year % 100 != 0 || year % 400 == 0)) && day > 29))
 	    return -1;	/* day too large for month */
     
     /* split year into century and year-of-century */

@@ -25,6 +25,7 @@
 #include "storage/shmem.h"
 #include "storage/spin.h"
 
+#include "utils/dynahash.h"
 #include "utils/hsearch.h"
 #include "utils/rel.h"
 #include "utils/memutils.h"

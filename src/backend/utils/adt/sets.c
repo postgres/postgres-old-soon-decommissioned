@@ -44,7 +44,7 @@ SetDefine(char *querystr, char *typename)
     char *procname = GENERICSETNAME;
     char *fileName = "-";
     char realprocname[16];
-    HeapTuple tup, newtup;
+    HeapTuple tup, newtup = NULL;
     Form_pg_proc proc;
     Relation procrel;
     int i;

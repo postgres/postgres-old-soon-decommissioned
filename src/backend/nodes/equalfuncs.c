@@ -570,7 +570,7 @@ _equalValue(Value *a, Value *b)
 bool
 equal(void *a, void *b)
 {
-    bool retval;
+    bool retval=false;
     
     if (a == b)
 	return(true);

@@ -133,7 +133,7 @@ byteaout(struct varlena	*vlena)
     vp = vlena->vl_dat;
     for (i = vlena->vl_len - sizeof(int32); i != 0; i--)	/* varlena? */
 	if (*vp == '\\') {
-	    *vp++;
+	    vp++;
 	    *rp++ = '\\';
 	    *rp++ = '\\';
 	} else if (isascii(*vp) && isprint(*vp))

@@ -981,6 +981,7 @@ indexable_joinclauses(Rel *rel, Rel *index, List *joininfo_list)
  *    the list of clause info contains join clauses and restriction clauses.
  *    This routine returns the restriction clauses only.
  */
+#ifdef NOT_USED
 static List *
 extract_restrict_clauses(List *clausegroup)
 {
@@ -996,6 +997,7 @@ extract_restrict_clauses(List *clausegroup)
     }
     return restrict_cls;
 }
+#endif
 
 /*    
  * index-innerjoin--

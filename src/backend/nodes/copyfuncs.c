@@ -39,7 +39,7 @@ List *
 listCopy(List *list)
 {
     List *newlist=NIL;
-    List *l, *nl;
+    List *l, *nl=NIL;
 
     foreach(l, list) {
 	if (newlist==NIL) {
@@ -1653,7 +1653,7 @@ copyObject(void *from)
     case T_List:
 	{
 	    List *list=from, *l;
-	    List *newlist = NIL, *nl;
+	    List *newlist = NIL, *nl=NIL;
 	    foreach(l, list) {
 		if (newlist==NIL) {
 		    newlist = nl = lcons(copyObject(lfirst(l)),NIL);

@@ -11,13 +11,16 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <unistd.h>
 #include <stdio.h>		/* for sprintf() */
+#include <string.h>
 #include <sys/file.h>
 
 #include "postgres.h"
 #include "miscadmin.h"  /* for DataDir */
 
 #include "storage/block.h"
+#include "storage/fd.h"
 #include "storage/smgr.h"	/* where the declarations go */
 #include "storage/fd.h"
 #include "utils/mcxt.h"

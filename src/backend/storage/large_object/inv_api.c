@@ -13,7 +13,9 @@
  *-------------------------------------------------------------------------
  */
 #include <stdio.h>		/* for sprintf() */
+#include <string.h>
 #include <sys/file.h>
+
 #include "postgres.h"
 #include "miscadmin.h"
 #include "libpq/libpq-fs.h"
@@ -32,9 +34,12 @@
 #include "storage/itemptr.h"
 #include "storage/bufpage.h"
 #include "storage/bufmgr.h"
+#include "storage/smgr.h"
 #include "utils/rel.h"
+#include "utils/relcache.h"
 #include "utils/palloc.h"
 #include "storage/large_object.h"
+#include "storage/lmgr.h"
 #include "utils/syscache.h"
 #include "utils/builtins.h"	/* for namestrcpy() */
 #include "catalog/heap.h"

@@ -32,12 +32,16 @@
  *-------------------------------------------------------------------------
  */
 #include <stdio.h>		/* for sprintf() */
+#include <string.h>
+
 #include "postgres.h"
 #include "storage/shmem.h"
 #include "storage/spin.h"
 #include "storage/proc.h"
 #include "storage/lock.h"
+#include "utils/dynahash.h"
 #include "utils/hsearch.h"
+#include "utils/memutils.h"
 #include "utils/palloc.h"
 #include "access/xact.h"
 

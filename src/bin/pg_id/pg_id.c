@@ -46,9 +46,9 @@ main(int argc, char **argv)
 	    printf("NOUSER\n");
 	    exit(1);
 	}
-	printf("%d\n", pw->pw_uid);
+	printf("%ld\n", (long)pw->pw_uid);
     } else {
-	printf("%d\n", getuid());
+	printf("%ld\n", (long)getuid());
     }
 
     exit(0);

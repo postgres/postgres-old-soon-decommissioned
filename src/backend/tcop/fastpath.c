@@ -57,6 +57,8 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <string.h>
+
 #include "postgres.h"
 
 #include "tcop/tcopdebug.h"

@@ -21,6 +21,7 @@
 
 #include "access/heapam.h"
 #include "catalog/catalog.h"
+#include "access/printtup.h"
 #include "executor/executor.h"
 #include "executor/nodeGroup.h"
 

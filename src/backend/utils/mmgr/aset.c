@@ -368,7 +368,7 @@ AllocPointerGetNext(AllocPointer pointer)
 void
 AllocPointerDump(AllocPointer pointer)
 {
-    printf("\t%-10d@ %0#x\n", ((long*)pointer)[-1], pointer); /* XXX */
+    printf("\t%-10ld@ %0#lx\n", ((long*)pointer)[-1], (long)pointer); /* XXX */
 }
 
 /*

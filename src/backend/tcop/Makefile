@@ -14,7 +14,7 @@ include ../../Makefile.global
 INCLUDE_OPT = -I../port/$(PORTNAME) \
               -I../../include
 
-CFLAGS+=$(INCLUDE_OPT)
+CFLAGS+=$(INCLUDE_OPT) -Wno-error
 
 OBJS = aclchk.o dest.o fastpath.o postgres.o pquery.o utility.o
 

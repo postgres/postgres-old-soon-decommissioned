@@ -95,7 +95,7 @@ prune_rel_paths(List *rel_list)
 {
     List *x = NIL;
     List *y = NIL;
-    Path *path;
+    Path *path = NULL;
     Rel *rel = (Rel*)NULL;
     JoinPath *cheapest = (JoinPath*)NULL;
     

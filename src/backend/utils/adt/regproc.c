@@ -36,7 +36,7 @@ int32 regprocin(char *proname)
     HeapScanDesc	procscan;
     HeapTuple	proctup;
     ScanKeyData	       key;		
-    RegProcedure	result;
+    RegProcedure	result = (Oid)0;
     bool		isnull;
     
     if (proname == NULL)

@@ -28,7 +28,7 @@ char *
 filename_in(char *file)
 {
     char *str, *getenv();
-    int ind;
+    int ind = 0;
     
     /*
      * XXX - HACK CITY --- REDO

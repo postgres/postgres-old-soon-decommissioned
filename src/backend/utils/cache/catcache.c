@@ -744,7 +744,7 @@ SearchSysCache(struct catcache *cache,
     CatCTup	*nct; 
     CatCTup	*nct2; 
     Dlelem      *elt;
-    HeapTuple		ntp;
+    HeapTuple		ntp = 0;
     Buffer		buffer;
     
     Relation		relation;

@@ -82,4 +82,7 @@ extern int mmcommit(void);
 extern int mmabort(void);
 extern int MMShmemSize(void);
 
+/* smgrtype.c */
+char *smgrout(int2 i);
+
 #endif	/* SMGR_H */

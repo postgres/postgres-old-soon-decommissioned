@@ -51,7 +51,7 @@ datumGetSize(Datum value, Oid type, bool byVal, Size len)
 {
     
     struct varlena *s;
-    Size size;
+    Size size = 0;
     
     if (byVal) {
 	if (len >= 0 && len <= sizeof(Datum)) {

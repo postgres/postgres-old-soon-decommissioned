@@ -181,7 +181,7 @@ pq_flush()
 int
 pq_getstr(char *s, int maxlen)
 {
-    int	c;
+    int	c = '\0';
     
     if (Pfin == (FILE *) NULL) {
 /*	elog(DEBUG, "Input descriptor is null"); */
@@ -266,7 +266,7 @@ PQputline(char *s)
 int
 pq_getnchar(char *s, int off, int maxlen)
 {
-    int	c;
+    int	c = '\0';
     
     if (Pfin == (FILE *) NULL) {
 /*	elog(DEBUG, "Input descriptor is null"); */

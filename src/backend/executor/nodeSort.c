@@ -14,10 +14,13 @@
 #include "postgres.h"
 
 #include "executor/executor.h"
+#include "executor/execdebug.h"
 #include "executor/nodeSort.h"
+#include "access/heapam.h"
 #include "utils/palloc.h"
 #include "utils/psort.h"
 #include "catalog/catalog.h"
+#include "catalog/heap.h"
 #include "storage/bufmgr.h"
 #include "optimizer/internal.h" /* for _TEMP_RELATION_ID_ */
 

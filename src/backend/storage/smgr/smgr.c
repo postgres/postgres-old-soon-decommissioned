@@ -83,7 +83,6 @@ int
 smgrinit()
 {
     int i;
-    extern char *smgrout();
 
     for (i = 0; i < NSmgr; i++) {
 	if (smgrsw[i].smgr_init) {
@@ -102,7 +101,6 @@ void
 smgrshutdown(int dummy)
 {
     int i;
-    extern char *smgrout();
 
     for (i = 0; i < NSmgr; i++) {
 	if (smgrsw[i].smgr_shutdown) {
@@ -331,7 +329,6 @@ int
 smgrcommit()
 {
     int i;
-    extern char *smgrout();
 
     for (i = 0; i < NSmgr; i++) {
 	if (smgrsw[i].smgr_commit) {
@@ -347,7 +344,6 @@ int
 smgrabort()
 {
     int i;
-    extern char *smgrout();
 
     for (i = 0; i < NSmgr; i++) {
 	if (smgrsw[i].smgr_abort) {

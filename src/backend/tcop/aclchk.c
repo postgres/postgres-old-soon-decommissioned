@@ -22,12 +22,14 @@
 #include "access/htup.h"
 #include "access/tupmacs.h"
 #include "utils/builtins.h"
+#include "utils/memutils.h"
 #include "utils/palloc.h"
 #include "catalog/indexing.h"
 #include "catalog/catalog.h"
 #include "catalog/catname.h"
 #include "catalog/pg_group.h"
 #include "catalog/pg_operator.h"
+#include "catalog/pg_proc.h"
 #include "catalog/pg_user.h"
 #include "utils/syscache.h"
 #include "parser/catalog_utils.h"
@@ -189,7 +191,7 @@ char*
 get_groname(AclId grosysid)
 {
     HeapTuple htp;
-    char *name;
+    char *name = NULL;
 
     htp = SearchSysCacheTuple(GROSYSID, PointerGetDatum(grosysid),
 			      0,0,0);
@@ -460,7 +462,7 @@ pg_ownercheck(char *usename,
 	      int cacheid)
 {
     HeapTuple htp;
-    AclId user_id, owner_id;
+    AclId user_id, owner_id = 0;
 
     htp = SearchSysCacheTuple(USENAME, PointerGetDatum(usename), 
 			      0,0,0);

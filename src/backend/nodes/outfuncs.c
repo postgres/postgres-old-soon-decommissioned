@@ -548,7 +548,7 @@ static void
 _outExpr(StringInfo str, Expr *node)
 {
     char buf[500];
-    char *opstr;
+    char *opstr = NULL;
     
     sprintf(buf, "EXPR");
     appendStringInfo(str,buf);

@@ -11,6 +11,10 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <string.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+
 #include "postgres.h"
 
 #include "storage/ipc.h"
@@ -21,11 +25,6 @@
 #include "storage/smgr.h"
 #include "storage/lock.h"
 #include "miscadmin.h"		/* for DebugLvl */
-
-#if defined(sparc_solaris)
-#include <string.h>
-#include <sys/ipc.h>
-#endif
 
 /*
  * SystemPortAddressCreateMemoryKey --

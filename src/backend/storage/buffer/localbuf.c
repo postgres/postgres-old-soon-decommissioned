@@ -21,6 +21,7 @@
  */
 #include <sys/file.h>
 #include <stdio.h>
+#include <string.h>
 #include <math.h>
 #include <signal.h>
 
@@ -41,6 +42,7 @@
 #include "utils/builtins.h"
 #include "utils/hsearch.h"
 #include "utils/memutils.h"
+#include "utils/relcache.h"
 #include "executor/execdebug.h"	/* for NDirectFileRead */
 #include "catalog/catalog.h"
 

@@ -14,10 +14,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <signal.h>
+#include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include "postgres.h"
 #include "libpq-fe.h"
 #include "stringutils.h"
 
@@ -800,7 +802,7 @@ do_edit(const char *filename_arg, char *query, int *retcode_p) {
         fname=(char *)filename_arg;
         error=false;
     } else {
-        sprintf(tmp, "/tmp/psql.%d.%d", geteuid(), getpid());
+        sprintf(tmp, "/tmp/psql.%ld.%ld", (long)geteuid(), (long)getpid());
         fname=tmp;
         unlink(tmp);
         if (ql > 0) {

@@ -1423,7 +1423,7 @@ FindDelimiter(char *typename)
 void
 op_error(char *op, int arg1, int arg2)
 {
-    Type tp1, tp2;
+    Type tp1 = NULL, tp2 = NULL;
 
     if (check_typeid(arg1)) {
 	tp1 = get_id_type(arg1);

@@ -15,6 +15,8 @@
 #include "postgres.h"
 
 #include "utils/palloc.h"
+#include "access/heaptuple.h"
+#include "access/heapam.h"
 #include "executor/executor.h"
 #include "nodes/relation.h"
 #include "optimizer/tlist.h" /* for MakeTLE */

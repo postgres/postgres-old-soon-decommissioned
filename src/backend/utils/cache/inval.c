@@ -449,7 +449,7 @@ RelationInvalidateRelationCache(Relation relation,
 				void (*function)())
 {
     Oid	relationId;
-    Oid	objectId;
+    Oid	objectId = (Oid)0;
     
     /* ----------------
      *	get the relation object id

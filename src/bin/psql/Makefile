@@ -65,10 +65,10 @@ endif
 
 all: psql
 
-psql: $(OBJS) $(LIBPQDIR)/libpq.a
-	$(CC) $(LDFLAGS) -o psql -L$(LIBPQDIR) $(OBJS) -lpq $(LD_ADD)
+psql: $(OBJS) $(LIBPQDIR)/obj/libpq.a
+	$(CC) $(LDFLAGS) -o psql -L$(LIBPQDIR)/obj $(OBJS) -lpq $(LD_ADD)
 
-$(srcdir)/libpq/libpq.a:
+$(srcdir)/libpq/obj/libpq.a:
 	$(MAKE) -C $(LIBPQDIR) libpq.a
 
 install:

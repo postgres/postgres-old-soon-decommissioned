@@ -1557,7 +1557,6 @@ dumpTuples(PGresult *res, FILE *fout, int* attrmap)
 void
 setMaxOid(FILE *fout)
 {
-    char query[255];
     PGresult *res;
     Oid max_oid;
     
@@ -1592,7 +1591,7 @@ setMaxOid(FILE *fout)
     	    g_comment_start,  max_oid, g_comment_end);
     fprintf(fout, "CREATE TABLE pgdump_oid (dummy int4);\n");
     fprintf(fout, "COPY pgdump_oid WITH OIDS FROM stdin;\n");
-    fprintf(fout, "%-ld\t0\n", max_oid);
+    fprintf(fout, "%-d\t0\n", max_oid);
     fprintf(fout, "\\.\n");
     fprintf(fout, "DROP TABLE pgdump_oid;\n");
 }    	

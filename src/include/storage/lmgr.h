@@ -78,4 +78,7 @@ extern bool SingleLockReln(LockInfo linfo, LOCKT lockt, int action);
 extern bool SingleLockPage(LockInfo linfo, ItemPointer tidPtr,
 			   LOCKT lockt, int action);
 
+/* proc.c */
+extern void InitProcGlobal(IPCKey key);
+
 #endif	/* LMGR_H */

@@ -425,7 +425,7 @@ ShmemPIDDestroy(int pid)
 {
     BindingEnt *	result,item;
     bool	found;
-    SHMEM_OFFSET  location;
+    SHMEM_OFFSET  location = 0;
     
     Assert(BindingTable);
     
