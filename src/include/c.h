@@ -743,6 +743,7 @@ extern char *form(char *fmt, ...);
 
 #if defined(sunos4)
 #define	memmove(d, s, l)	bcopy(s, d, l)
+#include <unistd.h>
 #endif
 
 /* These are for things that are one way on Unix and another on NT */
