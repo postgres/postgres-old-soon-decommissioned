@@ -16,8 +16,6 @@ include $(SRCDIR)/Makefile.global
 
 
 PERL_CLEAN := DO_NOTHING
-install: PERL_CLEAN := clean
-
 
 .DEFAULT all install clean dep depend distclean:
 	$(MAKE) -C libpq $@
