@@ -580,6 +580,7 @@ endif
 MK_NO_LORDER= true
 
 CC= gcc
+YACC=	bison -y
 
 # use the regex library
 USE_REGEX= 1
