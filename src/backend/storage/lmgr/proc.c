@@ -451,7 +451,7 @@ ProcSleep(PROC_QUEUE *waitQueue,
 		  int prio,
 		  LOCK *lock)
 {
-	int			i = 0;
+	int			i;
 	PROC	   *proc;
 	struct itimerval timeval,
 				dummy;
@@ -481,7 +481,8 @@ ProcSleep(PROC_QUEUE *waitQueue,
 	proc = (PROC *) MAKE_PTR(waitQueue->links.prev);
 
 	/* If we are a reader, and they are writers, skip past them */
-	while (i++ < waitQueue->size && proc->prio > prio)
+
+	for (i = 0; i < waitQueue->size && proc->prio > prio; i++)
 		proc = (PROC *) MAKE_PTR(proc->links.prev);
 
 	/* The rest of the queue is FIFO, with readers first, writers last */
