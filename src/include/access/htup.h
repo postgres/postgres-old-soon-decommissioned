@@ -241,7 +241,7 @@ do { \
 #define XLOG_HEAP_INIT_PAGE 0x80
 
 /*
- * All what we need to find changed tuple (18 bytes)
+ * All what we need to find changed tuple (14 bytes)
  *
  * NB: on most machines, sizeof(xl_heaptid) will include some trailing pad
  * bytes for alignment.  We don't want to store the pad space in the XLOG,
