@@ -11,8 +11,8 @@
 */
 
 
-#include "windows.h"
-#include "pthread.h"
+#include <windows.h>
+#include <pthread.h>
 
 HANDLE
 pthread_self()

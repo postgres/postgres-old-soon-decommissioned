@@ -59,7 +59,7 @@ main(int argc, char *argv[])
 #else
 
 /* This must be down here because this is the code that uses threads. */
-#include "pthread.h"
+#include <pthread.h>
 
 void		func_call_1(void);
 void		func_call_2(void);
