@@ -65,7 +65,7 @@ SetRelationRuleStatus(Oid relationId, bool relHasRules,
 							   ObjectIdGetDatum(relationId),
 							   0, 0, 0);
 	if (!HeapTupleIsValid(tuple))
-		elog(ERROR, "SetRelationRuleStatus: cache lookup failed for relation %u", relationId);
+		elog(ERROR, "cache lookup failed for relation %u", relationId);
 	classForm = (Form_pg_class) GETSTRUCT(tuple);
 
 	if (classForm->relhasrules != relHasRules ||

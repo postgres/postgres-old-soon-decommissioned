@@ -359,7 +359,7 @@ make_subplan(SubLink *slink, List *lefthand, bool isTopQual)
 		Assert(!te->resdom->resjunk);
 		arraytype = get_array_type(te->resdom->restype);
 		if (!OidIsValid(arraytype))
-			elog(ERROR, "Cannot find array type for datatype %s",
+			elog(ERROR, "could not find array type for datatype %s",
 				 format_type_be(te->resdom->restype));
 		prm = generate_new_param(arraytype, -1);
 		node->setParam = makeListi1(prm->paramid);
@@ -1012,8 +1012,8 @@ finalize_plan(Plan *plan, List *rtable,
 			break;
 
 		default:
-			elog(ERROR, "finalize_plan: node %d unsupported",
-				 nodeTag(plan));
+			elog(ERROR, "unrecognized node type: %d",
+				 (int) nodeTag(plan));
 	}
 
 	/* Process left and right child plans, if any */
@@ -1032,7 +1032,7 @@ finalize_plan(Plan *plan, List *rtable,
 	/* Now we have all the paramids */
 
 	if (!bms_is_subset(context.paramids, valid_params))
-		elog(ERROR, "finalize_plan: plan shouldn't reference subplan's variable");
+		elog(ERROR, "plan should not reference subplan's variable");
 
 	plan->extParam = bms_intersect(context.paramids, outer_params);
 	plan->allParam = context.paramids;

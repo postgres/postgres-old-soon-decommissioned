@@ -38,7 +38,7 @@ avg_pool(Pool *pool)
 	double		cumulative = 0.0;
 
 	if (pool->size <= 0)
-		elog(ERROR, "avg_pool: pool_size of zero");
+		elog(ERROR, "pool_size is zero");
 
 	/*
 	 * Since the pool may contain multiple occurrences of DBL_MAX, divide

@@ -183,7 +183,7 @@ get_sortgroupclause_tle(SortClause *sortClause,
 			return tle;
 	}
 
-	elog(ERROR, "get_sortgroupclause_tle: ORDER/GROUP BY expression not found in targetlist");
+	elog(ERROR, "ORDER/GROUP BY expression not found in targetlist");
 	return NULL;				/* keep compiler quiet */
 }
 

@@ -1089,7 +1089,7 @@ make_pathkeys_for_mergeclauses(Query *root,
 		}
 		else
 		{
-			elog(ERROR, "make_pathkeys_for_mergeclauses: can't identify which side of mergeclause to use");
+			elog(ERROR, "could not identify which side of mergeclause to use");
 			pathkey = NIL;	/* keep compiler quiet */
 		}
 

@@ -54,7 +54,10 @@ RemoveRewriteRule(Oid owningRel, const char *ruleName, DropBehavior behavior)
 	 * complain if no rule with such name exists
 	 */
 	if (!HeapTupleIsValid(tuple))
-		elog(ERROR, "Rule \"%s\" not found", ruleName);
+		ereport(ERROR,
+				(errcode(ERRCODE_UNDEFINED_OBJECT),
+				 errmsg("rule \"%s\" for relation \"%s\" does not exist",
+						ruleName, get_rel_name(owningRel))));
 
 	/*
 	 * Verify user has appropriate permissions.
@@ -110,8 +113,7 @@ RemoveRewriteRuleById(Oid ruleOid)
 	tuple = systable_getnext(rcscan);
 
 	if (!HeapTupleIsValid(tuple))
-		elog(ERROR, "RemoveRewriteRuleById: Rule %u does not exist",
-			 ruleOid);
+		elog(ERROR, "could not find tuple for rule %u", ruleOid);
 
 	/*
 	 * We had better grab AccessExclusiveLock so that we know no other

@@ -154,7 +154,7 @@ query_planner(Query *root, List *tlist, double tuple_fraction,
 	final_rel = make_one_rel(root);
 
 	if (!final_rel || !final_rel->cheapest_total_path)
-		elog(ERROR, "query_planner: failed to construct a relation");
+		elog(ERROR, "failed to construct the join relation");
 
 	/*
 	 * Now that we have an estimate of the final rel's size, we can

@@ -133,7 +133,7 @@ set_cheapest(RelOptInfo *parent_rel)
 	Assert(IsA(parent_rel, RelOptInfo));
 
 	if (pathlist == NIL)
-		elog(ERROR, "Unable to devise a query plan for the given query");
+		elog(ERROR, "could not devise a query plan for the given query");
 
 	cheapest_startup_path = cheapest_total_path = (Path *) lfirst(pathlist);
 

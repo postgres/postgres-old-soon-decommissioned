@@ -1513,7 +1513,7 @@ cost_qual_eval_walker(Node *node, QualCost *total)
 	else if (IsA(node, SubLink))
 	{
 		/* This routine should not be applied to un-planned expressions */
-		elog(ERROR, "cost_qual_eval: can't handle unplanned sub-select");
+		elog(ERROR, "cannot handle unplanned sub-select");
 	}
 	else if (IsA(node, SubPlan))
 	{
@@ -1805,8 +1805,7 @@ set_joinrel_size_estimates(Query *root, RelOptInfo *rel,
 				temp = inner_rel->rows;
 			break;
 		default:
-			elog(ERROR, "set_joinrel_size_estimates: unsupported join type %d",
-				 (int) jointype);
+			elog(ERROR, "unrecognized join type: %d", (int) jointype);
 			temp = 0;			/* keep compiler quiet */
 			break;
 	}
