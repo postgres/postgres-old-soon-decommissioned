@@ -389,7 +389,7 @@ pgarch_ArchiverCopyLoop(void)
 				if (++failures >= NUM_ARCHIVE_RETRIES)
 				{
 					ereport(WARNING,
-							(errmsg("transaction log file \"%s\" could not be archived",
+							(errmsg("transaction log file \"%s\" could not be archived: too many failures",
 									xlog)));
 					return;		/* give up archiving for now */
 				}

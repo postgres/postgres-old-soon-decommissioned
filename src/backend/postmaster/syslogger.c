@@ -416,7 +416,7 @@ SysLogger_Start(void)
 		if (!CreatePipe(&syslogPipe[0], &syslogPipe[1], &sa, 32768))
 			ereport(FATAL,
 					(errcode_for_file_access(),
-				  (errmsg("could not create pipe for syslogging: %m"))));
+				  (errmsg("could not create pipe for syslog: %m"))));
 	}
 #endif
 
