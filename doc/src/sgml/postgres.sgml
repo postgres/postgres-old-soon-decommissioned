@@ -6,6 +6,10 @@ Other subset docs should be copied and shrunk from here.
 thomas 1998-02-23
 
 $Log: postgres.sgml,v $
+Revision 1.23  1999/05/22 02:27:24  thomas
+Finish initial markup of cvs.sgml, and include it in the programmer's guide
+ and the integrated doc. Clean up other markup.
+
 Revision 1.22  1999/05/20 05:39:27  thomas
 Rearrange and consolidate the Admin Guide.
 Add reference pages for utilities and remove standalone chapters for same.
@@ -96,6 +100,7 @@ Move SQL reference pages up into the User's Guide.
 <!entity inherit  SYSTEM "inherit.sgml">
 <!entity keys     SYSTEM "keys.sgml">
 <!entity manage   SYSTEM "manage.sgml">
+<!entity mvcc     SYSTEM "mvcc.sgml">
 <!entity oper     SYSTEM "oper.sgml">
 <!entity pgaccess SYSTEM "pgaccess.sgml">
 <!entity psql     SYSTEM "psql.sgml">
@@ -121,6 +126,7 @@ Move SQL reference pages up into the User's Guide.
 <!entity release  SYSTEM "release.sgml">
 <!entity security SYSTEM "security.sgml">
 <!entity start-ag SYSTEM "start-ag.sgml">
+<!entity trouble  SYSTEM "trouble.sgml">
 
 <!-- programmer's guide -->
 <!entity intro-pg SYSTEM "intro-pg.sgml">
@@ -152,6 +158,7 @@ Move SQL reference pages up into the User's Guide.
 <!entity bki      SYSTEM "bki.sgml">
 <!entity compiler SYSTEM "compiler.sgml">
 <!entity contacts SYSTEM "contacts.sgml">
+<!entity cvs      SYSTEM "cvs.sgml">
 <!entity docguide SYSTEM "docguide.sgml">
 <!entity geqo     SYSTEM "geqo.sgml">
 <!entity options  SYSTEM "pg_options.sgml">
@@ -189,12 +196,12 @@ Move SQL reference pages up into the User's Guide.
     <AuthorInitials>TGL</AuthorInitials>
 -->
 
-   <Date>(last updated 1998-05-19)</Date>
+   <Date>(last updated 1999-06-01)</Date>
   </BookBiblio>
 
   <LegalNotice>
    <Para>
-    <ProductName>PostgreSQL</ProductName> is copyright (C) 1998 
+    <ProductName>PostgreSQL</ProductName> is &copy; 1998-9 
     by the Postgres Global Development Group.
    </Para>
   </LegalNotice>
@@ -251,19 +258,20 @@ Your name here...
    </Para>
   </PartIntro>
 
-   &sql;
-   &syntax;
-   &datatype;
-   &oper;
-   &func;
-   &typeconv;
-   &keys;
-   &array;
-   &inherit;
-   &environ;
-   &manage;
-   &storage;
-   &commands;
+  &sql;
+  &syntax;
+  &datatype;
+  &oper;
+  &func;
+  &typeconv;
+  &keys;
+  &array;
+  &inherit;
+  &mvcc;
+  &environ;
+  &manage;
+  &storage;
+  &commands;
  </Part>
 
  <part Id="part-admin">
@@ -281,6 +289,7 @@ Your name here...
    &runtime;
    &security;
    &start-ag;
+   &trouble;
    &recovery;
    &regress;
    &release;
@@ -352,8 +361,10 @@ Your name here...
     Additional related information.
    </Para>
   </PartIntro>
-   &datetime;
-   &docguide;
+
+  &datetime;
+  &cvs;
+  &docguide;
 <!--
    &contacts;
 -->

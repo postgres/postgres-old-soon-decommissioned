@@ -2,11 +2,15 @@
 $Header$
 Date/time details
 
-$Log$
+$Log: datetime.sgml,v $
+Revision 2.2  1999/05/22 02:27:23  thomas
+Finish initial markup of cvs.sgml, and include it in the programmer's guide
+ and the integrated doc. Clean up other markup.
+
 -->
 
-<appendix label="UG1" id="datetime-append">
- <title>Date/Time Support</title>
+<appendix label="UG1" id="datetime-appendix">
+ <title id="datetime-appendix-title">Date/Time Support</title>
 
  <sect1>
   <title>Time Zones</title>

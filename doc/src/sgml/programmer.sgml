@@ -5,6 +5,10 @@ Postgres Programmer's Guide.
 - thomas 1998-10-27
 
 $Log: programmer.sgml,v $
+Revision 1.15  1999/05/22 02:27:24  thomas
+Finish initial markup of cvs.sgml, and include it in the programmer's guide
+ and the integrated doc. Clean up other markup.
+
 Revision 1.14  1999/05/20 05:39:27  thomas
 Rearrange and consolidate the Admin Guide.
 Add reference pages for utilities and remove standalone chapters for same.
@@ -132,12 +136,12 @@ Bigger updates to the installation instructions (install and config).
     <AuthorInitials>TGL</AuthorInitials>
 -->
 
-   <Date>(last updated 1999-05-19)</Date>
+   <Date>(last updated 1999-06-01)</Date>
   </BookBiblio>
 
   <LegalNotice>
    <Para>
-    <ProductName>PostgreSQL</ProductName> is copyright (&copy;) 1998-9
+    <ProductName>PostgreSQL</ProductName> is &copy; 1998-9
     by the Postgres Global Development Group.
    </Para>
   </LegalNotice>

@@ -6,6 +6,10 @@ Derived from postgres.sgml.
 thomas 1998-02-24
 
 $Log: user.sgml,v $
+Revision 1.10  1999/05/22 02:27:25  thomas
+Finish initial markup of cvs.sgml, and include it in the programmer's guide
+ and the integrated doc. Clean up other markup.
+
 Revision 1.9  1999/05/20 05:39:29  thomas
 Rearrange and consolidate the Admin Guide.
 Add reference pages for utilities and remove standalone chapters for same.
@@ -56,6 +60,7 @@ Move SQL reference pages up into the User's Guide.
 <!entity intro    SYSTEM "intro.sgml">
 <!entity keys     SYSTEM "keys.sgml">
 <!entity manage   SYSTEM "manage.sgml">
+<!entity mvcc     SYSTEM "mvcc.sgml">
 <!entity oper     SYSTEM "oper.sgml">
 <!entity sql      SYSTEM "sql.sgml">
 <!entity storage  SYSTEM "storage.sgml">
@@ -96,12 +101,12 @@ Move SQL reference pages up into the User's Guide.
   <AuthorInitials>TGL</AuthorInitials>
 -->
 
-   <Date>(last updated 1999-05-19)</Date>
+   <Date>(last updated 1999-06-01)</Date>
   </BookBiblio>
 
   <LegalNotice>
    <Para>
-    <ProductName>PostgreSQL</ProductName> is copyright (&copy;) 1998-9
+    <ProductName>PostgreSQL</ProductName> is &copy; 1998-9
     by the Postgres Global Development Group.
    </Para>
   </LegalNotice>
@@ -146,10 +151,13 @@ Your name here...
  &keys;
  &array;
  &inherit;
+ &mvcc;
  &environ;
  &manage;
  &storage;
  &commands;
+
+ <!-- appendices -->
 
  &datetime;
  <!--
