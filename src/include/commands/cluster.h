@@ -14,13 +14,6 @@
 #define CLUSTER_H
 
 /*
- * defines for contant stuff
- */
-#define _TEMP_RELATION_KEY_				"clXXXXXXXX"
-#define _SIZE_OF_TEMP_RELATION_KEY_		11
-
-
-/*
  * functions
  */
 extern void cluster(RangeVar *oldrelation, char *oldindexname);
