@@ -43,18 +43,6 @@ Exception	BadArg = {"Bad Argument to Function Call"};
  *****************************************************************************/
 
 /*
- * BadAllocSize
- *		Indicates that an allocation request is of unreasonable size.
- */
-Exception	BadAllocSize = {"Too Large Allocation Request"};
-
-/*
- * ExhaustedMemory
- *		Indicates an dynamic memory allocation failed.
- */
-Exception	ExhaustedMemory = {"Memory Allocation Failed"};
-
-/*
  * Unimplemented
  *		Indicates a function call request requires unimplemented code.
  */

@@ -22,16 +22,17 @@
 
 /*
  * MaxAllocSize
- *		Arbitrary limit on size of allocations.
+ *		Quasi-arbitrary limit on size of allocations.
  *
  * Note:
  *		There is no guarantee that allocations smaller than MaxAllocSize
  *		will succeed.  Allocation requests larger than MaxAllocSize will
  *		be summarily denied.
  *
- * XXX This should be defined in a file of tunable constants.
+ * XXX This is deliberately chosen to correspond to the limiting size
+ * of varlena objects under TOAST.  See VARATT_MASK_SIZE in postgres.h.
  */
-#define MaxAllocSize	((Size) 0xfffffff)		/* 16G - 1 */
+#define MaxAllocSize	((Size) 0x3fffffff)	/* 1 gigabyte - 1 */
 
 #define AllocSizeIsValid(size)	(0 < (size) && (size) <= MaxAllocSize)
 

@@ -18,8 +18,6 @@
 extern Exception FailedAssertion;
 extern Exception BadState;
 extern Exception BadArg;
-extern Exception BadAllocSize;
-extern Exception ExhaustedMemory;
 extern Exception Unimplemented;
 
 extern Exception CatalogFailure;/* XXX inconsistent naming style */
