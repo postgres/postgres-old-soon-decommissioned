@@ -321,6 +321,7 @@ extern double *circle_area(CIRCLE *circle);
 extern double *circle_diameter(CIRCLE *circle);
 extern double *circle_radius(CIRCLE *circle);
 extern double *circle_distance(CIRCLE *circle1, CIRCLE *circle2);
+extern double *dist_pc(Point *point, CIRCLE *circle);
 extern Point *circle_center(CIRCLE *circle);
 extern CIRCLE *circle(Point *center, float8 *radius);
 extern CIRCLE *poly_circle(POLYGON *poly);

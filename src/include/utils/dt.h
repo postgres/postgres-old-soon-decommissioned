@@ -319,7 +319,7 @@ extern int DecodeDateDelta( char *field[], int ftype[],
 extern int DecodeUnits(int field, char *lowtoken, int *val);
 
 extern int EncodeSpecialDateTime(DateTime dt, char *str);
-extern int EncodeDateTime(struct tm *tm, double fsec, int style, char *str);
+extern int EncodeDateTime(struct tm *tm, double fsec, int *tzp, int style, char *str);
 extern int EncodeTimeSpan(struct tm *tm, double fsec, int style, char *str);
 
 extern datetkn *datebsearch(char *key, datetkn *base, unsigned int nel);

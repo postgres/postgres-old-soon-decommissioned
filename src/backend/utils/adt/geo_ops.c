@@ -3075,18 +3075,35 @@ double *circle_radius(CIRCLE *circle)
 }
 
 
-/*	circle_distance	-	returns the distance between the
- *				  center points of two circlees.
+/*	circle_distance	-	returns the distance between
+ *				  two circles.
  */
 double *circle_distance(CIRCLE *circle1, CIRCLE *circle2)
 {
     double	*result;
 
     result = PALLOCTYPE(double);
-    *result = point_dt(&circle1->center,&circle2->center);
+    *result = (point_dt(&circle1->center,&circle2->center)
+      - (circle1->radius + circle2->radius));
+    if (*result < 0) *result = 0;
 
     return(result);
-}
+} /* circle_distance() */
+
+
+/*	dist_pc	-	returns the distance between
+ *			  a point and a circle.
+ */
+double *dist_pc(Point *point, CIRCLE *circle)
+{
+    double	*result;
+
+    result = PALLOCTYPE(double);
+    *result = (point_dt(point,&circle->center) - circle->radius);
+    if (*result < 0) *result = 0;
+
+    return(result);
+} /* dist_pc() */
 
 
 /*	circle_center	-	returns the center point of the circle.
