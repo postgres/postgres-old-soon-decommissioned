@@ -142,7 +142,7 @@ extern long *LocalRefCount;
  * prototypes for functions in bufmgr.c
  */
 extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
-extern int	ReleaseBuffer(Buffer buffer);
+extern void ReleaseBuffer(Buffer buffer);
 extern void WriteBuffer(Buffer buffer);
 extern void WriteNoReleaseBuffer(Buffer buffer);
 extern Buffer ReleaseAndReadBuffer(Buffer buffer, Relation relation,

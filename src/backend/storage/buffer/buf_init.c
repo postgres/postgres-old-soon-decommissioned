@@ -133,11 +133,11 @@ InitBufferPool(void)
 
 			buf->bufNext = i + 1;
 
-			CLEAR_BUFFERTAG(&(buf->tag));
+			CLEAR_BUFFERTAG(buf->tag);
 			buf->buf_id = i;
 
 			buf->data = MAKE_OFFSET(block);
-			buf->flags = (BM_DELETED | BM_VALID);
+			buf->flags = 0;
 			buf->refcount = 0;
 			buf->io_in_progress_lock = LWLockAssign();
 			buf->cntx_lock = LWLockAssign();
