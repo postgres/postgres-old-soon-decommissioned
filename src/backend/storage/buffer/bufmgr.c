@@ -449,6 +449,16 @@ BufferAlloc(Relation reln,
 			bool		smok;
 
 			/*
+			 *	skip write error buffers 
+			 */
+			if ((buf->flags & BM_IO_ERROR) != 0)
+			{
+				PrivateRefCount[BufferDescriptorGetBuffer(buf) - 1] = 0;
+				buf->refcount--;
+				buf = (BufferDesc *) NULL;
+				continue;
+			}
+			/*
 			 * Set BM_IO_IN_PROGRESS to keep anyone from doing anything
 			 * with the contents of the buffer while we write it out. We
 			 * don't really care if they try to read it, but if they can
@@ -2529,7 +2539,7 @@ AbortBufferIO(void)
 		else
 		{
 			Assert((buf->flags & BM_DIRTY) != 0);
-			if (buf->flags & BM_IO_ERROR != 0)
+			if ((buf->flags & BM_IO_ERROR) != 0)
 			{
 				elog(NOTICE, "write error may be permanent: cannot write block %u for %s/%s",
 				buf->tag.blockNum, buf->blind.dbname, buf->blind.relname);
