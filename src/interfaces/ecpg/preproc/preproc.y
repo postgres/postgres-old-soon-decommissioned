@@ -5300,7 +5300,7 @@ UsingConst: AllConst
 				char *length = mm_alloc(32);
 
 				sprintf(length, "%d", (int) strlen($1));
-				append_variable(&argsinsert, new_variable($1, ECPGmake_simple_type(ECPGt_const, length), 0), &no_indicator);
+				add_variable(&argsinsert, new_variable($1, ECPGmake_simple_type(ECPGt_const, length), 0), &no_indicator);
 			}
 		}
 		;
