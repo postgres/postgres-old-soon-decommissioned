@@ -177,7 +177,7 @@ extern int	namestrcmp(Name name, char *str);
 
 /* numutils.c */
 /* XXX hack.  HP-UX has a ltoa (with different arguments) already. */
-#ifdef hpux
+#ifdef __hpux
 #define ltoa pg_ltoa
 #endif							/* hpux */
 extern int32 pg_atoi(char *s, int size, int c);
