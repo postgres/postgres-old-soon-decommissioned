@@ -2212,8 +2212,16 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 		qry->isBinary = FALSE;
 	}
 
+	/*
+	 * Any column names from CREATE TABLE AS need to be attached to both the
+	 * top level and the leftmost subquery.  We do not do this earlier
+	 * because we do *not* want the targetnames list to be affected.
+	 */
 	if (intoColNames)
+	{
 		applyColumnNames(qry->targetList, intoColNames);
+		applyColumnNames(leftmostQuery->targetList, intoColNames);
+	}
 
 	/*
 	 * As a first step towards supporting sort clauses that are
