@@ -5241,7 +5241,7 @@ select current_setting('DateStyle');
     <literal>false</literal> instead. It is the equivalent to the SQL
     <command>SET</command> command. For example:
 <programlisting>
-select set_config('show_query_stats','off','f');
+select set_config('show_statement_stats','off','f');
  set_config
 ------------
  off
