@@ -1001,7 +1001,7 @@ ERROR: Cannot insert a duplicate key into a unique index.
     <para>
      <productname>Postgres</productname> now
      supports FOREIGN KEY
-     integrity constraints (new for release 7.0).
+     integrity constraints
     </para>
    </note>
   </refsect2>
