@@ -88,14 +88,11 @@ static int	queryLimit = ALL_TUPLES;
 #undef ALL_TUPLES
 #define ALL_TUPLES queryLimit
 
-#ifdef NOT_USED
 int
 ExecutorLimit(int limit)
 {
 	return queryLimit = limit;
 }
-
-#endif
 #endif
 
 /* ----------------------------------------------------------------

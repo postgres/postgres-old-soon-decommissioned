@@ -94,7 +94,7 @@ static Dllist *pendingNotifies = NULL;
 static int	AsyncExistsPendingNotify(char *);
 static void ClearPendingNotify(void);
 static void Async_NotifyFrontEnd(void);
-static void Async_Unlisten(char *relname, int pid);
+void        Async_Unlisten(char *relname, int pid);
 static void Async_UnlistenOnExit(int code, char *relname);
 
 /*
@@ -510,7 +510,7 @@ Async_Listen(char *relname, int pid)
  *
  *--------------------------------------------------------------
  */
-static void
+void
 Async_Unlisten(char *relname, int pid)
 {
 	Relation	lDesc;
