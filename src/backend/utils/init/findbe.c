@@ -93,9 +93,6 @@ ValidateBinary(char *path)
 	/*
 	 * Ensure that the file is both executable and readable (required for
 	 * dynamic loading).
-	 *
-	 * We use the effective uid here because the backend will not have
-	 * executed setuid() by the time it calls this routine.
 	 */
 	euid = geteuid();
 	if (euid == buf.st_uid)

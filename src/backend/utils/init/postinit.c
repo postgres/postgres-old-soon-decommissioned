@@ -335,15 +335,13 @@ InitPostgres(const char *dbname, const char *username)
 		LockDisable(true);
 
 	/*
-	 * Set ourselves to the proper user id and figure out our postgres
-	 * user id.
+	 * Figure out our postgres user id.  If bootstrapping, we can't
+	 * assume that pg_shadow exists yet, so fake it.
 	 */
 	if (bootstrap)
 		SetSessionUserId(geteuid());
 	else
 		SetSessionUserIdFromUserName(username);
-
-	setuid(geteuid());
 
 	/*
 	 * Unless we are bootstrapping, double-check that InitMyDatabaseInfo()
