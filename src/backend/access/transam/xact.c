@@ -642,7 +642,7 @@ RecordTransactionCommit()
 	{
 		FlushBufferPool();
 		if (leak)
-			ResetBufferPool();
+			ResetBufferPool(true);
 
 		/*
 		 *	have the transaction access methods record the status
@@ -658,7 +658,7 @@ RecordTransactionCommit()
 	}
 
 	if (leak)
-		ResetBufferPool();
+		ResetBufferPool(true);
 }
 
 
@@ -759,7 +759,10 @@ RecordTransactionAbort()
 	if (SharedBufferChanged && !TransactionIdDidCommit(xid))
 		TransactionIdAbort(xid);
 
-	ResetBufferPool();
+	/*
+	 * Tell bufmgr and smgr to release resources.
+	 */
+	ResetBufferPool(false);		/* false -> is abort */
 }
 
 /* --------------------------------

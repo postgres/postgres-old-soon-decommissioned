@@ -164,7 +164,7 @@ extern int	FlushBuffer(Buffer buffer, bool release);
 extern void InitBufferPool(IPCKey key);
 extern void PrintBufferUsage(FILE *statfp);
 extern void ResetBufferUsage(void);
-extern void ResetBufferPool(void);
+extern void ResetBufferPool(bool isCommit);
 extern int	BufferPoolCheckLeak(void);
 extern void FlushBufferPool(void);
 extern BlockNumber BufferGetBlockNumber(Buffer buffer);
