@@ -17,7 +17,7 @@ INCLUDE_OPT = -I../.. \
 
 CFLAGS+=$(INCLUDE_OPT)
 
-OBJS = dynloader.o
+OBJS = dynloader.o port.o
 
 all: SUBSYS.o
 

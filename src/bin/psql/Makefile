@@ -47,12 +47,8 @@ ifeq ($(USE_READLINE), true)
    ifeq ($(PORTNAME), bsdi)
    LD_ADD += -ltermcap
    else
-   ifeq ($(PORTNAME), bsdi_2_1)
-   LD_ADD += -ltermcap
-   else
    ifeq ($(PORTNAME), BSD44_derived)
    LD_ADD += -ltermcap
-   endif
    endif
    endif
    endif

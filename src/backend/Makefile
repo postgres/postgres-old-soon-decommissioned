@@ -64,11 +64,11 @@ LDADD+= -lln
 endif
 
 ifeq ($(PORTNAME), bsdi)
-LDADD+= -ldld -lipc
-endif
-
-ifeq ($(PORTNAME), bsdi_2_1)
-LDADD+= -ldl -lipc
+  ifeq ($(PRE_BSDI_2_1), N)
+    LDADD+= -ldl -lipc
+  else
+    LDADD+= -ldld -lipc
+  endif
 endif
 
 ifeq ($(PORTNAME), hpux)
