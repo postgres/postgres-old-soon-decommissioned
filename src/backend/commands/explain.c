@@ -23,6 +23,7 @@
 #include <parser/parse_node.h>
 #include <optimizer/planner.h>
 #include <access/xact.h>
+#include <utils/relcache.h>
 
 typedef struct ExplainState
 {
@@ -117,6 +118,8 @@ ExplainQuery(Query *query, bool verbose, CommandDest dest)
 static void
 explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 {
+	List		*l;
+	Relation	relation;
 	char	   *pname;
 	char		buf[1000];
 	int			i;
@@ -184,8 +187,12 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 	appendStringInfo(str, pname);
 	switch (nodeTag(plan))
 	{
-		case T_SeqScan:
 		case T_IndexScan:
+			appendStringInfo(str, " using ");
+			l = ((IndexScan *) plan)->indxid;
+			relation = RelationIdCacheGetRelation((int) lfirst(l));
+			appendStringInfo(str, (RelationGetRelationName(relation))->data);
+		case T_SeqScan:
 			if (((Scan *) plan)->scanrelid > 0)
 			{
 				RangeTblEntry *rte = nth(((Scan *) plan)->scanrelid - 1, es->rtable);
