@@ -171,7 +171,7 @@ _bt_isortcmp(BTSortKey *k1, BTSortKey *k2)
     if ( _bt_inspool->isunique )
     {
     	_bt_spooldestroy ((void*)_bt_inspool);
-    	elog (WARN, "Cannot insert a duplicate key into a unique index.");
+    	elog (WARN, "Cannot create unique index. Table contains non-unique values");
     }
     return(0);		/* 1 = 2 */
 }
