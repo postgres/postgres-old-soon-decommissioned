@@ -2029,6 +2029,8 @@ DATA(insert OID =  1317 (  nextval	   PGUID 11 f t f 1 f 23 "25" 100 0 0 100  fo
 DESCR("sequence next value");
 DATA(insert OID =  1319 (  currval	   PGUID 11 f t f 1 f 23 "25" 100 0 0 100  foo bar ));
 DESCR("sequence current value");
+DATA(insert OID =  1618 (  setval	   PGUID 11 f t f 2 f 23 "25 23" 100 0 0 100  foo bar ));
+DESCR("sequence set value");
 
 /* for multi-byte support */
 DATA(insert OID = 1039 (  getdatabaseencoding	   PGUID 11 f t f 0 f 19 "0" 100 0 0 100  foo bar ));

@@ -427,7 +427,8 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 	 * Sequence handling.
 	 */
 	if (funcid == F_NEXTVAL ||
-		funcid == F_CURRVAL)
+		funcid == F_CURRVAL ||
+		funcid == F_SETVAL)
 	{
 		Const	   *seq;
 		char	   *seqrel;
@@ -435,7 +436,7 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 		int32		aclcheck_result = -1;
 		extern text *lower(text *string);
 
-		Assert(length(fargs) == 1);
+		Assert(length(fargs) == ((funcid == F_SETVAL) ? 2 : 1));
 		seq = (Const *) lfirst(fargs);
 		if (!IsA((Node *) seq, Const))
 			elog(ERROR, "Only constant sequence names are acceptable for function '%s'", funcname);
@@ -445,7 +446,8 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 		seqrel = textout(seqname);
 
 		if ((aclcheck_result = pg_aclcheck(seqrel, GetPgUserName(),
-			   ((funcid == F_NEXTVAL) ? ACL_WR : ACL_RD)))
+			   (((funcid == F_NEXTVAL) || (funcid == F_SETVAL)) ? 
+				ACL_WR : ACL_RD)))
 			!= ACLCHECK_OK)
 			elog(ERROR, "%s.%s: %s",
 			  seqrel, funcname, aclcheck_error_strings[aclcheck_result]);
@@ -454,6 +456,8 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 
 		if (funcid == F_NEXTVAL && pstate->p_in_where_clause)
 			elog(ERROR, "Sequence function nextval is not allowed in WHERE clauses");
+		if (funcid == F_SETVAL && pstate->p_in_where_clause)
+			elog(ERROR, "Sequence function setval is not allowed in WHERE clauses");
 	}
 
 	expr = makeNode(Expr);
