@@ -505,6 +505,20 @@ AlterDatabaseSet(AlterDatabaseSetStmt *stmt)
 	newtuple = heap_modifytuple(tuple, rel, repl_val, repl_null, repl_repl);
 	simple_heap_update(rel, &tuple->t_self, newtuple);
 
+	/*
+	 * Update indexes
+	 */
+	if (RelationGetForm(rel)->relhasindex)
+	{
+		Relation	idescs[Num_pg_database_indices];
+
+		CatalogOpenIndices(Num_pg_database_indices,
+						   Name_pg_database_indices, idescs);
+		CatalogIndexInsert(idescs, Num_pg_database_indices, rel,
+						   newtuple);
+		CatalogCloseIndices(Num_pg_database_indices, idescs);
+	}
+
 	heap_endscan(scan);
 	heap_close(rel, RowExclusiveLock);
 }
