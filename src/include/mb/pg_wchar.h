@@ -136,6 +136,7 @@ extern int	pg_mic_mblen(const unsigned char *);
 extern int	pg_mbstrlen(const unsigned char *);
 extern int	pg_mbstrlen_with_len(const unsigned char *, int);
 extern int	pg_mbcliplen(const unsigned char *, int, int);
+extern int	pg_mbcharcliplen(const unsigned char *, int, int);
 extern pg_encoding_conv_tbl *pg_get_encent_by_encoding(int);
 extern int	pg_set_client_encoding(int);
 extern int	pg_get_client_encoding(void);
