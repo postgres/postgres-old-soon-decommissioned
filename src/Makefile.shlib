@@ -191,7 +191,7 @@ ifeq ($(PORTNAME), unixware)
   else
     LINK.shared		= $(CC) -G
   endif
-  LINK.shared		+= -Wl,-z,text -Wl,-h,$(libdir)/$(soname) 
+  LINK.shared		+= -Wl,-z,text -Wl,-h,$(soname) 
 endif
 
 ifeq ($(PORTNAME), cygwin)
