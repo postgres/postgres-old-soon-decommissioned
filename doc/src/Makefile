@@ -12,13 +12,13 @@ BOOKS = admin developer reference programmer tutorial user  postgres
 TARGETS= $(BOOKS:%=%.tar.$(ZIPSUFFIX))
 
 .PRECIOUS:
-.PHONY: install all sources clean distclean
+.PHONY: install all sources clean distclean maintainer-clean
 
-install:
-	$(MAKE) all
-	(mv -f *.$(ZIPSUFFIX) ..)
+install: all
+	cp -f *.$(ZIPSUFFIX) ..
 
 clean distclean maintainer-clean:
+	rm -f *.tar *.$(ZIPSUFFIX)
 	$(MAKE) -C sgml $@
 
 all: $(TARGETS)
