@@ -263,7 +263,6 @@ transformSortClause(ParseState *pstate,
 		TargetEntry *restarget;
 		Resdom	   *resdom;
 
-		sortlist = NIL;	/* we create it on the fly here */
 		
 		restarget = find_targetlist_entry(pstate, sortby, targetlist);
 		if (restarget == NULL)
@@ -274,9 +273,7 @@ transformSortClause(ParseState *pstate,
 								   resdom->restype,
 								   resdom->restype, false));
 		if (sortlist == NIL)
-		{
 			s = sortlist = lcons(sortcl, NIL);
-		}
 		else
 		{
 			List	   *i;
