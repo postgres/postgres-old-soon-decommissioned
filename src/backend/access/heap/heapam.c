@@ -1114,7 +1114,7 @@ heap_insert(Relation relation, HeapTuple tup)
  *	Must decide how to handle errors.
  * ----------------
  */
-void
+int
 heap_delete(Relation relation, ItemPointer tid)
 {
     ItemId		lp;
@@ -1163,7 +1163,7 @@ heap_delete(Relation relation, ItemPointer tid)
 	if ( IsSystemRelationName(RelationGetRelationName(relation)->data) )
 	    RelationUnsetLockForWrite(relation);
 	ReleaseBuffer(b);
-	return;
+	return (1);
     }
     /* ----------------
      *	check that we're deleteing a valid item
@@ -1203,6 +1203,8 @@ heap_delete(Relation relation, ItemPointer tid)
     WriteBuffer(b);
     if ( IsSystemRelationName(RelationGetRelationName(relation)->data) )
 	RelationUnsetLockForWrite(relation);
+    
+    return(0);
 }
 
 /* ----------------
@@ -1302,10 +1304,10 @@ heap_replace(Relation relation, ItemPointer otid, HeapTuple tup)
 			      NowTimeQual,
 			      0,
 			      (ScanKey)NULL))
-	{
-	    ReleaseBuffer(buffer);
-	    elog(WARN, "heap_replace: (am)invalid otid");
-	}
+    {
+	ReleaseBuffer(buffer);
+	elog(WARN, "heap_replace: (am)invalid otid");
+    }
     
     /* XXX order problems if not atomic assignment ??? */
     tup->t_oid = tp->t_oid;
