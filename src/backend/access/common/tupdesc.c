@@ -226,6 +226,71 @@ FreeTupleDesc(TupleDesc tupdesc)
 
 }
 
+bool
+equalTupleDescs(TupleDesc tupdesc1, TupleDesc tupdesc2)
+{
+	int		i;
+
+	if (tupdesc1->natts != tupdesc2->natts)
+		return false;
+	for (i = 0; i < tupdesc1->natts; i++)
+	{
+		Form_pg_attribute	attr1 = tupdesc1->attrs[i];
+		Form_pg_attribute	attr2 = tupdesc2->attrs[i];
+
+		/* We do not need to check every single field here, and in fact
+		 * some fields such as attdisbursion probably shouldn't be compared.
+		 */
+		if (strcmp(NameStr(attr1->attname), NameStr(attr2->attname)) != 0)
+			return false;
+		if (attr1->atttypid != attr2->atttypid)
+			return false;
+		if (attr1->atttypmod != attr2->atttypmod)
+			return false;
+		if (attr1->attstorage != attr2->attstorage)
+			return false;
+		if (attr1->attnotnull != attr2->attnotnull)
+			return false;
+	}
+	if (tupdesc1->constr != NULL)
+	{
+		TupleConstr	   *constr1 = tupdesc1->constr;
+		TupleConstr	   *constr2 = tupdesc2->constr;
+
+		if (constr2 == NULL)
+			return false;
+		if (constr1->num_defval != constr2->num_defval)
+			return false;
+		for (i = 0; i < (int) constr1->num_defval; i++)
+		{
+			AttrDefault	   *defval1 = constr1->defval + i;
+			AttrDefault	   *defval2 = constr2->defval + i;
+
+			if (defval1->adnum != defval2->adnum)
+				return false;
+			if (strcmp(defval1->adbin, defval2->adbin) != 0)
+				return false;
+		}
+		if (constr1->num_check != constr2->num_check)
+			return false;
+		for (i = 0; i < (int) constr1->num_check; i++)
+		{
+			ConstrCheck	   *check1 = constr1->check + i;
+			ConstrCheck	   *check2 = constr2->check + i;
+
+			if (strcmp(check1->ccname, check2->ccname) != 0)
+				return false;
+			if (strcmp(check1->ccbin, check2->ccbin) != 0)
+				return false;
+		}
+		if (constr1->has_not_null != constr2->has_not_null)
+			return false;
+	}
+	else if (tupdesc2->constr != NULL)
+		return false;
+	return true;
+}
+
 /* ----------------------------------------------------------------
  *		TupleDescInitEntry
  *

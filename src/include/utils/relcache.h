@@ -29,11 +29,9 @@ extern void RelationForgetRelation(Oid rid);
 /*
  * Routines for flushing/rebuilding relcache entries in various scenarios
  */
-extern void RelationRebuildRelation(Relation relation);
-
 extern void RelationIdInvalidateRelationCacheByRelationId(Oid relationId);
 
-extern void RelationCacheInvalidate(bool onlyFlushReferenceCountZero);
+extern void RelationCacheInvalidate(void);
 
 extern void RelationRegisterRelation(Relation relation);
 extern void RelationPurgeLocalRelation(bool xactComitted);

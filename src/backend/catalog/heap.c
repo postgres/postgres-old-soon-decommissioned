@@ -2098,18 +2098,6 @@ AddRelationRawConstraints(Relation rel,
 
 	heap_close(relrel, RowExclusiveLock);
 	heap_freetuple(reltup);
-
-	/*
-	 * Force rebuild of our own relcache entry, otherwise subsequent commands
-	 * in this transaction won't see the new defaults/constraints.
-	 * Must bump command counter or relcache rebuild won't see 'em either.
-	 *
-	 * (This might seem unnecessary, since we are sending out an SI message;
-	 * but if the relation has just been created then relcache.c will ignore
-	 * the SI message on the grounds that the rel is transaction-local...)
-	 */
-	CommandCounterIncrement();
-	RelationRebuildRelation(rel);
 }
 
 static void

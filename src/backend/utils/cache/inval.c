@@ -557,7 +557,7 @@ static void
 ResetSystemCaches()
 {
 	ResetSystemCache();
-	RelationCacheInvalidate(true);
+	RelationCacheInvalidate();
 }
 
 /* --------------------------------

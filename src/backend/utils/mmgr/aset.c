@@ -389,6 +389,11 @@ AllocSetFree(AllocSet set, AllocPointer pointer)
 
 	chunk = AllocPointerGetChunk(pointer);
 
+#ifdef CLOBBER_FREED_MEMORY
+	/* Wipe freed memory for debugging purposes */
+	memset(pointer, 0x7F, chunk->size);
+#endif
+
 	if (chunk->size >= ALLOC_BIGCHUNK_LIMIT)
 	{
 		/* Big chunks are certain to have been allocated as single-chunk
