@@ -14,7 +14,7 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-CFLAGS+= -I$(LIBPQDIR)
+CFLAGS:= -I$(LIBPQDIR) $(CFLAGS)
 
 #
 # And where libpq goes, so goes the authentication stuff...
