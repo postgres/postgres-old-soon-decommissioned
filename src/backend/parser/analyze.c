@@ -1187,7 +1187,7 @@ A_Expr_to_Expr(Node *ptr, bool *intersect_present)
 				break;
 			}
 		default:
-				result = ptr;
+			result = ptr;
 	}
 	return result;
 }

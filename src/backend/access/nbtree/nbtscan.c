@@ -133,9 +133,10 @@ _bt_scandel(IndexScanDesc scan, BlockNumber blkno, OffsetNumber offno)
 			ItemPointerSetInvalid(&(so->curHeapIptr));
 		else
 		{
-			/* 
-			 * We have to lock buffer before _bt_step 
-			 * and unlock it after that.
+
+			/*
+			 * We have to lock buffer before _bt_step and unlock it after
+			 * that.
 			 */
 			LockBuffer(buf, BT_READ);
 			_bt_step(scan, &buf, BackwardScanDirection);
