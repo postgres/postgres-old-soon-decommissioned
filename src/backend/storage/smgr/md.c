@@ -529,6 +529,36 @@ mdnblocks(Relation reln)
 }
 
 /*
+ *  mdtruncate() -- Truncate relation to specified number of blocks.
+ *
+ *	Returns # of blocks or -1 on error.
+ */
+int
+mdtruncate (Relation reln, int nblocks)
+{
+    int fd;
+    MdfdVec *v;
+    int curnblk;
+
+    curnblk = mdnblocks (reln);
+    if ( curnblk / RELSEG_SIZE > 0 )
+    {
+    	elog (NOTICE, "Can't truncate multi-segments relation %.*s",
+    		NAMEDATALEN, &(reln->rd_rel->relname.data[0]));
+    	return (curnblk);
+    }
+
+    fd = RelationGetFile(reln);
+    v = &Md_fdvec[fd];
+
+    if ( FileTruncate (v->mdfd_vfd, nblocks * BLCKSZ) < 0 )
+    	return (-1);
+    
+    return (nblocks);
+
+} /* mdtruncate */
+
+/*
  *  mdcommit() -- Commit a transaction.
  *
  *	All changes to magnetic disk relations must be forced to stable
