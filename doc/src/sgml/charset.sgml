@@ -620,8 +620,7 @@ RESET CLIENT_ENCODING;
 
      <variablelist>
       <varlistentry>
-       <term><ulink url="ftp://ftp.ora.com/pub/examples/nutshell/ujip/doc/cjk.inf"
-        >ftp://ftp.ora.com/pub/examples/nutshell/ujip/doc/cjk.inf</ulink></term>
+       <term><ulink url="ftp://ftp.ora.com/pub/examples/nutshell/ujip/doc/cjk.inf"></ulink></term>
 
        <listitem>
         <para>
@@ -633,7 +632,7 @@ RESET CLIENT_ENCODING;
       </varlistentry>
 
       <varlistentry>
-       <term><ulink url="http://www.unicode.org/">http://www.unicode.org/</ulink></term>
+       <term><ulink url="http://www.unicode.org/"></ulink></term>
 
        <listitem>
         <para>
