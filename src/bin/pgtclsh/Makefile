@@ -69,7 +69,7 @@ install_tk: pgtksh
 	$(INSTALL) $(INSTL_EXE_OPTS) pgtksh $(BINDIR)/pgtksh
 
 clean:
-	rm -f pgtclAppInit.o pgtkAppInit.o pgtclsh pgtksh
+	rm -f *.o Makefile.t*defs pgtclsh pgtksh
 
 dep depend:
 	$(CC) -MM $(CFLAGS) *.c > depend
