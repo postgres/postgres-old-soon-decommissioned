@@ -62,6 +62,10 @@ PORTNAME=	BSD44_derived
 LEX = flex
 LDADD+= -L/usr/local/lib -lfl
 
+# Uncomment the following to bring in changes by OpenLink
+# See README.OPENLINK for applied patches
+# CFLAGS+=	-DOPENLINK_PATCHES
+
 # POSTGRESLOGIN is the login name of the user who gets special
 # privileges within the database.  By default it is "postgres", but
 # you can change it to any existing login name (such as your own 
@@ -72,7 +76,7 @@ POSTGRESLOGIN=	postgres
 # For convenience, POSTGRESDIR is where DATADIR, BINDIR, and LIBDIR 
 # and other target destinations are rooted.  Of course, each of these is 
 # changable separately.
-POSTGRESDIR=	/usr/local/pg95
+POSTGRESDIR=	/home/staff/scrappy/cvs/postgres95
 
 # SRCDIR specifies where the source files are.
 SRCDIR=		$(POSTGRESDIR)/src
