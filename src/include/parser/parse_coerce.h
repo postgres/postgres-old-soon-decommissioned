@@ -66,6 +66,9 @@ typedef enum CATEGORY
  * Check for types with the same underlying binary representation.
  * This allows us to cheat and directly exchange values without
  *	going through the trouble of calling a conversion function.
+ * Remove equivalencing of FLOAT8 and DATETIME. They really are not
+ *  close enough in behavior, with the DATETIME reserved values
+ *  and special formatting. - thomas 1999-01-24
  */
 #define IS_BINARY_COMPATIBLE(a,b) \
 		  (((a) == BPCHAROID && (b) == TEXTOID) \
@@ -76,8 +79,6 @@ typedef enum CATEGORY
 		|| ((a) == TEXTOID && (b) == VARCHAROID) \
 		|| ((a) == OIDOID && (b) == INT4OID) \
 		|| ((a) == INT4OID && (b) == TIMESTAMPOID) \
-		|| ((a) == DATETIMEOID && (b) == FLOAT8OID) \
-		|| ((a) == FLOAT8OID && (b) == DATETIMEOID) \
 		|| ((a) == ABSTIMEOID && (b) == TIMESTAMPOID) \
 		|| ((a) == ABSTIMEOID && (b) == INT4OID) \
 		|| ((a) == TIMESTAMPOID && (b) == ABSTIMEOID) \
