@@ -999,7 +999,8 @@ PQprint(FILE *fout,
 		{
 			if ((fs_len==1 && (*p==*(po->fieldSep))) || *p=='\\')
 				*(o++)='\\';
-			if (po->align && !((*p >='0' && *p<='9') || *p=='.' || *p=='E' || *p=='e' || *p==' ' || *p=='-'))
+			if (po->align && (*pval=='E' || *pval=='e' ||
+				!((*p>='0' && *p<='9') || *p=='.' || *p=='E' || *p=='e' || *p==' ' || *p=='-')))
 				fieldNotNum[j]=1;
 		}
 		*o='\0';
