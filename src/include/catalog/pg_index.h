@@ -73,7 +73,7 @@ typedef FormData_pg_index *Form_pg_index;
  *		compiler constants for pg_index
  * ----------------
  */
-#define Natts_pg_index					11
+#define Natts_pg_index					12
 #define Anum_pg_index_indexrelid		1
 #define Anum_pg_index_indrelid			2
 #define Anum_pg_index_indproc			3
@@ -81,9 +81,10 @@ typedef FormData_pg_index *Form_pg_index;
 #define Anum_pg_index_indclass			5
 #define Anum_pg_index_indisclustered	6
 #define Anum_pg_index_indislossy		7
-#define Anum_pg_index_indisunique		8
-#define Anum_pg_index_indisprimary		9
-#define Anum_pg_index_indreference		10
-#define Anum_pg_index_indpred			11
+#define Anum_pg_index_indhaskeytype		8
+#define Anum_pg_index_indisunique		9
+#define Anum_pg_index_indisprimary		10
+#define Anum_pg_index_indreference		11
+#define Anum_pg_index_indpred			12
 
 #endif	 /* PG_INDEX_H */

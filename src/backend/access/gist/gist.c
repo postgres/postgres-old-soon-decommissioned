@@ -1127,6 +1127,7 @@ initGISTstate(GISTSTATE *giststate, Relation index)
 		elog(ERROR, "initGISTstate: index %u not found",
 			 RelationGetRelid(index));
 	itupform = (Form_pg_index) GETSTRUCT(htup);
+	giststate->haskeytype = itupform->indhaskeytype;
 	indexrelid = itupform->indexrelid;
 	ReleaseSysCache(htup);
 

@@ -589,6 +589,7 @@ UpdateIndexRelation(Oid indexoid,
 	indexForm->indproc = indexInfo->ii_FuncOid;
 	indexForm->indisclustered = false;			/* not used */
 	indexForm->indislossy = islossy;
+	indexForm->indhaskeytype = true;			/* used by GIST */
 	indexForm->indisunique = indexInfo->ii_Unique;
 	indexForm->indisprimary = primary;
 	memcpy((char *) &indexForm->indpred, (char *) predText, predLen);
