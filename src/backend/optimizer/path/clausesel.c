@@ -266,12 +266,12 @@ addRangeClause(RangeQueryClause **rqlist, Node *clause,
 
 	if (varonleft)
 	{
-		var = (Node *) get_leftop((Expr *) clause);
+		var = get_leftop((Expr *) clause);
 		is_lobound = !isLTsel;	/* x < something is high bound */
 	}
 	else
 	{
-		var = (Node *) get_rightop((Expr *) clause);
+		var = get_rightop((Expr *) clause);
 		is_lobound = isLTsel;	/* something < x is low bound */
 	}
 

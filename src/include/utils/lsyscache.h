@@ -26,11 +26,10 @@ extern void get_atttypetypmod(Oid relid, AttrNumber attnum,
 extern bool opclass_is_btree(Oid opclass);
 extern RegProcedure get_opcode(Oid opno);
 extern char *get_opname(Oid opno);
-extern bool op_mergejoinable(Oid opno, Oid ltype, Oid rtype,
-				 Oid *leftOp, Oid *rightOp);
+extern bool op_mergejoinable(Oid opno, Oid *leftOp, Oid *rightOp);
 extern void op_mergejoin_crossops(Oid opno, Oid *ltop, Oid *gtop,
 					  RegProcedure *ltproc, RegProcedure *gtproc);
-extern Oid	op_hashjoinable(Oid opno, Oid ltype, Oid rtype);
+extern bool op_hashjoinable(Oid opno);
 extern bool op_strict(Oid opno);
 extern char op_volatile(Oid opno);
 extern Oid	get_commutator(Oid opno);

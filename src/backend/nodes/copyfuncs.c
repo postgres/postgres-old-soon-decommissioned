@@ -1059,6 +1059,8 @@ _copyRestrictInfo(RestrictInfo *from)
 	COPY_NODE_FIELD(subclauseindices); /* XXX probably bad */
 	COPY_SCALAR_FIELD(eval_cost);
 	COPY_SCALAR_FIELD(this_selec);
+	COPY_INTLIST_FIELD(left_relids);
+	COPY_INTLIST_FIELD(right_relids);
 	COPY_SCALAR_FIELD(mergejoinoperator);
 	COPY_SCALAR_FIELD(left_sortop);
 	COPY_SCALAR_FIELD(right_sortop);

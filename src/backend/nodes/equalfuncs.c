@@ -464,10 +464,10 @@ _equalRestrictInfo(RestrictInfo *a, RestrictInfo *b)
 	COMPARE_NODE_FIELD(clause);
 	COMPARE_SCALAR_FIELD(ispusheddown);
 	/*
-	 * We ignore subclauseindices, eval_cost, this_selec, left/right_pathkey,
-	 * and left/right_bucketsize, since they may not be set yet, and should be
-	 * derivable from the clause anyway.  Probably it's not really necessary
-	 * to compare any of these remaining fields ...
+	 * We ignore subclauseindices, eval_cost, this_selec, left/right_relids,
+	 * left/right_pathkey, and left/right_bucketsize, since they may not be
+	 * set yet, and should be derivable from the clause anyway.  Probably it's
+	 * not really necessary to compare any of these remaining fields ...
 	 */
 	COMPARE_SCALAR_FIELD(mergejoinoperator);
 	COMPARE_SCALAR_FIELD(left_sortop);

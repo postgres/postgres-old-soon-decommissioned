@@ -370,10 +370,10 @@ print_expr(Node *expr, List *rtable)
 		{
 			char	   *opname;
 
-			print_expr((Node *) get_leftop(e), rtable);
+			print_expr(get_leftop(e), rtable);
 			opname = get_opname(((OpExpr *) e)->opno);
 			printf(" %s ", ((opname != NULL) ? opname : "(invalid operator)"));
-			print_expr((Node *) get_rightop(e), rtable);
+			print_expr(get_rightop(e), rtable);
 		}
 		else
 			printf("an expr");

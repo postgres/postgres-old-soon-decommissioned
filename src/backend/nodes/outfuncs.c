@@ -952,6 +952,8 @@ _outRestrictInfo(StringInfo str, RestrictInfo *node)
 	WRITE_NODE_FIELD(clause);
 	WRITE_BOOL_FIELD(ispusheddown);
 	WRITE_NODE_FIELD(subclauseindices);
+	WRITE_INTLIST_FIELD(left_relids);
+	WRITE_INTLIST_FIELD(right_relids);
 	WRITE_OID_FIELD(mergejoinoperator);
 	WRITE_OID_FIELD(left_sortop);
 	WRITE_OID_FIELD(right_sortop);

@@ -25,8 +25,8 @@
 
 extern Expr *make_opclause(Oid opno, Oid opresulttype, bool opretset,
 						   Expr *leftop, Expr *rightop);
-extern Var *get_leftop(Expr *clause);
-extern Var *get_rightop(Expr *clause);
+extern Node *get_leftop(Expr *clause);
+extern Node *get_rightop(Expr *clause);
 
 extern Expr *make_funcclause(Oid funcid, Oid funcresulttype, bool funcretset,
 							 CoercionForm funcformat, List *funcargs);

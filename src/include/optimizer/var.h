@@ -23,6 +23,6 @@ extern bool contain_var_reference(Node *node, int varno, int varattno,
 extern bool contain_whole_tuple_var(Node *node, int varno, int levelsup);
 extern bool contain_var_clause(Node *node);
 extern List *pull_var_clause(Node *node, bool includeUpperVars);
-extern Node *flatten_join_alias_vars(Node *node, List *rtable, bool force);
+extern Node *flatten_join_alias_vars(Node *node, List *rtable);
 
 #endif   /* VAR_H */

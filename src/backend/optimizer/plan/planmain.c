@@ -117,7 +117,7 @@ query_planner(Query *root, List *tlist, double tuple_fraction,
 	/*
 	 * Construct RelOptInfo nodes for all base relations in query.
 	 */
-	(void) add_base_rels_to_query(root, (Node *) root->jointree);
+	add_base_rels_to_query(root, (Node *) root->jointree);
 
 	/*
 	 * Examine the targetlist and qualifications, adding entries to
