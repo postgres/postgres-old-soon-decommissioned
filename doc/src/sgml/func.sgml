@@ -770,7 +770,7 @@
 
   <para>
    There are two separate approaches to pattern matching provided by
-   <productname>Postgres</productname>:  The <acronym>SQL</acronym>
+   <productname>Postgres</productname>:  the <acronym>SQL</acronym>
    <function>LIKE</function> operator and
    <acronym>POSIX</acronym>-style regular expressions.
   </para>
@@ -2562,8 +2562,9 @@ END
   </informalexample>
 
   <para>
-   The data types of all possible <replaceable>result</replaceable>
-   expressions must match.
+   The data types of all the <replaceable>result</replaceable>
+   expressions must be coercible to a single output type.
+   See <xref linkend="typeconv-union-case"> for more detail.
   </para>
 
 <synopsis>
