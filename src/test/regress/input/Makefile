@@ -30,9 +30,7 @@ all: $(INFILES)
 	if [ -z "$$USER" ]; then USER=`whoami`; fi; \
 	if [ -z "$$USER" ]; then echo 'Cannot deduce $$USER.'; exit 1; fi; \
 	rm -f $@; \
-	PWD=`pwd`; \
 	OBJ=`pwd`; \
-	sed -e "s:_CWD_:$(PWD):g" \
-	    -e "s:_OBJWD_:$$OBJ/\.\.:g" \
+	sed -e "s:_OBJWD_:$$OBJ/\.\.:g" \
 	    -e "s:_DLSUFFIX_:$(DLSUFFIX):g" \
 	    -e "s/_USER_/$$USER/g" < $< > ../sql/$@
