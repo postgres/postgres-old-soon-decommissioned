@@ -1334,7 +1334,7 @@ XLogFileInit(uint32 log, uint32 seg,
 			unlink(tmppath);
 			errno = save_errno;
 
-			elog(STOP, "ZeroFill(%s) failed: %m", tmppath);
+			elog(STOP, "ZeroFill failed to create or write %s: %m", tmppath);
 		}
 	}
 
