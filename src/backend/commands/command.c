@@ -293,9 +293,9 @@ PerformAddAttribute(char *relationName,
 	 * we can't add a not null attribute
 	 */
 	if (colDef->is_not_null)
-		elog(WARN, "Can't add a not null attribute to a existent relation");
+		elog(WARN, "Can't add a NOT NULL attribute to an existing relation");
 	if (colDef->defval)
-		elog(WARN, "ADD ATTRIBUTE: DEFAULT is not implemented, yet");
+		elog(WARN, "ADD ATTRIBUTE: DEFAULT not yet implemented");
 
 	/*
 	 * if the first element in the 'schema' list is a "*" then we are
