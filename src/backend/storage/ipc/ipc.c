@@ -41,7 +41,7 @@
 #include "utils/memutils.h"
 #include "utils/elog.h"
 
-#if defined(PORTNAME_bsd44)
+#if defined(bsd44)
 int UsePrivateMemory = 1;
 #else
 int UsePrivateMemory = 0;
