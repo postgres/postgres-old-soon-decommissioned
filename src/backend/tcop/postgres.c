@@ -810,11 +810,21 @@ FloatExceptionHandler(SIGNAL_ARGS)
 }
 
 
+static bool	lockWaiting = false;
+void SetLockWaiting(bool waiting)
+{
+	lockWaiting = waiting;
+}
 /* signal handler for query cancel signal from postmaster */
 static void
 QueryCancelHandler(SIGNAL_ARGS)
 {
 	QueryCancel = true;
+	if (lockWaiting)
+	{
+		lockWaiting = false;
+		elog(ERROR, "Query Cancel requested while waiting lock");
+	}
 }
 
 void
@@ -1503,7 +1513,7 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[])
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.144 $ $Date: 2000/02/20 04:26:35 $\n");
+		puts("$Revision: 1.145 $ $Date: 2000/02/21 02:42:35 $\n");
 	}
 
 	/*
@@ -1573,6 +1583,7 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[])
 		firstchar = ReadCommand(parser_input);
 
 		QueryCancel = false;	/* forget any earlier CANCEL signal */
+		lockWaiting = false;
 
 		/* ----------------
 		 *	 (4) disable async.c's signal handler.

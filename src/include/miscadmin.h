@@ -214,6 +214,7 @@ extern ProcessingMode Mode;
 extern void IgnoreSystemIndexes(bool mode);
 extern bool IsIgnoringSystemIndexes(void);
 extern bool IsCacheInitialized(void);
+extern void SetLockWaiting(bool);
 
 /* 
  * "postmaster.pid" is a file containing postmaster's pid, being

@@ -312,6 +312,34 @@ InitProcess(IPCKey key)
 	on_shmem_exit(ProcKill, (caddr_t) MyProcPid);
 }
 
+/* -----------------------
+ * get off the wait queue
+ * -----------------------
+ */
+static void
+GetOffWaitqueue(PROC *proc)
+{
+	LockLockTable();
+	if (proc->links.next != INVALID_OFFSET)
+	{
+		int	lockmode = proc->token;
+		Assert(proc->waitLock->waitProcs.size > 0);
+		SHMQueueDelete(&(proc->links));
+		--proc->waitLock->waitProcs.size;
+		Assert(proc->waitLock->nHolding > 0);
+		Assert(proc->waitLock->nHolding > proc->waitLock->nActive);
+		--proc->waitLock->nHolding;
+		Assert(proc->waitLock->holders[lockmode] > 0);
+		--proc->waitLock->holders[lockmode];
+		if (proc->waitLock->activeHolders[lockmode] ==
+			proc->waitLock->holders[lockmode])
+			proc->waitLock->waitMask &= ~(1 << lockmode);
+	}
+	SHMQueueElemInit(&(proc->links));
+	UnlockLockTable();
+
+	return;
+}
 /*
  * ProcReleaseLocks() -- release all locks associated with this process
  *
@@ -322,6 +350,7 @@ ProcReleaseLocks()
 	if (!MyProc)
 		return;
 	LockReleaseAll(1, &MyProc->lockQueue);
+	GetOffWaitqueue(MyProc);
 }
 
 /*
@@ -405,15 +434,7 @@ ProcKill(int exitStatus, int pid)
 	 * get off the wait queue
 	 * ----------------
 	 */
-	LockLockTable();
-	if (proc->links.next != INVALID_OFFSET)
-	{
-		Assert(proc->waitLock->waitProcs.size > 0);
-		SHMQueueDelete(&(proc->links));
-		--proc->waitLock->waitProcs.size;
-	}
-	SHMQueueElemInit(&(proc->links));
-	UnlockLockTable();
+	GetOffWaitqueue(proc);
 
 	return;
 }
@@ -569,6 +590,7 @@ ins:;
 	timeval.it_value.tv_sec = \
 		(DeadlockCheckTimer ? DeadlockCheckTimer : DEADLOCK_CHECK_TIMER);
 
+	SetLockWaiting(true);
 	do
 	{
 		MyProc->errType = NO_ERROR;		/* reset flag after deadlock check */
@@ -588,6 +610,7 @@ ins:;
 						 IpcExclusiveLock);
 	} while (MyProc->errType == STATUS_NOT_FOUND);		/* sleep after deadlock
 														 * check */
+	SetLockWaiting(false);
 
 	/* ---------------
 	 * We were awoken before a timeout - now disable the timer
