@@ -16,7 +16,7 @@ include $(top_builddir)/src/Makefile.global
 
 OBJS = be-fsstubs.o \
 	auth.o crypt.o hba.o md5.o password.o \
-	pqcomm.o pqformat.o pqpacket.o pqsignal.o util.o
+	pqcomm.o pqformat.o pqsignal.o util.o
 
 
 all: check_md5 SUBSYS.o

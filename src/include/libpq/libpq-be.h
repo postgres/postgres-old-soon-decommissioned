@@ -146,14 +146,4 @@ typedef struct Port
 
 extern ProtocolVersion FrontendProtocol;
 
-
-/*
- * prototypes for functions in pqpacket.c
- */
-void		PacketReceiveSetup(Packet *pkt, PacketDoneProc iodone, void *arg);
-int			PacketReceiveFragment(Port *port);
-void		PacketSendSetup(Packet *pkt, int nbytes, PacketDoneProc iodone, void *arg);
-int			PacketSendFragment(Port *port);
-void		PacketSendError(Packet *pkt, char *errormsg);
-
 #endif   /* LIBPQ_BE_H */
