@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Thu Oct  9 21:52:10 EDT 2003
+Last updated:		Thu Oct  9 22:42:10 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -293,6 +293,7 @@ Clients
 * Allow clients to query WITH HOLD cursors and prepared statements
 * Prevent unneeded quoting in psql \d output using fmtId()
 * Add a libpq function to support Parse/DescribeStatement capability
+* Prevent libpq's PQfnumber() from lowercasing the column name
 
 
 * JDBC
@@ -569,4 +570,3 @@ Developers who have claimed items are:
 * Tatsuo is Tatsuo Ishii <t-ishii@sra.co.jp> of Software Research Assoc.
 * Thomas is Thomas Lockhart <lockhart@fourpalms.org> of Jet Propulsion Labratory
 * Tom is Tom Lane <tgl@sss.pgh.pa.us> of Red Hat
-* Vadim is Vadim B. Mikheev <vadim4o@email.com> of Sector Data
