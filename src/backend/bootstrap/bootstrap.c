@@ -262,7 +262,7 @@ BootstrapMain(int argc, char *argv[])
 										 * parsing */
 				break;
 			case 'F':
-				SetConfigOption("fsync", "false", PGC_POSTMASTER, true);
+				SetConfigOption("fsync", "false", PGC_POSTMASTER, PGC_S_ARGV);
 				break;
 			case 'o':
 				StrNCpy(OutputFileName, optarg, MAXPGPATH);
@@ -274,7 +274,7 @@ BootstrapMain(int argc, char *argv[])
 				/* indicates fork from postmaster */
 				break;
 			case 'B':
-				SetConfigOption("shared_buffers", optarg, PGC_POSTMASTER, true);
+				SetConfigOption("shared_buffers", optarg, PGC_POSTMASTER, PGC_S_ARGV);
 				break;
 			default:
 				usage();

@@ -46,15 +46,32 @@ typedef enum
 	PGC_USERSET
 } GucContext;
 
+/*
+ * The following type records the source of the current setting.  A
+ * new setting can only take effect if the previous setting had the
+ * same or lower level.  (E.g, changing the config file doesn't
+ * override the postmaster command line.)
+ */
+typedef enum
+{
+	PGC_S_DEFAULT = 0,			/* wired-in default */
+	PGC_S_FILE = 1,				/* postgresql.conf */
+	PGC_S_ARGV = 2,				/* postmaster command line */
+	PGC_S_DATABASE = 3,			/* per-database setting */
+	PGC_S_USER = 4,				/* per-user setting */
+	PGC_S_CLIENT = 5,			/* from client (PGOPTIONS) */
+	PGC_S_SESSION = 6,			/* SET command */
+	PGC_S_INFINITY = 100		/* can be used to avoid checks */
+} GucSource;
 
 extern void SetConfigOption(const char *name, const char *value,
-				GucContext context, bool makeDefault);
+				GucContext context, GucSource source);
 extern const char *GetConfigOption(const char *name);
 extern void ProcessConfigFile(GucContext context);
 extern void ResetAllOptions(bool isStartup);
 extern void ParseLongOption(const char *string, char **name, char **value);
 extern bool set_config_option(const char *name, const char *value,
-				  GucContext context, bool DoIt, bool makeDefault);
+				  GucContext context, bool DoIt, GucSource source);
 extern void ShowAllGUCConfig(void);
 
 

@@ -780,7 +780,7 @@ SetPGVariable(const char *name, List *args)
 		if (strcasecmp(name, "session_authorization") == 0)
 			SetSessionAuthorization(value);
 		else
-			SetConfigOption(name, value, superuser() ? PGC_SUSET : PGC_USERSET, false);
+			SetConfigOption(name, value, superuser() ? PGC_SUSET : PGC_USERSET, PGC_S_SESSION);
 	}
 	return;
 }
@@ -846,5 +846,5 @@ ResetPGVariable(const char *name)
 	else
 		SetConfigOption(name, NULL,
 						superuser() ? PGC_SUSET : PGC_USERSET,
-						false);
+						PGC_S_SESSION);
 }

@@ -240,13 +240,15 @@ ProcessConfigFile(GucContext context)
 	 */
     for(item = head; item; item=item->next)
 	{
-		if (!set_config_option(item->name, item->value, context, false, false))
+		if (!set_config_option(item->name, item->value, context,
+							   false, PGC_S_INFINITY))
 			goto cleanup_exit;
 	}
 
     /* If we got here all the options parsed okay. */
 	for(item = head; item; item=item->next)
-		set_config_option(item->name, item->value, context, true, true);
+		set_config_option(item->name, item->value, context,
+						  true, PGC_S_FILE);
 
  cleanup_exit:
 	free_name_value_list(head);
