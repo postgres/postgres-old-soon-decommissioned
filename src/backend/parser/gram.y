@@ -3043,7 +3043,10 @@ row_expr: '(' row_descriptor ')' IN '(' SubSelect ')'
 					SubLink *n = makeNode(SubLink);
 					n->lefthand = $2;
 					n->oper = lcons($4,NIL);
-					n->useor = false;
+					if (strcmp($4,"<>") == 0)
+						n->useor = true;
+					else
+						n->useor = false;
 					n->subLinkType = ANY_SUBLINK;
 					n->subselect = $7;
 					$$ = (Node *)n;
@@ -3123,7 +3126,10 @@ row_expr: '(' row_descriptor ')' IN '(' SubSelect ')'
 					SubLink *n = makeNode(SubLink);
 					n->lefthand = $2;
 					n->oper = lcons($4,NIL);
-					n->useor = false;
+					if (strcmp($4,"<>") == 0)
+						n->useor = true;
+					else
+						n->useor = false;
 					n->subLinkType = ALL_SUBLINK;
 					n->subselect = $7;
 					$$ = (Node *)n;
