@@ -316,8 +316,6 @@ InitCommunication()
 
 	if (PointerIsValid(postport))
 	{
-		SystemPortAddress address = atoi(postport);
-
 		if (MyBackendTag == -1)
 			elog(FATAL, "InitCommunication: missing POSTID");
 
