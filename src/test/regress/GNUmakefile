@@ -25,6 +25,12 @@ SHLIB_LINK = $(BE_DLLLIBS)
 # default encoding
 MULTIBYTE = SQL_ASCII
 
+# maximum simultaneous connections for parallel tests
+MAXCONNOPT :=
+ifdef MAX_CONNECTIONS
+MAXCONNOPT += --max-connections=$(MAX_CONNECTIONS)
+endif
+
 
 ##
 ## Prepare for tests
@@ -113,7 +119,7 @@ all-spi:
 ##
 
 check: all
-	$(SHELL) ./pg_regress --temp-install --top-builddir=$(top_builddir) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE)
+	$(SHELL) ./pg_regress --temp-install --top-builddir=$(top_builddir) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) $(MAXCONNOPT)
 
 installcheck: all
 	$(SHELL) ./pg_regress --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE)
@@ -128,7 +134,7 @@ bigtest:
 	$(SHELL) ./pg_regress --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE) numeric_big
 
 bigcheck:
-	$(SHELL) ./pg_regress --temp-install --top-builddir=$(top_builddir) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) numeric_big
+	$(SHELL) ./pg_regress --temp-install --top-builddir=$(top_builddir) --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) $(MAXCONNOPT) numeric_big
 
 
 ##
