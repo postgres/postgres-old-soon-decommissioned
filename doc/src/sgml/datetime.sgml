@@ -225,7 +225,7 @@ Date/time details
       <row>
        <entry>DNT</entry>
        <entry>+1:00 </entry>
-       <entry>Dansk Normal Tid</entry>
+       <entry><foreignphrase>Dansk Normal Tid</foreignphrase></entry>
       </row>
       <row>
        <entry>FST</entry>

@@ -9,7 +9,7 @@
 
  <para>
   <productname>Postgres</productname> allows columns of a table to be
-  defined as variable-length multi-dimensional arrays. Arrays of any
+  defined as variable-length multidimensional arrays. Arrays of any
   built-in type or user-defined type can be created.  To illustrate
   their use, we create this table:
 <programlisting>

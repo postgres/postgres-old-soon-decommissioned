@@ -593,7 +593,7 @@ ERROR:  Can't serialize access due to concurrent update
     <variablelist>
      <varlistentry>
       <term>
-       GiST and R-Tree indexes
+       <acronym>GiST</acronym> and R-Tree indexes
       </term>
       <listitem>
        <para>
