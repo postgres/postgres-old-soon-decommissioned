@@ -609,7 +609,7 @@ BufferAlloc(Relation reln,
 	}
 
 	/* record the database name and relation name for this buffer */
-	strcpy(buf->blind.dbname, DatabaseName);
+	strcpy(buf->blind.dbname, (DatabaseName) ? DatabaseName : "Recovery");
 	strcpy(buf->blind.relname, RelationGetPhysicalRelationName(reln));
 	buf->relId = reln->rd_lockInfo.lockRelId;
 
@@ -1168,8 +1168,9 @@ BufferSync()
 
 		SpinRelease(BufMgrLock);
 	}
-
+#ifndef XLOG
 	LocalBufferSync();
+#endif
 }
 
 

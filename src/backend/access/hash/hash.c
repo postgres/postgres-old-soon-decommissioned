@@ -25,8 +25,15 @@
 #include "executor/executor.h"
 #include "miscadmin.h"
 
-
 bool		BuildingHash = false;
+
+#ifdef XLOG
+#include "access/xlogutils.h"
+void hash_redo(XLogRecPtr lsn, XLogRecord *record);
+void hash_undo(XLogRecPtr lsn, XLogRecord *record);
+void hash_desc(char *buf, uint8 xl_info, char* rec);
+#endif
+
 
 /*
  *	hashbuild() -- build a new hash index.
@@ -478,3 +485,22 @@ hashdelete(PG_FUNCTION_ARGS)
 
 	PG_RETURN_VOID();
 }
+
+#ifdef XLOG
+void
+hash_redo(XLogRecPtr lsn, XLogRecord *record)
+{
+	elog(STOP, "hash_redo: unimplemented");
+}
+
+void
+hash_undo(XLogRecPtr lsn, XLogRecord *record)
+{
+	elog(STOP, "hash_undo: unimplemented");
+}
+ 
+void
+hash_desc(char *buf, uint8 xl_info, char* rec)
+{
+}
+#endif

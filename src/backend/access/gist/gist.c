@@ -23,6 +23,12 @@
 #include "miscadmin.h"
 #include "utils/syscache.h"
 
+#ifdef XLOG
+#include "access/xlogutils.h"
+void gist_redo(XLogRecPtr lsn, XLogRecord *record);
+void gist_undo(XLogRecPtr lsn, XLogRecord *record);
+void gist_desc(char *buf, uint8 xl_info, char* rec);
+#endif
 
 /* non-export function prototypes */
 static InsertIndexResult gistdoinsert(Relation r, IndexTuple itup,
@@ -1344,3 +1350,22 @@ int_range_out(INTRANGE *r)
 }
 
 #endif	 /* defined GISTDEBUG */
+
+#ifdef XLOG
+void
+gist_redo(XLogRecPtr lsn, XLogRecord *record)
+{
+	elog(STOP, "gist_redo: unimplemented");
+}
+ 
+void
+gist_undo(XLogRecPtr lsn, XLogRecord *record)
+{
+	elog(STOP, "gist_undo: unimplemented");
+}
+ 
+void
+gist_desc(char *buf, uint8 xl_info, char* rec)
+{
+}
+#endif

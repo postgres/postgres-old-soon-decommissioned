@@ -31,14 +31,10 @@ typedef ItemIdData *ItemId;
  */
 #define LP_USED			0x01	/* this line pointer is being used */
 
-#ifdef XLOG
-
 #define LP_DELETE		0x02    /* item is to be deleted */
 
 #define ItemIdDeleted(itemId) \
 	(((itemId)->lp_flags & LP_DELETE) != 0)
-
-#endif
 
 /*
  * This bit may be passed to PageAddItem together with

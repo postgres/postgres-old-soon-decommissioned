@@ -345,6 +345,7 @@ BootstrapMain(int argc, char *argv[])
 
 	if (IsUnderPostmaster && xloginit)
 	{
+		SetProcessingMode(NormalProcessing);
 		StartupXLOG();
 		proc_exit(0);
 	}
@@ -360,6 +361,7 @@ BootstrapMain(int argc, char *argv[])
 
 	if (IsUnderPostmaster && !xloginit)
 	{
+		SetProcessingMode(NormalProcessing);
 		ShutdownXLOG();
 		proc_exit(0);
 	}

@@ -220,6 +220,10 @@ extern char *optarg;
 extern int	optind,
 			opterr;
 
+extern char XLogDir[];
+extern char ControlFilePath[];
+extern void SetThisStartUpID(void);
+
 /*
  * postmaster.c - function prototypes
  */
@@ -599,6 +603,10 @@ PostmasterMain(int argc, char *argv[])
 #endif
 	/* set up shared memory and semaphores */
 	reset_shared(PostPortName);
+
+	/* Init XLOG pathes */
+	snprintf(XLogDir, MAXPGPATH, "%s/pg_xlog", DataDir);
+	snprintf(ControlFilePath, MAXPGPATH, "%s/global/pg_control", DataDir);
 
 	/*
 	 * Initialize the list of active backends.	This list is only used for
@@ -1449,6 +1457,12 @@ reaper(SIGNAL_ARGS)
 					abort();
 				ShutdownPID = ShutdownDataBase();
 			}
+
+			/*
+			 * Startup succeeded - remember its ID
+			 */
+			SetThisStartUpID();
+
 			pqsignal(SIGCHLD, reaper);
 			return;
 		}

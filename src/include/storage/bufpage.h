@@ -324,6 +324,7 @@ extern void PageRestoreTempPage(Page tempPage, Page oldPage);
 extern void PageRepairFragmentation(Page page);
 extern Size PageGetFreeSpace(Page page);
 extern void PageIndexTupleDelete(Page page, OffsetNumber offset);
+extern void IndexPageCleanup(Buffer buffer);
 
 
 #endif	 /* BUFPAGE_H */
