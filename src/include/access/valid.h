@@ -77,14 +77,9 @@ do \
 /* ----------------
  *		HeapTupleSatisfies
  *
- *	Returns a valid HeapTuple if it satisfies the timequal and keytest.
- *	Returns NULL otherwise.  Used to be heap_satisifies (sic) which
- *	returned a boolean.  It now returns a tuple so that we can avoid doing two
- *	PageGetItem's per tuple.
- *
- *		Complete check of validity including LP_CTUP and keytest.
- *		This should perhaps be combined with valid somehow in the
- *		future.  (Also, additional rule tests/time range tests.)
+ *	res is set TRUE if the HeapTuple satisfies the timequal and keytest,
+ *	otherwise it is set FALSE.  Note that the hint bits in the HeapTuple's
+ *	t_infomask may be updated as a side effect.
  *
  *	on 8/21/92 mao says:  i rearranged the tests here to do keytest before
  *	SatisfiesTimeQual.	profiling indicated that even for vacuumed relations,
@@ -100,34 +95,27 @@ do \
 						   disk_page, \
 						   seeself, \
 						   nKeys, \
-						   key) \
+						   key, \
+						   res) \
 do \
 { \
 /* We use underscores to protect the variable passed in as parameters */ \
-	bool		_res; \
- \
 	if ((key) != NULL) \
 		HeapKeyTest(tuple, RelationGetDescr(relation), \
-						   (nKeys), (key), _res); \
+						   (nKeys), (key), (res)); \
 	else \
-		_res = TRUE; \
+		(res) = true; \
  \
-	if (_res) \
+	if (res) \
 	{ \
 		if ((relation)->rd_rel->relkind != RELKIND_UNCATALOGED) \
 		{ \
 			uint16	_infomask = (tuple)->t_data->t_infomask; \
 			\
-			_res = HeapTupleSatisfiesVisibility((tuple), (seeself)); \
+			(res) = HeapTupleSatisfiesVisibility((tuple), (seeself)); \
 			if ((tuple)->t_data->t_infomask != _infomask) \
 				SetBufferCommitInfoNeedsSave(buffer); \
-			if (!_res) \
-				(tuple)->t_data = NULL; \
 		} \
-	} \
-	else \
-	{ \
-		(tuple)->t_data = NULL; \
 	} \
 } while (0)
 

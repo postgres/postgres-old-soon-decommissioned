@@ -150,11 +150,8 @@ TidNext(TidScan *node)
 	{
 		bool		slot_is_valid = false;
 
-		tuple->t_datamcxt = NULL;
-		tuple->t_data = NULL;
 		tuple->t_self = tidList[tidstate->tss_TidPtr];
-		heap_fetch(heapRelation, snapshot, tuple, &buffer, NULL);
-		if (tuple->t_data != NULL)
+		if (heap_fetch(heapRelation, snapshot, tuple, &buffer, false, NULL))
 		{
 			bool		prev_matches = false;
 			int			prev_tid;
@@ -198,8 +195,6 @@ TidNext(TidScan *node)
 			else
 				ExecClearTuple(slot);
 		}
-		else if (BufferIsValid(buffer))
-			ReleaseBuffer(buffer);
 		tidNumber++;
 		if (bBackward)
 			tidstate->tss_TidPtr--;

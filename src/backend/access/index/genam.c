@@ -89,6 +89,11 @@ RelationGetIndexScan(Relation indexRelation,
 	else
 		scan->keyData = NULL;
 
+	scan->kill_prior_tuple = false;
+	scan->ignore_killed_tuples = true; /* default setting */
+	scan->keys_are_unique = false; /* may be set by amrescan */
+	scan->got_tuple = false;
+
 	scan->opaque = NULL;
 
 	ItemPointerSetInvalid(&scan->currentItemData);

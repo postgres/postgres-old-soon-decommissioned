@@ -383,7 +383,7 @@ extern ScanKey _bt_mkscankey(Relation rel, IndexTuple itup);
 extern ScanKey _bt_mkscankey_nodata(Relation rel);
 extern void _bt_freeskey(ScanKey skey);
 extern void _bt_freestack(BTStack stack);
-extern void _bt_orderkeys(Relation relation, BTScanOpaque so);
+extern void _bt_orderkeys(IndexScanDesc scan);
 extern bool _bt_checkkeys(IndexScanDesc scan, IndexTuple tuple,
 			  ScanDirection dir, bool *continuescan);
 extern BTItem _bt_formitem(IndexTuple itup);

@@ -170,7 +170,7 @@ extern ExprContext *MakePerTupleExprContext(EState *estate);
 extern void ExecOpenIndices(ResultRelInfo *resultRelInfo);
 extern void ExecCloseIndices(ResultRelInfo *resultRelInfo);
 extern void ExecInsertIndexTuples(TupleTableSlot *slot, ItemPointer tupleid,
-					  EState *estate, bool is_update);
+					  EState *estate, bool is_vacuum);
 
 extern void RegisterExprContextCallback(ExprContext *econtext,
 										ExprContextCallbackFunction function,

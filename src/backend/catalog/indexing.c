@@ -160,7 +160,8 @@ CatalogIndexInsert(Relation *idescs,
 					   nullv);
 
 		indexRes = index_insert(idescs[i], datum, nullv,
-								&heapTuple->t_self, heapRelation);
+								&heapTuple->t_self, heapRelation,
+								idescs[i]->rd_uniqueindex);
 		if (indexRes)
 			pfree(indexRes);
 		pfree(indexInfo);

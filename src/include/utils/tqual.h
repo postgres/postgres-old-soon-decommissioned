@@ -41,6 +41,8 @@ extern DLLIMPORT Snapshot SnapshotDirty;
 extern DLLIMPORT Snapshot QuerySnapshot;
 extern DLLIMPORT Snapshot SerializableSnapshot;
 
+extern TransactionId RecentGlobalXmin;
+
 extern bool ReferentialIntegritySnapshotOverride;
 
 #define IsSnapshotNow(snapshot)		((Snapshot) (snapshot) == SnapshotNow)

@@ -1421,16 +1421,14 @@ DeferredTriggerExecute(DeferredTriggerEvent event, int itemno,
 	if (ItemPointerIsValid(&(event->dte_oldctid)))
 	{
 		ItemPointerCopy(&(event->dte_oldctid), &(oldtuple.t_self));
-		heap_fetch(rel, SnapshotAny, &oldtuple, &oldbuffer, NULL);
-		if (!oldtuple.t_data)
+		if (!heap_fetch(rel, SnapshotAny, &oldtuple, &oldbuffer, false, NULL))
 			elog(ERROR, "DeferredTriggerExecute: failed to fetch old tuple");
 	}
 
 	if (ItemPointerIsValid(&(event->dte_newctid)))
 	{
 		ItemPointerCopy(&(event->dte_newctid), &(newtuple.t_self));
-		heap_fetch(rel, SnapshotAny, &newtuple, &newbuffer, NULL);
-		if (!newtuple.t_data)
+		if (!heap_fetch(rel, SnapshotAny, &newtuple, &newbuffer, false, NULL))
 			elog(ERROR, "DeferredTriggerExecute: failed to fetch new tuple");
 	}
 

@@ -655,8 +655,8 @@ pageloop:;
 				goto pageloop;
 			}
 			ItemPointerSet(&targtuple.t_self, targblock, targoffset);
-			heap_fetch(onerel, SnapshotNow, &targtuple, &tupbuffer, NULL);
-			if (targtuple.t_data != NULL)
+			if (heap_fetch(onerel, SnapshotNow, &targtuple, &tupbuffer,
+						   false, NULL))
 			{
 				/*
 				 * Found a suitable tuple, so save it, replacing one old

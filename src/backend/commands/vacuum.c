@@ -458,7 +458,9 @@ vac_update_relstats(Oid relid, BlockNumber num_pages, double num_tuples,
 	/* get the buffer cache tuple */
 	rtup.t_self = ctup->t_self;
 	ReleaseSysCache(ctup);
-	heap_fetch(rd, SnapshotNow, &rtup, &buffer, NULL);
+	if (!heap_fetch(rd, SnapshotNow, &rtup, &buffer, false, NULL))
+		elog(ERROR, "pg_class entry for relid %u vanished during vacuuming",
+			 relid);
 
 	/* overwrite the existing statistics in the tuple */
 	pgcform = (Form_pg_class) GETSTRUCT(&rtup);

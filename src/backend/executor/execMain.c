@@ -1489,7 +1489,7 @@ lreplace:;
 
 	numIndices = resultRelInfo->ri_NumIndices;
 	if (numIndices > 0)
-		ExecInsertIndexTuples(slot, &(tuple->t_self), estate, true);
+		ExecInsertIndexTuples(slot, &(tuple->t_self), estate, false);
 
 	/* AFTER ROW UPDATE Triggers */
 	if (resultRelInfo->ri_TrigDesc)
@@ -1639,8 +1639,7 @@ EvalPlanQual(EState *estate, Index rti, ItemPointer tid)
 	{
 		Buffer		buffer;
 
-		heap_fetch(relation, SnapshotDirty, &tuple, &buffer, NULL);
-		if (tuple.t_data != NULL)
+		if (heap_fetch(relation, SnapshotDirty, &tuple, &buffer, false, NULL))
 		{
 			TransactionId xwait = SnapshotDirty->xmax;
 

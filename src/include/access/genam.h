@@ -54,7 +54,8 @@ extern void index_close(Relation relation);
 extern InsertIndexResult index_insert(Relation indexRelation,
 			 Datum *datums, char *nulls,
 			 ItemPointer heap_t_ctid,
-			 Relation heapRelation);
+			 Relation heapRelation,
+			 bool check_uniqueness);
 
 extern IndexScanDesc index_beginscan(Relation heapRelation,
 									 Relation indexRelation,
