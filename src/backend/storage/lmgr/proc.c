@@ -848,6 +848,7 @@ ProcReleaseSpins(PROC *proc)
 			SpinRelease(i);
 		}
 	}
+	AbortBufferIO();
 }
 
 /*****************************************************************************

@@ -186,5 +186,6 @@ extern void SetBufferCommitInfoNeedsSave(Buffer buffer);
 
 extern void UnlockBuffers(void);
 extern void LockBuffer(Buffer buffer, int mode);
+extern void AbortBufferIO(void);
 
 #endif
