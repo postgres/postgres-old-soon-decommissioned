@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sat Nov 29 23:07:00 EST 2003
+Last updated:		Sat Nov 29 23:44:35 EST 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -80,6 +80,8 @@ Data Types
 * Add ALTER DOMAIN, AGGREGATE, CONVERSION, SEQUENCE ... OWNER TO
 * Allow to_char to print localized month names (Karel)
 * Allow functions to have a search path specified at creation time
+* Make LENGTH() of CHAR() not count trailing spaces
+
 
 
 * ARRAYS
