@@ -62,7 +62,7 @@ Postgres documentation
   </para>
 
   <para>
-   The SQL script will be written to the standard ouput.  Shell
+   The SQL script will be written to the standard output.  Shell
    operators should be used to redirect it into a file.
   </para>
 
