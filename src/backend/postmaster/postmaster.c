@@ -753,7 +753,7 @@ PostmasterMain(int argc, char *argv[])
 										  UnixSocketDir,
 										  ListenSocket, MAXLISTEN);
 				if (status != STATUS_OK)
-					ereport(LOG,
+					ereport(FATAL,
 					 (errmsg("could not create listen socket for \"%s\"",
 							 curhost)));
 				if (endptr)
@@ -772,7 +772,7 @@ PostmasterMain(int argc, char *argv[])
 									  UnixSocketDir,
 									  ListenSocket, MAXLISTEN);
 			if (status != STATUS_OK)
-				ereport(LOG,
+				ereport(FATAL,
 					  (errmsg("could not create TCP/IP listen socket")));
 		}
 
