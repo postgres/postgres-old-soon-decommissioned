@@ -76,7 +76,9 @@ appendStringInfo(StringInfo str, char *buffer)
 				newlen;
 	char	   *s;
 
-	Assert((str != NULL));
+	Assert(str != NULL);
+	if (buffer == NULL)
+		buffer = "\"\"";
 
 	/*
 	 * do we have enough space to append the new string? (don't forget to

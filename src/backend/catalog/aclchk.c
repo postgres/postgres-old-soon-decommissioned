@@ -410,7 +410,7 @@ pg_aclcheck(char *relname, char *usename, AclMode mode)
 		 * pg_database table, there is still additional permissions
 		 * checking in dbcommands.c
 		 */
-		if (mode & ACL_AP)
+		if ((mode & ACL_WR) || (mode & ACL_AP))
 			return ACLCHECK_OK;
 	}
 

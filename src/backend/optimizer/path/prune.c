@@ -76,21 +76,18 @@ prune_joinrel(Rel *rel, List *other_rels)
 	return_list = cur;
 	
 	/* remove relations that do match, we use lnext so we can remove easily */
-	if (cur != NIL)
+	while (cur != NIL && lnext(cur) != NIL)
 	{
-		while (lnext(cur) != NIL)
-		{
-			Rel	*other_rel = (Rel *) lfirst(lnext(cur));
+		Rel	*other_rel = (Rel *) lfirst(lnext(cur));
 
-			if (same(rel->relids, other_rel->relids))
-			{
-				rel->pathlist = add_pathlist(rel,
-											 rel->pathlist,
-											 other_rel->pathlist);
-				lnext(cur) = lnext(lnext(cur)); /* delete it */
-			}
-			cur = lnext(cur);
+		if (same(rel->relids, other_rel->relids))
+		{
+			rel->pathlist = add_pathlist(rel,
+										 rel->pathlist,
+										 other_rel->pathlist);
+			lnext(cur) = lnext(lnext(cur)); /* delete it */
 		}
+		cur = lnext(cur);
 	}
 	return return_list;
 }
