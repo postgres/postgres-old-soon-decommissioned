@@ -136,7 +136,7 @@ CREATE FUNCTION tcl_max(integer, integer) RETURNS integer AS '
 
     <para>
      As shown above,
-     to return a NULL value from a PL/Tcl function, execute
+     to return a null value from a PL/Tcl function, execute
      <literal>return_null</literal>.  This can be done whether the
      function is strict or not.
     </para>
