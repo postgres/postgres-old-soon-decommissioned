@@ -227,15 +227,8 @@ parse_hba_auth(List *line, ProtocolVersion proto, UserAuth *userauth_p,
 		else if (strcmp(token, "reject") == 0)
 			*userauth_p = uaReject;
 		else if (strcmp(token, "crypt") == 0)
-		{
-			/* if the client supports it, use MD5 */
-			if (PG_PROTOCOL_MAJOR(proto) > 2 ||
-				(PG_PROTOCOL_MAJOR(proto) == 2 &&
-				 PG_PROTOCOL_MINOR(proto) >= 1))
-				*userauth_p = uaMD5;
-			else
-				*userauth_p = uaCrypt;
-		}
+			/* Try MD5 first; on failure, switch to crypt() */
+			*userauth_p = uaMD5;
 		else
 			*error_p = true;
 		line = lnext(line);

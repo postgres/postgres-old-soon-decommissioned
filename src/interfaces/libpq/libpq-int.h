@@ -45,7 +45,7 @@
  * pqcomm.h describe what the backend knows, not what libpq knows.
  */
 
-#define PG_PROTOCOL_LIBPQ	PG_PROTOCOL(2,1)
+#define PG_PROTOCOL_LIBPQ	PG_PROTOCOL(2,0)
 
 /*
  * POSTGRES backend dependent Constants.
