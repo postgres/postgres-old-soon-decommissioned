@@ -218,7 +218,7 @@ storePending(char *cpTableName, HeapTuple tBeforeTuple,
 	}
 
 #if defined DEBUG_OUTPUT
-	elog(NOTICE, "DOne storing keyinfo");
+	elog(NOTICE, "Done storing keyinfo");
 #endif
 
 	return iResult;
@@ -253,7 +253,7 @@ storeKeyInfo(char *cpTableName, HeapTuple tTupleData,
 		return -1;
 	}
 #if defined DEBUG_OUTPUT
-	elog(NOTICE, cpKeyData);
+	elog(NOTICE, "%s", cpKeyData);
 #endif
 	saPlanData[0] = PointerGetDatum(cpKeyData);
 
@@ -437,7 +437,7 @@ packageData(HeapTuple tTupleData, TupleDesc tTupleDesc,
 		cpFieldName = DatumGetPointer(NameGetDatum(&tTupleDesc->attrs
 										 [iColumnCounter - 1]->attname));
 #if defined DEBUG_OUTPUT
-		elog(NOTICE, cpFieldName);
+		elog(NOTICE, "%s", cpFieldName);
 #endif
 		while (iDataBlockSize - iUsedDataBlock < strlen(cpFieldName) + 6)
 		{
@@ -465,7 +465,7 @@ packageData(HeapTuple tTupleData, TupleDesc tTupleDesc,
 
 		}
 #if defined DEBUG_OUTPUT
-		elog(NOTICE, cpFieldData);
+		elog(NOTICE, "%s", cpFieldData);
 		elog(NOTICE, "Starting format loop");
 #endif
 		while (*cpUnFormatedPtr != 0)
@@ -499,7 +499,7 @@ packageData(HeapTuple tTupleData, TupleDesc tTupleDesc,
 		sprintf(cpFormatedPtr, "' ");
 		iUsedDataBlock = iUsedDataBlock + 2;
 #if defined DEBUG_OUTPUT
-		elog(NOTICE, cpDataBlock);
+		elog(NOTICE, "%s", cpDataBlock);
 #endif
 
 	}							/* for iColumnCounter  */
