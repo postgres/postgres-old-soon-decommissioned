@@ -423,6 +423,17 @@ typedef struct ExplainStmt {
     bool		verbose;	/* print plan info */
 } ExplainStmt;
 
+/* ----------------------
+ * Set Statement
+ * ----------------------
+ */
+
+typedef struct VariableSetStmt {
+	NodeTag	type;
+	char	*name;
+	char	*value;
+	} VariableSetStmt;
+
 
 /*****************************************************************************
  *	Optimizable Statements
