@@ -598,7 +598,7 @@ GetDefaultOpClass(Oid atttypid)
  *
  * Exceptions:
  *		BadArg if name is invalid.
- *		"WARN" if index nonexistent.
+ *		"ERROR" if index nonexistent.
  *		...
  */
 void

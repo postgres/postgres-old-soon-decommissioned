@@ -24,7 +24,7 @@
  *
  * Exceptions:
  *		BadArg if forward invalid.
- *		"WARN" if portal not found.
+ *		"ERROR" if portal not found.
  */
 extern void PerformPortalFetch(char *name, bool forward, int count,
 				   char *tag, CommandDest dest);
