@@ -2026,7 +2026,7 @@ usage(const char *progname)
 /*
  * Initialized NLS if enabled.
  */
-void
+static void
 init_nls(void)
 {
 #ifdef ENABLE_NLS
