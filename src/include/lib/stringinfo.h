@@ -42,6 +42,6 @@ extern StringInfo makeStringInfo(void);
  * appendStringInfo
  * similar to 'strcat' but reallocates more space if necessary...
  */
-extern void appendStringInfo(StringInfo str, char *buffer);
+extern void appendStringInfo(StringInfo str, const char *fmt,...);
 
 #endif	 /* STRINGINFO_H */

@@ -24,7 +24,7 @@
  *		ExecCreatR		function to create temporary relations
  *
  */
-#include <stdio.h>				/* for sprintf() */
+#include <stdio.h>			
 
 #include "postgres.h"
 

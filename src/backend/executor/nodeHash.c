@@ -19,7 +19,7 @@
  */
 
 #include <sys/types.h>
-#include <stdio.h>				/* for sprintf() */
+#include <stdio.h>		
 #include <math.h>
 #include <string.h>
 #include <sys/file.h>

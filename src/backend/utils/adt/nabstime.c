@@ -1,15 +1,11 @@
-/*-------------------------------------------------------------------------
- *
+/*
  * nabstime.c--
  *	  parse almost any absolute date getdate(3) can (& some it can't)
  *
  * Copyright (c) 1994, Regents of the University of California
  *
+ *	  $Id$
  *
- * IDENTIFICATION
- *	  $Header$
- *
- *-------------------------------------------------------------------------
  */
 #include <stdio.h>
 #include <ctype.h>
