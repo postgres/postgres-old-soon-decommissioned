@@ -76,8 +76,10 @@ InitLockTable(int maxBackends)
 {
 	int			lockmethod;
 
+	/* number of lock modes is lengthof()-1 because of dummy zero */
 	lockmethod = LockMethodTableInit("LockTable",
-									 LockConflicts, MAX_LOCKMODES - 1,
+									 LockConflicts,
+									 lengthof(LockConflicts) - 1,
 									 maxBackends);
 	LockTableId = lockmethod;
 
