@@ -1691,10 +1691,10 @@ SELECT reffunc2();
   
         reffunc2      
   --------------------
-   <unnamed cursor 1>
+   &gt;unnamed cursor 1&lt;
   (1 row)
 
-FETCH ALL IN "<unnamed cursor 1>";
+FETCH ALL IN "&gt;unnamed cursor 1&lt;";
 COMMIT;
 </programlisting>
        </para>
