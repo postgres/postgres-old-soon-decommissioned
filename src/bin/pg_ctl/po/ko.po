@@ -1,0 +1,522 @@
+# Korean message translation file for PostgreSQL pg_ctl
+# Ioseph Kim <ioseph@uri.sarang.net>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PostgreSQL 8.0\n"
+"POT-Creation-Date: 2004-12-15 07:07+0000\n"
+"PO-Revision-Date: 2004-12-16 11:30+0900\n"
+"Last-Translator: Ioseph Kim <ioseph@uri.sarang.net>\n"
+"Language-Team: KOREAN <pgsql-kr@postgresql.or.kr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=euc-kr\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Korean\n"
+"X-Poedit-Country: KOREA, REPUBLIC OF\n"
+
+#: pg_ctl.c:201
+#: pg_ctl.c:216
+#: pg_ctl.c:1342
+#, c-format
+msgid "%s: out of memory\n"
+msgstr "%s: 메모리 부족\n"
+
+#: pg_ctl.c:250
+#, c-format
+msgid "%s: could not open PID file \"%s\": %s"
+msgstr "%s: \"%s\" PID 파일을 열 수 없음: %s"
+
+#: pg_ctl.c:469
+#, c-format
+msgid "%s: another postmaster may be running; trying to start postmaster anyway\n"
+msgstr "%s: 다른 postmaster 프로세스가 가동 중인 것 같음; 어째든 postmaster 가동을 시도함\n"
+
+#: pg_ctl.c:487
+#, c-format
+msgid "%s: could not read file \"%s\"\n"
+msgstr "%s: \"%s\" 파일을 읽을 수 없음\n"
+
+#: pg_ctl.c:493
+#, c-format
+msgid "%s: option file \"%s\" must have exactly one line\n"
+msgstr "%s: \"%s\" 환경설정파일은 반드시 한 줄을 가져야한다?\n"
+
+#: pg_ctl.c:544
+#, c-format
+msgid ""
+"The program \"postmaster\" is needed by %s but was not found in the\n"
+"same directory as \"%s\".\n"
+"Check your installation.\n"
+msgstr ""
+"%s 프로그램은 \"postgres\" 프로그램을 필요로 합니다. 그런데, 이 파일이\n"
+"\"%s\" 파일이 있는 디렉토리안에 없습니다.\n"
+"설치 상태를 확인해 주십시오.\n"
+
+#: pg_ctl.c:550
+#, c-format
+msgid ""
+"The program \"postmaster\" was found by \"%s\"\n"
+"but was not the same version as %s.\n"
+"Check your installation.\n"
+msgstr ""
+"\"%s\" 프로그램은 \"postgres\" 프로그램을 찾았지만 이 파일은\n"
+"%s 프로그램의 버전과 틀립니다.\n"
+"설치 상태를 확인해 주십시오.\n"
+
+#: pg_ctl.c:562
+#, c-format
+msgid "%s: could not start postmaster: exit code was %d\n"
+msgstr "%s: postmaster를 시작할 수 없음: 종료 코드 %d\n"
+
+#: pg_ctl.c:573
+#, c-format
+msgid ""
+"%s: could not start postmaster\n"
+"Examine the log output.\n"
+msgstr ""
+"%s: postmaster를 시작 할 수 없음\n"
+"로그 출력을 살펴보십시오.\n"
+
+#: pg_ctl.c:582
+msgid "waiting for postmaster to start..."
+msgstr "postmaster를 시작하기 위해 기다리는 중..."
+
+#: pg_ctl.c:585
+msgid "could not start postmaster\n"
+msgstr "postmaster를 시작 할 수 없음\n"
+
+#: pg_ctl.c:588
+#: pg_ctl.c:654
+#: pg_ctl.c:721
+msgid " done\n"
+msgstr " 완료\n"
+
+#: pg_ctl.c:589
+msgid "postmaster started\n"
+msgstr "postmaster 시작됨\n"
+
+#: pg_ctl.c:593
+msgid "postmaster starting\n"
+msgstr "postmaster를 시작합니다\n"
+
+#: pg_ctl.c:607
+#: pg_ctl.c:675
+#: pg_ctl.c:735
+#, c-format
+msgid "%s: PID file \"%s\" does not exist\n"
+msgstr "%s: \"%s\" PID 파일이 없습니다\n"
+
+#: pg_ctl.c:608
+#: pg_ctl.c:676
+#: pg_ctl.c:736
+msgid "Is postmaster running?\n"
+msgstr "postmaster가 실행 중입니까?\n"
+
+#: pg_ctl.c:614
+#, c-format
+msgid "%s: cannot stop postmaster; postgres is running (PID: %ld)\n"
+msgstr "%s: postmaster 중지 실패; postgres가 실행 중 (PID: %ld)\n"
+
+#: pg_ctl.c:622
+#: pg_ctl.c:693
+#, c-format
+msgid "%s: could not send stop signal (PID: %ld): %s\n"
+msgstr "%s: stop 시그널을 보낼 수 없음 (PID: %ld): %s\n"
+
+#: pg_ctl.c:629
+msgid "postmaster shutting down\n"
+msgstr "postmaster를 멈춥니다\n"
+
+#: pg_ctl.c:634
+#: pg_ctl.c:698
+msgid "waiting for postmaster to shut down..."
+msgstr "postmaster를 멈추기 위해 기다리는 중..."
+
+#: pg_ctl.c:649
+#: pg_ctl.c:715
+msgid " failed\n"
+msgstr " 실패\n"
+
+#: pg_ctl.c:651
+#: pg_ctl.c:717
+#, c-format
+msgid "%s: postmaster does not shut down\n"
+msgstr "%s: postmaster를 멈추지 못했음\n"
+
+#: pg_ctl.c:656
+#: pg_ctl.c:722
+msgid "postmaster stopped\n"
+msgstr "postmaster 멈추었음\n"
+
+#: pg_ctl.c:677
+msgid "starting postmaster anyway\n"
+msgstr "어째든 postmaster를 시작합니다\n"
+
+#: pg_ctl.c:684
+#, c-format
+msgid "%s: cannot restart postmaster; postgres is running (PID: %ld)\n"
+msgstr "%s: postmaster를 다시 시작 할 수 없음; postgres가 실행 중임 (PID: %ld)\n"
+
+#: pg_ctl.c:687
+#: pg_ctl.c:745
+msgid "Please terminate postgres and try again.\n"
+msgstr "postgres 프로세스를 끝내고 다시 시도하십시오.\n"
+
+#: pg_ctl.c:742
+#, c-format
+msgid "%s: cannot reload postmaster; postgres is running (PID: %ld)\n"
+msgstr "%s: postmaster를 다시 불러올 수 없음; postgres가 실행 중임 (PID: %ld)\n"
+
+#: pg_ctl.c:751
+#, c-format
+msgid "%s: could not send reload signal (PID: %ld): %s\n"
+msgstr "%s: reload 시그널을 보낼 수 없음 (PID: %ld): %s\n"
+
+#: pg_ctl.c:756
+msgid "postmaster signaled\n"
+msgstr "postmaster가 시스템 시그널을 받았음\n"
+
+#: pg_ctl.c:771
+#, c-format
+msgid "%s: neither postmaster nor postgres running\n"
+msgstr "%s: postmaster나 postgres 모두 실행 중이지 않음\n"
+
+#: pg_ctl.c:777
+#, c-format
+msgid "%s: a standalone backend \"postgres\" is running (PID: %ld)\n"
+msgstr "%s: 단일 백엔드 \"postgres\"가 실행 중임 (PID: %ld)\n"
+
+#: pg_ctl.c:784
+#, c-format
+msgid "%s: postmaster is running (PID: %ld)\n"
+msgstr "%s: postmaster가 실행 중임 (PID: %ld)\n"
+
+#: pg_ctl.c:800
+#, c-format
+msgid "%s: could not send signal %d (PID: %ld): %s\n"
+msgstr "%s: %d 시그널을 보낼 수 없음 (PID: %ld): %s\n"
+
+#: pg_ctl.c:833
+#, c-format
+msgid "%s: could not find own program executable\n"
+msgstr ""
+
+#: pg_ctl.c:842
+#, c-format
+msgid "%s: could not find postmaster program executable\n"
+msgstr "%s: 실행 가능한 postmaster 프로그램을 찾을 수 없음\n"
+
+#: pg_ctl.c:896
+#: pg_ctl.c:928
+#, c-format
+msgid "%s: could not open service manager\n"
+msgstr "%s: 서비스 관리자를 열 수 없음\n"
+
+#: pg_ctl.c:902
+#, c-format
+msgid "%s: service \"%s\" already registered\n"
+msgstr "%s: \"%s\" 서비스가 이미 등록 되어 있음\n"
+
+#: pg_ctl.c:913
+#, c-format
+msgid "%s: could not register service \"%s\": error code %d\n"
+msgstr "%s: \"%s\" 서비스를 등록할 수 없음: 오류 코드 %d\n"
+
+#: pg_ctl.c:934
+#, c-format
+msgid "%s: service \"%s\" not registered\n"
+msgstr "%s: \"%s\" 서비스가 등록되어 있지 않음\n"
+
+#: pg_ctl.c:941
+#, c-format
+msgid "%s: could not open service \"%s\": error code %d\n"
+msgstr "%s: \"%s\" 서비스를 열 수 없음: 오류 코드 %d\n"
+
+#: pg_ctl.c:948
+#, c-format
+msgid "%s: could not unregister service \"%s\": error code %d\n"
+msgstr "%s: \"%s\" 서비스를 서비스 목록에서 뺄 수 없음: 오류 코드 %d\n"
+
+#: pg_ctl.c:1085
+#, c-format
+msgid "Try \"%s --help\" for more information.\n"
+msgstr "보다 자세한 사용법은 \"%s --help\"\n"
+
+#: pg_ctl.c:1093
+#, c-format
+msgid ""
+"%s is a utility to start, stop, restart, reload configuration files,\n"
+"report the status of a PostgreSQL server, or signal a PostgreSQL process.\n"
+"\n"
+msgstr ""
+"%s 프로그램은 PostgreSQL 서비스를 시작, 중지, 재시작, 환경설정 재적용,\n"
+"서버 상태 보기, 또는 PostgreSQL 프로세스에 특정 시그널을 보낼 수 있는\n"
+"프로그램입니다.\n"
+"\n"
+
+#: pg_ctl.c:1095
+msgid "Usage:\n"
+msgstr "사용법:\n"
+
+#: pg_ctl.c:1096
+#, c-format
+msgid "  %s start   [-w] [-D DATADIR] [-s] [-l FILENAME] [-o \"OPTIONS\"]\n"
+msgstr "  %s start   [-w] [-D DATADIR] [-s] [-l 로그파일] [-o \"서버옵션\"]\n"
+
+#: pg_ctl.c:1097
+#, c-format
+msgid "  %s stop    [-W] [-D DATADIR] [-s] [-m SHUTDOWN-MODE]\n"
+msgstr "  %s stop    [-W] [-D DATADIR] [-s] [-m 중지방법]\n"
+
+#: pg_ctl.c:1098
+#, c-format
+msgid "  %s restart [-w] [-D DATADIR] [-s] [-m SHUTDOWN-MODE] [-o \"OPTIONS\"]\n"
+msgstr "  %s restart [-w] [-D DATADIR] [-s] [-m 중지방법] [-o \"서버옵션\"]\n"
+
+#: pg_ctl.c:1099
+#, c-format
+msgid "  %s reload  [-D DATADIR] [-s]\n"
+msgstr "  %s reload  [-D DATADIR] [-s]\n"
+
+#: pg_ctl.c:1100
+#, c-format
+msgid "  %s status  [-D DATADIR]\n"
+msgstr "  %s status  [-D DATADIR]\n"
+
+#: pg_ctl.c:1101
+#, c-format
+msgid "  %s kill    SIGNALNAME PID\n"
+msgstr "  %s kill    시그널이름 PID\n"
+
+#: pg_ctl.c:1103
+#, c-format
+msgid ""
+"  %s register   [-N SERVICENAME] [-U USERNAME] [-P PASSWORD] [-D DATADIR]\n"
+"                    [-w] [-o \"OPTIONS\"]\n"
+msgstr ""
+"  %s register   [-N 서비스이름] [-U 사용자] [-P 비밀번호] [-D DATADIR]\n"
+"                    [-w] [-o \"서버옵션\"]\n"
+
+#: pg_ctl.c:1105
+#, c-format
+msgid "  %s unregister [-N SERVICENAME]\n"
+msgstr "  %s unregister [-N 서비스이름]\n"
+
+#: pg_ctl.c:1108
+msgid ""
+"\n"
+"Common options:\n"
+msgstr ""
+"\n"
+"일반 옵션들:\n"
+
+#: pg_ctl.c:1109
+msgid "  -D, --pgdata DATADIR   location of the database storage area\n"
+msgstr "  -D, --pgdata DATADIR   데이터베이스 자료가 저장되어있는 디렉토리\n"
+
+#: pg_ctl.c:1110
+msgid "  -s, --silent           only print errors, no informational messages\n"
+msgstr "  -s, --silent           일반적인 메시지는 보이지 않고, 오류만 보여줌\n"
+
+#: pg_ctl.c:1111
+msgid "  -w                     wait until operation completes\n"
+msgstr "  -w                     작업이 끝날 때까지 기다림\n"
+
+#: pg_ctl.c:1112
+msgid "  -W                     do not wait until operation completes\n"
+msgstr "  -W                     작업이 끝날 때까지 기다리지 않음\n"
+
+#: pg_ctl.c:1113
+msgid "  --help                 show this help, then exit\n"
+msgstr "  --help                 도움말을 보여주고 마침\n"
+
+#: pg_ctl.c:1114
+msgid "  --version              output version information, then exit\n"
+msgstr "  --version              버전 정보를 보여주고 마침\n"
+
+#: pg_ctl.c:1115
+msgid ""
+"(The default is to wait for shutdown, but not for start or restart.)\n"
+"\n"
+msgstr "(기본 설정은 중지 할 때는 기다리고, 시작이나 재시작할 때는 안 기다림.)\n"
+
+#: pg_ctl.c:1116
+msgid "If the -D option is omitted, the environment variable PGDATA is used.\n"
+msgstr "-D 옵션을 사용하지 않으며, PGDATA 환경변수값을 사용함.\n"
+
+#: pg_ctl.c:1118
+msgid ""
+"\n"
+"Options for start or restart:\n"
+msgstr ""
+"\n"
+"start, restart 때 사용할 수 있는 옵션들:\n"
+
+#: pg_ctl.c:1119
+msgid "  -l, --log FILENAME     write (or append) server log to FILENAME\n"
+msgstr "  -l, --log 파일이름     서버 로그를 이 파일에 기록함\n"
+
+#: pg_ctl.c:1120
+msgid ""
+"  -o OPTIONS             command line options to pass to the postmaster\n"
+"                         (PostgreSQL server executable)\n"
+msgstr ""
+"  -o 옵션들              PostgreSQL 서버프로그램인 postmaster 실행할 때\n"
+"                         사용할 명령행 옵션들\n"
+
+#: pg_ctl.c:1122
+msgid "  -p PATH-TO-POSTMASTER  normally not necessary\n"
+msgstr "  -p PATH-TO-POSTMASTER  postmaster 경로 (보통은 필요치 않음)\n"
+
+#: pg_ctl.c:1124
+msgid ""
+"\n"
+"Options for stop or restart:\n"
+msgstr ""
+"\n"
+"stop, restart 때 사용 할 수 있는 옵션들:\n"
+
+#: pg_ctl.c:1125
+msgid "  -m SHUTDOWN-MODE   may be \"smart\", \"fast\", or \"immediate\"\n"
+msgstr "  -m 중지방법        \"smart\", \"fast\", \"immediate\" 중 하나\n"
+
+#: pg_ctl.c:1127
+msgid ""
+"\n"
+"Shutdown modes are:\n"
+msgstr ""
+"\n"
+"중지방법 설명:\n"
+
+#: pg_ctl.c:1128
+msgid "  smart       quit after all clients have disconnected\n"
+msgstr "  smart       모든 클라이언트의 연결이 끊기게 되면 중지 됨\n"
+
+#: pg_ctl.c:1129
+msgid "  fast        quit directly, with proper shutdown\n"
+msgstr "  fast        클라이언트의 연결을 강제로 끊고 정상적으로 중지 됨\n"
+
+#: pg_ctl.c:1130
+msgid "  immediate   quit without complete shutdown; will lead to recovery on restart\n"
+msgstr "  immediate   그냥 무조건 중지함; 다시 시작할 때 복구 작업을 할 수도 있음\n"
+
+#: pg_ctl.c:1132
+msgid ""
+"\n"
+"Allowed signal names for kill:\n"
+msgstr ""
+"\n"
+"사용할 수 있는 중지용(for kill) 시그널 이름:\n"
+
+#: pg_ctl.c:1136
+msgid ""
+"\n"
+"Options for register and unregister:\n"
+msgstr ""
+"\n"
+"서비스 등록/제거용 옵션들:\n"
+
+#: pg_ctl.c:1137
+msgid "  -N SERVICENAME  service name with which to register PostgreSQL server\n"
+msgstr "  -N SERVICENAME  서비스 목록에 등록될 PostgreSQL 서비스 이름\n"
+
+#: pg_ctl.c:1138
+msgid "  -P PASSWORD     password of account to register PostgreSQL server\n"
+msgstr "  -P PASSWORD     이 서비스를 실행할 사용자의 비밀번호\n"
+
+#: pg_ctl.c:1139
+msgid "  -U USERNAME     user name of account to register PostgreSQL server\n"
+msgstr "  -U USERNAME     이 서비스를 실행할 사용자 이름\n"
+
+#: pg_ctl.c:1142
+msgid ""
+"\n"
+"Report bugs to <pgsql-bugs@postgresql.org>.\n"
+msgstr ""
+"\n"
+"오류보고: <pgsql-bugs@postgresql.org>.\n"
+
+#: pg_ctl.c:1167
+#, c-format
+msgid "%s: unrecognized shutdown mode \"%s\"\n"
+msgstr "%s: 잘못된 중지 방법 \"%s\"\n"
+
+#: pg_ctl.c:1200
+#, c-format
+msgid "%s: unrecognized signal name \"%s\"\n"
+msgstr "%s: 잘못된 시그널 이름 \"%s\"\n"
+
+#: pg_ctl.c:1265
+#, c-format
+msgid ""
+"%s: cannot be run as root\n"
+"Please log in (using, e.g., \"su\") as the (unprivileged) user that will\n"
+"own the server process.\n"
+msgstr ""
+"%s: root로 이 프로그램을 실행하지 마십시오\n"
+"시스템관리자 권한이 없는, 서버프로세스의 소유주가 될 일반 사용자로\n"
+"로그인 해서(\"su\", \"runas\" 같은 명령 이용) 실행하십시오.\n"
+
+#: pg_ctl.c:1358
+#, c-format
+msgid "%s: invalid option %s\n"
+msgstr "%s: 잘못된 옵션 %s\n"
+
+#: pg_ctl.c:1369
+#, c-format
+msgid "%s: too many command-line arguments (first is \"%s\")\n"
+msgstr "%s: 너무 많은 명령행 인자들 (시작 \"%s\")\n"
+
+#: pg_ctl.c:1388
+#, c-format
+msgid "%s: missing arguments for kill mode\n"
+msgstr "%s: kill 작업에 필요한 인자가 빠졌습니다\n"
+
+#: pg_ctl.c:1406
+#, c-format
+msgid "%s: unrecognized operation mode \"%s\"\n"
+msgstr "%s: 알 수 없는 작업 모드 \"%s\"\n"
+
+#: pg_ctl.c:1416
+#, c-format
+msgid "%s: no operation specified\n"
+msgstr "%s: 수행할 작업을 지정하지 않았습니다\n"
+
+#: pg_ctl.c:1432
+#, c-format
+msgid "%s: no database directory specified and environment variable PGDATA unset\n"
+msgstr "%s: -D 옵션도 없고, PGDATA 환경변수값도 지정되어 있지 않습니다.\n"
+
+#: ../../port/exec.c:193
+#: ../../port/exec.c:307
+#: ../../port/exec.c:350
+#, c-format
+msgid "could not identify current directory: %s"
+msgstr "현재 디렉토리를 알 수 없음: %s"
+
+#: ../../port/exec.c:323
+#: ../../port/exec.c:359
+#, c-format
+msgid "could not change directory to \"%s\""
+msgstr "\"%s\" 디렉토리로 이동 할 수 없음"
+
+#: ../../port/exec.c:338
+#, c-format
+msgid "could not read symbolic link \"%s\""
+msgstr "\"%s\" 심벌릭 링크를 읽을 수 없음"
+
+#: ../../port/exec.c:569
+#, c-format
+msgid "child process exited with exit code %d"
+msgstr "하위 프로세스가 종료되었음, 종료 코드 %d"
+
+#: ../../port/exec.c:572
+#, c-format
+msgid "child process was terminated by signal %d"
+msgstr "하위 프로세스가 종료되었음, 시그널 %d"
+
+#: ../../port/exec.c:575
+#, c-format
+msgid "child process exited with unrecognized status %d"
+msgstr "하위 프로세스가 종료되었음, 알수 없는 상태 %d"
+
