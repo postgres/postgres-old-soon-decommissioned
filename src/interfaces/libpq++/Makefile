@@ -13,8 +13,8 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 NAME= pq++
-SO_MAJOR_VERSION= 3
-SO_MINOR_VERSION= 2
+SO_MAJOR_VERSION= 4
+SO_MINOR_VERSION= 0
 
 override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 
