@@ -23,7 +23,7 @@
  * will go away automatically at transaction end.  If the underlying
  * virtual File is made with OpenTemporaryFile, then all resources for
  * the file are certain to be cleaned up even if processing is aborted
- * by elog(ERROR).	To avoid confusion, the caller should take care that
+ * by ereport(ERROR).	To avoid confusion, the caller should take care that
  * all calls for a single BufFile are made in the same palloc context.
  *
  * BufFile also supports temporary files that exceed the OS file size limit
@@ -479,7 +479,7 @@ BufFileSeek(BufFile *file, int fileno, long offset, int whence)
 			break;
 #endif
 		default:
-			elog(ERROR, "BufFileSeek: invalid whence: %d", whence);
+			elog(ERROR, "invalid whence: %d", whence);
 			return EOF;
 	}
 	while (newOffset < 0)

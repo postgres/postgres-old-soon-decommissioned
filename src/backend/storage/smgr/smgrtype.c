@@ -48,7 +48,7 @@ smgrin(PG_FUNCTION_ARGS)
 		if (strcmp(s, StorageManager[i].smgr_name) == 0)
 			PG_RETURN_INT16(i);
 	}
-	elog(ERROR, "smgrin: unknown storage manager name '%s'", s);
+	elog(ERROR, "unrecognized storage manager name \"%s\"", s);
 	PG_RETURN_INT16(0);
 }
 
@@ -59,7 +59,7 @@ smgrout(PG_FUNCTION_ARGS)
 	char	   *s;
 
 	if (i >= NStorageManagers || i < 0)
-		elog(ERROR, "Illegal storage manager id %d", i);
+		elog(ERROR, "invalid storage manager id: %d", i);
 
 	s = pstrdup(StorageManager[i].smgr_name);
 	PG_RETURN_CSTRING(s);

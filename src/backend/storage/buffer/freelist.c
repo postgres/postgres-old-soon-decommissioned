@@ -198,7 +198,9 @@ GetFreeBuffer(void)
 	if (Free_List_Descriptor == SharedFreeList->freeNext)
 	{
 		/* queue is empty. All buffers in the buffer pool are pinned. */
-		elog(ERROR, "out of free buffers: time to abort!");
+		ereport(ERROR,
+				(errcode(ERRCODE_INSUFFICIENT_RESOURCES),
+				 errmsg("out of free buffers")));
 		return NULL;
 	}
 	buf = &(BufferDescriptors[SharedFreeList->freeNext]);

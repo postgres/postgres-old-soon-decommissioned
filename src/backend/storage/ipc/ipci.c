@@ -112,7 +112,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 	 */
 	InitLocks();
 	if (InitLockTable(maxBackends) == INVALID_TABLEID)
-		elog(FATAL, "Couldn't create the lock table");
+		elog(FATAL, "could not create the lock table");
 
 	/*
 	 * Set up process table

@@ -121,7 +121,7 @@ SIBackendInit(SISeg *segP)
 	MyBackendId = (stateP - &segP->procState[0]) + 1;
 
 #ifdef	INVALIDDEBUG
-	elog(DEBUG2, "SIBackendInit: backend id %d", MyBackendId);
+	elog(DEBUG2, "my backend id is %d", MyBackendId);
 #endif   /* INVALIDDEBUG */
 
 	/* Reduce free slot count */
@@ -226,7 +226,7 @@ SIInsertDataEntry(SISeg *segP, SharedInvalidationMessage *data)
 	if (numMsgs == (MAXNUMMESSAGES * 70 / 100) &&
 		IsUnderPostmaster)
 	{
-		elog(DEBUG4, "SIInsertDataEntry: table is 70%% full, signaling postmaster");
+		elog(DEBUG4, "SI table is 70%% full, signaling postmaster");
 		SendPostmasterSignal(PMSIGNAL_WAKEN_CHILDREN);
 	}
 
