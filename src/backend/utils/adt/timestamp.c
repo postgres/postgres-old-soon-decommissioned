@@ -2100,11 +2100,11 @@ interval_part(PG_FUNCTION_ARGS)
 			switch (val)
 			{
 				case DTK_MICROSEC:
-					result = (fsec * 1000000);
+					result = ((tm->tm_sec + fsec) * 1000000);
 					break;
 
 				case DTK_MILLISEC:
-					result = (fsec * 1000);
+					result = ((tm->tm_sec + fsec) * 1000);
 					break;
 
 				case DTK_SECOND:
