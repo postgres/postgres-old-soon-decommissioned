@@ -88,10 +88,6 @@
 #define ABSTIMEMIN(t1, t2) abstimele((t1),(t2)) ? (t1) : (t2)
 #define ABSTIMEMAX(t1, t2) abstimelt((t1),(t2)) ? (t2) : (t1)
 
-static char	*month_name[] = {
-	"Jan","Feb","Mar","Apr","May","Jun","Jul",
-	"Aug","Sep","Oct","Nov","Dec" };
-
 static	char 	*unit_tab[] = {
 	"second", "seconds", "minute", "minutes",
 	"hour", "hours", "day", "days", "week", "weeks",
@@ -113,8 +109,6 @@ static	int	unit_max_quantity[] = {
 
 
 struct timeb *TimeDifferenceFromGMT = NULL;
-static bool TimeDiffIsInited = false;
-static char *timezonename = NULL;
 
 /*
  * Function prototypes -- internal to this file only

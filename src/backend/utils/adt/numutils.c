@@ -19,6 +19,11 @@
 #include <math.h>
 #include "postgres.h"
 #include "utils/builtins.h"		/* where the declarations go */
+#ifndef HAVE_MEMMOVE
+# include <regex/utils.h>
+#else
+# include <string.h>
+#endif
 
 int32
 pg_atoi(char *s, int size, int c)

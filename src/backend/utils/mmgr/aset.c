@@ -16,11 +16,14 @@
  *-------------------------------------------------------------------------
  */
 #include <stdio.h>
-#include "c.h"
+#include "postgres.h"
 #include "utils/excid.h"	/* for ExhaustedMemory */
 #include "utils/memutils.h"	/* where funnction declarations go */
-#include "utils/elog.h"
-#include "utils/palloc.h"
+#ifndef HAVE_MEMMOVE
+# include <regex/utils.h>
+#else
+# include <string.h>
+#endif
 
 #undef AllocSetReset
 #undef malloc

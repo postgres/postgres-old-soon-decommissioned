@@ -23,10 +23,10 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdio.h>
+#include <unistd.h>
 
 #include "postgres.h"
 
-#include "utils/elog.h"
 #include "miscadmin.h"		/* for global decls */
 
 #include "storage/fd.h"		/* for O_ */

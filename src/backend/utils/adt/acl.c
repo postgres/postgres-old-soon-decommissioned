@@ -14,10 +14,11 @@
 #include <ctype.h>
 #include <string.h>
 #include "postgres.h"
+
+#include <utils/memutils.h>
 #include "utils/acl.h"
 #include "catalog/pg_user.h"
 #include "utils/syscache.h"
-#include "utils/palloc.h"
 #include "miscadmin.h"
 
 static char *getid(char *s, char *n);

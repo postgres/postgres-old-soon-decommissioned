@@ -33,8 +33,15 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <math.h>
+#include <unistd.h>
 
 #include "postgres.h"
+
+#include <storage/backendid.h>
+#include <storage/buf_internals.h>
+#include <storage/smgr.h>
+#include <storage/proc.h>
+#include <utils/relcache.h>
 
 #include "access/heapam.h"
 #include "access/xact.h"

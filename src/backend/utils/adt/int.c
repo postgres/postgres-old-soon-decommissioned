@@ -28,11 +28,11 @@
  * XXX makes massive and possibly unwarranted type promotion assumptions.
  * fix me when we figure out what we want to do about ANSIfication...
  */
+#include <stdio.h>
 
 #include "postgres.h"
 #include "fmgr.h"
 #include "utils/builtins.h"	/* where the declarations go */
-#include "utils/palloc.h"
 
 /***************************************************************************** 
  *   USER I/O ROUTINES                                                       *

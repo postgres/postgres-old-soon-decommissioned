@@ -21,6 +21,7 @@
  */
 #include <stdio.h>
 #include <math.h>
+#include <unistd.h>
 
 #include "postgres.h"
 
@@ -40,6 +41,12 @@
 #include "utils/lselect.h"
 
 #include "storage/fd.h"
+
+#ifndef HAVE_MEMMOVE
+# include <regex/utils.h>
+#else
+# include <string.h>
+#endif
 
 #define	TEMPDIR	"./"
 

@@ -21,10 +21,12 @@
 #include <sys/file.h>
 #include <sys/types.h>
 #include <math.h>
+#include <unistd.h>
 
 #include "postgres.h"
 #include "miscadmin.h"		/* where the declarations go */
 
+#include <storage/backendid.h>
 #include "access/heapam.h"
 #include "utils/tqual.h"
 #include "storage/sinval.h"

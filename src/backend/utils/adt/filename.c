@@ -21,7 +21,7 @@
 #include <sys/param.h>
 
 #include "postgres.h"
-#include "utils/palloc.h"
+#include <miscadmin.h>
 #include "utils/builtins.h"	/* where function declarations go */
 
 char *

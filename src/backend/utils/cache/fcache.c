@@ -12,6 +12,10 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"
+
+#include <nodes/parsenodes.h>
+#include <fmgr.h>
+
 #include "access/htup.h"
 #include "utils/catcache.h"
 #include "utils/syscache.h"
@@ -22,9 +26,13 @@
 #include "parser/parsetree.h"		/* for getrelname() */
 #include "utils/builtins.h"
 #include "utils/fcache.h"
-#include "utils/palloc.h"
 #include "nodes/primnodes.h"
 #include "nodes/execnodes.h"
+#ifndef HAVE_MEMMOVE
+# include <regex/utils.h>
+#else
+# include <string.h>
+#endif
 
 static Oid GetDynamicFuncArgType(Var *arg, ExprContext *econtext);
 static FunctionCachePtr init_fcache(Oid foid,

@@ -20,8 +20,9 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <unistd.h>
 
-#include "c.h"
+#include "postgres.h"
 #include "miscadmin.h"	/* for DebugLvl */
 
 #ifndef S_IRUSR			/* XXX [TRH] should be in a header */

@@ -17,6 +17,7 @@
 #include <sys/stat.h>
 #include <sys/file.h>
 #include <stdio.h>
+#include <unistd.h>
 #ifndef WIN32
 #include <grp.h>		/* for getgrgid */
 #include <pwd.h>		/* for getpwuid */

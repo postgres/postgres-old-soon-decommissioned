@@ -21,10 +21,11 @@
 #include <sys/types.h>
 #include <stdarg.h>
 #include <errno.h>
+#include <unistd.h>
+#include <signal.h>
 
 #include "postgres.h"
 #include "miscadmin.h"
-#include "utils/elog.h"
 #include "libpq/libpq.h"
 #include "storage/proc.h"
 

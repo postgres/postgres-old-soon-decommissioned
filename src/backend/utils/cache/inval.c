@@ -14,6 +14,9 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"
+
+#include <miscadmin.h>
+
 #include "access/heapam.h"	/* XXX to support hacks below */
 #include "access/htup.h"
 #include "catalog/catalog.h"
@@ -23,7 +26,6 @@
 #include "storage/sinval.h"
 #include "utils/catcache.h"
 #include "utils/inval.h"
-#include "utils/elog.h"
 #include "utils/rel.h"
 #include "utils/relcache.h"
 #include "catalog/catname.h"	/* XXX to support hacks below */
