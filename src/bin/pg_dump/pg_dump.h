@@ -70,6 +70,7 @@ typedef struct _funcInfo
 	char	   *probin;
 	char	   *usename;
 	int			iscachable;		/* Attr */
+	int			isstrict;		/* Attr */
 	int			dumped;			/* 1 if already dumped */
 } FuncInfo;
 
