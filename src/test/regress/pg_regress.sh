@@ -288,6 +288,10 @@ then
     PGPORT=65432
     export PGPORT
 
+    # Get rid of environment stuff that might cause psql to misbehave
+    # while contacting our temp installation
+    unset PGDATABASE PGUSER PGSERVICE PGSSLMODE PGREQUIRESSL PGCONNECT_TIMEOUT
+
     # ----------
     # Set up shared library paths, needed by psql and pg_encoding
     # (if you run multibyte).  LD_LIBRARY_PATH covers many platforms,
