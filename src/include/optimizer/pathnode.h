@@ -16,6 +16,7 @@
 
 #include "nodes/relation.h"
 
+
 /*
  * prototypes for pathnode.c
  */
@@ -77,10 +78,10 @@ extern void build_base_rel(Query *root, int relid);
 extern RelOptInfo *build_other_rel(Query *root, int relid);
 extern RelOptInfo *find_base_rel(Query *root, int relid);
 extern RelOptInfo *build_join_rel(Query *root,
-			   List *joinrelids,
-			   RelOptInfo *outer_rel,
-			   RelOptInfo *inner_rel,
-			   JoinType jointype,
-			   List **restrictlist_ptr);
+								  Relids joinrelids,
+								  RelOptInfo *outer_rel,
+								  RelOptInfo *inner_rel,
+								  JoinType jointype,
+								  List **restrictlist_ptr);
 
 #endif   /* PATHNODE_H */

@@ -52,7 +52,7 @@ void
 get_relation_info(Oid relationObjectId, RelOptInfo *rel)
 {
 	Relation	relation;
-	Index		varno = lfirsti(rel->relids);
+	Index		varno = rel->relid;
 	bool		hasindex;
 	List	   *varlist = NIL;
 	List	   *indexinfos = NIL;
@@ -175,7 +175,7 @@ get_relation_info(Oid relationObjectId, RelOptInfo *rel)
 			}
 
 			/* initialize cached join info to empty */
-			info->outer_relids = NIL;
+			info->outer_relids = NULL;
 			info->inner_paths = NIL;
 
 			index_close(indexRelation);

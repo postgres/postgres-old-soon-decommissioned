@@ -560,7 +560,7 @@ create_unique_path(Query *root, RelOptInfo *rel, Path *subpath)
 	{
 		InClauseInfo *ininfo = (InClauseInfo *) lfirst(l);
 
-		if (sameseti(ininfo->righthand, rel->relids))
+		if (bms_equal(ininfo->righthand, rel->relids))
 		{
 			sub_targetlist = ininfo->sub_targetlist;
 			break;

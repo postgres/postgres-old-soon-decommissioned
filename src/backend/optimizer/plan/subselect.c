@@ -607,7 +607,7 @@ Node *
 convert_IN_to_join(Query *parse, SubLink *sublink)
 {
 	Query	   *subselect = (Query *) sublink->subselect;
-	List	   *left_varnos;
+	Relids		left_varnos;
 	int			rtindex;
 	RangeTblEntry *rte;
 	RangeTblRef *rtr;
@@ -635,7 +635,7 @@ convert_IN_to_join(Query *parse, SubLink *sublink)
 	 * query, else it's not gonna be a join.
 	 */
 	left_varnos = pull_varnos((Node *) sublink->lefthand);
-	if (left_varnos == NIL)
+	if (bms_is_empty(left_varnos))
 		return NULL;
 	/*
 	 * The left-hand expressions mustn't be volatile.  (Perhaps we should
@@ -666,7 +666,7 @@ convert_IN_to_join(Query *parse, SubLink *sublink)
 	 */
 	ininfo = makeNode(InClauseInfo);
 	ininfo->lefthand = left_varnos;
-	ininfo->righthand = makeListi1(rtindex);
+	ininfo->righthand = bms_make_singleton(rtindex);
 	parse->in_info_list = lcons(ininfo, parse->in_info_list);
 	/*
 	 * Build the result qual expressions.  As a side effect,

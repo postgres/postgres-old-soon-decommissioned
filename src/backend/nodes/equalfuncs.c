@@ -59,6 +59,13 @@
 			return false; \
 	} while (0)
 
+/* Compare a field that is a pointer to a Bitmapset */
+#define COMPARE_BITMAPSET_FIELD(fldname) \
+	do { \
+		if (!bms_equal(a->fldname, b->fldname)) \
+			return false; \
+	} while (0)
+
 /* Compare a field that is a pointer to a C string, or perhaps NULL */
 #define COMPARE_STRING_FIELD(fldname) \
 	do { \
@@ -486,7 +493,7 @@ _equalRestrictInfo(RestrictInfo *a, RestrictInfo *b)
 static bool
 _equalJoinInfo(JoinInfo *a, JoinInfo *b)
 {
-	COMPARE_INTLIST_FIELD(unjoined_relids);
+	COMPARE_BITMAPSET_FIELD(unjoined_relids);
 	COMPARE_NODE_FIELD(jinfo_restrictinfo);
 
 	return true;
@@ -495,8 +502,8 @@ _equalJoinInfo(JoinInfo *a, JoinInfo *b)
 static bool
 _equalInClauseInfo(InClauseInfo *a, InClauseInfo *b)
 {
-	COMPARE_INTLIST_FIELD(lefthand);
-	COMPARE_INTLIST_FIELD(righthand);
+	COMPARE_BITMAPSET_FIELD(lefthand);
+	COMPARE_BITMAPSET_FIELD(righthand);
 	COMPARE_NODE_FIELD(sub_targetlist);
 
 	return true;
