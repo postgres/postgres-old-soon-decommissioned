@@ -104,8 +104,8 @@ xcstar			[^/]
 
 digit			[0-9]
 number			[-+.0-9Ee]
-letter			[_A-Za-z]
-letter_or_digit [_A-Za-z0-9]
+letter			[\200-\377_A-Za-z]
+letter_or_digit	[\200-\377_A-Za-z0-9]
 
 sysfunc			SYS_{letter}{letter_or_digit}*
 
