@@ -316,7 +316,7 @@ BufferAlloc(Relation reln,
 		{
 			/*
 			 * I couldn't understand the following old comment. If there's
-			 * no IO for the buffer and the buffer is BROKEN,it should be
+			 * no IO for the buffer and the buffer is BROKEN, it should be
 			 * read again. So start a new buffer IO here.
 			 *
 			 * wierd race condition:
