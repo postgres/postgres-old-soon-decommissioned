@@ -642,7 +642,7 @@ AsyncExistsPendingNotify(char *relname)
 		 p = DLGetSucc(p))
 	{
 		/* Use NAMEDATALEN for relname comparison.	  DZ - 26-08-1996 */
-		if (!strncmp(DLE_VAL(p), relname, NAMEDATALEN))
+		if (!strncmp((const char *) DLE_VAL(p), relname, NAMEDATALEN))
 			return 1;
 	}
 
