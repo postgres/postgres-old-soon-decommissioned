@@ -477,8 +477,12 @@ then
     echo "The database cluster will be initialized with locale `pg_getlocale CTYPE`."
 else
     echo "The database cluster will be initialized with locales:"
-    echo "    COLLATE:  `pg_getlocale COLLATE`${TAB}CTYPE:   `pg_getlocale CTYPE`${TAB}MESSAGES: `pg_getlocale MESSAGES`"
-    echo "    MONETARY: `pg_getlocale MONETARY`${TAB}NUMERIC: `pg_getlocale NUMERIC`${TAB}TIME:     `pg_getlocale TIME`"
+    echo "  COLLATE:  `pg_getlocale COLLATE`"
+    echo "  CTYPE:    `pg_getlocale CTYPE`"
+    echo "  MESSAGES: `pg_getlocale MESSAGES`"
+    echo "  MONETARY: `pg_getlocale MONETARY`"
+    echo "  NUMERIC:  `pg_getlocale NUMERIC`"
+    echo "  TIME:     `pg_getlocale TIME`"
 fi
 echo
 
