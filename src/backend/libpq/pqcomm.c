@@ -501,8 +501,8 @@ StreamConnection(int server_fd, Port *port)
 	 * UnixWare 7+ and OpenServer 5.0.4 are known to have this bug, but it
 	 * shouldn't hurt to catch it for all versions of those platforms.
 	 */
-	if (port->raddr.sa.sa_family == 0)
-		port->raddr.sa.sa_family = AF_UNIX;
+	if (port->raddr.addr.ss_family == 0)
+		port->raddr.addr.ss_family = AF_UNIX;
 #endif
 
 	/* fill in the server (local) address */
