@@ -894,10 +894,10 @@ AC_LIBOBJ(gettimeofday)
 AC_LIBOBJ(open)
 AC_LIBOBJ(pipe)
 AC_LIBOBJ(rand)
-AC_DEFINE(PGTZ, 1,
+AC_DEFINE(USE_PGTZ, 1,
 	[Define to 1 to use our own timezone library])
 PGTZ=yes
-AC_SUBST(PGTZ) ;;
+AC_SUBST(USE_PGTZ) ;;
 esac
 
 # Win32 can't to rename or unlink on an open file
