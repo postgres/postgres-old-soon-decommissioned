@@ -3226,6 +3226,7 @@ dumpOneDomain(Archive *fout, TypeInfo *tinfo)
 					  "WHERE contypid = '%s'::pg_catalog.oid",
 					  tinfo->oid);
 
+	PQclear(res);
 	res = PQexec(g_conn, chkquery->data);
 	if (!res ||
 		PQresultStatus(res) != PGRES_TUPLES_OK)
@@ -3269,6 +3270,7 @@ dumpOneDomain(Archive *fout, TypeInfo *tinfo)
 	destroyPQExpBuffer(q);
 	destroyPQExpBuffer(delq);
 	destroyPQExpBuffer(query);
+	destroyPQExpBuffer(chkquery);
 }
 
 /*

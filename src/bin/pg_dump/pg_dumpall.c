@@ -403,7 +403,7 @@ dumpCreateDB(PGconn *conn)
 
 	for (i = 0; i < PQntuples(res); i++)
 	{
-		PQExpBuffer buf = createPQExpBuffer();
+		PQExpBuffer buf;
 		char	   *dbname = PQgetvalue(res, i, 0);
 		char	   *dbowner = PQgetvalue(res, i, 1);
 		char	   *dbencoding = PQgetvalue(res, i, 2);
@@ -412,6 +412,8 @@ dumpCreateDB(PGconn *conn)
 
 		if (strcmp(dbname, "template1") == 0)
 			continue;
+
+		buf = createPQExpBuffer();
 
 		if (output_clean)
 			appendPQExpBuffer(buf, "DROP DATABASE %s\n;", fmtId(dbname));
@@ -692,6 +694,7 @@ connectDatabase(const char *dbname, const char *pghost, const char *pgport,
 			exit(1);
 		}
 	}
+	PQclear(res);
 
 	return conn;
 }
