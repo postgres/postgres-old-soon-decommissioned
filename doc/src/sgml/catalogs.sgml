@@ -4051,6 +4051,24 @@
       <entry>current value of the parameter</entry>
      </row>
      <row>
+      <entry><structfield>category</structfield></entry>
+      <entry><type>text</type></entry>
+      <entry></entry>
+      <entry>logical group of the parameter</entry>
+     </row>
+     <row>
+      <entry><structfield>short_desc</structfield></entry>
+      <entry><type>text</type></entry>
+      <entry></entry>
+      <entry>a brief description of the parameter</entry>
+     </row>
+     <row>
+      <entry><structfield>extra_desc</structfield></entry>
+      <entry><type>text</type></entry>
+      <entry></entry>
+      <entry>additional, more detailed, information about the parameter</entry>
+     </row>
+     <row>
       <entry><structfield>context</structfield></entry>
       <entry><type>text</type></entry>
       <entry></entry>
