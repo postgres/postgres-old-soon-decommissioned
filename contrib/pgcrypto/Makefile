@@ -34,7 +34,7 @@ SRCS=krb.c
 endif
 
 NAME	:= pgcrypto
-SRCS	+= pgcrypto.c
+SRCS	+= pgcrypto.c encode.c
 OBJS	:= $(SRCS:.c=.o)
 SO_MAJOR_VERSION = 0
 SO_MINOR_VERSION = 1
