@@ -118,7 +118,7 @@ ECPGinit(const struct connection * con, const char *connection_name, const int l
 }
 
 #ifdef ENABLE_THREAD_SAFETY
-static void *ecpg_sqlca_key_destructor(void *arg)
+static void ecpg_sqlca_key_destructor(void *arg)
 {
   if( arg != NULL )
     free(arg); /* sqlca structure allocated in ECPGget_sqlca */
