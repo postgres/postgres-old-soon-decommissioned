@@ -460,6 +460,22 @@ ALTER TABLE table ALTER COLUMN anycol TYPE anytype;
    </para>
 
    <para>
+    The <literal>USING</literal> option of <literal>ALTER TYPE</> can actually
+    specify any expression involving the old values of the row; that is, it
+    can refer to other columns as well as the one being converted.  This allows
+    very general conversions to be done with the <literal>ALTER TYPE</>
+    syntax.  Because of this flexibility, the <literal>USING</literal>
+    expression is not applied to the column's default value (if any); the
+    result might not be a constant expression as required for a default.
+    This means that when there is no implicit or assignment cast from old to
+    new type, <literal>ALTER TYPE</> may fail to convert the default even
+    though a <literal>USING</literal> clause is supplied.  In such cases,
+    drop the default with <literal>DROP DEFAULT</>, perform the <literal>ALTER
+    TYPE</>, and then use <literal>SET DEFAULT</> to add a suitable new
+    default.
+   </para>
+
+   <para>
     If a table has any descendant tables, it is not permitted to add,
     rename, or change the type of a column in the parent table without doing
     the same to the descendants.  That is, <command>ALTER TABLE ONLY</command>

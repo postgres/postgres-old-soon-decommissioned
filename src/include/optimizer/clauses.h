@@ -63,6 +63,8 @@ extern bool has_distinct_on_clause(Query *query);
 extern int	NumRelids(Node *clause);
 extern void CommuteClause(OpExpr *clause);
 
+extern Node *strip_implicit_coercions(Node *node);
+
 extern void set_coercionform_dontcare(Node *node);
 
 extern Node *eval_const_expressions(Node *node);
