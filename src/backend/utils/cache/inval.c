@@ -276,7 +276,7 @@ getmyrelids()
 /* --------------------------------
  *		CacheIdInvalidate
  *
- *		This routine can invalidate an tuple in a system catalog cache
+ *		This routine can invalidate a tuple in a system catalog cache
  *		or a cached relation descriptor.  You pay your money and you
  *		take your chances...
  * --------------------------------
