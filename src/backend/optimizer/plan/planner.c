@@ -462,6 +462,15 @@ is_simple_subquery(Query *subquery)
 		return false;
 
 	/*
+	 * Don't pull up a subquery that has any set-returning functions in
+	 * its targetlist.  Otherwise we might well wind up inserting
+	 * set-returning functions into places where they mustn't go,
+	 * such as quals of higher queries.
+	 */
+	if (contain_iter_clause((Node *) subquery->targetList))
+		return false;
+
+	/*
 	 * Hack: don't try to pull up a subquery with an empty jointree.
 	 * query_planner() will correctly generate a Result plan for a
 	 * jointree that's totally empty, but I don't think the right things
