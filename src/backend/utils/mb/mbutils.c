@@ -211,7 +211,7 @@ pg_convert(PG_FUNCTION_ARGS)
 	    pg_convert2, string, src_encoding_name, dest_encoding_name);
 
 	/* free memory allocated by namein */
-	pfree((void *)dest_encoding_name);
+	pfree((void *)src_encoding_name);
 
 	PG_RETURN_TEXT_P(result);
 }
