@@ -317,11 +317,9 @@ objdir=		obj
 #
 # Customization.
 #
-# This includes your local customizations.  This file doesn't exist
-# in the original distribution (so that it doesn't get overwritten
-# when you upgrade the source) so you have to create at least an
-# empty one.  Run "touch Makefile.custom" in the source directory
-# to create an empty customization file.  Make your local changes.
+# This includes your local customizations if Makefile.custom exists
+# in the source directory.  This file doesn't exist in the original
+# distribution so that it doesn't get overwritten when you upgrade.
 ifneq ($(wildcard $(MKDIR)/../Makefile.custom), )
 include $(MKDIR)/../Makefile.custom
 endif
