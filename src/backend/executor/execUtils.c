@@ -179,7 +179,7 @@ CreateExecutorState(void)
 	 */
 	estate->es_direction = ForwardScanDirection;
 	estate->es_snapshot = SnapshotNow;
-	estate->es_crosscheck_snapshot = SnapshotAny;		/* means no crosscheck */
+	estate->es_crosscheck_snapshot = InvalidSnapshot;	/* no crosscheck */
 	estate->es_range_table = NIL;
 
 	estate->es_result_relations = NULL;
