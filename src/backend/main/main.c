@@ -19,6 +19,7 @@
  */
 #include "postgres.h"
 
+#include <errno.h>
 #include <pwd.h>
 #include <unistd.h>
 #include <locale.h>
