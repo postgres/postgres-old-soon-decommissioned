@@ -40,8 +40,6 @@
 #endif
 #endif
 
-#define _(x) gettext((x))
-
 #ifndef FRONTEND
 
 /*
@@ -74,7 +72,7 @@ fe_palloc(Size size)
 
 	if ((res = malloc(size)) == NULL)
 	{
-		fprintf(stderr, _("out of memory\n"));
+		fprintf(stderr, gettext("out of memory\n"));
 		exit(1);
 	}
 	return res;
@@ -87,7 +85,7 @@ fe_pstrdup(const char *string)
 
 	if ((res = strdup(string)) == NULL)
 	{
-		fprintf(stderr, _("out of memory\n"));
+		fprintf(stderr, gettext("out of memory\n"));
 		exit(1);
 	}
 	return res;
@@ -100,7 +98,7 @@ fe_repalloc(void *pointer, Size size)
 
 	if ((res = realloc(pointer, size)) == NULL)
 	{
-		fprintf(stderr, _("out of memory\n"));
+		fprintf(stderr, gettext("out of memory\n"));
 		exit(1);
 	}
 	return res;

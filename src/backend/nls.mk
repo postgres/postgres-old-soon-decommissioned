@@ -7,7 +7,7 @@ GETTEXT_FILES	:= + gettext-files
 GETTEXT_TRIGGERS:= errmsg errdetail errhint errcontext write_stderr yyerror
 
 gettext-files: distprep
-	find $(srcdir)/ -name '*.c' -print >$@
+	find $(srcdir)/ $(srcdir)/../port/ -name '*.c' -print >$@
 
 my-maintainer-clean:
 	rm -f gettext-files
