@@ -282,7 +282,7 @@ AlterUser(AlterUserStmt *stmt, CommandDest dest)
 	}
 
     /* look for duplicate sysid */
-	tuple = SearchSysCacheTuple(USESYSID,
+	tuple = SearchSysCacheTuple(SHADOWSYSID,
 								Int32GetDatum(stmt->sysid),
 								0, 0, 0);
     if (HeapTupleIsValid(tuple))
