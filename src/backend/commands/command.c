@@ -476,7 +476,7 @@ PerformAddAttribute(char *relationName,
 		namestrcpy(&(attribute->attname), colDef->colname);
 		attribute->atttypid = typeTuple->t_data->t_oid;
 		attribute->attlen = form->typlen;
-		attributeD.attdisbursion = 0;
+		attribute->attdisbursion = 0;
 		attribute->attcacheoff = -1;
 		attribute->atttypmod = colDef->typename->typmod;
 		attribute->attnum = i;

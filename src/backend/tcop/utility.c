@@ -663,6 +663,7 @@ ProcessUtility(Node *parsetree,
 			}
 			break;
 
+#ifdef NOT_USED
 			/*
 			 * ******************************** Tioga-related statements *******************************
 			 */
@@ -675,6 +676,7 @@ ProcessUtility(Node *parsetree,
 				beginRecipe(stmt);
 			}
 			break;
+#endif
 
 			/*
 			 * ******************************** set variable statements *******************************
