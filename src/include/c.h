@@ -604,7 +604,8 @@ typedef NameData *Name;
 #define MemSet(start, val, len) \
 	do \
 	{ \
-		int32 * _start = (int32 *) (start); \
+	    /* (void *) used because we check for alignment below */ \
+		int32 * _start = (int32 *) (void *) (start); \
 		int		_val = (val); \
 		Size	_len = (len); \
 \
