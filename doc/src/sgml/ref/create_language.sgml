@@ -23,7 +23,7 @@ Postgres documentation
    <date>1999-07-20</date>
   </refsynopsisdivinfo>
   <synopsis>
-CREATE [ TRUSTED ] PROCEDURAL LANGUAGE '<replaceable class="parameter">langname</replaceable>'
+CREATE [ TRUSTED ] [ PROCEDURAL ] LANGUAGE '<replaceable class="parameter">langname</replaceable>'
     HANDLER <replaceable class="parameter">call_handler</replaceable>
     LANCOMPILER '<replaceable class="parameter">comment</replaceable>'
   </synopsis>
