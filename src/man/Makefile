@@ -12,6 +12,9 @@
 #
 #-------------------------------------------------------------------------
 
+SRCDIR=..
+include ../Makefile.global
+
 install-man:
 	-mkdir -p $(POSTMANDIR)
 	-mkdir $(POSTMANDIR)/man1
