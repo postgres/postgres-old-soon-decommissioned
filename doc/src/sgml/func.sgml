@@ -6981,7 +6981,7 @@ SELECT pg_type_is_visible('myschema.widget'::regtype);
   <table id="functions-aggregate-table">
    <title>Aggregate Functions</title>
 
-   <tgroup cols="5">
+   <tgroup cols="4">
     <thead>
      <row>
       <entry>Function</entry>
