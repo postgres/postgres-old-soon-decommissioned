@@ -1083,7 +1083,7 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 				foreach(fkattrs, fkconstraint->fk_attrs) {
 					found=0;
 					fkattr=lfirst(fkattrs);
-					foreach(cols, columns) {
+					foreach(cols, stmt->tableElts) {
 						col=lfirst(cols);
 						if (strcmp(col->colname, fkattr->name)==0) {
 							found=1;

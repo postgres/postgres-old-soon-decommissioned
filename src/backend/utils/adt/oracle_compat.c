@@ -515,6 +515,20 @@ translate(PG_FUNCTION_ARGS)
 	PG_RETURN_TEXT_P(result);
 }
 
+/********************************************************************
+ *
+ * ascii
+ *
+ * Syntax:
+ *
+ *	 int ascii(text string)
+ *
+ * Purpose:
+ *
+ *	 Returns the decimal representation of the first character from
+ *	 string.
+ *
+ ********************************************************************/
 
 Datum
 ascii(PG_FUNCTION_ARGS)
@@ -527,12 +541,25 @@ ascii(PG_FUNCTION_ARGS)
 	PG_RETURN_INT32((int32) *((unsigned char *) VARDATA(string)));
 }
 
+/********************************************************************
+ *
+ * chr
+ *
+ * Syntax:
+ *
+ *	 text chr(int val)
+ *
+ * Purpose:
+ *
+ *	Returns the character having the binary equivalent to val
+ *
+ ********************************************************************/
 
 Datum
-ichar(PG_FUNCTION_ARGS)
+chr(PG_FUNCTION_ARGS)
 {
-	int32		cvalue = PG_GETARG_INT32(0);
-	text	   *result;
+	int32	cvalue = PG_GETARG_INT32(0);
+	text	*result;
 
 	result = (text *) palloc(VARHDRSZ + 1);
 	VARATT_SIZEP(result) = VARHDRSZ + 1;
@@ -541,17 +568,30 @@ ichar(PG_FUNCTION_ARGS)
 	PG_RETURN_TEXT_P(result);
 }
 
+/********************************************************************
+ *
+ * repeat
+ *
+ * Syntax:
+ *
+ *	 text repeat(text string, int val)
+ *
+ * Purpose:
+ *
+ *	Repeat string by val. 
+ *
+ ********************************************************************/
 
 Datum
 repeat(PG_FUNCTION_ARGS)
 {
-	text	   *string = PG_GETARG_TEXT_P(0);
-	int32		count = PG_GETARG_INT32(1);
-	text	   *result;
-	int			slen,
-				tlen;
-	int			i;
-	char	   *cp;
+	text	*string = PG_GETARG_TEXT_P(0);
+	int32	count = PG_GETARG_INT32(1);
+	text	*result;
+	int	slen,
+		tlen;
+	int	i;
+	char	*cp;
 
 	if (count < 0)
 		count = 0;

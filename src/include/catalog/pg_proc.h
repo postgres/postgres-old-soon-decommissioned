@@ -2036,7 +2036,7 @@ DESCR("convert int4 to varchar");
 
 DATA(insert OID = 1620 (  ascii				PGUID 12 f t t t 1 f 23 "25" 100 0 0 100	ascii - ));
 DESCR("convert first char to int4");
-DATA(insert OID = 1621 (  ichar				PGUID 12 f t t t 1 f 25 "23" 100 0 0 100	ichar - ));
+DATA(insert OID = 1621 (  chr				PGUID 12 f t t t 1 f 25 "23" 100 0 0 100	chr - ));
 DESCR("convert int4 to char");
 DATA(insert OID = 1622 (  repeat			PGUID 12 f t t t 2 f 25 "25 23" 100 0 0 100  repeat - ));
 DESCR("replicate string int4 times");
