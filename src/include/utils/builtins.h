@@ -325,7 +325,6 @@ extern Datum texticregexne(PG_FUNCTION_ARGS);
 /* regproc.c */
 extern Datum regprocin(PG_FUNCTION_ARGS);
 extern Datum regprocout(PG_FUNCTION_ARGS);
-extern Datum oidvectortypes(PG_FUNCTION_ARGS);
 extern Datum regproctooid(PG_FUNCTION_ARGS);
 
 /* define macro to replace mixed-case function call - tgl 97/04/27 */
@@ -601,7 +600,8 @@ extern Datum getdatabaseencoding(PG_FUNCTION_ARGS);
 extern Datum PG_encoding_to_char(PG_FUNCTION_ARGS);
 extern Datum PG_char_to_encoding(PG_FUNCTION_ARGS);
 
-/* formatting for internal types */
+/* format_type.c */
 extern Datum format_type(PG_FUNCTION_ARGS);
+extern Datum oidvectortypes(PG_FUNCTION_ARGS);
 
 #endif	 /* BUILTINS_H */
