@@ -252,7 +252,7 @@ set_pglocale_pgservice(const char *argv0, const char *app)
 {
 	char path[MAXPGPATH];
 	char my_exec_path[MAXPGPATH];
-	char env_path[MAXPGPATH + strlen("PGLOCALEDIR=")]; /* longer than PGSYSCONFDIR */
+	char env_path[MAXPGPATH + sizeof("PGLOCALEDIR=")]; /* longer than PGSYSCONFDIR */
 
 	/* don't set LC_ALL in the backend */
 	if (strcmp(app, "postgres") != 0)
