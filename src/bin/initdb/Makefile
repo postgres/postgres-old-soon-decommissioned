@@ -31,5 +31,5 @@ installdirs:
 uninstall:
 	rm -f $(DESTDIR)$(bindir)/initdb$(X)
 
-clean distclean:
+clean distclean maintainer-clean:
 	rm -f initdb$(X) $(OBJS)
