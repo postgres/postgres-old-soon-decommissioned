@@ -11,7 +11,8 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-INCLUDE_OPT = -I../.. \
+INCLUDE_OPT = -I.. \
+              -I../.. \
               -I../../../include
 
 CFLAGS+=$(INCLUDE_OPT)
