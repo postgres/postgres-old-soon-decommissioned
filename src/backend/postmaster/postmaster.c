@@ -316,7 +316,7 @@ PostmasterMain(int argc, char *argv[])
 			new_argv[i] = "";
 		new_argv[4] = NULL;
 		execv(new_argv[0], new_argv);
-		perror("");
+		perror(new_argv[0]);
 		/* How did we get here, error! */
 		fprintf(stderr, "PostmasterMain execv failed on %s\n", argv[0]);
 		exit(1);
