@@ -621,8 +621,8 @@ RESET CLIENT_ENCODING;
      <itemizedlist>
       <listitem>
        <para>
-	<ulink url="ftp://ftp.ora.com/pub/examples/nutshell/ujip/doc/cjk.inf">
-	 ftp://ftp.ora.com/pub/examples/nutshell/ujip/doc/cjk.inf</ulink>
+	<ulink url="ftp://ftp.ora.com/pub/examples/nutshell/ujip/doc/cjk.inf"
+        >ftp://ftp.ora.com/pub/examples/nutshell/ujip/doc/cjk.inf</ulink>
 	Detailed explanations of <literal>EUC_JP</literal>, <literal>EUC_CN</literal>, <literal>EUC_KR</literal>, <literal>EUC_TW</literal>
 	appear in section 3.2.
        </para>
