@@ -1513,8 +1513,7 @@ XLogFileInit(uint32 log, uint32 seg,
 	 * up pre-creating an extra log segment.  That seems OK, and better
 	 * than holding the lock throughout this lengthy process.
 	 */
-	snprintf(tmppath, MAXPGPATH, "%s/xlogtemp.%d",
-			 XLogDir, (int) getpid());
+	snprintf(tmppath, MAXPGPATH, "%s/xlogtemp.%d", XLogDir, getpid());
 
 	unlink(tmppath);
 
@@ -1634,8 +1633,7 @@ XLogFileCopy(uint32 log, uint32 seg,
 	/*
 	 * Copy into a temp file name.
 	 */
-	snprintf(tmppath, MAXPGPATH, "%s/xlogtemp.%d",
-			 XLogDir, (int) getpid());
+	snprintf(tmppath, MAXPGPATH, "%s/xlogtemp.%d", XLogDir, getpid());
 
 	unlink(tmppath);
 
@@ -2900,8 +2898,7 @@ writeTimeLineHistory(TimeLineID newTLI, TimeLineID parentTLI,
 	/*
 	 * Write into a temp file name.
 	 */
-	snprintf(tmppath, MAXPGPATH, "%s/xlogtemp.%d",
-			 XLogDir, (int) getpid());
+	snprintf(tmppath, MAXPGPATH, "%s/xlogtemp.%d", XLogDir, getpid());
 
 	unlink(tmppath);
 

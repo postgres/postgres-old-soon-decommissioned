@@ -1132,9 +1132,8 @@ do_edit(const char *filename_arg, PQExpBuffer query_buf)
 #ifndef WIN32
 		const char *tmpdirenv = getenv("TMPDIR");
 
-		snprintf(fnametmp, sizeof(fnametmp), "%s/psql.edit.%ld.%ld",
-				 tmpdirenv ? tmpdirenv : "/tmp",
-				 (long) geteuid(), (long) getpid());
+		snprintf(fnametmp, sizeof(fnametmp), "%s/psql.edit.%d.%d",
+				 tmpdirenv ? tmpdirenv : "/tmp", geteuid(), getpid());
 #else
 		GetTempFileName(".", "psql", 0, fnametmp);
 #endif

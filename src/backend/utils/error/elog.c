@@ -1364,13 +1364,13 @@ log_line_prefix(StringInfo buf)
 			case 'c':
 				if (MyProcPort)
 				{
-					appendStringInfo(buf, "%lx.%lx",
+					appendStringInfo(buf, "%lx.%x",
 							   (long) (MyProcPort->session_start.tv_sec),
-									 (long) MyProcPid);
+							   MyProcPid);
 				}
 				break;
 			case 'p':
-				appendStringInfo(buf, "%ld", (long) MyProcPid);
+				appendStringInfo(buf, "%d", MyProcPid);
 				break;
 			case 'l':
 				appendStringInfo(buf, "%ld", log_line_number);

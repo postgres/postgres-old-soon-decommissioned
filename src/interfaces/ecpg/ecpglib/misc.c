@@ -253,7 +253,7 @@ ECPGlog(const char *format,...)
 			return;
 		}
 
-		sprintf(f, "[%d]: %s", (int) getpid(), format);
+		sprintf(f, "[%d]: %s", getpid(), format);
 
 		va_start(ap, format);
 		vfprintf(debugstream, f, ap);
