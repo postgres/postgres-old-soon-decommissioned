@@ -14,7 +14,6 @@
 #ifndef SINVALADT_H
 #define SINVALADT_H
 
-#include "storage/ipc.h"
 #include "storage/itemptr.h"
 #include "storage/shmem.h"
 

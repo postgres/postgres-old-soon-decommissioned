@@ -22,6 +22,7 @@
 #include "catalog/catname.h"
 #include "catalog/index.h"
 #include "catalog/indexing.h"
+#include "catalog/pg_index.h"
 #include "miscadmin.h"
 #include "utils/fmgroids.h"
 #include "utils/syscache.h"

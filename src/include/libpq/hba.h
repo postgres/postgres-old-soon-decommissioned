@@ -13,8 +13,6 @@
 
 #include <netinet/in.h>
 
-#include "libpq/pqcomm.h"
-
 #define CONF_FILE "pg_hba.conf"
  /* Name of the config file  */
 
@@ -42,7 +40,7 @@ typedef enum UserAuth
 
 typedef struct Port hbaPort;
 
-int			hba_getauthmethod(hbaPort *port);
+int	hba_getauthmethod(hbaPort *port);
 int authident(struct sockaddr_in * raddr, struct sockaddr_in * laddr,
 		  const char *postgres_username, const char *auth_arg);
 

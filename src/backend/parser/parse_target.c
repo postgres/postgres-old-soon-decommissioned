@@ -20,6 +20,7 @@
 #include "parser/parse_func.h"
 #include "parser/parse_relation.h"
 #include "parser/parse_target.h"
+#include "parser/parse_type.h"
 
 
 static List *ExpandAllTables(ParseState *pstate);

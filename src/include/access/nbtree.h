@@ -14,7 +14,6 @@
 #ifndef NBTREE_H
 #define NBTREE_H
 
-#include "access/funcindex.h"
 #include "access/itup.h"
 #include "access/relscan.h"
 #include "access/sdir.h"

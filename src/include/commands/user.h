@@ -11,7 +11,6 @@
 #define USER_H
 
 #include "nodes/parsenodes.h"
-#include "access/htup.h"
 
 extern void CreateUser(CreateUserStmt *stmt);
 extern void AlterUser(AlterUserStmt *stmt);

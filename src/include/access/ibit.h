@@ -14,8 +14,6 @@
 #ifndef IBIT_H
 #define IBIT_H
 
-#include "catalog/pg_index.h"
-
 typedef struct IndexAttributeBitMapData
 {
 	bits8		bits[(INDEX_MAX_KEYS + 8 - 1) / 8];

@@ -16,6 +16,7 @@
 #include "postgres.h"
 
 #include "catalog/pg_type.h"
+#include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"
 

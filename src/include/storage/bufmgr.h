@@ -15,11 +15,7 @@
 #define BUFMGR_H
 
 
-#include "storage/ipc.h"
-#include "storage/block.h"
-#include "storage/buf.h"
 #include "storage/buf_internals.h"
-#include "utils/rel.h"
 
 /*
  * the maximum size of a disk block for any possible installation.

@@ -22,6 +22,7 @@
 #include "catalog/index.h"
 #include "catalog/pg_amop.h"
 #include "catalog/pg_database.h"
+#include "catalog/pg_index.h"
 #include "catalog/pg_opclass.h"
 #include "catalog/pg_operator.h"
 #include "catalog/pg_proc.h"

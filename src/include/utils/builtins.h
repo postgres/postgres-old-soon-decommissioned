@@ -14,20 +14,12 @@
 #ifndef BUILTINS_H
 #define BUILTINS_H
 
-#include "fmgr.h"
 #include "nodes/relation.h"		/* for amcostestimate parameters */
 #include "storage/itemptr.h"
-#include "utils/array.h"
 #include "utils/inet.h"
-#include "utils/int8.h"
 #include "utils/geo_decls.h"
 #include "utils/numeric.h"
-#include "utils/datetime.h"
-#include "utils/timestamp.h"
-#include "utils/nabstime.h"
-#include "utils/date.h"
 #include "utils/lztext.h"
-#include "utils/varbit.h"
 
 /*
  *		Defined in adt/

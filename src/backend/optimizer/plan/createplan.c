@@ -18,6 +18,7 @@
 
 #include "postgres.h"
 
+#include "catalog/pg_index.h"
 #include "nodes/makefuncs.h"
 #include "nodes/nodeFuncs.h"
 #include "optimizer/clauses.h"

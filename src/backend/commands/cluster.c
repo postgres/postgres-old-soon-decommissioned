@@ -26,6 +26,7 @@
 #include "access/heapam.h"
 #include "catalog/heap.h"
 #include "catalog/index.h"
+#include "catalog/pg_index.h"
 #include "catalog/pg_proc.h"
 #include "commands/cluster.h"
 #include "commands/rename.h"

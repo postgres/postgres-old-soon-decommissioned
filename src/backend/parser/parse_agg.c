@@ -21,6 +21,7 @@
 #include "parser/parse_coerce.h"
 #include "parser/parse_expr.h"
 #include "parser/parsetree.h"
+#include "parser/parse_type.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
 

@@ -27,6 +27,7 @@
 #include "catalog/catname.h"
 #include "catalog/pg_amop.h"
 #include "catalog/pg_inherits.h"
+#include "catalog/pg_index.h"
 #include "optimizer/plancat.h"
 #include "parser/parsetree.h"
 #include "utils/builtins.h"

@@ -31,6 +31,7 @@
 #include "optimizer/tlist.h"
 #include "optimizer/var.h"
 #include "parser/parse_expr.h"
+#include "parser/parse_type.h"
 #include "utils/lsyscache.h"
 
 

@@ -32,6 +32,7 @@
 
 #include "postgres.h"
 
+#include "utils/nabstime.h"
 #include "utils/builtins.h"
 
 Datum

@@ -14,8 +14,6 @@
 #ifndef INTERNAL_H
 #define INTERNAL_H
 
-#include "catalog/pg_index.h"
-
 /*
  *		---------- SHARED MACROS
  *

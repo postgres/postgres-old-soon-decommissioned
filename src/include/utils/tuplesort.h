@@ -22,9 +22,6 @@
 
 #include "access/htup.h"
 #include "access/itup.h"
-#include "access/skey.h"
-#include "access/tupdesc.h"
-#include "utils/rel.h"
 
 /* Tuplesortstate is an opaque type whose details are not known outside tuplesort.c. */
 

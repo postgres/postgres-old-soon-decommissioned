@@ -21,7 +21,6 @@
 
 #include <setjmp.h>
 #include "executor/execdesc.h"
-#include "parser/parse_node.h"
 
 extern DLLIMPORT sigjmp_buf Warn_restart;
 extern bool Warn_restart_ready;

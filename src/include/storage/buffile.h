@@ -26,8 +26,6 @@
 #ifndef BUFFILE_H
 #define BUFFILE_H
 
-#include "storage/fd.h"
-
 /* BufFile is an opaque type whose details are not known outside buffile.c. */
 
 typedef struct BufFile BufFile;

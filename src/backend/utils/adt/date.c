@@ -13,16 +13,20 @@
  *-------------------------------------------------------------------------
  */
 #include <limits.h>
+#include <time.h>
 
 #include "postgres.h"
 #ifdef HAVE_FLOAT_H
 #include <float.h>
 #endif
 #include "miscadmin.h"
+#include "utils/date.h"
+#include "utils/datetime.h"
+#include "utils/nabstime.h"
 #include "utils/builtins.h"
 
 static int
-			date2tm(DateADT dateVal, int *tzp, struct tm * tm, double *fsec, char **tzn);
+	date2tm(DateADT dateVal, int *tzp, struct tm * tm, double *fsec, char **tzn);
 
 
 /*****************************************************************************

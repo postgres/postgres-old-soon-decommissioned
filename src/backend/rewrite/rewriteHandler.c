@@ -26,6 +26,7 @@
 #include "parser/parse_oper.h"
 #include "parser/parse_target.h"
 #include "parser/parsetree.h"
+#include "parser/parse_type.h"
 #include "rewrite/locks.h"
 #include "rewrite/rewriteManip.h"
 #include "utils/acl.h"

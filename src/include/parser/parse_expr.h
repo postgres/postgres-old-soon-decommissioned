@@ -15,7 +15,6 @@
 #define PARSE_EXPR_H
 
 #include "parser/parse_node.h"
-#include "parser/parse_type.h"
 
 #define EXPR_COLUMN_FIRST	1
 #define EXPR_RELATION_FIRST 2

@@ -29,6 +29,7 @@
 #include "catalog/heap.h"
 #include "catalog/index.h"
 #include "catalog/indexing.h"
+#include "catalog/pg_index.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
 #include "commands/comment.h"

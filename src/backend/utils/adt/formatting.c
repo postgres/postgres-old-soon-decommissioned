@@ -67,8 +67,11 @@
 
 #include "postgres.h"
 #include "utils/builtins.h"
-#include "utils/pg_locale.h"
+#include "utils/date.h"
+#include "utils/datetime.h"
 #include "utils/formatting.h"
+#include "utils/int8.h"
+#include "utils/pg_locale.h"
 
 /* ----------
  * Routines type

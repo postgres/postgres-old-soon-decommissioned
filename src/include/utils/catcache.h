@@ -17,7 +17,6 @@
 /* #define		CACHEDEBUG		 turns DEBUG elogs on */
 
 #include "access/htup.h"
-#include "fmgr.h"
 #include "lib/dllist.h"
 
 /*

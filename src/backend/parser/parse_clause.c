@@ -25,6 +25,7 @@
 #include "parser/parse_oper.h"
 #include "parser/parse_relation.h"
 #include "parser/parse_target.h"
+#include "parser/parse_type.h"
 
 #define ORDER_CLAUSE 0
 #define GROUP_CLAUSE 1

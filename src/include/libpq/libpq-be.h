@@ -18,6 +18,7 @@
 #include <sys/types.h>
 
 #include "libpq/hba.h"
+#include "libpq/pqcomm.h"
 
 #ifdef USE_SSL
 #include <openssl/ssl.h>

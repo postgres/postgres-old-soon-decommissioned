@@ -36,6 +36,7 @@
 
 #include "postgres.h"
 
+#include "storage/fd.h"
 #include "storage/buffile.h"
 
 /*

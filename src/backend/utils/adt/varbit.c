@@ -33,6 +33,7 @@
 #endif
 #include "fmgr.h"
 #include "utils/builtins.h"
+#include "utils/varbit.h"
 #include "access/htup.h"
 
 /*

@@ -48,6 +48,7 @@
 #include "catalog/catname.h"
 #include "catalog/index.h"
 #include "catalog/catalog.h"
+#include "catalog/pg_index.h"
 #include "executor/execdebug.h"
 #include "executor/executor.h"
 #include "miscadmin.h"
