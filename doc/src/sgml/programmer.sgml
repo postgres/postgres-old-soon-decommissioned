@@ -5,6 +5,10 @@ Postgres Programmer's Guide.
 - thomas 1998-10-27
 
 $Log: programmer.sgml,v $
+Revision 1.11  1999/01/07 03:02:27  thomas
+Remove mention of a couple of introductory chapters
+ which are not used here.
+
 Revision 1.10  1998/10/31 09:36:36  thomas
 Cleanup for v6.4 release.
 Make new file current.sgml to hold release info for the current release.
@@ -184,16 +188,7 @@ Disable it until we put in some info.
 
 <!-- development -->
 
-<!--
-The arch-dev chapter is current almost identical 
-to the arch-pg chapter appearing earlier in the
-Programmer's Guide. If the Developer's Guide is
-split into a separate document then start using this
-again.
-- thomas 1998-10-23
 &arch-dev; 
--->
-
 &geqo;
 &protocol;
 &signals;
