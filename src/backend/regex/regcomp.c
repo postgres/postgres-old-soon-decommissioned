@@ -184,6 +184,7 @@ static int	pg_isalnum(pg_wchar c);
 static int	pg_isupper(pg_wchar c);
 static int	pg_islower(pg_wchar c);
 static int	pg_isgraph(pg_wchar c);
+static int	pg_isprint(pg_wchar c);
 static int	pg_ispunct(pg_wchar c);
 static int	pg_isspace(pg_wchar c);
 static pg_wchar pg_toupper(pg_wchar c);

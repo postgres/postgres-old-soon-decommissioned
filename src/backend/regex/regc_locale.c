@@ -389,6 +389,12 @@ pg_isgraph(pg_wchar c)
 }
 
 static int
+pg_isprint(pg_wchar c)
+{
+	return (c >= 0 && c <= UCHAR_MAX && isprint((unsigned char) c));
+}
+
+static int
 pg_ispunct(pg_wchar c)
 {
 	return (c >= 0 && c <= UCHAR_MAX && ispunct((unsigned char) c));
@@ -657,16 +663,25 @@ cclass(struct vars * v,			/* context */
 	switch ((enum classes) index)
 	{
 		case CC_PRINT:
-		case CC_ALNUM:
-			cv = getcvec(v, UCHAR_MAX, 1, 0);
+			cv = getcvec(v, UCHAR_MAX, 0, 0);
 			if (cv)
 			{
 				for (i = 0; i <= UCHAR_MAX; i++)
 				{
-					if (pg_isalpha((chr) i))
+					if (pg_isprint((chr) i))
 						addchr(cv, (chr) i);
 				}
-				addrange(cv, (chr) '0', (chr) '9');
+			}
+			break;
+		case CC_ALNUM:
+			cv = getcvec(v, UCHAR_MAX, 0, 0);
+			if (cv)
+			{
+				for (i = 0; i <= UCHAR_MAX; i++)
+				{
+					if (pg_isalnum((chr) i))
+						addchr(cv, (chr) i);
+				}
 			}
 			break;
 		case CC_ALPHA:
