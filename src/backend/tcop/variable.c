@@ -151,7 +151,7 @@ static bool parse_geqo (const char *value)
 
     if ( strcasecmp (tok, "on") == 0 )
     {
-    	int32 geqo_rels = _use_geqo_rels_;
+    	int32 geqo_rels = GEQO_RELS;
     	
     	if ( val != NULL )
     	{
