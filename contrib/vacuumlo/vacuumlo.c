@@ -12,20 +12,14 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres_fe.h"
 
-#include <pg_config.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#ifdef HAVE_TERMIOS_H
-#include <termios.h>
-#endif
-
-#include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#ifdef HAVE_TERMIOS_H
+#include <termios.h>
+#endif
 
 #include "libpq-fe.h"
 #include "libpq/libpq-fs.h"
