@@ -479,7 +479,7 @@ ECPGexecute(struct statement * stmt)
 						strncpy(mallocedval + strlen(mallocedval) - 1, "}'", sizeof("}'")); 
 					}
 					else
-						sprintf(mallocedval, "%c,", (*((char *) var->value)) ? 't' : 'f');
+						sprintf(mallocedval, "%c", (*((char *) var->value)) ? 't' : 'f');
 
 					tobeinserted = mallocedval;
 					break;
@@ -541,7 +541,7 @@ ECPGexecute(struct statement * stmt)
 
 				default:
 					/* Not implemented yet */
-					ECPGraise(stmt->lineno, ECPG_UNSUPPORTED, ECPGtype_name(var->type));
+					ECPGraise(stmt->lineno, ECPG_UNSUPPORTED, (char *)ECPGtype_name(var->type));
 					return false;
 					break;
 			}
@@ -1024,6 +1024,6 @@ bool ECPGdo_descriptor(int line,const char *connection,
 	    }
 	}
 	
-	ECPGraise(line, ECPG_UNKNOWN_DESCRIPTOR, descriptor);
+	ECPGraise(line, ECPG_UNKNOWN_DESCRIPTOR, (char *) descriptor);
 	return false;
 }

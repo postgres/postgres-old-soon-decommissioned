@@ -827,6 +827,7 @@ lex_init(void)
 	braces_open = 0;
 
 	preproc_tos = 0;
+	yylineno = 0;
 	ifcond = TRUE;
 	stacked_if_value[preproc_tos].condition = ifcond;
 	stacked_if_value[preproc_tos].else_branch = FALSE;
