@@ -18,7 +18,7 @@ void
 			SetPgVersion(const char *path, char **reason_p);
 
 #define PG_RELEASE		6
-#define PG_VERSION		1
+#define PG_VERSION		3
 #define PG_VERFILE		"PG_VERSION"
 
 #endif
