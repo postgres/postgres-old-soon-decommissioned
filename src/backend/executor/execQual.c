@@ -236,10 +236,6 @@ ExecEvalVar(Var *variable, ExprContext *econtext, bool *isNull)
      	 tuple_type->attrs[attnum-1] != NULL &&
          variable->vartype == tuple_type->attrs[attnum-1]->atttypid))
     
-      /*
-       * If the attribute number is invalid, then we are supposed to
-           variable->vartype == tuple_type->attrs[attnum-1]->atttypid)
-    
     /*
      * If the attribute number is invalid, then we are supposed to
      * return the entire tuple, we give back a whole slot so that
