@@ -256,6 +256,7 @@ LockMethodTableInit(char *tabName,
 	shmemName = (char *) palloc(strlen(tabName) + 32);
 
 	/* each lock table has a non-shared, permanent header */
+	sprintf(shmemName, "%s (lock method table)", tabName);
 	lockMethodTable = (LOCKMETHODTABLE *)
 		ShmemInitStruct(shmemName, sizeof(LOCKMETHODTABLE), &found);
 
