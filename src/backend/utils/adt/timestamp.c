@@ -1869,7 +1869,7 @@ interval_div(PG_FUNCTION_ARGS)
 	result = (Interval *) palloc(sizeof(Interval));
 
 	if (factor == 0.0)
-		elog(ERROR, "interval_div: divide by 0.0 error");
+		elog(ERROR, "division by zero");
 
 #ifdef HAVE_INT64_TIMESTAMP
 	result->month = (span->month / factor);

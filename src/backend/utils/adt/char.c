@@ -150,6 +150,9 @@ chardiv(PG_FUNCTION_ARGS)
 	char		arg1 = PG_GETARG_CHAR(0);
 	char		arg2 = PG_GETARG_CHAR(1);
 
+	if (arg2 == 0)
+		elog(ERROR, "division by zero");
+
 	PG_RETURN_CHAR((int8) arg1 / (int8) arg2);
 }
 
