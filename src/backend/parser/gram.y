@@ -994,6 +994,8 @@ constraint_expr:  AexprConst
 				}
 			| constraint_expr Op constraint_expr
 				{	$$ = nconc( $1, lcons( makeString( $2), $3)); }
+			| constraint_expr LIKE constraint_expr
+				{	$$ = nconc( $1, lcons( makeString( "like"), $3)); }
 			| constraint_expr AND constraint_expr
 				{	$$ = nconc( $1, lcons( makeString( "AND"), $3)); }
 			| constraint_expr OR constraint_expr
@@ -4620,6 +4622,8 @@ ColId:  IDENT							{ $$ = $1; }
 		| TIME							{ $$ = "time"; }
 		| TRIGGER						{ $$ = "trigger"; }
 		| TYPE_P						{ $$ = "type"; }
+		| USER							{ $$ = "user"; }
+		| VALID							{ $$ = "valid"; }
 		| VERSION						{ $$ = "version"; }
 		| ZONE							{ $$ = "zone"; }
 		;
