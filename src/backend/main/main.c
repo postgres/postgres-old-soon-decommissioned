@@ -91,7 +91,14 @@ main(int argc, char *argv[])
 #if defined(WIN32)
 	{
 		WSADATA wsaData;
-		int err = WSAStartup(MAKEWORD(2,2), &wsaData);
+		int err;
+
+		/* Make output streams unbuffered by default */
+		setvbuf(stdout,NULL,_IONBF,0);
+		setvbuf(stderr,NULL,_IONBF,0);
+
+		/* Prepare Winsock */
+		err = WSAStartup(MAKEWORD(2,2), &wsaData);
 		if (err != 0)
 		{
 			fprintf(stderr, "%s: WSAStartup failed: %d\n",
@@ -99,6 +106,7 @@ main(int argc, char *argv[])
 			exit(1);
 		}
 
+		/* Start our win32 signal implementation */
 		pgwin32_signal_initialize();
 	}
 #endif
