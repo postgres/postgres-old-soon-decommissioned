@@ -41,6 +41,7 @@
 #include "postgres.h"
 #include "executor/spi.h"
 #include "optimizer/clauses.h"
+#include "optimizer/tlist.h"
 #include "utils/lsyscache.h"
 #include "catalog/pg_shadow.h"
 #include "catalog/pg_index.h"
@@ -1248,23 +1249,11 @@ get_rule_expr(QryHier *qh, int rt_index, Node *node, bool varprefix)
 		case T_GroupClause:
 			{
 				GroupClause *grp = (GroupClause *) node;
-				List	   *l;
-				TargetEntry *tle = NULL;
+				Node *groupexpr;
 
-				foreach(l, qh->query->targetList)
-				{
-					if (((TargetEntry *) lfirst(l))->resdom->resgroupref ==
-						grp->tleGroupref)
-					{
-						tle = (TargetEntry *) lfirst(l);
-						break;
-					}
-				}
-
-				if (tle == NULL)
-					elog(ERROR, "GROUP BY expression not found in targetlist");
-
-				return get_rule_expr(qh, rt_index, (Node *) tle, varprefix);
+				groupexpr = get_sortgroupclause_expr(grp,
+													 qh->query->targetList);
+				return get_rule_expr(qh, rt_index, groupexpr, varprefix);
 			}
 			break;
 

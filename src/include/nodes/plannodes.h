@@ -232,7 +232,6 @@ typedef struct HashJoin
 typedef struct Agg
 {
 	Plan		plan;
-	List	   *aggs;
 	AggState   *aggstate;
 } Agg;
 

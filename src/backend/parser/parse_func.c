@@ -63,7 +63,6 @@ static int match_argtypes(int nargs,
 			   CandidateList function_typeids,
 			   CandidateList *candidates);
 static List *setup_tlist(char *attname, Oid relid);
-static List *setup_base_tlist(Oid typeid);
 static Oid *func_select_candidate(int nargs, Oid *input_typeids,
 					  CandidateList candidates);
 static int	agg_get_candidates(char *aggname, Oid typeId, CandidateList *candidates);
@@ -1312,7 +1311,7 @@ setup_tlist(char *attname, Oid relid)
  **		Build a tlist that extracts a base type from the tuple
  **		returned by the executor.
  */
-static List *
+List *
 setup_base_tlist(Oid typeid)
 {
 	TargetEntry *tle;

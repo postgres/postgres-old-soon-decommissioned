@@ -154,7 +154,7 @@ parseCheckAggregates(ParseState *pstate, Query *qry)
 		GroupClause *grpcl = lfirst(tl);
 		Node		*expr;
 
-		expr = (Node *) get_groupclause_expr(grpcl, qry->targetList);
+		expr = get_sortgroupclause_expr(grpcl, qry->targetList);
 		if (contain_agg_clause(expr))
 			elog(ERROR, "Aggregates not allowed in GROUP BY clause");
 		groupClauses = lcons(expr, groupClauses);
@@ -293,10 +293,8 @@ ParseAgg(ParseState *pstate, char *aggname, Oid basetype,
 	aggref->aggname = pstrdup(aggname);
 	aggref->basetype = aggform->aggbasetype;
 	aggref->aggtype = fintype;
-
 	aggref->target = lfirst(target);
-	if (usenulls)
-		aggref->usenulls = true;
+	aggref->usenulls = usenulls;
 
 	pstate->p_hasAggs = true;
 

@@ -408,7 +408,8 @@ match_unsorted_outer(RelOptInfo *joinrel,
 				trialinnerpath =
 					get_cheapest_path_for_pathkeys(innerrel->pathlist,
 												   ltruncate(clausecount,
-															 trialsortkeys));
+															 trialsortkeys),
+												   false);
 				if (trialinnerpath != NULL &&
 					trialinnerpath->path_cost < cheapest_cost)
 				{
@@ -488,7 +489,8 @@ match_unsorted_inner(RelOptInfo *joinrel,
 			/* Look for an outer path already ordered well enough to merge */
 			mergeouterpath =
 				get_cheapest_path_for_pathkeys(outerrel->pathlist,
-											   outersortkeys);
+											   outersortkeys,
+											   false);
 
 			/* Should we use the mergeouter, or sort the cheapest outer? */
 			if (mergeouterpath != NULL &&

@@ -102,9 +102,12 @@ makeResdom(AttrNumber resno,
 	resdom->restype = restype;
 	resdom->restypmod = restypmod;
 	resdom->resname = resname;
+	/* For historical reasons, ressortgroupref defaults to 0 while
+	 * reskey/reskeyop are passed in explicitly.  This is pretty silly.
+	 */
+	resdom->ressortgroupref = 0;
 	resdom->reskey = reskey;
 	resdom->reskeyop = reskeyop;
-	resdom->resgroupref = 0;
 	resdom->resjunk = resjunk;
 	return resdom;
 }

@@ -572,6 +572,7 @@ typedef struct MaterialState
 typedef struct AggState
 {
 	CommonScanState csstate;	/* its first field is NodeTag */
+	List	   *aggs;			/* all Aggref nodes in targetlist & quals */
 	bool		agg_done;
 } AggState;
 

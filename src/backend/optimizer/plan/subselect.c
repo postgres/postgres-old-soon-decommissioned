@@ -552,9 +552,7 @@ SS_finalize_plan(Plan *plan)
 			break;
 
 		case T_Agg:
-			finalize_primnode_walker((Node *) ((Agg *) plan)->aggs,
-									 &results);
-			Assert(results.subplans == NIL);
+			/* XXX Code used to reject subplans in Aggref args; needed?? */
 			break;
 
 		case T_SeqScan:

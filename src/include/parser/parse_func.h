@@ -45,6 +45,8 @@ extern Node *ParseNestedFuncOrColumn(ParseState *pstate, Attr *attr,
 extern Node *ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 				  int *curr_resno, int precedence);
 
+extern List *setup_base_tlist(Oid typeid);
+
 extern void func_error(char *caller, char *funcname,
 					   int nargs, Oid *argtypes, char *msg);
 

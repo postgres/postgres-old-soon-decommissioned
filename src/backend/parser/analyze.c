@@ -293,7 +293,6 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 	 */
 	qry->sortClause = transformSortClause(pstate,
 										  NIL,
-										  NIL,
 										  qry->targetList,
 										  qry->uniqueFlag);
 
@@ -1039,7 +1038,6 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 
 	qry->sortClause = transformSortClause(pstate,
 										  stmt->sortClause,
-										  NIL,
 										  qry->targetList,
 										  qry->uniqueFlag);
 
