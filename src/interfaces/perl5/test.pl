@@ -114,7 +114,7 @@ $result = $conn->exec("CREATE DATABASE $dbname");
     or  die   "\$conn->exec ............. not ok: ", $conn->errorMessage;
 
 $conn = Pg::connectdb("dbname=rumpumpel");
-( $conn->errorMessage =~ 'Database rumpumpel does not exist' )
+( $conn->errorMessage =~ 'Database "rumpumpel" does not exist' )
     and print "\$conn->errorMessage ..... ok\n"
     or  die   "\$conn->errorMessage ..... not ok: ", $conn->errorMessage;
 
