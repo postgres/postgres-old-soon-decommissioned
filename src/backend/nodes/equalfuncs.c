@@ -457,6 +457,16 @@ _equalResultPath(ResultPath *a, ResultPath *b)
 }
 
 static bool
+_equalMaterialPath(MaterialPath *a, MaterialPath *b)
+{
+	if (!_equalPath((Path *) a, (Path *) b))
+		return false;
+	COMPARE_NODE_FIELD(subpath);
+
+	return true;
+}
+
+static bool
 _equalJoinPath(JoinPath *a, JoinPath *b)
 {
 	if (!_equalPath((Path *) a, (Path *) b))
@@ -1704,11 +1714,26 @@ equal(void *a, void *b)
 		case T_RelOptInfo:
 			retval = _equalRelOptInfo(a, b);
 			break;
+		case T_IndexOptInfo:
+			retval = _equalIndexOptInfo(a, b);
+			break;
 		case T_Path:
 			retval = _equalPath(a, b);
 			break;
 		case T_IndexPath:
 			retval = _equalIndexPath(a, b);
+			break;
+		case T_TidPath:
+			retval = _equalTidPath(a, b);
+			break;
+		case T_AppendPath:
+			retval = _equalAppendPath(a, b);
+			break;
+		case T_ResultPath:
+			retval = _equalResultPath(a, b);
+			break;
+		case T_MaterialPath:
+			retval = _equalMaterialPath(a, b);
 			break;
 		case T_NestPath:
 			retval = _equalNestPath(a, b);
@@ -1730,18 +1755,6 @@ equal(void *a, void *b)
 			break;
 		case T_InnerIndexscanInfo:
 			retval = _equalInnerIndexscanInfo(a, b);
-			break;
-		case T_TidPath:
-			retval = _equalTidPath(a, b);
-			break;
-		case T_AppendPath:
-			retval = _equalAppendPath(a, b);
-			break;
-		case T_ResultPath:
-			retval = _equalResultPath(a, b);
-			break;
-		case T_IndexOptInfo:
-			retval = _equalIndexOptInfo(a, b);
 			break;
 
 		case T_List:

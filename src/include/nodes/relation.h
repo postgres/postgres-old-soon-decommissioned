@@ -406,6 +406,18 @@ typedef struct ResultPath
 } ResultPath;
 
 /*
+ * MaterialPath represents use of a Material plan node, i.e., caching of
+ * the output of its subpath.  This is used when the subpath is expensive
+ * and needs to be scanned repeatedly, or when we need mark/restore ability
+ * and the subpath doesn't have it.
+ */
+typedef struct MaterialPath
+{
+	Path		path;
+	Path	   *subpath;
+} MaterialPath;
+
+/*
  * All join-type paths share these fields.
  */
 

@@ -60,6 +60,8 @@ extern void cost_functionscan(Path *path, Query *root,
 				  RelOptInfo *baserel);
 extern void cost_sort(Path *path, Query *root,
 		  List *pathkeys, Cost input_cost, double tuples, int width);
+extern void cost_material(Path *path,
+						  Cost input_cost, double tuples, int width);
 extern void cost_agg(Path *path, Query *root,
 					 AggStrategy aggstrategy, int numAggs,
 					 int numGroupCols, double numGroups,

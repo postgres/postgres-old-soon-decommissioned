@@ -328,9 +328,17 @@ make_subplan(SubLink *slink)
 			if (use_material)
 			{
 				Plan	   *matplan;
+				Path		matpath; /* dummy for result of cost_material */
 
 				matplan = (Plan *) make_material(plan->targetlist, plan);
-				/* kluge --- see comments above */
+				/* need to calculate costs */
+				cost_material(&matpath,
+							  plan->total_cost,
+							  plan->plan_rows,
+							  plan->plan_width);
+				matplan->startup_cost = matpath.startup_cost;
+				matplan->total_cost = matpath.total_cost;
+				/* parameter kluge --- see comments above */
 				matplan->extParam = listCopy(plan->extParam);
 				matplan->locParam = listCopy(plan->locParam);
 				node->plan = plan = matplan;

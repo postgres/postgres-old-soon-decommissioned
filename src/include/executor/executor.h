@@ -33,6 +33,7 @@
 extern void ExecReScan(Plan *node, ExprContext *exprCtxt, Plan *parent);
 extern void ExecMarkPos(Plan *node);
 extern void ExecRestrPos(Plan *node);
+extern bool ExecSupportsMarkRestore(NodeTag plantype);
 
 /*
  * prototypes from functions in execJunk.c

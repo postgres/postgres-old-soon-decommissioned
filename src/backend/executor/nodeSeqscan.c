@@ -19,9 +19,8 @@
  *		ExecInitSeqScan			creates and initializes a seqscan node.
  *		ExecEndSeqScan			releases any storage allocated.
  *		ExecSeqReScan			rescans the relation
- *		ExecMarkPos				marks scan position
- *		ExecRestrPos			restores scan position
- *
+ *		ExecSeqMarkPos			marks scan position
+ *		ExecSeqRestrPos			restores scan position
  */
 #include "postgres.h"
 

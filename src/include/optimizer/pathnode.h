@@ -37,6 +37,7 @@ extern TidPath *create_tidscan_path(Query *root, RelOptInfo *rel,
 extern AppendPath *create_append_path(RelOptInfo *rel, List *subpaths);
 extern ResultPath *create_result_path(RelOptInfo *rel, Path *subpath,
 									  List *constantqual);
+extern MaterialPath *create_material_path(RelOptInfo *rel, Path *subpath);
 extern Path *create_subqueryscan_path(RelOptInfo *rel);
 extern Path *create_functionscan_path(Query *root, RelOptInfo *rel);
 

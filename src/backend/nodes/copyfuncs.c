@@ -1143,6 +1143,27 @@ _copyResultPath(ResultPath *from)
 }
 
 /*
+ * _copyMaterialPath
+ */
+static MaterialPath *
+_copyMaterialPath(MaterialPath *from)
+{
+	MaterialPath    *newnode = makeNode(MaterialPath);
+
+	/*
+	 * copy node superclass fields
+	 */
+	CopyPathFields((Path *) from, (Path *) newnode);
+
+	/*
+	 * copy remainder of node
+	 */
+	COPY_NODE_FIELD(subpath);
+
+	return newnode;
+}
+
+/*
  * CopyJoinPathFields
  *
  *		This function copies the fields of the JoinPath node.  It is used by
@@ -2739,6 +2760,9 @@ copyObject(void *from)
 		case T_RelOptInfo:
 			retval = _copyRelOptInfo(from);
 			break;
+		case T_IndexOptInfo:
+			retval = _copyIndexOptInfo(from);
+			break;
 		case T_Path:
 			retval = _copyPath(from);
 			break;
@@ -2753,6 +2777,9 @@ copyObject(void *from)
 			break;
 		case T_ResultPath:
 			retval = _copyResultPath(from);
+			break;
+		case T_MaterialPath:
+			retval = _copyMaterialPath(from);
 			break;
 		case T_NestPath:
 			retval = _copyNestPath(from);
@@ -2771,9 +2798,6 @@ copyObject(void *from)
 			break;
 		case T_JoinInfo:
 			retval = _copyJoinInfo(from);
-			break;
-		case T_IndexOptInfo:
-			retval = _copyIndexOptInfo(from);
 			break;
 		case T_InnerIndexscanInfo:
 			retval = _copyInnerIndexscanInfo(from);
