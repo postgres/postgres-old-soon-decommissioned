@@ -339,12 +339,9 @@ See
 .IR introduction (libpq)
 for additional details.
 .SH "RETURN VALUE"
-When executed with the
-.BR "-c"
-option,
 .IR psql
-returns 0 to the shell on successful query completion, 1 for errors,
-2 for abrupt disconnection from the backend.
+returns 0 to the shell on successful completion of all queries,
+1 for errors, 2 for abrupt disconnection from the backend.
 .IR psql
 will also return 1 if the connection to a database could not be made for
 any reason.
