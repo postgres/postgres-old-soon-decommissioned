@@ -341,7 +341,7 @@ tas_dummy()
 
 #endif							/* defined(__alpha__) && defined(linux) */
 
-#if defined(linux) && defined(sparc)
+#if (defined(linux) || defined(__NetBSD__)) && defined(sparc)
 
 #define S_LOCK(lock)	do \
 						{ \
