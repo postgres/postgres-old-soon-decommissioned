@@ -34,7 +34,6 @@
 #include "catalog/pg_proc.h"
 #include "catalog/pg_shadow.h"
 #include "catalog/pg_type.h"
-#include "commands/tablecmds.h"
 #include "lib/stringinfo.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
@@ -1671,7 +1670,6 @@ RemoveTempRelationsCallback(void)
 
 		CommitTransactionCommand(true);
 	}
-	free_temp_rels();
 }
 
 

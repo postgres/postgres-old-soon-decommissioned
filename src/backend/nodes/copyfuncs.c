@@ -2037,6 +2037,7 @@ _copyCreateStmt(CreateStmt *from)
 	Node_Copy(from, newnode, inhRelations);
 	Node_Copy(from, newnode, constraints);
 	newnode->hasoids = from->hasoids;
+	newnode->oncommit = from->oncommit;
 
 	return newnode;
 }

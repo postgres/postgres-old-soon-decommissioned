@@ -193,6 +193,7 @@ DefineSequence(CreateSeqStmt *seq)
 	stmt->inhRelations = NIL;
 	stmt->constraints = NIL;
 	stmt->hasoids = false;
+	stmt->oncommit = ONCOMMIT_NOOP;
 
 	seqoid = DefineRelation(stmt, RELKIND_SEQUENCE);
 

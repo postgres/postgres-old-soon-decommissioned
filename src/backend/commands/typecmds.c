@@ -846,6 +846,7 @@ DefineCompositeType(const RangeVar *typevar, List *coldeflist)
 	createStmt->inhRelations = NIL;
 	createStmt->constraints = NIL;
 	createStmt->hasoids = false;
+	createStmt->oncommit = ONCOMMIT_NOOP;
 
 	/*
 	 * finally create the relation...

@@ -840,6 +840,8 @@ _equalCreateStmt(CreateStmt *a, CreateStmt *b)
 		return false;
 	if (a->hasoids != b->hasoids)
 		return false;
+	if (a->oncommit != b->oncommit)
+		return false;
 
 	return true;
 }

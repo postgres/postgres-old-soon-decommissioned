@@ -41,7 +41,7 @@ extern Oid heap_create_with_catalog(const char *relname,
 						 TupleDesc tupdesc,
 						 char relkind,
 						 bool shared_relation,
-						 char ateoxact, 
+						 OnCommitAction oncommit,
 						 bool allow_system_table_mods);
 
 extern void heap_drop_with_catalog(Oid rid);

@@ -117,8 +117,9 @@ _outCreateStmt(StringInfo str, CreateStmt *node)
 	appendStringInfo(str, " :constraints ");
 	_outNode(str, node->constraints);
 
-	appendStringInfo(str, " :hasoids %s ",
-					 booltostr(node->hasoids));
+	appendStringInfo(str, " :hasoids %s :oncommit %d ",
+					 booltostr(node->hasoids),
+					 (int) node->oncommit);
 }
 
 static void

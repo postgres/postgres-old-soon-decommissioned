@@ -732,7 +732,7 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 											 tupdesc,
 											 RELKIND_RELATION,
 											 false,
-											 ATEOXACTNOOP,
+											 ONCOMMIT_NOOP,
 											 allowSystemTableMods);
 
 				FreeTupleDesc(tupdesc);

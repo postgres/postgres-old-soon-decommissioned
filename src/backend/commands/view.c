@@ -137,6 +137,7 @@ DefineVirtualRelation(const RangeVar *relation, List *tlist, bool replace)
 		createStmt->inhRelations = NIL;
 		createStmt->constraints = NIL;
 		createStmt->hasoids = false;
+		createStmt->oncommit = ONCOMMIT_NOOP;
 
 		/*
 		 * finally create the relation (this will error out if there's an
