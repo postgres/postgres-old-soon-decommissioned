@@ -633,8 +633,9 @@ SELECT * FROM x, y, a, b, c WHERE something AND somethingelse;
   <sect2 id="disable-autocommit">
    <title>Disable Autocommit</title>
 
-   <indexterm zone="disable-autocommit">
+   <indexterm>
     <primary>autocommit</primary>
+    <secondary>bulk-loading data</secondary>
    </indexterm>
 
    <para>
