@@ -149,21 +149,6 @@ btree   |oid_ops    |<=
 btree   |oid_ops    |=       
 btree   |oid_ops    |>       
 btree   |oid_ops    |>=      
-btree   |oidint2_ops|<       
-btree   |oidint2_ops|<=      
-btree   |oidint2_ops|=       
-btree   |oidint2_ops|>       
-btree   |oidint2_ops|>=      
-btree   |oidint4_ops|<       
-btree   |oidint4_ops|<=      
-btree   |oidint4_ops|=       
-btree   |oidint4_ops|>       
-btree   |oidint4_ops|>=      
-btree   |oidname_ops|<       
-btree   |oidname_ops|<=      
-btree   |oidname_ops|=       
-btree   |oidname_ops|>       
-btree   |oidname_ops|>=      
 btree   |text_ops   |<       
 btree   |text_ops   |<=      
 btree   |text_ops   |=       
@@ -226,15 +211,6 @@ Similarly,
 support indices on int4 data that is to be compared against int2 data
 in queries.
 .PP
-The operator classes
-.IR oidint2_ops ,
-.IR oidint4_ops ,
-and
-.IR oidname_ops
-represent the use of 
-.IR "functional indices"
-to simulate multi-key indices.
-These are no longer needed now that multi-key indexes are supported.
 .PP
 The Postgres query optimizer will consider using btree indices in a scan
 whenever an indexed attribute is involved in a comparison using one of:

@@ -96,10 +96,10 @@ _bt_adjscans(Relation rel, ItemPointer tid, int op)
 	BTScanList	l;
 	Oid			relid;
 
-	relid = rel->rd_id;
+	relid = RelationGetRelid(rel);
 	for (l = BTScans; l != (BTScanList) NULL; l = l->btsl_next)
 	{
-		if (relid == l->btsl_scan->relation->rd_id)
+		if (relid == RelationGetRelid(l->btsl_scan->relation))
 			_bt_scandel(l->btsl_scan, op,
 						ItemPointerGetBlockNumber(tid),
 						ItemPointerGetOffsetNumber(tid));

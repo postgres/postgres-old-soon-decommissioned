@@ -72,7 +72,8 @@ GetDynamicFuncArgType(Var *arg, ExprContext *econtext)
 	relname = (char *) getrelname(rtid, econtext->ecxt_range_table);
 
 
-	tup = SearchSysCacheTuple(TYPNAME, PointerGetDatum(relname),
+	tup = SearchSysCacheTuple(TYPNAME,
+							  PointerGetDatum(relname),
 							  0, 0, 0);
 	if (!tup)
 		elog(ERROR, "Lookup failed on type tuple for class %s",
@@ -129,7 +130,7 @@ init_fcache(Oid foid,
 	 * ----------------
 	 */
 	typeTuple = SearchSysCacheTuple(TYPOID,
-						   ObjectIdGetDatum(procedureStruct->prorettype),
+							   ObjectIdGetDatum(procedureStruct->prorettype),
 									0, 0, 0);
 
 	if (!HeapTupleIsValid(typeTuple))

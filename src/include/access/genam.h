@@ -47,7 +47,7 @@ index_getprocid(Relation irel, AttrNumber attnum,
 extern Datum
 GetIndexValue(HeapTuple tuple, TupleDesc hTupDesc,
 			  int attOff, AttrNumber attrNums[], FuncIndexInfo *fInfo,
-			  bool *attNull, Buffer buffer);
+			  bool *attNull);
 
 /* in genam.c */
 extern IndexScanDesc

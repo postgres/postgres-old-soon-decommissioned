@@ -230,7 +230,8 @@ ParseAgg(ParseState *pstate, char *aggname, Oid basetype,
 	HeapTuple	theAggTuple;
 	bool		usenulls = false;
 
-	theAggTuple = SearchSysCacheTuple(AGGNAME, PointerGetDatum(aggname),
+	theAggTuple = SearchSysCacheTuple(AGGNAME,
+									  PointerGetDatum(aggname),
 									  ObjectIdGetDatum(basetype),
 									  0, 0);
 	if (!HeapTupleIsValid(theAggTuple))

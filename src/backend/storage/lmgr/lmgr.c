@@ -67,7 +67,7 @@ RelationInitLockInfo(Relation relation)
 	extern GlobalMemory	CacheCxt;
 
 	Assert(RelationIsValid(relation));
-	Assert(OidIsValid(RelationGetRelationId(relation)));
+	Assert(OidIsValid(RelationGetRelid(relation)));
 
 	info = (LockInfo) relation->lockInfo;
 	
@@ -80,7 +80,7 @@ RelationInitLockInfo(Relation relation)
 	info = (LockInfo) palloc(sizeof(LockInfoData));
 	MemoryContextSwitchTo(oldcxt);
 
-	info->lockRelId.relId = RelationGetRelationId(relation);
+	info->lockRelId.relId = RelationGetRelid(relation);
 	if (IsSharedSystemRelationName(relname))
 		info->lockRelId.dbId = InvalidOid;
 	else

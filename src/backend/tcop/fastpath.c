@@ -204,7 +204,8 @@ update_fp_info(Oid func_id, struct fp_info * fip)
 	MemSet((char *) fip, 0, (int) sizeof(struct fp_info));
 	fip->funcid = InvalidOid;
 
-	func_htp = SearchSysCacheTuple(PROOID, ObjectIdGetDatum(func_id),
+	func_htp = SearchSysCacheTuple(PROOID,
+								   ObjectIdGetDatum(func_id),
 								   0, 0, 0);
 	if (!HeapTupleIsValid(func_htp))
 	{
@@ -236,7 +237,8 @@ update_fp_info(Oid func_id, struct fp_info * fip)
 
 	if (OidIsValid(rettype))
 	{
-		type_htp = SearchSysCacheTuple(TYPOID, ObjectIdGetDatum(rettype),
+		type_htp = SearchSysCacheTuple(TYPOID,
+									   ObjectIdGetDatum(rettype),
 									   0, 0, 0);
 		if (!HeapTupleIsValid(type_htp))
 		{

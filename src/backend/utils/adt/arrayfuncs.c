@@ -1302,7 +1302,8 @@ system_cache_lookup(Oid element_type,
 	HeapTuple	typeTuple;
 	TypeTupleForm typeStruct;
 
-	typeTuple = SearchSysCacheTuple(TYPOID, ObjectIdGetDatum(element_type),
+	typeTuple = SearchSysCacheTuple(TYPOID,
+									ObjectIdGetDatum(element_type),
 									0, 0, 0);
 
 	if (!HeapTupleIsValid(typeTuple))

@@ -40,7 +40,7 @@ setheapoverride(bool on)
 	if (on)
 	{
 		TransactionIdStore(GetCurrentTransactionId(),
-						   &HeapSpecialTransactionId);
+							&HeapSpecialTransactionId);
 		HeapSpecialCommandId = GetCurrentCommandId();
 	}
 	else

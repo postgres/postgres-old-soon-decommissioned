@@ -126,6 +126,46 @@ oid8eq(Oid arg1[], Oid arg2[])
 }
 
 bool
+oid8lt(Oid arg1[], Oid arg2[])
+{
+	int i;
+	for (i=0; i < 8; i++)
+		if (!int4eq(arg1[i], arg2[i]))
+			return int4lt(arg1[i], arg2[i]);
+	return false;
+}
+
+bool
+oid8le(Oid arg1[], Oid arg2[])
+{
+	int i;
+	for (i=0; i < 8; i++)
+		if (!int4eq(arg1[i], arg2[i]))
+			return int4le(arg1[i], arg2[i]);
+	return true;
+}
+
+bool
+oid8ge(Oid arg1[], Oid arg2[])
+{
+	int i;
+	for (i=0; i < 8; i++)
+		if (!int4eq(arg1[i], arg2[i]))
+			return int4ge(arg1[i], arg2[i]);
+	return true;
+}
+
+bool
+oid8gt(Oid arg1[], Oid arg2[])
+{
+	int i;
+	for (i=0; i < 8; i++)
+		if (!int4eq(arg1[i], arg2[i]))
+			return int4gt(arg1[i], arg2[i]);
+	return false;
+}
+
+bool
 oideqint4(Oid arg1, int32 arg2)
 {
 /* oid is unsigned, but int4 is signed */

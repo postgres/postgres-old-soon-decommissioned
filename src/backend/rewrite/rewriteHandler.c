@@ -1038,7 +1038,9 @@ CheckViewPerms(Relation view, List *rtable)
 	/*
 	 * get the usename of the view's owner
 	 */
-	utup = SearchSysCacheTuple(USESYSID, view->rd_rel->relowner, 0, 0, 0);
+	utup = SearchSysCacheTuple(USESYSID,
+								ObjectIdGetDatum(view->rd_rel->relowner),
+								0, 0, 0);
 	if (!HeapTupleIsValid(utup))
 	{
 		elog(ERROR, "cache lookup for userid %d failed",

@@ -46,8 +46,7 @@ typtoout(Oid type)
 									0, 0, 0);
 
 	if (HeapTupleIsValid(typeTuple))
-		return ((Oid)
-				((TypeTupleForm) GETSTRUCT(typeTuple))->typoutput);
+		return ((Oid) ((TypeTupleForm) GETSTRUCT(typeTuple))->typoutput);
 
 	elog(ERROR, "typtoout: Cache lookup of type %d failed", type);
 	return (InvalidOid);
@@ -63,8 +62,7 @@ gettypelem(Oid type)
 									0, 0, 0);
 
 	if (HeapTupleIsValid(typeTuple))
-		return ((Oid)
-				((TypeTupleForm) GETSTRUCT(typeTuple))->typelem);
+		return ((Oid) ((TypeTupleForm) GETSTRUCT(typeTuple))->typelem);
 
 	elog(ERROR, "typtoout: Cache lookup of type %d failed", type);
 	return (InvalidOid);

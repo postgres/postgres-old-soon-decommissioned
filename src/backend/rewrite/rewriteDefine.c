@@ -97,7 +97,7 @@ InsertRule(char *rulname,
 	eventrel = heap_openr(evobj);
 	if (eventrel == NULL)
 		elog(ERROR, "rules cannot be defined on relations not in schema");
-	eventrel_oid = RelationGetRelationId(eventrel);
+	eventrel_oid = RelationGetRelid(eventrel);
 
 	/*
 	 * if the slotname is null, we know that this is a multi-attr rule
@@ -201,7 +201,7 @@ DefineQueryRewrite(RuleStmt *stmt)
 	event_relation = heap_openr(event_obj->relname);
 	if (event_relation == NULL)
 		elog(ERROR, "virtual relations not supported yet");
-	ev_relid = RelationGetRelationId(event_relation);
+	ev_relid = RelationGetRelid(event_relation);
 
 	if (eslot_string == NULL)
 	{

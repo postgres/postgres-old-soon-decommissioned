@@ -614,7 +614,7 @@ datetime_datetime(DateADT date, TimeADT *time)
 
 
 int32							/* RelativeTime */
-int42reltime(int32 timevalue)
+int4reltime(int32 timevalue)
 {
 	return (timevalue);
 }

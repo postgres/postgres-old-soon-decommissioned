@@ -468,8 +468,9 @@ SetUserId()
 	}
 
 	userName = GetPgUserName();
-	userTup = SearchSysCacheTuple(USENAME, PointerGetDatum(userName),
-								  0, 0, 0);
+	userTup = SearchSysCacheTuple(USENAME,
+									PointerGetDatum(userName),
+								  	0, 0, 0);
 	if (!HeapTupleIsValid(userTup))
 		elog(FATAL, "SetUserId: user \"%s\" is not in \"%s\"",
 			 userName,

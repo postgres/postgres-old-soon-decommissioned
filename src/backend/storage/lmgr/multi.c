@@ -248,7 +248,7 @@ MultiAcquire(LOCKMETHOD lockmethod,
 			 LOCKMODE lockmode,
 			 PG_LOCK_LEVEL level)
 {
-	LOCKMODE		locks[N_LEVELS];
+	LOCKMODE	locks[N_LEVELS];
 	int			i,
 				status;
 	LOCKTAG		xxTag,

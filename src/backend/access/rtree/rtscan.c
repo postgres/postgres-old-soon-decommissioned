@@ -290,10 +290,10 @@ rtadjscans(Relation r, int op, BlockNumber blkno, OffsetNumber offnum)
 	RTScanList	l;
 	Oid			relid;
 
-	relid = r->rd_id;
+	relid = RelationGetRelid(r);
 	for (l = RTScans; l != (RTScanList) NULL; l = l->rtsl_next)
 	{
-		if (l->rtsl_scan->relation->rd_id == relid)
+		if (RelationGetRelid(l->rtsl_scan->relation) == relid)
 			rtadjone(l->rtsl_scan, op, blkno, offnum);
 	}
 }

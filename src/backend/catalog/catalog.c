@@ -174,7 +174,7 @@ fillatt(TupleDesc tupleDesc)
 	for (i = 0; i < natts;)
 	{
 		tuple = SearchSysCacheTuple(TYPOID,
-								  Int32GetDatum((*attributeP)->atttypid),
+									ObjectIdGetDatum((*attributeP)->atttypid),
 									0, 0, 0);
 		if (!HeapTupleIsValid(tuple))
 		{

@@ -267,7 +267,7 @@ getmyrelids()
 	MyAMRelationId = tuple->t_oid;
 
 	tuple = SearchSysCacheTuple(RELNAME,
-					   PointerGetDatum(AccessMethodOperatorRelationName),
+								PointerGetDatum(AccessMethodOperatorRelationName),
 								0, 0, 0);
 	Assert(HeapTupleIsValid(tuple));
 	MyAMOPRelationId = tuple->t_oid;
@@ -476,7 +476,7 @@ RelationInvalidateRelationCache(Relation relation,
 	 * ----------------
 	 */
 	ValidateHacks();			/* XXX */
-	relationId = RelationGetRelationId(relation);
+	relationId = RelationGetRelid(relation);
 
 	/* ----------------
 	 *

@@ -172,7 +172,7 @@ fmgr_info(Oid procedureId, FmgrInfo *finfo)
 	if (!(fcp = fmgr_isbuiltin(procedureId)))
 	{
 		procedureTuple = SearchSysCacheTuple(PROOID,
-										   ObjectIdGetDatum(procedureId),
+										   	 ObjectIdGetDatum(procedureId),
 											 0, 0, 0);
 		if (!HeapTupleIsValid(procedureTuple))
 		{

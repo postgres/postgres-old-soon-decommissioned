@@ -404,7 +404,7 @@ StoreCatalogInheritance(Oid relationId, List *supers)
 		char		nullarr[Natts_pg_inherits];
 
 		tuple = SearchSysCacheTuple(RELNAME,
-								  PointerGetDatum(strVal(lfirst(entry))),
+									PointerGetDatum(strVal(lfirst(entry))),
 									0, 0, 0);
 		AssertArg(HeapTupleIsValid(tuple));
 

@@ -78,9 +78,8 @@ int4notin(int16 not_in_arg, char *relation_and_attr)
 	retval = true;
 
 	/* do a scan of the relation, and do the check */
-	for (current_tuple = heap_getnext(scan_descriptor, 0, NULL);
-		 current_tuple != NULL && retval;
-		 current_tuple = heap_getnext(scan_descriptor, 0, NULL))
+	while (HeapTupleIsValid(current_tuple = heap_getnext(scan_descriptor, 0)) &&
+			retval)
 	{
 		value = heap_getattr(current_tuple,
 							 (AttrNumber) attrid,

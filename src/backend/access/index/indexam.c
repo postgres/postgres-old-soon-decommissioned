@@ -331,8 +331,7 @@ index_getnext(IndexScanDesc scan,
 	 *	have the am's gettuple proc do all the work.
 	 * ----------------
 	 */
-	result = (RetrieveIndexResult)
-		fmgr(procedure, scan, direction);
+	result = (RetrieveIndexResult)fmgr(procedure, scan, direction);
 
 	return result;
 }
@@ -376,8 +375,7 @@ GetIndexValue(HeapTuple tuple,
 			  int attOff,
 			  AttrNumber attrNums[],
 			  FuncIndexInfo *fInfo,
-			  bool *attNull,
-			  Buffer buffer)
+			  bool *attNull)
 {
 	Datum		returnVal;
 	bool		isNull;

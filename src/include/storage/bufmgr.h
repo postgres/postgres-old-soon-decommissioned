@@ -147,7 +147,7 @@ extern void FlushBufferPool(int StableMainMemoryFlag);
 extern BlockNumber BufferGetBlockNumber(Buffer buffer);
 extern Relation BufferGetRelation(Buffer buffer);
 extern BlockNumber RelationGetNumberOfBlocks(Relation relation);
-extern void ReleaseRelationBuffers(Relation rdesc);
+extern void ReleaseRelationBuffers(Relation rel);
 extern void DropBuffers(Oid dbid);
 extern void PrintBufferDescs(void);
 extern void PrintPinnedBufs(void);

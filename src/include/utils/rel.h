@@ -146,12 +146,12 @@ typedef Relation *RelationPtr;
 
 
 /*
- * RelationGetRelationId --
+ * RelationGetRelid --
  *
  *	returns the object id of the relation
  *
  */
-#define RelationGetRelationId(relation) ((relation)->rd_id)
+#define RelationGetRelid(relation) ((relation)->rd_id)
 
 /*
  * RelationGetFile --

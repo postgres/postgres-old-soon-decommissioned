@@ -514,7 +514,7 @@ pltcl_func_handler(FmgrInfo *proinfo,
 		 * return value.
 		 ************************************************************/
 		typeTup = SearchSysCacheTuple(TYPOID,
-								ObjectIdGetDatum(procStruct->prorettype),
+									ObjectIdGetDatum(procStruct->prorettype),
 									  0, 0, 0);
 		if (!HeapTupleIsValid(typeTup))
 		{
@@ -544,7 +544,7 @@ pltcl_func_handler(FmgrInfo *proinfo,
 		for (i = 0; i < proinfo->fn_nargs; i++)
 		{
 			typeTup = SearchSysCacheTuple(TYPOID,
-							ObjectIdGetDatum(procStruct->proargtypes[i]),
+								ObjectIdGetDatum(procStruct->proargtypes[i]),
 										  0, 0, 0);
 			if (!HeapTupleIsValid(typeTup))
 			{
@@ -1139,7 +1139,7 @@ pltcl_trigger_handler(FmgrInfo *proinfo)
 		 * for the input function
 		 ************************************************************/
 		typeTup = SearchSysCacheTuple(TYPOID,
-				  ObjectIdGetDatum(tupdesc->attrs[attnum - 1]->atttypid),
+					  ObjectIdGetDatum(tupdesc->attrs[attnum - 1]->atttypid),
 									  0, 0, 0);
 		if (!HeapTupleIsValid(typeTup))
 		{
@@ -2156,7 +2156,7 @@ pltcl_set_tuple_values(Tcl_Interp * interp, char *arrayname,
 		 * for the output function
 		 ************************************************************/
 		typeTup = SearchSysCacheTuple(TYPOID,
-						   ObjectIdGetDatum(tupdesc->attrs[i]->atttypid),
+							   ObjectIdGetDatum(tupdesc->attrs[i]->atttypid),
 									  0, 0, 0);
 		if (!HeapTupleIsValid(typeTup))
 		{
@@ -2229,7 +2229,7 @@ pltcl_build_tuple_argument(HeapTuple tuple, TupleDesc tupdesc,
 		 * for the output function
 		 ************************************************************/
 		typeTup = SearchSysCacheTuple(TYPOID,
-						   ObjectIdGetDatum(tupdesc->attrs[i]->atttypid),
+							   ObjectIdGetDatum(tupdesc->attrs[i]->atttypid),
 									  0, 0, 0);
 		if (!HeapTupleIsValid(typeTup))
 		{

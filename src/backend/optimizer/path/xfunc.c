@@ -496,7 +496,9 @@ xfunc_func_expense(LispValue node, LispValue args)
 		funcid = get_funcid((Func) node);
 
 	/* look up tuple in cache */
-	tupl = SearchSysCacheTuple(PROOID, ObjectIdGetDatum(funcid), 0, 0, 0);
+	tupl = SearchSysCacheTuple(PROOID,
+								ObjectIdGetDatum(funcid),
+								0, 0, 0);
 	if (!HeapTupleIsValid(tupl))
 		elog(ERROR, "Cache lookup failed for procedure %d", funcid);
 	proc = (Form_pg_proc) GETSTRUCT(tupl);
@@ -610,7 +612,7 @@ xfunc_width(LispValue clause)
 	{
 		/* base case: width is width of this attribute */
 		tupl = SearchSysCacheTuple(TYPOID,
-							  PointerGetDatum(get_vartype((Var) clause)),
+								  ObjectIdGetDatum(get_vartype((Var) clause)),
 								   0, 0, 0);
 		if (!HeapTupleIsValid(tupl))
 			elog(ERROR, "Cache lookup failed for type %d",
@@ -1307,7 +1309,9 @@ xfunc_func_width(RegProcedure funcid, LispValue args)
 
 	/* lookup function and find its return type */
 	Assert(RegProcedureIsValid(funcid));
-	tupl = SearchSysCacheTuple(PROOID, ObjectIdGetDatum(funcid), 0, 0, 0);
+	tupl = SearchSysCacheTuple(PROOID,
+								ObjectIdGetDatum(funcid),
+								0, 0, 0);
 	if (!HeapTupleIsValid(tupl))
 		elog(ERROR, "Cache lookup failed for procedure %d", funcid);
 	proc = (Form_pg_proc) GETSTRUCT(tupl);

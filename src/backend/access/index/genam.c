@@ -216,14 +216,15 @@ IndexScanMarkPosition(IndexScanDesc scan)
 
 	if (scan->flags & ScanUncheckedPrevious)
 	{
-		result =
-			index_getnext(scan, BackwardScanDirection);
+		result = index_getnext(scan, BackwardScanDirection);
 
 		if (result != NULL)
+		{
 			scan->previousItemData = result->index_iptr;
+			pfree(result);
+		}
 		else
 			ItemPointerSetInvalid(&scan->previousItemData);
-
 	}
 	else if (scan->flags & ScanUncheckedNext)
 	{
@@ -231,7 +232,10 @@ IndexScanMarkPosition(IndexScanDesc scan)
 			index_getnext(scan, ForwardScanDirection);
 
 		if (result != NULL)
+		{
 			scan->nextItemData = result->index_iptr;
+			pfree(result);
+		}
 		else
 			ItemPointerSetInvalid(&scan->nextItemData);
 	}

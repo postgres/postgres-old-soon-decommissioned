@@ -47,7 +47,7 @@ extern void index_destroy(Oid indexId);
 extern void
 FormIndexDatum(int numberOfAttributes,
 			   AttrNumber attributeNumber[], HeapTuple heapTuple,
-			   TupleDesc heapDescriptor, Buffer buffer, Datum *datum,
+			   TupleDesc heapDescriptor, Datum *datum,
 			   char *nullv, FuncIndexInfoPtr fInfo);
 
 extern void UpdateStats(Oid relid, long reltuples, bool hasindex);

@@ -90,7 +90,7 @@ _hash_adjscans(Relation rel, ItemPointer tid)
 	HashScanList l;
 	Oid			relid;
 
-	relid = rel->rd_id;
+	relid = RelationGetRelid(rel);
 	for (l = HashScans; l != (HashScanList) NULL; l = l->hashsl_next)
 	{
 		if (relid == l->hashsl_scan->relation->rd_id)

@@ -61,8 +61,7 @@ _bt_mkscankey(Relation rel, IndexTuple itup)
 			proc = index_getprocid(rel, i + 1, BTORDER_PROC);
 			flag = 0x0;
 		}
-		ScanKeyEntryInitialize(&skey[i],
-							   flag, (AttrNumber) (i + 1), proc, arg);
+		ScanKeyEntryInitialize(&skey[i], flag, (AttrNumber) (i + 1), proc, arg);
 	}
 
 	return (skey);

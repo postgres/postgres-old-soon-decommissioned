@@ -182,7 +182,7 @@ lo_creat(int mode)
 		return InvalidOid;
 	}
 
-	lobjId = lobjDesc->heap_r->rd_id;
+	lobjId = RelationGetRelid(lobjDesc->heap_r);
 
 	inv_close(lobjDesc);
 
@@ -288,7 +288,7 @@ lo_import(text *filename)
 	 * the oid for the large object is just the oid of the relation
 	 * XInv??? which contains the data.
 	 */
-	lobjOid = lobj->heap_r->rd_id;
+	lobjOid = RelationGetRelid(lobj->heap_r);
 
 	/*
 	 * read in from the Unix file and write to the inversion file

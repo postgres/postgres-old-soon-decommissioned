@@ -683,7 +683,7 @@ printf("MakeTargetlistExpr: attrtypmod is %d\n", (int4) attrtypmod);
 										   lowerIndexpr,
 										   (Expr *) expr);
 			attrtype = attnumTypeId(rd, resdomno);
-			attrtypmod = get_atttypmod(rd->rd_id, resdomno);
+			attrtypmod = get_atttypmod(RelationGetRelid(rd), resdomno);
 		}
 	}
 	else

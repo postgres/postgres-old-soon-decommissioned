@@ -45,7 +45,6 @@ GetDatabaseInfo(char *name, int4 *owner, char *path)
 	Relation	dbrel;
 	HeapTuple	dbtup;
 	HeapTuple	tup;
-	Buffer		buf;
 	HeapScanDesc scan;
 	ScanKeyData scanKey;
 
@@ -64,13 +63,10 @@ GetDatabaseInfo(char *name, int4 *owner, char *path)
 	/*
 	 * Since we're going to close the relation, copy the tuple.
 	 */
-	tup = heap_getnext(scan, 0, &buf);
+	tup = heap_getnext(scan, 0);
 
 	if (HeapTupleIsValid(tup))
-	{
 		dbtup = heap_copytuple(tup);
-		ReleaseBuffer(buf);
-	}
 	else
 		dbtup = tup;
 
