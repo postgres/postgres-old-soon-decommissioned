@@ -170,7 +170,7 @@ endif
 
 global1.bki.source local1_template1.bki.source: 
 	$(MAKE) -C catalog $@
-	cp catalog/$@ .
+	cp catalog/$@ ../include
 
 
 ############################################################################
@@ -179,11 +179,11 @@ global1.bki.source local1_template1.bki.source:
 
 parse.h: 
 	$(MAKE) -C parser parse.h
-	cp parser/parse.h .
+	cp parser/parse.h ../include
 
 fmgr.h:
 	$(MAKE) -C utils fmgr.h
-	cp utils/fmgr.h .
+	cp utils/fmgr.h ../include
 
 #############################################################################
 clean:
