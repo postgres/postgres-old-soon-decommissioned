@@ -17,9 +17,9 @@ VPATH:= $(VPATH):$(CURDIR)/parser
 PARSEYACCS= gram.c
 
 $(PARSEYACCS): gram.y
-	cd $(objdir); \
-	$(YACC) $(YFLAGS) $<; \
-	mv y.tab.c gram.c; \
+	cd $(objdir) 
+	$(YACC) $(YFLAGS) $<
+	mv y.tab.c gram.c
 	mv y.tab.h parse.h
 
 $(objdir)/gram.o: gram.c
