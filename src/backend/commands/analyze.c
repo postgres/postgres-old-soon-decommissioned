@@ -56,7 +56,7 @@ typedef enum
  * ignoring wide values will not affect our estimates of histogram bin
  * boundaries very much.
  */
-#define WIDTH_THRESHOLD  256
+#define WIDTH_THRESHOLD  1024
 
 /*
  * We build one of these structs for each attribute (column) that is to be
