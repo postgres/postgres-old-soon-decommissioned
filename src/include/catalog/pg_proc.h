@@ -93,6 +93,8 @@ typedef FormData_pg_proc *Form_pg_proc;
 /* keep the following ordered by OID so that later changes can be made easier */
 
 /* OIDS 1 - 99 */
+DATA(insert OID = 12  (  update_pg_pwd     PGUID 11 f t f 0 f 0  ""  100 0 0 100  update_pg_pwd - ));
+DESCR("update pg_pwd file");
 
 DATA(insert OID = 1242 (  boolin		   PGUID 11 f t t 1 f 16 "0" 100 0 0  100  boolin - ));
 DESCR("(internal)");
