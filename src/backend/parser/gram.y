@@ -340,6 +340,7 @@ Oid	param_type(int t); /* used in parse_expr.c */
 %left		Op				/* multi-character ops and user-defined operators */
 %nonassoc	NOTNULL
 %nonassoc	ISNULL
+%nonassoc	NULL_P
 %nonassoc	IS
 %left		'+' '-'
 %left		'*' '/' '%'
