@@ -864,6 +864,7 @@ typedef struct RangeTblEntry
 	Oid			relid;
 	bool		inh;			/* inheritance? */
 	bool		inFromCl;		/* comes from From Clause */
+	bool		skipAcl;		/* skip ACL check in executor */
 } RangeTblEntry;
 
 /*

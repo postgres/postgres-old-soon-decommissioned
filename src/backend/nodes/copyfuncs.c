@@ -1495,6 +1495,7 @@ _copyRangeTblEntry(RangeTblEntry *from)
 	newnode->relid = from->relid;
 	newnode->inh = from->inh;
 	newnode->inFromCl = from->inFromCl;
+	newnode->skipAcl  = from->skipAcl;
 
 		
 	return newnode;

@@ -299,6 +299,17 @@ ExecCheckPerms(CmdType operation,
 	{
 		RangeTblEntry *rte = lfirst(lp);
 
+		if (rte->skipAcl)
+		{
+			/*
+			 * This happens if the access to this table is due
+			 * to a view query rewriting - the rewrite handler
+			 * checked the permissions against the view owner,
+			 * so we just skip this entry.
+			 */
+			continue;
+		}
+
 		relid = rte->relid;
 		htp = SearchSysCacheTuple(RELOID,
 								  ObjectIdGetDatum(relid),
