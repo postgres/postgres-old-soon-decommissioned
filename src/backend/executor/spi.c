@@ -125,6 +125,14 @@ SPI_finish(void)
 	MemoryContextDelete(_SPI_current->procCxt);
 
 	/*
+	 * Reset result variables, especially SPI_tuptable which is probably
+	 * pointing at a just-deleted tuptable
+	 */
+	SPI_processed = 0;
+	SPI_lastoid = InvalidOid;
+	SPI_tuptable = NULL;
+
+	/*
 	 * After _SPI_begin_call _SPI_connected == _SPI_curid. Now we are
 	 * closing connection to SPI and returning to upper Executor and so
 	 * _SPI_connected must be equal to _SPI_curid.
@@ -1313,6 +1321,11 @@ _SPI_pquery(QueryDesc *queryDesc, bool runit, int tcount)
 		SPI_processed = _SPI_current->processed;
 		SPI_lastoid = save_lastoid;
 		SPI_tuptable = _SPI_current->tuptable;
+	}
+	else if (res == SPI_OK_SELECT)
+	{
+		/* Don't return SPI_OK_SELECT if we discarded the result */
+		res = SPI_OK_UTILITY;
 	}
 
 	ExecutorEnd(queryDesc);
