@@ -1,6 +1,7 @@
 /*-------------------------------------------------------------------------
  *
- * Dynamic loader interface for Linux
+ * linux.h
+ *		Port-specific prototypes for Linux
  *
  *
  * Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
@@ -35,7 +36,20 @@ do { \
 
 #else							/* HAVE_DLOPEN */
 
-#define pg_dlopen(f)	dlopen((f), RTLD_LAZY | RTLD_GLOBAL)
+/*
+ * In some older systems, the RTLD_NOW flag isn't defined and the mode
+ * argument to dlopen must always be 1.  The RTLD_GLOBAL flag is wanted
+ * if available, but it doesn't exist everywhere.
+ * If it doesn't exist, set it to 0 so it has no effect.
+ */
+#ifndef RTLD_NOW
+#define RTLD_NOW 1
+#endif
+#ifndef RTLD_GLOBAL
+#define RTLD_GLOBAL 0
+#endif
+
+#define pg_dlopen(f)	dlopen((f), RTLD_NOW | RTLD_GLOBAL)
 #define pg_dlsym		dlsym
 #define pg_dlclose		dlclose
 #define pg_dlerror		dlerror

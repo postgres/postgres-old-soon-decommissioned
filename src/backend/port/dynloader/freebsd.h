@@ -1,8 +1,7 @@
 /*-------------------------------------------------------------------------
  *
- * port_protos.h
- *	  port-specific prototypes for NetBSD 1.0
- *
+ * freebsd.h
+ *	  port-specific prototypes for FreeBSD
  *
  * Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
@@ -21,7 +20,6 @@
 
 #include "utils/dynamic_loader.h"
 
-/* dynloader.c */
 /*
  * Dynamic Loader on NetBSD 1.0.
  *
@@ -35,11 +33,20 @@
  * NetBSD (like 1.0, and 1.0A pre June 1995) have no dlerror.)
  */
 
+/*
+ * In some older systems, the RTLD_NOW flag isn't defined and the mode
+ * argument to dlopen must always be 1.  The RTLD_GLOBAL flag is wanted
+ * if available, but it doesn't exist everywhere.
+ * If it doesn't exist, set it to 0 so it has no effect.
+ */
+#ifndef RTLD_NOW
+#define RTLD_NOW 1
+#endif
 #ifndef RTLD_GLOBAL
 #define RTLD_GLOBAL 0
 #endif
 
-#define		   pg_dlopen(f)    BSD44_derived_dlopen((f), RTLD_LAZY | RTLD_GLOBAL)
+#define		   pg_dlopen(f)    BSD44_derived_dlopen((f), RTLD_NOW | RTLD_GLOBAL)
 #define		   pg_dlsym		   BSD44_derived_dlsym
 #define		   pg_dlclose	   BSD44_derived_dlclose
 #define		   pg_dlerror	   BSD44_derived_dlerror
