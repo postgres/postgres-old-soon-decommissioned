@@ -345,5 +345,5 @@ echo
 if [ $debug -eq 0 ]; then
     echo "vacuuming template1"
     echo "vacuum" | postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
-	 grep -v "^DEBUG"
+	 grep -v "^DEBUG:"
 fi
