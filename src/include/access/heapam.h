@@ -88,6 +88,8 @@ typedef HeapAccessStatisticsData *HeapAccessStatistics;
  *
  * ----------------
  */
+#if !defined(USE_UNIVEL_CC)
+
 #define fastgetattr(tup, attnum, tupleDesc, isnull) \
 ( \
 	AssertMacro((attnum) > 0) ? \
@@ -130,7 +132,57 @@ typedef HeapAccessStatisticsData *HeapAccessStatistics;
 	) \
 )
 
+#else /* !defined(USE_UNIVEL_CC) */
 
+extern Datum nocachegetattr(HeapTuple tup, int attnum,
+						 TupleDesc att, bool *isnull);
+
+static Datum fastgetattr(HeapTuple tup, int attnum, TupleDesc tupleDesc,
+						 bool *isnull)
+{
+    return (
+		(attnum) > 0 ?
+		(
+			((isnull) ? (*(isnull) = false) : (dummyret)NULL),
+			HeapTupleNoNulls(tup) ?
+			(
+				((tupleDesc)->attrs[(attnum)-1]->attcacheoff != -1 ||
+				 (attnum) == 1) ?
+				(
+					(Datum)fetchatt(&((tupleDesc)->attrs[(attnum)-1]),
+						(char *) (tup) + (tup)->t_hoff +
+						(
+							((attnum) != 1) ?
+								(tupleDesc)->attrs[(attnum)-1]->attcacheoff
+							:
+								0
+						)
+					)
+				)
+				:
+					nocachegetattr((tup), (attnum), (tupleDesc), (isnull))
+			)
+			:
+			(
+				att_isnull((attnum)-1, (tup)->t_bits) ?
+				(
+					((isnull) ? (*(isnull) = true) : (dummyret)NULL),
+					(Datum)NULL
+				)
+				:
+				(
+					nocachegetattr((tup), (attnum), (tupleDesc), (isnull))
+				)
+			)
+		)
+		:
+		(
+			 (Datum)NULL
+		)
+	);
+}
+
+#endif
 
 /* ----------------
  *		heap_getattr
