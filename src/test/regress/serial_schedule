@@ -37,6 +37,7 @@ test: type_sanity
 test: opr_sanity
 test: geometry
 test: horology
+test: insert
 test: create_function_1
 test: create_type
 test: create_table

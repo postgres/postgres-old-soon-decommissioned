@@ -175,9 +175,19 @@ transformTargetList(ParseState *pstate, List *targetlist)
 														false));
 			}
 		}
+		else if (IsA(res->val, InsertDefault))
+		{
+			InsertDefault *newnode = makeNode(InsertDefault);
+
+			/*
+			 * If this is a DEFAULT element, we make a junk entry
+			 * which will get dropped on return to transformInsertStmt().
+			 */
+			p_target = lappend(p_target, newnode);
+		}
 		else
 		{
-			/* Everything else but ColumnRef */
+			/* Everything else but ColumnRef and InsertDefault */
 			p_target = lappend(p_target,
 							   transformTargetEntry(pstate,
 													res->val,

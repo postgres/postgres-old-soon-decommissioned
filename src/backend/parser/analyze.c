@@ -518,13 +518,29 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt,
 		TargetEntry *tle = (TargetEntry *) lfirst(tl);
 		ResTarget   *col;
 
-		Assert(!tle->resdom->resjunk);
 		if (icolumns == NIL || attnos == NIL)
 			elog(ERROR, "INSERT has more expressions than target columns");
 		col = (ResTarget *) lfirst(icolumns);
-		Assert(IsA(col, ResTarget));
-		updateTargetListEntry(pstate, tle, col->name, lfirsti(attnos),
+
+		/*
+		 * When the value is to be set to the column default we can simply
+		 * drop it now and handle it later on using methods for missing
+		 * columns.
+		 */
+		if (!IsA(tle, InsertDefault))
+		{
+			Assert(IsA(col, ResTarget));
+			Assert(!tle->resdom->resjunk);
+			updateTargetListEntry(pstate, tle, col->name, lfirsti(attnos),
 							  col->indirection);
+		}
+		else
+		{
+			icolumns = lremove(icolumns, icolumns);
+			attnos = lremove(attnos, attnos);
+			qry->targetList = lremove(tle, qry->targetList);
+		}
+
 		icolumns = lnext(icolumns);
 		attnos = lnext(attnos);
 	}

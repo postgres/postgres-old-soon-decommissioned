@@ -774,6 +774,12 @@ _equalFuncWithArgs(FuncWithArgs *a, FuncWithArgs *b)
 }
 
 static bool
+_equalInsertDefault(InsertDefault *a, InsertDefault *b)
+{
+	return true;
+}
+
+static bool
 _equalClosePortalStmt(ClosePortalStmt *a, ClosePortalStmt *b)
 {
 	if (!equalstr(a->portalname, b->portalname))
@@ -2214,6 +2220,9 @@ equal(void *a, void *b)
 			break;
 		case T_FuncWithArgs:
 			retval = _equalFuncWithArgs(a, b);
+			break;
+		case T_InsertDefault:
+			retval = _equalInsertDefault(a, b);
 			break;
 
 		default:

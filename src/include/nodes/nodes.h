@@ -229,6 +229,7 @@ typedef enum NodeTag
 	T_PrivGrantee,
 	T_FuncWithArgs,
 	T_PrivTarget,
+	T_InsertDefault,
 
 	/*
 	 * TAGS FOR FUNCTION-CALL CONTEXT AND RESULTINFO NODES (see fmgr.h)

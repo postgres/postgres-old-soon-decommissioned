@@ -1947,6 +1947,15 @@ _copyFuncWithArgs(FuncWithArgs *from)
 	return newnode;
 }
 
+static InsertDefault *
+_copyInsertDefault(InsertDefault *from)
+{
+	InsertDefault *newnode = makeNode(InsertDefault);
+
+	return newnode;
+}
+
+
 static ClosePortalStmt *
 _copyClosePortalStmt(ClosePortalStmt *from)
 {
@@ -3054,6 +3063,9 @@ copyObject(void *from)
 			break;
 		case T_FuncWithArgs:
 			retval = _copyFuncWithArgs(from);
+			break;
+		case T_InsertDefault:
+			retval = _copyInsertDefault(from);
 			break;
 
 		default:

@@ -360,6 +360,14 @@ typedef struct ResTarget
 } ResTarget;
 
 /*
+ * Empty node used as a marker for Default Columns
+ */
+typedef struct InsertDefault
+{
+	NodeTag		type;
+} InsertDefault;
+
+/*
  * SortGroupBy - for ORDER BY clause
  */
 typedef struct SortGroupBy
