@@ -47,6 +47,10 @@
 #define	_SS_PAD2SIZE	(_SS_MAXSIZE - (sizeof (sa_family_t) + \
 				_SS_PAD1SIZE + _SS_ALIGNSIZE))
 
+#ifdef __CYGWIN__
+typedef unsigned short sa_family_t;
+#endif
+
 struct sockaddr_storage {
 #ifdef SALEN
     uint8_t	__ss_len;        /* address length */
