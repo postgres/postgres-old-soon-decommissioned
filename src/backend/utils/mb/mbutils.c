@@ -90,7 +90,21 @@ SetClientEncoding(int encoding, bool doit)
 	if (IsTransactionState())
 	{
 		ClientEncoding = &pg_enc2name_tbl[encoding];
+
+		if(ToServerConvPorc != NULL)
+		{
+			if (ToServerConvPorc->fn_extra)
+				pfree(ToServerConvPorc->fn_extra);
+			pfree(ToServerConvPorc);
+		}
 		ToServerConvPorc = to_server;
+
+		if(ToClientConvPorc != NULL)
+		{
+			if (ToClientConvPorc->fn_extra)
+				pfree(ToClientConvPorc->fn_extra);
+			pfree(ToClientConvPorc);
+		}
 		ToClientConvPorc = to_client;
 	}
 	return 0;
