@@ -216,6 +216,8 @@ endif
 
 ifeq ($(PORTNAME), cygwin)
   shlib			= $(NAME)$(DLSUFFIX)
+  # needed for /contrib modules, not sure why
+  SHLIB_LINK		+= -lpgport
 endif
 
 ifeq ($(PORTNAME), win32)
