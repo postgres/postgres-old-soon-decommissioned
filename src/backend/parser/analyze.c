@@ -1787,13 +1787,18 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 	 */
 	qry->havingQual = transformWhereClause(pstate, stmt->havingClause);
 
-	qry->groupClause = transformGroupClause(pstate,
-											stmt->groupClause,
-											qry->targetList);
-
+	/*
+	 * Transform sorting/grouping stuff.  Do ORDER BY first because both
+	 * transformGroupClause and transformDistinctClause need the results.
+	 */
 	qry->sortClause = transformSortClause(pstate,
 										  stmt->sortClause,
 										  qry->targetList);
+
+	qry->groupClause = transformGroupClause(pstate,
+											stmt->groupClause,
+											qry->targetList,
+											qry->sortClause);
 
 	qry->distinctClause = transformDistinctClause(pstate,
 												  stmt->distinctClause,
