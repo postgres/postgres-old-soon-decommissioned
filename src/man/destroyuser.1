@@ -21,7 +21,7 @@ port]
 .IR Destroyuser
 destroys an existing Postgres user and the databases for which that user
 is database administrator.  Only users with \*(lqusesuper\*(rq set in
-the \*(lqpg_user\*(rq class can destroy new Postgres users.  As shipped,
+the \*(lqpg_shadow\*(rq class can destroy new Postgres users.  As shipped,
 the user \*(lqpostgres\*(rq can destroy users.
 .PP
 .IR Destroyuser
@@ -92,8 +92,8 @@ is running on the proper host and that you have specified the proper
 port.  If your site uses an authentication system, ensure that you
 have obtained the required authentication credentials.
 .TP
-.BI "user \*(lq" "username" "\*(rq is not in \*(lqpg_user\*(rq"
-You do not have a valid entry in the relation \*(lqpg_user\*(rq and
+.BI "user \*(lq" "username" "\*(rq is not in \*(lqpg_shadow\*(rq"
+You do not have a valid entry in the relation \*(lqpg_shadow\*(rq and
 cannot do anything with Postgres at all; contact your Postgres site
 administrator.
 .TP
@@ -102,7 +102,7 @@ You do not have permission to delete users; contact your Postgres site
 administrator.
 .TP
 .BI "user \*(lq" "username" "\*(rq does not exist"
-The user to be removed does not have an entry in the \*(lqpg_user\*(rq
+The user to be removed does not have an entry in the \*(lqpg_shadow\*(rq
 class.
 .TP
 .BR "database access failed"

@@ -43,7 +43,7 @@ the site:
 	\fBname\fP	\fBshared/local\fP	\fBdescription\fP
 	pg_database	shared	current databases
 	pg_group	shared	user groups
-	pg_user	shared	valid users
+	pg_shadow	shared	valid users
 .LE
 .SH "RULE SYSTEM CATALOGS"
 .LS
@@ -339,7 +339,7 @@ pg_group
     int2        grolist[1]	/* list of usesysids of group members */
 .fi
 .nf M
-pg_user
+pg_shadow
     NameData      usename		/* user's name */
     int2        usesysid	/* user's UNIX user id */
     bool        usecreatedb	/* can user create databases? */

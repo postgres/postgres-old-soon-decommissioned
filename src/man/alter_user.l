@@ -20,10 +20,10 @@ detailed description of each of the clause in the alter user statement,
 please see the create_user(l) manual page.  Please note that it is not
 possible to alter a user's usesysid via the alter user statement.  Also,
 it is only possible for the postgres user or any user with read and modify
-permissions on pg_user to alter user passwords. 
+permissions on pg_shadow to alter user passwords. 
 
 If any of the clauses of the alter user statement are omitted, the
-corresponding value in the pg_user relation is left unchanged. 
+corresponding value in the pg_shadow relation is left unchanged. 
 
 This statement can be used to modify users created with createuser(1).
 

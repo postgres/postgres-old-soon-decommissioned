@@ -10,7 +10,7 @@ pg_dumpall - dumps out all Postgres databases into a script file
 .SH DESCRIPTION
 .IR "pg_dumpall"
 is a utility for dumping out all Postgres databases into one file.
-It also dumps the pg_user table, which is global to all databases.
+It also dumps the pg_shadow table, which is global to all databases.
 pg_dumpall creates each dumped database before loading.
 pg_dumpall takes all pg_dump options, but \fB-f\fR and \fBdbname\fR
 should not be used.
