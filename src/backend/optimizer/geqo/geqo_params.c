@@ -168,6 +168,9 @@ geqo_params(int string_length)
 						effort = MEDIUM_EFFORT;
 					else if (strcmp(buf, HIGH) == 0)
 						effort = HIGH_EFFORT;
+					/* undocumented extension: specify effort numerically */
+					else if (isdigit(buf[0]))
+						effort = atoi(buf);
 				}
 
 			}
