@@ -79,6 +79,7 @@ FunctionNext(FunctionScan *node)
 		scanstate->tuplestorestate = tuplestorestate =
 			ExecMakeTableFunctionResult((Expr *) scanstate->funcexpr,
 										econtext,
+										scanstate->tupdesc,
 										&funcTupdesc);
 
 		/*

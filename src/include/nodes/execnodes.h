@@ -147,12 +147,16 @@ typedef enum
 typedef struct ReturnSetInfo
 {
 	NodeTag		type;
+	/* values set by caller: */
 	ExprContext *econtext;		/* context function is being called in */
+	TupleDesc	expectedDesc;	/* tuple descriptor expected by caller */
 	int			allowedModes;	/* bitmask: return modes caller can handle */
-	SetFunctionReturnMode	returnMode;	/* actual return mode */
+	/* result status from function (but pre-initialized by caller): */
+	SetFunctionReturnMode returnMode;	/* actual return mode */
 	ExprDoneCond isDone;		/* status for ValuePerCall mode */
-	Tuplestorestate *setResult;	/* return object for Materialize mode */
-	TupleDesc	setDesc;		/* descriptor for Materialize mode */
+	/* fields filled by function in Materialize return mode: */
+	Tuplestorestate *setResult;	/* holds the complete returned tuple set */
+	TupleDesc	setDesc;		/* actual descriptor for returned tuples */
 } ReturnSetInfo;
 
 /* ----------------
