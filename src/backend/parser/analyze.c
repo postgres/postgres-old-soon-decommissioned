@@ -2273,25 +2273,21 @@ getSetColTypes(ParseState *pstate, Node *node)
 static void
 applyColumnNames(List *dst, List *src)
 {
-	ListCell   *dst_item = list_head(dst);
-	ListCell   *src_item = list_head(src);
+	ListCell   *dst_item;
+	ListCell   *src_item;
 
 	if (list_length(src) > list_length(dst))
 		ereport(ERROR,
 				(errcode(ERRCODE_SYNTAX_ERROR),
 			 errmsg("CREATE TABLE AS specifies too many column names")));
 
-	while (src_item != NULL && dst_item != NULL)
+	forboth(dst_item, dst, src_item, src)
 	{
 		TargetEntry *d = (TargetEntry *) lfirst(dst_item);
 		ColumnDef  *s = (ColumnDef *) lfirst(src_item);
 
 		Assert(d->resdom && !d->resdom->resjunk);
-
 		d->resdom->resname = pstrdup(s->colname);
-
-		dst_item = lnext(dst_item);
-		src_item = lnext(src_item);
 	}
 }
 

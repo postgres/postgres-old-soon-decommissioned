@@ -1501,7 +1501,7 @@ SearchCatCacheList(CatCache *cache,
 		 * worth fixing.
 		 */
 		ct->refcount++;
-		ctlist = lcons(ct, ctlist);
+		ctlist = lappend(ctlist, ct);
 		nmembers++;
 	}
 
@@ -1522,16 +1522,17 @@ SearchCatCacheList(CatCache *cache,
 
 	cl->cl_magic = CL_MAGIC;
 	cl->my_cache = cache;
-	DLInitElem(&cl->cache_elem, (void *) cl);
+	DLInitElem(&cl->cache_elem, cl);
 	cl->refcount = 0;			/* for the moment */
 	cl->dead = false;
 	cl->ordered = ordered;
 	cl->nkeys = nkeys;
 	cl->hash_value = lHashValue;
 	cl->n_members = nmembers;
-	/* The list is backwards because we built it with lcons */
+
+	Assert(nmembers == list_length(ctlist));
 	ctlist_item = list_head(ctlist);
-	for (i = nmembers; --i >= 0;)
+	for (i = 0; i < nmembers; i++)
 	{
 		cl->members[i] = ct = (CatCTup *) lfirst(ctlist_item);
 		Assert(ct->c_list == NULL);
