@@ -251,7 +251,6 @@ next_insert(char *text)
 	char	   *ptr = text;
 	bool		string = false;
 
-printf("%s\n", text);
 	for (; *ptr != '\0' && (*ptr != '?' || string); ptr++)
 	{
 		if (*ptr == '\\') /* escape character */
@@ -261,7 +260,6 @@ printf("%s\n", text);
 				string = string ? false : true;
 	}
 
-printf("%s\n", ptr);
 	return (*ptr == '\0') ? NULL : ptr;
 }
 
