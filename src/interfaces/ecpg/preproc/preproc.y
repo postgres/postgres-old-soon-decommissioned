@@ -712,7 +712,7 @@ stmt:  AlterDatabaseSetStmt		{ output_statement($1, 0, connection); }
 		{
 			if (connection)
 				mmerror(PARSE_ERROR, ET_ERROR, "no at option for deallocate statement.\n");
-			fprintf(yyout, "{ ECPGdeallocate(__LINE__, \"%s\");", $1);
+			fprintf(yyout, "{ ECPGdeallocate(__LINE__, %d, %s);", compat, $1);
 			whenever_action(2);
 			free($1);
 		}
