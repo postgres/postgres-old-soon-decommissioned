@@ -1227,16 +1227,6 @@ typedef struct CommentStmt
 } CommentStmt;
 
 /* ----------------------
- *		Begin Recipe Statement
- * ----------------------
- */
-typedef struct RecipeStmt
-{
-	NodeTag		type;
-	char	   *recipeName;		/* name of the recipe */
-} RecipeStmt;
-
-/* ----------------------
  *		Fetch Statement
  * ----------------------
  */

@@ -2953,23 +2953,6 @@ opt_class:	any_name
 /*****************************************************************************
  *
  *		QUERY:
- *				execute recipe <recipeName>
- *
- *****************************************************************************/
-
-/* NOT USED
-RecipeStmt:  EXECUTE RECIPE recipe_name
-				{
-					RecipeStmt *n = makeNode(RecipeStmt);
-					n->recipeName = $3;
-					$$ = (Node *)n;
-				}
-		;
-*/
-
-/*****************************************************************************
- *
- *		QUERY:
  *				create [or replace] function <fname>
  *						[(<type-1> { , <type-n>})]
  *						returns <type-r>

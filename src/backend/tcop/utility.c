@@ -674,17 +674,6 @@ ProcessUtility(Node *parsetree,
 			ExplainQuery((ExplainStmt *) parsetree, dest);
 			break;
 
-#ifdef NOT_USED
-
-		case T_RecipeStmt:
-			{
-				RecipeStmt *stmt = (RecipeStmt *) parsetree;
-
-				beginRecipe(stmt);
-			}
-			break;
-#endif
-
 		case T_VariableSetStmt:
 			{
 				VariableSetStmt *n = (VariableSetStmt *) parsetree;
