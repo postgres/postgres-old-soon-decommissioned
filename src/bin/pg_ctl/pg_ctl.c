@@ -359,7 +359,7 @@ test_postmaster_connection(void)
 			/* keep looking, maybe there is another -p */
 		}
 		/* Advance to next whitespace */
-		while (!isspace(*p))
+		while (*p && !isspace(*p))
 			p++;
 	}
 
