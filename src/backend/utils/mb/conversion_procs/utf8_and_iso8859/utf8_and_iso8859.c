@@ -98,7 +98,7 @@ static pg_conv_map maps[] = {
 	{PG_LATIN8, LUmapISO8859_14, ULmapISO8859_14,
 		sizeof(LUmapISO8859_14) / sizeof(pg_local_to_utf),
 	sizeof(ULmapISO8859_14) / sizeof(pg_utf_to_local)}, /* ISO-8859-14 Latin 8 */
-	{PG_LATIN9, LUmapISO8859_2, ULmapISO8859_2,
+	{PG_LATIN9, LUmapISO8859_15, ULmapISO8859_15,
 		sizeof(LUmapISO8859_15) / sizeof(pg_local_to_utf),
 	sizeof(ULmapISO8859_15) / sizeof(pg_utf_to_local)}, /* ISO-8859-15 Latin 9 */
 	{PG_LATIN10, LUmapISO8859_16, ULmapISO8859_16,
