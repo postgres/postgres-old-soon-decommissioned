@@ -2563,8 +2563,8 @@ quote_identifier(char *ident)
 		 * but the parser doesn't provide any easy way to test for whether
 		 * an identifier is safe or not... so be safe not sorry.
 		 *
-		 * Note: ScanKeywordLookup() expects an all-lower-case input, but
-		 * we've already checked we have that.
+		 * Note: ScanKeywordLookup() does case-insensitive comparison,
+		 * but that's fine, since we already know we have all-lower-case.
 		 */
 		if (ScanKeywordLookup(ident) != NULL)
 			safe = false;
