@@ -99,7 +99,7 @@ typedef struct AclItem
  * Definitions for convenient access to Acl (array of AclItem) and IdList
  * (array of AclId).  These are standard PostgreSQL arrays, but are restricted
  * to have one dimension.  We also ignore the lower bound when reading,
- * and set it to zero when writing.
+ * and set it to one when writing.
  *
  * CAUTION: as of PostgreSQL 7.1, these arrays are toastable (just like all
  * other array types).	Therefore, be careful to detoast them with the
