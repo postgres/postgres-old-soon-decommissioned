@@ -928,8 +928,12 @@ DropUser(DropUserStmt *stmt)
 							   PointerGetDatum(user),
 							   0, 0, 0);
 		if (!HeapTupleIsValid(tuple))
-			elog(ERROR, "DROP USER: user \"%s\" does not exist%s", user,
-				 (length(stmt->users) > 1) ? " (no users removed)" : "");
+		{
+			if (length(stmt->users) > 1)
+				elog(ERROR, "DROP USER: user \"%s\" does not exist (no users removed)", user);
+			else
+				elog(ERROR, "DROP USER: user \"%s\" does not exist", user);
+		}
 
 		usesysid = ((Form_pg_shadow) GETSTRUCT(tuple))->usesysid;
 
