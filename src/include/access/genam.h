@@ -56,6 +56,8 @@ extern IndexBulkDeleteResult *index_bulk_delete(Relation relation,
 extern RegProcedure index_cost_estimator(Relation relation);
 extern RegProcedure index_getprocid(Relation irel, AttrNumber attnum,
 				uint16 procnum);
+extern struct FmgrInfo *index_getprocinfo(Relation irel, AttrNumber attnum,
+										  uint16 procnum);
 
 /* in genam.c */
 extern IndexScanDesc RelationGetIndexScan(Relation relation, bool scanFromEnd,

@@ -30,10 +30,6 @@ typedef void (*IndexBuildCallback) (Relation index,
 extern Form_pg_am AccessMethodObjectIdGetForm(Oid accessMethodObjectId,
 							MemoryContext resultCxt);
 
-extern void InitIndexStrategy(int numatts,
-				  Relation indexRelation,
-				  Oid accessMethodObjectId);
-
 extern Oid index_create(char *heapRelationName,
 			 char *indexRelationName,
 			 IndexInfo *indexInfo,

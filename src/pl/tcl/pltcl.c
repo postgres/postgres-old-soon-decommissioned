@@ -187,18 +187,14 @@ static int pltcl_SPI_lastoid(ClientData cdata, Tcl_Interp *interp,
  * data structures such as fmgr info records therefore must live forever
  * as well.  A better implementation would store all this stuff in a per-
  * function memory context that could be reclaimed at need.  In the meantime,
- * fmgr_info must be called in TopMemoryContext so that whatever it might
- * allocate, and whatever the eventual function might allocate using fn_mcxt,
- * will live forever too.
+ * fmgr_info_cxt must be called specifying TopMemoryContext so that whatever
+ * it might allocate, and whatever the eventual function might allocate using
+ * fn_mcxt, will live forever too.
  */
 static void
 perm_fmgr_info(Oid functionId, FmgrInfo *finfo)
 {
-	MemoryContext	oldcontext;
-
-	oldcontext = MemoryContextSwitchTo(TopMemoryContext);
-	fmgr_info(functionId, finfo);
-	MemoryContextSwitchTo(oldcontext);
+	fmgr_info_cxt(functionId, finfo, TopMemoryContext);
 }
 
 /**********************************************************************

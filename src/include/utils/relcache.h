@@ -33,6 +33,8 @@ extern void RelationClose(Relation relation);
  */
 extern List *RelationGetIndexList(Relation relation);
 
+extern void RelationInitIndexAccessInfo(Relation relation);
+
 /*
  * Routines for backend startup
  */
@@ -61,6 +63,7 @@ extern void RelationPurgeLocalRelation(bool xactComitted);
 extern void RelationCacheAbort(void);
 
 
+/* XLOG support */
 extern void CreateDummyCaches(void);
 extern void DestroyDummyCaches(void);
 

@@ -69,3 +69,31 @@ ScanKeyEntryInitialize(ScanKey entry,
 
 	Assert(ScanKeyEntryIsLegal(entry));
 }
+
+/*
+ * ScanKeyEntryInitializeWithInfo
+ *		Initializes a scan key entry using an already-completed FmgrInfo
+ *		function lookup record.
+ *
+ * mcxt is the memory context holding the scan key; it'll be used for
+ * any subsidiary info attached to the scankey's FmgrInfo record.
+ */
+void
+ScanKeyEntryInitializeWithInfo(ScanKey entry,
+							   bits16 flags,
+							   AttrNumber attributeNumber,
+							   FmgrInfo *finfo,
+							   MemoryContext mcxt,
+							   Datum argument)
+{
+	Assert(PointerIsValid(entry));
+	Assert(RegProcedureIsValid(finfo->fn_oid));
+
+	entry->sk_flags = flags;
+	entry->sk_attno = attributeNumber;
+	entry->sk_procedure = finfo->fn_oid;
+	entry->sk_argument = argument;
+	fmgr_info_copy(&entry->sk_func, finfo, mcxt);
+
+	Assert(ScanKeyEntryIsLegal(entry));
+}

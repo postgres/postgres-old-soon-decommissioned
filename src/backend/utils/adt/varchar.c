@@ -285,7 +285,7 @@ _bpchar(PG_FUNCTION_ARGS)
 	static FmgrInfo bpchar_finfo;
 
 	if (bpchar_finfo.fn_oid == InvalidOid)
-		fmgr_info(F_BPCHAR, &bpchar_finfo);
+		fmgr_info_cxt(F_BPCHAR, &bpchar_finfo, TopMemoryContext);
 
 	MemSet(&locfcinfo, 0, sizeof(locfcinfo));
 	locfcinfo.flinfo = &bpchar_finfo;
@@ -544,7 +544,7 @@ _varchar(PG_FUNCTION_ARGS)
 	static FmgrInfo varchar_finfo;
 
 	if (varchar_finfo.fn_oid == InvalidOid)
-		fmgr_info(F_VARCHAR, &varchar_finfo);
+		fmgr_info_cxt(F_VARCHAR, &varchar_finfo, TopMemoryContext);
 
 	MemSet(&locfcinfo, 0, sizeof(locfcinfo));
 	locfcinfo.flinfo = &varchar_finfo;

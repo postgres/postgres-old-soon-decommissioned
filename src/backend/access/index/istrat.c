@@ -486,12 +486,9 @@ FillScanKeyEntry(Oid operatorObjectId, ScanKey entry)
 			 operatorObjectId);
 
 	/*
-	 * Formerly we initialized entry->sk_func here, but that's a waste of
-	 * time because ScanKey entries in strategy maps are never actually
-	 * used to invoke the operator.  Furthermore, to do that we'd have to
-	 * worry about setting the proper memory context (the map is probably
-	 * not allocated in the current memory context!)
+	 * Mark entry->sk_func invalid, until and unless someone sets it up.
 	 */
+	entry->sk_func.fn_oid = InvalidOid;
 }
 
 

@@ -3243,7 +3243,6 @@ ri_AttributesEqual(Oid typeid, Datum oldvalue, Datum newvalue)
 	{
 		HeapTuple	opr_tup;
 		Oid			opr_proc;
-		MemoryContext	oldcontext;
 		FmgrInfo	finfo;
 
 		opr_tup = SearchSysCache(OPERNAME,
@@ -3265,9 +3264,7 @@ ri_AttributesEqual(Oid typeid, Datum oldvalue, Datum newvalue)
 		 * table entry, we must make sure any subsidiary structures of the
 		 * fmgr record are kept in TopMemoryContext.
 		 */
-		oldcontext = MemoryContextSwitchTo(TopMemoryContext);
-		fmgr_info(opr_proc, &finfo);
-		MemoryContextSwitchTo(oldcontext);
+		fmgr_info_cxt(opr_proc, &finfo, TopMemoryContext);
 
 		entry = (RI_OpreqHashEntry *) hash_search(ri_opreq_cache,
 												  (void *) &typeid,

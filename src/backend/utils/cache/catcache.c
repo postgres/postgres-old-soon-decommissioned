@@ -269,23 +269,10 @@ CatalogCacheInitializeCache(CatCache *cache)
 		 */
 		cache->cc_skey[i].sk_procedure = EQPROC(keytype);
 
-		/*
-		 * Note: to avoid any possible leakage of scan temporary data into
-		 * the cache context, we do not switch into CacheMemoryContext while
-		 * calling fmgr_info here.  Instead set fn_mcxt on return.  This
-		 * would fail to work correctly if fmgr_info allocated any subsidiary
-		 * data structures to attach to the FmgrInfo record; but it doesn't
-		 * do so for built-in functions, and all the comparator functions
-		 * for system caches should most assuredly be built-in functions.
-		 * Currently there's no real need to fix fn_mcxt either, but let's do
-		 * that anyway just to make sure it's not pointing to a dead context
-		 * later on.
-		 */
-
-		fmgr_info(cache->cc_skey[i].sk_procedure,
-				  &cache->cc_skey[i].sk_func);
-
-		cache->cc_skey[i].sk_func.fn_mcxt = CacheMemoryContext;
+		/* Do function lookup */
+		fmgr_info_cxt(cache->cc_skey[i].sk_procedure,
+					  &cache->cc_skey[i].sk_func,
+					  CacheMemoryContext);
 
 		/* Initialize sk_attno suitably for HeapKeyTest() and heap scans */
 		cache->cc_skey[i].sk_attno = cache->cc_key[i];

@@ -435,7 +435,6 @@ _bt_first(IndexScanDesc scan, ScanDirection dir)
 	BlockNumber blkno;
 	StrategyNumber strat;
 	RetrieveIndexResult res;
-	RegProcedure proc;
 	int32		result;
 	BTScanOpaque so;
 	bool		continuescan;
@@ -532,6 +531,8 @@ _bt_first(IndexScanDesc scan, ScanDirection dir)
 	scankeys = (ScanKey) palloc(keysCount * sizeof(ScanKeyData));
 	for (i = 0; i < keysCount; i++)
 	{
+		FmgrInfo   *procinfo;
+
 		j = nKeyIs[i];
 
 		/*
@@ -545,9 +546,13 @@ _bt_first(IndexScanDesc scan, ScanDirection dir)
 			elog(ERROR, "_bt_first: btree doesn't support is(not)null, yet");
 			return ((RetrieveIndexResult) NULL);
 		}
-		proc = index_getprocid(rel, i + 1, BTORDER_PROC);
-		ScanKeyEntryInitialize(scankeys + i, so->keyData[j].sk_flags,
-							   i + 1, proc, so->keyData[j].sk_argument);
+		procinfo = index_getprocinfo(rel, i + 1, BTORDER_PROC);
+		ScanKeyEntryInitializeWithInfo(scankeys + i,
+									   so->keyData[j].sk_flags,
+									   i + 1,
+									   procinfo,
+									   CurrentMemoryContext,
+									   so->keyData[j].sk_argument);
 	}
 	if (nKeyIs)
 		pfree(nKeyIs);

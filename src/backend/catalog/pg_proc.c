@@ -246,11 +246,14 @@ ProcedureCreate(char *procedureName,
 
 	if (languageObjectId == ClanguageId)
 	{
+		void   *libraryhandle;
+
 		/* If link symbol is specified as "-", substitute procedure name */
 		if (strcmp(prosrc, "-") == 0)
 			prosrc = procedureName;
-		(void) load_external_function(probin, prosrc, true);
-		(void) fetch_finfo_record(probin, prosrc);
+		(void) load_external_function(probin, prosrc, true,
+									  &libraryhandle);
+		(void) fetch_finfo_record(libraryhandle, prosrc);
 	}
 
 	/*
