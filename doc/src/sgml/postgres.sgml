@@ -21,15 +21,7 @@ $Header$
   &legal;
  </bookinfo>
 
- <preface id="preface">
-  <title>Preface</title>
-
-  &intro;
-  &history;
-  &notation;
-  &problems;
-
- </preface>
+ &intro;
 
  <part id="tutorial">
   <title>Tutorial</title>
