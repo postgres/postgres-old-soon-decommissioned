@@ -206,7 +206,7 @@ AdjustTimestampForTypmod(Timestamp *time, int32 typmod)
 		/*
 		 * Note: this round-to-nearest code is not completely consistent
 		 * about rounding values that are exactly halfway between integral
-		 * values.  On most platforms, rint() will implement round-to-nearest,
+		 * values.  On most platforms, rint() will implement round-to-nearest-even,
 		 * but the integer code always rounds up (away from zero).  Is it
 		 * worth trying to be consistent?
 		 */
@@ -677,7 +677,7 @@ AdjustIntervalForTypmod(Interval *interval, int32 typmod)
 			/*
 			 * Note: this round-to-nearest code is not completely consistent
 			 * about rounding values that are exactly halfway between integral
-			 * values.  On most platforms, rint() will implement round-to-nearest,
+			 * values.  On most platforms, rint() will implement round-to-nearest-even,
 			 * but the integer code always rounds up (away from zero).  Is it
 			 * worth trying to be consistent?
 			 */
