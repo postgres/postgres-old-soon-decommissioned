@@ -760,11 +760,7 @@ main(int argc, char **argv)
 		g_fout = stdout;
 	else
 	{
-#ifndef __CYGWIN32__
-		g_fout = fopen(filename, "w");
-#else
-		g_fout = fopen(filename, "wb");
-#endif
+		g_fout = fopen(filename, PG_BINARY_W);
 		if (g_fout == NULL)
 		{
 			fprintf(stderr,

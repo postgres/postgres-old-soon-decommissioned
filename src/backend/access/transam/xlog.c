@@ -746,11 +746,7 @@ XLogFileInit(uint32 log, uint32 seg)
 	XLogFileName(path, log, seg);
 	unlink(path);
 
-#ifndef __CYGWIN__
-	fd = BasicOpenFile(path, O_RDWR | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
-#else
-	fd = BasicOpenFile(path, O_RDWR | O_CREAT | O_EXCL | O_BINARY, S_IRUSR | S_IWUSR);
-#endif
+	fd = BasicOpenFile(path, O_RDWR | O_CREAT | O_EXCL | PG_BINARY, S_IRUSR | S_IWUSR);
 	if (fd < 0)
 		elog(STOP, "Open(logfile %u seg %u) failed: %d",
 			 logId, logSeg, errno);
@@ -782,11 +778,7 @@ XLogFileOpen(uint32 log, uint32 seg, bool econt)
 
 	XLogFileName(path, log, seg);
 
-#ifndef __CYGWIN__
-	fd = BasicOpenFile(path, O_RDWR, S_IRUSR | S_IWUSR);
-#else
-	fd = BasicOpenFile(path, O_RDWR | O_BINARY, S_IRUSR | S_IWUSR);
-#endif
+	fd = BasicOpenFile(path, O_RDWR | PG_BINARY, S_IRUSR | S_IWUSR);
 	if (fd < 0)
 	{
 		if (econt && errno == ENOENT)
@@ -1096,11 +1088,7 @@ UpdateControlFile()
 {
 	int			fd;
 
-#ifndef __CYGWIN__
-	fd = BasicOpenFile(ControlFilePath, O_RDWR, S_IRUSR | S_IWUSR);
-#else
-	fd = BasicOpenFile(ControlFilePath, O_RDWR | O_BINARY, S_IRUSR | S_IWUSR);
-#endif
+	fd = BasicOpenFile(ControlFilePath, O_RDWR | PG_BINARY, S_IRUSR | S_IWUSR);
 	if (fd < 0)
 		elog(STOP, "Open(cntlfile) failed: %d", errno);
 
@@ -1158,11 +1146,7 @@ BootStrapXLOG()
 
 #endif
 
-#ifndef __CYGWIN__
-	fd = BasicOpenFile(ControlFilePath, O_RDWR | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
-#else
-	fd = BasicOpenFile(ControlFilePath, O_RDWR | O_CREAT | O_EXCL | O_BINARY, S_IRUSR | S_IWUSR);
-#endif
+	fd = BasicOpenFile(ControlFilePath, O_RDWR | O_CREAT | O_EXCL | PG_BINARY, S_IRUSR | S_IWUSR);
 	if (fd < 0)
 		elog(STOP, "BootStrapXLOG failed to create control file (%s): %d",
 			 ControlFilePath, errno);
@@ -1273,11 +1257,7 @@ StartupXLOG()
 	/*
 	 * Open/read Control file
 	 */
-#ifndef __CYGWIN__
-	fd = BasicOpenFile(ControlFilePath, O_RDWR, S_IRUSR | S_IWUSR);
-#else
-	fd = BasicOpenFile(ControlFilePath, O_RDWR | O_BINARY, S_IRUSR | S_IWUSR);
-#endif
+	fd = BasicOpenFile(ControlFilePath, O_RDWR | PG_BINARY, S_IRUSR | S_IWUSR);
 	if (fd < 0)
 		elog(STOP, "Open(\"%s\") failed: %d", ControlFilePath, errno);
 

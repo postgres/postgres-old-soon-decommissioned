@@ -28,11 +28,7 @@ verify_password(char *auth_arg, char *user, char *password)
 	strcat(pw_file_fullname, "/");
 	strcat(pw_file_fullname, auth_arg);
 
-#ifndef __CYGWIN32__
-	pw_file = AllocateFile(pw_file_fullname, "r");
-#else
-	pw_file = AllocateFile(pw_file_fullname, "rb");
-#endif
+	pw_file = AllocateFile(pw_file_fullname, PG_BINARY_R);
 	if (!pw_file)
 	{
 		snprintf(PQerrormsg, PQERRORMSG_LENGTH,

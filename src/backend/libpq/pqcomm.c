@@ -234,11 +234,7 @@ StreamServerPort(char *hostName, unsigned short portName, int *fdP)
 		 * can safely delete the file.
 		 */
 #ifdef HAVE_FCNTL_SETLK
-#ifndef __CYGWIN32__
-		if ((lock_fd = open(sock_path, O_WRONLY | O_NONBLOCK, 0666)) >= 0)
-#else
-		if ((lock_fd = open(sock_path, O_WRONLY | O_NONBLOCK | O_BINARY, 0666)) >= 0)
-#endif
+		if ((lock_fd = open(sock_path, O_WRONLY | O_NONBLOCK | PG_BINARY, 0666)) >= 0)
 		{
 			struct flock lck;
 
@@ -287,11 +283,7 @@ StreamServerPort(char *hostName, unsigned short portName, int *fdP)
 		 * lock_fd is left open to keep the lock.
 		 */
 #ifdef HAVE_FCNTL_SETLK
-#ifndef __CYGWIN32__
-		if ((lock_fd = open(sock_path, O_WRONLY | O_NONBLOCK, 0666)) >= 0)
-#else
-		if ((lock_fd = open(sock_path, O_WRONLY | O_NONBLOCK | O_BINARY, 0666)) >= 0)
-#endif
+		if ((lock_fd = open(sock_path, O_WRONLY | O_NONBLOCK | PG_BINARY, 0666)) >= 0)
 		{
 			struct flock lck;
 

@@ -342,11 +342,7 @@ lo_import(text *filename)
 	if (nbytes > FNAME_BUFSIZE)
 		nbytes = FNAME_BUFSIZE;
 	StrNCpy(fnamebuf, VARDATA(filename), nbytes);
-#ifndef __CYGWIN32__
-	fd = PathNameOpenFile(fnamebuf, O_RDONLY, 0666);
-#else
-	fd = PathNameOpenFile(fnamebuf, O_RDONLY | O_BINARY, 0666);
-#endif
+	fd = PathNameOpenFile(fnamebuf, O_RDONLY | PG_BINARY, 0666);
 	if (fd < 0)
 	{							/* error */
 		elog(ERROR, "lo_import: can't open unix file \"%s\": %m",
@@ -427,11 +423,7 @@ lo_export(Oid lobjId, text *filename)
 		nbytes = FNAME_BUFSIZE;
 	StrNCpy(fnamebuf, VARDATA(filename), nbytes);
 	oumask = umask((mode_t) 0022);
-#ifndef __CYGWIN32__
-	fd = PathNameOpenFile(fnamebuf, O_CREAT | O_WRONLY | O_TRUNC, 0666);
-#else
-	fd = PathNameOpenFile(fnamebuf, O_CREAT | O_WRONLY | O_TRUNC | O_BINARY, 0666);
-#endif
+	fd = PathNameOpenFile(fnamebuf, O_CREAT | O_WRONLY | O_TRUNC | PG_BINARY, 0666);
 	umask(oumask);
 	if (fd < 0)
 	{							/* error */

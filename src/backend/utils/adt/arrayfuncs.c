@@ -549,11 +549,7 @@ _ReadLOArray(char *str,
 	{
 		FILE	   *afd;
 
-#ifndef __CYGWIN32__
-		if ((afd = AllocateFile(accessfile, "r")) == NULL)
-#else
-		if ((afd = AllocateFile(accessfile, "r")) == NULL)
-#endif
+		if ((afd = AllocateFile(accessfile, PG_BINARY_R)) == NULL)
 			elog(ERROR, "unable to open access pattern file");
 		*chunkFlag = true;
 		retStr = _ChunkArray(*fd, afd, ndim, dim, baseSize, nbytes,

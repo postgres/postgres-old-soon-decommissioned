@@ -207,11 +207,7 @@ SetCharSet()
 		map_file = (char *) malloc((strlen(DataDir) +
 									strlen(p) + 2) * sizeof(char));
 		sprintf(map_file, "%s/%s", DataDir, p);
-#ifndef __CYGWIN32__
-		file = AllocateFile(map_file, "r");
-#else
-		file = AllocateFile(map_file, "rb");
-#endif
+		file = AllocateFile(map_file, PG_BINARY_R);
 		if (file == NULL)
 			return;
 		eof = false;
