@@ -31,7 +31,7 @@ PDSL=$(PSTYLE)/docbook.dsl
 
 # Options for DocBook style sheets
 
-DBOPTS= -D ref
+DBOPTS= -D ref -D ../graphics
 #DBOPTS+= -V %no-split-output% -V %no-make-index%
 # use-id-as-filename picks up the "Id=" fields to use as file names.
 # If this is omitted then file names are generic "c01.htm"
