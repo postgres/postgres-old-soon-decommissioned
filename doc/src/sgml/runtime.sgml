@@ -822,6 +822,30 @@ env PGOPTIONS='-c geqo=off' psql
      </varlistentry>
 
      <varlistentry>
+      <term>SYSLOG_FACILITY (<type>string</type>)</term>
+       <listitem>
+        <para>
+          If the SYSLOG option is set to 1 or greater, this option determines
+          the <application>syslog</application> facility used.  You may choose
+          from LOCAL0, LOCAL1, LOCAL2, LOCAL3, LOCAL4, LOCAL5, LOCAL6, LOCAL7.
+          the default is LOCAL0
+        </para>
+       </listitem>
+     </varlistentry>
+     
+     <varlistentry>
+      <term>SYSLOG_PROGID (<type>string</type>)</term>
+       <listitem>
+        <para>
+         If the SYSLOG option is set to 1 or greater, this option determines
+         the program id used to identify <product>PostgreSQL</product> messages
+         in <application>syslog</application> log messages.  The default is
+         postgres.
+        </para>
+       </listitem>
+      </varlistentry>
+
+     <varlistentry>
       <term>TRACE_NOTIFY (<type>boolean</type>)</term>
       <listitem>
        <para>
