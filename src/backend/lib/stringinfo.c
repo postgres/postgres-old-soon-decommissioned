@@ -146,10 +146,9 @@ appendStringInfo(StringInfo str, const char *fmt,...)
 void
 appendStringInfoChar(StringInfo str, char ch)
 {
-	Assert(str != NULL);
-
 	/* Make more room if needed */
-	enlargeStringInfo(str, 1);
+	if (str->len + 1 >= str->maxlen)
+		enlargeStringInfo(str, 1);
 
 	/* OK, append the character */
 	str->data[str->len] = ch;
