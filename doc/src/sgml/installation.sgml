@@ -1740,8 +1740,8 @@ gunzip -c user.ps.gz \
        <row>
 	<entry><systemitem class="osname">Windows</></entry>
 	<entry><systemitem>x86</></entry>
-	<entry>7.2</entry>
-	<entry>2001-12-13,
+	<entry>7.3</entry>
+	<entry>2002-10-29,
 	 Dave Page (<email>dpage@vale-housing.co.uk</email>),
 	 Jason Tishler (<email>jason@tishler.net</email>)</entry>
         <entry>with <application>Cygwin</application>; see <filename>doc/FAQ_MSWIN</filename></entry>
