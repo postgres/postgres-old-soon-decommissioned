@@ -863,11 +863,10 @@ ident_unix(int sock, char *ident_user)
 #ifdef SO_PEERCRED
 	/* Linux style: use getsockopt(SO_PEERCRED) */
 	struct ucred	peercred;
-	socklen_t		so_len;
+	ACCEPT_TYPE_ARG3 so_len = sizeof(peercred);
 	struct passwd *pass;
 
 	errno = 0;
-	so_len = sizeof(peercred);
 	if (getsockopt(sock, SOL_SOCKET, SO_PEERCRED, &peercred, &so_len) != 0 ||
 		so_len != sizeof(peercred))
 	{
