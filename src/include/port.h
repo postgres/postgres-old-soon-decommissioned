@@ -168,6 +168,11 @@ extern int	pgrename(const char *from, const char *to);
 extern int	pgunlink(const char *path);
 extern int	pgsymlink(const char *oldpath, const char *newpath);
 
+/* Include this first so later includes don't see these defines */
+#ifdef _MSC_VER
+#include <io.h>
+#endif
+
 #define rename(from, to)		pgrename(from, to)
 #define unlink(path)			pgunlink(path)
 #define symlink(oldpath, newpath)	pgsymlink(oldpath, newpath)
