@@ -132,7 +132,7 @@ smgrcreate(int16 which, Relation reln)
 	int			fd;
 
 	if ((fd = (*(smgrsw[which].smgr_create)) (reln)) < 0)
-		elog(ERROR, "cannot open %s",
+		elog(ERROR, "cannot create %s",
 			 &(reln->rd_rel->relname.data[0]));
 
 	return (fd);

@@ -71,6 +71,7 @@ ProcedureCreate(char *procedureName,
 	Oid			relid;
 	Oid			toid;
 	text	   *prosrctext;
+	NameData	procname;
 	TupleDesc	tupDesc;
 
 	/* ----------------
@@ -229,7 +230,8 @@ ProcedureCreate(char *procedureName,
 	}
 
 	i = 0;
-	values[i++] = PointerGetDatum(procedureName);
+	namestrcpy(&procname, procedureName);
+	values[i++] = NameGetDatum(&procname);
 	values[i++] = Int32GetDatum(GetUserId());
 	values[i++] = ObjectIdGetDatum(languageObjectId);
 

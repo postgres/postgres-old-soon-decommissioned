@@ -160,6 +160,7 @@ TypeShellMakeWithOpenRelation(Relation pg_type_desc, char *typeName)
 	Datum		values[Natts_pg_type];
 	char		nulls[Natts_pg_type];
 	Oid			typoid;
+	NameData	name;
 	TupleDesc	tupDesc;
 
 	/* ----------------
@@ -177,7 +178,8 @@ TypeShellMakeWithOpenRelation(Relation pg_type_desc, char *typeName)
 	 * ----------------
 	 */
 	i = 0;
-	values[i++] = (Datum) typeName;		/* 1 */
+	namestrcpy(&name, typeName);
+	values[i++] = NameGetDatum(&name);		/* 1 */
 	values[i++] = (Datum) InvalidOid;	/* 2 */
 	values[i++] = (Datum) (int16) 0;	/* 3 */
 	values[i++] = (Datum) (int16) 0;	/* 4 */
@@ -315,11 +317,9 @@ TypeCreate(char *typeName,
 	char	   *procs[4];
 	bool		defined;
 	ItemPointerData itemPointerData;
+	NameData	name;
 	TupleDesc	tupDesc;
-
 	Oid			argList[8];
-	NameData	 	name;
-
 
 	static ScanKeyData typeKey[1] = {
 		{0, Anum_pg_type_typname, NameEqualRegProcedure}
