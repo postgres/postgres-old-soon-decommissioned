@@ -250,6 +250,7 @@ myinput(char* buf, int max)
     }
 }
 
+#ifdef NOT_USED
 char*
 CurScan(void)
 {
@@ -258,5 +259,7 @@ CurScan(void)
 	   (yy_c_buf_p - &yy_current_buffer->yy_ch_buf[yy_n_chars]);
 */
 }
+#endif
+
 #endif /* FLEX_SCANNER */
 
