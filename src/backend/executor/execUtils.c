@@ -564,6 +564,7 @@ ExecSetTypeInfo(int index,
 	att->attcacheoff = -1;
 	att->atttypmod = -1;
 	att->attisset = false;
+	att->attstorage = 'p';
 	att->attalign = attalign;
 }
 

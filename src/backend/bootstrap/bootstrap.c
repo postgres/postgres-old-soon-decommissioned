@@ -562,6 +562,7 @@ DefineAttr(char *name, char *type, int attnum)
 		attrtypes[attnum]->attnum = 1 + attnum; /* fillatt */
 		attlen = attrtypes[attnum]->attlen = Ap->am_typ.typlen;
 		attrtypes[attnum]->attbyval = Ap->am_typ.typbyval;
+		attrtypes[attnum]->attstorage = 'p';
 		attrtypes[attnum]->attalign = Ap->am_typ.typalign;
 	}
 	else
@@ -572,6 +573,7 @@ DefineAttr(char *name, char *type, int attnum)
 			printf("<%s %s> ", NameStr(attrtypes[attnum]->attname), type);
 		attrtypes[attnum]->attnum = 1 + attnum; /* fillatt */
 		attlen = attrtypes[attnum]->attlen = Procid[typeoid].len;
+		attrtypes[attnum]->attstorage = 'p';
 
 		/*
 		 * Cheat like mad to fill in these items from the length only.

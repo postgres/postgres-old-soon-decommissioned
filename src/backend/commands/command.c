@@ -455,6 +455,7 @@ PerformAddAttribute(char *relationName,
 		attribute->attbyval = tform->typbyval;
 		attribute->attnelems = attnelems;
 		attribute->attisset = (bool) (tform->typtype == 'c');
+		attribute->attstorage = 'p';
 		attribute->attalign = tform->typalign;
 		attribute->attnotnull = false;
 		attribute->atthasdef = (colDef->raw_default != NULL ||
