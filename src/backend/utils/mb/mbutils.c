@@ -107,6 +107,17 @@ SetClientEncoding(int encoding, bool doit)
 	}
 
 	/*
+	 * If we're not inside a transaction then we can't do catalog lookups,
+	 * so fail.  After backend startup, this could only happen if we
+	 * are re-reading postgresql.conf due to SIGHUP --- so basically this
+	 * just constrains the ability to change client_encoding on the fly
+	 * from postgresql.conf.  Which would probably be a stupid thing to do
+	 * anyway.
+	 */
+	if (!IsTransactionState())
+		return -1;
+
+	/*
 	 * Look up the conversion functions.
 	 */
 	to_server_proc = FindDefaultConversionProc(encoding,
