@@ -351,10 +351,6 @@ echo "vacuuming template1"
 echo "vacuum" | postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
 	grep -v "^DEBUG:"
 
-echo "Altering pg_user acl"
-echo "REVOKE ALL ON pg_user FROM public" | postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
-         grep -v "'DEBUG:"
-
 echo "COPY pg_user TO '$PGDATA/pg_pwd' USING DELIMITERS '\\t'" | postgres -F -Q -D$PGDATA template1 2>&1 > /dev/null |\
          grep -v "'DEBUG:"
 

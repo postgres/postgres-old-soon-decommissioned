@@ -58,7 +58,7 @@ typedef FormData_pg_user *Form_pg_user;
 #define Anum_pg_user_usetrace			4
 #define Anum_pg_user_usesuper			5
 #define Anum_pg_user_usecatupd			6
-#define Anum_pg_user_passwd			7
+#define Anum_pg_user_passwd				7
 #define Anum_pg_user_valuntil			8
 
 /* ----------------
