@@ -14,7 +14,7 @@ include $(top_builddir)/src/Makefile.global
 
 DIRS := libpq ecpg libpgeasy
 
-ALLDIRS := $(DIRS) odbc libpq++ libpgtcl perl5 python
+ALLDIRS := $(DIRS) odbc libpq++ libpgtcl perl5 python jdbc
 
 ifeq ($(enable_odbc), yes)
 DIRS += odbc
@@ -34,6 +34,10 @@ endif
 
 ifeq ($(with_python), yes)
 DIRS += python
+endif
+
+ifeq ($(with_java), yes)
+DIRS += jdbc
 endif
 
 

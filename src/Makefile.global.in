@@ -107,6 +107,7 @@ odbcinst_ini_dir = @odbcinst_ini_dir@
 # Records the choice of the various --enable-xxx and --with-xxx options.
 
 with_CXX	= @with_CXX@
+with_java	= @with_java@
 with_perl	= @with_perl@
 with_python	= @with_python@
 with_tcl	= @with_tcl@
@@ -174,6 +175,7 @@ X = @EXEEXT@
 
 # Miscellaneous
 
+ANT	= @ANT@
 AWK	= @AWK@
 LN_S	= @LN_S@
 PERL	= @PERL@
