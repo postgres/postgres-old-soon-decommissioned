@@ -271,6 +271,17 @@ transformExpr(ParseState *pstate, Node *expr)
 							result = (Node *) expr;
 						}
 						break;
+					case DISTINCT:
+						{
+							Node	   *lexpr = transformExpr(pstate,
+															  a->lexpr);
+							Node	   *rexpr = transformExpr(pstate,
+															  a->rexpr);
+							result = (Node *) make_op(a->name,
+													  lexpr,
+													  rexpr);
+							((Expr *)result)->opType = DISTINCT_EXPR;
+						}
 				}
 				break;
 			}

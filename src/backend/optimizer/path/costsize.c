@@ -1092,6 +1092,7 @@ cost_qual_eval_walker(Node *node, Cost *total)
 		switch (expr->opType)
 		{
 			case OP_EXPR:
+			case DISTINCT_EXPR:
 			case FUNC_EXPR:
 				*total += cpu_operator_cost;
 				break;

@@ -283,6 +283,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"toast", TOAST},
 	{"trailing", TRAILING},
 	{"transaction", TRANSACTION},
+	{"treat", TREAT},
 	{"trigger", TRIGGER},
 	{"trim", TRIM},
 	{"true", TRUE_P},

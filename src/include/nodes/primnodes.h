@@ -144,7 +144,8 @@ typedef struct RangeVar
  */
 typedef enum OpType
 {
-	OP_EXPR, FUNC_EXPR, OR_EXPR, AND_EXPR, NOT_EXPR, SUBPLAN_EXPR
+	OP_EXPR, DISTINCT_EXPR, FUNC_EXPR,
+	OR_EXPR, AND_EXPR, NOT_EXPR, SUBPLAN_EXPR
 } OpType;
 
 typedef struct Expr

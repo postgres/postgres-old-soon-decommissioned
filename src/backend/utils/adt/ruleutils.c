@@ -1626,6 +1626,21 @@ get_rule_expr(Node *node, deparse_context *context)
 						get_oper_expr(expr, context);
 						break;
 
+					case DISTINCT_EXPR:
+						appendStringInfoChar(buf, '(');
+						Assert(length(args) == 2);
+						{
+							/* binary operator */
+							Node   *arg1 = (Node *) lfirst(args);
+							Node   *arg2 = (Node *) lsecond(args);
+
+							get_rule_expr(arg1, context);
+							appendStringInfo(buf, " IS DISTINCT FROM ");
+							get_rule_expr(arg2, context);
+						}
+						appendStringInfoChar(buf, ')');
+						break;
+
 					case FUNC_EXPR:
 						get_func_expr(expr, context);
 						break;

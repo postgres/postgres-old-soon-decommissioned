@@ -719,6 +719,9 @@ _outExpr(StringInfo str, Expr *node)
 		case OP_EXPR:
 			opstr = "op";
 			break;
+		case DISTINCT_EXPR:
+			opstr = "distinct";
+			break;
 		case FUNC_EXPR:
 			opstr = "func";
 			break;
