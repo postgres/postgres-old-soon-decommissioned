@@ -125,8 +125,8 @@ extern char *getpgusername(void);
 extern void SetPgUserName(void);
 extern Oid	GetUserId(void);
 extern void SetUserId(void);
-extern int	ValidateBackend(char *path);
-extern int	FindExec(char *backend, char *argv0);
+extern int	ValidateBinary(char *path);
+extern int	FindExec(char *backend, char *argv0, char *binary_name);
 extern int	CheckPathAccess(char *path, char *name, int open_mode);
 
 /* lower case version for case-insensitive SQL referenced in pg_proc.h */
