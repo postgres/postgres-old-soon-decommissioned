@@ -199,7 +199,7 @@ typedef Relation *RelationPtr;
 #define RelationGetRelationName(relation) \
 (\
 	(strncmp(RelationGetPhysicalRelationName(relation), \
-			 "pg_temp.", 8) != 0) \
+			 "pg_temp", 7) != 0) \
 	? \
 		RelationGetPhysicalRelationName(relation) \
 	: \
