@@ -63,7 +63,7 @@ return PQntuples(pgResult);
 
 int PgDatabase::CmdTuples()
 {
-return PQcmdTuples (PGresult);
+return PQcmdTuples (pgResult);
 }
 
 
