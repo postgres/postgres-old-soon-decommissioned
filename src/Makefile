@@ -28,6 +28,9 @@ XARGS = xargs
 .DEFAULT all:
 	$(MAKE) -C backend $@
 	$(MAKE) -C libpq $@
+ifeq ($(HAVE_Cplusplus), true)
+	$(MAKE) -C libpq++ $@
+endif
 ifeq ($(USE_TCL), true)
 	$(MAKE) -C libpgtcl $@
 endif
