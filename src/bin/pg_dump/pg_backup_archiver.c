@@ -2347,7 +2347,7 @@ bool
 checkSeek(FILE *fp)
 {
 
-	if (fseek(fp, 0, SEEK_CUR) != 0)
+	if (fseeko(fp, 0, SEEK_CUR) != 0)
 		return false;
 	else if (sizeof(off_t) > sizeof(long))
 	/*
