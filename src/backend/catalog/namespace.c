@@ -165,7 +165,9 @@ RangeVarGetRelid(const RangeVar *relation, bool failOK)
 		if (strcmp(relation->catalogname, get_database_name(MyDatabaseId)) != 0)
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-			   errmsg("cross-database references are not implemented")));
+			   errmsg("cross-database references are not implemented: \"%s.%s.%s\"",
+					  relation->catalogname, relation->schemaname,
+					  relation->relname)));
 	}
 
 	if (relation->schemaname)
@@ -218,7 +220,9 @@ RangeVarGetCreationNamespace(const RangeVar *newRelation)
 		if (strcmp(newRelation->catalogname, get_database_name(MyDatabaseId)) != 0)
 			ereport(ERROR,
 					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-			   errmsg("cross-database references are not implemented")));
+			   errmsg("cross-database references are not implemented: \"%s.%s.%s\"",
+					  newRelation->catalogname, newRelation->schemaname,
+					  newRelation->relname)));
 	}
 
 	if (newRelation->istemp)
@@ -1182,7 +1186,8 @@ DeconstructQualifiedName(List *names,
 			if (strcmp(catalogname, get_database_name(MyDatabaseId)) != 0)
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				errmsg("cross-database references are not implemented")));
+				errmsg("cross-database references are not implemented: %s",
+					   NameListToString(names))));
 			break;
 		default:
 			ereport(ERROR,
