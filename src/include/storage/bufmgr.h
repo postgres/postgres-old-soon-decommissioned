@@ -13,12 +13,7 @@
 #ifndef	BUFMGR_H
 #define BUFMGR_H
 
-#include "c.h"
-
-#include "machine.h"		/* for BLCKSZ */
-#include "utils/rel.h"
-
-#include "storage/buf_internals.h"	/* UGLY! -- ay */
+#include <stdio.h>
 
 /*
  * the maximum size of a disk block for any possible installation.

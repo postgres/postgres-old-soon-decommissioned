@@ -17,13 +17,11 @@
 #ifndef	IPC_H
 #define IPC_H
 
-#include <sys/types.h>
 #ifndef	_IPC_
 #define _IPC_
-#include <sys/ipc.h>
 #endif
 
-#include "c.h"
+#include <sys/types.h>
 
 /*
  * Many architectures have support for user-level spinlocks (i.e., an
@@ -63,7 +61,6 @@ typedef unsigned int	slock_t;
 #else /* aix */
 
 #if defined(PORTNAME_alpha)
-#include <sys/mman.h>
 typedef msemaphore	slock_t;
 #else /* alpha */
 
@@ -76,7 +73,6 @@ typedef struct { int sem[4]; } slock_t;
 #else /* hpux */
 
 #if defined(PORTNAME_irix5)
-#include <abi_mutex.h>
 typedef abilock_t	slock_t;
 #else /* irix5 */
 
@@ -86,7 +82,6 @@ typedef abilock_t	slock_t;
  * spinlocks.
  */
 #undef NEVER	/* definition in cthreads.h conflicts with parse.h */
-#include <mach/cthreads.h>
 typedef struct mutex	slock_t;
 #else /* next */
 

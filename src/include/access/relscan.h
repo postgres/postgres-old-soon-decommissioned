@@ -13,15 +13,10 @@
 #ifndef	RELSCAN_H
 #define RELSCAN_H
 
-#include "c.h"
-
-#include "access/skey.h"
-#include "storage/buf.h"
-#include "access/htup.h"
-#include "storage/itemptr.h"
-
 #include "utils/tqual.h"
-#include "utils/rel.h"
+#include "storage/buf.h"
+
+
 
 
 typedef ItemPointerData	MarkData;

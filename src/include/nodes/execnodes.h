@@ -13,23 +13,11 @@
 #ifndef EXECNODES_H
 #define EXECNODES_H
 
-#include "postgres.h"
-
-#include "nodes/nodes.h"
-#include "nodes/primnodes.h"
-#include "nodes/pg_list.h"
-
-#include "nodes/memnodes.h"
-
-#include "storage/item.h"
+#include "nodes/params.h"
 #include "access/sdir.h"
-#include "access/htup.h"
-#include "access/tupdesc.h"
-#include "access/funcindex.h"
-#include "utils/rel.h"
-#include "access/relscan.h"
 #include "executor/hashjoin.h"
-#include "executor/tuptable.h"
+#include "nodes/primnodes.h"
+#include "nodes/memnodes.h"
 
 /* ----------------
  *    IndexInfo information

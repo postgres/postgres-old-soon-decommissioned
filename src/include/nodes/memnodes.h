@@ -18,12 +18,9 @@
 #ifndef	MEMNODES_H
 #define MEMNODES_H
 
-#include "c.h"
-
 #include "utils/memutils.h"
 #include "lib/fstack.h"
 
-#include "nodes/nodes.h"
 
 /*
  * MemoryContext --
