@@ -12,9 +12,9 @@ WANTED_DIRS = \
 		fulltextindex	\
 		intarray	\
 		isbn_issn	\
-		lo			\
+		lo		\
 		mSQL-interface	\
-		mac			\
+		mac		\
 		miscutil	\
 		noupdate	\
 		oid2name	\
@@ -22,9 +22,9 @@ WANTED_DIRS = \
 		pgbench		\
 		pgcrypto	\
 		rserv		\
-		seg			\
+		seg		\
 		soundex		\
-		spi			\
+		spi		\
 		string		\
 		tips		\
 		unixdate	\
