@@ -341,6 +341,7 @@ ECPGis_type_an_array(int type,const struct statement * stmt,const struct variabl
 	array_query = (char *) ecpg_alloc(strlen("select typelem from pg_type where oid=") + 11, stmt->lineno);
 	sprintf(array_query, "select typelem from pg_type where oid=%d", type);
 	query = PQexec(stmt->connection->connection, array_query);
+	free(array_query);
 	if (PQresultStatus(query) == PGRES_TUPLES_OK)
 	{
 		isarray = atol((char *) PQgetvalue(query, 0, 0));
