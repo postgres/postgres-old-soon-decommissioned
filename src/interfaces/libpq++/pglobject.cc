@@ -121,7 +121,6 @@ int PgLargeObject::Unlink()
 }
 
 
-
 void PgLargeObject::Close()
 { 
   if (pgFd >= 0) lo_close(pgConn, pgFd);
@@ -168,4 +167,8 @@ int PgLargeObject::Export(const char* filename)
 string PgLargeObject::Status() const
 { 
   return loStatus; 
+}
+
+Oid PgLargeObject::LOid(){
+  return pgObject;
 }
