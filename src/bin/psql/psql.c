@@ -401,7 +401,10 @@ gets_noreadline(char *prompt, FILE * source)
 char           *
 gets_readline(char *prompt, FILE * source)
 {
-    return (readline(prompt));
+    char *s = readline(prompt);
+    fputc('\r', stdout);
+    fflush(stdout);
+    return s;
 }
 
 /*
