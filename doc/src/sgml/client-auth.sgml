@@ -245,7 +245,6 @@ hostssl <replaceable>database</replaceable> <replaceable>user</replaceable> <rep
           Same as "md5", but the password is sent in cleartext over the
           network. This should not be used on untrusted networks.
          </para>
-         </para>
         </listitem>
        </varlistentry>
 
