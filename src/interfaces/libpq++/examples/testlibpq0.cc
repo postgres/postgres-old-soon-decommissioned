@@ -18,7 +18,7 @@
 #include "libpq++.H"
 
 int 
-main(int argc, char** argv)
+main()
 {
   ExecStatusType status;
   PGenv env;
@@ -41,7 +41,7 @@ main(int argc, char** argv)
 	if((status = data->exec(buf)) == PGRES_TUPLES_OK) 
 	     data->printtuples(stdout, 1, "|", 1, 0);
 	else
-	     printf("status = %s\nerrorMessage = %s\n", status,
+	     printf("status = %d\nerrorMessage = %s\n", status,
 						   data->errormessage());
       else
 	done = 1;

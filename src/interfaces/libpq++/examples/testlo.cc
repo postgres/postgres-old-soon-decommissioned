@@ -22,7 +22,6 @@ main(int argc, char **argv)
 {
     char *in_filename, *out_filename;
     char *database;
-    Oid lobjOid;
     PGenv env;
     PGlobj *object;
 
