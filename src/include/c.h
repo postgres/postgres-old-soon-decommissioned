@@ -96,6 +96,12 @@
 #else
 #define gettext(x) (x)
 #endif
+
+/*
+ *	These strings are to be translation via xgettext.  We can't
+ *	call gettext() because it is located in variable initialization and
+ *	a function call can not be used.
+ */
 #define gettext_noop(x) (x)
 
 
