@@ -32,8 +32,6 @@ extern void RelationRebuildRelation(Relation relation);
 
 extern void RelationIdInvalidateRelationCacheByRelationId(Oid relationId);
 
-extern void RelationIdInvalidateRelationCacheByAccessMethodId(Oid accessMethodId);
-
 extern void RelationCacheInvalidate(bool onlyFlushReferenceCountZero);
 
 extern void RelationRegisterRelation(Relation relation);

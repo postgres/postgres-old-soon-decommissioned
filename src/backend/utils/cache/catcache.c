@@ -819,7 +819,7 @@ InitSysCache(char *relname,
  * --------------------------------
  */
 static HeapTuple
-SearchSelfReferences(const struct catcache * cache)
+SearchSelfReferences(struct catcache * cache)
 {
 	HeapTuple		ntp;
 	Relation		rel;
@@ -983,23 +983,11 @@ SearchSysCache(struct catcache * cache,
 	 * ----------------
 	 */
 
-	/* ----------
-	 * It is definitely insufficient. While modifying the regression
-	 * test to run independent tests concurrently it happened, that
-	 * this code fails VERY often. ISTM that 'cache' points into
-	 * shared memory, but that 'busy' means this backend is loading
-	 * a new entry. So when another backend has set busy, this one
-	 * think's it detected a recursion.
-	 *
-	 * Need's a smarter detection mechanism - Jan
-	 *
 	if (cache->busy)
 	{
 		elog(ERROR, "SearchSysCache: recursive use of cache %d", cache->id);
 	}
 	cache->busy = true;
-	 * ----------
-	 */
 
 	/* ----------------
 	 *	open the relation associated with the cache

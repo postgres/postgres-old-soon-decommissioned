@@ -15,32 +15,10 @@
 
 #include "access/htup.h"
 
-extern void InitLocalInvalidateData(void);
-
 extern void DiscardInvalid(void);
 
 extern void RegisterInvalid(bool send);
 
 extern void RelationInvalidateHeapTuple(Relation relation, HeapTuple tuple);
-
-/*
- * POSTGRES local cache invalidation definitions. (originates from linval.h)
- */
-typedef struct InvalidationUserData
-{
-	struct InvalidationUserData *dataP[1];		/* VARIABLE LENGTH */
-} InvalidationUserData;			/* VARIABLE LENGTH STRUCTURE */
-
-typedef struct InvalidationEntryData
-{
-	InvalidationUserData *nextP;
-	InvalidationUserData userData;		/* VARIABLE LENGTH ARRAY */
-} InvalidationEntryData;		/* VARIABLE LENGTH STRUCTURE */
-
-typedef Pointer InvalidationEntry;
-
-typedef InvalidationEntry LocalInvalid;
-
-#define EmptyLocalInvalid		NULL
 
 #endif	 /* INVAL_H */

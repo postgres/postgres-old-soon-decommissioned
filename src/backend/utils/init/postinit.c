@@ -553,12 +553,6 @@ InitPostgres(char *name)		/* database name */
 	 */
 	InitUserid();
 
-	/*
-	 * Initialize local data in cache invalidation stuff
-	 */
-	if (!bootstrap)
-		InitLocalInvalidateData();
-
 	if (lockingOff)
 		LockDisable(true);
 

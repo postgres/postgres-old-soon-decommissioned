@@ -209,11 +209,6 @@ do { \
 static void formrdesc(char *relationName, u_int natts,
 		  FormData_pg_attribute *att);
 
-#ifdef NOT_USED					/* See comments at line 1304 */
-static void RelationFlushIndexes(Relation *r, Oid accessMethodId);
-
-#endif
-
 static HeapTuple ScanPgRelation(RelationBuildDescInfo buildinfo);
 static HeapTuple scan_pg_rel_seq(RelationBuildDescInfo buildinfo);
 static HeapTuple scan_pg_rel_ind(RelationBuildDescInfo buildinfo);
@@ -1431,12 +1426,9 @@ RelationIdInvalidateRelationCacheByRelationId(Oid relationId)
 	}
 }
 
-#if NOT_USED					/* See comments at line 1304 */
-/* --------------------------------
- *		RelationIdInvalidateRelationCacheByAccessMethodId
- *
- *		RelationFlushIndexes is needed for use with HashTableWalk..
- * --------------------------------
+#if NOT_USED
+/* only used by RelationIdInvalidateRelationCacheByAccessMethodId,
+ * which is dead code.
  */
 static void
 RelationFlushIndexes(Relation *r,
@@ -1459,11 +1451,10 @@ RelationFlushIndexes(Relation *r,
 #endif
 
 
+#if NOT_USED
 void
 RelationIdInvalidateRelationCacheByAccessMethodId(Oid accessMethodId)
 {
-#ifdef NOT_USED
-
 	/*
 	 * 25 aug 1992:  mao commented out the ht walk below.  it should be
 	 * doing the right thing, in theory, but flushing reldescs for index
@@ -1471,14 +1462,15 @@ RelationIdInvalidateRelationCacheByAccessMethodId(Oid accessMethodId)
 	 * don't want to introduce new bugs.  this code never executed before,
 	 * so i'm turning it off for now.  after the release is cut, i'll fix
 	 * this up.
+	 *
+	 * 20 nov 1999:  this code has still never done anything, so I'm
+	 * cutting the routine out of the system entirely.  tgl
 	 */
 
 	HashTableWalk(RelationNameCache, (HashtFunc) RelationFlushIndexes,
 				  accessMethodId);
-#else
-	return;
-#endif
 }
+#endif
 
 /*
  * RelationCacheInvalidate
