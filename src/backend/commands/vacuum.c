@@ -422,7 +422,11 @@ _vc_vacone (VRelList curvrl)
     if ( Fvpl.vpl_npages > 0 )		/* Try to shrink heap */
     	_vc_rpfheap (curvrl, onerel, &Vvpl, &Fvpl, nindices, Irel);
     else if ( Vvpl.vpl_npages > 0 )	/* Clean pages from Vvpl list */
+    {
+    	if ( Irel != (Relation*) NULL )
+	    _vc_clsindices (nindices, Irel);
 	_vc_vacheap (curvrl, onerel, &Vvpl);
+    }
 
     /* ok - free Vvpl list of reapped pages */
     if ( Vvpl.vpl_npages > 0 )
