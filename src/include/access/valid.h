@@ -109,48 +109,40 @@ do \
  *	with joey's expensive function work.
  * ----------------
  */
-#define HeapTupleSatisfies(itemId, \
+#define HeapTupleSatisfies(tuple, \
 						   relation, \
 						   buffer, \
 						   disk_page, \
 						   seeself, \
 						   nKeys, \
-						   key, \
-						   result) \
+						   key) \
 do \
 { \
 /* We use underscores to protect the variable passed in as parameters */ \
-	HeapTuple	_tuple; \
 	bool		_res; \
  \
-	if (!ItemIdIsUsed(itemId)) \
-		(result) = (HeapTuple) NULL; \
+	if ((key) != NULL) \
+		HeapKeyTest(tuple, RelationGetDescr(relation), \
+						   (nKeys), (key), _res); \
+	else \
+		_res = TRUE; \
+ \
+	if (_res) \
+	{ \
+		if ((relation)->rd_rel->relkind != RELKIND_UNCATALOGED) \
+		{ \
+			uint16	_infomask = (tuple)->t_data->t_infomask; \
+			\
+			_res = HeapTupleSatisfiesVisibility((tuple), (seeself)); \
+			if ((tuple)->t_data->t_infomask != _infomask) \
+				SetBufferCommitInfoNeedsSave(buffer); \
+			if (!_res) \
+				(tuple)->t_data = NULL; \
+		} \
+	} \
 	else \
 	{ \
-		_tuple = (HeapTuple) PageGetItem((Page) (disk_page), (itemId)); \
-	 \
-		if ((key) != NULL) \
-			HeapKeyTest(_tuple, RelationGetDescr(relation), \
-							   (nKeys), (key), _res); \
-		else \
-			_res = TRUE; \
- \
-		(result) = (HeapTuple) NULL; \
-		if (_res) \
-		{ \
-			if ((relation)->rd_rel->relkind == RELKIND_UNCATALOGED) \
-				(result) = _tuple; \
-			else \
-			{ \
-				uint16	_infomask = _tuple->t_infomask; \
-				\
-				_res = HeapTupleSatisfiesVisibility(_tuple, (seeself)); \
-				if (_tuple->t_infomask != _infomask) \
-					SetBufferCommitInfoNeedsSave(buffer); \
-				if (_res) \
-					(result) = _tuple; \
-			} \
-		} \
+		(tuple)->t_data = NULL; \
 	} \
 } while (0)
 

@@ -42,14 +42,14 @@ extern CommandId HeapSpecialCommandId;
  */
 #define HeapTupleSatisfiesVisibility(tuple, snapshot) \
 ( \
-	TransactionIdEquals((tuple)->t_xmax, AmiTransactionId) ? \
+	TransactionIdEquals((tuple)->t_data->t_xmax, AmiTransactionId) ? \
 		false \
 	: \
 	( \
 		(IsSnapshotSelf(snapshot) || heapisoverride()) ? \
-			HeapTupleSatisfiesItself(tuple) \
+			HeapTupleSatisfiesItself((tuple)->t_data) \
 		: \
-			HeapTupleSatisfiesNow(tuple) \
+			HeapTupleSatisfiesNow((tuple)->t_data) \
 	) \
 )
 
@@ -71,8 +71,8 @@ extern CommandId HeapSpecialCommandId;
 	) \
 )
 
-extern bool HeapTupleSatisfiesItself(HeapTuple tuple);
-extern bool HeapTupleSatisfiesNow(HeapTuple tuple);
+extern bool HeapTupleSatisfiesItself(HeapTupleHeader tuple);
+extern bool HeapTupleSatisfiesNow(HeapTupleHeader tuple);
 
 extern void setheapoverride(bool on);
 
