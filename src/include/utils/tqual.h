@@ -17,9 +17,7 @@
 #ifndef	TQUAL_H
 #define TQUAL_H
 
-#include "postgres.h"
 #include "utils/nabstime.h"
-#include "access/htup.h"
 
 typedef struct TimeQualSpace {
     char	data[12];

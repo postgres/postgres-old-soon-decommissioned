@@ -14,6 +14,7 @@
 #define BUFMGR_H
 
 #include <stdio.h>
+#include "storage/ipc.h"
 
 /*
  * the maximum size of a disk block for any possible installation.

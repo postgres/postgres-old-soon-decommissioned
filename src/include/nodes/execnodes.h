@@ -18,6 +18,7 @@
 #include "executor/hashjoin.h"
 #include "nodes/primnodes.h"
 #include "nodes/memnodes.h"
+#include "executor/tuptable.h"
 
 /* ----------------
  *    IndexInfo information
