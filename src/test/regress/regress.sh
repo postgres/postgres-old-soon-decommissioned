@@ -1,13 +1,13 @@
 #!/bin/sh
 # $Header$
 #
-if [ $# -eq 0 ];
+if [ $# -eq 0 ]
 then
-	echo "Syntaxe: $0 <portname>"
+	echo "Syntax: $0 <portname>"
 	exit 1
 fi
 
-if [ $1 == "win" ];
+if [ $1 = "win" ]
 then
 	HOST="-h localhost"
 else
