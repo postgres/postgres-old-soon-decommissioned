@@ -40,12 +40,12 @@
 #include <commands/vacuum.h>
 #include <storage/bufpage.h>
 #include "storage/shmem.h"
-#ifdef NEED_RUSAGE
+#ifndef HAVE_RUSAGE
 # include <rusagestub.h>
-#else /* NEED_RUSAGE */
+#else 
 # include <sys/time.h>
 # include <sys/resource.h>
-#endif /* NEED_RUSAGE */
+#endif 
 
 bool VacuumRunning =	false;
 static int MESSLEV;	/* message level */

@@ -290,13 +290,13 @@ Async_NotifyAtCommit()
 #ifdef ASYNC_DEBUG
 			elog(DEBUG, "Notifying others");
 #endif
-#ifndef win32
+#ifdef HAVE_KILL
 			if (kill(DatumGetInt32(d), SIGUSR2) < 0) {
 			    if (errno == ESRCH) {
 				heap_delete(lRel, &lTuple->t_ctid);
 			    }
 			}
-#endif /* win32 */
+#endif 
 		    }
 		}
 		ReleaseBuffer(b);
