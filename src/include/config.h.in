@@ -408,14 +408,11 @@ extern int gethostname(char *name, int namelen);
 
 /* Set to 1 if you have inet_aton() */
 #undef HAVE_INET_ATON
+
 #ifndef HAVE_INET_ATON
-# ifdef HAVE_ARPA_INET_H
-#  ifdef HAVE_NETINET_IN_H
-#   include <sys/types.h>
-#   include <netinet/in.h>
-#  endif
-#  include <arpa/inet.h>
-# endif
+# include <sys/types.h>
+# include <netinet/in.h>
+# include <arpa/inet.h>
 extern int inet_aton(const char *cp, struct in_addr * addr);
 #endif
 
