@@ -124,7 +124,7 @@ endif
 #
 
 Makefile.tcldefs: mkMakefile.tcldefs.sh
-	/bin/sh mkMakefile.tcldefs.sh
+	/bin/sh ./mkMakefile.tcldefs.sh
 
 #
 # Clean 

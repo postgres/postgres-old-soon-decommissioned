@@ -59,10 +59,10 @@ install_tk: pgtksh
 	$(INSTALL) $(INSTL_EXE_OPTS) pgtksh $(BINDIR)/pgtksh
 
 Makefile.tcldefs: mkMakefile.tcldefs.sh
-	/bin/sh mkMakefile.tcldefs.sh
+	/bin/sh ./mkMakefile.tcldefs.sh
 
 Makefile.tkdefs: mkMakefile.tkdefs.sh
-	/bin/sh mkMakefile.tkdefs.sh
+	/bin/sh ./mkMakefile.tkdefs.sh
 
 clean:
 	rm -f *.o Makefile.t*defs pgtclsh pgtksh
