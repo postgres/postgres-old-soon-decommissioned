@@ -757,6 +757,10 @@ plperl_build_tuple_argument(HeapTuple tuple, TupleDesc tupdesc)
 
 	for (i = 0; i < tupdesc->natts; i++)
 	{
+		/* ignore dropped attributes */
+		if (tupdesc->attrs[i]->attisdropped)
+			continue;
+
 		/************************************************************
 		 * Get the attribute name
 		 ************************************************************/
