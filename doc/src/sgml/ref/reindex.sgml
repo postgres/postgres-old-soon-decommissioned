@@ -197,6 +197,8 @@ REINDEX
     </listitem>
 
    </itemizedlist>
+
+   See the <xref linkend="app-postgres"> reference page for more information.
   </para>
  </refsect1>
 
