@@ -260,7 +260,7 @@ textlen(PG_FUNCTION_ARGS)
 Datum
 textoctetlen(PG_FUNCTION_ARGS)
 {
-	text    *arg = PG_GETARG_VARCHAR_P(0);
+	text    *arg = PG_GETARG_TEXT_P(0);
 
 	PG_RETURN_INT32(VARSIZE(arg) - VARHDRSZ);
 }
