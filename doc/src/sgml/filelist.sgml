@@ -57,7 +57,6 @@
 <!entity wal           SYSTEM "wal.sgml">
 
 <!-- programmer's guide -->
-<!entity arch-pg    SYSTEM "arch-pg.sgml">
 <!entity dfunc      SYSTEM "dfunc.sgml">
 <!entity ecpg       SYSTEM "ecpg.sgml">
 <!entity extend     SYSTEM "extend.sgml">

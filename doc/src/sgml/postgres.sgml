@@ -210,15 +210,10 @@ $Header$
    </para>
   </partintro>
 
-  &arch-pg;
   &extend;
-  &xfunc;
-  &xtypes;
-  &xoper;
-  &xaggr;
-  &rules;
   &xindex;
   &indexcost;
+  &rules;
   &trigger;
   &spi;
 
