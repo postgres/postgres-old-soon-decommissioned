@@ -605,6 +605,26 @@ build_hash_table(AggState *aggstate)
 }
 
 /*
+ * Estimate per-hash-table-entry overhead for the planner.
+ *
+ * Note that the estimate does not include space for pass-by-reference
+ * transition data values.
+ */
+Size
+hash_agg_entry_size(int numAggs)
+{
+	Size		entrysize;
+
+	/* This must match build_hash_table */
+	entrysize = sizeof(AggHashEntryData) +
+		(numAggs - 1) *sizeof(AggStatePerGroupData);
+	/* Account for hashtable overhead */
+	entrysize += 2 * sizeof(void *);
+	entrysize = MAXALIGN(entrysize);
+	return entrysize;
+}
+
+/*
  * Find or create a hashtable entry for the tuple group containing the
  * given tuple.
  *

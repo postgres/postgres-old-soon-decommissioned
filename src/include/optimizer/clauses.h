@@ -17,10 +17,16 @@
 #include "nodes/relation.h"
 
 
-
 #define is_opclause(clause)		((clause) != NULL && IsA(clause, OpExpr))
 #define is_funcclause(clause)	((clause) != NULL && IsA(clause, FuncExpr))
 #define is_subplan(clause)		((clause) != NULL && IsA(clause, SubPlan))
+
+typedef struct
+{
+	int			numAggs;			/* total number of aggregate calls */
+	int			numDistinctAggs;	/* number that use DISTINCT */
+	Size		transitionSpace;	/* for pass-by-ref transition data */
+} AggClauseCounts;
 
 
 extern Expr *make_opclause(Oid opno, Oid opresulttype, bool opretset,
@@ -42,8 +48,7 @@ extern Expr *make_ands_explicit(List *andclauses);
 extern List *make_ands_implicit(Expr *clause);
 
 extern bool contain_agg_clause(Node *clause);
-extern bool contain_distinct_agg_clause(Node *clause);
-extern int	count_agg_clause(Node *clause);
+extern void count_agg_clauses(Node *clause, AggClauseCounts *counts);
 
 extern bool expression_returns_set(Node *clause);
 

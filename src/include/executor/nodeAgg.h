@@ -23,6 +23,8 @@ extern TupleTableSlot *ExecAgg(AggState *node);
 extern void ExecEndAgg(AggState *node);
 extern void ExecReScanAgg(AggState *node, ExprContext *exprCtxt);
 
+extern Size hash_agg_entry_size(int numAggs);
+
 extern Datum aggregate_dummy(PG_FUNCTION_ARGS);
 
 #endif   /* NODEAGG_H */
