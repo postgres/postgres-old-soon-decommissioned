@@ -42,6 +42,7 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #ifdef __CYGWIN32__
+#include <getopt.h>
 #endif
 
 #include "commands/async.h"
@@ -1495,7 +1496,7 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[])
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.123 $ $Date: 1999/07/16 04:59:53 $\n");
+		puts("$Revision: 1.124 $ $Date: 1999/07/16 05:23:18 $\n");
 	}
 
 	/* ----------------
@@ -1660,7 +1661,8 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[])
 }
 
 #ifndef HAVE_GETRUSAGE
-#else							/* HAVE_GETRUSAGE */
+#include "rusagestub.h"
+#else
 #include <sys/resource.h>
 #endif	 /* HAVE_GETRUSAGE */
 

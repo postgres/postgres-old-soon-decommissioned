@@ -24,10 +24,10 @@
 #include "postgres.h"
 
 
-#include "miscadmin.h"
 
 #include "catalog/catname.h"
 #include "catalog/pg_shadow.h"
+#include "miscadmin.h"
 #include "utils/syscache.h"
 
 

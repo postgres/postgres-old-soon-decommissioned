@@ -17,8 +17,8 @@
 
 #include "postgres.h"
 
-#include "access/heapam.h"
 
+#include "access/heapam.h"
 #include "utils/lselect.h"
 
 /*

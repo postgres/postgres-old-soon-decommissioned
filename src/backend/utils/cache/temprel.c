@@ -26,10 +26,10 @@
 #include <string.h>
 
 #include "postgres.h"
-#include "utils/temprel.h"
 #include "access/heapam.h"
 #include "catalog/heap.h"
 #include "catalog/index.h"
+#include "utils/temprel.h"
 
 GlobalMemory CacheCxt;
 

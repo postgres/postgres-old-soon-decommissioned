@@ -45,8 +45,6 @@
 #include "postgres.h"
 #include "utils/dynahash.h"
 #include "utils/hsearch.h"
-#ifndef FRONTEND
-#endif	 /* !FRONTEND */
 #include "utils/memutils.h"
 
 /*

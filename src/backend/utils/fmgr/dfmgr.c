@@ -18,17 +18,12 @@
 
 #include "postgres.h"
 
-#include "utils/builtins.h"
 #include "access/heapam.h"
-
-#include "dynloader.h"
-
-#ifdef __ultrix
-#endif
-
 #include "catalog/catname.h"
-#include "utils/syscache.h"
 #include "catalog/pg_proc.h"
+#include "dynloader.h"
+#include "utils/builtins.h"
+#include "utils/syscache.h"
 
 static DynamicFileList *file_list = (DynamicFileList *) NULL;
 static DynamicFileList *file_tail = (DynamicFileList *) NULL;

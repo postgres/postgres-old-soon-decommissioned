@@ -25,6 +25,7 @@
 #include "utils/syscache.h"
 
 #ifdef MULTIBYTE
+#include "mb/pg_wchar.h"
 #endif
 
 #ifdef NOT_USED

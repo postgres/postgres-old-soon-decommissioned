@@ -16,11 +16,11 @@
 #include <string.h>
 #include "postgres.h"
 
-#include "utils/syscache.h"
-#include "utils/lsyscache.h"
 
 #include "catalog/pg_operator.h"
 #include "catalog/pg_type.h"
+#include "utils/lsyscache.h"
+#include "utils/syscache.h"
 
 /*				---------- AMOP CACHES ----------						 */
 

@@ -24,12 +24,12 @@
 #include <unistd.h>
 
 #include "postgres.h"
-#include "miscadmin.h"
 
+#include "catalog/catname.h"
+#include "libpq/pqcomm.h"
+#include "miscadmin.h"
 #include "storage/backendid.h"
 #include "storage/lmgr.h"
-#include "libpq/pqcomm.h"
-#include "catalog/catname.h"
 
 ProtocolVersion FrontendProtocol = PG_PROTOCOL_LATEST;
 

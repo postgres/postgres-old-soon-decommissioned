@@ -21,8 +21,8 @@
 
 #include "postgres.h"
 
-#include "utils/exc.h"
 #include "storage/ipc.h"
+#include "utils/exc.h"
 
 static void ExcUnCaught(Exception *excP, ExcDetail detail, ExcData data,
 			ExcMessage message);

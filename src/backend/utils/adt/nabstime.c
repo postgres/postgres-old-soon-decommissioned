@@ -349,8 +349,6 @@ nabstimeout(AbsoluteTime time)
 			break;
 		default:
 			abstime2tm(time, &tz, tm, tzn);
-#if DATEDEBUG
-#endif
 			EncodeDateTime(tm, fsec, &tz, &tzn, DateStyle, buf);
 			break;
 	}

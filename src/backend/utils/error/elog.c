@@ -24,14 +24,14 @@
 #include <unistd.h>
 #include <signal.h>
 
+#include "postgres.h"
 #ifdef USE_SYSLOG
 #include <syslog.h>
 #endif
 
-#include "postgres.h"
-#include "miscadmin.h"
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
+#include "miscadmin.h"
 #include "storage/proc.h"
 #include "tcop/tcopprot.h"
 #include "utils/trace.h"

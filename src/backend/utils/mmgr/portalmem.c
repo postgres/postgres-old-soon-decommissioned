@@ -78,10 +78,10 @@
 
 #include "postgres.h"
 
+
+
 #include "lib/hasht.h"
 #include "utils/module.h"
-
-
 #include "utils/portal.h"
 
 static void CollectNamedPortals(Portal *portalP, int destroy);

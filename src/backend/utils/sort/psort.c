@@ -37,11 +37,11 @@
 #include <unistd.h>
 
 #include "postgres.h"
-#include "miscadmin.h"
 
 #include "access/heapam.h"
 #include "executor/execdebug.h"
 #include "executor/executor.h"
+#include "miscadmin.h"
 #include "utils/psort.h"
 
 static bool createfirstrun(Sort *node);

@@ -15,10 +15,9 @@
 
 #include "postgres.h"
 
-#include "utils/module.h"
-#include "utils/excid.h"
-
 #include "nodes/memnodes.h"
+#include "utils/excid.h"
+#include "utils/module.h"
 
 
 
