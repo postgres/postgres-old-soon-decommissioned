@@ -6,6 +6,9 @@ include $(top_builddir)/src/Makefile.global
 
 all: pg_passwd
 
+pg_passwd: pg_passwd.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
+
 install: all installdirs
 	$(INSTALL_PROGRAM) pg_passwd$(X) $(DESTDIR)$(bindir)/pg_passwd$(X)
 

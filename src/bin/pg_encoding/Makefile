@@ -14,10 +14,10 @@ include $(top_builddir)/src/Makefile.global
 
 OBJS= pg_encoding.o
 
-all: submake pg_encoding$(X)
+all: submake pg_encoding
 
-pg_encoding$(X): $(OBJS)
-	$(CC) -o $@ $(OBJS) $(libpq) $(LDFLAGS) $(CFLAGS)
+pg_encoding: $(OBJS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(libpq) $(LIBS) -o $@
 
 .PHONY: submake
 

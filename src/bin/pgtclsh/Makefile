@@ -39,10 +39,10 @@ endif
 all: submake $(PROGRAMS)
 
 pgtclsh: pgtclAppInit.o
-	$(CC) $(CFLAGS) -o $@ $< $(libpgtcl) $(libpq) $(TCL_LIB_SPEC) $(TCL_LIBS) $(LDFLAGS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(libpgtcl) $(libpq) $(TCL_LIB_SPEC) $(TCL_LIBS) $(LIBS) -o $@
 
 pgtksh: pgtkAppInit.o
-	$(CC) $(CFLAGS) -o $@ $< $(libpgtcl) $(libpq) $(TK_LIB_SPEC) $(TK_LIBS) $(TCL_LIB_SPEC) $(LDFLAGS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(libpgtcl) $(libpq) $(TK_LIB_SPEC) $(TK_LIBS) $(TCL_LIB_SPEC) $(LIBS) -o $@
 
 .PHONY: submake
 submake:

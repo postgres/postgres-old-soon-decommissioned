@@ -12,7 +12,7 @@ override CPPFLAGS += -I$(libpq_srcdir)
 all: pg_dumplo
 
 pg_dumplo: $(OBJS) $(libpq_builddir)/libpq.a
-	$(CC) -o $@ $(OBJS) $(libpq) $(CFLAGS) $(LDFLAGS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(libpq) $(LIBS) -o $@
 
 install: all installdirs
 	$(INSTALL_PROGRAM) pg_dumplo$(X)	$(bindir)

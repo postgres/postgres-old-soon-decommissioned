@@ -20,10 +20,10 @@ override CPPFLAGS+= -I$(libpq_srcdir)
 all: submake pg_dump pg_restore pg_dumpall
 
 pg_dump: pg_dump.o common.o $(OBJS) $(libpq_builddir)/libpq.a 
-	$(CC) $(CFLAGS) -o $@ pg_dump.o common.o $(OBJS) $(libpq) $(LDFLAGS)
+	$(CC) $(CFLAGS) $(LDFLAGS) pg_dump.o common.o $(OBJS) $(libpq) $(LIBS) -o $@
 
 pg_restore: pg_restore.o $(OBJS) $(libpq_builddir)/libpq.a
-	$(CC) $(CFLAGS) -o $@ pg_restore.o $(OBJS) $(libpq) $(LDFLAGS)
+	$(CC) $(CFLAGS) $(LDFLAGS) pg_restore.o $(OBJS) $(libpq) $(LIBS) -o $@
 
 ../../utils/strdup.o:
 	$(MAKE) -C ../../utils strdup.o

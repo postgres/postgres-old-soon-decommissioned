@@ -28,7 +28,7 @@ SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 retest: retest.o SUBSYS.o $(DEBUGOBJ)
-	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend

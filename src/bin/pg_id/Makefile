@@ -12,10 +12,10 @@ subdir = src/bin/pg_id
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-all: pg_id$(X)
+all: pg_id
 
-pg_id$(X): pg_id.o
-	$(CC) -o $@ $^ $(LDFLAGS)
+pg_id: pg_id.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
 
 install: all installdirs
 	$(INSTALL_PROGRAM) pg_id$(X) $(DESTDIR)$(bindir)/pg_id$(X)
