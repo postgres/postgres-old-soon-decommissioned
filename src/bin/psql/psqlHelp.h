@@ -163,6 +163,7 @@ static struct _helpStruct QL_HELP[] = {
 \t[from <from_list>]\n\
 \t[where <qual>]\n\
 \t[group by <group_list>]\n\
+\t[having <having_clause>]\n\
 \t[order by <attr1> [using <op1>],... <attrN> [using <opN>]]\n\
 \t[union [all] select ...];"},
 	{"delete",
@@ -243,6 +244,7 @@ static struct _helpStruct QL_HELP[] = {
 \t[from <from_clause>]\n\
 \t[where <qual>]\n\
 \t[group by <group_list>]\n\
+\t[having <having_clause>]\n\
 \t[union [all] select ...];"},
 	{"listen",
 		"listen for notification on a relation",
@@ -277,6 +279,7 @@ static struct _helpStruct QL_HELP[] = {
 \t[from <from_list>]\n\
 \t[where <qual>]\n\
 \t[group by <group_list>]\n\
+\t[having <having_clause>]\n\
 \t[order by <attr1> [ASC | DESC] [using <op1>], ... <attrN> ]\n\
 \t[union [all] select ...];"},
 	{"set",

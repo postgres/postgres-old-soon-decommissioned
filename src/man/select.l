@@ -13,6 +13,7 @@ select - retrieve instances from a class
     [\fBfrom\fR from-list]
     [\fBwhere\fR where-clause]    
     [\fBgroup by\fR attr_name1 {, attr_name-i....}]
+    [\fBhaving\fR having-clause]
     [\fBorder by\fR attr_name1 [\fBasc\fR | \fBdesc\fR] [\fBusing op1\fR] {, attr_namei...}]
 [\fBunion {all} select\fR ...]
 
