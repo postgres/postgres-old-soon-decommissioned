@@ -2185,7 +2185,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	/* Set up reference point for stack depth checking */
 	stack_base_ptr = &stack_base;
 
-	if (find_my_exec(argv[0], my_exec_path) < 0)
+	if (my_exec_path[0] == '\0' && find_my_exec(argv[0], my_exec_path) < 0)
 		elog(FATAL,
 				gettext("%s: could not locate my own executable path"),
 						argv[0]);
