@@ -30,13 +30,12 @@ dirmod.c sprompt.c: % : $(top_srcdir)/src/port/%
 
 install: all installdirs
 	$(INSTALL_PROGRAM) initdb$(X) $(DESTDIR)$(bindir)/initdb$(X)
-	$(INSTALL_DATA) $(srcdir)/system_views.sql $(DESTDIR)$(datadir)/system_views.sql
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(DESTDIR)$(bindir)/initdb$(X) $(DESTDIR)$(datadir)/system_views.sql
+	rm -f $(DESTDIR)$(bindir)/initdb$(X)
 
 clean distclean:
 	rm -f initdb$(X) $(OBJS)
