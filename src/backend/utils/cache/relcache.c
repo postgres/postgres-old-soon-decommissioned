@@ -2788,14 +2788,11 @@ RelationGetIndexExpressions(Relation relation)
 	pfree(exprsString);
 
 	/*
-	 * Run the expressions through flatten_andors and
-	 * eval_const_expressions. This is not just an optimization, but is
-	 * necessary, because the planner will be comparing them to
-	 * similarly-processed qual clauses, and may fail to detect valid
-	 * matches without this.
+	 * Run the expressions through eval_const_expressions. This is not just an
+	 * optimization, but is necessary, because the planner will be comparing
+	 * them to similarly-processed qual clauses, and may fail to detect valid
+	 * matches without this.  We don't bother with canonicalize_qual, however.
 	 */
-	result = (List *) flatten_andors((Node *) result);
-
 	result = (List *) eval_const_expressions((Node *) result);
 
 	/*
@@ -2863,15 +2860,17 @@ RelationGetIndexPredicate(Relation relation)
 	pfree(predString);
 
 	/*
-	 * Run the expression through canonicalize_qual and
-	 * eval_const_expressions. This is not just an optimization, but is
-	 * necessary, because the planner will be comparing it to
-	 * similarly-processed qual clauses, and may fail to detect valid
-	 * matches without this.
+	 * Run the expression through const-simplification and canonicalization.
+	 * This is not just an optimization, but is necessary, because the planner
+	 * will be comparing it to similarly-processed qual clauses, and may fail
+	 * to detect valid matches without this.  This must match the processing
+	 * done to qual clauses in preprocess_expression()!  (We can skip the
+	 * stuff involving subqueries, however, since we don't allow any in
+	 * index predicates.)
 	 */
-	result = (List *) canonicalize_qual((Expr *) result);
-
 	result = (List *) eval_const_expressions((Node *) result);
+
+	result = (List *) canonicalize_qual((Expr *) result);
 
 	/*
 	 * Also mark any coercion format fields as "don't care", so that the
