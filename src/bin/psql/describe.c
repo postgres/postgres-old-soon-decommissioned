@@ -890,6 +890,103 @@ describeTableDetails(const char *name, bool desc)
 }
 
 
+/*
+ * describeUsers()
+ *
+ * \du [user]
+ *
+ * Describes users, possibly based on a simplistic prefix search on the
+ * argument.
+ */
+
+bool
+describeUsers (const char *name)
+{
+	char		buf[384 + REGEXP_CUTOFF];
+	PGresult   *res;
+	printTableOpt myopt = pset.popt.topt;
+	int 		i;
+	char 	   *title;
+    const char *headers[4];
+	char	  **cells	= NULL;
+	unsigned int cols;
+	
+	/*
+	 * All we want to know is the user names and permissions
+	 * for the system.
+	 */
+
+	title = "List of Users";
+
+	cols = 0;
+	headers[cols++] = "User Name";
+	headers[cols++] = "User ID";
+	headers[cols++] = "Attributes";
+	headers[cols] = NULL;
+
+	strcpy(buf,
+		   "SELECT u.usename AS \"User Name\"\n
+                 , u.usesysid AS \"User ID\"\n
+                 , u.usesuper AS \"Super User\"\n
+                 , u.usecreatedb AS \"Create DB\"\n
+              FROM pg_user u\n");
+	if (name)
+	{
+		strcat(buf, "   WHERE u.usename ~ '^");
+		strncat(buf, name, REGEXP_CUTOFF);
+		strcat(buf, "'\n");
+	}
+	strcat(buf, "ORDER BY \"User Name\"\n");
+
+	res = PSQLexec(buf);
+	if (!res)
+		return false;
+
+	cells = xmalloc((PQntuples(res) * cols + 1) * sizeof(*cells));
+	cells[PQntuples(res) * cols] = NULL;
+
+	for (i = 0; i < PQntuples(res); i++)
+	{
+		char createuser[2] = "";
+		char createdb[2]  = "";
+
+		/* Name */
+		cells[i * cols + 0] = PQgetvalue(res, i, 0);
+
+		/* ID */
+		cells[i * cols + 1] = PQgetvalue(res, i, 1);
+
+		/* Super */
+		strcpy(createuser, PQgetvalue(res, i, 2));
+
+		/* Create DB */
+		strcpy(createdb, PQgetvalue(res, i, 3));
+
+		cells[i * cols + 2] = xmalloc((strlen("create user, create DB") * sizeof(char)) + 1);
+		strcpy(cells[i * cols + 2], "");
+		
+ 		if (strcmp(createuser, "t") == 0)
+ 			strcat(cells[i * cols + 2], "create user");
+		
+ 		if (strcmp(createdb, "t") == 0) {
+			if (strcmp(createuser, "t") == 0) 
+				strcat(cells[i * cols + 2], ", ");
+ 			strcat(cells[i * cols + 2], "create DB");
+		}
+	}	   
+
+	printTable(title, headers,
+			   (const char **) cells,
+			   NULL,
+			   "lll", &myopt, pset.queryFout);
+
+	/* clean up */
+	free(cells);
+
+	PQclear(res);
+	return true;
+}
+
 
 /*
  * listTables()

@@ -357,6 +357,9 @@ exec_command(const char *cmd,
 			case 'S':
 				success = listTables(&cmd[1], name, show_verbose);
 				break;
+			case 'u':
+				success = describeUsers(name);
+  				break;
 			default:
 				status = CMD_UNKNOWN;
 		}

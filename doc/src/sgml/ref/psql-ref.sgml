@@ -495,6 +495,16 @@ testdb=>
 
 
       <varlistentry>
+        <term><literal>\du [ <replaceable class="parameter">pattern</replaceable> ]</literal></term>
+        <listitem>
+        <para>
+        Lists all configured users or only those that match <replaceable class="parameter">pattern</replaceable>.
+        </para>
+        </listitem>
+      </varlistentry>
+
+
+      <varlistentry>
         <term><literal>\edit</literal> (or <literal>\e</literal>) [ <replaceable class="parameter">filename</replaceable> ]</term>
 
         <listitem>

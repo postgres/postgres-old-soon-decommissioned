@@ -36,9 +36,9 @@
 // the object is destroyed.
 class PgTransaction : public PgDatabase {
 public:
-  PgTransaction(const char* conninfo);	// use reasonable & environment defaults
+  explicit PgTransaction(const char* conninfo);	// use reasonable & environment defaults
   // connect to the database with given environment and database name
-  // PgTransaction(const PgConnection&);
+  // explicit PgTransaction(const PgConnection&);
   ~PgTransaction();	// close connection and clean up
   
 protected:
@@ -46,9 +46,11 @@ protected:
   ExecStatusType EndTransaction();
   
 protected:
-  PgTransaction() : PgDatabase() {}	// Do not connect
+  PgTransaction() : PgDatabase(), pgCommitted(true) {}	// Do not connect
 
 private:
+  bool pgCommitted;
+
 // We don't support copying of PgTransaction objects,
 // so make copy constructor and assignment op private.
    PgTransaction(const PgTransaction&);

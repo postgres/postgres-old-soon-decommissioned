@@ -21,6 +21,10 @@ extern "C" {
 #include "libpq/libpq-fs.h"
 }
 
+
+using namespace std;
+
+
 // ****************************************************************
 //
 // PgLargeObject Implementation
@@ -142,7 +146,7 @@ int PgLargeObject::LSeek(int offset, int whence)
 }
 
 
-int PgLargeObject::Tell()
+int PgLargeObject::Tell() const
 { 
   return lo_tell(pgConn, pgFd); 
 }
@@ -160,7 +164,7 @@ int PgLargeObject::Export(const char* filename)
 }
 
 
-string PgLargeObject::Status() 
+string PgLargeObject::Status() const
 { 
   return loStatus; 
 }

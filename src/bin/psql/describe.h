@@ -22,6 +22,9 @@ bool		describeTypes(const char *name, bool verbose);
 /* \do */
 bool		describeOperators(const char *name);
 
+/* \du */
+bool 		describeUsers(const char *name);
+
 /* \z (or \dp) */
 bool		permissionsList(const char *name);
 
