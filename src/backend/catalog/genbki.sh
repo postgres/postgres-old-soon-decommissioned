@@ -23,7 +23,7 @@ trap "rm -f /tmp/genbki.tmp" 0 1 2 3 15
 # make sure it is empty
 >/tmp/genbki.tmp
 
-PATH=$PATH:/lib:/usr/ccs/lib		# to find cpp
+PATH=$PATH:/lib:/usr/ccs/lib:/usr/ccs/lbin		# to find cpp
 cpp /dev/null >/dev/null
 if [ "$?" -ne 0 ]
 then	echo "Can't find cpp.  Exiting." 1>&2
