@@ -121,6 +121,8 @@ createdb [ <replaceable class="parameter">options</replaceable> ] <replaceable c
        <para>
 	Specifies the name of the database to be created.  The name must be
 	unique among all <productname>PostgreSQL</productname> databases in this installation.
+        The default is to create a database with the same name as the
+        current system user.
        </para>
       </listitem>
      </varlistentry>

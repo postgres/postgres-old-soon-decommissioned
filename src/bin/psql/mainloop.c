@@ -138,7 +138,7 @@ MainLoop(FILE *source)
 
 
 		/* Setting this will not have effect until next line. */
-		die_on_error = GetVariableBool(pset.vars, "EXIT_ON_ERROR");
+		die_on_error = GetVariableBool(pset.vars, "ON_ERROR_STOP");
 
 		/*
 		 * query_buf holds query already accumulated.  line is the

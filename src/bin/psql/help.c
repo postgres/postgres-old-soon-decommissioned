@@ -54,7 +54,7 @@ usage(void)
 	if (!user)
 	{
 #ifndef WIN32
-		pw = getpwuid(getuid());
+		pw = getpwuid(geteuid());
 		if (pw)
 			user = pw->pw_name;
 		else
