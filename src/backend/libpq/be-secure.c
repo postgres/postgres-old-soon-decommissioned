@@ -124,7 +124,7 @@ static const char *SSLerrmessage(void);
  *	How much data can be sent across a secure connection
  *	(total in both directions) before we require renegotiation.
  */
-#define RENEGOTIATION_LIMIT (64 * 1024)
+#define RENEGOTIATION_LIMIT (512 * 1024 * 1024)
 #define CA_PATH NULL
 static SSL_CTX *SSL_context = NULL;
 #endif
@@ -320,8 +320,11 @@ secure_write(Port *port, void *ptr, size_t len)
 				elog(COMMERROR, "SSL renegotiation failure");
 			if (SSL_do_handshake(port->ssl) <= 0)
 				elog(COMMERROR, "SSL renegotiation failure");
-			port->ssl->state = SSL_ST_ACCEPT;
-			if (SSL_do_handshake(port->ssl) <= 0)
+			if (port->ssl->state != SSL_ST_OK)
+				elog(COMMERROR, "SSL failed to send renegotiation request");
+			port->ssl->state |= SSL_ST_ACCEPT;
+			SSL_do_handshake(port->ssl);
+			if (port->ssl->state != SSL_ST_OK)
 				elog(COMMERROR, "SSL renegotiation failure");
 			port->count = 0;
 		}
@@ -638,6 +641,13 @@ initialize_SSL(void)
 	/* set up empheral DH keys */
 	SSL_CTX_set_tmp_dh_callback(SSL_context, tmp_dh_cb);
 	SSL_CTX_set_options(SSL_context, SSL_OP_SINGLE_DH_USE | SSL_OP_NO_SSLv2);
+
+	/* setup the allowed cipher list */
+	if (SSL_CTX_set_cipher_list(SSL_context, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGH") != 1)
+	{
+		postmaster_error("unable to set the cipher list (no valid ciphers available)");
+		ExitPostmaster(1);
+	}
 
 	/* accept client certificates, but don't require them. */
 	snprintf(fnbuf, sizeof fnbuf, "%s/root.crt", DataDir);
