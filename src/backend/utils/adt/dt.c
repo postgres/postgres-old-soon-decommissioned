@@ -16,6 +16,11 @@
 #include <math.h>
 #include <string.h>
 #include <sys/types.h>
+#ifdef HAVE_VALUES_H
+#include <values.h>
+#else
+#include <limits.h>
+#endif
 
 #include "postgres.h"
 #include "utils/builtins.h"
