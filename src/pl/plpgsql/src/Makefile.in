@@ -43,7 +43,7 @@ endif
 ifeq ($(PORTNAME), bsdi)
   ifdef BSD_SHLIB
     ifeq ($(DLSUFFIX), .so)
-      LDFLAGS_SL	+= -O -shared
+      LDFLAGS_SL	+= -shared
       CFLAGS		+= $(CFLAGS_SL)
     endif
     ifeq ($(DLSUFFIX), .o)
