@@ -46,10 +46,11 @@
  */
 typedef struct StandardChunkHeader
 {
-	MemoryContext context;			/* owning context */
-	Size size;						/* size of data space allocated in chunk */
+	MemoryContext	context;	/* owning context */
+	Size		size;			/* size of data space allocated in chunk */
 #ifdef MEMORY_CONTEXT_CHECKING
-	Size data_size;				/* real data size  (without align) */
+	/* when debugging memory usage, also store actual requested size */
+	Size		requested_size;
 #endif
 } StandardChunkHeader;
 
