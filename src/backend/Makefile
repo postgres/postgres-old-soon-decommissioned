@@ -66,7 +66,7 @@ postgres: $(OBJS) $(DLLINIT) postgres.def libpostgres.a
 	rm -f $@.exp $@.base
 
 postgres.def: $(OBJS)
-	$(DLLTOOL) --export-all --output-def $@ $^
+	$(DLLTOOL) --export-all --output-def $@ $^ $(top_builddir)/src/port/libpgport.a
 
 libpostgres.a: postgres.def
 	$(DLLTOOL) --dllname postgres.exe --def postgres.def --output-lib $@
