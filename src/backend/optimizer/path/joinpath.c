@@ -150,8 +150,30 @@ sort_inner_and_outer(Query *root,
 					 List *mergeclause_list,
 					 JoinType jointype)
 {
+	bool		useallclauses;
 	List	   *all_pathkeys;
 	List	   *i;
+
+	/*
+	 * If we are doing a right or full join, we must use *all* the
+	 * mergeclauses as join clauses, else we will not have a valid plan.
+	 */
+	switch (jointype)
+	{
+		case JOIN_INNER:
+		case JOIN_LEFT:
+			useallclauses = false;
+			break;
+		case JOIN_RIGHT:
+		case JOIN_FULL:
+			useallclauses = true;
+			break;
+		default:
+			elog(ERROR, "sort_inner_and_outer: unexpected join type %d",
+				 (int) jointype);
+			useallclauses = false;	/* keep compiler quiet */
+			break;
+	}
 
 	/*
 	 * Each possible ordering of the available mergejoin clauses will
@@ -211,6 +233,11 @@ sort_inner_and_outer(Query *root,
 														  cur_pathkeys,
 													   mergeclause_list);
 		Assert(cur_mergeclauses != NIL);
+
+		/* Forget it if can't use all the clauses in right/full join */
+		if (useallclauses &&
+			length(cur_mergeclauses) != length(mergeclause_list))
+			continue;
 
 		/*
 		 * Build sort pathkeys for both sides.
