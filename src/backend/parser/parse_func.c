@@ -399,7 +399,7 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 				}
 				else
 				{
-					elog(ERROR,"Unable to select an aggregate function for type %s",
+					elog(ERROR,"Unable to select an aggregate function for type '%s'",
 						 typeidTypeName(basetype));
 				}
 			}
@@ -986,7 +986,7 @@ func_get_detail(char *funcname,
 					if (*true_typeids == NULL)
 					{
 						func_error(NULL, funcname, nargs, oid_array,
-								   "There is more than one function that satisfies the given argument types"
+								   "Unable to identify a function which satisfies the given argument types"
 								   "\n\tYou will have to retype your query using explicit typecasts");
 					}
 

@@ -48,8 +48,8 @@ any_ordering_op(int restype)
 	order_op = oper("<", restype, restype, TRUE);
 	if (!HeapTupleIsValid(order_op))
 	{
-		elog(ERROR, "Unable to find an ordering operator '%s' for type %s."
-			 "\n\tUse an explicit ordering operator or modify the query.",
+		elog(ERROR, "Unable to identify an ordering operator '%s' for type '%s'"
+			 "\n\tUse an explicit ordering operator or modify the query",
 			 "<", typeidTypeName(restype));
 	}
 	order_opid = oprid(order_op);
@@ -513,7 +513,7 @@ oper_inexact(char *op, Oid arg1, Oid arg2, Node **ltree, Node **rtree, bool noWa
 		{
 			if (!noWarnings)
 			{
-				elog(ERROR, "There is more than one possible operator '%s' for types '%s' and '%s'"
+				elog(ERROR, "Unable to identify an operator '%s' for types '%s' and '%s'"
 					 "\n\tYou will have to retype this query using an explicit cast",
 					 op, typeTypeName(typeidType(arg1)), typeTypeName(typeidType(arg2)));
 			}
@@ -544,7 +544,7 @@ oper(char *opname, Oid ltypeId, Oid rtypeId, bool noWarnings)
 	}
 	else if (!noWarnings)
 	{
-		elog(ERROR, "Unable to find binary operator '%s' for types %s and %s",
+		elog(ERROR, "Unable to identify a binary operator '%s' for types %s and %s",
 			 opname, typeTypeName(typeidType(ltypeId)), typeTypeName(typeidType(rtypeId)));
 	}
 
@@ -662,7 +662,7 @@ right_oper(char *op, Oid arg)
 
 			if (!HeapTupleIsValid(tup))
 			{
-				elog(ERROR, "Unable to convert right operator '%s' from type %s",
+				elog(ERROR, "Unable to convert right operator '%s' from type '%s'",
 					 op, typeidTypeName(arg));
 				return NULL;
 			}
@@ -723,7 +723,7 @@ left_oper(char *op, Oid arg)
 
 			if (!HeapTupleIsValid(tup))
 			{
-				elog(ERROR, "Unable to convert left operator '%s' from type %s",
+				elog(ERROR, "Unable to convert left operator '%s' from type '%s'",
 					 op, typeidTypeName(arg));
 				return NULL;
 			}
