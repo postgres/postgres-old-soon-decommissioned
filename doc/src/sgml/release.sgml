@@ -1271,7 +1271,7 @@ $PostgreSQL$
 
     <listitem>
      <para>
-      New start/end of dump markers in pg_dump (Bruce)
+      New start/stop of dump markers in pg_dump (Bruce)
      </para>
     </listitem>
 
