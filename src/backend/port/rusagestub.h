@@ -6,7 +6,7 @@
  *
  * Copyright (c) 1994, Regents of the University of California
  *
- * rusagestub.h,v 1.1.1.1 1994/11/07 05:19:39 andrew Exp
+ * $Id$ 
  *
  *-------------------------------------------------------------------------
  */

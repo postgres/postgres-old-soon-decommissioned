@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #include <math.h>               /* for pow() prototype */
 
 #include <errno.h>

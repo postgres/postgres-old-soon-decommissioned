@@ -1,3 +1,5 @@
+/* $Id$ */
+
 /*
  * strerror - map error number to descriptive string
  *
