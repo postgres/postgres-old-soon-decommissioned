@@ -30,9 +30,9 @@ $Header$
     these aspects.  We only assume some general knowledge about how to
     use computers.  No particular Unix or programming experience is
     required.  This book is mainly intended to give you a hands-on
-    experience with important aspects of the PostgreSQL system.  It
-    makes no attempt to be a complete or thorough treatment of the
-    topics it covers.
+    experience with important aspects of the
+    <productname>PostgreSQL</productname> system.  It makes no attempt
+    to be a complete or thorough treatment of the topics it covers.
    </para>
 
    <para>

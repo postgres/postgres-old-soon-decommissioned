@@ -217,7 +217,7 @@ CREATE DATABASE <replaceable class="PARAMETER">name</replaceable>
    <replaceable class="parameter">name</replaceable>.  In particular,
    by writing <literal>TEMPLATE = template0</>, you can create a virgin
    database containing only the standard objects predefined by your
-   version of <application>PostgreSQL</application>.  This is useful
+   version of <productname>PostgreSQL</productname>.  This is useful
    if you wish to avoid copying
    any installation-local objects that may have been added to
    <literal>template1</>. 

@@ -157,9 +157,9 @@ PostgreSQL documentation
   <para>
    When compiling the preprocessed C code files, the compiler needs to
    be able to find the <application>ECPG</> header files in the
-   PostgreSQL include directory.  Therefore, one might have to use the
-   <option>-I</> option when invoking the compiler (e.g.,
-   <literal>-I/usr/local/pgsql/include</literal>).
+   <productname>PostgreSQL</> include directory.  Therefore, one might
+   have to use the <option>-I</> option when invoking the compiler
+   (e.g., <literal>-I/usr/local/pgsql/include</literal>).
   </para>
 
   <para>

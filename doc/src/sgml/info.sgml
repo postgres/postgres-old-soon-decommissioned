@@ -6,7 +6,8 @@ $Header$
  <title>Overview of Documentation Resources</title>
 
  <para>
-  The PostgreSQL documentation is organized into several books:
+  The <productname>PostgreSQL</> documentation is organized into
+  several books:
 
   <variablelist>
    <varlistentry>
@@ -22,9 +23,10 @@ $Header$
     <term>&cite-user;</term>
     <listitem>
      <para>
-      Documents the SQL query language environment, including data
-      types and functions, as well as user-level performance tuning.
-      Every PostgreSQL user should read this.
+      Documents the <acronym>SQL</acronym> query language environment,
+      including data types and functions, as well as user-level
+      performance tuning.  Every <productname>PostgreSQL</> user
+      should read this.
      </para>
     </listitem>
    </varlistentry>
@@ -34,8 +36,8 @@ $Header$
     <listitem>
      <para>
       Installation and server management information.  Everyone who
-      runs a PostgreSQL server, either for personal use or for other
-      users, needs to read this.
+      runs a <productname>PostgreSQL</> server, either for personal
+      use or for other users, needs to read this.
      </para>
     </listitem>
    </varlistentry>
@@ -55,9 +57,9 @@ $Header$
     <term>&cite-reference;</term>
     <listitem>
      <para>
-      Reference pages for SQL command syntax, and client and server
-      programs.  This book is auxiliary to the User's,
-      Administrator's, and Programmer's Guides.
+      Reference pages for <acronym>SQL</acronym> command syntax, and
+      client and server programs.  This book is auxiliary to the
+      User's, Administrator's, and Programmer's Guides.
      </para>
     </listitem>
    </varlistentry>
