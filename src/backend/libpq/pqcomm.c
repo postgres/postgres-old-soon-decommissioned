@@ -298,7 +298,9 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 		}
 		if (listen_index >= MaxListen)
 		{
-			/* Nothing found. */
+			ereport(LOG,
+					(errmsg("could not bind to all requested addresses: MAXLISTEN (%d) exceeded",
+							MaxListen)));
 			break;
 		}
 
