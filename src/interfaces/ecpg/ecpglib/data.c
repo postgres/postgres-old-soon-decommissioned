@@ -76,10 +76,7 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 	 * and 0 if not
 	 */
 	if (PQgetisnull(results, act_tuple, act_field))
-	{
-		printf("MM NULL\n");
 		value_for_indicator = -1;
-	}
 
 	switch (ind_type)
 	{
