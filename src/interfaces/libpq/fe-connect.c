@@ -2616,7 +2616,7 @@ PQhost(const PGconn *conn)
 {
 	if (!conn)
 		return (char *) NULL;
-	return conn->pghost;
+	return conn->pghost ? conn->pghost : conn->pgunixsocket;
 }
 
 char *
