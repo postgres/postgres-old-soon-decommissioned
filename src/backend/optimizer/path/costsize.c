@@ -321,15 +321,19 @@ cost_hashjoin(Cost outercost,
 	return _disable_cost_;
     if ( !_enable_hashjoin_ ) 
 	temp += _disable_cost_;
-/*    temp += outercost + (nrun + 1) * innercost; */
-    /* 
-       the innercost shouldn't be used it.  Instead the 
-       cost of hashing the innerpath should be used
-       
-       ASSUME innercost is 1 for now -- a horrible hack 
-                                  - jolly
-    */
+    /*
+    temp += outercost + (nrun + 1) * innercost;
+     * 
+     * the innercost shouldn't be used it.  Instead the 
+     * cost of hashing the innerpath should be used
+     *
+     * ASSUME innercost is 1 for now -- a horrible hack 
+     *                             - jolly
     temp += outercost + (nrun + 1);
+     *
+     * But we must add innercost to result.	- vadim 04/24/97
+     */
+    temp += outercost + innercost + (nrun + 1);
 
     temp += _cpu_page_wight_ * (outersize + nrun * innersize);
     Assert(temp >= 0);
