@@ -537,12 +537,13 @@ ExecMergeJoin(MergeJoin *node)
 					if (doFillOuter)
 					{
 						/*
-						 * Need to emit left-join tuples for remaining
-						 * outer tuples.  We set MatchedOuter = true to
-						 * force the ENDINNER state to advance outer.
+						 * Need to emit left-join tuples for all outer tuples,
+						 * including the one we just fetched.  We set
+						 * MatchedOuter = false to force the ENDINNER state
+						 * to emit this tuple before advancing outer.
 						 */
 						mergestate->mj_JoinState = EXEC_MJ_ENDINNER;
-						mergestate->mj_MatchedOuter = true;
+						mergestate->mj_MatchedOuter = false;
 						break;
 					}
 					/* Otherwise we're done. */
