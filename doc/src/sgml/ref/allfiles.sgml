@@ -4,9 +4,6 @@ Postgres documentation
 Complete list of usable sgml source files in this directory.
 -->
 
-<!entity intro-ref          system "intro-ref.sgml">
-<!entity commands           system "commands.sgml">
-
 <!-- these will go into the "operators" reference chapter -->
 <!entity all                system "all.sgml">
 <!entity any                system "any.sgml">
@@ -38,7 +35,7 @@ Complete list of usable sgml source files in this directory.
 <!entity trim               system "trim.sgml">
 <!entity upper              system "upper.sgml">
 
-<!-- these are in the "commands" reference chapter -->
+<!-- SQL commands -->
 <!entity abort              system "abort.sgml">
 <!entity alterGroup         system "alter_group.sgml">
 <!entity alterTable         system "alter_table.sgml">
@@ -107,7 +104,7 @@ Complete list of usable sgml source files in this directory.
 <!entity update             system "update.sgml">
 <!entity vacuum             system "vacuum.sgml">
 
-<!-- these are in the "utilities" reference chapter -->
+<!-- applications and utilities -->
 <!entity createdb           system "createdb.sgml">
 <!entity createlang         system "createlang.sgml">
 <!entity createuser         system "createuser.sgml">
