@@ -292,7 +292,7 @@ tryabsdate(char *fields[], int nf, struct tm *tm, int *tzp)
     (void) ftime(&now);
     *tzp = now.timezone;
 #else /* USE_POSIX_TIME */
-#ifdef HAVE_TZSET
+#if defined(HAVE_TZSET) && defined(HAVE_INT_TIMEZONE)
 	    tzset();
 #ifndef win32
     *tzp = timezone / 60;		/* this is an X/Open-ism */
