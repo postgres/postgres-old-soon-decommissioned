@@ -43,7 +43,7 @@ translate_escape(char *p, int isArray)
 {
     register char c, *q, *s;
 
-#ifdef DEBUG_ESCAPE
+#ifdef TCL_ARRAYS_DEBUG_ESCAPE
     printf("   escape = '%s'\n", p);
 #endif
     /* Address of the first character after the escape sequence */
@@ -125,7 +125,7 @@ translate_escape(char *p, int isArray)
 	*q++ = *s++;
     }
     *q = '\0';
-#ifdef DEBUG_ESCAPE
+#ifdef TCL_ARRAYS_DEBUG_ESCAPE
     printf("   after  = '%s'\n", p);
 #endif
     return p;
@@ -143,13 +143,13 @@ static char *
 tcl_value (char *value)
 {
     int literal, last;
-    register char c, *p, *q, *s;
+    register char *p;
 
     if (!value) {
 	return ((char *) NULL);
     }
 
-#ifdef DEBUG
+#ifdef TCL_ARRAYS_DEBUG
     printf("pq_value  = '%s'\n", value);
 #endif
     last = strlen(value)-1;
@@ -202,7 +202,7 @@ tcl_value (char *value)
 	    }
 	}
     }
-#ifdef DEBUG
+#ifdef TCL_ARRAYS_DEBUG
     printf("tcl_value = '%s'\n\n", value);
 #endif
     return (value);
