@@ -26,12 +26,12 @@ typedef void *Block;
 extern int	NBuffers;
 
 /* in buf_init.c */
-extern Block *BufferBlockPointers;
+extern DLLIMPORT Block *BufferBlockPointers;
 extern long *PrivateRefCount;
 
 /* in localbuf.c */
 extern int	NLocBuffer;
-extern Block *LocalBufferBlockPointers;
+extern DLLIMPORT Block *LocalBufferBlockPointers;
 extern long *LocalRefCount;
 
 /* special pageno for bget */

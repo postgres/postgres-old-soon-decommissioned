@@ -32,6 +32,7 @@ extern bool InError;
 extern CommandDest whereToSendOutput;
 extern bool HostnameLookup;
 extern bool ShowPortNumber;
+extern DLLIMPORT char* debug_query_string;
 
 #ifndef BOOTSTRAP_INCLUDE
 

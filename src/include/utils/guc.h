@@ -125,8 +125,6 @@ extern bool Explain_pretty_print;
 extern bool SQL_inheritance;
 extern bool Australian_timezones;
 
-extern char *debug_query_string;
-
 extern int	log_min_error_statement;
 extern char *log_min_error_statement_str;
 extern const char log_min_error_statement_str_default[];

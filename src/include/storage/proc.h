@@ -73,7 +73,7 @@ struct PGPROC
 /* NOTE: "typedef struct PGPROC PGPROC" appears in storage/lock.h. */
 
 
-extern PGPROC *MyProc;
+extern DLLIMPORT PGPROC *MyProc;
 
 
 /*
