@@ -25,4 +25,5 @@ uninstall:
 	rm -f $(libdir)/plperl$(DLSUFFIX)
 
 clean distclean maintainer-clean:
-	-[ -f Makefile ] && $(MAKE) -f Makefile realclean
+	-[ -f Makefile ] && $(MAKE) -f Makefile clean
+	rm -f Makefile Makefile.old

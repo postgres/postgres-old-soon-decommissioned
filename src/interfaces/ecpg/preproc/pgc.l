@@ -36,6 +36,8 @@
 #undef yywrap
 #endif /* yywrap */
 
+#define YY_NO_UNPUT
+
 extern YYSTYPE yylval;
 
 /*

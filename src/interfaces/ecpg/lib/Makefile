@@ -1,23 +1,22 @@
 #-------------------------------------------------------------------------
 #
-# Makefile
-#    Makefile for ecpg library
+# Makefile for ecpg library
 #
 # Copyright (c) 1994, Regents of the University of California
 #
-# IDENTIFICATION
-#    $Header$
+# $Header$
 #
 #-------------------------------------------------------------------------
+
+subdir = src/interfaces/ecpg/lib
+top_builddir = ../../../..
+include ../../../Makefile.global
 
 NAME= ecpg
 SO_MAJOR_VERSION= 3
 SO_MINOR_VERSION= 1.1
 
-SRCDIR= ../../..
-include $(SRCDIR)/Makefile.global
-
-CFLAGS+= -I../include -I$(LIBPQDIR)
+CFLAGS+= -I$(top_srcdir)/src/interfaces/ecpg/include -I$(LIBPQDIR)
 
 
 OBJS= execute.o typename.o descriptor.o data.o error.o prepare.o memory.o \
@@ -25,18 +24,20 @@ OBJS= execute.o typename.o descriptor.o data.o error.o prepare.o memory.o \
 
 SHLIB_LINK= $(LIBPQ)
 
-# Shared library stuff, also default 'all' target
-include $(SRCDIR)/Makefile.shlib
+all: all-lib
 
+# Shared library stuff
+include $(top_srcdir)/src/Makefile.shlib
 
-.PHONY: install
+install: all installdirs install-lib
 
-install: install-lib $(install-shlib-dep)
+installdirs:
+	$(mkinstalldirs) $(libdir)
 
-.PHONY: clean
+uninstall: uninstall-lib
 
-clean: clean-shlib
-	rm -f lib$(NAME).a $(OBJS)
+clean distclean maintainer-clean: clean-lib
+	rm -f $(OBJS)
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend

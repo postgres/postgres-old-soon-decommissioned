@@ -27,7 +27,7 @@ pg_dump$(X): $(OBJS) $(LIBPQDIR)/libpq.a
 
 .PHONY: submake
 submake:
-	$(MAKE) -C $(LIBPQDIR) libpq.a
+	$(MAKE) -C $(LIBPQDIR) all
 
 install: all installdirs
 	$(INSTALL_PROGRAM) pg_dump$(X) $(bindir)/pg_dump$(X)

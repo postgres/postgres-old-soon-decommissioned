@@ -1,21 +1,20 @@
 #-------------------------------------------------------------------------
 #
-# Makefile
-#    Makefile for libpgtcl library
+# Makefile for libpgtcl library
 #
 # Copyright (c) 1994, Regents of the University of California
 #
-# IDENTIFICATION
-#    $Header$
+# $Header$
 #
 #-------------------------------------------------------------------------
+
+subdir = src/interfaces/libpgtcl
+top_builddir = ../../..
+include ../../Makefile.global
 
 NAME= pgtcl
 SO_MAJOR_VERSION= 2
 SO_MINOR_VERSION= 1
-
-SRCDIR= ../..
-include $(SRCDIR)/Makefile.global
 
 CFLAGS+= -I$(LIBPQDIR)
 
@@ -28,29 +27,25 @@ SHLIB_LINK+= $(LIBPQ)
 # braindead; users of libpq should not need to know what it depends on.)
 SHLIB_LINK+= $(findstring -lcrypt,$(LIBS))
 
-# Shared library stuff, also default 'all' target
-include $(SRCDIR)/Makefile.shlib
+all: all-lib
 
-.PHONY: install beforeinstall-headers install-headers
+# Shared library stuff
+include $(top_srcdir)/src/Makefile.shlib
 
-install: install-headers install-lib $(install-shlib-dep)
+install: all installdirs install-headers install-lib
 
-install-headers: beforeinstall-headers libpgtcl.h
-	$(INSTALL) $(INSTLOPTS) libpgtcl.h $(HEADERDIR)/libpgtcl.h
+.PHONY: install-headers
+install-headers: libpgtcl.h
+	$(INSTALL_DATA) $< $(includedir)/libpgtcl.h
 
-beforeinstall-headers:
-	-@if [ ! -d $(HEADERDIR) ]; then mkdir $(HEADERDIR); fi
+installdirs:
+	$(mkinstalldirs) $(libdir) $(includedir)
 
-Makefile.tcldefs: mkMakefile.tcldefs.sh
-	/bin/sh mkMakefile.tcldefs.sh
+uninstall: uninstall-lib
+	rm -f $(includedir)/libpgtcl.h
 
-Makefile.tkdefs: mkMakefile.tkdefs.sh
-	/bin/sh mkMakefile.tkdefs.sh
-
-.PHONY: clean
-
-clean: clean-shlib
-	rm -f lib$(NAME).a $(OBJS)
+clean distclean maintainer-clean: clean-lib
+	rm -f $(OBJS)
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend

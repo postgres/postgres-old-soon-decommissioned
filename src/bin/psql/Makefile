@@ -63,7 +63,7 @@ endif
 .PHONY: submake
 
 submake:
-	$(MAKE) -C $(LIBPQDIR) libpq.a
+	$(MAKE) -C $(LIBPQDIR) all
 
 install: all installdirs
 	$(INSTALL_PROGRAM) psql$(X) $(bindir)/psql$(X)
