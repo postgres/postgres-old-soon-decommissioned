@@ -55,7 +55,6 @@ extern Oid	MyDatabaseId;
 extern bool TransactionInitWasProcessed;
 
 extern bool IsUnderPostmaster;
-extern bool IsPostmaster;
 
 extern short DebugLvl;
 

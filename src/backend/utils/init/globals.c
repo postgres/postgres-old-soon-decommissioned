@@ -66,7 +66,6 @@ Oid			MyDatabaseId = InvalidOid;
 bool		TransactionInitWasProcessed = false;
 
 bool		IsUnderPostmaster = false;
-bool		IsPostmaster = false;
 
 short		DebugLvl = 0;
 

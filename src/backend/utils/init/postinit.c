@@ -384,8 +384,11 @@ forcesharedmemory:
 
 #endif
 
-	PostgresIpcKey = key;
-	AttachSharedMemoryAndSemaphores(key);
+    if (!IsUnderPostmaster) /* postmaster already did this */
+	{
+		PostgresIpcKey = key;
+		AttachSharedMemoryAndSemaphores(key);
+	}
 }
 
 

@@ -101,7 +101,7 @@ CreateSharedMemoryAndSemaphores(IPCKey key)
 	 * ----------------
 	 */
 	InitProcGlobal(key);
-	on_exitpg(ProcFreeAllSemaphores, 0);
+	on_exitpg(ProcFreeAllSemaphores, NULL);
 
 	CreateSharedInvalidationState(key);
 }

@@ -382,7 +382,7 @@ BootstrapMain(int argc, char *argv[])
 	 *	initialize input fd
 	 * ----------------
 	 */
-	if (IsUnderPostmaster == true && portFd < 0)
+	if (IsUnderPostmaster && portFd < 0)
 	{
 		fputs("backend: failed, no -P option with -postmaster opt.\n", stderr);
 		exitpg(1);

@@ -100,7 +100,7 @@ smgrinit()
 	}
 
 	/* register the shutdown proc */
-	on_exitpg(smgrshutdown, 0);
+	on_exitpg(smgrshutdown, NULL);
 
 	return (SM_SUCCESS);
 }

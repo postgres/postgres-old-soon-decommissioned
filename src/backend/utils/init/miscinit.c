@@ -84,9 +84,6 @@ unsigned char RecodeBackTable[128];
 void
 ExitPostgres(ExitStatus status)
 {
-#ifdef	__SABER__
-	saber_stop();
-#endif
 	exitpg(status);
 }
 
@@ -110,10 +107,6 @@ void
 AbortPostgres()
 {
 	char	   *abortValue = getenv(EnableAbortEnvVarName);
-
-#ifdef	__SABER__
-	saber_stop();
-#endif
 
 	if (PointerIsValid(abortValue) && abortValue[0] != '\0')
 		abort();

@@ -279,9 +279,9 @@ extern int	StreamOpen(char *hostName, short portName, Port *port);
 extern void pq_regoob(void (*fptr) ());
 extern void pq_unregoob(void);
 extern void pq_async_notify(void);
-extern int	StreamServerPort(char *hostName, short portName, int *fdP);
-extern int	StreamConnection(int server_fd, Port *port);
+extern void StreamDoUnlink();
+extern int StreamServerPort(char *hostName, short portName, int *fdP);
+extern int StreamConnection(int server_fd, Port *port);
 extern void StreamClose(int sock);
-extern void StreamDoUnlink(void);
 
 #endif							/* LIBPQ_H */

@@ -22,10 +22,6 @@ ExcAbort(const Exception *excP,
 		 ExcData data,
 		 ExcMessage message)
 {
-#ifdef	__SABER__
-	saber_stop();
-#else
 	/* dump core */
 	abort();
-#endif
 }

@@ -79,7 +79,6 @@ typedef struct MMRelHashEntry
 #define MMNRELATIONS	2
 
 SPINLOCK	MMCacheLock;
-extern bool IsPostmaster;
 extern Oid	MyDatabaseId;
 
 static int *MMCurTop;
@@ -139,7 +138,7 @@ mminit()
 		return (SM_FAIL);
 	}
 
-	if (IsPostmaster)
+	if (IsUnderPostmaster) /* was IsPostmaster bjm */
 	{
 		MemSet(mmcacheblk, 0, mmsize);
 		SpinRelease(MMCacheLock);
