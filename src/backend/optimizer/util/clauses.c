@@ -649,6 +649,14 @@ get_relattval(Node *clause,
 	    *constval = 0;
 	    *flag = (_SELEC_NOT_CONSTANT_);
 	} 
+#ifdef INDEXSCAN_PATCH
+    } else if (is_opclause(clause) && IsA(right,Var) && IsA(left,Param)) {
+	/* ...And here... - vadim 01/22/97 */ 
+	*relid = right->varno;
+	*attno = right->varattno;
+	*constval = 0;
+	*flag = (_SELEC_NOT_CONSTANT_);
+#endif
     } else {
 	/* One or more of the operands are expressions 
 	 * (e.g., oper clauses)
