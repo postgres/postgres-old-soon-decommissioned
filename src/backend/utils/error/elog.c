@@ -657,7 +657,8 @@ write_syslog(int level, const char *line)
 	seq++;
 
 	/* divide into multiple syslog() calls if message is too long */
-	if (len > PG_SYSLOG_LIMIT)
+	/* or if the message contains embedded NewLine(s) '\n' */
+	if (len > PG_SYSLOG_LIMIT || strchr(line,'\n') != NULL )
 	{
 		static char	buf[PG_SYSLOG_LIMIT+1];
 		int chunk_nr = 0;
@@ -667,9 +668,17 @@ write_syslog(int level, const char *line)
 		{
 			int l;
 			int i;
+			/* if we start at a newline, move ahead one char */
+			if (line[0] == '\n')
+			{
+				line++;
+				len--;
+			}
 
 			strncpy(buf, line, PG_SYSLOG_LIMIT);
 			buf[PG_SYSLOG_LIMIT] = '\0';
+			if (strchr(buf,'\n') != NULL) 
+				*strchr(buf,'\n') = '\0';
 
 			l = strlen(buf);
 #ifdef MULTIBYTE
