@@ -294,8 +294,12 @@ index_beginscan(Relation heapRelation,
  *		index_rescan  - (re)start a scan of an index
  *
  * The caller may specify a new set of scankeys (but the number of keys
- * cannot change).	Note that this is also called when first starting
- * an indexscan; see RelationGetIndexScan.
+ * cannot change).  To restart the scan without changing keys, pass NULL
+ * for the key array.
+ *
+ * Note that this is also called when first starting an indexscan;
+ * see RelationGetIndexScan.  Keys *must* be passed in that case,
+ * unless scan->numberOfKeys is zero.
  * ----------------
  */
 void

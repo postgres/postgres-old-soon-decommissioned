@@ -302,10 +302,8 @@ hashrescan(PG_FUNCTION_ARGS)
 {
 	IndexScanDesc scan = (IndexScanDesc) PG_GETARG_POINTER(0);
 	ScanKey		scankey = (ScanKey) PG_GETARG_POINTER(1);
+	HashScanOpaque so = (HashScanOpaque) scan->opaque;
 	ItemPointer iptr;
-	HashScanOpaque so;
-
-	so = (HashScanOpaque) scan->opaque;
 
 	/* we hold a read lock on the current page in the scan */
 	if (ItemPointerIsValid(iptr = &(scan->currentItemData)))
@@ -321,8 +319,8 @@ hashrescan(PG_FUNCTION_ARGS)
 		ItemPointerSetInvalid(iptr);
 	}
 
-	/* reset the scan key */
-	if (scan->numberOfKeys > 0)
+	/* Update scan key, if a new one is given */
+	if (scankey && scan->numberOfKeys > 0)
 	{
 		memmove(scan->keyData,
 				scankey,
