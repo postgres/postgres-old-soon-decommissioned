@@ -66,9 +66,7 @@ from the class are automatically a type and can be used in
 .IR alter_table(l)
 or other 
 .BR create_table(l)
-statements.  See 
-.IR pgintro(1)
-for a further discussion of this point.
+statements.
 .PP
 The optional
 .BR constraint

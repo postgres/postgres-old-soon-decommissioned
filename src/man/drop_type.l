@@ -23,7 +23,6 @@ deleted type.
 drop type box
 .fi
 .SH "SEE ALSO"
-pgintro(1),
 create_type(l),
 drop_operator(l).
 .SH "BUGS"
