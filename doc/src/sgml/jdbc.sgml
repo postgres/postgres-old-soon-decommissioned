@@ -816,7 +816,7 @@ used. Also, only the function's required are entered into this table,
 keeping connection times as fast as possible.
 
           The postgresql.LargeObject class performs a query upon it's 
-startup, and passes the returned ResultSet to the addFunctions() 
+start-up, and passes the returned ResultSet to the addFunctions() 
 method here.
        
           Once this has been done, the LargeObject api refers to the 

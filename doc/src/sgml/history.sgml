@@ -246,7 +246,7 @@ $Header$
    <listitem>
     <para>
      Overall backend code speed has been increased by approximately 20-40%, 
-     and backend startup time has decreased 80% since v6.0 was released.
+     and backend start-up time has decreased 80% since v6.0 was released.
     </para>
    </listitem>
   </itemizedlist>

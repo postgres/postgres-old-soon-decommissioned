@@ -337,7 +337,7 @@ PostgresPollingStatusType *PQconnectPoll(PQconn *conn)
      </listitem>
      <listitem>
       <para>
-      CONNECTION_AUTH_OK: Received authentication; waiting for backend startup.
+      CONNECTION_AUTH_OK: Received authentication; waiting for backend start-up.
       </para>
      </listitem>
      <listitem>

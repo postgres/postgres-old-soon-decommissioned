@@ -1070,7 +1070,7 @@ can't load library 'libodbc.so'\n", 61) = -1 EIO (I/O error)
 
     <para>
      You can add information about your
-     database login and password to the standard Applix startup
+     database login and password to the standard Applix start-up
      macro file. This is an example 
      <filename>~/axhome/macros/login.am</filename> file:
 

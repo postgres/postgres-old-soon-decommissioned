@@ -111,7 +111,7 @@ amcostestimate (Query *root,
      <term>*indexStartupCost</term>
      <listitem>
       <para>
-       Set to cost of index startup processing
+       Set to cost of index start-up processing
       </para>
      </listitem>
     </varlistentry>
@@ -160,9 +160,9 @@ amcostestimate (Query *root,
   </para>
 
   <para>
-   The "startup cost" is the part of the total scan cost that must be expended
+   The "start-up cost" is the part of the total scan cost that must be expended
    before we can begin to fetch the first tuple.  For most indexes this can
-   be taken as zero, but an index type with a high startup cost might want
+   be taken as zero, but an index type with a high start-up cost might want
    to set it nonzero.
   </para>
 
