@@ -757,7 +757,7 @@ transformUnionClause(List *unionClause, List *targetlist)
 					Node	   *expr;
 
 					expr = ((TargetEntry *) lfirst(next_target))->expr;
-					expr = CoerceTargetExpr(NULL, expr, itype, otype);
+					expr = CoerceTargetExpr(NULL, expr, itype, otype, -1);
 					if (expr == NULL)
 					{
 						elog(ERROR, "Unable to transform %s to %s"

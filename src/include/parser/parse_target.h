@@ -23,7 +23,7 @@ extern void updateTargetListEntry(ParseState *pstate, TargetEntry *tle,
 								  char *colname, int attrno,
 								  List *indirection);
 extern Node *CoerceTargetExpr(ParseState *pstate, Node *expr,
-							  Oid type_id, Oid attrtype);
+							  Oid type_id, Oid attrtype, int32 attrtypmod);
 extern List *checkInsertTargets(ParseState *pstate, List *cols,
 								List **attrnos);
 

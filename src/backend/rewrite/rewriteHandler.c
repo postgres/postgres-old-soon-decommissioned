@@ -1696,7 +1696,7 @@ check_targetlists_are_compatible(List *prev_target, List *current_target)
 			Node	   *expr;
 
 			expr = ((TargetEntry *) lfirst(next_target))->expr;
-			expr = CoerceTargetExpr(NULL, expr, itype, otype);
+			expr = CoerceTargetExpr(NULL, expr, itype, otype, -1);
 			if (expr == NULL)
 			{
 				elog(ERROR, "Unable to transform %s to %s"
