@@ -6,7 +6,7 @@
 vacuum \(em vacuum a database
 .SH SYNOPSIS
 .nf
-\fBvacuum [verbose] [\fPtable\fB]\fP
+\fBvacuum [verbose] [analyze] [\fPtable [(column,...)]\fB]\fP
 .fi
 .SH DESCRIPTION
 .BR Vacuum
@@ -19,6 +19,11 @@ tuples and number of pages stored in all classes.  Running
 periodically will increase Postgres's speed in processing user queries.
 .PP
 \fBverbose\fP prints a detailed vacuum activity report for each table.
+.PP
+\fBanalyze\fP also updates column statistics used by the optimizer to
+determine the most efficient way to execute a query.
+The statistics represent the disbursion of the data in each column.
+This information is valuable when several execution paths are possible.
 .PP
 The open database is the one that is vacuumed.  
 .PP
