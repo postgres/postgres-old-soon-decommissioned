@@ -52,7 +52,7 @@ then
     exit 1
 fi
 
-EffectiveUser=`id -n -u 2> /dev/null` || EffectiveUser=`whoami 2> /dev/null`
+EffectiveUser=`id -n -u 2>/dev/null || whoami 2>/dev/null`
 TEMPFILE="/tmp/initdb.$$"
 
 #
