@@ -46,8 +46,8 @@ CREATE [ UNIQUE ] INDEX <replaceable class="parameter">index_name</replaceable> 
 	Causes the system to check for
 	duplicate values in the table when the index is created (if data
 	already exist) and each time data is added. Attempts to
-	insert or update non-duplicate data will generate an
-	error.
+	insert or update data which would result in duplicate entries
+	will generate an error.
        </para>
       </listitem>
      </varlistentry>

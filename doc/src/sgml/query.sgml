@@ -21,8 +21,8 @@ $Header$
    flavor of <acronym>SQL</acronym> and is in no way a complete  tutorial  on
    <acronym>SQL</acronym>.  Numerous  books  have  been  written  on
    <acronym>SQL92</acronym>, including
-   <xref linkend="MELT93" endterm="MELT93-title"> and
-   <xref linkend="DATE97" endterm="DATE97-title">.
+   <xref linkend="MELT93" endterm="MELT93"> and
+   <xref linkend="DATE97" endterm="DATE97">.
    You should be  aware  that  some language features 
    are extensions to the <acronym>ANSI</acronym> standard.
   </para>
