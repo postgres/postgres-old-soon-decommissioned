@@ -261,8 +261,10 @@ StreamServerPort(char *hostName, short portName, int *fdP)
 			   "\tIs another postmaster already running on that port?\n");
 		if (family == AF_UNIX)
 		{
-			snprintf(PQerrormsg + strlen(PQerrormsg), ERROR_MSG_LENGTH,
-					"\tIf not, remove socket node (%s) and retry.\n", sock_path);
+			snprintf(PQerrormsg + strlen(PQerrormsg),
+					 ERROR_MSG_LENGTH - strlen(PQerrormsg),
+					 "\tIf not, remove socket node (%s) and retry.\n",
+					 sock_path);
 		}
 		else
 		{
