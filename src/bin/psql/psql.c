@@ -1686,6 +1686,7 @@ HandleSlashCmds(PsqlSettings *pset,
 			break;
 		case 'd':	/* \d describe database information */
 			if (strncmp(cmd, "da", 2) == 0)
+			{
 								/* aggregates */
 				SendQuery(&success, pset,"\
 					SELECT	a.aggname AS aggname, \
@@ -1695,6 +1696,15 @@ HandleSlashCmds(PsqlSettings *pset,
 					WHERE	a.aggbasetype = t.oid \
 					ORDER BY aggname, typname;",
 						false, false, 0);
+				SendQuery(&success, pset,"\
+					SELECT	a.aggname AS aggname, \
+							'all types' as all_types, \
+							obj_description(a.oid) as description \
+					FROM	pg_aggregate a \
+					WHERE	a.aggbasetype = 0 \
+					ORDER BY aggname;",
+						false, false, 0);
+			}
 			else if (strncmp(cmd, "dd", 2) == 0)
 								/* descriptions */
 				objectDescription(pset, optarg+1, NULL);
