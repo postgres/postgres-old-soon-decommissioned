@@ -188,7 +188,7 @@ typedef struct HeapTupleData
 {
 	uint32		t_len;			/* length of *t_data */
 	ItemPointerData t_self;		/* SelfItemPointer */
-	Oid			tableOid;		/* table the tuple came from */
+	Oid			t_tableOid;		/* table the tuple came from */
 	MemoryContext	t_datamcxt;	/* mcxt in which allocated */
 	HeapTupleHeader	t_data;		/* -> tuple header and data */
 } HeapTupleData;

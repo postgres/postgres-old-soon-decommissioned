@@ -191,7 +191,7 @@ fastgetattr(HeapTuple tup, int attnum, TupleDesc tupleDesc,
 			: \
 			(((attnum) == TableOidAttributeNumber) ? \
 			( \
-				(Datum)((tup)->tableOid) \
+				(Datum)((tup)->t_tableOid) \
 			) \
             : \
 			( \
