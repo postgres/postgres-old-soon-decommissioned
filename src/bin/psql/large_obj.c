@@ -16,9 +16,6 @@
 #include "print.h"
 
 
-#define atooid(x)  ((Oid) strtoul((x), NULL, 10))
-
-
 /*
  * Prepare to do a large-object operation.	We *must* be inside a transaction
  * block for all these operations, so start one if needed.

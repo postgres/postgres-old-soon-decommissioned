@@ -20,6 +20,9 @@
 #define psql_assert(p)
 #endif
 
+#define atooid(x)  ((Oid) strtoul((x), NULL, 10))
+
+
 /*
  * Safer versions of some standard C library functions. If an
  * out-of-memory condition occurs, these functions will bail out
