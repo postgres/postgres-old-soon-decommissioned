@@ -65,7 +65,7 @@ SELECT c.relname, a.attname, t.typname
 
 
 --
--- lists all user-defined base types (not includeing array types)
+-- lists all user-defined base types (not including array types)
 --
 SELECT u.usename, t.typname
   FROM pg_type t, pg_user u

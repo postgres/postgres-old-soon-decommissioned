@@ -19,7 +19,7 @@
  *		'data' is the string.
  *		'len' is the current string length (as returned by 'strlen')
  *		'maxlen' is the size in bytes of 'data', i.e. the maximum string
- *				size (includeing the terminating '\0' char) that we can
+ *				size (including the terminating '\0' char) that we can
  *				currently store in 'data' without having to reallocate
  *				more space.
  */
