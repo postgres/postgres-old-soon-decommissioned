@@ -1019,7 +1019,8 @@ open_client_SSL(PGconn *conn)
 	r = SSL_connect(conn->ssl);
 	if (r <= 0)
 	{
-		switch (SSL_get_error(conn->ssl, r))
+		int err = SSL_get_error(conn->ssl, r);
+		switch (err)
 		{
 			case SSL_ERROR_WANT_READ:
 				return PGRES_POLLING_READING;
@@ -1054,7 +1055,7 @@ open_client_SSL(PGconn *conn)
 
 			default:
 				printfPQExpBuffer(&conn->errorMessage,
-						 libpq_gettext("unrecognized SSL error code\n"));
+						 libpq_gettext("unrecognized SSL error code (%d)\n"), err);
 				close_SSL(conn);
 				return PGRES_POLLING_FAILED;
 		}
