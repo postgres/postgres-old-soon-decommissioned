@@ -97,21 +97,6 @@ COMMENT ON
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>COMMENT</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the comment was successfully changed.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Notes</title>
 
   <para>

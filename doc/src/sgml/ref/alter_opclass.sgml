@@ -67,21 +67,6 @@ ALTER OPERATOR CLASS <replaceable>name</replaceable> USING <replaceable class="p
    </varlistentry>
   </variablelist>
  </refsect1>
-   
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>ALTER OPERATOR CLASS</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the command was successful.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
 
  <refsect1>
   <title>Compatibility</title>

@@ -408,21 +408,6 @@ CREATE TYPE <replaceable class="parameter">typename</replaceable> (
   </variablelist>
  </refsect1>
 
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>CREATE TYPE</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the type was successfully created.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
  <refsect1 id="SQL-CREATETYPE-notes">
   <title>Notes</title>
 

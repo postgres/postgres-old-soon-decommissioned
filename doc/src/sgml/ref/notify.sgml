@@ -134,21 +134,6 @@ NOTIFY <replaceable class="PARAMETER">name</replaceable>
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>NOTIFY</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned when the commmand has executed.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Examples</title>
 
   <para>

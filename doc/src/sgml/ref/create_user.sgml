@@ -168,21 +168,6 @@ where <replaceable class="PARAMETER">option</replaceable> can be:
  </refsect1> 
 
  <refsect1>
-  <title>Diagnostics</title>
-
-   <variablelist>
-    <varlistentry>
-     <term><computeroutput>CREATE USER</computeroutput></term>
-     <listitem>
-      <para>
-       Message returned if the user account was successfully created.
-      </para>
-     </listitem>
-    </varlistentry>
-   </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Notes</title>
 
   <para>

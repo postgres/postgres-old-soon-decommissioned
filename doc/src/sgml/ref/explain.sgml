@@ -120,16 +120,6 @@ ROLLBACK;
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <para>
-   <command>EXPLAIN</command> prints the execution plan of the
-   specified statement from the <productname>PostgreSQL</productname>
-   planner.
-  </para>
- </refsect1>
-
- <refsect1>
   <title>Notes</title>
 
   <para>

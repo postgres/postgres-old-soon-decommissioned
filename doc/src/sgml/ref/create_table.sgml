@@ -564,23 +564,6 @@ and <replaceable class="PARAMETER">table_constraint</replaceable> is:
   </variablelist>
  </refsect1>    
 
-
- <refsect1 id="SQL-CREATETABLE-diagnostics">
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>CREATE TABLE</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the table was successfully created.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
-
  <refsect1 id="SQL-CREATETABLE-notes">
   <title>Notes</title>
 

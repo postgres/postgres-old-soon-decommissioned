@@ -150,21 +150,6 @@ REINDEX { DATABASE | TABLE | INDEX } <replaceable class="PARAMETER">name</replac
    </varlistentry>
   </variablelist>
  </refsect1>
-  
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>REINDEX</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the indexes were successfully recreated.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
 
  <refsect1>
   <title>Examples</title>

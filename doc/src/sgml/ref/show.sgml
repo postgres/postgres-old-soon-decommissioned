@@ -128,22 +128,6 @@ SHOW ALL
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>ERROR: Option '<replaceable>name</replaceable>' is not recognized</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if <replaceable>name</replaceable> does not
-      stand for a known parameter.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Notes</title>
 
   <para>

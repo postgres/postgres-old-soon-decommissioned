@@ -218,21 +218,6 @@ CREATE AGGREGATE <replaceable class="PARAMETER">name</replaceable> (
    written in any order, not just the order illustrated above.
   </para>
  </refsect1>
-
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>CREATE AGGREGATE</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the command completes successfully.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
   
  <refsect1>
   <title>Examples</title>

@@ -77,30 +77,6 @@ DROP RULE <replaceable class="PARAMETER">name</replaceable> ON <replaceable clas
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DROP RULE</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the command was successful.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>ERROR:  Rule "<replaceable class="parameter">name</replaceable>" not found</computeroutput></term>
-    <listitem>
-     <para>
-      Message if the specified rule does not exist.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Examples</title>
 
   <para>

@@ -167,21 +167,6 @@ CREATE [ OR REPLACE ] RULE <replaceable class="parameter">name</replaceable> AS 
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>CREATE RULE</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the rule was successfully created.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Notes</title>
 
   <para>

@@ -99,21 +99,6 @@ CREATE CONSTRAINT TRIGGER <replaceable class="parameter">name</replaceable>
      </varlistentry>
     </variablelist>
  </refsect1>
-
- <refsect1>
-  <title>Diagnostics</title>
-    
-    <variablelist>
-     <varlistentry>
-      <term><computeroutput>CREATE TRIGGER</computeroutput></term>
-      <listitem>
-       <para>
-	Message returned if successful.
-       </para>
-      </listitem>
-     </varlistentry>
-    </variablelist>
- </refsect1>
 </refentry>
 
 <!-- Keep this comment at the end of the file

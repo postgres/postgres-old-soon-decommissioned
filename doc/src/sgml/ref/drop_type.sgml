@@ -67,30 +67,6 @@ DROP TYPE <replaceable class="PARAMETER">typename</replaceable> [, ...] [ CASCAD
    </varlistentry>
   </variablelist>
  </refsect1>
-
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DROP TYPE</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the command was successful.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>ERROR:  RemoveType: type '<replaceable class="parameter">typename</replaceable>' does not exist</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the specified type does not exist.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
   
  <refsect1 id="SQL-DROPTYPE-examples">
   <title>Examples</title>

@@ -74,30 +74,6 @@ DROP SCHEMA <replaceable class="PARAMETER">name</replaceable> [, ...] [ CASCADE 
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DROP SCHEMA</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the schema was successfully dropped.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>ERROR: Schema "<replaceable class="parameter">name</replaceable>" does not exist</computeroutput></term>
-    <listitem>
-     <para>
-      This message is returned if the specified schema does not exist.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Examples</title>
 
   <para>

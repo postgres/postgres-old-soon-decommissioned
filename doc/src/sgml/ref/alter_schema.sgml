@@ -60,21 +60,6 @@ ALTER SCHEMA <replaceable>name</replaceable> RENAME TO <replaceable>newname</rep
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>ALTER SCHEMA</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the alteration was successful.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Compatibility</title>
     
   <para>

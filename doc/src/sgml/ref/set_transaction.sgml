@@ -120,10 +120,10 @@ SET default_transaction_isolation = '<replaceable>value</replaceable>'
   <title>Compatibility</title>
 
   <para>
-   Both commands are defined in the SQL standard.
+   Both commands are defined in the <acronym>SQL</acronym> standard.
    <literal>SERIALIZABLE</literal> is the default transaction
-   isolation level in <acronym>SQL</acronym>; in PostgreSQL it is
-   <literal>READ COMMITED</literal>, but you can change it as
+   isolation level in the standard; in PostgreSQL the default is
+   ordinarily <literal>READ COMMITTED</literal>, but you can change it as
    described above.  <productname>PostgreSQL</productname> does not
    provide the isolation levels <literal>READ UNCOMMITTED</literal>
    and <literal>REPEATABLE READ</literal>. Because of multiversion

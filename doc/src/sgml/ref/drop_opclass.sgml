@@ -77,21 +77,6 @@ DROP OPERATOR CLASS <replaceable class="PARAMETER">name</replaceable> USING <rep
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DROP OPERATOR CLASS</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the command was successful.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Examples</title>
 
   <para>

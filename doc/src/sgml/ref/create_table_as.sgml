@@ -102,18 +102,6 @@ CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } ] TABLE <replaceable>table_name
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <para>
-   Refer to <xref linkend="sql-createtable"
-   endterm="sql-createtable-title">, <xref linkend="sql-select"
-   endterm="sql-select-title">, and <xref linkend="sql-execute"
-   endterm="sql-execute-title"> for a summary of possible output
-   messages.
-  </para>
- </refsect1>
-
- <refsect1>
   <title>Notes</title>
 
   <para>

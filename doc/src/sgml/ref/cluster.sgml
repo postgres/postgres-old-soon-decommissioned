@@ -98,21 +98,6 @@ CLUSTER
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>CLUSTER</computeroutput></term>
-    <listitem>
-     <para>
-      The clustering was done successfully.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Notes</title>
 
    <para>

@@ -189,21 +189,6 @@ SELECT 'The time is ' || CAST(now() AS text);
 
  </refsect1>
 
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>CREATE CAST</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the cast was successfully created.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
  <refsect1 id="sql-createcast-notes">
   <title>Notes</title>
 

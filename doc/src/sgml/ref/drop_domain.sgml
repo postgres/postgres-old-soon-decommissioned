@@ -68,30 +68,6 @@ DROP DOMAIN <replaceable class="PARAMETER">domainname</replaceable> [, ...]  [ C
   </variablelist>
  </refsect1>
 
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DROP DOMAIN</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the command was successful.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>ERROR:  RemoveDomain: type '<replaceable class="parameter">domainname</replaceable>' does not exist</computeroutput></term>
-    <listitem>
-     <para>
-      This message occurs if the specified domain does not exist.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
  <refsect1 id="SQL-DROPDOMAIN-examples">
   <title>Examples</title>
 

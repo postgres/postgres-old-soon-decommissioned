@@ -69,30 +69,6 @@ DROP VIEW <replaceable class="PARAMETER">name</replaceable> [, ...] [ CASCADE | 
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DROP VIEW</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the command was successful.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>ERROR: view <replaceable class="parameter">name</replaceable> does not exist</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the specified view does not exist.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Examples</title>
 
   <para>

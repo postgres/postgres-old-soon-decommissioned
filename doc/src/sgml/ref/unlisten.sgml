@@ -71,29 +71,15 @@ UNLISTEN { <replaceable class="PARAMETER">name</replaceable> | * }
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>UNLISTEN</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned when the command has executed.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Notes</title>
 
   <para>
-   You unlisten something you were not listening for; no warning or error will appear.
+   You may unlisten something you were not listening for; no warning or error
+   will appear.
   </para>
 
   <para>
-   At the end of each session, <command>UNLISTEN *</command> ist
+   At the end of each session, <command>UNLISTEN *</command> is
    automatically executed.
   </para>
  </refsect1>

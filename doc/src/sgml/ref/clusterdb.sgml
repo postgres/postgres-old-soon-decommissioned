@@ -54,6 +54,12 @@ PostgreSQL documentation
    library will apply.
   </para>
 
+  <para>
+   In case of difficulty, see <xref linkend="SQL-CLUSTER"
+   endterm="sql-cluster-title"> and <xref linkend="APP-PSQL"> for
+   discussions of potential problems and error messages.
+  </para>
+
  </refsect1>
 
 
@@ -171,37 +177,6 @@ PostgreSQL documentation
        </para>
       </listitem>
      </varlistentry>
-    </variablelist>
-   </para>
- </refsect1>
-
-
- <refsect1>
-  <title>Diagnostics</title>
-
-   <para>
-    <variablelist>
-     <varlistentry>
-      <term><computeroutput>CLUSTER</computeroutput></term>
-      <listitem>
-       <para>
-        The database was successfully clustered.
-       </para>
-      </listitem>
-     </varlistentry>
-
-     <varlistentry>
-      <term><computeroutput>clusterdb: Cluster failed.</computeroutput></term>
-      <listitem>
-       <para>
-        Something went wrong. <application>clusterdb</application> is only a wrapper
-        script. See <xref linkend="SQL-CLUSTER" endterm="sql-cluster-title">
-        and <xref linkend="APP-PSQL"> for a detailed
-        discussion of error messages and potential problems.
-       </para>
-      </listitem>
-     </varlistentry>
-
     </variablelist>
    </para>
  </refsect1>

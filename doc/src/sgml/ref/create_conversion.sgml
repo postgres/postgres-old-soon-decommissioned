@@ -119,21 +119,6 @@ conv_proc(
    </variablelist>
  </refsect1>
 
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>CREATE CONVERSION</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the conversion was successfully created.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
  <refsect1 id="sql-createconversion-notes">
   <title>Notes</title>
 

@@ -147,21 +147,6 @@ CREATE [ TRUSTED ] [ PROCEDURAL ] LANGUAGE <replaceable class="parameter">langna
    </variablelist>
  </refsect1>
 
- <refsect1 id="sql-createlanguage-diagnostics">
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>CREATE LANGUAGE</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the language was successfully created.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
  <refsect1 id="sql-createlanguage-notes">
   <title>Notes</title>
 

@@ -84,21 +84,6 @@ where <replaceable class="PARAMETER">option</replaceable> can be:
 
     </variablelist>
  </refsect1>
-  
- <refsect1>
-  <title>Diagnostics</title>
-
-    <variablelist>
-     <varlistentry>
-      <term><computeroutput>CREATE GROUP</computeroutput></term>
-      <listitem>
-       <para>
-	Message returned if the group was successfully created.
-       </para>
-      </listitem>
-     </varlistentry>
-    </variablelist>
- </refsect1>
 
  <refsect1>
   <title>Examples</title>

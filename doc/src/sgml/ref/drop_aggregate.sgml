@@ -79,31 +79,6 @@ DROP AGGREGATE <replaceable class="PARAMETER">name</replaceable> ( <replaceable 
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DROP AGGREGATE</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the command was successful.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>ERROR: RemoveAggregate: aggregate '<replaceable class="parameter">name</replaceable>' for type <replaceable class="parameter">type</replaceable> does not exist</computeroutput></term>
-    <listitem>
-     <para>
-      This message is returned if the specified aggregate function
-      does not exist.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Examples</title>
 
   <para>

@@ -133,21 +133,6 @@ where <replaceable class="PARAMETER">lockmode</replaceable> is one of:
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>LOCK TABLE</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the lock was successfully acquired.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Notes</title>
 
    <para>

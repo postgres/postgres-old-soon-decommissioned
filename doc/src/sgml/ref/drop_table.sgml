@@ -79,30 +79,6 @@ DROP TABLE <replaceable class="PARAMETER">name</replaceable> [, ...] [ CASCADE |
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DROP TABLE</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the command completes successfully.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>ERROR: table "<replaceable class="parameter">name</replaceable>" does not exist</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the specified table does not exist.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Examples</title>
 
   <para>

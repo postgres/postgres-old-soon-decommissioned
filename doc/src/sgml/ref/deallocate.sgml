@@ -64,21 +64,6 @@ DEALLOCATE [ PREPARE ] <replaceable class="parameter">plan_name</replaceable>
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DEALLOCATE</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the prepared statement was deallocated successfully.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Compatibility</title>
 
   <para>

@@ -253,21 +253,6 @@ COMMUTATOR = OPERATOR(myschema.===) ,
 </programlisting>  
   </para>
  </refsect1>
-
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>CREATE OPERATOR</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the operator was successfully created.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
   
  <refsect1>
   <title>Notes</title>

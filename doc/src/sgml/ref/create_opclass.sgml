@@ -204,21 +204,6 @@ CREATE OPERATOR CLASS <replaceable class="parameter">name</replaceable> [ DEFAUL
    clauses may appear in any order.
   </para>
  </refsect1>
-
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>CREATE OPERATOR CLASS</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the operator class was successfully created.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
   
  <refsect1>
   <title>Examples</title>

@@ -82,14 +82,6 @@ SET <replaceable class="parameter">parameter</replaceable> TO DEFAULT
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <para>
-   See under the <xref linkend="sql-set" endterm="sql-set-title">.
-  </para>
- </refsect1>
-
- <refsect1>
   <title>Examples</title>
 
   <para>

@@ -281,21 +281,6 @@ where <replaceable class="PARAMETER">direction</replaceable> can be empty or one
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>ERROR:  cursor "<replaceable class="PARAMETER">cursor</replaceable>" does not exist</computeroutput></term>
-    <listitem>
-     <para>
-      There is no cursor with the specified name.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Notes</title>
 
   <para>

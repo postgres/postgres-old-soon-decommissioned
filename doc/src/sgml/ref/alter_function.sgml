@@ -65,21 +65,6 @@ ALTER FUNCTION <replaceable>name</replaceable> ( [ <replaceable class="parameter
    </varlistentry>
   </variablelist>
  </refsect1>
-   
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>ALTER FUNCTION</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the command was successful.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
 
  <refsect1>
   <title>Examples</title>

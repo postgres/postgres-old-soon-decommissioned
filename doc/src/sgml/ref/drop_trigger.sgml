@@ -78,30 +78,6 @@ DROP TRIGGER <replaceable class="PARAMETER">name</replaceable> ON <replaceable c
   </variablelist>
  </refsect1>
 
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DROP TRIGGER</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the trigger was successfully dropped.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>ERROR: DropTrigger: there is no trigger <replaceable class="PARAMETER">name</replaceable> on relation "<replaceable class="parameter">table</replaceable>"</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the specified trigger does not exist.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
  <refsect1 id="SQL-DROPTRIGGER-examples">
   <title>Examples</title>
 

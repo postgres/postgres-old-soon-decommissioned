@@ -47,21 +47,6 @@ DROP GROUP <replaceable class="PARAMETER">name</replaceable>
    </varlistentry>
   </variablelist>
  </refsect1>
-  
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DROP GROUP</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the group was successfully removed.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
 
  <refsect1>
   <title>Examples</title>

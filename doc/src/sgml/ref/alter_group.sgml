@@ -79,21 +79,6 @@ ALTER GROUP <replaceable class="PARAMETER">groupname</replaceable> RENAME TO <re
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>ALTER GROUP</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the alteration was successful.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Examples</title>
   <para>
    Add users to a group:

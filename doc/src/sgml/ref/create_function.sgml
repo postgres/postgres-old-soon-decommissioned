@@ -314,21 +314,6 @@ CREATE [ OR REPLACE ] FUNCTION <replaceable class="parameter">name</replaceable>
 
  </refsect1>
 
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>CREATE FUNCTION</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the function was successfully created.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
  <refsect1 id="sql-createfunction-notes">
   <title>Notes</title>
 

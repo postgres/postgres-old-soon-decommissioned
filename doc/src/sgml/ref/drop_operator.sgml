@@ -89,50 +89,6 @@ DROP OPERATOR <replaceable class="PARAMETER">name</replaceable> ( <replaceable c
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DROP OPERATOR</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the command was successful.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>ERROR:  RemoveOperator: binary operator '<replaceable class="PARAMETER">name</replaceable>' taking '<replaceable class="PARAMETER">lefttype</replaceable>' and '<replaceable class="PARAMETER">righttype</replaceable>' does not exist</computeroutput></term>
-    <listitem>
-     <para>
-      This message is returned if the specified binary operator does not exist.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>ERROR: RemoveOperator: left unary operator '<replaceable class="PARAMETER">name</replaceable>' taking '<replaceable class="PARAMETER">lefttype</replaceable>' does not exist</computeroutput></term>
-    <listitem>
-     <para>
-      This message is returned if the specified left unary operator
-      does not exist.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>ERROR: RemoveOperator: right unary operator '<replaceable class="PARAMETER">name</replaceable>' taking '<replaceable class="PARAMETER">righttype</replaceable>' does not exist</computeroutput></term>
-    <listitem>
-     <para>
-      This message is returned if the specified right unary operator
-      does not exist.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Examples</title>
 
   <para>

@@ -69,32 +69,6 @@ DROP INDEX <replaceable class="PARAMETER">name</replaceable> [, ...] [ CASCADE |
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DROP INDEX</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the command completes successfully.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>ERROR: index "<replaceable class="PARAMETER">name</replaceable>" does not exist</computeroutput></term>
-    <listitem>
-     <para>
-      This message is returned if <replaceable
-      class="PARAMETER">name</replaceable> is not an existing
-      index.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Examples</title>
 
   <para>

@@ -171,21 +171,6 @@ CREATE TRIGGER <replaceable class="PARAMETER">name</replaceable> { BEFORE | AFTE
   </variablelist>
  </refsect1>
 
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>CREATE TRIGGER</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the trigger was successfully created.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
  <refsect1 id="SQL-CREATETRIGGER-notes">
   <title>Notes</title>
 

@@ -49,21 +49,6 @@ TRUNCATE [ TABLE ] <replaceable class="PARAMETER">name</replaceable>
    </varlistentry>
   </variablelist>
  </refsect1>
-  
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>TRUNCATE TABLE</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the table was successfully truncated.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
 
  <refsect1>
   <title>Examples</title>

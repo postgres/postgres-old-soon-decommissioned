@@ -332,30 +332,6 @@ ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-    <variablelist>
-     <varlistentry>
-      <term><computeroutput>ALTER TABLE</computeroutput></term>
-      <listitem>
-       <para>
-	Message returned if successful.
-       </para>
-      </listitem>
-     </varlistentry>
-
-     <varlistentry>
-      <term><computeroutput>ERROR</computeroutput></term>
-      <listitem>
-       <para>
-	Message returned if table or column does not exist.
-       </para>
-      </listitem>
-     </varlistentry>
-    </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Notes</title>
 
    <para>

@@ -79,18 +79,6 @@ SELECT [ ALL | DISTINCT [ ON ( <replaceable class="PARAMETER">expression</replac
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <para>
-   Refer to
-   <xref linkend="sql-createtable" endterm="sql-createtable-title">
-   and
-   <xref linkend="sql-select" endterm="sql-select-title">
-   for a summary of possible output messages.
-  </para>
- </refsect1>
-
- <refsect1>
   <title>Notes</title>
 
   <para>

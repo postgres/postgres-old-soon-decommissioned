@@ -96,30 +96,6 @@ CREATE SCHEMA AUTHORIZATION <replaceable class="parameter">username</replaceable
  </refsect1>
 
  <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>CREATE SCHEMA</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the schema was successfully created.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>ERROR:  namespace "<replaceable class="parameter">schemaname</replaceable>" already exists</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the schema specified already exists.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
- <refsect1>
   <title>Notes</title>
 
   <para>

@@ -80,30 +80,6 @@ DROP FUNCTION <replaceable class="parameter">name</replaceable> ( [ <replaceable
   </variablelist>
  </refsect1>
 
- <refsect1>
-  <title>Diagnostics</title>
-
-  <variablelist>
-   <varlistentry>
-    <term><computeroutput>DROP FUNCTION</computeroutput></term>
-    <listitem>
-     <para>
-      Message returned if the command completes successfully.
-     </para>
-    </listitem>
-   </varlistentry>
-
-   <varlistentry>
-    <term><computeroutput>WARNING:  RemoveFunction: Function <replaceable class="parameter">name</replaceable> (<replaceable class="parameter">types</replaceable>) does not exist</computeroutput></term>
-    <listitem>
-     <para>
-      This message is output if the function specified does not exist.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </refsect1>
-
  <refsect1 id="SQL-DROPFUNCTION-examples">
   <title>Examples</title>
 
