@@ -132,7 +132,7 @@ create_or_index_paths(Query *root,
 					((Path *) pathnode)->path_cost += xfunc_get_path_cost((Path) pathnode);
 				}
 #endif
-				clausenode->selectivity = (Cost) floatVal(selecs);
+				clausenode->selectivity = (Cost) floatVal(lfirst(selecs));
 				t_list = lappend(t_list, pathnode);
 			}
 		}
