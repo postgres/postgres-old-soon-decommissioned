@@ -1041,7 +1041,7 @@ static char *
 CopyReadAttribute(FILE *fp, bool *isnull, char *delim, int *newline, char *null_print)
 {
 	int			c;
-	int			delimc = delim[0];
+	int			delimc = (unsigned char)delim[0];
 
 #ifdef MULTIBYTE
 	int			mblen;
