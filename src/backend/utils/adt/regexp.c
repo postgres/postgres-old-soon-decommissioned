@@ -157,7 +157,7 @@ RE_compile_and_execute(struct varlena * text_re, char *text, int cflags)
 		rev[oldest].cre_s = (char *) NULL;
 		pg95_regerror(regcomp_result, &rev[oldest].cre_re, errMsg,
 					  sizeof(errMsg));
-		elog(ABORT, "regcomp failed with error %s", errMsg);
+		elog(ERROR, "regcomp failed with error %s", errMsg);
 	}
 
 	/* not reached */

@@ -195,7 +195,7 @@ setAttrList(char *bname)
 	rdesc = heap_openr(bname);
 	if (rdesc == NULL)
 	{
-		elog(ABORT, "Unable to expand all -- amopenr failed ");
+		elog(ERROR, "Unable to expand all -- amopenr failed ");
 		return;
 	}
 	maxattrs = RelationGetNumberOfAttributes(rdesc);

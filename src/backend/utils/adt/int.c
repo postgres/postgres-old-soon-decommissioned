@@ -232,9 +232,9 @@ int16
 i4toi2(int32 arg1)
 {
 	if (arg1 < SHRT_MIN)
-		elog(ABORT, "i4toi2: '%d' causes int2 underflow", arg1);
+		elog(ERROR, "i4toi2: '%d' causes int2 underflow", arg1);
 	if (arg1 > SHRT_MAX)
-		elog(ABORT, "i4toi2: '%d' causes int2 overflow", arg1);
+		elog(ERROR, "i4toi2: '%d' causes int2 overflow", arg1);
 
 	return ((int16) arg1);
 }

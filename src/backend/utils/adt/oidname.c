@@ -40,7 +40,7 @@ oidnamein(char *inStr)
 		StrNCpy(oc->name.data, inptr, NAMEDATALEN);
 	}
 	else
-		elog(ABORT, "Bad input data for type oidname");
+		elog(ERROR, "Bad input data for type oidname");
 
 	return oc;
 }
