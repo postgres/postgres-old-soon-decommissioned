@@ -57,7 +57,7 @@ pg_dlclose(void *handle)
 }
 
 char *
-pg_dlerror()
+pg_dlerror(void)
 {
 	static char errmsg[] = "shl_load failed";
 
