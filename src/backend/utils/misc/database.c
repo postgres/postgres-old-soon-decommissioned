@@ -130,6 +130,10 @@ ExpandDatabasePath(char *dbpath)
 		strncpy(buf,dbpath,(cp-dbpath));
 		buf[cp-dbpath] = '\0';
 		path = getenv(buf);
+		/* problem getting environment variable? let calling routine handle it */
+		if (path == NULL)
+			return path;
+
 		sprintf(buf, "%s%cbase%c%s", path, SEP_CHAR, SEP_CHAR, (cp+1));
 	}
 	/* no path delimiter? then add the default path prefixes */
