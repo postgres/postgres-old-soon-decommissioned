@@ -139,6 +139,17 @@ typedef struct CreateStmt {
 } CreateStmt;
 
 /* ----------------------
+ *	Create SEQUENCE Statement
+ * ----------------------
+ */
+
+typedef struct CreateSeqStmt {
+    NodeTag		type;
+    char		*seqname;	/* the relation to create */
+    List		*options;
+} CreateSeqStmt;
+
+/* ----------------------
  *	Create Version Statement
  * ----------------------
  */
@@ -168,6 +179,7 @@ typedef struct DefineStmt {
 typedef struct DestroyStmt {
     NodeTag		type;
     List		*relNames;	/* relations to be dropped */
+    bool		sequence;
 } DestroyStmt;
 
 /* ----------------------

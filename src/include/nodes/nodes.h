@@ -178,6 +178,7 @@ typedef enum NodeTag {
     T_DestroydbStmt,
     T_VacuumStmt,
     T_ExplainStmt,
+    T_CreateSeqStmt,
 
     T_A_Expr = 700,
     T_Attr,
