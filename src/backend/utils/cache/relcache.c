@@ -674,8 +674,8 @@ RelationBuildRuleLock(Relation relation)
 							 Anum_pg_rewrite_ev_qual, pg_rewrite_tupdesc,
 										  &isnull);
 
-		ruleaction = PointerGetDatum(lztextout((lztext *) DatumGetPointer(ruleaction)));
-		rule_evqual_string = PointerGetDatum(lztextout((lztext *) DatumGetPointer(rule_evqual_string)));
+		ruleaction = PointerGetDatum(textout((text *) DatumGetPointer(ruleaction)));
+		rule_evqual_string = PointerGetDatum(textout((text *) DatumGetPointer(rule_evqual_string)));
 
 		rule->actions = (List *) stringToNode(DatumGetPointer(ruleaction));
 		rule->qual = (Node *) stringToNode(DatumGetPointer(rule_evqual_string));

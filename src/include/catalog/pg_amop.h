@@ -349,16 +349,6 @@ DATA(insert OID = 0 (  403 1768 1757 4 btreesel btreenpage ));
 DATA(insert OID = 0 (  403 1768 1756 5 btreesel btreenpage ));
 
 /*
- *	nbtree lztext
- */
-
-DATA(insert OID = 0 (  403 1663 1659 1 btreesel btreenpage ));
-DATA(insert OID = 0 (  403 1663 1660 2 btreesel btreenpage ));
-DATA(insert OID = 0 (  403 1663 1657 3 btreesel btreenpage ));
-DATA(insert OID = 0 (  403 1663 1662 4 btreesel btreenpage ));
-DATA(insert OID = 0 (  403 1663 1661 5 btreesel btreenpage ));
-
-/*
  *	hash table _ops
  */
 
