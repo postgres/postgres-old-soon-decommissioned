@@ -100,9 +100,9 @@ extern int	mmshutdown(void);
 extern int	MMShmemSize(void);
 
 /* smgrtype.c */
-extern char *smgrout(int2 i);
-extern int2 smgrin(char *s);
-extern bool smgreq(int2 a, int2 b);
-extern bool smgrne(int2 a, int2 b);
+extern Datum smgrout(PG_FUNCTION_ARGS);
+extern Datum smgrin(PG_FUNCTION_ARGS);
+extern Datum smgreq(PG_FUNCTION_ARGS);
+extern Datum smgrne(PG_FUNCTION_ARGS);
 
 #endif	 /* SMGR_H */

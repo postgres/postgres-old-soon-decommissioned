@@ -174,7 +174,8 @@ inv_create(int flags)
 	if (!RelationIsValid(indr))
 	{
 		elog(ERROR, "cannot create index for large obj on %s under inversion",
-			 smgrout(DEFAULT_SMGR));
+			 DatumGetCString(DirectFunctionCall1(smgrout,
+							 Int16GetDatum(DEFAULT_SMGR))));
 	}
 
 	retval = (LargeObjectDesc *) palloc(sizeof(LargeObjectDesc));

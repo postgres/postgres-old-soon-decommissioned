@@ -115,9 +115,9 @@ extern void AbortOutOfAnyTransaction(void);
 extern TransactionId DisabledTransactionId;
 
 /* defined in xid.c */
-extern TransactionId xidin(char *representation);
-extern char *xidout(TransactionId transactionId);
-extern bool xideq(TransactionId xid1, TransactionId xid2);
+extern Datum xidin(PG_FUNCTION_ARGS);
+extern Datum xidout(PG_FUNCTION_ARGS);
+extern Datum xideq(PG_FUNCTION_ARGS);
 extern void TransactionIdAdd(TransactionId *xid, int value);
 
 #endif	 /* XACT_H */

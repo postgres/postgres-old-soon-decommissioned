@@ -164,7 +164,7 @@ valid_fp_info(Oid func_id, struct fp_info * fip)
 	Assert(fip != (struct fp_info *) NULL);
 
 	return (OidIsValid(fip->funcid) &&
-			oideq(func_id, fip->funcid) &&
+			func_id == fip->funcid &&
 			TransactionIdIsCurrentTransactionId(fip->xid) &&
 			CommandIdIsCurrentCommandId(fip->cid));
 }

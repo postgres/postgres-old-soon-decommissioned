@@ -858,7 +858,8 @@ plperl_trigger_handler(PG_FUNCTION_ARGS)
 	Tcl_DStringAppendElement(&tcl_cmd, trigdata->tg_trigger->tgname);
 
 	/* The oid of the trigger relation for argument TG_relid */
-	stroid = oidout(trigdata->tg_relation->rd_id);
+	stroid = DatumGetCString(DirectFunctionCall1(oidout,
+							 ObjectIdGetDatum(trigdata->tg_relation->rd_id)));
 	Tcl_DStringAppendElement(&tcl_cmd, stroid);
 	pfree(stroid);
 

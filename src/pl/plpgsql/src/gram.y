@@ -433,7 +433,7 @@ decl_atttypmod	:
 
 decl_atttypmodval	: T_NUMBER
 		    {
-		        $$ = int2in(yytext) + VARHDRSZ;
+		        $$ = pg_atoi(yytext, sizeof(int16), '\0') + VARHDRSZ;
 		    }
 		;
 

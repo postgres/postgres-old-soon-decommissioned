@@ -4048,11 +4048,15 @@ int4_to_char(int32 value, text *fmt)
 	{
 		if (IS_MULTI(&Num))
 		{
-			orgnum = int4out(int4mul(value, (int32) pow((double) 10, (double) Num.multi)));
+			orgnum = DatumGetCString(DirectFunctionCall1(int4out,
+						Int32GetDatum(value * ((int32) pow((double) 10, (double) Num.multi)))));
 			Num.pre += Num.multi;
 		}
 		else
-			orgnum = int4out(value);
+		{
+			orgnum = DatumGetCString(DirectFunctionCall1(int4out,
+									 Int32GetDatum(value)));
+		}
 		len = strlen(orgnum);
 
 		if (*orgnum == '-')

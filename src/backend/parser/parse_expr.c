@@ -892,7 +892,8 @@ parser_typecast_constant(Value *expr, TypeName *typename)
 	{
 		case T_Integer:
 			string_palloced = true;
-			const_string = int4out(expr->val.ival);
+			const_string = DatumGetCString(DirectFunctionCall1(int4out,
+										   Int32GetDatum(expr->val.ival)));
 			break;
 		case T_Float:
 		case T_String:
