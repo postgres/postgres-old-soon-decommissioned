@@ -313,7 +313,8 @@ PostmasterMain(int argc, char *argv[])
 	char	   *userDoption = NULL;
 	int			i;
 
-	progname = get_progname(argv[0]);
+	/* This will call exit() if strdup() fails. */
+	progname = get_progname(argv[0]);	
 
 	MyProcPid = PostmasterPid = getpid();
 
