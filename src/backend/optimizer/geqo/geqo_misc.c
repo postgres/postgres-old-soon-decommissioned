@@ -242,9 +242,9 @@ geqo_print_rel(Query *root, RelOptInfo *rel)
 	foreach(l, rel->pathlist)
 		geqo_print_path(root, lfirst(l), 1);
 
-	printf("\tcheapest startup path:\n");
+	printf("\n\tcheapest startup path:\n");
 	geqo_print_path(root, rel->cheapest_startup_path, 1);
 
-	printf("\tcheapest total path:\n");
+	printf("\n\tcheapest total path:\n");
 	geqo_print_path(root, rel->cheapest_total_path, 1);
 }
