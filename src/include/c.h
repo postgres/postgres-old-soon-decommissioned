@@ -574,11 +574,9 @@ typedef NameData *Name;
  *	This has to be a macro because the main point is to avoid function-call
  *	overhead.
  *
- *	We got the 64 number by testing this against the stock memset() on
- *	BSD/OS 3.0. Larger values were slower.	bjm 1997/09/11
- *
- *	I think the crossover point could be a good deal higher for
- *	most platforms, actually.  tgl 2000-03-19
+ *	We got the MEMSET_LOOP_LIMIT value by testing this against the libc
+ *  memset() on several platforms, some with assembly language versions.
+ *	bjm 2002-10-08
  */
 #define MemSet(start, val, len) \
 	do \
