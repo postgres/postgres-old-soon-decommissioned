@@ -995,7 +995,7 @@ _SPI_execute(const char *src, int tcount, _SPI_plan *plan)
 	 * Parse the request string into a list of raw parse trees.
 	 */
 	initStringInfo(&stri);
-	appendStringInfo(&stri, "%s", src);
+	appendStringInfoString(&stri, src);
 
 	raw_parsetree_list = pg_parse_query(&stri, argtypes, nargs);
 

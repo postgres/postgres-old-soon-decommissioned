@@ -921,7 +921,7 @@ pg_get_constraintdef(PG_FUNCTION_ARGS)
 						 constraintId);
 
 				/* Append the constraint source */
-				appendStringInfo(&buf, DatumGetCString(DirectFunctionCall1(textout, val))); 
+				appendStringInfoString(&buf, DatumGetCString(DirectFunctionCall1(textout, val))); 
 
 				break;
 			}
@@ -2846,7 +2846,7 @@ get_const_expr(Const *constval, deparse_context *context)
 				 */
 				if (strspn(extval, "0123456789+-eE.") == strlen(extval))
 				{
-					appendStringInfo(buf, extval);
+					appendStringInfoString(buf, extval);
 					if (strcspn(extval, "eE.") != strlen(extval))
 						isfloat = true;	/* it looks like a float */
 				}

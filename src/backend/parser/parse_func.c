@@ -1288,8 +1288,8 @@ func_error(const char *caller, List *funcname,
 	for (i = 0; i < nargs; i++)
 	{
 		if (i)
-			appendStringInfo(&argbuf, ", ");
-		appendStringInfo(&argbuf, format_type_be(argtypes[i]));
+			appendStringInfoString(&argbuf, ", ");
+		appendStringInfoString(&argbuf, format_type_be(argtypes[i]));
 	}
 
 	if (caller == NULL)

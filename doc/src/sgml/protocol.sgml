@@ -3863,6 +3863,14 @@ PasswordMessage now has a type byte.
 </para>
 
 <para>
+ErrorResponse and NoticeResponse ('<literal>E</>' and '<literal>N</>')
+messages now contain multiple fields, from which the client code may
+assemble an error message of the desired level of verbosity.  Note that
+individual fields will typically not end with a newline, whereas the single
+string sent in the older protocol always did.
+</para>
+
+<para>
 COPY data is now encapsulated into CopyData and CopyDone messages.  There
 is a well-defined way to recover from errors during COPY.  The special
 <quote><literal>\.</></quote> last line is not needed anymore, and is not sent

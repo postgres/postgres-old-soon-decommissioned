@@ -15,10 +15,8 @@
 #define COPY_H
 
 #include "nodes/parsenodes.h"
-#include "nodes/primnodes.h"
 
-extern int	copy_lineno;
 
-void		DoCopy(const CopyStmt *stmt);
+extern void DoCopy(const CopyStmt *stmt);
 
 #endif   /* COPY_H */

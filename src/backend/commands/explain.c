@@ -320,7 +320,7 @@ explain_outNode(StringInfo str,
 
 	if (plan == NULL)
 	{
-		appendStringInfo(str, "\n");
+		appendStringInfoChar(str, '\n');
 		return;
 	}
 
@@ -476,13 +476,13 @@ explain_outNode(StringInfo str,
 			break;
 	}
 
-	appendStringInfo(str, pname);
+	appendStringInfoString(str, pname);
 	switch (nodeTag(plan))
 	{
 		case T_IndexScan:
 			if (ScanDirectionIsBackward(((IndexScan *) plan)->indxorderdir))
-				appendStringInfo(str, " Backward");
-			appendStringInfo(str, " using ");
+				appendStringInfoString(str, " Backward");
+			appendStringInfoString(str, " using ");
 			i = 0;
 			foreach(l, ((IndexScan *) plan)->indxid)
 			{
@@ -590,7 +590,7 @@ explain_outNode(StringInfo str,
 			appendStringInfo(str, " (never executed)");
 		}
 	}
-	appendStringInfo(str, "\n");
+	appendStringInfoChar(str, '\n');
 
 	/* quals, sort keys, etc */
 	switch (nodeTag(plan))

@@ -153,13 +153,13 @@ TypeNameToString(const TypeName *typename)
 		{
 			if (l != typename->names)
 				appendStringInfoChar(&string, '.');
-			appendStringInfo(&string, "%s", strVal(lfirst(l)));
+			appendStringInfoString(&string, strVal(lfirst(l)));
 		}
 	}
 	else
 	{
 		/* Look up internally-specified type */
-		appendStringInfo(&string, "%s", format_type_be(typename->typeid));
+		appendStringInfoString(&string, format_type_be(typename->typeid));
 	}
 
 	/*
@@ -167,10 +167,10 @@ TypeNameToString(const TypeName *typename)
 	 * LookupTypeName
 	 */
 	if (typename->pct_type)
-		appendStringInfo(&string, "%%TYPE");
+		appendStringInfoString(&string, "%TYPE");
 
 	if (typename->arrayBounds != NIL)
-		appendStringInfo(&string, "[]");
+		appendStringInfoString(&string, "[]");
 
 	return string.data;
 }

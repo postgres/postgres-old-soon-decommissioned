@@ -552,6 +552,11 @@ typedef struct
 	uint32		eval_processed;
 	Oid			eval_lastoid;
 	ExprContext *eval_econtext;
+
+	/* status information for error context reporting */
+	PLpgSQL_function   *err_func;		/* current func */
+	PLpgSQL_stmt	   *err_stmt;		/* current stmt */
+	const char		   *err_text;		/* additional state info */
 }	PLpgSQL_execstate;
 
 

@@ -1280,7 +1280,7 @@ NameListToString(List *names)
 	{
 		if (l != names)
 			appendStringInfoChar(&string, '.');
-		appendStringInfo(&string, "%s", strVal(lfirst(l)));
+		appendStringInfoString(&string, strVal(lfirst(l)));
 	}
 
 	return string.data;
@@ -1305,7 +1305,7 @@ NameListToQuotedString(List *names)
 	{
 		if (l != names)
 			appendStringInfoChar(&string, '.');
-		appendStringInfo(&string, "%s", quote_identifier(strVal(lfirst(l))));
+		appendStringInfoString(&string, quote_identifier(strVal(lfirst(l))));
 	}
 
 	return string.data;
