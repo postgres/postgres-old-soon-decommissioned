@@ -293,7 +293,7 @@ CREATE TABLE product (
    find a type conversion function automatically, the sql function has
    to have the same name as the return type, and overloading is
    unavoidable.  The function name is overloaded by using the second
-   form of the <command>AS</command> clause in the SQL definition
+   form of the <command>AS</command> clause in the SQL definition:
   </para>
   <programlisting>
 CREATE FUNCTION point(complex) RETURNS point

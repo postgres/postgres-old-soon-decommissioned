@@ -204,7 +204,7 @@ SELECT <replaceable class="parameter">columnlist</replaceable> INTO TABLE <repla
    Usage
   </title>
   <para>
-   Cluster the employees relation on the basis of its salary attribute
+   Cluster the employees relation on the basis of its salary attribute:
   </para>
   <programlisting>
 CLUSTER emp_ind ON emp;

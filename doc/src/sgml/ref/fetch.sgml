@@ -355,7 +355,7 @@ COMMIT WORK;
 
    <para>
     <acronym>SQL92</acronym> allows absolute positioning of the cursor for
-    FETCH, and allows placing the results into explicit variables.
+    FETCH, and allows placing the results into explicit variables:
 
     <synopsis>
 FETCH ABSOLUTE <replaceable class="PARAMETER">#</replaceable>

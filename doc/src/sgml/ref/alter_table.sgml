@@ -307,7 +307,7 @@ CREATE TABLE temp AS SELECT did, city FROM distributors;
 DROP TABLE distributors;
 CREATE TABLE distributors (
     did      DECIMAL(3)  DEFAULT 1,
-    name     VARCHAR(40) NOT NULL,
+    name     VARCHAR(40) NOT NULL
 );
 INSERT INTO distributors SELECT * FROM temp;
 DROP TABLE temp;

@@ -157,8 +157,12 @@ UPDATE <replaceable class="parameter">#</replaceable>
    Change word "Drama" with "Dramatic" on column kind:
 
 <programlisting>
-UPDATE films SET kind = 'Dramatic' WHERE kind = 'Drama';
-SELECT * FROM films WHERE kind = 'Dramatic' OR kind = 'Drama';
+UPDATE films 
+SET kind = 'Dramatic' 
+WHERE kind = 'Drama';
+SELECT * 
+FROM films 
+WHERE kind = 'Dramatic' OR kind = 'Drama';
 
  code  |     title     | did | date_prod  |   kind   | len
 -------+---------------+-----+------------+----------+-------

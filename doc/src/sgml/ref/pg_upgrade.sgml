@@ -78,7 +78,7 @@ $ pg_dumpall -s >db.out
 
    <step performance="required">
     <para>
-     Do
+     Do:
      <programlisting>
 $ make install
      </programlisting>

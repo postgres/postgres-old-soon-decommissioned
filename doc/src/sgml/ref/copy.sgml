@@ -407,7 +407,7 @@ ERROR: <replaceable>reason</replaceable>
   </title>
   <para>
 The following example copies a table to standard output,
- using a vertical bar ("|") as the field
+ using a pipe (|) as the field
  delimiter:
   </para>
   <programlisting>
