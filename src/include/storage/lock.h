@@ -169,9 +169,6 @@ typedef struct LOCK
 	int			nGranted;		/* total of granted[] array */
 } LOCK;
 
-#define SHMEM_LOCKTAB_KEYSIZE  sizeof(LOCKTAG)
-#define SHMEM_LOCKTAB_DATASIZE (sizeof(LOCK) - SHMEM_LOCKTAB_KEYSIZE)
-
 #define LOCK_LOCKMETHOD(lock) ((lock).tag.lockmethod)
 
 
@@ -221,9 +218,6 @@ typedef struct HOLDER
 	SHM_QUEUE	lockLink;		/* list link for lock's list of holders */
 	SHM_QUEUE	procLink;		/* list link for process's list of holders */
 } HOLDER;
-
-#define SHMEM_HOLDERTAB_KEYSIZE  sizeof(HOLDERTAG)
-#define SHMEM_HOLDERTAB_DATASIZE (sizeof(HOLDER) - SHMEM_HOLDERTAB_KEYSIZE)
 
 #define HOLDER_LOCKMETHOD(holder) \
 		(((LOCK *) MAKE_PTR((holder).tag.lock))->tag.lockmethod)

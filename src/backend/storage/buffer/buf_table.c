@@ -33,54 +33,42 @@
 
 static HTAB *SharedBufHash;
 
-typedef struct lookup
-{
-	BufferTag	key;
-	Buffer		id;
-} LookupEnt;
 
 /*
  * Initialize shmem hash table for mapping buffers
  */
 void
-InitBufTable()
+InitBufTable(void)
 {
 	HASHCTL		info;
-	int			hash_flags;
 
 	/* assume lock is held */
 
 	/* BufferTag maps to Buffer */
 	info.keysize = sizeof(BufferTag);
-	info.datasize = sizeof(Buffer);
+	info.entrysize = sizeof(BufferLookupEnt);
 	info.hash = tag_hash;
 
-	hash_flags = (HASH_ELEM | HASH_FUNCTION);
-
-
-	SharedBufHash = (HTAB *) ShmemInitHash("Shared Buffer Lookup Table",
-										   NBuffers, NBuffers,
-										   &info, hash_flags);
+	SharedBufHash = ShmemInitHash("Shared Buffer Lookup Table",
+								  NBuffers, NBuffers,
+								  &info,
+								  HASH_ELEM | HASH_FUNCTION);
 
 	if (!SharedBufHash)
-	{
 		elog(FATAL, "couldn't initialize shared buffer pool Hash Tbl");
-		exit(1);
-	}
-
 }
 
 BufferDesc *
 BufTableLookup(BufferTag *tagPtr)
 {
-	LookupEnt  *result;
+	BufferLookupEnt  *result;
 	bool		found;
 
 	if (tagPtr->blockNum == P_NEW)
 		return NULL;
 
-	result = (LookupEnt *)
-		hash_search(SharedBufHash, (char *) tagPtr, HASH_FIND, &found);
+	result = (BufferLookupEnt *)
+		hash_search(SharedBufHash, (void *) tagPtr, HASH_FIND, &found);
 
 	if (!result)
 	{
@@ -98,7 +86,7 @@ BufTableLookup(BufferTag *tagPtr)
 bool
 BufTableDelete(BufferDesc *buf)
 {
-	LookupEnt  *result;
+	BufferLookupEnt  *result;
 	bool		found;
 
 	/*
@@ -110,8 +98,8 @@ BufTableDelete(BufferDesc *buf)
 
 	buf->flags |= BM_DELETED;
 
-	result = (LookupEnt *)
-		hash_search(SharedBufHash, (char *) &(buf->tag), HASH_REMOVE, &found);
+	result = (BufferLookupEnt *)
+		hash_search(SharedBufHash, (void *) &(buf->tag), HASH_REMOVE, &found);
 
 	if (!(result && found))
 	{
@@ -134,15 +122,15 @@ BufTableDelete(BufferDesc *buf)
 bool
 BufTableInsert(BufferDesc *buf)
 {
-	LookupEnt  *result;
+	BufferLookupEnt  *result;
 	bool		found;
 
 	/* cannot insert it twice */
 	Assert(buf->flags & BM_DELETED);
 	buf->flags &= ~(BM_DELETED);
 
-	result = (LookupEnt *)
-		hash_search(SharedBufHash, (char *) &(buf->tag), HASH_ENTER, &found);
+	result = (BufferLookupEnt *)
+		hash_search(SharedBufHash, (void *) &(buf->tag), HASH_ENTER, &found);
 
 	if (!result)
 	{

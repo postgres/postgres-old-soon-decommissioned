@@ -228,9 +228,9 @@ _xl_init_rel_cache(void)
 	_xlrelarr[0].moreRecently = &(_xlrelarr[0]);
 	_xlrelarr[0].lessRecently = &(_xlrelarr[0]);
 
-	memset(&ctl, 0, (int) sizeof(ctl));
+	memset(&ctl, 0, sizeof(ctl));
 	ctl.keysize = sizeof(RelFileNode);
-	ctl.datasize = sizeof(XLogRelDesc *);
+	ctl.entrysize = sizeof(XLogRelCacheEntry);
 	ctl.hash = tag_hash;
 
 	_xlrelcache = hash_create(_XLOG_RELCACHESIZE, &ctl,
@@ -249,7 +249,7 @@ _xl_remove_hash_entry(XLogRelDesc **edata, Datum dummy)
 	rdesc->moreRecently->lessRecently = rdesc->lessRecently;
 
 	hentry = (XLogRelCacheEntry *) hash_search(_xlrelcache,
-				(char *) &(rdesc->reldata.rd_node), HASH_REMOVE, &found);
+				(void *) &(rdesc->reldata.rd_node), HASH_REMOVE, &found);
 
 	if (hentry == NULL)
 		elog(STOP, "_xl_remove_hash_entry: can't delete from cache");
@@ -321,7 +321,7 @@ XLogOpenRelation(bool redo, RmgrId rmid, RelFileNode rnode)
 	bool		found;
 
 	hentry = (XLogRelCacheEntry *)
-		hash_search(_xlrelcache, (char *) &rnode, HASH_FIND, &found);
+		hash_search(_xlrelcache, (void *) &rnode, HASH_FIND, &found);
 
 	if (hentry == NULL)
 		elog(STOP, "XLogOpenRelation: error in cache");
@@ -345,7 +345,7 @@ XLogOpenRelation(bool redo, RmgrId rmid, RelFileNode rnode)
 		res->reldata.rd_node = rnode;
 
 		hentry = (XLogRelCacheEntry *)
-			hash_search(_xlrelcache, (char *) &rnode, HASH_ENTER, &found);
+			hash_search(_xlrelcache, (void *) &rnode, HASH_ENTER, &found);
 
 		if (hentry == NULL)
 			elog(STOP, "XLogOpenRelation: can't insert into cache");

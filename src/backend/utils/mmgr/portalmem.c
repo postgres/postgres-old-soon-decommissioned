@@ -123,7 +123,7 @@ EnablePortalManager(void)
 										 ALLOCSET_DEFAULT_MAXSIZE);
 
 	ctl.keysize = MAX_PORTALNAME_LEN;
-	ctl.datasize = sizeof(Portal);
+	ctl.entrysize = sizeof(PortalHashEnt);
 
 	/*
 	 * use PORTALS_PER_USER, defined in utils/portal.h as a guess of how

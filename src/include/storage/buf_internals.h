@@ -115,6 +115,13 @@ typedef struct sbufdesc
 #define BL_IO_IN_PROGRESS	(1 << 0)	/* unimplemented */
 #define BL_PIN_COUNT_LOCK	(1 << 1)
 
+/* entry for buffer hashtable */
+typedef struct
+{
+	BufferTag	key;
+	Buffer		id;
+} BufferLookupEnt;
+
 /*
  *	mao tracing buffer allocation
  */
