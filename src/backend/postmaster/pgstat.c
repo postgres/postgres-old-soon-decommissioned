@@ -1681,10 +1681,7 @@ pgstat_mainChild(PGSTAT_FORK_ARGS)
 		FD_SET(readPipe, &rfds);
 		FD_SET(pmPipe, &rfds);
 
-		if (readPipe > pmPipe)
-			maxfd = readPipe;
-		else
-			maxfd = pmPipe;
+		maxfd = Max(readPipe, pmPipe);
 
 		/*
 		 * Now wait for something to do.
