@@ -383,8 +383,10 @@ static char *pipe_read_line(char *cmd, char *line, int maxsize)
 			/* So we read some data */
 			retval = line;
 
-			/* We emulate fgets() behaviour. So if there is no newline
-			 * at the end, we add one... */
+			/*
+			 *	We emulate fgets() behaviour. So if there is no newline
+			 *	at the end, we add one...
+			 */
 			if (line[strlen(line)-1] != '\n')
 				strcat(line,"\n");
 		}
