@@ -2,7 +2,7 @@
  * dbsize.c
  * object size functions
  *
- * Copyright (c) 2002-2004, PostgreSQL Global Development Group
+ * Copyright (c) 2002-2005, PostgreSQL Global Development Group
  *
  * IDENTIFICATION
  *	  $PostgreSQL$
