@@ -143,6 +143,7 @@ extern long MyCancelKey;
 
 extern char OutputFileName[];
 extern char my_exec_path[];
+extern char postgres_exec_path[];
 extern char pkglib_path[];
 
 /*

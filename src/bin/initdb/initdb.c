@@ -1957,6 +1957,8 @@ main(int argc, char *argv[])
 		get_share_path(backend_exec, share_path);
 	}
 
+	canonicalize_path(share_path);
+
 	if ((short_version = get_short_version()) == NULL)
 	{
 		fprintf(stderr, _("%s: could not determine valid short version string\n"), progname);

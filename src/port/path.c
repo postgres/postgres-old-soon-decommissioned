@@ -234,7 +234,7 @@ relative_path(const char *path1, const char *path2)
 		(!isalpha(*path2) || !path2[1] == ':'))
 		return false;
 	if ((!isalpha(*path1) || !path1[1] == ':') &&
-		(isalpha(*path2) && path2[1] == ':')
+		(isalpha(*path2) && path2[1] == ':'))
 		return false;
 	if (isalpha(*path1) && path1[1] == ':' &&
 		isalpha(*path2) && path2[1] == ':')
