@@ -961,7 +961,7 @@ inString(char c, char *s)
  * Reads input from fp until an end of line is seen.
  */
 
-void
+static void
 CopyReadNewline(FILE *fp, int *newline)
 {
 	if (!*newline)

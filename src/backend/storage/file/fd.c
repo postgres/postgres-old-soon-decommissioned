@@ -175,7 +175,7 @@ pg_fsync(int fd)
 
 #define fsync pg_fsync
 
-long
+static long
 pg_nofile(void)
 {
 	static long no_files = 0;
