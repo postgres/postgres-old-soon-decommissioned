@@ -39,8 +39,8 @@ extern List *make_ands_implicit(Expr *clause);
 
 extern List *pull_constant_clauses(List *quals, List **constantQual);
 extern List *pull_agg_clause(Node *clause);
-extern bool check_subplans_for_ungrouped_vars(Node *clause,
-											  List *groupClause,
+extern void check_subplans_for_ungrouped_vars(Node *clause,
+											  Query *query,
 											  List *targetList);
 
 extern void clause_get_relids_vars(Node *clause, Relids *relids, List **vars);

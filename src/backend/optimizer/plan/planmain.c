@@ -100,10 +100,7 @@ query_planner(Query *root,
 			 * Note we do NOT do this for subplans in WHERE; it's legal
 			 * there because WHERE is evaluated pre-GROUP.
 			 */
-			if (check_subplans_for_ungrouped_vars((Node *) tlist,
-												  root->groupClause,
-												  tlist))
-				elog(ERROR, "Sub-SELECT must use only GROUPed attributes from outer SELECT");
+			check_subplans_for_ungrouped_vars((Node *) tlist, root, tlist);
 		}
 	}
 
