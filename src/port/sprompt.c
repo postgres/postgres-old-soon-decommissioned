@@ -26,6 +26,7 @@
 #else
 #ifdef WIN32
 #include <windows.h>
+#undef ERROR
 #endif
 #endif
 

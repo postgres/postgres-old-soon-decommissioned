@@ -14,12 +14,16 @@
 
 #include "postgres.h"
 
+#include <sys/types.h>
+#include <errno.h>
+#if defined(WIN32) && defined(_MSC_VER)
+#undef ERROR
+#else
+#include <pwd.h>
+#endif
 #if defined(USE_THREADS)
 #include <pthread.h>
 #endif
-#include <sys/types.h>
-#include <pwd.h>
-#include <errno.h>
 
 /*
  *	Threading sometimes requires specially-named versions of functions
