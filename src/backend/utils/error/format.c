@@ -29,12 +29,8 @@ char *
 form(const char *fmt,...)
 {
 	va_list		args;
-
 	va_start(args, fmt);
-
-	vsprintf(FormBuf, fmt, args);
-
+	vsnprintf(FormBuf, FormMaxSize - 1, fmt, args);
 	va_end(args);
-
 	return FormBuf;
 }

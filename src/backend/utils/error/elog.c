@@ -133,7 +133,7 @@ elog(int lev, const char *fmt,...)
 		else
 			*bp++ = *cp;
 	*bp = '\0';
-	vsprintf(line, buf, ap);
+	vsnprintf(line, ELOG_MAXLEN - 1, buf, ap);
 	va_end(ap);
 
 #ifdef USE_SYSLOG
