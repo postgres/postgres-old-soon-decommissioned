@@ -9,7 +9,6 @@
  *
  * $Id$
  *
- *
  * Note:
  *		Needs more accessor/assignment routines.
  *-------------------------------------------------------------------------
@@ -19,6 +18,7 @@
 
 #include "access/attnum.h"
 #include "fmgr.h"
+
 
 typedef struct ScanKeyData
 {
@@ -36,11 +36,6 @@ typedef ScanKeyData *ScanKey;
 #define SK_UNARY		0x2		/* unary function (currently unsupported) */
 #define SK_NEGATE		0x4		/* negate function result */
 #define SK_COMMUTE		0x8		/* commute function (not fully supported) */
-
-
-#define ScanUnmarked			0x01
-#define ScanUncheckedPrevious	0x02
-#define ScanUncheckedNext		0x04
 
 
 /*

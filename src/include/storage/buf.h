@@ -14,22 +14,21 @@
 #ifndef BUF_H
 #define BUF_H
 
-#define InvalidBuffer	(0)
-#define UnknownBuffer	(-99999)
+/*
+ * Buffer identifiers.
+ *
+ * Zero is invalid, positive is the index of a shared buffer (1..NBuffers),
+ * negative is the index of a local buffer (-1 .. -NLocBuffer).
+ */
+typedef int Buffer;
 
-typedef long Buffer;
+#define InvalidBuffer	0
 
 /*
  * BufferIsInvalid
  *		True iff the buffer is invalid.
  */
 #define BufferIsInvalid(buffer) ((buffer) == InvalidBuffer)
-
-/*
- * BufferIsUnknown
- *		True iff the buffer is unknown.
- */
-#define BufferIsUnknown(buffer) ((buffer) == UnknownBuffer)
 
 /*
  * BufferIsLocal

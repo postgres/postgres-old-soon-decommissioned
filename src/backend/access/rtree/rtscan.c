@@ -85,13 +85,8 @@ rtrescan(PG_FUNCTION_ARGS)
 	/*
 	 * Clear all the pointers.
 	 */
-
-	ItemPointerSetInvalid(&s->previousItemData);
 	ItemPointerSetInvalid(&s->currentItemData);
-	ItemPointerSetInvalid(&s->nextItemData);
-	ItemPointerSetInvalid(&s->previousMarkData);
 	ItemPointerSetInvalid(&s->currentMarkData);
-	ItemPointerSetInvalid(&s->nextMarkData);
 
 	/*
 	 * Set flags.

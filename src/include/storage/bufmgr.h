@@ -75,10 +75,6 @@ extern long *LocalRefCount;
  *		True iff the given buffer number is valid (either as a shared
  *		or local buffer).
  *
- * Note:
- *		BufferIsValid(InvalidBuffer) is False.
- *		BufferIsValid(UnknownBuffer) is False.
- *
  * Note: For a long time this was defined the same as BufferIsPinned,
  * that is it would say False if you didn't hold a pin on the buffer.
  * I believe this was bogus and served only to mask logic errors.
@@ -158,8 +154,6 @@ extern long *LocalRefCount;
 /*
  * prototypes for functions in bufmgr.c
  */
-extern Buffer RelationGetBufferWithBuffer(Relation relation,
-							BlockNumber blockNumber, Buffer buffer);
 extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
 extern int	WriteBuffer(Buffer buffer);
 extern int	WriteNoReleaseBuffer(Buffer buffer);
