@@ -117,6 +117,7 @@ typedef struct _tableInfo
 	int			ntrig;			/* # of triggers */
 	TrigInfo	*triggers;		/* Triggers on the table */
 	char	   *primary_key;	/* PRIMARY KEY of the table, if any */
+	char	   *primary_key_name;	/* PRIMARY KEY name, if any */
 } TableInfo;
 
 typedef struct _inhInfo
