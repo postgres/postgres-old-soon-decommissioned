@@ -1,4 +1,4 @@
-#! /bin/sh -x
+#! /bin/sh
 # $Header$
 
 me=`basename $0`
