@@ -169,7 +169,7 @@ ECPGdeallocate_all(int lineno)
 
 /* return the prepared statement */
 char *
-ECPGprepared_statement(char *name)
+ECPGprepared_statement(const char *name)
 {
 	struct prepared_statement *this;
 
