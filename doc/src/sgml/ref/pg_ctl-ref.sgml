@@ -287,7 +287,7 @@ $ pg_ctl -w start
     try:
 
     <programlisting>
-$ pg_ctl -p /usr/local/pgsq/bin/postmaster start
+$ pg_ctl -p /usr/local/pgsql/bin/postmaster start
     </programlisting>
    </para>
 
