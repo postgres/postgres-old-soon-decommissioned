@@ -1425,7 +1425,7 @@ ReadOffset(ArchiveHandle *AH, off_t *o)
 	for (off = 0; off < AH->offSize; off++)
 	{
 		if (off < sizeof(off_t))
-			*o |= ((*AH->ReadBytePtr) (AH)) << (off * 8);
+			*o |= ((off_t) ((*AH->ReadBytePtr) (AH))) << (off * 8);
 		else
 		{
 			if ((*AH->ReadBytePtr) (AH) != 0)
