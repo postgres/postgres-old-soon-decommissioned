@@ -48,7 +48,7 @@ endif
 
 # Enable draft mode during development
 ifneq (,$(findstring devel, $(VERSION)))
-JADEFLAGS += -V draft-mode
+override JADEFLAGS += -V draft-mode
 endif
 
 
