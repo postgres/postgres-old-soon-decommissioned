@@ -173,7 +173,7 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 															  a->lexpr,
 															  precedence);
 
-							result = ParseColumnOrFunc(pstate,
+							result = ParseFuncOrColumn(pstate,
 													   "nullvalue",
 													   makeList1(lexpr),
 													   false, false,
@@ -186,7 +186,7 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 															  a->lexpr,
 															  precedence);
 
-							result = ParseColumnOrFunc(pstate,
+							result = ParseFuncOrColumn(pstate,
 													   "nonnullvalue",
 													   makeList1(lexpr),
 													   false, false,
@@ -273,7 +273,7 @@ transformExpr(ParseState *pstate, Node *expr, int precedence)
 					lfirst(args) = transformExpr(pstate,
 												 (Node *) lfirst(args),
 												 precedence);
-				result = ParseColumnOrFunc(pstate,
+				result = ParseFuncOrColumn(pstate,
 										   fn->funcname,
 										   fn->args,
 										   fn->agg_star,
