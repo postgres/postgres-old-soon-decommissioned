@@ -25,7 +25,7 @@ pg_id: $(OBJS) $(LIBPQDIR)/libpq.a
 $(LIBPQDIR)/libpq.a:
 	$(MAKE) -C $(LIBPQDIR) libpq.a
 
-install:
+install: pg_id
 	$(INSTALL) $(INSTL_EXE_OPTS) pg_id $(DESTDIR)$(BINDIR)/pg_id
 
 depend dep:
