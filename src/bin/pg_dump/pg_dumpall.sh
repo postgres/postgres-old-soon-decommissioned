@@ -11,9 +11,9 @@
 CMDNAME=`basename $0`
 
 # substituted at build
-VERSION='__VERSION__'
-MULTIBYTE='__MULTIBYTE__'
-bindir='__bindir__'
+VERSION='@VERSION@'
+MULTIBYTE='@MULTIBYTE@'
+bindir='@bindir@'
 
 #
 # Find out where we're located

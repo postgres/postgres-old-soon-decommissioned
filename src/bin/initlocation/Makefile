@@ -16,6 +16,7 @@ all: initlocation
 
 initlocation: initlocation.sh
 	cp $< $@
+	chmod a+x $@
 
 install: all installdirs
 	$(INSTALL_SCRIPT) initlocation $(bindir)/initlocation

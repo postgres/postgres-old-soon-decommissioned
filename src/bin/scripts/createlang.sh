@@ -160,7 +160,7 @@ fi
 # Check that we have PGLIB
 # ----------
 if [ -z "$PGLIB" ]; then
-	PGLIB='__libdir__'
+	PGLIB='@libdir@'
 fi
 
 # ----------
@@ -206,13 +206,14 @@ case "$langname" in
         ;;
 esac
 
+DLSUFFIX='@DLSUFFIX@'
 
 # ----------
 # Check that the shared object for the call handler is installed
 # in PGLIB
 # ----------
-if [ ! -f $PGLIB/${object}__DLSUFFIX__ ]; then
-	echo "$CMDNAME: cannot find the file $PGLIB/${langname}__DLSUFFIX__"
+if [ ! -f "$PGLIB/$object$DLSUFFIX" ]; then
+	echo "$CMDNAME: cannot find the file \`$PGLIB/$langname$DLSUFFIX'"
         echo ""
 	echo "This file contains the call handler for $lancomp. By default,"
         echo "only PL/pgSQL is built and installed; other languages must be"
@@ -251,7 +252,7 @@ fi
 # ----------
 # Create the call handler and the language
 # ----------
-$PSQL "CREATE FUNCTION $handler () RETURNS OPAQUE AS '$PGLIB/${object}__DLSUFFIX__' LANGUAGE 'newC'"
+$PSQL "CREATE FUNCTION $handler () RETURNS OPAQUE AS '$PGLIB/${object}$DLSUFFIX' LANGUAGE 'newC'"
 if [ $? -ne 0 ]; then
 	echo "$CMDNAME: language installation failed"
 	exit 1

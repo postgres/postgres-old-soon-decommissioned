@@ -16,6 +16,7 @@ all: ipcclean
 
 ipcclean: ipcclean.sh
 	cp $< $@
+	chmod a+x $@
 
 install: all installdirs
 	$(INSTALL_SCRIPT) ipcclean $(bindir)/ipcclean

@@ -30,10 +30,11 @@ pg_restore: pg_restore.o $(OBJS) $(libpq_builddir)/libpq.a
 	$(MAKE) -C ../../utils strdup.o
 
 pg_dumpall: pg_dumpall.sh
-	sed -e 's:__VERSION__:$(VERSION):g' \
-	    -e 's:__MULTIBYTE__:$(MULTIBYTE):g' \
-	    -e 's:__bindir__:$(bindir):g' \
-	  < $< > $@
+	sed -e 's,@VERSION@,$(VERSION),g' \
+	    -e 's,@MULTIBYTE@,$(MULTIBYTE),g' \
+	    -e 's,@bindir@,$(bindir),g' \
+	  $< >$@
+	chmod a+x $@
 
 .PHONY: submake
 submake:
