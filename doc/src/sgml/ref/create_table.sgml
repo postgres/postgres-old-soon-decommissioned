@@ -247,9 +247,7 @@ and <replaceable class="PARAMETER">table_constraint</replaceable> is:
     <term><literal>NOT NULL</></term>
     <listitem>
      <para>
-      The column is not allowed to contain NULL values.  This is
-      equivalent to the column constraint <literal>CHECK (<replaceable
-      class="PARAMETER">column</replaceable> NOT NULL)</literal>.
+      The column is not allowed to contain NULL values.
      </para>
     </listitem>
    </varlistentry>
