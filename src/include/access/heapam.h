@@ -96,11 +96,11 @@ typedef HeapAccessStatisticsData *HeapAccessStatistics;
 #define heap_getattr(tup, b, attnum, tupleDesc, isnull) \
     (AssertMacro((tup) != NULL) ? \
 	((attnum) > (int) (tup)->t_natts) ? \
-	    (((isnull) ? (*(isnull) = true) : NULL), (char *) NULL) : \
+	    (((isnull) ? (*(isnull) = true) : (char *)NULL), (char *)NULL) : \
 	((attnum) > 0) ? \
 	    fastgetattr((tup), (attnum), (tupleDesc), (isnull)) : \
-	(((isnull) ? (*(isnull) = false) : NULL), heap_getsysattr((tup), (b), (attnum))) : \
-    (char *) NULL)
+	(((isnull) ? (*(isnull) = false) : (char *)NULL), heap_getsysattr((tup), (b), (attnum))) : \
+    (char *)NULL)
 
 extern HeapAccessStatistics heap_access_stats;	/* in stats.c */
 
