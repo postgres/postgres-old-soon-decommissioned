@@ -4,6 +4,7 @@
  *	add the necessary bits where the comments indicate.
  *
  *	$Id$
+ *	Jon Postel RIP 16 Oct 1998
  */
 
 #include <sys/types.h>
