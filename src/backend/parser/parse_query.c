@@ -699,7 +699,6 @@ handleTargetColname(ParseState *pstate, char **resname,
     if (pstate->p_is_insert) {
         if (pstate->p_insert_columns != NIL ) {
             Ident *id = lfirst(pstate->p_insert_columns);
-            Assert(lfirst(pstate->p_insert_columns) != NIL);
 	    *resname = id->name;
             pstate->p_insert_columns = lnext(pstate->p_insert_columns);
         }
@@ -732,15 +731,11 @@ checkTargetTypes(ParseState *pstate, char *target_colname,
 	refname = rte->refname;
     }
 
-    Assert(refname != NULL && rte != NULL);
-
-    Assert(rte != NULL);
 /*
     if (pstate->p_is_insert && rte == pstate->p_target_rangetblentry)
     	elog(WARN, "%s not available in this context", colname);
 */
     rd = heap_open(rte->relid);
-    Assert(RelationIsValid(rd));
 
     resdomno_id = varattno(rd,colname);
     attrtype_id = att_typeid(rd,resdomno_id);
