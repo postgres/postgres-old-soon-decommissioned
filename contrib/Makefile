@@ -19,6 +19,7 @@ WANTED_DIRS = \
 		noupdate	\
 		oid2name	\
 		pg_dumplo	\
+		pg_logger	\
 		pgbench		\
 		pgcrypto	\
 		rserv		\
