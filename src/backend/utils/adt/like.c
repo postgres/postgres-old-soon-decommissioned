@@ -133,7 +133,7 @@ textnlike(struct varlena * s, struct varlena * p)
 
 #define LIKE_TRUE						1
 #define LIKE_FALSE						0
-#define LIKE_ABORT						-1
+#define LIKE_ABORT						(-1)
 
 /*--------------------
  *	Match text and p, return LIKE_TRUE, LIKE_FALSE, or LIKE_ABORT.
