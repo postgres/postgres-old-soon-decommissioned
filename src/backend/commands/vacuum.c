@@ -107,6 +107,9 @@ void CommonSpecialPortalOpen(void)
 {
 	char	   *pname;
 
+
+	if (CommonSpecialPortalInUse)
+		elog(ERROR, "CommonSpecialPortal is in use");
 	/*
 	 * Create a portal for safe memory across transactions. We need to
 	 * palloc the name space for it because our hash function expects the
