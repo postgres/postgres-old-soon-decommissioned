@@ -993,10 +993,6 @@ extern int	vsnprintf(char *str, size_t count, const char *fmt, va_list args);
 #include <regex/utils.h>
 #endif
 
-#ifdef HAVE_SYS_NERR
-extern int sys_nerr;
-#endif
-
 /* ----------------
  *		end of c.h
  * ----------------
