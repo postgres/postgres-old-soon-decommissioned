@@ -16,6 +16,13 @@ OBJS= pg_encoding.o
 
 all: submake pg_encoding
 
+ifdef STRTOUL
+OBJS+=$(top_builddir)/src/backend/port/strtoul.o
+
+$(top_builddir)/src/backend/port/strtoul.o:
+	$(MAKE) -C $(top_builddir)/src/backend/port strtoul.o
+endif
+
 pg_encoding: $(OBJS)
 	$(CC) $(CFLAGS) $^ $(libpq) $(LDFLAGS) $(LIBS) -o $@
 
