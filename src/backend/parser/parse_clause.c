@@ -62,8 +62,13 @@ makeRangeTable(ParseState *pstate, char *relname, List *frmList)
 	else
 		rte = refnameRangeTableEntry(pstate, relname);
 
+	/* This could only happen for multi-action rules */
+	if (pstate->p_target_relation != NULL)
+	{
+		heap_close(pstate->p_target_relation);
+	}
+
 	pstate->p_target_rangetblentry = rte;
-	Assert(pstate->p_target_relation == NULL);
 	pstate->p_target_relation = heap_open(rte->relid);
 	/* will close relation later */
 }
