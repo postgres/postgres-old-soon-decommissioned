@@ -30,10 +30,18 @@ while( <FILE> ){
 		next;
 	}
 	( $u, $c, $rest ) = split;
-	$utf = hex($u);
+	$ucs = hex($u);
 	$code = hex($c);
-	$count++;
-	$array{ $utf } = ($code);
+	if( $code >= 0x80 && $ucs >= 0x0080 ){
+		$utf = &ucs2utf($ucs);
+		if( $array{ $utf } ne "" ){
+			printf STDERR "Warning: duplicate unicode: %04x\n",$ucs;
+			next;
+		}
+		$count++;
+
+		$array{ $utf } = $code;
+	}
 }
 close( FILE );
 
@@ -70,11 +78,19 @@ while( <FILE> ){
 	if( /^#/ ){
 		next;
 	}
-	( $u, $c, $rest ) = split;
-	$utf = hex($u);
+	( $c, $u, $rest ) = split;
+	$ucs = hex($u);
 	$code = hex($c);
-	$count++;
-	$array{ $code } = $utf;
+	if( $code >= 0x80 && $ucs >= 0x0080 ){
+		$utf = &ucs2utf($ucs);
+		if( $array{ $code } ne "" ){
+			printf STDERR "Warning: duplicate code: %04x\n",$ucs;
+			next;
+		}
+		$count++;
+
+		$array{ $code } = $utf;
+	}
 }
 close( FILE );
 
