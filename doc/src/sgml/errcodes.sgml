@@ -95,6 +95,10 @@
 <entry>WARNING STRING DATA RIGHT TRUNCATION</entry>
 </row>
 
+<row>
+<entry><literal>01P01</literal></entry>
+<entry>WARNING DEPRECATED FEATURE</entry>
+</row>
 
 <row>
 <entry>Class 02</entry>
