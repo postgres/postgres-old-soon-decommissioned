@@ -120,10 +120,8 @@ find_secondary_indexes(Query *root, Index relid)
 
 		for (i = 0; i < INDEX_MAX_KEYS; i++)
 			info->indexkeys[i] = index->indkey[i];
-		info->indexkeys[INDEX_MAX_KEYS] = 0;
 		for (i = 0; i < INDEX_MAX_KEYS; i++)
 			info->classlist[i] = index->indclass[i];
-		info->classlist[INDEX_MAX_KEYS] = (Oid) 0;
 
 		/* Extract info from the relation descriptor for the index */
 		indexRelation = index_open(index->indexrelid);

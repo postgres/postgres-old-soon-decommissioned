@@ -258,10 +258,10 @@ ExtendIndex(char *indexRelationName, Expr *predicate, List *rangetable)
 	relationId = index->indrelid;
 	indproc = index->indproc;
 
-	for (i = 0; i < INDEX_MAX_KEYS; i++)
+	for (i = INDEX_MAX_KEYS-1; i >= 0; i--)
 		if (index->indkey[i] == InvalidAttrNumber)
 			break;
-	numberOfAttributes = i;
+	numberOfAttributes = i+1;
 
 	if (VARSIZE(&index->indpred) != 0)
 	{
