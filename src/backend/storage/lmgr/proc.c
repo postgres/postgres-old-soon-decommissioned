@@ -53,7 +53,7 @@
 #include <signal.h>
 #include <sys/types.h>
 
-#if defined(solaris_sparc)
+#if defined(solaris_sparc) || defined(__CYGWIN__)
 #include <sys/ipc.h>
 #include <sys/sem.h>
 #endif
