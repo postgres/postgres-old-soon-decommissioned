@@ -790,14 +790,16 @@ VariableSetStmt:  SET ColId TO var_value
 				{
 					VariableSetStmt *n = makeNode(VariableSetStmt);
 					n->name  = $2;
-					n->args = makeList1(makeStringConst($4, NULL));
+					if ($4 != NULL)
+						n->args = makeList1(makeStringConst($4, NULL));
 					$$ = (Node *) n;
 				}
 		| SET ColId '=' var_value
 				{
 					VariableSetStmt *n = makeNode(VariableSetStmt);
 					n->name  = $2;
-					n->args = makeList1(makeStringConst($4, NULL));
+					if ($4 != NULL)
+						n->args = makeList1(makeStringConst($4, NULL));
 					$$ = (Node *) n;
 				}
 		| SET TIME ZONE zone_value
@@ -826,7 +828,8 @@ VariableSetStmt:  SET ColId TO var_value
 				{
 					VariableSetStmt *n = makeNode(VariableSetStmt);
 					n->name  = "client_encoding";
-					n->args = makeList1(makeStringConst($3, NULL));
+					if ($3 != NULL)
+						n->args = makeList1(makeStringConst($3, NULL));
 					$$ = (Node *) n;
 				}
 		| SET SESSION AUTHORIZATION ColId_or_Sconst
