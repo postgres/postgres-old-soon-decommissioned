@@ -43,6 +43,7 @@ static ScanKeyword ScanKeywords[] = {
 	{"any", ANY},
 	{"as", AS},
 	{"asc", ASC},
+	{"assertion", ASSERTION},
 	{"at", AT},
 	{"authorization", AUTHORIZATION},
 	{"backward", BACKWARD},
