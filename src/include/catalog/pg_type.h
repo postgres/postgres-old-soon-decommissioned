@@ -402,6 +402,7 @@ DATA(insert OID = 1003 (  _name		 PGNSP PGUID -1 f b t \054 0	19 array_in array_
 DATA(insert OID = 1005 (  _int2		 PGNSP PGUID -1 f b t \054 0	21 array_in array_out array_recv array_send - i x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 1006 (  _int2vector PGNSP PGUID -1 f b t \054 0	22 array_in array_out array_recv array_send - i x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 1007 (  _int4		 PGNSP PGUID -1 f b t \054 0	23 array_in array_out array_recv array_send - i x f 0 -1 0 _null_ _null_ ));
+#define INT4ARRAYOID		1007
 DATA(insert OID = 1008 (  _regproc	 PGNSP PGUID -1 f b t \054 0	24 array_in array_out array_recv array_send - i x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 1009 (  _text		 PGNSP PGUID -1 f b t \054 0	25 array_in array_out array_recv array_send - i x f 0 -1 0 _null_ _null_ ));
 DATA(insert OID = 1028 (  _oid		 PGNSP PGUID -1 f b t \054 0	26 array_in array_out array_recv array_send - i x f 0 -1 0 _null_ _null_ ));
