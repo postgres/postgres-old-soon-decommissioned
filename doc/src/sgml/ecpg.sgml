@@ -1058,7 +1058,7 @@ ECPGdo(__LINE__, NULL, "select  res  from mytable where index = ?     ",
      also supports auto-commit of transactions via the
      <option>-t</option> command-line option or via the <literal>exec
      sql set autocommit to on</literal> statement. In
-     <literal>autocommit<literal> mode, each query is automatically
+     <literal>autocommit</literal> mode, each query is automatically
      committed unless it is inside an explicit transaction block. This
      mode can be explicitly turned off using <literal>exec sql set
      autocommit to off</literal>.
