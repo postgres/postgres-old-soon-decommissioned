@@ -56,7 +56,6 @@ renameatt(char *relname,
 	HeapTuple	reltup,
 				oldatttup,
 				newatttup;
-	Relation	irelations[Num_pg_attr_indices];
 	Oid			relid;
 
 	/*
@@ -159,10 +158,13 @@ renameatt(char *relname,
 	heap_update(attrelation, &oldatttup->t_self, oldatttup, NULL);
 
 	/* keep system catalog indices current */
-	CatalogOpenIndices(Num_pg_attr_indices, Name_pg_attr_indices, irelations);
-	CatalogIndexInsert(irelations, Num_pg_attr_indices, attrelation, oldatttup);
-	CatalogCloseIndices(Num_pg_attr_indices, irelations);
-
+	{
+		Relation	irelations[Num_pg_attr_indices];
+		CatalogOpenIndices(Num_pg_attr_indices, Name_pg_attr_indices, irelations);
+		CatalogIndexInsert(irelations, Num_pg_attr_indices, attrelation, oldatttup);
+		CatalogCloseIndices(Num_pg_attr_indices, irelations);
+	}
+	
 	pfree(oldatttup);
 	heap_close(attrelation, RowExclusiveLock);
 }
