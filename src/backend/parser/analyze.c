@@ -518,7 +518,7 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 					}
 
 					sequence = makeNode(CreateSeqStmt);
-					sequence->seqname = constraint->name;
+					sequence->seqname = pstrdup(constraint->name);
 					sequence->options = NIL;
 
 					elog(NOTICE, "CREATE TABLE will create implicit sequence %s for SERIAL column %s.%s",
@@ -528,6 +528,7 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 
 					constraint = makeNode(Constraint);
 					constraint->contype = CONSTR_UNIQUE;
+					constraint->name = makeTableName(stmt->relname, column->colname, "key", NULL);
 
 					column->constraints = lappend(column->constraints, constraint);
 				}
