@@ -132,9 +132,8 @@ static const PQconninfoOption PQconninfoOptions[] = {
 	"Database-Host", "", 40},
 
 	{"hostaddr", "PGHOSTADDR", NULL, NULL,
-	"Database-Host-IPv4-Address", "", 15},		/* Room for
-												 * abc.def.ghi.jkl */
-
+	"Database-Host-IP-Address", "", 45},
+	
 	{"port", "PGPORT", DEF_PGPORT_STR, NULL,
 	"Database-Port", "", 6},
 
