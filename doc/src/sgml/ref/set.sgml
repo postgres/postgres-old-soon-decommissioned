@@ -509,6 +509,12 @@ SELECT CURRENT_TIMESTAMP AS today;
  <refsect1>
   <title>See Also</title>
 
+  <simpara>
+   <xref linkend="sql-set_constraints" endterm="sql-set_constraints">,
+   <xref linkend="sql-set_session_auth" endterm="sql-set-session_auth">,
+   <xref linkend="sql-set_transaction" endterm="sql-set_transaction">
+  </simpara>
+
   <para>
     The function <function>set_config</function> provides the equivalent
     capability. See <citetitle>Miscellaneous Functions</citetitle> in the
