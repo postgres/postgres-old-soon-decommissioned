@@ -65,23 +65,8 @@ struct buftag
 #define INIT_BUFFERTAG(a,xx_reln,xx_blockNum) \
 ( \
 	(a)->blockNum = xx_blockNum, \
-	(a)->relId = RelationGetLockRelId(xx_reln) \
+	(a)->relId = ((LockInfo)(xx_reln->lockInfo))->lockRelId \
 )
-
-#ifdef NOT_USED
-#define COPY_BUFFERTAG(a,b) \
-( \
-	(a)->blockNum = (b)->blockNum, \
-	LockRelIdAssign(*(a),*(b)) \
-)
-
-#define EQUAL_BUFFERTAG(a,b) \
-( \
-	((a)->blockNum == (b)->blockNum && \
-   	 OID_Equal((a)->relId.relId,(b)->relId.relId)) \
-)
-
-#endif
 
 #define BAD_BUFFER_ID(bid) ((bid<1) || (bid>(NBuffers)))
 #define INVALID_DESCRIPTOR (-3)

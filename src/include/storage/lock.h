@@ -40,7 +40,11 @@ typedef int LOCKMODE;
 typedef int LOCKMETHOD;
 
 /* MAX_LOCKMODES cannot be larger than the bits in MASK */
-#define MAX_LOCKMODES 6
+#ifdef LowLevelLocking
+#define MAX_LOCKMODES	9
+#else
+#define MAX_LOCKMODES	6
+#endif
 
 /*
  * MAX_LOCK_METHODS corresponds to the number of spin locks allocated in

@@ -1101,6 +1101,8 @@ formrdesc(char *relationName,
 	 */
 	RelationCacheInsert(relation);
 
+	RelationInitLockInfo(relation);
+	
 	/*
 	 * Determining this requires a scan on pg_class, but to do the scan
 	 * the rdesc for pg_class must already exist.  Therefore we must do
@@ -2021,6 +2023,7 @@ init_irels(void)
 		ird->rd_support = support;
 
 		RelationCacheInsert(ird);
+		RelationInitLockInfo(ird);
 	}
 }
 

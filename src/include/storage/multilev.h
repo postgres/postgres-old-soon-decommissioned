@@ -16,6 +16,24 @@
 
 #include <storage/lmgr.h>
 
+#ifdef LowLevelLocking
+
+/* DML locks */
+#define	RowShareLock			1	/* SELECT FOR UPDATE */
+#define	RowExclusiveLock		2	/* INSERT, UPDATE, DELETE */
+#define	ShareLock				3
+#define	ShareRowExclusiveLock	4
+#define	ExclusiveLock			5
+
+/* DDL locks */
+#define	ObjShareLock			6
+#define	ObjExclusiveLock		7
+
+/* Special locks */
+#define	ExtendLock				8
+
+#else
+
 #define READ_LOCK		2
 #define WRITE_LOCK		1
 
@@ -30,6 +48,8 @@
 #define WRITE_INTENT	(WRITE_LOCK+INTENT)
 
 #define EXTEND_LOCK		5
+
+#endif	/* !LowLevelLocking */
 
 #define SHORT_TERM		1
 #define LONG_TERM		2
