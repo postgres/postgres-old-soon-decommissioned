@@ -9,7 +9,7 @@ SO_MAJOR_VERSION = 2
 SO_MINOR_VERSION = 4
 OBJS = pgmodule.o
 SHLIB_LINK = $(libpq)
-ifeq ($(PORTNAME), win)
+ifeq ($(PORTNAME), cygwin)
 override CPPFLAGS += -DUSE_DL_IMPORT
 SHLIB_LINK += $(python_libspec)
 endif

@@ -31,12 +31,12 @@ endif
 
 all: submake-libpgport postgres $(POSTGRES_IMP)
 
-ifneq ($(PORTNAME), win)
+ifneq ($(PORTNAME), cygwin)
 
 postgres: $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(export_dynamic) $^ $(LIBS) -o $@
 
-else # win
+else # cygwin
 
 postgres: $(OBJS) $(DLLINIT) postgres.def libpostgres.a
 	$(DLLTOOL) --dllname $@$(X) --output-exp $@.exp --def postgres.def
@@ -51,7 +51,7 @@ postgres.def: $(OBJS)
 libpostgres.a: postgres.def
 	$(DLLTOOL) --dllname postgres.exe --def postgres.def --output-lib $@
 
-endif # win
+endif # cygwin
 
 ifeq ($(PORTNAME), aix)
 
@@ -126,7 +126,7 @@ distprep:
 ##########################################################################
 
 install: all installdirs install-bin
-ifeq ($(PORTNAME), win)
+ifeq ($(PORTNAME), cygwin)
 ifeq ($(MAKE_DLL), true)
 	$(INSTALL_DATA) libpostgres.a $(DESTDIR)$(libdir)/libpostgres.a
 endif
@@ -148,7 +148,7 @@ endif
 
 installdirs:
 	$(mkinstalldirs) $(DESTDIR)$(bindir) $(DESTDIR)$(datadir)
-ifeq ($(PORTNAME), win)
+ifeq ($(PORTNAME), cygwin)
 ifeq ($(MAKE_DLL), true)
 	$(mkinstalldirs) $(DESTDIR)$(libdir)
 endif
@@ -165,7 +165,7 @@ uninstall:
 ifeq ($(MAKE_EXPORTS), true)
 	rm -f $(DESTDIR)$(pkglibdir)/$(POSTGRES_IMP)
 endif
-ifeq ($(PORTNAME), win)
+ifeq ($(PORTNAME), cygwin)
 ifeq ($(MAKE_DLL), true)
 	rm -f $(DESTDIR)$(libdir)/libpostgres.a
 endif
@@ -183,7 +183,7 @@ clean:
 	rm -f postgres$(X) $(POSTGRES_IMP) \
 		$(top_srcdir)/src/include/parser/parse.h \
 		$(top_builddir)/src/include/utils/fmgroids.h
-ifeq ($(PORTNAME), win)
+ifeq ($(PORTNAME), cygwin)
 	rm -f postgres.dll postgres.def libpostgres.a
 endif
 	for i in $(DIRS); do $(MAKE) -C $$i clean || exit; done

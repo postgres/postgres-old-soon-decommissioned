@@ -142,7 +142,7 @@ clean distclean maintainer-clean:
 # things created by various check targets
 	rm -rf results tmp_check log
 	rm -f regression.diffs regression.out regress.out run_check.out
-ifeq ($(PORTNAME), win)
+ifeq ($(PORTNAME), cygwin)
 	rm -f regress.def
 endif
 ifdef VPATH

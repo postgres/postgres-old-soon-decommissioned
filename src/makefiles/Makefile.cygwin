@@ -4,6 +4,10 @@ DLLWRAP= dllwrap
 BE_DLLLIBS= -L$(top_builddir)/src/backend -lpostgres
 DLLINIT = $(top_builddir)/src/utils/dllinit.o
 
+# linking with -lm or -lc causes program to crash
+# (see http://sources.redhat.com/cygwin/faq/faq.html#SEC110)
+LIBS:=$(filter-out -lm -lc, $(LIBS))
+
 AROPT = crs
 DLSUFFIX = .dll
 CFLAGS_SL =
@@ -27,3 +31,7 @@ endif
 ifneq (,$(findstring src/pl/plpython,$(subdir)))
 override CPPFLAGS+= -DUSE_DL_IMPORT
 endif
+
+override javadir := '$(shell cygpath -w $(javadir))'
+
+sqlmansect = 7
