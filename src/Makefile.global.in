@@ -255,4 +255,5 @@ endif
 
 ifdef PROFILE
    CFLAGS+= $(PROFILE)
+   LDFLAGS+= $(PROFILE)
 endif
