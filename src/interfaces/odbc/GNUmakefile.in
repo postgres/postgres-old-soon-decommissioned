@@ -30,7 +30,7 @@ install-shlib-dep := install-shlib
 shlib := lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
 
 ifeq ($(PORTNAME), linux)
-  LDFLAGS_SL = -shared -soname lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION)
+  LDFLAGS_SL = -shared -soname lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
   LDFLAGS_SL += -Bsymbolic $(LDFLAGS) -lc -lm
 endif
 
@@ -87,9 +87,9 @@ install-libpsqlodbc: libpsqlodbc.a
 install-shlib: $(shlib)
 	$(INSTALL) $(INSTL_LIB_OPTS) $(shlib) $(DESTDIR)$(LIBDIR)/$(shlib)
 	rm -f $(DESTDIR)$(LIBDIR)/lib$(NAME)$(DLSUFFIX)
-	rm -f $(DESTDIR)$(LIBDIR)/lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION)
-	cd $(DESTDIR)$(LIBDIR) && $(LN_S) -f $(shlib) lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION)
-	cd $(DESTDIR)$(LIBDIR) && $(LN_S) -f lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION) lib$(NAME)$(DLSUFFIX)
+	rm -f $(DESTDIR)$(LIBDIR)/lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
+	cd $(DESTDIR)$(LIBDIR) && $(LN_S) -f $(shlib) lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
+	cd $(DESTDIR)$(LIBDIR) && $(LN_S) -f lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION) lib$(NAME)$(DLSUFFIX)
 
 install-ini: odbcinst.ini
 	$(INSTALL) $(INSTL_LIB_OPTS) odbcinst.ini $(ODBCINST)

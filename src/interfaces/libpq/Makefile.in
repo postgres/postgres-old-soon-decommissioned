@@ -42,8 +42,8 @@ install-shlib-dep :=
 
 ifeq ($(PORTNAME), linux)
   install-shlib-dep	:= install-shlib
-  shlib			:= libpq.so.$(SO_MAJOR_VERSION)
-  LDFLAGS_SL		:= -shared -soname libpq.so.$(SO_MAJOR_VERSION)
+  shlib			:= libpq.so.$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
+  LDFLAGS_SL		:= -shared -soname libpq.so.$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
   CFLAGS		+= $(CFLAGS_SL)
 endif
 
