@@ -116,7 +116,8 @@ findParentsByOid(TableInfo *tblinfo, int numTables,
 {
 	int			i,
 				j;
-	int			parentInd;
+	int			parentInd,
+				selfInd;
 	char	  **result;
 	int			numParents;
 
@@ -139,6 +140,16 @@ findParentsByOid(TableInfo *tblinfo, int numTables,
 			{
 				parentInd = findTableByOid(tblinfo, numTables,
 										   inhinfo[i].inhparent);
+				if (parentInd < 0)
+				{
+					selfInd = findTableByOid(tblinfo, numTables, oid);
+					fprintf(stderr,
+							"failed sanity check, parent oid %s of table %s (oid %s) was not found\n",
+							inhinfo[i].inhparent,
+							(selfInd >= 0) ? tblinfo[selfInd].relname : "",
+							oid);
+					exit(2);
+				}
 				result[j++] = tblinfo[parentInd].relname;
 			}
 		}
@@ -387,6 +398,13 @@ flagInhAttrs(TableInfo *tblinfo, int numTables,
 		{
 			parentInd = findTableByName(tblinfo, numTables,
 										tblinfo[i].parentRels[k]);
+			if (parentInd < 0)
+			{
+				/* shouldn't happen unless findParentsByOid is broken */
+				fprintf(stderr, "failed sanity check, table %s not found by flagInhAttrs\n",
+						tblinfo[i].parentRels[k]);
+				exit(2);
+			}
 			for (j = 0; j < tblinfo[i].numatts; j++)
 			{
 				if (strInArray(tblinfo[i].attnames[j],
