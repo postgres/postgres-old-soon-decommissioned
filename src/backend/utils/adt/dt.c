@@ -2556,7 +2556,6 @@ int EncodePostgresDate(struct tm *tm, double fsec, char *str)
     char mabbrev[4], dabbrev[4];
     int day;
     double sec;
-    char buf[MAXDATELEN];
 
     sec = (tm->tm_sec + fsec);
 
