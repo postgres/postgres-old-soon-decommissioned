@@ -324,8 +324,8 @@ ECPGconnect(int lineno, int c, const char *name, const char *user, const char *p
 		envname = getenv("PG_DBPATH");
 		if (envname)
 		{
-			free(dbname);
-			dbname = envname;
+			ECPGfree(dbname);
+			dbname = strdup(envname);
 		}
 					
 	}
