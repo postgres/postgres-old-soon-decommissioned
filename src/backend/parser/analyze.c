@@ -1374,10 +1374,10 @@ make_targetlist_expr(ParseState *pstate,
 						 attrlen);
 	      } else {
 		  /* currently, we can't handle casting of expressions */
-		  elog(WARN, "parser: attribute '%s' is of type '%.*s' but expression is of type '%.*s'",
+		  elog(WARN, "parser: attribute '%s' is of type '%s' but expression is of type '%s'",
 		       colname,
-		       NAMEDATALEN, get_id_typname(attrtype),
-		       NAMEDATALEN, get_id_typname(type_id));
+		       get_id_typname(attrtype),
+		       get_id_typname(type_id));
 	      }
 	  }
 

@@ -170,8 +170,8 @@ check_permissions(char *command,
     
     /* Check to make sure user has permission to use createdb */
     if (!use_createdb) {
-        elog(WARN, "user \"%-.*s\" is not allowed to create/destroy databases",
-             NAMEDATALEN, userName);
+        elog(WARN, "user \"%s\" is not allowed to create/destroy databases",
+             userName);
     }
     
     /* Make sure we are not mucking with the template database */

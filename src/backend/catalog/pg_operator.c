@@ -483,8 +483,8 @@ OperatorDef(char *operatorName,
 				    rightTypeName);
     
     if (OidIsValid(operatorObjectId) && !definedOK)
-	elog(WARN, "OperatorDef: operator \"%-.*s\" already defined",
-	     NAMEDATALEN, operatorName); 
+	elog(WARN, "OperatorDef: operator \"%s\" already defined",
+	     operatorName); 
     
     if (leftTypeName)
 	leftTypeId = TypeGet(leftTypeName, &leftDefined);

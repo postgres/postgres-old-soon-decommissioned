@@ -29,7 +29,8 @@
  *	namein	- converts "..." to internal representation
  *
  *	Note:
- *		Currently if strlen(s) < NAMEDATALEN, the extra chars are nulls
+ *		[Old] Currently if strlen(s) < NAMEDATALEN, the extra chars are nulls
+ *              Now, always NULL terminated
  */
 NameData *namein(char *s)
 {

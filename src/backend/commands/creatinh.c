@@ -549,7 +549,7 @@ MakeArchiveName(Oid relationId)
      *  of the relation they archive.  Create a string containing
      *  this name and find the reldesc for the archive relation.
      */
-    arch = palloc(NAMEDATALEN); 
+    arch = palloc(NAMEDATALEN);
     sprintf(arch, "a,%d",relationId);
 
     return arch;

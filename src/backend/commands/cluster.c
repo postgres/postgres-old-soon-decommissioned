@@ -116,15 +116,15 @@ cluster(char oldrelname[], char oldindexname[])
     
     OldHeap = heap_openr(oldrelname);
     if (!RelationIsValid(OldHeap)) {
-	elog(WARN, "cluster: unknown relation: \"%-.*s\"",
-	     NAMEDATALEN, oldrelname);
+	elog(WARN, "cluster: unknown relation: \"%s\"",
+	     oldrelname);
     }
     OIDOldHeap = OldHeap->rd_id; /* Get OID for the index scan   */
     
     OldIndex=index_openr(oldindexname);/* Open old index relation  */
     if (!RelationIsValid(OldIndex)) {
-	elog(WARN, "cluster: unknown index: \"%-.*s\"",
-	     NAMEDATALEN, oldindexname);
+	elog(WARN, "cluster: unknown index: \"%s\"",
+	     oldindexname);
     }
     OIDOldIndex = OldIndex->rd_id;     /* OID for the index scan         */
     

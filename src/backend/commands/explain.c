@@ -177,7 +177,7 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
     case T_IndexScan:
 	if (((Scan*)plan)->scanrelid > 0) {
 	    RangeTblEntry *rte = nth(((Scan*)plan)->scanrelid-1, es->rtable);
-	    sprintf(buf, " on %.*s", NAMEDATALEN, rte->refname);
+	    sprintf(buf, " on %s", rte->refname);
 	    appendStringInfo(str, buf);
 	}
 	break;

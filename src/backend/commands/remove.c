@@ -393,8 +393,8 @@ RemoveFunction(char *functionName, /* function name to be removed */
     /* ok, function has been found */
     
     if (the_proc->prolang == INTERNALlanguageId)
-	elog(WARN, "RemoveFunction: function \"%-.*s\" is built-in",
-	     NAMEDATALEN, functionName);
+	elog(WARN, "RemoveFunction: function \"%s\" is built-in",
+	     functionName);
     
     ItemPointerCopy(&tup->t_ctid, &itemPointerData);
     heap_delete(relation, &itemPointerData);

@@ -189,7 +189,7 @@ be_typeinit(PortalEntry *entry,
     if (natts > 0) {
 	group->types = pbuf_addTypes(natts);
 	for (i = 0; i < natts; ++i) {
-	    strncpy(group->types[i].name, attrs[i]->attname.data, NAMEDATALEN); 
+	    strncpy(group->types[i].name, attrs[i]->attname.data, NAMEDATALEN);
 	    group->types[i].adtid = attrs[i]->atttypid;
 	    group->types[i].adtsize = attrs[i]->attlen;
 	}

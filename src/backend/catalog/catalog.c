@@ -33,7 +33,7 @@ relpath(char relname[])
     
     if (IsSharedSystemRelationName(relname)) {
 	path = (char *) palloc(strlen(DataDir) + sizeof(NameData) + 2);
-	sprintf(path, "%s/%.*s", DataDir, NAMEDATALEN, relname);
+	sprintf(path, "%s/%s", DataDir, relname);
 	return (path);
     }
     return(relname);

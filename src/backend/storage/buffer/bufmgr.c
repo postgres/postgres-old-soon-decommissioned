@@ -1419,9 +1419,9 @@ PrintBufferDescs()
     if (IsUnderPostmaster) {
 	SpinAcquire(BufMgrLock);
 	for (i = 0; i < NBuffers; ++i, ++buf) {
-	    elog(NOTICE, "[%02d] (freeNext=%d, freePrev=%d, relname=%.*s, \
+	    elog(NOTICE, "[%02d] (freeNext=%d, freePrev=%d, relname=%s, \
 blockNum=%d, flags=0x%x, refcount=%d %d)",
-		 i, buf->freeNext, buf->freePrev, NAMEDATALEN,
+		 i, buf->freeNext, buf->freePrev,
 		 buf->sb_relname, buf->tag.blockNum, buf->flags,
 		 buf->refcount, PrivateRefCount[i]);
 	}
@@ -1445,9 +1445,9 @@ PrintPinnedBufs()
     SpinAcquire(BufMgrLock);
     for (i = 0; i < NBuffers; ++i, ++buf) {
 	if (PrivateRefCount[i] > 0)
-	    elog(NOTICE, "[%02d] (freeNext=%d, freePrev=%d, relname=%.*s, \
+	    elog(NOTICE, "[%02d] (freeNext=%d, freePrev=%d, relname=%s, \
 blockNum=%d, flags=0x%x, refcount=%d %d)\n",
-		 i, buf->freeNext, buf->freePrev, NAMEDATALEN, buf->sb_relname,
+		 i, buf->freeNext, buf->freePrev, buf->sb_relname,
 		 buf->tag.blockNum, buf->flags,
 		 buf->refcount, PrivateRefCount[i]);
     }
