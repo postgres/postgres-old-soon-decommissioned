@@ -99,7 +99,7 @@ typedef uint16 LocationIndex;
  * there was no concept of a page version number, and doing it this way
  * lets us pretend that pre-7.3 databases have page version number zero.
  * We constrain page sizes to be multiples of 256, leaving the low eight
- * bytes available for a version number.
+ * bits available for a version number.
  *
  * Minimum possible page size is perhaps 64B to fit page header, opaque space
  * and a minimal tuple; of course, in reality you want it much bigger, so
