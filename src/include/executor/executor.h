@@ -93,6 +93,7 @@ extern void ExecutorEnd(QueryDesc *queryDesc);
 extern void ExecutorRewind(QueryDesc *queryDesc);
 extern void ExecCheckRTPerms(List *rangeTable, CmdType operation);
 extern void ExecEndPlan(PlanState *planstate, EState *estate);
+extern bool ExecContextForcesOids(PlanState *planstate, bool *hasoids);
 extern void ExecConstraints(ResultRelInfo *resultRelInfo,
 				TupleTableSlot *slot, EState *estate);
 extern TupleTableSlot *EvalPlanQual(EState *estate, Index rti,

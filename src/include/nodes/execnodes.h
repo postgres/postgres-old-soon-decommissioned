@@ -311,9 +311,8 @@ typedef struct EState
 	List	   *es_rowMark;		/* not good place, but there is no other */
 
 	bool		es_instrument;	/* true requests runtime instrumentation */
-	bool		es_force_oids;	/* true forces result tuples to have
-								 * (space for) OIDs --- used for SELECT
-								 * INTO */
+	bool		es_select_into;	/* true if doing SELECT INTO */
+	bool		es_into_oids;	/* true to generate OIDs in SELECT INTO */
 
 	List	   *es_exprcontexts;	/* List of ExprContexts within EState */
 
