@@ -732,6 +732,16 @@ SET ENABLE_SEQSCAN TO OFF;
       </listitem>
      </varlistentry>
      
+     <varlistentry>
+      <term><varname>RENDEZVOUS_NAME</varname> (<type>string</type>)</term>
+      <listitem>
+       <para>
+        Specifies the Rendezvous broadcast name.  By default, the
+        computer name is used, specified as ''.
+       </para>
+      </listitem>
+     </varlistentry>
+     
      </variablelist>
      </sect3>
      <sect3 id="runtime-config-connection-security">

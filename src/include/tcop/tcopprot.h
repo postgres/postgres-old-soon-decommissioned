@@ -32,6 +32,7 @@ extern CommandDest whereToSendOutput;
 extern bool log_hostname;
 extern bool LogSourcePort;
 extern DLLIMPORT const char *debug_query_string;
+extern char *rendezvous_name;
 
 #ifndef BOOTSTRAP_INCLUDE
 

@@ -1299,6 +1299,15 @@ static struct config_string ConfigureNamesString[] =
 		PG_KRB_SRVTAB, NULL, NULL
 	},
 
+	{
+		{"rendezvous_name", PGC_POSTMASTER, CONN_AUTH_SETTINGS,
+			gettext_noop("The Rendezvous broadcast service name"),
+			NULL
+		},
+		&rendezvous_name,
+		"", NULL, NULL
+	},
+
 	/* See main.c about why defaults for LC_foo are not all alike */
 
 	{

@@ -210,6 +210,8 @@ bool		LogSourcePort;
 bool		Log_connections = false;
 bool		Db_user_namespace = false;
 
+char		*rendezvous_name;
+
 /* For FNCTL_NONBLOCK */
 #if defined(WIN32) || defined(__BEOS__)
 long ioctlsocket_ret;
@@ -771,17 +773,17 @@ PostmasterMain(int argc, char *argv[])
 					"socket.");
 			}
 		}
-#ifdef USE_RENDEZVOUS                    
-                if (service_name != NULL)
-                {
-                        DNSServiceRegistrationCreate(NULL,	/* default to hostname */
-                                                     "_postgresql._tcp.",
-                                                     "",
-                                                     htonl(PostPortNumber),
-                                                     "",
-                                                     (DNSServiceRegistrationReply)reg_reply,
-                                                     NULL);
-                }
+#ifdef USE_RENDEZVOUS					 
+				if (rendezvous_name != NULL)
+				{
+						DNSServiceRegistrationCreate(rendezvous_name,
+													 "_postgresql._tcp.",
+													 "",
+													 htonl(PostPortNumber),
+													 "",
+													 (DNSServiceRegistrationReply)reg_reply,
+													 NULL);
+				}
 #endif
 	}
 
