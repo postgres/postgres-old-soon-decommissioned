@@ -3,7 +3,7 @@ $Header$
 -->
 
  <chapter>
-  <title>PL/pgSQL</title>
+  <title>PL/pgSQL - SQL Procedural Language</title>
 
   <para>
    PL/pgSQL is a loadable procedural language for the

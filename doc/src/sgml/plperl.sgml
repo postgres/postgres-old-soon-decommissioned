@@ -3,7 +3,7 @@ $Header$
 -->
 
  <chapter id="pl-perl">
-  <title>Perl Procedural Language</title>
+  <title>PL/perl - Perl Procedural Language</title>
 
   <para>
    This chapter describes how to compile, install and

@@ -3,7 +3,7 @@ $Header$
 -->
 
  <chapter>
-  <title>PL/Tcl</title>
+  <title>PL/Tcl - TCL Procedural Language</title>
 
   <para>
    PL/Tcl is a loadable procedural language for the
