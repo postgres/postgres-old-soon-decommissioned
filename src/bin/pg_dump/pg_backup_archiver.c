@@ -180,7 +180,7 @@ RestoreArchive(Archive *AHX, RestoreOptions *ropt)
 		AHX->minRemoteVersion = 070100;
 		AHX->maxRemoteVersion = 999999;
 
-		ConnectDatabase(AHX, ropt->dbname, ropt->pghost, ropt->pgport,
+		ConnectDatabase(AHX, ropt->dbname, ropt->pghost, ropt->pgport, ropt->username,
 						ropt->requirePassword, ropt->ignoreVersion);
 
 		/*

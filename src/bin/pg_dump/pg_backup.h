@@ -114,6 +114,7 @@ typedef struct _restoreOptions
 	char	   *dbname;
 	char	   *pgport;
 	char	   *pghost;
+	char	   *username;
 	int			ignoreVersion;
 	int			requirePassword;
 
@@ -130,12 +131,16 @@ typedef struct _restoreOptions
 
 extern void exit_horribly(Archive *AH, const char *fmt,...);
 
+extern char *
+simple_prompt(const char *prompt, int maxlen, bool echo);
+
 /* Lets the archibe know we have a DB connection to shutdown if it dies */
 
 PGconn *ConnectDatabase(Archive *AH,
 				const char *dbname,
 				const char *pghost,
 				const char *pgport,
+				const char *username,
 				const int reqPwd,
 				const int ignoreVersion);
 

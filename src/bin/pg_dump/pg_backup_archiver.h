@@ -203,11 +203,12 @@ typedef struct _archiveHandle
 	CustomOutPtr CustomOutPtr;	/* Alternate script output routine */
 
 	/* Stuff for direct DB connection */
-	char		username[100];
+	char	   *username;
 	char	   *dbname;			/* Name of db for connection */
 	char	   *archdbname;		/* DB name *read* from archive */
 	char	   *pghost;
 	char	   *pgport;
+	bool		requirePassword;
 	PGconn	   *connection;
 	PGconn	   *blobConnection; /* Connection for BLOB xref */
 	int			txActive;		/* Flag set if TX active on connection */
