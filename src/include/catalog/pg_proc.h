@@ -1804,9 +1804,9 @@ DATA(insert OID = 1424 (  box_mul			PGUID 11 f t f 2 f 603 "603 600" 100 0 0 100
 DESCR("multiply box by point (scale)");
 DATA(insert OID = 1425 (  box_div			PGUID 11 f t f 2 f 603 "603 600" 100 0 0 100  foo bar ));
 DESCR("divide box by point (scale)");
-DATA(insert OID = 1426 (  path_contain_pt	PGUID 11 f t f 2 f	16 "601 600" 100 0 0 100  foo bar ));
+DATA(insert OID = 1426 (  path_contain_pt	PGUID 11 f t f 2 f	16 "602 600" 100 0 0 100  foo bar ));
 DESCR("path contains point?");
-DATA(insert OID = 1427 (  pt_contained_path PGUID 11 f t f 2 f	16 "600 601" 100 0 0 100  foo bar ));
+DATA(insert OID = 1427 (  pt_contained_path PGUID 11 f t f 2 f	16 "600 602" 100 0 0 100  foo bar ));
 DESCR("point contained in path?");
 DATA(insert OID = 1428 (  poly_contain_pt	PGUID 11 f t f 2 f	16 "604 600" 100 0 0 100  foo bar ));
 DESCR("polygon contains point?");
