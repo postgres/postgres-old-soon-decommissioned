@@ -75,9 +75,12 @@ add_paths_to_joinrel(Query *root,
 	List	   *mergeclause_list = NIL;
 
 	/*
-	 * Find potential mergejoin clauses.
+	 * Find potential mergejoin clauses.  We can skip this if we are not
+	 * interested in doing a mergejoin.  However, mergejoin is currently
+	 * our only way of implementing full outer joins, so override
+	 * mergejoin disable if it's a full join.
 	 */
-	if (enable_mergejoin)
+	if (enable_mergejoin || jointype == JOIN_FULL)
 		mergeclause_list = select_mergejoin_clauses(joinrel,
 													outerrel,
 													innerrel,

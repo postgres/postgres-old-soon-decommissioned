@@ -454,9 +454,13 @@ distribute_qual_to_rels(Query *root, Node *clause,
 		 * joining.
 		 *
 		 * We don't bother setting the merge/hashjoin info if we're not
-		 * going to need it.
+		 * going to need it.  We do want to know about mergejoinable ops
+		 * in any potential equijoin clause (see later in this routine),
+		 * and we ignore enable_mergejoin if isouterjoin is true, because
+		 * mergejoin is the only implementation we have for full and right
+		 * outer joins.
 		 */
-		if (enable_mergejoin || can_be_equijoin)
+		if (enable_mergejoin || isouterjoin || can_be_equijoin)
 			check_mergejoinable(restrictinfo);
 		if (enable_hashjoin)
 			check_hashjoinable(restrictinfo);
