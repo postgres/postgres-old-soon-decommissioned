@@ -116,12 +116,16 @@ postgres.o: $(OBJS)
 # make files in our subdirectories.
 
 parse.h: parser/parse.h
-	$(MAKE) -C parser parse.h
 	cp parser/parse.h .
 
-fmgr.h:
-	$(MAKE) -C utils fmgr.h
+parser/parse.h:
+	$(MAKE) -C parser parse.h
+
+fmgr.h: utils/fmgr.h
 	cp utils/fmgr.h .
+
+utils/fmgr.h:
+	$(MAKE) -C utils fmgr.h
 
 #############################################################################
 clean:
