@@ -121,9 +121,9 @@ SQLTARGETS= $(XSQLTARGETS:-ref.l=.l)
 .PRECIOUS: postgres.tex postgres.dvi
 .PHONY: install all clean distclean
 
-install::
+install:
 
-all::
+all:
 
 man:
 	$(MAKE) man1 manl
@@ -143,10 +143,10 @@ manl: $(SQLTARGETS) manpage.refs
 	if [ ! -d manl ]; then mkdir manl; fi
 	cp *.l manl/
 
-clean::
+clean:
 	(rm -rf HTML.manifest *.html *.htm *.1 *.l man1 manl manpage*)
 
-distclean::
+distclean:
 	$(MAKE) clean
 
 #

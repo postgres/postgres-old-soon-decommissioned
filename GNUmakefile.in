@@ -30,9 +30,6 @@ distclean maintainer-clean:
 GNUmakefile: GNUmakefile.in $(top_builddir)/config.status
 	CONFIG_FILES=$@ CONFIG_HEADERS= ./config.status
 
-$(top_builddir)/config.status: $(top_srcdir)/configure
-	cd $(top_builddir) && ./config.status --recheck
-
 
 # These dependencies are risky because both the target and the sources
 # are in CVS and CVS doesn't preserve timestamps, thus leading to

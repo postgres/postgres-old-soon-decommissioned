@@ -188,6 +188,3 @@ quick: $(OBJS)
 
 depend dep: $(top_srcdir)/src/include/parser/parse.h $(top_builddir)/src/include/utils/fmgroids.h
 	for i in $(DIRS); do $(MAKE) -C $$i $@; done
-
-.DEFAULT:
-	for i in $(DIRS); do $(MAKE) -C $$i $@; done

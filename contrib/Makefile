@@ -29,7 +29,7 @@ WANTED_DIRS =	array		\
 		vacuumlo	
 	#	odbc
 
-all .DEFAULT:
+all install installdirs uninstall clean distclean maintainer-clean:
 	for dir in $(WANTED_DIRS); do \
 	    if [ -e $$dir/Makefile ]; then \
 		$(MAKE) -C $$dir $@ ; \
