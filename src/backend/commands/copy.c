@@ -453,7 +453,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp, char *delim)
 				Assert(pgIndexTup);
 				pgIndexP[i] = (Form_pg_index) GETSTRUCT(pgIndexTup);
 				for (attnumP = &(pgIndexP[i]->indkey[0]), natts = 0;
-					 *attnumP != InvalidAttrNumber;
+					 natts < INDEX_MAX_KEYS && *attnumP != InvalidAttrNumber;
 					 attnumP++, natts++);
 				if (pgIndexP[i]->indproc != InvalidOid)
 				{

@@ -274,7 +274,7 @@ ExtendIndex(char *indexRelationName, Expr *predicate, List *rangetable)
 	indproc = index->indproc;
 
 	for (i = 0; i < INDEX_MAX_KEYS; i++)
-		if (index->indkey[i] == 0)
+		if (index->indkey[i] == InvalidAttrNumber)
 			break;
 	numberOfAttributes = i;
 

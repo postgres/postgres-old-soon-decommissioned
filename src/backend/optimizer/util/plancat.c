@@ -165,9 +165,9 @@ index_info(Query *root, bool first, int relid, IdxInfoRetval *info)
 	/* Extract info from the index tuple */
 	index = (Form_pg_index) GETSTRUCT(indexTuple);
 	info->relid = index->indexrelid;	/* index relation */
-	for (i = 0; i < 8; i++)
+	for (i = 0; i < INDEX_MAX_KEYS; i++)
 		info->indexkeys[i] = index->indkey[i];
-	for (i = 0; i < 8; i++)
+	for (i = 0; i < INDEX_MAX_KEYS; i++)
 		info->classlist[i] = index->indclass[i];
 
 	info->indproc = index->indproc;		/* functional index ?? */

@@ -282,7 +282,7 @@ copy_index(Oid OIDOldIndex, Oid OIDNewHeap)
 	 * got to be sure.
 	 */
 	for (attnumP = &(Old_pg_index_Form->indkey[0]), natts = 0;
-		 *attnumP != InvalidAttrNumber;
+		 natts < INDEX_MAX_KEYS && *attnumP != InvalidAttrNumber;
 		 attnumP++, natts++);
 
 	/*

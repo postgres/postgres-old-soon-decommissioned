@@ -629,7 +629,8 @@ ExecGetIndexKeyInfo(Form_pg_index indexTuple,
 	 * ----------------
 	 */
 	numKeys = 0;
-	for (i = 0; i < 8 && indexTuple->indkey[i] != 0; i++)
+	for (i = 0; i < INDEX_MAX_KEYS &&
+				indexTuple->indkey[i] != InvalidAttrNumber; i++)
 		numKeys++;
 
 	/* ----------------
@@ -663,8 +664,7 @@ ExecGetIndexKeyInfo(Form_pg_index indexTuple,
 	 */
 	CXT1_printf("ExecGetIndexKeyInfo: context is %d\n", CurrentMemoryContext);
 
-	attKeys = (AttrNumber *)
-		palloc(numKeys * sizeof(AttrNumber));
+	attKeys = (AttrNumber *)palloc(numKeys * sizeof(AttrNumber));
 
 	for (i = 0; i < numKeys; i++)
 		attKeys[i] = indexTuple->indkey[i];

@@ -137,7 +137,7 @@ CatalogIndexInsert(Relation *idescs,
 			 * Compute the number of attributes we are indexing upon.
 			 */
 			for (attnumP = index_form->indkey, fatts = 0;
-				 *attnumP != InvalidAttrNumber && fatts < INDEX_MAX_KEYS;
+				 fatts < INDEX_MAX_KEYS && *attnumP != InvalidAttrNumber;
 				 attnumP++, fatts++)
 				;
 			FIgetnArgs(&finfo) = fatts;

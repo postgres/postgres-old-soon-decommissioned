@@ -2227,7 +2227,7 @@ vc_mkindesc(Relation onerel, int nindices, Relation *Irel, IndDesc **Idesc)
 		 */
 		idcur->tform = (Form_pg_index) GETSTRUCT(cachetuple);
 		for (attnumP = &(idcur->tform->indkey[0]), natts = 0;
-			 *attnumP != InvalidAttrNumber && natts != INDEX_MAX_KEYS;
+			 natts < INDEX_MAX_KEYS && *attnumP != InvalidAttrNumber;
 			 attnumP++, natts++);
 		if (idcur->tform->indproc != InvalidOid)
 		{

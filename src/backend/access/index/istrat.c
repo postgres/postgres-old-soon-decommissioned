@@ -583,7 +583,7 @@ IndexSupportInitialize(IndexStrategy indexStrategy,
 
 		if (!OidIsValid(iform->indkey[attributeIndex]))
 		{
-			if (attributeIndex == 0)
+			if (attributeIndex == InvalidAttrNumber)
 				elog(ERROR, "IndexSupportInitialize: no pg_index tuple");
 			break;
 		}

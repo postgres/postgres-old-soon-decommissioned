@@ -2649,7 +2649,7 @@ dumpIndices(FILE *fout, IndInfo *indinfo, int numIndices,
 			char	   *attname;
 
 			indkey = atoi(indinfo[i].indkey[k]);
-			if (indkey == 0)
+			if (indkey == InvalidAttrNumber)
 				break;
 			indkey--;
 			if (indkey == ObjectIdAttributeNumber - 1)
