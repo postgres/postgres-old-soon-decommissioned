@@ -16,7 +16,7 @@ include $(SRCDIR)/Makefile.global
 all: pgaccess
 
 pgaccess: pgaccess.sh
-	sed -e 's;__wish__;@wish@;' pgaccess.sh |	\
+	sed -e 's;__wish__;$(WISH);' pgaccess.sh |	\
 	sed -e 's;__POSTGRESDIR__;$(POSTGRESDIR);' 	\
 			> pgaccess
 
@@ -30,6 +30,8 @@ install:
 	$(INSTALL) $(INSTLOPTS) lib/help/*.hlp $(POSTGRESDIR)/pgaccess/lib/help
 	@if [ ! -d $(POSTGRESDIR)/pgaccess/lib/languages ]; then mkdir $(POSTGRESDIR)/pgaccess/lib/languages; fi
 	$(INSTALL) $(INSTLOPTS) lib/languages/[a-z]* $(POSTGRESDIR)/pgaccess/lib/languages
+	@if [ ! -d $(POSTGRESDIR)/pgaccess/images ]; then mkdir $(POSTGRESDIR)/pgaccess/images; fi
+	$(INSTALL) $(INSTLOPTS) images/*.gif $(POSTGRESDIR)/pgaccess/images
 
 clean:
 	rm -f pgaccess
