@@ -25,6 +25,7 @@ ifeq ($(PORTNAME), win32)
 perl_archlibexp := $(subst \,/,$(perl_archlibexp))
 perl_privlibexp := $(subst \,/,$(perl_privlibexp))
 perl_embed_ldflags := -L $(perl_archlibexp)/CORE -lperl58
+override CPPFLAGS += -DPLPERL_HAVE_UID_GID
 endif
 
 override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -I$(perl_archlibexp)/CORE
