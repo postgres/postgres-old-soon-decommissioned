@@ -790,7 +790,8 @@ default_results:
 
 	other = (*flag == 0) ? left : right;
 
-	if (IsA(other, Const))
+	if (IsA(other, Const) &&
+		!((Const *) other)->constisnull)
 	{
 		*constval = ((Const *) other)->constvalue;
 		*flag |= SEL_CONSTANT;
