@@ -696,7 +696,7 @@ AC_CHECK_LIB(BSD,      main)
 AC_CHECK_LIB(gen,      main)
 AC_CHECK_LIB(PW,       main)
 AC_CHECK_LIB(resolv,   main)
-AC_CHECK_LIB(getopt,   main)
+AC_SEARCH_LIBS(getopt_long, [getopt])
 # QNX:
 AC_CHECK_LIB([[unix]], main)
 AC_SEARCH_LIBS(crypt,  crypt)
