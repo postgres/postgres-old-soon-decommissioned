@@ -540,7 +540,7 @@ connectDB(PGconn *conn)
 				{
 				PGresult *res;
 				
-				sprintf(setQuery, "SET %s TO \".60%s\"", eo->pgName, val);
+				sprintf(setQuery, "SET %s TO '.60%s'", eo->pgName, val);
 				res = PQexec(conn, setQuery);
 				PQclear(res);	/* Don't care? */
 				}
