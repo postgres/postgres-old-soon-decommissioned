@@ -819,8 +819,6 @@ _equalCopyStmt(CopyStmt *a, CopyStmt *b)
 static bool
 _equalCreateStmt(CreateStmt *a, CreateStmt *b)
 {
-	if (a->istemp != b->istemp)
-		return false;
 	if (!equalstr(a->relname, b->relname))
 		return false;
 	if (!equal(a->tableElts, b->tableElts))
@@ -828,6 +826,10 @@ _equalCreateStmt(CreateStmt *a, CreateStmt *b)
 	if (!equal(a->inhRelnames, b->inhRelnames))
 		return false;
 	if (!equal(a->constraints, b->constraints))
+		return false;
+	if (a->istemp != b->istemp)
+		return false;
+	if (a->hasoids != b->hasoids)
 		return false;
 
 	return true;

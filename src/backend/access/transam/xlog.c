@@ -2510,8 +2510,6 @@ StartupXLOG(void)
 		 checkPoint.nextXid, checkPoint.nextOid);
 	if (checkPoint.nextXid < FirstTransactionId)
 		elog(STOP, "invalid next transaction id");
-	if (checkPoint.nextOid < BootstrapObjectIdData)
-		elog(STOP, "invalid next oid");
 
 	ShmemVariableCache->nextXid = checkPoint.nextXid;
 	ShmemVariableCache->nextOid = checkPoint.nextOid;

@@ -486,6 +486,28 @@ SearchSysCacheCopy(int cacheId,
 }
 
 /*
+ * SearchSysCacheExists
+ *
+ * A convenience routine that just probes to see if a tuple can be found.
+ * No lock is retained on the syscache entry.
+ */
+bool
+SearchSysCacheExists(int cacheId,
+					 Datum key1,
+					 Datum key2,
+					 Datum key3,
+					 Datum key4)
+{
+	HeapTuple	tuple;
+
+	tuple = SearchSysCache(cacheId, key1, key2, key3, key4);
+	if (!HeapTupleIsValid(tuple))
+		return false;
+	ReleaseSysCache(tuple);
+	return true;
+}
+
+/*
  * GetSysCacheOid
  *
  * A convenience routine that does SearchSysCache and returns the OID

@@ -108,9 +108,6 @@ _outCreateStmt(StringInfo str, CreateStmt *node)
 	appendStringInfo(str, " CREATE :relname ");
 	_outToken(str, node->relname);
 
-	appendStringInfo(str, " :istemp %s ",
-					 booltostr(node->istemp));
-
 	appendStringInfo(str, "	:columns ");
 	_outNode(str, node->tableElts);
 
@@ -119,6 +116,10 @@ _outCreateStmt(StringInfo str, CreateStmt *node)
 
 	appendStringInfo(str, " :constraints ");
 	_outNode(str, node->constraints);
+
+	appendStringInfo(str, " :istemp %s :hasoids %s ",
+					 booltostr(node->istemp),
+					 booltostr(node->hasoids));
 }
 
 static void

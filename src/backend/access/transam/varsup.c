@@ -105,10 +105,25 @@ ReadNewTransactionId(TransactionId *xid)
 
 static Oid	lastSeenOid = InvalidOid;
 
-void
-GetNewObjectId(Oid *oid_return)
+Oid
+GetNewObjectId(void)
 {
+	Oid		result;
+
 	SpinAcquire(OidGenLockId);
+
+	/*
+	 * Check for wraparound of the OID counter.  We *must* not return 0
+	 * (InvalidOid); and as long as we have to check that, it seems a good
+	 * idea to skip over everything below BootstrapObjectIdData too.  (This
+	 * basically just reduces the odds of OID collision right after a wrap
+	 * occurs.)  Note we are relying on unsigned comparison here.
+	 */
+	if (ShmemVariableCache->nextOid < ((Oid) BootstrapObjectIdData))
+	{
+		ShmemVariableCache->nextOid = BootstrapObjectIdData;
+		ShmemVariableCache->oidCount = 0;
+	}
 
 	/* If we run out of logged for use oids then we must log more */
 	if (ShmemVariableCache->oidCount == 0)
@@ -117,13 +132,16 @@ GetNewObjectId(Oid *oid_return)
 		ShmemVariableCache->oidCount = VAR_OID_PREFETCH;
 	}
 
-	if (PointerIsValid(oid_return))
-		lastSeenOid = (*oid_return) = ShmemVariableCache->nextOid;
+	result = ShmemVariableCache->nextOid;
 
 	(ShmemVariableCache->nextOid)++;
 	(ShmemVariableCache->oidCount)--;
 
 	SpinRelease(OidGenLockId);
+
+	lastSeenOid = result;
+
+	return result;
 }
 
 void
@@ -159,8 +177,8 @@ CheckMaxObjectId(Oid assigned_oid)
 	 */
 
 	XLogPutNextOid(assigned_oid + VAR_OID_PREFETCH);
-	ShmemVariableCache->oidCount = VAR_OID_PREFETCH - 1;
 	ShmemVariableCache->nextOid = assigned_oid + 1;
+	ShmemVariableCache->oidCount = VAR_OID_PREFETCH - 1;
 
 	SpinRelease(OidGenLockId);
 }

@@ -88,10 +88,11 @@ DefineVirtualRelation(char *relname, List *tlist)
 	 * nil...
 	 */
 	createStmt->relname = relname;
-	createStmt->istemp = false;
 	createStmt->tableElts = attrList;
 	createStmt->inhRelnames = NIL;
 	createStmt->constraints = NIL;
+	createStmt->istemp = false;
+	createStmt->hasoids = false;
 
 	/*
 	 * finally create the relation...

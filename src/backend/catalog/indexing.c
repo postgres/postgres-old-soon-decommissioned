@@ -32,7 +32,7 @@
  */
 
 char	   *Name_pg_aggregate_indices[Num_pg_aggregate_indices] =
-{AggregateNameTypeIndex};
+{AggregateNameTypeIndex, AggregateOidIndex};
 char	   *Name_pg_am_indices[Num_pg_am_indices] =
 {AmNameIndex, AmOidIndex};
 char	   *Name_pg_amop_indices[Num_pg_amop_indices] =

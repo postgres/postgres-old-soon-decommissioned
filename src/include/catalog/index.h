@@ -34,7 +34,7 @@ extern void InitIndexStrategy(int numatts,
 				  Relation indexRelation,
 				  Oid accessMethodObjectId);
 
-extern void index_create(char *heapRelationName,
+extern Oid index_create(char *heapRelationName,
 			 char *indexRelationName,
 			 IndexInfo *indexInfo,
 			 Oid accessMethodObjectId,
@@ -56,7 +56,8 @@ extern void FormIndexDatum(IndexInfo *indexInfo,
 
 extern void UpdateStats(Oid relid, double reltuples);
 extern bool IndexesAreActive(Oid relid, bool comfirmCommitted);
-extern void setRelhasindex(Oid relid, bool hasindex);
+extern void setRelhasindex(Oid relid, bool hasindex,
+						   bool isprimary, Oid reltoastidxid);
 
 extern void setNewRelfilenode(Relation relation);
 

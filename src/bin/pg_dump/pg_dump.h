@@ -63,7 +63,7 @@ typedef struct _funcInfo
 	char	   *oid;
 	char	   *proname;
 	char	   *proowner;
-	int			lang;
+	Oid			lang;
 	int			nargs;
 	char	   *argtypes[FUNC_MAX_ARGS];
 	char	   *prorettype;
@@ -97,6 +97,7 @@ typedef struct _tableInfo
 								 * created after the base table was created. 
 								 */
 	bool		sequence;
+	bool		hasoids;		/* does it have OIDs? */
 	int			numatts;		/* number of attributes */
 	int		   *inhAttrs;		/* an array of flags, one for each
 								 * attribute if the value is 1, then this
@@ -104,7 +105,6 @@ typedef struct _tableInfo
 	int		   *inhAttrDef;		/* Flags indicating if attrdef is inherited */
 	int		   *inhNotNull;		/* Flags indicating if NOT NULL in inherited */
 	char	  **attnames;		/* the attribute names */
-	char	  **attoids;		/* oids of the various attributes */
 	char	  **atttypedefns;	/* formatted column type definitions */
 	char	  **typnames;		/* fill out attributes */
 	bool	   *notnull;		/* Not null constraints of an attribute */

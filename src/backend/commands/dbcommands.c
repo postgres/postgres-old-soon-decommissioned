@@ -354,14 +354,14 @@ dropdb(const char *dbname)
 
 	heap_endscan(pgdbscan);
 
+	/* Delete any comments associated with the database */
+	DeleteComments(db_id, RelationGetRelid(pgdbrel));
+
 	/*
 	 * Close pg_database, but keep exclusive lock till commit to ensure
 	 * that any new backend scanning pg_database will see the tuple dead.
 	 */
 	heap_close(pgdbrel, NoLock);
-
-	/* Delete any comments associated with the database */
-	DeleteComments(db_id);
 
 	/*
 	 * Drop pages for this database that are in the shared buffer cache.

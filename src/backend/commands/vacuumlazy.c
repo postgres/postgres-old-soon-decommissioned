@@ -339,7 +339,8 @@ lazy_scan_heap(Relation onerel, LVRelStats *vacrelstats,
 			/*
 			 * Other checks...
 			 */
-			if (!OidIsValid(tuple.t_data->t_oid))
+			if (!OidIsValid(tuple.t_data->t_oid) &&
+				onerel->rd_rel->relhasoids)
 				elog(NOTICE, "Rel %s: TID %u/%u: OID IS INVALID. TUPGONE %d.",
 					 relname, blkno, offnum, (int) tupgone);
 

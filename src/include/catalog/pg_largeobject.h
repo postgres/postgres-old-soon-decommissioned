@@ -28,12 +28,11 @@
 
 /* ----------------
  *		pg_largeobject definition.	cpp turns this into
- *		typedef struct FormData_pg_largeobject. Large object id
- *		is stored in loid;
+ *		typedef struct FormData_pg_largeobject
  * ----------------
  */
 
-CATALOG(pg_largeobject)
+CATALOG(pg_largeobject) BKI_WITHOUT_OIDS
 {
 	Oid			loid;			/* Identifier of large object */
 	int4		pageno;			/* Page number (starting from 0) */

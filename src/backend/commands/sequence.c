@@ -161,9 +161,10 @@ DefineSequence(CreateSeqStmt *seq)
 	}
 
 	stmt->relname = seq->seqname;
-	stmt->istemp = seq->istemp;
 	stmt->inhRelnames = NIL;
 	stmt->constraints = NIL;
+	stmt->istemp = seq->istemp;
+	stmt->hasoids = false;
 
 	DefineRelation(stmt, RELKIND_SEQUENCE);
 

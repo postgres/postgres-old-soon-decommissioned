@@ -28,7 +28,7 @@
  * ----------------
  */
 
-CATALOG(pg_log) BOOTSTRAP
+CATALOG(pg_log) BOOTSTRAP BKI_WITHOUT_OIDS
 {
 	Oid			logfoo;
 } FormData_pg_log;

@@ -31,7 +31,7 @@
  *		typedef struct FormData_pg_inherits
  * ----------------
  */
-CATALOG(pg_inherits)
+CATALOG(pg_inherits) BKI_WITHOUT_OIDS
 {
 	Oid			inhrelid;
 	Oid			inhparent;

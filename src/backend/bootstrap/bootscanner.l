@@ -94,6 +94,8 @@ insert			{ return(INSERT_TUPLE); }
 "index"			{ return(INDEX); }
 "on"			{ return(ON); }
 "using"			{ return(USING); }
+"without_oids"	{ return(XWITHOUT_OIDS); }
+
 {arrayid}		{
 					yylval.ival = EnterString(MapArrayTypeName((char*)yytext));
 					return(ID);

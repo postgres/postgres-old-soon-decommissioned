@@ -45,7 +45,6 @@ extern List *expandRelAttrs(ParseState *pstate, RangeTblEntry *rte);
 extern List *expandJoinAttrs(ParseState *pstate, JoinExpr *join,
 				int sublevels_up);
 extern int	attnameAttNum(Relation rd, char *a);
-extern int	specialAttNum(char *a);
 extern Oid	attnumTypeId(Relation rd, int attid);
 
 #endif	 /* PARSE_RELATION_H */

@@ -1211,6 +1211,7 @@ formrdesc(char *relationName,
 	relation->rd_rel->relpages = 1;
 	relation->rd_rel->reltuples = 1;
 	relation->rd_rel->relkind = RELKIND_RELATION;
+	relation->rd_rel->relhasoids = true;
 	relation->rd_rel->relnatts = (int16) natts;
 
 	/*
@@ -1988,6 +1989,7 @@ RelationBuildLocalRelation(const char *relname,
 	strcpy(RelationGetPhysicalRelationName(rel), relname);
 
 	rel->rd_rel->relkind = RELKIND_UNCATALOGED;
+	rel->rd_rel->relhasoids = true;
 	rel->rd_rel->relnatts = natts;
 	rel->rd_rel->reltype = InvalidOid;
 	if (tupDesc->constr)

@@ -1967,11 +1967,12 @@ _copyCreateStmt(CreateStmt *from)
 {
 	CreateStmt *newnode = makeNode(CreateStmt);
 
-	newnode->istemp = from->istemp;
 	newnode->relname = pstrdup(from->relname);
 	Node_Copy(from, newnode, tableElts);
 	Node_Copy(from, newnode, inhRelnames);
 	Node_Copy(from, newnode, constraints);
+	newnode->istemp = from->istemp;
+	newnode->hasoids = from->hasoids;
 
 	return newnode;
 }

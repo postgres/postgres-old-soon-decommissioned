@@ -73,9 +73,7 @@ create operator <> (
 	procedure = ne
 );
 
-INSERT INTO pg_description (objoid, description)
-	SELECT oid, 'password type with checks'
-		FROM pg_type WHERE typname = 'chkpass';
+COMMENT ON TYPE chkpass IS 'password type with checks';
 
 --
 --	eof

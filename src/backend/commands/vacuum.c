@@ -434,6 +434,12 @@ vac_update_relstats(Oid relid, BlockNumber num_pages, double num_tuples,
 	pgcform->relpages = (int32) num_pages;
 	pgcform->reltuples = num_tuples;
 	pgcform->relhasindex = hasindex;
+	/*
+	 * If we have discovered that there are no indexes, then there's
+	 * no primary key either.  This could be done more thoroughly...
+	 */
+	if (!hasindex)
+		pgcform->relhaspkey = false;
 
 	/* invalidate the tuple in the cache and write the buffer */
 	RelationInvalidateHeapTuple(rd, &rtup);
@@ -904,7 +910,8 @@ scan_heap(VRelStats *vacrelstats, Relation onerel,
 			/*
 			 * Other checks...
 			 */
-			if (!OidIsValid(tuple.t_data->t_oid))
+			if (!OidIsValid(tuple.t_data->t_oid) &&
+				onerel->rd_rel->relhasoids)
 				elog(NOTICE, "Rel %s: TID %u/%u: OID IS INVALID. TUPGONE %d.",
 					 relname, blkno, offnum, (int) tupgone);
 

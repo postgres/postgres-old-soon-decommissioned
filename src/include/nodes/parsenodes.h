@@ -192,13 +192,14 @@ typedef struct CopyStmt
 typedef struct CreateStmt
 {
 	NodeTag		type;
-	bool		istemp;			/* is this a temp table? */
 	char	   *relname;		/* name of relation to create */
 	List	   *tableElts;		/* column definitions (list of ColumnDef) */
 	List	   *inhRelnames;	/* relations to inherit from (list of
 								 * T_String Values) */
 	List	   *constraints;	/* constraints (list of Constraint and
 								 * FkConstraint nodes) */
+	bool		istemp;			/* is this a temp table? */
+	bool		hasoids;		/* should it have OIDs? */
 } CreateStmt;
 
 /* ----------

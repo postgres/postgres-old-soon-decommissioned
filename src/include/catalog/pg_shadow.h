@@ -29,7 +29,7 @@
  *		typedef struct FormData_pg_shadow
  * ----------------
  */
-CATALOG(pg_shadow) BOOTSTRAP
+CATALOG(pg_shadow) BOOTSTRAP BKI_WITHOUT_OIDS
 {
 	NameData	usename;
 	int4		usesysid;
@@ -69,6 +69,6 @@ typedef FormData_pg_shadow *Form_pg_shadow;
  * user choices.
  * ----------------
  */
-DATA(insert OID = 0 ( "POSTGRES" PGUID t t t t _null_ _null_ ));
+DATA(insert ( "POSTGRES" PGUID t t t t _null_ _null_ ));
 
 #endif	 /* PG_SHADOW_H */

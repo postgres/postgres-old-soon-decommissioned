@@ -212,7 +212,7 @@ DefineIndex(char *heapRelationName,
 	 * backends to flush their relcache entries and in particular their
 	 * cached lists of the indexes for this relation.
 	 */
-	setRelhasindex(relationId, true);
+	setRelhasindex(relationId, true, primary, InvalidOid);
 }
 
 

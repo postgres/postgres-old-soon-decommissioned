@@ -32,7 +32,7 @@
  * ----------------------------------------------------------------
  */
 
-CATALOG(pg_listener)
+CATALOG(pg_listener) BKI_WITHOUT_OIDS
 {
 	NameData	relname;
 	int4		listenerpid;

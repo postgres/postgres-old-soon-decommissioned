@@ -47,7 +47,7 @@ extern void boot_openrel(char *name);
 extern char *LexIDStr(int ident_num);
 
 extern void DefineAttr(char *name, char *type, int attnum);
-extern void InsertOneValue(Oid objectid, char *value, int i);
+extern void InsertOneValue(char *value, int i);
 extern void InsertOneNull(int i);
 extern char *MapArrayTypeName(char *s);
 extern char *CleanUpStr(char *s);

@@ -627,7 +627,9 @@ DefineAttr(char *name, char *type, int attnum)
 
 /* ----------------
  *		InsertOneTuple
- *		assumes that 'oid' will not be zero.
+ *
+ * If objectid is not zero, it is a specific OID to assign to the tuple.
+ * Otherwise, an OID will be assigned (if necessary) by heap_insert.
  * ----------------
  */
 void
@@ -635,7 +637,6 @@ InsertOneTuple(Oid objectid)
 {
 	HeapTuple	tuple;
 	TupleDesc	tupDesc;
-
 	int			i;
 
 	if (DebugMode)
@@ -664,7 +665,7 @@ InsertOneTuple(Oid objectid)
  * ----------------
  */
 void
-InsertOneValue(Oid objectid, char *value, int i)
+InsertOneValue(char *value, int i)
 {
 	int			typeindex;
 	char	   *prt;
