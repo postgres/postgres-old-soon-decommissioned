@@ -2869,8 +2869,8 @@ SubSelect:	SELECT opt_unique res_target_list2
 					 * feature. If it makes troubles we will have to add 
 					 * a new rule and change this to prevent INTOs in 
 					 * Subselects again */
-					n->istemp = (bool)((A_Const *)lfirst($4))->val.val.ival;
-					n->into = (char *)lnext($4);
+					n->istemp = (bool) ((Value *) lfirst($4))->val.ival;
+					n->into = (char *) lnext($4);
 
 					n->fromClause = $5;
 					n->whereClause = $6;
