@@ -1611,6 +1611,7 @@ _equalConstraint(Constraint *a, Constraint *b)
 	COMPARE_NODE_FIELD(raw_expr);
 	COMPARE_STRING_FIELD(cooked_expr);
 	COMPARE_NODE_FIELD(keys);
+	COMPARE_STRING_FIELD(indexspace);
 
 	return true;
 }

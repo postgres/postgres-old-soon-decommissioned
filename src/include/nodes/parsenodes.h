@@ -992,6 +992,8 @@ typedef struct Constraint
 	char	   *cooked_expr;	/* expr, as nodeToString representation */
 	List	   *keys;			/* String nodes naming referenced
 								 * column(s) */
+	char	   *indexspace;		/* index tablespace for PKEY/UNIQUE
+								 * constraints; NULL for default */
 } Constraint;
 
 /* ----------

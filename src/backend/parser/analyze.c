@@ -1199,7 +1199,7 @@ transformIndexConstraints(ParseState *pstate, CreateStmtContext *cxt)
 
 		index->relation = cxt->relation;
 		index->accessMethod = DEFAULT_INDEX_TYPE;
-		index->tableSpace = NULL;
+		index->tableSpace = constraint->indexspace;
 		index->indexParams = NIL;
 		index->whereClause = NULL;
 

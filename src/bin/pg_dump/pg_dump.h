@@ -238,6 +238,7 @@ typedef struct _indxInfo
 	DumpableObject dobj;
 	TableInfo  *indextable;		/* link to table the index is for */
 	char	   *indexdef;
+	char	   *tablespace;		/* tablespace in which index is stored */
 	int			indnkeys;
 	Oid		   *indkeys;
 	bool		indisclustered;

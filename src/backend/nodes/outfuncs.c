@@ -1537,6 +1537,13 @@ _outConstraint(StringInfo str, Constraint *node)
 		case CONSTR_PRIMARY:
 			appendStringInfo(str, "PRIMARY_KEY");
 			WRITE_NODE_FIELD(keys);
+			WRITE_STRING_FIELD(indexspace);
+			break;
+
+		case CONSTR_UNIQUE:
+			appendStringInfo(str, "UNIQUE");
+			WRITE_NODE_FIELD(keys);
+			WRITE_STRING_FIELD(indexspace);
 			break;
 
 		case CONSTR_CHECK:
@@ -1553,11 +1560,6 @@ _outConstraint(StringInfo str, Constraint *node)
 
 		case CONSTR_NOTNULL:
 			appendStringInfo(str, "NOT_NULL");
-			break;
-
-		case CONSTR_UNIQUE:
-			appendStringInfo(str, "UNIQUE");
-			WRITE_NODE_FIELD(keys);
 			break;
 
 		default:

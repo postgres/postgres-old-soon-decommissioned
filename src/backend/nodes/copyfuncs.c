@@ -1485,6 +1485,7 @@ _copyConstraint(Constraint *from)
 	COPY_NODE_FIELD(raw_expr);
 	COPY_STRING_FIELD(cooked_expr);
 	COPY_NODE_FIELD(keys);
+	COPY_STRING_FIELD(indexspace);
 
 	return newnode;
 }
