@@ -29,6 +29,7 @@
 #include "executor/executor.h"
 #include "libpq/libpq.h"
 #include "miscadmin.h"
+#include "tcop/pquery.h"
 #include "tcop/tcopprot.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
@@ -598,7 +599,7 @@ CopyFrom(Relation rel, bool binary, bool oids, FILE *fp,
 				tuples_read = 0;
 	bool		reading_to_eof = true;
 	RelationInfo *relationInfo;
-	EState	   *estate = makeNode(EState);		/* for ExecConstraints() */
+	EState	   *estate = CreateExecutorState();	/* for ExecConstraints() */
 	TupleTable	tupleTable;
 	TupleTableSlot *slot;
 	Oid			loaded_oid = InvalidOid;

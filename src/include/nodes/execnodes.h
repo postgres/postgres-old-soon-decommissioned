@@ -223,9 +223,14 @@ typedef struct EState
 	uint32		es_processed;	/* # of tuples processed */
 	Oid			es_lastoid;		/* last oid processed (by INSERT) */
 	List	   *es_rowMark;		/* not good place, but there is no other */
-	/* these two fields are storage space for ExecConstraints(): */
+	MemoryContext es_query_cxt;	/* per-query context in which EState lives */
+	/* this ExprContext is for per-output-tuple operations, such as
+	 * constraint checks and index-value computations.  It can be reset
+	 * for each output tuple.  Note that it will be created only if needed.
+	 */
+	ExprContext *es_per_tuple_exprcontext;
+	/* this field is storage space for ExecConstraints(): */
 	List	  **es_result_relation_constraints;
-	ExprContext *es_constraint_exprcontext;
 	/* Below is to re-evaluate plan qual in READ COMMITTED mode */
 	struct Plan *es_origPlan;
 	Pointer		es_evalPlanQual;

@@ -26,7 +26,7 @@
  * This makes it easy and fast to release the storage when we don't need it
  * anymore.
  *
- * The contexts are made children of TransactionCommandContext, ensuring
+ * The hashtable contexts are made children of the per-query context, ensuring
  * that they will be discarded at end of statement even if the join is
  * aborted early by an error.  (Likewise, any temporary files we make will
  * be cleaned up by the virtual file manager in event of an error.)
