@@ -118,11 +118,6 @@ extern void
 exit_horribly(Archive *AH, const char *modulename, const char *fmt,...)
 __attribute__((format(printf, 3, 4)));
 
-extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
-
-extern const char *fmtId(const char *identifier);
-extern void appendStringLiteral(PQExpBuffer buf, const char *str, bool escapeAll);
-
 
 /* Lets the archive know we have a DB connection to shutdown if it dies */
 

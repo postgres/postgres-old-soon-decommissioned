@@ -13,6 +13,7 @@
 #include "pg_backup.h"
 #include "pg_backup_archiver.h"
 #include "pg_backup_db.h"
+#include "dumputils.h"
 
 #include <unistd.h>
 #include <ctype.h>
