@@ -170,12 +170,12 @@ toOidList(List *list)
 		 */
 		if (IsA(v, Integer))
 		{
-			lfirsti(l) = (Oid) intVal(v);
+			lfirsto(l) = (Oid) intVal(v);
 			pfree(v);
 		}
 		else if (IsA(v, Float))
 		{
-			lfirsti(l) = atooid(strVal(v));
+			lfirsto(l) = atooid(strVal(v));
 			pfree(strVal(v));
 			pfree(v);
 		}
@@ -534,7 +534,7 @@ _readSubLink(void)
 	READ_BOOL_FIELD(useOr);
 	READ_NODE_FIELD(lefthand);
 	READ_NODE_FIELD(operName);
-	READ_INTLIST_FIELD(operOids);
+	READ_OIDLIST_FIELD(operOids);
 	READ_NODE_FIELD(subselect);
 
 	READ_DONE();

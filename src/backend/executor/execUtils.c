@@ -677,7 +677,7 @@ ExecOpenIndices(ResultRelInfo *resultRelInfo)
 	i = 0;
 	foreach(indexoidscan, indexoidlist)
 	{
-		Oid			indexOid = lfirsti(indexoidscan);
+		Oid			indexOid = lfirsto(indexoidscan);
 		Relation	indexDesc;
 		IndexInfo  *ii;
 

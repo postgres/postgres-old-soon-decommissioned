@@ -283,7 +283,7 @@ vacuum(VacuumStmt *vacstmt)
 	 */
 	foreach(cur, vrl)
 	{
-		Oid			relid = (Oid) lfirsti(cur);
+		Oid			relid = lfirsto(cur);
 
 		if (vacstmt->vacuum)
 		{
@@ -382,7 +382,7 @@ getrels(const RangeVar *vacrel, const char *stmttype)
 
 		/* Make a relation list entry for this guy */
 		oldcontext = MemoryContextSwitchTo(vac_context);
-		vrl = lappendi(vrl, relid);
+		vrl = lappendo(vrl, relid);
 		MemoryContextSwitchTo(oldcontext);
 	}
 	else
@@ -406,7 +406,7 @@ getrels(const RangeVar *vacrel, const char *stmttype)
 		{
 			/* Make a relation list entry for this guy */
 			oldcontext = MemoryContextSwitchTo(vac_context);
-			vrl = lappendi(vrl, HeapTupleGetOid(tuple));
+			vrl = lappendo(vrl, HeapTupleGetOid(tuple));
 			MemoryContextSwitchTo(oldcontext);
 		}
 
@@ -2957,7 +2957,7 @@ vac_open_indexes(Relation relation, int *nindexes, Relation **Irel)
 	i = 0;
 	foreach(indexoidscan, indexoidlist)
 	{
-		Oid			indexoid = lfirsti(indexoidscan);
+		Oid			indexoid = lfirsto(indexoidscan);
 
 		(*Irel)[i] = index_open(indexoid);
 		i++;

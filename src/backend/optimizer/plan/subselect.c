@@ -458,7 +458,7 @@ convert_sublink_opers(List *lefthand, List *operOids,
 
 	foreach(lst, operOids)
 	{
-		Oid			opid = (Oid) lfirsti(lst);
+		Oid			opid = lfirsto(lst);
 		Node	   *leftop = lfirst(lefthand);
 		TargetEntry *te = lfirst(targetlist);
 		Node	   *rightop;
@@ -577,7 +577,7 @@ subplan_is_hashable(SubLink *slink, SubPlan *node)
 	 */
 	foreach(opids, slink->operOids)
 	{
-		Oid			opid = (Oid) lfirsti(opids);
+		Oid			opid = lfirsto(opids);
 		HeapTuple	tup;
 		Form_pg_operator optup;
 

@@ -146,7 +146,7 @@ transformTargetList(ParseState *pstate, List *targetlist)
 							if (strcmp(name1, DatabaseName) != 0)
 								elog(ERROR, "Cross-database references are not implemented");
 							schemaname = strVal(lsecond(fields));
-							relname = strVal(lfirst(lnext(lnext(fields))));
+							relname = strVal(lthird(fields));
 							break;
 						}
 					default:

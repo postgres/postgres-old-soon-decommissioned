@@ -488,7 +488,7 @@ transformExpr(ParseState *pstate, Node *expr)
 								 " to be used with quantified predicate subquery",
 								 opname);
 
-						sublink->operOids = lappendi(sublink->operOids,
+						sublink->operOids = lappendo(sublink->operOids,
 													 oprid(optup));
 
 						ReleaseSysCache(optup);
@@ -554,7 +554,7 @@ transformExpr(ParseState *pstate, Node *expr)
 					neww->result = (Expr *) transformExpr(pstate, warg);
 
 					newargs = lappend(newargs, neww);
-					typeids = lappendi(typeids, exprType((Node *) neww->result));
+					typeids = lappendo(typeids, exprType((Node *) neww->result));
 				}
 
 				newc->args = newargs;
@@ -583,7 +583,7 @@ transformExpr(ParseState *pstate, Node *expr)
 				 * code worked before, but it seems a little bogus to me
 				 * --- tgl
 				 */
-				typeids = lconsi(exprType((Node *) newc->defresult), typeids);
+				typeids = lconso(exprType((Node *) newc->defresult), typeids);
 
 				ptype = select_common_type(typeids, "CASE");
 				newc->casetype = ptype;
@@ -830,7 +830,7 @@ transformColumnRef(ParseState *pstate, ColumnRef *cref)
 			{
 				char	   *name1 = strVal(lfirst(cref->fields));
 				char	   *name2 = strVal(lsecond(cref->fields));
-				char	   *name3 = strVal(lfirst(lnext(lnext(cref->fields))));
+				char	   *name3 = strVal(lthird(cref->fields));
 
 				/* Whole-row reference? */
 				if (strcmp(name3, "*") == 0)
@@ -863,8 +863,8 @@ transformColumnRef(ParseState *pstate, ColumnRef *cref)
 			{
 				char	   *name1 = strVal(lfirst(cref->fields));
 				char	   *name2 = strVal(lsecond(cref->fields));
-				char	   *name3 = strVal(lfirst(lnext(lnext(cref->fields))));
-				char	   *name4 = strVal(lfirst(lnext(lnext(lnext(cref->fields)))));
+				char	   *name3 = strVal(lthird(cref->fields));
+				char	   *name4 = strVal(lfourth(cref->fields));
 
 				/*
 				 * We check the catalog name and then ignore it.

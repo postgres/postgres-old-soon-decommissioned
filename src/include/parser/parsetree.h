@@ -26,15 +26,11 @@
 
 /*
  *		rt_fetch
- *		rt_store
  *
- *		Access and (destructively) replace rangetable entries.
+ * NB: this will crash and burn if handed an out-of-range RT index
  */
 #define rt_fetch(rangetable_index, rangetable) \
 	((RangeTblEntry *) nth((rangetable_index)-1, rangetable))
-
-#define rt_store(rangetable_index, rangetable, rt) \
-	set_nth(rangetable, (rangetable_index)-1, rt)
 
 /*
  *		getrelid

@@ -2245,7 +2245,7 @@ DeferredTriggerSetState(ConstraintsSetStmt *stmt)
 						 cname);
 
 				constr_oid = HeapTupleGetOid(htup);
-				loid = lappendi(loid, constr_oid);
+				loid = lappendo(loid, constr_oid);
 				found = true;
 			}
 
@@ -2271,7 +2271,7 @@ DeferredTriggerSetState(ConstraintsSetStmt *stmt)
 			foreach(ls, deftrig_trigstates)
 			{
 				state = (DeferredTriggerStatus) lfirst(ls);
-				if (state->dts_tgoid == (Oid) lfirsti(l))
+				if (state->dts_tgoid == lfirsto(l))
 				{
 					state->dts_tgisdeferred = stmt->deferred;
 					found = true;
@@ -2282,7 +2282,7 @@ DeferredTriggerSetState(ConstraintsSetStmt *stmt)
 			{
 				state = (DeferredTriggerStatus)
 					palloc(sizeof(DeferredTriggerStatusData));
-				state->dts_tgoid = (Oid) lfirsti(l);
+				state->dts_tgoid = lfirsto(l);
 				state->dts_tgisdeferred = stmt->deferred;
 
 				deftrig_trigstates =

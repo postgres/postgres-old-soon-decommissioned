@@ -897,7 +897,7 @@ ExecInitIndexScan(IndexScan *node, EState *estate)
 	listscan = indxid;
 	for (i = 0; i < numIndices; i++)
 	{
-		Oid			indexOid = (Oid) lfirsti(listscan);
+		Oid			indexOid = lfirsto(listscan);
 
 		indexDescs[i] = index_open(indexOid);
 		scanDescs[i] = index_beginscan(currentRelation,

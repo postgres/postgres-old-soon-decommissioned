@@ -403,7 +403,7 @@ explain_outNode(StringInfo str,
 			{
 				Relation	relation;
 
-				relation = index_open(lfirsti(l));
+				relation = index_open(lfirsto(l));
 				appendStringInfo(str, "%s%s",
 								 (++i > 1) ? ", " : "",
 					quote_identifier(RelationGetRelationName(relation)));

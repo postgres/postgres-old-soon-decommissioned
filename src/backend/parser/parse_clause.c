@@ -854,7 +854,7 @@ buildMergedJoinVar(JoinType jointype, Var *l_colvar, Var *r_colvar)
 	outcoltypmod = l_colvar->vartypmod;
 	if (outcoltype != r_colvar->vartype)
 	{
-		outcoltype = select_common_type(makeListi2(l_colvar->vartype,
+		outcoltype = select_common_type(makeListo2(l_colvar->vartype,
 												   r_colvar->vartype),
 										"JOIN/USING");
 		outcoltypmod = -1;		/* ie, unknown */

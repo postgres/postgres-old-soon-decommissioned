@@ -245,7 +245,7 @@ current_schema(PG_FUNCTION_ARGS)
 
 	if (search_path == NIL)
 		PG_RETURN_NULL();
-	nspname = get_namespace_name((Oid) lfirsti(search_path));
+	nspname = get_namespace_name(lfirsto(search_path));
 	PG_RETURN_DATUM(DirectFunctionCall1(namein, CStringGetDatum(nspname)));
 }
 
@@ -265,7 +265,7 @@ current_schemas(PG_FUNCTION_ARGS)
 	{
 		char	   *nspname;
 
-		nspname = get_namespace_name((Oid) lfirsti(search_path));
+		nspname = get_namespace_name(lfirsto(search_path));
 		names[i] = DirectFunctionCall1(namein, CStringGetDatum(nspname));
 		i++;
 		search_path = lnext(search_path);

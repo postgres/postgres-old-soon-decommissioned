@@ -658,7 +658,7 @@ create_indexscan_plan(Query *root,
 	{
 		IndexOptInfo *index = (IndexOptInfo *) lfirst(ixinfo);
 
-		indexids = lappendi(indexids, index->indexoid);
+		indexids = lappendo(indexids, index->indexoid);
 	}
 
 	/*

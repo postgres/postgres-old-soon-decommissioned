@@ -948,7 +948,7 @@ find_expr_references_walker(Node *node,
 
 		foreach(opid, sublink->operOids)
 		{
-			add_object_address(OCLASS_OPERATOR, (Oid) lfirsti(opid), 0,
+			add_object_address(OCLASS_OPERATOR, lfirsto(opid), 0,
 							   &context->addrs);
 		}
 		/* fall through to examine arguments */
