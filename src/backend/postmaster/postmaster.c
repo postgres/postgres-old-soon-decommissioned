@@ -667,7 +667,6 @@ send_error_reply(Port *port, const char *errormsg)
       /* The literal reply string we put into the socket.  This is a pointer
          to storage we malloc.
          */
-    char reply[201];
     const struct linger linger_parm = {true, LINGER_TIME};
     /* A parameter for setsockopt() that tells it to have close() block for
        a while waiting for the frontend to read its outstanding messages.
