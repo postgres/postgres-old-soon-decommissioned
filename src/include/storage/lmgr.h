@@ -72,10 +72,10 @@ extern void RelationSetWIntentLock(Relation relation);
 extern void RelationUnsetWIntentLock(Relation relation);
 
 /* single.c */
-extern bool SingleLockReln(LockInfo linfo, LOCKT lockt, int action);
+extern bool SingleLockReln(LockInfo linfo, LOCKTYPE locktype, int action);
 extern bool
 SingleLockPage(LockInfo linfo, ItemPointer tidPtr,
-			   LOCKT lockt, int action);
+			   LOCKTYPE locktype, int action);
 
 /* proc.c */
 extern void InitProcGlobal(IPCKey key);

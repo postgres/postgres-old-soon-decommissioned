@@ -37,7 +37,7 @@ typedef int MASK;
 #define NLOCKENTS NLOCKS_PER_XACT*NBACKENDS
 
 typedef int LOCK_TYPE;
-typedef int LOCKT;
+typedef int LOCKTYPE;
 typedef int LockTableId;
 
 /* MAX_LOCKTYPES cannot be larger than the bits in MASK */
@@ -190,10 +190,10 @@ typedef struct Lock
 
 #define LockGetLock_nHolders(l) l->nHolders
 
-#define LockDecrWaitHolders(lock, lockt) \
+#define LockDecrWaitHolders(lock, locktype) \
 ( \
   lock->nHolding--, \
-  lock->holders[lockt]-- \
+  lock->holders[locktype]-- \
 )
 
 #define LockLockTable() SpinAcquire(LockMgrLock);
@@ -209,12 +209,12 @@ extern void LockDisable(int status);
 extern LockTableId
 LockTableInit(char *tabName, MASK *conflictsP, int *prioP,
 			int ntypes);
-extern bool LockAcquire(LockTableId tableId, LOCKTAG *lockName, LOCKT lockt);
+extern bool LockAcquire(LockTableId tableId, LOCKTAG *lockName, LOCKTYPE locktype);
 extern int
-LockResolveConflicts(LOCKTAB *ltable, LOCK *lock, LOCKT lockt,
+LockResolveConflicts(LOCKTAB *ltable, LOCK *lock, LOCKTYPE locktype,
 					 TransactionId xid);
-extern bool LockRelease(LockTableId tableId, LOCKTAG *lockName, LOCKT lockt);
-extern void GrantLock(LOCK *lock, LOCKT lockt);
+extern bool LockRelease(LockTableId tableId, LOCKTAG *lockName, LOCKTYPE locktype);
+extern void GrantLock(LOCK *lock, LOCKTYPE locktype);
 extern bool LockReleaseAll(LockTableId tableId, SHM_QUEUE *lockQueue);
 extern int	LockShmemSize(void);
 extern bool LockingDisabled(void);
