@@ -231,7 +231,10 @@ ExecInitFunctionScan(FunctionScan *node, EState *estate)
 		tupdesc = BuildDescForRelation(rte->coldeflist);
 	}
 	else
-		elog(ERROR, "Unknown kind of return type specified for function");
+	{
+		/* crummy error message, but parser should have caught this */
+		elog(ERROR, "function in FROM has unsupported return type");
+	}
 
 	scanstate->tupdesc = tupdesc;
 	ExecSetSlotDescriptor(scanstate->ss.ss_ScanTupleSlot,

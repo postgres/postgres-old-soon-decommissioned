@@ -697,7 +697,10 @@ TypeGetTupleDesc(Oid typeoid, List *colaliases)
 	else if (functyptype == 'p' && typeoid == RECORDOID)
 		elog(ERROR, "Unable to determine tuple description for function returning \"record\"");
 	else
-		elog(ERROR, "Unknown kind of return type specified for function");
+	{
+		/* crummy error message, but parser should have caught this */
+		elog(ERROR, "function in FROM has unsupported return type");
+	}
 
 	return tupdesc;
 }

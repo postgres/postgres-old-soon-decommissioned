@@ -483,7 +483,8 @@ checkretval(Oid rettype, char fn_typtype, List *queryTreeList)
 		 */
 	}
 	else
-		elog(ERROR, "Unknown kind of return type specified for function");
+		elog(ERROR, "return type %s is not supported for SQL functions",
+			 format_type_be(rettype));
 }
 
 

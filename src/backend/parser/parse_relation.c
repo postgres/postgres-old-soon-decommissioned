@@ -992,7 +992,7 @@ addRangeTableEntryForFunction(ParseState *pstate,
 		}
 	}
 	else
-		elog(ERROR, "Unknown kind of return type specified for function %s",
+		elog(ERROR, "function %s() in FROM has unsupported return type",
 			 funcname);
 
 	/*----------
@@ -1382,7 +1382,7 @@ expandRTE(ParseState *pstate, RangeTblEntry *rte,
 					}
 				}
 				else
-					elog(ERROR, "Unknown kind of return type specified for function");
+					elog(ERROR, "function in FROM has unsupported return type");
 			}
 			break;
 		case RTE_JOIN:
@@ -1636,7 +1636,7 @@ get_rte_attribute_type(RangeTblEntry *rte, AttrNumber attnum,
 					*vartypmod = -1;
 				}
 				else
-					elog(ERROR, "Unknown kind of return type specified for function");
+					elog(ERROR, "function in FROM has unsupported return type");
 			}
 			break;
 		case RTE_JOIN:
