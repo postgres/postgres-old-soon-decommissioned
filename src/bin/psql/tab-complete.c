@@ -263,9 +263,10 @@ psql_completion(char *text, int start, int end)
 	};
 
 	static char *backslash_commands[] = {
-		"\\connect", "\\copy", "\\d", "\\di", "\\di", "\\ds", "\\dS", "\\dv",
-		"\\da", "\\df", "\\do", "\\dt", "\\e", "\\echo", "\\encoding",
-		"\\g", "\\h", "\\i", "\\l",
+		"\\connect", "\\copy", "\\d", "\\da", "\\dd", "\\df", "\\di",
+		"\\dl", "\\do", "\\dp", "\\ds", "\\dS", "\\dt", "\\dT", "\\dv",
+		"\\e", "\\echo",
+		"\\encoding", "\\g", "\\h", "\\i", "\\l",
 		"\\lo_import", "\\lo_export", "\\lo_list", "\\lo_unlink",
 		"\\o", "\\p", "\\pset", "\\q", "\\qecho", "\\r", "\\set", "\\t", "\\unset",
 		"\\x", "\\w", "\\z", "\\!", NULL
