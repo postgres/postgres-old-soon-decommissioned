@@ -78,12 +78,14 @@ TEMPDIR=obj
 install-headers: beforeinstall-headers postgres.h c.h
 	$(INSTALL) $(INSTLOPTS) ../backend/include/postgres.h \
           $(HEADERDIR)/postgres.h
+	$(INSTALL) $(INSTLOPTS) ../include/config.h \
+          $(HEADERDIR)/config.h
 	$(INSTALL) $(INSTLOPTS) ../include/libpq/pqcomm.h \
           $(HEADERDIR)/libpq/pqcomm.h
 	$(INSTALL) $(INSTLOPTS) ../include/libpq/libpq-fs.h \
           $(HEADERDIR)/libpq/libpq-fs.h
 	$(INSTALL) $(INSTLOPTS) ../include/lib/dllist.h \
-          $(HEADERDIR)/libpq/dllist.h
+          $(HEADERDIR)/lib/dllist.h
 	$(INSTALL) $(INSTLOPTS) ../include/utils/geo-decls.h \
           $(HEADERDIR)/utils/geo-decls.h
 	$(INSTALL) $(INSTLOPTS) libpq-fe.h $(HEADERDIR)/libpq-fe.h
