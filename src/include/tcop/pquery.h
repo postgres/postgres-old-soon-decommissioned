@@ -20,13 +20,15 @@
 extern void ProcessQuery(Query *parsetree,
 						 Plan *plan,
 						 ParamListInfo params,
-						 const char *portalName,
 						 DestReceiver *dest,
 						 char *completionTag);
 
 extern PortalStrategy ChoosePortalStrategy(List *parseTrees);
 
 extern void PortalStart(Portal portal, ParamListInfo params);
+
+extern void PortalSetResultFormat(Portal portal, int nFormats,
+								  int16 *formats);
 
 extern bool PortalRun(Portal portal, long count,
 					  DestReceiver *dest, DestReceiver *altdest,

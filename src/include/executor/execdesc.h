@@ -34,7 +34,6 @@ typedef struct QueryDesc
 	Query	   *parsetree;		/* rewritten parsetree */
 	Plan	   *plantree;		/* planner's output */
 	DestReceiver *dest;			/* the destination for tuple output */
-	const char *portalName;		/* name of portal, or NULL */
 	ParamListInfo params;		/* param values being passed in */
 	bool		doInstrument;	/* TRUE requests runtime instrumentation */
 
@@ -46,7 +45,7 @@ typedef struct QueryDesc
 
 /* in pquery.c */
 extern QueryDesc *CreateQueryDesc(Query *parsetree, Plan *plantree,
-								  DestReceiver *dest, const char *portalName,
+								  DestReceiver *dest,
 								  ParamListInfo params,
 								  bool doInstrument);
 

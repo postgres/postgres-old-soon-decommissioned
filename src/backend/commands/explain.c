@@ -179,7 +179,7 @@ ExplainOneQuery(Query *query, ExplainStmt *stmt, TupOutputState *tstate)
 	plan = planner(query, isCursor, cursorOptions);
 
 	/* Create a QueryDesc requesting no output */
-	queryDesc = CreateQueryDesc(query, plan, None_Receiver, NULL, NULL,
+	queryDesc = CreateQueryDesc(query, plan, None_Receiver, NULL,
 								stmt->analyze);
 
 	ExplainOnePlan(queryDesc, stmt, tstate);

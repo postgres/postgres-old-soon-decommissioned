@@ -765,8 +765,7 @@ begin_tup_output_tupdesc(DestReceiver *dest, TupleDesc tupdesc)
 	tstate->metadata = TupleDescGetAttInMetadata(tupdesc);
 	tstate->dest = dest;
 
-	(*tstate->dest->startup) (tstate->dest, (int) CMD_SELECT,
-							  NULL, tupdesc, NIL);
+	(*tstate->dest->startup) (tstate->dest, (int) CMD_SELECT, tupdesc);
 
 	return tstate;
 }

@@ -245,7 +245,7 @@ postquel_start(execution_state *es, SQLFunctionCachePtr fcache)
 {
 	Assert(es->qd == NULL);
 	es->qd = CreateQueryDesc(es->query, es->plan,
-							 None_Receiver, NULL,
+							 None_Receiver,
 							 fcache->paramLI, false);
 
 	/* Utility commands don't need Executor. */

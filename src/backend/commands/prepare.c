@@ -528,7 +528,7 @@ ExplainExecuteQuery(ExplainStmt *stmt, TupOutputState *tstate)
 			}
 
 			/* Create a QueryDesc requesting no output */
-			qdesc = CreateQueryDesc(query, plan, None_Receiver, NULL,
+			qdesc = CreateQueryDesc(query, plan, None_Receiver,
 									paramLI, stmt->analyze);
 
 			ExplainOnePlan(qdesc, stmt, tstate);

@@ -31,9 +31,7 @@ typedef struct
  * Prepare to receive tuples from executor.
  */
 static void
-tstoreStartupReceiver(DestReceiver *self, int operation,
-					  const char *portalname,
-					  TupleDesc typeinfo, List *targetlist)
+tstoreStartupReceiver(DestReceiver *self, int operation, TupleDesc typeinfo)
 {
 	/* do nothing */
 }
