@@ -1342,7 +1342,7 @@ XLogFileInit(uint32 log, uint32 seg,
 			/* if write didn't set errno, assume problem is no disk space */
 			errno = save_errno ? save_errno : ENOSPC;
 
-			elog(STOP, "ZeroFill failed to create or write %s: %m", tmppath);
+			elog(STOP, "ZeroFill failed to write %s: %m", tmppath);
 		}
 	}
 
