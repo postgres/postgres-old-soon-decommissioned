@@ -1839,11 +1839,14 @@ getTables(int *numTables, FuncInfo *finfo, int numFuncs)
 	appendPQExpBuffer(query,
 			   "SELECT pg_class.oid, relname, relkind, relacl, "
 					  "(select usename from pg_user where relowner = usesysid) as usename, "
-					  "relchecks, reltriggers, relhasindex, pg_get_viewdef(relname) as viewdef "
+					  "relchecks, reltriggers, relhasindex, "
+					  "Case When relkind = '%c' then pg_get_viewdef(relname) "
+					  "Else NULL End as viewdef "
 					  "from pg_class "
 					  "where relname !~ '^pg_' "
 					  "and relkind in ('%c', '%c', '%c') "
 					  "order by oid",
+				RELKIND_VIEW,
 				RELKIND_RELATION, RELKIND_SEQUENCE, RELKIND_VIEW);
 
 	res = PQexec(g_conn, query->data);
