@@ -1236,6 +1236,24 @@ AC_CONFIG_LINKS([
   src/Makefile.port:src/makefiles/Makefile.${template}
 ])
 
+# Links sometimes fail undetected on Mingw - 
+# so here we detect it and warn the user
+case $host_os in mingw*)
+ for linktarget in \
+	src/backend/port/tas.s \
+	src/backend/port/dynloader.c \
+	src/backend/port/pg_sema.c \
+	src/backend/port/pg_shmem.c \
+	src/include/dynloader.h \
+	src/include/pg_config_os.h \
+	src/Makefile.port
+ do
+	# test -e works for symlinks in the MinGW console
+	test -e $linktarget || AC_MSG_WARN([*** link for $linktarget failed - please fix by hand])
+ done
+	;;
+esac
+
 AC_CONFIG_HEADERS([src/include/pg_config.h],
 [
 # Update timestamp for pg_config.h (see Makefile.global)
