@@ -1540,6 +1540,17 @@ _copyRangeTblEntry(RangeTblEntry *from)
 	return newnode;
 }
 
+static RowMark *
+_copyRowMark(RowMark *from)
+{
+	RowMark *newnode = makeNode(RowMark);
+
+	newnode->rti = from->rti;
+	newnode->info = from->info;
+
+	return newnode;
+}
+
 static SortClause *
 _copySortClause(SortClause *from)
 {
@@ -1622,6 +1633,8 @@ _copyQuery(Query *from)
 
 	Node_Copy(from, newnode, limitOffset);
 	Node_Copy(from, newnode, limitCount);
+
+	Node_Copy(from, newnode, rowMark);
 
 	return newnode;
 }
@@ -1845,6 +1858,9 @@ copyObject(void *from)
 			break;
 		case T_RangeTblEntry:
 			retval = _copyRangeTblEntry(from);
+			break;
+		case T_RowMark:
+			retval = _copyRowMark(from);
 			break;
 		case T_SortClause:
 			retval = _copySortClause(from);
