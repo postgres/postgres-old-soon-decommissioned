@@ -732,7 +732,8 @@ transformCreateStmt(ParseState *pstate, CreateStmt *stmt)
 					is_serial = true;
 					column->typename->name = pstrdup("int4");
 				}
-				else if (strcmp(column->typename->name, "serial8") == 0)
+				else if (strcmp(column->typename->name, "bigserial") == 0 ||
+						 strcmp(column->typename->name, "serial8") == 0)
 				{
 					is_serial = true;
 					column->typename->name = pstrdup("int8");
