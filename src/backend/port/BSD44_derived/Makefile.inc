@@ -17,6 +17,8 @@
 #
 LDADD+= -ll
 
+HAVE_Cplusplus= true
+
 #
 # 4.4-lite BSD-derived OSs have a little trouble with partially-implemented
 # dynamic loading soutines. See the comments in port-protos.h.
