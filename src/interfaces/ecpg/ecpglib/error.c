@@ -192,7 +192,7 @@ ECPGraise_backend(int line, PGresult *result, PGconn *conn, int compat)
 		sqlca->sqlcode = ECPG_PGSQL;
 
 	ECPGlog("raising sqlstate %.*s in line %d, '%s'.\n",
-			sqlca->sqlstate, sizeof(sqlca->sqlstate), line, sqlca->sqlerrm.sqlerrmc);
+			sizeof(sqlca->sqlstate), sqlca->sqlstate, line, sqlca->sqlerrm.sqlerrmc);
 
 	/* free all memory we have allocated for the user */
 	ECPGfree_auto_mem();
