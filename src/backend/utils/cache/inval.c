@@ -437,8 +437,12 @@ PrepareForTupleInvalidation(Relation relation, HeapTuple tuple,
 	 * We only need to worry about invalidation for tuples that are in
 	 * system relations; user-relation tuples are never in catcaches and
 	 * can't affect the relcache either.
+	 *
+	 * TOAST tuples can likewise be ignored here.
 	 */
 	if (!IsSystemRelationName(NameStr(RelationGetForm(relation)->relname)))
+		return;
+	if (IsToastRelationName(NameStr(RelationGetForm(relation)->relname)))
 		return;
 
 	/*
