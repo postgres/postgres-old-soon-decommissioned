@@ -560,7 +560,6 @@ CreateUser(CreateUserStmt *stmt)
 	new_record[Anum_pg_shadow_usesysid - 1] = Int32GetDatum(sysid);
 	AssertState(BoolIsValid(createdb));
 	new_record[Anum_pg_shadow_usecreatedb - 1] = BoolGetDatum(createdb);
-	new_record[Anum_pg_shadow_usetrace - 1] = BoolGetDatum(false);
 	AssertState(BoolIsValid(createuser));
 	new_record[Anum_pg_shadow_usesuper - 1] = BoolGetDatum(createuser);
 	/* superuser gets catupd right by default */

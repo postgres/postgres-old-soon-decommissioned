@@ -65,10 +65,6 @@ SetDefine(char *querystr, Oid elemType)
 							 false,		/* security invoker */
 							 false,		/* isStrict (irrelevant, no args) */
 							 PROVOLATILE_VOLATILE,	/* assume unsafe */
-							 100,		/* byte_pct */
-							 0, /* perbyte_cpu */
-							 0, /* percall_cpu */
-							 100,		/* outin_ratio */
 							 0,			/* parameterCount */
 							 NULL);		/* parameterTypes */
 

@@ -1012,7 +1012,6 @@ typedef struct CreatePLangStmt
 	char	   *plname;			/* PL name */
 	List	   *plhandler;		/* PL call handler function (qual. name) */
 	List	   *plvalidator;	/* optional validator function (qual. name) */
-	char	   *plcompiler;		/* lancompiler text */
 	bool		pltrusted;		/* PL is trusted */
 } CreatePLangStmt;
 

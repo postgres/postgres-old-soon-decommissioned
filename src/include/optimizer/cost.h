@@ -25,12 +25,6 @@
 #define DEFAULT_CPU_INDEX_TUPLE_COST 0.001
 #define DEFAULT_CPU_OPERATOR_COST  0.0025
 
-/* defaults for function attributes used for expensive function calculations */
-#define BYTE_PCT 100
-#define PERBYTE_CPU 0
-#define PERCALL_CPU 0
-#define OUTIN_RATIO 100
-
 
 /*
  * prototypes for costsize.c

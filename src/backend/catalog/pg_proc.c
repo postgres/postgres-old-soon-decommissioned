@@ -57,10 +57,6 @@ ProcedureCreate(const char *procedureName,
 				bool security_definer,
 				bool isStrict,
 				char volatility,
-				int32 byte_pct,
-				int32 perbyte_cpu,
-				int32 percall_cpu,
-				int32 outin_ratio,
 				int parameterCount,
 				const Oid *parameterTypes)
 {
@@ -162,17 +158,12 @@ ProcedureCreate(const char *procedureName,
 	values[i++] = ObjectIdGetDatum(languageObjectId); /* prolang */
 	values[i++] = BoolGetDatum(isAgg);			/* proisagg */
 	values[i++] = BoolGetDatum(security_definer); /* prosecdef */
-	values[i++] = BoolGetDatum(false);			/* proimplicit */
 	values[i++] = BoolGetDatum(isStrict);		/* proisstrict */
 	values[i++] = BoolGetDatum(returnsSet);		/* proretset */
 	values[i++] = CharGetDatum(volatility);		/* provolatile */
 	values[i++] = UInt16GetDatum(parameterCount); /* pronargs */
 	values[i++] = ObjectIdGetDatum(returnType);	/* prorettype */
 	values[i++] = PointerGetDatum(typev);		/* proargtypes */
-	values[i++] = Int32GetDatum(byte_pct);		/* probyte_pct */
-	values[i++] = Int32GetDatum(perbyte_cpu);	/* properbyte_cpu */
-	values[i++] = Int32GetDatum(percall_cpu);	/* propercall_cpu */
-	values[i++] = Int32GetDatum(outin_ratio);	/* prooutin_ratio */
 	values[i++] = DirectFunctionCall1(textin,	/* prosrc */
 									  CStringGetDatum(prosrc));
 	values[i++] = DirectFunctionCall1(textin,	/* probin */

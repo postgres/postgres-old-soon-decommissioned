@@ -737,7 +737,6 @@ CREATE VIEW pg_user AS \
         usename, \
         usesysid, \
         usecreatedb, \
-        usetrace, \
         usesuper, \
         usecatupd, \
         '********'::text as passwd, \

@@ -146,10 +146,6 @@ AggregateCreate(const char *aggName,
 							  false,		/* security invoker (currently not definable for agg) */
 							  false,		/* isStrict (not needed for agg) */
 							  PROVOLATILE_IMMUTABLE,	/* volatility (not needed for agg) */
-							  BYTE_PCT,		/* default cost values */
-							  PERBYTE_CPU,
-							  PERCALL_CPU,
-							  OUTIN_RATIO,
 							  1,			/* parameterCount */
 							  fnArgs);		/* parameterTypes */
 

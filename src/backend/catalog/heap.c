@@ -641,13 +641,10 @@ AddNewRelationType(const char *typeName,
 			   new_type_oid,	/* preassigned oid for type */
 			   new_rel_oid,		/* relation oid */
 			   sizeof(Oid),		/* internal size */
-			   -1,				/* external size */
 			   'c',				/* type-type (complex) */
 			   ',',				/* default array delimiter */
 			   F_OIDIN,			/* input procedure */
 			   F_OIDOUT,		/* output procedure */
-			   F_OIDIN,			/* receive procedure */
-			   F_OIDOUT,		/* send procedure */
 			   InvalidOid,		/* array element type - irrelevant */
 			   InvalidOid,		/* domain base type - irrelevant */
 			   NULL,			/* default type value - none */

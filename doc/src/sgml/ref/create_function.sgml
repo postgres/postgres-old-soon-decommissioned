@@ -257,16 +257,11 @@ CREATE [ OR REPLACE ] FUNCTION <replaceable class="parameter">name</replaceable>
        </varlistentry>
 
        <varlistentry>
-        <term>isImmutable</term>
         <term>isCachable</term>
-        <term>isStable</term>
-        <term>isVolatile</term>
         <listitem>
          <para>
-          Equivalent to <literal>IMMUTABLE</literal>,
-          <literal>STABLE</literal>, <literal>VOLATILE</literal>.
           <literal>isCachable</literal> is an obsolete equivalent of
-          <literal>isImmutable</literal>; it's still accepted for
+          <literal>IMMUTABLE</literal>; it's still accepted for
           backwards-compatibility reasons.
          </para>
         </listitem>

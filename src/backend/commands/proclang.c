@@ -110,8 +110,6 @@ CreateProceduralLanguage(CreatePLangStmt *stmt)
 	values[i++] = BoolGetDatum(stmt->pltrusted);
 	values[i++] = ObjectIdGetDatum(procOid);
 	values[i++] = ObjectIdGetDatum(valProcOid);
-	values[i++] = DirectFunctionCall1(textin,
-									  CStringGetDatum(stmt->plcompiler));
 	nulls[i] = 'n';				/* lanacl */
 
 	rel = heap_openr(LanguageRelationName, RowExclusiveLock);

@@ -1252,8 +1252,6 @@ _equalCreatePLangStmt(CreatePLangStmt *a, CreatePLangStmt *b)
 		return false;
 	if (!equal(a->plvalidator, b->plvalidator))
 		return false;
-	if (!equalstr(a->plcompiler, b->plcompiler))
-		return false;
 	if (a->pltrusted != b->pltrusted)
 		return false;
 

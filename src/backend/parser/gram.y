@@ -1931,7 +1931,6 @@ CreatePLangStmt:
 				n->plname = $5;
 				n->plhandler = $7;
 				n->plvalidator = $8;
-				n->plcompiler = $9;
 				n->pltrusted = $2;
 				$$ = (Node *)n;
 			}
