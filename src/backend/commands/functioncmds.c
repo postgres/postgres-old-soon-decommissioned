@@ -62,7 +62,7 @@
  * doesn't exist yet.  (Without this, there's no way to define the I/O procs
  * for a new type.)  But SQL function creation won't cope, so error out if
  * the target language is SQL.	(We do this here, not in the SQL-function
- * validator, so as not to produce a WARNING and then an ERROR for the same
+ * validator, so as not to produce a NOTICE and then an ERROR for the same
  * condition.)
  */
 static void
@@ -81,7 +81,7 @@ compute_return_type(TypeName *returnType, Oid languageOid,
 				elog(ERROR, "SQL function cannot return shell type \"%s\"",
 					 TypeNameToString(returnType));
 			else
-				elog(WARNING, "Return type \"%s\" is only a shell",
+				elog(NOTICE, "Return type \"%s\" is only a shell",
 					 TypeNameToString(returnType));
 		}
 	}
@@ -103,7 +103,7 @@ compute_return_type(TypeName *returnType, Oid languageOid,
 			elog(ERROR, "Type \"%s\" does not exist", typnam);
 
 		/* Otherwise, go ahead and make a shell type */
-		elog(WARNING, "ProcedureCreate: type %s is not yet defined",
+		elog(NOTICE, "ProcedureCreate: type %s is not yet defined",
 			 typnam);
 		namespaceId = QualifiedNameGetCreationNamespace(returnType->names,
 														&typname);
@@ -150,7 +150,7 @@ compute_parameter_types(List *argTypes, Oid languageOid,
 					elog(ERROR, "SQL function cannot accept shell type \"%s\"",
 						 TypeNameToString(t));
 				else
-					elog(WARNING, "Argument type \"%s\" is only a shell",
+					elog(NOTICE, "Argument type \"%s\" is only a shell",
 						 TypeNameToString(t));
 			}
 		}
@@ -518,8 +518,8 @@ RemoveFunction(RemoveFuncStmt *stmt)
 
 	if (((Form_pg_proc) GETSTRUCT(tup))->prolang == INTERNALlanguageId)
 	{
-		/* "Helpful" WARNING when removing a builtin function ... */
-		elog(WARNING, "Removing built-in function \"%s\"",
+		/* "Helpful" NOTICE when removing a builtin function ... */
+		elog(NOTICE, "Removing built-in function \"%s\"",
 			 NameListToString(functionName));
 	}
 
