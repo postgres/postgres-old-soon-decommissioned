@@ -275,13 +275,11 @@ gbox_picksplit(PG_FUNCTION_ARGS)
     	sizeLR = size_box( interLR );
     	sizeBT = size_box( interBT );
 
-	if ( sizeLR < sizeBT ) {
+	if ( sizeLR < sizeBT )
 		direction = 'x';
-	//} else if ( sizeLR > sizeBT ) {
-	} else {
+	else
 		direction = 'y';
-	} 
-    }
+	}
 
    if ( direction == 'x' ) {
 	pfree( unionB ); pfree( listB );
