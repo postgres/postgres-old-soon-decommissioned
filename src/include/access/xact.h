@@ -145,9 +145,6 @@ extern void RecordTransactionCommit(void);
 
 extern int	xactGetCommittedChildren(TransactionId **ptr);
 
-extern void XactPushRollback(void (*func) (void *), void *data);
-extern void XactPopRollback(void);
-
 extern void xact_redo(XLogRecPtr lsn, XLogRecord *record);
 extern void xact_undo(XLogRecPtr lsn, XLogRecord *record);
 extern void xact_desc(char *buf, uint8 xl_info, char *rec);
