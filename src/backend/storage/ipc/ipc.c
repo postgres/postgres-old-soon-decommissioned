@@ -632,7 +632,12 @@ InternalIpcMemoryCreate(IpcMemoryKey memKey, uint32 size, int permission)
 	on_shmem_exit(IpcMemoryDelete, Int32GetDatum(shmid));
 
 	/* OK, should be able to attach to the segment */
-	memAddress = shmat(shmid, 0, 0);
+#if defined(solaris) && defined(__sparc__)
+	/* use intimate shared memory on SPARC Solaris */
+	memAddress = shmat(shmid, 0, SHM_SHARE_MMU);
+#else
+ 	memAddress = shmat(shmid, 0, 0);
+#endif
 
 	if (memAddress == (void *) -1)
 	{
@@ -812,7 +817,14 @@ IpcMemoryCreate(uint32 size, bool makePrivate, int permission)
 		shmid = shmget(NextShmemSegID, sizeof(PGShmemHeader), 0);
 		if (shmid < 0)
 			continue;			/* failed: must be some other app's */
-		memAddress = shmat(shmid, 0, 0);
+
+#if defined(solaris) && defined(__sparc__)
+		/* use intimate shared memory on SPARC Solaris */
+		memAddress = shmat(shmid, 0, SHM_SHARE_MMU);
+#else
+ 		memAddress = shmat(shmid, 0, 0);
+#endif
+
 		if (memAddress == (void *) -1)
 			continue;			/* failed: must be some other app's */
 		hdr = (PGShmemHeader *) memAddress;
