@@ -260,6 +260,13 @@ if ($DEBUG) {
 $conn = Pg::connectdb("dbname=$dbmain");
 die $conn->errorMessage unless PGRES_CONNECTION_OK eq $conn->status;
 
+# Race condition: it's quite possible that the DROP command will arrive
+# at the new backend before the old backend has finished shutting down,
+# resulting in an error message.
+# There doesn't seem to be any more graceful way around this than to
+# insert a small delay ...
+sleep(1);
+
 $result = $conn->exec("DROP DATABASE $dbname");
 die $conn->errorMessage unless PGRES_COMMAND_OK eq $result->resultStatus;
 
