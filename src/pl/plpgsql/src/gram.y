@@ -344,7 +344,7 @@ decl_aliasitem	: T_WORD
 			char	*name;
 
 			plpgsql_ns_setlocal(false);
-			name = plpgsql_tolower(pstrdup(yytext));
+			name = plpgsql_tolower(yytext);
 			if (name[0] != '$') {
 			    elog(ERROR, "can only alias positional parameters");
 			}
@@ -374,7 +374,7 @@ decl_varname	: T_WORD
 
 decl_renname	: T_WORD
 		    {
-		        $$ = plpgsql_tolower(pstrdup(yytext));
+		        $$ = plpgsql_tolower(yytext);
 		    }
 		;
 

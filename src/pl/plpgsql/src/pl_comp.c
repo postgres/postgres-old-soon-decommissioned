@@ -537,7 +537,7 @@ plpgsql_parse_word(char *word)
 	 * We do our lookups case insensitive
 	 * ----------
 	 */
-	cp = plpgsql_tolower(pstrdup(word));
+	cp = plpgsql_tolower(word);
 
 	/* ----------
 	 * Special handling when compiling triggers
@@ -657,7 +657,7 @@ plpgsql_parse_dblword(char *string)
 	 * Convert to lower case and separate the words
 	 * ----------
 	 */
-	word1 = plpgsql_tolower(pstrdup(string));
+	word1 = plpgsql_tolower(string);
 	word2 = strchr(word1, '.');
 	*word2++ = '\0';
 
@@ -783,7 +783,7 @@ plpgsql_parse_tripword(char *string)
 	 * Convert to lower case and separate the words
 	 * ----------
 	 */
-	word1 = plpgsql_tolower(pstrdup(string));
+	word1 = plpgsql_tolower(string);
 	word2 = strchr(word1, '.');
 	*word2++ = '\0';
 	word3 = strchr(word2, '.');
@@ -893,7 +893,7 @@ plpgsql_parse_wordtype(char *word)
 	 * We do our lookups case insensitive
 	 * ----------
 	 */
-	cp = plpgsql_tolower(pstrdup(word));
+	cp = plpgsql_tolower(word);
 	*(strchr(cp, '%')) = '\0';
 
 	/* ----------
@@ -988,7 +988,7 @@ plpgsql_parse_dblwordtype(char *string)
 	 * Convert to lower case and separate the words
 	 * ----------
 	 */
-	word1 = plpgsql_tolower(pstrdup(string));
+	word1 = plpgsql_tolower(string);
 	word2 = strchr(word1, '.');
 	*word2++ = '\0';
 	*(strchr(word2, '%')) = '\0';
@@ -1123,7 +1123,7 @@ plpgsql_parse_wordrowtype(char *string)
 	 * Get the word in lower case and fetch the pg_class tuple.
 	 * ----------
 	 */
-	word1 = plpgsql_tolower(pstrdup(string));
+	word1 = plpgsql_tolower(string);
 	cp = strchr(word1, '%');
 	*cp = '\0';
 
