@@ -72,7 +72,7 @@ makeRangeTable(ParseState *pstate, List *frmList)
  *	  there is no other use of any of its attributes.  Tricky, eh?
  */
 void
-setTargetTable(ParseState *pstate, char *relname)
+setTargetTable(ParseState *pstate, char *relname, bool inh)
 {
 	RangeTblEntry *rte;
 
@@ -80,7 +80,7 @@ setTargetTable(ParseState *pstate, char *relname)
 	if (refnameRangeTablePosn(pstate, relname, NULL) == 0)
 		rte = addRangeTableEntry(pstate, relname,
 								 makeAttr(relname, NULL),
-								 FALSE, FALSE, FALSE);
+								 inh, FALSE, FALSE);
 	else
 		rte = refnameRangeTableEntry(pstate, relname);
 

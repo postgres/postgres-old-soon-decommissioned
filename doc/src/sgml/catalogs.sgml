@@ -191,6 +191,8 @@ pg_class
 			   2=main memory */
      int2vector relkey		/* - unused */
      oidvector  relkeyop	/* - unused */
+     bool       relhassubclass	/* does the class have a subclass?
+				    */
      aclitem    relacl[1]	/* access control lists */
 .fi
 .nf M

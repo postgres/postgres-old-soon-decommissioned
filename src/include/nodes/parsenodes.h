@@ -795,6 +795,7 @@ typedef struct DeleteStmt
 	NodeTag		type;
 	char	   *relname;		/* relation to delete from */
 	Node	   *whereClause;	/* qualifications */
+  bool        inh;              /* delete from subclasses */
 } DeleteStmt;
 
 /* ----------------------
@@ -808,6 +809,7 @@ typedef struct UpdateStmt
 	List	   *targetList;		/* the target list (of ResTarget) */
 	Node	   *whereClause;	/* qualifications */
 	List	   *fromClause;		/* the from clause */
+  bool        inh;              /* update subclasses */
 } UpdateStmt;
 
 /* ----------------------

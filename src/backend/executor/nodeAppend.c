@@ -268,7 +268,12 @@ ExecInitAppend(Append *node, EState *estate, Plan *parent)
 
 			resultList = lcons(rri, resultList);
 		}
-		appendstate->as_result_relation_info_list = resultList;
+        /*
+          The as_result_relation_info_list must be in the same
+          order as the rtentry list otherwise update or delete on
+          inheritance hierarchies won't work.
+        */
+		appendstate->as_result_relation_info_list = lreverse(resultList);
 	}
 	/* ----------------
 	 *	call ExecInitNode on each of the plans in our list

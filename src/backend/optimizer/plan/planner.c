@@ -106,6 +106,9 @@ planner(Query *parse)
 Plan *
 subquery_planner(Query *parse, double tuple_fraction)
 {
+    List       *l;
+	List	   *rangetable = parse->rtable;
+    RangeTblEntry *rangeTblEntry;
 
 	/*
 	 * A HAVING clause without aggregates is equivalent to a WHERE clause
@@ -137,6 +140,18 @@ subquery_planner(Query *parse, double tuple_fraction)
 		eval_const_expressions((Node *) parse->targetList);
 	parse->qual = eval_const_expressions(parse->qual);
 	parse->havingQual = eval_const_expressions(parse->havingQual);
+
+    /*
+     * If the query is going to look for subclasses, but no subclasses
+     * actually exist, then we can optimise away the union that would
+     * otherwise happen and thus save some time.
+    */
+    foreach(l, rangetable)
+        {
+           rangeTblEntry  = (RangeTblEntry *)lfirst(l);
+           if (rangeTblEntry->inh && !has_subclass(rangeTblEntry->relid))
+             rangeTblEntry->inh = FALSE;
+        }
 
 	/*
 	 * Canonicalize the qual, and convert it to implicit-AND format.

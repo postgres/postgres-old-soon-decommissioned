@@ -270,7 +270,7 @@ transformDeleteStmt(ParseState *pstate, DeleteStmt *stmt)
 
 	/* set up a range table */
 	makeRangeTable(pstate, NULL);
-	setTargetTable(pstate, stmt->relname);
+	setTargetTable(pstate, stmt->relname, stmt->inh);
 
 	qry->distinctClause = NIL;
 
@@ -368,7 +368,7 @@ transformInsertStmt(ParseState *pstate, InsertStmt *stmt)
 	 * (We didn't want it there until now since it shouldn't be visible in
 	 * the SELECT part.)
 	 */
-	setTargetTable(pstate, stmt->relname);
+	setTargetTable(pstate, stmt->relname, FALSE);
 
 	/* now the range table will not change */
 	qry->rtable = pstate->p_rtable;
@@ -1489,7 +1489,7 @@ transformUpdateStmt(ParseState *pstate, UpdateStmt *stmt)
 	 * do this with REPLACE in POSTQUEL so we keep the feature.
 	 */
 	makeRangeTable(pstate, stmt->fromClause);
-	setTargetTable(pstate, stmt->relname);
+	setTargetTable(pstate, stmt->relname, stmt->inh);
 
 	qry->targetList = transformTargetList(pstate, stmt->targetList);
 

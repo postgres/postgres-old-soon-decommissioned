@@ -9,7 +9,11 @@
  *
  *
  * IDENTIFICATION
+<<<<<<< plancat.c
  *	  $Header$
+=======
+ *	  $Header$
+>>>>>>> 1.53
  *
  *-------------------------------------------------------------------------
  */
@@ -276,6 +280,25 @@ find_inheritance_children(Oid inhparent)
 	heap_endscan(scan);
 	heap_close(relation, AccessShareLock);
 	return list;
+}
+
+/*
+ * has_subclass -
+ * In the current implementation, has_subclass returns whether a 
+ * particular class *might* have a subclass. It will not return the
+ * correct result if a class had a subclass which was later dropped.
+ * This is because relhassubclass in pg_class is not updated,
+ * possibly because of efficiency and/or concurrency concerns.
+ * Currently has_subclass is only used as an efficiency hack, so this
+ * is ok.
+ */
+bool has_subclass(Oid relationId)
+{
+        HeapTuple       tuple = 
+          SearchSysCacheTuple(RELOID,
+                              ObjectIdGetDatum(relationId),
+                              0, 0, 0);
+        return ((Form_pg_class) GETSTRUCT(tuple))->relhassubclass;
 }
 
 #ifdef NOT_USED

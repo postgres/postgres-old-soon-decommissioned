@@ -523,6 +523,21 @@ set_differencei(List *l1, List *l2)
 }
 
 /*
+ * Reverse a list, non-destructively
+ */
+List *
+lreverse(List *l)
+{
+    List       *result = NIL;
+    List       *i;
+    foreach(i, l)
+    {
+        result = lcons(lfirst(i), result);
+    }
+    return result;
+}
+
+/*
  * Return t if two integer lists have no members in common.
  */
 bool
