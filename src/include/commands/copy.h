@@ -14,7 +14,7 @@
 #define COPY_H
 
 
-void DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe, char *filename,
-	   char *delim);
+void DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
+			char *filename, char *delim, int fileumask);
 
 #endif	 /* COPY_H */
