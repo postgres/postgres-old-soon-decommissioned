@@ -46,13 +46,6 @@
  * Local definitions
  * ----------
  */
-#ifndef MIN
-#define MIN(a,b) (((a)<(b)) ? (a) : (b))
-#endif
-#ifndef MAX
-#define MAX(a,b) (((a)>(b)) ? (a) : (b))
-#endif
-
 #define ASSGN	 "="
 
 #define RETURN_NULL(type)  do { *isNull = true; return (type) 0; } while (0)
@@ -1222,8 +1215,8 @@ array_set_slice(ArrayType *array,
 		 */
 		int			oldlb = ARR_LBOUND(array)[0];
 		int			oldub = oldlb + ARR_DIMS(array)[0] - 1;
-		int			slicelb = MAX(oldlb, lowerIndx[0]);
-		int			sliceub = MIN(oldub, upperIndx[0]);
+		int			slicelb = Max(oldlb, lowerIndx[0]);
+		int			sliceub = Min(oldub, upperIndx[0]);
 		char	   *oldarraydata = ARR_DATA_PTR(array);
 
 		lenbefore = array_nelems_size(oldarraydata,

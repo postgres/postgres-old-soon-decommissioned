@@ -434,17 +434,6 @@ typedef struct TmToChar
 		tmtcTzn(_X) = NULL; \
 	} while(0)
 
-/* ----------
- * Utils
- * ----------
- */
-#ifndef MIN
-#define MIN(a,b) (((a)<(b)) ? (a) : (b))
-#endif
-#ifndef MAX
-#define MAX(a,b) (((a)>(b)) ? (a) : (b))
-#endif
-
 /*****************************************************************************
  *			KeyWords definition & action
  *****************************************************************************/
@@ -4333,7 +4322,7 @@ numeric_to_number(PG_FUNCTION_ARGS)
 				  VARSIZE(value) - VARHDRSZ, 0, FROM_CHAR);
 
 	scale = Num.post;
-	precision = MAX(0, Num.pre) + scale;
+	precision = Max(0, Num.pre) + scale;
 
 	if (flag)
 		pfree(format);
