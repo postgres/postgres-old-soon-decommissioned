@@ -422,11 +422,11 @@ _equalMergePath(MergePath *a, MergePath *b)
 
 	if (!_equalJoinPath((JoinPath *) a, (JoinPath *) b))
 		return false;
-	if (!equal((a->path_mergeclauses), (b->path_mergeclauses)))
+	if (!equal(a->path_mergeclauses, b->path_mergeclauses))
 		return false;
-	if (!equal((a->outersortkeys), (b->outersortkeys)))
+	if (!equal(a->outersortkeys, b->outersortkeys))
 		return false;
-	if (!equal((a->innersortkeys), (b->innersortkeys)))
+	if (!equal(a->innersortkeys, b->innersortkeys))
 		return false;
 	return true;
 }
