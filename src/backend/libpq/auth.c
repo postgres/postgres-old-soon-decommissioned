@@ -29,7 +29,6 @@
 #include "libpq/crypt.h"
 #include "libpq/hba.h"
 #include "libpq/libpq.h"
-#include "libpq/password.h"
 #include "libpq/pqcomm.h"
 #include "libpq/pqformat.h"
 #include "miscadmin.h"
@@ -378,7 +377,7 @@ auth_failed(Port *port, int status)
 	}
 
 	elog(FATAL, "%s authentication failed for user \"%s\"",
-		 authmethod, port->user);
+		 authmethod, port->user_name);
 	/* doesn't return */
 }
 
@@ -427,7 +426,7 @@ ClientAuthentication(Port *port)
 
 				elog(FATAL,
 					"No pg_hba.conf entry for host %s, user %s, database %s",
-					hostinfo, port->user, port->database);
+					hostinfo, port->user_name, port->database_name);
 				break;
 			}
 
@@ -638,10 +637,12 @@ CheckPAMAuth(Port *port, char *user, char *password)
 														 * not allocated */
 
 	/* Optionally, one can set the service name in pg_hba.conf */
-	if (port->auth_arg[0] == '\0')
-		retval = pam_start(PGSQL_PAM_SERVICE, "pgsql@", &pam_passw_conv, &pamh);
+	if (port->auth_arg && port->auth_arg[0] != '\0')
+		retval = pam_start(port->auth_arg, "pgsql@",
+						   &pam_passw_conv, &pamh);
 	else
-		retval = pam_start(port->auth_arg, "pgsql@", &pam_passw_conv, &pamh);
+		retval = pam_start(PGSQL_PAM_SERVICE, "pgsql@",
+						   &pam_passw_conv, &pamh);
 
 	if (retval != PAM_SUCCESS)
 	{
@@ -741,7 +742,7 @@ recv_and_check_password_packet(Port *port)
 	/* Do not echo password to logs, for security. */
 	elog(DEBUG5, "received password packet");
 
-	result = md5_crypt_verify(port, port->user, buf.data);
+	result = md5_crypt_verify(port, port->user_name, buf.data);
 
 	pfree(buf.data);
 	return result;

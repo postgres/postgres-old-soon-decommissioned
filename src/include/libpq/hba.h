@@ -26,8 +26,6 @@
 #define IDENT_PORT 113
  /* Standard TCP port number for Ident service.  Assigned by IANA */
 
-#define MAX_AUTH_ARG	80		/* Max size of an authentication arg */
-
 typedef enum UserAuth
 {
 	uaReject,

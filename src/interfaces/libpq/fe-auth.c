@@ -559,7 +559,7 @@ pg_password_sendauth(PGconn *conn, const char *password, AuthRequest areq)
 		default:
 			return STATUS_ERROR;
 	}
-	ret = pqPacketSend(conn, crypt_pwd, strlen(crypt_pwd) + 1);
+	ret = pqPacketSend(conn, 0, crypt_pwd, strlen(crypt_pwd) + 1);
 	if (areq == AUTH_REQ_MD5)
 		free(crypt_pwd);
 	return ret;
