@@ -315,7 +315,7 @@ CreateTableSpace(CreateTableSpaceStmt *stmt)
 	/*
 	 * All seems well, create the symlink
 	 */
-	linkloc = (char *) palloc(strlen(DataDir) + 16 + 10 + 1);
+	linkloc = (char *) palloc(strlen(DataDir) + 11 + 10 + 1);
 	sprintf(linkloc, "%s/pg_tblspc/%u", DataDir, tablespaceoid);
 
 	if (symlink(location, linkloc) < 0)

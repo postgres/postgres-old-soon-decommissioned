@@ -3595,6 +3595,9 @@ DESCR("bitwise-and bit aggregate");
 DATA(insert OID = 2243 ( bit_or						   PGNSP PGUID 12 t f f f i 1 1560 "1560" _null_ aggregate_dummy - _null_));
 DESCR("bitwise-or bit aggregate");
 
+DATA(insert OID = 2554(  pg_tablespace_databases       PGNSP PGUID 12 f f t t s 1 26 "26" _null_ pg_tablespace_databases - _null_));
+DESCR("returns database oids in a tablespace");
+
 /*
  * Symbolic values for provolatile column: these indicate whether the result
  * of a function is dependent *only* on the values of its explicit arguments,
