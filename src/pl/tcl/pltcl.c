@@ -233,6 +233,11 @@ pltcl_init(void)
 	if (pltcl_pm_init_done)
 		return;
 
+#ifdef WIN32
+	/* Required on win32 to prevent error loading init.tcl */
+	Tcl_FindExecutable("");
+#endif
+
 	/************************************************************
 	 * Create the dummy hold interpreter to prevent close of
 	 * stdout and stderr on DeleteInterp

@@ -29,7 +29,11 @@ endif
 endif
 
 
+ifneq ($(PORTNAME), win32)
 SHLIB_LINK = $(BE_DLLLIBS) $(TCL_LIB_SPEC) $(TCL_LIBS) -lc
+else
+SHLIB_LINK = $(TCL_LIB_SPEC) $(BE_DLLLIBS)
+endif
 
 NAME = pltcl
 SO_MAJOR_VERSION = 2
