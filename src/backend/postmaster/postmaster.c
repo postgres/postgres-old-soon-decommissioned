@@ -2450,7 +2450,7 @@ BackendInit(Port *port)
 	{
 		ereport(LOG,
 				(errmsg("connection startup failed")));
-		proc_exit(status);
+		proc_exit(0);
 	}
 
 	/*
