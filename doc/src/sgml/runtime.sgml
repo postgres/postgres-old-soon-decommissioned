@@ -1124,7 +1124,7 @@ env PGOPTIONS='-c geqo=off' psql
      </varlistentry>
 
      <varlistentry>
-      <term><varname>SHOW_SOURCE_PORT</varname> (<type>boolean</type>)</term>
+      <term><varname>LOG_SOURCE_PORT</varname> (<type>boolean</type>)</term>
       <listitem>
        <para>
         Shows the outgoing port number of the connecting host in the

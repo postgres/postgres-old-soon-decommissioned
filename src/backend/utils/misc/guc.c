@@ -480,7 +480,7 @@ static struct config_bool
 		false, NULL, NULL
 	},
 	{
-		{"show_source_port", PGC_SIGHUP}, &ShowPortNumber,
+		{"log_source_port", PGC_SIGHUP}, &LogSourcePort,
 		false, NULL, NULL
 	},
 
