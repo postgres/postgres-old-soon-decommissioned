@@ -312,10 +312,8 @@ BootstrapMain(int argc, char *argv[])
 	 * ----------------
 	 */
 	pqsignal(SIGINT, (sig_func) die);
-#ifndef win32
 	pqsignal(SIGHUP, (sig_func) die);
 	pqsignal(SIGTERM, (sig_func) die);
-#endif							/* win32 */
 
 	/* --------------------
 	 *	initialize globals
@@ -406,12 +404,6 @@ BootstrapMain(int argc, char *argv[])
 		exitpg(1);
 	}
 
-#ifdef win32
-	_nt_init();
-	_nt_attach();
-#endif							/* win32 */
-
-
 	/* ----------------
 	 *	backend initialization
 	 * ----------------
@@ -431,18 +423,13 @@ BootstrapMain(int argc, char *argv[])
 		hashtable[i] = NULL;
 
 	/* ----------------
-	 *	abort processing resumes here  - What to do in WIN32?
+	 *	abort processing resumes here
 	 * ----------------
 	 */
-#ifndef win32
 	pqsignal(SIGHUP, handle_warn);
 
 	if (sigsetjmp(Warn_restart, 1) != 0)
 	{
-#else
-	if (setjmp(Warn_restart) != 0)
-	{
-#endif							/* win32 */
 		Warnings++;
 		AbortCurrentTransaction();
 	}
@@ -639,6 +626,7 @@ DefineAttr(char *name, char *type, int attnum)
 		attlen = attrtypes[attnum]->attlen = Procid[t].len;
 		attrtypes[attnum]->attbyval = (attlen == 1) || (attlen == 2) || (attlen == 4);
 	}
+	attrtypes[attnum]->attcacheoff = -1;
 }
 
 
