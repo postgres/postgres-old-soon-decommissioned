@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Thu Feb 12 12:21:09 EST 2004
+Last updated:		Thu Feb 12 12:22:33 EST 2004
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -336,6 +336,7 @@ Exotic Features
   to clients
 * Add two-phase commit to all distributed transactions with 
   offline/readonly server status or administrator notification for failure
+* Allow cross-db queries with transaction sematics
 
 
 PERFORMANCE
