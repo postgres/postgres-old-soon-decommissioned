@@ -207,8 +207,7 @@ add_clause_to_rels(Query *root, List *clause)
 		else
 		{
 			clauseinfo->selectivity =
-				compute_clause_selec(root, (Node *) clause,
-									 NIL);
+				compute_clause_selec(root, (Node *) clause, NIL);
 		}
 		rel->clauseinfo = lcons(clauseinfo,
 								rel->clauseinfo);
