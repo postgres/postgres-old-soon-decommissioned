@@ -30,6 +30,7 @@
 #include "libpq/hba.h"
 #include "libpq/libpq.h"
 #include "libpq/password.h"
+#include "libpq/pqcomm.h"
 #include "libpq/pqformat.h"
 #include "miscadmin.h"
 #include "storage/ipc.h"

@@ -69,7 +69,6 @@
 #include <sys/stat.h>
 #include <sys/socket.h>
 #include <netdb.h>
-#include <netinet/in.h>
 #ifdef HAVE_NETINET_TCP_H
 #include <netinet/tcp.h>
 #endif

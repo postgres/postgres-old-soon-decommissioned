@@ -34,6 +34,15 @@
 #endif   /* not WIN32 */
 
 
+#ifndef INET_ADDRSTRLEN
+#define INET_ADDRSTRLEN 16
+#endif
+
+#ifndef INET6_ADDRSTRLEN
+#define INET6_ADDRSTRLEN 46
+#endif
+
+
 #ifndef HAVE_STRUCT_SOCKADDR_UN
 struct sockaddr_un
 {
