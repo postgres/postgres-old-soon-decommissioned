@@ -3,12 +3,18 @@
  * sequence.c
  *	  PostgreSQL sequences support code.
  *
+ * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
+ * Portions Copyright (c) 1994, Regents of the University of California
+ *
+ *
+ * IDENTIFICATION
+ *	  $Header$
+ *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
 
 #include <ctype.h>
-
-#include "postgres.h"
 
 #include "access/heapam.h"
 #include "commands/creatinh.h"
