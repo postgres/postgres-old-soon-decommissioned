@@ -137,6 +137,7 @@ enable_thread_safety	= @enable_thread_safety@
 python_includespec	= @python_includespec@
 python_libspec		= @python_libspec@
 python_configdir	= @python_configdir@
+python_version		= @python_version@
 
 krb_srvtab = @krb_srvtab@
 

@@ -12,6 +12,12 @@ ifneq (,$(wildcard $(python_configdir)/libpython*$(DLSUFFIX)*))
 shared_libpython = yes
 endif
 
+# Convert backslashed paths to normal slashes
+ifeq ($(PORTNAME), win32)
+shared_libpython = yes
+python_includespec := $(subst \,/,$(python_includespec))
+endif
+
 # Darwin (OS X) has its own ideas about how to do this.
 ifeq ($(PORTNAME), darwin)
 shared_libpython = yes
@@ -29,6 +35,21 @@ NAME = plpython
 SO_MAJOR_VERSION = 0
 SO_MINOR_VERSION = 0
 OBJS = plpython.o
+
+
+# Python on win32 ships with import libraries only for Microsoft Visual C++,
+# which are not compatible with mingw gcc. Therefore we need to build a
+# new import library to link with.
+ifeq ($(PORTNAME), win32)
+pytverstr=$(subst .,,${python_version})
+OBJS += libpython${pytverstr}.a
+libpython${pytverstr}.a: python${pytverstr}.def
+	dlltool --dllname python${pytverstr}.dll --def python${pytverstr}.def --output-lib  libpython${pytverstr}.a
+WD=$(subst \,/,$(WINDIR))
+python${pytverstr}.def: $(WD)/system32/python${pytverstr}.dll
+	pexports $(WD)/system32/python${pytverstr}.dll > python${pytverstr}.def
+endif
+
 
 SHLIB_LINK = $(BE_DLLLIBS) $(python_libspec)
 
@@ -55,6 +76,9 @@ uninstall:
 clean distclean maintainer-clean: clean-lib
 	rm -f $(OBJS)
 	@rm -f error.diff feature.diff error.output feature.output test.log
+ifeq ($(PORTNAME), win32)
+	rm -f python${pytverstr}.def
+endif
 
 installcheck:
 	PATH=$(bindir):$$PATH $(SHELL) $(srcdir)/test.sh
