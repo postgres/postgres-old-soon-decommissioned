@@ -60,7 +60,7 @@ Specifies an authentication system
 .IR pgintro (1))
 to use in connecting to the 
 .IR postmaster
-process.  The default is site-specific.
+process.  This option no longer has any effect.
 .TP
 .BR "-D" " dbpath"
 Specifies the alternate database location for this database.
@@ -79,13 +79,13 @@ is listening for connections.  Defaults to 5432, or the value of the
 environment variable (if set).
 .SH EXAMPLES
 .nf
-# create 5432 demo database
+# create the demo database using the postmaster on the local host, port 5432.
 createdb demo
 .fi
 .nf
 # create the demo database using the postmaster on host eden,
-# port using the Kerberos authentication system.
-createdb -a kerberos -p 5432 -h eden demo
+# port 5000.
+createdb -p 5000 -h eden demo
 .fi
 .SH FILES
 .TP 5n

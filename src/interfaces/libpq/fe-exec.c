@@ -168,7 +168,7 @@ getTuple(PGconn *conn, PGresult *result, int binary)
 	if ((nfields % BYTELEN) > 0)
 		nbytes++;
 
-	if (pqGetnchar(bitmap, nbytes, pfin, pfdebug) == 1)
+	if (nbytes >= MAX_FIELDS || pqGetnchar(bitmap, nbytes, pfin, pfdebug) == 1)
 	{
 		sprintf(conn->errorMessage,
 			  "Error reading null-values bitmap from row data stream\n");
@@ -189,10 +189,10 @@ getTuple(PGconn *conn, PGresult *result, int binary)
 		else
 		{
 			/* get the value length (the first four bytes are for length) */
-			pqGetInt(&vlen, VARHDRSZ, pfin, pfdebug);
+			pqGetInt(&vlen, 4, pfin, pfdebug);
 			if (binary == 0)
 			{
-				vlen = vlen - VARHDRSZ;
+				vlen = vlen - 4;
 			}
 			if (vlen < 0)
 				vlen = 0;

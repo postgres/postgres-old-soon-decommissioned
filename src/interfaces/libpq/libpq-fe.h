@@ -138,13 +138,15 @@ extern		"C"
 		FILE	   *Pfin;
 		FILE	   *Pfout;
 		FILE	   *Pfdebug;
-		void	   *port;		/* really a Port* */
+		int			sock;	/* The socket */
+		SockAddr		laddr;	/* Local address */
+		SockAddr		raddr;	/* Remote address */
+		char			salt[2];
 		int			asyncNotifyWaiting;
 		Dllist	   *notifyList;
 		char	   *pguser;		/* Postgres username of user who is
 								 * connected */
 		char	   *pgpass;
-		char	   *pgauth;
 		PGlobjfuncs *lobjfuncs; /* Backend function OID's for large object
 								 * access */
 	} PGconn;

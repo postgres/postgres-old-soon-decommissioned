@@ -32,9 +32,10 @@
 #include "storage/sinvaladt.h"
 #include "storage/lmgr.h"
 #include "utils/elog.h"
-
+#include "libpq/pqcomm.h"
 #include "catalog/catname.h"
 
+ProtocolVersion		FrontendProtocol = PG_PROTOCOL_LATEST;
 int			Portfd = -1;
 int			Noversion = 0;
 int			Quiet = 1;

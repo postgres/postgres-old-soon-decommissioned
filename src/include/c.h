@@ -204,21 +204,23 @@ typedef char *Pointer;
 
 /*
  * intN --
- *		Signed integer, AT LEAST N BITS IN SIZE,
- *		used for numerical computations.
+ *		Signed integer, EXACTLY N BITS IN SIZE,
+ *		used for numerical computations and the
+ *		frontend/backend protocol.
  */
-typedef signed char int8;		/* >= 8 bits */
-typedef signed short int16;		/* >= 16 bits */
-typedef signed int int32;		/* >= 32 bits */
+typedef signed char int8;		/* == 8 bits */
+typedef signed short int16;		/* == 16 bits */
+typedef signed int int32;		/* == 32 bits */
 
 /*
  * uintN --
- *		Unsigned integer, AT LEAST N BITS IN SIZE,
- *		used for numerical computations.
+ *		Unsigned integer, EXACTLY N BITS IN SIZE,
+ *		used for numerical computations and the
+ *		frontend/backend protocol.
  */
-typedef unsigned char uint8;	/* >= 8 bits */
-typedef unsigned short uint16;	/* >= 16 bits */
-typedef unsigned int uint32;	/* >= 32 bits */
+typedef unsigned char uint8;	/* == 8 bits */
+typedef unsigned short uint16;	/* == 16 bits */
+typedef unsigned int uint32;	/* == 32 bits */
 
 /*
  * floatN --

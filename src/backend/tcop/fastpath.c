@@ -336,7 +336,7 @@ HandleFunctionRequest()
 				else
 				{				/* ... fixed */
 					/* XXX cross our fingers and trust "argsize" */
-					if (!(p = palloc(argsize)))
+					if (!(p = palloc(argsize + 1)))
 					{
 						elog(ERROR, "HandleFunctionRequest: palloc failed");
 					}

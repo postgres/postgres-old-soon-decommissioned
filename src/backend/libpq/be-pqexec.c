@@ -27,7 +27,7 @@
 #include <tcop/fastpath.h>
 #include <tcop/tcopprot.h>
 #include <lib/dllist.h>
-#include <libpq/libpq-be.h>
+#include <libpq/libpq.h>
 #include <fmgr.h>
 #include <utils/exc.h>
 #include <utils/builtins.h>

@@ -29,7 +29,7 @@
 #include "postgres.h"
 
 #include "access/htup.h"
-#include "libpq/libpq-be.h"
+#include "libpq/libpq.h"
 #include "access/printtup.h"
 #include "utils/portal.h"
 #include "utils/palloc.h"

@@ -80,7 +80,7 @@ The following lines show the sample usage of the option:
 uses the new style of the Pg.pm like this:
 .nf
 
-	$conn = Pg::connectdb("host=hyalos authtype=password dbname=unv
+	$conn = Pg::connectdb("host=hyalos dbname=unv
 	                       user=pg_guest password=xxxxxxx");
 
 .fi
@@ -96,7 +96,7 @@ option thus:
 .nf
 
 	% set conn [pg_connect -conninfo \\
-	        "host=hyalos authtype=password dbname=unv \\
+	        "host=hyalos dbname=unv \\
 	         user=pg_guest password=xxxxxxx "]
 
 .fi

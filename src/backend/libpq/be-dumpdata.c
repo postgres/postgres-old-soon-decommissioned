@@ -34,7 +34,7 @@
 #include <postgres.h>
 
 #include <lib/dllist.h>
-#include <libpq/libpq-be.h>
+#include <libpq/libpq.h>
 #include <access/heapam.h>
 #include <access/htup.h>
 #include <storage/buf.h>

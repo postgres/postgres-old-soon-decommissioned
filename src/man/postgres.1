@@ -31,6 +31,9 @@ filedes]
 [\c
 .BR "-e"
 ]
+[\c
+.BR "-v protocol"
+]
 .br
 [\c
 .BR "-d"
@@ -145,6 +148,10 @@ but debugging output is sent to the controlling tty of the
 Print time information and other statistics at the end of each query.
 This is useful for benchmarking or for use in tuning the number of
 buffers.
+.TP
+.BR "-v" " protocol"
+Specifies the number of the frontend/backend protocol to be used for this
+particular session.
 .SH "DEPRECATED COMMAND OPTIONS"
 There are several other options that may be specified, used mainly
 for debugging purposes.  These are listed here only for the use by
