@@ -57,19 +57,6 @@ extern long *LocalRefCount;
  */
 
 #define BAD_BUFFER_ID(bid) ((bid) < 1 || (bid) > NBuffers)
-#define INVALID_DESCRIPTOR (-3)
-
-#define UnlockAndReleaseBuffer(buffer)	\
-( \
-	LockBuffer(buffer, BUFFER_LOCK_UNLOCK), \
-	ReleaseBuffer(buffer) \
-)
-
-#define UnlockAndWriteBuffer(buffer)	\
-( \
-	LockBuffer(buffer, BUFFER_LOCK_UNLOCK), \
-	WriteBuffer(buffer) \
-)
 
 /*
  * BufferIsValid

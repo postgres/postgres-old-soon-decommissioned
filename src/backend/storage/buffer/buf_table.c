@@ -117,15 +117,3 @@ BufTableDelete(BufferTag *tagPtr)
 
 	return TRUE;
 }
-
-/* prints out collision stats for the buf table */
-#ifdef NOT_USED
-void
-DBG_LookupListCheck(int nlookup)
-{
-	nlookup = 10;
-
-	hash_stats("Shared", SharedBufHash);
-}
-
-#endif

@@ -1712,7 +1712,8 @@ RestoreBkpBlocks(XLogRecord *record, XLogRecPtr lsn)
 				memcpy((char *) page, blk, BLCKSZ);
 				PageSetLSN(page, lsn);
 				PageSetSUI(page, ThisStartUpID);
-				UnlockAndWriteBuffer(buffer);
+				LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
+				WriteBuffer(buffer);
 			}
 		}
 

@@ -1104,7 +1104,8 @@ seq_redo(XLogRecPtr lsn, XLogRecord *record)
 
 	PageSetLSN(page, lsn);
 	PageSetSUI(page, ThisStartUpID);
-	UnlockAndWriteBuffer(buffer);
+	LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
+	WriteBuffer(buffer);
 }
 
 void
