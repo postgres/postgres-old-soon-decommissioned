@@ -312,8 +312,6 @@ PostmasterMain(int argc, char *argv[])
 	char		original_extraoptions[MAXPGPATH];
 	char	   *potential_DataDir = NULL;
 
-	IsUnderPostmaster = true;	/* so that backends know this */
-
 	*original_extraoptions = '\0';
 
 	progname = argv[0];
@@ -1935,6 +1933,8 @@ DoBackend(Port *port)
 	 * Let's clean up ourselves as the postmaster child
 	 */
 
+	IsUnderPostmaster = true;	/* we are a postmaster subprocess now */
+
 	/* We don't want the postmaster's proc_exit() handlers */
 	on_exit_reset();
 
@@ -2316,6 +2316,8 @@ SSDataBase(int xlop)
 		/* Specific beos actions after backend startup */
 		beos_backend_startup();
 #endif
+
+		IsUnderPostmaster = true; /* we are a postmaster subprocess now */
 
 		/* Lose the postmaster's on-exit routines and port connections */
 		on_exit_reset();
