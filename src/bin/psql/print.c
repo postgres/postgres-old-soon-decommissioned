@@ -24,7 +24,11 @@
 #include <libpq-fe.h>
 #include <postgres_ext.h>		/* for Oid type */
 
+#ifndef __CYGWIN__
 #define DEFAULT_PAGER "more"
+#else
+#define DEFAULT_PAGER "less"
+#endif
 
 
 

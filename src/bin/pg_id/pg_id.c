@@ -10,6 +10,9 @@
  */
 #include <c.h>
 
+#ifdef HAVE_GETOPT_H
+#include <getopt.h>
+#endif
 #include <pwd.h>
 #include <stdio.h>
 #include <stdlib.h>
