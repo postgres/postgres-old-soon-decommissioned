@@ -315,9 +315,6 @@ extern Datum float84ge(PG_FUNCTION_ARGS);
 /* misc.c */
 extern Datum nullvalue(PG_FUNCTION_ARGS);
 extern Datum nonnullvalue(PG_FUNCTION_ARGS);
-extern Datum oidrand(PG_FUNCTION_ARGS);
-extern Datum oidsrand(PG_FUNCTION_ARGS);
-extern Datum userfntest(PG_FUNCTION_ARGS);
 extern Datum current_database(PG_FUNCTION_ARGS);
 
 /* not_in.c */

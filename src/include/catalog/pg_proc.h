@@ -944,12 +944,6 @@ DESCR("greater-than");
 /* OIDS 700 - 799 */
 DATA(insert OID = 710 (  getpgusername	   PGNSP PGUID 12 f f t f s 0 19 "" current_user - _null_ ));
 DESCR("deprecated -- use current_user");
-DATA(insert OID = 711 (  userfntest		   PGNSP PGUID 12 f f t f i 1 23 "23"  userfntest - _null_ ));
-DESCR("");
-DATA(insert OID = 713 (  oidrand		   PGNSP PGUID 12 f f t f v 2 16 "26 23"	oidrand - _null_ ));
-DESCR("random");
-DATA(insert OID = 715 (  oidsrand		   PGNSP PGUID 12 f f t f v 1 16 "23"  oidsrand - _null_ ));
-DESCR("seed random number generator");
 DATA(insert OID = 716 (  oidlt			   PGNSP PGUID 12 f f t f i 2 16 "26 26"	oidlt - _null_ ));
 DESCR("less-than");
 DATA(insert OID = 717 (  oidle			   PGNSP PGUID 12 f f t f i 2 16 "26 26"	oidle - _null_ ));
