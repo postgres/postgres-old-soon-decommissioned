@@ -48,8 +48,7 @@
 #include "access/xact.h"
 #include "access/transam.h"
 
-static int
-WaitOnLock(LOCKTAB *ltable, LockTableId tableId, LOCK *lock,
+static int WaitOnLock(LOCKTAB *ltable, LockTableId tableId, LOCK *lock,
 		   LOCKT lockt);
 		   
 /*#define LOCK_MGR_DEBUG*/

@@ -729,7 +729,8 @@ HandleDeadLock(int sig)
 	 */
 	UnlockLockTable();
 
-	elog(NOTICE, "Timeout -- possible deadlock");
+	elog(NOTICE, "Timeout interval reached -- possible deadlock.");
+	elog(NOTICE, "See the lock(l) manual page for a possible cause.");
 	return;
 }
 
