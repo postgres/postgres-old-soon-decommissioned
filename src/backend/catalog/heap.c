@@ -62,6 +62,7 @@
 #include "storage/smgr.h"
 #include "tcop/tcopprot.h"
 #include "utils/builtins.h"
+#include "utils/catcache.h"
 #include "utils/portal.h"
 #include "utils/relcache.h"
 #include "utils/syscache.h"
@@ -184,17 +185,15 @@ heap_create(char *relname,
 			bool istemp,
 			bool storage_create)
 {
+	static unsigned int uniqueId = 0;
+
 	int			i;
 	Oid			relid;
 	Relation	rel;
 	int			len;
 	bool		nailme = false;
 	int			natts = tupDesc->natts;
-	static unsigned int uniqueId = 0;
-
-	extern GlobalMemory CacheCxt;
 	MemoryContext oldcxt;
-
 
 	/* ----------------
 	 *	sanity checks

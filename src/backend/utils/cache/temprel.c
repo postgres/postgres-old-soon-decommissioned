@@ -28,9 +28,9 @@
 #include "access/xact.h"
 #include "catalog/heap.h"
 #include "catalog/index.h"
+#include "utils/catcache.h"
 #include "utils/temprel.h"
 
-GlobalMemory CacheCxt;
 
 /* ----------------
  *		global variables
