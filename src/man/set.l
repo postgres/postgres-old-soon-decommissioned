@@ -86,6 +86,14 @@ sets the current transaction's isolation level to
 .IR SERIALIZABLE
 or
 .IR READ COMMITTED .
+.IR SERIALIZABLE
+means that the current transaction will place a lock on every row read,
+so later reads in that transaction see the rows unmodified by
+other transactions.
+.IR READ COMMITTED
+means that the current transaction reads only committed rows.
+.IR READ COMMITTED
+is the default.
 .PP
 .IR CLIENT_ENCODING|NAMES
 sets the character set encoding of the client.  Only available if multi-byte
