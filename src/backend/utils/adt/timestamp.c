@@ -911,8 +911,6 @@ timestamp2tm(Timestamp dt, int *tzp, struct tm * tm, fsec_t *fsec, char **tzn)
 			if (tzn != NULL)
 				*tzn = NULL;
 #endif
-
-			dt = dt2local(dt, *tzp);
 		}
 		else
 		{
