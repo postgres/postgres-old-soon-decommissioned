@@ -26,6 +26,7 @@
 #include <crt_externs.h>
 #endif
 
+#include "libpq/libpq.h"
 #include "miscadmin.h"
 #include "utils/ps_status.h"
 
@@ -276,10 +277,15 @@ init_ps_display(const char *username, const char *dbname,
 void
 set_ps_display(const char *activity)
 {
-#ifndef PS_USE_NONE
 	/* no ps display for stand-alone backend */
 	if (!IsUnderPostmaster)
 		return;
+
+	/* save it for logging context */
+	if (MyProcPort)
+		MyProcPort->commandTag = (char *) activity;
+
+#ifndef PS_USE_NONE
 
 #ifdef PS_USE_CLOBBER_ARGV
 	/* If ps_buffer is a pointer, it might still be null */

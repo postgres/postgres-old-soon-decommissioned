@@ -1496,6 +1496,16 @@ static struct config_string ConfigureNamesString[] =
 	},
 
 	{
+		{"log_line_prefix", PGC_SIGHUP, LOGGING_WHAT,
+		 gettext_noop("Controls information prefixed to each log line"),
+		 gettext_noop("if blank no prefix is used")
+		},
+		&Log_line_prefix,
+		"", NULL, NULL
+	},
+
+
+	{
 		{"DateStyle", PGC_USERSET, CLIENT_CONN_LOCALE,
 			gettext_noop("Sets the display format for date and time values."),
 			gettext_noop("Also controls interpretation of ambiguous "

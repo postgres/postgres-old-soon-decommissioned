@@ -3198,7 +3198,7 @@ ShowUsage(const char *title)
 static void 
 log_disconnections(int code, Datum arg)
 {
-	Port * port = MyProcPort;
+	Port *port = MyProcPort;
 	struct timeval end;
 	int  hours, minutes, seconds;
 
