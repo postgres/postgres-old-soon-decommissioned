@@ -81,7 +81,7 @@ DROP
      </varlistentry>
      <varlistentry>
       <term><computeroutput>
-ERROR: RemoveAggregate: aggregate '<replaceable class="parameter">agg</replaceable>' for '<replaceable class="parameter">type</replaceable>' does not exist
+ERROR: RemoveAggregate: aggregate '<replaceable class="parameter">agg</replaceable>' for '<replaceable class="parameter">name</replaceable>' does not exist
        </computeroutput></term>
       <listitem>
        <para>
