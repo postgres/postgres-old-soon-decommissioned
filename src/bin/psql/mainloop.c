@@ -481,7 +481,7 @@ MainLoop(FILE *source)
 
 
 		/* Put the rest of the line in the query buffer. */
-		if (line[query_start + strspn(line + query_start, " \t")] != '\0')
+		if (line[query_start + strspn(line + query_start, " \t\n")] != '\0')
 		{
 			if (query_buf->len > 0)
 				appendPQExpBufferChar(query_buf, '\n');
