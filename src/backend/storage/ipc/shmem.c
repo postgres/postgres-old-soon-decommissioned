@@ -524,7 +524,7 @@ ShmemInitStruct(char *name, unsigned long size, bool *foundPtr)
 	}
 	else
 	{
-		/* look it up in the bindint table */
+		/* look it up in the binding table */
 		result = (BindingEnt *)
 			hash_search(BindingTable, (char *) &item, HASH_ENTER, foundPtr);
 	}

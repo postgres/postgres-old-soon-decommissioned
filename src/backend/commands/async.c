@@ -477,7 +477,7 @@ Async_Listen(char *relname, int pid)
 	 */
 	relnamei = malloc(NAMEDATALEN);		/* persists to process exit */
 	StrNCpy(relnamei, relname, NAMEDATALEN);
-	on_exitpg(Async_UnlistenOnExit, (caddr_t) relnamei);
+	on_shmem_exit(Async_UnlistenOnExit, (caddr_t) relnamei);
 }
 
 /*

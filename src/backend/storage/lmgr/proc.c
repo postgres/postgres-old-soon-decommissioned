@@ -274,7 +274,7 @@ InitProcess(IPCKey key)
 	MyProc->errType = NO_ERROR;
 	SHMQueueElemInit(&(MyProc->links));
 
-	on_exitpg(ProcKill, (caddr_t) MyProcPid);
+	on_shmem_exit(ProcKill, (caddr_t) MyProcPid);
 
 	ProcInitialized = TRUE;
 }

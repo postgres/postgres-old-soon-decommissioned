@@ -71,10 +71,11 @@ typedef int IpcMemoryId;
 
 
 /* ipc.c */
-extern void exitpg(int code);
-extern void quasi_exitpg(void);
-extern int on_exitpg(void (*function) (), caddr_t arg);
-extern void clear_exitpg(void);
+extern void proc_exit(int code);
+extern void shmem_exit(int code);
+extern int on_shmem_exit(void (*function) (), caddr_t arg);
+extern int on_proc_exit(void (*function) (), caddr_t arg);
+extern void clear_proc_exit(void);
 
 extern IpcSemaphoreId
 IpcSemaphoreCreate(IpcSemaphoreKey semKey,

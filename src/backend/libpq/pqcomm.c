@@ -650,7 +650,7 @@ StreamServerPort(char *hostName, short portName, int *fdP)
 	}
 
 	if (family == AF_UNIX)
-		on_exitpg(StreamDoUnlink, NULL);
+		on_proc_exit(StreamDoUnlink, NULL);
 
 	listen(fd, SOMAXCONN);
 

@@ -142,7 +142,7 @@ elog(int lev, const char *fmt,...)
 			write(open("/dev/console", O_WRONLY, 0666), line, len);
 			fflush(stdout);
 			fflush(stderr);
-			exitpg(lev);
+			proc_exit(lev);
 		}
 		fsync(Err_file);
 	}
@@ -201,14 +201,14 @@ elog(int lev, const char *fmt,...)
 		fflush(stderr);
 		ProcReleaseSpins(NULL); /* get rid of spinlocks we hold */
 		ProcReleaseLocks();		/* get rid of real locks we hold */
-		exitpg(0);
+		proc_exit(0);
 	}
 
 	if (lev > FATAL)
 	{
 		fflush(stdout);
 		fflush(stderr);
-		exitpg(lev);
+		proc_exit(lev);
 	}
 }
 

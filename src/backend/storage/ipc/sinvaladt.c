@@ -100,7 +100,7 @@ SIBackendInit(SISeg *segInOutP)
 #endif							/* INVALIDDEBUG */
 
 	SISetActiveProcess(segInOutP, MyBackendId);
-	on_exitpg(CleanupInvalidationState, (caddr_t) segInOutP);
+	on_shmem_exit(CleanupInvalidationState, (caddr_t) segInOutP);
 	return 1;
 }
 
@@ -193,7 +193,7 @@ SISetDeadProcess(SISeg *segP, int backendId)
  * CleanupInvalidationState --
  * Note:
  *		This is a temporary hack.  ExitBackend should call this instead
- *		of exit (via on_exitpg).
+ *		of exit (via on_shmem_exit).
  */
 static void
 CleanupInvalidationState(int status,	/* XXX */
