@@ -292,6 +292,14 @@ dumpSchema(FILE *fout,
 	if (!tablename && fout)
 	{
 		if (g_verbose)
+			fprintf(stderr, "%s dumping out database comment %s\n",
+					g_comment_start, g_comment_end);
+		dumpDBComment(fout);
+	}
+
+	if (!tablename && fout)
+	{
+		if (g_verbose)
 			fprintf(stderr, "%s dumping out user-defined types %s\n",
 					g_comment_start, g_comment_end);
 		dumpTypes(fout, finfo, numFuncs, tinfo, numTypes);
