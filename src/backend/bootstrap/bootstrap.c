@@ -134,7 +134,6 @@ static char *relname;			/* current relation name */
 Form_pg_attribute attrtypes[MAXATTR];	/* points to attribute info */
 static char *values[MAXATTR];	/* cooresponding attribute values */
 int			numattr;			/* number of attributes for cur. rel */
-extern bool disableFsync;		/* do not fsync the database */
 
 int			DebugMode;
 static GlobalMemory nogc = (GlobalMemory) NULL; /* special no-gc mem

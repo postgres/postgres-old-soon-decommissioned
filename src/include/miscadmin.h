@@ -22,6 +22,8 @@
 #ifndef MISCADMIN_H
 #define MISCADMIN_H
 
+#include "utils/trace.h"
+
 /*****************************************************************************
  *	  globals.h --															 *
  *****************************************************************************/
@@ -93,7 +95,7 @@ extern char CTZName[];
 extern char FloatFormat[];
 extern char DateFormat[];
 
-extern bool disableFsync;
+#define disableFsync	pg_options[OPT_NOFSYNC]
 extern bool allowSystemTableMods;
 extern int	SortMem;
 
