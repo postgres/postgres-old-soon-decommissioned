@@ -40,6 +40,7 @@ extern bool opclass_is_btree(Oid opclass);
 extern bool opclass_is_hash(Oid opclass);
 extern RegProcedure get_opcode(Oid opno);
 extern char *get_opname(Oid opno);
+extern void op_input_types(Oid opno, Oid *lefttype, Oid *righttype);
 extern bool op_mergejoinable(Oid opno, Oid *leftOp, Oid *rightOp);
 extern void op_mergejoin_crossops(Oid opno, Oid *ltop, Oid *gtop,
 					  RegProcedure *ltproc, RegProcedure *gtproc);
