@@ -53,12 +53,13 @@ typedef struct HeapTupleHeaderData
 
 typedef HeapTupleHeaderData *HeapTupleHeader;
 
-#define MinTupleSize	(DOUBLEALIGN(sizeof (PageHeaderData) + \
-						 sizeof(HeapTupleHeaderData) + sizeof(int4)))
+#define MinTupleSize	(MAXALIGN(sizeof (PageHeaderData) + \
+						 MAXALIGN(sizeof(HeapTupleHeaderData)) + \
+						 MAXALIGN(sizeof(char)))
 
 #define MaxTupleSize	(BLCKSZ - MinTupleSize)
 
-#define MaxAttrSize		(MaxTupleSize - sizeof(HeapTupleHeaderData))
+#define MaxAttrSize		(MaxTupleSize - MAXALIGN(sizeof(HeapTupleHeaderData)))
 
 #define SelfItemPointerAttributeNumber			(-1)
 #define ObjectIdAttributeNumber					(-2)
