@@ -258,6 +258,7 @@ TransactionIdDidAbort(TransactionId transactionId)
 		if (TransactionIdPrecedes(transactionId, RecentXmin))
 			return true;
 		parentXid = SubTransGetParent(transactionId);
+		Assert(TransactionIdIsValid(parentXid));
 		return TransactionIdDidAbort(parentXid);
 	}
 
