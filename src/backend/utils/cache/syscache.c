@@ -58,8 +58,8 @@ static struct cachedesc cacheinfo[] = {
 			0
 		},
 		sizeof(FormData_pg_amop),
-		AccessMethodOpidIndex,
-	(ScanFunc) AccessMethodOpidIndexScan},
+		NULL,
+	(ScanFunc) NULL},
 	{AccessMethodOperatorRelationName,	/* AMOPSTRATEGY */
 		3,
 		{
@@ -69,8 +69,8 @@ static struct cachedesc cacheinfo[] = {
 			0
 		},
 		sizeof(FormData_pg_amop),
-		AccessMethodStrategyIndex,
-	(ScanFunc) AccessMethodStrategyIndexScan},
+		NULL,
+	(ScanFunc) NULL},
 	{AttributeRelationName,		/* ATTNAME */
 		2,
 		{
@@ -81,7 +81,7 @@ static struct cachedesc cacheinfo[] = {
 		},
 		ATTRIBUTE_TUPLE_SIZE,
 		AttributeNameIndex,
-	(ScanFunc) IndexRelidIndexScan},
+	(ScanFunc) AttributeNameIndexScan},
 	{AttributeRelationName,		/* ATTNUM */
 		2,
 		{
@@ -102,8 +102,8 @@ static struct cachedesc cacheinfo[] = {
 			0
 		},
 		offsetof(FormData_pg_index, indpred),
-		IndexRelidIndex,
-	(ScanFunc) IndexRelidIndexScan},
+		NULL,
+	NULL},
 	{LanguageRelationName,		/* LANNAME */
 		1,
 		{
@@ -225,6 +225,17 @@ static struct cachedesc cacheinfo[] = {
 		sizeof(FormData_pg_opclass),
 		NULL,
 	NULL},
+	{IndexRelationName,			/* INDRELIDKEY *//* never used */
+		2,
+		{
+			Anum_pg_index_indrelid,
+			Anum_pg_index_indkey,
+			0,
+			0
+		},
+		offsetof(FormData_pg_index, indpred),
+		NULL,
+	(ScanFunc) NULL},
 	{InheritsRelationName,		/* INHRELID */
 		2,
 		{
