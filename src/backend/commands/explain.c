@@ -313,7 +313,6 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 			{
 				ResTarget  *rtentry;
 
-				es->rtable = appendplan->inheritrtable;
 				rtentry = nth(whichplan, appendplan->inheritrtable);
 				Assert(rtentry != NULL);
 				rt_store(appendplan->inheritrelid, es->rtable, rtentry);
