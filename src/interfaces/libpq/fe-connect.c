@@ -400,7 +400,7 @@ PQsetdbLogin(const char *pghost, const char *pgport, const char *pgoptions, cons
 			conn->pgpass = strdup(tmp);
 		}
 		else
-			conn->pgpass = DefaultPassword;
+			conn->pgpass = strdup(DefaultPassword);
 
 		if (!error)
 		{
