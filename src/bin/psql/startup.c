@@ -81,6 +81,10 @@ static void
 static void
 			showVersion(void);
 
+#ifdef USE_SSL
+static void
+            printSSLInfo(void);
+#endif
 
 
 /*
@@ -263,7 +267,9 @@ main(int argc, char *argv[])
 			  "       \\g or terminate with semicolon to execute query\n"
 				   "       \\q to quit\n\n", pset.progname);
 		}
-
+#ifdef USE_SSL
+		printSSLInfo();
+#endif
 		SetVariable(pset.vars, "PROMPT1", DEFAULT_PROMPT1);
 		SetVariable(pset.vars, "PROMPT2", DEFAULT_PROMPT2);
 		SetVariable(pset.vars, "PROMPT3", DEFAULT_PROMPT3);
@@ -639,3 +645,27 @@ showVersion(void)
 	puts("Read the file COPYRIGHT or use the command \\copyright to see the");
 	puts("usage and distribution terms.");
 }
+
+
+
+/*
+ * printSSLInfo
+ *
+ * Prints information about the current SSL connection, if SSL is in use
+ */
+#ifdef USE_SSL
+static void 
+printSSLInfo(void)
+{
+	int sslbits = -1;
+	SSL *ssl;
+
+	ssl = PQgetssl(pset.db);
+	if (!ssl)
+		return; /* no SSL */
+
+	SSL_get_cipher_bits(ssl, &sslbits);
+	printf("SSL enabled connection. Chiper: %s, bits: %i\n\n",
+		   SSL_get_cipher(ssl),sslbits);
+}
+#endif

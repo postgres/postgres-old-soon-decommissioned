@@ -25,6 +25,9 @@ extern		"C"
  * such as Oid.
  */
 #include "postgres_ext.h"
+#ifdef USE_SSL
+#include <openssl/ssl.h>
+#endif
 
 /* Application-visible enum types */
 
@@ -222,6 +225,11 @@ extern		"C"
 	extern int	PQbackendPID(const PGconn *conn);
 	extern int	PQclientEncoding(const PGconn *conn);
 	extern int	PQsetClientEncoding(PGconn *conn, const char *encoding);
+#ifdef USE_SSL
+	/* Get the SSL structure associated with a connection */
+	extern SSL  *PQgetssl(PGconn *conn);
+#endif
+
 
 	/* Enable/disable tracing */
 	extern void PQtrace(PGconn *conn, FILE *debug_port);

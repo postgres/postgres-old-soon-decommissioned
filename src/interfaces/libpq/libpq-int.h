@@ -263,6 +263,7 @@ struct pg_conn
 
 #ifdef USE_SSL
 	bool		allow_ssl_try;	/* Allowed to try SSL negotiation */
+	bool        require_ssl;    /* Require SSL to make connection */
 	SSL		   *ssl;			/* SSL status, if have SSL connection */
 #endif
 
