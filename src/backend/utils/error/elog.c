@@ -1214,6 +1214,16 @@ log_line_prefix(StringInfo buf)
 				break;
 			case 't':
 				{
+					/*
+					 * Note: for %t and %s we deliberately use the C library's
+					 * strftime/localtime, and not the equivalent functions
+					 * from src/timezone.  This ensures that all backends
+					 * will report log entries in the same timezone, namely
+					 * whatever C-library setting they inherit from the
+					 * postmaster.  If we used src/timezone then local
+					 * settings of the TimeZone GUC variable would confuse
+					 * the log.
+					 */
 					time_t stamp_time = time(NULL);
 					char strfbuf[128];
 
