@@ -27,3 +27,5 @@ endif
 ifeq ($(findstring ecpg/lib,$(subdir)), ecpg/lib)
 override CPPFLAGS+= -DBUILDING_DLL=1
 endif
+
+override javadir := '$(shell cygpath -w $(javadir))'

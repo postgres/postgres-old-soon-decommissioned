@@ -99,6 +99,8 @@ endif
 
 odbcinst_ini_dir = @odbcinst_ini_dir@
 
+javadir := $(DESTDIR)$(datadir)/java
+
 
 ##########################################################################
 #
