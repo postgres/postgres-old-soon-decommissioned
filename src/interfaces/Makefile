@@ -14,14 +14,10 @@ include $(top_builddir)/src/Makefile.global
 
 DIRS := libpq ecpg 
 
-ALLDIRS := $(DIRS) libpgtcl jdbc
+ALLDIRS := $(DIRS) libpgtcl
 
 ifeq ($(with_tcl), yes)
 DIRS += libpgtcl
-endif
-
-ifeq ($(with_java), yes)
-DIRS += jdbc
 endif
 
 

@@ -32,6 +32,4 @@ ifneq (,$(findstring src/pl/plpython,$(subdir)))
 override CPPFLAGS+= -DUSE_DL_IMPORT
 endif
 
-override javadir := '$(shell cygpath -w $(javadir))'
-
 sqlmansect = 7
