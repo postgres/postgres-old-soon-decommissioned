@@ -36,9 +36,10 @@ extern int	PostmasterMain(int argc, char *argv[]);
  */
 extern int	Portfd;
 extern int	Noversion;
-extern int	MasterPid;
 extern int	Quiet;
 extern char *DataDir;
+
+extern int	MyProcPid;
 
 extern char OutputFileName[];
 

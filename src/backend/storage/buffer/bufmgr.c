@@ -1828,13 +1828,9 @@ refcount = %ld, file: %s, line: %d\n",
 
 _bm_trace(Oid dbId, Oid relId, int blkNo, int bufNo, int allocType)
 {
-	static int	mypid = 0;
 	long		start,
 				cur;
 	bmtrace    *tb;
-
-	if (mypid == 0)
-		mypid = getpid();
 
 	start = *CurTraceBuf;
 
@@ -1871,7 +1867,7 @@ _bm_trace(Oid dbId, Oid relId, int blkNo, int bufNo, int allocType)
 
 okay:
 	tb = &TraceBuf[start];
-	tb->bmt_pid = mypid;
+	tb->bmt_pid = MyProcPid;
 	tb->bmt_buf = bufNo;
 	tb->bmt_dbid = dbId;
 	tb->bmt_relid = relId;

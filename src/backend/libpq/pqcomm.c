@@ -56,6 +56,7 @@
 
 #include <postgres.h>
 
+#include <miscadmin.h>
 #include <libpq/pqsignal.h>
 #include <libpq/auth.h>
 #include <libpq/libpq.h>		/* where the declarations go */
@@ -515,11 +516,11 @@ pq_regoob(void (*fptr) ())
 	int			fd = fileno(Pfout);
 
 #if defined(hpux)
-	ioctl(fd, FIOSSAIOOWN, getpid());
+	ioctl(fd, FIOSSAIOOWN, MyProcPid);
 #elif defined(sco)
-	ioctl(fd, SIOCSPGRP, getpid());
+	ioctl(fd, SIOCSPGRP, MyProcPid);
 #else
-	fcntl(fd, F_SETOWN, getpid());
+	fcntl(fd, F_SETOWN, MyProcPid);
 #endif							/* hpux */
 	pqsignal(SIGURG, fptr);
 }

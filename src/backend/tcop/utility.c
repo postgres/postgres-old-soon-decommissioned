@@ -589,7 +589,7 @@ ProcessUtility(Node * parsetree,
 				commandTag = "LISTEN";
 				CHECK_IF_ABORTED();
 
-				Async_Listen(stmt->relname, MasterPid);
+				Async_Listen(stmt->relname, MyProcPid);
 			}
 			break;
 

@@ -1337,7 +1337,7 @@ DoExec(StartupInfo *packet, int portFd)
 	if (DebugLvl > 1)
 	{
 		fprintf(stderr, "%s child[%ld]: execv(",
-				progname, (long) getpid());
+				progname, (long) MyProcPid);
 		for (i = 0; i < ac; ++i)
 			fprintf(stderr, "%s, ", av[i]);
 		fprintf(stderr, ")\n");

@@ -886,7 +886,7 @@ PostgresMain(int argc, char *argv[])
 	 * -------------------
 	 */
 
-	MasterPid = getpid();
+	MyProcPid = getpid();
 
 	/* ----------------
 	 *	parse command line arguments
@@ -1381,7 +1381,7 @@ PostgresMain(int argc, char *argv[])
 	if (IsUnderPostmaster == false)
 	{
 		puts("\nPOSTGRES backend interactive interface");
-		puts("$Revision: 1.61 $ $Date: 1998/01/13 04:04:36 $");
+		puts("$Revision: 1.62 $ $Date: 1998/01/25 05:14:18 $");
 	}
 
 	/* ----------------

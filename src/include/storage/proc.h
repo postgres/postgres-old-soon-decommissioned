@@ -35,10 +35,6 @@ typedef struct proc
 	SEMA		sem;			/* ONE semaphore to sleep on */
 	int			errType;		/* error code tells why we woke up */
 
-	int			procId;			/* unique number for this structure NOT
-								 * unique per backend, these things are
-								 * reused after the backend dies. */
-
 	int			critSects;		/* If critSects > 0, we are in sensitive
 								 * routines that cannot be recovered when
 								 * the process fails. */
@@ -69,7 +65,6 @@ typedef struct proc
 typedef struct procglobal
 {
 	SHMEM_OFFSET freeProcs;
-	int			numProcs;
 	IPCKey		currKey;
 	int32		freeSemMap[MAX_PROC_SEMS / PROC_NSEMS_PER_SET];
 } PROC_HDR;

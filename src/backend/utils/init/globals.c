@@ -39,7 +39,8 @@ int			Portfd = -1;
 int			Noversion = 0;
 int			Quiet = 1;
 
-int			MasterPid;
+int			MyProcPid;
+
 char	   *DataDir;
 
  /*

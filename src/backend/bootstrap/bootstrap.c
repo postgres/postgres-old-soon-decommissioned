@@ -322,7 +322,7 @@ BootstrapMain(int argc, char *argv[])
 	 * -------------------
 	 */
 
-	MasterPid = getpid();
+	MyProcPid = getpid();
 
 	/* ----------------
 	 *	process command arguments
