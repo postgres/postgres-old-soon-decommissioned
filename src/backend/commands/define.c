@@ -33,10 +33,10 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
+
 #include <ctype.h>
 #include <math.h>
-
-#include "postgres.h"
 
 #include "access/heapam.h"
 #include "catalog/catname.h"
@@ -44,10 +44,10 @@
 #include "catalog/pg_language.h"
 #include "catalog/pg_operator.h"
 #include "catalog/pg_proc.h"
-#include "catalog/pg_shadow.h"
 #include "catalog/pg_type.h"
 #include "commands/defrem.h"
 #include "fmgr.h"
+#include "miscadmin.h"
 #include "optimizer/cost.h"
 #include "parser/parse_expr.h"
 #include "tcop/dest.h"

@@ -220,8 +220,12 @@ extern int	CheckPathAccess(char *path, char *name, int open_mode);
 extern void GetCharSetByHost(char *TableName, int host, const char *DataDir);
 extern void SetCharSet(void);
 extern char *convertstr(unsigned char *buff, int len, int dest);
-
 #endif
+
+/* in utils/misc/superuser.c */
+extern bool superuser(void);	/* current user is superuser */
+extern bool is_dbadmin(Oid dbid); /* current user is owner of database */
+
 
 /*****************************************************************************
  *	  pmod.h --																 *

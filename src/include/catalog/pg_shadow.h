@@ -24,10 +24,6 @@
 #define PG_SHADOW_H
 
 
-/* Prototype required for superuser() from superuser.c */
-
-bool		superuser(void);
-
 /* ----------------
  *		pg_shadow definition.  cpp turns this into
  *		typedef struct FormData_pg_shadow

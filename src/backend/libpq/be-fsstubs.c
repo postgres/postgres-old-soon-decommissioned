@@ -39,9 +39,9 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include "catalog/pg_shadow.h"
 #include "libpq/be-fsstubs.h"
 #include "libpq/libpq-fs.h"
+#include "miscadmin.h"
 #include "storage/large_object.h"
 #include "utils/memutils.h"
 
