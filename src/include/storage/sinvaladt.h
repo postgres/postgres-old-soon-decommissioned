@@ -85,6 +85,7 @@ typedef struct SISeg
 	int			lastBackend;	/* index of last active procState entry,
 								 * +1 */
 	int			maxBackends;	/* size of procState array */
+	int			freeBackends;	/* number of empty procState slots */
 
 	/*
 	 * Circular buffer holding shared-inval messages

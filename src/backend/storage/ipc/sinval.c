@@ -538,3 +538,27 @@ BackendIdGetProc(BackendId procId)
 
 	return NULL;
 }
+
+/*
+ * CountEmptyBackendSlots - count empty slots in backend process table
+ *
+ * Doesn't count since the procState array could be large and we've already
+ * allowed for that by running a freeBackends counter in the SI segment.
+ * Unlike CountActiveBackends() we do not need to interrogate the
+ * backends to determine the free slot count.
+ * Goes for a lock despite being a trival look up in case other backends
+ * are busy starting or exiting since there is scope for confusion.
+ */
+int
+CountEmptyBackendSlots(void)
+{
+	int count;
+
+	LWLockAcquire(SInvalLock, LW_SHARED);
+
+	count = shmInvalBuffer->freeBackends;
+
+	LWLockRelease(SInvalLock);
+
+	return count;
+}

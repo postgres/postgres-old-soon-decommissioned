@@ -89,4 +89,6 @@ extern int	CountActiveBackends(void);
 /* Use "struct PGPROC", not PGPROC, to avoid including proc.h here */
 extern struct PGPROC *BackendIdGetProc(BackendId procId);
 
+extern int CountEmptyBackendSlots(void);
+
 #endif   /* SINVAL_H */

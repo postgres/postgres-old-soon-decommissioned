@@ -179,6 +179,7 @@ extern bool NetServer;
 extern bool EnableSSL;
 extern bool SilentMode;
 extern int	MaxBackends;
+extern int	ReservedBackends;
 extern int	NBuffers;
 extern int	PostPortNumber;
 extern int	Unix_socket_permissions;

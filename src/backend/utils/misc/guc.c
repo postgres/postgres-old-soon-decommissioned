@@ -537,11 +537,18 @@ static struct config_int
 	/*
 	 * Note: There is some postprocessing done in PostmasterMain() to make
 	 * sure the buffers are at least twice the number of backends, so the
-	 * constraints here are partially unused.
+	 * constraints here are partially unused. Similarly, the superuser
+	 * reserved number is checked to ensure it is less than the max
+	 * backends number.
 	 */
 	{
 		{ "max_connections", PGC_POSTMASTER }, &MaxBackends,
 		DEF_MAXBACKENDS, 1, INT_MAX, NULL, NULL
+	},
+
+	{
+		{ "superuser_reserved_connections", PGC_POSTMASTER }, &ReservedBackends,
+		2, 0, INT_MAX, NULL, NULL
 	},
 
 	{
