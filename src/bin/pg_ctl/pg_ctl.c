@@ -1078,7 +1078,7 @@ pgwin32_doRunAsService(void)
 	SERVICE_TABLE_ENTRY st[] = {{register_servicename, pgwin32_ServiceMain},
 	{NULL, NULL}};
 
-	if (StartServiceCtrlDispatcher(st)) == 0)
+	if (StartServiceCtrlDispatcher(st) == 0)
 	{
 		write_stderr(_("%s: could not start service \"%s\": error code %d\n"), progname, register_servicename, (int) GetLastError());
 		exit(1);
