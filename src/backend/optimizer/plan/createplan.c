@@ -296,12 +296,6 @@ use_physical_tlist(RelOptInfo *rel)
 	if (rel->reloptkind != RELOPT_BASEREL)
 		return false;
 	/*
-	 * Can't do it if relation contains dropped columns.  This is detected
-	 * in plancat.c, see notes there.
-	 */
-	if (rel->varlist == NIL)
-		return false;
-	/*
 	 * Can't do it if any system columns are requested, either.  (This could
 	 * possibly be fixed but would take some fragile assumptions in setrefs.c,
 	 * I think.)
