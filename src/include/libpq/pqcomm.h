@@ -133,6 +133,7 @@ typedef struct StartupPacket
 #define AUTH_REQ_PASSWORD	3	/* Password */
 #define AUTH_REQ_CRYPT		4	/* crypt password */
 #define AUTH_REQ_MD5		5	/* md5 password */
+#define AUTH_REQ_SCM_CREDS	6	/* transfer SCM credentials */
 
 typedef uint32 AuthRequest;
 
