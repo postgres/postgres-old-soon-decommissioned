@@ -128,9 +128,9 @@ tas(volatile slock_t *lock)
 {
 	register slock_t	_res = 1;
 
-    __asm__("ldstub [%1], %0" \
-            : "=r"(_res), "=m"(*lock) \
-            : "0"(lock));
+    __asm__("ldstub [%2], %0" \
+            : "=r" (_res), "=m" (*lock) \
+            : "r" (lock));
 	return (int) _res;
 }
 #endif /* sparc */
