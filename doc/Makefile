@@ -45,6 +45,7 @@ beforeinstall::
 
 install::
 	$(MAKE) all
+	$(MAKE) man
 
 all:: beforeinstall $(MODULES)
 
@@ -53,6 +54,9 @@ clean::
 
 distclean::
 	$(MAKE) clean
+
+man:
+	$(MAKE) -C $(SRCDIR) install-man
 
 #
 # Generic production rules
