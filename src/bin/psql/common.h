@@ -33,7 +33,7 @@ extern PGconn *cancelConn;
 extern void handle_sigint(SIGNAL_ARGS);
 #endif   /* not WIN32 */
 
-extern PGresult *PSQLexec(const char *query);
+extern PGresult *PSQLexec(const char *query, bool ignore_command_ok);
 
 extern bool SendQuery(const char *query);
 

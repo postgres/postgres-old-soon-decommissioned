@@ -324,7 +324,7 @@ do_copy(const char *args)
 		return false;
 	}
 
-	result = PSQLexec(query.data);
+	result = PSQLexec(query.data, false);
 	termPQExpBuffer(&query);
 
 	switch (PQresultStatus(result))
