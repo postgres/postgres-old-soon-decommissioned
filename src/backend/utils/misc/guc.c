@@ -661,6 +661,11 @@ static struct config_int
 	},
 
 	{
+		{"checkpoint_warning", PGC_SIGHUP}, &CheckPointWarning,
+		30, 0, INT_MAX, NULL, NULL
+	},
+
+	{
 		{"wal_buffers", PGC_POSTMASTER}, &XLOGbuffers,
 		8, 4, INT_MAX, NULL, NULL
 	},

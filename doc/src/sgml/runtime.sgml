@@ -2081,6 +2081,18 @@ dynamic_library_path = '/usr/local/lib/postgresql:/home/my_project/lib:$libdir'
       </listitem>
      </varlistentry>
 
+    <variablelist>
+     <varlistentry>
+      <term><varname>CHECKPOINT_WARNING</varname> (<type>integer</type>)</term>
+      <listitem>
+       <para>
+        Send a message to the server logs if checkpoints caused by the
+        filling of checkpoint segment files happens more frequently than
+        this number of seconds.  Zero turns off the warning.
+       </para>
+      </listitem>
+     </varlistentry>
+
      <varlistentry>
       <term><varname>COMMIT_DELAY</varname> (<type>integer</type>)</term>
       <listitem>

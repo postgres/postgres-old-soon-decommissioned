@@ -301,6 +301,16 @@
   </para>
 
   <para>
+   Checkpoints are fairly expensive because they force all dirty kernel
+   buffers to disk using the operating system <literal>sync()</> call.
+   Busy servers may fill checkpoint segment files too quickly,
+   causing excessive checkpointing. If such forced checkpoints happen
+   more frequently than <varname>CHECKPOINT_WARNING</varname> seconds, 
+   a message, will be output to the server logs recommending increasing 
+   <varname>CHECKPOINT_SEGMENTS</varname>.
+  </para>
+
+  <para>
    The <varname>COMMIT_DELAY</varname> parameter defines for how many
    microseconds the backend will sleep after writing a commit
    record to the log with <function>LogInsert</function> but before
