@@ -31,14 +31,12 @@
 
 #ifdef TIOCGWINSZ
 struct winsize screen_size;
-
 #else
 struct winsize
 {
 	int			ws_row;
 	int			ws_col;
 }			screen_size;
-
 #endif
 
 /* the rows array in a PGresGroup  has to grow to accommodate the rows */
