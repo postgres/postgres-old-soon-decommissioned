@@ -1807,7 +1807,7 @@ DROP SCHEMA information_schema CASCADE;
     <listitem>
      <para>
       <command>\encoding</> now changes based on the server parameter
-      <varname>client_encoding server</varname> (Tom)
+      <varname>client_encoding</varname> (Tom)
      </para>
      <para>
       In previous versions, <command>\encoding</command> was not aware
