@@ -12,7 +12,7 @@
  * INTERFACE ROUTINES
  *		heap_create()			- Create an uncataloged heap relation
  *		heap_create_with_catalog() - Create a cataloged relation
- *		heap_destroy_with_catalog()			- Removes named relation from catalogs
+ *		heap_destroy_with_catalog()	- Removes named relation from catalogs
  *
  * NOTES
  *	  this code taken from access/heap/create.c, which contains
@@ -1290,18 +1290,14 @@ heap_destroy_with_catalog(char *relname)
 	 * ----------------
 	 */
 	if (rdesc->rd_rel->relhasindex)
-	{
 		RelationRemoveIndexes(rdesc);
-	}
 
 	/* ----------------
 	 *	remove rules if necessary
 	 * ----------------
 	 */
 	if (rdesc->rd_rules != NULL)
-	{
 		RelationRemoveRules(rid);
-	}
 
 	/* triggers */
 	if (rdesc->rd_rel->reltriggers > 0)
@@ -1347,9 +1343,8 @@ heap_destroy_with_catalog(char *relname)
 	 * ----------------
 	 */
 	if (!(rdesc->rd_istemp) || !(rdesc->rd_tmpunlinked))
-	{
 		smgrunlink(DEFAULT_SMGR, rdesc);
-	}
+
 	rdesc->rd_tmpunlinked = TRUE;
 
 	RelationUnsetLockForWrite(rdesc);
@@ -1375,6 +1370,7 @@ heap_destroy(Relation rdesc)
 	rdesc->rd_tmpunlinked = TRUE;
 	heap_close(rdesc);
 	RemoveFromTempRelList(rdesc);
+	RelationForgetRelation(rdesc->rd_id);
 }
 
 

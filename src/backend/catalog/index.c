@@ -1270,7 +1270,6 @@ index_destroy(Oid indexId)
 	while (tuple = heap_getnext(scan, 0, (Buffer *) NULL),
 		   HeapTupleIsValid(tuple))
 	{
-
 		heap_delete(catalogRelation, &tuple->t_ctid);
 	}
 	heap_endscan(scan);
@@ -1296,12 +1295,15 @@ index_destroy(Oid indexId)
 	heap_close(catalogRelation);
 
 	/*
-	 * physically remove the file
+	 * flush cache and physically remove the file
 	 */
+	ReleaseRelationBuffers(indexRelation);
+
 	if (FileNameUnlink(relpath(indexRelation->rd_rel->relname.data)) < 0)
 		elog(ERROR, "amdestroyr: unlink: %m");
 
 	index_close(indexRelation);
+	RelationForgetRelation(indexRelation->rd_id);
 }
 
 /* ----------------------------------------------------------------
