@@ -16,8 +16,8 @@
  * installations $PGDATA.
  * ----------
  */
-#define	PGSTAT_STAT_FILENAME	"%s/pgstat.stat"
-#define	PGSTAT_STAT_TMPFILE		"%s/pgstat.tmp.%d"
+#define	PGSTAT_STAT_FILENAME	"%s/global/pgstat.stat"
+#define	PGSTAT_STAT_TMPFILE		"%s/global/pgstat.tmp.%d"
 
 /* ----------
  * Timer definitions.
