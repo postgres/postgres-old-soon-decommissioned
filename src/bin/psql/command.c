@@ -1197,7 +1197,7 @@ do_edit(const char *filename_arg, PQExpBuffer query_buf)
 	if (!error)
 	{
 #endif
-		stream = fopen(fname, "r");
+		stream = fopen(fname, R_TEXTFILE);
 		if (!stream)
 		{
 			psql_error("%s: %s\n", fname, strerror(errno));
@@ -1262,7 +1262,7 @@ process_file(char *filename)
 	if (!filename)
 		return false;
 
-	fd = fopen(filename, "r");
+	fd = fopen(filename, R_TEXTFILE);
 
 	if (!fd)
 	{

@@ -62,4 +62,16 @@ extern char parse_char(char **buf);
 
 extern char *expand_tilde(char **filename);
 
+/*
+ *	WIN32 treats Control-Z as EOF in files opened in text mode.
+ *	Therefore, we open files in binary mode on Win32 so we can read
+ *	literal control-Z.  The other affect is that we see CRLF, but
+ *	that is OK because we can already handle those cleanly.
+ */
+#ifndef WIN32
+#define R_TEXTFILE	"r"
+#else
+#define R_TEXTFILE	"rb"
+#endif
+
 #endif   /* COMMON_H */

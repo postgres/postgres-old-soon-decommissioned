@@ -1284,7 +1284,7 @@ psql_scan_slash_option(PsqlScanState state,
 				char		buf[512];
 				size_t		result;
 
-				fd = popen(cmd, "r");
+				fd = popen(cmd, R_TEXTFILE);
 				if (!fd)
 				{
 					psql_error("%s: %s\n", cmd, strerror(errno));
