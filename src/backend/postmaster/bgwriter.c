@@ -602,9 +602,9 @@ ForwardFsyncRequest(RelFileNode rnode, BlockNumber segno)
  * AbsorbFsyncRequests
  *		Retrieve queued fsync requests and pass them to local smgr.
  *
- * This is exported because it must be called during CreateCheckpoint;
+ * This is exported because it must be called during CreateCheckPoint;
  * we have to be sure we have accepted all pending requests *after* we
- * establish the checkpoint redo pointer.  Since CreateCheckpoint
+ * establish the checkpoint redo pointer.  Since CreateCheckPoint
  * sometimes runs in non-bgwriter processes, do nothing if not bgwriter.
  */
 void
