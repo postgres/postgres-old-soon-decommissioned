@@ -1653,9 +1653,8 @@ messages can be detected by calling <function>PQnotifies</function>.
 PGnotify* PQnotifies(PGconn *conn);
 
 typedef struct pgNotify {
-    char relname[NAMEDATALEN];       /* name of relation
-                                      * containing data */
-    int  be_pid;                     /* process id of backend */
+    char *relname;              /* name of relation containing data */
+    int  be_pid;                /* process id of backend */
 } PGnotify;
 </synopsis>
 After processing a <structname>PGnotify</structname> object returned by <function>PQnotifies</function>,
