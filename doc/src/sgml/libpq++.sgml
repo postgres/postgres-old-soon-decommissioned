@@ -735,7 +735,7 @@ $Header$
     
     <programlisting>
 PgDatabase data;
-data.Exec("create table foo (a int4, b char(16), d float8)");
+data.Exec("create table foo (a int4, b char(16), d double precision)");
 data.Exec("copy foo from stdin");
 data.PutLine("3\tHello World\t4.5\n");
 data.PutLine("4\tGoodbye World\t7.11\n");

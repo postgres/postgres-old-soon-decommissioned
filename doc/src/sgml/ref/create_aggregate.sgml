@@ -159,8 +159,8 @@ CREATE
    <command>CREATE AGGREGATE</command> 
    allows a user or programmer to extend <productname>Postgres</productname>
    functionality by defining new aggregate functions. Some aggregate functions
-   for base types such as <function>min(int4)</function>
-   and <function>avg(float8)</function> are already provided in the base
+   for base types such as <function>min(integer)</function>
+   and <function>avg(double precision)</function> are already provided in the base
    distribution. If one defines new types or needs an aggregate function not
    already provided, then <command>CREATE AGGREGATE</command>
    can be used to provide the desired features.

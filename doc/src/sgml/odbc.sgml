@@ -290,14 +290,6 @@ InstallDir = /opt/applix/axdata/axshlib
      </para>
     </tip>
 
-    <!--
-   <Para>
-   <Tip>
-   <Para>
-    The <productname>Postgres</productname> datetime type will break MS Access.
-   </Para>
-   </Tip>
-    -->
    </sect2>
   </sect1>
 
