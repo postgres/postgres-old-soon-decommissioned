@@ -6,6 +6,7 @@
  *
  */
 
+#include <errno.h>
 #include <unistd.h>
 
 #include "postgres.h"
@@ -36,8 +37,8 @@ verify_password(const Port *port, const char *user, const char *password)
 	if (!pw_file)
 	{
 		snprintf(PQerrormsg, PQERRORMSG_LENGTH,
-				 "verify_password: couldn't open password file '%s'\n",
-				 pw_file_fullname);
+				 "verify_password: Unable to open password file \"%s\": %s\n",
+				 pw_file_fullname, strerror(errno));
 		fputs(PQerrormsg, stderr);
 		pqdebug("%s", PQerrormsg);
 

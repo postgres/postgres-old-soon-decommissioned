@@ -72,7 +72,7 @@ write_password_file(Relation rel)
 	fp = AllocateFile(tempname, "w");
 	umask(oumask);
 	if (fp == NULL)
-		elog(ERROR, "%s: %m", tempname);
+		elog(ERROR, "write_password_file: unable to write %s: %m", tempname);
 
 	/* read table */
 	scan = heap_beginscan(rel, false, SnapshotSelf, 0, NULL);
@@ -156,7 +156,7 @@ write_password_file(Relation rel)
 	filename = crypt_getpwdreloadfilename();
 	flagfd = BasicOpenFile(filename, O_WRONLY | O_CREAT, 0600);
 	if (flagfd < 0)
-		elog(NOTICE, "%s: %m", filename);
+		elog(NOTICE, "write_password_file: unable to write %s: %m", filename);
 	else
 		close(flagfd);
 	pfree((void *) filename);
