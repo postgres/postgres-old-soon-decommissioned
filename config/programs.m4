@@ -82,10 +82,10 @@ AC_MSG_CHECKING([for readline])
 
 AC_CACHE_VAL([pgac_cv_check_readline],
 [pgac_cv_check_readline=no
-for pgac_lib in "" " -ltermcap" " -lncurses" " -lcurses" ; do
-  for pgac_rllib in -lreadline -ledit ; do
-    pgac_save_LIBS=$LIBS
-    LIBS="${pgac_rllib}${pgac_lib} $LIBS"
+pgac_save_LIBS=$LIBS
+for pgac_rllib in -lreadline -ledit ; do
+  for pgac_lib in "" " -ltermcap" " -lncurses" " -lcurses" ; do
+    LIBS="${pgac_rllib}${pgac_lib} $pgac_save_LIBS"
     AC_TRY_LINK_FUNC([readline], [[
       # NetBSD, OpenBSD, and Irix have a broken linker that does not
       # recognize dependent libraries
@@ -99,7 +99,6 @@ for pgac_lib in "" " -ltermcap" " -lncurses" " -lcurses" ; do
       pgac_cv_check_readline="${pgac_rllib}${pgac_lib}"
       break 2
     ]])
-    LIBS=$pgac_save_LIBS
   done
 done
 LIBS=$pgac_save_LIBS
