@@ -183,11 +183,7 @@ PQprint(FILE *fout,
 				  - (po->header != 0) * 2		/* row count and newline */
 				  )))
 			{
-#ifdef WIN32
-				fout = _popen(pagerenv, "w");
-#else
 				fout = popen(pagerenv, "w");
-#endif
 				if (fout)
 				{
 					usePipe = 1;

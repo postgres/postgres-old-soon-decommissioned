@@ -60,12 +60,6 @@ extern const char *session_username(void);
  */
 extern char parse_char(char **buf);
 
-/* Used for all Win32 popen/pclose calls */
-#ifdef WIN32
-#define popen(x,y) _popen(x,y)
-#define pclose(x) _pclose(x)
-#endif
-
 extern char *expand_tilde(char **filename);
 
 #endif   /* COMMON_H */

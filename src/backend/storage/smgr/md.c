@@ -607,7 +607,7 @@ mdsync(void)
 {
 	sync();
 	if (IsUnderPostmaster)
-		sleep(2);
+		pg_usleep(2000000L);
 	sync();
 	return true;
 }

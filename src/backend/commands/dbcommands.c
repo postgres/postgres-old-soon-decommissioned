@@ -64,7 +64,9 @@ createdb(const CreatedbStmt *stmt)
 	char	   *alt_loc;
 	char	   *target_dir;
 	char		src_loc[MAXPGPATH];
+#ifndef WIN32
 	char		buf[2 * MAXPGPATH + 100];
+#endif
 	Oid			src_dboid;
 	AclId		src_owner;
 	int			src_encoding;

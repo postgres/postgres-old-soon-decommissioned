@@ -85,6 +85,7 @@ DynaHashAlloc(Size size)
 }
 
 #define MEM_ALLOC		DynaHashAlloc
+#undef 	MEM_FREE	/* already in windows header files */
 #define MEM_FREE		pfree
 
 

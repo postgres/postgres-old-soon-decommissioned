@@ -48,7 +48,7 @@ extern off_t ftello(FILE *stream);
 #define pipewrite(a,b,c)	write(a,b,c)
 #else
 extern int pgpipe(int handles[2]);
-#define piperead(a,b,c)		recv(a,b,c,0)
+extern int piperead(int s, char* buf, int len);
 #define pipewrite(a,b,c)	send(a,b,c,0)
 #endif
 
@@ -68,6 +68,11 @@ extern int	pgunlink(const char *path);
 #ifndef _MSC_VER
 extern int	win32_open(const char*,int,...);
 #define 	open(a,b,...)	win32_open(a,b,##__VA_ARGS__)
+#endif
+
+#ifndef __BORLANDC__
+#define popen(a,b) _popen(a,b)
+#define pclose(a) _pclose(a)
 #endif
 
 extern int	copydir(char *fromdir, char *todir);

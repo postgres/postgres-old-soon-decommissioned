@@ -22,7 +22,7 @@ static DWORD s_segsize = 0;
 int
 shmdt(const void *shmaddr)
 {
-	if (UnmapViewOfFile(shmaddr))
+	if (UnmapViewOfFile((LPCVOID*)shmaddr))
 		return 0;
 	else
 		return -1;

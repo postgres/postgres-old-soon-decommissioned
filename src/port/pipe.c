@@ -53,3 +53,13 @@ pgpipe(int handles[2])
 	closesocket(s);
 	return 0;
 }
+
+
+int piperead(int s, char* buf, int len)
+{
+	int ret = recv(s,buf,len,0);
+	if (ret < 0 && WSAGetLastError() == WSAECONNRESET)
+		/* EOF on the pipe! (win32 socket based implementation) */
+		ret = 0;
+	return ret;
+}

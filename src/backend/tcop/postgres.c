@@ -2456,7 +2456,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 				/*
 				 * wait N seconds to allow attach from a debugger
 				 */
-				sleep(atoi(optarg));
+				pg_usleep(atoi(optarg)*1000000L);
 				break;
 
 			case 'x':

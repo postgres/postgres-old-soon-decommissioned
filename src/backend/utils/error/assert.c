@@ -40,7 +40,11 @@ ExceptionalCondition(char *conditionName,
 	}
 
 #ifdef SLEEP_ON_ASSERT
-	sleep(1000000);
+	/*
+	 *	It would be nice to use pg_usleep() here, but only does 2000 sec
+	 *	or 33 minutes, which seems too short.
+	 */	 
+	sleep(1000000);	
 #endif
 
 	abort();

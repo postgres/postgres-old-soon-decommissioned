@@ -50,7 +50,9 @@ int
 main(int argc, char *argv[])
 {
 	int			len;
+#ifndef WIN32
 	struct passwd *pw;
+#endif
 	char	   *pw_name_persist;
 
 	/*

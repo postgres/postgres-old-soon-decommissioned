@@ -259,7 +259,7 @@ PGSharedMemoryCreate(uint32 size, bool makePrivate, int port)
 		PGSharedMemoryDetach();
 		UsedShmemSegAddr = origUsedShmemSegAddr;
 #endif
-		elog(DEBUG3,"Attaching to %x",UsedShmemSegAddr);
+		elog(DEBUG3,"Attaching to %p",UsedShmemSegAddr);
 		hdr = PGSharedMemoryAttach((IpcMemoryKey) UsedShmemSegID, &shmid);
 		if (hdr == NULL)
 			elog(FATAL, "could not attach to proper memory at fixed address: shmget(key=%d, addr=%p) failed: %m",

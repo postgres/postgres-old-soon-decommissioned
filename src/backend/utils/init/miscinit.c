@@ -213,11 +213,11 @@ SetDataDir(const char *dir)
 	 * generating funny-looking paths to individual files.
 	 */
 	newlen = strlen(new);
-	if (newlen > 1 && new[newlen - 1] == '/'
+	if (newlen > 1 && (new[newlen - 1] == '/'
 #ifdef WIN32
 		|| new[newlen - 1] == '\\'
 #endif
-		)
+		))
 		new[newlen - 1] = '\0';
 
 	if (DataDir)

@@ -18,7 +18,8 @@
 #include <errno.h>
 #include <assert.h>
 
-int openFlagsToCreateFileFlags(int openFlags)
+static int
+openFlagsToCreateFileFlags(int openFlags)
 {
 	switch (openFlags & (O_CREAT|O_TRUNC|O_EXCL))
 	{

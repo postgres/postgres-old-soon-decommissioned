@@ -2830,7 +2830,7 @@ StartupXLOG(void)
 	/* This is just to allow attaching to startup process with a debugger */
 #ifdef XLOG_REPLAY_DELAY
 	if (ControlFile->state != DB_SHUTDOWNED)
-		sleep(60);
+		pg_usleep(60000000L);
 #endif
 
 	/*
@@ -3360,7 +3360,7 @@ CreateCheckPoint(bool shutdown, bool force)
 	while (!LWLockConditionalAcquire(CheckpointLock, LW_EXCLUSIVE))
 	{
 		CHECK_FOR_INTERRUPTS();
-		sleep(1);
+		pg_usleep(1000000L);
 	}
 
 	/*

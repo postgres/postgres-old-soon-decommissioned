@@ -573,8 +573,8 @@ process_psqlrc(void)
 	char	   *psqlrc;
 	char	   *home;
 
-#ifdef WIN32
-#define R_OK 0
+#if defined(WIN32) && (!defined(__MINGW32__))
+#define R_OK 4
 #endif
 
 	/* Look for one in the home dir */

@@ -26,7 +26,7 @@
 #include "prompt.h"
 #include "stringutils.h"
 
-#ifdef WIN32
+#if defined(WIN32) && (!defined(__MINGW32__))
 #define strcasecmp(x,y) stricmp(x,y)
 #define __S_ISTYPE(mode, mask)	(((mode) & S_IFMT) == (mask))
 #define S_ISDIR(mode)	 __S_ISTYPE((mode), S_IFDIR)
