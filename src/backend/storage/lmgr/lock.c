@@ -602,7 +602,23 @@ LockAcquire(LOCKMETHODID lockmethodid, LOCKTAG *locktag,
 										HASH_ENTER, &found);
 	if (!proclock)
 	{
+		/* Ooops, not enough shmem for the proclock */
+		if (lock->nRequested == 0)
+		{
+			/*
+			 * There are no other requestors of this lock, so garbage-collect
+			 * the lock object.  We *must* do this to avoid a permanent leak
+			 * of shared memory, because there won't be anything to cause
+			 * anyone to release the lock object later.
+			 */
+			Assert(SHMQueueEmpty(&(lock->procLocks)));
+			lock = (LOCK *) hash_search(LockMethodLockHash[lockmethodid],
+										(void *) &(lock->tag),
+										HASH_REMOVE, NULL);
+		}
 		LWLockRelease(masterLock);
+		if (!lock)				/* hash remove failed? */
+			elog(WARNING, "lock table corrupted");
 		ereport(ERROR,
 				(errcode(ERRCODE_OUT_OF_MEMORY),
 				 errmsg("out of shared memory"),
@@ -1528,7 +1544,7 @@ LockReleaseAll(LOCKMETHODID lockmethodid, bool allxids)
 			if (!lock)
 			{
 				LWLockRelease(masterLock);
-				elog(WARNING, "cannot remove lock from HTAB");
+				elog(WARNING, "lock table corrupted");
 				return FALSE;
 			}
 		}
