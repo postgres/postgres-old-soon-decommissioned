@@ -421,7 +421,7 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 
 					if (!result)
 					{
-						fprintf(stderr, gettext("%s: couldn't set printing parameter %s\n"), pset.progname, value);
+						fprintf(stderr, gettext("%s: couldn't set printing parameter \"%s\"\n"), pset.progname, value);
 						exit(EXIT_FAILURE);
 					}
 
@@ -467,7 +467,7 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 					{
 						if (!DeleteVariable(pset.vars, value))
 						{
-							fprintf(stderr, gettext("%s: could not delete variable %s\n"),
+							fprintf(stderr, gettext("%s: could not delete variable \"%s\"\n"),
 									pset.progname, value);
 							exit(EXIT_FAILURE);
 						}
@@ -477,7 +477,7 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 						*equal_loc = '\0';
 						if (!SetVariable(pset.vars, value, equal_loc + 1))
 						{
-							fprintf(stderr, gettext("%s: could not set variable %s\n"),
+							fprintf(stderr, gettext("%s: could not set variable \"%s\"\n"),
 									pset.progname, value);
 							exit(EXIT_FAILURE);
 						}
@@ -508,13 +508,13 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 				/* unknown option reported by getopt */
 				else
 				{
-					fprintf(stderr, gettext("Try '%s --help' for more information.\n"),
+					fprintf(stderr, gettext("Try \"%s --help\" for more information.\n"),
 							pset.progname);
 					exit(EXIT_FAILURE);
 				}
 				break;
 			default:
-				fprintf(stderr, gettext("Try '%s --help' for more information.\n"),
+				fprintf(stderr, gettext("Try \"%s --help\" for more information.\n"),
 						pset.progname);
 				exit(EXIT_FAILURE);
 				break;
@@ -532,7 +532,7 @@ parse_psql_options(int argc, char *argv[], struct adhoc_opts * options)
 		else if (!options->username)
 			options->username = argv[optind];
 		else if (!QUIET())
-			fprintf(stderr, gettext("%s: warning: extra option %s ignored\n"),
+			fprintf(stderr, gettext("%s: warning: extra command-line argument \"%s\" ignored\n"),
 					pset.progname, argv[optind]);
 
 		optind++;

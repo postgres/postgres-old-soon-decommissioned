@@ -98,7 +98,7 @@ main(int argc, char *argv[])
 				encoding = optarg;
 				break;
 			default:
-				fprintf(stderr, _("Try '%s --help' for more information.\n"), progname);
+				fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 				exit(1);
 		}
 	}
@@ -115,9 +115,9 @@ main(int argc, char *argv[])
 			comment = argv[optind + 1];
 			break;
 		default:
-			fprintf(stderr,	_("%s: too many command-line arguments (first is '%s')\n"),
+			fprintf(stderr,	_("%s: too many command-line arguments (first is \"%s\")\n"),
 					progname, argv[optind + 2]);
-			fprintf(stderr, _("Try '%s --help' for more information.\n"), progname);
+			fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 			exit(1);
 	}
 

@@ -287,7 +287,7 @@ parse_slash_copy(const char *args)
 
 error:
 	if (token)
-		psql_error("\\copy: parse error at '%s'\n", token);
+		psql_error("\\copy: parse error at \"%s\"\n", token);
 	else
 		psql_error("\\copy: parse error at end of line\n");
 	free_copy_options(result);

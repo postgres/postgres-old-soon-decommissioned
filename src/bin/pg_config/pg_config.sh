@@ -41,7 +41,7 @@ Options:
 Report bugs to <pgsql-bugs@postgresql.org>."
 
 advice="\
-Try '$me --help' for more information."
+Try \"$me --help\" for more information."
 
 if test "$#" -eq 0 ; then
     echo "$me: argument required" 1>&2

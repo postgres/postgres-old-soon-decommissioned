@@ -22,8 +22,9 @@ fi
 if [ "$USER" = 'root' -o "$LOGNAME" = 'root' ]
 then
   (
-    echo "You cannot run $CMDNAME as root. Please log in (using, e.g., 'su')"
-    echo "as the (unprivileged) user that owned the server process."
+    echo "$CMDNAME: cannot be run as root" 1>&2
+    echo "Please log in (using, e.g., \"su\") as the (unprivileged) user that" 1>&2
+    echo "owned the server process." 1>&2
   ) 1>&2
     exit 1
 fi
@@ -39,7 +40,7 @@ EffectiveUser=`id -n -u 2>/dev/null || whoami 2>/dev/null`
 #
 if [ `uname` = 'QNX' ]; then
     if ps -eA  | grep -s '[p]ostmaster' >/dev/null 2>&1 ; then
-        echo "$CMDNAME: You still have a postmaster running." 1>&2
+        echo "$CMDNAME: a postmaster is still running" 1>&2
         exit 1
     fi
     rm -f /dev/shmem/PgS*
@@ -52,7 +53,7 @@ if [ `uname` = 'Linux' ]; then
     did_anything=
 
     if ps x | grep -s '[p]ostmaster' >/dev/null 2>&1 ; then
-        echo "$CMDNAME: You still have a postmaster running." 1>&2
+        echo "$CMDNAME: a postmaster is still running" 1>&2
         exit 1
     fi
 

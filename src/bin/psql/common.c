@@ -425,7 +425,7 @@ PrintNotifications(void)
 
 	while ((notify = PQnotifies(pset.db)))
 	{
-		fprintf(pset.queryFout, gettext("Asynchronous NOTIFY '%s' from backend with pid %d received.\n"),
+		fprintf(pset.queryFout, gettext("Asynchronous notification \"%s\" received from server process with PID %d.\n"),
 				notify->relname, notify->be_pid);
 		PQfreemem(notify);
 		fflush(pset.queryFout);
@@ -585,7 +585,7 @@ SendQuery(const char *query)
 	{
 		char		buf[3];
 
-		printf(gettext("***(Single step mode: Verify query)*********************************************\n"
+		printf(gettext("***(Single step mode: verify command)*******************************************\n"
 					   "%s\n"
 					   "***(press return to proceed or enter x and return to cancel)********************\n"),
 			   query);

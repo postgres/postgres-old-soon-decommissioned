@@ -204,7 +204,7 @@ saveHistory(char *fname)
 		if (write_history(fname) == 0)
 		return true;
 
-		psql_error("could not save history to %s: %s\n", fname, strerror(errno));
+		psql_error("could not save history to file \"%s\": %s\n", fname, strerror(errno));
 	}
 #endif
 

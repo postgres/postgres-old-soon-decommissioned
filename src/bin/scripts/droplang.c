@@ -85,7 +85,7 @@ main(int argc, char *argv[])
 				echo = true;
 				break;
 			default:
-				fprintf(stderr, _("Try '%s --help' for more information.\n"), progname);
+				fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 				exit(1);
 		}
 	}
@@ -104,9 +104,9 @@ main(int argc, char *argv[])
 
 	if (argc - optind > 0)
 	{
-		fprintf(stderr,	_("%s: too many command line options (first is '%s')\n"),
+		fprintf(stderr,	_("%s: too many command-line arguments (first is \"%s\")\n"),
 				progname, argv[optind]);
-	    fprintf(stderr, _("Try '%s --help' for more information.\n"), progname);
+	    fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 		exit(1);
 	}
 
@@ -148,7 +148,7 @@ main(int argc, char *argv[])
 	if (langname == NULL)
 	{
 		fprintf(stderr, _("%s: missing required argument language name\n"), progname);
-	    fprintf(stderr, _("Try '%s --help' for more information.\n"), progname);
+	    fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 		exit(1);
 	}
 
@@ -182,7 +182,7 @@ main(int argc, char *argv[])
 	{
 		PQfinish(conn);
 		fprintf(stderr,
-				_("%s: There are %s functions declared in language \"%s\".  Language not removed.\n"),
+				_("%s: still %s functions declared in language \"%s\"; language not removed\n"),
 				progname, PQgetvalue(result, 0, 0), langname);
 		exit(1);
 	}
@@ -241,7 +241,7 @@ help(const char *progname)
 	printf(_("Usage:\n"));
 	printf(_("  %s [OPTION]... LANGNAME [DBNAME]\n"), progname);
 	printf(_("\nOptions:\n"));
-	printf(_("  -d, --dbname=DBNAME       database to install language in\n"));
+	printf(_("  -d, --dbname=DBNAME       database from which to remove the language\n"));
 	printf(_("  -e, --echo                show the commands being sent to the server\n"));
 	printf(_("  -l, --list                show a list of currently installed languages\n"));
 	printf(_("  -h, --host=HOSTNAME       database server host or socket directory\n"));

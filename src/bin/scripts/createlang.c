@@ -91,7 +91,7 @@ main(int argc, char *argv[])
 				echo = true;
 				break;
 			default:
-				fprintf(stderr, _("Try '%s --help' for more information.\n"), progname);
+				fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 				exit(1);
 		}
 	}
@@ -110,9 +110,9 @@ main(int argc, char *argv[])
 
 	if (argc - optind > 0)
 	{
-		fprintf(stderr,	_("%s: too many command-line arguments (first is '%s')\n"),
+		fprintf(stderr,	_("%s: too many command-line arguments (first is \"%s\")\n"),
 				progname, argv[optind]);
-	    fprintf(stderr, _("Try '%s --help' for more information.\n"), progname);
+	    fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 		exit(1);
 	}
 
@@ -154,7 +154,7 @@ main(int argc, char *argv[])
 	if (langname == NULL)
 	{
 		fprintf(stderr, _("%s: missing required argument language name\n"), progname);
-	    fprintf(stderr, _("Try '%s --help' for more information.\n"), progname);
+	    fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 		exit(1);
 	}
 

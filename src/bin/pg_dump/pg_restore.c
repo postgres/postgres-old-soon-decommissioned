@@ -273,7 +273,7 @@ main(int argc, char **argv)
 					fprintf(stderr,
 							_("%s: invalid -X option -- %s\n"),
 							progname, optarg);
-					fprintf(stderr, _("Try '%s --help' for more information.\n"), progname);
+					fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 					exit(1);
 				}
 				break;
@@ -283,7 +283,7 @@ main(int argc, char **argv)
 				break;
 
 			default:
-				fprintf(stderr, _("Try '%s --help' for more information.\n"), progname);
+				fprintf(stderr, _("Try \"%s --help\" for more information.\n"), progname);
 				exit(1);
 		}
 	}
