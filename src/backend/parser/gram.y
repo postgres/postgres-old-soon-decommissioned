@@ -5617,8 +5617,8 @@ ConstBit:	BitWithLength
 				}
 			| BitWithoutLength
 				{
-					$$->typmod = -1;
 					$$ = $1;
+					$$->typmod = -1;
 				}
 		;
 
@@ -5687,8 +5687,8 @@ ConstCharacter:  CharacterWithLength
 					 * of one, but should not be constrained if the length
 					 * was not specified.
 					 */
-					$1->typmod = -1;
 					$$ = $1;
+					$$->typmod = -1;
 				}
 		;
 
