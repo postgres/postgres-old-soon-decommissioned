@@ -62,8 +62,10 @@ extratests="$*"
 if [ "x$hostname" = "xwin" -o "x$hostname" = "xi386-pc-qnx" ]
 then
     HOSTLOC="-h localhost"
+    USETCPIP="-i"
 else
     HOSTLOC=""
+    USETCPIP=""
 fi
 
 # ----------
@@ -192,7 +194,7 @@ fi
 # him some time to pass the WAL recovery code. 
 #----------
 echo "=============== Starting regression postmaster         ================"
-postmaster -D $PGDATA -i -p $PGPORT $PMOPTIONS >$LOGDIR/postmaster.log 2>&1 &
+postmaster -D $PGDATA $USETCPIP -p $PGPORT $PMOPTIONS >$LOGDIR/postmaster.log 2>&1 &
 PMPID=$!
 sleep 2
 
