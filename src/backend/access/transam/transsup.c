@@ -211,8 +211,7 @@ TransBlockGetXidStatus(Block tblock,
 	 *	return the transaction status to the caller
 	 * ----------------
 	 */
-	return (XidStatus)
-		(bit1 | bit2);
+	return (XidStatus) (bit1 | bit2);
 }
 
 /* --------------------------------

@@ -174,8 +174,7 @@ TransactionLogTest(TransactionId transactionId, /* transaction id to test */
 	{
 		TransactionIdStore(transactionId, &cachedTestXid);
 		cachedTestXidStatus = xidstatus;
-		return (bool)
-			(status == xidstatus);
+		return (bool) (status == xidstatus);
 	}
 
 	/* ----------------

@@ -49,7 +49,7 @@ extern void ShowUsage(void);
 int
 SPI_connect()
 {
-	char									pname[64];
+	char					pname[64];
 	PortalVariableMemory	pvmem;
 
 	/*

@@ -71,8 +71,7 @@ PortalCleanup(Portal portal)
 	 * ----------------
 	 */
 	context = MemoryContextSwitchTo((MemoryContext) PortalGetHeapMemory(portal));
-	PortalExecutorHeapMemory = (MemoryContext)
-		PortalGetHeapMemory(portal);
+	PortalExecutorHeapMemory = (MemoryContext) PortalGetHeapMemory(portal);
 
 	/* ----------------
 	 *	tell the executor to shutdown the query
@@ -210,7 +209,7 @@ PerformPortalFetch(char *name,
 	 * ----------------
 	 */
 	MemoryContextSwitchTo(
-			 (MemoryContext) PortalGetHeapMemory(GetPortalByName(NULL)));
+				(MemoryContext) PortalGetHeapMemory(GetPortalByName(NULL)));
 }
 
 /* --------------------------------

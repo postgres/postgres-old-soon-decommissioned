@@ -57,10 +57,6 @@
 #include <errno.h>
 #endif
 
-#ifdef __CYGWIN32__
-#include <errno.h>
-#endif
-
 /* ----------------------------------------------------------------
  *				Section 1:	bool, true, false, TRUE, FALSE
  * ----------------------------------------------------------------
