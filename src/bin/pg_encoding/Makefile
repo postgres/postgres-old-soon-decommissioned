@@ -22,7 +22,7 @@ CFLAGS:= -I$(SRCDIR)/include $(CFLAGS)
 all: submake pg_encoding
 
 pg_encoding: $(OBJS)
-	$(CC) -o pg_encoding $(OBJS) -L$(LIBPQDIR) -lpq $(LDFLAGS) $(CFLAGS)
+	$(CC) -o pg_encoding $(OBJS) $(LIBPQ) $(LDFLAGS) $(CFLAGS)
 
 .PHONY: submake
 

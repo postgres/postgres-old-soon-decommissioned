@@ -31,7 +31,7 @@ endif
 
 OBJS=	pl_parse.o pl_handler.o pl_comp.o pl_exec.o pl_funcs.o
 
-SHLIB_LINK+= -L$(LIBPQDIR) -lpq
+SHLIB_LINK+= $(LIBPQ)
 
 # If crypt is a separate library, rather than part of libc, it may need
 # to be referenced separately to keep (broken) linkers happy.  (This is

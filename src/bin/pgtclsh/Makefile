@@ -22,15 +22,12 @@ ifeq ($(USE_TK), true)
 include Makefile.tkdefs
 endif
 
-CFLAGS+= $(X_CFLAGS) -I$(SRCDIR)/interfaces/libpgtcl 
+CFLAGS+= $(X_CFLAGS) -I$(LIBPGTCLDIR)
 
 ifdef KRBVERS
 LDFLAGS+= $(KRBLIBS)
 CFLAGS+= $(KRBFLAGS)
 endif
-
-LIBPGTCL= -L$(SRCDIR)/interfaces/libpgtcl -lpgtcl
-LIBPQ= -L$(LIBPQDIR) -lpq
 
 # If we are here then TCL is available
 PGMS = pgtclsh

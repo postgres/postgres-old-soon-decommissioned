@@ -75,7 +75,7 @@ CFLAGS+= -I$(SRCDIR)/backend
 
 CFLAGS+= $(TCL_DEFS)
 
-LDADD+= -L$(LIBPQDIR) -lpq
+LDADD+= $(LIBPQ)
         
 #
 # DLOBJS is the dynamically-loaded object file.

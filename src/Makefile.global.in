@@ -54,6 +54,10 @@ BSD_SHLIB= true
 ELF_SYSTEM= @ELF_SYS@
 
 LIBPQDIR:= $(SRCDIR)/interfaces/libpq
+LIBPGTCLDIR:= $(SRCDIR)/interfaces/libpgtcl
+
+LIBPQ:= -L$(LIBPQDIR) -lpq
+LIBPGTCL:= -L$(LIBPGTCLDIR) -lpgtcl
 
 # For convenience, POSTGRESDIR is where BINDIR, and LIBDIR
 # and other target destinations are rooted.  Of course, each of these is
@@ -69,6 +73,10 @@ BINDIR= $(POSTGRESDIR)/bin
 # can just put the absolute pathname to the library at the end of your
 # command line.
 LIBDIR= $(POSTGRESDIR)/lib
+
+# Where the database templates are stored
+#
+TEMPLATEDIR= $(POSTGRESDIR)/lib
 
 # This is the directory where IPC utilities ipcs and ipcrm are located
 #

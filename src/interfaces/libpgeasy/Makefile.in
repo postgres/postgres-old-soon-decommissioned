@@ -23,9 +23,7 @@ endif
 
 OBJS= libpgeasy.o halt.o
 
-SHLIB_LINK+= -L../libpq -lpq
-
-SHLIB_LINK+= -L../libpq -lpq
+SHLIB_LINK+= $(LIBPQ)
 
 # If crypt is a separate library, rather than part of libc, it may need
 # to be referenced separately to keep (broken) linkers happy.  (This is

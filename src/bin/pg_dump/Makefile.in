@@ -29,7 +29,7 @@ endif
 all: submake pg_dump
 
 pg_dump: $(OBJS) $(LIBPQDIR)/libpq.a
-	$(CC) -o pg_dump -L$(LIBPQDIR) $(OBJS) -lpq $(LDFLAGS)
+	$(CC) -o pg_dump $(OBJS) $(LIBPQ) $(LDFLAGS)
 
 ../../utils/strdup.o:
 	$(MAKE) -C ../../utils strdup.o

@@ -56,7 +56,7 @@ endif
 # End of hacks for picking up backend 'port' modules
 
 psql: $(OBJS) $(LIBPQDIR)/libpq.a
-	$(CC) -o psql -L$(LIBPQDIR) $(OBJS) -lpq $(LDFLAGS)
+	$(CC) -o psql $(OBJS) $(LIBPQ) $(LDFLAGS)
 
 help.o: sql_help.h
 

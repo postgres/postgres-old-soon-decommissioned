@@ -15,21 +15,21 @@
  * USE_READLINE and USE_HISTORY are the definite pointers regarding existence or not.
  */
 #ifdef HAVE_LIBREADLINE
-# ifdef HAVE_READLINE_H
-#  include <readline.h>
-#  define USE_READLINE 1
-# elif defined(HAVE_READLINE_READLINE_H)
+# if defined(HAVE_READLINE_READLINE_H)
 #  include <readline/readline.h>
+#  define USE_READLINE 1
+# elif defined(HAVE_READLINE_H)
+#  include <readline.h>
 #  define USE_READLINE 1
 # endif
 #endif
 
 #if defined(HAVE_LIBHISTORY) || (defined(HAVE_LIBREADLINE) && defined(HAVE_HISTORY_IN_READLINE))
-# ifdef HAVE_HISTORY_H
-#  include <history.h>
-#  define USE_HISTORY 1
-# elif defined(HAVE_READLINE_HISTORY_H)
+# if defined(HAVE_READLINE_HISTORY_H)
 #  include <readline/history.h>
+#  define USE_HISTORY 1
+# elif defined(HAVE_HISTORY_H)
+#  include <history.h>
 #  define USE_HISTORY 1
 # endif
 #endif
