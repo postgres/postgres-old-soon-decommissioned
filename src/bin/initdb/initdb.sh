@@ -97,7 +97,7 @@ do
 	*)
 		echo "Unrecognized option '$1'.  Syntax is:"
 		echo "initdb [-t | --template] [-d | --debug] [-n | --noclean]" \
-		     "[-u SUPSERUSER | --username=SUPERUSER] [-r DATADIR | --pgdata=DATADIR]"
+		     "[-u SUPERUSER | --username=SUPERUSER] [-r DATADIR | --pgdata=DATADIR]"
 		exit 100
 	esac
 	shift
