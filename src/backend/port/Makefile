@@ -21,34 +21,28 @@ subdir = src/backend/port
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = dynloader.o pg_sema.o pg_shmem.o
+OBJS=dynloader.o pg_sema.o pg_shmem.o
 
-OBJS += $(GETHOSTNAME) $(GETRUSAGE) $(INET_ATON) $(ISINF) $(MEMCMP) \
-        $(MISSING_RANDOM) $(SNPRINTF) $(SRANDOM) $(STRCASECMP) $(STRERROR) \
-        $(STRTOL) $(STRTOUL)
+OBJS+=$(GETHOSTNAME) $(GETRUSAGE) $(INET_ATON) $(ISINF) $(MEMCMP) \
+        $(MISSING_RANDOM) $(SNPRINTF) $(SRANDOM) $(STRCASECMP) $(STRDUP) \
+	$(STRERROR) $(STRTOL) $(STRTOUL)
 
-OBJS += $(TAS)
+OBJS+=$(TAS)
 
-ifdef STRDUP
-OBJS += $(top_builddir)/src/utils/strdup.o
-endif
 ifeq ($(PORTNAME), qnx4)
-OBJS += getrusage.o qnx4/SUBSYS.o
+OBJS+=getrusage.o qnx4/SUBSYS.o
 endif
 ifeq ($(PORTNAME), beos)
-OBJS += beos/SUBSYS.o
+OBJS+=beos/SUBSYS.o
 endif
 ifeq ($(PORTNAME), darwin)
-OBJS += darwin/SUBSYS.o
+OBJS+=darwin/SUBSYS.o
 endif
 
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) $@ $^
-
-$(top_builddir)/src/utils/strdup.o:
-	$(MAKE) -C $(top_builddir)/src/utils strdup.o
 
 qnx4/SUBSYS.o: qnx4.dir
 

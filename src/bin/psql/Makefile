@@ -17,41 +17,12 @@ REFDOCDIR= $(top_srcdir)/doc/src/sgml/ref
 
 override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 
-OBJS=command.o common.o help.o input.o stringutils.o mainloop.o \
-	copy.o startup.o prompt.o variables.o large_obj.o print.o describe.o \
-	sprompt.o tab-complete.o mbprint.o
+OBJS=command.o common.o help.o input.o stringutils.o mainloop.o copy.o \
+	startup.o prompt.o variables.o large_obj.o print.o describe.o \
+	sprompt.o tab-complete.o mbprint.o $(SNPRINTF) $(STRDUP) \
+	$(STRERROR) $(STRTOUL)
 
 all: submake psql
-
-ifdef STRDUP
-OBJS+=$(top_builddir)/src/utils/strdup.o
-
-$(top_builddir)/src/utils/strdup.o:
-	$(MAKE) -C $(top_builddir)/src/utils strdup.o
-endif
-
-# Move these to the utils directory?
-
-ifdef STRERROR
-OBJS+=$(top_builddir)/src/backend/port/strerror.o
-
-$(top_builddir)/src/backend/port/strerror.o:
-	$(MAKE) -C $(top_builddir)/src/backend/port strerror.o
-endif
-
-ifdef SNPRINTF
-OBJS+=$(top_builddir)/src/backend/port/snprintf.o
-
-$(top_builddir)/src/backend/port/snprintf.o:
-	$(MAKE) -C $(top_builddir)/src/backend/port snprintf.o
-endif
-
-ifdef STRTOUL
-OBJS+=$(top_builddir)/src/backend/port/strtoul.o
-
-$(top_builddir)/src/backend/port/strtoul.o:
-	$(MAKE) -C $(top_builddir)/src/backend/port strtoul.o
-endif
 
 # End of hacks for picking up backend 'port' modules
 

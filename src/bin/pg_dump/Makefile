@@ -14,21 +14,8 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 OBJS= pg_backup_archiver.o pg_backup_db.o pg_backup_custom.o \
-      pg_backup_files.o pg_backup_null.o pg_backup_tar.o sprompt.o
-
-ifdef STRDUP
-OBJS+=$(top_builddir)/src/utils/strdup.o
-
-$(top_builddir)/src/utils/strdup.o:
-	$(MAKE) -C $(top_builddir)/src/utils strdup.o
-endif
-
-ifdef STRTOUL
-OBJS+=$(top_builddir)/src/backend/port/strtoul.o
-
-$(top_builddir)/src/backend/port/strtoul.o:
-	$(MAKE) -C $(top_builddir)/src/backend/port strtoul.o
-endif
+      pg_backup_files.o pg_backup_null.o pg_backup_tar.o sprompt.o \
+      $(STRDUP) $(STRTOUL)
 
 override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 

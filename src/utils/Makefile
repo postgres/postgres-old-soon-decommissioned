@@ -22,6 +22,8 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
 all:
+	# Nothing required here.  These C files are compiled in
+	# directories as needed.
 
 clean distclean maintainer-clean:
 	rm -f dllinit.o getopt.o strdup.o
