@@ -13,35 +13,29 @@
  *-------------------------------------------------------------------------
  */
 
-/*
- * utils/memutils.h contains declarations of the functions in this file
- */
 #include "postgres.h"
 
 #include "utils/bit.h"
 
+
 void
 BitArraySetBit(BitArray bitArray, BitIndex bitIndex)
 {
-	bitArray[bitIndex / BitsPerByte]
-	|= (1 << (BitsPerByte - (bitIndex % BitsPerByte) - 1));
-	return;
+	bitArray[bitIndex / BITSPERBYTE] |=
+		(1 << (BITSPERBYTE - 1 - (bitIndex % BITSPERBYTE)));
 }
 
 void
 BitArrayClearBit(BitArray bitArray, BitIndex bitIndex)
 {
-	bitArray[bitIndex / BitsPerByte]
-	&= ~(1 << (BitsPerByte - (bitIndex % BitsPerByte) - 1));
-	return;
+	bitArray[bitIndex / BITSPERBYTE] &=
+		~(1 << (BITSPERBYTE - 1 - (bitIndex % BITSPERBYTE)));
 }
 
 bool
 BitArrayBitIsSet(BitArray bitArray, BitIndex bitIndex)
 {
-	return ((bool) (((bitArray[bitIndex / BitsPerByte] &
-					  (1 << (BitsPerByte - (bitIndex % BitsPerByte)
-							 - 1)
-					   )
-					  ) != 0) ? 1 : 0));
+	return ((bitArray[bitIndex / BITSPERBYTE] &
+			 (1 << (BITSPERBYTE - 1 - (bitIndex % BITSPERBYTE)))
+		) != 0);
 }

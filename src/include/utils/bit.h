@@ -17,8 +17,6 @@
 typedef bits8 *BitArray;
 typedef uint32 BitIndex;
 
-#define BitsPerByte		8
-
 /*
  * BitArraySetBit
  *		Sets (to 1) the value of a bit in a bit array.
