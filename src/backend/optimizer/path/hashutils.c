@@ -54,7 +54,7 @@ group_clauses_by_hashop(List *restrictinfo_list,
 		 */
 		if (hashjoinop)
 		{
-			HashInfo	   *xhashinfo = (HashInfo *) NULL;
+			HashInfo   *xhashinfo = (HashInfo *) NULL;
 			Expr	   *clause = restrictinfo->clause;
 			Var		   *leftop = get_leftop(clause);
 			Var		   *rightop = get_rightop(clause);

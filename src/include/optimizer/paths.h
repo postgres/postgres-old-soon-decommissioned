@@ -70,7 +70,7 @@ extern List *new_join_pathkeys(List *outer_pathkeys,
  */
 extern List *group_clauses_by_order(List *restrictinfo_list,
 					   int inner_relid);
-extern MInfo *match_order_mergeinfo(PathOrder *ordering,
+extern MergeInfo *match_order_mergeinfo(PathOrder *ordering,
 					  List *mergeinfo_list);
 
 /*

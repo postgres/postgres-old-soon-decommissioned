@@ -1914,7 +1914,7 @@ _readJoinMethod()
 static HashInfo *
 _readHashInfo()
 {
-	HashInfo	   *local_node;
+	HashInfo	*local_node;
 	char	   *token;
 	int			length;
 
