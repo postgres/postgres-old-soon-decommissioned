@@ -111,7 +111,7 @@ DELETE <replaceable class="parameter">count</replaceable>
 
    <tip>
     <para>
-     <xref linkend="sql-truncate" endterm="squ-truncate-title"> is a
+     <xref linkend="sql-truncate" endterm="sql-truncate-title"> is a
      <productname>Postgres</productname> extension which provides a
      faster mechanism to remove all rows from a table.
     </para>
