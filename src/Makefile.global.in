@@ -191,6 +191,7 @@ BACKSLASH_C= @BACKSLASH_C@
 # See the subdirectory template for default settings for these
 #-------------------------------------------------------------
 CC= @CC@
+CPP= @CPP@
 YFLAGS= @YFLAGS@
 YACC= @YACC@
 LEX= @LEX@
