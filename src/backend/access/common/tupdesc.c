@@ -375,7 +375,7 @@ TupleDescInitEntry(TupleDesc desc,
 	else
 		MemSet(NameStr(att->attname), 0, NAMEDATALEN);
 
-	att->attstattarget = 0;
+	att->attstattarget = -1;
 	att->attcacheoff = -1;
 	att->atttypmod = typmod;
 

@@ -107,6 +107,11 @@ typedef struct
 #define swapInt(a,b)	do {int _tmp; _tmp=a; a=b; b=_tmp;} while(0)
 #define swapDatum(a,b)	do {Datum _tmp; _tmp=a; a=b; b=_tmp;} while(0)
 
+
+/* Default statistics target (GUC parameter) */
+int		default_statistics_target = 10;
+
+
 static int elevel = -1;
 
 static MemoryContext anl_context = NULL;
@@ -384,7 +389,7 @@ examine_attribute(Relation onerel, int attnum)
 	VacAttrStats *stats;
 
 	/* Don't analyze column if user has specified not to */
-	if (attr->attstattarget <= 0)
+	if (attr->attstattarget == 0)
 		return NULL;
 
 	/* If column has no "=" operator, we can't do much of anything */
@@ -424,6 +429,10 @@ examine_attribute(Relation onerel, int attnum)
 	ReleaseSysCache(typtuple);
 	stats->eqopr = eqopr;
 	stats->eqfunc = eqfunc;
+
+	/* If the attstattarget column is negative, use the default value */
+	if (stats->attr->attstattarget < 0)
+		stats->attr->attstattarget = default_statistics_target;
 
 	/* Is there a "<" operator with suitable semantics? */
 	func_operator = compatible_oper(makeList1(makeString("<")),
@@ -466,14 +475,14 @@ examine_attribute(Relation onerel, int attnum)
 		 * know it at this point.
 		 *--------------------
 		 */
-		stats->minrows = 300 * attr->attstattarget;
+		stats->minrows = 300 * stats->attr->attstattarget;
 	}
 	else
 	{
 		/* Can't do much but the minimal stuff */
 		stats->algcode = ALG_MINIMAL;
 		/* Might as well use the same minrows as above */
-		stats->minrows = 300 * attr->attstattarget;
+		stats->minrows = 300 * stats->attr->attstattarget;
 	}
 
 	return stats;

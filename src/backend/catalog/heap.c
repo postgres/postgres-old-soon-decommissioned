@@ -441,7 +441,7 @@ AddNewAttributeTuples(Oid new_rel_oid,
 		/* Fill in the correct relation OID */
 		(*dpp)->attrelid = new_rel_oid;
 		/* Make sure these are OK, too */
-		(*dpp)->attstattarget = DEFAULT_ATTSTATTARGET;
+		(*dpp)->attstattarget = -1;
 		(*dpp)->attcacheoff = -1;
 
 		tup = heap_addheader(Natts_pg_attribute,

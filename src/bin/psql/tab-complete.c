@@ -246,6 +246,7 @@ psql_completion(char *text, int start, int end)
 		"password_encryption",
 		"transform_null_equals",
 
+		"default_statistics_target",
 		"geqo_threshold",
 		"geqo_pool_size",
 		"geqo_effort",

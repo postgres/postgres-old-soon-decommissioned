@@ -218,6 +218,8 @@ ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
       This form
       sets the per-column statistics-gathering target for subsequent
       <xref linkend="sql-analyze" endterm="sql-analyze-title"> operations.
+      The target can be set in the range 0 to 1000; alternatively, set it
+      to -1 to revert to using the system default statistics target.
      </para>
     </listitem>
    </varlistentry>

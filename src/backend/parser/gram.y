@@ -1134,14 +1134,14 @@ AlterTableStmt:
 					n->name = $6;
 					$$ = (Node *)n;
 				}
-			/* ALTER TABLE <relation> ALTER [COLUMN] <colname> SET STATISTICS <Iconst> */
-			| ALTER TABLE relation_expr ALTER opt_column ColId SET STATISTICS Iconst
+			/* ALTER TABLE <relation> ALTER [COLUMN] <colname> SET STATISTICS <IntegerOnly> */
+			| ALTER TABLE relation_expr ALTER opt_column ColId SET STATISTICS IntegerOnly
 				{
 					AlterTableStmt *n = makeNode(AlterTableStmt);
 					n->subtype = 'S';
 					n->relation = $3;
 					n->name = $6;
-					n->def = (Node *) makeInteger($9);
+					n->def = (Node *) $9;
 					$$ = (Node *)n;
 				}
 			/* ALTER TABLE <relation> ALTER [COLUMN] <colname> SET STORAGE <storagemode> */

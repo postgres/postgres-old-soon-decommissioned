@@ -34,6 +34,9 @@ typedef struct VacRUsage
 	struct rusage ru;
 } VacRUsage;
 
+/* Default statistics target (GUC parameter) */
+extern int	default_statistics_target;
+
 
 /* in commands/vacuum.c */
 extern void vacuum(VacuumStmt *vacstmt);

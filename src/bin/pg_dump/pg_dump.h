@@ -122,6 +122,7 @@ typedef struct _tableInfo
 	char	  **attnames;		/* the attribute names */
 	char	  **atttypnames;	/* attribute type names */
 	int		   *atttypmod;		/* type-specific type modifiers */
+	int		   *attstattarget;	/* attribute statistics targets */
 	/*
 	 * Note: we need to store per-attribute notnull and default stuff for
 	 * all interesting tables so that we can tell which constraints were
