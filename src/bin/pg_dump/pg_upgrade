@@ -191,14 +191,14 @@ $0 aborted." 1>&2
 		    $9 >= 2147483646 &&
 		    $9 <= 2147483648)
 		{
-			for(i=1; i < NF; i++)
+			for(i=1; i <= NF; i++)
 			{
 				if (i != 9)
 					printf "%s ", $i;
 				else
 					printf "%s ", "9223372036854775807";
 			}
-			print;
+			print "";
 		}
 		else    print $0;
 	}' > "$INFODIR"/schema
@@ -261,6 +261,8 @@ $0 aborted." 1>&2
 $0 aborted." 1>&2
 		exit 1
 	fi
+	echo
+	echo
 	echo "Plase 1 completed.
 Continue with the steps outlined in the $0 manual page."
 	exit 0
