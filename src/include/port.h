@@ -47,9 +47,8 @@ extern void get_parent_directory(char *path);
 /*
  *	is_absolute_path
  *
- *	This capability is needed by libpq and initdb.c
- *	On Win32, you can't reference the same object file that is
- *	in two different libraries (pgport and libpq), so a macro is best.
+ *	By making this a macro we prevent the need for libpq to include
+ *	path.c which uses exec.c.
  */
 #ifndef WIN32
 #define is_absolute_path(filename) \
