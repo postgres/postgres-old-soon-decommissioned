@@ -186,6 +186,29 @@
   </para>
 
   <para>
+   In addition to the comparison operators, the special
+   <token>BETWEEN</token> construct is available.
+<synopsis>
+<replaceable>a</replaceable> BETWEEN <replaceable>x</replaceable> AND <replaceable>y</replaceable>
+</synopsis>
+   is equivalent to
+<synopsis>
+<replaceable>a</replaceable> &gt;= <replaceable>x</replaceable> AND <replaceable>a</replaceable> &lt;= <replaceable>y</replaceable>
+</synopsis>
+   Similarly,
+<synopsis>
+<replaceable>a</replaceable> NOT BETWEEN <replaceable>x</replaceable> AND <replaceable>y</replaceable>
+</synopsis>
+   is equivalent to
+<synopsis>
+<replaceable>a</replaceable> &lt; <replaceable>x</replaceable> OR <replaceable>a</replaceable> &gt; <replaceable>y</replaceable>
+</synopsis>
+   There is no difference between the two respective forms apart from
+   the <acronym>CPU</acronym> cycles required to rewrite the first one
+   into the second one internally.
+  </para>
+
+  <para>
    To check whether a value is or is not NULL, use the constructs
 <synopsis>
 <replaceable>expression</replaceable> IS NULL
