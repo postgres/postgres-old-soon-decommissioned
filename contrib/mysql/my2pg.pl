@@ -1,4 +1,4 @@
-#!/usr/bin/perl5
+#!/usr/bin/perl
 
 #
 # My2Pg: MySQL to PostgreSQL dump conversion utility
@@ -46,6 +46,9 @@
 
 #
 # $Log: my2pg.pl,v $
+# Revision 1.1  2001/02/10 11:43:12  momjian
+# Add other mysql conversion utility for comparisons.
+#
 # Revision 1.15  2001/01/30 10:13:36  fonin
 # Re-released under BSD-like license.
 #
@@ -94,7 +97,7 @@ if($opts{n} ne '') {
 $|=1;
 
 print("------------------------------------------------------------------");
-print("\n-- My2Pg \$Revision: 1.1 $ \translated dump");
+print("\n-- My2Pg \$Revision: 1.2 $ \translated dump");
 print("\n--");
 print("\n------------------------------------------------------------------");
 
@@ -116,7 +119,7 @@ $libtypename.='/libtypes.so';
 # push header to libtypes.c
 open(LIBTYPES,">$libtypesource");
 print LIBTYPES "/******************************************************";
-print LIBTYPES "\n * My2Pg \$Revision: 1.1 $ \translated dump";
+print LIBTYPES "\n * My2Pg \$Revision: 1.2 $ \translated dump";
 print LIBTYPES "\n * User types definitions";
 print LIBTYPES "\n ******************************************************/";
 print LIBTYPES "\n\n#include <postgres.h>\n";
@@ -608,7 +611,7 @@ close(LIBTYPES);
 
 open(MAKE,">Makefile");
 print MAKE "#
-# My2Pg \$Revision: 1.1 $ \translated dump
+# My2Pg \$Revision: 1.2 $ \translated dump
 # Makefile
 #
 
