@@ -43,6 +43,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"analyze", ANALYZE},
 	{"and", AND},
 	{"any", ANY},
+	{"array", ARRAY},
 	{"as", AS},
 	{"asc", ASC},
 	{"assertion", ASSERTION},

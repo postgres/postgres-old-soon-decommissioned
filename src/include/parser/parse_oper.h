@@ -49,4 +49,9 @@ extern Oid	ordering_oper_opid(Oid argtype);
 extern Oid	oprid(Operator op);
 extern Oid	oprfuncid(Operator op);
 
+/* Build expression tree for an operator invocation */
+extern Expr *make_op(List *opname, Node *ltree, Node *rtree);
+extern Expr *make_op_expr(Operator op, Node *ltree, Node *rtree,
+						  Oid ltypeId, Oid rtypeId);
+
 #endif   /* PARSE_OPER_H */

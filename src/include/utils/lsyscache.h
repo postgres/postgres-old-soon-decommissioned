@@ -58,6 +58,8 @@ extern int32 get_typtypmod(Oid typid);
 extern Node *get_typdefault(Oid typid);
 extern char get_typtype(Oid typid);
 extern Oid	get_typ_typrelid(Oid typid);
+extern Oid	get_element_type(Oid typid);
+extern Oid	get_array_type(Oid typid);
 extern void getTypeInputInfo(Oid type, Oid *typInput, Oid *typElem);
 extern bool getTypeOutputInfo(Oid type, Oid *typOutput, Oid *typElem,
 				  bool *typIsVarlena);
@@ -74,6 +76,8 @@ extern void free_attstatsslot(Oid atttype,
 				  float4 *numbers, int nnumbers);
 extern char *get_namespace_name(Oid nspid);
 extern int32 get_usesysid(const char *username);
+
+#define is_array_type(typid)  (get_element_type(typid) != InvalidOid)
 
 #define TypeIsToastable(typid)	(get_typstorage(typid) != 'p')
 

@@ -362,6 +362,8 @@ extern Datum internal_in(PG_FUNCTION_ARGS);
 extern Datum internal_out(PG_FUNCTION_ARGS);
 extern Datum opaque_in(PG_FUNCTION_ARGS);
 extern Datum opaque_out(PG_FUNCTION_ARGS);
+extern Datum anyelement_in(PG_FUNCTION_ARGS);
+extern Datum anyelement_out(PG_FUNCTION_ARGS);
 
 /* regexp.c */
 extern Datum nameregexeq(PG_FUNCTION_ARGS);

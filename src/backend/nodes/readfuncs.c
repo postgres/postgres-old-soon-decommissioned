@@ -427,10 +427,8 @@ _readArrayRef(void)
 	READ_LOCALS(ArrayRef);
 
 	READ_OID_FIELD(refrestype);
-	READ_INT_FIELD(refattrlength);
-	READ_INT_FIELD(refelemlength);
-	READ_BOOL_FIELD(refelembyval);
-	READ_CHAR_FIELD(refelemalign);
+	READ_OID_FIELD(refarraytype);
+	READ_OID_FIELD(refelemtype);
 	READ_NODE_FIELD(refupperindexpr);
 	READ_NODE_FIELD(reflowerindexpr);
 	READ_NODE_FIELD(refexpr);
@@ -615,6 +613,22 @@ _readCaseWhen(void)
 
 	READ_NODE_FIELD(expr);
 	READ_NODE_FIELD(result);
+
+	READ_DONE();
+}
+
+/*
+ * _readArrayExpr
+ */
+static ArrayExpr *
+_readArrayExpr(void)
+{
+	READ_LOCALS(ArrayExpr);
+
+	READ_OID_FIELD(array_typeid);
+	READ_OID_FIELD(element_typeid);
+	READ_NODE_FIELD(elements);
+	READ_INT_FIELD(ndims);
 
 	READ_DONE();
 }
@@ -947,6 +961,8 @@ parseNodeString(void)
 		return_value = _readCaseExpr();
 	else if (MATCH("WHEN", 4))
 		return_value = _readCaseWhen();
+	else if (MATCH("ARRAY", 5))
+		return_value = _readArrayExpr();
 	else if (MATCH("COALESCE", 8))
 		return_value = _readCoalesceExpr();
 	else if (MATCH("NULLIFEXPR", 10))

@@ -21,6 +21,7 @@ typedef enum CATEGORY
 {
 	INVALID_TYPE,
 	UNKNOWN_TYPE,
+	GENERIC_TYPE,
 	BOOLEAN_TYPE,
 	STRING_TYPE,
 	BITSTRING_TYPE,
@@ -53,6 +54,14 @@ extern Node *coerce_to_boolean(Node *node, const char *constructName);
 extern Oid	select_common_type(List *typeids, const char *context);
 extern Node *coerce_to_common_type(Node *node, Oid targetTypeId,
 					  const char *context);
+
+extern bool check_generic_type_consistency(Oid *actual_arg_types,
+										   Oid *declared_arg_types,
+										   int nargs);
+extern Oid enforce_generic_type_consistency(Oid *actual_arg_types,
+											Oid *declared_arg_types,
+											int nargs,
+											Oid rettype);
 
 extern bool find_coercion_pathway(Oid targetTypeId, Oid sourceTypeId,
 								  CoercionContext ccontext,

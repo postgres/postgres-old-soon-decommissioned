@@ -238,3 +238,26 @@ opaque_out(PG_FUNCTION_ARGS)
 
 	PG_RETURN_VOID();			/* keep compiler quiet */
 }
+
+
+/*
+ * anyelement_in		- input routine for pseudo-type ANYELEMENT.
+ */
+Datum
+anyelement_in(PG_FUNCTION_ARGS)
+{
+	elog(ERROR, "Cannot accept a constant of type %s", "ANYELEMENT");
+
+	PG_RETURN_VOID();			/* keep compiler quiet */
+}
+
+/*
+ * anyelement_out		- output routine for pseudo-type ANYELEMENT.
+ */
+Datum
+anyelement_out(PG_FUNCTION_ARGS)
+{
+	elog(ERROR, "Cannot display a value of type %s", "ANYELEMENT");
+
+	PG_RETURN_VOID();			/* keep compiler quiet */
+}

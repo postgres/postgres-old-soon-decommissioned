@@ -49,6 +49,10 @@ extern FuncDetailCode func_get_detail(List *funcname, List *fargs,
 
 extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
 
+extern void make_fn_arguments(List *fargs,
+							  Oid *actual_arg_types,
+							  Oid *declared_arg_types);
+
 extern void func_error(const char *caller, List *funcname,
 		   int nargs, const Oid *argtypes,
 		   const char *msg);

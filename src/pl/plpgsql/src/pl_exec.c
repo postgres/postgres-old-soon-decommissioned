@@ -3605,6 +3605,16 @@ exec_simple_check_node(Node *node)
 				return TRUE;
 			}
 
+		case T_ArrayExpr:
+			{
+				ArrayExpr   *expr = (ArrayExpr *) node;
+
+				if (!exec_simple_check_node((Node *) expr->elements))
+					return FALSE;
+
+				return TRUE;
+			}
+
 		case T_CoalesceExpr:
 			{
 				CoalesceExpr   *expr = (CoalesceExpr *) node;
