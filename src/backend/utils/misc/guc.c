@@ -476,7 +476,7 @@ static struct config_bool
 #endif
 
 	{
-		{"hostname_lookup", PGC_SIGHUP}, &HostnameLookup,
+		{"log_hostname", PGC_SIGHUP}, &log_hostname,
 		false, NULL, NULL
 	},
 	{

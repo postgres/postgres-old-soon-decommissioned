@@ -995,7 +995,7 @@ env PGOPTIONS='-c geqo=off' psql
      </varlistentry>
 
      <varlistentry>
-      <term><varname>HOSTNAME_LOOKUP</varname> (<type>boolean</type>)</term>
+      <term><varname>LOG_HOSTNAME</varname> (<type>boolean</type>)</term>
       <listitem>
        <para>
         By default, connection logs only show the IP address of the

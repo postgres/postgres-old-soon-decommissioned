@@ -199,7 +199,7 @@ int			PreAuthDelay = 0;
 int			AuthenticationTimeout = 60;
 int			CheckPointTimeout = 300;
 
-bool		HostnameLookup;		/* for ps display */
+bool		log_hostname;		/* for ps display */
 bool		LogSourcePort;
 bool		Log_connections = false;
 bool		Db_user_namespace = false;
@@ -2097,7 +2097,7 @@ DoBackend(Port *port)
 
 		remote_host = NULL;
 
-		if (HostnameLookup)
+		if (log_hostname)
 		{
 			struct hostent *host_ent;
 
