@@ -133,6 +133,7 @@ struct _PQprintOpt {
     bool standard;       /* old brain dead format */
     bool html3;          /* output html tables */
     bool expanded;       /* expand tables */
+	bool pager;			 /* use pager for output if needed */
     char *fieldSep;      /* field separator */
     char *tableOpt;	 /* insert to HTML <table ...> */
     char *caption;       /* HTML <caption> */
