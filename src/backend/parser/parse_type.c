@@ -44,7 +44,7 @@ typeidTypeName(Oid id)
 	if (!(tup = SearchSysCacheTuple(TYPOID, ObjectIdGetDatum(id),
 									0, 0, 0)))
 	{
-		elog(ERROR, "type id lookup of %ud failed", id);
+		elog(ERROR, "type id lookup of %u failed", id);
 		return (NULL);
 	}
 	typetuple = (TypeTupleForm) GETSTRUCT(tup);
@@ -60,7 +60,7 @@ typeidType(Oid id)
 	if (!(tup = SearchSysCacheTuple(TYPOID, ObjectIdGetDatum(id),
 									0, 0, 0)))
 	{
-		elog(ERROR, "type id lookup of %ud failed", id);
+		elog(ERROR, "type id lookup of %u failed", id);
 		return (NULL);
 	}
 	return ((Type) tup);
