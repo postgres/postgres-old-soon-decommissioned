@@ -46,12 +46,15 @@ static bool displayStruct(mixedStruct *structToDisplay);
 int
 GucInfoMain(void)
 {
-	int			i;
-	struct config_generic **guc_vars = get_guc_variables();
-	int numOpts = GetNumConfigOptions();
+	struct config_generic **guc_vars;
+	int			numOpts,
+				i;
 
 	/* Initialize the guc_variables[] array */
 	build_guc_variables();
+
+	guc_vars = get_guc_variables();
+	numOpts = GetNumConfigOptions();
 
 	for (i = 0; i < numOpts; i++)
 	{
