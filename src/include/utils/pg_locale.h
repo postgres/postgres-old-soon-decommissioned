@@ -33,8 +33,14 @@ typedef struct PG_LocaleCategories
 			   *lc_messages;
 }			PG_LocaleCategories;
 
-
+/*
+ * Save locale category settings into PG memory  
+ */
 extern void PGLC_current(PG_LocaleCategories * lc);
+/*
+ * Free memory allocated in PGLC_current()
+ */
+extern void PGLC_free_categories(PG_LocaleCategories * lc);
 
 /*------
  * Return the POSIX lconv struct (contains number/money formatting information)
