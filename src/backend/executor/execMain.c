@@ -799,7 +799,8 @@ initResultRelInfo(ResultRelInfo *resultRelInfo,
 	resultRelInfo->ri_NumIndices = 0;
 	resultRelInfo->ri_IndexRelationDescs = NULL;
 	resultRelInfo->ri_IndexRelationInfo = NULL;
-	resultRelInfo->ri_TrigDesc = resultRelationDesc->trigdesc;
+	/* make a copy so as not to depend on relcache info not changing... */
+	resultRelInfo->ri_TrigDesc = CopyTriggerDesc(resultRelationDesc->trigdesc);
 	resultRelInfo->ri_TrigFunctions = NULL;
 	resultRelInfo->ri_ConstraintExprs = NULL;
 	resultRelInfo->ri_junkFilter = NULL;

@@ -780,7 +780,7 @@ CopyFrom(Relation rel, List *attnumlist, bool binary, bool oids,
 	resultRelInfo = makeNode(ResultRelInfo);
 	resultRelInfo->ri_RangeTableIndex = 1;		/* dummy */
 	resultRelInfo->ri_RelationDesc = rel;
-	resultRelInfo->ri_TrigDesc = rel->trigdesc;
+	resultRelInfo->ri_TrigDesc = CopyTriggerDesc(rel->trigdesc);
 
 	ExecOpenIndices(resultRelInfo);
 

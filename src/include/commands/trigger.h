@@ -112,9 +112,9 @@ extern void renametrig(Oid relid, const char *oldname, const char *newname);
 
 extern void RelationBuildTriggers(Relation relation);
 
-extern void FreeTriggerDesc(TriggerDesc *trigdesc);
+extern TriggerDesc *CopyTriggerDesc(TriggerDesc *trigdesc);
 
-extern bool equalTriggerDescs(TriggerDesc *trigdesc1, TriggerDesc *trigdesc2);
+extern void FreeTriggerDesc(TriggerDesc *trigdesc);
 
 extern HeapTuple ExecBRInsertTriggers(EState *estate,
 					 ResultRelInfo *relinfo,
