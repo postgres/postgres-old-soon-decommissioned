@@ -106,7 +106,8 @@ Your name here...
    and is almost certainly adequate for a first installation. But you may want to
    do an initial installation up to the point of unpacking the source tree
    and installing documentation, and then print or browse the 
-   <citetitle>Administrator's Guide</citetitle>.</para>
+   <citetitle>Administrator's Guide</citetitle>.
+  </para>
 
  </chapter>
 
@@ -114,6 +115,7 @@ Your name here...
  &install;
  &config;
  &release;
+ &regress;
 
 <!--
 <INDEX> </INDEX>
