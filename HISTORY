@@ -1,4 +1,30 @@
   ------------------------------------------------------------------------
+                                Release 7.1.3
+  ------------------------------------------------------------------------
+ 
+
+Release 7.1.3  (2001-08-15)
+
+Migration to v7.1.3
+
+A dump/restore is not required for those running 7.1.X.
+
+Changes
+-------
+Remove unused WAL segements of large transactions (Tom)
+Multiaction rule fix (Tom)
+Pl/pgSQL memory allocation fix (Jan)
+VACUUM buffer fix (Tom)
+Regression test fixes (Tom)
+pg_dump fixes for GRANT/REVOKE/comments on views, user-defined types (Tom)
+Fix subselects with DISTINCT ON or LIMIT (Tom)
+BEOS fix
+Disable COPY TO/FROM a view (Tom)
+Cygwin build (Jason Tishler)
+
+
+
+  ------------------------------------------------------------------------
                                 Release 7.1.2
   ------------------------------------------------------------------------
 
@@ -14,6 +40,10 @@ A dump/restore is not required for those running 7.1.X.
 Changes
 -------
 Fix PL/PgSQL SELECTs when returning no rows
+Fix for psql backslash core dump
+Referential integrity permission fix
+Optimizer fixes
+pg_dump cleanups 
 
 
 
@@ -2344,10 +2374,11 @@ Unused/uninialized variables corrected
   ------------------------------------------------------------------------
 
 
-Release v1.09
+Release v1.09  (1996-11-04)
 
-Sorry, we stopped keeping track of changes from 1.02 to 1.09. Some of the
-changes listed in 6.0 were actually included in the 1.02.1 to 1.09 releases.
+Sorry, we didn't keep track of changes from 1.02 to 1.09. Some of the
+changes listed in 6.0 were actually included in the 1.02.1 to 1.09
+releases.
 
 
 
@@ -2753,7 +2784,7 @@ New documentation:
   ------------------------------------------------------------------------
 
 
-Postgres95 Release 0.02  (1995-03-25)
+Postgres95 Release 0.02  (1995-05-25)
 
 
 Detailed Change List
