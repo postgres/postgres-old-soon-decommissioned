@@ -2713,10 +2713,10 @@ insert_ordered_oid(List *list, Oid datum)
  *		Presently, all the catalog and index entries that are referred to
  *		by catcaches are stored in the initialization file.
  *
- *		As of v6.5, vacuum.c deletes the initialization file at completion
- *		of a VACUUM, so that it will be rebuilt at the next backend startup.
- *		This ensures that vacuum-collected stats for the system catalogs
- *		and indexes will be seen by backends started later.
+ *		The same mechanism that detects when catcache and relcache entries
+ *		need to be invalidated (due to catalog updates) also arranges to
+ *		unlink the initialization file when its contents may be out of date.
+ *		The file will then be rebuilt during the next backend startup.
  */
 
 /*
