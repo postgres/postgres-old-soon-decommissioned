@@ -22,7 +22,7 @@ PostgreSQL documentation
 <synopsis>
 CREATE TRIGGER <replaceable class="PARAMETER">name</replaceable> { BEFORE | AFTER } { <replaceable class="PARAMETER">event</replaceable> [ OR ... ] }
     ON <replaceable class="PARAMETER">table</replaceable> [ FOR [ EACH ] { ROW | STATEMENT } ]
-    EXECUTE PROCEDURE <replaceable class="PARAMETER">func</replaceable> ( <replaceable class="PARAMETER">arguments</replaceable> )
+    EXECUTE PROCEDURE <replaceable class="PARAMETER">funcname</replaceable> ( <replaceable class="PARAMETER">arguments</replaceable> )
 </synopsis>
  </refsynopsisdiv>
  

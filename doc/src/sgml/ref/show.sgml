@@ -21,8 +21,6 @@ PostgreSQL documentation
  <refsynopsisdiv>
 <synopsis>
 SHOW <replaceable class="PARAMETER">name</replaceable>
-</synopsis>
-<synopsis>
 SHOW ALL
 </synopsis>
  </refsynopsisdiv>

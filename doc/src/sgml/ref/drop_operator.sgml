@@ -11,7 +11,7 @@ PostgreSQL documentation
 
  <refnamediv>
   <refname>DROP OPERATOR</refname>
-  <refpurpose>remove a user-defined operator</refpurpose>
+  <refpurpose>remove an operator</refpurpose>
  </refnamediv>
   
  <indexterm zone="sql-dropoperator">

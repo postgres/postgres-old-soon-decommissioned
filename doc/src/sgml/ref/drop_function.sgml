@@ -11,7 +11,7 @@ PostgreSQL documentation
 
  <refnamediv>
   <refname>DROP FUNCTION</refname>
-  <refpurpose>remove a user-defined function</refpurpose>
+  <refpurpose>remove a function</refpurpose>
  </refnamediv>
 
  <indexterm zone="sql-dropfunction">

@@ -8,7 +8,7 @@
 
  <refnamediv>
   <refname>CREATE CAST</refname>
-  <refpurpose>define a user-defined cast</refpurpose>
+  <refpurpose>define a new cast</refpurpose>
  </refnamediv>
 
  <indexterm zone="sql-createcast">

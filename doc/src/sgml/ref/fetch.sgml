@@ -20,7 +20,7 @@ PostgreSQL documentation
 
  <refsynopsisdiv>
 <synopsis>
-FETCH [ <replaceable class="PARAMETER">direction</replaceable> { FROM | IN } ] <replaceable class="PARAMETER">cursor</replaceable>
+FETCH [ <replaceable class="PARAMETER">direction</replaceable> { FROM | IN } ] <replaceable class="PARAMETER">cursorname</replaceable>
 
 where <replaceable class="PARAMETER">direction</replaceable> can be empty or one of:
 
@@ -270,7 +270,7 @@ where <replaceable class="PARAMETER">direction</replaceable> can be empty or one
    </varlistentry>
 
    <varlistentry>
-    <term><replaceable class="PARAMETER">cursor</replaceable></term>
+    <term><replaceable class="PARAMETER">cursorname</replaceable></term>
     <listitem>
      <para>
       An open cursor's name.

@@ -16,7 +16,7 @@
 
  <refsynopsisdiv>
 <synopsis>
-SET CONSTRAINTS { ALL | <replaceable class="parameter">constraint</replaceable> [, ...] } { DEFERRED | IMMEDIATE }
+SET CONSTRAINTS { ALL | <replaceable class="parameter">name</replaceable> [, ...] } { DEFERRED | IMMEDIATE }
 </synopsis>
  </refsynopsisdiv>
 

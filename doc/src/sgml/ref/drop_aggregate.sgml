@@ -11,7 +11,7 @@ PostgreSQL documentation
 
  <refnamediv>
   <refname>DROP AGGREGATE</refname>
-  <refpurpose>remove a user-defined aggregate function</refpurpose>
+  <refpurpose>remove an aggregate function</refpurpose>
  </refnamediv>
 
  <indexterm zone="sql-dropaggregate">

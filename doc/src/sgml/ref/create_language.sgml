@@ -20,7 +20,7 @@ PostgreSQL documentation
 
  <refsynopsisdiv>
 <synopsis>
-CREATE [ TRUSTED ] [ PROCEDURAL ] LANGUAGE <replaceable class="parameter">langname</replaceable>
+CREATE [ TRUSTED ] [ PROCEDURAL ] LANGUAGE <replaceable class="parameter">name</replaceable>
     HANDLER <replaceable class="parameter">call_handler</replaceable> [ VALIDATOR <replaceable>valfunction</replaceable> ]
 </synopsis>
  </refsynopsisdiv>
@@ -83,7 +83,7 @@ CREATE [ TRUSTED ] [ PROCEDURAL ] LANGUAGE <replaceable class="parameter">langna
     </varlistentry>
 
     <varlistentry>
-     <term><replaceable class="parameter">langname</replaceable></term>
+     <term><replaceable class="parameter">name</replaceable></term>
 
      <listitem>
       <para>

@@ -8,7 +8,7 @@
 
  <refnamediv>
   <refname>DROP CONVERSION</refname>
-  <refpurpose>remove a user-defined conversion</refpurpose>
+  <refpurpose>remove a conversion</refpurpose>
  </refnamediv>
 
  <indexterm zone="sql-dropconversion">
@@ -17,7 +17,7 @@
 
  <refsynopsisdiv>
 <synopsis>
-DROP CONVERSION <replaceable>conversion_name</replaceable> [ CASCADE | RESTRICT ]
+DROP CONVERSION <replaceable>name</replaceable> [ CASCADE | RESTRICT ]
 </synopsis>
  </refsynopsisdiv>
   
@@ -35,7 +35,7 @@ DROP CONVERSION <replaceable>conversion_name</replaceable> [ CASCADE | RESTRICT 
 
    <variablelist>
     <varlistentry>
-     <term><replaceable>conversion_name</replaceable></term>
+     <term><replaceable>name</replaceable></term>
 
      <listitem>
       <para>

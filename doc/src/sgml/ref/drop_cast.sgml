@@ -8,7 +8,7 @@
 
  <refnamediv>
   <refname>DROP CAST</refname>
-  <refpurpose>remove a user-defined cast</refpurpose>
+  <refpurpose>remove a cast</refpurpose>
  </refnamediv>
 
  <indexterm zone="sql-dropcast">

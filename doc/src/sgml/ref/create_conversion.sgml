@@ -8,7 +8,7 @@
 
  <refnamediv>
   <refname>CREATE CONVERSION</refname>
-  <refpurpose>define a user-defined conversion</refpurpose>
+  <refpurpose>define a new conversion</refpurpose>
  </refnamediv>
 
  <indexterm zone="sql-createconversion">

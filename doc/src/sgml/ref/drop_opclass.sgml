@@ -11,7 +11,7 @@ PostgreSQL documentation
 
  <refnamediv>
   <refname>DROP OPERATOR CLASS</refname>
-  <refpurpose>remove a user-defined operator class</refpurpose>
+  <refpurpose>remove an operator class</refpurpose>
  </refnamediv>
   
  <indexterm zone="sql-dropopclass">
