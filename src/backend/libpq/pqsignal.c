@@ -37,9 +37,9 @@
  *	is to do signal-handler reinstallation, which doesn't work well
  *	at all.
  * ------------------------------------------------------------------------*/
-#include "postgres.h"
-
 #include <signal.h>
+
+#include "postgres.h"
 
 #include "libpq/pqsignal.h"
 

@@ -37,12 +37,9 @@
 
 #include "postgres.h"
 
+#include "access/printtup.h"
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
-#include "access/printtup.h"
-
-
-
 
 
 static char CommandInfo[32] = {0};

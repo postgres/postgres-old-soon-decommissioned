@@ -13,13 +13,13 @@
  */
 #include "postgres.h"
 
-#include "nodes/nodeFuncs.h"
 
-#include "optimizer/var.h"
-#include "optimizer/tlist.h"
-#include "optimizer/clauses.h"
 
 #include "nodes/makefuncs.h"
+#include "nodes/nodeFuncs.h"
+#include "optimizer/clauses.h"
+#include "optimizer/tlist.h"
+#include "optimizer/var.h"
 
 static Node *flatten_tlistentry(Node *tlistentry, List *flat_tlist);
 

@@ -20,15 +20,15 @@
 #include "catalog/pg_type.h"
 #include "fmgr.h"
 #include "nodes/makefuncs.h"
+#include "parser/parse_coerce.h"
 #include "parser/parse_expr.h"
 #include "parser/parse_node.h"
 #include "parser/parse_oper.h"
 #include "parser/parse_relation.h"
 #include "parser/parse_type.h"
-#include "parser/parse_coerce.h"
 #include "utils/builtins.h"
-#include "utils/syscache.h"
 #include "utils/lsyscache.h"
+#include "utils/syscache.h"
 
 static void disallow_setop(char *op, Type optype, Node *operand);
 static Node *make_operand(char *opname,

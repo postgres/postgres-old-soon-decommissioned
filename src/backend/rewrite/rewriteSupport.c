@@ -13,13 +13,13 @@
  */
 #include "postgres.h"
 
+
 #include "access/heapam.h"
 #include "catalog/catname.h"
 #include "catalog/indexing.h"
+#include "rewrite/rewriteSupport.h"
 #include "utils/catcache.h"
 #include "utils/syscache.h"
-
-#include "rewrite/rewriteSupport.h"
 
 /*
  * RuleIdGetActionInfo -

@@ -23,11 +23,11 @@
 #include "access/genam.h"
 #include "access/heapam.h"
 #include "access/nbtree.h"
-#include "catalog/catalog.h"	/* for newoid() */
+#include "catalog/catalog.h"
 #include "catalog/heap.h"
-#include "catalog/index.h"		/* for index_create() */
-#include "catalog/pg_type.h"	/* for INT4OID */
-#include "catalog/pg_opclass.h" /* for INT4_OPS_OID */
+#include "catalog/index.h"
+#include "catalog/pg_opclass.h"
+#include "catalog/pg_type.h"
 #include "libpq/libpq-fs.h"
 #include "miscadmin.h"
 #include "storage/large_object.h"

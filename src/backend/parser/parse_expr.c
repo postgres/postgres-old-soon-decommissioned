@@ -22,11 +22,11 @@
 #include "parse.h"
 #include "parser/analyze.h"
 #include "parser/gramparse.h"
+#include "parser/parse_coerce.h"
 #include "parser/parse_expr.h"
 #include "parser/parse_func.h"
 #include "parser/parse_relation.h"
 #include "parser/parse_target.h"
-#include "parser/parse_coerce.h"
 #include "utils/builtins.h"
 
 static Node *parser_typecast(Value *expr, TypeName *typename, int32 atttypmod);

@@ -18,8 +18,9 @@
 /* System includes */
 #include <stdio.h>
 #include <a.out.h>
-#include "dl.h"
+
 #include "postgres.h"
+#include "dl.h"
 #include "dynloader.h"
 #include "fmgr.h"
 #include "utils/dynamic_loader.h"

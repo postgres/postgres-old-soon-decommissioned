@@ -16,20 +16,21 @@
 #include <math.h>
 #include "postgres.h"
 
-#include "access/heapam.h"
-#include "access/genam.h"
 
+
+
+
+#include "access/genam.h"
+#include "access/heapam.h"
 #include "catalog/catname.h"
 #include "catalog/pg_amop.h"
 #include "catalog/pg_inherits.h"
-
-#include "parser/parsetree.h"
-
 #include "optimizer/internal.h"
 #include "optimizer/plancat.h"
-
+#include "parser/parsetree.h"
 #include "utils/syscache.h"
 #ifndef HAVE_MEMMOVE
+#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

@@ -13,7 +13,6 @@
 #include <sys/types.h>
 
 #include "postgres.h"
-#include "miscadmin.h"
 #ifdef HAVE_FLOAT_H
 #include <float.h>
 #endif
@@ -23,8 +22,10 @@
 #ifndef USE_POSIX_TIME
 #include <sys/timeb.h>
 #endif
-#include "utils/builtins.h"
+
 #include "access/xact.h"
+#include "miscadmin.h"
+#include "utils/builtins.h"
 
 static AbsoluteTime tm2abstime(struct tm * tm, int tz);
 

@@ -15,10 +15,6 @@
 
 #include "postgres.h"
 
-
-
-
-
 #include "executor/execdefs.h"
 #include "executor/executor.h"
 #include "tcop/pquery.h"

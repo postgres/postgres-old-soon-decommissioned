@@ -10,16 +10,19 @@
 #include <string.h>
 #include <ctype.h>
 #include <time.h>
+
 #include "postgres.h"
-#include "miscadmin.h"
-#include "commands/variable.h"
-#include "utils/builtins.h"
-#include "optimizer/internal.h"
 #include "access/xact.h"
+#include "commands/variable.h"
+#include "miscadmin.h"
+#include "optimizer/internal.h"
+#include "utils/builtins.h"
 #include "utils/tqual.h"
+
 #ifdef MULTIBYTE
 #include "mb/pg_wchar.h"
 #endif
+
 static bool show_date(void);
 static bool reset_date(void);
 static bool parse_date(const char *);

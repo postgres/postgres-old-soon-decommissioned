@@ -13,8 +13,8 @@
  */
 #include "postgres.h"
 
-#include "optimizer/paths.h"
 #include "optimizer/clauses.h"
+#include "optimizer/paths.h"
 
 
 static HashInfo *match_hashop_hashinfo(Oid hashop, List *hashinfo_list);

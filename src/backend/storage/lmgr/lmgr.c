@@ -25,9 +25,9 @@
 
 
 
-#include "catalog/catalog.h"
 
 #include "access/transam.h"
+#include "catalog/catalog.h"
 
 extern Oid	MyDatabaseId;
 

@@ -18,7 +18,6 @@
 
 #include "postgres.h"
 
-#include "miscadmin.h"
 
 #include "access/attnum.h"
 #include "access/funcindex.h"
@@ -34,6 +33,7 @@
 #include "catalog/pg_attribute.h"
 #include "catalog/pg_class.h"
 #include "commands/defrem.h"
+#include "miscadmin.h"
 #include "nodes/nodes.h"
 #include "nodes/parsenodes.h"
 #include "nodes/pg_list.h"

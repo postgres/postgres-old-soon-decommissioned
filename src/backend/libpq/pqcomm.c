@@ -58,14 +58,7 @@
  *
  *------------------------
  */
-#include "postgres.h"
-
 #include <stdio.h>
-#if defined(HAVE_STRING_H)
-#include <string.h>
-#else
-#include <strings.h>
-#endif
 #include <signal.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -78,6 +71,14 @@
 #include <netinet/tcp.h>
 #include <arpa/inet.h>
 #include <sys/file.h>
+
+#include "postgres.h"
+
+#if defined(HAVE_STRING_H)
+#include <string.h>
+#else
+#include <strings.h>
+#endif
 
 #include "libpq/libpq.h"
 #include "miscadmin.h"

@@ -22,19 +22,17 @@
 
 #include "postgres.h"
 
-#include "catalog/heap.h"
-#include "access/heapam.h"
 #include "access/genam.h"
-#include "utils/syscache.h"
+#include "access/heapam.h"
+#include "catalog/heap.h"
 #include "catalog/index.h"
+#include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
 #include "commands/cluster.h"
 #include "commands/rename.h"
-#include "utils/builtins.h"
-#include "catalog/pg_proc.h"
 #include "optimizer/internal.h"
-#ifndef NO_SECURITY
-#endif	 /* !NO_SECURITY */
+#include "utils/builtins.h"
+#include "utils/syscache.h"
 
 static Relation copy_heap(Oid OIDOldHeap);
 static void copy_index(Oid OIDOldIndex, Oid OIDNewHeap);

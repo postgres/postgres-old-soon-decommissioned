@@ -36,13 +36,9 @@
 #include <math.h>
 
 #include "postgres.h"
-
-
-
-
-#include "optimizer/geqo_selection.h"
 #include "optimizer/geqo_copy.h"
 #include "optimizer/geqo_random.h"
+#include "optimizer/geqo_selection.h"
 
 static int	linear(int max, double bias);
 

@@ -11,8 +11,8 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"
 
+#include "postgres.h"
 #include "lib/fstack.h"
 
 /*

@@ -32,12 +32,8 @@
 /*************************************************************/
 
 #include "postgres.h"
-
-
-
-
-#include "optimizer/geqo_random.h"
 #include "optimizer/geqo_mutation.h"
+#include "optimizer/geqo_random.h"
 
 void
 geqo_mutation(Gene *tour, int num_gene)

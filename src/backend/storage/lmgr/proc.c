@@ -66,6 +66,7 @@
 
 /* In Ultrix, sem.h must be included after ipc.h */
 #include <sys/sem.h>
+
 #include "storage/lmgr.h"
 #include "storage/proc.h"
 #include "utils/trace.h"

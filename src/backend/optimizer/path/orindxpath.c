@@ -14,15 +14,15 @@
 #include "postgres.h"
 
 
+
+
 #include "nodes/nodeFuncs.h"
-
-#include "optimizer/internal.h"
 #include "optimizer/clauses.h"
-#include "optimizer/restrictinfo.h"
-#include "optimizer/paths.h"
 #include "optimizer/cost.h"
+#include "optimizer/internal.h"
+#include "optimizer/paths.h"
 #include "optimizer/plancat.h"
-
+#include "optimizer/restrictinfo.h"
 #include "parser/parsetree.h"
 
 

@@ -36,11 +36,11 @@
 #include <signal.h>
 
 #include "postgres.h"
+#include "access/xact.h"
 #include "miscadmin.h"
 #include "storage/proc.h"
-#include "access/xact.h"
-#include "utils/trace.h"
 #include "utils/ps_status.h"
+#include "utils/trace.h"
 
 static int	WaitOnLock(LOCKMETHOD lockmethod, LOCK *lock, LOCKMODE lockmode);
 

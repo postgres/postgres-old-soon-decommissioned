@@ -19,6 +19,7 @@
 
 #include "postgres.h"
 #ifdef HAVE_DLD_H
+#include "dld.h"
 #endif
 
 #ifdef NOT_USED

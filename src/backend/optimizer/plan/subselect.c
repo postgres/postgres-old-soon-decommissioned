@@ -15,9 +15,9 @@
 #include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
 #include "nodes/nodeFuncs.h"
-#include "optimizer/subselect.h"
-#include "optimizer/planner.h"
 #include "optimizer/clauses.h"
+#include "optimizer/planner.h"
+#include "optimizer/subselect.h"
 
 int			PlannerQueryLevel;	/* level of current query */
 List	   *PlannerInitPlan;	/* init subplans for current query */

@@ -12,19 +12,19 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"
-
-
-#include "utils/syscache.h"
-#include "catalog/pg_type.h"
-#include "catalog/pg_proc.h"
-#include "catalog/pg_language.h"
-#include "parser/parsetree.h"
-#include "utils/builtins.h"
-#include "utils/fcache2.h"
 #ifndef HAVE_MEMMOVE
+#include <regex/utils.h>
 #else
 #include <string.h>
 #endif
+
+#include "catalog/pg_language.h"
+#include "catalog/pg_proc.h"
+#include "catalog/pg_type.h"
+#include "parser/parsetree.h"
+#include "utils/builtins.h"
+#include "utils/fcache2.h"
+#include "utils/syscache.h"
 
 static Oid	GetDynamicFuncArgType(Var *arg, ExprContext *econtext);
 static FunctionCachePtr init_fcache(Oid foid,

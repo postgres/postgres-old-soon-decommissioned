@@ -32,20 +32,19 @@
  */
 #include <string.h>
 #include "postgres.h"
-#include "miscadmin.h"
 
-#include "executor/executor.h"
-#include "executor/execdefs.h"
-#include "executor/execdebug.h"
-#include "utils/builtins.h"
-#include "utils/acl.h"
-#include "utils/syscache.h"
-#include "parser/parsetree.h"
-/* #include "access/localam.h" */
-#include "optimizer/var.h"
 #include "access/heapam.h"
 #include "catalog/heap.h"
 #include "commands/trigger.h"
+#include "executor/execdebug.h"
+#include "executor/execdefs.h"
+#include "executor/executor.h"
+#include "miscadmin.h"
+#include "optimizer/var.h"
+#include "parser/parsetree.h"
+#include "utils/acl.h"
+#include "utils/builtins.h"
+#include "utils/syscache.h"
 
 void ExecCheckPerms(CmdType operation, int resultRelation, List *rangeTable,
 			   Query *parseTree);

@@ -16,11 +16,11 @@
 #include "postgres.h"
 
 
-#include "optimizer/planmain.h"
-#include "optimizer/subselect.h"
-#include "optimizer/prep.h"
-#include "optimizer/paths.h"
 #include "optimizer/clauses.h"
+#include "optimizer/paths.h"
+#include "optimizer/planmain.h"
+#include "optimizer/prep.h"
+#include "optimizer/subselect.h"
 #include "optimizer/tlist.h"
 
 

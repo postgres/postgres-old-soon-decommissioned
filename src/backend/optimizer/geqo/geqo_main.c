@@ -22,14 +22,10 @@
 /* -- parts of this are adapted from D. Whitley's Genitor algorithm -- */
 
 #include "postgres.h"
-
-
-
-
 #include "optimizer/geqo.h"
+#include "optimizer/geqo_misc.h"
 #include "optimizer/geqo_pool.h"
 #include "optimizer/geqo_selection.h"
-#include "optimizer/geqo_misc.h"
 
 
 /* define edge recombination crossover [ERX] per default */

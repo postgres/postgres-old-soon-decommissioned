@@ -11,14 +11,14 @@
  *-------------------------------------------------------------------------
  */
 #include "postgres.h"
-#include "utils/syscache.h"
-#include "rewrite/locks.h"
 
 #include "access/heapam.h"
-#include "utils/syscache.h"
+#include "catalog/pg_shadow.h"
+#include "rewrite/locks.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
-#include "catalog/pg_shadow.h"
+#include "utils/syscache.h"
+#include "utils/syscache.h"
 
 
 /*

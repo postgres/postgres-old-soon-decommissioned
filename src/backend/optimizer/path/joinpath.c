@@ -18,9 +18,9 @@
 
 
 
-#include "optimizer/paths.h"
-#include "optimizer/pathnode.h"
 #include "optimizer/cost.h"
+#include "optimizer/pathnode.h"
+#include "optimizer/paths.h"
 
 static Path *best_innerjoin(List *join_paths, List *outer_relid);
 static List *sort_inner_and_outer(RelOptInfo *joinrel, RelOptInfo *outerrel, RelOptInfo *innerrel,

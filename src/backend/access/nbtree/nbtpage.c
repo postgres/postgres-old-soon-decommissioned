@@ -23,14 +23,14 @@
 #include <time.h>
 
 #include "postgres.h"
-
-#include "access/nbtree.h"
-#include "miscadmin.h"
-
 #ifndef HAVE_MEMMOVE
+#include <regex/utils.h>
 #else
 #include <string.h>
 #endif
+
+#include "access/nbtree.h"
+#include "miscadmin.h"
 
 #define BTREE_METAPAGE	0
 #define BTREE_MAGIC		0x053162

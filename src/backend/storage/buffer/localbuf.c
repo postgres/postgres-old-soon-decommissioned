@@ -28,11 +28,9 @@
 
 #include "postgres.h"
 
-/* declarations split between these three files */
-
+#include "executor/execdebug.h"
 #include "storage/smgr.h"
 #include "utils/relcache.h"
-#include "executor/execdebug.h"
 
 extern long int LocalBufferFlushCount;
 

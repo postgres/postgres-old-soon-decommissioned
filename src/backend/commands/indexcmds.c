@@ -17,18 +17,18 @@
 
 #include "access/genam.h"
 #include "access/heapam.h"
-#include "utils/builtins.h"
-#include "utils/syscache.h"
 #include "catalog/heap.h"
 #include "catalog/index.h"
 #include "catalog/pg_index.h"
+#include "catalog/pg_opclass.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
-#include "catalog/pg_opclass.h"
 #include "commands/defrem.h"
-#include "parser/parsetree.h"
-#include "optimizer/prep.h"
 #include "optimizer/clauses.h"
+#include "optimizer/prep.h"
+#include "parser/parsetree.h"
+#include "utils/builtins.h"
+#include "utils/syscache.h"
 
 #define IsFuncIndex(ATTR_LIST) (((IndexElem*)lfirst(ATTR_LIST))->args!=NULL)
 

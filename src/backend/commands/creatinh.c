@@ -16,14 +16,14 @@
 
 #include "postgres.h"
 
-#include "catalog/heap.h"
-#include "commands/creatinh.h"
 #include "access/heapam.h"
-#include "utils/syscache.h"
 #include "catalog/catname.h"
-#include "catalog/pg_type.h"
+#include "catalog/heap.h"
 #include "catalog/pg_inherits.h"
 #include "catalog/pg_ipl.h"
+#include "catalog/pg_type.h"
+#include "commands/creatinh.h"
+#include "utils/syscache.h"
 
 /* ----------------
  *		local stuff

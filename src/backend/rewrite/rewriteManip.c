@@ -12,12 +12,12 @@
  */
 #include <string.h>
 #include "postgres.h"
-#include "parser/parsetree.h"
-#include "utils/lsyscache.h"
-#include "utils/builtins.h"
-#include "rewrite/rewriteManip.h"
 
 #include "optimizer/clauses.h"
+#include "parser/parsetree.h"
+#include "rewrite/rewriteManip.h"
+#include "utils/builtins.h"
+#include "utils/lsyscache.h"
 
 static void ResolveNew(RewriteInfo *info, List *targetlist,
 		   Node **node, int sublevels_up);

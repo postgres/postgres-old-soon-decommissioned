@@ -5,14 +5,16 @@
  *
  */
 
-#include "postgres.h"
-#include "miscadmin.h"
-#include "libpq/password.h"
-#include "libpq/libpq.h"
 #include <string.h>
 #include <unistd.h>
+#include "postgres.h"
 #ifdef HAVE_CRYPT_H
+#include "crypt.h"
 #endif
+
+#include "libpq/libpq.h"
+#include "libpq/password.h"
+#include "miscadmin.h"
 
 int
 verify_password(char *auth_arg, char *user, char *password)

@@ -19,12 +19,12 @@
 #include "access/htup.h"
 #include "catalog/pg_type.h"
 #include "nodes/makefuncs.h"
-#include "parser/parse_relation.h"
 #include "parser/parse_coerce.h"
+#include "parser/parse_relation.h"
+#include "parser/parse_type.h"
 #include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"
-#include "parser/parse_type.h"
 
 static void checkTargetTypes(ParseState *pstate, char *target_colname,
 				 char *refname, char *colname);

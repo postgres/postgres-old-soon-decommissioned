@@ -21,13 +21,9 @@
 /* -- parts of this are adapted from D. Whitley's Genitor algorithm -- */
 
 #include "postgres.h"
-
-
-
-
 #include "optimizer/geqo.h"
-#include "optimizer/geqo_pool.h"
 #include "optimizer/geqo_copy.h"
+#include "optimizer/geqo_pool.h"
 #include "optimizer/geqo_recombination.h"
 
 

@@ -15,12 +15,12 @@
 
 #include "postgres.h"
 
-#include "miscadmin.h"
-#include "utils/syscache.h"
+#include "access/transam.h"
+#include "catalog/catalog.h"
 #include "catalog/catname.h"
 #include "catalog/pg_type.h"
-#include "catalog/catalog.h"
-#include "access/transam.h"
+#include "miscadmin.h"
+#include "utils/syscache.h"
 
 /*
  * relpath				- path to the relation

@@ -19,16 +19,16 @@
 
 #include "postgres.h"
 
+
 #include "catalog/catalog.h"
 #include "catalog/pg_type.h"
-
-#include "utils/syscache.h"
-#include "utils/memutils.h"
-#include "storage/fd.h"
 #include "fmgr.h"
-#include "utils/array.h"
-#include "libpq/libpq-fs.h"
 #include "libpq/be-fsstubs.h"
+#include "libpq/libpq-fs.h"
+#include "storage/fd.h"
+#include "utils/array.h"
+#include "utils/memutils.h"
+#include "utils/syscache.h"
 
 #define ASSGN	 "="
 

@@ -16,13 +16,13 @@
 #include "postgres.h"
 
 
-#include "optimizer/pathnode.h"
-#include "optimizer/restrictinfo.h"
-#include "optimizer/plancat.h"
+
 #include "optimizer/cost.h"
 #include "optimizer/keys.h"
 #include "optimizer/ordering.h"
-
+#include "optimizer/pathnode.h"
+#include "optimizer/plancat.h"
+#include "optimizer/restrictinfo.h"
 #include "parser/parsetree.h"
 
 static Path *better_path(Path *new_path, List *unique_paths, bool *is_new);

@@ -16,8 +16,8 @@
 #include "postgres.h"
 
 
-#include "optimizer/plancat.h"
 #include "optimizer/pathnode.h"
+#include "optimizer/plancat.h"
 
 
 static List *find_secondary_index(Query *root, Oid relid);

@@ -22,11 +22,12 @@
  */
 #include "postgres.h"
 
+#include "libpq/libpq.h"
 #include "tcop/fastpath.h"
 #include "tcop/tcopprot.h"
-#include "libpq/libpq.h"
 #include "utils/builtins.h"
 #ifndef HAVE_MEMMOVE
+#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

@@ -17,9 +17,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <errno.h>
-
 #include "postgres.h"
-#include "miscadmin.h"
 #ifdef HAVE_FLOAT_H
 #include <float.h>
 #endif
@@ -29,6 +27,8 @@
 #ifndef USE_POSIX_TIME
 #include <sys/timeb.h>
 #endif
+
+#include "miscadmin.h"
 #include "utils/builtins.h"
 
 static int	DecodeDate(char *str, int fmask, int *tmask, struct tm * tm);

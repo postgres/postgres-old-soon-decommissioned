@@ -14,17 +14,17 @@
 #include <string.h>
 #include "postgres.h"
 
+
+
+
+
 #include "catalog/pg_type.h"
-
 #include "nodes/makefuncs.h"
-
-#include "utils/syscache.h"
-#include "utils/lsyscache.h"
-
-#include "parser/parsetree.h"
-
-#include "optimizer/prep.h"
 #include "optimizer/clauses.h"
+#include "optimizer/prep.h"
+#include "parser/parsetree.h"
+#include "utils/lsyscache.h"
+#include "utils/syscache.h"
 
 static List *expand_targetlist(List *tlist, Oid relid, int command_type,
 				  Index result_relation);

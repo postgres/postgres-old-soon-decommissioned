@@ -31,11 +31,11 @@
 
 #include "postgres.h"
 
+#include "access/heapam.h"
+#include "access/printtup.h"
+#include "catalog/catalog.h"
 #include "lib/dllist.h"
 #include "libpq/libpq.h"
-#include "access/heapam.h"
-#include "catalog/catalog.h"
-#include "access/printtup.h"
 
 /* ----------------
  *		backend portal stack for recursive PQexec calls

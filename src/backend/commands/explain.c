@@ -12,13 +12,13 @@
 
 #include "postgres.h"
 
-#include "nodes/print.h"
-#include "lib/stringinfo.h"
 #include "commands/explain.h"
-#include "parser/parsetree.h"
+#include "lib/stringinfo.h"
+#include "nodes/print.h"
 #include "optimizer/planner.h"
-#include "utils/relcache.h"
+#include "parser/parsetree.h"
 #include "rewrite/rewriteHandler.h"
+#include "utils/relcache.h"
 
 typedef struct ExplainState
 {

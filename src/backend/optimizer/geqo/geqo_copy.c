@@ -33,8 +33,6 @@
 /*************************************************************/
 
 #include "postgres.h"
-
-
 #include "optimizer/geqo_copy.h"
 
 /* geqo_copy

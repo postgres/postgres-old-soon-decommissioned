@@ -48,14 +48,11 @@
 #include <signal.h>
 
 #include "postgres.h"
-
-/* declarations split between these three files */
-
+#include "executor/execdebug.h"
+#include "miscadmin.h"
 #include "storage/s_lock.h"
 #include "storage/smgr.h"
-#include "miscadmin.h"
 #include "utils/relcache.h"
-#include "executor/execdebug.h"
 
 extern SPINLOCK BufMgrLock;
 extern long int ReadBufferCount;

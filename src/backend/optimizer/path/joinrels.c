@@ -15,10 +15,10 @@
 
 
 #include "optimizer/cost.h"
-#include "optimizer/paths.h"
-#include "optimizer/tlist.h"
 #include "optimizer/joininfo.h"
 #include "optimizer/pathnode.h"
+#include "optimizer/paths.h"
+#include "optimizer/tlist.h"
 
 static List *new_joininfo_list(List *joininfo_list, Relids join_relids);
 static bool nonoverlap_sets(List *s1, List *s2);

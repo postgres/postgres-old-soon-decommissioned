@@ -16,9 +16,9 @@
 
 #include "postgres.h"
 
-#include "storage/sinval.h"
-#include "storage/bufmgr.h"
 #include "miscadmin.h"
+#include "storage/bufmgr.h"
+#include "storage/sinval.h"
 
 /*
  * SystemPortAddressCreateMemoryKey

@@ -30,11 +30,12 @@
  */
 #include <stdio.h>
 #include <string.h>
+
+#include "postgres.h"
 #ifdef HAVE_LIMITS_H
 #include <limits.h>
 #endif
 
-#include "postgres.h"
 #include "utils/builtins.h"
 
 #ifndef SHRT_MAX

@@ -13,10 +13,11 @@
  */
 #include <stdio.h>
 #include <string.h>
+
 #include "postgres.h"
 #include "access/htup.h"
-#include "utils/builtins.h"
 #include "catalog/pg_type.h"
+#include "utils/builtins.h"
 
 #ifdef CYR_RECODE
 char	   *convertstr(char *, int, int);

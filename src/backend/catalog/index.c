@@ -19,6 +19,12 @@
  */
 #include "postgres.h"
 
+#ifndef HAVE_MEMMOVE
+#include <regex/utils.h>
+#else
+#include <string.h>
+#endif
+
 #include "access/genam.h"
 #include "access/heapam.h"
 #include "access/istrat.h"
@@ -40,11 +46,6 @@
 #include "utils/relcache.h"
 #include "utils/syscache.h"
 #include "utils/temprel.h"
-
-#ifndef HAVE_MEMMOVE
-#else
-#include <string.h>
-#endif
 
 /*
  * macros used in guessing how many tuples are on a page.

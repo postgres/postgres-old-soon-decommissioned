@@ -34,7 +34,6 @@ static const char *num_word(Cash value);
 
 #ifdef USE_LOCALE
 static struct lconv *lconvert = NULL;
-
 #endif
 
 /* cash_in()

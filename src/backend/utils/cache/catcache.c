@@ -13,13 +13,13 @@
  */
 #include <string.h>
 #include "postgres.h"
-#include "access/heapam.h"
 #include "access/genam.h"
+#include "access/heapam.h"
+#include "access/valid.h"
+#include "catalog/pg_type.h"
+#include "miscadmin.h"
 #include "utils/builtins.h"
 #include "utils/catcache.h"
-#include "access/valid.h"
-#include "miscadmin.h"
-#include "catalog/pg_type.h"
 
 static void CatCacheRemoveCTup(CatCache *cache, Dlelem *e);
 static Index CatalogCacheComputeHashIndex(struct catcache * cacheInP);

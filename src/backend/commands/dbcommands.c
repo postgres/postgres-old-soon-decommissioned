@@ -22,9 +22,9 @@
 #include "catalog/catname.h"
 #include "catalog/pg_database.h"
 #include "catalog/pg_shadow.h"
+#include "commands/dbcommands.h"
 #include "miscadmin.h"
 #include "tcop/tcopprot.h"
-#include "commands/dbcommands.h"
 #include "utils/syscache.h"
 
 

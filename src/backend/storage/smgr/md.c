@@ -18,9 +18,9 @@
 #include <sys/file.h>
 
 #include "postgres.h"
-#include "miscadmin.h"
 
 #include "catalog/catalog.h"
+#include "miscadmin.h"
 #include "storage/smgr.h"
 
 #undef DIAGNOSTIC

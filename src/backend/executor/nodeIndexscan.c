@@ -30,16 +30,16 @@
  */
 #include "postgres.h"
 
-#include "executor/executor.h"
-#include "executor/execdebug.h"
-#include "executor/nodeIndexscan.h"
 
+
+#include "access/genam.h"
+#include "access/heapam.h"
+#include "executor/execdebug.h"
+#include "executor/executor.h"
+#include "executor/nodeIndexscan.h"
+#include "nodes/nodeFuncs.h"
 #include "optimizer/clauses.h"
 #include "parser/parsetree.h"
-
-#include "access/heapam.h"
-#include "access/genam.h"
-#include "nodes/nodeFuncs.h"
 
 /* ----------------
  *		Misc stuff to move to executor.h soon -cim 6/5/90

@@ -18,9 +18,9 @@
 
 #include <stdlib.h>
 #include "postgres.h"
-#include "tioga/tgRecipe.h"
 
 #include "catalog/catalog.h"
+#include "tioga/tgRecipe.h"
 
 static Arr_TgString *TextArray2ArrTgString(char *str);
 

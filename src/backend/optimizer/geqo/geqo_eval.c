@@ -18,9 +18,9 @@
    =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  */
 
-#include "postgres.h"
-
 #include <math.h>
+
+#include "postgres.h"
 #ifdef HAVE_LIMITS_H
 #include <limits.h>
 #ifndef MAXINT
@@ -30,13 +30,11 @@
 #include <values.h>
 #endif
 
-
+#include "optimizer/cost.h"
+#include "optimizer/geqo.h"
+#include "optimizer/paths.h"
 #include "utils/portal.h"
 
-#include "optimizer/paths.h"
-#include "optimizer/cost.h"
-
-#include "optimizer/geqo.h"
 
 /*
  * Variables set by geqo_eval_startup for use within a single GEQO run

@@ -15,8 +15,8 @@
 
 
 #include "optimizer/cost.h"
-#include "optimizer/paths.h"
 #include "optimizer/pathnode.h"
+#include "optimizer/paths.h"
 
 
 

@@ -23,11 +23,11 @@
 #include <stdio.h>
 #include <string.h>
 #include "postgres.h"
+
+#include "miscadmin.h"
 #include "storage/lmgr.h"
 #include "storage/multilev.h"
-
 #include "utils/rel.h"
-#include "miscadmin.h"
 
 static bool MultiAcquire(LOCKMETHOD lockmethod, LOCKTAG *tag,
 			 LOCKMODE lockmode, PG_LOCK_LEVEL level);

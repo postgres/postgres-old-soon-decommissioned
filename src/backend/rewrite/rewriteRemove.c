@@ -17,13 +17,13 @@
 #include "postgres.h"
 
 
+
 #include "access/heapam.h"
 #include "catalog/catname.h"
 #include "catalog/pg_rewrite.h"
-#include "utils/syscache.h"
-
 #include "rewrite/rewriteRemove.h"
 #include "rewrite/rewriteSupport.h"
+#include "utils/syscache.h"
 
 /*-----------------------------------------------------------------------
  * RewriteGetRuleEventRel

@@ -24,21 +24,19 @@
 
 #include "access/heapam.h"
 #include "access/htup.h"
-#include "utils/syscache.h"
-#include "utils/lsyscache.h"
+#include "catalog/pg_type.h"
 #include "fmgr.h"
-#include "utils/datum.h"
-
-#include "nodes/nodes.h"
+#include "lib/stringinfo.h"
 #include "nodes/execnodes.h"
+#include "nodes/nodes.h"
+#include "nodes/parsenodes.h"
 #include "nodes/pg_list.h"
 #include "nodes/plannodes.h"
-#include "nodes/parsenodes.h"
 #include "nodes/primnodes.h"
 #include "nodes/relation.h"
-
-#include "catalog/pg_type.h"
-#include "lib/stringinfo.h"
+#include "utils/datum.h"
+#include "utils/lsyscache.h"
+#include "utils/syscache.h"
 
 #include "../parse.h"
 

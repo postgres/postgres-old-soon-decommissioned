@@ -14,8 +14,8 @@
 #include "postgres.h"
 
 
-#include "optimizer/joininfo.h"
 #include "optimizer/clauses.h"
+#include "optimizer/joininfo.h"
 
 
 /*

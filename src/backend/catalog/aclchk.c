@@ -17,21 +17,21 @@
 #include <string.h>
 #include "postgres.h"
 
-#include "utils/acl.h"
 #include "access/heapam.h"
-#include "catalog/indexing.h"
 #include "catalog/catalog.h"
 #include "catalog/catname.h"
+#include "catalog/indexing.h"
 #include "catalog/pg_aggregate.h"
 #include "catalog/pg_group.h"
 #include "catalog/pg_operator.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_shadow.h"
 #include "catalog/pg_type.h"
+#include "miscadmin.h"
 #include "parser/parse_agg.h"
 #include "parser/parse_func.h"
+#include "utils/acl.h"
 #include "utils/syscache.h"
-#include "miscadmin.h"
 
 static int32 aclcheck(char *relname, Acl *acl, AclId id, AclIdType idtype, AclMode mode);
 

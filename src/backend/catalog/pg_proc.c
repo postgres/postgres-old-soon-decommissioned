@@ -20,15 +20,16 @@
 #include "catalog/pg_type.h"
 #include "miscadmin.h"
 #include "optimizer/planner.h"
+#include "parser/parse_type.h"
 #include "tcop/tcopprot.h"
 #include "utils/builtins.h"
 #include "utils/fmgrtab.h"
 #include "utils/lsyscache.h"
 #include "utils/sets.h"
 #include "utils/syscache.h"
-#include "parser/parse_type.h"
 
 #ifndef HAVE_MEMMOVE
+#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

@@ -13,22 +13,22 @@
  */
 #include "postgres.h"
 
-#include "nodes/parsenodes.h"
-#include "nodes/plannodes.h"
-#include "nodes/execnodes.h"
-#include "nodes/makefuncs.h"
 #include "catalog/pg_type.h"
 #include "commands/recipe.h"
+#include "executor/executor.h"
 #include "libpq/libpq-be.h"
+#include "nodes/execnodes.h"
+#include "nodes/makefuncs.h"
+#include "nodes/parsenodes.h"
+#include "nodes/plannodes.h"
+#include "optimizer/planner.h"
 #include "parser/parse_node.h"
-#include "utils/builtins.h"
-#include "utils/relcache.h"
 #include "rewrite/rewriteHandler.h"
 #include "rewrite/rewriteManip.h"
-#include "tcop/pquery.h"
 #include "tcop/dest.h"
-#include "optimizer/planner.h"
-#include "executor/executor.h"
+#include "tcop/pquery.h"
+#include "utils/builtins.h"
+#include "utils/relcache.h"
 
 /* from tcop/postgres.c */
 extern CommandDest whereToSendOutput;

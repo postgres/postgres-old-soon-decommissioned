@@ -14,8 +14,8 @@
 
 #include "postgres.h"
 
-#include "access/rtree.h"
 #include "access/istrat.h"
+#include "access/rtree.h"
 
 static StrategyNumber RelationGetRTStrategy(Relation r,
 					  AttrNumber attnum, RegProcedure proc);

@@ -21,12 +21,13 @@
 #include "catalog/pg_operator.h"
 #include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
-#include "parser/parse_func.h"
 #include "miscadmin.h"
+#include "parser/parse_func.h"
 #include "utils/builtins.h"
 #include "utils/syscache.h"
 
 #ifndef HAVE_MEMMOVE
+#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

@@ -14,8 +14,8 @@
 
 #include "postgres.h"
 
-#include "access/hio.h"
 #include "access/heapam.h"
+#include "access/hio.h"
 
 /*
  * amputunique	- place tuple at tid

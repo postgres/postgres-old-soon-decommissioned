@@ -11,9 +11,9 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"
 #include <string.h>
 
+#include "postgres.h"
 #include "executor/executor.h"
 #include "executor/execdebug.h"
 #include "executor/nodeSort.h"

@@ -16,19 +16,13 @@
 
 #include "postgres.h"
 
+
 #include "nodes/pg_list.h"
-#include "nodes/relation.h"
 #include "nodes/primnodes.h"
-
-
+#include "nodes/relation.h"
 #include "optimizer/cost.h"
-
-/*
- include "optimizer/geqo/tsp.h"
- */
-
-#include "optimizer/geqo/geqo_gene.h"
 #include "optimizer/geqo/geqo.h"
+#include "optimizer/geqo/geqo_gene.h"
 
 /*
  * minspantree

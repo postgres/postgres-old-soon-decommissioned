@@ -15,15 +15,14 @@
  */
 #include "postgres.h"
 
-#include "miscadmin.h"
-
 #include "catalog/catalog.h"
+#include "catalog/catname.h"
 #include "catalog/heap.h"
+#include "miscadmin.h"
 #include "storage/sinval.h"
 #include "utils/catcache.h"
 #include "utils/inval.h"
 #include "utils/relcache.h"
-#include "catalog/catname.h"
 
 static InvalidationEntry InvalidationEntryAllocate(uint16 size);
 static void LocalInvalidInvalidate(LocalInvalid invalid, void (*function) ());

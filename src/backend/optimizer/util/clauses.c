@@ -19,16 +19,13 @@
 #include "postgres.h"
 
 #include "catalog/pg_operator.h"
-#include "nodes/plannodes.h"
 #include "nodes/makefuncs.h"
 #include "nodes/nodeFuncs.h"
-
-
-#include "utils/lsyscache.h"
-
+#include "nodes/plannodes.h"
 #include "optimizer/clauses.h"
 #include "optimizer/internal.h"
 #include "optimizer/var.h"
+#include "utils/lsyscache.h"
 
 
 static bool fix_opid_walker(Node *node, void *context);

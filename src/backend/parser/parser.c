@@ -20,7 +20,6 @@
 
 #if defined(FLEX_SCANNER)
 extern void DeleteBuffer(void);
-
 #endif	 /* FLEX_SCANNER */
 
 char	   *parseString;		/* the char* which holds the string to be

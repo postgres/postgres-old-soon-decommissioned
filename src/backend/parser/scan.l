@@ -24,12 +24,12 @@
 
 #include "postgres.h"
 #include "miscadmin.h"
-#include "nodes/pg_list.h"
 #include "nodes/parsenodes.h"
+#include "nodes/pg_list.h"
+#include "parse.h"
 #include "parser/gramparse.h"
 #include "parser/keywords.h"
 #include "parser/scansup.h"
-#include "parse.h"
 #include "utils/builtins.h"
 
 #ifdef  YY_READ_BUF_SIZE

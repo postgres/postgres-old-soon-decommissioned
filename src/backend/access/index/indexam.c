@@ -66,8 +66,8 @@
 #include "postgres.h"
 
 #include "access/genam.h"
-#include "utils/relcache.h"
 #include "access/heapam.h"
+#include "utils/relcache.h"
 
 /* ----------------
  *	 undefine macros we aren't going to use that would otherwise

@@ -23,6 +23,7 @@ extern int	NIndexTupleProcessed;
 
 
 #ifndef HAVE_MEMMOVE
+#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

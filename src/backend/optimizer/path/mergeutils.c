@@ -14,9 +14,9 @@
 #include "postgres.h"
 
 
-#include "optimizer/paths.h"
 #include "optimizer/clauses.h"
 #include "optimizer/ordering.h"
+#include "optimizer/paths.h"
 
 /*
  * group_clauses_by_order

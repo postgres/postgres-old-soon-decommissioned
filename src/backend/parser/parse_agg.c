@@ -19,10 +19,10 @@
 #include "catalog/pg_aggregate.h"
 #include "optimizer/clauses.h"
 #include "parser/parse_agg.h"
-#include "parser/parse_expr.h"
 #include "parser/parse_coerce.h"
-#include "utils/syscache.h"
+#include "parser/parse_expr.h"
 #include "utils/lsyscache.h"
+#include "utils/syscache.h"
 
 static bool contain_agg_clause(Node *clause);
 static bool contain_agg_clause_walker(Node *node, void *context);

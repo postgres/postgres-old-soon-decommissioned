@@ -17,14 +17,15 @@
 
 #include "postgres.h"
 
-#include "access/hash.h"
-#include "executor/executor.h"
-#include "access/heapam.h"
 #include "access/genam.h"
+#include "access/hash.h"
+#include "access/heapam.h"
 #include "catalog/index.h"
+#include "executor/executor.h"
 #include "miscadmin.h"
 
 #ifndef HAVE_MEMMOVE
+#include <regex/utils.h>
 #else
 #include <string.h>
 #endif

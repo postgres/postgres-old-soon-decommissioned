@@ -24,10 +24,10 @@
  */
 #include "postgres.h"
 
-#include "executor/executor.h"
-#include "executor/execdebug.h"
-#include "executor/nodeSeqscan.h"
 #include "access/heapam.h"
+#include "executor/execdebug.h"
+#include "executor/executor.h"
+#include "executor/nodeSeqscan.h"
 #include "parser/parsetree.h"
 
 static Oid InitScanRelation(SeqScan *node, EState *estate,

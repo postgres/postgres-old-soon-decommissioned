@@ -30,8 +30,8 @@
 #include <string.h>
 #include "postgres.h"
 
-#include "regex/regex.h"
 
+#include "regex/regex.h"
 #include "utils/builtins.h"
 
 #if defined(DISABLE_XOPEN_NLS)

@@ -16,15 +16,11 @@
 
 #include "postgres.h"
 
-
-#include "optimizer/internal.h"
-
-#include "optimizer/paths.h"
-#include "optimizer/pathnode.h"
 #include "optimizer/cost.h"
-
-
 #include "optimizer/geqo.h"
+#include "optimizer/internal.h"
+#include "optimizer/pathnode.h"
+#include "optimizer/paths.h"
 
 #ifdef GEQO
 bool		_use_geqo_ = true;

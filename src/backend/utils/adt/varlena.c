@@ -15,9 +15,9 @@
 #include <string.h>
 
 #include "postgres.h"
-#include "utils/builtins.h"
 
 #include "mb/pg_wchar.h"
+#include "utils/builtins.h"
 
 static int	text_cmp(text *arg1, text *arg2);
 

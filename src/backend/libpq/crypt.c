@@ -20,12 +20,13 @@
 #include <unistd.h>
 
 #include "postgres.h"
-#include "miscadmin.h"
-#include "utils/nabstime.h"
-#include "storage/fd.h"
 #include "libpq/crypt.h"
+#include "miscadmin.h"
+#include "storage/fd.h"
+#include "utils/nabstime.h"
 
 #ifdef HAVE_CRYPT_H
+#include "crypt.h"
 #endif
 
 char	  **pwd_cache = NULL;

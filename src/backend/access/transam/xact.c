@@ -144,14 +144,14 @@
  */
 #include "postgres.h"
 
-#include "utils/inval.h"
-#include "utils/portal.h"
-#include "storage/proc.h"
 #include "catalog/heap.h"
-#include "utils/relcache.h"
 #include "commands/async.h"
 #include "commands/sequence.h"
 #include "libpq/be-fsstubs.h"
+#include "storage/proc.h"
+#include "utils/inval.h"
+#include "utils/portal.h"
+#include "utils/relcache.h"
 
 extern bool	SharedBufferChanged;
 

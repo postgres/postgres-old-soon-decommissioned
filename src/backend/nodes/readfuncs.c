@@ -29,12 +29,12 @@
 #include "postgres.h"
 
 
-#include "utils/lsyscache.h"
-#include "catalog/pg_index.h"
 
+#include "catalog/pg_index.h"
 #include "nodes/plannodes.h"
-#include "nodes/relation.h"
 #include "nodes/readfuncs.h"
+#include "nodes/relation.h"
+#include "utils/lsyscache.h"
 
 /* ----------------
  *		node creator declarations

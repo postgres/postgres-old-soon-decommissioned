@@ -85,17 +85,17 @@
 
 #include "postgres.h"
 
-#include "commands/async.h"
 #include "access/heapam.h"
 #include "catalog/catname.h"
 #include "catalog/pg_listener.h"
+#include "commands/async.h"
 #include "lib/dllist.h"
 #include "libpq/libpq.h"
 #include "libpq/pqformat.h"
 #include "miscadmin.h"
+#include "utils/ps_status.h"
 #include "utils/syscache.h"
 #include "utils/trace.h"
-#include "utils/ps_status.h"
 
 /* stuff that we really ought not be touching directly :-( */
 extern TransactionState CurrentTransactionState;

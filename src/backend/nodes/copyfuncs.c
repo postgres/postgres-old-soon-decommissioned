@@ -16,11 +16,10 @@
 
 #include "postgres.h"
 
-
-#include "utils/syscache.h"
 #include "catalog/pg_type.h"
 #include "optimizer/planmain.h"
 #include "optimizer/subselect.h"
+#include "utils/syscache.h"
 
 /*
  * listCopy

@@ -15,9 +15,8 @@
 
 #include "postgres.h"
 
-#include "nodes/relation.h"
 #include "nodes/plannodes.h"
-
+#include "nodes/relation.h"
 #include "utils/datum.h"
 
 static bool equali(List *a, List *b);

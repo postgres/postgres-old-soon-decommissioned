@@ -119,9 +119,8 @@
 #include <string.h>
 
 #include "postgres.h"
-
-
 #include "executor/executor.h"
+
 #undef ExecStoreTuple
 
 #include "catalog/pg_type.h"

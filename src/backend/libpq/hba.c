@@ -21,8 +21,8 @@
 #include <unistd.h>
 
 #include "postgres.h"
-#include "miscadmin.h"
 #include "libpq/libpq.h"
+#include "miscadmin.h"
 
 /* Some standard C libraries, including GNU, have an isblank() function.
    Others, including Solaris, do not.  So we have our own.

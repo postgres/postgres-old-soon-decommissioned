@@ -31,14 +31,13 @@
 #include <arpa/inet.h>
 
 #include "postgres.h"
-#include "miscadmin.h"
 
 #include "libpq/auth.h"
-#include "libpq/libpq.h"
-#include "libpq/hba.h"
-#include "libpq/password.h"
 #include "libpq/crypt.h"
-
+#include "libpq/hba.h"
+#include "libpq/libpq.h"
+#include "libpq/password.h"
+#include "miscadmin.h"
 
 static void sendAuthRequest(Port *port, AuthRequest areq, PacketDoneProc handler);
 static int	handle_done_auth(void *arg, PacketLen len, void *pkt);

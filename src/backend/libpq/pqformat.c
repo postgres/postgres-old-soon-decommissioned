@@ -45,9 +45,11 @@
  */
 #include "postgres.h"
 
-#include "libpq/pqformat.h"
 #include "libpq/libpq.h"
+#include "libpq/pqformat.h"
+
 #ifdef MULTIBYTE
+#include "mb/pg_wchar.h"
 #endif
 #include <string.h>
 #ifdef HAVE_ENDIAN_H

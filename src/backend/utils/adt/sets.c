@@ -19,9 +19,9 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "catalog/pg_proc.h"
 #include "catalog/catname.h"
 #include "catalog/indexing.h"
+#include "catalog/pg_proc.h"
 #include "utils/sets.h"
 #include "utils/syscache.h"
 

@@ -26,10 +26,10 @@
 
 #include "postgres.h"
 
-#include "executor/executor.h"
-#include "executor/nodeUnique.h"
 #include "access/heapam.h"
 #include "access/printtup.h"
+#include "executor/executor.h"
+#include "executor/nodeUnique.h"
 
 /* ----------------------------------------------------------------
  *		ExecIdenticalTuples

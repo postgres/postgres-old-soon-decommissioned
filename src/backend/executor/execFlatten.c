@@ -26,8 +26,8 @@
  *	 node does the actual flattening work.
  */
 #include "postgres.h"
-#include "executor/executor.h"
 #include "executor/execFlatten.h"
+#include "executor/executor.h"
 
 #ifdef SETS_FIXED
 static bool FjoinBumpOuterNodes(TargetEntry *tlist, ExprContext *econtext,

@@ -26,6 +26,7 @@ isinf(double d)
 
 #if defined(HAVE_FP_CLASS) || defined(HAVE_FP_CLASS_D)
 #if HAVE_FP_CLASS_H
+#include <fp_class.h>
 #endif
 int
 isinf(x)

@@ -14,11 +14,11 @@
 #include "postgres.h"
 
 
-#include "optimizer/paths.h"
-#include "optimizer/keys.h"
-#include "optimizer/tlist.h"
 #include "optimizer/joininfo.h"
+#include "optimizer/keys.h"
 #include "optimizer/ordering.h"
+#include "optimizer/paths.h"
+#include "optimizer/tlist.h"
 
 static int match_pathkey_joinkeys(List *pathkey, List *joinkeys,
 					   int outer_or_inner);

@@ -22,10 +22,6 @@
 #include <stdio.h>
 
 #include "postgres.h"
-
-
-
-
 #include "optimizer/geqo_misc.h"
 
 static float avg_pool(Pool *pool);
