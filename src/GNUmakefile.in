@@ -93,6 +93,7 @@ distclean: clean
 		backend/port/Makefile \
 		bin/psql/Makefile \
 		bin/pg_dump/Makefile \
+		bin/pg_version/Makefile \
 		include/config.h \
 		backend/utils/Gen_fmgrtab.sh \
 		include/os.h \
