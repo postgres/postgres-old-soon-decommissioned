@@ -835,6 +835,15 @@ testdb=>
         <literal>\df+</literal> is used, additional information about
         each function, including language and description, is shown.
         </para>
+
+        <note>
+        <para>
+        To reduce clutter, <literal>\df</> does not show datatype I/O
+	functions.  This is implemented by ignoring functions that accept
+	or return type <type>cstring</>.
+        </para>
+        </note>
+
         </listitem>
       </varlistentry>
 
