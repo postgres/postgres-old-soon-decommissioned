@@ -230,17 +230,7 @@ compute_clause_selec(Query *root, Node *clause)
 				int			flag;
 
 				get_relattval(clause, 0, &relidx, &attno, &constval, &flag);
-				if (relidx <= 0 || attno <= 0)
-				{
-					/*
-					 * attno can be Invalid if the clause had a function in it,
-					 * i.e.   WHERE myFunc(f) = 10
-					 *
-					 * XXX should be FIXED to use function selectivity
-					 */
-					s1 = (Cost) (0.5);
-				}
-				else
+				if (relidx && attno)
 					s1 = (Cost) restriction_selectivity(oprrest,
 														opno,
 														getrelid(relidx,
@@ -248,6 +238,16 @@ compute_clause_selec(Query *root, Node *clause)
 														attno,
 														constval,
 														flag);
+				else
+				{
+					/*
+					 * attno can be 0 if the clause had a function in it,
+					 * i.e.   WHERE myFunc(f) = 10
+					 *
+					 * XXX should be FIXED to use function selectivity
+					 */
+					s1 = (Cost) (0.5);
+				}
 			}
 		}
 		else
@@ -274,7 +274,8 @@ compute_clause_selec(Query *root, Node *clause)
 							attno2;
 
 				get_rels_atts(clause, &relid1, &attno1, &relid2, &attno2);
-				if (relid1 > 0 && relid2 > 0 && attno1 > 0 && attno2 > 0)
+				if (relid1 && relid2 && attno1 && attno2)
+
 					s1 = (Cost) join_selectivity(oprjoin,
 												 opno,
 												 getrelid(relid1,

@@ -224,6 +224,14 @@ get_attdisbursion(Oid relid, AttrNumber attnum, double min_estimate)
 		return 1.0 / (double) ntuples;
 
 	/*
+	 * VACUUM ANALYZE does not compute disbursion for system attributes,
+	 * but some of them can reasonably be assumed unique anyway.
+	 */
+	if (attnum == ObjectIdAttributeNumber ||
+		attnum == SelfItemPointerAttributeNumber)
+		return 1.0 / (double) ntuples;
+
+	/*
 	 * VACUUM ANALYZE has not been run for this table.
 	 * Produce an estimate = 1/numtuples.  This may produce
 	 * unreasonably small estimates for large tables, so limit
