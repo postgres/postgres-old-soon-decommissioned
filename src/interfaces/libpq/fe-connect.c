@@ -2843,8 +2843,9 @@ static void
 defaultNoticeReceiver(void *arg, const PGresult *res)
 {
 	(void) arg;					/* not used */
-	(*res->noticeHooks.noticeProc) (res->noticeHooks.noticeProcArg,
-									PQresultErrorMessage(res));
+	if (res->noticeHooks.noticeProc != NULL)
+		(*res->noticeHooks.noticeProc) (res->noticeHooks.noticeProcArg,
+										PQresultErrorMessage(res));
 }
 
 /*

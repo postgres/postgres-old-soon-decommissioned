@@ -360,7 +360,9 @@ extern char *pqResultStrdup(PGresult *res, const char *str);
 extern void pqClearAsyncResult(PGconn *conn);
 extern void pqSaveErrorResult(PGconn *conn);
 extern PGresult *pqPrepareAsyncResult(PGconn *conn);
-extern void pqInternalNotice(const PGNoticeHooks *hooks, const char *msgtext);
+extern void pqInternalNotice(const PGNoticeHooks *hooks, const char *fmt, ...)
+/* This lets gcc check the format string for consistency. */
+__attribute__((format(printf, 2, 3)));
 extern int	pqAddTuple(PGresult *res, PGresAttValue *tup);
 extern void pqSaveMessageField(PGresult *res, char code,
 							   const char *value);
@@ -434,10 +436,6 @@ extern PostgresPollingStatusType pqsecure_open_client(PGconn *);
 extern void pqsecure_close(PGconn *);
 extern ssize_t pqsecure_read(PGconn *, void *ptr, size_t len);
 extern ssize_t pqsecure_write(PGconn *, const void *ptr, size_t len);
-
-/* Note: PGDONOTICE macro will work if applied to either PGconn or PGresult */
-#define PGDONOTICE(conn,message) \
-	pqInternalNotice(&(conn)->noticeHooks, (message))
 
 /*
  * this is so that we can check if a connection is non-blocking internally
