@@ -11,25 +11,24 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <postgres.h>
 
-
-#include "postgres.h"
-#include "nodes/parsenodes.h"
-#include "nodes/plannodes.h"
-#include "nodes/execnodes.h"
-#include "nodes/makefuncs.h"
-#include "catalog/pg_type.h"
-#include "commands/recipe.h"
-#include "libpq/libpq-be.h"
-#include "utils/builtins.h"
-#include "utils/relcache.h" /* for RelationNameGetRelation*/
-#include "parser/parse_query.h"
-#include "rewrite/rewriteHandler.h"
-#include "rewrite/rewriteManip.h"
-#include "tcop/pquery.h"
-#include "tcop/dest.h"
-#include "optimizer/planner.h"
-#include "executor/executor.h"
+#include <nodes/parsenodes.h>
+#include <nodes/plannodes.h>
+#include <nodes/execnodes.h>
+#include <nodes/makefuncs.h>
+#include <catalog/pg_type.h>
+#include <commands/recipe.h>
+#include <libpq/libpq-be.h>
+#include <utils/builtins.h>
+#include <utils/relcache.h> /* for RelationNameGetRelation*/
+#include <parser/parse_query.h>
+#include <rewrite/rewriteHandler.h>
+#include <rewrite/rewriteManip.h>
+#include <tcop/pquery.h>
+#include <tcop/dest.h>
+#include <optimizer/planner.h>
+#include <executor/executor.h>
 
 /* from tcop/postgres.c */
 extern CommandDest whereToSendOutput;
@@ -41,7 +40,7 @@ void beginRecipe(RecipeStmt *stmt) {
 }
 #else
 
-#include "tioga/tgRecipe.h"
+#include <tioga/tgRecipe.h>
 
 #define DEBUG_RECIPE 1
 

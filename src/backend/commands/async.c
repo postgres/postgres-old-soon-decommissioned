@@ -58,36 +58,28 @@
  * #4,#5 are changing soon with pending rewrite of portal/protocol.
  *
  */
-
-#include "postgres.h"
-
-#include "utils/syscache.h"
-#include "access/relscan.h"
-#include "access/xact.h"
-#include "lib/dllist.h"
-#include "utils/palloc.h"
-
-#include "tcop/dest.h"
-#include "catalog/pg_proc.h"
-#include "catalog/catname.h"
-#include "catalog/pg_listener.h"
-
-#include "access/heapam.h" 
-
-#include "storage/bufmgr.h"
-
-#include "nodes/memnodes.h"
-#include "utils/mcxt.h"
-#include "commands/async.h"
-
 #include <unistd.h>
 #include <signal.h>
 #include <string.h>
 #include <errno.h>
-
 #include <netinet/in.h>
-#include "libpq/libpq.h"
 
+#include <postgres.h>
+
+#include <utils/syscache.h>
+#include <access/relscan.h>
+#include <access/xact.h>
+#include <lib/dllist.h>
+#include <tcop/dest.h>
+#include <catalog/pg_proc.h>
+#include <catalog/catname.h>
+#include <catalog/pg_listener.h>
+#include <access/heapam.h> 
+#include <storage/bufmgr.h>
+#include <nodes/memnodes.h>
+#include <utils/mcxt.h>
+#include <commands/async.h>
+#include <libpq/libpq.h>
 
 static int notifyFrontEndPending = 0;
 static int notifyIssued = 0;

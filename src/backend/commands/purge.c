@@ -15,18 +15,16 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"
+#include <postgres.h>
 
-#include "access/heapam.h"
-#include "access/xact.h"
-#include "utils/tqual.h"	/* for NowTimeQual */
-#include "catalog/catname.h"
-#include "catalog/indexing.h"
-#include "fmgr.h"
-#include "utils/palloc.h"
-
-#include "commands/purge.h"
-#include "utils/builtins.h"	/* for isreltime() */
+#include <access/heapam.h>
+#include <access/xact.h>
+#include <utils/tqual.h>	/* for NowTimeQual */
+#include <catalog/catname.h>
+#include <catalog/indexing.h>
+#include <fmgr.h>
+#include <commands/purge.h>
+#include <utils/builtins.h>	/* for isreltime() */
 
 static char	cmdname[] = "RelationPurge";
 

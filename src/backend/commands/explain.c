@@ -14,16 +14,16 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "postgres.h"
-#include "parser/catalog_utils.h"
-#include "parser/parse_query.h"	    /* for MakeTimeRange() */
-#include "nodes/plannodes.h"
-#include "tcop/tcopprot.h"
-#include "utils/palloc.h"
-#include "lib/stringinfo.h"
-#include "commands/explain.h"
-#include "optimizer/planner.h"
-#include "access/xact.h"
+#include <postgres.h>
+
+#include <parser/catalog_utils.h>
+#include <parser/parse_query.h>	    /* for MakeTimeRange() */
+#include <nodes/plannodes.h>
+#include <tcop/tcopprot.h>
+#include <lib/stringinfo.h>
+#include <commands/explain.h>
+#include <optimizer/planner.h>
+#include <access/xact.h>
 
 typedef struct ExplainState {
     /* options */

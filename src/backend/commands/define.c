@@ -32,8 +32,10 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <string.h>
+#include <stdio.h>
 #include <ctype.h>
+#include <string.h>
+#include <math.h>
 
 #include <postgres.h>
 
@@ -44,17 +46,12 @@
 #include <catalog/pg_proc.h>
 #include <catalog/pg_type.h>
 #include <utils/syscache.h>
-#include <nodes/parsenodes.h>
 #include <fmgr.h>               /* for fmgr */
-
 #include <utils/builtins.h>     /* prototype for textin() */
-
-#include <utils/palloc.h>
 #include <commands/defrem.h>
 #include <optimizer/xfunc.h>
 #include <tcop/dest.h>
-
-#include "catalog/pg_user.h"
+#include <catalog/pg_user.h>
 
 static char *defGetString(DefElem *def);
 static int  defGetTypeLength(DefElem *def);

@@ -18,46 +18,33 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <string.h>
-#include <stdio.h>
+#include <postgres.h>
 
-#include "postgres.h"
-
-#include "access/heapam.h"
-#include "access/genam.h"
-#include "access/htup.h"
-#include "access/skey.h"
-#include "access/xact.h"
-
-#include "catalog/catname.h"
-#include "utils/syscache.h"
-#include "catalog/index.h"
-#include "catalog/indexing.h"
-#include "catalog/pg_type.h"
-
-#include "commands/copy.h"
-#include "commands/cluster.h"
-#include "commands/rename.h"
-
-#include "storage/bufmgr.h"
-
-#include "miscadmin.h"
-#include "tcop/dest.h"
-#include "commands/command.h"
-
-#include "utils/builtins.h"
-#include "utils/excid.h"
-#include "utils/mcxt.h"
-#include "utils/palloc.h"
-
-#include "catalog/pg_proc.h"
-#include "catalog/pg_class.h"
-
-#include "optimizer/internal.h"
-
+#include <catalog/pg_index.h>
+#include <catalog/heap.h>
+#include <access/heapam.h>
+#include <access/genam.h>
+#include <access/xact.h>
+#include <catalog/catname.h>
+#include <utils/syscache.h>
+#include <catalog/index.h>
+#include <catalog/indexing.h>
+#include <catalog/pg_type.h>
+#include <commands/copy.h>
+#include <commands/cluster.h>
+#include <commands/rename.h>
+#include <storage/bufmgr.h>
+#include <miscadmin.h>
+#include <tcop/dest.h>
+#include <commands/command.h>
+#include <utils/builtins.h>
+#include <utils/excid.h>
+#include <utils/mcxt.h>
+#include <catalog/pg_proc.h>
+#include <catalog/pg_class.h>
+#include <optimizer/internal.h>
 #ifndef NO_SECURITY
-#include "utils/acl.h"
-#include "utils/syscache.h"
+#include <utils/acl.h>
 #endif /* !NO_SECURITY */
 
 /*
