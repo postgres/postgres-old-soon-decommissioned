@@ -214,12 +214,8 @@ find_base_rel(Query *root, int relid)
  * find_join_rel
  *	  Returns relation entry corresponding to 'relids' (a set of RT indexes),
  *	  or NULL if none exists.  This is for join relations.
- *
- * Note: there is probably no good reason for this to be called from
- * anywhere except build_join_rel, but keep it as a separate routine
- * just in case.
  */
-static RelOptInfo *
+RelOptInfo *
 find_join_rel(Query *root, Relids relids)
 {
 	List	   *joinrels;

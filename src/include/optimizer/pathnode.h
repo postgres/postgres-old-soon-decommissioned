@@ -77,6 +77,7 @@ extern HashPath *create_hashjoin_path(Query *root,
 extern void build_base_rel(Query *root, int relid);
 extern RelOptInfo *build_other_rel(Query *root, int relid);
 extern RelOptInfo *find_base_rel(Query *root, int relid);
+extern RelOptInfo *find_join_rel(Query *root, Relids relids);
 extern RelOptInfo *build_join_rel(Query *root,
 			   Relids joinrelids,
 			   RelOptInfo *outer_rel,
