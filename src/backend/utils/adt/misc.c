@@ -66,7 +66,7 @@ nonnullvalue(Datum value, bool * isNull)
 bool
 oidrand(Oid o, int32 X)
 {
-	bool			result;
+	bool		result;
 
 	if (X == 0)
 		return true;

@@ -16,12 +16,12 @@
 /*
  * prototypes for pathnode.c
  */
-extern bool		path_is_cheaper(Path * path1, Path * path2);
-extern Path    *set_cheapest(Rel * parent_rel, List * pathlist);
-extern List    *
+extern bool path_is_cheaper(Path * path1, Path * path2);
+extern Path *set_cheapest(Rel * parent_rel, List * pathlist);
+extern List *
 add_pathlist(Rel * parent_rel, List * unique_paths,
 			 List * new_paths);
-extern Path    *create_seqscan_path(Rel * rel);
+extern Path *create_seqscan_path(Rel * rel);
 extern IndexPath *
 create_index_path(Query * root, Rel * rel, Rel * index,
 				  List * restriction_clauses, bool is_join_scan);
@@ -43,13 +43,13 @@ create_hashjoin_path(Rel * joinrel, int outersize,
 /*
  * prototypes for rel.c
  */
-extern Rel	   *rel_member(List * relid, List * rels);
-extern Rel	   *get_base_rel(Query * root, int relid);
-extern Rel	   *get_join_rel(Query * root, List * relid);
+extern Rel *rel_member(List * relid, List * rels);
+extern Rel *get_base_rel(Query * root, int relid);
+extern Rel *get_join_rel(Query * root, List * relid);
 
 /*
  * prototypes for indexnode.h
  */
-extern List    *find_relation_indices(Query * root, Rel * rel);
+extern List *find_relation_indices(Query * root, Rel * rel);
 
 #endif							/* PATHNODE_H */

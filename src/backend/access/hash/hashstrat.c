@@ -52,12 +52,12 @@ static StrategyEvaluationData HTEvaluationData = {
  */
 
 #ifdef NOT_USED
-static			StrategyNumber
+static StrategyNumber
 _hash_getstrat(Relation rel,
 			   AttrNumber attno,
 			   RegProcedure proc)
 {
-	StrategyNumber	strat;
+	StrategyNumber strat;
 
 	strat = RelationGetStrategy(rel, attno, &HTEvaluationData, proc);
 
@@ -69,7 +69,7 @@ _hash_getstrat(Relation rel,
 #endif
 
 #ifdef NOT_USED
-static			bool
+static bool
 _hash_invokestrat(Relation rel,
 				  AttrNumber attno,
 				  StrategyNumber strat,

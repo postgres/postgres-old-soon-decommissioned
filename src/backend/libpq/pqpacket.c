@@ -61,14 +61,14 @@ PacketReceive(Port * port,		/* receive port */
 			  PacketBuf * buf,	/* MAX_PACKET_SIZE-worth of buffer space */
 			  bool nonBlocking) /* NON_BLOCKING or BLOCKING i/o */
 {
-	PacketLen		max_size = sizeof(PacketBuf);
-	PacketLen		cc;			/* character count -- bytes recvd */
-	PacketLen		packetLen;	/* remaining packet chars to read */
-	Addr			tmp;		/* curr recv buf pointer */
-	int				addrLen = sizeof(struct sockaddr_in);
-	int				hdrLen;
-	int				flag;
-	int				decr;
+	PacketLen	max_size = sizeof(PacketBuf);
+	PacketLen	cc;				/* character count -- bytes recvd */
+	PacketLen	packetLen;		/* remaining packet chars to read */
+	Addr		tmp;			/* curr recv buf pointer */
+	int			addrLen = sizeof(struct sockaddr_in);
+	int			hdrLen;
+	int			flag;
+	int			decr;
 
 	hdrLen = sizeof(buf->len);
 
@@ -224,8 +224,8 @@ PacketSend(Port * port,
 		   PacketLen len,
 		   bool nonBlocking)
 {
-	PacketLen		totalLen;
-	int				addrLen = sizeof(struct sockaddr_in);
+	PacketLen	totalLen;
+	int			addrLen = sizeof(struct sockaddr_in);
 
 	Assert(!nonBlocking);
 	Assert(buf);

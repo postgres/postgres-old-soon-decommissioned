@@ -14,9 +14,9 @@
 #define PAGENUM_H
 
 
-typedef uint16	PageNumber;
+typedef uint16 PageNumber;
 
-typedef uint32	LogicalPageNumber;
+typedef uint32 LogicalPageNumber;
 
 #define InvalidLogicalPageNumber		0
 

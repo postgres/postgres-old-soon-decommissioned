@@ -33,10 +33,10 @@
  */
 CATALOG(pg_parg)
 {
-	Oid				parproid;
-	int2			parnum;
-	char			parbound;
-	Oid				partype;
+	Oid			parproid;
+	int2		parnum;
+	char		parbound;
+	Oid			partype;
 } FormData_pg_parg;
 
 /* ----------------

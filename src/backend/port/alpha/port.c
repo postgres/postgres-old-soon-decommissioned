@@ -21,11 +21,11 @@ void
 init_address_fixup()
 {
 #ifdef NOFIXADE
-	int				buffer[] = {SSIN_UACPROC, UAC_SIGBUS};
+	int			buffer[] = {SSIN_UACPROC, UAC_SIGBUS};
 
 #endif							/* NOFIXADE */
 #ifdef NOPRINTADE
-	int				buffer[] = {SSIN_UACPROC, UAC_NOPRINT};
+	int			buffer[] = {SSIN_UACPROC, UAC_NOPRINT};
 
 #endif							/* NOPRINTADE */
 

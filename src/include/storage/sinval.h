@@ -18,14 +18,14 @@
 
 extern SPINLOCK SInvalLock;
 
-extern void		CreateSharedInvalidationState(IPCKey key);
-extern void		AttachSharedInvalidationState(IPCKey key);
-extern void		InitSharedInvalidationState(void);
+extern void CreateSharedInvalidationState(IPCKey key);
+extern void AttachSharedInvalidationState(IPCKey key);
+extern void InitSharedInvalidationState(void);
 extern void
 RegisterSharedInvalid(int cacheId, Index hashIndex,
 					  ItemPointer pointer);
-extern void		InvalidateSharedInvalid(void (*invalFunction) (),
-											   void (*resetFunction) ());
+extern void InvalidateSharedInvalid(void (*invalFunction) (),
+												void (*resetFunction) ());
 
 
 #endif							/* SINVAL_H */

@@ -63,11 +63,11 @@ int
 cx(Gene * tour1, Gene * tour2, Gene * offspring, int num_gene, City * city_table)
 {
 
-	int				i,
-					start_pos,
-					curr_pos;
-	int				count = 0;
-	int				num_diffs = 0;
+	int			i,
+				start_pos,
+				curr_pos;
+	int			count = 0;
+	int			num_diffs = 0;
 
 	/* initialize city table */
 	for (i = 1; i <= num_gene; i++)

@@ -17,7 +17,7 @@
 #include "nodes/parsenodes.h"
 #include "rewrite/prs2lock.h"
 
-extern List    *
+extern List *
 matchLocks(CmdType event, RuleLock * rulelocks, int varno,
 		   Query * parsetree);
 

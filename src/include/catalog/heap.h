@@ -17,16 +17,16 @@
 
 extern Relation heap_creatr(char *relname, unsigned smgr, TupleDesc att);
 
-extern Oid
+extern		Oid
 heap_create(char relname[],
 			char *typename,
 			int arch,
 			unsigned smgr, TupleDesc tupdesc);
 
-extern void		heap_destroy(char relname[]);
-extern void		heap_destroyr(Relation r);
+extern void heap_destroy(char relname[]);
+extern void heap_destroyr(Relation r);
 
-extern void		InitTempRelList(void);
-extern void		DestroyTempRels(void);
+extern void InitTempRelList(void);
+extern void DestroyTempRels(void);
 
 #endif							/* HEAP_H */

@@ -13,7 +13,7 @@
 #ifndef PURGE_H
 #define PURGE_H
 
-extern int32
+extern		int32
 RelationPurge(char *relationName,
 			  char *absoluteTimeString,
 			  char *relativeTimeString);

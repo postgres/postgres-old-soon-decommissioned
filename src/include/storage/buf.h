@@ -16,7 +16,7 @@
 #define InvalidBuffer	(0)
 #define UnknownBuffer	(-99999)
 
-typedef long	Buffer;
+typedef long Buffer;
 
 /*
  * BufferIsInvalid --

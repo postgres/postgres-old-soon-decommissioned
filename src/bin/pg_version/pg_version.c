@@ -21,8 +21,8 @@
 int
 main(int argc, char **argv)
 {
-	int				retcode;	/* our eventual return code */
-	char		   *reason;		/* Reason that SetPgVersion failed, NULL
+	int			retcode;		/* our eventual return code */
+	char	   *reason;			/* Reason that SetPgVersion failed, NULL
 								 * if it didn't. */
 
 	if (argc < 2)

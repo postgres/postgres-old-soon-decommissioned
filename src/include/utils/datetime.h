@@ -15,8 +15,8 @@
 
 #include "utils/dt.h"
 
-typedef int32	DateADT;
+typedef int32 DateADT;
 
-typedef float8	TimeADT;
+typedef float8 TimeADT;
 
 #endif							/* DATETIME_H */

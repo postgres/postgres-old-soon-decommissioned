@@ -27,7 +27,7 @@
  * more or less the only pieces of code that should be accessing disk
  * blocks directly.
  */
-typedef uint32	BlockNumber;
+typedef uint32 BlockNumber;
 
 #define InvalidBlockNumber		((BlockNumber) 0xFFFFFFFF)
 
@@ -49,9 +49,9 @@ typedef uint32	BlockNumber;
  */
 typedef struct BlockIdData
 {
-	uint16			bi_hi;
-	uint16			bi_lo;
-}				BlockIdData;
+	uint16		bi_hi;
+	uint16		bi_lo;
+}			BlockIdData;
 
 typedef BlockIdData *BlockId;	/* block identifier */
 

@@ -33,8 +33,8 @@
 
 CATALOG(pg_opclass)
 {
-	NameData		opcname;
-	Oid				opcdeftype;
+	NameData	opcname;
+	Oid			opcdeftype;
 } FormData_pg_opclass;
 
 /* ----------------

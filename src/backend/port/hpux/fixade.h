@@ -47,11 +47,11 @@
  */
 struct HP_WAY_BOGUS
 {
-	char			hpwb_bogus[8192];
+	char		hpwb_bogus[8192];
 };
 struct HP_TOO_BOGUS
 {
-	int				hptb_bogus[8192];
+	int			hptb_bogus[8192];
 };
 
 #endif							/* BROKEN_STRUCT_INIT */

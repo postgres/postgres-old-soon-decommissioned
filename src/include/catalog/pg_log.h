@@ -29,7 +29,7 @@
 
 CATALOG(pg_log) BOOTSTRAP
 {
-	Oid				logfoo;
+	Oid			logfoo;
 } FormData_pg_log;
 
 typedef FormData_pg_log *Form_pg_log;

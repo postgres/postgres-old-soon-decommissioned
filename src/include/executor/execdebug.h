@@ -176,13 +176,13 @@
  * ----------------
  */
 #ifdef EXEC_TUPLECOUNT
-extern int		NTupleProcessed;
-extern int		NTupleRetrieved;
-extern int		NTupleReplaced;
-extern int		NTupleAppended;
-extern int		NTupleDeleted;
-extern int		NIndexTupleProcessed;
-extern int		NIndexTupleInserted;
+extern int	NTupleProcessed;
+extern int	NTupleRetrieved;
+extern int	NTupleReplaced;
+extern int	NTupleAppended;
+extern int	NTupleDeleted;
+extern int	NIndexTupleProcessed;
+extern int	NIndexTupleInserted;
 
 #define IncrRetrieved()			NTupleRetrieved++
 #define IncrAppended()			NTupleAppended++
@@ -377,7 +377,7 @@ extern int		NIndexTupleInserted;
  */
 #undef NOTYET
 
-extern long		NDirectFileRead;
-extern long		NDirectFileWrite;
+extern long NDirectFileRead;
+extern long NDirectFileWrite;
 
 #endif							/* ExecDebugIncluded */

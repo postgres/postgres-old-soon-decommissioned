@@ -32,12 +32,12 @@
  */
 CATALOG(pg_amop)
 {
-	Oid				amopid;
-	Oid				amopclaid;
-	Oid				amopopr;
-	int2			amopstrategy;
-	regproc			amopselect;
-	regproc			amopnpages;
+	Oid			amopid;
+	Oid			amopclaid;
+	Oid			amopopr;
+	int2		amopstrategy;
+	regproc		amopselect;
+	regproc		amopnpages;
 } FormData_pg_amop;
 
 /* ----------------

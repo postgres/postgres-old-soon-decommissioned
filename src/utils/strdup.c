@@ -15,10 +15,10 @@
 #include <stdlib.h>
 #include "strdup.h"
 
-char		   *
+char	   *
 strdup(char const * string)
 {
-	char		   *nstr;
+	char	   *nstr;
 
 	nstr = strcpy((char *) malloc(strlen(string) + 1), string);
 	return nstr;

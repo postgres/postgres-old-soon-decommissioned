@@ -53,10 +53,10 @@
 void
 geqo_mutation(Gene * tour, int num_gene)
 {
-	int				swap1;
-	int				swap2;
-	int				num_swaps = geqo_randint(num_gene / 3, 0);
-	Gene			temp;
+	int			swap1;
+	int			swap2;
+	int			num_swaps = geqo_randint(num_gene / 3, 0);
+	Gene		temp;
 
 
 	while (num_swaps > 0)

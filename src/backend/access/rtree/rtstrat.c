@@ -118,7 +118,7 @@ static StrategyNumber RTNegateCommute[RTNStrategies] = {
  */
 
 /* if you only have "contained-by", how do you determine equality? */
-static uint16	RTContainedByTermData[] = {
+static uint16 RTContainedByTermData[] = {
 	2,							/* make two comparisons */
 	RTContainedByStrategyNumber,/* use "a contained-by b" */
 	0x0,						/* without any magic */
@@ -127,7 +127,7 @@ static uint16	RTContainedByTermData[] = {
 };
 
 /* if you only have "contains", how do you determine equality? */
-static uint16	RTContainsTermData[] = {
+static uint16 RTContainsTermData[] = {
 	2,							/* make two comparisons */
 	RTContainsStrategyNumber,	/* use "a contains b" */
 	0x0,						/* without any magic */
@@ -204,7 +204,7 @@ static StrategyNumber RTOperMap[RTNStrategies] = {
 	RTOverlapStrategyNumber
 };
 
-static			StrategyNumber
+static StrategyNumber
 RelationGetRTStrategy(Relation r,
 					  AttrNumber attnum,
 					  RegProcedure proc)
@@ -231,8 +231,8 @@ RTMapOperator(Relation r,
 			  AttrNumber attnum,
 			  RegProcedure proc)
 {
-	StrategyNumber	procstrat;
-	StrategyMap		strategyMap;
+	StrategyNumber procstrat;
+	StrategyMap strategyMap;
 
 	procstrat = RelationGetRTStrategy(r, attnum, proc);
 	strategyMap = IndexStrategyGetStrategyMap(RelationGetIndexStrategy(r),

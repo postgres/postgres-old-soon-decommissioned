@@ -23,6 +23,6 @@
 #define GEQO_SELECTION_H
 
 
-extern void		geqo_selection(Chromosome * momma, Chromosome * daddy, Pool * pool, double bias);
+extern void geqo_selection(Chromosome * momma, Chromosome * daddy, Pool * pool, double bias);
 
 #endif							/* GEQO_SELECTION_H */

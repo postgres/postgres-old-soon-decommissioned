@@ -49,6 +49,6 @@
 #define  RelCheckRelationName "pg_relcheck"
 #define  TriggerRelationName "pg_trigger"
 
-extern char    *SharedSystemRelationNames[];
+extern char *SharedSystemRelationNames[];
 
 #endif							/* CATNAME_H */

@@ -30,9 +30,9 @@
 
 CATALOG(pg_hosts) BOOTSTRAP
 {
-	NameData		dbName;
-	text			address;
-	text			mask;
+	NameData	dbName;
+	text		address;
+	text		mask;
 } FormData_pg_hosts;
 
 typedef FormData_pg_hosts *Form_pg_hosts;

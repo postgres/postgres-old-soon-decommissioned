@@ -34,6 +34,6 @@
 
 /* port.c */
 
-extern void		init_address_fixup(void);
+extern void init_address_fixup(void);
 
 #endif							/* PORT_PROTOS_H */

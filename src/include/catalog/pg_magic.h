@@ -32,8 +32,8 @@
  */
 CATALOG(pg_magic) BOOTSTRAP
 {
-	NameData		magname;
-	NameData		magvalue;
+	NameData	magname;
+	NameData	magvalue;
 } FormData_pg_magic;
 
 /* ----------------

@@ -31,11 +31,11 @@
  * RewriteGetRuleEventRel
  *-----------------------------------------------------------------------
  */
-char		   *
+char	   *
 RewriteGetRuleEventRel(char *rulename)
 {
-	HeapTuple		htp;
-	Oid				eventrel;
+	HeapTuple	htp;
+	Oid			eventrel;
 
 	htp = SearchSysCacheTuple(REWRITENAME, PointerGetDatum(rulename),
 							  0, 0, 0);
@@ -69,15 +69,15 @@ RewriteGetRuleEventRel(char *rulename)
 void
 RemoveRewriteRule(char *ruleName)
 {
-	Relation		RewriteRelation = NULL;
-	HeapScanDesc	scanDesc = NULL;
-	ScanKeyData		scanKeyData;
-	HeapTuple		tuple = NULL;
-	Oid				ruleId = (Oid) 0;
-	Oid				eventRelationOid = (Oid) NULL;
-	Datum			eventRelationOidDatum = (Datum) NULL;
-	Buffer			buffer = (Buffer) NULL;
-	bool			isNull = false;
+	Relation	RewriteRelation = NULL;
+	HeapScanDesc scanDesc = NULL;
+	ScanKeyData scanKeyData;
+	HeapTuple	tuple = NULL;
+	Oid			ruleId = (Oid) 0;
+	Oid			eventRelationOid = (Oid) NULL;
+	Datum		eventRelationOidDatum = (Datum) NULL;
+	Buffer		buffer = (Buffer) NULL;
+	bool		isNull = false;
 
 	/*
 	 * Open the pg_rewrite relation.
@@ -145,10 +145,10 @@ RemoveRewriteRule(char *ruleName)
 void
 RelationRemoveRules(Oid relid)
 {
-	Relation		RewriteRelation = NULL;
-	HeapScanDesc	scanDesc = NULL;
-	ScanKeyData		scanKeyData;
-	HeapTuple		tuple = NULL;
+	Relation	RewriteRelation = NULL;
+	HeapScanDesc scanDesc = NULL;
+	ScanKeyData scanKeyData;
+	HeapTuple	tuple = NULL;
 
 	/*
 	 * Open the pg_rewrite relation.

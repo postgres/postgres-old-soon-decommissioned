@@ -16,7 +16,7 @@
 /* Temporary name of set, before SetDefine changes it. */
 #define GENERICSETNAME "zyxset"
 
-extern Oid		SetDefine(char *querystr, char *typename);
-extern int		seteval(Oid funcoid);
+extern Oid	SetDefine(char *querystr, char *typename);
+extern int	seteval(Oid funcoid);
 
 #endif							/* SETS_H */

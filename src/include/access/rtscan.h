@@ -12,6 +12,6 @@
  */
 #ifndef RTSCAN_H
 
-void			rtadjscans(Relation r, int op, BlockNumber blkno, OffsetNumber offnum);
+void		rtadjscans(Relation r, int op, BlockNumber blkno, OffsetNumber offnum);
 
 #endif							/* RTSCAN_H */

@@ -18,17 +18,17 @@
 #define FormMaxSize		1024
 #define FormMinSize		(FormMaxSize / 8)
 
-static char		FormBuf[FormMaxSize];
+static char FormBuf[FormMaxSize];
 
 
 /* ----------------
  *		form
  * ----------------
  */
-char		   *
+char	   *
 form(const char *fmt,...)
 {
-	va_list			args;
+	va_list		args;
 
 	va_start(args, fmt);
 

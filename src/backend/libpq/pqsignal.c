@@ -50,7 +50,7 @@ pqsignal(int signo, pqsigfunc func)
 	return signal(signo, func);
 #else
 	struct sigaction act,
-					oact;
+				oact;
 
 	act.sa_handler = func;
 	sigemptyset(&act.sa_mask);

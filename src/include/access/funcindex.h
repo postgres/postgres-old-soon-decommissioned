@@ -15,11 +15,11 @@
 
 typedef struct
 {
-	int				nargs;
-	Oid				arglist[8];
-	Oid				procOid;
-	NameData		funcName;
-}				FuncIndexInfo;
+	int			nargs;
+	Oid			arglist[8];
+	Oid			procOid;
+	NameData	funcName;
+}			FuncIndexInfo;
 
 typedef FuncIndexInfo *FuncIndexInfoPtr;
 

@@ -32,13 +32,13 @@
  */
 CATALOG(pg_rewrite)
 {
-	NameData		rulename;
-	char			ev_type;
-	Oid				ev_class;
-	int2			ev_attr;
-	bool			is_instead;
-	text			ev_qual;	/* VARLENA */
-	text			action;		/* VARLENA */
+	NameData	rulename;
+	char		ev_type;
+	Oid			ev_class;
+	int2		ev_attr;
+	bool		is_instead;
+	text		ev_qual;		/* VARLENA */
+	text		action;			/* VARLENA */
 } FormData_pg_rewrite;
 
 /* ----------------

@@ -20,6 +20,6 @@
 /*
  * prototypes for functions in init/enbl.c
  */
-extern bool		BypassEnable(int *enableCountInOutP, bool on);
+extern bool BypassEnable(int *enableCountInOutP, bool on);
 
 #endif							/* MODULE_H */

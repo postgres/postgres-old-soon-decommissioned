@@ -37,16 +37,16 @@ extern MemoryContext TopMemoryContext;
 /*
  * prototypes for functions in mcxt.c
  */
-extern void		EnableMemoryContext(bool on);
-extern Pointer	MemoryContextAlloc(MemoryContext context, Size size);
-extern Pointer
+extern void EnableMemoryContext(bool on);
+extern Pointer MemoryContextAlloc(MemoryContext context, Size size);
+extern		Pointer
 MemoryContextRealloc(MemoryContext context,
 					 Pointer pointer,
 					 Size size);
-extern void		MemoryContextFree(MemoryContext context, Pointer pointer);
+extern void MemoryContextFree(MemoryContext context, Pointer pointer);
 extern MemoryContext MemoryContextSwitchTo(MemoryContext context);
 extern GlobalMemory CreateGlobalMemory(char *name);
-extern void		GlobalMemoryDestroy(GlobalMemory context);
+extern void GlobalMemoryDestroy(GlobalMemory context);
 
 
 #endif							/* MCXT_H */

@@ -33,10 +33,10 @@
 /* uncomment the following if you want your elog's to be timestamped */
 /* #define ELOG_TIMESTAMPS */
 
-extern void		elog(int lev, const char *fmt,...);
+extern void elog(int lev, const char *fmt,...);
 
 #ifndef PG_STANDALONE
-int				DebugFileOpen(void);
+int			DebugFileOpen(void);
 
 #endif
 

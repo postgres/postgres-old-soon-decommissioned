@@ -35,28 +35,28 @@
  */
 CATALOG(pg_am)
 {
-	NameData		amname;
-	Oid				amowner;
-	char			amkind;
-	int2			amstrategies;
-	int2			amsupport;
-	regproc			amgettuple;
-	regproc			aminsert;
-	regproc			amdelete;
-	regproc			amgetattr;
-	regproc			amsetlock;
-	regproc			amsettid;
-	regproc			amfreetuple;
-	regproc			ambeginscan;
-	regproc			amrescan;
-	regproc			amendscan;
-	regproc			ammarkpos;
-	regproc			amrestrpos;
-	regproc			amopen;
-	regproc			amclose;
-	regproc			ambuild;
-	regproc			amcreate;
-	regproc			amdestroy;
+	NameData	amname;
+	Oid			amowner;
+	char		amkind;
+	int2		amstrategies;
+	int2		amsupport;
+	regproc		amgettuple;
+	regproc		aminsert;
+	regproc		amdelete;
+	regproc		amgetattr;
+	regproc		amsetlock;
+	regproc		amsettid;
+	regproc		amfreetuple;
+	regproc		ambeginscan;
+	regproc		amrescan;
+	regproc		amendscan;
+	regproc		ammarkpos;
+	regproc		amrestrpos;
+	regproc		amopen;
+	regproc		amclose;
+	regproc		ambuild;
+	regproc		amcreate;
+	regproc		amdestroy;
 } FormData_pg_am;
 
 /* ----------------

@@ -19,15 +19,15 @@
 
 #include "utils/memutils.h"		/* where declarations of this file goes */
 
-static Pointer	OrderedElemGetBase(OrderedElem elem);
-static void		OrderedElemPush(OrderedElem elem);
-static void		OrderedElemPushHead(OrderedElem elem);
+static Pointer OrderedElemGetBase(OrderedElem elem);
+static void OrderedElemPush(OrderedElem elem);
+static void OrderedElemPushHead(OrderedElem elem);
 
 /*
  * OrderedElemGetBase --
  *		Returns base of enclosing structure.
  */
-static			Pointer
+static Pointer
 OrderedElemGetBase(OrderedElem elem)
 {
 	if (elem == (OrderedElem) NULL)

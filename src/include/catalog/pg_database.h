@@ -32,9 +32,9 @@
  */
 CATALOG(pg_database) BOOTSTRAP
 {
-	NameData		datname;
-	int4			datdba;
-	text			datpath;	/* VARIABLE LENGTH FIELD */
+	NameData	datname;
+	int4		datdba;
+	text		datpath;		/* VARIABLE LENGTH FIELD */
 } FormData_pg_database;
 
 /* ----------------

@@ -16,13 +16,13 @@
 #include <access/htup.h>
 #include <utils/rel.h>
 
-extern void		DiscardInvalid(void);
+extern void DiscardInvalid(void);
 
-extern void		RegisterInvalid(bool send);
+extern void RegisterInvalid(bool send);
 
-extern void		SetRefreshWhenInvalidate(bool on);
+extern void SetRefreshWhenInvalidate(bool on);
 
-extern void		RelationInvalidateHeapTuple(Relation relation, HeapTuple tuple);
+extern void RelationInvalidateHeapTuple(Relation relation, HeapTuple tuple);
 
 /*
  * POSTGRES local cache invalidation definitions. (originates from linval.h)
@@ -30,13 +30,13 @@ extern void		RelationInvalidateHeapTuple(Relation relation, HeapTuple tuple);
 typedef struct InvalidationUserData
 {
 	struct InvalidationUserData *dataP[1];		/* VARIABLE LENGTH */
-}				InvalidationUserData;	/* VARIABLE LENGTH STRUCTURE */
+}			InvalidationUserData;		/* VARIABLE LENGTH STRUCTURE */
 
 typedef struct InvalidationEntryData
 {
 	InvalidationUserData *nextP;
 	InvalidationUserData userData;		/* VARIABLE LENGTH ARRAY */
-}				InvalidationEntryData;	/* VARIABLE LENGTH STRUCTURE */
+}			InvalidationEntryData;		/* VARIABLE LENGTH STRUCTURE */
 
 typedef Pointer InvalidationEntry;
 

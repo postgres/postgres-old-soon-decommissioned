@@ -14,8 +14,8 @@
 
 typedef struct ImageHdr
 {
-	int				size;
-}				ImageHdr;
+	int			size;
+}			ImageHdr;
 
 #define BUFSIZE 10
 
@@ -26,12 +26,12 @@ typedef struct ImageHdr
 Oid
 beard(Oid picture)
 {
-	Oid				beard;
-	int				pic_fd,
-					beard_fd;
-	ImageHdr		ihdr;
-	char			buf[BUFSIZE];
-	int				cc;
+	Oid			beard;
+	int			pic_fd,
+				beard_fd;
+	ImageHdr	ihdr;
+	char		buf[BUFSIZE];
+	int			cc;
 
 	if ((pic_fd = lo_open(picture, INV_READ)) == -1)
 		elog(WARN, "Cannot access picture large object");

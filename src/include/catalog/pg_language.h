@@ -32,8 +32,8 @@
  */
 CATALOG(pg_language)
 {
-	NameData		lanname;
-	text			lancompiler;/* VARIABLE LENGTH FIELD */
+	NameData	lanname;
+	text		lancompiler;	/* VARIABLE LENGTH FIELD */
 } FormData_pg_language;
 
 /* ----------------

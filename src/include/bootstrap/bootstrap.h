@@ -21,18 +21,18 @@
 
 typedef struct hashnode
 {
-	int				strnum;		/* Index into string table */
+	int			strnum;			/* Index into string table */
 	struct hashnode *next;
-}				hashnode;
+}			hashnode;
 
 #define EMITPROMPT printf("> ")
 
 extern Relation reldesc;
 extern AttributeTupleForm attrtypes[MAXATTR];
-extern int		numattr;
-extern int		DebugMode;
+extern int	numattr;
+extern int	DebugMode;
 
-extern int		BootstrapMain(int ac, char *av[]);
+extern int	BootstrapMain(int ac, char *av[]);
 extern void
 index_register(char *heap,
 			   char *ind,
@@ -43,18 +43,18 @@ index_register(char *heap,
 			   FuncIndexInfo * finfo,
 			   PredInfo * predInfo);
 
-extern void		err_out(void);
-extern void		InsertOneTuple(Oid objectid);
-extern void		closerel(char *name);
-extern void		boot_openrel(char *name);
-extern char    *LexIDStr(int ident_num);
+extern void err_out(void);
+extern void InsertOneTuple(Oid objectid);
+extern void closerel(char *name);
+extern void boot_openrel(char *name);
+extern char *LexIDStr(int ident_num);
 
-extern void		DefineAttr(char *name, char *type, int attnum);
-extern void		InsertOneValue(Oid objectid, char *value, int i);
-extern void		InsertOneNull(int i);
-extern char    *MapArrayTypeName(char *s);
-extern char    *CleanUpStr(char *s);
-extern int		EnterString(char *str);
-extern void		build_indices(void);
+extern void DefineAttr(char *name, char *type, int attnum);
+extern void InsertOneValue(Oid objectid, char *value, int i);
+extern void InsertOneNull(int i);
+extern char *MapArrayTypeName(char *s);
+extern char *CleanUpStr(char *s);
+extern int	EnterString(char *str);
+extern void build_indices(void);
 
 #endif							/* BOOTSTRAP_H */

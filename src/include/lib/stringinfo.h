@@ -25,10 +25,10 @@
  */
 typedef struct StringInfoData
 {
-	char		   *data;
-	int				maxlen;
-	int				len;
-}				StringInfoData;
+	char	   *data;
+	int			maxlen;
+	int			len;
+}			StringInfoData;
 
 typedef StringInfoData *StringInfo;
 
@@ -42,6 +42,6 @@ extern StringInfo makeStringInfo(void);
  * appendStringInfo
  * similar to 'strcat' but reallocates more space if necessary...
  */
-extern void		appendStringInfo(StringInfo str, char *buffer);
+extern void appendStringInfo(StringInfo str, char *buffer);
 
 #endif							/* STRINGINFO_H */

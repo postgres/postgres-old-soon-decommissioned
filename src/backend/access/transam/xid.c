@@ -50,11 +50,11 @@ xidin(char *representation)
 }
 
 /* XXX char16 name for catalogs */
-char		   *
+char	   *
 xidout(TransactionId transactionId)
 {
 /*	  return(TransactionIdFormString(transactionId)); */
-	char		   *representation;
+	char	   *representation;
 
 	/* maximum 32 bit unsigned integer representation takes 10 chars */
 	representation = palloc(11);

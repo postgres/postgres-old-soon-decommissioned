@@ -34,10 +34,10 @@
 
 #define MAX_QUERY_LEN 1024
 
-char			rule_buf[MAX_QUERY_LEN];
+char		rule_buf[MAX_QUERY_LEN];
 
 #ifdef NOT_USED
-static char		attr_list[MAX_QUERY_LEN];
+static char attr_list[MAX_QUERY_LEN];
 
 #endif
 
@@ -105,9 +105,9 @@ eval_as_new_xact(char *query)
 void
 DefineVersion(char *name, char *fromRelname, char *date)
 {
-	char		   *bname;
-	static char		saved_basename[512];
-	static char		saved_snapshot[512];
+	char	   *bname;
+	static char saved_basename[512];
+	static char saved_snapshot[512];
 
 	if (date == NULL)
 	{
@@ -148,7 +148,7 @@ DefineVersion(char *name, char *fromRelname, char *date)
 void
 VersionCreate(char *vname, char *bname)
 {
-	static char		query_buf[MAX_QUERY_LEN];
+	static char query_buf[MAX_QUERY_LEN];
 
 	/*
 	 * Creating the dummy version relation for triggering rules.
@@ -184,12 +184,12 @@ VersionCreate(char *vname, char *bname)
 static void
 setAttrList(char *bname)
 {
-	Relation		rdesc;
-	int				i = 0;
-	int				maxattrs = 0;
-	char		   *attrname;
-	char			temp_buf[512];
-	int				notfirst = 0;
+	Relation	rdesc;
+	int			i = 0;
+	int			maxattrs = 0;
+	char	   *attrname;
+	char		temp_buf[512];
+	int			notfirst = 0;
 
 	rdesc = heap_openr(bname);
 	if (rdesc == NULL)

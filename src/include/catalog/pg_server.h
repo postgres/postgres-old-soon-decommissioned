@@ -32,9 +32,9 @@
  */
 CATALOG(pg_server) BOOTSTRAP
 {
-	NameData		sername;
-	int2			serpid;
-	int2			serport;
+	NameData	sername;
+	int2		serpid;
+	int2		serport;
 } FormData_pg_server;
 
 /* ----------------

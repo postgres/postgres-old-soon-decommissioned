@@ -61,12 +61,12 @@
 void
 ox2(Gene * tour1, Gene * tour2, Gene * offspring, int num_gene, City * city_table)
 {
-	int				k,
-					j,
-					count,
-					pos,
-					select,
-					num_positions;
+	int			k,
+				j,
+				count,
+				pos,
+				select,
+				num_positions;
 
 	/* initialize city table */
 	for (k = 1; k <= num_gene; k++)

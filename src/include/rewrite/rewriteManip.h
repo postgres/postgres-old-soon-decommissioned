@@ -14,12 +14,12 @@
 #define REWRITEMANIP_H
 
 /* RewriteManip.c */
-void			OffsetVarNodes(Node * node, int offset);
-void			ChangeVarNodes(Node * node, int old_varno, int new_varno);
-void			AddQual(Query * parsetree, Node * qual);
-void			AddNotQual(Query * parsetree, Node * qual);
-void			FixResdomTypes(List * user_tlist);
-void			FixNew(RewriteInfo * info, Query * parsetree);
+void		OffsetVarNodes(Node * node, int offset);
+void		ChangeVarNodes(Node * node, int old_varno, int new_varno);
+void		AddQual(Query * parsetree, Node * qual);
+void		AddNotQual(Query * parsetree, Node * qual);
+void		FixResdomTypes(List * user_tlist);
+void		FixNew(RewriteInfo * info, Query * parsetree);
 
 void
 HandleRIRAttributeRule(Query * parsetree, List * rtable, List * targetlist,

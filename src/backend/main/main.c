@@ -34,7 +34,7 @@ echo \"postmaster -B 256 >/var/log/pglog 2>&1 &\" | su - postgres\n\n"
 int
 main(int argc, char *argv[])
 {
-	int				len;
+	int			len;
 
 #ifdef USE_LOCALE
 	setlocale(LC_CTYPE, "");	/* take locale information from an

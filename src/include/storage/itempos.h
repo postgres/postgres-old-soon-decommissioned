@@ -18,11 +18,11 @@
 
 typedef struct ItemSubpositionData
 {
-	Buffer			op_db;
-	ItemId			op_lpp;
-	char		   *op_cp;		/* XXX */
-	uint32			op_len;
-}				ItemSubpositionData;
+	Buffer		op_db;
+	ItemId		op_lpp;
+	char	   *op_cp;			/* XXX */
+	uint32		op_len;
+}			ItemSubpositionData;
 
 typedef ItemSubpositionData *ItemSubposition;
 

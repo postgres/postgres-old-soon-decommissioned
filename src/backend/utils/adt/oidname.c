@@ -23,8 +23,8 @@
 OidName
 oidnamein(char *inStr)
 {
-	OidName			oc;
-	char		   *inptr;
+	OidName		oc;
+	char	   *inptr;
 
 	oc = (OidName) palloc(sizeof(OidNameData));
 
@@ -45,12 +45,12 @@ oidnamein(char *inStr)
 	return oc;
 }
 
-char		   *
+char	   *
 oidnameout(OidName oidname)
 {
-	char			buf[30 + NAMEDATALEN];		/* oidname length + oid
-												 * length + some safety */
-	char		   *res;
+	char		buf[30 + NAMEDATALEN];	/* oidname length + oid length +
+										 * some safety */
+	char	   *res;
 
 	sprintf(buf, "%d,%s", oidname->id, oidname->name.data);
 	res = pstrdup(buf);
@@ -115,7 +115,7 @@ oidnamecmp(OidName o1, OidName o2)
 OidName
 mkoidname(Oid id, char *name)
 {
-	OidName			oidname;
+	OidName		oidname;
 
 	oidname = (OidName) palloc(sizeof(Oid) + NAMEDATALEN);
 

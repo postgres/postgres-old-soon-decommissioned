@@ -36,17 +36,17 @@
 #define pg_dlerror		dlerror
 
 /* port.c */
-extern long		random(void);
-extern void		srandom(int seed);
+extern long random(void);
+extern void srandom(int seed);
 
 /* inet_aton.c in backend/port directory */
-extern int		inet_aton(const char *cp, struct in_addr * addr);
+extern int	inet_aton(const char *cp, struct in_addr * addr);
 
 /* In system library, but can't find prototype in system library .h files */
-extern int		gethostname(char *name, int namelen);
+extern int	gethostname(char *name, int namelen);
 
 /* In system library, but can't find prototype in system library .h files */
 #include <sys/resource.h>
-extern int		getrusage(int who, struct rusage * rusage);
+extern int	getrusage(int who, struct rusage * rusage);
 
 #endif							/* PORT_PROTOS_H */

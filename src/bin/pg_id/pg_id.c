@@ -23,17 +23,17 @@
 int
 main(int argc, char **argv)
 {
-	struct passwd  *pw;
-	int				ch;
-	extern int		optind;
+	struct passwd *pw;
+	int			ch;
+	extern int	optind;
 
 	while ((ch = getopt(argc, argv, "")) != EOF)
 		switch (ch)
 		{
-		case '?':
-		default:
-			fprintf(stderr, "usage: pg_id [login]\n");
-			exit(1);
+			case '?':
+			default:
+				fprintf(stderr, "usage: pg_id [login]\n");
+				exit(1);
 		}
 	argc -= optind;
 	argv += optind;

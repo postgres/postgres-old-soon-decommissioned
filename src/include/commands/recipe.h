@@ -12,6 +12,6 @@
 #ifndef RECIPE_H
 #define RECIPE_H
 
-extern void		beginRecipe(RecipeStmt * stmt);
+extern void beginRecipe(RecipeStmt * stmt);
 
 #endif							/* RECIPE_H */

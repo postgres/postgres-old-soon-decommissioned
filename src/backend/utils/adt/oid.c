@@ -28,11 +28,11 @@
  *		Note:
  *				Fills any nonexistent digits with NULL oids.
  */
-Oid			   *
+Oid		   *
 oid8in(char *oidString)
 {
-	register		Oid(*result)[];
-	int				nums;
+	register	Oid(*result)[];
+	int			nums;
 
 	if (oidString == NULL)
 		return (NULL);
@@ -57,13 +57,13 @@ oid8in(char *oidString)
 /*
  *		oid8out - converts internal form to "num num ..."
  */
-char		   *
+char	   *
 oid8out(Oid(*oidArray)[])
 {
-	register int	num;
-	register Oid   *sp;
-	register char  *rp;
-	char		   *result;
+	register int num;
+	register Oid *sp;
+	register char *rp;
+	char	   *result;
 
 	if (oidArray == NULL)
 	{
@@ -93,7 +93,7 @@ oidin(char *s)
 	return (int4in(s));
 }
 
-char		   *
+char	   *
 oidout(Oid o)
 {
 	return (int4out(o));

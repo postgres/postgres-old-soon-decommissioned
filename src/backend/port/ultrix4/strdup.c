@@ -17,10 +17,10 @@
 
 #include "port-protos.h"
 
-char		   *
+char	   *
 strdup(char const * string)
 {
-	char		   *nstr;
+	char	   *nstr;
 
 	nstr = strcpy((char *) palloc(strlen(string) + 1), string);
 	return nstr;

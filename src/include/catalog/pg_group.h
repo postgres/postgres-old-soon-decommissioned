@@ -26,9 +26,9 @@
 
 CATALOG(pg_group) BOOTSTRAP
 {
-	NameData		groname;
-	int4			grosysid;
-	int4			grolist[1];
+	NameData	groname;
+	int4		grosysid;
+	int4		grolist[1];
 } FormData_pg_group;
 
 /* VARIABLE LENGTH STRUCTURE */

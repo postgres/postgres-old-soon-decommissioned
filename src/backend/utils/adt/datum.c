@@ -51,7 +51,7 @@ datumGetSize(Datum value, Oid type, bool byVal, Size len)
 {
 
 	struct varlena *s;
-	Size			size = 0;
+	Size		size = 0;
 
 	if (byVal)
 	{
@@ -110,9 +110,9 @@ Datum
 datumCopy(Datum value, Oid type, bool byVal, Size len)
 {
 
-	Size			realSize;
-	Datum			res;
-	char		   *s;
+	Size		realSize;
+	Datum		res;
+	char	   *s;
 
 
 	if (byVal)
@@ -154,8 +154,8 @@ void
 datumFree(Datum value, Oid type, bool byVal, Size len)
 {
 
-	Size			realSize;
-	Pointer			s;
+	Size		realSize;
+	Pointer		s;
 
 	realSize = datumGetSize(value, type, byVal, len);
 
@@ -188,10 +188,10 @@ datumFree(Datum value, Oid type, bool byVal, Size len)
 bool
 datumIsEqual(Datum value1, Datum value2, Oid type, bool byVal, Size len)
 {
-	Size			size1,
-					size2;
-	char		   *s1,
-				   *s2;
+	Size		size1,
+				size2;
+	char	   *s1,
+			   *s2;
 
 	if (byVal)
 	{

@@ -25,9 +25,9 @@
  */
 typedef struct ItemPointerData
 {
-	BlockIdData		ip_blkid;
-	OffsetNumber	ip_posid;
-}				ItemPointerData;
+	BlockIdData ip_blkid;
+	OffsetNumber ip_posid;
+}			ItemPointerData;
 
 typedef ItemPointerData *ItemPointer;
 
@@ -108,6 +108,6 @@ typedef ItemPointerData *ItemPointer;
  * ----------------
  */
 
-extern bool		ItemPointerEquals(ItemPointer pointer1, ItemPointer pointer2);
+extern bool ItemPointerEquals(ItemPointer pointer1, ItemPointer pointer2);
 
 #endif							/* ITEMPTR_H */

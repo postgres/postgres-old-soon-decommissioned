@@ -12,9 +12,9 @@
 
 struct _helpStruct
 {
-	char		   *cmd;		/* the command name */
-	char		   *help;		/* the help associated with it */
-	char		   *syntax;		/* the syntax associated with it */
+	char	   *cmd;			/* the command name */
+	char	   *help;			/* the help associated with it */
+	char	   *syntax;			/* the syntax associated with it */
 };
 
 static struct _helpStruct QL_HELP[] = {

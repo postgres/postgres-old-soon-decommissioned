@@ -29,7 +29,7 @@
 
 CATALOG(pg_variable) BOOTSTRAP
 {
-	Oid				varfoo;
+	Oid			varfoo;
 } FormData_pg_variable;
 
 typedef FormData_pg_variable *Form_pg_variable;

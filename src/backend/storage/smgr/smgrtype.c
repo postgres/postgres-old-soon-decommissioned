@@ -20,8 +20,8 @@
 
 typedef struct smgrid
 {
-	char		   *smgr_name;
-}				smgrid;
+	char	   *smgr_name;
+}			smgrid;
 
 /*
  *	StorageManager[] -- List of defined storage managers.
@@ -30,19 +30,19 @@ typedef struct smgrid
  *		which of these is (or is not) defined.
  */
 
-static smgrid	StorageManager[] = {
+static smgrid StorageManager[] = {
 	{"magnetic disk"},
 #ifdef MAIN_MEMORY
 	{"main memory"}
 #endif							/* MAIN_MEMORY */
 };
 
-static int		NStorageManagers = lengthof(StorageManager);
+static int	NStorageManagers = lengthof(StorageManager);
 
 int2
 smgrin(char *s)
 {
-	int				i;
+	int			i;
 
 	for (i = 0; i < NStorageManagers; i++)
 	{
@@ -53,10 +53,10 @@ smgrin(char *s)
 	return 0;
 }
 
-char		   *
+char	   *
 smgrout(int2 i)
 {
-	char		   *s;
+	char	   *s;
 
 	if (i >= NStorageManagers || i < 0)
 		elog(WARN, "Illegal storage manager id %d", i);

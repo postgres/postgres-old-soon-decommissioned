@@ -39,7 +39,7 @@
 #define RELN_LEVEL 0
 #define PAGE_LEVEL 1
 #define TUPLE_LEVEL 2
-typedef int		LOCK_LEVEL;
+typedef int LOCK_LEVEL;
 
 /* multi.c */
 
@@ -50,9 +50,9 @@ extern LockTableId ShortTermTableId;
  * function prototypes
  */
 extern LockTableId InitMultiLevelLockm(void);
-extern bool		MultiLockReln(LockInfo linfo, LOCKT lockt);
-extern bool		MultiLockTuple(LockInfo linfo, ItemPointer tidPtr, LOCKT lockt);
-extern bool		MultiLockPage(LockInfo linfo, ItemPointer tidPtr, LOCKT lockt);
-extern bool		MultiReleaseReln(LockInfo linfo, LOCKT lockt);
+extern bool MultiLockReln(LockInfo linfo, LOCKT lockt);
+extern bool MultiLockTuple(LockInfo linfo, ItemPointer tidPtr, LOCKT lockt);
+extern bool MultiLockPage(LockInfo linfo, ItemPointer tidPtr, LOCKT lockt);
+extern bool MultiReleaseReln(LockInfo linfo, LOCKT lockt);
 
 #endif							/* MULTILEV_H */

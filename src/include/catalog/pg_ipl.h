@@ -32,9 +32,9 @@
  */
 CATALOG(pg_ipl)
 {
-	Oid				iplrel;
-	Oid				iplipl;
-	int4			iplseqno;
+	Oid			iplrel;
+	Oid			iplipl;
+	int4		iplseqno;
 } FormData_pg_ipl;
 
 /* ----------------

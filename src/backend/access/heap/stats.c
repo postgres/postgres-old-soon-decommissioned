@@ -28,7 +28,7 @@
 #include <string.h>
 #endif
 
-static void		InitHeapAccessStatistics(void);
+static void InitHeapAccessStatistics(void);
 
 /* ----------------
  *		InitHeapAccessStatistics
@@ -39,7 +39,7 @@ HeapAccessStatistics heap_access_stats = (HeapAccessStatistics) NULL;
 static void
 InitHeapAccessStatistics()
 {
-	MemoryContext	oldContext;
+	MemoryContext oldContext;
 	HeapAccessStatistics stats;
 
 	/* ----------------

@@ -26,6 +26,6 @@
 #define VAR_LENGTH_ARG			(-5)
 #define MAX_STRING_LENGTH		256
 
-extern int		HandleFunctionRequest(void);
+extern int	HandleFunctionRequest(void);
 
 #endif							/* FASTPATH_H */

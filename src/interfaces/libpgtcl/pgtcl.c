@@ -34,11 +34,11 @@
 static void
 Pgtcl_AtExit(ClientData cData)
 {
-	Pg_clientData  *cd = (Pg_clientData *) cData;
-	Tcl_HashEntry  *hent;
-	Tcl_HashSearch	hsearch;
+	Pg_clientData *cd = (Pg_clientData *) cData;
+	Tcl_HashEntry *hent;
+	Tcl_HashSearch hsearch;
 	Pg_ConnectionId *connid;
-	PGconn		   *conn;
+	PGconn	   *conn;
 
 	while ((hent = Tcl_FirstHashEntry(&(cd->dbh_hash), &hsearch)) != NULL)
 	{
@@ -67,7 +67,7 @@ Pgtcl_Shutdown(ClientData cData, Tcl_Interp * interp)
 int
 Pgtcl_Init(Tcl_Interp * interp)
 {
-	Pg_clientData  *cd;
+	Pg_clientData *cd;
 
 	/* Create and initialize the client data area */
 	cd = (Pg_clientData *) ckalloc(sizeof(Pg_clientData));

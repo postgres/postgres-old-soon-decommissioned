@@ -35,10 +35,10 @@ boolin(char *b)
 /*
  *		boolout			- converts 1 or 0 to "t" or "f"
  */
-char		   *
+char	   *
 boolout(long b)
 {
-	char		   *result = (char *) palloc(2);
+	char	   *result = (char *) palloc(2);
 
 	*result = (b) ? 't' : 'f';
 	result[1] = '\0';

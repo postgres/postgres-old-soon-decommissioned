@@ -22,7 +22,7 @@
 #define GEQO_PATHS_H
 
 
-extern List    *geqo_prune_rels(List * rel_list);
-extern void		geqo_rel_paths(Rel * rel);
+extern List *geqo_prune_rels(List * rel_list);
+extern void geqo_rel_paths(Rel * rel);
 
 #endif							/* GEQO_PATHS_H */

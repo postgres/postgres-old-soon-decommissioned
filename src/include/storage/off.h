@@ -19,7 +19,7 @@
  * this is a 1-based index into the linp (ItemIdData) array in the
  * header of each disk page.
  */
-typedef uint16	OffsetNumber;
+typedef uint16 OffsetNumber;
 
 #define InvalidOffsetNumber		((OffsetNumber) 0)
 #define FirstOffsetNumber		((OffsetNumber) 1)

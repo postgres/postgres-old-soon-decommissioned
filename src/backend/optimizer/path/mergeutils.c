@@ -33,17 +33,17 @@
  * Returns the new list of mergeinfo nodes.
  *
  */
-List		   *
+List	   *
 group_clauses_by_order(List * clauseinfo_list,
 					   int inner_relid)
 {
-	List		   *mergeinfo_list = NIL;
-	List		   *xclauseinfo = NIL;
+	List	   *mergeinfo_list = NIL;
+	List	   *xclauseinfo = NIL;
 
 	foreach(xclauseinfo, clauseinfo_list)
 	{
-		CInfo		   *clauseinfo = (CInfo *) lfirst(xclauseinfo);
-		MergeOrder	   *merge_ordering = clauseinfo->mergesortorder;
+		CInfo	   *clauseinfo = (CInfo *) lfirst(xclauseinfo);
+		MergeOrder *merge_ordering = clauseinfo->mergesortorder;
 
 		if (merge_ordering)
 		{
@@ -52,12 +52,12 @@ group_clauses_by_order(List * clauseinfo_list,
 			 * Create a new mergeinfo node and add it to 'mergeinfo-list'
 			 * if one does not yet exist for this merge ordering.
 			 */
-			PathOrder		p_ordering;
-			MInfo		   *xmergeinfo;
-			Expr		   *clause = clauseinfo->clause;
-			Var			   *leftop = get_leftop(clause);
-			Var			   *rightop = get_rightop(clause);
-			JoinKey		   *keys;
+			PathOrder	p_ordering;
+			MInfo	   *xmergeinfo;
+			Expr	   *clause = clauseinfo->clause;
+			Var		   *leftop = get_leftop(clause);
+			Var		   *rightop = get_rightop(clause);
+			JoinKey    *keys;
 
 			p_ordering.ordtype = MERGE_ORDER;
 			p_ordering.ord.merge = merge_ordering;
@@ -105,15 +105,15 @@ group_clauses_by_order(List * clauseinfo_list,
  * Returns the node if it exists.
  *
  */
-MInfo		   *
+MInfo	   *
 match_order_mergeinfo(PathOrder * ordering, List * mergeinfo_list)
 {
-	MergeOrder	   *xmergeorder;
-	List		   *xmergeinfo = NIL;
+	MergeOrder *xmergeorder;
+	List	   *xmergeinfo = NIL;
 
 	foreach(xmergeinfo, mergeinfo_list)
 	{
-		MInfo		   *mergeinfo = (MInfo *) lfirst(xmergeinfo);
+		MInfo	   *mergeinfo = (MInfo *) lfirst(xmergeinfo);
 
 		xmergeorder = mergeinfo->m_ordering;
 

@@ -98,7 +98,7 @@ RelationGetIndexScan(Relation relation,
 					 uint16 numberOfKeys,
 					 ScanKey key)
 {
-	IndexScanDesc	scan;
+	IndexScanDesc scan;
 
 	if (!RelationIsValid(relation))
 		elog(WARN, "RelationGetIndexScan: relation invalid");

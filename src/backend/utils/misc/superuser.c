@@ -26,9 +26,9 @@ superuser(void)
 	The Postgres user running this command has Postgres superuser
 	privileges.
 --------------------------------------------------------------------------*/
-	extern char    *UserName;	/* defined in global.c */
+	extern char *UserName;		/* defined in global.c */
 
-	HeapTuple		utup;
+	HeapTuple	utup;
 
 	utup = SearchSysCacheTuple(USENAME, PointerGetDatum(UserName),
 							   0, 0, 0);

@@ -17,7 +17,7 @@
 #ifndef PQSIGNAL_H
 #define PQSIGNAL_H
 
-typedef void	(*pqsigfunc) (int);
+typedef void (*pqsigfunc) (int);
 
 extern pqsigfunc pqsignal(int signo, pqsigfunc func);
 

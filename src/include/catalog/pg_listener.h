@@ -33,9 +33,9 @@
 
 CATALOG(pg_listener)
 {
-	NameData		relname;
-	int4			listenerpid;
-	int4			notification;
+	NameData	relname;
+	int4		listenerpid;
+	int4		notification;
 } FormData_pg_listener;
 
 /* ----------------

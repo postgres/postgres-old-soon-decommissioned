@@ -48,15 +48,15 @@ ExecScan(Scan * node,
 												 * tuple */
 {
 	CommonScanState *scanstate;
-	EState		   *estate;
-	List		   *qual;
-	bool			isDone;
+	EState	   *estate;
+	List	   *qual;
+	bool		isDone;
 
 	TupleTableSlot *slot;
 	TupleTableSlot *resultSlot;
-	HeapTuple		newTuple;
+	HeapTuple	newTuple;
 
-	ExprContext    *econtext;
+	ExprContext *econtext;
 	ProjectionInfo *projInfo;
 
 

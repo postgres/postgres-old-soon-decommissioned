@@ -28,9 +28,9 @@
 void
 HashTableWalk(HTAB * hashtable, HashtFunc function, int arg)
 {
-	long		   *hashent;
-	long		   *data;
-	int				keysize;
+	long	   *hashent;
+	long	   *data;
+	int			keysize;
 
 	keysize = hashtable->hctl->keysize;
 	hash_seq((HTAB *) NULL);

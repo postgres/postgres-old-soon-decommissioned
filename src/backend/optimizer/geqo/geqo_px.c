@@ -62,11 +62,11 @@ void
 px(Gene * tour1, Gene * tour2, Gene * offspring, int num_gene, City * city_table)
 {
 
-	int				num_positions;
-	int				i,
-					pos,
-					tour2_index,
-					offspring_index;
+	int			num_positions;
+	int			i,
+				pos,
+				tour2_index,
+				offspring_index;
 
 	/* initialize city table */
 	for (i = 1; i <= num_gene; i++)

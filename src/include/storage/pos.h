@@ -23,7 +23,7 @@
  * pointer array contained on every page that store (heap or index)
  * tuples.
  */
-typedef bits16	PositionIdData;
+typedef bits16 PositionIdData;
 typedef PositionIdData *PositionId;
 
 /* ----------------

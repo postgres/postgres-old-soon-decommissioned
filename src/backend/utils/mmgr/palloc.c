@@ -60,7 +60,7 @@
  *		NonallocatedPointer if pointer was not returned by palloc or repalloc
  *				or may have been subsequently freed.
  */
-void		   *
+void	   *
 palloc(Size size)
 {
 #ifdef PALLOC_IS_MALLOC
@@ -94,7 +94,7 @@ pfree(void *pointer)
  *		NonallocatedPointer if pointer was not returned by palloc or repalloc
  *				or may have been freed already.
  */
-void		   *
+void	   *
 repalloc(void *pointer, Size size)
 {
 #ifdef PALLOC_IS_MALLOC
@@ -107,10 +107,10 @@ repalloc(void *pointer, Size size)
 /* pstrdup
 	allocates space for and copies a string
 	just like strdup except it uses palloc instead of malloc */
-char		   *
+char	   *
 pstrdup(char *string)
 {
-	char		   *nstr;
+	char	   *nstr;
 
 	nstr = (char *) palloc(strlen(string) + 1);
 	strcpy(nstr, string);

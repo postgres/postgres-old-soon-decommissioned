@@ -35,13 +35,13 @@ RelationPutHeapTuple(Relation relation,
 					 BlockNumber blockIndex,
 					 HeapTuple tuple)
 {
-	Buffer			buffer;
-	Page			pageHeader;
-	BlockNumber		numberOfBlocks;
-	OffsetNumber	offnum;
-	unsigned int	len;
-	ItemId			itemId;
-	Item			item;
+	Buffer		buffer;
+	Page		pageHeader;
+	BlockNumber numberOfBlocks;
+	OffsetNumber offnum;
+	unsigned int len;
+	ItemId		itemId;
+	Item		item;
 
 	/* ----------------
 	 *	increment access statistics
@@ -108,13 +108,13 @@ RelationPutHeapTuple(Relation relation,
 void
 RelationPutHeapTupleAtEnd(Relation relation, HeapTuple tuple)
 {
-	Buffer			buffer;
-	Page			pageHeader;
-	BlockNumber		lastblock;
-	OffsetNumber	offnum;
-	unsigned int	len;
-	ItemId			itemId;
-	Item			item;
+	Buffer		buffer;
+	Page		pageHeader;
+	BlockNumber lastblock;
+	OffsetNumber offnum;
+	unsigned int len;
+	ItemId		itemId;
+	Item		item;
 
 	Assert(RelationIsValid(relation));
 	Assert(HeapTupleIsValid(tuple));

@@ -28,8 +28,8 @@ ExceptionalCondition(char *conditionName,
 					 char *fileName,
 					 int lineNumber)
 {
-	extern char    *ExcFileName;/* XXX */
-	extern Index	ExcLineNumber;		/* XXX */
+	extern char *ExcFileName;	/* XXX */
+	extern Index ExcLineNumber; /* XXX */
 
 	ExcFileName = fileName;
 	ExcLineNumber = lineNumber;

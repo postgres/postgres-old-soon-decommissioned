@@ -20,28 +20,28 @@
 
 typedef struct Pg_clientData_s
 {
-	Tcl_HashTable	dbh_hash;
-	Tcl_HashTable	res_hash;
-	Tcl_HashTable	notify_hash;
-	long			dbh_count;
-	long			res_count;
-}				Pg_clientData;
+	Tcl_HashTable dbh_hash;
+	Tcl_HashTable res_hash;
+	Tcl_HashTable notify_hash;
+	long		dbh_count;
+	long		res_count;
+}			Pg_clientData;
 
 
 typedef struct Pg_ConnectionId_s
 {
-	char			id[32];
-	PGconn		   *conn;
-	Tcl_HashTable	res_hash;
-}				Pg_ConnectionId;
+	char		id[32];
+	PGconn	   *conn;
+	Tcl_HashTable res_hash;
+}			Pg_ConnectionId;
 
 
 typedef struct Pg_ResultId_s
 {
-	char			id[32];
-	PGresult	   *result;
+	char		id[32];
+	PGresult   *result;
 	Pg_ConnectionId *connection;
-}				Pg_ResultId;
+}			Pg_ResultId;
 
 
 /* **************************/

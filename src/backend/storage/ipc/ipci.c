@@ -57,7 +57,7 @@ SystemPortAddressCreateIPCKey(SystemPortAddress address)
 void
 CreateSharedMemoryAndSemaphores(IPCKey key)
 {
-	int				size;
+	int			size;
 
 #ifdef HAS_TEST_AND_SET
 	/* ---------------
@@ -114,7 +114,7 @@ CreateSharedMemoryAndSemaphores(IPCKey key)
 void
 AttachSharedMemoryAndSemaphores(IPCKey key)
 {
-	int				size;
+	int			size;
 
 	/* ----------------
 	 *	create rather than attach if using private key

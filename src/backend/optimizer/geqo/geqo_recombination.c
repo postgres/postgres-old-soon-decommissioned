@@ -53,10 +53,10 @@
 void
 init_tour(Gene * tour, int num_gene)
 {
-	Gene		   *tmp;
-	int				remainder;
-	int				next,
-					i;
+	Gene	   *tmp;
+	int			remainder;
+	int			next,
+				i;
 
 	tmp = (Gene *) palloc(num_gene * sizeof(Gene));
 
@@ -84,10 +84,10 @@ init_tour(Gene * tour, int num_gene)
  *	 allocate memory for city table
  *
  */
-City		   *
+City	   *
 alloc_city_table(int num_gene)
 {
-	City		   *city_table;
+	City	   *city_table;
 
 	/*
 	 * palloc one extra location so that nodes numbered 1..n can be

@@ -46,14 +46,14 @@
  */
 typedef struct TupleTableSlot
 {
-	NodeTag			type;
-	HeapTuple		val;
-	bool			ttc_shouldFree;
-	bool			ttc_descIsNew;
-	TupleDesc		ttc_tupleDescriptor;
-	Buffer			ttc_buffer;
-	int				ttc_whichplan;
-}				TupleTableSlot;
+	NodeTag		type;
+	HeapTuple	val;
+	bool		ttc_shouldFree;
+	bool		ttc_descIsNew;
+	TupleDesc	ttc_tupleDescriptor;
+	Buffer		ttc_buffer;
+	int			ttc_whichplan;
+}			TupleTableSlot;
 
 /* ----------------
  *		tuple table data structure
@@ -61,10 +61,10 @@ typedef struct TupleTableSlot
  */
 typedef struct TupleTableData
 {
-	int				size;		/* size of the table */
-	int				next;		/* next available slot number */
+	int			size;			/* size of the table */
+	int			next;			/* next available slot number */
 	TupleTableSlot *array;		/* array of TupleTableSlot's */
-}				TupleTableData;
+}			TupleTableData;
 
 typedef TupleTableData *TupleTable;
 

@@ -15,11 +15,11 @@
 
 #include <c.h>
 
-extern void    *palloc(Size size);
-extern void		pfree(void *pointer);
-extern void    *repalloc(void *pointer, Size size);
+extern void *palloc(Size size);
+extern void pfree(void *pointer);
+extern void *repalloc(void *pointer, Size size);
 
 /* like strdup except uses palloc */
-extern char    *pstrdup(char *pointer);
+extern char *pstrdup(char *pointer);
 
 #endif							/* PALLOC_H */

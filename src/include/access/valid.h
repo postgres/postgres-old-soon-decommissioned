@@ -22,16 +22,16 @@
  * ----------------
  */
 
-extern bool
+extern		bool
 heap_keytest(HeapTuple t, TupleDesc tupdesc,
 			 int nkeys, ScanKey keys);
 
-extern HeapTuple
+extern		HeapTuple
 heap_tuple_satisfies(ItemId itemId, Relation relation,
 					 Buffer buffer, PageHeader disk_page,
 					 TimeQual qual, int nKeys,
 					 ScanKey key);
 
-extern bool		TupleUpdatedByCurXactAndCmd(HeapTuple t);
+extern bool TupleUpdatedByCurXactAndCmd(HeapTuple t);
 
 #endif							/* VALID_H */

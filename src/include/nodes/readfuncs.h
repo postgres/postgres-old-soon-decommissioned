@@ -16,12 +16,12 @@
 /*
  * prototypes for functions in read.c (the lisp token parser)
  */
-extern char    *lsptok(char *string, int *length);
-extern void    *nodeRead(bool read_car_only);
+extern char *lsptok(char *string, int *length);
+extern void *nodeRead(bool read_car_only);
 
 /*
  * prototypes for functions in readfuncs.c
  */
-extern Node    *parsePlanString(void);
+extern Node *parsePlanString(void);
 
 #endif							/* READFUNCS_H */

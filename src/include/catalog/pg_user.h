@@ -21,7 +21,7 @@
 
 /* Prototype required for superuser() from superuser.c */
 
-bool			superuser(void);
+bool		superuser(void);
 
 /* ----------------
  *		pg_user definition.  cpp turns this into
@@ -30,12 +30,12 @@ bool			superuser(void);
  */
 CATALOG(pg_user) BOOTSTRAP
 {
-	NameData		usename;
-	int4			usesysid;
-	bool			usecreatedb;
-	bool			usetrace;
-	bool			usesuper;
-	bool			usecatupd;
+	NameData	usename;
+	int4		usesysid;
+	bool		usecreatedb;
+	bool		usetrace;
+	bool		usesuper;
+	bool		usecatupd;
 } FormData_pg_user;
 
 /* ----------------

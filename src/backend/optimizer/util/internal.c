@@ -38,17 +38,17 @@
 
 /* the following should probably be moved elsewhere -ay */
 
-TargetEntry    *
+TargetEntry *
 MakeTLE(Resdom * resdom, Node * expr)
 {
-	TargetEntry    *rt = makeNode(TargetEntry);
+	TargetEntry *rt = makeNode(TargetEntry);
 
 	rt->resdom = resdom;
 	rt->expr = expr;
 	return rt;
 }
 
-Var			   *
+Var		   *
 get_expr(TargetEntry * tle)
 {
 	Assert(tle != NULL);

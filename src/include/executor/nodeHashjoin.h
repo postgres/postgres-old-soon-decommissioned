@@ -15,13 +15,13 @@
 
 extern TupleTableSlot *ExecHashJoin(HashJoin * node);
 
-extern bool		ExecInitHashJoin(HashJoin * node, EState * estate, Plan * parent);
+extern bool ExecInitHashJoin(HashJoin * node, EState * estate, Plan * parent);
 
-extern int		ExecCountSlotsHashJoin(HashJoin * node);
+extern int	ExecCountSlotsHashJoin(HashJoin * node);
 
-extern void		ExecEndHashJoin(HashJoin * node);
+extern void ExecEndHashJoin(HashJoin * node);
 
-extern char    *
+extern char *
 ExecHashJoinSaveTuple(HeapTuple heapTuple, char *buffer,
 					  File file, char *position);
 

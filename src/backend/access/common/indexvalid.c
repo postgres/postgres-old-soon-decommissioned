@@ -24,7 +24,7 @@
  *				  index scan key qualification code
  * ----------------------------------------------------------------
  */
-int				NIndexTupleProcessed;
+int			NIndexTupleProcessed;
 
 /* ----------------
  *		index_keytest
@@ -40,9 +40,9 @@ index_keytest(IndexTuple tuple,
 			  int scanKeySize,
 			  ScanKey key)
 {
-	bool			isNull;
-	Datum			datum;
-	int				test;
+	bool		isNull;
+	Datum		datum;
+	int			test;
 
 	IncrIndexProcessed();
 

@@ -32,10 +32,10 @@
  */
 CATALOG(pg_inheritproc)
 {
-	NameData		inhproname;
-	Oid				inhargrel;
-	Oid				inhdefrel;
-	Oid				inhproc;
+	NameData	inhproname;
+	Oid			inhargrel;
+	Oid			inhdefrel;
+	Oid			inhproc;
 } FormData_pg_inheritproc;
 
 /* ----------------

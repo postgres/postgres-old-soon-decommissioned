@@ -16,7 +16,7 @@
 /*
 */
 
-extern Plan    *planner(Query * parse);
-extern void		pg_checkretval(Oid rettype, QueryTreeList * querytree_list);
+extern Plan *planner(Query * parse);
+extern void pg_checkretval(Oid rettype, QueryTreeList * querytree_list);
 
 #endif							/* PLANNER_H */

@@ -32,10 +32,10 @@
  */
 CATALOG(pg_demon) BOOTSTRAP
 {
-	Oid				demserid;
-	NameData		demname;
-	Oid				demowner;
-	regproc			demcode;
+	Oid			demserid;
+	NameData	demname;
+	Oid			demowner;
+	regproc		demcode;
 } FormData_pg_demon;
 
 /* ----------------

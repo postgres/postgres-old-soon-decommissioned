@@ -34,10 +34,10 @@
  */
 CATALOG(pg_amproc)
 {
-	Oid				amid;
-	Oid				amopclaid;
-	Oid				amproc;
-	int2			amprocnum;
+	Oid			amid;
+	Oid			amopclaid;
+	Oid			amproc;
+	int2		amprocnum;
 } FormData_pg_amproc;
 
 /* ----------------

@@ -13,6 +13,6 @@
 #ifndef DYNAHASH_H
 #define DYNAHASH_H
 
-extern int		my_log2(long num);
+extern int	my_log2(long num);
 
 #endif							/* DYNAHASH_H */

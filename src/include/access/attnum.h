@@ -17,7 +17,7 @@
 /*
  * user defined attribute numbers start at 1.	-ay 2/95
  */
-typedef int16	AttrNumber;
+typedef int16 AttrNumber;
 
 #define InvalidAttrNumber		0
 

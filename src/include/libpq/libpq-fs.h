@@ -22,9 +22,9 @@
 
 struct pgdirent
 {
-	unsigned long	d_ino;
-	unsigned short	d_namlen;
-	char			d_name[MAXNAMLEN + 1];
+	unsigned long d_ino;
+	unsigned short d_namlen;
+	char		d_name[MAXNAMLEN + 1];
 };
 
 /*

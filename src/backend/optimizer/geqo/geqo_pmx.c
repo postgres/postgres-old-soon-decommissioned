@@ -61,20 +61,20 @@
 void
 pmx(Gene * tour1, Gene * tour2, Gene * offspring, int num_gene)
 {
-	int			   *failed = (int *) palloc((num_gene + 1) * sizeof(int));
-	int			   *from = (int *) palloc((num_gene + 1) * sizeof(int));
-	int			   *indx = (int *) palloc((num_gene + 1) * sizeof(int));
-	int			   *check_list = (int *) palloc((num_gene + 1) * sizeof(int));
+	int		   *failed = (int *) palloc((num_gene + 1) * sizeof(int));
+	int		   *from = (int *) palloc((num_gene + 1) * sizeof(int));
+	int		   *indx = (int *) palloc((num_gene + 1) * sizeof(int));
+	int		   *check_list = (int *) palloc((num_gene + 1) * sizeof(int));
 
-	int				left,
-					right,
-					temp,
-					i,
-					j,
-					k;
-	int				mx_fail,
-					found,
-					mx_hold;
+	int			left,
+				right,
+				temp,
+				i,
+				j,
+				k;
+	int			mx_fail,
+				found,
+				mx_hold;
 
 
 /* no mutation so start up the pmx replacement algorithm */

@@ -12,10 +12,10 @@
 #define VERSION_H
 
 void
-				ValidatePgVersion(const char *path, char **reason_p);
+			ValidatePgVersion(const char *path, char **reason_p);
 
 void
-				SetPgVersion(const char *path, char **reason_p);
+			SetPgVersion(const char *path, char **reason_p);
 
 #define PG_RELEASE		6
 #define PG_VERSION		1

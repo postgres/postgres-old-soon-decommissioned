@@ -13,10 +13,10 @@
  *-------------------------------------------------------------------------
  */
 
-extern void		PgSetConnectionId(Pg_clientData * cd, char *id, PGconn * conn);
-extern PGconn  *PgGetConnectionId(Pg_clientData * cd, char *id);
-extern void		PgDelConnectionId(Pg_clientData * cd, char *id);
-extern void		PgSetResultId(Pg_clientData * cd, char *id, char *connid, PGresult * res);
+extern void PgSetConnectionId(Pg_clientData * cd, char *id, PGconn * conn);
+extern PGconn *PgGetConnectionId(Pg_clientData * cd, char *id);
+extern void PgDelConnectionId(Pg_clientData * cd, char *id);
+extern void PgSetResultId(Pg_clientData * cd, char *id, char *connid, PGresult * res);
 extern PGresult *PgGetResultId(Pg_clientData * cd, char *id);
-extern void		PgDelResultId(Pg_clientData * cd, char *id);
-extern void		PgGetConnByResultId(Pg_clientData * cd, char *id, char *resid);
+extern void PgDelResultId(Pg_clientData * cd, char *id);
+extern void PgGetConnByResultId(Pg_clientData * cd, char *id, char *resid);

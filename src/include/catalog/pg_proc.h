@@ -38,22 +38,22 @@
  */
 CATALOG(pg_proc) BOOTSTRAP
 {
-	NameData		proname;
-	Oid				proowner;
-	Oid				prolang;
-	bool			proisinh;
-	bool			proistrusted;
-	bool			proiscachable;
-	int2			pronargs;
-	bool			proretset;
-	Oid				prorettype;
-	oid8			proargtypes;
-	int4			probyte_pct;
-	int4			properbyte_cpu;
-	int4			propercall_cpu;
-	int4			prooutin_ratio;
-	text			prosrc;		/* VARIABLE LENGTH FIELD */
-	bytea			probin;		/* VARIABLE LENGTH FIELD */
+	NameData	proname;
+	Oid			proowner;
+	Oid			prolang;
+	bool		proisinh;
+	bool		proistrusted;
+	bool		proiscachable;
+	int2		pronargs;
+	bool		proretset;
+	Oid			prorettype;
+	oid8		proargtypes;
+	int4		probyte_pct;
+	int4		properbyte_cpu;
+	int4		propercall_cpu;
+	int4		prooutin_ratio;
+	text		prosrc;			/* VARIABLE LENGTH FIELD */
+	bytea		probin;			/* VARIABLE LENGTH FIELD */
 } FormData_pg_proc;
 
 /* ----------------
@@ -1103,7 +1103,7 @@ DATA(insert OID =  1319 (  currval	   PGUID 11 f t f 1 f 23 "25" 100 0 0 100  fo
 /*
  * prototypes for functions pg_proc.c
  */
-extern Oid
+extern		Oid
 ProcedureCreate(char *procedureName,
 				bool returnsSet,
 				char *returnTypeName,

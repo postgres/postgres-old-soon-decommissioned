@@ -16,14 +16,14 @@ struct PGVariables
 {
 	struct
 	{
-		bool			euro;
+		bool		euro;
 		enum DateFormat format;
-	}				date;
+	}			date;
 };
 
 extern struct PGVariables PGVariables;
 
 /*-----------------------------------------------------------------------*/
-bool			SetPGVariable(const char *, const char *);
-bool			GetPGVariable(const char *);
-bool			ResetPGVariable(const char *);
+bool		SetPGVariable(const char *, const char *);
+bool		GetPGVariable(const char *);
+bool		ResetPGVariable(const char *);

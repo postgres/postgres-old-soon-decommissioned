@@ -34,9 +34,9 @@ PerformPortalFetch(char *name, bool forward, int count,
  * PerformPortalClose --
  *		Performs the POSTQUEL function CLOSE.
  */
-extern void		PerformPortalClose(char *name, CommandDest dest);
+extern void PerformPortalClose(char *name, CommandDest dest);
 
-extern void		PortalCleanup(Portal portal);
+extern void PortalCleanup(Portal portal);
 
 /*
  * PerformAddAttribute --

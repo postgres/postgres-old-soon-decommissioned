@@ -32,11 +32,11 @@
  */
 CATALOG(pg_statistic)
 {
-	Oid				starelid;
-	int2			staattnum;
-	Oid				staop;
-	text			stalokey;	/* VARIABLE LENGTH FIELD */
-	text			stahikey;	/* VARIABLE LENGTH FIELD */
+	Oid			starelid;
+	int2		staattnum;
+	Oid			staop;
+	text		stalokey;		/* VARIABLE LENGTH FIELD */
+	text		stahikey;		/* VARIABLE LENGTH FIELD */
 } FormData_pg_statistic;
 
 /* ----------------

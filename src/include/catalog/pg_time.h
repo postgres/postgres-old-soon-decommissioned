@@ -29,7 +29,7 @@
 
 CATALOG(pg_time) BOOTSTRAP
 {
-	Oid				timefoo;
+	Oid			timefoo;
 } FormData_pg_time;
 
 typedef FormData_pg_time *Form_pg_time;

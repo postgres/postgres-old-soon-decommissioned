@@ -44,17 +44,17 @@
  */
 CATALOG(pg_aggregate)
 {
-	NameData		aggname;
-	Oid				aggowner;
-	regproc			aggtransfn1;
-	regproc			aggtransfn2;
-	regproc			aggfinalfn;
-	Oid				aggbasetype;
-	Oid				aggtranstype1;
-	Oid				aggtranstype2;
-	Oid				aggfinaltype;
-	text			agginitval1;/* VARIABLE LENGTH FIELD */
-	text			agginitval2;/* VARIABLE LENGTH FIELD */
+	NameData	aggname;
+	Oid			aggowner;
+	regproc		aggtransfn1;
+	regproc		aggtransfn2;
+	regproc		aggfinalfn;
+	Oid			aggbasetype;
+	Oid			aggtranstype1;
+	Oid			aggtranstype2;
+	Oid			aggfinaltype;
+	text		agginitval1;	/* VARIABLE LENGTH FIELD */
+	text		agginitval2;	/* VARIABLE LENGTH FIELD */
 } FormData_pg_aggregate;
 
 /* ----------------
@@ -139,7 +139,7 @@ AggregateCreate(char *aggName,
 				char *aggtransfn2typeName,
 				char *agginitval1,
 				char *agginitval2);
-extern char    *
+extern char *
 AggNameGetInitVal(char *aggName, Oid basetype,
 				  int xfuncno, bool * isNull);
 

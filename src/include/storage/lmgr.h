@@ -22,31 +22,31 @@
  */
 typedef struct LRelId
 {
-	Oid				relId;		/* a relation identifier */
-	Oid				dbId;		/* a database identifier */
-}				LRelId;
+	Oid			relId;			/* a relation identifier */
+	Oid			dbId;			/* a database identifier */
+}			LRelId;
 
 typedef struct LockInfoData
 {
-	bool			initialized;
-	LRelId			lRelId;
-	TransactionId	transactionIdData;
-	uint16			flags;
-}				LockInfoData;
+	bool		initialized;
+	LRelId		lRelId;
+	TransactionId transactionIdData;
+	uint16		flags;
+}			LockInfoData;
 typedef LockInfoData *LockInfo;
 
 #define LockInfoIsValid(linfo) \
 		((PointerIsValid(linfo)) &&  ((LockInfo) linfo)->initialized)
 
 
-extern LRelId	RelationGetLRelId(Relation relation);
-extern Oid		LRelIdGetRelationId(LRelId lRelId);
-extern void		RelationInitLockInfo(Relation relation);
-extern void		RelationSetLockForDescriptorOpen(Relation relation);
-extern void		RelationSetLockForRead(Relation relation);
-extern void		RelationUnsetLockForRead(Relation relation);
-extern void		RelationSetLockForWrite(Relation relation);
-extern void		RelationUnsetLockForWrite(Relation relation);
+extern LRelId RelationGetLRelId(Relation relation);
+extern Oid	LRelIdGetRelationId(LRelId lRelId);
+extern void RelationInitLockInfo(Relation relation);
+extern void RelationSetLockForDescriptorOpen(Relation relation);
+extern void RelationSetLockForRead(Relation relation);
+extern void RelationUnsetLockForRead(Relation relation);
+extern void RelationSetLockForWrite(Relation relation);
+extern void RelationUnsetLockForWrite(Relation relation);
 
 /* used in vaccum.c */
 extern void
@@ -66,18 +66,18 @@ RelationSetSingleRLockPage(Relation relation,
 extern void
 RelationUnsetSingleRLockPage(Relation relation,
 							 ItemPointer itemPointer);
-extern void		RelationSetRIntentLock(Relation relation);
-extern void		RelationUnsetRIntentLock(Relation relation);
-extern void		RelationSetWIntentLock(Relation relation);
-extern void		RelationUnsetWIntentLock(Relation relation);
+extern void RelationSetRIntentLock(Relation relation);
+extern void RelationUnsetRIntentLock(Relation relation);
+extern void RelationSetWIntentLock(Relation relation);
+extern void RelationUnsetWIntentLock(Relation relation);
 
 /* single.c */
-extern bool		SingleLockReln(LockInfo linfo, LOCKT lockt, int action);
-extern bool
+extern bool SingleLockReln(LockInfo linfo, LOCKT lockt, int action);
+extern		bool
 SingleLockPage(LockInfo linfo, ItemPointer tidPtr,
 			   LOCKT lockt, int action);
 
 /* proc.c */
-extern void		InitProcGlobal(IPCKey key);
+extern void InitProcGlobal(IPCKey key);
 
 #endif							/* LMGR_H */

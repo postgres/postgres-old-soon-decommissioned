@@ -66,13 +66,13 @@ renameatt(char *relname,
 		  char *userName,
 		  int recurse)
 {
-	Relation		relrdesc,
-					attrdesc;
-	HeapTuple		reltup,
-					oldatttup,
-					newatttup;
+	Relation	relrdesc,
+				attrdesc;
+	HeapTuple	reltup,
+				oldatttup,
+				newatttup;
 	ItemPointerData oldTID;
-	Relation		idescs[Num_pg_attr_indices];
+	Relation	idescs[Num_pg_attr_indices];
 
 	/*
 	 * permissions checking.  this would normally be done in utility.c,
@@ -101,10 +101,10 @@ renameatt(char *relname,
 	 */
 	if (recurse)
 	{
-		Oid				myrelid,
-						childrelid;
-		List		   *child,
-					   *children;
+		Oid			myrelid,
+					childrelid;
+		List	   *child,
+				   *children;
 
 		relrdesc = heap_openr(relname);
 		if (!RelationIsValid(relrdesc))
@@ -126,7 +126,7 @@ renameatt(char *relname,
 		 */
 		foreach(child, children)
 		{
-			char		   *childname;
+			char	   *childname;
 
 			childrelid = lfirsti(child);
 			if (childrelid == myrelid)
@@ -213,13 +213,13 @@ renameatt(char *relname,
 void
 renamerel(char oldrelname[], char newrelname[])
 {
-	Relation		relrdesc;	/* for RELATION relation */
-	HeapTuple		oldreltup,
-					newreltup;
+	Relation	relrdesc;		/* for RELATION relation */
+	HeapTuple	oldreltup,
+				newreltup;
 	ItemPointerData oldTID;
-	char			oldpath[MAXPGPATH],
-					newpath[MAXPGPATH];
-	Relation		idescs[Num_pg_class_indices];
+	char		oldpath[MAXPGPATH],
+				newpath[MAXPGPATH];
+	Relation	idescs[Num_pg_class_indices];
 
 	if (IsSystemRelationName(oldrelname))
 	{

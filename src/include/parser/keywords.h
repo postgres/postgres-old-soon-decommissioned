@@ -16,11 +16,11 @@
 
 typedef struct ScanKeyword
 {
-	char		   *name;
-	int				value;
-}				ScanKeyword;
+	char	   *name;
+	int			value;
+}			ScanKeyword;
 
 extern ScanKeyword *ScanKeywordLookup(char *text);
-extern char    *AtomValueGetString(int atomval);
+extern char *AtomValueGetString(int atomval);
 
 #endif							/* KEYWORDS_H */

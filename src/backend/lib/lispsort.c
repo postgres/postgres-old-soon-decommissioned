@@ -29,15 +29,15 @@
 **			   as passed into lisp_qsort(), and returns a new list with
 **			   the nodes sorted.  The old list is *not* freed or modified (?)
 */
-List		   *
+List	   *
 lisp_qsort(List * the_list,		/* the list to be sorted */
 		   int (*compare) ())	/* function to compare two nodes */
 {
-	int				i;
-	size_t			num;
-	List		  **nodearray;
-	List		   *tmp,
-				   *output;
+	int			i;
+	size_t		num;
+	List	  **nodearray;
+	List	   *tmp,
+			   *output;
 
 	/* find size of list */
 	num = length(the_list);

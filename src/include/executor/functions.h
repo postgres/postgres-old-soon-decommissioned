@@ -13,11 +13,11 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-extern Datum
+extern		Datum
 ProjectAttribute(TupleDesc TD, TargetEntry * tlist,
 				 HeapTuple tup, bool * isnullP);
 
-extern Datum
+extern		Datum
 postquel_function(Func * funcNode, char **args,
 				  bool * isNull, bool * isDone);
 

@@ -16,14 +16,14 @@
 
 typedef struct
 {
-	Oid				proid;
-	uint16			nargs;
-	func_ptr		func;
-	char		   *funcName;
-}				FmgrCall;
+	Oid			proid;
+	uint16		nargs;
+	func_ptr	func;
+	char	   *funcName;
+}			FmgrCall;
 
 extern FmgrCall *fmgr_isbuiltin(Oid id);
 extern func_ptr fmgr_lookupByName(char *name);
-extern void		load_file(char *filename);
+extern void load_file(char *filename);
 
 #endif							/* FMGRTAB_H */

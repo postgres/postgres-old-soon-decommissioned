@@ -34,7 +34,7 @@
 bool
 SingleLockReln(LockInfo linfo, LOCKT lockt, int action)
 {
-	LOCKTAG			tag;
+	LOCKTAG		tag;
 
 	/*
 	 * LOCKTAG has two bytes of padding, unfortunately.  The hash function
@@ -66,7 +66,7 @@ SingleLockPage(LockInfo linfo,
 			   LOCKT lockt,
 			   int action)
 {
-	LOCKTAG			tag;
+	LOCKTAG		tag;
 
 	/*
 	 * LOCKTAG has two bytes of padding, unfortunately.  The hash function

@@ -32,9 +32,9 @@
  */
 CATALOG(pg_inherits)
 {
-	Oid				inhrel;
-	Oid				inhparent;
-	int4			inhseqno;
+	Oid			inhrel;
+	Oid			inhparent;
+	int4		inhseqno;
 } FormData_pg_inherits;
 
 /* ----------------

@@ -32,8 +32,8 @@
  */
 CATALOG(pg_defaults) BOOTSTRAP
 {
-	NameData		defname;
-	NameData		defvalue;
+	NameData	defname;
+	NameData	defvalue;
 } FormData_pg_defaults;
 
 /* ----------------

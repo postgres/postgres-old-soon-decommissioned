@@ -18,7 +18,7 @@
 #include "optimizer/internal.h"
 #include "optimizer/ordering.h"
 
-static bool		equal_sortops_order(Oid * ordering1, Oid * ordering2);
+static bool equal_sortops_order(Oid * ordering1, Oid * ordering2);
 
 /*
  * equal-path-path-ordering--
@@ -110,10 +110,10 @@ equal_merge_merge_ordering(MergeOrder * merge_ordering1,
  * equal_sort_ops_order -
  *	  Returns true iff the sort operators are in the same order.
  */
-static			bool
+static bool
 equal_sortops_order(Oid * ordering1, Oid * ordering2)
 {
-	int				i = 0;
+	int			i = 0;
 
 	if (ordering1 == NULL || ordering2 == NULL)
 		return (ordering1 == ordering2);

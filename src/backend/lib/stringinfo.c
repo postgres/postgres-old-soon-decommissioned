@@ -30,8 +30,8 @@
 StringInfo
 makeStringInfo()
 {
-	StringInfo		res;
-	long			size;
+	StringInfo	res;
+	long		size;
 
 	res = (StringInfo) palloc(sizeof(StringInfoData));
 	if (res == NULL)
@@ -72,9 +72,9 @@ makeStringInfo()
 void
 appendStringInfo(StringInfo str, char *buffer)
 {
-	int				buflen,
-					newlen;
-	char		   *s;
+	int			buflen,
+				newlen;
+	char	   *s;
 
 	Assert((str != NULL));
 

@@ -32,9 +32,9 @@
  */
 CATALOG(pg_version)
 {
-	Oid				verrelid;
-	Oid				verbaseid;
-	int4			vertime;	/* really should be some abstime */
+	Oid			verrelid;
+	Oid			verbaseid;
+	int4		vertime;		/* really should be some abstime */
 } FormData_pg_version;
 
 /* ----------------

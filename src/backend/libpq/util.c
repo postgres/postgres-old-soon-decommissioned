@@ -32,14 +32,14 @@
  *		exceptions
  * ----------------
  */
-Exception		MemoryError = {"Memory Allocation Error"};
-Exception		PortalError = {"Invalid arguments to portal functions"};
-Exception		PostquelError = {"Sql Error"};
-Exception		ProtocolError = {"Protocol Error"};
-char			PQerrormsg[ERROR_MSG_LENGTH];
+Exception	MemoryError = {"Memory Allocation Error"};
+Exception	PortalError = {"Invalid arguments to portal functions"};
+Exception	PostquelError = {"Sql Error"};
+Exception	ProtocolError = {"Protocol Error"};
+char		PQerrormsg[ERROR_MSG_LENGTH];
 
-int				PQtracep = 0;	/* 1 to print out debugging messages */
-FILE		   *debug_port = (FILE *) NULL;
+int			PQtracep = 0;		/* 1 to print out debugging messages */
+FILE	   *debug_port = (FILE *) NULL;
 
 /* ----------------------------------------------------------------
  *						PQ utility routines
