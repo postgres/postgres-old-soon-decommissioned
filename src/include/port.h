@@ -246,13 +246,3 @@ extern int pqGethostbyname(const char *name,
 				struct hostent **result,
 				int *herrno);
 
-/* FIXME: [win32] Placeholder win32 replacements, to allow continued development */
-#ifdef WIN32
-#define fsync(a)	_commit(a)
-#define sync()		_flushall()
-#define ftruncate(a,b)	chsize(a,b)
-#define WEXITSTATUS(w)  (((w) >> 8) & 0xff)
-#define WIFEXITED(w)    (((w) & 0xff) == 0)
-#define WIFSIGNALED(w)  (((w) & 0x7f) > 0 && (((w) & 0x7f) < 0x7f))
-#define WTERMSIG(w)     ((w) & 0x7f)
-#endif

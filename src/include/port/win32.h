@@ -13,6 +13,9 @@
 #define mkdir(a,b)	mkdir(a)
 
 
+#define fsync(a)	_commit(a)
+#define ftruncate(a,b)	chsize(a,b)
+
 #define USES_WINSOCK
 
 /* defines for dynamic linking on Win32 platform */
@@ -144,6 +147,11 @@ extern int pgwin32_is_admin(void);
 extern int pgwin32_is_service(void);
 #endif
 
+
+#define WEXITSTATUS(w)  (((w) >> 8) & 0xff)
+#define WIFEXITED(w)    (((w) & 0xff) == 0)
+#define WIFSIGNALED(w)  (((w) & 0x7f) > 0 && (((w) & 0x7f) < 0x7f))
+#define WTERMSIG(w)     ((w) & 0x7f)
 
 /* Some extra signals */
 #define SIGHUP				1
