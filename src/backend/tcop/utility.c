@@ -31,7 +31,6 @@
 #include "commands/view.h"
 #include "commands/version.h"
 #include "commands/vacuum.h"
-#include "commands/recipe.h"
 #include "commands/explain.h"
 #include "commands/trigger.h"
 #include "commands/proclang.h"
