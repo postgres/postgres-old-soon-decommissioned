@@ -109,7 +109,7 @@ prune_rel_paths(List *rel_list)
 		{
 			path = (Path *) lfirst(y);
 
-			if (!path->p_ordering.ord.sortop)
+			if (!path->path_order.ord.sortop)
 				break;
 		}
 		cheapest = (JoinPath *) prune_rel_path(rel, path);

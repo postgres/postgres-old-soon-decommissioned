@@ -52,16 +52,16 @@ group_clauses_by_order(List *restrictinfo_list,
 			 * Create a new mergeinfo node and add it to 'mergeinfo-list'
 			 * if one does not yet exist for this merge ordering.
 			 */
-			PathOrder	p_ordering;
+			PathOrder	path_order;
 			MergeInfo	   *xmergeinfo;
 			Expr	   *clause = restrictinfo->clause;
 			Var		   *leftop = get_leftop(clause);
 			Var		   *rightop = get_rightop(clause);
 			JoinKey    *keys;
 
-			p_ordering.ordtype = MERGE_ORDER;
-			p_ordering.ord.merge = merge_ordering;
-			xmergeinfo = match_order_mergeinfo(&p_ordering, mergeinfo_list);
+			path_order.ordtype = MERGE_ORDER;
+			path_order.ord.merge = merge_ordering;
+			xmergeinfo = match_order_mergeinfo(&path_order, mergeinfo_list);
 			if (inner_relid == leftop->varno)
 			{
 				keys = makeNode(JoinKey);

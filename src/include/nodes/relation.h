@@ -144,7 +144,7 @@ typedef struct Path
 
 	NodeTag		pathtype;
 
-	PathOrder	p_ordering;
+	PathOrder	path_order;
 
 	List	   *keys;
 	Cost		outerjoincost;

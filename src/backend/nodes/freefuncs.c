@@ -756,13 +756,13 @@ _freeRelOptInfo(RelOptInfo * node)
 static void
 FreePathFields(Path *node)
 {
-	if (node->p_ordering.ordtype == SORTOP_ORDER)
+	if (node->path_order.ordtype == SORTOP_ORDER)
 	{
-		if (node->p_ordering.ord.sortop)
-			pfree(node->p_ordering.ord.sortop);
+		if (node->path_order.ord.sortop)
+			pfree(node->path_order.ord.sortop);
 	}
 	else
-		freeObject(node->p_ordering.ord.merge);
+		freeObject(node->path_order.ord.merge);
 
 	freeObject(node->keys);
 
