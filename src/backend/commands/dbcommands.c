@@ -1136,6 +1136,13 @@ dbase_redo(XLogRecPtr lsn, XLogRecord *record)
 							dst_path)));
 		}
 
+		/*
+		 * Force dirty buffers out to disk, to ensure source database is
+		 * up-to-date for the copy.  (We really only need to flush buffers for
+		 * the source database...)
+		 */
+		BufferSync(-1, -1);
+
 #ifndef WIN32
 
 		/*
