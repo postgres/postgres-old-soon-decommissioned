@@ -66,6 +66,11 @@ extern OpclassCandidateList OpclassGetCandidates(Oid amid);
 extern Oid	OpclassnameGetOpcid(Oid amid, const char *opcname);
 extern bool OpclassIsVisible(Oid opcid);
 
+extern void DeconstructQualifiedName(List *names,
+									 char **nspname_p,
+									 char **objname_p);
+extern Oid	LookupExplicitNamespace(char *nspname);
+
 extern Oid	QualifiedNameGetCreationNamespace(List *names, char **objname_p);
 extern RangeVar *makeRangeVarFromNameList(List *names);
 extern char *NameListToString(List *names);
