@@ -584,9 +584,12 @@ connectDB(PGconn *conn)
 	if (connect(conn->sock, &conn->raddr.sa, conn->raddr_len) < 0)
 	{
 		(void) sprintf(conn->errorMessage,
-					   "connectDB() failed: Is the postmaster running and accepting%s connections at '%s' on port '%s'?\n",
-					   conn->pghost ? " TCP/IP(with -i)" : "",
-					   conn->pghost ? conn->pghost : "UNIX Socket",
+					   "connectDB() -- connect() failed: %s\n"
+					   "Is the postmaster running%s at '%s' and accepting connections on %s '%s'?\n",
+					   strerror(errno),
+					   (family == AF_INET) ? " (with -i)" : "",
+					   conn->pghost ? conn->pghost : "localhost",
+					   (family == AF_INET) ? "TCP/IP port" : "Unix socket",
 					   conn->pgport);
 		goto connect_errReturn;
 	}
