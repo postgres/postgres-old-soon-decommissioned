@@ -19,6 +19,7 @@
 /*
  * prototypes for prepqual.c
  */
+extern List *canonicalize_qual(Expr *qual, bool removeAndFlag);
 extern List *cnfify(Expr *qual, bool removeAndFlag);
 extern Expr *dnfify(Expr *qual);
 

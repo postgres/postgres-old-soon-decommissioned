@@ -324,8 +324,9 @@ union_planner(Query *parse)
 				elog(ERROR, "Sub-SELECT in HAVING clause must use only GROUPed attributes from outer SELECT");
 		}
 
-		/* convert the havingQual to conjunctive normal form (cnf) */
-		parse->havingQual = (Node *) cnfify((Expr *) parse->havingQual, true);
+		/* convert the havingQual to implicit-AND normal form */
+		parse->havingQual = (Node *)
+			canonicalize_qual((Expr *) parse->havingQual, true);
 
 		/*
 		 * Require an aggregate function to appear in each clause of the

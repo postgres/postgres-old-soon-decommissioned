@@ -75,9 +75,9 @@ query_planner(Query *root,
 	if (root->hasSubLinks)
 		qual = (List *) SS_process_sublinks((Node *) qual);
 
-	qual = cnfify((Expr *) qual, true);
+	qual = canonicalize_qual((Expr *) qual, true);
 #ifdef OPTIMIZER_DEBUG
-	printf("After cnfify()\n");
+	printf("After canonicalize_qual()\n");
 	pprint(qual);
 #endif
 
