@@ -775,7 +775,7 @@ heap_create_with_catalog(char *relname,
 	if (RelationAlreadyExists(pg_class_desc, relname))
 	{
 		heap_close(pg_class_desc);
-		elog(ERROR, "amcreate: %s relation already exists", relname);
+		elog(ERROR, "%s relation already exists", relname);
 	}
 
 	/* ----------------
