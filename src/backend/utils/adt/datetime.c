@@ -558,7 +558,8 @@ abstime_date(AbsoluteTime abstime)
 #if FALSE
 	GetCurrentTime(tm);
 #endif
-	abstime = GetCurrentTransactionStartTime() + CTimeZone;
+	abstime = GetCurrentTransactionStartTime();
+	abstime2tm(abstime, &CTimeZone, tm);
 	date->year = tm->tm_year;
 	date->month = tm->tm_mon;
 	date->day = tm->tm_mday;

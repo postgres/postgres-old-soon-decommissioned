@@ -519,10 +519,10 @@ datetime_abstime(DateTime *datetime)
 
     } else {
 	if (DATETIME_IS_RELATIVE(*datetime)) {
-	    datetime2tm( SetDateTime(*datetime), NULL, tm, &fsec);
+	    datetime2tm( SetDateTime(*datetime), NULL, tm, &fsec, NULL);
 	    result = tm2abstime( tm, 0);
 
-	} else if (datetime2tm( *datetime, NULL, tm, &fsec) == 0) {
+	} else if (datetime2tm( *datetime, NULL, tm, &fsec, NULL) == 0) {
 	    result = tm2abstime( tm, 0);
 
 	} else {

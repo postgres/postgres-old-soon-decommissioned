@@ -2722,7 +2722,7 @@ CIRCLE *circle_in(char *str)
     if (*s == DELIM) s++;
     while (isspace( *s)) s++;
 
-    if (! single_decode( s, &circle->radius, &s))
+    if ((! single_decode( s, &circle->radius, &s)) || (circle->radius < 0))
       elog (WARN, "Bad circle external representation '%s'",str);
 
     while (depth > 0) {
