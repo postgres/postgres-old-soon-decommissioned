@@ -19,7 +19,7 @@
 #else
 #include <win32.h>
 #include <io.h>
-#include <fnctl.h>
+#include <fcntl.h>
 #endif
 
 #include "libpq-fe.h"
