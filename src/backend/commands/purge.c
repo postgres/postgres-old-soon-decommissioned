@@ -149,7 +149,7 @@ RelationPurge(char *relationName,
 				nulls, replace);
     
     /* XXX How do you detect an insertion error?? */
-    (void) heap_replace(relation, &newTuple->t_ctid, newTuple);
+    heap_replace(relation, &newTuple->t_ctid, newTuple);
     
     /* keep the system catalog indices current */
     CatalogOpenIndices(Num_pg_class_indices, Name_pg_class_indices, idescs);

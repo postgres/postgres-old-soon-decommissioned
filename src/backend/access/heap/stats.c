@@ -116,7 +116,7 @@ InitHeapAccessStatistics()
      *  return to old memory context
      * ----------------
      */
-    (void) MemoryContextSwitchTo(oldContext);
+    MemoryContextSwitchTo(oldContext);
     
     heap_access_stats = stats;
 }

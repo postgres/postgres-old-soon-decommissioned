@@ -55,14 +55,7 @@ static Rel *gimme_clauseless_join(Rel *outer_rel, Rel *inner_rel);
 static Rel *init_join_rel(Rel *outer_rel, Rel *inner_rel, JInfo *joininfo);
 static List *new_join_tlist(List *tlist, List *other_relids, int first_resdomno);
 static List *new_joininfo_list(List *joininfo_list, List *join_relids);
-static void add_superrels(Rel *rel, Rel *super_rel);
-static bool nonoverlap_rels(Rel *rel1, Rel *rel2);
-static bool nonoverlap_sets(List *s1, List *s2);
 static void geqo_joinrel_size(Rel *joinrel, Rel *outer_rel, Rel *inner_rel);
-
-static void geqo_add_new_joininfos(Query *root, List *joinrels, List *outerrels);
-static List *geqo_final_join_rels(List *join_rel_list);
-
 static Rel *geqo_nth(int stop, List *rels);
 
 /*    

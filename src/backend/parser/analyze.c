@@ -1018,7 +1018,7 @@ makeTargetNames(ParseState *pstate, List *cols)
     else
         foreach(tl, cols)
 			/* elog on failure */
-    	 (void)varattno(pstate->p_target_relation,((Ident *)lfirst(tl))->name);
+    	 varattno(pstate->p_target_relation,((Ident *)lfirst(tl))->name);
 
     return cols;
 }

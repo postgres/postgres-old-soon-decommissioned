@@ -1020,7 +1020,7 @@ clause_pred_clause_test(Expr *predicate, Node *clause)
 			 BOOL_TYPEID, /* opresulttype */
 			 0,	/* opsize */
 			 NULL);	/* op_fcache */
-    (void) replace_opid(test_oper);
+    replace_opid(test_oper);
 
     test_expr = make_opclause(test_oper,
 			      copyObject(clause_const),

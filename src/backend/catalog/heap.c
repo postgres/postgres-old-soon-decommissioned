@@ -1312,7 +1312,7 @@ heap_destroy(char *relname)
      */
     if ( !(rdesc->rd_istemp) || !(rdesc->rd_tmpunlinked) )
     {
-    	(void) smgrunlink(rdesc->rd_rel->relsmgr, rdesc);
+    	smgrunlink(rdesc->rd_rel->relsmgr, rdesc);
     }
     rdesc->rd_tmpunlinked = TRUE;
 
@@ -1336,7 +1336,7 @@ heap_destroyr(Relation rdesc)
     ReleaseRelationBuffers(rdesc);
     if ( !(rdesc->rd_istemp) || !(rdesc->rd_tmpunlinked) )
     {
-	(void) smgrunlink(rdesc->rd_rel->relsmgr, rdesc);
+	smgrunlink(rdesc->rd_rel->relsmgr, rdesc);
     }
     rdesc->rd_tmpunlinked = TRUE;
     heap_close(rdesc);

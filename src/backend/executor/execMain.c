@@ -963,7 +963,7 @@ ExecDelete(TupleTableSlot *slot,
      *	delete the tuple
      * ----------------
      */
-    (void) heap_delete(resultRelationDesc, /* relation desc */
+    heap_delete(resultRelationDesc, /* relation desc */
 			tupleid);	    /* item pointer to tuple */
 
     IncrDeleted();

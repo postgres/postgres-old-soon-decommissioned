@@ -548,7 +548,7 @@ heap_close(Relation relation)
     IncrHeapAccessStat(local_close);
     IncrHeapAccessStat(global_close);
     
-    (void) RelationClose(relation);
+    RelationClose(relation);
 }
 
 

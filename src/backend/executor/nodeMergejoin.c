@@ -82,6 +82,7 @@
 #include "executor/nodeMergejoin.h"
 #include "executor/execdebug.h"
 #include "utils/lsyscache.h"
+#include "utils/psort.h"
 
 /* ----------------------------------------------------------------
  *	MarkInnerTuple and RestoreInnerTuple macros

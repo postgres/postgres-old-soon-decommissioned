@@ -609,7 +609,7 @@ _hash_splitpage(Relation rel,
 	    }
 	    
 	    noffnum = OffsetNumberNext(PageGetMaxOffsetNumber(npage));
-	    (void) PageAddItem(npage, (Item) hitem, itemsz, noffnum, LP_USED);
+	    PageAddItem(npage, (Item) hitem, itemsz, noffnum, LP_USED);
 	    _hash_wrtnorelbuf(rel, nbuf);
 	    
 	    /*

@@ -377,10 +377,10 @@ hash_destroy (HTAB	*hashp)
 	    }
 	    free((char *)segp);
 	}
-	(void) MEM_FREE( (char *) hashp->dir);
-	(void) MEM_FREE( (char *) hashp->hctl);
+	MEM_FREE( (char *) hashp->dir);
+	MEM_FREE( (char *) hashp->hctl);
 	hash_stats("destroy",hashp);
-	(void) MEM_FREE( (char *) hashp);
+	MEM_FREE( (char *) hashp);
     }
 }
 
@@ -767,7 +767,7 @@ dir_realloc(HTAB *hashp)
     if (p != NULL) {
 	memmove(p, *p_ptr, old_dirsize );
 	memset ( *p_ptr + old_dirsize, 0, new_dirsize-old_dirsize );
-	(void) free( (char *)*p_ptr);
+	free( (char *)*p_ptr);
 	*p_ptr = p;
 	hashp->hctl->dsize = new_dirsize;
 	return(1);

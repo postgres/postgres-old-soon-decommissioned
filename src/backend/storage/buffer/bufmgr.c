@@ -248,7 +248,7 @@ ReadBufferWithBufferLock(Relation reln,
 	if (extend) {
 	    /* new buffers are zero-filled */
 	    memset((char *) MAKE_PTR(bufHdr->data), 0, BLCKSZ);
-	    (void) smgrextend(bufHdr->bufsmgr, reln,
+	    smgrextend(bufHdr->bufsmgr, reln,
 			      (char *) MAKE_PTR(bufHdr->data));
 	}
 	return (BufferDescriptorGetBuffer(bufHdr));
@@ -261,7 +261,7 @@ ReadBufferWithBufferLock(Relation reln,
      */
     if (extend) {
 	/* new buffers are zero-filled */
-	(void) memset((char *) MAKE_PTR(bufHdr->data), 0, BLCKSZ);
+	memset((char *) MAKE_PTR(bufHdr->data), 0, BLCKSZ);
 	status = smgrextend(bufHdr->bufsmgr, reln,
 			    (char *) MAKE_PTR(bufHdr->data));
     } else {
@@ -1728,7 +1728,7 @@ _bm_die(Oid dbId, Oid relId, int blkNo, int bufNo,
 	break;
     }
     
-    (void) fclose(fp);
+    fclose(fp);
     
     kill(getpid(), SIGILL);
 }

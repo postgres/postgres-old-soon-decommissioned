@@ -53,7 +53,7 @@ GetCurrentAbsoluteTime(void)
 #else /* ! USE_POSIX_TIME */
     struct timeb tb;		/* the old V7-ism */
 
-    (void) ftime(&tb);
+    ftime(&tb);
     now = tb.time;
 #endif
 
@@ -111,7 +111,7 @@ abstime2tm(AbsoluteTime time, int *tzp, struct tm *tm, char *tzn)
 #else /* ! USE_POSIX_TIME */
     struct timeb tb;		/* the old V7-ism */
 
-    (void) ftime(&tb);
+    ftime(&tb);
 #endif
 
 #ifdef USE_POSIX_TIME

@@ -100,13 +100,13 @@ S_LOCK(slock_t *lock)
 void
 S_UNLOCK(slock_t *lock)
 {
-	(void)release_lock(lock);
+	release_lock(lock);
 }
 
 void
 S_INIT_LOCK(slock_t *lock)
 {
-	(void)init_lock(lock);	
+	init_lock(lock);	
 }
 
 /* S_LOCK_FREE should return 1 if lock is free; 0 if lock is locked */
@@ -138,13 +138,13 @@ S_LOCK(slock_t *lock)
 void
 S_UNLOCK(slock_t *lock)
 {
-    (void) msem_unlock(lock, 0);
+    msem_unlock(lock, 0);
 }
 
 void
 S_INIT_LOCK(slock_t *lock)
 {
-    (void) msem_init(lock, MSEM_UNLOCKED);
+    msem_init(lock, MSEM_UNLOCKED);
 }
 
 int

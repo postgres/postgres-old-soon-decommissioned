@@ -165,7 +165,7 @@ ChangeAcl(char *relname,
     ItemPointerCopy(&htp->t_ctid, &tmp_ipd);
     /* XXX handle index on pg_class? */
     setheapoverride(true);
-    (void) heap_replace(relation, &tmp_ipd, htp);
+    heap_replace(relation, &tmp_ipd, htp);
     setheapoverride(false);
     heap_endscan(hsdp);
 

@@ -129,7 +129,7 @@ SetDefine(char *querystr, char *typename)
 	    ItemPointerCopy(&tup->t_ctid, &ipdata);
 	    
 	    setheapoverride(true);
-	    (void) heap_replace(procrel, &ipdata, newtup);
+	    heap_replace(procrel, &ipdata, newtup);
 	    setheapoverride(false);
 	    
 	    setoid = newtup->t_oid;

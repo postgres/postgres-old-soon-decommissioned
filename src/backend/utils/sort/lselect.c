@@ -183,8 +183,6 @@ tuplecmp(HeapTuple ltup, HeapTuple rtup, LeftistContext context)
 {
     register char	*lattr, *rattr;
     int		nkey = 0;
-    extern	int	Nkeys;
-    extern	ScanKey	Key;
     int		result = 0;
     bool		isnull;
     

@@ -544,7 +544,7 @@ ShmemInitStruct(char *name, unsigned long size, bool *foundPtr)
 	if (! structPtr) {
 	    /* out of memory */
 	    Assert (BindingTable);
-	    (void) hash_search(BindingTable,(char *) &item,HASH_REMOVE, foundPtr);
+	    hash_search(BindingTable,(char *) &item,HASH_REMOVE, foundPtr);
 	    SpinRelease(BindingLock);
 	    *foundPtr = FALSE;
 	    
@@ -578,7 +578,7 @@ TransactionIdIsInProgress (TransactionId xid)
     
     SpinAcquire(BindingLock);
 
-    (void) hash_seq ((HTAB *)NULL);
+    hash_seq ((HTAB *)NULL);
     while ( (result = (BindingEnt *) hash_seq (BindingTable)) != NULL )
     {
     	if ( result == (BindingEnt *) TRUE )

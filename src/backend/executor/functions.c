@@ -294,7 +294,7 @@ postquel_execute(execution_state  *es,
     
     if (es->status == F_EXEC_START)
 	{
-	    (void) postquel_start(es);
+	    postquel_start(es);
 	    es->status = F_EXEC_RUN;
 	}
 #ifndef INDEXSCAN_PATCH

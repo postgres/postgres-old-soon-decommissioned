@@ -229,7 +229,7 @@ widget_out(widget)
 	return(NULL);
 
     result = (char *) palloc(60);
-    (void) sprintf(result, "(%g,%g,%g)",
+    sprintf(result, "(%g,%g,%g)",
 		   widget->center.x, widget->center.y, widget->radius);
     return(result);
 }

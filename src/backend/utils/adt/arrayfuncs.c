@@ -717,7 +717,7 @@ array_ref(ArrayType *array,
         if (*isNull) RETURN_NULL;
         if (VARSIZE(v) - 4 < elmlen)
             RETURN_NULL;
-        (void) lo_close(fd);
+        lo_close(fd);
         retval  = (char *)_ArrayCast((char *)VARDATA(v), reftype, elmlen);
 	if ( reftype == 0) { /* not by value */
 	    char * tempdata = palloc (elmlen);
@@ -847,8 +847,8 @@ array_clip(ArrayType *array,
 		_ReadArray(lowerIndx, upperIndx, len, fd, newfd, array, 1,isNull);
             }
 #ifdef LOARRAY
-        (void) LOclose(fd);
-        (void) LOclose(newfd);
+        LOclose(fd);
+        LOclose(newfd);
 #endif
         if (*isNull) { 
             pfree(newArr); 
@@ -944,7 +944,7 @@ array_set(ArrayType *array,
 	   RETURN_NULL;
 	   */
         pfree(v);
-        (void) lo_close(fd);
+        lo_close(fd);
         return((char *)array);
     }
     if (elmlen >  0) {
@@ -1045,12 +1045,12 @@ array_assgn(ArrayType *array,
                 return((char *)array);
 #endif
             _LOArrayRange(lowerIndx, upperIndx, len, fd, newfd, array, 1, isNull);
-            (void) lo_close(newfd);
+            lo_close(newfd);
         } else {
             _LOArrayRange(lowerIndx, upperIndx, len, fd, (int)ARR_DATA_PTR(newArr), 
 			  array, 0, isNull);
         }
-        (void) lo_close(fd);
+        lo_close(fd);
         return ((char *) array);
     }
     _ArrayRange(lowerIndx, upperIndx, len, ARR_DATA_PTR(newArr), array, 0);

@@ -817,7 +817,7 @@ PortalResetHeapMemory(Portal portal)
 	} while (PointerIsValid(context->block));
 	
 	/* restore context */
-	(void) MemoryContextSwitchTo(currentContext);
+	MemoryContextSwitchTo(currentContext);
     }
 }
 

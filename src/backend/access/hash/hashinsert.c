@@ -223,7 +223,7 @@ _hash_pgaddtup(Relation rel,
     _hash_checkpage(page, LH_BUCKET_PAGE|LH_OVERFLOW_PAGE);
 
     itup_off = OffsetNumberNext(PageGetMaxOffsetNumber(page));
-    (void) PageAddItem(page, (Item) hitem, itemsize, itup_off, LP_USED);
+    PageAddItem(page, (Item) hitem, itemsize, itup_off, LP_USED);
     
     /* write the buffer, but hold our lock */
     _hash_wrtnorelbuf(rel, buf);

@@ -682,7 +682,7 @@ OperatorDef(char *operatorName,
 	    
 	    ItemPointerCopy(&tup->t_ctid, &itemPointerData);
 	    setheapoverride(true);
-	    (void) heap_replace(pg_operator_desc, &itemPointerData, tup);
+	    heap_replace(pg_operator_desc, &itemPointerData, tup);
 	    setheapoverride(false);
 	} else
 	    elog(WARN, "OperatorDef: no operator %d", other_oid);
@@ -798,7 +798,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 		ItemPointerCopy(&tup->t_ctid, &itemPointerData);
 		
 		setheapoverride(true);
-		(void) heap_replace(pg_operator_desc, &itemPointerData, tup);
+		heap_replace(pg_operator_desc, &itemPointerData, tup);
 		setheapoverride(false);
 
 	    }
@@ -828,7 +828,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 	
 	ItemPointerCopy(&tup->t_ctid, &itemPointerData);
 	setheapoverride(true);
-	(void) heap_replace(pg_operator_desc, &itemPointerData, tup);
+	heap_replace(pg_operator_desc, &itemPointerData, tup);
 	setheapoverride(false);
 	
 	values[ Anum_pg_operator_oprcom - 1 ] = (Datum)NULL;
@@ -864,7 +864,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 	ItemPointerCopy(&tup->t_ctid, &itemPointerData);
 	
 	setheapoverride(true);
-	(void) heap_replace(pg_operator_desc, &itemPointerData, tup);
+	heap_replace(pg_operator_desc, &itemPointerData, tup);
 	setheapoverride(false);
     }
 

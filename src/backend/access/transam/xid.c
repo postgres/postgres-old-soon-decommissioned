@@ -59,7 +59,7 @@ xidout(TransactionId transactionId)
     /* maximum 32 bit unsigned integer representation takes 10 chars */
     representation = palloc(11);
     
-    (void)sprintf(representation, "%u", transactionId);
+    sprintf(representation, "%u", transactionId);
     
     return (representation);
 

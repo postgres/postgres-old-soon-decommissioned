@@ -33,7 +33,7 @@ stringToNode(char *str)
 {
     void *retval;
 
-    (void) lsptok(str, NULL);	/* set the string used in lsptok */
+    lsptok(str, NULL);	/* set the string used in lsptok */
     retval = nodeRead(true);	/* start reading */
 
     return retval;

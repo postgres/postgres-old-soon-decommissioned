@@ -765,8 +765,8 @@ FileTruncate(File file, int offset)
     DO_DB(elog(DEBUG, "FileTruncate %d (%s)",
                  file, VfdCache[file].fileName));
     
-    (void) FileSync(file);
-    (void) FileAccess(file);
+    FileSync(file);
+    FileAccess(file);
     returnCode = ftruncate(VfdCache[file].fd, offset);
     return(returnCode);
 }

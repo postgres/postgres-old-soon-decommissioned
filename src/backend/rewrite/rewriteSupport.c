@@ -147,7 +147,7 @@ setRelhasrulesInRelation(Oid relationId, bool relhasrules)
     relp = (Form_pg_class) GETSTRUCT(newTuple);
     relp->relhasrules = relhasrules;
 
-    (void) heap_replace(relationRelation, &(tuple->t_ctid), newTuple);
+    heap_replace(relationRelation, &(tuple->t_ctid), newTuple);
     
     /* keep the catalog indices up to date */
     CatalogOpenIndices(Num_pg_class_indices, Name_pg_class_indices, idescs);

@@ -33,7 +33,7 @@ HashTableWalk(HTAB *hashtable, HashtFunc function, int arg)
     int keysize;
     
     keysize = hashtable->hctl->keysize;
-    (void)hash_seq((HTAB *)NULL);
+    hash_seq((HTAB *)NULL);
     while ((hashent = hash_seq(hashtable)) != (long *) TRUE) {
 	if (hashent == NULL)
 	    elog(FATAL, "error in HashTableWalk.");

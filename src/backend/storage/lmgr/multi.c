@@ -275,7 +275,7 @@ MultiAcquire(LockTableId tableId,
 		 * the last level lock we successfully acquired
 		 */
 		retStatus = FALSE;
-		(void) MultiRelease(tableId, tag, lockt, i);
+		MultiRelease(tableId, tag, lockt, i);
 		/* now leave the loop.  Don't try for any more locks */
 		break;
 	    }

@@ -217,7 +217,7 @@ InitMyDatabaseId()
     }
     
  done:
-    (void) close(dbfd);
+    close(dbfd);
     pfree(pg);
     
     if (!OidIsValid(MyDatabaseId))
@@ -463,7 +463,7 @@ InitCommunication()
 void
 InitStdio()
 {
-    (void) DebugFileOpen();
+    DebugFileOpen();
 }
 
 /* --------------------------------

@@ -32,7 +32,7 @@ form(const char *fmt, ... )
 
     va_start(args, fmt);
     
-    (void) vsprintf(FormBuf, fmt, args);
+    vsprintf(FormBuf, fmt, args);
 
     va_end(args);
     

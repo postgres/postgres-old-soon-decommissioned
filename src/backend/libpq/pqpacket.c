@@ -214,7 +214,7 @@ PacketSend(Port *port,
 		 (struct sockaddr *)&(port->raddr), addrLen);
     
     if (len < totalLen) {
-	(void) sprintf(PQerrormsg,
+	sprintf(PQerrormsg,
 		       "FATAL: PacketSend: couldn't send complete packet: errno=%d\n",
 		       errno);
 	fputs(PQerrormsg, stderr);

@@ -210,7 +210,7 @@ Async_Notify(char *relname)
 				 tdesc, &isnull);
 	if (!DatumGetInt32(d)) {
 	    rTuple = heap_modifytuple(lTuple, b, lRel, value, nulls, repl);
-	    (void) heap_replace(lRel, &lTuple->t_ctid, rTuple);
+	    heap_replace(lRel, &lTuple->t_ctid, rTuple);
 	}
 	ReleaseBuffer(b);
     }
@@ -575,7 +575,7 @@ Async_NotifyFrontEnd()
 	d = (Datum) heap_getattr(lTuple, b, Anum_pg_listener_relname,
 				 tdesc, &isnull);
 	rTuple = heap_modifytuple(lTuple, b, lRel, value, nulls, repl);
-	(void) heap_replace(lRel, &lTuple->t_ctid, rTuple);
+	heap_replace(lRel, &lTuple->t_ctid, rTuple);
 	
 	/* notifying the front end */
 	

@@ -1082,7 +1082,7 @@ index_register(char *heap,
     
     ILHead = newind;
     
-    (void) MemoryContextSwitchTo(oldcxt);
+    MemoryContextSwitchTo(oldcxt);
 }
 
 void

@@ -280,7 +280,7 @@ next_token(FILE *fp, char *buf, int bufsz)
     while (c == ' ' || c == '\t') c = getc(fp);
 
     /* Put back the char that was non-whitespace (putting back EOF is ok) */
-    (void) ungetc(c, fp);
+    ungetc(c, fp);
 
     /* If we ended with a newline, return that, otherwise return 0 */
     return (c == '\n' ? '\n' : 0);

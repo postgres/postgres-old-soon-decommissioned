@@ -506,7 +506,7 @@ AtStart_Memory()
      *	tell system to allocate in the blank portal context
      * ----------------
      */
-    (void) MemoryContextSwitchTo(portalContext);
+    MemoryContextSwitchTo(portalContext);
     StartPortalAllocMode(DefaultAllocMode, 0);
 }
 
@@ -612,7 +612,7 @@ AtCommit_Memory()
      * ----------------
      */
     EndPortalAllocMode();
-    (void) MemoryContextSwitchTo(TopMemoryContext);
+    MemoryContextSwitchTo(TopMemoryContext);
 }
 
 /* ----------------------------------------------------------------
@@ -691,7 +691,7 @@ AtAbort_Memory()
      *  portal memory context (until the next transaction).
      * ----------------
      */
-    (void) MemoryContextSwitchTo(TopMemoryContext);
+    MemoryContextSwitchTo(TopMemoryContext);
 }
 
 /* ----------------------------------------------------------------

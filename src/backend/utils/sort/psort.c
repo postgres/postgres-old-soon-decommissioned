@@ -35,6 +35,9 @@
  */
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 #include "postgres.h"
 
@@ -342,9 +345,8 @@ bool
 createrun(Sort *node, FILE *file, bool *empty)
 {
     register HeapTuple	lasttuple;
-    register HeapTuple	btup, tup;
+    register HeapTuple	tup;
     struct	leftist	*nextrun;
-    Buffer	b;
     bool		foundeor;
     short		junk;
 
@@ -726,7 +728,6 @@ struct tapelst {
 };
 
 static struct	tapelst	*Tapes = NULL;
-static char	Tempfile[MAXPGPATH] = TEMPDIR;
 
 /*
  *	gettape		- returns an open stream for writing/reading

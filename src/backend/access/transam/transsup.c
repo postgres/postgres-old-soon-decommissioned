@@ -641,7 +641,7 @@ TransGetLastRecordedTransaction(Relation relation,
     baseXid = blockNumber * TP_NumXidStatusPerBlock;
 
 /* XXX ???? xid won't get returned! - AY '94 */
-    (void) TransBlockGetLastTransactionIdStatus(block, baseXid, &xid);
+    TransBlockGetLastTransactionIdStatus(block, baseXid, &xid);
     
     ReleaseBuffer(buffer);
     

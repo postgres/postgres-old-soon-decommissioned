@@ -159,7 +159,7 @@ VariableRelationPutNextXid(TransactionId xid)
     
     flushmode = SetBufferWriteMode (BUFFER_FLUSH_WRITE);
     WriteBuffer(buf);
-    (void) SetBufferWriteMode (flushmode);
+    SetBufferWriteMode (flushmode);
 }
 
 /* --------------------------------

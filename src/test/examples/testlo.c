@@ -63,8 +63,8 @@ Oid importFile(PGconn *conn, char *filename)
 	}
     }
     
-    (void) close(fd);
-    (void) lo_close(conn, lobj_fd);
+    close(fd);
+    lo_close(conn, lobj_fd);
 
     return lobjId;
 }
@@ -168,8 +168,8 @@ void exportFile(PGconn *conn, Oid lobjId, char *filename)
 	}
     }
 
-    (void) lo_close(conn, lobj_fd);
-    (void) close(fd);
+    lo_close(conn, lobj_fd);
+    close(fd);
 
     return;
 }

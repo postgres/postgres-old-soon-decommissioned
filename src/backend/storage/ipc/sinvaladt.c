@@ -667,8 +667,8 @@ SISegInit(SISeg *segP)
     SISetStartFreeSpace(segP, 0);
     SISetStartEntryChain(segP, InvalidOffset);
     SISetEndEntryChain(segP, InvalidOffset);
-    (void) SISetNumEntries(segP, 0);
-    (void) SISetMaxNumEntries(segP, MAXNUMMESSAGES);
+    SISetNumEntries(segP, 0);
+    SISetMaxNumEntries(segP, MAXNUMMESSAGES);
     for (i = 0; i < MaxBackendId; i++) {
     	segP->procState[i].limit = -1; 	    /* no backend active  !!*/
     	segP->procState[i].resetState = false;

@@ -395,7 +395,7 @@ fireRules(Query *parsetree,
     
     /* choose rule to fire from list of rules */
     if (locks == NIL) {
-	(void) ProcessRetrieveQuery(parsetree,
+	ProcessRetrieveQuery(parsetree,
 				    parsetree->rtable,
 				    instead_flag, TRUE);
 	if (*instead_flag)
@@ -473,7 +473,7 @@ fireRules(Query *parsetree,
 	     *--------------------------------------------------
 	     */
 	    info->rule_action->rtable = info->rt;       	   
-	    (void) ProcessRetrieveQuery(info->rule_action, info->rt,
+	    ProcessRetrieveQuery(info->rule_action, info->rt,
 					&orig_instead_flag, TRUE);
 	    
 	    /*--------------------------------------------------  

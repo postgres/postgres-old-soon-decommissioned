@@ -188,7 +188,7 @@ NullCommand(CommandDest dest)
 	}
 	pq_flush();
 	PQcleanNotify();	/* garbage collect */
-	(void) MemoryContextSwitchTo(orig);
+	MemoryContextSwitchTo(orig);
 #endif
 	/* ----------------
 	 *	tell the fe that the last of the queries has finished

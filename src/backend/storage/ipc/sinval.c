@@ -143,7 +143,7 @@ RegisterSharedInvalid(int cacheId, /* XXX */
     	}
 	
     	/* write again */
-    	(void) SISetDataEntry(shmInvalBuffer, &newInvalid);
+    	SISetDataEntry(shmInvalBuffer, &newInvalid);
     }
     SpinRelease(SInvalLock);
 }

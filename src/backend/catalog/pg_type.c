@@ -477,7 +477,7 @@ TypeCreate(char *typeName,
 	ItemPointerCopy(&tup->t_ctid, &itemPointerData);
 	
 	setheapoverride(true);
-	(void) heap_replace(pg_type_desc, &itemPointerData, tup);
+	heap_replace(pg_type_desc, &itemPointerData, tup);
 	setheapoverride(false);
 	
 	typeObjectId = tup->t_oid;

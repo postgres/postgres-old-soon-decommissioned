@@ -537,7 +537,7 @@ DefineType(char *typeName, List *parameters)
      *  now have TypeCreate do all the real work.
      * ----------------
      */
-    (void) TypeCreate(typeName, /* type name */
+    TypeCreate(typeName, /* type name */
                       InvalidOid,  /* relation oid (n/a here) */
                       internalLength,   /* internal size */
                       externalLength,   /* external size */
@@ -559,7 +559,7 @@ DefineType(char *typeName, List *parameters)
      */
     shadow_type = makeArrayTypeName(typeName);
 
-    (void) TypeCreate(shadow_type,      /* type name */
+    TypeCreate(shadow_type,      /* type name */
                       InvalidOid,  /* relation oid (n/a here) */
                       -1,               /* internal size */
                       -1,               /* external size */

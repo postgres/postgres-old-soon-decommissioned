@@ -64,7 +64,7 @@ next_token(FILE *fp, char *buf, const int bufsz) {
       c = getc(fp);
       /* Put back the char right after the token (putting back EOF is ok) */
     } 
-    (void) ungetc(c, fp);
+    ungetc(c, fp);
   }
   *buf = '\0';
 }
