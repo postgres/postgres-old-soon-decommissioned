@@ -313,7 +313,8 @@ InitPostgres(const char *dbname)
 	 * it to examine AMI transaction status, and this is never written
 	 * after initdb is done. -mer 15 June 1992
 	 */
-	RelationInitialize();		/* pre-allocated reldescs created here */
+	RelationCacheInitialize();	/* pre-allocated reldescs created here */
+
 	InitializeTransactionSystem();		/* pg_log,etc init/crash recovery
 										 * here */
 
@@ -361,6 +362,9 @@ InitPostgres(const char *dbname)
 	/* start a new transaction here before access to db */
 	if (!bootstrap)
 		StartTransactionCommand();
+
+	/* replace faked-up relcache entries with the real info */
+	RelationCacheInitializePhase2();
 
 	/*
 	 * Set ourselves to the proper user id and figure out our postgres

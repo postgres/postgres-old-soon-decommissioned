@@ -34,6 +34,12 @@ extern void RelationForgetRelation(Oid rid);
 extern List *RelationGetIndexList(Relation relation);
 
 /*
+ * Routines for backend startup
+ */
+extern void RelationCacheInitialize(void);
+extern void RelationCacheInitializePhase2(void);
+
+/*
  * Routines for flushing/rebuilding relcache entries in various scenarios
  */
 extern void RelationIdInvalidateRelationCacheByRelationId(Oid relationId);
@@ -42,7 +48,6 @@ extern void RelationCacheInvalidate(void);
 
 extern void RelationRegisterRelation(Relation relation);
 extern void RelationPurgeLocalRelation(bool xactComitted);
-extern void RelationInitialize(void);
 
 extern void RelationCacheAbort(void);
 
