@@ -94,7 +94,7 @@
  */
 
 
-#if defined(__i386__) || defined(__x86_64__)
+#if defined(__i386__) || defined(__x86_64__) 
 #define TAS(lock) tas(lock)
 
 static __inline__ int
