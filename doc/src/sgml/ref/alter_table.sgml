@@ -41,9 +41,9 @@ ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
 ALTER TABLE [ ONLY ] <replaceable class="PARAMETER">table</replaceable> [ * ]
     ADD <replaceable class="PARAMETER">table_constraint</replaceable>
 ALTER TABLE [ ONLY ] <replaceable class="PARAMETER">table</replaceable> [ * ]
-	DROP CONSTRAINT <replaceable class="PARAMETER">constraint_name</replaceable> [ RESTRICT | CASCADE ]
+    DROP CONSTRAINT <replaceable class="PARAMETER">constraint_name</replaceable> [ RESTRICT | CASCADE ]
 ALTER TABLE <replaceable class="PARAMETER">table</replaceable>
-	OWNER TO <replaceable class="PARAMETER">new_owner</replaceable> 
+    OWNER TO <replaceable class="PARAMETER">new_owner</replaceable> 
   </synopsis>
 
   <refsect2 id="R2-SQL-ALTERTABLE-1">
