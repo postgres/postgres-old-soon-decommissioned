@@ -1613,6 +1613,7 @@ lo_import 152801
 	underscores. See the section <xref
 	linkend="APP-PSQL-variables"
 	endterm="APP-PSQL-variables-title"> below for details.
+	Variable names are case-sensitive.
 	</para>
 
 	<para>
