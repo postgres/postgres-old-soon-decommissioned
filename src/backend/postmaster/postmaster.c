@@ -34,7 +34,6 @@
  */
 #include <unistd.h>
 #include <signal.h>
-#include <time.h>
 #include <sys/wait.h>
 #include <ctype.h>
 #include <sys/types.h>
@@ -43,6 +42,7 @@
 #include <sys/socket.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <time.h>
 #include <sys/param.h>
 
 #include "postgres.h"
