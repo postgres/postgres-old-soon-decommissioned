@@ -343,6 +343,9 @@ subquery_planner(Query *parse, double tuple_fraction)
 
 			plan->extParam = bms_add_members(plan->extParam,
 											 initplan->plan->extParam);
+			/* allParam must include all members of extParam */
+			plan->allParam = bms_add_members(plan->allParam,
+											 plan->extParam);
 			initplan_cost += initplan->plan->total_cost;
 		}
 
