@@ -390,7 +390,7 @@ CREATE TYPE
 
    <para>
     User-defined type names cannot begin with the underscore character
-    (<quote><literal>_</literal></quote>) and can only be 30
+    (<quote><literal>_</literal></quote>) and can only be 62
     characters long (or in general <literal>NAMEDATALEN-2</>, rather than
     the <literal>NAMEDATALEN-1</> characters allowed for other names).
     Type names beginning with underscore are
