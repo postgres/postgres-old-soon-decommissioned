@@ -16,9 +16,8 @@
 
 #include "nodes/parsenodes.h"
 
-struct _rewrite_meta_knowledge
+typedef struct RewriteInfo
 {
-	List	   *rt;
 	int			rt_index;
 	bool		instead_flag;
 	int			event;
@@ -28,9 +27,7 @@ struct _rewrite_meta_knowledge
 	Query	   *rule_action;
 	Node	   *rule_qual;
 	bool		nothing;
-};
-
-typedef struct _rewrite_meta_knowledge RewriteInfo;
+} RewriteInfo;
 
 
 extern List *QueryRewrite(Query *parsetree);

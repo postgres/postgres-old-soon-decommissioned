@@ -1,8 +1,8 @@
 /*-------------------------------------------------------------------------
  *
  * gramparse.h
- *	  scanner support routines.  used by both the bootstrap lexer
- * as well as the normal lexer
+ *	  Declarations for routines exported from lexer and parser files.
+ *
  *
  * Portions Copyright (c) 1996-2000, PostgreSQL, Inc
  * Portions Copyright (c) 1994, Regents of the University of California
@@ -13,16 +13,19 @@
  */
 
 #ifndef GRAMPARSE_H
-#define GRAMPARSE_H				/* include once only */
+#define GRAMPARSE_H
+
+/* from parser.c */
+extern int	yylex(void);
 
 /* from scan.l */
-extern void init_io(void);
-extern int	yylex(void);
+extern void scanner_init(void);
+extern int	base_yylex(void);
 extern void yyerror(const char *message);
 
 /* from gram.y */
-extern Oid	param_type(int t);
 extern void parser_init(Oid *typev, int nargs);
+extern Oid	param_type(int t);
 extern int	yyparse(void);
 
 #endif	 /* GRAMPARSE_H */

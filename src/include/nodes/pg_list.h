@@ -101,6 +101,7 @@ extern List *nconc(List *list1, List *list2);
 extern List *lcons(void *datum, List *list);
 extern List *lconsi(int datum, List *list);
 extern bool member(void *datum, List *list);
+extern bool ptrMember(void *datum, List *list);
 extern bool intMember(int datum, List *list);
 extern Value *makeInteger(long i);
 extern Value *makeFloat(char *numericStr);

@@ -54,3 +54,29 @@ get_actual_clauses(List *restrictinfo_list)
 	}
 	return result;
 }
+
+/*
+ * get_actual_join_clauses
+ *
+ * Extract clauses from 'restrictinfo_list', separating those that
+ * came from JOIN/ON conditions from those that didn't.
+ */
+void
+get_actual_join_clauses(List *restrictinfo_list,
+						List **joinquals, List **otherquals)
+{
+	List	   *temp;
+
+	*joinquals = NIL;
+	*otherquals = NIL;
+
+	foreach(temp, restrictinfo_list)
+	{
+		RestrictInfo *clause = (RestrictInfo *) lfirst(temp);
+
+		if (clause->isjoinqual)
+			*joinquals = lappend(*joinquals, clause->clause);
+		else
+			*otherquals = lappend(*otherquals, clause->clause);
+	}
+}

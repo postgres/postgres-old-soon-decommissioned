@@ -649,12 +649,21 @@ SS_finalize_plan(Plan *plan)
 			 */
 			break;
 
+		case T_NestLoop:
+			finalize_primnode((Node *) ((Join *) plan)->joinqual,
+							  &results);
+			break;
+
 		case T_MergeJoin:
+			finalize_primnode((Node *) ((Join *) plan)->joinqual,
+							  &results);
 			finalize_primnode((Node *) ((MergeJoin *) plan)->mergeclauses,
 							  &results);
 			break;
 
 		case T_HashJoin:
+			finalize_primnode((Node *) ((Join *) plan)->joinqual,
+							  &results);
 			finalize_primnode((Node *) ((HashJoin *) plan)->hashclauses,
 							  &results);
 			break;
@@ -671,7 +680,6 @@ SS_finalize_plan(Plan *plan)
 
 		case T_Agg:
 		case T_SeqScan:
-		case T_NestLoop:
 		case T_Material:
 		case T_Sort:
 		case T_Unique:

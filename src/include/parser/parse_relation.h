@@ -16,23 +16,35 @@
 
 #include "parser/parse_node.h"
 
-extern RangeTblEntry *refnameRangeTableEntry(ParseState *pstate, char *refname);
+extern Node *refnameRangeOrJoinEntry(ParseState *pstate,
+									 char *refname,
+									 int *sublevels_up);
+extern RangeTblEntry *refnameRangeTableEntry(ParseState *pstate,
+											 char *refname);
 extern int refnameRangeTablePosn(ParseState *pstate,
-					  char *refname,
-					  int *sublevels_up);
-extern RangeTblEntry *colnameRangeTableEntry(ParseState *pstate, char *colname);
+								 char *refname,
+								 int *sublevels_up);
+extern int RTERangeTablePosn(ParseState *pstate,
+							 RangeTblEntry *rte,
+							 int *sublevels_up);
+extern JoinExpr *scanJoinTreeForRefname(Node *jtnode, char *refname);
+extern Node *colnameToVar(ParseState *pstate, char *colname);
+extern Node *qualifiedNameToVar(ParseState *pstate, char *refname,
+								char *colname, bool implicitRTEOK);
 extern RangeTblEntry *addRangeTableEntry(ParseState *pstate,
-				   char *relname,
-				   Attr *ref,
-				   bool inh,
-				   bool inFromCl,
-				   bool inJoinSet);
-extern Attr *expandTable(ParseState *pstate, char *refname, bool getaliases);
-extern List *expandAll(ParseState *pstate, char *relname, Attr *ref,
-		  int *this_resno);
+										 char *relname,
+										 Attr *alias,
+										 bool inh,
+										 bool inFromCl);
+extern void addRTEtoJoinTree(ParseState *pstate, RangeTblEntry *rte);
+extern RangeTblEntry *addImplicitRTE(ParseState *pstate, char *relname);
+extern void expandRTE(ParseState *pstate, RangeTblEntry *rte,
+					  List **colnames, List **colvars);
+extern List *expandRelAttrs(ParseState *pstate, RangeTblEntry *rte);
+extern List *expandJoinAttrs(ParseState *pstate, JoinExpr *join,
+							 int sublevels_up);
 extern int	attnameAttNum(Relation rd, char *a);
 extern int	specialAttNum(char *a);
 extern Oid	attnumTypeId(Relation rd, int attid);
-extern void warnAutoRange(ParseState *pstate, char *refname);
 
 #endif	 /* PARSE_RELATION_H */

@@ -34,26 +34,29 @@ extern IndexPath *create_index_path(Query *root, RelOptInfo *rel,
 extern TidPath *create_tidscan_path(RelOptInfo *rel, List *tideval);
 
 extern NestPath *create_nestloop_path(RelOptInfo *joinrel,
-					 Path *outer_path,
-					 Path *inner_path,
-					 List *restrict_clauses,
-					 List *pathkeys);
+									  JoinType jointype,
+									  Path *outer_path,
+									  Path *inner_path,
+									  List *restrict_clauses,
+									  List *pathkeys);
 
 extern MergePath *create_mergejoin_path(RelOptInfo *joinrel,
-					  Path *outer_path,
-					  Path *inner_path,
-					  List *restrict_clauses,
-					  List *pathkeys,
-					  List *mergeclauses,
-					  List *outersortkeys,
-					  List *innersortkeys);
+										JoinType jointype,
+										Path *outer_path,
+										Path *inner_path,
+										List *restrict_clauses,
+										List *pathkeys,
+										List *mergeclauses,
+										List *outersortkeys,
+										List *innersortkeys);
 
 extern HashPath *create_hashjoin_path(RelOptInfo *joinrel,
-					 Path *outer_path,
-					 Path *inner_path,
-					 List *restrict_clauses,
-					 List *hashclauses,
-					 Selectivity innerdisbursion);
+									  JoinType jointype,
+									  Path *outer_path,
+									  Path *inner_path,
+									  List *restrict_clauses,
+									  List *hashclauses,
+									  Selectivity innerdisbursion);
 
 /*
  * prototypes for relnode.c

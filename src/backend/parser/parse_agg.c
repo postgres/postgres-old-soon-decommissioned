@@ -152,6 +152,11 @@ parseCheckAggregates(ParseState *pstate, Query *qry)
 	 */
 	if (contain_agg_clause(qry->qual))
 		elog(ERROR, "Aggregates not allowed in WHERE clause");
+	/*
+	 * ON-conditions in JOIN expressions are like WHERE clauses.
+	 */
+	if (contain_agg_clause((Node *) qry->jointree))
+		elog(ERROR, "Aggregates not allowed in JOIN conditions");
 
 	/*
 	 * No aggregates allowed in GROUP BY clauses, either.

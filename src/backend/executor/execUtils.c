@@ -275,53 +275,17 @@ void
 ExecAssignResultTypeFromTL(Plan *node, CommonState *commonstate)
 {
 	List	   *targetList;
-	int			i;
+	TupleDesc	tupDesc;
 	int			len;
-	List	   *tl;
-	TargetEntry *tle;
-	List	   *fjtl;
-	TupleDesc	origTupDesc;
 
 	targetList = node->targetlist;
-	origTupDesc = ExecTypeFromTL(targetList);
+	tupDesc = ExecTypeFromTL(targetList);
 	len = ExecTargetListLength(targetList);
 
-	fjtl = NIL;
-	tl = targetList;
-	i = 0;
-	while (tl != NIL || fjtl != NIL)
-	{
-		if (fjtl != NIL)
-		{
-			tle = lfirst(fjtl);
-			fjtl = lnext(fjtl);
-		}
-		else
-		{
-			tle = lfirst(tl);
-			tl = lnext(tl);
-		}
-#ifdef SETS_FIXED
-		if (!tl_is_resdom(tle))
-		{
-			Fjoin	   *fj = (Fjoin *) lfirst(tle);
-
-			/* it is a FJoin */
-			fjtl = lnext(tle);
-			tle = fj->fj_innerNode;
-		}
-#endif
-		i++;
-	}
-
 	if (len > 0)
-	{
-		ExecAssignResultType(commonstate,
-							 origTupDesc);
-	}
+		ExecAssignResultType(commonstate, tupDesc);
 	else
-		ExecAssignResultType(commonstate,
-							 (TupleDesc) NULL);
+		ExecAssignResultType(commonstate, (TupleDesc) NULL);
 }
 
 /* ----------------

@@ -101,6 +101,7 @@ create_or_index_paths(Query *root,
 
 				/* This isn't a nestloop innerjoin, so: */
 				pathnode->joinrelids = NIL;		/* no join clauses here */
+				pathnode->alljoinquals = false;
 				pathnode->rows = rel->rows;
 
 				best_or_subclause_indices(root,

@@ -351,6 +351,25 @@ member(void *l1, List *l2)
 	return false;
 }
 
+/*
+ * like member(), but use when pointer-equality comparison is sufficient
+ */
+bool
+ptrMember(void *l1, List *l2)
+{
+	List	   *i;
+
+	foreach(i, l2)
+	{
+		if (l1 == ((void *) lfirst(i)))
+			return true;
+	}
+	return false;
+}
+
+/*
+ * membership test for integer lists
+ */
 bool
 intMember(int l1, List *l2)
 {

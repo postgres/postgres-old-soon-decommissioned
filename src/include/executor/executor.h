@@ -117,7 +117,9 @@ extern void ExecSetSlotDescriptorIsNew(TupleTableSlot *slot, bool isNew);
 extern void ExecInitResultTupleSlot(EState *estate, CommonState *commonstate);
 extern void ExecInitScanTupleSlot(EState *estate,
 					  CommonScanState *commonscanstate);
-extern void ExecInitOuterTupleSlot(EState *estate, HashJoinState *hashstate);
+extern TupleTableSlot *ExecInitExtraTupleSlot(EState *estate);
+extern TupleTableSlot *ExecInitNullTupleSlot(EState *estate,
+											 TupleDesc tupType);
 
 extern TupleDesc ExecGetTupType(Plan *node);
 extern TupleDesc ExecTypeFromTL(List *targetList);

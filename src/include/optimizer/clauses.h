@@ -73,9 +73,11 @@ extern void CommuteClause(Expr *clause);
 extern Node *eval_const_expressions(Node *node);
 
 extern bool expression_tree_walker(Node *node, bool (*walker) (),
-											   void *context);
+								   void *context);
 extern Node *expression_tree_mutator(Node *node, Node *(*mutator) (),
-												 void *context);
+									 void *context);
+extern bool query_tree_walker(Query *query, bool (*walker) (),
+							  void *context);
 
 #define is_subplan(clause)	((clause) != NULL && \
 							 IsA(clause, Expr) && \
