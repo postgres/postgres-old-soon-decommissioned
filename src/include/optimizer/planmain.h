@@ -57,6 +57,7 @@ extern List *index_outerjoin_references(List *inner_indxqual,
 extern void set_result_tlist_references(Result *resultNode);
 extern void set_agg_tlist_references(Agg *aggNode);
 extern void set_agg_agglist_references(Agg *aggNode);
+extern void del_agg_tlist_references(List *tlist);
 
 
 #endif							/* PLANMAIN_H */

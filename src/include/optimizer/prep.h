@@ -24,8 +24,7 @@ extern List *cnfify(Expr *qual, bool removeAndFlag);
 /*
  * prototypes for preptlist.h
  */
-extern List *
-preprocess_targetlist(List *tlist, int command_type,
+extern List *preprocess_targetlist(List *tlist, int command_type,
 					  Index result_relation, List *range_table);
 
 /*
@@ -36,12 +35,10 @@ typedef enum UnionFlag
 	INHERITS_FLAG, VERSION_FLAG
 } UnionFlag;
 
-extern List *
-find_all_inheritors(List *unexamined_relids,
+extern List *find_all_inheritors(List *unexamined_relids,
 					List *examined_relids);
 extern int	first_matching_rt_entry(List *rangetable, UnionFlag flag);
-extern Append *
-plan_union_queries(Index rt_index, Query *parse,
+extern Append *plan_union_queries(Index rt_index, Query *parse,
 				   UnionFlag flag);
 
 #endif							/* PREP_H */
