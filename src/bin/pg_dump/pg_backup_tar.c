@@ -1147,6 +1147,7 @@ _tarGetHeader(ArchiveHandle *AH, TAR_MEMBER *th)
 	int			sum,
 				chk;
 	size_t		len;
+	unsigned long	ullen;
 	off_t		hPos;
 	int			i;
 	bool		gotBlock = false;
@@ -1203,8 +1204,9 @@ _tarGetHeader(ArchiveHandle *AH, TAR_MEMBER *th)
 		}
 	}
 
-	sscanf(&h[0], "%99s", &tag[0]);
-	sscanf(&h[124], "%12o", &len);
+	sscanf(&h[0], "%99s", tag);
+	sscanf(&h[124], "%12lo", &ullen);
+	len = (size_t) ullen;
 	sscanf(&h[148], "%8o", &sum);
 
 	{
@@ -1212,7 +1214,7 @@ _tarGetHeader(ArchiveHandle *AH, TAR_MEMBER *th)
 
 		snprintf(buf, 100, INT64_FORMAT, (int64) hPos);
 		ahlog(AH, 3, "TOC Entry %s at %s (length %lu, checksum %d)\n",
-			  &tag[0], buf, (unsigned long) len, sum);
+			  tag, buf, (unsigned long) len, sum);
 	}
 
 	if (chk != sum)
@@ -1223,7 +1225,7 @@ _tarGetHeader(ArchiveHandle *AH, TAR_MEMBER *th)
 		die_horribly(AH, modulename,
 					 "corrupt tar header found in %s "
 					 "(expected %d, computed %d) file position %s\n",
-					 &tag[0], sum, chk, buf);
+					 tag, sum, chk, buf);
 	}
 
 	th->targetFile = strdup(tag);
