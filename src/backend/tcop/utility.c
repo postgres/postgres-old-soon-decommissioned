@@ -483,7 +483,7 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_ExecuteStmt:
-			ExecuteQuery((ExecuteStmt *) parsetree, dest);
+			ExecuteQuery((ExecuteStmt *) parsetree, dest, completionTag);
 			break;
 
 		case T_DeallocateStmt:

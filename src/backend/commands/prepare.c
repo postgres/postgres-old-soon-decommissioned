@@ -106,7 +106,7 @@ PrepareQuery(PrepareStmt *stmt)
  * Implements the 'EXECUTE' utility statement.
  */
 void
-ExecuteQuery(ExecuteStmt *stmt, DestReceiver *dest)
+ExecuteQuery(ExecuteStmt *stmt, DestReceiver *dest, char *completionTag)
 {
 	PreparedStatement *entry;
 	char	   *query_string;
@@ -188,7 +188,7 @@ ExecuteQuery(ExecuteStmt *stmt, DestReceiver *dest)
 	 */
 	PortalStart(portal, paramLI);
 
-	(void) PortalRun(portal, FETCH_ALL, dest, dest, NULL);
+	(void) PortalRun(portal, FETCH_ALL, dest, dest, completionTag);
 
 	PortalDrop(portal, false);
 
