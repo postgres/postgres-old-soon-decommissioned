@@ -157,6 +157,19 @@ typedef struct GISTENTRY
 	bool		leafkey;
 } GISTENTRY;
 
+
+/*
+ * Vector of GISTENTRY struct's, user-defined
+ * methods union andpick split takes it as one of args
+ */
+
+typedef struct {
+	int32		n; /* number of elements */
+	GISTENTRY	vector[1];
+} GistEntryVector;
+
+#define GEVHDRSZ	( offsetof(GistEntryVector, vector[0]) )
+
 /*
  * macro to initialize a GISTENTRY
  */
