@@ -135,7 +135,7 @@ InsertRule(char *rulname,
 			rulname, evtype, eventrel_oid, evslot_index, actionbuf,
 			qualbuf, is_instead);
 
-	pg_exec_query(rulebuf, (char **) NULL, (Oid *) NULL, 0);
+	pg_exec_query(rulebuf);
 
 	return (LastOidProcessed);
 }

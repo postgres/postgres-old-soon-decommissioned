@@ -29,7 +29,6 @@ ProcessPortal(char *portalName, Query *parseTree,
 			  CommandDest dest);
 
 extern void
-ProcessQuery(Query *parsetree, Plan *plan, char *argv[],
-			 Oid *typev, int nargs, CommandDest dest);
+ProcessQuery(Query *parsetree, Plan *plan, CommandDest dest);
 
 #endif							/* pqueryIncluded */

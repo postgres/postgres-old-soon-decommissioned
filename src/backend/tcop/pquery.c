@@ -41,6 +41,8 @@
 static char *CreateOperationTag(int operationType);
 static void ProcessQueryDesc(QueryDesc *queryDesc);
 
+extern const char **ps_status;	/* from postgres.c */
+
 
 /* ----------------------------------------------------------------
  *		CreateQueryDesc
@@ -226,7 +228,7 @@ ProcessQueryDesc(QueryDesc *queryDesc)
 	plan = queryDesc->plantree;
 
 	operation = queryDesc->operation;
-	tag = CreateOperationTag(operation);
+	*ps_status = tag = CreateOperationTag(operation);
 	dest = queryDesc->dest;
 
 	/* ----------------
@@ -358,9 +360,6 @@ ProcessQueryDesc(QueryDesc *queryDesc)
 void
 ProcessQuery(Query *parsetree,
 			 Plan *plan,
-			 char *argv[],
-			 Oid *typev,
-			 int nargs,
 			 CommandDest dest)
 {
 	QueryDesc  *queryDesc;

@@ -102,5 +102,5 @@ main(int argc, char *argv[])
 		exit(BootstrapMain(argc - 1, argv + 1));		/* remove the -boot arg
 														 * from the command line */
 	else
-		exit(PostgresMain(argc, argv));
+		exit(PostgresMain(argc, argv, argc, argv));
 }

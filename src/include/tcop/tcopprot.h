@@ -25,10 +25,9 @@
 extern List *
 pg_parse_and_plan(char *query_string, Oid *typev, int nargs,
 				  QueryTreeList **queryListP, CommandDest dest);
-extern void pg_exec_query(char *query_string, char **argv, Oid *typev, int nargs);
+extern void pg_exec_query(char *query_string);
 extern void
-pg_exec_query_dest(char *query_string, char **argv, Oid *typev,
-				   int nargs, CommandDest dest);
+pg_exec_query_dest(char *query_string, CommandDest dest);
 
 #endif							/* BOOTSTRAP_HEADER */
 
@@ -37,7 +36,8 @@ extern void quickdie(SIGNAL_ARGS);
 extern void die(SIGNAL_ARGS);
 extern void FloatExceptionHandler(SIGNAL_ARGS);
 extern void CancelQuery(void);
-extern int PostgresMain(int argc, char *argv[]);
+extern int PostgresMain(int argc, char *argv[],
+						int real_argc, char *real_argv[]);
 extern void ResetUsage(void);
 extern void ShowUsage(void);
 
