@@ -451,6 +451,7 @@ TRANSLATE(text *string, char from, char to)
   return ret;
 }
 
+#if 0
 
 /********************************************************************
  *
@@ -698,5 +699,6 @@ substr(text *string, int4 m)
   return ret;
 }
 
+#endif 
 
 /* EOF */
