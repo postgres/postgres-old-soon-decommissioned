@@ -506,7 +506,7 @@ _copyAgg(Agg *from)
 
 	CopyPlanFields((Plan *) from, (Plan *) newnode);
 
-	Node_Copy(from, newnode, aggs);
+	newnode->aggs = set_agg_tlist_references(newnode);
 	Node_Copy(from, newnode, aggstate);
 
 	return newnode;
