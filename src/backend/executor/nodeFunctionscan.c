@@ -96,17 +96,10 @@ FunctionNext(FunctionScanState *node)
 	/*
 	 * Get the next tuple from tuplestore. Return NULL if no more tuples.
 	 */
+	heapTuple = tuplestore_getheaptuple(tuplestorestate,
+										ScanDirectionIsForward(direction),
+										&should_free);
 	slot = node->ss.ss_ScanTupleSlot;
-	if (tuplestorestate)
-		heapTuple = tuplestore_getheaptuple(tuplestorestate,
-									   ScanDirectionIsForward(direction),
-											&should_free);
-	else
-	{
-		heapTuple = NULL;
-		should_free = false;
-	}
-
 	return ExecStoreTuple(heapTuple, slot, InvalidBuffer, should_free);
 }
 
