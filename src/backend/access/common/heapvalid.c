@@ -71,6 +71,10 @@ heap_keytest(HeapTuple t,
 	    /* XXX eventually should check if SK_ISNULL */
 	    return false;
 	
+	if (keys->sk_flags & SK_ISNULL) {
+	    return (false);
+	}
+
 	if (keys->sk_flags & SK_COMMUTE)
 	    test = (long) FMGR_PTR2(keys->sk_func, keys->sk_procedure,
 				    keys->sk_argument, atp);

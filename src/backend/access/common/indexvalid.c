@@ -68,6 +68,10 @@ index_keytest(IndexTuple tuple,
 	    return (false);
 	}
 	
+	if (key[0].sk_flags & SK_ISNULL) {
+	    return (false);
+	}
+
 	if (key[0].sk_flags & SK_COMMUTE) {
 	    test = (int) (*(key[0].sk_func))
 		(DatumGetPointer(key[0].sk_argument),

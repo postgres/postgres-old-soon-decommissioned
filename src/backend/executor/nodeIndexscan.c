@@ -273,6 +273,11 @@ ExecIndexReScan(IndexScan *node, ExprContext *exprCtxt, Plan* parent)
 		scanvalue = (Datum)
 		    ExecEvalExpr(scanexpr, exprCtxt, &isNull, &isDone);
 		scan_keys[j].sk_argument = scanvalue;
+		if (isNull) {
+		    scan_keys[j].sk_flags |= SK_ISNULL;
+		} else {
+		    scan_keys[j].sk_flags &= ~SK_ISNULL;
+		}
 	    }
 	}
     } 
