@@ -782,9 +782,9 @@ tableDesc(PsqlSettings *pset, char *table, FILE *fout)
 				 */
 
 				if (nIndices == 1)
-					fprintf(fout, "Indices:  ");
+					fprintf(fout, "Index:    ");
 				else	
-					fprintf(fout, "Index:     ");
+					fprintf(fout, "Indices:  ");
 					
 				/* next, print out the instances */
 				for (i = 0; i < PQntuples(res); i++)
