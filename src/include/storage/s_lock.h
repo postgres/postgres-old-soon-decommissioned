@@ -157,6 +157,24 @@ tas(volatile slock_t *lock)
 #endif	 /* sparc */
 
 
+#if defined(__mc68000__)
+#define TAS(lock) tas(lock)
+
+static __inline__ int
+tas(volatile slock_t *lock)
+{
+	register int rv;
+	
+	__asm__ __volatile__ (
+		"tas %1; sne %0"
+		: "=d" (rv), "=m"(*lock)
+		: "1" (*lock)
+		: "cc" );
+	return rv;
+}
+
+#endif /* defined(__mc68000__) */
+
 
 #if defined(NEED_VAX_TAS_ASM)
 /*
@@ -372,3 +390,4 @@ int			tas(volatile slock_t *lock);		/* port/.../tas.s, or
 
 #endif	 /* HAS_TEST_AND_SET */
 #endif	 /* S_LOCK_H */
+
