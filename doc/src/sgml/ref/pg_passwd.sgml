@@ -77,7 +77,7 @@ pg_guest:/nB7.w5Auq.BY:93001
    the new password for <literal>pg_guest</literal>:
 
    <programlisting>
-	% pg_passwd passwd
+	$ pg_passwd passwd
 	Username: pg_guest
 	Password:
 	Re-enter password:
@@ -102,7 +102,7 @@ pg_guest:/nB7.w5Auq.BY:93001
    The following lines show the sample usage of the option:
 
 <programlisting>
-% psql -h hyalos -u unv
+$ psql -h hyalos -u unv
 Username: pg_guest
 Password:
 Welcome to the POSTGRESQL interactive sql monitor:
