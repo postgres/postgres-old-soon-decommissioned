@@ -316,11 +316,11 @@ typedef struct EState
 	ExprContext *es_per_tuple_exprcontext;
 
 	/* Below is to re-evaluate plan qual in READ COMMITTED mode */
-	struct Plan *es_origPlan;
-	Pointer		es_evalPlanQual;
-	bool	   *es_evTupleNull;
-	HeapTuple  *es_evTuple;
-	bool		es_useEvalPlan;
+	Plan	   *es_topPlan;		/* link to top of plan tree */
+	struct evalPlanQual *es_evalPlanQual; /* chain of PlanQual states */
+	bool	   *es_evTupleNull;	/* local array of EPQ status */
+	HeapTuple  *es_evTuple;		/* shared array of EPQ substitute tuples */
+	bool		es_useEvalPlan;	/* evaluating EPQ tuples? */
 } EState;
 
 
