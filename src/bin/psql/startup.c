@@ -590,6 +590,7 @@ process_psqlrc(char *argv0)
 		psqlrc = pg_malloc(strlen(home) + 1 + strlen(PSQLRC) + 1);
 		sprintf(psqlrc, "%s/%s", home, PSQLRC);
 		process_psqlrc_file(psqlrc);
+		free(psqlrc);
 	}
 }
 
