@@ -570,7 +570,7 @@ dumptuples(Sort *node)
     HeapTuple	tup;
     int memtupindex = 0;
 
-    if (! PS(node)->using_tape_files) {
+    if (! PS(node)->using_tape_files && PS(node)->tupcount) {
 	Assert(PS(node)->memtuples == NULL);
     	PS(node)->memtuples = palloc(PS(node)->tupcount * sizeof(HeapTuple));
     }
