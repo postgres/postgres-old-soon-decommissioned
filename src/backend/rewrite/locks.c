@@ -68,9 +68,9 @@ nodeThisLockWasTriggered(Node *node, int varno, AttrNumber attnum,
 			break;
 		case T_Aggref:
 			{
-				Aggref	   *agg = (Aggref *) node;
+				Aggref	   *aggref = (Aggref *) node;
 
-				return nodeThisLockWasTriggered(agg->target, varno, attnum,
+				return nodeThisLockWasTriggered(aggref->target, varno, attnum,
 												sublevels_up);
 			}
 			break;

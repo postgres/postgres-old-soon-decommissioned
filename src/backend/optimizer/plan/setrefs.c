@@ -700,7 +700,7 @@ OperandIsInner(Node *opnd, int inner_relid)
 
 /*---------------------------------------------------------
  *
- * set_agg_tlist_references -
+ * get_agg_tlist_references -
  *	  changes the target list of an Agg node so that it points to
  *	  the tuples returned by its left tree subplan.
  *
@@ -708,7 +708,7 @@ OperandIsInner(Node *opnd, int inner_relid)
  *
  */
 List *
-set_agg_tlist_references(Agg *aggNode)
+get_agg_tlist_references(Agg *aggNode)
 {
 	List	   *aggTargetList;
 	List	   *subplanTargetList;

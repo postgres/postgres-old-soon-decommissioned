@@ -249,7 +249,7 @@ union_planner(Query *parse)
 	{
 	        int old_length=0, new_length=0;
 		
-		/* Create the AGG node but use 'tlist' not 'new_tlist' as target list because we
+		/* Create the Agg node but use 'tlist' not 'new_tlist' as target list because we
 		 * don't want the additional attributes (only used for the havingQual, see above)
 		 * to show up in the result */
 		result_plan = (Plan *) make_agg(tlist, result_plan);
@@ -259,7 +259,7 @@ union_planner(Query *parse)
 		 * the result tuple of the subplans.
 		 */
 		((Agg *) result_plan)->aggs =
-		  set_agg_tlist_references((Agg *) result_plan); 
+		  get_agg_tlist_references((Agg *) result_plan); 
 
 
 		/***S*H***/
