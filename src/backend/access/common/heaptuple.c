@@ -809,7 +809,7 @@ heap_formtuple(TupleDesc tupleDescriptor,
 	int			i;
 	int			numberOfAttributes = tupleDescriptor->natts;
 
-	len = offsetof(HeapTuple->t_bits);
+	len = offsetof(HeapTupleData, t_bits);
 
 	for (i = 0; i < numberOfAttributes && !hasnull; i++)
 	{
@@ -957,7 +957,7 @@ heap_addheader(uint32 natts,	/* max domain index */
 
 	AssertArg(natts > 0);
 
-	len = offsetof(HeapTuple->t_bits);
+	len = offsetof(HeapTupleData, t_bits);
 
 	hoff = len = DOUBLEALIGN(len);		/* be conservative */
 	len += structlen;
