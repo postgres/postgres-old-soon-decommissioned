@@ -58,6 +58,11 @@
 (element symbol ($mono-seq$))
 (element type ($mono-seq$))
 
+;; Indentation of verbatim environments
+(define %indent-programlisting-lines% "    ")
+(define %indent-screen-lines% "    ")
+(define %indent-synopsis-lines% "    ")
+
 
 ;; Bibliography things
 
