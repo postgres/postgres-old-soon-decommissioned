@@ -20,7 +20,7 @@ CFLAGS += $(INCLUDE_OPT)
 CFLAGS += -DPOSTGRESDIR='"$(POSTGRESDIR)"' -DPGDATADIR='"$(DATADIR)"' \
           -DPOSTPORT='"$(POSTPORT)"'
 
-OBJS = enbl.o findbe.o globals.o magic.o miscinit.o postinit.o
+OBJS = enbl.o findbe.o globals.o miscinit.o postinit.o
 
 all: SUBSYS.o
 

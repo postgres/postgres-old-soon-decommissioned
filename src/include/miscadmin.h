@@ -70,14 +70,6 @@ extern Oid	    LastOidProcessed;	/* for query rewrite */
 #define NDBUFS 64
 
 /*****************************************************************************
- *	magic.h		- definitions of the indexes of the magic numbers    *
- *****************************************************************************/
-
-#define	PG_RELEASE	6
-#define PG_VERSION	0
-#define	PG_VERFILE	"PG_VERSION"
-
-/*****************************************************************************
  *    pdir.h --                                                              *
  *	    POSTGRES directory path definitions.                             *
  *****************************************************************************/
@@ -148,7 +140,6 @@ typedef	int16	ExitStatus;
 
 /* in utils/init/postinit.c */
 extern void InitMyDatabaseId(void);
-extern void DoChdirAndInitDatabaseNameAndPath(char *name, char *path);
 extern void InitUserid(void);
 extern void InitCommunication(void);
 extern void InitStdio(void);
@@ -169,13 +160,5 @@ extern bool IsInitProcessingMode(void);
 extern bool IsNormalProcessingMode(void);
 extern void SetProcessingMode(ProcessingMode mode);
 extern ProcessingMode GetProcessingMode(void);
-
-
-/*
- * Prototypes for utils/init/magic.c
- */
-extern int DatabaseMetaGunkIsConsistent(const char *database, char *path);
-extern int ValidPgVersion(const char *path);
-extern void SetPgVersion(const char *path);
 
 #endif	/* MISCADMIN_H */
