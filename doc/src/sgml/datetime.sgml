@@ -344,7 +344,7 @@ $Header$
        </row>
        <row>
 	<entry><literal>PM</literal></entry>
-	<entry>Time is on or after after 12:00</entry>
+	<entry>Time is on or after 12:00</entry>
        </row>
        <row>
 	<entry><literal>T</literal></entry>
