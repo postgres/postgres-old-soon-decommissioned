@@ -16,7 +16,7 @@ $Header$
    <para>
     All <Productname>Postgres</Productname> commands that are executed 
     directly from a Unix shell are
-    found in the directory <quote>.../bin</quote>.  Including this directory in
+    found in the directory <filename>.../bin</filename>.  Including this directory in
     your search path will make executing the commands easier.
    </para>
 

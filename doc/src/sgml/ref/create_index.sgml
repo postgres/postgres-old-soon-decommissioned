@@ -227,6 +227,11 @@ ERROR: Cannot create index: 'index_name' already exists.
    access methods).
   </para>
 
+  <para>
+   Use <xref linkend="sql-dropindex-title" endterm="sql-dropindex-title">
+   to remove an index.
+  </para>
+
   <refsect2 id="R2-SQL-CREATEINDEX-3">
    <refsect2info>
     <date>1998-09-09</date>
@@ -338,11 +343,6 @@ SELECT am.amname AS acc_name,
    </para>
   </refsect2>
  </refsect1>
-
-   <para>
-    Use <xref linkend="sql-dropindex-title" endterm="sql-dropindex-title">
-    to remove an index.
-   </para>
 
  <refsect1 id="R1-SQL-CREATEINDEX-2">
   <title>

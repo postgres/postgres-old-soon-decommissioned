@@ -103,12 +103,12 @@ SELECT c.name, c.altitude
 +----------+----------+
     </programlisting>
 
-    Here the <quote>*</quote> after cities indicates that the query should
+    Here the "*" after cities indicates that the query should
     be  run over cities and all classes below cities in the
     inheritance hierarchy.  Many of the  commands  that  we
     have  already discussed (<command>SELECT</command>,
     <command>UPDATE</command> and <command>DELETE</command>)
-    support this <quote>*</quote> notation, as do others, like
+    support this inheritance notation using "*" as do other commands like
     <command>ALTER</command>.
    </para>
   </sect1>

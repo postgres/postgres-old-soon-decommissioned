@@ -24,11 +24,11 @@ Postgres documentation
   </refsynopsisdivinfo>
   <synopsis>
 initdb [ --pgdata|-D <replaceable class="parameter">dbdir</replaceable> ]
-       [ --sysid|-i <replaceable class="parameter">sysid</replaceable> ]
-       [ --pwprompt|-W ]
-       [ --encoding|-E <replaceable class="parameter">encoding</replaceable> ]
-       [ --pglib|-L <replaceable class="parameter">libdir</replaceable> ]
-       [ --noclean | -n ] [ --debug | -d ] [ --template | -t ]
+    [ --sysid|-i <replaceable class="parameter">sysid</replaceable> ]
+    [ --pwprompt|-W ]
+    [ --encoding|-E <replaceable class="parameter">encoding</replaceable> ]
+    [ --pglib|-L <replaceable class="parameter">libdir</replaceable> ]
+    [ --noclean | -n ] [ --debug | -d ] [ --template | -t ]
   </synopsis>
 
   <refsect2 id="R2-APP-INITDB-1">

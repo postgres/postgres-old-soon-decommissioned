@@ -24,8 +24,8 @@ Postgres documentation
   </refsynopsisdivinfo>
   <synopsis>
 postmaster [ -B <replaceable class="parameter">nBuffers</replaceable> ] [ -D <replaceable class="parameter">DataDir</replaceable> ] [ -N <replaceable class="parameter">maxBackends</replaceable> ] [ -S ]
-   [ -d <replaceable class="parameter">DebugLevel</replaceable> ] [ -i ] [ -l ]
- [ -o <replaceable class="parameter">BackendOptions</replaceable> ] [ -p <replaceable class="parameter">port</replaceable> ] [ -n | -s ]
+    [ -d <replaceable class="parameter">DebugLevel</replaceable> ] [ -i ] [ -l ]
+    [ -o <replaceable class="parameter">BackendOptions</replaceable> ] [ -p <replaceable class="parameter">port</replaceable> ] [ -n | -s ]
   </synopsis>
 
   <refsect2 id="R2-APP-POSTMASTER-1">

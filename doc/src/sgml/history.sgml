@@ -189,7 +189,7 @@ $Header$
   <title><productname>PostgreSQL</productname></title>
 
   <para>
-   By 1996, it became clear that the name <quote>Postgres95</quote> would
+   By 1996, it became clear that the name "Postgres95" would
    not stand the test of time. We chose a new name,
    <productname>PostgreSQL</productname>, to reflect the relationship
    between the original <productname>Postgres</productname> and the more

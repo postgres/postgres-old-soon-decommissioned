@@ -132,7 +132,7 @@ CREATE DATABASE <replaceable class="PARAMETER">name</replaceable> [ WITH LOCATIO
      </varlistentry>
 
      <varlistentry>
-      <term><computeroutput>ERROR:  Unable to create database directory 'xxx'.</computeroutput></term>
+      <term><computeroutput>ERROR:  Unable to create database directory '<replaceable>path</replaceable>'.</computeroutput></term>
       <term><computeroutput>ERROR:  Could not initialize database directory.</computeroutput></term>
       <listitem>
        <para>
@@ -164,8 +164,8 @@ CREATE DATABASE <replaceable class="PARAMETER">name</replaceable> [ WITH LOCATIO
   <para>
    An alternate location can be specified in order to,
    for example, store the database on a different disk.
-   The path must have been prepared with the <xref
-   linkend="APP-INITLOCATION" endterm="APP-INITLOCATION-title">
+   The path must have been prepared with the 
+   <xref linkend="APP-INITLOCATION" endterm="APP-INITLOCATION-title">
    command.
   </para>
   <para>
