@@ -2712,6 +2712,7 @@ static PQ_encoding_conv_tbl pq_conv_tbl[] = {
 		{EUC_JP, "EUC_JP"},
 		{EUC_CN, "EUC_CN"},
 		{EUC_KR, "EUC_KR"},
+		{EUC_TW, "EUC_TW"},
 		{UNICODE, "UNICODE"},
 		{MULE_INTERNAL, "MULE_INTERNAL"},
 		{LATIN1, "LATIN1"},
