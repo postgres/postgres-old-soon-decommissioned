@@ -5,8 +5,8 @@ top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
 NAME = _pgmodule
-SO_MAJOR_VERSION = 0
-SO_MINOR_VERSION = 0
+SO_MAJOR_VERSION = 2
+SO_MINOR_VERSION = 3
 OBJS = pgmodule.o
 SHLIB_LINK = $(libpq)
 ifeq ($(PORTNAME), win)
