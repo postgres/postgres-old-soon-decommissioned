@@ -194,9 +194,6 @@ pg_encname	pg_encname_tbl[] =
 		"win1251", PG_WIN1251
 	},							/* alias for Windows-1251 */
 	{
-		"win1252", PG_WIN1252
-	},							/* alias for Windows-1252 */
-	{
 		"win1256", PG_WIN1256
 	},							/* alias for Windows-1256 */
 	{
@@ -223,9 +220,6 @@ pg_encname	pg_encname_tbl[] =
 	{
 		"windows1251", PG_WIN1251
 	},							/* Windows-1251; Microsoft */
-	{
-		"windows1252", PG_WIN1252
-	},							/* Windows-1252; Microsoft */
 	{
 		"windows1256", PG_WIN1256
 	},							/* Windows-1256; Microsoft */
@@ -348,9 +342,6 @@ pg_enc2name pg_enc2name_tbl[] =
 	},
 	{
 		"WIN1250", PG_WIN1250
-	},
-	{
-		"WIN1252", PG_WIN1252
 	},
 	{
 		"SJIS", PG_SJIS
