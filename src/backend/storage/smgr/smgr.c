@@ -189,6 +189,13 @@ smgropen(int16 which, Relation reln)
 /*
  *  smgrclose() -- Close a relation.
  *
+ *      NOTE: mdclose frees fd vector! It may be re-used for other relation!
+ *      reln should be flushed from cache after closing !..
+ *	Currently, smgrclose is calling by 
+ *	relcache.c:RelationPurgeLocalRelation() only.
+ *	It would be nice to have smgrfree(), but because of
+ *	smgrclose is called from single place...	- vadim 05/22/97
+ *
  *	Returns SM_SUCCESS on success, aborts on failure.
  */
 int
