@@ -121,9 +121,9 @@ extern int PQAsyncNotifyWaiting;
 /*
  * prototypes for functions in pqpacket.c
  */
-extern int PacketReceive(Port *port, PacketBuf *buf, bool nonBlocking);
+extern int PacketReceive(Port *port, PacketBuf *buf, char nonBlocking);
 extern int PacketSend(Port *port, PacketBuf *buf,
-		      PacketLen len, bool nonBlocking);
+		      PacketLen len, char nonBlocking);
 /* extern PacketBuf* StartupInfo2PacketBuf(StartupInfo*); */
 /* extern StartupInfo* PacketBuf2StartupInfo(PacketBuf*); */
 
