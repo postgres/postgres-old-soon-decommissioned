@@ -30,11 +30,11 @@ if [ -z "$USER" ]; then
 fi
 
 dbname=$USER
-forcedel=f
+forcedel=t
 while [ -n "$1" ]
 do
 	case $1 in 
-	        -y) forcedel=t;;
+	        -i) forcedel=f;;
 		-a) AUTHSYS=$2; shift;;
 		-h) PGHOST=$2; shift;;
 		-p) PGPORT=$2; shift;;
@@ -67,6 +67,7 @@ if [ "$forcedel" = f ]
 
    while [ "$answer" != y -a "$answer" != n ]
    do
+       echo "Database '$dbname' will be permanently deleted."
        echo -n "Are you sure? (y/n) "
        read answer
    done
