@@ -600,7 +600,7 @@ typedef NameData *Name;
 			memset((char *) _start, _val, _len); \
 	} while (0)
 
-#define MEMSET_LOOP_LIMIT  64
+#define MEMSET_LOOP_LIMIT  1024
 
 
 /* ----------------------------------------------------------------
