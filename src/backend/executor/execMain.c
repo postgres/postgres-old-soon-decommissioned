@@ -170,6 +170,11 @@ ExecutorRun(QueryDesc *queryDesc, EState *estate, int feature, int count)
     dest =	  queryDesc->dest;
     destination = (void (*)()) DestToFunction(dest);
 
+#if 0
+    /*
+     * It doesn't work in common case (i.g. if function has a aggregate).
+     * Now we store parameter values before ExecutorStart. - vadim 01/22/97
+     */
 #ifdef INDEXSCAN_PATCH
     /*
      * If the plan is an index scan and some of the scan key are
@@ -182,6 +187,7 @@ ExecutorRun(QueryDesc *queryDesc, EState *estate, int feature, int count)
 	econtext = ((IndexScan *)plan)->scan.scanstate->cstate.cs_ExprContext;
 	ExecIndexReScan((IndexScan *)plan, econtext, plan);
     }
+#endif
 #endif
 
     switch(feature) {

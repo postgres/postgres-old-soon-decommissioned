@@ -281,15 +281,26 @@ postquel_execute(execution_state  *es,
 {
     TupleTableSlot *slot;
     Datum          value;
+
+#ifdef INDEXSCAN_PATCH
+    /*
+     * It's more right place to do it (before postquel_start->ExecutorStart).
+     * Now ExecutorStart->ExecInitIndexScan->ExecEvalParam works ok.
+     * (But note: I HOPE we can do it here). - vadim 01/22/97
+     */
+    if (fcache->nargs > 0)
+        postquel_sub_params(es, fcache->nargs, args, fcache->nullVect);
+#endif
     
     if (es->status == F_EXEC_START)
 	{
 	    (void) postquel_start(es);
 	    es->status = F_EXEC_RUN;
 	}
-    
+#ifndef INDEXSCAN_PATCH
     if (fcache->nargs > 0)
         postquel_sub_params(es, fcache->nargs, args, fcache->nullVect);
+#endif
     
     slot = postquel_getnext(es);
     
