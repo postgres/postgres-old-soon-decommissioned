@@ -19,22 +19,22 @@ int main(int argc, char **argv)
 {
     // Check if the program was invoked correctly; if not, signal error
     if (argc < 4 || argc > 5) {
-	cerr << "Usage: " << argv[0] << " database_name in_filename out_filename [oid]" << endl;
+	cerr << "Usage: " << argv[0] << " conninfo_str in_filename out_filename [oid]" << endl;
 	exit(1);
     }
 
     // Get the arguments passed to the program
-    char* database = argv[1];
+    char* conninfo = argv[1];
     char* in_filename = argv[2];
     char* out_filename = argv[3];
 
     // Set up the connection and create a large object
     int lobjId = ( argc == 4 ? 0 : atoi(argv[4]) );
-    PgLargeObject object(lobjId, database);
+    PgLargeObject object(lobjId, conninfo);
 
     // check to see that the backend connection was successfully made
     if ( object.ConnectionBad() ) {
-         cerr << "Connection to database '" << database << "' failed." << endl
+         cerr << "Connection with conninfo '" << conninfo << "' failed." << endl
               << object.ErrorMessage();
 	 exit(1);
     }
