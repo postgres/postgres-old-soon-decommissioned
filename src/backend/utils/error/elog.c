@@ -683,6 +683,8 @@ write_syslog(int level, const char *line)
 #ifdef MULTIBYTE
 			/* trim to multibyte letter boundary */ 
 			buflen = pg_mbcliplen(buf, l, l);
+			if (buflen <= 0)
+			    return;
 			buf[buflen] = '\0';
 			l = strlen(buf);
 #endif
