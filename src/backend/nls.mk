@@ -2,7 +2,8 @@
 CATALOG_NAME	:= postgres
 AVAIL_LANGUAGES	:= cs de es hr hu ru sv tr zh_CN zh_TW
 GETTEXT_FILES	:= + gettext-files
-GETTEXT_TRIGGERS:= elog:2 postmaster_error yyerror
+# elog should eventually be removed from this list:
+GETTEXT_TRIGGERS:= elog:2 errmsg errdetail errhint errcontext postmaster_error yyerror
 
 gettext-files:
 	find $(srcdir)/ -name '*.c' -print >$@
