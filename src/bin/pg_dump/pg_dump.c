@@ -948,6 +948,19 @@ main(int argc, char **argv)
 		exit(1);
 	}
 
+	/* Get the target database name */
+	if (optind < argc)
+		dbname = argv[optind];
+	else
+		dbname = getenv("PGDATABASE");
+	if (!dbname)
+	{
+		fprintf(stderr,
+				"%s: no database name specified\n",
+				progname);
+		exit(1);
+	}
+
 	if (dataOnly && schemaOnly)
 	{
 		fprintf(stderr,
@@ -1021,8 +1034,6 @@ main(int argc, char **argv)
 
 	/* Let the archiver know how noisy to be */
 	g_fout->verbose = g_verbose;
-
-	dbname = argv[optind];
 
 	/*
 	 * Open the database using the Archiver, so it knows about it. Errors
