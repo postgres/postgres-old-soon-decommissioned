@@ -1749,19 +1749,20 @@ CREATE TABLE SELLS
 
        <listitem>
 	<para>
-	 CHAR(<replaceable class="parameter">n</replaceable>):
-	 fixed length character string of length
+	 VARCHAR(<replaceable class="parameter">n</replaceable>):
+	 varying length character string of maximum length
 	 <replaceable class="parameter">n</replaceable>.
 	</para>
        </listitem>
 
        <listitem>
 	<para>
-	 VARCHAR(<replaceable class="parameter">n</replaceable>):
-	 varying length character string of maximum length
+	 CHAR(<replaceable class="parameter">n</replaceable>):
+	 fixed length character string of length
 	 <replaceable class="parameter">n</replaceable>.
 	</para>
        </listitem>
+
       </itemizedlist>
      </para>
     </sect3>
