@@ -46,7 +46,7 @@ ifeq ($(USE_ODBC), true)
 endif
 
 perl5/Makefile: perl5/Makefile.PL
-	cd perl5 && perl Makefile.PL
+	cd perl5 && $(PERL) Makefile.PL
 
 install-perl5: perl5/Makefile
 	$(MAKE) -C perl5 clean
