@@ -18,6 +18,7 @@ all: initdb
 initdb: initdb.sh $(top_builddir)/src/Makefile.global
 	sed -e 's/@VERSION@/$(VERSION)/g' \
 	    -e 's,@SHELL@,$(SHELL),g' \
+	    -e 's,@HAVE_IPV6@,$(HAVE_IPV6),g' \
 	    -e 's,@bindir@,$(bindir),g' \
 	    -e 's,@datadir@,$(datadir),g' \
 	  $< >$@
