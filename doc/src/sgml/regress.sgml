@@ -200,7 +200,7 @@
     <title>Date and time differences</title>
 
     <para>
-     Some of the queries in the <filename>timestamp</filename> test will
+     Some of the queries in the <filename>horology</filename> test will
      fail if you run the test on the day of a daylight-saving time
      changeover, or the day before or after one.  These queries assume
      that the intervals between midnight yesterday, midnight today and
