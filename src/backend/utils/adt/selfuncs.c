@@ -3367,7 +3367,7 @@ make_greater_string(const Const *str_const)
 
 		/*
 		 * Truncate off the last character, which might be more than 1
-		 * byte in MULTIBYTE case.
+		 * byte, depending on the character encoding.
 		 */
 		if (datatype != BYTEAOID && pg_database_encoding_max_length() > 1)
 			len = pg_mbcliplen((const unsigned char *) workstr, len, len - 1);

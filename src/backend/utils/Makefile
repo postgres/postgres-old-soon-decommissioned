@@ -8,10 +8,7 @@ subdir = src/backend/utils/
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-SUBDIRS     := adt cache error fmgr hash init misc mmgr sort time
-ifdef MULTIBYTE
-SUBDIRS     += mb
-endif
+SUBDIRS     := adt cache error fmgr hash init misc mmgr sort time mb
 SUBDIROBJS  := $(SUBDIRS:%=%/SUBSYS.o)
 
 
@@ -33,10 +30,3 @@ fmgroids.h fmgrtab.c: Gen_fmgrtab.sh $(top_srcdir)/src/include/catalog/pg_proc.h
 clean:
 	for dir in $(SUBDIRS); do $(MAKE) -C $$dir $@ || exit; done
 	rm -f SUBSYS.o fmgrtab.o fmgroids.h fmgrtab.c
-
-dep depend: fmgroids.h fmgrtab.c
-	for dir in $(SUBDIRS); do $(MAKE) -C $$dir $@ || exit; done
-
-ifeq (depend,$(wildcard depend))
-include depend
-endif

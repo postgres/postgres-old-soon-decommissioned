@@ -127,7 +127,6 @@ with_perl	= @with_perl@
 with_python	= @with_python@
 with_tcl	= @with_tcl@
 with_tk		= @with_tk@
-MULTIBYTE	= @MULTIBYTE@
 enable_shared	= @enable_shared@
 enable_rpath	= @enable_rpath@
 enable_nls	= @enable_nls@

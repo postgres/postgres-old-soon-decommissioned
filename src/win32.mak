@@ -10,10 +10,6 @@ NULL=
 NULL=nul
 !ENDIF 
 
-!IFDEF	MULTIBYTE
-MAKEMACRO = "MULTIBYTE=$(MULTIBYTE)"
-!ENDIF
-
 ALL: 
    cd include
    if not exist pg_config.h copy pg_config.h.win32 pg_config.h

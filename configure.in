@@ -162,13 +162,6 @@ AC_MSG_RESULT([$enable_recode])
 
 
 #
-# Multibyte support
-#
-MULTIBYTE=SQL_ASCII
-AC_DEFINE(MULTIBYTE, 1, [Set to 1 if you want to use multibyte characters (--enable-multibyte)])
-AC_SUBST(MULTIBYTE)
-
-#
 # NLS
 #
 AC_MSG_CHECKING([whether NLS is wanted])

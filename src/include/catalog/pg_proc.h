@@ -2137,7 +2137,7 @@ DESCR("convert int32 number to hex");
 DATA(insert OID =  2090 ( to_hex       PGNSP PGUID 12 f f t f i 1 25 "20"  to_hex64 - _null_ ));
 DESCR("convert int64 number to hex");
 
-/* for multi-byte support */
+/* for character set encoding support */
 
 /* return database encoding name */
 DATA(insert OID = 1039 (  getdatabaseencoding	   PGNSP PGUID 12 f f t f s 0 19 ""	getdatabaseencoding - _null_ ));

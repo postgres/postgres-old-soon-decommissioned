@@ -3,8 +3,9 @@
  * like_match.c
  *	  like expression handling internal code.
  *
- * This file is included by like.c *twice* if multibyte is enabled.
- * This is for an optimization of single byte encodings.
+ * This file is included by like.c *twice*, to provide an optimization
+ * for single-byte encodings.
+ *
  * Before the inclusion, we need to define following macros:
  *
  * CHAREQ

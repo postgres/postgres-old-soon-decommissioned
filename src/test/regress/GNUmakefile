@@ -22,6 +22,9 @@ override CFLAGS += $(CFLAGS_SL)
 
 override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
 
+# default encoding
+MULTIBYTE = SQL_ASCII
+
 
 ##
 ## Prepare for tests

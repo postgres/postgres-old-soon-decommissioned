@@ -14,11 +14,8 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
 DIRS := initdb initlocation ipcclean pg_ctl pg_dump pg_id \
-	psql scripts pg_config pg_controldata pg_resetxlog
-
-ifdef MULTIBYTE
-DIRS += pg_encoding
-endif
+	psql scripts pg_config pg_controldata pg_resetxlog \
+	pg_encoding
 
 ifeq ($(with_tcl), yes)
 	DIRS += pgtclsh

@@ -113,7 +113,7 @@ typedef struct ControlFileData
 	/* flag indicating internal format of timestamp, interval, time */
 	uint32		enableIntTimes;	/* int64 storage enabled? */
 
-	/* active locales --- "C" if compiled without USE_LOCALE: */
+	/* active locales */
 	uint32		localeBuflen;
 	char		lc_collate[LOCALE_NAME_BUFLEN];
 	char		lc_ctype[LOCALE_NAME_BUFLEN];

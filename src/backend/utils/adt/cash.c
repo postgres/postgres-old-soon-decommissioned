@@ -61,7 +61,7 @@ CashGetDatum(Cash value)
  * XXX HACK It looks as though some of the symbols for
  *	monetary values returned by localeconv() can be multiple
  *	bytes/characters. This code assumes one byte only. - tgl 97/04/14
- * XXX UNHACK Allow the currency symbol to be multi-byte.
+ * XXX UNHACK Allow the currency symbol to be multibyte.
  *	- thomas 1998-03-01
  */
 Datum

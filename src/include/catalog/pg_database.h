@@ -35,7 +35,7 @@ CATALOG(pg_database) BOOTSTRAP BKI_SHARED_RELATION
 {
 	NameData	datname;		/* database name */
 	int4		datdba;			/* sysid of owner */
-	int4		encoding;		/* multibyte encoding, if any */
+	int4		encoding;		/* character encoding */
 	bool		datistemplate;	/* allowed as CREATE DATABASE template? */
 	bool		datallowconn;	/* new connections allowed? */
 	Oid			datlastsysoid;	/* highest OID to consider a system OID */

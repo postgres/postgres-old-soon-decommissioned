@@ -591,7 +591,7 @@ get_db_info(const char *name, Oid *dbIdP, int4 *ownerIdP,
 		/* sysid of the owner */
 		if (ownerIdP)
 			*ownerIdP = dbform->datdba;
-		/* multibyte encoding */
+		/* character encoding */
 		if (encodingP)
 			*encodingP = dbform->encoding;
 		/* allowed as template? */

@@ -93,7 +93,7 @@ iwchareq(unsigned char *p1, unsigned char *p2)
 		return (0);
 
 	/*
-	 * ok, p1 and p2 are both > CHARMAX, then they must be multi-byte
+	 * ok, p1 and p2 are both > CHARMAX, then they must be multibyte
 	 * characters
 	 */
 	l = pg_mblen(p1);

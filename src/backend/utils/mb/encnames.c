@@ -44,7 +44,7 @@ pg_encname	pg_encname_tbl[] =
 	},							/* IBM866 */
 	{
 		"big5", PG_BIG5
-	},							/* Big5; Chinese for Taiwan Multi-byte set */
+	},							/* Big5; Chinese for Taiwan multibyte set */
 	{
 		"euccn", PG_EUC_CN
 	},							/* EUC-CN; Extended Unix Code for

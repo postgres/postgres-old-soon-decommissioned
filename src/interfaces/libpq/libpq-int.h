@@ -180,7 +180,6 @@ typedef enum
 {
 	SETENV_STATE_OPTION_SEND,	/* About to send an Environment Option */
 	SETENV_STATE_OPTION_WAIT,	/* Waiting for above send to complete  */
-	/* these next two are only used in MULTIBYTE mode */
 	SETENV_STATE_ENCODINGS_SEND,	/* About to send an "encodings" query */
 	SETENV_STATE_ENCODINGS_WAIT,	/* Waiting for query to complete	  */
 	SETENV_STATE_IDLE
