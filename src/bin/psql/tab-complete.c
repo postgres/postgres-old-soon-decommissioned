@@ -358,6 +358,14 @@ psql_completion(char *text, int start, int end)
 			 && strcasecmp(prev_wd, "USER") == 0)
 		COMPLETE_WITH_QUERY(Query_for_list_of_users);
 
+/* ANALYZE */
+	/* If the previous word is ANALYZE, produce list of tables. */
+	else if (strcasecmp(prev_wd, "ANALYZE") == 0)
+		COMPLETE_WITH_QUERY(Query_for_list_of_tables);
+	/* If we have ANALYZE <table>, complete with semicolon. */
+	else if (strcasecmp(prev2_wd, "ANALYZE") == 0)
+		COMPLETE_WITH_CONST(";");
+
 /* CLUSTER */
 	/* If the previous word is CLUSTER, produce list of indexes. */
 	else if (strcasecmp(prev_wd, "CLUSTER") == 0)
