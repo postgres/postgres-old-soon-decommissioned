@@ -318,8 +318,7 @@ ProcessUtility(Node *parsetree,
 							break;
 
 						case DROP_CONVERSION:
-							/* does its own permissions checks */
-							DropConversionCommand(names);
+							DropConversionCommand(names, stmt->behavior);
 							break;
 
 						case DROP_SCHEMA:

@@ -90,7 +90,7 @@ CreateConversionCommand(CreateConversionStmt *stmt)
  * DROP CONVERSION
  */
 void
-DropConversionCommand(List *name)
+DropConversionCommand(List *name, DropBehavior behavior)
 {
 	Oid			namespaceId;
 	char		*conversion_name;
@@ -108,5 +108,5 @@ DropConversionCommand(List *name)
 	 * none existing conversion
 	 * not ower of this conversion
 	 */
-	ConversionDrop(conversion_name, namespaceId, GetUserId());
+	ConversionDrop(conversion_name, namespaceId, GetUserId(), behavior);
 }

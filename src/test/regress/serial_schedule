@@ -86,3 +86,4 @@ test: temp
 test: domain
 test: rangefuncs
 test: without_oid
+test: conversion

@@ -18,6 +18,6 @@
 #include "nodes/parsenodes.h"
 
 extern void CreateConversionCommand(CreateConversionStmt *parsetree);
-extern void DropConversionCommand(List *conversion_name);
+extern void DropConversionCommand(List *conversion_name, DropBehavior behavior);
 
 #endif  /* CONVERSIONCMDS_H */

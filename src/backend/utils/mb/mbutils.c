@@ -6,7 +6,7 @@
  * $Id$
  */
 #include "postgres.h"
-
+#include "access/xact.h"
 #include "miscadmin.h"
 #include "mb/pg_wchar.h"
 #include "utils/builtins.h"
@@ -35,7 +35,8 @@ SetClientEncoding(int encoding, bool doit)
 	if (!PG_VALID_FE_ENCODING(encoding))
 		return (-1);
 
-	if (current_server_encoding == encoding)
+	if (current_server_encoding == encoding ||
+		(current_server_encoding == PG_SQL_ASCII || encoding == PG_SQL_ASCII))
 	{
 		ClientEncoding = &pg_enc2name_tbl[encoding];
 		return 0;
@@ -102,7 +103,13 @@ pg_do_encoding_conversion(unsigned char *src, int len,
 	unsigned char *result;
 	Oid	proc;
 
+	if (!IsTransactionState())
+		return src;
+	
 	if (src_encoding == dest_encoding)
+		return src;
+
+	if (src_encoding == PG_SQL_ASCII || dest_encoding == PG_SQL_ASCII)
 		return src;
 
 	proc = FindDefaultConversionProc(src_encoding, dest_encoding);

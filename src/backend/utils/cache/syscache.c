@@ -206,6 +206,16 @@ static const struct cachedesc cacheinfo[] = {
 			0,
 			0
 	}},
+	{ConversionRelationName, /* CONDEFAULT */
+		ConversionDefaultIndex,
+		0,
+		4,
+		{
+			Anum_pg_conversion_connamespace,
+			Anum_pg_conversion_conforencoding,
+			Anum_pg_conversion_contoencoding,
+			ObjectIdAttributeNumber,
+	}},
 	{ConversionRelationName, /* CONNAMENSP */
 		ConversionNameNspIndex,
 		0,
@@ -213,6 +223,16 @@ static const struct cachedesc cacheinfo[] = {
 		{
 			Anum_pg_conversion_conname,
 			Anum_pg_conversion_connamespace,
+			0,
+			0
+	}},
+	{ConversionRelationName, /* CONOID */
+		ConversionOidIndex,
+		0,
+		1,
+		{
+			ObjectIdAttributeNumber,
+			0,
 			0,
 			0
 	}},
