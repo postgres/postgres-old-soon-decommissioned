@@ -400,7 +400,7 @@ ReleaseLruFile()
 	DO_DB(elog(DEBUG, "ReleaseLruFile. Opened %d", nfile));
 
 	if (nfile <= 0)
-		elog(FATAL, "ReleaseLruFile: No opened files - no one can be closed");
+		elog(ERROR, "ReleaseLruFile: No open files available to be closed");
 
 	/*
 	 * There are opened files and so there should be at least one used vfd
