@@ -77,7 +77,6 @@ ifdef MODULE_big
 NAME = $(MODULE_big)
 SO_MAJOR_VERSION= 0
 SO_MINOR_VERSION= 0
-rpath =
 
 SHLIB_LINK += $(BE_DLLLIBS)
 
