@@ -25,10 +25,9 @@
 #include "storage/lwlock.h"
 #include "storage/pg_sema.h"
 #include "storage/spin.h"
-#include "storage/s_lock.h"
 
 
-#ifdef HAS_TEST_AND_SET
+#ifdef HAVE_SPINLOCKS
 
 /*
  * Report number of semaphores needed to support spinlocks.
@@ -39,7 +38,7 @@ SpinlockSemas(void)
 	return 0;
 }
 
-#else							/* !HAS_TEST_AND_SET */
+#else							/* !HAVE_SPINLOCKS */
 
 /*
  * No TAS, so spinlocks are implemented as PGSemaphores.
@@ -93,4 +92,4 @@ tas_sema(volatile slock_t *lock)
 	return !PGSemaphoreTryLock((PGSemaphore) lock);
 }
 
-#endif   /* !HAS_TEST_AND_SET */
+#endif   /* !HAVE_SPINLOCKS */

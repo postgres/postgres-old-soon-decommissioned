@@ -1762,8 +1762,7 @@ kill `cat /usr/local/pgsql/data/postmaster.pid`
        Peter Eisentraut (<email>peter_e@gmx.net</email>)</entry>
       <entry>
        needs new <filename>config.guess</filename>,
-       <option>--disable-spinlocks</option>, <literal>#undef
-       HAS_TEST_AND_SET</>, disable <function>tas_dummy()</>
+       <option>--disable-spinlocks</option>
       </entry>
      </row>
      <row>

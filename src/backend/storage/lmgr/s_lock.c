@@ -17,6 +17,7 @@
 
 #include <sys/time.h>
 #include <unistd.h>
+
 #include "storage/s_lock.h"
 
 
@@ -118,8 +119,8 @@ s_lock(volatile slock_t *lock, const char *file, int line)
  * definition exists (yet).
  * In the future, get rid of tas.[cso] and fold it into this file.
  *
- * If you change something here, you have to modify s_lock.h because
- * the definitions for these is split between this file and s_lock.h.
+ * If you change something here, you will likely need to modify s_lock.h too,
+ * because the definitions for these are split between this file and s_lock.h.
  */
 
 
