@@ -516,7 +516,10 @@ SELECT 'doesn''t' AS ret
          element. So looking up a column name in the list with <application>Tcl</>'s
          <function>lsearch</> command returns the element's number starting
 	 with 1 for the first column, the same way the columns are customarily
-	 numbered in <productname>PostgreSQL</productname>.
+	 numbered in <productname>PostgreSQL</productname>.  (Empty list
+	 elements also appear in the positions of columns that have been
+	 dropped, so that the attribute numbering is correct for columns
+	 to their right.)
 	</para>
        </listitem>
       </varlistentry>
