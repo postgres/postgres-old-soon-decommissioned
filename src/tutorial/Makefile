@@ -13,8 +13,6 @@ include ../Makefile.global
 
 CFLAGS+= -I$(LIBPQDIR) -I../../include
 
-LDADD+= -L$(LIBPQDIR) -lpq
-        
 #
 # DLOBJS is the dynamically-loaded object files.  The "funcs" queries
 # include CREATE FUNCTIONs that load routines from these files.

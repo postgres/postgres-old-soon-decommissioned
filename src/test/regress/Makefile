@@ -16,8 +16,6 @@ include ../../Makefile.global
 
 CFLAGS+= -I$(LIBPQDIR) -I../../include
 
-LDADD+= -L$(LIBPQDIR) -lpq
-        
 #
 # DLOBJS is the dynamically-loaded object file.  The regression test uses 
 # this when it does a CREATE FUNCTION ... LANGUAGE 'C').
