@@ -1097,10 +1097,10 @@ DropCastById(Oid castOid)
 
 	relation = heap_openr(CastRelationName, RowExclusiveLock);
 
-	ScanKeyEntryInitialize(&scankey, 0x0,
+	ScanKeyEntryInitialize(&scankey, 0,
 						   ObjectIdAttributeNumber,
-						   F_OIDEQ,
-						   ObjectIdGetDatum(castOid));
+						   BTEqualStrategyNumber, F_OIDEQ,
+						   ObjectIdGetDatum(castOid), OIDOID);
 	scan = systable_beginscan(relation, CastOidIndex, true,
 							  SnapshotNow, 1, &scankey);
 

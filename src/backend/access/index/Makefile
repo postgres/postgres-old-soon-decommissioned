@@ -12,7 +12,7 @@ subdir = src/backend/access/index
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = genam.o indexam.o istrat.o
+OBJS = genam.o indexam.o
 
 all: SUBSYS.o
 

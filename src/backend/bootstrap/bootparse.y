@@ -23,7 +23,6 @@
 #include "access/htup.h"
 #include "access/itup.h"
 #include "access/skey.h"
-#include "access/strat.h"
 #include "access/tupdesc.h"
 #include "access/xact.h"
 #include "bootstrap/bootstrap.h"

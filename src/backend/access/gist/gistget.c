@@ -249,26 +249,16 @@ gistindex_keytest(IndexTuple tuple,
 					   IndexTupleSize(tuple) - sizeof(IndexTupleData),
 					   FALSE, isNull);
 
-		if (key[0].sk_flags & SK_COMMUTE)
-		{
-			test = FunctionCall3(&key[0].sk_func,
-								 key[0].sk_argument,
-								 PointerGetDatum(&de),
-								 ObjectIdGetDatum(key[0].sk_procedure));
-		}
-		else
-		{
-			test = FunctionCall3(&key[0].sk_func,
-								 PointerGetDatum(&de),
-								 key[0].sk_argument,
-								 ObjectIdGetDatum(key[0].sk_procedure));
-		}
+		test = FunctionCall3(&key[0].sk_func,
+							 PointerGetDatum(&de),
+							 key[0].sk_argument,
+							 Int32GetDatum(key[0].sk_strategy));
 
 		if (de.key != datum && !isAttByVal(giststate, key[0].sk_attno - 1))
 			if (DatumGetPointer(de.key) != NULL)
 				pfree(DatumGetPointer(de.key));
 
-		if (DatumGetBool(test) == !!(key[0].sk_flags & SK_NEGATE))
+		if (!DatumGetBool(test))
 			return false;
 
 		scanKeySize--;

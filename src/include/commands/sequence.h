@@ -15,6 +15,8 @@
 
 #include "nodes/parsenodes.h"
 #include "access/xlog.h"
+#include "fmgr.h"
+
 
 /*
  * On a machine with no 64-bit-int C datatype, sizeof(int64) will not be 8,

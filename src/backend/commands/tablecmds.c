@@ -1393,20 +1393,20 @@ update_ri_trigger_args(Oid relid,
 	tgrel = heap_openr(TriggerRelationName, RowExclusiveLock);
 	if (fk_scan)
 	{
-		ScanKeyEntryInitialize(&skey[0], 0x0,
+		ScanKeyEntryInitialize(&skey[0], 0,
 							   Anum_pg_trigger_tgconstrrelid,
-							   F_OIDEQ,
-							   ObjectIdGetDatum(relid));
+							   BTEqualStrategyNumber, F_OIDEQ,
+							   ObjectIdGetDatum(relid), OIDOID);
 		trigscan = systable_beginscan(tgrel, TriggerConstrRelidIndex,
 									  true, SnapshotNow,
 									  1, skey);
 	}
 	else
 	{
-		ScanKeyEntryInitialize(&skey[0], 0x0,
+		ScanKeyEntryInitialize(&skey[0], 0,
 							   Anum_pg_trigger_tgrelid,
-							   F_OIDEQ,
-							   ObjectIdGetDatum(relid));
+							   BTEqualStrategyNumber, F_OIDEQ,
+							   ObjectIdGetDatum(relid), OIDOID);
 		trigscan = systable_beginscan(tgrel, TriggerRelidNameIndex,
 									  true, SnapshotNow,
 									  1, skey);

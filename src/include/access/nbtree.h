@@ -340,15 +340,9 @@ typedef struct xl_btree_newpage
 
 
 /*
- *	Operator strategy numbers -- ordering of these is <, <=, =, >=, >
+ *	Operator strategy numbers for B-tree have been moved to access/skey.h,
+ *	because many places need to use them in ScanKeyEntryInitialize() calls.
  */
-
-#define BTLessStrategyNumber			1
-#define BTLessEqualStrategyNumber		2
-#define BTEqualStrategyNumber			3
-#define BTGreaterEqualStrategyNumber	4
-#define BTGreaterStrategyNumber			5
-#define BTMaxStrategyNumber				5
 
 /*
  *	When a new operator class is declared, we require that the user
@@ -478,12 +472,6 @@ extern bool _bt_next(IndexScanDesc scan, ScanDirection dir);
 extern bool _bt_first(IndexScanDesc scan, ScanDirection dir);
 extern bool _bt_step(IndexScanDesc scan, Buffer *bufP, ScanDirection dir);
 extern Buffer _bt_get_endpoint(Relation rel, uint32 level, bool rightmost);
-
-/*
- * prototypes for functions in nbtstrat.c
- */
-extern StrategyNumber _bt_getstrat(Relation rel, AttrNumber attno,
-			 RegProcedure proc);
 
 /*
  * prototypes for functions in nbtutils.c

@@ -229,7 +229,6 @@
  */
 /* #define IPORTAL_DEBUG  */
 /* #define HEAPDEBUGALL  */
-/* #define ISTRATDEBUG	*/
 /* #define ACLDEBUG */
 /* #define RTDEBUG */
 /* #define GISTDEBUG */

@@ -15,6 +15,7 @@
 #define SMGR_H
 
 #include "access/xlog.h"
+#include "fmgr.h"
 #include "storage/relfilenode.h"
 #include "storage/block.h"
 #include "utils/rel.h"

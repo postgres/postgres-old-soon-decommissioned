@@ -262,6 +262,17 @@ _copyIndexScan(IndexScan *from)
 	COPY_OIDLIST_FIELD(indxid);
 	COPY_NODE_FIELD(indxqual);
 	COPY_NODE_FIELD(indxqualorig);
+	/* this can become COPY_NODE_FIELD when intlists are normal objects: */
+	{
+		List	*newstrat = NIL;
+		List    *tmp;
+
+		foreach(tmp, from->indxstrategy)
+		{
+			newstrat = lappend(newstrat, listCopy(lfirst(tmp)));
+		}
+		newnode->indxstrategy = newstrat;
+	}
 	COPY_SCALAR_FIELD(indxorderdir);
 
 	return newnode;

@@ -21,7 +21,6 @@
 #include "access/htup.h"
 #include "access/itup.h"
 #include "access/skey.h"
-#include "access/strat.h"
 #include "access/tupdesc.h"
 #include "bootstrap/bootstrap.h"
 #include "catalog/pg_am.h"

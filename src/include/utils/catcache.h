@@ -21,6 +21,7 @@
 #define CATCACHE_H
 
 #include "access/htup.h"
+#include "access/skey.h"
 #include "lib/dllist.h"
 
 /*

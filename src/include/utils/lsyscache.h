@@ -25,7 +25,8 @@ typedef enum IOFuncSelector
 } IOFuncSelector;
 
 extern bool op_in_opclass(Oid opno, Oid opclass);
-extern bool op_requires_recheck(Oid opno, Oid opclass);
+extern void get_op_opclass_properties(Oid opno, Oid opclass,
+									  int *strategy, bool *recheck);
 extern Oid	get_opclass_member(Oid opclass, int16 strategy);
 extern Oid	get_op_hash_function(Oid opno);
 extern Oid	get_opclass_proc(Oid opclass, int16 procnum);

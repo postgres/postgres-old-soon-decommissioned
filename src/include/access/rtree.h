@@ -132,7 +132,6 @@ extern void rtadjscans(Relation r, int op, BlockNumber blkno,
 extern void AtEOXact_rtree(void);
 
 /* rtstrat.c */
-extern RegProcedure RTMapOperator(Relation r, AttrNumber attnum,
-			  RegProcedure proc);
+extern StrategyNumber RTMapToInternalOperator(StrategyNumber strat);
 
 #endif   /* RTREE_H */
