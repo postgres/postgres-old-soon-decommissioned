@@ -8,7 +8,7 @@ MAJOR_VERSION=2
 MINOR_VERSION=9
 PATCHLEVEL=0
 
-override CPPFLAGS := -I$(srcdir)/../include $(CPPFLAGS) \
+override CPPFLAGS := -I$(srcdir)/../include -I$(srcdir) $(CPPFLAGS) \
 	-DMAJOR_VERSION=$(MAJOR_VERSION) \
 	-DMINOR_VERSION=$(MINOR_VERSION) -DPATCHLEVEL=$(PATCHLEVEL) \
 	-DINCLUDE_PATH=\"$(includedir)\" 
