@@ -48,10 +48,10 @@ createlang [ <replaceable class="parameter">connection options</replaceable> ] -
      </varlistentry>
 
      <varlistentry>
-      <term>[-d, --dbname] <replaceable class="parameter">dbname</replaceable></term>
+      <term>-d, --dbname <replaceable class="parameter">dbname</replaceable></term>
       <listitem>
        <para>
-	Specifies to which database the language should be added.
+	Specifies which database the language should be added.
        </para>
       </listitem>
      </varlistentry>
