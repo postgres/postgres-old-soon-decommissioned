@@ -70,6 +70,15 @@ typedef struct IndexScanDescData
 
 	FmgrInfo	fn_getnext;		/* cached lookup info for AM's getnext fn */
 
+	/*
+	 * If keys_are_unique and got_tuple are both true, we stop calling the
+	 * index AM; it is then necessary for index_getnext to keep track of
+	 * the logical scan position for itself.  It does that using
+	 * unique_tuple_pos: -1 = before row, 0 = on row, +1 = after row.
+	 */
+	int			unique_tuple_pos; /* logical position */
+	int			unique_tuple_mark; /* logical marked position */
+
 	PgStat_Info xs_pgstat_info; /* statistics collector hook */
 } IndexScanDescData;
 

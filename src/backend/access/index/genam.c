@@ -107,6 +107,9 @@ RelationGetIndexScan(Relation indexRelation,
 	/* mark cached function lookup data invalid; it will be set later */
 	scan->fn_getnext.fn_oid = InvalidOid;
 
+	scan->unique_tuple_pos = 0;
+	scan->unique_tuple_mark = 0;
+
 	pgstat_initstats(&scan->xs_pgstat_info, indexRelation);
 
 	/*
