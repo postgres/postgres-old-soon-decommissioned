@@ -15,6 +15,9 @@
 #include <ctype.h>
 #include <string.h>
 #include <sys/types.h>
+#ifdef HAVE_FLOAT_H
+# include <float.h>
+#endif
 
 #include "postgres.h"
 #include <miscadmin.h>
