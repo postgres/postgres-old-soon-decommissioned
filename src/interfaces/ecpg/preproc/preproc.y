@@ -209,7 +209,6 @@ adjust_informix(struct arguments *list)
 		original_var = ptr->variable->name;
 		sprintf(temp, "%d))", ecpg_informix_var);
 		
-		/* create call to "ECPG_informix_set_var(<counter>, <pointer>. <linen number>)" */
 		if (atoi(ptr->variable->type->size) > 1)
 		{
 			ptr->variable = new_variable(cat_str(4, make_str("("), mm_strdup(ECPGtype_name(ptr->variable->type->type)), make_str(" *)(ECPG_informix_get_var("), mm_strdup(temp)), ECPGmake_simple_type(ptr->variable->type->type, ptr->variable->type->size), 0);
@@ -220,6 +219,8 @@ adjust_informix(struct arguments *list)
 			ptr->variable = new_variable(cat_str(4, make_str("*("), mm_strdup(ECPGtype_name(ptr->variable->type->type)), make_str(" *)(ECPG_informix_get_var("), mm_strdup(temp)), ECPGmake_simple_type(ptr->variable->type->type, ptr->variable->type->size), 0);
 			sprintf(temp, "%d, &(", ecpg_informix_var++);
 		}
+		
+		/* create call to "ECPG_informix_set_var(<counter>, <pointer>. <linen number>)" */
 		result = cat_str(5, result, make_str("ECPG_informix_set_var("), mm_strdup(temp), mm_strdup(original_var), make_str("), __LINE__);\n"));
 		
 		/* now the indicator if there is one */
