@@ -174,7 +174,7 @@ main(int argc, char *argv[])
 		 * by the name on the command line.
 		 */
 		if (strcmp(options.username, "\001") == 0)
-			username = simple_prompt("Username: ", 100, true);
+			username = simple_prompt("User name: ", 100, true);
 		else
 			username = strdup(options.username);
 	}
