@@ -629,7 +629,7 @@ parse_hba(List *line, hbaPort *port, bool *found_p, bool *error_p)
 		token = lfirst(line);
 
 		/* Check if it has a CIDR suffix and if so isolate it */
-		cidr_slash = index(token,'/');
+		cidr_slash = strchr(token,'/');
 		if (cidr_slash)
 		{
 			*cidr_slash = '\0';
