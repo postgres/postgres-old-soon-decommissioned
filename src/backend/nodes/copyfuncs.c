@@ -1198,7 +1198,7 @@ _copyAExpr(A_Expr *from)
 {
 	A_Expr	   *newnode = makeNode(A_Expr);
 
-	COPY_SCALAR_FIELD(oper);
+	COPY_SCALAR_FIELD(kind);
 	COPY_NODE_FIELD(name);
 	COPY_NODE_FIELD(lexpr);
 	COPY_NODE_FIELD(rexpr);
@@ -1669,7 +1669,7 @@ _copyDefineStmt(DefineStmt *from)
 {
 	DefineStmt *newnode = makeNode(DefineStmt);
 
-	COPY_SCALAR_FIELD(defType);
+	COPY_SCALAR_FIELD(kind);
 	COPY_NODE_FIELD(defnames);
 	COPY_NODE_FIELD(definition);
 
@@ -1869,7 +1869,7 @@ _copyTransactionStmt(TransactionStmt *from)
 {
 	TransactionStmt *newnode = makeNode(TransactionStmt);
 
-	COPY_SCALAR_FIELD(command);
+	COPY_SCALAR_FIELD(kind);
 	COPY_NODE_FIELD(options);
 
 	return newnode;
@@ -2215,7 +2215,7 @@ _copyReindexStmt(ReindexStmt *from)
 {
 	ReindexStmt *newnode = makeNode(ReindexStmt);
 
-	COPY_SCALAR_FIELD(reindexType);
+	COPY_SCALAR_FIELD(kind);
 	COPY_NODE_FIELD(relation);
 	COPY_STRING_FIELD(name);
 	COPY_SCALAR_FIELD(force);

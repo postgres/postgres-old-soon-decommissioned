@@ -24,11 +24,11 @@
  *		makes an A_Expr node
  */
 A_Expr *
-makeA_Expr(int oper, List *name, Node *lexpr, Node *rexpr)
+makeA_Expr(A_Expr_Kind kind, List *name, Node *lexpr, Node *rexpr)
 {
 	A_Expr	   *a = makeNode(A_Expr);
 
-	a->oper = oper;
+	a->kind = kind;
 	a->name = name;
 	a->lexpr = lexpr;
 	a->rexpr = rexpr;
@@ -40,12 +40,12 @@ makeA_Expr(int oper, List *name, Node *lexpr, Node *rexpr)
  *		As above, given a simple (unqualified) operator name
  */
 A_Expr *
-makeSimpleA_Expr(int oper, const char *name,
+makeSimpleA_Expr(A_Expr_Kind kind, const char *name,
 				 Node *lexpr, Node *rexpr)
 {
 	A_Expr	   *a = makeNode(A_Expr);
 
-	a->oper = oper;
+	a->kind = kind;
 	a->name = makeList1(makeString((char *) name));
 	a->lexpr = lexpr;
 	a->rexpr = rexpr;
