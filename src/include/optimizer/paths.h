@@ -90,6 +90,7 @@ typedef enum
 } PathKeysComparison;
 
 extern void add_equijoined_keys(Query *root, RestrictInfo *restrictinfo);
+extern void generate_implied_equalities(Query *root);
 extern List *canonicalize_pathkeys(Query *root, List *pathkeys);
 extern PathKeysComparison compare_pathkeys(List *keys1, List *keys2);
 extern bool pathkeys_contained_in(List *keys1, List *keys2);
