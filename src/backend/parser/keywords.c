@@ -20,6 +20,8 @@
 #include "parser/keywords.h"
 #include "parser/parse.h"
 
+/* NB: This file is also used by pg_dump. */
+
 /*
  * List of (keyword-name, keyword-token-value) pairs.
  *

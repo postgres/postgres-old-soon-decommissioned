@@ -26,6 +26,7 @@
 #include "postgres_fe.h"
 
 #include "libpq-fe.h"
+#include "pqexpbuffer.h"
 
 #define atooid(x)  ((Oid) strtoul((x), NULL, 10))
 #define oidcmp(x,y) ( ((x) < (y) ? -1 : ((x) > (y)) ?  1 : 0) )
@@ -119,7 +120,9 @@ __attribute__((format(printf, 3, 4)));
 
 extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
 
-extern const char *fmtId(const char *identifier, bool force_quotes);
+extern const char *fmtId(const char *identifier);
+extern void appendStringLiteral(PQExpBuffer buf, const char *str, bool escapeAll);
+
 
 /* Lets the archive know we have a DB connection to shutdown if it dies */
 
