@@ -43,10 +43,10 @@
  *		buf_table.c -- manages the buffer lookup table
  */
 
+#include "postgres.h"
+
 #ifdef XLOG
-
 #include "xlog_bufmgr.c"
-
 #else
 
 #include <sys/types.h>
@@ -54,7 +54,6 @@
 #include <math.h>
 #include <signal.h>
 
-#include "postgres.h"
 #include "executor/execdebug.h"
 #include "miscadmin.h"
 #include "storage/s_lock.h"

@@ -12,13 +12,11 @@
  *
  *-------------------------------------------------------------------------
  */
-#ifdef XLOG
-
-#include "xlog_varsup.c"
-
-#else
-
 #include "postgres.h"
+
+#ifdef XLOG
+#include "xlog_varsup.c"
+#else
 
 #include "access/heapam.h"
 #include "catalog/catname.h"

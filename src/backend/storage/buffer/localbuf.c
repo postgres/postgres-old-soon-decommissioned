@@ -21,18 +21,16 @@
  *-------------------------------------------------------------------------
  */
    
+#include "postgres.h"
+
 #ifdef XLOG
-
 #include "xlog_localbuf.c"
-
 #else
 
 #include <sys/types.h>
 #include <sys/file.h>
 #include <math.h>
 #include <signal.h>
-
-#include "postgres.h"
 
 #include "executor/execdebug.h"
 #include "storage/smgr.h"
