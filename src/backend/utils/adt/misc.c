@@ -18,7 +18,9 @@
 #include "catalog/pg_type.h"
 #include "utils/builtins.h"
 
-#include "port-protos.h"		/* For random(), sometimes */
+#ifndef HAVE_RANDOM
+#  include "port-protos.h"		/* For random(), sometimes */
+#endif
 
 
 /*-------------------------------------------------------------------------

@@ -11,13 +11,14 @@
 SRCDIR = ../..
 include ../../Makefile.global
 
-INCLUDE_OPT = -I.. \
-              -I../port/$(PORTNAME) \
-              -I../../include
+INCLUDE_OPT = -I.. 
+
+ifdef PORTNAME
+INCLUDE_OPT+=-I../port/$(PORTNAME) 
+endif
 
 CFLAGS+=$(INCLUDE_OPT)
 CFLAGS+=-DPOSIX_MISTAKE 
-
 
 OBJS = regcomp.o regerror.o regexec.o regfree.o
 

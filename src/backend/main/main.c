@@ -22,7 +22,9 @@
 #include "miscadmin.h"
 #include "bootstrap/bootstrap.h"/* for BootstrapMain() */
 #include "tcop/tcopprot.h"		/* for PostgresMain() */
-/* #include "port-protos.h"	*/	/* for init_address_fixup() */
+#if defined(NOFIXADE) || defined(NOPRINTADE)
+#  include "port-protos.h"		/* for init_address_fixup() */
+#endif
 
 #define NOROOTEXEC "\
 \n\"root\" execution of the PostgreSQL backend is not permitted\n\n\

@@ -26,13 +26,7 @@
 SRCDIR=../..
 include ../../Makefile.global
 
-ifndef PORTNAME
-.DEFAULT all: 
-	@echo "Error:  Must invoke make with PORTNAME= argument."
-	@false
-else
-
-OBJS = $(PORTNAME)/SUBSYS.o @INET_ATON@ @STRERROR@
+OBJS = @PORTNAME@/SUBSYS.o @INET_ATON@ @STRERROR@
 
 all: submake SUBSYS.o
 
@@ -42,19 +36,16 @@ SUBSYS.o: $(OBJS)
 .PHONY: submake clean dep
 
 submake:
-	$(MAKE) -C $(PORTNAME) SUBSYS.o
+	$(MAKE) -C @PORTNAME@ SUBSYS.o
 
 clean:
 	rm -f SUBSYS.o $(OBJS)
-	$(MAKE) -C $(PORTNAME) clean
+	$(MAKE) -C @PORTNAME@ clean
 
 depend dep:
 	$(CC) -MM $(INCLUDE_OPT) *.c >depend
-	$(MAKE) -C $(PORTNAME) $@
+	$(MAKE) -C @PORTNAME@ $@
 
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-
-endif
-

@@ -87,7 +87,9 @@
 #include "utils/mcxt.h"
 #include "storage/proc.h"
 #include "utils/elog.h"
-#include "port-protos.h"		/* For gethostname() */
+#ifndef HAVE_GETHOSTNAME
+#  include "port-protos.h" 		/* For gethostname() */
+#endif
 #include "storage/fd.h"
 
 #if defined(DBX_VERSION)
