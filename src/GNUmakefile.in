@@ -23,6 +23,28 @@ SPLIT = @split@
 ETAGS = @etags@
 XARGS = @xargs@
 
+clean:
+	@if test $(PORTNAME) = UNDEFINED; then \
+		echo You must set the PORTNAME value in Makefile.global before \
+			you can build Postgres. ;\
+		false ;\
+	else true;\
+	fi
+	$(MAKE) -C utils clean
+	$(MAKE) -C backend clean
+	$(MAKE) -C libpq clean
+ifeq ($(HAVE_Cplusplus), true)
+	$(MAKE) -C libpq++ clean
+endif
+ifeq ($(USE_TCL), true)
+	$(MAKE) -C libpgtcl clean
+endif
+	$(MAKE) -C bin clean
+ifneq ($(wildcard man), )
+	$(MAKE) -C man clean
+endif
+	rm -f Makefile.global include/config.h GNUmakefile
+
 .DEFAULT all:
 	@if test $(PORTNAME) = UNDEFINED; then \
 	  echo You must set the PORTNAME value in Makefile.global before \
@@ -63,3 +85,4 @@ BACKUP:
 
 .PHONY: TAGS
 .PHONY: BACKUP
+
