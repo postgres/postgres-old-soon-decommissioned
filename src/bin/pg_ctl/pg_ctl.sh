@@ -165,7 +165,7 @@ if [ $op = "start" -o $op = "restart" ];then
 	    eval `cat $POSTOPTSFILE` &
 	fi
     else
-	$po_path $POSTOPTS &
+	eval "$po_path $POSTOPTS "&
     fi
 
     if [ -f $PIDFILE ];then
