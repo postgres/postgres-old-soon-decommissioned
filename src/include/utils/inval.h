@@ -23,8 +23,8 @@ extern void AtEOXactInvalidationMessages(bool isCommit);
 
 extern void CommandEndInvalidationMessages(bool isCommit);
 
-extern void RelationInvalidateHeapTuple(Relation relation, HeapTuple tuple);
+extern void CacheInvalidateHeapTuple(Relation relation, HeapTuple tuple);
 
-extern void RelationMark4RollbackHeapTuple(Relation relation, HeapTuple tuple);
+extern void CacheInvalidateRelcache(Oid relationId);
 
 #endif   /* INVAL_H */
