@@ -211,8 +211,8 @@ esac
 # Set up pwd to give a win32 happy pathname
 # ----------
 
-case $host_platform in
-    *-*-mingw32*)
+case `uname` in
+     MINGW32*)
         PWDFLAGS=-W;;
     *)
         PWDFLAGS=;;
