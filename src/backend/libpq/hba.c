@@ -210,8 +210,8 @@ process_hba_record(FILE *file, SockAddr *raddr, const char user[],
 		 * sort of connection, ignore it.
 		 */
 
-		if ((strcmp(buf, database) != 0 && strcmp(buf, "all") != 0 &&
-		    (strcmp(buf, "sameuser") != 0 || strcmp(user, database) != 0)) ||
+		if ((strcmp(db, database) != 0 && strcmp(db, "all") != 0 &&
+		    (strcmp(db, "sameuser") != 0 || strcmp(database, user) != 0)) ||
 			raddr->sa.sa_family != AF_UNIX)
 			return;
 	}
@@ -270,8 +270,8 @@ process_hba_record(FILE *file, SockAddr *raddr, const char user[],
 		 * sort of connection, ignore it.
 		 */
 
-		if ((strcmp(buf, database) != 0 && strcmp(buf, "all") != 0 &&
-		    (strcmp(buf, "sameuser") != 0 || strcmp(user, database) != 0)) ||
+		if ((strcmp(db, database) != 0 && strcmp(db, "all") != 0 &&
+		    (strcmp(db, "sameuser") != 0 || strcmp(database, user) != 0)) ||
 			raddr->sa.sa_family != AF_INET ||
 			((file_ip_addr.s_addr ^ raddr->in.sin_addr.s_addr) & mask.s_addr) != 0x0000)
 			return;
