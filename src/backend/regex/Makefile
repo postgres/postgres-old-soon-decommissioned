@@ -27,6 +27,8 @@ all: SUBSYS.o
 SUBSYS.o: $(OBJS)
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
+regexec.o: regexec.c engine.c
+
 retest: retest.o SUBSYS.o $(DEBUGOBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
 
