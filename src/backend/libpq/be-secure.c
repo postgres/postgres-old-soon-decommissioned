@@ -289,10 +289,10 @@ secure_read(Port *port, void *ptr, size_t len)
 				break;
 			case SSL_ERROR_SYSCALL:
 				if (n == -1)
-					elog(ERROR, "SSL SYSCALL error: %s", strerror(errno));
+					elog(COMMERROR, "SSL SYSCALL error: %s", strerror(errno));
 				break;
 			case SSL_ERROR_SSL:
-				elog(ERROR, "SSL error: %s", SSLerrmessage());
+				elog(COMMERROR, "SSL error: %s", SSLerrmessage());
 				/* fall through */
 			case SSL_ERROR_ZERO_RETURN:
 				secure_close(port);
@@ -339,10 +339,10 @@ secure_write(Port *port, const void *ptr, size_t len)
 				break;
 			case SSL_ERROR_SYSCALL:
 				if (n == -1)
-					elog(ERROR, "SSL SYSCALL error: %s", strerror(errno));
+					elog(COMMERROR, "SSL SYSCALL error: %s", strerror(errno));
 				break;
 			case SSL_ERROR_SSL:
-				elog(ERROR, "SSL error: %s", SSLerrmessage());
+				elog(COMMERROR, "SSL error: %s", SSLerrmessage());
 				/* fall through */
 			case SSL_ERROR_ZERO_RETURN:
 				secure_close(port);
@@ -678,7 +678,7 @@ open_server_SSL(Port *port)
 		!SSL_set_fd(port->ssl, port->sock) ||
 		SSL_accept(port->ssl) <= 0)
 	{
-		elog(ERROR, "failed to initialize SSL connection: %s", SSLerrmessage());
+		elog(COMMERROR, "failed to initialize SSL connection: %s", SSLerrmessage());
 		close_SSL(port);
 		return -1;
 	}
