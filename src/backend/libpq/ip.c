@@ -67,8 +67,11 @@ static int getnameinfo_unix(const struct sockaddr_un * sa, int salen,
  */
 int
 getaddrinfo_all(const char *hostname, const char *servname,
-				const struct addrinfo * hintp, struct addrinfo ** result)
+				const struct addrinfo *hintp, struct addrinfo **result)
 {
+	/* not all versions of getaddrinfo() zero *result on failure */
+	*result = NULL;
+
 #ifdef HAVE_UNIX_SOCKETS
 	if (hintp != NULL && hintp->ai_family == AF_UNIX)
 		return getaddrinfo_unix(servname, hintp, result);
