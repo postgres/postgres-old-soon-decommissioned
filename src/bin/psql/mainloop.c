@@ -248,17 +248,6 @@ MainLoop(FILE *source)
 
 		pset.lineno++;
 
-		/* strip trailing backslashes, they don't have a clear meaning */
-		while (1)
-		{
-			char	   *cp = strrchr(line, '\\');
-
-			if (cp && (*(cp + 1) == '\0'))
-				*cp = '\0';
-			else
-				break;
-		}
-
 		/* nothing left on line? then ignore */
 		if (line[0] == '\0')
 		{

@@ -111,6 +111,9 @@ HandleSlashCmds(const char *line,
 	{
 		continue_parse = &my_line[blank_loc];
 		my_line[blank_loc] = '\0';
+		/* If it's a double backslash, we skip it. */
+		if (my_line[blank_loc + 1] == '\\')
+			continue_parse += 2;
 	}
 	/* do we have an option string? */
 	else if (my_line[blank_loc] != '\0')
