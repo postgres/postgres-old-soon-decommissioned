@@ -5024,10 +5024,6 @@ FlattenStringList(List *list)
 	};
 	*(s+len) = '\0';
 
-#ifdef PARSEDEBUG
-	elog(DEBUG, "flattened string is \"%s\"\n", s);
-#endif
-
 	return s;
 } /* FlattenStringList() */
 
@@ -5075,10 +5071,6 @@ makeConstantList( A_Const *n)
 		elog(ERROR,"Internal error in makeConstantList(): cannot encode node");
 	};
 
-#ifdef PARSEDEBUG
-	elog(DEBUG, "AexprConst argument is \"%s\"\n", defval);
-#endif
-
 	return result;
 } /* makeConstantList() */
 
@@ -5103,11 +5095,6 @@ fmtId(char *rawid)
 	} else {
 		cp = rawid;
 	};
-
-#ifdef PARSEDEBUG
-	elog(DEBUG, "fmtId- %sconvert %s to %s\n",
-	 ((cp == rawid)? "do not ": ""), rawid, cp);
-#endif
 
 	return cp;
 }
