@@ -498,10 +498,11 @@ psql_completion(char *text, int start, int end)
 
 	/*
 	 * Complete DELETE with FROM (only if the word before that is not "ON"
-	 * (cf. rules) or "BEFORE" or "AFTER" (cf. triggers) )
+	 * (cf. rules) or "BEFORE" or "AFTER" (cf. triggers) or GRANT)
 	 */
 	else if (strcasecmp(prev_wd, "DELETE") == 0 &&
 			 !(strcasecmp(prev2_wd, "ON") == 0 ||
+			   strcasecmp(prev2_wd, "GRANT") == 0 ||
 			   strcasecmp(prev2_wd, "BEFORE") == 0 ||
 			   strcasecmp(prev2_wd, "AFTER") == 0))
 		COMPLETE_WITH_CONST("FROM");
