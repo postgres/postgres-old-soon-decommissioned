@@ -33,7 +33,7 @@ include $(top_srcdir)/src/Makefile.shlib
 
 install: installdirs all
 ifdef shlib
-	$(INSTALL_SHLIB) $(shlib) $(libdir)/plpgsql$(DLSUFFIX)
+	$(INSTALL_SHLIB) $(shlib) $(DESTDIR)$(libdir)/plpgsql$(DLSUFFIX)
 else
 	@echo "*****"; \
 	 echo "* PL/pgSQL was not installed due to lack of shared library support."; \
@@ -41,10 +41,10 @@ else
 endif
 
 installdirs:
-	$(mkinstalldirs) $(libdir)
+	$(mkinstalldirs) $(DESTDIR)$(libdir)
 
 uninstall:
-	rm -f $(libdir)/plpgsql$(DLSUFFIX)
+	rm -f $(DESTDIR)$(libdir)/plpgsql$(DLSUFFIX)
 
 pl_handler.o pl_comp.o pl_exec.o pl_funcs.o: plpgsql.h $(srcdir)/pl.tab.h
 

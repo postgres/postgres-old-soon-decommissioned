@@ -23,13 +23,13 @@ initdb: initdb.sh $(top_builddir)/src/Makefile.global
 	chmod a+x $@
 
 install: all installdirs
-	$(INSTALL_SCRIPT) initdb $(bindir)/initdb
+	$(INSTALL_SCRIPT) initdb $(DESTDIR)$(bindir)/initdb
 
 installdirs:
-	$(mkinstalldirs) $(bindir)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(bindir)/initdb
+	rm -f $(DESTDIR)$(bindir)/initdb
 
 clean distclean maintainer-clean:
 	rm -f initdb

@@ -17,13 +17,13 @@ pg-config: pg-config.sh $(top_builddir)/config.status $(top_builddir)/src/Makefi
 	chmod a+x $@
 
 install: all installdirs
-	$(INSTALL_SCRIPT) pg-config $(bindir)/pg-config
+	$(INSTALL_SCRIPT) pg-config $(DESTDIR)$(bindir)/pg-config
 
 installdirs:
-	$(mkinstalldirs) $(bindir)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(bindir)/pg-config
+	rm -f $(DESTDIR)$(bindir)/pg-config
 
 clean distclean maintainer-clean:
 	rm -f pg-config

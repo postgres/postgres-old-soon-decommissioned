@@ -25,13 +25,13 @@ submake:
 	$(MAKE) -C $(libpq_builddir) all
 
 install: all installdirs
-	$(INSTALL_PROGRAM) pg_encoding$(X) $(bindir)/pg_encoding$(X)
+	$(INSTALL_PROGRAM) pg_encoding$(X) $(DESTDIR)$(bindir)/pg_encoding$(X)
 
 installdirs:
-	$(mkinstalldirs) $(bindir)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(bindir)/pg_encoding$(X)
+	rm -f $(DESTDIR)$(bindir)/pg_encoding$(X)
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend

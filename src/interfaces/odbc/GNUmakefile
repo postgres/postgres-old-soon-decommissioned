@@ -38,18 +38,18 @@ odbc_includedir = $(includedir)/iodbc
 install: all installdirs install-headers install-ini install-lib
 
 installdirs:
-	$(mkinstalldirs) $(odbc_includedir) $(libdir) $(odbcinst_ini_dir)
+	$(mkinstalldirs) $(DESTDIR)$(odbc_includedir) $(DESTDIR)$(libdir) $(DESTDIR)$(odbcinst_ini_dir)
 
 .PHONY: install-headers
 install-headers: $(odbc_headers)
-	for i in $^; do $(INSTALL_DATA) $$i $(odbc_includedir) || exit 1; done
+	for i in $^; do $(INSTALL_DATA) $$i $(DESTDIR)$(odbc_includedir) || exit 1; done
 
 .PHONY: install-ini
 install-ini: odbcinst.ini
-	$(INSTALL_DATA) $< $(odbcinst_ini_dir)
+	$(INSTALL_DATA) $< $(DESTDIR)$(odbcinst_ini_dir)
 
 uninstall: uninstall-lib
-	rm -f $(addprefix $(odbc_includedir)/, $(odbc_headers))
+	rm -f $(addprefix $(DESTDIR)$(odbc_includedir)/, $(odbc_headers))
 
 clean distclean maintainer-clean: clean-lib
 	rm -f $(OBJS)

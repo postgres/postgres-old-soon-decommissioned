@@ -68,13 +68,13 @@ submake:
 distprep: $(srcdir)/sql_help.h
 
 install: all installdirs
-	$(INSTALL_PROGRAM) psql$(X) $(bindir)/psql$(X)
+	$(INSTALL_PROGRAM) psql$(X) $(DESTDIR)$(bindir)/psql$(X)
 
 installdirs:
-	$(mkinstalldirs) $(bindir)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(bindir)/psql$(X)
+	rm -f $(DESTDIR)$(bindir)/psql$(X)
 
 depend dep:
 	$(CC) -MM -MG $(CFLAGS) *.c >depend

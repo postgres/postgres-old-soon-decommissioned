@@ -18,13 +18,13 @@ pg_id$(X): pg_id.o
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 install: all installdirs
-	$(INSTALL_PROGRAM) pg_id$(X) $(bindir)/pg_id$(X)
+	$(INSTALL_PROGRAM) pg_id$(X) $(DESTDIR)$(bindir)/pg_id$(X)
 
 installdirs:
-	$(mkinstalldirs) $(bindir)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(bindir)/pg_id$(X)
+	rm -f $(DESTDIR)$(bindir)/pg_id$(X)
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend

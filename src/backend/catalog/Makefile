@@ -43,17 +43,17 @@ template1.bki template1.description: genbki.sh $(TEMPLATE1_BKI_SRCS)
 
 .PHONY: install-bki
 install-bki: $(BKIFILES) installdirs
-	$(INSTALL_DATA) global.bki            $(datadir)/global.bki
-	$(INSTALL_DATA) global.description    $(datadir)/global.description
-	$(INSTALL_DATA) template1.bki         $(datadir)/template1.bki
-	$(INSTALL_DATA) template1.description $(datadir)/template1.description
+	$(INSTALL_DATA) global.bki            $(DESTDIR)$(datadir)/global.bki
+	$(INSTALL_DATA) global.description    $(DESTDIR)$(datadir)/global.description
+	$(INSTALL_DATA) template1.bki         $(DESTDIR)$(datadir)/template1.bki
+	$(INSTALL_DATA) template1.description $(DESTDIR)$(datadir)/template1.description
 
 installdirs:
-	$(mkinstalldirs) $(datadir)
+	$(mkinstalldirs) $(DESTDIR)$(datadir)
 
 .PHONY: uninstall-bki
 uninstall-bki:
-	rm -f $(addprefix $(datadir)/, $(BKIFILES))
+	rm -f $(addprefix $(DESTDIR)$(datadir)/, $(BKIFILES))
 
 
 clean: 

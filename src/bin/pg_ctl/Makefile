@@ -19,13 +19,13 @@ pg_ctl: pg_ctl.sh
 	chmod a+x $@
 
 install: all installdirs
-	$(INSTALL_SCRIPT) pg_ctl $(bindir)/pg_ctl
+	$(INSTALL_SCRIPT) pg_ctl $(DESTDIR)$(bindir)/pg_ctl
 
 installdirs:
-	$(mkinstalldirs) $(bindir)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(bindir)/pg_ctl
+	rm -f $(DESTDIR)$(bindir)/pg_ctl
 
 clean distclean maintainer-clean:
 	rm -f pg_ctl

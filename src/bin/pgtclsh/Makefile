@@ -52,16 +52,16 @@ submake:
 	$(MAKE) -C $(libpgtcl_builddir) all
 
 install: all installdirs
-	$(INSTALL_PROGRAM) pgtclsh $(bindir)/pgtclsh
+	$(INSTALL_PROGRAM) pgtclsh $(DESTDIR)$(bindir)/pgtclsh
 ifeq ($(USE_TK), true)
-	$(INSTALL_PROGRAM) pgtksh $(bindir)/pgtksh
+	$(INSTALL_PROGRAM) pgtksh $(DESTDIR)$(bindir)/pgtksh
 endif
 
 installdirs:
-	$(mkinstalldirs) $(bindir)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(bindir)/pgtclsh $(bindir)/pgtksh
+	rm -f $(DESTDIR)$(bindir)/pgtclsh $(DESTDIR)$(bindir)/pgtksh
 
 Makefile.tcldefs: mkMakefile.tcldefs.sh
 	$(SHELL) $< '$(TCL_CONFIG_SH)' '$@'

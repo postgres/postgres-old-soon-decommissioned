@@ -36,13 +36,13 @@ install: all installdirs install-headers install-lib
 
 .PHONY: install-headers
 install-headers: libpgeasy.h
-	$(INSTALL_DATA) $< $(includedir)/libpgeasy.h
+	$(INSTALL_DATA) $< $(DESTDIR)$(includedir)/libpgeasy.h
 
 installdirs:
-	$(mkinstalldirs) $(libdir) $(includedir)
+	$(mkinstalldirs) $(DESTDIR)$(libdir) $(DESTDIR)$(includedir)
 
 uninstall: uninstall-lib
-	rm -f $(includedir)/libpgeasy.h
+	rm -f $(DESTDIR)$(includedir)/libpgeasy.h
 
 clean distclean maintainer-clean: clean-lib
 	rm -f $(OBJS)

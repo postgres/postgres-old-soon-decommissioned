@@ -10,13 +10,13 @@ pg_passwd$(X): pg_passwd.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 install: all installdirs
-	$(INSTALL_PROGRAM) pg_passwd$(X) $(bindir)/pg_passwd$(X)
+	$(INSTALL_PROGRAM) pg_passwd$(X) $(DESTDIR)$(bindir)/pg_passwd$(X)
 
 installdirs:
-	$(mkinstalldirs) $(bindir)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(bindir)/pg_passwd$(X)
+	rm -f $(DESTDIR)$(bindir)/pg_passwd$(X)
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend

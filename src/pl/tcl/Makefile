@@ -98,13 +98,13 @@ ifeq ($(TCL_SHARED_BUILD), 1)
 all: $(INFILES)
 
 install: all installdirs
-	$(INSTALL_SHLIB) $(DLOBJS) $(libdir)/$(DLOBJS)
+	$(INSTALL_SHLIB) $(DLOBJS) $(DESTDIR)$(libdir)/$(DLOBJS)
 
 installdirs:
-	$(mkinstalldirs) $(libdir)
+	$(mkinstalldirs) $(DESTDIR)$(libdir)
 
 uninstall:
-	rm -f $(libdir)/$(DLOBJS)
+	rm -f $(DESTDIR)$(libdir)/$(DLOBJS)
 
 else
 

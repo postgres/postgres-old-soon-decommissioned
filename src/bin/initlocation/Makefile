@@ -19,13 +19,13 @@ initlocation: initlocation.sh
 	chmod a+x $@
 
 install: all installdirs
-	$(INSTALL_SCRIPT) initlocation $(bindir)/initlocation
+	$(INSTALL_SCRIPT) initlocation $(DESTDIR)$(bindir)/initlocation
 
 installdirs:
-	$(mkinstalldirs) $(bindir)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(bindir)/initlocation
+	rm -f $(DESTDIR)$(bindir)/initlocation
 
 clean distclean maintainer-clean:
 	rm -f initlocation

@@ -72,15 +72,15 @@ LIBPGXXHEADERS = pgconnection.h pgdatabase.h pgtransdb.h pgcursordb.h pglobject.
 
 .PHONY: install-headers
 install-headers: $(MAINHEADER) $(LIBPGXXHEADERS)
-	$(INSTALL_DATA) $< $(includedir)
-	for i in $(LIBPGXXHEADERS); do $(INSTALL_DATA) $(srcdir)/$$i $(libpqxx_includedir) || exit 1; done
+	$(INSTALL_DATA) $< $(DESTDIR)$(includedir)
+	for i in $(LIBPGXXHEADERS); do $(INSTALL_DATA) $(srcdir)/$$i $(DESTDIR)$(libpqxx_includedir) || exit 1; done
 
 installdirs:
-	$(mkinstalldirs) $(libdir) $(includedir) $(libpqxx_includedir)
+	$(mkinstalldirs) $(DESTDIR)$(libdir) $(DESTDIR)$(includedir) $(DESTDIR)$(libpqxx_includedir)
 
 uninstall: uninstall-lib
-	rm -f $(includedir)/$(MAINHEADER)
-	rm -rf $(libpqxx_includedir)
+	rm -f $(DESTDIR)$(includedir)/$(MAINHEADER)
+	for i in $(LIBPGXXHEADERS); do rm -f $(DESTDIR)$(libpqxx_includedir)/$$i || exit; done
 
 clean distclean maintainer-clean: clean-lib
 	rm -f $(OBJS)

@@ -23,13 +23,13 @@ createlang: createlang.sh
 	chmod a+x $@
 
 install: all installdirs
-	for i in $(SCRIPTS); do $(INSTALL_SCRIPT) $$i $(bindir) || exit; done
+	for i in $(SCRIPTS); do $(INSTALL_SCRIPT) $$i $(DESTDIR)$(bindir)/$$i || exit; done
 
 installdirs:
-	$(mkinstalldirs) $(bindir)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
 
 uninstall:
-	rm -f $(addprefix $(bindir)/, $(SCRIPTS))
+	rm -f $(addprefix $(DESTDIR)$(bindir)/, $(SCRIPTS))
 
 clean distclean maintainer-clean:
 	rm -f createlang

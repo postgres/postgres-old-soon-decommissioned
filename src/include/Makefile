@@ -35,18 +35,17 @@ $(top_builddir)/src/backend/utils/fmgroids.h: $(top_srcdir)/src/backend/utils/Ge
 
 
 install: all installdirs
-	@for i in $(HEADERS); do \
-	  echo "$(INSTALL_DATA) $(srcdir)/$$i $(includedir)/$$i"; \
-	  $(INSTALL_DATA) $(srcdir)/$$i $(includedir)/$$i; \
+	for i in $(HEADERS); do \
+	  $(INSTALL_DATA) $(srcdir)/$$i $(DESTDIR)$(includedir)/$$i || exit; \
 	done
 
 # Automatically pick out the needed subdirectories for the include
 # tree.
 installdirs:
-	$(mkinstalldirs) $(addprefix $(includedir)/, $(sort $(dir $(HEADERS))))
+	$(mkinstalldirs) $(addprefix $(DESTDIR)$(includedir)/, $(sort $(dir $(HEADERS))))
 
 uninstall:
-	rm -f $(addprefix $(includedir)/, $(HEADERS))
+	rm -f $(addprefix $(DESTDIR)$(includedir)/, $(HEADERS))
 
 clean:
 	rm -f utils/fmgroids.h parser/parse.h

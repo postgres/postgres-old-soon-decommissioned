@@ -4,7 +4,7 @@ subdir = src/pl/plperl
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-plperl_installdir = $(libdir)
+plperl_installdir = $(DESTDIR)$(libdir)
 
 
 all: Makefile
@@ -16,13 +16,13 @@ Makefile: Makefile.PL
 	  $(PERL) $< POLLUTE=1
 
 install: all installdirs
-	$(MAKE) -f $< install
+	$(MAKE) -f Makefile install
 
 installdirs:
-	$(mkinstalldirs) $(plperl_installdir)
+	$(mkinstalldirs) $(DESTDIR)$(plperl_installdir)
 
 uninstall:
-	rm -f $(libdir)/plperl$(DLSUFFIX)
+	rm -f $(DESTDIR)$(libdir)/plperl$(DLSUFFIX)
 
 clean distclean maintainer-clean:
 	-[ -f Makefile ] && $(MAKE) -f Makefile clean
