@@ -17,7 +17,7 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include <strstream>
+#include <strstream.h>
 #include "pgconnection.h"
 
 extern "C" {
