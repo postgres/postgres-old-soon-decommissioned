@@ -63,7 +63,7 @@ Each new class
 .IR classname 
 is automatically created as a type.  Therefore, one or more instances
 from the class are automatically a type and can be used in 
-.IR "alter table" (l)
+.IR "alter_table" (l)
 or other 
 .BR "create table"
 statements.  See 
