@@ -522,7 +522,7 @@ printf("transformCreateStmt- found CHECK clause on column %s\n",column->colname)
 #endif
 								constraints = lappend(constraints, constraint);
 								if (constraint->name == NULL)
-									constraint->name = makeTableName(stmt->relname, ".", column->colname, NULL);
+									constraint->name = makeTableName(stmt->relname, column->colname, NULL);
 								break;
 
 							default:
