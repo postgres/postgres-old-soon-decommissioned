@@ -123,7 +123,7 @@ usage(char *progname)
     fprintf(stderr, "\t -d dbName               specify database name\n");
     fprintf(stderr, "\t -e                      echo the query sent to the backend\n");
     fprintf(stderr, "\t -f filename             use file as a source of queries\n");
-    fprintf(stderr, "\t -F sep                  set the field separator (default is " ")\n");
+    fprintf(stderr, "\t -F sep                  set the field separator (default is "|")\n");
     fprintf(stderr, "\t -h host                 set database server host\n");
     fprintf(stderr, "\t -H                      turn on html3.0 table output\n");
     fprintf(stderr, "\t -l                      list available databases\n");
