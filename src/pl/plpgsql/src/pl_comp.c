@@ -720,7 +720,7 @@ static void
 plpgsql_compile_error_callback(void *arg)
 {
 	if (plpgsql_error_funcname)
-		errcontext("compile of PL/pgSQL function %s near line %d",
+		errcontext("compile of PL/pgSQL function \"%s\" near line %d",
 				   plpgsql_error_funcname, plpgsql_error_lineno);
 }
 
