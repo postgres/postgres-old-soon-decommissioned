@@ -1302,7 +1302,7 @@
       <entry>oprnegate</entry>
       <entry><type>oid</type></entry>
       <entry>pg_operator.oid</entry>
-      <entry>Inverse of this operator, if any</entry>
+      <entry>Negator of this operator, if any</entry>
      </row>
 
      <row>
