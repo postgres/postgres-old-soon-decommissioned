@@ -208,7 +208,7 @@ tas_dummy()						/* really means: extern int tas(slock_t
 
 
 
-#if defined(NEED_SPARC_TAS_ASM)
+#if defined(__sparc__) || defined(__sparc)
 /*
  * sparc machines not using gcc
  */
@@ -227,7 +227,7 @@ tas_dummy()						/* really means: extern int tas(slock_t
 	asm("retl");
 	asm("nop");
 }
-#endif   /* NEED_SPARC_TAS_ASM */
+#endif   /* __sparc || __sparc__ */
 
 
 
