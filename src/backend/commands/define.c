@@ -640,6 +640,7 @@ DefineType(char *typeName, List *parameters)
 	 * ----------------
 	 */
 	TypeCreate(typeName,		/* type name */
+			   InvalidOid,		/* preassigned type oid (not done here) */
 			   InvalidOid,		/* relation oid (n/a here) */
 			   internalLength,	/* internal size */
 			   externalLength,	/* external size */
@@ -652,7 +653,7 @@ DefineType(char *typeName, List *parameters)
 			   elemName,		/* element type name */
 			   defaultValue,	/* default type value */
 			   byValue,			/* passed by value */
-			   alignment,
+			   alignment,		/* required alignment */
 			   storage);		/* TOAST strategy */
 
 	/* ----------------
@@ -663,6 +664,7 @@ DefineType(char *typeName, List *parameters)
 	shadow_type = makeArrayTypeName(typeName);
 
 	TypeCreate(shadow_type,		/* type name */
+			   InvalidOid,		/* preassigned type oid (not done here) */
 			   InvalidOid,		/* relation oid (n/a here) */
 			   -1,				/* internal size */
 			   -1,				/* external size */

@@ -420,6 +420,7 @@ DESCR("numeric(precision, decimal), arbitrary precision number");
 extern Oid	TypeGet(char *typeName, bool *defined);
 extern Oid	TypeShellMake(char *typeName);
 extern Oid TypeCreate(char *typeName,
+		   Oid assignedTypeOid,
 		   Oid relationOid,
 		   int16 internalSize,
 		   int16 externalSize,
@@ -431,7 +432,8 @@ extern Oid TypeCreate(char *typeName,
 		   char *sendProcedure,
 		   char *elementTypeName,
 		   char *defaultTypeValue,
-		   bool passedByValue, char alignment,
+		   bool passedByValue,
+		   char alignment,
 		   char storage);
 extern void TypeRename(const char *oldTypeName, const char *newTypeName);
 extern char *makeArrayTypeName(char *typeName);
