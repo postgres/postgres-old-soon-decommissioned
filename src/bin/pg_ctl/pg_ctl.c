@@ -501,7 +501,7 @@ do_start(void)
 			{
 				char	   *arg1;
 
-				arg1 = strchr(optline, '\'');
+				arg1 = strchr(optline, *SYSTEMQUOTE);
 				if (arg1 == NULL || arg1 == optline)
 					post_opts = "";
 				else
