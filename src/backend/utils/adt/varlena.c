@@ -154,8 +154,17 @@ textin(PG_FUNCTION_ARGS)
 	char	   *inputText = PG_GETARG_CSTRING(0);
 	text	   *result;
 	int			len;
+#ifdef MULTIBYTE
+	char	*ermsg;
+#endif
 
 	len = strlen(inputText) + VARHDRSZ;
+
+#ifdef MULTIBYTE
+	if ((ermsg = pg_verifymbstr(inputText, len - VARHDRSZ)))
+	    elog(ERROR,"%s",ermsg);
+#endif
+
 	result = (text *) palloc(len);
 	VARATT_SIZEP(result) = len;
 
