@@ -701,11 +701,15 @@ DLSUFFIX= .o
 endif
 
 
+#---------------------------------------------------------------------------
 ifeq ($(PORTNAME), nextstep)
 LDADD_BE+= -lipc
 AROPT= rc
 DLSUFFIX= .o
 endif
+
+#---------------------------------------------------------------------------
+# All others need -lm
 
 ifneq ($(PORTNAME), nextstep)
 LD_ADD+= -lm
