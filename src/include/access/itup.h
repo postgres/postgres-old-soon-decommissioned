@@ -13,10 +13,8 @@
 #ifndef ITUP_H
 #define ITUP_H
 
-#include "c.h"
-#include "access/ibit.h"
-#include "access/tupdesc.h"	/* for TupleDesc */
 #include "storage/itemptr.h"
+#include "access/tupdesc.h"
 
 #define MaxIndexAttributeNumber	7
 
