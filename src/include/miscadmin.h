@@ -115,6 +115,9 @@ extern bool ClientAuthInProgress;
 extern const bool ExecBackend;
 
 extern int	PostmasterMain(int argc, char *argv[]);
+#ifdef EXEC_BACKEND
+extern void SubPostmasterMain(int argc, char* argv[]);
+#endif
 extern void ClosePostmasterPorts(bool pgstat_too);
 
 /*
