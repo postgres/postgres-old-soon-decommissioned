@@ -489,12 +489,12 @@ BootstrapMain(int argc, char *argv[])
 			break;
 
 		case BS_XLOG_CHECKPOINT:
+			InitXLOGAccess();
 			CreateCheckPoint(false, false);
-			SetSavedRedoRecPtr();		/* pass redo ptr back to
-										 * postmaster */
 			proc_exit(0);		/* done */
 
 		case BS_XLOG_BGWRITER:
+			InitXLOGAccess();
 			BufferBackgroundWriter();
 			proc_exit(0);		/* done */
 
@@ -504,6 +504,7 @@ BootstrapMain(int argc, char *argv[])
 			proc_exit(0);		/* done */
 
 		case BS_XLOG_SHUTDOWN:
+			InitXLOGAccess();
 			ShutdownXLOG(0, 0);
 			DumpFreeSpaceMap(0, 0);
 			proc_exit(0);		/* done */

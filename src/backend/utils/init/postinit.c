@@ -326,6 +326,13 @@ InitPostgres(const char *dbname, const char *username)
 	AmiTransactionOverride(bootstrap);
 
 	/*
+	 * Initialize local process's access to XLOG.  In bootstrap case
+	 * we may skip this since StartupXLOG() was run instead.
+	 */
+	if (!bootstrap)
+		InitXLOGAccess();
+
+	/*
 	 * Initialize the relation descriptor cache.  This must create at
 	 * least the minimum set of "nailed-in" cache entries.	No catalog
 	 * access happens here.

@@ -1902,7 +1902,7 @@ l3:
 	 * XLOG stuff: no logging is required as long as we have no
 	 * savepoints. For savepoints private log could be used...
 	 */
-	((PageHeader) BufferGetPage(*buffer))->pd_sui = ThisStartUpID;
+	PageSetSUI(BufferGetPage(*buffer), ThisStartUpID);
 
 	/* store transaction information of xact marking the tuple */
 	tuple->t_data->t_infomask &= ~(HEAP_XMAX_COMMITTED |
