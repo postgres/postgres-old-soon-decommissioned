@@ -1665,6 +1665,10 @@ l2:
 		 * without reading log if xact will abort before update is logged.
 		 * In the event of crash prio logging, TQUAL routines will see
 		 * HEAP_XMAX_UNLOGGED flag...
+		 *
+		 * NOTE: this trick is useless currently but saved for future
+		 * when we'll implement UNDO and will re-use transaction IDs
+		 * after postmaster startup.
 		 */
 		_locked_tuple_.node = relation->rd_node;
 		_locked_tuple_.tid = *otid;
@@ -2066,7 +2070,7 @@ log_heap_update(Relation reln, Buffer oldbuf, ItemPointerData from,
 		hsize += (2 * sizeof(TransactionId));
 	}
 	rdata[2].buffer = newbuf;
-	rdata[2].data = (char*)&xlhdr;
+	rdata[2].data = (char*)xlhdr;
 	rdata[2].len = hsize;
 	rdata[2].next = &(rdata[3]);
 

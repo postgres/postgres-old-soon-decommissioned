@@ -2243,9 +2243,24 @@ xlog_desc(char *buf, uint8 xl_info, char* rec)
 static void
 xlog_outrec(char *buf, XLogRecord *record)
 {
-	sprintf(buf + strlen(buf), "prev %u/%u; xprev %u/%u; xid %u: %s",
+	int		bkpb;
+	int		i;
+
+	sprintf(buf + strlen(buf), "prev %u/%u; xprev %u/%u; xid %u",
 		record->xl_prev.xlogid, record->xl_prev.xrecoff,
 		record->xl_xact_prev.xlogid, record->xl_xact_prev.xrecoff,
-		record->xl_xid, 
+		record->xl_xid);
+
+	for (i = 0, bkpb = 0; i < 2; i++)
+	{
+		if (!(record->xl_info & (XLR_SET_BKP_BLOCK(i))))
+			continue;
+		bkpb++;
+	}
+
+	if (bkpb)
+		sprintf(buf + strlen(buf), "; bkpb %d", bkpb);
+
+	sprintf(buf + strlen(buf), ": %s",
 		RmgrTable[record->xl_rmid].rm_name);
 }
