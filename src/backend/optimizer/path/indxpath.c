@@ -848,13 +848,9 @@ pred_test_restrict_list(Expr *predicate, List *restrictinfo_list)
 
 	foreach(item, restrictinfo_list)
 	{
-		RestrictInfo *restrictinfo = (RestrictInfo *) lfirst(item);
-
-		Assert(IsA(restrictinfo, RestrictInfo));
-
 		/* if any clause implies the predicate, return true */
 		if (pred_test_recurse_restrict(predicate,
-									   (Node *) restrictinfo->clause))
+									   (Node *) lfirst(item)))
 			return true;
 	}
 	return false;
@@ -865,7 +861,8 @@ pred_test_restrict_list(Expr *predicate, List *restrictinfo_list)
  * pred_test_recurse_restrict
  *	  Does the "predicate inclusion test" for one element of a predicate
  *	  expression.  Here we recursively deal with the possibility that the
- *	  restriction-list element is itself an AND or OR structure.
+ *	  restriction-list element is itself an AND or OR structure; also,
+ *	  we strip off RestrictInfo nodes to find bare predicate expressions.
  */
 static bool
 pred_test_recurse_restrict(Expr *predicate, Node *clause)
@@ -874,7 +871,14 @@ pred_test_recurse_restrict(Expr *predicate, Node *clause)
 	ListCell   *item;
 
 	Assert(clause != NULL);
-	if (or_clause(clause))
+	if (IsA(clause, RestrictInfo))
+	{
+		RestrictInfo *restrictinfo = (RestrictInfo *) clause;
+
+		return pred_test_recurse_restrict(predicate,
+										  (Node *) restrictinfo->clause);
+	}
+	else if (or_clause(clause))
 	{
 		items = ((BoolExpr *) clause)->args;
 		foreach(item, items)
