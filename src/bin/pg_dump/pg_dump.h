@@ -38,6 +38,7 @@ typedef struct _typeInfo {
     char* typdelim;
     char* typdefault;
     char* typrelid;
+    char* usename;
     int passedbyvalue;
     int isArray;
 } TypeInfo;
@@ -53,6 +54,7 @@ typedef struct _funcInfo {
     int retset; /* 1 if the function returns a set, 0 otherwise */
     char* prosrc;
     char* probin;
+    char* usename;
     int dumped; /* 1 if already dumped */
 } FuncInfo;
 
@@ -78,6 +80,7 @@ typedef struct _tableInfo {
 			       not have the same order of attributes as
 			       the POSTQUEL tables */
     int *attlen;	    /* attribute lengths */
+    char* usename;
            
 } TableInfo;
 
@@ -108,6 +111,7 @@ typedef struct _aggInfo {
     char *aggtranstype2;
     char *agginitval1;
     char *agginitval2;
+    char* usename;
 } AggInfo;
 
 typedef struct _oprInfo {
@@ -126,6 +130,7 @@ typedef struct _oprInfo {
     char *oprcanhash; /* can we use hash join strategy ? */
     char *oprlsortop; /* oid's of the left and right sort operators */
     char *oprrsortop;
+    char* usename;
 } OprInfo;
 
 
