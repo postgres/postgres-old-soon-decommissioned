@@ -126,7 +126,6 @@ Complete list of usable sgml source files in this directory.
 <!entity pgRestore          system "pg_restore.sgml">
 <!entity pgTclSh            system "pgtclsh.sgml">
 <!entity pgTkSh             system "pgtksh.sgml">
-<!entity pgUpgrade          system "pg_upgrade.sgml">
 <!entity postgres           system "postgres-ref.sgml">
 <!entity postmaster         system "postmaster.sgml">
 <!entity psqlRef            system "psql-ref.sgml">

@@ -189,7 +189,6 @@ Disable this chapter until we have more functions documented.
    &ipcclean;
    &pgCtl;
    &pgPasswd;
-<!--   &pgUpgrade; -->
    &postgres;
    &postmaster;
 
