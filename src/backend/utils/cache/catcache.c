@@ -665,7 +665,7 @@ InitSysCache(char *relname,
          */
     	Dllist *cache_begin = malloc((NCCBUCK+1)*sizeof(Dllist));
 	for (i = 0; i <= NCCBUCK; ++i) {
-	    cp->cc_cache[i] = cache_begin[i];
+	    cp->cc_cache[i] = &cache_begin[i];
 	    cp->cc_cache[i]->dll_head = 0;
 	    cp->cc_cache[i]->dll_tail = 0;
 	}
