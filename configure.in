@@ -782,7 +782,7 @@ PGAC_FUNC_GETTIMEOFDAY_1ARG
 # SunOS doesn't handle negative byte comparisons properly with +/- return
 AC_FUNC_MEMCMP
 
-AC_CHECK_FUNCS([cbrt fcvt getopt_long memmove pstat setproctitle setsid sigprocmask sysconf waitpid dlopen fdatasync])
+AC_CHECK_FUNCS([cbrt fcvt getopt_long getpeereid memmove pstat setproctitle setsid sigprocmask sysconf waitpid dlopen fdatasync])
 
 AC_CHECK_DECLS(fdatasync, [], [], [#include <unistd.h>])
 

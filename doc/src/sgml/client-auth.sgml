@@ -318,7 +318,8 @@ hostssl  <replaceable>database</replaceable>  <replaceable>user</replaceable>  <
           support Unix-domain socket credentials (currently
           <systemitem class=osname>Linux</>, <systemitem
           class=osname>FreeBSD</>, <systemitem class=osname>NetBSD</>,
-          and <systemitem class=osname>BSD/OS</>).
+          <systemitem class=osname>OpenBSD</>, and 
+          <systemitem class=osname>BSD/OS</>).
          </para>
 
          <para>
