@@ -1018,7 +1018,17 @@ btree_xlog_delete(bool redo, XLogRecPtr lsn, XLogRecord *record)
 	if (PageIsNew((PageHeader) page))
 		elog(STOP, "btree_delete_redo: uninitialized page");
 
+	if (XLByteLE(lsn, PageGetLSN(page)))
+	{
+		UnlockAndReleaseBuffer(buffer);
+		return;
+	}
+
 	PageIndexTupleDelete(page, ItemPointerGetOffsetNumber(&(xlrec->target.tid)));
+
+	PageSetLSN(page, lsn);
+	PageSetSUI(page, ThisStartUpID);
+	UnlockAndWriteBuffer(buffer);
 
 	return;
 }
