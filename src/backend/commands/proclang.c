@@ -246,7 +246,7 @@ RenameLanguage(const char *oldname, const char *newname)
 	HeapTuple	tup;
 	Relation	rel;
 
-	rel = heap_openr(ShadowRelationName, RowExclusiveLock);
+	rel = heap_openr(LanguageRelationName, RowExclusiveLock);
 
 	tup = SearchSysCacheCopy(LANGNAME,
 							 CStringGetDatum(oldname),
