@@ -403,8 +403,9 @@ VACUUM FULL table;
    </para>
 
    <para>
-    Refer to <command>CREATE TABLE</command> for a further description
-    of valid parameters. <xref linkend="ddl"> has further information on
+    Refer to <xref linkend="sql-createtable"
+    endterm="sql-createtable-title"> for a further description of valid
+    parameters. <xref linkend="ddl"> has further information on
     inheritance.
    </para>
  </refsect1>
