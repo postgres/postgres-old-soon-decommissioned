@@ -98,8 +98,8 @@ extern void CatalogUpdateIndexes(Relation heapRel, HeapTuple heapTuple);
  * These macros are just to keep the C compiler from spitting up on the
  * upcoming commands for genbki.sh.
  */
-#define DECLARE_INDEX(x) extern int errno
-#define DECLARE_UNIQUE_INDEX(x) extern int errno
+#define DECLARE_INDEX(x) extern int no_such_variable
+#define DECLARE_UNIQUE_INDEX(x) extern int no_such_variable
 #define BUILD_INDICES
 
 

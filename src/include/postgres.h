@@ -539,8 +539,8 @@ extern int ExceptionalCondition(char *conditionName, char *errorType,
 #define BKI_WITHOUT_OIDS
 
 /* these need to expand into some harmless, repeatable declaration */
-#define DATA(x)   extern int errno
-#define DESCR(x)  extern int errno
+#define DATA(x)   extern int no_such_variable
+#define DESCR(x)  extern int no_such_variable
 
 #define BKI_BEGIN
 #define BKI_END
