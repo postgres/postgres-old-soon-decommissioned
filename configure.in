@@ -1188,7 +1188,7 @@ _CFLAGS="$CFLAGS"
 _LIBS="$LIBS"
 CFLAGS="$CFLAGS $PTHREAD_CFLAGS -DIN_CONFIGURE"
 LIBS="$LIBS $PTHREAD_LIBS"
-AC_TRY_RUN([#include "src/tools/thread/thread_test.c"],
+AC_TRY_RUN([#include "$srcdir/src/tools/thread/thread_test.c"],
   [AC_MSG_RESULT(yes)],
   [AC_MSG_RESULT(no)
   AC_MSG_ERROR([Thread test program failed.  Your platform is not thread-safe.  See 'config.log])],
