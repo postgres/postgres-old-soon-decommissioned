@@ -2992,6 +2992,11 @@ string_lessthan(const char *str1, const char *str2, Oid datatype)
 													  datum1, datum2));
 			break;
 
+		case BYTEAOID:
+			result = DatumGetBool(DirectFunctionCall2(bytealt,
+													  datum1, datum2));
+			break;
+
 		default:
 			elog(ERROR, "string_lessthan: unexpected datatype %u", datatype);
 			result = false;

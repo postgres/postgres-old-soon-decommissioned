@@ -253,6 +253,7 @@ extern		"C"
 
 	/* Quoting strings before inclusion in queries. */
 	extern size_t PQescapeString (char *to, const char *from, size_t length);
+	extern unsigned char *PQescapeBytea(unsigned char *bintext, size_t binlen, size_t *bytealen);
 
 	/* Simple synchronous query */
 	extern PGresult *PQexec(PGconn *conn, const char *query);
