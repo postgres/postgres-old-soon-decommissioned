@@ -72,6 +72,21 @@ postgres: <replaceable>user</> <replaceable>database</> <replaceable>host</> <re
   that process 1003 is waiting for process 1016 to complete its transaction and
   thereby release some lock or other.
   </para>
+
+  <tip>
+  <para>
+  <productname>Solaris</productname> requires special handling. You must
+  use <command>/usr/ucb/ps</command>, rather than
+  <command>/bin/ps</command>. You also must use two <command>w</command>
+  flags, not just one. In addition, your original invocation of the
+  <application>postmaster</application> must have a shorter
+  <command>ps</command> status display than that provided by each
+  backend.
+  </para>
+  </tip>
+
+
+
  </sect1>
 
  <sect1 id="monitoring-stats">
