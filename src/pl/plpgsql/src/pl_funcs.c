@@ -857,14 +857,12 @@ dump_return(PLpgSQL_stmt_return *stmt)
 {
 	dump_ind();
 	printf("RETURN ");
-	if (stmt->retrecno >= 0)
-		printf("record %d", stmt->retrecno);
-	else if (stmt->retrowno >= 0)
-		printf("row %d", stmt->retrowno);
-	else if (stmt->expr == NULL)
-		printf("NULL");
-	else
+	if (stmt->retvarno >= 0)
+		printf("variable %d", stmt->retvarno);
+	else if (stmt->expr != NULL)
 		dump_expr(stmt->expr);
+	else
+		printf("NULL");
 	printf("\n");
 }
 
@@ -873,12 +871,12 @@ dump_return_next(PLpgSQL_stmt_return_next *stmt)
 {
 	dump_ind();
 	printf("RETURN NEXT ");
-	if (stmt->rec != NULL)
-		printf("target = %d %s\n", stmt->rec->recno, stmt->rec->refname);
-	else if (stmt->row != NULL)
-		printf("target = %d %s\n", stmt->row->rowno, stmt->row->refname);
+	if (stmt->retvarno >= 0)
+		printf("variable %d", stmt->retvarno);
 	else if (stmt->expr != NULL)
 		dump_expr(stmt->expr);
+	else
+		printf("NULL");
 	printf("\n");
 }
 
