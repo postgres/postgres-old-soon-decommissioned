@@ -495,8 +495,7 @@ RemoveFunction(RemoveFuncStmt *stmt)
 	/*
 	 * Find the function, do permissions and validity checks
 	 */
-	funcOid = LookupFuncNameTypeNames(functionName, argTypes,
-									  "RemoveFunction");
+	funcOid = LookupFuncNameTypeNames(functionName, argTypes, false);
 
 	tup = SearchSysCache(PROCOID,
 						 ObjectIdGetDatum(funcOid),
@@ -607,7 +606,7 @@ RenameFunction(List *name, List *argtypes, const char *newname)
 
 	rel = heap_openr(ProcedureRelationName, RowExclusiveLock);
 
-	procOid = LookupFuncNameTypeNames(name, argtypes, "RenameFunction");
+	procOid = LookupFuncNameTypeNames(name, argtypes, false);
 
 	tup = SearchSysCacheCopy(PROCOID,
 							 ObjectIdGetDatum(procOid),
@@ -796,7 +795,7 @@ CreateCast(CreateCastStmt *stmt)
 
 		funcid = LookupFuncNameTypeNames(stmt->func->funcname,
 										 stmt->func->funcargs,
-										 "CreateCast");
+										 false);
 
 		tuple = SearchSysCache(PROCOID,
 							   ObjectIdGetDatum(funcid),

@@ -629,7 +629,7 @@ CommentAggregate(List *aggregate, List *arguments, char *comment)
 
 	/* Now, attempt to find the actual tuple in pg_proc */
 
-	oid = find_aggregate_func("CommentAggregate", aggregate, baseoid);
+	oid = find_aggregate_func(aggregate, baseoid, false);
 
 	/* Next, validate the user's attempt to comment */
 
@@ -657,8 +657,7 @@ CommentProc(List *function, List *arguments, char *comment)
 
 	/* Look up the procedure */
 
-	oid = LookupFuncNameTypeNames(function, arguments,
-								  "CommentProc");
+	oid = LookupFuncNameTypeNames(function, arguments, false);
 
 	/* Now, validate the user's ability to comment on this function */
 
@@ -689,8 +688,7 @@ CommentOperator(List *opername, List *arguments, char *comment)
 	Oid			classoid;
 
 	/* Look up the operator */
-	oid = LookupOperNameTypeNames(opername, typenode1, typenode2,
-								  "CommentOperator");
+	oid = LookupOperNameTypeNames(opername, typenode1, typenode2, false);
 
 	/* Valid user's ability to comment on this operator */
 	if (!pg_oper_ownercheck(oid, GetUserId()))

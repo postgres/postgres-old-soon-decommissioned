@@ -70,10 +70,8 @@ CreateConversionCommand(CreateConversionStmt *stmt)
 	 * Check the existence of the conversion function. Function name could
 	 * be a qualified name.
 	 */
-	funcoid = LookupFuncName(func_name, sizeof(funcargs) / sizeof(Oid), funcargs);
-	if (!OidIsValid(funcoid))
-		func_error("CreateConversion", func_name,
-				   sizeof(funcargs) / sizeof(Oid), funcargs, NULL);
+	funcoid = LookupFuncName(func_name, sizeof(funcargs) / sizeof(Oid),
+							 funcargs, false);
 
 	/* Check we have EXECUTE rights for the function */
 	aclresult = pg_proc_aclcheck(funcoid, GetUserId(), ACL_EXECUTE);

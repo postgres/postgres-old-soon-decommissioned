@@ -206,14 +206,13 @@ RemoveOperator(RemoveOperStmt *stmt)
 	ObjectAddress object;
 
 	operOid = LookupOperNameTypeNames(operatorName, typeName1, typeName2,
-									  "RemoveOperator");
+									  false);
 
 	tup = SearchSysCache(OPEROID,
 						 ObjectIdGetDatum(operOid),
 						 0, 0, 0);
 	if (!HeapTupleIsValid(tup)) /* should not happen */
-		elog(ERROR, "RemoveOperator: failed to find tuple for operator '%s'",
-			 NameListToString(operatorName));
+		elog(ERROR, "cache lookup of operator %u failed", operOid);
 
 	/* Permission check: must own operator or its namespace */
 	if (!pg_oper_ownercheck(operOid, GetUserId()) &&

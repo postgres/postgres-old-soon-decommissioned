@@ -3539,7 +3539,8 @@ generate_function_name(Oid funcid, int nargs, Oid *argtypes)
 							   NIL, nargs, argtypes,
 							   &p_funcid, &p_rettype,
 							   &p_retset, &p_true_typeids);
-	if (p_result != FUNCDETAIL_NOTFOUND && p_funcid == funcid)
+	if ((p_result == FUNCDETAIL_NORMAL || p_result == FUNCDETAIL_AGGREGATE) &&
+		p_funcid == funcid)
 		nspname = NULL;
 	else
 		nspname = get_namespace_name(procform->pronamespace);
