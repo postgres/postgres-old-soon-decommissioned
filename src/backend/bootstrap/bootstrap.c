@@ -479,7 +479,7 @@ BootstrapMain(int argc, char *argv[])
 	SetProcessingMode(BootstrapProcessing);
 
 	/* clean up processing */
-	StartTransactionCommand(true);
+	StartTransactionCommand();
 	cleanup();
 
 	/* not reached, here to make compiler happy */
@@ -851,7 +851,7 @@ cleanup()
 	}
 	if (boot_reldesc != NULL)
 		closerel(NULL);
-	CommitTransactionCommand(true);
+	CommitTransactionCommand();
 	proc_exit(Warnings);
 }
 

@@ -16,8 +16,6 @@
 -- Adjust this setting to control where the objects get created.
 SET search_path = public;
 
-SET autocommit TO 'on';
-
 CREATE FUNCTION chkpass_in(cstring)
 	RETURNS chkpass
 	AS 'MODULE_PATHNAME'

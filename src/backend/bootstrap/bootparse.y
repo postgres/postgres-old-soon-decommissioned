@@ -55,7 +55,7 @@
 static void
 do_start()
 {
-	StartTransactionCommand(true);
+	StartTransactionCommand();
 	elog(DEBUG3, "start transaction");
 }
 
@@ -63,7 +63,7 @@ do_start()
 static void
 do_end()
 {
-	CommitTransactionCommand(true);
+	CommitTransactionCommand();
 	elog(DEBUG3, "commit transaction");
 	if (isatty(0))
 	{

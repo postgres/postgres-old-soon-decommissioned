@@ -185,7 +185,7 @@ main(int argc, char *argv[])
 
 	initPQExpBuffer(&sql);
 
-	printfPQExpBuffer(&sql, "SET autocommit TO on;\nCREATE USER %s", fmtId(newuser));
+	printfPQExpBuffer(&sql, "CREATE USER %s", fmtId(newuser));
 	if (sysid)
 		appendPQExpBuffer(&sql, " SYSID %s", sysid);
 	if (encrypted == +1)

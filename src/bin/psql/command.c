@@ -1460,12 +1460,8 @@ test_superuser(const char *username)
 	if (!username)
 		return false;
 
-	/*
-	 * Use begin/commit to avoid starting a transaction block if server
-	 * has autocommit off by default.
-	 */
 	initPQExpBuffer(&buf);
-	printfPQExpBuffer(&buf, "BEGIN; SELECT usesuper FROM pg_catalog.pg_user WHERE usename = '%s'; COMMIT", username);
+	printfPQExpBuffer(&buf, "SELECT usesuper FROM pg_catalog.pg_user WHERE usename = '%s'", username);
 	res = PSQLexec(buf.data, true);
 	termPQExpBuffer(&buf);
 

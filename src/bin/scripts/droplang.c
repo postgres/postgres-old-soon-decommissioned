@@ -215,8 +215,7 @@ main(int argc, char *argv[])
 	/*
 	 * Drop the language
 	 */
-	printfPQExpBuffer(&sql, "SET autocommit TO on;\n");
-	appendPQExpBuffer(&sql, "DROP LANGUAGE \"%s\";\n", langname);
+	printfPQExpBuffer(&sql, "DROP LANGUAGE \"%s\";\n", langname);
 	if (!keephandler)
 		appendPQExpBuffer(&sql, "DROP FUNCTION \"%s\" ();\n", handler);
 	if (echo)

@@ -7,8 +7,6 @@
 -- Adjust this setting to control where the objects get created.
 SET search_path = public;
 
-SET autocommit TO 'on';
-
 --
 --	Input and output functions and the type itself:
 --

@@ -113,7 +113,7 @@ main(int argc, char *argv[])
 	}
 
 	initPQExpBuffer(&sql);
-	appendPQExpBuffer(&sql, "SET autocommit TO on;\nDROP USER %s;\n", fmtId(dropuser));
+	appendPQExpBuffer(&sql, "DROP USER %s;\n", fmtId(dropuser));
 
 	conn = connectDatabase("template1", host, port, username, password, progname);
 

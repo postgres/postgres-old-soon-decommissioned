@@ -98,12 +98,6 @@ BEGIN [ WORK | TRANSACTION ]
    <xref linkend="SQL-ROLLBACK" endterm="SQL-ROLLBACK-TITLE">
    to terminate a transaction.
   </para>
-   
-  <para>
-   If you turn the configuration parameter <varname>autocommit</> off,
-   then <command>BEGIN</> is not required: any SQL command
-   automatically starts a transaction.
-  </para>
  </refsect1>
 
  <refsect1>

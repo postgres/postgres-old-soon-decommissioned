@@ -172,7 +172,7 @@ fi
 for db in $dbname
 do
         [ "$alldb" -a "$quiet" -ne 1 ] && echo "Vacuuming $db"
-	${PATHNAME}psql $PSQLOPT $ECHOOPT -c "SET autocommit TO 'on';VACUUM $full $verbose $analyze $table" -d $db
+	${PATHNAME}psql $PSQLOPT $ECHOOPT -c "VACUUM $full $verbose $analyze $table" -d $db
 	if [ "$?" -ne 0 ]; then
 	    echo "$CMDNAME: vacuum $table $db failed" 1>&2
 	    exit 1

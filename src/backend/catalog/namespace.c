@@ -1711,11 +1711,11 @@ RemoveTempRelationsCallback(void)
 	{
 		/* Need to ensure we have a usable transaction. */
 		AbortOutOfAnyTransaction();
-		StartTransactionCommand(true);
+		StartTransactionCommand();
 
 		RemoveTempRelations(myTempNamespace);
 
-		CommitTransactionCommand(true);
+		CommitTransactionCommand();
 	}
 }
 

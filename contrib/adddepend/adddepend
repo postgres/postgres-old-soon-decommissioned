@@ -125,19 +125,12 @@ my $dbh = DBI->connect($dsn, $dbuser, $dbpass);
 # We want to control commits
 $dbh->{'AutoCommit'} = 0;
 
-# turn on autocommit
+# control where things get created
 my $sql = qq{
     SET search_path = public;
 };
 my $sth = $dbh->prepare($sql);
 $sth->execute();
-
-# turn on autocommit
-my $sql2 = qq{
-    SET autocommit TO 'on';
-};
-my $sth2 = $dbh->prepare($sql2);
-$sth2->execute();
 
 END {
 	$dbh->disconnect() if $dbh;

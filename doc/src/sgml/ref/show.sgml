@@ -37,12 +37,6 @@ SHOW ALL
    <command>postmaster</command>.  See <xref
    linkend="runtime-config"> for details.
   </para>
-
-  <para>
-   Even with <varname>autocommit</> set to <literal>off</>, <command>SHOW</>
-   does not start a new transaction block. See the
-   <varname>autocommit</> section in <xref linkend="runtime-config"> for details.
-  </para>
  </refsect1>
 
  <refsect1>

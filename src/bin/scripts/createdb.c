@@ -143,7 +143,7 @@ main(int argc, char *argv[])
 
 	initPQExpBuffer(&sql);
 
-	appendPQExpBuffer(&sql, "SET autocommit TO on;\nCREATE DATABASE %s",
+	appendPQExpBuffer(&sql, "CREATE DATABASE %s",
 					  fmtId(dbname));
 
 	if (owner)
@@ -181,7 +181,7 @@ main(int argc, char *argv[])
 
 	if (comment)
 	{
-		printfPQExpBuffer(&sql, "SET autocommit TO on;\nCOMMENT ON DATABASE %s IS ", fmtId(dbname));
+		printfPQExpBuffer(&sql, "COMMENT ON DATABASE %s IS ", fmtId(dbname));
 		appendStringLiteral(&sql, comment, false);
 		appendPQExpBuffer(&sql, ";\n");
 

@@ -12,8 +12,6 @@
 -- Adjust this setting to control where the objects get created.
 SET search_path = public;
 
-SET autocommit TO 'on';
-
 CREATE FUNCTION lo_in(cstring)
 RETURNS lo
 AS 'MODULE_PATHNAME'

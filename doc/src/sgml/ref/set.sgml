@@ -55,12 +55,6 @@ SET [ SESSION | LOCAL ] TIME ZONE { <replaceable class="PARAMETER">timezone</rep
    seen until the end of the transaction, but afterwards (if the transaction
    is committed) the <command>SET</command> value will take effect.
   </para>
-
-  <para>
-   Even with <varname>autocommit</> set to <literal>off</>, <command>SET</>
-   does not start a new transaction block. See the
-   <varname>autocommit</> section in <xref linkend="runtime-config"> for details.
-  </para>
  </refsect1>
 
  <refsect1>

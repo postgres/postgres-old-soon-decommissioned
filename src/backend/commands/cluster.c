@@ -205,7 +205,7 @@ cluster(ClusterStmt *stmt)
 		rvs = get_tables_to_cluster(cluster_context);
 
 		/* Commit to get out of starting transaction */
-		CommitTransactionCommand(true);
+		CommitTransactionCommand();
 
 		/* Ok, now that we've got them all, cluster them one by one */
 		foreach (rv, rvs)
@@ -213,14 +213,14 @@ cluster(ClusterStmt *stmt)
 			RelToCluster	*rvtc = (RelToCluster *) lfirst(rv);
 
 			/* Start a new transaction for each relation. */
-			StartTransactionCommand(true);
+			StartTransactionCommand();
 			SetQuerySnapshot();	/* might be needed for functional index */
 			cluster_rel(rvtc, true);
-			CommitTransactionCommand(true);
+			CommitTransactionCommand();
 		}
 
 		/* Start a new transaction for the cleanup work. */
-		StartTransactionCommand(true);
+		StartTransactionCommand();
 
 		/* Clean up working storage */
 		MemoryContextDelete(cluster_context);

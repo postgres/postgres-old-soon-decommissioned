@@ -147,13 +147,6 @@ doConnect()
 		exit(1);
 	}
 	PQclear(res);
-	res = PQexec(con, "SET autocommit TO 'on'");
-	if (PQresultStatus(res) != PGRES_COMMAND_OK)
-	{
-		fprintf(stderr, "%s", PQerrorMessage(con));
-		exit(1);
-	}
-	PQclear(res);
 
 	return (con);
 }

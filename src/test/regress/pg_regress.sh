@@ -477,7 +477,7 @@ fi
 # ----------
 
 message "dropping regression test user accounts"
-"$bindir/psql" $psql_options -c 'SET autocommit TO on;DROP GROUP regressgroup1; DROP GROUP regressgroup2; DROP USER regressuser1, regressuser2, regressuser3, regressuser4;' $dbname 2>/dev/null
+"$bindir/psql" $psql_options -c 'DROP GROUP regressgroup1; DROP GROUP regressgroup2; DROP USER regressuser1, regressuser2, regressuser3, regressuser4;' $dbname 2>/dev/null
 if [ $? -eq 2 ]; then
     echo "$me: could not drop user accounts"
     (exit 2); exit
@@ -550,7 +550,6 @@ do
         $ECHO_N "test $formatted ... $ECHO_C"
 
         (cat <<EOF
-SET autocommit TO 'on';
 \\set ECHO all
 EOF
 	 cat "$inputdir/sql/$1.sql") | \
@@ -561,7 +560,6 @@ EOF
         for name do
             ( 
 	      (cat <<EOF
-SET autocommit TO 'on';
 \\set ECHO all
 EOF
 	       cat "$inputdir/sql/$name.sql") | \

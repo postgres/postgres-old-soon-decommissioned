@@ -237,7 +237,7 @@ main(int argc, char *argv[])
 	/*
 	 * Create the call handler and the language
 	 */
-	printfPQExpBuffer(&sql, "SET autocommit TO on;\n");
+	resetPQExpBuffer(&sql);
 
 	if (!handlerexists)
 		appendPQExpBuffer(&sql,

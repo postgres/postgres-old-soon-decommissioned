@@ -218,17 +218,6 @@ vacuumlo(char *database, struct _param * param)
 	}
 	PQclear(res);
 
-	res = PQexec(conn, "SET autocommit TO 'on'");
-	if (PQresultStatus(res) != PGRES_COMMAND_OK)
-	{
-		fprintf(stderr, "Failed to set autocommit on:\n");
-		fprintf(stderr, "%s", PQerrorMessage(conn));
-		PQclear(res);
-		PQfinish(conn);
-		return -1;
-	}
-	PQclear(res);
-
 	/*
 	 * First we create and populate the LO temp table
 	 */

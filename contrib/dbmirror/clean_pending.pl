@@ -69,10 +69,6 @@ unless($dbConn->status == PGRES_CONNECTION_OK) {
     printf("Can't connect to database\n");
     die;
 }
-my $setresult = $dbConn->exec("SET autocommit TO 'on'");
-unless($setresult->resultStatus == PGRES_COMMAND_OK) {
-   die $dbConn->errorMessage;
-}
 my $result = $dbConn->exec("BEGIN");
 unless($result->resultStatus == PGRES_COMMAND_OK) {
    die $dbConn->errorMessage;

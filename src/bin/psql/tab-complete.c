@@ -493,7 +493,6 @@ psql_completion(char *text, int start, int end)
 		 * backend/utils/misc/guc.c.
 		 */
 		"australian_timezones",
-		"autocommit",
 		"client_encoding",
 		"client_min_messages",
 		"commit_delay",

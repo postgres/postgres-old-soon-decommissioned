@@ -157,10 +157,10 @@ for db in $dbname
 do
 	[ "$alldb" ] && echo "Clustering $db"
 	if [ -z "$table" ]; then
-		${PATHNAME}psql $PSQLOPT $ECHOOPT -c "SET autocommit TO 'on';CLUSTER" -d $db
+		${PATHNAME}psql $PSQLOPT $ECHOOPT -c "CLUSTER" -d $db
 		[ "$?" -ne 0 ] && exit 1
 	else
-		${PATHNAME}psql $PSQLOPT $ECHOOPT -c "SET autocommit TO 'on';CLUSTER $table" -d $db
+		${PATHNAME}psql $PSQLOPT $ECHOOPT -c "CLUSTER $table" -d $db
 		[ "$?" -ne 0 ] && exit 1
 	fi
 done
