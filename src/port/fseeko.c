@@ -17,7 +17,9 @@
 
 #include "c.h"
 
+#ifdef bsdi
 #include <pthread.h>
+#endif
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
