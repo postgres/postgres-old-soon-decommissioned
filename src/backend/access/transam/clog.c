@@ -92,6 +92,7 @@ TransactionIdSetStatus(TransactionId xid, XidStatus status)
 	int			byteno = TransactionIdToByte(xid);
 	int			bshift = TransactionIdToBIndex(xid) * CLOG_BITS_PER_XACT;
 	char	   *byteptr;
+	char		byteval;
 
 	Assert(status == TRANSACTION_STATUS_COMMITTED ||
 		   status == TRANSACTION_STATUS_ABORTED ||
@@ -107,7 +108,11 @@ TransactionIdSetStatus(TransactionId xid, XidStatus status)
 		   ((*byteptr >> bshift) & CLOG_XACT_BITMASK) == TRANSACTION_STATUS_SUB_COMMITTED ||
 		   ((*byteptr >> bshift) & CLOG_XACT_BITMASK) == status);
 
-	*byteptr |= (status << bshift);
+	/* note this assumes exclusive access to the clog page */
+	byteval = *byteptr;
+	byteval &= ~(((1 << CLOG_BITS_PER_XACT) - 1) << bshift);
+	byteval |= (status << bshift);
+	*byteptr = byteval;
 
 	/* ...->page_status[slotno] = SLRU_PAGE_DIRTY; already done */
 
