@@ -115,8 +115,7 @@ ExecInitHash(Hash *node, EState *estate, Plan *parent)
 	HashState  *hashstate;
 	Plan	   *outerPlan;
 
-	SO1_printf("ExecInitHash: %s\n",
-			   "initializing hash node");
+	SO_printf("ExecInitHash: initializing hash node\n");
 
 	/*
 	 * assign the node's execution state
