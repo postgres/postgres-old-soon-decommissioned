@@ -25,9 +25,8 @@
 extern List *transformTargetList(ParseState *pstate, List *targetlist);
 extern List *makeTargetNames(ParseState *pstate, List *cols);
 extern TargetEntry *
-transformTargetIdent(ParseState *pstate,
+MakeTargetEntryIdent(ParseState *pstate,
 					 Node *node,
-					 TargetEntry *tent,
 					 char **resname,
 					 char *refname,
 					 char *colname,
@@ -35,7 +34,7 @@ transformTargetIdent(ParseState *pstate,
 extern Node *
 CoerceTargetExpr(ParseState *pstate, Node *expr,
 				 Oid type_id, Oid attrtype);
-TargetEntry * MakeTargetlistExpr(ParseState *pstate,
+TargetEntry * MakeTargetEntryExpr(ParseState *pstate,
 				   char *colname,
 				   Node *expr,
 				   List *arrayRef,
