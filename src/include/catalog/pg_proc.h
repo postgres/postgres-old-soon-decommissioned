@@ -2101,7 +2101,7 @@ DESCR("right-pad string to length");
 DATA(insert OID =  877 (  substr	   PGUID 12 f t t t 3 f 25 "25 23 23" 100 0 0 100  text_substr - ));
 DESCR("return portion of string");
 DATA(insert OID =  878 (  translate    PGUID 12 f t t t 3 f 25 "25 25 25" 100 0 0 100  translate - ));
-DESCR("modify string by substring replacement");
+DESCR("map a set of character appearing in string");
 DATA(insert OID =  879 (  lpad		   PGUID 14 f t t t 2 f 25 "25 23" 100 0 0 100	"select lpad($1, $2, \' \')" - ));
 DESCR("left-pad string to length");
 DATA(insert OID =  880 (  rpad		   PGUID 14 f t t t 2 f 25 "25 23" 100 0 0 100	"select rpad($1, $2, \' \')" - ));
