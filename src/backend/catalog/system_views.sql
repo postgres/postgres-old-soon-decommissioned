@@ -271,3 +271,5 @@ CREATE RULE pg_settings_u AS
 CREATE RULE pg_settings_n AS 
     ON UPDATE TO pg_settings 
     DO INSTEAD NOTHING;
+
+GRANT SELECT, UPDATE ON pg_settings TO PUBLIC;
