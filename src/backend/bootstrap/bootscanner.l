@@ -129,7 +129,7 @@ insert			{ return(INSERT_TUPLE); }
 						}
 
 .				{
-					elog(ERROR, "syntax error at line %d: unexpected character %s", yyline, yytext);
+					elog(ERROR, "syntax error at line %d: unexpected character \"%s\"", yyline, yytext);
 				}
 
 
@@ -139,5 +139,5 @@ insert			{ return(INSERT_TUPLE); }
 void
 yyerror(const char *str)
 {
-	elog(ERROR, "syntax error at line %d: unexpected token %s", yyline, str);
+	elog(ERROR, "syntax error at line %d: unexpected token \"%s\"", yyline, str);
 }

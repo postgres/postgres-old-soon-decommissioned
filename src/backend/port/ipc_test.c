@@ -90,7 +90,7 @@ void
 			on_shmem_exit(void (*function) (), Datum arg)
 {
 	if (on_shmem_exit_index >= MAX_ON_EXITS)
-		elog(FATAL, "Out of on_shmem_exit slots");
+		elog(FATAL, "out of on_shmem_exit slots");
 
 	on_shmem_exit_list[on_shmem_exit_index].function = function;
 	on_shmem_exit_list[on_shmem_exit_index].arg = arg;

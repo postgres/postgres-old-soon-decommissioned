@@ -35,10 +35,12 @@ DLNewList(void)
 	if (l == NULL)
 	{
 #ifdef FRONTEND
-		fprintf(stderr, "Memory exhausted in DLNewList\n");
+		fprintf(stderr, "memory exhausted in DLNewList\n");
 		exit(1);
 #else
-		elog(ERROR, "Memory exhausted in DLNewList");
+		ereport(ERROR,
+				(errcode(ERRCODE_OUT_OF_MEMORY),
+				 errmsg("out of memory")));
 #endif
 	}
 	l->dll_head = 0;
@@ -78,10 +80,12 @@ DLNewElem(void *val)
 	if (e == NULL)
 	{
 #ifdef FRONTEND
-		fprintf(stderr, "Memory exhausted in DLNewElem\n");
+		fprintf(stderr, "memory exhausted in DLNewElem\n");
 		exit(1);
 #else
-		elog(ERROR, "Memory exhausted in DLNewElem");
+		ereport(ERROR,
+				(errcode(ERRCODE_OUT_OF_MEMORY),
+				 errmsg("out of memory")));
 #endif
 	}
 	e->dle_next = 0;

@@ -165,7 +165,7 @@ PGReserveSemaphores(int maxSemas, int port)
 {
 	mySemPointers = (sem_t **) malloc(maxSemas * sizeof(sem_t *));
 	if (mySemPointers == NULL)
-		elog(PANIC, "Out of memory in PGReserveSemaphores");
+		elog(PANIC, "out of memory");
 	numSems = 0;
 	maxSems = maxSemas;
 	nextSemKey = port * 1000;
@@ -202,7 +202,7 @@ PGSemaphoreCreate(PGSemaphore sema)
 	Assert(!IsUnderPostmaster);
 
 	if (numSems >= maxSems)
-		elog(PANIC, "PGSemaphoreCreate: too many semaphores created");
+		elog(PANIC, "too many semaphores created");
 
 #ifdef USE_NAMED_POSIX_SEMAPHORES
 	*sema = newsem = PosixSemaphoreCreate();

@@ -1328,7 +1328,8 @@ _copyAConst(A_Const *from)
 			/* nothing to do */
 			break;
 		default:
-			elog(ERROR, "_copyAConst: unknown node type %d", from->val.type);
+			elog(ERROR, "unrecognized node type: %d",
+				 (int) from->val.type);
 			break;
 	}
 
@@ -2443,7 +2444,8 @@ _copyValue(Value *from)
 			/* nothing to do */
 			break;
 		default:
-			elog(ERROR, "_copyValue: unknown node type %d", from->type);
+			elog(ERROR, "unrecognized node type: %d",
+				 (int) from->type);
 			break;
 	}
 	return newnode;
@@ -2966,8 +2968,7 @@ copyObject(void *from)
 			break;
 
 		default:
-			elog(ERROR, "copyObject: don't know how to copy node type %d",
-				 nodeTag(from));
+			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(from));
 			retval = from;		/* keep compiler quiet */
 			break;
 	}

@@ -177,7 +177,7 @@ IpcSemaphoreKill(IpcSemaphoreId semId)
 				semId, strerror(errno));
 
 	/*
-	 * We used to report a failure via elog(WARNING), but that's pretty
+	 * We used to report a failure via ereport(WARNING), but that's pretty
 	 * pointless considering any client has long since disconnected ...
 	 */
 }
@@ -316,7 +316,7 @@ PGReserveSemaphores(int maxSemas, int port)
 	mySemaSets = (IpcSemaphoreId *)
 		malloc(maxSemaSets * sizeof(IpcSemaphoreId));
 	if (mySemaSets == NULL)
-		elog(PANIC, "Out of memory in PGReserveSemaphores");
+		elog(PANIC, "out of memory");
 	numSemaSets = 0;
 	nextSemaKey = port * 1000;
 	nextSemaNumber = SEMAS_PER_SET;		/* force sema set alloc on 1st
@@ -355,7 +355,7 @@ PGSemaphoreCreate(PGSemaphore sema)
 	{
 		/* Time to allocate another semaphore set */
 		if (numSemaSets >= maxSemaSets)
-			elog(PANIC, "PGSemaphoreCreate: too many semaphores created");
+			elog(PANIC, "too many semaphores created");
 		mySemaSets[numSemaSets] = IpcSemaphoreCreate(SEMAS_PER_SET);
 		numSemaSets++;
 		nextSemaNumber = 0;
