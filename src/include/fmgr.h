@@ -282,7 +282,8 @@ CppConcat(pg_finfo_,funcname) (void) \
 { \
 	static Pg_finfo_record my_finfo = { 1 }; \
 	return &my_finfo; \
-}
+} \
+extern int no_such_variable
 
 
 /*-------------------------------------------------------------------------
