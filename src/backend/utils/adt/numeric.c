@@ -3872,6 +3872,9 @@ ln_var(NumericVar *arg, NumericVar *result)
 			break;
 
 		add_var(result, &elem, result);
+
+		if (elem.weight < (result->weight - 2 * global_rscale))
+			break;
 	}
 
 	/* Compensate for argument range reduction, round to caller's rscale */
