@@ -598,15 +598,19 @@ _outGroup(StringInfo str, Group *node)
 static void
 _outUnique(StringInfo str, Unique *node)
 {
+	int		i;
+
 	appendStringInfo(str, " UNIQUE ");
 	_outPlanInfo(str, (Plan *) node);
 
-	appendStringInfo(str, " :nonameid %u :keycount %d :numCols %d ",
+	appendStringInfo(str, " :nonameid %u :keycount %d :numCols %d :uniqColIdx ",
 					 node->nonameid,
 					 node->keycount,
 					 node->numCols);
-}
 
+	for (i = 0; i < node->numCols; i++)
+		appendStringInfo(str, "%d ", (int) node->uniqColIdx[i]);
+}
 
 /*
  *	Hash is a subclass of Noname
