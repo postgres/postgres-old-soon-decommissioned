@@ -377,6 +377,22 @@ GetCurrentCommandId()
     return s->commandId;
 }
 
+CommandId
+GetScanCommandId()
+{
+    TransactionState s = CurrentTransactionState;
+    
+    /* ----------------
+     *	if the transaction system is disabled, we return
+     *  the special "disabled" command id.
+     * ----------------
+     */
+    if (s->state == TRANS_DISABLED)
+	return (CommandId) DisabledCommandId;
+    
+    return s->scanCommandId;
+}
+
 
 /* --------------------------------
  *	GetCurrentTransactionStartTime
@@ -432,6 +448,18 @@ CommandIdIsCurrentCommandId(CommandId cid)
 	(cid == s->commandId) ? true : false;
 }
 
+bool
+CommandIdGEScanCommandId(CommandId cid)
+{
+    TransactionState s = CurrentTransactionState;
+    
+    if (AMI_OVERRIDE)
+	return false;
+    
+    return 	
+	(cid >= s->scanCommandId) ? true : false;
+}
+
 
 /* --------------------------------
  *	ClearCommandIdCounterOverflowFlag
@@ -458,9 +486,20 @@ CommandCounterIncrement()
 	elog(WARN, "You may only have 65535 commands per transaction");
     }
     
+    CurrentTransactionStateData.scanCommandId = 
+    		CurrentTransactionStateData.commandId;
+    
     /* make cache changes visible to me */
     AtCommit_Cache();
     AtStart_Cache();
+}
+
+void 
+SetScanCommandId (CommandId savedId)
+{
+
+    CurrentTransactionStateData.scanCommandId = savedId;
+    
 }
 
 /* ----------------------------------------------------------------
@@ -757,6 +796,7 @@ StartTransaction()
      * ----------------
      */
     s->commandId = 		FirstCommandId;
+    s->scanCommandId = 		FirstCommandId;
     s->startTime = 		GetCurrentAbsoluteTime();
     
     /* ----------------
