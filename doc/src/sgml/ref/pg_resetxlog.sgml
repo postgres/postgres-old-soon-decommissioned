@@ -21,7 +21,7 @@ PostgreSQL documentation
    <arg> -f </arg>
    <arg> -n </arg>
    <arg> -x <replaceable class="parameter">xid</replaceable> </arg>
-   <arg> -l <replaceable class="parameter">fileid</replaceable> <replaceable class="parameter">seg</replaceable> </arg>
+   <arg> -l <replaceable class="parameter">fileid</replaceable>,<replaceable class="parameter">seg</replaceable> </arg>
    <arg choice="plain"><replaceable>datadir</replaceable></arg>
   </cmdsynopsis>
  </refsynopsisdiv>

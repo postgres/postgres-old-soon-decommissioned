@@ -461,7 +461,7 @@ fi
 
 # Set checkpoint location of new database
 
-pg_resetxlog -l "$LOG_ID" "$SEG_ID" "$PGDATA"
+pg_resetxlog -l "$LOG_ID","$SEG_ID" "$PGDATA"
 if [ "$?" -ne 0 ]
 then	echo "Unable to set new log file/segment id.  Exiting." 1>&2
 	exit 1
