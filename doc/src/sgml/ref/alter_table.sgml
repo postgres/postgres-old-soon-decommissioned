@@ -295,6 +295,15 @@ ALTER TABLE distributors ADD CONSTRAINT dist_id_zipcode_key UNIQUE (dist_id, zip
   </para>
  </refsect1>
 
+  <para> 
+   To add an automatically named primary key constraint to a table, noting
+   that a table can only ever have one primary key:
+   <programlisting>
+ALTER TABLE distributors ADD PRIMARY KEY (dist_id);
+   </programlisting>
+  </para>
+ </refsect1>
+
  <refsect1 id="R1-SQL-ALTERTABLE-3">
   <title>
    Compatibility
