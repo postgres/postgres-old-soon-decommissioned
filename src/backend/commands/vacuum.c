@@ -1849,6 +1849,11 @@ failed to add item with len = %lu to page %u (free space %lu, nusd %u, noff %u)"
 		 nblocks, blkno, num_moved,
 		 show_rusage(&ru0));
 
+	/* 
+	 * Reflect the motion of system tuples to catalog cache here.
+	 */
+        CommandCounterIncrement();
+
 	if (Nvacpagelist.num_pages > 0)
 	{
 		/* vacuum indices again if needed */
