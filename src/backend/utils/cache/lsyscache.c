@@ -1470,37 +1470,6 @@ get_typtype(Oid typid)
 }
 
 /*
- * get_typname
- *		Returns the name of a given type.
- *
- * Returns a palloc'd copy of the string, or NULL if no such type.
- *
- * NOTE: since type name is not unique, be wary of code that uses this
- * for anything except preparing error messages.
- */
-char *
-get_typname(Oid typid)
-{
-	HeapTuple	tp;
-
-	tp = SearchSysCache(TYPEOID,
-						ObjectIdGetDatum(typid),
-						0, 0, 0);
-	if (HeapTupleIsValid(tp))
-	{
-		Form_pg_type typtup = (Form_pg_type) GETSTRUCT(tp);
-		char	   *result;
-
-		result = pstrdup(NameStr(typtup->typname));
-		ReleaseSysCache(tp);
-		return result;
-	}
-	else
-		return NULL;
-}
-
-
-/*
  * get_typ_typrelid
  *
  *		Given the type OID, get the typrelid (InvalidOid if not a complex

@@ -83,7 +83,6 @@ extern char get_typtype(Oid typid);
 extern Oid	get_typ_typrelid(Oid typid);
 extern Oid	get_element_type(Oid typid);
 extern Oid	get_array_type(Oid typid);
-extern char *get_typname(Oid relid);
 extern void getTypeInputInfo(Oid type, Oid *typInput, Oid *typElem);
 extern void getTypeOutputInfo(Oid type, Oid *typOutput, Oid *typElem,
 				  bool *typIsVarlena);
