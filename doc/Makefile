@@ -55,7 +55,7 @@ clean::
 distclean::
 	$(MAKE) clean
 
-man:
+man::
 	$(MAKE) -C $(SRCDIR) install-man
 
 #
