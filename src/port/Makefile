@@ -15,6 +15,8 @@ subdir = src/port
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
+override CPPFLAGS := -I$(top_builddir)/src/port $(CPPFLAGS)
+
 ifdef LIBOBJS
 all: libpgport.a
 endif
