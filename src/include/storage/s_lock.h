@@ -150,7 +150,8 @@ tas(volatile slock_t *lock)
 
 #endif	 /* __arm__ */
 
-#if defined(__s390__) || defined(__s390x__)
+
+#if defined(__s390__) && !defined(__s390x__)
 /*
  * S/390 Linux
  */
@@ -175,6 +176,32 @@ tas(volatile slock_t *lock)
 }
 
 #endif	 /* __s390__ */
+
+#if defined(__s390x__)
+/*
+ * S/390x Linux (64-bit zSeries)
+ */
+#define TAS(lock)	   tas(lock)
+
+static __inline__ int
+tas(volatile slock_t *lock)
+{
+	int			_res;
+
+	__asm__	__volatile__(
+		"	la	1,1			\n"
+		"	lg 	2,%2		\n"
+		"	slr 0,0			\n"
+		"	cs 	0,1,0(2)	\n"
+		"	lr 	%1,0		\n"
+:		"=m"(lock), "=d"(_res)
+:		"m"(lock)
+:		"0", "1", "2");
+
+	return (_res);
+}
+
+#endif	 /* __s390x__ */
 
 
 #if defined(__sparc__)
