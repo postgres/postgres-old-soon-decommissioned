@@ -696,7 +696,7 @@ plpgsql_parse_dblword(char *word)
 				new = malloc(sizeof(PLpgSQL_recfield));
 				new->dtype = PLPGSQL_DTYPE_RECFIELD;
 				new->fieldname = strdup(cp[1]);
-				new->recno = ns->itemno;
+				new->recparentno = ns->itemno;
 
 				plpgsql_adddatum((PLpgSQL_datum *) new);
 
@@ -799,7 +799,7 @@ plpgsql_parse_tripword(char *word)
 				new = malloc(sizeof(PLpgSQL_recfield));
 				new->dtype = PLPGSQL_DTYPE_RECFIELD;
 				new->fieldname = strdup(cp[2]);
-				new->recno = ns->itemno;
+				new->recparentno = ns->itemno;
 
 				plpgsql_adddatum((PLpgSQL_datum *) new);
 

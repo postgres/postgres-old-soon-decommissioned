@@ -1019,7 +1019,9 @@ plpgsql_dumptree(PLpgSQL_function * func)
 				printf("REC %s\n", ((PLpgSQL_rec *) d)->refname);
 				break;
 			case PLPGSQL_DTYPE_RECFIELD:
-				printf("RECFIELD %-16s of REC %d\n", ((PLpgSQL_recfield *) d)->fieldname, ((PLpgSQL_recfield *) d)->recno);
+				printf("RECFIELD %-16s of REC %d\n",
+					   ((PLpgSQL_recfield *) d)->fieldname,
+					   ((PLpgSQL_recfield *) d)->recparentno);
 				break;
 			case PLPGSQL_DTYPE_TRIGARG:
 				printf("TRIGARG ");

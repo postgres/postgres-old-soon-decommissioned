@@ -152,6 +152,10 @@ typedef struct
 }	PLpgSQL_type;
 
 
+/*
+ * PLpgSQL_datum is the common supertype for PLpgSQL_expr, PLpgSQL_var,
+ * PLpgSQL_row, PLpgSQL_rec, PLpgSQL_recfield, PLpgSQL_trigarg
+ */
 typedef struct
 {								/* Generic datum array item		*/
 	int			dtype;
@@ -209,7 +213,7 @@ typedef struct
 
 
 typedef struct
-{								/* Record of undefined structure	*/
+{								/* Record of non-fixed structure */
 	int			dtype;
 	int			recno;
 	char	   *refname;
@@ -223,11 +227,11 @@ typedef struct
 
 
 typedef struct
-{								/* Field in record			*/
+{								/* Field in record */
 	int			dtype;
 	int			rfno;
 	char	   *fieldname;
-	int			recno;
+	int			recparentno;	/* recno of parent record */
 }	PLpgSQL_recfield;
 
 
