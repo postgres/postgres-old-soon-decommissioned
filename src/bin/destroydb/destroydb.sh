@@ -58,7 +58,7 @@ done
 AUTHOPT="-a $AUTHSYS"
 [ -z "$AUTHSYS" ] && AUTHOPT=""
 
-monitor -TN -h $PGHOST -p $PGPORT -c "drop database $dbname" template1
+psql -Tq -H $PGHOST -p $PGPORT -c "drop database $dbname" template1
 
 if [ $? -ne 0 ]
 then

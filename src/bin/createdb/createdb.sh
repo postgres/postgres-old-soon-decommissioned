@@ -58,7 +58,7 @@ done
 AUTHOPT="-a $AUTHSYS"
 [ -z "$AUTHSYS" ] && AUTHOPT=""
 
-monitor -TN $AUTHOPT -h $PGHOST -p $PGPORT -c "create database $dbname" template1 || {
+psql -Tq $AUTHOPT -H $PGHOST -p $PGPORT -c "create database $dbname" template1 || {
     echo "$CMDNAME: database creation failed on $dbname."
     exit 1
 }
