@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Mon Jul 21 21:06:50 EDT 2003
+Last updated:		Wed Jul 23 14:16:36 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -182,6 +182,7 @@ Commands
 * Allow SET CONSTRAINTS to be qualified by schema/table
 * Have SELECT '13 minutes'::interval display zero seconds in ISO datestyle
 * Prevent COMMENT ON DATABASE from using a database name
+* Add GUC variable to prevent waiting on locks
 
 
 * ALTER
