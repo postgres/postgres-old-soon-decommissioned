@@ -12,7 +12,7 @@
 #
 #----------------------------------------------------------------------------
 
-PGDOCS= /usr/local/cdrom/docs
+PGDOCS= unpacked
 SRCDIR= ../src
 
 TAR= tar

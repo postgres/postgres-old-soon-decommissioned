@@ -16,15 +16,15 @@ SRCDIR=..
 include ../Makefile.global
 
 install:
-	-mkdir -p $(POSTMANDIR)
-	-mkdir -p $(POSTMANDIR)/man1
-	-mkdir -p $(POSTMANDIR)/man3
-	-mkdir -p $(POSTMANDIR)/man5
-	-mkdir -p $(POSTMANDIR)/manl
-	cp *.1* $(POSTMANDIR)/man1
-	cp *.3* $(POSTMANDIR)/man3
-	cp *.5* $(POSTMANDIR)/man5
-	cp *.l* $(POSTMANDIR)/manl
+	-mkdir $(DESTDIR)$(POSTMANDIR)
+	-mkdir $(DESTDIR)$(POSTMANDIR)/man1
+	-mkdir $(DESTDIR)$(POSTMANDIR)/man3
+	-mkdir $(DESTDIR)$(POSTMANDIR)/man5
+ 	-mkdir $(DESTDIR)$(POSTMANDIR)/manl
+	cp *.1* $(DESTDIR)$(POSTMANDIR)/man1
+	cp *.3* $(DESTDIR)$(POSTMANDIR)/man3
+	cp *.5* $(DESTDIR)$(POSTMANDIR)/man5
+	cp *.l* $(DESTDIR)$(POSTMANDIR)/manl
 
 clean:
 

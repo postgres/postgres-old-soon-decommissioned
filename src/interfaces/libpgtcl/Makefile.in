@@ -88,10 +88,10 @@ $(shlib): $(OBJS)
 install: install-headers install-libpgtcl $(install-shlib-dep)
 
 install-headers: beforeinstall-headers libpgtcl.h
-	$(INSTALL) $(INSTLOPTS) libpgtcl.h $(HEADERDIR)/libpgtcl.h
+	$(INSTALL) $(INSTLOPTS) libpgtcl.h $(DESTDIR)$(HEADERDIR)/libpgtcl.h
 
 beforeinstall-headers:
-	@if [ ! -d $(HEADERDIR) ]; then mkdir $(HEADERDIR); fi
+	@if [ ! -d $(DESTDIR)$(HEADERDIR) ]; then mkdir $(DESTDIR)$(HEADERDIR); fi
 
 install-libpgtcl: libpgtcl.a
 	$(INSTALL) $(INSTL_LIB_OPTS) libpgtcl.a $(DESTDIR)$(LIBDIR)/libpgtcl.a
