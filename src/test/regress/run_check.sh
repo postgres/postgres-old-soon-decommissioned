@@ -59,7 +59,7 @@ extratests="$*"
 # ----------
 # Special setting for Windows (no unix domain sockets)
 # ----------
-if [ "x$hostname" = "xwin" ]
+if [ "x$hostname" = "xwin" -o "x$hostname" = "xi386-pc-qnx" ]
 then
     HOSTLOC="-h localhost"
 else
