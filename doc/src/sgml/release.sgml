@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+CREATE OR REPLACE VIEW, CREATE OR REPLACE RULE are available
 No-autocommit mode is available (set autocommit to off)
 Substantial improvements in functionality for functions returning sets
 Client libraries older than 6.3 no longer supported (version 0 protocol removed)
