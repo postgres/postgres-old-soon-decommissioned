@@ -1865,7 +1865,7 @@
       <entry>indisclustered</entry>
       <entry><type>bool</type></entry>
       <entry></entry>
-      <entry>unused</entry>
+      <entry>If true, the table was last clustered on this index.</entry>
      </row>
 
      <row>

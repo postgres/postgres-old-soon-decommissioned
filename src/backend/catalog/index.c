@@ -453,7 +453,7 @@ UpdateIndexRelation(Oid indexoid,
 	indexForm->indexrelid = indexoid;
 	indexForm->indrelid = heapoid;
 	indexForm->indproc = indexInfo->ii_FuncOid;
-	indexForm->indisclustered = false;	/* not used */
+	indexForm->indisclustered = false;	/* not clustered, yet */
 	indexForm->indisunique = indexInfo->ii_Unique;
 	indexForm->indisprimary = primary;
 	memcpy((char *) &indexForm->indpred, (char *) predText, predLen);

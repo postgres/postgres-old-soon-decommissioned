@@ -38,7 +38,7 @@ CATALOG(pg_index) BKI_WITHOUT_OIDS
 	regproc		indproc;		/* OID of function for functional index */
 	int2vector	indkey;			/* column numbers of indexed attributes */
 	oidvector	indclass;		/* opclass identifiers */
-	bool		indisclustered; /* presently unused */
+	bool		indisclustered; /* is this the index last clustered by? */
 	bool		indisunique;	/* is this a unique index? */
 	bool		indisprimary;	/* is this index for primary key? */
 	Oid			indreference;	/* oid of index of referenced relation (ie
