@@ -763,7 +763,6 @@ fi
 
 if test "$with_krb5" = yes ; then
   AC_CHECK_HEADER(krb5.h, [], [AC_MSG_ERROR([header file <krb5.h> is required for Kerberos 5])])
-  AC_CHECK_HEADER(com_err.h, [], [AC_MSG_ERROR([header file <com_err.h> is required for Kerberos 5])])
 fi
 
 if test "$with_openssl" = yes ; then

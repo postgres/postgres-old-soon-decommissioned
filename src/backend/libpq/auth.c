@@ -150,7 +150,6 @@ pg_krb4_recvauth(Port *port)
  */
 
 #include <krb5.h>
-#include <com_err.h>
 
 /*
  * pg_an_to_ln -- return the local name corresponding to an authentication
