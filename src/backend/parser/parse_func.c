@@ -951,6 +951,8 @@ func_select_candidate(int nargs,
 					/* started out as unknown type, so give preference to string type, if available */
 					if (current_category == STRING_TYPE)
 					{
+						slot_category = current_category;
+						slot_type = current_type;
 						/* forget all previous candidates */
 						candidates = current_candidate;
 						last_candidate = current_candidate;
