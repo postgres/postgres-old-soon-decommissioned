@@ -241,9 +241,11 @@ expandAll(ParseState *pstate, char *relname, char *refname, int *this_resno)
 	if (rte == NULL)
 	{
 		rte = addRangeTableEntry(pstate, relname, refname, FALSE, FALSE);
+#ifdef WARN_FROM
 		elog(NOTICE,"Adding missing FROM-clause entry%s for table %s",
 			pstate->parentParseState != NULL ? " in subquery" : "",
 			refname);
+#endif
 	}
 
 	rel = heap_open(rte->relid, AccessShareLock);

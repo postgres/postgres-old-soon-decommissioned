@@ -275,9 +275,11 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 			if (rte == NULL)
 			{
 				rte = addRangeTableEntry(pstate, refname, refname,FALSE, FALSE);
+#ifdef WARN_FROM
 				elog(NOTICE,"Adding missing FROM-clause entry%s for table %s",
 					pstate->parentParseState != NULL ? " in subquery" : "",
 					refname);
+#endif
 			}
 
 			relname = rte->relname;
@@ -436,9 +438,11 @@ ParseFuncOrColumn(ParseState *pstate, char *funcname, List *fargs,
 			if (rte == NULL)
 			{
 				rte = addRangeTableEntry(pstate, refname, refname,FALSE, FALSE);
+#ifdef WARN_FROM
 				elog(NOTICE,"Adding missing FROM-clause entry%s for table %s",
 					pstate->parentParseState != NULL ? " in subquery" : "",
 					refname);
+#endif
 			}
 										 
 			relname = rte->relname;
