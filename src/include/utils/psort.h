@@ -19,7 +19,7 @@
 #define	SORTMEM		(1 << 18)		/* 1/4 M - any static memory */
 #define	MAXTAPES	7			/* 7--See Fig. 70, p273 */
 #define	TAPEEXT		"pg_psort.XXXXXX"	/* TEMPDIR/TAPEEXT */
-#define	FREE(x)		free((char *) x)
+#define	FREE(x)		pfree((char *) x)
 
 struct	tape {
     int		tp_dummy;	/* (D) */
