@@ -44,6 +44,10 @@
 extern char *optarg;
 extern int	optind;
 
+#ifdef WIN32
+#undef select
+#endif
+
 
 /********************************************************************
  * some configurable parameters */
@@ -705,7 +709,7 @@ main(int argc, char **argv)
 	int			nsocks;			/* return from select(2) */
 	int			maxsock;		/* max socket number to be waited */
 
-#ifndef __CYGWIN__
+#if !(defined(__CYGWIN__) || defined(__MINGW32__))
 	struct rlimit rlim;
 #endif
 
@@ -755,7 +759,7 @@ main(int argc, char **argv)
 					fprintf(stderr, "invalid number of clients: %d\n", nclients);
 					exit(1);
 				}
-#ifndef __CYGWIN__
+#if !(defined(__CYGWIN__) || defined(__MINGW32__))
 #ifdef RLIMIT_NOFILE			/* most platform uses RLIMIT_NOFILE */
 				if (getrlimit(RLIMIT_NOFILE, &rlim) == -1)
 				{
@@ -772,7 +776,7 @@ main(int argc, char **argv)
 					fprintf(stderr, "Use limit/ulimt to increase the limit before using pgbench.\n");
 					exit(1);
 				}
-#endif   /* #ifndef __CYGWIN__ */
+#endif   /* #if !(defined(__CYGWIN__) || defined(__MINGW32__)) */
 				break;
 			case 'C':
 				is_connect = 1;
@@ -935,7 +939,7 @@ main(int argc, char **argv)
 
 	/* set random seed */
 	gettimeofday(&tv1, 0);
-	srand((uint) tv1.tv_usec);
+	srand((unsigned int) tv1.tv_usec);
 
 	/* get start up time */
 	gettimeofday(&tv1, 0);

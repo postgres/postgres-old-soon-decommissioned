@@ -82,6 +82,11 @@ include $(top_builddir)/src/Makefile.global
 include $(top_srcdir)/contrib/contrib-global.mk
 endif
 
+# to make ws2_32.lib the last library (must occur after definition of PORTNAME)
+ifeq ($(PORTNAME),win32)
+SHLIB_LINK += -lwsock32 -lws2_32
+endif
+
 
 rijndael.o: rijndael.tbl
 
