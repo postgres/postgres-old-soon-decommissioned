@@ -16,6 +16,7 @@
  
 #include "catalog/pg_attribute.h"
 #include "access/attnum.h"
+#include "nodes/nodes.h"
 #include "nodes/pg_list.h" 
 #include "access/tupdesc.h"
 #include "storage/fd.h"
