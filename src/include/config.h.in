@@ -235,6 +235,16 @@
 #endif
 
 /*
+ * This is the default directory in which AF_UNIX socket files are placed.
+ * Caution: changing this risks breaking your existing client applications,
+ * which are likely to continue to look in the old directory.  But if you
+ * just hate the idea of sockets in /tmp, here's where to twiddle it.
+ * You can also override this at runtime with the postmaster's -k switch.
+ */
+#define DEFAULT_PGSOCKET_DIR  "/tmp"
+
+
+/*
  *------------------------------------------------------------------------
  * These hand-configurable symbols are for enabling debugging code,
  * not for controlling user-visible features or resource limits.
