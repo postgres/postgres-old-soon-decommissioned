@@ -14,7 +14,8 @@ all: Makefile
 
 Makefile: Makefile.PL
 	plperl_installdir='$$(DESTDIR)$(pkglibdir)' \
-	$(PERL) $< $(makefile_pl_flags) INC='-I$(srcdir) $(filter -I%, $(CPPFLAGS))'
+	$(PERL) $< $(makefile_pl_flags) LIBS='$(BE_DLLLIBS)' \
+	INC='-I$(srcdir) $(filter -I%, $(CPPFLAGS))'
 
 install: all installdirs
 	$(MAKE) -f Makefile install DESTDIR='$(DESTDIR)'
