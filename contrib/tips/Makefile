@@ -6,11 +6,11 @@ TOPDIR=../..
 
 include ../Makefile.global
 
-NAME	= apachelog
+NAME	= 
 
 PROGRAM	= 
 OBJS	= 
-DOCS	= README
+DOCS	= README.apachelog
 SQLS	= 
 BINS	=
 EXAMPLES=
@@ -21,8 +21,9 @@ all::
 install: install_doc 
 
 install_doc:
+	$(TOPDIR)/config/mkinstalldirs $(CONTRIB_DOCDIR)/tips
 	for inst_file in $(DOCS); do \
-		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR)/$(DOCS).$(NAME); \
+		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR)/tips; \
 	done
 
 clean:

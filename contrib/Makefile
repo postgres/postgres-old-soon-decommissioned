@@ -14,7 +14,6 @@ WANTED_DIRS =	array		\
 		findoidjoins	\
 		fulltextindex	\
 		isbn_issn	\
-		likeplanning	\
 		linux		\
 		lo		\
 		mSQL-interface	\
@@ -31,7 +30,6 @@ WANTED_DIRS =	array		\
 		userlock	\
 		vacuumlo	
 	#	odbc
-	#	os2client	
 
 
 all:

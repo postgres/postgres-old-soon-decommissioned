@@ -10,7 +10,7 @@ NAME	= findoidjoins
 
 PROGRAM	= $(NAME)
 OBJS	= $(NAME).o
-DOCS	= README
+DOCS	= README.$(NAME)
 SQLS	= 
 BINS    = $(PROGRAM) make_oidjoins_check
 EXAMPLES=
@@ -31,7 +31,7 @@ install: install_doc nstall_bin
 
 install_doc:
 	for inst_file in $(DOCS); do \
-		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR)/$(DOCS).$(NAME); \
+		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR); \
 	done
 
 install_bin:

@@ -6,14 +6,14 @@ TOPDIR=../..
 
 include ../Makefile.global
 
-NAME	= spi
+NAME	= 
 
 PROGRAM	= 
 OBJS	= autoinc.o insert_username.o moddatetime.o refint.o timetravel.o
-DOCS	= README
+DOCS	= README.spi
 SQLS	= $(OBJS:.o=.sql)
 BINS	=
-EXAMPLES= $(OBJS:.o=.example)
+EXAMPLES= $(OBJS:.o=.example) new_example.example
 MODS	= $(OBJS:.o=$(DLSUFFIX))
 
 CFLAGS += -I. $(CFLAGS_SL)
@@ -33,7 +33,7 @@ install: install_doc install_sql install_mod install_example
 
 install_doc:
 	for inst_file in $(DOCS); do \
-		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR)/$(DOCS).$(NAME); \
+		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR); \
 	done
 
 install_sql:

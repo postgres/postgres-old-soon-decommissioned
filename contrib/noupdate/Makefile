@@ -10,7 +10,7 @@ NAME	= noup
 
 PROGRAM	= 
 OBJS	= $(NAME).o
-DOCS	= README
+DOCS	= README.$(NAME)
 SQLS	= $(NAME).sql
 BINS	=
 EXAMPLES=
@@ -29,7 +29,7 @@ install: install_doc install_sql install_mod
 
 install_doc:
 	for inst_file in $(DOCS); do \
-		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR)/$(DOCS).$(NAME); \
+		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR); \
 	done
 
 install_sql:
