@@ -120,6 +120,14 @@ MakeRetrieveViewRuleName(char *viewName)
 	buf = palloc(strlen(viewName) + 5);
 	snprintf(buf, strlen(viewName) + 5, "_RET%s", viewName);
 
+#ifdef MULTIBYTE
+	int len;
+	len = pg_mbcliplen(buf,strlen(buf),NAMEDATALEN-1);
+	buf[len] = '\0';
+#else
+	buf[NAMEDATALEN-1] = '\0';
+#endif
+
 	return buf;
 }
 
