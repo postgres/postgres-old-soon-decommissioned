@@ -492,6 +492,7 @@ psql_completion(char *text, int start, int end)
 		 * the rest should match USERSET and possibly SUSET entries in
 		 * backend/utils/misc/guc.c.
 		 */
+		"add_missing_from",
 		"australian_timezones",
 		"client_encoding",
 		"client_min_messages",

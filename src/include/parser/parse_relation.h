@@ -16,6 +16,8 @@
 
 #include "parser/parse_node.h"
 
+extern bool add_missing_from;
+
 extern RangeTblEntry *refnameRangeTblEntry(ParseState *pstate,
 					 const char *schemaname,
 					 const char *refname,

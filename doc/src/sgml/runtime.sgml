@@ -1300,6 +1300,22 @@ SET ENABLE_SEQSCAN TO OFF;
 
     <variablelist>
      <varlistentry>
+      <term><varname>ADD_MISSING_FROM</varname> (<type>boolean</type>)</term>
+      <listitem>
+       <para>
+        This parameter controls whether a relation referenced in a query but
+        missing from the FROM clause should be automatically added to
+        the FROM clause. If enabled (the default), the notice
+        <literal>Adding missing FROM-clause entry for table "tablename"</literal>
+        is generated if a relation is automatically added. If not enabled,
+        an error is raised when an additional extra relation is required.
+        For SQL standards compliance, this value should be set to 
+        <literal>false</>.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
       <term><varname>AUSTRALIAN_TIMEZONES</varname> (<type>boolean</type>)</term>
       <indexterm><primary>Australian time zones</></>
       <listitem>

@@ -43,6 +43,7 @@
 #include "optimizer/paths.h"
 #include "optimizer/prep.h"
 #include "parser/parse_expr.h"
+#include "parser/parse_relation.h"
 #include "storage/fd.h"
 #include "storage/freespace.h"
 #include "storage/lock.h"
@@ -550,10 +551,15 @@ static struct config_bool
 		{"transaction_read_only", PGC_USERSET, GUC_NO_RESET_ALL}, &XactReadOnly,
 		false, NULL, NULL
 	},
+	{
+		{"add_missing_from", PGC_USERSET}, &add_missing_from,
+		true, NULL, NULL
+	},
 
+	/* End-of-list marker */
 	{
 		{NULL, 0}, NULL, false, NULL, NULL
-	}
+	},
 };
 
 
@@ -742,6 +748,7 @@ static struct config_int
 		0, 0, INT_MAX / 1000, NULL, NULL
 	},
 
+	/* End-of-list marker */
 	{
 		{NULL, 0}, NULL, 0, 0, 0, NULL, NULL
 	}
@@ -784,6 +791,7 @@ static struct config_real
 		0.5, 0.0, 1.0, assign_random_seed, show_random_seed
 	},
 
+	/* End-of-list marker */
 	{
 		{NULL, 0}, NULL, 0.0, 0.0, 0.0, NULL, NULL
 	}
@@ -946,6 +954,7 @@ static struct config_string
 		XLOG_sync_method_default, assign_xlog_sync_method, NULL
 	},
 
+	/* End-of-list marker */
 	{
 		{NULL, 0}, NULL, NULL, NULL, NULL
 	}
