@@ -545,7 +545,7 @@ Pg_result(ClientData cData, Tcl_Interp * interp, int argc, char *argv[])
 
 	if (strcmp(opt, "-status") == 0)
 	{
-		Tcl_AppendResult(interp, pgresStatus[PQresultStatus(result)], 0);
+		Tcl_AppendResult(interp, PQresStatus(PQresultStatus(result)), 0);
 		return TCL_OK;
 	}
 	else if (strcmp(opt, "-error") == 0)

@@ -1519,6 +1519,15 @@ PQresultStatus(PGresult *res)
 }
 
 const char *
+PQresStatus(ExecStatusType status)
+{
+	if (((int) status) < 0 ||
+		((int) status) >= (sizeof(pgresStatus) / sizeof(pgresStatus[0])))
+		return "Invalid ExecStatusType code";
+	return pgresStatus[status];
+}
+
+const char *
 PQresultErrorMessage(PGresult *res)
 {
 	if (!res || !res->errMsg)
