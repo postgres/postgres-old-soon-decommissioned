@@ -951,6 +951,7 @@ typedef struct TypeName
 	bool		setof;			/* is a set? */
 	int32		typmod;			/* type modifier */
 	List	   *arrayBounds;	/* array bounds */
+	char	   *attrname;		/* field name when using %TYPE */
 } TypeName;
 
 /*

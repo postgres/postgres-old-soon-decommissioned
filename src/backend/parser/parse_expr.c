@@ -942,6 +942,7 @@ parser_typecast_expression(ParseState *pstate,
 char *
 TypeNameToInternalName(TypeName *typename)
 {
+	Assert(typename->attrname == NULL);
 	if (typename->arrayBounds != NIL)
 	{
 
