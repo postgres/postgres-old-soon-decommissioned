@@ -103,6 +103,7 @@ PerformPortalFetch(char *name,
 	QueryDesc  *queryDesc;
 	EState	   *estate;
 	MemoryContext oldcontext;
+	CommandId	savedId;
 	bool		temp_desc = false;
 
 	/*
@@ -156,7 +157,7 @@ PerformPortalFetch(char *name,
 	}
 
 	/*
-	 * tell the destination to prepare to receive some tuples.
+	 * Tell the destination to prepare to receive some tuples.
 	 */
 	BeginCommand(name,
 				 queryDesc->operation,
@@ -167,6 +168,14 @@ PerformPortalFetch(char *name,
 								 * portal" */
 				 tag,
 				 queryDesc->dest);
+
+	/*
+	 * Restore the scanCommandId that was current when the cursor was
+	 * opened.  This ensures that we see the same tuples throughout the
+	 * execution of the cursor.
+	 */
+	savedId = GetScanCommandId();
+	SetScanCommandId(PortalGetCommandId(portal));
 
 	/*
 	 * Determine which direction to go in, and check to see if we're
@@ -213,6 +222,11 @@ PerformPortalFetch(char *name,
 				portal->atStart = true; /* we retrieved 'em all */
 		}
 	}
+
+	/*
+	 * Restore outer command ID.
+	 */
+	SetScanCommandId(savedId);
 
 	/*
 	 * Clean up and switch back to old context.
