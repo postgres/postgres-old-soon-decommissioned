@@ -56,7 +56,7 @@ PORTNAME= @PORTNAME@
 # library), set LINUX_ELF to null in Makefile.custom.
 LINUX_ELF= true
 
-LIBPQDIR:= $(SRCDIR)/libpq
+LIBPQDIR:= $(SRCDIR)/interfaces/libpq
 
 # For convenience, POSTGRESDIR is where BINDIR, and LIBDIR 
 # and other target destinations are rooted.  Of course, each of these is 
