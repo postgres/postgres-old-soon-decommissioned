@@ -1064,7 +1064,7 @@ PQconnectPoll(PGconn *conn)
 		{
 			SOCKET_SIZE_TYPE laddrlen;
 			int optval;
-			socklen_t optlen = sizeof(int);
+			int optlen = sizeof(int);
 
 			/* Write ready, since we've made it here, so the connection
 			 * has been made. */
