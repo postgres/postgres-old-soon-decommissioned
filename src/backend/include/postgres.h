@@ -61,7 +61,7 @@ typedef Oid regproc;
 typedef Oid RegProcedure;
 
 /* ptr to func returning (char *) */
-typedef char *	((*func_ptr)());	
+typedef char *	((*func_ptr)(int, ...));	
 
 
 #define RegProcedureIsValid(p)  OidIsValid(p)
