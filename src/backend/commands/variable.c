@@ -32,7 +32,7 @@ static bool show_cost_index(void);
 static bool reset_cost_index(void);
 static bool parse_cost_index(const char *);
 static bool show_r_plans(void);
-static bool reset_r_plans();
+static bool reset_r_plans(void);
 static bool parse_r_plans(const char *);
 static bool reset_geqo(void);
 static bool show_geqo(void);
