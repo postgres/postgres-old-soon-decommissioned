@@ -35,9 +35,7 @@ makeStringInfo()
 
 	res = (StringInfo) palloc(sizeof(StringInfoData));
 	if (res == NULL)
-	{
 		elog(ERROR, "makeStringInfo: Out of memory!");
-	}
 
 	size = 100;
 	res->data = palloc(size);
@@ -95,9 +93,7 @@ appendStringInfo(StringInfo str, char *buffer)
 		 */
 		newlen = 2 * str->len;
 		while (buflen + str->len >= newlen - 1)
-		{
 			newlen = 2 * newlen;
-		}
 
 		/*
 		 * allocate enough space.

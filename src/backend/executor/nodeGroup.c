@@ -114,9 +114,7 @@ ExecGroupEveryTuple(Group *node)
 		firsttuple = grpstate->grp_firstTuple;
 		/* this should occur on the first call only */
 		if (firsttuple == NULL)
-		{
 			grpstate->grp_firstTuple = heap_copytuple(outerTuple);
-		}
 		else
 		{
 

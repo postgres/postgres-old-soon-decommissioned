@@ -333,9 +333,7 @@ find_all_inheritors(List *unexamined_relids,
 											new_examined_relids);
 
 	if (new_unexamined_relids == NULL)
-	{
 		return (new_examined_relids);
-	}
 	else
 	{
 		return (find_all_inheritors(new_unexamined_relids,

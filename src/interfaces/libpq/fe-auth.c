@@ -396,9 +396,7 @@ pg_krb5_sendauth(const char *PQerrormsg, int sock,
 	strcpy(servbuf, PG_KRB_SRVNAM);
 	*(hostp = servbuf + (sizeof(PG_KRB_SRVNAM) - 1)) = '/';
 	if (hostname || *hostname)
-	{
 		strncpy(++hostp, hostname, MAXHOSTNAMELEN);
-	}
 	else
 	{
 		if (gethostname(++hostp, MAXHOSTNAMELEN) < 0)

@@ -207,9 +207,7 @@ setAttrList(char *bname)
 		attrname = (rdesc->rd_att->attrs[i]->attname).data;
 
 		if (notfirst == 1)
-		{
 			sprintf(temp_buf, ", %s = new.%s", attrname, attrname);
-		}
 		else
 		{
 			sprintf(temp_buf, "%s = new.%s", attrname, attrname);

@@ -385,9 +385,7 @@ flatten_tlist(List *tlist)
 		temp_entry = lfirst(temp);
 		vars = pull_var_clause((Node *) get_expr(temp_entry));
 		if (vars != NULL)
-		{
 			tlist_vars = nconc(tlist_vars, vars);
-		}
 	}
 
 	foreach(temp, tlist_vars)

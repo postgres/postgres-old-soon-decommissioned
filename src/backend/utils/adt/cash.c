@@ -122,9 +122,7 @@ printf( "cashin- negative symbol; string is '%s'\n", s);
 
 	}
 	else if (*s == psymbol)
-	{
 		s++;
-	}
 
 #ifdef CASHDEBUG
 printf( "cashin- string is '%s'\n", s);
@@ -687,9 +685,7 @@ cash_words_out(Cash *value)
 		p += 6;
 	}
 	else
-	{
 		*buf = 0;
-	}
 
 	m0 = *value % 100;			/* cents */
 	m1 = (*value / 100) % 1000; /* hundreds */

@@ -70,9 +70,7 @@ px(Gene *tour1, Gene *tour2, Gene *offspring, int num_gene, City *city_table)
 
 	/* initialize city table */
 	for (i = 1; i <= num_gene; i++)
-	{
 		city_table[i].used = 0;
-	}
 
 	/* choose random positions that will be inherited directly from parent */
 	num_positions = geqo_randint(2 * num_gene / 3, num_gene / 3);

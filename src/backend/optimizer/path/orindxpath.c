@@ -128,9 +128,7 @@ create_or_index_paths(Query *root,
 					   create_or_index_paths(root, rel, lnext(clauses)));
 			}
 			else
-			{
 				t_list = create_or_index_paths(root, rel, lnext(clauses));
-			}
 		}
 	}
 
@@ -237,21 +235,13 @@ best_or_subclause_index(Query *root,
 		Cost		subclause_selec;
 
 		if (constant_on_right)
-		{
 			value = ((Const *) get_rightop(subclause))->constvalue;
-		}
 		else
-		{
 			value = NameGetDatum("");
-		}
 		if (constant_on_right)
-		{
 			flag = (_SELEC_IS_CONSTANT_ || _SELEC_CONSTANT_RIGHT_);
-		}
 		else
-		{
 			flag = _SELEC_CONSTANT_RIGHT_;
-		}
 		index_selectivity(lfirsti(index->relids),
 						  index->classlist,
 						  lconsi(opno, NIL),

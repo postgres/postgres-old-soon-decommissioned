@@ -98,13 +98,9 @@ aclparse(char *s, AclItem *aip, unsigned *modechg)
 		*s != ACL_MODECHG_EQL_CHR)
 	{							/* we just read a keyword, not a name */
 		if (!strcmp(name, ACL_IDTYPE_GID_KEYWORD))
-		{
 			aip->ai_idtype = ACL_IDTYPE_GID;
-		}
 		else if (strcmp(name, ACL_IDTYPE_UID_KEYWORD))
-		{
 			elog(ERROR, "aclparse: bad keyword, must be [group|user]");
-		}
 		s = getid(s, name);		/* move s to the name beyond the keyword */
 		if (name[0] == '\0')
 			elog(ERROR, "aclparse: a name must follow the [group|user] keyword");

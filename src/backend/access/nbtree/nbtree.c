@@ -267,20 +267,14 @@ btbuild(Relation heap,
 		 * into the btree.
 		 */
 		if (usefast)
-		{
 			_bt_spool(index, btitem, spool);
-		}
 		else
-		{
 			res = _bt_doinsert(index, btitem, isunique, heap);
-		}
 
 		pfree(btitem);
 		pfree(itup);
 		if (res)
-		{
 			pfree(res);
-		}
 	}
 
 	/* okay, all heap tuples are indexed */

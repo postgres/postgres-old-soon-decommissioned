@@ -173,9 +173,7 @@ DLRemHead(Dllist *l)
 
 	result = l->dll_head;
 	if (l->dll_head->dle_next)
-	{
 		l->dll_head->dle_next->dle_prev = 0;
-	}
 
 	l->dll_head = l->dll_head->dle_next;
 
@@ -199,9 +197,7 @@ DLRemTail(Dllist *l)
 
 	result = l->dll_tail;
 	if (l->dll_tail->dle_prev)
-	{
 		l->dll_tail->dle_prev->dle_next = 0;
-	}
 	l->dll_tail = l->dll_tail->dle_prev;
 
 	result->dle_prev = 0;

@@ -288,9 +288,7 @@ init_fcache(Oid foid,
 		retval->nargs = retval->func.fn_nargs;
 	}
 	else
-	{
 		retval->func.fn_addr = (func_ptr) NULL;
-	}
 
 
 	return (retval);
@@ -316,7 +314,5 @@ setFcache(Node *node, Oid foid, List *argList, ExprContext *econtext)
 		fnode->func_fcache = fcache;
 	}
 	else
-	{
 		elog(ERROR, "init_fcache: node must be Oper or Func!");
-	}
 }

@@ -53,9 +53,7 @@ main(int argc, char **argv)
 		printf("%ld\n", (long) pw->pw_uid);
 	}
 	else
-	{
 		printf("%ld\n", (long) getuid());
-	}
 
 	exit(0);
 }

@@ -143,9 +143,7 @@ DataFill(char *data,
 		if (bit != NULL)
 		{
 			if (bitmask != CSIGNBIT)
-			{
 				bitmask <<= 1;
-			}
 			else
 			{
 				bitP += 1;
@@ -167,13 +165,9 @@ DataFill(char *data,
 			case -1:
 				*infomask |= HEAP_HASVARLENA;
 				if (att[i]->attalign == 'd')
-				{
 					data = (char *) DOUBLEALIGN(data);
-				}
 				else
-				{
 					data = (char *) INTALIGN(data);
-				}
 				data_length = VARSIZE(DatumGetPointer(value[i]));
 				memmove(data, DatumGetPointer(value[i]), data_length);
 				data += data_length;
@@ -239,9 +233,7 @@ heap_attisnull(HeapTuple tup, int attnum)
 		return (0);
 
 	if (attnum > 0)
-	{
 		return (att_isnull(attnum - 1, tup->t_bits));
-	}
 	else
 		switch (attnum)
 		{
@@ -513,9 +505,7 @@ nocachegetattr(HeapTuple tup,
 									tp + att[attnum]->attcacheoff);
 		}
 		else if (attnum == 0)
-		{
 			return ((Datum) fetchatt(&(att[0]), (char *) tp));
-		}
 		else if (!HeapTupleAllFixed(tup))
 		{
 			int			j = 0;

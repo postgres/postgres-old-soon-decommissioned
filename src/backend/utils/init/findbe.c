@@ -110,9 +110,7 @@ ValidateBinary(char *path)
 	if (pwp)
 	{
 		if (pwp->pw_gid == buf.st_gid)
-		{
 			++in_grp;
-		}
 		else if (pwp->pw_name &&
 				 (gp = getgrgid(buf.st_gid)))
 		{

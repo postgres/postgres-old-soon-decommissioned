@@ -103,13 +103,9 @@ other_join_clause_var(Var *var, Expr *clause)
 		r = (Var *) get_rightop(clause);
 
 		if (var_equal(var, l))
-		{
 			retval = r;
-		}
 		else if (var_equal(var, r))
-		{
 			retval = l;
-		}
 	}
 
 	return (retval);

@@ -44,9 +44,7 @@ pg_dlopen(char *filename)
 	if (!dl_initialized)
 	{
 		if (dld_init(dld_find_executable(pg_pathname)))
-		{
 			return NULL;
-		}
 
 		/*
 		 * if there are undefined symbols, we want dl to search from the
@@ -59,9 +57,7 @@ pg_dlopen(char *filename)
 	 * link the file, then check for undefined symbols!
 	 */
 	if (dld_link(filename))
-	{
 		return NULL;
-	}
 
 	/*
 	 * If undefined symbols: try to link with the C and math libraries!

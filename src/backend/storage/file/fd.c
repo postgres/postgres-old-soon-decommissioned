@@ -533,9 +533,7 @@ FileInvalidate(File file)
 {
 	Assert(file > 0);
 	if (!FileIsNotOpen(file))
-	{
 		LruDelete(file);
-	}
 }
 
 #endif
@@ -583,9 +581,7 @@ tryAgain:
 	Insert(file);
 
 	if (fileName == NULL)
-	{
 		elog(ERROR, "fileNameOpenFile: NULL fname");
-	}
 	vfdP->fileName = malloc(strlen(fileName) + 1);
 	strcpy(vfdP->fileName, fileName);
 
@@ -709,9 +705,7 @@ FileRead(File file, char *buffer, int amount)
 	FileAccess(file);
 	returnCode = read(VfdCache[file].fd, buffer, amount);
 	if (returnCode > 0)
-	{
 		VfdCache[file].seekPos += returnCode;
-	}
 
 	return returnCode;
 }
@@ -815,9 +809,7 @@ FileSync(File file)
 	 */
 
 	if (VfdCache[file].fd < 0 || !(VfdCache[file].fdstate & FD_DIRTY))
-	{
 		returnCode = 0;
-	}
 	else
 	{
 		returnCode = fsync(VfdCache[file].fd);

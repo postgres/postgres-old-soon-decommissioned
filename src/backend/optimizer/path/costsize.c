@@ -368,13 +368,9 @@ compute_rel_size(Rel *rel)
 	temp = rel->tuples * product_selec(rel->clauseinfo);
 	Assert(temp >= 0);
 	if (temp >= (MAXINT - 1))
-	{
 		temp1 = MAXINT;
-	}
 	else
-	{
 		temp1 = ceil((double) temp);
-	}
 	Assert(temp1 >= 0);
 	Assert(temp1 <= MAXINT);
 	return (temp1);
@@ -449,9 +445,7 @@ compute_joinrel_size(JoinPath *joinpath)
 
 	temp = temp * product_selec(joinpath->pathclauseinfo);
 	if (temp >= (MAXINT - 1))
-	{
 		temp1 = MAXINT;
-	}
 	else
 	{
 

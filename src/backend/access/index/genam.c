@@ -117,13 +117,9 @@ RelationGetIndexScan(Relation relation,
 	ItemPointerSetInvalid(&scan->nextMarkData);
 
 	if (numberOfKeys > 0)
-	{
 		scan->keyData = (ScanKey) palloc(sizeof(ScanKeyData) * numberOfKeys);
-	}
 	else
-	{
 		scan->keyData = NULL;
-	}
 
 	index_rescan(scan, scanFromEnd, key);
 
@@ -224,13 +220,9 @@ IndexScanMarkPosition(IndexScanDesc scan)
 			index_getnext(scan, BackwardScanDirection);
 
 		if (result != NULL)
-		{
 			scan->previousItemData = result->index_iptr;
-		}
 		else
-		{
 			ItemPointerSetInvalid(&scan->previousItemData);
-		}
 
 	}
 	else if (scan->flags & ScanUncheckedNext)
@@ -239,13 +231,9 @@ IndexScanMarkPosition(IndexScanDesc scan)
 			index_getnext(scan, ForwardScanDirection);
 
 		if (result != NULL)
-		{
 			scan->nextItemData = result->index_iptr;
-		}
 		else
-		{
 			ItemPointerSetInvalid(&scan->nextItemData);
-		}
 	}
 
 	scan->previousMarkData = scan->previousItemData;

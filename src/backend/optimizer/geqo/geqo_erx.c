@@ -228,9 +228,7 @@ gimme_tour(Edge *edge_table, Gene *new_gene, int num_gene)
 		/* find destination for the newly entered point */
 
 		if (edge_table[new_gene[i - 1]].unused_edges > 0)
-		{
 			new_gene[i] = gimme_gene(edge_table[(int) new_gene[i - 1]], edge_table);
-		}
 
 		else
 		{						/* cope with fault */

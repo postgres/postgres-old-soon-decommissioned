@@ -327,9 +327,7 @@ PQdisplayTuples(PGresult *res,
 
 	/* Zero the initial field lengths */
 	for (j = 0; j < nFields; j++)
-	{
 		fLength[j] = strlen(PQfname(res, j));
-	}
 	/* Find the max length of each field in the result */
 	/* will be somewhat time consuming for very large results */
 	if (fillAlign)
@@ -415,9 +413,7 @@ PQprintTuples(PGresult *res,
 	nTups = PQntuples(res);
 
 	if (colWidth > 0)
-	{
 		sprintf(formatString, "%%s %%-%ds", colWidth);
-	}
 	else
 		sprintf(formatString, "%%s %%s");
 

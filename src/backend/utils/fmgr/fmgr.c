@@ -50,9 +50,7 @@ fmgr_pl(char *arg0,...)
 		{
 			va_start(pvar, arg0);
 			for (i = 1; i < fmgr_pl_finfo->fn_nargs; i++)
-			{
 				values.data[i] = va_arg(pvar, char *);
-			}
 			va_end(pvar);
 		}
 	}
@@ -91,9 +89,7 @@ fmgr_c(FmgrInfo *finfo,
 	 * instead.
 	 */
 	if (finfo->fn_plhandler != NULL)
-	{
 		return (*(finfo->fn_plhandler)) (finfo, values, isNull);
-	}
 
 	switch (n_arguments)
 	{

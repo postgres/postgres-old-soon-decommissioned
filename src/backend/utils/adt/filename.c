@@ -111,14 +111,10 @@ filename_in(char *file)
 			ind = len + 1;
 		}
 		else
-		{
 			elog(ERROR, "Couldn't find %s in your environment", environment);
-		}
 	}
 	else
-	{
 		ind = 0;
-	}
 	strcat(str, file + ind);
 	return (str);
 }

@@ -365,9 +365,7 @@ parse_date(const char *value)
 			ecnt++;
 		}
 		else
-		{
 			elog(ERROR, "Bad value for date style (%s)", tok);
-		}
 		pfree(tok);
 	}
 

@@ -269,16 +269,12 @@ geqo_print_rel(Query *root, Rel *rel)
 	printf("______________________________\n");
 	printf("(");
 	foreach(l, rel->relids)
-	{
 		printf("%d ", lfirsti(l));
-	}
 	printf("): size=%d width=%d\n", rel->size, rel->width);
 
 	printf("\tpath list:\n");
 	foreach(l, rel->pathlist)
-	{
 		geqo_print_path(root, lfirst(l), 1);
-	}
 
 	printf("\tcheapest path:\n");
 	geqo_print_path(root, rel->cheapestpath, 1);

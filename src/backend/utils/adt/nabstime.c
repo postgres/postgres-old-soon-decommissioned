@@ -131,9 +131,7 @@ abstime2tm(AbsoluteTime time, int *tzp, struct tm * tm, char *tzn)
 
 #ifdef USE_POSIX_TIME
 	if (tzp != NULL)
-	{
 		tx = localtime((time_t *) &time);
-	}
 	else
 	{
 		tx = gmtime((time_t *) &time);

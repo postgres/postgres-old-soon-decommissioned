@@ -690,9 +690,7 @@ _outFjoin(StringInfo str, Fjoin *node)
 
 	appendStringInfo(str, " :alwaysdone ");
 	for (i = 0; i < node->fj_nNodes; i++)
-	{
 		appendStringInfo(str, (node->fj_alwaysDone[i]) ? "true" : "false");
-	}
 }
 
 /*
@@ -779,13 +777,9 @@ _outConst(StringInfo str, Const *node)
 	appendStringInfo(str, node->constisnull ? "true" : "false");
 	appendStringInfo(str, " :constvalue ");
 	if (node->constisnull)
-	{
 		appendStringInfo(str, "<>");
-	}
 	else
-	{
 		_outDatum(str, node->constvalue, node->consttype);
-	}
 	appendStringInfo(str, " :constbyval ");
 	appendStringInfo(str, node->constbyval ? "true" : "false");
 }
@@ -1496,9 +1490,7 @@ _outDatum(StringInfo str, Datum value, Oid type)
 			 * without casting it to int first!! -mer 8 Jan 1991
 			 */
 			if (((int) length) <= -1)
-			{
 				length = VARSIZE(s);
-			}
 			sprintf(buf, " %d [ ", length);
 			appendStringInfo(str, buf);
 			for (i = 0; i < length; i++)

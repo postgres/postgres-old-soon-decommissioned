@@ -150,9 +150,7 @@ initialize_base_rels_jinfo(Query *root, List *clauses)
 	List	   *clause;
 
 	foreach(clause, clauses)
-	{
 		add_clause_to_rels(root, lfirst(clause));
-	}
 	return;
 }
 

@@ -75,9 +75,7 @@ prune_joinrel(Rel *rel, List *other_rels)
 										 other_rel->pathlist);
 		}
 		else
-		{
 			result = nconc(result, lcons(other_rel, NIL));
-		}
 	}
 	return (result);
 }
@@ -110,15 +108,11 @@ prune_rel_paths(List *rel_list)
 			path = (Path *) lfirst(y);
 
 			if (!path->p_ordering.ord.sortop)
-			{
 				break;
-			}
 		}
 		cheapest = (JoinPath *) prune_rel_path(rel, path);
 		if (IsA_JoinPath(cheapest))
-		{
 			rel->size = compute_joinrel_size(cheapest);
-		}
 		else
 			elog(ERROR, "non JoinPath called");
 	}
@@ -149,9 +143,7 @@ prune_rel_path(Rel *rel, Path *unorderedpath)
 		rel->pathlist = lremove(unorderedpath, rel->pathlist);
 	}
 	else
-	{
 		rel->unorderedpath = (Path *) unorderedpath;
-	}
 
 	return (cheapest);
 }

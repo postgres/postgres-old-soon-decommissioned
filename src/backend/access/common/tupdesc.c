@@ -508,9 +508,7 @@ BuildDescForRelation(List *schema, char *relname)
 			 * ----------------
 			 */
 			if (!strcmp(typename, relname))
-			{
 				TupleDescMakeSelfReference(desc, attnum, relname);
-			}
 			else
 				elog(ERROR, "DefineRelation: no such type %s",
 					 typename);

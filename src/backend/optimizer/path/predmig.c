@@ -444,9 +444,7 @@ xfunc_form_groups(Query *queryInfo, Stream root, Stream bottom)
 												  primjoin, NIL));
 			}
 			else
-			{
 				set_groupsel(temp, 1.0);
-			}
 		}
 		else
 /* a restriction, or 2-ary join pred */

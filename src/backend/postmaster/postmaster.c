@@ -1067,9 +1067,7 @@ BackendStartup(Port *port)
 	static char envEntry[NR_ENVIRONMENT_VBL][2 * ARGV_SIZE];
 
 	for (i = 0; i < NR_ENVIRONMENT_VBL; ++i)
-	{
 		MemSet(envEntry[i], 0, 2 * ARGV_SIZE);
-	}
 
 	/*
 	 * Set up the necessary environment variables for the backend This

@@ -181,9 +181,7 @@ ExecSort(Sort *node)
 		SO1_printf(stderr, "ExecSort: sorting done.\n");
 	}
 	else
-	{
 		slot = (TupleTableSlot *) sortstate->csstate.cstate.cs_ResultTupleSlot;
-	}
 
 	SO1_printf("ExecSort: %s\n",
 			   "retrieving tuple from sorted relation");

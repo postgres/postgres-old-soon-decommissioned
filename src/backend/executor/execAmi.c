@@ -124,9 +124,7 @@ ExecOpenR(Oid relationOid, bool isindex)
 	 * ----------------
 	 */
 	if (isindex)
-	{
 		relation = index_open(relationOid);
-	}
 	else
 		relation = heap_open(relationOid);
 

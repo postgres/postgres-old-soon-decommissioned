@@ -385,9 +385,7 @@ lookupEdges(TgRecipe * r, char *name)
 	ntups = PQntuplesGroup(pbuf, 0);
 
 	if (ntups == 0)
-	{
 		return;
-	}
 
 	fromNode_attnum = PQfnumber(pbuf, 0, "fromNode");
 	fromPort_attnum = PQfnumber(pbuf, 0, "fromPort");

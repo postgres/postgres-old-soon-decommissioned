@@ -61,9 +61,7 @@ index_keytest(IndexTuple tuple,
 		}
 
 		if (key[0].sk_flags & SK_ISNULL)
-		{
 			return (false);
-		}
 
 		if (key[0].sk_flags & SK_COMMUTE)
 		{
@@ -79,9 +77,7 @@ index_keytest(IndexTuple tuple,
 		}
 
 		if (!test == !(key[0].sk_flags & SK_NEGATE))
-		{
 			return (false);
-		}
 
 		scanKeySize -= 1;
 		key++;

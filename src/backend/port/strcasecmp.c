@@ -71,12 +71,8 @@ strcasecmp(char *s1, char *s2)
 		u1 = (unsigned char) *s1++;
 		u2 = (unsigned char) *s2++;
 		if (charmap[u1] != charmap[u2])
-		{
 			return charmap[u1] - charmap[u2];
-		}
 		if (u1 == '\0')
-		{
 			return 0;
-		}
 	}
 }

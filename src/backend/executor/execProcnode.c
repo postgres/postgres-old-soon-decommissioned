@@ -426,13 +426,9 @@ ExecEndNode(Plan *node, Plan *parent)
 		return;
 
 	foreach(subp, node->initPlan)
-	{
 		ExecEndSubPlan((SubPlan *) lfirst(subp));
-	}
 	foreach(subp, node->subPlan)
-	{
 		ExecEndSubPlan((SubPlan *) lfirst(subp));
-	}
 	if (node->chgParam != NULL)
 	{
 		freeList(node->chgParam);

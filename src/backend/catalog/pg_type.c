@@ -334,9 +334,7 @@ TypeCreate(char *typeName,
 	 */
 	typeObjectId = TypeGet(typeName, &defined);
 	if (OidIsValid(typeObjectId) && defined)
-	{
 		elog(ERROR, "TypeCreate: type %s already defined", typeName);
-	}
 
 	/* ----------------
 	 *	if this type has an associated elementType, then we check that
@@ -347,9 +345,7 @@ TypeCreate(char *typeName,
 	{
 		elementObjectId = TypeGet(elementTypeName, &defined);
 		if (!defined)
-		{
 			elog(ERROR, "TypeCreate: type %s is not defined", elementTypeName);
-		}
 	}
 
 	/* ----------------
@@ -437,9 +433,7 @@ TypeCreate(char *typeName,
 										  0);
 			}
 			if (!HeapTupleIsValid(tup))
-			{
 				func_error("TypeCreate", procname, 1, argList, NULL);
-			}
 		}
 
 		values[i++] = (Datum) tup->t_oid;		/* 11 - 14 */
@@ -559,9 +553,7 @@ TypeRename(char *oldTypeName, char *newTypeName)
 	/* check that that the new type is not already defined */
 	type_oid = TypeGet(newTypeName, &defined);
 	if (OidIsValid(type_oid) && defined)
-	{
 		elog(ERROR, "TypeRename: type %s already defined", newTypeName);
-	}
 
 	/* get the type tuple from the catalog index scan manager */
 	pg_type_desc = heap_openr(TypeRelationName);
@@ -592,9 +584,7 @@ TypeRename(char *oldTypeName, char *newTypeName)
 
 	}
 	else
-	{
 		elog(ERROR, "TypeRename: type %s not defined", oldTypeName);
-	}
 
 	/* finish up */
 	heap_close(pg_type_desc);

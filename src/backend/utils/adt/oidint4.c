@@ -30,13 +30,9 @@ oidint4in(char *o)
 
 	oi->oi_oid = (Oid) pg_atoi(o, sizeof(Oid), '/');
 	if (*p == '\0')
-	{
 		oi->oi_int4 = 0;
-	}
 	else
-	{
 		oi->oi_int4 = pg_atoi(++p, sizeof(int4), '\0');
-	}
 
 	return (oi);
 }

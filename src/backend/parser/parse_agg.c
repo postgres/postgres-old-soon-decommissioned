@@ -351,9 +351,7 @@ agg_error(char *caller, char *aggname, Oid basetypeID)
 	 */
 
 	if (basetypeID == InvalidOid)
-	{
 		elog(ERROR, "%s: aggregate '%s' for all types does not exist", caller, aggname);
-	}
 	else
 	{
 		elog(ERROR, "%s: aggregate '%s' for '%s' does not exist", caller, aggname,

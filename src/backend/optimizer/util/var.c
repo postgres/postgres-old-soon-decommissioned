@@ -48,9 +48,7 @@ pull_varnos(Node *me)
 	{
 		case T_List:
 			foreach(i, (List *) me)
-			{
 				result = nconc(result, pull_varnos(lfirst(i)));
-			}
 			break;
 		case T_ArrayRef:
 			foreach(i, ((ArrayRef *) me)->refupperindexpr)
@@ -182,9 +180,7 @@ pull_var_clause(Node *clause)
 				 pull_var_clause(lfirst(((Expr *) lfirst(temp))->args)));
 	}
 	else if (IsA(clause, Aggreg))
-	{
 		retval = pull_var_clause(((Aggreg *) clause)->target);
-	}
 	else if (IsA(clause, ArrayRef))
 	{
 		List	   *temp;

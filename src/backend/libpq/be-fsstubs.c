@@ -69,9 +69,7 @@ lo_open(Oid lobjId, int mode)
 #endif
 
 	if (fscxt == NULL)
-	{
 		fscxt = CreateGlobalMemory("Filesystem");
-	}
 	currentContext = MemoryContextSwitchTo((MemoryContext) fscxt);
 
 	lobjDesc = inv_open(lobjId, mode);
@@ -171,9 +169,7 @@ lo_creat(int mode)
 	Oid			lobjId;
 
 	if (fscxt == NULL)
-	{
 		fscxt = CreateGlobalMemory("Filesystem");
-	}
 
 	currentContext = MemoryContextSwitchTo((MemoryContext) fscxt);
 

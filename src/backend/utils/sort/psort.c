@@ -1072,9 +1072,7 @@ resettape(FILE *file)
 
 	file = freopen(tp->tl_name, "w+", file);
 	if (file == NULL)
-	{
 		elog(FATAL, "could not freopen temporary file");
-	}
 }
 
 #endif

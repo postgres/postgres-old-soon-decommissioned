@@ -37,9 +37,7 @@ pg_dlopen(char *filename)
 	if (!dl_initialized)
 	{
 		if (!dl_init(pg_pathname))
-		{
 			return NULL;
-		}
 
 		/*
 		 * if there are undefined symbols, we want dl to search from the

@@ -98,9 +98,7 @@ bpcharin(char *s, int dummy, int16 atttypmod)
 
 	/* blank pad the string if necessary */
 	for (; i < len; i++)
-	{
 		*r++ = ' ';
-	}
 	return (result);
 }
 
@@ -186,9 +184,7 @@ printf("'\n");
 
 	/* blank pad the string if necessary */
 	for (; i < rlen; i++)
-	{
 		*r++ = ' ';
-	}
 
 	return (result);
 } /* bpchar() */

@@ -144,9 +144,7 @@ ExpandDatabasePath(char *dbpath)
 	}
 	/* no path delimiter? then add the default path prefixes */
 	else
-	{
 		sprintf(buf, "%s%cbase%c%s", DataDir, SEP_CHAR, SEP_CHAR, dbpath);
-	}
 
 	path = palloc(strlen(buf) + 1);
 	strcpy(path, buf);

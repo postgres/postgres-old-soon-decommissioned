@@ -175,13 +175,9 @@ int
 date_cmp(DateADT dateVal1, DateADT dateVal2)
 {
 	if (dateVal1 < dateVal2)
-	{
 		return -1;
-	}
 	else if (dateVal1 > dateVal2)
-	{
 		return 1;
-	}
 	return 0;
 }	/* date_cmp() */
 

@@ -94,9 +94,7 @@ ProcedureCreate(char *procedureName,
 		if (strcmp(strVal(t), "opaque") == 0)
 		{
 			if (strcmp(languageName, "sql") == 0)
-			{
 				elog(ERROR, "ProcedureDefine: sql functions cannot take type \"opaque\"");
-			}
 			toid = 0;
 		}
 		else
@@ -162,9 +160,7 @@ ProcedureCreate(char *procedureName,
 	if (strcmp(returnTypeName, "opaque") == 0)
 	{
 		if (strcmp(languageName, "sql") == 0)
-		{
 			elog(ERROR, "ProcedureCreate: sql functions cannot return type \"opaque\"");
-		}
 		typeObjectId = 0;
 	}
 

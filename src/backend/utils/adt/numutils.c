@@ -236,9 +236,7 @@ ftoa(double value, char *ascii, int width, int prec1, char format)
 				/* output left of dp */
 				expon--;
 				if (*p)
-				{
 					*a++ = *p++;
-				}
 				else
 					*a++ = '0';
 			}

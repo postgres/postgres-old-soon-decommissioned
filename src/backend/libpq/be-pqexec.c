@@ -77,17 +77,11 @@ PQfn(int fnid,
 	for (i = 0; i < nargs; i++)
 	{
 		if (args[i].len == VAR_LENGTH_ARG)
-		{
 			arg[i] = (char *) args[i].u.ptr;
-		}
 		else if (args[i].len > sizeof(int4))
-		{
 			elog(ERROR, "arg_length of argument %d too long", i);
-		}
 		else
-		{
 			arg[i] = (char *) args[i].u.integer;
-		}
 	}
 
 	/* ----------------
@@ -107,13 +101,9 @@ PQfn(int fnid,
 		return "0";
 
 	if (result_is_int)
-	{
 		*result_buf = (int) retval;
-	}
 	else
-	{
 		memmove(result_buf, retval, result_len);
-	}
 	return "G";
 }
 

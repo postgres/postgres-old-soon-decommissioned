@@ -138,9 +138,7 @@ find_clause_joins(Query *root, Rel *outer_rel, List *joininfo_list)
 										joininfo);
 				}
 				else
-				{
 					rel = NULL;
-				}
 
 				if (rel != NULL)
 					join_list = lappend(join_list, rel);

@@ -38,9 +38,7 @@ pg_dlsym(void *handle, char *funcname)
 	func_ptr	f;
 
 	if (shl_findsym((shl_t *) & handle, funcname, TYPE_PROCEDURE, &f) == -1)
-	{
 		f = (func_ptr) NULL;
-	}
 	return (f);
 }
 

@@ -205,9 +205,7 @@ geqo_params(int string_length)
 	}
 
 	else
-	{
 		elog(DEBUG, "geqo_params: ga parameter file\n\'%s\'\ndoes not exist or permissions are not setup correctly", conf_file);
-	}
 
 	/*
 	 * parameter checkings follow
@@ -317,13 +315,9 @@ gimme_pool_size(int string_length)
 	size = pow(2.0, exponent);
 
 	if (size < MIN_POOL)
-	{
 		return (MIN_POOL);
-	}
 	else if (size > MAX_POOL)
-	{
 		return (MAX_POOL);
-	}
 	else
 		return ((int) ceil(size));
 }

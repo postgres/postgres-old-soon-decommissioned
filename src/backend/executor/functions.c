@@ -176,9 +176,7 @@ postquel_start(execution_state *es)
 	 * 30-8-1996
 	 */
 	if (es->qd->operation == CMD_UTILITY)
-	{
 		return (TupleDesc) NULL;
-	}
 #endif
 	return ExecutorStart(es->qd, es->estate);
 }
@@ -218,9 +216,7 @@ postquel_end(execution_state *es)
 	 * 30-8-1996
 	 */
 	if (es->qd->operation == CMD_UTILITY)
-	{
 		return;
-	}
 #endif
 	ExecutorEnd(es->qd, es->estate);
 }

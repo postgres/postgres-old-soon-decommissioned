@@ -80,9 +80,7 @@ CatalogOpenIndices(int nIndices, char *names[], Relation idescs[])
 	int			i;
 
 	for (i = 0; i < nIndices; i++)
-	{
 		idescs[i] = index_openr(names[i]);
-	}
 }
 
 /*

@@ -316,9 +316,7 @@ pqReadData(PGconn *conn)
 		conn->inStart = 0;
 	}
 	else
-	{
 		conn->inStart = conn->inCursor = conn->inEnd = 0;
-	}
 	/* If the buffer is fairly full, enlarge it.
 	 * We need to be able to enlarge the buffer in case a single message
 	 * exceeds the initial buffer size.  We enlarge before filling the

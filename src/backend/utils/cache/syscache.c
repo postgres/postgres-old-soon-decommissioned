@@ -406,30 +406,22 @@ SearchSysCacheTuple(int cacheId,/* cache selection code */
 		return ((HeapTuple) NULL);
 	}
 
-	if (!AMI_OVERRIDE)
-	{
-		Assert(PointerIsValid(SysCache[cacheId]));
-	}
-	else
-	{
-		if (!PointerIsValid(SysCache[cacheId]))
-		{
-			SysCache[cacheId] =
-				InitSysCache(cacheinfo[cacheId].name,
-							 cacheinfo[cacheId].indname,
-							 cacheId,
-							 cacheinfo[cacheId].nkeys,
-							 cacheinfo[cacheId].key,
-							 cacheinfo[cacheId].iScanFunc);
-			if (!PointerIsValid(SysCache[cacheId]))
-			{
-				elog(ERROR,
-					 "InitCatalogCache: Can't init cache %.16s(%d)",
-					 cacheinfo[cacheId].name,
-					 cacheId);
-			}
+	Assert(AMI_OVERRIDE || PointerIsValid(SysCache[cacheId]));
 
-		}
+	if (!PointerIsValid(SysCache[cacheId]))
+	{
+		SysCache[cacheId] =
+			InitSysCache(cacheinfo[cacheId].name,
+						 cacheinfo[cacheId].indname,
+						 cacheId,
+						 cacheinfo[cacheId].nkeys,
+						 cacheinfo[cacheId].key,
+						 cacheinfo[cacheId].iScanFunc);
+		if (!PointerIsValid(SysCache[cacheId]))
+			elog(ERROR,
+				 "InitCatalogCache: Can't init cache %.16s(%d)",
+				 cacheinfo[cacheId].name,
+				 cacheId);
 	}
 
 	tp = SearchSysCache(SysCache[cacheId], key1, key2, key3, key4);
@@ -559,9 +551,7 @@ SearchSysCacheGetAttribute(int cacheId,
 	}
 
 	if (attributeByValue)
-	{
 		returnValue = (void *) attributeValue;
-	}
 	else
 	{
 		char	   *tmp;
@@ -662,9 +652,7 @@ TypeDefaultRetrieve(Oid typId)
 			returnValue = (void *) i32;
 		}
 		else
-		{
 			returnValue = NULL;
-		}
 	}
 	else
 	{

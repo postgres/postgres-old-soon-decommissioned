@@ -49,9 +49,7 @@ CreateSharedInvalidationState(IPCKey key)
 	status = SISegmentInit(true, IPCKeyGetSIBufferMemoryBlock(key));
 
 	if (status == -1)
-	{
 		elog(FATAL, "CreateSharedInvalidationState: failed segment init");
-	}
 }
 
 /****************************************************************************/
@@ -73,9 +71,7 @@ AttachSharedInvalidationState(IPCKey key)
 	status = SISegmentInit(false, IPCKeyGetSIBufferMemoryBlock(key));
 
 	if (status == -1)
-	{
 		elog(FATAL, "AttachSharedInvalidationState: failed segment init");
-	}
 }
 
 void
@@ -126,13 +122,9 @@ RegisterSharedInvalid(int cacheId,		/* XXX */
 	newInvalid.hashIndex = hashIndex;
 
 	if (ItemPointerIsValid(pointer))
-	{
 		ItemPointerCopy(pointer, &newInvalid.pointerData);
-	}
 	else
-	{
 		ItemPointerSetInvalid(&newInvalid.pointerData);
-	}
 
 	SpinAcquire(SInvalLock);
 	if (!SISetDataEntry(shmInvalBuffer, &newInvalid))

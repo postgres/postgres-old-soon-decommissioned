@@ -157,9 +157,7 @@ SpinRelease(SPINLOCK lockid)
 		S_UNLOCK(&(slckP->shlock));
 	}
 	else
-	{
 		S_UNLOCK(&(slckP->shlock));
-	}
 	S_UNLOCK(&(slckP->exlock));
 	S_UNLOCK(&(slckP->locklock));
 #ifdef LOCKDEBUG

@@ -72,9 +72,7 @@ _bt_dropscan(IndexScanDesc scan)
 	for (chk = BTScans;
 		 chk != (BTScanList) NULL && chk->btsl_scan != scan;
 		 chk = chk->btsl_next)
-	{
 		last = chk;
-	}
 
 	if (chk == (BTScanList) NULL)
 		elog(ERROR, "btree scan list trashed; can't find 0x%lx", scan);

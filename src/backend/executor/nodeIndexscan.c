@@ -279,13 +279,9 @@ ExecIndexReScan(IndexScan *node, ExprContext *exprCtxt, Plan *parent)
 					ExecEvalExpr(scanexpr, exprCtxt, &isNull, &isDone);
 				scan_keys[j].sk_argument = scanvalue;
 				if (isNull)
-				{
 					scan_keys[j].sk_flags |= SK_ISNULL;
-				}
 				else
-				{
 					scan_keys[j].sk_flags &= ~SK_ISNULL;
-				}
 			}
 		}
 	}
@@ -885,9 +881,7 @@ ExecInitIndexScan(IndexScan *node, EState *estate, Plan *parent)
 	 * ----------------
 	 */
 	if (have_runtime_keys)
-	{
 		indexstate->iss_RuntimeKeyInfo = (Pointer) runtimeKeyInfo;
-	}
 	else
 	{
 		indexstate->iss_RuntimeKeyInfo = NULL;

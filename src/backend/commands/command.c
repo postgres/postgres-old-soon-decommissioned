@@ -475,9 +475,7 @@ PerformAddAttribute(char *relationName,
 		form = (TypeTupleForm) GETSTRUCT(typeTuple);
 
 		if (!HeapTupleIsValid(typeTuple))
-		{
 			elog(ERROR, "Add: type \"%s\" nonexistent", p);
-		}
 		namestrcpy(&(attribute->attname), (char *) key[1].sk_argument);
 
 		attribute->atttypid = typeTuple->t_oid;

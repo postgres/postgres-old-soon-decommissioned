@@ -151,9 +151,7 @@ EnableMemoryContext(bool on)
 	AssertArg(BoolIsValid(on));
 
 	if (BypassEnable(&MemoryContextEnableCount, on))
-	{
 		return;
-	}
 
 	processing = true;
 
@@ -188,9 +186,7 @@ EnableMemoryContext(bool on)
 				OrderedElemPop(&TopGlobalMemoryData.elemData);
 			}
 			else
-			{
 				GlobalMemoryDestroy(context);
-			}
 			/* what is needed for the top? */
 		}
 
@@ -493,15 +489,11 @@ GlobalMemoryDump(GlobalMemory this)
 
 	context = (GlobalMemory) OrderedElemGetPredecessor(&this->elemData);
 	if (PointerIsValid(context))
-	{
 		printf("\tpredecessor=%s\n", GlobalMemoryGetName(context));
-	}
 
 	context = (GlobalMemory) OrderedElemGetSuccessor(&this->elemData);
 	if (PointerIsValid(context))
-	{
 		printf("\tsucessor=%s\n", GlobalMemoryGetName(context));
-	}
 
 	AllocSetDump(&this->setData);		/* XXX is this right interface */
 }

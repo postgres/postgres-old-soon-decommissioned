@@ -106,16 +106,12 @@ match_pathkeys_joinkeys(List *pathkeys,
 			joinkeys = LispRemove(xjoinkey, joinkeys);
 		}
 		else
-		{
 			return (NIL);
-		}
 
 	}
 	if (matched_joinkeys == NULL ||
 		length(matched_joinkeys) != length(pathkeys))
-	{
 		return NIL;
-	}
 
 	*matchedJoinClausesPtr = nreverse(matched_joinclauses);
 	return (nreverse(matched_joinkeys));
@@ -239,9 +235,7 @@ match_paths_joinkeys(List *joinkeys,
 					matched_path = path;
 			}
 			else
-			{
 				matched_path = path;
-			}
 		}
 	}
 	return matched_path;
@@ -341,9 +335,7 @@ new_join_pathkeys(List *outer_pathkeys,
 		x = new_join_pathkey(outer_pathkey, NIL,
 							 join_rel_tlist, joinclauses);
 		if (x != NIL)
-		{
 			t_list = lappend(t_list, x);
-		}
 	}
 	return (t_list);
 }
@@ -396,9 +388,7 @@ new_join_pathkey(List *subkeys,
 												 matched_subkeys);
 		}
 		else
-		{
 			newly_considered_subkeys = matched_subkeys;
-		}
 
 		considered_subkeys =
 			append(considered_subkeys, newly_considered_subkeys);

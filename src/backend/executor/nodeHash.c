@@ -354,9 +354,7 @@ ExecHashTableCreate(Hash *node)
 	shmid = 0;
 
 	if (hashtable == NULL)
-	{
 		elog(ERROR, "not enough memory for hashjoin.");
-	}
 	/* ----------------
 	 *	initialize the hash table header
 	 * ----------------

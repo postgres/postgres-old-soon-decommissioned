@@ -295,9 +295,7 @@ InitCommunication()
 
 	postid = getenv("POSTID");
 	if (!PointerIsValid(postid))
-	{
 		MyBackendTag = -1;
-	}
 	else
 	{
 		MyBackendTag = atoi(postid);
@@ -307,9 +305,7 @@ InitCommunication()
 
 	ipc_key = getenv("IPC_KEY");
 	if (!PointerIsValid(ipc_key))
-	{
 		key = -1;
-	}
 	else
 	{
 		key = atoi(ipc_key);
@@ -367,9 +363,7 @@ InitCommunication()
 		 * ----------------
 		 */
 		if (MyBackendTag == -1)
-		{
 			MyBackendTag = 1;
-		}
 
 		key = PrivateIPCKey;
 	}

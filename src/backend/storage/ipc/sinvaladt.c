@@ -133,9 +133,7 @@ SIAssignBackendId(SISeg *segInOutP, BackendTag backendTag)
 			 (segInOutP->procState[index].limit <
 			  stateP->limit ||
 			  stateP->tag < backendTag)))
-		{
 			stateP = &segInOutP->procState[index];
-		}
 	}
 
 	/* verify that all "procState" entries checked for matching tags */
@@ -664,9 +662,7 @@ SIReadEntryData(SISeg *segP,
 	}
 	/* check whether we can remove dead messages							*/
 	if (i > MAXNUMMESSAGES)
-	{
 		elog(FATAL, "SIReadEntryData: Invalid segment state");
-	}
 }
 
 /************************************************************************/
@@ -696,9 +692,7 @@ SIDelExpiredDataEntries(SISeg *segP)
 		{
 			/* this  adjusts also the state limits! */
 			if (!SIDelDataEntry(segP))
-			{
 				elog(FATAL, "SIDelExpiredDataEntries: Invalid segment state");
-			}
 		}
 	}
 }
@@ -779,13 +773,9 @@ SISegmentGet(int key,			/* the corresponding key for the segment */
 	IpcMemoryId shmid;
 
 	if (create)
-	{
 		shmid = IpcMemoryCreate(key, size, IPCProtection);
-	}
 	else
-	{
 		shmid = IpcMemoryIdGet(key, size);
-	}
 	return (shmid);
 }
 

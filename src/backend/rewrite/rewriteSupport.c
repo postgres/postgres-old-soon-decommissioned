@@ -69,9 +69,7 @@ RuleIdGetActionInfo(Oid ruleoid, bool *instead_flag, Query **parseTrees)
 								   ruleTupdesc, &instead_is_null);
 
 	if (action_is_null || instead_is_null)
-	{
 		elog(ERROR, "internal error: rewrite rule not properly set up");
-	}
 
 	ruleaction = textout((struct varlena *) ruleaction);
 	rule_evqual_string = textout((struct varlena *) rule_evqual_string);

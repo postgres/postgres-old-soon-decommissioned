@@ -129,13 +129,9 @@ ExecSeqScan(SeqScan *node)
 	 * ----------------
 	 */
 	if ((outerPlan = outerPlan((Plan *) node)) != NULL)
-	{
 		slot = ExecProcNode(outerPlan, (Plan *) node);
-	}
 	else
-	{
 		slot = ExecScan(node, SeqNext);
-	}
 
 	S1_printf("ExecSeqScan: returned tuple slot: %d\n", slot);
 

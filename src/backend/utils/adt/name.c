@@ -219,9 +219,7 @@ NameComputeLength(Name name)
 	for (length = 0, charP = name->data;
 		 length < NAMEDATALEN && *charP != '\0';
 		 length++, charP++)
-	{
 		;
-	}
 	return (uint32) length;
 }
 

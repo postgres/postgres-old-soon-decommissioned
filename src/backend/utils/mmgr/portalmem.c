@@ -594,9 +594,7 @@ GetPortalByName(char *name)
 	AssertState(PortalManagerEnabled);
 
 	if (PointerIsValid(name))
-	{
 		PortalHashTableLookup(name, portal);
-	}
 	else
 	{
 		if (!PortalIsValid(BlankPortal))

@@ -251,9 +251,7 @@ op_mergesortable(Oid opno, Oid ltype, Oid rtype, Oid *leftOp, Oid *rightOp)
 		return TRUE;
 	}
 	else
-	{
 		return FALSE;
-	}
 }
 
 /*

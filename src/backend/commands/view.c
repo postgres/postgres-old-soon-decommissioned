@@ -90,9 +90,7 @@ DefineVirtualRelation(char *relname, List *tlist)
 		}
 	}
 	else
-	{
 		elog(ERROR, "attempted to define virtual relation with no attrs");
-	}
 
 	/*
 	 * now create the parametesr for keys/inheritance etc. All of them are

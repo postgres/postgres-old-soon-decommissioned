@@ -72,9 +72,7 @@ regprocin(char *proname)
 										RelationGetTupleDescriptor(proc),
 												 &isnull);
 			if (isnull)
-			{
 				elog(FATAL, "regprocin: null procedure %s", proname);
-			}
 			break;
 		case 0:
 			result = (RegProcedure) 0;

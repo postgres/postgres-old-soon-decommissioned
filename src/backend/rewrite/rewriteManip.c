@@ -75,9 +75,7 @@ OffsetVarNodes(Node *node, int offset)
 				List	   *l;
 
 				foreach(l, (List *) node)
-				{
 					OffsetVarNodes(lfirst(l), offset);
-				}
 			}
 			break;
 		default:
@@ -222,9 +220,7 @@ FindMatchingNew(List *tlist, int attno)
 		TargetEntry *tle = lfirst(i);
 
 		if (tle->resdom->resno == attno)
-		{
 			return (tle->expr);
-		}
 	}
 	return NULL;
 }
@@ -288,14 +284,10 @@ ResolveNew(RewriteInfo *info, List *targetlist, Node **nodePtr,
 							((Var *) node)->varnoold = info->current_varno;
 						}
 						else
-						{
 							*nodePtr = make_null(((Var *) node)->vartype);
-						}
 					}
 					else
-					{
 						*nodePtr = n;
-					}
 				}
 				break;
 			}

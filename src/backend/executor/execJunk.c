@@ -230,9 +230,7 @@ ExecInitJunkFilter(List *targetList)
 		}
 	}
 	else
-	{
 		cleanMap = NULL;
-	}
 
 	/* ---------------------
 	 * Finally create and initialize the JunkFilter.

@@ -259,9 +259,7 @@ find_join_paths(Query *root, List *outer_rels, int levels_needed)
 			root->join_relation_list_ = outer_rels;
 		}
 		else
-		{
 			root->join_relation_list_ = new_rels;
-		}
 		if (!BushyPlanFlag)
 			outer_rels = new_rels;
 	}
@@ -407,16 +405,12 @@ debug_print_rel(Query *root, Rel *rel)
 
 	printf("(");
 	foreach(l, rel->relids)
-	{
 		printf("%d ", lfirsti(l));
-	}
 	printf("): size=%d width=%d\n", rel->size, rel->width);
 
 	printf("\tpath list:\n");
 	foreach(l, rel->pathlist)
-	{
 		print_path(root, lfirst(l), 1);
-	}
 	printf("\tcheapest path:\n");
 	print_path(root, rel->cheapestpath, 1);
 }

@@ -804,9 +804,7 @@ ExecOpenIndices(Oid resultRelationOid,
 			pfree(predString);
 		}
 		else
-		{
 			predicate = NULL;
-		}
 
 		/* ----------------
 		 *	save the index information into lists
@@ -916,9 +914,7 @@ ExecOpenIndices(Oid resultRelationOid,
 
 		i = 0;
 		foreach(indexpreds, predList)
-		{
 			indexInfoArray[i++]->ii_Predicate = lfirst(indexpreds);
-		}
 		/* ----------------
 		 *	 store the index info array into relation info
 		 * ----------------
@@ -1117,9 +1113,7 @@ ExecInsertIndexTuples(TupleTableSlot *slot,
 		if (predicate != NULL)
 		{
 			if (econtext == NULL)
-			{
 				econtext = makeNode(ExprContext);
-			}
 			econtext->ecxt_scantuple = slot;
 
 			/* Skip this index-update if the predicate isn't satisfied */

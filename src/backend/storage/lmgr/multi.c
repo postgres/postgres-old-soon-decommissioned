@@ -99,9 +99,7 @@ InitMultiLevelLockm()
 	tableId = LockTabInit("LockTable", MultiConflicts, MultiPrios, 5);
 	MultiTableId = tableId;
 	if (!(MultiTableId))
-	{
 		elog(ERROR, "InitMultiLockm: couldnt initialize lock table");
-	}
 	/* -----------------------
 	 * No short term lock table for now.  -Jeff 15 July 1991
 	 *
@@ -434,9 +432,7 @@ MultiRelease(LockTableId tableId,
 			}
 			status = LockRelease(tableId, tmpTag, locks[i]);
 			if (!status)
-			{
 				elog(ERROR, "MultiRelease: couldn't release after error");
-			}
 		}
 	}
 	/* shouldn't reach here */

@@ -256,9 +256,7 @@ MergeAttributes(List *schema, List *supers, List **supconstr)
 				 "MergeAttr: Can't inherit from non-existent superclass '%s'", name);
 		}
 		if (relation->rd_rel->relkind == 'S')
-		{
 			elog(ERROR, "MergeAttr: Can't inherit from sequence superclass '%s'", name);
-		}
 		tupleDesc = RelationGetTupleDescriptor(relation);
 		constr = tupleDesc->constr;
 

@@ -137,9 +137,7 @@ matchLocks(CmdType event,
 	if (parsetree->commandType != CMD_SELECT)
 	{
 		if (parsetree->resultRelation != varno)
-		{
 			return (NULL);
-		}
 	}
 
 	nlocks = rulelocks->numLocks;
@@ -154,9 +152,7 @@ matchLocks(CmdType event,
 				thisLockWasTriggered(varno,
 									 oneLock->attrno,
 									 parsetree))
-			{
 				real_locks = lappend(real_locks, oneLock);
-			}
 		}
 	}
 

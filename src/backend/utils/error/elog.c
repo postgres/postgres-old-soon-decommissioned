@@ -63,9 +63,7 @@ elog(int lev, const char *fmt,...)
 
 	va_start(ap, fmt);
 	if (lev == DEBUG && Debugfile < 0)
-	{
 		return;
-	}
 	switch (lev)
 	{
 		case NOIND:

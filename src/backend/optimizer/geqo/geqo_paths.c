@@ -147,9 +147,7 @@ set_paths(Rel *rel, Path *unorderedpath)
 		rel->pathlist = lremove(unorderedpath, rel->pathlist);
 	}
 	else
-	{
 		rel->unorderedpath = (Path *) unorderedpath;
-	}
 
 	return (cheapest);
 }

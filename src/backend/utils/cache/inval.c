@@ -140,9 +140,7 @@ LocalInvalidInvalidate(LocalInvalid invalid, void (*function) ())
 			&((InvalidationUserData *) invalid)->dataP[-1];
 
 		if (PointerIsValid(function))
-		{
 			(*function) ((Pointer) &entryDataP->userData);
-		}
 
 		invalid = (Pointer) entryDataP->nextP;
 
@@ -485,17 +483,11 @@ RelationInvalidateRelationCache(Relation relation,
 	 * ----------------
 	 */
 	if (relationId == MyRelationRelationId)
-	{
 		objectId = tuple->t_oid;
-	}
 	else if (relationId == MyAttributeRelationId)
-	{
 		objectId = ((AttributeTupleForm) GETSTRUCT(tuple))->attrelid;
-	}
 	else if (relationId == MyAMRelationId)
-	{
 		objectId = tuple->t_oid;
-	}
 	else if (relationId == MyAMOPRelationId)
 	{
 		;						/* objectId is unused */

@@ -1450,9 +1450,7 @@ IsTransactionBlock()
 
 	if (s->blockState == TBLOCK_INPROGRESS
 		|| s->blockState == TBLOCK_ENDABORT)
-	{
 		return (true);
-	}
 
 	return (false);
 }

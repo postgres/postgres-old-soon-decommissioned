@@ -96,9 +96,7 @@ InsertRule(char *rulname,
 
 	eventrel = heap_openr(evobj);
 	if (eventrel == NULL)
-	{
 		elog(ERROR, "rules cannot be defined on relations not in schema");
-	}
 	eventrel_oid = RelationGetRelationId(eventrel);
 
 	/*
@@ -128,9 +126,7 @@ InsertRule(char *rulname,
  '%s'::bool);";
 	if (strlen(template) + strlen(rulname) + strlen(actionbuf) +
 		strlen(qualbuf) + 20 /* fudge fac */ > RULE_PLAN_SIZE)
-	{
 		elog(ERROR, "DefineQueryRewrite: rule plan string too big.");
-	}
 	sprintf(rulebuf, template,
 			rulname, evtype, eventrel_oid, evslot_index, actionbuf,
 			qualbuf, is_instead);
@@ -209,9 +205,7 @@ DefineQueryRewrite(RuleStmt *stmt)
 
 	event_relation = heap_openr(event_obj->relname);
 	if (event_relation == NULL)
-	{
 		elog(ERROR, "virtual relations not supported yet");
-	}
 	ev_relid = RelationGetRelationId(event_relation);
 
 	if (eslot_string == NULL)

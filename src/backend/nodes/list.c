@@ -122,9 +122,7 @@ nreverse(List *list)
 		return (list);
 
 	for (p = list; p != NULL; p = lnext(p))
-	{
 		rlist = lcons(lfirst(p), rlist);
-	}
 
 	lfirst(list) = lfirst(rlist);
 	lnext(list) = lnext(rlist);
@@ -324,9 +322,7 @@ LispUnion(List *l1, List *l2)
 		}
 	}
 	foreach(i, l2)
-	{
 		retval = lappend(retval, lfirst(i));
-	}
 
 	return (retval);
 }
@@ -356,9 +352,7 @@ LispUnioni(List *l1, List *l2)
 		}
 	}
 	foreach(i, l2)
-	{
 		retval = lappendi(retval, lfirsti(i));
-	}
 
 	return (retval);
 }
@@ -410,13 +404,9 @@ lremove(void *elem, List *list)
 	if (l != NULL)
 	{
 		if (prev == NIL)
-		{
 			result = lnext(list);
-		}
 		else
-		{
 			lnext(prev) = lnext(l);
-		}
 	}
 	return result;
 }

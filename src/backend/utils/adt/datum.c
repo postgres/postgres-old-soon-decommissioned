@@ -56,9 +56,7 @@ datumGetSize(Datum value, Oid type, bool byVal, Size len)
 	if (byVal)
 	{
 		if (len <= sizeof(Datum))
-		{
 			size = len;
-		}
 		else
 		{
 			elog(ERROR,
@@ -116,9 +114,7 @@ datumCopy(Datum value, Oid type, bool byVal, Size len)
 
 
 	if (byVal)
-	{
 		res = value;
-	}
 	else
 	{
 		if (value == 0)
@@ -131,9 +127,7 @@ datumCopy(Datum value, Oid type, bool byVal, Size len)
 		 */
 		s = (char *) palloc(realSize);
 		if (s == NULL)
-		{
 			elog(ERROR, "datumCopy: out of memory\n");
-		}
 		memmove(s, DatumGetPointer(value), realSize);
 		res = (Datum) s;
 	}

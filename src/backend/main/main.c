@@ -72,9 +72,7 @@ main(int argc, char *argv[])
 #if defined(__alpha)
 	if (setsysinfo(SSI_NVPAIRS, buffer, 1, (caddr_t) NULL,
 				   (unsigned long) NULL) < 0)
-	{
 		elog(NOTICE, "setsysinfo failed: %d\n", errno);
-	}
 #endif
 
 #endif							/* NOFIXADE || NOPRINTADE */

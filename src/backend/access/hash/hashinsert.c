@@ -204,9 +204,7 @@ _hash_insertonpg(Relation rel,
 	if (do_expand ||
 		(metap->hashm_nkeys / (metap->hashm_maxbucket + 1))
 		> metap->hashm_ffactor)
-	{
 		_hash_expandtable(rel, metabuf);
-	}
 	_hash_relbuf(rel, metabuf, HASH_READ);
 	return (res);
 }

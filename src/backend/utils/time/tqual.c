@@ -44,9 +44,7 @@ setheapoverride(bool on)
 		HeapSpecialCommandId = GetCurrentCommandId();
 	}
 	else
-	{
 		HeapSpecialTransactionId = InvalidTransactionId;
-	}
 }
 
 #endif							/* !defined(GOODAMI) */

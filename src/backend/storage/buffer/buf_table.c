@@ -91,9 +91,7 @@ BufTableLookup(BufferTag *tagPtr)
 		return (NULL);
 	}
 	if (!found)
-	{
 		return (NULL);
-	}
 	return (&(BufferDescriptors[result->id]));
 }
 
@@ -111,9 +109,7 @@ BufTableDelete(BufferDesc *buf)
 	 * BM_DELETED keeps us from removing buffer twice.
 	 */
 	if (buf->flags & BM_DELETED)
-	{
 		return (TRUE);
-	}
 
 	buf->flags |= BM_DELETED;
 

@@ -119,9 +119,7 @@ PQnportals(int rule_p)
 		if (portals[i] && portals[i]->portal)
 		{
 			if (!rule_p || portals[i]->portal->rule_p)
-			{
 				++n;
-			}
 		}
 	}
 	return (n);
@@ -690,9 +688,7 @@ PQnotifies_init()
 	PQNotifyList *p;
 
 	if (pqNotifyList == NULL)
-	{
 		pqNotifyList = DLNewList();
-	}
 	else
 	{
 		/* clean all notifies */

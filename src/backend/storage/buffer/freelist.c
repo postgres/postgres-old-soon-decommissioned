@@ -105,9 +105,7 @@ PinBuffer(BufferDesc *buf)
 		buf->flags &= ~BM_FREE;
 	}
 	else
-	{
 		NotInQueue(buf);
-	}
 
 	b = BufferDescriptorGetBuffer(buf) - 1;
 	Assert(PrivateRefCount[b] >= 0);
