@@ -29,7 +29,6 @@ PostgreSQL Programmer's Guide.
 
   &libpq;
   &lobj;
-  &libpqpp;
   &libpgtcl;
   &libpgeasy;
   &ecpg;
