@@ -288,7 +288,7 @@ push_nots(Expr *qual)
 										 * possible? */
 
 	/*
-	 * Negate an operator clause if possible: (NOT (< A B)) => (> A B)
+	 * Negate an operator clause if possible: (NOT (< A B)) => (>= A B)
 	 * Otherwise, retain the clause as it is (the NOT can't be pushed down
 	 * any farther).
 	 */
