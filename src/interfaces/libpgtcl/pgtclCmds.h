@@ -14,7 +14,7 @@
 #ifndef PGTCLCMDS_H
 #define PGTCLCMDS_H
 
-#include "tcl.h"
+#include <tcl.h>
 #include "libpq-fe.h"
 
 #define RES_HARD_MAX 128

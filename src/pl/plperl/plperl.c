@@ -75,8 +75,8 @@
 #ifndef HAS_UNION_SEMUN
 #define HAS_UNION_SEMUN
 #endif
-#include <EXTERN.h>
-#include <perl.h>
+#include "EXTERN.h"
+#include "perl.h"
 
 
 /**********************************************************************

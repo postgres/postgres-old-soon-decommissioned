@@ -14,7 +14,7 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <postgres.h>
+#include "postgres.h"
 
 #include <signal.h>
 #include "libpq-fe.h"

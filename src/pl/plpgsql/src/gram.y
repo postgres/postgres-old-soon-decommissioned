@@ -36,8 +36,8 @@
  *
  **********************************************************************/
 
-#include "stdio.h"
-#include "string.h"
+#include <stdio.h>
+#include <string.h>
 #include "plpgsql.h"
 #ifdef YYBISON
 #include "pl_scan.c" /* GNU bison wants it here */

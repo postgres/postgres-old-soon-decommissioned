@@ -15,12 +15,12 @@
 #include <stdio.h>
 #include <locale.h>
 
-#include <ecpgtype.h>
-#include <ecpglib.h>
-#include <ecpgerrno.h>
+#include "ecpgtype.h"
+#include "ecpglib.h"
+#include "ecpgerrno.h"
 #include "extern.h"
-#include <sqlca.h>
-#include <sql3types.h>
+#include "sqlca.h"
+#include "sql3types.h"
 
 /* variables visible to the programs */
 struct sqlca sqlca =
