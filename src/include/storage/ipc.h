@@ -26,20 +26,6 @@
 
 #include <config.h>
 
-#if defined(HAS_TEST_AND_SET)
-
-#if (defined(alpha) && !defined(linuxalpha)) || \
-	defined(hpux) || \
-	defined(irix5) || \
-	defined(nextstep)
-extern int	S_LOCK_FREE(slock_t *lock);
-
-#else
-#define S_LOCK_FREE(lock)		((*lock) == 0)
-#endif
-
-#endif							/* HAS_TEST_AND_SET */
-
 #ifndef HAVE_UNION_SEMUN
 union semun
 {
