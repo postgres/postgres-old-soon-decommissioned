@@ -120,7 +120,7 @@ ERROR Relation "<replaceable class="parameter">name</replaceable>" Does Not Exis
   </title>
   <para>
    To destroy two tables, <literal>films</literal> and 
-   <command>distributors</command>:
+   <literal>distributors</literal>:
 
    <programlisting>
 DROP TABLE films, distributors;
