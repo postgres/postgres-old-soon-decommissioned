@@ -29,6 +29,7 @@
 #include "commands/trigger.h"
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
+#include "postmaster/postmaster.h"
 #include "storage/backendid.h"
 #include "storage/ipc.h"
 #include "storage/proc.h"

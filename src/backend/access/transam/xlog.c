@@ -27,10 +27,10 @@
 #include "access/xlogutils.h"
 #include "catalog/catversion.h"
 #include "catalog/pg_control.h"
+#include "postmaster/bgwriter.h"
 #include "storage/bufpage.h"
 #include "storage/fd.h"
 #include "storage/lwlock.h"
-#include "storage/pmsignal.h"
 #include "storage/proc.h"
 #include "storage/sinval.h"
 #include "storage/spin.h"
@@ -1206,9 +1206,9 @@ XLogWrite(XLogwrtRqst WriteRqst)
 				{
 #ifdef WAL_DEBUG
 					if (XLOG_DEBUG)
-						elog(LOG, "time for a checkpoint, signaling postmaster");
+						elog(LOG, "time for a checkpoint, signaling bgwriter");
 #endif
-					SendPostmasterSignal(PMSIGNAL_DO_CHECKPOINT);
+					RequestCheckpoint(false);
 				}
 			}
 			LWLockRelease(ControlFileLock);
@@ -3087,11 +3087,6 @@ StartupXLOG(void)
 				RmgrTable[rmid].rm_cleanup();
 		}
 
-		/* suppress in-transaction check in CreateCheckPoint */
-		MyLastRecPtr.xrecoff = 0;
-		MyXactMadeXLogEntry = false;
-		MyXactMadeTempRelUpdate = false;
-
 		/*
 		 * At this point, ThisStartUpID is the largest SUI that we could
 		 * find evidence for in the WAL entries.  But check it against
@@ -3293,11 +3288,6 @@ ShutdownXLOG(int code, Datum arg)
 	ereport(LOG,
 			(errmsg("shutting down")));
 
-	/* suppress in-transaction check in CreateCheckPoint */
-	MyLastRecPtr.xrecoff = 0;
-	MyXactMadeXLogEntry = false;
-	MyXactMadeTempRelUpdate = false;
-
 	CritSectionCount++;
 	CreateCheckPoint(true, true);
 	ShutdownCLOG();
@@ -3324,27 +3314,13 @@ CreateCheckPoint(bool shutdown, bool force)
 	uint32		_logId;
 	uint32		_logSeg;
 
-	if (MyXactMadeXLogEntry)
-		ereport(ERROR,
-				(errcode(ERRCODE_ACTIVE_SQL_TRANSACTION),
-		  errmsg("checkpoint cannot be made inside transaction block")));
-
 	/*
 	 * Acquire CheckpointLock to ensure only one checkpoint happens at a
-	 * time.
-	 *
-	 * The CheckpointLock can be held for quite a while, which is not good
-	 * because we won't respond to a cancel/die request while waiting for
-	 * an LWLock.  (But the alternative of using a regular lock won't work
-	 * for background checkpoint processes, which are not regular
-	 * backends.)  So, rather than use a plain LWLockAcquire, use this
-	 * kluge to allow an interrupt to be accepted while we are waiting:
+	 * time.  (This is just pro forma, since in the present system
+	 * structure there is only one process that is allowed to issue
+	 * checkpoints at any given time.)
 	 */
-	while (!LWLockConditionalAcquire(CheckpointLock, LW_EXCLUSIVE))
-	{
-		CHECK_FOR_INTERRUPTS();
-		pg_usleep(1000000L);
-	}
+	LWLockAcquire(CheckpointLock, LW_EXCLUSIVE);
 
 	/*
 	 * Use a critical section to force system panic if we have trouble.

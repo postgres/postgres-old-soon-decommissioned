@@ -22,7 +22,6 @@
  */
 typedef enum
 {
-	PMSIGNAL_DO_CHECKPOINT,		/* request to start a checkpoint */
 	PMSIGNAL_PASSWORD_CHANGE,	/* pg_pwd file has changed */
 	PMSIGNAL_WAKEN_CHILDREN,	/* send a SIGUSR1 signal to all backends */
 
@@ -35,5 +34,6 @@ typedef enum
 extern void PMSignalInit(void);
 extern void SendPostmasterSignal(PMSignalReason reason);
 extern bool CheckPostmasterSignal(PMSignalReason reason);
+extern bool PostmasterIsAlive(bool amDirectChild);
 
 #endif   /* PMSIGNAL_H */

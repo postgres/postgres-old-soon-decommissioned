@@ -46,6 +46,17 @@
 #include "libpq/pqsignal.h"
 
 
+#ifdef HAVE_SIGPROCMASK
+sigset_t	UnBlockSig,
+			BlockSig,
+			AuthBlockSig;
+#else
+int			UnBlockSig,
+			BlockSig,
+			AuthBlockSig;
+#endif
+
+
 /*
  * Initialize BlockSig, UnBlockSig, and AuthBlockSig.
  *
@@ -153,4 +164,5 @@ pqsignal(int signo, pqsigfunc func)
 	return oact.sa_handler;
 #endif   /* !HAVE_POSIX_SIGNALS */
 }
+
 #endif /* WIN32 */

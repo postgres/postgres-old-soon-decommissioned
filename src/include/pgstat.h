@@ -349,7 +349,6 @@ extern bool pgstat_is_running;
 extern void pgstat_init(void);
 extern void pgstat_start(void);
 extern bool pgstat_ispgstat(int pid);
-extern void pgstat_close_sockets(void);
 extern void pgstat_beterm(int pid);
 
 #ifdef EXEC_BACKEND

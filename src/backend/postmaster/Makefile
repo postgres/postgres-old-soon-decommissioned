@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------
 #
 # Makefile--
-#    Makefile for postmaster
+#    Makefile for src/backend/postmaster
 #
 # IDENTIFICATION
 #    $PostgreSQL$
@@ -12,7 +12,7 @@ subdir = src/backend/postmaster
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = postmaster.o pgstat.o
+OBJS = postmaster.o bgwriter.o pgstat.o
 
 all: SUBSYS.o
 

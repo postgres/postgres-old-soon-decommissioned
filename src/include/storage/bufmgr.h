@@ -28,11 +28,6 @@ extern DLLIMPORT int NBuffers;
 /* in bufmgr.c */
 extern bool zero_damaged_pages;
 
-extern int	BgWriterDelay;
-extern int	BgWriterPercent;
-extern int	BgWriterMaxpages;
-
-
 /* in buf_init.c */
 extern DLLIMPORT Block *BufferBlockPointers;
 extern int32 *PrivateRefCount;
@@ -179,9 +174,6 @@ extern void AbortBufferIO(void);
 
 extern void BufmgrCommit(void);
 extern int	BufferSync(int percent, int maxpages);
-extern void BufferBackgroundWriter(void);
-extern const char *BgWriterAssignSyncMethod(const char *method,
-			bool doid, bool interactive);
 
 extern void InitLocalBuffer(void);
 

@@ -30,9 +30,7 @@ extern DLLIMPORT sigjmp_buf Warn_restart;
 extern bool Warn_restart_ready;
 extern bool InError;
 extern CommandDest whereToSendOutput;
-extern bool log_hostname;
 extern DLLIMPORT const char *debug_query_string;
-extern char *rendezvous_name;
 extern int	max_stack_depth;
 extern bool in_fatal_exit;
 

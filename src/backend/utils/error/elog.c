@@ -57,6 +57,7 @@
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
 #include "pgtime.h"
+#include "postmaster/postmaster.h"
 #include "storage/ipc.h"
 #include "tcop/tcopprot.h"
 #include "utils/memutils.h"

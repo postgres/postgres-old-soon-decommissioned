@@ -18,6 +18,7 @@
 #include "miscadmin.h"
 #include "access/clog.h"
 #include "access/xlog.h"
+#include "postmaster/bgwriter.h"
 #include "storage/bufmgr.h"
 #include "storage/freespace.h"
 #include "storage/ipc.h"
@@ -72,6 +73,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 		size += LWLockShmemSize();
 		size += SInvalShmemSize(maxBackends);
 		size += FreeSpaceShmemSize();
+		size += BgWriterShmemSize();
 #ifdef EXEC_BACKEND
 		size += ShmemBackendArraySize();
 #endif
@@ -155,9 +157,10 @@ CreateSharedMemoryAndSemaphores(bool makePrivate,
 	InitFreeSpaceMap();
 
 	/*
-	 * Set up child-to-postmaster signaling mechanism
+	 * Set up interprocess signaling mechanisms
 	 */
 	PMSignalInit();
+	BgWriterShmemInit();
 
 #ifdef EXEC_BACKEND
 	/*

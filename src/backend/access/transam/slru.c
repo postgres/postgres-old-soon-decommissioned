@@ -17,6 +17,7 @@
 #include <unistd.h>
 
 #include "access/slru.h"
+#include "postmaster/bgwriter.h"
 #include "storage/fd.h"
 #include "storage/lwlock.h"
 #include "miscadmin.h"
@@ -795,8 +796,8 @@ SimpleLruTruncate(SlruCtl ctl, int cutoffPage)
 	if (!SlruScanDirectory(ctl, cutoffPage, false))
 		return;					/* nothing to remove */
 
-	/* Perform a forced CHECKPOINT */
-	CreateCheckPoint(false, true);
+	/* Perform a CHECKPOINT */
+	RequestCheckpoint(true);
 
 	/*
 	 * Scan shared memory and remove any pages preceding the cutoff page,

@@ -34,12 +34,13 @@
 #include <sys/param.h>
 #endif
 
-#include "miscadmin.h"
 #include "bootstrap/bootstrap.h"
+#include "miscadmin.h"
+#include "pgstat.h"
+#include "postmaster/postmaster.h"
 #include "tcop/tcopprot.h"
 #include "utils/help_config.h"
 #include "utils/ps_status.h"
-#include "pgstat.h"
 #ifdef WIN32
 #include "libpq/pqsignal.h"
 #endif

@@ -83,3 +83,41 @@ CheckPostmasterSignal(PMSignalReason reason)
 	}
 	return false;
 }
+
+/*
+ * PostmasterIsAlive - check whether postmaster process is still alive
+ *
+ * amDirectChild should be passed as "true" by code that knows it is
+ * executing in a direct child process of the postmaster; pass "false"
+ * if an indirect child or not sure.  The "true" case uses a faster and
+ * more reliable test, so use it when possible.
+ */
+bool
+PostmasterIsAlive(bool amDirectChild)
+{
+#ifndef WIN32
+	if (amDirectChild)
+	{
+		/*
+		 * If the postmaster is alive, we'll still be its child.  If it's
+		 * died, we'll be reassigned as a child of the init process.
+		 */
+		return (getppid() == PostmasterPid);
+	}
+	else
+	{
+		/*
+		 * Use kill() to see if the postmaster is still alive.  This can
+		 * sometimes give a false positive result, since the postmaster's PID
+		 * may get recycled, but it is good enough for existing uses by
+		 * indirect children.
+		 */
+		return (kill(PostmasterPid, 0) == 0);
+	}
+#else /* WIN32 */
+	/*
+	 * XXX needs to be implemented by somebody
+	 */
+	return true;
+#endif /* WIN32 */
+}

@@ -110,7 +110,7 @@ static char *stack_base_ptr = NULL;
  * will reread the configuration file. (Better than doing the
  * reading in the signal handler, ey?)
  */
-static volatile bool got_SIGHUP = false;
+static volatile sig_atomic_t got_SIGHUP = false;
 
 /*
  * Flag to keep track of whether we have started a transaction.
