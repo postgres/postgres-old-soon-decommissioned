@@ -340,7 +340,7 @@ tar -cf backup.tar /usr/local/pgsql/data
 
  </sect1>
 
- <sect1>
+ <sect1 id="migration">
   <title>Migration between releases</title>
 
   <para>

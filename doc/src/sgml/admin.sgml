@@ -8,6 +8,9 @@ Derived from postgres.sgml.
 
 <!doctype book PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
 
+<!entity version "7.1">
+<!entity majorversion "7.1">
+
 <!entity about     SYSTEM "about.sgml">
 <!entity history   SYSTEM "history.sgml">
 <!entity info      SYSTEM "info.sgml">
@@ -16,13 +19,9 @@ Derived from postgres.sgml.
 <!entity problems  SYSTEM "problems.sgml">
 <!entity y2k       SYSTEM "y2k.sgml">
 
-<!entity config    SYSTEM "config.sgml">
 <!entity intro-ag  SYSTEM "intro-ag.sgml">
-<!entity install   SYSTEM "install.sgml">
+<!entity installation SYSTEM "installation.sgml">
 <!entity installw  SYSTEM "install-win32.sgml">
-<!entity layout    SYSTEM "layout.sgml">
-<!entity ports     SYSTEM "ports.sgml">
-<!entity release   SYSTEM "release.sgml">
 <!entity runtime   SYSTEM "runtime.sgml">
 <!entity client-auth SYSTEM "client-auth.sgml">
 <!entity manage-ag SYSTEM "manage-ag.sgml">
@@ -30,8 +29,13 @@ Derived from postgres.sgml.
 <!entity backup    SYSTEM "backup.sgml">
 <!entity recovery  SYSTEM "recovery.sgml">
 <!entity regress   SYSTEM "regress.sgml">
+<!entity release   SYSTEM "release.sgml">
 
 <!entity biblio    SYSTEM "biblio.sgml">
+
+<!-- see standalone-install.sgml about these -->
+<!entity % flattext-install-ignore  "INCLUDE">
+<!entity % flattext-install-include "IGNORE">
 ]>
 
 <book id="admin">
@@ -75,19 +79,6 @@ Derived from postgres.sgml.
 
  </bookinfo>
 
-<!--
-<TOC> </TOC>
-<LOT> </LOT>
--->
-
-<!--
-<Dedication>
-<Para>
-Your name here...
-</Para>
-</Dedication>
--->
-
  <preface id="preface">
   <title>Summary</title>
 
@@ -104,11 +95,7 @@ Your name here...
  </preface>
 
   &intro-ag;
-
-  &ports;
-  &config;
-  &layout;
-  &install;
+  &installation;
   &installw;
   &runtime;
   &client-auth;
