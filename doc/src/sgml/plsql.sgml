@@ -1184,9 +1184,9 @@ END IF;
 <programlisting>
 IF number = 0 THEN
     result := ''zero'';
-ELSIF number &lt; 0 THEN
-    result := ''positive'';
 ELSIF number &gt; 0 THEN 
+    result := ''positive'';
+ELSIF number &lt; 0 THEN
     result := ''negative'';
 ELSE
     -- hmm, the only other possibility is that number IS NULL
