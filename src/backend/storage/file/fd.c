@@ -672,9 +672,9 @@ fileNameOpenFile(FileName fileName,
 	 */
 	if (fileFlags & O_CREAT)
 		vfdP->fdstate = FD_DIRTY;
-#else
-	vfdP->fdstate = 0x0;
+	else
 #endif
+		vfdP->fdstate = 0x0;
 
 	return file;
 }
