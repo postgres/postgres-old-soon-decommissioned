@@ -195,7 +195,7 @@ heap_create(char *relname,
 	 */
 	AssertArg(natts > 0);
 
-	if (relname && IsSystemRelationName(relname) && IsNormalProcessingMode())
+	if (relname && !allowSystemTableMods && IsSystemRelationName(relname) && IsNormalProcessingMode())
 	{
 		elog(ERROR, "Illegal class name '%s'"
 			 "\n\tThe 'pg_' name prefix is reserved for system catalogs",
@@ -1260,7 +1260,8 @@ heap_destroy_with_catalog(char *relname)
 	 * ----------------
 	 */
 	/* allow temp of pg_class? Guess so. */
-	if (!istemp && IsSystemRelationName(RelationGetRelationName(rel)->data))
+	if (!istemp &&
+		!allowSystemTableMods && IsSystemRelationName(RelationGetRelationName(rel)->data))
 		elog(ERROR, "System relation '%s' cannot be destroyed",
 			 &rel->rd_rel->relname);
 

@@ -168,9 +168,7 @@ static long pg_nofile(void);
 int
 pg_fsync(int fd)
 {
-	extern int	fsyncOff;
-
-	return fsyncOff ? 0 : fsync(fd);
+	return disableFsync ? 0 : fsync(fd);
 }
 
 #define fsync pg_fsync

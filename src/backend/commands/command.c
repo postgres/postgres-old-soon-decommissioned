@@ -308,7 +308,7 @@ PerformAddAttribute(char *relationName,
 	 *
 	 * normally, only the owner of a class can change its schema.
 	 */
-	if (IsSystemRelationName(relationName))
+	if (!allowSystemTableMods && IsSystemRelationName(relationName))
 		elog(ERROR, "PerformAddAttribute: class \"%s\" is a system catalog",
 			 relationName);
 #ifndef NO_SECURITY

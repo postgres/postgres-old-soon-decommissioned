@@ -22,6 +22,9 @@ data_directory]
 .BR "-F"
 ]
 [\c
+.BR "-O"
+]
+[\c
 .BR "-P"
 filedes]
 [\c
@@ -98,6 +101,9 @@ Echo all queries.
 Disable automatic fsync() call after each transaction.
 This option improves performance, but an operating system crash
 while a transaction is in progress will probably cause data loss.
+.TP
+.BR "-O"
+Override restrictions, so system table structures can be modified(pg_*).
 .TP
 .BR "-P" " filedes"
 .IR "filedes"

@@ -182,7 +182,7 @@ static char *relname;			/* current relation name */
 Form_pg_attribute attrtypes[MAXATTR];	/* points to attribute info */
 static char *values[MAXATTR];	/* cooresponding attribute values */
 int			numattr;			/* number of attributes for cur. rel */
-extern int	fsyncOff;			/* do not fsync the database */
+extern bool	disableFsync;			/* do not fsync the database */
 
 /* The test for HAVE_SIGSETJMP fails on Linux 2.0.x because the test
  *	explicitly disallows sigsetjmp being a #define, which is how it
@@ -335,7 +335,7 @@ BootstrapMain(int argc, char *argv[])
 				Noversion = true;
 				break;
 			case 'F':
-				fsyncOff = true;
+				disableFsync = true;
 				break;
 			case 'O':
 				override = true;
