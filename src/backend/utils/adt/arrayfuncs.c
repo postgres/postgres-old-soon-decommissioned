@@ -27,7 +27,6 @@
 #include "storage/fd.h"
 #include "fmgr.h"
 #include "utils/array.h"
-
 #include "libpq/libpq-fs.h"
 #include "libpq/be-fsstubs.h"
 
