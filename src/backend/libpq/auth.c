@@ -809,7 +809,7 @@ recv_and_check_password_packet(Port *port)
 		return STATUS_EOF;
 	}
 
-	/* Do not echo failed password to logs, for security. */
+	/* Do not echo password to logs, for security. */
 	elog(DEBUG5, "received password packet");
 
 	result = md5_crypt_verify(port, port->user, buf.data);
