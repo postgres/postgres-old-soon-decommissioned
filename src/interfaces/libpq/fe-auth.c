@@ -450,16 +450,15 @@ pg_krb5_sendauth(char *PQerrormsg, int sock, const char *hostname)
 /*
  * Respond to AUTH_REQ_SCM_CREDS challenge.
  *
- * Note: the backend will not use this challenge if HAVE_GETPEEREID
- * or SO_PEERCRED is defined, so we don't bother to compile any code
- * in that case, even if the facility is available.
+ * Note: current backends will not use this challenge if HAVE_GETPEEREID
+ * or SO_PEERCRED is defined, but pre-7.4 backends might, so compile the
+ * code anyway.
  */
 static int
 pg_local_sendauth(char *PQerrormsg, PGconn *conn)
 {
-#if !defined(HAVE_GETPEEREID) && !defined(SO_PEERCRED) && \
-	(defined(HAVE_STRUCT_CMSGCRED) || defined(HAVE_STRUCT_FCRED) || \
-	 (defined(HAVE_STRUCT_SOCKCRED) && defined(LOCAL_CREDS)))
+#if defined(HAVE_STRUCT_CMSGCRED) || defined(HAVE_STRUCT_FCRED) || \
+	(defined(HAVE_STRUCT_SOCKCRED) && defined(LOCAL_CREDS))
 	char		buf;
 	struct iovec iov;
 	struct msghdr msg;
