@@ -1232,7 +1232,7 @@ ProcessStartupPacket(Port *port, bool SSLdone)
 
 #ifdef USE_SSL
 		/* No SSL when disabled or on Unix sockets */
-		if (!EnableSSL || port->laddr.addr.ss_family != AF_INET)
+		if (!EnableSSL || IS_AF_UNIX(port->laddr.addr.ss_family))
 			SSLok = 'N';
 		else
 			SSLok = 'S';		/* Support for SSL */
