@@ -115,6 +115,8 @@ pqPutBytes(const char *s, size_t nbytes, PGconn *conn)
 				Max(conn->outBufSize - conn->outCount, 0), nbytes);
 			return EOF;
 		}
+		/* fixup avail for while loop */
+		avail = Max(conn->outBufSize - conn->outCount, 0);
 	}
 
 	/* 
