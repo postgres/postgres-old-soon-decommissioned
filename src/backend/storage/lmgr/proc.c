@@ -493,7 +493,12 @@ void	SetWaitingForLock(bool waiting)
 	lockWaiting = waiting;
 	if (lockWaiting)
 	{
-		Assert(MyProc->links.next != INVALID_OFFSET);
+		/* The lock was already released ? */
+		if (MyProc->links.next == INVALID_OFFSET)
+		{
+			lockWaiting = false;
+			return;
+		}
 		if (QueryCancel) /* cancel request pending */
 		{
 			if (GetOffWaitqueue(MyProc))
