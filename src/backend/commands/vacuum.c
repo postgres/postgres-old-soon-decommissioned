@@ -576,8 +576,8 @@ vc_vacone(Oid relid, bool analyze, List *va_cols)
 	heap_close(rel);
 
 	/* update statistics in pg_class */
-	vc_updstats(vacrelstats->relid, vacrelstats->num_pages, vacrelstats->num_tuples,
-				vacrelstats->hasindex, vacrelstats);
+	vc_updstats(vacrelstats->relid, vacrelstats->num_pages,
+				vacrelstats->num_tuples, vacrelstats->hasindex, vacrelstats);
 
 	/* next command frees attribute stats */
 
