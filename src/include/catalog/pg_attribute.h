@@ -53,8 +53,15 @@ CATALOG(pg_attribute) BOOTSTRAP
 
 	float4		attdisbursion;
 	/*
-	 * attdisbursion is the disbursion statistic of the column, or zero if
-	 * the statistic has not been calculated.
+	 * attdisbursion is the disbursion statistic of the column (0.0 to 1.0),
+	 * or zero if the statistic has not been calculated, or -1.0
+	 * if VACUUM found that the column contains no duplicate entries
+	 * (in which case the disbursion should be taken as 1.0/numberOfRows
+	 * for the current table size).  The -1.0 hack is useful because the
+	 * number of rows may be updated more often than attdisbursion is.
+	 * We assume that the column will retain its no-duplicate-entry
+	 * property.  (Perhaps this should be driven off the existence of a
+	 * UNIQUE index for the column, instead of being a statistical guess?)
 	 */
 
 	int2		attlen;
