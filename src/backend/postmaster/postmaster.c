@@ -823,7 +823,7 @@ ServerLoop(void)
 		struct timeval *timeout = NULL;
 		struct timeval	timeout_tv;
 
-		if (CheckPointPID == 0 && checkpointed)
+		if (CheckPointPID == 0 && checkpointed && !FatalError)
 		{
 			time_t	now = time(NULL);
 
