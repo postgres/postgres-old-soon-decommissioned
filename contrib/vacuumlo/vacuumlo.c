@@ -111,7 +111,7 @@ vacuumlo(char *database, int verbose)
 	strcat(buf, "WHERE a.attnum > 0 ");
 	strcat(buf, "      AND a.attrelid = c.oid ");
 	strcat(buf, "      AND a.atttypid = t.oid ");
-	strcat(buf, "      AND t.typname = 'oid' ");
+	strcat(buf, "      AND t.typname in ('oid', 'lo') ");
 	strcat(buf, "      AND c.relkind = 'r'");
 	strcat(buf, "      AND c.relname NOT LIKE 'pg_%'");
 	res = PQexec(conn, buf);
