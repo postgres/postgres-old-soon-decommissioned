@@ -357,6 +357,15 @@ GuessControlValues(void)
 
 	ControlFile.blcksz = BLCKSZ;
 	ControlFile.relseg_size = RELSEG_SIZE;
+	ControlFile.nameDataLen = NAMEDATALEN;
+	ControlFile.funcMaxArgs = FUNC_MAX_ARGS;
+#ifdef HAVE_INT64_TIMESTAMP
+	ControlFile.enableIntTimes = TRUE;
+#else
+	ControlFile.enableIntTimes = FALSE;
+#endif
+	ControlFile.localeBuflen = LOCALE_NAME_BUFLEN;
+
 	localeptr = setlocale(LC_COLLATE, "");
 	if (!localeptr)
 	{
@@ -402,6 +411,11 @@ PrintControlValues(bool guessed)
 	printf(_("Latest checkpoint's NextOID:          %u\n"), ControlFile.checkPointCopy.nextOid);
 	printf(_("Database block size:                  %u\n"), ControlFile.blcksz);
 	printf(_("Blocks per segment of large relation: %u\n"), ControlFile.relseg_size);
+	printf(_("Maximum length of identifiers:        %u\n"), ControlFile.nameDataLen);
+	printf(_("Maximum number of function arguments: %u\n"), ControlFile.funcMaxArgs);
+	printf(_("Date/time type storage:               %s\n"),
+		   (ControlFile.enableIntTimes ? _("64-bit integers") : _("Floating point")));
+	printf(_("Maximum length of locale name:        %u\n"), ControlFile.localeBuflen);
 	printf(_("LC_COLLATE:                           %s\n"), ControlFile.lc_collate);
 	printf(_("LC_CTYPE:                             %s\n"), ControlFile.lc_ctype);
 }
