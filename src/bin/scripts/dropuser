@@ -36,7 +36,6 @@ do
     case "$1" in
 	--help|-\?)
 		usage=t
-		break
 		;;
 # options passed on to psql
 	--host|-h)
@@ -96,11 +95,20 @@ do
 done
 
 
-# Help
-
 if [ "$usage" ]; then
-	echo "Usage: $CMDNAME [-h server] [-p port] [-i] [username]"
-	exit 0
+	echo ""
+	echo "Usage: $CMDNAME [options] [username]"
+	echo ""
+	echo "    -h HOSTNAME, --host=HOSTNAME     "
+	echo "    -p PORT,     --port=PORT         "
+	echo "    -u USERNAME, --username=USERNAME (for connect to db)"
+	echo "    -W,          --password          "
+	echo "    -e,          --echo              "
+        echo "    -q,          --quiet             "
+	echo "    -i,          --interactive       "   
+	echo "    -?,          --help              "
+	echo ""
+	exit 1
 fi
 
 # Prompt for username if missing

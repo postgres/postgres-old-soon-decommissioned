@@ -96,8 +96,19 @@ done
 
 
 if [ "$usage" ]; then
-	echo "Usage: $CMDNAME [-h server] [-p port] [-U username] [-i] dbname"
-	exit 0
+	echo ""
+	echo "Usage: $CMDNAME [options] dbname"
+	echo ""
+	echo "    -h HOSTNAME, --host=HOSTNAME     "
+	echo "    -p PORT,     --port=PORT         "
+	echo "    -u USERNAME, --username=USERNAME "
+	echo "    -W,          --password          "
+	echo "    -e,          --echo              "
+        echo "    -q,          --quiet             "   
+	echo "    -i,          --interactive       "
+	echo "    -?,          --help              "
+	echo ""
+	exit 1
 fi
 
 if [ -z "$dbname" ]; then

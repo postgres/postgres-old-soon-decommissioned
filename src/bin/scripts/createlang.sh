@@ -51,7 +51,6 @@ do
     case "$1" in 
 	--help|-\?)
 		usage=t
-		break
 		;;
         --list|-l)
                 list=t
@@ -127,12 +126,22 @@ do
     shift
 done
 
-
-
-if [ "$usage" ]; then
-	echo "Usage: $CMDNAME [-h server] [-p port] [-U username] [-d dbname] \\"
-	echo "       [-L|--pglib PGLIB] [langname [dbname]]"
-	exit 0
+if [ "$usage" ]; then	
+	echo ""
+	echo "Usage: $CMDNAME [options] [langname [dbname]]"
+	echo ""
+	echo "    -h HOSTNAME, --host=HOSTNAME     "
+	echo "    -p PORT,     --port=PORT         "
+	echo "    -U USERNAME, --username=USERNAME "
+	echo "    -W,          --password          "
+	echo "    -d DBNAME,   --database=DBNAME   "
+	echo "    -e,          --echo              "
+        echo "    -q,          --quiet             "   
+	echo "    -D PATH,     --location=PATH     "     
+	echo "    -L PGLIB     --pglib=PGLIB       "
+	echo "    -?,          --help              "
+	echo ""
+	exit 1
 fi
 
 if [ "$list" ]; then

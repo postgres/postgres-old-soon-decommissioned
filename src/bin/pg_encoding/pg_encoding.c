@@ -46,5 +46,5 @@ main(int argc, char **argv)
 static void
 usage()
 {
-	fprintf(stderr, "pg_encoding: encoding_name | encoding_number\n");
+	fprintf(stderr, "\nUsage: pg_encoding encoding_name | encoding_number\n\n");
 }
