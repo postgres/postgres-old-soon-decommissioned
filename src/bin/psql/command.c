@@ -380,10 +380,6 @@ exec_command(const char *cmd,
 			case 'u':
 				success = describeUsers(name);
 				break;
-			case 'D':
-				success = listDomains(name);
-				break;
-
 			default:
 				status = CMD_UNKNOWN;
 		}
