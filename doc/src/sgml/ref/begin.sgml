@@ -142,9 +142,9 @@ BEGIN;
   <title>See Also</title>
 
   <simplelist type="inline">
-   <member><xref linkend="sql-start-transaction" endterm="sql-start-transaction-title"></member>
    <member><xref linkend="sql-commit" endterm="sql-commit-title"></member>
    <member><xref linkend="sql-rollback" endterm="sql-rollback-title"></member>
+   <member><xref linkend="sql-start-transaction" endterm="sql-start-transaction-title"></member>
   </simplelist>
  </refsect1>
 </refentry>
