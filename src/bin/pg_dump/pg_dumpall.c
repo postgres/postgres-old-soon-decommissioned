@@ -349,7 +349,7 @@ help(void)
 	printf(_("  -D, --column-inserts     dump data as INSERT commands with column names\n"));
 	printf(_("  -g, --globals-only       dump only global objects, no databases\n"));
 	printf(_("  -o, --oids               include OIDs in dump\n"));
-	printf(_("  -O, --no-owner           do not output commands to set object ownership\n"));
+	printf(_("  -O, --no-owner           skip restoration of object ownership\n"));
 	printf(_("  -s, --schema-only        dump only the schema, no data\n"));
 	printf(_("  -S, --superuser=NAME     specify the superuser user name to use in the dump\n"));
 	printf(_("  -x, --no-privileges      do not dump privileges (grant/revoke)\n"));
