@@ -410,8 +410,9 @@ _bt_pagedel(Relation rel, ItemPointer tid)
 	buf = _bt_getbuf(rel, blkno, BT_WRITE);
 	page = BufferGetPage(buf);
 
-	/* XLOG stuff */
 	START_CRIT_CODE;
+	PageIndexTupleDelete(page, offno);
+	/* XLOG stuff */
 	{
 		xl_btree_delete	xlrec;
 		XLogRecPtr		recptr;
@@ -434,8 +435,6 @@ _bt_pagedel(Relation rel, ItemPointer tid)
 		PageSetLSN(page, recptr);
 		PageSetSUI(page, ThisStartUpID);
 	}
-
-	PageIndexTupleDelete(page, offno);
 	END_CRIT_CODE;
 
 	/* write the buffer and release the lock */
