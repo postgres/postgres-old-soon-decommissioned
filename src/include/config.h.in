@@ -305,6 +305,9 @@
  * Block of parameters for the ODBC code.
  */
 
+/* are we building against a libodbcinst */
+#undef HAVE_SQLGETPRIVATEPROFILESTRING
+
 /* Set to 1 if you have <pwd.h> */
 #undef HAVE_PWD_H
 
