@@ -4,6 +4,10 @@ Documentation Guide
 Thomas Lockhart
 
 $Log: docguide.sgml,v $
+Revision 1.15  1999/05/27 15:49:07  thomas
+Markup fixes.
+Update for v6.5 release.
+
 Revision 1.14  1999/01/07 03:01:27  thomas
 Fix column formatting for a table. No content changes.
 
@@ -171,7 +175,7 @@ Include working list of all documentation sources, with current status
    James Clark's 
    <ulink url="http://www.jclark.com/jade/"> <productname>jade</productname></ulink>
    and Norm Walsh's 
-   <ulink url="http://www.berkshire.net/~norm/docbook/dsssl">Modular DocBook Stylesheets</ulink>.
+   <ulink url="http://www.nwalsh.com/docbook/dsssl/">Modular DocBook Stylesheets</ulink>.
   </para>
 
   <para>
