@@ -60,8 +60,8 @@ TRUNCATE [ TABLE ] <replaceable class="PARAMETER">name</replaceable>
   </para>
 
   <para>
-   <command>TRUNCATE</> will not run any user-defined ON DELETE triggers
-   that might exist for the table.
+   <command>TRUNCATE</> will not run any user-defined <literal>ON
+   DELETE</literal> triggers that might exist for the table.
   </para>
  </refsect1>
 
