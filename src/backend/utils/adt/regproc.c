@@ -211,7 +211,7 @@ regprocout(RegProcedure proid)
  *		int8typeout			- converts int8 type oids to "typname" list
  */
 text *
-oid8types(Oid **oidArray)
+oid8types(Oid (*oidArray)[])
 {
 	HeapTuple	typetup;
 	text	   *result;
