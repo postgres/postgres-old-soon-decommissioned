@@ -138,8 +138,12 @@ endif
 
 install-bin: postgres $(POSTGRES_IMP) installdirs
 	$(INSTALL_PROGRAM) postgres$(X) $(DESTDIR)$(bindir)/postgres$(X)
-	@rm -f $(DESTDIR)$(bindir)/postmaster
-	ln -s postgres$(X) $(DESTDIR)$(bindir)/postmaster
+ifneq ($(PORTNAME), win32)
+	@rm -f $(DESTDIR)$(bindir)/postmaster$(X)
+	ln -s postgres$(X) $(DESTDIR)$(bindir)/postmaster$(X)
+else
+	$(INSTALL_PROGRAM) postgres$(X) $(DESTDIR)$(bindir)/postmaster$(X)
+endif
 ifeq ($(MAKE_EXPORTS), true)
 	$(INSTALL_DATA) $(POSTGRES_IMP) $(DESTDIR)$(pkglibdir)/$(POSTGRES_IMP)
 endif
