@@ -63,9 +63,6 @@ extern bool exprs_known_equal(Query *root, Node *item1, Node *item2);
  * prototypes for plan/setrefs.c
  */
 extern void set_plan_references(Plan *plan, List *rtable);
-extern List *join_references(List *clauses, List *rtable,
-				List *outer_tlist, List *inner_tlist,
-				Index acceptable_rel);
 extern void fix_opfuncids(Node *node);
 
 #endif   /* PLANMAIN_H */
