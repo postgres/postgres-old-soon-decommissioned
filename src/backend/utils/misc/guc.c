@@ -3394,6 +3394,8 @@ void
 SetPGVariable(const char *name, List *args, bool is_local)
 {
 	char	   *argstring = flatten_set_variable_args(name, args);
+printf("bjm:  %s %s\n", name, argstring);
+fflush(stdout);
 
 	/* Note SET DEFAULT (argstring == NULL) is equivalent to RESET */
 	set_config_option(name,
