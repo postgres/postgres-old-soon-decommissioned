@@ -278,7 +278,7 @@ extern BTItem _bt_formitem(IndexTuple itup);
 /*
  * prototypes for functions in nbtsort.c
  */
-extern void *_bt_spoolinit(Relation index, int ntapes);
+extern void *_bt_spoolinit(Relation index, int ntapes, bool isunique);
 extern void *_bt_pagestate(Relation index, int flags, int level, bool doupper);
 extern BTItem _bt_minitem(Page opage, BlockNumber oblkno, int atend);
 extern BTItem _bt_buildadd(Relation index, void *pstate, BTItem bti, int flags);
