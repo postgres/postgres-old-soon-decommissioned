@@ -1253,15 +1253,15 @@ tryAgain:
 	{
 		fd = errno;
 		if (!ReleaseDataFile())
-			elog(STOP, "Open(cntlfile) failed: %d (and no one data file can be closed)", 
-						fd);
+			elog(STOP, "Open(\"%s\") failed: %d (and no one data file can be closed)", 
+						ControlFilePath, fd);
 		goto tryAgain;
 	}
 	if (fd < 0)
-		elog(STOP, "Open(cntlfile) failed: %d", errno);
+		elog(STOP, "Open(\"%s\") failed: %d", ControlFilePath, errno);
 
 	if (read(fd, ControlFile, BLCKSZ) != BLCKSZ)
-		elog(STOP, "Read(cntlfile) failed: %d", errno);
+		elog(STOP, "Read(\"%s\") failed: %d", ControlFilePath, errno);
 
 	close(fd);
 
