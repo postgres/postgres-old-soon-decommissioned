@@ -153,8 +153,11 @@ PQmakeEmptyPGresult(PGconn *conn, ExecStatusType status)
 
 	if (conn)
 	{
+		/* copy connection data we might need for operations on PGresult */
 		result->noticeHook = conn->noticeHook;
 		result->noticeArg = conn->noticeArg;
+		result->client_encoding = conn->client_encoding;
+
 		/* consider copying conn's errorMessage */
 		switch (status)
 		{
@@ -172,8 +175,10 @@ PQmakeEmptyPGresult(PGconn *conn, ExecStatusType status)
 	}
 	else
 	{
+		/* defaults... */
 		result->noticeHook = NULL;
 		result->noticeArg = NULL;
+		result->client_encoding = 0; /* should be SQL_ASCII */
 	}
 
 	return result;

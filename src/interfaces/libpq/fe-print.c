@@ -347,7 +347,7 @@ do_field(const PQprintOpt *po, const PGresult *res,
 			char		ch = '0';
 
 #ifdef MULTIBYTE
-			for (p = pval; *p; p += PQmblen(p, PQclientEncoding(res->conn)))
+			for (p = pval; *p; p += PQmblen(p, res->client_encoding))
 #else
 			for (p = pval; *p; p++)
 #endif
