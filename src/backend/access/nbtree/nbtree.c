@@ -664,7 +664,7 @@ _bt_restscan(IndexScanDesc scan)
 	for (;;)
 	{
 		if (P_RIGHTMOST(opaque))
-			elog(FATAL, "_bt_restscan: my bits moved right off the end of the world!");
+			elog(FATAL, "_bt_restscan: my bits moved right off the end of the world!\nTry recreating the index.");
 
 		blkno = opaque->btpo_next;
 		_bt_relbuf(rel, buf, BT_READ);
