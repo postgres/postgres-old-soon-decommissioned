@@ -2592,7 +2592,7 @@ DeleteStmt:  DELETE FROM relation_name
 				}
 		;
 
-LockStmt:	LOCK_P opt_table relation_name opt_lock
+LockStmt:	LOCK_P opt_table relation_name IN opt_lock
 				{
 					LockStmt *n = makeNode(LockStmt);
 
