@@ -362,14 +362,25 @@ ExecReScanAppend(Append *node, ExprContext *exprCtxt, Plan *parent)
 
 	for (i = 0; i < nplans; i++)
 	{
-		Plan	   *rescanNode;
+		Plan	   *subnode;
 
-		appendstate->as_whichplan = i;
-		rescanNode = (Plan *) nth(i, node->appendplans);
-		if (rescanNode->chgParam == NULL)
+		subnode = (Plan *) nth(i, node->appendplans);
+		/*
+		 * ExecReScan doesn't know about my subplans, so I have to do
+		 * changed-parameter signaling myself.
+		 */
+		if (node->plan.chgParam != NULL)
+			SetChangedParamList(subnode, node->plan.chgParam);
+		/*
+		 * if chgParam of subnode is not null then plan will be re-scanned by
+		 * first ExecProcNode.
+		 */
+		if (subnode->chgParam == NULL)
 		{
+			/* make sure estate is correct for this subnode (needed??) */
+			appendstate->as_whichplan = i;
 			exec_append_initialize_next(node);
-			ExecReScan((Plan *) rescanNode, exprCtxt, (Plan *) node);
+			ExecReScan(subnode, exprCtxt, (Plan *) node);
 		}
 	}
 	appendstate->as_whichplan = 0;
