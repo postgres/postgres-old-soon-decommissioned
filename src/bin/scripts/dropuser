@@ -84,8 +84,8 @@ do
 		forcedel=f
 		;;
 	-*)
-		echo "$CMDNAME: invalid option: $1"
-                echo "Try -? for help."
+		echo "$CMDNAME: invalid option: $1" 1>&2
+                echo "Try '$CMDNAME -?' for help." 1>&2
 		exit 1
 		;;
          *)
@@ -139,7 +139,7 @@ DelUser=`echo $DelUser | sed 's/\"/\\\"/g'`
 ${PATHNAME}psql $PSQLOPT -d template1 -c "DROP USER \"$DelUser\""
 
 if [ $? -ne 0 ]; then
-	echo "$CMDNAME: deletion of user \"$DelUser\" failed"
+	echo "$CMDNAME: deletion of user \"$DelUser\" failed" 1>&2
 	exit 1
 fi
 
