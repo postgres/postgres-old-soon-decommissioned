@@ -175,6 +175,10 @@ format_type_internal(Oid type_oid, int32 typemod)
 			buf = pstrdup("time with time zone");
 			break;
 
+		case TIMESTAMPOID:
+			buf = pstrdup("timestamp with time zone");
+			break;
+
 		case VARBITOID:
 			if (with_typemod)
 				buf = psnprintf(13 + MAX_INT32_LEN + 1, "bit varying(%d)",
