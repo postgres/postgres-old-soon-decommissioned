@@ -48,7 +48,7 @@ SET SESSION CHARACTERISTICS AS TRANSACTION
 
    <variablelist>
     <varlistentry>
-     <term><literal>READ COMMITTED<literal></term>
+     <term><literal>READ COMMITTED</literal></term>
      <listitem>
       <para>
        A statement can only see rows committed before it began. This
