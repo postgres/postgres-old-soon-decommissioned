@@ -18,6 +18,11 @@ PostgreSQL documentation
   <primary>PREPARE</primary>
  </indexterm>
 
+ <indexterm zone="sql-prepare">
+  <primary>prepared statements</primary>
+  <secondary>creating</secondary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 PREPARE <replaceable class="PARAMETER">plan_name</replaceable> [ (<replaceable class="PARAMETER">datatype</replaceable> [, ...] ) ] AS <replaceable class="PARAMETER">statement</replaceable>

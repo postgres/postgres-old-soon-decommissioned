@@ -18,6 +18,16 @@ PostgreSQL documentation
   <primary>EXPLAIN</primary>
  </indexterm>
 
+ <indexterm zone="sql-explain">
+  <primary>prepared statements</primary>
+  <secondary>showing the query plan</secondary>
+ </indexterm>
+
+ <indexterm zone="sql-explain">
+  <primary>cursor</primary>
+  <secondary>showing the query plan</secondary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 EXPLAIN [ ANALYZE ] [ VERBOSE ] <replaceable class="parameter">statement</replaceable>

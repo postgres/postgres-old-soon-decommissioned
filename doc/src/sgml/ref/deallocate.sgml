@@ -18,6 +18,11 @@ PostgreSQL documentation
   <primary>DEALLOCATE</primary>
  </indexterm>
 
+ <indexterm zone="sql-deallocate">
+  <primary>prepared statements</primary>
+  <secondary>removing</secondary>
+ </indexterm>
+
  <refsynopsisdiv>
 <synopsis>
 DEALLOCATE [ PREPARE ] <replaceable class="parameter">plan_name</replaceable>
