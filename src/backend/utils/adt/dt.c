@@ -2199,7 +2199,7 @@ static datetkn deltatktbl[] = {
 	{INVALID, RESERV, DTK_INVALID},		/* "invalid" reserved for invalid
 										 * time */
 	{"m", UNITS, DTK_MINUTE},	/* "minute" relative time units */
-	{"microsecon", UNITS, DTK_MILLISEC},		/* "microsecond" relative
+	{"microsecon", UNITS, DTK_MICROSEC},		/* "microsecond" relative
 												 * time units */
 	{"mil", UNITS, DTK_MILLENIUM},		/* "millenium" relative time units */
 	{"mils", UNITS, DTK_MILLENIUM},		/* "millenia" relative time units */
