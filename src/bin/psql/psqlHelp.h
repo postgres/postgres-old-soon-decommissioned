@@ -102,8 +102,8 @@ static struct _helpStruct QL_HELP[] = {
 \t[LEFTARG = type1][,RIGHTARG = type2]\n\
 \t,PROCEDURE = func_name,\n\
 \t[,COMMUTATOR = com_op][,NEGATOR = neg_op]\n\
-\t[,RESTRICT = res_proc][,HASHES]\n\
-\t[,JOIN = join_proc][,SORT = sort_op1...sort_opN]);"},
+\t[,RESTRICT = res_proc][,JOIN = join_proc][,HASHES]\n\
+\t[,SORT1 = left_sort_op][,SORT2 = right_sort_op]);"},
 	{"create rule",
 		"define a new rule",
 	"\
