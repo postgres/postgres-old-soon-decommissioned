@@ -806,6 +806,37 @@ exprTypmod(Node *expr)
 		case T_RelabelType:
 			return ((RelabelType *) expr)->resulttypmod;
 			break;
+		case T_CaseExpr:
+			{
+				/*
+				 * If all the alternatives agree on type/typmod, return
+				 * that typmod, else use -1
+				 */
+				CaseExpr   *cexpr = (CaseExpr *) expr;
+				Oid			casetype = cexpr->casetype;
+				int32		typmod;
+				List	   *arg;
+
+				if (!cexpr->defresult)
+					return -1;
+				if (exprType(cexpr->defresult) != casetype)
+					return -1;
+				typmod = exprTypmod(cexpr->defresult);
+				if (typmod < 0)
+					return -1;	/* no point in trying harder */
+				foreach(arg, cexpr->args)
+				{
+					CaseWhen   *w = (CaseWhen *) lfirst(arg);
+
+					Assert(IsA(w, CaseWhen));
+					if (exprType(w->result) != casetype)
+						return -1;
+					if (exprTypmod(w->result) != typmod)
+						return -1;
+				}
+				return typmod;
+			}
+			break;
 		default:
 			break;
 	}
