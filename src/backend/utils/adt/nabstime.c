@@ -162,9 +162,9 @@ GetCurrentAbsoluteTime(void)
 		CDayLight = tm->tm_isdst;
 		CTimeZone =
 # ifdef __CYGWIN__
-			(tm->tm_isdst ? (_timezone - 3600) : _timezone);
+			((tm->tm_isdst > 0) ? (_timezone - 3600) : _timezone);
 # else
-			(tm->tm_isdst ? (timezone - 3600) : timezone);
+			((tm->tm_isdst > 0) ? (timezone - 3600) : timezone);
 # endif
 		strcpy(CTZName, tzname[tm->tm_isdst]);
 #else /* neither HAVE_TM_ZONE nor HAVE_INT_TIMEZONE */
@@ -245,9 +245,9 @@ abstime2tm(AbsoluteTime _time, int *tzp, struct tm * tm, char *tzn)
 # elif defined(HAVE_INT_TIMEZONE)
 	if (tzp != NULL)
 #  ifdef __CYGWIN__
-		*tzp = (tm->tm_isdst ? (_timezone - 3600) : _timezone);
+		*tzp = ((tm->tm_isdst > 0) ? (_timezone - 3600) : _timezone);
 #  else
-		*tzp = (tm->tm_isdst ? (timezone - 3600) : timezone);
+		*tzp = ((tm->tm_isdst > 0) ? (timezone - 3600) : timezone);
 #  endif
 	if (tzn != NULL)
 	{

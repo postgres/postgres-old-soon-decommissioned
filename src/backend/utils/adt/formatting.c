@@ -382,7 +382,7 @@ typedef struct {
 		elog(DEBUG_elog_output, "TM:\nsec %d\nyear %d\nmin %d\nwday %d\nhour %d\nyday %d\nmday %d\nnisdst %d\nmon %d\n",\
 			tm->tm_sec, tm->tm_year,\
 			tm->tm_min, tm->tm_wday, tm->tm_hour, tm->tm_yday,\
-			tm->tm_mday, tm->tm_isdst,tm->tm_mon)
+			tm->tm_mday, tm->tm_isdst, tm->tm_mon)
 #endif
 
 #define ZERO_tm( _X ) \
@@ -2933,9 +2933,9 @@ to_timestamp(PG_FUNCTION_ARGS)
 # elif defined(HAVE_INT_TIMEZONE)
 
 #  ifdef __CYGWIN__
-		tz = (tm->tm_isdst ? (_timezone - 3600) : _timezone);
+		tz = ((tm->tm_isdst > 0) ? (_timezone - 3600) : _timezone);
 #  else
-		tz = (tm->tm_isdst ? (timezone - 3600) : timezone);
+		tz = ((tm->tm_isdst > 0) ? (timezone - 3600) : timezone);
 #  endif
 
 # endif
