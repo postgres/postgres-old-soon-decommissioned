@@ -140,7 +140,12 @@ InternalIpcMemoryCreate(IpcMemoryKey memKey, uint32 size)
 	/* use intimate shared memory on Solaris */
 	memAddress = shmat(shmid, 0, SHM_SHARE_MMU);
 #else
+
+#ifdef EXEC_BACKEND
+	memAddress = shmat(shmid, UsedShmemSegAddr, 0);
+#else
 	memAddress = shmat(shmid, 0, 0);
+#endif
 #endif
 
 	if (memAddress == (void *) -1)
@@ -244,18 +249,32 @@ PGSharedMemoryCreate(uint32 size, bool makePrivate, int port)
 	PGShmemHeader *hdr;
 	IpcMemoryId shmid;
 
-	/* Room for a header? */
-	Assert(size > MAXALIGN(sizeof(PGShmemHeader)));
-
+#ifdef EXEC_BACKEND
 	/* If Exec case, just attach and return the pointer */
-	if (ExecBackend && UsedShmemSegAddr != NULL && !makePrivate)
+	if (UsedShmemSegAddr != NULL && !makePrivate)
 	{
+		void* origUsedShmemSegAddr = UsedShmemSegAddr;
+
+#ifdef CYGWIN
+		/* cygipc (currently) appears to not detach on exec. */
+		PGSharedMemoryDetach();
+		UsedShmemSegAddr = origUsedShmemSegAddr;
+#endif
+		elog(DEBUG3,"Attaching to %x",UsedShmemSegAddr);
 		hdr = PGSharedMemoryAttach((IpcMemoryKey) UsedShmemSegID, &shmid);
 		if (hdr == NULL)
-			elog(FATAL, "could not attach to proper memory at fixed address: shmget(key=%lu, addr=%p) failed: %m",
-				 UsedShmemSegID, UsedShmemSegAddr);
+			elog(FATAL, "could not attach to proper memory at fixed address: shmget(key=%d, addr=%p) failed: %m",
+				 (int) UsedShmemSegID, UsedShmemSegAddr);
+		if (hdr != origUsedShmemSegAddr)
+			elog(FATAL,"attaching to shared mem returned unexpected address (got %p, expected %p)",
+				 hdr,UsedShmemSegAddr);
+		UsedShmemSegAddr = hdr;
 		return hdr;
 	}
+#endif
+
+	/* Room for a header? */
+	Assert(size > MAXALIGN(sizeof(PGShmemHeader)));
 
 	/* Make sure PGSharedMemoryAttach doesn't fail without need */
 	UsedShmemSegAddr = NULL;
@@ -354,11 +373,17 @@ PGSharedMemoryDetach(void)
 {
 	if (UsedShmemSegAddr != NULL)
 	{
-		if (shmdt(UsedShmemSegAddr) < 0)
+		if ((shmdt(UsedShmemSegAddr) < 0)
+#if (defined(EXEC_BACKEND) && defined(CYGWIN))
+			/* Work-around for cygipc exec bug */
+			&& shmdt(NULL) < 0
+#endif
+			)
 			elog(LOG, "shmdt(%p) failed: %m", UsedShmemSegAddr);
 		UsedShmemSegAddr = NULL;
 	}
 }
+
 
 /*
  * Attach to shared memory and make sure it has a Postgres header

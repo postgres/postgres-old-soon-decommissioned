@@ -346,6 +346,11 @@ LIBS += -lpgport
 LDFLAGS := -L$(top_builddir)/src/port $(LDFLAGS)
 endif
 
+# to make ws2_32.lib the last library
+ifeq ($(PORTNAME),win32)
+LIBS += -lws2_32
+endif
+
 # Not really standard libc functions, used by the backend.
 TAS         = @TAS@
 

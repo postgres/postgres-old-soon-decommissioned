@@ -144,11 +144,6 @@ static const char *backend_options = "-F -O -c search_path=pg_catalog -c exit_on
 #define DEVNULL "/dev/null"
 #endif
 
-#ifdef WIN32
-#define PATHSEP ';'
-#else
-#define PATHSEP ':'
-#endif
 
 /* detected path to postgres and (we assume) friends */
 char	   *pgpath;

@@ -227,7 +227,11 @@ main(int argc, char *argv[])
 	 */
 	len = strlen(new_argv[0]);
 
-	if (len >= 10 && strcmp(new_argv[0] + len - 10, "postmaster") == 0)
+	if ((len >= 10 && strcmp(new_argv[0] + len - 10, "postmaster") == 0)
+#ifdef WIN32
+		|| (len >= 14 && strcmp(new_argv[0] + len - 14, "postmaster.exe") == 0)
+#endif
+		)
 	{
 		/* Called as "postmaster" */
 		exit(PostmasterMain(argc, new_argv));

@@ -205,9 +205,9 @@ FindExec(char *full_path, const char *argv0, const char *binary_name)
 	{
 		elog(DEBUG2, "searching PATH for executable");
 		path = strdup(p);		/* make a modifiable copy */
-		for (startp = path, endp = strchr(path, ':');
+		for (startp = path, endp = strchr(path, PATHSEP);
 			 startp && *startp;
-			 startp = endp + 1, endp = strchr(startp, ':'))
+			 startp = endp + 1, endp = strchr(startp, PATHSEP))
 		{
 			if (startp == endp) /* it's a "::" */
 				continue;

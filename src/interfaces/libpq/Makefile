@@ -33,6 +33,9 @@ endif
 # shared library link.  (The order in which you list them here doesn't
 # matter.)
 SHLIB_LINK += $(filter -lcrypt -ldes -lkrb -lcom_err -lcrypto -lk5crypto -lkrb5 -lssl -lsocket -lnsl -lresolv -lintl, $(LIBS)) $(THREAD_LIBS)
+ifeq ($(PORTNAME), win32)
+SHLIB_LINK += -lwsock32 -lws2_32
+endif
 
 
 all: all-lib

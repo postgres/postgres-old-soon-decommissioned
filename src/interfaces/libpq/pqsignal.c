@@ -44,6 +44,7 @@ pqsignal(int signo, pqsigfunc func)
 pqsigfunc
 pqsignalinquire(int signo)
 {
+#ifndef WIN32
 #if !defined(HAVE_POSIX_SIGNALS)
 	pqsigfunc old_sigfunc;
 	int		old_sigmask;
@@ -61,4 +62,7 @@ pqsignalinquire(int signo)
        return SIG_ERR;
 	return oact.sa_handler;
 #endif   /* !HAVE_POSIX_SIGNALS */
+#else
+	return SIG_DFL;
+#endif
 }

@@ -44,6 +44,10 @@ extern int	pgunlink(const char *path);
 
 extern int	copydir(char *fromdir, char *todir);
 
+/* Missing rand functions */
+extern long	lrand48(void);
+extern void	srand48(long seed);
+
 /* Last parameter not used */
 extern int	gettimeofday(struct timeval * tp, struct timezone * tzp);
 
@@ -122,3 +126,20 @@ extern int pqGethostbyname(const char *name,
 				char *buffer, size_t buflen,
 				struct hostent **result,
 				int *herrno);
+
+/* $PATH (or %PATH%) path separator */
+#ifdef WIN32
+#define PATHSEP ';'
+#else
+#define PATHSEP ':'
+#endif
+
+/* FIXME: [win32] Placeholder win32 replacements, to allow continued development */
+#ifdef WIN32
+#define fsync(a)	_commit(a)
+#define sync()		_flushall()
+#define WEXITSTATUS(w)  (((w) >> 8) & 0xff)
+#define WIFEXITED(w)    (((w) & 0xff) == 0)
+#define WIFSIGNALED(w)  (((w) & 0x7f) > 0 && (((w) & 0x7f) < 0x7f))
+#define WTERMSIG(w)     ((w) & 0x7f)
+#endif
