@@ -133,10 +133,13 @@
  *				Section 2:	bool, true, false, TRUE, FALSE, NULL
  * ----------------------------------------------------------------
  */
+
 /*
  * bool
  *		Boolean value, either true or false.
  *
+ * XXX for C++ compilers, we assume the compiler has a compatible
+ * built-in definition of bool.
  */
 
 /* BeOS defines bool already, but the compiler chokes on the
@@ -145,11 +148,10 @@
 #ifndef __BEOS__
 
 #ifndef __cplusplus
+
 #ifndef bool
 typedef char bool;
-
-#endif	 /* ndef bool */
-#endif	 /* not C++ */
+#endif
 
 #ifndef true
 #define true	((bool) 1)
@@ -158,6 +160,8 @@ typedef char bool;
 #ifndef false
 #define false	((bool) 0)
 #endif
+
+#endif	 /* not C++ */
 
 #endif	 /* __BEOS__ */
 
