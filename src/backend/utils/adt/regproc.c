@@ -247,7 +247,7 @@ oidvectortypes(Oid *oidArray)
 	}
 
 	result = (text *) palloc(NAMEDATALEN * FUNC_MAX_ARGS +
-							 FUNC_MAX_ARGS + VARHDRSZ);
+							 FUNC_MAX_ARGS + VARHDRSZ + 1);
 	*VARDATA(result) = '\0';
 
 	for (num = 0; num < FUNC_MAX_ARGS; num++)
