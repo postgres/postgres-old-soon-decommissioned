@@ -611,9 +611,8 @@ network_hostmask(PG_FUNCTION_ARGS)
 	inet	   *ip = PG_GETARG_INET_P(0);
 	inet	   *dst;
 
-	dst = (inet *) palloc(VARHDRSZ + sizeof(inet_struct));
 	/* make sure any unused bits are zeroed */
-	MemSet(dst, 0, VARHDRSZ + sizeof(inet_struct));
+	dst = (inet *) palloc0(VARHDRSZ + sizeof(inet_struct));
 
 	if (ip_family(ip) == AF_INET)
 	{
