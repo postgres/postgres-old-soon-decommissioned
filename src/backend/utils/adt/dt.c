@@ -4327,7 +4327,7 @@ EncodeDateTime(struct tm * tm, double fsec, int *tzp, char **tzn, int style, cha
 					if ((*tzn != NULL) && (tm->tm_isdst >= 0))
 					{
 						strcpy((str + 27), " ");
-						strcpy((str + 28), *tzn);
+						strncpy((str + 28), *tzn, MAXTZLEN);
 					}
 				}
 				else
@@ -4336,7 +4336,7 @@ EncodeDateTime(struct tm * tm, double fsec, int *tzp, char **tzn, int style, cha
 					if ((*tzn != NULL) && (tm->tm_isdst >= 0))
 					{
 						strcpy((str + 24), " ");
-						strcpy((str + 25), *tzn);
+						strncpy((str + 25), *tzn, MAXTZLEN);
 					}
 				}
 
