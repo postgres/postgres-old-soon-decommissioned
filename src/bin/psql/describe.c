@@ -793,7 +793,7 @@ describeTableDetails(const char *name, bool desc)
 		}
 
 		/* count triggers */
-		if (!error && tableinfo.hasrules)
+		if (!error && tableinfo.triggers)
 		{
 			sprintf(buf,
 					"SELECT t.tgname\n"
