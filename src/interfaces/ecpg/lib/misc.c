@@ -14,8 +14,8 @@ static struct sqlca sqlca_init =
 	{
 		'S', 'Q', 'L', 'C', 'A', ' ', ' ', ' '
 	},
-		sizeof(struct sqlca),
-		0,
+	sizeof(struct sqlca),
+	0,
 	{
 		0,
 		{

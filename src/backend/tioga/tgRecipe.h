@@ -29,6 +29,7 @@ typedef struct
 				y;
 } Point;						/* this should match whatever is in
 
+								 *
 								 * geo-decls.h */
 #endif	 /* TIOGA_FRONTEND */
 

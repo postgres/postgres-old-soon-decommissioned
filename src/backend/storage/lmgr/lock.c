@@ -55,14 +55,14 @@ static void LockCountMyLocks(SHMEM_OFFSET lockOffset, PROC *proc,
 static char *lock_mode_names[] =
 {
 	"INVALID",
-		"AccessShareLock",
-		"RowShareLock",
-		"RowExclusiveLock",
-		"ShareUpdateExclusiveLock",
-		"ShareLock",
-		"ShareRowExclusiveLock",
-		"ExclusiveLock",
-		"AccessExclusiveLock"
+	"AccessShareLock",
+	"RowShareLock",
+	"RowExclusiveLock",
+	"ShareUpdateExclusiveLock",
+	"ShareLock",
+	"ShareRowExclusiveLock",
+	"ExclusiveLock",
+	"AccessExclusiveLock"
 };
 
 

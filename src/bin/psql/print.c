@@ -261,9 +261,7 @@ print_aligned_text(const char *title, const char *const * headers,
 		}
 	}
 	else
-	{
 		cell_w = 0;
-	}
 #endif
 
 
@@ -479,9 +477,7 @@ print_aligned_vertical(const char *title, const char *const * headers,
 		}
 	}
 	else
-	{
 		cell_w = 0;
-	}
 
 	/* find longest data cell */
 	for (i = 0, ptr = cells; *ptr; ptr++, i++)
