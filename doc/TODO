@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Wed Jun 25 17:55:41 EDT 2003
+Last updated:		Wed Jun 25 17:56:53 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -452,6 +452,8 @@ Source Code
 * -Add OpenBSD's getpeereid() call for local socket authentication
 * Improve access-permissions check on data directory in Cygwin (Tom)
 * Add documentation for perl, including mention of DBI/DBD perl location
+* Create improved PostgreSQL introductory documentation for the PHP
+  manuals (Rory)
 * Add optional CRC checksum to heap and index pages
 * Change representation of whole-tuple parameters to functions
 * Clarify use of 'application' and 'command' tags in SGML docs
