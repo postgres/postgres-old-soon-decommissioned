@@ -234,6 +234,11 @@ DATA(insert (  869	650    0 i ));
  */
 DATA(insert ( 1560 1562    0 i ));
 DATA(insert ( 1562 1560    0 i ));
+/* Cross-category casts between bit and int4, int8 */
+DATA(insert (   20 1560 2075 e ));
+DATA(insert (   23 1560 1683 e ));
+DATA(insert ( 1560   20 2076 e ));
+DATA(insert ( 1560   23 1684 e ));
 
 /*
  * Cross-category casts to and from TEXT
