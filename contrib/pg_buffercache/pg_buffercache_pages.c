@@ -12,7 +12,6 @@
 #include "storage/buf_internals.h"
 #include "storage/bufmgr.h"
 #include "utils/relcache.h"
-#include "pg_buffercache_pages.h"
 
 
 #define NUM_BUFFERCACHE_PAGES_ELEM	6
@@ -21,6 +20,8 @@
 extern DLLIMPORT BufferDesc	*BufferDescriptors;
 extern DLLIMPORT volatile uint32	InterruptHoldoffCount;
 #endif
+
+Datum	pg_buffercache_pages(PG_FUNCTION_ARGS);
 
 
 /*
