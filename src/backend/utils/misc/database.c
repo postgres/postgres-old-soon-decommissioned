@@ -143,8 +143,8 @@ GetRawDatabaseInfo(const char *name, Oid *db_id, char *path)
 	char	   *dbfname;
 	Form_pg_database tup_db;
 
-	dbfname = (char *) palloc(strlen(DataDir) + strlen(DatabaseRelationName) + 2);
-	sprintf(dbfname, "%s%c%s", DataDir, SEP_CHAR, DatabaseRelationName);
+	dbfname = (char *) palloc(strlen(DataDir) + 8 + strlen(DatabaseRelationName) + 2);
+	sprintf(dbfname, "%s/global/%s", DataDir, DatabaseRelationName);
 
 	if ((dbfd = open(dbfname, O_RDONLY | PG_BINARY, 0)) < 0)
 		elog(FATAL, "cannot open %s: %s", dbfname, strerror(errno));

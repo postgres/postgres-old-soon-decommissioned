@@ -37,11 +37,11 @@ relpath(const char *relname)
 
 	if (IsSharedSystemRelationName(relname))
 	{
-		/* Shared system relations live in DataDir */
-		size_t		bufsize = strlen(DataDir) + sizeof(NameData) + 2;
+		/* Shared system relations live in {datadir}/global */
+		size_t		bufsize = strlen(DataDir) + 8 + sizeof(NameData) + 1;
 
 		path = (char *) palloc(bufsize);
-		snprintf(path, bufsize, "%s%c%s", DataDir, SEP_CHAR, relname);
+		snprintf(path, bufsize, "%s/global/%s", DataDir, relname);
 		return path;
 	}
 
@@ -71,9 +71,9 @@ relpath_blind(const char *dbname, const char *relname,
 
 	if (dbid == (Oid) 0)
 	{
-		/* Shared system relations live in DataDir */
-		path = (char *) palloc(strlen(DataDir) + sizeof(NameData) + 2);
-		sprintf(path, "%s%c%s", DataDir, SEP_CHAR, relname);
+		/* Shared system relations live in {datadir}/global */
+		path = (char *) palloc(strlen(DataDir) + 8 + sizeof(NameData) + 1);
+		sprintf(path, "%s/global/%s", DataDir, relname);
 	}
 	else if (dbid == MyDatabaseId)
 	{
