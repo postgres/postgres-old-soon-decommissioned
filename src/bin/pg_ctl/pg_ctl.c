@@ -1289,10 +1289,10 @@ main(int argc, char **argv)
 			{
 				case 'D':
 					{
-						char	   *pgdata_D = xmalloc(strlen(optarg));
+						char	   *pgdata_D;
 						char	   *env_var = xmalloc(strlen(optarg) + 8);
 
-						strcpy(pgdata_D, optarg);
+						pgdata_D = xstrdup(optarg);
 						canonicalize_path(pgdata_D);
 						snprintf(env_var, strlen(optarg) + 8, "PGDATA=%s",
 								 pgdata_D);
