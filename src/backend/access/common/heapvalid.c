@@ -14,7 +14,7 @@
 
 #include <postgres.h>
 
-#include <access/heapam.h>
+#include <access/valid.h>
 #include <access/xact.h>
 
 /*
