@@ -147,7 +147,6 @@ extern Datum text_time(PG_FUNCTION_ARGS);
 extern Datum time_text(PG_FUNCTION_ARGS);
 extern Datum time_pl_interval(PG_FUNCTION_ARGS);
 extern Datum time_mi_interval(PG_FUNCTION_ARGS);
-extern Datum interval_pl_time(PG_FUNCTION_ARGS);
 extern Datum time_part(PG_FUNCTION_ARGS);
 
 extern Datum timetz_in(PG_FUNCTION_ARGS);
