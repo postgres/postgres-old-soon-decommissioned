@@ -44,7 +44,7 @@
  *			or a ! if session is not connected to a database;
  *		in prompt2 -, *, ', or ";
  *		in prompt3 nothing
- * %T - transaction status: empty, *, !, ? (unknown or no connection)
+ * %x - transaction status: empty, *, !, ? (unknown or no connection)
  * %? - the error code of the last query (not yet implemented)
  * %% - a percent sign
  *
@@ -208,7 +208,7 @@ get_prompt(promptStatus_t status)
 					}
 					break;
 
-				case 'T':
+				case 'x':
 					if (!pset.db)
 						buf[0] = '?';
 					else

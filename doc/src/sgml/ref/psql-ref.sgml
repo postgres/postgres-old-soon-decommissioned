@@ -2254,7 +2254,7 @@ testdb=> <userinput>\set content '\'' `sed -e "s/'/\\\\\\'/g" < my_file.txt` '\'
       </varlistentry>
 
       <varlistentry>
-        <term><literal>%T</literal></term>
+        <term><literal>%x</literal></term>
 	<listitem>
 	<para>
 	Transaction status: an empty string when not in a transaction
