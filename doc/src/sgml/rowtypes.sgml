@@ -308,6 +308,8 @@ INSERT ... VALUES ('("\\"\\\\")');
    with a data type whose input routine also treated backslashes specially,
    <type>bytea</> for example, we might need as many as eight backslashes
    in the command to get one backslash into the stored composite field.)
+   Dollar quoting (see <xref linkend="sql-syntax-dollar-quoting">) may be
+   used to avoid the need to double backslashes.
   </para>
  </note>
 
