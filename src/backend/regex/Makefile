@@ -19,7 +19,6 @@ DEBUGOBJ =
 OBJS = regcomp.o regerror.o regexec.o regfree.o
 
 ifdef MULTIBYTE
-CFLAGS+= $(MBFLAGS)
 DEBUGOBJ += ../utils/mb/SUBSYS.o
 endif
 

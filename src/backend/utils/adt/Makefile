@@ -23,10 +23,6 @@ CFLAGS+= -mieee
 endif
 endif
 
-ifdef MULTIBYTE
-CFLAGS+= $(MBFLAGS)
-endif
-
 OBJS = acl.o arrayfuncs.o arrayutils.o bool.o cash.o char.o chunk.o \
 	date.o datetime.o datum.o dt.o filename.o float.o \
 	geo_ops.o geo_selfuncs.o int.o int8.o like.o \

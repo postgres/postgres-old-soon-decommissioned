@@ -24,10 +24,6 @@ LDFLAGS+= $(KRBLIBS)
 CFLAGS+= $(KRBFLAGS)
 endif
 
-ifdef MULTIBYTE
-CFLAGS+= $(MBFLAGS)
-endif
-
 OBJS=command.o common.o help.o input.o stringutils.o mainloop.o \
 	copy.o startup.o prompt.o variables.o large_obj.o print.o describe.o \
 	tab-complete.o

@@ -22,6 +22,8 @@
 #ifndef MISCADMIN_H
 #define MISCADMIN_H
 
+#include "postgres.h"
+
 #include "utils/trace.h"
 
 /*****************************************************************************

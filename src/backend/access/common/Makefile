@@ -13,10 +13,6 @@ include ../../../Makefile.global
 
 CFLAGS+=-I../..
 
-ifdef MULTIBYTE
-CFLAGS+= $(MBFLAGS)
-endif
-
 OBJS = heaptuple.o indextuple.o indexvalid.o printtup.o \
        scankey.o tupdesc.o  
 

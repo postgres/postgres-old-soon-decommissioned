@@ -22,9 +22,6 @@ SRCDIR= ../..
 include ../../Makefile.global
 
 CFLAGS += -I..
-ifdef MULTIBYTE
-CFLAGS+= $(MBFLAGS)
-endif
 
 ifeq ($(CC), gcc)
 CFLAGS+= -Wno-error

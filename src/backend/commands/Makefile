@@ -13,10 +13,6 @@ include ../../Makefile.global
 
 CFLAGS += -I..
 
-ifdef MULTIBYTE
-CFLAGS+= $(MBFLAGS)
-endif
-
 OBJS = async.o creatinh.o command.o comment.o copy.o indexcmds.o define.o \
        remove.o rename.o vacuum.o view.o cluster.o \
        explain.o sequence.o trigger.o user.o proclang.o \

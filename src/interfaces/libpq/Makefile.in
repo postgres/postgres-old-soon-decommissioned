@@ -23,10 +23,6 @@ ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)
 endif
 
-ifdef MULTIBYTE
-CFLAGS+= $(MBFLAGS)
-endif
-
 OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
       pqexpbuffer.o dllist.o pqsignal.o @SNPRINTF@
 

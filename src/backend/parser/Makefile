@@ -17,10 +17,6 @@ ifeq ($(CC), gcc)
 CFLAGS+= -Wno-error
 endif
 
-ifdef MULTIBYTE
-CFLAGS+= $(MBFLAGS)
-endif
-
 OBJS= analyze.o gram.o keywords.o parser.o parse_agg.o parse_clause.o \
       parse_expr.o parse_func.o parse_node.o parse_oper.o parse_relation.o \
       parse_type.o parse_coerce.o parse_target.o scan.o scansup.o
