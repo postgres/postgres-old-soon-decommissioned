@@ -52,7 +52,7 @@
 
 #include "pg_config.h"
 #include "pg_config_manual.h"	/* must be after pg_config.h */
-#ifndef WIN32
+#if !defined(WIN32) || !defined(__CYGWIN__)
 #include "pg_config_os.h"		/* must be before any system header files */
 #endif
 #include "postgres_ext.h"
@@ -75,7 +75,8 @@
 #include <SupportDefs.h>
 #endif
 
-#if defined(WIN32) && !defined(_MSC_VER) && !defined(__BORLANDC__)
+#if (defined(WIN32) || defined(__CYGWIN__)) && \
+	!defined(_MSC_VER) && !defined(__BORLANDC__)
 /* We have to redefine some system functions after they are included above */
 #include "pg_config_os.h"
 #endif
