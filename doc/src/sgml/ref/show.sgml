@@ -60,6 +60,13 @@ SHOW ALL
    command-line flag when starting the
    <application>postmaster</application>.
   </para>
+
+  <para>
+   Even with <literal>autocommit</> set to <literal>off</>, <command>SHOW</>
+   does not start a new transaction block. See the
+   <literal>autocommit</> section of the <citetitle>Administrator's
+   Guide</citetitle> for details.
+  </para>
  </refsect1>
 
  <refsect1>

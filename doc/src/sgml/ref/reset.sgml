@@ -68,7 +68,7 @@ SET <replaceable class="parameter">variable</replaceable> TO DEFAULT
   </para>
 
   <para>
-   See the <command>SHOW</> manual page for details on the transaction
+   See the <command>SET</> manual page for details on the transaction
    behavior of <command>RESET</>.
   </para>
 
