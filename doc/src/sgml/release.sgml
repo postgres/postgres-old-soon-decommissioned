@@ -289,7 +289,7 @@ $PostgreSQL$
       <para>
        The <function>extract()</> function (also called
        <function>date_part</>) now returns the proper year for BC dates.
-       It previously returned one less than the current year. The
+       It previously returned one less than the correct year. The
        function now also returns the proper values for millennium and
        century.
       </para>
