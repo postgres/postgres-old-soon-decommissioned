@@ -84,6 +84,6 @@
 /*#define joininfo_inactive(joininfo)	joininfo->inactive */
 
 /* GEQO switch according to number of relations in a query */
-#define GEQO_RELS 6
+#define GEQO_RELS 11
 
 #endif	 /* INTERNAL_H */
