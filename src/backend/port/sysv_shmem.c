@@ -191,10 +191,6 @@ PGSharedMemoryIsInUse(unsigned long id1, unsigned long id2)
 	/*
 	 * We detect whether a shared memory segment is in use by seeing
 	 * whether it (a) exists and (b) has any processes are attached to it.
-	 *
-	 * If we are unable to perform the stat operation for a reason other than
-	 * nonexistence of the segment (most likely, because it doesn't belong
-	 * to our userid), assume it is in use.
 	 */
 	if (shmctl(shmId, IPC_STAT, &shmStat) < 0)
 	{
@@ -205,7 +201,18 @@ PGSharedMemoryIsInUse(unsigned long id1, unsigned long id2)
 		 */
 		if (errno == EINVAL)
 			return false;
-		/* Else assume segment is in use */
+		/*
+		 * EACCES implies that the segment belongs to some other userid,
+		 * which means it is not a Postgres shmem segment (or at least,
+		 * not one that is relevant to our data directory).
+		 */
+		if (errno == EACCES)
+			return false;
+		/*
+		 * Otherwise, we had better assume that the segment is in use.
+		 * The only likely case is EIDRM, which implies that the segment
+		 * has been IPC_RMID'd but there are still processes attached to it.
+		 */
 		return true;
 	}
 	/* If it has attached processes, it's in use */
