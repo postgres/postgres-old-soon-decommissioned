@@ -133,11 +133,11 @@ typedef InsertIndexResultData *InsertIndexResult;
 )
 
 
-/* indextuple.h */
+/* routines in indextuple.c */
 extern IndexTuple index_formtuple(TupleDesc tupleDescriptor,
 				Datum *value, char *null);
 extern Datum nocache_index_getattr(IndexTuple tup, int attnum,
 					  TupleDesc tupleDesc, bool *isnull);
-extern void CopyIndexTuple(IndexTuple source, IndexTuple *target);
+extern IndexTuple CopyIndexTuple(IndexTuple source);
 
 #endif   /* ITUP_H */

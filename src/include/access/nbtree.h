@@ -118,6 +118,8 @@ typedef struct BTItemData
 
 typedef BTItemData *BTItem;
 
+#define CopyBTItem(btitem) ((BTItem) CopyIndexTuple((IndexTuple) (btitem)))
+
 /*
  * For XLOG: size without alignment. Sizeof works as long as
  * IndexTupleData has exactly 8 bytes.
@@ -434,6 +436,7 @@ extern Datum btvacuumcleanup(PG_FUNCTION_ARGS);
  */
 extern InsertIndexResult _bt_doinsert(Relation rel, BTItem btitem,
 			 bool index_is_unique, Relation heapRel);
+extern Buffer _bt_getstackbuf(Relation rel, BTStack stack, int access);
 extern void _bt_insert_parent(Relation rel, Buffer buf, Buffer rbuf,
 							  BTStack stack, bool is_root, bool is_only);
 
@@ -448,8 +451,10 @@ extern void _bt_relbuf(Relation rel, Buffer buf);
 extern void _bt_wrtbuf(Relation rel, Buffer buf);
 extern void _bt_wrtnorelbuf(Relation rel, Buffer buf);
 extern void _bt_pageinit(Page page, Size size);
+extern bool _bt_page_recyclable(Page page);
 extern void _bt_metaproot(Relation rel, BlockNumber rootbknum, uint32 level);
 extern void _bt_itemdel(Relation rel, Buffer buf, ItemPointer tid);
+extern int	_bt_pagedel(Relation rel, Buffer buf, bool vacuum_full);
 
 /*
  * prototypes for functions in nbtsearch.c
@@ -488,7 +493,6 @@ extern BTItem _bt_formitem(IndexTuple itup);
 /*
  * prototypes for functions in nbtsort.c
  */
-
 typedef struct BTSpool BTSpool; /* opaque type known only within nbtsort.c */
 
 extern BTSpool *_bt_spoolinit(Relation index, bool isunique);
