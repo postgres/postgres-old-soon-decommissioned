@@ -1698,7 +1698,7 @@ RemoveTempRelations(Oid tempNamespaceId)
 	object.objectId = tempNamespaceId;
 	object.objectSubId = 0;
 
-	deleteWhatDependsOn(&object);
+	deleteWhatDependsOn(&object, false);
 }
 
 /*

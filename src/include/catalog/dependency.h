@@ -84,7 +84,8 @@ typedef struct ObjectAddress
 extern void performDeletion(const ObjectAddress *object,
 				DropBehavior behavior);
 
-extern void deleteWhatDependsOn(const ObjectAddress *object);
+extern void deleteWhatDependsOn(const ObjectAddress *object,
+								bool showNotices);
 
 extern void recordDependencyOnExpr(const ObjectAddress *depender,
 					   Node *expr, List *rtable,
