@@ -115,6 +115,18 @@ return PQgetvalue(pgResult, tup_num, FieldNum(field_name));
 }
 
 
+int PgDatabase::GetIsNull(int tup_num, int field_num)
+{ 
+return PQgetisnull(pgResult, tup_num, field_num); 
+}
+
+
+int PgDatabase::GetIsNull(int tup_num, const char* field_name)
+{ 
+return PQgetisnull(pgResult, tup_num, FieldNum(field_name)); 
+}
+
+
 int PgDatabase::GetLength(int tup_num, int field_num)
 { 
 return PQgetlength(pgResult, tup_num, field_num); 
@@ -125,6 +137,7 @@ int PgDatabase::GetLength(int tup_num, const char* field_name)
 { 
 return PQgetlength(pgResult, tup_num, FieldNum(field_name)); 
 }
+
 
 int PgDatabase::GetLine(char* string, int length)
 { 
