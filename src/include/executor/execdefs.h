@@ -43,5 +43,7 @@
 #define EXEC_MJ_NEXTINNER				7
 #define EXEC_MJ_SKIPINNER				8
 #define EXEC_MJ_SKIPOUTER				9
+#define EXEC_MJ_FILLINNER			   10
+#define EXEC_MJ_FILLOUTER			   11
 
 #endif	 /* EXECDEFS_H */
