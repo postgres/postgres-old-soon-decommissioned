@@ -516,6 +516,17 @@ st.close();
         automatically.
        </para>
       </listitem>
+
+      <listitem>
+       <para>
+        <classname>ResultSet</classname> is currently read only.
+        You can not update data through the <classname>ResultSet</classname>.
+        If you want to update data you need to do it the old fashioned way
+        by issuing a <acronym>SQL</acronym> update statement.  This is 
+        in conformance with the <acronym>JDBC</acronym> specification 
+        which does not require drivers to provide this functionality.
+       </para>
+      </listitem>
      </itemizedlist>
     </para>
    </sect2>
