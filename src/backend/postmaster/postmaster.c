@@ -1162,13 +1162,13 @@ DoExec(Port *port)
 	argbuf[(2 * ARGV_SIZE)] = '\0';
 	split_opts(av, &ac, argbuf);
 
-	StrNCpy(dbbuf, port->database, ARGV_SIZE);
-	av[ac++] = dbbuf;
-
 	/* Tell the backend what protocol the frontend is using. */
 
 	sprintf(protobuf, "-v %u", port->proto);
 	av[ac++] = protobuf;
+
+	StrNCpy(dbbuf, port->database, ARGV_SIZE);
+	av[ac++] = dbbuf;
 
 	av[ac] = (char *) NULL;
 
