@@ -605,23 +605,6 @@ typedef struct UpdateStmt
 } UpdateStmt;
 
 /* ----------------------
- *		Create Cursor Statement
- * ----------------------
- */
-typedef struct CursorStmt
-{
-	NodeTag		type;
-	char	   *portalname;		/* the portal (cursor) to create */
-	bool		binary;			/* a binary (internal) portal? */
-	char	   *unique;			/* NULL, "*", or unique attribute name */
-	List	   *targetList;		/* the target list (of ResTarget) */
-	List	   *fromClause;		/* the from clause */
-	Node	   *whereClause;	/* qualifications */
-	List	   *groupClause;	/* group by clause */
-	List	   *sortClause;		/* sort clause (a list of SortGroupBy's) */
-} CursorStmt;
-
-/* ----------------------
  *		Select Statement
  * ----------------------
  */
@@ -637,6 +620,8 @@ typedef struct SelectStmt
 	Node	   *havingClause;	/* having conditional-expression */
 	List	   *unionClause;	/* union subselect parameters */
 	List	   *sortClause;		/* sort clause (a list of SortGroupBy's) */
+	char	   *portalname;		/* the portal (cursor) to create */
+	bool		binary;			/* a binary (internal) portal? */
 	bool		unionall;		/* union without unique sort */
 } SelectStmt;
 

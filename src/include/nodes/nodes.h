@@ -145,7 +145,6 @@ typedef enum NodeTag
 	T_InsertStmt,
 	T_DeleteStmt,
 	T_UpdateStmt,
-	T_CursorStmt,
 	T_SelectStmt,
 	T_AddAttrStmt,
 	T_AggregateStmt,
