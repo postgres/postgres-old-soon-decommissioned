@@ -585,14 +585,16 @@ pq_getstring(StringInfo s)
 		}
 
 		for (i = PqRecvPointer; i < PqRecvLength; i++)
+		{
 			if (PqRecvBuffer[i] == '\0')
 			{
 				/* does not copy the \0 */
 				appendBinaryStringInfo(s, PqRecvBuffer + PqRecvPointer,
 									   i - PqRecvPointer);
-				PqRecvPointer += i + 1;
+				PqRecvPointer = i + 1; /* advance past \0 */
 				return 0;
 			}
+		}
 
 		/* If we're here we haven't got the \0 in the buffer yet. */
 
