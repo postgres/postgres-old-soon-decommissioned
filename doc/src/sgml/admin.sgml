@@ -6,6 +6,9 @@ Derived from postgres.sgml.
 - thomas 1998-10-27
 
 $Log: admin.sgml,v $
+Revision 1.17  1999/09/29 05:18:14  thomas
+Strip out some cvs log info.
+
 Revision 1.16  1999/06/23 06:15:13  thomas
 Add backup/restore info to Admin Guide.
 Split management chapter from start-ag.sgml to manage-ag.sgml.
@@ -107,7 +110,7 @@ Your name here...
    now becoming available in some commercial databases.
    It provides SQL92/SQL3 language support,
    transaction integrity, and type extensibility.
-   <ProductName>PostgreSQL</ProductName> is a public-domain, open source descendant
+   <ProductName>PostgreSQL</ProductName> is an open-source descendant
    of this original Berkeley code.
   </Para>
  </Preface>
