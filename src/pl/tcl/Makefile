@@ -87,10 +87,6 @@ ifdef EXPSUFF
 INFILES+= $(DLOBJS:.o=$(EXPSUFF))
 endif
 
-# Prevent removal of pltcl.o, being an intermediate file.  This would
-# not be wrong in general, but for some reason the next make run will
-# not realize this and rebuild it.
-.SECONDARY: pltcl.o
 
 # Provide dummy targets for the case where we can't build the shared library.
 
@@ -119,4 +115,4 @@ Makefile.tcldefs: mkMakefile.tcldefs.sh
 	$(SHELL) $< '$(TCL_CONFIG_SH)' '$@'
 
 clean distclean maintainer-clean:
-	rm -f $(INFILES) *.o Makefile.tcldefs
+	rm -f $(INFILES) pltcl.o Makefile.tcldefs
