@@ -80,8 +80,8 @@ $Header$
       <listitem>
        <para>
 	<envar>PGHOST</envar> sets the default server name.
-	If a non-zero-length string is specified, TCP/IP communication is used.
-	Without a host name, libpq will connect using a local Unix domain socket.
+        If it begins with a slash, it is used
+        as the directory for the unix domain socket.
        </para>
       </listitem>
       <listitem>
@@ -93,8 +93,8 @@ $Header$
       </listitem>
       <listitem>
        <para>
-	<envar>PGUNIXSOCKET</envar>  sets the full Unix domain socket
-	file name for communicating with the <productname>Postgres</productname>
+	<envar>PGUNIXSOCKET</envar>  sets the Unix domain socket
+	directory for communicating with the <productname>Postgres</productname>
 	backend.
        </para>
       </listitem>

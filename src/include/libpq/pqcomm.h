@@ -51,16 +51,15 @@ typedef union SockAddr
 /* Configure the UNIX socket address for the well known port. */
 
 #if defined(SUN_LEN)
-#define UNIXSOCK_PATH(sun,port,defpath) \
-        ((defpath && defpath[0] != '\0') ? (strncpy((sun).sun_path, defpath, sizeof((sun).sun_path)), (sun).sun_path[sizeof((sun).sun_path)-1] = '\0') : sprintf((sun).sun_path, "/tmp/.s.PGSQL.%d", (port)))
 #define UNIXSOCK_LEN(sun) \
         (SUN_LEN(&(sun)))
 #else
-#define UNIXSOCK_PATH(sun,port,defpath) \
-        ((defpath && defpath[0] != '\0') ? (strncpy((sun).sun_path, defpath, sizeof((sun).sun_path)), (sun).sun_path[sizeof((sun).sun_path)-1] = '\0') : sprintf((sun).sun_path, "/tmp/.s.PGSQL.%d", (port)))
 #define UNIXSOCK_LEN(sun) \
         (strlen((sun).sun_path)+ offsetof(struct sockaddr_un, sun_path))
 #endif
+
+#define UNIXSOCK_PATH(sun,port,defpath) \
+        (snprintf((sun).sun_path, UNIXSOCK_LEN(sun), "%s/.s.PGSQL.%d", (defpath && *(defpath) != '\0') ? (defpath) : "/tmp", (port)))
 
 /*
  *		We do this because sun_len is in BSD's struct, while others don't.
