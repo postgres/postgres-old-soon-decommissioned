@@ -31,9 +31,13 @@ CLOSE <replaceable class="PARAMETER">cursor</replaceable>
   </para>
 
   <para>
-   Every open cursor is implicitly closed when a transaction is
-   terminated by <command>COMMIT</command> or
-   <command>ROLLBACK</command>.
+   Every non-holdable open cursor is implicitly closed when a
+   transaction is terminated by <command>COMMIT</command> or
+   <command>ROLLBACK</command>. Holdable cursors are implicitely
+   closed if the transaction that created them aborts via
+   <command>ROLLBACK</command>; if this does not happen, the holdable
+   cursor remains open until an explicit <command>CLOSE</command> is
+   executed, or the client disconnects.
   </para>
  </refsect1>
   
