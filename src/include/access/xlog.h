@@ -222,7 +222,4 @@ extern XLogRecPtr GetRedoRecPtr(void);
  */
 extern XLogRecPtr GetUndoRecPtr(void);
 
-extern const char *assign_xlog_sync_method(const char *method,
-						bool doit, bool interactive);
-
 #endif   /* XLOG_H */

@@ -3919,7 +3919,7 @@ EncodeInterval(struct tm * tm, fsec_t fsec, int style, char *str)
 
 /* GUC assign_hook for australian_timezones */
 bool
-ClearDateCache(bool newval, bool doit, bool interactive)
+ClearDateCache(bool newval, bool doit, GucSource source)
 {
 	int			i;
 

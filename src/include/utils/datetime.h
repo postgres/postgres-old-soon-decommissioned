@@ -318,7 +318,6 @@ extern int	EncodeInterval(struct tm * tm, fsec_t fsec, int style, char *str);
 
 extern int	DecodeSpecial(int field, char *lowtoken, int *val);
 extern int	DecodeUnits(int field, char *lowtoken, int *val);
-extern bool ClearDateCache(bool newval, bool doit, bool interactive);
 
 extern int	j2day(int jd);
 

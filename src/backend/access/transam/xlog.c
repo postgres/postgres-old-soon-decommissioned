@@ -3523,7 +3523,7 @@ xlog_outrec(char *buf, XLogRecord *record)
  * GUC support
  */
 const char *
-assign_xlog_sync_method(const char *method, bool doit, bool interactive)
+assign_xlog_sync_method(const char *method, bool doit, GucSource source)
 {
 	int			new_sync_method;
 	int			new_sync_bit;
