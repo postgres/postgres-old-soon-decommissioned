@@ -21,7 +21,9 @@
 #include "utils/builtins.h"
 #include "utils/palloc.h"
 #include "utils/pg_lzcompress.h"
-
+#ifdef MULTIBYTE
+#include "mb/pg_wchar.h"
+#endif
 
 /* ----------
  * lztextin -
@@ -134,6 +136,12 @@ lztextout(lztext *lz)
 int32
 lztextlen(lztext *lz)
 {
+#ifdef MULTIBYTE
+	unsigned char	*s1,*s2;
+	int	len;
+	int	l;
+	int	wl;
+#endif
 	/* ----------
 	 * Handle NULL
 	 * ----------
@@ -141,11 +149,26 @@ lztextlen(lztext *lz)
 	if (lz == NULL)
 		return 0;
 
+#ifdef MULTIBYTE
+	len = 0;
+	s1 = s2 = (unsigned char *)lztextout(lz);
+	l = PGLZ_RAW_SIZE(lz);
+	while (l > 0)
+	{
+		wl = pg_mblen(s1);
+		l -= wl;
+		s1 += wl;
+		len++;
+	}
+	pfree((char *)s2);
+	return (len);
+#else
 	/* ----------
 	 * without multibyte support, it's the remembered rawsize
 	 * ----------
 	 */
 	return PGLZ_RAW_SIZE(lz);
+#endif
 }
 
 
@@ -228,8 +251,6 @@ text_lztext(text *txt)
 	}
 
 	return result;
-
-	
 }
 
 
