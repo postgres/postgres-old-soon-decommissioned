@@ -22,7 +22,7 @@
 
 #include <math.h>
 #ifdef HAVE_LIMITS_H
-# include <machine/limits.h>
+# include <limits.h>
 # define MAXINT	INT_MAX
 #else
 # include <values.h>
