@@ -1067,7 +1067,7 @@ heap_get_latest_tid(Relation relation,
 					   snapshot, 0, (ScanKey) NULL);
 
 	linkend = true;
-	if ((t_data->t_infomask & HEAP_XMAX_COMMITTED) &&
+	if ((t_data->t_infomask & HEAP_XMIN_COMMITTED) != 0 &&
 		!ItemPointerEquals(tid, &ctid))
 		linkend = false;
 
