@@ -184,8 +184,8 @@ _equalConst(Const *a, Const *b)
 	 */
 	if (a->constisnull)
 		return true;
-	return (datumIsEqual(a->constvalue, b->constvalue,
-						 a->consttype, a->constbyval, a->constlen));
+	return datumIsEqual(a->constvalue, b->constvalue,
+						a->constbyval, a->constlen);
 }
 
 static bool

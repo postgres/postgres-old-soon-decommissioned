@@ -318,7 +318,7 @@ typedef struct Unique
 typedef struct Hash
 {
 	Plan		plan;
-	Var		   *hashkey;
+	Node	   *hashkey;
 	HashState  *hashstate;
 } Hash;
 
@@ -370,7 +370,7 @@ typedef struct SubPlan
 	 * Remaining fields are working state for executor; not used in
 	 * planning
 	 */
-	bool		shutdown;		/* TRUE = need to shutdown plan */
+	bool		needShutdown;	/* TRUE = need to shutdown subplan */
 	HeapTuple	curTuple;		/* copy of most recent tuple from subplan */
 } SubPlan;
 

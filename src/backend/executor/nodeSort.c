@@ -255,14 +255,10 @@ ExecInitSort(Sort *node, EState *estate, Plan *parent)
 	/* ----------------
 	 *	Miscellaneous initialization
 	 *
-	 *		 +	assign node's base_id
-	 *		 +	assign debugging hooks
-	 *
 	 *	Sort nodes don't initialize their ExprContexts because
-	 *	they never call ExecQual or ExecTargetList.
+	 *	they never call ExecQual or ExecProject.
 	 * ----------------
 	 */
-	ExecAssignNodeBaseInfo(estate, &sortstate->csstate.cstate, parent);
 
 #define SORT_NSLOTS 1
 	/* ----------------

@@ -219,16 +219,12 @@ ExecInitAppend(Append *node, EState *estate, Plan *parent)
 	node->appendstate = appendstate;
 
 	/* ----------------
-	 *	Miscellanious initialization
-	 *
-	 *		 +	assign node's base_id
-	 *		 +	assign debugging hooks
+	 *	Miscellaneous initialization
 	 *
 	 *	Append plans don't have expression contexts because they
-	 *	never call ExecQual or ExecTargetList.
+	 *	never call ExecQual or ExecProject.
 	 * ----------------
 	 */
-	ExecAssignNodeBaseInfo(estate, &appendstate->cstate, parent);
 
 #define APPEND_NSLOTS 1
 	/* ----------------
@@ -380,7 +376,7 @@ ExecCountSlotsAppend(Append *node)
  *
  *		Handles the iteration over the multiple scans.
  *
- *	   NOTE: Can't call this ExecAppend, that name is used in execMain.l
+ *	   NOTE: Can't call this ExecAppend, that name is used in execMain.
  * ----------------------------------------------------------------
  */
 TupleTableSlot *

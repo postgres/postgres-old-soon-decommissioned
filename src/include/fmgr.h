@@ -119,6 +119,21 @@ extern struct varlena * pg_detoast_datum_copy(struct varlena * datum);
 #define PG_DETOAST_DATUM_COPY(datum) \
 	pg_detoast_datum_copy((struct varlena *) DatumGetPointer(datum))
 
+/*
+ * Support for cleaning up detoasted copies of inputs.  This must only
+ * be used for pass-by-ref datatypes, and normally would only be used
+ * for toastable types.  If the given pointer is different from the
+ * original argument, assume it's a palloc'd detoasted copy, and pfree it.
+ * NOTE: most functions on toastable types do not have to worry about this,
+ * but we currently require that support functions for indexes not leak
+ * memory.
+ */
+#define PG_FREE_IF_COPY(ptr,n) \
+	do { \
+		if ((Pointer) (ptr) != PG_GETARG_POINTER(n)) \
+			pfree(ptr); \
+	} while (0)
+
 /* Macros for fetching arguments of standard types */
 
 #define PG_GETARG_DATUM(n)   (fcinfo->arg[n])

@@ -578,7 +578,7 @@ _copySubPlan(SubPlan *from)
 	Node_Copy(from, newnode, sublink);
 
 	/* do not copy execution state */
-	newnode->shutdown = false;
+	newnode->needShutdown = false;
 	newnode->curTuple = NULL;
 
 	return newnode;

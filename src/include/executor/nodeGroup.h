@@ -27,7 +27,8 @@ extern bool execTuplesMatch(HeapTuple tuple1,
 				TupleDesc tupdesc,
 				int numCols,
 				AttrNumber *matchColIdx,
-				FmgrInfo *eqfunctions);
+				FmgrInfo *eqfunctions,
+				MemoryContext evalContext);
 extern FmgrInfo *execTuplesMatchPrepare(TupleDesc tupdesc,
 					   int numCols,
 					   AttrNumber *matchColIdx);

@@ -608,7 +608,7 @@ _readHash()
 	_getPlan((Plan *) local_node);
 
 	token = lsptok(NULL, &length);		/* eat :hashkey */
-	local_node->hashkey = (Var *) nodeRead(true);
+	local_node->hashkey = nodeRead(true);
 
 	return local_node;
 }

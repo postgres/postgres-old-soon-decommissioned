@@ -72,7 +72,6 @@ CreateExecutorState(void)
 	state->es_param_list_info = NULL;
 	state->es_param_exec_vals = NULL;
 
-	state->es_BaseId = 0;
 	state->es_tupleTable = NULL;
 
 	state->es_junkFilter = NULL;

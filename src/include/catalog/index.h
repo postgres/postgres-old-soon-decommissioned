@@ -53,9 +53,6 @@ extern void setRelhasindexInplace(Oid relid, bool hasindex, bool immediate);
 extern bool SetReindexProcessing(bool processing);
 extern bool IsReindexProcessing(void);
 
-extern void FillDummyExprContext(ExprContext *econtext, TupleTableSlot *slot,
-					 TupleDesc tupdesc, Buffer buffer);
-
 extern void index_build(Relation heapRelation, Relation indexRelation,
 						int numberOfAttributes, AttrNumber *attributeNumber,
 						FuncIndexInfo *funcInfo, PredInfo *predInfo,

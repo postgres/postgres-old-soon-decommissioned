@@ -349,20 +349,21 @@ AllocSetReset(MemoryContext context)
 		if (block == set->keeper)
 		{
 			/* Reset the block, but don't return it to malloc */
-			block->next = NULL;
-			block->freeptr = ((char *) block) + ALLOC_BLOCKHDRSZ;
+			char   *datastart = ((char *) block) + ALLOC_BLOCKHDRSZ;
+
 #ifdef CLOBBER_FREED_MEMORY
 			/* Wipe freed memory for debugging purposes */
-			memset(block->freeptr, 0x7F,
-				   ((char *) block->endptr) - ((char *) block->freeptr));
+			memset(datastart, 0x7F, ((char *) block->freeptr) - datastart);
 #endif
+			block->freeptr = datastart;
+			block->next = NULL;
 		}
 		else
 		{
 			/* Normal case, release the block */
 #ifdef CLOBBER_FREED_MEMORY
 			/* Wipe freed memory for debugging purposes */
-			memset(block, 0x7F, ((char *) block->endptr) - ((char *) block));
+			memset(block, 0x7F, ((char *) block->freeptr) - ((char *) block));
 #endif
 			free(block);
 		}

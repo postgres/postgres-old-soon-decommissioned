@@ -158,17 +158,12 @@ ExecInitMaterial(Material *node, EState *estate, Plan *parent)
 	node->matstate = matstate;
 
 	/* ----------------
-	 *	Miscellanious initialization
-	 *
-	 *		 +	assign node's base_id
-	 *		 +	assign debugging hooks and
-	 *		 +	assign result tuple slot
+	 *	Miscellaneous initialization
 	 *
 	 *	Materialization nodes don't need ExprContexts because
-	 *	they never call ExecQual or ExecTargetList.
+	 *	they never call ExecQual or ExecProject.
 	 * ----------------
 	 */
-	ExecAssignNodeBaseInfo(estate, &matstate->csstate.cstate, parent);
 
 #define MATERIAL_NSLOTS 1
 	/* ----------------

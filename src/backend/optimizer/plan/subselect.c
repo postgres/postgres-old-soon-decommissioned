@@ -649,7 +649,7 @@ SS_finalize_plan(Plan *plan)
 			break;
 
 		case T_Hash:
-			finalize_primnode((Node *) ((Hash *) plan)->hashkey,
+			finalize_primnode(((Hash *) plan)->hashkey,
 							  &results);
 			break;
 

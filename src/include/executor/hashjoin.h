@@ -21,8 +21,8 @@
  *				hash-join hash table structures
  *
  * Each active hashjoin has a HashJoinTable control block which is
- * palloc'd in the executor's context.	All other storage needed for
- * the hashjoin is kept in private memory contexts, two for each hashjoin.
+ * palloc'd in the executor's per-query context.  All other storage needed
+ * for the hashjoin is kept in private memory contexts, two for each hashjoin.
  * This makes it easy and fast to release the storage when we don't need it
  * anymore.
  *
@@ -67,6 +67,14 @@ typedef struct HashTableData
 								 * file */
 	long	   *innerBatchSize; /* count of tuples in each inner batch
 								 * file */
+
+	/*
+	 * Info about the datatype being hashed.  We assume that the inner
+	 * and outer sides of the hash are the same type, or at least
+	 * binary-compatible types.
+	 */
+	bool		typByVal;
+	int			typLen;
 
 	/*
 	 * During 1st scan of inner relation, we get tuples from executor. If
