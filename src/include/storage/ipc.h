@@ -32,7 +32,7 @@ extern void S_LOCK(slock_t *lock);
 extern void S_UNLOCK(slock_t *lock);
 extern void S_INIT_LOCK(slock_t *lock);
 
-#if defined(alpha) || \
+#if (defined(alpha) && !defined(linuxalpha)) || \
     defined(hpux) || \
     defined(irix5) || \
     defined(nextstep)

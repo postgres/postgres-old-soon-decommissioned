@@ -256,8 +256,8 @@ add_join_clause_info_to_rels(Query *root, CInfo *clauseinfo, List *join_relids)
     	
     	foreach (rel, join_relids)
     	{
-    	    if ( (int)lfirst(rel) != (int)lfirst(join_relid) )
-    	    	other_rels = lappendi (other_rels, lfirst(rel));
+    	    if ( lfirsti(rel) != lfirsti(join_relid) )
+    	    	other_rels = lappendi (other_rels, lfirsti(rel));
     	}
     	
 	joininfo = 

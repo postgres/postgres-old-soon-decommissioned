@@ -512,12 +512,13 @@ PageIndexTupleDeleteAdjustLinePointers(PageHeader phdr,
 				       Size size)
 {
     int i;
+    unsigned offset;
     
     /* location is an index into the page... */
-    location -= (int) phdr;
+    offset = (unsigned)(location - (char *)phdr);
     
     for (i = PageGetMaxOffsetNumber((Page) phdr) - 1; i >= 0; i--) {
-	if (phdr->pd_linp[i].lp_off <= (unsigned) location) {
+	if (phdr->pd_linp[i].lp_off <= offset) {
 	    phdr->pd_linp[i].lp_off += size;
 	}
     }

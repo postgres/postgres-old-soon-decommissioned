@@ -267,12 +267,12 @@ index_selectivity(Oid indid,
     
     i = 0;
     foreach(xopno, opnos) {
-	opno_array[i++] = (int)lfirst(xopno);
+	opno_array[i++] = lfirsti(xopno);
     }
 
     i = 0;
     foreach(xattno,attnos) {
-	attno_array[i++] = (int)lfirst(xattno);
+	attno_array[i++] = lfirsti(xattno);
     }
 
     i = 0;
@@ -282,7 +282,7 @@ index_selectivity(Oid indid,
 
     i = 0;
     foreach(flag,flags) {
-	flag_array[i++] = (int)lfirst(flag);
+	flag_array[i++] = lfirsti(flag);
     }
     
     IndexSelectivity(indid,

@@ -93,7 +93,7 @@ SendFunctionResult(Oid fid,	/* function id */
 	pq_putnchar("G", 1);
 	if (retbyval) {		/* by-value */
 	    pq_putint(retlen, 4);
-	    pq_putint((int)retval, retlen); 
+	    pq_putint((int)(Datum)retval, retlen); 
 	} else {		/* by-reference ... */
 	    if (retlen < 0) {		/* ... varlena */
 		pq_putint(VARSIZE(retval) - VARHDRSZ, 4);

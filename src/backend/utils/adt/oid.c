@@ -37,14 +37,14 @@ Oid *oid8in(char *oidString)
 	return(NULL);
     result = (Oid (*)[]) palloc(sizeof(Oid [8]));
     if ((nums = sscanf(oidString, "%d%d%d%d%d%d%d%d",
-		       *result,
-		       *result + 1,
-		       *result + 2,
-		       *result + 3,
-		       *result + 4,
-		       *result + 5,
-		       *result + 6,
-		       *result + 7)) != 8) {
+		       &(*result)[0],
+		       &(*result)[1],
+		       &(*result)[2],
+		       &(*result)[3],
+		       &(*result)[4],
+		       &(*result)[5],
+		       &(*result)[6],
+		       &(*result)[7])) != 8) {
 	do
 	    (*result)[nums++] = 0;
 	while (nums < 8);

@@ -67,7 +67,12 @@ s...)
  */
 #if defined(sun) && ! defined(sparc)
 #define	LONGALIGN(LEN)	SHORTALIGN(LEN)
-#elif defined (alpha)
+#elif defined (alpha) || defined(linuxalpha)
+     /* even though "long alignment" should really be on 8-byte boundaries
+      * for linuxalpha, we want the strictest alignment to be on 4-byte (int) 
+      * boundaries, because otherwise things break when they try to use the
+      * FormData_pg_* structures.  --djm 12/12/96
+      */
 #define	LONGALIGN(LEN)\
 	(((long)(LEN) + (sizeof (int) - 1)) & ~(sizeof (int) -1))
 #else
