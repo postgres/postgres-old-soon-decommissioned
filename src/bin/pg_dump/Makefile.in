@@ -18,13 +18,6 @@ OBJS= pg_dump.o common.o @STRDUP@
 
 CFLAGS+= -I$(LIBPQDIR)
 
-#
-# And where libpq goes, so goes the authentication stuff...
-#
-ifdef KRBVERS
-LDFLAGS+= $(KRBLIBS)
-CFLAGS+= $(KRBFLAGS)
-endif
 
 all: submake pg_dump
 

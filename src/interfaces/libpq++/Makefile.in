@@ -18,16 +18,12 @@ SRCDIR= ../..
 include $(SRCDIR)/Makefile.global
 
 CXX=@CXX@
-CXXFLAGS=@CXXFLAGS@
+CXXFLAGS=@CXXFLAGS@ @INCLUDES@
 
 SRCHEADERDIR = $(SRCDIR)/include
 LIBPQHEADERDIR = $(SRCHEADERDIR)/libpq
 
 CXXFLAGS+= -I$(SRCHEADERDIR) -I$(LIBPQDIR)
-
-ifdef KRBVERS
-CXXFLAGS+= $(KRBFLAGS)
-endif
 
 OBJS = pgconnection.o pgdatabase.o pgtransdb.o pgcursordb.o pglobject.o 
 

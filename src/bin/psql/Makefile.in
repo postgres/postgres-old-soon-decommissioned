@@ -19,14 +19,6 @@ PERL = @PERL@
 
 CFLAGS+= -I$(LIBPQDIR)
 
-#
-# And where libpq goes, so goes the authentication stuff...
-#
-ifdef KRBVERS
-LDFLAGS+= $(KRBLIBS)
-CFLAGS+= $(KRBFLAGS)
-endif
-
 OBJS=command.o common.o help.o input.o stringutils.o mainloop.o \
 	copy.o startup.o prompt.o variables.o large_obj.o print.o describe.o \
 	tab-complete.o

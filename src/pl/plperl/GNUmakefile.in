@@ -14,14 +14,14 @@ plperl_installdir = $(libdir)
 
 mkinstalldirs = @mkinstalldirs@
 PERL = @PERL@
-PGSQL_INCLUDES = @PGSQL_INCLUDES@
+INCLUDES = @INCLUDES@
 
 all: Makefile
 	$(MAKE) -f $< all
 
 Makefile: Makefile.PL
 	@plperl_installdir='$(plperl_installdir)' \
-	  EXTRA_INCLUDES='-I$(top_srcdir)/src/include $(PGSQL_INCLUDES)' \
+	  EXTRA_INCLUDES='-I$(top_srcdir)/src/include $(INCLUDES)' \
 	  $(PERL) $< POLLUTE=1
 
 install: Makefile installdirs

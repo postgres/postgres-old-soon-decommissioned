@@ -59,13 +59,6 @@ endif
 
 VERSIONOBJ = $(SRCDIR)/utils/version.o
 
-# kerberos flags
-
-ifdef KRBVERS
-CFLAGS+= $(KRBFLAGS)
-LDFLAGS+= $(KRBLIBS)
-endif
-
 ifeq ($(MAKE_DLL), true)
 DLLOBJS= $(OBJS) $(VERSIONOBJ)
 DLLLIBS= -L/usr/local/lib -lcygipc -lcrypt -lcygwin -lkernel32
@@ -303,5 +296,5 @@ $(IDFILE):
 #	make foo.C
 #
 %.cpp:	%.c
-	$(CC) -E $(CFLAGS) $(<:.C=.c) | cat -s | cb | tr -s '\012*' '\012' \
+	$(CC) -E $(CPPFLAGS) $(<:.C=.c) | cat -s | cb | tr -s '\012*' '\012' \
 	    > $(@F)

@@ -11,12 +11,6 @@
 SRCDIR = ../..
 include ../../Makefile.global
 
-# kerberos flags
-ifdef KRBVERS
-CFLAGS+= $(KRBFLAGS)
-LDFLAGS+= $(KRBLIBS)
-endif
-
 OBJS = be-dumpdata.o be-fsstubs.o be-pqexec.o portal.o portalbuf.o \
 	auth.o hba.o crypt.o password.o \
 	pqcomm.o pqformat.o pqpacket.o pqsignal.o util.o

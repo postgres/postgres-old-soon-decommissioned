@@ -19,13 +19,6 @@ OUTFILES= bench.out bench.out.perquery
 
 CFLAGS+= -I$(LIBPQDIR) $(CFLAGS_SL)
 
-#
-# And where libpq goes, so goes the authentication stuff...
-#
-ifdef KRBVERS
-LDFLAGS+= $(KRBLIBS)
-CFLAGS+= $(KRBFLAGS)
-endif
 
 all: $(CREATEFILES)
 	rm -f $(OUTFILES)

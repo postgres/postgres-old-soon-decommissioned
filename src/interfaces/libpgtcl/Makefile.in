@@ -19,10 +19,6 @@ include $(SRCDIR)/Makefile.global
 
 CFLAGS+= -I$(LIBPQDIR)
 
-ifdef KRBVERS
-CFLAGS+= $(KRBFLAGS)
-endif
-
 OBJS= pgtcl.o pgtclCmds.o pgtclId.o
 
 SHLIB_LINK+= $(LIBPQ)

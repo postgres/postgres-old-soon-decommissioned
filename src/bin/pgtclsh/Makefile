@@ -24,10 +24,6 @@ endif
 
 CFLAGS+= $(X_CFLAGS) -I$(LIBPGTCLDIR)
 
-ifdef KRBVERS
-LDFLAGS+= $(KRBLIBS)
-CFLAGS+= $(KRBFLAGS)
-endif
 
 # If we are here then TCL is available
 PGMS = pgtclsh

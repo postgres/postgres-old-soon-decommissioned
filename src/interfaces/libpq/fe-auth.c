@@ -119,7 +119,7 @@ static void
 pg_krb4_init()
 {
 	char	   *realm;
-	static		init_done = 0;
+	static int		init_done = 0;
 
 	if (init_done)
 		return;
@@ -129,7 +129,7 @@ pg_krb4_init()
 	 * If the user set PGREALM, then we use a ticket file with a special
 	 * name: <usual-ticket-file-name>@<PGREALM-value>
 	 */
-	if (realm = getenv("PGREALM"))
+	if ((realm = getenv("PGREALM")))
 	{
 		char		tktbuf[MAXPGPATH];
 
@@ -184,7 +184,7 @@ pg_krb4_authname(char *PQerrormsg)
  * (canonicalized to omit all domain suffixes).
  */
 static int
-pg_krb4_sendauth(const char *PQerrormsg, int sock,
+pg_krb4_sendauth(char *PQerrormsg, int sock,
 				 struct sockaddr_in * laddr,
 				 struct sockaddr_in * raddr,
 				 const char *hostname)
@@ -213,7 +213,7 @@ pg_krb4_sendauth(const char *PQerrormsg, int sock,
 						  (u_long) 0,
 						  (MSG_DAT *) NULL,
 						  (CREDENTIALS *) NULL,
-						  (Key_schedule *) NULL,
+						  NULL,
 						  laddr,
 						  raddr,
 						  PG_KRB4_VERSION);
