@@ -17,10 +17,12 @@ SCRIPTS := createdb dropdb createuser dropuser createlang droplang vacuumdb
 all: $(SCRIPTS)
 
 createlang: createlang.sh
-	sed -e 's/__DLSUFFIX__/$(DLSUFFIX)/' $< > $@
+	sed -e 's:__DLSUFFIX__:$(DLSUFFIX):g' \
+	    -e 's:__libdir__:$(libdir):g' \
+	    $< > $@
 
 install: all installdirs
-	for i in $(SCRIPTS); do $(INSTALL_SCRIPT) $$i $(bindir); done
+	for i in $(SCRIPTS); do $(INSTALL_SCRIPT) $$i $(bindir) || exit; done
 
 installdirs:
 	$(mkinstalldirs) $(bindir)
