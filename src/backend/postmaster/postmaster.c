@@ -119,11 +119,6 @@ static short    ActiveBackends = FALSE;
 static int      NextBackendId = MAXINT;         /* XXX why? */
 static char     *progname = (char *) NULL;
 
-char            *DataDir;
-  /* The PGDATA directory user says to use, or defaults to via environment
-     variable.  NULL if no option given and no environment variable set 
-  */
-    
 /*
  * Default Values
  */

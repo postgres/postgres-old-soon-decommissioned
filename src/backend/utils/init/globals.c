@@ -41,8 +41,12 @@ int		Noversion = 0;
 int             Quiet = 1;
 
 int		MasterPid;
-char*           DataDir;
-
+char            *DataDir;
+  /* The PGDATA directory user says to use, or defaults to via environment
+     variable.  NULL if no option given and no environment variable set 
+  */
+Relation        reldesc;                /* current relation descriptor */
+    
 char		OutputFileName[MAXPGPATH] = "";
 
 BackendId	MyBackendId;

@@ -184,7 +184,6 @@ static  struct  typmap  *Ap = (struct typmap *)NULL;
 static  int             Warnings = 0;
 static  char            Blanks[MAXATTR];
      
-Relation        reldesc;                /* current relation descriptor */
 static char *relname;                   /* current relation name */
 
 AttributeTupleForm attrtypes[MAXATTR];  /* points to attribute info */
