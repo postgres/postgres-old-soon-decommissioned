@@ -12,7 +12,7 @@ use strict;
 
 my %opts;
 
-if (! $ENV{POSTGRES_LIB} || ! $ENV{POSTGRES_INCLUDE}) {
+if (! -d $ENV{POSTGRES_LIB} || ! -d $ENV{POSTGRES_INCLUDE}) {
 
     # Check that we actually are inside the Postgres source tree
     if (! -d "../libpq") {
