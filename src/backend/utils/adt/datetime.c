@@ -2247,8 +2247,8 @@ EncodeTimeSpan(struct tm * tm, double fsec, int style, char *str)
 			sprintf(cp, "%s%02d:%02d", (is_nonzero ? " " : ""),
 					abs(tm->tm_hour), abs(tm->tm_min));
 			cp += strlen(cp);
-			if ((tm->tm_hour != 0) || (tm->tm_min != 0))
-				is_nonzero = TRUE;
+			/* Mark as "non-zero" since the fields are now filled in */
+			is_nonzero = TRUE;
 
 			/* fractional seconds? */
 			if (fsec != 0)
