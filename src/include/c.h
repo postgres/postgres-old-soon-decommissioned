@@ -310,7 +310,7 @@ typedef unsigned long int uint64;
 #endif
 
 /* Global variable holding time zone information. */
-#ifdef USE_PGTZ
+#if defined(USE_PGTZ) && !defined(FRONTEND)
 #define TIMEZONE_GLOBAL pg_timezone
 #else
 #ifndef HAVE_UNDERSCORE_TIMEZONE
