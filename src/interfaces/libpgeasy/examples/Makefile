@@ -9,18 +9,12 @@
 #-------------------------------------------------------------------------
 
 CFLAGS=-I/usr/local/pgsql/include
-TARGET = pginsert pgwordcount pgnulltest
+TARGET = pginsert pgwordcount pgnulltest pgmultiresult
 LDFLAGS = -L/usr/local/pgsql/lib -lpgeasy
 
 all : $(TARGET)
 
-pginsert:
-	gcc -o $@ $(CFLAGS) $@.c $(PGEASY) $(LDFLAGS)
-
-pgwordcount:
-	gcc -o $@ $(CFLAGS) $@.c $(PGEASY) $(LDFLAGS)
-
-pgnulltest:
+%: %.c
 	gcc -o $@ $(CFLAGS) $@.c $(PGEASY) $(LDFLAGS)
 
 clean:
