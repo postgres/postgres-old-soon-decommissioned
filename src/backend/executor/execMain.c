@@ -1582,8 +1582,8 @@ ExecConstraints(const char *caller, ResultRelInfo *resultRelInfo,
 		char	   *failed;
 
 		if ((failed = ExecRelCheck(resultRelInfo, slot, estate)) != NULL)
-			elog(ERROR, "%s: rejected due to CHECK constraint %s",
-				 caller, failed);
+			elog(ERROR, "%s: rejected due to CHECK constraint \"%s\" on \"%s\"",
+				 caller, failed, RelationGetRelationName(rel));
 	}
 }
 
