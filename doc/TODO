@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sun Aug 24 18:57:19 EDT 2003
+Last updated:		Mon Aug 25 00:10:58 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -285,6 +285,7 @@ Clients
 * Allow psql \du to show groups, and add \dg for groups
 * Allow clients to query WITH HOLD cursors and prepared statements
 * Prevent unneeded quoting in psql \d output using fmtId()
+* Add a libpq function to support Parse/DescribeStatement capability
 
 
 * JDBC
