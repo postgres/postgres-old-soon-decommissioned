@@ -15,6 +15,8 @@
  *-------------------------------------------------------------------------
  */
 
+#include <stdio.h>
+
 #include <postgres.h>
 
 #include <access/heapam.h>
