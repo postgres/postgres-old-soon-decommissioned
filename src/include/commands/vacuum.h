@@ -43,6 +43,8 @@ typedef struct VRelListData {
     VAttList		vrl_attlist;
     int			vrl_ntups;
     int			vrl_npages;
+    Size		vrl_min_tlen;
+    Size		vrl_max_tlen;
     bool		vrl_hasindex;
     struct VRelListData	*vrl_next;
 } VRelListData;
