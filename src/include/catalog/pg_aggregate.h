@@ -87,7 +87,7 @@ DATA(insert OID = 0 ( avg	PGUID int2_accum	numeric_avg		21	 1231 1700 "{0,0,0}" 
 DATA(insert OID = 0 ( avg	PGUID numeric_accum  numeric_avg	1700 1231 1700 "{0,0,0}" ));
 DATA(insert OID = 0 ( avg	PGUID float4_accum	float8_avg		700  1022 701 "{0,0,0}" ));
 DATA(insert OID = 0 ( avg	PGUID float8_accum	float8_avg		701  1022 701 "{0,0,0}" ));
-DATA(insert OID = 0 ( avg	PGUID interval_accum interval_avg	1186 1187 1186 "{0,0}" ));
+DATA(insert OID = 0 ( avg	PGUID interval_accum interval_avg	1186 1187 1186 "{0 second,0 second}" ));
 
 DATA(insert OID = 0 ( sum	PGUID int8_sum			-	20 1700 1700 _null_ ));
 DATA(insert OID = 0 ( sum	PGUID int4_sum			-	23 1700 1700 _null_ ));
