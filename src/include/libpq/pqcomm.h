@@ -70,7 +70,7 @@ typedef struct StartupInfo {
 } StartupInfo;
 
 /* amount of available data in a packet buffer */
-#define MESSAGE_SIZE	sizeof(StartupInfo) + 5
+#define MESSAGE_SIZE	sizeof(StartupInfo) + 5	/* why 5? BJM 2/11/97 */
 
 /* I/O can be blocking or non-blocking */
 #define BLOCKING 	(FALSE)
