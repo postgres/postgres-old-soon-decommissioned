@@ -142,7 +142,7 @@ else
 endif
 	$(INSTALL_DATA) $(srcdir)/libpq/pg_service.conf.sample $(DESTDIR)$(datadir)/pg_service.conf.sample
 	$(INSTALL_DATA) $(srcdir)/libpq/pg_ident.conf.sample $(DESTDIR)$(datadir)/pg_ident.conf.sample
-        $(INSTALL_DATA) $(srcdir)/utils/misc/postgresql.conf.sample $(DESTDIR)$(datadir)/postgresql.conf.sample
+	$(INSTALL_DATA) $(srcdir)/utils/misc/postgresql.conf.sample $(DESTDIR)$(datadir)/postgresql.conf.sample
 
 install-bin: postgres $(POSTGRES_IMP) installdirs
 	$(INSTALL_PROGRAM) postgres$(X) $(DESTDIR)$(bindir)/postgres$(X)
