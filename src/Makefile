@@ -26,6 +26,11 @@ ETAGS = etags
 XARGS = xargs
 
 .DEFAULT all:
+	@if test $(PORTNAME) = UNDEFINED; then \
+	  echo You must set the PORTNAME value in Makefile.global before \
+	       you can build Postgres. ;\
+	  false ;\
+	fi
 	$(MAKE) -C backend $@
 	$(MAKE) -C libpq $@
 ifeq ($(HAVE_Cplusplus), true)
@@ -38,7 +43,6 @@ endif
 ifneq ($(wildcard $(MKDIR)/../../doc), )
 	$(MAKE) -C ../doc $@
 endif
-	@-chown -R $(POSTGRESLOGIN) $(POSTGRESDIR) 2>/dev/null
 	@if test $@. = all. -o $@. = .; then \
 	echo All of Postgres95 is successfully made.  Ready to install. ;\
         fi
