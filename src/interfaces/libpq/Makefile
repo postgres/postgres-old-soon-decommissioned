@@ -23,6 +23,7 @@ override CPPFLAGS := -I$(srcdir) $(CPPFLAGS) -DFRONTEND -DSYSCONFDIR='"$(sysconf
 OBJS= fe-auth.o fe-connect.o fe-exec.o fe-misc.o fe-print.o fe-lobj.o \
       pqexpbuffer.o dllist.o md5.o pqsignal.o fe-secure.o \
       wchar.o encnames.o \
+      v6util.o \
       $(filter inet_aton.o snprintf.o strerror.o, $(LIBOBJS))
 
 

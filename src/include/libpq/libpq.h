@@ -19,6 +19,7 @@
 
 #include "lib/stringinfo.h"
 #include "libpq/libpq-be.h"
+#include "libpq/v6util.h"
 
 /* ----------------
  * PQArgBlock
