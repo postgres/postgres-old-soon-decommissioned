@@ -129,10 +129,17 @@ char *char16out(char *s)
 
 int32 chareq(int8 arg1, int8 arg2)	{ return(arg1 == arg2); }
 int32 charne(int8 arg1, int8 arg2)	{ return(arg1 != arg2); }
+#ifdef UNSIGNED_CHAR_TEXT
+int32 charlt(int8 arg1, int8 arg2)    { return((uint8)arg1 <  (uint8)arg2); }
+int32 charle(int8 arg1, int8 arg2)    { return((uint8)arg1 <= (uint8)arg2); }
+int32 chargt(int8 arg1, int8 arg2)    { return((uint8)arg1 >  (uint8)arg2); }
+int32 charge(int8 arg1, int8 arg2)    { return((uint8)arg1 >= (uint8)arg2); }
+#else
 int32 charlt(int8 arg1, int8 arg2)	{ return(arg1 < arg2); }
 int32 charle(int8 arg1, int8 arg2)	{ return(arg1 <= arg2); }
 int32 chargt(int8 arg1, int8 arg2)	{ return(arg1 > arg2); }
 int32 charge(int8 arg1, int8 arg2)	{ return(arg1 >= arg2); }
+#endif
 int8 charpl(int8 arg1, int8 arg2)       { return(arg1 + arg2); }
 int8 charmi(int8 arg1, int8 arg2)	{ return(arg1 - arg2); }
 int8 charmul(int8 arg1, int8 arg2)	{ return(arg1 * arg2); }
