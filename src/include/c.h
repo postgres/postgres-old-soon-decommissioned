@@ -186,6 +186,9 @@ typedef unsigned int uint32;	/* == 32 bits */
  *
  *		Since sizeof(floatN) may be > sizeof(char *), always pass
  *		floatN by reference.
+ *
+ * XXX: these typedefs are now deprecated in favor of float4 and float8.
+ * They will eventually go away.
  */
 typedef float float32data;
 typedef double float64data;

@@ -614,7 +614,7 @@ AlterTableAlterColumn(const char *relationName,
 							   Int16GetDatum(attnum));
 		ScanKeyEntryInitialize(&scankeys[2], 0x0,
 							   Anum_pg_attribute_atthasdef, F_BOOLEQ,
-							   Int32GetDatum(TRUE));
+							   BoolGetDatum(true));
 
 		scan = heap_beginscan(attr_rel, false, SnapshotNow, 3, scankeys);
 		AssertState(scan != NULL);

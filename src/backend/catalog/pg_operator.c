@@ -262,10 +262,10 @@ OperatorShellMakeWithOpenRelation(Relation pg_operator_desc,
 	namestrcpy(&oname, operatorName);
 	values[i++] = NameGetDatum(&oname);
 	values[i++] = Int32GetDatum(GetUserId());
-	values[i++] = (Datum) (uint16) 0;
-	values[i++] = (Datum) 'b';	/* assume it's binary */
-	values[i++] = (Datum) (bool) 0;
-	values[i++] = (Datum) (bool) 0;
+	values[i++] = UInt16GetDatum(0);
+	values[i++] = CharGetDatum('b'); /* assume it's binary */
+	values[i++] = BoolGetDatum(false);
+	values[i++] = BoolGetDatum(false);
 	values[i++] = ObjectIdGetDatum(leftObjectId);		/* <-- left oid */
 	values[i++] = ObjectIdGetDatum(rightObjectId);		/* <-- right oid */
 	values[i++] = ObjectIdGetDatum(InvalidOid);
@@ -648,9 +648,9 @@ OperatorDef(char *operatorName,
 	values[i++] = NameGetDatum(&oname);
 	values[i++] = Int32GetDatum(GetUserId());
 	values[i++] = UInt16GetDatum(precedence);
-	values[i++] = leftTypeName ? (rightTypeName ? 'b' : 'r') : 'l';
-	values[i++] = Int8GetDatum(isLeftAssociative);
-	values[i++] = Int8GetDatum(canHash);
+	values[i++] = CharGetDatum(leftTypeName ? (rightTypeName ? 'b' : 'r') : 'l');
+	values[i++] = BoolGetDatum(isLeftAssociative);
+	values[i++] = BoolGetDatum(canHash);
 	values[i++] = ObjectIdGetDatum(leftTypeId);
 	values[i++] = ObjectIdGetDatum(rightTypeId);
 

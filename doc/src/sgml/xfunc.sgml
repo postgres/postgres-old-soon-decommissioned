@@ -499,12 +499,12 @@ SELECT clean_EMP();
 	</row>
 	<row>
 	 <entry>float4</entry>
-	 <entry>float32 or (float4 *)</entry>
+	 <entry>(float4 *)</entry>
 	<entry>include/c.h or include/postgres.h</entry>
 	</row>
 	<row>
 	 <entry>float8</entry>
-	 <entry>float64 or (float8 *)</entry>
+	 <entry>(float8 *)</entry>
 	 <entry>include/c.h or include/postgres.h</entry>
 	</row>
 	<row>
