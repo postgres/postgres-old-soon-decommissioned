@@ -214,9 +214,9 @@ if [ $op = "start" -o $op = "restart" ];then
     # no -o given
     if [ -z "$POSTOPTS" ];then
 	if [ $op = "start" ];then
-	    # if we are in start mode, then look postmaster.opts.default
+	    # if we are in start mode, then look for postmaster.opts.default
 	    if [ -f $DEFPOSTOPTS ];then
-		eval `cat $DEFPOSTOPTS` &
+		eval "$po_path `cat $DEFPOSTOPTS`" &
 	    else
 		$ECHO "$CMDNAME: Can't find $DEFPOSTOPTS"
 		exit 1
