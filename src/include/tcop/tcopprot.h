@@ -33,11 +33,10 @@ extern int	max_stack_depth;
 
 typedef enum
 {
-	/* Reverse order so GUC USERLIMIT is easier */
-	LOGSTMT_ALL,				/* log all statements */
+	LOGSTMT_NONE,				/* log no statements */
 	LOGSTMT_DDL,				/* log data definition statements */
 	LOGSTMT_MOD,				/* log modification statements, plus DDL */
-	LOGSTMT_NONE				/* log no statements */
+	LOGSTMT_ALL					/* log all statements */
 } LogStmtLevel;
 
 extern LogStmtLevel log_statement;
@@ -63,5 +62,7 @@ extern void authdie(SIGNAL_ARGS);
 extern int	PostgresMain(int argc, char *argv[], const char *username);
 extern void ResetUsage(void);
 extern void ShowUsage(const char *title);
+extern void set_debug_options(int debug_flag,
+							  GucContext context, GucSource source);
 
 #endif   /* TCOPPROT_H */

@@ -424,7 +424,7 @@ BootstrapMain(int argc, char *argv[])
 	/*
 	 * backend initialization
 	 */
-	InitPostgres(dbname, NULL);
+	(void) InitPostgres(dbname, NULL);
 
 	/*
 	 * In NOP mode, all we really want to do is create shared memory and
