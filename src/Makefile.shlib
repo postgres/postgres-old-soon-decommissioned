@@ -88,13 +88,13 @@ ifeq ($(enable_shared), yes)
 
 # Try to keep the sections in some kind of order, folks...
 
-# XXX fix Makefile.aix
-ifneq ($(PORTNAME), aix)
-  ifndef cplusplus
-    override CFLAGS	+= $(CFLAGS_SL)
-  else
-    override CXXFLAGS	+= $(CFLAGS_SL)
+ifndef cplusplus
+  override CFLAGS	+= $(CFLAGS_SL)
+else
+  ifndef CXXFLAGS_SL
+    CXXFLAGS_SL = $(CFLAGS_SL)
   endif
+  override CXXFLAGS	+= $(CXXFLAGS_SL)
 endif
 
 
