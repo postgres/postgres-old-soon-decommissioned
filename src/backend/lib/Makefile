@@ -12,7 +12,7 @@ subdir = src/backend/lib
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = dllist.o lispsort.o stringinfo.o
+OBJS = dllist.o stringinfo.o
 
 all: SUBSYS.o
 

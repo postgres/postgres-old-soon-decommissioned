@@ -531,16 +531,6 @@ make_one_rel_by_joins(Query *root, int levels_needed, List *initial_rels)
 		{
 			rel = (RelOptInfo *) lfirst(x);
 
-#ifdef NOT_USED
-
-			/*
-			 * * for each expensive predicate in each path in each
-			 * distinct rel, * consider doing pullup  -- JMH
-			 */
-			if (XfuncMode != XFUNC_NOPULL && XfuncMode != XFUNC_OFF)
-				xfunc_trypullup(rel);
-#endif
-
 			/* Find and save the cheapest paths for this rel */
 			set_cheapest(rel);
 

@@ -167,19 +167,6 @@ create_plan(Query *root, Path *best_path)
 			break;
 	}
 
-#ifdef NOT_USED					/* fix xfunc */
-	/* sort clauses by cost/(1-selectivity) -- JMH 2/26/92 */
-	if (XfuncMode != XFUNC_OFF)
-	{
-		set_qpqual((Plan) plan,
-				   lisp_qsort(get_qpqual((Plan) plan),
-							  xfunc_clause_compare));
-		if (XfuncMode != XFUNC_NOR)
-			/* sort the disjuncts within each clause by cost -- JMH 3/4/92 */
-			xfunc_disjunct_sort(plan->qpqual);
-	}
-#endif
-
 	return plan;
 }
 
