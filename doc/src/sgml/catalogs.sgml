@@ -810,24 +810,6 @@
      </row>
 
      <row>
-      <entry><structfield>attisset</structfield></entry>
-      <entry><type>bool</type></entry>
-      <entry></entry>
-      <entry>
-       If true, this attribute is a set.  In that case, what is really
-       stored in the attribute is the OID of a row in the
-       <structname>pg_proc</structname> catalog.  The
-       <structname>pg_proc</structname> row contains the query
-       string that defines this set, i.e., the query to run to get
-       the set.  So the <structfield>atttypid</structfield> (see
-       above) refers to the type returned by this query, but the
-       actual length of this attribute is the length (size) of an
-       <type>oid</type>.  --- At least this is the theory.  All this
-       is probably quite broken these days.
-      </entry>
-     </row>
-
-     <row>
       <entry><structfield>attalign</structfield></entry>
       <entry><type>char</type></entry>
       <entry></entry>

@@ -564,6 +564,17 @@ typedef struct SubPlanState
 } SubPlanState;
 
 /* ----------------
+ *		FieldSelectState node
+ * ----------------
+ */
+typedef struct FieldSelectState
+{
+	ExprState	xprstate;
+	ExprState  *arg;			/* input expression */
+	TupleDesc	argdesc;		/* tupdesc for most recent input */
+} FieldSelectState;
+
+/* ----------------
  *		CaseExprState node
  * ----------------
  */

@@ -170,9 +170,7 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 			 * tuple from the relation.  We build a special VarNode to
 			 * reflect this -- it has varno set to the correct range table
 			 * entry, but has varattno == 0 to signal that the whole tuple
-			 * is the argument.  Also, it has typmod set to
-			 * sizeof(Pointer) to signal that the runtime representation
-			 * will be a pointer not an Oid.
+			 * is the argument.
 			 */
 			switch (rte->rtekind)
 			{
@@ -185,7 +183,7 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 					lfirst(i) = makeVar(vnum,
 										InvalidAttrNumber,
 										toid,
-										sizeof(Pointer),
+										-1,
 										sublevels_up);
 					break;
 				case RTE_FUNCTION:
@@ -196,7 +194,7 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 						lfirst(i) = makeVar(vnum,
 											InvalidAttrNumber,
 											toid,
-											sizeof(Pointer),
+											-1,
 											sublevels_up);
 					}
 					else
@@ -214,6 +212,8 @@ ParseFuncOrColumn(ParseState *pstate, List *funcname, List *fargs,
 					/*
 					 * RTE is a join or subselect; must fail for lack of a
 					 * named tuple type
+					 *
+					 * XXX FIXME
 					 */
 					if (is_column)
 						unknown_attribute(schemaname, relname,

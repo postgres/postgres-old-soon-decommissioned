@@ -28,59 +28,6 @@
 
 
 /*
- * record_in		- input routine for pseudo-type RECORD.
- */
-Datum
-record_in(PG_FUNCTION_ARGS)
-{
-	ereport(ERROR,
-			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-			 errmsg("cannot accept a value of type record")));
-
-	PG_RETURN_VOID();			/* keep compiler quiet */
-}
-
-/*
- * record_out		- output routine for pseudo-type RECORD.
- */
-Datum
-record_out(PG_FUNCTION_ARGS)
-{
-	ereport(ERROR,
-			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-			 errmsg("cannot display a value of type record")));
-
-	PG_RETURN_VOID();			/* keep compiler quiet */
-}
-
-/*
- * record_recv		- binary input routine for pseudo-type RECORD.
- */
-Datum
-record_recv(PG_FUNCTION_ARGS)
-{
-	ereport(ERROR,
-			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-			 errmsg("cannot accept a value of type record")));
-
-	PG_RETURN_VOID();			/* keep compiler quiet */
-}
-
-/*
- * record_send		- binary output routine for pseudo-type RECORD.
- */
-Datum
-record_send(PG_FUNCTION_ARGS)
-{
-	ereport(ERROR,
-			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-			 errmsg("cannot display a value of type record")));
-
-	PG_RETURN_VOID();			/* keep compiler quiet */
-}
-
-
-/*
  * cstring_in		- input routine for pseudo-type CSTRING.
  *
  * We might as well allow this to support constructs like "foo_in('blah')".

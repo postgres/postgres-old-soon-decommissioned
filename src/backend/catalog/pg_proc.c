@@ -32,7 +32,6 @@
 #include "utils/acl.h"
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"
-#include "utils/sets.h"
 #include "utils/syscache.h"
 
 
@@ -136,44 +135,6 @@ ProcedureCreate(const char *procedureName,
 
 	/* Process param names, if given */
 	namesarray = create_parameternames_array(parameterCount, parameterNames);
-
-	if (languageObjectId == SQLlanguageId)
-	{
-		/*
-		 * If this call is defining a set, check if the set is already
-		 * defined by looking to see whether this call's function text
-		 * matches a function already in pg_proc.  If so just return the
-		 * OID of the existing set.
-		 */
-		if (strcmp(procedureName, GENERICSETNAME) == 0)
-		{
-#ifdef SETS_FIXED
-
-			/*
-			 * The code below doesn't work any more because the PROSRC
-			 * system cache and the pg_proc_prosrc_index have been
-			 * removed. Instead a sequential heap scan or something better
-			 * must get implemented. The reason for removing is that
-			 * nbtree index crashes if sources exceed 2K --- what's likely
-			 * for procedural languages.
-			 *
-			 * 1999/09/30 Jan
-			 */
-			text	   *prosrctext;
-
-			prosrctext = DatumGetTextP(DirectFunctionCall1(textin,
-											   CStringGetDatum(prosrc)));
-			retval = GetSysCacheOid(PROSRC,
-									PointerGetDatum(prosrctext),
-									0, 0, 0);
-			pfree(prosrctext);
-			if (OidIsValid(retval))
-				return retval;
-#else
-			elog(ERROR, "lookup for procedure by source needs fix (Jan)");
-#endif   /* SETS_FIXED */
-		}
-	}
 
 	/*
 	 * don't allow functions of complex types that have the same name as

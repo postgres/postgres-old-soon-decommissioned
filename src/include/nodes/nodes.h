@@ -141,6 +141,7 @@ typedef enum NodeTag
 	T_ScalarArrayOpExprState,
 	T_BoolExprState,
 	T_SubPlanState,
+	T_FieldSelectState,
 	T_CaseExprState,
 	T_CaseWhenState,
 	T_ArrayExprState,

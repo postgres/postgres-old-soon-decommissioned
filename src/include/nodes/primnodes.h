@@ -525,9 +525,8 @@ typedef struct SubPlan
  * FieldSelect
  *
  * FieldSelect represents the operation of extracting one field from a tuple
- * value.  At runtime, the input expression is expected to yield a Datum
- * that contains a pointer-to-TupleTableSlot.  The specified field number
- * is extracted and returned as a Datum.
+ * value.  At runtime, the input expression is expected to yield a rowtype
+ * Datum.  The specified field number is extracted and returned as a Datum.
  * ----------------
  */
 

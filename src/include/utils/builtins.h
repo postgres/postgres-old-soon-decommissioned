@@ -384,10 +384,6 @@ extern Datum oidvectorge(PG_FUNCTION_ARGS);
 extern Datum oidvectorgt(PG_FUNCTION_ARGS);
 
 /* pseudotypes.c */
-extern Datum record_in(PG_FUNCTION_ARGS);
-extern Datum record_out(PG_FUNCTION_ARGS);
-extern Datum record_recv(PG_FUNCTION_ARGS);
-extern Datum record_send(PG_FUNCTION_ARGS);
 extern Datum cstring_in(PG_FUNCTION_ARGS);
 extern Datum cstring_out(PG_FUNCTION_ARGS);
 extern Datum cstring_recv(PG_FUNCTION_ARGS);
@@ -451,6 +447,12 @@ extern Datum regtypesend(PG_FUNCTION_ARGS);
 extern List *stringToQualifiedNameList(const char *string, const char *caller);
 extern char *format_procedure(Oid procedure_oid);
 extern char *format_operator(Oid operator_oid);
+
+/* rowtypes.c */
+extern Datum record_in(PG_FUNCTION_ARGS);
+extern Datum record_out(PG_FUNCTION_ARGS);
+extern Datum record_recv(PG_FUNCTION_ARGS);
+extern Datum record_send(PG_FUNCTION_ARGS);
 
 /* ruleutils.c */
 extern Datum pg_get_ruledef(PG_FUNCTION_ARGS);

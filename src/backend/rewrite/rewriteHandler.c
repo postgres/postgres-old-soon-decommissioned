@@ -523,16 +523,7 @@ build_column_default(Relation rel, int attrno)
 		 * No per-column default, so look for a default for the type
 		 * itself.
 		 */
-		if (att_tup->attisset)
-		{
-			/*
-			 * Set attributes are represented as OIDs no matter what the
-			 * set element type is, and the element type's default is
-			 * irrelevant too.
-			 */
-		}
-		else
-			expr = get_typdefault(atttype);
+		expr = get_typdefault(atttype);
 	}
 
 	if (expr == NULL)

@@ -95,9 +95,7 @@ extern int SPI_getargcount(void *plan);
 extern bool SPI_is_cursor_plan(void *plan);
 
 extern HeapTuple SPI_copytuple(HeapTuple tuple);
-extern TupleDesc SPI_copytupledesc(TupleDesc tupdesc);
-extern TupleTableSlot *SPI_copytupleintoslot(HeapTuple tuple,
-					  TupleDesc tupdesc);
+extern HeapTupleHeader SPI_returntuple(HeapTuple tuple, TupleDesc tupdesc);
 extern HeapTuple SPI_modifytuple(Relation rel, HeapTuple tuple, int natts,
 				int *attnum, Datum *Values, const char *Nulls);
 extern int	SPI_fnumber(TupleDesc tupdesc, const char *fname);

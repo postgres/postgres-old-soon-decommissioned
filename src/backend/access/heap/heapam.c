@@ -1116,6 +1116,7 @@ heap_insert(Relation relation, HeapTuple tup, CommandId cid)
 	tup->t_data->t_infomask |= HEAP_XMAX_INVALID;
 	HeapTupleHeaderSetXmin(tup->t_data, GetCurrentTransactionId());
 	HeapTupleHeaderSetCmin(tup->t_data, cid);
+	HeapTupleHeaderSetCmax(tup->t_data, 0);	/* zero out Datum fields */
 	tup->t_tableOid = relation->rd_id;
 
 	/*
@@ -1576,6 +1577,7 @@ l2:
 	newtup->t_data->t_infomask |= (HEAP_XMAX_INVALID | HEAP_UPDATED);
 	HeapTupleHeaderSetXmin(newtup->t_data, GetCurrentTransactionId());
 	HeapTupleHeaderSetCmin(newtup->t_data, cid);
+	HeapTupleHeaderSetCmax(newtup->t_data, 0);	/* zero out Datum fields */
 
 	/*
 	 * If the toaster needs to be activated, OR if the new tuple will not

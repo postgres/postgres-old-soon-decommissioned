@@ -120,9 +120,9 @@ extern void ExecEndNode(PlanState *node);
 /*
  * prototypes from functions in execQual.c
  */
-extern Datum GetAttributeByNum(TupleTableSlot *slot, AttrNumber attrno,
+extern Datum GetAttributeByNum(HeapTupleHeader tuple, AttrNumber attrno,
 				  bool *isNull);
-extern Datum GetAttributeByName(TupleTableSlot *slot, char *attname,
+extern Datum GetAttributeByName(HeapTupleHeader tuple, const char *attname,
 				   bool *isNull);
 extern void init_fcache(Oid foid, FuncExprState *fcache,
 			MemoryContext fcacheCxt);

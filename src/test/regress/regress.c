@@ -15,8 +15,6 @@
 #define RDELIM			')'
 #define DELIM			','
 
-typedef TupleTableSlot *TUPLE;
-
 extern Datum regress_dist_ptpath(PG_FUNCTION_ARGS);
 extern Datum regress_path_dist(PG_FUNCTION_ARGS);
 extern PATH *poly2path(POLYGON *poly);
@@ -196,7 +194,7 @@ PG_FUNCTION_INFO_V1(overpaid);
 Datum
 overpaid(PG_FUNCTION_ARGS)
 {
-	TUPLE		tuple = (TUPLE) PG_GETARG_POINTER(0);
+	HeapTupleHeader tuple = PG_GETARG_HEAPTUPLEHEADER(0);
 	bool		isnull;
 	int32		salary;
 

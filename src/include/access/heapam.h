@@ -111,11 +111,12 @@ extern Datum fastgetattr(HeapTuple tup, int attnum, TupleDesc tupleDesc,
 				fastgetattr((tup), (attnum), (tupleDesc), (isnull)) \
 		) \
 		: \
-			heap_getsysattr((tup), (attnum), (isnull)) \
+			heap_getsysattr((tup), (attnum), (tupleDesc), (isnull)) \
 	) \
 )
 
-extern Datum heap_getsysattr(HeapTuple tup, int attnum, bool *isnull);
+extern Datum heap_getsysattr(HeapTuple tup, int attnum, TupleDesc tupleDesc,
+							 bool *isnull);
 
 
 /* ----------------
