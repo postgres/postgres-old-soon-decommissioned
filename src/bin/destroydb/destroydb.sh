@@ -30,10 +30,11 @@ if [ -z "$USER" ]; then
 fi
 
 dbname=$USER
-
+forcedel=f
 while [ -n "$1" ]
 do
 	case $1 in 
+	        -y) forcedel=t;;
 		-a) AUTHSYS=$2; shift;;
 		-h) PGHOST=$2; shift;;
 		-p) PGPORT=$2; shift;;
@@ -41,7 +42,6 @@ do
 	esac
 	shift;
 done
-
 if [ -z "$AUTHSYS" ]; then
   AUTHOPT=""
 else
@@ -60,12 +60,25 @@ else
   PGPORTOPT="-p $PGPORT"
 fi
 
-psql -tq $AUTHOPT $PGHOSTOPT $PGPORTOPT -c "drop database $dbname" template1
+answer=y
+if [ "$forcedel" = f ]
+   then
+   answer=f
 
-if [ $? -ne 0 ]
+   while [ "$answer" != y -a "$answer" != n ]
+   do
+       echo -n "Are you sure? (y/n) "
+       read answer
+   done
+fi
+
+if [ "$answer" = y ]
 then
-	echo "$CMDNAME: database destroy failed on $dbname."
-	exit 1
+  psql -tq $AUTHOPT $PGHOSTOPT $PGPORTOPT -c "drop database $dbname" template1
+    if [ $? -ne 0 ]
+       then echo "$CMDNAME: database destroy failed on $dbname."
+       exit 1
+    fi
 fi
 
 exit 0
