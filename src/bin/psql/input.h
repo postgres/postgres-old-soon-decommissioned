@@ -32,7 +32,8 @@
 #endif
 #endif
 
-char	   *gets_interactive(char *prompt);
+
+char	   *gets_interactive(const char *prompt);
 char	   *gets_fromFile(FILE *source);
 
 void		initializeInput(int flags);

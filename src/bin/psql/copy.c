@@ -446,8 +446,6 @@ handleCopyOut(PGconn *conn, FILE *copystream)
 	char		copybuf[COPYBUFSIZ];
 	int			ret;
 
-	assert(cancelConn);
-
 	while (!copydone)
 	{
 		ret = PQgetline(conn, copybuf, COPYBUFSIZ);
@@ -476,7 +474,7 @@ handleCopyOut(PGconn *conn, FILE *copystream)
 	}
 	fflush(copystream);
 	ret = !PQendcopy(conn);
-	cancelConn = NULL;
+	ResetCancelConn();
 	return ret;
 }
 

@@ -92,8 +92,6 @@ MainLoop(FILE *source)
 	/* main loop to get queries and execute them */
 	while (1)
 	{
-#ifndef WIN32
-
 		/*
 		 * Welcome code for Control-C
 		 */
@@ -113,6 +111,7 @@ MainLoop(FILE *source)
 			cancel_pressed = false;
 		}
 
+#ifndef WIN32
 		if (sigsetjmp(main_loop_jmp, 1) != 0)
 		{
 			/* got here with longjmp */

@@ -29,6 +29,8 @@ extern char *simple_prompt(const char *prompt, int maxlen, bool echo);
 extern volatile bool cancel_pressed;
 extern PGconn *cancelConn;
 
+extern void ResetCancelConn(void);
+
 #ifndef WIN32
 extern void handle_sigint(SIGNAL_ARGS);
 #endif   /* not WIN32 */
