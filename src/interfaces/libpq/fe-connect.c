@@ -2387,7 +2387,7 @@ parseServiceInfo(PQconninfoOption *options, PQExpBuffer errorMessage)
 	 *	location to find our config files.
 	 */	
 	snprintf(serviceFile, MAXPGPATH, "%s/pg_service.conf",
-			 getenv("PGETC") ? getenv("PGETC") : SYSCONFDIR);
+			 getenv("PGSYSCONFDIR") ? getenv("PGSYSCONFDIR") : SYSCONFDIR);
 
 	if (service != NULL)
 	{
