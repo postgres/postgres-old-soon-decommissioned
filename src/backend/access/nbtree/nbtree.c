@@ -37,7 +37,7 @@ bool		FastBuild = true;	/* use sort/build instead */
  * TEMPORARY FLAG FOR TESTING NEW FIX TREE
  * CODE WITHOUT AFFECTING ANYONE ELSE
  */
-bool		FixBTree = false;
+bool		FixBTree = true;
 
 static void _bt_restscan(IndexScanDesc scan);
 
