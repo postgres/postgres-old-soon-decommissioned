@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * heap.h
- *	  prototypes for functions in lib/catalog/heap.c
+ *	  prototypes for functions in backend/catalog/heap.c
  *
  *
  * Portions Copyright (c) 1996-2001, PostgreSQL Global Development Group
@@ -47,8 +47,10 @@ extern void AddRelationRawConstraints(Relation rel,
 
 extern int RemoveCheckConstraint(Relation rel, const char *constrName, bool inh);
 
-
 extern Form_pg_attribute SystemAttributeDefinition(AttrNumber attno,
 												   bool relhasoids);
+
+extern Form_pg_attribute SystemAttributeByName(const char *attname,
+											   bool relhasoids);
 
 #endif	 /* HEAP_H */
