@@ -1099,6 +1099,8 @@ _equalCreatedbStmt(CreatedbStmt *a, CreatedbStmt *b)
 {
 	if (!equalstr(a->dbname, b->dbname))
 		return false;
+	if (!equalstr(a->dbowner, b->dbowner))
+		return false;
 	if (!equalstr(a->dbpath, b->dbpath))
 		return false;
 	if (!equalstr(a->dbtemplate, b->dbtemplate))

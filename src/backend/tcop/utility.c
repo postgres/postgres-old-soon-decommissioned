@@ -624,8 +624,9 @@ ProcessUtility(Node *parsetree,
 
 				set_ps_display(commandTag = "CREATE DATABASE");
 
-				createdb(stmt->dbname, stmt->dbpath,
-						 stmt->dbtemplate, stmt->encoding);
+				createdb(stmt->dbname, stmt->dbowner,
+						 stmt->dbpath, stmt->dbtemplate,
+						 stmt->encoding);
 			}
 			break;
 
