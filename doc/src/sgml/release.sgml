@@ -367,7 +367,7 @@ $PostgreSQL$
       that contains OIDs, the <literal>WITH OIDS</literal> clause must
       be specified or the <varname>default_with_oids</varname>
       configuration parameter must be enabled. Users are encouraged to
-      explicitely specify <literal>WITH OIDS</literal> if their tables
+      explicitly specify <literal>WITH OIDS</literal> if their tables
       require OIDs for compatibility with future releases of
       <productname>PostgreSQL</productname>.
      </para>
@@ -1827,6 +1827,12 @@ $PostgreSQL$
     <listitem>
      <para>
       Major documentation improvements (Neil, Peter)
+     </para>
+    </listitem>
+
+    <listitem>
+     <para>
+      Remove contrib/rserv: obsoleted by various separate projects
      </para>
     </listitem>
 
