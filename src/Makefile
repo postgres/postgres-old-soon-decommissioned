@@ -32,7 +32,9 @@ ifeq ($(USE_TCL), true)
 	$(MAKE) -C libpgtcl $@
 endif
 	$(MAKE) -C bin $@
+ifneq ($(wildcard $(MKDIR)/../../doc), )
 	$(MAKE) -C ../doc $@
+endif
 	@-chown -R $(POSTGRESLOGIN) $(POSTGRESDIR) 2>/dev/null
 	@if test $@. = all. -o $@. = .; then \
 	echo All of Postgres95 is successfully made.  Ready to install. ;\
