@@ -25,9 +25,20 @@
 static void
 usage(const char *progname)
 {
-	printf(_("%s displays PostgreSQL database cluster control information.\n\n"), progname);
-	printf(_("Usage:\n  %s [DATADIR]\n\n"), progname);
-	printf(_("If not data directory is specified, the environment variable PGDATA\nis used.\n\n"));
+	printf
+	(
+		_(
+			"Usage:\n"
+			"  %s [OPTION]\n\n"
+			"Options:\n"
+			"  DATADIR        show cluster control information for DATADIR\n"
+			"  -?, --help     display this help and exit\n"
+			"  -V, --version  display pg_controldata's version and exit\n\n"
+		),
+		progname
+	);
+	printf(_("%s displays PostgreSQL database cluster control information.\n"), progname);
+	printf(_("If no data directory is specified, the environment variable PGDATA\nis used.\n\n"));
 	printf(_("Report bugs to <pgsql-bugs@postgresql.org>.\n"));
 }
 
@@ -97,6 +108,7 @@ main(int argc, char *argv[])
 	if (DataDir == NULL)
 	{
 		fprintf(stderr, _("%s: no data directory specified\n"), progname);
+		fprintf(stderr, _("Try '%s --help' for more information.\n"), progname);
 		exit(1);
 	}
 
