@@ -184,13 +184,13 @@ INSTALL.html: standalone-install.sgml installation.sgml version.sgml
 	$(JADE.text) -V nochunks standalone-install.sgml installation.sgml >$@
 
 HISTORY.html: release.sgml
-	( echo '<!doctype appendix PUBLIC "-//OASIS//DTD DocBook V3.1//EN">'; \
+	( echo '<!doctype appendix PUBLIC "-//OASIS//DTD DocBook V4.2//EN">'; \
 	  cat $< ) >tempfile_HISTORY.sgml
 	$(JADE.text) -V nochunks tempfile_HISTORY.sgml >$@
 	rm tempfile_HISTORY.sgml
 
 regress_README.html: regress.sgml
-	( echo '<!doctype chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN" ['; \
+	( echo '<!doctype chapter PUBLIC "-//OASIS//DTD DocBook V4.2//EN" ['; \
 	  echo '<!entity % standalone-ignore "IGNORE"> ]>'; \
 	  cat $< ) >tempfile_regress_README.sgml
 	$(JADE.text) -V nochunks tempfile_regress_README.sgml >$@
