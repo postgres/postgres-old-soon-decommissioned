@@ -548,12 +548,6 @@ analyze_rel(Oid relid, List *va_cols)
 		return;
 	}
 
-	/*
-	 * Open the class, get an exclusive lock on it, and check permissions.
-	 *
-	 * Note we choose to treat permissions failure as a NOTICE and keep
-	 * trying to vacuum the rest of the DB --- is this appropriate?
-	 */
 	onerel = heap_open(relid, AccessShareLock);
 
 #ifndef NO_SECURITY
