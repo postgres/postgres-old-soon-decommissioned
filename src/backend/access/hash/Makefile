@@ -11,11 +11,13 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-INCLUDE_OPT = -I../.. \
-              -I../../port/$(PORTNAME) \
-              -I../../../include
+INCLUDE_OPT = -I../.. 
 
-CFLAGS+=$(INCLUDE_OPT)
+ifdef PORTNAME
+  INCLUDE_OPT += -I../../port/$(PORTNAME) 
+endif
+
+CFLAGS += $(INCLUDE_OPT)
 
 OBJS = hash.o hashfunc.o hashinsert.o hashovfl.o hashpage.o hashscan.o \
        hashsearch.o hashstrat.o hashutil.o

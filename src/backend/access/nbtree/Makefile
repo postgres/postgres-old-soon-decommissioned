@@ -11,11 +11,13 @@
 SRCDIR = ../../..
 include ../../../Makefile.global
 
-INCLUDE_OPT = -I../.. \
-              -I../../port/$(PORTNAME) \
-              -I../../../include
+INCLUDE_OPT = -I../.. 
 
-CFLAGS+=$(INCLUDE_OPT)
+ifdef PORTNAME
+INCLUDE_OPT += -I../../port/$(PORTNAME) 
+endif 
+
+CFLAGS += $(INCLUDE_OPT)
 
 OBJS = nbtcompare.o nbtinsert.o nbtpage.o nbtree.o nbtscan.o nbtsearch.o \
        nbtstrat.o nbtutils.o nbtsort.o
