@@ -177,7 +177,7 @@ PostgreSQL documentation
 	Dump data as <command>INSERT</command> commands (rather
 	than <command>COPY</command>). This will make restoration very
 	slow, but it makes the archives more portable to other SQL database
-	packages.
+	management systems.
        </para>
       </listitem>
      </varlistentry>

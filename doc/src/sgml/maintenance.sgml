@@ -40,10 +40,10 @@ $Header$
   </para>
 
   <para>
-   <productname>PostgreSQL</productname> is low-maintenance compared to
-   some other database products.  Nonetheless, appropriate attention to
-   these tasks will go far towards ensuring a pleasant and productive
-   experience with the system.
+   <productname>PostgreSQL</productname> is low-maintenance compared
+   to some other database management systems.  Nonetheless,
+   appropriate attention to these tasks will go far towards ensuring a
+   pleasant and productive experience with the system.
   </para>
 
  <sect1 id="routine-vacuuming">
