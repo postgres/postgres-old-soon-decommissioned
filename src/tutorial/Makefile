@@ -9,17 +9,9 @@
 #-------------------------------------------------------------------------
 
 SRCDIR= ..
-include ../Makefile.global
+include $(SRCDIR)/Makefile.global
 
-CFLAGS+= -I$(LIBPQDIR) -I../../include
-
-#
-# And where libpq goes, so goes the authentication stuff...
-#
-ifdef KRBVERS
-LDFLAGS+= $(KRBLIBS)
-CFLAGS+= $(KRBFLAGS)
-endif
+CFLAGS+= -I$(SRCDIR)/include $(CFLAGS_SL)
 
 #
 # DLOBJS is the dynamically-loaded object files.  The "funcs" queries
@@ -41,8 +33,6 @@ all: $(DLOBJS) $(QUERIES)
 	    -e "s:_OBJWD_:$$C:g" \
 	    -e "s:_DLSUFFIX_:$(DLSUFFIX):g" \
 	    -e "s/_USER_/$$USER/g" < $< > $@
-
-funcs.sql: $(DLOBJS)
 
 clean:
 	rm -f $(DLOBJS) $(QUERIES)

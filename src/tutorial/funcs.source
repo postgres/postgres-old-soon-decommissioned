@@ -126,16 +126,16 @@ SELECT name(high_pay()) AS overpaid;
 -----------------------------
 
 CREATE FUNCTION add_one(int4) RETURNS int4
-   AS '_OBJWD_/funcs.so' LANGUAGE 'c';
+   AS '_OBJWD_/funcs_DLSUFFIX_' LANGUAGE 'c';
 
 CREATE FUNCTION makepoint(point, point) RETURNS point
-   AS '_OBJWD_/funcs.so' LANGUAGE 'c';
+   AS '_OBJWD_/funcs_DLSUFFIX_' LANGUAGE 'c';
 
 CREATE FUNCTION copytext(text) RETURNS text
-   AS '_OBJWD_/funcs.so' LANGUAGE 'c';
+   AS '_OBJWD_/funcs_DLSUFFIX_' LANGUAGE 'c';
 
 CREATE FUNCTION c_overpaid(EMP, int4) RETURNS bool
-   AS '_OBJWD_/funcs.so' LANGUAGE 'c';
+   AS '_OBJWD_/funcs_DLSUFFIX_' LANGUAGE 'c';
 
 SELECT add_one(3) AS four;
 
