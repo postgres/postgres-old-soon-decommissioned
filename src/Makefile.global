@@ -409,6 +409,8 @@ else
   LDADD_BE= -ldld -lcompat -lipc
 endif
 
+DLSUFFIX= .o
+
 endif
 
 #--------------------------------------------------------------------------
