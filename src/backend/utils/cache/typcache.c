@@ -409,8 +409,8 @@ lookup_rowtype_tupdesc_noerror(Oid type_id, int32 typmod, bool noError)
 		if (typentry->tupDesc == NULL && !noError)
 			ereport(ERROR,
 					(errcode(ERRCODE_WRONG_OBJECT_TYPE),
-					 errmsg("type %u is not composite",
-							type_id)));
+					 errmsg("type %s is not composite",
+							format_type_be(type_id))));
 		return typentry->tupDesc;
 	}
 	else
