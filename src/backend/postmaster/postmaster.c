@@ -544,6 +544,22 @@ PostmasterMain(int argc, char *argv[])
 	}
 
 	/*
+	 * Select default values for switches where needed
+	 */
+	if (HostName == NULL)
+	{
+		if (!(HostName = getenv("PGHOST")))
+		{
+			HostName = "any";
+		}
+	}
+	else if (!NetServer)
+	{
+		fprintf(stderr, "%s: -h requires -i.\n", progname);
+		exit(1);
+	}
+
+	/*
 	 * Check for invalid combinations of switches
 	 */
 	if (NBuffers < 2 * MaxBackends || NBuffers < 16)
