@@ -137,11 +137,17 @@ installcheck: all
 	mkdir ./testtablespace
 	$(SHELL) ./pg_regress --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE)
 
+installcheck-parallel: all
+	-rm -rf ./testtablespace
+	mkdir ./testtablespace
+	$(SHELL) ./pg_regress --schedule=$(srcdir)/parallel_schedule --multibyte=$(MULTIBYTE) $(MAXCONNOPT)
+
 
 # old interfaces follow...
 
 runcheck: check
 runtest: installcheck
+runtest-parallel: installcheck-parallel
 
 bigtest:
 	$(SHELL) ./pg_regress --schedule=$(srcdir)/serial_schedule --multibyte=$(MULTIBYTE) numeric_big
