@@ -87,8 +87,11 @@ elog(int lev, const char *fmt,...)
 		case NOTICE:
 			cp = "NOTICE:  ";
 			break;
-		case WARN:
-			cp = "WARN:  ";
+		case ERROR:
+			cp = "ERROR:  ";
+			break;
+		case ABORT:
+			cp = "ABORT:  ";
 			break;
 		default:
 			sprintf(line, "FATAL %d:  ", lev);
