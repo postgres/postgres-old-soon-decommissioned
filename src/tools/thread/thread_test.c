@@ -109,7 +109,7 @@ main(int argc, char *argv[])
 		sched_yield();			/* if this is a portability problem,
 								 * remove it */
 
-	fprintf(stderr, "Your errno is thread-safe.\n");
+	printf("Your errno is thread-safe.\n");
 
 #ifndef HAVE_STRERROR_R
 	if (strerror_p1 != strerror_p2)
