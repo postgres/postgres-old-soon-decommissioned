@@ -3,6 +3,9 @@ $Header$
 Indices and Keys
 
 $Log: keys.sgml,v $
+Revision 1.2  1998/08/17 16:18:13  thomas
+Small sentence cleanups. Add tags for acronyms and products.
+
 Revision 1.1  1998/08/15 06:52:03  thomas
 Nice exposition on indices and keys from Herouth Maoz which appeared
  on the mailing lists a while ago. Maybe slightly changed to fit docs.
@@ -107,6 +110,8 @@ Should not allow NULLs.
 </Para>
 </ListItem>
 </itemizedlist>
+</para>
+</listitem>
 
 <ListItem>
 <Para>
@@ -128,7 +133,10 @@ NULLs are acceptable.
 </Para>
 </ListItem>
 </itemizedlist>
+</para>
+</listitem>
 </itemizedlist>
+</para>
 
 <Para>
 As for why no non-unique keys are defined explicitly in standard <acronym>SQL</acronym> syntax?
