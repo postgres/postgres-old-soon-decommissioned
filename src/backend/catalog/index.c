@@ -775,10 +775,8 @@ index_drop(Oid indexId)
 	LockRelation(userIndexRelation, AccessExclusiveLock);
 
 	/*
-	 * flush buffer cache and schedule physical removal of the file
+	 * Schedule physical removal of the file
 	 */
-	FlushRelationBuffers(userIndexRelation, (BlockNumber) 0);
-
 	RelationOpenSmgr(userIndexRelation);
 	smgrscheduleunlink(userIndexRelation->rd_smgr,
 					   userIndexRelation->rd_istemp);
@@ -1617,14 +1615,7 @@ reindex_index(Oid indexId)
 
 		if (inplace)
 		{
-			/*
-			 * Release any buffers associated with this index.	If they're
-			 * dirty, they're just dropped without bothering to flush to
-			 * disk.
-			 */
-			DropRelationBuffers(iRel);
-
-			/* Now truncate the actual data */
+			/* Truncate the actual file (and discard buffers) */
 			RelationTruncate(iRel, 0);
 		}
 		else

@@ -772,17 +772,6 @@ btvacuumcleanup(PG_FUNCTION_ARGS)
 		{
 			/*
 			 * Okay to truncate.
-			 *
-			 * First, flush any shared buffers for the blocks we intend to
-			 * delete.	FlushRelationBuffers is a bit more than we need
-			 * for this, since it will also write out dirty buffers for
-			 * blocks we aren't deleting, but it's the closest thing in
-			 * bufmgr's API.
-			 */
-			FlushRelationBuffers(rel, new_pages);
-
-			/*
-			 * Do the physical truncation.
 			 */
 			RelationTruncate(rel, new_pages);
 

@@ -5628,13 +5628,12 @@ copy_relation_data(Relation rel, SMgrRelation dst)
 	Page		page = (Page) buf;
 
 	/*
-	 * Since we copy the data directly without looking at the shared
+	 * Since we copy the file directly without looking at the shared
 	 * buffers, we'd better first flush out any pages of the source
-	 * relation that are in shared buffers.  We assume no new pages will
-	 * get loaded into buffers while we are holding exclusive lock on the
-	 * rel.
+	 * relation that are in shared buffers.  We assume no new changes
+	 * will be made while we are holding exclusive lock on the rel.
 	 */
-	FlushRelationBuffers(rel, 0);
+	FlushRelationBuffers(rel);
 
 	/*
 	 * We need to log the copied data in WAL iff WAL archiving is enabled

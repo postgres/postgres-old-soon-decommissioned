@@ -132,8 +132,7 @@ extern void FlushBufferPool(void);
 extern BlockNumber BufferGetBlockNumber(Buffer buffer);
 extern BlockNumber RelationGetNumberOfBlocks(Relation relation);
 extern void RelationTruncate(Relation rel, BlockNumber nblocks);
-extern void FlushRelationBuffers(Relation rel, BlockNumber firstDelBlock);
-extern void DropRelationBuffers(Relation rel);
+extern void FlushRelationBuffers(Relation rel);
 extern void DropRelFileNodeBuffers(RelFileNode rnode, bool istemp,
 					   BlockNumber firstDelBlock);
 extern void DropBuffers(Oid dbid);
