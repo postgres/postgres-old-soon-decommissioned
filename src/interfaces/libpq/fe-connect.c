@@ -444,7 +444,7 @@ PQsetdbLogin(const char *pghost, const char *pgport, const char *pgoptions, cons
 				*(conn->dbName + strlen(conn->dbName) - 1) = '\0';
 			}
 			else
-				for (i = strlen(conn->dbName); i >= 0; i--)
+				for (i = 0; conn->dbName[i]; i++)
 					if (isupper(conn->dbName[i]))
 						conn->dbName[i] = tolower(conn->dbName[i]);
 		}

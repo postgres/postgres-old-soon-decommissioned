@@ -1697,7 +1697,7 @@ PQfnumber(PGresult *res, const char *field_name)
 		*(field_case + strlen(field_case) - 1) = '\0';
 	}
 	else
-		for (i = 0; i < strlen(field_case); i++)
+		for (i = 0; field_case[i]; i++)
 			if (isupper(field_case[i]))
 				field_case[i] = tolower(field_case[i]);
 

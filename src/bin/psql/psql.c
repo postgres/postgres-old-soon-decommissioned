@@ -558,7 +558,7 @@ tableDesc(PsqlSettings *pset, char *table, FILE *fout)
 	}
 	else
 	{
-		for (i = strlen(table); i >= 0; i--)
+		for (i = 0; table[i]; i++)
 			if (isupper(table[i]))
 				table[i] = tolower(table[i]);
 	}
@@ -708,7 +708,7 @@ objectDescription(PsqlSettings *pset, char *object, FILE *fout)
 	}
 	else
 	{
-		for (i = strlen(object); i >= 0; i--)
+		for (i = 0; object[i]; i++)
 			if (isupper(object[i]))
 				object[i] = tolower(object[i]);
 	}
