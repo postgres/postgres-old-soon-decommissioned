@@ -123,6 +123,12 @@ REINDEX
   </para>
 
   <para>
+   <command>REINDEX</command> also removes certain dead index pages that
+   can't be reclaimed any other way. See the "Routine Reindexing"
+   section in the manual for more information.
+  </para>
+
+  <para>
     If you suspect corruption of an index on a user table, you can
     simply rebuild that index, or all indexes on the table, using
     <command>REINDEX INDEX</command> or <command>REINDEX TABLE</command>.
