@@ -367,8 +367,14 @@ _bt_checkkeys(IndexScanDesc scan, IndexTuple tuple, Size *keysok)
 							  &isNull);
 
 		/* btree doesn't support 'A is null' clauses, yet */
-		if (isNull || key[0].sk_flags & SK_ISNULL)
+		if (key[0].sk_flags & SK_ISNULL)
 			return false;
+		if (isNull)
+		{
+			if (*keysok < so->numberOfFirstKeys)
+				*keysok = -1;
+			return false;
+		}
 
 		if (key[0].sk_flags & SK_COMMUTE)
 		{
