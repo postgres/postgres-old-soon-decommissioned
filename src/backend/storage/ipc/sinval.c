@@ -310,18 +310,23 @@ GetSnapshotData(bool serializable)
 	if (snapshot == NULL)
 		elog(ERROR, "Memory exhausted in GetSnapshotData");
 
-	snapshot->xmin = GetCurrentTransactionId();
-
-	LWLockAcquire(SInvalLock, LW_SHARED);
-
 	/*
-	 * There can be no more than lastBackend active transactions, so this
-	 * is enough space:
+	 * Allocating space for MaxBackends xids is usually overkill;
+	 * lastBackend would be sufficient.  But it seems better to do the
+	 * malloc while not holding the lock, so we can't look at lastBackend.
 	 */
 	snapshot->xip = (TransactionId *)
-		malloc(segP->lastBackend * sizeof(TransactionId));
+		malloc(MaxBackends * sizeof(TransactionId));
 	if (snapshot->xip == NULL)
 		elog(ERROR, "Memory exhausted in GetSnapshotData");
+
+	snapshot->xmin = GetCurrentTransactionId();
+
+	/*
+	 * If we are going to set MyProc->xmin then we'd better get exclusive
+	 * lock; if not, this is a read-only operation so it can be shared.
+	 */
+	LWLockAcquire(SInvalLock, serializable ? LW_EXCLUSIVE : LW_SHARED);
 
 	/*--------------------
 	 * Unfortunately, we have to call ReadNewTransactionId() after acquiring
