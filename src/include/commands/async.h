@@ -15,11 +15,7 @@
 
 #include "nodes/memnodes.h"
 
-#if defined(PORTNAME_linux)
-extern void Async_NotifyHandler(int);
-#else
-extern void Async_NotifyHandler(void);
-#endif
+extern void Async_NotifyHandler(SIGNAL_ARGS);
 extern void Async_Notify(char *relname);
 extern void Async_NotifyAtCommit(void);
 extern void Async_NotifyAtAbort(void);
