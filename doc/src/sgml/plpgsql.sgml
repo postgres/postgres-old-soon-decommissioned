@@ -392,7 +392,7 @@ END;
 
     <para>
      All key words and identifiers can be written in mixed upper and
-     lower case.  Identifiers are implicitly converted to lower-case
+     lower case.  Identifiers are implicitly converted to lowercase
      unless double-quoted.
     </para>
 
