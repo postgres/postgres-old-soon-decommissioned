@@ -38,6 +38,11 @@ WANTED_DIRS = \
 		userlock	\
 		vacuumlo	
 
+ifeq ($(with_java),yes)
+WANTED_DIRS += retep
+endif
+
+
 all install installdirs uninstall clean distclean maintainer-clean:
 	for dir in $(WANTED_DIRS); do \
 	    if [ -f $$dir/Makefile ]; then \
