@@ -746,6 +746,20 @@ DATA(insert OID = 1815 (  "<<"	  PGUID 0 b t f 1562 1562 1562	  0    0	0	 0 varb
 DATA(insert OID = 1816 (  ">>"	  PGUID 0 b t f 1562 1562 1562	  0    0	0	 0 varbitshiftright - - ));
 DATA(insert OID = 1817 (  "||"	  PGUID 0 b t f 1562 1562 1562	  0    0	0	 0 varbitcat - - ));
 
+DATA(insert OID = 1862 ( "="	   PGUID 0 b t f  21  20  16 1868  1863  95 412 int28eq eqsel eqjoinsel ));
+DATA(insert OID = 1863 ( "<>"	   PGUID 0 b t f  21  20  16 1869  1862   0   0 int28ne neqsel neqjoinsel ));
+DATA(insert OID = 1864 ( "<"	   PGUID 0 b t f  21  20  16 1871  1867   0   0 int28lt scalarltsel scalarltjoinsel ));
+DATA(insert OID = 1865 ( ">"	   PGUID 0 b t f  21  20  16 1870  1866   0   0 int28gt scalargtsel scalargtjoinsel ));
+DATA(insert OID = 1866 ( "<="	   PGUID 0 b t f  21  20  16 1873  1865   0   0 int28le scalarltsel scalarltjoinsel ));
+DATA(insert OID = 1867 ( ">="	   PGUID 0 b t f  21  20  16 1872  1864   0   0 int28ge scalargtsel scalargtjoinsel ));
+
+DATA(insert OID = 1868 ( "="	   PGUID 0 b t f  20  21  16  1862 1869 412 95 int82eq eqsel eqjoinsel ));
+DATA(insert OID = 1869 ( "<>"	   PGUID 0 b t f  20  21  16  1863 1868   0  0 int82ne neqsel neqjoinsel ));
+DATA(insert OID = 1870 ( "<"	   PGUID 0 b t f  20  21  16  1865 1873   0  0 int82lt scalarltsel scalarltjoinsel ));
+DATA(insert OID = 1871 ( ">"	   PGUID 0 b t f  20  21  16  1864 1872   0  0 int82gt scalargtsel scalargtjoinsel ));
+DATA(insert OID = 1872 ( "<="	   PGUID 0 b t f  20  21  16  1867 1871   0  0 int82le scalarltsel scalarltjoinsel ));
+DATA(insert OID = 1873 ( ">="	   PGUID 0 b t f  20  21  16  1866 1870   0  0 int82ge scalargtsel scalargtjoinsel ));
+
 /*
  * function prototypes
  */

@@ -111,7 +111,7 @@ int8out(PG_FUNCTION_ARGS)
 
 
 /*----------------------------------------------------------
- *	Relational operators for int8s.
+ *	Relational operators for int8s, including cross-data-type comparisons.
  *---------------------------------------------------------*/
 
 /* int8relop()
@@ -280,6 +280,120 @@ Datum
 int48ge(PG_FUNCTION_ARGS)
 {
 	int32		val1 = PG_GETARG_INT32(0);
+	int64		val2 = PG_GETARG_INT64(1);
+
+	PG_RETURN_BOOL(val1 >= val2);
+}
+
+/* int82relop()
+ * Is 64-bit val1 relop 16-bit val2?
+ */
+Datum
+int82eq(PG_FUNCTION_ARGS)
+{
+	int64		val1 = PG_GETARG_INT64(0);
+	int16		val2 = PG_GETARG_INT16(1);
+
+	PG_RETURN_BOOL(val1 == val2);
+}
+
+Datum
+int82ne(PG_FUNCTION_ARGS)
+{
+	int64		val1 = PG_GETARG_INT64(0);
+	int16		val2 = PG_GETARG_INT16(1);
+
+	PG_RETURN_BOOL(val1 != val2);
+}
+
+Datum
+int82lt(PG_FUNCTION_ARGS)
+{
+	int64		val1 = PG_GETARG_INT64(0);
+	int16		val2 = PG_GETARG_INT16(1);
+
+	PG_RETURN_BOOL(val1 < val2);
+}
+
+Datum
+int82gt(PG_FUNCTION_ARGS)
+{
+	int64		val1 = PG_GETARG_INT64(0);
+	int16		val2 = PG_GETARG_INT16(1);
+
+	PG_RETURN_BOOL(val1 > val2);
+}
+
+Datum
+int82le(PG_FUNCTION_ARGS)
+{
+	int64		val1 = PG_GETARG_INT64(0);
+	int16		val2 = PG_GETARG_INT16(1);
+
+	PG_RETURN_BOOL(val1 <= val2);
+}
+
+Datum
+int82ge(PG_FUNCTION_ARGS)
+{
+	int64		val1 = PG_GETARG_INT64(0);
+	int16		val2 = PG_GETARG_INT16(1);
+
+	PG_RETURN_BOOL(val1 >= val2);
+}
+
+/* int28relop()
+ * Is 16-bit val1 relop 64-bit val2?
+ */
+Datum
+int28eq(PG_FUNCTION_ARGS)
+{
+	int16		val1 = PG_GETARG_INT16(0);
+	int64		val2 = PG_GETARG_INT64(1);
+
+	PG_RETURN_BOOL(val1 == val2);
+}
+
+Datum
+int28ne(PG_FUNCTION_ARGS)
+{
+	int16		val1 = PG_GETARG_INT16(0);
+	int64		val2 = PG_GETARG_INT64(1);
+
+	PG_RETURN_BOOL(val1 != val2);
+}
+
+Datum
+int28lt(PG_FUNCTION_ARGS)
+{
+	int16		val1 = PG_GETARG_INT16(0);
+	int64		val2 = PG_GETARG_INT64(1);
+
+	PG_RETURN_BOOL(val1 < val2);
+}
+
+Datum
+int28gt(PG_FUNCTION_ARGS)
+{
+	int16		val1 = PG_GETARG_INT16(0);
+	int64		val2 = PG_GETARG_INT64(1);
+
+	PG_RETURN_BOOL(val1 > val2);
+}
+
+Datum
+int28le(PG_FUNCTION_ARGS)
+{
+	int16		val1 = PG_GETARG_INT16(0);
+	int64		val2 = PG_GETARG_INT64(1);
+
+	PG_RETURN_BOOL(val1 <= val2);
+}
+
+Datum
+int28ge(PG_FUNCTION_ARGS)
+{
+	int16		val1 = PG_GETARG_INT16(0);
 	int64		val2 = PG_GETARG_INT64(1);
 
 	PG_RETURN_BOOL(val1 >= val2);
