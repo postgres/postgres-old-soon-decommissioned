@@ -99,7 +99,7 @@ void
 geqo_rel_paths(Rel *rel)
 {
     List *y = NIL;
-    Path *path;
+    Path *path = (Path*)NULL;
     JoinPath *cheapest = (JoinPath*)NULL;
     
 	foreach(y, rel->pathlist) {

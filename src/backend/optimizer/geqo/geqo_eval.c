@@ -40,6 +40,8 @@
 #include "optimizer/pathnode.h"
 #include "optimizer/clauses.h"
 #include "optimizer/cost.h"
+#include "optimizer/tlist.h"
+#include "optimizer/joininfo.h"
 
 #include "optimizer/geqo_gene.h"
 #include "optimizer/geqo.h"

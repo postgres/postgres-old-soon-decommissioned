@@ -151,7 +151,7 @@ geqo_print_path(Query *root, Path *path, int indent)
 {
     char *ptype = NULL;
     JoinPath *jp;
-    bool join;
+    bool join = false;
     int i;
 
     for(i=0; i < indent; i++)

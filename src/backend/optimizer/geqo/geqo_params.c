@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
+#include <ctype.h>
 
 #include "postgres.h"
 #include "miscadmin.h"
@@ -166,7 +167,7 @@ geqo_params(int string_length)
 	
 				if (i != EOF)
 				{
-					if (sscanf (buf, "%f", &SelectionBias) == 1) selection_bias = 1;
+					if (sscanf (buf, "%lf", &SelectionBias) == 1) selection_bias = 1;
 				}
 	
 			}

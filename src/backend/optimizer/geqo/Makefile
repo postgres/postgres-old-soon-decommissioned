@@ -16,12 +16,12 @@ INCLUDE_OPT = -I../.. \
               -I../../port/$(PORTNAME) \
               -I../../../include
 
-CFLAGS+=$(INCLUDE_OPT)
+CFLAGS+=$(INCLUDE_OPT) -Wno-error
 
-OBJS = geqo_copy.o geqo_eval.o geqo_main.o geqo_misc.o \
-       geqo_params.o geqo_paths.o geqo_pool.o geqo_recombination.o \
-       geqo_selection.o \
-       geqo_erx.o geqo_pmx.o geqo_cx.o geqo_px.o
+OBJS =	geqo_copy.o geqo_eval.o geqo_main.o geqo_misc.o \
+	geqo_params.o geqo_paths.o geqo_pool.o geqo_recombination.o \
+	geqo_selection.o \
+	geqo_erx.o geqo_pmx.o geqo_cx.o geqo_px.o 
 
 # not ready yet: geqo_ox1.o geqo_ox2.o
 # deprecated: minspantree.o
