@@ -2370,8 +2370,8 @@ apply_typmod(NumericVar *var, int32 typmod)
 	if (var->weight >= maxweight)
 	{
 		free_allvars();
-		elog(ERROR, "overflow on numeric
-        ABS(value) >= 10^%d for field with precision %d scale %d",
+		elog(ERROR, "overflow on numeric "
+        "ABS(value) >= 10^%d for field with precision %d scale %d",
 							var->weight, precision, scale);
 	}
 
