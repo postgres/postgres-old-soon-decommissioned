@@ -35,24 +35,6 @@ static void trim_trailing_separator(char *path);
 
 
 /*
- *	is_absolute_path
- */
-bool
-is_absolute_path(const char *filename)
-{
-	return filename[0] == '/'
-#ifdef WIN32					/* WIN32 paths can either have forward or
-								 * backward slashes */
-		|| filename[0] == '\\'
-		|| (isalpha(filename[0]) && filename[1] == ':'
-			&& (filename[2] == '\\' || filename[2] == '/'))
-#endif
-		;
-}
-
-
-
-/*
  *	first_path_separator
  */
 char *
