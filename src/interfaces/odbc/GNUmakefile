@@ -32,16 +32,8 @@ include $(top_srcdir)/src/Makefile.shlib
 # Symbols must be resolved to the version in the shared library because
 # the driver manager (e.g., iodbc) provides some symbols with the same
 # names and we don't want those.  (This issue is probably ELF specific.)
-#
-# BSD/OS fails with libc and crt1.o undefined symbols without this.
-# bjm 2001-02-09
-#
-ifneq ($(PORTNAME), bsdi)
+
 LINK.shared += $(shlib_symbolic)
-else
-LINK.shared = gcc -shared -Wl,-Bsymbolic,-soname,$(soname)
-SHLIB_LINK += -lc
-endif
 
 odbc_headers = isql.h isqlext.h iodbc.h
 odbc_includedir = $(includedir)/iodbc
