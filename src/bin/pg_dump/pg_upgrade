@@ -150,5 +150,6 @@ done
 mv -f $OLDDIR/pg_log data
 mv -f $OLDDIR/pg_variable data
 
+echo "You must stop/start the postmaster before doing anything else."
 echo "You may remove the $OLDDIR directory with 'rm -r $OLDDIR'."
 exit 0
