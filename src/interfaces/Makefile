@@ -44,7 +44,7 @@ endif
 ifeq ($(USE_ODBC), true)
 	$(MAKE) -C odbc $@
 endif
-	$(MAKE) -C pgeasy$@
+	$(MAKE) -C pgeasy $@
 
 perl5/Makefile: perl5/Makefile.PL
 	cd perl5 && $(PERL) Makefile.PL
