@@ -6,6 +6,9 @@ Other subset docs should be copied and shrunk from here.
 thomas 1998-02-23
 
 $Log: postgres.sgml,v $
+Revision 1.21  1999/05/04 02:19:20  thomas
+Include chapters on security and an intro to SQL.
+
 Revision 1.20  1999/04/06 15:41:13  thomas
 Fix markup to include all closing tags.
 Required by newest versions of DocBook and style sheets.
@@ -102,7 +105,6 @@ Move SQL reference pages up into the User's Guide.
 <!entity install  SYSTEM "install.sgml">
 <!entity installw SYSTEM "install-win32.sgml">
 <!entity intro-ag SYSTEM "intro-ag.sgml">
-<!entity options  SYSTEM "pg_options.sgml">
 <!entity ports    SYSTEM "ports.sgml">
 <!entity runtime  SYSTEM "runtime.sgml">
 <!entity recovery SYSTEM "recovery.sgml">
@@ -143,6 +145,7 @@ Move SQL reference pages up into the User's Guide.
 <!entity contacts SYSTEM "contacts.sgml">
 <!entity docguide SYSTEM "docguide.sgml">
 <!entity geqo     SYSTEM "geqo.sgml">
+<!entity options  SYSTEM "pg_options.sgml">
 <!entity page     SYSTEM "page.sgml">
 <!entity protocol SYSTEM "protocol.sgml">
 <!entity signals  SYSTEM "signals.sgml">
@@ -154,7 +157,7 @@ Move SQL reference pages up into the User's Guide.
 
  <Title>PostgreSQL</Title>
  <BookInfo>
-  <ReleaseInfo>Covering v6.4 for general release</ReleaseInfo>
+  <ReleaseInfo>Covering v6.5 for general release</ReleaseInfo>
   <BookBiblio>
    <AuthorGroup>
     <CorpAuthor>The PostgreSQL Development Team</CorpAuthor>
@@ -177,7 +180,7 @@ Move SQL reference pages up into the User's Guide.
     <AuthorInitials>TGL</AuthorInitials>
 -->
 
-   <Date>(last updated 1998-02-23)</Date>
+   <Date>(last updated 1998-05-19)</Date>
   </BookBiblio>
 
   <LegalNotice>
@@ -239,21 +242,18 @@ Your name here...
    </Para>
   </PartIntro>
 
-  &sql;
-   &environ;
-  &manage;
-  &syntax;
+   &sql;
+   &syntax;
    &datatype;
    &oper;
    &func;
    &typeconv;
-  &keys;
+   &keys;
    &array;
    &inherit;
-   &query-ug;
+   &environ;
+   &manage;
    &storage;
-   &psql;
-   &pgaccess;
    &commands;
  </Part>
 
@@ -271,7 +271,6 @@ Your name here...
    &installw;
    &runtime;
    &security;
-   &options;
    &start-ag;
    &recovery;
    &regress;
@@ -328,6 +327,7 @@ Your name here...
    </Para>
   </PartIntro>
    &arch-dev;
+   &options;
    &geqo;
    &protocol;
    &signals;

@@ -6,6 +6,12 @@ Derived from postgres.sgml.
 - thomas 1998-10-27
 
 $Log: admin.sgml,v $
+Revision 1.12  1999/05/12 07:32:42  thomas
+Include mention of CASE, COALESCE, and IFNULL.
+Add date/time parsing procedure (perhaps should be in appendix).
+Add time zone information (ditto).
+Update keyword list.
+
 Revision 1.10  1999/01/19 16:06:25  thomas
 Merge current.sgml into release.sgml so all release notes are in the same
  file. Per Bruce's preference. Go to it Bruce!
@@ -40,7 +46,7 @@ Bigger updates to the installation instructions (install and config).
 <!entity intro-ag SYSTEM "intro-ag.sgml">
 <!entity install  SYSTEM "install.sgml">
 <!entity installw SYSTEM "install-win32.sgml">
-<!entity options  SYSTEM "pg_options.sgml">
+<!entity layout   SYSTEM "layout.sgml">
 <!entity ports    SYSTEM "ports.sgml">
 <!entity recovery SYSTEM "recovery.sgml">
 <!entity regress  SYSTEM "regress.sgml">
@@ -48,6 +54,7 @@ Bigger updates to the installation instructions (install and config).
 <!entity runtime  SYSTEM "runtime.sgml">
 <!entity security SYSTEM "security.sgml">
 <!entity start-ag SYSTEM "start-ag.sgml">
+<!entity trouble  SYSTEM "trouble.sgml">
 
 <!entity biblio   SYSTEM "biblio.sgml">
 ]>
@@ -81,12 +88,12 @@ Bigger updates to the installation instructions (install and config).
     <AuthorInitials>TGL</AuthorInitials>
 -->
 
-   <Date>(last updated 1999-04-08)</Date>
+   <Date>(last updated 1999-05-19)</Date>
   </BookBiblio>
 
   <LegalNotice>
    <Para>
-    <ProductName>PostgreSQL</ProductName> is copyright (C) 1998-9
+    <ProductName>PostgreSQL</ProductName> is copyright (&copy;) 1998-9
     by the Postgres Global Development Group.
    </Para>
   </LegalNotice>
@@ -125,12 +132,13 @@ Your name here...
 
   &ports;
   &config;
+  &layout;
   &install;
   &installw;
   &runtime;
   &security;
-  &options;
   &start-ag;
+  &trouble;
   &recovery;
   &regress;
   &release;
@@ -149,7 +157,7 @@ Don't bother with an index until we get some index entries.
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml
-sgml-omittag:t
+sgml-omittag:nil
 sgml-shorttag:t
 sgml-minimize-attributes:nil
 sgml-always-quote-attributes:t
