@@ -654,13 +654,9 @@ ReindexIndex(const char *name, bool force /* currently unused */ )
 		elog(ERROR, "relation \"%s\" is of type \"%c\"",
 			 name, ((Form_pg_class) GETSTRUCT(tuple))->relkind);
 
-#ifdef	OLD_FILE_NAMING
-	if (!reindex_index(tuple->t_data->t_oid, force, false))
-#else
 	if (IsIgnoringSystemIndexes())
 		overwrite = true;
 	if (!reindex_index(tuple->t_data->t_oid, force, overwrite))
-#endif	 /* OLD_FILE_NAMING */
 		elog(NOTICE, "index \"%s\" wasn't reindexed", name);
 
 	ReleaseSysCache(tuple);

@@ -50,10 +50,8 @@ extern void UpdateStats(Oid relid, double reltuples);
 extern bool IndexesAreActive(Oid relid, bool comfirmCommitted);
 extern void setRelhasindex(Oid relid, bool hasindex);
 
-#ifndef OLD_FILE_NAMING
 extern void setNewRelfilenode(Relation relation);
 
-#endif	 /* OLD_FILE_NAMING */
 extern bool SetReindexProcessing(bool processing);
 extern bool IsReindexProcessing(void);
 

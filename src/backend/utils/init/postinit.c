@@ -21,10 +21,7 @@
 #include <math.h>
 #include <unistd.h>
 
-#ifndef OLD_FILE_NAMING
 #include "catalog/catalog.h"
-#endif
-
 #include "access/heapam.h"
 #include "catalog/catname.h"
 #include "catalog/pg_database.h"
