@@ -274,3 +274,6 @@ endif
 
 clean-shlib:
 	rm -f $(shlib) lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION) lib$(NAME)$(DLSUFFIX)
+ifeq ($(PORTNAME), win)
+	rm -rf $(NAME).def
+endif

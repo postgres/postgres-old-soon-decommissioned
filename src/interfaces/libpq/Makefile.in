@@ -88,9 +88,6 @@ install-headers: libpq-fe.h libpq-int.h
 clean: clean-shlib
 	rm -f lib$(NAME).a $(OBJS)
 	rm -f dllist.c common.c wchar.c conv.c big5.c
-ifeq ($(PORTNAME), win)
-	rm -f pq.def
-endif
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
