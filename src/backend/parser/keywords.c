@@ -122,6 +122,7 @@ static ScanKeyword ScanKeywords[] = {
 	{ "rollback",		ROLLBACK	},
 	{ "rule",		RULE		},
 	{ "select",		SELECT		},
+	{ "sequence",		SEQUENCE	},
 	{ "set",		SET		},
 	{ "setof",		SETOF		},
 	{ "stdin",		STDIN		},
