@@ -13,7 +13,7 @@ include ../../../Makefile.global
 
 CFLAGS += -I../..
 
-OBJS = logtape.o lselect.o psort.o
+OBJS = logtape.o tuplesort.o
 
 all: SUBSYS.o
 

@@ -288,8 +288,6 @@ typedef struct Sort
 	Oid			nonameid;
 	int			keycount;
 	SortState  *sortstate;
-	void	   *psortstate;
-	bool		cleaned;
 } Sort;
 
 /* ----------------

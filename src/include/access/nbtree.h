@@ -288,9 +288,12 @@ extern BTItem _bt_formitem(IndexTuple itup);
 /*
  * prototypes for functions in nbtsort.c
  */
-extern void *_bt_spoolinit(Relation index, int ntapes, bool isunique);
-extern void _bt_spooldestroy(void *spool);
-extern void _bt_spool(Relation index, BTItem btitem, void *spool);
-extern void _bt_leafbuild(Relation index, void *spool);
+
+typedef struct BTSpool BTSpool;	/* opaque type known only within nbtsort.c */
+
+extern BTSpool *_bt_spoolinit(Relation index, bool isunique);
+extern void _bt_spooldestroy(BTSpool *btspool);
+extern void _bt_spool(BTItem btitem, BTSpool *btspool);
+extern void _bt_leafbuild(BTSpool *btspool);
 
 #endif	 /* NBTREE_H */
