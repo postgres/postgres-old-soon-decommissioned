@@ -17,7 +17,6 @@ endif
 ifneq (,$(findstring yes, $(shared_libpython)$(allow_nonpic_in_shlib)))
 
 override CPPFLAGS := -I$(srcdir) $(python_includespec) $(CPPFLAGS)
-override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
 rpath :=
 
 NAME = plpython
@@ -25,7 +24,7 @@ SO_MAJOR_VERSION = 0
 SO_MINOR_VERSION = 0
 OBJS = plpython.o
 
-SHLIB_LINK += $(python_libspec)
+SHLIB_LINK = $(BE_DLLLIBS) $(python_libspec)
 
 include $(top_srcdir)/src/Makefile.shlib
 

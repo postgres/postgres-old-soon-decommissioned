@@ -45,7 +45,7 @@ override CPPFLAGS := -I$(srcdir) $(CPPFLAGS)
 
 ifdef MODULES
 override CFLAGS += $(CFLAGS_SL)
-override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
+SHLIB_LINK += $(BE_DLLLIBS)
 endif
 
 ifdef PG_CPPFLAGS
@@ -61,7 +61,7 @@ SO_MAJOR_VERSION= 0
 SO_MINOR_VERSION= 0
 rpath =
 
-override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
+SHLIB_LINK += $(BE_DLLLIBS)
 
 include $(top_srcdir)/src/Makefile.shlib
 

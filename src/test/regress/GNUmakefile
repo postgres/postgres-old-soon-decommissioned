@@ -20,7 +20,7 @@ contribdir := $(top_builddir)/contrib
 override CPPFLAGS := -I$(libpq_srcdir) $(CPPFLAGS)
 override CFLAGS += $(CFLAGS_SL)
 
-override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
+SHLIB_LINK = $(BE_DLLLIBS)
 
 # default encoding
 MULTIBYTE = SQL_ASCII

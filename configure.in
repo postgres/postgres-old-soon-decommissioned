@@ -614,6 +614,8 @@ AC_SEARCH_LIBS(crypt,  crypt)
 AC_CHECK_LIB(bind,     __inet_ntoa)
 # Solaris:
 AC_SEARCH_LIBS(fdatasync, [rt posix4])
+# Cygwin:
+AC_CHECK_LIB(cygipc, shmget)
 
 if test "$with_readline" = yes; then
   PGAC_CHECK_READLINE

@@ -62,7 +62,7 @@
 
 /* in globals.c */
 /* these are marked volatile because they are set by signal handlers: */
-extern volatile bool InterruptPending;
+extern DLLIMPORT volatile bool InterruptPending;
 extern volatile bool QueryCancelPending;
 extern volatile bool ProcDiePending;
 
@@ -166,7 +166,7 @@ extern char DateFormat[];
 
 extern bool enableFsync;
 extern bool allowSystemTableMods;
-extern int	SortMem;
+extern DLLIMPORT int SortMem;
 extern int	VacuumMem;
 
 /*
