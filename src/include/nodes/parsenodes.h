@@ -217,6 +217,7 @@ typedef struct IndexStmt {
     List		*rangetable;	/* range table, filled in
 					   by transformStmt() */
     bool                *lossy;         /* is index lossy? */
+    bool                unique;         /* is index unique? */
 } IndexStmt;
 
 /* ----------------------
@@ -594,7 +595,7 @@ typedef struct ResTarget {
     char		*name;		/* name of the result column */
     List		*indirection;	/* array references */
     Node		*val;		/* the value of the result
-					   (A_Expr or Attr) */
+					   (A_Expr or Attr) (or A_Const) */
 } ResTarget;
 
 /*
