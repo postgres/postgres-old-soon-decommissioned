@@ -124,6 +124,10 @@ public:
     {return PQgetline(conn, string, length);};
   void putline(char* string)
     {PQputline(conn, string);};
+  const char *OidStatus()
+  {
+    return PQoidStatus(result);
+  }
   int endcopy()
     {return PQendcopy(conn);};
   ~PGdatabase() {}; // close connection and clean up
