@@ -805,7 +805,7 @@ equalTriggerDescs(TriggerDesc *trigdesc1, TriggerDesc *trigdesc2)
 			 */
 			for (j = 0; j < trigdesc2->numtriggers; j++)
 			{
-				trig2 = trigdesc2->triggers + i;
+				trig2 = trigdesc2->triggers + j;
 				if (trig1->tgoid == trig2->tgoid)
 					break;
 			}
