@@ -22,6 +22,11 @@
 #include "access/tupmacs.h"
 #include "utils/palloc.h"
 
+#ifndef HAVE_MEMMOVE
+# include "regex/utils.h"
+#else
+# include <string.h>
+#endif
 
 static Size IndexInfoFindDataOffset(unsigned short t_info);
 

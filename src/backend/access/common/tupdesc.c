@@ -18,25 +18,17 @@
 
 #include "postgres.h"
 
-#include "access/htup.h"
-#include "utils/rel.h"
-
-#include "utils/fcache.h"
-#include "utils/geo-decls.h"
-#include "utils/palloc.h"
-
-#include "nodes/primnodes.h"
-
-#include "catalog/pg_type.h"
-#include "utils/builtins.h"
-#include "utils/syscache.h"
-#include "utils/tqual.h"
-
-#include "nodes/parsenodes.h"
 #include "parser/catalog_utils.h"
+#include "nodes/parsenodes.h"
+#include "utils/builtins.h"
+#include "utils/fcache.h"
+#include "utils/palloc.h"
+#include "utils/tqual.h"
 
 #ifndef HAVE_MEMMOVE
 # include "regex/utils.h"
+#else
+# include <string.h>
 #endif
 
 /* ----------------------------------------------------------------
