@@ -33,6 +33,7 @@ ifeq ($(USE_TCL), true)
 endif
 	$(MAKE) -C bin $@
 	$(MAKE) -C ../doc $@
+	@-chown -R $(POSTGRESLOGIN) $(POSTGRESDIR) 2>/dev/null
 	@echo All of Postgres95 is successfully made.  Ready to install.
 
 TAGS:
