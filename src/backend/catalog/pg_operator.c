@@ -205,8 +205,7 @@ OperatorGet(char *operatorName,
 	 */
 	heap_close(pg_operator_desc);
 
-	return
-		operatorObjectId;
+	return operatorObjectId;
 }
 
 /* ----------------------------------------------------------------
@@ -287,8 +286,7 @@ OperatorShellMakeWithOpenRelation(Relation pg_operator_desc,
 	 */
 	pfree(tup);
 
-	return
-		operatorObjectId;
+	return operatorObjectId;
 }
 
 /* ----------------------------------------------------------------
@@ -338,8 +336,7 @@ OperatorShellMake(char *operatorName,
 	 *	and recover the shell tuple's oid.
 	 * ----------------
 	 */
-	operatorObjectId =
-		OperatorShellMakeWithOpenRelation(pg_operator_desc,
+	operatorObjectId = OperatorShellMakeWithOpenRelation(pg_operator_desc,
 										  operatorName,
 										  leftObjectId,
 										  rightObjectId);
@@ -349,8 +346,7 @@ OperatorShellMake(char *operatorName,
 	 */
 	heap_close(pg_operator_desc);
 
-	return
-		operatorObjectId;
+	return operatorObjectId;
 }
 
 /* --------------------------------
@@ -545,8 +541,7 @@ OperatorDef(char *operatorName,
 		func_error("OperatorDef", procedureName, nargs, typeId, NULL);
 
 	values[Anum_pg_operator_oprcode - 1] = ObjectIdGetDatum(tup->t_data->t_oid);
-	values[Anum_pg_operator_oprresult - 1] =
-		ObjectIdGetDatum(((Form_pg_proc)
+	values[Anum_pg_operator_oprresult - 1] = ObjectIdGetDatum(((Form_pg_proc)
 						  GETSTRUCT(tup))->prorettype);
 
 	/* ----------------
@@ -811,15 +806,13 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 
 				if (!OidIsValid(t->oprnegate))
 				{
-					values[Anum_pg_operator_oprnegate - 1] =
-						ObjectIdGetDatum(baseId);
+					values[Anum_pg_operator_oprnegate - 1] = ObjectIdGetDatum(baseId);
 					replaces[Anum_pg_operator_oprnegate - 1] = 'r';
 				}
 
 				if (!OidIsValid(t->oprcom))
 				{
-					values[Anum_pg_operator_oprcom - 1] =
-						ObjectIdGetDatum(baseId);
+					values[Anum_pg_operator_oprcom - 1] = ObjectIdGetDatum(baseId);
 					replaces[Anum_pg_operator_oprcom - 1] = 'r';
 				}
 

@@ -203,8 +203,7 @@ prs2_addToRelation(Oid relid,
 		numlock = rulelock->numLocks;
 		/* expand, for safety reasons */
 		oldcxt = MemoryContextSwitchTo((MemoryContext) CacheCxt);
-		rulelock->rules =
-			(RewriteRule **) repalloc(rulelock->rules,
+		rulelock->rules = (RewriteRule **) repalloc(rulelock->rules,
 								  sizeof(RewriteRule *) * (numlock + 1));
 		MemoryContextSwitchTo(oldcxt);
 		rulelock->rules[numlock] = thisRule;

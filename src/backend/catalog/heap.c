@@ -130,8 +130,7 @@ static FormData_pg_attribute a6 = {
 	MaxCommandIdAttributeNumber, 0, -1, -1, '\001', '\0', 'i', '\0', '\0'
 };
 
-static Form_pg_attribute HeapAtt[] =
-{&a1, &a2, &a3, &a4, &a5, &a6};
+static Form_pg_attribute HeapAtt[] = {&a1, &a2, &a3, &a4, &a5, &a6};
 
 /* ----------------------------------------------------------------
  *				XXX END OF UGLY HARD CODED BADNESS XXX

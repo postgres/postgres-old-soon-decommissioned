@@ -189,8 +189,7 @@ InitShmem(unsigned int key, unsigned int size)
 	/* next is ShmemVariableCache */
 	ShmemVariableCache = (VariableCache) (ShmemIndexOffset + 1);
 
-	currFreeSpace +=
-		sizeof(ShmemFreeStart) + sizeof(ShmemIndexOffset) +
+	currFreeSpace += sizeof(ShmemFreeStart) + sizeof(ShmemIndexOffset) +
 		LONGALIGN(sizeof(VariableCacheData));
 
 	/*
@@ -360,8 +359,7 @@ ShmemInitHash(char *name,		/* table string name for shmem index */
 	hash_flags |= HASH_SHARED_MEM;
 
 	/* look it up in the shmem index */
-	location =
-		ShmemInitStruct(name, my_log2(max_size) + sizeof(HHDR), &found);
+	location = ShmemInitStruct(name, my_log2(max_size) + sizeof(HHDR), &found);
 
 	/*
 	 * shmem index is corrupted.	Let someone else give the error

@@ -436,8 +436,7 @@ ConstructIndexReldesc(Relation indexRelation, Oid amoid)
 
 	oldcxt = MemoryContextSwitchTo((MemoryContext) CacheCxt);
 
-	indexRelation->rd_am =
-		AccessMethodObjectIdGetForm(amoid);
+	indexRelation->rd_am = AccessMethodObjectIdGetForm(amoid);
 
 	MemoryContextSwitchTo(oldcxt);
 
@@ -802,8 +801,7 @@ UpdateIndexPredicate(Oid indexoid, Node *oldPred, Node *predicate)
 	newPred = NULL;
 	if (predicate != NULL)
 	{
-		newPred =
-			(Node *) make_orclause(lcons(make_andclause((List *) predicate),
+		newPred = (Node *) make_orclause(lcons(make_andclause((List *) predicate),
 								  lcons(make_andclause((List *) oldPred),
 										NIL)));
 		newPred = (Node *) cnfify((Expr *) newPred, true);

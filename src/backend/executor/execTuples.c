@@ -870,8 +870,7 @@ ExecCopyTupType(TupleDesc td, int natts)
 	i = 0;
 	while (i < natts)
 		{
-			newTd[i] =
-				(Form_pg_attribute)palloc(sizeof(FormData_pg_attribute));
+			newTd[i] = (Form_pg_attribute)palloc(sizeof(FormData_pg_attribute));
 			memmove(newTd[i], td[i], sizeof(FormData_pg_attribute));
 			i++;
 		}

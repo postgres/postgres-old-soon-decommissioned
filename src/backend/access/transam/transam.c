@@ -497,8 +497,7 @@ TransactionIdDidCommit(TransactionId transactionId)
 	if (AMI_OVERRIDE)
 		return true;
 
-	return
-		TransactionLogTest(transactionId, XID_COMMIT);
+	return TransactionLogTest(transactionId, XID_COMMIT);
 }
 
 /*
@@ -515,8 +514,7 @@ TransactionIdDidAbort(TransactionId transactionId)
 	if (AMI_OVERRIDE)
 		return false;
 
-	return
-		TransactionLogTest(transactionId, XID_ABORT);
+	return TransactionLogTest(transactionId, XID_ABORT);
 }
 
 /*
@@ -532,8 +530,7 @@ TransactionIdIsInProgress(TransactionId transactionId)
 	if (AMI_OVERRIDE)
 		return false;
 
-	return
-		TransactionLogTest(transactionId, XID_INPROGRESS);
+	return TransactionLogTest(transactionId, XID_INPROGRESS);
 }
  */
 

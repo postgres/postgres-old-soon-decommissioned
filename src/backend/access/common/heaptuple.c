@@ -759,8 +759,7 @@ heap_modifytuple(HeapTuple tuple,
 
 		if (repl[attoff] == ' ')
 		{
-			value[attoff] =
-				heap_getattr(tuple,
+			value[attoff] = heap_getattr(tuple,
 							 AttrOffsetGetAttrNumber(attoff),
 							 RelationGetDescr(relation),
 							 &isNull);

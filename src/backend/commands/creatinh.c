@@ -275,13 +275,11 @@ MergeAttributes(List *schema, List *supers, List **supconstr)
 			 * form name, type and constraints
 			 */
 			attributeName = (attribute->attname).data;
-			tuple =
-				SearchSysCacheTuple(TYPOID,
+			tuple = SearchSysCacheTuple(TYPOID,
 									ObjectIdGetDatum(attribute->atttypid),
 									0, 0, 0);
 			Assert(HeapTupleIsValid(tuple));
-			attributeType =
-				(((Form_pg_type) GETSTRUCT(tuple))->typname).data;
+			attributeType = (((Form_pg_type) GETSTRUCT(tuple))->typname).data;
 
 			/*
 			 * check validity
@@ -468,8 +466,7 @@ StoreCatalogInheritance(Oid relationId, List *supers)
 			if (!HeapTupleIsValid(tuple))
 				break;
 
-			lnext(current) =
-				lconsi(((Form_pg_inherits)
+			lnext(current) = lconsi(((Form_pg_inherits)
 						GETSTRUCT(tuple))->inhparent,
 					   NIL);
 

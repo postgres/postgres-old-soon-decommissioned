@@ -513,7 +513,7 @@ ExecMergeJoin(MergeJoin *node)
 				econtext->ecxt_outertuple = outerTupleSlot;
 
 				mergestate->mj_MarkedTupleSlot->ttc_tupleDescriptor =
-					innerTupleSlot->ttc_tupleDescriptor;
+						innerTupleSlot->ttc_tupleDescriptor;
 
 				/* ----------------
 				 *	initialize merge join state to skip inner tuples.

@@ -183,8 +183,7 @@ get_opnos(List *restrictinfo_list)
 	foreach(i, restrictinfo_list)
 	{
 		temp = (RestrictInfo *) lfirst(i);
-		result =
-			lappendi(result,
+		result = lappendi(result,
 					 (((Oper *) temp->clause->oper)->opno));
 	}
 	return result;

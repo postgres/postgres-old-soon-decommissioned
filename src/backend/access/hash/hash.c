@@ -485,8 +485,7 @@ hashrestrpos(IndexScanDesc scan)
 	/* bump lock on currentMarkData and copy to currentItemData */
 	if (ItemPointerIsValid(&(scan->currentMarkData)))
 	{
-		so->hashso_curbuf =
-			_hash_getbuf(scan->relation,
+		so->hashso_curbuf =_hash_getbuf(scan->relation,
 						 BufferGetBlockNumber(so->hashso_mrkbuf),
 						 HASH_READ);
 

@@ -329,8 +329,7 @@ init_htab(HTAB *hashp, int nelem)
 	/* allocate a directory */
 	if (!(hashp->dir))
 	{
-		hashp->dir =
-			(SEG_OFFSET *) hashp->alloc(hctl->dsize * sizeof(SEG_OFFSET));
+		hashp->dir = (SEG_OFFSET *) hashp->alloc(hctl->dsize * sizeof(SEG_OFFSET));
 		if (!hashp->dir)
 			return -1;
 	}
@@ -850,8 +849,7 @@ bucket_alloc(HTAB *hashp)
 	BUCKET_INDEX tmpIndex,
 				lastIndex;
 
-	bucketSize =
-		sizeof(BUCKET_INDEX) + hashp->hctl->keysize + hashp->hctl->datasize;
+	bucketSize = sizeof(BUCKET_INDEX) + hashp->hctl->keysize + hashp->hctl->datasize;
 
 	/* make sure its aligned correctly */
 	bucketSize += sizeof(long *) - (bucketSize % sizeof(long *));

@@ -1373,8 +1373,7 @@ BufferReplace(BufferDesc *bufHdr, bool bufferLockHeld)
 BlockNumber
 RelationGetNumberOfBlocks(Relation relation)
 {
-	return
-	((relation->rd_myxactonly) ? relation->rd_nblocks :
+	return ((relation->rd_myxactonly) ? relation->rd_nblocks :
 	 smgrnblocks(DEFAULT_SMGR, relation));
 }
 

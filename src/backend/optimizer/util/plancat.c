@@ -219,8 +219,7 @@ index_info(Query *root, bool first, int relid, IdxInfoRetval *info)
 		if (!HeapTupleIsValid(amopTuple))
 			elog(ERROR, "index_info: no amop %d %d %d",
 				 relam, index->indclass[i], amstrategy);
-		info->orderOprs[i] =
-			((Form_pg_amop) GETSTRUCT(amopTuple))->amopopr;
+		info->orderOprs[i] = ((Form_pg_amop) GETSTRUCT(amopTuple))->amopopr;
 	}
 	return TRUE;
 }

@@ -84,11 +84,9 @@ group_clauses_by_order(List *restrictinfo_list,
 									   mergeinfo_list);
 			}
 
-			((JoinMethod *) xmergeinfo)->clauses =
-				lcons(clause,
+			((JoinMethod *) xmergeinfo)->clauses = lcons(clause,
 					  ((JoinMethod *) xmergeinfo)->clauses);
-			((JoinMethod *) xmergeinfo)->jmkeys =
-				lcons(keys,
+			((JoinMethod *) xmergeinfo)->jmkeys = lcons(keys,
 					  ((JoinMethod *) xmergeinfo)->jmkeys);
 		}
 	}

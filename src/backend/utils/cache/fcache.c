@@ -219,8 +219,7 @@ init_fcache(Oid foid,
 			int			i;
 			List	   *oneArg;
 
-			retval->argOidVect =
-				(Oid *) palloc(retval->nargs * sizeof(Oid));
+			retval->argOidVect = (Oid *) palloc(retval->nargs * sizeof(Oid));
 			argTypes = procedureStruct->proargtypes;
 			memmove(retval->argOidVect,
 					argTypes,

@@ -882,8 +882,7 @@ ExecEvalOper(Expr *opClause, ExprContext *econtext, bool *isNull)
 	 *	We don't have operator whose arguments are sets.
 	 ******************
 	 */
-	return
-		ExecMakeFunctionResult((Node *) op, argList, econtext, isNull, &isDone);
+	return ExecMakeFunctionResult((Node *) op, argList, econtext, isNull, &isDone);
 }
 
 /* ----------------------------------------------------------------
@@ -926,8 +925,7 @@ ExecEvalFunc(Expr *funcClause,
 		fcache = func->func_fcache;
 	}
 
-	return
-		ExecMakeFunctionResult((Node *) func, argList, econtext, isNull, isDone);
+	return ExecMakeFunctionResult((Node *) func, argList, econtext, isNull, isDone);
 }
 
 /* ----------------------------------------------------------------
@@ -1642,8 +1640,7 @@ ExecTargetList(List *targetlist,
 	if (nodomains > 64)
 		pfree(null_head);
 
-	return
-		newTuple;
+	return newTuple;
 }
 
 /* ----------------------------------------------------------------

@@ -389,8 +389,7 @@ funny_dup17()
 
 	if (SPI_processed > 0)
 	{
-		selected =
-			int4in(
+		selected = int4in(
 				   SPI_getvalue(
 								SPI_tuptable->vals[0],
 								SPI_tuptable->tupdesc,

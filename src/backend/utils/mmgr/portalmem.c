@@ -883,8 +883,7 @@ StartPortalAllocMode(AllocMode mode, Size limit)
 		FixedStackPush(&context->stackData, context->block);
 
 	/* allocate and initialize new block */
-	context->block =
-		MemoryContextAlloc(
+	context->block = MemoryContextAlloc(
 			  (MemoryContext) PortalHeapMemoryGetVariableMemory(context),
 						   sizeof(HeapMemoryBlockData));
 

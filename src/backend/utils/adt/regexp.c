@@ -108,8 +108,7 @@ RE_compile_and_execute(struct varlena * text_re, char *text, int cflags)
 	{
 		for (lru = i = 0; i < rec; i++)
 		{
-			rev[i].cre_lru =
-				(rev[i].cre_lru - rev[oldest].cre_lru) / 2;
+			rev[i].cre_lru = (rev[i].cre_lru - rev[oldest].cre_lru) / 2;
 			if (rev[i].cre_lru > lru)
 				lru = rev[i].cre_lru;
 		}

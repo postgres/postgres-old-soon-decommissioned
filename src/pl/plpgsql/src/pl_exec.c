@@ -2540,8 +2540,7 @@ exec_simple_check_plan(PLpgSQL_expr * expr)
 									((Param *)(tle->expr))->paramtype;
 						break;
 
-		case T_Const:	expr->plan_simple_type =
-									((Const *)(tle->expr))->consttype;
+		case T_Const:	expr->plan_simple_type = ((Const *)(tle->expr))->consttype;
 						break;
 
 		default:		expr->plan_simple_type = InvalidOid;

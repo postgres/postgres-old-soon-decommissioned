@@ -315,8 +315,7 @@ TransBlockNumberGetXidStatus(Relation relation,
 	LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
 	ReleaseBuffer(buffer);
 
-	return
-		xstatus;
+	return xstatus;
 }
 
 /* --------------------------------

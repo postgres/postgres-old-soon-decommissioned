@@ -150,14 +150,12 @@ exec_append_initialize_next(Append *node)
 
 		if (appendstate->as_junkFilter_list)
 		{
-			estate->es_junkFilter =
-				(JunkFilter *) nth(whichplan,
+			estate->es_junkFilter = (JunkFilter *) nth(whichplan,
 								   appendstate->as_junkFilter_list);
 		}
 		if (appendstate->as_result_relation_info_list)
 		{
-			estate->es_result_relation_info =
-				(RelationInfo *) nth(whichplan,
+			estate->es_result_relation_info = (RelationInfo *) nth(whichplan,
 							  appendstate->as_result_relation_info_list);
 		}
 		result_slot->ttc_whichplan = whichplan;

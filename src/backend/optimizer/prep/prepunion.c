@@ -222,8 +222,7 @@ plan_inherit_queries(Query *parse, Index rt_index)
 	List	   *inheritrtable = NIL;
 	List	   *union_relids = NIL;
 
-	union_relids =
-		find_all_inheritors(lconsi(rt_entry->relid,
+	union_relids = find_all_inheritors(lconsi(rt_entry->relid,
 								   NIL),
 							NIL);
 
@@ -442,8 +441,7 @@ fix_parsetree_attnums_nodes(Index rt_index,
 
 				if (var->varno == rt_index && var->varattno != 0)
 				{
-					var->varattno =
-						get_attnum(new_typeid,
+					var->varattno = get_attnum(new_typeid,
 								 get_attname(old_typeid, var->varattno));
 				}
 			}

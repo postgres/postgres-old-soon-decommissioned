@@ -1200,8 +1200,7 @@ _bt_pgaddtup(Relation rel,
 
 		do
 		{
-			chkitem =
-				(BTItem) PageGetItem(page, PageGetItemId(page, itup_off));
+			chkitem = (BTItem) PageGetItem(page, PageGetItemId(page, itup_off));
 			itup_off = OffsetNumberNext(itup_off);
 		} while (!BTItemSame(chkitem, afteritem));
 	}

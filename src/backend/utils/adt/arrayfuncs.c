@@ -196,8 +196,7 @@ array_in(char *string,			/* input array in external form */
 	if (*p == '{')
 	{
 		/* array not a large object */
-		dataPtr =
-			(char *) _ReadArrayStr(p, nitems, ndim, dim, &inputproc, typelem,
+		dataPtr = (char *) _ReadArrayStr(p, nitems, ndim, dim, &inputproc, typelem,
 							typmod, typdelim, typlen, typbyval, typalign,
 								   &nbytes);
 		nbytes += ARR_OVERHEAD(ndim);

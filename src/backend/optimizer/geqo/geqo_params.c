@@ -85,8 +85,7 @@ geqo_params(int string_length)
 
 
 	/* put together the full pathname to the config file */
-	conf_file =
-		(char *) palloc((strlen(DataDir) + strlen(GEQO_FILE) + 2) * sizeof(char));
+	conf_file = (char *) palloc((strlen(DataDir) + strlen(GEQO_FILE) + 2) * sizeof(char));
 
 	sprintf(conf_file, "%s/%s", DataDir, GEQO_FILE);
 

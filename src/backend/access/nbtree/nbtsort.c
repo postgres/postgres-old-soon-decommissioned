@@ -559,20 +559,16 @@ _bt_spoolinit(Relation index, int ntapes, bool isunique)
 	btspool->bts_tape = 0;
 	btspool->isunique = isunique;
 
-	btspool->bts_itape =
-		(BTTapeBlock **) palloc(sizeof(BTTapeBlock *) * ntapes);
-	btspool->bts_otape =
-		(BTTapeBlock **) palloc(sizeof(BTTapeBlock *) * ntapes);
+	btspool->bts_itape =(BTTapeBlock **) palloc(sizeof(BTTapeBlock *) * ntapes);
+	btspool->bts_otape =(BTTapeBlock **) palloc(sizeof(BTTapeBlock *) * ntapes);
 	if (btspool->bts_itape == (BTTapeBlock **) NULL ||
 		btspool->bts_otape == (BTTapeBlock **) NULL)
 		elog(ERROR, "_bt_spoolinit: out of memory");
 
 	for (i = 0; i < ntapes; ++i)
 	{
-		btspool->bts_itape[i] =
-			_bt_tapecreate(mktemp(strcpy(fname, TAPETEMP)));
-		btspool->bts_otape[i] =
-			_bt_tapecreate(mktemp(strcpy(fname, TAPETEMP)));
+		btspool->bts_itape[i] =	_bt_tapecreate(mktemp(strcpy(fname, TAPETEMP)));
+		btspool->bts_otape[i] =	_bt_tapecreate(mktemp(strcpy(fname, TAPETEMP)));
 	}
 	pfree((void *) fname);
 
@@ -698,8 +694,7 @@ _bt_spool(Relation index, BTItem btitem, void *spool)
 		 */
 		if (it_ntup > 0)
 		{
-			parray =
-				(BTSortKey *) palloc(it_ntup * sizeof(BTSortKey));
+			parray = (BTSortKey *) palloc(it_ntup * sizeof(BTSortKey));
 			pos = itape->bttb_data;
 			for (i = 0; i < it_ntup; ++i)
 				_bt_setsortkey(index, _bt_tapenext(itape, &pos), &(parray[i]));

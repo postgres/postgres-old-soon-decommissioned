@@ -2422,8 +2422,7 @@ MainLoop(PsqlSettings *pset, char *query, FILE *source)
 	{
 		if (pset->prompt)
 			free(pset->prompt);
-		pset->prompt =
-			malloc(strlen(PQdb(pset->db)) + strlen(PROMPT) + 1);
+		pset->prompt = malloc(strlen(PQdb(pset->db)) + strlen(PROMPT) + 1);
 		if (pset->quiet)
 			pset->prompt[0] = '\0';
 		else

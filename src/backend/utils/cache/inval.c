@@ -117,7 +117,7 @@ LocalInvalidRegister(LocalInvalid invalid,
 	Assert(PointerIsValid(entry));
 
 	((InvalidationUserData *) entry)->dataP[-1] =
-		(InvalidationUserData *) invalid;
+			(InvalidationUserData *) invalid;
 
 	return entry;
 }

@@ -2492,11 +2492,9 @@ RewriteQuery(Query *parsetree, bool *instead_flag, List **qual_products)
 
 	if (rt_entry_locks != NULL)
 	{
-		List	   *locks =
-		matchLocks(event, rt_entry_locks, result_relation, parsetree);
+		List	   *locks = matchLocks(event, rt_entry_locks, result_relation, parsetree);
 
-		product_queries =
-			fireRules(parsetree,
+		product_queries = fireRules(parsetree,
 					  result_relation,
 					  event,
 					  instead_flag,

@@ -434,8 +434,7 @@ vc_vacone(Oid relid, bool analyze, List *va_cols)
 			attr_cnt = tcnt;
 		}
 
-		vacrelstats->vacattrstats =
-			(VacAttrStats *) palloc(attr_cnt * sizeof(VacAttrStats));
+		vacrelstats->vacattrstats = (VacAttrStats *) palloc(attr_cnt * sizeof(VacAttrStats));
 
 		for (i = 0; i < attr_cnt; i++)
 		{

@@ -293,8 +293,7 @@ RelationGetStrategy(Relation relation,
 	Assert(StrategyEvaluationIsValid(evaluation));
 	Assert(RegProcedureIsValid(procedure));
 
-	strategyMap =
-		IndexStrategyGetStrategyMap(RelationGetIndexStrategy(relation),
+	strategyMap = IndexStrategyGetStrategyMap(RelationGetIndexStrategy(relation),
 									evaluation->maxStrategy,
 									attributeNumber);
 

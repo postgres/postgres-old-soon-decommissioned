@@ -359,8 +359,7 @@ ExecMaterialReScan(Material *node, ExprContext *exprCtxt, Plan *parent)
 	if (matstate->mat_Flag == false)
 		return;
 
-	matstate->csstate.css_currentScanDesc =
-		ExecReScanR(matstate->csstate.css_currentRelation,
+	matstate->csstate.css_currentScanDesc = ExecReScanR(matstate->csstate.css_currentRelation,
 					matstate->csstate.css_currentScanDesc,
 					node->plan.state->es_direction, 0, NULL);
 

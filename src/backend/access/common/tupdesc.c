@@ -115,8 +115,7 @@ CreateTupleDescCopy(TupleDesc tupdesc)
 	desc->attrs = (Form_pg_attribute *) palloc(size);
 	for (i = 0; i < desc->natts; i++)
 	{
-		desc->attrs[i] =
-			(Form_pg_attribute) palloc(ATTRIBUTE_TUPLE_SIZE);
+		desc->attrs[i] = (Form_pg_attribute) palloc(ATTRIBUTE_TUPLE_SIZE);
 		memmove(desc->attrs[i],
 				tupdesc->attrs[i],
 				ATTRIBUTE_TUPLE_SIZE);
@@ -150,8 +149,7 @@ CreateTupleDescCopyConstr(TupleDesc tupdesc)
 	desc->attrs = (Form_pg_attribute *) palloc(size);
 	for (i = 0; i < desc->natts; i++)
 	{
-		desc->attrs[i] =
-			(Form_pg_attribute) palloc(ATTRIBUTE_TUPLE_SIZE);
+		desc->attrs[i] = (Form_pg_attribute) palloc(ATTRIBUTE_TUPLE_SIZE);
 		memmove(desc->attrs[i],
 				tupdesc->attrs[i],
 				ATTRIBUTE_TUPLE_SIZE);

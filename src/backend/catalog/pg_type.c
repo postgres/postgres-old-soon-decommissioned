@@ -196,8 +196,7 @@ TypeShellMakeWithOpenRelation(Relation pg_type_desc, char *typeName)
 	/*
 	 * ... and fill typdefault with a bogus value
 	 */
-	values[i++] =
-		(Datum) fmgr(F_TEXTIN, typeName);		/* 15 */
+	values[i++] = (Datum) fmgr(F_TEXTIN, typeName);		/* 15 */
 
 	/* ----------------
 	 *	create a new type tuple with FormHeapTuple
@@ -228,8 +227,7 @@ TypeShellMakeWithOpenRelation(Relation pg_type_desc, char *typeName)
 	 */
 	pfree(tup);
 
-	return
-		typoid;
+	return typoid;
 }
 
 /* ----------------------------------------------------------------
@@ -271,8 +269,7 @@ TypeShellMake(char *typeName)
 	 */
 	heap_close(pg_type_desc);
 
-	return
-		typoid;
+	return typoid;
 }
 
 /* ----------------------------------------------------------------

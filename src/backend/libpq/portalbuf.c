@@ -249,8 +249,7 @@ pbuf_addTupleValueLengths(int n)
 char *
 pbuf_addValues(int n)
 {
-	return
-	pbuf_alloc(n);
+	return pbuf_alloc(n);
 }
 
 /* --------------------------------
@@ -515,6 +514,5 @@ pbuf_findFname(GroupBuffer *group,
 			   int field_number)
 {
 	pbuf_checkFnumber(group, field_number);
-	return
-		(group->types[field_number]).name;
+	return (group->types[field_number]).name;
 }

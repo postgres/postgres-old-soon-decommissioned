@@ -190,8 +190,7 @@ fmgr_info(Oid procedureId, FmgrInfo *finfo)
 		switch (language)
 		{
 			case INTERNALlanguageId:
-				finfo->fn_addr =
-					fmgr_lookupByName(procedureStruct->proname.data);
+				finfo->fn_addr = fmgr_lookupByName(procedureStruct->proname.data);
 				if (!finfo->fn_addr)
 					elog(ERROR, "fmgr_info: function %s: not in internal table",
 						 procedureStruct->proname.data);
@@ -342,8 +341,7 @@ fmgr_array_args(Oid procedureId, int nargs, char *args[], bool *isNull)
 	finfo.fn_nargs = nargs;
 
 	/* XXX see WAY_COOL_ORTHOGONAL_FUNCTIONS */
-	return
-		(fmgr_c(&finfo,
+	return (fmgr_c(&finfo,
 				(FmgrValues *) args,
 				isNull));
 }

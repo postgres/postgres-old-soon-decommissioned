@@ -331,8 +331,7 @@ ExecAssignProjectionInfo(Plan *node, CommonState *commonstate)
 	projInfo = makeNode(ProjectionInfo);
 	projInfo->pi_targetlist = targetList;
 	projInfo->pi_len = len;
-	projInfo->pi_tupValue =
-		(len <= 0) ? NULL : (Datum *) palloc(sizeof(Datum) * len);
+	projInfo->pi_tupValue = (len <= 0) ? NULL : (Datum *) palloc(sizeof(Datum) * len);
 	projInfo->pi_exprContext = commonstate->cs_ExprContext;
 	projInfo->pi_slot = commonstate->cs_ResultTupleSlot;
 

@@ -130,8 +130,7 @@ PQprint(FILE *fout,
 		for (j = 0; j < nFields; j++)
 		{
 			int			len;
-			char	   *s =
-			(j < numFieldName && po->fieldName[j][0]) ?
+			char	   *s = (j < numFieldName && po->fieldName[j][0]) ?
 			po->fieldName[j] : PQfname(res, j);
 
 			fieldNames[j] = s;
@@ -175,8 +174,7 @@ PQprint(FILE *fout,
 				  nTups * (nFields + 1) >= screen_size.ws_row) ||
 				 (!po->expanded &&
 				  nTups * (total_line_length / screen_size.ws_col + 1) *
-				  (1 + (po->standard != 0)) >=
-				  screen_size.ws_row -
+				  (1 + (po->standard != 0)) >= screen_size.ws_row -
 				  (po->header != 0) *
 				  (total_line_length / screen_size.ws_col + 1) * 2
 				  - (po->header != 0) * 2		/* row count and newline */

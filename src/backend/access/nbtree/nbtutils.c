@@ -258,8 +258,7 @@ _bt_orderkeys(Relation relation, BTScanOpaque so)
 		if (init[j])
 		{
 			/* yup, use the appropriate value */
-			test =
-				(long) FMGR_PTR2(&cur->sk_func, cur->sk_argument, xform[j].sk_argument);
+			test = (long) FMGR_PTR2(&cur->sk_func, cur->sk_argument, xform[j].sk_argument);
 			if (test)
 				xform[j].sk_argument = cur->sk_argument;
 			else if (j == (BTEqualStrategyNumber - 1))

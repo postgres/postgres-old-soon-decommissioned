@@ -172,8 +172,7 @@ DefineIndex(char *heapRelationName,
 
 		strcpy(FIgetname(&fInfo), funcIndex->name);
 
-		attributeNumberA =
-			(AttrNumber *) palloc(nargs * sizeof attributeNumberA[0]);
+		attributeNumberA = (AttrNumber *) palloc(nargs * sizeof attributeNumberA[0]);
 
 		classObjectId = (Oid *) palloc(sizeof classObjectId[0]);
 
@@ -194,8 +193,7 @@ DefineIndex(char *heapRelationName,
 		attributeNumberA = (AttrNumber *) palloc(numberOfAttributes *
 											 sizeof attributeNumberA[0]);
 
-		classObjectId =
-			(Oid *) palloc(numberOfAttributes * sizeof classObjectId[0]);
+		classObjectId = (Oid *) palloc(numberOfAttributes * sizeof classObjectId[0]);
 
 		NormIndexAttrs(attributeList, attributeNumberA,
 					   classObjectId, relationId);
@@ -306,11 +304,9 @@ ExtendIndex(char *indexRelationName, Expr *predicate, List *rangetable)
 	predInfo->pred = (Node *) cnfPred;
 	predInfo->oldPred = oldPred;
 
-	attributeNumberA =
-		(AttrNumber *) palloc(numberOfAttributes *
+	attributeNumberA = (AttrNumber *) palloc(numberOfAttributes *
 							  sizeof attributeNumberA[0]);
-	classObjectId =
-		(Oid *) palloc(numberOfAttributes * sizeof classObjectId[0]);
+	classObjectId = (Oid *) palloc(numberOfAttributes * sizeof classObjectId[0]);
 
 
 	for (i = 0; i < numberOfAttributes; i++)

@@ -189,8 +189,7 @@ ExecHashJoin(HashJoin *node)
 		 *	hash node
 		 * ------------------
 		 */
-		hjstate->hj_InnerBatches =
-			hashNode->hashstate->hashBatches;
+		hjstate->hj_InnerBatches = hashNode->hashstate->hashBatches;
 	}
 	outerbatchPos = (RelativeAddr *) ABSADDR(hashtable->outerbatchPos);
 	curbatch = hashtable->curbatch;
@@ -452,17 +451,14 @@ ExecInitHashJoin(HashJoin *node, EState *estate, Plan *parent)
 	 */
 	{
 		HashState  *hashstate = hashNode->hashstate;
-		TupleTableSlot *slot =
-		hashstate->cstate.cs_ResultTupleSlot;
+		TupleTableSlot *slot = hashstate->cstate.cs_ResultTupleSlot;
 
 		hjstate->hj_HashTupleSlot = slot;
 	}
-	hjstate->hj_OuterTupleSlot->ttc_tupleDescriptor =
-		ExecGetTupType(outerNode);
+	hjstate->hj_OuterTupleSlot->ttc_tupleDescriptor = ExecGetTupType(outerNode);
 
 /*
-	hjstate->hj_OuterTupleSlot->ttc_execTupDescriptor =
-							  ExecGetExecTupDesc(outerNode);
+	hjstate->hj_OuterTupleSlot->ttc_execTupDescriptor = ExecGetExecTupDesc(outerNode);
 */
 
 	/* ----------------

@@ -612,8 +612,7 @@ transformTargetList(ParseState *pstate, List *targetlist)
 								p_target = tail_p_target = expandAll(pstate, att->relname,
 									att->relname, &pstate->p_last_resno);
 							else
-								lnext(tail_p_target) =
-									expandAll(pstate, att->relname, att->relname,
+								lnext(tail_p_target) = expandAll(pstate, att->relname, att->relname,
 											  &pstate->p_last_resno);
 							expand_star = true;
 						}

@@ -308,8 +308,7 @@ ExecIndexReScan(IndexScan *node, ExprContext *exprCtxt, Plan *parent)
 	if (exprCtxt == NULL)
 		exprCtxt = node->scan.scanstate->cstate.cs_ExprContext;
 
-	node->scan.scanstate->cstate.cs_ExprContext->ecxt_outertuple =
-		exprCtxt->ecxt_outertuple;
+	node->scan.scanstate->cstate.cs_ExprContext->ecxt_outertuple = exprCtxt->ecxt_outertuple;
 
 	/*
 	 * get the index qualifications and recalculate the appropriate values

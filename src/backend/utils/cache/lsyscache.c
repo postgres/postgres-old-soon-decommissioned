@@ -477,8 +477,7 @@ get_typalign(Oid typid)
 struct varlena *
 get_typdefault(Oid typid)
 {
-	struct varlena *typdefault =
-	(struct varlena *) TypeDefaultRetrieve(typid);
+	struct varlena *typdefault = (struct varlena *) TypeDefaultRetrieve(typid);
 
 	return typdefault;
 }

@@ -245,8 +245,7 @@ InitLocalBuffer(void)
 		buf->buf_id = -i - 2;
 	}
 
-	LocalRefCount =
-		(long *) malloc(sizeof(long) * NLocBuffer);
+	LocalRefCount = (long *) malloc(sizeof(long) * NLocBuffer);
 	MemSet(LocalRefCount, 0, sizeof(long) * NLocBuffer);
 }
 

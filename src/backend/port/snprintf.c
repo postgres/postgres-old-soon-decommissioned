@@ -380,8 +380,7 @@ int			base,
 	}
 	do
 	{
-		convert[place++] =
-			(caps ? "0123456789ABCDEF" : "0123456789abcdef")
+		convert[place++] = (caps ? "0123456789ABCDEF" : "0123456789abcdef")
 			[uvalue % (unsigned) base];
 		uvalue = (uvalue / (unsigned) base);
 	} while (uvalue);

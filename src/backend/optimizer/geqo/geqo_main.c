@@ -189,8 +189,7 @@ geqo(Query *root)
 		pmx(momma->string, daddy->string, kid->string, pool->string_length);
 #elif defined(CX)
 		/* CYCLE CROSSOVER */
-		cycle_diffs =
-			cx(momma->string, daddy->string, kid->string, pool->string_length, city_table);
+		cycle_diffs = cx(momma->string, daddy->string, kid->string, pool->string_length, city_table);
 		/* mutate the child */
 		if (cycle_diffs == 0)
 		{

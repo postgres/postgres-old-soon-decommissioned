@@ -97,8 +97,7 @@ linear(int pool_size, double bias)		/* bias is y-intercept of linear
 	double		index;			/* index between 0 and pop_size */
 	double		max = (double) pool_size;
 
-	index =
-		max * (bias - sqrt((bias * bias) - 4.0 * (bias - 1.0) * geqo_rand()))
+	index = max * (bias - sqrt((bias * bias) - 4.0 * (bias - 1.0) * geqo_rand()))
 		/ 2.0 / (bias - 1.0);
 
 	return (int) index;

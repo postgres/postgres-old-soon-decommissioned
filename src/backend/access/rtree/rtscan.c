@@ -141,8 +141,7 @@ rtrescan(IndexScanDesc s, bool fromEnd, ScanKey key)
 		s->opaque = p;
 		if (s->numberOfKeys > 0)
 		{
-			p->s_internalKey =
-				(ScanKey) palloc(sizeof(ScanKeyData) * s->numberOfKeys);
+			p->s_internalKey = (ScanKey) palloc(sizeof(ScanKeyData) * s->numberOfKeys);
 
 			/*
 			 * Scans on internal pages use different operators than they

@@ -131,8 +131,7 @@ set_rest_selec(Query *root, List *restrictinfo_list)
 		 */
 		if (valid_or_clause(clausenode) || FLOAT_IS_ZERO(cost_clause))
 		{
-			clausenode->selectivity =
-				compute_clause_selec(root,
+			clausenode->selectivity = compute_clause_selec(root,
 									 (Node *) clausenode->clause,
 									 lcons(makeFloat(cost_clause), NIL));
 		}

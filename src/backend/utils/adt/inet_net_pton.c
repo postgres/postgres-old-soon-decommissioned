@@ -113,6 +113,7 @@ inet_cidr_pton_ipv4(const char *src, u_char *dst, size_t size)
 		if (size <= 0)
 			goto emsgsize;
 		dirty = 0;
+		tmp = 0;
 		src++;	/* skip x or X. */
 		while ((ch = *src++) != '\0' && isascii(ch) && isxdigit(ch)) {
 			if (isupper(ch))

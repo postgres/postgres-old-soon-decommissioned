@@ -192,8 +192,7 @@ inv_create(int flags)
 	retval->iscan = (IndexScanDesc) NULL;
 	retval->hdesc = RelationGetDescr(r);
 	retval->idesc = RelationGetDescr(indr);
-	retval->offset = retval->lowbyte =
-		retval->highbyte = 0;
+	retval->offset = retval->lowbyte = retval->highbyte = 0;
 	ItemPointerSetInvalid(&(retval->htid));
 
 	if (flags & INV_WRITE)
@@ -631,8 +630,7 @@ inv_fetchtup(LargeObjectDesc *obj_desc, HeapTuple tuple, Buffer *buffer)
 			 */
 			ScanKeyEntryInitialize(&skey, 0x0, 1, F_INT4GE,
 								   Int32GetDatum(obj_desc->offset));
-			obj_desc->iscan =
-				index_beginscan(obj_desc->index_r,
+			obj_desc->iscan = index_beginscan(obj_desc->index_r,
 								(bool) 0, (uint16) 1,
 								&skey);
 		}

@@ -386,8 +386,7 @@ ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot)
 	 */
 	for (i = 0; i < cleanLength; i++)
 	{
-		values[i] =
-			heap_getattr(tuple, cleanMap[i], tupType, &isNull);
+		values[i] = heap_getattr(tuple, cleanMap[i], tupType, &isNull);
 
 		if (isNull)
 			nulls[i] = 'n';

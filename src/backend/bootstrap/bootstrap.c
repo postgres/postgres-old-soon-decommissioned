@@ -855,8 +855,7 @@ gettype(char *type)
 static Form_pg_attribute		/* XXX */
 AllocateAttribute()
 {
-	Form_pg_attribute attribute =
-	(Form_pg_attribute) malloc(ATTRIBUTE_TUPLE_SIZE);
+	Form_pg_attribute attribute = (Form_pg_attribute) malloc(ATTRIBUTE_TUPLE_SIZE);
 
 	if (!PointerIsValid(attribute))
 		elog(FATAL, "AllocateAttribute: malloc failed");

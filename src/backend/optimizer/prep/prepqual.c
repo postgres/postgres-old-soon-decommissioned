@@ -384,8 +384,7 @@ push_nots(Expr *qual)
 											   0, NULL);
 
 			op->op_fcache = (FunctionCache *) NULL;
-			return
-				(make_opclause(op, get_leftop(qual), get_rightop(qual)));
+			return (make_opclause(op, get_leftop(qual), get_rightop(qual)));
 		}
 		else
 			return make_notclause(qual);
@@ -458,8 +457,7 @@ or_normalize(List *orlist)
 
 	if (new_orlist)
 	{
-		return
-			(or_normalize(lcons(distribute_args(lfirst(new_orlist),
+		return (or_normalize(lcons(distribute_args(lfirst(new_orlist),
 										 ((Expr *) distributable)->args),
 								lnext(new_orlist))));
 	}

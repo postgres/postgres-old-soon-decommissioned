@@ -581,11 +581,9 @@ ExecHashGetBucket(HashJoinTable hashtable,
 	 * ------------------
 	 */
 	if (execConstByVal)
-		bucketno =
-			hashFunc((char *) &keyval, execConstLen) % hashtable->totalbuckets;
+		bucketno = hashFunc((char *) &keyval, execConstLen) % hashtable->totalbuckets;
 	else
-		bucketno =
-			hashFunc((char *) keyval, execConstLen) % hashtable->totalbuckets;
+		bucketno = hashFunc((char *) keyval, execConstLen) % hashtable->totalbuckets;
 #ifdef HJDEBUG
 	if (bucketno >= hashtable->nbuckets)
 		printf("hash(%d) = %d SAVED\n", keyval, bucketno);
