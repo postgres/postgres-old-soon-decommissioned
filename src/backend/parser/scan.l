@@ -356,7 +356,7 @@ other			.
 
 %%
 
-void yyerror(char message[])
+void yyerror(const char * message)
 {
 	elog(ERROR, "parser: %s at or near \"%s\"", message, yytext);
 }
