@@ -27,7 +27,7 @@
 
 #include "utils/syscache.h"
 #include "catalog/pg_type.h"
-#include "catalog_utils.h"
+#include "parser/catalog_utils.h"
 #include "parser/parse_query.h"
 /* #include "parser/io.h" */
 #include "utils/lsyscache.h"

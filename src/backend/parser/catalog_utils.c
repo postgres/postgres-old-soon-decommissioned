@@ -25,7 +25,7 @@
 #include "utils/syscache.h"
 #include "catalog/catname.h"
 
-#include "catalog_utils.h"
+#include "parser/catalog_utils.h"
 #include "catalog/pg_inherits.h"
 #include "catalog/pg_type.h"
 #include "catalog/indexing.h"
