@@ -64,5 +64,5 @@ global1.bki.source: $(GENBKI) $(GLOBALBKI_SRCS)
 local1_template1.bki.source: $(GENBKI) $(LOCALBKI_SRCS)
 	sh $(SHOPTS) $(GENBKI) $(BKIOPTS) $(LOCALBKI_SRCS) > $(objdir)/$(@F)
 
-CLEANFILES+= global.bki.source local1_template1.bki.source 
+CLEANFILES+= global1.bki.source local1_template1.bki.source
 
