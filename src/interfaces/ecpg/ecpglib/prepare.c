@@ -59,7 +59,9 @@ ECPGprepare(int lineno, char *name, char *variable)
 {
 	struct statement *stmt;
 	struct prepared_statement *this;
+	struct sqlca_t *sqlca = ECPGget_sqlca();
 
+	ECPGinit_sqlca(sqlca);
 	/* check if we already have prepared this statement */
 	for (this = prep_stmts; this != NULL && strcmp(this->name, name) != 0; this = this->next);
 	if (this)
