@@ -201,10 +201,13 @@ renameatt(char *relname,
 void
 renamerel(char *oldrelname, char *newrelname)
 {
+	int		i;
 	Relation	relrelation;	/* for RELATION relation */
 	HeapTuple	oldreltup;
 	char		oldpath[MAXPGPATH],
-				newpath[MAXPGPATH];
+				newpath[MAXPGPATH],
+				toldpath[MAXPGPATH + 10],
+				tnewpath[MAXPGPATH + 10];
 	Relation	irelations[Num_pg_class_indices];
 
 	if (!allowSystemTableMods && IsSystemRelationName(oldrelname))
@@ -229,6 +232,14 @@ renamerel(char *oldrelname, char *newrelname)
 	strcpy(newpath, relpath(newrelname));
 	if (rename(oldpath, newpath) < 0)
 		elog(ERROR, "renamerel: unable to rename file: %s", oldpath);
+
+	for (i = 1;; i++)
+	{
+		sprintf(toldpath, "%s.%d", oldpath, i);
+		sprintf(tnewpath, "%s.%d", newpath, i);
+		if(rename(toldpath, tnewpath) < 0)
+			break;
+	}
 
 	StrNCpy((((Form_pg_class) GETSTRUCT(oldreltup))->relname.data),
 			newrelname, NAMEDATALEN);
