@@ -174,7 +174,7 @@ crypt_loadpwdfile()
 			pwd_cache = (char **) realloc((void *) pwd_cache, sizeof(char *) * (pwd_cache_count + 1));
 			pwd_cache[pwd_cache_count++] = pstrdup(buffer);
 		}
-		fclose(pwd_file);
+		FreeFile(pwd_file);
 
 		/*
 		 * Now sort the entries in the cache for faster searching later.

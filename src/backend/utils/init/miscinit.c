@@ -339,9 +339,9 @@ SetCharSet()
 									strlen(p) + 2) * sizeof(char));
 		sprintf(map_file, "%s/%s", DataDir, p);
 #ifndef __CYGWIN32__
-		file = fopen(map_file, "r");
+		file = AllocateFile(map_file, "r");
 #else
-		file = fopen(map_file, "rb");
+		file = AllocateFile(map_file, "rb");
 #endif
 		if (file == NULL)
 			return;
@@ -376,7 +376,7 @@ SetCharSet()
 				}
 			}
 		}
-		fclose(file);
+		FreeFile(file);
 		free(map_file);
 	}
 }
