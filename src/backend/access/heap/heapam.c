@@ -1373,6 +1373,7 @@ l3:
 	if (result != HeapTupleMayBeUpdated)
 	{
 		Assert(result == HeapTupleSelfUpdated || result == HeapTupleUpdated);
+		tuple->t_self = tuple->t_data->t_ctid;
 		LockBuffer(*buffer, BUFFER_LOCK_UNLOCK);
 		return result;
 	}

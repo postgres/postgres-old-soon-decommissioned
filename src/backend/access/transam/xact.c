@@ -194,7 +194,7 @@ TransactionStateData CurrentTransactionStateData = {
 TransactionState CurrentTransactionState =
 &CurrentTransactionStateData;
 
-int	DefaultXactIsoLevel = XACT_SERIALIZABLE;
+int	DefaultXactIsoLevel = XACT_READ_COMMITTED;
 int	XactIsoLevel;
 
 /* ----------------

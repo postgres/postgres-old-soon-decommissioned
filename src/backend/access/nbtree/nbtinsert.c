@@ -134,6 +134,7 @@ l1:
 					 * If this tuple is being updated by other transaction
 					 * then we have to wait for its commit/abort.
 					 */
+					ReleaseBuffer(buffer);
 					if (TransactionIdIsValid(xwait))
 					{
 						if (nbuf != InvalidBuffer)
