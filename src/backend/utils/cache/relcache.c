@@ -3278,20 +3278,8 @@ write_relcache_init_file(void)
 		 * OK, rename the temp file to its final name, deleting any
 		 * previously-existing init file.
 		 */
-#if defined(WIN32) || defined(__CYGWIN__)
 		rename(tempfilename, finalfilename);
 		LWLockRelease(RelCacheInitLock);
-#else
-		{
-			char		finalfilename_new[MAXPGPATH];
-
-			snprintf(finalfilename_new, sizeof(finalfilename_new), "%s.new", finalfilename);
-			rename(tempfilename, finalfilename_new);
-			LWLockRelease(RelCacheInitLock);
-			/* Rename to active file after lock is released */
-			rename(finalfilename_new, finalfilename);
-		}
-#endif
 	}
 	else
 	{
