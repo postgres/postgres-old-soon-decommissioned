@@ -6,6 +6,14 @@ Other subset docs should be copied and shrunk from here.
 thomas 1998-02-23
 
 $Log: postgres.sgml,v $
+Revision 1.22  1999/05/20 05:39:27  thomas
+Rearrange and consolidate the Admin Guide.
+Add reference pages for utilities and remove standalone chapters for same.
+Add material for an appendix on date/time properties, but not yet
+ integrated with the User's Guide.
+Break up the former chapter on pg_options
+ into Admin and Programmer's Guides.
+
 Revision 1.21  1999/05/04 02:19:20  thomas
 Include chapters on security and an intro to SQL.
 
@@ -82,6 +90,7 @@ Move SQL reference pages up into the User's Guide.
 <!entity advanced SYSTEM "advanced.sgml">
 <!entity array    SYSTEM "array.sgml">
 <!entity datatype SYSTEM "datatype.sgml">
+<!entity datetime SYSTEM "datetime.sgml">
 <!entity environ  SYSTEM "environ.sgml">
 <!entity func     SYSTEM "func.sgml">
 <!entity inherit  SYSTEM "inherit.sgml">
@@ -343,8 +352,11 @@ Your name here...
     Additional related information.
    </Para>
   </PartIntro>
-  &docguide;
+   &datetime;
+   &docguide;
+<!--
    &contacts;
+-->
    &biblio;
  </Part>
 

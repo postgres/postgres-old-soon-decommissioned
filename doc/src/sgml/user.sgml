@@ -6,6 +6,14 @@ Derived from postgres.sgml.
 thomas 1998-02-24
 
 $Log: user.sgml,v $
+Revision 1.9  1999/05/20 05:39:29  thomas
+Rearrange and consolidate the Admin Guide.
+Add reference pages for utilities and remove standalone chapters for same.
+Add material for an appendix on date/time properties, but not yet
+ integrated with the User's Guide.
+Break up the former chapter on pg_options
+ into Admin and Programmer's Guides.
+
 Revision 1.8  1999/05/04 02:26:06  thomas
 Include new introductory chapter on SQL from Stefan S.
 Should this be in the tutorial instead?
@@ -41,6 +49,7 @@ Move SQL reference pages up into the User's Guide.
 <!entity array    SYSTEM "array.sgml">
 <!entity biblio   SYSTEM "biblio.sgml">
 <!entity datatype SYSTEM "datatype.sgml">
+<!entity datetime SYSTEM "datetime.sgml">
 <!entity environ  SYSTEM "environ.sgml">
 <!entity func     SYSTEM "func.sgml">
 <!entity inherit  SYSTEM "inherit.sgml">
@@ -141,7 +150,8 @@ Your name here...
  &manage;
  &storage;
  &commands;
- 
+
+ &datetime;
  <!--
  &contacts;
  -->
