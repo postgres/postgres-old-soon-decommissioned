@@ -179,7 +179,7 @@ InitArchiveFmt_Custom(ArchiveHandle *AH)
 		if (!AH->FH)
 			die_horribly(AH, modulename, "could not open archive file %s: %s\n", AH->fSpec, strerror(errno));
 
-		ctx->hasSeek = (fseeko(AH->FH, 0, SEEK_CUR) == 0);
+		ctx->hasSeek = checkSeek(AH->FH);
 	}
 	else
 	{
@@ -190,7 +190,7 @@ InitArchiveFmt_Custom(ArchiveHandle *AH)
 		if (!AH->FH)
 			die_horribly(AH, modulename, "could not open archive file %s: %s\n", AH->fSpec, strerror(errno));
 
-		ctx->hasSeek = (fseeko(AH->FH, 0, SEEK_CUR) == 0);
+		ctx->hasSeek = checkSeek(AH->FH);
 
 		ReadHead(AH);
 		ReadToc(AH);

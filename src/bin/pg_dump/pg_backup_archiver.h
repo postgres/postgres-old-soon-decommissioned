@@ -27,6 +27,7 @@
 
 #include "postgres_fe.h"
 
+#include <stdio.h>
 #include <time.h>
 #include <errno.h>
 
@@ -284,6 +285,7 @@ extern void ReadToc(ArchiveHandle *AH);
 extern void WriteDataChunks(ArchiveHandle *AH);
 
 extern int	TocIDRequired(ArchiveHandle *AH, int id, RestoreOptions *ropt);
+extern bool checkSeek(FILE *fp);
 
 /*
  * Mandatory routines for each supported format

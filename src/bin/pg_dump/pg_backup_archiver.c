@@ -2338,6 +2338,32 @@ ReadHead(ArchiveHandle *AH)
 }
 
 
+/*
+ * checkSeek
+ *	  check to see if fseek can be performed.
+ */
+
+bool
+checkSeek(FILE *fp)
+{
+
+	if (fseek(fp, 0, SEEK_CUR) != 0)
+		return false;
+	else if (sizeof(off_t) > sizeof(long))
+	/*
+	 *	At this point, off_t is too large for long, so we return
+	 *	based on whether an off_t version of fseek is available.
+	 */
+#ifdef HAVE_FSEEKO
+		return true;
+#else
+		return false;
+#endif
+	else
+		return true;
+}
+
+
 static void
 _SortToc(ArchiveHandle *AH, TocSortCompareFn fn)
 {

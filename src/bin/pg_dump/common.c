@@ -290,7 +290,7 @@ flagInhAttrs(TableInfo *tblinfo, int numTables,
 		 * attr with the same name, then only dump it if:
 		 *
 		 * - it is NOT NULL and zero parents are NOT NULL
-		 *   OR 
+		 *   OR
 		 * - it has a default value AND the default value does not match
 		 *   all parent default values, or no parents specify a default.
 		 *
