@@ -110,8 +110,8 @@ $Header$
     will need to set the <acronym>PGHOST</acronym> environment
     variable to the name
     of the database server machine.   The  environment  variable
-    <acronym>PGPORT</acronym> may also have to be set.  The bottom
-    line is this: if
+    <acronym>PGPORT</acronym> or <acronym>PGUNIXSOCKET</acronym> may also have to be set.
+    The bottom line is this: if
     you try to start an application  program  and  it  complains
     that it cannot connect to the <application>postmaster</application>,
     you should immediately consult your site administrator to make

@@ -134,6 +134,15 @@ PGconn *PQconnectdb(const char *conninfo)
     </varlistentry>
 
     <varlistentry>
+     <term><literal>unixsocket</literal></term>
+     <listitem>
+     <para>
+      Full path to Unix-domain socket file to connect to at the server host.
+     </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry>
      <term><literal>dbname</literal></term>
      <listitem>
      <para>
@@ -550,6 +559,16 @@ char *PQhost(const PGconn *conn)
          Returns the port of the connection.
 <synopsis>
 char *PQport(const PGconn *conn)
+</synopsis>
+</para>
+</listitem>
+
+<listitem>
+<para>
+<function>PQunixsocket</function>
+         Returns the name of the Unix-domain socket of the connection.
+<synopsis>
+char *PQunixsocket(const PGconn *conn)
 </synopsis>
 </para>
 </listitem>
@@ -1821,6 +1840,13 @@ application programs.
 <envar>PGHOST</envar> sets the default server name.
 If a non-zero-length string is specified, TCP/IP communication is used.
 Without a host name, libpq will connect using a local Unix domain socket.
+</para>
+</listitem>
+<listitem>
+<para>
+<envar>PGPORT</envar>  sets the default port or local Unix domain socket
+file extension for communicating with the <productname>Postgres</productname>
+backend.
 </para>
 </listitem>
 <listitem>

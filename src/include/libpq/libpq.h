@@ -55,7 +55,8 @@ extern char PQerrormsg[PQERRORMSG_LENGTH];		/* in libpq/util.c */
 /*
  * prototypes for functions in pqcomm.c
  */
-extern int	StreamServerPort(int family, unsigned short portName, int *fdP);
+extern int	StreamServerPort(int family, char *hostName,
+			unsigned short portName, char *unixSocketName, int *fdP);
 extern int	StreamConnection(int server_fd, Port *port);
 extern void StreamClose(int sock);
 extern void pq_init(void);

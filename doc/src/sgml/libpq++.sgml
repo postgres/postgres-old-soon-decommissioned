@@ -93,6 +93,13 @@ $Header$
       </listitem>
       <listitem>
        <para>
+	<envar>PGUNIXSOCKET</envar>  sets the full Unix domain socket
+	file name for communicating with the <productname>Postgres</productname>
+	backend.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
 	<envar>PGDATABASE</envar>  sets the default 
 	<productname>Postgres</productname> database name.
        </para>

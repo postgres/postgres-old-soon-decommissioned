@@ -304,6 +304,12 @@ ConfigureNamesString[] =
 	{"unix_socket_group",         PGC_POSTMASTER,       &Unix_socket_group,
 	 "", NULL},
 
+	{"unixsocket",         		  PGC_POSTMASTER,       &UnixSocketName,
+	 "", NULL},
+
+	{"hostname",         		  PGC_POSTMASTER,       &HostName,
+	 "", NULL},
+
 	{NULL, 0, NULL, NULL, NULL}
 };
 
