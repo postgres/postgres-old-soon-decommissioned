@@ -51,7 +51,7 @@ ecpg [ -v ] [ -t ] [ -I include-path ] [ -o outfile ]  file1 [ file2 ] [ ... ]
       <term>-t</term>
       <listitem>
        <para>
-	Turn off auto-transactin mode.
+	Turn off auto-transaction mode.
        </para>
       </listitem>
      </varlistentry>
