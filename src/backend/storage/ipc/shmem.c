@@ -258,9 +258,7 @@ InitShmemIndex(void)
  * ShmemInitHash -- Create/Attach to and initialize
  *		shared memory hash table.
  *
- * Notes:
- *
- * assume caller is doing some kind of synchronization
+ * We assume caller is doing some kind of synchronization
  * so that two people dont try to create/initialize the
  * table at once.
  */
