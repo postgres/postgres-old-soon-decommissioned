@@ -219,10 +219,13 @@ vc_vacuum(NameData *VacRelP)
     /* get list of relations */
     vrl = vc_getrels(p, VacRelP);
 
-    if (VacRelP != NULL)
-    	vc_delhilowstats(vrl->vrl_relid);
-    else
-    	vc_delhilowstats(InvalidOid);
+    if ( vrl != NULL )
+    {
+    	if (VacRelP != NULL)
+    	    vc_delhilowstats(vrl->vrl_relid);
+    	else
+    	    vc_delhilowstats(InvalidOid);
+    }
     	
     /* vacuum each heap relation */
     for (cur = vrl; cur != (VRelList) NULL; cur = cur->vrl_next)
