@@ -190,6 +190,7 @@ and <replaceable class="PARAMETER">table_constraint</replaceable> is:
       Default expressions for the inherited column definitions will only be included if
       <literal>INCLUDING DEFAULTS</literal> is specified.  The default is to exclude
       default expressions.
+     </para>
     </listitem>
    </varlistentry>
 
