@@ -6676,25 +6676,3 @@ doNegateFloat(Value *v)
 		v->val.str = newval;
 	}
 }
-
-/*
- * Decide whether to put double quotes around a name appearing in a SET
- * name_list.  Presently, do so if the name contains whitespace, commas,
- * or uppercase characters.  (This is correct assuming that the result
- * will be deparsed by SplitIdentifierString or similar logic.)
- */
-static bool
-set_name_needs_quotes(const char *name)
-{
-	if (*name == '\0')
-		return true;			/* empty name does need quotes */
-	while (*name)
-	{
-		if (*name == ',' ||
-			isspace((unsigned char) *name) ||
-			isupper((unsigned char) *name))
-			return true;
-		name++;
-	}
-	return false;
-}
