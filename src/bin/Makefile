@@ -32,6 +32,7 @@ include ../Makefile.global
 	$(MAKE) -C destroydb $@
 	$(MAKE) -C destroyuser $@
 	$(MAKE) -C initdb $@
+	$(MAKE) -C initlocation $@
 #
 # TCL/TK programs
 #
