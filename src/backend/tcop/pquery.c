@@ -79,7 +79,7 @@ CreateExecutorState()
      *	initialize the Executor State structure
      * ----------------
      */
-    state->es_direction = EXEC_FRWD;
+    state->es_direction = ForwardScanDirection;
     state->es_range_table = NIL;
 
     state->es_into_relation_descriptor = NULL;
