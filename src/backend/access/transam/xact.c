@@ -1530,6 +1530,7 @@ IsTransactionBlock()
 	TransactionState s = CurrentTransactionState;
 
 	if (s->blockState == TBLOCK_INPROGRESS
+		|| s->blockState == TBLOCK_ABORT
 		|| s->blockState == TBLOCK_ENDABORT)
 		return true;
 
