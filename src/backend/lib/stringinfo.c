@@ -114,10 +114,21 @@ appendStringInfo(StringInfo str, const char *fmt,...)
 		avail = str->maxlen - str->len - 1;
 		if (avail > 16)
 		{
+			/*
+			 * Assert check here is to catch buggy vsnprintf that overruns
+			 * the specified buffer length.  Solaris 7 in 64-bit mode is
+			 * an example of a platform with such a bug.
+			 */
+#ifdef USE_ASSERT_CHECKING
+			str->data[str->maxlen-1] = '\0';
+#endif
+
 			va_start(args, fmt);
 			nprinted = vsnprintf(str->data + str->len, avail,
 								 fmt, args);
 			va_end(args);
+
+			Assert(str->data[str->maxlen-1] == '\0');
 
 			/*
 			 * Note: some versions of vsnprintf return the number of chars
