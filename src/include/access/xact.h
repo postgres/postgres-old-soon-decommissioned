@@ -113,6 +113,7 @@ extern void EndTransactionBlock(void);
 extern bool IsTransactionBlock(void);
 extern void UserAbortTransactionBlock(void);
 extern void AbortOutOfAnyTransaction(void);
+extern void PreventTransactionChain(void *stmtNode, const char *stmtType);
 
 extern void RecordTransactionCommit(void);
 

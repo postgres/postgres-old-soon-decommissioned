@@ -1741,16 +1741,6 @@ reindex_index(Oid indexId, bool force, bool inplace)
 	bool		old;
 
 	/*
-	 * REINDEX within a transaction block is dangerous, because if the
-	 * transaction is later rolled back we have no way to undo truncation
-	 * of the index's physical file.  Disallow it.
-	 *
-	 * XXX if we're not doing an inplace rebuild, wouldn't this be okay?
-	 */
-	if (IsTransactionBlock())
-		elog(ERROR, "REINDEX cannot run inside a transaction block");
-
-	/*
 	 * Open our index relation and get an exclusive lock on it.
 	 *
 	 * Note: doing this before opening the parent heap relation means there's

@@ -152,8 +152,7 @@ createdb(const CreatedbStmt *stmt)
 	}
 
 	/* don't call this in a transaction block */
-	if (IsTransactionBlock())
-		elog(ERROR, "CREATE DATABASE: may not be called in a transaction block");
+	PreventTransactionChain((void *) stmt, "CREATE DATABASE");
 
 	/*
 	 * Check for db name conflict.	There is a race condition here, since
@@ -382,8 +381,7 @@ dropdb(const char *dbname)
 	if (strcmp(dbname, DatabaseName) == 0)
 		elog(ERROR, "DROP DATABASE: cannot be executed on the currently open database");
 
-	if (IsTransactionBlock())
-		elog(ERROR, "DROP DATABASE: may not be called in a transaction block");
+	PreventTransactionChain((void *) dbname, "DROP DATABASE");
 
 	/*
 	 * Obtain exclusive lock on pg_database.  We need this to ensure that

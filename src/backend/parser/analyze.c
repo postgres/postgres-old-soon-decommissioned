@@ -1631,16 +1631,6 @@ transformSelectStmt(ParseState *pstate, SelectStmt *stmt)
 		if (stmt->forUpdate)
 			elog(ERROR, "DECLARE/UPDATE is not supported"
 				 "\n\tCursors must be READ ONLY");
-
-		/*
-		 * 15 august 1991 -- since 3.0 postgres does locking right, we
-		 * discovered that portals were violating locking protocol. portal
-		 * locks cannot span xacts. as a short-term fix, we installed the
-		 * check here. -- mao
-		 */
-		if (!IsTransactionBlock())
-			elog(ERROR, "DECLARE CURSOR may only be used in begin/end transaction blocks");
-
 		qry->into = makeNode(RangeVar);
 		qry->into->relname = stmt->portalname;
 		qry->isPortal = TRUE;
@@ -1849,16 +1839,6 @@ transformSetOperationStmt(ParseState *pstate, SelectStmt *stmt)
 		if (forUpdate)
 			elog(ERROR, "DECLARE/UPDATE is not supported"
 				 "\n\tCursors must be READ ONLY");
-
-		/*
-		 * 15 august 1991 -- since 3.0 postgres does locking right, we
-		 * discovered that portals were violating locking protocol. portal
-		 * locks cannot span xacts. as a short-term fix, we installed the
-		 * check here. -- mao
-		 */
-		if (!IsTransactionBlock())
-			elog(ERROR, "DECLARE CURSOR may only be used in begin/end transaction blocks");
-
 		qry->into = makeNode(RangeVar);
 		qry->into->relname = portalname;
 		qry->isPortal = TRUE;

@@ -376,6 +376,16 @@ TruncateRelation(const RangeVar *relation)
 		aclcheck_error(ACLCHECK_NOT_OWNER, RelationGetRelationName(rel));
 
 	/*
+	 * Truncate within a transaction block is dangerous, because if
+	 * the transaction is later rolled back we have no way to undo
+	 * truncation of the relation's physical file.  Disallow it except for
+	 * a rel created in the current xact (which would be deleted on abort,
+	 * anyway).
+	 */
+	if (!rel->rd_isnew)
+		PreventTransactionChain((void *) relation, "TRUNCATE TABLE");
+
+	/*
 	 * Don't allow truncate on temp tables of other backends ... their
 	 * local buffer manager is not going to cope.
 	 */

@@ -1917,18 +1917,7 @@ heap_truncate(Oid rid)
 	Relation	rel;
 
 	/* Open relation for processing, and grab exclusive access on it. */
-
 	rel = heap_open(rid, AccessExclusiveLock);
-
-	/*
-	 * TRUNCATE TABLE within a transaction block is dangerous, because if
-	 * the transaction is later rolled back we have no way to undo
-	 * truncation of the relation's physical file.  Disallow it except for
-	 * a rel created in the current xact (which would be deleted on abort,
-	 * anyway).
-	 */
-	if (IsTransactionBlock() && !rel->rd_isnew)
-		elog(ERROR, "TRUNCATE TABLE cannot run inside a transaction block");
 
 	/*
 	 * Release any buffers associated with this relation.  If they're
