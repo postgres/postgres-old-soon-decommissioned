@@ -487,7 +487,7 @@ ShmemInitStruct(char *name, unsigned long size, bool *foundPtr)
 	item.location = BAD_LOCATION;
 
 	SpinAcquire(ShmemIndexLock);
-
+	
 	if (!ShmemIndex)
 	{
 #ifdef USE_ASSERT_CHECKING
