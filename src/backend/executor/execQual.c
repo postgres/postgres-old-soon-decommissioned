@@ -209,6 +209,9 @@ ExecEvalArrayRef(ArrayRef *arrayRef,
 static Datum
 ExecEvalAggref(Aggref *aggref, ExprContext *econtext, bool *isNull)
 {
+	if (econtext->ecxt_aggvalues == NULL) /* safety check */
+		elog(ERROR, "ExecEvalAggref: no aggregates in this expression context");
+
 	*isNull = econtext->ecxt_aggnulls[aggref->aggno];
 	return econtext->ecxt_aggvalues[aggref->aggno];
 }
