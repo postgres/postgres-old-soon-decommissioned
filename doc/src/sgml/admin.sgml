@@ -6,6 +6,10 @@ Derived from postgres.sgml.
 - thomas 1998-10-27
 
 $Log: admin.sgml,v $
+Revision 1.9  1999/01/07 02:59:45  thomas
+Include installation instructions for WIN32 client-side libraries.
+From Magnus Hagander <mha@sollentuna.net>.
+
 Revision 1.8  1998/10/31 09:36:31  thomas
 Cleanup for v6.4 release.
 Make new file current.sgml to hold release info for the current release.
@@ -28,7 +32,6 @@ Bigger updates to the installation instructions (install and config).
 <!entity y2k      SYSTEM "y2k.sgml">
 
 <!entity config   SYSTEM "config.sgml">
-<!entity current  SYSTEM "current.sgml">
 <!entity intro-ag SYSTEM "intro-ag.sgml">
 <!entity install  SYSTEM "install.sgml">
 <!entity installw SYSTEM "install-win32.sgml">
