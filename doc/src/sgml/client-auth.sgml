@@ -102,7 +102,7 @@ hostnossl  <replaceable>database</replaceable>  <replaceable>user</replaceable> 
       <para>
        This record matches connection attempts using Unix-domain
        sockets.  Without a record of this type, Unix-domain socket
-       connections are disallowed
+       connections are disallowed.
       </para>
      </listitem>
     </varlistentry>
