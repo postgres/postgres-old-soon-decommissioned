@@ -703,7 +703,7 @@ CREATE TABLE distributors (
    Create a table with a 2-dimensional array:
 
 <programlisting>
-CREATE TABLE array (
+CREATE TABLE array_int (
     vector  int[][]
 );
 </programlisting>
