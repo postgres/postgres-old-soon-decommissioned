@@ -362,6 +362,7 @@ createdb(const CreatedbStmt *stmt)
 	 * rewrite to do it for ourselves.
 	 */
 #ifndef WIN32
+	/* We might need to use cp -R one day for portability */
 	snprintf(buf, sizeof(buf), "cp -r '%s' '%s'", src_loc, target_dir);
 	if (system(buf) != 0)
 	{
