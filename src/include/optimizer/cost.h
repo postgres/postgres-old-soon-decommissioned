@@ -37,7 +37,7 @@
 extern double effective_cache_size;
 extern double random_page_cost;
 extern double cpu_tuple_cost;
-extern double cpu_index_tuple_cost;
+extern DLLIMPORT double cpu_index_tuple_cost;
 extern double cpu_operator_cost;
 extern Cost disable_cost;
 extern bool enable_seqscan;
