@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Mon Jul 21 15:04:47 EDT 2003
+Last updated:		Mon Jul 21 15:15:44 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -249,6 +249,7 @@ Commands
 	o Add table function support to pltcl, plperl, plpython
 	o -Make PL/PgSQL %TYPE schema-aware
 	o Allow PL/PgSQL to support array element assignment
+	o Add PL/PHP (Joe, Jan)
 
 
 Clients
