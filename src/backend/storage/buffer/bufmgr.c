@@ -1532,6 +1532,7 @@ PrintBufferDescs()
 	if (IsUnderPostmaster)
 	{
 		SpinAcquire(BufMgrLock);
+#if 0
 		for (i = 0; i < NBuffers; ++i, ++buf)
 		{
 			elog(NOTICE, "[%02d] (freeNext=%d, freePrev=%d, relname=%s, \
@@ -1540,6 +1541,7 @@ blockNum=%d, flags=0x%x, refcount=%d %d)",
 				 buf->sb_relname, buf->tag.blockNum, buf->flags,
 				 buf->refcount, PrivateRefCount[i]);
 		}
+#endif
 		SpinRelease(BufMgrLock);
 	}
 	else
