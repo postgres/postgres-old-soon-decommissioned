@@ -860,7 +860,7 @@ includedir=	$(HEADERDIR)
 # Flags for CC and LD. (depend on COPT and PROFILE)
 #
 # PostgreSQL should *always* compile with -Wall -Werror enabled
-CFLAGS+=	-Wall -Wmissing-prototypes -Wmissing-declarations #-Werror
+CFLAGS+=	-Wall -Wmissing-prototypes #-Werror
 
 # Globally pass debugging/optimization/profiling flags based
 # on the options selected above.
