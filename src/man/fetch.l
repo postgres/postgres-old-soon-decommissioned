@@ -3,7 +3,7 @@
 .\" $Header$
 .TH FETCH SQL 01/23/93 PostgreSQL PostgreSQL
 .SH NAME
-fetch \(em fetch instance(s) from a cursor
+fetch - fetch instance(s) from a cursor
 .SH SYNOPSIS
 .nf
 \fBfetch\fR [ (\fBforward\fR | \fBbackward\fR) ] [ ( number | \fBall\fR) ] [\fBin\fR cursor_name]

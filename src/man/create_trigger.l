@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "CREATE TRIGGER" SQL 09/25/97 PostgreSQL
 .SH NAME
-create trigger \(em create a new trigger
+create trigger - create a new trigger
 .SH SYNOPSIS
 .nf
 \fBcreate trigger\fR trigname \fB{before|after}\fP 

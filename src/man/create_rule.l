@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "CREATE RULE" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-create rule \(em define a new rule
+create rule - define a new rule
 .SH SYNOPSIS
 .nf
 \fBcreate\fR \fBrule\fR rule_name

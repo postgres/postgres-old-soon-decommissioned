@@ -3,7 +3,7 @@
 .\" $Header$
 .TH LOAD SQL 01/23/93 PostgreSQL PostgreSQL
 .SH NAME
-load \(em dynamically load an object file
+load - dynamically load an object file
 .SH SYNOPSIS
 .nf
 \fBload\fR "filename"

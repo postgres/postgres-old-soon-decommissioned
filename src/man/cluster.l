@@ -3,7 +3,7 @@
 .\" $Header$
 .TH CLUSTER SQL 01/23/93 PostgreSQL PostgreSQL
 .SH NAME
-cluster \(em give storage clustering advice to Postgres
+cluster - give storage clustering advice to Postgres
 .SH SYNOPSIS
 .nf
 \fBcluster\fR indexname \fBon\fR attname

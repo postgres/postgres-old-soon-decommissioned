@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "DROP INDEX" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-drop index \(em removes an index from Postgres
+drop index - removes an index from Postgres
 .SH SYNOPSIS
 .nf
 \fBdrop index\fR index_name

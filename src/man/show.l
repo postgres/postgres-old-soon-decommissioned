@@ -3,7 +3,7 @@
 .\" $Header$
 .TH SHOW SQL 05/14/97 PostgreSQL PostgreSQL
 .SH NAME
-show \(em show run-time parameters for session
+show - show run-time parameters for session
 .SH SYNOPSIS
 .nf
 \fBshow\fR variable

@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "DROP OPERATOR" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-drop operator \(em remove an operator from the system
+drop operator - remove an operator from the system
 .SH SYNOPSIS
 .nf
 \fBdrop operator\fR opr_desc

@@ -3,7 +3,7 @@
 .\" $Header$
 .TH SET SQL 05/14/97 PostgreSQL PostgreSQL
 .SH NAME
-set \(em set run-time parameters for session
+set - set run-time parameters for session
 .SH SYNOPSIS
 .nf
 \fBset\fR variable \fBto\fR 'value1[,value2 ...]'

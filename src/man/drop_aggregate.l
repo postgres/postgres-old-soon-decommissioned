@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "DROP AGGREGATE" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-drop aggregate \(em remove the definition of an aggregate
+drop aggregate - remove the definition of an aggregate
 .SH SYNOPSIS
 .nf
 \fBdrop aggregate\fR aggname aggtype

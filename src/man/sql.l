@@ -2,7 +2,7 @@
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
 .TH INTRODUCTION SQL 11/5/95 PostgreSQL PostgreSQL
-.SH "Section 4 \(em SQL Commands (COMMANDS)"
+.SH "Section 4 - SQL Commands (COMMANDS)"
 .SH "General Information"
 .SH DESCRIPTION
 The following is a description of the general syntax of SQL.

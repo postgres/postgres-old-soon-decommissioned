@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "ALTER TABLE" SQL 09/25/97 PostgreSQL
 .SH NAME
-alter table \(em add attributes to a class
+alter table - add attributes to a class
 .SH SYNOPSIS
 .nf
 \fBalter table\fR classname [ * ]

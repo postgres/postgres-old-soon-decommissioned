@@ -5,7 +5,7 @@
 .\" XXX This .XA has to go after the .TH so that the index page number goes
 .\"	in the right place...
 .SH NAME
-rollback \(em rollback, e.g. aborts, the current transaction
+rollback - rollback, e.g. aborts, the current transaction
 .SH SYNOPSIS
 .nf
 \fBrollback\fP \fB[transaction|work]\fR

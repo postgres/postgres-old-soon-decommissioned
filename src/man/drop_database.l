@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "DROP DATABASE" SQL 01/23/93 PostgreSQL PostgreSQL
 .SH NAME
-drop database \(em destroy an existing database
+drop database - destroy an existing database
 .SH SYNOPSIS
 .nf
 \fBdrop database\fR dbname

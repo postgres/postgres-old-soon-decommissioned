@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "CREATE OPERATOR" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-create operator \(em define a new user operator
+create operator - define a new user operator
 .SH SYNOPSIS
 .nf
 \fBcreate operator\fR operator_name

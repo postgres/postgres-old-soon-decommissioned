@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "DROP TRIGGER" SQL 09/26/97 PostgreSQL
 .SH NAME
-drop trigger \(em destroy existing trigger
+drop trigger - destroy existing trigger
 .SH SYNOPSIS
 .nf
 \fBdrop trigger\fR trigname \fBon\fR relname

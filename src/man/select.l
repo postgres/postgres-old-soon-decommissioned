@@ -3,7 +3,7 @@
 .\" $Header$
 .TH SELECT SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-select \(em retrieve instances from a class
+select - retrieve instances from a class
 .SH SYNOPSIS
 .nf
 \fBselect\fR [distinct]

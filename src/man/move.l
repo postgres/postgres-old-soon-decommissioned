@@ -3,7 +3,7 @@
 .\" $Header$
 .TH MOVE SQL 01/23/93 PostgreSQL PostgreSQL
 .SH NAME
-move \(em move cursor position
+move - move cursor position
 .SH SYNOPSIS
 .nf
 \fBmove\fR [ (\fBforward\fR | \fBbackward\fR) ] [ ( number | \fBall\fR) ] [\fBin\fR cursor_name]

@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "DROP ATTRIBUTE" SQL 09/26/97 PostgreSQL
 .SH NAME
-drop \(em destroy existing attributes
+drop - destroy existing attributes
 .SH SYNOPSIS
 .nf
 \fBdrop {aggregate|database|function|index|operator

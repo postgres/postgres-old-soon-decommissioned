@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "DROP TABLE" SQL 04/01/97 PostgreSQL PostgreSQL
 .SH NAME
-drop sequence \(em destroy existing sequence
+drop sequence - destroy existing sequence
 .SH SYNOPSIS
 .nf
 \fBdrop sequence\fR sequence_name_1 { \fB,\fR sequence_name_N }

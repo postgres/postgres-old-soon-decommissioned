@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "DROP TABLE" SQL 09/26/97 PostgreSQL
 .SH NAME
-drop table \(em destroy existing classes
+drop table - destroy existing classes
 .SH SYNOPSIS
 .nf
 \fBdrop table\fR classname-1 { \fB,\fR classname-i }

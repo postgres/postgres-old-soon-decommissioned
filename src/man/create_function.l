@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "CREATE FUNCTION" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH "NAME"
-create function \(em define a new function
+create function - define a new function
 .SH "SYNOPSIS"
 .nf
 \fBcreate function\fP function_name 
@@ -76,7 +76,7 @@ The body of a C function following
 should be the
 .BR "FULL PATH"
 of the object code (.o file) for the function, bracketed by quotation
-marks.  (Postgres will not compile a function automatically \(em it must
+marks.  (Postgres will not compile a function automatically - it must
 be compiled before it is used in a
 .BR "define function"
 command.)

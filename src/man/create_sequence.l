@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "CREATE SEQUENCE" SQL 04/01/97 PostgreSQL PostgreSQL
 .SH NAME
-create sequence \(em create a new sequence number generator
+create sequence - create a new sequence number generator
 .SH SYNOPSIS
 .nf
 \fBcreate sequence\fR seqname 

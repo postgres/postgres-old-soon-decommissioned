@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "DROP VIEW" SQL 04/25/94 PostgreSQL PostgreSQL
 .SH NAME
-drop view \(em removes a view from Postgres
+drop view - removes a view from Postgres
 .SH SYNOPSIS
 .nf
 \fBdrop view\fR view_name

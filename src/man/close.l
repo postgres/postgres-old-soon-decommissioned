@@ -3,7 +3,7 @@
 .\" $Header$
 .TH CLOSE SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-close \(em close a cursor
+close - close a cursor
 .SH SYNOPSIS
 .nf
 \fBclose\fP [cursor_name]

@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "CREATE LANGUAGE" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH "NAME"
-create language \(em define a new language for functions
+create language - define a new language for functions
 .SH "SYNOPSIS"
 .nf
 \fBcreate\fP [\fBtrusted\fP] \fBprocedural language\fP 'lanname'

@@ -3,7 +3,7 @@
 .\" $Header$
 .TH VACUUM SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-vacuum \(em vacuum a database
+vacuum - vacuum a database
 .SH SYNOPSIS
 .nf
 \fBvacuum [verbose] [analyze] [\fPtable [(column,...)]\fB]\fP

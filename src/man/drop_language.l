@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "DROP LANGUAGE" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-drop language \(em remove a user-defined procedural language
+drop language - remove a user-defined procedural language
 .SH SYNOPSIS
 .nf
 \fBdrop procedural language\fR 'lanname'

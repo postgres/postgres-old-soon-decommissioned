@@ -3,7 +3,7 @@
 .\" $Header$
 .TH RENAME SQL 02/08/94 PostgreSQL PostgreSQL
 .SH NAME
-rename \(em rename a class or an attribute in a class
+rename - rename a class or an attribute in a class
 .SH SYNOPSIS
 .nf
 \fBalter table\fR classname1

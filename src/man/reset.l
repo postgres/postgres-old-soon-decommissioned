@@ -3,7 +3,7 @@
 .\" $Header$
 .TH RESET SQL 05/14/97 PostgreSQL PostgreSQL
 .SH NAME
-reset \(em restore run-time parameters for session to default values
+reset - restore run-time parameters for session to default values
 .SH SYNOPSIS
 .nf
 \fBreset\fR variable

@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "DROP FUNCTION" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-drop function \(em remove a user-defined C function 
+drop function - remove a user-defined C function 
 .SH SYNOPSIS
 .nf
 \fBdrop function \fRfunction_name ( \fP[ type-1  { \fB,\fP type-n } ] \fB) 

@@ -3,7 +3,7 @@
 .\" $Header$
 .TH GRANT SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-grant \(em grant access control to a user or group
+grant - grant access control to a user or group
 .SH SYNOPSIS
 .nf
 \fBgrant\fR <privilege[,privilege,...]>

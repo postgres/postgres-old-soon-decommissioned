@@ -3,7 +3,7 @@
 .\" $Header$
 .TH INSERT SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-insert \(em insert tuples to a relation
+insert - insert tuples to a relation
 .SH SYNOPSIS
 .nf
 \fBinsert\fR into classname

@@ -3,7 +3,7 @@
 .\" $Header$
 .TH UPDATE SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-update \(em replace values of attributes in a class
+update - replace values of attributes in a class
 .SH SYNOPSIS
 .nf
 \fBupdate\fR classname \fBset\fR attname-1 = expression-1

@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "CREATE AGGREGATE" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-create aggregate \(em define a new aggregate
+create aggregate - define a new aggregate
 .SH SYNOPSIS
 .nf
 \fBcreate aggregate\fR agg-name [\fBas\fR]

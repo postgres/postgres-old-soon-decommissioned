@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "NOTIFY" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-notify \(em signal all frontends and backends listening on a class
+notify - signal all frontends and backends listening on a class
 .SH SYNOPSIS
 .nf
 \fBnotify\fR class_name

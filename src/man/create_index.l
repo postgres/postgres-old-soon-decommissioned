@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "CREATE INDEX" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-create index \(em construct a secondary index
+create index - construct a secondary index
 .SH SYNOPSIS
 .nf
 \fBcreate\fR [\fBunique\fR] \fBindex\fR index-name

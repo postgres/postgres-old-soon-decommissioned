@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "LISTEN" SQL 03/12/94 PostgreSQL PostgreSQL
 .SH NAME
-listen \(em listen for notification on a relation
+listen - listen for notification on a relation
 .SH SYNOPSIS
 .nf
 \fBlisten\fR class_name

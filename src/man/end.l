@@ -3,7 +3,7 @@
 .\" $Header$
 .TH END SQL 01/23/93 PostgreSQL PostgreSQL
 .SH NAME
-end \(em commit the current transaction 
+end - commit the current transaction 
 .SH SYNOPSIS
 .nf
 \fBend [transaction]\fR

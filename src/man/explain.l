@@ -3,7 +3,7 @@
 .\" $Header$
 .TH EXPLAIN SQL 06/12/97 PostgreSQL PostgreSQL
 .SH NAME
-explain \(em explains statement execution details
+explain - explains statement execution details
 .SH SYNOPSIS
 .nf
 \fBexplain [verbose]\fR query

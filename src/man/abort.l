@@ -6,7 +6,7 @@
 .\"	in the right place...
 .SH Abort
 .SH NAME
-abort \(em abort the current transaction
+abort - abort the current transaction
 .SH SYNOPSIS
 .nf
 \fBabort\fP \fB[transaction]\fR

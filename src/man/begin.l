@@ -3,7 +3,7 @@
 .\" $Header$
 .TH BEGIN SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-begin \(em begins a transaction
+begin - begins a transaction
 .SH SYNOPSIS
 .nf
 \fBbegin\fP \fB[transaction|work]\fR

@@ -3,7 +3,7 @@
 .\" $Header$
 .TH COPY SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-copy \(em copy data to or from a class from or to a Unix file.
+copy - copy data to or from a class from or to a Unix file.
 .SH SYNOPSIS
 .nf
 \fBcopy\fP [\fBbinary\fP] classname [\fBwith oids\fP]

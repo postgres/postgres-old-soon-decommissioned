@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "CREATE TABLE" SQL 09/25/97 PostgreSQL
 .SH NAME
-create table \(em create a new class
+create table - create a new class
 .SH SYNOPSIS
 .nf
 \fBcreate table\fR classname \fB(\fPattname type [\fBdefault\fP value] [\fBnot null\fP]

@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "CREATE VIEW" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-create view \(em construct a virtual class
+create view - construct a virtual class
 .SH SYNOPSIS
 .nf
 \fBcreate view\fR view_name \fBas\fR

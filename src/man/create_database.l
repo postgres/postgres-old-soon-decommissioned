@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "CREATE DATABASE" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-create database \(em create a new database
+create database - create a new database
 .SH SYNOPSIS
 .nf
 \fBcreate database\fP dbname [\fBwith location = '\fPdbpath\fB'\fP]

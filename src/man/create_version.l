@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "CREATE VERSION" SQL 01/23/93 PostgreSQL PostgreSQL
 .SH NAME
-create version \(em construct a version class 
+create version - construct a version class 
 .SH SYNOPSIS
 .nf
 \fBcreate version\fP classname1 \fBfrom\fP classname2 [\fB[\fPabstime\fB]\fP]

@@ -3,7 +3,7 @@
 .\" $Header$
 .TH "CREATE TYPE" SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-create type \(em define a new base data type 
+create type - define a new base data type 
 .SH SYNOPSIS
 .nf
 \fBcreate type\fP typename \fB(\fR\fBinternallength\fR = (number | \fBvariable\fR),

@@ -3,7 +3,7 @@
 .\" $Header$
 .TH REVOKE SQL 11/05/95 PostgreSQL PostgreSQL
 .SH NAME
-revoke \(em revoke access privileges
+revoke - revoke access privileges
 .SH SYNOPSIS
 .nf
 \fBrevoke\fR <privilege[,privilege,...]>
