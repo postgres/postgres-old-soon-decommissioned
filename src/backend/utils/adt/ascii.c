@@ -38,18 +38,21 @@ Datum
 to_ascii_encname(PG_FUNCTION_ARGS)
 {
 	multibyte_error();
+	return 0;					/* keep compiler quiet */
 }
 
 Datum 
 to_ascii_enc(PG_FUNCTION_ARGS)
 {
 	multibyte_error();
+	return 0;					/* keep compiler quiet */
 }
 
 Datum 
 to_ascii_default(PG_FUNCTION_ARGS)
 {
 	multibyte_error();
+	return 0;					/* keep compiler quiet */
 }
 
 
