@@ -153,7 +153,7 @@ ExecuteQuery(ExecuteStmt *stmt, CommandDest outputDest)
 			QueryDesc  *qdesc;
 			EState	   *state;
 
-			if (Show_executor_stats)
+			if (log_executor_stats)
 				ResetUsage();
 
 			qdesc = CreateQueryDesc(query, plan, outputDest, NULL);
@@ -172,7 +172,7 @@ ExecuteQuery(ExecuteStmt *stmt, CommandDest outputDest)
 
 			RunQuery(qdesc, state);
 
-			if (Show_executor_stats)
+			if (log_executor_stats)
 				ShowUsage("EXECUTOR STATISTICS");
 		}
 
