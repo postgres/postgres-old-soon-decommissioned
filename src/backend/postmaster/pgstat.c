@@ -464,7 +464,8 @@ pgstat_report_tabstat(void)
 	for (i = 0; i < pgStatTabstatUsed; i++)
 	{
 		n = pgStatTabstatMessages[i]->m_nentries;
-		len = offsetof(PgStat_MsgTabstat, m_entry[n]);
+		len = offsetof(PgStat_MsgTabstat, m_entry[0]) +
+			n * sizeof(PgStat_TableEntry);
 
 		pgStatTabstatMessages[i]->m_xact_commit = pgStatXactCommit;
 		pgStatTabstatMessages[i]->m_xact_rollback = pgStatXactRollback;
@@ -573,7 +574,8 @@ pgstat_vacuum_tabstat(void)
 		 */
 		if (msg.m_nentries >= PGSTAT_NUM_TABPURGE)
 		{
-			len = offsetof(PgStat_MsgTabpurge, m_tableid[msg.m_nentries]);
+			len = offsetof(PgStat_MsgTabpurge, m_tableid[0])
+				+ msg.m_nentries * sizeof(Oid);
 
 			pgstat_setheader(&msg.m_hdr, PGSTAT_MTYPE_TABPURGE);
 			pgstat_send(&msg, len);
@@ -587,7 +589,8 @@ pgstat_vacuum_tabstat(void)
 	 */
 	if (msg.m_nentries > 0)
 	{
-		len = offsetof(PgStat_MsgTabpurge, m_tableid[msg.m_nentries]);
+		len = offsetof(PgStat_MsgTabpurge, m_tableid[0])
+			+ msg.m_nentries * sizeof(Oid);
 
 		pgstat_setheader(&msg.m_hdr, PGSTAT_MTYPE_TABPURGE);
 		pgstat_send(&msg, len);
