@@ -144,7 +144,6 @@ AggregateCreate(const char *aggName,
 							  "-",			/* probin */
 							  true,			/* isAgg */
 							  false,		/* security invoker (currently not definable for agg) */
-							  false,		/* isImplicit */
 							  false,		/* isStrict (not needed for agg) */
 							  PROVOLATILE_IMMUTABLE,	/* volatility (not needed for agg) */
 							  BYTE_PCT,		/* default cost values */

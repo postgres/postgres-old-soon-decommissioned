@@ -42,6 +42,9 @@ extern void ReindexDatabase(const char *databaseName, bool force, bool all);
 extern void CreateFunction(CreateFunctionStmt *stmt);
 extern void RemoveFunction(RemoveFuncStmt *stmt);
 extern void RemoveFunctionById(Oid funcOid);
+extern void CreateCast(CreateCastStmt *stmt);
+extern void DropCast(DropCastStmt *stmt);
+extern void DropCastById(Oid castOid);
 
 extern void DefineOperator(List *names, List *parameters);
 extern void RemoveOperator(RemoveOperStmt *stmt);

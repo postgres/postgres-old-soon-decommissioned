@@ -60,6 +60,7 @@ PostgreSQL Reference Manual
    &commit;
    &copyTable;
    &createAggregate;
+   &createCast;
    &createConstraint;
    &createDatabase;
    &createDomain;
@@ -80,6 +81,7 @@ PostgreSQL Reference Manual
    &declare;
    &delete;
    &dropAggregate;
+   &dropCast;
    &dropDatabase;
    &dropDomain;
    &dropFunction;

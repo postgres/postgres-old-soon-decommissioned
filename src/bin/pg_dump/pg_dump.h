@@ -177,6 +177,7 @@ typedef enum _OidOptions
 extern int	findTableByOid(TableInfo *tbinfo, int numTables, const char *oid);
 extern char *findOprByOid(OprInfo *oprinfo, int numOprs, const char *oid);
 extern int	findFuncByOid(FuncInfo *finfo, int numFuncs, const char *oid);
+extern int	findTypeByOid(TypeInfo *tinfo, int numTypes, const char *oid);
 
 extern void check_conn_and_db(void);
 extern void exit_nicely(void);
@@ -202,6 +203,8 @@ extern void dumpTypes(Archive *fout, FuncInfo *finfo, int numFuncs,
 		  TypeInfo *tinfo, int numTypes);
 extern void dumpProcLangs(Archive *fout, FuncInfo finfo[], int numFuncs);
 extern void dumpFuncs(Archive *fout, FuncInfo finfo[], int numFuncs);
+extern void dumpCasts(Archive *fout, FuncInfo *finfo, int numFuncs,
+					  TypeInfo *tinfo, int numTypes);
 extern void dumpAggs(Archive *fout, AggInfo agginfo[], int numAggregates);
 extern void dumpOprs(Archive *fout, OprInfo *oprinfo, int numOperators);
 extern void dumpTables(Archive *fout, TableInfo tblinfo[], int numTables,

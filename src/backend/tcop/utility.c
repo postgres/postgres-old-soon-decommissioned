@@ -829,6 +829,14 @@ ProcessUtility(Node *parsetree,
 			}
 			break;
 
+		case T_CreateCastStmt:
+			CreateCast((CreateCastStmt *) parsetree);
+			break;
+
+		case T_DropCastStmt:
+			DropCast((DropCastStmt *) parsetree);
+			break;
+
 		default:
 			elog(ERROR, "ProcessUtility: command #%d unsupported",
 				 nodeTag(parsetree));

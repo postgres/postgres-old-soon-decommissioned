@@ -20,6 +20,7 @@
 #define  AccessMethodOperatorRelationName "pg_amop"
 #define  AccessMethodProcedureRelationName "pg_amproc"
 #define  AttributeRelationName "pg_attribute"
+#define  CastRelationName "pg_cast"
 #define  ConstraintRelationName "pg_constraint"
 #define  ConversionRelationName "pg_conversion"
 #define  DatabaseRelationName "pg_database"

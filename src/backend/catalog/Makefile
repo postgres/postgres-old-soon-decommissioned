@@ -30,7 +30,7 @@ POSTGRES_BKI_SRCS := $(addprefix $(top_srcdir)/src/include/catalog/,\
 	pg_attrdef.h pg_constraint.h pg_inherits.h pg_index.h \
 	pg_operator.h pg_opclass.h pg_am.h pg_amop.h pg_amproc.h \
 	pg_language.h pg_largeobject.h pg_aggregate.h pg_statistic.h \
-	pg_rewrite.h pg_trigger.h pg_listener.h pg_description.h \
+	pg_rewrite.h pg_trigger.h pg_listener.h pg_description.h pg_cast.h \
 	pg_namespace.h pg_conversion.h pg_database.h pg_shadow.h pg_group.h \
 	pg_depend.h indexing.h \
     )

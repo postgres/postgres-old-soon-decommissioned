@@ -63,7 +63,6 @@ SetDefine(char *querystr, Oid elemType)
 							 fileName,	/* probin */
 							 false,		/* not aggregate */
 							 false,		/* security invoker */
-							 false,		/* not implicit coercion */
 							 false,		/* isStrict (irrelevant, no args) */
 							 PROVOLATILE_VOLATILE,	/* assume unsafe */
 							 100,		/* byte_pct */

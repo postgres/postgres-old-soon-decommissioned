@@ -1555,4 +1555,30 @@ typedef struct CreateConversionStmt
 	bool		def;				/* is this a default conversion? */
 } CreateConversionStmt;
 
+/* ----------------------
+ *	CREATE CAST Statement
+ * ----------------------
+ */
+typedef struct CreateCastStmt
+{
+	NodeTag		type;
+	TypeName   *sourcetype;
+	TypeName   *targettype;
+	FuncWithArgs *func;
+	bool		implicit;
+} CreateCastStmt;
+
+/* ----------------------
+ *	DROP CAST Statement
+ * ----------------------
+ */
+typedef struct DropCastStmt
+{
+	NodeTag		type;
+	TypeName   *sourcetype;
+	TypeName   *targettype;
+	DropBehavior behavior;
+} DropCastStmt;
+
+
 #endif   /* PARSENODES_H */

@@ -170,6 +170,13 @@ dumpSchema(Archive *fout,
 		dumpOprs(fout, oprinfo, numOperators);
 	}
 
+	if (!dataOnly)
+	{
+		if (g_verbose)
+			write_msg(NULL, "dumping out user-defined casts\n");
+		dumpCasts(fout, finfo, numFuncs, tinfo, numTypes);
+	}
+
 	*numTablesPtr = numTables;
 	return tblinfo;
 }
@@ -381,6 +388,23 @@ findFuncByOid(FuncInfo *finfo, int numFuncs, const char *oid)
 	for (i = 0; i < numFuncs; i++)
 	{
 		if (strcmp(finfo[i].oid, oid) == 0)
+			return i;
+	}
+	return -1;
+}
+
+/*
+ * Finds the index (in tinfo) of the type with the given OID.  Returns
+ * -1 if not found.
+ */
+int
+findTypeByOid(TypeInfo *tinfo, int numTypes, const char *oid)
+{
+	int			i;
+
+	for (i = 0; i < numTypes; i++)
+	{
+		if (strcmp(tinfo[i].oid, oid) == 0)
 			return i;
 	}
 	return -1;

@@ -45,7 +45,7 @@ CATALOG(pg_proc) BOOTSTRAP
 	Oid			prolang;		/* OID of pg_language entry */
 	bool		proisagg;		/* is it an aggregate? */
 	bool		prosecdef;		/* security definer */
-	bool		proimplicit;	/* can be invoked as implicit coercion? */
+	bool		proimplicit;	/* unused */
 	bool		proisstrict;	/* strict with respect to NULLs? */
 	bool		proretset;		/* returns a set? */
 	char		provolatile;	/* see PROVOLATILE_ categories below */
@@ -3007,7 +3007,6 @@ extern Oid ProcedureCreate(const char *procedureName,
 				const char *probin,
 				bool isAgg,
 				bool security_definer,
-				bool isImplicit,
 				bool isStrict,
 				char volatility,
 				int32 byte_pct,

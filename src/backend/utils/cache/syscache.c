@@ -28,6 +28,7 @@
 #include "catalog/pg_aggregate.h"
 #include "catalog/pg_amop.h"
 #include "catalog/pg_amproc.h"
+#include "catalog/pg_cast.h"
 #include "catalog/pg_conversion.h"
 #include "catalog/pg_group.h"
 #include "catalog/pg_index.h"
@@ -171,6 +172,17 @@ static const struct cachedesc cacheinfo[] = {
 		{
 			Anum_pg_attribute_attrelid,
 			Anum_pg_attribute_attnum,
+			0,
+			0
+	}},
+	{
+		CastRelationName,			/* CASTSOURCETARGET */
+		CastSourceTargetIndex,
+		0,
+		2,
+		{
+			Anum_pg_cast_castsource,
+			Anum_pg_cast_casttarget,
 			0,
 			0
 	}},
