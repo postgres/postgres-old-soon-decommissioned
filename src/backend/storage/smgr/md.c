@@ -93,6 +93,9 @@ mdcreate(SMgrRelation reln, bool isRedo)
 	char	   *path;
 	File		fd;
 
+	if (isRedo && reln->md_fd != NULL)
+		return true;			/* created and opened already... */
+
 	Assert(reln->md_fd == NULL);
 
 	path = relpath(reln->smgr_rnode);

@@ -101,20 +101,23 @@ typedef TransactionStateData *TransactionState;
 typedef struct xl_xact_commit
 {
 	time_t		xtime;
-
-	/*
-	 * Array of RelFileNode-s to drop may follow at the end of struct
-	 */
+	/* Array of RelFileNode(s) to drop at commit */
+	/* The XLOG record length determines how many there are */
+	RelFileNode	xnodes[1];		/* VARIABLE LENGTH ARRAY */
 } xl_xact_commit;
 
-#define SizeOfXactCommit	((offsetof(xl_xact_commit, xtime) + sizeof(time_t)))
+#define MinSizeOfXactCommit	offsetof(xl_xact_commit, xnodes)
 
 typedef struct xl_xact_abort
 {
 	time_t		xtime;
+	/* Array of RelFileNode(s) to drop at abort */
+	/* The XLOG record length determines how many there are */
+	RelFileNode	xnodes[1];		/* VARIABLE LENGTH ARRAY */
 } xl_xact_abort;
 
-#define SizeOfXactAbort ((offsetof(xl_xact_abort, xtime) + sizeof(time_t)))
+#define MinSizeOfXactAbort offsetof(xl_xact_abort, xnodes)
+
 
 /* ----------------
  *		extern definitions

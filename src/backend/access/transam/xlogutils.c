@@ -319,6 +319,9 @@ XLogCloseRelationCache(void)
 	_xlrelarr = NULL;
 }
 
+/*
+ * Open a relation during XLOG replay
+ */
 Relation
 XLogOpenRelation(bool redo, RmgrId rmid, RelFileNode rnode)
 {
@@ -385,4 +388,32 @@ XLogOpenRelation(bool redo, RmgrId rmid, RelFileNode rnode)
 	res->lessRecently->moreRecently = res;
 
 	return (&(res->reldata));
+}
+
+/*
+ * Close a relation during XLOG replay
+ *
+ * This is called when the relation is about to be deleted; we need to ensure
+ * that there is no dangling smgr reference in the xlog relation cache.
+ *
+ * Currently, we don't bother to physically remove the relation from the
+ * cache, we just let it age out normally.
+ */
+void
+XLogCloseRelation(RelFileNode rnode)
+{
+	XLogRelDesc *rdesc;
+	XLogRelCacheEntry *hentry;
+
+	hentry = (XLogRelCacheEntry *)
+		hash_search(_xlrelcache, (void *) &rnode, HASH_FIND, NULL);
+
+	if (!hentry)
+		return;					/* not in cache so no work */
+
+	rdesc = hentry->rdesc;
+
+	if (rdesc->reldata.rd_smgr != NULL)
+		smgrclose(rdesc->reldata.rd_smgr);
+	rdesc->reldata.rd_smgr = NULL;
 }

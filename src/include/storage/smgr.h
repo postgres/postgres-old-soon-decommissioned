@@ -61,6 +61,7 @@ extern void smgrwrite(SMgrRelation reln, BlockNumber blocknum, char *buffer);
 extern BlockNumber smgrnblocks(SMgrRelation reln);
 extern BlockNumber smgrtruncate(SMgrRelation reln, BlockNumber nblocks);
 extern void smgrDoPendingDeletes(bool isCommit);
+extern int	smgrGetPendingDeletes(bool forCommit, RelFileNode **ptr);
 extern void smgrcommit(void);
 extern void smgrabort(void);
 extern void smgrsync(void);

@@ -44,6 +44,14 @@
 #define RELSEG_SIZE (0x40000000 / BLCKSZ)
 
 /*
+ * XLOG_SEG_SIZE is the size of a single WAL file.  This must be a power of 2
+ * and larger than BLCKSZ (preferably, a great deal larger than BLCKSZ).
+ *
+ * Changing XLOG_SEG_SIZE requires an initdb.
+ */
+#define XLOG_SEG_SIZE	(16*1024*1024)
+
+/*
  * Maximum number of columns in an index and maximum number of
  * arguments to a function. They must be the same value.
  *
