@@ -21,7 +21,7 @@
  */
 extern char *pg_strtok(int *length);
 extern char *debackslash(char *token, int length);
-extern void *nodeRead(bool read_car_only);
+extern void *nodeRead(char *token, int tok_len);
 
 /*
  * prototypes for functions in readfuncs.c

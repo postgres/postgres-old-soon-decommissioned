@@ -130,7 +130,6 @@ _outToken(StringInfo str, char *s)
 	/* These characters only need to be quoted at the start of the string */
 	if (*s == '<' ||
 		*s == '\"' ||
-		*s == '@' ||
 		isdigit((unsigned char) *s) ||
 		((*s == '+' || *s == '-') &&
 		 (isdigit((unsigned char) s[1]) || s[1] == '.')))
