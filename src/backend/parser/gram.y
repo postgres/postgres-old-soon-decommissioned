@@ -3156,8 +3156,8 @@ createdb_opt_item:  LOCATION opt_equal Sconst
 		;
 
 /*
- *	Optional equals is here only for backward compatibility.
- *	Should be removed someday.  bjm 2002-02-24
+ *	Though the equals sign doesn't match other WITH options, pg_dump uses
+ *  equals for backward compability, and it doesn't seem worth remove it.
  */
 opt_equal: '='								{ $$ = TRUE; }
 		| /*EMPTY*/							{ $$ = FALSE; }
