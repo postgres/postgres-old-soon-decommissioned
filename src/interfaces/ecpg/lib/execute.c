@@ -479,7 +479,7 @@ ECPGexecute(struct statement * stmt)
 						strncpy(mallocedval + strlen(mallocedval) - 1, "}'", sizeof("}'")); 
 					}
 					else
-						sprintf(mallocedval, "%c", (*((char *) var->value)) ? 't' : 'f');
+						sprintf(mallocedval, "'%c'", (*((char *) var->value)) ? 't' : 'f');
 
 					tobeinserted = mallocedval;
 					break;
