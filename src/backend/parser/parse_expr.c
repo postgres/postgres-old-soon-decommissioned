@@ -1027,7 +1027,8 @@ parser_typecast_expression(ParseState *pstate,
 	if (inputType != targetType)
 	{
 		expr = CoerceTargetExpr(pstate, expr, inputType,
-								targetType, typename->typmod);
+								getBaseType(targetType),
+								typename->typmod);
 		if (expr == NULL)
 			elog(ERROR, "Cannot cast type '%s' to '%s'",
 				 format_type_be(inputType),
@@ -1039,7 +1040,7 @@ parser_typecast_expression(ParseState *pstate,
 	 * as well as a type coercion.
 	 */
 	expr = coerce_type_typmod(pstate, expr,
-							  targetType, typename->typmod);
+							  getBaseType(targetType), typename->typmod);
 
 	return expr;
 }

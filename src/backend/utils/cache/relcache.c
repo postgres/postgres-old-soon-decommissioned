@@ -512,8 +512,12 @@ RelationBuildTupleDesc(RelationBuildDescInfo buildinfo,
 			   (char *) attp,
 			   ATTRIBUTE_TUPLE_SIZE);
 
-		/* Update constraint/default info */
-		if (attp->attnotnull)
+
+
+		/*
+		 * Update constraint/default info
+		 */
+       if (attp->attnotnull)
 			constr->has_not_null = true;
 
 		if (attp->atthasdef)

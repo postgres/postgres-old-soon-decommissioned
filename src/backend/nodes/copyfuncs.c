@@ -2227,6 +2227,19 @@ _copyLoadStmt(LoadStmt *from)
 	return newnode;
 }
 
+static CreateDomainStmt *
+_copyCreateDomainStmt(CreateDomainStmt *from)
+{
+	CreateDomainStmt *newnode = makeNode(CreateDomainStmt);
+
+	if (from->domainname)
+		newnode->domainname = pstrdup(from->domainname);
+	if (from->typename)
+		newnode->typename = from->typename;
+
+	return newnode;
+}
+
 static CreatedbStmt *
 _copyCreatedbStmt(CreatedbStmt *from)
 {
