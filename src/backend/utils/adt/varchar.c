@@ -132,11 +132,8 @@ varcharin(char *s, int dummy, int typlen)
 	if (s == NULL)
 		return ((char *) NULL);
 
-	if (typlen == -1)	/* we will remove this soon to make compact storage */
-						/* change varcharlen at the same time to use VARSIZE */
-		len = strlen(s) + VARHDRSZ;
-/*	if (typlen != -1 && len > typlen) */
-	else
+	len = strlen(s) + VARHDRSZ;
+	if (typlen != -1 && len > typlen)
 		len = typlen;	/* clip the string at max length */
 
 	if (len > 4096)
