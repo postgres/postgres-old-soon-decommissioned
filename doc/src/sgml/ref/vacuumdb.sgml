@@ -59,6 +59,14 @@ PostgreSQL documentation
    settings and environment variables available to <application>psql</application>
    and the <application>libpq</application> front-end library do apply.
   </para>
+
+
+  <para>
+  <application>vacuumdb</application> will need to connect several times to the
+  <productname>PostgreSQL</productname> server, asking for the password each
+  time. It will probably be very convenient to have a PGPASSWORDFILE in that case.
+  </para>
+
  </refsect1>
 
 
