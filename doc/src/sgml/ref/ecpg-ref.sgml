@@ -57,7 +57,7 @@ PostgreSQL documentation
       <term>-t</term>
       <listitem>
        <para>
-	Turn off auto-transaction mode.
+	Turn on auto-transaction mode.
        </para>
       </listitem>
      </varlistentry>
