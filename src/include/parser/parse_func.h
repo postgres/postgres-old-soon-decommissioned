@@ -58,7 +58,8 @@ extern FuncDetailCode func_get_detail(char *funcname, List *fargs,
 
 extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
 
-extern void func_error(char *caller, char *funcname,
-		   int nargs, Oid *argtypes, char *msg);
+extern void func_error(const char *caller, const char *funcname,
+					   int nargs, const Oid *argtypes,
+					   const char *msg);
 
 #endif   /* PARSE_FUNC_H */

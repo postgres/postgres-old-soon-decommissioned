@@ -209,3 +209,17 @@ makeRangeVar(char *schemaname, char *relname)
 
 	return r;
 }
+
+/*
+ * makeTypeName -
+ *	build a TypeName node for an unqualified name.
+ */
+TypeName *
+makeTypeName(char *typnam)
+{
+	TypeName   *n = makeNode(TypeName);
+
+	n->names = makeList1(makeString(typnam));
+	n->typmod = -1;
+	return n;
+}

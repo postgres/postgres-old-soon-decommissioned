@@ -36,19 +36,19 @@ extern void ReindexDatabase(const char *databaseName, bool force, bool all);
  * prototypes in define.c
  */
 extern void CreateFunction(ProcedureStmt *stmt);
-extern void DefineOperator(char *name, List *parameters);
-extern void DefineAggregate(char *name, List *parameters);
-extern void DefineType(char *name, List *parameters);
+extern void DefineOperator(List *names, List *parameters);
+extern void DefineAggregate(List *names, List *parameters);
+extern void DefineType(List *names, List *parameters);
 extern void DefineDomain(CreateDomainStmt *stmt);
 
 /*
  * prototypes in remove.c
  */
-extern void RemoveDomain(char *domainName, int behavior);
+extern void RemoveDomain(List *names, int behavior);
 extern void RemoveFunction(char *functionName, List *argTypes);
 extern void RemoveOperator(char *operatorName,
-			   char *typeName1, char *typeName2);
-extern void RemoveType(char *typeName);
-extern void RemoveAggregate(char *aggName, char *aggType);
+			   TypeName *typeName1, TypeName *typeName2);
+extern void RemoveType(List *names);
+extern void RemoveAggregate(char *aggName, TypeName *aggType);
 
 #endif   /* DEFREM_H */

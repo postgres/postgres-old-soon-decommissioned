@@ -187,11 +187,14 @@ _outColumnDef(StringInfo str, ColumnDef *node)
 static void
 _outTypeName(StringInfo str, TypeName *node)
 {
-	appendStringInfo(str, " TYPENAME :name ");
-	_outToken(str, node->name);
-	appendStringInfo(str, " :timezone %s :setof %s typmod %d :arrayBounds ",
+	appendStringInfo(str, " TYPENAME :names ");
+	_outNode(str, node->names);
+	appendStringInfo(str, " :typeid %u :timezone %s :setof %s"
+					 " :pct_type %s typmod %d :arrayBounds ",
+					 node->typeid,
 					 booltostr(node->timezone),
 					 booltostr(node->setof),
+					 booltostr(node->pct_type),
 					 node->typmod);
 	_outNode(str, node->arrayBounds);
 }

@@ -57,7 +57,7 @@
 #define SHADOWNAME		26
 #define SHADOWSYSID		27
 #define STATRELATT		28
-#define TYPENAME		29
+#define TYPENAMENSP		29
 #define TYPEOID			30
 
 

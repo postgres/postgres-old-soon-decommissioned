@@ -21,11 +21,12 @@
 
 #include "access/xact.h"
 #include "catalog/pg_shadow.h"
+#include "catalog/pg_type.h"
 #include "commands/variable.h"
 #include "miscadmin.h"
 #include "optimizer/cost.h"
 #include "optimizer/paths.h"
-#include "parser/parse_expr.h"
+#include "parser/parse_type.h"
 #include "utils/builtins.h"
 #include "utils/date.h"
 #include "utils/guc.h"
@@ -390,7 +391,9 @@ parse_timezone(List *args)
 		type = p->typename;
 		if (type != NULL)
 		{
-			if (strcmp(type->name, "interval") == 0)
+			Oid		typeOid = typenameTypeId(type);
+
+			if (typeOid == INTERVALOID)
 			{
 				Interval   *interval;
 
@@ -402,7 +405,7 @@ parse_timezone(List *args)
 					elog(ERROR, "SET TIME ZONE illegal INTERVAL; month not allowed");
 				CTimeZone = interval->time;
 			}
-			else if (strcmp(type->name, "float8") == 0)
+			else if (typeOid == FLOAT8OID)
 			{
 				float8		time;
 
@@ -414,7 +417,7 @@ parse_timezone(List *args)
 			 * We do not actually generate an integer constant in gram.y
 			 * so this is not used...
 			 */
-			else if (strcmp(type->name, "int4") == 0)
+			else if (typeOid == INT4OID)
 			{
 				int32		time;
 

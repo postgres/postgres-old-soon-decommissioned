@@ -39,10 +39,9 @@ extern Oid heap_create_with_catalog(char *relname, Oid relnamespace,
 						 char relkind, bool relhasoids, bool istemp,
 						 bool allow_system_table_mods);
 
-extern void heap_drop_with_catalog(const char *relname,
-					   bool allow_system_table_mods);
+extern void heap_drop_with_catalog(Oid rid, bool allow_system_table_mods);
 
-extern void heap_truncate(const char *relname);
+extern void heap_truncate(Oid rid);
 
 extern void AddRelationRawConstraints(Relation rel,
 						  List *rawColDefaults,

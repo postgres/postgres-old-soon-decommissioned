@@ -23,4 +23,8 @@ extern Oid	RangeVarGetCreationNamespace(const RangeVar *newRelation);
 
 extern Oid	RelnameGetRelid(const char *relname);
 
+extern Oid	QualifiedNameGetCreationNamespace(List *names, char **objname_p);
+
+extern RangeVar *makeRangeVarFromNameList(List *names);
+
 #endif   /* NAMESPACE_H */

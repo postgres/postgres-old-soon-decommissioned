@@ -14,10 +14,10 @@
 #ifndef RENAME_H
 #define RENAME_H
 
-extern void renameatt(char *relname,
+extern void renameatt(Oid relid,
 		  char *oldattname,
 		  char *newattname,
-		  int recurse);
+		  bool recurse);
 
 extern void renamerel(const RangeVar *relation,
 		  const char *newrelname);

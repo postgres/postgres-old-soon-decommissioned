@@ -155,12 +155,13 @@ DATA(insert OID = 0 ( stddev	PGUID numeric_accum  numeric_stddev		1700 1231 1700
 /*
  * prototypes for functions in pg_aggregate.c
  */
-extern void AggregateCreate(char *aggName,
-				char *aggtransfnName,
-				char *aggfinalfnName,
-				char *aggbasetypeName,
-				char *aggtranstypeName,
-				char *agginitval);
+extern void AggregateCreate(const char *aggName,
+							Oid aggNamespace,
+							char *aggtransfnName,
+							char *aggfinalfnName,
+							Oid aggBaseType,
+							Oid aggTransType,
+							const char *agginitval);
 
 extern Datum AggNameGetInitVal(char *aggName, Oid basetype,
 				  bool *isNull);

@@ -47,17 +47,18 @@
 #include <string.h>
 #include <setjmp.h>
 
-#include "executor/spi.h"
-#include "commands/trigger.h"
-#include "utils/builtins.h"
-#include "fmgr.h"
 #include "access/heapam.h"
-
-#include "tcop/tcopprot.h"
-#include "utils/syscache.h"
-#include "catalog/pg_proc.h"
 #include "catalog/pg_language.h"
+#include "catalog/pg_proc.h"
 #include "catalog/pg_type.h"
+#include "commands/trigger.h"
+#include "executor/spi.h"
+#include "fmgr.h"
+#include "nodes/makefuncs.h"
+#include "parser/parse_type.h"
+#include "tcop/tcopprot.h"
+#include "utils/builtins.h"
+#include "utils/syscache.h"
 
 #if defined(UNICODE_CONVERSION) && TCL_MAJOR_VERSION == 8 \
 	&& TCL_MINOR_VERSION > 0
@@ -1750,11 +1751,8 @@ pltcl_SPI_prepare(ClientData cdata, Tcl_Interp *interp,
 	 ************************************************************/
 	for (i = 0; i < nargs; i++)
 	{
-		typeTup = SearchSysCache(TYPENAME,
-								 PointerGetDatum(args[i]),
-								 0, 0, 0);
-		if (!HeapTupleIsValid(typeTup))
-			elog(ERROR, "pltcl: Cache lookup of type %s failed", args[i]);
+		/* XXX should extend this to allow qualified type names */
+		typeTup = typenameType(makeTypeName(args[i]));
 		qdesc->argtypes[i] = typeTup->t_data->t_oid;
 		perm_fmgr_info(((Form_pg_type) GETSTRUCT(typeTup))->typinput,
 					   &(qdesc->arginfuncs[i]));

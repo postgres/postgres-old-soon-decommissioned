@@ -30,11 +30,12 @@
 /*
  * RemoveRewriteRule
  *
- * Delete a rule given its rulename.
+ * Delete a rule given its (possibly qualified) rulename.
  */
 void
-RemoveRewriteRule(char *ruleName)
+RemoveRewriteRule(List *names)
 {
+	char	   *ruleName;
 	Relation	RewriteRelation;
 	Relation	event_relation;
 	HeapTuple	tuple;
@@ -42,6 +43,13 @@ RemoveRewriteRule(char *ruleName)
 	Oid			eventRelationOid;
 	bool		hasMoreRules;
 	int32		aclcheck_result;
+
+	/*
+	 * XXX temporary until rules become schema-tized
+	 */
+	if (length(names) != 1)
+		elog(ERROR, "Qualified rule names not supported yet");
+	ruleName = strVal(lfirst(names));
 
 	/*
 	 * Open the pg_rewrite relation.

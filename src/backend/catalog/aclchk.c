@@ -37,6 +37,7 @@
 #include "parser/parse_agg.h"
 #include "parser/parse_func.h"
 #include "parser/parse_expr.h"
+#include "parser/parse_type.h"
 #include "utils/acl.h"
 #include "utils/syscache.h"
 #include "utils/temprel.h"
@@ -300,20 +301,19 @@ find_function_with_arglist(char *name, List *arguments)
 	for (i = 0; i < argcount; i++)
 	{
 		TypeName   *t = (TypeName *) lfirst(arguments);
-		char       *typnam = TypeNameToInternalName(t);
+
+		argoids[i] = LookupTypeName(t);
+		if (!OidIsValid(argoids[i]))
+		{
+			char      *typnam = TypeNameToString(t);
+
+			if (strcmp(typnam, "opaque") == 0)
+				argoids[i] = InvalidOid;
+			else
+				elog(ERROR, "Type \"%s\" does not exist", typnam);
+		}
 
 		arguments = lnext(arguments);
-
-		if (strcmp(typnam, "opaque") == 0)
-			argoids[i] = InvalidOid;
-		else
-		{
-			argoids[i] = GetSysCacheOid(TYPENAME,
-										PointerGetDatum(typnam),
-										0, 0, 0);
-			if (!OidIsValid(argoids[i]))
-				elog(ERROR, "type '%s' not found", typnam);
-		}
 	}
 
 	oid = GetSysCacheOid(PROCNAME,

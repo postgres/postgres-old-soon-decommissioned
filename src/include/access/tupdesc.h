@@ -65,7 +65,7 @@ extern void FreeTupleDesc(TupleDesc tupdesc);
 
 extern bool equalTupleDescs(TupleDesc tupdesc1, TupleDesc tupdesc2);
 
-extern bool TupleDescInitEntry(TupleDesc desc,
+extern void TupleDescInitEntry(TupleDesc desc,
 				   AttrNumber attributeNumber,
 				   char *attributeName,
 				   Oid oidtypeid,
@@ -73,6 +73,6 @@ extern bool TupleDescInitEntry(TupleDesc desc,
 				   int attdim,
 				   bool attisset);
 
-extern TupleDesc BuildDescForRelation(List *schema, char *relname);
+extern TupleDesc BuildDescForRelation(List *schema);
 
 #endif   /* TUPDESC_H */

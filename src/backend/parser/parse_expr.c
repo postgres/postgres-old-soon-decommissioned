@@ -1103,7 +1103,7 @@ parser_typecast_constant(Value *expr, TypeName *typename)
 	bool		string_palloced = false;
 	bool		isNull = false;
 
-	tp = typenameType(TypeNameToInternalName(typename));
+	tp = typenameType(typename);
 
 	switch (nodeTag(expr))
 	{
@@ -1161,7 +1161,7 @@ parser_typecast_expression(ParseState *pstate,
 	Oid			inputType = exprType(expr);
 	Oid			targetType;
 
-	targetType = typenameTypeId(TypeNameToInternalName(typename));
+	targetType = typenameTypeId(typename);
 
 	if (inputType == InvalidOid)
 		return expr;			/* do nothing if NULL input */
@@ -1184,28 +1184,4 @@ parser_typecast_expression(ParseState *pstate,
 							  targetType, typename->typmod);
 
 	return expr;
-}
-
-/*
- * Given a TypeName node as returned by the grammar, generate the internal
- * name of the corresponding type.	Note this does NOT check if the type
- * exists or not.
- */
-char *
-TypeNameToInternalName(TypeName *typename)
-{
-	Assert(typename->attrname == NULL);
-	if (typename->arrayBounds != NIL)
-	{
-		/*
-		 * By convention, the name of an array type is the name of its
-		 * element type with "_" prepended.
-		 */
-		char	   *arrayname = palloc(strlen(typename->name) + 2);
-
-		sprintf(arrayname, "_%s", typename->name);
-		return arrayname;
-	}
-	else
-		return typename->name;
 }

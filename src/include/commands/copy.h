@@ -14,9 +14,12 @@
 #ifndef COPY_H
 #define COPY_H
 
+#include "nodes/primnodes.h"
+
 extern int	copy_lineno;
 
-void DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
-	   char *filename, char *delim, char *null_print);
+void DoCopy(const RangeVar *relation, bool binary, bool oids,
+			bool from, bool pipe,
+			char *filename, char *delim, char *null_print);
 
 #endif   /* COPY_H */

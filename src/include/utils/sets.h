@@ -20,7 +20,7 @@
 /* Temporary name of a set function, before SetDefine changes it. */
 #define GENERICSETNAME "ZYX#Set#ZYX"
 
-extern Oid	SetDefine(char *querystr, char *typename);
+extern Oid	SetDefine(char *querystr, Oid elemType);
 
 extern Datum seteval(PG_FUNCTION_ARGS);
 

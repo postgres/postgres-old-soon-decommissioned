@@ -129,7 +129,7 @@ cluster(RangeVar *oldrelation, char *oldindexname)
 	CommandCounterIncrement();
 
 	/* Destroy old heap (along with its index) and rename new. */
-	heap_drop_with_catalog(saveoldrelation->relname, allowSystemTableMods);
+	heap_drop_with_catalog(OIDOldHeap, allowSystemTableMods);
 
 	CommandCounterIncrement();
 

@@ -17,7 +17,7 @@
 #include "nodes/parsenodes.h"
 
 extern Oid	DefineRelation(CreateStmt *stmt, char relkind);
-extern void RemoveRelation(const char *name);
-extern void TruncateRelation(const char *name);
+extern void RemoveRelation(const RangeVar *relation);
+extern void TruncateRelation(const RangeVar *relation);
 
 #endif   /* CREATINH_H */

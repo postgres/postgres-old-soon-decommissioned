@@ -76,7 +76,7 @@ char	   *Name_pg_statistic_indices[Num_pg_statistic_indices] =
 char	   *Name_pg_trigger_indices[Num_pg_trigger_indices] =
 {TriggerRelidIndex, TriggerConstrNameIndex, TriggerConstrRelidIndex, TriggerOidIndex};
 char	   *Name_pg_type_indices[Num_pg_type_indices] =
-{TypeNameIndex, TypeOidIndex};
+{TypeNameNspIndex, TypeOidIndex};
 char	   *Name_pg_description_indices[Num_pg_description_indices] =
 {DescriptionObjIndex};
 

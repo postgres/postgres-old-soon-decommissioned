@@ -2364,6 +2364,15 @@
      </row>
 
      <row>
+      <entry>typnamespace</entry>
+      <entry><type>oid</type></entry>
+      <entry>pg_namespace.oid</entry>
+      <entry>
+       The OID of the namespace that contains this type
+      </entry>
+     </row>
+
+     <row>
       <entry>typowner</entry>
       <entry><type>int4</type></entry>
       <entry>pg_shadow.usesysid</entry>

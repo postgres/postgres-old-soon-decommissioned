@@ -384,13 +384,13 @@ static const struct cachedesc cacheinfo[] = {
 			0,
 			0
 	}},
-	{TypeRelationName,			/* TYPENAME */
-		TypeNameIndex,
+	{TypeRelationName,			/* TYPENAMENSP */
+		TypeNameNspIndex,
 		Anum_pg_type_typrelid,
-		1,
+		2,
 		{
 			Anum_pg_type_typname,
-			0,
+			Anum_pg_type_typnamespace,
 			0,
 			0
 	}},
@@ -515,7 +515,7 @@ SearchSysCache(int cacheId,
 	 * when sought.  This is a kluge ... temp table substitution should be
 	 * happening at a higher level ...
 	 */
-	if (cacheId == RELNAMENSP || cacheId == TYPENAME)
+	if (cacheId == RELNAMENSP || cacheId == TYPENAMENSP)
 	{
 		char	   *nontemp_relname;
 
