@@ -275,7 +275,6 @@ endif
 
 # Globally pass PORTNAME
 CFLAGS+= -DPORTNAME_$(PORTNAME) -D$(PORTNAME)
-CFLAGS += -I../../backend/port/$(PORTNAME)
 
 # Globally pass the default TCP port for postmaster(1).
 CFLAGS+= -DPOSTPORT='"5432"'
