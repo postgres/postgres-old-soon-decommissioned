@@ -39,7 +39,7 @@
 #ifdef HAVE_READLINE_H
 #include <readline.h>
 #define USE_READLINE 1
-#if defined(HAVE_HISTORY)
+#if defined(HAVE_HISTORY_H)
 #include <history.h>
 #define USE_HISTORY 1
 #endif
@@ -52,6 +52,9 @@
 #define USE_HISTORY 1
 #endif
 #endif
+#endif
+#if defined(HAVE_HISTORY) && !defined(USE_HISTORY)
+#define USE_HISTORY 1
 #endif
 #endif
 
