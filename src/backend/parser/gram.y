@@ -363,7 +363,8 @@ static void doNegateFloat(Value *v);
 /* these are not real. they are here so that they get generated as #define's*/
 %token			OP
 
-/* precedence */
+/* precedence: lowest to highest */
+%left		UNION INTERSECT EXCEPT
 %left		OR
 %left		AND
 %right		NOT
@@ -381,15 +382,12 @@ static void doNegateFloat(Value *v);
 %left		'+' '-'
 %left		'*' '/' '%'
 %left		'^'
-%left		'|'				/* this is the relation union op, not logical or */
+%left		'|'				/* XXX Should this have such a high priority? */
 /* Unary Operators */
-%right		':'				/* delimiter for array ranges */
-%left		';'				/* end of statement */
 %right		UMINUS
 %left		'.'
 %left		'[' ']'
 %left		TYPECAST
-%left		UNION INTERSECT EXCEPT
 %left		ESCAPE
 %%
 
