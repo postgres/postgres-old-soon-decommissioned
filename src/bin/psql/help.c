@@ -220,11 +220,11 @@ slashUsage(unsigned short int pager)
 	fprintf(output, _("  \\dn [PATTERN]  list schemas\n"));
 	fprintf(output, _("  \\do [NAME]     list operators\n"));
 	fprintf(output, _("  \\dl            list large objects, same as \\lo_list\n"));
-	fprintf(output, _("  \\dp [PATTERN]  list table access privileges\n"));
+	fprintf(output, _("  \\dp [PATTERN]  list table, view and sequence access privileges\n"));
 	fprintf(output, _("  \\dT [PATTERN]  list data types (add \"+\" for more detail)\n"));
 	fprintf(output, _("  \\du [PATTERN]  list users\n"));
 	fprintf(output, _("  \\l             list all databases (add \"+\" for more detail)\n"));
-	fprintf(output, _("  \\z [PATTERN]   list table access privileges (same as \\dp)\n"));
+	fprintf(output, _("  \\z [PATTERN]   list table, view and sequence access privileges (same as \\dp)\n"));
 	fprintf(output, "\n");
 
 	fprintf(output, _("Formatting\n"));

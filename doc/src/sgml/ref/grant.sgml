@@ -285,10 +285,10 @@ GRANT { { CREATE | USAGE } [,...] | ALL [ PRIVILEGES ] }
 <programlisting>
 => \z mytable
 
-        Access privileges for database "lusitania"
- Schema |  Table  |           Access privileges
---------+---------+---------------------------------------
- public | mytable | {=r/postgres,miriam=arwdRxt/postgres,"group todos=arw/postgres"}
+                        Access privileges for database "lusitania"
+ Schema |  Name   | Type  |          Access privileges
+--------+---------+-------+-----------------------------------------------------------------
+ public | mytable | table | {=r/postgres,miriam=arwdRxt/postgres,"group todos=arw/postgres"}
 (1 row)
 </programlisting>
     The entries shown by <command>\z</command> are interpreted thus:
