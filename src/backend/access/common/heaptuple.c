@@ -24,7 +24,6 @@
 #include "access/tupmacs.h"
 #include "storage/bufpage.h"
 #include "utils/memutils.h"
-#include "utils/palloc.h"
 
 #ifndef HAVE_MEMMOVE
 # include "regex/utils.h"

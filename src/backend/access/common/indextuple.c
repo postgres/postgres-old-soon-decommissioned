@@ -20,7 +20,6 @@
 #include "access/itup.h"
 #include "access/relscan.h"
 #include "access/tupmacs.h"
-#include "utils/palloc.h"
 
 #ifndef HAVE_MEMMOVE
 # include "regex/utils.h"
