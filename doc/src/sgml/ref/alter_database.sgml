@@ -23,6 +23,8 @@ PostgreSQL documentation
 ALTER DATABASE <replaceable class="PARAMETER">name</replaceable> SET <replaceable>parameter</replaceable> { TO | = } { <replaceable>value</replaceable> | DEFAULT }
 ALTER DATABASE <replaceable class="PARAMETER">name</replaceable> RESET <replaceable>parameter</replaceable>
 
+ALTER DATABASE <replaceable class="PARAMETER">name</replaceable> OWNER TO <replaceable>new_owner</replaceable>
+
 ALTER DATABASE <replaceable class="PARAMETER">name</replaceable> RENAME TO <replaceable>newname</replaceable>
 </synopsis>
  </refsynopsisdiv>
@@ -53,6 +55,11 @@ ALTER DATABASE <replaceable class="PARAMETER">name</replaceable> RENAME TO <repl
    <literal>CREATEDB</literal> privilege.  The current database cannot
    be renamed.  (Connect to a different database if you need to do
    that.)
+  </para>
+
+  <para>
+   The fourth form changes the owner of the database.  Only a superuser
+   can change the database's owner.
   </para>
  </refsect1>
 

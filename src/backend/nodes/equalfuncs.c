@@ -1100,6 +1100,15 @@ _equalCreatedbStmt(CreatedbStmt *a, CreatedbStmt *b)
 }
 
 static bool
+_equalAlterDbOwnerStmt(AlterDbOwnerStmt *a, AlterDbOwnerStmt *b)
+{
+	COMPARE_STRING_FIELD(dbname);
+	COMPARE_STRING_FIELD(uname);
+
+	return true;
+}
+
+static bool
 _equalAlterDatabaseSetStmt(AlterDatabaseSetStmt *a, AlterDatabaseSetStmt *b)
 {
 	COMPARE_STRING_FIELD(dbname);
@@ -2004,6 +2013,9 @@ equal(void *a, void *b)
 			break;
 		case T_CreatedbStmt:
 			retval = _equalCreatedbStmt(a, b);
+			break;
+		case T_AlterDbOwnerStmt:
+			retval = _equalAlterDbOwnerStmt(a, b);
 			break;
 		case T_AlterDatabaseSetStmt:
 			retval = _equalAlterDatabaseSetStmt(a, b);

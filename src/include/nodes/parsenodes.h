@@ -1523,6 +1523,13 @@ typedef struct CreatedbStmt
  *	Alter Database
  * ----------------------
  */
+typedef struct AlterDbOwnerStmt
+{
+	NodeTag		type;
+	char	   *dbname;
+	char	   *uname;
+} AlterDbOwnerStmt;
+
 typedef struct AlterDatabaseSetStmt
 {
 	NodeTag		type;

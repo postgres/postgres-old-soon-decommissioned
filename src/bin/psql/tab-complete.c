@@ -642,7 +642,7 @@ psql_completion(char *text, int start, int end)
 			 pg_strcasecmp(prev2_wd, "DATABASE") == 0)
 	{
 		static const char *const list_ALTERDATABASE[] =
-		{"RESET", "SET", "RENAME TO", NULL};
+		{"RESET", "SET", "OWNER TO", "RENAME TO", NULL};
 
 		COMPLETE_WITH_LIST(list_ALTERDATABASE);
 	}

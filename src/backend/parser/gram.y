@@ -152,6 +152,7 @@ static void doNegateFloat(Value *v);
 		VariableResetStmt VariableSetStmt VariableShowStmt
 		ViewStmt CheckPointStmt CreateConversionStmt
 		DeallocateStmt PrepareStmt ExecuteStmt
+		AlterDbOwnerStmt
 
 %type <node>	select_no_parens select_with_parens select_clause
 				simple_select
@@ -486,7 +487,8 @@ stmtmulti:	stmtmulti ';' stmt
 		;
 
 stmt :
-			AlterDatabaseSetStmt
+			AlterDbOwnerStmt
+			| AlterDatabaseSetStmt
 			| AlterDomainStmt
 			| AlterGroupStmt
 			| AlterSeqStmt
@@ -3917,6 +3919,15 @@ opt_equal:	'='										{}
  *		ALTER DATABASE
  *
  *****************************************************************************/
+
+AlterDbOwnerStmt: ALTER DATABASE database_name OWNER TO UserId
+				{
+					AlterDbOwnerStmt *n = makeNode(AlterDbOwnerStmt);
+					n->dbname = $3;
+					n->uname = $6;
+					$$ = (Node *)n;
+				}
+		;
 
 AlterDatabaseSetStmt:
 			ALTER DATABASE database_name SET set_rest

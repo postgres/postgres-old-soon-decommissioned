@@ -20,6 +20,7 @@ extern void createdb(const CreatedbStmt *stmt);
 extern void dropdb(const char *dbname);
 extern void RenameDatabase(const char *oldname, const char *newname);
 extern void AlterDatabaseSet(AlterDatabaseSetStmt *stmt);
+extern void AlterDatabaseOwner(const char *dbname, const char *uname);
 
 extern Oid	get_database_oid(const char *dbname);
 extern char *get_database_name(Oid dbid);
