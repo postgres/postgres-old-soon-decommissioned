@@ -369,7 +369,7 @@ InitPostgres(const char *dbname, const char *username)
 			ereport(WARNING,
 					(errcode(ERRCODE_UNDEFINED_OBJECT),
 				  errmsg("no users are defined in this database system"),
-					 errhint("You should immediately run 'CREATE USER \"%s\" WITH SYSID %d CREATEUSER;'.",
+					 errhint("You should immediately run CREATE USER \"%s\" WITH SYSID %d CREATEUSER;.",
 							 username, BOOTSTRAP_USESYSID)));
 	}
 	else

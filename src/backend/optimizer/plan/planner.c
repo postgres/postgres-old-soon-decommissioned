@@ -654,7 +654,7 @@ grouping_planner(Query *parse, double tuple_fraction)
 			if (PlannerQueryLevel > 1)
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-						 errmsg("SELECT FOR UPDATE is not allowed in subselects")));
+						 errmsg("SELECT FOR UPDATE is not allowed in subqueries")));
 
 			foreach(l, parse->rowMarks)
 			{

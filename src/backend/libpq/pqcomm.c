@@ -245,7 +245,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 	{
 		if (hostName)
 			ereport(LOG,
-					(errmsg("could not translate hostname \"%s\", service \"%s\" to address: %s",
+					(errmsg("could not translate host name \"%s\", service \"%s\" to address: %s",
 							hostName, service, gai_strerror(ret))));
 		else
 			ereport(LOG,
@@ -356,7 +356,7 @@ StreamServerPort(int family, char *hostName, unsigned short portNumber,
 							familyDesc),
 					 (IS_AF_UNIX(addr->ai_family)) ?
 			  errhint("Is another postmaster already running on port %d?"
-					  " If not, remove socket node \"%s\" and retry.",
+					  " If not, remove socket file \"%s\" and retry.",
 					  (int) portNumber, sock_path) :
 			  errhint("Is another postmaster already running on port %d?"
 					  " If not, wait a few seconds and retry.",
@@ -482,7 +482,7 @@ Setup_AF_UNIX(void)
 		{
 			ereport(LOG,
 					(errcode_for_file_access(),
-					 errmsg("could not set group of \"%s\": %m",
+					 errmsg("could not set group of file \"%s\": %m",
 							sock_path)));
 			return STATUS_ERROR;
 		}
@@ -493,7 +493,7 @@ Setup_AF_UNIX(void)
 	{
 		ereport(LOG,
 				(errcode_for_file_access(),
-				 errmsg("could not set permissions of \"%s\": %m",
+				 errmsg("could not set permissions of file \"%s\": %m",
 						sock_path)));
 		return STATUS_ERROR;
 	}

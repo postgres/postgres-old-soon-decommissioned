@@ -681,7 +681,7 @@ initialize_SSL(void)
 	{
 		/* Not fatal - we do not require client certificates */
 		ereport(LOG,
-				(errmsg("could not load root cert file \"%s\": %s",
+				(errmsg("could not load root certificate file \"%s\": %s",
 						fnbuf, SSLerrmessage()),
 				 errdetail("Will not verify client certificates.")));
 		return 0;
@@ -742,7 +742,7 @@ open_server_SSL(Port *port)
 		port->peer_cn[sizeof(port->peer_cn) - 1] = '\0';
 	}
 	ereport(DEBUG2,
-			(errmsg("secure connection from \"%s\"", port->peer_cn)));
+			(errmsg("SSL connection from \"%s\"", port->peer_cn)));
 
 	/* set up debugging/info callback */
 	SSL_CTX_set_info_callback(SSL_context, info_cb);

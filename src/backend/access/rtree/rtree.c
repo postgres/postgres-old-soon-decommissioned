@@ -782,7 +782,7 @@ rtpicksplit(Relation r,
 	if (newitemsz > RTPageAvailSpace)
 		ereport(ERROR,
 				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
-				 errmsg("index tuple size %lu exceeds rtree maximum, %lu",
+				 errmsg("index row size %lu exceeds rtree maximum, %lu",
 						(unsigned long) newitemsz,
 						(unsigned long) RTPageAvailSpace)));
 

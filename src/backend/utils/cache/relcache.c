@@ -3303,7 +3303,7 @@ write_relcache_init_file(void)
 		 */
 		ereport(WARNING,
 				(errcode_for_file_access(),
-				 errmsg("could not create init file \"%s\": %m",
+				 errmsg("could not create relation-cache initialization file \"%s\": %m",
 						tempfilename),
 		  errdetail("Continuing anyway, but there's something wrong.")));
 		return;
@@ -3444,7 +3444,7 @@ write_relcache_init_file(void)
 		{
 			ereport(WARNING,
 					(errcode_for_file_access(),
-				errmsg("could not rename init file \"%s\" to \"%s\": %m",
+				errmsg("could not rename relation-cache initialization file \"%s\" to \"%s\": %m",
 					   tempfilename, finalfilename),
 					 errdetail("Continuing anyway, but there's something wrong.")));
 

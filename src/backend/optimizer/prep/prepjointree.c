@@ -337,7 +337,7 @@ pull_up_subqueries(Query *parse, Node *jtnode, bool below_outer_join)
 				 */
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-						 errmsg("UNION JOIN is not implemented yet")));
+						 errmsg("UNION JOIN is not implemented")));
 				break;
 			default:
 				elog(ERROR, "unrecognized join type: %d",

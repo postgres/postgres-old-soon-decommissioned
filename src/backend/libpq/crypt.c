@@ -59,7 +59,7 @@ md5_crypt_verify(const Port *port, const char *user, char *client_pass)
 	if (isMD5(shadow_pass) && port->auth_method == uaCrypt)
 	{
 		ereport(LOG,
-				(errmsg("cannot use CRYPT auth method because password is MD5-encrypted")));
+				(errmsg("cannot use authentication method \"crypt\" because password is MD5-encrypted")));
 		return STATUS_ERROR;
 	}
 

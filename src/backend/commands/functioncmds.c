@@ -450,7 +450,7 @@ CreateFunction(CreateFunctionStmt *stmt)
 					strcmp(languageName, "plsh") == 0 ||
 					strcmp(languageName, "pltcl") == 0 ||
 					strcmp(languageName, "pltclu") == 0) ?
-				 errhint("You need to use 'createlang' to load the language into the database.") : 0));
+				 errhint("You need to use \"createlang\" to load the language into the database.") : 0));
 	
 	languageOid = HeapTupleGetOid(languageTuple);
 	languageStruct = (Form_pg_language) GETSTRUCT(languageTuple);

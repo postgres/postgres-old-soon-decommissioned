@@ -54,7 +54,7 @@ index_formtuple(TupleDesc tupleDescriptor,
 	if (numberOfAttributes > INDEX_MAX_KEYS)
 		ereport(ERROR,
 				(errcode(ERRCODE_TOO_MANY_COLUMNS),
-				 errmsg("number of index attributes %d exceeds limit, %d",
+				 errmsg("number of index columns (%d) exceeds limit (%d)",
 						numberOfAttributes, INDEX_MAX_KEYS)));
 
 #ifdef TOAST_INDEX_HACK
@@ -162,7 +162,7 @@ index_formtuple(TupleDesc tupleDescriptor,
 	if ((size & INDEX_SIZE_MASK) != size)
 		ereport(ERROR,
 				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
-			errmsg("index tuple requires %lu bytes, maximum size is %lu",
+			errmsg("index row requires %lu bytes, maximum size is %lu",
 				   (unsigned long) size,
 				   (unsigned long) INDEX_SIZE_MASK)));
 

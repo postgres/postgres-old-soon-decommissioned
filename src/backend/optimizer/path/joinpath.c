@@ -818,7 +818,7 @@ select_mergejoin_clauses(RelOptInfo *joinrel,
 						restrictinfo->mergejoinoperator == InvalidOid)
 						ereport(ERROR,
 								(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-								 errmsg("FULL JOIN is only supported with mergejoinable join conditions")));
+								 errmsg("FULL JOIN is only supported with merge-joinable join conditions")));
 					break;
 				default:
 					/* otherwise, it's OK to have nonmergeable join quals */

@@ -238,7 +238,7 @@ DefineOpClass(CreateOpClassStmt *stmt)
 			if (amoid != GIST_AM_OID)
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_OBJECT_DEFINITION),
-						 errmsg("storage type may not be different from datatype for access method \"%s\"",
+						 errmsg("storage type may not be different from data type for access method \"%s\"",
 								stmt->amname)));
 		}
 	}

@@ -90,7 +90,7 @@ FunctionNext(FunctionScanState *node)
 			tupledesc_mismatch(node->tupdesc, funcTupdesc))
 			ereport(ERROR,
 					(errcode(ERRCODE_DATATYPE_MISMATCH),
-					 errmsg("query-specified return tuple and actual function return tuple do not match")));
+					 errmsg("query-specified return row and actual function return row do not match")));
 	}
 
 	/*

@@ -211,7 +211,7 @@ set_inherited_rel_pathlist(Query *root, RelOptInfo *rel,
 	if (intMember(parentRTindex, root->rowMarks))
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("SELECT FOR UPDATE is not supported for inherit queries")));
+				 errmsg("SELECT FOR UPDATE is not supported for inheritance queries")));
 
 	/*
 	 * The executor will check the parent table's access permissions when

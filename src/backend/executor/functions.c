@@ -180,7 +180,7 @@ init_sql_fcache(FmgrInfo *finfo)
 		if (rettype == InvalidOid)		/* this probably should not happen */
 			ereport(ERROR,
 					(errcode(ERRCODE_DATATYPE_MISMATCH),
-					 errmsg("could not determine actual result type for function declared %s",
+					 errmsg("could not determine actual result type for function declared to return type %s",
 						  format_type_be(procedureStruct->prorettype))));
 	}
 
@@ -670,7 +670,7 @@ sql_exec_error_callback(void *arg)
 		{
 			if (es->qd)
 			{
-				errcontext("SQL function \"%s\" query %d",
+				errcontext("SQL function \"%s\" statement %d",
 						   fn_name, query_num);
 				break;
 			}

@@ -3204,7 +3204,7 @@ regex_fixed_prefix(Const *patt_const, bool case_insensitive,
 	if (typeid == BYTEAOID)
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("regex matching not supported on type bytea")));
+				 errmsg("regular-expression matching not supported on type bytea")));
 
 	/* the right-hand const is type text for all of these */
 	patt = DatumGetCString(DirectFunctionCall1(textout, patt_const->constvalue));
@@ -3630,7 +3630,7 @@ regex_selectivity(Const *patt_const, bool case_insensitive)
 	if (typeid == BYTEAOID)
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("regex matching not supported on type bytea")));
+				 errmsg("regular-expression matching not supported on type bytea")));
 
 	/* the right-hand const is type text for all of these */
 	patt = DatumGetCString(DirectFunctionCall1(textout, patt_const->constvalue));

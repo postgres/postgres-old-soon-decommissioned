@@ -135,7 +135,7 @@ DefineAggregate(List *names, List *parameters)
 		transTypeId != ANYELEMENTOID)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
-				 errmsg("aggregate transition datatype cannot be %s",
+				 errmsg("aggregate transition data type cannot be %s",
 						format_type_be(transTypeId))));
 
 	/*

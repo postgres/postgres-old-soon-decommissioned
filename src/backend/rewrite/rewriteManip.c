@@ -876,7 +876,7 @@ ResolveNew_mutator(Node *node, ResolveNew_context *context)
 			if (var->varattno == InvalidAttrNumber)
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-						 errmsg("cannot handle whole-tuple reference")));
+						 errmsg("cannot handle whole-row reference")));
 
 			tle = get_tle_by_resno(context->targetlist, var->varattno);
 

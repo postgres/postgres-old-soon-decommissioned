@@ -399,7 +399,7 @@ _bt_buildadd(Relation index, BTPageState *state, BTItem bti)
 	if (btisz > BTMaxItemSize(npage))
 		ereport(ERROR,
 				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
-				 errmsg("index tuple size %lu exceeds btree maximum, %lu",
+				 errmsg("index row size %lu exceeds btree maximum, %lu",
 						(unsigned long) btisz,
 						(unsigned long) BTMaxItemSize(npage))));
 

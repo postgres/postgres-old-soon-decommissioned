@@ -153,7 +153,7 @@ bit_in(PG_FUNCTION_ARGS)
 			else
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
-						 errmsg("\"%c\" is not a valid hex digit",
+						 errmsg("\"%c\" is not a valid hexadecimal digit",
 								*sp)));
 
 			if (bc)
@@ -392,7 +392,7 @@ varbit_in(PG_FUNCTION_ARGS)
 			else
 				ereport(ERROR,
 						(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
-						 errmsg("\"%c\" is not a valid hex digit",
+						 errmsg("\"%c\" is not a valid hexadecimal digit",
 								*sp)));
 
 			if (bc)
@@ -1254,7 +1254,7 @@ bitfromint8(PG_FUNCTION_ARGS)
 #else
 	ereport(ERROR,
 			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-			 errmsg("int64 is not supported on this platform")));
+			 errmsg("64-bit integers not supported on this platform")));
 
 	PG_RETURN_NULL();
 #endif
@@ -1287,7 +1287,7 @@ bittoint8(PG_FUNCTION_ARGS)
 #else
 	ereport(ERROR,
 			(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-			 errmsg("int64 is not supported on this platform")));
+			 errmsg("64-bit integers not supported on this platform")));
 
 	PG_RETURN_NULL();
 #endif

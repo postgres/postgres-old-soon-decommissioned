@@ -114,7 +114,7 @@ byteain(PG_FUNCTION_ARGS)
 			 */
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
-					 errmsg("invalid input syntax for bytea")));
+					 errmsg("invalid input syntax for type bytea")));
 		}
 	}
 
@@ -154,7 +154,7 @@ byteain(PG_FUNCTION_ARGS)
 			 */
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
-					 errmsg("invalid input syntax for bytea")));
+					 errmsg("invalid input syntax for type bytea")));
 		}
 	}
 

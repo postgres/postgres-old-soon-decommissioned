@@ -502,7 +502,7 @@ index_create(Oid heapRelationId,
 		IsNormalProcessingMode())
 		ereport(ERROR,
 				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("user-defined indexes on system catalogs are not supported")));
+				 errmsg("user-defined indexes on system catalog tables are not supported")));
 
 	/*
 	 * We cannot allow indexing a shared relation after initdb (because

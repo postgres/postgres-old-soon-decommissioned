@@ -287,7 +287,7 @@ ExecScanSubPlan(SubPlanState *node,
 			if (found)
 				ereport(ERROR,
 						(errcode(ERRCODE_CARDINALITY_VIOLATION),
-						 errmsg("more than one tuple returned by a subselect used as an expression")));
+						 errmsg("more than one row returned by a subquery used as an expression")));
 			found = true;
 
 			/*
@@ -329,7 +329,7 @@ ExecScanSubPlan(SubPlanState *node,
 		if (subLinkType == MULTIEXPR_SUBLINK && found)
 			ereport(ERROR,
 					(errcode(ERRCODE_CARDINALITY_VIOLATION),
-					 errmsg("more than one tuple returned by a subselect used as an expression")));
+					 errmsg("more than one row returned by a subquery used as an expression")));
 
 		found = true;
 
@@ -963,7 +963,7 @@ ExecSetParamPlan(SubPlanState *node, ExprContext *econtext)
 			 subLinkType == MULTIEXPR_SUBLINK))
 			ereport(ERROR,
 					(errcode(ERRCODE_CARDINALITY_VIOLATION),
-					 errmsg("more than one tuple returned by a subselect used as an expression")));
+					 errmsg("more than one row returned by a subquery used as an expression")));
 
 		found = true;
 

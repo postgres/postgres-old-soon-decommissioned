@@ -251,7 +251,7 @@ _bt_check_unique(Relation rel, BTItem btitem, Relation heapRel,
 					 */
 					ereport(ERROR,
 							(errcode(ERRCODE_UNIQUE_VIOLATION),
-							 errmsg("duplicate key violates UNIQUE constraint \"%s\"",
+							 errmsg("duplicate key violates unique constraint \"%s\"",
 									RelationGetRelationName(rel))));
 				}
 				else if (htup.t_data != NULL)
@@ -403,7 +403,7 @@ _bt_insertonpg(Relation rel,
 	if (itemsz > BTMaxItemSize(page))
 		ereport(ERROR,
 				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
-				 errmsg("index tuple size %lu exceeds btree maximum, %lu",
+				 errmsg("index row size %lu exceeds btree maximum, %lu",
 						(unsigned long) itemsz,
 						(unsigned long) BTMaxItemSize(page))));
 

@@ -195,7 +195,7 @@ cash_in(PG_FUNCTION_ARGS)
 	if (*s != '\0')
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
-				 errmsg("invalid input syntax for money: \"%s\"", str)));
+				 errmsg("invalid input syntax for type money: \"%s\"", str)));
 
 	result = (value * sgn);
 

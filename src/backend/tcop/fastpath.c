@@ -303,7 +303,7 @@ HandleFunctionRequest(StringInfo msgBuf)
 		ereport(ERROR,
 				(errcode(ERRCODE_IN_FAILED_SQL_TRANSACTION),
 				 errmsg("current transaction is aborted, "
-					 "queries ignored until end of transaction block")));
+					 "commands ignored until end of transaction block")));
 
 	/*
 	 * Begin parsing the buffer contents.

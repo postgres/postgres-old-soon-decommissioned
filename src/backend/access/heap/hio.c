@@ -106,7 +106,7 @@ RelationGetBufferForTuple(Relation relation, Size len,
 	if (len > MaxTupleSize)
 		ereport(ERROR,
 				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
-				 errmsg("tuple is too big: size %lu, maximum size %lu",
+				 errmsg("row is too big: size %lu, maximum size %lu",
 						(unsigned long) len,
 						(unsigned long) MaxTupleSize)));
 

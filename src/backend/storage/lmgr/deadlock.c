@@ -864,7 +864,7 @@ DeadLockReport(void)
 		{
 			/* Lock is for transaction ID */
 			appendStringInfo(&buf,
-							 gettext("Proc %d waits for %s on transaction %u; blocked by proc %d."),
+							 gettext("Process %d waits for %s on transaction %u; blocked by process %d."),
 							 info->pid,
 							 GetLockmodeName(info->lockmode),
 							 info->locktag.objId.xid,
@@ -874,7 +874,7 @@ DeadLockReport(void)
 		{
 			/* Lock is for a relation */
 			appendStringInfo(&buf,
-							 gettext("Proc %d waits for %s on relation %u of database %u; blocked by proc %d."),
+							 gettext("Process %d waits for %s on relation %u of database %u; blocked by process %d."),
 							 info->pid,
 							 GetLockmodeName(info->lockmode),
 							 info->locktag.relId,

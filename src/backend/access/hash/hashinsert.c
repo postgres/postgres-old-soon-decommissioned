@@ -87,7 +87,7 @@ _hash_doinsert(Relation rel, HashItem hitem)
 	if (itemsz > HashMaxItemSize((Page) metap))
 		ereport(ERROR,
 				(errcode(ERRCODE_PROGRAM_LIMIT_EXCEEDED),
-				 errmsg("index tuple size %lu exceeds hash maximum, %lu",
+				 errmsg("index row size %lu exceeds hash maximum %lu",
 						(unsigned long) itemsz,
 						(unsigned long) HashMaxItemSize((Page) metap))));
 

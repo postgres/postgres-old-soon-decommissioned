@@ -380,7 +380,7 @@ ShmemInitStruct(const char *name, Size size, bool *foundPtr)
 
 			ereport(WARNING,
 					(errcode(ERRCODE_OUT_OF_MEMORY),
-					 errmsg("could not allocate \"%s\"", name)));
+					 errmsg("could not allocate shared memory segment \"%s\"", name)));
 			*foundPtr = FALSE;
 			return NULL;
 		}

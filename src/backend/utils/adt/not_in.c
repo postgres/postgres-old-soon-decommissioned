@@ -62,7 +62,7 @@ int4notin(PG_FUNCTION_ARGS)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_NAME),
 				 errmsg("invalid name syntax"),
-			   errhint("Must provide \"relationname.attributename\".")));
+			   errhint("Must provide \"relationname.columnname\".")));
 	attribute = strVal(llast(names));
 	names = ltruncate(nnames - 1, names);
 	relrv = makeRangeVarFromNameList(names);

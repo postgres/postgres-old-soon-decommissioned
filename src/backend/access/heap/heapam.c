@@ -577,7 +577,7 @@ heap_open(Oid relationId, LOCKMODE lockmode)
 	if (r->rd_rel->relkind == RELKIND_INDEX)
 		ereport(ERROR,
 				(errcode(ERRCODE_WRONG_OBJECT_TYPE),
-				 errmsg("\"%s\" is an index relation",
+				 errmsg("\"%s\" is an index",
 						RelationGetRelationName(r))));
 	else if (r->rd_rel->relkind == RELKIND_SPECIAL)
 		ereport(ERROR,
@@ -612,7 +612,7 @@ heap_openrv(const RangeVar *relation, LOCKMODE lockmode)
 	if (r->rd_rel->relkind == RELKIND_INDEX)
 		ereport(ERROR,
 				(errcode(ERRCODE_WRONG_OBJECT_TYPE),
-				 errmsg("\"%s\" is an index relation",
+				 errmsg("\"%s\" is an index",
 						RelationGetRelationName(r))));
 	else if (r->rd_rel->relkind == RELKIND_SPECIAL)
 		ereport(ERROR,
@@ -647,7 +647,7 @@ heap_openr(const char *sysRelationName, LOCKMODE lockmode)
 	if (r->rd_rel->relkind == RELKIND_INDEX)
 		ereport(ERROR,
 				(errcode(ERRCODE_WRONG_OBJECT_TYPE),
-				 errmsg("\"%s\" is an index relation",
+				 errmsg("\"%s\" is an index",
 						RelationGetRelationName(r))));
 	else if (r->rd_rel->relkind == RELKIND_SPECIAL)
 		ereport(ERROR,

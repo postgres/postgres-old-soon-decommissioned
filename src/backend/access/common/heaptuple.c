@@ -581,7 +581,7 @@ heap_formtuple(TupleDesc tupleDescriptor,
 	if (numberOfAttributes > MaxTupleAttributeNumber)
 		ereport(ERROR,
 				(errcode(ERRCODE_TOO_MANY_COLUMNS),
-				 errmsg("number of attributes %d exceeds limit, %d",
+				 errmsg("number of columns (%d) exceeds limit (%d)",
 						numberOfAttributes, MaxTupleAttributeNumber)));
 
 	for (i = 0; i < numberOfAttributes; i++)

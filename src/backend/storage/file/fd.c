@@ -331,7 +331,7 @@ pg_nofile(void)
 		if ((no_files - RESERVE_FOR_LD) < FD_MINFREE)
 			ereport(FATAL,
 					(errcode(ERRCODE_INSUFFICIENT_RESOURCES),
-					 errmsg("insufficient file descriptors available to start backend"),
+					 errmsg("insufficient file descriptors available to start server process"),
 					 errdetail("System allows %ld, we need at least %d.",
 							   no_files, RESERVE_FOR_LD + FD_MINFREE)));
 

@@ -1767,7 +1767,7 @@ key_match:  MATCH FULL
 			{
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-						 errmsg("FOREIGN KEY/MATCH PARTIAL is not yet implemented")));
+						 errmsg("MATCH PARTIAL not yet implemented")));
 				$$ = FKCONSTR_MATCH_PARTIAL;
 			}
 		| MATCH SIMPLE
@@ -4762,7 +4762,7 @@ table_ref:	relation_expr
 					 */
 					ereport(ERROR,
 							(errcode(ERRCODE_SYNTAX_ERROR),
-							 errmsg("sub-select in FROM must have an alias"),
+							 errmsg("subquery in FROM must have an alias"),
 							 errhint("For example, FROM (SELECT ...) [AS] foo.")));
 					$$ = NULL;
 				}
@@ -5190,7 +5190,7 @@ opt_float:	'(' Iconst ')'
 					if ($2 < 1)
 						ereport(ERROR,
 								(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-								 errmsg("precision for FLOAT must be at least 1 bit")));
+								 errmsg("precision for type float must be at least 1 bit")));
 					else if ($2 <= 24)
 						$$ = SystemTypeName("float4");
 					else if ($2 <= 53)
@@ -5198,7 +5198,7 @@ opt_float:	'(' Iconst ')'
 					else
 						ereport(ERROR,
 								(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-								 errmsg("precision for FLOAT must be less than 54 bits")));
+								 errmsg("precision for type float must be less than 54 bits")));
 				}
 			| /*EMPTY*/
 				{
@@ -7632,7 +7632,7 @@ SpecialRuleRelation:
 					else
 						ereport(ERROR,
 								(errcode(ERRCODE_SYNTAX_ERROR),
-								 errmsg("OLD used in non-rule query")));
+								 errmsg("OLD used in query that is not in a rule")));
 				}
 			| NEW
 				{
@@ -7641,7 +7641,7 @@ SpecialRuleRelation:
 					else
 						ereport(ERROR,
 								(errcode(ERRCODE_SYNTAX_ERROR),
-								 errmsg("NEW used in non-rule query")));
+								 errmsg("NEW used in query that is not in a rule")));
 				}
 		;
 

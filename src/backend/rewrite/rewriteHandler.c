@@ -455,7 +455,7 @@ process_matched_tle(TargetEntry *src_tle,
 		((ArrayRef *) prior_tle->expr)->refrestype)
 		ereport(ERROR,
 				(errcode(ERRCODE_SYNTAX_ERROR),
-				 errmsg("multiple assignments to same attribute \"%s\"",
+				 errmsg("multiple assignments to same column \"%s\"",
 						attrName)));
 
 	/*
@@ -469,7 +469,7 @@ process_matched_tle(TargetEntry *src_tle,
 	if (!equal(priorbottom, ((ArrayRef *) src_tle->expr)->refexpr))
 		ereport(ERROR,
 				(errcode(ERRCODE_SYNTAX_ERROR),
-				 errmsg("multiple assignments to same attribute \"%s\"",
+				 errmsg("multiple assignments to same column \"%s\"",
 						attrName)));
 
 	/*

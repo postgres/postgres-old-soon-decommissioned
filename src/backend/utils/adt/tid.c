@@ -63,7 +63,7 @@ tidin(PG_FUNCTION_ARGS)
 	if (i < NTIDARGS)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
-				 errmsg("invalid input syntax for tid: \"%s\"",
+				 errmsg("invalid input syntax for type tid: \"%s\"",
 						str)));
 
 	errno = 0;
@@ -71,7 +71,7 @@ tidin(PG_FUNCTION_ARGS)
 	if (errno || *badp != DELIM)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
-				 errmsg("invalid input syntax for tid: \"%s\"",
+				 errmsg("invalid input syntax for type tid: \"%s\"",
 						str)));
 
 	hold_offset = strtol(coord[1], &badp, 10);
@@ -79,7 +79,7 @@ tidin(PG_FUNCTION_ARGS)
 		hold_offset > USHRT_MAX || hold_offset < 0)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
-				 errmsg("invalid input syntax for tid: \"%s\"",
+				 errmsg("invalid input syntax for type tid: \"%s\"",
 						str)));
 
 	offsetNumber = hold_offset;

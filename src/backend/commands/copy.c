@@ -282,7 +282,7 @@ CopySendData(void *databuf, int datasize)
 			if (ferror(copy_file))
 				ereport(ERROR,
 						(errcode_for_file_access(),
-						 errmsg("failed to write COPY file: %m")));
+						 errmsg("could not write to COPY file: %m")));
 			break;
 		case COPY_OLD_FE:
 			if (pq_putbytes((char *) databuf, datasize))
@@ -2064,7 +2064,7 @@ CopyGetAttnums(Relation rel, List *attnamelist)
 			if (intMember(attnum, attnums))
 				ereport(ERROR,
 						(errcode(ERRCODE_DUPLICATE_COLUMN),
-					  errmsg("attribute \"%s\" specified more than once",
+					  errmsg("column \"%s\" specified more than once",
 							 name)));
 			attnums = lappendi(attnums, attnum);
 		}

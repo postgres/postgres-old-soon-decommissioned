@@ -91,7 +91,7 @@ LookupTypeName(const TypeName *typename)
 		if (attnum == InvalidAttrNumber)
 			ereport(ERROR,
 					(errcode(ERRCODE_UNDEFINED_COLUMN),
-			 errmsg("attribute \"%s\" of relation \"%s\" does not exist",
+			 errmsg("column \"%s\" of relation \"%s\" does not exist",
 					field, rel->relname)));
 		restype = get_atttype(relid, attnum);
 

@@ -153,7 +153,7 @@ _bt_getroot(Relation rel, int access)
 	if (metad->btm_version != BTREE_VERSION)
 		ereport(ERROR,
 				(errcode(ERRCODE_INDEX_CORRUPTED),
-				 errmsg("version mismatch in \"%s\": file version %d, code version %d",
+				 errmsg("version mismatch in index \"%s\": file version %d, code version %d",
 						RelationGetRelationName(rel),
 						metad->btm_version, BTREE_VERSION)));
 
@@ -332,7 +332,7 @@ _bt_gettrueroot(Relation rel)
 	if (metad->btm_version != BTREE_VERSION)
 		ereport(ERROR,
 				(errcode(ERRCODE_INDEX_CORRUPTED),
-				 errmsg("version mismatch in \"%s\": file version %d, code version %d",
+				 errmsg("version mismatch in index \"%s\": file version %d, code version %d",
 						RelationGetRelationName(rel),
 						metad->btm_version, BTREE_VERSION)));
 

@@ -429,7 +429,7 @@ OperatorCreate(const char *operatorName,
 		if (leftSortName || rightSortName || ltCompareName || gtCompareName)
 			ereport(ERROR,
 					(errcode(ERRCODE_INVALID_FUNCTION_DEFINITION),
-					 errmsg("only binary operators can mergejoin")));
+					 errmsg("only binary operators can merge join")));
 	}
 
 	operatorObjectId = OperatorGet(operatorName,
