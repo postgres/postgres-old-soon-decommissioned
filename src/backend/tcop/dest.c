@@ -138,7 +138,7 @@ BeginCommand(char *pname,
 			 *		send fe info on tuples we're about to send
 			 * ----------------
 			 */
-			pq_putmessage('P', pname, strlen(pname)+1);
+			pq_puttextmessage('P', pname);
 
 			/* ----------------
 			 *		if this is a retrieve, then we send back the tuple
@@ -272,7 +272,7 @@ EndCommand(char *commandTag, CommandDest dest)
 			 * ----------------
 			 */
 			sprintf(buf, "%s%s", commandTag, CommandInfo);
-			pq_putmessage('C', buf, strlen(buf)+1);
+			pq_puttextmessage('C', buf);
 			CommandInfo[0] = '\0';
 			break;
 

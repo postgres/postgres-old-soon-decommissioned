@@ -24,6 +24,8 @@ extern void	pq_sendstring(StringInfo buf, const char *str);
 extern void	pq_sendint(StringInfo buf, int i, int b);
 extern void	pq_endmessage(StringInfo buf);
 
+extern int	pq_puttextmessage(char msgtype, const char *str);
+
 extern int	pq_getint(int *result, int b);
 extern int	pq_getstr(char *s, int maxlen);
 
