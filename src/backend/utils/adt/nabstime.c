@@ -149,6 +149,9 @@ printf( "datetime2tm- (localtime) %d.%02d.%02d %02d:%02d:%02d %s dst=%d\n",
     if (tzp != NULL) *tzp = (tm->tm_isdst? (timezone - 3600): timezone);
     if (tzn != NULL) strcpy( tzn, tzname[tm->tm_isdst]);
 #else /* !HAVE_INT_TIMEZONE */
+    tm->tm_gmtoff = tx->tm_gmtoff;
+    tm->tm_zone = tx->tm_zone;
+
     if (tzp != NULL) *tzp = - tm->tm_gmtoff;	/* tm_gmtoff is Sun/DEC-ism */
     /* XXX FreeBSD man pages indicate that this should work - tgl 97/04/23 */
     if (tzn != NULL) strcpy( tzn, tm->tm_zone);

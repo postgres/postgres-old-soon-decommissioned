@@ -2118,7 +2118,7 @@ printf( "datetime2tm- (localtime) %d.%02d.%02d %02d:%02d:%02.0f %s dst=%d\n",
 	    tm->tm_gmtoff = tx->tm_gmtoff;
 	    tm->tm_zone = tx->tm_zone;
 
-	    *tzp = (tm->tm_isdst? (tm->tm_gmtoff - 3600): tm->tm_gmtoff); /* tm_gmtoff is Sun/DEC-ism */
+	    *tzp = -(tm->tm_gmtoff); /* tm_gmtoff is Sun/DEC-ism */
 	    if (tzn != NULL) *tzn = tm->tm_zone;
 #endif
 
