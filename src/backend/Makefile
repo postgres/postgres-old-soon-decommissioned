@@ -122,7 +122,7 @@ ifeq ($(MAKE_EXPORTS), true)
 	$(INSTALL) $(INSTLOPTS) $(POSTGRES_IMP) $(LIBDIR)/$(POSTGRES_IMP)
 endif
 	@rm -f $(BINDIR)/postmaster
-	ln -s postgres $(BINDIR)postmaster
+	ln -s postgres $(BINDIR)/postmaster
 	$(INSTALL) $(INSTLOPTS) fmgr.h $(HEADERDIR)/fmgr.h
 	$(INSTALL) $(INSTLOPTS) global1.bki.source \
 	  $(LIBDIR)/global1.bki.source
