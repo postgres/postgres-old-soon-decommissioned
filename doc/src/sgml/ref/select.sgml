@@ -760,7 +760,7 @@ SELECT actors.name
 the <command>FROM</command> clause from a query. This feature
 was retained from the original PostQuel query language:
   <programlisting>
-SELECT distributors.* WHERE name = 'Westwood';
+SELECT distributors.* WHERE name = 'Westward';
 
  did | name
 -----+----------
