@@ -178,7 +178,7 @@ version(void)
     puts("pg_dump (PostgreSQL) " PG_RELEASE "." PG_VERSION "." PG_SUBVERSION);
     puts("Portions Copyright (c) 1996-2000, PostgreSQL, Inc");
     puts("Portions Copyright (C) 1996 Regents of the University of California");
-    puts("Read the file COPYING to see the usage and distribution terms.");
+    puts("Read the file COPYRIGHT to see the usage and distribution terms.");
 }
 
 
@@ -685,7 +685,7 @@ main(int argc, char **argv)
 			case '?':
                 /* getopt returns '?' on unknown argument. That's not
                    quite what we want */
-                if (strcmp(argv[optind-1], "-?")==0)
+                if (strcmp(argv[optind-1], "-?")==0 || strcmp(argv[optind-1], "--help")==0)
                 {
                     help(progname);
                     exit(1);

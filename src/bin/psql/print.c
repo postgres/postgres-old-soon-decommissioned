@@ -1,7 +1,7 @@
 /*
  * psql - the PostgreSQL interactive terminal
  *
- * Copyright 2000 by PostgreSQL Global Development Team
+ * Copyright 2000 by PostgreSQL Global Development Group
  *
  * $Header$
  */

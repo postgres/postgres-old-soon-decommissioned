@@ -1,7 +1,7 @@
 /*
  * psql - the PostgreSQL interactive terminal
  *
- * Copyright 2000 by PostgreSQL Global Development Team
+ * Copyright 2000 by PostgreSQL Global Development Group
  *
  * $Header$
  */
@@ -39,7 +39,7 @@
  * %n - database user name
  * %/ - current database
  * %~ - like %/ but "~" when database name equals user name
- * %# - "#" if the username is postgres, ">" otherwise
+ * %# - "#" if superuser, ">" otherwise
  * %R - in prompt1 normally =, or ^ if single line mode,
  *			or a ! if session is not connected to a database;
  *		in prompt2 -, *, ', or ";
@@ -194,7 +194,7 @@ get_prompt(promptStatus_t status)
 
 				case '#':
 					{
-						if (pset.db && strcmp(PQuser(pset.db), "postgres") == 0)
+						if (pset.issuper)
 							buf[0] = '#';
 						else
 							buf[0] = '>';

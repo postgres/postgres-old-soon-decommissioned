@@ -204,6 +204,11 @@ do
         -E*)
                 MULTIBYTE=`echo $1 | sed 's/^-E//'`
                 ;;
+	-*)
+		echo "$CMDNAME: invalid option: $1"
+		echo "Try -? for help."
+		exit 1
+		;;
         *)
                 PGDATA=$1
                 ;;
@@ -218,15 +223,15 @@ if [ "$usage" ]; then
         echo "  $CMDNAME [options] datadir"
  	echo
         echo "Options:"
-        echo "  [-D, --pgdata] <datadir>    Location for this database"
+        echo " [-D, --pgdata] <datadir>     Location for this database"
         echo "  -W, --pwprompt              Prompt for a password for the new superuser's"
  	if [ -n "$MULTIBYTE" ]
 	then 
- 		echo "  -e, --encoding <encoding>         Set the default multibyte encoding for new databases"
+ 		echo "  -E, --encoding <encoding>         Set the default multibyte encoding for new databases"
 	fi
         echo "  -i, --sysid <sysid>         Database sysid for the superuser"
         echo "Less commonly used options: "
-        echo "  -L, --pglib <libdir>        Where to find the input files (should happend automatically"
+        echo "  -L, --pglib <libdir>        Where to find the input files"
         echo "  -t, --template              Re-initialize template database only"
         echo "  -d, --debug                 Generate lots of debugging output"
         echo "  -n, --noclean               Do not clean up after errors"

@@ -1,7 +1,7 @@
 /*
  * psql - the PostgreSQL interactive terminal
  *
- * Copyright 2000 by PostgreSQL Global Development Team
+ * Copyright 2000 by PostgreSQL Global Development Group
  *
  * $Header$
  */
@@ -53,6 +53,9 @@ typedef struct _psqlSettings
     char       *progname;       /* in case you renamed psql */
     char       *inputfile;      /* for error reporting */
     unsigned    lineno;         /* also for error reporting */
+
+    bool        issuper;        /* is the current user a superuser?
+                                   (used to form the prompt) */
 } PsqlSettings;
 
 extern PsqlSettings pset;

@@ -1,7 +1,7 @@
 /*
  * psql - the PostgreSQL interactive terminal
  *
- * Copyright 2000 by PostgreSQL Global Development Team
+ * Copyright 2000 by PostgreSQL Global Development Group
  *
  * $Header$
  */
@@ -60,8 +60,8 @@ handle_transaction(void)
 
 	if (notice[0])
 	{
-		if ((!commit && strcmp(notice, "NOTICE:  UserAbortTransactionBlock and not in in-progress state\n") != 0) ||
-			(commit && strcmp(notice, "NOTICE:  EndTransactionBlock and not inprogress/abort state\n") != 0))
+		if ((!commit && strcmp(notice, "NOTICE:  ROLLBACK: no transaction in progress\n") != 0) ||
+			(commit && strcmp(notice, "NOTICE:  COMMIT: no transaction in progress\n") != 0))
 			fputs(notice, stderr);
 	}
 	else if (!QUIET())

@@ -1,7 +1,7 @@
 /*
  * psql - the PostgreSQL interactive terminal
  *
- * Copyright 2000 by PostgreSQL Global Development Team
+ * Copyright 2000 by PostgreSQL Global Development Group
  *
  * $Header$
  */
@@ -35,6 +35,9 @@ HandleSlashCmds(const char *line,
 
 bool
 process_file(char *filename);
+
+bool
+test_superuser(const char * username);
 
 bool
 do_pset(const char *param,

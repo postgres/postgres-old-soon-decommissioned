@@ -1,7 +1,7 @@
 /*
  * psql - the PostgreSQL interactive terminal
  *
- * Copyright 2000 by PostgreSQL Global Development Team
+ * Copyright 2000 by PostgreSQL Global Development Group
  *
  * $Header$
  */
@@ -361,7 +361,7 @@ exec_command(const char *cmd,
 		switch (cmd[1])
 		{
 			case '\0':
-            case '?':
+            case '+':
 				if (options[0])
 					success = describeTableDetails(options[0], show_verbose);
 				else
@@ -992,7 +992,37 @@ do_connect(const char *new_dbname, const char *new_user)
     SetVariable(pset.vars, "HOST", PQhost(pset.db));
     SetVariable(pset.vars, "PORT", PQport(pset.db));
 
+    pset.issuper = test_superuser(PQuser(pset.db));
+
 	return success;
+}
+
+
+
+/*
+ * Test if the given user is a database superuser.
+ * (Used to set up the prompt right.)
+ */
+bool
+test_superuser(const char * username)
+{
+    PGresult *res;
+    char buf[64 + NAMEDATALEN];
+    bool answer;
+
+    if (!username)
+        return false;
+
+    sprintf(buf, "SELECT usesuper FROM pg_user WHERE usename = '%.*s'", NAMEDATALEN, username);
+    res = PSQLexec(buf);
+
+    answer =
+        (PQntuples(res)>0 && PQnfields(res)>0
+         && !PQgetisnull(res,0,0)
+         && PQgetvalue(res,0,0)
+         && strcmp(PQgetvalue(res,0,0), "t")==0);
+    PQclear(res);
+    return answer;
 }
 
 
