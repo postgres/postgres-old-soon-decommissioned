@@ -16,7 +16,8 @@ ifdef MULTIBYTE
 CFLAGS+= $(MBFLAGS)
 endif
 
-OBJS = common.o conv.o mbutils.o wchar.o wstrcmp.o wstrncmp.o variable.o
+OBJS = common.o conv.o mbutils.o wchar.o wstrcmp.o wstrncmp.o variable.o \
+       big5.o
 
 all: SUBSYS.o
 

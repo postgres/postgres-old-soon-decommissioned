@@ -15,7 +15,7 @@ if [ ! -d results ];then
 fi
 
 PSQL="psql -n -e -q"
-tests="euc_jp sjis euc_kr euc_cn unicode mule_internal"
+tests="euc_jp sjis euc_kr euc_cn euc_tw big5 unicode mule_internal"
 unset PGCLIENTENCODING
 for i in $tests
 do
@@ -25,6 +25,11 @@ do
 		PGCLIENTENCODING=SJIS
 		export PGCLIENTENCODING
 		$PSQL euc_jp < sql/sjis.sql > results/sjis.out 2>&1
+		unset PGCLIENTENCODING
+        elif [ $i = big5 ];then
+		PGCLIENTENCODING=BIG5
+		export PGCLIENTENCODING
+		$PSQL euc_tw < sql/big5.sql > results/big5.out 2>&1
 		unset PGCLIENTENCODING
 	else
 		destroydb $i >/dev/null 2>&1
