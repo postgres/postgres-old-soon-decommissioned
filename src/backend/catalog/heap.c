@@ -689,6 +689,7 @@ AddNewRelationType(const char *typeName,
 			   F_RECORD_OUT,	/* output procedure */
 			   F_RECORD_RECV,	/* receive procedure */
 			   F_RECORD_SEND,	/* send procedure */
+			   InvalidOid,		/* analyze procedure - default */
 			   InvalidOid,		/* array element type - irrelevant */
 			   InvalidOid,		/* domain base type - irrelevant */
 			   NULL,			/* default type value - none */
