@@ -20,6 +20,30 @@
 #include <rewrite/prs2lock.h>
 #include <storage/fd.h>
 
+typedef struct Trigger {
+    char		*tgname;
+    char		*tgfunc;
+    Oid			tglang;
+    int16		tgtype;
+    int16		tgnargs;
+    int16		tgattr[8];
+    char		*tgtext;
+    char		**tgargs;
+    char		*tgwhen;
+} Trigger;
+
+typedef struct TriggerDesc {
+    uint16		n_before_statement[4];
+    uint16		n_before_row[4];
+    uint16		n_after_row[4];
+    uint16		n_after_statement[4];
+    Trigger		**tg_before_statement[4];
+    Trigger		**tg_before_row[4];
+    Trigger		**tg_after_row[4];
+    Trigger		**tg_after_statement[4];
+    Trigger		*triggers;
+} TriggerDesc;
+
 typedef struct RelationData {
     File		rd_fd; 		/* open file descriptor */
     int                 rd_nblocks;	/* number of blocks in rel */
@@ -36,6 +60,7 @@ typedef struct RelationData {
     RuleLock		*rd_rules;	/* rewrite rules */
     IndexStrategy       rd_istrat;    
     RegProcedure*       rd_support;
+    TriggerDesc		*trigdesc;
 } RelationData;
 
 typedef RelationData	*Relation;
