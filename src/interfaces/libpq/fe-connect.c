@@ -2714,7 +2714,6 @@ PQclientEncoding(const PGconn *conn)
 	return conn->client_encoding;
 }
 
-#ifdef MULTIBYTE
 int
 PQsetClientEncoding(PGconn *conn, const char *encoding)
 {
@@ -2750,15 +2749,6 @@ PQsetClientEncoding(PGconn *conn, const char *encoding)
 	PQclear(res);
 	return (status);
 }
-
-#else							/* without multibytle support */
-
-int
-PQsetClientEncoding(PGconn *conn, const char *encoding)
-{
-	return -1;
-}
-#endif
 
 void
 PQtrace(PGconn *conn, FILE *debug_port)

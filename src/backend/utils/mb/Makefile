@@ -12,18 +12,22 @@ subdir = src/backend/utils/mb
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS = encnames.o conv.o mbutils.o wchar.o wstrcmp.o wstrncmp.o big5.o
+OBJS = encnames.o conv.o mbutils.o wchar.o wstrcmp.o wstrncmp.o
+DIRS = conversion_procs
 
-all: SUBSYS.o
+all install installdirs uninstal distprep: SUBSYS.o
+	@for dir in $(DIRS); do $(MAKE) -C $$dir $@ || exit; done
+
+clean distclean maintainer-clean:
+	rm -f SUBSYS.o $(OBJS)
+	@for dir in $(DIRS); do $(MAKE) -C $$dir $@; done
 
 SUBSYS.o: $(OBJS)
+	@for dir in $(DIRS); do $(MAKE) -C $$dir all || exit; done
 	$(LD) $(LDREL) $(LDOUT) SUBSYS.o $(OBJS)
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
-
-clean: 
-	rm -f SUBSYS.o $(OBJS)
 
 ifeq (depend,$(wildcard depend))
 include depend

@@ -131,6 +131,7 @@ endif
 ifeq ($(enable_nls), yes)
 	$(MAKE) -C po $@
 endif
+	$(MAKE) -C utils/mb $@
 
 install-bin: postgres $(POSTGRES_IMP) installdirs
 	$(INSTALL_PROGRAM) postgres$(X) $(DESTDIR)$(bindir)/postgres$(X)

@@ -994,6 +994,11 @@ EOF
 	| "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
 echo "ok"
 
+# Create pg_conversion and support functions
+$ECHO_N "creating conversions... "$ECHO_C
+cat $datadir/conversion_create.sql | "$PGPATH"/postgres $PGSQL_OPT template1 > /dev/null || exit_nicely
+echo "ok"
+
 # Set most system catalogs and built-in functions as world-accessible.
 # Some objects may require different permissions by default, so we
 # make sure we don't overwrite privilege sets that have already been

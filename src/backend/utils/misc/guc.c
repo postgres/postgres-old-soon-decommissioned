@@ -28,6 +28,7 @@
 #include "fmgr.h"
 #include "libpq/auth.h"
 #include "libpq/pqcomm.h"
+#include "mb/pg_wchar.h"
 #include "miscadmin.h"
 #include "optimizer/cost.h"
 #include "optimizer/geqo.h"
@@ -1115,11 +1116,9 @@ InitializeGUCOptions(void)
 	if (env != NULL)
 		SetConfigOption("timezone", env, PGC_POSTMASTER, PGC_S_ENV_VAR);
 
-#ifdef MULTIBYTE
 	env = getenv("PGCLIENTENCODING");
 	if (env != NULL)
 		SetConfigOption("client_encoding", env, PGC_POSTMASTER, PGC_S_ENV_VAR);
-#endif
 }
 
 
