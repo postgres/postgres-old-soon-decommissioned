@@ -35,7 +35,7 @@ ifeq ($(PORTNAME), linux)
     endif
     shlib             := libpgtcl.so.1
     install-shlib-dep := install-shlib
-    LDFLAGS           += -L ../../libpq -lpq
+    LDFLAGS           += -L $(SRCDIR)/interfaces/libpq -lpq
   endif
 endif
 
