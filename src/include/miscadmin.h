@@ -104,8 +104,6 @@ extern void ProcessInterrupts(void);
 /*
  * from postmaster/postmaster.c
  */
-extern bool IsPostmasterEnvironment;
-extern bool IsUnderPostmaster;
 extern bool ClientAuthInProgress;
 extern const bool ExecBackend;
 
@@ -115,6 +113,11 @@ extern void ClosePostmasterPorts(bool pgstat_too);
 /*
  * from utils/init/globals.c
  */
+extern bool IsPostmasterEnvironment;
+extern bool IsUnderPostmaster;
+
+extern bool ExitOnAnyError;
+
 extern bool Noversion;
 extern char *DataDir;
 

@@ -400,6 +400,12 @@ static struct config_bool
 #endif
 
 	{
+		/* currently undocumented, so don't show in SHOW ALL */
+		{"exit_on_error", PGC_USERSET, GUC_NO_SHOW_ALL}, &ExitOnAnyError,
+		false, NULL, NULL
+	},
+
+	{
 		{"log_statement", PGC_SUSET}, &log_statement,
 		false, NULL, NULL
 	},

@@ -838,7 +838,7 @@ BootstrapAlreadySeen(Oid id)
  * ----------------
  */
 static void
-cleanup()
+cleanup(void)
 {
 	static int	beenhere = 0;
 
@@ -846,13 +846,13 @@ cleanup()
 		beenhere = 1;
 	else
 	{
-		elog(FATAL, "Memory manager fault: cleanup called twice.\n");
+		elog(FATAL, "Memory manager fault: cleanup called twice");
 		proc_exit(1);
 	}
 	if (boot_reldesc != NULL)
 		closerel(NULL);
 	CommitTransactionCommand();
-	proc_exit(Warnings);
+	proc_exit(Warnings ? 1 : 0);
 }
 
 /* ----------------
