@@ -24,9 +24,6 @@ is enclosed in single-quotes.
 .PP
 .IR DateStyle
 determines the output format for the date and time data types.
-See
-.IR pgbuiltin(3)
-for more information on available styles.
 
 .ce 1
 \fBDateStyle Values\fR
@@ -105,7 +102,6 @@ set GEQO to 'on=4'
 set GEQO to 'off'
 .fi
 .SH "SEE ALSO"
-pgbuiltin(3),
 reset(l),
 show(l).
 .SH BUGS

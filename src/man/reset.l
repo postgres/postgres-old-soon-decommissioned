@@ -32,7 +32,6 @@ tgl=> reset GEQO;
 RESET VARIABLE
 .fi
 .SH "SEE ALSO"
-pgbuiltin(3),
 set(l),
 show(l).
 .SH BUGS
