@@ -317,7 +317,7 @@ static struct config_int
 	{"max_fsm_pages", PGC_POSTMASTER, &MaxFSMPages,
 	 10000, 1000, INT_MAX, NULL, NULL},
 
-	{"max_locks_per_xact", PGC_POSTMASTER, &max_locks_per_xact,
+	{"max_locks_per_transaction", PGC_POSTMASTER, &max_locks_per_xact,
 	 64, 10, INT_MAX, NULL, NULL},
 
 	{"checkpoint_segments", PGC_SIGHUP, &CheckPointSegments,
