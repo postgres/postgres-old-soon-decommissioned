@@ -486,4 +486,40 @@ S_INIT_LOCK(slock_t *lock)
 
 #endif /* defined(linux) && defined(sparc) */
 
+#if defined(NEED_NS32K_TAS_ASM)
+
+int
+tas(slock_t *m)
+{
+    slock_t res = 0;
+    __asm__("movd 8(fp), r1");
+    __asm__("movqd 0, r0");
+    __asm__("sbitd r0, 0(r1)");
+    __asm__("sprb us, %0" : "=r" (res));
+    res =  (res >> 5) & 1;
+    return res;
+}
+
+void
+S_LOCK(slock_t *lock)
+{
+    while (tas(lock))
+	;
+}
+
+void
+S_UNLOCK(slock_t *lock)
+{
+    *lock = 0;
+}
+
+void
+S_INIT_LOCK(slock_t *lock)
+{
+    S_UNLOCK(lock);
+}
+
+#endif /* NEED_NS32K_TAS_ASM */
+
+
 #endif /* HAS_TEST_AND_SET */
