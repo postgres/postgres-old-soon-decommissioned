@@ -1336,10 +1336,16 @@ array_map(ArrayType *v,
 	system_cache_lookup(retType, false, &typlen, &typbyval,
 						&typdelim, &typelem, &proc, &typalign);
 
-	/* Allocate temporary array for new values */
 	ndim   = ARR_NDIM(v);
 	dim    = ARR_DIMS(v);
 	nitems = getNitems(ndim, dim);
+
+	/* Check for empty array */
+	if (nitems <= 0) {
+		return v;
+	}
+
+	/* Allocate temporary array for new values */
 	values = (char **) palloc(nitems * sizeof(char *));
 	MemSet(values, 0, nitems * sizeof(char *));
 
