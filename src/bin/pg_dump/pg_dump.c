@@ -75,7 +75,7 @@
 #include <termios.h>
 #endif
 
-#ifdef __CYGWIN32__
+#ifdef HAVE_GETOPT_H
 #include <getopt.h>
 #endif
 

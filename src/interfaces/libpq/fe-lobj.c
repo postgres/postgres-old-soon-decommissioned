@@ -12,20 +12,18 @@
  *-------------------------------------------------------------------------
  */
 
+#include <unistd.h>
+#include <fcntl.h>
+#include <io.h>
+#include <sys/stat.h>
+
+#include "postgres.h"
 #include "libpq-fe.h"
 #include "libpq-int.h"
-#include "postgres.h"
 
 #ifdef WIN32
 #include "win32.h"
-#include <io.h>
-#else
-#if !defined(NO_UNISTD_H)
-#include <unistd.h>
 #endif
-#endif
-#include <fcntl.h>
-#include <sys/stat.h>
 
 #include "libpq/libpq-fs.h"		/* must come after sys/stat.h */
 

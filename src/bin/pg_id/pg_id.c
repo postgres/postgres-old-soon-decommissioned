@@ -13,12 +13,14 @@
  *
  *-------------------------------------------------------------------------
  */
-#include <sys/types.h>
-#include <pwd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#ifdef __CYGWIN32__
+#include <sys/types.h>
+#include <pwd.h>
+
+#include "postgres.h"
+#ifdef HAVE_GETOPT_H
 #include <getopt.h>
 #endif
 

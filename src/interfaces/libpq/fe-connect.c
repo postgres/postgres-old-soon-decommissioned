@@ -12,23 +12,22 @@
  *-------------------------------------------------------------------------
  */
 
+#include <unistd.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <ctype.h>
+
+#include "postgres.h"
 #include "libpq-fe.h"
 #include "libpq-int.h"
 #include "fe-auth.h"
-#include "postgres.h"
 
 #ifdef WIN32
 #include "win32.h"
 #else
-#if !defined(NO_UNISTD_H)
-#include <unistd.h>
-#endif
 #include <netdb.h>
 #include <netinet/tcp.h>
 #endif
-#include <fcntl.h>
-#include <errno.h>
-#include <ctype.h>				/* for isspace() */
 
 #ifndef HAVE_STRDUP
 #include "strdup.h"

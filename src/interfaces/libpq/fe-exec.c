@@ -11,19 +11,17 @@
  *
  *-------------------------------------------------------------------------
  */
+#include <unistd.h>
+#include <errno.h>
+#include <ctype.h>
+
+#include "postgres.h"
 #include "libpq-fe.h"
 #include "libpq-int.h"
-#include "postgres.h"
 
 #ifdef WIN32
 #include "win32.h"
-#else
-#if !defined(NO_UNISTD_H)
-#include <unistd.h>
 #endif
-#endif
-#include <errno.h>
-#include <ctype.h>
 
 
 /* keep this in same order as ExecStatusType in libpq-fe.h */

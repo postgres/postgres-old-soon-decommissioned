@@ -15,14 +15,13 @@
 #include <time.h>
 #include <signal.h>
 #include <setjmp.h>
-#ifdef __CYGWIN32__
-#include <getopt.h>
-#endif
 
 #define BOOTSTRAP_INCLUDE		/* mask out stuff in tcop/tcopprot.h */
 
 #include "postgres.h"
-
+#ifdef HAVE_GETOPT_H
+#include <getopt.h>
+#endif
 
 #include "access/genam.h"
 #include "access/heapam.h"

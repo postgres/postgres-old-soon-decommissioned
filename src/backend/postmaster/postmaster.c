@@ -32,46 +32,40 @@
  *
  *-------------------------------------------------------------------------
  */
-#include "postgres.h"
-#include <sys/param.h>
- /* moved here to prevent double define */
-#ifdef HAVE_NETDB_H
-#include <netdb.h>
-#endif
-
-
-#ifndef MAXHOSTNAMELEN
-#define MAXHOSTNAMELEN 256
-#endif
-
-#if !defined(NO_UNISTD_H)
 #include <unistd.h>
-#endif	 /* !NO_UNISTD_H */
-
 #include <signal.h>
 #include <time.h>
-
-
-#ifdef HAVE_LIMITS_H
-#include <limits.h>
-#else
-#include <values.h>
-#endif
 #include <sys/wait.h>
 #include <ctype.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/socket.h>
-
 #include <errno.h>
 #include <fcntl.h>
+#include <sys/param.h>
+
+#include "postgres.h"
+ /* moved here to prevent double define */
+#ifdef HAVE_NETDB_H
+#include <netdb.h>
+#endif
+
+#ifndef MAXHOSTNAMELEN
+#define MAXHOSTNAMELEN 256
+#endif
+
+#ifdef HAVE_LIMITS_H
+#include <limits.h>
+#else
+#include <values.h>
+#endif
 
 #ifdef HAVE_SYS_SELECT_H
 #include <sys/select.h>
 #endif
 
-#ifdef __CYGWIN32__
+#ifdef HAVE_GETOPT_H
 #include "getopt.h"
 #endif
 

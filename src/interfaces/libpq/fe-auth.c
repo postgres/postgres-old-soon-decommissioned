@@ -25,10 +25,12 @@
  *
  */
 
+#include <unistd.h>
+
+#include "postgres.h"
 #include "libpq-fe.h"
 #include "libpq-int.h"
 #include "fe-auth.h"
-#include "postgres.h"
 
 #ifdef WIN32
 #include "win32.h"
@@ -37,11 +39,8 @@
 #ifndef  MAXHOSTNAMELEN
 #include <netdb.h>				/* for MAXHOSTNAMELEN on some */
 #endif
-#if !defined(NO_UNISTD_H)
-#include <unistd.h>
-#endif
 #include <pwd.h>
-#endif	 /* WIN32 */
+#endif
 
 #ifdef HAVE_CRYPT_H
 #include <crypt.h>

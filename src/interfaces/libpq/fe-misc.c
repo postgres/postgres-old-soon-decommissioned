@@ -29,23 +29,20 @@
  *-------------------------------------------------------------------------
  */
 
-#include "libpq-fe.h"
-#include "libpq-int.h"
-
-#include "postgres.h"
-#include "pqsignal.h"
-
+#include <unistd.h>
+#include <sys/time.h>
 #include <errno.h>
 #include <signal.h>
 #include <time.h>
+
+#include "postgres.h"
+#include "libpq-fe.h"
+#include "libpq-int.h"
+#include "pqsignal.h"
+
 #ifdef WIN32
 #include "win32.h"
-#else
-#include <sys/time.h>
-#if !defined(NO_UNISTD_H)
-#include <unistd.h>
 #endif
-#endif	 /* WIN32 */
 
 #ifdef HAVE_SYS_SELECT_H
 #include <sys/select.h>
