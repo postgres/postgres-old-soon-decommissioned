@@ -838,6 +838,7 @@ parser_typecast_constant(Value *expr, TypeName *typename)
 			break;
 		case T_Float:
 		case T_String:
+		case T_BitString:
 			const_string = expr->val.str;
 			break;
 		case T_Null:
