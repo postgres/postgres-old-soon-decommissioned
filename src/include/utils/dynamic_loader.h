@@ -13,6 +13,8 @@
 #ifndef DYNAMIC_LOADER_H
 #define DYNAMIC_LOADER_H
 
+#include <sys/types.h>
+
 #ifdef MIN
 #undef MIN
 #undef MAX
@@ -22,10 +24,7 @@
 #define MAXPATHLEN    250
 #endif
 
-#include <sys/param.h>			/* for MAXPATHLEN */
-#include <sys/types.h>			/* for dev_t, ino_t, etc. */
 #ifdef WIN32
-#include <wchar.h>
 #endif
 
 /*
