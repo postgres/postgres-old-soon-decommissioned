@@ -56,6 +56,21 @@ GEQO
 	off	- duh
 .fi
 
+.PP
+.IR R_PLANS
+enables or disables right-hand evaluation of plans. This algorithm is
+.IR off
+by default.
+
+.if n .ta 5 +15 +40
+.if t .ta 0.5i +1.5i +3.0i
+.in 0
+.nf
+R_PLANS
+	on	- turn right-hand plan evaluation 'on'
+	off	- duh
+.fi
+
 .SH EXAMPLES
 .nf
 --
