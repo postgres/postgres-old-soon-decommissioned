@@ -229,20 +229,20 @@ tas(volatile slock_t *lock)
 	int _res;
 
 	__asm__ __volatile__(
-"	lwarx   %0,0,%3		\n"
+"	lwarx   %0,0,%2		\n"
 "	cmpwi   %0,0		\n"
 "	bne     1f			\n"
 "	addi    %0,%0,1		\n"
-"	stwcx.  %0,0,%3		\n"
+"	stwcx.  %0,0,%2		\n"
 "	beq     2f         	\n"
-"1:	li      %2,1		\n"
+"1:	li      %1,1		\n"
 "	b		3f			\n"
 "2:						\n"
 "	isync				\n"
-"	li      %2,0		\n"
+"	li      %1,0		\n"
 "3:						\n"
 
-:	"=&r" (_t), "=m" (lock), "=r" (_res)
+:	"=&r" (_t), "=r" (_res)
 :	"r" (lock)
 :	"cc", "memory"
 	);
