@@ -497,7 +497,6 @@ inv_read(LargeObjectDesc *obj_desc, char *buf, int nbytes)
 		obj_desc->offset += ncopy;
 	}
 
-	/* that's it */
 	return (nread);
 }
 
