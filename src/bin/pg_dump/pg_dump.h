@@ -12,6 +12,10 @@
  *   - Fixed dumpTable output to output lengths for char and varchar types!
  *   - Added single. quote to twin single quote expansion for 'insert' string
  *     mode.
+ *
+ * Modifications - 6/1/97 - igor@sba.miami.edu
+ * - Added extern's for the functions that clear allocated memory
+ *   in pg_dump.c
  *-------------------------------------------------------------------------
  */
 
@@ -86,9 +90,9 @@ typedef struct _inhInfo {
 typedef struct _indInfo {
     char *indexrelname;  /* name of the secondary index class */
     char *indrelname;    /* name of the indexed heap class */
-    char *indamname;     /* name of the access method (e.g. btree, rtree, etc.) */
-    char *indproc;       /* oid of the function to compute the index, 0 if none*/
-    char *indkey[INDEX_MAX_KEYS];	/* attribute numbers of the key attributes */
+    char *indamname;   /* name of the access method (e.g. btree, rtree, etc.) */
+    char *indproc;     /* oid of the function to compute the index, 0 if none*/
+    char *indkey[INDEX_MAX_KEYS];  /* attribute numbers of the key attributes */
     char *indclass[INDEX_MAX_KEYS];	/* opclass of the keys */
     char *indisunique;   /* is this index unique? */
 } IndInfo;
@@ -179,6 +183,15 @@ extern bool isViewRule(char *relname);
 extern TypeInfo* getTypes(int *numTypes);
 extern FuncInfo* getFuncs(int *numFuncs);
 extern AggInfo* getAggregates(int *numAggregates);
+
+extern void clearAggInfo(AggInfo*, int);
+extern void clearFuncInfo(FuncInfo*, int);
+extern void clearInhInfo(InhInfo*, int);
+extern void clearIndInfo(IndInfo*, int);
+extern void clearOprInfo(OprInfo*, int);
+extern void clearTypeInfo(TypeInfo*, int);
+extern void clearTableInfo(TableInfo*, int);
+
 extern OprInfo* getOperators(int *numOperators);
 extern TableInfo* getTables(int *numTables);
 extern InhInfo* getInherits(int *numInherits);
