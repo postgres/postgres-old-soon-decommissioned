@@ -47,27 +47,21 @@
 #include "postgres.h"
 
 #include <errno.h>
-#include <sys/time.h>
-#include <unistd.h>
 #include <signal.h>
-#include <sys/types.h>
+#include <unistd.h>
+#include <sys/time.h>
 
-#if defined(solaris_sparc) || defined(__CYGWIN__)
-#include <sys/ipc.h>
+#include "storage/ipc.h"
+/* In Ultrix, sem.h and shm.h must be included AFTER ipc.h */
+#ifdef HAVE_SYS_SEM_H
 #include <sys/sem.h>
 #endif
-
-#include "miscadmin.h"
 
 #if defined(__darwin__)
 #include "port/darwin/sem.h"
 #endif
 
-/* In Ultrix and QNX, sem.h must be included after ipc.h */
-#ifdef HAVE_SYS_SEM_H
-#include <sys/sem.h>
-#endif
-
+#include "miscadmin.h"
 #include "access/xact.h"
 #include "storage/proc.h"
 #include "storage/sinval.h"

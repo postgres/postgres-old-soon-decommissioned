@@ -22,9 +22,15 @@
 #include "postgres.h"
 
 #include <errno.h>
+
+#include "storage/ipc.h"
+/* In Ultrix, sem.h and shm.h must be included AFTER ipc.h */
 #ifdef HAVE_SYS_SEM_H
-#include <sys/types.h>
 #include <sys/sem.h>
+#endif
+
+#if defined(__darwin__)
+#include "port/darwin/sem.h"
 #endif
 
 #include "storage/lwlock.h"

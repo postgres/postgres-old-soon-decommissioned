@@ -27,11 +27,10 @@
  */
 #include "postgres.h"
 
-#include <sys/types.h>
-#include <sys/file.h>
 #include <errno.h>
 #include <signal.h>
 #include <unistd.h>
+#include <sys/file.h>
 
 #include "storage/ipc.h"
 /* In Ultrix, sem.h and shm.h must be included AFTER ipc.h */
@@ -43,10 +42,6 @@
 #endif
 #ifdef HAVE_KERNEL_OS_H
 #include <kernel/OS.h>
-#endif
-
-#if defined(solaris_sparc)
-#include <sys/ipc.h>
 #endif
 
 #if defined(__darwin__)
