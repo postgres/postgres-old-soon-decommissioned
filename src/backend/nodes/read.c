@@ -183,7 +183,7 @@ debackslash(char *token, int length)
 
 #define RIGHT_PAREN (1000000 + 1)
 #define LEFT_PAREN	(1000000 + 2)
-#define PLAN_SYM	(1000000 + 3)
+#define NODE_SYM	(1000000 + 3)
 #define AT_SYMBOL	(1000000 + 4)
 #define ATOM_TOKEN	(1000000 + 5)
 
@@ -193,7 +193,7 @@ debackslash(char *token, int length)
  *	  It returns one of the following valid NodeTags:
  *		T_Integer, T_Float, T_String, T_BitString
  *	  and some of its own:
- *		RIGHT_PAREN, LEFT_PAREN, PLAN_SYM, AT_SYMBOL, ATOM_TOKEN
+ *		RIGHT_PAREN, LEFT_PAREN, NODE_SYM, AT_SYMBOL, ATOM_TOKEN
  *
  *	  Assumption: the ascii representation is legal
  */
@@ -244,7 +244,7 @@ nodeTokenType(char *token, int length)
 	else if (*token == ')')
 		retval = RIGHT_PAREN;
 	else if (*token == '{')
-		retval = PLAN_SYM;
+		retval = NODE_SYM;
 	else if (*token == '@' && length == 1)
 		retval = AT_SYMBOL;
 	else if (*token == '\"' && length > 1 && token[length - 1] == '\"')
@@ -263,7 +263,7 @@ nodeTokenType(char *token, int length)
  * This routine applies some semantic knowledge on top of the purely
  * lexical tokenizer pg_strtok().	It can read
  *	* Value token nodes (integers, floats, or strings);
- *	* Plan nodes (via parsePlanString() from readfuncs.c);
+ *	* General nodes (via parseNodeString() from readfuncs.c);
  *	* Lists of the above.
  *
  * We assume pg_strtok is already initialized with a string to read (hence
@@ -289,11 +289,11 @@ nodeRead(bool read_car_only)
 
 	switch (type)
 	{
-		case PLAN_SYM:
-			this_value = parsePlanString();
+		case NODE_SYM:
+			this_value = parseNodeString();
 			token = pg_strtok(&tok_len);
 			if (token == NULL || token[0] != '}')
-				elog(ERROR, "nodeRead: did not find '}' at end of plan node");
+				elog(ERROR, "nodeRead: did not find '}' at end of node");
 			if (!read_car_only)
 				make_dotted_pair_cell = true;
 			else
