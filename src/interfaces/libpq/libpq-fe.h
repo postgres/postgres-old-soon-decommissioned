@@ -349,7 +349,7 @@ extern		"C"
 #define palloc malloc
 #define pfree free
 
-#if defined(sunos4)
+#if defined(sun) && defined(sparc) && !defined(__svr4)
 	extern char *sys_errlist[];
 #define strerror(A) (sys_errlist[(A)])
 #endif							/* sunos4 */

@@ -792,7 +792,7 @@ extern char *form(const char *fmt,...);
 #endif							/* hpux */
 #endif
 
-#if defined(sunos4)
+#if defined(sun) && defined(sparc) && !defined(__svr4)
 #define memmove(d, s, l)		bcopy(s, d, l)
 #include <unistd.h>
 #endif
