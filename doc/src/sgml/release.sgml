@@ -24,6 +24,7 @@ CDATA means the content is "SGML-free", so you can write without
 worries about funny characters.
 -->
 <literallayout><![CDATA[
+Client libraries older than 6.3 no longer supported (version 0 protocol removed)
 PREPARE statement allows caching query plans for interactive statements
 Type OPAQUE is now deprecated in favor of pseudo-types cstring, trigger, etc
 Standalone composite types can now be created with CREATE TYPE

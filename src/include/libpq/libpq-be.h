@@ -29,17 +29,8 @@
 #endif
 
 
-/* Protocol v0 password packet. */
-
-typedef struct PasswordPacketV0
-{
-	uint32		unused;
-	char		data[288];		/* User and password as strings. */
-} PasswordPacketV0;
-
-
 /*
- * This is used by the postmaster in its communication with frontends.	It is
+ * This is used by the postmaster in its communication with frontends.	It
  * contains all state information needed during this communication before the
  * backend is run.
  */

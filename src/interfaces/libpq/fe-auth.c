@@ -63,6 +63,11 @@
  * common definitions for generic fe/be routines
  */
 
+#define STARTUP_MSG		7		/* Initialise a connection */
+#define STARTUP_KRB4_MSG	10	/* krb4 session follows */
+#define STARTUP_KRB5_MSG	11	/* krb5 session follows */
+#define STARTUP_PASSWORD_MSG	14		/* Password follows */
+
 struct authsvc
 {
 	const char *name;			/* service nickname (for command line) */
