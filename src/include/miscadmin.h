@@ -171,8 +171,10 @@ extern bool NetServer;
 extern bool EnableSSL;
 extern bool SilentMode;
 extern int	MaxBackends;
+#define DEF_MAXBACKENDS 32
 extern int	ReservedBackends;
 extern DLLIMPORT int	NBuffers;
+#define DEF_NBUFFERS (DEF_MAXBACKENDS > 8 ? DEF_MAXBACKENDS * 2 : 16)
 extern int	PostPortNumber;
 extern int	Unix_socket_permissions;
 extern char *Unix_socket_group;

@@ -38,7 +38,7 @@ POSTGRES_BKI_SRCS := $(addprefix $(top_srcdir)/src/include/catalog/,\
 pg_includes := $(sort -I$(top_srcdir)/src/include -I$(top_builddir)/src/include)
 
 postgres.bki postgres.description: genbki.sh $(POSTGRES_BKI_SRCS) \
-    $(top_srcdir)/src/include/postgres_ext.h $(top_builddir)/src/include/pg_config.h
+    $(top_srcdir)/src/include/postgres_ext.h $(top_builddir)/src/include/pg_config_manual.h
 	CPP='$(CPP)' AWK='$(AWK)' $(SHELL) $< $(BKIOPTS) -o postgres $(pg_includes) $(POSTGRES_BKI_SRCS) --set-version=$(VERSION)
 
 .PHONY: install-data
