@@ -351,33 +351,40 @@ parse_date(const char *value)
 	{
 		/* Ugh. Somebody ought to write a table driven version -- mjl */
 
-		if (!strcasecmp(tok, "iso"))
+		if (!strcasecmp(tok, "ISO"))
 		{
 			DateStyle = USE_ISO_DATES;
 			dcnt++;
 		}
-		else if (!strcasecmp(tok, "sql"))
+		else if (!strcasecmp(tok, "SQL"))
 		{
 			DateStyle = USE_SQL_DATES;
 			dcnt++;
 		}
-		else if (!strcasecmp(tok, "postgres"))
+		else if (!strcasecmp(tok, "POSTGRES"))
 		{
 			DateStyle = USE_POSTGRES_DATES;
 			dcnt++;
 		}
-		else if (!strncasecmp(tok, "euro", 4))
+		else if (!strcasecmp(tok, "GERMAN"))
+		{
+			DateStyle = USE_GERMAN_DATES;
+			dcnt++;
+			EuroDates = TRUE;
+			if ((ecnt > 0) && (! EuroDates)) ecnt++;
+		}
+		else if (!strncasecmp(tok, "EURO", 4))
 		{
 			EuroDates = TRUE;
-			ecnt++;
+			if ((dcnt <= 0) || (DateStyle != USE_GERMAN_DATES)) ecnt++;
 		}
-		else if ((!strcasecmp(tok, "us"))
-				 || (!strncasecmp(tok, "noneuro", 7)))
+		else if ((!strcasecmp(tok, "US"))
+				 || (!strncasecmp(tok, "NONEURO", 7)))
 		{
 			EuroDates = FALSE;
-			ecnt++;
+			if ((dcnt <= 0) || (DateStyle == USE_GERMAN_DATES)) ecnt++;
 		}
-		else if (!strcasecmp(tok, "default"))
+		else if (!strcasecmp(tok, "DEFAULT"))
 		{
 			DateStyle = USE_POSTGRES_DATES;
 			EuroDates = FALSE;
@@ -409,6 +416,9 @@ show_date()
 			break;
 		case USE_SQL_DATES:
 			strcat(buf, "SQL");
+			break;
+		case USE_GERMAN_DATES:
+			strcat(buf, "German");
 			break;
 		default:
 			strcat(buf, "Postgres");
