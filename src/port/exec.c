@@ -72,7 +72,7 @@ static void win32_make_absolute(char *path);
  *		  -2 if the file is otherwise valid but cannot be read.
  */
 static int
-validate_exec(char *path)
+validate_exec(const char *path)
 {
 	struct stat buf;
 
