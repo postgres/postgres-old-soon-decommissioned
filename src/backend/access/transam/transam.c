@@ -22,6 +22,7 @@
 #include "access/clog.h"
 #include "access/subtrans.h"
 #include "access/transam.h"
+#include "utils/tqual.h"
 
 
 /* ----------------
@@ -199,11 +200,15 @@ TransactionIdDidCommit(TransactionId transactionId)
 
 	/*
 	 * If it's marked subcommitted, we have to check the parent recursively.
+	 * However, if it's older than RecentXmin, we can't look at pg_subtrans;
+	 * instead assume that the parent crashed without cleaning up its children.
 	 */
 	if (xidstatus == TRANSACTION_STATUS_SUB_COMMITTED)
 	{
 		TransactionId parentXid;
-	   
+
+		if (TransactionIdPrecedes(transactionId, RecentXmin))
+			return false;
 		parentXid = SubTransGetParent(transactionId);
 		Assert(TransactionIdIsValid(parentXid));
 		return TransactionIdDidCommit(parentXid);
@@ -243,24 +248,17 @@ TransactionIdDidAbort(TransactionId transactionId)
 
 	/*
 	 * If it's marked subcommitted, we have to check the parent recursively.
-	 * 
-	 * If we detect that the parent has aborted, update pg_clog to show the
-	 * subtransaction as aborted.  This is only needed when the parent
-	 * crashed before either committing or aborting.  We want to clean up
-	 * pg_clog so future visitors don't need to make this check again.
+	 * However, if it's older than RecentXmin, we can't look at pg_subtrans;
+	 * instead assume that the parent crashed without cleaning up its children.
 	 */
 	if (xidstatus == TRANSACTION_STATUS_SUB_COMMITTED)
 	{
 		TransactionId parentXid;
-		bool parentAborted;
-	   
+
+		if (TransactionIdPrecedes(transactionId, RecentXmin))
+			return true;
 		parentXid = SubTransGetParent(transactionId);
-		parentAborted = TransactionIdDidAbort(parentXid);
-
-		if (parentAborted)
-			TransactionIdAbort(transactionId);
-
-		return parentAborted;
+		return TransactionIdDidAbort(parentXid);
 	}
 
 	/*

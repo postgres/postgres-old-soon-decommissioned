@@ -933,8 +933,6 @@ HeapTupleSatisfiesVacuum(HeapTupleHeader tuple, TransactionId OldestXmin)
 		{
 			if (tuple->t_infomask & HEAP_XMAX_INVALID)	/* xid invalid */
 				return HEAPTUPLE_INSERT_IN_PROGRESS;
-			Assert(SubTransXidsHaveCommonAncestor(HeapTupleHeaderGetXmin(tuple),
-						HeapTupleHeaderGetXmax(tuple)));
 			if (tuple->t_infomask & HEAP_MARKED_FOR_UPDATE)
 				return HEAPTUPLE_INSERT_IN_PROGRESS;
 			/* inserted and then deleted by same xact */
@@ -1008,7 +1006,7 @@ HeapTupleSatisfiesVacuum(HeapTupleHeader tuple, TransactionId OldestXmin)
 	 * Deleter committed, but check special cases.
 	 */
 
-	if (SubTransXidsHaveCommonAncestor(HeapTupleHeaderGetXmin(tuple),
+	if (TransactionIdEquals(HeapTupleHeaderGetXmin(tuple),
 							HeapTupleHeaderGetXmax(tuple)))
 	{
 		/*

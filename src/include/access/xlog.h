@@ -135,9 +135,4 @@ extern void CreateCheckPoint(bool shutdown, bool force);
 extern void XLogPutNextOid(Oid nextOid);
 extern XLogRecPtr GetRedoRecPtr(void);
 
-/* in storage/ipc/sinval.c, but don't want to declare in sinval.h because
- * we'd have to include xlog.h into that ...
- */
-extern XLogRecPtr GetUndoRecPtr(void);
-
 #endif   /* XLOG_H */

@@ -345,7 +345,7 @@ XactLockTableWait(TransactionId xid)
 	LOCKTAG		tag;
 	TransactionId myxid = GetTopTransactionId();
 
-	Assert(!SubTransXidsHaveCommonAncestor(xid, myxid));
+	Assert(!TransactionIdEquals(xid, myxid));
 
 	MemSet(&tag, 0, sizeof(tag));
 	tag.relId = XactLockTableId;

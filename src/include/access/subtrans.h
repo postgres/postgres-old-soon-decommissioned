@@ -20,7 +20,6 @@
 extern void SubTransSetParent(TransactionId xid, TransactionId parent);
 extern TransactionId SubTransGetParent(TransactionId xid);
 extern TransactionId SubTransGetTopmostTransaction(TransactionId xid);
-extern bool SubTransXidsHaveCommonAncestor(TransactionId xid1, TransactionId xid2);
 
 extern int	SUBTRANSShmemSize(void);
 extern void SUBTRANSShmemInit(void);
