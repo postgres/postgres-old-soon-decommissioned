@@ -21,22 +21,20 @@
 typedef struct attrDefault
 {
 	AttrNumber	adnum;
-	char	   *adbin;
-	char	   *adsrc;
+	char	   *adbin;			/* nodeToString representation of expr */
 } AttrDefault;
 
 typedef struct constrCheck
 {
 	char	   *ccname;
-	char	   *ccbin;
-	char	   *ccsrc;
+	char	   *ccbin;			/* nodeToString representation of expr */
 } ConstrCheck;
 
 /* This structure contains constraints of a tuple */
 typedef struct tupleConstr
 {
-	AttrDefault *defval;
-	ConstrCheck *check;
+	AttrDefault *defval;		/* array */
+	ConstrCheck *check;			/* array */
 	uint16		num_defval;
 	uint16		num_check;
 	bool		has_not_null;

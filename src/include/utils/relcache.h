@@ -24,6 +24,12 @@ extern Relation RelationNameGetRelation(char *relationName);
 
 extern void RelationClose(Relation relation);
 extern void RelationForgetRelation(Oid rid);
+
+/*
+ * Routines for flushing/rebuilding relcache entries in various scenarios
+ */
+extern void RelationRebuildRelation(Relation relation);
+
 extern void RelationIdInvalidateRelationCacheByRelationId(Oid relationId);
 
 extern void RelationIdInvalidateRelationCacheByAccessMethodId(Oid accessMethodId);
