@@ -15,6 +15,9 @@
 #include <string.h>
 
 #include "postgres.h"
+#ifdef HAVE_FLOAT_H
+#include <float.h>
+#endif
 #include "miscadmin.h"
 #include "utils/builtins.h"
 #include "utils/nabstime.h"
