@@ -1,7 +1,7 @@
 .\" This is -*-nroff-*-
 .\" XXX standard disclaimer belongs here....
 .\" $Header$
-.TH "DROP TABLE" SQL 11/05/95 PostgreSQL PostgreSQL
+.TH "DROP TABLE" SQL 09/26/97 PostgreSQL
 .SH NAME
 drop table \(em destroy existing classes
 .SH SYNOPSIS
@@ -38,4 +38,13 @@ drop table emp, parts
 .fi
 .SH "SEE ALSO"
 delete(l),
-drop index(l).
+drop aggregate(l),
+drop database(l),
+drop function(l),
+drop index(l),
+drop operator(l),
+drop rule(l),
+drop sequence(l),
+drop trigger(l),
+drop type(l),
+drop view(l).
