@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Tue Nov 11 23:10:40 EST 2003
+Last updated:		Sun Nov 16 21:01:56 EST 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -220,7 +220,7 @@ Commands
 	  rows with DEFAULT value
 	o ALTER TABLE ADD COLUMN column SERIAL doesn't create sequence because
           of the item above
-	o --Add ALTER TABLE tab SET WITHOUT OIDS (Rod)
+	o -Add ALTER TABLE tab SET WITHOUT OIDS (Rod)
 	o -Add ALTER SEQUENCE to modify min/max/increment/cache/cycle values
 	o Have ALTER TABLE rename SERIAL sequences
 	o Allow columns to be reordered using ALTER ... POSITION i col1 [,col2];
