@@ -25,7 +25,7 @@ is enclosed in single-quotes.
 .IR DateStyle
 determines the output format for the date and time data types.
 See
-.IR "built-in" (3)
+.IR "pgbuiltin" (3)
 for more information on available styles.
 
 .ce 1
@@ -105,7 +105,7 @@ set GEQO to 'on=4'
 set GEQO to 'off'
 .fi
 .SH "SEE ALSO"
-built-in(3),
+pgbuiltin(3),
 reset(l),
 show(l).
 .SH BUGS

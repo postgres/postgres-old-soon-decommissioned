@@ -34,7 +34,7 @@ NOTICE:GEQO is ON
 SHOW VARIABLE
 .fi
 .SH "SEE ALSO"
-built-in(3),
+pgbuiltin(3),
 reset(l),
 set(l).
 .SH BUGS

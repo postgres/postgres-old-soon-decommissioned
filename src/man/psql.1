@@ -27,6 +27,9 @@ dbName]
 .BR "-f"
 filename]
 [\c
+.BR "-F"
+separator]
+[\c
 .BR "-h"
 hostname]
 [\c
@@ -60,6 +63,9 @@ port]
 [\c
 .BR "-T"
 table-options
+]
+[\c
+.BR "-u"
 ]
 [\c
 .BR "-x"
@@ -136,6 +142,12 @@ Use the file
 .IR "filename"
 as the source of queries instead of reading queries interactively.
 .TP
+.BR "-F" " separator"
+Use
+.IR "separator"
+as the field separator.
+The default is "|".
+.TP
 .BR "-h" " hostname"
 Specifies the hostname of the machine on which the
 .IR postmaster
@@ -196,6 +208,9 @@ for
 tabular output. For example
 .BR border
 will give you tables with borders.
+.TP
+.BR "-u"
+Turns on username/password authentication.
 .TP
 .BR "-x"
 Turns on extended row format mode. When enabled each row will have its column

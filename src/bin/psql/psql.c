@@ -134,8 +134,8 @@ usage(char *progname)
     fprintf(stderr, "\t -s                      single step mode (prompts for each query)\n");
     fprintf(stderr, "\t -S                      single line mode (i.e. query terminated by newline)\n");
     fprintf(stderr, "\t -t                      turn off printing of headings and row count\n");
-    fprintf(stderr, "\t -u                      ask for a username and password for authentication\n");
     fprintf(stderr, "\t -T html                 set html3.0 table command options (cf. -H)\n");
+    fprintf(stderr, "\t -u                      ask for a username and password for authentication\n");
     fprintf(stderr, "\t -x                      turn on expanded output (field names on left)\n");
     exit(1);
 }

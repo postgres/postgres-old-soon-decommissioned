@@ -183,7 +183,7 @@ indicated, then all array elements are returned.
 .SH "Operators"
 Any built-in system, or user-defined operator may be used in SQL.
 For the list of built-in and system operators consult
-.BR "introduction" "(3)."
+.BR "pgbuiltin" "(3)."
 For a list of user-defined operators consult your system administrator
 or run a query on the pg_operator class.  Parentheses may be used for
 arbitrary grouping of operators.
