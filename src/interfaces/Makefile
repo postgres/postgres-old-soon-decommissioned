@@ -21,7 +21,7 @@ ifeq ($(USE_PERL), true)
 endif
 
 
-.DEFAULT all: $(perl-makefile-dep)
+.DEFAULT all install clean dep depend distclean: $(perl-makefile-dep)
 	$(MAKE) -C libpq $@
 #	$(MAKE) -C ecpg $@
 ifeq ($(HAVE_Cplusplus), true)
