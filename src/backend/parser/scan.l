@@ -169,7 +169,7 @@ param			\${integer}
 
 comment			("--"|"//").*
 
-space			[ \t\n\f]
+space			[ \t\n\r\f]
 other			.
 
 /* DO NOT PUT ANY COMMENTS IN THE FOLLOWING SECTION.
