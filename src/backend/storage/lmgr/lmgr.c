@@ -118,7 +118,7 @@ RelationInitLockInfo(Relation relation)
 	Assert(RelationIsValid(relation));
 	Assert(OidIsValid(RelationGetRelid(relation)));
 
-	relname = (char *) RelationGetRelationName(relation);
+	relname = (char *) RelationGetPhysicalRelationName(relation);
 
 	relation->rd_lockInfo.lockRelId.relId = RelationGetRelid(relation);
 

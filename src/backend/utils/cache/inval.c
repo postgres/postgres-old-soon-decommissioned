@@ -561,7 +561,7 @@ RegisterInvalid(bool send)
 #ifdef	INVALIDDEBUG
 #define RelationInvalidateHeapTuple_DEBUG1 \
 elog(DEBUG, "RelationInvalidateHeapTuple(%s, [%d,%d])", \
-	 RelationGetRelationName(relation), \
+	 RelationGetPhysicalRelationName(relation), \
 	 ItemPointerGetBlockNumber(&tuple->t_ctid), \
 	 ItemPointerGetOffsetNumber(&tuple->t_ctid))
 #else
