@@ -103,14 +103,14 @@ do
 		exit 1
 		;;
 	 *)
- 		if [ "$list" = 't' ]
-		then	dbname="$1"
-		else	langname="$1"
+ 		if [ "$list" != "t" ]
+		then	langname="$1"
                 	if [ "$2" ]
 			then
 	                        shift
 				dbname="$1"
 			fi
+		else	dbname="$1"
 		fi
                 ;;
     esac
