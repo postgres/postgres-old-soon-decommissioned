@@ -747,7 +747,7 @@
     The possible
     responses to Execute are the same as those described above for queries
     issued via simple query protocol, except that Execute doesn't cause
-    ReadyForQuery to be issued.
+    ReadyForQuery or RowDescription to be issued.
    </para>
 
    <para>
