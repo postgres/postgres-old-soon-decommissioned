@@ -235,8 +235,7 @@ initdb --locale=sv_SE
     settings including <envar>LC_MESSAGES</> and <envar>LC_MONETARY</>
     are initially determined by the environment the server is started
     in.  You can check the <envar>LC_COLLATE</> and <envar>LC_CTYPE</>
-    settings of a database with the utility program
-    <command>pg_controldata</>.
+    settings of a database using the <command>SHOW</> command.
    </para>
 
    <para>
