@@ -984,8 +984,11 @@ FloatExceptionHandler(SIGNAL_ARGS)
 static void
 QueryCancelHandler(SIGNAL_ARGS)
 {
+	int			save_errno = errno;
+
 	QueryCancel = true;
 	LockWaitCancel();
+	errno = save_errno;
 }
 
 void
@@ -1646,7 +1649,7 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[], const cha
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.195 $ $Date: 2000/12/18 00:44:47 $\n");
+		puts("$Revision: 1.196 $ $Date: 2000/12/18 17:33:41 $\n");
 	}
 
 	/*

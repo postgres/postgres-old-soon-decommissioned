@@ -589,6 +589,7 @@ AtAbort_Notify()
 void
 Async_NotifyHandler(SIGNAL_ARGS)
 {
+	int			save_errno = errno;
 
 	/*
 	 * Note: this is a SIGNAL HANDLER.	You must be very wary what you do
@@ -637,6 +638,8 @@ Async_NotifyHandler(SIGNAL_ARGS)
 		 */
 		notifyInterruptOccurred = 1;
 	}
+
+	errno = save_errno;
 }
 
 /*

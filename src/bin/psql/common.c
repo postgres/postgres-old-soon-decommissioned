@@ -258,6 +258,8 @@ volatile bool cancel_pressed;
 void
 handle_sigint(SIGNAL_ARGS)
 {
+	int			save_errno = errno;
+
 	/* Don't muck around if copying in or prompting for a password. */
 	if ((copy_in_state && pset.cur_cmd_interactive) || prompt_state)
 		return;
@@ -274,6 +276,7 @@ handle_sigint(SIGNAL_ARGS)
 		write_stderr("Could not send cancel request: ");
 		write_stderr(PQerrorMessage(cancelConn));
 	}
+	errno = save_errno;			/* just in case the write changed it */
 }
 
 #endif	 /* not WIN32 */
