@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Sat Aug 16 23:56:14 EDT 2003
+Last updated:		Sun Aug 17 00:17:59 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -189,6 +189,7 @@ Commands
 * -Have SELECT '13 minutes'::interval display zero seconds in ISO datestyle
 * Prevent COMMENT ON DATABASE from using a database name
 * Add GUC variable to prevent waiting on locks
+* Add TRUNCATE ... CASCADE
 
 
 * ALTER
