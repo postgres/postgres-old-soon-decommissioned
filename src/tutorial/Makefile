@@ -13,6 +13,7 @@ top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
 override CFLAGS+= $(CFLAGS_SL)
+override DLLLIBS := $(BE_DLLLIBS) $(DLLLIBS)
 
 #
 # DLOBJS is the dynamically-loaded object files.  The "funcs" queries
