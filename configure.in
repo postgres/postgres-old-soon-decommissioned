@@ -1225,20 +1225,24 @@ AC_MSG_CHECKING([thread safety of required library functions.])
 #
 $MAKE -C $srcdir/src/tools/thread clean >&5 ||
 	( rm -f src/Makefile.global
-	  AC_MSG_ERROR([Can not clean thread test directory.]))
+	  AC_MSG_ERROR([Can not clean thread test directory.])) ||
+	exit $?
 $MAKE -C $srcdir/src/tools/thread >&5 ||
 	( rm -f src/Makefile.global
-	  AC_MSG_ERROR([Can not build thread test proram.]))
+	  AC_MSG_ERROR([Can not build thread test proram.])) ||
+	exit $?
 $srcdir/src/tools/thread/thread_test >&5 ||
 	( rm -f src/Makefile.global
 	  echo "no"
 	  echo
 	  $srcdir/src/tools/thread/thread_test
 	  echo
-	  AC_MSG_ERROR([Thread test program failed.  Your platform is not thread-safe.]))
+	  AC_MSG_ERROR([Thread test program failed.  Your platform is not thread-safe.])) ||
+	exit $?
 $MAKE -C $srcdir/src/tools/thread clean >&5 ||
 	( rm -f src/Makefile.global
-	  AC_MSG_ERROR([Can not clean thread test directory.]))
+	  AC_MSG_ERROR([Can not clean thread test directory.])) ||
+	exit $?
 echo "yes"
 else
 AC_MSG_WARN([
