@@ -17,7 +17,7 @@
 
 typedef HeapTuple Operator;
 
-extern Oid	any_ordering_op(int restype);
+extern Oid	any_ordering_op(Oid restype);
 extern Oid	oprid(Operator op);
 extern Operator oper(char *op, Oid arg1, Oid arg2, bool noWarnings);
 extern Operator right_oper(char *op, Oid arg);

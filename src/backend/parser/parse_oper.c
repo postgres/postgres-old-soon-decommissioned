@@ -36,7 +36,7 @@ static int unary_oper_get_candidates(char *op,
 static void op_error(char *op, Oid arg1, Oid arg2);
 
 Oid
-any_ordering_op(int restype)
+any_ordering_op(Oid restype)
 {
 	Operator	order_op;
 	Oid			order_opid;
