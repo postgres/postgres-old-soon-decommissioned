@@ -84,10 +84,6 @@ cash_in(PG_FUNCTION_ARGS)
 			   *nsymbol;
 
 #ifdef USE_LOCALE
-#ifdef CASHDEBUG
-	setlocale(LC_ALL, "");
-	lconvert = localeconv();
-#endif
 	if (lconvert == NULL)
 		lconvert = localeconv();
 

@@ -617,12 +617,10 @@ PostmasterMain(int argc, char *argv[])
 	}
 #endif
 
+	XLOGPathInit();
+
 	/* set up shared memory and semaphores */
 	reset_shared(PostPortNumber);
-
-	/* Init XLOG paths */
-	snprintf(XLogDir, MAXPGPATH, "%s/pg_xlog", DataDir);
-	snprintf(ControlFilePath, MAXPGPATH, "%s/global/pg_control", DataDir);
 
 	/*
 	 * Initialize the list of active backends.	This list is only used for

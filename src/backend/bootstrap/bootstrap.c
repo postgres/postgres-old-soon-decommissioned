@@ -321,6 +321,8 @@ BootstrapMain(int argc, char *argv[])
 		}
 	}
 
+	XLOGPathInit();
+
 	BaseInit();
 
 	if (!IsUnderPostmaster)
@@ -333,8 +335,6 @@ BootstrapMain(int argc, char *argv[])
 	/*
 	 * XLOG operations
 	 */
-	snprintf(XLogDir, MAXPGPATH, "%s/pg_xlog", DataDir);
-	snprintf(ControlFilePath, MAXPGPATH, "%s/global/pg_control", DataDir);
 	SetProcessingMode(NormalProcessing);
 	if (xlogop == BS_XLOG_NOP)
 		StartupXLOG();

@@ -1525,9 +1525,8 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[], const cha
 		 */
 		on_proc_exit(UnlinkPidFile, 0);
 
+		XLOGPathInit();
 		BaseInit();
-		snprintf(XLogDir, MAXPGPATH, "%s/pg_xlog", DataDir);
-		snprintf(ControlFilePath, MAXPGPATH, "%s/global/pg_control", DataDir);
 		StartupXLOG();
 	}
 
@@ -1636,7 +1635,7 @@ PostgresMain(int argc, char *argv[], int real_argc, char *real_argv[], const cha
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.190 $ $Date: 2000/11/25 19:05:42 $\n");
+		puts("$Revision: 1.191 $ $Date: 2000/11/25 20:33:52 $\n");
 	}
 
 	/*

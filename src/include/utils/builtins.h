@@ -376,6 +376,7 @@ extern Pattern_Prefix_Status pattern_fixed_prefix(char *patt,
 												  Pattern_Type ptype,
 												  char **prefix,
 												  char **rest);
+extern bool locale_is_like_safe(void);
 extern char *make_greater_string(const char *str, Oid datatype);
 
 /* tid.c */
