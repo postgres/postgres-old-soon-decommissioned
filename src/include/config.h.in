@@ -374,6 +374,9 @@
 /* Set to 1 if you have <sys/pstat.h> */
 #undef HAVE_SYS_PSTAT_H
 
+/* Define if string.h and strings.h may both be included */
+#undef STRING_H_WITH_STRINGS_H
+
 /* Define if you have the setproctitle function.  */
 #undef HAVE_SETPROCTITLE
 

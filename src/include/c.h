@@ -51,6 +51,9 @@
 #include <string.h>
 #include <stddef.h>
 #include <stdarg.h>
+#ifdef STRING_H_WITH_STRINGS_H
+#include <strings.h>
+#endif
 
 #ifdef __CYGWIN__
 #include <errno.h>
