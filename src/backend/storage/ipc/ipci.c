@@ -84,7 +84,7 @@ CreateSharedMemoryAndSemaphores(bool makePrivate, int maxBackends)
 	 * Set up lock manager
 	 */
 	InitLocks();
-	if (InitLockTable() == INVALID_TABLEID)
+	if (InitLockTable(maxBackends) == INVALID_TABLEID)
 		elog(FATAL, "Couldn't create the lock table");
 
 	/*
