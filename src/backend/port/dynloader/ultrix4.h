@@ -120,4 +120,4 @@ extern char **dl_undefinedSymbols( /* int *count */ );
 extern void dl_printAllSymbols( /* void *handle */ );
 extern void dl_setLibraries( /* char *libs */ );
 
-#endif							/* _DL_HEADER_ */
+#endif	 /* _DL_HEADER_ */

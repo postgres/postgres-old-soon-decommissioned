@@ -128,14 +128,12 @@ extern int	ShowPinTrace;
 /*
  * prototypes for functions in bufmgr.c
  */
-extern Buffer
-RelationGetBufferWithBuffer(Relation relation,
+extern Buffer RelationGetBufferWithBuffer(Relation relation,
 							BlockNumber blockNumber, Buffer buffer);
 extern Buffer ReadBuffer(Relation reln, BlockNumber blockNum);
 extern int	WriteBuffer(Buffer buffer);
 extern int	WriteNoReleaseBuffer(Buffer buffer);
-extern Buffer
-ReleaseAndReadBuffer(Buffer buffer, Relation relation,
+extern Buffer ReleaseAndReadBuffer(Buffer buffer, Relation relation,
 					 BlockNumber blockNum);
 
 extern void InitBufferPool(IPCKey key);
@@ -159,4 +157,4 @@ extern void BufferRefCountRestore(int *refcountsave);
 extern int	SetBufferWriteMode(int mode);
 extern void SetBufferCommitInfoNeedsSave(Buffer buffer);
 
-#endif							/* !defined(BufMgrIncluded) */
+#endif	 /* !defined(BufMgrIncluded) */

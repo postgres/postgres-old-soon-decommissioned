@@ -23,4 +23,4 @@ extern int	ExecCountSlotsGroup(Group *node);
 extern void ExecEndGroup(Group *node);
 extern void ExecReScanGroup(Group *node, ExprContext *exprCtxt, Plan *parent);
 
-#endif							/* NODEGROUP_H */
+#endif	 /* NODEGROUP_H */

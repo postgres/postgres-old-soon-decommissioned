@@ -69,4 +69,4 @@ extern Dlelem *DLRemHead(Dllist *list); /* remove and return the head */
 
 #define DLE_VAL(x)	(x->dle_val)
 
-#endif							/* DLLIST_H */
+#endif	 /* DLLIST_H */

@@ -20,4 +20,4 @@ typedef void (*HashtFunc) ();
 
 extern void HashTableWalk(HTAB *hashtable, HashtFunc function, int arg);
 
-#endif							/* HASHT_H */
+#endif	 /* HASHT_H */

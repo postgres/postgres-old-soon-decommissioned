@@ -67,10 +67,9 @@ extern void SendCopyBegin(void);
 extern void ReceiveCopyBegin(void);
 extern void NullCommand(CommandDest dest);
 extern void ReadyForQuery(CommandDest dest);
-extern void
-BeginCommand(char *pname, int operation, TupleDesc attinfo,
+extern void BeginCommand(char *pname, int operation, TupleDesc attinfo,
 			 bool isIntoRel, bool isIntoPortal, char *tag,
 			 CommandDest dest);
 extern void UpdateCommandInfo(int operation, Oid lastoid, uint32 tuples);
 
-#endif							/* DEST_H */
+#endif	 /* DEST_H */

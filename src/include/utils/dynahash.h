@@ -15,4 +15,4 @@
 
 extern int	my_log2(long num);
 
-#endif							/* DYNAHASH_H */
+#endif	 /* DYNAHASH_H */

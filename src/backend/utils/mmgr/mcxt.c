@@ -75,8 +75,7 @@ MemoryContext CurrentMemoryContext = NULL;
 
 static Pointer GlobalMemoryAlloc(GlobalMemory this, Size size);
 static void GlobalMemoryFree(GlobalMemory this, Pointer pointer);
-static Pointer
-GlobalMemoryRealloc(GlobalMemory this, Pointer pointer,
+static Pointer GlobalMemoryRealloc(GlobalMemory this, Pointer pointer,
 					Size size);
 static char *GlobalMemoryGetName(GlobalMemory this);
 static void GlobalMemoryDump(GlobalMemory this);

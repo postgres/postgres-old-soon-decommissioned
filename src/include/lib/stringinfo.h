@@ -44,4 +44,4 @@ extern StringInfo makeStringInfo(void);
  */
 extern void appendStringInfo(StringInfo str, char *buffer);
 
-#endif							/* STRINGINFO_H */
+#endif	 /* STRINGINFO_H */

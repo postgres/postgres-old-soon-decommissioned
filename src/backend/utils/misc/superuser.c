@@ -31,8 +31,8 @@ superuser(void)
 	HeapTuple	utup;
 
 	utup = SearchSysCacheTuple(USENAME,
-								PointerGetDatum(UserName),
-							   	0, 0, 0);
+							   PointerGetDatum(UserName),
+							   0, 0, 0);
 	Assert(utup != NULL);
 	return ((Form_pg_shadow) GETSTRUCT(utup))->usesuper;
 }

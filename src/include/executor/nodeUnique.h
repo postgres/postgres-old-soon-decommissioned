@@ -23,4 +23,4 @@ extern int	ExecCountSlotsUnique(Unique *node);
 extern void ExecEndUnique(Unique *node);
 extern void ExecReScanUnique(Unique *node, ExprContext *exprCtxt, Plan *parent);
 
-#endif							/* NODEUNIQUE_H */
+#endif	 /* NODEUNIQUE_H */

@@ -77,4 +77,4 @@ extern void FreeFile(FILE *);
 extern void closeAllVfds(void);
 extern int	pg_fsync(int fd);
 
-#endif							/* FD_H */
+#endif	 /* FD_H */

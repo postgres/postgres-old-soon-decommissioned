@@ -23,4 +23,4 @@ extern TupleTableSlot *ExecProcAppend(Append *node);
 extern void ExecEndAppend(Append *node);
 extern void ExecReScanAppend(Append *node, ExprContext *exprCtxt, Plan *parent);
 
-#endif							/* NODEAPPEND_H */
+#endif	 /* NODEAPPEND_H */

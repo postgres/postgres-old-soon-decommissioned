@@ -102,7 +102,7 @@ do { \
 		elog(DEBUG, "CatalogCacheInitializeCache: called w/relname %s", \
 			cache->cc_relname) \
 } while(0)
-			
+
 #define CatalogCacheInitializeCache_DEBUG2 \
 do { \
 		if (cache->cc_key[i] > 0) { \
@@ -665,7 +665,7 @@ do { \
 			 cp->cc_skey[i].sk_argument); \
 	} \
 } while(0)
-											  
+
 #else
 #define InitSysCache_DEBUG1
 #endif
@@ -894,7 +894,7 @@ SearchSysCache(struct catcache * cache,
 		CACHE3_elog(DEBUG, "SearchSysCache(%s): found in bucket %d",
 					RelationGetRelationName(relation), hash);
 		heap_close(relation);
-#endif							/* CACHEDEBUG */
+#endif	 /* CACHEDEBUG */
 
 		return ct->ct_tup;
 	}

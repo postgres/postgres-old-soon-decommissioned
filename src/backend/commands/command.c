@@ -422,16 +422,16 @@ PerformAddAttribute(char *relationName,
 		int			attnelems;
 
 		tup = SearchSysCacheTuple(ATTNAME,
-									ObjectIdGetDatum(reltup->t_oid),
-									PointerGetDatum(colDef->colname),
-									0, 0);
+								  ObjectIdGetDatum(reltup->t_oid),
+								  PointerGetDatum(colDef->colname),
+								  0, 0);
 
 		if (HeapTupleIsValid(tup))
 		{
 			heap_close(attrdesc);
 			heap_close(rel);
 			elog(ERROR, "PerformAddAttribute: attribute \"%s\" already exists in class \"%s\"",
-				colDef->colname, relationName);
+				 colDef->colname, relationName);
 		}
 
 		/*

@@ -158,7 +158,7 @@ CheckFloat4Val(double val)
 	if (val != 0.0 && fabs(val) < FLOAT4_MIN)
 		elog(ERROR, "Bad float4 input format -- underflow");
 	return;
-#endif							/* UNSAFE_FLOATS */
+#endif	 /* UNSAFE_FLOATS */
 }
 
 /*
@@ -183,7 +183,7 @@ CheckFloat8Val(double val)
 	if (val != 0.0 && fabs(val) < FLOAT8_MIN)
 		elog(ERROR, "Bad float8 input format -- underflow");
 	return;
-#endif							/* UNSAFE_FLOATS */
+#endif	 /* UNSAFE_FLOATS */
 }
 
 /*
@@ -1491,7 +1491,7 @@ double		x;
 	return w - TWO52[sx];
 }
 
-#endif							/* !HAVE_RINT */
+#endif	 /* !HAVE_RINT */
 
 #ifndef HAVE_CBRT
 
@@ -1506,4 +1506,4 @@ double		x;
 	return isneg ? -tmpres : tmpres;
 }
 
-#endif							/* !HAVE_CBRT */
+#endif	 /* !HAVE_CBRT */

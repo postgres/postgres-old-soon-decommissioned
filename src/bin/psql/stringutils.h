@@ -42,4 +42,4 @@ extern void testStringUtils();
 #define NULL 0
 #endif
 
-#endif							/* STRINGUTILS_H */
+#endif	 /* STRINGUTILS_H */

@@ -106,4 +106,4 @@ extern long heap_sysoffset[];
 #define HeapTupleAllFixed(tuple) \
 		(!(((HeapTuple) (tuple))->t_infomask & HEAP_HASVARLENA))
 
-#endif							/* HTUP_H */
+#endif	 /* HTUP_H */

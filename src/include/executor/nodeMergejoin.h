@@ -23,4 +23,4 @@ extern int	ExecCountSlotsMergeJoin(MergeJoin *node);
 extern void ExecEndMergeJoin(MergeJoin *node);
 extern void ExecReScanMergeJoin(MergeJoin *node, ExprContext *exprCtxt, Plan *parent);
 
-#endif							/* NODEMERGEJOIN_H; */
+#endif	 /* NODEMERGEJOIN_H; */

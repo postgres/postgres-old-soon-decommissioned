@@ -25,4 +25,4 @@ extern void ExecSeqReScan(SeqScan *node, ExprContext *exprCtxt, Plan *parent);
 extern void ExecSeqMarkPos(SeqScan *node);
 extern void ExecSeqRestrPos(SeqScan *node);
 
-#endif							/* NODESEQSCAN_H */
+#endif	 /* NODESEQSCAN_H */

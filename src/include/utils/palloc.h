@@ -22,4 +22,4 @@ extern void *repalloc(void *pointer, Size size);
 /* like strdup except uses palloc */
 extern char *pstrdup(char *pointer);
 
-#endif							/* PALLOC_H */
+#endif	 /* PALLOC_H */

@@ -50,7 +50,7 @@ ExceptionalCondition(char *conditionName,
 	else
 	{
 		EPRINTF("TRAP: %s(\"%s:%s\", File: \"%s\", Line: %d)\n",
-				exceptionP->message, conditionName, 
+				exceptionP->message, conditionName,
 				(detail == NULL ? "" : detail),
 				fileName, lineNumber);
 	}

@@ -22,4 +22,4 @@ extern bool var_is_rel(Var *var);
 extern Oper *replace_opid(Oper *oper);
 extern bool non_null(Expr *c);
 
-#endif							/* NODEFUNCS_H */
+#endif	 /* NODEFUNCS_H */

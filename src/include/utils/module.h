@@ -22,4 +22,4 @@
  */
 extern bool BypassEnable(int *enableCountInOutP, bool on);
 
-#endif							/* MODULE_H */
+#endif	 /* MODULE_H */

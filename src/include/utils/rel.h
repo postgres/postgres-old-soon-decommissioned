@@ -177,8 +177,7 @@ typedef Relation *RelationPtr;
 
 extern IndexStrategy RelationGetIndexStrategy(Relation relation);
 
-extern void
-RelationSetIndexSupport(Relation relation, IndexStrategy strategy,
+extern void RelationSetIndexSupport(Relation relation, IndexStrategy strategy,
 						RegProcedure *support);
 
-#endif							/* REL_H */
+#endif	 /* REL_H */

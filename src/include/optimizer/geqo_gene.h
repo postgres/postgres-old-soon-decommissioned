@@ -43,4 +43,4 @@ typedef struct Pool
 	int			string_length;
 } Pool;
 
-#endif							/* GEQO_GENE_H */
+#endif	 /* GEQO_GENE_H */

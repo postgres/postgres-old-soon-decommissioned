@@ -98,4 +98,4 @@ typedef struct PortalHeapMemory
 	(IsA(context,MemoryContext) || IsA(context,GlobalMemory) || \
 	 IsA(context,PortalVariableMemory) || IsA(context,PortalHeapMemory))
 
-#endif							/* MEMNODES_H */
+#endif	 /* MEMNODES_H */

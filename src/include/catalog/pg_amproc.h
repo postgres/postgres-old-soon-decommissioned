@@ -61,7 +61,7 @@ typedef FormData_pg_amproc *Form_pg_amproc;
  *		initial contents of pg_amproc
  * ----------------
  */
- 
+
 /* rtree */
 DATA(insert OID = 0 (402  422  193 1));
 DATA(insert OID = 0 (402  422  194 2));
@@ -122,4 +122,4 @@ DATA(insert OID = 0 (405 1181  455 1));
 DATA(insert OID = 0 (405 1312  452 1));
 DATA(insert OID = 0 (405 1313  452 1));
 
-#endif							/* PG_AMPROC_H */
+#endif	 /* PG_AMPROC_H */

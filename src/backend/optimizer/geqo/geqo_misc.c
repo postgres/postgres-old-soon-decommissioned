@@ -146,7 +146,7 @@ geqo_print_joinclauses(Query *root, List *clauses)
 
 	foreach(l, clauses)
 	{
-		ClauseInfo	   *c = lfirst(l);
+		ClauseInfo *c = lfirst(l);
 
 		print_expr((Node *) c->clause, root->rtable);
 		if (lnext(l))
@@ -262,7 +262,7 @@ geqo_print_path(Query *root, Path *path, int indent)
 }
 
 void
-geqo_print_rel(Query *root, RelOptInfo *rel)
+geqo_print_rel(Query *root, RelOptInfo * rel)
 {
 	List	   *l;
 

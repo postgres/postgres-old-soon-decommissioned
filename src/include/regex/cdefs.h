@@ -96,8 +96,8 @@
 #else
 #ifndef __GNUC__
 #define __inline				/* delete GCC keyword */
-#endif							/* !__GNUC__ */
-#endif							/* !__cplusplus */
+#endif	 /* !__GNUC__ */
+#endif	 /* !__cplusplus */
 
 #else							/* !(__STDC__ || __cplusplus) */
 #define __P(protos)		()		/* traditional C preprocessor */
@@ -123,8 +123,8 @@
 #define signed
 #define volatile
 #endif
-#endif							/* !__GNUC__ */
-#endif							/* !(__STDC__ || __cplusplus) */
+#endif	 /* !__GNUC__ */
+#endif	 /* !(__STDC__ || __cplusplus) */
 
 /*
  * GCC1 and some versions of GCC2 declare dead (non-returning) and
@@ -148,4 +148,4 @@
 #define __pure
 #endif
 
-#endif							/* !_CDEFS_H_ */
+#endif	 /* !_CDEFS_H_ */

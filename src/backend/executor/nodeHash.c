@@ -45,8 +45,7 @@ static void mk_hj_temp(char *tempname);
 static int	hashFunc(char *key, int len);
 static int	ExecHashPartition(Hash *node);
 static RelativeAddr hashTableAlloc(int size, HashJoinTable hashtable);
-static void
-ExecHashOverflowInsert(HashJoinTable hashtable,
+static void ExecHashOverflowInsert(HashJoinTable hashtable,
 					   HashBucket bucket,
 					   HeapTuple heapTuple);
 

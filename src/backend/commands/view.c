@@ -223,7 +223,7 @@ UpdateRangeTableOfViewParse(char *viewName, Query *viewParse)
 	OffsetVarNodes(viewParse->qual, 2);
 
 	OffsetVarNodes(viewParse->havingQual, 2);
-	
+
 
 	/*
 	 * find the old range table...

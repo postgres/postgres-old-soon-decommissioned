@@ -75,4 +75,4 @@ typedef struct ItemIdData *ItemId;
 	(bool) (((itemId)->lp_flags & LP_USED) != 0) \
 )
 
-#endif							/* ITEMID_H */
+#endif	 /* ITEMID_H */

@@ -99,7 +99,7 @@ DATA(insert OID = 0 ( woodruff 31026 t t t t _null_ 2116994400 ));
 DATA(insert OID = 0 ( searcher 8261 t t t t _null_ 2116994400 ));
 
 BKI_BEGIN
-#endif							/* ALLOW_PG_GROUP */
+#endif	 /* ALLOW_PG_GROUP */
 BKI_END
 
-#endif							/* PG_SHADOW_H */
+#endif	 /* PG_SHADOW_H */

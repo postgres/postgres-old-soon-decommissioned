@@ -32,4 +32,4 @@ extern bool InitSpinLocks(int init, IPCKey key);
 extern void SpinAcquire(SPINLOCK lockid);
 extern void SpinRelease(SPINLOCK lockid);
 
-#endif							/* SPIN_H */
+#endif	 /* SPIN_H */

@@ -18,12 +18,10 @@
 #include "nodes/primnodes.h"
 #include "utils/syscache.h"
 
-extern Datum
-ProjectAttribute(TupleDesc TD, TargetEntry *tlist,
+extern Datum ProjectAttribute(TupleDesc TD, TargetEntry *tlist,
 				 HeapTuple tup, bool *isnullP);
 
-extern Datum
-postquel_function(Func *funcNode, char **args,
+extern Datum postquel_function(Func *funcNode, char **args,
 				  bool *isNull, bool *isDone);
 
-#endif							/* FUNCTIONS_H */
+#endif	 /* FUNCTIONS_H */

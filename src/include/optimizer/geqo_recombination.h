@@ -77,4 +77,4 @@ extern void ox1(Gene *mom, Gene *dad, Gene *offspring, int num_gene, City *city_
 extern void ox2(Gene *mom, Gene *dad, Gene *offspring, int num_gene, City *city_table);
 
 
-#endif							/* GEQO_RECOMBINATION_H */
+#endif	 /* GEQO_RECOMBINATION_H */

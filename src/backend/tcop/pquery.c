@@ -227,7 +227,7 @@ ProcessQueryDesc(QueryDesc *queryDesc)
 	plan = queryDesc->plantree;
 
 	operation = queryDesc->operation;
-	PS_SET_STATUS( tag = CreateOperationTag(operation) );
+	PS_SET_STATUS(tag = CreateOperationTag(operation));
 	dest = queryDesc->dest;
 
 	/* ----------------

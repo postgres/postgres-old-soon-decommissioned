@@ -24,11 +24,9 @@
 #include "utils/exc.h"
 #include "storage/ipc.h"
 
-static void
-ExcUnCaught(Exception *excP, ExcDetail detail, ExcData data,
+static void ExcUnCaught(Exception *excP, ExcDetail detail, ExcData data,
 			ExcMessage message);
-static void
-ExcPrint(Exception *excP, ExcDetail detail, ExcData data,
+static void ExcPrint(Exception *excP, ExcDetail detail, ExcData data,
 		 ExcMessage message);
 
 /*

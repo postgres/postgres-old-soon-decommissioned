@@ -24,4 +24,4 @@ extern void Async_Unlisten(char *relname, int pid);
 
 extern GlobalMemory notifyContext;
 
-#endif							/* ASYNC_H */
+#endif	 /* ASYNC_H */

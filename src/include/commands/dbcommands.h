@@ -22,4 +22,4 @@
 extern void createdb(char *dbname, char *dbpath, int encoding);
 extern void destroydb(char *dbname);
 
-#endif							/* DBCOMMANDS_H */
+#endif	 /* DBCOMMANDS_H */

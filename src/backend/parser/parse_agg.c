@@ -332,7 +332,7 @@ ParseAgg(ParseState *pstate, char *aggname, Oid basetype,
 	aggreg->target = lfirst(target);
 	if (usenulls)
 		aggreg->usenulls = true;
-	
+
 	pstate->p_hasAggs = true;
 
 	return aggreg;

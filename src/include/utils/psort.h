@@ -106,4 +106,4 @@ extern void psort_restorepos(Sort *node);
 extern void psort_end(Sort *node);
 extern void psort_rescan(Sort *node);
 
-#endif							/* PSORT_H */
+#endif	 /* PSORT_H */

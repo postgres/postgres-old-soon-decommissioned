@@ -30,8 +30,7 @@
 
 static TupleTableSlot *ExecGroupEveryTuple(Group *node);
 static TupleTableSlot *ExecGroupOneTuple(Group *node);
-static bool
-sameGroup(HeapTuple oldslot, HeapTuple newslot,
+static bool sameGroup(HeapTuple oldslot, HeapTuple newslot,
 		  int numCols, AttrNumber *grpColIdx, TupleDesc tupdesc);
 
 /* ---------------------------------------

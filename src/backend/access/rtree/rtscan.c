@@ -30,14 +30,11 @@
 /* routines defined and used here */
 static void rtregscan(IndexScanDesc s);
 static void rtdropscan(IndexScanDesc s);
-static void
-rtadjone(IndexScanDesc s, int op, BlockNumber blkno,
+static void rtadjone(IndexScanDesc s, int op, BlockNumber blkno,
 		 OffsetNumber offnum);
-static void
-adjuststack(RTSTACK *stk, BlockNumber blkno,
+static void adjuststack(RTSTACK *stk, BlockNumber blkno,
 			OffsetNumber offnum);
-static void
-adjustiptr(IndexScanDesc s, ItemPointer iptr,
+static void adjustiptr(IndexScanDesc s, ItemPointer iptr,
 		   int op, BlockNumber blkno, OffsetNumber offnum);
 
 /*

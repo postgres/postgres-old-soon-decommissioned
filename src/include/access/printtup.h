@@ -23,4 +23,4 @@ extern void debugtup(HeapTuple tuple, TupleDesc typeinfo);
 extern void printtup_internal(HeapTuple tuple, TupleDesc typeinfo);
 extern Oid	gettypelem(Oid type);
 
-#endif							/* PRINTTUP_H */
+#endif	 /* PRINTTUP_H */

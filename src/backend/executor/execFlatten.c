@@ -33,8 +33,7 @@
 #include "executor/execFlatten.h"
 
 #ifdef SETS_FIXED
-static bool
-FjoinBumpOuterNodes(TargetEntry *tlist, ExprContext *econtext,
+static bool FjoinBumpOuterNodes(TargetEntry *tlist, ExprContext *econtext,
 					DatumPtr results, char *nulls);
 
 #endif

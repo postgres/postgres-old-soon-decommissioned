@@ -42,4 +42,4 @@ extern int	lowrite(int fd, struct varlena * wbuf);
  */
 extern void _lo_commit(void);
 
-#endif							/* BE_FSSTUBS_H */
+#endif	 /* BE_FSSTUBS_H */

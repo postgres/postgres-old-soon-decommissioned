@@ -56,7 +56,8 @@ leftTrim(char *s)
 char *
 rightTrim(char *s)
 {
-	char	   *sEnd, *bsEnd;
+	char	   *sEnd,
+			   *bsEnd;
 	bool		in_bs = false;
 
 	sEnd = s + strlen(s) - 1;

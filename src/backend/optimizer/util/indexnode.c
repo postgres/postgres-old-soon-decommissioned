@@ -33,7 +33,7 @@ static List *find_secondary_index(Query *root, Oid relid);
  *
  */
 List *
-find_relation_indices(Query *root, RelOptInfo *rel)
+find_relation_indices(Query *root, RelOptInfo * rel)
 {
 	if (rel->indexed)
 		return find_secondary_index(root, lfirsti(rel->relids));
@@ -61,7 +61,7 @@ find_secondary_index(Query *root, Oid relid)
 
 	while (index_info(root, first, relid, &indexinfo))
 	{
-		RelOptInfo		   *indexnode = makeNode(RelOptInfo);
+		RelOptInfo *indexnode = makeNode(RelOptInfo);
 
 		indexnode->relids = lconsi(indexinfo.relid, NIL);
 		indexnode->relam = indexinfo.relam;

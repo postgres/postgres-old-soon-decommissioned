@@ -16,4 +16,4 @@
 
 extern char *scanstr(char *s);
 
-#endif							/* SCANSUP_H */
+#endif	 /* SCANSUP_H */

@@ -173,7 +173,7 @@ ExecMaterial(Material *node)
 
 	return ExecStoreTuple(heapTuple,	/* tuple to store */
 						  slot, /* slot to store in */
-						  currentScanDesc->rs_cbuf,	/* buffer for this tuple */
+						  currentScanDesc->rs_cbuf,		/* buffer for this tuple */
 						  false);		/* don't pfree this pointer */
 
 }

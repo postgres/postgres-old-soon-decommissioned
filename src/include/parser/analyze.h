@@ -16,4 +16,4 @@
 
 extern QueryTreeList *parse_analyze(List *pl, ParseState *parentParseState);
 
-#endif							/* ANALYZE_H */
+#endif	 /* ANALYZE_H */

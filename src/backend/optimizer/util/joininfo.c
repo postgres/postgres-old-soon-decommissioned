@@ -35,7 +35,7 @@
  * exists.
  *
  */
-JoinInfo *
+JoinInfo   *
 joininfo_member(List *join_relids, List *joininfo_list)
 {
 	List	   *i = NIL;
@@ -61,10 +61,10 @@ joininfo_member(List *join_relids, List *joininfo_list)
  * Returns a joininfo node.
  *
  */
-JoinInfo *
-find_joininfo_node(RelOptInfo *this_rel, List *join_relids)
+JoinInfo   *
+find_joininfo_node(RelOptInfo * this_rel, List *join_relids)
 {
-	JoinInfo	   *joininfo = joininfo_member(join_relids,
+	JoinInfo   *joininfo = joininfo_member(join_relids,
 										   this_rel->joininfo);
 
 	if (joininfo == NULL)

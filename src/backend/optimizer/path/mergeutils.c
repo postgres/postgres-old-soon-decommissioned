@@ -42,7 +42,7 @@ group_clauses_by_order(List *clauseinfo_list,
 
 	foreach(xclauseinfo, clauseinfo_list)
 	{
-		ClauseInfo	   *clauseinfo = (ClauseInfo *) lfirst(xclauseinfo);
+		ClauseInfo *clauseinfo = (ClauseInfo *) lfirst(xclauseinfo);
 		MergeOrder *merge_ordering = clauseinfo->mergejoinorder;
 
 		if (merge_ordering)

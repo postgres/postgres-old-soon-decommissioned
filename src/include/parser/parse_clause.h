@@ -21,13 +21,11 @@
 
 extern void makeRangeTable(ParseState *pstate, char *relname, List *frmList);
 extern Node *transformWhereClause(ParseState *pstate, Node *a_expr);
-extern List *
-transformGroupClause(ParseState *pstate, List *grouplist,
+extern List *transformGroupClause(ParseState *pstate, List *grouplist,
 					 List *targetlist);
-extern List *
-transformSortClause(ParseState *pstate,
+extern List *transformSortClause(ParseState *pstate,
 					List *orderlist, List *sortClause,
 					List *targetlist, char *uniqueFlag);
 extern List *transformUnionClause(List *unionClause, List *targetlist);
 
-#endif							/* PARSE_CLAUSE_H */
+#endif	 /* PARSE_CLAUSE_H */

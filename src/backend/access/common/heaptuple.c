@@ -935,7 +935,8 @@ heap_modifytuple(HeapTuple tuple,
 			(char *) &tuple->t_oid,
 			((char *) &tuple->t_hoff - (char *) &tuple->t_oid));		/* XXX */
 	newTuple->t_infomask = infomask;
-	newTuple->t_natts = numberOfAttributes;		/* fix t_natts just in case */
+	newTuple->t_natts = numberOfAttributes;		/* fix t_natts just in
+												 * case */
 	return newTuple;
 }
 

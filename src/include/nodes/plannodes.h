@@ -139,14 +139,10 @@ typedef struct Append
 {
 	Plan		plan;
 	List	   *appendplans;
-	List	   *unionrtables;	/*
-								 *	List of range tables, one for each
-								 *	union query.
-								 */
-	Index		inheritrelid;	/*
-								 *	The range table has to be changed for
-								 *	inheritance.
-								 */
+	List	   *unionrtables;	/* List of range tables, one for each
+								 * union query. */
+	Index		inheritrelid;	/* The range table has to be changed for
+								 * inheritance. */
 	List	   *inheritrtable;
 	AppendState *appendstate;
 } Append;
@@ -382,4 +378,4 @@ typedef struct SubPlan
 	bool		shutdown;		/* shutdown plan if TRUE */
 } SubPlan;
 
-#endif							/* PLANNODES_H */
+#endif	 /* PLANNODES_H */

@@ -39,4 +39,4 @@ typedef FuncIndexInfo *FuncIndexInfoPtr;
 
 #define FIisFunctionalIndex(FINFO) (FINFO->procOid != InvalidOid)
 
-#endif							/* FUNCINDEX_H */
+#endif	 /* FUNCINDEX_H */

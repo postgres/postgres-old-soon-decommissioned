@@ -136,11 +136,11 @@ hashoid(Oid key)
 uint32
 hashoid8(Oid *key)
 {
-	int i;
-	uint32 result = 0;
+	int			i;
+	uint32		result = 0;
 
-	for (i=0; i < 8; i++)
-		result = result ^ (~(uint32)key[i]);
+	for (i = 0; i < 8; i++)
+		result = result ^ (~(uint32) key[i]);
 	return result;
 }
 

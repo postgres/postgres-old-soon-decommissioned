@@ -88,4 +88,4 @@ extern int	BushyPlanFlag;
 /* GEQO switch according to number of relations in a query */
 #define GEQO_RELS 8
 
-#endif							/* INTERNAL_H */
+#endif	 /* INTERNAL_H */

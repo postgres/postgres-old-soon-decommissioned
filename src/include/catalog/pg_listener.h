@@ -53,4 +53,4 @@ CATALOG(pg_listener)
  */
 
 
-#endif							/* PG_LISTENER_H */
+#endif	 /* PG_LISTENER_H */

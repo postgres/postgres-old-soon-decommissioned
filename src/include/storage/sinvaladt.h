@@ -125,9 +125,8 @@ extern int	SISegmentInit(bool killExistingSegment, IPCKey key);
 extern bool SISetDataEntry(SISeg *segP, SharedInvalidData *data);
 extern void SISetProcStateInvalid(SISeg *segP);
 extern bool SIDelDataEntry(SISeg *segP);
-extern void
-SIReadEntryData(SISeg *segP, int backendId,
+extern void SIReadEntryData(SISeg *segP, int backendId,
 				void (*invalFunction) (), void (*resetFunction) ());
 extern void SIDelExpiredDataEntries(SISeg *segP);
 
-#endif							/* SINVALADT_H */
+#endif	 /* SINVALADT_H */

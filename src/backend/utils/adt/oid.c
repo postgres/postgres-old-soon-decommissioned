@@ -31,7 +31,7 @@
 Oid *
 oid8in(char *oidString)
 {
-	Oid			**result;
+	Oid		  **result;
 	int			nums;
 
 	if (oidString == NULL)
@@ -128,8 +128,9 @@ oid8eq(Oid *arg1, Oid *arg2)
 bool
 oid8lt(Oid *arg1, Oid *arg2)
 {
-	int i;
-	for (i=0; i < 8; i++)
+	int			i;
+
+	for (i = 0; i < 8; i++)
 		if (!int4eq(arg1[i], arg2[i]))
 			return int4lt(arg1[i], arg2[i]);
 	return false;
@@ -138,8 +139,9 @@ oid8lt(Oid *arg1, Oid *arg2)
 bool
 oid8le(Oid *arg1, Oid *arg2)
 {
-	int i;
-	for (i=0; i < 8; i++)
+	int			i;
+
+	for (i = 0; i < 8; i++)
 		if (!int4eq(arg1[i], arg2[i]))
 			return int4le(arg1[i], arg2[i]);
 	return true;
@@ -148,8 +150,9 @@ oid8le(Oid *arg1, Oid *arg2)
 bool
 oid8ge(Oid *arg1, Oid *arg2)
 {
-	int i;
-	for (i=0; i < 8; i++)
+	int			i;
+
+	for (i = 0; i < 8; i++)
 		if (!int4eq(arg1[i], arg2[i]))
 			return int4ge(arg1[i], arg2[i]);
 	return true;
@@ -158,8 +161,9 @@ oid8ge(Oid *arg1, Oid *arg2)
 bool
 oid8gt(Oid *arg1, Oid *arg2)
 {
-	int i;
-	for (i=0; i < 8; i++)
+	int			i;
+
+	for (i = 0; i < 8; i++)
 		if (!int4eq(arg1[i], arg2[i]))
 			return int4gt(arg1[i], arg2[i]);
 	return false;

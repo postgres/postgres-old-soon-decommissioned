@@ -37,4 +37,4 @@ typedef FormData_pg_variable *Form_pg_variable;
 #define Natts_pg_variable		1
 #define Anum_pg_variable_varfoo 1
 
-#endif							/* PG_VARIABLE_H */
+#endif	 /* PG_VARIABLE_H */

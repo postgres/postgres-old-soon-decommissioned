@@ -112,7 +112,7 @@
 			CppAsString(x), CppAsString(y)) \
 	: (void)NULL \
 )
-	
+
 #define GET_SCAN_PROCEDURE(x,y) \
 ( \
 	procedure = scan->relation->rd_am->y, \
@@ -331,7 +331,7 @@ index_getnext(IndexScanDesc scan,
 	 *	have the am's gettuple proc do all the work.
 	 * ----------------
 	 */
-	result = (RetrieveIndexResult)fmgr(procedure, scan, direction);
+	result = (RetrieveIndexResult) fmgr(procedure, scan, direction);
 
 	return result;
 }

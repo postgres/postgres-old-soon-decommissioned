@@ -325,7 +325,8 @@ BootstrapMain(int argc, char *argv[])
 				DataDir = optarg;
 				break;
 			case 'd':
-				DebugMode = true;	/* print out debugging info while parsing */
+				DebugMode = true;		/* print out debugging info while
+										 * parsing */
 				break;
 			case 'C':
 				Noversion = true;
@@ -601,7 +602,7 @@ DefineAttr(char *name, char *type, int attnum)
 			printf("<%s %s> ", attrtypes[attnum]->attname.data, type);
 		attrtypes[attnum]->attnum = 1 + attnum; /* fillatt */
 		attlen = attrtypes[attnum]->attlen = Procid[typeoid].len;
-		attrtypes[attnum]->attbyval = (attlen == 1) || (attlen == 2) ||(attlen == 4);
+		attrtypes[attnum]->attbyval = (attlen == 1) || (attlen == 2) || (attlen == 4);
 		attrtypes[attnum]->attalign = 'i';
 	}
 	attrtypes[attnum]->attcacheoff = -1;

@@ -33,9 +33,11 @@ typedef struct
 								 *
 								 *
 								 *
+								 *
+								 *
 								 * geo-decls.h */
 
-#endif							/* TIOGA_FRONTEND */
+#endif	 /* TIOGA_FRONTEND */
 
 typedef enum
 {

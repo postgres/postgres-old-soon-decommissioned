@@ -56,4 +56,4 @@ typedef FormData_pg_inheritproc *Form_pg_inheritproc;
 #define Anum_pg_inheritproc_inhproc		4
 
 
-#endif							/* PG_INHERITPROC_H */
+#endif	 /* PG_INHERITPROC_H */

@@ -65,4 +65,4 @@
 #define getrelname(rangeindex, rangetable) \
 	rt_relname((RangeTblEntry*)nth((rangeindex)-1, rangetable))
 
-#endif							/* PARSETREE_H */
+#endif	 /* PARSETREE_H */

@@ -68,24 +68,19 @@ int			execConstLen;
 
 /* static functions decls */
 static Datum ExecEvalAggreg(Aggreg *agg, ExprContext *econtext, bool *isNull);
-static Datum
-ExecEvalArrayRef(ArrayRef *arrayRef, ExprContext *econtext,
+static Datum ExecEvalArrayRef(ArrayRef *arrayRef, ExprContext *econtext,
 				 bool *isNull, bool *isDone);
 static Datum ExecEvalAnd(Expr *andExpr, ExprContext *econtext, bool *isNull);
-static Datum
-ExecEvalFunc(Expr *funcClause, ExprContext *econtext,
+static Datum ExecEvalFunc(Expr *funcClause, ExprContext *econtext,
 			 bool *isNull, bool *isDone);
-static void
-ExecEvalFuncArgs(FunctionCachePtr fcache, ExprContext *econtext,
+static void ExecEvalFuncArgs(FunctionCachePtr fcache, ExprContext *econtext,
 				 List *argList, Datum argV[], bool *argIsDone);
 static Datum ExecEvalNot(Expr *notclause, ExprContext *econtext, bool *isNull);
-static Datum
-ExecEvalOper(Expr *opClause, ExprContext *econtext,
+static Datum ExecEvalOper(Expr *opClause, ExprContext *econtext,
 			 bool *isNull);
 static Datum ExecEvalOr(Expr *orExpr, ExprContext *econtext, bool *isNull);
 static Datum ExecEvalVar(Var *variable, ExprContext *econtext, bool *isNull);
-static Datum
-ExecMakeFunctionResult(Node *node, List *arguments,
+static Datum ExecMakeFunctionResult(Node *node, List *arguments,
 					   ExprContext *econtext, bool *isNull, bool *isDone);
 static bool ExecQualClause(Node *clause, ExprContext *econtext);
 
@@ -200,7 +195,7 @@ ExecEvalArrayRef(ArrayRef *arrayRef,
 static Datum
 ExecEvalAggreg(Aggreg *agg, ExprContext *econtext, bool *isNull)
 {
-	*isNull = econtext->ecxt_nulls[agg->aggno];	
+	*isNull = econtext->ecxt_nulls[agg->aggno];
 	return econtext->ecxt_values[agg->aggno];
 }
 

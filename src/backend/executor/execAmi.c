@@ -54,8 +54,7 @@
 #include "access/heapam.h"
 #include "catalog/heap.h"
 
-static Pointer
-ExecBeginScan(Relation relation, int nkeys, ScanKey skeys,
+static Pointer ExecBeginScan(Relation relation, int nkeys, ScanKey skeys,
 			  bool isindex, ScanDirection dir, Snapshot snapshot);
 static Relation ExecOpenR(Oid relationOid, bool isindex);
 

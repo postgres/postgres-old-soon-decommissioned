@@ -26,18 +26,14 @@
 #include "optimizer/ordering.h"
 
 
-static int
-match_pathkey_joinkeys(List *pathkey, List *joinkeys,
+static int match_pathkey_joinkeys(List *pathkey, List *joinkeys,
 					   int which_subkey);
-static bool
-every_func(List *joinkeys, List *pathkey,
+static bool every_func(List *joinkeys, List *pathkey,
 		   int which_subkey);
-static List *
-new_join_pathkey(List *subkeys,
+static List *new_join_pathkey(List *subkeys,
 				 List *considered_subkeys, List *join_rel_tlist,
 				 List *joinclauses);
-static List *
-new_matching_subkeys(Var *subkey, List *considered_subkeys,
+static List *new_matching_subkeys(Var *subkey, List *considered_subkeys,
 					 List *join_rel_tlist, List *joinclauses);
 
 /****************************************************************************
@@ -146,7 +142,7 @@ match_pathkey_joinkeys(List *pathkey,
 			pos++;
 		}
 	}
-	return -1;				/* no index found	*/
+	return -1;					/* no index found	*/
 }
 
 /*

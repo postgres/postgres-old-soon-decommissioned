@@ -109,4 +109,4 @@ DESCR("");
 DATA(insert OID = 783 (  gist PGUID "o" 100 7 gistgettuple gistinsert gistdelete - - - - gistbeginscan gistrescan gistendscan gistmarkpos gistrestrpos - - gistbuild - - ));
 DESCR("");
 
-#endif							/* PG_AM_H */
+#endif	 /* PG_AM_H */

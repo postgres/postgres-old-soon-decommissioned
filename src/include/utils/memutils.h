@@ -51,7 +51,7 @@ s...)
 #define DOUBLEALIGN(LEN)		_ALIGN(double, (LEN))
 #define MAXALIGN(LEN)			_ALIGN(double, (LEN))
 
-#endif							/* 0 */
+#endif	 /* 0 */
 
 /*
  *		SHORTALIGN(LEN) - length (or address) aligned for shorts
@@ -233,8 +233,7 @@ extern void AllocSetReset(AllocSet set);
 extern bool AllocSetContains(AllocSet set, AllocPointer pointer);
 extern AllocPointer AllocSetAlloc(AllocSet set, Size size);
 extern void AllocSetFree(AllocSet set, AllocPointer pointer);
-extern AllocPointer
-AllocSetRealloc(AllocSet set, AllocPointer pointer,
+extern AllocPointer AllocSetRealloc(AllocSet set, AllocPointer pointer,
 				Size size);
 
 extern void AllocSetDump(AllocSet set);
@@ -275,4 +274,4 @@ typedef uint32 AttributeSize;	/* XXX should be defined elsewhere */
 #define MaxIndexAttributeNumber 7
 
 
-#endif							/* MEMUTILS_H */
+#endif	 /* MEMUTILS_H */

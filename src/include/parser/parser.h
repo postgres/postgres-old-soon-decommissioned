@@ -17,4 +17,4 @@
 
 extern QueryTreeList *parser(char *str, Oid *typev, int nargs);
 
-#endif							/* PARSER_H */
+#endif	 /* PARSER_H */

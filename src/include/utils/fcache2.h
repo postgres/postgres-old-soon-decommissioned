@@ -17,4 +17,4 @@
 
 extern void setFcache(Node *node, Oid foid, List *argList, ExprContext *econtext);
 
-#endif							/* FCACHE2_H */
+#endif	 /* FCACHE2_H */

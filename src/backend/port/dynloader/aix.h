@@ -53,4 +53,4 @@ extern		"C"
 #define  pg_dlclose(h)	dlclose(h)
 #define  pg_dlerror()	dlerror()
 
-#endif							/* __dlfcn_h__ */
+#endif	 /* __dlfcn_h__ */

@@ -20,7 +20,7 @@ struct _helpStruct
 static struct _helpStruct QL_HELP[] = {
 	{"abort transaction",
 		"abort the current transaction",
-    "\
+	"\
 \tabort [transaction|work];"},
 	{"alter table",
 		"add/rename attributes, rename tables",

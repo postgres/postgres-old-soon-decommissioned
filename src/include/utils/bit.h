@@ -36,4 +36,4 @@ extern void BitArrayClearBit(BitArray bitArray, BitIndex bitIndex);
  */
 extern bool BitArrayBitIsSet(BitArray bitArray, BitIndex bitIndex);
 
-#endif							/* BIT_H */
+#endif	 /* BIT_H */

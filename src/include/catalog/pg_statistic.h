@@ -57,4 +57,4 @@ typedef FormData_pg_statistic *Form_pg_statistic;
 #define Anum_pg_statistic_stalokey		4
 #define Anum_pg_statistic_stahikey		5
 
-#endif							/* PG_STATISTIC_H */
+#endif	 /* PG_STATISTIC_H */

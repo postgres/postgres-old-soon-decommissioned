@@ -36,8 +36,7 @@
 #endif
 
 static Oid	GetDynamicFuncArgType(Var *arg, ExprContext *econtext);
-static FunctionCachePtr
-init_fcache(Oid foid,
+static FunctionCachePtr init_fcache(Oid foid,
 			bool use_syscache,
 			List *argList,
 			ExprContext *econtext);
@@ -126,7 +125,7 @@ init_fcache(Oid foid,
 	 * ----------------
 	 */
 	typeTuple = SearchSysCacheTuple(TYPOID,
-							   ObjectIdGetDatum(procedureStruct->prorettype),
+						   ObjectIdGetDatum(procedureStruct->prorettype),
 									0, 0, 0);
 
 	if (!HeapTupleIsValid(typeTuple))

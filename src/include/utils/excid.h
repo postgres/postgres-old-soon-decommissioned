@@ -26,4 +26,4 @@ extern Exception InternalError; /* XXX inconsistent naming style */
 extern Exception SemanticError; /* XXX inconsistent naming style */
 extern Exception SystemError;	/* XXX inconsistent naming style */
 
-#endif							/* EXCID_H */
+#endif	 /* EXCID_H */

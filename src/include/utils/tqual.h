@@ -18,17 +18,17 @@
 
 typedef struct SnapshotData
 {
-	TransactionId		xmin;				/* XID < xmin are visible to me */
-	TransactionId		xmax;				/* XID > xmax are invisible to me */
-	TransactionId	   *xip;				/* array of xacts in progress */
-} SnapshotData;
+	TransactionId xmin;			/* XID < xmin are visible to me */
+	TransactionId xmax;			/* XID > xmax are invisible to me */
+	TransactionId *xip;			/* array of xacts in progress */
+}			SnapshotData;
 
-typedef SnapshotData	*Snapshot;
+typedef SnapshotData *Snapshot;
 
-#define	IsSnapshotNow(snapshot)		((Snapshot) snapshot == (Snapshot) 0x0)
-#define	IsSnapshotSelf(snapshot)	((Snapshot) snapshot == (Snapshot) 0x1)
-#define	SnapshotNow					((Snapshot) 0x0)
-#define	SnapshotSelf				((Snapshot) 0x1)
+#define IsSnapshotNow(snapshot)		((Snapshot) snapshot == (Snapshot) 0x0)
+#define IsSnapshotSelf(snapshot)	((Snapshot) snapshot == (Snapshot) 0x1)
+#define SnapshotNow					((Snapshot) 0x0)
+#define SnapshotSelf				((Snapshot) 0x1)
 
 extern TransactionId HeapSpecialTransactionId;
 extern CommandId HeapSpecialCommandId;
@@ -53,7 +53,7 @@ extern CommandId HeapSpecialCommandId;
 	) \
 )
 
-#define	heapisoverride() \
+#define heapisoverride() \
 ( \
 	(!TransactionIdIsValid(HeapSpecialTransactionId)) ? \
 		false \
@@ -77,4 +77,4 @@ extern bool HeapTupleSatisfiesNow(HeapTuple tuple);
 extern void setheapoverride(bool on);
 
 
-#endif							/* TQUAL_H */
+#endif	 /* TQUAL_H */

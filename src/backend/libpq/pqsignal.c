@@ -60,5 +60,5 @@ pqsignal(int signo, pqsigfunc func)
 	if (sigaction(signo, &act, &oact) < 0)
 		return SIG_ERR;
 	return oact.sa_handler;
-#endif							/* !USE_POSIX_SIGNALS */
+#endif	 /* !USE_POSIX_SIGNALS */
 }

@@ -29,8 +29,7 @@
 static int	RecoveryCheckingEnabled(void);
 static void TransRecover(Relation logRelation);
 static bool TransactionLogTest(TransactionId transactionId, XidStatus status);
-static void
-TransactionLogUpdate(TransactionId transactionId,
+static void TransactionLogUpdate(TransactionId transactionId,
 					 XidStatus status);
 
 /* ----------------

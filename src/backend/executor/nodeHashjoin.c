@@ -28,12 +28,10 @@
 static TupleTableSlot *
 			ExecHashJoinOuterGetTuple(Plan *node, Plan *parent, HashJoinState *hjstate);
 
-static TupleTableSlot *
-ExecHashJoinGetSavedTuple(HashJoinState *hjstate, char *buffer,
+static TupleTableSlot *ExecHashJoinGetSavedTuple(HashJoinState *hjstate, char *buffer,
 	  File file, TupleTableSlot *tupleSlot, int *block, char **position);
 
-static int
-ExecHashJoinGetBatch(int bucketno, HashJoinTable hashtable,
+static int ExecHashJoinGetBatch(int bucketno, HashJoinTable hashtable,
 					 int nbatch);
 
 static int	ExecHashJoinNewBatch(HashJoinState *hjstate);

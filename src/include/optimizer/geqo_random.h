@@ -34,4 +34,4 @@
 
 #define geqo_randint(upper,lower) ( (int) floor( geqo_rand()*((upper-lower)+0.999999) )  +	lower )
 
-#endif							/* GEQO_RANDOM_H */
+#endif	 /* GEQO_RANDOM_H */

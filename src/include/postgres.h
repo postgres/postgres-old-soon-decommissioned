@@ -164,6 +164,6 @@ typedef uint32 CommandId;
 #ifdef CYR_RECODE
 void		SetCharSet();
 
-#endif							/* CYR_RECODE */
+#endif	 /* CYR_RECODE */
 
-#endif							/* POSTGRES_H */
+#endif	 /* POSTGRES_H */

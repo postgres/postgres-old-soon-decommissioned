@@ -40,4 +40,4 @@ typedef FormData_pg_group *Form_pg_group;
 #define Anum_pg_group_grosysid	2
 #define Anum_pg_group_grolist	3
 
-#endif							/* PG_GROUP_H */
+#endif	 /* PG_GROUP_H */

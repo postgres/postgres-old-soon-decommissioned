@@ -285,7 +285,7 @@ PortalHeapMemoryFree(PortalHeapMemory this,
 			 pointer);
 #ifdef ALLOCFREE_ERROR_ABORT
 		Assert(AllocSetContains(&block->setData, pointer));
-#endif							/* ALLOCFREE_ERROR_ABORT */
+#endif	 /* ALLOCFREE_ERROR_ABORT */
 	}
 }
 

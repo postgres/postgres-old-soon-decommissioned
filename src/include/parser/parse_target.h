@@ -24,20 +24,18 @@
 
 extern List *transformTargetList(ParseState *pstate, List *targetlist);
 extern List *makeTargetNames(ParseState *pstate, List *cols);
-extern TargetEntry *
-MakeTargetEntryIdent(ParseState *pstate,
+extern TargetEntry *MakeTargetEntryIdent(ParseState *pstate,
 					 Node *node,
 					 char **resname,
 					 char *refname,
 					 char *colname,
 					 int16 resjunk);
-extern Node *
-CoerceTargetExpr(ParseState *pstate, Node *expr,
+extern Node *CoerceTargetExpr(ParseState *pstate, Node *expr,
 				 Oid type_id, Oid attrtype);
-TargetEntry * MakeTargetEntryExpr(ParseState *pstate,
-				   char *colname,
-				   Node *expr,
-				   List *arrayRef,
-				   int16 resjunk);
+TargetEntry *MakeTargetEntryExpr(ParseState *pstate,
+					char *colname,
+					Node *expr,
+					List *arrayRef,
+					int16 resjunk);
 
-#endif							/* PARSE_TARGET_H */
+#endif	 /* PARSE_TARGET_H */

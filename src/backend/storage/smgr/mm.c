@@ -138,7 +138,7 @@ mminit()
 		return SM_FAIL;
 	}
 
-	if (IsUnderPostmaster) /* was IsPostmaster bjm */
+	if (IsUnderPostmaster)		/* was IsPostmaster bjm */
 	{
 		MemSet(mmcacheblk, 0, mmsize);
 		SpinRelease(MMCacheLock);
@@ -608,4 +608,4 @@ MMShmemSize()
 	return size;
 }
 
-#endif							/* STABLE_MEMORY_STORAGE */
+#endif	 /* STABLE_MEMORY_STORAGE */

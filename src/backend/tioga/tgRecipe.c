@@ -50,8 +50,7 @@ static TgRecipe *fillTgRecipe(PortalBuffer *pbuf, int tupno);
 static void lookupEdges(TgRecipe * r, char *name);
 static void fillAllNodes(TgRecipe * r, char *name);
 static void fillAllElements(TgRecipe * r, char *name);
-static TgNode *
-connectTee(TgRecipe * r, TgNodePtr fromNode, TgNodePtr toNode,
+static TgNode *connectTee(TgRecipe * r, TgNodePtr fromNode, TgNodePtr toNode,
 		   int fromPort, int toPort);
 
 /*

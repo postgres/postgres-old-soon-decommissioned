@@ -73,12 +73,11 @@ typedef int IpcMemoryId;
 /* ipc.c */
 extern void proc_exit(int code);
 extern void shmem_exit(int code);
-extern int on_shmem_exit(void (*function) (), caddr_t arg);
-extern int on_proc_exit(void (*function) (), caddr_t arg);
+extern int	on_shmem_exit(void (*function) (), caddr_t arg);
+extern int	on_proc_exit(void (*function) (), caddr_t arg);
 extern void on_exit_reset(void);
 
-extern IpcSemaphoreId
-IpcSemaphoreCreate(IpcSemaphoreKey semKey,
+extern IpcSemaphoreId IpcSemaphoreCreate(IpcSemaphoreKey semKey,
 				   int semNum, int permission, int semStartValue,
 				   int removeOnExit, int *status);
 extern void IpcSemaphoreKill(IpcSemaphoreKey key);
@@ -86,8 +85,7 @@ extern void IpcSemaphoreLock(IpcSemaphoreId semId, int sem, int lock);
 extern void IpcSemaphoreUnlock(IpcSemaphoreId semId, int sem, int lock);
 extern int	IpcSemaphoreGetCount(IpcSemaphoreId semId, int sem);
 extern int	IpcSemaphoreGetValue(IpcSemaphoreId semId, int sem);
-extern IpcMemoryId
-IpcMemoryCreate(IpcMemoryKey memKey, uint32 size,
+extern IpcMemoryId IpcMemoryCreate(IpcMemoryKey memKey, uint32 size,
 				int permission);
 extern IpcMemoryId IpcMemoryIdGet(IpcMemoryKey memKey, uint32 size);
 extern char *IpcMemoryAttach(IpcMemoryId memId);
@@ -155,7 +153,7 @@ typedef enum _LockId_
 
 #define MAX_SPINS		FIRSTFREELOCKID
 
-#endif							/* HAS_TEST_AND_SET */
+#endif	 /* HAS_TEST_AND_SET */
 
 /*
  * the following are originally in ipci.h but the prototypes have circular
@@ -204,4 +202,4 @@ extern IPCKey SystemPortAddressCreateIPCKey(SystemPortAddress address);
 extern void CreateSharedMemoryAndSemaphores(IPCKey key);
 extern void AttachSharedMemoryAndSemaphores(IPCKey key);
 
-#endif							/* IPC_H */
+#endif	 /* IPC_H */

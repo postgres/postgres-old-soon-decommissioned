@@ -29,4 +29,4 @@ typedef int32 BackendTag;		/* unique backend identifier */
 extern BackendId MyBackendId;	/* backend id of this backend */
 extern BackendTag MyBackendTag; /* backend tag of this backend */
 
-#endif							/* BACKENDID_H */
+#endif	 /* BACKENDID_H */

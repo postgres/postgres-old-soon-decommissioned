@@ -23,4 +23,4 @@ extern int	ExecCountSlotsResult(Result *node);
 extern void ExecEndResult(Result *node);
 extern void ExecReScanResult(Result *node, ExprContext *exprCtxt, Plan *parent);
 
-#endif							/* NODERESULT_H */
+#endif	 /* NODERESULT_H */

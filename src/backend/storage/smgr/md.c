@@ -568,7 +568,7 @@ mdblindwrt(char *dbstr,
 		int4		owner;
 		Oid			id;
 		char	   *tmpPath;
-		int	   tmpEncoding;
+		int			tmpEncoding;
 
 		GetRawDatabaseInfo(dbstr, &owner, &id, dbpath, &tmpEncoding);
 
@@ -607,7 +607,7 @@ mdblindwrt(char *dbstr,
 		int4		owner;
 		Oid			id;
 		char	   *tmpPath;
-		int	   tmpEncoding;
+		int			tmpEncoding;
 
 		GetRawDatabaseInfo(dbstr, &owner, &id, dbpath, &tmpEncoding);
 

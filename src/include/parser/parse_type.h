@@ -34,4 +34,4 @@ extern Oid	typeidTypElem(Oid type_id);
 extern Oid	GetArrayElementType(Oid typearray);
 extern Oid	typeidInfunc(Oid type_id);
 
-#endif							/* PARSE_TYPE_H */
+#endif	 /* PARSE_TYPE_H */

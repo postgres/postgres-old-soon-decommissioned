@@ -23,11 +23,9 @@
 #include <access/xact.h>
 #include <storage/lmgr.h>
 
-static XidStatus
-TransBlockGetXidStatus(Block tblock,
+static XidStatus TransBlockGetXidStatus(Block tblock,
 					   TransactionId transactionId);
-static void
-TransBlockSetXidStatus(Block tblock,
+static void TransBlockSetXidStatus(Block tblock,
 					   TransactionId transactionId, XidStatus xstatus);
 
 /* ----------------------------------------------------------------

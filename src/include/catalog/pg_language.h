@@ -75,4 +75,4 @@ DESCR("");
 #define SQLlanguageId 14
 
 
-#endif							/* PG_LANGUAGE_H */
+#endif	 /* PG_LANGUAGE_H */

@@ -80,7 +80,7 @@ int2out(int16 sh)
 int16 *
 int28in(char *shs)
 {
-	int16		**result;
+	int16	  **result;
 	int			nums;
 
 	if (shs == NULL)

@@ -129,6 +129,7 @@ ProcedureCreate(char *procedureName,
 
 	if (!strcmp(languageName, "sql"))
 	{
+
 		/*
 		 * If this call is defining a set, check if the set is already
 		 * defined by looking to see whether this call's function text

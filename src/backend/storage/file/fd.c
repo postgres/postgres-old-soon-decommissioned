@@ -220,7 +220,7 @@ _dump_lru()
 	elog(DEBUG, buf);
 }
 
-#endif							/* FDDEBUG */
+#endif	 /* FDDEBUG */
 
 static void
 Delete(File file)

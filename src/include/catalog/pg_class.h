@@ -163,4 +163,4 @@ DESCR("");
 #define		  RELKIND_SEQUENCE		  'S'		/* SEQUENCE relation */
 #define		  RELKIND_UNCATALOGED	  'u'		/* temporary heap */
 
-#endif							/* PG_RELATION_H */
+#endif	 /* PG_RELATION_H */

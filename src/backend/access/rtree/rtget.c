@@ -27,8 +27,7 @@
 #endif
 
 
-static OffsetNumber
-findnext(IndexScanDesc s, Page p, OffsetNumber n,
+static OffsetNumber findnext(IndexScanDesc s, Page p, OffsetNumber n,
 		 ScanDirection dir);
 static RetrieveIndexResult rtscancache(IndexScanDesc s, ScanDirection dir);
 static RetrieveIndexResult rtfirst(IndexScanDesc s, ScanDirection dir);

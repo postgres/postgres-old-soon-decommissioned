@@ -78,7 +78,7 @@ AggregateCreate(char *aggName,
 	Oid			xret2 = InvalidOid;
 	Oid			fret = InvalidOid;
 	Oid			fnArgs[8];
-	NameData		aname;
+	NameData	aname;
 	TupleDesc	tupDesc;
 
 	MemSet(fnArgs, 0, 8 * sizeof(Oid));

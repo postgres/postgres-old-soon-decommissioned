@@ -114,4 +114,4 @@ DATA(insert OID = 0 (  66 2 - 23 ));
 DATA(insert OID = 0 (  67 1 - 25 ));
 DATA(insert OID = 0 (  67 2 - 25 ));
 
-#endif							/* PG_PARG_H */
+#endif	 /* PG_PARG_H */

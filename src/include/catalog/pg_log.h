@@ -37,4 +37,4 @@ typedef FormData_pg_log *Form_pg_log;
 #define Natts_pg_log			1
 #define Anum_pg_log_logfoo		1
 
-#endif							/* PG_LOG_H */
+#endif	 /* PG_LOG_H */

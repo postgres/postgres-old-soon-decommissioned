@@ -28,7 +28,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 
-#include "libpq/libpq-fs.h"	/* must come after sys/stat.h */
+#include "libpq/libpq-fs.h"		/* must come after sys/stat.h */
 
 
 #define LO_BUFSIZE		  1024

@@ -54,4 +54,4 @@ typedef FormData_pg_ipl *Form_pg_ipl;
 #define Anum_pg_ipl_iplseqno	3
 
 
-#endif							/* PG_IPL_H */
+#endif	 /* PG_IPL_H */

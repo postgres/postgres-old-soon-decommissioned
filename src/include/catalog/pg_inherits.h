@@ -54,4 +54,4 @@ typedef FormData_pg_inherits *Form_pg_inherits;
 #define Anum_pg_inherits_inhseqno		3
 
 
-#endif							/* PG_INHERITS_H */
+#endif	 /* PG_INHERITS_H */

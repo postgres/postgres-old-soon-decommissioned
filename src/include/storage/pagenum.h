@@ -28,4 +28,4 @@ typedef uint32 LogicalPageNumber;
 	((bool)((pageNumber) != InvalidLogicalPageNumber))
 
 
-#endif							/* PAGENUM_H */
+#endif	 /* PAGENUM_H */

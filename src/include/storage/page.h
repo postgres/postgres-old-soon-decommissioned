@@ -21,4 +21,4 @@ typedef Pointer Page;
  */
 #define PageIsValid(page) PointerIsValid(page)
 
-#endif							/* PAGE_H */
+#endif	 /* PAGE_H */

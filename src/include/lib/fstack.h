@@ -111,4 +111,4 @@ extern Pointer FixedStackGetTop(FixedStack stack);
  */
 extern Pointer FixedStackGetNext(FixedStack stack, Pointer pointer);
 
-#endif							/* FSTACK_H */
+#endif	 /* FSTACK_H */

@@ -42,4 +42,4 @@ int			DebugFileOpen(void);
 
 #endif
 
-#endif							/* ELOG_H */
+#endif	 /* ELOG_H */

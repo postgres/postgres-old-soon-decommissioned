@@ -81,4 +81,4 @@ typedef HashBucketData *HashBucket;
 
 #define HASH_PERMISSION			0700
 
-#endif							/* HASHJOIN_H */
+#endif	 /* HASHJOIN_H */

@@ -19,4 +19,4 @@ typedef int32 DateADT;
 
 typedef float8 TimeADT;
 
-#endif							/* DATETIME_H */
+#endif	 /* DATETIME_H */

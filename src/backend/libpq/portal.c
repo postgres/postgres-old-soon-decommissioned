@@ -481,7 +481,7 @@ PQftype(PortalBuffer *portal, int tuple_index, int field_number)
 		return -1;
 
 	if ((gbp = PQgroup(portal, tuple_index)) &&
-		in_range("PQftype: field number", field_number, 0, gbp->no_fields))
+	  in_range("PQftype: field number", field_number, 0, gbp->no_fields))
 		return gbp->types[field_number].typid;
 	return -1;
 }

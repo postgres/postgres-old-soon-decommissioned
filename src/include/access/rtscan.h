@@ -19,4 +19,4 @@
 
 void		rtadjscans(Relation r, int op, BlockNumber blkno, OffsetNumber offnum);
 
-#endif							/* RTSCAN_H */
+#endif	 /* RTSCAN_H */

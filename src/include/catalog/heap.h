@@ -17,8 +17,8 @@
 
 extern Relation heap_create(char *relname, TupleDesc att);
 
-extern Oid	heap_create_with_catalog(char *relname,
-									 TupleDesc tupdesc, char relkind);
+extern Oid heap_create_with_catalog(char *relname,
+						 TupleDesc tupdesc, char relkind);
 
 extern void heap_destroy_with_catalog(char *relname);
 extern void heap_destroy(Relation rel);
@@ -26,4 +26,4 @@ extern void heap_destroy(Relation rel);
 extern void InitTempRelList(void);
 extern void DestroyTempRels(void);
 
-#endif							/* HEAP_H */
+#endif	 /* HEAP_H */

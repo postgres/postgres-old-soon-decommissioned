@@ -34,4 +34,4 @@ extern void RelationRegisterRelation(Relation relation);
 extern void RelationPurgeLocalRelation(bool xactComitted);
 extern void RelationInitialize(void);
 
-#endif							/* RELCACHE_H */
+#endif	 /* RELCACHE_H */

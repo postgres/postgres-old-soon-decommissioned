@@ -172,8 +172,8 @@ NullCommand(CommandDest dest)
 {
 	switch (dest)
 	{
-		case RemoteInternal:
-		case Remote:
+			case RemoteInternal:
+			case Remote:
 			{
 				/* ----------------
 				 *		tell the fe that we saw an empty query string
@@ -206,8 +206,8 @@ ReadyForQuery(CommandDest dest)
 {
 	switch (dest)
 	{
-		case RemoteInternal:
-		case Remote:
+			case RemoteInternal:
+			case Remote:
 			{
 				if (PG_PROTOCOL_MAJOR(FrontendProtocol) >= 2)
 					pq_putnchar("Z", 1);

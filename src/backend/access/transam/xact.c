@@ -898,7 +898,7 @@ CommitTransaction()
 	 * ----------------
 	 */
 
-	/* handle commit for large objects [ PA, 7/17/98 ] */ 
+	/* handle commit for large objects [ PA, 7/17/98 ] */
 	_lo_commit();
 
 	CloseSequences();

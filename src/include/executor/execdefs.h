@@ -44,4 +44,4 @@
 #define EXEC_MJ_SKIPINNER				8
 #define EXEC_MJ_SKIPOUTER				9
 
-#endif							/* EXECDEFS_H */
+#endif	 /* EXECDEFS_H */

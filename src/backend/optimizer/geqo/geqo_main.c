@@ -98,7 +98,7 @@ geqo(Query *root)
 				status_interval;
 
 	Gene	   *best_tour;
-	RelOptInfo		   *best_rel;
+	RelOptInfo *best_rel;
 
 /*	Plan *best_plan; */
 

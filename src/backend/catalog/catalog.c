@@ -174,7 +174,7 @@ fillatt(TupleDesc tupleDesc)
 	for (i = 0; i < natts;)
 	{
 		tuple = SearchSysCacheTuple(TYPOID,
-									ObjectIdGetDatum((*attributeP)->atttypid),
+							   ObjectIdGetDatum((*attributeP)->atttypid),
 									0, 0, 0);
 		if (!HeapTupleIsValid(tuple))
 		{
@@ -193,7 +193,7 @@ fillatt(TupleDesc tupleDesc)
 			 */
 			if (!(*attributeP)->attisset)
 			{
-				typp = (Form_pg_type) GETSTRUCT(tuple);		/* XXX */
+				typp = (Form_pg_type) GETSTRUCT(tuple); /* XXX */
 				(*attributeP)->attlen = typp->typlen;
 				(*attributeP)->attbyval = typp->typbyval;
 			}

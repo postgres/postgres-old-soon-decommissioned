@@ -28,4 +28,4 @@ extern int	init_address_fixup(void);
 extern double rint(double x);
 extern double cbrt(double x);
 
-#endif							/* PORT_PROTOS_H */
+#endif	 /* PORT_PROTOS_H */

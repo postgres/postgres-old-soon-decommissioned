@@ -47,7 +47,7 @@
 #include	   "utils/hsearch.h"
 #ifndef FRONTEND
 #include	   "utils/mcxt.h"
-#endif							/* !FRONTEND */
+#endif	 /* !FRONTEND */
 #include	   "utils/palloc.h"
 
 /*
@@ -115,7 +115,7 @@ DynaHashFree(Pointer ptr)
 #define MEM_ALLOC		palloc
 #define MEM_FREE		pfree
 
-#endif							/* FRONTEND */
+#endif	 /* FRONTEND */
 
 /* ----------------
  * Internal routines

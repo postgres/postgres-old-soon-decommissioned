@@ -28,4 +28,4 @@ extern List ExecMaterialMarkPos(Material *node);
 extern void ExecMaterialRestrPos(Material *node);
 
 #endif
-#endif							/* NODEMATERIAL_H */
+#endif	 /* NODEMATERIAL_H */

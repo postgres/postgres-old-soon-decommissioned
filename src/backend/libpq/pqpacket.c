@@ -118,7 +118,8 @@ PacketReceiveFragment(Packet *pkt, int sock)
  * Set up a packet write for the postmaster event loop.
  */
 
-void		PacketSendSetup(Packet *pkt, int nbytes, PacketDoneProc iodone, void *arg)
+void
+PacketSendSetup(Packet *pkt, int nbytes, PacketDoneProc iodone, void *arg)
 {
 	pkt->len = (PacketLen) nbytes;
 	pkt->nrtodo = nbytes;

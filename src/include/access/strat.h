@@ -29,6 +29,8 @@ typedef struct StrategyTransformMapData
 								 *
 								 *
 								 *
+								 *
+								 *
 								 * STRUCTURE */
 
 typedef StrategyTransformMapData *StrategyTransformMap;
@@ -90,4 +92,4 @@ typedef struct IndexStrategyData
 
 typedef IndexStrategyData *IndexStrategy;
 
-#endif							/* STRAT_H */
+#endif	 /* STRAT_H */

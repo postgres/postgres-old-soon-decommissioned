@@ -46,4 +46,4 @@ typedef InvalidationEntry LocalInvalid;
 
 #define EmptyLocalInvalid		NULL
 
-#endif							/* INVAL_H */
+#endif	 /* INVAL_H */

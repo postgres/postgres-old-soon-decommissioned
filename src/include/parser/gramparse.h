@@ -22,4 +22,4 @@ extern Oid	param_type(int t);
 extern void parser_init(Oid *typev, int nargs);
 extern int	yyparse(void);
 
-#endif							/* GRAMPARSE_H */
+#endif	 /* GRAMPARSE_H */

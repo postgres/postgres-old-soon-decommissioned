@@ -117,4 +117,4 @@ extern bool same(List *foo, List *bar);
 /* in copyfuncs.c */
 extern List *listCopy(List *);
 
-#endif							/* PG_LIST_H */
+#endif	 /* PG_LIST_H */

@@ -106,7 +106,7 @@ typedef struct RelOptInfo
 	List	   *joininfo;		/* join clauses */
 	List	   *innerjoin;
 	List	   *superrels;
-} RelOptInfo;
+}			RelOptInfo;
 
 extern Var *get_expr(TargetEntry *foo);
 
@@ -139,7 +139,7 @@ typedef struct Path
 {
 	NodeTag		type;
 
-	RelOptInfo		   *parent;
+	RelOptInfo *parent;
 	Cost		path_cost;
 
 	NodeTag		pathtype;
@@ -221,7 +221,7 @@ typedef struct ClauseInfo
 	/* hashjoin only */
 	Oid			hashjoinoperator;
 	Relid		cinfojoinid;
-} ClauseInfo;
+}			ClauseInfo;
 
 typedef struct JoinMethod
 {
@@ -250,7 +250,7 @@ typedef struct JoinInfo
 	bool		mergejoinable;
 	bool		hashjoinable;
 	bool		inactive;
-} JoinInfo;
+}			JoinInfo;
 
 typedef struct Iter
 {
@@ -285,7 +285,7 @@ typedef struct Stream
 {
 	NodeTag		type;
 	Path	   *pathptr;
-	ClauseInfo	   *cinfo;
+	ClauseInfo *cinfo;
 	int		   *clausetype;
 	struct Stream *upstream;
 	struct Stream *downstream;
@@ -294,4 +294,4 @@ typedef struct Stream
 	Cost		groupsel;
 } Stream;
 
-#endif							/* RELATION_H */
+#endif	 /* RELATION_H */

@@ -157,7 +157,8 @@ RegisterSharedInvalid(int cacheId,		/* XXX */
 /*	should be called by a backend											*/
 /****************************************************************************/
 void
-InvalidateSharedInvalid(void (*invalFunction) (), void (*resetFunction) ())
+			InvalidateSharedInvalid(void (*invalFunction) (),
+									void (*resetFunction) ())
 {
 	SpinAcquire(SInvalLock);
 	SIReadEntryData(shmInvalBuffer, MyBackendId,

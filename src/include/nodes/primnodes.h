@@ -351,4 +351,4 @@ typedef struct ArrayRef
 	Node	   *refassgnexpr;
 } ArrayRef;
 
-#endif							/* PRIMNODES_H */
+#endif	 /* PRIMNODES_H */

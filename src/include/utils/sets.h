@@ -19,4 +19,4 @@
 extern Oid	SetDefine(char *querystr, char *typename);
 extern int	seteval(Oid funcoid);
 
-#endif							/* SETS_H */
+#endif	 /* SETS_H */

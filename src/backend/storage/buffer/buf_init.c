@@ -48,7 +48,7 @@ bmtrace    *TraceBuf;
 long	   *CurTraceBuf;
 
 #define BMT_LIMIT		200
-#endif							/* BMTRACE */
+#endif	 /* BMTRACE */
 int			ShowPinTrace = 0;
 
 int			NBuffers = NDBUFS;	/* NDBUFS defined in miscadmin.h */
@@ -278,7 +278,7 @@ BufferShmemSize()
 	nsegs = 1 << (int) my_log2((nbuckets - 1) / DEF_SEGSIZE + 1);
 
 	/* size of shmem index table */
-	size += MAXALIGN(my_log2(SHMEM_INDEX_SIZE) * sizeof(void *));	/* HTAB->dir */
+	size += MAXALIGN(my_log2(SHMEM_INDEX_SIZE) * sizeof(void *));		/* HTAB->dir */
 	size += MAXALIGN(sizeof(HHDR));		/* HTAB->hctl */
 	size += MAXALIGN(DEF_SEGSIZE * sizeof(SEGMENT));
 	size += BUCKET_ALLOC_INCR *

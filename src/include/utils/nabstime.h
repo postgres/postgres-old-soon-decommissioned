@@ -63,7 +63,7 @@ typedef TimeIntervalData *TimeInterval;
 #define NOSTART_ABSTIME		 ((AbsoluteTime) INT_MIN)
 #else
 #define NOSTART_ABSTIME ((AbsoluteTime) 0x80000001)		/* -2147483647 == - 2^31 */
-#endif							/* _AIX */
+#endif	 /* _AIX */
 
 #define INVALID_RELTIME ((RelativeTime) 0x7FFFFFFE)		/* 2147483647 == 2^31 -
 														 * 1 */
@@ -120,4 +120,4 @@ extern bool AbsoluteTimeIsAfter(AbsoluteTime time1, AbsoluteTime time2);
 
 extern void abstime2tm(AbsoluteTime time, int *tzp, struct tm * tm, char *tzn);
 
-#endif							/* NABSTIME_H */
+#endif	 /* NABSTIME_H */

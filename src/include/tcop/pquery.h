@@ -23,12 +23,11 @@ extern QueryDesc *CreateQueryDesc(Query *parsetree, Plan *plantree,
 extern EState *CreateExecutorState(void);
 
 
-extern void
-ProcessPortal(char *portalName, Query *parseTree,
+extern void ProcessPortal(char *portalName, Query *parseTree,
 			  Plan *plan, EState *state, TupleDesc attinfo,
 			  CommandDest dest);
 
 extern void
-ProcessQuery(Query *parsetree, Plan *plan, CommandDest dest);
+			ProcessQuery(Query *parsetree, Plan *plan, CommandDest dest);
 
-#endif							/* pqueryIncluded */
+#endif	 /* pqueryIncluded */

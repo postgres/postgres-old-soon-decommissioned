@@ -36,14 +36,12 @@
 
 #include "pg_dump.h"
 
-static char **
-findParentsByOid(TableInfo *tbinfo, int numTables,
+static char **findParentsByOid(TableInfo *tbinfo, int numTables,
 				 InhInfo *inhinfo, int numInherits,
 				 const char *oid,
 				 int *numParents);
 static int	findTableByOid(TableInfo *tbinfo, int numTables, const char *oid);
-static void
-flagInhAttrs(TableInfo *tbinfo, int numTables,
+static void flagInhAttrs(TableInfo *tbinfo, int numTables,
 			 InhInfo *inhinfo, int numInherits);
 static int	strInArray(const char *pattern, char **arr, int arr_size);
 

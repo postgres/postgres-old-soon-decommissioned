@@ -67,7 +67,7 @@ palloc(Size size)
 	return malloc(size);
 #else
 	return MemoryContextAlloc(CurrentMemoryContext, size);
-#endif							/* PALLOC_IS_MALLOC */
+#endif	 /* PALLOC_IS_MALLOC */
 }
 
 void
@@ -77,7 +77,7 @@ pfree(void *pointer)
 	free(pointer);
 #else
 	MemoryContextFree(CurrentMemoryContext, pointer);
-#endif							/* PALLOC_IS_MALLOC */
+#endif	 /* PALLOC_IS_MALLOC */
 }
 
 /*

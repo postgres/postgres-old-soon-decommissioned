@@ -26,8 +26,7 @@
 #endif
 
 static void AllocPointerDump(AllocPointer pointer);
-static int
-AllocSetIterate(AllocSet set,
+static int AllocSetIterate(AllocSet set,
 				void (*function) (AllocPointer pointer));
 
 #undef AllocSetReset

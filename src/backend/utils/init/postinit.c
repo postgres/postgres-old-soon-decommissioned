@@ -121,7 +121,7 @@ InitMyDatabaseInfo(char *name)
 	int4		owner;
 	char	   *path,
 				myPath[MAXPGPATH + 1];
-	int encoding;
+	int			encoding;
 
 	SetDatabaseName(name);
 	GetRawDatabaseInfo(name, &owner, &MyDatabaseId, myPath, &encoding);
@@ -201,8 +201,8 @@ VerifySystemDatabase()
 static void
 VerifyMyDatabase()
 {
-	const char	   *name;
-	const char	   *myPath;
+	const char *name;
+	const char *myPath;
 
 	/* Failure reason returned by some function.  NULL if no failure */
 	char	   *reason;
@@ -384,7 +384,7 @@ forcesharedmemory:
 
 #endif
 
-    if (!IsUnderPostmaster) /* postmaster already did this */
+	if (!IsUnderPostmaster)		/* postmaster already did this */
 	{
 		PostgresIpcKey = key;
 		AttachSharedMemoryAndSemaphores(key);
@@ -508,6 +508,8 @@ InitPostgres(char *name)		/* database name */
 
 	/*
 	 * ********************************
+	 *
+	 *
 	 *
 	 * code after this point assumes we are in the proper directory!
 	 *

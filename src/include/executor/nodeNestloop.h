@@ -23,4 +23,4 @@ extern int	ExecCountSlotsNestLoop(NestLoop *node);
 extern void ExecEndNestLoop(NestLoop *node);
 extern void ExecReScanNestLoop(NestLoop *node, ExprContext *exprCtxt, Plan *parent);
 
-#endif							/* NODENESTLOOP_H */
+#endif	 /* NODENESTLOOP_H */

@@ -54,13 +54,13 @@ struct HP_TOO_BOGUS
 	int			hptb_bogus[8192];
 };
 
-#endif							/* BROKEN_STRUCT_INIT */
-#endif							/* HP_S500_ALIGN */
+#endif	 /* BROKEN_STRUCT_INIT */
+#endif	 /* HP_S500_ALIGN */
 
 #if defined(WEAK_C_OPTIMIZER)
 #pragma OPT_LEVEL 1
-#endif							/* WEAK_C_OPTIMIZER */
+#endif	 /* WEAK_C_OPTIMIZER */
 
-#endif							/* !NOFIXADE */
+#endif	 /* !NOFIXADE */
 
-#endif							/* FIXADE_H */
+#endif	 /* FIXADE_H */

@@ -199,7 +199,7 @@ namestrcmp(Name name, char *str)
 	if (!name && !str)
 		return 0;
 	if (!name)
-		return -1;			/* NULL < anything */
+		return -1;				/* NULL < anything */
 	if (!str)
 		return 1;				/* NULL < anything */
 	return strncmp(name->data, str, NAMEDATALEN);

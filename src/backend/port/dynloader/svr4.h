@@ -31,4 +31,4 @@
 #define pg_dlclose		dlclose
 #define pg_dlerror		dlerror
 
-#endif							/* DYNLOADER_H */
+#endif	 /* DYNLOADER_H */

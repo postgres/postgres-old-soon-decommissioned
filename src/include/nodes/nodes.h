@@ -306,13 +306,11 @@ typedef enum CmdType
 	CMD_INSERT,					/* insert stmt (formerly append) */
 	CMD_DELETE,
 	CMD_NOTIFY,
-	CMD_UTILITY,					/* cmds like create, destroy, copy,
+	CMD_UTILITY,				/* cmds like create, destroy, copy,
 								 * vacuum, etc. */
-	CMD_NOTHING					/* dummy command for
-							 * instead nothing
-							 * rules with qual
-							 */
+	CMD_NOTHING					/* dummy command for instead nothing rules
+								 * with qual */
 } CmdType;
 
 
-#endif							/* NODES_H */
+#endif	 /* NODES_H */

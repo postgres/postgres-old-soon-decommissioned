@@ -54,7 +54,7 @@ _bt_doinsert(Relation rel, BTItem btitem, bool index_is_unique, Relation heapRel
 	int			natts = rel->rd_rel->relnatts;
 	InsertIndexResult res;
 	Buffer		buffer;
-	
+
 	itup = &(btitem->bti_itup);
 
 	/* we need a scan key to do our search, so build one */

@@ -36,7 +36,7 @@
 
 #if defined(DISABLE_XOPEN_NLS)
 #undef _XOPEN_SOURCE
-#endif							/* DISABLE_XOPEN_NLS */
+#endif	 /* DISABLE_XOPEN_NLS */
 
 /* this is the number of cached regular expressions held. */
 #ifndef MAX_CACHED_RES

@@ -136,9 +136,9 @@ get_attisset(Oid relid, char *attname)
 	attno = get_attnum(relid, attname);
 
 	tuple = SearchSysCacheTuple(ATTNAME,
-							   ObjectIdGetDatum(relid),
-							   PointerGetDatum(attname),
-							   0, 0);
+								ObjectIdGetDatum(relid),
+								PointerGetDatum(attname),
+								0, 0);
 	if (!HeapTupleIsValid(tuple))
 		elog(ERROR, "get_attisset: no attribute %s in relation %d",
 			 attname, relid);

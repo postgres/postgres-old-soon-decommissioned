@@ -16,14 +16,12 @@
 #include "nodes/pg_list.h"
 #include "nodes/relation.h"
 
-extern bool valid_or_clause(ClauseInfo *clauseinfo);
+extern bool valid_or_clause(ClauseInfo * clauseinfo);
 extern List *get_actual_clauses(List *clauseinfo_list);
-extern void
-get_relattvals(List *clauseinfo_list, List **attnos,
+extern void get_relattvals(List *clauseinfo_list, List **attnos,
 			   List **values, List **flags);
-extern void
-get_joinvars(Oid relid, List *clauseinfo_list,
+extern void get_joinvars(Oid relid, List *clauseinfo_list,
 			 List **attnos, List **values, List **flags);
 extern List *get_opnos(List *clauseinfo_list);
 
-#endif							/* CLAUSEINFO_H */
+#endif	 /* CLAUSEINFO_H */

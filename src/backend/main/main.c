@@ -45,11 +45,11 @@ main(int argc, char *argv[])
 #ifdef NOFIXADE
 	int			buffer[] = {SSIN_UACPROC, UAC_SIGBUS};
 
-#endif							/* NOFIXADE */
+#endif	 /* NOFIXADE */
 #ifdef NOPRINTADE
 	int			buffer[] = {SSIN_UACPROC, UAC_NOPRINT};
 
-#endif							/* NOPRINTADE */
+#endif	 /* NOPRINTADE */
 #endif
 
 #ifdef USE_LOCALE
@@ -75,7 +75,7 @@ main(int argc, char *argv[])
 		elog(NOTICE, "setsysinfo failed: %d\n", errno);
 #endif
 
-#endif							/* NOFIXADE || NOPRINTADE */
+#endif	 /* NOFIXADE || NOPRINTADE */
 
 	/*
 	 * use one executable for both postgres and postmaster, invoke one or

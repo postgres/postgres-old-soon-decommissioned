@@ -41,8 +41,7 @@
 #define FunctionalSelectivity(nIndKeys,attNum) (attNum==InvalidAttrNumber)
 
 static float32data getattdisbursion(Oid relid, AttrNumber attnum);
-static void
-gethilokey(Oid relid, AttrNumber attnum, Oid opid,
+static void gethilokey(Oid relid, AttrNumber attnum, Oid opid,
 		   char **high, char **low);
 
 

@@ -17,4 +17,4 @@
 
 extern void ExplainQuery(Query *query, bool verbose, CommandDest dest);
 
-#endif							/* EXPLAIN_H */
+#endif	 /* EXPLAIN_H */

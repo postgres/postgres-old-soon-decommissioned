@@ -39,14 +39,11 @@ typedef struct
 } LeftistContextData;
 typedef LeftistContextData *LeftistContext;
 
-extern struct leftist *
-lmerge(struct leftist * pt, struct leftist * qt,
+extern struct leftist *lmerge(struct leftist * pt, struct leftist * qt,
 	   LeftistContext context);
-extern HeapTuple
-gettuple(struct leftist ** treep, short *devnum,
+extern HeapTuple gettuple(struct leftist ** treep, short *devnum,
 		 LeftistContext context);
-extern void
-puttuple(struct leftist ** treep, HeapTuple newtuple, short devnum,
+extern void puttuple(struct leftist ** treep, HeapTuple newtuple, short devnum,
 		 LeftistContext context);
 extern int	tuplecmp(HeapTuple ltup, HeapTuple rtup, LeftistContext context);
 
@@ -54,6 +51,6 @@ extern int	tuplecmp(HeapTuple ltup, HeapTuple rtup, LeftistContext context);
 extern void checktree(struct leftist * tree, LeftistContext context);
 extern int	checktreer(struct leftist * tree, int level, LeftistContext context);
 
-#endif							/* EBUG */
+#endif	 /* EBUG */
 
-#endif							/* LSELECT_H */
+#endif	 /* LSELECT_H */

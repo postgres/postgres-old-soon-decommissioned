@@ -187,10 +187,10 @@ InitProcess(IPCKey key)
 	{
 
 		/*
-		 * have to allocate one.  We can't use the normal shmem index table
-		 * mechanism because the proc structure is stored by PID instead
-		 * of by a global name (need to look it up by PID when we cleanup
-		 * dead processes).
+		 * have to allocate one.  We can't use the normal shmem index
+		 * table mechanism because the proc structure is stored by PID
+		 * instead of by a global name (need to look it up by PID when we
+		 * cleanup dead processes).
 		 */
 
 		MyProc = (PROC *) ShmemAlloc((unsigned) sizeof(PROC));
@@ -364,6 +364,7 @@ ProcKill(int exitStatus, int pid)
 	LockReleaseAll(DEFAULT_LOCKMETHOD, &proc->lockQueue);
 
 #ifdef USER_LOCKS
+
 	/*
 	 * Assume we have a second lock table.
 	 */
@@ -440,12 +441,12 @@ ProcQueueInit(PROC_QUEUE *queue)
  * NOTES: The process queue is now a priority queue for locking.
  */
 int
-ProcSleep(PROC_QUEUE *waitQueue,		/* lock->waitProcs */
+ProcSleep(PROC_QUEUE *waitQueue,/* lock->waitProcs */
 		  SPINLOCK spinlock,
-		  int token,					/* lockmode */
+		  int token,			/* lockmode */
 		  int prio,
 		  LOCK *lock,
-		  TransactionId xid)		    /* needed by user locks, see below */
+		  TransactionId xid)	/* needed by user locks, see below */
 {
 	int			i;
 	PROC	   *proc;
@@ -561,7 +562,7 @@ ProcSleep(PROC_QUEUE *waitQueue,		/* lock->waitProcs */
 
 #ifdef LOCK_MGR_DEBUG
 	/* Just to get meaningful debug messages from DumpLocks() */
-	MyProc->waitLock = (LOCK *)NULL;
+	MyProc->waitLock = (LOCK *) NULL;
 #endif
 
 	return MyProc->errType;
@@ -620,13 +621,13 @@ ProcLockWakeup(PROC_QUEUE *queue, LOCKMETHOD lockmethod, LOCK *lock)
 	count = 0;
 	while ((queue_size--) && (proc))
 	{
+
 		/*
-		 * This proc will conflict as the previous one did, don't even try.
+		 * This proc will conflict as the previous one did, don't even
+		 * try.
 		 */
 		if (proc->token == last_locktype)
-		{
 			continue;
-		}
 
 		/*
 		 * This proc conflicts with locks held by others, ignored.
@@ -663,7 +664,8 @@ ProcLockWakeup(PROC_QUEUE *queue, LOCKMETHOD lockmethod, LOCK *lock)
 
 	if (count)
 		return STATUS_OK;
-	else {
+	else
+	{
 		/* Something is still blocking us.	May have deadlocked. */
 		trace_flag = (lock->tag.lockmethod == USER_LOCKMETHOD) ? \
 			TRACE_USERLOCKS : TRACE_LOCKS;

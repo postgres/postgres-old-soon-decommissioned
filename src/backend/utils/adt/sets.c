@@ -112,8 +112,8 @@ SetDefine(char *querystr, char *typename)
 		RelationSetLockForWrite(procrel);
 
 		tup = SearchSysCacheTuple(PROOID,
-									ObjectIdGetDatum(setoid),
-									0, 0, 0);
+								  ObjectIdGetDatum(setoid),
+								  0, 0, 0);
 		if (HeapTupleIsValid(tup))
 		{
 			newtup = heap_modifytuple(tup,

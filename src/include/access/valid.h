@@ -156,4 +156,4 @@ do \
 
 extern bool TupleUpdatedByCurXactAndCmd(HeapTuple t);
 
-#endif							/* VALID_H */
+#endif	 /* VALID_H */

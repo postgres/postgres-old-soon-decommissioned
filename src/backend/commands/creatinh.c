@@ -33,8 +33,7 @@
  * ----------------
  */
 
-static int
-checkAttrExists(char *attributeName,
+static int checkAttrExists(char *attributeName,
 				char *attributeType, List *schema);
 static List *MergeAttributes(List *schema, List *supers, List **supconstr);
 static void StoreCatalogInheritance(Oid relationId, List *supers);
@@ -404,7 +403,7 @@ StoreCatalogInheritance(Oid relationId, List *supers)
 		char		nullarr[Natts_pg_inherits];
 
 		tuple = SearchSysCacheTuple(RELNAME,
-									PointerGetDatum(strVal(lfirst(entry))),
+								  PointerGetDatum(strVal(lfirst(entry))),
 									0, 0, 0);
 		AssertArg(HeapTupleIsValid(tuple));
 

@@ -30,8 +30,7 @@
 #include "access/heapam.h"
 #include "parser/parsetree.h"
 
-static Oid
-InitScanRelation(SeqScan *node, EState *estate,
+static Oid InitScanRelation(SeqScan *node, EState *estate,
 				 CommonScanState *scanstate, Plan *outerPlan);
 
 static TupleTableSlot *SeqNext(SeqScan *node);
@@ -83,7 +82,8 @@ SeqNext(SeqScan *node)
 
 	slot = ExecStoreTuple(tuple,/* tuple to store */
 						  slot, /* slot to store in */
-						  scandesc->rs_cbuf,/* buffer associated with this tuple */
+						  scandesc->rs_cbuf,	/* buffer associated with
+												 * this tuple */
 						  false);		/* don't pfree this pointer */
 
 	/* ----------------

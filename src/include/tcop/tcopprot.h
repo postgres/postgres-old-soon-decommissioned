@@ -22,16 +22,15 @@
 #include <parser/parse_node.h>
 
 #ifndef BOOTSTRAP_INCLUDE
-extern List *
-pg_parse_and_plan(char *query_string, Oid *typev, int nargs,
+extern List *pg_parse_and_plan(char *query_string, Oid *typev, int nargs,
 				  QueryTreeList **queryListP, CommandDest dest,
 				  bool aclOverride);
 extern void pg_exec_query(char *query_string);
 extern void pg_exec_query_acl_override(char *query_string);
 extern void
-pg_exec_query_dest(char *query_string, CommandDest dest, bool aclOverride);
+			pg_exec_query_dest(char *query_string, CommandDest dest, bool aclOverride);
 
-#endif							/* BOOTSTRAP_HEADER */
+#endif	 /* BOOTSTRAP_HEADER */
 
 extern void handle_warn(SIGNAL_ARGS);
 extern void quickdie(SIGNAL_ARGS);
@@ -39,8 +38,8 @@ extern void die(SIGNAL_ARGS);
 extern void FloatExceptionHandler(SIGNAL_ARGS);
 extern void CancelQuery(void);
 extern int PostgresMain(int argc, char *argv[],
-						int real_argc, char *real_argv[]);
+			 int real_argc, char *real_argv[]);
 extern void ResetUsage(void);
 extern void ShowUsage(void);
 
-#endif							/* tcopprotIncluded */
+#endif	 /* tcopprotIncluded */

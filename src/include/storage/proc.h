@@ -45,11 +45,9 @@ typedef struct proc
 								 * this proc */
 
 #ifdef LowLevelLocking
-	TransactionId	xmin;		/* minimal running XID as it was when 
-								 * we were starting our xact: vacuum
-								 * must not remove tuples deleted by
-								 * xid >= xmin !
-								 */
+	TransactionId xmin;			/* minimal running XID as it was when we
+								 * were starting our xact: vacuum must not
+								 * remove tuples deleted by xid >= xmin ! */
 #endif
 
 	LOCK	   *waitLock;		/* Lock we're sleeping on */
@@ -106,11 +104,11 @@ extern bool ProcRemove(int pid);
 
 extern void ProcQueueInit(PROC_QUEUE *queue);
 extern int ProcSleep(PROC_QUEUE *queue, SPINLOCK spinlock, int token,
-					 int prio, LOCK *lock, TransactionId xid);
-extern int	ProcLockWakeup(PROC_QUEUE *queue, LOCKMETHOD lockmethod,
-						   LOCK *lock);
+		  int prio, LOCK *lock, TransactionId xid);
+extern int ProcLockWakeup(PROC_QUEUE *queue, LOCKMETHOD lockmethod,
+			   LOCK *lock);
 extern void ProcAddLock(SHM_QUEUE *elem);
 extern void ProcReleaseSpins(PROC *proc);
 extern void ProcFreeAllSemaphores(void);
 
-#endif							/* PROC_H */
+#endif	 /* PROC_H */

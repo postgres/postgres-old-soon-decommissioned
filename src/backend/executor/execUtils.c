@@ -57,8 +57,7 @@
 #include "utils/lsyscache.h"
 #include "utils/mcxt.h"
 
-static void
-ExecGetIndexKeyInfo(Form_pg_index indexTuple, int *numAttsOutP,
+static void ExecGetIndexKeyInfo(Form_pg_index indexTuple, int *numAttsOutP,
 					AttrNumber **attsOutP, FuncIndexInfoPtr fInfoP);
 
 /* ----------------------------------------------------------------
@@ -750,7 +749,7 @@ ExecOpenIndices(Oid resultRelationOid,
 	 */
 	indexSd = heap_beginscan(indexRd,	/* scan desc */
 							 false,		/* scan backward flag */
-							 SnapshotNow,	/* NOW snapshot */
+							 SnapshotNow,		/* NOW snapshot */
 							 1, /* number scan keys */
 							 &key);		/* scan keys */
 

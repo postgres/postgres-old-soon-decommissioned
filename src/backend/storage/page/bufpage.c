@@ -24,8 +24,7 @@
 #include "utils/memutils.h"
 #include "storage/bufpage.h"
 
-static void
-PageIndexTupleDeleteAdjustLinePointers(PageHeader phdr,
+static void PageIndexTupleDeleteAdjustLinePointers(PageHeader phdr,
 									   char *location, Size size);
 
 static bool PageManagerShuffle = true;	/* default is shuffle mode */
@@ -306,7 +305,7 @@ PageRepairFragmentation(Page page)
 
 		/* sort itemIdSortData array... */
 		qsort((char *) itemidbase, nused, sizeof(struct itemIdSortData),
-				 itemidcompare);
+			  itemidcompare);
 
 		/* compactify page */
 		((PageHeader) page)->pd_upper = ((PageHeader) page)->pd_special;

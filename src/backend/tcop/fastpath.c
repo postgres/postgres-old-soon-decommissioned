@@ -350,7 +350,7 @@ HandleFunctionRequest()
 
 #else
 	retval = NULL;
-#endif							/* NO_FASTPATH */
+#endif	 /* NO_FASTPATH */
 
 	/* free palloc'ed arguments */
 	for (i = 0; i < nargs; ++i)
@@ -368,7 +368,7 @@ HandleFunctionRequest()
 	SendFunctionResult(fid, retval, fip->retbyval, fip->retlen);
 #else
 	SendFunctionResult(fid, retval, fip->retbyval, 0);
-#endif							/* NO_FASTPATH */
+#endif	 /* NO_FASTPATH */
 
 	if (!fip->retbyval)
 		pfree(retval);

@@ -148,7 +148,7 @@ stringTypeString(Type tp, char *string, int32 atttypmod)
 	Oid			typelem;
 
 	op = ((Form_pg_type) GETSTRUCT(tp))->typinput;
-	typelem = ((Form_pg_type) GETSTRUCT(tp))->typelem; /* XXX - used for
+	typelem = ((Form_pg_type) GETSTRUCT(tp))->typelem;	/* XXX - used for
 														 * array_in */
 	return (char *) fmgr(op, string, typelem, atttypmod);
 }

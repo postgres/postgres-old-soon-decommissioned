@@ -75,4 +75,4 @@ typedef TupleTableData *TupleTable;
   - jolly
 */
 
-#endif							/* TUPTABLE_H */
+#endif	 /* TUPTABLE_H */

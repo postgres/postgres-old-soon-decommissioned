@@ -42,11 +42,9 @@ extern bool is_joinable(Node *clause);
 extern bool qual_clause_p(Node *clause);
 extern void fix_opid(Node *clause);
 extern List *fix_opids(List *clauses);
-extern void
-get_relattval(Node *clause, int *relid,
+extern void get_relattval(Node *clause, int *relid,
 			  AttrNumber *attno, Datum *constval, int *flag);
-extern void
-get_rels_atts(Node *clause, int *relid1,
+extern void get_rels_atts(Node *clause, int *relid1,
 			  AttrNumber *attno1, int *relid2, AttrNumber *attno2);
 extern void CommuteClause(Node *clause);
 
@@ -54,4 +52,4 @@ extern void CommuteClause(Node *clause);
 						nodeTag((Node*) clause) == T_Expr && \
 						((Expr *) clause)->opType == SUBPLAN_EXPR)
 
-#endif							/* CLAUSES_H */
+#endif	 /* CLAUSES_H */

@@ -33,8 +33,7 @@ extern int	numattr;
 extern int	DebugMode;
 
 extern int	BootstrapMain(int ac, char *av[]);
-extern void
-index_register(char *heap,
+extern void index_register(char *heap,
 			   char *ind,
 			   int natts,
 			   AttrNumber *attnos,
@@ -57,4 +56,4 @@ extern char *CleanUpStr(char *s);
 extern int	EnterString(char *str);
 extern void build_indices(void);
 
-#endif							/* BOOTSTRAP_H */
+#endif	 /* BOOTSTRAP_H */

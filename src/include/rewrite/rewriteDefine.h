@@ -17,4 +17,4 @@
 
 extern void DefineQueryRewrite(RuleStmt *args);
 
-#endif							/* REWRITEDEFINE_H */
+#endif	 /* REWRITEDEFINE_H */

@@ -21,4 +21,4 @@ extern bool IsSharedSystemRelationName(char *relname);
 extern Oid	newoid(void);
 extern void fillatt(TupleDesc att);
 
-#endif							/* CATALOG_H */
+#endif	 /* CATALOG_H */

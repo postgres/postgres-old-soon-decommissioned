@@ -108,4 +108,4 @@ DESCR("");
 DATA(insert OID = 1313 (	timespan_ops   1186   ));
 DESCR("");
 
-#endif							/* PG_OPCLASS_H */
+#endif	 /* PG_OPCLASS_H */
