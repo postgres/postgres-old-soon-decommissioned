@@ -892,7 +892,7 @@ describeOneTableDetails(const char *schemaname,
 							  schemaname, indtable);
 
 			if (strlen(indpred))
-				appendPQExpBuffer(&tmpbuf, ", predicate (%s)", indpred);
+				appendPQExpBuffer(&tmpbuf, _(", predicate (%s)"), indpred);
 
 			footers = xmalloczero(2 * sizeof(*footers));
 			footers[0] = xstrdup(tmpbuf.data);
