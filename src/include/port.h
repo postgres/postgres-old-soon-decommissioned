@@ -22,8 +22,22 @@
 bool set_noblock(int sock);
 
 /* Portable path handling for Unix/Win32 */
+
+/* Find the location of the first directory separator, return
+ * NULL if not found.
+ */
+extern char *first_dir_separator(const char *filename);
+
+/* Find the location of the last directory separator, return
+ * NULL if not found.
+ */
+extern char *last_dir_separator(const char *filename);
+
+/* Find the location of the first path separator (i.e. ':' on
+ * Unix, ';' on Windows), return NULL if not found.
+ */
 extern char *first_path_separator(const char *filename);
-extern char *last_path_separator(const char *filename);
+
 extern void canonicalize_path(char *path);
 extern const char *get_progname(const char *argv0);
 extern void get_share_path(const char *my_exec_path, char *ret_path);

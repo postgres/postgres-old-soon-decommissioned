@@ -2617,8 +2617,9 @@ SET ENABLE_SEQSCAN TO OFF;
        </para>
 
        <para>
-        The value for <varname>dynamic_library_path</varname> has to be a colon-separated
-        list of absolute directory names. If a directory name starts
+        The value for <varname>dynamic_library_path</varname> has to be a
+        list of absolute directory names separated by colon or, in windows
+        environments with semi-colon. If a directory name starts
         with the special value <literal>$libdir</literal>, the
         compiled-in <productname>PostgreSQL</productname> package
         library directory is substituted. This where the modules
@@ -2628,6 +2629,10 @@ SET ENABLE_SEQSCAN TO OFF;
         example:
 <programlisting>
 dynamic_library_path = '/usr/local/lib/postgresql:/home/my_project/lib:$libdir'
+</programlisting>
+        or, in a windows environment:
+<programlisting>
+dynamic_library_path = 'C:\tools\postgresql;H:\my_project\lib;$libdir'
 </programlisting>
        </para>
 

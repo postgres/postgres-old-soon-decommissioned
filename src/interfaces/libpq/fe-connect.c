@@ -679,7 +679,7 @@ update_db_info(PGconn *conn)
 				*tmp = '\0';
 			}
 
-			tmp = last_path_separator(conn->dbName + offset);
+			tmp = last_dir_separator(conn->dbName + offset);
 			if (tmp != NULL)	/* database name given */
 			{
 				if (conn->dbName)

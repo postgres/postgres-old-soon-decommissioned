@@ -941,7 +941,7 @@ resolve_alt_dbpath(const char *dbpath, Oid dboid)
 	if (dbpath == NULL || dbpath[0] == '\0')
 		return NULL;
 
-	if (first_path_separator(dbpath))
+	if (first_dir_separator(dbpath))
 	{
 		if (!is_absolute_path(dbpath))
 			ereport(ERROR,

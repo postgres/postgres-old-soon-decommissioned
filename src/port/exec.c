@@ -28,13 +28,6 @@
 
 #define _(x) gettext(x)
 
-/* $PATH (or %PATH%) path separator */
-#ifdef WIN32
-#define PATHSEP ';'
-#else
-#define PATHSEP ':'
-#endif
-
 #ifndef S_IRUSR					/* XXX [TRH] should be in a header */
 #define S_IRUSR		 S_IREAD
 #define S_IWUSR		 S_IWRITE
@@ -196,7 +189,7 @@ find_my_exec(const char *argv0, char *retpath)
 	 * it).
 	 */
 	/* Does argv0 have a separator? */
-	if ((path = last_path_separator(argv0)))
+	if ((path = last_dir_separator(argv0)))
 	{
 		if (*++path == '\0')
 		{
@@ -247,7 +240,7 @@ find_my_exec(const char *argv0, char *retpath)
 			else
 				startp = endp + 1;
 
-			endp = strchr(startp, PATHSEP);
+			endp = first_path_separator(startp);
 			if (!endp)
 				endp = startp + strlen(startp);	/* point to end */
 
@@ -303,7 +296,7 @@ find_other_exec(const char *argv0, const char *target,
 		return -1;
 
 	/* Trim off program name and keep just directory */	
-	*last_path_separator(retpath) = '\0';
+	*last_dir_separator(retpath) = '\0';
 
 	snprintf(retpath + strlen(retpath), MAXPGPATH - strlen(retpath),
 			 "/%s%s", target, EXE);

@@ -268,7 +268,7 @@ main(int argc, char *const argv[])
 				strcpy(input_filename, argv[fnr]);
 
 				/* take care of relative paths */
-				ptr2ext = last_path_separator(input_filename);
+				ptr2ext = last_dir_separator(input_filename);
 				ptr2ext = (ptr2ext ? strrchr(ptr2ext, '.') : strrchr(input_filename, '.'));
 
 				/* no extension? */
