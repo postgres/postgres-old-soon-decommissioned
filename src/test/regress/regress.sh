@@ -57,6 +57,7 @@ fi
 
 echo "=============== Notes...                              ================="
 echo "postmaster must already be running for the regression tests to succeed."
+echo "The time zone is set to PST8PDT for these tests by the client frontend."
 echo "Please report any apparent problems to ports@postgresql.org"
 echo "See regress/README for more information."
 echo ""
