@@ -43,7 +43,7 @@ if [ `uname` = 'Linux' ]; then
     ipcs_lpid=
     did_anything=
 
-    if ps x | grep -s 'postmaster' >/dev/null 2>&1 ; then
+    if ps x | grep -s '[p]ostmaster' >/dev/null 2>&1 ; then
         echo "$CMDNAME: You still have a postmaster running." 1>&2
         exit 1
     fi
