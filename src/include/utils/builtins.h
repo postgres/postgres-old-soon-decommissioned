@@ -60,6 +60,8 @@ extern int8 charmi(int8 arg1, int8 arg2);
 extern int8 charmul(int8 arg1, int8 arg2);
 extern int8 chardiv(int8 arg1, int8 arg2);
 extern bool cideq(int8 arg1, int8 arg2);
+extern int8 text_char(text *arg1);
+extern text* char_text(int8 arg1);
 
 /* int.c */
 extern int32 int2in(char *num);
