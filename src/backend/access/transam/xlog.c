@@ -1003,8 +1003,9 @@ XLogWrite(XLogwrtRqst WriteRqst)
 
 			/* update pg_control, unless someone else already did */
 			SpinAcquire(ControlFileLockId);
-			if (ControlFile->logId != openLogId ||
-				ControlFile->logSeg != openLogSeg + 1)
+			if (ControlFile->logId < openLogId ||
+				(ControlFile->logId == openLogId &&
+				 ControlFile->logSeg < openLogSeg + 1))
 			{
 				ControlFile->logId = openLogId;
 				ControlFile->logSeg = openLogSeg + 1;
