@@ -191,6 +191,9 @@ typedef struct QueryInfo_
 #define PG_NUMERIC_MAX_PRECISION	1000
 #define PG_NUMERIC_MAX_SCALE		1000
 
+#define	INFO_INQUIRY_LEN		8192 /* this seems sufficiently big for
+queries used in info.c inoue 2001/05/17 */
+
 #include "misc.h"
 
 #endif
