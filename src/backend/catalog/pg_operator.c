@@ -916,6 +916,7 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 	}
 
 	/* if commutator and negator are different, do two updates */
+
 	if (HeapTupleIsValid(tup) &&
 		!(OidIsValid(((Form_pg_operator) GETSTRUCT(tup))->oprcom)))
 	{
@@ -934,6 +935,8 @@ OperatorUpd(Oid baseId, Oid commId, Oid negId)
 		values[Anum_pg_operator_oprcom - 1] = (Datum) NULL;
 		replaces[Anum_pg_operator_oprcom - 1] = ' ';
 	}
+
+	heap_endscan(pg_operator_scan);
 
 	/* check and update the negator, if necessary */
 	opKey[0].sk_argument = ObjectIdGetDatum(negId);
