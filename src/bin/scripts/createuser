@@ -193,7 +193,7 @@ QUERY="CREATE USER \"$NewUser\""
 
 SUBQUERY=
 [ "$SysID" ] &&    SUBQUERY="$SUBQUERY SYSID $SysID"
-[ "$Password" ] && SUBQUERY="$SUBQUERY PASSWORD \"$Password\""
+[ "$Password" ] && SUBQUERY="$SUBQUERY PASSWORD '$Password'"
 [ "$SUBQUERY" ] &&        QUERY="$QUERY WITH $SUBQUERY"
 
 [ "$CanCreateDb" = t ] && QUERY="$QUERY CREATEDB"
