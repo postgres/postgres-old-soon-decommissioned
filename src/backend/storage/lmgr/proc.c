@@ -501,7 +501,7 @@ int
 ProcSleep(LOCKMETHODTABLE *lockMethodTable,
 		  LOCKMODE lockmode,
 		  LOCK *lock,
-		  HOLDER *holder)
+		  PROCLOCK *holder)
 {
 	LWLockId	masterLock = lockMethodTable->masterLock;
 	PROC_QUEUE *waitQueue = &(lock->waitProcs);
