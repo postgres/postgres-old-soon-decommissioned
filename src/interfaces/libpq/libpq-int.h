@@ -56,7 +56,7 @@ typedef int ssize_t;			/* ssize_t doesn't exist in VC (atleast
  * pqcomm.h describe what the backend knows, not what libpq knows.
  */
 
-#define PG_PROTOCOL_LIBPQ	PG_PROTOCOL(3,108) /* XXX temporary value */
+#define PG_PROTOCOL_LIBPQ	PG_PROTOCOL(3,0)
 
 /*
  * POSTGRES backend dependent Constants.

@@ -106,7 +106,7 @@ typedef union SockAddr
 /* The earliest and latest frontend/backend protocol version supported. */
 
 #define PG_PROTOCOL_EARLIEST	PG_PROTOCOL(1,0)
-#define PG_PROTOCOL_LATEST		PG_PROTOCOL(3,108) /* XXX temporary value */
+#define PG_PROTOCOL_LATEST		PG_PROTOCOL(3,0)
 
 typedef uint32 ProtocolVersion; /* FE/BE protocol version number */
 
