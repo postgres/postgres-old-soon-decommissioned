@@ -22,6 +22,7 @@ verbose=
 analyze=
 table=
 dbname=
+alldb=
 
 while [ $# -gt 0 ]
 do
@@ -86,7 +87,7 @@ do
 		analyze="ANALYZE "
 		;;
 	--alldb|-a)
-		dbname="`psql $PASSWDOPT $AUTHOPT $PGHOSTOPT $PGPORTOPT -q -t -A -d template1 -c 'SELECT datname FROM pg_database'`"
+		alldb=Y
 		;;
 	--table|-t)
 		table="$2"
@@ -130,6 +131,10 @@ if [ "$usage" ]; then
 	echo "    -?,                  --help              "
 	echo ""
 	exit 1
+fi
+
+if [ ! -z "$alldb" ]; then
+	dbname="`psql $PASSWDOPT $AUTHOPT $PGHOSTOPT $PGPORTOPT -q -t -A -d template1 -c 'SELECT datname FROM pg_database'`"
 fi
 
 if [ -z "$dbname" ]; then
