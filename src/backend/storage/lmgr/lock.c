@@ -33,6 +33,8 @@
  */
 #include <stdio.h>		/* for sprintf() */
 #include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 #include "postgres.h"
 #include "storage/shmem.h"
