@@ -53,7 +53,7 @@ extern Relation ExecCreatR(TupleDesc tupType, Oid relationOid);
 /*
  * prototypes from functions in execJunk.c
  */
-extern JunkFilter *ExecInitJunkFilter(List *targetList);
+extern JunkFilter *ExecInitJunkFilter(List *targetList, TupleDesc tupType);
 extern bool ExecGetJunkAttribute(JunkFilter *junkfilter, TupleTableSlot *slot,
 					 char *attrName, Datum *value, bool *isNull);
 extern HeapTuple ExecRemoveJunk(JunkFilter *junkfilter, TupleTableSlot *slot);
