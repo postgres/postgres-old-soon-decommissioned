@@ -180,7 +180,6 @@ PostgreSQL Reference Manual
   </partintro>
 
    &initdb;
-   &initlocation;
    &ipcclean;
    &pgControldata;
    &pgCtl;

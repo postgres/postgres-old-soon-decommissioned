@@ -13,7 +13,7 @@ subdir = src/bin
 top_builddir = ../..
 include $(top_builddir)/src/Makefile.global
 
-DIRS := initdb initlocation ipcclean pg_ctl pg_dump \
+DIRS := initdb ipcclean pg_ctl pg_dump \
 	psql scripts pg_config pg_controldata pg_resetxlog
 
 all install installdirs uninstall depend distprep:

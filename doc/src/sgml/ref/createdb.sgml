@@ -90,8 +90,7 @@ PostgreSQL documentation
       <term><option>--location <replaceable class="parameter">location</replaceable></></term>
       <listitem>
        <para>
-	Specifies the alternative location for the database.  See also <xref
-	linkend="app-initlocation">.
+	Specifies the alternative location for the database.
        </para>
       </listitem>
      </varlistentry>
