@@ -26,6 +26,8 @@ OBJS = acl.o arrayfuncs.o arrayutils.o bool.o cash.o char.o \
 	ri_triggers.o pg_lzcompress.o pg_locale.o formatting.o \
 	ascii.o quote.o pgstatfuncs.o encode.o
 
+like.o: like.c like_match.c
+
 all: SUBSYS.o
 
 SUBSYS.o: $(OBJS)
