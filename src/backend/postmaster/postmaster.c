@@ -2243,10 +2243,6 @@ BackendFinalize(Port *port)
 	/* Reset MyProcPid to new backend's pid */
 	MyProcPid = getpid();
 
-#ifdef EXEC_BACKEND
-	read_nondefault_variables();
-#endif
-
 	/*
 	 * Initialize libpq and enable reporting of elog errors to the client.
 	 * Must do this now because authentication uses libpq to send

@@ -236,7 +236,7 @@ BootstrapMain(int argc, char *argv[])
 	 *
 	 * If we are running under the postmaster, this is done already.
 	 */
-	if (!IsUnderPostmaster)
+	if (!IsUnderPostmaster || ExecBackend)
 		MemoryContextInit();
 
 	/*
@@ -245,9 +245,12 @@ BootstrapMain(int argc, char *argv[])
 
 	/* Set defaults, to be overriden by explicit options below */
 	dbName = NULL;
-	if (!IsUnderPostmaster)
+	if (!IsUnderPostmaster || ExecBackend)
 	{
 		InitializeGUCOptions();
+#ifdef EXEC_BACKEND
+		read_nondefault_variables();
+#endif
 		potential_DataDir = getenv("PGDATA");	/* Null if no PGDATA
 												 * variable */
 	}
@@ -306,7 +309,7 @@ BootstrapMain(int argc, char *argv[])
 		AttachSharedMemoryAndSemaphores();
 	}
 	
-	if (!IsUnderPostmaster)
+	if (!IsUnderPostmaster || ExecBackend)
 	{
 		if (!potential_DataDir)
 		{

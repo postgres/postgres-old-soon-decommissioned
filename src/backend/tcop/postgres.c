@@ -1139,9 +1139,12 @@ PostgresMain(int argc, char *argv[], const char *username)
 	Noversion = false;
 	EchoQuery = false;
 
-	if (!IsUnderPostmaster)
+	if (!IsUnderPostmaster || ExecBackend)
 	{
 		InitializeGUCOptions();
+#ifdef EXEC_BACKEND
+		read_nondefault_variables();
+#endif
 		potential_DataDir = getenv("PGDATA");
 	}
 
@@ -1676,7 +1679,7 @@ PostgresMain(int argc, char *argv[], const char *username)
 	if (!IsUnderPostmaster)
 	{
 		puts("\nPOSTGRES backend interactive interface ");
-		puts("$Revision: 1.330 $ $Date: 2003/05/03 03:52:07 $\n");
+		puts("$Revision: 1.331 $ $Date: 2003/05/03 05:13:20 $\n");
 	}
 
 	/*
