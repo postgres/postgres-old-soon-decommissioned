@@ -238,6 +238,7 @@ _copyIndexScan(IndexScan *from)
 	newnode->indxid = listCopy(from->indxid);
 	Node_Copy(from, newnode, indxqual);
 	Node_Copy(from, newnode, indxqualorig);
+	newnode->indxorderdir = from->indxorderdir;
 
 	return newnode;
 }

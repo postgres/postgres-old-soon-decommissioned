@@ -1024,6 +1024,7 @@ make_indexscan(List *qptlist,
 	node->indxid = indxid;
 	node->indxqual = indxqual;
 	node->indxqualorig = indxqualorig;
+	node->indxorderdir = NoMovementScanDirection;
 	node->scan.scanstate = (CommonScanState *) NULL;
 
 	return node;

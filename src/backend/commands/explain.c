@@ -200,6 +200,8 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 	switch (nodeTag(plan))
 	{
 		case T_IndexScan:
+			if (ScanDirectionIsBackward(((IndexScan *)plan)->indxorderdir))
+				appendStringInfo(str, " Backward");
 			appendStringInfo(str, " using ");
 			i = 0;
 			foreach(l, ((IndexScan *) plan)->indxid)

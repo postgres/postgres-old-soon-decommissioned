@@ -175,6 +175,7 @@ typedef struct IndexScan
 	List	   *indxid;
 	List	   *indxqual;
 	List	   *indxqualorig;
+	ScanDirection	indxorderdir;
 	IndexScanState *indxstate;
 } IndexScan;
 

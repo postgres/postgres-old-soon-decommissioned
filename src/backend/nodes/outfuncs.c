@@ -445,6 +445,7 @@ _outIndexScan(StringInfo str, IndexScan *node)
 	appendStringInfo(str, " :indxqualorig ");
 	_outNode(str, node->indxqualorig);
 
+	appendStringInfo(str, " :indxorderdir %d ", node->indxorderdir);
 }
 
 /*

@@ -437,6 +437,9 @@ _equalIndexScan(IndexScan *a, IndexScan *b)
 	if (a->scan.scanrelid != b->scan.scanrelid)
 		return false;
 
+	if (a->indxorderdir != b->indxorderdir)
+		return false;
+
 	if (!equali(a->indxid, b->indxid))
 		return false;
 	return true;

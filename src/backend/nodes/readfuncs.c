@@ -532,6 +532,11 @@ _readIndexScan()
 	token = lsptok(NULL, &length);		/* eat :indxqualorig */
 	local_node->indxqualorig = nodeRead(true);	/* now read it */
 
+	token = lsptok(NULL, &length);		/* eat :indxorderdir */
+	token = lsptok(NULL, &length);		/* get indxorderdir */
+
+	local_node->indxorderdir = atoi(token);
+
 	return local_node;
 }
 
