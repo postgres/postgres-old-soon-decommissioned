@@ -26,6 +26,9 @@ all: all-lib
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib
 
+rint.c: %.c : $(top_srcdir)/src/port/%.c
+	rm -f $@ && $(LN_S) $< .
+
 install: all installdirs install-lib
 
 installdirs:

@@ -46,7 +46,7 @@ backend_src = $(top_srcdir)/src/backend
 # For port modules, this only happens if configure decides the module
 # is needed (see filter hack in OBJS, above).
 
-getaddrinfo.c inet_aton.c snprintf.c strerror.c path.c: %.c : $(top_srcdir)/src/port/%.c
+crypt.c getaddrinfo.c inet_aton.c snprintf.c strerror.c path.c: %.c : $(top_srcdir)/src/port/%.c
 	rm -f $@ && $(LN_S) $< .
 
 dllist.c: $(backend_src)/lib/dllist.c
@@ -75,5 +75,5 @@ uninstall: uninstall-lib
 	rm -f $(DESTDIR)$(includedir)/libpq-fe.h $(DESTDIR)$(includedir_internal)/libpq-int.h $(includedir_internal)/pqexpbuffer.h
 
 clean distclean maintainer-clean: clean-lib
-	rm -f $(OBJS) getaddrinfo.c inet_aton.c snprintf.c strerror.c path.c
+	rm -f $(OBJS) crypt.c getaddrinfo.c inet_aton.c snprintf.c strerror.c path.c
 	rm -f $(OBJS) dllist.c md5.c ip.c wchar.c encnames.c
