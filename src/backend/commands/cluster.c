@@ -349,8 +349,7 @@ rebuildheap(Oid OIDNewHeap, Oid OIDOldHeap, Oid OIDOldIndex)
 
 	ScanDesc = index_beginscan(LocalOldIndex, false, 0, (ScanKey) NULL);
 
-	while ((ScanResult =
-			index_getnext(ScanDesc, ForwardScanDirection)) != NULL)
+	while ((ScanResult = index_getnext(ScanDesc, ForwardScanDirection)) != NULL)
 	{
 
 		HeapTid = &ScanResult->heap_iptr;
