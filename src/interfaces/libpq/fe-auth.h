@@ -14,6 +14,7 @@
 #define FE_AUTH_H
 
 #include "libpq-fe.h"
+#include "libpq-int.h"
 
 
 /*----------------------------------------------------------------
@@ -33,8 +34,10 @@
 
 extern int
 fe_sendauth(AuthRequest areq, PGconn *conn, const char *hostname,
-			const char *password, char *PQerromsg);
+			const char *password, char *PQerrormsg);
+extern MsgType fe_getauthsvc(char *PQerrormsg);
 extern void fe_setauthsvc(const char *name, char *PQerrormsg);
+extern char *fe_getauthname(char *PQerrormsg);
 
 #define PG_KRB4_VERSION "PGVER4.1"		/* at most KRB_SENDAUTH_VLEN chars */
 #define PG_KRB5_VERSION "PGVER5.1"

@@ -11,20 +11,25 @@
  *
  *-------------------------------------------------------------------------
  */
+
+#include "libpq-fe.h"
+#include "libpq-int.h"
+#include "postgres.h"
+
 #ifdef WIN32
 #include "win32.h"
 #include <io.h>
 #else
+#if !defined(NO_UNISTD_H)
 #include <unistd.h>
 #endif
-#include <stdio.h>
+#endif
 #include <string.h>
 #include <fcntl.h>
 #include <sys/stat.h>
-#include <sys/types.h>
-#include "postgres.h"
-#include "libpq-fe.h"
-#include "libpq/libpq-fs.h"
+
+#include "libpq/libpq-fs.h"	/* must come after sys/stat.h */
+
 
 #define LO_BUFSIZE		  1024
 

@@ -17,10 +17,9 @@
  *-------------------------------------------------------------------------
  */
 #include <stdlib.h>
-
 #include <signal.h>
 
-#include "libpq/pqsignal.h"
+#include "pqsignal.h"
 
 pqsigfunc
 pqsignal(int signo, pqsigfunc func)

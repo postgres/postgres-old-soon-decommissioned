@@ -14,7 +14,14 @@
 SRCDIR= ..
 include $(SRCDIR)/Makefile.global
 
-.DEFAULT all:
+
+perl-makefile-dep :=
+ifeq ($(USE_PERL), true)
+  perl-makefile-dep := perl5/Makefile
+endif
+
+
+.DEFAULT all: $(perl-makefile-dep)
 	$(MAKE) -C libpq $@
 #	$(MAKE) -C ecpg $@
 ifeq ($(HAVE_Cplusplus), true)
@@ -26,6 +33,8 @@ ifeq ($(USE_TCL), true)
 	$(MAKE) -C libpgtcl $@
 endif
 ifeq ($(USE_PERL), true)
-	cd perl5 && perl Makefile.PL
 	$(MAKE) -C perl5 $@
 endif
+
+perl5/Makefile: perl5/Makefile.PL
+	cd perl5 && perl Makefile.PL
