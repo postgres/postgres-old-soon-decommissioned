@@ -35,5 +35,6 @@ extern int	specialAttNum(char *a);
 extern bool attnameIsSet(Relation rd, char *name);
 extern int	attnumAttNelems(Relation rd, int attid);
 extern Oid	attnumTypeId(Relation rd, int attid);
+extern void warnAutoRange(ParseState *pstate, char *refname);
 
 #endif	 /* PARSE_RELATION_H */
