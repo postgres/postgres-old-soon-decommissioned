@@ -20,6 +20,7 @@ Postgres documentation
    &begin;
    &close;
    &cluster;
+   &commentOn;
    &commit;
    &copyTable;
    &createAggregate;
@@ -63,6 +64,7 @@ Postgres documentation
    &lock;
    &move;
    &notify;
+   &reindex;
    &reset;
    &revoke;
    &rollback;
