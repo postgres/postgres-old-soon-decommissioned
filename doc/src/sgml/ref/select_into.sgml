@@ -89,7 +89,7 @@ where <replaceable class="PARAMETER">from_item</replaceable> can be:
 
    <para>
     All other inputs are described in detail for
-    <xref linkend="sql-select" endterm="sql-select-title">.
+    <xref linkend="sql-select">.
    </para>
   </refsect2>
 
@@ -103,9 +103,9 @@ where <replaceable class="PARAMETER">from_item</replaceable> can be:
 
    <para>
     Refer to
-    <xref linkend="sql-createtable" endterm="sql-createtable-title">
+    <xref linkend="sql-createtable">
     and
-    <xref linkend="sql-select" endterm="sql-select-title">
+    <xref linkend="sql-select">
     for a summary of possible output messages.
    </para>
   </refsect2>
@@ -128,7 +128,7 @@ where <replaceable class="PARAMETER">from_item</replaceable> can be:
 
    <note>
     <para>
-     <xref linkend="sql-createtableas" endterm="sql-createtableas-title">
+     <xref linkend="sql-createtableas">
      is functionally equivalent to <command>SELECT INTO</command>.
      <command>CREATE TABLE AS</command> is the recommended syntax, since
      <command>SELECT INTO</command> is not standard.  In fact, this form of

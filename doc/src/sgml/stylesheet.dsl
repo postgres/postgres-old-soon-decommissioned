@@ -123,6 +123,16 @@
 ;;; XXX The above is very ugly.  It might be better to run 'tidy' on
 ;;; the resulting *.html files.
 
+
+;; Format multiple terms in varlistentry vertically, instead
+;; of comma-separated.
+(element (varlistentry term)
+  (make sequence
+    (process-children-trim)
+    (if (not (last-sibling?))
+        (make empty-element gi: "BR")
+        (empty-sosofo))))
+
 ]]> <!-- %output-html -->
 
 <![ %output-print; [
