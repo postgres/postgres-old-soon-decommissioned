@@ -2607,9 +2607,9 @@ options         SEMMAP=256
         <literal>option</literal> singular.)
        </para>
        <para>
-        You may also want to use the <application>sysctl</> setting to
+        You might also want to use the <application>sysctl</> setting to
         lock shared memory into RAM and prevent it from being paged out
-        to swap.
+        to swap, e.g. <literal>kern.ipc.shm_use_phys</>.
        </para>
       </listitem>
      </varlistentry>
