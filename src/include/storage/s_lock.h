@@ -294,14 +294,31 @@ tas_dummy()
 
 #if defined(NEED_I386_TAS_ASM)
 
+#if defined(USE_UNIVEL_CC_ASM)
+asm void S_LOCK(char *lval)
+{
+% lab again;
+/* Upon entry, %eax will contain the pointer to the lock byte */
+	pushl   %ebx
+	xchgl   %eax,%ebx
+	movb    $-1,%al
+again:
+	lock
+	xchgb   %al,(%ebx)
+	cmpb    $0,%al
+	jne     again
+	popl    %ebx
+}
+#else
 #define	S_LOCK(lock)	do \
 						{ \
 							slock_t		_res; \
 							do \
 							{ \
-				__asm__("xchgb %0,%1": "=q"(_res), "=m"(*lock):"0"(0x1)); \
+				__asm__("lock xchgb %0,%1": "=q"(_res), "=m"(*lock):"0"(0x1)); \
 							} while (_res != 0); \
 						} while (0)
+#endif
 
 #define	S_UNLOCK(lock)	(*(lock) = 0)
 

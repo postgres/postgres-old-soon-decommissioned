@@ -51,7 +51,14 @@ endif
 ifeq ($(PORTNAME), i386_solaris)
   install-shlib-dep	:= install-shlib
   shlib			:= libpgtcl.so.1
-  LDFLAGS_SL		= -G -z text
+  LDFLAGS_SL		= -G -z text -L $(SRCDIR)/interfaces/libpq -lpq
+  CFLAGS		+= $(CFLAGS_SL)
+endif
+
+ifeq ($(PORTNAME), univel)
+  install-shlib-dep	:= install-shlib
+  shlib			:= libpgtcl.so.1
+  LDFLAGS_SL		= -G -z text -L $(SRCDIR)/interfaces/libpq -lpq
   CFLAGS		+= $(CFLAGS_SL)
 endif
 
