@@ -198,7 +198,7 @@ slashUsage(unsigned short int pager)
 
 	fprintf(output, _("Input/Output\n"));
 	fprintf(output, _("  \\i FILE        execute commands from file\n"));
-	fprintf(output, _("  \\o FILE        send all query results to file or |pipe\n"));
+	fprintf(output, _("  \\o [FILE]      send all query results to file or |pipe\n"));
 	fprintf(output, _("\n"));
 
 	fprintf(output, _("Informational\n"));
