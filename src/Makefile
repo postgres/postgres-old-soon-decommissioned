@@ -22,6 +22,12 @@ ETAGS = etags
 XARGS = xargs
 
 .DEFAULT all:
+	@set - `$(MAKE) -v -f /dev/null 2>&1`.; \
+	if test $$1 != GNU; then \
+	  echo "This Makefile requires GNU make."; \
+	  echo "Please read the file INSTALL in this directory for details."; \
+	  false ; \
+	fi
 	@if test $(PORTNAME) = UNDEFINED; then \
 	  echo You must set the PORTNAME value in Makefile.global before \
 	       you can build Postgres. ;\
