@@ -90,19 +90,24 @@ LocalBufferAlloc(Relation reln, BlockNumber blockNum, bool *foundPtr)
 	{
 		Relation	bufrel = RelationNodeCacheGetRelation(bufHdr->tag.rnode);
 
-		/*
-		 * The relcache is not supposed to throw away temp rels, so this
-		 * should always succeed.
-		 */
-		Assert(bufrel != NULL);
-
 		/* flush this page */
-		smgrwrite(DEFAULT_SMGR, bufrel, bufHdr->tag.blockNum,
-				  (char *) MAKE_PTR(bufHdr->data));
-		LocalBufferFlushCount++;
+		if (bufrel == (Relation) NULL)
+		{
+			smgrblindwrt(DEFAULT_SMGR,
+						 bufHdr->tag.rnode,
+						 bufHdr->tag.blockNum,
+						 (char *) MAKE_PTR(bufHdr->data));
+		}
+		else
+		{
+			smgrwrite(DEFAULT_SMGR, bufrel,
+					  bufHdr->tag.blockNum,
+					  (char *) MAKE_PTR(bufHdr->data));
+			/* drop refcount incremented by RelationNodeCacheGetRelation */
+			RelationDecrementReferenceCount(bufrel);
+		}
 
-		/* drop refcount incremented by RelationNodeCacheGetRelation */
-		RelationDecrementReferenceCount(bufrel);
+		LocalBufferFlushCount++;
 	}
 
 	/*
