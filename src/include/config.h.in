@@ -342,6 +342,9 @@
 /* Set to 1 if you have <readline/readline.h> */
 #undef HAVE_READLINE_READLINE_H
 
+/* Define if you have <sys/ipc.h> */
+#undef HAVE_SYS_IPC_H
+
 /* Set to 1 if  you have <sys/select.h> */
 #undef HAVE_SYS_SELECT_H
 

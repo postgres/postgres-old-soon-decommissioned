@@ -23,7 +23,9 @@
 #define IPC_H
 
 #include <sys/types.h>
+#ifdef HAVE_SYS_IPC_H
 #include <sys/ipc.h>			/* For IPC_PRIVATE */
+#endif
 
 #include "config.h"
 
