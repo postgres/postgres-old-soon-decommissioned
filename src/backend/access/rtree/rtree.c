@@ -931,6 +931,8 @@ rtpicksplit(Relation r,
 						  PointerGetDatum(&size_alpha));
 			FunctionCall2(&rtstate->sizeFn, union_dr,
 						  PointerGetDatum(&size_beta));
+			pfree(DatumGetPointer(union_dl));
+			pfree(DatumGetPointer(union_dr));
 
 			diff = (size_alpha - size_l) - (size_beta - size_r);
 
