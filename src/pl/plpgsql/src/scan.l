@@ -42,6 +42,8 @@ static int	scanner_functype;
 static int	scanner_typereported;
 int	plpgsql_SpaceScanned = 0;
 
+extern int yylineno;
+
 static void plpgsql_input(char *buf, int *result, int max);
 #define YY_INPUT(buf,res,max)	plpgsql_input(buf, &res, max)
 %}
