@@ -889,7 +889,7 @@ plpgsql_parse_wordtype(char *word)
 	 *
 	 * XXX this should be improved to handle qualified-type-name references.
 	 */
-	typeOid = LookupTypeName(makeTypeName(xlateSqlType(cp)));
+	typeOid = LookupTypeName(makeTypeName(cp));
 	if (OidIsValid(typeOid))
 	{
 		HeapTuple	typeTup;

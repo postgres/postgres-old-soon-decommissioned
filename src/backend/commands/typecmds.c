@@ -133,21 +133,22 @@ DefineType(List *names, List *parameters)
 
 			/*
 			 * Note: if argument was an unquoted identifier, parser will
-			 * have applied xlateSqlType() to it, so be prepared to
+			 * have applied translations to it, so be prepared to
 			 * recognize translated type names as well as the nominal
 			 * form.
 			 */
-			if (strcasecmp(a, "double") == 0)
+			if (strcasecmp(a, "double") == 0 ||
+				strcasecmp(a, "float8") == 0 ||
+				strcasecmp(a, "pg_catalog.float8") == 0)
 				alignment = 'd';
-			else if (strcasecmp(a, "float8") == 0)
-				alignment = 'd';
-			else if (strcasecmp(a, "int4") == 0)
+			else if (strcasecmp(a, "int4") == 0 ||
+					 strcasecmp(a, "pg_catalog.int4") == 0)
 				alignment = 'i';
-			else if (strcasecmp(a, "int2") == 0)
+			else if (strcasecmp(a, "int2") == 0 ||
+					 strcasecmp(a, "pg_catalog.int2") == 0)
 				alignment = 's';
-			else if (strcasecmp(a, "char") == 0)
-				alignment = 'c';
-			else if (strcasecmp(a, "bpchar") == 0)
+			else if (strcasecmp(a, "char") == 0 ||
+					 strcasecmp(a, "pg_catalog.bpchar") == 0)
 				alignment = 'c';
 			else
 				elog(ERROR, "DefineType: \"%s\" alignment not recognized",

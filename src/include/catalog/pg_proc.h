@@ -1681,6 +1681,14 @@ DESCR("convert date and time with time zone to timestamp with time zone");
 
 DATA(insert OID = 1364 (  time				 PGNSP PGUID 14 f t f t f i 1 1083 "702" 100 0 0 100  "select time(cast($1 as timestamp without time zone))" - _null_ ));
 DESCR("convert abstime to time");
+
+DATA(insert OID = 1367 (  character_length	PGNSP PGUID 12 f t f t f i 1	23 "1042" 100 0 0 100  bpcharlen - _null_ ));
+DESCR("character length");
+DATA(insert OID = 1368 (  character_length	PGNSP PGUID 12 f t f t f i 1	23 "1043" 100 0 0 100  varcharlen - _null_ ));
+DESCR("character length");
+DATA(insert OID = 1369 (  character_length	PGNSP PGUID 12 f t f t f i 1	23 "25" 100 0 0 100  textlen - _null_ ));
+DESCR("character length");
+
 DATA(insert OID = 1370 (  interval			 PGNSP PGUID 12 f t t t f i 1 1186 "1083" 100 0 0 100  time_interval - _null_ ));
 DESCR("convert time to interval");
 DATA(insert OID = 1372 (  char_length		 PGNSP PGUID 12 f t f t f i 1	23	 "1042" 100 0 0 100  bpcharlen - _null_ ));
@@ -1705,7 +1713,7 @@ DATA(insert OID = 1380 (  timetz_smaller   PGNSP PGUID 12 f t f t f i 2 1266 "12
 DESCR("smaller of two");
 
 DATA(insert OID = 1381 (  char_length	   PGNSP PGUID 12 f t f t f i 1 23 "25" 100 0 0 100  textlen - _null_ ));
-DESCR("length");
+DESCR("character length");
 
 DATA(insert OID = 1382 (  date_part    PGNSP PGUID 14 f t f t f s 2  701 "25 702" 100 0 0 100  "select date_part($1, timestamptz($2))" - _null_ ));
 DESCR("extract field from abstime");
