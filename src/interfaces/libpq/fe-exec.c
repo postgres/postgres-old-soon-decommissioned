@@ -612,6 +612,7 @@ getAnotherTuple(PGconn *conn, int binary)
 			if (vlen > 0)
 				if (pqGetnchar((char *) (tup[i].value), vlen, conn))
 					return EOF;
+			/* we have to terminate this ourselves */
 			tup[i].value[vlen] = '\0';
 		}
 		/* advance the bitmap stuff */
