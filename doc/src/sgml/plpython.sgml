@@ -10,6 +10,28 @@
   <para>
    This chapter is not fully developed yet.
   </para>
+  <para>
+   The current version of PL/Python functions as a trusted language only;
+   access to the filesystem and other local resources are disabled.
+   Specifically, PL/Python uses the Python restricted execution environment,
+   further restricts it to prevent the use of the file open call, and
+   allows only modules from a specific list to be imported.  Presently,
+   that list includes:  array, bisect, binascii, calendar, cmath, codecs,
+   errno, marshal, math, md5, mpz, operator, pcre, pickle, random, re,
+   regex, sre, sha, string, StringIO, struct, time, whrandom, and zlib.
+  </para>
+  <para>
+   There is discussion on creating an untrusted language variant for a
+   future release.
+  </para>
+  <para>
+   In the current version, any postgresql error encountered while running
+   a PL/Python function will result in the immediate termination of that
+   function by the backend.  It is not possible to trap error conditions
+   using Python try ... catch constructs.  For example, a syntax error in
+   an SQL statement passed to the plpy.execute() call will terminate the
+   function.  This behavior may be changed in a future release.
+  </para>
  </note>
 
  <sect1 id="plpython-install">
