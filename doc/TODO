@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Thu Sep  4 22:20:40 EDT 2003
+Last updated:		Thu Sep  4 22:51:54 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -394,6 +394,8 @@ Vacuum
 * Provide automatic running of vacuum in the background in backend
   rather than in /contrib [vacuum]
 * Allow free space map to be auto-sized or warn when it is too small
+* Maintain a map of recently-expired of pages so vacuum can reclaim
+  free space without a sequential scan
 
 
 Locking
