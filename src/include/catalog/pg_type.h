@@ -364,6 +364,9 @@ DATA(insert OID = 1296 ( timestamp	 PGUID	4  19 t b t \054 0	0 timestamp_in time
 DESCR("limited-range ISO-format date and time");
 #define TIMESTAMPOID	1296
 
+
+#define USE_ATTTYPMOD(typeid)	((typeid) == BPCHAROID || (typeid) == VARCHAROID)
+
 /*
  * prototypes for functions in pg_type.c
  */

@@ -563,6 +563,8 @@ InitPlan(CmdType operation, Query *parseTree, Plan *plan, EState *estate)
 				 */
 				tupdesc = CreateTupleDescCopy(tupType);
 
+				setAtttypmodForCreateTable(tupdesc, targetList, rangeTable);
+
 				intoRelationId = heap_create_with_catalog(intoName, tupdesc);
 
 				FreeTupleDesc(tupdesc);

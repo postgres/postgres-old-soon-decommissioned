@@ -120,6 +120,8 @@ extern TupleDesc ExecTypeFromTL(List *targetList);
 extern void ResetTupleCount(void);
 extern void ExecAssignNodeBaseInfo(EState *estate, CommonState *basenode,
 					   Plan *parent);
+extern void setAtttypmodForCreateTable(TupleDesc tupType, List *targetList,
+							List *rangeTable);
 extern void ExecAssignExprContext(EState *estate, CommonState *commonstate);
 extern void ExecAssignResultType(CommonState *commonstate,
 					 TupleDesc tupDesc);
