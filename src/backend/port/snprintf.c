@@ -38,6 +38,8 @@
 
 # include "postgres.h"
 
+# include "regex/cdefs.h"
+
 # include <stdarg.h>
 # define VA_LOCAL_DECL  va_list args;
 # define VA_START(f)    va_start(args, f)
