@@ -20,7 +20,7 @@ require "ucs2utf.pl";
 
 # first generate UTF-8 --> EUC_KR table
 
-$in_file = "OLD5601.TXT";
+$in_file = "KSX1001.TXT";
 
 open( FILE, $in_file ) || die( "cannot open $in_file" );
 
