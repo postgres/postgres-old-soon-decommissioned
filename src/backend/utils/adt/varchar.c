@@ -333,7 +333,7 @@ varcharlen(char *arg)
 	if (!PointerIsValid(arg))
 		elog(ERROR, "Bad (null) varchar() external representation", NULL);
 
-	return VARSIZE(arg);
+	return VARSIZE(arg) - VARHDRSZ;
 }
 
 bool
