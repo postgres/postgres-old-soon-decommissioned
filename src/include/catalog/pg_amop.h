@@ -355,6 +355,17 @@ DATA(insert OID = 0 (  403 1690 1695 4 ));
 DATA(insert OID = 0 (  403 1690   59 5 ));
 
 /*
+ *    nbtree lztext
+ */
+
+DATA(insert OID = 0 (  403 1663 1659 1 ));
+DATA(insert OID = 0 (  403 1663 1660 2 ));
+DATA(insert OID = 0 (  403 1663 1657 3 ));
+DATA(insert OID = 0 (  403 1663 1662 4 ));
+DATA(insert OID = 0 (  403 1663 1661 5 ));
+
+
+/*
  *	hash table _ops
  */
 

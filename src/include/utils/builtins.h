@@ -35,6 +35,7 @@
 #include "utils/timestamp.h"
 #include "utils/nabstime.h"
 #include "utils/date.h"
+#include "utils/lztext.h"
 
 /*
  *		Defined in adt/
@@ -557,6 +558,21 @@ extern Numeric	float4_numeric(float32 val);
 extern float32	numeric_float4(Numeric num);
 extern Numeric	float8_numeric(float64 val);
 extern float64	numeric_float8(Numeric num);
+
+/* lztext.c */
+lztext       *lztextin(char *str);
+char     *lztextout(lztext *lz);
+text     *lztext_text(lztext *lz);
+lztext       *text_lztext(text *txt);
+int32     lztextlen(lztext *lz);
+int32     lztextoctetlen(lztext *lz);
+int32     lztext_cmp(lztext *lz1, lztext *lz2);
+bool      lztext_eq(lztext *lz1, lztext *lz2);
+bool      lztext_ne(lztext *lz1, lztext *lz2);
+bool      lztext_gt(lztext *lz1, lztext *lz2);
+bool      lztext_ge(lztext *lz1, lztext *lz2);
+bool      lztext_lt(lztext *lz1, lztext *lz2);
+bool      lztext_le(lztext *lz1, lztext *lz2);
 
 /* ri_triggers.c */
 extern HeapTuple	RI_FKey_check_ins(FmgrInfo *proinfo);
