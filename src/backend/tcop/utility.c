@@ -56,6 +56,9 @@
 #include "utils/syscache.h"
 #endif
 
+void DefineUser(CreateUserStmt *stmt);
+void AlterUser(AlterUserStmt *stmt);
+void RemoveUser(char *username);
 
 /* ----------------
  *		CHECK_IF_ABORTED() is used to avoid doing unnecessary
@@ -239,13 +242,12 @@ ProcessUtility(Node * parsetree,
 				CHECK_IF_ABORTED();
 
 				/*
-				 * owner checking done in PerformAddAttribute (now
-				 * recursive)
+				 * owner checking done in PerformAddAttribute (now recursive)
 				 */
 				PerformAddAttribute(stmt->relname,
 									userName,
 									stmt->inh,
-									stmt->colDef);
+									(ColumnDef *)stmt->colDef);
 			}
 			break;
 
