@@ -664,6 +664,21 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
+       <term>--with-java</term>
+       <listitem>
+        <para>
+         Build the <acronym>JDBC</acronym> driver and associated Java
+         packages.  This option requires
+         <application>Ant</application> to be installed (as well as a
+         <acronym>JDK</acronym>, of course).  Refer to the
+         <acronym>JDBC</acronym> driver documentation in the
+         <citetitle>Programmer's Guide</citetitle> for more
+         information.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
        <term>--enable-syslog</term>
        <listitem>
         <para>
@@ -725,7 +740,6 @@ su - postgres
 <userinput>env CC=/opt/bin/gcc CFLAGS='-02 -pipe' ./configure</>
 </screen>
    </para>
-    
   </step>
 
   <step>
