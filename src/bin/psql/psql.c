@@ -2099,7 +2099,7 @@ MainLoop(PsqlSettings *pset, char *query, FILE *source)
 		 * for next command
 		 */
 
-		if (line == NULL || *line == '\0')
+		if (line == NULL || (!interactive && *line == '\0'))
 		{		/* 	No more input.	Time to quit, or \i done */
 			if (!pset->quiet)
 				printf("EOF\n");/* Goes on prompt line */
@@ -2127,6 +2127,7 @@ MainLoop(PsqlSettings *pset, char *query, FILE *source)
 		if (!interactive && !pset->singleStep && !pset->quiet)
 			fprintf(stderr, "%s\n", line);
 
+		slashCmdStatus = CMD_UNKNOWN;
 		/* nothing on line after trimming? then ignore */
 		if (line[0] == '\0')
 		{
@@ -2265,7 +2266,6 @@ MainLoop(PsqlSettings *pset, char *query, FILE *source)
 			continue;
 		}
 
-		slashCmdStatus = CMD_UNKNOWN;
 		if (!in_quote && query_start[0] == '\\')
 		{
 			slashCmdStatus = HandleSlashCmds(pset,
