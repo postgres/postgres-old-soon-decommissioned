@@ -71,6 +71,7 @@
 
 (define (biblioentry-inline-elements)
   (list
+   (normalize "author")
    (normalize "authorgroup")
    (normalize "title")
    (normalize "subtitle")   
@@ -87,7 +88,8 @@
    (normalize "pubsnumber")
    (normalize "date")
    (normalize "pubdate")
-   (normalize "pagenums")))
+   (normalize "pagenums")
+   (normalize "bibliomisc")))
 
 (mode biblioentry-inline-mode
 
