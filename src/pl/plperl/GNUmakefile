@@ -11,9 +11,9 @@ all: Makefile
 	$(MAKE) -f $< all
 
 Makefile: Makefile.PL
-	@plperl_installdir='$(plperl_installdir)' \
-	  EXTRA_INCLUDES='-I$(top_srcdir)/src/include $(INCLUDES)' \
-	  $(PERL) $<
+	plperl_installdir='$(plperl_installdir)' \
+	EXTRA_INCLUDES='$(filter -I%, $(CPPFLAGS))' \
+	$(PERL) $<
 
 install: all installdirs
 	$(MAKE) -f Makefile install
