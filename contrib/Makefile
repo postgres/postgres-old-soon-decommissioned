@@ -26,6 +26,7 @@ WANTED_DIRS = \
 		noupdate	\
 		oid2name	\
 		pg_autovacuum	\
+		pg_buffercache	\
 		pg_dumplo	\
 		pg_trgm		\
 		pgbench		\
