@@ -29,11 +29,9 @@ clean:
 	$(MAKE) -C interfaces $@
 	$(MAKE) -C bin $@
 	$(MAKE) -C pl $@
-	$(MAKE) -C utils $@
 	$(MAKE) -C test $@
 
 distclean maintainer-clean:
-	-$(MAKE) -C utils $@
 	-$(MAKE) -C backend $@
 	-$(MAKE) -C include $@
 	-$(MAKE) -C interfaces $@
