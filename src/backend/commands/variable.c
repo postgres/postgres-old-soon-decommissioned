@@ -815,6 +815,15 @@ reset_server_encoding(void)
 }
 
 
+static bool
+show_session_authorization(void)
+{
+	elog(INFO, "Current session authorization is '%s'",
+		 GetUserName(GetSessionUserId()));
+	return TRUE;
+}
+
+
 
 /* SetPGVariable()
  * Dispatcher for handling SET commands.
@@ -902,6 +911,8 @@ GetPGVariable(const char *name)
 		show_server_encoding();
 	else if (strcasecmp(name, "seed") == 0)
 		show_random_seed();
+	else if (strcasecmp(name, "session_authorization") == 0)
+		show_session_authorization();
 	else if (strcasecmp(name, "all") == 0)
 	{
 		ShowAllGUCConfig();
@@ -935,6 +946,8 @@ ResetPGVariable(const char *name)
 		reset_server_encoding();
 	else if (strcasecmp(name, "seed") == 0)
 		reset_random_seed();
+	else if (strcasecmp(name, "session_authorization") == 0)
+		SetSessionAuthorization(NULL);
 	else if (strcasecmp(name, "all") == 0)
 	{
 		reset_random_seed();
@@ -942,6 +955,7 @@ ResetPGVariable(const char *name)
 		reset_client_encoding();
 		reset_datestyle();
 		reset_timezone();
+		/* should we reset session authorization here? */
 
 		ResetAllOptions(false);
 	}
