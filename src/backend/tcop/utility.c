@@ -621,7 +621,7 @@ ProcessUtility(Node *parsetree,
 				filename = stmt->filename;
 				closeAllVfds();
 				if ((fp = AllocateFile(filename, "r")) == NULL)
-					elog(ERROR, "LOAD: could not open file %s", filename);
+					elog(ERROR, "LOAD: could not open file '%s'", filename);
 				FreeFile(fp);
 				load_file(filename);
 			}
