@@ -43,6 +43,11 @@
  *	will "fail" if interrupted.  Therefore TAS() should always be invoked
  *	in a retry loop, even if you are certain the lock is free.
  *
+ *	ANOTHER CAUTION: be sure that TAS() and S_UNLOCK() represent sequence
+ *	points, ie, loads and stores of other values must not be moved across
+ *	a lock or unlock.  In most cases it suffices to make the operation be
+ *	done through a "volatile" pointer.
+ *
  *	On most supported platforms, TAS() uses a tas() function written
  *	in assembly language to execute a hardware atomic-test-and-set
  *	instruction.  Equivalent OS-supplied mutex routines could be used too.
@@ -306,7 +311,7 @@ tas(volatile slock_t *s_lock)
 do \
 {\
 	__asm__ __volatile__ ("	mb \n"); \
-	*(lock) = 0; \
+	*((volatile slock_t *) (lock)) = 0; \
 } while (0)
 
 static __inline__ int
@@ -500,7 +505,7 @@ extern int	tas_sema(volatile slock_t *lock);
 #endif	 /* S_LOCK_FREE */
 
 #if !defined(S_UNLOCK)
-#define S_UNLOCK(lock)		(*(lock) = 0)
+#define S_UNLOCK(lock)		(*((volatile slock_t *) (lock)) = 0)
 #endif	 /* S_UNLOCK */
 
 #if !defined(S_INIT_LOCK)
