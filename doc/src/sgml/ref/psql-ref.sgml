@@ -1120,12 +1120,12 @@ lo_import 152801
 
 
       <varlistentry>
-        <term><literal>\timing</literal>
+       <term><literal>\timing</literal></term>
         <listitem>
         <para>
-        Toggles a display of how long each query takes in seconds.
+         Toggles a display of how long each query takes in seconds.
         </para>
-        </listitem>
+       </listitem>
       </varlistentry>
 
 
