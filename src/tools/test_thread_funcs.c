@@ -62,6 +62,13 @@ int main(int argc, char *argv[])
 	pthread_join(thread1, NULL);
 	pthread_join(thread2, NULL);
 
+	if (hostent_p1 == hostent_p2)
+		printf("Your gethostbyname() is _not_ thread-safe\n");
+	if (passwd_p1 == passwd_p2)
+		printf("Your getpwuid() is _not_ thread-safe\n");
+	if (strerror_p1 == strerror_p2)
+		printf("Your strerror() is _not_ thread-safe\n");
+
 	if (hostent_p1 != hostent_p2 &&
 		passwd_p1 != passwd_p2 &&
 		strerror_p1 != strerror_p2)
