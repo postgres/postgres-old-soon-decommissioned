@@ -80,9 +80,7 @@ _hash_dropscan(IndexScanDesc scan)
     else
 	last->hashsl_next = chk->hashsl_next;
     
-#ifdef PERFECT_MEM
     pfree (chk);
-#endif /* PERFECT_MEM */
 }
 
 void
