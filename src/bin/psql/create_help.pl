@@ -51,6 +51,8 @@ print OUT
 #ifndef $define
 #define $define
 
+#define N_(x) (x) /* gettext noop */
+
 struct _helpStruct
 {
     char	   *cmd;	   /* the command name */
@@ -110,7 +112,7 @@ foreach $file (sort readdir DIR) {
 	$cmdsynopsis =~ s/\n/\\n/g;
         $cmdsynopsis =~ s/\"/\\"/g;
 
-	print OUT "    { \"$cmdname\",\n      \"$cmddesc\",\n      \"$cmdsynopsis\" },\n\n";
+	print OUT "    { \"$cmdname\",\n      N_(\"$cmddesc\"),\n      N_(\"$cmdsynopsis\") },\n\n";
         $count++;
     }
     else {
