@@ -51,7 +51,7 @@ SHLIB_LINK += -lwsock32 -lws2_32 $(filter -leay32 -lssleay32, $(LIBS))
 endif
 
 
-all: $(PTHREAD_H_WIN32) $(top_srcdir)/src/port/pg_config_paths.h all-lib
+all: $(PTHREAD_H_WIN32) $(top_builddir)/src/port/pg_config_paths.h all-lib
 
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib

@@ -30,7 +30,7 @@ OBJS= execute.o typename.o descriptor.o data.o error.o prepare.o memory.o \
 SHLIB_LINK = -L../pgtypeslib -lpgtypes $(libpq) \
 	$(filter -lintl -lssl -lcrypto -lkrb5 -lcrypt -lm, $(LIBS)) $(PTHREAD_LIBS)
 
-all: $(top_srcdir)/src/port/pg_config_paths.h all-lib
+all: $(top_builddir)/src/port/pg_config_paths.h all-lib
 
 # Shared library stuff
 include $(top_srcdir)/src/Makefile.shlib
