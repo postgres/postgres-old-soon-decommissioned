@@ -5,6 +5,8 @@
 #include <float.h>		/* faked on sunos */
 #include <stdio.h>
 
+#include <postgres.h>
+
 #include "utils/geo-decls.h"	/* includes <math.h> */
 #include "libpq-fe.h"
 
