@@ -7341,8 +7341,8 @@ SELECT col FROM sometable ORDER BY col ASC LIMIT 1;
    </para>
 
    <para>
-    Unfortunately, there is no similarly trivial query that can be
-    used to improve the performance of <function>count()</function>
+    Unfortunately, there is no similarly trivial workaround that can
+    be used to improve the performance of <function>count()</function>
     when applied to the entire table.
    </para>
   </note>
