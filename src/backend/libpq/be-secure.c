@@ -616,7 +616,9 @@ initialize_SSL(void)
 		if (!S_ISREG(buf.st_mode) || (buf.st_mode & 0077) ||
 			buf.st_uid != getuid())
 		{
-			postmaster_error("bad permissions on private key file (%s)", fnbuf);
+			postmaster_error("bad permissions on private key file (%s)\n"
+"File must be owned by the proper user and must have no permissions for\n"
+"\"group\" or \"other\".", fnbuf);
 			ExitPostmaster(1);
 		}
 		if (!SSL_CTX_use_PrivateKey_file(SSL_context, fnbuf, SSL_FILETYPE_PEM))
