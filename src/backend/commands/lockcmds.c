@@ -62,8 +62,10 @@ LockTableCommand(LockStmt *lockstmt)
 
 		/* Currently, we only allow plain tables to be locked */
 		if (rel->rd_rel->relkind != RELKIND_RELATION)
-			elog(ERROR, "LOCK TABLE: %s is not a table",
-				 relation->relname);
+			ereport(ERROR,
+					(errcode(ERRCODE_WRONG_OBJECT_TYPE),
+					 errmsg("\"%s\" is not a table",
+							relation->relname)));
 
 		relation_close(rel, NoLock);	/* close rel, keep lock */
 	}

@@ -157,7 +157,7 @@ ExplainOneQuery(Query *query, ExplainStmt *stmt, TupOutputState *tstate)
 			Assert(query->commandType == CMD_SELECT);
 			rewritten = QueryRewrite(query);
 			if (length(rewritten) != 1)
-				elog(ERROR, "ExplainOneQuery: unexpected rewrite result");
+				elog(ERROR, "unexpected rewrite result");
 			query = (Query *) lfirst(rewritten);
 			Assert(query->commandType == CMD_SELECT);
 			/* do not actually execute the underlying query! */
@@ -1013,8 +1013,7 @@ show_sort_keys(List *tlist, int nkeys, AttrNumber *keycols,
 			}
 		}
 		if (tl == NIL)
-			elog(ERROR, "show_sort_keys: no tlist entry for key %d",
-				 keyresno);
+			elog(ERROR, "no tlist entry for key %d", keyresno);
 	}
 
 	appendStringInfo(str, "\n");

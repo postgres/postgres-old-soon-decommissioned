@@ -66,6 +66,8 @@ extern void make_fn_arguments(ParseState *pstate,
 							  Oid *actual_arg_types,
 							  Oid *declared_arg_types);
 
+extern const char *funcname_signature_string(const char *funcname,
+											 int nargs, const Oid *argtypes);
 extern const char *func_signature_string(List *funcname,
 										 int nargs, const Oid *argtypes);
 

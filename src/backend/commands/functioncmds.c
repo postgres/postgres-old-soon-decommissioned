@@ -672,10 +672,11 @@ RenameFunction(List *name, List *argtypes, const char *newname)
 	{
 		ereport(ERROR,
 				(errcode(ERRCODE_DUPLICATE_FUNCTION),
-				 errmsg("function %s already exists",
-						func_signature_string(name,
-											  procForm->pronargs,
-											  procForm->proargtypes))));
+				 errmsg("function %s already exists in schema \"%s\"",
+						funcname_signature_string(newname,
+												  procForm->pronargs,
+												  procForm->proargtypes),
+						get_namespace_name(namespaceOid))));
 	}
 
 	/* must be owner */

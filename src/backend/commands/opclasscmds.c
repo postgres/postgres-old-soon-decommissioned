@@ -252,7 +252,7 @@ DefineOpClass(CreateOpClassStmt *stmt)
 							 0))
 		ereport(ERROR,
 				(errcode(ERRCODE_DUPLICATE_OBJECT),
-				 errmsg("operator class \"%s\" already exists for access method \"%s\"",
+				 errmsg("operator class \"%s\" for access method \"%s\" already exists",
 						opcname, stmt->amname)));
 
 	/*
