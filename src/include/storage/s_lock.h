@@ -541,6 +541,18 @@ tas(volatile slock_t *lock)
 #endif	 /* __hppa || __hppa__ */
 
 
+#if defined(__hpux) && defined(__ia64) && !defined(__GNUC__)
+
+#define HAS_TEST_AND_SET
+
+typedef unsigned int slock_t;
+
+#include <ia64/sys/inline.h>
+#define TAS(lock) _Asm_xchg(_SZ_W, lock, 1, _LDHINT_NONE)
+
+#endif	/* HPUX on IA64, non gcc */
+
+
 #if defined(__QNX__) && defined(__WATCOMC__)
 /*
  * QNX 4 using WATCOM C
