@@ -64,7 +64,7 @@ extern bool cideq(int8 arg1, int8 arg2);
 extern int32 int2in(char *num);
 extern char *int2out(int16 sh);
 extern int16 *int28in(char *shs);
-extern char *int28out(int16 **shs);
+extern char *int28out(int16 (*shs)[]);
 extern int32 *int44in(char *input_string);
 extern char *int44out(int32 *an_array);
 extern int32 int4in(char *num);
