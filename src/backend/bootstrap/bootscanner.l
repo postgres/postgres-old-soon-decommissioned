@@ -12,6 +12,7 @@
  *
  *-------------------------------------------------------------------------
  */
+#include "postgres.h"
 #include "bootstrap/bootstrap.h"
 #include "utils/portal.h" 
 #include "access/xact.h"
