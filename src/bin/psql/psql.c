@@ -645,10 +645,8 @@ tableDesc(PsqlSettings *pset, char *table, FILE *fout)
 				strcat(descbuf, PQgetvalue(res, i, 0));
 				if (!(res2 = PSQLexec(pset, descbuf)))
 					return -1;
-				strcat(type_str," default '");
+				strcat(type_str," default ");
 				strncat(type_str, PQgetvalue(res2, 0, 0), 32-strlen(type_str));
-				type_str[32] = '\0';
-				strncat(type_str, "'", 32-strlen(type_str));
 				type_str[32] = '\0';
 			}
 			fprintf(fout,"%-32.32s |", type_str);
