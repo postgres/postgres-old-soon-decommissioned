@@ -174,8 +174,8 @@ createdb(const CreatedbStmt *stmt)
 	/* don't call this in a transaction block */
 	PreventTransactionChain((void *) stmt, "CREATE DATABASE");
 
-#ifdef WIN32
-	if (dbpath != NULL)	/* platform has no symlinks */
+#ifndef HAVE_SYMLINK
+	if (dbpath != NULL)
 		elog(ERROR, "CREATE DATABASE: may not use an alternate location on this platform");
 #endif
 
@@ -301,7 +301,7 @@ createdb(const CreatedbStmt *stmt)
 	/* Make the symlink, if needed */
 	if (alt_loc)
 	{
-#ifndef WIN32	/* already throws error on WIN32 above */
+#ifdef HAVE_SYMLINK	/* already throws error above */
 		if (symlink(alt_loc, nominal_loc) != 0)
 #endif
 			elog(ERROR, "CREATE DATABASE: could not link '%s' to '%s': %m",
