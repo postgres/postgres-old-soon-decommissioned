@@ -56,14 +56,14 @@ $PostgreSQL$
       </row>
 
       <row>
-       <entry><type>bit</type></entry>
+       <entry><type>bit [ (<replaceable>n</replaceable>) ]</type></entry>
        <entry></entry>
        <entry>fixed-length bit string</entry>
       </row>
 
       <row>
-       <entry><type>bit varying(<replaceable>n</replaceable>)</type></entry>
-       <entry><type>varbit(<replaceable>n</replaceable>)</type></entry>
+       <entry><type>bit varying [ (<replaceable>n</replaceable>) ]</type></entry>
+       <entry><type>varbit</type></entry>
        <entry>variable-length bit string</entry>
       </row>
 
@@ -86,14 +86,14 @@ $PostgreSQL$
       </row>
 
       <row>
-       <entry><type>character varying(<replaceable>n</replaceable>)</type></entry>
-       <entry><type>varchar(<replaceable>n</replaceable>)</type></entry>
+       <entry><type>character varying [ (<replaceable>n</replaceable>) ]</type></entry>
+       <entry><type>varchar [ (<replaceable>n</replaceable>) ]</type></entry>
        <entry>variable-length character string</entry>
       </row>
 
       <row>
-       <entry><type>character(<replaceable>n</replaceable>)</type></entry>
-       <entry><type>char(<replaceable>n</replaceable>)</type></entry>
+       <entry><type>character [ (<replaceable>n</replaceable>) ]</type></entry>
+       <entry><type>char [ (<replaceable>n</replaceable>) ]</type></entry>
        <entry>fixed-length character string</entry>
       </row>
 
@@ -134,7 +134,7 @@ $PostgreSQL$
       </row>
 
       <row>
-       <entry><type>interval(<replaceable>p</replaceable>)</type></entry>
+       <entry><type>interval [ (<replaceable>p</replaceable>) ]</type></entry>
        <entry></entry>
        <entry>time span</entry>
       </row>
@@ -174,7 +174,7 @@ $PostgreSQL$
       <row>
        <entry><type>path</type></entry>
        <entry></entry>
-       <entry>open and closed geometric path in the plane</entry>
+       <entry>open or closed geometric path in the plane</entry>
       </row>
 
       <row>
@@ -227,7 +227,7 @@ $PostgreSQL$
 
       <row>
        <entry><type>timestamp [ (<replaceable>p</replaceable>) ] [ without time zone ]</type></entry>
-       <entry><type>timestamp</type></entry>
+       <entry><type></type></entry>
        <entry>date and time</entry>
       </row>
 
