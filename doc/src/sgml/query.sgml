@@ -154,7 +154,7 @@ INSERT INTO weather
    </para>
 
    <para>
-    You can also use the <command>COPY</command> command to perform load large
+    You can also use <command>COPY</command> to load large
     amounts of data from flat (<acronym>ASCII</acronym>) files.
     This is usually faster because the data is read (or written) as a
     single atomic
