@@ -91,7 +91,7 @@ RelationGetIndexScan(Relation indexRelation,
 
 	scan->kill_prior_tuple = false;
 	scan->ignore_killed_tuples = true;	/* default setting */
-	scan->keys_are_unique = false;		/* may be set by amrescan */
+	scan->keys_are_unique = false;		/* may be set by index AM */
 	scan->got_tuple = false;
 
 	scan->opaque = NULL;
