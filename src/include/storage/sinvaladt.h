@@ -44,8 +44,8 @@ C----------------End shared segment -------
 */
 
 /* Parameters (configurable)  *******************************************/
-#define MaxBackendId 32			/* maximum number of backends		*/
-#define MAXNUMMESSAGES 1000		/* maximum number of messages in seg */
+#define MaxBackendId 64			/* maximum number of backends		*/
+#define MAXNUMMESSAGES 4000		/* maximum number of messages in seg */
 
 
 #define InvalidOffset	1000000000		/* a invalid offset  (End of
