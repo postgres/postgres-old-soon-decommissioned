@@ -310,7 +310,6 @@
 /* #define ACLDEBUG */
 /* #define RTDEBUG */
 /* #define GISTDEBUG */
-/* #define OMIT_PARTIAL_INDEX */
 
 /*
  * defining unsafe floats will make float4 and float8 ops faster

@@ -2146,6 +2146,9 @@ DATA(insert OID = 1642 (  pg_get_userbyid	   PGUID 12 f t f t 1 f 19 "23" 100 0 
 DESCR("user name by UID (with fallback)");
 DATA(insert OID = 1643 (  pg_get_indexdef	   PGUID 12 f t f t 1 f 25 "26" 100 0 0 100  pg_get_indexdef - ));
 DESCR("index description");
+DATA(insert OID = 1716 (  pg_get_expr		   PGUID 12 f t f t 2 f 25 "25 26" 100 0 0 100  pg_get_expr - ));
+DESCR("deparse an encoded expression");
+
 
 /* Generic referential integrity constraint triggers */
 DATA(insert OID = 1644 (  RI_FKey_check_ins		PGUID 12 f t f t 0 f 0 "" 100 0 0 100  RI_FKey_check_ins - ));

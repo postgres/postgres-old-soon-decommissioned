@@ -147,6 +147,7 @@ typedef struct _indInfo
 	char	   *indclass[INDEX_MAX_KEYS];		/* opclass of the keys */
 	char	   *indisunique;	/* is this index unique? */
 	char	   *indisprimary;	/* is this a PK index? */
+	char	   *indpred;		/* index predicate */
 } IndInfo;
 
 typedef struct _aggInfo

@@ -1882,7 +1882,7 @@ AlterTableCreateToastTable(const char *relationName, bool silent)
 	indexInfo->ii_NumIndexAttrs = 1;
 	indexInfo->ii_NumKeyAttrs = 1;
 	indexInfo->ii_KeyAttrNumbers[0] = 1;
-	indexInfo->ii_Predicate = NULL;
+	indexInfo->ii_Predicate = NIL;
 	indexInfo->ii_FuncOid = InvalidOid;
 	indexInfo->ii_Unique = false;
 

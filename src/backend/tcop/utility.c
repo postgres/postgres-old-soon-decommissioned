@@ -567,18 +567,6 @@ ProcessUtility(Node *parsetree,
 			DefineSequence((CreateSeqStmt *) parsetree);
 			break;
 
-		case T_ExtendStmt:
-			{
-				ExtendStmt *stmt = (ExtendStmt *) parsetree;
-
-				set_ps_display(commandTag = "EXTEND");
-
-				ExtendIndex(stmt->idxname,		/* index name */
-							(Expr *) stmt->whereClause, /* where */
-							stmt->rangetable);
-			}
-			break;
-
 		case T_RemoveAggrStmt:
 			{
 				RemoveAggrStmt *stmt = (RemoveAggrStmt *) parsetree;

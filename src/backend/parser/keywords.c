@@ -109,7 +109,6 @@ static ScanKeyword ScanKeywords[] = {
 	{"execute", EXECUTE},
 	{"exists", EXISTS},
 	{"explain", EXPLAIN},
-	{"extend", EXTEND},
 	{"extract", EXTRACT},
 	{"false", FALSE_P},
 	{"fetch", FETCH},

@@ -18,7 +18,7 @@
 #include "tcop/dest.h"
 
 /*
- * prototypes in defind.c
+ * prototypes in indexcmds.c
  */
 extern void DefineIndex(char *heapRelationName,
 			char *indexRelationName,
@@ -27,9 +27,6 @@ extern void DefineIndex(char *heapRelationName,
 			List *parameterList,
 			bool unique,
 			bool primary,
-			Expr *predicate,
-			List *rangetable);
-extern void ExtendIndex(char *indexRelationName,
 			Expr *predicate,
 			List *rangetable);
 extern void RemoveIndex(char *name);
