@@ -648,7 +648,7 @@ typedef struct TypeName
 	char	   *name;			/* name of the type */
 	bool		timezone;		/* timezone specified? */
 	bool		setof;			/* is a set? */
-	int32		typmod;			/* type modifier */
+	int16		typmod;			/* type modifier */
 	List	   *arrayBounds;	/* array bounds */
 } TypeName;
 
@@ -789,11 +789,20 @@ typedef struct RelExpr
 typedef struct SortGroupBy
 {
 	NodeTag		type;
+	char	   *useOp;			/* operator to use */
+	Node       *node;           /*  Expression  */    
+} SortGroupBy;
+
+/*
+ * JoinUsing - for join using clause
+ */
+typedef struct JoinUsing
+{
+	NodeTag		type;
 	int			resno;			/* target number */
 	char	   *range;
 	char	   *name;			/* name of column to sort on */
-	char	   *useOp;			/* operator to use */
-} SortGroupBy;
+} JoinUsing;
 
 /*
  * RangeVar - range variable, used in from clauses

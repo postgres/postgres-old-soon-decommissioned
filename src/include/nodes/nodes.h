@@ -211,7 +211,8 @@ typedef enum NodeTag
 	T_RangeTblEntry,
 	T_SortClause,
 	T_GroupClause,
-	T_SubSelect
+	T_SubSelect,
+	T_JoinUsing
 } NodeTag;
 
 /*

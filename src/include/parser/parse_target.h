@@ -35,5 +35,10 @@ transformTargetIdent(ParseState *pstate,
 extern Node *
 CoerceTargetExpr(ParseState *pstate, Node *expr,
 				 Oid type_id, Oid attrtype);
+TargetEntry * MakeTargetlistExpr(ParseState *pstate,
+				   char *colname,
+				   Node *expr,
+				   List *arrayRef,
+				   int16 resjunk);
 
 #endif							/* PARSE_TARGET_H */
