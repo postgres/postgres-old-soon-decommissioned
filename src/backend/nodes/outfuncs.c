@@ -660,7 +660,10 @@ _outResdom(StringInfo str, Resdom *node)
 	sprintf(buf, " :restypmod %d ", node->restypmod);
 	appendStringInfo(str, buf);
 	appendStringInfo(str, " :resname ");
-	sprintf(buf,"\"%s\"", node->resname); /* fix for SELECT col AS "my name" */
+	if (*node->resname)
+		sprintf(buf,"\"%s\"", node->resname); /* fix for SELECT col AS "my name" */
+	else
+		buf[0] = '\0';
 	appendStringInfo(str, buf);
 	sprintf(buf, " :reskey %d ", node->reskey);
 	appendStringInfo(str, buf);
