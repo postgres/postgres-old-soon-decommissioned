@@ -80,7 +80,7 @@ ProcedureCreate(char *procedureName,
 	{
 		Value	   *t = lfirst(x);
 
-		if (parameterCount == FUNC_MAX_ARGS)
+		if (parameterCount > FUNC_MAX_ARGS)
 			elog(ERROR, "Procedures cannot take more than %d arguments",FUNC_MAX_ARGS);
 
 		if (strcmp(strVal(t), "opaque") == 0)
