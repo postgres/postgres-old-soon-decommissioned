@@ -5223,6 +5223,7 @@ UsingConst: AllConst
 				add_variable_to_head(&argsinsert, new_variable($1, ECPGmake_simple_type(ECPGt_const, length), 0), &no_indicator);
 			}
 		}
+		| civarind { $$ = EMPTY; }
 		;
 
 /*
