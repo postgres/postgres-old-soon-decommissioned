@@ -1686,6 +1686,15 @@ $PostgreSQL$
      </para>
     </listitem>
 
+    <listitem>
+     <para>
+      In PL/Tcl, SPI commands are now run in subtransactions.  If an error
+      occurs, the subtransaction is cleaned up and the error is reported
+      as an ordinary Tcl error, which can be trapped with <literal>catch</>.
+      Formerly, it was not possible to catch such errors.
+     </para>
+    </listitem>
+
    </itemizedlist>
   </sect3>
 
