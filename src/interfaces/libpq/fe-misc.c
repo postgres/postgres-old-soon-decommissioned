@@ -29,14 +29,7 @@
  *-------------------------------------------------------------------------
  */
 
-#include <errno.h>
-#include <signal.h>
-#include <time.h>
-
 #include "postgres.h"
-#include "libpq-fe.h"
-#include "libpq-int.h"
-#include "pqsignal.h"
 
 #ifdef WIN32
 #include "win32.h"
@@ -45,9 +38,17 @@
 #include <sys/time.h>
 #endif
 
+#include <errno.h>
+#include <signal.h>
+#include <time.h>
+
 #ifdef HAVE_SYS_SELECT_H
 #include <sys/select.h>
 #endif
+
+#include "libpq-fe.h"
+#include "libpq-int.h"
+#include "pqsignal.h"
 
 
 #define DONOTICE(conn,message) \
