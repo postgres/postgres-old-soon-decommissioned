@@ -320,7 +320,9 @@ RemoveFunction(char *functionName,		/* function name to be removed */
 	char	   *typename;
 	int			i;
 
-
+	if (nargs > FUNC_MAX_ARGS)
+		elog(ERROR, "functions cannot have more than %d arguments",
+			 FUNC_MAX_ARGS);
 	MemSet(argList, 0, FUNC_MAX_ARGS * sizeof(Oid));
 	for (i = 0; i < nargs; i++)
 	{
