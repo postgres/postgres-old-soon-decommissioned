@@ -52,18 +52,15 @@
 (define %honorific-punctuation% "")
 
 ;; Change display of some elements
+(element command ($mono-seq$))
 (element envar ($mono-seq$))
 (element lineannotation ($italic-seq$))
 (element structfield ($mono-seq$))
 (element structname ($mono-seq$))
 (element symbol ($mono-seq$))
+(element token ($mono-seq$))
 (element type ($mono-seq$))
 (element (programlisting emphasis) ($bold-seq$)) ;; to highlight sections of code
-
-;; Indentation of verbatim environments
-(define %indent-programlisting-lines% "    ")
-(define %indent-screen-lines% "    ")
-(define %indent-synopsis-lines% "    ")
 
 
 ;; Bibliography things
@@ -243,6 +240,12 @@
 
 (define %refentry-new-page%     #t)
 (define %refentry-keep%         #f)
+
+;; Indentation of verbatim environments.  (This should really be done
+;; with start-indent in DSSSL.)
+(define %indent-programlisting-lines% "    ")
+(define %indent-screen-lines% "    ")
+(define %indent-synopsis-lines% "    ")
 
 
 ;; Default graphic format: Jadetex wants eps, pdfjadetex wants pdf.

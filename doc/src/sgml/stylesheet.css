@@ -53,6 +53,10 @@ DIV.EXAMPLE {
 	padding-bottom: 0ex;
 }
 
+.SCREEN, .SYNOPSIS, .PROGRAMLISTING {
+	margin-left: 4ex;
+}
+
 /* miscellaneous */
 
 .NAVHEADER TH	{ font-style: italic; }
