@@ -1220,11 +1220,11 @@ RelationFlushRelation(Relation *relationPtr,
 	
 	FileInvalidate(RelationGetSystemPort(relation));
 	
-	i = relation->rd_rel->relnatts - 1;
-	p = &relation->rd_att->attrs[i];
-	while ((i -= 1) >= 0) {
-	    pfree(*p--);
-	}
+	p = relation->rd_att->attrs;
+	for (i = 0; i < relation->rd_rel->relnatts; i++, p++)
+	    pfree (*p);
+	pfree (relation->rd_att->attrs);
+	pfree (relation->rd_att);
 
 #if 0
 	if (relation->rd_rules) {
