@@ -37,7 +37,8 @@ typedef struct Tuplestorestate Tuplestorestate;
  */
 
 extern Tuplestorestate *tuplestore_begin_heap(bool randomAccess,
-					  int maxKBytes);
+											  bool interTxn,
+											  int maxKBytes);
 
 extern void tuplestore_puttuple(Tuplestorestate *state, void *tuple);
 

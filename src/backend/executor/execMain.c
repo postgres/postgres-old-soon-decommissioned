@@ -217,8 +217,8 @@ ExecutorRun(QueryDesc *queryDesc,
 	estate->es_lastoid = InvalidOid;
 
 	destfunc = DestToFunction(dest);
-	(*destfunc->setup) (destfunc, (int) operation,
-						queryDesc->portalName, queryDesc->tupDesc);
+	(*destfunc->setup) (destfunc, operation, queryDesc->portalName,
+						queryDesc->tupDesc);
 
 	/*
 	 * run plan
@@ -420,15 +420,6 @@ ExecCheckRTEPerms(RangeTblEntry *rte, CmdType operation)
 			aclcheck_error(aclcheck_result, get_rel_name(relOid));
 	}
 }
-
-
-/* ===============================================================
- * ===============================================================
-						 static routines follow
- * ===============================================================
- * ===============================================================
- */
-
 
 static void
 ExecCheckXactReadOnly(Query *parsetree, CmdType operation)

@@ -470,7 +470,7 @@ LogicalTapeSetCreate(int ntapes)
 	Assert(ntapes > 0);
 	lts = (LogicalTapeSet *) palloc(sizeof(LogicalTapeSet) +
 									(ntapes - 1) *sizeof(LogicalTape *));
-	lts->pfile = BufFileCreateTemp();
+	lts->pfile = BufFileCreateTemp(false);
 	lts->nFileBlocks = 0L;
 	lts->freeBlocksLen = 32;	/* reasonable initial guess */
 	lts->freeBlocks = (long *) palloc(lts->freeBlocksLen * sizeof(long));

@@ -1210,7 +1210,9 @@ typedef struct CommentStmt
  */
 #define CURSOR_OPT_BINARY		0x0001
 #define CURSOR_OPT_SCROLL		0x0002
-#define CURSOR_OPT_INSENSITIVE	0x0004
+#define CURSOR_OPT_NO_SCROLL	0x0004
+#define CURSOR_OPT_INSENSITIVE	0x0008
+#define CURSOR_OPT_HOLD			0x0010
 
 typedef struct DeclareCursorStmt
 {

@@ -138,7 +138,7 @@ ExecHashJoin(HashJoinState *node)
 		 * buffers are palloc'd in regular executor context.
 		 */
 		for (i = 0; i < hashtable->nbatch; i++)
-			hashtable->outerBatchFile[i] = BufFileCreateTemp();
+			hashtable->outerBatchFile[i] = BufFileCreateTemp(false);
 	}
 	else if (hashtable == NULL)
 		return NULL;

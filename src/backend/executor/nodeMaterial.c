@@ -62,8 +62,7 @@ ExecMaterial(MaterialState *node)
 	 */
 	if (tuplestorestate == NULL)
 	{
-		tuplestorestate = tuplestore_begin_heap(true,	/* randomAccess */
-												SortMem);
+		tuplestorestate = tuplestore_begin_heap(true, false, SortMem);
 
 		node->tuplestorestate = (void *) tuplestorestate;
 	}

@@ -866,7 +866,7 @@ SPI_cursor_close(Portal portal)
 	if (!PortalIsValid(portal))
 		elog(ERROR, "invalid portal in SPI cursor operation");
 
-	PortalDrop(portal);
+	PortalDrop(portal, false);
 }
 
 /* =================== private functions =================== */

@@ -143,6 +143,7 @@ static const ScanKeyword ScanKeywords[] = {
 	{"group", GROUP_P},
 	{"handler", HANDLER},
 	{"having", HAVING},
+	{"hold", HOLD},
 	{"hour", HOUR_P},
 	{"ilike", ILIKE},
 	{"immediate", IMMEDIATE},

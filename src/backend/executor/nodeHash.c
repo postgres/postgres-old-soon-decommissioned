@@ -64,7 +64,7 @@ ExecHash(HashState *node)
 		 * buffers are palloc'd in regular executor context.
 		 */
 		for (i = 0; i < nbatch; i++)
-			hashtable->innerBatchFile[i] = BufFileCreateTemp();
+			hashtable->innerBatchFile[i] = BufFileCreateTemp(false);
 	}
 
 	/*

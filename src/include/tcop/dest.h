@@ -70,7 +70,8 @@ typedef enum
 	Remote,						/* results sent to frontend process */
 	RemoteInternal,				/* results sent to frontend process in
 								 * internal (binary) form */
-	SPI							/* results sent to SPI manager */
+	SPI,						/* results sent to SPI manager */
+	Tuplestore					/* results sent to Tuplestore */
 } CommandDest;
 
 /* ----------------

@@ -1054,8 +1054,7 @@ ExecMakeTableFunctionResult(ExprState *funcexpr,
 									   0,
 									   false);
 				}
-				tupstore = tuplestore_begin_heap(true,	/* randomAccess */
-												 SortMem);
+				tupstore = tuplestore_begin_heap(true, false, SortMem);
 				MemoryContextSwitchTo(oldcontext);
 				rsinfo.setResult = tupstore;
 				rsinfo.setDesc = tupdesc;
