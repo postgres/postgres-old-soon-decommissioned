@@ -171,7 +171,7 @@ typedef BTStackData	*BTStack;
  * prototypes for functions in nbtinsert.c
  */
 extern InsertIndexResult _bt_doinsert(Relation rel, BTItem btitem,
-				      bool index_is_unique, bool is_update);
+				      bool index_is_unique, Relation heapRel);
 
 				/* default is to allow duplicates */
 extern bool _bt_itemcmp(Relation rel, Size keysz, BTItem item1, BTItem item2,
@@ -203,7 +203,7 @@ extern void btbuild(Relation heap, Relation index, int natts,
 	AttrNumber *attnum, IndexStrategy istrat, uint16 pcount,
 	Datum *params, FuncIndexInfo *finfo, PredInfo *predInfo);
 extern InsertIndexResult btinsert(Relation rel, Datum *datum, char *nulls,
-				  ItemPointer ht_ctid, bool is_update);
+				  ItemPointer ht_ctid, Relation heapRel);
 extern char *btgettuple(IndexScanDesc scan, ScanDirection dir);
 extern char *btbeginscan(Relation rel, bool fromEnd, uint16 keysz,
 			 ScanKey scankey);

@@ -112,7 +112,7 @@ extern RetrieveIndexResult rtgettuple(IndexScanDesc s, ScanDirection dir);
  *	Defined in access/index-rtree/
  */
 extern InsertIndexResult rtinsert(Relation r, Datum *datum, char *nulls,
-			ItemPointer ht_ctid, bool is_update);
+			ItemPointer ht_ctid, Relation heapRel);
 extern char *rtdelete(Relation r, ItemPointer tid);
 
 extern RetrieveIndexResult rtgettuple(IndexScanDesc s, ScanDirection dir);

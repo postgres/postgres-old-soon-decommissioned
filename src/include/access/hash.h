@@ -255,7 +255,7 @@ extern void hashbuild(Relation heap, Relation index, int natts,
 	AttrNumber *attnum, IndexStrategy istrat, uint16 pcount,
 	Datum *params, FuncIndexInfo *finfo, PredInfo *predInfo);
 extern InsertIndexResult hashinsert(Relation rel, Datum *datum, char *nulls,
-				    ItemPointer ht_ctid, bool is_update);
+				    ItemPointer ht_ctid, Relation heapRel);
 extern char *hashgettuple(IndexScanDesc scan, ScanDirection dir);
 extern char *hashbeginscan(Relation rel, bool fromEnd, uint16 keysz,
 			   ScanKey scankey);
