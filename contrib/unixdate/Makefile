@@ -2,29 +2,17 @@
 # $Header$
 #
 
-TOPDIR=../..
+subdir = contrib/unixdate
+top_builddir = ../..
+include ../../src/Makefile.global
 
-include ../Makefile.global
+all:
 
-NAME	= unixdate
+install: installdirs
+	$(INSTALL_DATA) unixdate.sql $(datadir)/contrib
 
-PROGRAM	= 
-OBJS	= 
-DOCS	= 
-SQLS	= $(NAME).sql
-BINS	=
-EXAMPLES=
-MODS	= 
+uninstall:
+	rm -f $(datadir)/contrib/unixdate.sql
 
-all:: 
-
-install: install_sql
-
-install_sql:
-	for inst_file in $(SQLS); do \
-		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_SQLDIR); \
-	done
-
-clean:
-	$(RM) *~ 
-
+installdirs:
+	$(mkinstalldirs) $(datadir)/contrib

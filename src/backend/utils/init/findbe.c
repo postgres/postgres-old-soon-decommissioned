@@ -151,7 +151,7 @@ ValidateBinary(char *path)
  * we change directories to the /data directory.
  */
 int
-FindExec(char *full_path, char *argv0, char *binary_name)
+FindExec(char *full_path, const char *argv0, const char *binary_name)
 {
 	char		buf[MAXPGPATH + 2];
 	char	   *p;

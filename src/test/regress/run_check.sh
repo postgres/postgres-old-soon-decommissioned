@@ -187,7 +187,7 @@ export PATH
 # Run initdb to initialize a database system in ./tmp_check
 # ----------
 echo "=============== Initializing check database instance   ================"
-initdb -D $PGDATA --noclean >$LOGDIR/initdb.log 2>&1
+initdb -D $PGDATA -L $CHKDIR/share --noclean >$LOGDIR/initdb.log 2>&1
 
 if [ $? -ne 0 ]
 then

@@ -133,7 +133,7 @@ extern char *getpgusername(void);
 extern void SetPgUserName(void);
 extern int	GetUserId(void);
 extern void SetUserId(void);
-extern int	FindExec(char *backend, char *argv0, char *binary_name);
+extern int	FindExec(char *full_path, const char *argv0, const char *binary_name);
 extern int	CheckPathAccess(char *path, char *name, int open_mode);
 
 /* lower case version for case-insensitive SQL referenced in pg_proc.h */

@@ -58,8 +58,8 @@
 /* Kerberos name of the Postgres service principal (--with-krb-srvnam=NAME) */
 #undef PG_KRB_SRVNAM
 
-/* Location of the Kerberos server's keytab file (--with-krb-srvtab=FILE) */
-#undef PG_KRB_SRVTAB
+/* Define to build with (Open)SSL support (--with-openssl[=DIR]) */
+#undef USE_SSL
 
 /* 
  * DEF_PGPORT is the TCP port number on which the Postmaster listens and

@@ -16,7 +16,6 @@ PGDOCS= $(POSTGRESDIR)/doc
 SRCDIR= ../src
 
 TAR= tar
-GZCAT= zcat
 
 # Pick up Makefile.global from the source area
 # This is the only resource from the code source area and is optional.
@@ -58,7 +57,7 @@ distclean::
 
 man::
 	-@if test ! -d $(POSTMANDIR) ; then mkdir $(POSTMANDIR) ; fi
-	$(GZCAT) man.tar.gz | (cd $(POSTMANDIR) ; $(TAR) xf - )
+	gunzip -c man.tar.gz | (cd $(POSTMANDIR) ; $(TAR) xf - )
 
 #
 # Generic production rules
@@ -75,5 +74,5 @@ man::
 %:	%.tar.gz
 	rm -rf ./$@ $(PGDOCS)/$*
 	if test ! -d $(PGDOCS)/$* ; then mkdir $(PGDOCS)/$* ; fi
-	$(GZCAT) $< | (cd $(PGDOCS)/$* ; $(TAR) xf - )
+	gunzip -c $< | (cd $(PGDOCS)/$* ; $(TAR) xf - )
 #	touch ./$*

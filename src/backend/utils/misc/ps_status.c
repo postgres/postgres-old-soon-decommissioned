@@ -20,11 +20,9 @@
 #ifdef HAVE_SYS_PSTAT_H
 # include <sys/pstat.h>			/* for HP-UX */
 #endif
-#ifdef HAVE_MACHINE_VMPARAM_H
+#ifdef HAVE_PS_STRINGS
 # include <machine/vmparam.h>	/* for old BSD */
-#endif
-#ifdef HAVE_SYS_EXEC_H
-# include <sys/exec.h>			/* for old BSD */
+# include <sys/exec.h>
 #endif
 
 #include "miscadmin.h"

@@ -2,49 +2,34 @@
 # $Header$
 #
 
-TOPDIR=../..
+subdir = contrib/pg_dumplo
+top_builddir = ../..
+include ../../src/Makefile.global
 
-include ../Makefile.global
-
-NAME	= pg_dumplo
-
-PROGRAM	= $(NAME)
 OBJS	= main.o lo_export.o lo_import.o utils.o
-DOCS	= README.$(NAME)
-SQLS	= 
-BINS	= $(PROGRAM)
-EXAMPLES=
-MODS	= 
-
 CFLAGS += -I$(LIBPQDIR)
 
-OTHER_CLEAN = 
+all: pg_dumplo
 
-all: $(PROGRAM)
-
-$(PROGRAM): $(OBJS) $(LIBPQDIR)/libpq.a
+pg_dumplo: $(OBJS) $(LIBPQDIR)/libpq.a
 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBPQ) 
 
-install: install_doc install_bin
+install: all installdirs
+	$(INSTALL_PROGRAM) pg_dumplo$(X)	$(bindir)
+	$(INSTALL_DATA) README.pg_dumplo	$(docdir)/contrib
 
-install_doc:
-	for inst_file in $(DOCS); do \
-		$(INSTALL) $(INSTL_LIB_OPTS) $$inst_file $(CONTRIB_DOCDIR); \
-	done
+installdirs:
+	$(mkinstalldirs) $(bindir) $(docdir)/contrib
 
-install_bin:
-	for inst_file in $(BINS); do \
-		$(INSTALL) $(INSTL_EXE_OPTS) $$inst_file $(CONTRIB_BINDIR); \
-	done
+uninstall:
+	rm -f $(bindir)/pg_dumplo$(X) $(docdir)/contrib/README.pg_dumplo
+
+clean distclean maintainer-clean:
+	rm -f pg_dumplo $(OBJS)
 
 depend dep:
 	$(CC) -MM -MG $(CFLAGS) *.c > depend
 
-clean:
-	$(RM) *~ $(OBJS) $(MODS) $(PROGRAM) depend $(OTHER_CLEAN) core log
-
 ifeq (depend,$(wildcard depend))
 include depend
 endif
-
- 
