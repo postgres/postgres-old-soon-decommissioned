@@ -257,15 +257,24 @@ ifeq ($(PORTNAME), hpux)
           $(HEADERDIR)/port/hpux/fixade.h
 endif
 
-
 $(BINDIR):
 	mkdir $@
+
 $(LIBDIR):
 	mkdir $@
+
 $(HEADERDIR):
 	mkdir $@
+
+# TEMPLATEDIR is commonly the same as LIBDIR, but it might be different.
+# We don't want duplicate rules if they are the same.
+ifneq ($(TEMPLATEDIR),$(LIBDIR))
+
 $(TEMPLATEDIR):
 	mkdir $@
+
+endif
+
 
 #############################################################################
 #
