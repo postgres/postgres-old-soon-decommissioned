@@ -580,7 +580,7 @@ yyerror(const char *message)
 		elog(ERROR, "parser: %s at end of input", message);
 	else
 		elog(ERROR, "parser: %s at or near \"%s\" at character %d",
-			 message, loc, (loc - scanbuf + 1));
+			 message, loc, (int) (loc - scanbuf + 1));
 }
 
 
