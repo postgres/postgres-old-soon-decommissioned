@@ -271,7 +271,7 @@ typedef struct PgStat_MsgTabstat
  * ----------
  */
 #define PGSTAT_NUM_TABPURGE		((1000 - sizeof(PgStat_MsgHdr))			\
-								/ sizeof(PgStat_TableEntry))
+								/ sizeof(Oid))
 
 /* ----------
  * PgStat_MsgTabpurge			Sent by the backend to tell the collector
