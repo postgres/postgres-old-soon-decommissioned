@@ -1026,15 +1026,15 @@ CommitTransaction(void)
 	if (s->state != TRANS_INPROGRESS)
 		elog(NOTICE, "CommitTransaction and not in in-progress state ");
 
-	/* Prevent cancel/die interrupt while cleaning up */
-	HOLD_INTERRUPTS();
-
 	/*
 	 * Tell the trigger manager that this transaction is about to be
 	 * committed. He'll invoke all trigger deferred until XACT before we
 	 * really start on committing the transaction.
 	 */
 	DeferredTriggerEndXact();
+
+	/* Prevent cancel/die interrupt while cleaning up */
+	HOLD_INTERRUPTS();
 
 	/*
 	 * set the current transaction state information appropriately during
