@@ -159,7 +159,7 @@ FETCH [ FORWARD | BACKWARD | RELATIVE ] [ <replaceable class="PARAMETER">#</repl
     <variablelist>
      <varlistentry>
       <term><computeroutput>
-NOTICE:  PerformPortalFetch: portal "<replaceable class="PARAMETER">cursor</replaceable>" not found
+WARNING:  PerformPortalFetch: portal "<replaceable class="PARAMETER">cursor</replaceable>" not found
        </computeroutput></term>
       <listitem>
        <para>
@@ -172,7 +172,7 @@ NOTICE:  PerformPortalFetch: portal "<replaceable class="PARAMETER">cursor</repl
 
      <varlistentry>
       <term><computeroutput>
-NOTICE:  FETCH/ABSOLUTE not supported, using RELATIVE
+WARNING:  FETCH/ABSOLUTE not supported, using RELATIVE
        </computeroutput></term>
       <listitem>
        <para>

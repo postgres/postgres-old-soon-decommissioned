@@ -61,7 +61,7 @@ ABORT
      
      <varlistentry>
       <term><computeroutput>
-NOTICE:  ROLLBACK: no transaction in progress
+WARNING:  ROLLBACK: no transaction in progress
        </computeroutput></term>
       <listitem>
        <para>

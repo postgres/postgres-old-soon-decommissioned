@@ -70,7 +70,7 @@ LISTEN
      </varlistentry>
      <varlistentry>
       <term><computeroutput>
-NOTICE Async_Listen: We are already listening on <replaceable class="PARAMETER">name</replaceable>
+WARNING:  Async_Listen: We are already listening on <replaceable class="PARAMETER">name</replaceable>
        </computeroutput></term>
       <listitem>
        <para>

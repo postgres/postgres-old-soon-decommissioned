@@ -70,7 +70,7 @@ CLOSE
      </varlistentry>
      <varlistentry>
       <term><computeroutput>
-NOTICE PerformPortalClose: portal "<replaceable class="PARAMETER">cursor</replaceable>" not found
+WARNING:  PerformPortalClose: portal "<replaceable class="PARAMETER">cursor</replaceable>" not found
        </computeroutput></term>
       <listitem>
        <para>

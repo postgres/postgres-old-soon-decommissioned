@@ -72,7 +72,7 @@ BEGIN
      </varlistentry>
      <varlistentry>
       <term><computeroutput>
-NOTICE:  BEGIN: already a transaction in progress
+WARNING:  BEGIN: already a transaction in progress
        </computeroutput></term>
       <listitem>
        <para>
