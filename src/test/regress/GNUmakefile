@@ -36,6 +36,7 @@ pg_regress: pg_regress.sh GNUmakefile
 	    -e 's,@datadir@,$(datadir),g' \
 	    -e 's/@VERSION@/$(VERSION)/g' \
 	    -e 's/@host_tuple@/$(host_tuple)/g' \
+	    -e 's,@GMAKE@,$(MAKE),g' \
 	  $< >$@
 	chmod a+x $@
 
