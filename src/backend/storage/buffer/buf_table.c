@@ -125,8 +125,8 @@ BufTableDelete(BufferDesc *buf)
 	 * sequential searches through the buffer table won't think the
 	 * buffer is still valid for its old page.
 	 */
-	buf->tag.relId.relId = InvalidOid;
-	buf->tag.relId.dbId = InvalidOid;
+	buf->tag.rnode.relNode = InvalidOid;
+	buf->tag.rnode.tblNode = InvalidOid;
 
 	return TRUE;
 }
