@@ -26,7 +26,7 @@ include $(SRCDIR)/Makefile.global
 	$(MAKE) -C libpq $@
 	$(MAKE) -C ecpg $@
 ifeq ($(HAVE_Cplusplus), true)
-	-$(MAKE) -C libpq++ $@
+	$(MAKE) -C libpq++ $@
 else
 	echo $(HAVE_Cplusplus): No C++
 endif
