@@ -240,21 +240,23 @@ int
 Pg_conndefaults(ClientData cData, Tcl_Interp * interp, int argc, char **argv)
 {
 	PQconninfoOption *option;
-	char		buf[8192];
+	Tcl_DString result;
+	char ibuf[32];
 
-	Tcl_ResetResult(interp);
+	Tcl_DStringInit(&result);
 	for (option = PQconndefaults(); option->keyword != NULL; option++)
 	{
-		if (option->val == NULL)
-			option->val = "";
-		sprintf(buf, "{%s} {%s} {%s} %d {%s}",
-				option->keyword,
-				option->label,
-				option->dispchar,
-				option->dispsize,
-				option->val);
-		Tcl_AppendElement(interp, buf);
+		char * val = option->val ? option->val : "";
+		sprintf(ibuf, "%d", option->dispsize);
+		Tcl_DStringStartSublist(&result);
+		Tcl_DStringAppendElement(&result, option->keyword);
+		Tcl_DStringAppendElement(&result, option->label);
+		Tcl_DStringAppendElement(&result, option->dispchar);
+		Tcl_DStringAppendElement(&result, ibuf);
+		Tcl_DStringAppendElement(&result, val);
+		Tcl_DStringEndSublist(&result);
 	}
+	Tcl_DStringResult(interp, &result);
 
 	return TCL_OK;
 }
