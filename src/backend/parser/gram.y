@@ -381,7 +381,6 @@ static void doNegateFloat(Value *v);
 %left		'+' '-'
 %left		'*' '/' '%'
 %left		'^'
-%left		'|'				/* XXX Should this have such a high priority? */
 /* Unary Operators */
 %right		UMINUS
 %left		'.'
@@ -4195,7 +4194,6 @@ MathOp:  '+'			{ $$ = "+"; }
 		| '/'			{ $$ = "/"; }
 		| '%'			{ $$ = "%"; }
 		| '^'			{ $$ = "^"; }
-		| '|'			{ $$ = "|"; }
 		| '<'			{ $$ = "<"; }
 		| '>'			{ $$ = ">"; }
 		| '='			{ $$ = "="; }
@@ -4238,14 +4236,10 @@ a_expr:  c_expr
 				{	$$ = makeA_Expr(OP, "%", NULL, $2); }
 		| '^' a_expr
 				{	$$ = makeA_Expr(OP, "^", NULL, $2); }
-		| '|' a_expr
-				{	$$ = makeA_Expr(OP, "|", NULL, $2); }
 		| a_expr '%'
 				{	$$ = makeA_Expr(OP, "%", $1, NULL); }
 		| a_expr '^'
 				{	$$ = makeA_Expr(OP, "^", $1, NULL); }
-		| a_expr '|'
-				{	$$ = makeA_Expr(OP, "|", $1, NULL); }
 		| a_expr '+' a_expr
 				{	$$ = makeA_Expr(OP, "+", $1, $3); }
 		| a_expr '-' a_expr
@@ -4258,8 +4252,6 @@ a_expr:  c_expr
 				{	$$ = makeA_Expr(OP, "%", $1, $3); }
 		| a_expr '^' a_expr
 				{	$$ = makeA_Expr(OP, "^", $1, $3); }
-		| a_expr '|' a_expr
-				{	$$ = makeA_Expr(OP, "|", $1, $3); }
 		| a_expr '<' a_expr
 				{	$$ = makeA_Expr(OP, "<", $1, $3); }
 		| a_expr '>' a_expr
@@ -4492,14 +4484,10 @@ b_expr:  c_expr
 				{	$$ = makeA_Expr(OP, "%", NULL, $2); }
 		| '^' b_expr
 				{	$$ = makeA_Expr(OP, "^", NULL, $2); }
-		| '|' b_expr
-				{	$$ = makeA_Expr(OP, "|", NULL, $2); }
 		| b_expr '%'
 				{	$$ = makeA_Expr(OP, "%", $1, NULL); }
 		| b_expr '^'
 				{	$$ = makeA_Expr(OP, "^", $1, NULL); }
-		| b_expr '|'
-				{	$$ = makeA_Expr(OP, "|", $1, NULL); }
 		| b_expr '+' b_expr
 				{	$$ = makeA_Expr(OP, "+", $1, $3); }
 		| b_expr '-' b_expr
@@ -4512,8 +4500,6 @@ b_expr:  c_expr
 				{	$$ = makeA_Expr(OP, "%", $1, $3); }
 		| b_expr '^' b_expr
 				{	$$ = makeA_Expr(OP, "^", $1, $3); }
-		| b_expr '|' b_expr
-				{	$$ = makeA_Expr(OP, "|", $1, $3); }
 		| b_expr '<' b_expr
 				{	$$ = makeA_Expr(OP, "<", $1, $3); }
 		| b_expr '>' b_expr
