@@ -21,6 +21,7 @@
 #include <storage/bufpage.h>
 #include <access/relscan.h>
 #include <access/itup.h>
+#include <utils/int8.h>
 
 /*
  * An overflow page is a spare page allocated for storing data whose
@@ -264,6 +265,7 @@ extern void hashdelete(Relation rel, ItemPointer tid);
 /* hashfunc.c */
 extern uint32 hashint2(int16 key);
 extern uint32 hashint4(uint32 key);
+extern uint32 hashint8(int64 *key);
 extern uint32 hashfloat4(float32 keyp);
 extern uint32 hashfloat8(float64 keyp);
 extern uint32 hashoid(Oid key);
