@@ -121,9 +121,9 @@ INSERT INTO MY_TABLE VALUES (3, 'hi there');
     characters of an identifier; longer names can be written in
     commands, but they will be truncated.  By default,
     <symbol>NAMEDATALEN</symbol> is 64 so the maximum identifier
-    length is 63 (but at the time <productname>PostgreSQL</> is built,
-    <symbol>NAMEDATALEN</symbol> can be changed in
-    <filename>src/include/postgres_ext.h</filename>).
+    length is 63. If this limit is problematic, it can be raised by
+    changing the <symbol>NAMEDATALEN</symbol> constant in
+    <filename>src/include/postgres_ext.h</filename>.
    </para>
 
    <para>
@@ -541,8 +541,8 @@ CAST ( '<replaceable>string</replaceable>' AS <replaceable>type</replaceable> )
      <para>
       A dollar sign (<literal>$</literal>) followed by digits is used
       to represent the positional parameters in the body of a function
-      definition.  In other contexts the dollar sign may be part of an
-      operator name.
+      definition or a prepared statement.  In other contexts the
+      dollar sign may be part of an operator name.
      </para>
     </listitem>
 
