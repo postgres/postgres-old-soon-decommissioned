@@ -24,6 +24,15 @@ typedef enum IOFuncSelector
 	IOFunc_send
 } IOFuncSelector;
 
+/* Type categories for get_type_func_class */
+typedef enum TypeFuncClass
+{
+	TYPEFUNC_SCALAR,
+	TYPEFUNC_COMPOSITE,
+	TYPEFUNC_RECORD,
+	TYPEFUNC_OTHER
+} TypeFuncClass;
+
 extern bool op_in_opclass(Oid opno, Oid opclass);
 extern void get_op_opclass_properties(Oid opno, Oid opclass,
 						  int *strategy, Oid *subtype,
@@ -85,6 +94,7 @@ extern char get_typstorage(Oid typid);
 extern int32 get_typtypmod(Oid typid);
 extern Node *get_typdefault(Oid typid);
 extern char get_typtype(Oid typid);
+extern TypeFuncClass get_type_func_class(Oid typid);
 extern Oid	get_typ_typrelid(Oid typid);
 extern Oid	get_element_type(Oid typid);
 extern Oid	get_array_type(Oid typid);
