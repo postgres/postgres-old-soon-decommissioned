@@ -627,7 +627,7 @@ parser_typecast2(Node *expr, Oid exprType, Type tp, int32 atttypmod)
 					(Size) len,
 					(Datum) lcp,
 					false,
-					false,		/* was omitted */
+					typeByVal(tp),
 					false,		/* not a set */
 					true /* is cast */ );
 
