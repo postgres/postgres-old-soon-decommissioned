@@ -1439,8 +1439,8 @@ getObjectDescription(const ObjectAddress *object)
 			getRelationDescription(&buffer, object->objectId);
 			if (object->objectSubId != 0)
 				appendStringInfo(&buffer, " column %s",
-								 get_attname(object->objectId,
-											 object->objectSubId));
+								 get_relid_attribute_name(object->objectId,
+														  object->objectSubId));
 			break;
 
 		case OCLASS_PROC:

@@ -3293,7 +3293,7 @@ GetPGVariableResultDesc(const char *name)
 
 		/* need a tuple descriptor representing a single TEXT column */
 		tupdesc = CreateTemplateTupleDesc(1, false);
-		TupleDescInitEntry(tupdesc, (AttrNumber) 1, (char *) varname,
+		TupleDescInitEntry(tupdesc, (AttrNumber) 1, varname,
 						   TEXTOID, -1, 0, false);
 	}
 	return tupdesc;
@@ -3333,7 +3333,7 @@ ShowGUCConfigOption(const char *name, DestReceiver *dest)
 
 	/* need a tuple descriptor representing a single TEXT column */
 	tupdesc = CreateTemplateTupleDesc(1, false);
-	TupleDescInitEntry(tupdesc, (AttrNumber) 1, (char *) varname,
+	TupleDescInitEntry(tupdesc, (AttrNumber) 1, varname,
 					   TEXTOID, -1, 0, false);
 
 	/* prepare for projection of tuples */

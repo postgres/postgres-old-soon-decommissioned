@@ -150,8 +150,6 @@ expand_targetlist(List *tlist, int command_type,
 
 			if (!resdom->resjunk && resdom->resno == attrno)
 			{
-				Assert(strcmp(resdom->resname,
-							  NameStr(att_tup->attname)) == 0);
 				new_tle = old_tle;
 				tlist = lnext(tlist);
 			}

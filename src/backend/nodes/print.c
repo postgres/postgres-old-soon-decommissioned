@@ -448,7 +448,8 @@ print_tl(List *tlist, List *rtable)
 	{
 		TargetEntry *tle = lfirst(tl);
 
-		printf("\t%d %s\t", tle->resdom->resno, tle->resdom->resname);
+		printf("\t%d %s\t", tle->resdom->resno,
+			   tle->resdom->resname ? tle->resdom->resname : "<null>");
 		if (tle->resdom->ressortgroupref != 0)
 			printf("(%u):\t", tle->resdom->ressortgroupref);
 		else
