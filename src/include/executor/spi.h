@@ -81,8 +81,8 @@ extern int	SPI_connect(void);
 extern int	SPI_finish(void);
 extern void SPI_push(void);
 extern void SPI_pop(void);
-extern int	SPI_exec(const char *src, int tcount);
-extern int SPI_execp(void *plan, Datum *values, const char *Nulls,
+extern int  SPI_exec(const char *src, int tcount);
+extern int  SPI_execp(void *plan, Datum *values, const char *Nulls,
 		  int tcount);
 extern int SPI_execp_current(void *plan, Datum *values, const char *Nulls,
 							 bool useCurrentSnapshot, int tcount);

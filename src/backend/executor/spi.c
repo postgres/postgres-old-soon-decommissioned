@@ -201,12 +201,14 @@ AtEOXact_SPI(bool isCommit)
 	SPI_tuptable = NULL;
 }
 
+/* Pushes SPI stack to allow recursive SPI calls */
 void
 SPI_push(void)
 {
 	_SPI_curid++;
 }
 
+/* Pops SPI stack to allow recursive SPI calls */
 void
 SPI_pop(void)
 {
