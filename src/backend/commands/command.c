@@ -419,8 +419,6 @@ PerformAddAttribute(char *relationName,
 						   (Datum) NULL);
 
 	attributeD.attrelid = reltup->t_oid;
-	attributeD.attdisbursion = 0;		/* XXX temporary */
-	attributeD.attcacheoff = -1;
 
 	attributeTuple = heap_addheader(Natts_pg_attribute,
 									sizeof attributeD,
@@ -481,13 +479,15 @@ PerformAddAttribute(char *relationName,
 			elog(ERROR, "Add: type \"%s\" nonexistent", p);
 		}
 		namestrcpy(&(attribute->attname), (char *) key[1].sk_argument);
+
 		attribute->atttypid = typeTuple->t_oid;
 		attribute->attlen = form->typlen;
+		attributeD.attdisbursion = 0;
+		attribute->attcacheoff = -1;
 		attribute->atttypmod = colDef->typename->typmod;
 		attribute->attnum = i;
 		attribute->attbyval = form->typbyval;
 		attribute->attnelems = attnelems;
-		attribute->attcacheoff = -1;
 		attribute->attisset = (bool) (form->typtype == 'c');
 		attribute->attalign = form->typalign;
 		attribute->attnotnull = false;
