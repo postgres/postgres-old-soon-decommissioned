@@ -91,7 +91,7 @@ gets_fromFile(FILE *source)
 
 	initPQExpBuffer(&buffer);
 
-	while (fgets(line, 1024, source) != NULL)
+	while (fgets(line, sizeof(line), source) != NULL)
 	{
 		appendPQExpBufferStr(&buffer, line);
 		if (buffer.data[buffer.len - 1] == '\n')

@@ -1236,7 +1236,8 @@ do_connect(const char *new_dbname, const char *new_user)
 							   NULL, NULL, dbparam, userparam, pwparam);
 
 		if (PQstatus(pset.db) == CONNECTION_BAD &&
-			strcmp(PQerrorMessage(pset.db), "fe_sendauth: no password supplied\n") == 0)
+			strcmp(PQerrorMessage(pset.db), "fe_sendauth: no password supplied\n") == 0 &&
+			!feof(stdin))
 		{
 			PQfinish(pset.db);
 			need_pass = true;
@@ -1491,7 +1492,7 @@ do_edit(const char *filename_arg, PQExpBuffer query_buf)
 			char		line[1024];
 
 			resetPQExpBuffer(query_buf);
-			while (fgets(line, 1024, stream))
+			while (fgets(line, sizeof(line), stream) != NULL)
 				appendPQExpBufferStr(query_buf, line);
 
 			if (ferror(stream))

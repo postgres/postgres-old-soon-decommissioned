@@ -277,7 +277,7 @@ get_prompt(promptStatus_t status)
 							fgets(buf, MAX_PROMPT_SIZE - 1, fd);
 							pclose(fd);
 						}
-						if (buf[strlen(buf) - 1] == '\n')
+						if (strlen(buf) > 0 && buf[strlen(buf) - 1] == '\n')
 							buf[strlen(buf) - 1] = '\0';
 						free(file);
 						p += cmdend + 1;

@@ -201,7 +201,8 @@ simple_prompt(const char *prompt, int maxlen, bool echo)
 	}
 #endif
 
-	fgets(destination, maxlen, stdin);
+	if (fgets(destination, maxlen, stdin) == NULL)
+		destination[0] = '\0';
 
 #ifdef HAVE_TERMIOS_H
 	if (!echo)
@@ -222,7 +223,8 @@ simple_prompt(const char *prompt, int maxlen, bool echo)
 
 		do
 		{
-			fgets(buf, sizeof(buf), stdin);
+			if (fgets(buf, sizeof(buf), stdin) == NULL)
+				break;
 			buflen = strlen(buf);
 		} while (buflen > 0 && buf[buflen - 1] != '\n');
 	}
@@ -389,9 +391,9 @@ SendQuery(const char *query)
 			   "***(press return to proceed or enter x and return to cancel)********************\n",
 			   query);
 		fflush(stdout);
-		fgets(buf, 3, stdin);
-		if (buf[0] == 'x')
-			return false;
+		if (fgets(buf, sizeof(buf), stdin) != NULL)
+			if (buf[0] == 'x')
+				return false;
 	}
 	else
 	{
