@@ -48,6 +48,7 @@ static ScanKeyword ScanKeywords[] = {
 	{ "backward",		BACKWARD	},
 	{ "before",		BEFORE		},
 	{ "begin",		BEGIN_TRANS	},
+	{ "between",		BETWEEN		},
 	{ "binary",		BINARY		},
 	{ "by",			BY		},
 	{ "cast",		CAST		},

@@ -97,7 +97,10 @@ other		.
 {self}		{ return (yytext[0]);	}
 
 {operator}	{
-			yylval.str = pstrdup((char*)yytext);
+			if (strcmp((char*)yytext,"!=") == 0)
+			    yylval.str = pstrdup("<>"); /* compatability */
+			else
+			    yylval.str = pstrdup((char*)yytext);
 			return (Op);
 		}
 {param}	        {       yylval.ival = atoi((char*)&yytext[1]);		
