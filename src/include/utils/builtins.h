@@ -514,6 +514,7 @@ extern Datum network_broadcast(PG_FUNCTION_ARGS);
 extern Datum network_host(PG_FUNCTION_ARGS);
 extern Datum network_show(PG_FUNCTION_ARGS);
 extern Datum network_abbrev(PG_FUNCTION_ARGS);
+extern double convert_network_to_scalar(Datum value, Oid typid);
 
 /* mac.c */
 extern Datum macaddr_in(PG_FUNCTION_ARGS);
