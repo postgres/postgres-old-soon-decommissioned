@@ -40,10 +40,10 @@
 #include "utils/nabstime.h"
 #include "utils/rel.h"
 
-#include "bootstrap_tokens.h"
+/* Not needed now that this file is compiled as part of bootparse. */
+/* #include "bootstrap_tokens.h" */
 
 
-YYSTYPE yylval;
 int		yyline;  /* keep track of the line number for error reporting */
 
 %}
