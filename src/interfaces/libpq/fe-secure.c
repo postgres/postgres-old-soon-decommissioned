@@ -414,7 +414,7 @@ verify_peer (PGconn *conn)
 		sin6 = (struct sockaddr_in6 *) &addr;
 		for (s = h->h_addr_list; *s != NULL; s++)
 		{
-			if (!memcmp(sin6->sin6_addr.in6_u.u6_addr8, *s, h->h_length))
+			if (!memcmp(sin6->sin6_addr.s6_addr8, *s, h->h_length))
 				return 0;
 		}
 		break;
