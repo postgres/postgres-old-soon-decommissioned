@@ -977,8 +977,8 @@ CopyQuerySnapshot(void)
 {
 	Snapshot	snapshot;
 
-	if (QuerySnapshot == NULL)	/* should be set already, but... */
-		SetQuerySnapshot();
+	if (QuerySnapshot == NULL)	/* should be set beforehand */
+		elog(ERROR, "CopyQuerySnapshot: no snapshot has been set");
 
 	snapshot = (Snapshot) palloc(sizeof(SnapshotData));
 	memcpy(snapshot, QuerySnapshot, sizeof(SnapshotData));

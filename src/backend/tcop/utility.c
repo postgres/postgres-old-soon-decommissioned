@@ -380,14 +380,7 @@ ProcessUtility(Node *parsetree,
 			break;
 
 		case T_CopyStmt:
-			{
-				CopyStmt   *stmt = (CopyStmt *) parsetree;
-
-				if (!stmt->is_from)
-					SetQuerySnapshot();
-
-				DoCopy(stmt);
-			}
+			DoCopy((CopyStmt *) parsetree);
 			break;
 
 		case T_PrepareStmt:
