@@ -2800,12 +2800,10 @@ SelectStmt:	  select_w_o_sort sort_clause for_update_clause
 				}		
 				if (((SelectStmt *)$$)->forUpdate != NULL)
 				{
-					SelectStmt *n = (SelectStmt *)$1;
+					SelectStmt *n = (SelectStmt *)$$;
 
 					if (n->unionClause != NULL)
-						elog(ERROR, "SELECT FOR UPDATE is not allowed with UNION clause");
-					if (n->intersectClause != NULL)
-						elog(ERROR, "SELECT FOR UPDATE is not allowed with INTERSECT/EXCEPT clause");
+						elog(ERROR, "SELECT FOR UPDATE is not allowed with UNION/INTERSECT/EXCEPT clause");
 					if (n->unique != NULL)
 						elog(ERROR, "SELECT FOR UPDATE is not allowed with DISTINCT clause");
 					if (n->groupClause != NULL)
