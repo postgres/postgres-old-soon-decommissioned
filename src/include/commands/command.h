@@ -14,8 +14,6 @@
 #define COMMAND_H
 
 #include <utils/portal.h>
-#include <tcop/dest.h>
-#include <nodes/memnodes.h>
 
 extern MemoryContext PortalExecutorHeapMemory;
 
