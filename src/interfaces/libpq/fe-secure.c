@@ -463,7 +463,7 @@ verify_peer(PGconn *conn)
 	}
 	
 	/* what do we know about the peer's common name? */
-	if ((h == NULL)
+	if (h == NULL)
 	{
 		printfPQExpBuffer(&conn->errorMessage,
 		libpq_gettext("could not get information about host (%s): %s\n"),
