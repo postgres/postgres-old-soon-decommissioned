@@ -887,7 +887,9 @@ SET ENABLE_SEQSCAN TO OFF;
         times the value of <varname>SORT_MEM</varname>. Sort operations are used
         by <literal>ORDER BY</>, merge joins, and <command>CREATE INDEX</>.
         Hash tables are used in hash joins, hash-based aggregation, and
-        hash-based processing of <literal>IN</> subqueries.
+        hash-based processing of <literal>IN</> subqueries.  Because 
+        <command>CREATE INDEX</> is used when restoring a database, it might
+        be good to temporary increase this value during a restore.
        </para>
       </listitem>
      </varlistentry>
