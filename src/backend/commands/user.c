@@ -1498,11 +1498,6 @@ AlterGroup(AlterGroupStmt *stmt, const char *tag)
 
 			if (!intMember(sysid, newlist))
 				newlist = lappendi(newlist, sysid);
-			else
-				ereport(WARNING,
-						(errcode(ERRCODE_DUPLICATE_OBJECT),
-						 errmsg("user \"%s\" is already in group \"%s\"",
-								strVal(lfirst(item)), stmt->name)));
 		}
 
 		/* Do the update */

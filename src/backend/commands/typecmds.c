@@ -1246,10 +1246,6 @@ AlterDomainNotNull(List *names, bool notNull)
 	/* Is the domain already set to the desired constraint? */
 	if (typTup->typnotnull == notNull)
 	{
-		ereport(NOTICE,
-				(errmsg("\"%s\" is already set to %s",
-						TypeNameToString(typename),
-						notNull ? "NOT NULL" : "NULL")));
 		heap_close(typrel, RowExclusiveLock);
 		return;
 	}
