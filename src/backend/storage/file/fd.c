@@ -193,6 +193,18 @@ static char *filepath(char *filename);
 static long pg_nofile(void);
 
 /*
+ * pg_fsync --- same as fsync except does nothing if -F switch was given
+ */
+int
+pg_fsync(int fd)
+{
+	if (enableFsync)
+		return fsync(fd);
+	else
+		return 0;
+}
+
+/*
  * BasicOpenFile --- same as open(2) except can free other FDs if needed
  *
  * This is exported for use by places that really want a plain kernel FD,

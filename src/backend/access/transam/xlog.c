@@ -621,7 +621,7 @@ XLogFlush(XLogRecPtr record)
 		logFile = XLogFileOpen(logId, logSeg, false);
 	}
 
-	if (fsync(logFile) != 0)
+	if (pg_fsync(logFile) != 0)
 		elog(STOP, "fsync(logfile %u seg %u) failed: %m",
 			 logId, logSeg);
 	LgwrResult.Flush = LgwrResult.Write;
@@ -717,7 +717,7 @@ XLogWrite(char *buffer)
 		{
 			if (wcnt > 0)
 			{
-				if (fsync(logFile) != 0)
+				if (pg_fsync(logFile) != 0)
 					elog(STOP, "fsync(logfile %u seg %u) failed: %m",
 						 logId, logSeg);
 				if (LgwrResult.Write.xlogid != logId)
@@ -799,7 +799,7 @@ XLogWrite(char *buffer)
 	if (XLByteLT(LgwrResult.Flush, LgwrRqst.Flush) &&
 		XLByteLE(LgwrRqst.Flush, LgwrResult.Write))
 	{
-		if (fsync(logFile) != 0)
+		if (pg_fsync(logFile) != 0)
 			elog(STOP, "fsync(logfile %u seg %u) failed: %m",
 				 logId, logSeg);
 		LgwrResult.Flush = LgwrResult.Write;
@@ -864,7 +864,7 @@ XLogFileInit(uint32 log, uint32 seg, bool *usexistent)
 		elog(STOP, "write(logfile %u seg %u) failed: %m",
 			 logId, logSeg);
 
-	if (fsync(fd) != 0)
+	if (pg_fsync(fd) != 0)
 		elog(STOP, "fsync(logfile %u seg %u) failed: %m",
 			 logId, logSeg);
 
@@ -1213,7 +1213,7 @@ next_record_is_invalid:;
 	}
 	if (readFile >= 0)
 	{
-		if (fsync(readFile) < 0)
+		if (pg_fsync(readFile) < 0)
 			elog(STOP, "ReadRecord: fsync(logfile %u seg %u) failed: %m",
 				 readId, readSeg);
 		close(readFile);
@@ -1330,7 +1330,7 @@ WriteControlFile(void)
 	if (write(fd, buffer, BLCKSZ) != BLCKSZ)
 		elog(STOP, "WriteControlFile failed to write control file: %m");
 
-	if (fsync(fd) != 0)
+	if (pg_fsync(fd) != 0)
 		elog(STOP, "WriteControlFile failed to fsync control file: %m");
 
 	close(fd);
@@ -1400,7 +1400,7 @@ UpdateControlFile(void)
 	if (write(fd, ControlFile, sizeof(ControlFileData)) != sizeof(ControlFileData))
 		elog(STOP, "write(cntlfile) failed: %m");
 
-	if (fsync(fd) != 0)
+	if (pg_fsync(fd) != 0)
 		elog(STOP, "fsync(cntlfile) failed: %m");
 
 	close(fd);
@@ -1489,7 +1489,7 @@ BootStrapXLOG()
 	if (write(logFile, buffer, BLCKSZ) != BLCKSZ)
 		elog(STOP, "BootStrapXLOG failed to write logfile: %m");
 
-	if (fsync(logFile) != 0)
+	if (pg_fsync(logFile) != 0)
 		elog(STOP, "BootStrapXLOG failed to fsync logfile: %m");
 
 	close(logFile);
