@@ -52,7 +52,6 @@
 #include "postgres.h"
 
 #include "access/nbtree.h"
-#include "storage/bufmgr.h"
 #include "storage/bufpage.h"
 #include "utils/memutils.h"
 
