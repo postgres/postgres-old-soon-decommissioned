@@ -37,6 +37,7 @@
  *
  **********************************************************************/
 
+#define PLPERL_HAVE_UID_GID
 #include "postgres.h"
 
 /* system stuff */
