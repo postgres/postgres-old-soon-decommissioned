@@ -1080,7 +1080,7 @@ PQconnectPoll(PGconn *conn)
 #else
 			char optval;
 #endif
-			int optlen = sizeof(optval);
+			SOCKET_SIZE_TYPE optlen = sizeof(optval);
 
 			/* Write ready, since we've made it here, so the connection
 			 * has been made. */
