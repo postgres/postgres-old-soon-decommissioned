@@ -252,7 +252,7 @@ static struct _helpStruct QL_HELP[] = {
 	"load <filename>;"},
 	{"lock",
 		"exclusive lock a table inside a transaction",
-	"lock <class_name>;"},
+	"lock [table] <class_name>;"},
 	{"move",
 		"move an cursor position",
 	"move [forward|backward] [<number>|all] [in <cursorname>];"},
@@ -273,7 +273,7 @@ static struct _helpStruct QL_HELP[] = {
 	{"select",
 		"retrieve tuples",
 	"select [distinct on <attr>] <expr1> [as <attr1>], ... <exprN> [as <attrN>]\n\
-\t[into table <class_name>]\n\
+\t[into [table] <class_name>]\n\
 \t[from <from_list>]\n\
 \t[where <qual>]\n\
 \t[group by <group_list>]\n\

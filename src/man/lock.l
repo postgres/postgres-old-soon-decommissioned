@@ -6,7 +6,7 @@
 lock - exclusive lock a table
 .SH SYNOPSIS
 .nf
-\fBlock\fR classname
+\fBlock\fR [\fBtable\fR] classname
 .fi
 .SH DESCRIPTION
 .BR lock
@@ -31,7 +31,7 @@ aquisitions and requests to not form a deadlock.
 --  Proper locking to prevent deadlock
 --
 begin work;
-lock mytable;
+lock table mytable;
 select * from mytable;
 update mytable set (x = 100);
 end work;

@@ -382,11 +382,26 @@ transformUnionClause(List *unionClause, List *targetlist)
 
 	if (unionClause)
 	{
+		/* recursion */
 		qlist = parse_analyze(unionClause, NULL);
 
 		for (i = 0; i < qlist->len; i++)
+		{
+			List	   *prev_target = targetlist;
+			List	   *next_target;
+			
+			if (length(targetlist) != length(qlist->qtrees[i]->targetList))
+				elog(ERROR,"Each UNION query must have the same number of columns.");
+				
+			foreach(next_target, qlist->qtrees[i]->targetList)
+			{
+				if (((TargetEntry *)lfirst(prev_target))->resdom->restype !=
+				    ((TargetEntry *)lfirst(next_target))->resdom->restype)
+				elog(ERROR,"Each UNION query must have identical target types.");
+				prev_target = lnext(prev_target);
+			}
 			union_list = lappend(union_list, qlist->qtrees[i]);
-		/* we need to check return types are consistent here */
+		}
 		return union_list;
 	}
 	else
