@@ -874,7 +874,11 @@ XLogFileInit(uint32 log, uint32 seg, bool *usexistent)
 
 	close(fd);
 
+#ifndef __BEOS__
 	if (link(tpath, path) < 0)
+#else
+	if (rename(tpath, path) < 0)
+#endif
 		elog(STOP, "InitRelink(logfile %u seg %u) failed: %m",
 			 logId, logSeg);
 
