@@ -1673,10 +1673,6 @@ get_rule_expr(Node *node, deparse_context *context)
 			get_agg_expr((Aggref *) node, context);
 			break;
 
-		case T_Iter:
-			get_rule_expr(((Iter *) node)->iterexpr, context);
-			break;
-
 		case T_ArrayRef:
 			{
 				ArrayRef   *aref = (ArrayRef *) node;

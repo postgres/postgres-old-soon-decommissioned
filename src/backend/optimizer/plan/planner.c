@@ -498,7 +498,7 @@ is_simple_subquery(Query *subquery)
 	 * set-returning functions into places where they mustn't go,
 	 * such as quals of higher queries.
 	 */
-	if (contain_iter_clause((Node *) subquery->targetList))
+	if (expression_returns_set((Node *) subquery->targetList))
 		return false;
 
 	/*

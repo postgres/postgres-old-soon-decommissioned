@@ -764,6 +764,7 @@ _copyOper(Oper *from)
 	newnode->opno = from->opno;
 	newnode->opid = from->opid;
 	newnode->opresulttype = from->opresulttype;
+	newnode->opretset = from->opretset;
 	/* Do not copy the run-time state, if any */
 	newnode->op_fcache = NULL;
 
@@ -852,7 +853,8 @@ _copyFunc(Func *from)
 	 * copy remainder of node
 	 */
 	newnode->funcid = from->funcid;
-	newnode->functype = from->functype;
+	newnode->funcresulttype = from->funcresulttype;
+	newnode->funcretset = from->funcretset;
 	/* Do not copy the run-time state, if any */
 	newnode->func_fcache = NULL;
 
@@ -1429,17 +1431,6 @@ _copyJoinInfo(JoinInfo *from)
 	 */
 	newnode->unjoined_relids = listCopy(from->unjoined_relids);
 	Node_Copy(from, newnode, jinfo_restrictinfo);
-
-	return newnode;
-}
-
-static Iter *
-_copyIter(Iter *from)
-{
-	Iter	   *newnode = makeNode(Iter);
-
-	Node_Copy(from, newnode, iterexpr);
-	newnode->itertype = from->itertype;
 
 	return newnode;
 }
@@ -2728,9 +2719,6 @@ copyObject(void *from)
 			break;
 		case T_ArrayRef:
 			retval = _copyArrayRef(from);
-			break;
-		case T_Iter:
-			retval = _copyIter(from);
 			break;
 		case T_FieldSelect:
 			retval = _copyFieldSelect(from);

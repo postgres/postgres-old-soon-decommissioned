@@ -502,7 +502,8 @@ push_nots(Expr *qual)
 		{
 			Oper	   *op = (Oper *) makeOper(negator,
 											   InvalidOid,
-											   oper->opresulttype);
+											   oper->opresulttype,
+											   oper->opretset);
 
 			return make_opclause(op, get_leftop(qual), get_rightop(qual));
 		}

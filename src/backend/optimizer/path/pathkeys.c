@@ -518,7 +518,8 @@ build_index_pathkeys(Query *root,
 		List	   *funcargs = NIL;
 
 		funcnode->funcid = index->indproc;
-		funcnode->functype = get_func_rettype(index->indproc);
+		funcnode->funcresulttype = get_func_rettype(index->indproc);
+		funcnode->funcretset = false; /* can never be a set */
 		funcnode->func_fcache = NULL;
 
 		while (*indexkeys != 0)

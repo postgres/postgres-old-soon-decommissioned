@@ -66,7 +66,6 @@ typedef enum NodeTag
 	T_Func,
 	T_FieldSelect,
 	T_ArrayRef,
-	T_Iter,
 	T_RelabelType,
 	T_RangeTblRef,
 	T_FromExpr,

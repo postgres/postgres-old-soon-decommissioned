@@ -35,7 +35,6 @@
 #include "postgres.h"
 
 #include "access/heapam.h"
-#include "executor/execFlatten.h"
 #include "executor/execdebug.h"
 #include "executor/functions.h"
 #include "executor/nodeSubplan.h"
@@ -1335,12 +1334,6 @@ ExecEvalExpr(Node *expression,
 			}
 		case T_Param:
 			retDatum = ExecEvalParam((Param *) expression, econtext, isNull);
-			break;
-		case T_Iter:
-			retDatum = ExecEvalIter((Iter *) expression,
-									econtext,
-									isNull,
-									isDone);
 			break;
 		case T_Aggref:
 			retDatum = ExecEvalAggref((Aggref *) expression, econtext, isNull);

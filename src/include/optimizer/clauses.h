@@ -42,7 +42,7 @@ extern List *make_ands_implicit(Expr *clause);
 extern bool contain_agg_clause(Node *clause);
 extern List *pull_agg_clause(Node *clause);
 
-extern bool contain_iter_clause(Node *clause);
+extern bool expression_returns_set(Node *clause);
 
 extern bool contain_subplans(Node *clause);
 extern List *pull_subplans(Node *clause);

@@ -45,7 +45,7 @@ extern Node *coerce_type(ParseState *pstate, Node *node, Oid inputTypeId,
 extern Node *coerce_type_typmod(ParseState *pstate, Node *node,
 				   Oid targetTypeId, int32 atttypmod);
 
-extern bool coerce_to_boolean(ParseState *pstate, Node **pnode);
+extern Node *coerce_to_boolean(Node *node, const char *constructName);
 
 extern Oid	select_common_type(List *typeids, const char *context);
 extern Node *coerce_to_common_type(ParseState *pstate, Node *node,

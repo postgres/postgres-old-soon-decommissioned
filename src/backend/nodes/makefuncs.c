@@ -56,13 +56,15 @@ makeSimpleA_Expr(int oper, const char *name,
 Oper *
 makeOper(Oid opno,
 		 Oid opid,
-		 Oid opresulttype)
+		 Oid opresulttype,
+		 bool opretset)
 {
 	Oper	   *oper = makeNode(Oper);
 
 	oper->opno = opno;
 	oper->opid = opid;
 	oper->opresulttype = opresulttype;
+	oper->opretset = opretset;
 	oper->op_fcache = NULL;
 	return oper;
 }

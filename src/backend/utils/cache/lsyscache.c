@@ -613,6 +613,27 @@ get_func_rettype(Oid funcid)
 }
 
 /*
+ * get_func_retset
+ *		Given procedure id, return the function's proretset flag.
+ */
+bool
+get_func_retset(Oid funcid)
+{
+	HeapTuple	tp;
+	bool		result;
+
+	tp = SearchSysCache(PROCOID,
+						ObjectIdGetDatum(funcid),
+						0, 0, 0);
+	if (!HeapTupleIsValid(tp))
+		elog(ERROR, "Function OID %u does not exist", funcid);
+
+	result = ((Form_pg_proc) GETSTRUCT(tp))->proretset;
+	ReleaseSysCache(tp);
+	return result;
+}
+
+/*
  * func_volatile
  *		Given procedure id, return the function's provolatile flag.
  */

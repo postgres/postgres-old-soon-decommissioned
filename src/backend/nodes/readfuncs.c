@@ -1083,9 +1083,13 @@ _readFunc(void)
 	token = pg_strtok(&length); /* now read it */
 	local_node->funcid = atooid(token);
 
-	token = pg_strtok(&length); /* get :functype */
+	token = pg_strtok(&length); /* get :funcresulttype */
 	token = pg_strtok(&length); /* now read it */
-	local_node->functype = atooid(token);
+	local_node->funcresulttype = atooid(token);
+
+	token = pg_strtok(&length); /* get :funcretset */
+	token = pg_strtok(&length); /* now read it */
+	local_node->funcretset = strtobool(token);
 
 	local_node->func_fcache = NULL;
 
@@ -1118,6 +1122,10 @@ _readOper(void)
 	token = pg_strtok(&length); /* get :opresulttype */
 	token = pg_strtok(&length); /* now read it */
 	local_node->opresulttype = atooid(token);
+
+	token = pg_strtok(&length); /* get :opretset */
+	token = pg_strtok(&length); /* now read it */
+	local_node->opretset = strtobool(token);
 
 	local_node->op_fcache = NULL;
 
@@ -1991,26 +1999,6 @@ _readJoinInfo(void)
 	return local_node;
 }
 
-/* ----------------
- *		_readIter()
- *
- * ----------------
- */
-static Iter *
-_readIter(void)
-{
-	Iter	   *local_node;
-	char	   *token;
-	int			length;
-
-	local_node = makeNode(Iter);
-
-	token = pg_strtok(&length); /* eat :iterexpr */
-	local_node->iterexpr = nodeRead(true);		/* now read it */
-
-	return local_node;
-}
-
 
 /* ----------------
  *		parsePlanString
@@ -2124,8 +2112,6 @@ parsePlanString(void)
 		return_value = _readRestrictInfo();
 	else if (length == 8 && strncmp(token, "JOININFO", length) == 0)
 		return_value = _readJoinInfo();
-	else if (length == 4 && strncmp(token, "ITER", length) == 0)
-		return_value = _readIter();
 	else if (length == 5 && strncmp(token, "QUERY", length) == 0)
 		return_value = _readQuery();
 	else if (length == 6 && strncmp(token, "NOTIFY", length) == 0)
