@@ -33,6 +33,7 @@
 
 #include "libpq/pqsignal.h"
 #include "miscadmin.h"
+#include "postmaster/fork_process.h"
 #include "postmaster/postmaster.h"
 #include "postmaster/syslogger.h"
 #include "pgtime.h"
@@ -451,28 +452,13 @@ SysLogger_Start(void)
 
 	pfree(filename);
 
-	/*
-	 * Now we can fork off the syslogger subprocess.
-	 */
-	fflush(stdout);
-	fflush(stderr);
-
-#ifdef __BEOS__
-	/* Specific beos actions before backend startup */
-	beos_before_backend_startup();
-#endif
-
 #ifdef EXEC_BACKEND
 	switch ((sysloggerPid = syslogger_forkexec()))
 #else
-	switch ((sysloggerPid = fork()))
+	switch ((sysloggerPid = fork_process()))
 #endif
 	{
 		case -1:
-#ifdef __BEOS__
-			/* Specific beos actions */
-			beos_backend_startup_failed();
-#endif
 			ereport(LOG,
 					(errmsg("could not fork system logger: %m")));
 			return 0;
@@ -480,10 +466,6 @@ SysLogger_Start(void)
 #ifndef EXEC_BACKEND
 		case 0:
 			/* in postmaster child ... */
-#ifdef __BEOS__
-			/* Specific beos actions after backend startup */
-			beos_backend_startup();
-#endif
 			/* Close the postmaster's sockets */
 			ClosePostmasterPorts(true);
 
