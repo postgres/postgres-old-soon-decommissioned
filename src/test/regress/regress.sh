@@ -80,7 +80,7 @@ if [ $? -ne 0 ]; then
 fi
 
 if [ "x$hostname" != "xi386-pc-qnx4" ]; then
-echo "=============== installing languages...                ================="
+echo "=============== installing languages...               ================="
 $ECHO_N "installing PL/pgSQL .. " $ECHO_C
 createlang $HOSTLOC plpgsql regression
 if [ $? -ne 0 -a $? -ne 2 ]; then
