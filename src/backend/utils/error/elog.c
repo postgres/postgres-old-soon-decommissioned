@@ -82,16 +82,16 @@ elog(int lev, const char *fmt,...)
 				i = 0;
 			if (i > 30)
 				i = i % 30;
-			cp = "DEBUG:";
+			cp = "DEBUG:  ";
 			break;
 		case NOTICE:
-			cp = "NOTICE:";
+			cp = "NOTICE:  ";
 			break;
 		case WARN:
-			cp = "WARN:";
+			cp = "WARN:  ";
 			break;
 		default:
-			sprintf(line, "FATAL %d:", lev);
+			sprintf(line, "FATAL %d:  ", lev);
 			cp = line;
 	}
 #ifdef ELOG_TIMESTAMPS
