@@ -309,7 +309,6 @@ extern Page PageGetTempPage(Page page, Size specialSize);
 extern void PageRestoreTempPage(Page tempPage, Page oldPage);
 extern void PageRepairFragmentation(Page page);
 extern Size PageGetFreeSpace(Page page);
-extern void PageManagerModeSet(PageManagerMode mode);
 extern void PageIndexTupleDelete(Page page, OffsetNumber offset);
 
 
