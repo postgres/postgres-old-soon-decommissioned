@@ -656,7 +656,7 @@ preprocess_jointree(Query *parse, Node *jtnode)
 				if (childlen <= 1 || (childlen + myothers) <= geqo_rels / 2)
 				{
 					newlist = nconc(newlist, subf->fromlist);
-					f->quals = make_and_qual(f->quals, subf->quals);
+					f->quals = make_and_qual(subf->quals, f->quals);
 				}
 				else
 					newlist = lappend(newlist, child);
