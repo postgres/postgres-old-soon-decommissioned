@@ -41,9 +41,10 @@
  */
 #include "postgres.h"
 
-#include <sys/file.h>
 #include <math.h>
 #include <signal.h>
+#include <sys/file.h>
+#include <sys/time.h>
 #include <unistd.h>
 
 #include "lib/stringinfo.h"
