@@ -13,15 +13,12 @@
 #ifndef CLUSTER_H
 #define CLUSTER_H
 
-#include <nodes/parsenodes.h>
-/*
- * functions
- */
+#include "nodes/parsenodes.h"
+#include "utils/rel.h"
+
+
 extern void cluster(ClusterStmt *stmt);
 
-extern List *get_indexattr_list(Relation OldHeap, Oid OldIndex);
-extern void rebuild_rel(Oid tableOid, Oid indexOid,
-					    List *indexes, bool dataCopy);
-
+extern void rebuild_relation(Relation OldHeap, Oid indexOid);
 
 #endif   /* CLUSTER_H */
