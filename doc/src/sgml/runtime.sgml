@@ -2780,6 +2780,16 @@ kernel.shmmax = 134217728
         <filename>/usr/src/linux/include/asm-<replaceable>xxx</>/shmpara
         m.h</> and <filename>/usr/src/linux/include/linux/sem.h</>.
        </para>
+
+       <para>
+        Linux has poor default memory overcommit behavior.  Rather than
+        failing if it can not reserve enough memory, it returns success, 
+        but later fails when the memory can't be mapped and terminates 
+        the application.  To prevent unpredictable process termination, use:
+<programlisting>
+sysctl -w vm.overcommit_memory=3
+</programlisting>
+       </para>
       </listitem>
      </varlistentry>
 
