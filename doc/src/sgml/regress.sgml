@@ -361,7 +361,6 @@ diff results/random.out expected/random.out
    </sect2>
   </sect1>
 
-<![%standalone-ignore;[
 <!-- We might want to move the following section into the developer's guide. -->
   <sect1 id="regress-platform">
    <title>Platform-specific comparison files</title>
@@ -415,7 +414,6 @@ horology/hppa=horology-no-DST-before-1970
    </para>
     
   </sect1>
-]]>
   
 </chapter>
 
