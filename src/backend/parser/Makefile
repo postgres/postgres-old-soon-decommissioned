@@ -30,8 +30,11 @@ $(srcdir)/gram.c $(srcdir)/parse.h: gram.y
 	mv y.tab.h $(srcdir)/parse.h
 
 $(srcdir)/scan.c: scan.l
-	$(LEX) $(LFLAGS) $<
-	mv lex.yy.c $@
+ifdef FLEX
+	$(FLEX) $(FLEXFLAGS) -o'$@' $<
+else
+	@$(missing) flex $< $@
+endif
 
 
 analyze.o keywords.o parse_clause.o parse_expr.o scan.o: $(srcdir)/parse.h

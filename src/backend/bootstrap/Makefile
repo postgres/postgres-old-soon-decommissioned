@@ -48,9 +48,13 @@ $(srcdir)/bootparse.c $(srcdir)/bootstrap_tokens.h: bootparse.y Makefile
 	rm -f y.tab.c y.tab.h
 
 $(srcdir)/bootscanner.c: bootscanner.l Makefile
-	$(LEX) $(LFLAGS) $<
-	$(sed-magic) < lex.yy.c > $@
+ifdef FLEX
+	$(FLEX) $(FLEXFLAGS) $<
+	$(sed-magic) lex.yy.c > $@
 	rm -f lex.yy.c
+else
+	@$(missing) flex $< $@
+endif
 
 clean:
 	rm -f SUBSYS.o $(OBJS) bootstrap.o
