@@ -99,7 +99,7 @@ static bool function_index_operand(Expr *funcOpnd, RelOptInfo *rel, RelOptInfo *
  *
  */
 List *
-find_index_paths(Query *root,
+create_index_paths(Query *root,
 				 RelOptInfo *rel,
 				 List *indices,
 				 List *restrictinfo_list,

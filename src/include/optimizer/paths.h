@@ -27,7 +27,7 @@ extern RelOptInfo *make_one_rel(Query *root, List *rels);
  * indxpath.h
  *	  routines to generate index paths
  */
-extern List *find_index_paths(Query *root, RelOptInfo *rel, List *indices,
+extern List *create_index_paths(Query *root, RelOptInfo *rel, List *indices,
 				 List *restrictinfo_list,
 				 List *joininfo_list);
 
