@@ -12,8 +12,7 @@
 #ifndef PRS2LOCK_H
 #define PRS2LOCK_H
 
-#include "access/attnum.h"
-#include "nodes/pg_list.h"
+#include "nodes/nodes.h"
 
 /*
  * RewriteRule -
