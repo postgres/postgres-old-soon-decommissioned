@@ -28,7 +28,7 @@ defined for this database.
 .PP
 .BR "Create type"
 requires the registration of two functions (using
-.IR "create_function" (l))
+.IR create_function(l))
 before defining the type.  The representation of a new base type is
 determined by 
 .IR input_function ,

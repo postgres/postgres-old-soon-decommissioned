@@ -140,8 +140,7 @@ select * from EMP
 .PP
 You must have
 .IR "rule definition"
-access to a class in order to define a rule on it (see
-.IR "change acl" (l).
+access to a class in order to define a rule on it.
 .SH EXAMPLES
 .nf
 --

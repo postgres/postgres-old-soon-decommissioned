@@ -20,4 +20,4 @@ drop view myview
 .fi
 .SH "SEE ALSO"
 create_view(l),
-drop_rule(l),
+drop_rule(l).

@@ -40,5 +40,5 @@ There is no way to un-\c
 except to drop the connection (i.e., restart the backend server).
 .PP
 The
-.IR psql (1)
+.IR psql(1)
 command does not poll for asynchronous events.

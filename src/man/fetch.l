@@ -32,9 +32,9 @@ view updates.  Consequently, users must issue explicit replace
 commands to update data.
 .PP
 Cursors may only be used inside of transaction blocks marked by 
-.IR begin (l)
+.IR begin(l)
 and
-.IR commit (l)
+.IR commit(l)
 because the data that they store spans multiple user queries.
 .SH EXAMPLE
 .nf

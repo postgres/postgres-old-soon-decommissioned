@@ -27,4 +27,3 @@ drop user tab;
 
 .SH "SEE ALSO"
 alter_user(l), create_user(l).
-

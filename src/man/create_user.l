@@ -87,4 +87,4 @@ create user tab with password jw8s0F4 valid until 'Jan 1 2002';
 create user tab with password jw8s0F4 createdb;
 .fi
 .SH "SEE ALSO"
-pg_crypt(3), alter_user(l), drop_user(l).
+alter_user(l), drop_user(l).

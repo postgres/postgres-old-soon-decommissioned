@@ -26,4 +26,4 @@ revoke insert
 	from public
 .fi
 .SH "SEE ALSO"
-grant(l)
+grant(l).

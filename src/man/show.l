@@ -15,13 +15,13 @@ will display the current configuration parameters for
 during a session.
 .PP
 The session can be configured using
-.IR set (l),
+.IR set(l),
 and values can be restored to the defaults using
-.IR reset (l).
+.IR reset(l).
 Parameters and values are case-insensitive.
 .PP
 See
-.IR set (l)
+.IR set(l)
 for more information on available variables.
 
 .SH EXAMPLES

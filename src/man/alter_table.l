@@ -30,7 +30,7 @@ after this command is executed.
 .PP
 The new attributes and their types are specified
 in the same style and with the the same restrictions as in
-.IR "create_table" (l).
+.IR create_table(l).
 .PP
 In order to add an attribute to each class in an entire inheritance
 hierarchy, use the
@@ -52,7 +52,7 @@ For efficiency reasons, default values for added attributes are not
 placed in existing instances of a class.  That is, existing instances
 will have NULL values in the new attributes.  If non-NULL values are
 desired, a subsequent
-.IR update (l)
+.IR update(l)
 query should be run.
 .PP
 In order to rename an attribute in each class in an entire inheritance
@@ -99,6 +99,5 @@ alter table emp rename column sports to hobbies
 alter table person * rename column last_name to family_name
 .fi
 .SH "SEE ALSO"
-create_table (l),
-update (l).
-
+create_table(l),
+update(l).

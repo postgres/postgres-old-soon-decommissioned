@@ -28,4 +28,4 @@ grant insert
 	to public
 .fi
 .SH "SEE ALSO"
-revoke(l)
+revoke(l).

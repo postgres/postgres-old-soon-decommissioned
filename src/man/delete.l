@@ -17,9 +17,7 @@ If the qualification is absent, the effect is to delete all instances
 in the class.  The result is a valid, but empty class.
 .PP
 You must have write access to the class in order to modify it, as well
-as read access to any class whose values are read in the qualification
-(see
-.IR "change acl" (l).
+as read access to any class whose values are read in the qualification.
 .SH EXAMPLE
 .nf
 --

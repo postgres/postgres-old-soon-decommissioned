@@ -153,7 +153,7 @@ in the event of a
 but the target relation will, of course, be partially modified in a
 .BR "copy to" .
 The 
-.IR vacuum (l)
+.IR vacuum(l)
 query should be used to clean up after a failed
 .BR "copy" .
 .PP

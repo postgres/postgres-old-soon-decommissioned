@@ -173,7 +173,7 @@ New and current can only appear in the action portion of a rule, while
 other instance variables can be used in any SQL statement.
 .IR Composite_field
 is a field of of one of the Postgres composite types indicated in the 
-.IR information (l)
+.IR pgbuiltin(l)
 section, while successive composite fields address attributes in the
 class(s) to which the composite field evaluates.  Lastly,
 .IR field

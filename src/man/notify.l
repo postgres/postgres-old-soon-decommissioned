@@ -12,7 +12,7 @@ notify - signal all frontends and backends listening on a class
 .BR notify
 is used to awaken all backends and consequently all frontends
 that have executed 
-.IR listen (l)
+.IR listen(l)
 on
 .IR class_name .
 This can be used either within an instance-level rule as part of the
@@ -45,4 +45,4 @@ never be processed.
 .SH "SEE ALSO"
 define rule(l),
 listen(l),
-libpq.
+libpq(3).

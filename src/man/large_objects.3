@@ -42,10 +42,10 @@ for dynamically-loaded C functions as well as for \*(LQ.
 .PP
 The Postgres large object interface is modeled after the Unix file
 system interface, with analogues of
-.I open (2),
-.I read (2),
-.I write (2),
-.I lseek (2),
+.I open(2),
+.I read(2),
+.I write(2),
+.I lseek(2),
 etc.  User functions call these routines to retrieve only the data of
 interest from a large object.  For example, if a large object type
 called

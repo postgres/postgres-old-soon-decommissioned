@@ -13,7 +13,7 @@ drop table - destroy existing classes
 removes classes from the data base.  Only its owner may destroy a
 class.  A class may be emptied of instances, but not destroyed, by
 using 
-.IR delete (l).
+.IR delete(l).
 .PP
 If a class being destroyed has secondary indices on it, then they will
 be removed first.  The removal of just a secondary index will not

@@ -13,7 +13,7 @@ drop database - destroy an existing database
 removes the catalog entries for an existing database and deletes the
 directory containing the data.  It can only be executed by the
 database administrator (see
-.IR createdb (l)
+.IR createdb(l)
 for details).
 .SH "SEE ALSO"
 create_database(l),
@@ -22,5 +22,5 @@ destroydb(1).
 This query should 
 .BR NOT
 be executed interactively.  The 
-.IR destroydb (1)
+.IR destroydb(1)
 script should be used instead.

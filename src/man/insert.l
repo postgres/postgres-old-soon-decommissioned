@@ -61,7 +61,7 @@ or
 is an integer constant and
 .IR array_str
 is an array constant (see
-.IR pgintro (1)).
+.IR pgintro(1)).
 .PP
 
 If the user does not specify any array bounds (as in the third form)
@@ -77,8 +77,7 @@ contain garbage.
 .PP
 You must have write or append access to a class in order to append to
 it, as well as read access on any class whose values are read in the
-target list or qualification (see
-.IR "change acl" (l)).
+target list or qualification.
 .SH EXAMPLES
 .nf
 --
