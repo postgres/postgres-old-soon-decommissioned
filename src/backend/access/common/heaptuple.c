@@ -689,7 +689,7 @@ heap_formtuple(TupleDesc tupleDescriptor,
 	len += ComputeDataSize(tupleDescriptor, value, nulls);
 
 	tuple = (HeapTuple) palloc(HEAPTUPLESIZE + len);
-	td = tuple->t_data = (HeapTupleHeader) ((char *) tuple + HEAPTUPLESIZE);;
+	td = tuple->t_data = (HeapTupleHeader) ((char *) tuple + HEAPTUPLESIZE);
 
 	MemSet((char *) td, 0, (int) len);
 
