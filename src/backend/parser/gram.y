@@ -3947,10 +3947,11 @@ character:  CHARACTER opt_varying opt_charset
 					};
 					$$ = type;
 				}
-		| CHAR opt_varying						{ $$ = xlateSqlType($2? "varchar": "bpchar"); }
+		| CHAR opt_varying						{ $$ = xlateSqlType($2 ? "varchar": "bpchar"); }
 		| VARCHAR								{ $$ = xlateSqlType("varchar"); }
-		| NATIONAL CHARACTER opt_varying		{ $$ = xlateSqlType($3? "varchar": "bpchar"); }
-		| NCHAR opt_varying						{ $$ = xlateSqlType($2? "varchar": "bpchar"); }
+		| NATIONAL CHARACTER opt_varying		{ $$ = xlateSqlType($3 ? "varchar": "bpchar"); }
+		| NATIONAL CHAR opt_varying				{ $$ = xlateSqlType($3 ? "varchar": "bpchar"); }
+		| NCHAR opt_varying						{ $$ = xlateSqlType($2 ? "varchar": "bpchar"); }
 		;
 
 opt_varying:  VARYING							{ $$ = TRUE; }
