@@ -34,7 +34,7 @@
  */
 CATALOG(pg_description)
 {
-	Oid			rowoid;
+	Oid			objoid;
 	text		description;
 } FormData_pg_description;
 
@@ -50,7 +50,7 @@ typedef FormData_pg_description *Form_pg_description;
  * ----------------
  */
 #define Natts_pg_description			2
-#define Anum_pg_description_rowoid		1
+#define Anum_pg_description_objoid		1
 #define Anum_pg_description_description	2
 
 /* ----------------
