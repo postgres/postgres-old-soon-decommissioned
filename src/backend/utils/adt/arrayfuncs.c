@@ -33,13 +33,13 @@
 #define ASSGN    "="
 
 /* An array has the following internal structure:
- *    <nbytes>            - total number of bytes 
- *     <ndim>                - number of dimensions of the array 
- *    <flags>                - bit mask of flags
- *    <dim>                - size of each array axis 
- *    <dim_lower>            - lower boundary of each dimension 
- *    <actual data>        - whatever is the stored data
-*/
+ *    <nbytes>      - total number of bytes 
+ *    <ndim>        - number of dimensions of the array 
+ *    <flags>       - bit mask of flags
+ *    <dim>         - size of each array axis 
+ *    <dim_lower>   - lower boundary of each dimension 
+ *    <actual data> - whatever is the stored data
+ */
 
 /*-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-*/
 static int _ArrayCount(char *str, int dim[], int typdelim);
@@ -148,6 +148,14 @@ array_in(char *string,		/* input array in external form */
         while (isspace(*p)) p++;
     }        
     
+#ifdef ARRAYDEBUG
+printf( "array_in- ndim %d (", ndim);
+for (i = 0; i < ndim; i++) {
+    printf(" %d", dim[i]);
+};
+printf( ") for %s\n", string);
+#endif
+
     nitems = getNitems( ndim, dim);
     if (nitems == 0) {
         char *emptyArray = palloc(sizeof(ArrayType));
