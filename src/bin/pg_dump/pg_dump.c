@@ -2872,6 +2872,7 @@ dumpProcLangs(Archive *fout, FuncInfo *finfo, int numFuncs,
 	int			i_lanpltrusted;
 	int			i_lanplcallfoid;
 	int			i_lancompiler;
+	Oid			lanoid;
 	char	   *lanname;
 	char	   *lancompiler;
 	const char *lanplcallfoid;
@@ -2898,7 +2899,13 @@ dumpProcLangs(Archive *fout, FuncInfo *finfo, int numFuncs,
 
 	for (i = 0; i < ntups; i++)
 	{
+		lanoid = atoi(PQgetvalue(res, i, i_oid));
+		if (lanoid <= g_last_builtin_oid)
+			continue;
+
 		lanplcallfoid = PQgetvalue(res, i, i_lanplcallfoid);
+
+
 		for (fidx = 0; fidx < numFuncs; fidx++)
 		{
 			if (!strcmp(finfo[fidx].oid, lanplcallfoid))
