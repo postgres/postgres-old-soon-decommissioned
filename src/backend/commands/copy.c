@@ -1161,7 +1161,6 @@ CopyAttributeOut(FILE *fp, char *server_string, char *delim)
 	char	   *string_start;
 	int			mblen;
 	int			i;
-
 #endif
 
 #ifdef MULTIBYTE
@@ -1174,6 +1173,7 @@ CopyAttributeOut(FILE *fp, char *server_string, char *delim)
 	else
 	{
 		string = server_string;
+		string_start = NULL;	/* unused, but keep compiler quiet */
 	}
 #else
 	string = server_string;
