@@ -811,9 +811,7 @@ heap_create_with_catalog(char *relname,
 		Oid			relid = RelnameFindRelid(relname);
 
 		if (relid != InvalidOid)
-		{
 			RelationForgetRelation(relid);
-		}
 	}
 
 	/* save user relation name because heap_create changes it */

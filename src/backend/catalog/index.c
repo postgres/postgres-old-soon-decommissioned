@@ -990,9 +990,7 @@ index_create(char *heapRelationName,
 		Oid			relid = RelnameFindRelid(indexRelationName);
 
 		if (relid != InvalidOid)
-		{
 			RelationForgetRelation(relid);
-		}
 	}
 
 	/* save user relation name because heap_create changes it */
