@@ -271,6 +271,7 @@ jayt
 	{"jt", TZ, 45},				/* Java Time */
 	{"jul", MONTH, 7},
 	{"julian", UNITS, JULIAN},
+	{"july", MONTH, 7},
 	{"jun", MONTH, 6},
 	{"june", MONTH, 6},
 #if 0
