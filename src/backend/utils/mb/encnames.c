@@ -341,6 +341,9 @@ pg_enc2name pg_enc2name_tbl[] =
 		"ISO_8859_8", PG_ISO_8859_8
 	},
 	{
+		"WIN1250", PG_WIN1250
+	},
+	{
 		"SJIS", PG_SJIS
 	},
 	{
@@ -351,9 +354,6 @@ pg_enc2name pg_enc2name_tbl[] =
 	},
 	{
 		"UHC", PG_UHC
-	},
-	{
-		"WIN1250", PG_WIN1250
 	},
 	{
 		"GB18030", PG_GB18030

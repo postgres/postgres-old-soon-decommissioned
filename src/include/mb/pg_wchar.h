@@ -177,19 +177,19 @@ typedef enum pg_enc
 	PG_ISO_8859_6,				/* ISO-8859-6 */
 	PG_ISO_8859_7,				/* ISO-8859-7 */
 	PG_ISO_8859_8,				/* ISO-8859-8 */
+	PG_WIN1250,					/* windows-1250 */
 
 	/* followings are for client encoding only */
 	PG_SJIS,					/* Shift JIS (Winindows-932) */
 	PG_BIG5,					/* Big5 (Windows-950) */
 	PG_GBK,						/* GBK (Windows-936) */
 	PG_UHC,						/* UHC (Windows-949) */
-	PG_WIN1250,					/* windows-1250 */
 	PG_GB18030,					/* GB18030 */
 	_PG_LAST_ENCODING_			/* mark only */
 
 } pg_enc;
 
-#define PG_ENCODING_BE_LAST PG_ISO_8859_8
+#define PG_ENCODING_BE_LAST PG_WIN1250
 #define PG_ENCODING_FE_LAST PG_GB18030
 
 /*
