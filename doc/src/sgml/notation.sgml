@@ -33,7 +33,7 @@ $Header$
   Anything in braces
   (<literal>{</literal> and <literal>}</literal>) and containing vertical bars
   (<literal>|</literal>)
-  indicates that you must choose one.
+  indicates that you must choose one alternative.
  </para>
 
  <para>
