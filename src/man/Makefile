@@ -20,7 +20,7 @@ install:
 	-mkdir $(DESTDIR)$(POSTMANDIR)/man1
 	-mkdir $(DESTDIR)$(POSTMANDIR)/man3
 	-mkdir $(DESTDIR)$(POSTMANDIR)/man5
- 	-mkdir $(DESTDIR)$(POSTMANDIR)/manl
+	-mkdir $(DESTDIR)$(POSTMANDIR)/manl
 	cp *.1* $(DESTDIR)$(POSTMANDIR)/man1
 	cp *.3* $(DESTDIR)$(POSTMANDIR)/man3
 	cp *.5* $(DESTDIR)$(POSTMANDIR)/man5
