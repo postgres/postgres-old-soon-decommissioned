@@ -761,7 +761,7 @@ PQdisplayTuples(PGresult *res,
  * PQprintTuples()
  *
  * This is the routine that prints out the tuples that
- *  are returned from the backend.
+ * are returned from the backend.
  * Right now all columns are of fixed length,
  * this should be changed to allow wrap around for
  * tuples values that are wider.
