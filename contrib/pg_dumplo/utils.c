@@ -30,6 +30,7 @@ void
 index_file(LODumpMaster * pgLO)
 {
 	char		path[BUFSIZ];
+	int		sz;
 
 	if (pgLO->action == ACTION_SHOW)
 		return;
@@ -49,7 +50,8 @@ index_file(LODumpMaster * pgLO)
 			}
 		}
 
-		snprintf(path, BUFSIZ, "%s/lo_dump.index", path);
+		sz = strlen(path);
+		strncat(path, "/lo_dump.index", BUFSIZ-sz);
 
 		if ((pgLO->index = fopen(path, "w")) == NULL)
 		{
@@ -60,8 +62,8 @@ index_file(LODumpMaster * pgLO)
 	}
 	else if (pgLO->action != ACTION_NONE)
 	{
-
-		snprintf(path, BUFSIZ, "%s/lo_dump.index", path);
+		sz = strlen(path);
+		strncat(path, "/lo_dump.index", BUFSIZ-sz);
 
 		if ((pgLO->index = fopen(path, "r")) == NULL)
 		{
