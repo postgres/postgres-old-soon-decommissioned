@@ -79,7 +79,7 @@ encode(PG_FUNCTION_ARGS)
 		elog(FATAL, "pg_encode: overflow, encode estimate too small");
 	
 	PG_FREE_IF_COPY(arg, 0);
-	PG_FREE_IF_COPY(name, 0);
+	PG_FREE_IF_COPY(name, 1);
 	
 	PG_RETURN_TEXT_P(res);
 }
@@ -116,7 +116,7 @@ decode(PG_FUNCTION_ARGS)
 		elog(FATAL, "pg_decode: overflow, decode estimate too small");
 	
 	PG_FREE_IF_COPY(arg, 0);
-	PG_FREE_IF_COPY(name, 0);
+	PG_FREE_IF_COPY(name, 1);
 	
 	PG_RETURN_TEXT_P(res);
 }

@@ -80,7 +80,7 @@ digest(PG_FUNCTION_ARGS)
 	h->digest(h, VARDATA(arg), len, VARDATA(res));
 	
 	PG_FREE_IF_COPY(arg, 0);
-	PG_FREE_IF_COPY(name, 0);
+	PG_FREE_IF_COPY(name, 1);
 	
 	PG_RETURN_TEXT_P(res);
 }
