@@ -519,3 +519,23 @@ LWLockReleaseAll(void)
 		LWLockRelease(held_lwlocks[num_held_lwlocks - 1]);
 	}
 }
+
+
+/*
+ * LWLockHeldByMe - test whether my process currently holds a lock
+ *
+ * This is meant as debug support only.  We do not distinguish whether the
+ * lock is held shared or exclusive.
+ */
+bool
+LWLockHeldByMe(LWLockId lockid)
+{
+	int	i;
+
+	for (i = 0; i < num_held_lwlocks; i++)
+	{
+		if (held_lwlocks[i] == lockid)
+			return true;
+	}
+	return false;
+}

@@ -62,6 +62,7 @@ extern void LWLockAcquire(LWLockId lockid, LWLockMode mode);
 extern bool LWLockConditionalAcquire(LWLockId lockid, LWLockMode mode);
 extern void LWLockRelease(LWLockId lockid);
 extern void LWLockReleaseAll(void);
+extern bool LWLockHeldByMe(LWLockId lockid);
 
 extern int	NumLWLocks(void);
 extern int	LWLockShmemSize(void);
