@@ -207,7 +207,7 @@ extern SPINLOCK LockMgrLock;
 extern void InitLocks(void);
 extern void LockDisable(int status);
 extern LockTableId
-LockTabInit(char *tabName, MASK *conflictsP, int *prioP,
+LockTableInit(char *tabName, MASK *conflictsP, int *prioP,
 			int ntypes);
 extern bool LockAcquire(LockTableId tableId, LOCKTAG *lockName, LOCKT lockt);
 extern int

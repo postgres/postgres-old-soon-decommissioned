@@ -96,14 +96,14 @@ InitMultiLevelLockm()
 	if (MultiTableId)
 		return MultiTableId;
 
-	tableId = LockTabInit("LockTable", MultiConflicts, MultiPrios, 5);
+	tableId = LockTableInit("LockTable", MultiConflicts, MultiPrios, 5);
 	MultiTableId = tableId;
 	if (!(MultiTableId))
 		elog(ERROR, "InitMultiLockm: couldnt initialize lock table");
 	/* -----------------------
 	 * No short term lock table for now.  -Jeff 15 July 1991
 	 *
-	 * ShortTermTableId = LockTabRename(tableId);
+	 * ShortTermTableId = LockTableRename(tableId);
 	 * if (! (ShortTermTableId)) {
 	 *	 elog(ERROR,"InitMultiLockm: couldnt rename lock table");
 	 * }
