@@ -46,12 +46,12 @@ extern Cost restriction_selectivity(Oid functionObjectId,
 						Oid operatorObjectId,
 						Oid relationObjectId,
 						AttrNumber attributeNumber,
-						char *constValue,
-						int32 constFlag);
+						Datum constValue,
+						int constFlag);
 
-extern void index_selectivity(Oid indid, Oid *classes, List *opnos,
-				  Oid relid, List *attnos, List *values, List *flags,
-				  int32 nkeys, float *idxPages, float *idxSelec);
+extern void index_selectivity(Query *root, int relid, Oid indexid,
+							  List *indexquals,
+							  float *idxPages, float *idxSelec);
 
 extern Cost join_selectivity(Oid functionObjectId, Oid operatorObjectId,
 				 Oid relationObjectId1, AttrNumber attributeNumber1,

@@ -45,8 +45,9 @@ extern bool is_joinable(Node *clause);
 extern bool qual_clause_p(Node *clause);
 extern void fix_opid(Node *clause);
 extern List *fix_opids(List *clauses);
-extern void get_relattval(Node *clause, int *relid,
-			  AttrNumber *attno, Datum *constval, int *flag);
+extern void get_relattval(Node *clause, int targetrelid,
+						  int *relid, AttrNumber *attno,
+						  Datum *constval, int *flag);
 extern void get_rels_atts(Node *clause, int *relid1,
 			  AttrNumber *attno1, int *relid2, AttrNumber *attno2);
 extern void CommuteClause(Node *clause);
