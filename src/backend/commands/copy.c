@@ -761,10 +761,17 @@ DoCopy(const CopyStmt *stmt)
 			copy_file = AllocateFile(filename, PG_BINARY_R);
 
 			if (copy_file == NULL)
+#ifndef WIN32
 				elog(ERROR, "COPY command, running in backend with "
 					 "effective uid %d, could not open file '%s' for "
 					 "reading.  Errno = %s (%d).",
 					 (int) geteuid(), filename, strerror(errno), errno);
+#else
+				elog(ERROR, "COPY command, running in backend, "
+					 "could not open file '%s' for "
+					 "reading.  Errno = %s (%d).",
+					 filename, strerror(errno), errno);
+#endif
 
 			fstat(fileno(copy_file), &st);
 			if (S_ISDIR(st.st_mode))
@@ -814,10 +821,17 @@ DoCopy(const CopyStmt *stmt)
 			umask(oumask);
 
 			if (copy_file == NULL)
+#ifndef WIN32
 				elog(ERROR, "COPY command, running in backend with "
 					 "effective uid %d, could not open file '%s' for "
 					 "writing.  Errno = %s (%d).",
 					 (int) geteuid(), filename, strerror(errno), errno);
+#else
+				elog(ERROR, "COPY command, running in backend, "
+					 "could not open file '%s' for "
+					 "writing.  Errno = %s (%d).",
+					 filename, strerror(errno), errno);
+#endif
 			fstat(fileno(copy_file), &st);
 			if (S_ISDIR(st.st_mode))
 			{
