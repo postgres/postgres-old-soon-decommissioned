@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Tue Oct 21 11:51:25 EDT 2003
+Last updated:		Wed Oct 22 13:14:35 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -94,6 +94,7 @@ Data Types
 * Add pg_get_acldef(), pg_get_typedefault(), and pg_get_attrdef()
 * Add ALTER DOMAIN, AGGREGATE, CONVERSION, SEQUENCE ... OWNER TO
 * Allow to_char to print localized month names (Karel)
+* Allow functions to have a search path specified at creation time
 
 
 * ARRAYS
