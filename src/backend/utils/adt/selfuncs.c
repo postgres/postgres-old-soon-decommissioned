@@ -4259,6 +4259,7 @@ genericcostestimate(Query *root, RelOptInfo *rel,
 	if (qual_arg_cost < 0)		/* just in case... */
 		qual_arg_cost = 0;
 	*indexStartupCost = qual_arg_cost;
+	*indexTotalCost += qual_arg_cost;
 	*indexTotalCost += numIndexTuples * (cpu_index_tuple_cost + qual_op_cost);
 
 	/*
