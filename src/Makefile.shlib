@@ -129,6 +129,7 @@ ifeq ($(PORTNAME), solaris_i386)
   install-shlib-dep	:= install-shlib
   shlib				:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
   LDFLAGS_SL		:= -G
+  SHLIB_LINK		+= -ldl -lsocket -lresolv -lnsl -lm -lc
   CFLAGS			+= $(CFLAGS_SL)
 endif
 
@@ -136,6 +137,7 @@ ifeq ($(PORTNAME), solaris_sparc)
   install-shlib-dep	:= install-shlib
   shlib				:= lib$(NAME)$(DLSUFFIX).$(SO_MAJOR_VERSION).$(SO_MINOR_VERSION)
   LDFLAGS_SL		:= -G
+  SHLIB_LINK		+= -ldl -lsocket -lresolv -lnsl -lm -lc
   CFLAGS			+= $(CFLAGS_SL)
 endif
 
