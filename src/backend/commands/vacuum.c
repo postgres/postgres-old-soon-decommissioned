@@ -2148,7 +2148,7 @@ vc_tidreapped(ItemPointer itemptr, VPageList vpl)
  *	frequently in each column.  These figures are used to compute
  *	the selectivity of the column.
  *
- *	We use a three-bucked cache to get the most frequent item
+ *	We use a three-bucked cache to get the most frequent item.
  *	The 'guess' buckets count hits.  A cache miss causes guess1
  *	to get the most hit 'guess' item in the most recent cycle, and
  *	the new item goes into guess2.	Whenever the total count of hits
