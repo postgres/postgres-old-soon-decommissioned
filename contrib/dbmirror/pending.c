@@ -76,7 +76,7 @@ PG_FUNCTION_INFO_V1(recordchange);
 #else
 #define debug_msg2(x,y) 
 #define debug_msg(x)
-#define debug_msg(x,y,z)
+#define debug_msg3(x,y,z)
 
 #endif
 
