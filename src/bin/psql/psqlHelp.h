@@ -130,7 +130,7 @@ static struct _helpStruct QL_HELP[] = {
       "end [transaction];"},
   { "explain",
       "explain the query execution plan",
-      "explain [with {cost|plan|full}] <query>"},
+      "explain [verbose] <query>"},
   { "fetch",
       "retrieve tuples from a cursor",
       "fetch [forward|backward] [<number>|all] [in <cursorname>];"},
