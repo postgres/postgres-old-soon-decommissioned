@@ -16,6 +16,9 @@ Postgres documentation
   <synopsis>
 SHOW <replaceable class="PARAMETER">name</replaceable>
   </synopsis>
+  <synopsis>
+SHOW ALL
+  </synopsis>
 
   <refsect2 id="R2-SQL-SHOW-1">
    <title>Inputs</title>
@@ -29,6 +32,14 @@ SHOW <replaceable class="PARAMETER">name</replaceable>
         The name of a run-time parameter. See
 	<xref linkend="sql-set" endterm="sql-set-title">
         for a list.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>ALL</term>
+      <listitem>
+       <para>
+        Show all current session parameters.
        </para>
       </listitem>
      </varlistentry>

@@ -860,6 +860,12 @@ VariableShowStmt:  SHOW ColId
 					n->name  = "timezone";
 					$$ = (Node *) n;
 				}
+		| SHOW ALL
+				{
+					VariableShowStmt *n = makeNode(VariableShowStmt);
+					n->name  = "all";
+					$$ = (Node *) n;
+				}
 		| SHOW TRANSACTION ISOLATION LEVEL
 				{
 					VariableShowStmt *n = makeNode(VariableShowStmt);
@@ -884,6 +890,12 @@ VariableResetStmt:	RESET ColId
 				{
 					VariableResetStmt *n = makeNode(VariableResetStmt);
 					n->name  = "XactIsoLevel";
+					$$ = (Node *) n;
+				}
+		| RESET ALL
+				{
+					VariableResetStmt *n = makeNode(VariableResetStmt);
+					n->name  = "all";
 					$$ = (Node *) n;
 				}
 		;

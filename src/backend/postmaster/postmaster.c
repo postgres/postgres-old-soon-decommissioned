@@ -533,7 +533,7 @@ PostmasterMain(int argc, char *argv[])
 							elog(ERROR, "-c %s requires argument", optarg);
 					}
 
-					SetConfigOption(name, value, PGC_POSTMASTER);
+					SetConfigOption(name, value, PGC_POSTMASTER, true);
 					free(name);
 					if (value)
 						free(value);

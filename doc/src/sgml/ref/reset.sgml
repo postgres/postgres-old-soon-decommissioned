@@ -16,6 +16,9 @@ Postgres documentation
   <synopsis>
 RESET <replaceable class="PARAMETER">variable</replaceable>
   </synopsis>
+  <synopsis>
+RESET ALL
+  </synopsis>
 
   <refsect2 id="R2-SQL-RESET-1">
    <title>Inputs</title>
@@ -27,6 +30,14 @@ RESET <replaceable class="PARAMETER">variable</replaceable>
        <para>
 	The name of a run-time parameter. See <xref
 	linkend="sql-set" endterm="sql-set-title"> for a list.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>ALL</term>
+      <listitem>
+       <para>
+        Resets all run-time parameters to default values.
        </para>
       </listitem>
      </varlistentry>
