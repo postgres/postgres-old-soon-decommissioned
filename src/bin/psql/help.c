@@ -137,11 +137,6 @@ usage(void)
 	puts("the PostgreSQL manual, which accompanies the distribution and is also");
 	puts("available at <http://www.postgresql.org>.");
 	puts("Report bugs to <pgsql-bugs@postgresql.org>.");
-
-#ifndef WIN32
-	if (pw)
-		free(pw);
-#endif
 }
 
 
