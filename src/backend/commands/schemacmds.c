@@ -27,6 +27,7 @@
 #include "parser/analyze.h"
 #include "tcop/utility.h"
 #include "utils/acl.h"
+#include "utils/builtins.h"
 #include "utils/lsyscache.h"
 #include "utils/syscache.h"
 

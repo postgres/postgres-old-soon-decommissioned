@@ -30,6 +30,7 @@
 #include "catalog/pg_proc.h"
 #include "catalog/pg_shadow.h"
 #include "catalog/pg_type.h"
+#include "commands/dbcommands.h"
 #include "lib/stringinfo.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"

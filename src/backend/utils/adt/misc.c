@@ -17,6 +17,7 @@
 #include <sys/file.h>
 #include <time.h>
 
+#include "commands/dbcommands.h"
 #include "miscadmin.h"
 #include "utils/builtins.h"
 

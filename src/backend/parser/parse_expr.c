@@ -17,6 +17,7 @@
 
 #include "catalog/pg_operator.h"
 #include "catalog/pg_proc.h"
+#include "commands/dbcommands.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
 #include "nodes/params.h"

@@ -14,6 +14,7 @@
  */
 #include "postgres.h"
 
+#include "commands/dbcommands.h"
 #include "miscadmin.h"
 #include "nodes/makefuncs.h"
 #include "parser/parsetree.h"
