@@ -1,4 +1,4 @@
-z#!/bin/sh
+#!/bin/sh
 #
 # pg_upgrade: update a database without needing a full dump/reload cycle.
 # CAUTION: Read the manual page before trying to use this!
