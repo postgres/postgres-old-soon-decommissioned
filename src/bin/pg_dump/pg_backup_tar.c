@@ -25,8 +25,6 @@
 #include "pg_backup_archiver.h"
 #include "pg_backup_tar.h"
 
-#include <stdlib.h>
-#include <string.h>
 #include <ctype.h>
 #include <limits.h>
 #include <unistd.h>

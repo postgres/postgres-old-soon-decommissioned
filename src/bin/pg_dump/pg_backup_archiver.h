@@ -27,13 +27,19 @@
 
 #include "postgres_fe.h"
 
-#include <stdio.h>
 #include <time.h>
-#include <errno.h>
 
+#include "pg_backup.h"
+
+#include "libpq-fe.h"
 #include "pqexpbuffer.h"
+
 #define LOBBUFSIZE 32768
 
+/*
+ * Note: zlib.h must be included *after* libpq-fe.h, because the latter may
+ * include ssl.h, which has a naming conflict with zlib.h.
+ */
 #ifdef HAVE_LIBZ
 #include <zlib.h>
 #define GZCLOSE(fh) gzclose(fh)
@@ -54,9 +60,6 @@ typedef struct _z_stream
 } z_stream;
 typedef z_stream *z_streamp;
 #endif
-
-#include "pg_backup.h"
-#include "libpq-fe.h"
 
 #define K_VERS_MAJOR 1
 #define K_VERS_MINOR 8
