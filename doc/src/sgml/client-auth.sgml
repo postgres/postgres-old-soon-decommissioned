@@ -583,10 +583,9 @@ local   db1,db2,@demodbs  all                                       md5
 
    <para>
     In order to use <productname>Kerberos</>, support for it must be
-    enabled at build time. Both Kerberos 4 and 5 are supported
-    (<literal>./configure --with-krb4</> or <literal>./configure
-    --with-krb5</> respectively), although only one version can be
-    supported in any one build.
+    enabled at build time.  See <xref linkend="installation"> for more
+    information.  Both Kerberos 4 and 5 are supported, but only one
+    version can be supported in any one build.
    </para>
 
    <para>
