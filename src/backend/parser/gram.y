@@ -5490,6 +5490,8 @@ xlateSqlFunc(char *name)
 		return "char_length";
 	else if (!strcasecmp(name,"datetime"))
 		return "timestamp";
+	else if (!strcasecmp(name,"timespan"))
+		return "interval";
 	else
 		return name;
 } /* xlateSqlFunc() */
