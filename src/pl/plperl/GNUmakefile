@@ -27,11 +27,7 @@ SO_MINOR_VERSION = 0
 
 OBJS = plperl.o spi_internal.o SPI.o
 
-ifeq ($(enable_rpath), yes)
-SHLIB_LINK = $(perl_embed_ldflags) $(BE_DLLLIBS) -Wl,-rpath,$(perl_archlibexp)/CORE
-else
 SHLIB_LINK = $(perl_embed_ldflags) $(BE_DLLLIBS)
-endif
 
 include $(top_srcdir)/src/Makefile.shlib
 
