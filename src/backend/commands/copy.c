@@ -1127,7 +1127,7 @@ CopyFrom(Relation rel, List *attnumlist, bool binary, bool oids,
 
 				/* Process constraints */
 				node = coerce_type_constraints((Node *) con, attr[m]->atttypid,
-												COERCE_DONTCARE);
+												COERCE_IMPLICIT_CAST);
 
 				values[m] = ExecEvalExpr(node, econtext,
 										 &isNull, NULL);
