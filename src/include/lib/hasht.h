@@ -17,8 +17,8 @@
 
 #include "utils/hsearch.h"
 
-typedef void (*HashtFunc) (void *hashitem, int arg);
+typedef void (*HashtFunc) (void *hashitem, Datum arg);
 
-extern void HashTableWalk(HTAB *hashtable, HashtFunc function, int arg);
+extern void HashTableWalk(HTAB *hashtable, HashtFunc function, Datum arg);
 
 #endif	 /* HASHT_H */

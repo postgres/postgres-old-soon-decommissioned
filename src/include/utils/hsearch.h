@@ -131,6 +131,14 @@ typedef enum
 	HASH_REMOVE_SAVED
 } HASHACTION;
 
+/* hash_seq status (should be considered an opaque type by callers) */
+typedef struct
+{
+	HTAB   *hashp;
+	long	curBucket;
+	BUCKET_INDEX curIndex;
+} HASH_SEQ_STATUS;
+
 /*
  * prototypes from functions in dynahash.c
  */
@@ -139,7 +147,8 @@ extern void hash_destroy(HTAB *hashp);
 extern void hash_stats(char *where, HTAB *hashp);
 extern long *hash_search(HTAB *hashp, char *keyPtr, HASHACTION action,
 			bool *foundPtr);
-extern long *hash_seq(HTAB *hashp);
+extern void hash_seq_init(HASH_SEQ_STATUS *status, HTAB *hashp);
+extern long *hash_seq_search(HASH_SEQ_STATUS *status);
 extern long hash_estimate_size(long num_entries, long keysize, long datasize);
 extern long hash_select_dirsize(long num_entries);
 
