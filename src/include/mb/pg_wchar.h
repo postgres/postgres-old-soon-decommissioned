@@ -145,6 +145,8 @@ extern unsigned char *pg_server_to_client(unsigned char *, int);
 extern int	pg_valid_client_encoding(const char *);
 extern pg_encoding_conv_tbl *pg_get_enc_ent(int);
 extern int	pg_utf_mblen(const unsigned char *);
+extern int	pg_find_encoding_converters(int, int, void (**)(), void (**)());
+extern unsigned char *pg_do_encoding_conversion(unsigned char *, int, void (*)(), void (*)());
 
 /* internally-used versions of functions.  The PG_xxx forms of these
  * functions have fmgr-compatible interfaves.

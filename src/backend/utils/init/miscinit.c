@@ -209,6 +209,19 @@ PG_char_to_encoding(PG_FUNCTION_ARGS)
 	PG_RETURN_INT32(0);
 }
 
+Datum
+pg_convert(PG_FUNCTION_ARGS)
+{
+	elog(ERROR, "convert is not supported. To use convert, you need to enable multibyte capability");
+	return DirectFunctionCall1(textin, CStringGetDatum(""));
+}
+
+Datum
+pg_convert2(PG_FUNCTION_ARGS)
+{
+	elog(ERROR, "convert is not supported. To use convert, you need to enable multibyte capability");
+	return DirectFunctionCall1(textin, CStringGetDatum(""));
+}
 #endif
 
 /* ----------------------------------------------------------------

@@ -581,6 +581,8 @@ extern Datum RI_FKey_setdefault_upd(PG_FUNCTION_ARGS);
 extern Datum getdatabaseencoding(PG_FUNCTION_ARGS);
 extern Datum PG_encoding_to_char(PG_FUNCTION_ARGS);
 extern Datum PG_char_to_encoding(PG_FUNCTION_ARGS);
+extern Datum pg_convert(PG_FUNCTION_ARGS);
+extern Datum pg_convert2(PG_FUNCTION_ARGS);
 
 /* format_type.c */
 extern Datum format_type(PG_FUNCTION_ARGS);

@@ -2137,7 +2137,13 @@ DESCR("return portion of string");
 DATA(insert OID = 1039 (  getdatabaseencoding	   PGUID 12 f t f t 0 f 19 "0" 100 0 0 100	getdatabaseencoding - ));
 DESCR("encoding name of current database");
 
-DATA(insert OID = 1295 (  pg_char_to_encoding	   PGUID 12 f t f t 1 f 23 "19" 100 0 0 100  PG_char_to_encoding - ));
+DATA(insert OID = 1717 (  convert		   PGUID 12 f t f t 2 f 25 "25 19" 100 0 0 100  pg_convert - ));
+DESCR("convert string with specified destination encoding name");
+
+DATA(insert OID = 1813 (  convert		   PGUID 12 f t f t 3 f 25 "25 19 19" 100 0 0 100  pg_convert2 - ));
+DESCR("convert string with specified encoding names");
+
+DATA(insert OID = 1264 (  pg_char_to_encoding	   PGUID 12 f t f t 1 f 23 "19" 100 0 0 100  PG_char_to_encoding - ));
 DESCR("convert encoding name to encoding id");
 
 DATA(insert OID = 1597 (  pg_encoding_to_char	   PGUID 12 f t f t 1 f 19 "23" 100 0 0 100  PG_encoding_to_char - ));
