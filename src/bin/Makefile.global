@@ -11,7 +11,7 @@
 #
 #-------------------------------------------------------------------------
 
-CFLAGS+= -I$(srcdir)/backend -I$(srcdir)/backend/include -I$(srcdir)/libpq 
+CFLAGS+= -I$(srcdir)/backend/include -I$(srcdir)/libpq 
 
 #
 # link with libpq, so we put it here.
