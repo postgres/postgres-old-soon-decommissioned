@@ -20,7 +20,7 @@ initdb: initdb.sh
 	sed -e 's/__MULTIBYTE__/$(MULTIBYTE)/g' < initdb.sh > initdb
 
 install: initdb
-	$(INSTALL) $(INSTL_EXE_OPTS) $+ $(BINDIR)
+	$(INSTALL) $(INSTL_EXE_OPTS) $+ $(BINDIR)/$+
 
 clean:
 	rm -f initdb
