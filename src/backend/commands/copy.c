@@ -348,6 +348,11 @@ DoCopy(char *relname, bool binary, bool oids, bool from, bool pipe,
 			mode_t		oumask;		/* Pre-existing umask value */
 
             oumask = umask((mode_t) 022);
+
+			if (*filename != '/')
+				elog(ERROR, "Relative path not allowed for server side"
+							" COPY command.");
+
 #ifndef __CYGWIN32__
 			fp = AllocateFile(filename, "w");
 #else
