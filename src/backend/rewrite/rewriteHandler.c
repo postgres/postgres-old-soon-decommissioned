@@ -822,11 +822,12 @@ fireRIRrules(Query *parsetree)
 	}
 
 	/*
-	 * Recurse into sublink subqueries, too.
+	 * Recurse into sublink subqueries, too.  But we already did the ones
+	 * in the rtable.
 	 */
 	if (parsetree->hasSubLinks)
 		query_tree_walker(parsetree, fireRIRonSubLink, NULL,
-						false /* already handled the ones in rtable */ );
+						  QTW_IGNORE_SUBQUERIES);
 
 	/*
 	 * If the query was marked having aggregates, check if this is still

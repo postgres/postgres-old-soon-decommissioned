@@ -66,10 +66,15 @@ extern bool expression_tree_walker(Node *node, bool (*walker) (),
 											   void *context);
 extern Node *expression_tree_mutator(Node *node, Node *(*mutator) (),
 												 void *context);
+
+/* flags bits for query_tree_walker and query_tree_mutator */
+#define QTW_IGNORE_SUBQUERIES	0x01	/* subqueries in rtable */
+#define QTW_IGNORE_JOINALIASES	0x02	/* JOIN alias var lists */
+
 extern bool query_tree_walker(Query *query, bool (*walker) (),
-									 void *context, bool visitQueryRTEs);
+							  void *context, int flags);
 extern void query_tree_mutator(Query *query, Node *(*mutator) (),
-									 void *context, bool visitQueryRTEs);
+							   void *context, int flags);
 
 #define is_subplan(clause)	((clause) != NULL && \
 							 IsA(clause, Expr) && \
