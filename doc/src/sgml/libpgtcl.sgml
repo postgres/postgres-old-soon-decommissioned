@@ -1,3 +1,7 @@
+<!--
+$Header$
+-->
+
 <chapter id="pgtcl">
  <title><application>pgtcl</application> - Tcl Binding Library</title>
 
