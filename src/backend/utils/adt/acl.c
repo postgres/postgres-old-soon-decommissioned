@@ -417,6 +417,8 @@ aclinsert3(Acl *old_acl, AclItem *mod_aip, unsigned modechg)
 		new_aip[i-1].ai_mode = new_aip[i].ai_mode;
 	    }
 	    ARR_DIMS(new_acl)[0] = num -1 ;
+	    /* Adjust also the array size because it is used for memmove */
+	    ARR_SIZE(new_acl) -= sizeof(AclItem);
 	    break;
 	}
     }
