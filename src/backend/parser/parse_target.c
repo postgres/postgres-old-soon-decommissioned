@@ -386,6 +386,7 @@ static List *
 ExpandAllTables(ParseState *pstate)
 {
 	List	   *target = NIL;
+	bool		found_table = false;
 	List	   *ns;
 
 	foreach(ns, pstate->p_namespace)
@@ -413,11 +414,12 @@ ExpandAllTables(ParseState *pstate)
 		if (!rte->inFromCl)
 			continue;
 
+		found_table = true;
 		target = nconc(target, expandRelAttrs(pstate, rte));
 	}
 
 	/* Check for SELECT *; */
-	if (target == NIL)
+	if (!found_table)
 		elog(ERROR, "Wildcard with no tables specified not allowed");
 
 	return target;

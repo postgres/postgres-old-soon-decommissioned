@@ -658,20 +658,20 @@ ExecAgg(Agg *node)
 			if (inputTuple == NULL)
 			{
 				TupleDesc	tupType;
-				Datum	   *tupValue;
-				char	   *null_array;
-				AttrNumber	attnum;
+				Datum	   *dvalues;
+				char	   *dnulls;
 
 				tupType = aggstate->csstate.css_ScanTupleSlot->ttc_tupleDescriptor;
-				tupValue = projInfo->pi_tupValue;
 				/* watch out for null input tuples, though... */
-				if (tupType && tupValue)
+				if (tupType && tupType->natts > 0)
 				{
-					null_array = (char *) palloc(sizeof(char) * tupType->natts);
-					for (attnum = 0; attnum < tupType->natts; attnum++)
-						null_array[attnum] = 'n';
-					inputTuple = heap_formtuple(tupType, tupValue, null_array);
-					pfree(null_array);
+					dvalues = (Datum *) palloc(sizeof(Datum) * tupType->natts);
+					dnulls = (char *) palloc(sizeof(char) * tupType->natts);
+					MemSet(dvalues, 0, sizeof(Datum) * tupType->natts);
+					MemSet(dnulls, 'n', sizeof(char) * tupType->natts);
+					inputTuple = heap_formtuple(tupType, dvalues, dnulls);
+					pfree(dvalues);
+					pfree(dnulls);
 				}
 			}
 		}

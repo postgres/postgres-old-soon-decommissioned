@@ -560,23 +560,14 @@ ExecInitNullTupleSlot(EState *estate, TupleDesc tupType)
 TupleDesc
 ExecTypeFromTL(List *targetList, bool hasoid)
 {
-	List	   *tlitem;
 	TupleDesc	typeInfo;
-	Resdom	   *resdom;
-	Oid			restype;
+	List	   *tlitem;
 	int			len;
-
-	/*
-	 * examine targetlist - if empty then return NULL
-	 */
-	len = ExecTargetListLength(targetList);
-
-	if (len == 0)
-		return NULL;
 
 	/*
 	 * allocate a new typeInfo
 	 */
+	len = ExecTargetListLength(targetList);
 	typeInfo = CreateTemplateTupleDesc(len, hasoid);
 
 	/*
@@ -585,6 +576,8 @@ ExecTypeFromTL(List *targetList, bool hasoid)
 	foreach(tlitem, targetList)
 	{
 		TargetEntry *tle = lfirst(tlitem);
+		Resdom	   *resdom;
+		Oid			restype;
 
 		if (tle->resdom != NULL)
 		{
