@@ -62,7 +62,7 @@ extern char **environ;
 #define PS_USE_PS_STRINGS
 #elif defined(BSD) || defined(__bsdi__) || defined(__hurd__)
 #define PS_USE_CHANGE_ARGV
-#elif defined(__linux__) || defined(_AIX4) || defined(_AIX3) || defined(__sgi) || (defined(sun) && !defined(BSD)) || defined(ultrix) || defined(__ksr__) || defined(__osf__) || defined(__QNX__) || defined(__svr4__) || defined(__svr5__)
+#elif defined(__linux__) || defined(_AIX) || defined(__sgi) || (defined(sun) && !defined(BSD)) || defined(ultrix) || defined(__ksr__) || defined(__osf__) || defined(__QNX__) || defined(__svr4__) || defined(__svr5__)
 #define PS_USE_CLOBBER_ARGV
 #else
 #define PS_USE_NONE
@@ -70,7 +70,7 @@ extern char **environ;
 
 
 /* Different systems want the buffer padded differently */
-#if defined(_AIX3) || defined(__linux__) || defined(__QNX__) || defined(__svr4__)
+#if defined(_AIX) || defined(__linux__) || defined(__QNX__) || defined(__svr4__)
 #define PS_PADDING '\0'
 #else
 #define PS_PADDING ' '
