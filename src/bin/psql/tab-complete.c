@@ -526,6 +526,7 @@ psql_completion(char *text, int start, int end)
 		"debug_print_plan",
 		"debug_print_rewritten",
 		"default_statistics_target",
+		"default_tablespace",
 		"default_transaction_isolation",
 		"default_transaction_read_only",
 		"default_with_oids",

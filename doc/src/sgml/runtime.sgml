@@ -2720,6 +2720,32 @@ archive_command = 'copy "%p" /mnt/server/archivedir/"%f"'  # Win32
       </listitem>
      </varlistentry>
 
+     <varlistentry id="guc-default-tablespace" xreflabel="default_tablespace">
+      <term><varname>default_tablespace</varname> (<type>string</type>)</term>
+      <indexterm><primary>default_tablespace</></>
+      <indexterm><primary>tablespace</><secondary>default</></>
+      <listitem>
+       <para>
+        This variable specifies the default tablespace in which to create
+        objects (tables and indexes) when a <command>CREATE</> command does
+        not explicitly specify a tablespace.
+       </para>
+
+       <para>
+        The value is either the name of a tablespace, or an empty string
+        to specify using the default tablespace of the current database.
+        If the value does not match the name of any existing tablespace,
+        <productname>PostgreSQL</> will automatically use the default
+        tablespace of the current database.
+       </para>
+
+       <para>
+        For more information on tablespaces,
+        see <xref linkend="manage-ag-tablespaces">.
+       </para>
+      </listitem>
+     </varlistentry>
+
      <varlistentry id="guc-check-function-bodies" xreflabel="check_function_bodies">
       <term><varname>check_function_bodies</varname> (<type>boolean</type>)</term>
       <listitem>

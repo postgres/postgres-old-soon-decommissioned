@@ -2405,17 +2405,6 @@
      </row>
 
      <row>
-      <entry><structfield>nsptablespace</structfield></entry>
-      <entry><type>oid</type></entry>
-      <entry><literal><link linkend="catalog-pg-tablespace"><structname>pg_tablespace</structname></link>.oid</literal></entry>
-      <entry>
-       The default tablespace in which to place relations created in this
-       namespace.  If zero, the database's default tablespace is implied.
-       (Changing this does not affect pre-existing relations.)
-      </entry>
-     </row>
-
-     <row>
       <entry><structfield>nspacl</structfield></entry>
       <entry><type>aclitem[]</type></entry>
       <entry></entry>

@@ -223,6 +223,10 @@ extern void read_nondefault_variables(void);
 /* in utils/adt/datetime.c */
 extern bool ClearDateCache(bool newval, bool doit, GucSource source);
 
+/* in commands/tablespace.c */
+extern const char *assign_default_tablespace(const char *newval,
+				   bool doit, GucSource source);
+
 /* in utils/adt/regexp.c */
 extern const char *assign_regex_flavor(const char *value,
 					bool doit, GucSource source);

@@ -186,7 +186,9 @@ CREATE [ UNIQUE ] INDEX <replaceable class="parameter">name</replaceable> ON <re
       <listitem>
        <para>
         The tablespace in which to create the index.  If not specified,
-        the tablespace of the parent table is used.
+        <xref linkend="guc-default-tablespace"> is used, or the database's
+        default tablespace if <varname>default_tablespace</> is an empty
+        string.
        </para>
       </listitem>
      </varlistentry>

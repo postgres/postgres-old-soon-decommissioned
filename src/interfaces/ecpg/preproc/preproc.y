@@ -1013,10 +1013,10 @@ DropGroupStmt: DROP GROUP_P UserId
  *
  *****************************************************************************/
 
-CreateSchemaStmt:  CREATE SCHEMA OptSchemaName AUTHORIZATION UserId OptTableSpace OptSchemaEltList
-			{ $$ = cat_str(6, make_str("create schema"), $3, make_str("authorization"), $5, $6, $7); }
-		| CREATE SCHEMA ColId OptTableSpace OptSchemaEltList
-			{ $$ = cat_str(4, make_str("create schema"), $3, $4, $5); }
+CreateSchemaStmt:  CREATE SCHEMA OptSchemaName AUTHORIZATION UserId OptSchemaEltList
+			{ $$ = cat_str(5, make_str("create schema"), $3, make_str("authorization"), $5, $6); }
+		| CREATE SCHEMA ColId OptSchemaEltList
+			{ $$ = cat_str(3, make_str("create schema"), $3, $4); }
 		;
 
 OptSchemaName: ColId		{ $$ = $1; }

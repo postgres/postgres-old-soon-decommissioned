@@ -1377,7 +1377,6 @@ _equalCreateSchemaStmt(CreateSchemaStmt *a, CreateSchemaStmt *b)
 {
 	COMPARE_STRING_FIELD(schemaname);
 	COMPARE_STRING_FIELD(authid);
-	COMPARE_STRING_FIELD(tablespacename);
 	COMPARE_NODE_FIELD(schemaElts);
 
 	return true;

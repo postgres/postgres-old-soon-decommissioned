@@ -2401,7 +2401,6 @@ _copyCreateSchemaStmt(CreateSchemaStmt *from)
 
 	COPY_STRING_FIELD(schemaname);
 	COPY_STRING_FIELD(authid);
-	COPY_STRING_FIELD(tablespacename);
 	COPY_NODE_FIELD(schemaElts);
 
 	return newnode;

@@ -98,7 +98,6 @@ typedef struct _namespaceInfo
 	DumpableObject dobj;
 	char	   *usename;		/* name of owner, or empty string */
 	char	   *nspacl;
-	char	   *nsptablespace;	/* default tablespace */
 	bool		dump;			/* true if need to dump definition */
 } NamespaceInfo;
 
