@@ -16,7 +16,7 @@ INCLUDE_OPT = -I../../port/$(PORTNAME) \
 
 CFLAGS += $(INCLUDE_OPT)
 
-OBJS = superuser.o 
+OBJS = database.o superuser.o 
 
 all: SUBSYS.o
 
