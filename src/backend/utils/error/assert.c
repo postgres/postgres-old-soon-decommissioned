@@ -15,6 +15,7 @@
  *-------------------------------------------------------------------------
  */
 #include <stdio.h>
+#include <unistd.h>
 
 #include "postgres.h"			/* where the declaration goes */
 #include "utils/module.h"
@@ -54,8 +55,10 @@ ExceptionalCondition(char *conditionName,
 	}
 
 #ifdef ABORT_ON_ASSERT
-	sleep(99999);
 	abort();
+#endif
+#ifdef SLEEP_ON_ASSERT
+	sleep(1000000);
 #endif
 
 	/*
