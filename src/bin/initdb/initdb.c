@@ -2227,6 +2227,7 @@ main(int argc, char *argv[])
 	/* store binary directory */
 	strcpy(bin_path, backend_exec);
 	*last_dir_separator(bin_path) = '\0';
+	canonicalize_path(bin_path);
 
 	if (!share_path)
 	{
