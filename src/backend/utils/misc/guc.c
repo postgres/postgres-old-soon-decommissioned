@@ -1248,7 +1248,7 @@ static struct config_int ConfigureNamesInt[] =
 			NULL
 		},
 		&BgWriterDelay,
-		200, 10, 5000, NULL, NULL
+		200, 10, 10000, NULL, NULL
 	},
 
 	{
@@ -1257,7 +1257,7 @@ static struct config_int ConfigureNamesInt[] =
 			NULL
 		},
 		&BgWriterPercent,
-		1, 1, 100, NULL, NULL
+		1, 0, 100, NULL, NULL
 	},
 
 	{
@@ -1266,7 +1266,7 @@ static struct config_int ConfigureNamesInt[] =
 			NULL
 		},
 		&BgWriterMaxPages,
-		100, 1, 1000, NULL, NULL
+		100, 0, 1000, NULL, NULL
 	},
 
 	{

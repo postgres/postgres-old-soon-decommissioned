@@ -671,8 +671,10 @@ UnpinBuffer(BufferDesc *buf, bool fixOwner)
  *
  * This is called at checkpoint time to write out all dirty shared buffers,
  * and by the background writer process to write out some of the dirty blocks.
- * percent/maxpages should be zero in the former case, and nonzero limit
- * values in the latter.
+ * percent/maxpages should be -1 in the former case, and limit values (>= 0)
+ * in the latter.
+ *
+ * Returns the number of buffers written.
  */
 int
 BufferSync(int percent, int maxpages)
@@ -681,6 +683,10 @@ BufferSync(int percent, int maxpages)
 	BufferTag  *buftags;
 	int			num_buffer_dirty;
 	int			i;
+
+	/* If either limit is zero then we are disabled from doing anything... */
+	if (percent == 0 || maxpages == 0)
+		return 0;
 
 	/*
 	 * Get a list of all currently dirty buffers and how many there are.
