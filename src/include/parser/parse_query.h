@@ -34,9 +34,6 @@ addRangeTableEntry(ParseState *pstate,
 extern List *
 expandAll(ParseState *pstate, char *relname, char *refname,
 		  int *this_resno);
-extern TimeQual
-makeTimeRange(char *datestring1, char *datestring2,
-			  int timecode);
 extern Expr *make_op(char *opname, Node *ltree, Node *rtree);
 
 extern Oid	find_atttype(Oid relid, char *attrname);

@@ -1,16 +1,12 @@
 /*-------------------------------------------------------------------------
  *
  * tqual.h--
- *	  POSTGRES time qualification definitions.
+ *	  POSTGRES "time" qualification definitions.
  *
  *
  * Copyright (c) 1994, Regents of the University of California
  *
  * $Id$
- *
- * NOTE
- *	  It may be desirable to allow time qualifications to indicate
- *	  relative times.
  *
  *-------------------------------------------------------------------------
  */
@@ -18,11 +14,6 @@
 #define TQUAL_H
 
 #include <access/htup.h>
-
-typedef struct TimeQualSpace
-{
-	char		data[12];
-} TimeQualSpace;
 
 typedef Pointer TimeQual;
 
@@ -35,10 +26,6 @@ extern TimeQual SelfTimeQual;
 extern void setheapoverride(bool on);
 extern bool heapisoverride(void);
 
-extern TimeQual TimeFormSnapshotTimeQual(AbsoluteTime time);
-extern TimeQual
-TimeFormRangedTimeQual(AbsoluteTime startTime,
-					   AbsoluteTime endTime);
 extern bool HeapTupleSatisfiesTimeQual(HeapTuple tuple, TimeQual qual);
 
 

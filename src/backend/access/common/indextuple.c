@@ -52,7 +52,7 @@ index_formtuple(TupleDesc tupleDescriptor,
 	int			i;
 	unsigned short infomask = 0;
 	bool		hasnull = false;
-	char		tupmask = 0;
+	uint16		tupmask = 0;
 	int			numberOfAttributes = tupleDescriptor->natts;
 
 	if (numberOfAttributes > MaxIndexAttributeNumber)

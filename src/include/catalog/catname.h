@@ -40,7 +40,6 @@
 #define  RewriteRelationName "pg_rewrite"
 #define  ServerRelationName "pg_server"
 #define  StatisticRelationName "pg_statistic"
-#define  TimeRelationName "pg_time"
 #define  TypeRelationName "pg_type"
 #define  UserRelationName "pg_user"
 #define  VariableRelationName "pg_variable"

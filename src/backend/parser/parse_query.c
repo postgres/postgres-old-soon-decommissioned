@@ -243,67 +243,6 @@ expandAll(ParseState *pstate, char *relname, char *refname, int *this_resno)
 	return (te_head);
 }
 
-TimeQual
-makeTimeRange(char *datestring1,
-			  char *datestring2,
-			  int timecode)		/* 0 = snapshot , 1 = timerange */
-{
-	TimeQual	qual = NULL;
-	AbsoluteTime t1,
-				t2;
-
-	switch (timecode)
-	{
-		case 0:
-			if (datestring1 == NULL)
-			{
-				elog(WARN, "MakeTimeRange: bad snapshot arg");
-			}
-			t1 = nabstimein(datestring1);
-			if (!AbsoluteTimeIsValid(t1))
-			{
-				elog(WARN, "bad snapshot time: \"%s\"",
-					 datestring1);
-			}
-			qual = TimeFormSnapshotTimeQual(t1);
-			break;
-		case 1:
-			if (datestring1 == NULL)
-			{
-				t1 = NOSTART_ABSTIME;
-			}
-			else
-			{
-				t1 = nabstimein(datestring1);
-				if (!AbsoluteTimeIsValid(t1))
-				{
-					elog(WARN,
-						 "bad range start time: \"%s\"",
-						 datestring1);
-				}
-			}
-			if (datestring2 == NULL)
-			{
-				t2 = NOEND_ABSTIME;
-			}
-			else
-			{
-				t2 = nabstimein(datestring2);
-				if (!AbsoluteTimeIsValid(t2))
-				{
-					elog(WARN,
-						 "bad range end time: \"%s\"",
-						 datestring2);
-				}
-			}
-			qual = TimeFormRangedTimeQual(t1, t2);
-			break;
-		default:
-			elog(WARN, "MakeTimeRange: internal parser error");
-	}
-	return qual;
-}
-
 static void
 disallow_setop(char *op, Type optype, Node *operand)
 {

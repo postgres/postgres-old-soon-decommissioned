@@ -75,21 +75,6 @@ struct
 	{
 		"cmax", MaxCommandIdAttributeNumber
 	},
-	{
-		"chain", ChainItemPointerAttributeNumber
-	},
-	{
-		"anchor", AnchorItemPointerAttributeNumber
-	},
-	{
-		"tmin", MinAbsoluteTimeAttributeNumber
-	},
-	{
-		"tmax", MaxAbsoluteTimeAttributeNumber
-	},
-	{
-		"vtype", VersionTypeAttributeNumber
-	}
 };
 
 #define SPECIALS (sizeof(special_attr)/sizeof(*special_attr))
@@ -101,11 +86,6 @@ static char *attnum_type[SPECIALS] = {
 	"cid",
 	"xid",
 	"cid",
-	"tid",
-	"tid",
-	"abstime",
-	"abstime",
-	"char"
 };
 
 #define MAXFARGS 8				/* max # args to a c or postquel function */

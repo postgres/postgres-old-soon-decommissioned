@@ -2391,12 +2391,14 @@ time_range:  '[' opt_range_start ',' opt_range_end ']'
 					$$ = makeNode(TimeRange);
 					$$->startDate = $2;
 					$$->endDate = $4;
+					elog (WARN, "parser: TimeRange is not supported");
 				}
 		| '[' date ']'
 				{
 					$$ = makeNode(TimeRange);
 					$$->startDate = $2;
 					$$->endDate = NULL;
+					elog (WARN, "parser: TimeRange is not supported");
 				}
 		;
 
@@ -3387,7 +3389,6 @@ relation_name:	SpecialRuleRelation
 					/* disallow refs to magic system tables */
 					if (strcmp(LogRelationName, $1) == 0
 					   || strcmp(VariableRelationName, $1) == 0
-					   || strcmp(TimeRelationName, $1) == 0
 					   || strcmp(MagicRelationName, $1) == 0)
 						elog(WARN,"%s cannot be accessed by users",$1);
 					else

@@ -70,9 +70,7 @@ extern IpcSemaphoreId WaitIOSemId;
 long	   *PrivateRefCount;	/* also used in freelist.c */
 long	   *LastRefCount;		/* refcounts of last ExecMain level */
 long	   *CommitInfoNeedsSave;/* to write buffers where we have filled
-								 * in */
-
- /* t_tmin (or t_tmax)						 */
+								 * in t_infomask */
 
 /*
  * Data Structures:

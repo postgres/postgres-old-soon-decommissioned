@@ -108,7 +108,7 @@ static FormData_pg_attribute a3 = {
 
 static FormData_pg_attribute a4 = {
 	0xffffffff, {"cmin"}, 29l, 0l, sizeof(CommandId),
-	MinCommandIdAttributeNumber, 0, -1, '\001', '\0', 's', '\0', '\0'
+	MinCommandIdAttributeNumber, 0, -1, '\001', '\0', 'i', '\0', '\0'
 };
 
 static FormData_pg_attribute a5 = {
@@ -118,36 +118,11 @@ static FormData_pg_attribute a5 = {
 
 static FormData_pg_attribute a6 = {
 	0xffffffff, {"cmax"}, 29l, 0l, sizeof(CommandId),
-	MaxCommandIdAttributeNumber, 0, -1, '\001', '\0', 's', '\0', '\0'
-};
-
-static FormData_pg_attribute a7 = {
-	0xffffffff, {"chain"}, 27l, 0l, sizeof(ItemPointerData),
-	ChainItemPointerAttributeNumber, 0, -1, '\0', '\0', 'i', '\0', '\0'
-};
-
-static FormData_pg_attribute a8 = {
-	0xffffffff, {"anchor"}, 27l, 0l, sizeof(ItemPointerData),
-	AnchorItemPointerAttributeNumber, 0, -1, '\0', '\0', 'i', '\0', '\0'
-};
-
-static FormData_pg_attribute a9 = {
-	0xffffffff, {"tmin"}, 702l, 0l, sizeof(AbsoluteTime),
-	MinAbsoluteTimeAttributeNumber, 0, -1, '\001', '\0', 'i', '\0', '\0'
-};
-
-static FormData_pg_attribute a10 = {
-	0xffffffff, {"tmax"}, 702l, 0l, sizeof(AbsoluteTime),
-	MaxAbsoluteTimeAttributeNumber, 0, -1, '\001', '\0', 'i', '\0', '\0'
-};
-
-static FormData_pg_attribute a11 = {
-	0xffffffff, {"vtype"}, 18l, 0l, sizeof(char),
-	VersionTypeAttributeNumber, 0, -1, '\001', '\0', 'c', '\0', '\0'
+	MaxCommandIdAttributeNumber, 0, -1, '\001', '\0', 'i', '\0', '\0'
 };
 
 static AttributeTupleForm HeapAtt[] =
-{&a1, &a2, &a3, &a4, &a5, &a6, &a7, &a8, &a9, &a10, &a11};
+{&a1, &a2, &a3, &a4, &a5, &a6};
 
 /* ----------------------------------------------------------------
  *				XXX END OF UGLY HARD CODED BADNESS XXX

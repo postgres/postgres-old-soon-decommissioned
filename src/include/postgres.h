@@ -163,7 +163,7 @@ typedef struct OidNameData *OidName;
 typedef uint32 TransactionId;
 
 #define InvalidTransactionId	0
-typedef uint16 CommandId;
+typedef uint32 CommandId;
 
 #define FirstCommandId	0
 

@@ -497,7 +497,7 @@ CommandCounterIncrement()
 	if (CurrentTransactionStateData.commandId == FirstCommandId)
 	{
 		CommandIdCounterOverflowFlag = true;
-		elog(WARN, "You may only have 65535 commands per transaction");
+		elog(WARN, "You may only have 2^32-1 commands per transaction");
 	}
 
 	CurrentTransactionStateData.scanCommandId =

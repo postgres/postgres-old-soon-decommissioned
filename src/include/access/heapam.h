@@ -142,7 +142,7 @@ extern void heap_restrpos(HeapScanDesc sdesc);
 extern Size ComputeDataSize(TupleDesc tupleDesc, Datum value[], char nulls[]);
 extern void
 DataFill(char *data, TupleDesc tupleDesc,
-		 Datum value[], char nulls[], char *infomask,
+		 Datum value[], char nulls[], uint16 *infomask,
 		 bits8 *bit);
 extern int	heap_attisnull(HeapTuple tup, int attnum);
 extern int	heap_sysattrlen(AttrNumber attno);

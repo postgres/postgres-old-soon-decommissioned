@@ -122,8 +122,6 @@ do \
 /* We use underscores to protect the variable passed in as parameters */ \
 	HeapTuple	_tuple; \
 	bool		_res; \
-	TransactionId _old_tmin, \
-				_old_tmax; \
  \
 	if (!ItemIdIsUsed(itemId)) \
 		(result) = (HeapTuple) NULL; \
@@ -144,11 +142,10 @@ do \
 				(result) = _tuple; \
 			else \
 			{ \
-				_old_tmin = _tuple->t_tmin; \
-				_old_tmax = _tuple->t_tmax; \
+				uint16	_infomask = _tuple->t_infomask; \
+				\
 				_res = HeapTupleSatisfiesTimeQual(_tuple, (qual)); \
-				if (_tuple->t_tmin != _old_tmin || \
-					_tuple->t_tmax != _old_tmax) \
+				if (_tuple->t_infomask != _infomask) \
 					SetBufferCommitInfoNeedsSave(buffer); \
 				if (_res) \
 					(result) = _tuple; \

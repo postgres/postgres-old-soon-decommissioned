@@ -114,7 +114,6 @@ char	   *SharedSystemRelationNames[] = {
 	LogRelationName,
 	MagicRelationName,
 	ServerRelationName,
-	TimeRelationName,
 	UserRelationName,
 	VariableRelationName,
 	0
