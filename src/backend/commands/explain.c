@@ -234,7 +234,7 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 	}
 	if (es->printCost)
 	{
-		appendStringInfo(str, "  (cost=%.2f size=%d width=%d)",
+		appendStringInfo(str, "  (cost=%.2f rows=%d width=%d)",
 				plan->cost, plan->plan_size, plan->plan_width);
 	}
 	appendStringInfo(str, "\n");
