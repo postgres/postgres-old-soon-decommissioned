@@ -532,17 +532,6 @@ su - postgres
       </varlistentry>
 
       <varlistentry>
-       <term><option>--enable-locale</option></term>
-       <listitem>
-        <para>
-         Enables locale support. There is a performance penalty
-         associated with locale support, but if you are not in an
-         English-speaking environment you will most likely need this.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry>
        <term><option>--enable-recode</option></term>
        <listitem>
         <para>

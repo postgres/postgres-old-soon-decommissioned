@@ -33,9 +33,6 @@
 /* A canonical string containing the version number, platform, and C compiler */
 #undef PG_VERSION_STR
 
-/* Set to 1 if you want LOCALE support (--enable-locale) */
-#undef USE_LOCALE
-
 /* Set to 1 if you want cyrillic recode (--enable-recode) */
 #undef CYR_RECODE
 

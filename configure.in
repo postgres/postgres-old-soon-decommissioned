@@ -141,16 +141,6 @@ PGAC_ARG_REQ(with, libs,      [  --with-libs=DIRS        alternative spelling of
 
 
 #
-# Locale (--enable-locale)
-#
-AC_MSG_CHECKING([whether to build with locale support])
-PGAC_ARG_BOOL(enable, locale, no, [  --enable-locale         enable locale support],
-              [AC_DEFINE([USE_LOCALE], 1,
-                         [Set to 1 if you want LOCALE support (--enable-locale)])])
-AC_MSG_RESULT([$enable_locale])
-
-
-#
 # Character set recode (--enable-recode)
 #
 AC_MSG_CHECKING([whether to build with recode support])
