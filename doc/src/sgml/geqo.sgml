@@ -147,7 +147,7 @@ Genetic Optimizer
 
 <literallayout class="monospaced">
 +=========================================+
-|>>>>>>>>>>>  Algorithm GA  <<<<<<<<<<<<<<|
+|&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;  Algorithm GA  &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;|
 +=========================================+
 | INITIALIZE t := 0                       |
 +=========================================+

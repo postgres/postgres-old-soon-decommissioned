@@ -5890,7 +5890,7 @@ SELECT TIMESTAMP 'now';
        <row>
         <entry> <literal>&gt;^</literal> </entry>
         <entry>Is above?</entry>
-        <entry><literal>circle '((0,5),1)' >^ circle '((0,0),1)'</literal></entry>
+        <entry><literal>circle '((0,5),1)' &gt;^ circle '((0,0),1)'</literal></entry>
        </row>
        <row>
         <entry> <literal>?#</literal> </entry>

@@ -141,7 +141,7 @@ CREATE AGGREGATE array_accum (
 <programlisting>
 SELECT attrelid::regclass, array_accum(attname)
     FROM pg_attribute
-    WHERE attnum > 0 AND attrelid = 'pg_user'::regclass
+    WHERE attnum &gt; 0 AND attrelid = 'pg_user'::regclass
     GROUP BY attrelid;
 
  attrelid |                                 array_accum
@@ -151,7 +151,7 @@ SELECT attrelid::regclass, array_accum(attname)
 
 SELECT attrelid::regclass, array_accum(atttypid)
     FROM pg_attribute
-    WHERE attnum > 0 AND attrelid = 'pg_user'::regclass
+    WHERE attnum &gt; 0 AND attrelid = 'pg_user'::regclass
     GROUP BY attrelid;
 
  attrelid |         array_accum
