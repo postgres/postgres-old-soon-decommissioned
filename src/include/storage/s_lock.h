@@ -156,7 +156,7 @@ tas(volatile slock_t *lock)
  */
 #define TAS(lock)	   tas(lock)
 
-static inline int
+static __inline__ int
 tas(volatile slock_t *lock)
 {
 	int			_res;
