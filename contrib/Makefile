@@ -4,24 +4,26 @@ subdir = contrib
 top_builddir = ..
 include $(top_builddir)/src/Makefile.global
 
-WANTED_DIRS =	array		\
+WANTED_DIRS = \
+		array		\
 		cube		\
 		earthdistance	\
 		findoidjoins	\
 		fulltextindex	\
 		isbn_issn	\
 		linux		\
-		lo		\
+		lo			\
 		mSQL-interface	\
-		mac		\
+		mac			\
 		miscutil	\
 		noupdate	\
 		pg_dumplo	\
 		pgbench		\
 		pgcrypto	\
-		seg		\
+		rserv		\
+		seg			\
 		soundex		\
-		spi		\
+		spi			\
 		string		\
 		tips		\
 		unixdate	\
