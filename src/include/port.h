@@ -11,9 +11,11 @@
  *-------------------------------------------------------------------------
  */
 
+#if !defined(_MSC_VER) && !defined(__BORLANDC__)
 /* for thread.c */
 #include <pwd.h>
 #include <netdb.h>
+#endif
 
 /* Portable path handling for Unix/Win32 */
 bool is_absolute_path(const char *filename);
