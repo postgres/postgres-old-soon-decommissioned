@@ -1201,6 +1201,7 @@ dynamic_library_path = '/usr/local/lib:/home/my_project/lib:$libdir:$libdir/cont
       </listitem>
      </varlistentry>
 
+     <varlistentry>
       <term>AUSTRALIAN_TIMEZONES (<type>bool</type>)</term>
       <listitem>
        <para>
