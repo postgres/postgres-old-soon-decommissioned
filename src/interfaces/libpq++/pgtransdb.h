@@ -35,7 +35,7 @@ class PgTransaction : public PgDatabase {
 public:
   PgTransaction(const char* conninfo);	// use reasonable & environment defaults
   // connect to the database with given environment and database name
-  PgTransaction(const PgConnection&);
+  // PgTransaction(const PgConnection&);
   ~PgTransaction();	// close connection and clean up
   
 protected:

@@ -38,7 +38,7 @@ class PgCursor : public PgTransaction {
 public:
   PgCursor(const char* conninfo, const char* cursor);	// use reasonable & environment defaults
   // connect to the database with given environment and database name
-  PgCursor(const PgConnection&, const char* cursor);
+  //  PgCursor(const PgConnection&, const char* cursor);
   ~PgCursor();	// close connection and clean up
   
   // Commands associated with cursor interface
