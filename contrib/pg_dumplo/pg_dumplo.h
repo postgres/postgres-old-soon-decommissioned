@@ -51,6 +51,7 @@ typedef struct
 			   *user,
 			   *db,
 			   *host,
+			   *port,
 			   *space;
 	FILE	   *index;
 	int			counter,
