@@ -8,16 +8,23 @@
 #
 #-------------------------------------------------------------------------
 
-SRCDIR = ../..
+SRCDIR= ../..
 include ../../Makefile.global
 
-INCLUDE_OPT = -I.. \
-              -I../port/$(PORTNAME) \
-              -I../../include
+INCLUDE_OPT= -I.. \
+             -I../port/$(PORTNAME) \
+             -I../../include
 
-CFLAGS+=$(INCLUDE_OPT) -Wno-error
+CFLAGS+= $(INCLUDE_OPT)
 
-OBJS = aclchk.o dest.o fastpath.o postgres.o pquery.o utility.o
+ifeq ($(CC), gcc)
+# Until we figure out how to get rid of the warnings in this directory,
+# we must turn off any -Werror that is in CFLAGS now.  These options only
+# exist for the gcc compiler.
+CFLAGS+= -Wno-error
+endif
+
+OBJS= aclchk.o dest.o fastpath.o postgres.o pquery.o utility.o
 
 all: SUBSYS.o
 
