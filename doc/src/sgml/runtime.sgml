@@ -610,6 +610,17 @@ showportnumber
       </listitem>
      </varlistentry>
 
+     <varlistentry>
+      <term>
+       fsync
+      </term>
+      <listitem>
+       <para>
+	Disable fsync on a per-backend basis.
+       </para>
+      </listitem>
+     </varlistentry>
+
     </variablelist>
     </para>
    </sect2>

@@ -98,7 +98,7 @@ VACUUM VERBOSE
      are allowed to be present as column labels, but not as identifiers:
 
      <programlisting>
-CASE COALESCE CROSS CURRENT CURRENT_USER 
+CASE COALESCE CROSS CURRENT CURRENT_USER CURRENT_SESSION
 DEC DECIMAL 
 ELSE END
 FALSE FOREIGN 

@@ -186,7 +186,7 @@ Issue ecpg error if NULL value is returned to variable with no NULL
 indicator (Christof)
 Allow ^C to cancel COPY command (Massimo)
 Add SET FSYNC and SHOW PG_OPTIONS commands(Massimo)
-Improve CREATE FUNCTION to allow type conversion (Bernie Frankpitt)
+Function name overloading for dynamically-loaded C functions (Frankpitt)
 Add CmdTuples() to libpq++(Vince)
 New CREATE CONSTRAINT TRIGGER and SET CONSTRAINTS commands(Jan)
 Allow CREATE FUNCTION/WITH clause to be used for all language types
