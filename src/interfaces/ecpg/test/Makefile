@@ -22,7 +22,7 @@ test_informix: test_informix.o
 	$(ECPG) $<
 
 test_informix.c: test_informix.pgc
-	$(ECPG) -C INFORMIX $<
+	$(ECPG) -C INFORMIX -r no_indicator $<
 clean:
 	rm -f $(TESTS) $(TESTS:%=%.o) $(TESTS:%=%.c) log
 	

@@ -820,16 +820,24 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 				}
 				break;
 
+			case ECPGt_decimal:
 			case ECPGt_numeric:
 				{
 					char *str = NULL;
 					int slen;
+					Numeric *nval = PGTYPESnumeric_new();
 					
 					if (var->arrsize > 1)
 					{
 						for (element = 0; element < var->arrsize; element++)
 						{
-							str = PGTYPESnumeric_to_asc((Numeric *)((var + var->offset * element)->value), 0);
+							if (var->type == ECPGt_numeric)
+								PGTYPESnumeric_copy((Numeric *)((var + var->offset * element)->value), nval);
+							else
+								PGTYPESnumeric_from_decimal((Decimal *)((var + var->offset * element)->value), nval);
+							
+							str = PGTYPESnumeric_to_asc(nval, 0);
+							PGTYPESnumeric_free(nval);
 							slen = strlen (str);
 							
 							if (!(mallocedval = ECPGrealloc(mallocedval, strlen(mallocedval) + slen + 5, stmt->lineno)))
@@ -845,7 +853,14 @@ ECPGstore_input(const struct statement * stmt, const struct variable * var,
 					}
 					else
 					{
-						str = PGTYPESnumeric_to_asc((Numeric *)(var->value), 0);
+						if (var->type == ECPGt_numeric)
+							PGTYPESnumeric_copy((Numeric *)(var->value), nval);
+						else
+							PGTYPESnumeric_from_decimal((Decimal *)(var->value), nval);
+						
+						str = PGTYPESnumeric_to_asc(nval, 0);
+
+						PGTYPESnumeric_free(nval);
 						slen = strlen (str);
 					
 						if (!(mallocedval = ECPGalloc(slen + 1, stmt->lineno)))

@@ -398,6 +398,7 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 				}
 				break;
 
+			case ECPGt_decimal:
 			case ECPGt_numeric:
 				if (pval)
 				{
@@ -419,7 +420,10 @@ ECPGget_data(const PGresult *results, int act_tuple, int act_field, int lineno,
 				else
 					nres = PGTYPESnumeric_from_asc("0.0", &scan_length);
 
-				PGTYPESnumeric_copy(nres, (Numeric *)(var + offset * act_tuple));
+			 	if (type == ECPGt_numeric)
+					PGTYPESnumeric_copy(nres, (Numeric *)(var + offset * act_tuple));
+				else
+					PGTYPESnumeric_to_decimal(nres, (Decimal *)(var + offset * act_tuple));
 				break;
 				
 			case ECPGt_interval:
