@@ -2584,6 +2584,28 @@ kernel.shmmax = 134217728
 
 
      <varlistentry>
+      <term><systemitem class="osname">OS/X</></term>
+      <indexterm><primary>OS/X</></>
+      <listitem>
+       <para>
+        Edit the file
+        <filename>/System/Library/StartupItems/SystemTuning/SystemTuning
+        </> and edit the following values:
+<programlisting>
+sysctl -w kern.sysv.shmmax
+sysctl -w kern.sysv.shmmin
+sysctl -w kern.sysv.shmmni
+sysctl -w kern.sysv.shmseg
+sysctl -w kern.sysv.shmall
+</programlisting>
+        These values have the same meanings on OS/X as those listed for
+        previous operating systems.
+       </para>
+      </listitem>
+     </varlistentry>
+
+
+     <varlistentry>
       <term><systemitem class="osname">SCO OpenServer</></term>
       <indexterm><primary>SCO OpenServer</></>
       <listitem>
