@@ -352,7 +352,7 @@ fi
 if pg_ctl status | sed -n '1p' | grep "is running" > /dev/null 2>&1
 then	pg_ctl -w stop
 	if [ $? -ne 0 ]
-	then	echo "Can no start server.  Exiting." 1>&2
+	then	echo "Can not start server.  Exiting." 1>&2
 		exit 1
 	fi
 fi
