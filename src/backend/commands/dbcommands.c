@@ -32,6 +32,7 @@
 #include "commands/tablespace.h"
 #include "mb/pg_wchar.h"
 #include "miscadmin.h"
+#include "postmaster/bgwriter.h"
 #include "storage/fd.h"
 #include "storage/freespace.h"
 #include "storage/sinval.h"
@@ -623,6 +624,14 @@ dropdb(const char *dbname)
 	 * Also, clean out any entries in the shared free space map.
 	 */
 	FreeSpaceMapForgetDatabase(db_id);
+
+	/*
+	 * On Windows, force a checkpoint so that the bgwriter doesn't hold any
+	 * open files, which would cause rmdir() to fail.
+	 */
+#ifdef WIN32
+	RequestCheckpoint(true);
+#endif
 
 	/*
 	 * Remove all tablespace subdirs belonging to the database.
