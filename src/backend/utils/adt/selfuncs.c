@@ -47,7 +47,7 @@ static void getattproperties(Oid relid, AttrNumber attnum,
 							 bool *typbyval,
 							 int32 *typmod);
 static bool getattstatistics(Oid relid, AttrNumber attnum,
-							 Oid typid, int32 typmod,
+							 Oid opid, Oid typid, int32 typmod,
 							 double *nullfrac,
 							 double *commonfrac,
 							 Datum *commonval,
@@ -92,7 +92,7 @@ eqsel(Oid opid,
 						 &typid, &typlen, &typbyval, &typmod);
 
 		/* get stats for the attribute, if available */
-		if (getattstatistics(relid, attno, typid, typmod,
+		if (getattstatistics(relid, attno, opid, typid, typmod,
 							 &nullfrac, &commonfrac, &commonval,
 							 NULL, NULL))
 		{
@@ -268,7 +268,7 @@ intltsel(Oid opid,
 		getattproperties(relid, attno,
 						 &typid, &typlen, &typbyval, &typmod);
 
-		if (! getattstatistics(relid, attno, typid, typmod,
+		if (! getattstatistics(relid, attno, opid, typid, typmod,
 							   NULL, NULL, NULL,
 							   &loval, &hival))
 		{
@@ -580,7 +580,8 @@ getattproperties(Oid relid, AttrNumber attnum,
  * is no index nor syscache for pg_statistic.  FIX THIS!
  */
 static bool
-getattstatistics(Oid relid, AttrNumber attnum, Oid typid, int32 typmod,
+getattstatistics(Oid relid, AttrNumber attnum, Oid opid, Oid typid,
+				 int32 typmod,
 				 double *nullfrac,
 				 double *commonfrac,
 				 Datum *commonval,
@@ -598,7 +599,7 @@ getattstatistics(Oid relid, AttrNumber attnum, Oid typid, int32 typmod,
 	tuple = SearchSysCacheTuple(STATRELID,
 									ObjectIdGetDatum(relid),
 									Int16GetDatum((int16) attnum),
-									0, 0); /* staop is currently 0 */
+									opid, 0);
 	if (!HeapTupleIsValid(tuple))
 	{
 		/* no such stats entry */
