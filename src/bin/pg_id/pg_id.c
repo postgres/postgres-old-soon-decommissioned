@@ -8,7 +8,7 @@
  *
  * $Header$
  */
-#include <postgres.h>
+#include "postgres.h"
 
 #ifdef HAVE_GETOPT_H
 #include <getopt.h>
