@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Fri Jun 27 00:35:34 EDT 2003
+Last updated:		Sat Jun 28 14:05:02 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -354,6 +354,7 @@ Cache
 * Consider use of open/fcntl(O_DIRECT) to minimize OS caching
 * Make blind writes go through the file descriptor cache
 * Cache last known per-tuple offsets to speed long tuple access
+* Automatically place fixed-width, NOT NULL columns first in a table
 * Consider using MVCC to cache count(*) queries with no WHERE clause
 
 
