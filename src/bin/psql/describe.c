@@ -1321,11 +1321,8 @@ add_tablespace_footer(char relkind, Oid tablespace, char **footers,
 			/* Should always be the case, but.... */
 			if(PQntuples(result1) > 0)
 			{
-				printfPQExpBuffer(&buf, _("Tablespace:"));
-				footers[(*count)++] = pg_strdup(buf.data);
-				printfPQExpBuffer(&buf, _("    \"%s\""),
-									  PQgetvalue(result1, 0, 0));
-	
+				printfPQExpBuffer(&buf, _("Tablespace: \"%s\""),
+					PQgetvalue(result1, 0, 0));
 				footers[(*count)++] = pg_strdup(buf.data);
 			}
 			PQclear(result1);
