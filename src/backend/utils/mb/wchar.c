@@ -633,7 +633,7 @@ pg_verifymbstr(const unsigned char *mbstr, int len)
 		if (GetDatabaseEncoding() == PG_UTF8 &&
 			(*mbstr & 0xf8) == 0xf0)
 		{
-			snprintf(buf, sizeof(buf), "Unicode >= 0x10000 is not supoorted");
+			snprintf(buf, sizeof(buf), "Unicode >= 0x10000 is not supported");
 			return (buf);
 		}
 
