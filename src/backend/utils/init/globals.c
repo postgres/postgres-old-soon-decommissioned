@@ -34,7 +34,7 @@ ProtocolVersion FrontendProtocol = PG_PROTOCOL_LATEST;
 
 bool		Noversion = false;
 bool		Quiet = false;
-bool		QueryCancel = false;
+volatile bool QueryCancel = false;
 
 int			MyProcPid;
 struct Port *MyProcPort;

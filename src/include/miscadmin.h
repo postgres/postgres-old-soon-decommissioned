@@ -42,7 +42,7 @@ extern int	PostmasterMain(int argc, char *argv[]);
  */
 extern bool Noversion;
 extern bool Quiet;
-extern bool QueryCancel;
+extern volatile bool QueryCancel;
 extern char *DataDir;
 
 extern int	MyProcPid;
