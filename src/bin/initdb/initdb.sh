@@ -668,7 +668,7 @@ CREATE VIEW pg_stat_all_tables AS \
             pg_stat_get_tuples_inserted(C.oid) AS n_tup_ins, \
             pg_stat_get_tuples_updated(C.oid) AS n_tup_upd, \
             pg_stat_get_tuples_deleted(C.oid) AS n_tup_del \
-    FROM pg_class C FULL OUTER JOIN \
+    FROM pg_class C LEFT OUTER JOIN \
          pg_index I ON C.oid = I.indrelid \
     WHERE C.relkind = 'r' \
     GROUP BY C.oid, C.relname;
@@ -697,9 +697,9 @@ CREATE VIEW pg_statio_all_tables AS \
             pg_stat_get_blocks_fetched(X.oid) - \
                     pg_stat_get_blocks_hit(X.oid) AS tidx_blks_read, \
             pg_stat_get_blocks_hit(X.oid) AS tidx_blks_hit \
-    FROM pg_class C FULL OUTER JOIN \
-            pg_index I ON C.oid = I.indrelid FULL OUTER JOIN \
-            pg_class T ON C.reltoastrelid = T.oid FULL OUTER JOIN \
+    FROM pg_class C LEFT OUTER JOIN \
+            pg_index I ON C.oid = I.indrelid LEFT OUTER JOIN \
+            pg_class T ON C.reltoastrelid = T.oid LEFT OUTER JOIN \
             pg_class X ON T.reltoastidxid = X.oid \
     WHERE C.relkind = 'r' \
     GROUP BY C.oid, C.relname, T.oid, X.oid;
