@@ -179,17 +179,15 @@ TupleDescInitEntry(TupleDesc desc,
 	memset(att->attname.data,0,NAMEDATALEN);
 
     
-    att->attdefrel = 	0;			/* dummy value */
     att->attnvals  = 	0;			/* dummy value */
-    att->atttyparg = 	0;			/* dummy value */
-    att->attbound = 	0;			/* dummy value */
-    att->attcanindex = 	0;			/* dummy value */
-    att->attproc = 	0;			/* dummy value */
     att->attcacheoff = 	-1;
     
     att->attnum = attributeNumber;
     att->attnelems = attdim;
     att->attisset = attisset;
+
+    att->attnotnull = false;
+    att->atthasdef = false;
     
     /* ----------------
      *	search the system cache for the type tuple of the attribute
