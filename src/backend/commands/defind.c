@@ -107,7 +107,10 @@ DefineIndex(char *heapRelationName,
     relationId = tuple->t_oid;
 
     if (unique && strcmp(accessMethodName,"btree") != 0)
-	elog(WARN, "DefineIndex: unique indexes are only available with the btree access method");
+	elog(WARN, "DefineIndex: unique indices are only available with the btree access method");
+
+    if (numberOfAttributes > 1 && strcmp(accessMethodName,"btree") != 0)
+	elog(WARN, "DefineIndex: multi-column indices are only available with the btree access method");
 
     /*
      * compute access method id
