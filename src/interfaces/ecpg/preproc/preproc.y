@@ -5707,6 +5707,7 @@ ECPGKeywords_vanames:  SQL_BREAK		{ $$ = make_str("break"); }
 		| SQL_SQLPRINT			{ $$ = make_str("sqlprint"); }
 		| SQL_SQLWARNING		{ $$ = make_str("sqlwarning"); }
 		| SQL_STOP			{ $$ = make_str("stop"); }
+		| SQL_VALUE			{ $$ = make_str("value"); }
 		;
 		
 ECPGKeywords_rest:  SQL_CONNECT			{ $$ = make_str("connect"); }
