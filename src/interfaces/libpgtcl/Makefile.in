@@ -146,6 +146,7 @@ install-libpgtcl: libpgtcl.a
 install-shlib: $(shlib)
 	$(INSTALL) $(INSTL_SHLIB_OPTS) $(shlib) \
 		$(LIBDIR)/$(shlib)
+	rm -f $(LIBDIR)/libpgtcl.so
 	$(LN_S) -f $(shlib) $(LIBDIR)/libpgtcl.so
 
 .PHONY: clean
