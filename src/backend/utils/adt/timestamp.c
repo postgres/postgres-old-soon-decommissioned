@@ -1017,7 +1017,7 @@ interval_hash(PG_FUNCTION_ARGS)
 	 * sizeof(Interval), so that any garbage pad bytes in the structure
 	 * won't be included in the hash!
 	 */
-	return hash_any((char *) key, sizeof(double) + sizeof(int4));
+	return hash_any((unsigned char *) key, sizeof(double) + sizeof(int4));
 }
 
 /* overlaps_timestamp() --- implements the SQL92 OVERLAPS operator.

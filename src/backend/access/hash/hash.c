@@ -164,6 +164,9 @@ hashinsert(PG_FUNCTION_ARGS)
 	Datum	   *datum = (Datum *) PG_GETARG_POINTER(1);
 	char	   *nulls = (char *) PG_GETARG_POINTER(2);
 	ItemPointer ht_ctid = (ItemPointer) PG_GETARG_POINTER(3);
+#ifdef NOT_USED
+	Relation	heapRel = (Relation) PG_GETARG_POINTER(4);
+#endif
 
 	InsertIndexResult res;
 	HashItem	hitem;

@@ -230,7 +230,7 @@ hashmacaddr(PG_FUNCTION_ARGS)
 {
 	macaddr    *key = PG_GETARG_MACADDR_P(0);
 
-	return hash_any((char *) key, sizeof(macaddr));
+	return hash_any((unsigned char *) key, sizeof(macaddr));
 }
 
 /*

@@ -791,7 +791,7 @@ hashbpchar(PG_FUNCTION_ARGS)
 	keydata = VARDATA(key);
 	keylen = bcTruelen(key);
 
-	result = hash_any(keydata, keylen);
+	result = hash_any((unsigned char *) keydata, keylen);
 
 	/* Avoid leaking memory for toasted inputs */
 	PG_FREE_IF_COPY(key, 0);
