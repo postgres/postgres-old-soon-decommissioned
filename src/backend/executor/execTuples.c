@@ -129,6 +129,7 @@
 #include "utils/lsyscache.h"
 #include "storage/bufmgr.h"
 #include "parser/catalog_utils.h"
+#include "catalog/pg_type.h"
 
 /* ----------------------------------------------------------------
  *		  tuple table create/delete functions
@@ -938,7 +939,7 @@ ExecTypeFromTL(List *targetList)
 	    TupleDescInitEntry(typeInfo,
 			       resdom->resno,
 			       resdom->resname,
-			       get_id_typname(restype),
+			       get_id_typname(restype?restype:UNKNOWNOID),
 			       0,
 			       false);
 
