@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Fri Aug  8 14:55:33 EDT 2003
+Last updated:		Fri Aug  8 16:31:23 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -271,6 +271,7 @@ Clients
 * -Modify pg_get_triggerdef() to take a boolean to pretty-print,
   and use that as part of pg_dump along with psql
 * Allow psql \du to show groups, and add \dg for groups
+* Allow clients to query WITH HOLD cursors and prepared statements
 
 
 * JDBC
@@ -500,7 +501,6 @@ Source Code
 	o -Report server version number, database encoding, client encoding
 	o Update clients to use data types, typmod, schema.table.column names of
 	  result sets using new query protocol
-
 
 ---------------------------------------------------------------------------
 
