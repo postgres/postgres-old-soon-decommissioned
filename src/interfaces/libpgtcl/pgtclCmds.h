@@ -21,6 +21,15 @@
 #define RES_START 16
 
 /*
+ * From Tcl verion 8.0 on we can make large object access binary.
+ */
+#ifdef TCL_MAJOR_VERSION
+#  if (TCL_MAJOR_VERSION >= 8)
+#    define PGTCL_USE_TCLOBJ
+#  endif
+#endif
+
+/*
  * Each Pg_ConnectionId has a list of Pg_TclNotifies structs, one for each
  * Tcl interpreter that has executed any pg_listens on the connection.
  * We need this arrangement to be able to clean up if an interpreter is
@@ -75,6 +84,8 @@ extern int Pg_disconnect(
 		   ClientData cData, Tcl_Interp *interp, int argc, char *argv[]);
 extern int Pg_exec(
 		ClientData cData, Tcl_Interp *interp, int argc, char *argv[]);
+extern int Pg_execute(
+		ClientData cData, Tcl_Interp *interp, int argc, char *argv[]);
 extern int Pg_select(
 		  ClientData cData, Tcl_Interp *interp, int argc, char *argv[]);
 extern int Pg_result(
@@ -83,10 +94,19 @@ extern int Pg_lo_open(
 		   ClientData cData, Tcl_Interp *interp, int argc, char *argv[]);
 extern int Pg_lo_close(
 			ClientData cData, Tcl_Interp *interp, int argc, char *argv[]);
+#ifdef PGTCL_USE_TCLOBJ
+extern int Pg_lo_read(
+		   ClientData cData, Tcl_Interp *interp, int objc, 
+		   Tcl_Obj *CONST objv[]);
+extern int Pg_lo_write(
+			ClientData cData, Tcl_Interp *interp, int objc, 
+			Tcl_Obj *CONST objv[]);
+#else
 extern int Pg_lo_read(
 		   ClientData cData, Tcl_Interp *interp, int argc, char *argv[]);
 extern int Pg_lo_write(
 			ClientData cData, Tcl_Interp *interp, int argc, char *argv[]);
+#endif
 extern int Pg_lo_lseek(
 			ClientData cData, Tcl_Interp *interp, int argc, char *argv[]);
 extern int Pg_lo_creat(
