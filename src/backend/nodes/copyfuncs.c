@@ -1566,7 +1566,18 @@ _copyQuery(Query *from)
 	}
 	else
 		newnode->qry_aggs = NULL;
-		
+
+	if (from->unionClause)
+	{
+		List *ulist, *temp_list = NIL;
+
+		foreach(ulist, from->unionClause)
+			temp_list = lappend(temp_list,copyObject(lfirst(ulist)));
+		newnode->unionClause = temp_list;
+	}
+	else
+		newnode->unionClause = NULL;
+ 				
 	return newnode;
 }
 

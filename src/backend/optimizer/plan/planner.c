@@ -81,11 +81,19 @@ planner(Query *parse)
 	int			rt_index;
 	
 
-	/*
-	 * plan inheritance
-	 */
-	rt_index = first_matching_rt_entry(rangetable, INHERITS_FLAG);
-	if (rt_index != -1)
+	if (parse->unionClause)
+	{
+		result_plan = (Plan *) plan_union_queries(0, /* none */
+													parse,
+													UNION_FLAG);
+		/* XXX do we need to do this? bjm 12/19/97 */
+		tlist = preprocess_targetlist(tlist,
+									  parse->commandType,
+									  parse->resultRelation,
+									  parse->rtable);
+	}
+	else if ((rt_index =
+				first_matching_rt_entry(rangetable, INHERITS_FLAG)) != -1)
 	{
 		result_plan = (Plan *) plan_union_queries((Index) rt_index,
 													parse,

@@ -32,7 +32,7 @@ extern List *preprocess_targetlist(List *tlist, int command_type,
  */
 typedef enum UnionFlag
 {
-	INHERITS_FLAG, VERSION_FLAG
+	INHERITS_FLAG, UNION_FLAG, VERSION_FLAG
 } UnionFlag;
 
 extern List *find_all_inheritors(List *unexamined_relids,

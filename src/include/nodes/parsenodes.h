@@ -58,6 +58,8 @@ typedef struct Query
 	int			qry_numAgg;		/* number of aggregates in the target list */
 	Aggreg	  **qry_aggs;		/* the aggregates */
 
+	List	   *unionClause;	/* unions are linked under the previous query */
+
 	/* internal to planner */
 	List	   *base_relation_list_;	/* base relation list */
 	List	   *join_relation_list_;	/* list of relations */
@@ -634,27 +636,13 @@ typedef struct RetrieveStmt
 	Node	   *havingClause;	/* having conditional-expression */
 	List	   *unionClause;	/* union subselect parameters */
 	List	   *sortClause;		/* sort clause (a list of SortGroupBy's) */
+	int			unionall;		/* union without unique sort */
 } RetrieveStmt;
 
 
 /****************************************************************************
  *	Supporting data structures for Parse Trees
  ****************************************************************************/
-
-/*
- * SubSelect - specifies subselect parameters
- */
-typedef struct SubSelect
-{
-	NodeTag		type;
-	char	   *unique;			/* NULL, '*', or unique attribute name */
-	int			unionall;		/* union without unique sort */
-	List	   *targetList;		/* the target list (of ResTarget) */
-	List	   *fromClause;		/* the from clause */
-	Node	   *whereClause;	/* qualifications */
-	List	   *groupClause;	/* group by clause */
-	Node	   *havingClause;	/* having conditional-expression */
-} SubSelect;
 
 /*
  * TypeName - specifies a type in definitions

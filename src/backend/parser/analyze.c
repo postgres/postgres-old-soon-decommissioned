@@ -821,18 +821,7 @@ transformSelectStmt(ParseState *pstate, RetrieveStmt *stmt)
 	/* fix where clause */
 	qry->qual = transformWhereClause(pstate, stmt->whereClause);
 
-	/* check subselect clause */
-	if (stmt->unionClause)
-	{
-		elog(NOTICE, "UNION not yet supported; using first SELECT only", NULL);
-
-		/* XXX HACK just playing with union clause - thomas 1997-12-19 */
-		if ((qry->uniqueFlag == NULL)
-		 && (! ((SubSelect *)lfirst(stmt->unionClause))->unionall))
-			qry->uniqueFlag = "*";
-	}
-
-	/* check subselect clause */
+	/* check having clause */
 	if (stmt->havingClause)
 		elog(NOTICE, "HAVING not yet supported; ignore clause", NULL);
 
@@ -842,7 +831,6 @@ transformSelectStmt(ParseState *pstate, RetrieveStmt *stmt)
 										  qry->targetList,
 										  qry->uniqueFlag);
 
-	/* fix group by clause */
 	qry->groupClause = transformGroupClause(pstate,
 											stmt->groupClause,
 											qry->targetList);
@@ -850,6 +838,20 @@ transformSelectStmt(ParseState *pstate, RetrieveStmt *stmt)
 
 	if (pstate->p_numAgg > 0)
 		finalizeAggregates(pstate, qry);
+
+	if (stmt->unionClause)
+	{
+		List *ulist = NIL;
+		QueryTreeList *qlist;
+		int i;
+		
+		qlist = parse_analyze(stmt->unionClause);
+		for (i=0; i < qlist->len; i++)
+			ulist = lappend(ulist, qlist->qtrees[i]);
+		qry->unionClause = ulist;
+	}
+	else
+	    qry->unionClause = NULL;
 
 	return (Query *) qry;
 }
