@@ -345,11 +345,12 @@ tas_dummy()
 #define S_LOCK(lock)	do \
 						{ \
 							slock_t		_res; \
+							slock_t		*tmplock = lock ; \
 							do \
 							{ \
 								__asm__("ldstub [%1], %0" \
-						:		"=&r"(_res) \
-						:		"r"(lock)); \
+						:		"=&r"(_res), "=r"(tmplock) \
+						:		"1"(tmplock)); \
 							} while (_res != 0); \
 						} while (0)
 
