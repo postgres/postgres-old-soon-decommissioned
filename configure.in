@@ -911,11 +911,6 @@ AC_LIBOBJ(open)
 AC_LIBOBJ(rand) ;;
 esac
 
-# Win32 can't do rename or unlink on an open file
-case $host_os in mingw*|cygwin*)
-AC_LIBOBJ(dirmod) ;;
-esac
-
 if test "$with_readline" = yes; then
   PGAC_VAR_RL_COMPLETION_APPEND_CHARACTER
   AC_CHECK_FUNCS([rl_completion_matches rl_filename_completion_function])

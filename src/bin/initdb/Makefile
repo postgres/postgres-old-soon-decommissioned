@@ -15,12 +15,15 @@ include $(top_builddir)/src/Makefile.global
 
 override CPPFLAGS := -DFRONTEND -I$(libpq_srcdir) $(CPPFLAGS)
 
-OBJS=	initdb.o exec.o
+OBJS=	initdb.o dirmod.o exec.o
 
 all: submake-libpq submake-libpgport initdb
 
 initdb: $(OBJS) $(libpq_builddir)/libpq.a
 	$(CC) $(CFLAGS) $(OBJS) $(libpq) $(LDFLAGS) $(LIBS) -o $@$(X)
+
+dirmod.c: % : $(top_srcdir)/src/port/%
+	rm -f $@ && $(LN_S) $< .
 
 exec.c: % : $(top_srcdir)/src/port/%
 	rm -f $@ && $(LN_S) $< .

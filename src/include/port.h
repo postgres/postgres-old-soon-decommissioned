@@ -148,6 +148,8 @@ extern int	pgunlink(const char *path);
 #define unlink(path)		pgunlink(path)
 #endif
 
+extern bool rmtree(char *path, bool rmtopdir);
+
 #ifdef WIN32
 
 /* open() replacement to allow delete of held files */

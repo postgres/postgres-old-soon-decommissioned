@@ -915,7 +915,6 @@ remove_dbtablespaces(Oid db_id)
 	Relation rel;
 	HeapScanDesc scan;
 	HeapTuple tuple;
-	char buf[MAXPGPATH + 100];
 
 	rel = heap_openr(TableSpaceRelationName, AccessShareLock);
 	scan = heap_beginscan(rel, SnapshotNow, 0, NULL);
@@ -938,17 +937,11 @@ remove_dbtablespaces(Oid db_id)
 			continue;
 		}
 
-#ifndef WIN32
-		snprintf(buf, sizeof(buf), "rm -rf '%s'", dstpath);
-#else
-		snprintf(buf, sizeof(buf), "rmdir /s /q \"%s\"", dstpath);
-#endif
-		if (system(buf) != 0)
+		if (!rmtree(dstpath, true))
 		{
 			ereport(WARNING,
 				(errmsg("could not remove database directory \"%s\"",
 						dstpath),
-				 errdetail("Failing system command was: %s", buf),
 				 errhint("Look in the postmaster's stderr log for more information.")));
 		}
 
