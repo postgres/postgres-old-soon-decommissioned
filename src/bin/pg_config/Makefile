@@ -8,11 +8,12 @@
 #
 #-------------------------------------------------------------------------
 
+PGFILEDESC = "pg_config - report configuration information"
 subdir = src/bin/pg_config
 top_builddir = ../../..
 include $(top_builddir)/src/Makefile.global
 
-OBJS=   pg_config.o
+OBJS=   pg_config.o $(WIN32RES)
 
 override CPPFLAGS := -DFRONTEND -I$(libpq_srcdir) -DVAL_CONFIGURE="\"$(configure_args)\"" $(CPPFLAGS)
 
