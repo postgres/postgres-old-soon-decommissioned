@@ -127,8 +127,9 @@ pgstattuple_real(Relation rel)
 	 */
 	attinmeta = TupleDescGetAttInMetadata(tupdesc);
 
-	nblocks = RelationGetNumberOfBlocks(rel);
 	scan = heap_beginscan(rel, SnapshotAny, 0, NULL);
+
+	nblocks = scan->rs_nblocks;	/* # blocks to be scanned */
 
 	/* scan the relation */
 	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)

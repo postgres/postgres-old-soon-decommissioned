@@ -107,7 +107,6 @@ typedef struct RelationData
 	RelFileNode rd_node;		/* relation physical identifier */
 	/* use "struct" here to avoid needing to include smgr.h: */
 	struct SMgrRelationData *rd_smgr; /* cached file handle, or NULL */
-	BlockNumber rd_nblocks;		/* number of blocks in rel */
 	BlockNumber rd_targblock;	/* current insertion target block, or
 								 * InvalidBlockNumber */
 	int			rd_refcnt;		/* reference count */

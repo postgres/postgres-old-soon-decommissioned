@@ -822,10 +822,6 @@ read_info(SeqTable elm, Relation rel, Buffer *buf)
 	sequence_magic *sm;
 	Form_pg_sequence seq;
 
-	if (rel->rd_nblocks > 1)
-		elog(ERROR, "invalid number of blocks in sequence \"%s\"",
-			 RelationGetRelationName(rel));
-
 	*buf = ReadBuffer(rel, 0);
 	if (!BufferIsValid(*buf))
 		elog(ERROR, "ReadBuffer failed");

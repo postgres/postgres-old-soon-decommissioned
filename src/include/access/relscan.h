@@ -25,6 +25,7 @@ typedef struct HeapScanDescData
 	Snapshot	rs_snapshot;	/* snapshot to see */
 	int			rs_nkeys;		/* number of scan keys */
 	ScanKey		rs_key;			/* array of scan key descriptors */
+	BlockNumber rs_nblocks;		/* number of blocks to scan */
 
 	/* scan current state */
 	HeapTupleData rs_ctup;		/* current tuple in scan, if any */
