@@ -103,7 +103,7 @@ get_relattvals(List *clauseinfo_list,
 
 	temp = (CInfo *)lfirst(i);
 	get_relattval((Node*)temp->clause, &dummy, &attno, &constval, &flag);
-	result1 = lappendi(result1, attno);
+	result1 = lappendi(result1, (int)attno);
 	result2 = lappendi(result2, constval);
 	result3 = lappendi(result3, flag);
     }

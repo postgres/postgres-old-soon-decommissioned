@@ -324,7 +324,7 @@ restriction_selectivity(Oid functionObjectId,
     result = (float64) fmgr(functionObjectId,
 			    (char *) operatorObjectId,
 			    (char *) relationObjectId, 
-			    (char *) attributeNumber,
+			    (char *) (int)attributeNumber,
 			    (char *) constValue,
 			    (char *) constFlag,
 			    NULL);
@@ -363,9 +363,9 @@ join_selectivity (Oid functionObjectId,
     result = (float64) fmgr(functionObjectId,
 			    (char *) operatorObjectId,
 			    (char *) relationObjectId1,
-			    (char *) attributeNumber1,
+			    (char *) (int)attributeNumber1,
 			    (char *) relationObjectId2,
-			    (char *) attributeNumber2,
+			    (char *) (int)attributeNumber2,
 			    NULL);
     if (!PointerIsValid(result))
 	elog(WARN, "JoinClauseSelectivity: bad pointer");

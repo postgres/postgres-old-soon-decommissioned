@@ -97,10 +97,10 @@ _bt_isortcmpinit(Relation index)
 }
 
 static int
-_bt_isortcmp(BTItem *bti1p, BTItem *bti2p)
+_bt_isortcmp(const void *bti1p,const void *bti2p)
 {
-    BTItem bti1 = *bti1p;
-    BTItem bti2 = *bti2p;
+    BTItem bti1 = *(BTItem *)bti1p;
+    BTItem bti2 = *(BTItem *)bti2p;
 
     if (bti1 == (BTItem) NULL) {
 	if (bti2 == (BTItem) NULL) {
