@@ -28,7 +28,7 @@ int			NLocBuffer = 64;
 
 BufferDesc *LocalBufferDescriptors = NULL;
 Block	   *LocalBufferBlockPointers = NULL;
-long	   *LocalRefCount = NULL;
+int32	   *LocalRefCount = NULL;
 
 static int	nextFreeLocalBuf = 0;
 
@@ -195,10 +195,12 @@ InitLocalBuffer(void)
 	/*
 	 * these aren't going away. I'm not gonna use palloc.
 	 */
-	LocalBufferDescriptors =
-		(BufferDesc *) calloc(NLocBuffer, sizeof(BufferDesc));
-	LocalBufferBlockPointers = (Block *) calloc(NLocBuffer, sizeof(Block));
-	LocalRefCount = (long *) calloc(NLocBuffer, sizeof(long));
+	LocalBufferDescriptors = (BufferDesc *)
+		calloc(NLocBuffer, sizeof(*LocalBufferDescriptors));
+	LocalBufferBlockPointers = (Block *)
+		calloc(NLocBuffer, sizeof(*LocalBufferBlockPointers));
+	LocalRefCount = (int32 *)
+		calloc(NLocBuffer, sizeof(*LocalRefCount));
 	nextFreeLocalBuf = 0;
 
 	for (i = 0; i < NLocBuffer; i++)
@@ -233,7 +235,7 @@ AtEOXact_LocalBuffers(bool isCommit)
 
 			if (isCommit)
 				elog(WARNING,
-					 "local buffer leak: [%03d] (rel=%u/%u, blockNum=%u, flags=0x%x, refcount=%d %ld)",
+					 "local buffer leak: [%03d] (rel=%u/%u, blockNum=%u, flags=0x%x, refcount=%u %d)",
 					 i,
 					 buf->tag.rnode.tblNode, buf->tag.rnode.relNode,
 					 buf->tag.blockNum, buf->flags,

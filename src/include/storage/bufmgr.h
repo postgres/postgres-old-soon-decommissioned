@@ -35,12 +35,12 @@ extern int	BgWriterMaxpages;
 
 /* in buf_init.c */
 extern DLLIMPORT Block *BufferBlockPointers;
-extern long *PrivateRefCount;
+extern int32 *PrivateRefCount;
 
 /* in localbuf.c */
 extern DLLIMPORT int NLocBuffer;
 extern DLLIMPORT Block *LocalBufferBlockPointers;
-extern long *LocalRefCount;
+extern int32 *LocalRefCount;
 
 /* special pageno for bget */
 #define P_NEW	InvalidBlockNumber		/* grow the file to get a new page */
