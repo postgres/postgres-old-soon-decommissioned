@@ -144,7 +144,8 @@ LockRelation(Relation relation, LOCKMODE lockmode)
 	tag.dbId = relation->rd_lockInfo.lockRelId.dbId;
 	tag.objId.blkno = InvalidBlockNumber;
 
-	LockAcquire(LockTableId, &tag, lockmode);
+	if (! LockAcquire(LockTableId, &tag, lockmode))
+		elog(ERROR, "LockRelation: LockAcquire failed");
 
 	/*
 	 * Check to see if the relcache entry has been invalidated
@@ -192,7 +193,8 @@ LockPage(Relation relation, BlockNumber blkno, LOCKMODE lockmode)
 	tag.dbId = relation->rd_lockInfo.lockRelId.dbId;
 	tag.objId.blkno = blkno;
 
-	LockAcquire(LockTableId, &tag, lockmode);
+	if (! LockAcquire(LockTableId, &tag, lockmode))
+		elog(ERROR, "LockPage: LockAcquire failed");
 }
 
 /*
@@ -227,7 +229,8 @@ XactLockTableInsert(TransactionId xid)
 	tag.dbId = InvalidOid;
 	tag.objId.xid = xid;
 
-	LockAcquire(LockTableId, &tag, ExclusiveLock);
+	if (! LockAcquire(LockTableId, &tag, ExclusiveLock))
+		elog(ERROR, "XactLockTableInsert: LockAcquire failed");
 }
 
 void
@@ -259,7 +262,9 @@ XactLockTableWait(TransactionId xid)
 	tag.dbId = InvalidOid;
 	tag.objId.xid = xid;
 
-	LockAcquire(LockTableId, &tag, ShareLock);
+	if (! LockAcquire(LockTableId, &tag, ShareLock))
+		elog(ERROR, "XactLockTableWait: LockAcquire failed");
+
 	LockRelease(LockTableId, &tag, ShareLock);
 
 	/*
