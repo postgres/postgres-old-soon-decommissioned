@@ -15,7 +15,9 @@ include $(top_builddir)/src/Makefile.global
 all: pg_ctl
 
 pg_ctl: pg_ctl.sh
-	cp $< $@
+	sed -e 's/@VERSION@/$(VERSION)/g' \
+	    -e 's,@bindir@,$(bindir),g' \
+	  $< >$@
 	chmod a+x $@
 
 install: all installdirs
