@@ -119,10 +119,10 @@ pg_krb4_recvauth(Port *port)
 			 version, PG_KRB4_VERSION);
 		return STATUS_ERROR;
 	}
-	if (strncmp(port->user, auth_data.pname, SM_DATABASE_USER) != 0)
+	if (strncmp(port->user_name, auth_data.pname, SM_DATABASE_USER) != 0)
 	{
 		elog(LOG, "pg_krb4_recvauth: name \"%s\" != \"%s\"",
-			 port->user, auth_data.pname);
+			 port->user_name, auth_data.pname);
 		return STATUS_ERROR;
 	}
 	return STATUS_OK;
@@ -291,10 +291,10 @@ pg_krb5_recvauth(Port *port)
 	}
 
 	kusername = pg_an_to_ln(kusername);
-	if (strncmp(port->user, kusername, SM_DATABASE_USER))
+	if (strncmp(port->user_name, kusername, SM_DATABASE_USER))
 	{
 		elog(LOG, "pg_krb5_recvauth: user name \"%s\" != krb5 name \"%s\"",
-			 port->user, kusername);
+			 port->user_name, kusername);
 		ret = STATUS_ERROR;
 	}
 	else
@@ -488,7 +488,7 @@ ClientAuthentication(Port *port)
 #ifdef USE_PAM
 		case uaPAM:
 			pam_port_cludge = port;
-			status = CheckPAMAuth(port, port->user, "");
+			status = CheckPAMAuth(port, port->user_name, "");
 			break;
 #endif   /* USE_PAM */
 
