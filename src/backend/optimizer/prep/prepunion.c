@@ -31,7 +31,7 @@
 #include "optimizer/prep.h"
 #include "optimizer/plancat.h"
 #include "optimizer/planner.h"
-#include "optimizer/prep.h"
+#include "optimizer/planmain.h"
 
 static List *plan_union_query(List *relids, Index rt_index,
 				 RangeTblEntry *rt_entry, Query *parse, UnionFlag flag,
@@ -203,6 +203,8 @@ plan_union_queries(Index rt_index,
 			/* do nothing */
 			break;
 	}
+	
+	return ((Append*)NULL);		/* to make gcc happy */
 }
 
 
