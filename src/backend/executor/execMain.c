@@ -1223,7 +1223,7 @@ ExecInsert(TupleTableSlot *slot,
 	 * Check the constraints of the tuple
 	 */
 	if (resultRelationDesc->rd_att->constr)
-		ExecConstraints("ExecInsert", resultRelInfo, slot, estate);
+		ExecConstraints("ExecAppend", resultRelInfo, slot, estate);
 
 	/*
 	 * insert the tuple
