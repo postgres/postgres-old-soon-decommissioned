@@ -456,7 +456,7 @@ extern Datum btrim(PG_FUNCTION_ARGS);
 extern Datum ltrim(PG_FUNCTION_ARGS);
 extern Datum rtrim(PG_FUNCTION_ARGS);
 extern Datum translate(PG_FUNCTION_ARGS);
-extern Datum ichar(PG_FUNCTION_ARGS);
+extern Datum chr(PG_FUNCTION_ARGS);
 extern Datum repeat(PG_FUNCTION_ARGS);
 extern Datum ascii(PG_FUNCTION_ARGS);
 
