@@ -21,10 +21,21 @@ extern		"C"
 #endif
 
 #include <stdio.h>
+
+#ifdef WIN32
+    #define SOCK_ERRNO (WSAGetLastError ())
+	#define SOCK_STRERROR winsock_strerror
+#else
+    #define SOCK_ERRNO errno
+	#define SOCK_STRERROR strerror
+#endif
+
+
 /* postgres_ext.h defines the backend's externally visible types,
  * such as Oid.
  */
 #include "postgres_ext.h"
+
 #ifdef USE_SSL
 #include <openssl/ssl.h>
 #endif
