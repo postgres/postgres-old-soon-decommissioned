@@ -656,6 +656,17 @@ _equalRangeTblEntry(RangeTblEntry *a, RangeTblEntry *b)
 }
 
 static bool
+_equalSortClause(SortClause *a, SortClause *b)
+{
+	if (a->tleSortGroupRef != b->tleSortGroupRef)
+		return false;
+	if (a->sortop != b->sortop)
+		return false;
+
+	return true;
+}
+
+static bool
 _equalTargetEntry(TargetEntry *a, TargetEntry *b)
 {
 	if (!equal(a->resdom, b->resdom))
@@ -862,6 +873,13 @@ equal(void *a, void *b)
 			break;
 		case T_RangeTblEntry:
 			retval = _equalRangeTblEntry(a, b);
+			break;
+		case T_SortClause:
+			retval = _equalSortClause(a, b);
+			break;
+		case T_GroupClause:
+			/* GroupClause is equivalent to SortClause */
+			retval = _equalSortClause(a, b);
 			break;
 		case T_TargetEntry:
 			retval = _equalTargetEntry(a, b);
