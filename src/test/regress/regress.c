@@ -8,6 +8,7 @@
 
 #include "utils/geo_decls.h"	/* includes <math.h> */
 #include "executor/executor.h"	/* For GetAttributeByName */
+#include "commands/sequence.h"	/* for nextval() */
 
 #define P_MAXDIG 12
 #define LDELIM			'('
@@ -420,8 +421,6 @@ funny_dup17(PG_FUNCTION_ARGS)
 extern Datum ttdummy(PG_FUNCTION_ARGS);
 int32		set_ttdummy(int32 on);
 
-extern int4 nextval(struct varlena * seqin);
-
 #define TTDUMMY_INFINITY	999999
 
 static void *splan = NULL;
@@ -528,9 +527,10 @@ ttdummy(PG_FUNCTION_ARGS)
 	}
 
 	{
-		struct varlena *seqname = textin("ttdummy_seq");
+		text   *seqname = textin("ttdummy_seq");
 
-		newoff = nextval(seqname);
+		newoff = DirectFunctionCall1(nextval,
+									 PointerGetDatum(seqname));
 		pfree(seqname);
 	}
 
