@@ -353,7 +353,7 @@ DEFAULT <replaceable class="PARAMETER">value</replaceable>
 	<varlistentry>
 	 <term>SYSTEM_USER</term>
 	 <listitem>
-	  <simpara>See CURRENT_USER function</simpara>
+	  <simpara>Not implemented</simpara>
 	 </listitem>
 	</varlistentry>
        </variablelist>
