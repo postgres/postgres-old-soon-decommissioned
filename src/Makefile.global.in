@@ -105,7 +105,7 @@ ODBCINST= $(POSTGRESDIR)
 # (that is, prepend '#', don't set it to "0" or "no").
 
 # Compile libpq++
-@HAVECXX@
+HAVE_Cplusplus=@HAVECXX@
 
 # Comment out ENFORCE_ALIGNMENT if you do NOT want unaligned access to
 # multi-byte types to generate a bus error.

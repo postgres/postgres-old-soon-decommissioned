@@ -529,6 +529,13 @@ extern void srandom(unsigned int seed);
 /* Define if POSIX signal interface is available */
 #undef USE_POSIX_SIGNALS
 
+/* Define if C++ compiler accepts "using namespace std" */
+#undef HAVE_NAMESPACE_STD
+
+/* Define if C++ compiler accepts "#include <string>" */
+#undef HAVE_CXX_STRING_HEADER
+
+
 /*
  * Pull in OS-specific declarations (using link created by configure)
  */
