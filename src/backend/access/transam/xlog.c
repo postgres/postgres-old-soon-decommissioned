@@ -347,7 +347,8 @@ static ControlFileData *ControlFile = NULL;
  * For XLByteToSeg, do the computation at face value.  For XLByteToPrevSeg,
  * a boundary byte is taken to be in the previous segment.	This is suitable
  * for deciding which segment to write given a pointer to a record end,
- * for example.
+ * for example.  (We can assume xrecoff is not zero, since no valid recptr
+ * can have that.)
  */
 #define XLByteToSeg(xlrp, logId, logSeg)	\
 	( logId = (xlrp).xlogid, \
