@@ -146,11 +146,6 @@ ENFORCE_ALIGNMENT= true
 # Comment out PROFILE to generate a profile version of the binaries
 #PROFILE= -p -non_shared
 
-# Define USE_LOCALE to get Postgres work (sort, search)
-# with national alphabet. Remember to define environment variables
-# $LC_COLLATE and $LC_CTYPE before starting postmaster !
-USE_LOCALE = 1
-
 # If you plan to use Kerberos for authentication...
 #
 # Comment out KRBVERS if you do not use Kerberos.
@@ -720,11 +715,6 @@ endif
 ifndef CASSERT
    CFLAGS+= -DNO_ASSERT_CHECKING
 endif
-
-ifdef USE_LOCALE
- CFLAGS+= -DUSE_LOCALE
-endif
-
 
 ifdef PROFILE
    CFLAGS+= $(PROFILE)
