@@ -16,7 +16,7 @@ INCLUDE_OPT = -I../.. \
 
 CFLAGS+=$(INCLUDE_OPT)
 
-OBJS = port.o #tas.o
+OBJS = #tas.o
 
 all: SUBSYS.o
 
