@@ -931,7 +931,7 @@ ExecEvalDistinct(Expr *opClause,
 	MemSet(&fcinfo, 0, sizeof(fcinfo));
 	fcinfo.flinfo = &(fcache->func);
 	argDone = ExecEvalFuncArgs(&fcinfo, argList, econtext);
-	Assert(fcinfo->nargs == 2);
+	Assert(fcinfo.nargs == 2);
 
 	if (fcinfo.argnull[0] && fcinfo.argnull[1])
 	{
