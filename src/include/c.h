@@ -904,12 +904,6 @@ extern char *vararg_format(const char *fmt,...);
 #define	PG_BINARY_W	"w"
 #endif
 
-#ifdef FIXADE
-#if defined(hpux)
-#include "port/hpux/fixade.h"	/* for unaligned access fixup */
-#endif	 /* hpux */
-#endif
-
 #if defined(sun) && defined(__sparc__) && !defined(__SVR4)
 #define memmove(d, s, l)		bcopy(s, d, l)
 #include <unistd.h>

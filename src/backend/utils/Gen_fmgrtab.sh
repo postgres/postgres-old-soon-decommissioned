@@ -33,10 +33,10 @@ do
     case $1 in
 	-D)
             BKIOPTS="$BKIOPTS -D$2"
-            ;;
+            shift;;
 	-D*)
             BKIOPTS="$BKIOPTS $1"
-            shift;;
+            ;;
         --noclean)
             noclean=t
             ;;
@@ -60,6 +60,7 @@ do
             ;;
         *)
             INFILE=$1
+            ;;
     esac
     shift
 done

@@ -15,7 +15,11 @@ include ../../Makefile.global
 all: initdb
 
 initdb: initdb.sh ../../Makefile.global
-	sed -e 's/__MULTIBYTE__/$(MULTIBYTE)/g' -e 's/__VERSION__/$(VERSION)/g' < $< > $@
+	sed -e 's/__MULTIBYTE__/$(MULTIBYTE)/g' \
+	    -e 's/__VERSION__/$(VERSION)/g' \
+	    -e 's:__bindir__:$(bindir):g' \
+	    -e 's:__datadir__:$(datadir):g' \
+	  < $< > $@
 
 install: all installdirs
 	$(INSTALL_SCRIPT) initdb $(bindir)/initdb
