@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>dropdb</refname>
-  <refpurpose>Remove an existing <productname>Postgres</productname> database</refpurpose>
+  <refpurpose>Removes a <productname>Postgres</productname> database</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

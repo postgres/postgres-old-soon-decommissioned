@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname>dropuser</refname>
-  <refpurpose>Drops (removes) a <productname>Postgres</productname> user</refpurpose>
+  <refpurpose>Removes a <productname>Postgres</productname> user</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

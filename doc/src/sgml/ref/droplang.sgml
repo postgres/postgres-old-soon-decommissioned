@@ -16,7 +16,7 @@ Postgres documentation
 
  <refnamediv>
   <refname id="droplang">droplang</refname>
-  <refpurpose>Remove a programming language from a <productname>Postgres</productname> database</refpurpose>
+  <refpurpose>Removes a programming language from a <productname>Postgres</productname> database</refpurpose>
  </refnamediv>
 
  <refsynopsisdiv>

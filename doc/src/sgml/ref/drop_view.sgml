@@ -15,7 +15,7 @@ Postgres documentation
    DROP VIEW
   </refname>
   <refpurpose>
-   Removes existing views from a database
+   Removes views from the database
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

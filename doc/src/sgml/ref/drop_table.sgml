@@ -15,7 +15,7 @@ Postgres documentation
    DROP TABLE
   </refname>
   <refpurpose>
-   Removes existing tables from a database
+   Removes tables from a database
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>

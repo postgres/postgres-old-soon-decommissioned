@@ -15,7 +15,7 @@ Postgres documentation
    DROP SEQUENCE
   </refname>
   <refpurpose>
-   Removes existing sequences from a database
+   Removes sequences from a database
   </refpurpose>
  </refnamediv>
  <refsynopsisdiv>
