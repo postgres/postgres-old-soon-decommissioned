@@ -25,12 +25,14 @@
  *  All routines in this file assume buffer manager spinlock is
  *  held by their caller.
  */
+
+#include "postgres.h"
+
 #include "storage/bufmgr.h"
 #include "storage/buf_internals.h"	/* where the declarations go */
 #include "storage/shmem.h"
 #include "storage/spin.h"
 #include "utils/hsearch.h"
-#include "utils/elog.h"
 
 static HTAB *SharedBufHash;
 

@@ -24,10 +24,12 @@
  * 	semaphore has been acquired by the caller.
  */
 #include <stdio.h>
+
+#include "postgres.h"
+
 #include "storage/bufmgr.h"
 #include "storage/buf_internals.h"	/* where declarations go */
 #include "storage/spin.h"
-#include "utils/elog.h"
 
 
 static BufferDesc 	*SharedFreeList;

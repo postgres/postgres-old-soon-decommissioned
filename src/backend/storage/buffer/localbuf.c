@@ -24,6 +24,8 @@
 #include <math.h>
 #include <signal.h>
 
+#include "postgres.h"
+
 /* declarations split between these three files */
 #include "storage/buf.h"
 #include "storage/buf_internals.h"
@@ -38,7 +40,6 @@
 #include "miscadmin.h"
 #include "utils/builtins.h"
 #include "utils/hsearch.h"
-#include "utils/elog.h"
 #include "utils/memutils.h"
 #include "executor/execdebug.h"	/* for NDirectFileRead */
 #include "catalog/catalog.h"
