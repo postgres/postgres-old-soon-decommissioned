@@ -13,6 +13,8 @@
 #ifndef HEAP_H
 #define HEAP_H
 
+#include <utils/rel.h>
+
 extern Relation heap_creatr(char *relname, unsigned smgr, TupleDesc att);
 
 extern int RelationAlreadyExists(Relation pg_class_desc, char relname[]);
