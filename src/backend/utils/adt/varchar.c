@@ -101,7 +101,7 @@ bpcharin(PG_FUNCTION_ARGS)
 			len = mbmaxlen;
 		else
 			ereport(ERROR,
-					(errcode(ERRCODE_STRING_DATA_LENGTH_MISMATCH),
+					(errcode(ERRCODE_STRING_DATA_RIGHT_TRUNCATION),
 					 errmsg("value too long for type character(%d)",
 							(int) maxlen)));
 
@@ -221,7 +221,7 @@ bpchar(PG_FUNCTION_ARGS)
 			for (i = maxmblen - VARHDRSZ; i < len - VARHDRSZ; i++)
 				if (*(VARDATA(source) + i) != ' ')
 					ereport(ERROR,
-							(errcode(ERRCODE_STRING_DATA_LENGTH_MISMATCH),
+							(errcode(ERRCODE_STRING_DATA_RIGHT_TRUNCATION),
 						  errmsg("value too long for type character(%d)",
 								 maxlen - VARHDRSZ)));
 		}
@@ -379,7 +379,7 @@ varcharin(PG_FUNCTION_ARGS)
 			len = mbmaxlen;
 		else
 			ereport(ERROR,
-					(errcode(ERRCODE_STRING_DATA_LENGTH_MISMATCH),
+					(errcode(ERRCODE_STRING_DATA_RIGHT_TRUNCATION),
 				  errmsg("value too long for type character varying(%d)",
 						 (int) maxlen)));
 	}
@@ -471,7 +471,7 @@ varchar(PG_FUNCTION_ARGS)
 		for (i = maxmblen; i < len - VARHDRSZ; i++)
 			if (*(VARDATA(source) + i) != ' ')
 				ereport(ERROR,
-						(errcode(ERRCODE_STRING_DATA_LENGTH_MISMATCH),
+						(errcode(ERRCODE_STRING_DATA_RIGHT_TRUNCATION),
 				  errmsg("value too long for type character varying(%d)",
 						 maxlen - VARHDRSZ)));
 	}
