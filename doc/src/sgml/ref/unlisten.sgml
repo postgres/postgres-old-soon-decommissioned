@@ -156,9 +156,9 @@ Asynchronous NOTIFY 'virtual' from backend with pid '8448' received
    ignored:
 
 <programlisting>
-postgres=> UNLISTEN virtual;
+UNLISTEN virtual;
 UNLISTEN
-postgres=> NOTIFY virtual;
+NOTIFY virtual;
 NOTIFY
 -- notice no NOTIFY event is received
 </programlisting>
