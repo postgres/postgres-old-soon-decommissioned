@@ -243,7 +243,7 @@
    log (known as the redo record) it should start the REDO operation,
    since any changes made to data files before that record are already
    on disk. After a checkpoint has been made, any log segments written
-   before the redo record are removed, so checkpoints are used to free
+   before the undo records are removed, so checkpoints are used to free
    disk space in the <acronym>WAL</acronym> directory. (When
    <acronym>WAL</acronym>-based <acronym>BAR</acronym> is implemented,
    the log segments can be archived instead of just being removed.)
