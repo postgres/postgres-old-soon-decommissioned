@@ -62,7 +62,6 @@ InitSpinLocks(int init, IPCKey key)
 
 #ifdef STABLE_MEMORY_STORAGE
 	extern SPINLOCK MMCacheLock;
-
 #endif
 
 	/* These six spinlocks have fixed location is shmem */

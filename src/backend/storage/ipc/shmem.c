@@ -511,7 +511,6 @@ ShmemInitStruct(char *name, unsigned long size, bool *foundPtr)
 
 			*foundPtr = FALSE;
 			return ((long *) ShmemAlloc(size));
-
 		}
 		else
 		{
