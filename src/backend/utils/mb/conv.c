@@ -322,6 +322,7 @@ mic2latin4(unsigned char *mic, unsigned char *p, int len)
 {
 	mic2latin(mic, p, len, LC_ISO8859_4);
 }
+#endif
 
 /*
  * ASCII ---> MIC
@@ -357,6 +358,7 @@ pg_mic2ascii(unsigned char *mic, unsigned char *p, int len)
 	*p = '\0';
 }
 
+#ifdef NOT_USED
 /*
  * Cyrillic support
  * currently supported Cyrillic encodings:
