@@ -187,7 +187,6 @@ static const ScanKeyword ScanKeywords[] = {
 	{"like", LIKE},
 	{"limit", LIMIT},
 	{"listen", LISTEN},
-	{"literal", LITERAL},
 	{"load", LOAD},
 	{"local", LOCAL},
 	{"localtime", LOCALTIME},
