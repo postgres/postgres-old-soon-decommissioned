@@ -244,8 +244,6 @@ extern void AllocSetDump(AllocSet set);
  */
 typedef int	LibCCopyLength;
 
-typedef 	CLibCopyLength;
-
 /*
  * MemoryCopy --
  *	Copies fixed length block of memory to another.
