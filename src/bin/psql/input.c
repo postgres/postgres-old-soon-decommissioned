@@ -26,6 +26,13 @@ static bool useHistory;
 
 #endif
 
+#ifdef HAVE_ATEXIT
+static void	finishInput(void);
+#else
+/* designed for use with on_exit() */
+static void	finishInput(int, void*);
+#endif
+
 
 /*
  * gets_interactive()
@@ -154,7 +161,7 @@ initializeInput(int flags)
 #ifdef HAVE_ATEXIT
 	atexit(finishInput);
 #else
-	on_exit(finishInput);
+	on_exit(finishInput, NULL);
 #endif
 }
 
@@ -182,8 +189,12 @@ saveHistory(char *fname)
 
 
 
-void
+static void
+#ifdef HAVE_ATEXIT
 finishInput(void)
+#else
+finishInput(int exitstatus, void *arg)
+#endif
 {
 #ifdef USE_HISTORY
 	if (useHistory)

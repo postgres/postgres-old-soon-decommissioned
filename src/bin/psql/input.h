@@ -39,6 +39,5 @@ char	   *gets_fromFile(FILE *source);
 
 void		initializeInput(int flags);
 bool		saveHistory(char *fname);
-void		finishInput(void);
 
 #endif	 /* INPUT_H */
