@@ -122,11 +122,6 @@ typedef struct PageHeaderData
 
 typedef PageHeaderData *PageHeader;
 
-typedef enum
-{
-	ShufflePageManagerMode,
-	OverwritePageManagerMode
-} PageManagerMode;
 
 /* ----------------------------------------------------------------
  *						page support macros
