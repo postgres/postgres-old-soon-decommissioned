@@ -17,6 +17,7 @@
 
 #include <postgres.h>
 #include <utils/palloc.h>
+#include <utils/builtins.h>
 #include <utils/mac.h>
 
 /*

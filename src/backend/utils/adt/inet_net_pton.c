@@ -32,6 +32,9 @@ static const char rcsid[] = "$Id$";
 #include <string.h>
 #include <stdlib.h>
 
+#include <postgres.h>
+#include <utils/builtins.h>
+
 #ifdef SPRINTF_CHAR
 #define SPRINTF(x) strlen(sprintf/**/x)
 #else
