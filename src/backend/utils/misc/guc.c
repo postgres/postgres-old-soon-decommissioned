@@ -101,7 +101,7 @@ bool		Australian_timezones = false;
 
 bool		Password_encryption = true;
 
-int			log_min_error_statement = ERROR;
+int			log_min_error_statement = PANIC;
 char	   *log_min_error_statement_str = NULL;
 const char	log_min_error_statement_str_default[] = "panic";
 
