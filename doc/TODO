@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Wed Oct  8 17:43:55 EDT 2003
+Last updated:		Wed Oct  8 18:29:55 EDT 2003
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -127,7 +127,6 @@ Multi-Language Support
 * Fix upper()/lower() to work for multibyte encodings
 
 
- 
 Views / Rules
 =============
 
@@ -344,6 +343,7 @@ Referential Integrity
 * Print table names with constraint names in error messages, or make constraint
   names unique within a schema
 * Issue NOTICE if foreign key data type doesn't match primary key
+* Remove CREATE CONSTRAINT TRIGGER
 
 
 Dependency Checking
