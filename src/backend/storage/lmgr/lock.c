@@ -58,6 +58,7 @@ static char *lock_mode_names[] =
 	"AccessShareLock",
 	"RowShareLock",
 	"RowExclusiveLock",
+	"ShareUpdateExclusiveLock",
 	"ShareLock",
 	"ShareRowExclusiveLock",
 	"ExclusiveLock",

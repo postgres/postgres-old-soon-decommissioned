@@ -153,7 +153,7 @@ static void doNegateFloat(Value *v);
 %type <list>	createdb_opt_list, createdb_opt_item
 
 %type <ival>	opt_lock, lock_type
-%type <boolean>	opt_lmode, opt_force
+%type <boolean>	opt_force
 
 %type <ival>    user_createdb_clause, user_createuser_clause
 %type <str>		user_passwd_clause
@@ -3277,18 +3277,18 @@ LockStmt:	LOCK_P opt_table relation_name opt_lock
 				}
 		;
 
-opt_lock:  IN lock_type MODE		{ $$ = $2; }
+opt_lock:  IN lock_type MODE	{ $$ = $2; }
 		| /*EMPTY*/				{ $$ = AccessExclusiveLock; }
 		;
 
-lock_type:  SHARE ROW EXCLUSIVE	{ $$ = ShareRowExclusiveLock; }
-		| ROW opt_lmode			{ $$ = ($2? RowShareLock: RowExclusiveLock); }
-		| ACCESS opt_lmode		{ $$ = ($2? AccessShareLock: AccessExclusiveLock); }
-		| opt_lmode				{ $$ = ($1? ShareLock: ExclusiveLock); }
-		;
-
-opt_lmode:	SHARE				{ $$ = TRUE; }
-		| EXCLUSIVE				{ $$ = FALSE; }
+lock_type:  ACCESS SHARE		{ $$ = AccessShareLock; }
+		| ROW SHARE				{ $$ = RowShareLock; }
+		| ROW EXCLUSIVE			{ $$ = RowExclusiveLock; }
+		| SHARE UPDATE EXCLUSIVE { $$ = ShareUpdateExclusiveLock; }
+		| SHARE					{ $$ = ShareLock; }
+		| SHARE ROW EXCLUSIVE	{ $$ = ShareRowExclusiveLock; }
+		| EXCLUSIVE				{ $$ = ExclusiveLock; }
+		| ACCESS EXCLUSIVE		{ $$ = AccessExclusiveLock; }
 		;
 
 
