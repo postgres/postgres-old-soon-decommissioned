@@ -63,14 +63,15 @@ $(DIRS:%=%-recursive): $(top_builddir)/src/include/parser/parse.h $(top_builddir
 
 
 ifeq ($(MAKE_DLL), true)
+
 DLLOBJS := $(OBJS)
-DLLLIBS := -L/usr/local/lib -lcygipc -lcrypt -lcygwin -lkernel32
 
 postgres.def: $(DLLOBJS)
 	$(DLLTOOL) --export-all --output-def $@ $(DLLOBJS)
 
 libpostgres.a: $(DLLOBJS) $(top_builddir)/src/utils/dllinit.o postgres.def
 	$(DLLTOOL) --dllname postgres.exe --def postgres.def --output-lib $@
+
 endif # MAKE_DLL
 
 
