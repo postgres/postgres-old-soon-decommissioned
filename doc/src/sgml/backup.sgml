@@ -227,7 +227,7 @@ pg_dump <replaceable class="parameter">dbname</replaceable> | split -b 1m - <rep
      <informalexample>
 <programlisting>
 createdb <replaceable class="parameter">dbname</replaceable>
-cat <replaceable class="parameter">filename</replaceable>.* | psql <replaceable class="parameter">dbname</replaceable>
+cat <replaceable class="parameter">filename</replaceable>* | psql <replaceable class="parameter">dbname</replaceable>
 </programlisting>
      </informalexample>
     </para>
