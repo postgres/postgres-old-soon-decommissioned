@@ -158,6 +158,8 @@
 #include <commands/sequence.h>
 #include <libpq/be-fsstubs.h>
 
+extern bool	SharedBufferChanged;
+
 static void AbortTransaction(void);
 static void AtAbort_Cache(void);
 static void AtAbort_Locks(void);
@@ -618,30 +620,36 @@ RecordTransactionCommit()
 	 */
 	xid = GetCurrentTransactionId();
 
-	/* ----------------
+	/* 
 	 *	flush the buffer manager pages.  Note: if we have stable
 	 *	main memory, dirty shared buffers are not flushed
 	 *	plai 8/7/90
-	 * ----------------
 	 */
 	leak = BufferPoolCheckLeak();
-	FlushBufferPool(!TransactionFlushEnabled());
-	if (leak)
-		ResetBufferPool();
 
-	/* ----------------
-	 *	have the transaction access methods record the status
-	 *	of this transaction id in the pg_log / pg_time relations.
-	 * ----------------
+	/*
+	 * If no one shared buffer was changed by this transaction then
+	 * we don't flush shared buffers and don't record commit status.
 	 */
-	TransactionIdCommit(xid);
+	if (SharedBufferChanged)
+	{
+		FlushBufferPool(!TransactionFlushEnabled());
+		if (leak)
+			ResetBufferPool();
 
-	/* ----------------
-	 *	Now write the log/time info to the disk too.
-	 * ----------------
-	 */
-	leak = BufferPoolCheckLeak();
-	FlushBufferPool(!TransactionFlushEnabled());
+		/*
+		 *	have the transaction access methods record the status
+		 *	of this transaction id in the pg_log relation.
+		 */
+		TransactionIdCommit(xid);
+
+		/*
+		 *	Now write the log info to the disk too.
+		 */
+		leak = BufferPoolCheckLeak();
+		FlushBufferPool(!TransactionFlushEnabled());
+	}
+
 	if (leak)
 		ResetBufferPool();
 }
@@ -731,19 +739,14 @@ RecordTransactionAbort()
 	 */
 	xid = GetCurrentTransactionId();
 
-	/* ----------------
-	 *	have the transaction access methods record the status
-	 *	of this transaction id in the pg_log / pg_time relations.
-	 * ----------------
+	/* 
+	 * Have the transaction access methods record the status of
+	 * this transaction id in the pg_log relation. We skip it
+	 * if no one shared buffer was changed by this transaction.
 	 */
-	TransactionIdAbort(xid);
+	if (SharedBufferChanged)
+		TransactionIdAbort(xid);
 
-	/* ----------------
-	 *	flush the buffer manager pages.  Note: if we have stable
-	 *	main memory, dirty shared buffers are not flushed
-	 *	plai 8/7/90
-	 * ----------------
-	 */
 	ResetBufferPool();
 }
 
@@ -965,6 +968,7 @@ CommitTransaction()
 	 * ----------------
 	 */
 	s->state = TRANS_DEFAULT;
+	SharedBufferChanged = false;	/* safest place to do it */
 
 }
 
@@ -1028,6 +1032,7 @@ AbortTransaction()
 	 * ----------------
 	 */
 	s->state = TRANS_DEFAULT;
+	SharedBufferChanged = false;	/* safest place to do it */
 }
 
 /* --------------------------------

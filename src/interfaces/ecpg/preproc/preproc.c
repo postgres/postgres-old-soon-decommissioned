@@ -11896,7 +11896,7 @@ case 508:
 case 509:
 #line 2816 "preproc.y"
 {
-				yyval.str = cat3_str(yyvsp[-3].str, make1_str("union"), yyvsp[-1].str);
+				yyval.str = cat4_str(yyvsp[-3].str, make1_str("union"), yyvsp[-1].str, yyvsp[0].str);
 				ForUpdateNotAllowed = 1;
 			;
     break;}
@@ -12071,7 +12071,7 @@ case 549:
     break;}
 case 550:
 #line 2921 "preproc.y"
-{ yyval.str = cat2_str(make1_str("groub by"), yyvsp[0].str); ;
+{ yyval.str = cat2_str(make1_str("group by"), yyvsp[0].str); ;
     break;}
 case 551:
 #line 2922 "preproc.y"
