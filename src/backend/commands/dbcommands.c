@@ -45,8 +45,8 @@ static void stop_vacuum(char *dbpath, char *dbname);
 void
 createdb(char *dbname, char *dbpath, int encoding)
 {
-	Oid			db_id,
-				user_id;
+	Oid			db_id;
+	int4			user_id;
 	char		buf[512];
 	char	   *lp,
 				loc[512];
@@ -100,8 +100,8 @@ createdb(char *dbname, char *dbpath, int encoding)
 void
 destroydb(char *dbname)
 {
-	Oid			user_id,
-				db_id;
+	int4			user_id;
+	Oid			db_id;
 	char	   *path;
 	char		dbpath[MAXPGPATH + 1];
 	char		buf[512];

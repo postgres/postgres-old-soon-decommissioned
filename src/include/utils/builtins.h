@@ -438,7 +438,7 @@ extern char *textout(text *vlena);
 extern text *textcat(text *arg1, text *arg2);
 extern bool texteq(text *arg1, text *arg2);
 extern bool textne(text *arg1, text *arg2);
-extern int varstr_cmp(unsigned char *arg1, int len1, unsigned char *arg2, int len2);
+extern int varstr_cmp(char *arg1, int len1, char *arg2, int len2);
 extern int text_cmp(text *arg1, text *arg2);
 extern bool text_lt(text *arg1, text *arg2);
 extern bool text_le(text *arg1, text *arg2);
