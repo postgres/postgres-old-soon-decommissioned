@@ -431,6 +431,23 @@ pgsql
    </para>
 
    <para>
+    If you specify <option>repository</> instead of <option>pgsql</>
+    in the above setup, you will get a complete copy of the entire
+    repository at cvsup.postgresql.org, including its
+    <filename>CVSROOT</filename> directory. If you do that, you will
+    probably want to exclude those files in that directory that you
+    want to modify locally, using a refuse file. For example, for the
+    above setup you might put this in
+    <filename>/home/cvs/sup/repository/refuse</>:
+<programlisting>
+CVSROOT/config*
+CVSROOT/commitinfo*
+CVSROOT/loginfo*
+</programlisting>
+    See the <productname>CVSup</> manual pages for how to use refuse files.
+   </para>
+
+   <para>
     The following is a suggested <productname>CVSup</productname> config file from
     <ulink url="ftp://ftp.postgresql.org/pub/CVSup/README.cvsup">the <productname>PostgreSQL</> ftp site</ulink>
     which will fetch the current snapshot only:
