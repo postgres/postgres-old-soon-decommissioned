@@ -1185,9 +1185,6 @@ pgstat_main(void)
 
 	/*
 	 * Identify myself via ps
-	 *
-	 * WARNING: On some platforms the environment will be moved around to
-	 * make room for the ps display string.
 	 */
 	init_ps_display("stats collector process", "", "");
 	set_ps_display("");
@@ -1470,9 +1467,6 @@ pgstat_recvbuffer(void)
 
 	/*
 	 * Identify myself via ps
-	 *
-	 * WARNING: On some platforms the environment will be moved around to
-	 * make room for the ps display string.
 	 */
 	init_ps_display("stats buffer process", "", "");
 	set_ps_display("");
