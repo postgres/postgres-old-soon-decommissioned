@@ -56,8 +56,9 @@ clean::
 distclean::
 	$(MAKE) clean
 
-man::
-	$(MAKE) -C $(SRCDIR) install-man
+man::	man.tar.gz
+	if test ! -d $(POSTMANDIR) ; then mkdir $(POSTMANDIR) ; fi
+	$(GZCAT) $< | (cd $(POSTMANDIR) ; $(TAR) xf - )
 
 #
 # Generic production rules
