@@ -33,7 +33,7 @@
 #include <sys/socket.h>
 #endif
 #include <errno.h>
-#ifdef aix
+#if HAVE_SYS_SELECT_H
 #include <sys/select.h>
 #endif							/* aix */
 
@@ -1293,7 +1293,7 @@ PostgresMain(int argc, char *argv[])
 	if (IsUnderPostmaster == false)
 	{
 		puts("\nPOSTGRES backend interactive interface");
-		puts("$Revision: 1.64 $ $Date: 1998/02/01 19:43:46 $");
+		puts("$Revision: 1.65 $ $Date: 1998/02/02 00:05:03 $");
 	}
 
 	/* ----------------
