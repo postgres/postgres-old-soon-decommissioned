@@ -31,12 +31,14 @@
 #include "catalog/pg_opclass.h"
 #include "catalog/pg_largeobject.h"
 #include "catalog/pg_type.h"
+#include "commands/comment.h"
 #include "libpq/libpq-fs.h"
 #include "miscadmin.h"
 #include "storage/large_object.h"
 #include "storage/smgr.h"
-#include "utils/fmgroids.h"
 #include "utils/builtins.h"
+#include "utils/fmgroids.h"
+#include "utils/lsyscache.h"
 
 
 static int32
@@ -174,7 +176,15 @@ inv_close(LargeObjectDesc *obj_desc)
 int
 inv_drop(Oid lobjId)
 {
+	Oid classoid;
+
 	LargeObjectDrop(lobjId);
+
+	/* pg_largeobject doesn't have a hard-coded OID, so must look it up */
+	classoid = get_system_catalog_relid(LargeObjectRelationName);
+
+	/* Delete any comments on the large object */
+	DeleteComments(lobjId, classoid, 0);
 
 	/*
 	 * Advance command counter so that tuple removal will be seen by later

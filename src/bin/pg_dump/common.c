@@ -61,6 +61,7 @@ dumpSchema(Archive *fout,
 	int			numAggregates;
 	int			numOperators;
 	int			numOpclasses;
+	int			numConversions;
 	NamespaceInfo *nsinfo;
 	TypeInfo   *tinfo;
 	FuncInfo   *finfo;
@@ -69,6 +70,7 @@ dumpSchema(Archive *fout,
 	InhInfo    *inhinfo;
 	OprInfo    *oprinfo;
 	OpclassInfo *opcinfo;
+	ConvInfo *convinfo;
 
 	if (g_verbose)
 		write_msg(NULL, "reading schemas\n");
@@ -93,6 +95,10 @@ dumpSchema(Archive *fout,
 	if (g_verbose)
 		write_msg(NULL, "reading user-defined operator classes\n");
 	opcinfo = getOpclasses(&numOpclasses);
+
+	if (g_verbose)
+		write_msg(NULL, "reading user-defined conversions\n");
+	convinfo = getConversions(&numConversions);
 
 	if (g_verbose)
 		write_msg(NULL, "reading user-defined tables\n");
@@ -188,6 +194,13 @@ dumpSchema(Archive *fout,
 		if (g_verbose)
 			write_msg(NULL, "dumping out user-defined casts\n");
 		dumpCasts(fout, finfo, numFuncs, tinfo, numTypes);
+	}
+
+	if (!dataOnly)
+	{
+		if (g_verbose)
+			write_msg(NULL, "dumping out user-defined conversions\n");
+		dumpConversions(fout, convinfo, numConversions);
 	}
 
 	*numTablesPtr = numTables;
