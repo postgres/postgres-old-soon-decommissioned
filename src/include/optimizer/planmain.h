@@ -57,9 +57,11 @@ extern Result *make_result(List *tlist, Node *resconstantqual, Plan *subplan);
 extern void add_base_rels_to_query(Query *root, Node *jtnode);
 extern void build_base_rel_tlists(Query *root, List *tlist);
 extern Relids distribute_quals_to_rels(Query *root, Node *jtnode);
-extern void process_implied_equality(Query *root, Node *item1, Node *item2,
-						 Oid sortop1, Oid sortop2);
-extern bool exprs_known_equal(Query *root, Node *item1, Node *item2);
+extern void process_implied_equality(Query *root,
+									 Node *item1, Node *item2,
+									 Oid sortop1, Oid sortop2,
+									 Relids item1_relids, Relids item2_relids,
+									 bool delete_it);
 
 /*
  * prototypes for plan/setrefs.c

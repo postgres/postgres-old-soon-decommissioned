@@ -1596,12 +1596,14 @@ make_innerjoin_index_path(Query *root,
 	 * nconc the two lists; then we might have some restriction
 	 * clauses appearing twice, which'd mislead
 	 * restrictlist_selectivity into double-counting their
-	 * selectivity.)
+	 * selectivity.  However, since RestrictInfo nodes aren't copied when
+	 * linking them into different lists, it should be sufficient to use
+	 * pointer comparison to remove duplicates.)
 	 */
 	pathnode->rows = rel->tuples *
 		restrictlist_selectivity(root,
-								 set_union(rel->baserestrictinfo,
-										   clausegroup),
+								 set_ptrUnion(rel->baserestrictinfo,
+											  clausegroup),
 								 lfirsti(rel->relids));
 	/* Like costsize.c, force estimate to be at least one row */
 	if (pathnode->rows < 1.0)

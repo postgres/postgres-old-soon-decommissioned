@@ -17,6 +17,7 @@
 
 #include "nodes/relation.h"
 
+
 /* default GEQO threshold (default value for geqo_rels) */
 /* If you change this, update backend/utils/misc/postgresql.sample.conf */
 #define DEFAULT_GEQO_RELS 11
@@ -92,6 +93,7 @@ typedef enum
 } PathKeysComparison;
 
 extern void add_equijoined_keys(Query *root, RestrictInfo *restrictinfo);
+extern bool exprs_known_equal(Query *root, Node *item1, Node *item2);
 extern void generate_implied_equalities(Query *root);
 extern List *canonicalize_pathkeys(Query *root, List *pathkeys);
 extern PathKeysComparison compare_pathkeys(List *keys1, List *keys2);
