@@ -2377,7 +2377,7 @@ apply_typmod(NumericVar *var, int32 typmod)
 	}
 
 	i = scale + var->weight + 1;
-	if (var->ndigits > i)
+	if (i >= 0 && var->ndigits > i)
 	{
 		long	carry = (var->digits[i] > 4) ? 1 : 0;
 
@@ -2395,6 +2395,10 @@ apply_typmod(NumericVar *var, int32 typmod)
 			var->ndigits++;
 			var->weight++;
 		}
+	}
+	else
+	{
+		var->ndigits = MAX(0, MIN(i, var->ndigits));
 	}
 
 	var->rscale = scale;
