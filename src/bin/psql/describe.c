@@ -986,9 +986,11 @@ describeOneTableDetails(const char *schemaname,
 		if (tableinfo.checks)
 		{
 			printfPQExpBuffer(&buf,
-							  "SELECT consrc, conname\n"
+							  "SELECT "
+							  "pg_catalog.pg_get_constraintdef(r.oid, true), "
+							  "conname\n"
 							  "FROM pg_catalog.pg_constraint r\n"
-						   "WHERE r.conrelid = '%s' AND r.contype = 'c'",
+							  "WHERE r.conrelid = '%s' AND r.contype = 'c'",
 							  oid);
 			result2 = PSQLexec(buf.data, false);
 			if (!result2)
@@ -1119,7 +1121,7 @@ describeOneTableDetails(const char *schemaname,
 			footers[count_footers++] = xstrdup(buf.data);
 			for (i = 0; i < check_count; i++)
 			{
-				printfPQExpBuffer(&buf, _("    \"%s\" CHECK %s"),
+				printfPQExpBuffer(&buf, _("    \"%s\" %s"),
 								  PQgetvalue(result2, i, 1),
 								  PQgetvalue(result2, i, 0));
 
