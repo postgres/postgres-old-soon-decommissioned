@@ -85,6 +85,8 @@ defines to your template/$port file before compiling this program.\n\n"
 	while (thread1_done == 0 || thread2_done == 0)
 		sched_yield();	/* if this is a portability problem, remove it */
 
+	fprintf(stderr, "errno is thread-safe\n\n");
+	
 	printf("Add this to your template/$port file:\n\n");
 
 	if (strerror_p1 != strerror_p2)
