@@ -23,6 +23,7 @@ override CFLAGS += $(PTHREAD_CFLAGS)
 OBJS= execute.o typename.o descriptor.o data.o error.o prepare.o memory.o \
 	connect.o misc.o
 
+# needed by dllwrap
 ifeq ($(PORTNAME), win32)
 PGPORT=-lpgport
 endif
