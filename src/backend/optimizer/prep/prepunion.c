@@ -129,14 +129,14 @@ plan_union_queries(Query *parse)
 		List *hold_unionClause = parse->unionClause;
 
 		parse->unionClause = NIL;	/* prevent recursion */
-		union_plans = lcons(planner(parse), NIL);
+		union_plans = lcons(union_planner(parse), NIL);
 		union_rts = lcons(parse->rtable, NIL);
 
 		foreach(ulist, hold_unionClause)
 		{
 			Query *union_query = lfirst(ulist);
 
-			union_plans = lappend(union_plans, planner(union_query));
+			union_plans = lappend(union_plans, union_planner(union_query));
 			union_rts = lappend(union_rts, union_query->rtable);
 		}
 	}
@@ -159,7 +159,7 @@ plan_union_queries(Query *parse)
 		 *	Recursion, but UNION only.
 		 *	The last one is a UNION, so it will not come here in recursion,
 		 */
-		union_plans = lcons(planner(parse), NIL);
+		union_plans = lcons(union_planner(parse), NIL);
 		union_rts = lcons(parse->rtable, NIL);
 
 		/* Append the remainging UNION ALLs */
@@ -167,7 +167,7 @@ plan_union_queries(Query *parse)
 		{
 			Query	*unionall_query = lfirst(ulist);
 
-			union_plans = lappend(union_plans, planner(unionall_query));
+			union_plans = lappend(union_plans, union_planner(unionall_query));
 			union_rts = lappend(union_rts, unionall_query->rtable);
 		}
 	}
@@ -276,7 +276,7 @@ plan_inherit_query(List *relids,
 							  relid,
 							  new_root);
 
-		union_plans = lappend(union_plans, planner(new_root));
+		union_plans = lappend(union_plans, union_planner(new_root));
 		union_rtentries = lappend(union_rtentries, new_rt_entry);
 	}
 
