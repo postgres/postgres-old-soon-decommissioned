@@ -221,6 +221,7 @@ tas(slock_t *s_lock)
       res = ((res >> 5) & 1);			\
     }						\
 }
+
 #endif /* NEED_NS32K_TAS_ASM */
 
 
@@ -322,11 +323,6 @@ extern void s_lock(volatile slock_t *lock, const char *file, const int line);
 int	tas(volatile slock_t *lock); /* port/.../tas.s, or s_lock.c */
 #define TAS(lock)		tas((volatile slock_t *) lock)
 #endif /* TAS */
-
-#define S_UNLOCK(lock)  (*(lock) = 0)
-
-#define S_INIT_LOCK(lock)       S_UNLOCK(lock)
-
 
 #endif /* HAS_TEST_AND_SET */
 #endif /* S_LOCK_H */
