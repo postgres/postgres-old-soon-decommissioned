@@ -39,7 +39,7 @@ fi
 # they might temporarily move the installation tree elsewhere, so we'd
 # accidentally invoke the newly installed versions of pg_dump and psql.
 if [ x"$PGPATH" = x"" ]; then
-    PGPATH=$bindir
+    PGPATH="$bindir"
 fi
 
 #
