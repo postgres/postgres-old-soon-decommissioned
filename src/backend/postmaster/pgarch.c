@@ -587,6 +587,6 @@ pgarch_archiveDone(char *xlog)
  	if (rename(rlogready, rlogdone) < 0)
  		ereport(WARNING,
 				(errcode_for_file_access(),
-				 errmsg("could not rename \"%s\" to \"%s\": %m",
+				 errmsg("could not rename file \"%s\" to \"%s\": %m",
 						rlogready, rlogdone)));
 }

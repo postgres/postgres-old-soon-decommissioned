@@ -544,7 +544,7 @@ PostmasterMain(int argc, char *argv[])
 		if (!guc_pgdata)	/* Got a pgdata from the config file? */
 		{
 			write_stderr("%s does not know where to find the database system data.\n"
-						 "This should be specified as 'pgdata' in %s%s.\n",
+						 "This should be specified as \"pgdata\" in %s%s.\n",
 						 progname, userPGDATA,
 						 user_pgconfig_is_dir ? "/postgresql.conf" : "");
 			ExitPostmaster(2);
