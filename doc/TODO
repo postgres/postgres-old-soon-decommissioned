@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Mon Jan 26 17:38:41 EST 2004
+Last updated:		Fri Jan 30 06:11:06 EST 2004
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -264,7 +264,7 @@ Clients
 * Prevent libpq's PQfnumber() from lowercasing the column name
 * -Allow pg_dump to dump CREATE CONVERSION (Christopher)
 * Allow fastpast to pass values in portable format
-
+* Allow libpq to return information about prepared queries
 
 * JDBC
 	o Comprehensive test suite. This may be available already.
