@@ -31,10 +31,10 @@ dropuser: dropuser.o common.o exec.o dumputils.o $(top_builddir)/src/backend/par
 clusterdb: clusterdb.o common.o exec.o dumputils.o $(top_builddir)/src/backend/parser/keywords.o
 vacuumdb: vacuumdb.o common.o exec.o
 
-exec.c: % : $(top_srcdir)/src/port/%
+dumputils.c: % : $(top_srcdir)/src/bin/pg_dump/%
 	rm -f $@ && $(LN_S) $< .
 
-dumputils.c: % : $(top_srcdir)/src/bin/pg_dump/%
+exec.c: % : $(top_srcdir)/src/port/%
 	rm -f $@ && $(LN_S) $< .
 
 print.c mbprint.c : % : $(top_srcdir)/src/bin/psql/%
@@ -63,4 +63,6 @@ uninstall:
 
 
 clean distclean maintainer-clean:
-	rm -f $(addsuffix $(X), $(PROGRAMS)) $(addsuffix .o, $(PROGRAMS)) common.o dumputils.o print.o mbprint.o dumputils.c exec.c print.c mbprint.c
+	rm -f $(addsuffix $(X), $(PROGRAMS)) $(addsuffix .o, $(PROGRAMS))
+	rm -f common.o dumputils.o exec.o print.o mbprint.o
+	rm -f dumputils.c exec.c print.c mbprint.c

@@ -45,7 +45,7 @@ installdirs:
 uninstall: uninstall-lib
 
 clean distclean maintainer-clean: clean-lib
-	rm -f $(OBJS)
+	rm -f $(OBJS) rint.c pgstrcasecmp.c
 
 depend dep:
 	$(CC) -MM $(CFLAGS) *.c >depend
