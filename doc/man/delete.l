@@ -6,17 +6,13 @@
 delete \(em delete instances from a class
 .SH SYNOPSIS
 .nf
-\fBdelete\fR instance_variable [ \fBfrom\fR from_list ] [ \fBwhere\fR qual ]
+\fBdelete\fR \fBfrom\fR class_name [ \fBwhere\fR qual ]
 .fi
 .SH DESCRIPTION
 .BR Delete
 removes instances which satisfy the qualification,
-.IR qual ,
-from the class specified by
-.IR instance_variable .
-.IR Instance_variable
-is either a class name or a variable assigned by
-.IR from_list .
+.IR qual
+from the specified class.
 If the qualification is absent, the effect is to delete all instances
 in the class.  The result is a valid, but empty class.
 .PP
