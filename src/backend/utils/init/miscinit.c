@@ -28,6 +28,7 @@
 
 #include "catalog/catname.h"
 #include "catalog/pg_shadow.h"
+#include "libpq/libpq-be.h"
 #include "miscadmin.h"
 #include "utils/builtins.h"
 #include "utils/lsyscache.h"
@@ -279,6 +280,7 @@ SetCharSet()
 	int			i;
 	unsigned char FromChar,
 				ToChar;
+	char		ChTable[80];
 
 	for (i = 0; i < 128; i++)
 	{
@@ -286,11 +288,17 @@ SetCharSet()
 		RecodeBackTable[i] = i + 128;
 	}
 
-	p = getenv("PG_RECODETABLE");
+	if (IsUnderPostmaster)
+	{
+		GetCharSetByHost(ChTable, MyProcPort->raddr.in.sin_addr.s_addr, DataDir);
+		p = ChTable;
+	}
+	else
+		p = getenv("PG_RECODETABLE");
+
 	if (p && *p != '\0')
 	{
-		map_file = (char *) malloc((strlen(DataDir) +
-									strlen(p) + 2) * sizeof(char));
+		map_file = malloc(strlen(DataDir) +	strlen(p) + 2);
 		if (! map_file)
 			elog(FATAL, "out of memory");
 		sprintf(map_file, "%s/%s", DataDir, p);
