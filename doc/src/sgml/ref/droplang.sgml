@@ -54,7 +54,7 @@ PostgreSQL documentation
       <listitem>
        <para>
 	Specifies from which database the language should be removed.
-        The default is to create a database with the same name as the
+        The default is to use the database with the same name as the
         current system user.
        </para>
       </listitem>
