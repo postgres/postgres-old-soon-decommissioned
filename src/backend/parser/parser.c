@@ -50,7 +50,6 @@ raw_parser(const char *str)
 
 	scanner_init(str);
 	parser_init();
-	parse_expr_init();
 
 	yyresult = yyparse();
 

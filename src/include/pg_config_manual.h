@@ -113,11 +113,6 @@
 #define MAXPGPATH		1024
 
 /*
- * DEFAULT_MAX_EXPR_DEPTH: default value of max_expr_depth SET variable.
- */
-#define DEFAULT_MAX_EXPR_DEPTH	10000
-
-/*
  * PG_SOMAXCONN: maximum accept-queue length limit passed to
  * listen(2).  You'd think we should use SOMAXCONN from
  * <sys/socket.h>, but on many systems that symbol is much smaller

@@ -1,13 +1,14 @@
 /*-------------------------------------------------------------------------
  *
  * miscadmin.h
- *	  this file contains general postgres administration and initialization
+ *	  This file contains general postgres administration and initialization
  *	  stuff that used to be spread out between the following files:
  *		globals.h						global variables
  *		pdir.h							directory path crud
  *		pinit.h							postgres initialization
  *		pmod.h							processing modes
- *
+ *	  Over time, this has also become the preferred place for widely known
+ *	  resource-limitation stuff, such as work_mem and check_stack_depth().
  *
  * Portions Copyright (c) 1996-2003, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
@@ -70,7 +71,7 @@ extern volatile bool ImmediateInterruptOK;
 extern volatile uint32 InterruptHoldoffCount;
 extern volatile uint32 CritSectionCount;
 
-/* in postgres.c */
+/* in tcop/postgres.c */
 extern void ProcessInterrupts(void);
 
 #ifndef WIN32
@@ -222,6 +223,10 @@ extern int	Unix_socket_permissions;
 extern char *Unix_socket_group;
 extern char *UnixSocketDir;
 extern char *ListenAddresses;
+
+
+/* in tcop/postgres.c */
+extern void check_stack_depth(void);
 
 
 /*****************************************************************************
