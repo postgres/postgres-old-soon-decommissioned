@@ -155,8 +155,7 @@ BeginCommand(char *pname,
 
 				for (i = 0; i < natts; ++i)
 				{
-					pq_sendstring(&buf, attrs[i]->attname.data,
-								  strlen(attrs[i]->attname.data));
+					pq_sendstring(&buf, attrs[i]->attname.data);
 					pq_sendint(&buf, (int) attrs[i]->atttypid,
 							   sizeof(attrs[i]->atttypid));
 					pq_sendint(&buf, attrs[i]->attlen,

@@ -803,7 +803,7 @@ NotifyMyFrontEnd(char *relname, int32 listenerPID)
 		pq_beginmessage(&buf);
 		pq_sendbyte(&buf, 'A');
 		pq_sendint(&buf, listenerPID, sizeof(int32));
-		pq_sendstring(&buf, relname, strlen(relname));
+		pq_sendstring(&buf, relname);
 		pq_endmessage(&buf);
 		/* NOTE: we do not do pq_flush() here.  For a self-notify, it will
 		 * happen at the end of the transaction, and for incoming notifies

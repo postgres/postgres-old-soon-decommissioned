@@ -25,10 +25,6 @@
 #include "libpq/pqformat.h"
 #include "utils/syscache.h"
 
-#ifdef MULTIBYTE
-#include "mb/pg_wchar.h"
-#endif
-
 static void printtup_setup(DestReceiver* self, TupleDesc typeinfo);
 static void printtup(HeapTuple tuple, TupleDesc typeinfo, DestReceiver* self);
 static void printtup_cleanup(DestReceiver* self);
@@ -157,14 +153,10 @@ printtup(HeapTuple tuple, TupleDesc typeinfo, DestReceiver* self)
 	StringInfoData buf;
 	int			i,
 				j,
-				k,
-				outputlen;
+				k;
 	char	   *outputstr;
 	Datum		attr;
 	bool		isnull;
-#ifdef MULTIBYTE
-	unsigned char *p;
-#endif
 
 	/* Set or update my derived attribute info, if needed */
 	if (myState->attrinfo != typeinfo ||
@@ -213,24 +205,13 @@ printtup(HeapTuple tuple, TupleDesc typeinfo, DestReceiver* self)
 		{
 			outputstr = (char *) (*fmgr_faddr(&thisState->finfo))
 				(attr, thisState->typelem, typeinfo->attrs[i]->atttypmod);
-#ifdef MULTIBYTE
-			p = pg_server_to_client(outputstr, strlen(outputstr));
-			outputlen = strlen(p);
-			pq_sendint(&buf, outputlen + VARHDRSZ, VARHDRSZ);
-			pq_sendbytes(&buf, p, outputlen);
-#else
-			outputlen = strlen(outputstr);
-			pq_sendint(&buf, outputlen + VARHDRSZ, VARHDRSZ);
-			pq_sendbytes(&buf, outputstr, outputlen);
-#endif
+			pq_sendcountedtext(&buf, outputstr, strlen(outputstr));
 			pfree(outputstr);
 		}
 		else
 		{
 			outputstr = "<unprintable>";
-			outputlen = strlen(outputstr);
-			pq_sendint(&buf, outputlen + VARHDRSZ, VARHDRSZ);
-			pq_sendbytes(&buf, outputstr, outputlen);
+			pq_sendcountedtext(&buf, outputstr, strlen(outputstr));
 		}
 	}
 
