@@ -10,6 +10,10 @@ subdir = src/pl/plpgsql/src
 top_builddir = ../../../..
 include $(top_builddir)/src/Makefile.global
 
+ifeq ($(GCC), yes)
+override CFLAGS+= -Wno-error
+endif
+
 # Shared library parameters
 NAME= plpgsql
 SO_MAJOR_VERSION= 1
