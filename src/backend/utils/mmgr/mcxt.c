@@ -34,7 +34,7 @@
  * CurrentMemoryContext
  *		Default memory context for allocations.
  */
-DLLIMPORT MemoryContext CurrentMemoryContext = NULL;
+MemoryContext CurrentMemoryContext = NULL;
 
 /*
  * Standard top-level contexts
