@@ -74,11 +74,11 @@
  * All Linux
  */
 
-#if defined(__alpha__)
+#if defined(__alpha)
 
 #define S_UNLOCK(lock) { __asm__("mb"); *(lock) = 0; }
 
-#endif /* __alpha__ */
+#endif /* __alpha */
 
 
 
@@ -129,7 +129,7 @@
 
 
 
-#if (defined(__alpha__)
+#if (defined(__alpha)
 /*
  * OSF/1 (Alpha AXP)
  *
@@ -144,7 +144,7 @@
 
 #define S_LOCK_FREE(lock)	(!(lock)->msem_state)
 
-#endif /* __alpha__ */
+#endif /* __alpha */
 
 
 

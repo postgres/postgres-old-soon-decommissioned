@@ -92,7 +92,7 @@ s_lock_stuck(slock_t *lock, char *file, int line)
  */
 
 
-#if defined(__alpha__)
+#if defined(__alpha)
 int
 tas(slock_t *lock)
 {
@@ -114,7 +114,7 @@ tas(slock_t *lock)
 
 	return (_res != 0);
 }
-#endif /* __alpha__ */
+#endif /* __alpha */
 
 
 
