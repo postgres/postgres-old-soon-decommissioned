@@ -13,11 +13,9 @@
  * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
  * ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
  * SOFTWARE.
+ *
+ *	  $Header$
  */
-
-#if defined(LIBC_SCCS) && !defined(lint)
-static const char rcsid[] = "$Id$";
-#endif
 
 #include "postgres.h"
 
