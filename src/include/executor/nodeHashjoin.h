@@ -21,8 +21,7 @@ extern TupleTableSlot *ExecHashJoin(HashJoin *node);
 extern bool ExecInitHashJoin(HashJoin *node, EState *estate, Plan *parent);
 extern int	ExecCountSlotsHashJoin(HashJoin *node);
 extern void ExecEndHashJoin(HashJoin *node);
-extern char *
-ExecHashJoinSaveTuple(HeapTuple heapTuple, char *buffer,
+extern char * ExecHashJoinSaveTuple(HeapTuple heapTuple, char *buffer,
 					  File file, char *position);
 
 

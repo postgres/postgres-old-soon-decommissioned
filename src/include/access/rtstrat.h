@@ -16,8 +16,7 @@
 #include <utils/rel.h>
 #include <access/attnum.h>
 
-extern RegProcedure
-RTMapOperator(Relation r, AttrNumber attnum,
+extern RegProcedure RTMapOperator(Relation r, AttrNumber attnum,
 			  RegProcedure proc);
 
 #endif							/* RTSTRAT_H */

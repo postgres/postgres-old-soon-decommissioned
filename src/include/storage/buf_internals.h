@@ -227,8 +227,7 @@ extern long *LocalRefCount;
 extern BufferDesc *LocalBufferDescriptors;
 extern int	NLocBuffer;
 
-extern BufferDesc *
-LocalBufferAlloc(Relation reln, BlockNumber blockNum,
+extern BufferDesc * LocalBufferAlloc(Relation reln, BlockNumber blockNum,
 				 bool *foundPtr);
 extern int	WriteLocalBuffer(Buffer buffer, bool release);
 extern int	FlushLocalBuffer(Buffer buffer, bool release);

@@ -49,22 +49,17 @@ extern void RelationSetLockForWrite(Relation relation);
 extern void RelationUnsetLockForWrite(Relation relation);
 
 /* used in vaccum.c */
-extern void
-RelationSetLockForWritePage(Relation relation,
+extern void RelationSetLockForWritePage(Relation relation,
 							ItemPointer itemPointer);
 
 /* used in nbtpage.c, hashpage.c */
-extern void
-RelationSetSingleWLockPage(Relation relation,
+extern void RelationSetSingleWLockPage(Relation relation,
 						   ItemPointer itemPointer);
-extern void
-RelationUnsetSingleWLockPage(Relation relation,
+extern void RelationUnsetSingleWLockPage(Relation relation,
 							 ItemPointer itemPointer);
-extern void
-RelationSetSingleRLockPage(Relation relation,
+extern void RelationSetSingleRLockPage(Relation relation,
 						   ItemPointer itemPointer);
-extern void
-RelationUnsetSingleRLockPage(Relation relation,
+extern void RelationUnsetSingleRLockPage(Relation relation,
 							 ItemPointer itemPointer);
 extern void RelationSetRIntentLock(Relation relation);
 extern void RelationUnsetRIntentLock(Relation relation);
@@ -73,8 +68,7 @@ extern void RelationUnsetWIntentLock(Relation relation);
 
 /* single.c */
 extern bool SingleLockReln(LockInfo linfo, LOCKT lockt, int action);
-extern bool
-SingleLockPage(LockInfo linfo, ItemPointer tidPtr,
+extern bool SingleLockPage(LockInfo linfo, ItemPointer tidPtr,
 			   LOCKT lockt, int action);
 
 /* proc.c */

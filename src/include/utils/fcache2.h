@@ -15,7 +15,6 @@
 
 #include <nodes/execnodes.h>
 
-extern void
-			setFcache(Node *node, Oid foid, List *argList, ExprContext *econtext);
+extern void setFcache(Node *node, Oid foid, List *argList, ExprContext *econtext);
 
 #endif							/* FCACHE2_H */

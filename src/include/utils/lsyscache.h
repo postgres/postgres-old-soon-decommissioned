@@ -24,8 +24,7 @@ extern bool get_attisset(Oid relid, char *attname);
 extern int get_atttypmod(Oid relid, AttrNumber attnum);
 extern RegProcedure get_opcode(Oid opid);
 extern char *get_opname(Oid opid);
-extern bool
-op_mergesortable(Oid opid, Oid ltype, Oid rtype,
+extern bool op_mergesortable(Oid opid, Oid ltype, Oid rtype,
 				 Oid *leftOp, Oid *rightOp);
 extern Oid	op_hashjoinable(Oid opid, Oid ltype, Oid rtype);
 extern Oid	get_commutator(Oid opid);

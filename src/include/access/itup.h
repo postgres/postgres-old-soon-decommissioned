@@ -89,14 +89,11 @@ typedef struct PredInfo
 
 
 /* indextuple.h */
-extern IndexTuple
-index_formtuple(TupleDesc tupleDescriptor,
+extern IndexTuple index_formtuple(TupleDesc tupleDescriptor,
 				Datum value[], char null[]);
-extern Datum
-index_getattr(IndexTuple tuple, AttrNumber attNum,
+extern Datum index_getattr(IndexTuple tuple, AttrNumber attNum,
 			  TupleDesc tupDesc, bool *isNullOutP);
-extern RetrieveIndexResult
-FormRetrieveIndexResult(ItemPointer indexItemPointer,
+extern RetrieveIndexResult FormRetrieveIndexResult(ItemPointer indexItemPointer,
 						ItemPointer heapItemPointer);
 extern void CopyIndexTuple(IndexTuple source, IndexTuple *target);
 

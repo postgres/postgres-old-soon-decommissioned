@@ -732,8 +732,7 @@ extern Exception BadArg;
 extern Exception BadState;
 
 /* in utils/error/assert.c */
-extern int
-ExceptionalCondition(char *conditionName,
+extern int ExceptionalCondition(char *conditionName,
 					 Exception *exceptionP, char *details,
 					 char *fileName, int lineNumber);
 

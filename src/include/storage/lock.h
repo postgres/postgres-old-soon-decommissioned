@@ -204,12 +204,10 @@ extern SPINLOCK LockMgrLock;
  */
 extern void InitLocks(void);
 extern void LockDisable(int status);
-extern LockTableId
-LockTabInit(char *tabName, MASK *conflictsP, int *prioP,
+extern LockTableId LockTabInit(char *tabName, MASK *conflictsP, int *prioP,
 			int ntypes);
 extern bool LockAcquire(LockTableId tableId, LOCKTAG *lockName, LOCKT lockt);
-extern int
-LockResolveConflicts(LOCKTAB *ltable, LOCK *lock, LOCKT lockt,
+extern int LockResolveConflicts(LOCKTAB *ltable, LOCK *lock, LOCKT lockt,
 					 TransactionId xid);
 extern bool LockRelease(LockTableId tableId, LOCKTAG *lockName, LOCKT lockt);
 extern void GrantLock(LOCK *lock, LOCKT lockt);

@@ -33,8 +33,7 @@ extern TargetEntry *match_varid(Var *test_var, List *tlist);
 extern List *new_unsorted_tlist(List *targetlist);
 extern List *copy_vars(List *target, List *source);
 extern List *flatten_tlist(List *tlist);
-extern List *
-flatten_tlist_vars(List *full_tlist,
+extern List * flatten_tlist_vars(List *full_tlist,
 				   List *flat_tlist);
 
 #endif							/* TLIST_H */

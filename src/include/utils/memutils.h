@@ -233,8 +233,7 @@ extern void AllocSetReset(AllocSet set);
 extern bool AllocSetContains(AllocSet set, AllocPointer pointer);
 extern AllocPointer AllocSetAlloc(AllocSet set, Size size);
 extern void AllocSetFree(AllocSet set, AllocPointer pointer);
-extern AllocPointer
-AllocSetRealloc(AllocSet set, AllocPointer pointer,
+extern AllocPointer AllocSetRealloc(AllocSet set, AllocPointer pointer,
 				Size size);
 
 extern void AllocSetDump(AllocSet set);

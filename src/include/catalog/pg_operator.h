@@ -652,8 +652,7 @@ DATA(insert OID = 1585 (  "/"	  PGUID 0 b t f 1186 1186 1186	  0  0 0 0 timespan
 /*
  * function prototypes
  */
-extern void
-OperatorCreate(char *operatorName,
+extern void OperatorCreate(char *operatorName,
 			   char *leftTypeName,
 			   char *rightTypeName,
 			   char *procedureName,

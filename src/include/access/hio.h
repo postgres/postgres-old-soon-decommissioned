@@ -17,8 +17,7 @@
 #include <utils/rel.h>
 
 
-extern void
-RelationPutHeapTuple(Relation relation, BlockNumber blockIndex,
+extern void RelationPutHeapTuple(Relation relation, BlockNumber blockIndex,
 					 HeapTuple tuple);
 extern void RelationPutHeapTupleAtEnd(Relation relation, HeapTuple tuple);
 

@@ -320,19 +320,15 @@ extern int date2j(int year, int month, int day);
 
 extern double time2t(const int hour, const int min, const double sec);
 
-extern int
-ParseDateTime(char *timestr, char *lowstr,
+extern int ParseDateTime(char *timestr, char *lowstr,
 			  char *field[], int ftype[], int maxfields, int *numfields);
-extern int
-DecodeDateTime(char *field[], int ftype[],
+extern int DecodeDateTime(char *field[], int ftype[],
 			 int nf, int *dtype, struct tm * tm, double *fsec, int *tzp);
 
-extern int
-DecodeTimeOnly(char *field[], int ftype[], int nf,
+extern int DecodeTimeOnly(char *field[], int ftype[], int nf,
 			   int *dtype, struct tm * tm, double *fsec);
 
-extern int
-DecodeDateDelta(char *field[], int ftype[],
+extern int DecodeDateDelta(char *field[], int ftype[],
 				int nf, int *dtype, struct tm * tm, double *fsec);
 
 extern int EncodeDateOnly(struct tm * tm, int style, char *str);

@@ -14,8 +14,7 @@
 #define QSORT_H
 
 
-extern void
-pg_qsort(void *bot,
+extern void pg_qsort(void *bot,
 		 size_t nmemb,
 		 size_t size,
 		 int (*compar) (void *, void *));

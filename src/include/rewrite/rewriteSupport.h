@@ -18,8 +18,7 @@
 
 extern int	IsDefinedRewriteRule(char *ruleName);
 
-extern void
-prs2_addToRelation(Oid relid, Oid ruleId, CmdType event_type,
+extern void prs2_addToRelation(Oid relid, Oid ruleId, CmdType event_type,
 				   AttrNumber attno, bool isInstead, Node *qual,
 				   List *actions);
 extern void prs2_deleteFromRelation(Oid relid, Oid ruleId);

@@ -164,8 +164,7 @@ int			pqPutByte(int, FILE *);
  * prototypes for functions in pqpacket.c
  */
 extern int	PacketReceive(Port *port, PacketBuf *buf, char nonBlocking);
-extern int
-PacketSend(Port *port, PacketBuf *buf,
+extern int PacketSend(Port *port, PacketBuf *buf,
 		   PacketLen len, char nonBlocking);
 
 /* extern PacketBuf* StartupInfo2PacketBuf(StartupInfo*); */

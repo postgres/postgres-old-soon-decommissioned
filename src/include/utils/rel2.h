@@ -17,8 +17,7 @@
 
 extern IndexStrategy RelationGetIndexStrategy(Relation relation);
 
-extern void
-RelationSetIndexSupport(Relation relation, IndexStrategy strategy,
+extern void RelationSetIndexSupport(Relation relation, IndexStrategy strategy,
 						RegProcedure *support);
 
 #endif							/* TMP_REL2_H */

@@ -63,18 +63,14 @@ typedef struct catcache
 extern struct catcache *Caches;
 extern GlobalMemory CacheCxt;
 
-extern void
-CatalogCacheIdInvalidate(int cacheId, Index hashIndex,
+extern void CatalogCacheIdInvalidate(int cacheId, Index hashIndex,
 						 ItemPointer pointer);
 extern void ResetSystemCache(void);
-extern CatCache *
-InitSysCache(char *relname, char *indname, int id, int nkeys,
+extern CatCache * InitSysCache(char *relname, char *indname, int id, int nkeys,
 			 int key[], HeapTuple (*iScanfuncP) ());
-extern HeapTuple
-SearchSysCache(struct catcache * cache, Datum v1, Datum v2,
+extern HeapTuple SearchSysCache(struct catcache * cache, Datum v1, Datum v2,
 			   Datum v3, Datum v4);
-extern void
-RelationInvalidateCatalogCacheTuple(Relation relation,
+extern void RelationInvalidateCatalogCacheTuple(Relation relation,
 									HeapTuple tuple, void (*function) ());
 
 #endif							/* CATCACHE_H */

@@ -26,8 +26,7 @@ extern void RelationClose(Relation relation);
 extern void RelationForgetRelation(Oid rid);
 extern void RelationIdInvalidateRelationCacheByRelationId(Oid relationId);
 
-extern void
-			RelationIdInvalidateRelationCacheByAccessMethodId(Oid accessMethodId);
+extern void RelationIdInvalidateRelationCacheByAccessMethodId(Oid accessMethodId);
 
 extern void RelationCacheInvalidate(bool onlyFlushReferenceCountZero);
 

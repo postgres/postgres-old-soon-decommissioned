@@ -372,8 +372,7 @@ DESCR("limited-range ISO-format date and time");
  */
 extern Oid	TypeGet(char *typeName, bool *defined);
 extern Oid	TypeShellMake(char *typeName);
-extern Oid
-TypeCreate(char *typeName,
+extern Oid TypeCreate(char *typeName,
 		   Oid relationOid,
 		   int16 internalSize,
 		   int16 externalSize,

@@ -2054,8 +2054,7 @@ DESCR("sequence current value");
 /*
  * prototypes for functions pg_proc.c
  */
-extern Oid
-ProcedureCreate(char *procedureName,
+extern Oid ProcedureCreate(char *procedureName,
 				bool returnsSet,
 				char *returnTypeName,
 				char *languageName,

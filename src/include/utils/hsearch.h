@@ -133,8 +133,7 @@ typedef enum
 extern HTAB *hash_create(int nelem, HASHCTL *info, int flags);
 extern void hash_destroy(HTAB *hashp);
 extern void hash_stats(char *where, HTAB *hashp);
-extern long *
-hash_search(HTAB *hashp, char *keyPtr, HASHACTION action,
+extern long * hash_search(HTAB *hashp, char *keyPtr, HASHACTION action,
 			bool *foundPtr);
 extern long *hash_seq(HTAB *hashp);
 

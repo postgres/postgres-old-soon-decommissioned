@@ -42,8 +42,7 @@ enum Userauth
 				Password
 };
 
-extern int
-hba_recvauth(const Port *port, const char database[], const char user[],
+extern int hba_recvauth(const Port *port, const char database[], const char user[],
 			 const char DataDir[]);
 void
 find_hba_entry(const char DataDir[], const struct in_addr ip_addr,
