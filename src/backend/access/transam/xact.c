@@ -749,6 +749,7 @@ AtCommit_Memory()
 	 *	Release all transaction-local memory.
 	 * ----------------
 	 */
+	Assert(TopTransactionContext != NULL);
 	MemoryContextDelete(TopTransactionContext);
 	TopTransactionContext = NULL;
 	TransactionCommandContext = NULL;
@@ -825,17 +826,26 @@ AtAbort_Memory()
 {
 	/* ----------------
 	 *	Make sure we are in a valid context (not a child of
-	 *	TransactionCommandContext...)
+	 *	TransactionCommandContext...).  Note that it is possible
+	 *	for this code to be called when we aren't in a transaction
+	 *	at all; go directly to TopMemoryContext in that case.
 	 * ----------------
 	 */
-	MemoryContextSwitchTo(TransactionCommandContext);
+	if (TransactionCommandContext != NULL)
+	{
+		MemoryContextSwitchTo(TransactionCommandContext);
 
-	/* ----------------
-	 *	We do not want to destroy transaction contexts yet,
-	 *	but it should be OK to delete any command-local memory.
-	 * ----------------
-	 */
-	MemoryContextResetAndDeleteChildren(TransactionCommandContext);
+		/* ----------------
+		 *	We do not want to destroy transaction contexts yet,
+		 *	but it should be OK to delete any command-local memory.
+		 * ----------------
+		 */
+		MemoryContextResetAndDeleteChildren(TransactionCommandContext);
+	}
+	else
+	{
+		MemoryContextSwitchTo(TopMemoryContext);
+	}
 }
 
 
@@ -863,7 +873,8 @@ AtCleanup_Memory()
 	 *	Release all transaction-local memory.
 	 * ----------------
 	 */
-	MemoryContextDelete(TopTransactionContext);
+	if (TopTransactionContext != NULL)
+		MemoryContextDelete(TopTransactionContext);
 	TopTransactionContext = NULL;
 	TransactionCommandContext = NULL;
 }
