@@ -480,11 +480,7 @@ PostmasterMain(int argc, char *argv[])
 				 */
 				break;
 			case 'N':
-
-				/*
-				 * The max number of backends to start. Can't set to less
-				 * than 1 or more than compiled-in limit.
-				 */
+				/* The max number of backends to start. */
 				SetConfigOption("max_connections", optarg, PGC_POSTMASTER, true);
 				break;
 			case 'n':
