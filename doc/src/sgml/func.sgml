@@ -6143,7 +6143,7 @@ SELECT setval('foo', 42, false);    <lineannotation>Next <function>nextval</> wi
    If a sequence object has been created with default parameters,
    <function>nextval</function> calls on it will return successive values
    beginning with 1.  Other behaviors can be obtained by using
-   special parameters in the <command>CREATE SEQUENCE</command> command;
+   special parameters in the <xref linkend="SQL-CREATESEQUENCE"> command;
    see its command reference page for more information.
   </para>
 
