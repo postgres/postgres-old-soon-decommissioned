@@ -1,6 +1,6 @@
 TODO list for PostgreSQL
 ========================
-Last updated:		Thu Feb 12 12:38:45 EST 2004
+Last updated:		Thu Feb 12 12:50:57 EST 2004
 
 Current maintainer:	Bruce Momjian (pgman@candle.pha.pa.us)
 
@@ -392,9 +392,9 @@ Startup Time
 
 * Experiment with multi-threaded backend [thread]
 * Add connection pooling [pool]
-* Allow persistent backends [persistent]
+* Allow persistent backends [pool]
 * Create a transaction processor to aid in persistent connections and
-  connection pooling
+  connection pooling [pool]
 * Do listen() in postmaster and accept() in pre-forked backend
 * Have pre-forked backend pre-connect to last requested database or pass
   file descriptor to backend pre-forked for matching database
