@@ -49,6 +49,10 @@
 # example of this), set BSD_SHLIB to null in Makefile.custom.
 BSD_SHLIB= true
 
+# This is mainly for use on FreeBSD, where we have both a.out and elf
+# systems now.  May be applicable to other systems to?
+ELF_SYSTEM= @ELF_SYS@
+
 LIBPQDIR:= $(SRCDIR)/interfaces/libpq
 
 # For convenience, POSTGRESDIR is where BINDIR, and LIBDIR 
