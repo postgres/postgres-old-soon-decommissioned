@@ -397,7 +397,7 @@ dumpCreateDB(PGconn *conn)
 		buf = createPQExpBuffer();
 
 		if (output_clean)
-			appendPQExpBuffer(buf, "DROP DATABASE %s\n;", fmtId(dbname));
+			appendPQExpBuffer(buf, "DROP DATABASE %s;\n", fmtId(dbname));
 
 		appendPQExpBuffer(buf, "CREATE DATABASE %s", fmtId(dbname));
 		appendPQExpBuffer(buf, " WITH OWNER = %s TEMPLATE = template0", fmtId(dbowner));
