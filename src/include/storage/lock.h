@@ -57,8 +57,6 @@ typedef int LOCKMETHOD;
 #define USER_LOCKMETHOD		2
 #define MIN_LOCKMETHOD		DEFAULT_LOCKMETHOD
 
-/*typedef struct LOCK LOCK; */
-
 
 typedef struct LTAG
 {
@@ -174,6 +172,9 @@ typedef struct XIDLookupEnt
 	SHM_QUEUE	queue;
 } XIDLookupEnt;
 
+#define SHMEM_XIDTAB_KEYSIZE  sizeof(XIDTAG)
+#define SHMEM_XIDTAB_DATASIZE (sizeof(XIDLookupEnt) - SHMEM_XIDTAB_KEYSIZE)
+
 #define XID_TAGSIZE (sizeof(XIDTAG))
 #define XIDENT_LOCKMETHOD(xident) (XIDTAG_LOCKMETHOD((xident).tag))
 
@@ -209,6 +210,9 @@ typedef struct LOCK
 	int			activeHolders[MAX_LOCKMODES];
 	int			nActive;
 } LOCK;
+
+#define SHMEM_LOCKTAB_KEYSIZE  sizeof(LOCKTAG)
+#define SHMEM_LOCKTAB_DATASIZE (sizeof(LOCK) - SHMEM_LOCKTAB_KEYSIZE)
 
 #define LOCK_LOCKMETHOD(lock) (LOCKTAG_LOCKMETHOD((lock).tag))
 

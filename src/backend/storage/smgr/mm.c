@@ -110,7 +110,7 @@ mminit()
 	}
 
 	info.keysize = sizeof(MMCacheTag);
-	info.datasize = sizeof(int);
+	info.datasize = sizeof(MMHashEntry) - sizeof(MMCacheTag);
 	info.hash = tag_hash;
 
 	MMCacheHT = (HTAB *) ShmemInitHash("Main memory store HT",
@@ -124,7 +124,7 @@ mminit()
 	}
 
 	info.keysize = sizeof(MMRelTag);
-	info.datasize = sizeof(int);
+	info.datasize = sizeof(MMRelHashEntry) - sizeof(MMRelTag);
 	info.hash = tag_hash;
 
 	MMRelCacheHT = (HTAB *) ShmemInitHash("Main memory rel HT",
