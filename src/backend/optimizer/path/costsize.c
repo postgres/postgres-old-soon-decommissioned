@@ -277,9 +277,8 @@ cost_index(Path *path, Query *root,
 	 * index (ie, the fraction of main-table tuples we will have to
 	 * retrieve) and its correlation to the main-table tuple order.
 	 */
-	OidFunctionCall8(index->amcostestimate,
+	OidFunctionCall7(index->amcostestimate,
 					 PointerGetDatum(root),
-					 PointerGetDatum(baserel),
 					 PointerGetDatum(index),
 					 PointerGetDatum(indexQuals),
 					 PointerGetDatum(&indexStartupCost),

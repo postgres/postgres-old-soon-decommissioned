@@ -103,6 +103,7 @@ RelationGetIndexScan(Relation indexRelation,
 
 	/* mark cached function lookup data invalid; it will be set later */
 	scan->fn_getnext.fn_oid = InvalidOid;
+	scan->fn_getmulti.fn_oid = InvalidOid;
 
 	scan->unique_tuple_pos = 0;
 	scan->unique_tuple_mark = 0;

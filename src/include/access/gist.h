@@ -196,5 +196,6 @@ extern void gist_desc(char *buf, uint8 xl_info, char *rec);
 
 /* gistget.c */
 extern Datum gistgettuple(PG_FUNCTION_ARGS);
+extern Datum gistgetmulti(PG_FUNCTION_ARGS);
 
 #endif   /* GIST_H */

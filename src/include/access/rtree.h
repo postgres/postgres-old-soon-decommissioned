@@ -116,10 +116,9 @@ extern void freestack(RTSTACK *s);
  */
 extern Datum rtinsert(PG_FUNCTION_ARGS);
 extern Datum rtbulkdelete(PG_FUNCTION_ARGS);
-
-extern Datum rtgettuple(PG_FUNCTION_ARGS);
 extern Datum rtbeginscan(PG_FUNCTION_ARGS);
-
+extern Datum rtgettuple(PG_FUNCTION_ARGS);
+extern Datum rtgetmulti(PG_FUNCTION_ARGS);
 extern Datum rtendscan(PG_FUNCTION_ARGS);
 extern Datum rtmarkpos(PG_FUNCTION_ARGS);
 extern Datum rtrestrpos(PG_FUNCTION_ARGS);

@@ -47,6 +47,33 @@ gistgettuple(PG_FUNCTION_ARGS)
 	PG_RETURN_BOOL(res);
 }
 
+Datum
+gistgetmulti(PG_FUNCTION_ARGS)
+{
+	IndexScanDesc s = (IndexScanDesc) PG_GETARG_POINTER(0);
+	ItemPointer	tids = (ItemPointer) PG_GETARG_POINTER(1);
+	int32		max_tids = PG_GETARG_INT32(2);
+	int32	   *returned_tids = (int32 *) PG_GETARG_POINTER(3);
+	bool		res = true;
+	int32		ntids = 0;
+
+	/* XXX generic implementation: loop around guts of gistgettuple */
+	while (ntids < max_tids)
+	{
+		if (ItemPointerIsValid(&(s->currentItemData)))
+			res = gistnext(s, ForwardScanDirection);
+		else
+			res = gistfirst(s, ForwardScanDirection);
+		if (!res)
+			break;
+		tids[ntids] = s->xs_ctup.t_self;
+		ntids++;
+	}
+
+	*returned_tids = ntids;
+	PG_RETURN_BOOL(res);
+}
+
 static bool
 gistfirst(IndexScanDesc s, ScanDirection dir)
 {

@@ -341,6 +341,79 @@ btgettuple(PG_FUNCTION_ARGS)
 }
 
 /*
+ * btgetmulti() -- get multiple tuples at once
+ *
+ * This is a somewhat generic implementation: it avoids the _bt_restscan
+ * overhead, but there's no smarts about picking especially good stopping
+ * points such as index page boundaries.
+ */
+Datum
+btgetmulti(PG_FUNCTION_ARGS)
+{
+	IndexScanDesc scan = (IndexScanDesc) PG_GETARG_POINTER(0);
+	ItemPointer	tids = (ItemPointer) PG_GETARG_POINTER(1);
+	int32		max_tids = PG_GETARG_INT32(2);
+	int32	   *returned_tids = (int32 *) PG_GETARG_POINTER(3);
+	BTScanOpaque so = (BTScanOpaque) scan->opaque;
+	bool		res = true;
+	int32		ntids = 0;
+
+	/*
+	 * Restore prior state if we were already called at least once.
+	 */
+	if (ItemPointerIsValid(&(scan->currentItemData)))
+		_bt_restscan(scan);
+
+	while (ntids < max_tids)
+	{
+		/*
+		 * Start scan, or advance to next tuple.
+		 */
+		if (ItemPointerIsValid(&(scan->currentItemData)))
+			res = _bt_next(scan, ForwardScanDirection);
+		else
+			res = _bt_first(scan, ForwardScanDirection);
+		/*
+		 * Skip killed tuples if asked to.
+		 */
+		if (scan->ignore_killed_tuples)
+		{
+			while (res)
+			{
+				Page		page;
+				OffsetNumber offnum;
+
+				offnum = ItemPointerGetOffsetNumber(&(scan->currentItemData));
+				page = BufferGetPage(so->btso_curbuf);
+				if (!ItemIdDeleted(PageGetItemId(page, offnum)))
+					break;
+				res = _bt_next(scan, ForwardScanDirection);
+			}
+		}
+
+		if (!res)
+			break;
+		/* Save tuple ID, and continue scanning */
+		tids[ntids] = scan->xs_ctup.t_self;
+		ntids++;
+	}
+
+	/*
+	 * Save heap TID to use it in _bt_restscan.  Then release the read
+	 * lock on the buffer so that we aren't blocking other backends.
+	 */
+	if (res)
+	{
+		((BTScanOpaque) scan->opaque)->curHeapIptr = scan->xs_ctup.t_self;
+		LockBuffer(((BTScanOpaque) scan->opaque)->btso_curbuf,
+				   BUFFER_LOCK_UNLOCK);
+	}
+
+	*returned_tids = ntids;
+	PG_RETURN_BOOL(res);
+}
+
+/*
  *	btbeginscan() -- start a scan on a btree index
  */
 Datum
