@@ -34,7 +34,9 @@ endif
 	$(MAKE) -C bin $@
 	$(MAKE) -C ../doc $@
 	@-chown -R $(POSTGRESLOGIN) $(POSTGRESDIR) 2>/dev/null
-	@echo All of Postgres95 is successfully made.  Ready to install.
+	@if test $@. = all. -o $@. = .; then \
+	echo All of Postgres95 is successfully made.  Ready to install. ;\
+        fi
 
 TAGS:
 	rm -f TAGS; \
