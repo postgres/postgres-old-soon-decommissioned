@@ -181,6 +181,8 @@ extern Datum int2shr(PG_FUNCTION_ARGS);
 /* name.c */
 extern Datum namein(PG_FUNCTION_ARGS);
 extern Datum nameout(PG_FUNCTION_ARGS);
+extern Datum namerecv(PG_FUNCTION_ARGS);
+extern Datum namesend(PG_FUNCTION_ARGS);
 extern Datum nameeq(PG_FUNCTION_ARGS);
 extern Datum namene(PG_FUNCTION_ARGS);
 extern Datum namelt(PG_FUNCTION_ARGS);
@@ -222,8 +224,12 @@ extern int	extra_float_digits;
 
 extern Datum float4in(PG_FUNCTION_ARGS);
 extern Datum float4out(PG_FUNCTION_ARGS);
+extern Datum float4recv(PG_FUNCTION_ARGS);
+extern Datum float4send(PG_FUNCTION_ARGS);
 extern Datum float8in(PG_FUNCTION_ARGS);
 extern Datum float8out(PG_FUNCTION_ARGS);
+extern Datum float8recv(PG_FUNCTION_ARGS);
+extern Datum float8send(PG_FUNCTION_ARGS);
 extern Datum float4abs(PG_FUNCTION_ARGS);
 extern Datum float4um(PG_FUNCTION_ARGS);
 extern Datum float4up(PG_FUNCTION_ARGS);

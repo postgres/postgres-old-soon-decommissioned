@@ -188,6 +188,8 @@ typedef struct
 /* public point routines */
 extern Datum point_in(PG_FUNCTION_ARGS);
 extern Datum point_out(PG_FUNCTION_ARGS);
+extern Datum point_recv(PG_FUNCTION_ARGS);
+extern Datum point_send(PG_FUNCTION_ARGS);
 extern Datum construct_point(PG_FUNCTION_ARGS);
 extern Datum point_left(PG_FUNCTION_ARGS);
 extern Datum point_right(PG_FUNCTION_ARGS);

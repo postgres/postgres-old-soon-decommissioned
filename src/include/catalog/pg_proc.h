@@ -3197,6 +3197,22 @@ DATA(insert OID = 2420 (  oidvectorrecv		   PGNSP PGUID 12 f f t f i 1 30 "2281"
 DESCR("I/O");
 DATA(insert OID = 2421 (  oidvectorsend		   PGNSP PGUID 12 f f t f i 1 17 "30"  oidvectorsend - _null_ ));
 DESCR("I/O");
+DATA(insert OID = 2422 (  namerecv			   PGNSP PGUID 12 f f t f s 1 19 "2281"  namerecv - _null_ ));
+DESCR("I/O");
+DATA(insert OID = 2423 (  namesend			   PGNSP PGUID 12 f f t f s 1 17 "19"  namesend - _null_ ));
+DESCR("I/O");
+DATA(insert OID = 2424 (  float4recv		   PGNSP PGUID 12 f f t f i 1 700 "2281"  float4recv - _null_ ));
+DESCR("I/O");
+DATA(insert OID = 2425 (  float4send		   PGNSP PGUID 12 f f t f i 1 17 "700"  float4send - _null_ ));
+DESCR("I/O");
+DATA(insert OID = 2426 (  float8recv		   PGNSP PGUID 12 f f t f i 1 701 "2281"  float8recv - _null_ ));
+DESCR("I/O");
+DATA(insert OID = 2427 (  float8send		   PGNSP PGUID 12 f f t f i 1 17 "701"  float8send - _null_ ));
+DESCR("I/O");
+DATA(insert OID = 2428 (  point_recv		   PGNSP PGUID 12 f f t f i 1 600 "2281"  point_recv - _null_ ));
+DESCR("I/O");
+DATA(insert OID = 2429 (  point_send		   PGNSP PGUID 12 f f t f i 1 17 "600"  point_send - _null_ ));
+DESCR("I/O");
 
 
 /*
