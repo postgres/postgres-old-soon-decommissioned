@@ -5,6 +5,51 @@ $Header$
  <appendix id="release">
   <title>Release Notes</title>
 
+  <sect1 id="release-7-1-2">
+   <title>Release 7.1.2</title>
+
+   <note>
+   <title>Release date</title>
+   <simpara>2001-05-11</simpara>
+   </note>
+
+   <!--
+  <docinfo>
+  <authorgroup>
+  <author>
+  <firstname>Bruce</firstname>
+  <surname>Momjian</surname>
+  </author>
+  </authorgroup>
+  </docinfo>
+   -->
+
+   <para>
+    This has one fix from 7.1.1.
+   </para>
+
+
+   <sect2>
+    <title>Migration to version 7.1.2</title>
+
+    <para>
+     A dump/restore is <emphasis>not</emphasis> required for those running
+     7.1.X.
+    </para>
+   </sect2>
+
+   <sect2>
+    <title>Changes</title>
+
+    <para>
+     <programlisting>
+Fix PL/PgSQL SELECTs when returning no rows
+     </programlisting>
+    </para>
+   </sect2>
+  </sect1>
+
+
   <sect1 id="release-7-1-1">
    <title>Release 7.1.1</title>
 
