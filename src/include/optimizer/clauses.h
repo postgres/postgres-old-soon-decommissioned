@@ -13,8 +13,7 @@
 #ifndef CLAUSES_H
 #define CLAUSES_H
 
-#include "nodes/pg_list.h"
-#include "nodes/primnodes.h"
+#include <nodes/primnodes.h>
 
 extern Expr *make_clause(int type, Node *oper, List *args);
 extern bool is_opclause(Node *clause);
