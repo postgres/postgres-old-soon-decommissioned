@@ -4183,7 +4183,7 @@ msgstr "%s: konnte Benutzername nicht ermitteln (GetUserName fehlgeschlagen)\n"
 
 #: optimizer/path/allpaths.c:214
 msgid "SELECT FOR UPDATE is not supported for inheritance queries"
-msgstr "SELECT FOR UPDATE wird in Anfragen mit Veerbung nicht unterstützt"
+msgstr "SELECT FOR UPDATE wird in Anfragen mit Vererbung nicht unterstützt"
 
 #: optimizer/plan/initsplan.c:282 optimizer/prep/prepjointree.c:337
 msgid "UNION JOIN is not implemented"
