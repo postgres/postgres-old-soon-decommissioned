@@ -17,7 +17,7 @@ include ../Makefile.global
 # We need the backend directory here for its fmgr.h
 INCLUDE_OPT= -I../include -I../backend
 
-CFLAGS+= $(INCLUDE_OPT) -DPOSTPORT='"$(POSTPORT)"'
+CFLAGS+= $(INCLUDE_OPT) 
 
 ifdef KRBVERS
 CFLAGS+= $(KRBFLAGS)

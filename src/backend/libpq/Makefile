@@ -16,7 +16,6 @@ INCLUDE_OPT = -I.. \
               -I../../include
 
 CFLAGS+=$(INCLUDE_OPT)
-CFLAGS+= -DPOSTPORT='"$(POSTPORT)"'
 
 # kerberos flags
 ifdef KRBVERS

@@ -14,14 +14,10 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-SEDSCRIPT= \
-    -e "s^_fUnKy_BINDIR_sTuFf_^$(BINDIR)^g" \
-    -e "s^_fUnKy_POSTPORT_sTuFf_^$(POSTPORT)^g"
-
 all: destroydb
 
-destroydb:
-	sed $(SEDSCRIPT) <destroydb.sh >destroydb
+destroydb: destroydb.sh
+	cp destroydb.sh destroydb
 
 install: destroydb
 	$(INSTALL) $(INSTL_EXE_OPTS) $< $(DESTDIR)$(BINDIR)/$<

@@ -234,7 +234,7 @@ DebugFileOpen(void)
     fd = fileno(stderr);
     if (fcntl(fd, F_GETFD, 0) < 0) {
 	sprintf(OutputFileName, "%s/pg.errors.%d",
-		GetPGData(), (int)getpid());
+                DataDir, (int)getpid());
 	fd = open(OutputFileName, O_CREAT|O_APPEND|O_WRONLY, 0666);
     }
 #endif /* WIN32 */    

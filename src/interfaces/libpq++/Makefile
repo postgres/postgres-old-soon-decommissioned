@@ -21,7 +21,7 @@ INCLUDE_OPT= \
              -I../include \
              -I$(LIBPQDIR) 
 
-CXXFLAGS+= $(INCLUDE_OPT) -DPOSTPORT='"$(POSTPORT)"'
+CXXFLAGS+= $(INCLUDE_OPT)
 
 ifdef KRBVERS
 CXXFLAGS+= $(KRBFLAGS)

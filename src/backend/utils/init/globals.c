@@ -99,12 +99,3 @@ char *SharedSystemRelationNames[] = {
     VariableRelationName,
     0
 };
-
-/* set up global variables, pointers, etc. */
-void InitGlobals()
-{
-    MasterPid = getpid();
-    DataDir = GetPGData();
-}
-
-

@@ -14,14 +14,10 @@
 SRCDIR= ../..
 include ../../Makefile.global
 
-SEDSCRIPT= \
-    -e "s^_fUnKy_BINDIR_sTuFf_^$(BINDIR)^g" \
-    -e "s^_fUnKy_POSTPORT_sTuFf_^$(POSTPORT)^g"
-
 all: createdb
 
-createdb:
-	sed $(SEDSCRIPT) <createdb.sh >createdb
+createdb: createdb.sh
+	cp createdb.sh createdb
 
 install: createdb
 	$(INSTALL) $(INSTL_EXE_OPTS) $< $(DESTDIR)$(BINDIR)/$<

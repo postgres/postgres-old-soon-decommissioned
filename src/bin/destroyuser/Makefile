@@ -15,14 +15,12 @@ SRCDIR= ../..
 include ../../Makefile.global
 
 SEDSCRIPT= \
-    -e "s^_fUnKy_BINDIR_sTuFf_^$(BINDIR)^g" \
-    -e "s^_fUnKy_POSTPORT_sTuFf_^$(POSTPORT)^g" \
     -e "s^_fUnKy_DASH_N_sTuFf_^$(DASH_N)^g" \
     -e "s^_fUnKy_BACKSLASH_C_sTuFf_^$(BACKSLASH_C)^g"
 
 all: destroyuser
 
-destroyuser:
+destroyuser: destroyuser.sh
 	sed $(SEDSCRIPT) <destroyuser.sh >destroyuser
 
 install: destroyuser

@@ -4,7 +4,6 @@
  *    this file contains general postgres administration and initialization
  *    stuff that used to be spread out between the following files:
  *	globals.h			global variables
- *	magic.h				PG_RELEASE, PG_VERSION, etc defines
  *	pdir.h				directory path crud
  *	pinit.h				postgres initialization
  *	pmod.h				processing modes
@@ -36,13 +35,12 @@ extern int PostmasterMain(int argc, char* argv[]);
  * from utils/init/globals.c
  */
 extern int Portfd;
-extern int Noversion;    /* moved from magic.c	*/
-extern int MasterPid;    /* declared and defined in utils/initglobals.c */
+extern int Noversion;    
+extern int MasterPid;    
 extern int Quiet;
 extern char *DataDir;   
 
 extern char	  OutputFileName[];
-extern void 	  InitGlobals(void);
 
 /*
  * done in storage/backendid.h for now.
@@ -83,8 +81,6 @@ extern char *GetPgUserName(void);
 extern void SetPgUserName(void);
 extern Oid GetUserId(void);
 extern void SetUserId(void);
-extern char *GetPGHome(void);
-extern char *GetPGData(void);
 extern int ValidateBackend(char *path);
 extern int FindBackend(char *backend, char *argv0);
 extern int CheckPathAccess(char *path, char *name, int open_mode);

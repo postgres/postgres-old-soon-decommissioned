@@ -16,9 +16,6 @@ INCLUDE_OPT = -I../.. \
               -I../../../include
 
 CFLAGS += $(INCLUDE_OPT)
-# The following defines really ought to go in config.h 
-CFLAGS += -DPOSTGRESDIR='"$(POSTGRESDIR)"' -DPGDATADIR='"$(DATADIR)"' \
-          -DPOSTPORT='"$(POSTPORT)"'
 
 OBJS = enbl.o findbe.o globals.o miscinit.o postinit.o
 

@@ -140,7 +140,7 @@ pq_getport()
     
     if (envport)
 	return(atoi(envport));
-    return(atoi(POSTPORT));
+    return(atoi(DEF_PGPORT));
 }
 
 /* --------------------------------

@@ -15,19 +15,6 @@
 #
 #-------------------------------------------------------------------------
 
-# ----------------
-#       Set paths from environment or default values.
-#       The _fUnKy_..._sTuFf_ gets set when the script is installed
-#       from the default value for this build.
-#	Currently the only thing we look for from the environment is
-#	PGDATA, PGHOST, and PGPORT
-#
-# ----------------
-[ -z "$PGPORT" ] && PGPORT=_fUnKy_POSTPORT_sTuFf_
-[ -z "$PGHOST" ] && PGHOST=localhost
-BINDIR=_fUnKy_BINDIR_sTuFf_
-PATH=$BINDIR:$PATH
-
 CMDNAME=`basename $0`
 
 if [ -z "$USER" ]; then
@@ -55,12 +42,29 @@ do
     shift;
 done
 
-AUTHOPT="-a $AUTHSYS"
-[ -z "$AUTHSYS" ] && AUTHOPT=""
+if [-z "$AUTHSYS" ]; then
+  AUTHOPT = ""
+else
+  AUTHOPT = "-a $AUTHSYS"
+fi
 
-psql -tq $AUTHOPT -h $PGHOST -p $PGPORT -c "create database $dbname" template1 || {
+if [-z "$PGHOST" ]; then
+  PGHOSTOPT = ""
+else
+  PGHOSTOPT = "-h $PGHOST"
+fi
+
+if [-z "$PGPORT" ]; then
+  PGPORTOPT = ""
+else
+  PGPORTOPT = "-p $PGPORT"
+fi
+
+psql -tq $AUTHOPT $PGHOSTOPT $PGPORTOPT -c "create database $dbname" template1
+
+if [ $? -ne 0 ]
     echo "$CMDNAME: database creation failed on $dbname."
     exit 1
-}
+fi
 
 exit 0
