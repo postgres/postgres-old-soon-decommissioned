@@ -50,6 +50,14 @@ message(){
 
 unset LC_COLLATE LC_CTYPE LC_MONETARY LC_MESSAGES LC_NUMERIC LC_TIME LC_ALL LANG LANGUAGE
 
+# On Windows the default locale may not be English, so force it
+case $host_platform in
+    *-*-cygwin*|*-*-mingw32*)
+	LANG=en
+	export LANG
+	;;
+esac
+
 
 # ----------
 # Check for echo -n vs echo \c
