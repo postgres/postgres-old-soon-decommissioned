@@ -37,8 +37,8 @@ void func_call_2(void);
 
 char myhostname[MAXHOSTNAMELEN];
 
-int errno1_set = 0;
-int errno2_set = 0;
+volatile int errno1_set = 0;
+volatile int errno2_set = 0;
 
 char *strerror_p1;
 char *strerror_p2;
