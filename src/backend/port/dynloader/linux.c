@@ -15,10 +15,12 @@
  *-------------------------------------------------------------------------
  */
 #include <stdio.h>
+#include <string.h>
+
+#include "postgres.h"
 #ifdef HAVE_DLD_H
 #include <dld.h>
 #endif
-#include "postgres.h"
 #include "dynloader.h"
 #include "utils/elog.h"
 #include "fmgr.h"
