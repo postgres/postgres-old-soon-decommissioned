@@ -128,6 +128,17 @@ ExecHashJoin(HashJoinState *node)
 		(void) ExecProcNode((PlanState *) hashNode);
 
 		/*
+		 * If the inner relation is completely empty, and we're not doing
+		 * an outer join, we can quit without scanning the outer relation.
+		 */
+		if (!hashtable->hashNonEmpty && node->js.jointype != JOIN_LEFT)
+		{
+			ExecHashTableDestroy(hashtable);
+			node->hj_HashTable = NULL;
+			return NULL;
+		}
+
+		/*
 		 * Open temp files for outer batches, if needed. Note that file
 		 * buffers are palloc'd in regular executor context.
 		 */
@@ -138,10 +149,8 @@ ExecHashJoin(HashJoinState *node)
 	}
 
 	/*
-	 * Now get an outer tuple and probe into the hash table for matches
+	 * run the hash join process
 	 */
-	outerTupleSlot = node->js.ps.ps_OuterTupleSlot;
-
 	for (;;)
 	{
 		/*
@@ -226,7 +235,7 @@ ExecHashJoin(HashJoinState *node)
 			 * Only the joinquals determine MatchedOuter status, but all
 			 * quals must pass to actually return the tuple.
 			 */
-			if (ExecQual(joinqual, econtext, false))
+			if (joinqual == NIL || ExecQual(joinqual, econtext, false))
 			{
 				node->hj_MatchedOuter = true;
 
