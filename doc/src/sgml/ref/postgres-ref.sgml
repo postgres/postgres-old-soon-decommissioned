@@ -262,7 +262,7 @@ postgres [ -B <replaceable class="parameter">nBuffers</replaceable> ] [ -C ] [ -
 
     <variablelist>
      <varlistentry>
-      <term>-A n|r|b|Q\fIn\fP|X\fIn\fP</term>
+      <term>-A n|r|b|Q|X</term>
       <listitem>
        <para>
 	This option generates a tremendous amount of output.

@@ -102,7 +102,7 @@ pg_ctl [-D <replaceable class="parameter">datadir</replaceable>] status
 	 </varlistentry>
 
 	 <varlistentry>
-	  <term>f[ast]</term>
+	  <term>fast</term>
 	  <term>f</term>
 	  <listitem>
 	   <para>
