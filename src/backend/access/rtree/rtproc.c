@@ -183,5 +183,8 @@ rt_poly_size(PG_FUNCTION_ARGS)
 		*size = (float) (xdim * ydim);
 	}
 
+	/* Avoid leaking memory when handed toasted input. */
+	PG_FREE_IF_COPY(a, 0);
+
 	PG_RETURN_VOID();
 }

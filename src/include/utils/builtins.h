@@ -522,6 +522,7 @@ extern Datum macaddr_ne(PG_FUNCTION_ARGS);
 extern Datum macaddr_trunc(PG_FUNCTION_ARGS);
 extern Datum macaddr_text(PG_FUNCTION_ARGS);
 extern Datum text_macaddr(PG_FUNCTION_ARGS);
+extern Datum hashmacaddr(PG_FUNCTION_ARGS);
 
 /* numeric.c */
 extern Datum numeric_in(PG_FUNCTION_ARGS);

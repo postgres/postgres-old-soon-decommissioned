@@ -106,8 +106,14 @@ Datum
 hashvarlena(PG_FUNCTION_ARGS)
 {
 	struct varlena *key = PG_GETARG_VARLENA_P(0);
+	Datum		result;
 
-	return hash_any(VARDATA(key), VARSIZE(key) - VARHDRSZ);
+	result = hash_any(VARDATA(key), VARSIZE(key) - VARHDRSZ);
+
+	/* Avoid leaking memory for toasted inputs */
+	PG_FREE_IF_COPY(key, 0);
+
+	return result;
 }
 
 

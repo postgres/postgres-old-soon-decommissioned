@@ -6,6 +6,7 @@
 
 #include "postgres.h"
 
+#include "access/hash.h"
 #include "utils/builtins.h"
 #include "utils/inet.h"
 
@@ -237,10 +238,20 @@ macaddr_ne(PG_FUNCTION_ARGS)
 }
 
 /*
+ * Support function for hash indexes on macaddr.
+ */
+Datum
+hashmacaddr(PG_FUNCTION_ARGS)
+{
+	macaddr	   *key = PG_GETARG_MACADDR_P(0);
+
+	return hash_any((char *) key, sizeof(macaddr));
+}
+
+/*
  *	Truncation function to allow comparing mac manufacturers.
  *	From suggestion by Alex Pilosov <alex@pilosoft.com>
  */
-
 Datum
 macaddr_trunc(PG_FUNCTION_ARGS)
 {

@@ -830,6 +830,8 @@ DATA(insert OID = 456 (  hashvarlena	   PGUID 12 f t t t 1 f 23 "0" 100 0 0 100 
 DESCR("hash any varlena type");
 DATA(insert OID = 457 (  hashoidvector	   PGUID 12 f t t t 1 f 23 "30" 100 0 0 100  hashoidvector - ));
 DESCR("hash");
+DATA(insert OID = 399 (  hashmacaddr	   PGUID 12 f t t t 1 f 23 "829" 100 0 0 100  hashmacaddr - ));
+DESCR("hash");
 DATA(insert OID = 458 (  text_larger	   PGUID 12 f t t t 2 f 25 "25 25" 100 0 0 100  text_larger - ));
 DESCR("larger of two");
 DATA(insert OID = 459 (  text_smaller	   PGUID 12 f t t t 2 f 25 "25 25" 100 0 0 100  text_smaller - ));
