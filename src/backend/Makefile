@@ -93,19 +93,11 @@ ifdef EUROPEAN_DATES
 CFLAGS += -DEUROPEAN_STYLE
 endif
 
-# kerberos flags
-ifdef KRBVERS
-CFLAGS+= $(KRBFLAGS)
-LDADD+= $(KRBLIBS)
-endif
-
 # host based access flags
 ifdef HBA
 CFLAGS+= $(HBAFLAGS)
 endif
  
-
-
 #
 # All systems except NEXTSTEP require the math library.
 # Loader flags for system-dependent libraries are appended in
@@ -113,6 +105,12 @@ endif
 #
 ifneq ($(PORTNAME), next)
 LDADD+=	-lm
+endif
+
+# kerberos flags
+ifdef KRBVERS
+CFLAGS+= $(KRBFLAGS)
+LDADD+= $(KRBLIBS)
 endif
 
 # statically link in libc for linux
