@@ -14,19 +14,9 @@ CreateVariableSpace(void)
 {
 	struct _variable *ptr;
 
-	ptr = calloc(1, sizeof *ptr);
-	if (!ptr)
-		return NULL;
-
-	ptr->name = strdup("@");
-	ptr->value = strdup("");
-	if (!ptr->name || !ptr->value)
-	{
-		free(ptr->name);
-		free(ptr->value);
-		free(ptr);
-		return NULL;
-	}
+	ptr = xcalloc(1, sizeof *ptr);
+	ptr->name = xstrdup("@");
+	ptr->value = xstrdup("");
 
 	return ptr;
 }
@@ -162,19 +152,15 @@ SetVariable(VariableSpace space, const char *name, const char *value)
 		if (strcmp(current->name, name) == 0)
 		{
 			free(current->value);
-			current->value = strdup(value);
-			return current->value ? true : false;
+			current->value = xstrdup(value);
+			return true;
 		}
 	}
 
-	previous->next = calloc(1, sizeof *(previous->next));
-	if (!previous->next)
-		return false;
-	previous->next->name = strdup(name);
-	if (!previous->next->name)
-		return false;
-	previous->next->value = strdup(value);
-	return previous->next->value ? true : false;
+	previous->next = xcalloc(1, sizeof *(previous->next));
+	previous->next->name = xstrdup(name);
+	previous->next->value = xstrdup(value);
+	return true;
 }
 
 bool

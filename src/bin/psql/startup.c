@@ -170,7 +170,7 @@ main(int argc, char *argv[])
 		if (strcmp(options.username, "\001") == 0)
 			username = simple_prompt("User name: ", 100, true);
 		else
-			username = strdup(options.username);
+			username = xstrdup(options.username);
 	}
 
 	if (pset.getPassword)
@@ -567,15 +567,10 @@ process_psqlrc(void)
 
 	if (home)
 	{
-		psqlrc = malloc(strlen(home) + 1 + strlen(PSQLRC) + 1 +
-						strlen(PG_VERSION) + 1);
-		if (!psqlrc)
-		{
-			fprintf(stderr, gettext("%s: out of memory\n"), pset.progname);
-			exit(EXIT_FAILURE);
-		}
-
+		psqlrc = xmalloc(strlen(home) + 1 + strlen(PSQLRC) + 1 +
+						 strlen(PG_VERSION) + 1);
 		sprintf(psqlrc, "%s/%s-%s", home, PSQLRC, PG_VERSION);
+
 		if (access(psqlrc, R_OK) == 0)
 			process_file(psqlrc);
 		else

@@ -248,7 +248,7 @@ get_prompt(promptStatus_t status)
 				case '`':
 					{
 						FILE	   *fd = NULL;
-						char	   *file = strdup(p + 1);
+						char	   *file = xstrdup(p + 1);
 						int			cmdend;
 
 						cmdend = strcspn(file, "`");
@@ -274,7 +274,7 @@ get_prompt(promptStatus_t status)
 						const char *val;
 						int			nameend;
 
-						name = strdup(p + 1);
+						name = xstrdup(p + 1);
 						nameend = strcspn(name, ":");
 						name[nameend] = '\0';
 						val = GetVariable(pset.vars, name);

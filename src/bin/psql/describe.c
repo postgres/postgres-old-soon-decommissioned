@@ -39,21 +39,6 @@ static void processNamePattern(PQExpBuffer buf, const char *pattern,
 				   const char *schemavar, const char *namevar,
 				   const char *altnamevar, const char *visibilityrule);
 
-
-static void *
-xmalloc(size_t size)
-{
-	void	   *tmp;
-
-	tmp = malloc(size);
-	if (!tmp)
-	{
-		psql_error("out of memory\n");
-		exit(EXIT_FAILURE);
-	}
-	return tmp;
-}
-
 static void *
 xmalloczero(size_t size)
 {

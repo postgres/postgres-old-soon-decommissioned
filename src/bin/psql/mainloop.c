@@ -332,13 +332,7 @@ MainLoop(FILE *source)
 					/* It is a variable, perform substitution */
 					out_length = strlen(value);
 
-					new = malloc(len + out_length - in_length + 1);
-					if (!new)
-					{
-						psql_error("out of memory\n");
-						exit(EXIT_FAILURE);
-					}
-
+					new = xmalloc(len + out_length - in_length + 1);
 					sprintf(new, "%.*s%s%s", i, line, value,
 							&line[i + thislen + in_length]);
 
