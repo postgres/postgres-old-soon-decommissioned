@@ -24,8 +24,6 @@
 #include "executor/nodeSubplan.h"
 #include "tcop/pquery.h"
 
-/* should be exported by execMain.c */
-extern void ExecCheckPerms(CmdType op, int resRel, List *rtable, Query *q);
 
 /* ----------------------------------------------------------------
  *		ExecSubPlan(node)
@@ -253,8 +251,6 @@ bool
 ExecInitSubPlan(SubPlan *node, EState *estate, Plan *parent)
 {
 	EState	   *sp_estate = CreateExecutorState();
-
-	ExecCheckPerms(CMD_SELECT, 0, node->rtable, (Query *) NULL);
 
 	sp_estate->es_range_table = node->rtable;
 	sp_estate->es_param_list_info = estate->es_param_list_info;
