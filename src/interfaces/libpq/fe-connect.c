@@ -1744,7 +1744,7 @@ PQsetenvPoll(PGconn *conn)
 						 * server for it.  We must use begin/commit in
 						 * case autocommit is off by default.
 						 */
-						if (!PQsendQuery(conn, "begin; select getdatabaseencoding(); commit"))
+						if (!PQsendQuery(conn, "begin; select pg_client_encoding(); commit"))
 							goto error_return;
 
 						conn->setenv_state = SETENV_STATE_ENCODINGS_WAIT;

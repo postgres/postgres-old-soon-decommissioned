@@ -397,6 +397,9 @@ InitPostgres(const char *dbname, const char *username)
 	/* set default namespace search path */
 	InitializeSearchPath();
 
+	/* initialize client encoding */
+	InitializeClientEncoding();
+
 	/*
 	 * Set up process-exit callback to do pre-shutdown cleanup.  This
 	 * should be last because we want shmem_exit to call this routine
