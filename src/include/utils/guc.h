@@ -86,6 +86,9 @@ extern bool set_config_option(const char *name, const char *value,
 							  bool isLocal, bool DoIt);
 extern void ShowGUCConfigOption(const char *name);
 extern void ShowAllGUCConfig(void);
+extern char *GetConfigOptionByName(const char *name);
+extern char *GetConfigOptionByNum(int varnum, char **varname);
+extern int GetNumConfigOptions(void);
 
 extern void SetPGVariable(const char *name, List *args, bool is_local);
 extern void GetPGVariable(const char *name);

@@ -2881,6 +2881,11 @@ DESCR("substitutes regular expression");
 DATA(insert OID = 2074 (  substring			PGNSP PGUID 14 f f f t f i 3 25 "25 25 25" 100 0 0 100	"select substring($1, like_escape($2, $3))" - _null_ ));
 DESCR("substitutes regular expression with escape argument");
 
+DATA(insert OID = 2090 (  current_setting	PGNSP PGUID 12 f f f t f s 1 25 "25" 100 0 0 100 show_config_by_name - _null_ ));
+DESCR("SHOW X as a function");
+DATA(insert OID = 2091 (  set_config		PGNSP PGUID 12 f f f f f v 3 25 "25 25 16" 100 0 0 100 set_config_by_name - _null_ ));
+DESCR("SET X as a function");
+
 /* Aggregates (moved here from pg_aggregate for 7.3) */
 
 DATA(insert OID = 2100 (  avg				PGNSP PGUID 12 t f f f f i 1 1700 "20" 100 0 0 100  aggregate_dummy - _null_ ));
