@@ -38,15 +38,15 @@ dbState(DBState state)
 	switch (state)
 	{
 		case DB_STARTUP:
-			return "STARTUP";
+			return _("starting up");
 		case DB_SHUTDOWNED:
-			return "SHUTDOWNED";
+			return _("shut down");
 		case DB_SHUTDOWNING:
-			return "SHUTDOWNING";
+			return _("shutting down");
 		case DB_IN_RECOVERY:
-			return "IN_RECOVERY";
+			return _("in recovery");
 		case DB_IN_PRODUCTION:
-			return "IN_PRODUCTION";
+			return _("in production");
 	}
 	return _("unrecognized status code");
 }
