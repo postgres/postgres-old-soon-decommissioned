@@ -820,7 +820,7 @@ fireRIRrules(Query *parsetree)
 	 */
 	if (parsetree->hasSubLinks)
 		query_tree_walker(parsetree, fireRIRonSubLink, NULL,
-						  QTW_IGNORE_SUBQUERIES);
+						  QTW_IGNORE_RT_SUBQUERIES);
 
 	/*
 	 * If the query was marked having aggregates, check if this is still

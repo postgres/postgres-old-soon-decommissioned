@@ -467,7 +467,7 @@ setRuleCheckAsUser(Query *qry, AclId userid)
 	/* ignore subqueries in rtable because we already processed them */
 	if (qry->hasSubLinks)
 		query_tree_walker(qry, setRuleCheckAsUser_walker, (void *) &userid,
-						  QTW_IGNORE_SUBQUERIES);
+						  QTW_IGNORE_RT_SUBQUERIES);
 }
 
 /*

@@ -628,12 +628,12 @@ process_sublinks_mutator(Node *node, bool *isTopQual)
 	}
 
 	/*
-	 * Note that we will never see a SubPlan expression in the input
-	 * (since this is the very routine that creates 'em to begin with). So
-	 * the code in expression_tree_mutator() that might do inappropriate
-	 * things with SubPlans or SubLinks will not be exercised.
+	 * We should never see a SubPlan expression in the input (since this is
+	 * the very routine that creates 'em to begin with).  We shouldn't find
+	 * ourselves invoked directly on a Query, either.
 	 */
 	Assert(!is_subplan(node));
+	Assert(!IsA(node, Query));
 
 	/*
 	 * If we recurse down through anything other than a List node, we are
