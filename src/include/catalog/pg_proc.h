@@ -2442,6 +2442,14 @@ DESCR("aggregate transition function");
 DATA(insert OID = 1844 (  interval_avg	   PGUID 12 f t t t 1 f 1186 "1187" 100 0 0 100  interval_avg - ));
 DESCR("AVG aggregate final function");
 
+/* To ASCII conversion */ 
+DATA(insert OID = 1845 ( to_ascii	PGUID 12 f t t t 1 f	25 "25" 100 0 0 100  to_ascii_default - ));
+DESCR("encode text from DB encoding to ASCII text");
+DATA(insert OID = 1846 ( to_ascii	PGUID 12 f t t t 2 f	25 "25 23" 100 0 0 100  to_ascii_enc - ));
+DESCR("encode text from encoding to ASCII text");
+DATA(insert OID = 1847 ( to_ascii	PGUID 12 f t t t 2 f	25 "25 19" 100 0 0 100  to_ascii_encname - ));
+DESCR("encode text from encoding to ASCII text");
+
 DATA(insert OID = 1850 (  int28eq		   PGUID 12 f t t t 2 f 16 "21 20" 100 0 0 100  int28eq - ));
 DESCR("equal");
 DATA(insert OID = 1851 (  int28ne		   PGUID 12 f t t t 2 f 16 "21 20" 100 0 0 100  int28ne - ));
