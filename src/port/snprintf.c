@@ -469,6 +469,7 @@ performpr:
 		dopr_outch(ch);
 nochar:
 	/* nothing */
+	; /* semicolon required because a goto has to be attached to a statement */
 	}
 	*output = '\0';
 }
