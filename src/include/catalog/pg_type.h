@@ -379,6 +379,7 @@ DESCR("@ <number> <units>, time interval");
 DATA(insert OID = 1187 ( _timespan	 PGUID	-1 -1 f b t \054 0	1186 array_in array_out array_in array_out d _null_ ));
 
 /* OIDS 1200 - 1299 */
+DATA(insert OID = 1231 (  _numeric   PGUID -1  -1 f b t \054 0  1700 array_in array_out array_in array_out i _null_ ));
 DATA(insert OID = 1296 ( timestamp	 PGUID	4  19 t b t \054 0	0 timestamp_in timestamp_out timestamp_in timestamp_out i _null_ ));
 DESCR("date time timezone, limited-range ISO-formated date and time");
 #define TIMESTAMPOID	1296
