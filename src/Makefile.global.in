@@ -184,9 +184,6 @@ endif # not PGXS
 CC = @CC@
 GCC = @GCC@
 CFLAGS = @CFLAGS@
-ifeq ($(GCC), yes)
-  CFLAGS += -Wall -Wmissing-prototypes -Wmissing-declarations
-endif
 
 # Kind-of compilers
 
