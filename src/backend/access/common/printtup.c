@@ -90,9 +90,9 @@ printtup_create_DR(CommandDest dest, Portal portal)
 		else
 			self->pub.receiveTuple = printtup_20;
 	}
-	self->pub.startup = printtup_startup;
-	self->pub.shutdown = printtup_shutdown;
-	self->pub.destroy = printtup_destroy;
+	self->pub.rStartup = printtup_startup;
+	self->pub.rShutdown = printtup_shutdown;
+	self->pub.rDestroy = printtup_destroy;
 	self->pub.mydest = dest;
 
 	self->portal = portal;

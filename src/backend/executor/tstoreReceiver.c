@@ -78,9 +78,9 @@ CreateTuplestoreDestReceiver(Tuplestorestate *tStore,
 	TStoreState *self = (TStoreState *) palloc(sizeof(TStoreState));
 
 	self->pub.receiveTuple = tstoreReceiveTuple;
-	self->pub.startup = tstoreStartupReceiver;
-	self->pub.shutdown = tstoreShutdownReceiver;
-	self->pub.destroy = tstoreDestroyReceiver;
+	self->pub.rStartup = tstoreStartupReceiver;
+	self->pub.rShutdown = tstoreShutdownReceiver;
+	self->pub.rDestroy = tstoreDestroyReceiver;
 	self->pub.mydest = Tuplestore;
 
 	self->tstore = tStore;

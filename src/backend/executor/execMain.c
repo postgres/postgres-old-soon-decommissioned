@@ -217,7 +217,7 @@ ExecutorRun(QueryDesc *queryDesc,
 	estate->es_processed = 0;
 	estate->es_lastoid = InvalidOid;
 
-	(*dest->startup) (dest, operation, queryDesc->tupDesc);
+	(*dest->rStartup) (dest, operation, queryDesc->tupDesc);
 
 	/*
 	 * run plan
@@ -235,7 +235,7 @@ ExecutorRun(QueryDesc *queryDesc,
 	/*
 	 * shutdown receiver
 	 */
-	(*dest->shutdown) (dest);
+	(*dest->rShutdown) (dest);
 
 	MemoryContextSwitchTo(oldcontext);
 
