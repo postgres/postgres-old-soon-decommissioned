@@ -51,8 +51,8 @@ public:
   int FieldNum(const char* field_name) const;
   Oid FieldType(int field_num) const;
   Oid FieldType(const char* field_name) const;
-  short FieldSize(int field_num) const;
-  short FieldSize(const char* field_name) const;
+  int FieldSize(int field_num) const;
+  int FieldSize(const char* field_name) const;
   const char* GetValue(size_type tup_num, int field_num) const;
   const char* GetValue(size_type tup_num, const char* field_name) const;
   bool GetIsNull(size_type tup_num, int field_num) const;

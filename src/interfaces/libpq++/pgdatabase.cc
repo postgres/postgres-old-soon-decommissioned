@@ -106,13 +106,13 @@ return PQftype(pgResult, FieldNum(field_name));
 }
 
 
-short PgDatabase::FieldSize(int field_num) const
+int PgDatabase::FieldSize(int field_num) const
 { 
 return PQfsize(pgResult, field_num); 
 }
 
 
-short PgDatabase::FieldSize(const char* field_name) const
+int PgDatabase::FieldSize(const char* field_name) const
 { 
 return PQfsize(pgResult, FieldNum(field_name)); 
 }
