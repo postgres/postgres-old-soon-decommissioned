@@ -84,7 +84,7 @@ typedef struct htab
 	char	   *segbase;		/* segment base address for calculating
 								 * pointer values */
 	SEG_OFFSET *dir;			/* 'directory' of segm starts */
-	void	   *(*alloc) (Size);	/* memory allocator */
+	void	   *(*alloc) (Size);/* memory allocator */
 } HTAB;
 
 typedef struct hashctl
@@ -98,7 +98,7 @@ typedef struct hashctl
 	long		max_dsize;		/* limit to dsize if directory size is
 								 * limited */
 	long	   *segbase;		/* base for calculating bucket + seg ptrs */
-	void	   *(*alloc) (Size);	/* memory allocation function */
+	void	   *(*alloc) (Size);/* memory allocation function */
 	long	   *dir;			/* directory if allocated already */
 	long	   *hctl;			/* location of header information in shd
 								 * mem */
@@ -134,8 +134,8 @@ typedef enum
 /* hash_seq status (should be considered an opaque type by callers) */
 typedef struct
 {
-	HTAB   *hashp;
-	long	curBucket;
+	HTAB	   *hashp;
+	long		curBucket;
 	BUCKET_INDEX curIndex;
 } HASH_SEQ_STATUS;
 

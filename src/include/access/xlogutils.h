@@ -9,13 +9,13 @@
  * $Id$
  */
 #ifndef XLOG_UTILS_H
-#define	XLOG_UTILS_H
+#define XLOG_UTILS_H
 
 #include "access/rmgr.h"
 #include "utils/rel.h"
 
-extern int XLogIsOwnerOfTuple(RelFileNode hnode, ItemPointer iptr, 
-					TransactionId xid, CommandId cid);
+extern int XLogIsOwnerOfTuple(RelFileNode hnode, ItemPointer iptr,
+				   TransactionId xid, CommandId cid);
 extern bool XLogIsValidTuple(RelFileNode hnode, ItemPointer iptr);
 
 extern void XLogOpenLogRelation(void);

@@ -20,13 +20,13 @@ extern DestReceiver *printtup_create_DR(bool isBinary);
 
 extern void showatts(char *name, TupleDesc attinfo);
 extern void debugtup(HeapTuple tuple, TupleDesc typeinfo,
-					 DestReceiver *self);
+		 DestReceiver *self);
 
 /* XXX this one is really in executor/spi.c */
 extern void spi_printtup(HeapTuple tuple, TupleDesc tupdesc,
-						 DestReceiver *self);
+			 DestReceiver *self);
 
 extern bool getTypeOutputInfo(Oid type, Oid *typOutput, Oid *typElem,
-							  bool *typIsVarlena);
+				  bool *typIsVarlena);
 
 #endif	 /* PRINTTUP_H */

@@ -34,7 +34,7 @@
  * for such a backend, the shared memory is already ready-to-go.
  *
  * If "makePrivate" is true then we only need private memory, not shared
- * memory.  This is true for a standalone backend, false for a postmaster.
+ * memory.	This is true for a standalone backend, false for a postmaster.
  */
 void
 CreateSharedMemoryAndSemaphores(bool makePrivate, int maxBackends)

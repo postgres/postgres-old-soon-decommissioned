@@ -186,7 +186,7 @@ TransBlockGetXidStatus(Block tblock,
 	bits8		bit2;
 	BitIndex	offset;
 
-	tblock = (Block) ((char*) tblock + sizeof(XLogRecPtr));
+	tblock = (Block) ((char *) tblock + sizeof(XLogRecPtr));
 
 	/* ----------------
 	 *	calculate the index into the transaction data where
@@ -229,7 +229,7 @@ TransBlockSetXidStatus(Block tblock,
 	Index		index;
 	BitIndex	offset;
 
-	tblock = (Block) ((char*) tblock + sizeof(XLogRecPtr));
+	tblock = (Block) ((char *) tblock + sizeof(XLogRecPtr));
 
 	/* ----------------
 	 *	calculate the index into the transaction data where

@@ -109,9 +109,10 @@ makeResdom(AttrNumber resno,
 	resdom->resname = resname;
 
 	/*
-	 * We always set the sorting/grouping fields to 0.  If the caller wants
-	 * to change them he must do so explicitly.  Few if any callers should
-	 * be doing that, so omitting these arguments reduces the chance of error.
+	 * We always set the sorting/grouping fields to 0.	If the caller
+	 * wants to change them he must do so explicitly.  Few if any callers
+	 * should be doing that, so omitting these arguments reduces the
+	 * chance of error.
 	 */
 	resdom->ressortgroupref = 0;
 	resdom->reskey = 0;

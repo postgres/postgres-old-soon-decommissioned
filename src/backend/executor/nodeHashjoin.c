@@ -105,7 +105,7 @@ ExecHashJoin(HashJoin *node)
 
 	/* ----------------
 	 *	Reset per-tuple memory context to free any expression evaluation
-	 *	storage allocated in the previous tuple cycle.  Note this can't
+	 *	storage allocated in the previous tuple cycle.	Note this can't
 	 *	happen until we're done projecting out tuples from a join tuple.
 	 * ----------------
 	 */
@@ -155,6 +155,7 @@ ExecHashJoin(HashJoin *node)
 
 	for (;;)
 	{
+
 		/*
 		 * If we don't have an outer tuple, get the next one
 		 */
@@ -276,14 +277,15 @@ ExecHashJoin(HashJoin *node)
 		 */
 		hjstate->hj_NeedNewOuter = true;
 
-		if (! hjstate->hj_MatchedOuter &&
+		if (!hjstate->hj_MatchedOuter &&
 			node->join.jointype == JOIN_LEFT)
 		{
+
 			/*
 			 * We are doing an outer join and there were no join matches
 			 * for this outer tuple.  Generate a fake join tuple with
-			 * nulls for the inner tuple, and return it if it passes
-			 * the non-join quals.
+			 * nulls for the inner tuple, and return it if it passes the
+			 * non-join quals.
 			 */
 			econtext->ecxt_innertuple = hjstate->hj_NullInnerTupleSlot;
 

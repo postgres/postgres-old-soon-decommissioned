@@ -38,7 +38,7 @@ extern List *find_all_inheritors(Oid parentrel);
 extern List *expand_inherted_rtentry(Query *parse, Index rti);
 
 extern Node *adjust_inherited_attrs(Node *node,
-									Index old_rt_index, Oid old_relid,
-									Index new_rt_index, Oid new_relid);
+					   Index old_rt_index, Oid old_relid,
+					   Index new_rt_index, Oid new_relid);
 
 #endif	 /* PREP_H */

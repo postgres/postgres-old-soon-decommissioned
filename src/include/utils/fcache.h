@@ -34,19 +34,24 @@
 
 typedef struct FunctionCache
 {
+
 	/*
 	 * Function manager's lookup info for the target function.
 	 */
 	FmgrInfo	func;
+
 	/*
 	 * Per-call info for calling the target function.  Unvarying fields
-	 * are set up by init_fcache().  Argument values are filled in as needed.
+	 * are set up by init_fcache().  Argument values are filled in as
+	 * needed.
 	 */
 	FunctionCallInfoData fcinfo;
+
 	/*
 	 * "Resultinfo" node --- used only if target function returns a set.
 	 */
 	ReturnSetInfo rsinfo;
+
 	/*
 	 * argsValid is true when we are evaluating a set-valued function and
 	 * we are in the middle of a call series; we want to pass the same
@@ -54,15 +59,16 @@ typedef struct FunctionCache
 	 * ExprEndResult).
 	 */
 	bool		argsValid;		/* TRUE if fcinfo contains valid arguments */
+
 	/*
-	 * hasSetArg is true if we found a set-valued argument to the function.
-	 * This causes the function result to be a set as well.
+	 * hasSetArg is true if we found a set-valued argument to the
+	 * function. This causes the function result to be a set as well.
 	 */
 	bool		hasSetArg;		/* some argument returns a set */
 } FunctionCache;
 
 
 extern FunctionCachePtr init_fcache(Oid foid, int nargs,
-									MemoryContext fcacheCxt);
+			MemoryContext fcacheCxt);
 
 #endif	 /* FCACHE_H */

@@ -19,10 +19,10 @@
 
 
 extern Datum ExecEvalIter(Iter *iterNode, ExprContext *econtext,
-						  bool *isNull, ExprDoneCond *isDone);
+			 bool *isNull, ExprDoneCond *isDone);
 
 extern void ExecEvalFjoin(TargetEntry *tlist, ExprContext *econtext,
-						  bool *isNullVect, ExprDoneCond *fj_isDone);
+			  bool *isNullVect, ExprDoneCond *fj_isDone);
 
 
 #endif	 /* EXECFLATTEN_H */

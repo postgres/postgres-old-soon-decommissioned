@@ -29,6 +29,7 @@ typedef int SPINLOCK;
 
 #ifdef LOCK_DEBUG
 extern bool Trace_spinlocks;
+
 #endif
 
 

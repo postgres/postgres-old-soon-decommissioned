@@ -176,7 +176,7 @@ DestToFunction(CommandDest dest)
 {
 	switch (dest)
 	{
-		case Remote:
+			case Remote:
 			return printtup_create_DR(false);
 
 		case RemoteInternal:

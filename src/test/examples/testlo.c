@@ -236,9 +236,7 @@ main(int argc, char **argv)
 /*	lobjOid = importFile(conn, in_filename); */
 	lobjOid = lo_import(conn, in_filename);
 	if (lobjOid == 0)
-	{
 		fprintf(stderr, "%s\n", PQerrorMessage(conn));
-	}
 	else
 	{
 		printf("\tas large object %u.\n", lobjOid);

@@ -33,14 +33,14 @@ typedef struct Tuplestorestate Tuplestorestate;
  */
 
 extern Tuplestorestate *tuplestore_begin_heap(bool randomAccess,
-											  int maxKBytes);
+					  int maxKBytes);
 
 extern void tuplestore_puttuple(Tuplestorestate *state, void *tuple);
 
 extern void tuplestore_donestoring(Tuplestorestate *state);
 
 extern void *tuplestore_gettuple(Tuplestorestate *state, bool forward,
-								 bool *should_free);
+					bool *should_free);
 
 #define tuplestore_getheaptuple(state, forward, should_free) \
 	((HeapTuple) tuplestore_gettuple(state, forward, should_free))

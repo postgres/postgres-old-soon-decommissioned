@@ -112,6 +112,7 @@ ExcPrint(Exception *excP,
 
 	/* Save error str before calling any function that might change errno */
 	errorstr = strerror(errno);
+
 	/*
 	 * Some strerror()s return an empty string for out-of-range errno.
 	 * This is ANSI C spec compliant, but not exactly useful.

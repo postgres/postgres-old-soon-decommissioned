@@ -124,7 +124,7 @@ extern void _rtdump(Relation r);
 
 extern void rtree_redo(XLogRecPtr lsn, XLogRecord *record);
 extern void rtree_undo(XLogRecPtr lsn, XLogRecord *record);
-extern void rtree_desc(char *buf, uint8 xl_info, char* rec);
+extern void rtree_desc(char *buf, uint8 xl_info, char *rec);
 
 /* rtscan.c */
 extern void rtadjscans(Relation r, int op, BlockNumber blkno,

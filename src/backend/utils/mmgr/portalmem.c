@@ -126,8 +126,8 @@ EnablePortalManager(void)
 	ctl.datasize = sizeof(Portal);
 
 	/*
-	 * use PORTALS_PER_USER, defined in utils/portal.h as a guess of
-	 * how many hash table entries to create, initially
+	 * use PORTALS_PER_USER, defined in utils/portal.h as a guess of how
+	 * many hash table entries to create, initially
 	 */
 	PortalHashTable = hash_create(PORTALS_PER_USER * 3, &ctl, HASH_ELEM);
 }

@@ -36,8 +36,8 @@ CATALOG(pg_amop)
 	Oid			amopid;			/* an index access method */
 	Oid			amopclaid;		/* an index opclass */
 	Oid			amopopr;		/* the operator OID to use */
-	int2		amopstrategy;	/* one of the strategy numbers defined
-								 * by the AM */
+	int2		amopstrategy;	/* one of the strategy numbers defined by
+								 * the AM */
 } FormData_pg_amop;
 
 /* ----------------
@@ -106,7 +106,7 @@ DATA(insert OID = 0 (  402 434 489 8 ));
  *
  * XXX Diked out 2000-06-18 by tgl.  Since we have no rtree support functions
  * (union, intersection, size) for circles, we can't actually build rtree
- * indexes on circles.  These can be put back in someday if anyone ever
+ * indexes on circles.	These can be put back in someday if anyone ever
  * writes such functions.
  */
 
@@ -353,21 +353,21 @@ DATA(insert OID = 0 (  403 1690   59 5 ));
  *	nbtree bit
  */
 
-DATA(insert OID = 0 (  403  424 1786 1 ));
-DATA(insert OID = 0 (  403  424 1788 2 ));
-DATA(insert OID = 0 (  403  424 1784 3 ));
-DATA(insert OID = 0 (  403  424 1789 4 ));
-DATA(insert OID = 0 (  403  424 1787 5 ));
+DATA(insert OID = 0 (  403	424 1786 1 ));
+DATA(insert OID = 0 (  403	424 1788 2 ));
+DATA(insert OID = 0 (  403	424 1784 3 ));
+DATA(insert OID = 0 (  403	424 1789 4 ));
+DATA(insert OID = 0 (  403	424 1787 5 ));
 
 /*
  *	nbtree varbit
  */
 
-DATA(insert OID = 0 (  403  425 1806 1 ));
-DATA(insert OID = 0 (  403  425 1808 2 ));
-DATA(insert OID = 0 (  403  425 1804 3 ));
-DATA(insert OID = 0 (  403  425 1809 4 ));
-DATA(insert OID = 0 (  403  425 1807 5 ));
+DATA(insert OID = 0 (  403	425 1806 1 ));
+DATA(insert OID = 0 (  403	425 1808 2 ));
+DATA(insert OID = 0 (  403	425 1804 3 ));
+DATA(insert OID = 0 (  403	425 1809 4 ));
+DATA(insert OID = 0 (  403	425 1807 5 ));
 
 
 /*

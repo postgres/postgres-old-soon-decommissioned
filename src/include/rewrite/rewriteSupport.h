@@ -17,6 +17,6 @@
 extern bool IsDefinedRewriteRule(char *ruleName);
 
 extern void SetRelationRuleStatus(Oid relationId, bool relHasRules,
-								  bool relIsBecomingView);
+					  bool relIsBecomingView);
 
 #endif	 /* REWRITESUPPORT_H */

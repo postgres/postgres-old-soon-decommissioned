@@ -55,7 +55,7 @@ int4notin(PG_FUNCTION_ARGS)
 	/* make a null-terminated copy of text */
 	strlength = VARSIZE(relation_and_attr) - VARHDRSZ;
 	if (strlength >= sizeof(my_copy))
-		strlength = sizeof(my_copy)-1;
+		strlength = sizeof(my_copy) - 1;
 	memcpy(my_copy, VARDATA(relation_and_attr), strlength);
 	my_copy[strlength] = '\0';
 
@@ -110,8 +110,10 @@ Datum
 oidnotin(PG_FUNCTION_ARGS)
 {
 	Oid			the_oid = PG_GETARG_OID(0);
+
 #ifdef NOT_USED
 	text	   *relation_and_attr = PG_GETARG_TEXT_P(1);
+
 #endif
 
 	if (the_oid == InvalidOid)

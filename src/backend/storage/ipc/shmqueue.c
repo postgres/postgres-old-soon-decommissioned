@@ -152,7 +152,8 @@ SHMQueueInsertAfter(SHM_QUEUE *queue, SHM_QUEUE *elem)
 	dumpQ(queue, "in SHMQueueInsertAfter: end");
 #endif
 }
-#endif /* NOT_USED */
+
+#endif	 /* NOT_USED */
 
 /*--------------------
  * SHMQueueNext -- Get the next element from a queue

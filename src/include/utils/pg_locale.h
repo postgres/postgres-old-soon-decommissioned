@@ -38,7 +38,7 @@ extern void PGLC_current(PG_LocaleCategories * lc);
 
 /*------
  * Return the POSIX lconv struct (contains number/money formatting information)
- * with locale information for all categories.  Note that returned lconv
+ * with locale information for all categories.	Note that returned lconv
  * does not depend on currently active category settings, but on external
  * environment variables for locale.
  *------

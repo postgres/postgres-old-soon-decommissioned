@@ -18,7 +18,7 @@
 
 
 extern void relation_info(Oid relationObjectId,
-						  bool *hasindex, long *pages, double *tuples);
+			  bool *hasindex, long *pages, double *tuples);
 
 extern List *find_secondary_indexes(Oid relationObjectId);
 

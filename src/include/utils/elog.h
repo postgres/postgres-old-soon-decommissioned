@@ -26,20 +26,22 @@
 
 /* Configurable parameters */
 #ifdef ENABLE_SYSLOG
-extern int Use_syslog;
+extern int	Use_syslog;
+
 #endif
 extern bool Log_timestamp;
 extern bool Log_pid;
 
 
 #ifndef __GNUC__
-extern void elog(int lev, const char *fmt, ...);
+extern void elog(int lev, const char *fmt,...);
 
 #else
 /* This extension allows gcc to check the format string for consistency with
    the supplied arguments. */
-extern void elog(int lev, const char *fmt, ...)
-	__attribute__((format(printf, 2, 3)));
+extern void
+elog(int lev, const char *fmt,...)
+__attribute__((format(printf, 2, 3)));
 
 #endif
 

@@ -68,7 +68,7 @@ PGLC_debug_lc(PG_LocaleCategories * lc)
 		 lc->lc_collate,
 		 lc->lc_monetary
 #ifdef LC_MESSAGES
-		 , lc->lc_messages
+		 ,lc->lc_messages
 #endif
 	);
 }
@@ -116,7 +116,7 @@ PGLC_setlocale(PG_LocaleCategories * lc)
 
 /*------
  * Return the POSIX lconv struct (contains number/money formatting information)
- * with locale information for all categories.  Note that returned lconv
+ * with locale information for all categories.	Note that returned lconv
  * does not depend on currently active category settings, but on external
  * environment variables for locale.
  *

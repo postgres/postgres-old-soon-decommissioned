@@ -60,14 +60,14 @@
 extern void InitCatalogCache(void);
 
 extern HeapTuple SearchSysCache(int cacheId,
-					Datum key1, Datum key2, Datum key3, Datum key4);
+			   Datum key1, Datum key2, Datum key3, Datum key4);
 extern void ReleaseSysCache(HeapTuple tuple);
 
 /* convenience routines */
 extern HeapTuple SearchSysCacheCopy(int cacheId,
-					Datum key1, Datum key2, Datum key3, Datum key4);
+				   Datum key1, Datum key2, Datum key3, Datum key4);
 extern Oid GetSysCacheOid(int cacheId,
-					Datum key1, Datum key2, Datum key3, Datum key4);
+			   Datum key1, Datum key2, Datum key3, Datum key4);
 
 /* macro for just probing for existence of a tuple via the syscache */
 #define SearchSysCacheExists(c,k1,k2,k3,k4)  \

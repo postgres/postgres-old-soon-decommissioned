@@ -427,8 +427,8 @@ InitializeTransactionLog(void)
 		TransactionLogUpdate(AmiTransactionId, XID_COMMIT);
 		TransactionIdStore(AmiTransactionId, &cachedTestXid);
 		cachedTestXidStatus = XID_COMMIT;
-		Assert(!IsUnderPostmaster && 
-				ShmemVariableCache->nextXid <= FirstTransactionId);
+		Assert(!IsUnderPostmaster &&
+			   ShmemVariableCache->nextXid <= FirstTransactionId);
 		ShmemVariableCache->nextXid = FirstTransactionId;
 	}
 	else if (RecoveryCheckingEnabled())

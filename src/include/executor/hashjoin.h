@@ -69,8 +69,8 @@ typedef struct HashTableData
 								 * file */
 
 	/*
-	 * Info about the datatype being hashed.  We assume that the inner
-	 * and outer sides of the hash are the same type, or at least
+	 * Info about the datatype being hashed.  We assume that the inner and
+	 * outer sides of the hash are the same type, or at least
 	 * binary-compatible types.
 	 */
 	int16		typLen;

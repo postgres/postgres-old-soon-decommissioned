@@ -163,6 +163,7 @@ BufFileCreate(File file)
 {
 	return makeBufFile(file);
 }
+
 #endif
 
 /*
@@ -574,5 +575,5 @@ BufFileTellBlock(BufFile *file)
 	blknum += file->curFile * RELSEG_SIZE;
 	return blknum;
 }
-#endif
 
+#endif

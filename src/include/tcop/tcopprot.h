@@ -32,11 +32,11 @@ extern bool ShowPortNumber;
 #ifndef BOOTSTRAP_INCLUDE
 
 extern List *pg_parse_and_rewrite(char *query_string,
-								  Oid *typev, int nargs);
+					 Oid *typev, int nargs);
 extern Plan *pg_plan_query(Query *querytree);
 extern void pg_exec_query_string(char *query_string,
-								 CommandDest dest,
-								 MemoryContext parse_context);
+					 CommandDest dest,
+					 MemoryContext parse_context);
 
 #endif	 /* BOOTSTRAP_INCLUDE */
 
@@ -46,6 +46,6 @@ extern int PostgresMain(int argc, char *argv[],
 			 int real_argc, char *real_argv[], const char *username);
 extern void ResetUsage(void);
 extern void ShowUsage(void);
-extern FILE * StatFp;
+extern FILE *StatFp;
 
 #endif	 /* TCOPPROT_H */

@@ -11,4 +11,4 @@
 #define pg_dlclose		dlclose
 #define pg_dlerror		dlerror
 
-#endif /* DYNLOADER_SOLARIS_H */
+#endif	 /* DYNLOADER_SOLARIS_H */

@@ -21,11 +21,13 @@
 extern char *relpath(const char *relname);
 extern char *relpath_blind(const char *dbname, const char *relname,
 			  Oid dbid, Oid relid);
+
 #else
 #include "storage/relfilenode.h"
 
 extern char *relpath(RelFileNode rnode);
 extern char *GetDatabasePath(Oid tblNode);
+
 #endif
 
 extern bool IsSystemRelationName(const char *relname);

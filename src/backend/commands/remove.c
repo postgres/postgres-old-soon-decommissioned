@@ -40,8 +40,8 @@
  */
 void
 RemoveOperator(char *operatorName,		/* operator name */
-			   char *typeName1,			/* left argument type name */
-			   char *typeName2)			/* right argument type name */
+			   char *typeName1, /* left argument type name */
+			   char *typeName2) /* right argument type name */
 {
 	Relation	relation;
 	HeapTuple	tup;

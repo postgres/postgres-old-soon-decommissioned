@@ -374,9 +374,9 @@ typedef enum
 } Pattern_Prefix_Status;
 
 extern Pattern_Prefix_Status pattern_fixed_prefix(char *patt,
-												  Pattern_Type ptype,
-												  char **prefix,
-												  char **rest);
+					 Pattern_Type ptype,
+					 char **prefix,
+					 char **rest);
 extern bool locale_is_like_safe(void);
 extern char *make_greater_string(const char *str, Oid datatype);
 
@@ -479,13 +479,13 @@ extern Datum ascii(PG_FUNCTION_ARGS);
 
 /* inet_net_ntop.c */
 extern char *inet_net_ntop(int af, const void *src, int bits,
-						   char *dst, size_t size);
+			  char *dst, size_t size);
 extern char *inet_cidr_ntop(int af, const void *src, int bits,
-							char *dst, size_t size);
+			   char *dst, size_t size);
 
 /* inet_net_pton.c */
-extern int	inet_net_pton(int af, const char *src,
-						  void *dst, size_t size);
+extern int inet_net_pton(int af, const char *src,
+			  void *dst, size_t size);
 
 /* network.c */
 extern Datum inet_in(PG_FUNCTION_ARGS);

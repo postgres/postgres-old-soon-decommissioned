@@ -290,7 +290,7 @@ plannode_type(Plan *p)
 {
 	switch (nodeTag(p))
 	{
-		case T_Plan:
+			case T_Plan:
 			return "PLAN";
 		case T_Result:
 			return "RESULT";

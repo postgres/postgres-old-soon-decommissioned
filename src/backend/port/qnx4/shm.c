@@ -184,8 +184,10 @@ shmctl(int shmid, int cmd, struct shmid_ds * buf)
 	}
 	if (cmd == IPC_STAT)
 	{
-		/* Can we support IPC_STAT?  We only need shm_nattch ...
-		 * For now, punt and assume the shm seg does not exist.
+
+		/*
+		 * Can we support IPC_STAT?  We only need shm_nattch ... For now,
+		 * punt and assume the shm seg does not exist.
 		 */
 		errno = EINVAL;
 		return -1;

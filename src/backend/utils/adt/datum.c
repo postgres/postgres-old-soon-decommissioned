@@ -153,10 +153,11 @@ datumFree(Datum value, bool typByVal, int typLen)
 bool
 datumIsEqual(Datum value1, Datum value2, bool typByVal, int typLen)
 {
-	bool	res;
+	bool		res;
 
 	if (typByVal)
 	{
+
 		/*
 		 * just compare the two datums. NOTE: just comparing "len" bytes
 		 * will not do the work, because we do not know how these bytes

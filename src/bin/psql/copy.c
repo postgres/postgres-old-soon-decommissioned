@@ -80,7 +80,7 @@ parse_slash_copy(const char *args)
 	{
 		psql_error("\\copy: arguments required\n");
 		return NULL;
-	}		
+	}
 
 	if (!(result = calloc(1, sizeof(struct copy_options))))
 	{
@@ -403,7 +403,7 @@ handleCopyIn(PGconn *conn, FILE *copystream, const char *prompt)
 	int			bufleft;
 	int			c = 0;
 	int			ret;
-	unsigned int linecount=0;
+	unsigned int linecount = 0;
 
 #ifdef USE_ASSERT_CHECKING
 	assert(copy_in_state);

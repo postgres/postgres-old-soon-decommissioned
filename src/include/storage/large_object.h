@@ -27,10 +27,11 @@
  * index_r holds an open-relation reference to pg_largeobject_loid_pn_index
  *
  * NOTE: before 7.1, heap_r and index_r held references to the separate
- * table and index of a specific large object.  Now they all live in one rel.
+ * table and index of a specific large object.	Now they all live in one rel.
  *----------
  */
-typedef struct LargeObjectDesc {
+typedef struct LargeObjectDesc
+{
 	Oid			id;
 	uint32		offset;			/* current seek pointer */
 	int			flags;			/* locking info, etc */
@@ -58,7 +59,7 @@ typedef struct LargeObjectDesc {
  * since clients will often be written to send data in power-of-2 blocks.
  * This avoids unnecessary tuple updates caused by partial-page writes.
  */
-#define	LOBLKSIZE		(BLCKSZ / 4)
+#define LOBLKSIZE		(BLCKSZ / 4)
 
 
 /*

@@ -39,15 +39,15 @@ typedef struct _CandidateList
 }		   *CandidateList;
 
 extern Node *ParseNestedFuncOrColumn(ParseState *pstate, Attr *attr,
-									 int precedence);
+						int precedence);
 extern Node *ParseFuncOrColumn(ParseState *pstate,
-							   char *funcname, List *fargs,
-							   bool agg_star, bool agg_distinct,
-							   int precedence);
+				  char *funcname, List *fargs,
+				  bool agg_star, bool agg_distinct,
+				  int precedence);
 
 extern bool func_get_detail(char *funcname, int nargs, Oid *argtypes,
-							Oid *funcid, Oid *rettype,
-							bool *retset, Oid **true_typeids);
+				Oid *funcid, Oid *rettype,
+				bool *retset, Oid **true_typeids);
 
 extern bool typeInheritsFrom(Oid subclassTypeId, Oid superclassTypeId);
 

@@ -89,7 +89,8 @@ typedef struct SISeg
 	 */
 	int			minMsgNum;		/* oldest message still needed */
 	int			maxMsgNum;		/* next message number to be assigned */
-	int			lastBackend;	/* index of last active procState entry, +1 */
+	int			lastBackend;	/* index of last active procState entry,
+								 * +1 */
 	int			maxBackends;	/* size of procState array */
 
 	/*

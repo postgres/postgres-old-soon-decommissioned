@@ -31,24 +31,22 @@ typedef VAttListData *VAttList;
 
 typedef struct VacPageData
 {
-	BlockNumber blkno;		/* BlockNumber of this Page */
-	Size		free;		/* FreeSpace on this Page */
-	uint16		offsets_used;		/* Number of OffNums used by
-										 * vacuum */
-	uint16		offsets_free;		/* Number of OffNums free or to be
-										 * free */
-	OffsetNumber offsets[1];/* Array of its OffNums */
+	BlockNumber blkno;			/* BlockNumber of this Page */
+	Size		free;			/* FreeSpace on this Page */
+	uint16		offsets_used;	/* Number of OffNums used by vacuum */
+	uint16		offsets_free;	/* Number of OffNums free or to be free */
+	OffsetNumber offsets[1];	/* Array of its OffNums */
 } VacPageData;
 
 typedef VacPageData *VacPage;
 
 typedef struct VacPageListData
 {
-	int			empty_end_pages;	/* Number of "empty" end-pages */
-	int			num_pages;	/* Number of pages in pagedesc */
-	int			num_allocated_pages;		/* Number of allocated
-												 * pages in pagedesc */
-	VacPage *pagedesc;	/* Descriptions of pages */
+	int			empty_end_pages;/* Number of "empty" end-pages */
+	int			num_pages;		/* Number of pages in pagedesc */
+	int			num_allocated_pages;	/* Number of allocated pages in
+										 * pagedesc */
+	VacPage    *pagedesc;		/* Descriptions of pages */
 } VacPageListData;
 
 typedef VacPageListData *VacPageList;
@@ -102,7 +100,7 @@ typedef VTupleLinkData *VTupleLink;
 typedef struct VTupleMoveData
 {
 	ItemPointerData tid;		/* tuple ID */
-	VacPage		vacpage;			/* where to move */
+	VacPage		vacpage;		/* where to move */
 	bool		cleanVpd;		/* clean vacpage before using */
 } VTupleMoveData;
 

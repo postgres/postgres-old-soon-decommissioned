@@ -84,8 +84,8 @@ typedef unsigned char XidStatus;/* (2 bits) */
  */
 typedef struct LogRelationContentsData
 {
-	XLogRecPtr	LSN;		/* temp hack: LSN is member of any block */
-							/* so should be described in bufmgr */
+	XLogRecPtr	LSN;			/* temp hack: LSN is member of any block */
+	/* so should be described in bufmgr */
 	int			TransSystemVersion;
 } LogRelationContentsData;
 
@@ -120,7 +120,8 @@ typedef struct VariableRelationContentsData
 } VariableRelationContentsData;
 
 typedef VariableRelationContentsData *VariableRelationContents;
-#endif /* NOT_USED */
+
+#endif	 /* NOT_USED */
 
 /*
  * VariableCache is placed in shmem and used by
@@ -128,9 +129,9 @@ typedef VariableRelationContentsData *VariableRelationContents;
  */
 typedef struct VariableCacheData
 {
-	TransactionId	nextXid;	/* next XID to assign */
-	Oid				nextOid;	/* next OID to assign */
-	uint32			oidCount;	/* OIDs available before must do XLOG work */
+	TransactionId nextXid;		/* next XID to assign */
+	Oid			nextOid;		/* next OID to assign */
+	uint32		oidCount;		/* OIDs available before must do XLOG work */
 } VariableCacheData;
 
 typedef VariableCacheData *VariableCache;

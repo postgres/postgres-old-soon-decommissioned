@@ -411,6 +411,7 @@ GetUndoRecPtr(void)
 		if (pOffset != INVALID_OFFSET)
 		{
 			PROC	   *proc = (PROC *) MAKE_PTR(pOffset);
+
 			tempr = proc->logRec;
 			if (tempr.xrecoff == 0)
 				continue;
@@ -422,5 +423,5 @@ GetUndoRecPtr(void)
 
 	SpinRelease(SInvalLock);
 
-	return(urec);
+	return (urec);
 }

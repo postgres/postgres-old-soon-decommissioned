@@ -20,8 +20,9 @@ extern Datum to_ascii_default(PG_FUNCTION_ARGS);
 
 #ifdef MULTIBYTE
 
-extern char *pg_to_ascii(unsigned char *src, unsigned char *src_end, 
-					unsigned char *desc, int enc);
-#endif /* MULTIBYTE */
+extern char *pg_to_ascii(unsigned char *src, unsigned char *src_end,
+			unsigned char *desc, int enc);
 
-#endif /* _ASCII_H_ */
+#endif	 /* MULTIBYTE */
+
+#endif	 /* _ASCII_H_ */

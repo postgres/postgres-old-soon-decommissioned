@@ -79,7 +79,7 @@ typedef TimeIntervalData *TimeInterval;
 #define CURRENT_ABSTIME ((AbsoluteTime) 0x7FFFFFFD)		/* 2147483646 (2^31 - 2) */
 #define NOEND_ABSTIME	((AbsoluteTime) 0x7FFFFFFC)		/* 2147483645 (2^31 - 3) */
 #define BIG_ABSTIME		((AbsoluteTime) 0x7FFFFFFB)		/* 2147483644 (2^31 - 4) */
-#define NOSTART_ABSTIME	((AbsoluteTime) INT_MIN)		/* -2147483648 */
+#define NOSTART_ABSTIME ((AbsoluteTime) INT_MIN)		/* -2147483648 */
 
 #define INVALID_RELTIME ((RelativeTime) 0x7FFFFFFE)		/* 2147483647 (2^31 - 1) */
 

@@ -26,8 +26,8 @@
 /*
  * TransactionId is typedef'd as uint32, so...
  */
-#define PG_GETARG_TRANSACTIONID(n)  PG_GETARG_UINT32(n)
-#define PG_RETURN_TRANSACTIONID(x)  PG_RETURN_UINT32(x)
+#define PG_GETARG_TRANSACTIONID(n)	PG_GETARG_UINT32(n)
+#define PG_RETURN_TRANSACTIONID(x)	PG_RETURN_UINT32(x)
 
 
 extern TransactionId NullTransactionId;
@@ -49,6 +49,7 @@ Datum
 xidout(PG_FUNCTION_ARGS)
 {
 	TransactionId transactionId = PG_GETARG_TRANSACTIONID(0);
+
 	/* maximum 32 bit unsigned integer representation takes 10 chars */
 	char	   *representation = palloc(11);
 

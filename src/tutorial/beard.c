@@ -55,7 +55,7 @@ beard(Oid picture)
 
 	beard_fd = DatumGetInt32(DirectFunctionCall2(lo_open,
 												 ObjectIdGetDatum(beard),
-												 Int32GetDatum(INV_WRITE)));
+											  Int32GetDatum(INV_WRITE)));
 	if (beard_fd < 0)
 		elog(ERROR, "Cannot access beard large object");
 

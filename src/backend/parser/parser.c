@@ -30,6 +30,7 @@
 
 #if defined(FLEX_SCANNER)
 extern void DeleteBuffer(void);
+
 #endif	 /* FLEX_SCANNER */
 
 char	   *parseString;		/* the char* which holds the string to be
@@ -82,7 +83,7 @@ parser(char *str, Oid *typev, int nargs)
  * token lookahead.  We reduce these cases to one-token lookahead by combining
  * tokens here, in order to keep the grammar LR(1).
  *
- * Using a filter is simpler than trying to recognize multiword tokens 
+ * Using a filter is simpler than trying to recognize multiword tokens
  * directly in scan.l, because we'd have to allow for comments between the
  * words ...
  */

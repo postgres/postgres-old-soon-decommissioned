@@ -88,8 +88,8 @@ ExecGroupEveryTuple(Group *node)
 	tupdesc = ExecGetScanType(&grpstate->csstate);
 
 	/*
-	 *	We need not call ResetExprContext here because execTuplesMatch
-	 *	will reset the per-tuple memory context once per input tuple.
+	 * We need not call ResetExprContext here because execTuplesMatch will
+	 * reset the per-tuple memory context once per input tuple.
 	 */
 
 	/* if we haven't returned first tuple of a new group yet ... */
@@ -199,8 +199,8 @@ ExecGroupOneTuple(Group *node)
 	tupdesc = ExecGetScanType(&grpstate->csstate);
 
 	/*
-	 *	We need not call ResetExprContext here because execTuplesMatch
-	 *	will reset the per-tuple memory context once per input tuple.
+	 * We need not call ResetExprContext here because execTuplesMatch will
+	 * reset the per-tuple memory context once per input tuple.
 	 */
 
 	firsttuple = grpstate->grp_firstTuple;
@@ -465,8 +465,8 @@ execTuplesMatch(HeapTuple tuple1,
 
 		/* Apply the type-specific equality function */
 
-		if (! DatumGetBool(FunctionCall2(&eqfunctions[i],
-										 attr1, attr2)))
+		if (!DatumGetBool(FunctionCall2(&eqfunctions[i],
+										attr1, attr2)))
 		{
 			result = false;		/* they aren't equal */
 			break;

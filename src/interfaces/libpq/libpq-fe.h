@@ -227,7 +227,7 @@ extern		"C"
 	extern int	PQsetClientEncoding(PGconn *conn, const char *encoding);
 #ifdef USE_SSL
 	/* Get the SSL structure associated with a connection */
-	extern SSL  *PQgetssl(PGconn *conn);
+	extern SSL *PQgetssl(PGconn *conn);
 #endif
 
 

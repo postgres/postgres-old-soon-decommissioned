@@ -306,8 +306,8 @@ nocachegetattr(HeapTuple tuple,
 			int			j;
 
 			/*
-			 * In for(), we test <= and not < because we want to see
-			 * if we can go past it in initializing offsets.
+			 * In for(), we test <= and not < because we want to see if we
+			 * can go past it in initializing offsets.
 			 */
 			for (j = 0; j <= attnum; j++)
 			{
@@ -321,9 +321,9 @@ nocachegetattr(HeapTuple tuple,
 	}
 
 	/*
-	 * If slow is false, and we got here, we know that we have a tuple with
-	 * no nulls or varlenas before the target attribute. If possible, we
-	 * also want to initialize the remainder of the attribute cached
+	 * If slow is false, and we got here, we know that we have a tuple
+	 * with no nulls or varlenas before the target attribute. If possible,
+	 * we also want to initialize the remainder of the attribute cached
 	 * offset values.
 	 */
 	if (!slow)

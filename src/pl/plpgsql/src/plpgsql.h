@@ -115,8 +115,8 @@ enum
  */
 enum
 {
-        PLPGSQL_GETDIAG_ROW_COUNT,
-        PLPGSQL_GETDIAG_RESULT_OID
+	PLPGSQL_GETDIAG_ROW_COUNT,
+	PLPGSQL_GETDIAG_RESULT_OID
 };
 
 
@@ -512,9 +512,9 @@ extern Datum plpgsql_call_handler(PG_FUNCTION_ARGS);
  * ----------
  */
 extern Datum plpgsql_exec_function(PLpgSQL_function * func,
-								   FunctionCallInfo fcinfo);
+					  FunctionCallInfo fcinfo);
 extern HeapTuple plpgsql_exec_trigger(PLpgSQL_function * func,
-									  TriggerData *trigdata);
+					 TriggerData *trigdata);
 
 
 /* ----------

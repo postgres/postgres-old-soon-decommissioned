@@ -49,8 +49,8 @@ geqo_eval(Query *root, List *initial_rels, Gene *tour, int num_gene)
 	 * allocated inside gimme_tree().
 	 *
 	 * Since geqo_eval() will be called many times, we can't afford to let
-	 * all that memory go unreclaimed until end of statement.  Note we make
-	 * the temp context a child of TransactionCommandContext, so that
+	 * all that memory go unreclaimed until end of statement.  Note we
+	 * make the temp context a child of TransactionCommandContext, so that
 	 * it will be freed even if we abort via elog(ERROR).
 	 */
 	mycontext = AllocSetContextCreate(TransactionCommandContext,

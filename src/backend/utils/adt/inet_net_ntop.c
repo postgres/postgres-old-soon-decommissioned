@@ -56,7 +56,7 @@ inet_cidr_ntop(int af, const void *src, int bits, char *dst, size_t size)
 {
 	switch (af)
 	{
-		case AF_INET:
+			case AF_INET:
 			return (inet_cidr_ntop_ipv4(src, bits, dst, size));
 		default:
 			errno = EAFNOSUPPORT;
@@ -157,7 +157,7 @@ inet_net_ntop(int af, const void *src, int bits, char *dst, size_t size)
 {
 	switch (af)
 	{
-		case AF_INET:
+			case AF_INET:
 			return (inet_net_ntop_ipv4(src, bits, dst, size));
 		default:
 			errno = EAFNOSUPPORT;

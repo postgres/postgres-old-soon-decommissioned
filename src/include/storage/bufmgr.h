@@ -192,7 +192,7 @@ extern void LockBuffer(Buffer buffer, int mode);
 extern void AbortBufferIO(void);
 
 extern bool BufferIsUpdatable(Buffer buffer);
-extern void MarkBufferForCleanup(Buffer buffer, void (*CleanupFunc)(Buffer));
+extern void MarkBufferForCleanup(Buffer buffer, void (*CleanupFunc) (Buffer));
 
 extern void BufmgrCommit(void);
 extern void BufferSync(void);

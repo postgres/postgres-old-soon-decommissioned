@@ -243,7 +243,7 @@ pg_fdatasync(int fd)
 int
 BasicOpenFile(FileName fileName, int fileFlags, int fileMode)
 {
-	int		fd;
+	int			fd;
 
 tryAgain:
 	fd = open(fileName, fileFlags, fileMode);
@@ -253,7 +253,7 @@ tryAgain:
 
 	if (errno == EMFILE || errno == ENFILE)
 	{
-		int		save_errno = errno;
+		int			save_errno = errno;
 
 		DO_DB(elog(DEBUG, "BasicOpenFile: not enough descs, retry, er= %d",
 				   errno));
@@ -414,7 +414,7 @@ LruInsert(File file)
 	{
 		while (nfile + numAllocatedFiles >= pg_nofile())
 		{
-			if (! ReleaseLruFile())
+			if (!ReleaseLruFile())
 				break;
 		}
 
@@ -460,6 +460,7 @@ ReleaseLruFile(void)
 
 	if (nfile > 0)
 	{
+
 		/*
 		 * There are opened files and so there should be at least one used
 		 * vfd in the ring.
@@ -660,7 +661,7 @@ fileNameOpenFile(FileName fileName,
 
 	while (nfile + numAllocatedFiles >= pg_nofile())
 	{
-		if (! ReleaseLruFile())
+		if (!ReleaseLruFile())
 			break;
 	}
 
@@ -683,9 +684,10 @@ fileNameOpenFile(FileName fileName,
 	vfdP->fileFlags = fileFlags & ~(O_TRUNC | O_EXCL);
 	vfdP->fileMode = fileMode;
 	vfdP->seekPos = 0;
+
 	/*
-	 * Have to fsync file on commit. Alternative way - log
-	 * file creation and fsync log before actual file creation.
+	 * Have to fsync file on commit. Alternative way - log file creation
+	 * and fsync log before actual file creation.
 	 */
 	if (fileFlags & O_CREAT)
 		vfdP->fdstate = FD_DIRTY;
@@ -1083,7 +1085,7 @@ TryAgain:
 
 	if (errno == EMFILE || errno == ENFILE)
 	{
-		int		save_errno = errno;
+		int			save_errno = errno;
 
 		DO_DB(elog(DEBUG, "AllocateFile: not enough descs, retry, er= %d",
 				   errno));

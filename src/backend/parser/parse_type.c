@@ -136,6 +136,7 @@ typeTypElem(Type typ)
 
 	return typtup->typelem;
 }
+
 #endif
 
 #ifdef NOT_USED
@@ -149,6 +150,7 @@ typeInfunc(Type typ)
 
 	return typtup->typinput;
 }
+
 #endif
 
 #ifdef NOT_USED
@@ -162,6 +164,7 @@ typeOutfunc(Type typ)
 
 	return typtup->typoutput;
 }
+
 #endif
 
 /* Given a type structure and a string, returns the internal form of
@@ -218,10 +221,11 @@ typeidTypeName(Oid id)
 	if (!HeapTupleIsValid(tup))
 		elog(ERROR, "Unable to locate type oid %u in catalog", id);
 	typetuple = (Form_pg_type) GETSTRUCT(tup);
+
 	/*
 	 * pstrdup here because result may need to outlive the syscache entry
-	 * (eg, it might end up as part of a parse tree that will outlive
-	 * the current transaction...)
+	 * (eg, it might end up as part of a parse tree that will outlive the
+	 * current transaction...)
 	 */
 	result = pstrdup(NameStr(typetuple->typname));
 	ReleaseSysCache(tup);

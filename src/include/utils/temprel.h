@@ -17,10 +17,10 @@
 #include "access/htup.h"
 
 extern void create_temp_relation(const char *relname,
-								 HeapTuple pg_class_tuple);
+					 HeapTuple pg_class_tuple);
 extern void remove_temp_rel_by_relid(Oid relid);
 extern bool rename_temp_relation(const char *oldname,
-								 const char *newname);
+					 const char *newname);
 
 extern void remove_all_temp_relations(void);
 extern void AtEOXact_temp_relations(bool isCommit);

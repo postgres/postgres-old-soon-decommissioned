@@ -26,11 +26,13 @@
 #define RowShareLock			2		/* SELECT FOR UPDATE */
 #define RowExclusiveLock		3		/* INSERT, UPDATE, DELETE */
 #define ShareLock				4		/* CREATE INDEX */
-#define ShareRowExclusiveLock	5		/* like EXCLUSIVE MODE, allows SHARE ROW */
-#define ExclusiveLock			6		/* blocks ROW SHARE/SELECT...FOR UPDATE */
-#define AccessExclusiveLock		7		/* ALTER TABLE, DROP TABLE, VACUUM, and
-										 * unqualified LOCK TABLE 
-										 */
+#define ShareRowExclusiveLock	5		/* like EXCLUSIVE MODE, allows
+										 * SHARE ROW */
+#define ExclusiveLock			6		/* blocks ROW SHARE/SELECT...FOR
+										 * UPDATE */
+#define AccessExclusiveLock		7		/* ALTER TABLE, DROP TABLE,
+										 * VACUUM, and unqualified LOCK
+										 * TABLE */
 extern LOCKMETHOD LockTableId;
 
 

@@ -68,7 +68,7 @@
 	PointerGetDatum((char *) (T)) \
 )
 
-#else /* SIZEOF_DATUM != 8 */
+#else							/* SIZEOF_DATUM != 8 */
 
 #define fetch_att(T,attbyval,attlen) \
 ( \
@@ -91,7 +91,7 @@
 	PointerGetDatum((char *) (T)) \
 )
 
-#endif /* SIZEOF_DATUM == 8 */
+#endif	 /* SIZEOF_DATUM == 8 */
 
 /*
  * att_align aligns the given offset as needed for a datum of length attlen
@@ -158,7 +158,7 @@
 		} \
 	} while (0)
 
-#else /* SIZEOF_DATUM != 8 */
+#else							/* SIZEOF_DATUM != 8 */
 
 #define store_att_byval(T,newdatum,attlen) \
 	do { \
@@ -180,6 +180,6 @@
 		} \
 	} while (0)
 
-#endif /* SIZEOF_DATUM == 8 */
+#endif	 /* SIZEOF_DATUM == 8 */
 
 #endif

@@ -192,7 +192,7 @@ add_path(RelOptInfo *parent_rel, Path *new_path)
 	 * possible for more than one old path to be tossed out because
 	 * new_path dominates it.
 	 */
-	p1 = parent_rel->pathlist;			/* cannot use foreach here */
+	p1 = parent_rel->pathlist;	/* cannot use foreach here */
 	while (p1 != NIL)
 	{
 		Path	   *old_path = (Path *) lfirst(p1);
@@ -243,7 +243,7 @@ add_path(RelOptInfo *parent_rel, Path *new_path)
 		 */
 		if (remove_old && parent_rel->pruneable)
 		{
-			List   *p1_next = lnext(p1);
+			List	   *p1_next = lnext(p1);
 
 			if (p1_prev)
 				lnext(p1_prev) = p1_next;
@@ -409,14 +409,15 @@ create_append_path(RelOptInfo *rel, List *subpaths)
 
 	pathnode->path.pathtype = T_Append;
 	pathnode->path.parent = rel;
-	pathnode->path.pathkeys = NIL; /* result is always considered unsorted */
+	pathnode->path.pathkeys = NIL;		/* result is always considered
+										 * unsorted */
 	pathnode->subpaths = subpaths;
 
 	pathnode->path.startup_cost = 0;
 	pathnode->path.total_cost = 0;
 	foreach(l, subpaths)
 	{
-		Path   *subpath = (Path *) lfirst(l);
+		Path	   *subpath = (Path *) lfirst(l);
 
 		if (l == subpaths)		/* first node? */
 			pathnode->path.startup_cost = subpath->startup_cost;

@@ -31,7 +31,7 @@ typedef ItemIdData *ItemId;
  */
 #define LP_USED			0x01	/* this line pointer is being used */
 
-#define LP_DELETE		0x02    /* item is to be deleted */
+#define LP_DELETE		0x02	/* item is to be deleted */
 
 #define ItemIdDeleted(itemId) \
 	(((itemId)->lp_flags & LP_DELETE) != 0)
@@ -40,7 +40,7 @@ typedef ItemIdData *ItemId;
  * This bit may be passed to PageAddItem together with
  * LP_USED & LP_DELETED bits to specify overwrite mode
  */
-#define	OverwritePageMode	0x10
+#define OverwritePageMode	0x10
 
 /*
  * Item offsets, lengths, and flags are represented by these types when

@@ -711,16 +711,16 @@ dump_getdiag(PLpgSQL_stmt_getdiag * stmt)
 	printf("GET DIAGNOSTICS ");
 	for (i = 0; i < stmt->ndtitems; i++)
 	{
-		PLpgSQL_diag_item *dtitem = & stmt->dtitems[i];
+		PLpgSQL_diag_item *dtitem = &stmt->dtitems[i];
 
 		if (i != 0)
 			printf(", ");
 
 		printf("{var %d} = ", dtitem->target);
 
-	    switch (dtitem->item)
+		switch (dtitem->item)
 		{
-		    case PLPGSQL_GETDIAG_ROW_COUNT:
+			case PLPGSQL_GETDIAG_ROW_COUNT:
 				printf("ROW_COUNT");
 				break;
 
@@ -729,7 +729,7 @@ dump_getdiag(PLpgSQL_stmt_getdiag * stmt)
 				break;
 
 			default:
-			    printf("???");
+				printf("???");
 				break;
 		}
 	}

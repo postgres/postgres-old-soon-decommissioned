@@ -53,7 +53,7 @@ nonnullvalue(PG_FUNCTION_ARGS)
  *	   select * from TEMP where oidrand(TEMP.oid, 10)
  * will return about 1/10 of the tuples in TEMP
  *
- * NOTE: the OID input is not used at all.  It is there just because of
+ * NOTE: the OID input is not used at all.	It is there just because of
  * an old optimizer bug: a qual expression containing no variables was
  * mistakenly assumed to be a constant.  Pretending to access the row's OID
  * prevented the optimizer from treating the oidrand() result as constant.
@@ -66,6 +66,7 @@ oidrand(PG_FUNCTION_ARGS)
 {
 #ifdef NOT_USED
 	Oid			o = PG_GETARG_OID(0);
+
 #endif
 	int32		X = PG_GETARG_INT32(1);
 	bool		result;

@@ -30,7 +30,7 @@ typedef struct ItemPointerData
 	OffsetNumber ip_posid;
 } ItemPointerData;
 
-#define	SizeOfIptrData	\
+#define SizeOfIptrData	\
 	(offsetof(ItemPointerData, ip_posid) + sizeof(OffsetNumber))
 
 typedef ItemPointerData *ItemPointer;

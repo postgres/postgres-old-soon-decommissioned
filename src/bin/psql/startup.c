@@ -82,7 +82,8 @@ static void
 
 #ifdef USE_SSL
 static void
-            printSSLInfo(void);
+			printSSLInfo(void);
+
 #endif
 
 
@@ -108,17 +109,17 @@ main(int argc, char *argv[])
 
 	if (argc > 1)
 	{
-		if (strcmp(argv[1], "--help")==0 || strcmp(argv[1], "-?")==0)
+		if (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-?") == 0)
 		{
 			usage();
 			exit(EXIT_SUCCESS);
 		}
-		if (strcmp(argv[1], "--version")==0 || strcmp(argv[1], "-V")==0)
+		if (strcmp(argv[1], "--version") == 0 || strcmp(argv[1], "-V") == 0)
 		{
 			showVersion();
 			exit(EXIT_SUCCESS);
 		}
-	}		
+	}
 
 	pset.cur_cmd_source = stdin;
 	pset.cur_cmd_interactive = false;
@@ -279,7 +280,7 @@ main(int argc, char *argv[])
 				   "Type:  \\copyright for distribution terms\n"
 				   "       \\h for help with SQL commands\n"
 				   "       \\? for help on internal slash commands\n"
-				   "       \\g or terminate with semicolon to execute query\n"
+			  "       \\g or terminate with semicolon to execute query\n"
 				   "       \\q to quit\n\n", pset.progname);
 #ifdef USE_SSL
 			printSSLInfo();
@@ -672,18 +673,19 @@ showVersion(void)
  * Prints information about the current SSL connection, if SSL is in use
  */
 #ifdef USE_SSL
-static void 
+static void
 printSSLInfo(void)
 {
-	int sslbits = -1;
-	SSL *ssl;
+	int			sslbits = -1;
+	SSL		   *ssl;
 
 	ssl = PQgetssl(pset.db);
 	if (!ssl)
-		return; /* no SSL */
+		return;					/* no SSL */
 
 	SSL_get_cipher_bits(ssl, &sslbits);
 	printf("SSL enabled connection. Chiper: %s, bits: %i\n\n",
-		   SSL_get_cipher(ssl),sslbits);
+		   SSL_get_cipher(ssl), sslbits);
 }
+
 #endif

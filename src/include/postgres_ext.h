@@ -3,7 +3,7 @@
  * postgres_ext.h
  *
  *	   This file contains declarations of things that are visible everywhere
- *  in PostgreSQL *and* are visible to clients of frontend interface libraries.
+ *	in PostgreSQL *and* are visible to clients of frontend interface libraries.
  *	For example, the Oid type is part of the API of libpq and other libraries.
  *
  *	   Declarations which are specific to a particular interface should

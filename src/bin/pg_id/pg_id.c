@@ -94,9 +94,9 @@ main(int argc, char *argv[])
 		puts(pw->pw_name);
 	else
 #ifdef __BEOS__
- 		if (pw->pw_uid==0)
- 			printf("1\n");
- 		else
+	if (pw->pw_uid == 0)
+		printf("1\n");
+	else
 #endif
 		printf("%d\n", (int) pw->pw_uid);
 

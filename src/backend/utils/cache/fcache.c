@@ -45,7 +45,10 @@ init_fcache(Oid foid, int nargs, MemoryContext fcacheCxt)
 	if (nargs > FUNC_MAX_ARGS)
 		elog(ERROR, "init_fcache: too many arguments");
 
-	/* If function returns set, prepare a resultinfo node for communication */
+	/*
+	 * If function returns set, prepare a resultinfo node for
+	 * communication
+	 */
 	if (retval->func.fn_retset)
 	{
 		retval->fcinfo.resultinfo = (Node *) &(retval->rsinfo);

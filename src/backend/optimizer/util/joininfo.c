@@ -33,7 +33,7 @@ static JoinInfo *joininfo_member(List *join_relids, List *joininfo_list);
  * exists.
  *
  */
-static JoinInfo   *
+static JoinInfo *
 joininfo_member(List *join_relids, List *joininfo_list)
 {
 	List	   *i;

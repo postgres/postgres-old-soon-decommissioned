@@ -35,10 +35,10 @@
  */
 typedef struct ParseState
 {
-	struct ParseState *parentParseState; /* stack link */
+	struct ParseState *parentParseState;		/* stack link */
 	List	   *p_rtable;		/* range table so far */
-	List	   *p_joinlist;		/* join items so far (will become
-								 * FromExpr node's fromlist) */
+	List	   *p_joinlist;		/* join items so far (will become FromExpr
+								 * node's fromlist) */
 	List	   *p_namespace;	/* current lookup namespace (join items) */
 	int			p_last_resno;	/* last targetlist resno assigned */
 	List	   *p_forUpdate;	/* FOR UPDATE clause, if any (see gram.y) */

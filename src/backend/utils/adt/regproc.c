@@ -58,7 +58,7 @@ regprocin(PG_FUNCTION_ARGS)
 			result = (RegProcedure)
 				GetSysCacheOid(PROCOID,
 							   DirectFunctionCall1(oidin,
-											CStringGetDatum(pro_name_or_oid)),
+									   CStringGetDatum(pro_name_or_oid)),
 							   0, 0, 0);
 			if (!RegProcedureIsValid(result))
 				elog(ERROR, "No procedure with oid %s", pro_name_or_oid);

@@ -31,7 +31,7 @@
 #include "parser/parsetree.h"
 
 static Oid InitScanRelation(SeqScan *node, EState *estate,
-							CommonScanState *scanstate);
+				 CommonScanState *scanstate);
 static TupleTableSlot *SeqNext(SeqScan *node);
 
 /* ----------------------------------------------------------------
@@ -174,8 +174,8 @@ InitScanRelation(SeqScan *node, EState *estate,
 				  0,			/* is index */
 				  direction,	/* scan direction */
 				  estate->es_snapshot,
-				  &currentRelation, /* return: rel desc */
-				  (Pointer *) &currentScanDesc); /* return: scan desc */
+				  &currentRelation,		/* return: rel desc */
+				  (Pointer *) &currentScanDesc);		/* return: scan desc */
 
 	scanstate->css_currentRelation = currentRelation;
 	scanstate->css_currentScanDesc = currentScanDesc;

@@ -540,9 +540,7 @@ ExecHashGetBucket(HashJoinTable hashtable,
 	 * ------------------
 	 */
 	if (isNull)
-	{
 		bucketno = 0;
-	}
 	else
 	{
 		bucketno = hashFunc(keyval,

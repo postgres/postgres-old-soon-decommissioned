@@ -87,13 +87,13 @@ typedef struct TriggerDesc
 typedef struct RelationData
 {
 	File		rd_fd;			/* open file descriptor, or -1 if none */
-	RelFileNode	rd_node;		/* relation file node */
+	RelFileNode rd_node;		/* relation file node */
 	int			rd_nblocks;		/* number of blocks in rel */
 	uint16		rd_refcnt;		/* reference count */
 	bool		rd_myxactonly;	/* rel uses the local buffer mgr */
 	bool		rd_isnailed;	/* rel is nailed in cache */
 	bool		rd_indexfound;	/* true if rd_indexlist is valid */
-	bool		rd_uniqueindex;	/* true if rel is a UNIQUE index */
+	bool		rd_uniqueindex; /* true if rel is a UNIQUE index */
 	Form_pg_am	rd_am;			/* AM tuple */
 	Form_pg_class rd_rel;		/* RELATION tuple */
 	Oid			rd_id;			/* relation's object id */
@@ -246,7 +246,7 @@ typedef Relation *RelationPtr;
  * Routines in utils/cache/rel.c
  */
 extern void RelationSetIndexSupport(Relation relation,
-									IndexStrategy strategy,
-									RegProcedure *support);
+						IndexStrategy strategy,
+						RegProcedure *support);
 
 #endif	 /* REL_H */

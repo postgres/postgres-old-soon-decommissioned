@@ -557,13 +557,12 @@ set_differencei(List *l1, List *l2)
 List *
 lreverse(List *l)
 {
-    List       *result = NIL;
-    List       *i;
-    foreach(i, l)
-    {
-        result = lcons(lfirst(i), result);
-    }
-    return result;
+	List	   *result = NIL;
+	List	   *i;
+
+	foreach(i, l)
+		result = lcons(lfirst(i), result);
+	return result;
 }
 
 /*

@@ -115,14 +115,14 @@ extern char *IndexedCatalogNames[];
 extern void CatalogOpenIndices(int nIndices, char **names, Relation *idescs);
 extern void CatalogCloseIndices(int nIndices, Relation *idescs);
 extern void CatalogIndexInsert(Relation *idescs, int nIndices,
-							   Relation heapRelation, HeapTuple heapTuple);
+				   Relation heapRelation, HeapTuple heapTuple);
 
 /*
  * Canned functions for indexscans on certain system indexes.
  * All index-value arguments should be passed as Datum for portability!
  */
 extern HeapTuple AttributeRelidNumIndexScan(Relation heapRelation,
-											Datum relid, Datum attnum);
+						   Datum relid, Datum attnum);
 extern HeapTuple ClassNameIndexScan(Relation heapRelation, Datum relName);
 extern HeapTuple ClassOidIndexScan(Relation heapRelation, Datum relId);
 

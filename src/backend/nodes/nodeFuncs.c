@@ -114,5 +114,5 @@ non_null(Expr *c)
 	else
 		return false;
 }
-#endif
 
+#endif

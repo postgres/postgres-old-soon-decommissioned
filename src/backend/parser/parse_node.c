@@ -136,7 +136,7 @@ make_op(char *opname, Node *ltree, Node *rtree)
 
 	newop = makeOper(oprid(tup),/* opno */
 					 InvalidOid,/* opid */
-					 opform->oprresult); /* operator result type */
+					 opform->oprresult);		/* operator result type */
 
 	result = makeNode(Expr);
 	result->typeOid = opform->oprresult;
@@ -235,7 +235,7 @@ make_var(ParseState *pstate, RangeTblEntry *rte, int attrno)
  * forceSlice	If true, treat subscript as array slice in all cases
  * assignFrom	NULL for array fetch, else transformed expression for source.
  */
-ArrayRef *
+ArrayRef   *
 transformArraySubscripts(ParseState *pstate,
 						 Node *arrayBase,
 						 Oid arrayType,
@@ -449,7 +449,7 @@ make_const(Value *value)
 
 				typeid = FLOAT8OID;
 				typelen = sizeof(float8);
-				typebyval = false; /* XXX might change someday */
+				typebyval = false;		/* XXX might change someday */
 			}
 			else
 			{

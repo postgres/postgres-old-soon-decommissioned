@@ -20,8 +20,8 @@
 #endif
 
 #ifdef HAVE_UNIX_SOCKETS
-# include <unistd.h>
-# include <netdb.h>
+#include <unistd.h>
+#include <netdb.h>
 #endif
 
 /*--------------------------
@@ -104,7 +104,7 @@ localhost(int type, char *buf, int siz)
 	return buf;
 }
 
-#endif /* HAVE_UNIX_SOCKETS */
+#endif	 /* HAVE_UNIX_SOCKETS */
 
 
 char *
@@ -182,7 +182,7 @@ get_prompt(promptStatus_t status)
 							else
 								localhost(DOMAINNAME, buf, MAX_PROMPT_SIZE);
 						}
-#endif /* HAVE_UNIX_SOCKETS */
+#endif	 /* HAVE_UNIX_SOCKETS */
 					}
 					break;
 					/* DB server port number */

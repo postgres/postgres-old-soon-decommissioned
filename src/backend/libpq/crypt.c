@@ -295,7 +295,7 @@ crypt_verify(const Port *port, const char *user, const char *pgpass)
 			vuntil = INVALID_ABSTIME;
 		else
 			vuntil = DatumGetAbsoluteTime(DirectFunctionCall1(nabstimein,
-										  CStringGetDatum(valuntil)));
+											 CStringGetDatum(valuntil)));
 		current = GetCurrentAbsoluteTime();
 		if (vuntil != INVALID_ABSTIME && vuntil < current)
 			retval = STATUS_ERROR;

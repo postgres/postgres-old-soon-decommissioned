@@ -30,8 +30,8 @@ static ItemPointer rtheapptr(Relation r, ItemPointer itemp);
 Datum
 rtgettuple(PG_FUNCTION_ARGS)
 {
-	IndexScanDesc		s = (IndexScanDesc) PG_GETARG_POINTER(0);
-	ScanDirection		dir = (ScanDirection) PG_GETARG_INT32(1);
+	IndexScanDesc s = (IndexScanDesc) PG_GETARG_POINTER(0);
+	ScanDirection dir = (ScanDirection) PG_GETARG_INT32(1);
 	RetrieveIndexResult res;
 
 	/* if we have it cached in the scan desc, just return the value */

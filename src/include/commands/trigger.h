@@ -90,15 +90,15 @@ extern void FreeTriggerDesc(TriggerDesc *trigdesc);
 extern bool equalTriggerDescs(TriggerDesc *trigdesc1, TriggerDesc *trigdesc2);
 
 extern HeapTuple ExecBRInsertTriggers(EState *estate,
-									  Relation rel, HeapTuple tuple);
+					 Relation rel, HeapTuple tuple);
 extern void ExecARInsertTriggers(EState *estate,
-								 Relation rel, HeapTuple tuple);
+					 Relation rel, HeapTuple tuple);
 extern bool ExecBRDeleteTriggers(EState *estate, ItemPointer tupleid);
 extern void ExecARDeleteTriggers(EState *estate, ItemPointer tupleid);
 extern HeapTuple ExecBRUpdateTriggers(EState *estate, ItemPointer tupleid,
-									  HeapTuple tuple);
+					 HeapTuple tuple);
 extern void ExecARUpdateTriggers(EState *estate, ItemPointer tupleid,
-								 HeapTuple tuple);
+					 HeapTuple tuple);
 
 
 /* ----------
@@ -125,7 +125,7 @@ typedef struct DeferredTriggerEventData *DeferredTriggerEvent;
 
 typedef struct DeferredTriggerEventData
 {
-	DeferredTriggerEvent dte_next; /* list link */
+	DeferredTriggerEvent dte_next;		/* list link */
 	int32		dte_event;
 	Oid			dte_relid;
 	ItemPointerData dte_oldctid;

@@ -36,7 +36,8 @@
  *
  * USERSET options can be set by anyone any time.
  */
-typedef enum {
+typedef enum
+{
 	PGC_POSTMASTER,
 	PGC_SIGHUP,
 	PGC_BACKEND,
@@ -45,12 +46,12 @@ typedef enum {
 } GucContext;
 
 
-void         SetConfigOption(const char * name, const char * value, GucContext context);
-const char * GetConfigOption(const char * name);
-void         ProcessConfigFile(GucContext context);
-void         ResetAllOptions(void);
-void         ParseLongOption(const char * string, char ** name, char ** value);
-bool         set_config_option(const char * name, const char * value, GucContext context, bool DoIt);
+void		SetConfigOption(const char *name, const char *value, GucContext context);
+const char *GetConfigOption(const char *name);
+void		ProcessConfigFile(GucContext context);
+void		ResetAllOptions(void);
+void		ParseLongOption(const char *string, char **name, char **value);
+bool		set_config_option(const char *name, const char *value, GucContext context, bool DoIt);
 
 
 extern bool Debug_print_query;
@@ -67,4 +68,4 @@ extern bool Show_btree_build_stats;
 
 extern bool SQL_inheritance;
 
-#endif /*GUC_H*/
+#endif	 /* GUC_H */

@@ -75,8 +75,8 @@ typedef RetrieveIndexResultData *RetrieveIndexResult;
 
 #define IndexTupleSize(itup)		((Size) (((IndexTuple) (itup))->t_info & INDEX_SIZE_MASK))
 #define IndexTupleDSize(itup)		((Size) ((itup).t_info & INDEX_SIZE_MASK))
-#define IndexTupleHasNulls(itup) 	((((IndexTuple) (itup))->t_info & INDEX_NULL_MASK))
-#define IndexTupleHasVarlenas(itup)	((((IndexTuple) (itup))->t_info & INDEX_VAR_MASK))
+#define IndexTupleHasNulls(itup)	((((IndexTuple) (itup))->t_info & INDEX_NULL_MASK))
+#define IndexTupleHasVarlenas(itup) ((((IndexTuple) (itup))->t_info & INDEX_VAR_MASK))
 
 #define IndexTupleHasMinHeader(itup) (!IndexTupleHasNulls(itup))
 

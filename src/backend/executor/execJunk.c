@@ -265,6 +265,7 @@ ExecInitJunkFilter(List *targetList, TupleDesc tupType)
 void
 ExecFreeJunkFilter(JunkFilter *junkfilter)
 {
+
 	/*
 	 * Since the junkfilter is inside its own context, we just have to
 	 * delete the context and we're set.

@@ -59,7 +59,7 @@ extern void AlterTableDropConstraint(const char *relationName,
 						 int behavior);
 
 extern void AlterTableCreateToastTable(const char *relationName,
-                         bool silent);
+						   bool silent);
 
 extern void AlterTableOwner(const char *relationName, const char *newOwnerName);
 

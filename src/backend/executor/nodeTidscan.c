@@ -371,6 +371,7 @@ ExecTidRestrPos(TidScan *node)
 	tidstate = node->tidstate;
 	tidstate->tss_TidPtr = tidstate->tss_MarkTidPtr;
 }
+
 #endif
 
 /* ----------------------------------------------------------------

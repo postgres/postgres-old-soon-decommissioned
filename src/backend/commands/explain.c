@@ -271,7 +271,7 @@ explain_outNode(StringInfo str, Plan *plan, int indent, ExplainState *es)
 								 stringStringInfo(rte->relname));
 				if (strcmp(rte->eref->relname, rte->relname) != 0)
 					appendStringInfo(str, " %s",
-									 stringStringInfo(rte->eref->relname));
+								   stringStringInfo(rte->eref->relname));
 			}
 			break;
 		case T_SubqueryScan:

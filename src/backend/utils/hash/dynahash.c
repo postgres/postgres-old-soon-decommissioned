@@ -719,7 +719,7 @@ hash_seq_search(HASH_SEQ_STATUS *status)
 
 			curElem = GET_BUCKET(hashp, status->curIndex);
 			status->curIndex = curElem->next;
-			if (status->curIndex == INVALID_INDEX)	/* end of this bucket */
+			if (status->curIndex == INVALID_INDEX)		/* end of this bucket */
 				++status->curBucket;
 			return &(curElem->key);
 		}

@@ -1851,7 +1851,7 @@ comparetup_index(Tuplesortstate *state, const void *a, const void *b)
 		else
 		{
 			compare = DatumGetInt32(FunctionCall2(&entry->sk_func,
-												  attrDatum1, attrDatum2));
+												attrDatum1, attrDatum2));
 		}
 
 		if (compare != 0)

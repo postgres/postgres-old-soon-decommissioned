@@ -75,9 +75,9 @@ rtbeginscan(PG_FUNCTION_ARGS)
 Datum
 rtrescan(PG_FUNCTION_ARGS)
 {
-	IndexScanDesc	s = (IndexScanDesc) PG_GETARG_POINTER(0);
-	bool			fromEnd = PG_GETARG_BOOL(1);
-	ScanKey			key = (ScanKey) PG_GETARG_POINTER(2);
+	IndexScanDesc s = (IndexScanDesc) PG_GETARG_POINTER(0);
+	bool		fromEnd = PG_GETARG_BOOL(1);
+	ScanKey		key = (ScanKey) PG_GETARG_POINTER(2);
 	RTreeScanOpaque p;
 	RegProcedure internal_proc;
 	int			i;
@@ -162,7 +162,7 @@ rtrescan(PG_FUNCTION_ARGS)
 Datum
 rtmarkpos(PG_FUNCTION_ARGS)
 {
-	IndexScanDesc	s = (IndexScanDesc) PG_GETARG_POINTER(0);
+	IndexScanDesc s = (IndexScanDesc) PG_GETARG_POINTER(0);
 	RTreeScanOpaque p;
 	RTSTACK    *o,
 			   *n,
@@ -198,7 +198,7 @@ rtmarkpos(PG_FUNCTION_ARGS)
 Datum
 rtrestrpos(PG_FUNCTION_ARGS)
 {
-	IndexScanDesc	s = (IndexScanDesc) PG_GETARG_POINTER(0);
+	IndexScanDesc s = (IndexScanDesc) PG_GETARG_POINTER(0);
 	RTreeScanOpaque p;
 	RTSTACK    *o,
 			   *n,
@@ -234,7 +234,7 @@ rtrestrpos(PG_FUNCTION_ARGS)
 Datum
 rtendscan(PG_FUNCTION_ARGS)
 {
-	IndexScanDesc	s = (IndexScanDesc) PG_GETARG_POINTER(0);
+	IndexScanDesc s = (IndexScanDesc) PG_GETARG_POINTER(0);
 	RTreeScanOpaque p;
 
 	p = (RTreeScanOpaque) s->opaque;

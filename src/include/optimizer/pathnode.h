@@ -37,29 +37,29 @@ extern AppendPath *create_append_path(RelOptInfo *rel, List *subpaths);
 extern Path *create_subqueryscan_path(RelOptInfo *rel);
 
 extern NestPath *create_nestloop_path(RelOptInfo *joinrel,
-									  JoinType jointype,
-									  Path *outer_path,
-									  Path *inner_path,
-									  List *restrict_clauses,
-									  List *pathkeys);
+					 JoinType jointype,
+					 Path *outer_path,
+					 Path *inner_path,
+					 List *restrict_clauses,
+					 List *pathkeys);
 
 extern MergePath *create_mergejoin_path(RelOptInfo *joinrel,
-										JoinType jointype,
-										Path *outer_path,
-										Path *inner_path,
-										List *restrict_clauses,
-										List *pathkeys,
-										List *mergeclauses,
-										List *outersortkeys,
-										List *innersortkeys);
+					  JoinType jointype,
+					  Path *outer_path,
+					  Path *inner_path,
+					  List *restrict_clauses,
+					  List *pathkeys,
+					  List *mergeclauses,
+					  List *outersortkeys,
+					  List *innersortkeys);
 
 extern HashPath *create_hashjoin_path(RelOptInfo *joinrel,
-									  JoinType jointype,
-									  Path *outer_path,
-									  Path *inner_path,
-									  List *restrict_clauses,
-									  List *hashclauses,
-									  Selectivity innerdispersion);
+					 JoinType jointype,
+					 Path *outer_path,
+					 Path *inner_path,
+					 List *restrict_clauses,
+					 List *hashclauses,
+					 Selectivity innerdispersion);
 
 /*
  * prototypes for relnode.c
@@ -67,9 +67,9 @@ extern HashPath *create_hashjoin_path(RelOptInfo *joinrel,
 extern RelOptInfo *get_base_rel(Query *root, int relid);
 extern RelOptInfo *make_base_rel(Query *root, int relid);
 extern RelOptInfo *get_join_rel(Query *root,
-								RelOptInfo *outer_rel,
-								RelOptInfo *inner_rel,
-								JoinType jointype,
-								List **restrictlist_ptr);
+			 RelOptInfo *outer_rel,
+			 RelOptInfo *inner_rel,
+			 JoinType jointype,
+			 List **restrictlist_ptr);
 
 #endif	 /* PATHNODE_H */

@@ -13,7 +13,7 @@
 
 #include <dlfcn.h>
 
-#else /* HAVE_DLOPEN */
+#else							/* HAVE_DLOPEN */
 
 #ifdef __cplusplus
 extern		"C"
@@ -54,13 +54,13 @@ extern		"C"
 
 #endif
 
-#endif /* HAVE_DLOPEN */
+#endif	 /* HAVE_DLOPEN */
 
 #include "utils/dynamic_loader.h"
 
 #define  pg_dlopen(f)	dlopen(f, RTLD_LAZY)
 #define  pg_dlsym	dlsym
-#define  pg_dlclose	dlclose
-#define  pg_dlerror	dlerror
+#define  pg_dlclose dlclose
+#define  pg_dlerror dlerror
 
 #endif	 /* PORT_PROTOS_H */
