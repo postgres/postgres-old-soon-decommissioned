@@ -45,6 +45,7 @@ extern void MultiRecordFreeSpace(RelFileNode *rel,
 								 BlockNumber *pages,
 								 Size *spaceAvail);
 extern void FreeSpaceMapForgetRel(RelFileNode *rel);
+extern void FreeSpaceMapForgetDatabase(Oid dbid);
 
 #ifdef FREESPACE_DEBUG
 extern void DumpFreeSpace(void);

@@ -469,11 +469,13 @@ smgrtruncate(int16 which, Relation reln, BlockNumber nblocks)
 	if (smgrsw[which].smgr_truncate)
 	{
 		/*
-		 * Tell the free space map to forget this relation, so that it
-		 * stops caching info about the deleted blocks.  XXX perhaps
-		 * tell it to forget only info about blocks beyond nblocks?
+		 * Tell the free space map to forget anything it may have stored
+		 * for the about-to-be-deleted blocks.  We want to be sure it won't
+		 * return bogus block numbers later on.
 		 */
-		FreeSpaceMapForgetRel(&reln->rd_node);
+		MultiRecordFreeSpace(&reln->rd_node,
+							 nblocks, MaxBlockNumber,
+							 0, NULL, NULL);
 
 		newblks = (*(smgrsw[which].smgr_truncate)) (reln, nblocks);
 		if (newblks == InvalidBlockNumber)

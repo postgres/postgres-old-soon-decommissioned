@@ -30,7 +30,8 @@
 #include "commands/comment.h"
 #include "commands/dbcommands.h"
 #include "miscadmin.h"
-#include "storage/sinval.h"		/* for DatabaseHasActiveBackends */
+#include "storage/freespace.h"
+#include "storage/sinval.h"
 #include "utils/builtins.h"
 #include "utils/fmgroids.h"
 #include "utils/syscache.h"
@@ -371,6 +372,11 @@ dropdb(const char *dbname)
 	 * write out a dirty buffer to the dead database later...
 	 */
 	DropBuffers(db_id);
+
+	/*
+	 * Also, clean out any entries in the shared free space map.
+	 */
+	FreeSpaceMapForgetDatabase(db_id);
 
 	/*
 	 * Remove the database's subdirectory and everything in it.
