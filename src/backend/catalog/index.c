@@ -72,8 +72,6 @@
 
 #include "parser/catalog_utils.h"
 
-#include "machine.h"
-
 /*
  * macros used in guessing how many tuples are on a page.
  */

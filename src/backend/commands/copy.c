@@ -43,7 +43,6 @@
 #include "utils/memutils.h"
 #include "utils/palloc.h"
 #include "fmgr.h"
-#include "machine.h"
 
 /*
  * New copy code.
