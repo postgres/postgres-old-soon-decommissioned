@@ -62,6 +62,7 @@ typedef struct Psortstate
 	long		psort_current;	/* could be file offset, or array index */
 	long		psort_saved;	/* could be file offset, or array index */
 	bool		using_tape_files;
+	bool		all_fetched;	/* this is for cursors */
 
 	HeapTuple  *memtuples;
 } Psortstate;
