@@ -349,8 +349,6 @@ find_hba_entry(const char DataDir[], const struct in_addr ip_addr,
     if (file == 0) {  
       /* The open of the config file failed.  */
       
-      const int open_errno = errno;
-      
       *host_ok_p = false;
 
       sprintf(PQerrormsg,
@@ -651,8 +649,6 @@ verify_against_usermap(const char DataDir[],
     file = fopen(map_file, "r");
     if (file == 0) {  
       /* The open of the map file failed.  */
-      
-      const int open_errno = errno;
       
       *checks_out_p = false;
 
