@@ -329,6 +329,15 @@ replace_clause_joinvar_refs(Expr *clause,
 	{
 		return ((List *) clause);
 	}
+	else if (and_clause((Node *) clause))
+	{
+		List	   *andclause =
+		replace_subclause_joinvar_refs(((Expr *) clause)->args,
+									   outer_tlist,
+									   inner_tlist);
+
+		return ((List *) make_andclause(andclause));
+	}
 	else if (or_clause((Node *) clause))
 	{
 		List	   *orclause =

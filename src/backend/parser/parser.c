@@ -141,7 +141,7 @@ define_sets(Node *clause)
 	{
 		return;
 	}
-	else if (or_clause(clause))
+	else if (or_clause(clause) || and_clause(clause))
 	{
 		List	   *temp;
 

@@ -85,7 +85,7 @@ contain_var_clause(Node *clause)
 		return contain_var_clause(((Iter *) clause)->iterexpr);
 	else if (single_node(clause))
 		return FALSE;
-	else if (or_clause(clause))
+	else if (or_clause(clause) || and_clause(clause))
 	{
 		List	   *temp;
 
@@ -156,7 +156,7 @@ pull_var_clause(Node *clause)
 		retval = pull_var_clause(((Iter *) clause)->iterexpr);
 	else if (single_node(clause))
 		retval = NIL;
-	else if (or_clause(clause))
+	else if (or_clause(clause) || and_clause(clause))
 	{
 		List	   *temp;
 

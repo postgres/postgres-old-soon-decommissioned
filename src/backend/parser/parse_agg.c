@@ -108,7 +108,7 @@ contain_agg_clause(Node *clause)
 		return contain_agg_clause(((Iter *) clause)->iterexpr);
 	else if (single_node(clause))
 		return FALSE;
-	else if (or_clause(clause))
+	else if (or_clause(clause) || and_clause(clause))
 	{
 		List	   *temp;
 

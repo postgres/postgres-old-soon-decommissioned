@@ -431,7 +431,7 @@ contains_not(Node *clause)
 	if (not_clause(clause))
 		return (true);
 
-	if (or_clause(clause))
+	if (or_clause(clause) || and_clause(clause))
 	{
 		List	   *a;
 
@@ -518,7 +518,7 @@ fix_opid(Node *clause)
 	{
 		;
 	}
-	else if (or_clause(clause))
+	else if (or_clause(clause) || and_clause(clause))
 	{
 		fix_opids(((Expr *) clause)->args);
 	}

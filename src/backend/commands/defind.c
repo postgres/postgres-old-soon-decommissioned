@@ -385,9 +385,7 @@ CheckPredExpr(Node *predicate, List *rangeTable, Oid baseRelOid)
 		CheckPredClause((Expr *) predicate, rangeTable, baseRelOid);
 		return;
 	}
-	else if (or_clause(predicate))
-		clauses = ((Expr *) predicate)->args;
-	else if (and_clause(predicate))
+	else if (or_clause(predicate) || and_clause(predicate))
 		clauses = ((Expr *) predicate)->args;
 	else
 		elog(WARN, "Unsupported partial-index predicate expression type");
