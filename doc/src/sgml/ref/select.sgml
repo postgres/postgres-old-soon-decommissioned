@@ -950,7 +950,7 @@ table to do the select from.  A less obvious use is to abbreviate a
 normal select from one or more tables:
 
   <programlisting>
-SELECT distributors.* WHERE name = 'Westward';
+SELECT distributors.* WHERE distributors.name = 'Westward';
 
  did | name
 -----+----------
