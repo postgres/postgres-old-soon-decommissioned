@@ -255,7 +255,7 @@ dumpClasses_nodumpData(FILE *fout, const char *classname, const bool oids)
 			copydone = false;
 			while (!copydone)
 			{
-				ret = PQgetline(res->conn, copybuf, COPYBUFSIZ);
+				ret = PQgetline(g_conn, copybuf, COPYBUFSIZ);
 
 				if (copybuf[0] == '\\' &&
 					copybuf[1] == '.' &&
@@ -281,7 +281,7 @@ dumpClasses_nodumpData(FILE *fout, const char *classname, const bool oids)
 			}
 			fprintf(fout, "\\.\n");
 		}
-		ret = PQendcopy(res->conn);
+		ret = PQendcopy(g_conn);
 		if (ret != 0)
 		{
 			fprintf(stderr, "SQL query to dump the contents of Table '%s' "

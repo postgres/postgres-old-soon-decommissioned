@@ -174,15 +174,14 @@ pqGetnchar(char *s, int len, PGconn *conn)
 	conn->inCursor += len;
 
 	if (conn->Pfdebug)
-		fprintf(conn->Pfdebug, "From backend (%d)> %s\n", len, s);
+		fprintf(conn->Pfdebug, "From backend (%d)> %.*s\n", len, len, s);
 
 	return 0;
 }
 
 /* --------------------------------------------------------------------- */
 /* pqPutnchar:
-   send a string of exactly len bytes
-   The buffer should have a terminating null, but it's not sent.
+   send a string of exactly len bytes, no null termination needed
 */
 int
 pqPutnchar(const char *s, int len, PGconn *conn)
@@ -191,7 +190,7 @@ pqPutnchar(const char *s, int len, PGconn *conn)
 		return EOF;
 
 	if (conn->Pfdebug)
-		fprintf(conn->Pfdebug, "To backend> %s\n", s);
+		fprintf(conn->Pfdebug, "To backend> %.*s\n", len, s);
 
 	return 0;
 }

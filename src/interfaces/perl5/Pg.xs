@@ -318,7 +318,7 @@ PQexec(conn, query)
 	char *	query
 	CODE:
 		RETVAL = PQexec(conn, query);
-                if (! RETVAL) { RETVAL = (PGresult *)calloc(1, sizeof(PGresult)); }
+                if (! RETVAL) { RETVAL = PQmakeEmptyPGresult(conn, PGRES_FATAL_ERROR); }
 	OUTPUT:
 		RETVAL
 
@@ -752,7 +752,7 @@ PQexec(conn, query)
 		if (RETVAL) {
 			RETVAL->result = PQexec((PGconn *)conn, query);
 			if (!RETVAL->result) {
-				RETVAL->result = (PG_result)calloc(1, sizeof(PGresult));
+				RETVAL->result = PQmakeEmptyPGresult(conn, PGRES_FATAL_ERROR);
 			}
 		}
 	OUTPUT:
