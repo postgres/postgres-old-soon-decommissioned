@@ -104,7 +104,8 @@ exprIsAggOrGroupCol(Node *expr, List *groupClause)
 	List	   *gl;
 
 	if (expr == NULL || IsA(expr, Const) ||
-		IsA(expr, Param) ||IsA(expr, Aggreg))
+		IsA(expr, Param) || IsA(expr, Aggreg) || 
+		IsA(expr, SubLink))		/* can't handle currently !!! */
 		return TRUE;
 
 	foreach(gl, groupClause)
@@ -207,13 +208,10 @@ parseCheckAggregates(ParseState *pstate, Query *qry)
 	 * the expression specified in the HAVING clause has the same
 	 * restriction as those in the target list.
 	 */
-/*
- * Need to change here when we get HAVING works. Currently
- * qry->havingQual is NULL.		- vadim 04/05/97
+
 	if (!exprIsAggOrGroupCol(qry->havingQual, qry->groupClause))
 		elog(ERROR,
 			 "parser: illegal use of aggregates or non-group column in HAVING clause");
- */
 	return;
 }
 
