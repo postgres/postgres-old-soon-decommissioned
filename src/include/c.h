@@ -572,10 +572,11 @@ typedef NameData *Name;
  *	Exactly the same as standard library function memset(), but considerably
  *	faster for zeroing small word-aligned structures (such as parsetree nodes).
  *	This has to be a macro because the main point is to avoid function-call
- *	overhead.
+ *	overhead.   However, we have also found that the loop is faster than
+ *	native libc memset() on some platforms, even those with assembler
+ *	memset() functions.  More research needs to be done, perhaps with
+ *	platform-specific MEMSET_LOOP_LIMIT values or tests in configure.
  *
- *	We got the MEMSET_LOOP_LIMIT value by testing this against the libc
- *  memset() on several platforms, some with assembly language versions.
  *	bjm 2002-10-08
  */
 #define MemSet(start, val, len) \
