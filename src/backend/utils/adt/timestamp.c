@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
  *
  * timestamp.c
- *	  Functions for the built-in SQL92 type "timestamp" and "interval".
+ *	  Functions for the built-in SQL92 types "timestamp" and "interval".
  *
  * Portions Copyright (c) 1996-2002, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
@@ -27,6 +27,14 @@
 #include "miscadmin.h"
 #include "utils/array.h"
 #include "utils/builtins.h"
+
+/*
+ * gcc's -ffast-math switch breaks routines that expect exact results from
+ * expressions like timeval / 3600, where timeval is double.
+ */
+#ifdef __FAST_MATH__
+#error -ffast-math is known to break this code
+#endif
 
 
 #ifdef HAVE_INT64_TIMESTAMP
