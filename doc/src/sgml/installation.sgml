@@ -621,7 +621,6 @@ JAVACMD=$JAVA_HOME/bin/java
         </para>
        </listitem>
       </varlistentry>
-     </variablelist>
 
       <varlistentry>
        <term><option>--with-docdir=<replaceable>DIRECTORY</></option></term>
@@ -638,6 +637,7 @@ JAVACMD=$JAVA_HOME/bin/java
         </para>
        </listitem>
       </varlistentry>
+     </variablelist>
 
      <note>
       <para>
