@@ -25,6 +25,8 @@ extern char *SockAddr_ntop(const SockAddr *sa, char *dst, size_t cnt,
 						   int v4conv);
 extern int   SockAddr_pton(SockAddr *sa, const char *src);
 
+extern int SockAddr_cidr_mask(SockAddr *mask, char *numbits, int family);
+
 extern int   isAF_INETx(const int family);
 extern int   rangeSockAddr(const SockAddr *addr, const SockAddr *netaddr,
 						   const SockAddr *netmask);
