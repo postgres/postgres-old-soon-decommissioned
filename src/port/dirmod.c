@@ -19,9 +19,6 @@
 
 #if defined(WIN32) || defined(__CYGWIN__)
 
-#ifdef __CYGWIN__
-#include <sys/time.h> /* timeval definition for PG_USLEEP */
-#endif
 
 #ifndef FRONTEND
 #include "postgres.h"
@@ -53,7 +50,7 @@ pgrename(const char *from, const char *to)
 #endif
 			/* set errno? */
 			return -1;
-		PG_USLEEP(100000);				/* us */
+		pg_usleep(100000);				/* us */
 		if (loops == 30)
 #ifndef FRONTEND
 			elog(LOG, "could not rename \"%s\" to \"%s\", continuing to try",
@@ -85,7 +82,7 @@ pgunlink(const char *path)
 		if (errno != EACCES)
 			/* set errno? */
 			return -1;
-		PG_USLEEP(100000);				/* us */
+		pg_usleep(100000);				/* us */
 		if (loops == 30)
 #ifndef FRONTEND
 			elog(LOG, "could not unlink \"%s\", continuing to try",
